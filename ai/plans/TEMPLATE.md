@@ -24,7 +24,7 @@ see fit", "update any", "relevant", "handle edge cases", "should", "try", "ensur
 | --- | --- |
 | Brief | `ai/prompts/<brief>.md` |
 | Planned at | `<uat-2 sha>` (version <x.y.z>), <date> |
-| Planned by | Planning session on <date>, GLM 5.3 |
+| Planned by | Planning session on <date> |
 | Needs first | <Order numbers of rows in ai/plans/README.md that must be DONE, or "nothing"> |
 | Steps | <count>, each one branch, one commit, one version |
 | Device | <none / OnePlus 3T with a local production build / mock build / iPhone> |
@@ -181,12 +181,13 @@ PASS verdict (`AUDITOR-BRIEF.md` section 4).
 
 ## 11. Subagents in this plan
 
-A table: step, agent type, model (GLM 5.3, or GLM 5.3 Flash for `vision`), isolation, why, and where its prompt is.
+A table: step, agent type, isolation, why, and where its prompt is. No model is named: a subagent always runs the
+spawning session's own model.
 Only the agents listed may be used.
 
 ## 12. Report to the owner
 
-The final message, starting with `🤖  Model: GLM 5.3 (execution session)` and a `Time:` line from
+The final message, starting with `Execution session` and a `Time:` line from
 `date '+%H:%M:%S %d.%m.%Y'`:
 - a few plain sentences on what changed and what was proven;
 - the progress table (format in `EXECUTOR-BRIEF.md`);

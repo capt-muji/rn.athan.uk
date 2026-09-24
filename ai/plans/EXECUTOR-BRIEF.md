@@ -42,7 +42,8 @@ dictates rather than specifies, the dictation wins**, whatever the rest of this 
 the project's memory notes. Where they differ from this brief, this brief wins:
 - Use only the subagents the plan names, and invoke no skill the plan does not name, beyond the `athan-next` skill
   that chose this step.
-- Never pass `model` to a subagent: every subagent inherits GLM 5.3.
+- A subagent runs the SAME model as this session, always, for every task including reading an image (owner,
+  2026-09-24). Never reach a different model through a subagent.
 - Stop and ask as this brief says, although a memory note says to run without check-ins.
 - Never run `sleep` in the foreground. Start every long command in the background (the shell tool's `background`
   parameter), and wait for the notification that it finished. A background command may wait inside itself,
@@ -54,9 +55,10 @@ the project's memory notes. Where they differ from this brief, this brief wins:
 - Never create or edit anything in the harness's own configuration, under `~/.config/opencode/` or `~/.claude/`:
   memory notes, agents or settings. Record what you learn in the plan folder's `LOG.md`.
 
-**Show the model, always** (owner, 2026-09-15). Start every response with `🤖  Model: GLM 5.3 (execution session)`:
-the robot emoji and two spaces come first. Name the model every time you mention a subagent, in text, headings and
-tables: `Code Reviewer (GLM 5.3)`, `vision (GLM 5.3 Flash)`. The progress table has a Model column (section 6).
+**Never name a model** (owner, 2026-09-24, replacing the 2026-09-15 "show the model" rule). The harness chooses the
+model, and these pages are read by different models across the life of this build, so a model name dates the page
+and misleads the next reader. Write `Execution session` where a model name used to go, in responses, headings and
+tables alike. A subagent is named by its job, never by its model, because it always runs this session's own.
 
 **Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
 put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
@@ -228,7 +230,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
     - the commit sha and version;
     - the hook's last `Tests:` line and its coverage lines;
     - the break script's last line;
-    - the review verdict, the reviewer's model (GLM 5.3) and how many rounds it took;
+    - the review verdict and how many rounds it took;
     - the merge sha.
 
 ## 4a. Stopping part-way through a step
@@ -286,7 +288,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
   phone.
 - **Reading the screen.** `uiautomator dump` fails while the countdown animates. Use the logcat lines and alarm dumps
   the plan names. When the plan needs a screenshot read, take it with `devcheck.py shot <path>` and ask the
-  `vision (GLM 5.3 Flash)` subagent the plan's exact question. Never send a screenshot to the owner; describe what
+  subagent the plan's exact question. Never send a screenshot to the owner; describe what
   `vision` reported.
 - **Saving evidence.** Save the evidence where the plan says, under `~/athan-device-sweep/session<N>/`.
 - **Clean-up.** At the end, turn automatic time back on and leave the phone on the build the plan names.
@@ -295,14 +297,14 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 
 - **Style.** Plain, short English. No jargon without a one-line explanation. Never claim something the output did not
   show.
-- **Model and time lines.** The first line of every response is `🤖  Model: GLM 5.3 (execution session)`, and the second
+- **The time line.** The first line of every response is `Execution session`, and the second
   is `Time: ` followed by the output of `date '+%H:%M:%S %d.%m.%Y'`, run before writing the response.
 - **The progress table.** Every response ends with it, in this format:
 
-| Task | Model | What it checks | Why it matters | Outcome | Status |
-| --- | --- | --- | --- | --- | --- |
-| Step 1: <title> | GLM 5.3 | <one line> | <one line> | <result, with version> | ✅ done / 🔀 merged / 🚧 `<branch>` / ⏳ waiting / 👤 owner / ❌ stopped |
-| Step 1 review | Code Reviewer (GLM 5.3) | <one line> | <one line> | <verdict> | <status> |
+| Task | What it checks | Why it matters | Outcome | Status |
+| --- | --- | --- | --- | --- |
+| Step 1: <title> | <one line> | <one line> | <result, with version> | ✅ done / 🔀 merged / 🚧 `<branch>` / ⏳ waiting / 👤 owner / ❌ stopped |
+| Step 1 review | <one line> | <one line> | <verdict> | <status> |
 
   Then a line `**<done>/<total> done.**`, and a line naming each row of `ai/plans/README.md` still to run, with its
   status.

@@ -108,7 +108,7 @@ One session per run. Never carry on into the next row: the owner starts that wit
 ## 7. Your final reply: the handoff, four lines, nothing after it
 
 ```
-**Just done:** <Planning, Execution and Audit | the phases that ran>, session <n>, GLM 5.3. <one clause on what moved>
+**Just done:** <Planning, Execution and Audit | the phases that ran>, session <n>. <one clause on what moved>
 **Row:** <status now>, `uat-2` <pushed | holds N unpushed commits>
 **Up next:** <the phase or session that comes next, or what it is waiting on>
 **You type:** `athan-next`
@@ -124,12 +124,16 @@ else in this skill is unchanged.
 
 ## 9. This harness
 
-OpenCode on GLM 5.3, with GLM 5.3 Flash for reading images (2026-09-17). Where a brief names Claude Code, a launcher
-or an Opus model, this section replaces it:
+The harness chooses the model, and this repository never names one (owner, 2026-09-24): these pages are read by
+different models across the life of the build, so a model name dates the page. Where a brief names a model, a
+launcher or a specific product, this section replaces it:
 
-- Never pass a model to a subagent. Subagents inherit GLM 5.3.
-- Images go to the `vision` subagent, which reads them on GLM 5.3 Flash. Never guess what an image shows.
-- `claude-plan`, `claude-glm` and the `athan-next` command no longer exist. Never tell the owner to run them.
+- A subagent runs the SAME model as the session that spawns it, for every task including reading an image. Never
+  reach a different model through a subagent.
+- The session does the planning, the execution and the audit itself, looping on its own work until it is right. A
+  subagent is for parallel work or fresh eyes, never a way to hand the job off.
+- Images are read by a subagent or by the owner. Never guess what an image shows.
+- The old per-model launchers and the `athan-next` command no longer exist. Never tell the owner to run them.
 - Never read or write anything under `~/.claude/` or `~/.config/opencode/`.
 - A subagent that needs an isolated tree makes a scratch worktree with `git worktree add` under
   `~/athan-device-sweep/worktrees/<name>`, and removes it once its verdict is in.
