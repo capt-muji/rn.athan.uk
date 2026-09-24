@@ -117,19 +117,21 @@ export const validateReminderInterval = (value: number): boolean => {
  * Hours between automatic foreground notification refreshes
  * Notifications rescheduled when this interval elapses and app enters foreground
  *
- * The foreground layer is the FALLBACK: the 6-hour background task keeps the
- * window rolling on its own, and this gate only matters when that layer has been
- * starved (force-quit, new install).
+ * The foreground layer is the FALLBACK: the background task keeps the window
+ * rolling on its own, and this gate only matters when that layer has been
+ * starved (force-quit, OEM kill, reboot on a phone that suppressed the boot
+ * broadcast, new install).
  *
  * The window is two LIST days, not 48 hours, and the difference matters when
  * sizing this. `genNextXDays(2)` arms today and tomorrow, so the horizon is
  * "tomorrow's last prayer" — about 45h after an early-morning refresh, but only
  * about 18h in the winter worst case (a 23:50 refresh against Isha 17:41).
- * One successful run per ~18h is the real requirement; 12 hours gives one
- * guaranteed attempt inside it, not four. Owner decision 2026-09-02
- * (ADR-007 rev 3) — the cadence is unchanged, only the claim behind it.
+ *
+ * Shorter than the background interval on purpose: this gate costs one timestamp
+ * comparison and no OS scheduler, so nothing rations it, while every opened app
+ * is a free chance to notice alarms have been lost (ADR-007 rev 4).
  */
-export const NOTIFICATION_REFRESH_HOURS = 12;
+export const NOTIFICATION_REFRESH_HOURS = 2;
 
 // =============================================================================
 // BACKGROUND TASK CONFIGURATION
@@ -145,13 +147,16 @@ export const BACKGROUND_TASK_NAME = 'NOTIFICATION_REFRESH_TASK';
  * Hours between background task executions (minimum interval)
  * System may delay execution; this is a minimum, not exact timing
  *
- * PRIMARY layer: keeps the rolling window rolling unattended. The window is two
- * list days rather than 48 hours — about 18h in the winter worst case — so 6
- * hours gives roughly 3 attempts inside it, not 8. Leniency still matters: iOS
- * dasd rate-limits aggressive cadences, so longer intervals are far more likely
- * to execute on schedule (owner decision 2026-09-02, ADR-007 rev 3).
+ * PRIMARY layer: keeps the rolling window rolling unattended, and the only layer
+ * that can recover a phone whose alarms were lost while the app stays closed.
+ * That recovery ceiling is what sizes this, not the two-list-day window.
+ *
+ * dasd rate-limits aggressive cadences, but every deferral measured was at 15
+ * minutes or below and the XS verified 180 minutes delivering on schedule
+ * (ISSUES #8). `earliestBeginDate` is a floor rather than a request rate, so a
+ * shorter one cannot make iOS run the task less often (ADR-007 rev 4).
  */
-export const BACKGROUND_TASK_INTERVAL_HOURS = 6;
+export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
 
 /**
  * Background task minimum interval in MINUTES passed to expo-background-task
@@ -164,7 +169,7 @@ export const BACKGROUND_TASK_INTERVAL_HOURS = 6;
  * Resolution order:
  * - EXPO_PUBLIC_BG_INTERVAL_MINUTES env var (interval-ladder experiments)
  * - 15 minutes in development builds (fast iteration)
- * - BACKGROUND_TASK_INTERVAL_HOURS * 60 in production (6 hours)
+ * - BACKGROUND_TASK_INTERVAL_HOURS * 60 in production
  */
 /**
  * Lowest rung the interval ladder actually uses, and a policy floor rather than a platform one.
@@ -185,8 +190,8 @@ const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
 // so Metro folds the branch away.
 //
 // Integer, not merely finite: iOS reads this option with `as? Int`, so a fractional value
-// fails the cast, falls back to the 12-hour default and disagrees with Android, which
-// truncates. 20.5 would mean 20 minutes on one platform and 12 hours on the other, silently —
+// fails the cast, falls back to its own default and disagrees with Android, which
+// truncates. 20.5 would mean 20 minutes on one platform and hours on the other, silently —
 // the same units-mismatch class as ISSUES.md #8 that the range check was added to close.
 const isEnvIntervalValid =
   process.env.EXPO_PUBLIC_ENV !== 'prod' &&

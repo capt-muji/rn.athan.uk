@@ -89,7 +89,7 @@ const settleAll = async <T>(work: Promise<T>[]): Promise<T[]> => {
 };
 
 /**
- * Reopens the twelve-hour gate, so the next foreground runs a full reschedule and its sweep.
+ * Reopens the refresh gate, so the next foreground runs a full reschedule and its sweep.
  *
  * Through the atom, never the key: `stores/storage.ts`'s THE RULE. Failing costs only that one reschedule, so it is
  * logged and swallowed rather than taking the operation down with it.
@@ -1495,7 +1495,7 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // treating it as an empty cache would stop the readable day beside it from
   // being armed. The night rows' extra list day does not count: its rows need
   // tomorrow's Magrib, so with only that day stored nothing can be armed, and
-  // stamping the gate would silence the next twelve hours.
+  // stamping the gate would silence the next whole gate.
   const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
   if (!armedListDays.some((date) => Database.getPrayerByDateString(date))) {
     logger.warn('NOTIFICATION: No prayer data for today or tomorrow, skipping reschedule so nothing is cancelled', {
@@ -1608,15 +1608,16 @@ export const rescheduleAllNotifications = async () => {
  * }, [appState]);
  */
 /**
- * Reopens the 12-hour refresh gate on an Android cold launch.
+ * Reopens the refresh gate on an Android cold launch.
  *
- * Android's force-stop cancels every alarm the app has armed while leaving
- * `lastNotificationScheduleAtom` untouched, so `refreshNotifications` sees a
- * recent timestamp and skips: the app stays silent for up to
- * `NOTIFICATION_REFRESH_HOURS` with nothing armed at all. OEM battery managers
- * force-stop background apps by policy, so this is not limited to a user doing
- * it deliberately. Observed on the OnePlus 3T: one armed Fajr alert, force-stop,
- * then three cold launches that never restored it.
+ * Android's force-stop cancels the alarms the app has armed, and a reboot clears
+ * them all, while `lastNotificationScheduleAtom` survives both. So
+ * `refreshNotifications` sees a recent timestamp and skips: the app stays silent
+ * for up to `NOTIFICATION_REFRESH_HOURS` with nothing armed at all. OEM battery
+ * managers force-stop background apps by policy, so this is not limited to a user
+ * doing it deliberately. Observed on the OnePlus 3T (one armed Fajr alert,
+ * force-stop, three cold launches that never restored it) and lived on a user's
+ * 8T, which lost Magrib and Isha across 18 app opens after a reboot (ISSUES #36).
  *
  * Detection is not available. `getAllScheduledNotificationsAsync` answers from
  * `SharedPreferencesNotificationsStore`, which a force-stop does not clear, and
@@ -1650,7 +1651,7 @@ export const refreshNotifications = async () => {
 
     // The same reschedule, narrowed to the prayers whose bell and alarms may disagree: its empty-cache bail, its
     // day-change check and its sweep all still run, and one prayer costs about a tenth of the whole pass (owner,
-    // 2026-09-16). The twelve-hour gate keeps its own meaning and is not stamped here
+    // 2026-09-16). The refresh gate keeps its own meaning and is not stamped here
     logger.info('NOTIFICATION: Putting right the prayers the phone refused, instead of a full reschedule', { marked });
 
     return withSchedulingLock(async () => {
@@ -1668,9 +1669,9 @@ export const refreshNotifications = async () => {
       // Foreground refresh gate — defer the widget push past the paint
       const rescheduled = await _rescheduleAllNotifications({ deferWidgetRefresh: true });
 
-      // Only a real reschedule closes the 12-hour gate. Stamping after a bail
-      // would turn one moment of missing data into half a day of silence: the
-      // app would believe it was up to date while nothing was armed.
+      // Only a real reschedule closes the gate. Stamping after a bail would turn one
+      // moment of missing data into a whole gate of silence: the app would believe it
+      // was up to date while nothing was armed.
       if (!rescheduled) {
         logger.warn('NOTIFICATION: Refresh skipped, timestamp not stamped — the next foreground will retry');
         return;
@@ -1699,7 +1700,7 @@ export const refreshNotifications = async () => {
  * Reschedule notifications from background task
  *
  * Unlike foreground refresh, this does NOT check shouldRescheduleNotifications()
- * because the OS controls background task timing (~6 hours minimum).
+ * because the OS controls background task timing.
  * We always reschedule when the background task runs for consistency.
  *
  * Exported for use by the background task defined in device/tasks.ts
@@ -1752,7 +1753,7 @@ export const rescheduleAllNotificationsFromBackground = async () => {
  * Registers the background task for notification refresh
  *
  * Should be called during app initialization after notification permissions are granted.
- * The task will run approximately every 6 hours (system-controlled).
+ * The task runs no sooner than BACKGROUND_TASK_INTERVAL_HOURS apart (system-controlled).
  *
  * Platform notes:
  * - iOS: Requires physical device (doesn't work on simulators)

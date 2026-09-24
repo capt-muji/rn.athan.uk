@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useEffect, useRef } from 'react';
-import { Platform, StyleSheet, type ViewStyle } from 'react-native';
+import { Platform, StyleSheet, type ViewProps } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
 import { getActivePillOpacity, getActivePillRow } from '@/components/prayer/activePill';
@@ -59,7 +59,7 @@ export default function ActiveBackground({ type }: Props) {
         : SHADOW_ANDROID.prayerExtras
       : undefined;
 
-  const computedStyles: ViewStyle = {
+  const computedStyles: ViewProps['style'] = {
     ...shadowStyle,
     shadowColor,
     elevation: 0, // Must be 0 to stay below Prayer components on Android

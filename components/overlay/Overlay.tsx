@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect, useLayoutEffect, useState } from 'react';
-import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, type ViewProps } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
@@ -68,7 +68,7 @@ export default function Overlay() {
   }, [overlay.isOn]);
 
   // box-none: catchers catch, the row exempt falls through to the real row
-  const computedStyleContainer: ViewStyle = {
+  const computedStyleContainer: ViewProps['style'] = {
     pointerEvents: overlay.isOn ? 'box-none' : 'none',
     display: visible ? 'flex' : 'none',
   };
@@ -92,7 +92,7 @@ export default function Overlay() {
   const INFO_BOX_HEIGHT = 300;
 
   // Info box positioned below prayer row (for first 3 items)
-  const computedStyleInfoBoxBelow: ViewStyle = {
+  const computedStyleInfoBoxBelow: ViewProps['style'] = {
     top: listMeasurements.pageY + visualRowIndex * STYLES.prayer.height + STYLES.prayer.height + SPACING.sm,
     left: listMeasurements.pageX,
     width: listMeasurements.width,
@@ -100,7 +100,7 @@ export default function Overlay() {
   };
 
   // Info box positioned above prayer row (for items 4+)
-  const computedStyleInfoBoxAbove: ViewStyle = {
+  const computedStyleInfoBoxAbove: ViewProps['style'] = {
     top: listMeasurements.pageY + visualRowIndex * STYLES.prayer.height - INFO_BOX_HEIGHT - SPACING.sm,
     left: listMeasurements.pageX,
     width: listMeasurements.width,

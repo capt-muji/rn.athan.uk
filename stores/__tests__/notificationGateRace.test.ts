@@ -2,7 +2,7 @@
  * A download landing while a reschedule is running (data-path review, the gate race)
  *
  * The reschedule reads the days before it awaits the OS, and the download's reopen of the 12-hour gate lands while
- * it waits. Stamped afterwards, the gate would hide the days that landed for twelve hours: the resume path refreshes
+ * it waits. Stamped afterwards, the gate would hide the days that landed until it reopens: the resume path refreshes
  * before its sync, and nothing refreshes after it. Runs the real sync(), notifications store, database and prayer
  * builder; the network, the countdown tickers, the widgets, the logger, the build config and the upgrade check are
  * stubbed.

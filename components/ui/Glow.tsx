@@ -1,4 +1,4 @@
-import { StyleSheet, type ViewStyle } from 'react-native';
+import { StyleSheet, type ViewProps } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 import Svg, { Circle, RadialGradient, Stop } from 'react-native-svg';
 
@@ -8,7 +8,7 @@ import { GLOW, OVERLAY, SIZE } from '@/shared/constants';
 const AnimatedSvg = Reanimated.createAnimatedComponent(Svg);
 
 interface GlowProps {
-  style: ViewStyle;
+  style: ViewProps['style'];
   color: string;
   baseOpacity?: number;
   size?: number;
