@@ -1,0 +1,6 @@
+// VOLUME & PAYLOAD INVARIANTS (16-day span, as pushed in production)
+// =============================================================================
+
+describe('volume and payload invariants', () => {
+  const SPAN_DAYS = 16;
+  const makeSpanSequence = (): PrayerSequence => {
