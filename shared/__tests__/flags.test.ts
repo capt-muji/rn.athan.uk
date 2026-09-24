@@ -205,8 +205,11 @@ describe('app config android widget resolution', () => {
       // kinds ARE the size choices.
       expect(android.resizeMode).toBe('none');
       expect(android.initialLayout).toBe('./widgets/PrayerWidget');
-      expect(android.minWidth).toBe(/Medium/.test(String(widget.name)) ? 310 : 160);
-      expect(android.minHeight).toBe(110);
+      // The small is square by declaration and the medium spans a phone's full
+      // width (owner 2026-09-24); the taller medium is what lets its list
+      // approach the iOS card's vertical rhythm
+      expect(android.minWidth).toBe(/Medium/.test(String(widget.name)) ? 250 : 110);
+      expect(android.minHeight).toBe(/Medium/.test(String(widget.name)) ? 150 : 110);
       expect(android.targetCellWidth).toBeUndefined();
       expect(android.targetCellHeight).toBeUndefined();
     }
