@@ -1,0 +1,12 @@
+// Jetpack names enter unaliased on purpose: the Android widget runtime
+// injects @expo/ui/jetpack-compose's exports as globals under their
+// canonical names, and the serialized layout body's identifiers resolve
+// against those globals — an alias like `Text as Text` compiles
+// app-side but is undefined in the widget runtime (caught on the 3T).
+// Text/Image/Spacer are shared spellings: the swift-ui globals answer
+// them on iOS, the jetpack globals on Android, and the body never needs
+// to know which.
+import { Box, Column, Row } from '@expo/ui/jetpack-compose';
+// Canonical modifier names, same rule as the components above: the Android
+// runtime's globals answer these spellings. padding is the one collision
+// with swift-ui's modifier of the same name, so the Android calls go

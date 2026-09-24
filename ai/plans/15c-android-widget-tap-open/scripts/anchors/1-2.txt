@@ -1,0 +1,13 @@
+  const ACard = (footer: string | null, content: ReactNode) => (
+    <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[fillMaxSize()]}>
+      <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
+      <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(13, 13, 13, FOOTER_BOTTOM_PAD + 18)]}>
+        {content}
+      </Box>
+      {footer === null ? null : (
+        <Row modifiers={[height(FOOTER_BOTTOM_PAD + 18), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]} verticalAlignment='center'>
+          {AText(footer, 12, 'normal', palette.footer)}
+        </Row>
+      )}
+    </Box>
+  );
