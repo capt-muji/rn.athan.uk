@@ -48,11 +48,11 @@ def css(color: str) -> tuple:
 # cards, Android renders these bitmaps over the wallpaper (owner ruling
 # 2026-09-19), so alpha 1.0 keeps the wallpaper from showing through.
 #
-# CARD_DARK is iOS's rgba(2, 13, 38, 0.95) over black, which is what the iPhone
-# actually shows on a dark wallpaper (owner 2026-09-24). CARD_LIGHT keeps the
-# alpha dropped instead: over black it would read grey.
+# Both cards are fully opaque on both platforms now (owner 2026-09-24: "we
+# don't want to see through the colour at all"), so these literals are the
+# layout's own, byte for byte, with no compositing in between.
 CARD_LIGHT = css("#fcfcfe")
-CARD_DARK = css("#020c24")
+CARD_DARK = css("#101a3d")
 
 PILLS = {
     "standard_light": {

@@ -61,12 +61,10 @@ describe('android widget assets', () => {
     const generator = readFileSync(GENERATOR_PATH, 'utf8');
     const layout = readFileSync(LAYOUT_PATH, 'utf8');
 
-    // Android cards are OPAQUE (owner ruling 2026-09-19): the iOS palette's
-    // translucent literals below are deliberately NOT reused, so the exact
-    // opaque forms are pinned instead of the subset rule. Dark is iOS's
-    // rgba(2, 13, 38, 0.95) over black, to match the iPhone (owner 2026-09-24).
+    // Both platforms are opaque now (owner 2026-09-24), so the generator's
+    // card literals ARE the layout's and the subset rule covers them.
     expect(generator).toContain('CARD_LIGHT = css("#fcfcfe")');
-    expect(generator).toContain('CARD_DARK = css("#020c24")');
+    expect(generator).toContain('CARD_DARK = css("#101a3d")');
     expect(generator).toContain('CARD_RADIUS_PT = 13');
     // Shadow-free and exactly the row height, which now equals iOS's 23
     // (owner 2026-09-24: Android mirrors iOS value for value).
@@ -80,9 +78,7 @@ describe('android widget assets', () => {
     const generatorColors = [...collectColorLiterals(generator).map((color) => color.replace(/\s/g, '').toLowerCase())];
     expect(generatorColors.length).toBeGreaterThan(10);
 
-    const outside = generatorColors.filter(
-      (color) => !layoutColors.has(color) && color !== '#fcfcfe' && color !== '#020c24'
-    );
+    const outside = generatorColors.filter((color) => !layoutColors.has(color));
     expect(outside).toEqual([]);
   });
 
