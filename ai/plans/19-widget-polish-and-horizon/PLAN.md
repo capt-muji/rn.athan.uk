@@ -895,7 +895,7 @@ Reply merge or fix first.
    Verdict handling as step 1, part 9.
 
 10. **Merge.** `git checkout uat-2 && git merge --no-ff fix/19-horizon-seven-days -m "Merge fix/19-horizon-seven-days into uat-2: the widget horizon drops to 7 days, reviewed"`
-11. **Done when:** the timeline suite reports `Tests:       53 passed, 53 total`; `bash $TMPDIR/breaks-19-3.sh` ends
+11. **Done when:** the timeline suite reports `Tests:       52 passed, 52 total`; `bash $TMPDIR/breaks-19-3.sh` ends
     `ALL AS EXPECTED: 1`.
 
 ### Step 4: The iOS widgets flag ships on
@@ -925,6 +925,15 @@ Reply merge or fix first.
 
    In `.env.example`, `EXPO_PUBLIC_WIDGETS=0` becomes `EXPO_PUBLIC_WIDGETS=1`. `EXPO_PUBLIC_ANDROID_WIDGETS` is NOT
    touched: the Android flag's flip condition is the owner judging a release, which this session does not do.
+
+   **What that line reaches, checked while planning.** The local build scripts derive their `.env` from the committed
+   `.env.example` (`build-prod.zsh` and `build-prod-widgets.zsh` both do
+   `grep -vE '^EXPO_PUBLIC_(ENV|API_KEY)=' $WT/.env.example > $WT/.env`), so after this step every local build carries
+   `EXPO_PUBLIC_WIDGETS=1`. On iOS that is the point. On Android it is inert: an android-only config resolution is
+   ruled by `EXPO_PUBLIC_ANDROID_WIDGETS` alone, which `shared/__tests__/flags.test.ts` pins with
+   `keeps the ios resolution ruled by the ios flag only` and
+   `strips expo-widgets on the android resolution when the android flag is off`. This is why step 5a's Android build
+   runs BEFORE this step and is unaffected either way.
 
    In `shared/flags.ts`, the `widgets` JSDoc is rewritten. The parse expression itself does NOT change. The new JSDoc
    must say, in the file's existing voice:
