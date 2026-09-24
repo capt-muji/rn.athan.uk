@@ -1,0 +1,13 @@
+  it('keeps the serialized payload well under UserDefaults comfort size', () => {
+    const sequence = makeSpanSequence();
+    const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
+
+    // The medium widget's day list (six rows + activeIndex per entry) is the
+    // payload driver. A 7-day horizon measures ~17KB across 40 entries,
+    // trivial for the app-group UserDefaults plist (parsed once per widget
+    // reload), so the comfort budget is 200KB. That budget is also the only
+    // automatic warning that the horizon has grown too far: raise the horizon,
+    // never this number.
+    const payloadSize = JSON.stringify(entries).length;
+    expect(payloadSize).toBeLessThan(200_000);
+  });
