@@ -203,7 +203,7 @@ describe('palette literals', () => {
     // shadow. The orb glows are gone (owner ruling 2026-09-20).
     const anchors = [
       // Light palette
-      '#fcfcfe',
+      'rgba(252, 252, 254, 0.92)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
@@ -217,7 +217,7 @@ describe('palette literals', () => {
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
       // Dark palette — Gradient Deep (owner pick 2026-09-20)
-      '#101a3d', // card — every dark size
+      'rgba(2, 13, 38, 0.95)', // card — every dark size
       '#ffffff', // hero / passed rows
       '#cad8ed', // active row text — standard, white + hint of slate blue
       '#ffeaf4', // active row text — extras, white + hint of pink
@@ -251,7 +251,7 @@ describe('palette literals', () => {
       'rgba(255, 255, 255, 0.6)',
       'rgba(0, 0, 0, 0)',
       // Home widget — light Cotton Candy
-      '#fcfcfe',
+      'rgba(252, 252, 254, 0.92)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
@@ -266,7 +266,7 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.32)',
       // Home widget — dark Gradient Deep (owner pick 2026-09-20: the app
       // screen gradient's start, deepened; whispers from the app's muted text)
-      '#101a3d',
+      'rgba(2, 13, 38, 0.95)',
       '#ff69b4',
       'rgba(138, 169, 214, 0.54)',
       'rgba(138, 169, 214, 0.405)',
