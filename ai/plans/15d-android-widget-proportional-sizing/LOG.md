@@ -86,3 +86,48 @@ every substitution would report NOT CAUGHT regardless of correctness, which woul
   lost push usually renders identically. Recorded for the audit, not fixed here.
 
 One comment was tightened: it explained the same point the file header already made, six lines above.
+
+## Step 4: device proof
+
+**The mock build was the wrong build, and the plan said so wrongly.** Section 7 specified
+`build-mock-widgets.zsh`, which installs under the `com.mugtaba.athan.fleettest` package. That build installed and
+ran (`BUILD-MOCK OK`, versionName 1.27.341, snapshots pushed for Standard and Extras), but `dumpsys appwidget`
+showed every PLACED widget on the 3T belongs to `com.mugtaba.athan`, the owner's production package, with
+`host.callbacks=null` on the fleettest providers. A widget that is not placed is never measured, so the native tick
+has no `OPTION_APPWIDGET_MIN_WIDTH` to read and the proof cannot run.
+
+The proof therefore uses `~/athan-device-sweep/session15/bin/build-prod-widgets.zsh`, which builds the real package
+with `EXPO_PUBLIC_ANDROID_WIDGETS=1`, so `adb install -r` upgrades in place and the owner's existing widget
+placements carry over. Both phones already run production 1.27.338, so one APK serves both.
+
+The plan's section 7 is corrected to name the production script.
+
+### The readings
+
+Production build 1.27.342 (`BUILD-PROD OK`), installed with `adb install -r` on both phones, placements kept.
+
+**Oppo Find X8, the phone that showed the bug.** Its two medium widgets render at 972px, 90% of the screen width.
+
+| Density | Widget dp | Inner | Hero | List | Name box | Row text | Names read |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 480 (the owner's override) | 324 | 291 | 143 | 148 | 69 | 11sp | all 11 complete |
+| 560 (native, the narrowest case) | 278 | 245 | 120 | 125 | 58 | 10sp | all 11 complete |
+
+At 480: every name starts at x 559-560, one clean origin, times right-aligned at x 897-899, pills spanning the full
+list block, a 38px gutter. At 560: every name starts at x 555-556, times right-aligned at x 893-895, 28px gutter,
+113px minimum name-to-time gap, no ellipsis and no wrapping. `Sunrise` reads `Sunrise`, not `se`; `Dhuhr` reads
+`Dhuhr`, not `ar`; `Magrib` reads `Magrib`, not `ib`; `Midnight` reads `Midnight`, not `ight`; `Suhoor` reads
+`Suhoor`, not `or`. Both schedules, both themes.
+
+The 560 reading is the one that matters most: it is the narrowest configuration either phone can produce, and it is
+where the old fixed 332dp of columns overflowed hardest.
+
+**OnePlus 3T: no medium is on a visible page.** All eight kinds are registered and bound to the launcher, and the
+four medium ids render (`views=RemoteViews@...`), but every widget the owner has placed on a visible page is a SMALL
+kind, which is hero-only and has no list to clip. The 3T therefore cannot demonstrate the medium either way. What it
+does prove is the absence of a regression: the small kinds render correctly on 1.27.342, and the native refresh
+chain fires and re-arms on the minute (10:42:00.500 then 10:43:00.500), with the countdown ticking live across
+captures (2h 14m then 2h 12m).
+
+Automatic time is ON on both phones, the X8's 480 display-size override is restored, and its mobile data is still
+off: every device command ran over USB, and the one network fetch used Wi-Fi (`monkey` reported `0ms mobile`).

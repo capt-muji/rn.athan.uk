@@ -299,7 +299,7 @@ The spike's code was deleted and does not become the plan.
 - [x] Step 1: DONE in 609d28be (amended), merged 56e51a40
 - [x] Step 2: folded into step 1, DONE with it
 - [x] Step 3: DONE in 170a5dc0, merged c833df34
-- [ ] Step 4: Device proof on both phones, three densities (specified)
+- [x] Step 4: DONE, proven on the Find X8 at 480 and 560 density
 
 **Correction, made while executing 2026-09-24.** The plan originally claimed step 1 could land before step 2 because
 the layout reads the field "through an optional access that type-checks before the field exists". That is false:
@@ -815,14 +815,19 @@ EXPO_ANDROID_SUFFIX=fleettest EXPO_NAME_SUFFIX=FleetTest npx expo prebuild -p an
 Bump the version FIRST, then prebuild, then build: `expo run:*` never re-syncs an existing native directory, and
 violating that order once shipped code stamped with the wrong version (`ai/AGENTS.md`).
 
-Build with the mock script, which takes about 4 minutes, run in the background with its log:
+Build the PRODUCTION package, not a mock one, and run it in the background with its log:
 
 ```
-zsh ~/athan-device-sweep/session3/bin/build-mock.zsh uat-2 mocks/simple.ts ~/athan-device-sweep/session15d/athan-15d.apk
+zsh ~/athan-device-sweep/session15/bin/build-prod-widgets.zsh uat-2 ~/athan-device-sweep/session15d/athan-15d-prod.apk
 ```
 
-Success ends `BUILD-MOCK OK`. `EXPO_PUBLIC_ANDROID_WIDGETS=1` must be set for the build, or no widgets appear. If the
-script prints `FAILED`, STOP and quote the line.
+Success ends `BUILD-PROD OK`. That script sets `EXPO_PUBLIC_ANDROID_WIDGETS=1` itself; without the flag no widgets
+appear at all. If the script prints `FAILED`, STOP and quote the line.
+
+**It must be the production package.** A mock build installs under `com.mugtaba.athan.fleettest`, and every widget
+the owner has PLACED belongs to `com.mugtaba.athan`. An unplaced provider is never measured by the launcher, so the
+native tick reads no width and the proof cannot run. `adb install -r` on the production package upgrades in place
+and keeps both the app's data and the existing placements. This was found by doing it the wrong way first.
 
 Install with `adb -s <serial> install -r <apk>`, which keeps the app's data. On the X8, ColorOS shows an
 install-confirmation dialog for every sideload and `adb install` returns only after it is confirmed: the button reads
