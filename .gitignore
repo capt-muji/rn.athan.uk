@@ -42,7 +42,3 @@ idb-frameworks/
 idb-test-bundles/
 .codegraph/
 
-# auto-handoff plugin's transient beacons (rewritten on every handoff write;
-# one-line JSON that biome would reformat). Docs in handoffs/ stay committable.
-handoffs/.status.json
-.handoffs/
