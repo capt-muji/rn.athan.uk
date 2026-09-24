@@ -5,9 +5,9 @@ job: decide, from evidence, whether the result is exactly what the plan asked fo
 Then fix whatever is not, yourself, and push once it is right. Work is never handed back to the executor (owner,
 2026-09-16). You are the last check between the executor's work and `origin`, and the last step of the session.
 
-**Show the model, always** (owner, 2026-09-15). Start every response with `🤖  Model: GLM 5.3 (audit session)`:
-the robot emoji and two spaces come first. Name the model every time you mention a subagent, in text, headings and
-tables, such as `Code Reviewer (GLM 5.3)`. Give every progress table a Model column.
+**Never name a model** (owner, 2026-09-24). The harness chooses the model, and these pages are read by different
+models across the life of this build. Start every response with `Audit session`. Name a subagent by its job, never
+by its model: it always runs this session's own. No progress table carries a Model column.
 
 **Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
 put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
