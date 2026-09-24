@@ -1,0 +1,3 @@
+    const ROW_NAME_WIDTH = Math.round(REFERENCE_NAME_WIDTH * scale);
+    const ROW_TIME_WIDTH = Math.round(REFERENCE_TIME_WIDTH * scale);
+    // Glance has no autoshrink, so text scales with its box or "Last Third"
