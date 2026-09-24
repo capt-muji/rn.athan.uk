@@ -267,3 +267,30 @@ last two are the Maghrib and Isha that started this investigation.
 
 Left for the owner to do: the app has no preferences set, because the clean install wiped
 MMKV. The user re-picks their alerts, sound and reminders.
+
+## Two blockers cleared to get a green push (1.27.327, 1.27.328)
+
+The pre-push hook runs `yarn validate`, and it was already failing on `uat-2` before this
+work started. Both causes were pre-existing and neither belonged to the notification fix,
+so each landed as its own commit.
+
+**Types (1.27.327).** Under React Native 0.88 the package root resolves to
+`types_generated`, where `ViewStyle` is the loose authoring shape and carries the web-only
+`position: 'fixed' | 'sticky'`. `View` accepts a narrower internal type, so five components
+annotating computed styles or style props as `ViewStyle` were compile errors: 8 across
+`app/Screen.tsx`, `components/overlay/Overlay.tsx`, `components/prayer/ActiveBackground.tsx`,
+`components/prayer/Explanation.tsx` and `components/ui/Glow.tsx`.
+
+The fix is `ViewProps['style']`. RN's own doc comment recommends `ViewStyleProp`, but that
+type is declared and never re-exported from the package root, so it cannot be imported;
+`StyleProp<ViewStyle>` fails for the same reason `ViewStyle` does. Both were tried against
+the compiler rather than reasoned about, and a scratch probe file confirmed
+`ViewProps['style']` before any component was touched.
+
+**Beacon (1.27.328).** The auto-handoff plugin moved its transient status file from
+`handoffs/.status.json` to `.handoffs/.status/<id>.json`. The existing ignore line no
+longer matched, so biome kept failing on a one-line JSON nobody authors by hand.
+
+`yarn validate` now passes end to end for the first time this session: tsc clean, biome
+clean, 169 suites, 4620 tests, 100% statements, branches, functions and lines. Branch
+pushed with the hook running, not bypassed.
