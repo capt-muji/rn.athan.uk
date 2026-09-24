@@ -183,12 +183,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // lists center between equal Spacers (see the list column below). The
   // corner radius keeps the app's pill-to-row proportion.
   const ROW_HEIGHT = 23;
-  // Android rows sit exactly as tall as the active pill (24dp), so every
-  // slot in the list is uniform, the pill slot EQUALS the row slot (no
-  // overhang, no off-grid stretch: a 1px row-text offset the owner can see)
-  // and the air comes from the row being taller than its 13sp text; iOS
-  // keeps its 22pt rows - the owner's reference look
-  const A_ROW_HEIGHT = 24;
+  // Matches ROW_HEIGHT: the pill slot still equals the row slot, so the list
+  // stays uniform (owner ruling 2026-09-20) while reading as iOS does.
+  const A_ROW_HEIGHT = ROW_HEIGHT;
   const ROW_TEXT_SIZE = 13;
   const ROW_CORNER_RADIUS = 6;
   // The iOS medium's list block, squeezed ~10% (owner ruling 2026-09-20):
@@ -199,9 +196,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const ANDROID_MEDIUM_MIN_WIDTH = 310;
   const CARD_PAD_START = 13;
   const CARD_PAD_END = 20;
-  // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
-  // one bottom offset, both sizes, both themes, both schedules.
-  const FOOTER_BOTTOM_PAD = 16;
+  // iOS pads its card 13 all round; the extra 3 existed to lift the Android
+  // footer clear of its row, which the taller footer row now does on its own.
+  const FOOTER_BOTTOM_PAD = 13;
   // The pill matches its row exactly (owner ruling 2026-09-20, replacing
   // the 2026-09-19 overhang): same height as the row, no overhang —
   // uniform list slots, both schedules.
@@ -217,9 +214,14 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const REFERENCE_NAME_WIDTH = 82;
   const REFERENCE_TIME_WIDTH = 54;
   const ROW_TEXT_MIN_SIZE = 10;
-  // The pill used to span the column, dumping all the slack right of the times;
-  // 12 is the left inset the owner approved, now mirrored (owner 2026-09-24).
-  const ROW_GUTTER = 12;
+  // Android mirrors iOS value for value (owner 2026-09-24: "absolutely
+  // everything should be identical"), so these read off the swift-ui branch
+  // above: its row gutter is 10 inside a list inset 4, and its trio is one
+  // VStack spacing. Only the shadows and the letter spacing cannot follow, both
+  // beyond Glance.
+  const ROW_GUTTER = 14;
+  const TRIO_SPACING = 6;
+  const HERO_TEXT_SIZE = 22;
 
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
@@ -281,7 +283,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           <Row
             modifiers={[height(FOOTER_BOTTOM_PAD + 18), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]}
             verticalAlignment='center'>
-            {AText(footer, 12, 'normal', palette.footer)}
+            {AText(footer, 12, '600', palette.footer)}
           </Row>
         )}
       </Box>
@@ -368,9 +370,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const trio = (
       <Column horizontalAlignment='center'>
         {AText(tracked(next.name.toUpperCase()), 14, 'bold', palette.eyebrow)}
-        <Spacer modifiers={[height(2)]} />
-        {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
-        <Spacer modifiers={[height(6)]} />
+        <Spacer modifiers={[height(TRIO_SPACING)]} />
+        {AText(ALabel(next.epochMs, nowMs), HERO_TEXT_SIZE, 'bold', palette.hero)}
+        <Spacer modifiers={[height(TRIO_SPACING)]} />
         {AText(next.time, 13, 'normal', palette.secondary)}
       </Column>
     );
@@ -443,7 +445,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
               {trio}
             </Box>
-            {AText(footer, 12, 'normal', palette.footer)}
+            {AText(footer, 12, '600', palette.footer)}
           </Box>
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
