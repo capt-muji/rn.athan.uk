@@ -184,6 +184,9 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
 - **Next**: an upstream issue or PR asking for the constraint to be opt-out. Patching the
   constraint inside `node_modules` is rejected: invisible to the next reader and gone on the
   next install.
+- **Full write-up**: `ai/features/reboot-rearm/ISSUE-37-NETWORK-CONSTRAINT.md` — the exact
+  library lines, the measurements, why #36 is unrelated, four options with trade-offs, the
+  open questions for a debugging session and the repro commands.
 
 ---
 
