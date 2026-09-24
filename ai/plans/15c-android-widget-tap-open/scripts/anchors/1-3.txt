@@ -1,0 +1,4 @@
+    return (
+      <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
+        <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
+        <Row modifiers={[fillMaxSize(), APad(CARD_PAD_START, 13, CARD_PAD_END, FOOTER_BOTTOM_PAD)]}>
