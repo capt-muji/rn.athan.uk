@@ -190,3 +190,4 @@ One line each; a session's row moves here when it closes. Full detail is in git 
 - 12. `SDK58-PROGRAMME.md` §12 — CLOSED — SDK 58 beta alarmClock wave
 - 13. `SDK58-PROGRAMME.md` §13 — CLOSED — agent CLI and dev-launcher tooling
 - 15c. `android-widget-tap-open.md` — CLOSED — tapping an Android widget opens the app
+- 17. `SDK58-PROGRAMME.md` §17 — CLOSED — widget horizon 14 to 30 days, a year measured and ruled out
