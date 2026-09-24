@@ -122,3 +122,50 @@ Widget taps do not open the app, confirmed by the owner on BOTH the 3T and the X
 That is queue row 15c (`NOT PLANNED`) and AGENTS.md already records the likely cause:
 expo-widgets routes taps for layout buttons only. It is not part of this rendering
 bug and should not be folded into it.
+
+## Fixed: the medium sizes itself from the granted width (session 15d, 2026-09-24)
+
+The medium composition no longer holds widths. It holds proportions, taken against the width
+the launcher actually granted, which the native refresh tick stamps into each kind's props from
+`OPTION_APPWIDGET_MIN_WIDTH`. Measured on the X8 at 1.27.342:
+
+| Density | Widget | Inner | Hero | List | Name box | Row text | Names |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 480 (user override) | 324dp | 291 | 143 | 148 | 69 | 11sp | all 11 complete |
+| 560 (native) | 278dp | 245 | 120 | 125 | 58 | 10sp | all 11 complete |
+
+At both densities every name shares one left origin (x 559-560 and x 555-556), the times stay
+right-aligned to within 2px, the pill spans the full list block, and nothing ellipsizes or wraps.
+`Sunrise` is no longer `se`, `Magrib` no longer `ib`, `Midnight` no longer `ight`.
+
+### Why neither Glance proportional primitive was used
+
+`expo-widgets` 58.0.3 cannot reach either. Its Glance converter maps `fillMaxWidth(fraction)` to
+a bare `GlanceModifier.fillMaxWidth()`, discarding the `fraction` field that `@expo/ui`'s
+`FillMaxWidthParams` carries, and its `when` has no `weight` case, so `weight()` falls through to
+`else -> null` and becomes a no-op
+(`node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt`,
+lines 400 to 421).
+
+That is also the real cause of the failure recorded in `widgets/PrayerWidget.tsx`'s old comment,
+where a `fillMaxWidth` fraction "took the full card and squeezed the day list to zero width" on
+the 3T. The fraction was dropped, so 0.5 became 1.0. Session 15b read it as a Glance quirk and
+pinned the widths, which is how the fixed dp arrived. A candidate for an upstream PR; not raised
+by this session.
+
+### Two things the fix has to keep doing
+
+**Text scales with its box.** Glance has no autoshrink, so a name box narrowed by a tight grant
+would clip `Last Third` at a fixed 13sp however wide the box arithmetic got. The row text is
+`13 * scale`, floored at 10sp. The 560dpi reading above is the proof: 10sp text in a 58dp box.
+
+**The stamp is re-read, not written once.** A JS push carries no grant, so a pushed snapshot
+renders at the declared 310dp minimum until the next minute tick restamps it. That is a correct,
+uncropped card sitting narrow for at most 60 seconds, never a broken one.
+
+### This was never an X8 defect
+
+The widget's granted width falls below what a fixed layout assumes whenever the launcher's grid
+is narrower than the one the constants were tuned on, and a user can cause that on any phone by
+re-columning their home screen. The proportional layout holds at every width measured, down to
+the 258dp a 6-column grid yields on the X8 at native density.
