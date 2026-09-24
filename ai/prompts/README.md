@@ -23,9 +23,9 @@ changes to DONE only when its plan is audited, or when its plan row is OWNER-LED
 says it is finished. The live programme, its status table, the prompts the owner types and the
 SDK 58 ruling log live in `ai/plans/README.md` and `ai/plans/SDK58-PROGRAMME.md`; items waiting
 on the owner are that file's "Waiting on the owner, not yet sessions" list. (The
-planning/execution/audit split was created 2026-09-15 to spare the owner's Claude allowance;
-since 2026-09-17 every job runs in OpenCode on GLM 5.3, and the old Claude/GLM model routing is
-history — "a session now says which job it is doing rather than which model".)
+planning/execution/audit split was created 2026-09-15 to spare the owner's model allowance; the
+harness chooses the model now and no page names one, so "a session says which job it is doing
+rather than which model".)
 
 ## Standing rulings from finished sessions
 
