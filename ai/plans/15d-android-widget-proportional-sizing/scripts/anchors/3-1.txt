@@ -1,0 +1,7 @@
+    private const val MINUTE_MS = 60_000L
+
+    /** Sits between the half-width small span (~216dp) and the full-width
+     *  medium span (~370dp), so the composition always matches the grid the
+     *  launcher actually granted. */
+    private const val MEDIUM_COMPOSITION_MIN_DP = 250
+
