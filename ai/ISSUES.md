@@ -249,6 +249,28 @@ production release; G.6 noted but deferred by owner.
 
 ### G.1 [OPEN — RELEASE BLOCKER] Five home screen widgets permanently blank
 
+- **STATUS (2026-09-25, session 20): THE FIX IS INSTALLED. What remains is the
+  XS acceptance protocol, which is row 16 of `ai/plans/README.md`.** Read from
+  the installed tree this session, do not re-derive:
+  - `expo-widgets` is **58.0.3**, and
+    `node_modules/expo-widgets/ios/Widgets/DynamicView.swift` contains **zero
+    `UUID()` calls**. The random-per-render identity that caused this whole
+    chain is gone from the installed source.
+  - Children now carry a **stable string identity**: `ViewRenderer.makeChild`
+    builds `WidgetsChildView(childView:stringIdentity:)` from the node's
+    `__expoWidgetIdentity`, which the widget bundle sets to
+    `JSON.stringify([node.type, key ?? node.key ?? position])`, and
+    `expo-modules-core`'s `AnyChild.swift` resolves that to `.string(...)`.
+    Our day-list rows already carry `key={row.name}`, so they get stable
+    identities for free.
+  - This is **#49810**, recorded in the expo-widgets CHANGELOG under
+    `58.0.1 — 2026-09-14`. The old expectation of a `57.0.16` patch is void,
+    and the `flags.ts` note that said the fix was "merged but UNRELEASED" was
+    corrected in the same session.
+  - **Not yet verified on the device.** The flag is still OFF, so no extension
+    is built and nothing has been observed on the XS. The acceptance protocol
+    (all 8 home kinds render and stay rendered 10+ minutes, zero new
+    `cpu_resource` reports, zero watchdog lines) needs the owner's hands.
 - **STATUS (end of session 2026-09-02)**: failure chain PROVEN on device and
   REPRODUCED on an iOS 18.5 simulator as sustained ~100% CPU render loop.
   Construct-level bisection STARTED (two data points in, see Bisect Log) —
@@ -424,9 +446,12 @@ production release; G.6 noted but deferred by owner.
   Lock layout uses NONE of these and never loops.
   - **FIX DESIGN — decision taken 2026-09-02 (owner): WAIT for the upstream
     fix as the primary path; our-side hygiene landed as 1.17.8.**
-    0. **[2026-09-12 — #49244 IS DEAD. THE FIX IS NOW #49810, MERGED BUT
-       UNRELEASED, SHIPPING ON THE SDK 58 LINE.]** Verified this session,
-       do not re-derive:
+    0. ~~**[2026-09-12 — #49244 IS DEAD. THE FIX IS NOW #49810, MERGED BUT
+       UNRELEASED, SHIPPING ON THE SDK 58 LINE.]**~~
+       **SUPERSEDED — #49810 SHIPPED in expo-widgets 58.0.1 and is installed;
+       see the 2026-09-25 status at the top of G.1. Everything below was true
+       on 2026-09-12 and is kept as the record of how the fix was tracked.**
+       Verified in that session, do not re-derive:
        - `#49244` was **closed UNMERGED** on 2026-09-11. Maintainer jakex7:
          *"Thank you, however we decided to take a different approach in
          keeping stable identities, so I'm going to close this PR."*
@@ -666,6 +691,33 @@ production release; G.6 noted but deferred by owner.
   background refresh), which leaves this unchanged. Queued as its own row, and
   read together with the row that flips the iOS widgets flag on, because that
   flip is what makes this user-visible.
+- **2026-09-25 investigation (session 20, owner asked for a light look)**:
+  entry count is NOT the driver, and the one repository-side lead is recorded
+  below rather than acted on.
+  - **Measured with the real builder**, not estimated: 47 entries and 20,183
+    bytes per standard kind at the 7-day horizon, 23 entries and 9,771 bytes
+    at the 3-day horizon this session set. The blackout that made entry count
+    matter at all (session 16a) was ~380 entries, so both figures sit far
+    under it. Shortening the horizon is worth doing for survival time and
+    leanness; it is not a fix for this window and was never claimed as one.
+  - **What a freshly placed widget actually pays is the extension's cold
+    start.** `WidgetsJSRuntime` holds one lazily-created `JSContext` per
+    extension process. Its first render evaluates `ExpoWidgets.bundle`,
+    153,055 bytes, in JavaScriptCore, then evaluates and caches the layout
+    string, before anything can be drawn. No code in this repository runs
+    before that, and the delay also appears while PREVIEWING in the picker,
+    where no placement timeline exists yet. That is consistent with a cold
+    start and inconsistent with a timeline-delivery explanation.
+  - **The one repository-side lead, deliberately not acted on.** `app.json`
+    gives every Android kind an `android.initialLayout` and gives no iOS kind
+    an `ios.initialLayout`. The plugin's `createLayoutRegistryConfig` filters
+    on `widget.ios?.initialLayout != null`, so the embedded iOS layout
+    registry ships EMPTY and `WidgetsLayoutRegistry.layout(for:)` has only the
+    app-group key the app writes to fall back on. This is the first thing to
+    try if the window still bothers the owner once the flag is on. NOT changed
+    in session 20: it alters the native prebuild, it is only provable on the
+    XS, and until row 16 flips the flag there is no extension in the build to
+    observe.
 
 ## H. UI bugs (2026-09-09)
 
