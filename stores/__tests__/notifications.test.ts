@@ -918,6 +918,7 @@ describe('registerBackgroundTask', () => {
     expect(BackgroundTask.unregisterTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
     expect(BackgroundTask.registerTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME, {
       minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
+      requiresNetworkConnectivity: false,
     });
   });
 
@@ -928,6 +929,7 @@ describe('registerBackgroundTask', () => {
 
     expect(BackgroundTask.registerTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME, {
       minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
+      requiresNetworkConnectivity: false,
     });
     expect(BackgroundTask.unregisterTaskAsync).not.toHaveBeenCalled();
   });
