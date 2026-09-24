@@ -74,3 +74,24 @@ Review: the session reviewed the diff itself against the step's ten checks, one 
 and one `fillMaxSize()`; `Button` comes from `@expo/ui/jetpack-compose`; no geometry constant, colour, font size,
 font weight, padding or alignment value appears in the diff; the iOS branch is untouched; no existing test line was
 removed, the only fixture change being the `Button` marker in `JETPACK`; and no comment was added to the layout.
+
+Commit `92c09b4f`, version 1.27.347, merged as `8a26a8cb`. The hook reported
+`Tests:       4638 passed, 4638 total` with four 100% coverage lines (4198/4198, 1876/1876, 853/853, 3789/3789).
+
+## Step 3: The patch and the seam it rides on are pinned by tests
+
+Branch `test/15c-patch-guard`. No anchors in this step.
+
+The suite `shared/__tests__/widgetOpenAppPatch.test.ts` was written to the plan's six rows and reported
+`Tests:       6 passed, 6 total`.
+
+**One plan defect found and fixed, and the plan itself corrected.** The first run of the break script reported
+`NOT CAUGHT: the patch drops the Glance import it rides on`, 5 of 6. The cause was in the test, not the break:
+`toContain('import androidx.glance.appwidget.action.actionStartActivity')` still matches after the break renames the
+import to `...actionStartActivityGone`, because the original name is a prefix of the renamed one. The assertion now
+carries the trailing newline, which terminates the line, and the break is caught. This is the same substring trap
+the planning session had already found in the layout break, in a second place it had missed; the plan's step 3 test
+row now records it.
+
+After the fix: `caught 6 of 6`, then `ALL AS EXPECTED: 1`. `grep -c openApp` on the converter printed `2`
+afterwards, so `node_modules` came back intact, and no `.bak` file was left.
