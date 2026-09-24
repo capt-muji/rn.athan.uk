@@ -22,7 +22,7 @@ import {
   ScheduleType,
   type UnreadablePrayer,
 } from '@/shared/types';
-import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
+import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS, TIMELINE_DAYS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
@@ -599,8 +599,8 @@ describe('countdown honesty', () => {
   ];
 
   const SPAN_START = '2026-10-18';
-  /** The 16-day span stores/widget.ts pushes (TIMELINE_DAYS + 1, plus yesterday) */
-  const SPAN_DAYS = 16;
+  /** The span stores/widget.ts pushes: TIMELINE_DAYS ahead, plus yesterday */
+  const SPAN_DAYS = TIMELINE_DAYS + 1;
   const PUSH_AT = createPrayerDatetime(SPAN_START, '12:00');
 
   const makeSequence = (times: [string, string, string][]): PrayerSequence => {
@@ -665,11 +665,11 @@ describe('countdown honesty', () => {
 });
 
 // =============================================================================
-// VOLUME & PAYLOAD INVARIANTS (16-day span, as pushed in production)
+// VOLUME & PAYLOAD INVARIANTS (31-day span, as pushed in production)
 // =============================================================================
 
 describe('volume and payload invariants', () => {
-  const SPAN_DAYS = 16;
+  const SPAN_DAYS = TIMELINE_DAYS + 1;
   const makeSpanSequence = (): PrayerSequence => {
     const baseDay = createPrayerDatetime('2026-06-14', '12:00');
     const prayers: Prayer[] = [];
@@ -697,23 +697,38 @@ describe('volume and payload invariants', () => {
 
     expect(entries[entries.length - 1].props.stale).toBe(true);
     expect(entries.length).toBeLessThanOrEqual(stillAhead.length + 2);
+    // The bound above is relative to the prayers ahead, so it holds at ANY
+    // horizon and would not notice a jump to a year. This one would: 250 sits
+    // above the 185 a 30-day horizon emits and far below the ~380 that failed.
+    expect(entries.length).toBeLessThan(250);
+  });
+
+  it('carries a 30-day horizon', () => {
+    // The owner's goal is that the widget never needs the app opened; 30 days
+    // is how far that reaches inside the entry budget. The bounds below are all
+    // upper bounds, and the fixture scales with the constant, so shrinking the
+    // horizon would satisfy every one of them. This is what notices.
+    expect(TIMELINE_DAYS).toBe(30);
   });
 
   it('keeps the serialized payload well under UserDefaults comfort size', () => {
     const sequence = makeSpanSequence();
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
-    // The medium widget's day list (six rows + activeIndex per entry) grew
-    // the payload ~30% over the pre-v3 size; 155KB across ~380 entries is
-    // still trivial for the app-group UserDefaults plist (parsed once per
-    // widget reload), so the comfort budget is 200KB.
+    // The medium widget's day list (six rows + activeIndex per entry) is the
+    // payload driver. A 30-day horizon measures ~78KB across ~185 entries,
+    // trivial for the app-group UserDefaults plist (parsed once per widget
+    // reload), so the comfort budget is 200KB. That budget is also the only
+    // automatic warning that the horizon has grown too far: raise the horizon,
+    // never this number.
     const payloadSize = JSON.stringify(entries).length;
     expect(payloadSize).toBeLessThan(200_000);
   });
 
   it('bounds the extras entry count and payload under the same budgets', () => {
-    // 16-day extras span (2026-06-14 → 2026-06-29) containing the Fridays
-    // 2026-06-19 and 2026-06-26 — 4 rows per day, 5 on Fridays
+    // 31-day extras span (2026-06-14 → 2026-07-14) containing the Fridays
+    // 2026-06-19, 2026-06-26, 2026-07-03 and 2026-07-10 — 4 rows per day,
+    // 5 on Fridays
     const baseDay = createPrayerDatetime('2026-06-14', '12:00');
     const prayers: ReadablePrayer[] = [];
     for (let i = 0; i < SPAN_DAYS; i++) {
