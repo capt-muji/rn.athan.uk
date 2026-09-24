@@ -698,18 +698,18 @@ describe('volume and payload invariants', () => {
     expect(entries[entries.length - 1].props.stale).toBe(true);
     expect(entries.length).toBeLessThanOrEqual(stillAhead.length + 2);
     // The bound above is relative to the prayers ahead, so it holds at ANY
-    // horizon and would not notice a jump to a year. This one would: 7 days
-    // emits 40 here and 10 days would emit 58. A bound derived from
+    // horizon and would not notice a jump to a year. This one would: 3 days
+    // emits 16 here and 4 days would emit 22. A bound derived from
     // TIMELINE_DAYS would follow the horizon up and guard nothing.
-    expect(entries.length).toBeLessThan(60);
+    expect(entries.length).toBeLessThan(22);
   });
 
-  it('carries a 7-day horizon', () => {
-    // A week is the survival time the owner judged enough for a widget whose
-    // app is never opened (owner 2026-09-24). Every bound below is an upper
-    // bound and the fixtures scale with the constant, so a shrunk horizon would
-    // satisfy them all. This is what notices.
-    expect(TIMELINE_DAYS).toBe(7);
+  it('carries a 3-day horizon', () => {
+    // Three days is the survival time the owner judged enough for a widget
+    // whose app is never opened (owner 2026-09-25). Every bound below is an
+    // upper bound and the fixtures scale with the constant, so a shrunk horizon
+    // would satisfy them all. This is what notices.
+    expect(TIMELINE_DAYS).toBe(3);
   });
 
   it('keeps the serialized payload well under UserDefaults comfort size', () => {
@@ -717,7 +717,7 @@ describe('volume and payload invariants', () => {
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     // The medium widget's day list (six rows + activeIndex per entry) is the
-    // payload driver. A 7-day horizon measures ~17KB across 40 entries,
+    // payload driver. A 3-day horizon measures ~9.8KB across 23 entries,
     // trivial for the app-group UserDefaults plist (parsed once per widget
     // reload), so the comfort budget is 200KB. That budget is also the only
     // automatic warning that the horizon has grown too far: raise the horizon,
@@ -743,7 +743,7 @@ describe('volume and payload invariants', () => {
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');
 
     expect(entries[entries.length - 1].props.stale).toBe(true);
-    expect(entries.length).toBeLessThan(60);
+    expect(entries.length).toBeLessThan(22);
 
     const payloadSize = JSON.stringify(entries).length;
     expect(payloadSize).toBeLessThan(200_000);
