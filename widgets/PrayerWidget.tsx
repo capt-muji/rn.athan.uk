@@ -217,6 +217,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const REFERENCE_NAME_WIDTH = 82;
   const REFERENCE_TIME_WIDTH = 54;
   const ROW_TEXT_MIN_SIZE = 10;
+  // The air between the pill's edge and the row text, each side. The pill used
+  // to span the list column while the rows sat inside it, so the slack all
+  // landed right of the times; mirroring the approved left inset is what
+  // balances it (owner ruling 2026-09-24).
+  const ROW_GUTTER = 12;
 
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
@@ -399,6 +404,14 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const LIST_WIDTH = innerWidth - HERO_WIDTH;
     const ROW_NAME_WIDTH = Math.round(REFERENCE_NAME_WIDTH * scale);
     const ROW_TIME_WIDTH = Math.round(REFERENCE_TIME_WIDTH * scale);
+    // The pill wraps the row text rather than the column: it starts where the
+    // rows' own air starts and ends where it ends. A grant too narrow to afford
+    // a full gutter each side takes half the slack instead, which keeps the two
+    // sides equal and keeps the pill inside the column.
+    const rowContentWidth = ROW_NAME_WIDTH + ROW_TIME_WIDTH;
+    const gutter = Math.max(0, Math.min(ROW_GUTTER, Math.floor((LIST_WIDTH - rowContentWidth) / 2)));
+    const PILL_LEAD = LIST_WIDTH - rowContentWidth - 2 * gutter;
+    const ROWS_LEAD = PILL_LEAD + gutter;
     // Glance has no autoshrink, so text scales with its box or "Last Third"
     // clips at 13sp in a narrowed name column.
     const rowTextSize = Math.max(ROW_TEXT_MIN_SIZE, Math.min(ROW_TEXT_SIZE, Math.round(ROW_TEXT_SIZE * scale)));
@@ -438,7 +451,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           </Box>
           <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
             <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
-              <Column modifiers={[APad(0, 1, 0, 0)]}>
+              <Column modifiers={[APad(PILL_LEAD, 1, 0, 0)]}>
                 <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
                 <AImageEl
                   source={{ uri: A_PILL_NAME }}
@@ -446,7 +459,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
                   modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
                 />
               </Column>
-              <Column modifiers={[APad(12, 0, 12, 0)]}>{dayRows.map((row, index) => ARowLine(row, index))}</Column>
+              <Column modifiers={[APad(ROWS_LEAD, 0, 0, 0)]}>
+                {dayRows.map((row, index) => ARowLine(row, index))}
+              </Column>
             </Box>
           </Box>
         </Row>
