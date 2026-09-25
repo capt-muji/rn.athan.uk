@@ -8,7 +8,8 @@
 const mockResetAtomState = { current: () => {} };
 jest.mock('jotai/vanilla', () => {
   const vanilla = jest.requireActual('jotai/vanilla');
-  const { INTERNAL_buildStoreRev3: buildStore } = jest.requireActual('jotai/vanilla/internals');
+  const internals = jest.requireActual('jotai/vanilla/internals');
+  const { INTERNAL_buildStoreRev4: buildStore } = internals;
 
   const weakMaps = [];
   const replaceableWeakMap = () => {
@@ -26,8 +27,15 @@ jest.mock('jotai/vanilla', () => {
   };
   const sets = [new Set(), new Set(), new Set()];
 
-  // atom states, mounted atoms and invalidated atoms, then the changed atoms and the mount and unmount callbacks
-  const store = buildStore(replaceableWeakMap(), replaceableWeakMap(), replaceableWeakMap(), ...sets);
+  // Keys come from the library because they are single letters ('a', 'm'), meaningless written out here
+  const store = buildStore({
+    [internals.INTERNAL_KEY_atomStateMap]: replaceableWeakMap(),
+    [internals.INTERNAL_KEY_mountedMap]: replaceableWeakMap(),
+    [internals.INTERNAL_KEY_invalidatedAtoms]: replaceableWeakMap(),
+    [internals.INTERNAL_KEY_changedAtoms]: sets[0],
+    [internals.INTERNAL_KEY_mountCallbacks]: sets[1],
+    [internals.INTERNAL_KEY_unmountCallbacks]: sets[2],
+  });
 
   mockResetAtomState.current = () => {
     for (const holder of weakMaps) holder.current = new WeakMap();
