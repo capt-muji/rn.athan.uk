@@ -227,7 +227,7 @@ total** at **100% statements, branches, functions and lines**, and the break scr
 
 ## 6. Steps
 
-- [ ] Step 1: The two day-list Lock Screen faces (specified)
+- [x] Step 1: DONE in `bd5610da` (merged `21560164`), version 1.28.13
 
 ### Step 1: The two day-list Lock Screen faces
 
