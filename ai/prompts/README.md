@@ -56,6 +56,14 @@ rather than which model".)
 - **Row tiers on the glass: active solid white and bold, passed at 60%, upcoming at 35%.** An
   accessory face renders in vibrant monochrome, so opacity and weight are the only hierarchy
   available. Adds one literal, `rgba(255, 255, 255, 0.35)`, to the widget palette allow-list.
+- **The next prayer is the ONLY bold thing on either face, and the only pure white one** (owner,
+  confirmed twice while session 24 was audited): 🐋  "the next prayer is the only one that's going
+  to be bold and pure white". Its name AND its time are both bold, because a row reads as one unit;
+  the owner confirmed that reading when asked. Nothing else is bold, names and times alike, on a
+  passed or an upcoming row. Every text on a face is one size (11pt on the extras column, 14pt on
+  the standard split), so **opacity plus that single bold row is the whole hierarchy**.
+  `widgetLockListRenderer.test.ts` pins it by asserting the COMPLETE list of bold texts equals the
+  active row's name and time, so a bold creeping onto any other row fails it.
 - **Row sizes: 11pt in the one-column face, 14pt in the two-column face.** 14pt is the size the
   owner settled on for every other lock face; the one-column face takes 11pt because five rows and
   their spacing have to fit a ~72pt slot.
