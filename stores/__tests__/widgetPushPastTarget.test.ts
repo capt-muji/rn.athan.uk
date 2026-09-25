@@ -7,7 +7,7 @@ import { refreshPrayerWidgets } from '@/stores/widget';
 import { PrayerWidget } from '@/widgets/PrayerWidget';
 
 // Every widget push returns at once while the widgets flag is off, which is how the app ships
-jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: true } }));
+jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: true } }));
 
 const PUSH_STARTS_BEFORE_DHUHR_MS = 400;
 

@@ -20,7 +20,7 @@ jest.mock('react-native', () => ({
   },
 }));
 
-jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: false, androidWidgets: true } }));
+jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: false, androidWidgets: true } }));
 
 import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';

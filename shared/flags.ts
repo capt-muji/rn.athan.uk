@@ -26,8 +26,9 @@
 export const FEATURE_FLAGS = {
   /**
    * iOS Home/Lock screen widgets (expo-widgets): the widget extension and
-   * every push path in stores/widget.ts. ON — builds pass
-   * EXPO_PUBLIC_WIDGETS=1 and `.env.example` documents it.
+   * every push path in stores/widget.ts. ON, and it stays on: the owner ruled
+   * on 2026-09-25 that neither widget flag ships disabled again, so
+   * `.env.example` carries 1 for both and flagDefaults.test.ts pins them.
    *
    * It existed to keep the G.1 render chain out of a build: expo-widgets
    * regenerated random SwiftUI view identities per render, so each body
@@ -40,7 +41,7 @@ export const FEATURE_FLAGS = {
    *
    * Now scaffolding awaiting deletion, per the lifecycle rule above.
    */
-  widgets: process.env.EXPO_PUBLIC_WIDGETS === '1',
+  iosWidgets: process.env.EXPO_PUBLIC_IOS_WIDGETS === '1',
   /**
    * Android home-screen widgets (expo-widgets' Android implementation,
    * SDK 58). ON, and it stays on: the owner ruled on 2026-09-25 that neither

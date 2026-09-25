@@ -4,7 +4,7 @@
  * - Flag parsing: only the exact string '1' enables; absence, '0', empty,
  *   and typos disable (fail direction: mistakes disable, never enable)
  * - Contract: app.config.ts strips the expo-widgets plugin exactly when
- *   FEATURE_FLAGS.widgets is false, so the JS gate and the native build
+ *   FEATURE_FLAGS.iosWidgets is false, so the JS gate and the native build
  *   can never drift apart
  */
 
@@ -38,9 +38,9 @@ const pluginNames = (config: import('expo/config').ExpoConfig): string[] =>
 
 const setEnv = (value: string | undefined) => {
   if (value === undefined) {
-    delete process.env.EXPO_PUBLIC_WIDGETS;
+    delete process.env.EXPO_PUBLIC_IOS_WIDGETS;
   } else {
-    process.env.EXPO_PUBLIC_WIDGETS = value;
+    process.env.EXPO_PUBLIC_IOS_WIDGETS = value;
   }
 };
 
@@ -52,20 +52,20 @@ afterEach(() => {
 // FLAG PARSING
 // =============================================================================
 
-describe('FEATURE_FLAGS.widgets parsing', () => {
+describe('FEATURE_FLAGS.iosWidgets parsing', () => {
   it('is disabled when the variable is absent', () => {
     setEnv(undefined);
-    expect(loadFlagsFresh().FEATURE_FLAGS.widgets).toBe(false);
+    expect(loadFlagsFresh().FEATURE_FLAGS.iosWidgets).toBe(false);
   });
 
   it('is enabled only for the exact string 1', () => {
     setEnv('1');
-    expect(loadFlagsFresh().FEATURE_FLAGS.widgets).toBe(true);
+    expect(loadFlagsFresh().FEATURE_FLAGS.iosWidgets).toBe(true);
   });
 
   it.each(['0', '', 'true', 'yes', '2', 'on'])('is disabled for %p', (value) => {
     setEnv(value);
-    expect(loadFlagsFresh().FEATURE_FLAGS.widgets).toBe(false);
+    expect(loadFlagsFresh().FEATURE_FLAGS.iosWidgets).toBe(false);
   });
 });
 
@@ -108,14 +108,14 @@ describe('app.config widget plugin parity', () => {
     const config = loadAppConfigFresh();
     expect(pluginNames(config)).not.toContain('expo-widgets');
     expect(pluginNames(config)).toContain('expo-notifications');
-    expect(loadFlagsFresh().FEATURE_FLAGS.widgets).toBe(false);
+    expect(loadFlagsFresh().FEATURE_FLAGS.iosWidgets).toBe(false);
   });
 
   it('keeps the expo-widgets plugin when the flag is enabled', () => {
     setEnv('1');
     const config = loadAppConfigFresh();
     expect(pluginNames(config)).toContain('expo-widgets');
-    expect(loadFlagsFresh().FEATURE_FLAGS.widgets).toBe(true);
+    expect(loadFlagsFresh().FEATURE_FLAGS.iosWidgets).toBe(true);
   });
 
   it('leaves the android package untouched without suffix env', () => {
