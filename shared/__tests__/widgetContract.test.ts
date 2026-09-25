@@ -391,9 +391,9 @@ describe('widget directive', () => {
         },
       });
 
-      // The home module holds one layout; the lock module holds two (its
+      // The home module holds one layout; the lock module holds three (its
       // layouts differ only in composition and share nothing by reference)
-      expect(count).toBe(name === 'PrayerLockWidget' ? 2 : 1);
+      expect(count).toBe(name === 'PrayerLockWidget' ? 3 : 1);
     });
   }
 });
