@@ -6,6 +6,7 @@ import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import InfoIcon from '@/assets/icons/svg/info.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { FEATURE_FLAGS } from '@/shared/flags';
 import { isDecorationSeason } from '@/shared/time';
 import { VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
 import {
@@ -13,6 +14,7 @@ import {
   decorationsEnabledAtom,
   hideSettingsSheet,
   hijriDateEnabledAtom,
+  lockCardEnabledAtom,
   setPopupWhatsNewEnabled,
   setSettingsSheetModal,
   setSoundListReady,
@@ -32,7 +34,11 @@ export default function BottomSheetSettings() {
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
   const [showArabicNames, setShowArabicNames] = useAtom(showArabicNamesAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
+  const [lockCardEnabled, setLockCardEnabled] = useAtom(lockCardEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
+  // The card is an Android notification: iOS carries the same content in its
+  // Lock Screen widget, which the user places from the lock screen itself
+  const showLockCardToggle = Platform.OS === 'android' && FEATURE_FLAGS.androidLockCard;
 
   const handleAthanPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -102,6 +108,13 @@ export default function BottomSheetSettings() {
               label='Show decorations'
               value={decorationsEnabled}
               onToggle={() => setDecorationsEnabled(!decorationsEnabled)}
+            />
+          )}
+          {showLockCardToggle && (
+            <SettingsToggle
+              label='Show lock screen card'
+              value={lockCardEnabled}
+              onToggle={() => setLockCardEnabled(!lockCardEnabled)}
             />
           )}
         </View>

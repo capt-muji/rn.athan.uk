@@ -15,9 +15,11 @@ jest.mock('react-native', () => ({
   },
 }));
 
-jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: false, androidWidgets: false } }));
+jest.mock('@/shared/flags', () => ({
+  FEATURE_FLAGS: { widgets: false, androidWidgets: false, androidLockCard: false },
+}));
 
-jest.mock('@/modules/widgetrefresh', () => ({ armWidgetRefreshChain: jest.fn() }));
+jest.mock('@/modules/widgetrefresh', () => ({ armWidgetRefreshChain: jest.fn(), setLockCard: jest.fn() }));
 
 import { addDays } from 'date-fns';
 

@@ -50,6 +50,16 @@ export const FEATURE_FLAGS = {
    * resolution strips the plugin while this is off.
    */
   androidWidgets: process.env.EXPO_PUBLIC_ANDROID_WIDGETS === '1',
+  /**
+   * Android lock screen card: the ongoing notification that carries the next
+   * prayer onto the lock screen. Same lifecycle as the two widget flags.
+   *
+   * Android has had no lock-screen widget API since 5.0 removed it in 2014,
+   * and the vendor surfaces that exist are signature-gated to one OEM, so a
+   * notification is the only vehicle that reaches every phone (session 18).
+   * Flip condition: the owner judging the device proof on both phones.
+   */
+  androidLockCard: process.env.EXPO_PUBLIC_ANDROID_LOCK_CARD === '1',
 } as const;
 
 export type FeatureFlagId = keyof typeof FEATURE_FLAGS;

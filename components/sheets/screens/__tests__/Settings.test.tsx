@@ -145,6 +145,14 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     expect(screen.queryByText('Show decorations')).not.toBeOnTheScreen();
   });
 
+  it('offers no lock screen card toggle while its flag is off', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+
+    await render(<SettingsSheet />);
+
+    expect(screen.queryByText('Show lock screen card')).not.toBeOnTheScreen();
+  });
+
   // row label, the preference it shows and writes
   it.each(DISPLAY_TOGGLES)('shows and flips its own preference when %s is pressed', async (label, preference) => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
