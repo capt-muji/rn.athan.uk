@@ -73,7 +73,8 @@ describe('the pre-commit hook is version controlled', () => {
 
 describe('husky is wired into install', () => {
   it('declares a prepare script, so yarn install arms the hook', () => {
-    expect(scripts().prepare).toContain('husky install');
+    // husky 9 renamed the install command to a bare `husky`; `husky install` warns and dies in v10
+    expect(scripts().prepare).toContain('husky');
   });
 
   it('does not let clean delete the tracked hook', () => {
