@@ -251,12 +251,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     </ATextEl>
   );
 
-  // The native tree converter keeps only color/size/weight/style/decoration
-  // from the text style - letterSpacing dies at the Kotlin boundary - so the
-  // eyebrow's tracking is delivered glyph-wise: a hair space (U+200A, about 1sp
-  // at 14sp) between letters, reading like iOS's kerning.
-  const tracked = (text: string): string => text.split('').join('\u200a');
-
   const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
     <ATimeEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
       {text}
@@ -375,7 +369,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // start, which read as the trio sitting left of its half (owner 2026-09-24).
     const trio = (
       <Column horizontalAlignment='center' modifiers={[fillMaxWidth()]}>
-        {AText(tracked(next.name.toUpperCase()), 14, 'bold', palette.eyebrow)}
+        {/* No tracking: iOS sets kerning(0.5), and the converter drops
+            letterSpacing at the Kotlin boundary, so the only lever here is a
+            space character between glyphs. The narrowest one is a hair space
+            at ~1.4sp, nearly 3x iOS's half point, which reads as gaps wide
+            enough to hold another letter (owner 2026-09-25). Plain text is far
+            closer to iOS than the workaround was. */}
+        {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(2)]} />
         {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
         <Spacer modifiers={[height(6)]} />
