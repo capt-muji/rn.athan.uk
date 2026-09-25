@@ -210,3 +210,46 @@ installed and running 1.27.394 with no crash. What is left, in order:
 Phone state: the 3T holds the 1.27.394 PRODUCTION build, not the usual mock one, because this session's proof needed
 real prayer times. The next session that needs mock data reinstalls it. Automatic time was never changed by this
 session, so no clock restore is owed.
+
+## Two findings on the iPhone XS, both mine, neither a package regression
+
+The owner looked at the XS and reported two things: the app showed MOCK data (each prayer one minute apart, Fajr
+14:33 through Isha 14:41), and Athan did not appear in the iOS widget picker at all, so no widget could be added. The
+3T, on the same commit, showed today's real London times and added widgets correctly.
+
+Both were caused by how I invoked the iOS build, not by any of the eight packages.
+
+1. **Mock data: the build carried no API key and no prod env.** `ai/AGENTS.md` records that local builds with the env
+   unset run the mock API, and that this once masked ISSUES #21 for weeks. The Android proof used
+   `build-prod.zsh`, which reads `~/.config/athan/.api_key` and exports `EXPO_PUBLIC_ENV=prod` with the key. There is
+   no iOS equivalent of that script, and I ran a bare `npx expo run:ios`, so the bundle got
+   `EXPO_PUBLIC_ENV=local` from the untracked `.env` and fell back to `mocks/simple.ts`.
+2. **No widget in the picker: the local `.env` held the OLD flag name.** It carried `EXPO_PUBLIC_WIDGETS=1`, which was
+   renamed to `EXPO_PUBLIC_IOS_WIDGETS` in 1.27.382 (`9f8587f3`, "rename widgets to iosWidgets, so both platforms read
+   alike"). `app.config.ts` reads `EXPO_PUBLIC_IOS_WIDGETS === '1'` and strips the `expo-widgets` plugin when it is
+   absent, so the prebuild embedded no widget extension: the built `Athan.app` had no `PlugIns` directory at all.
+   This is the iOS twin of the Android durable lesson from 2026-09-25, where a build derived from a stale flag shipped
+   picker-less onto both phones. `.env` is gitignored, so no session could have corrected it and no test can see it.
+
+Fix, forward: rebuilt the way `build-prod.zsh` does it. `.env` regenerated from the committed `.env.example` with the
+`ENV` and `API_KEY` lines stripped, `EXPO_PUBLIC_ENV=prod` appended, and the real key exported into the build's
+environment only, never written to a file. Then `npx expo prebuild -p ios --no-install --clean` with
+`EXPO_PUBLIC_IOS_WIDGETS=1`, which produced the `ios/ExpoWidgetsTarget` directory the previous prebuild had omitted.
+The owner's stale `.env` was backed up to `~/athan-device-sweep/session21/env-backup-local.txt` first.
+
+**Durable lesson for the records: the flag rename of 1.27.382 leaves a trap in every developer's untracked `.env`.**
+A file still saying `EXPO_PUBLIC_WIDGETS=1` reads as "iOS widgets OFF" to `app.config.ts`, and the only symptom is the
+app missing from the widget picker, with no error anywhere. `flagDefaults.test.ts` pins `.env.example`, which is
+correct; nothing can pin the untracked `.env`.
+
+### The iOS proof, after the rebuild: PASSED
+
+Rebuilt at 1.27.396 with the real key in the environment and `EXPO_PUBLIC_IOS_WIDGETS=1`. `Build Succeeded`, and the
+log now shows `Installing the build script for target ExpoWidgetsTarget`, which the first build never did. The built
+`Athan.app` carries `PlugIns/ExpoWidgetsTarget.appex`, where before it had no `PlugIns` directory at all.
+`devicectl device info apps` reads `1.27.396`; the app launched, stayed alive, and has zero crash reports dated
+2026-09-25.
+
+The owner then confirmed both readings on the phone: the prayer list shows today's real London times instead of the
+one-minute-apart mock data, and Athan appears in the widget picker so a widget can be added. Both findings above are
+closed, and neither was a package regression.
