@@ -37,3 +37,25 @@
 - Green: `tsc` 0, Biome 0, `Test Suites: 170 passed, 170 total`, `Tests: 4649 passed, 4649 total`, 100% on all four.
 - Review (the session's own): three files plus plan bookkeeping, one version string. Verdict: merge, one round.
 - Merged into `uat-2`.
+
+## Step 4: `test-renderer` 1.2.0 to 1.3.0
+
+- Branch `chore/bump-test-renderer-1-3`, version 1.27.390.
+- The predicted warning appeared on install: `test-renderer > react-reconciler@0.34.0` has incorrect peer dependency
+  `react@^19.3.0`. Expected, and step 5 settles it.
+- Checked the two suites that import `TestInstance` on their own first: both pass, 18 tests.
+- Green: `tsc` 0, Biome 0, `Test Suites: 170 passed, 170 total`, `Tests: 4649 passed, 4649 total`, 100% on all four.
+- Review (the session's own): three files plus plan bookkeeping, one version string. Verdict: merge, one round.
+- Merged into `uat-2`.
+
+## Step 5: `@types/react` 19.2.18 to 19.3.0
+
+- Branch `chore/bump-types-react-19-3`, version 1.27.391.
+- Green: `tsc` 0, Biome 0, `Test Suites: 170 passed, 170 total`, `Tests: 4649 passed, 4649 total`, 100% on all four.
+- **A plan claim was wrong and the plan was corrected, not worked around.** Decision 5 and step 4 both said this step
+  would settle the `react-reconciler@0.34.0` peer warning. It does not: the warning names `react@^19.3.0`, the
+  runtime package the SDK pins at 19.2.3, not `@types/react`. The warning is still printed and will stay until React
+  moves in row 18. It is inert for the reason step 4 already gives, that both `test-renderer` call sites are
+  type-only, and every suite passes. `PLAN.md` decision 5 and `steps/4-test-renderer.md` now say this.
+- Review (the session's own): three files plus plan bookkeeping and the two corrections above. Verdict: merge, one
+  round.
