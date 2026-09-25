@@ -104,3 +104,22 @@
   `Running tasks for staged files` plus the two ticked task lines.
 - Review (the session's own): both hooks keep their bodies and their executable bit, only the shim is gone;
   `.gitignore` untouched; exactly one assertion changed in the guard suite. Verdict: merge, one round.
+
+## Step 8: `jotai` 2.20.3 to 3.0.0
+
+- Branch `chore/bump-jotai-3`, version 1.27.394.
+- All six anchors counted 1 before starting.
+- Both reds reproduced exactly as the plan gave them:
+  `stores/sync.ts(9,10): error TS2305: Module '"jotai/utils"' has no exported member 'loadable'.` from `tsc`, and
+  `Must use import to load ES Module: .../node_modules/jotai/dist/index.js` from Jest.
+- Three fixes, as specified: the local `loadable` wrapper over `unwrap` in `stores/sync.ts` with the sentinel compared
+  by identity; the `.js` transform plus `transformIgnorePatterns` in the `unit` project and `jotai` appended to the
+  `components` project's existing list; and `INTERNAL_buildStoreRev4` with its keyed building blocks in
+  `jest.components.setup.js`, the keys read from the library rather than written as literals.
+- Green: `tsc` 0, Biome 0, `Test Suites: 170 passed, 170 total`, `Tests: 4649 passed, 4649 total`, zero FAIL lines,
+  100% on all four measures. Coverage totals moved from 4200 to 4209 statements, which is the new wrapper, fully
+  covered by the existing `syncLoadable` suite.
+- Breaks: `caught 5 of 5`, `ALL AS EXPECTED: 1`, and all three files restored afterwards.
+- Review (the session's own): every name and signature as the contract gives them; the identity comparison present;
+  the internals keys read from the library; no existing test edited; only the five intended files changed.
+  Verdict: merge, one round.
