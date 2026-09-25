@@ -227,7 +227,7 @@ jotai failure is easier to read when the gate has already been proven under its 
 
 ## 6. Steps
 
-- [ ] Step 1: `@biomejs/biome` 2.5.13 to 2.5.14, with `biome.json`'s `$schema` (specified)
+- [x] Step 1: DONE in 1.27.387
 - [ ] Step 2: `@types/node` 26.4.0 to 26.6.2 (specified)
 - [ ] Step 3: `@jest/create-cache-key-function` 29.7.0 to 30.5.1 (specified)
 - [ ] Step 4: `test-renderer` 1.2.0 to 1.3.0 (specified)
