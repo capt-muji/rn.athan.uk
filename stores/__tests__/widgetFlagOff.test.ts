@@ -3,7 +3,7 @@
  *
  * With FEATURE_FLAGS.iosWidgets false the store must be inert on iOS: pushes
  * resolve without evaluating the widget bridge (no updateTimeline calls on
- * any of the ten kinds). The enabled case in the same suite proves the
+ * any of the twelve kinds). The enabled case in the same suite proves the
  * difference is the flag, not the fixture.
  *
  * Uses the repo's mock-prefix + require-after-reset pattern (ai/AGENTS.md

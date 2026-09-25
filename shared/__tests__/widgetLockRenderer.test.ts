@@ -48,6 +48,7 @@ const SWIFT_UI = {
 const MODIFIERS = [
   'containerBackground',
   'containerRelativeFrame',
+  'fixedSize',
   'font',
   'foregroundStyle',
   'frame',
@@ -55,6 +56,7 @@ const MODIFIERS = [
   'minimumScaleFactor',
   'monospacedDigit',
   'multilineTextAlignment',
+  'padding',
 ].reduce((acc: Record<string, (value: unknown) => { modifier: string; value: unknown }>, name) => {
   acc[name] = (value: unknown) => ({ modifier: name, value });
   return acc;
@@ -125,7 +127,52 @@ describe('lock widget renderer', () => {
     renderTree(layouts.PrayerLockWidget(props, { colorScheme: 'light', widgetFamily: family }));
   const renderTreeFor2 = (props: unknown, family: string): unknown =>
     renderTree(layouts.PrayerLockWidget2(props, { colorScheme: 'light', widgetFamily: family }));
+  const renderTreeFor3 = (props: unknown, family: string): unknown =>
+    renderTree(layouts.PrayerLockWidget3(props, { colorScheme: 'light', widgetFamily: family }));
   const render = (props: unknown, family: string): string[] => textsOf(renderTreeFor(props, family));
+
+  /** Every Text node's font and colour, paired, for hierarchy assertions */
+  type StyledText = {
+    text: string;
+    size?: number;
+    weight?: string;
+    colour?: unknown;
+    modifiers: Array<{ modifier: string; value: unknown }>;
+  };
+
+  const styledTexts = (tree: unknown): StyledText[] => {
+    const found: StyledText[] = [];
+    const walk = (node: unknown): void => {
+      if (Array.isArray(node)) {
+        for (const child of node) walk(child);
+        return;
+      }
+      if (node !== null && typeof node === 'object' && 'marker' in node) {
+        const markerNode = node as MarkerNode;
+        if (markerNode.marker === 'Text') {
+          const modifiers = (markerNode.props.modifiers ?? []) as Array<{ modifier: string; value: unknown }>;
+          const fontValue = modifiers.find((entry) => entry.modifier === 'font')?.value as
+            | { size?: number; weight?: string }
+            | undefined;
+          const colour = modifiers.find((entry) => entry.modifier === 'foregroundStyle')?.value;
+          const children = markerNode.props.children;
+          const label =
+            markerNode.props.timerInterval !== undefined
+              ? '<countdown>'
+              : typeof children === 'string'
+                ? children.replace(/\s+/g, ' ').trim()
+                : '';
+          found.push({ text: label, size: fontValue?.size, weight: fontValue?.weight, colour, modifiers });
+        }
+        walk(markerNode.props.children);
+      }
+    };
+    walk(tree);
+    return found;
+  };
+
+  const MUTED = 'rgba(255, 255, 255, 0.6)';
+  const SOLID = '#ffffff';
 
   /** The self-ticking countdown carries an interval instead of text */
   const tickingIntervalOf = (tree: unknown): unknown => {
@@ -167,11 +214,11 @@ describe('lock widget renderer', () => {
     return found;
   };
 
-  it('pairs the name with the absolute time and puts the ticking countdown below', () => {
+  it('pairs the name with the ticking countdown and drops the absolute time', () => {
     const tree = renderTreeFor(LIVE_PROPS, 'accessoryRectangular');
 
     expect(textsOf(tree)).toContain('Asr');
-    expect(textsOf(tree)).toContain('15:20');
+    expect(textsOf(tree)).not.toContain('15:20');
     expect(tickingIntervalOf(tree)).toEqual({
       lower: new Date(LIVE_PROPS.prevEpochMs),
       upper: new Date(LIVE_PROPS.nextEpochMs),
@@ -188,6 +235,70 @@ describe('lock widget renderer', () => {
     expect(all).toContain('15:20');
     expect(all).not.toContain('·');
     expect(tickingIntervalOf(tree)).toBeUndefined();
+  });
+
+  it('pairs the name with the absolute time and puts the ticking countdown below', () => {
+    const tree = renderTreeFor3(LIVE_PROPS, 'accessoryRectangular');
+
+    expect(textsOf(tree)).toContain('Asr');
+    expect(textsOf(tree)).toContain('15:20');
+    expect(tickingIntervalOf(tree)).toEqual({
+      lower: new Date(LIVE_PROPS.prevEpochMs),
+      upper: new Date(LIVE_PROPS.nextEpochMs),
+    });
+  });
+
+  it('degrades layout 3 to the same fallbacks per family', () => {
+    expect(textsOf(renderTreeFor3({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular'))).toContain('Out of date');
+    expect(textsOf(renderTreeFor3({ ...LIVE_PROPS, stale: true }, 'accessoryInline'))).toContain(
+      'Athan — open to refresh times'
+    );
+    expect(textsOf(renderTreeFor3(null, 'accessoryRectangular'))).toContain('Open to load times');
+    expect(textsOf(renderTreeFor3(null, 'accessoryInline'))).toContain('Athan — prayer times');
+    const legacy = { ...LIVE_PROPS } as Record<string, unknown>;
+    delete legacy.nextEpochMs;
+    expect(textsOf(renderTreeFor3(legacy, 'accessoryRectangular'))).toContain('Out of date');
+    const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
+    Object.defineProperty(poisoned, 'nextName', {
+      get(): string {
+        throw new Error('boom');
+      },
+    });
+    expect(textsOf(renderTreeFor3(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
+  });
+
+  it('falls back to the absolute time on layout 3 inline, which cannot tick', () => {
+    const tree = renderTreeFor3(LIVE_PROPS, 'accessoryInline');
+
+    expect(textsOf(tree).join(' ')).toContain('Asr 15:20');
+    expect(tickingIntervalOf(tree)).toBeUndefined();
+  });
+
+  // Owner 2026-09-25: one size across every live face, so weight and opacity
+  // carry the tiers. What recedes is the SECOND reading on a line, which is
+  // the countdown beside the name in layout 1, the time beside it in layout 2,
+  // and the countdown beneath layout 3's name-and-time row. Layout 3 alone
+  // leaves its name unbolded: its stacked row separates the readings already.
+  it.each([
+    ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), ['<countdown>'], true],
+    ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime], true],
+    ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), ['<countdown>'], false],
+  ])('mutes only what recedes on %s and bolds the name only where it should', (_l, renderPath, muted, nameIsBold) => {
+    for (const node of styledTexts(renderPath(LIVE_PROPS))) {
+      expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
+      const expected = nameIsBold && node.text === LIVE_PROPS.nextName ? 'bold' : 'medium';
+      expect(node.weight).toBe(expected);
+    }
+  });
+
+  it('never mutes a fallback card, which has no absolute time to recede', () => {
+    for (const renderPath of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+      for (const props of [{ ...LIVE_PROPS, stale: true }, null]) {
+        for (const node of styledTexts(renderPath(props, 'accessoryRectangular'))) {
+          expect(node.colour).toBe(SOLID);
+        }
+      }
+    }
   });
 
   it('leaves the countdown off the inline face, which cannot tick one', () => {
@@ -252,6 +363,9 @@ describe('lock widget renderer', () => {
     ['layout 2 live', () => renderTreeFor2(LIVE_PROPS, 'accessoryRectangular')],
     ['layout 2 stale', () => renderTreeFor2({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular')],
     ['layout 2 placeholder', () => renderTreeFor2(null, 'accessoryRectangular')],
+    ['layout 3 live', () => renderTreeFor3(LIVE_PROPS, 'accessoryRectangular')],
+    ['layout 3 stale', () => renderTreeFor3({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular')],
+    ['layout 3 placeholder', () => renderTreeFor3(null, 'accessoryRectangular')],
   ])('sizes %s to the widget container before filling the slot', (_label, renderPath) => {
     const tree = renderPath() as MarkerNode;
     const modifiers = (tree.props.modifiers ?? []) as Array<{ modifier: string; value: unknown }>;
@@ -267,17 +381,15 @@ describe('lock widget renderer', () => {
   });
 
   it('keeps the container-width modifier off the inline faces and centres both live blocks', () => {
-    for (const render of [renderTreeFor, renderTreeFor2]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
       const inlineTree = render(LIVE_PROPS, 'accessoryInline') as MarkerNode;
       const inlineModifiers = JSON.stringify(inlineTree.props.modifiers ?? []);
       expect(inlineModifiers).not.toContain('containerRelativeFrame');
-    }
 
-    // Centring is the stack default; a leading alignment would undo it.
-    const liveRoot = renderTreeFor(LIVE_PROPS, 'accessoryRectangular') as MarkerNode;
-    const liveRoot2 = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular') as MarkerNode;
-    expect(liveRoot.props.alignment).toBeUndefined();
-    expect(liveRoot2.props.alignment).toBeUndefined();
+      // Centring is the stack default; a leading alignment would undo it.
+      const liveRoot = render(LIVE_PROPS, 'accessoryRectangular') as MarkerNode;
+      expect(liveRoot.props.alignment).toBeUndefined();
+    }
   });
 
   it('centres the ticking digits inside their reserved frame', () => {
@@ -285,8 +397,34 @@ describe('lock widget renderer', () => {
     // against the leading edge of it (the home hero's §13d lesson); without
     // this modifier the countdown ink reads left-aligned on the glass.
     // Layout 2 carries no countdown since the owner's 2026-09-20 ruling.
-    const tree = renderTreeFor(LIVE_PROPS, 'accessoryRectangular');
-    const found = collectTickingModifiers(tree);
+    const found = collectTickingModifiers(renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'));
     expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
+    expect(found).toContainEqual({ modifier: 'monospacedDigit', value: undefined });
+  });
+
+  it.each([
+    ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), '<countdown>'],
+    ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), LIVE_PROPS.nextTime],
+  ])('splits %s into halves meeting at the midline', (_label, renderPath, secondLabel) => {
+    const texts = styledTexts(renderPath(LIVE_PROPS));
+    const name = texts.find((node) => node.text === LIVE_PROPS.nextName);
+    const second = texts.find((node) => node.text === secondLabel);
+
+    expect(name?.modifiers).toContainEqual({ modifier: 'frame', value: { maxWidth: Infinity, alignment: 'trailing' } });
+    expect(name?.modifiers).toContainEqual({ modifier: 'padding', value: { trailing: 3 } });
+    expect(second?.modifiers).toContainEqual({
+      modifier: 'frame',
+      value: { maxWidth: Infinity, alignment: 'leading' },
+    });
+    expect(second?.modifiers).toContainEqual({ modifier: 'padding', value: { leading: 3 } });
+  });
+
+  it('never pins the layout 1 countdown to its reserved width', () => {
+    // fixedSize holds a timer Text at the worst-case width it reserves, which
+    // is the overflow that took its digits off the slot's trailing edge.
+    const texts = styledTexts(renderTreeFor(LIVE_PROPS, 'accessoryRectangular'));
+    const countdown = texts.find((node) => node.text === '<countdown>');
+
+    expect(countdown?.modifiers.map((entry) => entry.modifier)).not.toContain('fixedSize');
   });
 });
