@@ -6053,6 +6053,22 @@ countdown had ticked to 2h 10m 21s with every time unchanged. All eight widget p
 ones were live on the launcher, not zombies. Alarms after the install matched those before: the widget refresh tick and
 the 2036 `ACTION_FORCE_STOP_RESCHEDULE` entry every 3T dump shows.
 
+**The iPhone XS proof took two builds, and both first-attempt failures were the build invocation, not the packages.**
+A bare `npx expo run:ios` shipped mock data, because the untracked `.env` said `EXPO_PUBLIC_ENV=local` and no API
+key reached the bundle; the Android proof avoids this only because `build-prod.zsh` reads `~/.config/athan/.api_key`
+and exports it, and there is no iOS equivalent of that script. The same build also embedded NO widget extension, so
+Athan never appeared in the iOS widget picker: the local `.env` still carried `EXPO_PUBLIC_WIDGETS=1`, the name
+1.27.382 renamed to `EXPO_PUBLIC_IOS_WIDGETS`, and `app.config.ts` strips the `expo-widgets` plugin when that exact
+variable is absent. Rebuilt at 1.27.396 the way `build-prod.zsh` does it, with the key in the environment only and
+`EXPO_PUBLIC_IOS_WIDGETS=1` set: `PlugIns/ExpoWidgetsTarget.appex` appeared, and the owner confirmed both readings on
+the phone, real London times in the list and Athan present in the widget picker.
+
+**Durable lesson: the 1.27.382 flag rename leaves a trap in every untracked `.env`.** A file still saying
+`EXPO_PUBLIC_WIDGETS=1` reads as iOS widgets OFF, and the only symptom is the app missing from the widget picker,
+with no error logged anywhere. This is the iOS twin of the Android lesson of 2026-09-25. `flagDefaults.test.ts` pins
+`.env.example`, which is right, and nothing can pin an untracked file, so the check is to read the flag names in
+`.env` before trusting any local widget build.
+
 **Durable lesson: an uncaught break is not automatically a missing test.** Two of this session's breaks were invalid
 rather than revealing, and both were rewritten. Turning Biome's `noConsole` off caught nothing, because this codebase
 has zero `console` calls and the rule guards a future edit rather than a present one. Swapping the launch sync's
