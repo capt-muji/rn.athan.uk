@@ -14,7 +14,8 @@ class WidgetRefreshBootReceiver : BroadcastReceiver() {
         val action = intent.action
         if (action != Intent.ACTION_BOOT_COMPLETED && action != Intent.ACTION_MY_PACKAGE_REPLACED) return
         WidgetRefreshScheduler.updateAll(context)
-        if (WidgetRefreshScheduler.hasPlacedWidgets(context)) {
+        LockCardNotifier.refresh(context)
+        if (WidgetRefreshScheduler.needsChain(context)) {
             WidgetRefreshScheduler.armNext(context)
         }
     }

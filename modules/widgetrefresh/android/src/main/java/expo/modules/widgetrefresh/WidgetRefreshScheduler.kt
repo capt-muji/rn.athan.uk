@@ -43,6 +43,9 @@ internal object WidgetRefreshScheduler {
     /** Must match PrayerWidgetAndroidProps.grantedWidthDp in shared/widgetTypes.ts. */
     private const val GRANTED_WIDTH_KEY = "grantedWidthDp"
 
+    /** Must match the key LockCardNotifier reads. */
+    private const val LOCK_CARD_ENABLED_KEY = "__expo_lock_card_enabled"
+
     private val HOME_KINDS = listOf(
         "PrayerWidget",
         "ExtrasWidget",
@@ -60,6 +63,19 @@ internal object WidgetRefreshScheduler {
     fun hasPlacedWidgets(context: Context): Boolean {
         val manager = AppWidgetManager.getInstance(context)
         return HOME_KINDS.any { kind -> manager.getAppWidgetIds(providerComponent(context, kind)).isNotEmpty() }
+    }
+
+    /**
+     * Whether the minute chain still has a consumer. The lock card ticks on
+     * the same chain as the widgets, so it keeps the chain alive on its own:
+     * a user with the card on and no widget placed must still see the
+     * countdown move.
+     */
+    fun needsChain(context: Context): Boolean {
+        if (hasPlacedWidgets(context)) return true
+        val preferences = context.applicationContext
+            .getSharedPreferences(WIDGETS_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        return preferences.getBoolean(LOCK_CARD_ENABLED_KEY, false)
     }
 
     /**
