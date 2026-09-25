@@ -14,9 +14,14 @@ The Lock Screen ends the session with three compositions, each in both schedules
 
 | Layout | Composition | Kinds |
 | --- | --- | --- |
-| 1 | Name + absolute time, live countdown beneath (three elements) | `PrayerLockWidget`, `ExtrasLockWidget` |
-| 2 | Name + absolute time, one centred line | `PrayerLockWidget2`, `ExtrasLockWidget2` |
-| 3 | **New.** Name + live countdown, one centred line | `PrayerLockWidget3`, `ExtrasLockWidget3` |
+| 1 | Name + live countdown, halves meeting at the midline | `PrayerLockWidget`, `ExtrasLockWidget` |
+| 2 | Name + absolute time, halves meeting at the midline | `PrayerLockWidget2`, `ExtrasLockWidget2` |
+| 3 | Name + absolute time, live countdown beneath | `PrayerLockWidget3`, `ExtrasLockWidget3` |
+
+The numbering is gallery order, set by the owner on 2026-09-25 after reading all three on the XS: the countdown
+pair leads because it is what most people want at a glance. The kind names are positional and were NOT renamed,
+because a kind name is the identity iOS stores a placement against; the reorder re-points which layout function
+each kind registers.
 
 ## 2. Owner decisions (2026-09-25)
 
