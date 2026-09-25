@@ -11,7 +11,7 @@
    folder's `PLAN.md` and `LOG.md`.
 
 4. **Tests first (red).** No new test, and no red: this is a version move with no API change reaching this project.
-   React typings only, erased at build, so neither phone sees them. It also settles the `react-reconciler@0.34.0` peer warning step 4 introduces. Proven in the spike against the SDK-pinned `react` 19.2.3: `tsc` 0 and the full suite green.
+   React typings only, erased at build, so neither phone sees them. Proven in the spike against the SDK-pinned `react` 19.2.3: `tsc` 0 and the full suite green.
 
    The acceptance is that the existing suite, which covers the whole app at 100%, still passes. Install:
 
