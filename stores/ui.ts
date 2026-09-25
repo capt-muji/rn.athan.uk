@@ -131,6 +131,9 @@ export const showArabicNamesAtom = atomWithStorageBoolean('preference_show_arabi
 /** Whether seasonal decorations (Ramadan, Eid, etc.) are shown */
 export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorations_enabled', true);
 
+/** Whether the Android lock screen card is shown (Android only, off until the user asks for it) */
+export const lockCardEnabledAtom = atomWithStorageBoolean('preference_lock_card', false);
+
 // =============================================================================
 // ACTIONS
 // =============================================================================

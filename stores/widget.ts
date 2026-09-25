@@ -37,7 +37,7 @@
 import { getDefaultStore } from 'jotai';
 import { Platform } from 'react-native';
 
-import { armWidgetRefreshChain } from '@/modules/widgetrefresh';
+import { armWidgetRefreshChain, setLockCard } from '@/modules/widgetrefresh';
 import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
@@ -45,7 +45,7 @@ import * as TimeUtils from '@/shared/time';
 import { type PrayerSequence, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot, buildPrayerWidgetTimeline, TIMELINE_DAYS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetAndroidProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
-import { hijriDateEnabledAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom, lockCardEnabledAtom } from '@/stores/ui';
 
 // Widget layout modules are required LAZILY inside the iOS-only push paths:
 // their evaluation registers the layouts (a side effect) and pulls in
@@ -116,6 +116,37 @@ const buildSequence = (schedule: ScheduleType, startDate: Date): PrayerSequence 
   PrayerUtils.createPrayerSequence(schedule, startDate, TIMELINE_DAYS + 1);
 
 /**
+ * Hands the Android lock card the standard schedule's window and the user's
+ * setting. Native renders and re-renders from it on the minute tick, so this
+ * runs only when the data or the preference changes, never per minute.
+ *
+ * The card follows the standard schedule: it answers "which prayer is next",
+ * and the extras are a second view of the same day rather than a competing
+ * answer.
+ */
+const pushLockCard = (): void => {
+  if (!FEATURE_FLAGS.androidLockCard) return;
+
+  const enabled = getDefaultStore().get(lockCardEnabledAtom);
+
+  try {
+    if (!enabled) {
+      setLockCard(false, null);
+      return;
+    }
+
+    const today = TimeUtils.getTodayDateString();
+    const startDate = TimeUtils.getDayAnchor(TimeUtils.getPreviousDateString(today));
+    const sequence = buildSequence(ScheduleType.Standard, startDate);
+    const snapshot = buildPrayerWidgetSnapshot(sequence, readWidgetSettings());
+
+    setLockCard(true, snapshot === null ? null : JSON.stringify(snapshot));
+  } catch (error) {
+    logger.warn('WIDGET: Failed to push the lock card', { error });
+  }
+};
+
+/**
  * Keeps the widgets aligned with in-app settings: any change to a
  * widget-visible preference re-pushes the timeline (debounced), so widgets
  * follow the app while it is in the foreground instead of waiting for the
@@ -123,7 +154,7 @@ const buildSequence = (schedule: ScheduleType, startDate: Date): PrayerSequence 
  */
 export const initWidgetSettingsSync = (): void => {
   const iosEligible = Platform.OS === 'ios' && FEATURE_FLAGS.widgets;
-  const androidEligible = Platform.OS === 'android' && FEATURE_FLAGS.androidWidgets;
+  const androidEligible = Platform.OS === 'android' && (FEATURE_FLAGS.androidWidgets || FEATURE_FLAGS.androidLockCard);
   if (settingsSyncInitialized || (!iosEligible && !androidEligible)) return;
   settingsSyncInitialized = true;
 
@@ -137,6 +168,9 @@ export const initWidgetSettingsSync = (): void => {
   };
 
   store.sub(hijriDateEnabledAtom, schedulePush);
+  // Not debounced: a toggle is one deliberate tap, and the card should appear
+  // or clear under the user's finger rather than a second later
+  store.sub(lockCardEnabledAtom, pushLockCard);
 };
 
 /**
@@ -233,10 +267,12 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
  * label-flip timers handle the in-between minute pushes themselves.
  */
 export const refreshPrayerWidgets = async (): Promise<void> => {
-  if (Platform.OS === 'ios' && !FEATURE_FLAGS.widgets) return;
-  if (Platform.OS === 'android' && !FEATURE_FLAGS.androidWidgets) return;
-
   if (Platform.OS === 'android') {
+    // The lock card is its own surface: a user may want it with no widget
+    // placed, so it refreshes even when the widgets flag is off
+    pushLockCard();
+    if (!FEATURE_FLAGS.androidWidgets) return;
+
     await pushScheduleAndroid(ScheduleType.Standard);
     await pushScheduleAndroid(ScheduleType.Extra);
     // The native minute-refresh chain keeps the widgets ticking after the
@@ -249,10 +285,11 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
     return;
   }
 
+  if (!FEATURE_FLAGS.widgets) return;
+
   await pushScheduleTimelines(ScheduleType.Standard);
   await pushScheduleTimelines(ScheduleType.Extra);
 };
-
 // =============================================================================
 // ANDROID PUSH PATH
 // Android widgets have no timeline: each kind stores one snapshot and the
