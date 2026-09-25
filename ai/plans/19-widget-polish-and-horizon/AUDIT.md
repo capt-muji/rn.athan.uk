@@ -157,3 +157,39 @@ row beside G.2, which reads the same code.
 proven on the device by measurement, and the records are now complete. Two of the session's guards
 had decayed and both were repaired here rather than handed back. The iOS flag is the one piece of
 the plan still owed, it is correctly unstarted, and its groundwork is banked.
+
+---
+
+# Audit addendum: step 5b and step 4, run 2026-09-25
+
+Session 19 left step 4 unrun because its gate, the G.1 acceptance protocol, needed the owner to place
+eight widgets and leave them ten minutes. The owner did that on 2026-09-25 and the remaining two steps
+ran in that session. This addendum audits them.
+
+| Item | How | Result |
+| --- | --- | --- |
+| The protocol's three readings | `LOG.md` step 5b, against the evidence files | All three PASS. Owner: eight kinds still showing prayer times after the watch. Watchdog: 0 across 346,199 lines. Crash reports: 15 before, 15 after, none dated 2026-09-25. |
+| The evidence exists and says what is claimed | `~/athan-device-sweep/session19b/crash-before.txt`, `crash-after.txt`, `xs-syslog.txt`, `widget-render-evidence.txt` | Read directly. The baseline of 15 matches what this file's section 9 recorded on 2026-09-24. The render log independently names all eight home kinds plus both Lock kinds. |
+| Step 4's gate was respected | Commit order | `ce3b3029` was made after the protocol passed, not before. |
+| Step 4 changed only what it may | `git show ce3b3029 --stat` | Six files: `shared/flags.ts`, `.env.example`, the two version files, `ai/plans/README.md`, `LOG.md`. Nothing else. |
+| The parse was NOT inverted (decision 6) | `git show ce3b3029 -- shared/flags.ts \| grep process.env` | The parse line is absent from the diff, so `=== '1'` stands. The fail direction "mistakes disable, never enable" is intact. |
+| `androidWidgets` untouched | Same diff | Unchanged, as the step requires: its flip condition is a separate owner judgement. |
+| The JSDoc drops every false claim | Read | No "Flip condition" paragraph, no 57.0.x history, no unreleased claim. |
+| The flag suites still pass | `npx jest shared/__tests__/flags.test.ts shared/__tests__/flagDefaults.test.ts` | `Tests: 32 passed, 32 total`, the same before and after. The parity check reports `20 skipped, 3 passed, 23 total`, exactly as step 4 predicts. |
+| The whole suite | The commit hook | `Tests: 4647 passed, 4647 total`, 170 suites, 100% on all four measures. |
+| Versions | `package.json` per commit | 1.27.378, one patch above the audit commit before it. `app.json` in lockstep. |
+| The owner's rules | The diff | No pixel changed, no prayer time touched, `releases.json`, `uat` and EAS untouched, no ignore comment, no hook skipped. |
+
+## Findings
+
+**None.** Step 5b was run exactly as written, its three readings are each backed by a file, and step 4
+changed only the catalog line and the documentation its contract allows.
+
+One methodological note worth carrying: the session's first `jetsam` grep returned 13 hits and every
+one was routine `runningboardd` bookkeeping for Reminders, Siri, Find My and SpringBoard. It was
+filtered to real terminations before being reported, which is the right order. A future protocol run
+should filter first rather than counting raw matches.
+
+## Verdict
+
+**PASS.** Row 16 is DONE, ISSUES G.1 is CLOSED, and the iOS widgets ship on.
