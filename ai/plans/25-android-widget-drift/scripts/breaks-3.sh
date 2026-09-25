@@ -7,7 +7,7 @@ LISTENER=$K/WidgetRefreshTickListener.kt
 MODULE=$K/WidgetRefreshModule.kt
 B_LISTENER=$(mktemp); B_MODULE=$(mktemp)
 CAUGHT=0
-EXPECTED=4
+EXPECTED=5
 
 cp "$LISTENER" "$B_LISTENER"; cp "$MODULE" "$B_MODULE"
 restore() { cp "$B_LISTENER" "$LISTENER"; cp "$B_MODULE" "$MODULE"; }
@@ -26,8 +26,10 @@ check_invariant() {
   grep -q 'private var registered = false' "$LISTENER" || return 1
   grep -q 'if (registered) return' "$LISTENER" || return 1
   grep -q 'registered = true' "$LISTENER" || return 1
-  # Its body re-arms.
-  grep -q 'ensureArmed' "$LISTENER" || return 1
+  # Its body RENDERS. It must never re-arm: TIME_TICK lands 500ms before the
+  # alarm fires, so re-arming here pushes the alarm forward forever.
+  grep -q 'updateAll' "$LISTENER" || return 1
+  grep -q 'ensureArmed' "$LISTENER" && return 1
   # The JS entry point registers it.
   grep -q 'WidgetRefreshTickListener.ensureRegistered' "$MODULE" || return 1
   return 0
@@ -49,8 +51,14 @@ run_break() {
 }
 
 # 1. The listener stops re-arming, which is its only job.
-run_break 'listener no longer re-arms' "$LISTENER" \
-  's/WidgetRefreshScheduler\.ensureArmed\(context\)/context/' "$B_LISTENER"
+run_break 'listener no longer redraws' "$LISTENER" \
+  's/WidgetRefreshScheduler\.updateAll\(context\)/context/' "$B_LISTENER"
+
+# 1b. The regression this step shipped and then fixed: re-arming from
+#     TIME_TICK pushes the pending alarm forward 500ms before it fires, every
+#     minute, so it never fires and the widget freezes.
+run_break 'listener re-arms instead of redrawing' "$LISTENER" \
+  's/WidgetRefreshScheduler\.updateAll\(context\)/WidgetRefreshScheduler.ensureArmed(context)/' "$B_LISTENER"
 
 # 2. The double-registration guard goes, so every push adds another receiver
 #    and each fires every minute for the life of the process.
