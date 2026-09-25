@@ -43,7 +43,30 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
-## Decided by the owner, 2026-09-25, while planning session 24
+## Decided by the owner, 2026-09-25, ON DEVICE: the day-list Lock faces are CANCELLED
+
+The two faces of session 24 were built, audited, installed on the XS, and rejected on sight:
+🐋  "it looks absolutely horrible. There's no space, everything is squeezed in... those 2 we just
+need to go, completely wiped as if they never existed before." Reverted in full at 1.28.16, so
+`ExtrasLockWidget4` and `PrayerLockWidget5` never ship. **Never re-queue either kind.**
+
+**The cause is geometry, and it rules out the whole idea, not just this attempt.** An
+`accessoryRectangular` face is ~160x72pt. Six rows in one column is ~12pt each; two columns give
+~24pt of height but only ~78pt of width for a name and a time together. The plan computed both
+numbers before anything was built and still called Layout 4 "tight". **A day list does not fit a
+Lock Screen accessory slot at any size**, so no spacing, font or split tuning is worth trying.
+
+**DURABLE LESSON: arithmetic predicting a cramped layout is a reason to stop, not a number to
+tune.** The measurement was in the plan and was built past anyway because comparing the two styles
+was the point. That comparison cost a plan, an execution, an audit and two device builds to learn
+what the arithmetic already said. Future Lock Screen work states the pt budget per element up front
+and gets the owner's ruling on the arithmetic BEFORE any code.
+
+The decisions below were taken while planning that session. They are kept because several outlive
+it (the tier scheme and the one-size rule describe how any accessory face should work), but the two
+kinds they describe are gone.
+
+## Decided by the owner, 2026-09-25, while planning session 24 (the CANCELLED day-list faces)
 
 - **Two Lock Screen day-list kinds, not four.** The session was queued as one-column and two-column
   styles across both schedules. The owner cut it to one style per schedule while the plan was being
@@ -301,3 +324,40 @@ One line each; a session's row moves here when it closes. Full detail is in git 
   still showing prayer times after ten minutes, zero watchdog violations across 346k syslog lines, and
   the cpu_resource count unchanged at 15), so `FEATURE_FLAGS.widgets` and `.env.example` ship the iOS
   widgets ON. ISSUES G.1 is CLOSED. G.2 stays open and is now user-visible on iOS.
+
+## Decided by the owner, 2026-09-25, on the Find X8: the Android countdown becomes a Chronometer
+
+**The bug.** A medium widget left placed for a few hours on the OPPO Find X8 read `8h 25m` when the
+true remaining was `8h 1m`: about 20 to 24 minutes late, and late always in the same direction.
+Widgets only. Notifications arm their own AlarmManager alarms per prayer and share none of this path.
+
+**The cause, from the source.** `modules/widgetrefresh` arms ONE self-re-arming exact alarm, and
+`WidgetRefreshScheduler.armNext` computes the next edge from `System.currentTimeMillis()` at the
+moment the receiver actually runs. So a fire ColorOS defers does not rejoin the wall-clock grid, it
+**restarts the grid late and keeps the loss forever**, and every later deferral adds to it. That is
+precisely a lateness that only ever grows. Two things compound it: `setExactAndAllowWhileIdle` is
+rate-limited to roughly one fire per minute per app in doze, which is exactly where a per-minute
+chain sits, and the label is computed by the widget body at render time, so a missed render leaves a
+stale label with nothing to correct it. The 3T cannot reproduce it (measured 1232 alarms against
+1232 wakeups, next alarm dead on the edge) because Android 9 does not doze like ColorOS 15.
+
+**The ruling.** Replace the pushed countdown text with Android's native `Chronometer`
+(`setChronometerCountDown(true)`), and accept `HH:MM:SS`. 🐋  "it is very, very crucial that the
+widgets stay in sync. Otherwise they are absolutely useless to everyone", and 🐋  "I am willing to
+give up the format, if there's no other way." The LAUNCHER's process ticks a `Chronometer`, with zero
+app alarms, so **drift becomes structurally impossible rather than merely smaller**. This is the same
+trade already taken on iOS in session 16a, where `3h 50m` became Apple's colon clock to get a
+zero-entry self-ticking countdown, so the platforms converge.
+
+**What the planner must design around,** all three verified on 2026-09-25:
+1. Session 18 already measured that a `Chronometer` renders only `06:08:32` (recorded in
+   `ai/AGENTS.md`), so the app's `6h 8m` shape and a free ticker are mutually exclusive on Android.
+2. A `Chronometer` counts to a target and cannot render `--:--`, the stale card, or a past-horizon
+   state, so the layout branches to a plain `Text` for every state that is not a live countdown.
+3. **It cannot be reached from JS.** `ExpoWidgetEmittableTree.kt` converts 14 view types with no
+   Chronometer and no RemoteViews passthrough, while Glance itself ships `AndroidRemoteViews`
+   (confirmed in the resolved `glance-appwidget-1.2.0-peek-0.3.0.aar`). The work is native Kotlin in
+   `modules/widgetrefresh` or a converter patch, never a widget-layout edit.
+
+The minute chain still has a job afterwards, the day rollover and the times; it simply stops being
+what per-second accuracy depends on.
