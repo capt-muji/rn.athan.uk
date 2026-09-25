@@ -229,7 +229,7 @@ jotai failure is easier to read when the gate has already been proven under its 
 
 - [x] Step 1: DONE in 1.27.387
 - [x] Step 2: DONE in 1.27.388
-- [ ] Step 3: `@jest/create-cache-key-function` 29.7.0 to 30.5.1 (specified)
+- [x] Step 3: DONE in 1.27.389
 - [ ] Step 4: `test-renderer` 1.2.0 to 1.3.0 (specified)
 - [ ] Step 5: `@types/react` 19.2.18 to 19.3.0 (specified)
 - [ ] Step 6: `lint-staged` 15.5.2 to 17.5.1 (specified)
