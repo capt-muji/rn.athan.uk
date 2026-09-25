@@ -43,6 +43,35 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-09-25, while planning session 24
+
+- **Two Lock Screen day-list kinds, not four.** The session was queued as one-column and two-column
+  styles across both schedules. The owner cut it to one style per schedule while the plan was being
+  written: 🐋  "So, 1 widget for it, not split... It would just be a list of 4 or 5, I guess a list
+  of 5 on Fridays" for extras, and 🐋  "for the standard schedule... only 1 widget, not 2 widgets...
+  3 plus 3. That's it" for standard. So `ExtrasLockWidget4` is the one-column extras face and
+  `PrayerLockWidget5` the two-column standard face, and neither schedule gets the other's style.
+  The kind names keep their queued numbers: a kind name is the identity iOS stores a placement
+  against, so it is never rewritten for tidiness.
+- **Row tiers on the glass: active solid white and bold, passed at 60%, upcoming at 35%.** An
+  accessory face renders in vibrant monochrome, so opacity and weight are the only hierarchy
+  available. Adds one literal, `rgba(255, 255, 255, 0.35)`, to the widget palette allow-list.
+- **Row sizes: 11pt in the one-column face, 14pt in the two-column face.** 14pt is the size the
+  owner settled on for every other lock face; the one-column face takes 11pt because five rows and
+  their spacing have to fit a ~72pt slot.
+- **No `try`/`catch` in any lock layout, including the three that already had one** (owner:
+  🐋  "can we also drop it on the existing lock widgets as well? If you can go ahead"). A layout
+  body reads JSON props and maps an array, so nothing in it can throw; the catch only held a branch
+  no input reaches, propped up at 100% coverage by three tests that hand-built a throwing property
+  getter. DURABLE LESSON: an unreachable branch is not free, and a test that only passes because it
+  manufactured the impossible input is testing the test.
+- **A day on screen with no readable row lists its rows and marks none.** `activeIndex` is `-1` for
+  hours at a time (`widgetTimeline.test.ts` pins runs of those entries), so this is a state the data
+  routinely carries rather than a fallback.
+- **No `accessoryInline` branch on the two new kinds.** `supportedFamilies` compiles into each
+  widget's Swift struct, so iOS cannot ask a kind for a family it does not declare: an inline branch
+  would be dead code with a dead test beside it.
+
 ## Decided by the owner, 2026-09-25, while planning session 20
 
 - **The widget timeline horizon drops from 7 days to 3.** The horizon is how long a widget stays
