@@ -1,0 +1,2 @@
+ * The native module exists only on Android builds; every other resolution
+ * answers null and arming is a no-op, so callers need no platform branch.
