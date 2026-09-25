@@ -7,4 +7,4 @@
 // Enabled-path suites opt in with a hoisted jest.mock of @/shared/flags
 // (stores/__tests__/widgetIo.test.ts, stores/__tests__/widgetSettingsSync.test.ts);
 // a bare env assignment cannot work, because ESM imports are hoisted past it.
-delete process.env.EXPO_PUBLIC_WIDGETS;
+delete process.env.EXPO_PUBLIC_IOS_WIDGETS;

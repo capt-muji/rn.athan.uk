@@ -97,7 +97,7 @@ export const WHATS_NEW: WhatsNewRelease | null = {
       title: 'Home & Lock widgets',
       body: 'Add prayer times to your Home and Lock Screen',
       platform: 'ios',
-      flags: ['widgets'],
+      flags: ['iosWidgets'],
       version: null,
     },
   ],

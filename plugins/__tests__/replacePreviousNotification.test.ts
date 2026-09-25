@@ -176,7 +176,7 @@ describe('the plugin wiring', () => {
   });
 
   it('keeps the plugin through app.config.ts when the widgets flag strips its own', () => {
-    delete process.env.EXPO_PUBLIC_WIDGETS;
+    delete process.env.EXPO_PUBLIC_IOS_WIDGETS;
     let names: string[] = [];
     jest.isolateModules(() => {
       const loaded = require('../../app.config').default as

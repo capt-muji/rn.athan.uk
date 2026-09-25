@@ -15,7 +15,7 @@ jest.mock('react-native', () => ({
   },
 }));
 
-jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: false, androidWidgets: false } }));
+jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: false, androidWidgets: false } }));
 
 jest.mock('@/modules/widgetrefresh', () => ({ armWidgetRefreshChain: jest.fn() }));
 

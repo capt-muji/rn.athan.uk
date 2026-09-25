@@ -1,7 +1,7 @@
 /**
  * Disabled-flag behavior for stores/widget.ts
  *
- * With FEATURE_FLAGS.widgets false the store must be inert on iOS: pushes
+ * With FEATURE_FLAGS.iosWidgets false the store must be inert on iOS: pushes
  * resolve without evaluating the widget bridge (no updateTimeline calls on
  * any of the ten kinds). The enabled case in the same suite proves the
  * difference is the flag, not the fixture.
@@ -72,12 +72,12 @@ beforeEach(() => {
 
 afterEach(() => {
   jest.useRealTimers();
-  process.env.EXPO_PUBLIC_WIDGETS = '1';
+  process.env.EXPO_PUBLIC_IOS_WIDGETS = '1';
 });
 
 describe('refreshPrayerWidgets under the widgets feature flag', () => {
   it('is inert on iOS when the flag is disabled: no kind is pushed', async () => {
-    delete process.env.EXPO_PUBLIC_WIDGETS;
+    delete process.env.EXPO_PUBLIC_IOS_WIDGETS;
     const stack = loadFreshStack();
     seedPrayerCache(stack, 2);
 
@@ -89,7 +89,7 @@ describe('refreshPrayerWidgets under the widgets feature flag', () => {
   });
 
   it('pushes all kinds on iOS when the flag is enabled', async () => {
-    process.env.EXPO_PUBLIC_WIDGETS = '1';
+    process.env.EXPO_PUBLIC_IOS_WIDGETS = '1';
     const stack = loadFreshStack();
     seedPrayerCache(stack, 2);
 

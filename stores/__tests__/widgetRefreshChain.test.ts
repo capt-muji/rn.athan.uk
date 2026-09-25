@@ -15,7 +15,7 @@ jest.mock('react-native', () => ({
   },
 }));
 
-jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: false, androidWidgets: true } }));
+jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: false, androidWidgets: true } }));
 
 jest.mock('@/modules/widgetrefresh', () => ({ armWidgetRefreshChain: jest.fn() }));
 
@@ -88,7 +88,7 @@ describe('the native refresh chain arm call', () => {
       jest.doMock('react-native', () => ({
         Platform: { OS: 'ios', select: (options: { ios?: unknown }) => options.ios },
       }));
-      jest.doMock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: true, androidWidgets: true } }));
+      jest.doMock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: true, androidWidgets: true } }));
       jest.doMock('@/modules/widgetrefresh', () => ({ armWidgetRefreshChain: mockArmIos }));
       const { refreshPrayerWidgets: iosRefresh } = require('@/stores/widget') as typeof import('@/stores/widget');
       refreshed = iosRefresh();

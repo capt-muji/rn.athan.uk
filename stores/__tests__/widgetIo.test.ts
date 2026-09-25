@@ -8,14 +8,14 @@
  * - readWidgetSettings: snapshots both widget-visible preferences
  *
  * The suite exercises the ENABLED widget path, which is not the shipped
- * configuration (jest.setup.js deletes EXPO_PUBLIC_WIDGETS so every suite runs
+ * configuration (jest.setup.js deletes EXPO_PUBLIC_IOS_WIDGETS so every suite runs
  * the flag off by default), so it opts in explicitly below. The mock is
  * hoisted above the imports on purpose: flags.ts reads the env once at module
  * evaluation and ESM imports are hoisted, so setting the variable in the file
  * body would run after @/stores/widget has already captured FEATURE_FLAGS.
  */
 
-jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: true } }));
+jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: true } }));
 
 import { addDays, format } from 'date-fns';
 import { getDefaultStore } from 'jotai';

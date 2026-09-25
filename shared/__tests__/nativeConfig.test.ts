@@ -9,8 +9,8 @@ const loadAppConfigFresh = () => {
     // app.config.ts strips the expo-widgets plugin unless the flag is on, and a flags test that ran
     // earlier in this worker may have deleted the variable; the config under test is the
     // widgets-enabled one
-    const previousFlag = process.env.EXPO_PUBLIC_WIDGETS;
-    process.env.EXPO_PUBLIC_WIDGETS = '1';
+    const previousFlag = process.env.EXPO_PUBLIC_IOS_WIDGETS;
+    process.env.EXPO_PUBLIC_IOS_WIDGETS = '1';
     try {
       const loaded = require('../../app.config').default as
         | import('expo/config').ExpoConfig
@@ -18,9 +18,9 @@ const loadAppConfigFresh = () => {
       holder.config = typeof loaded === 'function' ? loaded({ platform: 'ios' }) : loaded;
     } finally {
       if (previousFlag === undefined) {
-        delete process.env.EXPO_PUBLIC_WIDGETS;
+        delete process.env.EXPO_PUBLIC_IOS_WIDGETS;
       } else {
-        process.env.EXPO_PUBLIC_WIDGETS = previousFlag;
+        process.env.EXPO_PUBLIC_IOS_WIDGETS = previousFlag;
       }
     }
   });

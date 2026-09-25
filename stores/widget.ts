@@ -122,7 +122,7 @@ const buildSequence = (schedule: ScheduleType, startDate: Date): PrayerSequence 
  * next sync. Idempotent; no-op off iOS.
  */
 export const initWidgetSettingsSync = (): void => {
-  const iosEligible = Platform.OS === 'ios' && FEATURE_FLAGS.widgets;
+  const iosEligible = Platform.OS === 'ios' && FEATURE_FLAGS.iosWidgets;
   const androidEligible = Platform.OS === 'android' && FEATURE_FLAGS.androidWidgets;
   if (settingsSyncInitialized || (!iosEligible && !androidEligible)) return;
   settingsSyncInitialized = true;
@@ -233,7 +233,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
  * label-flip timers handle the in-between minute pushes themselves.
  */
 export const refreshPrayerWidgets = async (): Promise<void> => {
-  if (Platform.OS === 'ios' && !FEATURE_FLAGS.widgets) return;
+  if (Platform.OS === 'ios' && !FEATURE_FLAGS.iosWidgets) return;
   if (Platform.OS === 'android' && !FEATURE_FLAGS.androidWidgets) return;
 
   if (Platform.OS === 'android') {
