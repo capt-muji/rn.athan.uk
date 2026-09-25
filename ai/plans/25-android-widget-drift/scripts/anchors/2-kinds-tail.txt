@@ -1,0 +1,6 @@
+    private const val WIDGETS_PREFERENCES_NAME = "expo.modules.widgets"
+
+    /** Must match PrayerWidgetAndroidProps.grantedWidthDp in shared/widgetTypes.ts. */
+    private const val GRANTED_WIDTH_KEY = "grantedWidthDp"
+
+    private val HOME_KINDS = listOf(

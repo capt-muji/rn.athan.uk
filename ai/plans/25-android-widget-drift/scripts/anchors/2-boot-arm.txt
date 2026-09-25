@@ -1,0 +1,4 @@
+        WidgetRefreshScheduler.updateAll(context)
+        if (WidgetRefreshScheduler.hasPlacedWidgets(context)) {
+            WidgetRefreshScheduler.armNext(context)
+        }
