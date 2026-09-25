@@ -99,10 +99,11 @@ Off that path:
 | 15 | 19. Widget polish: Android dark colours match iOS, the active pill overhang, the horizon to 7 days, the iOS flag on | `ai/prompts/widget-polish-and-horizon.md` | `ai/plans/19-widget-polish-and-horizon/PLAN.md` | DONE (steps 1 to 3 and the 3T proof; step 4, the iOS flag flip, was correctly not started and is re-queued as row 16a) | `5926e35f` | nothing |
 | 16 | 19b. The iOS widgets flag: run the G.1 acceptance protocol on the XS, then flip it | `ai/plans/19-widget-polish-and-horizon/PLAN.md` step 4 | that plan's step 4 and step 5b | DONE (2026-09-25: the protocol passed on the XS and the flag ships on) | `5926e35f` | nothing |
 | 17 | 20. G.2: the blank card at placement, and the horizon to 3 days | `ai/ISSUES.md` G.2 | `ai/plans/20-g2-blank-card-and-horizon/PLAN.md` | DONE | `1406dc51` | nothing (16's flag flip makes G.2 user-visible on iOS, so the two are read together; this row does not wait on it) |
-| 18 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
+| 18 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands. **Session 21 added a second job to this row: Babel 8.** `@babel/core` 8.0.6 and its three plugins cannot move while `babel-preset-expo@58.0.3` depends on 36 Babel 7 plugins and `@react-native/babel-preset` pins `@babel/core ^7.25.2`; Babel 8 with a Babel 7 plugin throws `BABEL_VERSION_UNSUPPORTED`. Bump the four together when the SDK's presets move, never before |
 | 19 | 18. Android lock screen widgets: deep investigation, 3T first | `ai/prompts/android-lock-screen-widgets.md` | `ai/plans/18-android-lock-screen-widgets/PLAN.md` (evidence in `FINDINGS.md`) | DONE (2026-09-25: investigation only, no code ships) | `2aeac17c` | nothing (verdict: no lock-screen widget API on either phone, the AOSP Glanceable Hub is inert on ColorOS and absent on Android 9, OPPO's own cards are signature-gated; the one working vehicle, a persistent notification, was built and proven then rejected by the owner, so it was reverted in full) |
 | 20 | 21. Bump every non-SDK package to its absolute latest | `ai/plans/README.md` "Waiting on the owner" (owner 2026-09-18, rescoped 2026-09-25) | `ai/plans/21-bump-everything-latest/PLAN.md` | IN PROGRESS (all 8 steps merged, 1.27.387 to 1.27.394; 3T proof PASSED; XS built, installed and running with no crash; waiting only on the owner's own look at the iPhone screen, then EXECUTED. Resume note at the end of `LOG.md`) | `3df9733c` | nothing |
-| 21 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
+| 21 | 22. Dependency freshness sweep: re-measure every non-SDK package and batch what has moved | `ai/plans/README.md` "How a dependency upgrade is split into sessions" | not written yet | NOT PLANNED | | 20 (session 21 must be DONE, because it is what makes this a sweep rather than the first pass) |
+| 22 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
 
 - **Session 6b was planned under the previous rules**, on the morning of 2026-09-16, before "specify, do not
   dictate" was written that afternoon. Every one of its steps hands the executor finished files under
@@ -113,6 +114,27 @@ Off that path:
 - "Planned at" is the `uat-2` commit the plan's anchors were verified against.
 - "Needs first" lists the order numbers of the rows that must be DONE before this plan is executed, such as `1`, or
   `nothing`. A planning session replaces "set when planned".
+
+## How a dependency upgrade is split into sessions (owner, 2026-09-25)
+
+The owner's rule, given while session 21 ran: a major version gets a session of its own, and a batch of patch and
+minor bumps shares one. Session 21 then showed what to refine, so the rule is **blast radius, not the version
+number**:
+
+| Shape of the bump | How it is queued |
+| --- | --- |
+| Patch or minor, no API this project touches | Batched with the others, one commit each, one session |
+| A major that changes nothing here | Batched too. `lint-staged` crossed TWO majors in session 21 and cost nothing, because the config was JSON and both tasks were binaries |
+| A major that breaks code, tests or tooling | Its own session. `jotai` 3 broke 82 of 170 suites through three separate causes and deserved the whole session it got |
+| Two breaking majors at once | Never the same session, even on separate branches. Each needs its own device proof, and a failure with two suspects costs more to diagnose than both sessions save |
+| A major blocked upstream | Not queued at all until the blocker moves. The four `@babel` packages wait on `babel-preset-expo`, so they belong to the SDK row, not a bump row |
+
+How to tell which, before queuing: install the candidate in a scratch worktree, run `tsc`, Biome and the full suite,
+and count what fails. That measurement is the whole decision, and it is cheap. Session 21's own numbers are the
+worked example, in `ai/plans/21-bump-everything-latest/PLAN.md` section 5.
+
+One package per branch and per commit stays the rule in every case (owner, 2026-09-25), because `yarn.lock` is one
+resolved graph: two packages in a commit cannot be reverted apart.
 
 ## Waiting on the owner, not yet sessions
 
