@@ -81,7 +81,7 @@
    the proof it still works.
    ```
 
-   In the commit log, confirm a lint-staged task list appears above the `Tests:` line. If lint-staged errors, STOP.
+   In the commit log, confirm `Running tasks for staged files` and the two ticked task lines appear above the `Tests:` line. lint-staged 17 does not print its own name, so the task output is the evidence, not the word `lint-staged`. If a task errors, STOP.
 
 9. **Review.** No subagent (section 11). The session reviews its own diff: three files, one version string, and the
    `lint-staged` config block untouched. Recorded in `LOG.md`.
@@ -94,5 +94,5 @@
 
 11. **Done when:**
     - `npx lint-staged --version` prints `17.5.1`;
-    - the commit's log shows lint-staged ran, then `Tests: ... passed` and four `100%` lines;
+    - the commit's log shows `Running tasks for staged files` and both ticked task lines, then `Tests: ... passed` and four `100%` lines;
     - `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0.

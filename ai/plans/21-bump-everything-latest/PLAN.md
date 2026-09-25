@@ -237,8 +237,8 @@ jotai failure is easier to read when the gate has already been proven under its 
 - [x] Step 3: DONE in 1.27.389
 - [x] Step 4: DONE in 1.27.390
 - [x] Step 5: DONE in 1.27.391
-- [ ] Step 6: `lint-staged` 15.5.2 to 17.5.1 (specified)
-- [ ] Step 7: `husky` 8.0.3 to 9.1.7, with the hooks and the gate's own test (specified)
+- [x] Step 6: DONE in 1.27.392
+- [x] Step 7: DONE in 1.27.393
 - [ ] Step 8: `jotai` 2.20.3 to 3.0.0, with the `loadable` replacement, the Jest ESM fix and the internals rename (specified)
 
 Each step's detail is in `steps/<k>-<name>.md`.

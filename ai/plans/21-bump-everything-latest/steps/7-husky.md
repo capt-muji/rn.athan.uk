@@ -148,5 +148,5 @@ checks are not a formality and the step is not finished until every one of them 
     - `node -p "require('./package.json').scripts.prepare"` prints `husky`;
     - `test -x .husky/pre-commit && test -x .husky/pre-push` exits 0;
     - `head -1 .husky/pre-commit` is NOT `#!/usr/bin/env sh`;
-    - the commit's log shows lint-staged, `Tests: ... passed` and four `100%` lines, proving the hook ran;
+    - the commit's log shows `Running tasks for staged files`, the two ticked task lines (`✔ biome check --write --no-errors-on-unmatched` and `✔ jest --bail --findRelatedTests --passWithNoTests`), then `Tests: ... passed` and four `100%` lines, proving the hook ran. lint-staged 17 does NOT print its own name, so never grep for the word `lint-staged`;
     - `npx jest --silent --coverage` prints `Test Suites: 170 passed, 170 total`.
