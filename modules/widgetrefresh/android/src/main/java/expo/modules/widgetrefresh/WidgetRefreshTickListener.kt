@@ -6,18 +6,24 @@ import android.content.Intent
 import android.content.IntentFilter
 
 /**
- * Re-arms the tick on every system minute while this process lives, so an
- * alarm the OS destroyed is invisible: the next minute puts it back. This
- * covers the window between losing the alarm and the 15-minute watchdog
- * noticing.
+ * Redraws the widgets on every system minute while this process lives, so the
+ * countdown stays correct even if the alarm was destroyed or deferred.
+ *
+ * It RENDERS; it must never re-arm. ACTION_TIME_TICK arrives at the minute
+ * boundary itself, and the alarm is set 500ms past that boundary, so calling
+ * armNext from here reschedules the pending alarm to the NEXT minute 500ms
+ * before it would have fired. Doing that every minute means the alarm can
+ * never fire at all: it is pushed forward forever and the widget freezes.
+ * Measured on the 3T at 1.28.19, where the label sat at 53m while the true
+ * remaining walked from 53m to 36m.
  *
  * Registered at runtime, never in the manifest: Android refuses
  * ACTION_TIME_TICK to manifest receivers from API 26 and this module's minSdk
  * is 24, so a manifest entry would work on two API levels and silently stop on
  * every later one.
  *
- * ACTION_TIME_TICK arrives once a minute for the life of the process, so the
- * body stays one guarded re-arm and nothing else.
+ * The body stays one guarded redraw, because it runs every minute for the life
+ * of the process.
  */
 internal object WidgetRefreshTickListener {
     @Volatile
@@ -26,7 +32,7 @@ internal object WidgetRefreshTickListener {
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (WidgetRefreshScheduler.hasPlacedWidgets(context)) {
-                WidgetRefreshScheduler.ensureArmed(context)
+                WidgetRefreshScheduler.updateAll(context)
             }
         }
     }
