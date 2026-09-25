@@ -249,6 +249,7 @@ describe('palette literals', () => {
       // Lock Screen accessory widgets
       '#ffffff',
       'rgba(255, 255, 255, 0.6)',
+      'rgba(255, 255, 255, 0.35)',
       'rgba(0, 0, 0, 0)',
       // Home widget — light Cotton Candy
       'rgba(252, 252, 254, 0.92)',
@@ -391,9 +392,9 @@ describe('widget directive', () => {
         },
       });
 
-      // The home module holds one layout; the lock module holds three (its
+      // The home module holds one layout; the lock module holds five (its
       // layouts differ only in composition and share nothing by reference)
-      expect(count).toBe(name === 'PrayerLockWidget' ? 3 : 1);
+      expect(count).toBe(name === 'PrayerLockWidget' ? 5 : 1);
     });
   }
 });
