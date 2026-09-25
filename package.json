@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.27.390",
+  "version": "1.27.391",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -84,7 +84,7 @@
     "@testing-library/react-native": "14.0.1",
     "@types/jest": "^30.0.0",
     "@types/node": "26.6.2",
-    "@types/react": "~19.2.4",
+    "@types/react": "19.3.0",
     "expo-dev-client": "~58.0.3",
     "husky": "8.0.3",
     "jest": "^30.4.2",

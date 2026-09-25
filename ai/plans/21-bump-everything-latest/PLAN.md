@@ -59,8 +59,13 @@ phone, so you should definitely work on both these phones." (owner, 2026-09-25, 
    typings ahead of their runtime would declare APIs the installed React does not have. The owner's rule sent it back
    to be tested instead of assumed, and the assumption was wrong: `@types/react@19.3.0` against `react` 19.2.3 gives
    `tsc` 0, the full suite 170 passed and 100% coverage. Types are erased at build and never reach either phone, so
-   the runtime is untouched either way. It also settles the `react-reconciler@0.34.0` peer warning that
-   `test-renderer@1.3.0` introduces in step 4.
+   the runtime is untouched either way.
+
+   **Corrected during execution, 2026-09-25.** This decision first claimed that step 5 would also settle the
+   `react-reconciler@0.34.0` peer warning step 4 introduces. It does not, and the claim was wrong: that warning names
+   `react@^19.3.0`, the runtime package, which the SDK pins at 19.2.3, not `@types/react`. The warning is expected to
+   remain until React itself moves in row 18. It is inert here for the reason step 4 already gives, that both
+   `test-renderer` call sites are type-only imports, and every suite passes.
 6. **The SDK-pinned packages are out of scope, by the owner's own boundary.** Planner, applying decision 2's quote:
    `react-native`, `react`, `react-dom`, `react-native-reanimated`, `react-native-worklets`, `react-native-screens`,
    `react-native-pager-view`, `react-native-gesture-handler`, `react-native-svg`, `react-native-safe-area-context`,
@@ -230,8 +235,8 @@ jotai failure is easier to read when the gate has already been proven under its 
 - [x] Step 1: DONE in 1.27.387
 - [x] Step 2: DONE in 1.27.388
 - [x] Step 3: DONE in 1.27.389
-- [ ] Step 4: `test-renderer` 1.2.0 to 1.3.0 (specified)
-- [ ] Step 5: `@types/react` 19.2.18 to 19.3.0 (specified)
+- [x] Step 4: DONE in 1.27.390
+- [x] Step 5: DONE in 1.27.391
 - [ ] Step 6: `lint-staged` 15.5.2 to 17.5.1 (specified)
 - [ ] Step 7: `husky` 8.0.3 to 9.1.7, with the hooks and the gate's own test (specified)
 - [ ] Step 8: `jotai` 2.20.3 to 3.0.0, with the `loadable` replacement, the Jest ESM fix and the internals rename (specified)
