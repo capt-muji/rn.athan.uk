@@ -49,7 +49,9 @@ module.exports = {
       testPathIgnorePatterns: ['/node_modules/', ...ignoredPaths],
       modulePathIgnorePatterns: ignoredPaths,
       moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-      transform: { '^.+\\.tsx?$': appTransform },
+      // .js is here for jotai, ESM-only since v3
+      transform: { '^.+\\.[jt]sx?$': appTransform },
+      transformIgnorePatterns: ['/node_modules/(?!jotai)'],
     },
     {
       // Renders real React Native components with React Native Testing Library: React Native's own Jest setup and
@@ -93,9 +95,10 @@ module.exports = {
           '@react-native/jest-preset/jest/assetFileTransformer.js'
         ),
       },
-      // jest-expo's list of packages that ship untranspiled code, plus this app's other native libraries
+      // jest-expo's list of packages that ship untranspiled code, plus this app's other native libraries, and
+      // jotai, ESM-only since v3
       transformIgnorePatterns: [
-        '/node_modules/(?!(react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|standard-navigation|@gorhom|reanimated-color-picker))',
+        '/node_modules/(?!(react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|standard-navigation|@gorhom|reanimated-color-picker|jotai))',
       ],
     },
   ],
