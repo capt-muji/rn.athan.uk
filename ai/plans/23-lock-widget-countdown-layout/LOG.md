@@ -71,3 +71,46 @@ a timer beside another element and the tests assert the modifier tree, not iOS's
 
 Nothing is merged. The branch is `experiment/lock-widget-font-50pc`, per the owner's instruction to
 hold it until they have tested it themselves.
+
+## The six commits after 1.28.1
+
+Back-filled by the audit on 2026-09-25: this log had stopped at the first commit while six more shipped. The
+session ran as a live loop with the owner reading each build on the XS, so the plan's four-step checklist was
+overtaken by their rulings. What actually landed, in order:
+
+| Version | What changed | Why |
+| --- | --- | --- |
+| `3c7c586e` 1.28.0 | Layout 3 added (name + countdown), sizes 17/14/11, `WHITE_SECONDARY` renamed `WHITE_MUTED` | The plan as written |
+| `ee2ba209` 1.28.1 | This log, plus the `ai/AGENTS.md` record | The plan as written |
+| `40f5cc34` 1.28.3 | Layout 3 countdown given `fixedSize`; Layout 1's absolute time to solid | First centring attempt, and an owner colour ruling |
+| `f5fba7e3` 1.28.4 | Version bump only | The first real-data build: `.env` holds `EXPO_PUBLIC_ENV=local`, so `api/client.ts:124` had been returning `MOCK_DATA_SIMPLE` and the widget carried launch-relative times. Rebuilt with `eas env:exec preview` |
+| `dee4c765` 1.28.7 | The midline split on Layouts 2 and 3; every live face to one size and medium weight; Layout 1 row spacing to 6pt | The owner's design, after three failed centring attempts |
+| `293b2fd2` 1.28.8 | Gallery reordered (countdown pair first), Layout 3 unbolded, all six descriptions rewritten | Owner ruling on reading all three on device |
+| `02dc1a81` 1.28.9 | Row set DONE | Premature: see `AUDIT.md` finding 1 |
+
+Versions 1.28.2, 1.28.5 and 1.28.6 were bumped for builds that owner feedback superseded before they were
+committed, so those numbers exist in no commit.
+
+### What the session learned that the plan could not have known
+
+**A `Text(timerInterval:)` reports a worst-case width as its intrinsic size.** This cost four attempts and is now
+in `ai/AGENTS.md`. A shrink-wrapped `HStack` around one measures the reservation, not the glyphs, so centring the
+row strands the name at the slot's edge. `multilineTextAlignment` only moves glyphs inside the reservation;
+`fixedSize` pins it open and makes the row overflow, which took the digits off the slot entirely and was the
+"countdown does not exist" symptom. The fix was to stop centring and anchor each half at the slot's midline.
+
+**Three store suites resolve the lock module through a jest mock.** `jest.config.js` maps
+`@/widgets/LockPrayerWidget` to `shared/__mocks__/widgets/LockPrayerWidget.ts`, so a kind that exists in the real
+module but not the mock is `undefined` when `stores/widget.ts` calls `updateTimeline` on it. A new kind is five
+edits, not four.
+
+**Adding a modifier to a layout without adding it to the test's modifier mock makes the layout throw** and render
+its placeholder, which is how the error path proved itself twice.
+
+**A break that passes is a broken test.** One break initially passed because the substitution had matched an inline
+fallback rather than the live element; it was retried against the right occurrence before being believed.
+
+### Device state
+
+The iPhone XS (`00008020-0015585C22D2002E`) is left on **1.28.8**, a Release build carrying the real API key, so
+its widgets show live London times. The owner drove every acceptance read; no screenshot was taken by the session.
