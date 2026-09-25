@@ -1,0 +1,11 @@
+    /** Arms the next minute-edge alarm when none is pending, so every caller may call freely. */
+    fun ensureArmed(context: Context) {
+        val appContext = context.applicationContext
+        val existing = PendingIntent.getBroadcast(
+            appContext,
+            0,
+            Intent(appContext, WidgetRefreshReceiver::class.java),
+            PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
+        )
+        if (existing == null) armNext(appContext)
+    }
