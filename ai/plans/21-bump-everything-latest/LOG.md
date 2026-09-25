@@ -123,3 +123,90 @@
 - Review (the session's own): every name and signature as the contract gives them; the identity comparison present;
   the internals keys read from the library; no existing test edited; only the five intended files changed.
   Verdict: merge, one round.
+
+## Device proof, part 1: the OnePlus 3T (baseline phone)
+
+Production build of `uat-2` at 1.27.394 (`BUILD-PROD OK`, 375s, real API key, arm64-v8a, versionCode 1000000).
+Widget providers verified in the APK BEFORE installing, per the durable lesson from 2026-09-25:
+`aapt dump xmltree ... | grep -c PrayerWidgetProvider` printed 1, so the APK is not the picker-less kind.
+
+- Installed with `adb install -r` (data kept). `dumpsys package` then read `versionName=1.27.394`.
+- Cold launch `am start -W`: `TotalTime: 3136`ms, against the ~6.6s documented for this phone in ISSUES #32. No
+  regression; comfortably faster.
+- Fatal exceptions in logcat: **0**. Mentions of jotai, syncLoadable or loadable: **0**.
+- One benign log, pre-existing and not from this session: `androidx.work` probes
+  `ValueAnimator$DurationScaleChangeListener`, an Android 12+ class absent on Android 9, and logs the miss at level I
+  (info) with no fatal. It names none of this session's packages.
+- **Live view hierarchy read through Maestro `inspect_screen`** rather than a screenshot, because the vision subagent
+  could not be reached in this harness and an image is never guessed at. It read: "London, UK", "Fri, 25 Sep 2026",
+  countdown "Asr 2h 11m 19s", "Dhuhr 58m ago", and six prayers with Arabic names and real times: Fajr 05:20, Sunrise
+  06:48, Dhuhr 12:57, Asr 16:07, Magrib 18:55, Isha 20:12. No dashes, no error screen, no spinner.
+- **These are real API times, not mock.** A mock build seeds prayers either side of launch. Here Asr 16:07 less the
+  13:56 wall clock is 2h 11m, exactly the countdown shown, and Dhuhr 12:57 was 58m earlier, exactly as labelled.
+- Resume (HOME, then relaunch): countdown had ticked to "Asr 2h 10m 21s", every time unchanged, "Dhuhr 59m ago"
+  advanced. Same pid, so no crash-restart.
+- Widgets: all 8 providers registered, and the 2 placed ones live on `net.oneplus.launcher` (hostId:1024),
+  `zombie=false`.
+- Alarms before and after match: the widget refresh tick
+  (`expo.modules.widgetrefresh.WidgetRefreshReceiver`) and the `ACTION_FORCE_STOP_RESCHEDULE` entry dated 2036 that
+  every 3T dump shows. Saved as `alarms-before.txt` and `alarms-after.txt`.
+- Evidence under `~/athan-device-sweep/session21/3t/`: `logcat-after-launch.txt`, `screen-readout.txt`, `home.png`.
+
+## Device proof, part 2: the iPhone XS
+
+Release build of 1.27.394, `npx expo prebuild -p ios --no-install` first (plist read
+`CFBundleShortVersionString 1.27.394`), then `npx expo run:ios --configuration Release --device 00008020-...`.
+
+- **The first two build attempts failed and NEITHER was this session's code.** Attempt 1 died in
+  `ExpoModulesJSI » [CP-User] Build ExpoModulesJSI xcframework` with `error: the following command failed with exit
+  code 0 but produced no further output`, a from-scratch pod-script flake; the log mentions none of the eight
+  packages, and Metro had already logged `Done writing bundle output` with zero resolve or syntax errors, which is the
+  part jotai 3 actually affects. Attempt 2 died on `unable to attach DB ... database is locked`, because attempt 1's
+  `xcodebuild` was still holding the DerivedData lock. After killing both, attempt 3 printed `Build Succeeded` and
+  installed.
+- `devicectl device info apps` reads `Athan com.mugtaba.athan 1.27.394`.
+- Launched with `devicectl device process launch --terminate-existing`: `Launched application`, pid 44310, still
+  listed by `device info processes` two minutes later.
+- **Crashes: zero from today.** `pymobiledevice3 crash ls` lists 6 Athan reports and every one is
+  `Athan-2026-09-10-*`, none dated 2026-09-25.
+- Touch automation is unavailable on a physical iPhone (`ai/AGENTS.md`), and Maestro confirms it:
+  `Device 00008020-... (IOS/REAL) is not supported by the MCP server`. So the screen reading on iOS is the owner's,
+  and the question to ask is in `steps/9-device-proof.md`.
+
+### The six old crashes, investigated on the owner's instruction
+
+The owner's rule: a crash is never waved past, however old. Investigated in full.
+
+- All six are `SIGABRT` / `Abort trap: 6` on the main thread, an objc exception rethrown through
+  `CFRunLoopRunSpecific` then `_objc_terminate`, with `abort() called` as the only annotation. No JavaScript frame and
+  no symbol from this app beyond `main`, so the throw is native and the report carries no `exceptionReason`.
+- **Every one names `app_version 1.24.0`,** and they fall inside a nine-minute window on 2026-09-10 (11:58:03 to
+  12:07:01), which is a build being launched repeatedly while it was broken, not a user's phone failing over time.
+- 1.24.0 is a KNOWN-BROKEN build that was already fixed. `d53d85db`, committed the next day, is
+  `1.24.1 - fix: force expo-notifications source build (expo.autolinking.android.buildFromSource); 1.24.0 APKs linked
+  the precompiled AAR so the alarmClock patch never compiled in`. 1.24.x was also the revalidation window recorded in
+  `ai/AGENTS.md` for 2026-09-11, where the previous days' root-cause claims were found wrong and reverted.
+- `uat-2` is now 170 patch versions past it. Today's build on the same phone, 1.27.394, has zero crash reports, is
+  alive, and the 3T reports zero fatal exceptions on the same version.
+- **Conclusion: nothing to fix here.** These are the fossils of a build that was diagnosed and superseded within a
+  day. No crash exists on any version this session could ship. Recorded so no future session re-investigates them.
+
+## Resume from: the owner's iOS screen check, then the records commit
+
+Every one of the 8 steps is DONE and merged into `uat-2`. The 3T proof is complete and passed. The XS is built,
+installed and running 1.27.394 with no crash. What is left, in order:
+
+1. **The owner answers the iOS screen question** (`steps/9-device-proof.md`): "On the iPhone, do all the placed Athan
+   widgets still show prayer times, and is any of them blank or black? And does the prayer list show today's London
+   times?" Touch automation cannot reach a physical iPhone, so this reading is the owner's and nothing substitutes
+   for it.
+2. **The records are already written** into `ai/features/uat-2/AUDIT-FINDINGS.md` under
+   `## Session 21: every non-SDK package at latest`, with the 3T numbers filled in. Only the iOS line needs the
+   owner's answer folded in.
+3. **Set the row to EXECUTED** in `ai/plans/README.md` (row 20) and make the `executed` docs commit
+   (`EXECUTOR-BRIEF.md` section 4b). Do not push: the audit pushes.
+4. **Then the audit** runs as its own phase over the 10 unpushed commits.
+
+Phone state: the 3T holds the 1.27.394 PRODUCTION build, not the usual mock one, because this session's proof needed
+real prayer times. The next session that needs mock data reinstalls it. Automatic time was never changed by this
+session, so no clock restore is owed.
