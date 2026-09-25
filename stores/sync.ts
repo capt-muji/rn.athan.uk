@@ -5,8 +5,8 @@
  * @see ai/adr/005-timing-system-overhaul.md
  */
 
-import { atom } from 'jotai';
-import { loadable } from 'jotai/utils';
+import { type Atom, atom } from 'jotai';
+import { unwrap } from 'jotai/utils';
 
 import * as Api from '@/api/client';
 import { APP_CONFIG } from '@/shared/config';
@@ -21,14 +21,30 @@ import { resetStoredAtom } from '@/stores/storage';
 import { handleAppUpgrade } from '@/stores/version';
 import * as PrayerWidgets from '@/stores/widget';
 
+/** The three states a consumer reads off `syncLoadable`, as jotai 2's `loadable` reported them */
+type Loadable<Value> =
+  | { state: 'loading' }
+  | { state: 'hasError'; error: unknown }
+  | { state: 'hasData'; data: Awaited<Value> };
+
+// jotai 3 deleted `loadable`; this is the replacement its deprecation notice gives (pmndrs/jotai#3217).
+// The sentinel is compared by identity because a resolved value can itself be undefined.
+const loadable = <Value>(anAtom: Atom<Value>): Atom<Loadable<Value>> => {
+  const LOADING: Loadable<Value> = { state: 'loading' };
+  const unwrapped = unwrap(anAtom, () => LOADING as never);
+
+  return atom((get) => {
+    try {
+      const data = get(unwrapped);
+      return data === LOADING ? LOADING : { state: 'hasData', data: data as Awaited<Value> };
+    } catch (error) {
+      return { state: 'hasError', error };
+    }
+  });
+};
+
 // --- Atoms ---
 // Startup defers the widget timeline push past first content (see sync options)
-//
-// `loadable` is deprecated in jotai 2.20.3 and is removed in v3, which is why a
-// dev build logs "[DEPRECATED] loadable ..." once at startup. This is the only
-// call site. The replacement is a userland wrapper around `unwrap`
-// (https://github.com/pmndrs/jotai/pull/3217), so a jotai major upgrade has to
-// bring that wrapper with it rather than expecting a drop-in.
 export const syncLoadable = loadable(atom(async () => sync({ deferWidgetRefresh: true })));
 
 // --- Helpers ---
