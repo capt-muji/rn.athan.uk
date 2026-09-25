@@ -48,25 +48,44 @@ Every one taken in this session, on device, on the iPhone XS.
 
 ## 3. The contract
 
+Rewritten by the audit on 2026-09-25. What follows is what SHIPPED. The original contract here was written before
+the owner had seen anything on the XS, and their rulings across six builds superseded four of its rows: it had the
+name at 17pt on layout 1, bold on all three layouts, and the countdown solid. A stale contract is worse than none,
+because the next reader trusts it.
+
 `WHITE` is solid `#ffffff`; `WHITE_MUTED` is `rgba(255, 255, 255, 0.6)`.
+
+Layout numbers below are the shipped gallery order (see section 1).
 
 | Element | Size | Weight | Colour |
 | --- | --- | --- | --- |
-| Prayer name | 17 layout 1, 14 layouts 2 and 3 | **bold** | `WHITE` |
-| Absolute time | 14 | medium | `WHITE_MUTED` |
-| Ticking countdown | 14 | medium | `WHITE` |
+| Prayer name, Layouts 1 and 2 | 14 | **bold** | `WHITE` |
+| Prayer name, Layout 3 | 14 | medium | `WHITE` |
+| Absolute time, Layout 2 (beside the name) | 14 | medium | `WHITE_MUTED` |
+| Absolute time, Layout 3 (beside the name) | 14 | medium | `WHITE` |
+| Ticking countdown, Layouts 1 and 3 | 14 | medium | `WHITE_MUTED` |
 | "Out of date", "Open to load times" | 17 | bold | `WHITE` |
 | "Open app to refresh" | 14 | medium | `WHITE` |
 | "ATHAN" eyebrow | 11 | semibold | `WHITE` |
 | Inline face | 14 | medium | `WHITE` |
 
-`WHITE_MUTED` names its role, so the one muted tier cannot spread by being the variable that happens
-to be in scope. The old name said which tier it was, not why, and it had leaked onto five elements
-the owner never wanted faded.
+The rule the table encodes: every live face is ONE size, so weight and opacity carry the hierarchy, and the muted
+element is the SECOND reading on a line. That is the countdown beside the name in Layout 1, the time beside it in
+Layout 2, and the countdown beneath the row in Layout 3. Layout 3's name is not bold because its stacked row already
+separates the two readings. The fallback cards keep 17pt: they are a headline, not part of the three-text comparison.
 
-Layout 3's countdown carries `multilineTextAlignment('center')` and `monospacedDigit()`, both
-load-bearing: a `Text(timerInterval:)` reserves a worst-case width and parks its glyphs against the
-leading edge of it, and per-second redraws with proportional digits shuffle sideways.
+`WHITE_MUTED` names its role, so the one muted tier cannot spread by being the variable that happens to be in
+scope. The old name said which tier it was, not why, and it had leaked onto five elements the owner never wanted
+faded.
+
+**Layouts 1 and 2 split the slot into halves meeting at its midline**, each child taking
+`frame({ maxWidth: Infinity, alignment })` (trailing for the name, leading for the second reading) with 3pt of
+padding either side. This is load-bearing and was learned the hard way: a `Text(timerInterval:)` reports a
+worst-case width as its intrinsic size, so a shrink-wrapped row measures that reservation rather than the glyphs
+drawn, and centring it leaves the name against the slot's edge. `fixedSize` makes it worse by pinning the
+reservation open, which overflows the row and takes the digits off the slot. Layout 3 stacks its countdown on its
+own line instead, so it centres by shrink-wrapping and keeps `multilineTextAlignment('center')` plus
+`monospacedDigit()`, both load-bearing there for the same reserved-width reason.
 
 ## 4. Design
 
