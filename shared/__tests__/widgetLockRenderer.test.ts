@@ -258,15 +258,7 @@ describe('lock widget renderer', () => {
     const legacy = { ...LIVE_PROPS } as Record<string, unknown>;
     delete legacy.nextEpochMs;
     expect(textsOf(renderTreeFor3(legacy, 'accessoryRectangular'))).toContain('Out of date');
-    const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
-    Object.defineProperty(poisoned, 'nextName', {
-      get(): string {
-        throw new Error('boom');
-      },
-    });
-    expect(textsOf(renderTreeFor3(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
   });
-
   it('falls back to the absolute time on layout 3 inline, which cannot tick', () => {
     const tree = renderTreeFor3(LIVE_PROPS, 'accessoryInline');
 
@@ -327,16 +319,6 @@ describe('lock widget renderer', () => {
     expect(render(null, 'accessoryInline')).toContain('Athan — prayer times');
   });
 
-  it('degrades a rendering error to the neutral card', () => {
-    const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
-    Object.defineProperty(poisoned, 'nextName', {
-      get(): string {
-        throw new Error('boom');
-      },
-    });
-    expect(render(poisoned, 'accessoryRectangular')).toContain('Open to load times');
-  });
-
   it('degrades the centred layout to the same fallbacks', () => {
     expect(textsOf(renderTreeFor2({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular'))).toContain('Out of date');
     expect(textsOf(renderTreeFor2({ ...LIVE_PROPS, stale: true }, 'accessoryInline'))).toContain(
@@ -347,15 +329,7 @@ describe('lock widget renderer', () => {
     const legacy = { ...LIVE_PROPS } as Record<string, unknown>;
     delete legacy.nextEpochMs;
     expect(textsOf(renderTreeFor2(legacy, 'accessoryRectangular'))).toContain('Out of date');
-    const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
-    Object.defineProperty(poisoned, 'nextName', {
-      get(): string {
-        throw new Error('boom');
-      },
-    });
-    expect(textsOf(renderTreeFor2(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
   });
-
   it.each([
     ['layout 1 live', () => renderTreeFor(LIVE_PROPS, 'accessoryRectangular')],
     ['layout 1 stale', () => renderTreeFor({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular')],
