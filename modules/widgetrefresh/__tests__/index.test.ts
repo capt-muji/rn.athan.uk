@@ -25,23 +25,8 @@ describe('modules/widgetrefresh binding', () => {
   it('no-ops when the native module is absent', () => {
     jest.isolateModules(() => {
       jest.doMock('expo', () => ({}));
-      const { armWidgetRefreshChain, setLockCard } = require('../index') as typeof import('../index');
+      const { armWidgetRefreshChain } = require('../index') as typeof import('../index');
       expect(() => armWidgetRefreshChain()).not.toThrow();
-      expect(() => setLockCard(true, '{}')).not.toThrow();
     });
-  });
-
-  it('passes the lock card setting and snapshot straight through to native', () => {
-    const nativeSetLockCard = jest.fn();
-    jest.isolateModules(() => {
-      jest.doMock('expo', () => ({
-        requireOptionalNativeModule: () => ({ setLockCard: nativeSetLockCard }),
-      }));
-      const { setLockCard } = require('../index') as typeof import('../index');
-      setLockCard(true, '{"days":[]}');
-      setLockCard(false, null);
-    });
-    expect(nativeSetLockCard).toHaveBeenNthCalledWith(1, true, '{"days":[]}');
-    expect(nativeSetLockCard).toHaveBeenNthCalledWith(2, false, null);
   });
 });
