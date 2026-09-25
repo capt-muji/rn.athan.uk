@@ -1,0 +1,5 @@
+  } catch {
+    // Never let a rendering error blank the Lock Surface.
+    return neutralForFamily();
+  }
+};

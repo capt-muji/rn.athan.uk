@@ -1,0 +1,7 @@
+    );
+  } catch {
+    return neutralForFamily();
+  }
+};
+
+export const PrayerLockWidget = createWidget('PrayerLockWidget', AthanLockWidgetCountdownPair);
