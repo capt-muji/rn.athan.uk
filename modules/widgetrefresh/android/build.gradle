@@ -20,4 +20,7 @@ android {
 
 dependencies {
     implementation project(':expo-modules-core')
+    // Pinned to the version expo-background-task already resolves, so the
+    // app's dependency graph is unchanged by the watchdog.
+    implementation 'androidx.work:work-runtime-ktx:2.9.1'
 }
