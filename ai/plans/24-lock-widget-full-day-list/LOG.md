@@ -97,13 +97,51 @@ render is one the builder genuinely emits.
 and the lock kinds' dependants are five store suites. All five were run green before the commit
 (`widgetPlatform`, `widgetAndroid`, `widgetIo`, `widgetSettingsSync`, `widgetFlagOff`: 31 passed).
 
-## Device proof: NOT RUN, and why
+## Deployment, 2026-09-25 21:26: both phones on 1.28.14
 
-Section 7 needs a Release build on the iPhone XS and then the owner's eyes on the Lock Screen. Neither can be done from
-here: the build needs the owner's machine state and the verdict is visual, on three questions no test can answer
-(whether 11pt reads at six rows, whether a half holds `Last Third 02:41`, whether three tiers separate on glass in
-vibrant monochrome). **Touch automation is not available on a physical iPhone** (`ai/AGENTS.md`), and the owner receives
-no screenshots.
+The owner reported still seeing the reverted session's extra-large HOME widgets in the iOS gallery. **They were right that
+nothing had been deployed, and the cause was worse than a missing build.**
+
+**Root cause: a gitignored native folder outlived the revert.** The 2026-09-25 attempt that built this as a `systemLarge`
+home widget was reverted in git, and `app.json` came back clean. But that session had also run `expo prebuild`, which
+generated `ios/ExpoWidgetsTarget/PrayerWidgetLarge.swift` and `ExtrasWidgetLarge.swift`. `/ios` is gitignored
+(`.gitignore` line 13), so **`git revert` could not see those files and left them on disk**, and the XS was carrying a
+build compiled from them, stamped **1.29.0**, a version that exists nowhere in git history. iOS keeps a placed widget
+alive after its kind leaves the config, so the gallery kept offering the large ones. No amount of git history could have
+fixed it: the large widgets existed only in the installed binary and in an ignored folder.
+
+**DURABLE LESSON: reverting a widget change in git does not revert the prebuild it ran.** `git status` is blind to
+`ios/` and `android/`, so a reverted native change survives on disk and in the installed app. After reverting anything
+that touches `app.json`'s widget list, re-run the prebuild and check the generated kinds, or the next device build
+carries the reverted work. The check is
+`ls ios/ExpoWidgetsTarget/*.swift` against `app.json`'s widget names, and `grep -A1 CFBundleShortVersionString
+ios/Athan/Info.plist` against `app.json`'s version: a version in the plist that git has never heard of is the tell.
+
+| Step | Evidence |
+| --- | --- |
+| Diagnosis | XS reported `com.mugtaba.athan 1.29.0`; `uat-2` was at 1.28.14; `ios/ExpoWidgetsTarget/` held two `*Large.swift` files; `grep -c systemLarge app.json` was 0, so the source was already clean |
+| iOS prebuild | `npx expo prebuild -p ios --no-install` exited 0. The expo-widgets plugin `rmSync`s its target directory, so both `*Large.swift` files are gone; 16 kinds are generated, including `ExtrasLockWidget4.swift` and `PrayerLockWidget5.swift`, each declaring `.supportedFamilies([.accessoryRectangular])`. `grep -rl systemLarge ios/` now prints nothing, and the plist reads 1.28.14 |
+| iOS Release build | `DEVELOPMENT_TEAM=9V3WAU9Z54 npx eas-cli env:exec preview 'npx expo run:ios --configuration Release --device 00008020-0015585C22D2002E'`, real API key. Install detected by polling the device, not the log, as the plan says: `xcrun devicectl device info apps` reports **1.28.14** (was 1.29.0). Evidence: `~/athan-device-sweep/session24/xs-installed-version.txt` |
+| 3T build | `zsh ~/athan-device-sweep/session3/bin/build-prod.zsh uat-2 ...athan-1.28.14-prod.apk` ended `BUILD-PROD OK` in 519s from `05dd09b7` |
+| 3T provider check BEFORE installing | Per `ai/AGENTS.md`, the APK's manifest was checked first: all 8 `*WidgetProvider` entries present. (A bare `grep -c PrayerWidgetProvider` returned 1 and looked alarming; the quoted-attribute grep showed all eight. The false negative is the grep, not the APK) |
+| 3T install and launch | `adb install -r` printed `Success`; versionName 1.28.14; 12 widgets still placed across all 8 kinds; doubled `am start` per the ritual; app live as PID 22634 |
+| 3T regression | No fatals and no ANR for the package in logcat. The `widgetrefresh` minute-edge alarm is armed and fired (`Triggering alarm #0 ... WidgetRefreshReceiver`), Glance sessions render, and the documented year-2036 `ACTION_FORCE_STOP_RESCHEDULE` alarm is present as every 3T dump shows. Session 24 is iOS-only, so the 3T is a regression check: it regressed nothing |
+
+The 3T carries no lock-screen widgets by design (session 18 proved Android has no such API), so it shows nothing new
+from this session, which is expected rather than a failure.
+
+## Device proof: the owner's visual verdict is still outstanding
+
+The build is now done and installed (above). What remains is the part no test and no agent can do: the owner's eyes on
+three questions. **Touch automation is not available on a physical iPhone** (`ai/AGENTS.md`), and the owner receives no
+screenshots, so placing the two faces and judging them is theirs:
+
+1. whether the one-column extras face at 11pt is readable, or wants fewer rows;
+2. whether a column of the split face holds `Last Third 02:41` without shrinking to nothing;
+3. whether the three tiers (solid, 60%, 35%) separate on the glass in vibrant monochrome.
+
+The gallery now offers `Extra Times (Layout 4)` and `Next Prayer (Layout 5)` under Lock Screen widgets, and the
+extra-large home widgets are gone from it.
 
 So the row is EXECUTED, not DONE, which is what the plan's section 9 says: "the row stays EXECUTED until they have
 looked." The audit below does not push past that.
