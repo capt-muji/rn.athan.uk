@@ -11,7 +11,7 @@
    folder's `PLAN.md` and `LOG.md`.
 
 4. **Tests first (red).** No new test, and no red: this is a version move with no API change reaching this project.
-   Both call sites are `import type { TestInstance }`, a types-only import, so nothing of it reaches runtime. 1.3.0 is the React 19.3 compatibility line and bundles `react-reconciler@0.34.0`, which yarn will warn wants `react@^19.3.0`; that warning is expected here and step 5 settles it.
+   Both call sites are `import type { TestInstance }`, a types-only import, so nothing of it reaches runtime. 1.3.0 is the React 19.3 compatibility line and bundles `react-reconciler@0.34.0`, which yarn will warn wants `react@^19.3.0`; that warning is expected and stays until React itself moves in row 18, because it names the runtime `react` rather than its typings. It is inert here: both call sites are type-only.
 
    The acceptance is that the existing suite, which covers the whole app at 100%, still passes. Install:
 
