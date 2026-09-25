@@ -3,10 +3,10 @@
  * for BOTH schedules and BOTH home themes. Each home kind is size-exclusive
  * (small and medium register separately so the gallery groups smalls before
  * mediums), and every kind receives its own schedule- and theme-stamped
- * timeline: the standard light trio (PrayerWidget + PrayerWidgetMedium +
- * PrayerLockWidget), the standard dark pair (PrayerWidgetDark +
- * PrayerWidgetDarkMedium), the extras light trio (ExtrasWidget +
- * ExtrasWidgetMedium + ExtrasLockWidget), and the extras dark pair
+ * timeline: the standard light set (PrayerWidget + PrayerWidgetMedium +
+ * PrayerLockWidget 1 to 3), the standard dark pair (PrayerWidgetDark +
+ * PrayerWidgetDarkMedium), the extras light set (ExtrasWidget +
+ * ExtrasWidgetMedium + ExtrasLockWidget 1 to 3), and the extras dark pair
  * (ExtrasWidgetDark + ExtrasWidgetDarkMedium).
  *
  * Reads the cached prayer data and the user's widget-relevant preferences,
@@ -202,6 +202,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
       home.PrayerWidgetMedium.updateTimeline(lightEntries);
       lock.PrayerLockWidget.updateTimeline(lightEntries);
       lock.PrayerLockWidget2.updateTimeline(lightEntries);
+      lock.PrayerLockWidget3.updateTimeline(lightEntries);
       home.PrayerWidgetDark.updateTimeline(darkEntries);
       home.PrayerWidgetDarkMedium.updateTimeline(darkEntries);
     } else {
@@ -211,6 +212,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
       home.ExtrasWidgetMedium.updateTimeline(lightEntries);
       lock.ExtrasLockWidget.updateTimeline(lightEntries);
       lock.ExtrasLockWidget2.updateTimeline(lightEntries);
+      lock.ExtrasLockWidget3.updateTimeline(lightEntries);
       home.ExtrasWidgetDark.updateTimeline(darkEntries);
       home.ExtrasWidgetDarkMedium.updateTimeline(darkEntries);
     }
