@@ -108,16 +108,17 @@ internal object WidgetRefreshScheduler {
         }
     }
 
-    /** Arms the next minute-edge alarm when none is pending, so every caller may call freely. */
+    /**
+     * Arms the next minute-edge alarm, always. It never checks first because
+     * there is nothing truthful to check: a PendingIntent outlives the alarm
+     * it was registered with, so a force-stop leaves the reference behind
+     * while cancelling the alarm (measured on the 3T: 1 PendingIntent, 0
+     * alarms), and a guard reading that reference reports health over a dead
+     * chain. setExactAndAllowWhileIdle replaces any alarm on the same
+     * PendingIntent, so arming unconditionally is idempotent.
+     */
     fun ensureArmed(context: Context) {
-        val appContext = context.applicationContext
-        val existing = PendingIntent.getBroadcast(
-            appContext,
-            0,
-            Intent(appContext, WidgetRefreshReceiver::class.java),
-            PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
-        )
-        if (existing == null) armNext(appContext)
+        armNext(context.applicationContext)
     }
 
     fun armNext(context: Context) {

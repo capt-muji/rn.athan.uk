@@ -1,0 +1,5 @@
+        Function("armWidgetRefreshChain") {
+            val context = appContext ?: return@Function false
+            WidgetRefreshScheduler.ensureArmed(context.reactContext ?: return@Function false)
+            true
+        }
