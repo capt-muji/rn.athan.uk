@@ -101,7 +101,8 @@ Off that path:
 | 17 | 20. G.2: the blank card at placement, and the horizon to 3 days | `ai/ISSUES.md` G.2 | `ai/plans/20-g2-blank-card-and-horizon/PLAN.md` | DONE | `1406dc51` | nothing (16's flag flip makes G.2 user-visible on iOS, so the two are read together; this row does not wait on it) |
 | 18 | 16. SDK 58 stable re-pin + full release-notes review | `ai/plans/SDK58-PROGRAMME.md` §16 | `ai/plans/16-sdk58-stable-repin/PLAN.md` | NOT PLANNED | | 6 + SDK 58 stable on npm (~Oct 7 to 14); may jump the queue the day it lands |
 | 19 | 18. Android lock screen widgets: deep investigation, 3T first | `ai/prompts/android-lock-screen-widgets.md` | `ai/plans/18-android-lock-screen-widgets/PLAN.md` (evidence in `FINDINGS.md`) | DONE (2026-09-25: investigation only, no code ships) | `2aeac17c` | nothing (verdict: no lock-screen widget API on either phone, the AOSP Glanceable Hub is inert on ColorOS and absent on Android 9, OPPO's own cards are signature-gated; the one working vehicle, a persistent notification, was built and proven then rejected by the owner, so it was reverted in full) |
-| 20 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
+| 20 | 21. Bump every non-SDK package to its absolute latest | `ai/plans/README.md` "Waiting on the owner" (owner 2026-09-18, rescoped 2026-09-25) | `ai/plans/21-bump-everything-latest/PLAN.md` | READY | `3df9733c` | nothing |
+| 21 | 11. Moonsighting research, session 2 | `ai/prompts/moonsighting-research-2.md` | `ai/plans/11-moonsighting-research-2/PLAN.md` | NOT PLANNED, deferred until further notice (owner 2026-09-18; runs after the SDK 58 programme and the deferred features) | | everything above |
 
 - **Session 6b was planned under the previous rules**, on the morning of 2026-09-16, before "specify, do not
   dictate" was written that afternoon. Every one of its steps hands the executor finished files under
@@ -122,10 +123,8 @@ row above.
   (its README recommends this on RN 0.86+; the package stays at 1.8.2 until then). Waits on an
   Android 10+ device beside the 3T, because the package's `enforceNavigationBarContrast` setting
   guards a scrim only those phones show (owner, 2026-09-18, while planning session 12).
-- The bump-everything-to-latest session: every package not already moved by the SDK wave, major
-  versions included (`jotai` 3, `husky` 9, `lint-staged` 17, `@biomejs/biome`, `test-renderer`), on
-  its own branch with the full gates (owner, 2026-09-18, while planning session 12: the SDK wave is
-  strictly the SDK wave; this is everything else).
+- ~~The bump-everything-to-latest session~~: queued as row 20 on 2026-09-25, when the owner chose it as the next
+  session and rescoped it (one package per branch, and a major that breaks the code is fixed in the code).
 - `shared/__tests__/audioMatrix.test.ts` timing out under load: a longer timeout, or running it outside the hook.
 - The dashes approval page's open choices C2, C5 to C10 and C13 (session 3).
 - Finding 74: a Suhoor wrapped onto the evening before loses a day of buffer.
