@@ -16,3 +16,13 @@
 - Review (the session's own, no subagent per plan section 11): only the five intended files changed; `biome.json` is
   one line; the `lint-staged` and `linter.rules` blocks untouched. Verdict: merge, one round.
 - Merged into `uat-2`.
+
+## Step 2: `@types/node` 26.4.0 to 26.6.2
+
+- Branch `chore/bump-types-node-26-6-2`, version 1.27.388.
+- No red, as the plan says: a typings-only move with no API change reaching this project.
+- Green: `tsc` 0, Biome 0, `Test Suites: 170 passed, 170 total`, `Tests: 4649 passed, 4649 total`, 100% on all four.
+- Hook on commit: `Tests: 4649 passed, 4649 total` and four `100%` lines.
+- Review (the session's own): only `package.json`, `yarn.lock`, `app.json` and plan bookkeeping changed; one version
+  string. Verdict: merge, one round.
+- Merged into `uat-2`.
