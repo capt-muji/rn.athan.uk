@@ -5996,3 +5996,71 @@ Two jobs, no behaviour a person can see.
 4. One repository-side lead, recorded and deliberately not acted on: `app.json` gives every Android kind an `android.initialLayout` and no iOS kind an `ios.initialLayout`, so the plugin's `createLayoutRegistryConfig` writes an EMPTY embedded iOS layout registry and the app-group key the app writes is the only layout source. It is the first thing to try if the window still bothers the owner once row 16 flips the flag. Not done here: it alters the native prebuild, it is only provable on the XS which the owner holds, and until the flag flips there is no extension in the build to observe.
 
 No device work: the iOS widgets flag is off, so no extension exists in any build this session could make, and the horizon change is proven by the pure unit suite where the builder's behaviour lives.
+
+## Session 21: every non-SDK package at latest
+
+Eight packages moved to their absolute latest release, one commit each. Three were majors, and two of those broke the
+project on contact, which is the point: the owner's ruling was that a break is fixed forward, in the code, never by
+pinning back (owner, 2026-09-25).
+
+| Package | From | To | What it cost |
+| --- | --- | --- | --- |
+| `@biomejs/biome` | 2.5.13 | 2.5.14 | `biome.json`'s `$schema`, one line |
+| `@types/node` | 26.4.0 | 26.6.2 | nothing |
+| `@jest/create-cache-key-function` | 29.7.0 | 30.5.1 | nothing; it was the last Jest 29 package in the tree |
+| `test-renderer` | 1.2.0 | 1.3.0 | nothing; both call sites are type-only |
+| `@types/react` | 19.2.18 | 19.3.0 | nothing |
+| `lint-staged` | 15.5.2 | 17.5.1 | nothing; two majors, no breaking change reaching this config |
+| `husky` | 8.0.3 | 9.1.7 | both hooks lose the v8 shim, `prepare` becomes bare `husky`, one guard assertion follows |
+| `jotai` | 2.20.3 | 3.0.0 | three separate breakages, below |
+
+**jotai 3 broke 82 of 170 suites, in three ways, each hidden behind the one before it.**
+
+1. It is ESM-only, and both Jest projects load CommonJS. Fixed by transforming jotai's own `.js` through the same
+   Babel transform the app's files use: the `unit` project widened its transform to `.js` and gained a
+   `transformIgnorePatterns`, and the `components` project appended `jotai` to the list it already had.
+   `--experimental-vm-modules` was tried and rejected, because Jest 30's native `require(esm)` is additionally gated
+   on `canResolveSync()`, which the `components` project fails for having a custom resolver, so the flag fixes one
+   project and not the other.
+2. It deleted `loadable`, which `stores/sync.ts` used to report the launch sync's three states to the launch screen.
+   Replaced by the wrapper jotai's own deprecation notice specifies, over `unwrap`, local and unexported because
+   `stores/sync.ts` is the only call site. The loading sentinel is compared by identity, because a resolved value can
+   itself be `undefined`.
+3. It renamed `INTERNAL_buildStoreRev3` to `INTERNAL_buildStoreRev4` and changed its signature from six positional
+   building blocks to one `Partial<BuildingBlocks>` object keyed by single-letter constants. That took 30 component
+   suites with it, because `jest.components.setup.js` builds one store over replaceable containers so every component
+   test starts from a fresh install. The keys are read from the library rather than written as literals.
+
+**Four packages did NOT move, and it is not a judgement call.** `@babel/core`, `@babel/preset-typescript`,
+`@babel/plugin-transform-react-jsx` and `@babel/plugin-transform-modules-commonjs` stay at 7. Babel 8 and the Babel 7
+plugins are a hard npm peer conflict (`peer @babel/core@"^7.0.0-0"`), and a Babel 7 plugin loaded by Babel 8 throws
+`BABEL_VERSION_UNSUPPORTED` from `assertVersion(7)`. The blocker is upstream: `babel-preset-expo@58.0.3` depends on 36
+Babel 7 plugins and `@react-native/babel-preset` pins `@babel/core ^7.25.2`. Babel 8 arrives when the SDK's presets
+move, which is row 18's job. Every SDK-pinned package likewise stays, `expo/bundledNativeModules.json` being the
+mechanical test for "the SDK wave".
+
+**Verified:** `Test Suites: 170 passed, 170 total`, `Tests: 4649 passed, 4649 total`, 100% statements, branches,
+functions and lines, `tsc` and Biome exiting 0, and all three break scripts ending `ALL AS EXPECTED: 1` (2 of 2, 3 of
+3, 5 of 5). Coverage totals moved 4200 to 4209 statements, which is the new `loadable` wrapper, fully covered by the
+existing `syncLoadable` suite.
+
+**Device proof, both phones, from a local production build of 1.27.394.** The OnePlus 3T (Android 9, the baseline
+phone) cold launched in 3,136ms against its documented ~6.6s, with zero fatal exceptions and zero mentions of jotai in
+logcat. Its live view hierarchy read six real London times for Friday 25 September (Fajr 05:20, Sunrise 06:48, Dhuhr
+12:57, Asr 16:07, Magrib 18:55, Isha 20:12) with the countdown "Asr 2h 11m 19s" and "Dhuhr 58m ago", which the clock
+confirms as real data rather than mock: Asr 16:07 less 13:56 is the 2h 11m shown. After HOME and relaunch the
+countdown had ticked to 2h 10m 21s with every time unchanged. All eight widget providers registered and the two placed
+ones were live on the launcher, not zombies. Alarms after the install matched those before: the widget refresh tick and
+the 2036 `ACTION_FORCE_STOP_RESCHEDULE` entry every 3T dump shows.
+
+**Durable lesson: an uncaught break is not automatically a missing test.** Two of this session's breaks were invalid
+rather than revealing, and both were rewritten. Turning Biome's `noConsole` off caught nothing, because this codebase
+has zero `console` calls and the rule guards a future edit rather than a present one. Swapping the launch sync's
+sentinel identity check for a value check caught nothing, because that sync resolves to `undefined` and
+`JSON.stringify(undefined)` is not a string, so both comparisons answer `false` and nothing observable changed. Read
+what a substitution actually does before concluding the suite has a hole.
+
+**Durable lesson: lint-staged 17 no longer prints its own name.** A hook that ran it perfectly shows `Running tasks for
+staged files` and a ticked line per task, and `grep lint-staged` on that log returns nothing. Two of this plan's
+done-when checks grepped for the name and had to be corrected, because on husky 9 the difference between "the gate ran"
+and "the gate silently vanished" is exactly what those checks exist to tell apart.
