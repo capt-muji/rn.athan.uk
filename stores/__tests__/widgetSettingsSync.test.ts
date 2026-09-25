@@ -292,7 +292,7 @@ describe('push cadence', () => {
     jest.useRealTimers();
   });
 
-  it('pushes each of the ten kinds once per refresh and never again on a timer', async () => {
+  it('pushes each of the twelve kinds once per refresh and never again on a timer', async () => {
     await refreshPrayerWidgets();
 
     expect(widgetPush()).toHaveLength(1);
@@ -307,7 +307,7 @@ describe('push cadence', () => {
     expect(extrasDarkMediumPush()).toHaveLength(1);
 
     // A per-minute chain used to fire here, costing a WidgetKit reload on all
-    // ten kinds; each reload re-renders that kind's whole timeline, which
+    // twelve kinds; each reload re-renders that kind's whole timeline, which
     // exhausted the extension's CPU budget (ISSUES.md §G.1)
     await jest.advanceTimersByTimeAsync(5 * 60 * 1000);
 

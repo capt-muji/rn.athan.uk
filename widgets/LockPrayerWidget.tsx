@@ -17,11 +17,14 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
  * Lock Screen widget layouts (accessoryRectangular + accessoryInline).
- * Accessories render in vibrant monochrome, so every kind uses white with
- * opacity hierarchy and lets the system tint. Two compositions per
- * schedule: Layout 1 (name + absolute time, ticking countdown beneath) and
+ * Accessories render in vibrant monochrome, so the system tints whatever
+ * these set. Weight and size carry the hierarchy and the absolute time is
+ * the ONE muted element (owner 2026-09-25: solid text everywhere else, and
+ * only the prayer name is bold). Three compositions per
+ * schedule: Layout 1 (name + absolute time, ticking countdown beneath),
  * Layout 2 (name + absolute time on one centred line; no countdown and no
- * dot, owner ruling 2026-09-20) — both centre: the accessory slot proposes
+ * dot, owner ruling 2026-09-20) and Layout 3 (name + ticking countdown on
+ * one centred line, owner 2026-09-25) — all centre: the accessory slot proposes
  * no width a root could stretch into (a frame's maxWidth cannot act
  * there), so every rectangular root takes the widget container's own width
  * with containerRelativeFrame and lets the stack's default centring place
@@ -37,10 +40,9 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
-  // Lock Screen accessories render in vibrant mode — stick to white with
-  // opacity hierarchy and let the system tint the content.
+  // Only the absolute time recedes; the system tints both in vibrant mode.
   const WHITE = '#ffffff';
-  const WHITE_SECONDARY = 'rgba(255, 255, 255, 0.6)';
+  const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
 
   // Neutral fallbacks for states without renderable data: the gallery/jiggle
   // placeholder (iOS invokes the layout with no props) and any unexpected
@@ -50,7 +52,7 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       return (
         <Text
           modifiers={[
-            font({ size: 12, weight: 'medium' }),
+            font({ size: 14, weight: 'medium' }),
             foregroundStyle(WHITE),
             lineLimit(1),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
@@ -68,10 +70,8 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
-          ATHAN
-        </Text>
-        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>ATHAN</Text>
+        <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
           Open to load times
         </Text>
       </VStack>
@@ -93,7 +93,7 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
         return (
           <Text
             modifiers={[
-              font({ size: 12, weight: 'medium' }),
+              font({ size: 14, weight: 'medium' }),
               foregroundStyle(WHITE),
               lineLimit(1),
               containerBackground('rgba(0, 0, 0, 0)', 'widget'),
@@ -114,11 +114,11 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={14} color={WHITE} />
-          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Image systemName='moon.stars.fill' size={17} color={WHITE} />
+          <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             Out of date
           </Text>
-          <Text modifiers={[font({ size: 11, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+          <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
             Open app to refresh
           </Text>
         </VStack>
@@ -144,7 +144,7 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
       return (
         <Text
           modifiers={[
-            font({ size: 12, weight: 'medium' }),
+            font({ size: 14, weight: 'medium' }),
             foregroundStyle(WHITE),
             lineLimit(1),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
@@ -164,14 +164,14 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
         <HStack spacing={4}>
-          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {props.nextName}
           </Text>
           <Text
             modifiers={[
-              font({ size: 12, weight: 'medium' }),
+              font({ size: 14, weight: 'medium' }),
               monospacedDigit(),
-              foregroundStyle(WHITE_SECONDARY),
+              foregroundStyle(WHITE_MUTED),
               lineLimit(1),
             ]}>
             {props.nextTime}
@@ -181,10 +181,10 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
           timerInterval={segment}
           countsDown
           modifiers={[
-            font({ size: 12, weight: 'bold' }),
+            font({ size: 14, weight: 'medium' }),
             monospacedDigit(),
             multilineTextAlignment('center'),
-            foregroundStyle(WHITE_SECONDARY),
+            foregroundStyle(WHITE),
             lineLimit(1),
           ]}
         />
@@ -202,19 +202,19 @@ export const PrayerLockWidget = createWidget('PrayerLockWidget', AthanLockWidget
 export const ExtrasLockWidget = createWidget('ExtrasLockWidget', AthanLockWidget);
 
 // A separate self-contained function: the 'widget' directive serializes
-// each body alone, so nothing can be shared across the two layouts.
+// each body alone, so nothing can be shared across the layouts.
 const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
   'widget';
 
   const WHITE = '#ffffff';
-  const WHITE_SECONDARY = 'rgba(255, 255, 255, 0.6)';
+  const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
 
   const neutralForFamily = () => {
     if (environment.widgetFamily === 'accessoryInline') {
       return (
         <Text
           modifiers={[
-            font({ size: 12, weight: 'medium' }),
+            font({ size: 14, weight: 'medium' }),
             foregroundStyle(WHITE),
             lineLimit(1),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
@@ -232,10 +232,8 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 9, weight: 'semibold' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
-          ATHAN
-        </Text>
-        <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>ATHAN</Text>
+        <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
           Open to load times
         </Text>
       </VStack>
@@ -253,7 +251,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         return (
           <Text
             modifiers={[
-              font({ size: 12, weight: 'medium' }),
+              font({ size: 14, weight: 'medium' }),
               foregroundStyle(WHITE),
               lineLimit(1),
               containerBackground('rgba(0, 0, 0, 0)', 'widget'),
@@ -271,11 +269,11 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={14} color={WHITE} />
-          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Image systemName='moon.stars.fill' size={17} color={WHITE} />
+          <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             Out of date
           </Text>
-          <Text modifiers={[font({ size: 11, weight: 'medium' }), foregroundStyle(WHITE_SECONDARY), lineLimit(1)]}>
+          <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
             Open app to refresh
           </Text>
         </VStack>
@@ -286,7 +284,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       return (
         <Text
           modifiers={[
-            font({ size: 12, weight: 'medium' }),
+            font({ size: 14, weight: 'medium' }),
             foregroundStyle(WHITE),
             lineLimit(1),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
@@ -310,7 +308,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         <HStack spacing={4}>
           <Text
             modifiers={[
-              font({ size: 12, weight: 'bold' }),
+              font({ size: 14, weight: 'bold' }),
               foregroundStyle(WHITE),
               lineLimit(1),
               minimumScaleFactor(0.6),
@@ -319,9 +317,9 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           </Text>
           <Text
             modifiers={[
-              font({ size: 12, weight: 'medium' }),
+              font({ size: 14, weight: 'medium' }),
               monospacedDigit(),
-              foregroundStyle(WHITE_SECONDARY),
+              foregroundStyle(WHITE_MUTED),
               lineLimit(1),
               minimumScaleFactor(0.6),
             ]}>
@@ -337,3 +335,143 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
 
 export const PrayerLockWidget2 = createWidget('PrayerLockWidget2', AthanLockWidgetCentred);
 export const ExtrasLockWidget2 = createWidget('ExtrasLockWidget2', AthanLockWidgetCentred);
+
+// Layout 2's shape with the countdown in place of the absolute time.
+const AthanLockWidgetCountdown = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
+  'widget';
+
+  const WHITE = '#ffffff';
+
+  const neutralForFamily = () => {
+    if (environment.widgetFamily === 'accessoryInline') {
+      return (
+        <Text
+          modifiers={[
+            font({ size: 14, weight: 'medium' }),
+            foregroundStyle(WHITE),
+            lineLimit(1),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
+          Athan — prayer times
+        </Text>
+      );
+    }
+
+    return (
+      <VStack
+        spacing={1}
+        modifiers={[
+          containerRelativeFrame({ axes: 'horizontal' }),
+          frame({ maxWidth: Infinity, maxHeight: Infinity }),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+        ]}>
+        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>ATHAN</Text>
+        <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          Open to load times
+        </Text>
+      </VStack>
+    );
+  };
+
+  if (props == null) {
+    return neutralForFamily();
+  }
+
+  try {
+    const segmentValid = typeof props.nextEpochMs === 'number' && typeof props.prevEpochMs === 'number';
+    if (props.stale === true || !segmentValid) {
+      if (environment.widgetFamily === 'accessoryInline') {
+        return (
+          <Text
+            modifiers={[
+              font({ size: 14, weight: 'medium' }),
+              foregroundStyle(WHITE),
+              lineLimit(1),
+              containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+            ]}>
+            Athan — open to refresh times
+          </Text>
+        );
+      }
+
+      return (
+        <VStack
+          spacing={1}
+          modifiers={[
+            containerRelativeFrame({ axes: 'horizontal' }),
+            frame({ maxWidth: Infinity, maxHeight: Infinity }),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
+          <Image systemName='moon.stars.fill' size={17} color={WHITE} />
+          <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            Out of date
+          </Text>
+          <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            Open app to refresh
+          </Text>
+        </VStack>
+      );
+    }
+
+    const TickingTextEl = Text as unknown as (elementProps: {
+      timerInterval?: { lower: Date; upper: Date };
+      countsDown?: boolean;
+      modifiers?: unknown[];
+    }) => ReactNode;
+
+    const segment = { lower: new Date(props.prevEpochMs), upper: new Date(props.nextEpochMs) };
+
+    // Inline concatenates its content, which stops a timer Text ticking, so
+    // this face falls back to the absolute time.
+    if (environment.widgetFamily === 'accessoryInline') {
+      return (
+        <Text
+          modifiers={[
+            font({ size: 14, weight: 'medium' }),
+            foregroundStyle(WHITE),
+            lineLimit(1),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          ]}>
+          {props.nextName} {props.nextTime}
+        </Text>
+      );
+    }
+
+    return (
+      <VStack
+        modifiers={[
+          containerRelativeFrame({ axes: 'horizontal' }),
+          frame({ maxWidth: Infinity, maxHeight: Infinity }),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+        ]}>
+        <HStack spacing={4}>
+          <Text
+            modifiers={[
+              font({ size: 14, weight: 'bold' }),
+              foregroundStyle(WHITE),
+              lineLimit(1),
+              minimumScaleFactor(0.6),
+            ]}>
+            {props.nextName}
+          </Text>
+          <TickingTextEl
+            timerInterval={segment}
+            countsDown
+            modifiers={[
+              font({ size: 14, weight: 'medium' }),
+              monospacedDigit(),
+              multilineTextAlignment('center'),
+              foregroundStyle(WHITE),
+              lineLimit(1),
+            ]}
+          />
+        </HStack>
+      </VStack>
+    );
+  } catch {
+    return neutralForFamily();
+  }
+};
+
+export const PrayerLockWidget3 = createWidget('PrayerLockWidget3', AthanLockWidgetCountdown);
+export const ExtrasLockWidget3 = createWidget('ExtrasLockWidget3', AthanLockWidgetCountdown);
