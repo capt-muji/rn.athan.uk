@@ -2,7 +2,6 @@ import { HStack, Image, Text, VStack } from '@expo/ui/swift-ui';
 import {
   containerBackground,
   containerRelativeFrame,
-  fixedSize,
   font,
   foregroundStyle,
   frame,
@@ -10,6 +9,7 @@ import {
   minimumScaleFactor,
   monospacedDigit,
   multilineTextAlignment,
+  padding,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 import type { ReactNode } from 'react';
@@ -164,8 +164,8 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <HStack spacing={4}>
-          <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <HStack spacing={6}>
+          <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {props.nextName}
           </Text>
           <Text
@@ -301,13 +301,19 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <HStack spacing={4}>
+        {/* Halves anchored at the midline, as Layout 3 does: prayer names differ
+            in length, so a shrink-wrapped row moves the whole pair with every
+            name, while a fixed seam keeps the last letter and the first digit
+            where they were. */}
+        <HStack spacing={0}>
           <Text
             modifiers={[
-              font({ size: 14, weight: 'bold' }),
+              font({ size: 14, weight: 'medium' }),
               foregroundStyle(WHITE),
               lineLimit(1),
               minimumScaleFactor(0.6),
+              frame({ maxWidth: Infinity, alignment: 'trailing' }),
+              padding({ trailing: 3 }),
             ]}>
             {props.nextName}
           </Text>
@@ -318,6 +324,8 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
               foregroundStyle(WHITE_MUTED),
               lineLimit(1),
               minimumScaleFactor(0.6),
+              frame({ maxWidth: Infinity, alignment: 'leading' }),
+              padding({ leading: 3 }),
             ]}>
             {props.nextTime}
           </Text>
@@ -441,13 +449,22 @@ const AthanLockWidgetCountdown = (props: PrayerWidgetProps, environment: WidgetE
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <HStack spacing={4}>
+        {/* Two equal halves meeting at the slot's midline, because a timer Text
+            reserves a worst-case width: a shrink-wrapped row measures that
+            reservation rather than the glyphs, so centring the row leaves the
+            name against the slot's edge. Anchoring each half to the midline
+            instead makes the name's last letter and the countdown's first digit
+            land in the same place whatever their lengths, which no centred row
+            can do while one child misreports its width. */}
+        <HStack spacing={0}>
           <Text
             modifiers={[
-              font({ size: 14, weight: 'bold' }),
+              font({ size: 14, weight: 'medium' }),
               foregroundStyle(WHITE),
               lineLimit(1),
               minimumScaleFactor(0.6),
+              frame({ maxWidth: Infinity, alignment: 'trailing' }),
+              padding({ trailing: 3 }),
             ]}>
             {props.nextName}
           </Text>
@@ -457,11 +474,11 @@ const AthanLockWidgetCountdown = (props: PrayerWidgetProps, environment: WidgetE
             modifiers={[
               font({ size: 14, weight: 'medium' }),
               monospacedDigit(),
-              // A timer Text otherwise claims a worst-case width ("00:00:00")
-              // and pads its own digits, which shoves the pair off centre.
-              fixedSize({ horizontal: true }),
               foregroundStyle(WHITE_MUTED),
               lineLimit(1),
+              minimumScaleFactor(0.6),
+              frame({ maxWidth: Infinity, alignment: 'leading' }),
+              padding({ leading: 3 }),
             ]}
           />
         </HStack>
