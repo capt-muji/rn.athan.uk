@@ -43,11 +43,16 @@ export const FEATURE_FLAGS = {
   widgets: process.env.EXPO_PUBLIC_WIDGETS === '1',
   /**
    * Android home-screen widgets (expo-widgets' Android implementation,
-   * SDK 58). Same lifecycle as the iOS flag: disabled unless the variable is
-   * exactly '1'. Flip condition: the owner judging the session 15 device
-   * proof (styling parity screenshots + performance on the 3T) and choosing
-   * to release. The push paths return early and the prebuild android
-   * resolution strips the plugin while this is off.
+   * SDK 58). ON, and it stays on: the owner ruled on 2026-09-25 that neither
+   * widget flag is ever shipped off again, so `.env.example` carries 1 for
+   * both and a build that turns this off is a mistake, not a choice.
+   *
+   * It matters more than an ordinary flag: while this is off, the prebuild
+   * android resolution strips the expo-widgets plugin, so the APK declares no
+   * widget providers at all and the app vanishes from the launcher's widget
+   * picker. A build that lost the widgets shipped exactly that way once.
+   *
+   * Now scaffolding awaiting deletion, per the lifecycle rule above.
    */
   androidWidgets: process.env.EXPO_PUBLIC_ANDROID_WIDGETS === '1',
 } as const;

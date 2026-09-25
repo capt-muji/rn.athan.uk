@@ -56,6 +56,25 @@ describe('the ambient test environment', () => {
 });
 
 // =============================================================================
+// THE SHIPPED CATALOG
+// =============================================================================
+
+describe('.env.example, the catalog every device build is derived from', () => {
+  // Owner ruling 2026-09-25: neither widget flag ships off again. A build made
+  // with androidWidgets off strips the expo-widgets plugin at prebuild, so the
+  // APK declares no providers and the app disappears from the launcher's
+  // widget picker, which is how a build once lost the widgets entirely.
+  it.each([
+    ['EXPO_PUBLIC_WIDGETS', 'iOS Home and Lock Screen widgets'],
+    ['EXPO_PUBLIC_ANDROID_WIDGETS', 'Android home-screen widgets'],
+  ])('keeps %s at 1, so %s can never ship disabled', (variable) => {
+    const catalog = readFileSync(join(ROOT, '.env.example'), 'utf8');
+
+    expect(catalog).toContain(`${variable}=1`);
+  });
+});
+
+// =============================================================================
 // THE ENABLED-PATH SUITES OPT IN, AND DO IT THE ONLY WAY THAT WORKS
 // =============================================================================
 
