@@ -1,0 +1,4 @@
+  const sets = [new Set(), new Set(), new Set()];
+
+  // atom states, mounted atoms and invalidated atoms, then the changed atoms and the mount and unmount callbacks
+  const store = buildStore(replaceableWeakMap(), replaceableWeakMap(), replaceableWeakMap(), ...sets);
