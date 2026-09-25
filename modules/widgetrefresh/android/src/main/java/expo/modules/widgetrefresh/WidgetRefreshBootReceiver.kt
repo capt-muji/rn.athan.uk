@@ -16,6 +16,9 @@ class WidgetRefreshBootReceiver : BroadcastReceiver() {
         WidgetRefreshScheduler.updateAll(context)
         if (WidgetRefreshScheduler.hasPlacedWidgets(context)) {
             WidgetRefreshScheduler.armNext(context)
+            // A reboot clears WorkManager's schedule too, so the watchdog is
+            // re-enqueued beside the alarm rather than waiting for an app open.
+            WidgetRefreshScheduler.ensureWatchdog(context)
         }
     }
 }
