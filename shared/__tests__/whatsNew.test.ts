@@ -197,8 +197,8 @@ describe('WHATS_NEW content contract', () => {
 // =============================================================================
 
 describe('filterWhatsNewItems', () => {
-  const flagsOn = { widgets: true, androidWidgets: true };
-  const flagsOff = { widgets: false, androidWidgets: false };
+  const flagsOn = { iosWidgets: true, androidWidgets: true };
+  const flagsOff = { iosWidgets: false, androidWidgets: false };
 
   it('shows items stamped with the presenting release', () => {
     const items = [item({ version: '1.13.0' })];
@@ -216,7 +216,7 @@ describe('filterWhatsNewItems', () => {
   });
 
   it('hides a matching item when its flag is disabled', () => {
-    const items = [item({ flags: ['widgets'] })];
+    const items = [item({ flags: ['iosWidgets'] })];
     expect(filterWhatsNewItems(items, '1.13.0', flagsOff)).toHaveLength(0);
     expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(1);
   });
@@ -233,9 +233,9 @@ describe('filterWhatsNewItems', () => {
   });
 
   it('hides a flagged item when given no flags, since the build ships with widgets off', () => {
-    const items = [item({ title: 'Now' }), item({ title: 'Flagged', flags: ['widgets'] })];
+    const items = [item({ title: 'Now' }), item({ title: 'Flagged', flags: ['iosWidgets'] })];
     // The premise: jest.setup.js leaves the widgets flag as it ships
-    expect(FEATURE_FLAGS.widgets).toBe(false);
+    expect(FEATURE_FLAGS.iosWidgets).toBe(false);
 
     const visible = filterWhatsNewItems(items, '1.13.0');
 
@@ -273,14 +273,14 @@ describe('VISIBLE_WHATS_NEW', () => {
   it('keeps the parked widgets item in the archive (wording preserved, never shown)', () => {
     const parked = WHATS_NEW?.items.find((entry) => entry.version === null);
     expect(parked?.title).toBe('Home & Lock widgets');
-    expect(parked?.flags).toEqual(['widgets']);
+    expect(parked?.flags).toEqual(['iosWidgets']);
     expect((VISIBLE_WHATS_NEW?.items ?? []).map((entry) => entry.title)).not.toContain('Home & Lock widgets');
   });
 });
 
 describe('getVisibleWhatsNew', () => {
-  const flagsOn = { widgets: true, androidWidgets: true };
-  const flagsOff = { widgets: false, androidWidgets: false };
+  const flagsOn = { iosWidgets: true, androidWidgets: true };
+  const flagsOff = { iosWidgets: false, androidWidgets: false };
 
   it('presents nothing for a silent release', () => {
     expect(getVisibleWhatsNew(null, flagsOn)).toBeNull();
@@ -290,7 +290,7 @@ describe('getVisibleWhatsNew', () => {
     const hidden = release([
       item({ title: 'Old', version: '1.12.0' }),
       item({ title: 'Parked', version: null }),
-      item({ title: 'Flagged', flags: ['widgets'] }),
+      item({ title: 'Flagged', flags: ['iosWidgets'] }),
     ]);
 
     expect(getVisibleWhatsNew(hidden, flagsOff)).toBeNull();
@@ -300,11 +300,11 @@ describe('getVisibleWhatsNew', () => {
     const mixed = release([
       item({ title: 'Now' }),
       item({ title: 'Old', version: '1.12.0' }),
-      item({ title: 'Flagged', flags: ['widgets'] }),
+      item({ title: 'Flagged', flags: ['iosWidgets'] }),
     ]);
 
     expect(getVisibleWhatsNew(mixed, flagsOn)).toEqual(
-      release([item({ title: 'Now' }), item({ title: 'Flagged', flags: ['widgets'] })])
+      release([item({ title: 'Now' }), item({ title: 'Flagged', flags: ['iosWidgets'] })])
     );
   });
 });

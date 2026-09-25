@@ -1,7 +1,7 @@
 /**
  * Pins the ambient flag state every suite inherits to the SHIPPED value
  *
- * `jest.setup.js` used to set `EXPO_PUBLIC_WIDGETS = '1'` for all of
+ * `jest.setup.js` used to set `EXPO_PUBLIC_IOS_WIDGETS = '1'` for all of
  * `setupFiles`, so the entire suite ran with widgets enabled — the opposite of
  * what ships. The widget-push early returns real users actually hit were
  * covered by one suite while every other suite exercised a code path no user
@@ -19,7 +19,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 /** Read once, at file evaluation, so no test body can have touched it yet */
-const AMBIENT_WIDGETS = process.env.EXPO_PUBLIC_WIDGETS;
+const AMBIENT_WIDGETS = process.env.EXPO_PUBLIC_IOS_WIDGETS;
 
 const ROOT = join(__dirname, '..', '..');
 
@@ -39,19 +39,19 @@ const loadFlagsFresh = () => {
 // =============================================================================
 
 describe('the ambient test environment', () => {
-  it('leaves EXPO_PUBLIC_WIDGETS unset, as a release build does', () => {
+  it('leaves EXPO_PUBLIC_IOS_WIDGETS unset, as a release build does', () => {
     expect(AMBIENT_WIDGETS).toBeUndefined();
   });
 
-  it('resolves FEATURE_FLAGS.widgets false without any opt-in', () => {
-    expect(loadFlagsFresh().FEATURE_FLAGS.widgets).toBe(false);
+  it('resolves FEATURE_FLAGS.iosWidgets false without any opt-in', () => {
+    expect(loadFlagsFresh().FEATURE_FLAGS.iosWidgets).toBe(false);
   });
 
   it('is produced by a delete, not an assignment, so nothing leaks between files', () => {
     const setup = readFileSync(join(ROOT, 'jest.setup.js'), 'utf8');
 
-    expect(setup).toContain('delete process.env.EXPO_PUBLIC_WIDGETS');
-    expect(setup).not.toMatch(/process\.env\.EXPO_PUBLIC_WIDGETS\s*=/);
+    expect(setup).toContain('delete process.env.EXPO_PUBLIC_IOS_WIDGETS');
+    expect(setup).not.toMatch(/process\.env\.EXPO_PUBLIC_IOS_WIDGETS\s*=/);
   });
 });
 
@@ -65,7 +65,7 @@ describe('.env.example, the catalog every device build is derived from', () => {
   // APK declares no providers and the app disappears from the launcher's
   // widget picker, which is how a build once lost the widgets entirely.
   it.each([
-    ['EXPO_PUBLIC_WIDGETS', 'iOS Home and Lock Screen widgets'],
+    ['EXPO_PUBLIC_IOS_WIDGETS', 'iOS Home and Lock Screen widgets'],
     ['EXPO_PUBLIC_ANDROID_WIDGETS', 'Android home-screen widgets'],
   ])('keeps %s at 1, so %s can never ship disabled', (variable) => {
     const catalog = readFileSync(join(ROOT, '.env.example'), 'utf8');
@@ -82,7 +82,7 @@ describe.each(OPT_IN_SUITES)('%s', (relativePath) => {
   const source = () => readFileSync(join(ROOT, relativePath), 'utf8');
 
   it('opts into the enabled widget path by mocking the flags module', () => {
-    expect(source()).toContain("jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { widgets: true } }));");
+    expect(source()).toContain("jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: true } }));");
   });
 
   it('hoists the opt-in above its first import, or it would run too late', () => {
@@ -94,6 +94,6 @@ describe.each(OPT_IN_SUITES)('%s', (relativePath) => {
   it('does not try to opt in through the environment, which cannot work', () => {
     // An assignment in the file body runs after the hoisted imports have
     // already evaluated flags.ts, so it would silently do nothing
-    expect(source()).not.toMatch(/process\.env\.EXPO_PUBLIC_WIDGETS\s*=/);
+    expect(source()).not.toMatch(/process\.env\.EXPO_PUBLIC_IOS_WIDGETS\s*=/);
   });
 });
