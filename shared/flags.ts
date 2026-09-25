@@ -25,14 +25,20 @@
 
 export const FEATURE_FLAGS = {
   /**
-   * iOS Home/Lock screen widgets (expo-widgets). Disabled: the widget
-   * extension is stripped at prebuild and all push paths return early.
-   * The upstream render fix this waited on IS installed: expo/expo#49810
-   * shipped in expo-widgets 58.0.1, and 58.0.3's `DynamicView.swift` carries
-   * no random UUID, children taking a stable string identity from the JSX
-   * type and key instead. What remains is the G.1 acceptance protocol on the
-   * iPhone XS, which needs the owner and is row 16 of ai/plans/README.md.
-   * Full trail in ISSUES.md G.1.
+   * iOS Home/Lock screen widgets (expo-widgets): the widget extension and
+   * every push path in stores/widget.ts. ON — builds pass
+   * EXPO_PUBLIC_WIDGETS=1 and `.env.example` documents it.
+   *
+   * It existed to keep the G.1 render chain out of a build: expo-widgets
+   * regenerated random SwiftUI view identities per render, so each body
+   * evaluation tore down the whole tree and starved the extension's CPU
+   * budget. expo-widgets 58.0.1 shipped expo/expo#49810, and the installed
+   * 58.0.3 renders `AnyView(view).id(child.childIdentity)` with no `UUID()`
+   * anywhere. The G.1 acceptance protocol ran on the iPhone XS on 2026-09-25
+   * and passed: all eight home kinds rendered and stayed rendered past ten
+   * minutes, no watchdog line, no new cpu_resource report.
+   *
+   * Now scaffolding awaiting deletion, per the lifecycle rule above.
    */
   widgets: process.env.EXPO_PUBLIC_WIDGETS === '1',
   /**

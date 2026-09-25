@@ -184,3 +184,59 @@ that Android does not have. Colour parity is done; several typographic gaps are
 single literals; three of the values involved were tuned by the owner on device
 in earlier sessions, and the card's height is the one change that risks the
 widget vanishing from the 3T picker, which is how session 15b lost it at 400dp.
+
+## Step 5b: the G.1 acceptance protocol on the iPhone XS (run 2026-09-25)
+
+Run in a later session than steps 1 to 3, because the protocol needs the owner
+to place the widgets. The build already on the phone is 1.27.369, which carries
+the extension; nothing was rebuilt or reinstalled, so parts 2 to 4 were not
+needed.
+
+- Watch window: 06:23:43 to 06:33:51 (10m 8s). Evidence under
+  `~/athan-device-sweep/session19b/`.
+- **Crash baseline BEFORE:** 15 `ExpoWidgetsTarget.cpu_resource` reports,
+  newest 2026-09-20 (`crash-before.txt`), matching what session 19's AUDIT.md
+  recorded.
+- **Reading 1, the owner:** all eight home widgets still showing prayer times
+  after ten minutes. Nothing blank, no containerBackground message.
+- **Reading 2, watchdog:** `grep -c 'Watchdog provision violated'` = **0**
+  across 346,199 captured lines.
+- **Reading 3, crash reports AFTER:** **15**, unchanged, none dated
+  2026-09-25 (`crash-after.txt`).
+
+**VERDICT: PASS on all three readings. Step 4 ran.**
+
+Corroborating evidence the protocol does not require, saved in
+`widget-render-evidence.txt`: iOS's own `WidgetRenderer_Default` powerlog names
+every one of the eight home kinds plus both Lock Screen kinds as rendered, and
+reports per-view `renderTime` of 0.012s to 0.063s. G.1 cost 5 to 13 CPU-seconds
+per kind-placement, so this is about three orders of magnitude below the failure
+mode. Four kinds show ~475s of continuous on-screen time with ~47,000 frames
+submitted, which is `Text(timerInterval:)` ticking for roughly eight unbroken
+minutes: the countdown is alive, not a frozen last render.
+
+A false start worth recording: `grep -iE 'jetsam|memory_?limit'` returned 13
+hits, every one routine `runningboardd` bookkeeping for Reminders, Siri, Find My
+and SpringBoard. Filtering to real terminations left only an Apple Watch daemon
+and `searchd`. Nothing Athan-related was killed.
+
+## Step 4: The iOS widgets flag ships on
+
+- Branch: `feat/19-ios-widgets-flag-on`
+- Gate: step 5b PASSED above.
+- Baseline and after: `flags.test.ts` + `flagDefaults.test.ts`
+  `Tests: 32 passed, 32 total`, unchanged. The parity check reports
+  `Tests: 20 skipped, 3 passed, 23 total`, as the plan predicts.
+- `tsc` exit 0, Biome exit 0.
+- `.env.example`: `EXPO_PUBLIC_WIDGETS=0` becomes `1`.
+  `EXPO_PUBLIC_ANDROID_WIDGETS` untouched.
+- `shared/flags.ts`: the `widgets` JSDoc rewritten. The parse is untouched,
+  per decision 6.
+- Commit: `ce3b3029`, version 1.27.378. Hook: `Tests: 4647 passed, 4647 total`,
+  170 suites, four 100% coverage lines.
+- Review: merge, one round, performed by the session itself (the owner
+  instructed on 2026-09-25 that this session use no subagents; the review ran
+  against step 4's own checklist). Verified: the parse line is absent from the
+  diff, so `EXPO_PUBLIC_WIDGETS === '1'` is untouched; `androidWidgets` is
+  unchanged; only the six files the step lists appear; the JSDoc carries no
+  "Flip condition" paragraph, no 57.0.x history and no unreleased claim.
