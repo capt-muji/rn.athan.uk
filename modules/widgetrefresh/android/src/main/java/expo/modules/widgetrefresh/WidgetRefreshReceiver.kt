@@ -5,15 +5,14 @@ import android.content.Context
 import android.content.Intent
 
 /**
- * The minute-edge tick: re-render every placed widget and the lock card,
- * then keep the chain alive while either still needs it. With nothing placed
- * and the card off, the chain ends here and the next app open re-arms it.
+ * The minute-edge tick: re-render every placed widget, then keep the chain
+ * alive only while something is placed. With no placed widgets the chain
+ * ends here and the next app open re-arms it.
  */
 class WidgetRefreshReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         WidgetRefreshScheduler.updateAll(context)
-        LockCardNotifier.refresh(context)
-        if (WidgetRefreshScheduler.needsChain(context)) {
+        if (WidgetRefreshScheduler.hasPlacedWidgets(context)) {
             WidgetRefreshScheduler.armNext(context)
         }
     }
