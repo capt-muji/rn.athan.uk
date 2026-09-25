@@ -26,3 +26,14 @@
 - Review (the session's own): only `package.json`, `yarn.lock`, `app.json` and plan bookkeeping changed; one version
   string. Verdict: merge, one round.
 - Merged into `uat-2`.
+
+## Step 3: `@jest/create-cache-key-function` 29.7.0 to 30.5.1
+
+- Branch `chore/bump-jest-cache-key-30`, version 1.27.389.
+- No red: a dev-tooling move with one call site, `__tests__/svgFileTransformer.js`'s `getCacheKey`.
+- Extra check beyond the plan, because a cache key only runs on a cold cache: ran
+  `components/ui/__tests__/Icon.test.tsx` with `--no-cache` to force the transformer to recompute. 3 passed, so the
+  SVG testID contract still holds under the new version.
+- Green: `tsc` 0, Biome 0, `Test Suites: 170 passed, 170 total`, `Tests: 4649 passed, 4649 total`, 100% on all four.
+- Review (the session's own): three files plus plan bookkeeping, one version string. Verdict: merge, one round.
+- Merged into `uat-2`.
