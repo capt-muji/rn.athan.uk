@@ -252,6 +252,13 @@ One line each; a session's row moves here when it closes. Full detail is in git 
   to state what is installed (the G.1 identity fix shipped in expo-widgets 58.0.1). G.2's blank card
   investigated: not entry count, but the widget extension's cold start. G.2 stays OPEN until the flag
   is on and a placement can be observed.
+- 21. `ai/plans/21-bump-everything-latest/PLAN.md` — DONE 2026-09-25 — eight non-SDK packages at their absolute
+  latest, one commit each (1.27.387 to 1.27.394). jotai 3 cost three fixes: it is ESM-only, it deleted `loadable`
+  which the launch sync used, and it renamed the store internals `jest.components.setup.js` reaches into; 82 of 170
+  suites failed before them. husky 9 cost both hook files and one guard assertion. The four `@babel` packages stay at
+  7 because `babel-preset-expo` pins 36 Babel 7 plugins, so they belong to row 18. Proven on both phones from
+  production builds: the 3T cold launched in 3,136ms with real London times and its alarms intact, and the XS renders
+  its widgets once the build carries `EXPO_PUBLIC_IOS_WIDGETS=1` and the real API key.
 - 19b. `ai/plans/19-widget-polish-and-horizon/PLAN.md` step 4 — DONE 2026-09-25 — the G.1 acceptance
   protocol ran on the iPhone XS and PASSED on all three readings (the owner saw all eight home kinds
   still showing prayer times after ten minutes, zero watchdog violations across 346k syslog lines, and
