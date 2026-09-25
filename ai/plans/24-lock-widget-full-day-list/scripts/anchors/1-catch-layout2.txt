@@ -1,0 +1,6 @@
+  } catch {
+    return neutralForFamily();
+  }
+};
+
+export const PrayerLockWidget2 = createWidget('PrayerLockWidget2', AthanLockWidgetCentred);

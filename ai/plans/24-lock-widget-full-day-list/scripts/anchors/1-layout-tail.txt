@@ -1,0 +1,4 @@
+// One layout, two kinds: identical rendering, different timelines — the
+// standard pair and the extras pair (see widgets/PrayerWidget.tsx).
+export const PrayerLockWidget3 = createWidget('PrayerLockWidget3', AthanLockWidgetStacked);
+export const ExtrasLockWidget3 = createWidget('ExtrasLockWidget3', AthanLockWidgetStacked);

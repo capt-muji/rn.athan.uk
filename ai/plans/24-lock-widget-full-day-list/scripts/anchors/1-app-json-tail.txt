@@ -1,0 +1,10 @@
+            {
+              "name": "ExtrasLockWidget3",
+              "displayName": "Extra Times (Layout 3)",
+              "description": "Next extra time with a countdown.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
+            }
+          ],

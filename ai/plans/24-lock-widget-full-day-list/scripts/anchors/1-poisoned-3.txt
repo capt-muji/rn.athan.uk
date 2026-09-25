@@ -1,0 +1,9 @@
+    expect(textsOf(renderTreeFor3(legacy, 'accessoryRectangular'))).toContain('Out of date');
+    const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
+    Object.defineProperty(poisoned, 'nextName', {
+      get(): string {
+        throw new Error('boom');
+      },
+    });
+    expect(textsOf(renderTreeFor3(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
+  });
