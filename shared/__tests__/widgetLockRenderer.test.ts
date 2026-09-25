@@ -48,6 +48,7 @@ const SWIFT_UI = {
 const MODIFIERS = [
   'containerBackground',
   'containerRelativeFrame',
+  'fixedSize',
   'font',
   'foregroundStyle',
   'frame',
@@ -264,19 +265,17 @@ describe('lock widget renderer', () => {
     expect(tickingIntervalOf(tree)).toBeUndefined();
   });
 
+  // Owner 2026-09-25: the prayer name is the only bold element anywhere. What
+  // recedes is the SECOND reading on a line, so layout 1 mutes the countdown
+  // under its solid name-and-time row, while layouts 2 and 3 mute whichever
+  // reading of the time sits beside the name.
   it.each([
-    ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular')],
-    ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular')],
-    ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular')],
-  ])('mutes only the absolute time on %s and bolds only the prayer name', (_label, renderPath) => {
-    // Owner 2026-09-25: solid text everywhere except the absolute time, and
-    // the name is the only bold element — weight carries what opacity did.
+    ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), ['<countdown>']],
+    ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
+    ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), ['<countdown>']],
+  ])('bolds only the prayer name on %s and mutes only what recedes', (_label, renderPath, muted) => {
     for (const node of styledTexts(renderPath(LIVE_PROPS))) {
-      if (node.text === LIVE_PROPS.nextTime) {
-        expect(node.colour).toBe(MUTED);
-      } else {
-        expect(node.colour).toBe(SOLID);
-      }
+      expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
       expect(node.weight === 'bold').toBe(node.text === LIVE_PROPS.nextName);
     }
   });
@@ -387,10 +386,17 @@ describe('lock widget renderer', () => {
     // against the leading edge of it (the home hero's §13d lesson); without
     // this modifier the countdown ink reads left-aligned on the glass.
     // Layout 2 carries no countdown since the owner's 2026-09-20 ruling.
-    for (const render of [renderTreeFor, renderTreeFor3]) {
-      const found = collectTickingModifiers(render(LIVE_PROPS, 'accessoryRectangular'));
-      expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
-      expect(found).toContainEqual({ modifier: 'monospacedDigit', value: undefined });
-    }
+    const found = collectTickingModifiers(renderTreeFor(LIVE_PROPS, 'accessoryRectangular'));
+    expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
+    expect(found).toContainEqual({ modifier: 'monospacedDigit', value: undefined });
+  });
+
+  it('shrinks layout 3 countdown to its digits so the pair centres as one block', () => {
+    // On its own row a timer Text claims a worst-case width and pads its own
+    // digits, which pinned the name to the leading edge of the slot.
+    const found = collectTickingModifiers(renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'));
+    expect(found).toContainEqual({ modifier: 'fixedSize', value: { horizontal: true } });
+    expect(found).toContainEqual({ modifier: 'monospacedDigit', value: undefined });
+    expect(found.map((entry) => entry.modifier)).not.toContain('multilineTextAlignment');
   });
 });

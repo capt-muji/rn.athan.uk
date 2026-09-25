@@ -2,6 +2,7 @@ import { HStack, Image, Text, VStack } from '@expo/ui/swift-ui';
 import {
   containerBackground,
   containerRelativeFrame,
+  fixedSize,
   font,
   foregroundStyle,
   frame,
@@ -168,12 +169,7 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
             {props.nextName}
           </Text>
           <Text
-            modifiers={[
-              font({ size: 14, weight: 'medium' }),
-              monospacedDigit(),
-              foregroundStyle(WHITE_MUTED),
-              lineLimit(1),
-            ]}>
+            modifiers={[font({ size: 14, weight: 'medium' }), monospacedDigit(), foregroundStyle(WHITE), lineLimit(1)]}>
             {props.nextTime}
           </Text>
         </HStack>
@@ -184,7 +180,7 @@ const AthanLockWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
             font({ size: 14, weight: 'medium' }),
             monospacedDigit(),
             multilineTextAlignment('center'),
-            foregroundStyle(WHITE),
+            foregroundStyle(WHITE_MUTED),
             lineLimit(1),
           ]}
         />
@@ -341,6 +337,7 @@ const AthanLockWidgetCountdown = (props: PrayerWidgetProps, environment: WidgetE
   'widget';
 
   const WHITE = '#ffffff';
+  const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
 
   const neutralForFamily = () => {
     if (environment.widgetFamily === 'accessoryInline') {
@@ -460,8 +457,10 @@ const AthanLockWidgetCountdown = (props: PrayerWidgetProps, environment: WidgetE
             modifiers={[
               font({ size: 14, weight: 'medium' }),
               monospacedDigit(),
-              multilineTextAlignment('center'),
-              foregroundStyle(WHITE),
+              // A timer Text otherwise claims a worst-case width ("00:00:00")
+              // and pads its own digits, which shoves the pair off centre.
+              fixedSize({ horizontal: true }),
+              foregroundStyle(WHITE_MUTED),
               lineLimit(1),
             ]}
           />
