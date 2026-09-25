@@ -16,6 +16,7 @@ class WidgetRefreshModule : Module() {
             val reactContext = context.reactContext ?: return@Function false
             WidgetRefreshScheduler.ensureArmed(reactContext)
             WidgetRefreshScheduler.ensureWatchdog(reactContext)
+            WidgetRefreshTickListener.ensureRegistered(reactContext)
             true
         }
     }
