@@ -252,3 +252,8 @@ One line each; a session's row moves here when it closes. Full detail is in git 
   to state what is installed (the G.1 identity fix shipped in expo-widgets 58.0.1). G.2's blank card
   investigated: not entry count, but the widget extension's cold start. G.2 stays OPEN until the flag
   is on and a placement can be observed.
+- 19b. `ai/plans/19-widget-polish-and-horizon/PLAN.md` step 4 — DONE 2026-09-25 — the G.1 acceptance
+  protocol ran on the iPhone XS and PASSED on all three readings (the owner saw all eight home kinds
+  still showing prayer times after ten minutes, zero watchdog violations across 346k syslog lines, and
+  the cpu_resource count unchanged at 15), so `FEATURE_FLAGS.widgets` and `.env.example` ship the iOS
+  widgets ON. ISSUES G.1 is CLOSED. G.2 stays open and is now user-visible on iOS.

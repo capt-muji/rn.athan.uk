@@ -247,11 +247,29 @@ iOS 18.7.7 — XS cannot go past iOS 18), factory reset, only this app installed
 build 1.17.4 TestFlight. Owner ruling: every G.1–G.5 must be fixed before
 production release; G.6 noted but deferred by owner.
 
-### G.1 [OPEN — RELEASE BLOCKER] Five home screen widgets permanently blank
+### G.1 [CLOSED 2026-09-25] Five home screen widgets permanently blank
 
-- **STATUS (2026-09-25, session 20): THE FIX IS INSTALLED. What remains is the
-  XS acceptance protocol, which is row 16 of `ai/plans/README.md`.** Read from
-  the installed tree this session, do not re-derive:
+- **CLOSED (2026-09-25, session 19b): the acceptance protocol PASSED on the
+  iPhone XS and the `widgets` flag ships on** (1.27.378). The three readings,
+  evidence under `~/athan-device-sweep/session19b/`:
+  - the owner reports all eight home kinds still showing prayer times after a
+    ten minute watch (06:23:43 to 06:33:51), none blank, no containerBackground
+    message;
+  - `grep -c 'Watchdog provision violated'` = **0** across 346,199 captured
+    syslog lines;
+  - `ExpoWidgetsTarget.cpu_resource` reports **15 before, 15 after**, none
+    dated 2026-09-25.
+  - Corroboration the protocol does not require: iOS's own
+    `WidgetRenderer_Default` powerlog names all eight home kinds plus both Lock
+    Screen kinds as rendered, at 0.012s to 0.063s `renderTime` per view against
+    the 5 to 13 CPU-SECONDS this bug used to cost, and four kinds show ~475s of
+    continuous screen time with ~47,000 frames submitted, which is
+    `Text(timerInterval:)` ticking rather than a frozen last render.
+  - **Trap for anyone re-running this:** `grep -iE 'jetsam|memory_?limit'`
+    returns routine `runningboardd` bookkeeping for unrelated system processes.
+    Filter to real terminations before reading it as a kill.
+- **STATUS (2026-09-25, session 20): THE FIX IS INSTALLED.** Read from
+  the installed tree that session, do not re-derive:
   - `expo-widgets` is **58.0.3**, and
     `node_modules/expo-widgets/ios/Widgets/DynamicView.swift` contains **zero
     `UUID()` calls**. The random-per-render identity that caused this whole
