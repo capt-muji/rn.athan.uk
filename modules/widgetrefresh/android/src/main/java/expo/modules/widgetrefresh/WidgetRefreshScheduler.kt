@@ -8,6 +8,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import java.util.concurrent.TimeUnit
 import org.json.JSONObject
 
 /**
@@ -39,6 +43,16 @@ internal object WidgetRefreshScheduler {
     private const val MEDIUM_COMPOSITION_MIN_DP = 250
 
     private const val WIDGETS_PREFERENCES_NAME = "expo.modules.widgets"
+
+    /** Unique name, so every enqueue collapses onto one watchdog job. */
+    private const val WATCHDOG_WORK_NAME = "expo.modules.widgetrefresh.watchdog"
+
+    /**
+     * Android's floor for periodic work
+     * (PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS = 900000). A shorter
+     * period is silently clamped to this, so it is written as the real value.
+     */
+    private const val WATCHDOG_PERIOD_MINUTES = 15L
 
     /** Must match PrayerWidgetAndroidProps.grantedWidthDp in shared/widgetTypes.ts. */
     private const val GRANTED_WIDTH_KEY = "grantedWidthDp"
@@ -119,6 +133,26 @@ internal object WidgetRefreshScheduler {
      */
     fun ensureArmed(context: Context) {
         armNext(context.applicationContext)
+    }
+
+    /**
+     * Keeps a periodic watchdog enqueued, which re-arms the tick after the OS
+     * has destroyed it. KEEP rather than REPLACE or UPDATE: those restart the
+     * period on every call, so a phone whose app is opened often would never
+     * reach a run. No constraints, because requiring network or charging would
+     * withhold exactly the repair the user is waiting for.
+     */
+    fun ensureWatchdog(context: Context) {
+        val appContext = context.applicationContext
+        val request = PeriodicWorkRequestBuilder<WidgetRefreshWatchdogWorker>(
+            WATCHDOG_PERIOD_MINUTES,
+            TimeUnit.MINUTES
+        ).build()
+        WorkManager.getInstance(appContext).enqueueUniquePeriodicWork(
+            WATCHDOG_WORK_NAME,
+            ExistingPeriodicWorkPolicy.KEEP,
+            request
+        )
     }
 
     fun armNext(context: Context) {
