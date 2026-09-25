@@ -59,3 +59,48 @@
   type-only, and every suite passes. `PLAN.md` decision 5 and `steps/4-test-renderer.md` now say this.
 - Review (the session's own): three files plus plan bookkeeping and the two corrections above. Verdict: merge, one
   round.
+
+## Step 6: `lint-staged` 15.5.2 to 17.5.1
+
+- Branch `chore/bump-lint-staged-17`, version 1.27.392.
+- Preconditions re-verified before installing, all three from v17's `MIGRATION.md`: git 2.54.0 (floor 2.32.0), Node
+  v24.14.1 (floor 22.22.1), and the config as JSON inside `package.json` rather than a YAML file, so the
+  now-optional `yaml` package is not needed.
+- Green: `tsc` 0, Biome 0, `Test Suites: 170 passed, 170 total`, `Tests: 4649 passed, 4649 total`, 100% on all four.
+- **The first commit attempt was REJECTED by the hook, and it was not this bump.**
+  `stores/__tests__/widgetAndroid.test.ts`, the test `arms the next flip a whole minute out when the target sits on
+  an exact minute`, failed on `expect(PrayerWidget.reload).toHaveBeenCalled()`. Diagnosed rather than retried blindly:
+  the same suite passed in the full run minutes earlier on the identical tree, then passed 3 more times alone, and
+  passed again in the spike worktree under a forced load of 5.97. It is a fake-timer test that needs the full
+  170-suite run to starve it, which is the same load-sensitive class `EXECUTOR-BRIEF.md` section 3 documents for
+  `audioMatrix.test.ts`. No code of this step's touches it: this step changed only a version string. Waited for the
+  load to fall and committed again, which passed with 4649 tests and 100% coverage.
+- The hook ran lint-staged 17 on this very commit, which is the proof the plan asked for.
+- Review (the session's own): three files, one version string, the `lint-staged` config block untouched. Verdict:
+  merge, one round.
+- Merged into `uat-2`.
+
+## Step 7: `husky` 8.0.3 to 9.1.7
+
+- Branch `chore/bump-husky-9`, version 1.27.393.
+- Both anchors counted 1 before starting.
+- Red, exactly as specified: `qualityGate.test.ts` failed ONE test,
+  `declares a prepare script, so yarn install arms the hook`, with `Expected substring: "husky install"` and
+  `Received string: "husky"`. The other 8 tests in that file passed untouched, which is what the plan required.
+- Change: `prepare` and `husky` scripts to the bare `husky`; the two-line shim removed from BOTH `.husky/pre-commit`
+  and `.husky/pre-push`, each keeping its body; the one guard assertion moved to `husky`.
+- Structural checks after `yarn husky`: `core.hooksPath` prints `.husky/_`, both hooks still executable,
+  `head -1 .husky/pre-commit` is no longer `#!/usr/bin/env sh`, and `.gitignore` is untouched.
+- Green: guard suite `Tests: 9 passed, 9 total`, `tsc` 0, Biome 0, full suite `Test Suites: 170 passed, 170 total`,
+  `Tests: 4649 passed, 4649 total`, 100% on all four.
+- Breaks: `caught 3 of 3`, `ALL AS EXPECTED: 1`, `package.json` and `.husky/pre-commit` restored afterwards.
+- **The hook ran on its own commit, which is the proof this step exists for.** The commit log shows
+  `Backing up original state`, `Running tasks for staged files`, `✔ biome check --write --no-errors-on-unmatched`,
+  `✔ jest --bail --findRelatedTests --passWithNoTests`, then the full validate with `Tests: 4649 passed` and four
+  `100%` lines.
+- **A plan check was wrong and was corrected.** Steps 6 and 7 both said to confirm the hook ran by finding the word
+  `lint-staged` in the commit log. lint-staged 17 no longer prints its own name, so that grep returns 0 on a commit
+  where it ran perfectly well, which would have read as a missing gate. Both steps now name the real evidence:
+  `Running tasks for staged files` plus the two ticked task lines.
+- Review (the session's own): both hooks keep their bodies and their executable bit, only the shim is gone;
+  `.gitignore` untouched; exactly one assertion changed in the guard suite. Verdict: merge, one round.
