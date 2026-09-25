@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.28.15",
+    "version": "1.28.16",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -369,24 +369,6 @@
               "description": "Next extra time with a countdown.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
-              },
-              "android": null
-            },
-            {
-              "name": "ExtrasLockWidget4",
-              "displayName": "Extra Times (Layout 4)",
-              "description": "The whole day's extra times.",
-              "ios": {
-                "supportedFamilies": ["accessoryRectangular"]
-              },
-              "android": null
-            },
-            {
-              "name": "PrayerLockWidget5",
-              "displayName": "Next Prayer (Layout 5)",
-              "description": "The whole day's prayers, in two columns.",
-              "ios": {
-                "supportedFamilies": ["accessoryRectangular"]
               },
               "android": null
             }

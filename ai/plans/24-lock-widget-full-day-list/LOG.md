@@ -145,3 +145,32 @@ extra-large home widgets are gone from it.
 
 So the row is EXECUTED, not DONE, which is what the plan's section 9 says: "the row stays EXECUTED until they have
 looked." The audit below does not push past that.
+
+## REJECTED ON DEVICE, 2026-09-25 21:34, and reverted in full
+
+The owner placed both faces on the XS, tested the standard and the extras schedules, and rejected them on sight:
+🐋  "it looks absolutely horrible. There's no space, everything is squeezed in. I thought it was going to be a big
+widget, but actually it's horrible and it's all squeezed in... those 2 we just need to go, completely wiped as if they
+never existed before."
+
+Reverted with `git revert --no-commit -m 1 21560164`. Every file is byte-identical to `bd5610da~1`, the new suite is
+deleted, and `grep` finds no trace of `ExtrasLockWidget4` or `PrayerLockWidget5` in any source file or in `app.json`.
+The revert also restores the three `try`/`catch` blocks in the existing lock layouts, because removing them shipped in
+the same commit; that cleanup can return in a session of its own if the owner still wants it.
+
+**The cause is geometry, not code, which is why no fix was attempted.** An `accessoryRectangular` face is about
+160x72pt. The plan's own section 4 computed what that means and said so before anything was built: six rows in one
+column is ~12pt per row, and the plan called it "tight" and recorded that the owner had already rejected 12pt elsewhere
+as 🐋  "really really small". It shipped at 11pt to fit five extras rows. Two columns bought height at the cost of
+width: ~78pt per column for a name and a time together. Both readings were correct and both are unusable, so the honest
+conclusion is that the slot cannot hold a day list at all, and no tuning of sizes, spacing or split changes that.
+
+**DURABLE LESSON: arithmetic that predicts a cramped layout is a reason to stop, not a number to tune.** The plan
+measured the squeeze, wrote it down, called Layout 4 "tight", and then built it anyway because the comparison was the
+point. The comparison cost a full plan, an execution, an audit and two device builds to learn what the measurement
+already said. When a layout's own geometry says the content does not fit, the answer is to put the geometry to the owner
+BEFORE building, not to ship two variants and let the device decide. Any future Lock Screen work states the pt budget
+per element up front and gets the owner's ruling on the arithmetic first.
+
+What survives from this session: the deployment fix and its lesson about a gitignored prebuild outliving a `git revert`
+(above), which is unrelated to the day lists and stays on `uat-2`.
