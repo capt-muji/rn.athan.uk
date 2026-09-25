@@ -1,0 +1,9 @@
+  it('degrades a rendering error to the neutral card', () => {
+    const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
+    Object.defineProperty(poisoned, 'nextName', {
+      get(): string {
+        throw new Error('boom');
+      },
+    });
+    expect(render(poisoned, 'accessoryRectangular')).toContain('Open to load times');
+  });
