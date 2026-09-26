@@ -35,11 +35,14 @@ else
   mv "$ALT" "$SRC"
 fi
 
-# --- break 2: the patch no longer carries the openApp prop ---
+# --- break 2: the patched converter loses the openApp prop ---
+# The guard reads the APPLIED result under node_modules, not the patch file, so
+# this break edits node_modules. That is deliberate: node_modules is what ships
+# to the phone, and a patch that stops applying leaves exactly this state.
 total=$((total+1))
 LABEL="patch-content"
-SRC=patches/expo-widgets+58.0.7.patch
-BAK=/tmp/breaks23-patch.bak
+SRC=node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
+BAK=/tmp/breaks23-converter.bak
 if [ ! -f "$SRC" ]; then
   echo "BREAK NOT APPLIED: $LABEL"
 else
@@ -69,7 +72,9 @@ LABEL="frame-order"
 SRC=widgets/PrayerWidget.tsx
 BAK=/tmp/breaks23-widget.bak
 cp "$SRC" "$BAK"
-perl -0pi -e 's/\Qframe({ height: ROW_HEIGHT }), frame({ maxWidth: Infinity })\E/frame({ maxWidth: Infinity }), frame({ height: ROW_HEIGHT })/' "$SRC"
+# Biome formats the modifier list one per line, so the two calls are NOT
+# adjacent in the source; the substitution spans the newline and indentation.
+perl -0pi -e 's/\Qframe({ height: ROW_HEIGHT }),\E\s*\n\s*\Qframe({ maxWidth: Infinity }),\E/frame({ maxWidth: Infinity }),\n              frame({ height: ROW_HEIGHT }),/' "$SRC"
 if cmp -s "$SRC" "$BAK"; then
   echo "BREAK NOT APPLIED: $LABEL"
   restore "$SRC" "$BAK"
