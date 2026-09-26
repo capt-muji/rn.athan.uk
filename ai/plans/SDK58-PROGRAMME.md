@@ -348,12 +348,30 @@ shrink and the freed iOS pending-notification slots pay for a second reminder.
 
 - UI shape (owner): a Reminders master toggle, then Reminder 1, then Reminder 2, where
   Reminder 2 stays disabled until Reminder 1 is enabled.
-- iOS 64-pending cap math: 11 prayers x 2 days x 2 (at-time + one reminder) = 44 today;
-  11 x 1 day x 3 (at-time + two reminders) = 33, comfortable headroom.
-- Risk to weigh in the session: the 2-day buffer is also the force-quit survival window
-  (only user force-quit breaks the background chain on iOS; recovery is the next app open,
-  about 18h in the winter worst case). A 1-day buffer shortens that window; the session
-  decides whether the stop-gap rebuild plus reschedule-on-open covers it.
+- **DECIDED by the owner, 2026-09-26: 1 day, one at-time alert and TWO reminders.**
+- iOS 64-pending cap maths, corrected on 2026-09-26 against `rollingDaysForPrayer`. The earlier
+  figures here (44 today, 33 after) were wrong because they multiplied 11 prayers by the window
+  directly. The window is NOT uniform: Midnight and Last Third fire the evening before their list
+  day, so they are armed for one list day more than everything else. Counted the way the code
+  counts it:
+
+  | Window | Alerts per prayer | List days armed | Total | Fits 64 |
+  | --- | --- | --- | --- | --- |
+  | 2 days | at-time + 1 reminder | 24 | 48 | yes, this is today |
+  | 2 days | at-time + 2 reminders | 24 | **72** | **NO, over by 8** |
+  | 1 day | at-time + 2 reminders | 13 | **39** | yes, comfortable |
+
+  So the second reminder and the drop to one day are not independent choices: 2 days with two
+  reminders exceeds the cap, which is why D3 pairs them. `shared/__tests__/constants.test.ts`
+  already computes this worst case from `rollingDaysForPrayer` itself, so raising the alert count
+  past the ceiling fails the suite rather than silently dropping notifications on device.
+- Android is unaffected: `setAlarmClock` alarms carry no equivalent cap.
+- **The cost the owner accepted.** The rolling buffer is also the silence window when the
+  background chain dies, and session 27 established that nothing recovers it while the app stays
+  closed: the alarms already in AlarmManager keep firing (that is what `alarmClock` delivery buys),
+  but once the buffer is exhausted the app is silent until the next open. At 1 day that grace
+  period halves. The 8T incident in `ai/AGENTS.md` [2026-09-23] is the worked example of how long
+  a user can go without noticing.
 
 ### D4. Localization for v2.0 (English, Arabic, Bahasa Indonesia, Urdu, more)
 
