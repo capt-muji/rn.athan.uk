@@ -282,11 +282,17 @@ The reasoning, which is sound and is recorded so no later session re-opens it:
   iPhone, which invites its own support question.
 - **It would rot.** Every Android version reshuffles these settings.
 
-The one row with a real argument was background activity, because it is the only invisible failure: the
-user did not choose it, cannot see it, and silently stops receiving prayers after the buffer runs out.
-It was still declined, because the 3-hour background task plus the 2-hour foreground refresh already
-covers the realistic cases. If it ever becomes a support burden it is one line in an existing screen, not
-a diagnostics feature.
+Background activity was argued for as the one INVISIBLE failure and the owner corrected that:
+**background refresh is ON by default on both platforms**, so a user who turns it off did so
+deliberately, exactly like DND and the silent switch, and it earns no special treatment.
+
+Two genuine exceptions remain where it is off without the user choosing it, and neither changes the
+decision: OEM battery management, which is this project's own 8T incident in `ai/AGENTS.md`
+[2026-09-23] where OnePlus Auto-launch suppressed the boot receiver with no user action; and iOS Low
+Power Mode, which silently disables Background App Refresh, a link few users would make. In both, a
+status row would only say "it is off" and then point at the OEM battery screen the owner has already
+ruled out as a remedy. The 3-hour background task and the 2-hour foreground refresh, both sized after
+that incident, are the real mitigation and already exist.
 
 **Do not re-queue this.** The research below is kept only so a future session does not repeat it.
 
