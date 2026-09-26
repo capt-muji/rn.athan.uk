@@ -1,9 +1,15 @@
 import { formatInTimeZone } from 'date-fns-tz';
-import { AndroidImportance, deleteNotificationChannelAsync, setNotificationChannelAsync } from 'expo-notifications';
+import {
+  AndroidAudioUsage,
+  AndroidImportance,
+  deleteNotificationChannelAsync,
+  setNotificationChannelAsync,
+} from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import { NOTIFICATION_ROLLING_DAYS, PRAYER_TIMEZONE, PRAYERS_ENGLISH } from '../constants';
 import {
+  ALARM_AUDIO_ATTRIBUTES,
   athanAndroidChannelId,
   atTimeAndroidChannelId,
   createAthanAndroidChannel,
@@ -246,12 +252,12 @@ describe('createDefaultAndroidChannel', () => {
       Platform.OS = 'ios';
     });
 
-    it('creates the athan_1_v2 channel with the mp3 sound and the original channel settings', async () => {
+    it('creates the athan_1_v3 channel on the alarm stream with the mp3 sound', async () => {
       await createDefaultAndroidChannel();
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-        'athan_1_v2',
+        'athan_1_v3',
         expect.objectContaining({
           name: 'Athan 1',
           sound: 'athan1.mp3',
@@ -259,6 +265,10 @@ describe('createDefaultAndroidChannel', () => {
           enableVibrate: true,
           vibrationPattern: [0, 250, 250, 250],
           bypassDnd: true,
+          audioAttributes: {
+            usage: AndroidAudioUsage.ALARM,
+            flags: { enforceAudibility: true, requestHardwareAudioVideoSynchronization: false },
+          },
         })
       );
     });
@@ -270,27 +280,27 @@ describe('createDefaultAndroidChannel', () => {
 // =============================================================================
 
 describe('athanAndroidChannelId', () => {
-  it('builds _v2-suffixed channel IDs', () => {
-    expect(athanAndroidChannelId(0)).toBe('athan_1_v2');
-    expect(athanAndroidChannelId(31)).toBe('athan_32_v2');
+  it('builds _v3-suffixed channel IDs', () => {
+    expect(athanAndroidChannelId(0)).toBe('athan_1_v3');
+    expect(athanAndroidChannelId(31)).toBe('athan_32_v3');
   });
 });
 
 describe('reminderAndroidChannelId', () => {
-  it('builds per-prayer × interval channel IDs', () => {
-    expect(reminderAndroidChannelId('Fajr', 5)).toBe('reminder_fajr_5');
-    expect(reminderAndroidChannelId('Istijaba', 30)).toBe('reminder_istijaba_30');
+  it('builds _v2-suffixed per-prayer × interval channel IDs', () => {
+    expect(reminderAndroidChannelId('Fajr', 5)).toBe('reminder_fajr_5_v2');
+    expect(reminderAndroidChannelId('Istijaba', 30)).toBe('reminder_istijaba_30_v2');
   });
 
   it('slugs multi-word prayer names to filename-safe underscores', () => {
-    expect(reminderAndroidChannelId('Last Third', 15)).toBe('reminder_last_third_15');
+    expect(reminderAndroidChannelId('Last Third', 15)).toBe('reminder_last_third_15_v2');
   });
 });
 
 describe('atTimeAndroidChannelId', () => {
   it('routes the 5 daily prayers to the selected athan channel', () => {
-    expect(atTimeAndroidChannelId('Fajr', 0)).toBe('athan_1_v2');
-    expect(atTimeAndroidChannelId('Isha', 31)).toBe('athan_32_v2');
+    expect(atTimeAndroidChannelId('Fajr', 0)).toBe('athan_1_v3');
+    expect(atTimeAndroidChannelId('Isha', 31)).toBe('athan_32_v3');
   });
 
   it('routes Sunrise + all extras to the fixed extras channel', () => {
@@ -300,6 +310,44 @@ describe('atTimeAndroidChannelId', () => {
     expect(atTimeAndroidChannelId('Suhoor', 7)).toBe(extrasAndroidChannelId);
     expect(atTimeAndroidChannelId('Duha', 7)).toBe(extrasAndroidChannelId);
     expect(atTimeAndroidChannelId('Istijaba', 7)).toBe(extrasAndroidChannelId);
+  });
+});
+
+describe('ALARM_AUDIO_ATTRIBUTES', () => {
+  it('asks for the alarm stream, which the ringer silent switch never mutes', () => {
+    // STREAM_ALARM is absent from the ringer-affected mask (0x1a6) that mutes STREAM_NOTIFICATION
+    expect(ALARM_AUDIO_ATTRIBUTES.usage).toBe(AndroidAudioUsage.ALARM);
+    expect(ALARM_AUDIO_ATTRIBUTES.usage).not.toBe(AndroidAudioUsage.NOTIFICATION);
+  });
+
+  it('enforces audibility so a skin muting the stream still sounds', () => {
+    expect(ALARM_AUDIO_ATTRIBUTES.flags.enforceAudibility).toBe(true);
+  });
+});
+
+describe('every channel this app creates plays on the alarm stream', () => {
+  beforeEach(() => {
+    Platform.OS = 'android';
+    (setNotificationChannelAsync as jest.Mock).mockClear();
+  });
+
+  afterEach(() => {
+    Platform.OS = 'ios';
+  });
+
+  // A channel created on the notification stream is muted by the silent switch for good:
+  // Android freezes a channel's audio attributes at creation.
+  // Each case uses an index this file creates nowhere else, because creation dedups per process.
+  it.each([
+    ['default athan', () => createDefaultAndroidChannel()],
+    ['selected athan', () => createAthanAndroidChannel(11)],
+    ['reminder', () => createReminderAndroidChannel('Isha', 20)],
+  ])('%s', async (_label, create) => {
+    await create();
+
+    const [, config] = (setNotificationChannelAsync as jest.Mock).mock.calls[0];
+    expect(config.audioAttributes).toEqual(ALARM_AUDIO_ATTRIBUTES);
+    expect(config.importance).toBe(AndroidImportance.MAX);
   });
 });
 
@@ -332,6 +380,7 @@ describe('createExtrasAndroidChannel', () => {
           enableVibrate: true,
           vibrationPattern: [0, 250, 250, 250],
           bypassDnd: true,
+          audioAttributes: ALARM_AUDIO_ATTRIBUTES,
         })
       );
     });
@@ -359,7 +408,7 @@ describe('createAthanAndroidChannel', () => {
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-        'athan_5_v2',
+        'athan_5_v3',
         expect.objectContaining({
           name: 'Athan 5',
           sound: 'athan5.mp3',
@@ -367,6 +416,10 @@ describe('createAthanAndroidChannel', () => {
           enableVibrate: true,
           vibrationPattern: [0, 250, 250, 250],
           bypassDnd: true,
+          audioAttributes: {
+            usage: AndroidAudioUsage.ALARM,
+            flags: { enforceAudibility: true, requestHardwareAudioVideoSynchronization: false },
+          },
         })
       );
     });
@@ -375,7 +428,7 @@ describe('createAthanAndroidChannel', () => {
       await createAthanAndroidChannel(9);
 
       const createdIds = (setNotificationChannelAsync as jest.Mock).mock.calls.map((call) => call[0] as string);
-      expect(createdIds).toEqual(['athan_10_v2']);
+      expect(createdIds).toEqual(['athan_10_v3']);
     });
   });
 });
@@ -395,16 +448,29 @@ describe('deleteLegacyAndroidAudioChannels', () => {
       Platform.OS = 'ios';
     });
 
-    it('deletes exactly the wav-generation channels: the single reminder channel and athan_1…16', async () => {
+    it('deletes every superseded generation: the wav channels and the notification-stream ones', async () => {
       await deleteLegacyAndroidAudioChannels();
 
       const deletedIds = (deleteNotificationChannelAsync as jest.Mock).mock.calls.map((call) => call[0] as string);
-      const expectedIds = ['reminder', ...Array.from({ length: 16 }, (_, i) => `athan_${i + 1}`)];
+      const wavGeneration = ['reminder', ...Array.from({ length: 16 }, (_, i) => `athan_${i + 1}`)];
+      const notificationStreamGeneration = [
+        'extras_at_time',
+        ...Array.from({ length: 32 }, (_, i) => `athan_${i + 1}_v2`),
+        'reminder_fajr_5',
+        'reminder_last_third_15',
+        'reminder_istijaba_30',
+      ];
 
-      expect(deletedIds).toHaveLength(17);
-      for (const id of expectedIds) {
+      for (const id of [...wavGeneration, ...notificationStreamGeneration]) {
         expect(deletedIds).toContain(id);
       }
+
+      // 11 prayers × 6 intervals of reminders, beside the 32 _v2 athans and the 17 wav ids
+      expect(deletedIds).toHaveLength(116);
+      expect(new Set(deletedIds).size).toBe(deletedIds.length);
+      expect(deletedIds).not.toContain(athanAndroidChannelId(0));
+      expect(deletedIds).not.toContain(extrasAndroidChannelId);
+      expect(deletedIds).not.toContain(reminderAndroidChannelId('Fajr', 5));
     });
   });
 });
@@ -511,19 +577,23 @@ describe('createReminderAndroidChannel', () => {
       Platform.OS = 'ios';
     });
 
-    it('creates the per-prayer × interval channel with the matching mp3 sound and the original channel settings', async () => {
+    it('creates the per-prayer × interval channel on the alarm stream with the matching mp3 sound', async () => {
       await createReminderAndroidChannel('Fajr', 15);
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-        'reminder_fajr_15',
+        'reminder_fajr_15_v2',
         expect.objectContaining({
           name: 'Fajr in 15m Reminder',
           sound: 'reminder_fajr_15.mp3',
-          importance: AndroidImportance.HIGH,
+          importance: AndroidImportance.MAX,
           enableVibrate: true,
           vibrationPattern: [0, 250, 250, 250],
           bypassDnd: true,
+          audioAttributes: {
+            usage: AndroidAudioUsage.ALARM,
+            flags: { enforceAudibility: true, requestHardwareAudioVideoSynchronization: false },
+          },
         })
       );
     });
@@ -532,7 +602,7 @@ describe('createReminderAndroidChannel', () => {
       await createReminderAndroidChannel('Last Third', 5);
 
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-        'reminder_last_third_5',
+        'reminder_last_third_5_v2',
         expect.objectContaining({ sound: 'reminder_last_third_5.mp3' })
       );
     });

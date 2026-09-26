@@ -2,11 +2,11 @@
  * updateAndroidChannel in device/notifications.ts, which runs when the user picks an athan
  *
  * An Android channel's sound and importance are fixed once the channel exists. This call and the
- * schedule-time createAthanAndroidChannel both create `athan_N_v2`, and whichever runs first decides
+ * schedule-time createAthanAndroidChannel both create `athan_N_v3`, and whichever runs first decides
  * the channel for good, so the two must ask for exactly the same channel.
  */
 
-import { AndroidImportance, setNotificationChannelAsync } from 'expo-notifications';
+import { AndroidAudioUsage, AndroidImportance, setNotificationChannelAsync } from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import { updateAndroidChannel } from '@/device/notifications';
@@ -31,13 +31,17 @@ describe('updateAndroidChannel on Android', () => {
     await updateAndroidChannel(index);
 
     expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
-    expect(setNotificationChannelAsync).toHaveBeenCalledWith(`athan_${index + 1}_v2`, {
+    expect(setNotificationChannelAsync).toHaveBeenCalledWith(`athan_${index + 1}_v3`, {
       name: `Athan ${index + 1}`,
       sound: `athan${index + 1}.mp3`,
       importance: AndroidImportance.MAX,
       enableVibrate: true,
       vibrationPattern: [0, 250, 250, 250],
       bypassDnd: true,
+      audioAttributes: {
+        usage: AndroidAudioUsage.ALARM,
+        flags: { enforceAudibility: true, requestHardwareAudioVideoSynchronization: false },
+      },
     });
   });
 
