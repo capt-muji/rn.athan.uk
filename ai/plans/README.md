@@ -10,8 +10,8 @@ the build, and a name in the text only dates it. A session says which JOB it is 
    2026-09-16 that means contracts, names, behaviour, the tests to write and the acceptance criteria, not the
    executor's keystrokes: "giving it so much information that you are confident that the Executor can do its job
    perfectly" (owner). A question the executor has to ask is a defect in the plan.
-2. **Execution.** One execution session per plan builds it to those acceptance criteria, including a code review of
-   every commit by a subagent. It chooses HOW; it never chooses WHAT. It never pushes.
+2. **Execution.** One execution session per plan builds it to those acceptance criteria, reviewing every commit
+   itself before merging it. It chooses HOW; it never chooses WHAT. It never pushes.
 3. **Audit.** An audit session checks the executed plan against the plan, fixes whatever is wrong itself, and
    pushes `uat-2`. Work is never handed back to the executor (owner, 2026-09-16); a large repair may take more than one
    audit session, and every one of them is the auditor's.
@@ -27,9 +27,9 @@ The same prompt starts the step after it, so the owner never has to remember whe
 ever fails to load the skill on the bare word, `Use the athan-next skill.` names it outright.
 
 A step is one session that the owner starts, so nothing chains on unattended and no guard is needed against a run
-going round in circles. A session may spawn a subagent, which always runs that session's own model, for every task
-including reading an image (owner, 2026-09-24). Every session ends with a four-line handoff naming the job just done, the row it moved, and the job that
-comes next.
+going round in circles. A session does all three jobs itself and spawns no subagent, with one exception: reading an
+image, which a session whose model cannot see images delegates to `vision` (owner, 2026-09-26). Every session ends
+with a four-line handoff naming the job just done, the row it moved, and the job that comes next.
 
 For starting one step by hand, and for the plan folders' `PROMPT.md`, which names the row's plan file in place of "the
 next plan":

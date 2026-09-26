@@ -5,9 +5,13 @@ job: decide, from evidence, whether the result is exactly what the plan asked fo
 Then fix whatever is not, yourself, and push once it is right. Work is never handed back to the executor (owner,
 2026-09-16). You are the last check between the executor's work and `origin`, and the last step of the session.
 
+**Subagents are banned, except `vision`** (owner, 2026-09-26). You do every part of this audit yourself, including
+every review. The one exception is reading an image: read it yourself if your model can see images, and call the
+`vision` subagent with a path and one exact question if it cannot. Never guess what an image shows.
+
 **Never name a model** (owner, 2026-09-24). The harness chooses the model, and these pages are read by different
-models across the life of this build. Start every response with `Audit session`. Name a subagent by its job, never
-by its model: it always runs this session's own. No progress table carries a Model column.
+models across the life of this build. Start every response with `Audit session`. No progress table carries a Model
+column.
 
 **Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
 put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
@@ -99,8 +103,8 @@ Then act on the verdict:
      write in `AUDIT.md` the last step audited.
   2. On `docs/audit-<N>-$(date +%Y%m%d-%H%M)`, bump the version, and commit `AUDIT.md`, the row, and, when the row
      became DONE, the `ai/prompts/README.md` row text from the plan's section 8.
-  3. Have a `Code Reviewer`, in a scratch worktree of its own, review it, with a prompt starting
-     `Run git checkout --detach <sha>.`, so it reads that exact commit.
+  3. Review that commit yourself: run `git show <sha>` and read it back cold, checking the row, `AUDIT.md` and the
+     records text against what this audit actually found.
   4. Merge `--no-ff` into `uat-2`. Push with `git push origin uat-2` only if `git log --oneline origin/uat-2..uat-2`
      lists nothing but the commits this audit checked and its own. Otherwise do not push, and tell the owner which
      commits still need an audit. The pre-push hook runs the full check.
@@ -108,8 +112,8 @@ Then act on the verdict:
   not match the plan, a missing test, a design the executor got wrong, or work it never finished.
   1. Make each fix as its own step, to the standard the plan itself holds: branch off `uat-2`, the red test first
      wherever a test applies, the change, the plan's break script, the version bump in all three files, one commit
-     whose message starts `<VERSION> - `, and a `Code Reviewer`, in a scratch worktree of its own, whose prompt
-     starts `Run git checkout --detach <sha>.`. Merge each one `--no-ff`.
+     whose message starts `<VERSION> - `, and your own review of `git show <sha>` before it merges. Merge each one
+     `--no-ff`.
   2. A fix needing a design choice is still yours: make the choice, write it and its reasoning in `AUDIT.md`, and put
      it through the design review the planner would have used (`PLANNER-BRIEF.md` section 3, item 5) when it changes
      notification, data or schedule behaviour.
@@ -119,8 +123,7 @@ Then act on the verdict:
 - **UNSAFE.** Anything that breaks an owner rule or leaves `uat-2` broken.
   1. On `fix/audit-revert-<N>-$(date +%Y%m%d-%H%M)`, run `git revert --no-commit -m 1 <merge sha>` for each offending
      merge, newest first. Set the three version files to the next patch after the highest version `uat-2` has carried.
-     Commit, have a `Code Reviewer` whose prompt starts `Run git checkout --detach <sha>.` review it,
-     and merge `--no-ff`. Never reset or rewrite `uat-2`.
+     Commit, review `git show <sha>` yourself, and merge `--no-ff`. Never reset or rewrite `uat-2`.
   2. Record why in `AUDIT.md`.
   3. Then FIX IT: build that part of the session's work correctly yourself, and PASS.
 - **If your context runs low before the fixes are done.** Write "Resume from:" at the top of `AUDIT.md`, naming what is

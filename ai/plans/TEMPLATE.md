@@ -133,10 +133,10 @@ exactly these parts:
    The full commit message, in a heredoc, starting `<VERSION> - `; the executor replaces `<VERSION>` with the version
    the command printed. The pre-commit hook runs the full suite and the coverage gate: in the commit log, the last
    `Tests:` line ends `passed, <n> total`, and four `100%` coverage lines are present.
-9. **Review.** The subagent type, and the full prompt to give it, in a code block. What a "merge" verdict looks like.
-   A "fix first" verdict is handled by `EXECUTOR-BRIEF.md` section 4, item 8, and this part says so rather than
-   restating it: a fix section 10 gives word for word, or a fix meeting all three of that item's conditions, is
-   applied; anything else is a STOP.
+9. **Review.** The checklist the executor reads its own diff against, in full: every contract, every acceptance
+   criterion, the owner's rules, and that nothing beyond the step changed. What a clean read looks like. A finding is
+   handled by `EXECUTOR-BRIEF.md` section 4, item 8, and this part says so rather than restating it: a fix section 10
+   gives word for word, or a fix meeting all three of that item's conditions, is applied; anything else is a STOP.
 10. **Merge.** `git checkout uat-2 && git merge --no-ff <branch> -m "<message>"`, with the exact message.
 11. **Done when:** the checks, as commands with expected output.
 
@@ -181,9 +181,9 @@ PASS verdict (`AUDITOR-BRIEF.md` section 4).
 
 ## 11. Subagents in this plan
 
-A table: step, agent type, isolation, why, and where its prompt is. No model is named: a subagent always runs the
-spawning session's own model.
-Only the agents listed may be used.
+Normally "None": the session does its own planning, execution, review and audit (owner, 2026-09-26). The one
+permitted subagent is `vision`, and only for an image the session's model cannot see. Where a plan needs one, give
+the step, the image path and the exact question. No model is ever named.
 
 ## 12. Report to the owner
 

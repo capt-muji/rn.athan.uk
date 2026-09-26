@@ -12,16 +12,38 @@ Three things load together. Reading one without the others leaves an agent unawa
 that is already configured and paid for.
 
 1. **`ai/AGENTS.md`** (this file) — the project memory.
-2. **`opencode.json`** (repo root) — the MCP servers this project has wired up. Four of them:
-   the remote **Expo MCP** (`https://mcp.expo.dev/mcp`, authenticated against the owner's EAS
-   account, so it can read EAS environment variables), **mobile-mcp**, **Maestro MCP**, and
-   **xcodebuildmcp**. Native to opencode; in another harness, read the file and reach for the
-   equivalent. Do not re-derive what is in it.
+2. **`opencode.json`** (repo root) — the MCP servers this project has wired up. Six of them:
+   **codegraph**, the remote **Expo MCP** (`https://mcp.expo.dev/mcp`, authenticated against the
+   owner's EAS account, so it can read EAS environment variables), **mobile-mcp**, **Maestro
+   MCP**, **xcodebuildmcp** and **agent-device**. Read the file itself, every session: it is the
+   source of truth and it changes. Native to opencode; in another harness, read the file and
+   reach for the equivalent. Do not re-derive what is in it.
 3. **`.agents/skills/`** (repo root) — 24 official Expo and EAS skills (`expo-*`, `eas-*`).
    `.agents/skills/` is the cross-harness standard (opencode, Codex, Cursor, Gemini CLI, amp,
    cline). Load the matching skill when a task touches its subject rather than working from
    memory: `expo-upgrade` for SDK work, `eas-app-stores` for store and submission questions,
    `expo-router`, `expo-ui`, and so on.
+
+**Reach for codegraph BEFORE reading or editing code** (section 15 has the detail). One
+`codegraph_explore` call returns the verbatim source plus the blast radius of what depends on it,
+which is cheaper and more accurate than a grep-and-read loop.
+
+### Subagents are banned, except `vision` (owner rule 2026-09-26)
+
+🐋  "I want to completely ban using subagents, and I want you to do all the work yourself every
+single time. So everything in one session, the planning, the execution and the audits."
+
+Do the work yourself: the planning, the execution, the audits and every code review, in one
+session. The single exception is reading an image, because that capability differs between
+models: read it yourself when you can, and call `vision` with a path and one exact question when
+you cannot. Never guess what an image shows, and never claim to have checked one you did not.
+
+### Never name a model (owner rule 2026-09-24, reaffirmed 2026-09-26)
+
+The harness chooses the model, and these pages are read by different models across the life of
+this build, so a model name dates the page and misleads the next reader. Write the JOB
+(`Planning session`, `Execution session`, `Audit session`), never the model. This applies to
+every file in the workflow: briefs, plans, logs, audits and records alike.
 
 ### EAS is read-only (owner rule 2026-09-12)
 
@@ -582,7 +604,8 @@ Read ai/prompts/document.md
 
 - **Skills**: `.agents/skills/` — 24 official Expo skills (`expo-*`, `eas-*`). Auto-loaded natively by opencode; `.agents/skills/` is also the cross-harness standard (Codex, Cursor, Gemini CLI, amp, cline). Load via the skill tool when a task matches (e.g., `expo-upgrade` for SDK upgrades).
 - **Expo MCP**: `https://mcp.expo.dev/mcp` (remote) — configured in `opencode.json`. If switching harnesses, add this endpoint to the new harness's MCP config.
-- **Mobile MCP**: `@mobilenext/mobile-mcp` (local, via npx) — configured in `opencode.json`. Controls iOS Simulator / Android emulator: launch app, tap, swipe, list UI elements, screenshot, read crash reports. Requires a booted simulator (`xcrun simctl boot "iPhone 16"`) or running emulator. Use for post-change smoke testing. For ANIMATION verification (Reanimated): record video (`mobile_start_screen_recording`/`mobile_stop_screen_recording`, or `xcrun simctl io booted recordVideo out.mp4`), extract frames with `ffmpeg -i out.mp4 -vf fps=8 frames/f_%03d.png`, then read frames as images — opencode cannot send video files directly (text+image attachments only).
+- **Mobile MCP**: `@mobilenext/mobile-mcp` (local, via npx) — configured in `opencode.json`. Controls iOS Simulator / Android emulator: launch app, tap, swipe, list UI elements, screenshot, read crash reports. Requires a booted simulator (`xcrun simctl boot "iPhone 16"`) or running emulator. Use for post-change smoke testing.
+- **Screenshot-driven navigation (the fallback when no structured reader sees the control)**: prefer `mobile-mcp`'s element list or Maestro's inspect, whose refs survive a layout change. When neither can see it — an OEM dialog outside the app's hierarchy (ColorOS's install-scan prompt, session 18), a surface `uiautomator dump` will not serve, or a physical iPhone, where local tooling drives no taps — screenshot, read the target control's coordinates (yourself, or via the `vision` subagent when the model cannot see images), tap, then screenshot again to confirm. Rules: verify after every tap, because an unverified coordinate tap proves nothing; ask for ONE control per question, naming what to find and whether it is absent; never reuse coordinates across devices, densities or a display-size change (the X8's 560-vs-480 override), and never bake them into a plan. It reaches a screen; it never proves what is on one — a records claim still needs a logcat line or a dump. For ANIMATION verification (Reanimated): record video (`mobile_start_screen_recording`/`mobile_stop_screen_recording`, or `xcrun simctl io booted recordVideo out.mp4`), extract frames with `ffmpeg -i out.mp4 -vf fps=8 frames/f_%03d.png`, then read frames as images — opencode cannot send video files directly (text+image attachments only).
 - **Expo docs**: docs-mcp-server has the project's current Expo SDK version indexed (library: `expo`).
 - **Maestro** (`~/.maestro/bin/maestro`, v2.10.0+): E2E flow driver for physical devices + simulators — YAML flows, auto-wait/retry, spam-tap via `repeat`, `maestro test <flow.yaml>`. Also ships the official **Maestro MCP** (run `maestro mcp`) — configured in `opencode.json` (restart opencode after config changes); tools: `list_devices`, `inspect_screen`, `run`, `take_screenshot`, `cheat_sheet`. Bash PATH note: prefix commands with `export PATH="$HOME/.maestro/bin:$PATH"`.
 - **Flashlight** (`~/.flashlight/bin/flashlight`): performance measurement for ANDROID builds (iOS unsupported) — wraps Maestro flows with Perfetto/adb collection (CPU, RAM, FPS, TTI, per-thread breakdown). `flashlight measure` for quick audits, `flashlight test` for automated multi-iteration runs. Used by the performance campaign (see `ai/features/performance/`).
@@ -820,7 +843,7 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 
 - [2026-09-12] Cold-launch anatomy on the 3T (1.24.17, ISSUES #32): 6.6s to first frame splits into 3.1s of GMS `ProviderInstaller` (the `modules/tls13` ContentProvider, Android 9 and below only, no-op on 10+), ~0.2s of RN native init plus Hermes eval, and ~1.9s of JS module evaluation and React mount; attribution needs the event log plus atrace, `am start -W` only gives the total. The 4.4MB Hermes bundle is mmap'd (~120ms). The TLS provider install must never move off the pre-`Application.onCreate` path (ISSUES #21: a JS-side install fixes debug and fails release, okhttp snapshots `SSLContext.getDefault()` at client construction). DURABLE LESSONS: this shell's `ls` emits ANSI colour codes, so capture paths as literals or via `command ls`; `strings` cannot see Hermes string literals (packed table), so grepping a bundle to prove a build flag compiled in returns a false negative, verify by runtime behaviour instead.
 
-- [2026-09-11] REVALIDATION on Opus 5 (1.24.7, fix/revalidation-2026-09-11; full report and re-plan in `ai/features/revalidation-2026-09-11/REPORT.md`): the owner found the 2026-09-10 sessions had run on Sonnet 5 and ordered a full re-audit; the record's root-cause claims were wrong. Truth: upstream reanimated#9574 is fixed in the installed 4.6.0 (present in 4.6.0, absent in 4.5.1; `NodesManager.kt` is byte-identical in both, its `mCallbackPosted` marker is resume-restart behaviour, not a defect); the `[resync]` dependency arrays did nothing on native (Reanimated 4.6 ignores that argument on native, web only) and are removed; the resume bounce guard is reverted (assigning mid-dip cancels the glyph swap). Standing outcomes: keep Reanimated 4.6.0 + worklets 0.12.2; row colour timings restored to pre-ADR-015 (selection 150ms, cascade and next-prayer advance 1000ms); the Extras night leading into day D computes from D-1's Maghrib and D's Fajr (ISSUES #29, own branch); the XS iOS check was pending. DURABLE LESSONS: verify a cited upstream fix against the actual diff, not the issue title; confirm which build is installed before measuring; pipe-to-`tail` hides a failed build's exit code; a helper that builds times from "now" makes cached data depend on when it was fetched.
+- [2026-09-11] REVALIDATION (1.24.7, fix/revalidation-2026-09-11; full report and re-plan in `ai/features/revalidation-2026-09-11/REPORT.md`): the owner found the 2026-09-10 sessions had run on a weaker model and ordered a full re-audit; the record's root-cause claims were wrong. Truth: upstream reanimated#9574 is fixed in the installed 4.6.0 (present in 4.6.0, absent in 4.5.1; `NodesManager.kt` is byte-identical in both, its `mCallbackPosted` marker is resume-restart behaviour, not a defect); the `[resync]` dependency arrays did nothing on native (Reanimated 4.6 ignores that argument on native, web only) and are removed; the resume bounce guard is reverted (assigning mid-dip cancels the glyph swap). Standing outcomes: keep Reanimated 4.6.0 + worklets 0.12.2; row colour timings restored to pre-ADR-015 (selection 150ms, cascade and next-prayer advance 1000ms); the Extras night leading into day D computes from D-1's Maghrib and D's Fajr (ISSUES #29, own branch); the XS iOS check was pending. DURABLE LESSONS: verify a cited upstream fix against the actual diff, not the issue title; confirm which build is installed before measuring; pipe-to-`tail` hides a failed build's exit code; a helper that builds times from "now" makes cached data depend on when it was fetched.
 
 - [2026-09-10] `overlay.selectedPrayerIndex` is the chronological-sequence position and only equals the Extras display row by coincidence (Extras rows display in canonical order, Midnight through Istijaba): resolve any visual row, position or content lookup through the prayer's English name (`EXTRAS_ENGLISH.indexOf(...)`), never the raw index; Standard has no canonical reordering and is unaffected (1.24.4, device-verified).
 
@@ -940,9 +963,17 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 
 ### Comment Quality
 
-**Hard rule (owner directive 2026-09-09): comments explain WHY, compactly. Never WHAT.**
+**Hard rule (owner directive 2026-09-09, tightened 2026-09-26): comments are extremely compact and explain WHY
+only. Never WHAT, never HOW.**
 
-- The code already shows the what. A comment restating it is clutter.
+🐋  "the comments should be extremely compact, and they should only explain the why, and they should never explain
+the how or the what, because those two should be self-explanatory from your code. If it's not self-explanatory, then
+it's not clean enough, it's not good enough, it's not refactored enough." (owner, 2026-09-26)
+
+- The code already shows the what and the how. A comment restating either is clutter.
+- **A comment is never the fix for unclear code.** If the code needs explaining, rename it, split it or flatten it,
+  then delete the comment.
+- One line wherever one line does. Never a paragraph.
 - Critique every comment before writing it: if removing it loses nothing, do not write it.
 - NO comments on styling/layout values. Styling is a choice; the values speak for themselves. The only exception is a non-obvious quirk another engineer would trip over (e.g. "auto margins because this view is absolutely positioned").
 - No history logs, no owner-rules-with-dates, no provenance in comments. That context belongs in AGENTS.md or ISSUES.md, not the code.

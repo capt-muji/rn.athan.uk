@@ -1,7 +1,7 @@
 # Revalidation and re-plan — 2026-09-11
 
-The owner found that the 2026-09-10 sessions had run on Sonnet 5, lost confidence
-in the work and in the plan, and ordered a full re-audit and re-plan on Opus 5.
+The owner found that the 2026-09-10 sessions had run on a weaker model, lost confidence
+in the work and in the plan, and ordered a full re-audit and re-plan.
 This is the result. Everything is on one branch, `fix/revalidation-2026-09-11`
 (uat + 1.24.7 correctness + 1.24.8 bar + 1.24.9 night times), ready to test and to
 merge into uat on the owner's word. `experiment/alarmclock-backport` has the same
