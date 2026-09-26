@@ -215,10 +215,24 @@ because it runs before the platform branch:
 var ATextEl=Text; var AImageEl=Image; var APad=padding; var ATimeEl=Text;
 ```
 
-`padding` is the one name that exists in BOTH the swift-ui and jetpack surfaces with different signatures
-(`widgets/PrayerWidget.tsx` says so in a comment), so it is the highest-value thing to check first. A one-element
-diagnostic layout (a single `Text`, no modifiers) built and placed would settle in one build whether ANY Android
-layout renders at 58.0.7, which is the cheaper question than bisecting further.
+**`padding` was the first suspect and it is RULED OUT.** It exists on the jetpack surface too
+(`export const padding = (start, top, end, bottom)` in `@expo/ui/build/jetpack-compose/modifiers/index.js`), so
+`var APad=padding` resolves fine on Android. Do not re-investigate it.
+
+**Start here instead: a one-element diagnostic layout.** Build a throwaway widget whose body is a single `Text`
+with no modifiers, place it, and see whether it renders. That answers the question that splits the search space in
+ONE build, and every remaining theory depends on the answer:
+
+- **If the one-element layout renders**, the runtime is healthy at 58.0.7 and our layout hits something specific.
+  Then bisect the layout itself, not the packages: comment out the Android branch's sections until it renders.
+- **If even one element fails**, nothing Android-side renders at 58.0.7, and the fault is in how the app registers
+  or pushes rather than in the layout body. Then look at `stores/widget.ts`'s push path and
+  `expo-widgets`' `updateSnapshot`, which this session never examined.
+
+The other untested lead: this session only ever compared `expo-widgets` and `@expo/ui` as SOURCE trees. It never
+checked whether the BUILT native artifact changed, and `node_modules/expo-widgets/android/build/` is regenerated
+locally. A stale or mismatched local build there would produce exactly this symptom while every source diff looks
+additive.
 
 **State left behind.** No upgrade was reverted, per the owner's instruction to fix forward: `uat-2` keeps all three
 steps and `node_modules` was rolled forward to the full set (expo preview.7, React 19.3.0, Reanimated 4.7.0). The
