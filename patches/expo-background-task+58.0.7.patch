@@ -109,7 +109,7 @@ index 1c28333..901d90f 100644
 +    requiresNetworkConnectivity?: boolean;
  };
 diff --git a/node_modules/expo-background-task/expo-module.config.json b/node_modules/expo-background-task/expo-module.config.json
-index 944b9e7..d4690a8 100644
+index 669248e..d4690a8 100644
 --- a/node_modules/expo-background-task/expo-module.config.json
 +++ b/node_modules/expo-background-task/expo-module.config.json
 @@ -5,12 +5,6 @@
@@ -120,7 +120,7 @@ index 944b9e7..d4690a8 100644
 -    "publication": {
 -      "groupId": "host.exp.exponent",
 -      "artifactId": "expo.modules.backgroundtask",
--      "version": "58.0.3",
+-      "version": "58.0.7",
 -      "repository": "local-maven-repo"
 -    }
 +    "modules": ["expo.modules.backgroundtask.BackgroundTaskModule"]

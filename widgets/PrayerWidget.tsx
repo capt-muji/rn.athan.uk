@@ -653,7 +653,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         return (
           <HStack
             spacing={0}
-            modifiers={[frame({ maxWidth: Infinity, height: ROW_HEIGHT }), padding({ leading: 10, trailing: 10 })]}>
+            modifiers={[
+              frame({ height: ROW_HEIGHT }),
+              frame({ maxWidth: Infinity }),
+              padding({ leading: 10, trailing: 10 }),
+            ]}>
             <Text
               modifiers={[
                 font({ size: ROW_TEXT_SIZE, weight: 'regular' }),
@@ -722,7 +726,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
                 centering is the only reliable vertical centering. The
                 standard 6-row list fills the card's inner height exactly;
                 the extras 4/5-row lists get symmetric insets. */}
-            <VStack spacing={0} modifiers={[frame({ width: MEDIUM_LIST_WIDTH, maxHeight: Infinity })]}>
+            <VStack spacing={0} modifiers={[frame({ width: MEDIUM_LIST_WIDTH }), frame({ maxHeight: Infinity })]}>
               <Spacer minLength={0} />
               <ZStack
                 alignment='top'
