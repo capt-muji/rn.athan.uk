@@ -137,6 +137,53 @@ or newer.
 | iOS 26+ | AlarmKit | Available, not built. Needs a device on iOS 26 to develop against |
 | iOS 18 on the XS | Nothing | Genuinely blocked. Not a code problem |
 
+## THE REAL BOUNDARY: notification-channel sound is gated on ringer mode, whatever the channel says
+
+The alarm-stream channels, the valid importance and the DND access are all correct, and the athan was
+STILL silent on the 3T through every one of them. The decisive test was the stock Clock app: an alarm set
+for one minute SOUNDED AND VIBRATED with the silent switch on, which proves the phone allows alarm-stream
+audio and the defect is ours.
+
+Reverse engineering `/system/app/DeskClock/DeskClock.apk` shows why the Clock succeeds where a channel
+cannot. Its own notification channel carries NO SOUND AT ALL:
+
+```
+CLOCK_SHOW_ALARM_CHANNEL   mSound=null   (no audio attributes)
+```
+
+and its dex carries the machinery instead:
+
+```
+com/oneplus/deskclock/alarms/AlarmKlaxon
+com/oneplus/deskclock/AsyncRingtonePlayer $ MediaPlayerPlaybackDelegate, RingtonePlaybackDelegate
+"Play ringtone via android.media.MediaPlayer."
+android/media/AudioAttributes$Builder
+AudioManager$OnAudioFocusChangeListener
+startForegroundService, setFullScreenIntent, FLAG_INSISTENT
+com/oneplus/deskclock/alarms/AlarmService, AlarmActivity
+```
+
+So the Clock wakes on an exact alarm, starts a FOREGROUND SERVICE, plays the tone ITSELF through
+`MediaPlayer` with alarm `AudioAttributes`, takes audio focus, and raises a full-screen activity.
+
+**Conclusion: `NotificationManagerService` decides whether to play a channel's sound BEFORE it consults
+that channel's `AudioAttributes`, and in silent ringer mode it decides not to.** `usage: ALARM` governs
+which volume and routing apply once audio plays; it does not exempt the notification path from the ringer
+gate. No channel configuration can reach this goal, which is why every serious alarm app plays its own
+audio. This is an Android platform boundary, not an expo-notifications defect and not a misconfiguration.
+
+DURABLE LESSON: **compare against a working system app FIRST.** One stock Clock alarm, plus one line of
+its channel dump, answered in two minutes what a long series of channel-flag iterations could not. When
+an app cannot do something the OS obviously can, read the OS app's APK before tuning your own flags.
+
+### What this does NOT change
+
+`delivery: 'alarmClock'` (the project's own SDK 58 contribution) is untouched and still required: it
+chooses `setAlarmClock()` so the trigger is never deferred by OEM battery policy. It governs WHEN a
+notification fires, never HOW its sound plays, which is why it could not have fixed this. expo-notifications
+also keeps scheduling, the rolling buffer, cancellation, identifiers, the shared tag, all of iOS, and
+Android Silent alerts. Only the audio of an Android Sound alert moves.
+
 ## Follow-up session: show the three bypass statuses in Settings (owner, 2026-09-26)
 
 🐋  "I want to show 2 options at the bottom, bypass D&D and bypass silent mode... And then also a 3rd one
@@ -190,10 +237,42 @@ matches the silence and the missing vibration exactly, and it is unrelated to th
 `setOnlyAlertOnce` is NOT set anywhere in the app or in `ExpoPresentationDelegate`, so this is Android's own
 same-key update behaviour rather than something the app asks for.
 
-CONFIRMATION STILL OUTSTANDING: fire once against a CLEARED shade. If it sounds, the alarm-stream change is
-correct and complete, and the replace-previous design needs a way to re-alert, such as cancelling the tag
-immediately before posting. If it stays silent with a clear shade, the cause is elsewhere and the alarm
-stream is not sufficient on this OEM.
+The shared tag was NOT the cause. A fire against a cleared shade was still silent, which ruled it out.
+
+## ROOT CAUSE: IMPORTANCE_MAX is deprecated and creates a channel with no behaviour
+
+Found by the owner, in Settings, after five silent test fires. Opening
+Settings > Apps > Athan > Notifications > Athan 1 > Behaviour showed **every radio button blank**: not
+"make sound", not "show silently", nothing. Selecting one by hand immediately populated sound, pop-up and
+override-DND, and dropped `mImportance` from 5 to 4.
+
+`AndroidImportance.MAX` maps to `NotificationManagerCompat.IMPORTANCE_MAX`, which is 5 and **deprecated
+since Android 8.0**. The documented ceiling for a channel is `IMPORTANCE_HIGH` (4). Android accepts a
+channel created with 5 and then leaves its behaviour undefined, so it plays no sound AND does not vibrate.
+Sources agree: "IMPORTANCE_MAX or 5, Deprecated in Android 8.0. Use IMPORTANCE_HIGH or 4", and "Importance
+must be IMPORTANCE_DEFAULT or IMPORTANCE_HIGH to play sounds."
+
+**This predates the session.** The athan channels have carried MAX since they were written, which is why
+the athan never sounded in silent mode and why the alarm-stream change alone changed nothing. The session
+also briefly raised the reminder channels from HIGH to MAX on the owner's instruction, which moved them
+in the same wrong direction; both are now HIGH.
+
+**Why no log could find it.** Nothing throws, nothing warns, and every dump reads healthy:
+`mImportance=5`, `mBypassDnd=true`, `usage=USAGE_ALARM`, `flags=0x1`, the sound URI resolving to a real
+`res/*.mp3`. The only visible symptom is in the Settings UI, where the behaviour group is empty. A dump
+shows the importance VALUE, never that the value is one the platform no longer honours.
+
+DURABLE LESSON: when a notification is silent AND does not vibrate, suspect the channel's importance
+before the audio stream. A muted stream still vibrates; an undefined behaviour does neither. And read the
+channel in the system Settings UI early, because that is the only surface that reveals it.
+
+Fixed in 1.28.50: all three creators use HIGH, the ids move a generation again (athan `_v4`, reminders
+`_v3`, extras `_v3`) because importance is immutable at creation exactly like the sound and the audio
+attributes, and `deleteLegacyAndroidAudioChannels` clears all 231 superseded ids.
+
+One consequence for the owner's own phone: selecting a behaviour by hand set `mUserLockedFields=4` on
+`athan_1_v3`, and Android then honours the user's choice over the app's for that channel forever. The
+`_v4` generation is fresh and unlocked, so it is unaffected.
 
 ## Open items
 
