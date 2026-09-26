@@ -148,7 +148,10 @@ It must print `1`. Any other count means NEEDS REPLAN.
      LABEL="$1"; FILE="$2"; FROM="$3"; TO="$4"; TESTS="$5"
      TOTAL=$((TOTAL + 1))
      cp "$FILE" "$FILE.bak"
-     perl -0pi -e "s/\Q$FROM\E/$TO/" "$FILE"
+     # comma delimiter, and the strings ride the environment: the package names
+     # carry a slash, which ends a s/// pattern, and double quotes inside them
+     # would end the shell's own quoting
+     FROM="$FROM" TO="$TO" perl -0pi -e 's,\Q$ENV{FROM}\E,$ENV{TO},' "$FILE"
      if cmp -s "$FILE" "$FILE.bak"; then
        echo "BREAK NOT APPLIED: $LABEL"
        mv "$FILE.bak" "$FILE"
@@ -168,7 +171,7 @@ It must print `1`. Any other count means NEEDS REPLAN.
      shared/__tests__/widgetRuntimeLoads.test.ts
 
    run_break "pin-version" package.json \
-     '"expo-widgets": "58.0.5"' '"expo-widgets": "58.0.7"' \
+     '"expo-widgets": "58.0.5"' '"expo-widgets": "~58.0.7"' \
      shared/__tests__/widgetRuntimeLoads.test.ts
 
    echo "caught $CAUGHT of $TOTAL"
