@@ -142,6 +142,15 @@ resolved graph: two packages in a commit cannot be reverted apart.
 
 ## Waiting on the owner, not yet sessions
 
+- **The Android card PNGs, now that Glance can draw rounded corners** (owner spotted it on 2026-09-26, while session
+  23 ran; evidence in `ai/AGENTS.md`). `expo-widgets@58.0.5` added the `cornerRadius` modifier, and the card PNG is
+  nothing but a flat solid colour clipped to a rounded rect, so `background()` plus `cornerRadius()` replaces it
+  exactly and would delete most of `generate-widget-assets.py`, make a card colour a one-line change, and render
+  crisper at any density. **It cannot simply be done**: the modifier is a no-op below API 31, so the 3T would show
+  SQUARE corners while the X8 looked right. A session here is a platform split or nothing, it is a visual change
+  needing the owner's approval, and it is proven on the 3T rather than the newer phone. The moon mark keeps its PNG
+  either way.
+
 A planning session may turn one of these into a plan only after the owner approves it in that session; it then adds a
 row above.
 - The accessibility fixes listed in "Session 5 of the queue" in `ai/features/uat-2/AUDIT-FINDINGS.md`.
