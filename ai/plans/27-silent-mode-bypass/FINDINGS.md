@@ -263,7 +263,45 @@ unclosed.
 
 Both platforms now sit at the ceiling their OS allows without a second audio system.
 
-## Follow-up session: show the three bypass statuses in Settings (owner, 2026-09-26)
+## CLOSED, same day it was raised: no status panel is built (owner, 2026-09-26)
+
+The owner asked for a Settings panel showing DND, silent mode, background activity and notification
+status, then reconsidered once the research came back and **closed it**. 🐋  "I'm thinking quite honestly,
+we've done as much as we can. We shouldn't bother with anything else... honestly, it just feels like we're
+complicating it."
+
+The reasoning, which is sound and is recorded so no later session re-opens it:
+
+- **DND and silent mode are deliberate user acts.** Someone who turns DND on knows they did. Telling them
+  is stating the obvious.
+- **The app cannot give useful guidance.** The setting lives in a different place on every device: the 3T
+  puts the DND override in the app's own notification settings, the Find X8 in a DND exception list, the
+  iPhone in Focus > Allowed Apps. A warning that says "something is blocking this, go and find it" is
+  worse than no warning.
+- **iOS can only answer 2 of the 5 questions**, so the panel would be rich on Android and nearly empty on
+  iPhone, which invites its own support question.
+- **It would rot.** Every Android version reshuffles these settings.
+
+The one row with a real argument was background activity, because it is the only invisible failure: the
+user did not choose it, cannot see it, and silently stops receiving prayers after the buffer runs out.
+It was still declined, because the 3-hour background task plus the 2-hour foreground refresh already
+covers the realistic cases. If it ever becomes a support burden it is one line in an existing screen, not
+a diagnostics feature.
+
+**Do not re-queue this.** The research below is kept only so a future session does not repeat it.
+
+### The research, kept for reference
+
+| Question | Android | iOS |
+| --- | --- | --- |
+| Is DND on? | Yes, `interruptionFilter` from `getPermissionsAsync`, already exposed | No. Apple exposes no Focus state to apps |
+| Are we allowed through DND? | Yes, `getNotificationChannelAsync(id).bypassDnd`. Android has no app-level list: the per-channel flag IS the mechanism | No. The Focus allow-list is unreadable |
+| Can we grant it ourselves? | No, user-only. `isNotificationPolicyAccessGranted` is not in expo's JS surface and would need native code | No |
+| Is silent mode on? | Yes, but `AudioManager.getRingerMode()` needs a small native module | No public API |
+| Are notifications enabled? | Yes, `getPermissionsAsync().granted` | Yes, same call |
+| Is background activity allowed? | Yes, `BackgroundTask.getStatusAsync()` | Yes, same call |
+
+## Superseded: the original follow-up note (owner, 2026-09-26)
 
 🐋  "I want to show 2 options at the bottom, bypass D&D and bypass silent mode... And then also a 3rd one
 also for background activity... Is there a read API for these 3 things."
