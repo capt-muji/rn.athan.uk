@@ -1,6 +1,6 @@
 # Audit: Session 8
 
-Auditor: GLM 5.3 audit session, 2026-09-17, no subagents (owner's instruction of 2026-09-17;
+Auditor: the audit session, 2026-09-17, no subagents (owner's instruction of 2026-09-17;
 `ai/prompts/README.md`, "Decided by the owner, 2026-09-17, while planning session 8").
 
 ## What was checked, and the evidence

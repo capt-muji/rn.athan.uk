@@ -239,7 +239,7 @@ Part of `ai/plans/13-agent-tooling/PLAN.md`. Kind: **specified**.
 
    The hook runs the full suite; the log's last `Tests:` line ends `passed, <n> total` and the
    four `100%` coverage lines are present.
-9. **Review.** `Code Reviewer` (GLM 5.3), isolation `worktree`, prompt:
+9. **Review.** `Code Reviewer`, isolation `worktree`, prompt:
 
    ```
    Run git checkout --detach <sha>. Review this docs commit: ai/features/agent-tooling/FINDINGS.md

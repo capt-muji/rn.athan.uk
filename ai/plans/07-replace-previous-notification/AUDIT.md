@@ -1,6 +1,6 @@
 # Audit, session 7 — Android: each notification replaces the one before it
 
-🤖  Model: GLM 5.3 (audit session)
+Session (audit session)
 Time: 15:57:13 17.09.2026
 
 The owner's directive of 15:36 ("do everything yourself, no subagents") applies to this audit: every

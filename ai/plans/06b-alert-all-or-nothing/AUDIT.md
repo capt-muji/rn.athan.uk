@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| Audited by | Claude Opus 5, audit session, 2026-09-16 |
-| Plan | `ai/plans/06b-alert-all-or-nothing/PLAN.md`, executed by GLM 5.3 |
+| Audited by | Audit session, 2026-09-16 |
+| Plan | `ai/plans/06b-alert-all-or-nothing/PLAN.md`, executed by the execution session |
 | Range audited | `origin/uat-2..uat-2`: `baa4fc7f`, `5932e9a8`, `e99d7099`, `8dde8df3`, `2f340358`, `34b1452e` |
 | Scratch worktree | `~/athan-device-sweep/worktrees/audit-6b`, detached at `34b1452e`, `node_modules` symlinked, removed at the end |
 | Verdict | **PASS**, after two records findings the audit fixed itself in `1.27.192` |
@@ -92,7 +92,7 @@ hook reported `4501 passed, 4501 total`.
 
 ### 1.5 Reviews
 
-`LOG.md` records a `Code Reviewer` (GLM 5.3) verdict of **merge** in one round for each of the three commits, and
+`LOG.md` records a `Code Reviewer` verdict of **merge** in one round for each of the three commits, and
 **no fix applied** in any round. There is therefore no `EXECUTOR-BRIEF.md` section 4, item 8 fix to judge, and no
 unrecorded fix: both step trees are byte-identical to the plan's saved files, which a silent fix could not be. The
 docs commit has no saved-file baseline, and is covered instead by section 1.1, which rereads it in full, and by its
@@ -158,7 +158,7 @@ at section 7.4 for that probe; 7.4 is the clean-up section and 7.3 is the probe.
 **The mechanism took two passes to get right, and the reviewer is why.** The first version of this fix said the
 fifteen seconds were "counted in the app's own running time", which the same logcat disproves: had the countdown
 paused with the JS thread it would have had fifteen seconds still to run on the thaw and fired around 16:38:28, not
-34 ms after the wake. The `Code Reviewer` (Claude Opus 5) refuted it from the numbers and named the correct
+34 ms after the wake. The `Code Reviewer` refuted it from the numbers and named the correct
 mechanism, and the commit was amended before it merged. The error is recorded here rather than quietly dropped,
 because the plan's original wording ("the fifteen seconds are wall time, not foreground time") was right on mechanism
 all along: its only defect was its pointer to section 7.4.
@@ -174,7 +174,7 @@ it and no sound waves beside it; SOUND if that row's icon is a speaker with soun
 — `assets/icons/svg/bell-ring.svg`, a bell WITH ringing arcs — and `AlertType.Sound` to `Icon.SPEAKER`. A correctly
 read Silent row therefore matches neither branch: it is not a bell without arcs, and it is not a loudspeaker.
 
-**What happened.** The `vision` (GLM 5.3 Flash) subagent answered `SOUND` in both 7.2 and 7.3, describing in each
+**What happened.** The `vision` subagent answered `SOUND` in both 7.2 and 7.3, describing in each
 case "a bell ... with NO diagonal line ... two curved sound/ringing arcs", and explicitly "It is not a speaker". The
 executor stopped and asked the owner under section 2.2, item 8; the owner answered "Please continue as you are ...
 Make sure everything is working"; the executor mapped the description to SILENT on the strength of the logcat and
@@ -203,7 +203,7 @@ revertible. No test applies to a documentation correction, so there is no red-be
 this step; `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0, and the commit's hook ran the
 full suite and the coverage gate.
 
-**Branch `fix/audit-6b-device-proof-records`, commit `1.27.192`.** A `Code Reviewer` (Claude Opus 5, isolation
+**Branch `fix/audit-6b-device-proof-records`, commit `1.27.192`.** A `Code Reviewer` (isolation
 `worktree`) reviewed it and replied "fix first" with six findings, one of them substantive; all six were applied and
 the commit amended before it merged. The table below is numbered by the audit's own findings, except for the one row
 that answers a reviewer finding with no audit finding behind it, which says so. Under the owner's "one review, then stop" rule (2026-09-16) a
