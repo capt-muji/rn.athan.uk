@@ -1,7 +1,7 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
-import { NOTIFICATION_ROLLING_DAYS } from '@/shared/constants';
+import { EXTRAS_ENGLISH, NOTIFICATION_ROLLING_DAYS, PRAYERS_ENGLISH, REMINDER_INTERVALS } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import * as TimeUtils from '@/shared/time';
@@ -260,27 +260,39 @@ export const genScheduleDatesForPrayer = (scheduleType: ScheduleType, englishNam
   );
 
 /**
- * Android channel ID for an at-time Athan sound
- * Suffixed `_v2` because channel sounds are immutable once created — the wav→mp3
- * swap required fresh IDs (legacy channels are deleted by deleteLegacyAndroidAudioChannels)
+ * Plays every alert on the alarm stream, which the ringer's silent switch never mutes
+ * (STREAM_ALARM is absent from the ringer-affected mask), unlike STREAM_NOTIFICATION.
+ * enforceAudibility keeps it audible where a skin mutes the stream anyway.
  */
-export const athanAndroidChannelId = (soundIndex: number): string => `athan_${soundIndex + 1}_v2`;
+export const ALARM_AUDIO_ATTRIBUTES = {
+  usage: Notifications.AndroidAudioUsage.ALARM,
+  flags: { enforceAudibility: true, requestHardwareAudioVideoSynchronization: false },
+} as const;
+
+/**
+ * Android channel ID for an at-time Athan sound
+ * `_v4` because a channel's sound, importance and audio attributes are all immutable once
+ * created: the wav→mp3 swap forced `_v2`, alarm-stream audio forced `_v3`, and dropping the
+ * deprecated IMPORTANCE_MAX forces this one
+ * (legacy channels are deleted by deleteLegacyAndroidAudioChannels)
+ */
+export const athanAndroidChannelId = (soundIndex: number): string => `athan_${soundIndex + 1}_v4`;
 
 /**
  * Android channel ID for a pre-prayer reminder sound (one channel per prayer × interval audio)
- * No `_v2` suffix needed: the legacy generation had a single `reminder` channel, so these IDs never existed before
+ * `_v3` tracks the athan generations for the same reason: neither the audio attributes nor the
+ * importance of an existing channel can be changed in place
  */
 export const reminderAndroidChannelId = (englishName: string, intervalMinutes: ReminderInterval): string => {
   const slug = prayerNameSlug(englishName);
-  return `reminder_${slug}_${intervalMinutes}`;
+  return `reminder_${slug}_${intervalMinutes}_v3`;
 };
 
 /**
  * Android channel ID for the fixed at-time Sunrise + extras sound
- * Fresh ID that never existed under a different sound (ISSUES.md #23) — same
- * reasoning as the reminder channels: no `_v2` suffix needed on a first generation
+ * `_v3` tracks the athan and reminder generations, for the same immutability reason
  */
-export const extrasAndroidChannelId = 'extras_at_time';
+export const extrasAndroidChannelId = 'extras_at_time_v3';
 
 /**
  * Android channel for an at-time notification: the selected athan's channel
@@ -289,20 +301,27 @@ export const extrasAndroidChannelId = 'extras_at_time';
 export const atTimeAndroidChannelId = (englishName: string, soundIndex: number): string =>
   isDailyPrayer(englishName) ? athanAndroidChannelId(soundIndex) : extrasAndroidChannelId;
 
+/**
+ * The one definition of an athan channel, shared by every path that may create it first:
+ * whichever call wins decides the channel for good, so they must ask for the same thing.
+ */
+export const athanAndroidChannelConfig = (soundIndex: number) => ({
+  name: `Athan ${soundIndex + 1}`,
+  sound: `athan${soundIndex + 1}.mp3`,
+  importance: Notifications.AndroidImportance.HIGH,
+  enableVibrate: true,
+  vibrationPattern: [0, 250, 250, 250],
+  bypassDnd: true,
+  audioAttributes: ALARM_AUDIO_ATTRIBUTES,
+});
+
 export const createDefaultAndroidChannel = async () => {
   if (Platform.OS !== 'android') return;
 
   const channelId = athanAndroidChannelId(0);
 
   await withNativeTimeout(
-    Notifications.setNotificationChannelAsync(channelId, {
-      name: 'Athan 1',
-      sound: 'athan1.mp3',
-      importance: Notifications.AndroidImportance.MAX,
-      enableVibrate: true,
-      vibrationPattern: [0, 250, 250, 250],
-      bypassDnd: true,
-    }),
+    Notifications.setNotificationChannelAsync(channelId, athanAndroidChannelConfig(0)),
     `creating the ${channelId} channel`
   );
 };
@@ -330,10 +349,11 @@ export const createExtrasAndroidChannel = async () => {
     Notifications.setNotificationChannelAsync(extrasAndroidChannelId, {
       name: 'Extra Times',
       sound: EXTRAS_NOTIFICATION_SOUND,
-      importance: Notifications.AndroidImportance.MAX,
+      importance: Notifications.AndroidImportance.HIGH,
       enableVibrate: true,
       vibrationPattern: [0, 250, 250, 250],
       bypassDnd: true,
+      audioAttributes: ALARM_AUDIO_ATTRIBUTES,
     }),
     `creating the ${extrasAndroidChannelId} channel`
   );
@@ -357,14 +377,7 @@ export const createAthanAndroidChannel = async (soundIndex: number) => {
   if (createdAthanChannels.has(channelId)) return;
 
   await withNativeTimeout(
-    Notifications.setNotificationChannelAsync(channelId, {
-      name: `Athan ${soundIndex + 1}`,
-      sound: `athan${soundIndex + 1}.mp3`,
-      importance: Notifications.AndroidImportance.MAX,
-      enableVibrate: true,
-      vibrationPattern: [0, 250, 250, 250],
-      bypassDnd: true,
-    }),
+    Notifications.setNotificationChannelAsync(channelId, athanAndroidChannelConfig(soundIndex)),
     `creating the ${channelId} channel`
   );
 
@@ -391,6 +404,7 @@ export const createReminderAndroidChannel = async (englishName: string, interval
       enableVibrate: true,
       vibrationPattern: [0, 250, 250, 250],
       bypassDnd: true,
+      audioAttributes: ALARM_AUDIO_ATTRIBUTES,
     }),
     `creating the ${channelId} channel`
   );
@@ -399,16 +413,34 @@ export const createReminderAndroidChannel = async (englishName: string, interval
 };
 
 /**
- * Deletes the pre-mp3 channel generation (`athan_1`…`athan_16` + the single `reminder` channel)
- * Their sounds are immutable on Android and point at removed .wav resources, so old installs
- * must move to the `_v2` / per-prayer channels. Safe on every init: deleting an absent
- * channel is a system no-op (fresh installs never had them), and no live code recreates these IDs.
+ * Deletes every superseded channel generation: the pre-mp3 `athan_1`…`athan_16` and `reminder`,
+ * then the notification-stream `_v2` athans, `extras_at_time` and every prayer × interval reminder.
+ * A channel's sound and audio attributes are immutable on Android, so each generation can only be
+ * replaced by a new ID; leaving the old ones would show the user dead duplicates in Settings.
+ * Safe on every init: deleting an absent channel is a system no-op and no live code recreates these IDs.
  */
 export const deleteLegacyAndroidAudioChannels = async () => {
   if (Platform.OS !== 'android') return;
 
-  const legacyAthanIds = Array.from({ length: 16 }, (_, i) => `athan_${i + 1}`);
-  const legacyChannelIds = ['reminder', ...legacyAthanIds];
+  const everyPrayerName = [...PRAYERS_ENGLISH, ...EXTRAS_ENGLISH];
+  const supersededReminderIds = everyPrayerName.flatMap((englishName) =>
+    REMINDER_INTERVALS.flatMap((interval) => {
+      const base = `reminder_${prayerNameSlug(englishName)}_${interval}`;
+      return [base, `${base}_v2`];
+    })
+  );
+  const supersededAthanIds = Array.from({ length: 32 }, (_, i) => [
+    `athan_${i + 1}`,
+    `athan_${i + 1}_v2`,
+    `athan_${i + 1}_v3`,
+  ]).flat();
+  const legacyChannelIds = [
+    'reminder',
+    'extras_at_time',
+    'extras_at_time_v2',
+    ...supersededAthanIds,
+    ...supersededReminderIds,
+  ];
   const promises = legacyChannelIds.map((channelId) =>
     withNativeTimeout(
       Notifications.deleteNotificationChannelAsync(channelId),

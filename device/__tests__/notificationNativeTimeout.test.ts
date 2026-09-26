@@ -155,7 +155,7 @@ describe('a call into the notification system that never answers', () => {
     Platform.OS = 'android';
     (setNotificationChannelAsync as jest.Mock).mockImplementation(neverAnswers);
     const armed = addOneScheduledNotificationForPrayer(ScheduleType.Standard, '2026-09-17', isha, AlertType.Sound, 0);
-    const failed = expect(armed).rejects.toThrow('creating the athan_1_v2 channel did not answer in 15000 ms');
+    const failed = expect(armed).rejects.toThrow('creating the athan_1_v4 channel did not answer in 15000 ms');
 
     await jest.advanceTimersByTimeAsync(15_000);
 
@@ -173,7 +173,7 @@ describe('a call into the notification system that never answers', () => {
       INTERVAL,
       AlertType.Sound
     );
-    const failed = expect(armed).rejects.toThrow('creating the reminder_isha_15 channel did not answer in 15000 ms');
+    const failed = expect(armed).rejects.toThrow('creating the reminder_isha_15_v3 channel did not answer in 15000 ms');
 
     await jest.advanceTimersByTimeAsync(15_000);
 
