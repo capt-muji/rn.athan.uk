@@ -214,7 +214,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
 
     expect(setNotificationChannelAsync).toHaveBeenCalledWith(
       athanAndroidChannelId(4),
-      expect.objectContaining({ sound: 'athan5.mp3', importance: AndroidImportance.MAX })
+      expect.objectContaining({ sound: 'athan5.mp3', importance: AndroidImportance.HIGH })
     );
   });
 
