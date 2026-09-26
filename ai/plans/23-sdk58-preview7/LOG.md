@@ -77,3 +77,25 @@ Second run: `caught 3 of 3`, `ALL AS EXPECTED: 1`, and the tree was restored aft
 
 `frame-order` is recorded as **NOT CAUGHT (expected)**: no unit test can see modifier ORDER in a serialized widget
 layout, which is precisely why the plan puts that risk on the device proof rather than pretending a test covers it.
+
+### Done
+
+Version 1.28.35. Hook: `Test Suites: 170 passed`, `Tests: 4662 passed, 4662 total`, four 100% coverage lines.
+Review, one pass, no findings: the only source change is the two `frame()` sites, and git recorded both patches as
+RENAMES at 99% and 87% similarity, which is independent evidence their content carried over rather than being
+rewritten. Merged into `uat-2`.
+
+## Step 2: React 19.3.0 and React Native 0.88.0-rc.2
+
+- Branch: `chore/react-19-3-rn-088-rc2`.
+- Installed clean, no patch errors. `node -p` confirms `react` 19.3.0, `react-dom` 19.3.0, `react-native`
+  0.88.0-rc.2.
+- RN is at **rc.2**, one ahead of the rc.1 that preview.7's `bundledNativeModules.json` names, on the owner's
+  instruction to take the latest regardless of RC status. rc.2 over rc.1 is a Metro floor bump to 0.87.1 and a
+  revert of an ObjC `RCTArrayBuffer` codegen change; this project ships no ObjC TurboModule, and `modules/tls13` is
+  Android-only Kotlin, so neither reaches it.
+- Green: `tsc` 0, Biome 0, `Test Suites: 170 passed, 170 total`, `Tests: 4662 passed, 4662 total`, 100% on all four
+  measures. **This was the step most likely to fail**, because a React minor moves the renderer that the 40
+  `components` suites drive through React Native Testing Library. Nothing failed.
+- Breaks: none applies (no decision in this project's code changed).
+- The diff is five version strings in `package.json` plus `yarn.lock` and `app.json`. No source file touched.
