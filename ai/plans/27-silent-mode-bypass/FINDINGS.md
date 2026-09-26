@@ -305,7 +305,37 @@ that incident, are the real mitigation and already exist.
 | Can we grant it ourselves? | No, user-only. `isNotificationPolicyAccessGranted` is not in expo's JS surface and would need native code | No |
 | Is silent mode on? | Yes, but `AudioManager.getRingerMode()` needs a small native module | No public API |
 | Are notifications enabled? | Yes, `getPermissionsAsync().granted` | Yes, same call |
-| Is background activity allowed? | Yes, `BackgroundTask.getStatusAsync()` | Yes, same call |
+| Is background activity allowed? | **NO. See the correction below: `getStatusAsync` is hardcoded** | No, same reason |
+
+### Correction: `BackgroundTask.getStatusAsync()` checks nothing (read in the source, 2026-09-26)
+
+An earlier version of this table listed background status as free on both platforms. That was wrong, read
+from the type signature rather than the implementation. The Android body is one line:
+
+```kotlin
+AsyncFunction("getStatusAsync") { return@AsyncFunction 2 } // WorkManager is always available on Android
+```
+
+It returns a hardcoded `Available` and never asks the system anything. iOS returns `true` unless it is on
+a simulator, and never reads `UIApplication.backgroundRefreshStatus`. So the call can never report a
+restriction on either platform.
+
+A real check would need native code, and would still not solve it:
+
+- **iOS**: `UIApplication.shared.backgroundRefreshStatus` is the honest API and is readable in a small
+  native module. But iOS Low Power Mode self-heals (it switches off automatically above 80% charge and
+  never alters the user's toggle), so the platform that CAN be read is the one that does not need it.
+- **Android**: there is no reliable API. `ActivityManager.isBackgroundRestricted()` (API 28+) catches
+  some cases, but the OEM killers that actually break this app, OnePlus Auto-launch and ColorOS app
+  battery management, are invisible to it. **The exact failure that silenced the 8T is undetectable.**
+
+Opening the setting is possible on iOS (`Linking.openSettings()` lands on the app page with the toggle)
+and only partly on Android, where the OEM battery screens have no stable intent.
+
+This strengthens the decision not to build the panel: on Android a status row would be permanently green
+and meaningless, and the honest recovery already exists, being the alarm-tracking gate and the 3h/2h
+intervals that replaced the timestamp gate after the 8T incident. Recovering from the failure beats
+detecting a cause that cannot be seen or remedied.
 
 ## Superseded: the original follow-up note (owner, 2026-09-26)
 
