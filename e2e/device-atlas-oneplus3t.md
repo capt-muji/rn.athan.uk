@@ -1,8 +1,32 @@
 # OnePlus 3T device atlas (1080x1920, serial 8f7ada76, OxygenOS / Android 9)
 
-Every coordinate below was measured by a vision agent reading a real screenshot during session 15
-(2026-09-19) unless marked otherwise. Drives: `adb -s 8f7ada76 shell input tap X Y`. Long-press is
+Every coordinate below was measured by reading a real screenshot during session 15 (2026-09-19)
+unless marked otherwise. Drives: `adb -s 8f7ada76 shell input tap X Y`. Long-press is
 `input swipe X Y X Y <ms>`. Coordinates are pixels on the 1080x1920 panel.
+
+**Read this before screenshotting anything.** An atlas exists so a screen is measured once and
+replayed thereafter, instead of re-reading the same pixels every session. Look here first; add what
+you learn; re-measure only when a check below fails.
+
+**The key every coordinate hangs off, and why all four parts matter.** A coordinate is only valid
+for one `model + panel + density + screen state`. The heading names the first three, and each table
+row names the state. Change any part and the numbers are void: the Find X8 carries a display-size
+override (560 physical, 480 effective) that moves every tap point while the panel stays the same,
+which is exactly the trap that makes a remembered coordinate worse than no coordinate. One atlas
+file per device, named `device-atlas-<model>.md`.
+
+**Verify before you trust, and it is one cheap command.** A saved coordinate is a hypothesis about
+a screen that may have scrolled, re-laid out or updated since. Confirm the expected screen is up
+before replaying a sequence (a logcat line, a `dumpsys` reading, or one screenshot), then replay
+without further reads. The strip-scroll warning in the widget-picker section below is this rule
+learned the hard way: after a horizontal scroll the cell under a remembered coordinate CHANGED, and
+a dead ColorNote widget got placed by accident.
+
+**What earns a row here:** anything a structured reader cannot see, which is what forced the
+screenshot in the first place. `mobile-mcp`'s element list and Maestro's inspect return refs that
+survive a layout change, so anything they can reach is better driven by them and does not belong in
+an atlas. What lands here is the rest: OEM dialogs outside the app's hierarchy, launcher and
+widget-picker mechanics, surfaces `uiautomator dump` will not serve.
 
 ## Launcher: long-press home sheet
 

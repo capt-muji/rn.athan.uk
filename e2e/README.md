@@ -24,6 +24,14 @@ everywhere.
   passed or stored. Alarm TIMES only mean anything on a production build — local
   builds run the mock API, whose prayers sit either side of launch.
 - `baselines/` — measured medians + animation-floor verdicts per device.
+- `device-atlas-<model>.md` — the tap-point atlas for one device
+  (`device-atlas-oneplus3t.md` is the 3T's). **Read it before screenshotting a
+  phone:** launcher, widget-picker and dialog coordinates are already mapped, so
+  a screen is measured once and replayed thereafter. Screenshot only what is
+  missing, then write back what you learned. Every coordinate is keyed on model,
+  panel, density and screen state, and is void when any part changes. Only what
+  `mobile-mcp` and Maestro CANNOT reach belongs here; their refs survive a
+  layout change and coordinates do not.
 
 ## Build (gate-ON Release, REQUIRED before measuring)
 

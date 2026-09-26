@@ -332,6 +332,10 @@ The plan is not READY until every line below is true.
   - `uiautomator dump` fails silently while the countdown animates, and can return an earlier dump's file.
   - Plans prove what is on screen with logcat lines the app writes, alarm dumps, and screenshots read either by the
     executor itself or, when its model cannot see images, by the `vision` subagent.
+  - **Device coordinates live in `e2e/device-atlas-<model>.md`, never in a plan.** A plan that needs a tap points at
+    the atlas entry by name and tells the executor to measure and write back whatever is missing. A coordinate is
+    keyed on model, panel, density and screen state, so one pasted into a step is stale the moment any of those
+    changes, and nothing catches it.
   - The owner receives no screenshots.
 - **Notification tests.** Never wait more than 2 minutes for a fire: drive the clock or use the mock, which puts Asr 60
   to 119 seconds after each download.
