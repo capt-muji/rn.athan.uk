@@ -299,4 +299,4 @@ This file is part of `ai/plans/07-replace-previous-notification/PLAN.md`. Run ev
     4. In `PLAN.md` section 6, replace the whole line that starts `- [ ] Step 1:` with `- [x] Step 1:
        DONE in <merge sha>`, and append the step's record to `LOG.md`: the branch, the commit sha and
        version, the hook's last `Tests:` line and its coverage lines, the break script's last line, the
-       review verdict with the reviewer's model (GLM 5.3) and how many rounds it took, and the merge sha.
+       review verdict with the reviewer's verdict and how many rounds it took, and the merge sha.

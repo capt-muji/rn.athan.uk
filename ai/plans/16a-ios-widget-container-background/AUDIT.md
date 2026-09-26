@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Audited | 2026-09-24, audit session, Claude Opus 5 |
+| Audited | 2026-09-24, audit session |
 | Plan | `ai/plans/16a-ios-widget-container-background/PLAN.md` (8 steps) |
 | Range | `33381bb1^..b89a4c9b` on `uat-2`, versions 1.27.297 and 1.27.313 to 1.27.323 |
 | Scratch worktree | `~/athan-device-sweep/worktrees/audit-16a` at `6d62dc9e`, removed at the end |

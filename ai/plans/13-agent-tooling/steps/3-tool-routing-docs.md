@@ -103,7 +103,7 @@ Part of `ai/plans/13-agent-tooling/PLAN.md`. Kind: **specified**.
    it lists exactly `AGENTS.md`, `ai/AGENTS.md`, `app.json`, `package.json` and the plan files
    this session changed, and nothing else. Anything else in the listing: STOP.
 
-9. **Review.** `Code Reviewer` (GLM 5.3), isolation `worktree`, prompt:
+9. **Review.** `Code Reviewer`, isolation `worktree`, prompt:
 
    ```
    Run git checkout --detach <sha>. Review this docs commit against

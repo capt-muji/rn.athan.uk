@@ -1,7 +1,7 @@
 # Mission
 
 Initialize a high-performance, agentic workflow for an existing repository.
-Create a durable "Long-Term Memory" system that works with ANY AI model (GPT/Claude/Gemini) while minimizing file clutter.
+Create a durable "Long-Term Memory" system that works with ANY AI model while minimizing file clutter.
 
 # CRITICAL: Safety & Security Constraints (NEVER VIOLATE)
 
@@ -108,7 +108,7 @@ Ask these 6 questions and STOP:
 3. **Risk Profile**: Conservative (ask before editing) or Aggressive (fix and report)?
 4. **Architecture**: Monorepo or Single Package? (Affects folder-scoped rules)
 5. **Templates**: Do you want optional templates? (Specs/ADRs) (Yes/No)
-6. **Execution Model**: Optimized for reasoning model (Opus/GPT-5.2 High) or coding model (Sonnet/Codex)?
+6. **Execution Model**: Optimized for a reasoning-heavy model or a coding-focused one?
 
 STOP. Do not proceed until I answer.
 

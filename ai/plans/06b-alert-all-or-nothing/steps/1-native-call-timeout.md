@@ -181,8 +181,7 @@ not type the code.
    rejected, every later .then(onFulfilled) skipped its callback, and nothing was
    ever armed again in that process.
 
-   Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-   ```
+      ```
 
    ```bash
    git commit -F $TMPDIR/msg-6b-1.txt

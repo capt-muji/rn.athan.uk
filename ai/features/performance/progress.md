@@ -1076,7 +1076,7 @@ Iteration protocol: profile → root-cause → fix → rebuild Release → re-me
   (05:52, gate-ON verified in bundle strings, widget pushes logged); owner directive mid-session: 3T-ONLY
   testing from here (iOS smoothness owner-eyeballs — same pre-mounted code path).
 
-- 2026-09-06 (session 6, in progress — VISION GATE PASSED): vision subagent (GLM 5.3 Flash) verified
+- 2026-09-06 (session 6, in progress — VISION GATE PASSED): vision subagent verified
   working end-to-end (correctly identified the squashed-pill frame from perf11/crops). #11/#12 AFTER
   evidence (3T, build 04:49:35): js_to_content **1058** (996-family ✓ — subtree back in startup commit);
   overlay marks open 184-230 / close 173-237 across 9 cycles. FRAME EVIDENCE: **first-open-in-process =
@@ -1101,9 +1101,9 @@ Iteration protocol: profile → root-cause → fix → rebuild Release → re-me
   (b) **30fps FLOOR for big animations** (overlay, sheets, cascade, segmented selection, prayer-transition UI changes);
   60fps = bonus, not required; per-second countdown text updates exempt (tiny). Prioritize which animations get the budget.
   (c) Full authority + unlimited time granted: re-validate anything from the whole campaign; quality over speed.
-  (d) Model switched mid-session to GLM 5.3 Flash (vision capable) — all frame analyses now VISION-VALIDATED, not just
-  pixel-script-inferred. A `vision` SUBAGENT (GLM 5.3 Flash, subagent mode, max effort, edit-denied) was added to
-  ~/.config/opencode/opencode.json agent{} so future GLM 5.3 sessions can delegate image inspection — active after
+  (d) Model switched mid-session to a vision-capable model — all frame analyses now VISION-VALIDATED, not just
+  pixel-script-inferred. A `vision` SUBAGENT was added to
+  ~/.config/opencode/opencode.json agent{} so future sessions can delegate image inspection — active after
   opencode restart. Division of labor: scripts MEASURE (bboxes, pts gaps), vision INTERPRETS (what it looks like).
   EVIDENCE HARNESS (3T, in /var/folders/.../T/opencode/perf11/): screenrecord 6s@16Mbps → ffprobe per-frame pts_time
   (screenrecord only emits frames on DISPLAY CHANGES = real compositor updates; each written frame IS a display update)
