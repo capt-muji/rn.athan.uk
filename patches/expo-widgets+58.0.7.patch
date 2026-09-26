@@ -1,8 +1,8 @@
 diff --git a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
-index 8f2bb1d..a9eea9b 100644
+index 58ad313..0548b59 100644
 --- a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
 +++ b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
-@@ -64,8 +64,10 @@ import androidx.glance.EmittableImage
+@@ -65,8 +65,10 @@ import androidx.glance.EmittableImage
  import androidx.glance.ImageProvider
  import androidx.glance.TintColorFilterParams
  import androidx.glance.GlanceModifier
@@ -10,10 +10,10 @@ index 8f2bb1d..a9eea9b 100644
  import androidx.glance.action.clickable
  import androidx.glance.appwidget.CheckboxDefaults
 +import androidx.glance.appwidget.action.actionStartActivity
+ import androidx.glance.appwidget.cornerRadius
  import androidx.glance.appwidget.EmittableCheckBox
  import androidx.glance.appwidget.EmittableCircularProgressIndicator
- import androidx.glance.appwidget.EmittableLinearProgressIndicator
-@@ -293,8 +295,13 @@ private fun ImageContentScale.toGlanceContentScale(): ContentScale {
+@@ -295,8 +297,13 @@ private fun ImageContentScale.toGlanceContentScale(): ContentScale {
  private fun ReadableMap.toPeekButton(converterContext: WidgetConverterContext, source: String): Emittable {
    val props = props<WidgetButtonProps>(converterContext)
    val children = children()
@@ -29,7 +29,7 @@ index 8f2bb1d..a9eea9b 100644
    val modifier = props.buttonModifier(converterContext)
    val contentColor = props.contentColorProvider()
    val textContent = children.textContent(converterContext) ?: props.label
-@@ -433,6 +440,11 @@ private fun TextProps.textModifier(converterContext: ConverterContext): GlanceMo
+@@ -436,6 +443,11 @@ private fun TextProps.textModifier(converterContext: ConverterContext): GlanceMo
    return modifier
  }
  
@@ -41,7 +41,7 @@ index 8f2bb1d..a9eea9b 100644
  private fun WidgetButtonProps.buttonModifier(converterContext: ConverterContext): GlanceModifier {
    var modifier = modifiers.toPeekModifier(converterContext)
    val color = if (enabled) {
-@@ -677,6 +689,7 @@ internal data class WidgetButtonProps(
+@@ -680,6 +692,7 @@ internal data class WidgetButtonProps(
    val enabled: Boolean = true,
    val label: String? = null,
    val modifiers: ModifierList = emptyList(),
