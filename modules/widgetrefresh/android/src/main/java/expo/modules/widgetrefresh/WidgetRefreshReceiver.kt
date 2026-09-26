@@ -14,15 +14,15 @@ class WidgetRefreshReceiver : BroadcastReceiver() {
         WidgetRefreshScheduler.updateAll(context)
         if (WidgetRefreshScheduler.hasPlacedWidgets(context)) {
             WidgetRefreshScheduler.armNext(context)
-            // Also claim the minute broadcast from here, because this receiver
+            // Also claim the system broadcasts from here, because this receiver
             // runs in whatever process Android revived to serve the widget.
             // After a force-stop that process comes back WITHOUT the Expo module
             // registry (measured on the Find X8: 3 receivers, not 8), so the
             // module's OnCreate never runs and the listener would stay missing
-            // until the user opened the app. TIME_TICK is the only redraw signal
-            // ColorOS does not defer, so it has to be re-claimed wherever we
+            // until the user opened the app. They are the redraw signals
+            // ColorOS does not defer, so they have to be re-claimed wherever we
             // regain execution.
-            WidgetRefreshTickListener.ensureRegistered(context)
+            WidgetRefreshSystemListener.ensureRegistered(context)
         }
     }
 }

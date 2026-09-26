@@ -3,11 +3,11 @@
 set -u
 
 K=modules/widgetrefresh/android/src/main/java/expo/modules/widgetrefresh
-LISTENER=$K/WidgetRefreshTickListener.kt
+LISTENER=$K/WidgetRefreshSystemListener.kt
 MODULE=$K/WidgetRefreshModule.kt
 B_LISTENER=$(mktemp); B_MODULE=$(mktemp)
 CAUGHT=0
-EXPECTED=5
+EXPECTED=6
 
 cp "$LISTENER" "$B_LISTENER"; cp "$MODULE" "$B_MODULE"
 restore() { cp "$B_LISTENER" "$LISTENER"; cp "$B_MODULE" "$MODULE"; }
@@ -18,9 +18,16 @@ check_invariant() {
   grep -q 'registerReceiver' "$LISTENER" || return 1
   grep -q 'IntentFilter(Intent.ACTION_TIME_TICK)' "$LISTENER" || return 1
   grep -qE 'Intent\.ACTION_TIME_(CHANGED|SET)' "$LISTENER" && return 1
-  # Never in a manifest: blocked for manifest receivers from API 26.
-  grep -rq 'WidgetRefreshTickListener' modules/widgetrefresh/android/src/main/AndroidManifest.xml && return 1
+  # The wake redraw. TIME_TICK is only delivered while the screen is already
+  # on, so without SCREEN_ON nothing redraws at the one moment the user looks:
+  # the launcher re-inflates the last composed RemoteViews, which is as stale
+  # as the screen-off period was long.
+  grep -q 'Intent.ACTION_SCREEN_ON' "$LISTENER" || return 1
+  # Never in a manifest: blocked for manifest receivers (TIME_TICK from API 26,
+  # SCREEN_ON always).
+  grep -rq 'WidgetRefreshSystemListener' modules/widgetrefresh/android/src/main/AndroidManifest.xml && return 1
   grep -rq 'TIME_TICK' modules/widgetrefresh/android/src/main/AndroidManifest.xml && return 1
+  grep -rq 'SCREEN_ON' modules/widgetrefresh/android/src/main/AndroidManifest.xml && return 1
   # Guarded against double registration, since it fires every minute: the flag
   # must be declared AND both read and written, so a rename cannot satisfy it.
   grep -q 'private var registered = false' "$LISTENER" || return 1
@@ -35,7 +42,7 @@ check_invariant() {
   # receivers, none of them TIME_TICK, because nothing had pushed since that
   # process started. A JS-only call site is the defect, so requiring OnCreate is
   # the invariant; the push-path call may stay as a harmless second arming.
-  perl -0777 -ne 'exit(($_ =~ /OnCreate\s*\{[^}]*WidgetRefreshTickListener\.ensureRegistered/s) ? 0 : 1)' \
+  perl -0777 -ne 'exit(($_ =~ /OnCreate\s*\{[^}]*WidgetRefreshSystemListener\.ensureRegistered/s) ? 0 : 1)' \
     "$MODULE" || return 1
   return 0
 }
@@ -73,6 +80,12 @@ run_break 'double-registration guard removed' "$LISTENER" \
 # 3. It listens for the wrong broadcast, so it never fires on the minute.
 run_break 'wrong broadcast action' "$LISTENER" \
   's/Intent\.ACTION_TIME_TICK/Intent.ACTION_TIME_CHANGED/' "$B_LISTENER"
+
+# 3b. The wake redraw goes, leaving only TIME_TICK. That is the 1.28.24 state:
+#     correct while watched, stale for up to a minute at the moment of waking,
+#     which is the only moment the widget is ever read.
+run_break 'no redraw on screen wake' "$LISTENER" \
+  's/\n *addAction\(Intent\.ACTION_SCREEN_ON\)//' "$B_LISTENER"
 
 # 4. Registration falls back to being push-gated: the OnCreate block is removed
 #    and only the JS call site remains. That is the exact state the Find X8 was
