@@ -99,3 +99,42 @@ rewritten. Merged into `uat-2`.
   `components` suites drive through React Native Testing Library. Nothing failed.
 - Breaks: none applies (no decision in this project's code changed).
 - The diff is five version strings in `package.json` plus `yarn.lock` and `app.json`. No source file touched.
+
+## Step 3: Reanimated 4.7.0, worklets 0.13.0, and a package step 1 missed
+
+### A DEFECT IN THE PLAN: `react-native-screens` was left out of step 1
+
+`yarn add` printed `expo-router@58.0.8 has incorrect peer dependency "react-native-screens@^4.28.0 || ^5.0.0-alpha.3"`.
+Checking it against preview.7's `bundledNativeModules.json` showed `~4.28.0` where this project had `~4.27.0`: the
+planning session MEASURED 26 differing packages and then wrote only 25 of them into step 1's install command. The
+plan's own table was right and its command was one short, which is the kind of defect no test catches, because a
+missing package changes nothing until something depends on it.
+
+It surfaced here only because `expo-router` declares the peer range and yarn prints the warning on every install.
+Two lessons, both recorded in the findings text:
+
+1. **A measured list and a written command must be diffed against each other, not eyeballed.** The check is one line
+   and it is now part of this step's Done-when: nothing in `package.json` may differ from
+   `bundledNativeModules.json` except the packages a decision deliberately puts ahead.
+2. **A peer warning is a finding, not noise.** This one named the exact package and the exact range.
+
+The owner chose on 2026-09-26 to fix it inside this step rather than give it a commit of its own, since
+`react-native-screens` is native navigation code that the device proof exercises anyway. `react-native-screens@~4.28.0`
+installed clean; 4.28.0 is its current `latest` and declares `peer react-native: *`, so it has no constraint against
+rc.2.
+
+After it, exactly ONE package differs from preview.7's pin set: `react-native` at rc.2 where preview.7 names rc.1,
+which is decision 1's deliberate step ahead. The `react-native-screens` peer warning is gone. The one warning that
+remains is pre-existing and deliberate: `jest-expo > jest-watch-typeahead@2.2.1` wants Jest 29 while this project is
+on Jest 30 on purpose (`ai/AGENTS.md`, "Deliberately ahead of Expo's pins").
+
+### Reanimated
+
+- Branch: `chore/reanimated-4-7`.
+- `react-native-reanimated@4.7.0` and `react-native-worklets@0.13.0` installed together, as the matched pair they
+  are. `node -p` confirms both.
+- **4.7.0 makes the new layout-animations engine the default**, and `USE_LEGACY_LAYOUT_ANIMATIONS_PROXY` is
+  deliberately NOT set: the owner chose to take the default and prove it (`PLAN.md` decision 4).
+- `components/modals/Modal.tsx` was NOT edited, confirmed by `git status components/` printing nothing. That is the
+  point: it is the app's only `entering`/`exiting` site, and an unchanged file is what makes the before/after
+  comparison on device mean anything.
