@@ -75,9 +75,12 @@ is not initialised there. Both native receivers now claim the listener too, behi
 
 | | 1.28.21 (before) | 1.28.24 (after) |
 | --- | --- | --- |
-| Readings that were exact | 38% | **100%** (9 of 9) |
-| Worst drift | **+2 minutes** | **+0** |
+| Readings that were exact | 38% | **86 to 100%** |
+| Worst drift | **+2 minutes** | **+1 minute**, briefly, just after an edge |
 | Lag after the minute edge | 13 to 40 s | **~1 to 4 s** |
+
+Screen-on run: 9 of 9 exact. Screen-off run at 4-minute gaps: 6 of 7 exact, the one miss read 13
+seconds after a minute edge. Deep doze, 3.5 and 8 minutes idle: exact both times.
 
 `TIME_TICK` now appears in the app's receiver list on the Find X8 (Android 15) and the OnePlus 3T
 (Android 9). The 3T never had the bug and still reads exact, so nothing regressed.
@@ -133,7 +136,7 @@ script can only build a committed ref, and you told me not to stop. Flagged as a
 
 ## What I would do next, in order
 
-1. **Unplug the X8 and re-run the sampler overnight.** This is the one real gap. Command:
+1. **Unplug the X8 and re-run the sampler overnight.** This is the one real gap left. Command:
    `bash ai/plans/25-android-widget-drift/scripts/drift-sampler.sh G6RWBAQ4VKWWEAIZ /tmp/x8-unplugged.tsv 60 5`
 2. Decide on A1: keep the merge, or reset and redo it yourself.
 3. Decide whether the process-killed case matters enough to want the Chronometer.
