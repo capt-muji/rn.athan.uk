@@ -1,0 +1,2 @@
+const installedVersion = (): string =>
+  (JSON.parse(read('node_modules/expo-widgets/package.json')) as { version: string }).version;
