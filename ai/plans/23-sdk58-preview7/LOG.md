@@ -372,3 +372,45 @@ for the library: an upstream regression is upstream's to fix.
 
 The suite was 170 suites and 4662 tests green on the exact commit whose build blanked the widget. That is the gap
 step 5 closes.
+
+## Step 4: `@expo/ui` and `expo-widgets` pinned to 58.0.5
+
+- Branch `fix/pin-widget-packages-58-0-5`, commit `5682b8fa`, version 1.28.44.
+- Both pins set to a bare `58.0.5`. The install then behaved exactly as the plan predicted:
+  `patch-package finished with 1 warning(s)` until the patch was renamed, and clean after.
+- **The nested-copy trap was real and was hit.** After the first install, `node_modules/expo-widgets/node_modules`
+  still held the stale 58.0.7 from the previous session. Removing it and reinstalling is what made the flat 58.0.5
+  the copy the bundle resolves. Verified: flat `58.0.5`, `expo-widgets` `58.0.5`, `nested: none`.
+- `bash $TMPDIR/verify-23-4.sh` printed `android LOAD OK` and `ios LOAD OK`, which is the whole fix in two lines.
+- `widgetOpenAppPatch.test.ts`: `Tests: 6 passed, 6 total`, with no edit to the suite, because it derives the
+  expected filename from the installed package at runtime.
+- `tsc` 0, Biome 0. Hook: `Test Suites: 170 passed, 170 total`, `Tests: 4662 passed, 4662 total`, four 100% lines.
+- Review, one pass, no findings. Git recorded the patch as a RENAME at 100% similarity, which is independent
+  evidence its content carried over unchanged. `yarn.lock` moved only the two packages.
+- Merged into `uat-2` at `5fca5a3c`.
+
+**A defect in my own plan, found by the pre-flight and fixed in this step.** The plan told the executor to run
+`aapt2` bare. It is NOT on PATH on this Mac: it lives in `$HOME/Library/Android/sdk/build-tools/<v>/aapt2`. A bare
+call exits 127 and `grep -c` on that prints `0`, which reads as "widget-less APK" and would have stopped a perfectly
+good build. This is the same trap session 23 hit with `aapt`, one step removed. The pre-flight and step 4 now resolve
+the newest build-tools copy by absolute path and fail loudly when it is absent.
+
+## Step 5: the guard that loads the widget runtime
+
+- Branch `test/widget-runtime-loads`, version 1.28.45.
+- `shared/__tests__/widgetRuntimeLoads.test.ts` builds the real runtime bundle with `expo-widgets`' own
+  `build-bundle.mjs`, for android and for ios, and evaluates each with `vm.runInThisContext`.
+- **The red was proven against the broken pin, not asserted.** The suite was copied into the scratch worktree at
+  `@expo/ui`/`expo-widgets` 58.0.7 and run: both bundle tests failed with
+  `"message": "(0 , n.memo) is not a function"`, which is the production error verbatim, and the third test passed.
+  At 58.0.5 all three pass.
+- **A bug in my first draft, caught by running it.** The `finally` that deleted the temp directory sat on the BUILD
+  try block, so the bundle was removed before it could be read and both tests failed with `ENOENT`. A cleanup that
+  runs between writing a file and reading it is a cleanup in the wrong scope. Fixed by nesting the build's own
+  try/catch inside the outer try whose `finally` owns the directory.
+- Breaks: `caught: pin-range`, `caught: pin-version`, `caught 2 of 2`, `ALL AS EXPECTED: 1`.
+- **The break script needed correcting too**, and the first run is what showed it: `perl -0pi -e "s/\Q$FROM\E/.../"`
+  cannot carry `@expo/ui`, because the slash ends the substitution pattern and the embedded double quotes end the
+  shell's quoting. It printed `BREAK NOT APPLIED: pin-range` and a perl syntax error, which is the script failing
+  honestly rather than a break passing by accident. Rewritten with a comma delimiter and the strings passed through
+  the environment.
