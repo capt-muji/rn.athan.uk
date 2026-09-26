@@ -414,3 +414,28 @@ the newest build-tools copy by absolute path and fail loudly when it is absent.
   shell's quoting. It printed `BREAK NOT APPLIED: pin-range` and a perl syntax error, which is the script failing
   honestly rather than a break passing by accident. Rewritten with a comma delimiter and the strings passed through
   the environment.
+
+## The device proof, on the 3T
+
+Production build from `5fca5a3c` (the step 4 merge), version 1.28.44, `BUILD-PROD OK` in 417s.
+
+- **The APK declares all 8 providers**, read with the absolute `aapt2` path: `PrayerWidget`, `ExtrasWidget`, each
+  in plain, `Medium`, `Dark` and `DarkMedium` (`apk-providers.txt`).
+- **`adb install -r` could not be used.** It died three times with no output, because the process does not survive
+  its shell here, and a 69MB transfer outlives the tool's window. `adb push` to `/data/local/tmp` took 2.5s at
+  26.6 MB/s, and `adb shell pm install -r` on the pushed file printed `Success`. Recorded because the push-then-
+  install pair is strictly better for an APK this size and should be the default next time.
+- **Alarms healthy**, which also proves the `expo-background-task` patch still compiles in: `yarn check:device`
+  reports `27 future prayer alert(s) armed (0 already fired)`, `3 channel(s)`, `all 2 prayer channel(s) carry a
+  sound`, boot and wake-lock grants present. The dump carries the widget-refresh receiver and the year-2036
+  sentinel every 3T dump shows.
+  Its one FAIL is a version comparison, not a defect: `installed 1.28.44 is BEHIND the tree's 1.28.45`, because
+  step 5 is a test-only commit that ships no app code. Every substantive check passed.
+- **THE WIDGETS RENDER.** The `vision` subagent was unavailable, so the proof is a measurement rather than an
+  image, which is the stronger evidence anyway: `uiautomator dump` of the home screen reads
+  `A S R`, `54m`, `16:08`, `Thu` from BOTH placed widgets, being the prayer name, the countdown, the absolute time
+  and the day marker. `grep -c "undefined is not a function"` over the same tree returns **0**. Saved as
+  `widget-tree-after-pin.xml`, with the screenshot beside it as `widgets-after-pin.png`.
+
+**The phone is left** on this production build, 1.28.44, with automatic time ON: this session never changed the
+clock, so no armed alarm was fired by a jump.
