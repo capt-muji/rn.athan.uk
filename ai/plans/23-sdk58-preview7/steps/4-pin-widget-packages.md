@@ -261,18 +261,21 @@ It must print `1`. Any other count means NEEDS REPLAN.
     prints `FAILED`, STOP and quote the line.
 
     **Before installing, verify the APK declares its widget providers.** `ai/AGENTS.md` records a build that
-    shipped widget-less and could not be undone by reinstalling. Use `aapt2`, and check the tool exists first,
-    because `grep -c` on a missing command prints `0` and reads as "widget-less":
+    shipped widget-less and could not be undone by reinstalling. **`aapt2` is NOT on PATH on this Mac**; it ships
+    inside the SDK's build-tools, so it is called by absolute path. A bare `aapt2` exits 127, and `grep -c` on that
+    prints `0`, which reads as "widget-less APK" and would stop a perfectly good build (session 23 hit exactly this
+    with `aapt`):
 
     ```bash
-    command -v aapt2 || echo "AAPT2 MISSING"
-    aapt2 dump xmltree --file AndroidManifest.xml ~/athan-device-sweep/session23/athan-prod-pinned.apk \
-      | grep -c "PrayerWidgetProvider"
+    AAPT2=$(ls -d "$HOME"/Library/Android/sdk/build-tools/*/aapt2 | sort -V | tail -1)
+    echo "using $AAPT2"
+    "$AAPT2" dump xmltree --file AndroidManifest.xml \
+      ~/athan-device-sweep/session23/athan-prod-pinned.apk | grep -c "PrayerWidgetProvider"
     ```
 
-    `aapt2` must exist, and the count must be non-zero. If `aapt2` is missing, STOP: an unmeasured count is not a
-    pass. Grepping for a bare `appwidget` is a FALSE positive, because the Glance trampoline receivers are always
-    present.
+    `$AAPT2` must be a path that exists, and the count must be non-zero. If it is empty, STOP: an unmeasured count
+    is not a pass. Grepping for a bare `appwidget` is a FALSE positive, because the Glance trampoline receivers
+    are always present.
 
     **Install**, keeping the app's data:
 
