@@ -204,6 +204,46 @@ Worth noting for the record: even in that degraded state the label read `4h 24m`
 `4h 24m`, because `am force-stop` is a harsher event than anything ColorOS does in normal use. The gap
 was real but its user-visible cost was small.
 
+### What a force-stop really costs, and the one thing no app can fix
+
+Re-tested on 1.28.24. The result is worth stating plainly because it bounds what any fix can achieve:
+
+| Moment | State | Widget | True | Drift |
+| --- | --- | --- | --- | --- |
+| after `am force-stop` | `stopped=true`, pid gone | `4h 16m` | `4h 13m` | **+3** |
+| 90s later, no app open | still `stopped=true`, **no process revived** | frozen | | growing |
+| app opened | pid 13667, TIME_TICK re-registered | `4h 13m` | `4h 12m` | +1 |
+| next minute edge | | `4h 11m` | `4h 11m` | **+0** |
+
+While `stopped=true`, Android delivers the app **no broadcasts and runs none of its jobs**, by design:
+it is the OS honouring "the user said stop". Our alarm never fires, so the 1.28.24 receivers never run,
+so nothing re-registers. **No app-side mechanism can escape this state, and a Chronometer could not
+either**, because the widget's RemoteViews can only be replaced by a process that is allowed to run.
+
+Opening the app clears the flag and the widget is exact again by the next minute edge. That is the
+complete and only recovery path, and it is the same conclusion `FINDINGS.md` section 12 reached.
+
+## Final verification, 1.28.24, both phones
+
+Screen-off sampling on the Find X8, four-minute gaps:
+
+| Read at | Widget (all three) | True | Drift |
+| --- | --- | --- | --- |
+| 08:55:32 | `4h 2m` | `4h 2m` | +0 |
+| 08:59:39 | `3h 58m` | `3h 58m` | +0 |
+| 09:03:45 | `3h 54m` | `3h 54m` | +0 |
+| 09:07:51 | `3h 50m` | `3h 50m` | +0 |
+| 09:11:58 | `3h 46m` | `3h 46m` | +0 |
+| 09:16:06 | `3h 41m` | `3h 41m` | +0 |
+| 09:20:13 | `3h 38m` | `3h 37m` | +1 |
+
+**Six of seven exact.** The single `+1` was read 13 seconds after a minute edge, which is the residual
+sub-minute window: TIME_TICK closes most of it but the redraw is not instantaneous. It is the same
+class of error as before, now rare and short-lived rather than routine.
+
+OnePlus 3T on 1.28.24: `TIME_TICK` registered, and `3h 37m` at 09:20:39 against a true `3h 37m`. No
+regression on the phone that never had the bug.
+
 ## What is already ruled out, with the evidence
 
 | Theory | Verdict | Evidence |
