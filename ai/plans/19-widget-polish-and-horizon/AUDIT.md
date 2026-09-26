@@ -129,7 +129,7 @@ trimmed, the horizon invariant rewritten from 30 days to 7 with this session's m
 three new Android widget invariants carrying the session's durable lessons.
 
 **Finding 5 (REPAIRED): `ai/prompts/README.md` named models.** Its programme paragraph still said
-every job "runs in OpenCode on GLM 5.3" and described "Claude/GLM model routing", which the owner's
+every job "runs in OpenCode" and described model routing, which the owner's
 2026-09-24 rule forbids because it dates the page. Rewritten to name the job, not the model. No
 document in the session now names one.
 

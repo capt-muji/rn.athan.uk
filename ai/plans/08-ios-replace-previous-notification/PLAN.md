@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/prompts/ios-replace-previous-notification.md` |
 | Planned at | `fa3337b3` (version 1.27.204), 2026-09-17 |
-| Planned by | Planning session on 2026-09-17, GLM 5.3 |
+| Planned by | Planning session on 2026-09-17 |
 | Needs first | nothing (rows 1 to 3 are DONE) |
 | Steps | 0 merged code. One iPhone XS study, section 7, run start to end in one session, plus the records |
 | Device | iPhone XS `00008020-0015585C22D2002E`, iOS 18.7.10, driven entirely from this Mac. The owner does nothing |
@@ -556,7 +556,7 @@ docs commit.
 The final message of the execution session:
 
 ```text
-🤖  Model: GLM 5.3 (execution session)
+Execution session
 Time: <output of date '+%H:%M:%S %d.%m.%Y'>
 
 Session 8 is executed and waits for its audit. No code changed and nothing merged; a throwaway

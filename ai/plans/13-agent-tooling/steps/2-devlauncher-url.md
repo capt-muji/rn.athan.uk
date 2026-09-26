@@ -4,7 +4,7 @@ Part of `ai/plans/13-agent-tooling/PLAN.md`. Kind: **specified**.
 
 0. **Anchor check:** `grep -cF '<written by step 2>' ai/features/agent-tooling/FINDINGS.md`
    prints `1`. Not 1: NEEDS REPLAN if it is gone, STOP if there is more than one.
-1. **Goal:** prove on the dev build, with screenshots read by `vision` (GLM 5.3 Flash) and with
+1. **Goal:** prove on the dev build, with screenshots read by `vision` and with
    the dev menu's persisted preferences read from the app's plist, that the dev-launcher deep
    link loads the app from Metro and that the flags write the preferences exactly; and record it
    in the FINDINGS, replacing `<written by step 2>`.
@@ -98,7 +98,7 @@ Part of `ai/plans/13-agent-tooling/PLAN.md`. Kind: **specified**.
       xcrun simctl io $SIM screenshot ~/athan-device-sweep/session13/devlauncher-D-fabcontrol.png
       ```
 
-   9. **Ask `vision` (GLM 5.3 Flash), one call per image, with exactly this question** (the
+   9. **Ask `vision`, one call per image, with exactly this question** (the
       screenshot's path goes in the first line):
 
       ```
@@ -151,7 +151,7 @@ Part of `ai/plans/13-agent-tooling/PLAN.md`. Kind: **specified**.
        ````markdown
        ### Measured on the iPhone 17 Pro Max simulator (AB4F4466-05CC-4C7F-A451-187E1DC6C6A0), <DATE>
 
-       | Proof | What was opened | Screenshot | vision's answer (GLM 5.3 Flash) |
+       | Proof | What was opened | Screenshot | vision's answer |
        | --- | --- | --- | --- |
        | A: plain link | `athan://expo-development-client/?url=http%3A%2F%2F127.0.0.1%3A8081` | `devlauncher-A-default.png` | no dev FAB, no dev menu, app up, countdown <A_TIME> |
        | B: both flags | `…&disableFab=1&disableAutoLaunch=1` (same link, flags appended) | `devlauncher-B-flags.png` | no dev FAB, no dev menu, app up, countdown <B_TIME> |
@@ -235,10 +235,10 @@ Part of `ai/plans/13-agent-tooling/PLAN.md`. Kind: **specified**.
    dev menu's persisted preferences exactly (plist read-back), and they survive a plain
    relaunch. The iOS 26.5 finding recorded with its control: the dev-menu FAB never
    renders on this scene-life-cycle build, preference forced on or not. Android form
-   source-verified. Four screenshots read by vision (GLM 5.3 Flash).
+   source-verified. Four screenshots read by vision.
    ```
 
-9. **Review.** `Code Reviewer` (GLM 5.3), isolation `worktree`, prompt:
+9. **Review.** `Code Reviewer`, isolation `worktree`, prompt:
 
    ```
    Run git checkout --detach <sha>. Review this docs commit: the "Dev-launcher URL verification"

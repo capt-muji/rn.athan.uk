@@ -1,4 +1,4 @@
-# Audit: Session 15b (roles collapsed by the owner: the same GLM 5.3 session plans, executes and audits; `vision` was the only subagent)
+# Audit: Session 15b (roles collapsed by the owner: the same session plans, executes and audits; `vision` was the only subagent)
 
 ## Checks
 

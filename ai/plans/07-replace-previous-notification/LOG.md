@@ -1,6 +1,6 @@
 # Execution log: Session 7
 
-## STOP, 07:27 17.09.2026, at the pre-flight (GLM 5.3, execution session)
+## STOP, 07:27 17.09.2026, at the pre-flight (execution session)
 
 Two defects found before any step ran. No file in the repository was changed by this session;
 the working tree was exactly as the planning session left it.
@@ -48,7 +48,7 @@ the working tree was exactly as the planning session left it.
 Step 1 was not started. The row stays READY. Nothing was committed, merged, built or pushed, and the
 phone was not touched.
 
-## Resumed by the planning session, 07:59 17.09.2026 (GLM 5.3, planning session)
+## Resumed by the planning session, 07:59 17.09.2026 (planning session)
 
 Both stops are resolved. No file outside `ai/` changed beyond the version bump in `app.json` and
 `package.json`, and the phone was not touched.
@@ -65,7 +65,7 @@ Both stops are resolved. No file outside `ai/` changed beyond the version bump i
    delegated the keying to the planning session on 2026-09-17.
 
 The row stays READY. The execution prompt resumes from the pre-flight.
-## STOP, 08:04 17.09.2026, at the pre-flight again (GLM 5.3, execution session)
+## STOP, 08:04 17.09.2026, at the pre-flight again (execution session)
 
 The resumed session's fix was committed but never merged or pushed. `bash $TMPDIR/preflight-7.sh 1`
 printed:
@@ -99,7 +99,7 @@ its own `PLANNER-BRIEF.md` section 8, item 5 ritual for `0f36e7e5`: merge
 `docs/plan-7-20260917-0800` into `uat-2`, then push. This execution session merges and pushes nothing
 and step 1 stays unstarted; it resumes with this plan's pre-flight once that merge is on `uat-2`.
 
-## Resumed, 11:45 17.09.2026 (GLM 5.3, execution session, second successor)
+## Resumed, 11:45 17.09.2026 (execution session, second successor)
 
 The planning merge landed (`uat-2` = `origin/uat-2` = `aaabb12a`, which carries the re-keyed mock). The
 predecessor execution session completed step 1 through its commit and died before part 9; LOG.md held
@@ -119,7 +119,7 @@ no "Resume from" note, so this session reconstructed the state from git and the 
 The pre-flight was not re-run on resume: its branch check requires `uat-2`, which is necessarily false
 mid-step on the step branch; every check it performs was served at 08:11 before the step started.
 
-### Step 1 review, round 1 (Code Reviewer, GLM 5.3): fix first
+### Step 1 review, round 1 (Code Reviewer): fix first
 
 One finding: `plugins/replacePreviousNotification.js` carries three of the step's four required
 why-comment subjects but not the fourth, "why the manifest edits are guarded (prebuild re-runs)". The
@@ -140,7 +140,7 @@ clean. The commit was amended and the same reviewer resent the new sha.
   `Functions    : 100% ( 824/824 )`, `Lines        : 100% ( 3551/3551 )`.
 - Break script's last line: `ALL AS EXPECTED: 1` (first run `$TMPDIR/breaks-1.log`, recheck after the
   review fix `$TMPDIR/breaks-1-recheck.log`).
-- Review: Code Reviewer (GLM 5.3), 2 rounds. Round 1 verdict `fix first` (one finding: the missing
+- Review: Code Reviewer, 2 rounds. Round 1 verdict `fix first` (one finding: the missing
   guards why-comment; fixed verbatim as the reviewer specified, all three of EXECUTOR-BRIEF section 4
   item 8's conditions met, recorded above). Round 2 verdict `merge`, no findings.
 - Merged into `uat-2` as `45754e6094c5e7d1724fdb24ff97b9e18f3c47cb`,
@@ -188,7 +188,7 @@ Old APK (`athan-7-old.apk`, from PARENT): `BUILD-MOCK OK`, `versionName 1.27.197
   second list day). Nothing is armed between 08:00 and 16:42 on 2026-09-12, so the drive to item 9's
   minute passes nothing.
 
-## STOP, 12:07 17.09.2026, at the device proof 7.2 item 6 (GLM 5.3, execution session)
+## STOP, 12:07 17.09.2026, at the device proof 7.2 item 6 (execution session)
 
 What I expected: the plan's item 6 bound "every armed instant it lists sits inside 2026-09-12 08:00 to
 2026-09-13 17:00 ... An armed instant before 2026-09-12 16:40 other than none, or after 2026-09-13
@@ -229,7 +229,7 @@ no longer shows). `svc power stayon false` set; `auto_time` reads 1. A re-run of
 
 
 
-## Resumed, 12:01 17.09.2026 (GLM 5.3, execution session, third successor)
+## Resumed, 12:01 17.09.2026 (execution session, third successor)
 
 No "Resume from" note existed; the state was verified from the repository, the sweep folder and the
 predecessor's $TMPDIR logs, and matched the plan at every point:
@@ -245,7 +245,7 @@ predecessor's $TMPDIR logs, and matched the plan at every point:
   predecessor at 11:59); this session waited for it (it ended `BUILD-MOCK OK`, `versionName 1.27.197`).
   Mocks copy verified byte-identical to `scripts/mocks/fixed-days.ts.txt`.
 
-## STOP, 12:07 17.09.2026, in the device proof at 7.2 item 1 (GLM 5.3, execution session, third successor)
+## STOP, 12:07 17.09.2026, in the device proof at 7.2 item 1 (execution session, third successor)
 
 A second execution session is driving the OnePlus 3T concurrently. Everything repository-side this
 session did before the stop is recorded above; the phone was touched exactly once (the 7.2 item 1
@@ -292,7 +292,7 @@ first so this one resumes from wherever the device actually stands? Until the an
 touches neither the phone nor the repository outside this plan folder. Row stays IN PROGRESS. Asked
 12:07 17.09.2026.
 
-## Resumed, 12:15 17.09.2026 (GLM 5.3, execution session, fourth successor)
+## Resumed, 12:15 17.09.2026 (execution session, fourth successor)
 
 Spawned by the orchestrator at about 12:04 to finish the device proof; no "Resume from" note existed,
 so this session reconstructed everything and changed no device state (reads only).
@@ -380,7 +380,7 @@ New baseline for the re-run (`tray-start-2.txt`, `alarms-start-2.txt`):
   channel=expo_notifications_fallback_notification_channel` (a Silent alert's channel, as
   predicted); no old-tag notification was posted (the dead PendingIntent delivered nothing).
 
-## STOP, 12:31 17.09.2026, at 7.2 item 11's readings (GLM 5.3, execution session)
+## STOP, 12:31 17.09.2026, at 7.2 item 11's readings (execution session)
 
 Two letter-divergences, both fully diagnosed from saved evidence before anything else ran:
 
@@ -407,7 +407,7 @@ The acceptance criteria of item 11 cannot be satisfied as written, so per sectio
 build installed, nothing else armed before Asr 09-13 16:40, which would fire at about 20:40 real
 time if the proof stalls that long.
 
-## Resumed, 12:22 17.09.2026 (GLM 5.3, execution session, fifth successor)
+## Resumed, 12:22 17.09.2026 (execution session, fifth successor)
 
 Spawned by the orchestrator to "continue 7.2 item 2 and finish end to end", on its belief that the
 predecessor had died after leaving the old-build reinstall running. Reality differed, and this
@@ -512,7 +512,7 @@ pre-7.3 baseline again: `NOTIFICATION_EVENT` 2 (Asr 2026-09-17 16:34, Asr 2026-0
 screen re-woken and `stayon usb` re-set after the other session's cleanup let it lock. No clock
 drive runs until the old session's window (PID 45558) is gone.
 
-## Plan amended by the planning session, 12:51 17.09.2026 (GLM 5.3, planning session)
+## Plan amended by the planning session, 12:51 17.09.2026 (planning session)
 
 The owner's 12:31 question (the two 7.2 item 11 letter-divergences, `POSTS 0` and `TRAY 1`) was
 delegated entirely to the planning session by the orchestrator at 12:39, after the owner's 12:34 answer
@@ -614,7 +614,7 @@ the nine pair-phase alarms inside every multiplicity the plan gives, and the pro
 [Superseded about four minutes later by the owner's replan-from-scratch order, given to this
 session's re-ask of the same question; see the correction entry of 13:41. — sixth successor]
 
-## Resumed, 13:19 17.09.2026 (GLM 5.3, execution session, sixth successor)
+## Resumed, 13:19 17.09.2026 (execution session, sixth successor)
 
 The orchestrator's resume note still describes the 12:36 wrap-up state (real clock, `auto_time` 1),
 so it predates the final run above; the predecessor's item-4 question never reached the owner
@@ -643,7 +643,7 @@ holds exactly the eight, about 40 minutes); or NEEDS REPLAN. Timing: the pair fi
 device 04:22, about real 14:30; an answer after that adds a re-arm cycle (drive back to 03:00,
 cold launch, the stored preferences re-arm the eight) before items 5 and 6 can run.
 
-## STOP, 13:25 17.09.2026: the owner ordered a replan from scratch (GLM 5.3, execution session)
+## STOP, 13:25 17.09.2026: the owner ordered a replan from scratch (execution session)
 
 The owner answered the item-4 question at about 13:20:
 
@@ -675,7 +675,7 @@ they are closing it, and the replan should find it gone.
 
 The row moves to NEEDS REPLAN; the replan docs commit follows (`EXECUTOR-BRIEF.md` section 4b).
 
-## Correction and collision record, 13:41 17.09.2026 (GLM 5.3, execution session, sixth successor)
+## Correction and collision record, 13:41 17.09.2026 (execution session, sixth successor)
 
 Written for the replan session, after the docs commit's review exposed what this session could not
 see while it worked. Three corrections and one collision:
@@ -709,7 +709,7 @@ see while it worked. Three corrections and one collision:
    before the replan runs (the owner's 13:20 order stops every session); only the orchestrator can
    stop it.
 
-4. **Review round 1 (Code Reviewer, GLM 5.3): fix first.** Finding 1 asked for the 13:16 paragraph's
+4. **Review round 1 (Code Reviewer): fix first.** Finding 1 asked for the 13:16 paragraph's
    deletion on the belief the ruling never happened; corrected instead, per the truth in item 1, by
    marking it superseded — deleting it would erase a real owner ruling from the record. Finding 2
    (the reads parenthetical listing a write among the reads) is reworded as the reviewer specified.
@@ -722,7 +722,7 @@ The phone at handoff: real clock, `auto_time` 1, `stayon false`, keyguard clear,
 so which of the two is installed cannot be read from the version alone). The row on `uat-2` once
 this branch merges: NEEDS REPLAN. The replan re-baselines the phone, the plan and the proof.
 
-## The wiped final-run record, restored by its own session, 13:45 17.09.2026 (GLM 5.3, execution
+## The wiped final-run record, restored by its own session, 13:45 17.09.2026 (execution
 session, fourth successor, standing down per the owner's 13:20 order)
 
 My post-13:16 readings were wiped from the tree when my Reality Checker ran its
@@ -749,7 +749,7 @@ evidence files themselves were never touched:
   `auto` return; five enqueues at 09-17 13:22:11, every one `athan-notification`, two `Muting` lines
   beside them — the number the sixth successor's "device anomaly" paragraph records); install
   `Success` 1.27.198; `final-cold` needed one retry (the first post-install launch landed on the
-  lock screen); `mock-final.png` (283,900 bytes) read by vision (GLM 5.3 Flash): **YES** — Asr
+  lock screen); `mock-final.png` (283,900 bytes) read by vision: **YES** — Asr
   highlighted as next, countdown 49s; `stayon false` set; `auto_time` 1; `versionName=1.27.198`;
   `alarms-end.txt`: `ACTION_FORCE_STOP_RESCHEDULE` 1 and `NOTIFICATION_EVENT` 5 — the final mock's
   own two-list-day buffer (13:30:00, 03:43:00 ×2, 04:03:00, 16:58:00), against the plan's "0 or 1";
@@ -774,7 +774,7 @@ sits exactly as the sixth successor's handoff paragraph records; the replan owns
   (amended from `da7e501b` after review round 1), version 1.27.201.
 - Hook (both runs): `Tests:       4511 passed, 4511 total`; `Statements`, `Branches`, `Functions`
   and `Lines` all `100%`; no `Coverage gate:` line.
-- Review: Code Reviewer (GLM 5.3), 2 rounds. Round 1 `fix first`: finding 1 asked for the 13:16
+- Review: Code Reviewer, 2 rounds. Round 1 `fix first`: finding 1 asked for the 13:16
   paragraph's deletion on the belief the ruling never happened — corrected instead, with the
   superseded marker and the correction entry above, because deleting it would erase a real owner
   ruling; finding 2 (a write listed among the reads) reworded as specified. Round 2 `merge`, no
@@ -785,7 +785,7 @@ sits exactly as the sixth successor's handoff paragraph records; the replan owns
   in the working tree, the between-sessions norm; if the earlier session wipes the tree again, the
   committed record above is the survivor.
 
-## Replanned by the planning session, 14:05 17.09.2026 (GLM 5.3, planning session)
+## Replanned by the planning session, 14:05 17.09.2026 (planning session)
 
 The owner's 13:20 order (replan everything from scratch, execute once) is applied. The uncommitted
 record above this entry is the fourth successor's restored final-run record; it was reviewed against
@@ -824,11 +824,11 @@ What the replan kept and what it rebuilt:
   commits are session 7's reviewed docs record; the audit that closes this row covers the whole range
   once the row is EXECUTED.
 
-Review: Code Reviewer (GLM 5.3), one round on the working tree before commit (the executor-read review
+Review: Code Reviewer, one round on the working tree before commit (the executor-read review
 PLAN.md section 5 names), one round on the committed range after (the section 8.4 gate). Findings and
 their fixes are recorded below in this entry's review record.
 
-### Replan review, round 1 (Code Reviewer, GLM 5.3): fix first, six findings, all applied
+### Replan review, round 1 (Code Reviewer): fix first, six findings, all applied
 
 The reviewer verified the anchor (1 in `app.json` at `7c800915`), every cited code fact (the Off
 disarm at `stores/notifications.ts:624-633`, past-instant skipping at `:757-761`, the sweep's all-off
@@ -858,11 +858,11 @@ session; the four-line handoff names the execution prompt next.
 
 
 
-### Replan closing record, 14:33 17.09.2026 (GLM 5.3, planning session)
+### Replan closing record, 14:33 17.09.2026 (planning session)
 
 - Commit `f622a880` (1.27.202), hook: `Tests:       4511 passed, 4511 total`; `Statements`,
   `Branches`, `Functions`, `Lines` all `100%`; no `Coverage gate:` line.
-- Review round 2 (Code Reviewer, GLM 5.3, scratch worktree at the commit): **merge, no findings**;
+- Review round 2 (Code Reviewer, scratch worktree at the commit): **merge, no findings**;
   it re-verified the six round-1 fixes in place and re-ran the instant-list command against
   `alarms-pair.txt` and `alarms-start.txt` itself.
 - Merged into `uat-2` as `25bcf801`; pushed `b6e2df27..25bcf801` to `origin/uat-2` after the
@@ -877,7 +877,7 @@ session; the four-line handoff names the execution prompt next.
 This closing record rides uncommitted in the working tree, the between-sessions norm; the committed
 replan record above is the survivor.
 
-## Device proof, the single clean execution pass, started 14:55 17.09.2026 (GLM 5.3, execution session)
+## Device proof, the single clean execution pass, started 14:55 17.09.2026 (execution session)
 
 The replan's own closing record above (14:33) is folded into this session's record and rides into the
 `executed` docs commit with everything this session writes. The owner's notice (7.0 item 1, delivered
@@ -952,7 +952,7 @@ from here is exact.
   `expo.modules.notifications.service.NotificationsService` count 0.
 - Item 4 (`old-apk-manifest.txt`): `AthanNotificationsService` count 0, expo's receiver count 1.
 
-## Resumed, 15:14 17.09.2026 (GLM 5.3, execution session, successor; stood down at 15:20 on 2.2 item 10)
+## Resumed, 15:14 17.09.2026 (execution session, successor; stood down at 15:20 on 2.2 item 10)
 
 Spawned by the orchestrator on its belief the 14:55 session had died with the 7.1 builds running.
 What this session found, all by reads before any device action of its own:
@@ -1072,13 +1072,13 @@ shared-tag posts since 7.2 (Asr, the pair's two, Fajr) left exactly one notifica
   today's Asr at `2026-09-17 15:29:00.000` (not yet fired) and on 2026-09-18 `03:43:00.000` twice,
   `04:03:00.000`, `16:58:00.000` — the fixed day1 row of `mocks/simple.ts`. `END_ALARMS=5`.
 - Item 6: `mock-final.png` shot at 15:28:07 (283,491 bytes).
-- Item 7: vision (GLM 5.3 Flash) answered **YES** — Asr highlighted as next, countdown 54s.
+- Item 7: vision answered **YES** — Asr highlighted as next, countdown 54s.
 - Item 8: `auto_time` 1. Item 9: `versionName=1.27.202` (= `package.json`). Item 10: keyguard clear
   (count 0), Athan foreground, `svc power stayon usb` still set from 7.0 item 8.
 
 ### Item 11, the Reality Checker verdict
 
-Reality Checker (GLM 5.3, worktree, read-only, 15:29 17.09.2026): every substantive claim PROVEN
+Reality Checker (worktree, read-only, 15:29 17.09.2026): every substantive claim PROVEN
 (the artifact, the update path, the package-replace cancellation, the pair, the channel crossing,
 the four-fires tray, the 50-cap unreachability, the rulings, the end state), one NOT PROVEN, so its
 final line is `evidence does not hold`:
@@ -1099,7 +1099,7 @@ alert), which serializes to `shouldPlayDefaultSound=false, soundName=null`, so e
 Every Sound alert posts on an app channel (`athan_1_v2`, `reminder_fajr_20`, `extras_at_time`)
 whose `mSound` the tray saves record as `android.resource://com.mugtaba.athan/raw/...`, the app's
 own files. The claim holds by mechanism; the sweep folder holds no file that records sound-as-played.
-Per 7.5 item 11, asking the owner: "Reality Checker (GLM 5.3) found `<the NOT PROVEN line above>`.
+Per 7.5 item 11, asking the owner: "Reality Checker found `<the NOT PROVEN line above>`.
 What do I do?" Asked 15:30 17.09.2026.
 
 ## Wrap-up, 15:52 17.09.2026 (main session, all phases, no subagents)

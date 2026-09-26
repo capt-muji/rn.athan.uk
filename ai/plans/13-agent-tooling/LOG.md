@@ -30,7 +30,7 @@
   Biome then exit 0.
 - Breaks `breaks-13-1.sh`: four `caught:`, `caught=4 missed=0`, `ALL AS EXPECTED: 1`.
 - Hook: `Tests:       4534 passed, 4534 total`; coverage lines `Statements/Branches/Functions/Lines` all `100%`.
-- Review: Code Reviewer (GLM 5.3), 1 round, verdict **merge** (outputs verified byte-identical
+- Review: Code Reviewer, 1 round, verdict **merge** (outputs verified byte-identical
   against the two logs).
 - Merge `76b5b9d9` into `uat-2` (`--no-ff`, reviewed).
 
@@ -71,7 +71,7 @@ the table exactly (`1m 2s` / `1m 32s` / `1m 3s` / `1m 38s`; A and B different se
 - Breaks `breaks-13-2.sh`: `caught=4 missed=0`, `ALL AS EXPECTED: 1`. tsc and Biome exit 0.
 - Commit `006a574a`, version `1.27.237`; hook `Tests:       4534 passed, 4534 total`,
   coverage lines `Statements/Branches/Functions/Lines` all `100%`.
-- Review: Code Reviewer (GLM 5.3), 1 round, verdict **merge** (it independently re-derived
+- Review: Code Reviewer, 1 round, verdict **merge** (it independently re-derived
   and accepted ruling 3: the expected-answer table was inconsistent with the step's own
   reset, and restoring the template wording would falsify vision's reading).
 - Merge `62ef4683` into `uat-2` (`--no-ff`, reviewed).
@@ -87,7 +87,7 @@ the table exactly (`1m 2s` / `1m 32s` / `1m 3s` / `1m 38s`; A and B different se
 - Commit `58839b07`, version `1.27.238`; hook `Tests:       4534 passed, 4534 total`,
   coverage lines all `100%`. `git show --stat HEAD` listed exactly `AGENTS.md`,
   `ai/AGENTS.md`, `app.json`, `package.json` and the two plan files.
-- Review: Code Reviewer (GLM 5.3), 1 round, verdict **merge** (bullets byte-identical,
+- Review: Code Reviewer, 1 round, verdict **merge** (bullets byte-identical,
   placement exact, facts all traced to the FINDINGS; its one nitpick — the row's unversioned
   `npx @expo/agent-cli` spelling vs the bullet's `@latest` — is the plan's own verbatim text).
 - Merge `7b71d3e9` into `uat-2` (`--no-ff`, reviewed).
@@ -119,7 +119,7 @@ records text is applied (result recorded below).
 
 - Section 7 3T check: `device`, `auto_time` 1, `versionName=1.27.227` (rerun and preserved
   in `~/athan-device-sweep/session13/device-3t-check.txt` under ruling 4).
-- Reality Checker (GLM 5.3) on merge sha `7b71d3e9`: first run listed two claims without a
+- Reality Checker on merge sha `7b71d3e9`: first run listed two claims without a
   preserved artifact (ruling 4); re-run after the artifacts: **empty list**, every claim in
   the section 8 records text proven.
 - Records text applied verbatim under `# Session 13 of the queue: agent tooling,

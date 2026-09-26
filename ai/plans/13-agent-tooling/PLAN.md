@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/plans/SDK58-PROGRAMME.md` §13 |
 | Planned at | `423e2db1` (version 1.27.234), 2026-09-18 |
-| Planned by | Planning session on 2026-09-18, GLM 5.3 |
+| Planned by | Planning session on 2026-09-18 |
 | Needs first | 6 |
 | Steps | 3, each one branch, one commit, one version, in `steps/` |
 | Device | none on the OnePlus 3T; iOS simulator `AB4F4466-05CC-4C7F-A451-187E1DC6C6A0` (iPhone 17 Pro Max) only |
@@ -378,15 +378,14 @@ unfinished patch is saved first.
 
 | Step | Agent type | Model | Isolation | Why | Prompt |
 | --- | --- | --- | --- | --- | --- |
-| 1 | `Code Reviewer` | GLM 5.3 | worktree | every commit, before its merge | step 1 file, part 9, with the sha filled in |
-| 2 | `Code Reviewer` | GLM 5.3 | worktree | every commit, before its merge | step 2 file, part 9, with the sha filled in |
-| 2 | `vision` | GLM 5.3 Flash | none (reads files) | the executor cannot see images; four screenshots | the exact questions in step 2 part 5 item 9 |
-| 3 | `Code Reviewer` | GLM 5.3 | worktree | every commit, before its merge | step 3 file, part 9, with the sha filled in |
-| finish | `Reality Checker` | GLM 5.3 | worktree | does the evidence prove each claim in the records text? | "Run git checkout --detach <merge sha of step 3>. Read ai/plans/13-agent-tooling/PLAN.md sections 7 and 8, ai/features/agent-tooling/FINDINGS.md, and the files under ~/athan-device-sweep/session13/. For each claim in the section 8 findings text, name the file and line that proves it. List any claim with no proof. That list is the whole reply." |
-| any step | `Test Results Analyzer` | GLM 5.3 | none | only if a full-suite run fails in a way section 10 does not cover; the executor then STOPs | the failing log path |
+| 1 | `Code Reviewer` | | worktree | every commit, before its merge | step 1 file, part 9, with the sha filled in |
+| 2 | `Code Reviewer` | | worktree | every commit, before its merge | step 2 file, part 9, with the sha filled in |
+| 2 | `vision` | | none (reads files) | the executor cannot see images; four screenshots | the exact questions in step 2 part 5 item 9 |
+| 3 | `Code Reviewer` | | worktree | every commit, before its merge | step 3 file, part 9, with the sha filled in |
+| finish | `Reality Checker` | | worktree | does the evidence prove each claim in the records text? | "Run git checkout --detach <merge sha of step 3>. Read ai/plans/13-agent-tooling/PLAN.md sections 7 and 8, ai/features/agent-tooling/FINDINGS.md, and the files under ~/athan-device-sweep/session13/. For each claim in the section 8 findings text, name the file and line that proves it. List any claim with no proof. That list is the whole reply." |
+| any step | `Test Results Analyzer` | | none | only if a full-suite run fails in a way section 10 does not cover; the executor then STOPs | the failing log path |
 
-Only the agents listed may be used. No `model` override: every subagent inherits GLM 5.3 except
-`vision`, which runs on GLM 5.3 Flash. Where the harness offers no agent literally named
+Only the agents listed may be used. No `model` override: every subagent runs the session's own model. Where the harness offers no agent literally named
 `Code Reviewer`, the `general` agent given the prompt above IS the Code Reviewer; that
 substitution is the harness mapping, not a decision.
 
@@ -398,7 +397,7 @@ evidence.
 
 ## 12. Report to the owner
 
-The final message starts with `🤖  Model: GLM 5.3 (execution session)` and a `Time:` line from
+The final message starts with `Execution session` and a `Time:` line from
 `date '+%H:%M:%S %d.%m.%Y'`, then:
 
 - a few plain sentences: `@expo/agent-cli` status and smoke measured, the dev-launcher launch URL
@@ -410,9 +409,9 @@ The final message starts with `🤖  Model: GLM 5.3 (execution session)` and a `
 
 | Task | Model | What it checks | Why it matters | Outcome | Status |
 | --- | --- | --- | --- | --- | --- |
-| Step 1: agent-cli findings | GLM 5.3 | status + smoke outputs recorded verbatim | the adoption ruling stands on measurements | <result, version> | ✅ done / 🔀 merged / 🚧 branch / ⏳ waiting / ❌ stopped |
-| Step 2: dev-launcher proof | GLM 5.3 + vision (GLM 5.3 Flash) | the link loads; the flags write the prefs; the FAB control | the documented URL is verified, not copied | <result> | … |
-| Step 3: routing docs | GLM 5.3 | both instruction files carry the guidance | future sessions find the tools | <result> | … |
+| Step 1: agent-cli findings | | status + smoke outputs recorded verbatim | the adoption ruling stands on measurements | <result, version> | ✅ done / 🔀 merged / 🚧 branch / ⏳ waiting / ❌ stopped |
+| Step 2: dev-launcher proof | the session + vision | the link loads; the flags write the prefs; the FAB control | the documented URL is verified, not copied | <result> | … |
+| Step 3: routing docs | | both instruction files carry the guidance | future sessions find the tools | <result> | … |
 
 - any decision now waiting on the owner (the five rulings);
 - the four-line handoff from the `athan-next` skill, section 5.

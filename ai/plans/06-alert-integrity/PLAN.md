@@ -82,13 +82,13 @@ STOP, append what you saw to `LOG.md`, and ask the owner the question given, whe
 2. **A test fails that the plan does not name**, or a named test fails with a different line. Ask: "In step `<k>`,
    `<test>` failed with `<first failure line>`, which the plan does not expect. Shall I stop here so the plan can be
    refreshed?"
-3. **A Code Reviewer (GLM 5.3) finding that section 10 does not answer word for word.** Ask: "The reviewer asks:
+3. **A Code Reviewer finding that section 10 does not answer word for word.** Ask: "The reviewer asks:
    `<finding in its words>`. The plan gives no fix for it. Do you want it applied (the plan is then refreshed first),
    or shall I merge without it?"
 4. **Anything that would touch visuals, a prayer time, `releases.json`, the `uat` branch or EAS.** Ask: "Step `<k>`
    would change `<what>`, which this plan forbids. What do I do?"
 5. **A build script prints `FAILED`.** Ask: "`<script>` failed with `<line>`. What do I do?"
-6. **The `vision` subagent (GLM 5.3 Flash) gives an answer the plan does not expect**, after the repeats the plan
+6. **The `vision` subagent gives an answer the plan does not expect**, after the repeats the plan
    allows. Ask: "vision read `<file>` as `<answer>`; the plan expects `<expected>`. What do I do?"
 7. **`launch80.py` or `isha_alarms.py` prints a line starting `LAUNCH80 FAILED` or `ISHA ALARMS NOT AS EXPECTED`**, or
    an alarm dump names an app alarm whose tag is neither
@@ -314,7 +314,7 @@ before it settles.
 - **Concurrency trace.** Every caller in section 4.3 keeps its order: an operation still starts only after the one
   before it settles, and now settles only after all its own work. Failures still reject with the same first error, so
   the refresh gate, the background task's failed result and the commit's rollback behave as before.
-- **Design review.** A Software Architect (Claude Opus 5), 2026-09-15, attacked this step together with the first design
+- **Design review.** A Software Architect, 2026-09-15, attacked this step together with the first design
   for finding 81. For this step it found that `settleAll` correctly replaces every `Promise.all` whose pieces can reject,
   and recorded two limits, both taken to session 6b:
   - a day whose stored row cannot be read loses its record while its alarm stays armed; this was already so before the
@@ -341,7 +341,7 @@ Read a step's file in full before starting it. Start a step only once the step b
 ## 7. Device proof
 
 Run this after step 3 is merged. Every command runs from `/Users/muji/repos/rn.athan.uk`. No step changes the phone's
-clock. The owner receives no screenshots: only the `vision` subagent (GLM 5.3 Flash) reads them.
+clock. The owner receives no screenshots: only the `vision` subagent reads them.
 
 ### 7.0 Preparation and safety reading
 
@@ -349,7 +349,7 @@ clock. The owner receives no screenshots: only the `vision` subagent (GLM 5.3 Fl
    Tell the owner, word for word: "The device proof starts now and needs about an hour. The phone is on a test build, so
    your real alerts are not armed until the production build goes on about halfway through, which re-arms your saved
    alerts. The two throwaway Ramadan builds may ring test alerts a minute or two after each launch. I'll ask for your
-   hands on the phone about halfway through." 
+   hands on the phone about halfway through."
 2. Run `mkdir -p ~/athan-device-sweep/session6/build ~/athan-device-sweep/session6/mocks`.
 3. Run `cp ai/plans/06-alert-integrity/scripts/mocks/force-sync-throw.ts.txt ~/athan-device-sweep/session6/mocks/force-sync-throw.ts`.
 4. Run `git rev-parse uat-2` and write the sha in `LOG.md` as `FINAL=<sha>`. Every `<FINAL>` below is that sha, which
@@ -530,7 +530,7 @@ Example of the format: OFF X
    `bash -c 'shopt -s nullglob; f=(~/athan-device-sweep/session5/mockcheck/prod-cold.*); [ ${#f[@]} -eq 0 ] || cp "${f[@]}" ~/athan-device-sweep/session6/; echo "copied ${#f[@]}"'`.
    Expected: `copied` followed by 0, 1 or 2. None is expected when the screen read printed `DUMP FAILED`.
 6. Spawn a `Reality Checker` subagent (isolation `worktree`, no `model`) with the prompt `REALITY_CHECK` in section 11,
-   and write its verdict in `LOG.md`. A final line `evidence does not hold`: STOP and ask "Reality Checker (GLM 5.3)
+   and write its verdict in `LOG.md`. A final line `evidence does not hold`: STOP and ask "Reality Checker
    found `<its NOT PROVEN lines>`. What do I do?".
 7. Only after a final line `evidence holds`: in `PLAN.md` section 6, replace the line `- [ ] Device proof: section 7`
    with `- [x] Device proof: DONE`.
@@ -556,7 +556,7 @@ Append this to the end of `ai/features/uat-2/AUDIT-FINDINGS.md`, replacing each 
 # Session 6 of the queue: findings 79, 80 and 82, <DATE>
 
 The brief is `ai/prompts/alert-integrity.md`, planned by Claude in `ai/plans/06-alert-integrity/PLAN.md` and executed
-by GLM 5.3, with a GLM 5.3 Code Reviewer on every commit. `uat-2` ends at `<FINAL>` (<VERSION>); the last suite run
+by the session, with a Code Reviewer on every commit. `uat-2` ends at `<FINAL>` (<VERSION>); the last suite run
 reported `<TESTS>`, at 100% statements, branches, functions and lines.
 
 ## 79. CLOSED: Open Settings always answers
@@ -663,11 +663,11 @@ with `uat-2`'s `package.json` version, since that file is not tracked.
 
 | Step | Agent type | Model | Isolation | Why | Prompt |
 | --- | --- | --- | --- | --- | --- |
-| 1 to 3 | `Code Reviewer` | GLM 5.3 | `worktree` | Every commit is reviewed before it merges | Each step file, part 9 |
-| Docs commit | `Code Reviewer` | GLM 5.3 | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
-| 7.1, 7.2, 7.3, 7.4 | `vision` | GLM 5.3 Flash | none | The executor cannot read images | `VISION_80`, `VISION_79` and 7.4's prompt |
-| 7.5 | `Reality Checker` | GLM 5.3 | `worktree` | Does the evidence prove every claim in section 8.1? | `REALITY_CHECK` below |
-| Any | `Test Results Analyzer` | GLM 5.3 | `worktree` | Only when a full-suite run fails in a way section 10 does not cover; it reports the cause, then the executor STOPs | "Run `git checkout --detach <sha>`. Read `<log path>` in full and name the cause of each failing test, with file and line. Change nothing." |
+| 1 to 3 | `Code Reviewer` | | `worktree` | Every commit is reviewed before it merges | Each step file, part 9 |
+| Docs commit | `Code Reviewer` | | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
+| 7.1, 7.2, 7.3, 7.4 | `vision` | | none | The executor cannot read images | `VISION_80`, `VISION_79` and 7.4's prompt |
+| 7.5 | `Reality Checker` | | `worktree` | Does the evidence prove every claim in section 8.1? | `REALITY_CHECK` below |
+| Any | `Test Results Analyzer` | | `worktree` | Only when a full-suite run fails in a way section 10 does not cover; it reports the cause, then the executor STOPs | "Run `git checkout --detach <sha>`. Read `<log path>` in full and name the cause of each failing test, with file and line. Change nothing." |
 
 The prompt `REALITY_CHECK`:
 
@@ -686,7 +686,7 @@ or "evidence does not hold".
 The final message of the execution session:
 
 ```text
-🤖  Model: GLM 5.3 (execution session)
+Execution session
 Time: <output of date '+%H:%M:%S %d.%m.%Y'>
 
 Session 6 is executed and waits for its audit. The three fixes are merged into uat-2 on this Mac, not pushed:

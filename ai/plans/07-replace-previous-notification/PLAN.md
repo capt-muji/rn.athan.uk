@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/prompts/replace-previous-notification.md` |
 | Planned at | `7c800915` (version 1.27.201), 2026-09-17 |
-| Planned by | Planning session on 2026-09-17, GLM 5.3 (replan; first plan `fc2dd139`, amended `b6e2df27`, both superseded by the owner's 13:20 replan order) |
+| Planned by | Planning session on 2026-09-17 (replan; first plan `fc2dd139`, amended `b6e2df27`, both superseded by the owner's 13:20 replan order) |
 | Needs first | nothing |
 | Steps | 1, DONE and merged (`45754e60`, 1.27.198); then the device proof, section 7, re-baselined and exact |
 | Device | OnePlus 3T: the installed 1.27.198 mock build is re-baselined first (one purge drive, three bells disarmed), then mock builds of `aaabb12a` and of `uat-2` head, then the final Asr-next mock build |
@@ -158,9 +158,9 @@ STOP, append what you saw to `LOG.md`, and ask the owner the question given, whe
     owns the proof?"
 11. **The phone is locked, off the cable, or adb hangs twice.** Ask: "Please unlock the OnePlus 3T, keep it
     on the cable and on its home screen, and reply when that is done."
-12. **The `vision` subagent (GLM 5.3 Flash) gives an answer the plan does not expect.** Ask: "vision read
+12. **The `vision` subagent gives an answer the plan does not expect.** Ask: "vision read
     `<file>` as `<answer>`; the plan expects `<expected>`. What do I do?"
-13. **A Code Reviewer (GLM 5.3) finding that section 10 does not answer word for word.** Ask: "The
+13. **A Code Reviewer finding that section 10 does not answer word for word.** Ask: "The
     reviewer asks: `<finding in its words>`. The plan gives no fix for it. Do you want it applied (the
     plan is then refreshed first), or shall I merge without it?"
 14. **Anything that would touch visuals, a prayer time, `releases.json`, the `uat` branch or EAS.** Ask:
@@ -312,10 +312,10 @@ adaptation.
 - **Concurrency and update trace:** section 4.3. The single-driver rule (section 2.2, item 10) exists
   because two execution sessions shared this phone on 2026-09-17 and corrupted each other's phases
   (LOG.md, 12:07 and 12:36).
-- **Design review.** A Software Architect subagent (GLM 5.3) reviewed the first plan's design on
+- **Design review.** A Software Architect subagent reviewed the first plan's design on
   2026-09-17 and called it sound; its findings are folded into decisions 2, 3 and 6 and into 7.1. This
   replan changes no code and no app behaviour, so its design check is the plan review itself
-  (section 11's table): a Code Reviewer (GLM 5.3) read the rewritten proof as the executor will and
+  (section 11's table): a Code Reviewer read the rewritten proof as the executor will and
   attacked every prediction, command and count against the code and the LOG's readings; what it found
   is recorded in `LOG.md`'s replan entry.
 - **Spike.** The risky parts of this proof were run for real before being written down: not in a scratch
@@ -339,7 +339,7 @@ in one session, start to end.
 
 Run this after the pre-flight, in ONE session, start to end. Every command runs from
 `/Users/muji/repos/rn.athan.uk`. The owner receives no screenshots: only the `vision` subagent
-(GLM 5.3 Flash) reads them.
+reads them.
 
 Measured while planning and the first proof, and used below: the bell column is `x=970`, rows 150
 pixels apart on both pages (Fajr 674, Sunrise 824, Dhuhr 974, Asr 1124, Magrib 1274, Isha 1424 on
@@ -604,7 +604,7 @@ them: finding 73's 50-notification cap cannot be reached by this app again. Writ
    reminder), `04:03:00` (Fajr) and `16:58:00` (Asr), the fixed day1 row of `mocks/simple.ts`. Any
    other tag, count or instant: section 2.2, item 4. Write `END_ALARMS=<n>` in `LOG.md`.
 6. `python3 ~/athan-device-sweep/session5/bin/devcheck.py shot ~/athan-device-sweep/session7/mock-final.png`.
-7. Spawn `vision` (GLM 5.3 Flash) with this prompt. Expected: `YES`. Any other answer: repeat items 4
+7. Spawn `vision` with this prompt. Expected: `YES`. Any other answer: repeat items 4
    and 6 once (a fresh cold launch re-seeds Asr next); still not `YES`: section 2.2, item 12.
 
    ```text
@@ -621,7 +621,7 @@ them: finding 73's 50-notification cap cannot be reached by this app again. Writ
     `svc power stayon usb` still set from 7.0 item 8. Do NOT run `svc power stayon false`.
 11. Spawn a `Reality Checker` subagent (a `general` subagent), isolation `worktree`, no `model`, with
     the prompt `REALITY_CHECK` in section 11, and write its verdict in `LOG.md`. A final line
-    `evidence does not hold`: STOP and ask "Reality Checker (GLM 5.3) found `<its NOT PROVEN lines>`.
+    `evidence does not hold`: STOP and ask "Reality Checker found `<its NOT PROVEN lines>`.
     What do I do?".
 12. Only after a final line `evidence holds`: in `PLAN.md` section 6, replace the line
     `- [ ] Device proof: section 7 (specified)` with `- [x] Device proof: DONE`.
@@ -650,8 +650,8 @@ value measured:
 # Session 7 of the queue: each notification replaces the one before it, <DATE>
 
 The brief is `ai/prompts/replace-previous-notification.md`, planned in
-`ai/plans/07-replace-previous-notification/PLAN.md` by a GLM 5.3 planning session (design review: GLM 5.3
-Software Architect, "design sound"), executed on GLM 5.3 with a GLM 5.3 Code Reviewer on the commit.
+`ai/plans/07-replace-previous-notification/PLAN.md` by a planning session (design review: the planning session
+Software Architect, "design sound"), executed with a Code Reviewer on the commit.
 After the owner ordered the task replanned from scratch and executed once (2026-09-17, 13:20), the plan
 was rebuilt around the merged code and the proof re-run end to end in one session from a baseline the
 plan itself creates. `uat-2` ends at `<FINAL8>` (<VERSION>); the last suite run reported `<TESTS>`, at
@@ -777,11 +777,11 @@ unknown the baseline exists to remove.
 
 | Step | Agent type | Model | Isolation | Why | Prompt |
 | --- | --- | --- | --- | --- | --- |
-| Step 1 | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The commit's review, done at 1.27.198 (2 rounds, `merge`) | `steps/1-shared-tag-plugin.md`, part 9 |
-| Docs commit | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
-| 7.5 | `vision` | GLM 5.3 Flash | none | The executor cannot read images | 7.5 item 7 |
-| 7.5 | `Reality Checker` (a `general` subagent) | GLM 5.3 | `worktree` | Does the evidence prove every claim in section 8.1? | `REALITY_CHECK` below |
-| Any | `Test Results Analyzer` (a `general` subagent) | GLM 5.3 | `worktree` | Only when a full-suite run fails in a way section 10 does not cover; it reports the cause, then the executor STOPs | "Read `<log path>` in full and name the cause of each failing test, with file and line. Change nothing." |
+| Step 1 | `Code Reviewer` (a `general` subagent) | | `worktree` | The commit's review, done at 1.27.198 (2 rounds, `merge`) | `steps/1-shared-tag-plugin.md`, part 9 |
+| Docs commit | `Code Reviewer` (a `general` subagent) | | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
+| 7.5 | `vision` | | none | The executor cannot read images | 7.5 item 7 |
+| 7.5 | `Reality Checker` (a `general` subagent) | | `worktree` | Does the evidence prove every claim in section 8.1? | `REALITY_CHECK` below |
+| Any | `Test Results Analyzer` (a `general` subagent) | | `worktree` | Only when a full-suite run fails in a way section 10 does not cover; it reports the cause, then the executor STOPs | "Read `<log path>` in full and name the cause of each failing test, with file and line. Change nothing." |
 
 The prompt `REALITY_CHECK` (worktree isolation; it reads the main checkout's files by absolute path,
 which is why it must never run a git command):
@@ -802,7 +802,7 @@ missing>", then a final line "evidence holds" or "evidence does not hold".
 The final message of the execution session:
 
 ```text
-🤖  Model: GLM 5.3 (execution session)
+Execution session
 Time: <output of date '+%H:%M:%S %d.%m.%Y'>
 
 Session 7 is executed and waits for its audit. One merged commit, and a device proof run end to end in

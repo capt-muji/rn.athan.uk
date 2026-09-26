@@ -1,6 +1,6 @@
 # Audit: Session 15. Android home-screen widgets
 
-Auditor: the same GLM 5.3 session, acting as auditor per the owner's no-subagents instruction
+Auditor: the same session, acting as auditor per the owner's no-subagents instruction
 (vision used for every image). 2026-09-19.
 
 ## What was checked

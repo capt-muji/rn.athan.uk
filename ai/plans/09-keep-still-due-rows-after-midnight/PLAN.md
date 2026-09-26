@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/prompts/keep-still-due-rows-after-midnight.md` |
 | Planned at | `7289894a` (version 1.27.214), 2026-09-17; refreshed the same evening after the step 2 coverage stop |
-| Planned by | Planning session on 2026-09-17, GLM 5.3 (design review: Software Architect on GLM 5.3); replanned 2026-09-17, GLM 5.3, after the owner ordered the missing coverage test added |
+| Planned by | Planning session on 2026-09-17 (design review: Software Architect); replanned 2026-09-17, after the owner ordered the missing coverage test added |
 | Needs first | nothing |
 | Steps | 2, each one branch, one commit, one version; then the device proof, section 7 |
 | Device | OnePlus 3T: the installed 1.27.202 mock build is baselined (purge and disarm), then mock builds of `uat-2` head, then the final Asr-next mock build |
@@ -114,7 +114,7 @@ happens:
    `<prediction>`. What do I do?"
 5. **A break prints `BREAK NOT APPLIED` or `NOT AS EXPECTED`.** Ask: "break `<name>` did not behave
    as the plan says: `<that line>`. What do I do?"
-6. **A Code Reviewer (GLM 5.3) finding that section 10 does not answer word for word and that does
+6. **A Code Reviewer finding that section 10 does not answer word for word and that does
    not meet all three conditions of `EXECUTOR-BRIEF.md` section 4, item 8.** Ask: "The reviewer asks:
    `<finding in its words>`. The plan gives no fix for it. Do you want it applied (the plan is then
    refreshed first), or shall I merge without it?"
@@ -131,7 +131,7 @@ happens:
 11. **A logcat grep the plan names finds nothing (the sequence start, a Scheduled identifier, or a
     forbidden Cancelled line).** Ask: "The log at section 7 `<item>` does not hold `<the grep>`; what
     it holds instead is `<the closest lines>`. What do I do?"
-12. **The `vision` subagent (GLM 5.3 Flash) answers anything but YES on the retry.** Ask: "vision read
+12. **The `vision` subagent answers anything but YES on the retry.** Ask: "vision read
     `<file>` as `<answer>`; the plan expects YES. What do I do?"
 13. **Another session is driving the phone: a `ps` listing holds an `opencode` process this session
     does not own, or a file under `~/athan-device-sweep/session5/mockcheck/` changes that this
@@ -273,7 +273,7 @@ prove London unchanged; `shared/__tests__/constants.test.ts` pins the ceiling ar
   (rejected: two names with two contracts read clearer in the tests and give the breaks stable
   targets).
 - **Concurrency trace:** section 4.3.
-- **Design review.** A Software Architect subagent (GLM 5.3) attacked the design on 2026-09-17 and
+- **Design review.** A Software Architect subagent attacked the design on 2026-09-17 and
   returned "design flawed" on one finding, which this plan adopts as decision 5 and step 2 carries:
   the old `canStillFire` broke exactly the refusal path this session protects. Its finding 2 (the
   window retreat leaves the newest day unarmed briefly) became decision 8; finding 3 (two clock reads
@@ -314,7 +314,7 @@ merged; do not start the device proof until both are merged.
 
 Run this after the pre-flight with `<k>` = 3, in ONE session, start to end. Every command runs from
 `/Users/muji/repos/rn.athan.uk`. The owner receives no screenshots: only the `vision` subagent
-(GLM 5.3 Flash) reads them. Every silent alert posts on the Silent fallback channel, so nothing
+reads them. Every silent alert posts on the Silent fallback channel, so nothing
 sounds.
 
 Measured while planning and used below (session 7's audited end state, `AUDIT.md` of
@@ -428,7 +428,7 @@ Every tap is verified by the next `read`, which works while a sheet is open.
    `2026-09-26 01:30:00.000` (Friday's Isha), `2026-09-26 22:00:00.000` (Saturday's Magrib) and
    `2026-09-26 23:30:00.000` (Saturday's Isha): two list days, silent, no reminders. Anything else:
    section 2.2, item 7. Write `ARMED_ALARMS=4` in `LOG.md`.
-8. `devcheck.py shot ~/athan-device-sweep/session9/friday-list.png`. Spawn `vision` (GLM 5.3 Flash)
+8. `devcheck.py shot ~/athan-device-sweep/session9/friday-list.png`. Spawn `vision`
    with this prompt. Expected: `YES`. Any other answer: repeat the shot once (the countdown keeps
    rendering); still not `YES`: section 2.2, item 12.
 
@@ -461,8 +461,7 @@ Every tap is verified by the next `read`, which works while a sheet is open.
    then the tag count and instant list. Expected: `NOTIFICATION_EVENT` exactly 4, the same instants
    as 7.1 item 7 (both of Friday's alarms re-attempted, neither cancelled, Saturday's kept). Anything
    else: section 2.2, item 7. Write `ARMED_AFTER_RETURN=4` in `LOG.md`.
-6. `devcheck.py shot ~/athan-device-sweep/session9/after-midnight.png`. Spawn `vision` (GLM 5.3
-   Flash) with this prompt. Expected: `YES`, twice if needed, else section 2.2, item 12.
+6. `devcheck.py shot ~/athan-device-sweep/session9/after-midnight.png`. Spawn `vision` with this prompt. Expected: `YES`, twice if needed, else section 2.2, item 12.
 
    ```text
    Read the image at ~/athan-device-sweep/session9/after-midnight.png. It is a screenshot of a prayer
@@ -501,7 +500,7 @@ Every tap is verified by the next `read`, which works while a sheet is open.
    and `2026-09-27 22:30:00.000` (Sunday's): the window moved on the moment Friday's rows passed, and
    Friday's alarms are gone. Anything else: section 2.2, item 7. Write `AFTER_ROWS_ALARMS=4` in
    `LOG.md`.
-2. `devcheck.py shot ~/athan-device-sweep/session9/saturday-list.png`. Spawn `vision` (GLM 5.3 Flash)
+2. `devcheck.py shot ~/athan-device-sweep/session9/saturday-list.png`. Spawn `vision`
    with this prompt. Expected: `YES`, twice if needed, else section 2.2, item 12.
 
    ```text
@@ -534,7 +533,7 @@ Every tap is verified by the next `read`, which works while a sheet is open.
    run `svc power stayon false`. The owner's real data stays in `athan-storage`.
 8. Spawn a `Reality Checker` subagent (a `general` subagent), isolation `worktree`, no `model`, with
    the prompt `REALITY_CHECK` in section 11, and write its verdict in `LOG.md`. A final line
-   `evidence does not hold`: STOP and ask "Reality Checker (GLM 5.3) found `<its NOT PROVEN lines>`.
+   `evidence does not hold`: STOP and ask "Reality Checker found `<its NOT PROVEN lines>`.
    What do I do?"
 9. Only after a final line `evidence holds`: in `PLAN.md` section 6, replace the line
    `- [ ] Device proof: section 7` with `- [x] Device proof: DONE`.
@@ -560,9 +559,9 @@ value measured:
 # Session 9 of the queue: yesterday's still-due rows stay on screen and keep their alarms, <DATE>
 
 The brief is `ai/prompts/keep-still-due-rows-after-midnight.md`, planned in
-`ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` by a GLM 5.3 planning session (design review:
-Software Architect on GLM 5.3, whose finding about `canStillFire` is part of the change), executed on
-GLM 5.3 with a GLM 5.3 Code Reviewer on every commit. `uat-2` ends at `<FINAL8>` (<VERSION>); the
+`ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` by a planning session (design review:
+Software Architect, whose finding about `canStillFire` is part of the change), executed
+with a Code Reviewer on every commit. `uat-2` ends at `<FINAL8>` (<VERSION>); the
 last suite run reported `<TESTS2>`, at 100% statements, branches, functions and lines.
 
 ## 74. CLOSED: a day stays current until its last readable row has passed
@@ -691,15 +690,15 @@ exactly the unknown the baseline exists to remove.
 
 | Step | Agent type | Model | Isolation | Why | Prompt |
 | --- | --- | --- | --- | --- | --- |
-| Step 1 | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The commit's review | `steps/1-sequence-starts-from-still-due-day.md`, part 9 |
-| Step 2 | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The commit's review | `steps/2-alarm-window-and-refusal-records.md`, part 9 |
-| Docs commit | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
-| 7.1, 7.2, 7.3 | `vision` | GLM 5.3 Flash | none | The executor cannot read images | The three prompts in section 7 |
-| 7.3 | `Reality Checker` (a `general` subagent) | GLM 5.3 | `worktree` | Does the evidence prove every claim in section 8.1? | `REALITY_CHECK` below |
-| Any | `Test Results Analyzer` (a `general` subagent) | GLM 5.3 | `worktree` | Only when a full-suite run fails in a way section 10 does not cover; it reports the cause, and the executor then STOPs | "Read `<log path>` in full and name the cause of each failing test, with file and line. Change nothing." |
+| Step 1 | `Code Reviewer` (a `general` subagent) | | `worktree` | The commit's review | `steps/1-sequence-starts-from-still-due-day.md`, part 9 |
+| Step 2 | `Code Reviewer` (a `general` subagent) | | `worktree` | The commit's review | `steps/2-alarm-window-and-refusal-records.md`, part 9 |
+| Docs commit | `Code Reviewer` (a `general` subagent) | | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
+| 7.1, 7.2, 7.3 | `vision` | | none | The executor cannot read images | The three prompts in section 7 |
+| 7.3 | `Reality Checker` (a `general` subagent) | | `worktree` | Does the evidence prove every claim in section 8.1? | `REALITY_CHECK` below |
+| Any | `Test Results Analyzer` (a `general` subagent) | | `worktree` | Only when a full-suite run fails in a way section 10 does not cover; it reports the cause, and the executor then STOPs | "Read `<log path>` in full and name the cause of each failing test, with file and line. Change nothing." |
 
 Only the agents listed may be used, and no `model` override is ever passed: every subagent inherits
-GLM 5.3, except `vision`, which runs on GLM 5.3 Flash.
+the session's own model, except `vision`, which runs the vision model.
 
 The prompt `REALITY_CHECK` (worktree isolation; it reads the main checkout's files by absolute path,
 which is why it must never run a git command):
@@ -720,7 +719,7 @@ line that does. Reply with one line per claim, "PROVEN: <claim>: <evidence>" or 
 The final message of the execution session:
 
 ```text
-🤖  Model: GLM 5.3 (execution session)
+Execution session
 Time: <output of date '+%H:%M:%S %d.%m.%Y'>
 
 Session 9 is executed and waits for its audit. Two merged commits, and a device proof run end to end

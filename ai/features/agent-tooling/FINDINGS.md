@@ -114,7 +114,7 @@ The owner can overturn any ruling by editing this file and `ai/AGENTS.md` §6.
 
 ### Measured on the iPhone 17 Pro Max simulator (AB4F4466-05CC-4C7F-A451-187E1DC6C6A0), 2026-09-18
 
-| Proof | What was opened | Screenshot | vision's answer (GLM 5.3 Flash) |
+| Proof | What was opened | Screenshot | vision's answer |
 | --- | --- | --- | --- |
 | A: plain link | `athan://expo-development-client/?url=http%3A%2F%2F127.0.0.1%3A8081` | `devlauncher-A-default.png` | no dev FAB, dev-menu onboarding sheet over the lower screen (see the divergence note), app up behind it, countdown 1m 2s |
 | B: both flags | `…&disableFab=1&disableAutoLaunch=1` (same link, flags appended) | `devlauncher-B-flags.png` | no dev FAB, no dev menu, app up, countdown 1m 32s |

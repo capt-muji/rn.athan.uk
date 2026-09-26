@@ -1,6 +1,6 @@
 # Execution log: Session 8
 
-## Execution entries, 2026-09-17 (GLM 5.3, no subagents per the owner's instruction)
+## Execution entries, 2026-09-17 (no subagents per the owner's instruction)
 
 **18:04, pre-flight round 1 caught three carried-script bugs** (fixed in 1.27.207, `7c029c6f`):
 an invalid BSD-grep pattern in the tree check, a devicectl cold-start without a retry, and
@@ -75,7 +75,7 @@ Screenshots `00-baseline.png` through `05-after-p2.png` sit in `~/athan-device-s
 as corroboration; no claim rests on them. Round-2 evidence is preserved in the timestamped
 syslog rotations beside them.
 
-## Planning entry, 2026-09-17 (GLM 5.3)
+## Planning entry, 2026-09-17
 
 The owner instructed, before planning began: "Do everything yourself. Do not use any subagents for
 now." Every phase of this session therefore ran without subagents, including the plan review the

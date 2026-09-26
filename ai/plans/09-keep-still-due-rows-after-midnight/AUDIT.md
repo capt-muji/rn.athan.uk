@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Audited by | Audit session on GLM 5.3, 18 September 2026 |
+| Audited by | Audit session, 18 September 2026 |
 | Verdict | PASS, nothing to fix |
 | Range audited | `origin/uat-2..uat-2` at `3a0f6b6f`: `e66ab502`, `248d971d`, `c6035802`, `7289894a`, `85f4d9dd`, `407894ea`, `eb7bdde5`, `88be6ef0`, `59d33221`, `3a0f6b6f` |
 | Row | 5 set to DONE; `ai/prompts/README.md` row 9 applied from the plan's section 8.2 |
@@ -62,7 +62,7 @@ was restored afterwards.
 `Tests: 2 skipped, 4528 passed, 4530 total` (the plan's named no-native-folders variant), and
 `Statements/Branches/Functions/Lines` all 100% (3968/3968, 1712/1712, 826/826, 3565/3565).
 
-**Reviews.** `LOG.md` records a `merge` verdict from a Code Reviewer (GLM 5.3) for each step commit,
+**Reviews.** `LOG.md` records a `merge` verdict from a Code Reviewer for each step commit,
 one round each. The executed docs commit's first round was `fix first` on one LOG.md wording; the
 executor applied it under `EXECUTOR-BRIEF.md` section 4, item 8's three conditions (its own LOG
 prose, nothing the plan specified, every criterion still met) and recorded both the finding and the
@@ -90,7 +90,7 @@ with the plan's own two dump commands and scripts:
   purge's process (PID 3893) beside the first purge's 9 from two processes, which is the
   double-delivery over-count the owner ruled on and `LOG.md` records; the operative reading, the
   zero after-purge dump, is verified above. `PURGE_POSTS=4` is honest.
-- The three screenshots re-read by `vision` (GLM 5.3 Flash) with the plan's exact questions:
+- The three screenshots re-read by `vision` with the plan's exact questions:
   `friday-list.png` YES (header Fri, 25 Sep 2026; Magrib 00:40; Isha 01:30), `after-midnight.png`
   YES (same header and rows, countdown names Magrib), `saturday-list.png` YES (header Sat,
   26 Sep 2026, countdown names Fajr).
@@ -122,4 +122,4 @@ None. Three observations, none a defect:
 
 PASS. Row 5 of `ai/plans/README.md` is DONE, `ai/prompts/README.md` row 9 carries the plan's
 section 8.2 text, and this audit's docs commit (version 1.27.218) was reviewed by a Code Reviewer
-(GLM 5.3) and merged `--no-ff` before `uat-2` was pushed. The scratch worktrees were removed.
+and merged `--no-ff` before `uat-2` was pushed. The scratch worktrees were removed.
