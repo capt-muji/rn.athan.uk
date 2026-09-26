@@ -135,12 +135,14 @@ It must print `1`. Any other count means NEEDS REPLAN.
 
 7. **Breaks.** Save as `$TMPDIR/breaks-23-4.sh` and run with `bash` from the repository root.
 
+   Every path in it is relative to the repository root, and it runs from that root, so an audit session can run it
+   from its own scratch worktree.
+
    ```bash
    #!/bin/bash
    # Every break edits a file the PLAN itself fixes, restores it afterwards, and
    # counts a substitution that changed nothing as NOT caught.
    set -u
-   cd /Users/muji/repos/rn.athan.uk || exit 1
    CAUGHT=0
    TOTAL=0
 
