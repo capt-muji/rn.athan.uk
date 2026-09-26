@@ -234,6 +234,25 @@ DURABLE LESSON: **an iOS notification level can be requested and silently not gr
 correct, the native content object reads correct, and nothing throws. The entitlements file is the only
 place the truth appears, so check it whenever a level, not just a permission, is being relied on.
 
+## The mute switch cannot be overridden by the user either, on either platform (tested 2026-09-26)
+
+The owner's closing question: granted the app cannot bypass the silent switch, can the USER permit it
+somewhere? Tested on the XS with the silent switch ON and DND OFF, so Time Sensitive was the only thing in
+play: the notification appeared on the lock screen, with **no sound and no screen wake**. Time Sensitive
+governs when a notification is delivered and how long it stays, never whether the mute switch applies.
+
+There is no such setting on either platform:
+
+- **iOS**: no user-facing override exists. The mute switch is treated as an unambiguous instruction, and
+  only the Critical Alerts entitlement can ignore it, which is developer-side and Apple-granted, not
+  something a user can enable.
+- **Android**: no user-facing override for the notification path. The ringer-affected stream mask is
+  system state, and the only escape is an app playing its own audio on the alarm stream, which is exactly
+  what the Clock does and what this session declined to replicate.
+
+So the matrix below is final, and the blank cell is by design on both platforms rather than a gap left
+unclosed.
+
 ## Where D1 ends up, both platforms
 
 | Mode | Android | iOS |
