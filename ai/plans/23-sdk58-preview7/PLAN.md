@@ -258,8 +258,8 @@ measurements. What the review changed, in three places:
 - [x] Step 1: SDK 58 preview.7, both patches rebuilt, and the `frame()` split (specified) — DONE in `020d88fb`
 - [x] Step 2: React 19.3.0 and React Native 0.88.0-rc.2 (specified) — DONE in `f51b6e54`
 - [x] Step 3: Reanimated 4.7.0 and worklets 0.13.0 (specified) — DONE in `b6336e8c`
-- [ ] Step 4: pin `@expo/ui` and `expo-widgets` to 58.0.5 (specified)
-- [ ] Step 5: the guard that loads the widget runtime, and the records (specified)
+- [x] Step 4: pin `@expo/ui` and `expo-widgets` to 58.0.5 (specified) — DONE in `5682b8fa`
+- [x] Step 5: the guard that loads the widget runtime, and the records (specified) — DONE in `9bdd7d4a`
 
 Each step's detail is in `steps/<k>-<name>.md`. Steps 1 to 3 keep the files they already had; this replan rewrote
 steps 4 and 5 only, as `PLANNER-BRIEF.md` section 9 requires.
