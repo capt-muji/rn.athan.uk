@@ -3,8 +3,8 @@
 | Field | Value |
 | --- | --- |
 | Plan | `ai/plans/06-alert-integrity/PLAN.md` |
-| Audited by | Claude Opus 5, audit session on 2026-09-16 |
-| Executed by | GLM 5.3, with a Code Reviewer (GLM 5.3) on every step commit (section 1.5 on the docs commit) |
+| Audited by | Audit session on 2026-09-16 |
+| Executed by | the session, with a Code Reviewer on every step commit (section 1.5 on the docs commit) |
 | Range audited | `origin/uat-2..uat-2` at `64d3da85`: 8 commits (3 step commits, their 3 merges, 1 docs commit, its merge) |
 | Added by this audit | `7b66d8cf` and its merge `0f6ded1d` (finding A), `575272f8` and its merge `97a3c3c4` (finding C), then this audit's own docs commit and merge |
 | Scratch worktree | `~/athan-device-sweep/worktrees/audit-6`, detached at `64d3da85`, `node_modules` symlinked |
@@ -114,7 +114,7 @@ and coverage agree.
 
 ### 1.5 Reviews
 
-`LOG.md` records `Code Reviewer (GLM 5.3), verdict merge, 1 round` for each of the three step commits, with no
+`LOG.md` records `Code Reviewer, verdict merge, 1 round` for each of the three step commits, with no
 findings on steps 1 and 2 and one cosmetic note on step 3 that did not hold up the merge. No reviewer asked for a fix,
 so `PLAN.md` section 10.2 ("Anticipated review fixes: None") was never reached and no fix outside the plan was
 written. The `executed` docs commit was reread here in full rather than taken on its record; that reread produced
@@ -144,7 +144,7 @@ reproduces what the session saw. Turning Isha on added exactly four instants —
 the owner's other three alarms throughout. The changed scheduling code therefore arms and cancels exactly on the real
 OS.
 
-The four screenshots were read here directly, not taken from the `vision (GLM 5.3 Flash)` answers `LOG.md` records.
+The four screenshots were read here directly, not taken from the `vision` answers `LOG.md` records.
 Each agrees with what `vision` reported:
 
 | File | `vision` said | Read here |
@@ -231,7 +231,7 @@ filled against the committed text showed these three lines and nothing else.
 
 **Fixed** on `fix/audit-6-records-sha-backticks`, commit `7b66d8cf`, version 1.27.181, merged as `0f6ded1d`. The
 pre-commit hook reported `Tests: 4494 passed, 4494 total` at 100% on all four measures. A `Code Reviewer`
-(Claude Opus 5, isolation `worktree`) reviewed it in 1 round with no findings, verdict `merge`; it confirmed the match
+(isolation `worktree`) reviewed it in 1 round with no findings, verdict `merge`; it confirmed the match
 independently by extracting section 8.1's template, filling the placeholders and comparing checksums, and confirmed
 that stripping every backtick from the parent and the new blob leaves two byte-identical files, so nothing but those
 three pairs changed.
@@ -273,7 +273,7 @@ file's end; `c8754092` only inserted lines, so one became the separator before t
 at the end.
 
 This audit's own first draft of section 1.5 quoted the reviewer's note that sits beside that sentence and passed over
-the sentence itself without checking it; the `Code Reviewer` (Claude Opus 5) on the audit commit caught it. It is the
+the sentence itself without checking it; the `Code Reviewer` on the audit commit caught it. It is the
 same class of defect as finding A — a records claim that is not true — in the same session's records, and it is the
 reason section 1.8 above now checks `LOG.md`'s own statements rather than quoting them.
 
@@ -282,7 +282,7 @@ record's correcting sentence now leads with the correction, says the blank line 
 audit session removed it, and the file ends with a single newline. The evidence is in the commit message:
 `c8754092`, the docs commit that
 appended the record, has numstat `24 0` for `LOG.md` — 24 insertions, no deletions — so nothing was removed then. A
-`Code Reviewer` (Claude Opus 5) reviewed it over three rounds, verdict `merge`, re-deriving that numstat and the
+`Code Reviewer` reviewed it over three rounds, verdict `merge`, re-deriving that numstat and the
 newline comparison itself; its first round asked for the correction to be front-loaded so no reading of the sentence
 could affirm the claim it exists to correct.
 

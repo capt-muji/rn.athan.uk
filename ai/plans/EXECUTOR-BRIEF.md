@@ -40,25 +40,26 @@ dictates rather than specifies, the dictation wins**, whatever the rest of this 
 
 **This brief and the plan come first** (owner, 2026-09-15). This session also loads the harness's own instructions and
 the project's memory notes. Where they differ from this brief, this brief wins:
-- Use only the subagents the plan names, and invoke no skill the plan does not name, beyond the `athan-next` skill
-  that chose this step.
-- A subagent runs the SAME model as this session, always, for every task including reading an image (owner,
-  2026-09-24). Never reach a different model through a subagent.
+- **Subagents are banned, except `vision`** (owner, 2026-09-26). You do every part of this job yourself, including
+  every code review. The one exception is reading an image, because that is a capability that differs between the
+  models running this programme: see the image rule below. Invoke no skill the plan does not name, beyond the
+  `athan-next` skill that chose this step.
 - Stop and ask as this brief says, although a memory note says to run without check-ins.
 - Never run `sleep` in the foreground. Start every long command in the background (the shell tool's `background`
   parameter), and wait for the notification that it finished. A background command may wait inside itself,
   but only in a loop of `sleep 15` or shorter that checks its condition on every pass (`ai/AGENTS.md` section 7).
 - The git, commit, review and `tsc` steps in this brief are the owner's instruction for this programme. They replace
   `ai/AGENTS.md` sections 7, 10 and 13 where those differ.
-- You cannot see images. Never open a `.png`, `.jpg` or video frame with Read. Ask the `vision` subagent, giving it the
-  file path and the plan's exact question.
+- **Images.** If your model can see images, read the file yourself. If it cannot, call the `vision` subagent with the
+  file path and the plan's exact question, and rely on its report. Never guess what an image shows, and never claim
+  to have checked one you did not.
 - Never create or edit anything in the harness's own configuration, under `~/.config/opencode/` or `~/.claude/`:
   memory notes, agents or settings. Record what you learn in the plan folder's `LOG.md`.
 
 **Never name a model** (owner, 2026-09-24, replacing the 2026-09-15 "show the model" rule). The harness chooses the
 model, and these pages are read by different models across the life of this build, so a model name dates the page
 and misleads the next reader. Write `Execution session` where a model name used to go, in responses, headings and
-tables alike. A subagent is named by its job, never by its model, because it always runs this session's own.
+tables alike.
 
 **Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
 put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
@@ -132,8 +133,8 @@ whale emoji and two spaces (`🐋  `).
     Where the plan gives code verbatim, that code is used verbatim.
   - Comments explain why, never what.
   - Every commit is one step: one branch, one version bump, one review, one merge.
-- **Reviews.** Every commit is reviewed by the `Code Reviewer` subagent the plan names, with the plan's prompt, before
-  it merges.
+- **Reviews.** Every commit is reviewed by you, before it merges, against the step's review checklist: read your own
+  diff back cold, as a stranger to it, and fix what you find.
 - **The owner's device.**
   - The owner receives no screenshots.
   - Never run `pm clear` or uninstall the app.
@@ -207,22 +208,21 @@ Do these for each step in the plan, in order. Do not start a step until the prev
    commit message to `$TMPDIR/msg-<step>.txt`, with `<VERSION>` replaced by the version, and commit with
    `git commit -F $TMPDIR/msg-<step>.txt` in the background (section 3). In the log, the last `Tests:` line must end
    `passed, <n> total`, and four `100%` coverage lines must be present.
-8. **Review.** Spawn the subagent the plan names, with isolation `worktree` and the plan's prompt word for word, with
-   the commit's sha filled in. Never pass `model`.
-   - **"Merge":** go on.
-   - **"Fix first":**
-     - Apply a fix when the plan's section 10 gives that exact fix. Amend the commit (it is not merged), then send the
-       SAME reviewer, with SendMessage, the new sha and the fixes made.
+8. **Review.** Review the commit yourself, against the step's review checklist, reading `git show <sha>` back cold as
+   a stranger who did not write it. Check every contract the plan gave, every acceptance criterion, the owner's
+   rules, and that nothing beyond the step changed. Then judge it:
+   - **Nothing to fix:** go on.
+   - **Something to fix:**
+     - Apply a fix when the plan's section 10 gives that exact fix. Amend the commit (it is not merged), then reread
+       the amended diff the same way.
      - Apply a fix, without asking, when ALL of these hold: it touches only code the plan did not give verbatim; it
        changes no name, signature, log-line text, behaviour or test the plan specified; and it leaves every acceptance
-       criterion met. That is the reviewer doing the job this programme gives it over code you wrote. Run the step's
-       break script again and confirm it still ends `ALL AS EXPECTED: 1`, because an edit to your own code can move
-       the text a break substitutes. Then write the finding and what you did in `LOG.md` for the audit, amend, and
-       send the same reviewer the new sha.
-     - Any other finding: STOP. Give the owner each finding in the reviewer's words. If the owner wants any of them
+       criterion met. That is this review doing its job over code you wrote. Run the step's break script again and
+       confirm it still ends `ALL AS EXPECTED: 1`, because an edit to your own code can move the text a break
+       substitutes. Then write the finding and what you did in `LOG.md` for the audit, and amend.
+     - Any other finding: STOP. Give the owner each finding in your own words. If the owner wants any of them
        applied, that is NEEDS REPLAN (section 4a, then section 4b).
-     - Do not remove the reviewer's worktree before its final verdict.
-   - **Two rounds without "merge":** STOP and ask. A review is a gate, not a conversation.
+   - **Two passes without a clean read:** STOP and ask. A review is a gate, not a conversation.
 9. **Merge.** Merge into `uat-2` with the plan's command and message.
 10. **Done when.** Run the step's checks. Tick the step in the plan's section 6 checklist (`- [x] Step k: DONE in
     <sha>`). Append to `LOG.md`:
@@ -254,9 +254,8 @@ Do these for each step in the plan, in order. Do not start a step until the prev
    `package.json`, and, for EXECUTED, `ai/features/uat-2/AUDIT-FINDINGS.md` when the plan's section 8 changes it.
 4. **Commit.** Use `git commit -F $TMPDIR/msg-docs.txt` in the background, with the message
    `<VERSION> - docs(plans): session <N> <replan|blocked|executed|progress>: <the reason in one line>`.
-5. **Review.** `Code Reviewer`, isolation `worktree`, prompt: "Run git checkout --detach <sha>. Review this docs
-   commit: the status row and LOG.md match what happened in this session, and nothing else changed. Reply merge or fix
-   first." Handle its verdict as section 4, item 8 says.
+5. **Review.** Read `git show <sha>` back yourself: the status row and `LOG.md` match what happened in this session,
+   and nothing else changed. Handle what you find as section 4, item 8 says.
 6. **Merge.** `git checkout uat-2 && git merge --no-ff <branch> -m "Merge <branch> into uat-2: session <N> <kind>, reviewed"`.
 7. **Do not push.**
 
@@ -287,9 +286,23 @@ Do these for each step in the plan, in order. Do not start a step until the prev
   then launch. If adb prints "InputChannel is not initialized", or hangs twice, STOP and ask the owner to reboot the
   phone.
 - **Reading the screen.** `uiautomator dump` fails while the countdown animates. Use the logcat lines and alarm dumps
-  the plan names. When the plan needs a screenshot read, take it with `devcheck.py shot <path>` and ask the
-  subagent the plan's exact question. Never send a screenshot to the owner; describe what
-  `vision` reported.
+  the plan names. When the plan needs a screenshot read, take it with `devcheck.py shot <path>`, then read it
+  yourself if your model can see images, or ask the `vision` subagent the plan's exact question if it cannot. Never
+  send a screenshot to the owner; describe what the image showed.
+- **Navigating by sight, when nothing else reaches the screen.** Reach for this only after the structured readers
+  fail: `mobile-mcp`'s element list and Maestro's inspect return refs that survive a layout change, so they come
+  first. The cases that defeat them are real and this repo has met them: an OEM dialog outside the app's hierarchy
+  (ColorOS's install-scan prompt, session 18), a surface `uiautomator dump` will not serve, and a physical iPhone,
+  where the local tooling drives no taps at all. Then the loop is: screenshot, read the coordinates of the one
+  control you want, tap it, and screenshot again to confirm the tap landed. Three rules make it trustworthy:
+  - **Verify after every tap.** A coordinate is a guess about a moving screen, so an unverified tap proves nothing
+    and can land anywhere. The confirming screenshot is part of the step, not an optional extra.
+  - **Ask for one control at a time**, with the question naming what to find and what to report ("give the centre
+    x,y of the ALLOW button, and say if it is absent"). A list of every clickable box invites a tap on the wrong one.
+  - **Coordinates are per device and per density,** so they are never reused between phones or across a display-size
+    change, and never written into a plan as a constant. Re-read them each run.
+  This is a fallback for reaching a screen, never a way to prove what is on one: a claim in the records still needs a
+  logcat line, an alarm dump or another measurement.
 - **Saving evidence.** Save the evidence where the plan says, under `~/athan-device-sweep/session<N>/`.
 - **Clean-up.** At the end, turn automatic time back on and leave the phone on the build the plan names.
 
@@ -326,7 +339,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 | The hook fails only because `audioMatrix.test.ts` timed out | Wait for the load to fall (section 3) and commit again, up to 3 times |
 | `versionLockstep.test.ts` fails | The three version numbers differ: set all three to the step's version and commit again |
 | Jest hangs at 0% CPU | Kill it and rerun once; a second hang means STOP |
-| A reviewer asks for a fix the plan's section 10 does not give | Section 4, item 8: apply it yourself ONLY when all three of its conditions hold, and record it in `LOG.md`; otherwise STOP and ask |
+| Your review finds a fix the plan's section 10 does not give | Section 4, item 8: apply it ONLY when all three of its conditions hold, and record it in `LOG.md`; otherwise STOP and ask |
 | `git merge` reports a conflict | `git merge --abort`, then STOP and ask |
 | The owner's answer changes a step's code, tests or commands | NEEDS REPLAN; never write the change yourself |
 | A build script prints `FAILED` | STOP and ask. Quote the line |
@@ -339,7 +352,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 2. **Status.** Set the row in `ai/plans/README.md` to EXECUTED. Never change the table in `ai/prompts/README.md`: the
    audit session does.
 3. **Docs commit.** Make an `executed` docs commit (section 4b). Do not push.
-4. **Worktrees.** Once every verdict is in, remove the scratch worktrees your reviewers used:
-   `git worktree remove --force <path>`, for this session's worktrees only.
+4. **Worktrees.** Remove any scratch worktree this session made: `git worktree remove --force <path>`, for this
+   session's worktrees only.
 5. **Report.** Report to the owner as the plan's section 12 says. End with the four-line handoff from the
    `athan-next` skill, section 5.

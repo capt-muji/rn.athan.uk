@@ -198,8 +198,7 @@ not type the code.
    full pass (owner, 2026-09-16). An operation that finds the generation moved
    touches nothing: not the settings, not the alarms, not the mark.
 
-   Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-   ```
+      ```
 
    ```bash
    git commit -F $TMPDIR/msg-6b-2.txt

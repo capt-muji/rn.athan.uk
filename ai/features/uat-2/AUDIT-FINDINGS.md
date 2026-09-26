@@ -3408,7 +3408,7 @@ directly, which is the `opensrc` role: `node_modules/jotai/vanilla/utils.js` for
 
 # Session 4, part 1: what was taken and what was deferred
 
-Session 4 ran on 2026-09-12 at Opus 5, starting from 1.25.6 and closing at **1.25.30**. Twenty
+Session 4 ran on 2026-09-12, starting from 1.25.6 and closing at **1.25.30**. Twenty
 four version-bumped commits, each on its own branch off `uat-2` and merged back with `--no-ff`,
 pushed as it went. The suite moved **1015 to 1035 tests, 42 to 43 suites, and never went down**.
 The session did not finish the document; what is left is listed below and is the next session's
@@ -3528,7 +3528,7 @@ labelled destructive button rather than the only button the screen has.
 
 # Session 5: what was taken, what was corrected, what is left
 
-Session 5 ran on 2026-09-12 at Opus 5, starting from **1.25.34** and closing at **1.25.92** —
+Session 5 ran on 2026-09-12, starting from **1.25.34** and closing at **1.25.92** —
 113 commits, each on its own branch off `uat-2`, merged `--no-ff` and pushed. The suite moved
 **1,036 to 1,194 tests and 43 to 50 suites, and never went down.** The OnePlus 3T ended the
 session green on `yarn check:device`, on the two channels and the one armed alarm it started
@@ -5654,7 +5654,7 @@ whose next prayer is Asr, a minute away, every time the app is opened.
 # Session 6 of the queue: findings 79, 80 and 82, 16 September 2026
 
 The brief is `ai/prompts/alert-integrity.md`, planned by Claude in `ai/plans/06-alert-integrity/PLAN.md` and executed
-by GLM 5.3, with a GLM 5.3 Code Reviewer on every commit. `uat-2` ends at `5881b9f2` (1.27.179); the last suite run
+by the session, with a Code Reviewer on every commit. `uat-2` ends at `5881b9f2` (1.27.179); the last suite run
 reported `Tests:       4494 passed, 4494 total`, at 100% statements, branches, functions and lines.
 
 ## 79. CLOSED: Open Settings always answers
@@ -5698,7 +5698,7 @@ to EAS, and `releases.json` is untouched. The evidence is in `~/athan-device-swe
 # Session 6b of the queue: finding 81, 16 September 2026
 
 The brief is `ai/prompts/alert-all-or-nothing.md`, planned by Claude in `ai/plans/06b-alert-all-or-nothing/PLAN.md`
-and executed by GLM 5.3, with a GLM 5.3 Code Reviewer on every commit. The last code commit is `8dde8df3`
+and executed by the session, with a Code Reviewer on every commit. The last code commit is `8dde8df3`
 (1.27.190), and the records commit that carries this note follows it; the last suite run reported
 `Tests:       4501 passed, 4501 total`, at 100% statements, branches, functions and lines.
 
@@ -5836,9 +5836,9 @@ reported `Tests: 4511 passed, 4511 total`.
 # Session 9 of the queue: yesterday's still-due rows stay on screen and keep their alarms, 18 September 2026
 
 The brief is `ai/prompts/keep-still-due-rows-after-midnight.md`, planned in
-`ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` by a GLM 5.3 planning session (design review:
-Software Architect on GLM 5.3, whose finding about `canStillFire` is part of the change), executed on
-GLM 5.3 with a GLM 5.3 Code Reviewer on every commit. `uat-2` ends at `88be6ef0` (1.27.216); the
+`ai/plans/09-keep-still-due-rows-after-midnight/PLAN.md` by a planning session (design review:
+Software Architect, whose finding about `canStillFire` is part of the change), executed
+with a Code Reviewer on every commit. `uat-2` ends at `88be6ef0` (1.27.216); the
 last suite run reported `Tests:       4530 passed, 4530 total`, at 100% statements, branches, functions and lines.
 
 ## 74. CLOSED: a day stays current until its last readable row has passed

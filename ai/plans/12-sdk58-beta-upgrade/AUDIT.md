@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Audited by | Audit session on GLM 5.3, 2026-09-18 |
+| Audited by | Audit session, 2026-09-18 |
 | Scope | Every commit on `origin/uat-2..uat-2` (16 commits: five step commits, their five merges, the owner-ruled tls13 fix and its merge, the executed and progress docs commits and their merges) |
 | Scratch worktree | `~/athan-device-sweep/worktrees/audit-12` at `uat-2`, `node_modules` symlinked from the main checkout, removed after the audit |
 | Verdict | PASS. Row 6 set DONE. `uat-2` pushed. |
@@ -68,7 +68,7 @@ runs them (the executor's hook lines recorded 4535 passed there).
 
 ### 1.5 Reviews
 
-`LOG.md` records a MERGE verdict from Code Reviewer (GLM 5.3) for every step commit, one round
+`LOG.md` records a MERGE verdict from Code Reviewer for every step commit, one round
 each, no findings. The tls13 fix took two rounds: round 1 asked for the LOG record the commit
 message cites; the amended commit satisfied it. I reread both docs commits myself
 (`94ff5641` applies the records text, the EXECUTED row and the LOG device-proof record;
@@ -93,7 +93,7 @@ numbers myself:
 - `runtimeversion.txt`: zero `runtimeversion` lines, as the plan predicts (no policy set).
 - The phone, read with read-only adb: `auto_time` prints 1, `com.mugtaba.athan` versionName
   1.27.227 (the mock build of the merged head), Athan's `MainActivity` is the focused window.
-- Screenshots: vision (GLM 5.3 Flash) re-read them for this audit. `shade-before-open.png`: the
+- Screenshots: vision re-read them for this audit. `shade-before-open.png`: the
   Athan notification is text-only, no square image (matches the records' baseline).
   `shade-after-open.png` and `fire-foreground.png`: title "Asr now", a roughly 95x95 mosque-art
   square on the notification's right, absent in the before pair (matches the records, including
@@ -132,7 +132,7 @@ verified above. The row in `ai/plans/README.md` read EXECUTED before this audit 
   garbage-collected; nothing references it.
 - **F2, process, claim verified.** Plan 7.7 item 2 asks vision one question about
   `overlay-after-toggle.png`; the executor substituted its own row-position comparison and did not
-  record a vision answer. My own vision (GLM 5.3 Flash) read initially found "no highlight box"
+  record a vision answer. My own vision read initially found "no highlight box"
   because the overlay shows no literal box: it hides every row but the selected one and draws the
   hero for it. A second, full-screen read confirmed the selected Isha row at y 1402 to 1445, the
   true post-toggle position, with the "4h 40m" hero matching Isha's countdown. The claim in the
@@ -173,7 +173,7 @@ measured-form adjustment the owner ruled for the findings text: the row says `wi
 
 | Field | Value |
 | --- | --- |
-| Audited by | Audit session on GLM 5.3, 2026-09-18 |
+| Audited by | Audit session, 2026-09-18 |
 | Scope | `e2b1f784..9f385d95` on `uat-2`: the revert `19573d93` (1.27.231) with merge `7a9650bd`, the docs commit `84b2bd4d` (1.27.232) with merge `9f385d95` |
 | Reason | The owner reviewed the session 12 shade proof pair on 2026-09-18 and rejected the Android notification large icon introduced by `ae92414d` (step 3) |
 | Verdict | PASS, with three records repairs made by this audit. `uat-2` pushed. |
@@ -242,4 +242,4 @@ measured-form adjustment the owner ruled for the findings text: the row says `wi
 **PASS.** The revert touches exactly what the owner rejected and nothing else; no session-12
 feature was collateral; nothing orphaned remains after this audit's three records repairs; the
 gates pass at 100% on all four measures; the records tell the truth. The repairs and this
-section ride the docs commit 1.27.233, reviewed once by Code Reviewer (GLM 5.3); `uat-2` pushed.
+section ride the docs commit 1.27.233, reviewed once by Code Reviewer; `uat-2` pushed.
