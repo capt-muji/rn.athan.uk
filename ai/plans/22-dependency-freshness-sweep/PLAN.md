@@ -213,8 +213,8 @@ required it to be re-measured against the installed tree rather than inherited, 
 
 ## 6. Steps
 
-- [ ] Step 1: `@types/node` 26.6.2 to 26.6.3 (specified)
-- [ ] Step 2: `lint-staged` 17.5.1 to 17.6.0 (specified)
+- [x] Step 1: DONE in 1.28.30, commit `16132762`
+- [x] Step 2: DONE in 1.28.31, commit `7880649e`
 
 Each step's detail is in `steps/<k>-<name>.md`.
 

@@ -55,9 +55,31 @@
    `Tests: 2 skipped, 4660 passed, 4662 total`, with four `100%` coverage lines: statements 4234/4234, branches
    1892/1892, functions 857/857, lines 3825/3825.
 
-   Then prove lint-staged itself still runs, which the suite cannot show. The commit in part 8 IS that proof,
-   because the pre-commit hook runs `npx lint-staged` before anything else: if 17.6.0 could not run, the commit could
-   not be made.
+   Then prove lint-staged still RUNS ITS TASKS, which neither the suite nor this step's own commit can show. This
+   step stages only `package.json`, `yarn.lock`, `app.json` and markdown, and none of those match the tasks' glob
+   (`**/*.{js,jsx,ts,tsx,mjs}`), so its commit prints `lint-staged could not find any staged files matching
+   configured tasks`. That line proves lint-staged started, not that a task works.
+
+   So run it directly against a file that does match, from a clean tree:
+
+   ```bash
+   printf '\n' >> shared/logger.ts
+   git add shared/logger.ts
+   npx lint-staged
+   git reset -q HEAD shared/logger.ts; git checkout -- shared/logger.ts
+   ```
+
+   Expect `Running tasks for staged files…`, the line `**/*.{js,jsx,ts,tsx,mjs} — 1 file`, and a ticked line for each
+   of the two tasks:
+
+   ```
+   ✔ biome check --write --no-errors-on-unmatched
+   ✔ jest --bail --findRelatedTests --passWithNoTests
+   ```
+
+   It then exits 1 with `lint-staged prevented an empty git commit`, which is correct and expected: Biome strips the
+   added newline, so nothing is left to commit. The ticked task lines are the proof; the exit code is not. Confirm
+   `git status --porcelain` prints nothing afterwards. If either task errors, or no task line appears, STOP.
 
 7. **Breaks.** None applies: no decision in this project's code changed.
 
@@ -85,8 +107,9 @@
    the proof it still works.
    ```
 
-   In the commit log, confirm the two ticked task lines appear above the `Tests:` line. lint-staged 17 does not
-   print its own name, so the task output is the evidence, not the word `lint-staged`. If a task errors, STOP.
+   In the commit log, expect `lint-staged could not find any staged files matching configured tasks`, because this
+   step stages no file matching the tasks' glob. That is the healthy reading here; part 6's direct run is what proves
+   the tasks themselves. If the log instead shows a task ERROR, STOP.
 
    **If any file appears in the commit that this step did not stage, STOP** (`PLAN.md` section 10). That is
    17.6.0's new behaviour reaching further than this plan measured, and it is a real finding.
@@ -104,7 +127,7 @@
 
 11. **Done when:**
     - `npx lint-staged --version` prints `17.6.0`;
-    - the commit's log shows both ticked task lines, then `Tests: 2 skipped, 4660 passed, 4662 total` and four
-      `100%` lines;
+    - part 6's direct run shows both ticked task lines, and the tree is clean afterwards;
+    - the commit's log shows `Tests: 4662 passed, 4662 total` and four `100%` lines;
     - `git show --stat <sha>` lists exactly `package.json`, `yarn.lock`, `app.json` and this plan's bookkeeping;
     - `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0.
