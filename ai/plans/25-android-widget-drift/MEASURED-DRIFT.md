@@ -111,6 +111,44 @@ Crucially, late firing ALONE does not produce a wrong number, because the label 
 render at :17 past the edge still yields the same `ceil` value as a render at :00.5. Lateness only
 matters when it pushes the render past the NEXT edge, or when it combines with the deferral above.
 
+## After the fix: measured on both phones at 1.28.23
+
+The fix binds `WidgetRefreshTickListener` to the module's `OnCreate` instead of to a JS data push, so
+the listener exists for as long as the process does.
+
+**It registers on both phones now,** which is the thing that was missing:
+
+```
+Find X8 (ColorOS 15):  #receivers went 4 -> 8, and the list contains
+                       Action: "android.intent.action.TIME_TICK"
+OnePlus 3T (Android 9): same, TIME_TICK present
+```
+
+Screen-ON verification on the X8, reading every ~11s across three minute edges:
+
+| Device clock | Widget showed | True (ceil) | Drift |
+| --- | --- | --- | --- |
+| 07:44:29 | `5h 13m` | `5h 13m` | +0 |
+| 07:44:41 | `5h 13m` | `5h 13m` | +0 |
+| 07:44:52 | `5h 13m` | `5h 13m` | +0 |
+| 07:45:04 | `5h 12m` | `5h 12m` | +0 |
+| 07:45:15 | `5h 12m` | `5h 12m` | +0 |
+| 07:45:27 | `5h 12m` | `5h 12m` | +0 |
+| 07:45:38 | `5h 12m` | `5h 12m` | +0 |
+| 07:45:50 | `5h 12m` | `5h 12m` | +0 |
+| 07:46:01 | `5h 11m` | `5h 11m` | +0 |
+
+**9 of 9 exact.** The label now flips within about 1 to 4 seconds of the minute edge, where before it
+flipped 13 to 40 seconds late. Screen-OFF sampling on 1.28.23 is also reading +0 (07:49:32, 07:52:38).
+
+| | 1.28.21 | 1.28.23 |
+| --- | --- | --- |
+| Exact readings | 38% | **100%** |
+| Worst drift | **+2 min** | **+0** |
+| Lag after the minute edge | 13 to 40 s | ~1 to 4 s |
+
+No regression on the 3T, which never had the bug: it reads exact at 1.28.23 as it did at 1.28.21.
+
 ## What is already ruled out, with the evidence
 
 | Theory | Verdict | Evidence |
