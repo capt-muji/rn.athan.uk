@@ -46,8 +46,12 @@ if [ "$STEP" -le 4 ]; then
   [ "$STATE" = "device" ] || fail "3T not connected: adb get-state said '$STATE'"
   echo "3T: device"
 
-  command -v aapt2 > /dev/null || fail "aapt2 not found; step 4 part 11 needs it to verify the APK's providers"
-  echo "aapt2: present"
+  # aapt2 ships inside the SDK's build-tools and is not on PATH here, so the
+  # plan uses its absolute path: a bare `aapt2` would exit 127 and a `grep -c`
+  # on that prints 0, which reads as "widget-less APK" (session 23, 2026-09-26)
+  AAPT2=$(ls -d "$HOME"/Library/Android/sdk/build-tools/*/aapt2 2>/dev/null | sort -V | tail -1)
+  [ -x "${AAPT2:-}" ] || fail "aapt2 not found under \$HOME/Library/Android/sdk/build-tools/*/; step 4 part 11 needs it"
+  echo "aapt2: $AAPT2"
 fi
 
 echo "PREFLIGHT OK"
