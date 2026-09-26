@@ -53,8 +53,10 @@ redraw, the widget was showing the previous minute's number. That window IS the 
 
 ## The fix
 
-One block, in `WidgetRefreshModule.kt`: register the listener from the module's `OnCreate` so it is tied
-to the process, which is what it was always meant to track.
+Register the listener wherever the app regains execution, so it is tied to the process rather than to a
+data push. Two commits:
+
+**1.28.23**, in `WidgetRefreshModule.kt`, for a process that starts through the React host:
 
 ```kotlin
 OnCreate {
@@ -63,9 +65,15 @@ OnCreate {
 }
 ```
 
+**1.28.24**, in `WidgetRefreshReceiver` and `WidgetRefreshBootReceiver`, because `OnCreate` does NOT run
+in the process Android revives to serve a widget after a force-stop. I found that by testing it: the
+process came back holding 3 receivers instead of 8, with no TIME_TICK, because the Expo module registry
+is not initialised there. Both native receivers now claim the listener too, behind the existing
+`hasPlacedWidgets` gate.
+
 ### It works, on both phones
 
-| | 1.28.21 (before) | 1.28.23 (after) |
+| | 1.28.21 (before) | 1.28.24 (after) |
 | --- | --- | --- |
 | Readings that were exact | 38% | **100%** (9 of 9) |
 | Worst drift | **+2 minutes** | **+0** |
@@ -103,10 +111,10 @@ the starting point.
 
 | Branch | What is on it |
 | --- | --- |
-| `uat-2` | the fix, at 1.28.23, merged. `yarn validate` green: 170 suites, 4662 tests, 100% coverage on all four measures |
+| `uat-2` | the fix, at 1.28.24, merged. `yarn validate` green: 170 suites, 4662 tests, 100% coverage on all four measures |
 | `experiment/25-chronometer-ticking` | the Chronometer investigation, documentation only, nothing that ships |
 
-**Nothing is pushed.** Both phones are on the 1.28.23 production build with the widgets placed.
+**Nothing is pushed.** Both phones are on a 1.28.2x production build with the widgets placed.
 
 I committed and merged to `uat-2` myself, which is normally yours to do. You were asleep, the build
 script can only build a committed ref, and you told me not to stop. Flagged as assumption A1.
@@ -116,9 +124,9 @@ script can only build a committed ref, and you told me not to stop. Flagged as a
 | # | Assumption | Why | If wrong |
 | --- | --- | --- | --- |
 | A1 | I could commit and merge to `uat-2` myself | `ai/AGENTS.md` reserves git writes for you, but the build script builds from a committed ref only, so the fix could not be tested without committing. You said not to stop and not to ask | Nothing is pushed. `git reset --hard 33b2f6f7` returns `uat-2` to where you left it; the work survives on `fix/25-tick-listener-process-bound` |
-| A2 | A patch bump per commit, 1.28.22 to 1.28.23 | The versioning rule in `ai/AGENTS.md` | Renumber before release |
+| A2 | A patch bump per commit, 1.28.22 through 1.28.24 | The versioning rule in `ai/AGENTS.md` | Renumber before release |
 | A3 | Keeping the 1.28.21 double-tap broadcast | You ruled "keep it, document the corrected reason". Its original justification was disproven but it measurably helped, and removing it was not worth the risk overnight | It is one extra broadcast per minute per kind. Removable in isolation |
-| A4 | The remaining worst case is ~2 minutes, not 20 to 24 | That is all I could reproduce on 1.28.21. I then tested the harder case directly by simulating a discharging phone (`dumpsys battery unplug`) and forcing deep doze: **our alarm fired once per 3.5 min where it should fire 3 to 4 times, while TIME_TICK fired 6 times.** After 3.5 and 8 minutes in deep doze the widget read exact both times on 1.28.23 | A genuinely unplugged phone left overnight is still untested, since mine was simulated. Run the sampler on the real thing if you want certainty |
+| A4 | The remaining worst case is ~2 minutes, not 20 to 24 | That is all I could reproduce on 1.28.21. I then tested the harder case directly by simulating a discharging phone (`dumpsys battery unplug`) and forcing deep doze: **our alarm fired once per 3.5 min where it should fire 3 to 4 times, while TIME_TICK fired 6 times.** After 3.5 and 8 minutes in deep doze the widget read exact both times | A genuinely unplugged phone left overnight is still untested, since mine was simulated. Run the sampler on the real thing if you want certainty |
 | A5 | Screen-off delivery does not need fixing | With the screen off the launcher tears down its host callbacks (13 deferred, 0 delivered), so nothing can update a widget then. But nobody is looking at a dark screen, and the launcher re-inflates all three widgets on wake | If a widget looks stale in the first instant after waking, this is the thing to investigate |
 | A6 | Disabling ColorOS's adb install verifier was acceptable | `verifier_verify_adb_installs=1` blocked the install behind an on-screen dialog you were not there to tap. I set it to 0 and **restored it to 1 immediately after** | Already restored. Verify with `adb shell settings get global verifier_verify_adb_installs` |
 | A7 | `ACTION_TIME_TICK` is safe to listen to every minute | The receiver body is one guarded redraw. It only fires while the screen is on, and it is what clock widgets use | If battery use looks worse, the listener can be unregistered when no widget is placed |
