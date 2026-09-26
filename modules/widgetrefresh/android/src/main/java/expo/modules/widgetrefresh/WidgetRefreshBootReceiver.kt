@@ -21,7 +21,7 @@ class WidgetRefreshBootReceiver : BroadcastReceiver() {
             WidgetRefreshScheduler.ensureWatchdog(context)
             // Same reason as the tick receiver: a boot-time process has no Expo
             // module registry, so the listener has to be claimed here too.
-            WidgetRefreshTickListener.ensureRegistered(context)
+            WidgetRefreshSystemListener.ensureRegistered(context)
         }
     }
 }

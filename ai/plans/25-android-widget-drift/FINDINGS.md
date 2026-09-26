@@ -347,3 +347,108 @@ The break script gained a case pinning this exact mistake. Writing it also expos
 own checks that were too weak to catch anything, which is how the regression reached the device: one
 asserted the bare string `registered` appeared (a rename satisfied it) and one that `ACTION_TIME_TICK`
 appeared anywhere in the file (swapping the IntentFilter to `ACTION_TIME_CHANGED` survived it).
+
+## 15. The gap 1.28.24 left: nothing redraws the widget when the screen wakes
+
+Measured on the Find X8 on 1.28.24, the build carrying the `TIME_TICK` fix, with `TIME_TICK` confirmed
+present in the app's receiver list. The very first reading taken after waking the phone was wrong:
+
+| Moment | Clock | Widget showed | True remaining to Dhuhr 12:57 | Out by |
+| --- | --- | --- | --- | --- |
+| First read after wake | 11:51:13 | `1h 7m` | `1h 6m` (65m47s) | **1 minute** |
+| Screen held on | 11:51:34 | `1h 6m` | `1h 6m` | correct |
+
+The label corrected 21 seconds after the wake, once the next `TIME_TICK` arrived, and every subsequent
+reading with the screen on was exact.
+
+**The cause is that all three redraw triggers miss the moment of waking.**
+
+| Trigger | Fires while screen is off | Fires on wake |
+| --- | --- | --- |
+| Exact alarm | deferred by ColorOS (see the dump below) | no |
+| `ACTION_TIME_TICK` | **never delivered at all** | no, only at the next minute edge |
+| WorkManager watchdog | re-arms only, never renders | no |
+
+The deferral is visible in `dumpsys alarm`, read on the X8 for the 12:18:00.500 tick:
+
+```
+origWhen=2026-09-26 12:18:00.500 window=+25s729ms exactAllowReason=policy_permission
+whenElapsed=+8s711ms maxWhenElapsed=+34s440ms
+```
+
+A positive `window` beside `exactAllowReason=policy_permission` is a combination AOSP never emits, which
+is the direct evidence that ColorOS patches AlarmManager. The practical reading is `maxWhenElapsed`: the
+tick may land up to **34 seconds** after the edge, and for that whole stretch the widget still holds the
+previous minute's label.
+
+So with the screen off the widget is not redrawn on any reliable schedule, and the launcher re-inflates
+whatever RemoteViews were last composed. The staleness on waking is therefore as large as the
+screen-off period allowed the alarm to slip, and it persists until the next minute edge, up to a further
+60 seconds.
+
+This is the case the earlier sampling could not see. `drift-sampler.sh` reads via `uiautomator dump`,
+which needs the screen ON, and its own wake sequence spends about 3 seconds on swipe and HOME before the
+dump. A `TIME_TICK` landing inside that window redraws the widget before the first read, so the sampler
+measures the corrected value and reports "exact". Reading immediately on wake is what exposes it.
+
+It also explains the owner's original 20 to 24 minute reports, which no session could reproduce: they
+are readings taken on waking a phone that had been idle and whose alarm ColorOS had been deferring the
+whole time. A sampler that wakes the phone every 2 to 4 minutes never lets that deficit build.
+
+**This withdraws assumption A5** ("screen-off delivery does not need fixing, because nobody is looking at
+a dark screen"). The premise is right and the conclusion does not follow: what the user sees is the first
+frame after waking, and that frame is drawn from the stale composition, not recomputed.
+
+### The fix
+
+`ACTION_SCREEN_ON`, added to the same listener, which is renamed `WidgetRefreshSystemListener` because it
+now carries two signals rather than the minute alone. It is the right vehicle for the same reasons
+`TIME_TICK` was: the system broadcasts it, no OEM policy defers it, and Android refuses it to manifest
+receivers, so it has to be claimed at runtime by a process-bound listener.
+
+The redraw then happens as the screen comes on, before the user's eyes reach the widget, instead of up to
+a minute afterwards.
+
+### Measured before and after, same protocol
+
+The earlier samplers woke the phone at an arbitrary moment, so they hit the deferral window only by
+chance, which is why 6-minute sampling reported "exact" and the bug looked intermittent. The protocol
+below removes the chance: it wakes at a CONTROLLED 5 seconds past a minute edge, inside the window, and
+reads before any trigger can run. `/tmp/wake-precise.sh` and `/tmp/wakelib.sh` implement it.
+
+| Build | Rounds | Exact | Drifted | Worst |
+| --- | --- | --- | --- | --- |
+| 1.28.24 (TIME_TICK only) | 5 | 4 | 1 | **+1 min** |
+| 1.28.25 (+ SCREEN_ON) | 5 | 2 | 3 | +1 min |
+
+⚠️ **The after-run is NOT a valid comparison and must not be read as one.** It was taken on an APK built
+with `EXPO_PUBLIC_ENV=local`, so the app served MOCK prayer times (Fajr 04:03) while the before-run
+served production times (Fajr 05:22, Dhuhr 12:57). Two different datasets, so the drift columns are not
+comparable, and the mock day's boundaries sit either side of launch, which changes what the label is
+counting to. A clean A/B needs both runs on the same production build.
+
+**What IS established on the device, independent of that run:**
+
+- `SCREEN_ON` is registered on 1.28.25 (`dumpsys activity broadcasts` shows SCREEN_ON and TIME_TICK for
+  the app, where 1.28.24 showed TIME_TICK alone).
+- The deferral that causes the stale wake is real and quantified (34s worst case, from the dump above).
+- The stale-on-wake reading is real and reproduced (11:51:13, +1 min, corrected 21s later).
+
+**What is NOT established:** that the fix measurably reduces wake drift in production use. The mechanism
+says it must, because the redraw now happens as the screen comes on rather than up to a minute later,
+but the number is unmeasured. That is the one open item.
+
+### A trap worth recording
+
+A local release build defaults to MOCK data (`EXPO_PUBLIC_ENV=local` in `.env` -> `APP_CONFIG.isDev`
+true). It looks like a normal production build, installs under the production package, and the widget
+renders convincingly, but every prayer time is fake. Two consequences bit this session: a mock APK
+briefly went onto the owner's phone, and a measurement run was invalidated. The tell is the prayer times
+themselves (mock Fajr is 04:03; real London Fajr was 05:22), and the check is one grep of the bundle for
+the production API host. A prod build needs the key inline:
+`EXPO_PUBLIC_ENV=prod EXPO_PUBLIC_API_KEY=<key> ./gradlew assembleRelease`, with the key read from
+`npx eas env:list preview`.
+
+Related: a widget's stored snapshot SURVIVES reinstall (session 19), so after flashing a build with
+different data the widget keeps showing the old times until the app re-pushes, or until the widget is
+removed and re-added.
