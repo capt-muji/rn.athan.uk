@@ -69,7 +69,7 @@ describe('a Standard row read either side of 00:00 and of 06:00', () => {
 
   it.each((['Isha', 'Magrib'] as const).flatMap((name) => READINGS.map((row) => ({ name, ...row }))))(
     'arms $name read as $reading under its own list day, at its real instant, with its reminder',
-    async ({ name, reading, list20, list21 }) => {
+    async ({ name, reading, list20 }) => {
       jest.setSystemTime(new Date('2026-06-20T12:00:00.000Z'));
       storeDays(sameTimesOn(['2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'], SHAPES[name](reading)));
       enable(ScheduleType.Standard, name, 5);

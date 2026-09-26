@@ -4,6 +4,7 @@
  */
 
 import { REMINDER_INTERVALS } from '@/shared/constants';
+import type { ReminderInterval } from '@/shared/types';
 
 import { freeReminderInterval, stepReminderInterval } from '../reminderStep';
 
@@ -104,7 +105,7 @@ describe('freeReminderInterval', () => {
   });
 
   // Only reached by switching a reminder on ONTO the other's minute, so it must move rather than clash
-  it.each([
+  it.each<[ReminderInterval, number, ReminderInterval]>([
     [5, 5, 10],
     [30, 30, 25],
     [15, 15, 10],

@@ -17,9 +17,9 @@ import {
   type AlertMenuState,
   AlertType,
   type ISingleApiResponseTransformed,
+  REMINDER_SLOTS,
   type ReminderInterval,
   type ReminderSetting,
-  REMINDER_SLOTS,
   ScheduleType,
 } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -622,5 +622,102 @@ describe('a change the phone refuses to put back', () => {
 
     expect(scheduleMock).not.toHaveBeenCalled();
     expect(cancelMock).not.toHaveBeenCalled();
+  });
+});
+
+// =============================================================================
+// THREE ALERTS, ALL OR NOTHING
+//
+// A prayer now commits THREE alarms at once: the at-time alert and both reminders. Finding 81's
+// rule is unchanged by the count, but the failure it has to survive is bigger, because the two
+// that landed are already armed AND recorded by the time the third refuses.
+// =============================================================================
+
+describe('a prayer whose three alerts are committed together', () => {
+  /** Every reminder record the app holds for one prayer */
+  const reminderRecordsFor = (prayerIndex: number, type = ScheduleType.Standard) =>
+    Database.getAllScheduledRemindersForPrayer(type, prayerIndex)
+      .map((record) => record.id)
+      .sort();
+
+  /** The at-time alert and both reminders on, each with its own sound and its own minute */
+  const ALL_THREE: AlertMenuState = {
+    atTimeAlert: AlertType.Sound,
+    reminders: [
+      { alert: AlertType.Sound, interval: INTERVAL },
+      { alert: AlertType.Silent, interval: SECOND_INTERVAL },
+    ],
+  };
+
+  const savedFor = (prayerIndex: number) => [
+    getPrayerAlertType(ScheduleType.Standard, prayerIndex),
+    getReminderAlertType(ScheduleType.Standard, prayerIndex, 0),
+    getReminderAlertType(ScheduleType.Standard, prayerIndex, 1),
+  ];
+
+  it('arms all three when the phone takes them, each at its own moment', async () => {
+    const committed = await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    expect(committed).toBe(true);
+    expect(armedFor('Fajr')).toEqual(
+      [...athanIds('Fajr'), ...reminderIdsAt('Fajr', INTERVAL), ...reminderIdsAt('Fajr', SECOND_INTERVAL)].sort()
+    );
+    expect(savedFor(FAJR)).toEqual([AlertType.Sound, AlertType.Sound, AlertType.Silent]);
+  });
+
+  // The case a third alert introduces: the other two are ALREADY armed and recorded when this one
+  // refuses, so the undo has to reach alarms that did land, not merely abandon the one that did not
+  it.each([
+    ['the second reminder', () => reminderIdsAt('Fajr', SECOND_INTERVAL)[0]],
+    ['the first reminder', () => reminderIdsAt('Fajr', INTERVAL)[0]],
+    ['the at-time alert', () => athanIds('Fajr')[0]],
+  ])('puts the whole prayer back when the phone refuses %s', async (_label, refused) => {
+    refusedSchedules.add(refused());
+
+    const committed = await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    expect(committed).toBe(false);
+    expect(savedFor(FAJR)).toEqual([AlertType.Off, AlertType.Off, AlertType.Off]);
+    expect(armedFor('Fajr')).toEqual([]);
+    expect(recordsFor(FAJR)).toEqual([]);
+    expect(reminderRecordsFor(FAJR)).toEqual([]);
+  });
+
+  it('leaves no record of an alarm it could not leave armed', async () => {
+    refusedSchedules.add(reminderIdsAt('Fajr', SECOND_INTERVAL)[0]);
+
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    expect([...recordsFor(FAJR), ...reminderRecordsFor(FAJR)]).toEqual(armedFor('Fajr'));
+  });
+
+  it('turns all three off together, cancelling every alarm the prayer had', async () => {
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    const committed = await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', OFF, ALL_THREE);
+
+    expect(committed).toBe(true);
+    expect(armedFor('Fajr')).toEqual([]);
+    expect([...recordsFor(FAJR), ...reminderRecordsFor(FAJR)]).toEqual([]);
+  });
+
+  // Every alarm of the change goes to the phone at once: three alerts must not cost three round trips
+  it('sends all three to the phone in parallel, never one after the other', async () => {
+    const inFlight: number[] = [];
+    let live = 0;
+    held.clear();
+    scheduleMock.mockImplementation(async (request: Notifications.NotificationRequestInput) => {
+      live += 1;
+      inFlight.push(live);
+      await Promise.resolve();
+      live -= 1;
+      const identifier = request.identifier as string;
+      osState.add(identifier);
+      return identifier;
+    });
+
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    expect(Math.max(...inFlight)).toBeGreaterThan(1);
   });
 });

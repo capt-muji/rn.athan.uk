@@ -28,9 +28,9 @@ import * as TimeUtils from '@/shared/time';
 import {
   type AlertMenuState,
   AlertType,
+  REMINDER_SLOTS,
   type ReminderInterval,
   type ReminderSetting,
-  REMINDER_SLOTS,
   type ReminderSlot,
   ScheduleType,
 } from '@/shared/types';

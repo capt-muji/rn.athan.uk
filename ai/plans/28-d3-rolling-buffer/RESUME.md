@@ -70,6 +70,25 @@ direct function of the window.
 - **`setPrayerAlertType` forces every slot Off** when the at-time alert goes Off; that invariant now loops over
   `REMINDER_SLOTS` and a new slot joins it automatically.
 
+## 4b. All or nothing now spans THREE alerts (owner, 2026-09-27)
+
+A prayer commits three alarms at once: the at-time alert and both reminders. Finding 81's rule is unchanged by
+the count, but the failure it must survive is bigger, because by the time the third refuses the other two are
+already armed on the phone AND written to MMKV.
+
+**The existing mechanism already covers it, verified rather than assumed.** With all three genuinely armed and
+recorded and the third then refused: `committed: false`, all three preferences back to Off, `DB records left: 0`,
+`OS alarms left: []`. `commitPrayerAlertChange` marks the prayer, `applyPrayerAlerts` reports the refusal,
+and `undoPrayerAlertChange` re-applies the previous settings, whose own clear path cancels the two that landed.
+
+Seven tests in `notificationAlertCommit.test.ts` now pin it, under "a prayer whose three alerts are committed
+together": all three arm, each of the three refusing in turn puts the whole prayer back, no record outlives its
+alarm, all three turn off together, and the three go to the phone IN PARALLEL rather than one after another.
+
+DURABLE LESSON from writing them: `triggers()` is a log of every scheduling ATTEMPT, including ones later
+cancelled, while `osIdentifiers()` is what the phone still holds. Reading the first to judge a rollback reports
+a leak that is not there. Judge cleanup with `osIdentifiers()` and the DB records, never with `triggers()`.
+
 ## 5. The conflict rule, as the owner settled it
 
 Two reminders may never hold the same minute. The stepper **skips** the taken value (10 -> skip 15 -> 20) and
