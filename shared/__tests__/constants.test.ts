@@ -22,7 +22,7 @@ import {
   validateReminderInterval,
 } from '../constants';
 import { rollingDaysForPrayer } from '../notifications';
-import { ScheduleType } from '../types';
+import { REMINDER_SLOTS, ScheduleType } from '../types';
 
 // =============================================================================
 // NIGHT_PRAYER_NAMES TESTS
@@ -319,8 +319,8 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
 /** UNUserNotificationCenter keeps the soonest-firing 64 requests and drops the remainder */
 const IOS_PENDING_REQUEST_CEILING = 64;
 
-/** Every prayer on both lists can carry an at-time alert AND a pre-prayer reminder */
-const ALERTS_PER_PRAYER = 2;
+/** Every prayer on both lists can carry an at-time alert AND both pre-prayer reminders */
+const ALERTS_PER_PRAYER = 1 + REMINDER_SLOTS.length;
 
 describe('the rolling buffer fits inside the iOS pending-request ceiling', () => {
   const prayersPerDay = PRAYERS_ENGLISH.length + EXTRAS_ENGLISH.length;
@@ -356,10 +356,10 @@ describe('the rolling buffer fits inside the iOS pending-request ceiling', () =>
       headroom: IOS_PENDING_REQUEST_CEILING - worstCase,
     }).toEqual({
       prayersPerDay: 11,
-      days: 2,
+      days: 1,
       nightRows: 2,
-      worstCase: 48,
-      headroom: 16,
+      worstCase: 39,
+      headroom: 25,
     });
   });
 
@@ -381,45 +381,57 @@ describe('the rolling buffer fits inside the iOS pending-request ceiling', () =>
   });
 
   it('shows that one more day would breach the ceiling', () => {
-    expect(worstCaseAt(3)).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+    expect(worstCaseAt(NOTIFICATION_ROLLING_DAYS + 1)).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+  });
+
+  // The pairing the owner ruled on: the second reminder is only affordable because the window
+  // dropped with it, so a later raise must re-read this rather than assume the old headroom
+  it('could not carry a second reminder at the window it replaced', () => {
+    const atTwoDays = (prayersPerDay * 2 + nightRows) * ALERTS_PER_PRAYER;
+
+    expect(atTwoDays).toBe(72);
+    expect(atTwoDays).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+  });
+
+  it('counts one at-time alert and one request per reminder slot', () => {
+    expect(ALERTS_PER_PRAYER).toBe(3);
   });
 });
 
 // =============================================================================
 // ROLLING HORIZON TESTS
 //
-// The buffer is two LIST days, not 48 hours. Three comments claimed 48h and sized
-// the refresh cadences against it; the real floor is the winter worst case, where a
-// late-evening refresh reaches only as far as the next day's Isha. The arithmetic
-// lives here so the comment cannot drift from the constants again.
+// The buffer is counted in LIST days, not hours, and at one day that is TODAY'S LIST
+// ALONE. So the horizon is not a fixed span: it shrinks through the day and reaches
+// zero once the day's last prayer has passed, which is the cost the owner accepted
+// when the second reminder took the place of the second day. These pin that shape, so
+// a cadence can never again be sized against a span the window does not have.
 // =============================================================================
 
-describe('the rolling horizon is two list days, not 48 hours', () => {
-  /** Winter worst case from the repo's own fixture: 2026-12-31 Isha is 17:41 */
-  const WINTER_ISHA_HOUR = 17 + 41 / 60;
+describe('the rolling horizon is one list day, so it shrinks through the day', () => {
+  /** Winter worst case from the repo's own fixture: 2024-12-31 is Fajr 06:26, Isha 17:42 */
+  const WINTER_FAJR_HOUR = 6 + 26 / 60;
+  const WINTER_ISHA_HOUR = 17 + 42 / 60;
 
   /** A refresh that lands just before midnight reaches the least far */
   const LATEST_REFRESH_HOUR = 23 + 50 / 60;
 
-  it('reaches under 18 hours when a refresh lands late on a winter evening', () => {
-    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
+  /** What today's list still has armed after a refresh at this hour */
+  const hoursStillArmed = (refreshHour: number) => Math.max(0, WINTER_ISHA_HOUR - refreshHour);
 
-    expect(hoursToTomorrowsLastPrayer).toBeLessThan(18);
-    expect(hoursToTomorrowsLastPrayer).toBeGreaterThan(17);
+  it('reaches nothing at all once the day\u2019s last prayer has passed', () => {
+    expect(hoursStillArmed(LATEST_REFRESH_HOUR)).toBe(0);
   });
 
-  it('is far short of the 48 hours the cadence comments used to claim', () => {
-    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
+  it('leaves the next morning to the background task alone', () => {
+    const hoursToNextFajr = 24 - LATEST_REFRESH_HOUR + WINTER_FAJR_HOUR;
+    const attempts = Math.floor(hoursToNextFajr / BACKGROUND_TASK_INTERVAL_HOURS);
 
-    expect(hoursToTomorrowsLastPrayer).toBeLessThan(NOTIFICATION_ROLLING_DAYS * 24);
-  });
-
-  // The buffer only needs ONE run inside the floor to keep rolling. Spare attempts are what
-  // absorb a deferred or skipped run, so the margin is the point rather than the exact count
-  it('leaves the background task spare attempts inside that floor', () => {
-    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
-    const attempts = Math.floor(hoursToTomorrowsLastPrayer / BACKGROUND_TASK_INTERVAL_HOURS);
-
+    expect(hoursToNextFajr).toBeGreaterThan(BACKGROUND_TASK_INTERVAL_HOURS);
     expect(attempts).toBeGreaterThan(1);
+  });
+
+  it('is never the whole day the day count reads like', () => {
+    expect(hoursStillArmed(WINTER_FAJR_HOUR)).toBeLessThan(NOTIFICATION_ROLLING_DAYS * 24);
   });
 });

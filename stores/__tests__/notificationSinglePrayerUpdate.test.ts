@@ -49,8 +49,10 @@ const INTERVAL = 15 as ReminderInterval;
 /** The three settings an alert sheet closes on */
 const alerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertType.Off) => ({
   atTimeAlert,
-  reminderAlert,
-  reminderInterval: INTERVAL,
+  reminders: [
+    { alert: reminderAlert, interval: INTERVAL },
+    { alert: AlertType.Off, interval: 30 as ReminderInterval },
+  ] as const,
 });
 
 /** Every alert of a prayer switched off */
@@ -177,7 +179,7 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, arabic, a
   };
 
   beforeEach(() => {
-    setReminderInterval(type, index, INTERVAL);
+    setReminderInterval(type, index, 0, INTERVAL);
   });
 
   it('arms the prayer at its instant and its reminder the saved interval before, on every day still to come', async () => {
