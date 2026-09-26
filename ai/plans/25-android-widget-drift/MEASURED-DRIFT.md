@@ -149,6 +149,36 @@ flipped 13 to 40 seconds late. Screen-OFF sampling on 1.28.23 is also reading +0
 
 No regression on the 3T, which never had the bug: it reads exact at 1.28.23 as it did at 1.28.21.
 
+### The worst case, tested properly: deep doze on a discharging phone
+
+The screen-on and screen-off runs above were both on charge, which keeps the phone `ACTIVE` and never
+lets it reach deep doze. That left the real worst case untested, so it was induced directly:
+
+```
+adb shell dumpsys battery unplug          # look discharging without touching the cable
+adb shell dumpsys deviceidle step deep    # repeated until mState=IDLE
+```
+
+**In deep doze over a 3.5 minute window, our own alarm fired ONCE where it should have fired three or
+four times. `ACTION_TIME_TICK` was broadcast SIX times over the same window.** That is the whole
+argument for this fix in two numbers: doze suppresses our alarm and does not suppress TIME_TICK.
+
+Drift measured on waking from deep doze:
+
+| Idle duration in deep doze | Device clock on wake | Widget showed | True (ceil) | Drift |
+| --- | --- | --- | --- | --- |
+| ~3.5 min | 08:00:59 | `4h 57m` | `4h 57m` | **+0** |
+| ~8 min | 08:09:46 | `4h 48m` ×3 | `4h 48m` | **+0** |
+
+Exact both times, all three widgets agreeing. On the old build this is the condition that produced the
+worst drift, because the alarm was the only redraw path and doze is exactly when it is withheld.
+
+Battery and doze state were restored afterwards (`dumpsys battery reset`, `deviceidle unforce`).
+
+**Caveat that remains:** this is simulated discharging on a phone that is physically plugged in, and an
+induced doze rather than one Android chose on its own. A genuinely unplugged phone left overnight is
+still the untested case, and the sampler is the tool for it.
+
 ## What is already ruled out, with the evidence
 
 | Theory | Verdict | Evidence |
