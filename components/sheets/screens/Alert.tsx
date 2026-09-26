@@ -9,8 +9,8 @@ import {
   type AlertMenuState,
   AlertType,
   Icon,
+  type PerReminderSlot,
   type ReminderSetting,
-  REMINDER_SLOTS,
   type ReminderSlot,
 } from '@/shared/types';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
@@ -29,11 +29,6 @@ import ReminderCard from './ReminderCard';
 
 const ALERT_OPTIONS: SegmentOption[] = [
   { value: AlertType.Off, label: 'Off', icon: Icon.BELL_SLASH },
-  { value: AlertType.Silent, label: 'Silent', icon: Icon.BELL_RING },
-  { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
-];
-
-const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
   { value: AlertType.Silent, label: 'Silent', icon: Icon.BELL_RING },
   { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
 ];
@@ -57,6 +52,12 @@ interface AlertSheetBodyRef {
   /** Live draft values at the moment of the call */
   getCurrentState: () => AlertMenuState;
 }
+
+/** Both slots through one change, so a writer never has to assert the pair's shape back */
+const mapSlots = (
+  reminders: PerReminderSlot<ReminderSetting>,
+  change: (reminder: ReminderSetting, slot: ReminderSlot) => ReminderSetting
+): PerReminderSlot<ReminderSetting> => [change(reminders[0], 0), change(reminders[1], 1)];
 
 interface AlertSheetBodyProps {
   sheetState: AlertSheetState;
@@ -136,13 +137,14 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
   const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(() =>
     getPrayerAlertType(sheetState.type, sheetState.index)
   );
-  const [reminders, setReminders] = useState<readonly [ReminderSetting, ReminderSetting]>(
-    () =>
-      REMINDER_SLOTS.map((slot) => ({
-        alert: getReminderAlertType(sheetState.type, sheetState.index, slot),
-        interval: initialReminderInterval(getReminderInterval(sheetState.type, sheetState.index, slot)),
-      })) as unknown as readonly [ReminderSetting, ReminderSetting]
-  );
+  const [reminders, setReminders] = useState<PerReminderSlot<ReminderSetting>>(() => {
+    const saved = (slot: ReminderSlot): ReminderSetting => ({
+      alert: getReminderAlertType(sheetState.type, sheetState.index, slot),
+      interval: initialReminderInterval(getReminderInterval(sheetState.type, sheetState.index, slot)),
+    });
+
+    return [saved(0), saved(1)];
+  });
 
   // Kept while a reminder is Off, so a toggle never loses the sound last chosen
   const [sounds, setSounds] = useState<Record<ReminderSlot, AlertType.Silent | AlertType.Sound>>(() => ({
@@ -160,11 +162,8 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
   const canEnableReminder = atTimeAlert !== AlertType.Off;
 
   const updateReminder = useCallback((slot: ReminderSlot, change: Partial<ReminderSetting>) => {
-    setReminders(
-      (current) =>
-        current.map((reminder, index) =>
-          index === slot ? { ...reminder, ...change } : reminder
-        ) as unknown as readonly [ReminderSetting, ReminderSetting]
+    setReminders((current) =>
+      mapSlots(current, (reminder, index) => (index === slot ? { ...reminder, ...change } : reminder))
     );
   }, []);
 
@@ -180,13 +179,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
       }
       setAtTimeAlert(type);
       if (type === AlertType.Off) {
-        setReminders(
-          (current) =>
-            current.map((reminder) => ({ ...reminder, alert: AlertType.Off })) as unknown as readonly [
-              ReminderSetting,
-              ReminderSetting,
-            ]
-        );
+        setReminders((current) => mapSlots(current, (reminder) => ({ ...reminder, alert: AlertType.Off })));
       }
     },
     [atTimeAlert, ensurePermissions]

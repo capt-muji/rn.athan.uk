@@ -216,7 +216,7 @@ export type ReminderInterval = 5 | 10 | 15 | 20 | 25 | 30;
 export type ReminderSlot = 0 | 1;
 
 /** Both reminder slots, in the order the sheet draws them */
-export const REMINDER_SLOTS: readonly ReminderSlot[] = [0, 1];
+export const REMINDER_SLOTS = [0, 1] as const satisfies readonly ReminderSlot[];
 
 /** One reminder's own settings: each slot carries its own sound, so two can differ */
 export interface ReminderSetting {
@@ -226,6 +226,9 @@ export interface ReminderSetting {
   interval: ReminderInterval;
 }
 
+/** One per slot, in slot order */
+export type PerReminderSlot<T> = readonly [T, T];
+
 /**
  * State for the AlertMenu popup component
  * Tracks the at-time alert and both pre-prayer reminders
@@ -234,7 +237,7 @@ export interface AlertMenuState {
   /** At-time alert type (Off/Silent/Sound) */
   atTimeAlert: AlertType;
   /** Both reminders, indexed by slot */
-  reminders: readonly [ReminderSetting, ReminderSetting];
+  reminders: PerReminderSlot<ReminderSetting>;
 }
 
 export enum Icon {

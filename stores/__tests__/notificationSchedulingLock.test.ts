@@ -148,7 +148,8 @@ beforeEach(() => {
     Database.database.set(`prayer_${date}`, JSON.stringify(day));
   }
 
-  for (const atom of [...standardPrayerAlertAtoms, ...standardReminderAlertAtoms.flat()]) store.set(atom, AlertType.Off);
+  for (const atom of [...standardPrayerAlertAtoms, ...standardReminderAlertAtoms.flat()])
+    store.set(atom, AlertType.Off);
   setReminderInterval(ScheduleType.Standard, FAJR, 0, INTERVAL);
   setReminderInterval(ScheduleType.Standard, DHUHR, 0, INTERVAL);
   store.set(lastNotificationScheduleAtom, 0);
