@@ -18,6 +18,24 @@ export const AndroidImportance = {
   MAX: 5,
 };
 
+export const AndroidAudioUsage = {
+  UNKNOWN: 0,
+  MEDIA: 1,
+  VOICE_COMMUNICATION: 2,
+  VOICE_COMMUNICATION_SIGNALLING: 3,
+  ALARM: 4,
+  NOTIFICATION: 5,
+  NOTIFICATION_RINGTONE: 6,
+  NOTIFICATION_COMMUNICATION_REQUEST: 7,
+  NOTIFICATION_COMMUNICATION_INSTANT: 8,
+  NOTIFICATION_COMMUNICATION_DELAYED: 9,
+  NOTIFICATION_EVENT: 10,
+  ASSISTANCE_ACCESSIBILITY: 11,
+  ASSISTANCE_NAVIGATION_GUIDANCE: 12,
+  ASSISTANCE_SONIFICATION: 13,
+  GAME: 14,
+};
+
 export const setNotificationChannelAsync = jest.fn().mockResolvedValue(undefined);
 export const deleteNotificationChannelAsync = jest.fn().mockResolvedValue(undefined);
 /**

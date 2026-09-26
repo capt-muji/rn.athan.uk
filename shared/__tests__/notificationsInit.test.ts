@@ -34,7 +34,30 @@ const loadFresh = (os: 'ios' | 'android'): Loaded => {
   };
 };
 
-const LEGACY_CHANNEL_IDS = ['reminder', ...Array.from({ length: 16 }, (_, i) => `athan_${i + 1}`)];
+const PRAYER_SLUGS = [
+  'fajr',
+  'sunrise',
+  'dhuhr',
+  'asr',
+  'magrib',
+  'isha',
+  'midnight',
+  'last_third',
+  'suhoor',
+  'duha',
+  'istijaba',
+];
+
+/** Every superseded generation, which init must delete: wav, notification-stream, and IMPORTANCE_MAX */
+const LEGACY_CHANNEL_IDS = [
+  'reminder',
+  'extras_at_time',
+  'extras_at_time_v2',
+  ...Array.from({ length: 32 }, (_, i) => [`athan_${i + 1}`, `athan_${i + 1}_v2`, `athan_${i + 1}_v3`]).flat(),
+  ...PRAYER_SLUGS.flatMap((slug) =>
+    [5, 10, 15, 20, 25, 30].flatMap((interval) => [`reminder_${slug}_${interval}`, `reminder_${slug}_${interval}_v2`])
+  ),
+];
 
 let loaded: Loaded | null = null;
 
@@ -95,7 +118,7 @@ describe('initializeNotifications on Android', () => {
       );
     current.deleteChannel.mockImplementation((channelId: string) => settleAfter(100, deleted, channelId));
     current.setChannel.mockImplementation((channelId: string) =>
-      settleAfter(channelId === 'athan_1_v2' ? 50 : 10, created, channelId)
+      settleAfter(channelId === 'athan_1_v4' ? 50 : 10, created, channelId)
     );
     const seenAtRefresh: { created: string[]; deleted: string[] } = { created: [], deleted: [] };
     const refreshFn = jest.fn(async () => {
@@ -106,7 +129,7 @@ describe('initializeNotifications on Android', () => {
     await current.initializeNotifications(jest.fn().mockResolvedValue(true), refreshFn);
 
     expect(refreshFn).toHaveBeenCalledTimes(1);
-    expect(seenAtRefresh.created).toEqual(expect.arrayContaining(['athan_1_v2', 'extras_at_time']));
+    expect(seenAtRefresh.created).toEqual(expect.arrayContaining(['athan_1_v4', 'extras_at_time_v3']));
     expect([...seenAtRefresh.deleted].sort()).toEqual([...LEGACY_CHANNEL_IDS].sort());
   });
 
@@ -124,7 +147,7 @@ describe('initializeNotifications on Android', () => {
 
       expect(current.deleteChannel.mock.calls.map((call) => call[0]).sort()).toEqual([...LEGACY_CHANNEL_IDS].sort());
       expect(current.setChannel.mock.calls.map((call) => call[0])).toEqual(
-        expect.arrayContaining(['athan_1_v2', 'extras_at_time'])
+        expect.arrayContaining(['athan_1_v4', 'extras_at_time_v3'])
       );
       expect(refreshFn).toHaveBeenCalledTimes(1);
     }
