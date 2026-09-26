@@ -147,3 +147,56 @@ delay later means the session started by the first is still alive, so the second
 ⚠️ **Assumption to verify on device:** that a 2 to 3 second gap is reliably inside Glance's session
 lifetime. The observed teardown is ~45s after an update, so a few seconds has wide margin, but the
 exact value is a race and must be proven by measurement over many ticks on BOTH phones, not reasoned.
+
+## ⚠️ THE DOUBLE-TAP FIX IS NOT SUFFICIENT, and my session theory is incomplete
+
+Shipped as 1.28.21 and measured on both phones. It **improves** matters and it does **not** solve them.
+
+### What improved
+
+| Phone | Before (1.28.20) | After (1.28.21) |
+| --- | --- | --- |
+| X8 | +6/+3/+1 disagreeing widgets, owner saw 20-24 min | bounded 0 to +1 over 5 samples |
+| 3T | drifted to +8, then +47 while frozen | snapped to exact, held 2 samples |
+
+### What did not
+
+The 3T then drifted again: +2, exact, exact, +3, +5, +7 across six samples. So the error still
+accumulates; it simply recovers more often than before.
+
+### Why my explanation is wrong
+
+Precise logcat timeline of a single minute on the 3T at 1.28.21:
+
+```
+03:11:00.924  broadcast pass 1  (LauncherAppWidgetHostView: updateAppWidget)
+03:11:03.227  broadcast pass 2  (2.3s later, so the double-tap IS working)
+03:11:46.036  Closing session appWidget-41 wasOpen=false
+```
+
+The session lives about 45 seconds, so **pass 2 at 03:11:03 arrived while a session existed** and it
+STILL closed `wasOpen=false`. My prediction was that a second pass inside the session window would
+find `wasRunning == true` and compose. It did not.
+
+Also: exactly three `Closing session` lines appear per minute, one per placed widget id (41, 42, 43),
+not one per broadcast pass. That suggests each widget's session is created and closed once per cycle
+regardless of how many broadcasts arrive, which is inconsistent with the simple `wasRunning` model.
+
+⚠️ **So the controlled experiment at 01:56 (two manual broadcasts 3s apart fixed an 8-minute drift)
+proved that a second broadcast CAN cause a compose, but not that `wasRunning` is the mechanism.**
+Something else differs between the manual `am broadcast` case and the in-process `sendBroadcast` case:
+possibly the calling process (shell uid versus our own), possibly the foreground state at that moment,
+possibly timing against the session worker's own scheduling. That is the next thing to isolate.
+
+### What is nonetheless established beyond doubt
+
+1. The tick alarm is healthy on both phones (3 fires per 3 minutes, measured by AlarmManager's own counter).
+2. The broadcast reaches the launcher every time (`updateAppWidget` logged twice per minute).
+3. Glance closes its sessions with `wasOpen=false`, i.e. it never composes on these updates.
+4. A JS-side push (opening the app) composes immediately and correctly, every time.
+5. The data is correct throughout; only the rendering is stale.
+
+The defect is therefore squarely in the render trigger path, and the reliable trigger we already have
+is the one the app itself uses from JS. That is the direction the next session should take: make the
+native tick drive the same path expo-widgets' `updateSnapshot`/`reload` uses from JS, rather than a
+bare `ACTION_APPWIDGET_UPDATE` broadcast.
