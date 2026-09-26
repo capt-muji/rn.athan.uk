@@ -293,14 +293,21 @@ Do these for each step in the plan, in order. Do not start a step until the prev
   fail: `mobile-mcp`'s element list and Maestro's inspect return refs that survive a layout change, so they come
   first. The cases that defeat them are real and this repo has met them: an OEM dialog outside the app's hierarchy
   (ColorOS's install-scan prompt, session 18), a surface `uiautomator dump` will not serve, and a physical iPhone,
-  where the local tooling drives no taps at all. Then the loop is: screenshot, read the coordinates of the one
-  control you want, tap it, and screenshot again to confirm the tap landed. Three rules make it trustworthy:
+  where the local tooling drives no taps at all.
+  **Read `e2e/device-atlas-<model>.md` BEFORE taking a screenshot**, because the screen may already be mapped:
+  `e2e/device-atlas-oneplus3t.md` holds the 3T's launcher, widget picker and dialog coordinates. Replay what is
+  there; screenshot only what is missing or what a verification says has moved; then WRITE BACK what you learned, so
+  the next session replays instead of re-reading. A screen measured twice is a session wasted.
+  Where nothing is mapped, the loop is: screenshot, read the coordinates of the one control you want, tap it, and
+  screenshot again to confirm the tap landed. Three rules make it trustworthy:
   - **Verify after every tap.** A coordinate is a guess about a moving screen, so an unverified tap proves nothing
     and can land anywhere. The confirming screenshot is part of the step, not an optional extra.
   - **Ask for one control at a time**, with the question naming what to find and what to report ("give the centre
     x,y of the ALLOW button, and say if it is absent"). A list of every clickable box invites a tap on the wrong one.
-  - **Coordinates are per device and per density,** so they are never reused between phones or across a display-size
-    change, and never written into a plan as a constant. Re-read them each run.
+  - **A coordinate is keyed on `model + panel + density + screen state`,** so it lives in that device's atlas under
+    the state it was measured in, and never in a plan as a constant. It is void the moment any part of the key
+    changes: the Find X8's display-size override (560 physical, 480 effective) moves every tap point while the panel
+    stays the same.
   This is a fallback for reaching a screen, never a way to prove what is on one: a claim in the records still needs a
   logcat line, an alarm dump or another measurement.
 - **Saving evidence.** Save the evidence where the plan says, under `~/athan-device-sweep/session<N>/`.
