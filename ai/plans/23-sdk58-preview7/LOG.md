@@ -128,6 +128,103 @@ which is decision 1's deliberate step ahead. The `react-native-screens` peer war
 remains is pre-existing and deliberate: `jest-expo > jest-watch-typeahead@2.2.1` wants Jest 29 while this project is
 on Jest 30 on purpose (`ai/AGENTS.md`, "Deliberately ahead of Expo's pins").
 
+## Step 4: the device proof STOPPED. The Android widgets are broken.
+
+**The 3T renders `undefined is not a function` in place of both placed widgets** after installing 1.28.39. It
+survives a force-stop, a relaunch, a fresh snapshot push and the minute tick, so it is a real regression rather than
+a stale card. The phone previously ran 1.28.24 with working widgets.
+
+Everything else on the phone is healthy, which is what makes this a widget-render fault rather than a broken build:
+`yarn check:device` PASSES with 29 future prayer alerts armed at real London times, all 8 providers register, and
+the app launches normally. That also means the `expo-background-task` patch compiled correctly.
+
+### Two wrong turns, both corrected, both worth recording
+
+1. **`aapt` is not installed on this machine, and `grep -c` on a missing command returns `0`.** The APK
+   provider check from `ai/AGENTS.md` therefore printed `0` and read as "widget-less APK", which is the documented
+   signal to STOP and not install. The APK was fine: `aapt2` shows all 8 providers, and `aapt2` also resolves
+   `.PrayerWidgetProvider` to its full package name, which the documented grep would have missed anyway. The rule in
+   `ai/AGENTS.md` is now rewritten to use `aapt2`, to check the tool exists first, and to cross-check the prebuilt
+   source manifest when a count surprises you. **A guard that cannot tell "absent" from "unmeasured" is worse than
+   no guard.**
+2. **"The layout is missing from the release bundle" was wrong.** `AthanHomeWidget`, `typeof Column` and
+   `grantedWidthDp` are all absent from the bundle's strings, but they are equally absent from the KNOWN-GOOD
+   builds: that is ordinary minification, not a missing module. Comparing against a working artefact is what caught
+   it.
+
+### What is ruled out, with the evidence
+
+| Suspect | Verdict |
+| --- | --- |
+| `@expo/ui` removed a component or modifier | NO. Every element and modifier the layout uses is still exported; `diff` of the built `jetpack-compose` tree shows the only runtime JS change is the ADDED `cornerRadius` |
+| `expo-widgets` JS or Hermes runtime changed | NO. `bundle/` source is byte-identical 58.0.3 to 58.0.7, and `WidgetsHermesRuntime.kt` is identical |
+| The converter dropped an element | NO. Its accepted-name list gained `cornerRadius` and lost nothing |
+| Our rebuilt patch broke the converter | NO. `openApp`, `launchAppAction` and the `props.openApp` branch are all present and the guard suite passes |
+| The `'widget'` Babel transform stopped serializing the Android branch | NO. Ran the transform directly at preview.7: `typeof Column` 1, `grantedWidthDp` 1, `fillMaxSize()` 8, `openApp:true` 1, `createWidget` 8, 25,189 bytes |
+| The feature flags were off in the build | NO. The build's own `.env` carries `EXPO_PUBLIC_ANDROID_WIDGETS=1` and `EXPO_PUBLIC_IOS_WIDGETS=1` |
+| The layout registry lost its kinds | NO. All 8 kinds point at `./widgets/PrayerWidget` |
+
+So the throw happens at RENDER time inside the widget's Hermes runtime, which swallows it: nothing reaches logcat,
+and the app's own Pino lines are stripped in release. The remaining candidates are React 19.3.0, RN 0.88.0-rc.2 and
+Reanimated 4.7.0.
+
+### The bisect
+
+The owner's instruction on 2026-09-26: 🐋  "roll back only to bisect and then roll forward again... we actually want
+to roll forward and fix everything fixed forward." So no upgrade is reverted; the bisect builds older refs to find
+the breaking change, and the fix lands forward on top of the full upgrade.
+
+Built `e073679f` (step 1's merge: preview.7 with React 19.2.3 and Reanimated 4.6.0). `BUILD-PROD OK`, 377s.
+**Note for the next session: `build-prod.zsh` refuses to build a ref whose `yarn.lock` differs from the main
+checkout**, so a bisect must `git checkout <ref> -- yarn.lock package.json && yarn install` first, and roll forward
+again afterwards.
+
+**BISECT RESULT: step 1 alone already breaks the widgets.** Installed 1.28.35 (preview.7, React 19.2.3, RN rc.0,
+Reanimated 4.6.0) and both widgets still render `undefined is not a function`. That **exonerates React 19.3.0, RN
+0.88.0-rc.2 and Reanimated 4.7.0**, and puts the cause inside step 1: the SDK package bump, the rebuilt patches, or
+the `frame()` split.
+
+Of step 1's three changes, the `frame()` split is the only SOURCE change, and both edited sites are inside the iOS
+branch (`HStack`, `frame`), which the Android runtime never evaluates. The patches are proven working by other
+evidence: `yarn check:device` passes (the background-task patch compiled) and all 8 providers register. So the
+prime suspect is the `@expo/ui` / `expo-widgets` 58.0.3 to 58.0.7 bump itself.
+
+**What the next session must NOT redo.** Every library-side comparison came back additive-only:
+
+| Compared | Result |
+| --- | --- |
+| `@expo/ui` built `jetpack-compose` tree, 58.0.3 vs 58.0.7 | Only runtime JS change is the ADDED `cornerRadius` modifier; `Column/index.js`, `Button/index.js` byte-identical |
+| `@expo/ui` `ModifierRegistry.kt` | Only ADDS `CornerRadiusParams` and a no-op `cornerRadius` registration |
+| `expo-widgets` whole package | Only the converter (our patch + `cornerRadius`), `with-node.sh`, CHANGELOG and metadata |
+| `expo-widgets` `bundle/` source and `WidgetsHermesRuntime.kt` | Byte-identical |
+| The Glance fork both resolve | Identical: `io.github.jakex7.peek:peek-emittables:0.3.0`, `androidx.glance:glance:1.2.0` |
+
+**The shipped widget bundle is correct**, which is the most useful fact recorded here.
+`node_modules/expo-widgets/bundle/build/ExpoWidgetsLayoutRegistry.bundle` is built at install time from the app's
+own layout, and reading it directly shows the Android branch present and current: `typeof Column` 1,
+`grantedWidthDp` 1, `fillMaxSize` 8, `openApp` 1, and the POST-fix split `frame({height:ROW_HEIGHT})` with zero
+occurrences of the old mixed form. So the layout serializes, ships and is up to date; the throw happens when the
+runtime EVALUATES it.
+
+**Where to start next time.** Read that bundle (it is plain text) and compare the globals the body references
+against what the Android runtime injects at `bundle/ui-globals.android.ts`, which re-exports
+`@expo/ui/jetpack-compose` and `.../modifiers` wholesale. The body's unconditional preamble is the first suspect
+because it runs before the platform branch:
+
+```js
+var ATextEl=Text; var AImageEl=Image; var APad=padding; var ATimeEl=Text;
+```
+
+`padding` is the one name that exists in BOTH the swift-ui and jetpack surfaces with different signatures
+(`widgets/PrayerWidget.tsx` says so in a comment), so it is the highest-value thing to check first. A one-element
+diagnostic layout (a single `Text`, no modifiers) built and placed would settle in one build whether ANY Android
+layout renders at 58.0.7, which is the cheaper question than bisecting further.
+
+**State left behind.** No upgrade was reverted, per the owner's instruction to fix forward: `uat-2` keeps all three
+steps and `node_modules` was rolled forward to the full set (expo preview.7, React 19.3.0, Reanimated 4.7.0). The
+3T is left on the bisect build 1.28.35, whose widgets are broken in the same way 1.28.39's are; its alarms and
+notifications are healthy either way.
+
 ### Reanimated
 
 - Branch: `chore/reanimated-4-7`.
