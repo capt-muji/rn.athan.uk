@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.28.51",
+    "version": "1.28.52",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -16,6 +16,9 @@
         "usesNonExemptEncryption": false
       },
       "bundleIdentifier": "com.mugtaba.athan",
+      "entitlements": {
+        "com.apple.developer.usernotifications.time-sensitive": true
+      },
       "infoPlist": {
         "CFBundleDisplayName": "Athan",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications"
