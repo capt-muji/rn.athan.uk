@@ -16,6 +16,7 @@ import {
   prayerNotificationIdentifier,
   reminderNotificationIdentifier,
 } from '@/device/notifications';
+import { athanAndroidChannelId, extrasAndroidChannelId, reminderAndroidChannelId } from '@/shared/notifications';
 import { createPrayerDatetime } from '@/shared/time';
 import { AlertType, type ReadablePrayer, ScheduleType } from '@/shared/types';
 
@@ -157,7 +158,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     );
 
     const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
-    expect(trigger.channelId).toBe('athan_5_v2');
+    expect(trigger.channelId).toBe(athanAndroidChannelId(4));
   });
 
   it('attaches the fixed extras channel for Sunrise (standard page, extras audio — ISSUES #23)', async () => {
@@ -170,7 +171,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     );
 
     const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
-    expect(trigger.channelId).toBe('extras_at_time');
+    expect(trigger.channelId).toBe(extrasAndroidChannelId);
   });
 
   it('attaches the fixed extras channel for extras prayers (Last Third)', async () => {
@@ -183,7 +184,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     );
 
     const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
-    expect(trigger.channelId).toBe('extras_at_time');
+    expect(trigger.channelId).toBe(extrasAndroidChannelId);
   });
 
   it('creates the extras channel before scheduling an extras Sound notification (Android)', async () => {
@@ -197,7 +198,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
       0
     );
 
-    expect(setNotificationChannelAsync).toHaveBeenCalledWith('extras_at_time', expect.anything());
+    expect(setNotificationChannelAsync).toHaveBeenCalledWith(extrasAndroidChannelId, expect.anything());
   });
 
   it('creates the selected athan channel before scheduling a daily-prayer Sound notification (Android)', async () => {
@@ -212,8 +213,8 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     );
 
     expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-      'athan_5_v2',
-      expect.objectContaining({ sound: 'athan5.mp3', importance: AndroidImportance.MAX })
+      athanAndroidChannelId(4),
+      expect.objectContaining({ sound: 'athan5.mp3', importance: AndroidImportance.HIGH })
     );
   });
 
@@ -235,7 +236,9 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
       6
     );
 
-    const athanCalls = (setNotificationChannelAsync as jest.Mock).mock.calls.filter(([id]) => id === 'athan_7_v2');
+    const athanCalls = (setNotificationChannelAsync as jest.Mock).mock.calls.filter(
+      ([id]) => id === athanAndroidChannelId(6)
+    );
     expect(athanCalls).toHaveLength(1);
   });
 
@@ -286,9 +289,12 @@ describe('addOneScheduledReminderForPrayer channel wiring', () => {
       AlertType.Sound
     );
 
-    expect(setNotificationChannelAsync).toHaveBeenCalledWith('reminder_last_third_15', expect.anything());
+    expect(setNotificationChannelAsync).toHaveBeenCalledWith(
+      reminderAndroidChannelId('Last Third', 15),
+      expect.anything()
+    );
     const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
-    expect(trigger.channelId).toBe('reminder_last_third_15');
+    expect(trigger.channelId).toBe(reminderAndroidChannelId('Last Third', 15));
   });
 
   it('creates no channel and omits channelId for Silent reminders (Android)', async () => {
