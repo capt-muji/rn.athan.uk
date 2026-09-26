@@ -37,6 +37,15 @@ const pluginProps = (name: string): Record<string, unknown> => {
 const nested = (widget: Record<string, unknown>): { supportedFamilies?: unknown } | undefined =>
   widget.ios as { supportedFamilies?: unknown } | undefined;
 
+describe('the iOS entitlements', () => {
+  it('claims the Time Sensitive capability the notification content asks for', () => {
+    // Without the entitlement iOS silently downgrades interruptionLevel 'timeSensitive' to 'active',
+    // so the alert stops breaking through Focus and Do Not Disturb
+    const entitlements = loadAppConfigFresh().ios?.entitlements ?? {};
+    expect(entitlements['com.apple.developer.usernotifications.time-sensitive']).toBe(true);
+  });
+});
+
 describe('the expo-widgets plugin config', () => {
   it('carries every widget nested under ios with no deprecated top-level keys', () => {
     const widgets = pluginProps('expo-widgets').widgets as Array<Record<string, unknown>>;
