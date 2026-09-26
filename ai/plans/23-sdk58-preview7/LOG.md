@@ -283,3 +283,92 @@ notifications are healthy either way.
 - `components/modals/Modal.tsx` was NOT edited, confirmed by `git status components/` printing nothing. That is the
   point: it is the app's only `entering`/`exiting` site, and an unchanged file is what makes the before/after
   comparison on device mean anything.
+
+## Replan, 2026-09-26: the root cause, measured off-device
+
+The row was NEEDS REPLAN with a strategy of climbing the version ladder on the 3T, one production build per rung.
+That strategy is REPLACED, because the cause was found on this Mac in about 40 seconds per version.
+
+### What the previous session's evidence could not see
+
+Its table of ruled-out suspects was correct and is kept. What it never did was LOAD the widget runtime bundle. It
+compared `expo-widgets` and `@expo/ui` as source trees, found the diff additive (`cornerRadius`, an iOS
+`with-node.sh` fix, version strings), and concluded the render must be failing inside our layout. It also recorded
+`android/build.gradle` as unexamined; it differs only by two version strings.
+
+### The reproduction, on this Mac, with no phone
+
+`expo-widgets` ships the two scripts that build what runs on the device:
+
+- `scripts/build-layout-registry.mjs` serializes the app's own layouts into `ExpoWidgetsLayoutRegistry.json`;
+- `scripts/build-bundle.mjs` builds `ExpoWidgets.bundle`, the runtime the widget process evaluates.
+
+Both run against this checkout. Loading the built Android bundle with `vm.runInThisContext` throws immediately:
+
+```
+TypeError: (0 , n.memo) is not a function
+```
+
+That is the phone's `undefined is not a function`, and it happens at bundle LOAD, before any layout runs, which is
+why no amount of layout bisecting would have found it.
+
+### The chain
+
+```
+bundle/ui-globals.android.ts
+  -> @expo/ui/jetpack-compose            (export * from, so everything reachable is evaluated)
+     -> LazyColumn/index.js              (58.0.7 added: import { LazyItems } from '../LazyItems')
+        -> LazyItems/index.js
+           -> recycling/useRecycledRows.js
+              -> import { memo, ... } from 'react'
+              -> const RecycledRow = memo(...)   <- MODULE scope
+```
+
+`bundle/react-stub.ts` exports five names: `Fragment`, `Children`, `isValidElement`, `createContext`,
+`useContext`. No `memo`. Our layout never mentions `LazyColumn`; reachability from the entry is enough.
+
+### The version sweep, both platforms
+
+Each pair installed in the scratch worktree, nested copy removed, both bundles built and loaded:
+
+| `@expo/ui` + `expo-widgets` | Android | iOS |
+| --- | --- | --- |
+| 58.0.3 | LOAD OK | LOAD OK |
+| 58.0.4 | LOAD OK | LOAD OK |
+| **58.0.5** | **LOAD OK** | **LOAD OK** |
+| 58.0.6 | LOAD OK | LOAD THROW `(0 , o.memo)` |
+| 58.0.7 | LOAD THROW `(0 , n.memo)` | LOAD THROW `(0 , n.memo)` |
+
+**iOS breaks one version earlier, through a different module** (`swift-ui/List/DataListForEach.js`), and no session
+had ever tested it. The planned ladder was Android-only and would have stopped at 58.0.6, shipping a broken iOS
+bundle. 58.0.5 is the last version where both load.
+
+With both at 58.0.5, the real serialized layout was driven through `__expoWidgetRender` with a real snapshot: five
+kinds x three prop shapes, 15 of 15 rendered, each rooted at `Button` (session 15c's `AOpenApp` wrapper), 49 nodes
+for a medium, 12 for a small, 8 for the props-less placeholder. The same five kinds threw on every combination at
+58.0.7.
+
+### Two traps worth recording
+
+1. **The nested copy.** `expo-widgets@58.0.7` declares `@expo/ui ~58.0.7`, so pinning `@expo/ui` alone installs
+   58.0.5 flat AND 58.0.7 nested under `node_modules/expo-widgets/node_modules/`, which is the copy Metro resolves
+   from inside `expo-widgets`. The flat pin read 58.0.5 while the bundle still threw. Worse, **yarn does not prune
+   a nested copy left by an earlier install**: after setting both packages to 58.0.5 the stale nested 58.0.7
+   survived and produced a false THROW for 58.0.5 and 58.0.6 until it was removed by hand. Every measurement in
+   the table above was taken after `rm -rf node_modules/expo-widgets/node_modules`.
+2. **A missing-name guard would have been wrong.** A static walk of every `import ... from 'react'` reachable from
+   each entry, minus the stub's five exports, reports `createElement`, `useCallback`, `useEffect`,
+   `useLayoutEffect`, `useMemo`, `useRef` (plus `useState` on iOS) in EVERY version from 58.0.3 to 58.0.7,
+   including the ones that work perfectly. They never throw because they are only called inside component bodies
+   the widget runtime never invokes. Only a module-scope call breaks. So the guard must build the bundle and load
+   it, which is what step 5's test does.
+
+### What the replan ships
+
+Step 4 pins both packages to an exact `58.0.5` (a `~` admits the broken versions), renames the `expo-widgets`
+patch, and proves it on the 3T. Step 5 adds `shared/__tests__/widgetRuntimeLoads.test.ts`, which builds the real
+runtime bundle for both platforms and evaluates each, plus the `ai/AGENTS.md` invariant. No workaround is written
+for the library: an upstream regression is upstream's to fix.
+
+The suite was 170 suites and 4662 tests green on the exact commit whose build blanked the widget. That is the gap
+step 5 closes.
