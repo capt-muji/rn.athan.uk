@@ -19,6 +19,9 @@ class WidgetRefreshBootReceiver : BroadcastReceiver() {
             // A reboot clears WorkManager's schedule too, so the watchdog is
             // re-enqueued beside the alarm rather than waiting for an app open.
             WidgetRefreshScheduler.ensureWatchdog(context)
+            // Same reason as the tick receiver: a boot-time process has no Expo
+            // module registry, so the listener has to be claimed here too.
+            WidgetRefreshTickListener.ensureRegistered(context)
         }
     }
 }
