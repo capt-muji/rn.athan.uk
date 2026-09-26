@@ -15,7 +15,7 @@ import {
   PRAYERS_ENGLISH,
   REMINDER_INTERVALS,
 } from '@/shared/constants';
-import { AlertType, type ReminderInterval, REMINDER_SLOTS, ScheduleType } from '@/shared/types';
+import { AlertType, REMINDER_SLOTS, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   extraPrayerAlertAtoms,

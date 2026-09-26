@@ -11,7 +11,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 
 import { DEFAULT_REMINDER_SLOT_INTERVALS } from '@/shared/constants';
 import { transformApiData } from '@/shared/prayer';
-import { AlertType, type ReminderInterval, REMINDER_SLOTS, type ReminderSlot, ScheduleType } from '@/shared/types';
+import { AlertType, REMINDER_SLOTS, type ReminderInterval, type ReminderSlot, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   extraPrayerAlertAtoms,
