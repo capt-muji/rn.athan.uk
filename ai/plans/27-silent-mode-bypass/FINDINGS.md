@@ -137,6 +137,27 @@ or newer.
 | iOS 26+ | AlarmKit | Available, not built. Needs a device on iOS 26 to develop against |
 | iOS 18 on the XS | Nothing | Genuinely blocked. Not a code problem |
 
+## Follow-up session: show the three bypass statuses in Settings (owner, 2026-09-26)
+
+🐋  "I want to show 2 options at the bottom, bypass D&D and bypass silent mode... And then also a 3rd one
+also for background activity... Is there a read API for these 3 things."
+
+Researched against the installed packages. Two of the three need no new dependency; one needs a small
+native addition. The app can only READ these, never set them, which is what the owner asked for.
+
+| Row to show | Android read | iOS read |
+| --- | --- | --- |
+| Do Not Disturb | `getPermissionsAsync().android.interruptionFilter`, already exposed by expo-notifications and filled from `notificationManager.currentInterruptionFilter` (`NotificationPermissionsModule.kt:63`). Values: ALL, PRIORITY, NONE, ALARMS | Not available. iOS exposes no Focus or DND state to apps by design. Show `allowsCriticalAlerts` instead, which is the honest answer to "can we be heard" |
+| Silent mode bypass | Our channels declare `USAGE_ALARM` from 1.28.47, so the bypass is a property of the build. The live ringer mode needs `AudioManager.getRingerMode`, which is native | `allowsCriticalAlerts` from `getPermissionsAsync().ios`, already exposed. It reads false and will stay false |
+| Background activity | `BackgroundTask.getStatusAsync()`, already a dependency. Returns `Available` or `Restricted` | Same call, reflects Background App Refresh |
+
+**The one gap worth knowing before scoping it.** `NotificationManager.isNotificationPolicyAccessGranted()`
+is the exact answer to "are we allowed to bypass DND", and it is NOT in expo-notifications' JS surface. It
+needs a small native module or a config plugin. Everything else on the table above is reachable today.
+
+Android version naming differs across skins, but `currentInterruptionFilter` is stable platform API, so the
+row reads the constant and maps it to words rather than reading any OEM label.
+
 ## Open items
 
 1. **AlarmKit for iOS 26+ users** is a real session, blocked only on a test device running iOS 26. It would
