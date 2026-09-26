@@ -89,8 +89,8 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
   it('opens on the athan, reminder and interval saved for the prayer', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderAlertType(ScheduleType.Standard, FAJR, AlertType.Sound);
-    setReminderInterval(ScheduleType.Standard, FAJR, 15);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    setReminderInterval(ScheduleType.Standard, FAJR, 0, 15);
     openSheetFor(FAJR);
 
     await render(<AlertSheet />);
@@ -105,7 +105,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
   it('opens on 5 minutes when the saved interval is not one the stepper offers', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderInterval(ScheduleType.Standard, FAJR, 7 as ReminderInterval);
+    setReminderInterval(ScheduleType.Standard, FAJR, 0, 7 as ReminderInterval);
     openSheetFor(FAJR);
 
     await render(<AlertSheet />);
@@ -174,7 +174,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
   it('turns the reminder off when the athan is turned off', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Silent);
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
@@ -187,7 +187,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
   it('switches the reminder back on with the sound it had', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderAlertType(ScheduleType.Standard, FAJR, AlertType.Sound);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
@@ -201,7 +201,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
   it('moves the reminder sound to the one pressed', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Silent);
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
@@ -233,13 +233,13 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     await closeSheet();
     await settle();
 
-    expect(getReminderAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Silent);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Silent);
   });
 
   it('saves the reminder sound chosen when the sheet closes', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Silent);
     openSheetFor(FAJR);
     await render(<AlertSheet />);
     await fireEvent.press(reminderOption('Sound'));
@@ -247,14 +247,14 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     await closeSheet();
     await settle();
 
-    expect(getReminderAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
   });
 
   it('saves the interval stepped to when the sheet closes', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
-    setReminderInterval(ScheduleType.Standard, FAJR, 10);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Silent);
+    setReminderInterval(ScheduleType.Standard, FAJR, 0, 10);
     openSheetFor(FAJR);
     await render(<AlertSheet />);
     await fireEvent.press(screen.getByRole('button', { name: 'Increase to 15 min' }));
@@ -264,7 +264,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     await closeSheet();
     await settle();
 
-    expect(getReminderInterval(ScheduleType.Standard, FAJR)).toBe(15);
+    expect(getReminderInterval(ScheduleType.Standard, FAJR, 0)).toBe(15);
   });
 
   it('saves nothing and schedules nothing when the sheet closes unchanged', async () => {
@@ -376,7 +376,7 @@ describe('the alert sheet when a locked control lets a press through, Friday 11 
     await settle();
 
     expect(screen.getByRole('switch')).not.toBeChecked();
-    expect(getReminderAlertType(ScheduleType.Standard, DHUHR)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, DHUHR, 0)).toBe(AlertType.Off);
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
   });
 
@@ -389,8 +389,8 @@ describe('the alert sheet when a locked control lets a press through, Friday 11 
     async (arrow, interval) => {
       showLondonDay('2026-09-11', '14:00');
       setPrayerAlertType(ScheduleType.Standard, DHUHR, AlertType.Silent);
-      setReminderAlertType(ScheduleType.Standard, DHUHR, AlertType.Silent);
-      setReminderInterval(ScheduleType.Standard, DHUHR, interval);
+      setReminderAlertType(ScheduleType.Standard, DHUHR, 0, AlertType.Silent);
+      setReminderInterval(ScheduleType.Standard, DHUHR, 0, interval);
       openSheetFor(DHUHR);
       await render(<AlertSheet />);
 
@@ -399,7 +399,7 @@ describe('the alert sheet when a locked control lets a press through, Friday 11 
       await settle();
 
       expect(screen.getByText(`${interval} min`)).toBeOnTheScreen();
-      expect(getReminderInterval(ScheduleType.Standard, DHUHR)).toBe(interval);
+      expect(getReminderInterval(ScheduleType.Standard, DHUHR, 0)).toBe(interval);
       expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
     }
   );

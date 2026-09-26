@@ -19,6 +19,7 @@ import {
   BACKGROUND_TASK_INTERVAL_MINUTES,
   BACKGROUND_TASK_NAME,
   DEFAULT_REMINDER_INTERVAL,
+  DEFAULT_REMINDER_SLOT_INTERVALS,
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   NOTIFICATION_REFRESH_HOURS,
@@ -87,11 +88,13 @@ jest.mock('@/stores/sync', () => ({
 // getPrayerArrays HELPER TESTS
 // =============================================================================
 
-/** The three settings an alert sheet closes on */
+/** The settings an alert sheet closes on */
 const sheetAlerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertType.Off) => ({
   atTimeAlert,
-  reminderAlert,
-  reminderInterval: DEFAULT_REMINDER_INTERVAL as ReminderInterval,
+  reminders: [
+    { alert: reminderAlert, interval: DEFAULT_REMINDER_SLOT_INTERVALS[0] as ReminderInterval },
+    { alert: AlertType.Off, interval: DEFAULT_REMINDER_SLOT_INTERVALS[1] as ReminderInterval },
+  ] as const,
 });
 
 describe('getPrayerArrays', () => {
@@ -273,8 +276,8 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     migrateIndexKeyedAlertPreferences(null);
 
     expect(store.get(standardPrayerAlertAtoms[0]!)).toBe(AlertType.Sound);
-    expect(store.get(extraReminderAlertAtoms[4]!)).toBe(AlertType.Silent);
-    expect(store.get(standardReminderIntervalAtoms[2]!)).toBe(20);
+    expect(store.get(extraReminderAlertAtoms[0][4]!)).toBe(AlertType.Silent);
+    expect(store.get(standardReminderIntervalAtoms[0][2]!)).toBe(20);
   });
 
   it('copies a non-numeric value verbatim rather than re-encoding it to NaN', () => {
@@ -412,9 +415,9 @@ describe('migrateIndexKeyedAlertPreferences', () => {
       [
         'standard',
         PRAYERS_ENGLISH,
-        [standardPrayerAlertAtoms, standardReminderAlertAtoms, standardReminderIntervalAtoms],
+        [standardPrayerAlertAtoms, standardReminderAlertAtoms[0], standardReminderIntervalAtoms[0]],
       ],
-      ['extra', EXTRAS_ENGLISH, [extraPrayerAlertAtoms, extraReminderAlertAtoms, extraReminderIntervalAtoms]],
+      ['extra', EXTRAS_ENGLISH, [extraPrayerAlertAtoms, extraReminderAlertAtoms[0], extraReminderIntervalAtoms[0]]],
     ])(
       'holds one %s alert, reminder and interval atom per name on the list, each saved under that name',
       (type, names, atomArrays) => {
@@ -701,43 +704,43 @@ describe('lastNotificationScheduleAtom', () => {
 
 describe('createReminderAlertAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createReminderAlertAtom(ScheduleType.Extra, 'Duha');
+    const atom = createReminderAlertAtom(ScheduleType.Extra, 'Duha', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of 0 (AlertType.Off)', () => {
     const store = createStore();
-    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
     const value = store.get(atom);
     expect(value).toBe(0); // AlertType.Off
   });
 
   it('creates different atoms for different prayers', () => {
-    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
-    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 'Asr');
+    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
+    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 'Asr', 0);
     expect(atom1).not.toBe(atom2);
   });
 });
 
 describe('createReminderIntervalAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createReminderIntervalAtom(ScheduleType.Extra, 'Duha');
+    const atom = createReminderIntervalAtom(ScheduleType.Extra, 'Duha', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of DEFAULT_REMINDER_INTERVAL', () => {
     const store = createStore();
-    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr', 0);
     const value = store.get(atom);
     expect(value).toBe(DEFAULT_REMINDER_INTERVAL);
   });
@@ -749,18 +752,18 @@ describe('createReminderIntervalAtom', () => {
 
 describe('standardReminderAlertAtoms', () => {
   it('has 6 atoms (one for each standard prayer)', () => {
-    expect(standardReminderAlertAtoms).toHaveLength(6);
+    expect(standardReminderAlertAtoms[0]).toHaveLength(6);
   });
 
   it('all atoms are defined', () => {
-    standardReminderAlertAtoms.forEach((atom) => {
+    standardReminderAlertAtoms[0].forEach((atom) => {
       expect(atom).toBeDefined();
     });
   });
 
   it('atoms have default value of 0', () => {
     const store = createStore();
-    standardReminderAlertAtoms.forEach((atom) => {
+    standardReminderAlertAtoms[0].forEach((atom) => {
       expect(store.get(atom)).toBe(0);
     });
   });
@@ -768,11 +771,11 @@ describe('standardReminderAlertAtoms', () => {
 
 describe('extraReminderAlertAtoms', () => {
   it('has 5 atoms (one for each extra prayer)', () => {
-    expect(extraReminderAlertAtoms).toHaveLength(5);
+    expect(extraReminderAlertAtoms[0]).toHaveLength(5);
   });
 
   it('all atoms are defined', () => {
-    extraReminderAlertAtoms.forEach((atom) => {
+    extraReminderAlertAtoms[0].forEach((atom) => {
       expect(atom).toBeDefined();
     });
   });
@@ -780,20 +783,20 @@ describe('extraReminderAlertAtoms', () => {
 
 describe('standardReminderIntervalAtoms', () => {
   it('has 6 atoms (one for each standard prayer)', () => {
-    expect(standardReminderIntervalAtoms).toHaveLength(6);
+    expect(standardReminderIntervalAtoms[0]).toHaveLength(6);
   });
 
   it('atoms have default value of DEFAULT_REMINDER_INTERVAL', () => {
     const store = createStore();
-    standardReminderIntervalAtoms.forEach((atom) => {
-      expect(store.get(atom)).toBe(DEFAULT_REMINDER_INTERVAL);
+    standardReminderIntervalAtoms[0].forEach((atom) => {
+      expect(store.get(atom)).toBe(DEFAULT_REMINDER_SLOT_INTERVALS[0]);
     });
   });
 });
 
 describe('extraReminderIntervalAtoms', () => {
   it('has 5 atoms (one for each extra prayer)', () => {
-    expect(extraReminderIntervalAtoms).toHaveLength(5);
+    expect(extraReminderIntervalAtoms[0]).toHaveLength(5);
   });
 });
 
@@ -803,31 +806,31 @@ describe('extraReminderIntervalAtoms', () => {
 
 describe('getReminderAlertAtom', () => {
   it('returns correct atom from standardReminderAlertAtoms', () => {
-    const atom = getReminderAlertAtom(ScheduleType.Standard, 0);
-    expect(atom).toBe(standardReminderAlertAtoms[0]);
+    const atom = getReminderAlertAtom(ScheduleType.Standard, 0, 0);
+    expect(atom).toBe(standardReminderAlertAtoms[0][0]);
   });
 
   it('returns correct atom from extraReminderAlertAtoms', () => {
-    const atom = getReminderAlertAtom(ScheduleType.Extra, 0);
-    expect(atom).toBe(extraReminderAlertAtoms[0]);
+    const atom = getReminderAlertAtom(ScheduleType.Extra, 0, 0);
+    expect(atom).toBe(extraReminderAlertAtoms[0][0]);
   });
 
   it('returns different atoms for different indices', () => {
-    const atom0 = getReminderAlertAtom(ScheduleType.Standard, 0);
-    const atom1 = getReminderAlertAtom(ScheduleType.Standard, 1);
+    const atom0 = getReminderAlertAtom(ScheduleType.Standard, 0, 0);
+    const atom1 = getReminderAlertAtom(ScheduleType.Standard, 1, 0);
     expect(atom0).not.toBe(atom1);
   });
 });
 
 describe('getReminderIntervalAtom', () => {
   it('returns correct atom from standardReminderIntervalAtoms', () => {
-    const atom = getReminderIntervalAtom(ScheduleType.Standard, 0);
-    expect(atom).toBe(standardReminderIntervalAtoms[0]);
+    const atom = getReminderIntervalAtom(ScheduleType.Standard, 0, 0);
+    expect(atom).toBe(standardReminderIntervalAtoms[0][0]);
   });
 
   it('returns correct atom from extraReminderIntervalAtoms', () => {
-    const atom = getReminderIntervalAtom(ScheduleType.Extra, 0);
-    expect(atom).toBe(extraReminderIntervalAtoms[0]);
+    const atom = getReminderIntervalAtom(ScheduleType.Extra, 0, 0);
+    expect(atom).toBe(extraReminderIntervalAtoms[0][0]);
   });
 });
 
@@ -843,40 +846,40 @@ describe('setPrayerAlertType constraint enforcement', () => {
   beforeEach(() => {
     // Reset atoms for testing
     store.set(standardPrayerAlertAtoms[0], AlertType.Sound);
-    store.set(standardReminderAlertAtoms[0], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[0][0], AlertType.Sound);
   });
 
   it('disables reminder when at-time alert is set to Off', () => {
     // First verify reminder is enabled
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
 
     // Disable at-time alert
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Off);
 
     // Reminder should also be disabled
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Off);
   });
 
   it('does not affect reminder when at-time alert is set to Silent', () => {
     // Verify initial state
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
 
     // Set at-time to Silent
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Silent);
 
     // Reminder should remain Sound
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
   });
 
   it('does not affect reminder when at-time alert is set to Sound', () => {
     // Set reminder to Silent first
-    store.set(standardReminderAlertAtoms[0], AlertType.Silent);
+    store.set(standardReminderAlertAtoms[0][0], AlertType.Silent);
 
     // Set at-time to Sound
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Sound);
 
     // Reminder should remain Silent
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Silent);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Silent);
   });
 });
 
@@ -1249,7 +1252,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
   const enableFajrAlerts = (atTime: AlertType, reminder: AlertType = AlertType.Off) => {
     store.set(standardPrayerAlertAtoms[0], atTime);
-    store.set(standardReminderAlertAtoms[0], reminder);
+    store.set(standardReminderAlertAtoms[0][0], reminder);
   };
 
   const osIdentifiers = () => Array.from(osState).sort();
@@ -1441,7 +1444,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
   it('schedules the new reminder interval before cancelling the old one', async () => {
     enableFajrAlerts(AlertType.Sound, AlertType.Sound);
-    store.set(standardReminderIntervalAtoms[0], 10);
+    store.set(standardReminderIntervalAtoms[0][0], 10);
     seedPrayerWindow();
 
     const oldTodayId = fajrReminderId(TODAY, 5);
@@ -1685,7 +1688,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     const reminderId = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
     seedReminderRecords([reminderId]);
     osState.add(reminderId);
-    store.set(standardReminderAlertAtoms[0], AlertType.Off);
+    store.set(standardReminderAlertAtoms[0][0], AlertType.Off);
 
     await rescheduleAllNotifications();
 
@@ -1861,11 +1864,11 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     seedDay(TOMORROW, '04:25', '19:53');
     seedDay(DAY_AFTER_TOMORROW, '04:27', '19:51');
     store.set(standardPrayerAlertAtoms[0], AlertType.Silent); // Fajr
-    store.set(standardReminderAlertAtoms[0], AlertType.Silent); // Fajr reminder
+    store.set(standardReminderAlertAtoms[0][0], AlertType.Silent); // Fajr reminder
     store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
     store.set(extraPrayerAlertAtoms[1], AlertType.Silent); // Last Third
     store.set(extraPrayerAlertAtoms[2], AlertType.Silent); // Suhoor
-    store.set(extraReminderAlertAtoms[0], AlertType.Silent); // Midnight reminder
+    store.set(extraReminderAlertAtoms[0][0], AlertType.Silent); // Midnight reminder
 
     await rescheduleAllNotifications();
 

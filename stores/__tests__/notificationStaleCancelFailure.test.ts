@@ -123,8 +123,8 @@ beforeEach(() => {
   }
 
   store.set(standardPrayerAlertAtoms[0], AlertType.Silent);
-  store.set(standardReminderAlertAtoms[0], AlertType.Silent);
-  store.set(standardReminderIntervalAtoms[0], INTERVAL);
+  store.set(standardReminderAlertAtoms[0][0], AlertType.Silent);
+  store.set(standardReminderIntervalAtoms[0][0], INTERVAL);
 
   scheduleMock.mockImplementation(async (request) => {
     const identifier = (request as { identifier: string }).identifier;

@@ -208,16 +208,33 @@ export enum AlertType {
 export type ReminderInterval = 5 | 10 | 15 | 20 | 25 | 30;
 
 /**
+ * Which of a prayer's two reminders a setting belongs to.
+ *
+ * The numbers are a STORAGE CONTRACT in the same way `AlertType`'s are: slot 0 keys are the
+ * single-reminder keys every existing install already wrote, so it can never be renumbered.
+ */
+export type ReminderSlot = 0 | 1;
+
+/** Both reminder slots, in the order the sheet draws them */
+export const REMINDER_SLOTS: readonly ReminderSlot[] = [0, 1];
+
+/** One reminder's own settings: each slot carries its own sound, so two can differ */
+export interface ReminderSetting {
+  /** Reminder alert type (Off/Silent/Sound) */
+  alert: AlertType;
+  /** Minutes before prayer time */
+  interval: ReminderInterval;
+}
+
+/**
  * State for the AlertMenu popup component
- * Tracks both at-time alert and pre-prayer reminder settings
+ * Tracks the at-time alert and both pre-prayer reminders
  */
 export interface AlertMenuState {
   /** At-time alert type (Off/Silent/Sound) */
   atTimeAlert: AlertType;
-  /** Pre-prayer reminder alert type (Off/Silent/Sound) */
-  reminderAlert: AlertType;
-  /** Reminder interval in minutes */
-  reminderInterval: ReminderInterval;
+  /** Both reminders, indexed by slot */
+  reminders: readonly [ReminderSetting, ReminderSetting];
 }
 
 export enum Icon {

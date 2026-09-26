@@ -16,6 +16,8 @@ export interface StepperProps {
   onIncrement: () => void;
   unit?: string;
   disabled?: boolean;
+  /** The other reminder's interval while it is on, so this stepper can neither reach nor offer it */
+  taken?: number | null;
 }
 
 // =============================================================================
@@ -34,9 +36,18 @@ export interface StepperProps {
  *   unit="min"
  * />
  */
-export default function Stepper({ value, onDecrement, onIncrement, unit = 'min', disabled }: StepperProps) {
-  const canDecrement = !disabled && stepReminderInterval(value, -1) !== null;
-  const canIncrement = !disabled && stepReminderInterval(value, 1) !== null;
+export default function Stepper({
+  value,
+  onDecrement,
+  onIncrement,
+  unit = 'min',
+  disabled,
+  taken = null,
+}: StepperProps) {
+  const nextDown = stepReminderInterval(value, -1, taken);
+  const nextUp = stepReminderInterval(value, 1, taken);
+  const canDecrement = !disabled && nextDown !== null;
+  const canIncrement = !disabled && nextUp !== null;
 
   return (
     <View style={[styles.container, disabled && styles.disabled]}>
@@ -44,7 +55,7 @@ export default function Stepper({ value, onDecrement, onIncrement, unit = 'min',
         accessibilityRole='button'
         // The glyph is a minus sign, which reads as nothing useful; name the action and
         // the unit so the control is usable without seeing the value beside it
-        accessibilityLabel={`Decrease to ${value - 5} ${unit}`}
+        accessibilityLabel={`Decrease to ${nextDown ?? value} ${unit}`}
         accessibilityState={{ disabled: !canDecrement }}
         style={[styles.button, !canDecrement && styles.buttonDisabled]}
         onPress={() => {
@@ -61,7 +72,7 @@ export default function Stepper({ value, onDecrement, onIncrement, unit = 'min',
       </View>
       <Pressable
         accessibilityRole='button'
-        accessibilityLabel={`Increase to ${value + 5} ${unit}`}
+        accessibilityLabel={`Increase to ${nextUp ?? value} ${unit}`}
         accessibilityState={{ disabled: !canIncrement }}
         style={[styles.button, !canIncrement && styles.buttonDisabled]}
         onPress={() => {

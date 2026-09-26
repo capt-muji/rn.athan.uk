@@ -9,9 +9,9 @@
 import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { DEFAULT_REMINDER_INTERVAL } from '@/shared/constants';
+import { DEFAULT_REMINDER_SLOT_INTERVALS } from '@/shared/constants';
 import { transformApiData } from '@/shared/prayer';
-import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
+import { AlertType, type ReminderInterval, REMINDER_SLOTS, type ReminderSlot, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   extraPrayerAlertAtoms,
@@ -85,12 +85,15 @@ export const resetAlarms = (): void => {
   Database.database.clearAll();
   jest.clearAllMocks();
 
-  for (const atoms of [standardPrayerAlertAtoms, extraPrayerAlertAtoms, standardReminderAlertAtoms]) {
-    for (const atom of atoms) store.set(atom, AlertType.Off);
-  }
-  for (const atom of extraReminderAlertAtoms) store.set(atom, AlertType.Off);
-  for (const atom of [...standardReminderIntervalAtoms, ...extraReminderIntervalAtoms]) {
-    store.set(atom, DEFAULT_REMINDER_INTERVAL);
+  for (const atom of [...standardPrayerAlertAtoms, ...extraPrayerAlertAtoms]) store.set(atom, AlertType.Off);
+
+  for (const slot of REMINDER_SLOTS) {
+    for (const atom of [...standardReminderAlertAtoms[slot], ...extraReminderAlertAtoms[slot]]) {
+      store.set(atom, AlertType.Off);
+    }
+    for (const atom of [...standardReminderIntervalAtoms[slot], ...extraReminderIntervalAtoms[slot]]) {
+      store.set(atom, DEFAULT_REMINDER_SLOT_INTERVALS[slot]);
+    }
   }
   store.set(lastNotificationScheduleAtom, 0);
   store.set(soundPreferenceAtom, 0);
@@ -105,8 +108,17 @@ export const resetAlarms = (): void => {
   getAllMock.mockImplementation(async () => [...osState].map((identifier) => ({ identifier })));
 };
 
-/** Switches a prayer's alert to Silent, and its reminder too when given an interval */
-export const enable = (scheduleType: ScheduleType, name: string, reminderInterval?: ReminderInterval): void => {
+/**
+ * Switches a prayer's alert to Silent, and one of its reminders too when given an interval
+ *
+ * @param slot Which reminder the interval belongs to, defaulting to the first
+ */
+export const enable = (
+  scheduleType: ScheduleType,
+  name: string,
+  reminderInterval?: ReminderInterval,
+  slot: ReminderSlot = 0
+): void => {
   const index = getPrayerArrays(scheduleType).english.indexOf(name);
   if (index === -1) throw new Error(`${name} is not on the ${scheduleType} list`);
 
@@ -114,8 +126,8 @@ export const enable = (scheduleType: ScheduleType, name: string, reminderInterva
   store.set((isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms)[index], AlertType.Silent);
   if (reminderInterval === undefined) return;
 
-  store.set((isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[index], AlertType.Silent);
-  store.set((isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms)[index], reminderInterval);
+  store.set((isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[slot][index], AlertType.Silent);
+  store.set((isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms)[slot][index], reminderInterval);
 };
 
 /** Every identifier handed to the OS since the last reset or forgetCalls, with the trigger it was last given */

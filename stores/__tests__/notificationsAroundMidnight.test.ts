@@ -76,10 +76,7 @@ describe('a Standard row read either side of 00:00 and of 06:00', () => {
 
       await rescheduleAllNotifications();
 
-      expect(triggers()).toEqual({
-        ...armedWithReminder(ScheduleType.Standard, name, '2026-06-20', list20),
-        ...armedWithReminder(ScheduleType.Standard, name, '2026-06-21', list21),
-      });
+      expect(triggers()).toEqual(armedWithReminder(ScheduleType.Standard, name, '2026-06-20', list20));
     }
   );
 });
@@ -98,7 +95,7 @@ describe('a Last Third before and at 00:00', () => {
 
   it.each(SHAPES)('arms the 21 June list Last Third $when under that list day', async ({ magrib, fajr, lastThird }) => {
     jest.setSystemTime(new Date('2026-06-20T19:00:00.000Z'));
-    // List 20's night is already over and 22 June is not stored, so only list 21 arms
+    // List 20's night is already over, so the night row's extra list day reaches 21 June's
     storeShape(magrib, fajr);
     enable(ScheduleType.Extra, 'Last Third', 5);
 
