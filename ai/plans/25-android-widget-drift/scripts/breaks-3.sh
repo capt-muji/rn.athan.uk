@@ -30,8 +30,13 @@ check_invariant() {
   # alarm fires, so re-arming here pushes the alarm forward forever.
   grep -q 'updateAll' "$LISTENER" || return 1
   grep -q 'ensureArmed' "$LISTENER" && return 1
-  # The JS entry point registers it.
-  grep -q 'WidgetRefreshTickListener.ensureRegistered' "$MODULE" || return 1
+  # Registration must be bound to the PROCESS, not to a JS data push. Step 6
+  # moved it into OnCreate after the Find X8 was measured holding four
+  # receivers, none of them TIME_TICK, because nothing had pushed since that
+  # process started. A JS-only call site is the defect, so requiring OnCreate is
+  # the invariant; the push-path call may stay as a harmless second arming.
+  perl -0777 -ne 'exit(($_ =~ /OnCreate\s*\{[^}]*WidgetRefreshTickListener\.ensureRegistered/s) ? 0 : 1)' \
+    "$MODULE" || return 1
   return 0
 }
 
@@ -69,9 +74,11 @@ run_break 'double-registration guard removed' "$LISTENER" \
 run_break 'wrong broadcast action' "$LISTENER" \
   's/Intent\.ACTION_TIME_TICK/Intent.ACTION_TIME_CHANGED/' "$B_LISTENER"
 
-# 4. The JS entry point never registers it, so a live app gains nothing.
-run_break 'JS entry point skips the listener' "$MODULE" \
-  's/WidgetRefreshTickListener\.ensureRegistered\(reactContext\)//' "$B_MODULE"
+# 4. Registration falls back to being push-gated: the OnCreate block is removed
+#    and only the JS call site remains. That is the exact state the Find X8 was
+#    measured in, where the listener never existed because nothing had pushed.
+run_break 'registration back behind the JS push' "$MODULE" \
+  's/\n *OnCreate \{.*?\n *\}\n//s' "$B_MODULE"
 
 echo "CAUGHT: $CAUGHT of $EXPECTED"
 if [ "$CAUGHT" = "$EXPECTED" ]; then echo "ALL AS EXPECTED: 1"; else echo "ALL AS EXPECTED: 0"; fi
