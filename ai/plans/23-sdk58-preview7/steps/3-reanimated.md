@@ -106,4 +106,19 @@
     - the two `node -p` commands print `4.7.0` and `0.13.0`;
     - `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0;
     - the suite prints `Test Suites: 170 passed, 170 total` with four `100%` lines;
-    - `components/modals/Modal.tsx` is unchanged in the diff.
+    - `components/modals/Modal.tsx` is unchanged in the diff;
+    - **the pin set is complete.** This check was added during execution, after step 1's install command was found
+      to be one package short of the plan's own measured table (`react-native-screens`). Run it and read the list:
+
+      ```bash
+      node -e "
+      const b=require('/tmp/sdk58probe/package/bundledNativeModules.json');
+      const p=require('./package.json');
+      const all={...p.dependencies,...p.devDependencies};
+      for (const [k,v] of Object.entries(all)) if (b[k] && b[k]!==v) console.log(k, v, '->', b[k]);
+      "
+      ```
+
+      It must print exactly ONE line, `react-native 0.88.0-rc.2 -> 0.88.0-rc.1`, which is decision 1's deliberate
+      step ahead. Any other line is a package the install commands missed: install it, and record the miss in
+      `LOG.md`. A missing package changes nothing until something depends on it, so nothing else catches this.
