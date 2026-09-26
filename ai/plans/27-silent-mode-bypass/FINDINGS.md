@@ -204,6 +204,32 @@ edit cannot drop the entitlement while the content still asks for the level.
 unchanged from the section above: the entitlement is refused for this category, and AlarmKit, the real
 answer, needs iOS 26 and the XS can never run it.
 
+### What the entitlement is actually worth, measured (owner's challenge, 2026-09-26)
+
+The owner tested it and pushed back: if a user can add the app to a Focus's Allowed Apps and be heard
+anyway, what does the entitlement add? The answer, and the correction to this document's first draft:
+**less than "alerts never broke through Focus" implied.** There are two independent routes through a
+Focus, and only one of them needs the entitlement.
+
+| Route | What the user does | Needs the entitlement |
+| --- | --- | --- |
+| A. Allowed Apps | Adds this app to the Focus by name | NO. This has always worked |
+| B. Time Sensitive | Flips the Focus's single "Time Sensitive Notifications" switch | YES. Without it the app is not eligible and the switch silently skips it |
+
+So for a user who has already hand-added the app, the entitlement changes nothing, which is exactly what
+the owner observed on the XS. What it genuinely buys:
+
+1. route B exists at all, which is one switch covering every eligible app rather than a per-app hunt;
+2. **Scheduled Summary is bypassed**: an `active` notification is held and batched into the digest, a
+   time-sensitive one is delivered at its moment. This is independent of DND and needs no allow-list,
+   and for a prayer time a notification delivered hours late in a digest is simply wrong;
+3. the long-press "Deliver Immediately" option appears only for time-sensitive alerts.
+
+It stays because the content already asks for the level, the entitlement makes that request honest rather
+than silently dropped, and it costs one config key. It is NOT the breakthrough the first draft of this
+file called it. Verified in iOS's own log at 22:12:00 with DND on: `urgency: Time-Sensitive`,
+`interruptionSuppression: none`, `suppression=0`, `resolutionReason: mode configuration for application`.
+
 DURABLE LESSON: **an iOS notification level can be requested and silently not granted.** The JS reads
 correct, the native content object reads correct, and nothing throws. The entitlements file is the only
 place the truth appears, so check it whenever a level, not just a permission, is being relied on.
