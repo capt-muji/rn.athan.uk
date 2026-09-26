@@ -10,18 +10,12 @@ import * as Database from '@/stores/database';
 export const updateAndroidChannel = async (sound: number) => {
   if (Platform.OS !== 'android') return;
 
-  const channelId = NotificationUtils.athanAndroidChannelId(sound);
+  await Notifications.setNotificationChannelAsync(
+    NotificationUtils.athanAndroidChannelId(sound),
+    NotificationUtils.athanAndroidChannelConfig(sound)
+  );
 
-  await Notifications.setNotificationChannelAsync(channelId, {
-    name: `Athan ${sound + 1}`,
-    sound: `athan${sound + 1}.mp3`,
-    importance: Notifications.AndroidImportance.MAX,
-    enableVibrate: true,
-    vibrationPattern: [0, 250, 250, 250],
-    bypassDnd: true,
-  });
-
-  return channelId;
+  return NotificationUtils.athanAndroidChannelId(sound);
 };
 
 /**
