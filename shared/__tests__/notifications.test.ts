@@ -252,16 +252,16 @@ describe('createDefaultAndroidChannel', () => {
       Platform.OS = 'ios';
     });
 
-    it('creates the athan_1_v3 channel on the alarm stream with the mp3 sound', async () => {
+    it('creates the athan_1_v4 channel on the alarm stream with the mp3 sound', async () => {
       await createDefaultAndroidChannel();
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-        'athan_1_v3',
+        'athan_1_v4',
         expect.objectContaining({
           name: 'Athan 1',
           sound: 'athan1.mp3',
-          importance: AndroidImportance.MAX,
+          importance: AndroidImportance.HIGH,
           enableVibrate: true,
           vibrationPattern: [0, 250, 250, 250],
           bypassDnd: true,
@@ -280,27 +280,27 @@ describe('createDefaultAndroidChannel', () => {
 // =============================================================================
 
 describe('athanAndroidChannelId', () => {
-  it('builds _v3-suffixed channel IDs', () => {
-    expect(athanAndroidChannelId(0)).toBe('athan_1_v3');
-    expect(athanAndroidChannelId(31)).toBe('athan_32_v3');
+  it('builds _v4-suffixed channel IDs', () => {
+    expect(athanAndroidChannelId(0)).toBe('athan_1_v4');
+    expect(athanAndroidChannelId(31)).toBe('athan_32_v4');
   });
 });
 
 describe('reminderAndroidChannelId', () => {
-  it('builds _v2-suffixed per-prayer × interval channel IDs', () => {
-    expect(reminderAndroidChannelId('Fajr', 5)).toBe('reminder_fajr_5_v2');
-    expect(reminderAndroidChannelId('Istijaba', 30)).toBe('reminder_istijaba_30_v2');
+  it('builds _v3-suffixed per-prayer × interval channel IDs', () => {
+    expect(reminderAndroidChannelId('Fajr', 5)).toBe('reminder_fajr_5_v3');
+    expect(reminderAndroidChannelId('Istijaba', 30)).toBe('reminder_istijaba_30_v3');
   });
 
   it('slugs multi-word prayer names to filename-safe underscores', () => {
-    expect(reminderAndroidChannelId('Last Third', 15)).toBe('reminder_last_third_15_v2');
+    expect(reminderAndroidChannelId('Last Third', 15)).toBe('reminder_last_third_15_v3');
   });
 });
 
 describe('atTimeAndroidChannelId', () => {
   it('routes the 5 daily prayers to the selected athan channel', () => {
-    expect(atTimeAndroidChannelId('Fajr', 0)).toBe('athan_1_v3');
-    expect(atTimeAndroidChannelId('Isha', 31)).toBe('athan_32_v3');
+    expect(atTimeAndroidChannelId('Fajr', 0)).toBe('athan_1_v4');
+    expect(atTimeAndroidChannelId('Isha', 31)).toBe('athan_32_v4');
   });
 
   it('routes Sunrise + all extras to the fixed extras channel', () => {
@@ -347,7 +347,12 @@ describe('every channel this app creates plays on the alarm stream', () => {
 
     const [, config] = (setNotificationChannelAsync as jest.Mock).mock.calls[0];
     expect(config.audioAttributes).toEqual(ALARM_AUDIO_ATTRIBUTES);
-    expect(config.importance).toBe(AndroidImportance.MAX);
+
+    // IMPORTANCE_MAX (5) is deprecated and not a valid channel importance: OxygenOS left a
+    // channel created with it with no behaviour selected at all, so it played nothing and
+    // did not even vibrate. HIGH is the loudest importance a channel may actually carry.
+    expect(config.importance).toBe(AndroidImportance.HIGH);
+    expect(config.importance).not.toBe(AndroidImportance.MAX);
   });
 });
 
@@ -376,7 +381,7 @@ describe('createExtrasAndroidChannel', () => {
         expect.objectContaining({
           name: 'Extra Times',
           sound: EXTRAS_NOTIFICATION_SOUND,
-          importance: AndroidImportance.MAX,
+          importance: AndroidImportance.HIGH,
           enableVibrate: true,
           vibrationPattern: [0, 250, 250, 250],
           bypassDnd: true,
@@ -408,11 +413,11 @@ describe('createAthanAndroidChannel', () => {
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-        'athan_5_v3',
+        'athan_5_v4',
         expect.objectContaining({
           name: 'Athan 5',
           sound: 'athan5.mp3',
-          importance: AndroidImportance.MAX,
+          importance: AndroidImportance.HIGH,
           enableVibrate: true,
           vibrationPattern: [0, 250, 250, 250],
           bypassDnd: true,
@@ -428,7 +433,7 @@ describe('createAthanAndroidChannel', () => {
       await createAthanAndroidChannel(9);
 
       const createdIds = (setNotificationChannelAsync as jest.Mock).mock.calls.map((call) => call[0] as string);
-      expect(createdIds).toEqual(['athan_10_v3']);
+      expect(createdIds).toEqual(['athan_10_v4']);
     });
   });
 });
@@ -460,13 +465,19 @@ describe('deleteLegacyAndroidAudioChannels', () => {
         'reminder_last_third_15',
         'reminder_istijaba_30',
       ];
+      const importanceMaxGeneration = [
+        'extras_at_time_v2',
+        ...Array.from({ length: 32 }, (_, i) => `athan_${i + 1}_v3`),
+        'reminder_fajr_5_v2',
+        'reminder_istijaba_30_v2',
+      ];
 
-      for (const id of [...wavGeneration, ...notificationStreamGeneration]) {
+      for (const id of [...wavGeneration, ...notificationStreamGeneration, ...importanceMaxGeneration]) {
         expect(deletedIds).toContain(id);
       }
 
-      // 11 prayers × 6 intervals of reminders, beside the 32 _v2 athans and the 17 wav ids
-      expect(deletedIds).toHaveLength(116);
+      // 11 prayers × 6 intervals × 2 reminder generations, 32 athans × 3, and the 3 fixed ids
+      expect(deletedIds).toHaveLength(231);
       expect(new Set(deletedIds).size).toBe(deletedIds.length);
       expect(deletedIds).not.toContain(athanAndroidChannelId(0));
       expect(deletedIds).not.toContain(extrasAndroidChannelId);
@@ -582,11 +593,11 @@ describe('createReminderAndroidChannel', () => {
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-        'reminder_fajr_15_v2',
+        'reminder_fajr_15_v3',
         expect.objectContaining({
           name: 'Fajr in 15m Reminder',
           sound: 'reminder_fajr_15.mp3',
-          importance: AndroidImportance.MAX,
+          importance: AndroidImportance.HIGH,
           enableVibrate: true,
           vibrationPattern: [0, 250, 250, 250],
           bypassDnd: true,
@@ -602,7 +613,7 @@ describe('createReminderAndroidChannel', () => {
       await createReminderAndroidChannel('Last Third', 5);
 
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-        'reminder_last_third_5_v2',
+        'reminder_last_third_5_v3',
         expect.objectContaining({ sound: 'reminder_last_third_5.mp3' })
       );
     });

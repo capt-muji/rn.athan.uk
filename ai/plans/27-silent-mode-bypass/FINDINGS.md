@@ -158,6 +158,43 @@ needs a small native module or a config plugin. Everything else on the table abo
 Android version naming differs across skins, but `currentInterruptionFilter` is stable platform API, so the
 row reads the constant and maps it to words rather than reading any OEM label.
 
+## The device proof, and what it exposed
+
+The channel side is proven on the 3T with the silent switch ON. All 13 live channels read
+`usage=USAGE_ALARM`, `flags=0x1` (FLAG_AUDIBILITY_ENFORCED), `mBypassDnd=true`, `mImportance=5`, and zero
+channels remain on the notification stream. The superseded generations all carry `mDeleted=true`, which is
+the tombstone Android keeps in `dumpsys` after a deletion; they are gone from the user's Settings. A verify
+script that counts them as live reports a false FAIL, which is how this was first misread.
+
+**The sound still did not play, and the channel is not the reason.** Evidence gathered in order:
+
+1. The first run used a mock build, whose `athan-storage-dev` database is blank, so no prayer carried a
+   Sound alert and `genNotificationContent` correctly sent `sound: false`. Only two channels existed. That
+   run proved nothing about audio and was wrongly reported as a pass.
+2. With the owner setting Sound plus a 5 minute reminder on every prayer of both schedules, all 12 channels
+   appeared and `alertType: 2` (Sound) was logged for the scheduled Magrib. Still no sound, and **no
+   vibration either**, though the channel carries `mVibration=[0, 250, 250, 250]`.
+3. Silence AND no vibration together rule out the audio stream: a muted stream would still vibrate. The
+   whole alert is being suppressed, not just its audio.
+4. `raw/athan1` resolves in the installed APK (`aapt2 dump resources` gives `resource 0x7f110020 raw/athan1
+   -> res/6N.mp3`, 136 raw entries), so the sound resource is present and correct.
+5. Every posted notification carries ONE key: `0|com.mugtaba.athan|0|athan-notification|10191`.
+
+**The suspected cause is the shared tag from session 7.** `plugins/replacePreviousNotification.js` posts
+every notification under `SHARED_NOTIFICATION_TAG = "athan-notification"` so each replaces the one before
+it (finding 78). Android does not re-alert when a notification is UPDATED in place under the same tag and
+id: the first post of a series alerts, later ones change the shade silently. Five stale Athan notifications
+were sitting on the shade during every test, so each new fire was an update rather than a new post. That
+matches the silence and the missing vibration exactly, and it is unrelated to the alarm-stream work.
+
+`setOnlyAlertOnce` is NOT set anywhere in the app or in `ExpoPresentationDelegate`, so this is Android's own
+same-key update behaviour rather than something the app asks for.
+
+CONFIRMATION STILL OUTSTANDING: fire once against a CLEARED shade. If it sounds, the alarm-stream change is
+correct and complete, and the replace-previous design needs a way to re-alert, such as cancelling the tag
+immediately before posting. If it stays silent with a clear shade, the cause is elsewhere and the alarm
+stream is not sufficient on this OEM.
+
 ## Open items
 
 1. **AlarmKit for iOS 26+ users** is a real session, blocked only on a test device running iOS 26. It would

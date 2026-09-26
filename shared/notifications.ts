@@ -271,28 +271,28 @@ export const ALARM_AUDIO_ATTRIBUTES = {
 
 /**
  * Android channel ID for an at-time Athan sound
- * `_v3` because a channel's sound and audio attributes are immutable once created: the
- * wav→mp3 swap forced `_v2`, and the move to alarm-stream audio forces this generation
+ * `_v4` because a channel's sound, importance and audio attributes are all immutable once
+ * created: the wav→mp3 swap forced `_v2`, alarm-stream audio forced `_v3`, and dropping the
+ * deprecated IMPORTANCE_MAX forces this one
  * (legacy channels are deleted by deleteLegacyAndroidAudioChannels)
  */
-export const athanAndroidChannelId = (soundIndex: number): string => `athan_${soundIndex + 1}_v3`;
+export const athanAndroidChannelId = (soundIndex: number): string => `athan_${soundIndex + 1}_v4`;
 
 /**
  * Android channel ID for a pre-prayer reminder sound (one channel per prayer × interval audio)
- * `_v2` for the same reason the athan channels moved to `_v3`: the first generation was
- * created on the notification stream and its audio attributes can never be changed in place
+ * `_v3` tracks the athan generations for the same reason: neither the audio attributes nor the
+ * importance of an existing channel can be changed in place
  */
 export const reminderAndroidChannelId = (englishName: string, intervalMinutes: ReminderInterval): string => {
   const slug = prayerNameSlug(englishName);
-  return `reminder_${slug}_${intervalMinutes}_v2`;
+  return `reminder_${slug}_${intervalMinutes}_v3`;
 };
 
 /**
  * Android channel ID for the fixed at-time Sunrise + extras sound
- * `_v2` for the same reason as the athan and reminder channels: the first generation
- * is pinned to the notification stream by Android and cannot be re-pointed
+ * `_v3` tracks the athan and reminder generations, for the same immutability reason
  */
-export const extrasAndroidChannelId = 'extras_at_time_v2';
+export const extrasAndroidChannelId = 'extras_at_time_v3';
 
 /**
  * Android channel for an at-time notification: the selected athan's channel
@@ -308,7 +308,7 @@ export const atTimeAndroidChannelId = (englishName: string, soundIndex: number):
 export const athanAndroidChannelConfig = (soundIndex: number) => ({
   name: `Athan ${soundIndex + 1}`,
   sound: `athan${soundIndex + 1}.mp3`,
-  importance: Notifications.AndroidImportance.MAX,
+  importance: Notifications.AndroidImportance.HIGH,
   enableVibrate: true,
   vibrationPattern: [0, 250, 250, 250],
   bypassDnd: true,
@@ -349,7 +349,7 @@ export const createExtrasAndroidChannel = async () => {
     Notifications.setNotificationChannelAsync(extrasAndroidChannelId, {
       name: 'Extra Times',
       sound: EXTRAS_NOTIFICATION_SOUND,
-      importance: Notifications.AndroidImportance.MAX,
+      importance: Notifications.AndroidImportance.HIGH,
       enableVibrate: true,
       vibrationPattern: [0, 250, 250, 250],
       bypassDnd: true,
@@ -400,7 +400,7 @@ export const createReminderAndroidChannel = async (englishName: string, interval
     Notifications.setNotificationChannelAsync(channelId, {
       name: `${englishName} in ${intervalMinutes}m Reminder`,
       sound: `reminder_${slug}_${intervalMinutes}.mp3`,
-      importance: Notifications.AndroidImportance.MAX,
+      importance: Notifications.AndroidImportance.HIGH,
       enableVibrate: true,
       vibrationPattern: [0, 250, 250, 250],
       bypassDnd: true,
@@ -422,17 +422,24 @@ export const createReminderAndroidChannel = async (englishName: string, interval
 export const deleteLegacyAndroidAudioChannels = async () => {
   if (Platform.OS !== 'android') return;
 
-  const legacyAthanIds = Array.from({ length: 16 }, (_, i) => `athan_${i + 1}`);
-  const notificationStreamAthanIds = Array.from({ length: 32 }, (_, i) => `athan_${i + 1}_v2`);
-  const notificationStreamReminderIds = [...PRAYERS_ENGLISH, ...EXTRAS_ENGLISH].flatMap((englishName) =>
-    REMINDER_INTERVALS.map((interval) => `reminder_${prayerNameSlug(englishName)}_${interval}`)
+  const everyPrayerName = [...PRAYERS_ENGLISH, ...EXTRAS_ENGLISH];
+  const supersededReminderIds = everyPrayerName.flatMap((englishName) =>
+    REMINDER_INTERVALS.flatMap((interval) => {
+      const base = `reminder_${prayerNameSlug(englishName)}_${interval}`;
+      return [base, `${base}_v2`];
+    })
   );
+  const supersededAthanIds = Array.from({ length: 32 }, (_, i) => [
+    `athan_${i + 1}`,
+    `athan_${i + 1}_v2`,
+    `athan_${i + 1}_v3`,
+  ]).flat();
   const legacyChannelIds = [
     'reminder',
     'extras_at_time',
-    ...legacyAthanIds,
-    ...notificationStreamAthanIds,
-    ...notificationStreamReminderIds,
+    'extras_at_time_v2',
+    ...supersededAthanIds,
+    ...supersededReminderIds,
   ];
   const promises = legacyChannelIds.map((channelId) =>
     withNativeTimeout(
