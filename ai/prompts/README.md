@@ -312,6 +312,13 @@ One line each; a session's row moves here when it closes. Full detail is in git 
   to state what is installed (the G.1 identity fix shipped in expo-widgets 58.0.1). G.2's blank card
   investigated: not entry count, but the widget extension's cold start. G.2 stays OPEN until the flag
   is on and a placement can be observed.
+- 22. `ai/plans/22-dependency-freshness-sweep/PLAN.md` — DONE 2026-09-26 — the first freshness re-measurement after
+  session 21. 28 of the 30 non-SDK packages were still at their absolute latest a day later; `@types/node` 26.6.3
+  and `lint-staged` 17.6.0 had moved and both shipped, one commit each (1.28.30, 1.28.31). No device: one is typings
+  erased at build, the other a commit-time tool that is never bundled. Babel 8 re-verified against the installed
+  tree and still blocked by `babel-preset-expo`'s 36 Babel 7 dependencies, so it stays with row 18. Durable lesson:
+  a hook that STARTS a tool has not exercised it, so `lint-staged`'s proof came from running it against a file
+  matching its glob, not from a commit that stages none.
 - 21. `ai/plans/21-bump-everything-latest/PLAN.md` — DONE 2026-09-25 — eight non-SDK packages at their absolute
   latest, one commit each (1.27.387 to 1.27.394). jotai 3 cost three fixes: it is ESM-only, it deleted `loadable`
   which the launch sync used, and it renamed the store internals `jest.components.setup.js` reaches into; 82 of 170
