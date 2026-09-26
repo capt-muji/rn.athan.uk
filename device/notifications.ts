@@ -53,6 +53,10 @@ export const prayerNotificationIdentifier = (scheduleType: ScheduleType, english
  * Builds the deterministic identifier for a pre-prayer reminder notification.
  * Includes the interval so changed intervals get a fresh identity (old one is
  * cancelled via the per-prayer clear before re-scheduling).
+ *
+ * The slot is NOT part of it: the interval already separates a prayer's two reminders, because
+ * the sheet cannot put both on one minute, and leaving the slot out keeps the identifier every
+ * install already holds for its single reminder.
  */
 export const reminderNotificationIdentifier = (
   scheduleType: ScheduleType,

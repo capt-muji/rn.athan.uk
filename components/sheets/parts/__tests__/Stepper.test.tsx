@@ -46,11 +46,11 @@ describe('the reminder stepper at 15 min', () => {
 });
 
 describe('the reminder stepper at either end of the intervals', () => {
-  // The names of the dead arrows are pinned as the code gives them (noted in session 4, reported, not changed).
+  // A dead arrow names the value it is already on, because there is nothing beyond it to name.
   // Columns: the value shown, its dead arrow, its live arrow
   it.each<[ReminderInterval, string, string]>([
-    [5, 'Decrease to 0 min', 'Increase to 10 min'],
-    [30, 'Increase to 35 min', 'Decrease to 25 min'],
+    [5, 'Decrease to 5 min', 'Increase to 10 min'],
+    [30, 'Increase to 30 min', 'Decrease to 25 min'],
   ])('at %i min, tells a screen reader %s is disabled and %s is not', async (value, dead, live) => {
     await render(<Stepper value={value} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
 
@@ -60,8 +60,8 @@ describe('the reminder stepper at either end of the intervals', () => {
 
   // Columns: the value shown, its dead arrow, the handler that arrow would call
   it.each<[ReminderInterval, string, Handler]>([
-    [5, 'Decrease to 0 min', 'onDecrement'],
-    [30, 'Increase to 35 min', 'onIncrement'],
+    [5, 'Decrease to 5 min', 'onDecrement'],
+    [30, 'Increase to 30 min', 'onIncrement'],
   ])('at %i min, ignores a press on %s, with no haptic', async (value, dead, handler) => {
     const handlers = { onDecrement: jest.fn(), onIncrement: jest.fn() };
     await render(<Stepper value={value} {...handlers} />);
@@ -70,6 +70,49 @@ describe('the reminder stepper at either end of the intervals', () => {
 
     expect(handlers[handler]).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+});
+
+describe('the reminder stepper beside the other reminder', () => {
+  // The minute the other reminder holds is stepped OVER, so the two can never land together
+  // and the user is never told why: there is nothing to tell, the value simply is not offered.
+  // Columns: the value shown, the taken minute, the arrow's new name
+  it.each<[ReminderInterval, number, string]>([
+    [15, 10, 'Decrease to 5 min'],
+    [15, 20, 'Increase to 25 min'],
+    [10, 5, 'Decrease to 10 min'],
+    [25, 30, 'Increase to 25 min'],
+  ])('at %i min with %i taken, names the arrow %s', async (value, taken, name) => {
+    await render(<Stepper value={value} taken={taken} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
+
+    expect(screen.getByRole('button', { name })).toBeOnTheScreen();
+  });
+
+  // The owner's two cases: a neighbour at the end of the list kills the arrow exactly as the
+  // list's own end does, with no error and no special styling
+  it.each<[ReminderInterval, number, string]>([
+    [10, 5, 'Decrease to 10 min'],
+    [25, 30, 'Increase to 25 min'],
+  ])('at %i min with %i taken, disables the arrow that has nothing left to reach', async (value, taken, dead) => {
+    await render(<Stepper value={value} taken={taken} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
+
+    expect(screen.getByRole('button', { name: dead })).toBeDisabled();
+  });
+
+  it('steps over the taken minute rather than refusing the press', async () => {
+    const handlers = { onDecrement: jest.fn(), onIncrement: jest.fn() };
+    await render(<Stepper value={15} taken={10} {...handlers} />);
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Decrease to 5 min' }));
+
+    expect(handlers.onDecrement).toHaveBeenCalledTimes(1);
+  });
+
+  it('offers every minute again once the other reminder is off', async () => {
+    await render(<Stepper value={15} taken={null} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
+
+    expect(screen.getByRole('button', { name: 'Decrease to 10 min' })).toBeEnabled();
+    expect(screen.getByRole('button', { name: 'Increase to 20 min' })).toBeEnabled();
   });
 });
 

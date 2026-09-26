@@ -11,12 +11,15 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
+import { NOTIFICATION_ROLLING_DAYS } from '@/shared/constants';
 import * as PrayerUtils from '@/shared/prayer';
 import {
   type AlertMenuState,
   AlertType,
   type ISingleApiResponseTransformed,
   type ReminderInterval,
+  type ReminderSetting,
+  REMINDER_SLOTS,
   ScheduleType,
 } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -54,10 +57,12 @@ const store = getDefaultStore();
 const NOW = Date.parse('2026-08-29T08:00:00.000Z');
 const TODAY = '2026-08-29';
 const TOMORROW = '2026-08-30';
-const WINDOW = [TODAY, TOMORROW];
+/** The days a Standard prayer is armed for, from the production window so this follows a change to it */
+const WINDOW = [TODAY, TOMORROW].slice(0, NOTIFICATION_ROLLING_DAYS);
 const MINUTE = 60_000;
 const INTERVAL = 15 as ReminderInterval;
 const OLD_INTERVAL = 30 as ReminderInterval;
+const SECOND_INTERVAL = 25 as ReminderInterval;
 const FAJR = 0;
 const ISHA = 5;
 
@@ -95,20 +100,26 @@ const refusal = Object.assign(new Error('Failed to cancel notification.'), {
   code: 'ERR_NOTIFICATIONS_FAILED_TO_CANCEL',
 });
 
-/** The three settings an alert sheet closes on */
+/** The settings an alert sheet closes on, with the second reminder off unless a test says otherwise */
 const alerts = (
   atTimeAlert: AlertType,
   reminderAlert: AlertType = AlertType.Off,
-  reminderInterval: ReminderInterval = INTERVAL
-): AlertMenuState => ({ atTimeAlert, reminderAlert, reminderInterval });
+  reminderInterval: ReminderInterval = INTERVAL,
+  second: ReminderSetting = { alert: AlertType.Off, interval: SECOND_INTERVAL }
+): AlertMenuState => ({
+  atTimeAlert,
+  reminders: [{ alert: reminderAlert, interval: reminderInterval }, second],
+});
 
 const OFF = alerts(AlertType.Off);
 
-/** What the prayer's bell says: its three saved settings */
+/** What the prayer's bell says: its saved settings */
 const saved = (prayerIndex: number, type = ScheduleType.Standard): AlertMenuState => ({
   atTimeAlert: getPrayerAlertType(type, prayerIndex),
-  reminderAlert: getReminderAlertType(type, prayerIndex),
-  reminderInterval: getReminderInterval(type, prayerIndex),
+  reminders: REMINDER_SLOTS.map((slot) => ({
+    alert: getReminderAlertType(type, prayerIndex, slot),
+    interval: getReminderInterval(type, prayerIndex, slot),
+  })) as unknown as AlertMenuState['reminders'],
 });
 
 /** The at-time records the app holds for one prayer */
@@ -168,7 +179,7 @@ beforeEach(() => {
     Database.database.set(`prayer_${date}`, JSON.stringify(day));
   }
 
-  for (const atom of [...standardPrayerAlertAtoms, ...standardReminderAlertAtoms, ...extraPrayerAlertAtoms]) {
+  for (const atom of [...standardPrayerAlertAtoms, ...extraPrayerAlertAtoms, ...standardReminderAlertAtoms.flat()]) {
     store.set(atom, AlertType.Off);
   }
   // Stamped just now, so only a prayer marked to be put right can make a refresh do anything
@@ -314,7 +325,7 @@ describe('a change the phone refuses', () => {
     armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
     armedEarlier(FAJR, 'Fajr', reminderIdsAt('Fajr', OLD_INTERVAL), Database.addOneScheduledReminderForPrayer);
     store.set(standardPrayerAlertAtoms[FAJR], AlertType.Sound);
-    store.set(standardReminderAlertAtoms[FAJR], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[0][FAJR], AlertType.Sound);
     refusedCancels.add(reminderIdsAt('Fajr', OLD_INTERVAL)[0]);
 
     const result = await commitPrayerAlertChange(
@@ -336,7 +347,7 @@ describe('a change the phone refuses', () => {
     armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
     armedEarlier(FAJR, 'Fajr', reminderIdsAt('Fajr', INTERVAL), Database.addOneScheduledReminderForPrayer);
     store.set(standardPrayerAlertAtoms[FAJR], AlertType.Sound);
-    store.set(standardReminderAlertAtoms[FAJR], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[0][FAJR], AlertType.Sound);
     refusedCancels.add(reminderIdsAt('Fajr', INTERVAL)[0]);
 
     const result = await commitPrayerAlertChange(
@@ -439,7 +450,7 @@ describe('two changes to the same prayer, one behind the other', () => {
     armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
     armedEarlier(FAJR, 'Fajr', reminderIdsAt('Fajr', OLD_INTERVAL), Database.addOneScheduledReminderForPrayer);
     store.set(standardPrayerAlertAtoms[FAJR], AlertType.Silent);
-    store.set(standardReminderAlertAtoms[FAJR], AlertType.Silent);
+    store.set(standardReminderAlertAtoms[0][FAJR], AlertType.Silent);
     refusedCancels.add(athanIds('Fajr')[0]);
     const older = alerts(AlertType.Silent, AlertType.Silent, OLD_INTERVAL);
     const newer = alerts(AlertType.Sound, AlertType.Sound, INTERVAL);
