@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/plans/SDK58-PROGRAMME.md` §12 |
 | Planned at | `a2498afa` (version 1.27.220), 2026-09-18 |
-| Planned by | Planning session on 2026-09-18, GLM 5.3 (design review: Software Architect on GLM 5.3); resumed the same day after the planning skeleton |
+| Planned by | Planning session on 2026-09-18 (design review: Software Architect); resumed the same day after the planning skeleton |
 | Needs first | nothing (the env refresh is DONE: macOS 27 and Xcode 27.0 were the owner's; this planning session upgraded the `android-studio` cask to 2026.1.4.7 and verified build-tools 37.0.0 and platform android-37.0 present; the pre-flight checks all of it) |
 | Steps | 5, each one branch, one commit, one version; then the device proof, section 7 |
 | Device | OnePlus 3T with a local production build (real prayer times), then the final Asr-next mock build |
@@ -74,7 +74,7 @@ The owner's rules that apply, quoted:
    for the list ref (the strict types type `View` as a function component, so `useRef<View>` holds the
    wrong thing), and a 3-tuple `transformOrigin` with `z = 0` (the CSS default; scaleY ignores z, so
    the pivot does not move).
-9. **The design review ran before the steps were written.** Software Architect (GLM 5.3), 2026-09-18:
+9. **The design review ran before the steps were written.** Software Architect, 2026-09-18:
    13 findings, "design sound". All folded in: the icon decision moved to the owner (decision 2), the
    shade before/after pair added to the proof, the 3T dumpsys baseline corrected (the 3T is already
    exact: `window=0 flags=0x5` today, `flags=0x9` after; the brief's "was windowed +1h" described the
@@ -271,7 +271,7 @@ scheduling lock. Before the change each call sends a trigger without `delivery`;
 call sends one field more. No new awaits, no reordering, no stored state. The alarm-clock class
 changes when Android fires the alarm, never what the app does around the call.
 
-Design review: Software Architect (GLM 5.3), 2026-09-18, isolation none (read-only by absolute path).
+Design review: Software Architect, 2026-09-18, isolation none (read-only by absolute path).
 Verdict "design sound" with 13 findings, all folded into this plan (decisions 2, 6, 7; the proof's
 shade pair, dumpsys baseline, sheet check and alarm-count row; the records' Play-policy note). The
 findings and their consequences are recorded in this folder's `LOG.md`.
@@ -333,7 +333,7 @@ anything yet.
    and
    `python3 ~/athan-device-sweep/session5/bin/devcheck.py shot ~/athan-device-sweep/session12/shade-before-open.png`
    within 5 seconds of opening it (it auto-collapses).
-3. Ask `vision` (GLM 5.3 Flash), prompt: "Look at
+3. Ask `vision`, prompt: "Look at
    /Users/muji/athan-device-sweep/session12/shade-before-open.png. Describe the notification's left
    side: is there any square image beside the title, and what does the small icon look like? Reply in
    two sentences."
@@ -541,21 +541,21 @@ Stopping part-way, per step (files to `git checkout --`, new files to delete; `a
 
 | Step | Agent type | Model | Isolation | Why | Prompt |
 | --- | --- | --- | --- | --- | --- |
-| Step 1 | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The commit's review | `steps/1-sdk58-package-wave.md`, part 9 |
-| Step 2 | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The commit's review | `steps/2-alarm-clock-delivery.md`, part 9 |
-| Step 3 | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The commit's review | `steps/3-notification-large-icon.md`, part 9 |
-| Step 4 | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The commit's review | `steps/4-nested-widgets-config.md`, part 9 |
-| Step 5 | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The commit's review | `steps/5-agent-md-stack-docs.md`, part 9 |
-| Docs commit | `Code Reviewer` (a `general` subagent) | GLM 5.3 | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
-| 7.1, 7.4, 7.5, 7.6, 7.7 | `vision` | GLM 5.3 Flash | none | The executor cannot read images | The prompts in section 7 |
-| Any | `Test Results Analyzer` (a `general` subagent) | GLM 5.3 | `worktree` | Only when a full-suite run fails in a way section 10 does not cover; it reports the cause, and the executor then STOPs | "Read `<log path>` in full and name the cause of each failing test, with file and line. Change nothing." |
+| Step 1 | `Code Reviewer` (a `general` subagent) | | `worktree` | The commit's review | `steps/1-sdk58-package-wave.md`, part 9 |
+| Step 2 | `Code Reviewer` (a `general` subagent) | | `worktree` | The commit's review | `steps/2-alarm-clock-delivery.md`, part 9 |
+| Step 3 | `Code Reviewer` (a `general` subagent) | | `worktree` | The commit's review | `steps/3-notification-large-icon.md`, part 9 |
+| Step 4 | `Code Reviewer` (a `general` subagent) | | `worktree` | The commit's review | `steps/4-nested-widgets-config.md`, part 9 |
+| Step 5 | `Code Reviewer` (a `general` subagent) | | `worktree` | The commit's review | `steps/5-agent-md-stack-docs.md`, part 9 |
+| Docs commit | `Code Reviewer` (a `general` subagent) | | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
+| 7.1, 7.4, 7.5, 7.6, 7.7 | `vision` | | none | The executor cannot read images | The prompts in section 7 |
+| Any | `Test Results Analyzer` (a `general` subagent) | | `worktree` | Only when a full-suite run fails in a way section 10 does not cover; it reports the cause, and the executor then STOPs | "Read `<log path>` in full and name the cause of each failing test, with file and line. Change nothing." |
 
 Only the agents listed may be used, and no `model` override is ever passed: every subagent inherits
-GLM 5.3, except `vision`, which runs on GLM 5.3 Flash.
+the session's own model, except `vision`, which runs the vision model.
 
 ## 12. Report to the owner
 
-The final message starts with `🤖  Model: GLM 5.3 (execution session)` and a `Time:` line from
+The final message starts with `Execution session` and a `Time:` line from
 `date '+%H:%M:%S %d.%m.%Y'`, then:
 
 - a few plain sentences: the wave landed (RN 0.88.0-rc.0), every notification is alarm-clock class,

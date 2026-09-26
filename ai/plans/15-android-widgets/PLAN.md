@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/plans/SDK58-PROGRAMME.md` §15 |
 | Planned at | `0ec4fe70` (version 1.27.241), 2026-09-18 |
-| Planned by | Planning session on 2026-09-18, GLM 5.3 |
+| Planned by | Planning session on 2026-09-18 |
 | Needs first | 6 |
 | Steps | 7, each one branch, one commit, one version |
 | Device | OnePlus 3T (8f7ada76), local production + mock builds with `EXPO_PUBLIC_ANDROID_WIDGETS=1` |
@@ -593,12 +593,12 @@ None by the executor. The audit phase (this session, third pass) pushes `uat-2` 
 
 | Step | Agent | Model | Isolation | Why | Prompt |
 | --- | --- | --- | --- | --- | --- |
-| 7 | `vision` | GLM 5.3 Flash | none | the only image reader allowed; reads the 16 device screenshots | in `LOG.md` when reached, one question per batch |
-| all | none | GLM 5.3 | main checkout | owner instruction 2026-09-18: no phase subagents | n/a |
+| 7 | `vision` | | none | the only image reader allowed; reads the 16 device screenshots | in `LOG.md` when reached, one question per batch |
+| all | none | | main checkout | owner instruction 2026-09-18: no phase subagents | n/a |
 
 ## 12. Report to the owner
 
-Written at execution end, starting `🤖  Model: GLM 5.3 (execution session)` with a `Time:` line, and carrying: what
+Written at execution end, starting `Execution session` with a `Time:` line, and carrying: what
 shipped (8 Android widgets, flag, refresh model), the proof (16 screenshots, opened; tests; frame audit), the
 behaviour write-up the owner asked for (stale, refresh cadence, horizon, iOS differences — section 7's findings),
 and the four-line handoff.

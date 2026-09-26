@@ -1,6 +1,6 @@
 # Audit: Session 13, agent tooling
 
-Auditor: GLM 5.3 (audit session), 2026-09-18. Plan: `ai/plans/13-agent-tooling/PLAN.md`, row 7,
+Auditor: the audit session, 2026-09-18. Plan: `ai/plans/13-agent-tooling/PLAN.md`, row 7,
 EXECUTED. Range audited: `origin/uat-2..uat-2` = `9836dac5`, `76b5b9d9`, `006a574a`, `62ef4683`,
 `58839b07`, `7b71d3e9`, `3092fa1f`, `6ee47378`. Worktree: `~/athan-device-sweep/worktrees/audit-13`
 at `6ee47378`, `node_modules` symlinked, removed at the end.
@@ -52,7 +52,7 @@ at `6ee47378`, `node_modules` symlinked, removed at the end.
    passed), and 100% on all four measures: Statements 3969/3969, Branches 1712/1712, Functions
    826/826, Lines 3566/3566. Log kept at `$TMPDIR/opencode/validate-13.log`.
 
-5. **Reviews.** `LOG.md` records a Code Reviewer (GLM 5.3) merge verdict, one round each, for all
+5. **Reviews.** `LOG.md` records a Code Reviewer merge verdict, one round each, for all
    three step commits, and the reviewer's reasoning for accepting proof A's divergence. No reviewer
    asked for a fix, so no section 4 item 8 conditions to re-check. The executor's four autonomous
    rulings are each recorded in `LOG.md` with their cause, which is what the away-owner protocol
@@ -68,7 +68,7 @@ at `6ee47378`, `node_modules` symlinked, removed at the end.
    `/Users/muji/repos/rn.athan.uk/.expo/agent-cli/smoke-2026-09-18T18-36-30-679Z.png`. The
    simulator `AB4F4466` is Shutdown and `simctl listapps` lists no `com.mugtaba.athan`, so the dev
    client is uninstalled as the plan's cleanup requires. This audit re-read all four screenshots
-   with `vision` (GLM 5.3 Flash), one call per image and the plan's exact question: every recorded
+   with `vision`, one call per image and the plan's exact question: every recorded
    answer was confirmed, including the A/B countdown pair `1m 2s` and `1m 32s` (fresh loads from
    Metro), proof A's dev-menu onboarding sheet with its literal "This is the developer menu" copy,
    and no dev FAB in any proof, D's preference forced on included.
@@ -114,5 +114,5 @@ bent.
 Actions under PASS: row 7 set DONE; `ai/prompts/README.md` row 13 added from the plan's section 8
 with `1.27.236` to `1.27.238`; this file committed on `docs/audit-13-20260918-2022` at version
 1.27.240 with `app.json`, `package.json` and the gitignored `android/app/build.gradle` in step;
-reviewed by Code Reviewer (GLM 5.3); merged `--no-ff` into `uat-2`; pushed when the range held
+reviewed by Code Reviewer; merged `--no-ff` into `uat-2`; pushed when the range held
 only this session's audited commits and the audit's own.

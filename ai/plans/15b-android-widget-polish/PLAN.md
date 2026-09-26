@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/prompts/android-widget-polish.md` |
 | Planned at | `825c4ce5` (version 1.27.270), 2026-09-19 |
-| Planned by | Planning session on 2026-09-19, GLM 5.3 (roles collapsed by owner: the same session plans, executes and audits) |
+| Planned by | Planning session on 2026-09-19 (roles collapsed by owner: the same session plans, executes and audits) |
 | Needs first | 9 (DONE) |
 | Steps | 5 code steps, then one build-and-prove pass |
 | Device | OnePlus 3T `8f7ada76`, fleettest mock build; iPhone XS attempt at the end |
@@ -443,10 +443,10 @@ files, drop the step branch.
 
 | Step | Agent | Model | Isolation | Why |
 | --- | --- | --- | --- | --- |
-| Prove pass | `vision` | GLM 5.3 Flash | read-only on screenshot paths | every image measurement and styling verdict; the executor cannot see images |
-| Reviews | none (self-review, recorded in `LOG.md`) | GLM 5.3 | same tree | owner restricted subagents to `vision`, 2026-09-19 |
+| Prove pass | `vision` | | read-only on screenshot paths | every image measurement and styling verdict; the executor cannot see images |
+| Reviews | none (self-review, recorded in `LOG.md`) | | same tree | owner restricted subagents to `vision`, 2026-09-19 |
 
 ## 12. Report to the owner
 
-Starts `🤖  Model: GLM 5.3 (execution session)` and a `Time:` line. What changed (the 8 rulings), what was
+Starts `Execution session` and a `Time:` line. What changed (the 8 rulings), what was
 proven on the 3T, the screenshot paths (opened), any decision waiting, then the four-line handoff.

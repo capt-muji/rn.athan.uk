@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/prompts/android-widget-proportional-sizing.md` |
 | Planned at | `7b38e5a6` (version 1.27.338), 2026-09-24 |
-| Planned by | Planning session on 2026-09-24, GLM 5.3 |
+| Planned by | Planning session on 2026-09-24 |
 | Needs first | nothing |
 | Steps | 4, each one branch, one commit, one version |
 | Device | OnePlus 3T (`8f7ada76`) and Oppo Find X8 (`G6RWBAQ4VKWWEAIZ`), both on a local mock build with `EXPO_PUBLIC_ANDROID_WIDGETS=1` |
@@ -1039,7 +1039,7 @@ different models over the life of the build.
 
 ## 12. Report to the owner
 
-The final message starts with `🤖  Model: GLM 5.3 (execution session)` and a `Time:` line from
+The final message starts with `Execution session` and a `Time:` line from
 `date '+%H:%M:%S %d.%m.%Y'`, then:
 
 - a few plain sentences: what changed, what the granted width measured on each phone, and what the owner read back

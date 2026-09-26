@@ -34,7 +34,7 @@
   `BREAK 1b AS EXPECTED: Tests: 27 failed, 194 passed, 221 total`;
   `BREAK 1c AS EXPECTED: Tests: 2 failed, 219 passed, 221 total`; last line
   `ALL AS EXPECTED: 1`.
-- Review: Code Reviewer (GLM 5.3), verdict `merge`, one round, no findings. Reviewer ran in the
+- Review: Code Reviewer, verdict `merge`, one round, no findings. Reviewer ran in the
   scratch worktree `$TMPDIR/plan9-review-1` (created by the executor because this harness's
   subagent tool has no isolation parameter; removed at session end).
 - Merge: `248d971d10b055e449743af6f065300e97123305` into uat-2 (`Merge
@@ -75,7 +75,7 @@ section 4a the unfinished step was saved
 carried no commit). Step 1 stays merged at `248d971d`. Resume: step 2, part 4 (red), against the
 refreshed plan.
 
-## Replanned, 2026-09-17 (planning session, GLM 5.3)
+## Replanned, 2026-09-17 (planning session)
 
 - Step 2 is refreshed, not rewritten: the contracts, anchors and existing five alarm tests are
   unchanged (all eleven step 2 anchors counted 1 at `7289894a`). What changed: a sixth alarm test
@@ -119,7 +119,7 @@ refreshed plan.
   Events entry for the benign skip difference); `Statements   : 100% ( 3968/3968 )`,
   `Branches     : 100% ( 1712/1712 )`, `Functions    : 100% ( 826/826 )`,
   `Lines        : 100% ( 3565/3565 )`; no `Coverage gate:` line.
-- Review: Code Reviewer (GLM 5.3), verdict `merge`, one round, no fixes (two informational notes on
+- Review: Code Reviewer, verdict `merge`, one round, no fixes (two informational notes on
   the Biome-canonical reflows above). Reviewer ran in the scratch worktree `$TMPDIR/plan9-review-2`
   (created by the executor because this harness's subagent tool has no isolation parameter; removed
   after the verdict).
@@ -180,7 +180,7 @@ refreshed plan.
 - 7.0 item 13, the disarm: the cold launch came up (Athan holds window focus; its embedded read
   DUMP FAILED, and the -2 retry too, with `uiautomator dump` printing `ERROR: null root node
   returned by UiTestAutomationBridge` on a bare screen that is ON and Awake). The Fajr bell tap
-  (970,674) at 00:18:16 left no sheet open: vision (GLM 5.3 Flash) read the 00:19:10 screenshot as
+  (970,674) at 00:18:16 left no sheet open: vision read the 00:19:10 screenshot as
   NO SHEET, Fajr still armed. Cause, from the plan's own mock description: 1.27.202 seeds
   launch-relative rows 1 to 4 minutes out, and a boundary crossing right after the tap dismisses
   the sheet. Waiting ~5 minutes for the launch-relative boundaries to settle, then re-tapping with
@@ -190,7 +190,7 @@ refreshed plan.
   try (`disarm-fajr-sheet-3`, copied as disarm-fajr-sheet.txt): texts hold `Fajr`, descs hold
   `Fajr notification: sound`, and the row states read exactly the session-7 bells (Fajr and its
   reminder sound, Suhoor sound, Asr silent, every other row off). Off tapped (250,1030), back. The Asr and Suhoor sheet reads DUMP FAILED twice
-  each (uiautomator flake persists intermittently); vision (GLM 5.3 Flash) read the screenshots
+  each (uiautomator flake persists intermittently); vision read the screenshots
   instead: Asr sheet open at Silent, Suhoor sheet open at Sound, each matching the item's
   prediction before its Off tap. Evidence: disarm-fajr-sheet-3 read text, disarm-asr-sheet.png,
   disarm-suhoor-sheet.png. Zero verify `alarms-disarmed.txt`: ACTION_FORCE_STOP_RESCHEDULE 1,
@@ -213,7 +213,7 @@ refreshed plan.
   and no line holding `Cancelled` with either 2026-09-25 identifier (grep empty).
 - 7.2.5-6: `alarms-after-return.txt` tag count ACTION_FORCE_STOP_RESCHEDULE 1, NOTIFICATION_EVENT
   exactly 4, the same four instants (both of Friday's re-attempted, neither cancelled, Saturday's
-  kept). ARMED_AFTER_RETURN=4. vision (GLM 5.3 Flash) read after-midnight.png as YES (header
+  kept). ARMED_AFTER_RETURN=4. vision read after-midnight.png as YES (header
   Fri, 25 Sep 2026; rows Magrib 00:40 and Isha 01:30; countdown names Magrib, 37m).
 - 7.2.7 fire 1 (Magrib): safety dump `alarms-before-magrib.txt` held the four instants all at or
   after 00:40; clocks driven 00:39:30 then 00:40:03; posts.py printed `POSTS 1`, `MUTED 0`,
@@ -229,7 +229,7 @@ refreshed plan.
   names Fajr, 29m); `alarms-after-rows.txt` tag count ACTION_FORCE_STOP_RESCHEDULE 1,
   NOTIFICATION_EVENT exactly 4, instants 2026-09-26 22:00:00.000 and 23:30:00.000 (Saturday's) and
   2026-09-27 21:00:00.000 and 22:30:00.000 (Sunday's); Friday's gone. AFTER_ROWS_ALARMS=4.
-  vision (GLM 5.3 Flash) read saturday-list.png as YES.
+  vision read saturday-list.png as YES.
 - 7.3.3-6: clock returned with `devcheck.py auto` (device 2026-09-18 00:46:13 BST, auto_time 1;
   the backward jump passed nothing armed). Final mock built (BUILD-MOCK OK, versionName 1.27.216,
   mocks/simple.ts), installed (`Success`, 1.27.216), `final-cold` launched (embedded read DUMP
@@ -242,7 +242,7 @@ refreshed plan.
 - Phone left as the standing rule holds it: final Asr-next mock build of 88be6ef0 (1.27.216), real
   clock, automatic time on, keyguard showing=false (checked below), Athan open in the foreground,
   stay-awake on usb still set (7.0 item 8; NOT turned off per 7.3 item 7).
-- Record repairs the Reality Checker (GLM 5.3) asked for (verdict `evidence holds`, 2026-09-18
+- Record repairs the Reality Checker asked for (verdict `evidence holds`, 2026-09-18
   00:5x, two NOT PROVEN lines, both in the closing boilerplate): (1) the end-state keyguard check
   7.0 item 7's command prints after the proof, run at 00:53: `adb -s 8f7ada76 shell dumpsys window
   policy | grep -c 'showing=true'` printed `0` (unlocked, as the standing rule holds it);
@@ -250,7 +250,7 @@ refreshed plan.
   `git diff -- releases.json` is empty; no `eas` command ran in this session (both local builds ran
   through ~/athan-device-sweep/session3/bin/build-mock.zsh). Every substantive claim of section 8.1
   the checker read as PROVEN from the raw artifacts.
-- Docs commit review (Code Reviewer, GLM 5.3, first round): verdict `fix first`, one finding, in
+- Docs commit review (Code Reviewer, first round): verdict `fix first`, one finding, in
   this LOG's disarm bullet: the parenthetical "(Asr silent, every other row off)" read as if every
   row but Asr were off, contradicting the Fajr/Suhoor Sound states the same bullet and the plan's
   session-7 bells name. Applied per EXECUTOR-BRIEF.md section 4 item 8's three conditions (own LOG

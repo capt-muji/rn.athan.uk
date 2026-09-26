@@ -1,9 +1,9 @@
 # Execution log: Session 12
 
-Planning-session record, 2026-09-18 (GLM 5.3), for the auditor:
+Planning-session record, 2026-09-18, for the auditor:
 
 - **Design review** (required by `PLANNER-BRIEF.md` section 3 item 5; the delivery change touches
-  notification behaviour): Software Architect (GLM 5.3), read-only, attacked the design. Verdict
+  notification behaviour): Software Architect, read-only, attacked the design. Verdict
   "design sound", 13 findings, all folded into the plan: iOS ignores the `delivery` key
   (`DateTriggerRecord` declares no field; records ignore undeclared keys); the alarm-count residual
   (no AOSP cap; `serialVersionUID` pinned so install-over deserializes; fleet already ran the full
@@ -35,7 +35,7 @@ Planning-session record, 2026-09-18 (GLM 5.3), for the auditor:
   after TCC refused the terminal an unlink) and verified build-tools 37.0.0, platform android-37.0
   and the commandlinetools cask current. The pre-flight checks all of it.
 
-Execution-session record, 2026-09-18 (GLM 5.3):
+Execution-session record, 2026-09-18:
 
 - Pre-flight `bash $TMPDIR/preflight-12.sh 1`: `version 1.27.221`, `PREFLIGHT OK`. Row 6 set IN
   PROGRESS; branch `upgrade/sdk-58-beta` off `uat-2`.
@@ -91,7 +91,7 @@ Execution-session record, 2026-09-18 (GLM 5.3):
 - Step 1 DONE: branch `upgrade/sdk-58-beta`, commit `a7cad721` (1.27.222). Hook's last line:
   `Tests: 4531 passed, 4531 total` with `Statements 100% (3968/3968)`, `Branches 100% (1712/1712)`,
   `Functions 100% (826/826)`, `Lines 100% (3565/3565)`. Break script last line `ALL AS EXPECTED: 1`.
-  Review verdict MERGE, Code Reviewer (GLM 5.3), one round, no findings (the five owner-ruled peer
+  Review verdict MERGE, Code Reviewer, one round, no findings (the five owner-ruled peer
   packages were checked against the committed LOG record and accepted as the plan's own escalation
   path working). Reviewer also re-ran the two List breaks and tsc/biome on the detached commit:
   all as specified. Post-merge on uat-2: tsc exit 0, biome exit 0, full suite 4531 passed. Merge
@@ -106,7 +106,7 @@ Execution-session record, 2026-09-18 (GLM 5.3):
 - Step 2 DONE: branch `feat/alarm-clock-delivery`, commit `3b7ebefd` (1.27.223). Hook's last line:
   `Tests: 4533 passed, 4533 total` with `Statements 100% (3969/3969)`, `Branches 100% (1712/1712)`,
   `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Break script last line `ALL AS EXPECTED: 1`.
-  Review verdict MERGE, Code Reviewer (GLM 5.3), one round, no findings. Merge sha `a8ae4d70`.
+  Review verdict MERGE, Code Reviewer, one round, no findings. Merge sha `a8ae4d70`.
 - Step 3 red: the new suite failed exactly as predicted (`Expected: "./assets/icons/config/
   icon-ios.png" / Received: undefined`). After adding the largeIcon line, the suite passes
   (1/1) and tsc exits 0, but Biome rejects the line shape of ONE expression in
@@ -126,7 +126,7 @@ Execution-session record, 2026-09-18 (GLM 5.3):
 - Step 3 DONE: branch `feat/notification-large-icon`, commit `ae92414d` (1.27.224). Hook's last
   line: `Tests: 4534 passed, 4534 total` with `Statements 100% (3969/3969)`,
   `Branches 100% (1712/1712)`, `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Break
-  script last line `ALL AS EXPECTED: 1`. Review verdict MERGE, Code Reviewer (GLM 5.3), one
+  script last line `ALL AS EXPECTED: 1`. Review verdict MERGE, Code Reviewer, one
   round, no findings (it mechanically verified the sanctioned line-shape deviation is
   token-identical). Merge sha `e60532db`.
 - Step 4 red: the new widgets test failed `Expected: true / Received: false` at
@@ -138,7 +138,7 @@ Execution-session record, 2026-09-18 (GLM 5.3):
 - Step 4 DONE: branch `chore/widgets-nested-ios-config`, commit `2d257511` (1.27.225). Hook's
   last line: `Tests: 4535 passed, 4535 total` with `Statements 100% (3969/3969)`,
   `Branches 100% (1712/1712)`, `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Break
-  script last line `ALL AS EXPECTED: 1`. Review verdict MERGE, Code Reviewer (GLM 5.3), one
+  script last line `ALL AS EXPECTED: 1`. Review verdict MERGE, Code Reviewer, one
   round, no findings. Merge sha `d3405d4f`.
 - Step 5 (docs-only, red skipped by design): the whole table was read back against package.json
   after the edits, every row agrees. Breaks `bash $TMPDIR/breaks-12-5.sh` printed exactly
@@ -147,7 +147,7 @@ Execution-session record, 2026-09-18 (GLM 5.3):
 - Step 5 DONE: branch `docs/agent-md-sdk58-stack`, commit `b69db171` (1.27.226). Hook's last
   line: `Tests: 4535 passed, 4535 total` with `Statements 100% (3969/3969)`,
   `Branches 100% (1712/1712)`, `Functions 100% (826/826)`, `Lines 100% (3566/3566)`. Review
-  verdict MERGE, Code Reviewer (GLM 5.3), one round, no findings. Merge sha `de7e8bb8`.
+  verdict MERGE, Code Reviewer, one round, no findings. Merge sha `de7e8bb8`.
 
 Device proof (section 7), 2026-09-18:
 
@@ -158,7 +158,7 @@ Device proof (section 7), 2026-09-18:
 - 7.1 cold launch of the mock build at 13:41:30 (devcheck `cold`; its uiautomator read failed on
   the known countdown-animation limitation, irrelevant here). Shade opened and both before
   screenshots taken (shade-before.png 13:42:27, shade-before-open.png 13:42:28). vision
-  (GLM 5.3 Flash) on shade-before-open.png: "No: the Athan notification's title 'Isha now' sits
+  on shade-before-open.png: "No: the Athan notification's title 'Isha now' sits
   alone at the left margin with no square image or thumbnail beside it (unlike the WhatsApp
   notification above, which has a circular avatar). The only graphic is the small ~39×39 px app
   icon in the header row: a hollow, vivid-purple outline shape (RGB 90, 58, 247) resembling a
@@ -239,7 +239,7 @@ Device proof (section 7), 2026-09-18:
   1789744640000` = 40s before Asr 16:18, app foreground). My first wait loop wrongly keyed on
   host time (device and host clocks differ), so the fire happened before the capture; the
   notification was still posted and captured at device 16:20. Shade expanded, fire-foreground.png
-  taken. vision (GLM 5.3 Flash): "On the left side of the Athan notification there is no square
+  taken. vision: "On the left side of the Athan notification there is no square
   image beside the title — 'Asr now' starts flush at the left margin, and the only square image
   (a mosque illustration on a purple gradient) sits on the notification's RIGHT side... the small
   icon... is a small hollow purple/indigo outline glyph shaped like a mosque silhouette inside a
@@ -329,7 +329,7 @@ told):
   review across 2 rounds, 2 docs-commit reviews, and 13 vision reads, counting retakes of bad
   or stale captures); 7 owner questions via the channel, all answered same-day.
 
-Revert record, 2026-09-18 (execution subagent, GLM 5.3, owner away; rulings below):
+Revert record, 2026-09-18 (execution subagent, owner away; rulings below):
 
 - Owner rejection (2026-09-18): after reviewing the AFTER half of the 7.5 shade proof pair,
   `/Users/muji/athan-device-sweep/session12/shade-after-open.png` (the review artifact; the

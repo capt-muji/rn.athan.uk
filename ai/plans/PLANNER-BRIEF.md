@@ -29,12 +29,19 @@ right: the named tests, red before green, 100% coverage of what it changed, ever
 invariant. An audit session checks the result before it is pushed, and now also reads the code the executor
 wrote, not only that it matched a script.
 
+**Subagents are banned, except `vision`** (owner, 2026-09-26): 🐋  "I want to completely ban using subagents, and I
+want you to do all the work yourself every single time. So everything in one session, the planning, the execution
+and the audits." You do every review, every search and every design attack yourself, looping on your own work until
+it is right. Where a line below names any other agent type, do that work yourself instead.
+
+`vision` survives because reading an image is a capability that differs between the models running this programme,
+not a preference: a session whose model can see images reads them itself, and one whose model cannot calls `vision`
+with a path and one exact question. A plan may name `vision` for an image, and never names any other agent.
+
 **Never name a model** (owner, 2026-09-24, replacing the 2026-09-15 "show the model" rule). The harness chooses the
 model, and these pages are read by different models across the life of this build, so a model name dates the page
 and misleads the next reader:
 - Start every response with `Planning session`.
-- Name a subagent by its job, never by its model: a subagent always runs the same model as the session that spawned
-  it, for every task including reading an image.
 - No progress table carries a Model column.
 - Write the same rule into every plan: section 11 names no model, and section 12's report starts with
   `Execution session`.
@@ -124,8 +131,8 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    `ai/prompts/README.md`'s decided section. Never leave a decision for the execution session.
 5. **Design.** Choose the approach. Write the invariant as one sentence a test can check. List the alternatives
    rejected, with reasons. Behaviour changes to notifications, data or the schedule get a design review before you
-   write steps: spawn a `Software Architect` or `Code Reviewer` subagent with the design and the code
-   map, asking it to attack the design. Fix what it finds and record the review in section 5.
+   write steps: reread your own design and code map with fresh eyes and attack it, asking what a hostile reviewer
+   would say, what breaks it and what it fails to cover. Fix what you find and record the review in section 5.
 6. **Cut the work into steps.** The standing rule: one finding, one branch, one commit, version-bumped, merged `--no-ff`
    into `uat-2`. A step must be small enough that its change fits in the plan verbatim. Order steps so each leaves
    `uat-2` green.
@@ -153,8 +160,8 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
      fixes (section 4's bar), and when a substitution changes nothing the script prints `BREAK NOT APPLIED: <label>`
      and counts it as not caught, because both other briefs depend on that exact string.
    - **The commit message**, in full, starting `<VERSION> - `.
-   - **The review prompt**, in full, listing what the reviewer must check about the code the executor wrote: every
-     contract kept, every acceptance criterion met, the owner's rules, and nothing beyond the step.
+   - **The review checklist**, in full, listing what the executor must check about the code it wrote, reading its own
+     diff back: every contract kept, every acceptance criterion met, the owner's rules, and nothing beyond the step.
    - **Section 10's anticipated review fixes,** word for word, for anything that touches what the plan fixed. You
      have not seen the code the executor will write, so you cannot predict an ordinary quality note about it, and you
      do not try: `EXECUTOR-BRIEF.md` section 4, item 8 gives the three conditions under which the executor applies a
@@ -184,15 +191,15 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
      and no step is ever proven against code that is not merged. If a step seems to need an unmerged plan's changes
      applied first, stop and ask the owner: the order has been broken.
 9. **Write the device proof** (template section 7), including the safety reading of `dumpsys alarm` before any clock
-   change, the list of alarms the executor will see, and the build the phone is left on. Where a screenshot must be
-   read, name the `vision` subagent and write its exact question; the executor cannot see images.
+   change, the list of alarms the executor will see, and the build the phone is left on. Prefer a measurement to an
+   image: a logcat line, an alarm dump or a `dumpsys` reading is checkable by any model. Where a screenshot must be
+   read, write the exact question to ask of it, and say that the executor reads it itself when its model can see
+   images and calls the `vision` subagent when it cannot.
 10. **Write the records** (template section 8), **the report** (template section 12), and the plan folder's `PROMPT.md`
     and `LOG.md` (section 5 below).
-11. **Review the plan as the executor would read it.** Spawn a `Code Reviewer` subagent, in a scratch worktree of its
-    own, with this instruction: "Read /Users/muji/repos/rn.athan.uk/ai/plans/EXECUTOR-BRIEF.md, then the plan
-    folder at /Users/muji/repos/rn.athan.uk/ai/plans/<folder>/ (not committed yet, so read it by this absolute path),
-    as the implementer it is written for: capable of building what it specifies, and never allowed to decide what to
-    build. List:
+11. **Review the plan as the executor would read it.** Reread the whole plan folder yourself, deliberately as the
+    implementer it is written for: capable of building what it specifies, and never allowed to decide what to build.
+    Read it cold, as a stranger who was not in the room when it was designed. List:
     - every place you would have to guess, and every place where two competent implementers would do different
       things: those are the same defect;
     - every question you would have to ask the owner, because the plan should leave none;
@@ -205,8 +212,8 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
     - every step whose tests would not fail before the change;
     - every acceptance criterion you could not check for yourself.
 
-    Verify anchors against uat-2 at <sha>." Fix everything it finds. A second round is required if the first found
-    more than five problems.
+    Verify every anchor against `uat-2` at the "Planned at" sha. Fix everything you find. A second pass is required
+    if the first found more than five problems.
 12. **Finish** (section 8 below).
 
 ## 4. The quality bar
@@ -237,9 +244,8 @@ The plan is not READY until every line below is true.
   code and the substitution silently does nothing. Where a decision can only be broken by touching the
   implementation, name in the contract the thing that carries it, so the break has a stable target: a constant with
   a given name, a helper with a given signature.
-- Every commit message, review prompt, merge message and records text is written out in full.
-- Every subagent call names its type, its isolation and its full prompt. No `model` override: every subagent
-  runs the same model as the session that spawns it.
+- Every commit message, review checklist, merge message and records text is written out in full.
+- No step spawns a subagent other than `vision`, and every `vision` call gives a path and one exact question.
 - Section 2.2 lists every situation that makes the executor stop, each with the question it asks the owner.
 - Section 10 gives the anticipated review fixes word for word, and each step's files to restore.
 - None of the vague words listed in `TEMPLATE.md` appears in an instruction.
@@ -251,7 +257,7 @@ The plan is not READY until every line below is true.
   - install a dependency outside an exact command;
   - skip a hook;
   - push;
-  - read an image itself.
+  - guess what an image shows.
 - A session needing real prayer times or real alarms on the phone installs a local production build first
   (`build-prod.zsh`), because the phone may be on a mock build.
 
@@ -276,17 +282,17 @@ The plan is not READY until every line below is true.
   - `Audit session. Read ai/plans/AUDITOR-BRIEF.md and audit ai/plans/<folder>/PLAN.md.`
   - `Planning session. Read ai/plans/PLANNER-BRIEF.md and replan ai/plans/<folder>/PLAN.md.`
 - **`LOG.md`.** It starts with only the heading `# Execution log: Session <N>`.
-- **Subagents.** Pick the executor's subagents from this list only, with these uses:
+- **Subagents.** Only `vision`, and only for an image (owner, 2026-09-26). A plan names no other agent type. Every
+  job the old agent list covered is the executor's own, done in its one session:
 
-| Agent type | Use it for |
+| The work | How the executor does it now |
 | --- | --- |
-| `Code Reviewer` | Every commit, before its merge (standing rule). Isolation `worktree`. Its prompt must start with `git checkout --detach <sha>`, because worktrees start at `uat`. |
-| `vision` | Every image the plan needs read (screenshots, frames). The prompt gives the path and one exact question. It runs this session's own model. |
-| `Mobile App Builder` | Only when a step needs native Android or iOS knowledge the plan cannot spell out, such as reading a Kotlin module; never to write the change the plan gives verbatim. |
-| `Test Results Analyzer` | When a full-suite run fails in a way the plan's section 10 does not cover. It reports the cause, and the executor then STOPs. |
-| `Accessibility Auditor` | Only in plans approved for accessibility work. |
-| `Reality Checker` | Once at the end of a plan with device proof: does the evidence prove each claim in the records text? |
-| `Explore` | Read-only searches the plan requires, such as confirming no other caller exists. |
+| Reviewing a commit before its merge | Reads its own diff back cold, against the step's review checklist |
+| Native Android or iOS knowledge | Reads the module with `codegraph_explore`, then the file |
+| A full-suite failure the plan does not cover | Reads the failure itself, then STOPs and asks |
+| Confirming no other caller exists | `codegraph_explore`, whose blast radius answers exactly this |
+| Checking the evidence proves the records text | Rereads both itself before the docs commit |
+| Reading an image | Itself when its model can see images, else the `vision` subagent |
 
 ## 6. Facts every plan can rely on
 
@@ -324,8 +330,8 @@ The plan is not READY until every line below is true.
   also lists one app alarm at `when 2104803640505` (year 2036, not identified); every expected-alarm list names it.
 - **Reading the screen.**
   - `uiautomator dump` fails silently while the countdown animates, and can return an earlier dump's file.
-  - Plans prove what is on screen with logcat lines the app writes, alarm dumps and screenshots read by the `vision`
-    subagent.
+  - Plans prove what is on screen with logcat lines the app writes, alarm dumps, and screenshots read either by the
+    executor itself or, when its model cannot see images, by the `vision` subagent.
   - The owner receives no screenshots.
 - **Notification tests.** Never wait more than 2 minutes for a fire: drive the clock or use the mock, which puts Asr 60
   to 119 seconds after each download.
@@ -339,9 +345,9 @@ The plan is not READY until every line below is true.
   - EAS and the Expo MCP are read-only;
   - the API key is never committed;
   - nothing of OpenCode's is changed.
-- **Reviews.** Every changed line is reviewed by a `Code Reviewer` subagent before merge. In execution sessions that
-  reviewer runs this session's own model, and an audit session checks each executed plan before it is pushed (owner, 2026-09-15). A "fix
-  first" verdict is fixed and verified by the same reviewer, so its worktree is not removed until the final verdict.
+- **Reviews.** Every changed line is reviewed before merge by the session that wrote it, reading its own diff back
+  against the step's review checklist, and an audit session checks each executed plan before it is pushed (owner,
+  2026-09-15). A finding is fixed and then re-read the same way, once.
 
 ## 7. Session-specific notes known on 2026-09-15
 
@@ -385,8 +391,8 @@ The plan is not READY until every line below is true.
     read `ai/features/moonsighting/RESEARCH-FINDINGS.md`.
   - If they have not, mark the row OWNER-LED, with a short reading guide as the plan.
   - If they have, plan the remaining research as executable steps.
-  - Its brief's own rules conflict with the executor brief: its research worktree and branch, `--no-verify`, no merge
-    or push, and its own subagent models. Ask the owner which apply, and write the plan so the executor never meets the conflict.
+  - Its brief's own rules conflict with the executor brief: its research worktree and branch, `--no-verify`, and no
+    merge or push. Ask the owner which apply, and write the plan so the executor never meets the conflict.
 
 ## 8. Finishing a planning session
 
@@ -400,9 +406,9 @@ The plan is not READY until every line below is true.
 
    Bump the patch version in the three places. Commit with a message that says which session was planned and what the
    plan covers. The hook runs the full suite.
-4. **Review.** A `Code Reviewer`, in a scratch worktree of its own, reviews the whole range since the skeleton
-   commit. It checks the plan's accuracy against the code at "Planned at", and the quality bar. Fix what it finds.
-   Section 0 applies: verify once if the plan changed, and never start a third round.
+4. **Review.** Reread the whole range since the skeleton commit yourself, checking the plan's accuracy against the
+   code at "Planned at", and the quality bar. Fix what you find. Section 0 applies: verify once if the plan changed,
+   and never start a third round.
 5. **Merge and push.**
    `git checkout uat-2 && git merge --no-ff <branch> -m "Merge <branch> into uat-2: session <N> planned, reviewed"`,
    then `git push origin uat-2`, which is allowed only if section 2 found no unaudited commits. The owner approved

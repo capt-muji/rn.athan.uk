@@ -4,7 +4,7 @@
 | --- | --- |
 | Brief | `ai/prompts/ios-widget-container-background.md` |
 | Planned at | `0506f608` (version 1.27.312), the tip of `wip/16a-ios-widget-archive-budget`, which this plan's step 1 lands on `uat-2` |
-| Planned by | Planning session on 2026-09-20, GLM 5.3, the owner answering four decisions live |
+| Planned by | Planning session on 2026-09-20, the owner answering four decisions live |
 | Needs first | nothing (rows 1 to 10 above this one are DONE or CANCELLED) |
 | Steps | 8 (steps 2 and 3 change code; steps 4 to 7 are device and measurement work; step 1 is a merge; step 8 is records) |
 | Device | iPhone XS `00008020-0015585C22D2002E` (iOS 18.7.10, all 12 kinds placed, build 1.27.312), simulator "iPhone XS replica (18)" `EB00ED20-949A-4834-99A9-668F971EB53C`, OnePlus 3T `8f7ada76` |
@@ -284,7 +284,7 @@ None. The owner's instruction of 2026-09-20 ("do everything yourself, no subagen
 
 ## 12. Report to the owner
 
-Start with `🤖  Model: GLM 5.3 (execution session)` and a `Time:` line from `date '+%H:%M:%S %d.%m.%Y'`, then a few plain sentences on what changed and what was proven, the progress table:
+Start with `Execution session` and a `Time:` line from `date '+%H:%M:%S %d.%m.%Y'`, then a few plain sentences on what changed and what was proven, the progress table:
 
 | Task | Model | What it checks | Why it matters | Outcome | Status |
 | --- | --- | --- | --- | --- | --- |

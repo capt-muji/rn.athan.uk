@@ -126,7 +126,7 @@ happens:
    plan can be refreshed?"
 3. **A named test passes in the red run**, before the change. Ask: "In step `<k>`, `<test>` passed before the change,
    so it does not guard the line it was written for. Shall I stop here so the plan can be refreshed?"
-4. **A `Code Reviewer` (GLM 5.3) finding that section 10 does not answer word for word.** Ask: "The reviewer asks:
+4. **A `Code Reviewer` finding that section 10 does not answer word for word.** Ask: "The reviewer asks:
    `<finding in its words>`. The plan gives no fix for it. Do you want it applied (the plan is then refreshed first),
    or shall I merge without it?"
 5. **A break script prints anything other than `ALL AS EXPECTED: 1`.** Ask: "Step `<k>`'s break script ended
@@ -134,7 +134,7 @@ happens:
 6. **Anything that would touch visuals, a prayer time, `releases.json`, the `uat` branch or EAS.** Ask: "Step `<k>`
    would change `<what>`, which this plan forbids. What do I do?"
 7. **A build script prints `FAILED`.** Ask: "`<script>` failed with `<line>`. What do I do?"
-8. **The `vision` subagent (GLM 5.3 Flash) gives an answer the plan does not expect**, after the repeats the plan
+8. **The `vision` subagent gives an answer the plan does not expect**, after the repeats the plan
    allows. Ask: "vision read `<file>` as `<answer>`; the plan expects `<expected>`. What do I do?"
 9. **An alarm dump names an app alarm whose tag is neither `*walarm*:expo.modules.notifications.NOTIFICATION_EVENT`
    nor `*walarm*:ACTION_FORCE_STOP_RESCHEDULE`**, or holds an alarm section 7 does not predict. Ask: "The alarm dump
@@ -427,7 +427,7 @@ Four interleavings the design is built for, each with a test that fails without 
 
 ### 5.7 The design review
 
-A `Software Architect` (Claude Opus 5) attacked the design on 2026-09-16, in a worktree detached at `e046bf77`, with
+A `Software Architect` attacked the design on 2026-09-16, in a worktree detached at `e046bf77`, with
 six probe suites it wrote and ran under `$TMPDIR`. It reported two blockers, seven majors and seven minors, and the
 verdict "design needs changes". Every finding was answered before a step was written:
 
@@ -464,7 +464,7 @@ Each step is one branch, one commit, one version, one review, one merge. Both st
 
 Run this after step 2 is merged. Every command runs from `/Users/muji/repos/rn.athan.uk`. **No step in this plan
 changes the phone's clock**, so no armed alarm can be fired early. The owner receives no screenshots: only the
-`vision` (GLM 5.3 Flash) subagent reads them.
+`vision` subagent reads them.
 
 **The screen coordinates below were read off the 3T while this plan was written** (1080x1920, screenshots at
 `~/athan-device-sweep/session6b/planning/`). The Standard list and the alert sheet are the same on a production build
@@ -666,7 +666,7 @@ The note in `AUDIT-FINDINGS.md` is the one that shipped; this template is kept a
 # Session 6b of the queue: finding 81, 16 September 2026
 
 The brief is `ai/prompts/alert-all-or-nothing.md`, planned by Claude in `ai/plans/06b-alert-all-or-nothing/PLAN.md`
-and executed by GLM 5.3, with a GLM 5.3 Code Reviewer on every commit. The last code commit is `<FINAL_SHORT>`
+and executed by the session, with a Code Reviewer on every commit. The last code commit is `<FINAL_SHORT>`
 (`<FINAL_VERSION>`), and the records commit that carries this note follows it; the last suite run reported
 `Tests:       <TESTS_AFTER> passed, <TESTS_AFTER> total`, at 100% statements, branches, functions and lines.
 
@@ -743,7 +743,6 @@ failed change puts the saved settings and the alarms back inside the same lock
 acquisition, and a prayer the phone refused is marked and put right on the next
 launch, return to the app or background run.
 
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 ```
 
 ## 9. Push
@@ -821,16 +820,16 @@ Only these, and no `model` is ever passed: the executor's subagents run on GLM.
 
 | Step | Agent type | Model | Isolation | Why | Its prompt |
 | --- | --- | --- | --- | --- | --- |
-| 1 | `Code Reviewer` | GLM 5.3 | `worktree` | Every commit is reviewed before its merge | `steps/1-native-call-timeout.md`, part 9 |
-| 2 | `Code Reviewer` | GLM 5.3 | `worktree` | The same | `steps/2-all-or-nothing.md`, part 9 |
-| 7.2 | `vision` | GLM 5.3 Flash | none | The executor cannot see images, and the bell coming back on is the proof | `PLAN.md` section 7.2, `VISION_BELL` |
-| 7.3 | `vision` | GLM 5.3 Flash | none | The same | `PLAN.md` section 7.2, `VISION_BELL` |
-| 7.4 | `Reality Checker` | GLM 5.3 | `worktree` | Does the evidence prove each claim the records text makes? | `PLAN.md` section 7.4, item 6 |
-| 8 | `Code Reviewer` | GLM 5.3 | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
+| 1 | `Code Reviewer` | | `worktree` | Every commit is reviewed before its merge | `steps/1-native-call-timeout.md`, part 9 |
+| 2 | `Code Reviewer` | | `worktree` | The same | `steps/2-all-or-nothing.md`, part 9 |
+| 7.2 | `vision` | | none | The executor cannot see images, and the bell coming back on is the proof | `PLAN.md` section 7.2, `VISION_BELL` |
+| 7.3 | `vision` | | none | The same | `PLAN.md` section 7.2, `VISION_BELL` |
+| 7.4 | `Reality Checker` | | `worktree` | Does the evidence prove each claim the records text makes? | `PLAN.md` section 7.4, item 6 |
+| 8 | `Code Reviewer` | | `worktree` | The `executed` docs commit | `EXECUTOR-BRIEF.md` section 4b, item 5 |
 
 ## 12. Report to the owner
 
-The final message. Start it with `🤖  Model: GLM 5.3 (execution session)` and, on the next line, `Time: ` followed by
+The final message. Start it with `Execution session` and, on the next line, `Time: ` followed by
 the output of `date '+%H:%M:%S %d.%m.%Y'`, run before writing it.
 
 Say, in a few plain sentences:
