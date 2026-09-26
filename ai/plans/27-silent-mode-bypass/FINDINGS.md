@@ -184,6 +184,40 @@ notification fires, never HOW its sound plays, which is why it could not have fi
 also keeps scheduling, the rolling buffer, cancellation, identifiers, the shared tag, all of iOS, and
 Android Silent alerts. Only the audio of an Android Sound alert moves.
 
+## iOS: a real defect found, and the ceiling reached (1.28.52)
+
+Looking at iOS properly turned up a silent bug that predates this session. Both
+`genNotificationContent` and `genReminderNotificationContent` have always sent
+`interruptionLevel: 'timeSensitive'`, but `app.json` declared no `ios.entitlements` at all, and
+**iOS silently downgrades the level to `active` when the app has not claimed the capability**. So every
+iOS prayer alert has been failing to break through Focus and Do Not Disturb, exactly the thing the code
+asked for, with no error anywhere to say so.
+
+Apple requires the capability to be enabled for the app (WWDC21, "Send communication and Time Sensitive
+notifications"), and Expo lists `com.apple.developer.usernotifications.time-sensitive` as a supported
+capability synced from `ios.entitlements`, so the whole fix is one key. Verified end to end rather than
+assumed: after `npx expo prebuild -p ios`, `ios/Athan/Athan.entitlements` carries the key beside
+`aps-environment` and the app group. `shared/__tests__/nativeConfig.test.ts` pins it so a later `app.json`
+edit cannot drop the entitlement while the content still asks for the level.
+
+**This does not touch the mute switch**, which only Critical Alerts can bypass. The iOS position is
+unchanged from the section above: the entitlement is refused for this category, and AlarmKit, the real
+answer, needs iOS 26 and the XS can never run it.
+
+DURABLE LESSON: **an iOS notification level can be requested and silently not granted.** The JS reads
+correct, the native content object reads correct, and nothing throws. The entitlements file is the only
+place the truth appears, so check it whenever a level, not just a permission, is being relied on.
+
+## Where D1 ends up, both platforms
+
+| Mode | Android | iOS |
+| --- | --- | --- |
+| Normal ringer | Sounds | Sounds |
+| Do Not Disturb | `bypassDnd` + alarm-stream channels, and DND access can now be granted | Time Sensitive, fixed in 1.28.52 |
+| Silent / mute switch | Only a self-played foreground service could, investigated and declined | Only Critical Alerts could, and Apple refuses it for this category |
+
+Both platforms now sit at the ceiling their OS allows without a second audio system.
+
 ## Follow-up session: show the three bypass statuses in Settings (owner, 2026-09-26)
 
 🐋  "I want to show 2 options at the bottom, bypass D&D and bypass silent mode... And then also a 3rd one
