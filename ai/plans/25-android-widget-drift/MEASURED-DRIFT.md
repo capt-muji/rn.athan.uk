@@ -179,6 +179,31 @@ Battery and doze state were restored afterwards (`dumpsys battery reset`, `devic
 induced doze rather than one Android chose on its own. A genuinely unplugged phone left overnight is
 still the untested case, and the sampler is the tool for it.
 
+### The force-stop gap, found by testing it and closed in 1.28.24
+
+`OnCreate` only runs in a process that starts through the React host. Testing a force-stop exposed the
+hole:
+
+```
+adb shell am force-stop com.mugtaba.athan
+  -> pid gone, stopped=true, TIME_TICK receiver count 0
+wake the phone, let the launcher ask for the widget
+  -> pid 15963 respawned, stopped=false
+  -> but #receivers=3, not 8, and NO TIME_TICK
+```
+
+Android revived the process to serve the widget, and in that process the Expo module registry is never
+initialised, so `OnCreate` did not run and the listener stayed missing. The widget would have limped on
+the deferred alarm alone until the user next opened the app.
+
+`WidgetRefreshReceiver` and `WidgetRefreshBootReceiver` run in whatever process regained execution, so
+1.28.24 claims the listener from both, behind the existing `hasPlacedWidgets` gate. `ensureRegistered`
+is idempotent behind its own volatile flag, so the cost is one boolean check per minute.
+
+Worth noting for the record: even in that degraded state the label read `4h 24m` against a true
+`4h 24m`, because `am force-stop` is a harsher event than anything ColorOS does in normal use. The gap
+was real but its user-visible cost was small.
+
 ## What is already ruled out, with the evidence
 
 | Theory | Verdict | Evidence |
