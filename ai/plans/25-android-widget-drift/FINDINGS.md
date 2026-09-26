@@ -255,3 +255,95 @@ and must be unregistered with the lifecycle that owns it, or it becomes a batter
 
 The format is kept: `6h 8m` stays, and no `Chronometer` is introduced (section 6 gives the reasoning the
 owner accepted).
+
+## 12. ⚠️ THE WATCHDOG DOES NOT WORK, AND MY "WorkManager survives" CLAIM WAS WRONG
+
+Measured on the 3T at 1.28.20, 2026-09-25 23:48 to 00:08, twenty minutes of polling every 15 seconds
+with no app open: **the alarm count stayed at 0 for the entire twenty minutes.** The watchdog never ran.
+
+The cause, read from the package dump immediately after the force-stop:
+
+```
+User 0: ... stopped=true ...
+```
+
+**Android's FLAG_STOPPED_STATE.** A force-stopped app is put in the stopped state, and while it is there
+the system delivers it **no broadcasts and runs none of its jobs** until the user launches it manually.
+Confirmed by counting jobs: `dumpsys jobscheduler | grep -oE 'JOB #u0a191/[0-9]+' | sort -u | wc -l`
+returned **0** while stopped, and **7** after a launch cleared the flag.
+
+⚠️ **So section 7b's central claim was false.** I wrote "WorkManager survives what kills the alarm" on
+the strength of "96 jobs after the force-stop". That number was dump LINES, and section 9 already
+corrected the magnitude, but the correction did not go far enough: deduplicated, the true count while
+stopped is **zero**. WorkManager does NOT survive a force-stop. Nothing does. I am sorry for asserting
+it twice.
+
+**What this means for the design.** A force-stop cannot be recovered from in the background by any
+mechanism, because the platform is explicitly designed to prevent it: it is the user saying "stop this
+app". `WidgetRefreshBootReceiver` already handles the one exception, a reboot, since `BOOT_COMPLETED`
+does reach a stopped app. So:
+
+- Step 1 (arm unconditionally) is correct and necessary: it makes the app-open recovery real, which is
+  the only recovery path a force-stopped app has.
+- Step 2 (the watchdog) is **useless against a force-stop** and was built against a false measurement.
+  It is not harmful, and it does cover a different case (the process dying without the stopped flag, such
+  as a low-memory kill), but it must not be described as the fix for an OEM force-stop.
+- Step 3, once its regression was fixed, is the layer doing the real work while the app lives.
+
+## 13. The X8 reproduces the owner's bug, and it is NOT a force-stop
+
+With the owner's Find X8 connected for the first time (2026-09-26 00:10, still on the old 1.27.384), the
+bug is live and visible, and the phone is **not** in the stopped state (`stopped=false`, pid alive, 4
+alarms armed, 399 alarms to 399 wakeups).
+
+Three widgets counting down to the SAME Fajr at 05:22, read in one dump at 00:11:12:
+
+| Widget | Shown | True | Error |
+| --- | --- | --- | --- |
+| 1 | `5h 17m` | `5h 11m` | **+6 min** |
+| 2 | `5h 14m` | `5h 11m` | **+3 min** |
+| 3 | `5h 12m` | `5h 11m` | **+1 min** |
+
+They disagree with each other, which is the whole diagnosis in one reading: the data is identical (same
+target, same snapshot), so what differs is **when each widget last re-rendered**. Each one froze at a
+different moment and stayed there. All three err in the same direction, too slow, exactly as the owner
+described.
+
+**Why the renders stop on the X8 but not the 3T.** The X8's alarm dump shows the tick alarm is not being
+honoured as exact, despite `USE_EXACT_ALARM` being granted:
+
+```
+RTC_WAKEUP #3: Alarm{...} windowLength 32197 ... window=+32s197ms
+policyWhenElapsed: requester=-23s258ms app_standby=-1m6s187ms battery_saver=-1m6s187ms
+exactAllowReason=policy_permission
+```
+
+`app_standby` is pushing the alarm's effective time out by **1m6s**, and the alarm carries a **32-second
+window** rather than firing exactly. The app is in standby bucket 10 and is **not** in the doze whitelist.
+So on ColorOS the minute alarm is being deferred and coalesced by the OEM's standby policy, which is
+precisely the mechanism section 8 item 2 listed as unverified: the alarm object survives, but it does not
+fire on time, and every deferral is a minute the label does not advance.
+
+⚠️ **This is a different fault from the 3T's.** The 3T fires 1:1 and only froze when I force-stopped it.
+The X8 keeps the alarm armed and simply does not deliver it on schedule. A fix must therefore not depend
+on the alarm at all, which makes step 3's `TIME_TICK` redraw the load-bearing layer on this phone:
+`ACTION_TIME_TICK` is broadcast by the system every minute and is not subject to app-standby deferral.
+
+## 14. ⚠️ Step 3 shipped a regression that I caught on the device, and fixed
+
+Step 3 as first built called `ensureArmed` from the tick listener. `ACTION_TIME_TICK` arrives AT the
+minute boundary and `armNext` sets the alarm for 500ms PAST that boundary, so every tick rescheduled the
+pending alarm forward 500ms before it would have fired. The alarm could therefore **never** fire.
+
+Measured on the 3T at 1.28.19: the label sat at `53m` while the true remaining walked from `53m` to
+`36m`, with the alarm visibly advancing each minute and the receiver never running.
+
+Fixed at 1.28.20: the listener calls `updateAll` (redraw the placed widgets) and never re-arms. That is
+strictly better for this layer, because a redraw recomputes the label immediately instead of waiting for
+an alarm. Verified after the fix: `21m` at 23:47:57 against Midnight 00:08 is exact, and a live sample
+read `25m` against a true `25m`.
+
+The break script gained a case pinning this exact mistake. Writing it also exposed two assertions in my
+own checks that were too weak to catch anything, which is how the regression reached the device: one
+asserted the bare string `registered` appeared (a rename satisfied it) and one that `ACTION_TIME_TICK`
+appeared anywhere in the file (swapping the IntentFilter to `ACTION_TIME_CHANGED` survived it).
