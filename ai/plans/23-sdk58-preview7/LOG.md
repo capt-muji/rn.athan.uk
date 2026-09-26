@@ -215,6 +215,40 @@ because it runs before the platform branch:
 var ATextEl=Text; var AImageEl=Image; var APad=padding; var ATimeEl=Text;
 ```
 
+### THE STRATEGY FOR THE NEXT SESSION, set by the owner on 2026-09-26
+
+🐋  "I'm more than happy for you to roll back the packages... instead of upgrading to the absolute latest version,
+we can roll back one version at a time until we have a completely working version, only for the packages that
+actually need it, specifically to the packages that need it, not all packages... Because maybe the newest, latest
+version is broken and we just need to wait for another new version to come out later."
+
+**This replaces "fix forward at all costs" for this defect.** The goal is a working tree, not the highest version
+number, and a package that is broken at its latest is pinned back and revisited when a newer one ships.
+
+**Scope: only the two packages the Android widget render depends on.** Everything else in this session stays at
+preview.7, because the bisect already proved the rest is not implicated. The two are `expo-widgets` and `@expo/ui`,
+which move together because `expo-widgets` declares `@expo/ui` as a dependency at its own minor.
+
+**The ladder, and it is short.** Both packages publish 58.0.0 through 58.0.7. Session 23 went 58.0.3 (working) to
+58.0.7 (broken), so only three versions sit between them:
+
+| Try | Versions | Why this one |
+| --- | --- | --- |
+| 1 | **58.0.4** | The first step past the last known-good. If it renders, the break is in .5, .6 or .7 and the walk continues UPWARD from here |
+| 2 | 58.0.5 | Where `cornerRadius` landed, which is the one change this session found in the whole Android render path. The highest-value single suspect |
+| 3 | 58.0.6 | Only if .4 and .5 both render |
+
+**Walk from the bottom, not the top.** Starting at 58.0.4 and climbing means the FIRST failure names the breaking
+version exactly, and every build before it leaves the phone in a working state. Starting at .6 and descending
+leaves the phone broken for longer and needs the same number of builds.
+
+**When the breaking version is found**, pin both packages one below it, record which version is blocked and why in
+`ai/AGENTS.md`'s widget invariants, and leave a note to retry when the next version ships. Do NOT patch around it:
+an upstream regression is upstream's to fix, and a local workaround for a beta-line bug becomes permanent debt.
+
+Each rung is one build (about 6 to 7 minutes) plus an install and a look at the home screen. Cheaper than more
+static analysis, which this session exhausted without result.
+
 **`padding` was the first suspect and it is RULED OUT.** It exists on the jetpack surface too
 (`export const padding = (start, top, end, bottom)` in `@expo/ui/build/jetpack-compose/modifiers/index.js`), so
 `var APad=padding` resolves fine on Android. Do not re-investigate it.
