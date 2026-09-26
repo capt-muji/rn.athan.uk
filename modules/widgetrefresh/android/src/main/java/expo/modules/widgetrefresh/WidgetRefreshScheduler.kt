@@ -8,6 +8,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
@@ -53,6 +55,13 @@ internal object WidgetRefreshScheduler {
      * period is silently clamped to this, so it is written as the real value.
      */
     private const val WATCHDOG_PERIOD_MINUTES = 15L
+
+    /**
+     * Gap before the composing pass. Long enough that the session the first
+     * broadcast starts is alive (teardown is ~45s), short enough that the two
+     * passes belong to the same minute.
+     */
+    private const val COMPOSE_PASS_DELAY_MS = 2500L
 
     /** Must match PrayerWidgetAndroidProps.grantedWidthDp in shared/widgetTypes.ts. */
     private const val GRANTED_WIDTH_KEY = "grantedWidthDp"
@@ -106,8 +115,27 @@ internal object WidgetRefreshScheduler {
         preferences.edit().putString(key, patched).commit()
     }
 
+    /**
+     * Re-renders every placed widget, twice, a few seconds apart.
+     *
+     * The second pass is what actually draws. Glance's own update path is
+     * `getOrCreateAppWidgetSession { session, wasRunning ->
+     * if (wasRunning) session.updateGlance() }`: when no session is running it
+     * starts one and returns WITHOUT composing, which is why a widget freezes
+     * on its last render while the alarm keeps firing. The first broadcast
+     * starts the session, the second finds it alive and composes.
+     *
+     * Proven on the 3T: one broadcast left the label 8 minutes stale, and two
+     * three seconds apart corrected it exactly. Sessions are torn down about
+     * 45s after an update, so the gap has wide margin.
+     */
     fun updateAll(context: Context) {
         val appContext = context.applicationContext
+        broadcastUpdate(appContext)
+        Handler(Looper.getMainLooper()).postDelayed({ broadcastUpdate(appContext) }, COMPOSE_PASS_DELAY_MS)
+    }
+
+    private fun broadcastUpdate(appContext: Context) {
         val manager = AppWidgetManager.getInstance(appContext)
         for (kind in HOME_KINDS) {
             val component = providerComponent(appContext, kind)
