@@ -7,9 +7,9 @@
  */
 
 import { AndroidAudioUsage, AndroidImportance, setNotificationChannelAsync } from 'expo-notifications';
-import { Platform } from 'react-native';
+import { Linking, Platform } from 'react-native';
 
-import { updateAndroidChannel } from '@/device/notifications';
+import { openDndAccessSettings, updateAndroidChannel } from '@/device/notifications';
 import { createAthanAndroidChannel } from '@/shared/notifications';
 
 const SOUND_INDICES = [0, 1, 4, 15, 31];
@@ -61,5 +61,31 @@ describe('updateAndroidChannel on iOS', () => {
     await updateAndroidChannel(4);
 
     expect(setNotificationChannelAsync).not.toHaveBeenCalled();
+  });
+});
+
+describe('openDndAccessSettings', () => {
+  beforeEach(() => {
+    (Linking.sendIntent as jest.Mock).mockClear();
+    (Linking.sendIntent as jest.Mock).mockResolvedValue(undefined);
+  });
+
+  it('opens the Do Not Disturb access screen on Android', async () => {
+    Platform.OS = 'android';
+
+    await expect(openDndAccessSettings()).resolves.toBe(true);
+    expect(Linking.sendIntent).toHaveBeenCalledWith('android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS');
+  });
+
+  it('answers false when the phone has no such screen, rather than throwing', async () => {
+    Platform.OS = 'android';
+    (Linking.sendIntent as jest.Mock).mockRejectedValue(new Error('no activity found'));
+
+    await expect(openDndAccessSettings()).resolves.toBe(false);
+  });
+
+  it('does nothing on iOS, which has no Do Not Disturb access to grant', async () => {
+    await expect(openDndAccessSettings()).resolves.toBe(false);
+    expect(Linking.sendIntent).not.toHaveBeenCalled();
   });
 });

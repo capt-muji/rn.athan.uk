@@ -1,11 +1,33 @@
 import { subMinutes } from 'date-fns';
 import * as Notifications from 'expo-notifications';
-import { Platform } from 'react-native';
+import { Linking, Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { AlertType, type ReadablePrayer, type ReminderInterval, type ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
+
+/** Android's screen for granting an app Do Not Disturb access */
+const DND_ACCESS_SETTINGS_ACTION = 'android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS';
+
+/**
+ * Opens the system screen where the user grants this app Do Not Disturb access.
+ *
+ * A channel's `bypassDnd` is refused silently while that access is missing, so every alert
+ * stays muted under DND however the channel was declared. expo-notifications exposes no API
+ * for the grant, and it can never be given programmatically: only the user can, in Settings.
+ */
+export const openDndAccessSettings = async (): Promise<boolean> => {
+  if (Platform.OS !== 'android') return false;
+
+  try {
+    await Linking.sendIntent(DND_ACCESS_SETTINGS_ACTION);
+    return true;
+  } catch (error) {
+    logger.error('NOTIFICATION: Failed to open Do Not Disturb access settings:', error);
+    return false;
+  }
+};
 
 export const updateAndroidChannel = async (sound: number) => {
   if (Platform.OS !== 'android') return;
