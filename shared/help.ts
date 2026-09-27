@@ -1,22 +1,30 @@
 /**
  * Help content - the answers to "why did I not hear the athan?"
  *
- * Three of the causes are OS settings no code can change, so the app explains
- * them instead of trying to work around them (owner, 2026-09-27). Every claim
- * here was measured: session 27 for the mute switch, Do Not Disturb and the
- * 30 second sound cap, session 25 for the alarm volume.
+ * Every cause here is an OS setting no code can change, so the app names WHAT to turn on and never
+ * how to get there: a navigation path is version-specific and goes stale (owner, 2026-09-27, after
+ * following the old iOS steps and finding they led to the wrong screen). Nothing explains how the
+ * app works internally either; a user only needs the fix.
+ *
+ * Every claim was measured: session 27 for the mute switch and the 30 second cap, session 25 for the
+ * alarm volume.
  *
  * The app is never named, because it may be renamed (owner, 2026-09-27).
  *
  * @see ai/plans/27-silent-mode-bypass/FINDINGS.md
  */
 
-/** A settings screen an answer can offer to open */
-export type HelpAction = 'appSettings' | 'dndAccess';
+/**
+ * A settings screen an answer can offer to open
+ *
+ * Only Do Not Disturb access, because it is the one screen a deep link reaches reliably. Every other
+ * fix names the setting to change instead (owner, 2026-09-27), so there is no generic settings link.
+ */
+export type HelpAction = 'dndAccess';
 
 interface HelpAnswer {
   text: string;
-  /** Ordered instructions, rendered as a numbered list */
+  /** What to turn on or off, one per line. Never a route to it */
   steps?: string[];
   action?: HelpAction;
 }
@@ -36,76 +44,68 @@ export interface HelpTopic {
 }
 
 export const HELP_ACTION_LABELS: Record<HelpAction, string> = {
-  appSettings: 'Open Settings',
   dndAccess: 'Grant Do Not Disturb access',
 };
 
 /** Ordered by how often each one turns out to be the cause */
 const HELP_ENTRIES: HelpEntry[] = [
+  // Nothing arrives at all: permission first, then the two things that stop new ones being set
   {
-    question: 'Why do I get no alerts at all?',
+    question: "Why don't I get any notifications?",
     ios: {
-      text: 'Without permission this app cannot alert you at all.',
-      steps: ['Open Settings below', 'Turn on Allow Notifications', 'Leave Sounds on'],
-      action: 'appSettings',
+      text: 'Without permission, notifications cannot be shown.',
+      steps: ['Turn on Allow Notifications in the app settings'],
     },
     android: {
-      text: 'Without permission this app cannot alert you at all.',
-      steps: ['Open Settings below', 'Turn notifications on', 'Leave the athan categories on'],
-      action: 'appSettings',
+      text: 'Without permission, notifications cannot be shown.',
+      steps: ['Turn on notifications in the app settings', 'Leave the athan categories on'],
     },
   },
   {
-    question: 'Why did the alerts stop after a few days?',
+    question: 'Why did notifications stop after a few days?',
     ios: {
-      text: 'Alerts are topped up in the background. Turned off, the ones already set still play and no new ones are added.',
-      steps: ['Open Settings below', 'Turn on Background App Refresh', 'Turn off Low Power Mode'],
-      action: 'appSettings',
+      text: 'Two settings stop new notifications being sent.',
+      steps: ['Turn on Background App Refresh in the app settings', 'Turn off Low Power Mode'],
     },
     android: {
-      text: 'Alerts are topped up in the background. Battery saving can stop that, so no new ones are added.',
-      steps: ['Open Settings below', 'Allow background activity', 'Set battery use to unrestricted'],
-      action: 'appSettings',
+      text: 'Battery optimisation stops new notifications being sent.',
+      steps: ['Set battery usage to Unrestricted in the app settings', 'Turn off Battery Saver'],
     },
   },
   {
-    question: 'Why does an alert show but play no sound?',
+    question: 'Why did notifications stop after a restart?',
     ios: {
-      text: 'It mutes notification sound before any app is asked. No app can play through it.',
-      steps: ['Flick the switch on the side of your phone', 'Or turn Silent off in Control Centre'],
+      text: 'After rebooting the phone, the app is terminated.\nThis stops new notifications being sent.',
+      steps: ['Open this app after rebooting the phone'],
     },
     android: {
-      text: 'Silent mode mutes notification sound before any app is asked. No app can play through it.',
-      steps: ['Press the volume up key', 'Or turn Silent off in quick settings'],
+      text: 'After rebooting the phone, the app is terminated.\nThis stops new notifications being sent.',
+      steps: ['Open this app after rebooting the phone'],
+    },
+  },
+
+  // They arrive, but the phone silences them
+  {
+    question: 'Why does a notification show but play no sound?',
+    ios: {
+      text: 'A silent phone mutes notification sound.',
+      steps: ['Take the phone out of silent mode'],
+    },
+    android: {
+      text: 'A silent phone mutes notification sound.',
+      steps: ['Take the phone out of silent mode'],
     },
   },
   {
-    question: 'Why are alerts held back until later?',
+    question: 'Why are notifications silenced at certain times?',
     ios: {
-      text: 'It holds notifications back unless this app is allowed through.',
-      steps: ['Open Settings, then Focus', 'Pick the mode you use', 'Under Apps, add this app'],
+      text: 'Focus and Do Not Disturb modes silence notifications until this app is allowed through.',
+      steps: ['Allow Time Sensitive Notifications in the app settings', 'Allow this app in each Focus you use'],
     },
     android: {
-      text: 'It silences notifications until you allow this app through.',
-      steps: ['Open the screen below', 'Allow Do Not Disturb access'],
+      text: 'Do Not Disturb mode silences notifications until this app is allowed through.',
+      steps: ['Allow Do Not Disturb access'],
       action: 'dndAccess',
-    },
-  },
-  {
-    question: 'Why does the athan cut off early?',
-    ios: {
-      text: 'Phones play 30 seconds of a notification sound, then fall back to the default tone. Every athan is trimmed to fit.',
-    },
-    android: {
-      text: 'Phones play 30 seconds of a notification sound, then fall back to the default tone. Every athan is trimmed to fit.',
-    },
-  },
-  {
-    question: 'Why did nothing play after a restart?',
-    ios: null,
-    android: {
-      text: 'A restart clears every alarm, and some phones block them being set again.',
-      steps: ['Open this app once after a restart'],
     },
   },
   {
@@ -113,16 +113,18 @@ const HELP_ENTRIES: HelpEntry[] = [
     ios: null,
     android: {
       text: 'It plays at alarm volume, not ring volume.',
-      steps: ['Raise Alarm volume in your sound settings'],
+      steps: ['Raise the Alarm volume in your sound settings'],
     },
   },
+
+  // The sound itself, which no setting changes
   {
-    question: 'How do I change the athan sound?',
+    question: 'Why does the athan cut off early?',
     ios: {
-      text: 'Open Settings, then Change athan, and pick the one you want.',
+      text: 'Notification sounds are limited to 30 seconds.\nEvery athan is trimmed to fit.',
     },
     android: {
-      text: 'Open Settings, then Change athan, and pick the one you want.',
+      text: 'Notification sounds are limited to 30 seconds.\nEvery athan is trimmed to fit.',
     },
   },
 ];

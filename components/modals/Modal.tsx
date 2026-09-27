@@ -1,5 +1,12 @@
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import Animated, { Easing, FadeIn, FadeOut, SlideInDown, SlideOutDown } from 'react-native-reanimated';
+import Animated, {
+  Easing,
+  FadeIn,
+  FadeOut,
+  LinearTransition,
+  SlideInDown,
+  SlideOutDown,
+} from 'react-native-reanimated';
 
 import { ANIMATION, COLORS, ELEVATION, LAYOUT, OVERLAY, RADIUS, SHADOW, SIZE, SPACING, TEXT } from '@/shared/constants';
 
@@ -13,6 +20,9 @@ const MODAL_ENTERING = Platform.select({
   android: SlideInDown.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic)),
   default: SlideInDown.springify().duration(220).dampingRatio(0.9),
 });
+
+/** The card follows its content's height, so a section opening inside it does not snap the whole modal */
+const MODAL_RESIZE = LinearTransition.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic));
 
 const MODAL_EXITING = Platform.select({
   android: SlideOutDown.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic)),
@@ -30,9 +40,11 @@ type Props = {
   icon?: React.ReactNode;
   /** Centres the title over full-width content, rather than hugging the leading edge */
   centreTitle?: boolean;
+  /** Pushes the icon to the trailing edge, with the title against the leading one */
+  trailingIcon?: boolean;
 };
 
-export default function Modal({ visible, children, title, wide, divider, icon, centreTitle }: Props) {
+export default function Modal({ visible, children, title, wide, divider, icon, centreTitle, trailingIcon }: Props) {
   if (!visible) return null;
 
   return (
@@ -44,12 +56,20 @@ export default function Modal({ visible, children, title, wide, divider, icon, c
         accessibilityViewIsModal={true}
         accessibilityRole='alert'
         style={[styles.modal, wide && styles.modalWide]}
+        layout={MODAL_RESIZE}
         entering={MODAL_ENTERING}
         exiting={MODAL_EXITING}>
         <View style={styles.content}>
-          <View style={[styles.titleRow, centreTitle && styles.titleRowCentre]}>
-            {icon}
+          <View
+            style={[
+              styles.titleRow,
+              (centreTitle || trailingIcon) && styles.titleRowCentre,
+              trailingIcon && styles.titleRowApart,
+              trailingIcon && wide && styles.titleRowInset,
+            ]}>
+            {trailingIcon ? null : icon}
             <Text style={[styles.title, divider && styles.titleWithDivider]}>{title}</Text>
+            {trailingIcon ? icon : null}
           </View>
           {divider ? <View style={[styles.divider, wide && styles.dividerWide]} /> : null}
           {children}
@@ -89,21 +109,29 @@ const styles = StyleSheet.create({
     elevation: ELEVATION.maximum,
   },
   modalWide: {
-    width: '98%',
+    width: '95%',
     maxWidth: SIZE.contentMaxWidth,
     maxHeight: '96%',
-    padding: SPACING.lg,
+    padding: SPACING.lg2,
   },
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'flex-start',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
     gap: SPACING.sm,
     paddingTop: SPACING.xs,
   },
   titleRowCentre: {
     alignSelf: 'stretch',
     justifyContent: 'center',
+  },
+  titleRowApart: {
+    justifyContent: 'space-between',
+  },
+  /** Lines the title and its icon up with content that carries its own indent, such as Help's rows */
+  titleRowInset: {
+    paddingHorizontal: SPACING.md,
   },
   title: {
     fontSize: TEXT.sizeTitle,
@@ -113,7 +141,7 @@ const styles = StyleSheet.create({
     letterSpacing: TEXT.letterSpacing.wide,
   },
   titleWithDivider: {
-    marginBottom: SPACING.sm,
+    marginBottom: SPACING.md,
   },
   divider: {
     height: StyleSheet.hairlineWidth,
@@ -124,7 +152,7 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
   },
   dividerWide: {
-    marginHorizontal: -SPACING.lg,
+    marginHorizontal: -SPACING.lg2,
   },
   content: {
     alignItems: 'center',
