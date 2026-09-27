@@ -374,6 +374,15 @@ One line each; a session's row moves here when it closes. Full detail is in git 
   to state what is installed (the G.1 identity fix shipped in expo-widgets 58.0.1). G.2's blank card
   investigated: not entry count, but the widget extension's cold start. G.2 stays OPEN until the flag
   is on and a placement can be observed.
+- 29. `help-faq-sheet.md` — DONE 2026-09-27 (waiting for chosen design) — the Help modal: eight FAQ questions on
+  Android and six on iOS, each with numbered steps and, where one exists, a button onto the settings screen that
+  causes it. A MODAL on the owner's ruling rather than the brief's second bottom sheet, with a Close button and
+  the answers scrolling inside a card that takes nearly the whole screen. The brief's Android silent-mode claim
+  was contradicted by session 27's own conclusion and corrected before it shipped. `VISIBLE_WHATS_NEW` now gates
+  the What's new row alone, so Help survives a silent release, and the app is never named in user copy because it
+  may be renamed. **The visual treatment is still open**: 25 candidate layouts were reviewed on the simulator and
+  the corrected design 1 ships as an interim, with every candidate kept at `~/athan-help-designs`. Proven on the
+  iOS simulator; both physical phones were unplugged by the owner.
 - 22. `ai/plans/22-dependency-freshness-sweep/PLAN.md` — DONE 2026-09-26 — the first freshness re-measurement after
   session 21. 28 of the 30 non-SDK packages were still at their absolute latest a day later; `@types/node` 26.6.3
   and `lint-staged` 17.6.0 had moved and both shipped, one commit each (1.28.30, 1.28.31). No device: one is typings
