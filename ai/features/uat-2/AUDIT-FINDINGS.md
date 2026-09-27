@@ -6127,3 +6127,63 @@ session 21's lesson recurring in a new shape, so it is written here rather than 
 (4234/4234), branches (1892/1892), functions (857/857) and lines (3825/3825), with `tsc` and Biome exiting 0. No
 device proof: neither package can reach a phone, one being typings erased at build and the other a commit-time tool
 that is never bundled.
+
+## D6: the Help modal (session 29)
+
+Settings' About card is now "Other" and carries a Help row beneath What's new, opening a modal that answers eight
+questions on Android and six on iOS. Three of the causes it explains cannot be fixed in code: they are OS
+settings only the user can change, which sessions 27 and 25 established and the owner accepted.
+
+The owner chose a modal over the brief's second bottom sheet, asked for a Close button, and asked for the card to
+hold on every screen size.
+
+**The brief's own copy would have made the page lie.** It said Android "still plays through the switch in most
+cases since 1.28.47", while session 27's conclusion is the opposite: `NotificationManagerService` gates channel
+sound on ringer mode BEFORE it reads the channel's `AudioAttributes`, so no configuration sounds through silent
+mode on either platform. The shipped answer says that plainly. A brief is a statement of intent, not evidence:
+its claims are checked against the session that measured them.
+
+Two questions exist on one platform only, because the cause does: a restart clearing every alarm
+(`ai/AGENTS.md` [2026-09-23]) and the athan playing at alarm volume (session 27, open item 3) are Android's.
+
+`VISIBLE_WHATS_NEW` now gates the What's new ROW alone, so a silent release can no longer take Help with it.
+That was the brief's one explicit "Care" item.
+
+**A break found a missing test, which is why breaks are written before code is trusted.** Flipping the modal's
+`{action ? (` to `{true ? (` rendered an action button on every answer instead of the ones that declare an
+action, and every test still passed: they asserted WHICH buttons existed and never HOW MANY. A counting test was
+added. Two smaller measurements worth keeping: `it.each` over `Platform.OS` needs `as const` or `tsc` rejects the
+`string` (a green Jest run cannot catch it, Jest only transforming), and **`UNSAFE_getByType` and
+`root.findByType` do not exist in React Native Testing Library 14** (`screen.root`'s prototype offers `queryAll`
+alone, and a `ScrollView` renders as the host type `RCTScrollView`).
+
+### The owner read it on the simulator and rewrote it (step 3, 1.29.11)
+
+The first build was faithful to the brief and unreadable: 🐋  "Again, all of this is so much text. It's just like
+1 page of black text." What changed, and why each one outlives this session:
+
+- **The app is never named in user-facing copy**, because it may be renamed. Every answer says "this app", and
+  `help.test.ts` refuses any question, answer or step containing the current name. The word *athan* stays: it
+  names the call to prayer, not the product, and Settings already says "Change athan".
+- **Two questions were CUT.** "How far ahead are alerts set?" because a user thinks in on and off, and "My
+  widget shows an old time" for a better reason: 🐋  "we shouldn't be showing an old time, actually", so it is a
+  defect to fix rather than a question to answer. **Do not re-add either.**
+- **A question is a CAUSE, marked with a dot**, so "Are notifications turned on for Athan?" became
+  "Notifications are turned off". Guidance left the paragraphs and became numbered steps, and a test caps every
+  answer at 160 characters. That cap is the guard against the page drifting back into prose.
+- **"Focus" means nothing to a user** (🐋  "What the hell is Focus?"), so the switch question is "The silence
+  switch is on" and the word Focus survives only inside an iOS step, where iOS's own Settings uses it.
+- **The card takes nearly the whole screen, with a divider under the title and between each question.** Both are
+  OPTIONAL `Modal` props, `wide` and `divider`, defaulting off.
+
+**A break caught a gap the props themselves created.** Defaulting `wide` and `divider` to true would silently
+widen the update prompt and What's New, and no test looked at either card's width, so that break went NOT CAUGHT.
+`Modal.test.tsx` now pins the compact card at `width: '85%'`. **Adding an option to a shared component is a
+change to every existing caller until a test says otherwise.** Two smaller traps: `perl -0pi` cannot match a
+multi-byte literal such as the bullet without `-CSD`, so that break silently applied nothing and printed
+`BREAK NOT APPLIED`, which is precisely why that string counts as a failure; and a copy change reaches every
+suite that quotes the copy, `__tests__/app/index.test.tsx` included, which the pre-commit hook caught.
+
+**Verified:** `Tests: 4760 passed, 4760 total`, 100% on statements (4387/4387), branches (1964/1964), functions
+(913/913) and lines (3952/3952), with `tsc` and Biome exiting 0, and all 31 breaks caught across the three steps.
+Proven on the iOS simulator, the owner having unplugged both phones.
