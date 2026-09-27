@@ -6,7 +6,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
 import { useEffect } from 'react';
-import { Linking, Platform, Pressable, Text } from 'react-native';
+import { Platform, Pressable, Text } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { onPlatform } from '@/__tests__/harness';
@@ -93,20 +93,21 @@ describe('onPlatform, switching to Android', () => {
   });
 
   // device/updates.ts works out IS_IOS as it loads, and React Native is loaded again inside jest.isolateModules, so a
-  // switch made outside it changes a copy the fresh module never reads
-  it('opens the Play Store from a module that reads the platform as it loads, switched and loaded fresh', async () => {
-    // Read before the fresh load, so this is the same mock the module calls once the load is over
-    const openURL = jest.mocked(Linking.openURL);
+  // switch made outside it changes a copy the fresh module never reads. The native module is mocked because the
+  // module imports it at load, and jest-expo has no ExpoInAppUpdates outside a device
+  it('reads the platform from a module that resolves it as it loads, switched and loaded fresh', async () => {
+    const checkForUpdate = jest.fn().mockResolvedValue({ updateAvailable: false });
     // Assigned inside the callback, which runs before the next line; a failed load throws there
     let updates!: typeof import('@/device/updates');
     jest.isolateModules(() => {
+      jest.doMock('expo-in-app-updates', () => ({ checkForUpdate, startUpdate: jest.fn() }), { virtual: true });
       require('@/__tests__/harness').onPlatform('android');
       updates = require('@/device/updates');
     });
 
-    await updates.openStore();
+    await updates.startNativeUpdate();
 
-    expect(openURL).toHaveBeenCalledWith(expect.stringMatching(/^market:\/\//));
+    expect(checkForUpdate).toHaveBeenCalledTimes(1);
   });
 
   // React loads again inside jest.isolateModules too, and hooks fail on any React but the one rendering them, so the

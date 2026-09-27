@@ -43,3 +43,41 @@ rule and the trap are written into `__tests__/README.md` and `ai/AGENTS.md`.
 ### One correction this makes to the plan
 
 Step 1 installs a dependency, so it must run the nested-copy remedy afterwards. Section 10's symptom table carries it.
+
+## Step 1: Android asks Play; the scrape and the Play store links are deleted
+
+- Branch: `feat/31-native-android-updates`. Pre-flight `PREFLIGHT OK`, all three anchors counted 1.
+- **The nested-copy trap fired exactly as the plan predicted.** `yarn add expo-in-app-updates@0.12.0` re-nested
+  `@expo/ui@58.0.7` and `widgetRuntimeLoads.test.ts` failed with `(0 , n.memo) is not a function` on both platforms.
+  `rm -rf node_modules/expo-widgets/node_modules && yarn install --frozen-lockfile` fixed it: `3 passed`. This is why
+  the plan made that check mandatory rather than advisory.
+- Red: 3 of the 6 new Android tests failed. The other 3 passed against the old code by coincidence, because the scrape
+  path also returned `false` and also took the failure stamp; the 3 that failed are the ones only Play can satisfy.
+- Green: `29 passed, 29 total`, `tsc` exit 0, Biome exit 0.
+- **Coverage on `device/updates.ts`: 100% statements, branches, functions and lines**, which is the session's headline
+  requirement for a module neither device can run.
+- Breaks: `BREAK CAUGHT` for androidShowsOurModal, androidSkipsPlay, playErrorEscapes, immediateFlow and
+  iosLosesItunes, then `ALL AS EXPECTED: 1`.
+- Two test helpers became dead with the scrape and were removed: `playListingHtml`, and `storeResponse`'s `text`
+  branch, which existed only for the Android HTML body.
+- **The commit hook found one test the plan did not anticipate, and it was a real finding.**
+  `__tests__/harness.test.tsx` had a case named "opens the Play Store from a module that reads the platform as it
+  loads", which used `openStore` on Android as its subject. That behaviour no longer exists, and the fresh load now
+  throws `Cannot find native module 'ExpoInAppUpdates'`, because `device/updates.ts` imports the native package at
+  load and jest-expo has no such module off a device. The test's PURPOSE is the harness pattern, not the store URL, so
+  it keeps that purpose with a subject that still exists: it loads the module fresh on Android, with the package
+  mocked virtually inside the same `isolateModules` callback, and asserts `startNativeUpdate()` reaches Play. Applied
+  under `EXECUTOR-BRIEF.md` section 4, item 8: it touches no name, signature, log line or behaviour the plan
+  specified, and every acceptance criterion still holds. 19 passed.
+- **A second hook finding, also real: every suite that RENDERS the home screen now loads the native module.**
+  `__tests__/app/indexFreshInstall.test.tsx` failed to run at all with `Cannot find native module 'ExpoInAppUpdates'`,
+  because it renders `Index`, which imports `device/updates`, which now imports `expo-in-app-updates` at load. It
+  does not mock `@/device/updates` the way `index.test.tsx` does, so the real package was reached. Fixed the way this
+  repo already handles every other native module: a shared mock at `shared/__mocks__/expo-in-app-updates.ts`, wired
+  into `jest.config.js`'s `appModuleMocks`, which both projects spread. It answers "no update", so a suite that merely
+  renders a screen never reaches Play, and the suites that test the flow keep their own `jest.mock`. Applied under
+  `EXECUTOR-BRIEF.md` section 4, item 8.
+- **A third: the pre-commit hook failed twice while reporting every test passing.** The cause was a watchman recrawl
+  warning on stderr (`Recrawled this watch 583 times`), which lint-staged treats as task failure.
+  `watchman watch-del` then `watch-project` cleared it. Worth knowing: a green `Tests:` line with a failing hook is
+  not always a test problem.
