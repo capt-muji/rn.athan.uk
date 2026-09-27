@@ -166,6 +166,16 @@ whether a release shows the modal is the owner's editorial call, made by stampin
 store release. No flag, because the feature ships on both platforms at once. Title 17 characters and
 body 75, inside the 32 and 96 limits `whatsNew.test.ts` enforces.
 
+### A hook failure that was not a test failure
+
+The records commit was blocked once by `FAIL unit stores/__tests__/uiGates.test.ts` reporting
+`Test suite failed to run: A jest worker process was terminated by another process: signal=SIGSEGV`,
+with `Tests: 4713 passed` and no failing assertion anywhere. The suite passes in isolation and passed
+on the retry. This is the same class of machine flake `EXECUTOR-BRIEF.md` section 3 documents for
+`audioMatrix.test.ts` under load, and it is worth knowing that it can strike any suite: **read the
+reason beside a FAIL before treating it as a finding, because "failed to run" and "a test failed" are
+different events.**
+
 ### Two process slips in this session, recorded rather than hidden
 
 1. **A commit landed with the wrong message and was amended with `--no-verify`.** `$TMPDIR` inside the
@@ -180,6 +190,16 @@ body 75, inside the 32 and 96 limits `whatsNew.test.ts` enforces.
    repairs in the same file.** Both times the staged copy survived and the working tree lost the fix,
    which then reappeared as a test failure that had already been solved. Use a copy-and-restore of
    the specific file, or `git stash push <file>`, never `checkout --` on a file holding wanted work.
+
+### After the audit: the owner read the sheet and changed one string
+
+🐋  "Let's keep the text identical. For example, you wrote. Reminder 1, notification before prayer
+time, very good, reminder 2, it should also be notification before prayer time."
+
+Reminder 2's hint said "A second, optional reminder", which describes the CARD while Reminder 1's
+describes what the reminder DOES. The two cards offer identical controls, so the descriptions have no
+reason to differ. Both now read "Notification before prayer time" (1.29.5). No test asserted the old
+string, and the suite stayed green at 4719.
 
 ## Status at the end of this session
 
