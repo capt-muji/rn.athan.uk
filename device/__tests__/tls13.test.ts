@@ -1,10 +1,10 @@
 /**
- * The TLS 1.3 status read as the app loads: Android's first security provider, or "unavailable"
+ * The TLS 1.3 status read as the app loads: the provider Android reports, or the warning when it cannot
  */
 
 interface LoadedTls13 {
-  provider: string;
   requireNativeModule: jest.Mock;
+  info: jest.Mock;
   warn: jest.Mock;
 }
 
@@ -17,7 +17,7 @@ interface LoadedTls13 {
  */
 const loadOn = (os: 'android' | 'ios', nativeModule: () => unknown): LoadedTls13 => {
   const requireNativeModule = jest.fn(nativeModule);
-  let provider!: string;
+  let info!: jest.Mock;
   let warn!: jest.Mock;
 
   jest.isolateModules(() => {
@@ -25,11 +25,13 @@ const loadOn = (os: 'android' | 'ios', nativeModule: () => unknown): LoadedTls13
     // load, so both are replaced before the import
     jest.doMock('react-native', () => ({ Platform: { OS: os } }));
     jest.doMock('expo-modules-core', () => ({ requireNativeModule }));
-    provider = (require('@/device/tls13') as typeof import('@/device/tls13')).tls13FirstProvider;
-    warn = (require('@/shared/logger') as { default: { warn: jest.Mock } }).default.warn;
+    require('@/device/tls13');
+    const logger = (require('@/shared/logger') as { default: { info: jest.Mock; warn: jest.Mock } }).default;
+    info = logger.info;
+    warn = logger.warn;
   });
 
-  return { provider, requireNativeModule, warn };
+  return { requireNativeModule, info, warn };
 };
 
 // doMock registers its factory for the whole file, not only inside the isolated copy
@@ -43,7 +45,7 @@ describe('the TLS 1.3 status, read once as the app loads', () => {
     const loaded = loadOn('android', () => ({ status: () => 'GmsCore_OpenSSL' }));
 
     expect(loaded.requireNativeModule).toHaveBeenCalledWith('Tls13');
-    expect(loaded.provider).toBe('GmsCore_OpenSSL');
+    expect(loaded.info).toHaveBeenCalledWith('TLS13: first security provider', { provider: 'GmsCore_OpenSSL' });
     expect(loaded.warn).not.toHaveBeenCalled();
   });
 
@@ -66,7 +68,7 @@ describe('the TLS 1.3 status, read once as the app loads', () => {
   ])('reports unavailable, and warns, on Android when %s', (_failure, nativeModule) => {
     const loaded = loadOn('android', nativeModule);
 
-    expect(loaded.provider).toBe('unavailable');
+    expect(loaded.info).not.toHaveBeenCalledWith('TLS13: first security provider', expect.anything());
     expect(loaded.warn).toHaveBeenCalledWith('TLS13: module unavailable', { error: expect.any(Error) });
   });
 
@@ -74,6 +76,6 @@ describe('the TLS 1.3 status, read once as the app loads', () => {
     const loaded = loadOn('ios', () => ({ status: () => 'GmsCore_OpenSSL' }));
 
     expect(loaded.requireNativeModule).not.toHaveBeenCalled();
-    expect(loaded.provider).toBe('unavailable');
+    expect(loaded.info).not.toHaveBeenCalled();
   });
 });
