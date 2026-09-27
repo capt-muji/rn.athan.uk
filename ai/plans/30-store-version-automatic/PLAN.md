@@ -364,7 +364,7 @@ findings, all applied before the steps were written:
 
 - [x] Step 1: DONE in `fb79a770`
 - [x] Step 2: DONE in `89f28ce3`
-- [ ] Step 3: the Android store button resolves without a Play client (specified)
+- [x] Step 3: DONE in the commit this step makes
 
 ---
 
