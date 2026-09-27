@@ -3,7 +3,7 @@
 Last updated: 2026-09-24 — #36 added and fixed (lost alarms stayed lost, because the refresh gate
 trusted a timestamp), #37 opened (the background task demands a network it does not use). Ledger
 compacted 2026-09-20: closed issues moved to the one-line index at the bottom (full detail in git
-history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, #38, G.1, G.2.
+history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2.
 
 Notes: the fleet gained a Huawei/Honor phone 2026-09-09 (owner-installed 1.24.1 via the EAS
 link; its USB never enumerated on the Mac). Upstream watches dropped: #44540 (closed upstream via
@@ -778,7 +778,7 @@ production release; G.6 noted but deferred by owner.
   pill inside its column. Measured on the 3T at 34px left and 34px right.
 - **Owner ruling**: bound the pill to the text, keeping equal breathing room each side.
 
-### 38. [OPEN, queued as row 15d] Android widgets clip their prayer names on any launcher but the 3T's
+### 38. [FIXED 1.27.343, session 15d] Android widgets clipped their prayer names on any launcher but the 3T's
 
 - **Found**: 2026-09-24, the owner placing the widgets on the Oppo Find X8, the second
   Android phone they have ever been on. The 3T has been the only Android reference since
@@ -808,6 +808,14 @@ production release; G.6 noted but deferred by owner.
 - **Evidence**: `ai/features/android-widgets-x8/FINDINGS.md`, with the broken X8 screenshot
   and the owner's iOS reference look beside it.
 - **Session brief**: `ai/prompts/android-widget-proportional-sizing.md` (queue row 15d).
+- **FIXED by session 15d** (queue row 12, DONE at `7b38e5a6`, audited PASS). The medium composition now holds
+  PROPORTIONS rather than dp: every column is a share of the width the launcher actually granted, which
+  `modules/widgetrefresh` stamps into each kind's props as `grantedWidthDp`, and `LIST_WIDTH` takes the remainder so
+  the columns sum to the inner width exactly. Row text scales with its box, floored at 10sp. Proven on the Find X8 at
+  both 480 (its display-size override) and native 560: all eleven names complete, one left origin, times
+  right-aligned, at a 278dp grant where the old 332dp of fixed columns overflowed hardest. No regression on the 3T.
+  The audit's red check confirmed the tests guard it: reverting `widgets/PrayerWidget.tsx` fails 8 of the 41 renderer
+  tests, exactly the 8 that session added or changed.
 
 ### 27. [OPEN, found 2026-09-10, presentation-rearchitecture session] Prayer list shows only one row for a period after a day-roll cascade instead of the full six
 
@@ -1014,6 +1022,7 @@ characterised).
 - #33 — One-in-sixty flaky test from an unpinned fake clock (fixed)
 - #34 — App update cancelled every armed alert, then stayed quiet 12 h (fixed)
 - #35 — Update prompt read a hand-edited releases.json; both stores now answer for themselves (fixed)
+- #38 — Android widgets clipped their prayer names outside the 3T; the medium now sizes from the launcher's grant (fixed)
 - #41 — Five notification tests passed only before 12:00 London; the seed read the real clock (fixed)
 - F.1 — Render crash selecting a prayer during a schedule refresh (fixed)
 - F.2 — @expo/ui community bottom sheets migration (reverted)
