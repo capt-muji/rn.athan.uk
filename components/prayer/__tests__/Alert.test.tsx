@@ -5,6 +5,7 @@
 import { act, fireEvent, render, screen, userEvent } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
+import { getDefaultStore } from 'jotai/vanilla';
 import type { TestInstance } from 'test-renderer';
 
 import { showLondonDay } from '@/__tests__/harness';
@@ -13,7 +14,7 @@ import { PRAYERS_ARABIC } from '@/shared/constants';
 import { AlertType, Icon, ScheduleType } from '@/shared/types';
 import { setPrayerAlertType } from '@/stores/notifications';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
-import { getAlertSheetState } from '@/stores/ui';
+import { alertSheetStateAtom } from '@/stores/ui';
 
 import Alert from '../Alert';
 
@@ -42,7 +43,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     await fireEvent.press(screen.getByRole('button', { name: 'Fajr notification: off' }));
 
     expect(Notifications.getPermissionsAsync).toHaveBeenCalledTimes(1);
-    expect(getAlertSheetState()).toEqual({
+    expect(getDefaultStore().get(alertSheetStateAtom)).toEqual({
       type: ScheduleType.Standard,
       index: FAJR,
       prayerEnglish: 'Fajr',
@@ -59,7 +60,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     await fireEvent.press(screen.getByRole('button', { name: 'Fajr notification: sound' }));
 
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
-    expect(getAlertSheetState()).toMatchObject({ prayerEnglish: 'Fajr', isUnavailable: false });
+    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerEnglish: 'Fajr', isUnavailable: false });
   });
 
   it('opens the explanation, without checking permission, when the time on screen is unreadable', async () => {
@@ -70,7 +71,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     await fireEvent.press(screen.getByRole('button', { name: 'Fajr notification: unavailable' }));
 
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
-    expect(getAlertSheetState()).toMatchObject({ prayerEnglish: 'Fajr', isUnavailable: true });
+    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerEnglish: 'Fajr', isUnavailable: true });
   });
 
   // [saved alert in words, saved alert, the icon it draws]

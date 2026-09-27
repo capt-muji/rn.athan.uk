@@ -106,9 +106,6 @@ export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_w
 /** Page coordinates of the prayer list component (for animations) */
 export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
 
-/** Page coordinates of the date component (for animations) */
-export const measurementsDateAtom = atom<PageCoordinates>(emptyCoordinates);
-
 // =============================================================================
 // ATOMS - User Preferences (persisted)
 // =============================================================================
@@ -172,12 +169,6 @@ export const showAlertSheet = (state: AlertSheetState) => {
   store.get(alertSheetModalAtom)?.present();
 };
 
-/** Hides the alert bottom sheet */
-export const hideAlertSheet = () => store.get(alertSheetModalAtom)?.dismiss();
-
-/** Gets the current alert sheet state */
-export const getAlertSheetState = () => store.get(alertSheetStateAtom);
-
 /** Sets the index of the currently playing sound preview */
 export const setPlayingSoundIndex = (index: number | null) => store.set(playingSoundIndexAtom, index);
 
@@ -232,9 +223,3 @@ export const getMeasurementsList = () => store.get(measurementsListAtom);
 
 /** Sets the page coordinates of the prayer list component */
 export const setMeasurementsList = (measurements: PageCoordinates) => store.set(measurementsListAtom, measurements);
-
-/** Gets the page coordinates of the date component */
-export const getMeasurementsDate = () => store.get(measurementsDateAtom);
-
-/** Sets the page coordinates of the date component */
-export const setMeasurementsDate = (measurements: PageCoordinates) => store.set(measurementsDateAtom, measurements);

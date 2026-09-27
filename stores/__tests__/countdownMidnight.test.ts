@@ -39,7 +39,6 @@ import {
 import {
   extraDisplayDateAtom,
   extraSequenceAtom,
-  getDisplayDate,
   getNextPrayer,
   getPrevPrayer,
   getSequenceAtom,
@@ -56,6 +55,9 @@ const STANDARD = ScheduleType.Standard;
 const EXTRA = ScheduleType.Extra;
 
 const store = getDefaultStore();
+/** The display date a schedule shows, read from the atom the day header renders */
+const displayDateOf = (type: ScheduleType): string | null =>
+  store.get(type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom);
 
 /** Published London times from the provider's 2026 download: Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha */
 const OCTOBER: Record<string, string[]> = {
@@ -260,7 +262,7 @@ describe('crossing 00:00:00 with the app running advances only the Extras sequen
       const extraCountdown = recordValues(getCountdownAtom(EXTRA));
 
       startCountdowns();
-      expect([getDisplayDate(STANDARD), getDisplayDate(EXTRA)]).toEqual([listDay, listDay]);
+      expect([displayDateOf(STANDARD), displayDateOf(EXTRA)]).toEqual([listDay, listDay]);
 
       const end = shiftSeconds(launch, 122);
       jest.advanceTimersByTime(Date.parse(end) - Date.parse(launch));
@@ -268,7 +270,7 @@ describe('crossing 00:00:00 with the app running advances only the Extras sequen
       expect(standardSequenceWrites).toEqual([]);
       expect(store.get(standardSequenceAtom)).toBe(standardSequence);
       expect(extraSequenceWrites).toEqual(extraWrites);
-      expect([getDisplayDate(STANDARD), getDisplayDate(EXTRA)]).toEqual([listDay, listDay]);
+      expect([displayDateOf(STANDARD), displayDateOf(EXTRA)]).toEqual([listDay, listDay]);
 
       expect(standardCountdown).toEqual(everySecond(launch, end, [['Fajr', fajr]]));
       expect(extraCountdown).toEqual(everySecond(launch, end, extras));
@@ -362,7 +364,7 @@ interface Observation {
 }
 
 const observe = (type: ScheduleType): Observation => ({
-  listDay: getDisplayDate(type),
+  listDay: displayDateOf(type),
   next: label(getNextPrayer(type)),
   previous: label(getPrevPrayer(type)),
   countdown: store.get(getCountdownAtom(type)),
