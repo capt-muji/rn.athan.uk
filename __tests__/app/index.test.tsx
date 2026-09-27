@@ -595,6 +595,16 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
     expect(screen.queryByText(UPDATE_PROMPT_TITLE)).not.toBeOnTheScreen();
   });
 
+  it('never offers the update prompt on Android, because Play owns that flow', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    onPlatform('android');
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+    expect(screen.queryByText(UPDATE_PROMPT_TITLE)).not.toBeOnTheScreen();
+  });
+
   it("offers the update once What's New is closed", async () => {
     showLondonDay('2026-09-11', '14:00');
     installUpdate();
