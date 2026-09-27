@@ -355,7 +355,16 @@ describe('the request budget fits inside the iOS pending-request ceiling', () =>
 
   // The walk's guard is not a coverage number: the worst-case user's budget runs out long
   // before it, so it can never be what limits how far ahead the app arms
-  it('bounds the candidate walk far beyond what the worst-case user can afford', () => {
+  // The guard has to clear the LIGHTEST user, not the heaviest: one prayer with no reminder
+  // spends one request per day, so it is the budget itself that decides how far they reach
+  it('bounds the candidate walk beyond the furthest the budget itself can reach', () => {
+    const cheapestPossibleRow = 1;
+    const daysTheLightestUserCanAfford = NOTIFICATION_REQUEST_BUDGET / cheapestPossibleRow;
+
+    expect(SCHEDULE_CANDIDATE_DAYS).toBeGreaterThan(daysTheLightestUserCanAfford);
+  });
+
+  it('bounds it beyond the worst-case user too, who runs out of budget far sooner', () => {
     const daysTheWorstCaseUserCanAfford = NOTIFICATION_REQUEST_BUDGET / (prayersPerDay * ALERTS_PER_PRAYER);
 
     expect(SCHEDULE_CANDIDATE_DAYS).toBeGreaterThan(daysTheWorstCaseUserCanAfford);
