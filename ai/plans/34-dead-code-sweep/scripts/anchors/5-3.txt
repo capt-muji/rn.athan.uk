@@ -1,0 +1,5 @@
+/** Gets the page coordinates of the date component */
+export const getMeasurementsDate = () => store.get(measurementsDateAtom);
+
+/** Sets the page coordinates of the date component */
+export const setMeasurementsDate = (measurements: PageCoordinates) => store.set(measurementsDateAtom, measurements);

@@ -1,0 +1,11 @@
+let firstProvider = 'unavailable';
+
+if (Platform.OS === 'android') {
+  try {
+    firstProvider = requireNativeModule('Tls13').status() as string;
+  } catch (error) {
+    logger.warn('TLS13: module unavailable', { error });
+  }
+}
+
+export const tls13FirstProvider = firstProvider;

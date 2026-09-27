@@ -1,0 +1,5 @@
+/**
+ * Index position of Istijaba prayer in EXTRAS arrays (0-indexed: 4)
+ * Used for special handling: Istijaba notifications only scheduled on Fridays
+ */
+export const ISTIJABA_INDEX = 4;
