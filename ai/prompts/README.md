@@ -85,6 +85,43 @@ Session 32 listed everything still waiting, and the owner grouped it all in one 
 - **The 25 candidate screenshots stay at `~/athan-help-designs`** until the owner deletes them. They are
   the record behind the ruling above, and they live outside the repository.
 
+## Decided by the owner, 2026-09-27, while planning session 34 (the dead-code sweep)
+
+- **Unused code and its tests are deleted together, with no exception for a test that looks
+  load-bearing.** Offered five symbols the planning session wanted to keep because their tests
+  carried real assertions, the owner refused the premise: 🐋  "I don't understand what you said.
+  Okay, you said we were using it in tests, but what's the point if we're testing that could?
+  What's the point? If we're testing code that is not being actually used anywhere. What's the
+  point? I don't get it. I'm so confused. If the code is not being used, but we're testing the code,
+  then we should delete the code and the tests." The session then proved the ruling correct: each of
+  the five was a DOORWAY onto live code, so its 84 assertions repointed onto the atom or the
+  persisted snapshot the app itself uses and the coverage moved rather than vanishing. One came out
+  stronger, the bulk-wipe guard now watching `clearPrefix`, the single primitive all four deleted
+  wrappers called. The rule governs any future sweep.
+- **The sweep's own measurement is fixed before it is trusted.** Row 34 was queued saying 18 dead
+  exports; the true count is 27. 🐋  the recommended option, "Fix the script first, then sweep 27".
+  A guard that under-reports is worse than none, because it is trusted: the row would have closed
+  with 9 dead symbols still in the tree.
+- **The standing guard is a Jest test inside `yarn validate`**, not a manual script and not a
+  pre-push check, so the commit that creates an orphan is the commit that fails. Measured at 0.5
+  seconds over 450 exports, so the pre-commit hook does not get slower.
+- **Five symbols are kept, allow-listed**: `ErrorBoundary`, which Expo Router calls by file
+  convention rather than by import, and the four `MAX_WHATS_NEW_*` limits, which constrain the COPY
+  in `shared/whatsNew.ts` and are enforced only at test time, so a test is their only possible
+  caller.
+- **A deletion runs to a fixpoint.** 🐋  "Delete the hook and its now-orphaned helpers". A private
+  helper left with no caller is the same debt one level down, and Biome fails the build on it anyway.
+  The chain reached depth 3: `useAnimationOpacity`, `createTimingAnimation`, `DEFAULT_TIMING`.
+- **`StoredPrayer`, `StoredPrayerSequence` and `mocks/timing-system-schema.ts` all go.** The two
+  types describe a sequence cache the app does not have, and the 791-line file was the only thing
+  naming them. `shared/types.ts` itself warned that reasoning about the type "will send you looking
+  for a bug that cannot be there".
+- **"Cascade" never describes dead code in this repository.** The word names the date-roll cascade
+  animation, and the planning session's phrase "the cascade" read as a threat to it. Write "chain of
+  dead code". The animation was never touched: `useDerivedOpacity`, `useDerivedColor`,
+  `useDerivedFill`, `ANIMATION.cascadeDelay` and `getCascadeDelay` are all kept, and all 58
+  prayer-row component tests pass.
+
 ## Decided by the owner, 2026-09-27, while planning session 29 (the Help page)
 
 - **It is a MODAL, not a second bottom sheet.** 🐋  "I have decided to make it a modal. It needs to be

@@ -1,0 +1,8 @@
+/**
+ * Unregisters the background task
+ *
+ * Call this if you need to disable background refresh (e.g., for testing or rollback).
+ *
+ * @returns Promise that resolves when unregistration is complete
+ */
+export const unregisterBackgroundTask = async () => {

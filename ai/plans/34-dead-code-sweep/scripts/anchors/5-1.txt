@@ -1,0 +1,11 @@
+/**
+ * Gets the current display date for a schedule
+ *
+ * @param type Schedule type (Standard or Extra)
+ * @returns Display date string (YYYY-MM-DD) or null
+ */
+export const getDisplayDate = (type: ScheduleType): string | null => {
+  const displayDateAtom = type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom;
+  return store.get(displayDateAtom);
+};
+

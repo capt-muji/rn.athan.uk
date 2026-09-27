@@ -1,0 +1,19 @@
+export interface StoredPrayer {
+  type: ScheduleType;
+  english: string;
+  arabic: string;
+  /** Proposed format, unused: "2026-01-18T06:12:00" (local time, no 'Z') */
+  datetime: string;
+  time: string;
+  belongsToDate: string;
+}
+
+/**
+ * The sequence counterpart to StoredPrayer, and unused in the same way: no
+ * sequence is persisted. See the note on StoredPrayer above.
+ */
+export interface StoredPrayerSequence {
+  type: ScheduleType;
+  prayers: StoredPrayer[];
+}
+
