@@ -72,6 +72,7 @@ const {
   measurementsDateAtom,
   measurementsListAtom,
   playingSoundIndexAtom,
+  popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
   popupUpdateLastCheckAtom,
   resyncAtom,
@@ -81,6 +82,7 @@ const {
   setMeasurementsDate,
   setMeasurementsList,
   setPlayingSoundIndex,
+  setPopupHelpEnabled,
   setPopupUpdateEnabled,
   setPopupUpdateLastCheck,
   setSettingsSheetModal,
@@ -271,6 +273,11 @@ describe('preference setter functions', () => {
   it('bumpResync advances the counter', () => {
     bumpResync();
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(resyncAtom, expect.any(Function));
+  });
+
+  it('setPopupHelpEnabled sets boolean', () => {
+    setPopupHelpEnabled(true);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(popupHelpEnabledAtom, true);
   });
 
   it('setPopupUpdateEnabled sets boolean', () => {

@@ -418,7 +418,7 @@ Expected, every number measured in the planning session's scratch worktree:
 - `npx jest components/modals/__tests__/Help.test.tsx --watchman=false --selectProjects=components` prints
   `Tests:       10 passed, 10 total`;
 - `npx jest __tests__/app/index.test.tsx --watchman=false --selectProjects=components` prints
-  `Tests:       42 passed, 42 total`;
+  `Tests:       40 passed, 40 total`, being the file's 37 plus this step's three;
 - `stores/__tests__/ui.test.ts` and `device/__tests__/androidChannelUpdate.test.ts` both pass, their combined
   total rising by 4 (one atom test, three opener tests).
 
