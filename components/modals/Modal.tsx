@@ -28,9 +28,11 @@ type Props = {
   /** Rules the title off from content that scrolls beneath it */
   divider?: boolean;
   icon?: React.ReactNode;
+  /** Centres the title over full-width content, rather than hugging the leading edge */
+  centreTitle?: boolean;
 };
 
-export default function Modal({ visible, children, title, wide, divider, icon }: Props) {
+export default function Modal({ visible, children, title, wide, divider, icon, centreTitle }: Props) {
   if (!visible) return null;
 
   return (
@@ -45,7 +47,7 @@ export default function Modal({ visible, children, title, wide, divider, icon }:
         entering={MODAL_ENTERING}
         exiting={MODAL_EXITING}>
         <View style={styles.content}>
-          <View style={styles.titleRow}>
+          <View style={[styles.titleRow, centreTitle && styles.titleRowCentre]}>
             {icon}
             <Text style={[styles.title, divider && styles.titleWithDivider]}>{title}</Text>
           </View>
@@ -98,6 +100,10 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     gap: SPACING.sm,
     paddingTop: SPACING.xs,
+  },
+  titleRowCentre: {
+    alignSelf: 'stretch',
+    justifyContent: 'center',
   },
   title: {
     fontSize: TEXT.sizeTitle,
