@@ -2363,5 +2363,41 @@ describe('on the real builder', () => {
 
       expect(shortLists).toEqual([]);
     });
+
+    /**
+     * ISSUES #42. The other keep in filterRelevantPrayers: the one that holds a whole earlier list day while the
+     * countdown bar still measures from a row on it. Its >= survives mutation to === because the display date and
+     * the previous row are each never after next's list day, so the rows the >= admits are already kept by the
+     * display-date clause. What IS reachable is its removal, so that is what this guards.
+     */
+    it('keeps the whole list day holding the row the countdown bar measures from', () => {
+      storeDays(OVERLAPPING_JUNE);
+      launchAt('2026-06-18T11:00:00.000Z');
+
+      const incomplete: string[] = [];
+      let exercised = 0;
+      const start = new Date('2026-06-18T11:00:00.000Z').getTime();
+
+      for (let minute = 0; minute < 3 * 24 * 60; minute += 5) {
+        moveClockTo(new Date(start + minute * 60_000).toISOString());
+        refreshSequence(STANDARD);
+
+        const onScreen = getDisplayDate(STANDARD);
+        const previous = getPrevPrayer(STANDARD);
+        if (!onScreen || !previous || previous.belongsToDate >= onScreen) continue;
+
+        exercised += 1;
+        const held = rowsHeld(STANDARD)[previous.belongsToDate] ?? '';
+        const wholeList = actualPrayer()
+          .createPrayerSequence(STANDARD, new Date(`${previous.belongsToDate}T12:00:00.000Z`), 1)
+          .prayers.map((prayer) => prayer.english)
+          .join(', ');
+        if (held !== wholeList) incomplete.push(`${new Date().toISOString()} ${previous.belongsToDate}: ${held}`);
+      }
+
+      expect(incomplete).toEqual([]);
+      // Without this the sweep could stop reaching the shape and the test would pass over nothing
+      expect(exercised).toBeGreaterThan(0);
+    });
   });
 });
