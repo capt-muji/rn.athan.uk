@@ -1,0 +1,25 @@
+import { Linking, Platform } from 'react-native';
+
+import { APP_CONFIG } from '@/shared/config';
+import { TIME_CONSTANTS } from '@/shared/constants';
+import logger from '@/shared/logger';
+import { isNewerVersion } from '@/shared/versionUtils';
+import { getPopupUpdateLastCheck, setPopupUpdateLastCheck } from '@/stores/ui';
+import { getInstalledVersion } from '@/stores/version';
+
+const IS_IOS = Platform.OS === 'ios';
+
+// country=gb is load-bearing, not tidiable: the app is published in the GB storefront alone and a
+// bundleId lookup is storefront-scoped, so every other country answers resultCount 0
+const ITUNES_LOOKUP_URL = 'https://itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb';
+const PLAY_LISTING_URL = `https://play.google.com/store/apps/details?id=${APP_CONFIG.androidPackage}&hl=en&gl=GB`;
+
+const APP_STORE_URL = `https://apps.apple.com/gb/app/athan-london/id${APP_CONFIG.iosAppId}`;
+const PLAY_STORE_URL = `market://details?id=${APP_CONFIG.androidPackage}`;
+// A device without the Play client refuses the market:// intent, and the button did nothing at all
+const PLAY_STORE_WEB_URL = `https://play.google.com/store/apps/details?id=${APP_CONFIG.androidPackage}`;
+
+// Keyed on the payload's version field, never on the version's shape: the listing holds 8 matches for a
+// bare dotted number and 7 of them are SVG path coordinates
+const PLAY_VERSION_KEY = /"141":\s*\[\s*\[\s*\[\s*"([^"]+)"/;
+const DOTTED_NUMBERS = /^\d+(\.\d+)*$/;
