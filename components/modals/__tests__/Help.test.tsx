@@ -7,6 +7,7 @@ import { StyleSheet } from 'react-native';
 
 import { onPlatform } from '@/__tests__/harness';
 import { openAppSettings, openDndAccessSettings } from '@/device/notifications';
+import { SIZE } from '@/shared/constants';
 import { getHelpTopics } from '@/shared/help';
 
 import ModalHelp from '../Help';
@@ -77,13 +78,14 @@ describe('the Help modal', () => {
     }
   });
 
-  it('keeps the Close button full width at the foot of the card', async () => {
+  // The three modals share one compact Close button, so Help's must not drift wide again (owner, 2026-09-27)
+  it('closes with the same compact button the other modals use', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
     const close = StyleSheet.flatten(screen.getByRole('button', { name: 'Close' }).props.style);
 
-    expect(close.alignSelf).toBe('stretch');
-    expect(close.width).toBeUndefined();
+    expect(close.width).toBe(SIZE.modal.buttonWidth);
+    expect(close.alignSelf).toBe('center');
   });
 
   it('numbers the steps it lists', async () => {
