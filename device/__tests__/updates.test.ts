@@ -68,6 +68,9 @@ import { checkForUpdates, openStore, readPlayListingVersion } from '../updates';
 // =============================================================================
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+const RETRY_MS = 60 * 60 * 1000;
+const FETCH_TIMEOUT_MS = 10 * 1000;
+const PINNED_NOW = 1_700_000_000_000;
 
 /** A Play listing page reduced to what the parse must survive: the version key, and SVG path data a shape-only regex would match */
 const playListingHtml = (version: string | null): string =>
@@ -232,13 +235,89 @@ describe('checkForUpdates', () => {
   // finally block
   // ---------------------------------------------------------------------------
 
-  it('always calls setPopupUpdateLastCheck even on failure', async () => {
+  it('stamps a failed check an hour back so the day is not lost', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
     mockFetch.mockRejectedValue(new Error('Network error'));
 
     await checkForUpdates();
 
-    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(expect.any(Number));
+    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
+    jest.useRealTimers();
+  });
+
+  it('stamps a successful check with now', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockGetPopupUpdateLastCheck.mockReturnValue(0);
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.33' }] } }));
+
+    await checkForUpdates();
+
+    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW);
+    jest.useRealTimers();
+  });
+
+  it('retries an hour after a failure and not before', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockGetPopupUpdateLastCheck.mockReturnValue(0);
+    mockFetch.mockRejectedValue(new Error('Network error'));
+    await checkForUpdates();
+    const stamped = mockSetPopupUpdateLastCheck.mock.calls[0][0] as number;
+    mockGetPopupUpdateLastCheck.mockReturnValue(stamped);
+
+    jest.setSystemTime(PINNED_NOW + RETRY_MS - 1);
+    await checkForUpdates();
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+
+    jest.setSystemTime(PINNED_NOW + RETRY_MS + 1);
+    await checkForUpdates();
+
+    expect(mockFetch).toHaveBeenCalledTimes(2);
+    jest.useRealTimers();
+  });
+
+  it('stamps nothing when the throttle refuses the check', async () => {
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+
+    await checkForUpdates();
+
+    expect(mockSetPopupUpdateLastCheck).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it('abandons a fetch that has not answered in ten seconds', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockGetPopupUpdateLastCheck.mockReturnValue(0);
+    mockFetch.mockImplementation(
+      (_url: string, init: RequestInit) =>
+        new Promise((_resolve, reject) => {
+          init.signal?.addEventListener('abort', () => reject(new Error('Aborted')));
+        })
+    );
+
+    const pending = checkForUpdates();
+    jest.advanceTimersByTime(FETCH_TIMEOUT_MS);
+
+    await expect(pending).resolves.toBe(false);
+    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
+    jest.useRealTimers();
+  });
+
+  it('leaves a fetch that answers inside ten seconds alone', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockGetPopupUpdateLastCheck.mockReturnValue(0);
+    mockIsNewerVersion.mockReturnValue(true);
+    let capturedSignal: AbortSignal | null | undefined;
+    mockFetch.mockImplementation((_url: string, init: RequestInit) => {
+      capturedSignal = init.signal;
+      return Promise.resolve(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
+    });
+
+    const result = await checkForUpdates();
+
+    expect(result).toBe(true);
+    expect(capturedSignal?.aborted).toBe(false);
+    jest.useRealTimers();
   });
 
   it('calls setPopupUpdateLastCheck on success', async () => {
@@ -266,6 +345,9 @@ describe('checkForUpdates', () => {
   });
 
   it('logs error when outer catch is triggered', async () => {
+    // The clock is pinned because the assertion reads it too: on the real clock the code's own Date.now()
+    // and the expectation's can land milliseconds apart
+    jest.useFakeTimers({ now: PINNED_NOW });
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
     mockGetInstalledVersion.mockImplementation(() => {
       throw new Error('Version error');
@@ -275,7 +357,8 @@ describe('checkForUpdates', () => {
 
     expect(result).toBe(false);
     expect(mockLoggerError).toHaveBeenCalledWith('Failed to check for updates:', expect.any(Error));
-    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(expect.any(Number));
+    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
+    jest.useRealTimers();
   });
 
   it('fetches exactly once for production iOS (iTunes API only)', async () => {
