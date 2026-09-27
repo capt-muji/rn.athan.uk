@@ -901,6 +901,11 @@ const LONDON_2026: Record<string, string[]> = {
   '2026-03-28': ['04:09', '05:42', '12:11', '15:34', '18:30', '19:48'],
   '2026-03-29': ['05:07', '06:40', '13:10', '16:35', '19:32', '20:49'],
   '2026-03-30': ['05:05', '06:38', '13:10', '16:36', '19:34', '20:51'],
+  '2026-06-18': ['01:00', '02:00', '13:00', '18:00', '23:30', '03:30'],
+  '2026-06-19': ['01:00', '02:00', '13:00', '18:00', '23:30', '03:30'],
+  '2026-06-20': ['01:00', '02:00', '13:00', '18:00', '23:30', '03:30'],
+  '2026-06-21': ['01:00', '02:00', '13:00', '18:00', '23:30', '03:30'],
+  '2026-06-22': ['01:00', '02:00', '13:00', '18:00', '23:30', '03:30'],
   '2026-10-16': ['05:51', '07:23', '12:51', '15:31', '18:08', '19:31'],
   '2026-10-17': ['05:52', '07:25', '12:51', '15:30', '18:06', '19:29'],
   '2026-10-18': ['05:54', '07:27', '12:51', '15:28', '18:04', '19:27'],
@@ -914,6 +919,7 @@ const LONDON_2026: Record<string, string[]> = {
 
 const FIELDS: RequiredTimeName[] = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'];
 const OCT_16_TO_20 = ['2026-10-16', '2026-10-17', '2026-10-18', '2026-10-19', '2026-10-20'];
+const OVERLAPPING_JUNE = ['2026-06-18', '2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'];
 
 const STANDARD_ROWS = 'Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha';
 const STANDARD_DASHED = '[Fajr], [Sunrise], [Dhuhr], [Asr], [Magrib], [Isha]';
@@ -2323,6 +2329,39 @@ describe('on the real builder', () => {
         '2026-10-19': STANDARD_DASHED,
         '2026-10-20': STANDARD_DASHED,
       });
+    });
+  });
+
+  /**
+   * ISSUES #27. An Isha at 03:30 is in the small hours, so its instant moves to the next calendar day while its list
+   * day stays the day before: that day is still on screen once the NEXT day's 01:00 Fajr has passed, which is the
+   * only readable shape putting a later day's rows behind an earlier day on screen. London never produces it; above
+   * about 60N the provider does. Green on its first run, because the fix shipped 2026-09-13; the breaks are its red.
+   */
+  describe('a day roll with every row readable (ISSUES #27)', () => {
+    it('keeps every row of the day on screen while the day before it is still counting down', () => {
+      storeDays(OVERLAPPING_JUNE);
+      launchAt('2026-06-18T11:00:00.000Z');
+
+      const shortLists: string[] = [];
+      const start = new Date('2026-06-18T11:00:00.000Z').getTime();
+
+      for (let minute = 0; minute < 3 * 24 * 60; minute += 5) {
+        moveClockTo(new Date(start + minute * 60_000).toISOString());
+        refreshSequence(STANDARD);
+
+        const onScreen = getDisplayDate(STANDARD);
+        if (!onScreen) continue;
+
+        const held = rowsHeld(STANDARD)[onScreen] ?? '';
+        const wholeList = actualPrayer()
+          .createPrayerSequence(STANDARD, new Date(`${onScreen}T12:00:00.000Z`), 1)
+          .prayers.map((prayer) => prayer.english)
+          .join(', ');
+        if (held !== wholeList) shortLists.push(`${new Date().toISOString()} ${onScreen}: ${held}`);
+      }
+
+      expect(shortLists).toEqual([]);
     });
   });
 });
