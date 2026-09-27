@@ -6187,3 +6187,32 @@ suite that quotes the copy, `__tests__/app/index.test.tsx` included, which the p
 **Verified:** `Tests: 4760 passed, 4760 total`, 100% on statements (4387/4387), branches (1964/1964), functions
 (913/913) and lines (3952/3952), with `tsc` and Biome exiting 0, and all 31 breaks caught across the three steps.
 Proven on the iOS simulator, the owner having unplugged both phones.
+
+### Shipped as an interim: the visual treatment is still open (owner, 2026-09-27)
+
+The owner reviewed 25 candidate layouts on the simulator and chose to ship rather than settle the look today:
+🐋  "let's just, whatever, ship it as is for now. We will improve it later... We can mark it as complete, but
+waiting for chosen design." So the row is DONE with that qualifier: what ships is complete and tested, and only
+the styling is open.
+
+What shipped is the corrected design 1, with the three faults the owner named on the first build fixed. **No
+purple anywhere**, because the modal is a light surface of its own and takes slate ink rather than the app's
+indigo. The big numbered circles became one small question-mark badge. And the step text, which had been darker
+than the description above it, inverting the hierarchy, now matches it.
+
+The questions are also questions now. A user reading an FAQ scans for their own symptom, not for a diagnosis they
+do not have yet, so "Notifications are turned off" became "Why do I get no alerts at all?" and the other seven
+likewise.
+
+**Every candidate is kept at `~/athan-help-designs`**: the 25 screenshots, a contact sheet, and
+`helpVariants.source.tsx`, the exact component source that produced them, so the next session can re-render any
+of them without rebuilding the set. It lives outside `~/athan-device-sweep/` on purpose, because a nightly job
+clears the build folders there.
+
+**DURABLE LESSON, from the harness rather than the app: a measurement threshold is a claim about the thing being
+measured.** The screenshot loop kept a frame only when more than 50% of its pixels were near-white, and design 14
+was twice reported as failing and nearly discarded on that basis. It rendered correctly; its darker wells simply
+sat under the threshold. An earlier version of the same loop produced seven IDENTICAL screenshots that only a
+hash check caught, because Fast Refresh remounts `stores/ui.ts` and closed the modal between captures. Both are
+the same mistake in two shapes: trusting a capture without a positive check that what was wanted is on screen.
+The loop now relaunches the app and verifies the modal is present before keeping a frame.
