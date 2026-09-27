@@ -2,7 +2,7 @@ import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-n
 
 import { openAppSettings, openDndAccessSettings } from '@/device/notifications';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { getHelpTopics, HELP_ACTION_LABELS, type HelpAction } from '@/shared/help';
 
 import Modal from './Modal';
@@ -14,7 +14,7 @@ const ANSWERS_HEIGHT_SHARE = 0.66;
 const INK = COLORS.light.text;
 const BODY = 'rgba(52, 78, 92, 0.72)';
 const MUTED = 'rgba(52, 78, 92, 0.5)';
-const CARD = 'rgba(52, 78, 92, 0.05)';
+const CARD = 'rgba(52, 78, 92, 0.03)';
 
 const runAction = (action: HelpAction) => {
   if (action === 'dndAccess') {
@@ -38,12 +38,7 @@ export default function ModalHelp({ visible, onClose }: Props) {
       <ScrollView style={{ maxHeight: height * ANSWERS_HEIGHT_SHARE }} showsVerticalScrollIndicator={false}>
         {topics.map(({ question, text, steps, action }) => (
           <View key={question} style={styles.card}>
-            <View style={styles.head}>
-              <View style={styles.badge}>
-                <Text style={styles.badgeGlyph}>?</Text>
-              </View>
-              <Text style={styles.question}>{question}</Text>
-            </View>
+            <Text style={styles.question}>{question}</Text>
             <Text style={styles.answer}>{text}</Text>
             {steps ? (
               <View style={styles.steps}>
@@ -78,32 +73,11 @@ export default function ModalHelp({ visible, onClose }: Props) {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: CARD,
-    borderRadius: RADIUS.xl,
-    padding: SPACING.md,
-    marginBottom: SPACING.smd,
-  },
-  head: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: SPACING.sm,
-  },
-  badge: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    backgroundColor: INK,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  badgeGlyph: {
-    color: COLORS.light.background,
-    fontSize: 10,
-    lineHeight: 16,
-    fontFamily: TEXT.family.medium,
-    textAlign: 'center',
+    borderRadius: RADIUS.md,
+    padding: SPACING.mid,
+    marginBottom: SPACING.md,
   },
   question: {
-    flex: 1,
     fontSize: 15,
     fontFamily: TEXT.family.medium,
     color: INK,
@@ -140,27 +114,23 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-end',
     gap: SPACING.xs,
     marginTop: SPACING.md,
     paddingVertical: SPACING.sm,
-    paddingHorizontal: SPACING.md,
-    borderRadius: RADIUS.md,
-    backgroundColor: INK,
   },
   actionText: {
-    color: COLORS.light.background,
+    color: INK,
     fontSize: 13,
     fontFamily: TEXT.family.medium,
   },
   actionChevron: {
-    color: COLORS.light.background,
+    color: INK,
     fontSize: 15,
     fontFamily: TEXT.family.regular,
   },
   button: {
-    width: SIZE.modal.buttonWidth,
-    alignSelf: 'center',
+    alignSelf: 'stretch',
     marginTop: SPACING.lg,
     paddingVertical: SPACING.md,
     borderRadius: RADIUS.lg,
