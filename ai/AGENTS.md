@@ -52,15 +52,11 @@ a way to **read** configuration: `EXPO_PUBLIC_ENV`, `EXPO_PUBLIC_API_KEY` and wh
 dashboard sets. That is the whole permitted use. Builds happen on the OnePlus 3T, locally, and
 nowhere else.
 
-### `releases.json` is untouchable (owner rule 2026-09-12)
+### `releases.json` is deleted (owner rule 2026-09-12, closed 2026-09-27)
 
-Live apps in both stores read this file to decide whether to show the update prompt. **Do not
-edit it, do not correct its version strings, do not delete it.** It stops being read only once
-the update-prompt feature is removed from the codebase and that removal has shipped; the file
-is deleted in a separate commit after that, never before. The replacement is ISSUES #35.
-
-**Session 30 (2026-09-27) made the app stop reading it**, so the remaining condition is a shipped release: once a
-release carrying session 30 is live in both stores, the owner deletes the file in its own commit.
+The file is gone. Sessions 30 and 31 replaced it: iOS reads the App Store through iTunes Lookup, and Android asks
+Play through the in-app updates API. **Never recreate it, and never add a hand-edited release file of any kind.**
+🐋  "I don't ever want to touch released on Jason ever again."
 
 ## 1. Project North Star
 
@@ -538,7 +534,7 @@ yarn format:check      # Check formatting/lint without changing files
 - **Format: strict `MAJOR.MINOR.PATCH`** — plain integers, no leading zeros, no `v` prefix, no `-beta`/`-rc` suffixes. Write `1.7.1`, never `1.7.01` / `v1.7.1` / `1.7.1-beta`.
 - **Why this format:** the update popup (`device/updates.ts`) compares the installed version (`Constants.expoConfig.version` ← `app.json`) against the remote version using `compareVersions` in `shared/versionUtils.ts` — numeric, per-segment, dot-separated (`"1.7.10" > "1.7.1"`, missing segments = 0). Leading zeros happen to parse (`"1.7.01"` reads as `1.7.1`) but are forbidden anyway: Apple/Google stores and iTunes Lookup require plain numeric dotted versions, and consistency avoids ever having two spellings of the same version in the wild.
 - **Side effect (intended):** a version increase triggers `handleAppUpgrade()` on first launch after update — prayer cache wipe + refetch, preference migration. Never "skip" the bump to avoid this.
-- **NEVER touch `releases.json` from a feature branch or session** — the owner updates it manually on `main` after each store release. It drives the update popup for Android + UAT iOS (production iOS reads the live App Store version via iTunes Lookup automatically).
+- **NEVER add a hand-edited release file.** `releases.json` was deleted in session 31: iOS reads the live App Store version via iTunes Lookup, and Android asks Play through the in-app updates API, so no file needs editing after a release.
 - Commit messages are prefixed with the new version (repo convention): `1.7.1 - fix: ...`.
 
 ### Native Version Sync (device Release builds)
@@ -937,7 +933,7 @@ Cross-check against the prebuilt source when the count surprises you: `grep -c W
 
 ## 12. Change / PR Checklist
 
-- [ ] Version bumped per Versioning policy (§6): patch in `app.json` + `package.json` for every commit; minor for a completed feature/plan; `releases.json` untouched
+- [ ] Version bumped per Versioning policy (§6): patch in `app.json` + `package.json` for every commit; minor for a completed feature/plan
 - [ ] Diff is small and focused
 - [ ] File-scoped checks green (lint/format/typecheck)
 - [ ] Consistency verified: Code matches existing patterns
