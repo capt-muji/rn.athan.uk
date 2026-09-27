@@ -13,6 +13,7 @@ import {
   decorationsEnabledAtom,
   hideSettingsSheet,
   hijriDateEnabledAtom,
+  setPopupHelpEnabled,
   setPopupWhatsNewEnabled,
   setSettingsSheetModal,
   setSoundListReady,
@@ -46,6 +47,12 @@ export default function BottomSheetSettings() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
     setTimeout(() => setPopupWhatsNewEnabled(true), 150);
+  };
+
+  const handleHelpPress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    hideSettingsSheet();
+    setTimeout(() => setPopupHelpEnabled(true), 150);
   };
 
   return (
@@ -120,10 +127,10 @@ export default function BottomSheetSettings() {
         </View>
       </View>
 
-      {/* About Card - hidden on silent releases (no visible What's New content) */}
-      {VISIBLE_WHATS_NEW ? (
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>About</Text>
+      {/* Other Card - the What's new row alone is hidden on a silent release, so Help always stays reachable */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Other</Text>
+        {VISIBLE_WHATS_NEW ? (
           <Pressable
             style={styles.whatsNewButton}
             onPress={handleWhatsNewPress}
@@ -136,8 +143,20 @@ export default function BottomSheetSettings() {
             <Text style={styles.whatsNewLabel}>What&#8217;s new</Text>
             <Text style={styles.chevron}>›</Text>
           </Pressable>
-        </View>
-      ) : null}
+        ) : null}
+        <Pressable
+          style={styles.whatsNewButton}
+          onPress={handleHelpPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel='Help'
+          accessibilityRole='button'>
+          <View style={styles.infoButton}>
+            <Text style={styles.helpIcon}>?</Text>
+          </View>
+          <Text style={styles.whatsNewLabel}>Help</Text>
+          <Text style={styles.chevron}>›</Text>
+        </Pressable>
+      </View>
     </Sheet>
   );
 }
@@ -209,6 +228,11 @@ const styles = StyleSheet.create({
     borderColor: COLORS.interactive.activeBorder,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  helpIcon: {
+    color: COLORS.text.primary,
+    fontSize: 12,
+    fontFamily: TEXT.family.medium,
   },
   musicIcon: {
     color: COLORS.text.primary,

@@ -15,6 +15,7 @@ import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
   hijriDateEnabledAtom,
+  popupHelpEnabledAtom,
   popupWhatsNewEnabledAtom,
   settingsSheetModalAtom,
   showArabicNamesAtom,
@@ -135,6 +136,32 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     await render(<SettingsSheet />);
 
     expect(screen.queryByRole('button', { name: "What's new" })).not.toBeOnTheScreen();
+  });
+
+  it('keeps Help reachable on a release with no notes to show', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockVisibleWhatsNew = null;
+
+    await render(<SettingsSheet />);
+
+    expect(screen.getByRole('button', { name: 'Help' })).toBeOnTheScreen();
+    expect(screen.getByText('Other')).toBeOnTheScreen();
+  });
+
+  it('closes itself, then opens Help once the close has had time to finish', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<SettingsSheet />);
+    // The settings sheet's own modal is spied on, so its close is counted without printing the component
+    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Help' }));
+    await act(() => jest.advanceTimersByTime(149));
+    expect(store.get(popupHelpEnabledAtom)).toBe(false);
+    await act(() => jest.advanceTimersByTime(1));
+
+    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(store.get(popupHelpEnabledAtom)).toBe(true);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 
   it('offers no decorations toggle', async () => {
