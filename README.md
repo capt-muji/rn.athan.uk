@@ -242,49 +242,55 @@ The full Audacity projects for all Athan and reminder audio (for anyone who want
 
 <br/>
 
-## 🔄 Update Popup
+## 🔄 App Updates
 
-The app checks for new versions once every 24 hours on launch (`device/updates.ts`). The installed version is compared against the store/remote version using semantic versioning (`shared/versionUtils.ts`):
+Each platform asks its own store, once every 24 hours on launch (`device/updates.ts`). Nothing is hand-edited after a
+release, and the two platforms are deliberately different, because Apple offers no in-app update mechanism and Google
+does.
 
-| Scenario                                          | Result                                                                                                                                                                                                   |
-| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Remote version greater than installed version** | User sees a dismissible update popup with "Later" and "Update" buttons. "Update" opens the platform's app store. "Later" dismisses the popup. The popup will reappear on the next launch after 24 hours. |
-| **Remote version equal to installed version**     | Nothing happens. No popup shown. The user is on the latest version.                                                                                                                                      |
-| **Remote version less than installed version**    | Nothing happens. No popup shown. The user has a newer version than what is listed remotely (e.g., the remote config hasn't been updated yet after a release).                                            |
-| **Remote version is `null` or fetch fails**       | Nothing happens. No popup shown. The check is silently skipped and retried after 24 hours. The app never crashes from a failed update check.                                                             |
+| | Android | iOS |
+| --- | --- | --- |
+| **Who decides an update exists** | Google Play, through the in-app updates API (`expo-in-app-updates`) | iTunes Lookup, compared with `shared/versionUtils.ts` |
+| **Who asks the user** | Play's own overlay | `components/modals/Update.tsx`, because nothing native exists |
+| **Where the user updates** | inside the app, never leaving it | an App Store sheet over the app |
+| **Custom code** | none | the modal, and the store link behind its button |
 
-The popup modal is implemented in `components/modals/Update.tsx` and its state is managed by `popupUpdateEnabledAtom` in `stores/ui.ts`.
+### Android: Play's flexible flow
 
-### Version Sources
+Play answers whether an update exists, so the app never compares versions. The flow is **flexible**, not immediate: the
+user taps once to consent (Google requires that tap and no app can skip it), Play downloads in the background while the
+app stays usable, and the update installs itself when the download finishes. A prayer-times app must never be blocked
+by an update, which is why immediate is not used. `updatePriority()` in Play Console can escalate later without an app
+change.
 
-Environment is determined by `EXPO_PUBLIC_ENV` via `isProd()` in `shared/config.ts`. When set to `prod`, the production path is used; all other values (`preview`, `local`, unset) use the UAT path.
+The app's own update modal never appears on Android: `checkForUpdates()` always resolves `false` there, so Play's
+overlay and our modal can never stack.
 
-| Environment    | iOS                                                                   | Android                                                    |
-| -------------- | --------------------------------------------------------------------- | ---------------------------------------------------------- |
-| **Production** | iTunes Lookup API (`itunes.apple.com/lookup?bundleId=...&country=gb`) | `releases.json` → `production.updatePopup.android.version` |
-| **UAT**        | `releases.json` → `uat.updatePopup.ios.version`                       | `releases.json` → `uat.updatePopup.android.version`        |
+### iOS: the modal
 
-Production iOS uses the iTunes API for automatic detection. All other combinations read from `releases.json` at the repository root on the `main` branch (fetched via `raw.githubusercontent.com`). Changes to `releases.json` on other branches have no effect.
+| Scenario | Result |
+| --- | --- |
+| **Store version newer than installed** | A dismissible popup with "Later" and "Update". "Update" opens the App Store; "Later" dismisses it. It can reappear after 24 hours |
+| **Store version equal or older** | Nothing. No popup |
+| **The store published no version, or the fetch fails** | Nothing. The check is silently skipped, and the app never shows an error for a failed update check |
 
-> **Note:** `production.updatePopup.ios.version` is set to `null` by design — production iOS version detection is fully automatic via the iTunes API, so this field is never read. Setting it to any value has no effect. It exists for structural consistency.
+A user with App Store automatic updates enabled is already updated by their next launch, so they never see the modal;
+they see the What's New modal instead. A user without it sees the modal, updates, and gets What's New on return.
 
-Each entry in `releases.json` has a `_comment` field explaining its purpose, the version comparison behavior, and when to update it.
+`country=gb` is load-bearing on the iTunes lookup, not tidiable: the app is published in the GB storefront alone, and a
+`bundleId` lookup is storefront-scoped, so every other country answers `resultCount 0`.
 
-### Release Workflow
+### Throttle
+
+A check that reached its store costs the full 24 hours. A check that never reached it (offline, or Play unreachable)
+costs one hour instead, so an offline launch does not lose that day's check. Neither fetch can hang: the iOS lookup is
+abandoned after 10 seconds.
+
+### Release workflow
 
 1. Fill in the What's New content for this release in `shared/whatsNew.ts` (see below)
-2. Push new app update to stores
-3. Wait for store release
-4. Update the appropriate version in `releases.json` on `main` branch
-5. Users on outdated versions see the update popup on next launch (within 24 hours)
-
-### Throttle & Failure Behavior
-
-The 24-hour throttle timer is always set regardless of whether the check succeeds or fails. This means:
-
-- On success: the next check occurs no sooner than 24 hours later
-- On failure (network error, malformed response, etc.): the check is silently skipped and the next retry occurs no sooner than 24 hours later
-- The app never shows an error to the user for a failed update check
+2. Push the update to the stores
+3. That is all. Users are prompted automatically within 24 hours of the store release
 
 <br/>
 

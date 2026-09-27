@@ -15,7 +15,7 @@
  *
  * `Number('v1')` is NaN and `NaN || 0` is 0, which inverted the comparison outright —
  * `'v1.0.1'` read as older than `'1.0.0'`. That matters because the update prompt feeds this
- * whatever `releases.json` or the iTunes lookup returns, neither of which the app controls.
+ * whatever the iTunes lookup returns, which the app does not control.
  */
 const toVersionParts = (version: string): number[] =>
   String(version ?? '')

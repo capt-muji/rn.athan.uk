@@ -87,7 +87,7 @@ describe('isNewerVersion', () => {
 // =============================================================================
 // MALFORMED INPUT TESTS
 //
-// compareVersions is fed whatever releases.json or the iTunes lookup returns, and
+// compareVersions is fed whatever the iTunes lookup returns, and
 // the app controls neither. Number('v1') is NaN, and `NaN || 0` turned that into 0,
 // so a `v` prefix did not merely degrade the comparison — it inverted it.
 // =============================================================================

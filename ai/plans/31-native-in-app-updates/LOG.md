@@ -99,3 +99,23 @@ Step 1 installs a dependency, so it must run the nested-copy remedy afterwards. 
 - Green: `3 passed, 3 total`, `tsc` exit 0, Biome exit 0.
 - Break: `BREAK CAUGHT: versionDrift`, then `ALL AS EXPECTED: 1`. The package's own `package.json` was restored and
   reads `0.12.0` afterwards.
+
+## Step 4: `releases.json` is deleted, and every live rule that names it
+
+- Branch: `chore/31-delete-releases-json`. The file was present, as the pre-flight requires.
+- Before deleting, the plan's proof ran: `grep -rn "releases.json|githubusercontent"` across the nine source folders
+  matched only two COMMENTS, in `shared/versionUtils.ts` and its suite. Both were reworded; neither file's code
+  changed.
+- Deleted with `git rm`. Verification gate: `FILE GONE`, then `NO CODE REFERENCES`.
+- The four live rule files keep their prohibition with the filename removed, so it outlives the file:
+  `EXECUTOR-BRIEF.md`, `PLANNER-BRIEF.md`, `AUDITOR-BRIEF.md` and `TEMPLATE.md` now forbid "a hand-edited release
+  file". `ai/AGENTS.md`'s untouchable block became a "deleted, never recreate" block, and its PR checklist line lost
+  the now-meaningless "releases.json untouched" item.
+- **README.md needed more than a deletion.** Its whole "Update Popup" section described the old two-source design,
+  including a version-source table naming `releases.json` three times and a release workflow whose step 4 was "update
+  the appropriate version in releases.json". It is rewritten as "App Updates", describing what actually ships: the
+  Android/iOS split, Play's flexible flow and its one consent tap, why `country=gb` is load-bearing, the hour-long
+  retry after a failed check, and a release workflow whose step 3 is "that is all".
+- Historical plan folders keep their text unchanged: they record what was true when they ran.
+- No breaks: the step deletes a file and edits prose, so there is no decision in code to substitute. The two grep
+  gates are the guard, and `yarn validate` at commit time is the check.
