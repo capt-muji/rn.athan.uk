@@ -343,6 +343,7 @@ a PASS verdict (`AUDITOR-BRIEF.md` section 4).
 | Step 3's new tests pass before the change | The file already carries the design | STOP (section 2.2, item 2) |
 | Step 3 break 3 prints `BREAK NOT APPLIED` | The attribute order differs from the plan's | Adjust the search to the two attributes as the executor wrote them, keeping the intent. This is the one break the plan lets the executor adjust |
 | Biome reports an unused import in step 3 | `SIZE` is no longer used | Remove it from the import; that is work, not a finding |
+| The hook prints `Coverage gate: stage or stash these first` and names a file from a LATER step | A later step's file was edited before this step committed; the gate measures the working TREE, not the index | `git stash push <that file>`, commit this step, then `git stash pop`. Never start a step's edits before the previous step is committed |
 | Anything else | | `EXECUTOR-BRIEF.md` section 7's table |
 
 ### Anticipated review fixes
