@@ -1,0 +1,9 @@
+/** Flushes the ring buffer to MMKV immediately (e.g. before a measurement run ends) */
+export const perfFlush = (reason = 'manual'): void => {
+  if (!PERF_ENABLED || !perfStorage) return;
+
+  flushRing(perfStorage, reason);
+};
+
+/** Test/inspection access to the in-memory ring (empty when disabled) */
+export const getPerfRing = (): RingEntry[] => ring;

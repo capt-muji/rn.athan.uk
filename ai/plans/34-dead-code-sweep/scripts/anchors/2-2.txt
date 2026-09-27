@@ -1,0 +1,17 @@
+// =============================================================================
+// PLATFORM-SPECIFIC
+// =============================================================================
+
+/**
+ * Platform-specific styling adjustments
+ * Use with Platform.OS checks for cross-platform consistency
+ */
+export const PLATFORM = {
+  /** Android-specific values */
+  android: {
+    /** Bottom padding for screens */
+    bottomPadding: 15,
+    /** Navigation bar bottom padding */
+    navigationBottomPadding: 40,
+  },
+} as const;
