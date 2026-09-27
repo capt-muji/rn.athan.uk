@@ -1,0 +1,6 @@
+      title: 'A second reminder',
+      body: 'Each prayer can now carry two reminders, each with its own sound and timing',
+      version: null,
+    },
+  ],
+};

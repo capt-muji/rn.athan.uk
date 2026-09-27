@@ -1,0 +1,4 @@
+      {/* About Card - hidden on silent releases (no visible What's New content) */}
+      {VISIBLE_WHATS_NEW ? (
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>About</Text>
