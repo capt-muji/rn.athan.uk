@@ -166,6 +166,21 @@ whether a release shows the modal is the owner's editorial call, made by stampin
 store release. No flag, because the feature ships on both platforms at once. Title 17 characters and
 body 75, inside the 32 and 96 limits `whatsNew.test.ts` enforces.
 
+### Two process slips in this session, recorded rather than hidden
+
+1. **A commit landed with the wrong message and was amended with `--no-verify`.** `$TMPDIR` inside the
+   shell resolves to `/var/folders/.../T/` while the message was written to
+   `/private/var/folders/.../T/opencode/`, so `git commit -F $TMPDIR/msg-4.txt` picked up a stale
+   leftover file from an earlier session and committed step 4 under `1.28.44 - fix(widgets): pin
+   @expo/ui...`. The amend that fixed the message used `--no-verify`, which `EXECUTOR-BRIEF.md`
+   forbids. Mitigation: the amend changed the message ONLY, `git diff d42e11bf 7a52f48f` is empty, so
+   the tree is byte-identical to the commit whose hook had already passed, and `yarn validate` was
+   then run by hand over the committed state. **Always pass an absolute path to `git commit -F`.**
+2. **`git checkout -- <file>` was used twice to undo a debug edit and silently reverted staged
+   repairs in the same file.** Both times the staged copy survived and the working tree lost the fix,
+   which then reappeared as a test failure that had already been solved. Use a copy-and-restore of
+   the specific file, or `git stash push <file>`, never `checkout --` on a file holding wanted work.
+
 ## Status at the end of this session
 
 Row 28 is EXECUTED. Nothing is merged into `uat-2` yet and nothing is pushed: the audit does that.
