@@ -35,6 +35,9 @@ const GROW = LinearTransition.duration(ANIMATION.duration).easing(Easing.out(Eas
 /** Slower than the panel: a spin that keeps up with the height reads as a flick rather than a turn */
 const CHEVRON_TURN = { duration: 320, easing: Easing.inOut(Easing.cubic) } as const;
 
+/** Flattens the glyph, which is tall for its width. In the animated array, since a transform replaces rather than merges */
+const CHEVRON_SQUASH = 0.6;
+
 /** The chevron's own width. The panel reserves it too, so no answer ever runs beneath the arrow */
 const CHEVRON_SIZE = 20;
 
@@ -60,7 +63,9 @@ const Topic = ({
 
   turn.value = withTiming(open ? 1 : 0, CHEVRON_TURN);
 
-  const chevronStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${turn.value * -180}deg` }] }));
+  const chevronStyle = useAnimatedStyle(() => ({
+    transform: [{ rotate: `${turn.value * -180}deg` }, { scaleY: CHEVRON_SQUASH }],
+  }));
 
   const { question, text, steps, action } = topic;
 
@@ -205,11 +210,11 @@ const styles = StyleSheet.create({
   },
   chevron: {
     width: CHEVRON_SIZE,
-    textAlign: 'right',
+    // Centred both ways because rotation pivots about the box, so an off-centre glyph swings
+    textAlign: 'center',
     fontSize: 20,
-    lineHeight: 12,
+    lineHeight: 20,
     color: CHEVRON,
-    transform: [{ scaleY: 0.6 }],
   },
   panel: {
     paddingBottom: SPACING.lg2,
