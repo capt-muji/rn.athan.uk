@@ -3,7 +3,6 @@ import { useAtom } from 'jotai';
 import { useMemo } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import InfoIcon from '@/assets/icons/svg/info.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
@@ -138,7 +137,7 @@ export default function BottomSheetSettings() {
             accessibilityLabel="What's new"
             accessibilityRole='button'>
             <View style={styles.infoButton}>
-              <InfoIcon width={12} height={12} color={COLORS.text.primary} />
+              <Text style={styles.badgeGlyph}>i</Text>
             </View>
             <Text style={styles.whatsNewLabel}>What&#8217;s new</Text>
             <Text style={styles.chevron}>›</Text>
@@ -151,7 +150,7 @@ export default function BottomSheetSettings() {
           accessibilityLabel='Help'
           accessibilityRole='button'>
           <View style={styles.infoButton}>
-            <Text style={styles.helpIcon}>?</Text>
+            <Text style={styles.badgeGlyph}>?</Text>
           </View>
           <Text style={styles.whatsNewLabel}>Help</Text>
           <Text style={styles.chevron}>›</Text>
@@ -229,10 +228,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  helpIcon: {
+  badgeGlyph: {
     color: COLORS.text.primary,
-    fontSize: 12,
-    fontFamily: TEXT.family.medium,
+    fontSize: 10,
+    fontFamily: TEXT.family.regular,
   },
   musicIcon: {
     color: COLORS.text.primary,

@@ -1,6 +1,5 @@
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import InfoIcon from '@/assets/icons/svg/info.svg';
 import { openAppSettings, openDndAccessSettings } from '@/device/notifications';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
@@ -34,7 +33,11 @@ export default function ModalHelp({ visible, onClose }: Props) {
       title='Help'
       wide
       divider
-      icon={<InfoIcon width={14} height={14} color={COLORS.light.text} />}>
+      icon={
+        <View style={styles.titleBadge}>
+          <Text style={styles.titleBadgeGlyph}>?</Text>
+        </View>
+      }>
       <ScrollView style={{ maxHeight: height * ANSWERS_HEIGHT_SHARE }} showsVerticalScrollIndicator={false}>
         {topics.map(({ question, text, steps, action }, index) => (
           <View key={question}>
@@ -70,6 +73,19 @@ export default function ModalHelp({ visible, onClose }: Props) {
 }
 
 const styles = StyleSheet.create({
+  titleBadge: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: COLORS.light.text,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  titleBadgeGlyph: {
+    color: COLORS.light.background,
+    fontSize: 11,
+    fontFamily: TEXT.family.regular,
+  },
   questionRow: {
     flexDirection: 'row',
     gap: SPACING.sm,
