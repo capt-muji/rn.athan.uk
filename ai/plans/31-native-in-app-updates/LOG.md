@@ -81,3 +81,12 @@ Step 1 installs a dependency, so it must run the nested-copy remedy afterwards. 
   warning on stderr (`Recrawled this watch 583 times`), which lint-staged treats as task failure.
   `watchman watch-del` then `watch-project` cleared it. Worth knowing: a green `Tests:` line with a failing hook is
   not always a test problem.
+
+## Step 2: the Update button is iOS-only
+
+- Branch: `feat/31-ios-only-update-button`. Both anchors counted 1.
+- Red: the new test `never offers the update prompt on Android, because Play owns that flow` PASSED before the change,
+  which the plan predicted and explicitly ruled is not a stop: it pins a guarantee step 1 established rather than
+  driving this step's change. The step's own change is the comment, and the breaks are what prove the guarantee holds.
+- Green: `41 passed, 41 total`, `tsc` exit 0, Biome exit 0.
+- Breaks: `BREAK CAUGHT` for modalStacks and updateDoesNothing, then `ALL AS EXPECTED: 1`.

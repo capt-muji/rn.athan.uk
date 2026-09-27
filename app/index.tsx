@@ -226,6 +226,7 @@ export default function Index() {
         />
       ) : null}
       {chromeDeferred && <ModalHelp visible={helpVisible} onClose={handleCloseHelp} />}
+      {/* iOS only in effect: Android never resolves an update here, because Play's own overlay owns that flow */}
       {/* Gated so the nag never stacks on the What's New or Help modal */}
       {chromeDeferred && (
         <ModalUpdate
