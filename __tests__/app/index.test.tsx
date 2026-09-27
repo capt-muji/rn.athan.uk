@@ -195,7 +195,7 @@ describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 inst
     await act(() => setPopupHelpEnabled(true));
 
     expect(screen.getByText('Help')).toBeOnTheScreen();
-    expect(screen.getByText('Notifications are turned off')).toBeOnTheScreen();
+    expect(screen.getByText('Why do I get no alerts at all?')).toBeOnTheScreen();
   });
 
   it('closes Help when Close is pressed', async () => {
