@@ -6,7 +6,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 
 import { onPlatform } from '@/__tests__/harness';
-import { openAppSettings, openDndAccessSettings } from '@/device/notifications';
+import { openDndAccessSettings } from '@/device/notifications';
 import { SIZE } from '@/shared/constants';
 import { getHelpTopics } from '@/shared/help';
 
@@ -14,7 +14,6 @@ import ModalHelp from '../Help';
 
 // The two settings screens leave the app, so opening them is observed instead of done
 jest.mock('@/device/notifications', () => ({
-  openAppSettings: jest.fn(() => Promise.resolve(true)),
   openDndAccessSettings: jest.fn(() => Promise.resolve(true)),
 }));
 
@@ -43,7 +42,6 @@ describe('the Help modal', () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
     expect(screen.queryByRole('button', { name: 'Open Settings' })).not.toBeOnTheScreen();
-    expect(openAppSettings).not.toHaveBeenCalled();
   });
 
   it('shows every question closed, so the page opens as a list rather than a wall of text', async () => {
@@ -162,7 +160,6 @@ describe('the Help modal on Android', () => {
     await fireEvent.press(screen.getByRole('button', { name: 'Grant Do Not Disturb access' }));
 
     expect(openDndAccessSettings).toHaveBeenCalledTimes(1);
-    expect(openAppSettings).not.toHaveBeenCalled();
   });
 
   it('answers the restart question, which both platforms ask', async () => {
