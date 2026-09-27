@@ -1,0 +1,17 @@
+/**
+ * Clears all scheduled notification records for a schedule type
+ * @param scheduleType Schedule type (Standard or Extra)
+ */
+export function clearAllScheduledNotificationsForSchedule(scheduleType: ScheduleType) {
+  clearPrefix(`scheduled_notifications_${scheduleType}`);
+}
+
+/**
+ * Clears all scheduled notification records for a specific prayer
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ */
+export function clearAllScheduledNotificationsForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
+  clearPrefix(`scheduled_notifications_${scheduleType}_${prayerIndex}`);
+}
+
