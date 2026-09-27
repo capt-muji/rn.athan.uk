@@ -203,6 +203,31 @@ needs review.
   `mockReturnValue` would leak into every later test in the file. A queued `Once` answer that a failing test did not
   use also survives, so reset it in `afterEach` where a test queues several.
 
+## A test never reads the real clock
+
+**The owner's rule, 2026-09-27:** 🐋  "a test should not be based on what time of date being run. Our test should be
+mocking the time... everything should be mocked so that we can properly test the scenarios. That's the whole point of
+a test."
+
+So a test that can pass at 11:00 and fail at 13:00 is a defect, never a flake to re-run. Pin the clock before building
+any state that depends on it:
+
+```ts
+jest.useFakeTimers({ now: london('2026-09-11', '09:00') });
+```
+
+**The trap that caused ISSUES #41**, because it looks correct: reading the DAY off the real clock
+(`TimeUtils.getTodayDateString()`) and then seeding a FIXED time on it, such as every prayer at `12:00`. The two agree
+in the morning and disagree after noon, when every seeded row is suddenly in the past. Five notification tests passed
+only before 12:00 London for that reason, and the pre-commit hook hid it because every commit that day ran before
+noon.
+
+- Seed the day from a fixed constant, never from the clock.
+- Pin the clock first, then build the state, so the two can never disagree.
+- Spread seeded times (`12:00`, `12:01`, `12:02`) rather than repeating one value, so a test can tell the rows apart.
+- Restore real timers in an `afterEach`.
+- A relative offset such as `Date.now() - 2 * 60 * 60 * 1000` is hour-independent and needs no pin.
+
 ## Before a test is trusted
 
 1. **Red before green.** Break the line the test guards (delete the call, flip the condition) and watch the test fail.
