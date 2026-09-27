@@ -29,21 +29,6 @@ export const openDndAccessSettings = async (): Promise<boolean> => {
   }
 };
 
-/**
- * Opens this app's own page in the system settings, where the user turns notifications and
- * background activity back on. Answers false when no such screen opens, so a caller never
- * claims to have sent the user somewhere.
- */
-export const openAppSettings = async (): Promise<boolean> => {
-  try {
-    await Linking.openSettings();
-    return true;
-  } catch (error) {
-    logger.error('NOTIFICATION: Failed to open the app settings:', error);
-    return false;
-  }
-};
-
 export const updateAndroidChannel = async (sound: number) => {
   if (Platform.OS !== 'android') return;
 
