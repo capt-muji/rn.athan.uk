@@ -883,11 +883,13 @@ The third, lower defect is fixed too: `openStore` on Android tried `market://det
 device with no Play client, and the failure was logged so the button did nothing. It now falls back to
 `https://play.google.com/store/apps/details?id=...`; iOS keeps its single destination.
 
-**`releases.json` is unread and NOT yet deleted.** The standing rule is that it stops being read only once the change
+**`releases.json` is unread and was deleted in session 31.** The standing rule is that it stops being read only once the change
 has shipped, and the file is deleted in a separate commit after that, never before. After session 30 no code path
-reads it: `grep -c githubusercontent device/updates.ts` prints `0`. **The owner deletes the file once a release
-carrying this is live in both stores.** Until then the live apps in both stores still read it, so it must keep its
-current version values.
+reads it: `grep -c githubusercontent device/updates.ts` prints `0`. **Session 31 deleted it** (2026-09-27), and the measurement is what made
+that safe rather than a judgement call: every version in the file was `1.0.0` while the live App Store build was
+1.5.1, so `isNewerVersion(installed, '1.0.0')` was `false` for every version this app has ever shipped. The file could
+not prompt anyone, even an older build still fetching it, and a 404 is already handled because `getStoreVersion`
+answers `false` on any fetch failure.
 
 **Proof.** 4774 tests at 100% on all four measures; 13 breaks across three steps, every one caught. The live endpoints
 answered from this Mac (`resultCount 1 version 1.5.1` for iTunes, `key141 1.5.2` for Play), and the shipped

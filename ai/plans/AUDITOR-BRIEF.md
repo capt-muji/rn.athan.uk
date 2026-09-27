@@ -81,7 +81,7 @@ Remove it when done, and always before 00:00, when a nightly job clears build fo
 6. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-device-sweep/session<N>/`.
    Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use
    read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.
-7. **The owner's rules.** No visual change, no substituted prayer time, no touch of `releases.json`, `uat` or EAS, no
+7. **The owner's rules.** No visual change, no substituted prayer time, no hand-edited release file, no touch of `uat` or EAS, no
    API key, no ignore comment, no skipped hook.
 8. **The records.** The `AUDIT-FINDINGS.md` text and the table rows are accurate against everything above.
 
