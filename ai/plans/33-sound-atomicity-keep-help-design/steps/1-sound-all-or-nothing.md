@@ -174,10 +174,14 @@ run_break "preference never written" \
   'setSoundPreference\(sound\);' \
   'void sound;'
 
-# 6. The work leaves the lock, which is what let a queued pass see the abandoned athan
-run_break "commit runs outside the lock" \
-  'return withSchedulingLock\(async \(\) => \{' \
-  'return (async () => {'
+# 6. The undo leaves the lock and queues for it again, which is the defect this step removes: the
+#    second acquisition lets anything already queued run in front of the undo, on the abandoned athan.
+#    Anchored on this function's own undo line, which is unique; `return withSchedulingLock(async () => {`
+#    appears SIX times in the file and perl -0p rewrites only the first, a different function, so the
+#    obvious form SURVIVED while breaking nothing here (measured while executing this step).
+run_break "undo takes a second lock acquisition" \
+  '    try \{\n      await armEverything\(previousSelection\);' \
+  '    try {\n      await withSchedulingLock(() => armEverything(previousSelection), 'undo');'
 
 echo "CAUGHT $CAUGHT of $TOTAL"
 [ "$CAUGHT" -eq "$TOTAL" ] && echo "ALL AS EXPECTED: 1" || echo "ALL AS EXPECTED: 0"

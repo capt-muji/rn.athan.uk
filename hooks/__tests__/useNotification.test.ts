@@ -58,12 +58,14 @@ const mockCommitPrayerAlertChange = jest.fn();
 const mockGetSoundPreference = jest.fn();
 const mockSetSoundPreference = jest.fn();
 const mockRescheduleAllNotifications = jest.fn();
+const mockStoreCommitSoundSelection = jest.fn();
 
 jest.mock('@/stores/notifications', () => ({
   commitPrayerAlertChange: (...args: unknown[]) => mockCommitPrayerAlertChange(...args),
   getSoundPreference: (...args: unknown[]) => mockGetSoundPreference(...args),
   setSoundPreference: (...args: unknown[]) => mockSetSoundPreference(...args),
   rescheduleAllNotifications: (...args: unknown[]) => mockRescheduleAllNotifications(...args),
+  commitSoundSelection: (...args: unknown[]) => mockStoreCommitSoundSelection(...args),
 }));
 
 const mockUpdateAndroidChannel = jest.fn();
@@ -481,11 +483,9 @@ describe('commitAlertMenuChanges', () => {
 // =============================================================================
 
 /**
- * The Athan commit is an optimistic write: the channel update and the
- * reschedule both read the stored preference while they run, so the preference
- * has to be persisted first and rolled back if either rejects. Without the
- * rollback, Settings shows an Athan the OS will not play until the periodic
- * refresh heals it, up to NOTIFICATION_REFRESH_HOURS later.
+ * The commit itself lives in the store, where the scheduling lock is, so the athan and the alarms cannot disagree
+ * (session 33). What is left here is the hook's own job: read the athan in force, hand the store the three things it
+ * needs, and report what it answered.
  */
 describe('commitSoundSelection', () => {
   const PREVIOUS_SOUND = 2;
@@ -495,81 +495,27 @@ describe('commitSoundSelection', () => {
     jest.clearAllMocks();
     alertMock._lastButtons = undefined;
     mockGetSoundPreference.mockReturnValue(PREVIOUS_SOUND);
-    mockSetSoundPreference.mockImplementation(() => {});
-    mockUpdateAndroidChannel.mockResolvedValue('athan-channel');
-    mockRescheduleAllNotifications.mockResolvedValue(undefined);
+    mockStoreCommitSoundSelection.mockResolvedValue(true);
   });
 
-  describe('success', () => {
-    it('persists the selection before it schedules, and reports success', async () => {
-      const { commitSoundSelection } = getUseNotification()();
+  it('hands the store the selection, the athan before it, and the channel updater', async () => {
+    const { commitSoundSelection } = getUseNotification()();
 
-      const result = await commitSoundSelection(NEW_SOUND);
+    await commitSoundSelection(NEW_SOUND);
 
-      expect(result).toBe(true);
-      expect(mockSetSoundPreference).toHaveBeenCalledWith(NEW_SOUND);
-      expect(mockUpdateAndroidChannel).toHaveBeenCalledWith(NEW_SOUND);
-      expect(mockRescheduleAllNotifications).toHaveBeenCalled();
-
-      // The scheduler reads the preference mid-flight, so the write must precede it
-      expect(mockSetSoundPreference.mock.invocationCallOrder[0]).toBeLessThan(
-        mockUpdateAndroidChannel.mock.invocationCallOrder[0]
-      );
-      expect(mockUpdateAndroidChannel.mock.invocationCallOrder[0]).toBeLessThan(
-        mockRescheduleAllNotifications.mock.invocationCallOrder[0]
-      );
-    });
-
-    it('leaves the committed selection in place', async () => {
-      const { commitSoundSelection } = getUseNotification()();
-
-      await commitSoundSelection(NEW_SOUND);
-
-      expect(mockSetSoundPreference).toHaveBeenCalledTimes(1);
-      expect(mockSetSoundPreference).toHaveBeenLastCalledWith(NEW_SOUND);
-    });
+    expect(mockStoreCommitSoundSelection).toHaveBeenCalledTimes(1);
+    expect(mockStoreCommitSoundSelection).toHaveBeenCalledWith(
+      NEW_SOUND,
+      PREVIOUS_SOUND,
+      require('@/device/notifications').updateAndroidChannel
+    );
   });
 
-  describe('rollback', () => {
-    it('restores the previous selection when the reschedule rejects', async () => {
-      mockRescheduleAllNotifications.mockRejectedValue(new Error('Scheduling error'));
+  it("answers with the store's verdict", async () => {
+    mockStoreCommitSoundSelection.mockResolvedValue(false);
 
-      const { commitSoundSelection } = getUseNotification()();
-      const result = await commitSoundSelection(NEW_SOUND);
+    const { commitSoundSelection } = getUseNotification()();
 
-      expect(result).toBe(false);
-      expect(mockSetSoundPreference).toHaveBeenCalledWith(NEW_SOUND);
-      expect(mockSetSoundPreference).toHaveBeenLastCalledWith(PREVIOUS_SOUND);
-    });
-
-    it('restores the previous selection when the Android channel update rejects', async () => {
-      mockUpdateAndroidChannel.mockRejectedValue(new Error('Channel error'));
-
-      const { commitSoundSelection } = getUseNotification()();
-      const result = await commitSoundSelection(NEW_SOUND);
-
-      expect(result).toBe(false);
-      expect(mockSetSoundPreference).toHaveBeenLastCalledWith(PREVIOUS_SOUND);
-      // The reschedule is never reached, so nothing is written with the new sound
-      expect(mockRescheduleAllNotifications).not.toHaveBeenCalled();
-    });
-
-    it('rolls back to the value read before the write, not to a hardcoded default', async () => {
-      mockGetSoundPreference.mockReturnValue(11);
-      mockRescheduleAllNotifications.mockRejectedValue(new Error('Scheduling error'));
-
-      const { commitSoundSelection } = getUseNotification()();
-      await commitSoundSelection(NEW_SOUND);
-
-      expect(mockSetSoundPreference).toHaveBeenLastCalledWith(11);
-    });
-
-    it('never lets the rejection escape, because onDismiss is called un-awaited', async () => {
-      mockRescheduleAllNotifications.mockRejectedValue(new Error('Scheduling error'));
-
-      const { commitSoundSelection } = getUseNotification()();
-
-      await expect(commitSoundSelection(NEW_SOUND)).resolves.toBe(false);
-    });
+    await expect(commitSoundSelection(NEW_SOUND)).resolves.toBe(false);
   });
 });
