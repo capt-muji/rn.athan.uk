@@ -41,7 +41,6 @@ import {
   extraPrayerAlertAtoms,
   extraReminderAlertAtoms,
   extraReminderIntervalAtoms,
-  getBackgroundTaskStatus,
   getPrayerAlertAtom,
   getPrayerArrays,
   getReminderAlertAtom,
@@ -59,7 +58,6 @@ import {
   standardPrayerAlertAtoms,
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
-  unregisterBackgroundTask,
 } from '@/stores/notifications';
 
 // Explicit logger mock: the moduleNameMapper's generic '^@/(.*)$' key resolves
@@ -945,78 +943,6 @@ describe('registerBackgroundTask', () => {
   });
 });
 
-describe('unregisterBackgroundTask', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('checks if task is registered before unregistering', async () => {
-    await unregisterBackgroundTask();
-
-    expect(TaskManager.isTaskRegisteredAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
-  });
-
-  it('skips unregistration when task is not registered', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
-
-    await unregisterBackgroundTask();
-
-    expect(BackgroundTask.unregisterTaskAsync).not.toHaveBeenCalled();
-  });
-
-  it('unregisters task when it is registered', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
-
-    await unregisterBackgroundTask();
-
-    expect(BackgroundTask.unregisterTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
-  });
-
-  it('does not throw when unregistration fails', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
-    (BackgroundTask.unregisterTaskAsync as jest.Mock).mockRejectedValueOnce(new Error('Unregistration failed'));
-
-    // Should not throw
-    await expect(unregisterBackgroundTask()).resolves.toBeUndefined();
-  });
-});
-
-describe('getBackgroundTaskStatus', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('returns registration status and system status', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
-    (BackgroundTask.getStatusAsync as jest.Mock).mockResolvedValueOnce(BackgroundTask.BackgroundTaskStatus.Available);
-
-    const status = await getBackgroundTaskStatus();
-
-    expect(status.isRegistered).toBe(true);
-    expect(status.systemStatus).toBe(BackgroundTask.BackgroundTaskStatus.Available);
-    expect(status.systemStatusLabel).toBe('Available');
-  });
-
-  it('returns Restricted label when system status is restricted', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
-    (BackgroundTask.getStatusAsync as jest.Mock).mockResolvedValueOnce(BackgroundTask.BackgroundTaskStatus.Restricted);
-
-    const status = await getBackgroundTaskStatus();
-
-    expect(status.isRegistered).toBe(false);
-    expect(status.systemStatusLabel).toBe('Restricted');
-  });
-
-  it('returns error status when check fails', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockRejectedValueOnce(new Error('Check failed'));
-
-    const status = await getBackgroundTaskStatus();
-
-    expect(status.isRegistered).toBe(false);
-    expect(status.systemStatusLabel).toBe('Error');
-  });
-});
-
 describe('rescheduleAllNotificationsFromBackground', () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { getDefaultStore } = require('jotai/vanilla');
@@ -1331,8 +1257,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
   // -- global ordering guarantees --------------------------------------------
 
   it('never bulk-cancels or bulk-wipes during a global reschedule', async () => {
-    const scheduleWipe = jest.spyOn(Database, 'clearAllScheduledNotificationsForSchedule');
-    const reminderWipe = jest.spyOn(Database, 'clearAllScheduledRemindersForSchedule');
+    const bulkWipe = jest.spyOn(Database, 'clearPrefix');
 
     enableFajrAlerts(AlertType.Sound);
     seedPrayerWindow();
@@ -1340,8 +1265,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     await rescheduleAllNotifications();
 
     expect(cancelAllMock).not.toHaveBeenCalled();
-    expect(scheduleWipe).not.toHaveBeenCalled();
-    expect(reminderWipe).not.toHaveBeenCalled();
+    expect(bulkWipe).not.toHaveBeenCalled();
   });
 
   it('never bulk-cancels via refreshNotifications or the background reschedule', async () => {
