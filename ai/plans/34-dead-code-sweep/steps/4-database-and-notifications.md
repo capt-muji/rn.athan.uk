@@ -137,7 +137,7 @@
    python3 scripts/find-unused-exports.py | head -2
    ```
 
-   prints `NEVER reachable from production code: 13`.
+   prints `NEVER reachable from production code: 12`.
 
 7. **Breaks.** Save as `$TMPDIR/breaks-34-4.sh` and run `bash $TMPDIR/breaks-34-4.sh` from the
    repository root.
@@ -279,7 +279,7 @@
 11. **Done when:**
 
     - `python3 scripts/find-unused-exports.py | head -2` prints
-      `NEVER reachable from production code: 13`;
+      `NEVER reachable from production code: 12`;
     - `npx tsc --noEmit` exits 0;
     - `npx biome check . --error-on-warnings` exits 0;
     - `grep -c 'mmkvStorage\|createJSONStorage' stores/database.ts` prints `0`;
