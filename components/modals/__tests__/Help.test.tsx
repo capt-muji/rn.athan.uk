@@ -68,10 +68,22 @@ describe('the Help modal', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('badges every question with a small question mark, one per card', async () => {
+  // Styles are read here for the same reason the scroll test reads one: each is a rule the app keeps, not a look
+  it('puts each settings button at the end of its own answer', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    expect(screen.getAllByText('?')).toHaveLength(getHelpTopics('ios').length);
+    for (const button of screen.getAllByRole('button', { name: 'Open Settings' })) {
+      expect(StyleSheet.flatten(button.props.style).alignSelf).toBe('flex-end');
+    }
+  });
+
+  it('keeps the Close button full width at the foot of the card', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    const close = StyleSheet.flatten(screen.getByRole('button', { name: 'Close' }).props.style);
+
+    expect(close.alignSelf).toBe('stretch');
+    expect(close.width).toBeUndefined();
   });
 
   it('numbers the steps it lists', async () => {
