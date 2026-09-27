@@ -79,7 +79,7 @@ jest.mock('react-native-mmkv', () => ({
   }),
 }));
 
-type Flushed = { reason: string; entries: Array<{ name: string }> };
+type Flushed = { reason: string; entries: Array<{ name: string; type: string; detail?: unknown }> };
 
 const readFlushed = (): Flushed => JSON.parse(mockStores[mockStores.length - 1].perf_ring) as Flushed;
 
@@ -144,12 +144,13 @@ describe('perf ring flush on app state changes', () => {
 
 describe('perfMeasure detail', () => {
   it('carries the detail it was given into the ring entry', () => {
-    const { perf } = initMonitor();
+    const { perf, onAppStateChange } = initMonitor();
     perf.perfMark('overlay_open_start');
 
     perf.perfMeasure('overlay_open', 'overlay_open_start', { scheduleType: 'extra' });
+    onAppStateChange('background');
 
-    const measure = perf.getPerfRing().find((entry) => entry.name === 'overlay_open');
+    const measure = readFlushed().entries.find((entry) => entry.name === 'overlay_open');
     expect(measure?.type).toBe('measure');
     expect(measure?.detail).toEqual({ scheduleType: 'extra' });
   });
