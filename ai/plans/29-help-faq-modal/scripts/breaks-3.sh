@@ -64,24 +64,23 @@ run_break "the silent answer drops its promise" shared/help.ts \
   unit "$UNIT" "never claims an app setting can play through the silent switch"
 
 # 7. The dot before each question goes, so questions stop reading as questions
-# The bullet is multi-byte UTF-8, which is why run_break runs perl with -CSD
-run_break "the question dot is removed" components/modals/Help.tsx \
-  's/>\x{2022}</></' \
-  components "$MODAL" "draws a dot before every question"
+run_break "the question badge is removed" components/modals/Help.tsx \
+  "s/<Text style=\{styles\.badgeGlyph\}>\?<\/Text>/<Text style={styles.badgeGlyph}><\/Text>/" \
+  components "$MODAL" "badges every question with a small question mark"
 
 # 8. The steps stop being numbered
 run_break "the steps lose their numbers" components/modals/Help.tsx \
-  "s/\{stepIndex \+ 1\}\./{''}/" \
+  "s/\{index \+ 1\}/{''}/" \
   components "$MODAL" "numbers the steps it lists"
 
 # 9. The steps stop rendering at all
 run_break "the steps are not rendered" components/modals/Help.tsx \
-  "s/\{steps\?\.map\(/{[]?.map(/" \
+  "s/\{steps\.map\(/{[].map(/" \
   components "$MODAL" "numbers the steps it lists"
 
 # 10. Modal's new props stop defaulting off, which would change the other two modals
 run_break "the wide card becomes the default" components/modals/Modal.tsx \
-  "s/export default function Modal\(\{ visible, children, title, wide, divider, icon \}: Props\)/export default function Modal({ visible, children, title, wide = true, divider = true, icon }: Props)/" \
+  "s/export default function Modal\(\{ visible, children, title, wide, divider, icon, centreTitle \}: Props\)/export default function Modal({ visible, children, title, wide = true, divider = true, icon, centreTitle }: Props)/" \
   components "$OTHERS" "the update prompt and What's New keep their own compact card"
 
 echo "ALL AS EXPECTED: $all_as_expected"
