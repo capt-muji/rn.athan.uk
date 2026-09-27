@@ -43,6 +43,35 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-09-27, while planning session 29 (the Help page)
+
+- **It is a MODAL, not a second bottom sheet.** 🐋  "I have decided to make it a modal. It needs to be
+  quite long, but take it to consideration, the different screen sizes and the button should say close."
+  This overrides `help-faq-sheet.md`'s own "Where it lives" section, which chose a sheet for consistency
+  with `Sound.tsx`'s `stackBehavior='push'`. The modal reuses `components/modals/Modal.tsx` untouched, so
+  it inherits the backdrop, the motion and `accessibilityViewIsModal`.
+- **The button says Close**, and the answers scroll inside the card, capped at 55% of the window height.
+  The cap is what answers "take into consideration the different screen sizes": ten answers do not fit a
+  small phone, and without scrolling the button leaves the screen.
+- **More questions than the brief's five.** 🐋  "Feel free to add more Q and A options there as well."
+  Ten in all, of which iOS answers eight: two exist only on Android because the cause does, a restart
+  clearing every alarm and the athan playing at alarm volume.
+- **The feature is announced in What's New**, as a PARKED item. 🐋  "and then also add this new feature
+  into the what's new section as well." Parked because the archive's own rule leaves the stamp to the
+  store release, whether a release gets a modal being the owner's editorial call.
+- **The iOS simulator is the whole device proof.** 🐋  "Do all your testing on the simulator. Don't bother
+  on the real phones. In fact, I'm just disconnecting the real phone." Nothing in the session arms,
+  cancels or reads an alarm, so no phone is needed for correctness.
+- **No questions asked of the owner; assumptions made and then listed.** 🐋  "Don't ask me questions, make
+  assumptions, and then clearly list out those assumptions at the end." Every assumption is in the
+  planning session's report and in the plan's section 2.1.
+- **The brief's Android silent-mode sentence was wrong and was corrected before it shipped.** It said
+  Android "still plays through the switch in most cases since 1.28.47"; session 27's own conclusion is the
+  opposite, because `NotificationManagerService` gates channel sound on ringer mode BEFORE it reads the
+  channel's `AudioAttributes`. The shipped answer says plainly that no app setting can play through the
+  switch, on either platform. **A brief is not evidence: check its claims against the session that
+  measured them.**
+
 ## Decided by the owner, 2026-09-25, ON DEVICE: the day-list Lock faces are CANCELLED
 
 The two faces of session 24 were built, audited, installed on the XS, and rejected on sight:
