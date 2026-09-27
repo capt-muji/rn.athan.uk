@@ -3,7 +3,7 @@
 Last updated: 2026-09-24 — #36 added and fixed (lost alarms stayed lost, because the refresh gate
 trusted a timestamp), #37 opened (the background task demands a network it does not use). Ledger
 compacted 2026-09-20: closed issues moved to the one-line index at the bottom (full detail in git
-history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2.
+history); open issues keep their detail verbatim. Open now: #10, #17, #37.
 
 Notes: the fleet gained a Huawei/Honor phone 2026-09-09 (owner-installed 1.24.1 via the EAS
 link; its USB never enumerated on the Mac). Upstream watches dropped: #44540 (closed upstream via
@@ -673,7 +673,14 @@ production release; G.6 noted but deferred by owner.
   with diagnostic layouts; storage ⇒ reliable persistence (file-in-container
   patch for expo-widgets' hardcoded UserDefaults path).
 
-### G.2 [OPEN — RELEASE BLOCKER] ~60 s blank window when adding any widget
+### G.2 [CLOSED 2026-09-27, owner] ~60 s blank window when adding any widget
+
+**Closed by the owner, who no longer sees it:** 🐋  "I don't experience that anymore. The G2 can be
+fine." Session 20 had already found the cause is not ours: a freshly placed widget pays the widget
+extension's cold start, which evaluates a 153KB JavaScript bundle in JavaScriptCore before it can
+draw, and the same delay appears in the picker's preview where no placement timeline exists yet.
+Nothing in this repository runs before that. It is no longer a release blocker. The investigation
+below is kept because it is the evidence behind the ruling.
 
 - **Symptom**: a freshly added widget shows the blank/purple placeholder for
   up to ~60 s before its first render (observed: extras light small blank

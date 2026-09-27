@@ -248,7 +248,6 @@ export enum Icon {
   PAUSE = 'PAUSE',
   INFO = 'INFO',
   MUSIC_NOTE = 'MUSIC_NOTE',
-  QUESTION = 'QUESTION',
   CHECK = 'CHECK',
   CLOSE = 'CLOSE',
   WIDGET = 'WIDGET',
