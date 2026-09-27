@@ -61,13 +61,29 @@ jest.mock('react-native', () => ({
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
-import { checkForUpdates, openStore } from '../updates';
+import { checkForUpdates, openStore, readPlayListingVersion } from '../updates';
 
 // =============================================================================
 // SETUP
 // =============================================================================
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+
+/** A Play listing page reduced to what the parse must survive: the version key, and SVG path data a shape-only regex would match */
+const playListingHtml = (version: string | null): string =>
+  [
+    '<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12"/>',
+    '<path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11"/>',
+    '"139":[[["Tools"]]],',
+    version === null ? '"140":[[["no version here"]]],' : `"141":[[["${version}"]],[[[36]],[[[24,"7.0"]]]]],`,
+    '"145":[null,[null,"- Changed daily reset from midnight to last prayer"]]',
+  ].join('');
+
+/** iOS reads the body as json, Android as text: a fixture answers whichever the platform under test asks for */
+const storeResponse = (body: { json?: unknown; text?: string }) => ({
+  json: () => Promise.resolve(body.json),
+  text: () => Promise.resolve(body.text ?? ''),
+});
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -101,13 +117,7 @@ describe('checkForUpdates', () => {
 
   it('proceeds if last check was more than 24 hours ago', async () => {
     mockGetPopupUpdateLastCheck.mockReturnValue(Date.now() - ONE_DAY_MS - 1);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: '1.0.33' }, android: { version: '1.0.33' } } },
-          uat: { updatePopup: { ios: { version: '1.0.33' }, android: { version: '1.0.33' } } },
-        }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.33' }] } }));
 
     const result = await checkForUpdates();
 
@@ -123,16 +133,15 @@ describe('checkForUpdates', () => {
   it('fetches from iTunes API when production iOS', async () => {
     mockIsProd.mockReturnValue(true);
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () => Promise.resolve({ results: [{ version: '1.0.34' }] }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
     mockIsNewerVersion.mockReturnValue(true);
 
     const result = await checkForUpdates();
 
-    expect(mockFetch).toHaveBeenCalledWith('https://itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb', {
-      headers: { 'Cache-Control': 'no-cache' },
-    });
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb',
+      expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
+    );
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.34');
     expect(result).toBe(true);
   });
@@ -140,9 +149,7 @@ describe('checkForUpdates', () => {
   it('returns false when iTunes API returns empty results', async () => {
     mockIsProd.mockReturnValue(true);
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () => Promise.resolve({ results: [] }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [] } }));
 
     const result = await checkForUpdates();
 
@@ -151,28 +158,22 @@ describe('checkForUpdates', () => {
   });
 
   // ---------------------------------------------------------------------------
-  // UAT iOS: releases.json
+  // iOS: the App Store, whatever the environment
   // ---------------------------------------------------------------------------
 
-  it('fetches from releases.json for UAT iOS', async () => {
+  it('reads the App Store version whatever the environment', async () => {
     mockIsProd.mockReturnValue(false);
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: '1.0.30' }, android: { version: '1.0.30' } } },
-          uat: { updatePopup: { ios: { version: '2.0.0' }, android: { version: '1.5.0' } } },
-        }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
     mockIsNewerVersion.mockReturnValue(true);
 
     const result = await checkForUpdates();
 
     expect(mockFetch).toHaveBeenCalledWith(
-      'https://raw.githubusercontent.com/capt-muji/rn.athan.uk/main/releases.json',
-      { headers: { 'Cache-Control': 'no-cache' } }
+      'https://itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb',
+      expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
     );
-    expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '2.0.0');
+    expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.34');
     expect(result).toBe(true);
   });
 
@@ -182,13 +183,7 @@ describe('checkForUpdates', () => {
 
   it('returns true when store version is newer than installed', async () => {
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: '1.0.34' }, android: { version: '1.0.34' } } },
-          uat: { updatePopup: { ios: { version: '1.0.34' }, android: { version: '1.0.34' } } },
-        }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
     mockIsNewerVersion.mockReturnValue(true);
 
     const result = await checkForUpdates();
@@ -199,13 +194,7 @@ describe('checkForUpdates', () => {
 
   it('returns false when installed version is current', async () => {
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: '1.0.33' }, android: { version: '1.0.33' } } },
-          uat: { updatePopup: { ios: { version: '1.0.33' }, android: { version: '1.0.33' } } },
-        }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.33' }] } }));
     mockIsNewerVersion.mockReturnValue(false);
 
     const result = await checkForUpdates();
@@ -228,32 +217,10 @@ describe('checkForUpdates', () => {
     expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 
-  it('returns false when version is null in releases.json', async () => {
-    mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: null }, android: { version: null } } },
-          uat: { updatePopup: { ios: { version: null }, android: { version: null } } },
-        }),
-    });
-
-    const result = await checkForUpdates();
-
-    expect(result).toBe(false);
-    expect(mockIsNewerVersion).not.toHaveBeenCalled();
-  });
-
   it('returns false when installedVersion is empty', async () => {
     mockGetInstalledVersion.mockReturnValue('');
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: '1.0.34' }, android: { version: '1.0.34' } } },
-          uat: { updatePopup: { ios: { version: '1.0.34' }, android: { version: '1.0.34' } } },
-        }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
 
     const result = await checkForUpdates();
 
@@ -276,13 +243,7 @@ describe('checkForUpdates', () => {
 
   it('calls setPopupUpdateLastCheck on success', async () => {
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: '1.0.33' }, android: { version: '1.0.33' } } },
-          uat: { updatePopup: { ios: { version: '1.0.33' }, android: { version: '1.0.33' } } },
-        }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.33' }] } }));
 
     await checkForUpdates();
 
@@ -320,9 +281,7 @@ describe('checkForUpdates', () => {
   it('fetches exactly once for production iOS (iTunes API only)', async () => {
     mockIsProd.mockReturnValue(true);
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () => Promise.resolve({ results: [{ version: '1.0.34' }] }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
     mockIsNewerVersion.mockReturnValue(true);
 
     await checkForUpdates();
@@ -393,48 +352,58 @@ describe('checkForUpdates (Android)', () => {
     mockIsNewerVersion.mockReturnValue(false);
   });
 
-  it('fetches from releases.json for production Android', async () => {
+  it('reads the version from the Play listing on Android', async () => {
     mockIsProd.mockReturnValue(true);
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: '1.0.30' }, android: { version: '2.0.0' } } },
-          uat: { updatePopup: { ios: { version: '1.5.0' }, android: { version: '1.5.0' } } },
-        }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ text: playListingHtml('2.0.0') }));
     mockIsNewerVersion.mockReturnValue(true);
 
     const result = await checkForUpdatesAndroid();
 
     expect(mockFetch).toHaveBeenCalledWith(
-      'https://raw.githubusercontent.com/capt-muji/rn.athan.uk/main/releases.json',
-      { headers: { 'Cache-Control': 'no-cache' } }
+      'https://play.google.com/store/apps/details?id=com.mugtaba.athan&hl=en&gl=GB',
+      expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
     );
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '2.0.0');
     expect(result).toBe(true);
   });
 
-  it('fetches from releases.json for UAT Android', async () => {
+  it('reads the Play listing on Android whatever the environment', async () => {
     mockIsProd.mockReturnValue(false);
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue({
-      json: () =>
-        Promise.resolve({
-          production: { updatePopup: { ios: { version: '1.0.30' }, android: { version: '1.0.30' } } },
-          uat: { updatePopup: { ios: { version: '1.5.0' }, android: { version: '3.0.0' } } },
-        }),
-    });
+    mockFetch.mockResolvedValue(storeResponse({ text: playListingHtml('3.0.0') }));
     mockIsNewerVersion.mockReturnValue(true);
 
     const result = await checkForUpdatesAndroid();
 
     expect(mockFetch).toHaveBeenCalledWith(
-      'https://raw.githubusercontent.com/capt-muji/rn.athan.uk/main/releases.json',
-      { headers: { 'Cache-Control': 'no-cache' } }
+      'https://play.google.com/store/apps/details?id=com.mugtaba.athan&hl=en&gl=GB',
+      expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
     );
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '3.0.0');
     expect(result).toBe(true);
+  });
+
+  it('returns false when the Play listing carries no version', async () => {
+    mockIsProd.mockReturnValue(true);
+    mockGetPopupUpdateLastCheck.mockReturnValue(0);
+    mockFetch.mockResolvedValue(storeResponse({ text: playListingHtml(null) }));
+
+    const result = await checkForUpdatesAndroid();
+
+    expect(result).toBe(false);
+    expect(mockIsNewerVersion).not.toHaveBeenCalled();
+  });
+
+  it('returns false when the Play listing version is not a dotted number', async () => {
+    mockIsProd.mockReturnValue(true);
+    mockGetPopupUpdateLastCheck.mockReturnValue(0);
+    mockFetch.mockResolvedValue(storeResponse({ text: playListingHtml('varies with device') }));
+
+    const result = await checkForUpdatesAndroid();
+
+    expect(result).toBe(false);
+    expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 });
 
@@ -529,5 +498,27 @@ describe('openStore (Android)', () => {
     await openStoreAndroid();
 
     expect(mockLoggerError).toHaveBeenCalledWith('Failed to open store URL:', error);
+  });
+});
+
+// =============================================================================
+// readPlayListingVersion TESTS
+// =============================================================================
+
+describe('readPlayListingVersion', () => {
+  it('reads the version out of a real Play listing payload', () => {
+    expect(readPlayListingVersion(playListingHtml('1.5.2'))).toBe('1.5.2');
+  });
+
+  it('answers null when the version key is absent', () => {
+    expect(readPlayListingVersion(playListingHtml(null))).toBeNull();
+  });
+
+  it('answers null for a version that is not dotted numbers', () => {
+    expect(readPlayListingVersion(playListingHtml('varies with device'))).toBeNull();
+  });
+
+  it('answers null for an empty document', () => {
+    expect(readPlayListingVersion('')).toBeNull();
   });
 });
