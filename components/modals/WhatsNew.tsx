@@ -20,10 +20,10 @@ type Props = {
   /** Installed app version rendered under the title (never a hand-typed string) */
   version: string;
   items: WhatsNewItem[];
-  onContinue: () => void;
+  onClose: () => void;
 };
 
-export default function ModalWhatsNew({ visible, version, items, onContinue }: Props) {
+export default function ModalWhatsNew({ visible, version, items, onClose }: Props) {
   return (
     <Modal visible={visible} title="What's New">
       <Text style={styles.version}>v{version}</Text>
@@ -49,8 +49,8 @@ export default function ModalWhatsNew({ visible, version, items, onContinue }: P
           </View>
         ))}
       </View>
-      <Pressable style={styles.button} onPress={onContinue} accessibilityRole='button' accessibilityLabel='Continue'>
-        <Text style={styles.buttonText}>Continue</Text>
+      <Pressable style={styles.button} onPress={onClose} accessibilityRole='button' accessibilityLabel='Close'>
+        <Text style={styles.buttonText}>Close</Text>
       </Pressable>
     </Modal>
   );

@@ -210,13 +210,13 @@ describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 inst
     expect(screen.queryByText('Help')).not.toBeOnTheScreen();
   });
 
-  it("closes What's New when Continue is pressed", async () => {
+  it("closes What's New when Close is pressed", async () => {
     showLondonDay('2026-09-11', '14:00');
     installUpdate();
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Close' }));
 
     expect(screen.queryByText("What's New")).not.toBeOnTheScreen();
   });
@@ -612,7 +612,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Close' }));
 
     expect(await screen.findByText(UPDATE_PROMPT_TITLE)).toBeOnTheScreen();
   });
