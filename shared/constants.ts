@@ -237,6 +237,9 @@ export const TIME_ADJUSTMENTS = {
  */
 export const TIME_CONSTANTS = {
   ONE_DAY_MS: 24 * 60 * 60 * 1000,
+  /** What a check that never reached the store costs, so an offline launch loses an hour rather than its day */
+  UPDATE_RETRY_MS: 60 * 60 * 1000,
+  UPDATE_FETCH_TIMEOUT_MS: 10 * 1000,
 } as const;
 
 /**

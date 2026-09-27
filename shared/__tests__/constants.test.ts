@@ -20,6 +20,7 @@ import {
   REMINDER_BUFFER_SECONDS,
   REMINDER_INTERVALS,
   SCHEDULE_CANDIDATE_DAYS,
+  TIME_CONSTANTS,
   validateReminderInterval,
 } from '../constants';
 import { REMINDER_SLOTS } from '../types';
@@ -388,5 +389,12 @@ describe('the background task runs many times inside even the shortest horizon',
     const attempts = Math.floor(WORST_CASE_HORIZON_HOURS / BACKGROUND_TASK_INTERVAL_HOURS);
 
     expect(attempts).toBeGreaterThan(4);
+  });
+});
+
+describe('the update check window', () => {
+  it('the update retry is shorter than the update check window', () => {
+    expect(TIME_CONSTANTS.UPDATE_RETRY_MS).toBeGreaterThan(0);
+    expect(TIME_CONSTANTS.UPDATE_RETRY_MS).toBeLessThan(TIME_CONSTANTS.ONE_DAY_MS);
   });
 });
