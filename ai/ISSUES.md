@@ -923,6 +923,41 @@ at Tromso on 21 June (`00:32` then `01:00`), and they never invert, so the list 
 **Nothing to fix, so nothing shipped.** No code changed for this issue. The evidence is the point, and v2.0's
 location work inherits it.
 
+**Addendum, same day: the owner's two follow-up claims, both measured and both partly wrong.** The owner reasoned
+that (1) an Isha past 06:00 is physically impossible, so the cutoff needs no thought, and (2) Isha can never precede
+Magrib, so the ordering margin is not worth recording. A global sweep says otherwise on both counts, though neither
+is a live defect.
+
+Sweep: latitude -72N to 80N every 2 degrees, longitude every 15, five timezone offsets per point spanning the real
+range (solar offset plus or minus 2 hours), all three `HighLatitudeRule` values, all three `PolarCircleResolution`
+values, every fifth day of 2026. **6,212,250 Isha readings and 3,720,375 Magrib-Isha pairs.**
+
+| Claim | Measured |
+| --- | --- |
+| Isha never lands past 06:00 | **False.** 1,134 readings land between 11:00 and 11:59, the earliest at `11:16`, all above 76N in early November |
+| Isha never precedes Magrib | **False.** 810 pairs invert, the worst by one minute (`10:52` Magrib, `10:51` Isha) at 66N |
+
+**Neither is a bug, and the reasons matter more than the counts.**
+
+The 06:00 cutoff is safe because of a GAP, not because Isha cannot pass 06:00. The hour histogram of every Isha
+reading is empty from 04:00 through 10:59: rows either sit in the small hours (the crossing case, latest `03:21`) or
+from 11:00 onward (the polar-day case, earliest `11:16`). Nothing lands in the 04:00 to 11:00 band at all, so the
+cutoff has nearly seven hours of empty space around it and any value from 04:00 to 11:00 behaves identically. A
+`11:16` Isha is correctly NOT treated as crossing: verified through `createPrayer`, it keeps its own list day, which
+is right, because at 76N in November that reading is a polar-day artefact rather than a row belonging to the night
+before.
+
+The inversion is confined to ONE `PolarCircleResolution`: `AqrabYaum` produces all 810, while `AqrabBalad` and
+`Unresolved` produce zero across the same 17,446 pairs. It is a substituted-day artefact of that mode, not astronomy,
+and the whole day it appears in is degenerate (66N, 15 June: Fajr `11:15`, Dhuhr `23:05`, Asr `03:57` the next
+morning). The app is already immune by design: `compareListOrder` in `shared/sequence.ts` ranks rows by list position
+rather than by instant, and its own comment names the polar case as the reason. A one-minute inversion therefore
+changes the list's order not at all.
+
+**So the owner's conclusion holds even though the premises do not.** Nothing to limit, nothing to fix. What is worth
+keeping is WHY: the cutoff survives on an empty band rather than on impossibility, and the ordering survives on
+`compareListOrder` rather than on astronomy. Both are properties a future change could remove without noticing.
+
 ---
 
 ## J. Release distribution & the update prompt (2026-09-12)
