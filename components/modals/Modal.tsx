@@ -23,9 +23,14 @@ type Props = {
   visible: boolean;
   children?: React.ReactNode;
   title: string;
+  /** Long content: takes nearly the whole screen instead of the compact card */
+  wide?: boolean;
+  /** Rules the title off from content that scrolls beneath it */
+  divider?: boolean;
+  icon?: React.ReactNode;
 };
 
-export default function Modal({ visible, children, title }: Props) {
+export default function Modal({ visible, children, title, wide, divider, icon }: Props) {
   if (!visible) return null;
 
   return (
@@ -36,11 +41,15 @@ export default function Modal({ visible, children, title }: Props) {
       <Animated.View
         accessibilityViewIsModal={true}
         accessibilityRole='alert'
-        style={styles.modal}
+        style={[styles.modal, wide && styles.modalWide]}
         entering={MODAL_ENTERING}
         exiting={MODAL_EXITING}>
         <View style={styles.content}>
-          <Text style={styles.title}>{title}</Text>
+          <View style={styles.titleRow}>
+            {icon}
+            <Text style={[styles.title, divider && styles.titleWithDivider]}>{title}</Text>
+          </View>
+          {divider ? <View style={[styles.divider, wide && styles.dividerWide]} /> : null}
           {children}
         </View>
       </Animated.View>
@@ -77,12 +86,39 @@ const styles = StyleSheet.create({
     ...SHADOW.modal,
     elevation: ELEVATION.maximum,
   },
+  modalWide: {
+    width: '98%',
+    maxWidth: SIZE.contentMaxWidth,
+    maxHeight: '96%',
+    padding: SPACING.lg,
+  },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: SPACING.sm,
+    paddingTop: SPACING.xs,
+  },
   title: {
     fontSize: TEXT.sizeTitle,
     fontFamily: TEXT.family.medium,
     marginBottom: SPACING.md,
     color: COLORS.light.text,
     letterSpacing: TEXT.letterSpacing.wide,
+  },
+  titleWithDivider: {
+    marginBottom: SPACING.sm,
+  },
+  divider: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: COLORS.light.textSecondary,
+    opacity: 0.2,
+    alignSelf: 'stretch',
+    marginHorizontal: -SPACING.xxl,
+    marginBottom: SPACING.md,
+  },
+  dividerWide: {
+    marginHorizontal: -SPACING.lg,
   },
   content: {
     alignItems: 'center',
