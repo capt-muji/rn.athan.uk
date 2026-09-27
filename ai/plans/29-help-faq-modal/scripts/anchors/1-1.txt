@@ -1,0 +1,6 @@
+  modal: {
+    backgroundColor: COLORS.light.background,
+    borderRadius: RADIUS.xxl,
+    padding: SPACING.xxl,
+    width: LAYOUT.modal.width,
+    maxWidth: SIZE.modal.maxWidth,
