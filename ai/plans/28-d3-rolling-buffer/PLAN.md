@@ -272,7 +272,7 @@ Reviewed by this session on 2026-09-27, before any code was written. Three findi
 - [x] Step 1: The budget replaces the day window in `shared/` (specified)
 - [x] Step 2: The store arms from the budget, and the 13 suites are repaired (specified; folded into step 1's commit, see `LOG.md`)
 - [x] Step 3: The alert sheet's second card, tested (specified; folded into step 1's commit, see `LOG.md`)
-- [ ] Step 4: What's New, both platforms (specified)
+- [x] Step 4: What's New, both platforms (specified)
 
 ### Step 1: The budget replaces the day window in `shared/`
 

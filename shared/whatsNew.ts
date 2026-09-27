@@ -100,6 +100,13 @@ export const WHATS_NEW: WhatsNewRelease | null = {
       flags: ['iosWidgets'],
       version: null,
     },
+    {
+      // PARKED: whether this release gets a modal is the owner's editorial call, so it is
+      // stamped at the store release rather than here. No flag: it ships on both platforms
+      title: 'A second reminder',
+      body: 'Each prayer can now carry two reminders, each with its own sound and timing',
+      version: null,
+    },
   ],
 };
 
