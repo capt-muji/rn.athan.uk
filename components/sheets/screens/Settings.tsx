@@ -1,11 +1,13 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useMemo } from 'react';
-import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
+import { IconView } from '@/components/ui';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
+import { Icon } from '@/shared/types';
 import { VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
@@ -76,7 +78,7 @@ export default function BottomSheetSettings() {
           accessibilityLabel='Change athan'
           accessibilityRole='button'>
           <View style={styles.musicButton}>
-            <Text style={styles.musicIcon}>♪</Text>
+            <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.athanLabel}>Change athan</Text>
           <Text style={styles.chevron}>›</Text>
@@ -137,7 +139,7 @@ export default function BottomSheetSettings() {
             accessibilityLabel="What's new"
             accessibilityRole='button'>
             <View style={styles.infoButton}>
-              <Text style={styles.badgeGlyph}>i</Text>
+              <IconView type={Icon.INFO} size={12} color={COLORS.text.primary} />
             </View>
             <Text style={styles.whatsNewLabel}>What&#8217;s new</Text>
             <Text style={styles.chevron}>›</Text>
@@ -150,7 +152,7 @@ export default function BottomSheetSettings() {
           accessibilityLabel='Help'
           accessibilityRole='button'>
           <View style={styles.infoButton}>
-            <Text style={styles.badgeGlyph}>?</Text>
+            <IconView type={Icon.QUESTION} size={13} color={COLORS.text.primary} />
           </View>
           <Text style={styles.whatsNewLabel}>Help</Text>
           <Text style={styles.chevron}>›</Text>
@@ -227,16 +229,6 @@ const styles = StyleSheet.create({
     borderColor: COLORS.interactive.activeBorder,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  badgeGlyph: {
-    color: COLORS.text.primary,
-    fontSize: 10,
-    fontFamily: TEXT.family.regular,
-  },
-  musicIcon: {
-    color: COLORS.text.primary,
-    fontSize: Platform.OS === 'android' ? 14 : 10,
-    marginTop: Platform.OS === 'android' ? -2.5 : 0,
   },
   athanLabel: {
     flex: 1,
