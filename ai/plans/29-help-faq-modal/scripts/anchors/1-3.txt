@@ -1,0 +1,2 @@
+/** Sets whether the What's New popup should be shown */
+export const setPopupWhatsNewEnabled = (enabled: boolean) => store.set(popupWhatsNewEnabledAtom, enabled);
