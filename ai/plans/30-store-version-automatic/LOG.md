@@ -75,3 +75,22 @@
   retrying gave `Performing Streamed Install / Success` immediately. **The setting was restored to `1` afterwards**,
   and `auto_time` was never touched and reads `1`.
 - **The phone is left on this session's mock build at 1.29.19**, which is what the owner asked for.
+
+## One honest limit on the iOS device proof, found after the push
+
+The iOS simulator app is stamped **1.28.52**, not 1.29.19: `ios/` is a gitignored prebuild artifact and
+`ios/Athan/Info.plist` still carries the version from the last prebuild, which `ai/AGENTS.md` already documents under
+"Native Version Sync". The build was Debug and carries **no `main.jsbundle`**, so it loaded its JavaScript from Metro
+(ports 8081 and 8603 were serving), which means it DID run this session's `device/updates.ts`. What it could not
+exercise is `getInstalledVersion()` returning 1.29.19, because that reads the native plist.
+
+This does not weaken what the iOS run proves, and it does narrow it. **Proven on iOS:** the new fetch and parse code
+loads and runs on a real iOS runtime with zero `Failed to fetch store version` or `Failed to check for updates` lines,
+and all three screens render correctly. **Not proven on iOS:** the specific installed-version string the comparison
+uses. The Android run covers that end, because `build-mock.zsh` prebuilds fresh and the phone reads
+`versionName=1.29.19`.
+
+Not fixed here, deliberately: syncing the plist means a prebuild, and `app.json` is otherwise unchanged by this
+session, so a prebuild would rewrite native folders for a cosmetic stamp on a simulator. The remedy, when a later
+session needs an iOS device proof with a true version, is the documented ritual: bump `app.json` FIRST, then
+`npx expo prebuild -p ios --no-install`, then build.
