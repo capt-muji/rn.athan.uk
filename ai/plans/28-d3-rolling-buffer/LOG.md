@@ -181,6 +181,16 @@ body 75, inside the 32 and 96 limits `whatsNew.test.ts` enforces.
    which then reappeared as a test failure that had already been solved. Use a copy-and-restore of
    the specific file, or `git stash push <file>`, never `checkout --` on a file holding wanted work.
 
+### After the audit: the owner read the sheet and changed one string
+
+🐋  "Let's keep the text identical. For example, you wrote. Reminder 1, notification before prayer
+time, very good, reminder 2, it should also be notification before prayer time."
+
+Reminder 2's hint said "A second, optional reminder", which describes the CARD while Reminder 1's
+describes what the reminder DOES. The two cards offer identical controls, so the descriptions have no
+reason to differ. Both now read "Notification before prayer time" (1.29.5). No test asserted the old
+string, and the suite stayed green at 4719.
+
 ## Status at the end of this session
 
 Row 28 is EXECUTED. Nothing is merged into `uat-2` yet and nothing is pushed: the audit does that.
