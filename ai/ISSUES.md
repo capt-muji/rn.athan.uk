@@ -891,6 +891,38 @@ that safe rather than a judgement call: every version in the file was `1.0.0` wh
 not prompt anyone, even an older build still fetching it, and a 404 is already handled because `getStoreVersion`
 answers `false` on any fetch failure.
 
+**Session 31 (2026-09-27) replaced the Android half with the native API, on the owner's ruling**
+(🐋  "Native always wins versus custom implementation"). Android asks Play through `expo-in-app-updates@0.12.0`,
+pinned exactly, and the HTML scrape is deleted. Play decides, shows its own overlay, downloads in the background and
+the library completes the install on `DOWNLOADED`, so the only user action is Google's mandatory single consent tap.
+The flow is FLEXIBLE: a prayer-times app must never be blocked by an update. **iOS keeps `ModalUpdate` and the iTunes
+reader, because Apple has no in-app update mechanism at all**; `checkForUpdates()` always resolves `false` on Android,
+so Play's overlay and our modal can never stack.
+
+**Session 30's rejection of this package was withdrawn, and one of its grounds was simply wrong.** The
+"unverifiable" objection judged a production mechanism by what a side-loaded test phone can exercise, and the claim
+that its iOS half queries the wrong storefront was false: `AppStoreCountry` is documented for exactly that case. The
+surviving fact, that Play reports a `versionCode`, turned out not to matter, because nothing compares it.
+
+**`releases.json` is DELETED** (session 31). Safe because every version in it was `1.0.0` against a live store build
+of 1.5.1, so it could never prompt anyone, even an older build still fetching it. Every live rule that protected it
+now forbids a hand-edited release file of any kind, so the prohibition outlives the filename.
+
+**DURABLE LESSON: a lazy `require()` of an optional native module cannot reach 100% coverage**, because its catch is
+unreachable once the package is installed (measured at 84.21% statements). A static import plus a virtual Jest mock
+(`jest.mock('<pkg>', factory, { virtual: true })`) reaches 100%, with the platform's other branch reachable only from
+a `beforeAll` that calls `jest.resetModules()` then re-mocks `react-native` alongside the package.
+
+**DURABLE LESSON: checking whether a native module reached an APK needs a per-dex search.** `aapt2 dump strings`
+returned `0` for the module name and that was a false negative; `ExpoInAppUpdates` sits in `classes2.dex`. R8 also
+obfuscates Play Core's class paths, so search its string literals (`appUpdateManager`,
+`InstallState{installStatus=`), never `com/google/android/play/core/...`.
+
+**Measured on the 3T, and it proves more than a side-load was expected to.** Logcat shows the app binding to Play's
+`DevTriggeredUpdateService`, receiving `onRequestInfo`, and Play answering `ERROR_APP_NOT_OWNED`, the documented reply
+for a build Play did not install. The wiring, the Play Core client and the app's error path are all proven; only the
+happy path awaits a Play-installed build, which is what `device/__tests__/inAppUpdatesContract.test.ts` guards.
+
 **Proof.** 4774 tests at 100% on all four measures; 13 breaks across three steps, every one caught. The live endpoints
 answered from this Mac (`resultCount 1 version 1.5.1` for iTunes, `key141 1.5.2` for Play), and the shipped
 `readPlayListingVersion` was run against the 1.14 MB page as served that day. Evidence in
