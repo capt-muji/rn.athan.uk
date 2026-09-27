@@ -48,14 +48,17 @@ const TODAY = '2026-08-29';
 const TOMORROW = '2026-08-30';
 const WINDOW = [TODAY, TOMORROW];
 const INTERVAL = 15 as ReminderInterval;
+const SECOND_INTERVAL = 30 as ReminderInterval;
 const FAJR = 0;
 const DHUHR = 2;
 
-/** The three settings an alert sheet closes on */
+/** The settings an alert sheet closes on */
 const alerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertType.Off) => ({
   atTimeAlert,
-  reminderAlert,
-  reminderInterval: INTERVAL,
+  reminders: [
+    { alert: reminderAlert, interval: INTERVAL },
+    { alert: AlertType.Off, interval: SECOND_INTERVAL },
+  ] as const,
 });
 
 /** Every alert of a prayer switched off */
@@ -145,9 +148,10 @@ beforeEach(() => {
     Database.database.set(`prayer_${date}`, JSON.stringify(day));
   }
 
-  for (const atom of [...standardPrayerAlertAtoms, ...standardReminderAlertAtoms]) store.set(atom, AlertType.Off);
-  setReminderInterval(ScheduleType.Standard, FAJR, INTERVAL);
-  setReminderInterval(ScheduleType.Standard, DHUHR, INTERVAL);
+  for (const atom of [...standardPrayerAlertAtoms, ...standardReminderAlertAtoms.flat()])
+    store.set(atom, AlertType.Off);
+  setReminderInterval(ScheduleType.Standard, FAJR, 0, INTERVAL);
+  setReminderInterval(ScheduleType.Standard, DHUHR, 0, INTERVAL);
   store.set(lastNotificationScheduleAtom, 0);
 
   scheduleMock.mockImplementation((request) => {
@@ -225,7 +229,7 @@ describe('an operation queued behind one that fails part way', () => {
     armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
     refusedCancels.add(athanIds('Fajr')[0]);
     store.set(standardPrayerAlertAtoms[DHUHR], AlertType.Silent);
-    store.set(standardReminderAlertAtoms[DHUHR], AlertType.Silent);
+    store.set(standardReminderAlertAtoms[0][DHUHR], AlertType.Silent);
     holdsSchedule = (id) => reminderIds('Dhuhr').includes(id);
     const refresh = refreshNotifications();
     await flush();
@@ -293,7 +297,7 @@ describe('an operation queued behind one that fails part way', () => {
   it("runs only once another prayer's reminders have armed, when one prayer's reminder day throws", async () => {
     for (const index of [FAJR, DHUHR]) {
       store.set(standardPrayerAlertAtoms[index], AlertType.Silent);
-      store.set(standardReminderAlertAtoms[index], AlertType.Silent);
+      store.set(standardReminderAlertAtoms[0][index], AlertType.Silent);
     }
     const readRow = PrayerUtils.getPrayerForDate;
     jest.spyOn(PrayerUtils, 'getPrayerForDate').mockImplementation((type, name, date) => {
@@ -324,7 +328,7 @@ describe('an operation queued behind one that fails part way', () => {
     'runs only once the other day of a failing refresh has armed, when one $path day throws',
     async ({ reminder, holding }) => {
       store.set(standardPrayerAlertAtoms[FAJR], AlertType.Silent);
-      store.set(standardReminderAlertAtoms[FAJR], reminder);
+      store.set(standardReminderAlertAtoms[0][FAJR], reminder);
       const readRow = PrayerUtils.getPrayerForDate;
       jest.spyOn(PrayerUtils, 'getPrayerForDate').mockImplementation((type, name, date) => {
         if (name === 'Fajr' && date === TOMORROW) throw new Error('Stored day could not be read');

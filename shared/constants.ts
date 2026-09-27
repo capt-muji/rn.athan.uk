@@ -70,22 +70,24 @@ export const EXTRAS_EXPLANATIONS = [
 // =============================================================================
 
 /**
- * Number of days ahead to schedule notifications (2-day rolling buffer)
- * Ensures notifications are always queued ahead without overwhelming the system
+ * How many pending notification requests the app may hold at once.
  *
- * DO NOT RAISE THIS WITHOUT DOING THE ARITHMETIC. iOS keeps only the 64
- * soonest-firing pending requests per app and silently discards the rest, and the
- * worst case here is every prayer armed at-time AND with a reminder:
- * 11 prayers x 2 alerts x N days, plus the one extra list day the two Extras night
- * rows take (`rollingDaysForPrayer` in `shared/notifications.ts`, which is where
- * this window is actually applied). At 2 days that is 44 + 4 = 48, with 16 to
- * spare; at 3 it is 66 + 4 = 70, and the requests iOS drops are the furthest out —
- * exactly the extra day the raise was meant to buy.
- * `shared/__tests__/constants.test.ts` computes the worst case from
- * `rollingDaysForPrayer` itself and fails if this constant, the night-row rule, the
- * prayer arrays or the reminder set ever push it over 64.
+ * iOS keeps the 64 soonest-firing requests per app and silently discards the rest, so this
+ * is a platform ceiling rather than a tuning knob: raising it does not buy reach, it just
+ * hands the phone requests it will drop. Rows are armed whole (`buildSchedulePlan`), so the
+ * worst-case user, every row armed with both reminders, spends 63 of these and the 22nd row
+ * is left for the next refresh.
  */
-export const NOTIFICATION_ROLLING_DAYS = 2;
+export const NOTIFICATION_REQUEST_BUDGET = 64;
+
+/**
+ * How far ahead the candidate walk may look for rows to arm.
+ *
+ * A loop guard, never a coverage limit: the budget or the end of the cached year stops the
+ * walk first for every user, which `shared/__tests__/constants.test.ts` pins. Without it a
+ * thin cache would make the walk scan forever for a candidate that does not exist.
+ */
+export const SCHEDULE_CANDIDATE_DAYS = 60;
 
 /**
  * Valid reminder intervals in minutes before prayer time
@@ -97,6 +99,14 @@ export const REMINDER_INTERVALS = [5, 10, 15, 20, 25, 30] as const;
  * Default reminder interval (5 minutes before prayer)
  */
 export const DEFAULT_REMINDER_INTERVAL = 5;
+
+/**
+ * The interval each reminder slot starts on, indexed by slot.
+ *
+ * They differ so a prayer's two reminders never open on the same minute, which is the one
+ * pairing the sheet has no way to let the user express.
+ */
+export const DEFAULT_REMINDER_SLOT_INTERVALS = [DEFAULT_REMINDER_INTERVAL, 30] as const;
 
 /**
  * Buffer in seconds - if a reminder would fire within this many seconds, skip it

@@ -5,21 +5,30 @@ import { StyleSheet, Text, View } from 'react-native';
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { type AlertMenuState, AlertType, Icon, type ReminderInterval } from '@/shared/types';
+import {
+  type AlertMenuState,
+  AlertType,
+  Icon,
+  type PerReminderSlot,
+  type ReminderSetting,
+  type ReminderSlot,
+} from '@/shared/types';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
-import { SegmentedControl, type SegmentOption, Sheet, Stepper, Toggle } from '../parts';
-import { stepReminderInterval } from '../parts/reminderStep';
-import { initialReminderInterval, initialReminderType, selectionNeedsPermission, toggledReminder } from './alertDraft';
+import { SegmentedControl, type SegmentOption, Sheet } from '../parts';
+import { freeReminderInterval } from '../parts/reminderStep';
+import {
+  initialReminderInterval,
+  initialReminderType,
+  selectionNeedsPermission,
+  takenInterval,
+  toggledReminder,
+} from './alertDraft';
+import ReminderCard from './ReminderCard';
 
 const ALERT_OPTIONS: SegmentOption[] = [
   { value: AlertType.Off, label: 'Off', icon: Icon.BELL_SLASH },
-  { value: AlertType.Silent, label: 'Silent', icon: Icon.BELL_RING },
-  { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
-];
-
-const REMINDER_TYPE_OPTIONS: SegmentOption[] = [
   { value: AlertType.Silent, label: 'Silent', icon: Icon.BELL_RING },
   { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
 ];
@@ -43,6 +52,12 @@ interface AlertSheetBodyRef {
   /** Live draft values at the moment of the call */
   getCurrentState: () => AlertMenuState;
 }
+
+/** Both slots through one change, so a writer never has to assert the pair's shape back */
+const mapSlots = (
+  reminders: PerReminderSlot<ReminderSetting>,
+  change: (reminder: ReminderSetting, slot: ReminderSlot) => ReminderSetting
+): PerReminderSlot<ReminderSetting> => [change(reminders[0], 0), change(reminders[1], 1)];
 
 interface AlertSheetBodyProps {
   sheetState: AlertSheetState;
@@ -122,31 +137,35 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
   const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(() =>
     getPrayerAlertType(sheetState.type, sheetState.index)
   );
-  const [reminderAlert, setReminderAlert] = useState<AlertType>(() =>
-    getReminderAlertType(sheetState.type, sheetState.index)
-  );
-  const [reminderType, setReminderType] = useState<AlertType.Silent | AlertType.Sound>(() => {
-    const reminder = getReminderAlertType(sheetState.type, sheetState.index);
-    return initialReminderType(reminder);
-  });
-  const [reminderInterval, setReminderInterval] = useState<ReminderInterval>(() => {
-    const stored = getReminderInterval(sheetState.type, sheetState.index);
-    return initialReminderInterval(stored);
+  const [reminders, setReminders] = useState<PerReminderSlot<ReminderSetting>>(() => {
+    const saved = (slot: ReminderSlot): ReminderSetting => ({
+      alert: getReminderAlertType(sheetState.type, sheetState.index, slot),
+      interval: initialReminderInterval(getReminderInterval(sheetState.type, sheetState.index, slot)),
+    });
+
+    return [saved(0), saved(1)];
   });
 
-  const originalStateRef = useRef<AlertMenuState>({
-    atTimeAlert,
-    reminderAlert,
-    reminderInterval,
-  });
+  // Kept while a reminder is Off, so a toggle never loses the sound last chosen
+  const [sounds, setSounds] = useState<Record<ReminderSlot, AlertType.Silent | AlertType.Sound>>(() => ({
+    0: initialReminderType(getReminderAlertType(sheetState.type, sheetState.index, 0)),
+    1: initialReminderType(getReminderAlertType(sheetState.type, sheetState.index, 1)),
+  }));
+
+  const originalStateRef = useRef<AlertMenuState>({ atTimeAlert, reminders });
 
   useImperativeHandle(ref, () => ({
     getOriginalState: () => originalStateRef.current,
-    getCurrentState: () => ({ atTimeAlert, reminderAlert, reminderInterval }),
+    getCurrentState: () => ({ atTimeAlert, reminders }),
   }));
 
-  const isReminderOn = reminderAlert !== AlertType.Off;
   const canEnableReminder = atTimeAlert !== AlertType.Off;
+
+  const updateReminder = useCallback((slot: ReminderSlot, change: Partial<ReminderSetting>) => {
+    setReminders((current) =>
+      mapSlots(current, (reminder, index) => (index === slot ? { ...reminder, ...change } : reminder))
+    );
+  }, []);
 
   const handleAlertSelect = useCallback(
     async (type: AlertType) => {
@@ -160,21 +179,41 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
       }
       setAtTimeAlert(type);
       if (type === AlertType.Off) {
-        setReminderAlert(AlertType.Off);
+        setReminders((current) => mapSlots(current, (reminder) => ({ ...reminder, alert: AlertType.Off })));
       }
     },
     [atTimeAlert, ensurePermissions]
   );
 
-  const handleReminderToggle = useCallback(() => {
-    const next = toggledReminder({ canEnableReminder, isReminderOn, reminderType });
-    if (next !== null) setReminderAlert(next);
-  }, [canEnableReminder, isReminderOn, reminderType]);
+  const handleReminderToggle = useCallback(
+    (slot: ReminderSlot) => {
+      const other = reminders[slot === 0 ? 1 : 0];
+      const next = toggledReminder({
+        canEnableReminder: canEnableReminder && (slot === 0 || reminders[0].alert !== AlertType.Off),
+        isReminderOn: reminders[slot].alert !== AlertType.Off,
+        reminderType: sounds[slot],
+      });
+      if (next === null) return;
 
-  const handleReminderTypeSelect = useCallback((type: AlertType) => {
-    setReminderAlert(type);
-    setReminderType(type as AlertType.Silent | AlertType.Sound);
-  }, []);
+      // Switching on beside a reminder already holding this minute moves to the nearest free one, which is the
+      // only moment a value can change without a press on its own stepper
+      const interval =
+        next === AlertType.Off
+          ? reminders[slot].interval
+          : freeReminderInterval(reminders[slot].interval, takenInterval(other));
+
+      updateReminder(slot, { alert: next, interval });
+    },
+    [canEnableReminder, reminders, sounds, updateReminder]
+  );
+
+  const handleReminderSoundSelect = useCallback(
+    (slot: ReminderSlot, type: AlertType) => {
+      setSounds((current) => ({ ...current, [slot]: type as AlertType.Silent | AlertType.Sound }));
+      updateReminder(slot, { alert: type });
+    },
+    [updateReminder]
+  );
 
   return (
     <>
@@ -192,46 +231,29 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
         </View>
       </View>
 
-      {/* Reminder Card */}
-      <View style={[styles.card, !canEnableReminder && styles.cardDisabled]}>
-        <View style={styles.cardRow}>
-          <View>
-            <Text style={styles.cardTitle}>Reminder</Text>
-            <Text style={styles.cardHint}>Notification before prayer time</Text>
-          </View>
-          <Toggle value={isReminderOn} onToggle={handleReminderToggle} disabled={!canEnableReminder} />
-        </View>
+      <ReminderCard
+        title='Reminder 1'
+        hint='Notification before prayer time'
+        reminder={reminders[0]}
+        sound={sounds[0]}
+        taken={takenInterval(reminders[1])}
+        locked={!canEnableReminder}
+        onToggle={() => handleReminderToggle(0)}
+        onSelectSound={(type) => handleReminderSoundSelect(0, type)}
+        onSelectInterval={(interval) => updateReminder(0, { interval })}
+      />
 
-        <View style={[styles.reminderOptions, !isReminderOn && styles.optionsDisabled]}>
-          <View style={styles.optionRow}>
-            <Text style={styles.optionLabel}>Sound</Text>
-            <SegmentedControl
-              key={`reminder-${sheetState.type}-${sheetState.index}`}
-              options={REMINDER_TYPE_OPTIONS}
-              selected={reminderType}
-              onSelect={handleReminderTypeSelect}
-              disabled={!isReminderOn}
-            />
-          </View>
-
-          <View style={styles.optionRow}>
-            <Text style={styles.optionLabel}>Before</Text>
-            <Stepper
-              value={reminderInterval}
-              onDecrement={() => {
-                const next = stepReminderInterval(reminderInterval, -1);
-                if (next !== null) setReminderInterval(next);
-              }}
-              onIncrement={() => {
-                const next = stepReminderInterval(reminderInterval, 1);
-                if (next !== null) setReminderInterval(next);
-              }}
-              unit='min'
-              disabled={!isReminderOn}
-            />
-          </View>
-        </View>
-      </View>
+      <ReminderCard
+        title='Reminder 2'
+        hint='A second, optional reminder'
+        reminder={reminders[1]}
+        sound={sounds[1]}
+        taken={takenInterval(reminders[0])}
+        locked={!canEnableReminder || reminders[0].alert === AlertType.Off}
+        onToggle={() => handleReminderToggle(1)}
+        onSelectSound={(type) => handleReminderSoundSelect(1, type)}
+        onSelectInterval={(interval) => updateReminder(1, { interval })}
+      />
     </>
   );
 });

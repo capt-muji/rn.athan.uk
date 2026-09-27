@@ -337,8 +337,10 @@ describe('commitAlertMenuChanges', () => {
     interval: 5 | 10 | 15 | 20 | 25 | 30 = 15
   ): AlertMenuState => ({
     atTimeAlert: atTime,
-    reminderAlert: reminder,
-    reminderInterval: interval,
+    reminders: [
+      { alert: reminder, interval },
+      { alert: AlertType.Off, interval: 30 },
+    ],
   });
 
   /**
