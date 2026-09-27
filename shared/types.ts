@@ -315,45 +315,6 @@ export interface PrayerSequence {
   prayers: Prayer[];
 }
 
-/**
- * NOT A DESCRIPTION OF WHAT IS ON DISK. Nothing serializes to this shape, and
- * no runtime module reads or writes it.
- *
- * What the app actually persists is `ISingleApiResponseTransformed`, one record
- * per calendar day under `prayer_YYYY-MM-DD` (see `saveAllPrayers` in
- * `stores/database.ts`): a date plus `HH:mm` strings, with no Date objects and
- * no datetime strings of any kind. A `Prayer`, and the `PrayerSequence` holding
- * it, is rebuilt from those `HH:mm` strings on every launch by
- * `createPrayerSequence()` in `shared/prayer.ts` and never written back. So the
- * "local time, no 'Z'" format below is a proposal, not a contract — the
- * timezone hazard it warns about does not exist anywhere in the app today, and
- * reasoning about a stored `datetime` will send you looking for a bug that
- * cannot be there.
- *
- * Kept because `mocks/timing-system-schema.ts` documents this as the shape a
- * future sequence cache would take, should sequences ever be persisted rather
- * than rebuilt. Anything adopting it has to settle the parse rules for real
- * first, in code with tests behind it.
- */
-export interface StoredPrayer {
-  type: ScheduleType;
-  english: string;
-  arabic: string;
-  /** Proposed format, unused: "2026-01-18T06:12:00" (local time, no 'Z') */
-  datetime: string;
-  time: string;
-  belongsToDate: string;
-}
-
-/**
- * The sequence counterpart to StoredPrayer, and unused in the same way: no
- * sequence is persisted. See the note on StoredPrayer above.
- */
-export interface StoredPrayerSequence {
-  type: ScheduleType;
-  prayers: StoredPrayer[];
-}
-
 // =============================================================================
 // COUNTDOWN AND OVERLAY STATE TYPES
 // =============================================================================
