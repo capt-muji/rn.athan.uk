@@ -42,6 +42,9 @@ import {
   PrayerWidgetMedium,
 } from '@/widgets/PrayerWidget';
 
+/** 09:00 London on a fixed day: every seeded row below is hours ahead of it */
+const SEEDED_NOW = new Date('2026-09-27T08:00:00Z');
+
 const makeDayData = (date: string): ISingleApiResponseTransformed => ({
   date,
   fajr: '03:30',
@@ -105,7 +108,9 @@ const resetMocks = () => {
 describe('Android snapshot pushes', () => {
   beforeEach(() => {
     resetMocks();
-    jest.useFakeTimers();
+    // Fixed, because the seeded rows are fixed: a real clock inside the last minute before a
+    // seeded row makes the 61s advance in the flip test sail past its target (ISSUES #44)
+    jest.useFakeTimers({ now: SEEDED_NOW });
   });
 
   afterEach(() => {
