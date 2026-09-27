@@ -266,24 +266,11 @@ export const useNotification = () => {
   };
 
   /**
-   * Commits a new Athan sound selection, with rollback
+   * Commits a new Athan sound selection
    *
-   * The preference write has to come FIRST and stay first: the Android channel
-   * and `rescheduleAllNotifications` both read the stored preference while they
-   * run, so reordering would schedule the old sound. That makes it an
-   * optimistic update, and it needs the same rollback `commitAlertMenuChanges`
-   * has — without one, a rejected reschedule leaves Settings showing an Athan
-   * the OS will not play until the periodic refresh heals it, which is up to
-   * NOTIFICATION_REFRESH_HOURS later.
-   *
-   * Two consequences of a failed commit are NOT reversible, and are
-   * deliberately not attempted:
-   * - notifications already re-scheduled with the new sound before the throw
-   *   keep it until the next successful sweep;
-   * - a channel `updateAndroidChannel` created still exists, because an Android
-   *   channel's sound is immutable once created and deleting it would discard
-   *   the user's own per-channel settings.
-   * Both self-heal on the next successful commit or refresh.
+   * The store commits it under the scheduling lock, so the athan Settings shows and the athan the alarms carry can
+   * never disagree. This reads the athan in force first, because that is what the store puts back if any part of
+   * the change fails.
    *
    * @param selection Athan sound index to commit
    * @returns Promise resolving to boolean indicating success
@@ -292,20 +279,14 @@ export const useNotification = () => {
     const previousSelection = NotificationStore.getSoundPreference();
 
     perfMark('sound_commit_start');
-    NotificationStore.setSoundPreference(selection);
+    const committed = await NotificationStore.commitSoundSelection(
+      selection,
+      previousSelection,
+      Device.updateAndroidChannel
+    );
+    perfMeasure('sound_commit', 'sound_commit_start');
 
-    try {
-      await Device.updateAndroidChannel(selection);
-      await NotificationStore.rescheduleAllNotifications();
-      perfMeasure('sound_commit', 'sound_commit_start');
-
-      logger.info('NOTIFICATION: Committed athan selection:', { previousSelection, selection });
-      return true;
-    } catch (error) {
-      NotificationStore.setSoundPreference(previousSelection);
-      logger.error('NOTIFICATION: Failed to commit athan selection, rolled back:', error);
-      return false;
-    }
+    return committed;
   };
 
   return {
