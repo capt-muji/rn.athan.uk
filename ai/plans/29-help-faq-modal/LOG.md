@@ -80,3 +80,50 @@ expected red reached by the earlier of its two assertions.
 | `npx jest shared/__tests__/whatsNew.test.ts --selectProjects=unit` | `Tests: 49 passed, 49 total` |
 | `npx tsc --noEmit` | exit 0 |
 | `npx biome check . --error-on-warnings` | exit 0 |
+
+### Breaks
+
+`ALL AS EXPECTED: 1`, all 8 caught.
+
+### Review
+
+One round, clean, against the step's 12 points. Merged at `1ab21ce7`.
+
+## Step 3: the owner's redesign, taken on the simulator
+
+Branch `feat/29-help-polish`. Specified in `steps/3-help-polish.md`, which records all 14 owner decisions with
+their words. The owner read the shipped modal on the simulator and rejected the copy and the layout:
+🐋  "Again, all of this is so much text. It's just like 1 page of black text."
+
+### What changed
+
+The app's name is gone from every user-facing string; two questions are cut; questions became causes with a dot;
+guidance became numbered steps; answers are capped at 160 characters; the card takes nearly the whole screen
+with a divider under the title and between each question; Close is full width.
+
+`Modal` gained `wide`, `divider` and `icon`, all optional and defaulting off, so the update prompt and What's New
+are byte-identical in behaviour. That default is now pinned by
+`components/modals/__tests__/Modal.test.tsx`'s `stays a compact card, and rules nothing off, unless asked`,
+which reads `width: '85%'`.
+
+### Green
+
+| Command | Result |
+| --- | --- |
+| `npx jest shared/__tests__/help.test.ts --selectProjects=unit` | `Tests: 16 passed, 16 total` |
+| `npx jest components/modals/__tests__/Help.test.tsx --selectProjects=components` | `Tests: 12 passed, 12 total` |
+| `npx jest components/modals/__tests__/{Modal,Update,WhatsNew}.test.tsx --selectProjects=components` | `Tests: 15 passed, 15 total`, unchanged by the new props |
+| Coverage of the three changed files | 100% statements, branches, functions, lines |
+| `npx tsc --noEmit`, `npx biome check . --error-on-warnings` | both exit 0 |
+
+### Breaks
+
+`ALL AS EXPECTED: 1`, all 10 caught, but only after two real corrections:
+
+1. **Break 7 did not apply.** The bullet `•` is multi-byte UTF-8, and `perl -0pi` without `-CSD` cannot match a
+   `\x{2022}` literal, so the substitution silently changed nothing and printed `BREAK NOT APPLIED`. The helper
+   now runs `perl -CSD`. **A break that quietly matches nothing is worse than no break**, which is exactly why
+   `BREAK NOT APPLIED` counts as a failure.
+2. **Break 10 was NOT CAUGHT, and it was right not to be.** Making `wide` and `divider` default to `true` would
+   silently widen the update prompt and What's New, and no test looked at either card's width. That is a real
+   gap this session introduced by adding the props, so the guard test above was written. The break is now caught.
