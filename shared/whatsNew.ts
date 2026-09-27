@@ -107,6 +107,13 @@ export const WHATS_NEW: WhatsNewRelease | null = {
       body: 'Each prayer can now carry two reminders, each with its own sound and timing',
       version: null,
     },
+    {
+      // PARKED: stamped at the store release, like every item, because whether a release
+      // gets a modal is the owner's editorial call
+      title: 'Help page',
+      body: 'Settings now answers why an athan was not heard, and opens the setting that caused it',
+      version: null,
+    },
   ],
 };
 
