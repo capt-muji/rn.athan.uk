@@ -3,7 +3,7 @@
 Last updated: 2026-09-24 — #36 added and fixed (lost alarms stayed lost, because the refresh gate
 trusted a timestamp), #37 opened (the background task demands a network it does not use). Ledger
 compacted 2026-09-20: closed issues moved to the one-line index at the bottom (full detail in git
-history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2, #35.
+history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2.
 
 Notes: the fleet gained a Huawei/Honor phone 2026-09-09 (owner-installed 1.24.1 via the EAS
 link; its USB never enumerated on the Mac). Upstream watches dropped: #44540 (closed upstream via
@@ -820,87 +820,79 @@ production release; G.6 noted but deferred by owner.
 
 ## J. Release distribution & the update prompt (2026-09-12)
 
-### 35. [OPEN, needs its own session] The update prompt depends on a hand-edited file on GitHub, and one failed fetch costs a whole day's check
+### 35. [FIXED 1.29.19, session 30] The update prompt read a hand-edited file on GitHub; both stores now answer for themselves
 
-Raised by the owner on 2026-09-12, during the upgrade-research session: *"I really don't
-like having to manually update the releases.json after releasing to the store... if I have
-like a million users it's not scalable... does the app break if GitHub errors?"* Researched
-read-only, no code changed. This entry records the findings so the decision session does
-not start cold.
+Raised by the owner on 2026-09-12 and closed on 2026-09-27. 🐋  "our goal is to deprecate the released adjacent and
+have both platforms reading from the store, the version from the store."
 
-**How it works today.** `device/updates.ts` fetches a store version once per 24 hours
-(`TIME_CONSTANTS.ONE_DAY_MS`, throttled through `getPopupUpdateLastCheck`), compares it to
-`Constants.expoConfig.version` with `isNewerVersion` from `shared/versionUtils.ts`, and
-sets `popupUpdateEnabled`. Two sources feed it:
+**What ships now.** `device/updates.ts` has one reader with two automatic sources, chosen by platform alone, with no
+environment split:
 
-- **Production iOS**: `https://itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb`.
-  Fully automatic already. No manual step exists on this path.
-- **Everything else** (production Android, UAT iOS, UAT Android):
-  `https://raw.githubusercontent.com/capt-muji/rn.athan.uk/main/releases.json`, hand-edited
-  on `main` after each store release.
-
-It is called fire-and-forget from `app/index.tsx:101`, inside a `setTimeout(..., 1500)`:
-`checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate))`.
-
-**Question 1: does the app break if GitHub errors? No.** `getStoreVersion()` wraps both
-fetches in `try/catch` and returns `false` on any failure, including a 429, a 404, a DNS
-failure and malformed JSON. `checkForUpdates()` returns `false` when the store version is
-falsy, and it is never awaited on the render path. A GitHub outage produces no popup and no
-other symptom. That part of the design is sound.
-
-**Two real defects found while confirming that**, both small, both in `device/updates.ts`:
-
-1. **A failed check burns the 24-hour window.** The `finally` block runs
-   `setPopupUpdateLastCheck(now)` unconditionally, so a fetch that threw is recorded as a
-   check that happened. A user who launches the app with no signal, which this app is
-   explicitly designed to support offline, silently loses that day's check. The stamp
-   belongs on the success path, or the throttle needs a shorter retry interval after a
-   failure.
-2. **Neither fetch has a timeout or an `AbortController`.** A hung connection leaves a
-   pending promise for the life of the process. Harmless in practice because nothing awaits
-   it, but it means the check neither resolves nor retries within the day.
-
-A third, lower: `openStore()` uses `market://details?id=...` on Android with no
-`https://play.google.com/...` fallback. On a device without the Play client,
-`Linking.openURL` throws and the failure is only logged, so the button does nothing.
-
-**Question 2: scale and rate limits.** GitHub announced on 2025-05-08 that unauthenticated
-rate limits now cover `raw.githubusercontent.com` downloads, and does not publish a number
-for raw. The limits are IP-based and abuse-triggered rather than a documented quota. The
-shape of the exposure is not what it first looks like: each phone is its own IP making at
-most one request per 24 hours, so a million users is a million IPs at one request a day,
-not a million requests from one source. The real objections are different and still
-decisive:
-
-- `raw.githubusercontent.com` carries no SLA and is not intended as a configuration CDN.
-- The limit is IP-based, so users behind carrier-grade NAT share one bucket.
-- A file on `main` is a deploy channel with no staging, no rollback and no review gate.
-- It is a manual step after every release, which is the failure mode the owner actually
-  cares about: forget it and nobody is ever prompted.
-
-**Question 3: can it read the stores directly? Per platform.**
-
-| Channel | Automatic today? | Best available approach |
+| Channel | Source | Manual step |
 |---|---|---|
-| Production iOS | **Yes** | Already on iTunes Lookup. Two improvements: drop the hard-coded `country=gb`, since a user in another storefront gets a wrong or empty result, and note the listing can lag a release by hours |
-| Production Android | No | **Google Play In-App Updates.** Google removed the public "latest version" API deliberately; the sanctioned replacement asks Play itself. It supports a flexible or an immediate flow entirely in-app, with no store redirect. `expo-in-app-updates` (0.12.0, peer `expo: "*"`) wraps it with a config plugin and exposes `checkForUpdate()`, `startUpdate()`, `checkAndStartUpdate()` and update listeners. It also covers iOS by wrapping the same iTunes Search lookup |
-| UAT iOS (TestFlight) | No | **No public API exists.** A hosted JSON is the only option |
-| UAT Android (internal test) | No | **No public API exists.** Internal-test versions are not publicly queryable |
+| iOS, production and UAT alike | `itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb` | none |
+| Android, production and UAT alike | the Play listing page for `APP_CONFIG.androidPackage`, parsed by `readPlayListingVersion` | none |
 
-**Recommended shape**, for the decision session to accept or reject: move production
-Android onto Play In-App Updates, keep production iOS on iTunes Lookup, and let
-`releases.json` survive as a **testers-only** file. That removes the manual step from every
-production release, which is the owner's actual complaint, and it collapses the scale
-question entirely, because the remaining consumers are a handful of testers rather than the
-whole user base.
+The 24-hour cadence is unchanged, as the owner asked.
 
-**Known constraint on verifying it**: Play In-App Updates only works for builds installed
-from Play. A side-loaded `fleettest` APK on the 3T cannot exercise it, so acceptance needs
-an internal-test-track install.
+**`country=gb` STAYS, against this issue's own original recommendation.** Measured across 15 storefronts on
+2026-09-27: `gb` is the only one that answers for this `bundleId`, and `us`, `ca`, `au`, `ie`, `de`, `fr`, `nl`, `se`,
+`my`, `pk`, `in`, `sa`, `ae` and `za` all return `resultCount 0`. The app is published in the GB storefront alone and
+a `bundleId` lookup is storefront-scoped, defaulting to `us`. Dropping the country would have broken the one channel
+that already worked. `id=` behaves the same way: `id=6740474033` alone returns 0, and with `country=gb` returns 1.
 
-**Not done this session.** Session 1 of the upgrades programme is research-only and adds no
-dependency. `expo-in-app-updates` is a new native dependency on the release path and
-deserves its own session with its own device verification.
+**Play In-App Updates was rejected, on verifiability.** `expo-in-app-updates@0.12.0` wraps
+`com.google.android.play:app-update:2.1.0` correctly, and that dependency was proven to resolve into this app's
+`releaseRuntimeClasspath` with no conflict (`BUILD SUCCESSFUL in 3m 27s`; its three transitive deps land on versions
+the app already carries). It is still the wrong answer here: Play In-App Updates only answers for a build Play
+installed, and `dumpsys package com.mugtaba.athan` on the 3T shows no `installerPackageName` at all, so a side-loaded
+build gets `UPDATE_NOT_AVAILABLE` and a green device check would be indistinguishable from a broken one. It also
+reports `availableVersionCode()`, a `versionCode` that every local build pins at `1000000`, where this app's whole
+comparison is a dotted version string; and its iOS half reads `AppStoreCountry` from `Info.plist`, so with no country
+it queries the wrong storefront for this GB-only listing. Adopting it would have bought one platform and replaced the
+settled modal.
+
+**How the Android parse is written, and why not the obvious way.** `readPlayListingVersion(html)` keys on the listing
+payload's `"141"` key and accepts the value only when the whole string is dotted decimal numbers. A regex on the
+version's SHAPE would have been wrong: the real page holds 8 matches for `1\.\d+\.\d+` and 7 of them are SVG path
+coordinates. The version string itself appears exactly once in the document. Measured limits: the key is present for
+this app and absent for `com.whatsapp`, `org.telegram.messenger` and `com.spotify.music`, which vary their version per
+device, and a wrong package id answers HTTP 404 rather than failing silently. So this is a best-effort read that is
+correct for this app, and an unreadable page answers `null`, the caller answers `false`, and no prompt is shown. **The
+fail direction is silence, never a false prompt.**
+
+**Two defects this issue found are fixed.** A failed check used to be stamped in a `finally` block, so a fetch that
+threw was recorded as a check that happened and an offline user lost that whole day, in an app built to work offline.
+A check that reached a comparison still costs `TIME_CONSTANTS.ONE_DAY_MS`; one that did not is stamped
+`now - ONE_DAY_MS + UPDATE_RETRY_MS`, an hour. That distinction is why `getStoreVersion` answers three values rather
+than two: `null` for "the store published no version", `false` for "the read failed". And neither fetch had a timeout,
+so a hung connection left a pending promise for the life of the process; both now go through an `AbortController`
+armed by a `setTimeout` at `UPDATE_FETCH_TIMEOUT_MS`.
+
+**DURABLE LESSON: `AbortSignal.timeout` is untestable under Jest's fake timers.** It reads far better than an explicit
+controller and it is armed by a host timer `jest.useFakeTimers` does not replace, so `signal.aborted` stays `false`
+after `advanceTimersByTime` and a 5-second case costs 5004 ms of real suite time. An `AbortController` aborted from a
+`setTimeout` is fully controllable. Any future timeout in this repo uses the controller.
+
+**DURABLE LESSON: a huge `setTimeout` delay does not disable a timer, it fires it immediately.** The session's own
+break script tried to defeat the timeout with `Number.MAX_SAFE_INTEGER` and the break was NOT caught: `setTimeout`
+clamps any delay above 2^31-1 to **1 ms**, so the timeout fired sooner rather than never and node warned
+`Timeout duration was set to 1`. A timer is broken by removing what its callback does, never by enlarging its delay.
+
+The third, lower defect is fixed too: `openStore` on Android tried `market://details?id=...` only, which throws on a
+device with no Play client, and the failure was logged so the button did nothing. It now falls back to
+`https://play.google.com/store/apps/details?id=...`; iOS keeps its single destination.
+
+**`releases.json` is unread and NOT yet deleted.** The standing rule is that it stops being read only once the change
+has shipped, and the file is deleted in a separate commit after that, never before. After session 30 no code path
+reads it: `grep -c githubusercontent device/updates.ts` prints `0`. **The owner deletes the file once a release
+carrying this is live in both stores.** Until then the live apps in both stores still read it, so it must keep its
+current version values.
+
+**Proof.** 4774 tests at 100% on all four measures; 13 breaks across three steps, every one caught. The live endpoints
+answered from this Mac (`resultCount 1 version 1.5.1` for iTunes, `key141 1.5.2` for Play), and the shipped
+`readPlayListingVersion` was run against the 1.14 MB page as served that day. Evidence in
+`ai/plans/30-store-version-automatic/` and `~/athan-device-sweep/session30/`.
 
 ---
 
@@ -942,6 +934,7 @@ characterised).
 - #32 — 3T cold launch 6.6 s; 3.1 s TLS provider install, ~1.9 s JS path (characterised)
 - #33 — One-in-sixty flaky test from an unpinned fake clock (fixed)
 - #34 — App update cancelled every armed alert, then stayed quiet 12 h (fixed)
+- #35 — Update prompt read a hand-edited releases.json; both stores now answer for themselves (fixed)
 - F.1 — Render crash selecting a prayer during a schedule refresh (fixed)
 - F.2 — @expo/ui community bottom sheets migration (reverted)
 - F.3 — Per-prayer alert config is index-keyed, not name-keyed (accepted)

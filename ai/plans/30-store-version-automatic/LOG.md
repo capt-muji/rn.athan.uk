@@ -44,3 +44,34 @@
 - Red: 2 failed, 31 passed, 33 total, both failing with `Received number of calls: 1`, as the plan predicted.
 - Green: `33 passed, 33 total`, `tsc` exit 0, Biome exit 0.
 - Breaks: `BREAK CAUGHT` for noWebFallbackUrl, webUrlFirst and iosAlsoFallsBack, then `ALL AS EXPECTED: 1`.
+- Step 2's commit was AMENDED to `bb281574` to carry the plan's own step-1 tick, which had been left uncommitted when
+  the merge was first attempted. `89f28ce3` is the pre-amend sha and is not on `uat-2`.
+
+## Device proof
+
+- **Live endpoints, from this Mac** (`~/athan-device-sweep/session30/live-endpoints.txt`): iTunes answered
+  `resultCount 1 version 1.5.1`, the Play listing `key141 1.5.2`. Both carry a dotted version; neither said `None`.
+- **The SHIPPED parser against the live page** (`parse-live.txt`): a throwaway suite ran `readPlayListingVersion`
+  over the 1.14 MB listing as served and reported `1 passed, 1 total`. The test file was deleted by the same command
+  and never committed.
+- **Android**: `build-mock.zsh uat-2 mocks/simple.ts` ended `BUILD-MOCK OK` in 504 s at `versionName 1.29.19`, from
+  `182a3e32`. Installed with `adb install -r`; the phone reads `versionName=1.29.19`,
+  `lastUpdateTime=2026-09-27 10:25:48`. Launched by the HOME / `am kill` / doubled-start ritual, and
+  `dumpsys window` confirmed `com.mugtaba.athan/.MainActivity` in focus. Logcat holds **0** lines matching
+  `Failed to fetch store version` or `Failed to check for updates`, so the Play listing was fetched and parsed on the
+  device. It also shows `MMKV DELETE: popup_update_last_check`, which is the upgrade path correctly reopening the
+  check after a version bump.
+- **iOS**: built and launched on the booted `iPhone XS replica (18)` simulator through xcodebuildmcp,
+  `status SUCCEEDED` in 44.8 s. The simulator log holds **0** lines matching either error string.
+- **Six screenshots** in `~/athan-store-update-shots/`, read by this session: three per platform (Standard list,
+  Extras list, Settings sheet). Every one shows a healthy app, a full prayer list, a live countdown, no error screen
+  and no modal. The folder was opened for the owner.
+- **The prompt itself was NOT photographed, and cannot be**: the live store version is 1.5.x and the installed build
+  is 1.29.19, so the real comparison correctly answers "no update" and shows nothing. The prompt's behaviour is
+  covered by the seven tests in `__tests__/app/index.test.tsx`, which render the real modal against a mocked checker.
+- **An OEM dialog blocked the first install for 10 minutes**, and it is the session-18 pattern the atlas already
+  names: Play Protect's `PlayProtectDialogsActivity` took focus and `adb install` hung with no staging directory ever
+  created, while `verifier_verify_adb_installs` read `1`. Setting it to `0`, force-stopping `com.android.vending` and
+  retrying gave `Performing Streamed Install / Success` immediately. **The setting was restored to `1` afterwards**,
+  and `auto_time` was never touched and reads `1`.
+- **The phone is left on this session's mock build at 1.29.19**, which is what the owner asked for.

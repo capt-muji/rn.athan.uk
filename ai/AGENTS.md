@@ -59,6 +59,9 @@ edit it, do not correct its version strings, do not delete it.** It stops being 
 the update-prompt feature is removed from the codebase and that removal has shipped; the file
 is deleted in a separate commit after that, never before. The replacement is ISSUES #35.
 
+**Session 30 (2026-09-27) made the app stop reading it**, so the remaining condition is a shipped release: once a
+release carrying session 30 is live in both stores, the owner deletes the file in its own commit.
+
 ## 1. Project North Star
 
 **What we're building:** Athan.uk - A Muslim prayer times app for London with real-time countdown, offline support, and customizable notifications.
