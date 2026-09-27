@@ -62,6 +62,29 @@ Session 32 listed everything still waiting, and the owner grouped it all in one 
   the 3T. The dashes approval page's open choices and the five deferred features (D2 qibla, D4 localization, D5
   location) stay unqueued until the owner specs them.
 
+## Decided by the owner, 2026-09-27, while planning session 33
+
+- **A failed athan change puts back EVERYTHING, the selection included.** Offered three answers to a
+  part-failed re-arm (keep the choice and repair later, put everything back, or retry once then put it
+  back), the owner chose put everything back and gave the reason: 🐋  "If anything fails, whether it's
+  the settings choice, whether it's the committing or the settings choice, if anything fails, because
+  choosing an athan is part of also the successful commit... We don't want someone on athan number 2...
+  if it fails to actually arm the notifications for athan number 2... It means it's out of sync. We
+  should draw back everything, even the selection. So you should be seeing athan 1, what we actually
+  have selected. It's an all or nothing kind of thing, and the selection is part of that." So the undo
+  RE-ARMS on the previous athan rather than only rewriting the preference, and finding 79's rule now
+  covers the athan selection as well as a prayer's bell.
+- **The Help modal's design was specified in words, not picked from the 25 candidates.** Asked which of
+  session 29's candidates to ship, the owner described the target instead: 🐋  "Try to have the buttons
+  positioned to the right side, for example, like open settings, and no outline on them, there should
+  just be a text, and the background cards should be very, very faint, not too much of a border radius.
+  Good structuring. Soft colours." Shipped as: the `?` badge removed, the card at 3% slate with
+  `RADIUS.md`, Open Settings a right-aligned ink text link, and Close the one filled button, spanning
+  the foot of the card. The card's colour, radius and spacing are deliberately NOT pinned by a test,
+  because they stay the owner's to change; only the trailing action and the full-width Close are.
+- **The 25 candidate screenshots stay at `~/athan-help-designs`** until the owner deletes them. They are
+  the record behind the ruling above, and they live outside the repository.
+
 ## Decided by the owner, 2026-09-27, while planning session 29 (the Help page)
 
 - **It is a MODAL, not a second bottom sheet.** 🐋  "I have decided to make it a modal. It needs to be
