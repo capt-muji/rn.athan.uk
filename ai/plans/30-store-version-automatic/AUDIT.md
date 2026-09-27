@@ -57,7 +57,16 @@ No defect in the shipped code, the tests or the records. Three observations, eac
    parse run cleanly on real hardware: zero error lines in either log. What the prompt does when a store IS newer is
    proven by the seven tests in `__tests__/app/index.test.tsx`, which render the real modal. `LOG.md` states this
    plainly rather than implying more, which is the honest form.
-3. **Play Protect blocked the first Android install for 10 minutes**, and `e2e/device-atlas-oneplus3t.md` already
+3. **The iOS simulator app is stamped 1.28.52, not 1.29.19**, because `ios/Athan/Info.plist` is a gitignored prebuild
+   artifact left from an earlier session, which `ai/AGENTS.md` already documents under "Native Version Sync". The
+   Debug build carries no `main.jsbundle` and loaded its JavaScript from Metro, so it DID run this session's code:
+   what the iOS run proves is that the new fetch and parse work on a real iOS runtime with zero error lines, and what
+   it does not prove is the installed-version string, since that reads the native plist. The Android run covers that
+   end, reading `versionName=1.29.19` after a fresh prebuild. Recorded in `LOG.md` rather than fixed, because the fix
+   is a prebuild for a cosmetic stamp on a simulator. **This was found after the push and is a narrowing of a claim,
+   not a defect in the shipped code**, so it changes no verdict.
+
+4. **Play Protect blocked the first Android install for 10 minutes**, and `e2e/device-atlas-oneplus3t.md` already
    carries the remedy from session 15, so the atlas earned its keep. The setting was restored afterwards, which the
    audit verified independently (`verifier_verify_adb_installs` reads `1`).
 
