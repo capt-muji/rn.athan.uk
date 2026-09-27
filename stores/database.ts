@@ -8,7 +8,6 @@
  * - App state (fetched_years, app_installed_version)
  */
 
-import { createJSONStorage } from 'jotai/utils';
 import { createMMKV } from 'react-native-mmkv';
 
 import { isPreview, isProd } from '@/shared/config';
@@ -66,9 +65,6 @@ export const removeItem = (key: string) => {
   logger.info(`MMKV DELETE: ${key}`);
   database.remove(key);
 };
-
-/** Jotai-compatible storage interface for atomWithStorage */
-export const mmkvStorage = createJSONStorage(() => ({ getItem, setItem, removeItem }));
 
 /**
  * Gets all items with a given key prefix
@@ -182,23 +178,6 @@ export const markYearAsFetched = (year: number) => {
   const fetchedYears = getItem(key) || {};
   setItem(key, { ...fetchedYears, [year]: true });
 };
-
-/**
- * Clears all scheduled notification records for a schedule type
- * @param scheduleType Schedule type (Standard or Extra)
- */
-export function clearAllScheduledNotificationsForSchedule(scheduleType: ScheduleType) {
-  clearPrefix(`scheduled_notifications_${scheduleType}`);
-}
-
-/**
- * Clears all scheduled notification records for a specific prayer
- * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule
- */
-export function clearAllScheduledNotificationsForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
-  clearPrefix(`scheduled_notifications_${scheduleType}_${prayerIndex}`);
-}
 
 /**
  * Adds a scheduled notification record for a prayer
@@ -323,20 +302,3 @@ export const getAllScheduledRemindersForSchedule = (
  */
 export const removeOneScheduledReminderForPrayer = (scheduleType: ScheduleType, prayerIndex: number, id: string) =>
   removeItem(`scheduled_reminders_${scheduleType}_${prayerIndex}_${id}`);
-
-/**
- * Clears all scheduled reminder records for a specific prayer
- * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule
- */
-export function clearAllScheduledRemindersForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
-  clearPrefix(`scheduled_reminders_${scheduleType}_${prayerIndex}`);
-}
-
-/**
- * Clears all scheduled reminder records for a schedule type
- * @param scheduleType Schedule type (Standard or Extra)
- */
-export function clearAllScheduledRemindersForSchedule(scheduleType: ScheduleType) {
-  clearPrefix(`scheduled_reminders_${scheduleType}`);
-}
