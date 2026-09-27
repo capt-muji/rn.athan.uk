@@ -1,0 +1,2 @@
+/** Jotai-compatible storage interface for atomWithStorage */
+export const mmkvStorage = createJSONStorage(() => ({ getItem, setItem, removeItem }));

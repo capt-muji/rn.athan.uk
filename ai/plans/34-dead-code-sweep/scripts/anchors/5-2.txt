@@ -1,0 +1,6 @@
+/** Hides the alert bottom sheet */
+export const hideAlertSheet = () => store.get(alertSheetModalAtom)?.dismiss();
+
+/** Gets the current alert sheet state */
+export const getAlertSheetState = () => store.get(alertSheetStateAtom);
+
