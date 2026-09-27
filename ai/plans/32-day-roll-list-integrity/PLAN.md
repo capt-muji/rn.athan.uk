@@ -366,8 +366,8 @@ Reviewed by this planning session on 2026-09-27, reading the diagnosis back cold
 
 ## 6. Steps
 
-- [ ] Step 1: The day-roll invariant test (specified)
-- [ ] Step 2: Close ISSUES #27 and record the surviving mutant (specified)
+- [x] Step 1: DONE in 5d68802d (specified)
+- [x] Step 2: DONE (specified)
 
 ### Step 1: The day-roll invariant test
 
