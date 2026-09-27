@@ -1,0 +1,21 @@
+  action: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: SPACING.xs,
+    marginTop: SPACING.md,
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md,
+    borderRadius: RADIUS.md,
+    backgroundColor: INK,
+  },
+  actionText: {
+    color: COLORS.light.background,
+    fontSize: 13,
+    fontFamily: TEXT.family.medium,
+  },
+  actionChevron: {
+    color: COLORS.light.background,
+    fontSize: 15,
+    fontFamily: TEXT.family.regular,
+  },

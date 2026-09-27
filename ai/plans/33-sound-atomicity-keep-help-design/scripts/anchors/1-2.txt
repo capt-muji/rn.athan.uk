@@ -1,0 +1,11 @@
+export const rescheduleAllNotifications = async () => {
+  return withSchedulingLock(async () => {
+    try {
+      // Foreground UI commit path (sheet dismiss) — defer the widget push
+      await _rescheduleAllNotifications({ deferWidgetRefresh: true });
+    } catch (error) {
+      logger.error('NOTIFICATION: Failed to reschedule notifications:', error);
+      throw error;
+    }
+  }, 'rescheduleAllNotifications');
+};
