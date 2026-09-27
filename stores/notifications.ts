@@ -14,7 +14,6 @@ import {
   EXTRAS_ENGLISH,
   ISLAMIC_DAY,
   NOTIFICATION_REFRESH_HOURS,
-  NOTIFICATION_ROLLING_DAYS,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
@@ -407,6 +406,40 @@ const clearPrayerRepairMark = (scheduleType: ScheduleType, prayerIndex: number, 
   if (store.get(atom) !== generation) return;
 
   resetStoredAtom(atom, key);
+};
+
+/**
+ * What one prayer's alerts cost against the request budget, 0 when its bell is Off.
+ *
+ * A reminder only counts while the at-time alert is on, which is the same constraint the
+ * arming paths apply, so the budget can never reserve a slot the app would not use.
+ *
+ * `armingNow` is the prayer the caller is arming this instant, with the settings it was called
+ * with. Its preferences may already hold a LATER change's values, because a commit writes them
+ * before it takes the scheduling lock, and costing that prayer from storage would then plan zero
+ * days for the very rows the caller is about to arm.
+ */
+const requestCostReader = (armingNow?: {
+  scheduleType: ScheduleType;
+  englishName: string;
+  cost: number;
+}): NotificationUtils.RequestCostReader => {
+  return (scheduleType, englishName) => {
+    if (armingNow && armingNow.scheduleType === scheduleType && armingNow.englishName === englishName) {
+      return armingNow.cost;
+    }
+
+    // The walk reads the same name arrays the atoms are keyed on, so this always resolves
+    const prayerIndex = getPrayerArrays(scheduleType).english.indexOf(englishName);
+
+    if (getPrayerAlertType(scheduleType, prayerIndex) === AlertType.Off) return 0;
+
+    const armedReminders = REMINDER_SLOTS.filter(
+      (slot) => getReminderAlertType(scheduleType, prayerIndex, slot) !== AlertType.Off
+    ).length;
+
+    return 1 + armedReminders;
+  };
 };
 
 /** One prayer, named the way the scheduling paths take it */
@@ -863,6 +896,8 @@ async function scheduleNotificationForDate(
  * @param englishName English prayer name
  * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
+ * @param requestCost What this prayer costs the budget, when the caller knows it better than
+ *   storage does; omitted by a full reschedule, which reads every prayer from storage anyway
  *
  * @see scheduleNotificationForDate - Helper for single-day scheduling
  */
@@ -871,13 +906,18 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   prayerIndex: number,
   englishName: string,
   arabicName: string,
-  alertType: AlertType
+  alertType: AlertType,
+  requestCost?: number
 ): Promise<number> => {
   // The records are NOT cleared first. A day whose stored row cannot be read rejects outside its own try, and
   // clearing first left that day's record gone while its alarm stayed armed, with nothing left to find it by
   const existingRecords = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
-  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(scheduleType, englishName);
+  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(
+    scheduleType,
+    englishName,
+    requestCostReader(requestCost === undefined ? undefined : { scheduleType, englishName, cost: requestCost })
+  );
   const sound = getSoundPreference();
 
   // Schedule notifications for each day in parallel. Each result is the
@@ -1049,18 +1089,24 @@ async function scheduleReminderNotificationForDate(
  * @param englishName English prayer name
  * @param arabicName Arabic prayer name
  * @param reminders The prayer's reminders that are on, each with its own sound and interval
+ * @param requestCost What this prayer costs the budget, as the at-time path takes it
  */
 const _addMultipleScheduleRemindersForPrayer = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
   arabicName: string,
-  reminders: ReminderSetting[]
+  reminders: ReminderSetting[],
+  requestCost?: number
 ): Promise<number> => {
   // Not cleared first, for the same reason as the at-time path above
   const existingRecords = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
-  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(scheduleType, englishName);
+  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(
+    scheduleType,
+    englishName,
+    requestCostReader(requestCost === undefined ? undefined : { scheduleType, englishName, cost: requestCost })
+  );
 
   // Both slots are armed in ONE pass, because the stale sweep below is computed across the
   // prayer's whole record set: done a slot at a time, each pass would read the other slot's
@@ -1162,18 +1208,30 @@ const applyPrayerAlerts = async (
 ): Promise<number> => {
   const work: Promise<number>[] = [];
 
-  work.push(
-    atTimeAlert !== AlertType.Off
-      ? _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, atTimeAlert)
-      : clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex)
-  );
-
   // Constraint: a reminder is kept only while the at-time alert is on too
   const armed = atTimeAlert === AlertType.Off ? [] : reminders.filter((reminder) => reminder.alert !== AlertType.Off);
 
+  // Both halves cost this prayer the same, from the settings this call was given: computed here
+  // because only this function sees both, and a half reading storage could disagree with the other
+  // while a commit's preferences are still those of a later change
+  const requestCost = atTimeAlert === AlertType.Off ? 0 : 1 + armed.length;
+
+  work.push(
+    atTimeAlert !== AlertType.Off
+      ? _addMultipleScheduleNotificationsForPrayer(
+          scheduleType,
+          prayerIndex,
+          englishName,
+          arabicName,
+          atTimeAlert,
+          requestCost
+        )
+      : clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex)
+  );
+
   work.push(
     armed.length > 0
-      ? _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, armed)
+      ? _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, armed, requestCost)
       : clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex)
   );
 
@@ -1539,20 +1597,13 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // below would treat every notification the OS still holds as stale. Bailing
   // leaves the existing alarms alone; the next refresh runs once data exists.
   //
-  // The test is every list day that can arm a prayer from today on, not today
-  // alone: while yesterday still has a row due the windows start there, but
-  // reading yesterday too would treat an unstored yesterday as an empty cache
-  // between 00:00 and that row, and bailing is the safe direction anyway, since
-  // it arms nothing, cancels nothing and the download that lands reopens the
-  // gate. An upgrade wipe still leaves all of these unstored, so it still bails;
-  // but one day missing from the payload (R7) is a day of unreadable rows, and
-  // treating it as an empty cache would stop the readable day beside it from
-  // being armed. The night rows' extra list day does not count: its rows need
-  // tomorrow's Magrib, so with only that day stored nothing can be armed, and
-  // stamping the gate would silence the next whole gate.
-  const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
-  if (!armedListDays.some((date) => Database.getPrayerByDateString(date))) {
-    logger.warn('NOTIFICATION: No prayer data for today or tomorrow, skipping reschedule so nothing is cancelled', {
+  // The question is whether any day the windows reach is stored, which the candidate walk
+  // already answers exactly: a day count restates it and gets the night rows and the
+  // still-due yesterday wrong. Bailing is the safe direction anyway, since it arms nothing,
+  // cancels nothing, and the download that lands reopens the gate.
+  const armedListDays = NotificationUtils.candidateListDays();
+  if (armedListDays.length === 0) {
+    logger.warn('NOTIFICATION: No prayer data for the days the windows reach, skipping reschedule', {
       armedListDays,
     });
     return false;

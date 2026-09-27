@@ -69,14 +69,18 @@ describe('a Standard row read either side of 00:00 and of 06:00', () => {
 
   it.each((['Isha', 'Magrib'] as const).flatMap((name) => READINGS.map((row) => ({ name, ...row }))))(
     'arms $name read as $reading under its own list day, at its real instant, with its reminder',
-    async ({ name, reading, list20 }) => {
+    async ({ name, reading, list20, list21 }) => {
       jest.setSystemTime(new Date('2026-06-20T12:00:00.000Z'));
-      storeDays(sameTimesOn(['2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'], SHAPES[name](reading)));
+      // Only the two list days these readings name: the budget arms every stored day it reaches
+      storeDays(sameTimesOn(['2026-06-19', '2026-06-20', '2026-06-21'], SHAPES[name](reading)));
       enable(ScheduleType.Standard, name, 5);
 
       await rescheduleAllNotifications();
 
-      expect(triggers()).toEqual(armedWithReminder(ScheduleType.Standard, name, '2026-06-20', list20));
+      expect(triggers()).toEqual({
+        ...armedWithReminder(ScheduleType.Standard, name, '2026-06-20', list20),
+        ...armedWithReminder(ScheduleType.Standard, name, '2026-06-21', list21),
+      });
     }
   );
 });
@@ -148,20 +152,17 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
   const ISHA_AT_0001: Times = ['02:40', '04:43', '13:02', '17:20', '21:25', '00:01'];
   const days = (shape: Times) => sameTimesOn(['2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'], shape);
 
+  /** Every stored day's alarms for one prayer, which is what the budget arms when it can reach them all */
+  const armedAcross = (name: string, dates: string[]) =>
+    dates.flatMap((date) => [`athan_standard_${name}_${date}`, `reminder_standard_${name}_${date}_5`]).sort();
+
   it("keeps yesterday's list Isha armed, re-attempted under its own identifier", async () => {
     jest.setSystemTime(new Date('2026-06-20T20:00:00.000Z'));
     storeDays(days(ISHA_AT_0001));
     enable(ScheduleType.Standard, 'Isha', 5);
 
     await rescheduleAllNotifications();
-    expect(osIdentifiers()).toEqual(
-      [
-        'athan_standard_isha_2026-06-20',
-        'athan_standard_isha_2026-06-21',
-        'reminder_standard_isha_2026-06-20_5',
-        'reminder_standard_isha_2026-06-21_5',
-      ].sort()
-    );
+    expect(osIdentifiers()).toEqual(armedAcross('isha', ['2026-06-20', '2026-06-21', '2026-06-22']));
 
     // 00:00:30 BST on the 21st: the 20th's Isha is 30 seconds away, its reminder already past
     jest.setSystemTime(new Date('2026-06-20T23:00:30.000Z'));
@@ -173,7 +174,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     // Only the reminder whose moment has passed is stale; the at-time is never passed to cancel
     expect(cancelCalls()).toEqual(['reminder_standard_isha_2026-06-20_5']);
     expect(osIdentifiers()).toEqual(
-      ['athan_standard_isha_2026-06-20', 'athan_standard_isha_2026-06-21', 'reminder_standard_isha_2026-06-21_5'].sort()
+      ['athan_standard_isha_2026-06-20', ...armedAcross('isha', ['2026-06-21', '2026-06-22'])].sort()
     );
   });
 
@@ -192,11 +193,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     expect(triggers()['athan_standard_magrib_2026-06-20']).toBe('2026-06-20T23:01:00.000Z');
     expect(cancelCalls()).toEqual(['reminder_standard_magrib_2026-06-20_5']);
     expect(osIdentifiers()).toEqual(
-      [
-        'athan_standard_magrib_2026-06-20',
-        'athan_standard_magrib_2026-06-21',
-        'reminder_standard_magrib_2026-06-21_5',
-      ].sort()
+      ['athan_standard_magrib_2026-06-20', ...armedAcross('magrib', ['2026-06-21', '2026-06-22'])].sort()
     );
   });
 

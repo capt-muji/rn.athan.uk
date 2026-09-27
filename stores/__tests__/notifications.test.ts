@@ -1281,18 +1281,18 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     Database.database.clearAll();
     jest.clearAllMocks();
 
-    [standardPrayerAlertAtoms, extraPrayerAlertAtoms, standardReminderAlertAtoms, extraReminderAlertAtoms].forEach(
-      (atoms) => {
-        atoms.forEach((atom) => {
-          store.set(atom, AlertType.Off);
-        });
-      }
-    );
-    [standardReminderIntervalAtoms, extraReminderIntervalAtoms].forEach((atoms) => {
-      atoms.forEach((atom) => {
-        store.set(atom, DEFAULT_REMINDER_INTERVAL);
-      });
-    });
+    // The reminder arrays are indexed by slot THEN prayer, so they flatten one level further
+    for (const atom of [
+      ...standardPrayerAlertAtoms,
+      ...extraPrayerAlertAtoms,
+      ...standardReminderAlertAtoms.flat(),
+      ...extraReminderAlertAtoms.flat(),
+    ]) {
+      store.set(atom, AlertType.Off);
+    }
+    for (const atom of [...standardReminderIntervalAtoms.flat(), ...extraReminderIntervalAtoms.flat()]) {
+      store.set(atom, DEFAULT_REMINDER_INTERVAL);
+    }
     store.set(lastNotificationScheduleAtom, 0);
     store.set(soundPreferenceAtom, 0);
 
@@ -1837,12 +1837,10 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     expect(request?.trigger.date.toISOString()).toBe('2026-08-29T22:45:00.000Z');
   });
 
-  it('reaches one list day further for the night rows, so they keep the buffer everything else has', async () => {
-    // The window is counted in LIST days, and a night row's instant is on the evening
-    // BEFORE its list day. Over the base two-day window today's night row is already past,
-    // leaving one armed against Isha's two — so at the same moment the furthest-out Midnight
-    // is tonight while the furthest-out Isha is tomorrow evening. The fourth day seeded here
-    // is what the extra list day reaches; it must NOT widen the standard rows with it.
+  it('reaches every stored day for a night row and for a daily prayer alike', async () => {
+    // A night row's instant falls on the evening BEFORE its list day, which the day-count window
+    // had to grant an extra day for. The budget needs no such rule: a row is taken on its own
+    // instant, so both kinds reach as far as the stored days and the budget allow.
     const seedDay = (date: string, fajr: string, magrib: string) => {
       const prayer: ISingleApiResponseTransformed = {
         date,
@@ -1876,7 +1874,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     const lastThirdId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Last Third', date);
     const suhoorId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Suhoor', date);
 
-    // Monday's night rows fire on Sunday evening — reachable only with the extra list day
+    // The night rows reach the last stored list day, whose instant is the evening before it
     expect(osState.has(midnightId(DAY_AFTER_TOMORROW))).toBe(true);
     expect(osState.has(lastThirdId(DAY_AFTER_TOMORROW))).toBe(true);
     // The reminder path takes the same window, or the two would drift apart
@@ -1891,15 +1889,13 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       )
     ).toBe(true);
 
-    // Nothing else widens: the standard rows and Suhoor stop at tomorrow, so the iOS
-    // pending-request ceiling still holds
-    expect(osState.has(fajrId(DAY_AFTER_TOMORROW))).toBe(false);
-    expect(osState.has(fajrReminderId(DAY_AFTER_TOMORROW, DEFAULT_REMINDER_INTERVAL))).toBe(false);
-    expect(osState.has(suhoorId(DAY_AFTER_TOMORROW))).toBe(false);
+    // The daily rows reach it too, which the day count refused them
+    expect(osState.has(fajrId(DAY_AFTER_TOMORROW))).toBe(true);
+    expect(osState.has(fajrReminderId(DAY_AFTER_TOMORROW, DEFAULT_REMINDER_INTERVAL))).toBe(true);
+    expect(osState.has(suhoorId(DAY_AFTER_TOMORROW))).toBe(true);
     expect(osState.has(fajrId(TOMORROW))).toBe(true);
     expect(osState.has(suhoorId(TOMORROW))).toBe(true);
 
-    // The point of the extra day: the night rows now arm two future instants, like Isha does
     expect(osState.has(midnightId(TOMORROW))).toBe(true);
     expect(osState.has(midnightId(TODAY))).toBe(false); // already past at 09:00
   });
@@ -2028,7 +2024,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         const index = english.indexOf(name);
         if (index === -1) throw new Error(`${name} is not on the ${scheduleType} list`);
         store.set((isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms)[index], AlertType.Silent);
-        store.set((isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[index], AlertType.Silent);
+        // Slot first, then prayer
+        store.set((isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[0][index], AlertType.Silent);
       }
     };
 
@@ -2141,15 +2138,14 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         ...armedAt(S, 'Dhuhr', '2026-08-30', '2026-08-30T12:05:00.000Z'),
         ...armedAt(S, 'Asr', '2026-08-30', '2026-08-30T15:49:00.000Z'),
         ...armedAt(S, 'Magrib', '2026-08-30', '2026-08-30T18:53:00.000Z'),
+        ...armedAt(S, 'Dhuhr', '2026-08-31', '2026-08-31T12:04:00.000Z'),
+        ...armedAt(S, 'Asr', '2026-08-31', '2026-08-31T15:47:00.000Z'),
+        ...armedAt(S, 'Magrib', '2026-08-31', '2026-08-31T18:51:00.000Z'),
       ]);
       // Exact equality: today's Asr and its reminder were never handed to the OS at all
       expect(triggers()).toEqual(expected);
       expect(osIdentifiers()).toEqual(Object.keys(expected).sort());
       expect(logger.info).toHaveBeenCalledWith('Skipping prayer with no readable time:', {
-        date: '2026-08-29',
-        englishName: 'Asr',
-      });
-      expect(logger.info).toHaveBeenCalledWith('REMINDER: Skipping prayer with no readable time:', {
         date: '2026-08-29',
         englishName: 'Asr',
       });
@@ -2219,50 +2215,79 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         });
       });
 
-      it('arms the whole window when every day reads (control for the table below)', async () => {
+      it('arms every readable stored day when every day reads (control for the table below)', async () => {
         await rescheduleAllNotifications();
 
         expect(osIdentifiers()).toEqual(
           ids([
             [S, 'Fajr', '2026-08-30'],
+            [S, 'Fajr', '2026-08-31'],
+            [S, 'Fajr', '2026-09-01'],
             [S, 'Isha', '2026-08-29'],
             [S, 'Isha', '2026-08-30'],
+            [S, 'Isha', '2026-08-31'],
+            [S, 'Isha', '2026-09-01'],
             [E, 'Suhoor', '2026-08-30'],
+            [E, 'Suhoor', '2026-08-31'],
+            [E, 'Suhoor', '2026-09-01'],
             [E, 'Midnight', '2026-08-30'],
             [E, 'Midnight', '2026-08-31'],
+            [E, 'Midnight', '2026-09-01'],
             [E, 'Last Third', '2026-08-30'],
             [E, 'Last Third', '2026-08-31'],
+            [E, 'Last Third', '2026-09-01'],
           ])
         );
       });
 
       const positions: { position: string; day: string; armed: [ScheduleType, string, string][] }[] = [
         {
-          // Tomorrow's night rows lose today's Magrib
+          // A night row needs the day before's Magrib, so breaking today costs 30 August's too
           position: 'today',
           day: '2026-08-29',
           armed: [
             [S, 'Fajr', '2026-08-30'],
+            [S, 'Fajr', '2026-08-31'],
+            [S, 'Fajr', '2026-09-01'],
             [S, 'Isha', '2026-08-30'],
+            [S, 'Isha', '2026-08-31'],
+            [S, 'Isha', '2026-09-01'],
             [E, 'Suhoor', '2026-08-30'],
+            [E, 'Suhoor', '2026-08-31'],
+            [E, 'Suhoor', '2026-09-01'],
             [E, 'Midnight', '2026-08-31'],
+            [E, 'Midnight', '2026-09-01'],
             [E, 'Last Third', '2026-08-31'],
+            [E, 'Last Third', '2026-09-01'],
           ],
         },
         {
-          // Tomorrow's night rows lose its Fajr, and the next list's lose its Magrib
+          // 30 August's own rows go, and so do the night rows either side that read it
           position: 'tomorrow',
           day: '2026-08-30',
-          armed: [[S, 'Isha', '2026-08-29']],
+          armed: [
+            [S, 'Fajr', '2026-08-31'],
+            [S, 'Fajr', '2026-09-01'],
+            [S, 'Isha', '2026-08-29'],
+            [S, 'Isha', '2026-08-31'],
+            [S, 'Isha', '2026-09-01'],
+            [E, 'Suhoor', '2026-08-31'],
+            [E, 'Suhoor', '2026-09-01'],
+            [E, 'Midnight', '2026-09-01'],
+            [E, 'Last Third', '2026-09-01'],
+          ],
         },
         {
-          position: 'the extra list day the night rows use',
+          position: 'the day after tomorrow',
           day: '2026-08-31',
           armed: [
             [S, 'Fajr', '2026-08-30'],
+            [S, 'Fajr', '2026-09-01'],
             [S, 'Isha', '2026-08-29'],
             [S, 'Isha', '2026-08-30'],
+            [S, 'Isha', '2026-09-01'],
             [E, 'Suhoor', '2026-08-30'],
+            [E, 'Suhoor', '2026-09-01'],
             [E, 'Midnight', '2026-08-30'],
             [E, 'Last Third', '2026-08-30'],
           ],
@@ -2417,12 +2442,13 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         expect(store.get(lastNotificationScheduleAtom)).toBe(Date.parse('2026-09-12T08:00:00Z'));
       });
 
+      // The guard asks whether any row the windows reach is stored, so a day ahead counts however
+      // far off it is: its Fajr is armable. Only a day wholly behind the windows leaves nothing.
       it.each([
         { label: 'today', date: '2026-08-29', outcome: 'runs' },
         { label: 'tomorrow', date: '2026-08-30', outcome: 'runs' },
-        // Its night rows need tomorrow's Magrib, so nothing could be armed and the gate must stay open
-        { label: 'the extra list day the night rows use', date: '2026-08-31', outcome: 'bails' },
-        { label: 'the day after the window', date: '2026-09-01', outcome: 'bails' },
+        { label: 'the day after tomorrow', date: '2026-08-31', outcome: 'runs' },
+        { label: 'a day further ahead still', date: '2026-09-01', outcome: 'runs' },
         { label: 'yesterday', date: '2026-08-28', outcome: 'bails' },
       ])('with only $label stored, the reschedule $outcome', async ({ date, outcome }) => {
         storeDays({ [date]: AUG_29 });

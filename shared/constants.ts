@@ -70,23 +70,24 @@ export const EXTRAS_EXPLANATIONS = [
 // =============================================================================
 
 /**
- * Number of days ahead to schedule notifications (1-day rolling buffer)
+ * How many pending notification requests the app may hold at once.
  *
- * DO NOT RAISE THIS WITHOUT DOING THE ARITHMETIC. iOS keeps only the 64
- * soonest-firing pending requests per app and silently discards the rest, and the
- * worst case is every prayer armed at-time AND with both reminders:
- * 13 list days x 3 alerts = 39 here, against 72 at two days, which is why the
- * second reminder and this drop from 2 are one decision and not two (owner,
- * 2026-09-26). The day count is not uniform: the two Extras night rows take one
- * list day more (`rollingDaysForPrayer` in `shared/notifications.ts`, where this
- * window is applied). `shared/__tests__/constants.test.ts` computes the worst case
- * from that function and fails if this constant, the night-row rule, the prayer
- * arrays or the reminder slots ever push it over 64.
- *
- * The cost the owner accepted: this buffer is also the silence window when the
- * background chain dies, so that grace period halves.
+ * iOS keeps the 64 soonest-firing requests per app and silently discards the rest, so this
+ * is a platform ceiling rather than a tuning knob: raising it does not buy reach, it just
+ * hands the phone requests it will drop. Rows are armed whole (`buildSchedulePlan`), so the
+ * worst-case user, every row armed with both reminders, spends 63 of these and the 22nd row
+ * is left for the next refresh.
  */
-export const NOTIFICATION_ROLLING_DAYS = 1;
+export const NOTIFICATION_REQUEST_BUDGET = 64;
+
+/**
+ * How far ahead the candidate walk may look for rows to arm.
+ *
+ * A loop guard, never a coverage limit: the budget or the end of the cached year stops the
+ * walk first for every user, which `shared/__tests__/constants.test.ts` pins. Without it a
+ * thin cache would make the walk scan forever for a candidate that does not exist.
+ */
+export const SCHEDULE_CANDIDATE_DAYS = 60;
 
 /**
  * Valid reminder intervals in minutes before prayer time

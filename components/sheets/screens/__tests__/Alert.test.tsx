@@ -75,9 +75,15 @@ const openSheetFor = (index: number, isUnavailable = false) =>
     isUnavailable,
   });
 
-// The athan and the reminder both offer Silent and Sound, and the athan's control comes first on screen
+// The athan and both reminders offer Silent and Sound, in that order down the screen
 const athanOption = (label: string) => screen.getAllByRole('radio', { name: label })[0];
 const reminderOption = (label: string) => screen.getAllByRole('radio', { name: label })[1];
+/** The second reminder card's own Silent or Sound */
+const secondReminderOption = (label: string) => screen.getAllByRole('radio', { name: label })[2];
+
+// One switch per reminder card, in the order the cards are drawn
+const reminderSwitch = () => screen.getAllByRole('switch')[0];
+const secondReminderSwitch = () => screen.getAllByRole('switch')[1];
 
 /** Closes the sheet as the bottom sheet library reports it, once the close has finished */
 const closeSheet = () => fireEvent(screen.getByText('Close to save'), 'dismiss');
@@ -97,7 +103,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
 
     expect(screen.getByText('Fajr')).toBeOnTheScreen();
     expect(athanOption('Silent')).toBeSelected();
-    expect(screen.getByRole('switch')).toBeChecked();
+    expect(reminderSwitch()).toBeChecked();
     expect(reminderOption('Sound')).toBeSelected();
     expect(screen.getByLabelText('15 min')).toBeOnTheScreen();
   });
@@ -118,10 +124,10 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
-    await fireEvent.press(screen.getByRole('switch'));
+    await fireEvent.press(reminderSwitch());
 
-    expect(screen.getByRole('switch')).not.toBeChecked();
-    expect(screen.getByRole('switch')).toBeDisabled();
+    expect(reminderSwitch()).not.toBeChecked();
+    expect(reminderSwitch()).toBeDisabled();
     expect(reminderOption('Silent')).toBeSelected();
   });
 
@@ -181,7 +187,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     await fireEvent.press(athanOption('Off'));
     await settle();
 
-    expect(screen.getByRole('switch')).not.toBeChecked();
+    expect(reminderSwitch()).not.toBeChecked();
   });
 
   it('switches the reminder back on with the sound it had', async () => {
@@ -191,10 +197,10 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
-    await fireEvent.press(screen.getByRole('switch'));
-    await fireEvent.press(screen.getByRole('switch'));
+    await fireEvent.press(reminderSwitch());
+    await fireEvent.press(reminderSwitch());
 
-    expect(screen.getByRole('switch')).toBeChecked();
+    expect(reminderSwitch()).toBeChecked();
     expect(reminderOption('Sound')).toBeSelected();
   });
 
@@ -228,7 +234,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
     openSheetFor(FAJR);
     await render(<AlertSheet />);
-    await fireEvent.press(screen.getByRole('switch'));
+    await fireEvent.press(reminderSwitch());
 
     await closeSheet();
     await settle();
@@ -371,11 +377,11 @@ describe('the alert sheet when a locked control lets a press through, Friday 11 
     openSheetFor(DHUHR);
     await render(<AlertSheet />);
 
-    await fireEvent.press(screen.getByRole('switch'));
+    await fireEvent.press(reminderSwitch());
     await closeSheet();
     await settle();
 
-    expect(screen.getByRole('switch')).not.toBeChecked();
+    expect(reminderSwitch()).not.toBeChecked();
     expect(getReminderAlertType(ScheduleType.Standard, DHUHR, 0)).toBe(AlertType.Off);
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
   });
@@ -394,13 +400,98 @@ describe('the alert sheet when a locked control lets a press through, Friday 11 
       openSheetFor(DHUHR);
       await render(<AlertSheet />);
 
-      await fireEvent.press(screen.getByRole('button', { name: arrow }));
+      // The first reminder card's arrow: the second card has its own
+      await fireEvent.press(screen.getAllByRole('button', { name: arrow })[0]);
       await closeSheet();
       await settle();
 
-      expect(screen.getByText(`${interval} min`)).toBeOnTheScreen();
+      expect(screen.getAllByText(`${interval} min`)[0]).toBeOnTheScreen();
       expect(getReminderInterval(ScheduleType.Standard, DHUHR, 0)).toBe(interval);
       expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
     }
   );
+});
+
+describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14:00', () => {
+  it('draws a card for each reminder, each with its own switch', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+
+    await render(<AlertSheet />);
+
+    expect(screen.getByText('Reminder 1')).toBeOnTheScreen();
+    expect(screen.getByText('Reminder 2')).toBeOnTheScreen();
+    expect(screen.getAllByRole('switch')).toHaveLength(2);
+  });
+
+  it('locks the second reminder until the first is on', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+
+    await render(<AlertSheet />);
+
+    expect(secondReminderSwitch()).toBeDisabled();
+
+    await fireEvent.press(reminderSwitch());
+
+    expect(secondReminderSwitch()).not.toBeDisabled();
+  });
+
+  it('saves each reminder with its own sound and its own minutes', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(reminderSwitch());
+    await fireEvent.press(reminderOption('Sound'));
+    await fireEvent.press(secondReminderSwitch());
+    await fireEvent.press(secondReminderOption('Silent'));
+    await closeSheet();
+    await settle();
+
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 1)).toBe(AlertType.Silent);
+    // The defaults keep the two off the same minute, which is the one pairing the sheet cannot express
+    expect(getReminderInterval(ScheduleType.Standard, FAJR, 0)).not.toBe(
+      getReminderInterval(ScheduleType.Standard, FAJR, 1)
+    );
+  });
+
+  it('steps the second reminder onto its own minute, skipping the first\u2019s', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Silent);
+    setReminderInterval(ScheduleType.Standard, FAJR, 0, 25);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 1, AlertType.Silent);
+    setReminderInterval(ScheduleType.Standard, FAJR, 1, 30);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    // The second card's own Decrease: 30 down skips the first reminder's 25 and lands on 20
+    await fireEvent.press(screen.getAllByLabelText('Decrease to 20 min')[1]);
+    await closeSheet();
+    await settle();
+
+    expect(getReminderInterval(ScheduleType.Standard, FAJR, 1)).toBe(20);
+    expect(getReminderInterval(ScheduleType.Standard, FAJR, 0)).toBe(25);
+  });
+
+  it('turns both reminders off when the athan goes off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 1, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(athanOption('Off'));
+    await closeSheet();
+    await settle();
+
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 1)).toBe(AlertType.Off);
+  });
 });
