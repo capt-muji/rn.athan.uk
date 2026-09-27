@@ -6216,3 +6216,46 @@ sat under the threshold. An earlier version of the same loop produced seven IDEN
 hash check caught, because Fast Refresh remounts `stores/ui.ts` and closed the modal between captures. Both are
 the same mistake in two shapes: trusting a capture without a positive check that what was wanted is on screen.
 The loop now relaunches the app and verifies the modal is present before keeping a frame.
+
+## ISSUES #27: the day roll, diagnosed and guarded (session 32, 2026-09-27)
+
+`ai/ISSUES.md` #27, open since 2026-09-10, reported the prayer list rendering only the new day's Isha after a
+day-roll cascade, with its root cause never found. The cause is found and the defect is already fixed.
+
+**Root cause: an equality where an inequality was needed.** `filterRelevantPrayers` in `stores/schedule.ts` kept a
+passed row only when `p.belongsToDate === displayDate`, so every already-passed row of the day coming on screen was
+dropped, and a dropped row never came back, because the refetch only adds days after the sequence. The 2026-09-10
+code had a second defect beside it, a display date taken as the first row in ARRAY order whose instant was future,
+which just after a roll can belong to the old day. Measured one at a time, that second defect was NOT the cause:
+fixing the display-date rule alone still leaves 5 rows of 6, and fixing the keep test alone gives 6 of 6.
+
+**Fixed on 2026-09-13** by the dashes work (`da39c9c8` onward), which replaced both equalities with `>=` tests and
+the display-date rule with `resolveDisplayDate`, without knowing it closed this issue. The two keep tests overlap on
+this shape, so either alone holds the invariant: mutating one today changes nothing, and reproducing the defect needs
+the day-roll keep removed outright (1,014 short-list states) or both reduced to equalities (966).
+
+**Reproduction, measured against the 2026-09-10 algorithm re-implemented verbatim from `8630f75d`:** 562 short-list
+states across all 1440 download minutes of the mock rig, against 0 for today's code over the same sweep, over a
+20,000-state randomised sweep of random rigs, resume jumps and the four session paths, over the whole real London
+year at every minute, and over high-latitude and overlapping-day fixtures.
+
+**It was never a production bug.** The real 2024 London year, 360 days at nine launch hours each, gives zero short
+lists even under the old algorithm. Under that algorithm the mock rig's bad download minutes are 04:00 to 05:56 and
+nothing else, inside the band `mocks/simple.ts`'s own header forbids. Inside the supported band, 06:00 to 23:55,
+zero of 1440 minutes reproduce. The shape is reachable on readable provider data above about 60N. The smallest list
+any sweep reached was 4 rows, never the 1 row reported, so the original observation needed a rig compressing more
+than one day, which is not in the repository.
+
+**The guard gap this closed.** Mutating `>= currentDisplayDate` to `===` failed 13 of the suite's 108
+`schedule.test.ts` tests, and all 13 were about a day with NO readable row (R8), where the other keep cannot help
+because such a day has no readable row for the bar to measure from. Not one described a day roll with every row
+readable, so the fix was guarded incidentally and a refactor would have read 13 failures about missing provider data.
+`keeps every row of the day on screen while the day before it is still counting down` now asserts the invariant
+directly: whenever a list day is on screen, the sequence holds every one of its rows.
+
+**A finding beside it, left open.** The other keep test, `prayer.belongsToDate >= previous.belongsToDate`, survives
+mutation to `===` with the whole 4,372-test unit project green. Instrumenting it over the 20,000-state sweep counted
+3,748 rows it uniquely kept, so it is load-bearing and untested at its boundary. Recorded as `ai/ISSUES.md` #42, not
+fixed here.
+
+No source file changed in this session. Tests after: 4775 passed, 4775 total, with 100% on all four measures.
