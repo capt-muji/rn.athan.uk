@@ -77,5 +77,5 @@ const bootstrapFromCache = (): boolean => {
   }
 };
 
-/** Whether the synchronous bootstrap populated the sequences (readable in tests) */
-export const didBootstrapFromCache = bootstrapFromCache();
+// Runs at import, before React renders: app/_layout.tsx imports this module for the side effect
+bootstrapFromCache();

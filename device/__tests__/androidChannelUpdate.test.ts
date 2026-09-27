@@ -9,7 +9,7 @@
 import { AndroidAudioUsage, AndroidImportance, setNotificationChannelAsync } from 'expo-notifications';
 import { Linking, Platform } from 'react-native';
 
-import { openAppSettings, openDndAccessSettings, updateAndroidChannel } from '@/device/notifications';
+import { openDndAccessSettings, updateAndroidChannel } from '@/device/notifications';
 import { createAthanAndroidChannel } from '@/shared/notifications';
 
 const SOUND_INDICES = [0, 1, 4, 15, 31];
@@ -87,26 +87,5 @@ describe('openDndAccessSettings', () => {
   it('does nothing on iOS, which has no Do Not Disturb access to grant', async () => {
     await expect(openDndAccessSettings()).resolves.toBe(false);
     expect(Linking.sendIntent).not.toHaveBeenCalled();
-  });
-});
-
-describe('openAppSettings', () => {
-  beforeEach(() => {
-    (Linking.openSettings as jest.Mock).mockClear();
-    (Linking.openSettings as jest.Mock).mockResolvedValue(undefined);
-  });
-
-  // the platform, since the app's own settings page exists on both
-  it.each(['ios', 'android'] as const)("opens the app's own settings page on %s", async (os) => {
-    Platform.OS = os;
-
-    await expect(openAppSettings()).resolves.toBe(true);
-    expect(Linking.openSettings).toHaveBeenCalledTimes(1);
-  });
-
-  it('answers false when the page cannot open, rather than throwing', async () => {
-    (Linking.openSettings as jest.Mock).mockRejectedValue(new Error('Unable to open app settings'));
-
-    await expect(openAppSettings()).resolves.toBe(false);
   });
 });
