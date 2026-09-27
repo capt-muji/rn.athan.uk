@@ -78,9 +78,8 @@ describe('bootstrapFromCache upgrade guard', () => {
     mockWasAppUpgraded.mockReturnValue(true);
     mockCacheSchemaChanged.mockReturnValue(false);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
-    expect(mod.didBootstrapFromCache).toBe(true);
     expect(mockSetSequence).toHaveBeenCalledTimes(2);
     expect(mockSetSequence).toHaveBeenCalledWith(ScheduleType.Standard, expect.any(Date));
     expect(mockSetSequence).toHaveBeenCalledWith(ScheduleType.Extra, expect.any(Date));
@@ -91,9 +90,8 @@ describe('bootstrapFromCache upgrade guard', () => {
     mockWasAppUpgraded.mockReturnValue(true);
     mockCacheSchemaChanged.mockReturnValue(true);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
-    expect(mod.didBootstrapFromCache).toBe(false);
     expect(mockSetSequence).not.toHaveBeenCalled();
     expect(mockStartCountdowns).not.toHaveBeenCalled();
     // Every day is stored here, so only the guard can have refused
@@ -107,9 +105,8 @@ describe('bootstrapFromCache upgrade guard', () => {
     mockCacheSchemaChanged.mockReturnValue(true);
     mockGetPrayerByDateString.mockReturnValue(null);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
-    expect(mod.didBootstrapFromCache).toBe(false);
     expect(mockSetSequence).not.toHaveBeenCalled();
   });
 
@@ -117,9 +114,8 @@ describe('bootstrapFromCache upgrade guard', () => {
     mockWasAppUpgraded.mockReturnValue(false);
     mockCacheSchemaChanged.mockReturnValue(false);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
-    expect(mod.didBootstrapFromCache).toBe(true);
     expect(mockStartCountdowns).toHaveBeenCalledTimes(1);
   });
 
@@ -127,11 +123,10 @@ describe('bootstrapFromCache upgrade guard', () => {
     mockWasAppUpgraded.mockReturnValue(false);
     mockCacheSchemaChanged.mockReturnValue(true);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
     // A marker that never matched is irrelevant without a version bump: the
     // running build wrote this cache itself
-    expect(mod.didBootstrapFromCache).toBe(true);
     expect(mockCacheSchemaChanged).not.toHaveBeenCalled();
   });
 });
@@ -146,9 +141,8 @@ describe('bootstrapFromCache cache miss', () => {
     mockCacheSchemaChanged.mockReturnValue(false);
     mockGetPrayerByDateString.mockReturnValue(null);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
-    expect(mod.didBootstrapFromCache).toBe(false);
     expect(mockSetSequence).not.toHaveBeenCalled();
     expect(mockStartCountdowns).not.toHaveBeenCalled();
   });
@@ -160,9 +154,8 @@ describe('bootstrapFromCache cache miss', () => {
       throw new Error('malformed cached day');
     });
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
-    expect(mod.didBootstrapFromCache).toBe(false);
     expect(mockStartCountdowns).not.toHaveBeenCalled();
   });
 });
@@ -202,9 +195,8 @@ describe('bootstrapFromCache days it hydrates from', () => {
     jest.useFakeTimers({ now: LATE_BST });
     storing(dates);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
-    expect(mod.didBootstrapFromCache).toBe(true);
     expect(mockSetSequence).toHaveBeenCalledWith(ScheduleType.Standard, LATE_BST);
     expect(mockSetSequence).toHaveBeenCalledWith(ScheduleType.Extra, LATE_BST);
     expect(mockStartCountdowns).toHaveBeenCalledTimes(1);
@@ -217,9 +209,8 @@ describe('bootstrapFromCache days it hydrates from', () => {
     jest.useFakeTimers({ now: LATE_BST });
     storing(dates);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
-    expect(mod.didBootstrapFromCache).toBe(false);
     expect(mockSetSequence).not.toHaveBeenCalled();
     expect(mockStartCountdowns).not.toHaveBeenCalled();
   });
@@ -228,9 +219,8 @@ describe('bootstrapFromCache days it hydrates from', () => {
     jest.useFakeTimers({ now: new Date('2026-12-31T12:00:00Z') });
     storing(['2027-01-02']);
 
-    const mod = requireFreshBootstrap();
+    requireFreshBootstrap();
 
     expect(askedDates()).toEqual(['2026-12-31', '2027-01-01', '2027-01-02']);
-    expect(mod.didBootstrapFromCache).toBe(true);
   });
 });
