@@ -354,6 +354,12 @@ One line each; a session's row moves here when it closes. Full detail is in git 
 `ai/plans/` and `ai/features/`. The numbers are the table's session numbers, including the
 2026-09-15 renumbering (see the ordering note above).
 
+- 32. `ai/ISSUES.md` #27 — DONE 2026-09-27 — the day-roll one-row list: root cause found (a keep test that compared
+  list day for EQUALITY with the display date, so every already-passed row of the day coming on screen was dropped),
+  already fixed by the 2026-09-13 dashes work, reproduced 562 times against the old algorithm and zero times against
+  today's, and now guarded directly instead of incidentally by 13 tests about a different rule. Never a production
+  bug: the real London year gives zero short lists even under the old code, and the mock rig only misbehaves inside
+  the band its own header forbids. One finding left open, the second keep test's surviving mutant, as ISSUES #42.
 - 1. `device-verification-sweep.md` — CLOSED — verify all features on hardware
 - 2. `data-resilience-swap-not-wipe.md` — CLOSED — fetch before wiping usable cache
 - 3. `unavailable-times-dashes.md` — CLOSED — dashes for unreadable prayer times
