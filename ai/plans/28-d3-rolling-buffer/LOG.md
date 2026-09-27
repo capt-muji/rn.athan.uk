@@ -166,6 +166,16 @@ whether a release shows the modal is the owner's editorial call, made by stampin
 store release. No flag, because the feature ships on both platforms at once. Title 17 characters and
 body 75, inside the 32 and 96 limits `whatsNew.test.ts` enforces.
 
+### A hook failure that was not a test failure
+
+The records commit was blocked once by `FAIL unit stores/__tests__/uiGates.test.ts` reporting
+`Test suite failed to run: A jest worker process was terminated by another process: signal=SIGSEGV`,
+with `Tests: 4713 passed` and no failing assertion anywhere. The suite passes in isolation and passed
+on the retry. This is the same class of machine flake `EXECUTOR-BRIEF.md` section 3 documents for
+`audioMatrix.test.ts` under load, and it is worth knowing that it can strike any suite: **read the
+reason beside a FAIL before treating it as a finding, because "failed to run" and "a test failed" are
+different events.**
+
 ### Two process slips in this session, recorded rather than hidden
 
 1. **A commit landed with the wrong message and was amended with `--no-verify`.** `$TMPDIR` inside the
