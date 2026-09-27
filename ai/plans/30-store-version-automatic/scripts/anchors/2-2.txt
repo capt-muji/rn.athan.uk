@@ -1,0 +1,5 @@
+
+/** Timestamp of last update check (persisted) */
+export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last_check', 0);
+
+/** Reference to the sound selection bottom sheet modal */
