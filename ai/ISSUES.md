@@ -852,7 +852,7 @@ production release; G.6 noted but deferred by owner.
   all about a day with NO readable row (R8), where the other keep cannot help because such a day has no readable row
   for the bar to measure from. No existing test covered the day roll's own readable shape.
 
-### 42. [OPEN, found 2026-09-27, session 32] `filterRelevantPrayers`' previous-row keep survives mutation to an equality
+### 42. [CLOSED 2026-09-27, session 33] `filterRelevantPrayers`' previous-row keep survives mutation to an equality
 
 - **The gap**: `prayer.belongsToDate >= previous.belongsToDate`, the first of the two keep tests in
   `filterRelevantPrayers` (`stores/schedule.ts`), survives mutation to `===`. The whole unit project, 4,372 tests
@@ -862,10 +862,30 @@ production release; G.6 noted but deferred by owner.
   clause did not, so it is load-bearing rather than redundant: it is the clause that answers when there is no display
   date yet to compare against. With BOTH keeps mutated together the overlap fixture short-lists 966 times, so the
   pair is guarded only as a pair.
-- **How to close it**: a test in `stores/__tests__/schedule.test.ts`'s "on the real builder" describe that puts the
-  bar's previous row on an earlier list day than the day on screen, then refreshes, and asserts the earlier day is
-  kept whole. Reverting the clause to `===` must fail it.
-- **Not fixed in session 32**, under the standing one-finding-one-branch rule.
+- **The prescribed close was impossible, and session 33 measured that rather than attempting it.** The issue asked
+  for a test that fails when the clause is mutated to `===`. No such test can exist, because **the mutation is
+  semantically equivalent over every reachable state**, for a structural reason rather than a lucky fixture:
+  - `resolveDisplayDate` returns the EARLIEST list day that still has a readable row to come, so the display date
+    is never AFTER next's list day;
+  - `findPreviousRow` looks only on next's own list day, or on the day before it for the first row of a list, so
+    the previous row is never after next's list day either.
+
+  So `previous.belongsToDate <= currentDisplayDate <= next.belongsToDate` always, which means every row the `>=`
+  admits beyond `previous.belongsToDate` is also `>= currentDisplayDate` and is already kept by the third clause.
+- **Measured, not argued**: over **1,209,600 states** (four day shapes including a >60N overlap and a polar day,
+  seven breakage patterns, three broken-day positions, both schedules, every minute across five days) the `>=` and
+  `===` forms kept the IDENTICAL row set in every single one. Zero states had the display date after next's list
+  day; zero had the previous row after next's list day. The clause is still load-bearing, which is the part worth
+  guarding: over the same sweep it uniquely kept rows in **199,714** states.
+- **Closed by guarding what is actually reachable**: its REMOVAL, which session 32 measured at 1,014 short-list
+  states. `keeps the whole list day holding the row the countdown bar measures from` in
+  `stores/__tests__/schedule.test.ts` fails when the clause is deleted, and also asserts a non-zero count of states
+  that exercised the shape, so it can never pass over nothing. The step's break script pins BOTH halves: the removal
+  is expected to be caught, and the `===` mutation is expected to SURVIVE. If that mutation is ever caught, this
+  measurement was wrong and the issue should be reopened.
+- **DURABLE LESSON: a surviving mutant is not always a missing test.** An operator whose two forms are provably
+  equivalent over every reachable input has nothing to test, and the way to tell that apart from a real gap is to
+  measure the mutation's effect on real states rather than to write a test against it.
 
 ### 43. [VERIFIED SAFE 2026-09-27, session 32] Magrib and Isha past midnight at polar latitude: measured against real Tromso, Reykjavik and Nuuk data
 
