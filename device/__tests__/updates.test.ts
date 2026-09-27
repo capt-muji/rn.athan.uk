@@ -509,6 +509,15 @@ describe('openStore', () => {
 
     expect(mockLoggerError).toHaveBeenCalledWith('Failed to open store URL:', error);
   });
+
+  it('does not fall back on iOS', async () => {
+    mockOpenURL.mockRejectedValue(new Error('Cannot open URL'));
+
+    await openStore();
+
+    expect(mockOpenURL).toHaveBeenCalledTimes(1);
+    expect(mockOpenURL).toHaveBeenCalledWith('https://apps.apple.com/gb/app/athan-london/id123456789');
+  });
 });
 
 // =============================================================================
@@ -574,12 +583,23 @@ describe('openStore (Android)', () => {
     expect(mockOpenURL).toHaveBeenCalledWith('market://details?id=com.mugtaba.athan');
   });
 
+  it('falls back to the Play web page when no Play client handles the intent', async () => {
+    mockOpenURL.mockRejectedValueOnce(new Error('No activity found')).mockResolvedValueOnce(undefined);
+
+    await openStoreAndroid();
+
+    expect(mockOpenURL).toHaveBeenCalledTimes(2);
+    expect(mockOpenURL).toHaveBeenLastCalledWith('https://play.google.com/store/apps/details?id=com.mugtaba.athan');
+    expect(mockLoggerError).not.toHaveBeenCalled();
+  });
+
   it('logs error when Linking.openURL throws on Android', async () => {
     const error = new Error('Cannot open URL');
     mockOpenURL.mockRejectedValue(error);
 
     await openStoreAndroid();
 
+    expect(mockOpenURL).toHaveBeenCalledTimes(2);
     expect(mockLoggerError).toHaveBeenCalledWith('Failed to open store URL:', error);
   });
 });

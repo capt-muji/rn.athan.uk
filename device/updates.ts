@@ -16,6 +16,8 @@ const PLAY_LISTING_URL = `https://play.google.com/store/apps/details?id=${APP_CO
 
 const APP_STORE_URL = `https://apps.apple.com/gb/app/athan-london/id${APP_CONFIG.iosAppId}`;
 const PLAY_STORE_URL = `market://details?id=${APP_CONFIG.androidPackage}`;
+// A device without the Play client refuses the market:// intent, and the button did nothing at all
+const PLAY_STORE_WEB_URL = `https://play.google.com/store/apps/details?id=${APP_CONFIG.androidPackage}`;
 
 // Keyed on the payload's version field, never on the version's shape: the listing holds 8 matches for a
 // bare dotted number and 7 of them are SVG path coordinates
@@ -102,11 +104,18 @@ export const checkForUpdates = async (): Promise<boolean> => {
 };
 
 export const openStore = async (): Promise<void> => {
-  const url = IS_IOS ? APP_STORE_URL : PLAY_STORE_URL;
-
   try {
-    await Linking.openURL(url);
+    await Linking.openURL(IS_IOS ? APP_STORE_URL : PLAY_STORE_URL);
   } catch (error) {
-    logger.error('Failed to open store URL:', error);
+    if (IS_IOS) {
+      logger.error('Failed to open store URL:', error);
+      return;
+    }
+
+    try {
+      await Linking.openURL(PLAY_STORE_WEB_URL);
+    } catch (fallbackError) {
+      logger.error('Failed to open store URL:', fallbackError);
+    }
   }
 };
