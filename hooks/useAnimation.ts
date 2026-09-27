@@ -28,34 +28,11 @@ interface ColorAnimationInput {
   toColor: string;
 }
 
-const DEFAULT_TIMING: WithTimingConfig = {
-  duration: ANIMATION.durationSlow,
-};
-
 const DEFAULT_SPRING: WithSpringConfig = {
   damping: 12,
   stiffness: 500,
   mass: 0.5,
 };
-
-/**
- * Helper to create a timing-based animation with consistent options handling
- * Reduces duplication across timing-based animation hooks
- */
-function createTimingAnimation(toValue: number, options?: AnimationOptions, customConfig?: Partial<WithTimingConfig>) {
-  'worklet';
-  const timing: WithTimingConfig = {
-    ...DEFAULT_TIMING,
-    ...customConfig,
-    duration: options?.duration ?? customConfig?.duration ?? DEFAULT_TIMING.duration,
-  };
-
-  const animation = withTiming(toValue, timing, (finished) => {
-    if (finished && options?.onFinish) runOnJS(options.onFinish)();
-  });
-
-  return options?.delay ? withDelay(options.delay, animation) : animation;
-}
 
 /**
  * Helper to create a spring-based animation with consistent options handling
@@ -69,33 +46,6 @@ function createSpringAnimation(toValue: number, options?: AnimationOptions) {
 
   return options?.delay ? withDelay(options.delay, animation) : animation;
 }
-
-/**
- * Hook for animating opacity
- *
- * @param initialValue Initial opacity value (0-1)
- * @returns Animation value, animated style, and animate function
- *
- * @example
- * const { style, animate } = useAnimationOpacity(0);
- * animate(1); // Fade in
- */
-export const useAnimationOpacity = (initialValue: number = 0) => {
-  const value = useSharedValue(initialValue);
-
-  const style = useAnimatedStyle(() => ({
-    opacity: value.value,
-  }));
-
-  const animate = useCallback(
-    (toValue: number, options?: AnimationOptions) => {
-      value.value = createTimingAnimation(toValue, options);
-    },
-    [value]
-  );
-
-  return { value, style, animate };
-};
 
 /**
  * Hook for animating scale with spring physics
