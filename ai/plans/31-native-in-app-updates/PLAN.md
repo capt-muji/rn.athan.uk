@@ -306,7 +306,7 @@ Reviewed by this planning session on 2026-09-27, reading the design cold and att
 
 ## 6. Steps
 
-- [ ] Step 1: Android asks Play; the scrape and the Play store links are deleted (specified)
+- [x] Step 1: DONE in `559b2c8e`
 - [ ] Step 2: the Update button is iOS-only (specified)
 - [ ] Step 3: the package's own contract is pinned by a test (specified)
 - [ ] Step 4: `releases.json` is deleted, and every live rule that names it (specified)
