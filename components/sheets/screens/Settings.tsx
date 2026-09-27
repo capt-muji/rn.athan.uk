@@ -152,7 +152,7 @@ export default function BottomSheetSettings() {
           accessibilityLabel='Help'
           accessibilityRole='button'>
           <View style={styles.infoButton}>
-            <IconView type={Icon.QUESTION} size={13} color={COLORS.text.primary} />
+            <Text style={styles.helpGlyph}>?</Text>
           </View>
           <Text style={styles.whatsNewLabel}>Help</Text>
           <Text style={styles.chevron}>›</Text>
@@ -202,6 +202,13 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
     paddingRight: SPACING.md,
+  },
+  helpGlyph: {
+    color: COLORS.text.primary,
+    fontSize: 12,
+    // Matches the circle's height, or the glyph sits off-centre and reads as a stray mark
+    lineHeight: 20,
+    fontFamily: TEXT.family.medium,
   },
   infoButton: {
     width: 20,
