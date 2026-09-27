@@ -5,21 +5,19 @@
 import { getHelpTopics, HELP_ACTION_LABELS } from '../help';
 
 describe('getHelpTopics', () => {
-  it.each(['ios', 'android'] as const)('answers at least five questions on %s', (os) => {
-    expect(getHelpTopics(os).length).toBeGreaterThanOrEqual(5);
+  it.each(['ios', 'android'] as const)('answers at least four questions on %s', (os) => {
+    expect(getHelpTopics(os).length).toBeGreaterThanOrEqual(4);
   });
 
   it('asks about notifications first on both platforms, since it is the most common cause', () => {
-    expect(getHelpTopics('ios')[0].question).toBe('Why do I get no alerts at all?');
-    expect(getHelpTopics('android')[0].question).toBe('Why do I get no alerts at all?');
+    expect(getHelpTopics('ios')[0].question).toBe("Why don't I get any notifications?");
+    expect(getHelpTopics('android')[0].question).toBe("Why don't I get any notifications?");
   });
 
-  it('keeps the reboot question for Android alone, where an alarm is cleared by a restart', () => {
-    const iosQuestions = getHelpTopics('ios').map((topic) => topic.question);
-    const androidQuestions = getHelpTopics('android').map((topic) => topic.question);
-
-    expect(androidQuestions).toContain('Why did nothing play after a restart?');
-    expect(iosQuestions).not.toContain('Why did nothing play after a restart?');
+  it('answers the reboot question on both platforms, since a reboot terminates the app on each', () => {
+    for (const os of ['ios', 'android'] as const) {
+      expect(getHelpTopics(os).map((topic) => topic.question)).toContain('Why did notifications stop after a restart?');
+    }
   });
 
   it('keeps the alarm volume question for Android alone, which is the platform that plays on that stream', () => {
@@ -38,24 +36,47 @@ describe('getHelpTopics', () => {
     expect(iosActions).not.toContain('dndAccess');
   });
 
-  it('offers the app settings on both platforms, where the permission lives', () => {
-    expect(getHelpTopics('ios').map((topic) => topic.action)).toContain('appSettings');
-    expect(getHelpTopics('android').map((topic) => topic.action)).toContain('appSettings');
+  it('offers no settings button on iOS, where every fix names a setting instead of a route', () => {
+    expect(getHelpTopics('ios').map((topic) => topic.action)).toEqual(getHelpTopics('ios').map(() => undefined));
   });
 
-  it('words the silent switch answer for each platform rather than sharing one', () => {
-    const silentOn = (os: 'ios' | 'android') =>
-      getHelpTopics(os).find((topic) => topic.question === 'Why does an alert show but play no sound?')?.text;
+  /** Both platforms suppress notifications by mode, so both must answer for it (owner, 2026-09-27) */
+  it('answers the Do Not Disturb question on both platforms', () => {
+    for (const os of ['ios', 'android'] as const) {
+      expect(getHelpTopics(os).map((topic) => topic.question)).toContain(
+        'Why are notifications silenced at certain times?'
+      );
+    }
+  });
 
-    expect(silentOn('ios')).toContain('mutes notification sound');
-    expect(silentOn('android')).toContain('Silent mode');
+  /** A notification is what the phone shows; "alert" is our word and never the user's */
+  it('calls them notifications everywhere, never alerts', () => {
+    for (const os of ['ios', 'android'] as const) {
+      for (const { question, text, steps } of getHelpTopics(os)) {
+        expect([question, text, ...(steps ?? [])].join(' ')).not.toMatch(/alert/i);
+      }
+    }
+  });
+
+  it('tells a silenced phone to leave silent mode, on either platform', () => {
+    for (const os of ['ios', 'android'] as const) {
+      const silent = getHelpTopics(os).find(
+        (topic) => topic.question === 'Why does a notification show but play no sound?'
+      );
+
+      expect(silent?.steps).toEqual(['Take the phone out of silent mode']);
+    }
   });
 
   it('never claims an app setting can play through the silent switch', () => {
     for (const os of ['ios', 'android'] as const) {
-      const silent = getHelpTopics(os).find((topic) => topic.question === 'Why does an alert show but play no sound?');
+      const silent = getHelpTopics(os).find(
+        (topic) => topic.question === 'Why does a notification show but play no sound?'
+      );
 
-      expect(silent?.text).toContain('No app can play through it.');
+      // The fix is to leave silent mode, never a setting inside the app: session 27 proved none exists
+      expect(silent?.steps).toEqual(['Take the phone out of silent mode']);
+      expect(silent?.action).toBeUndefined();
     }
   });
 
@@ -103,6 +124,29 @@ describe('getHelpTopics', () => {
     for (const os of ['ios', 'android'] as const) {
       for (const { steps, action } of getHelpTopics(os)) {
         if (action) expect(steps?.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  /**
+   * The owner followed the old iOS steps and they led to the wrong screen: a route is version
+   * specific and goes stale, while the name of a setting does not (owner, 2026-09-27).
+   */
+  it('names what to change and never how to navigate there', () => {
+    for (const os of ['ios', 'android'] as const) {
+      for (const { steps } of getHelpTopics(os)) {
+        for (const step of steps ?? []) {
+          expect(step).not.toMatch(/\bOpen Settings\b|\bbelow\b|Control Cent|\bthen\b|\bUnder\b/i);
+        }
+      }
+    }
+  });
+
+  /** A user needs the fix, never the mechanism (owner, 2026-09-27) */
+  it('explains no internals in any answer', () => {
+    for (const os of ['ios', 'android'] as const) {
+      for (const { text } of getHelpTopics(os)) {
+        expect(text).not.toMatch(/topped up|in the background|buffer|schedul|refresh(es|ed)?\b/i);
       }
     }
   });

@@ -6,7 +6,6 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
-import { StyleSheet } from 'react-native';
 
 import { london } from '@/__tests__/harness';
 import type { WhatsNewRelease } from '@/shared/whatsNew';
@@ -140,14 +139,13 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
 
   // The badges are plain glyphs rather than the ringed info SVG (owner, 2026-09-27: the outline ring and the thick
   // question mark did not fit the theme), so a regression to an icon file would otherwise pass unseen
-  it('badges What\u2019s new and Help with a bare glyph each', async () => {
+  it('badges What\u2019s new and Help with an icon each', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
 
     await render(<SettingsSheet />);
 
-    expect(screen.getByText('i')).toBeOnTheScreen();
-    expect(screen.getByText('?')).toBeOnTheScreen();
-    expect(screen.queryByTestId('svg:info', { includeHiddenElements: true })).not.toBeOnTheScreen();
+    expect(screen.getByTestId('svg:info', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(screen.getByTestId('svg:question', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
   it('keeps Help reachable on a release with no notes to show', async () => {
@@ -212,34 +210,20 @@ describe('the settings sheet in the Ramadan season, Monday 15 February 2027 at 1
   });
 });
 
-describe('the music glyph beside Change athan, Friday 11 September 2026 at 14:00', () => {
-  // platform, font size, lift
-  it.each([
-    ['ios', 10, 0],
-    ['android', 14, -2.5],
-  ] as const)('draws the glyph on %s at font size %s, lifted by %s', async (os, fontSize, marginTop) => {
+describe('the icons beside the Settings rows, Friday 11 September 2026 at 14:00', () => {
+  /**
+   * Text glyphs drew differently on each platform, so the music note needed a per-platform size and lift
+   * (commit 9c853868) and the info mark sat off-centre in its circle. These are vector icons now, which
+   * render identically everywhere, so the platform tweaks are gone with them (owner, 2026-09-27).
+   */
+  it('draws a real icon for the athan, the notes and the help rows', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    // The size is fixed when the sheet's module loads, so the sheet is loaded fresh on a React Native already set to the
-    // platform. React itself stays the one this file renders with, because one React cannot run another's hooks
-    const sharedReact = {
-      react: require('react'),
-      jsx: require('react/jsx-runtime'),
-      jsxDev: require('react/jsx-dev-runtime'),
-    };
-    // Assigned inside the callback, which runs before the render; a failed load throws there
-    let FreshSettingsSheet!: typeof SettingsSheet;
-    jest.isolateModules(() => {
-      jest.doMock('react', () => sharedReact.react);
-      jest.doMock('react/jsx-runtime', () => sharedReact.jsx);
-      jest.doMock('react/jsx-dev-runtime', () => sharedReact.jsxDev);
-      require('@/__tests__/harness').onPlatform(os);
-      FreshSettingsSheet = require('../Settings').default;
-    });
 
-    await render(<FreshSettingsSheet />);
+    await render(<SettingsSheet />);
 
-    // A style is read because it is a rule the app keeps: Android's font draws the ♪ glyph smaller and lower, so commit
-    // 9c853868 ("fixed music icon android") sized it up and lifted it there, and the owner's visuals are settled
-    expect(StyleSheet.flatten(screen.getByText('♪').props.style)).toMatchObject({ fontSize, marginTop });
+    for (const name of ['svg:music-note', 'svg:info', 'svg:question']) {
+      expect(screen.getByTestId(name, { includeHiddenElements: true })).toBeOnTheScreen();
+    }
+    expect(screen.queryByText('\u266a')).not.toBeOnTheScreen();
   });
 });
