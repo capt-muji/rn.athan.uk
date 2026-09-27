@@ -157,4 +157,35 @@ the at-time-off constraint. It now computes `requestCost` once beside it and pas
 the two cannot disagree by construction. The parameter is optional, and a full reschedule omits it,
 because that path reads every prayer from storage anyway and no commit is in flight.
 
-### Resume from: step 4, the What's New entry
+## Step 4: What's New
+
+Version 1.29.0, a MINOR bump because this completes the feature (`ai/AGENTS.md` section 6).
+
+One item added to `shared/whatsNew.ts`, parked at `version: null` as that file's ritual requires:
+whether a release shows the modal is the owner's editorial call, made by stamping the version at the
+store release. No flag, because the feature ships on both platforms at once. Title 17 characters and
+body 75, inside the 32 and 96 limits `whatsNew.test.ts` enforces.
+
+## Status at the end of this session
+
+Row 28 is EXECUTED. Nothing is merged into `uat-2` yet and nothing is pushed: the audit does that.
+
+| Check | Result |
+| --- | --- |
+| Whole suite, both projects | 171 suites, 4718 tests, 0 failures |
+| Coverage | statements, branches, functions and lines all 100% |
+| `npx tsc --noEmit` | exit 0 |
+| `npx biome check . --error-on-warnings` | exit 0 |
+| Break script | 7 of 7 caught, `ALL AS EXPECTED: 1` |
+| Device proof | none needed for steps 1 to 3; the owner judges the sheet on their own phones |
+
+### What the audit should look at first
+
+1. **`requestCostReader`'s `armingNow` parameter.** It exists because a commit's stored preferences
+   can belong to a later change. Check that the only callers passing it are the two arming paths,
+   and that a full reschedule still omits it.
+2. **The repaired suites.** Several assertions grew a third list day because the budget reaches every
+   stored day. Each one was checked against what the test stores, not pasted from what the code
+   printed; the audit should confirm that judgement on a sample.
+3. **`SCHEDULE_CANDIDATE_DAYS = 60`.** A loop guard, never a coverage number, pinned by
+   `constants.test.ts` as never being the binding limit for the worst-case user.
