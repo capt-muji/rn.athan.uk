@@ -8,7 +8,7 @@
 
 import { ANIMATION } from '@/shared/constants';
 
-import { useAnimationOpacity, useAnimationScale } from '../useAnimation';
+import { useAnimationScale } from '../useAnimation';
 import { mountHook } from './hookHarness';
 import { type Animation, jsThreadCalls } from './reanimatedFake';
 
@@ -25,47 +25,10 @@ const leafOf = (animation: unknown): Leaf => {
   return (described.kind === 'delay' ? described.animation : described) as Leaf;
 };
 
-const hooks = [
-  ['useAnimationOpacity', useAnimationOpacity],
-  ['useAnimationScale', useAnimationScale],
-] as const;
+const hooks = [['useAnimationScale', useAnimationScale]] as const;
 
 beforeEach(() => {
   jsThreadCalls.length = 0;
-});
-
-describe('useAnimationOpacity', () => {
-  it.each<[number | undefined, number]>([
-    [undefined, 0],
-    [0, 0],
-    [1, 1],
-  ])('given %p, mounts drawn at opacity %p', (initial, opacity) => {
-    const view = mountHook(() => useAnimationOpacity(initial), undefined);
-
-    expect(view.result.style).toEqual({ opacity });
-  });
-
-  it('fades over the slow duration unless given one, and draws the fade', () => {
-    const view = mountHook(() => useAnimationOpacity(0), undefined);
-
-    view.result.animate(1);
-    expect(view.result.value.value).toEqual({
-      kind: 'timing',
-      toValue: 1,
-      config: { duration: ANIMATION.durationSlow },
-      callback: expect.any(Function),
-    });
-    view.rerender();
-    expect(view.result.style).toEqual({ opacity: view.result.value.value });
-
-    view.result.animate(0, { duration: ANIMATION.durationFade });
-    expect(view.result.value.value).toEqual({
-      kind: 'timing',
-      toValue: 0,
-      config: { duration: ANIMATION.durationFade },
-      callback: expect.any(Function),
-    });
-  });
 });
 
 describe('useAnimationScale', () => {
