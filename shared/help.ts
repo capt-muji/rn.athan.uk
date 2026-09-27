@@ -4,8 +4,9 @@
  * Three of the causes are OS settings no code can change, so the app explains
  * them instead of trying to work around them (owner, 2026-09-27). Every claim
  * here was measured: session 27 for the mute switch, Do Not Disturb and the
- * 30 second sound cap, session 28 for how far ahead alerts are set, session 20
- * for the widget horizon.
+ * 30 second sound cap, session 25 for the alarm volume.
+ *
+ * The app is never named, because it may be renamed (owner, 2026-09-27).
  *
  * @see ai/plans/27-silent-mode-bypass/FINDINGS.md
  */
@@ -15,6 +16,8 @@ export type HelpAction = 'appSettings' | 'dndAccess';
 
 interface HelpAnswer {
   text: string;
+  /** Ordered instructions, rendered as a numbered list */
+  steps?: string[];
   action?: HelpAction;
 }
 
@@ -28,6 +31,7 @@ interface HelpEntry {
 export interface HelpTopic {
   question: string;
   text: string;
+  steps?: string[];
   action?: HelpAction;
 }
 
@@ -39,94 +43,86 @@ export const HELP_ACTION_LABELS: Record<HelpAction, string> = {
 /** Ordered by how often each one turns out to be the cause */
 const HELP_ENTRIES: HelpEntry[] = [
   {
-    question: 'Are notifications turned on for Athan?',
+    question: 'Notifications are turned off',
     ios: {
-      text: 'Athan cannot alert you without notification permission. Open Settings, then turn Allow Notifications on, and leave Sounds on with it.',
+      text: 'Without permission this app cannot alert you at all.',
+      steps: ['Open Settings below', 'Turn on Allow Notifications', 'Leave Sounds on'],
       action: 'appSettings',
     },
     android: {
-      text: 'Athan cannot alert you without notification permission. Open Settings, then turn notifications on for Athan.',
-      action: 'appSettings',
-    },
-  },
-  {
-    question: 'Is background activity allowed?',
-    ios: {
-      text: 'Athan sets the next days of alerts while you are not using it. With Background App Refresh off, the alerts already set still fire, and no new ones are added. Low Power Mode switches it off as well.',
-      action: 'appSettings',
-    },
-    android: {
-      text: 'Athan sets the next days of alerts while you are not using it. Battery saving can stop that, so the alerts already set still fire and no new ones are added. Allow background activity for Athan.',
+      text: 'Without permission this app cannot alert you at all.',
+      steps: ['Open Settings below', 'Turn notifications on', 'Leave the athan categories on'],
       action: 'appSettings',
     },
   },
   {
-    question: 'Is the silent switch on?',
+    question: 'Background activity is off',
     ios: {
-      text: 'The mute switch silences notification sound before any app is consulted, so the alert arrives without a sound. No app setting can play through it. Turn the switch off to hear the athan.',
+      text: 'Alerts are topped up in the background. Turned off, the ones already set still play and no new ones are added.',
+      steps: ['Open Settings below', 'Turn on Background App Refresh', 'Turn off Low Power Mode'],
+      action: 'appSettings',
     },
     android: {
-      text: 'Silent mode silences notification sound before any app is consulted, so the alert arrives without a sound. No app setting can play through it. Turn silent mode off to hear the athan.',
+      text: 'Alerts are topped up in the background. Battery saving can stop that, so no new ones are added.',
+      steps: ['Open Settings below', 'Allow background activity', 'Set battery use to unrestricted'],
+      action: 'appSettings',
     },
   },
   {
-    question: 'Is Do Not Disturb or a Focus on?',
+    question: 'The silence switch is on',
     ios: {
-      text: 'A Focus holds notifications back unless Athan is allowed through it. Open Settings, then Focus, then the mode you use, then Apps, and add Athan.',
+      text: 'It mutes notification sound before any app is asked. No app can play through it.',
+      steps: ['Flick the switch on the side of your phone', 'Or turn Silent off in Control Centre'],
     },
     android: {
-      text: 'Do Not Disturb silences notifications by policy. Athan asks to be allowed through, and Android grants that only once you give it Do Not Disturb access.',
+      text: 'Silent mode mutes notification sound before any app is asked. No app can play through it.',
+      steps: ['Press the volume up key', 'Or turn Silent off in quick settings'],
+    },
+  },
+  {
+    question: 'Do Not Disturb is on',
+    ios: {
+      text: 'It holds notifications back unless this app is allowed through.',
+      steps: ['Open Settings, then Focus', 'Pick the mode you use', 'Under Apps, add this app'],
+    },
+    android: {
+      text: 'It silences notifications until you allow this app through.',
+      steps: ['Open the screen below', 'Allow Do Not Disturb access'],
       action: 'dndAccess',
     },
   },
   {
-    question: 'Why does the athan stop before it finishes?',
+    question: 'The athan stops before it finishes',
     ios: {
-      text: 'iOS plays 30 seconds of a notification sound and falls back to the default tone for anything longer, so every athan is trimmed to fit.',
+      text: 'Phones play 30 seconds of a notification sound, then fall back to the default tone. Every athan is trimmed to fit.',
     },
     android: {
-      text: 'Android plays 30 seconds of a notification sound and falls back to the default tone for anything longer, so every athan is trimmed to fit.',
+      text: 'Phones play 30 seconds of a notification sound, then fall back to the default tone. Every athan is trimmed to fit.',
     },
   },
   {
-    question: 'How far ahead are alerts set?',
-    ios: {
-      text: 'Athan fills the days ahead with as many alerts as iOS lets one app hold. The fewer prayers you switch on, the further ahead it reaches. Opening the app tops it up.',
-    },
-    android: {
-      text: 'Athan fills the days ahead with as many alerts as it may hold at once. The fewer prayers you switch on, the further ahead it reaches. Opening the app tops it up.',
-    },
-  },
-  {
-    question: 'I restarted my phone and heard nothing.',
+    question: 'Nothing played after a restart',
     ios: null,
     android: {
-      text: 'Android clears every alarm when the phone restarts, and some phones stop Athan setting them again on its own. Open Athan once after a restart.',
+      text: 'A restart clears every alarm, and some phones block them being set again.',
+      steps: ['Open this app once after a restart'],
     },
   },
   {
-    question: 'The athan plays too quietly.',
+    question: 'The athan is too quiet',
     ios: null,
     android: {
-      text: 'The athan plays at your alarm volume rather than your ringer volume. Raise the alarm volume in your phone sound settings.',
+      text: 'It plays at alarm volume, not ring volume.',
+      steps: ['Raise Alarm volume in your sound settings'],
     },
   },
   {
-    question: 'My widget shows an old time.',
+    question: 'Changing the athan sound',
     ios: {
-      text: 'A widget redraws on the schedule iOS gives it, so it can sit a while behind. Open Athan to refresh it. After three days with no refresh a widget reads Out of date rather than showing a time that may be wrong.',
+      text: 'Open Settings, then Change athan, and pick the one you want.',
     },
     android: {
-      text: 'A widget redraws on the schedule Android gives it, so it can sit a while behind. Open Athan to refresh it. After three days with no refresh a widget reads Out of date rather than showing a time that may be wrong.',
-    },
-  },
-  {
-    question: 'Can I change the athan sound?',
-    ios: {
-      text: 'Yes. Open Settings from the mosque button, then Change athan, and pick the one you want.',
-    },
-    android: {
-      text: 'Yes. Open Settings from the mosque button, then Change athan, and pick the one you want.',
+      text: 'Open Settings, then Change athan, and pick the one you want.',
     },
   },
 ];
@@ -142,5 +138,5 @@ export const getHelpTopics = (os: 'ios' | 'android'): HelpTopic[] =>
     const answer = os === 'ios' ? entry.ios : entry.android;
     if (!answer) return [];
 
-    return [{ question: entry.question, text: answer.text, action: answer.action }];
+    return [{ question: entry.question, text: answer.text, steps: answer.steps, action: answer.action }];
   });

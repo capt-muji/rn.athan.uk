@@ -72,6 +72,39 @@ rather than which model".)
   switch, on either platform. **A brief is not evidence: check its claims against the session that
   measured them.**
 
+## Decided by the owner, 2026-09-27, ON THE SIMULATOR: the Help page is rewritten and re-laid out
+
+The first build shipped what the brief asked for. The owner read it on the iOS simulator and ruled:
+🐋  "Again, all of this is so much text. It's just like 1 page of black text."
+
+- **The app is never named in user-facing copy**, because it may be renamed: 🐋  "We might change the name of
+  the app in the future, so perhaps maybe don't call it Athan everywhere... we might change it to be prayer
+  times or Salah or something completely different." Every answer says "this app". The word *athan* stays,
+  because it names the call to prayer rather than the product, and Settings already says "Change athan".
+  `shared/__tests__/help.test.ts` pins it: no question, answer or step may contain `Athan`.
+- **Two questions are CUT.** "How far ahead are alerts set?" goes, because 🐋  "users don't care about that.
+  They just know about on and off". "My widget shows an old time" goes too, and for a better reason:
+  🐋  "we shouldn't be showing an old time, actually", so it is a defect to fix rather than a question to
+  answer. Do not re-add either.
+- **Far less text, far less technical, and guidance becomes a numbered list.** 🐋  "if you're guiding the
+  users, like do this, then this, then this, then this. There should be a list." Answers are capped at 160
+  characters by a test; the steps carry the instructions.
+- **A question is a cause, marked with a dot.** 🐋  "maybe put a dot before the question itself just so that
+  people can clearly see the difference." So "Are notifications turned on for Athan?" became "Notifications
+  are turned off".
+- **Dividers: one under the title, edge to edge, and one between each question.** 🐋  "when I scroll, the text
+  correctly gets cut off... but spans the entire thing, from the left to the right, edge to edge." The title
+  divider is what makes the scroll cut read as a header rather than as clipping.
+- **The card takes nearly the whole screen**, about 1% inset each side: 🐋  "use more of the screen space...
+  left and right, up and down also. Maybe like 1% off each side." Implemented as two OPTIONAL `Modal` props,
+  `wide` and `divider`, both defaulting off, so the update prompt and What's New keep their compact card.
+  `components/modals/__tests__/Modal.test.tsx` pins that default at `width: '85%'`.
+- **"Focus" alone means nothing to a user.** 🐋  "What the hell is Focus?... Call it the silence switch." The
+  switch question is now "The silence switch is on", and the word Focus appears only inside an iOS step, where
+  iOS's own Settings uses it.
+- **The action buttons are kept as they are** (🐋  "good buttons. I like the buttons"), and the Close button is
+  realigned full width at the foot of the card.
+
 ## Decided by the owner, 2026-09-25, ON DEVICE: the day-list Lock faces are CANCELLED
 
 The two faces of session 24 were built, audited, installed on the XS, and rejected on sight:
