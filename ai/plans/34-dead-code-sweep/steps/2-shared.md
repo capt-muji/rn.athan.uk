@@ -143,7 +143,7 @@
    python3 scripts/find-unused-exports.py | head -2
    ```
 
-   prints `NEVER reachable from production code: 23`.
+   prints `NEVER reachable from production code: 22`.
 
 7. **Breaks.** Save as `$TMPDIR/breaks-34-2.sh` and run `bash $TMPDIR/breaks-34-2.sh` from the
    repository root.
@@ -280,7 +280,7 @@
 11. **Done when:**
 
     - `python3 scripts/find-unused-exports.py | head -2` prints
-      `NEVER reachable from production code: 23`;
+      `NEVER reachable from production code: 22`;
     - `npx tsc --noEmit` exits 0;
     - `npx biome check . --error-on-warnings` exits 0;
     - `grep -rn 'ISTIJABA_INDEX\|getSecondsBetween\|perfFlush\|perfStorage' shared/ app/ components/ stores/ hooks/ device/` prints nothing;

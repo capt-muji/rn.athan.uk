@@ -167,7 +167,7 @@
    python3 scripts/find-unused-exports.py | head -2
    ```
 
-   prints `NEVER reachable from production code: 20`.
+   prints `NEVER reachable from production code: 19`.
 
 7. **Breaks.** Save as `$TMPDIR/breaks-34-3.sh` and run `bash $TMPDIR/breaks-34-3.sh` from the
    repository root.
@@ -324,7 +324,7 @@
 11. **Done when:**
 
     - `python3 scripts/find-unused-exports.py | head -2` prints
-      `NEVER reachable from production code: 20`;
+      `NEVER reachable from production code: 19`;
     - `npx tsc --noEmit` exits 0;
     - `npx biome check . --error-on-warnings` exits 0;
     - `grep -rn 'openAppSettings\|tls13FirstProvider\|didBootstrapFromCache' app/ components/ device/ stores/ shared/ hooks/` prints nothing;
