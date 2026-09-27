@@ -22,7 +22,9 @@ describe("18 October 2026's two Midnight alarms", () => {
   beforeEach(() => {
     jest.useFakeTimers();
     resetAlarms();
-    storeDays(londonDays('2026-10-16', '2026-10-17', '2026-10-18', '2026-10-19', '2026-10-20'));
+    // Only the days these tests assert on: the budget arms every stored day it can reach, so a
+    // day stored beyond them would be armed too and is not what this suite is about
+    storeDays(londonDays('2026-10-16', '2026-10-17', '2026-10-18', '2026-10-19'));
     enable(ScheduleType.Extra, 'Midnight', 5);
   });
 
@@ -45,6 +47,7 @@ describe("18 October 2026's two Midnight alarms", () => {
   });
 
   it('arms nothing for list 18 once now is its 00:00:00 instant, and reaches list 20 instead', async () => {
+    storeDays(londonDays('2026-10-20'));
     jest.setSystemTime(new Date('2026-10-17T23:00:00.000Z'));
 
     await rescheduleAllNotifications();

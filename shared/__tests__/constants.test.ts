@@ -14,15 +14,15 @@ import {
   EXTRAS_EXPLANATIONS_ARABIC,
   ISTIJABA_INDEX,
   NIGHT_PRAYER_NAMES,
-  NOTIFICATION_ROLLING_DAYS,
+  NOTIFICATION_REQUEST_BUDGET,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
   REMINDER_INTERVALS,
+  SCHEDULE_CANDIDATE_DAYS,
   validateReminderInterval,
 } from '../constants';
-import { rollingDaysForPrayer } from '../notifications';
-import { REMINDER_SLOTS, ScheduleType } from '../types';
+import { REMINDER_SLOTS } from '../types';
 
 // =============================================================================
 // NIGHT_PRAYER_NAMES TESTS
@@ -322,116 +322,62 @@ const IOS_PENDING_REQUEST_CEILING = 64;
 /** Every prayer on both lists can carry an at-time alert AND both pre-prayer reminders */
 const ALERTS_PER_PRAYER = 1 + REMINDER_SLOTS.length;
 
-describe('the rolling buffer fits inside the iOS pending-request ceiling', () => {
+describe('the request budget fits inside the iOS pending-request ceiling', () => {
   const prayersPerDay = PRAYERS_ENGLISH.length + EXTRAS_ENGLISH.length;
 
-  /** Every list day the app actually arms, summed prayer by prayer through the production rule */
-  const listDaysArmed =
-    PRAYERS_ENGLISH.reduce((sum, name) => sum + rollingDaysForPrayer(ScheduleType.Standard, name), 0) +
-    EXTRAS_ENGLISH.reduce((sum, name) => sum + rollingDaysForPrayer(ScheduleType.Extra, name), 0);
-
-  const worstCase = listDaysArmed * ALERTS_PER_PRAYER;
-
-  /** Rows granted more than the base window, counted from the rule rather than named here */
-  const nightRows = EXTRAS_ENGLISH.filter(
-    (name) => rollingDaysForPrayer(ScheduleType.Extra, name) > NOTIFICATION_ROLLING_DAYS
-  ).length;
-
-  /**
-   * The same shape at a hypothetical base window: every prayer for `baseDays`, plus one more
-   * day for each night row. Tied to production by the test below, so it cannot drift.
-   */
-  const worstCaseAt = (baseDays: number) => (prayersPerDay * baseDays + nightRows) * ALERTS_PER_PRAYER;
-
-  it('schedules at most 64 requests with every prayer fully armed', () => {
-    expect(worstCase).toBeLessThanOrEqual(IOS_PENDING_REQUEST_CEILING);
-  });
-
-  it('pins the arithmetic, so a change to any input has to come through here', () => {
-    expect({
-      prayersPerDay,
-      days: NOTIFICATION_ROLLING_DAYS,
-      nightRows,
-      worstCase,
-      headroom: IOS_PENDING_REQUEST_CEILING - worstCase,
-    }).toEqual({
-      prayersPerDay: 11,
-      days: 1,
-      nightRows: 2,
-      worstCase: 39,
-      headroom: 25,
-    });
-  });
-
-  it('counts the night-row day through the production rule, not a restatement of it', () => {
-    expect(worstCase).toBe(worstCaseAt(NOTIFICATION_ROLLING_DAYS));
-  });
-
-  it('grants the extra day to the two evening-before rows and to nothing else', () => {
-    const extended = EXTRAS_ENGLISH.filter(
-      (name) => rollingDaysForPrayer(ScheduleType.Extra, name) > NOTIFICATION_ROLLING_DAYS
-    );
-    const standardExtended = PRAYERS_ENGLISH.filter(
-      (name) => rollingDaysForPrayer(ScheduleType.Standard, name) > NOTIFICATION_ROLLING_DAYS
-    );
-
-    // Suhoor is a night row on the list, but its instant is on its own date: no extra day
-    expect(extended).toEqual(['Midnight', 'Last Third']);
-    expect(standardExtended).toEqual([]);
-  });
-
-  it('shows that one more day would breach the ceiling', () => {
-    expect(worstCaseAt(NOTIFICATION_ROLLING_DAYS + 1)).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
-  });
-
-  // The pairing the owner ruled on: the second reminder is only affordable because the window
-  // dropped with it, so a later raise must re-read this rather than assume the old headroom
-  it('could not carry a second reminder at the window it replaced', () => {
-    const atTwoDays = (prayersPerDay * 2 + nightRows) * ALERTS_PER_PRAYER;
-
-    expect(atTwoDays).toBe(72);
-    expect(atTwoDays).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+  it('never asks the phone for more requests than it keeps', () => {
+    expect(NOTIFICATION_REQUEST_BUDGET).toBeLessThanOrEqual(IOS_PENDING_REQUEST_CEILING);
   });
 
   it('counts one at-time alert and one request per reminder slot', () => {
     expect(ALERTS_PER_PRAYER).toBe(3);
+  });
+
+  // The budget is spent a whole row at a time, so the last row that fits is the last whole
+  // multiple of its cost. The worst-case user pays the full three for every row.
+  it('leaves under one row of headroom, so the budget is genuinely spent', () => {
+    const rowsAffordable = Math.floor(NOTIFICATION_REQUEST_BUDGET / ALERTS_PER_PRAYER);
+    const spent = rowsAffordable * ALERTS_PER_PRAYER;
+
+    expect(spent).toBe(63);
+    expect(NOTIFICATION_REQUEST_BUDGET - spent).toBeLessThan(ALERTS_PER_PRAYER);
+  });
+
+  // What the old day-count window could not do, and the reason the unit changed: two list days
+  // of every row at three alerts each breaches the ceiling, so the day count had to choose
+  // between the second reminder and the next Fajr
+  it('carries both reminders where a two-day window could not', () => {
+    const twoDayWorstCase = prayersPerDay * 2 * ALERTS_PER_PRAYER;
+
+    expect(twoDayWorstCase).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+    expect(NOTIFICATION_REQUEST_BUDGET).toBeLessThan(twoDayWorstCase);
+  });
+
+  // The walk's guard is not a coverage number: the worst-case user's budget runs out long
+  // before it, so it can never be what limits how far ahead the app arms
+  it('bounds the candidate walk far beyond what the worst-case user can afford', () => {
+    const daysTheWorstCaseUserCanAfford = NOTIFICATION_REQUEST_BUDGET / (prayersPerDay * ALERTS_PER_PRAYER);
+
+    expect(SCHEDULE_CANDIDATE_DAYS).toBeGreaterThan(daysTheWorstCaseUserCanAfford);
   });
 });
 
 // =============================================================================
 // ROLLING HORIZON TESTS
 //
-// The buffer is counted in LIST days, not hours, and at one day that is TODAY'S LIST
-// ALONE. So the horizon is not a fixed span: it shrinks through the day and reaches
-// zero once the day's last prayer has passed, which is the cost the owner accepted
-// when the second reminder took the place of the second day. These pin that shape, so
-// a cadence can never again be sized against a span the window does not have.
+// The horizon is no longer a span the app can state: it is however far the budget
+// reaches for the rows that user armed, which is days for a heavy user and weeks for
+// a light one. What can still be pinned is the relationship the cadence depends on,
+// that the background task runs many times inside even the shortest horizon.
 // =============================================================================
 
-describe('the rolling horizon is one list day, so it shrinks through the day', () => {
-  /** Winter worst case from the repo's own fixture: 2024-12-31 is Fajr 06:26, Isha 17:42 */
-  const WINTER_FAJR_HOUR = 6 + 26 / 60;
-  const WINTER_ISHA_HOUR = 17 + 42 / 60;
+describe('the background task runs many times inside even the shortest horizon', () => {
+  /** The worst-case user arms all 11 rows with both reminders, which the budget covers for two days */
+  const WORST_CASE_HORIZON_HOURS = 47;
 
-  /** A refresh that lands just before midnight reaches the least far */
-  const LATEST_REFRESH_HOUR = 23 + 50 / 60;
+  it('gets many attempts to re-arm before the shortest horizon runs out', () => {
+    const attempts = Math.floor(WORST_CASE_HORIZON_HOURS / BACKGROUND_TASK_INTERVAL_HOURS);
 
-  /** What today's list still has armed after a refresh at this hour */
-  const hoursStillArmed = (refreshHour: number) => Math.max(0, WINTER_ISHA_HOUR - refreshHour);
-
-  it('reaches nothing at all once the day\u2019s last prayer has passed', () => {
-    expect(hoursStillArmed(LATEST_REFRESH_HOUR)).toBe(0);
-  });
-
-  it('leaves the next morning to the background task alone', () => {
-    const hoursToNextFajr = 24 - LATEST_REFRESH_HOUR + WINTER_FAJR_HOUR;
-    const attempts = Math.floor(hoursToNextFajr / BACKGROUND_TASK_INTERVAL_HOURS);
-
-    expect(hoursToNextFajr).toBeGreaterThan(BACKGROUND_TASK_INTERVAL_HOURS);
-    expect(attempts).toBeGreaterThan(1);
-  });
-
-  it('is never the whole day the day count reads like', () => {
-    expect(hoursStillArmed(WINTER_FAJR_HOUR)).toBeLessThan(NOTIFICATION_ROLLING_DAYS * 24);
+    expect(attempts).toBeGreaterThan(4);
   });
 });
