@@ -106,7 +106,7 @@ whale emoji and two spaces (`🐋  `).
   commit that is not merged yet.
 - **EAS.** Never build on EAS or push to EAS. EAS and the Expo MCP are read-only.
 - **Secrets.**
-  - Never edit `releases.json`.
+  - Never add a hand-edited release file.
   - Never commit the API key (`~/.config/athan/.api_key`) or print it.
   - Never run `env`, `printenv` or `set` unfiltered: this session's environment holds the gateway key.
   - Never write a gateway address, domain or key into any file.

@@ -51,7 +51,7 @@ At minimum:
   `EXECUTOR-BRIEF.md` section 4, item 8;
 - anything the step does not answer that the executor would otherwise have to decide, with the question
   "The plan does not say `<X>`. What should it be?";
-- anything touching visuals, prayer times, `releases.json`, `uat` or EAS.
+- anything touching visuals, prayer times, a hand-edited release file, `uat` or EAS.
 
 ## 3. Pre-flight
 
