@@ -35,3 +35,12 @@
   three times when I ran the suite and failed inside the hook. Fixed by pinning the clock with the same `PINNED_NOW`
   the other stamp tests use, which is a change to the test's inputs only, never to what it proves. Verified stable
   over three consecutive runs, and the break script re-run afterwards still ends `ALL AS EXPECTED: 1`.
+
+## Step 3: the Android store button resolves without a Play client
+
+- Branch: `fix/30-play-store-web-fallback`
+- Pre-flight: `PREFLIGHT OK` (this step has no anchor: step 1 rewrote the function it changes, so an anchor taken at
+  "Planned at" could not have been verified).
+- Red: 2 failed, 31 passed, 33 total, both failing with `Received number of calls: 1`, as the plan predicted.
+- Green: `33 passed, 33 total`, `tsc` exit 0, Biome exit 0.
+- Breaks: `BREAK CAUGHT` for noWebFallbackUrl, webUrlFirst and iosAlsoFallsBack, then `ALL AS EXPECTED: 1`.
