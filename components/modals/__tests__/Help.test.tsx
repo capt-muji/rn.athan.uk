@@ -28,7 +28,7 @@ describe('the Help modal', () => {
   it('answers the question a silent phone raises first', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    expect(screen.getByText('Why do I get no alerts at all?')).toBeOnTheScreen();
+    expect(screen.getByText("Why don't I get any notifications?")).toBeOnTheScreen();
   });
 
   it('lists every question its platform answers', async () => {
@@ -39,19 +39,50 @@ describe('the Help modal', () => {
     }
   });
 
-  it('opens the app settings when the notification answer offers it', async () => {
+  it('offers no settings button, because every answer names a setting rather than a route', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    await fireEvent.press(screen.getAllByRole('button', { name: 'Open Settings' })[0]);
-
-    expect(openAppSettings).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole('button', { name: 'Open Settings' })).not.toBeOnTheScreen();
+    expect(openAppSettings).not.toHaveBeenCalled();
   });
 
-  it('renders one button for each answer that offers a settings screen, plus Close', async () => {
-    const offered = getHelpTopics('ios').filter((topic) => topic.action).length;
+  it('shows every question closed, so the page opens as a list rather than a wall of text', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    expect(screen.getAllByRole('button')).toHaveLength(offered + 1);
+    for (const { question, text } of getHelpTopics('ios')) {
+      expect(screen.getByText(question)).toBeOnTheScreen();
+      expect(screen.queryByText(text)).not.toBeOnTheScreen();
+    }
+  });
+
+  it('reveals one answer when its question is tapped, and hides it again', async () => {
+    const [first] = getHelpTopics('ios');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    await fireEvent.press(screen.getByRole('button', { name: first.question }));
+    expect(screen.getByText(first.text)).toBeOnTheScreen();
+
+    await fireEvent.press(screen.getByRole('button', { name: first.question }));
+    expect(screen.queryByText(first.text)).not.toBeOnTheScreen();
+  });
+
+  // One answer at a time, so the list never grows into the wall of text it replaced (owner, 2026-09-27)
+  it('closes the open question when another is opened', async () => {
+    const [first, second] = getHelpTopics('ios');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    await fireEvent.press(screen.getByRole('button', { name: first.question }));
+    await fireEvent.press(screen.getByRole('button', { name: second.question }));
+
+    expect(screen.queryByText(first.text)).not.toBeOnTheScreen();
+    expect(screen.getByText(second.text)).toBeOnTheScreen();
+  });
+
+  // Each question is its own trigger, so a closed page carries one button per question plus Close
+  it('makes every question a button, and adds Close', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    expect(screen.getAllByRole('button')).toHaveLength(getHelpTopics('ios').length + 1);
   });
 
   it('offers no Do Not Disturb grant on iOS, which has none to give', async () => {
@@ -69,13 +100,30 @@ describe('the Help modal', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  // Styles are read here for the same reason the scroll test reads one: each is a rule the app keeps, not a look
-  it('puts each settings button at the end of its own answer', async () => {
+  /**
+   * A number would read as a route to follow, and a tick as something already done. Neither is true, so the
+   * marker carries no meaning of its own (owner, 2026-09-27).
+   */
+  /**
+   * The cut-off answer names a limit rather than a fix, so it carries no list. The panel must render
+   * without one, which is the branch an all-answers-have-steps suite would never reach.
+   */
+  it('opens an answer that has nothing to change, and shows no list', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    for (const button of screen.getAllByRole('button', { name: 'Open Settings' })) {
-      expect(StyleSheet.flatten(button.props.style).alignSelf).toBe('flex-end');
-    }
+    await fireEvent.press(screen.getByRole('button', { name: 'Why does the athan cut off early?' }));
+
+    expect(screen.getByText(/Notification sounds are limited to 30 seconds/)).toBeOnTheScreen();
+    expect(screen.queryByText('\u00bb')).not.toBeOnTheScreen();
+  });
+
+  it('numbers nothing it lists, so no item reads as a step or as done', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await fireEvent.press(screen.getByRole('button', { name: 'Why did notifications stop after a few days?' }));
+
+    expect(screen.getByText('Turn on Background App Refresh in the app settings')).toBeOnTheScreen();
+    expect(screen.queryByText('1')).not.toBeOnTheScreen();
+    expect(screen.queryByText('\u2713')).not.toBeOnTheScreen();
   });
 
   // The three modals share one compact Close button, so Help's must not drift wide again (owner, 2026-09-27)
@@ -85,14 +133,13 @@ describe('the Help modal', () => {
     const close = StyleSheet.flatten(screen.getByRole('button', { name: 'Close' }).props.style);
 
     expect(close.width).toBe(SIZE.modal.buttonWidth);
-    expect(close.alignSelf).toBe('center');
   });
 
-  it('numbers the steps it lists', async () => {
+  it('names the setting to change rather than the screen to find it on', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await fireEvent.press(screen.getByRole('button', { name: "Why don't I get any notifications?" }));
 
-    expect(screen.getByText('Turn on Allow Notifications')).toBeOnTheScreen();
-    expect(screen.getAllByText('2').length).toBeGreaterThan(0);
+    expect(screen.getByText('Turn on Allow Notifications in the app settings')).toBeOnTheScreen();
   });
 
   // A style is read because it is a rule the app keeps: the answers must scroll, or ten of them push Close off screen
@@ -110,6 +157,7 @@ describe('the Help modal on Android', () => {
   it('opens the Do Not Disturb access screen from its own answer', async () => {
     onPlatform('android');
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await fireEvent.press(screen.getByRole('button', { name: 'Why are notifications silenced at certain times?' }));
 
     await fireEvent.press(screen.getByRole('button', { name: 'Grant Do Not Disturb access' }));
 
@@ -117,10 +165,10 @@ describe('the Help modal on Android', () => {
     expect(openAppSettings).not.toHaveBeenCalled();
   });
 
-  it('answers the restart question, which iOS never asks', async () => {
+  it('answers the restart question, which both platforms ask', async () => {
     onPlatform('android');
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    expect(screen.getByText('Why did nothing play after a restart?')).toBeOnTheScreen();
+    expect(screen.getByText('Why did notifications stop after a restart?')).toBeOnTheScreen();
   });
 });

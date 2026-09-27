@@ -1,27 +1,112 @@
+import { useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Animated, {
+  Easing,
+  FadeIn,
+  FadeOut,
+  LinearTransition,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
-import { openAppSettings, openDndAccessSettings } from '@/device/notifications';
+import { openDndAccessSettings } from '@/device/notifications';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { getHelpTopics, HELP_ACTION_LABELS, type HelpAction } from '@/shared/help';
+import { ANIMATION, COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { getHelpTopics, HELP_ACTION_LABELS, type HelpTopic } from '@/shared/help';
 
 import Modal from './Modal';
 
-/** Share of the screen the scrolling answers may take, so the card and its Close button fit every size */
-const ANSWERS_HEIGHT_SHARE = 0.66;
+/** Share of the screen the scrolling list may take, so the card and its Close button fit every size */
+const ANSWERS_HEIGHT_SHARE = 0.62;
 
-/** Slate, never the app's indigo: the modal is a light surface of its own */
 const INK = COLORS.light.text;
-const BODY = 'rgba(52, 78, 92, 0.72)';
-const MUTED = 'rgba(52, 78, 92, 0.5)';
-const CARD = 'rgba(52, 78, 92, 0.03)';
+const BODY = 'rgba(48, 66, 84, 0.66)';
+const HAIRLINE = 'rgba(38, 64, 94, 0.1)';
+const CHEVRON = 'rgba(48, 66, 84, 0.4)';
 
-const runAction = (action: HelpAction) => {
-  if (action === 'dndAccess') {
-    openDndAccessSettings();
-    return;
-  }
-  openAppSettings();
+/** The one accent: it marks the row you opened, and the thing to go and change */
+const ACCENT = 'rgba(13, 115, 119, 1)';
+const ACCENT_TINT = 'rgba(13, 115, 119, 0.05)';
+
+/** The panel grows and shrinks rather than appearing, so the list never jumps under a thumb */
+const GROW = LinearTransition.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic));
+
+/** Slower than the panel: a spin that keeps up with the height reads as a flick rather than a turn */
+const CHEVRON_TURN = { duration: 320, easing: Easing.inOut(Easing.cubic) } as const;
+
+/** The chevron's own width. The panel reserves it too, so no answer ever runs beneath the arrow */
+const CHEVRON_SIZE = 20;
+
+/**
+ * One question, closed until it is asked for
+ *
+ * Every question starts closed and only one is open at a time (owner, 2026-09-27): the page opens as
+ * a list of causes to scan, and only the one a user recognises costs them any reading. The whole row
+ * is the trigger, because a chevron alone is a small target on a phone.
+ */
+const Topic = ({
+  topic,
+  last,
+  open,
+  onToggle,
+}: {
+  topic: HelpTopic;
+  last: boolean;
+  open: boolean;
+  onToggle: () => void;
+}) => {
+  const turn = useSharedValue(open ? 1 : 0);
+
+  turn.value = withTiming(open ? 1 : 0, CHEVRON_TURN);
+
+  const chevronStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${turn.value * -180}deg` }] }));
+
+  const { question, text, steps, action } = topic;
+
+  return (
+    <Animated.View layout={GROW} style={[styles.row, !last && styles.rowRuled, open && styles.rowOpen]}>
+      <Pressable
+        style={styles.head}
+        onPress={onToggle}
+        accessibilityRole='button'
+        accessibilityState={{ expanded: open }}
+        accessibilityLabel={question}>
+        <Text style={styles.question}>{question}</Text>
+        <Animated.Text style={[styles.chevron, chevronStyle]}>{'\u2304'}</Animated.Text>
+      </Pressable>
+
+      {open ? (
+        <Animated.View entering={FadeIn.duration(ANIMATION.duration)} exiting={FadeOut.duration(80)}>
+          <View style={styles.panel}>
+            <Text style={styles.cause}>{text}</Text>
+
+            {steps ? (
+              <View style={styles.fix}>
+                {steps.map((step) => (
+                  <View key={step} style={styles.stepRow}>
+                    <Text style={styles.stepMark}>{'\u00bb'}</Text>
+                    <Text style={styles.stepText}>{step}</Text>
+                  </View>
+                ))}
+              </View>
+            ) : null}
+
+            {action ? (
+              <Pressable
+                style={styles.action}
+                onPress={() => openDndAccessSettings()}
+                accessibilityRole='button'
+                accessibilityLabel={HELP_ACTION_LABELS[action]}>
+                <Text style={styles.actionText}>{HELP_ACTION_LABELS[action]}</Text>
+                <Text style={styles.actionText}>{'\u203a'}</Text>
+              </Pressable>
+            ) : null}
+          </View>
+        </Animated.View>
+      ) : null}
+    </Animated.View>
+  );
 };
 
 type Props = {
@@ -32,65 +117,114 @@ type Props = {
 export default function ModalHelp({ visible, onClose }: Props) {
   const { height } = useWindowDimensions();
   const topics = getHelpTopics(Platform.OS === 'android' ? 'android' : 'ios');
+  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
 
   return (
-    <Modal visible={visible} title='Help' wide divider centreTitle>
-      <ScrollView style={{ maxHeight: height * ANSWERS_HEIGHT_SHARE }} showsVerticalScrollIndicator={false}>
-        {topics.map(({ question, text, steps, action }) => (
-          <View key={question} style={styles.card}>
-            <Text style={styles.question}>{question}</Text>
-            <Text style={styles.answer}>{text}</Text>
-            {steps ? (
-              <View style={styles.steps}>
-                {steps.map((step, index) => (
-                  <View key={step} style={styles.stepRow}>
-                    <Text style={styles.stepNumber}>{index + 1}</Text>
-                    <Text style={styles.stepText}>{step}</Text>
-                  </View>
-                ))}
-              </View>
-            ) : null}
-            {action ? (
-              <Pressable
-                style={styles.action}
-                onPress={() => runAction(action)}
-                accessibilityRole='button'
-                accessibilityLabel={HELP_ACTION_LABELS[action]}>
-                <Text style={styles.actionText}>{HELP_ACTION_LABELS[action]}</Text>
-                <Text style={styles.actionChevron}>›</Text>
-              </Pressable>
-            ) : null}
-          </View>
+    <Modal
+      visible={visible}
+      title='Help'
+      wide
+      divider
+      trailingIcon
+      icon={
+        <View style={styles.titleBadge}>
+          <Text style={styles.titleBadgeGlyph}>?</Text>
+        </View>
+      }>
+      {/* Stretched because the modal centres its children: unstretched, a flexible column measures zero */}
+      <ScrollView
+        style={[styles.list, { maxHeight: height * ANSWERS_HEIGHT_SHARE }]}
+        showsVerticalScrollIndicator={false}>
+        {topics.map((topic, index) => (
+          <Topic
+            key={topic.question}
+            topic={topic}
+            last={index === topics.length - 1}
+            open={openQuestion === topic.question}
+            onToggle={() => setOpenQuestion(openQuestion === topic.question ? null : topic.question)}
+          />
         ))}
       </ScrollView>
-      <Pressable style={styles.button} onPress={onClose} accessibilityRole='button' accessibilityLabel='Close'>
-        <Text style={styles.buttonText}>Close</Text>
-      </Pressable>
+      {/* Animated with the list, or it teleports to its new position while the rows above it slide */}
+      <Animated.View layout={GROW} style={styles.buttonRow}>
+        <Pressable style={styles.button} onPress={onClose} accessibilityRole='button' accessibilityLabel='Close'>
+          <Text style={styles.buttonText}>Close</Text>
+        </Pressable>
+      </Animated.View>
     </Modal>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: CARD,
-    borderRadius: RADIUS.md,
-    padding: SPACING.mid,
+  list: {
+    alignSelf: 'stretch',
+    // The rows bleed to the modal's edges, so an open row's tint fills the width rather than floating
+    marginHorizontal: -SPACING.lg2,
+  },
+  titleBadge: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: INK,
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: SPACING.md,
   },
+  titleBadgeGlyph: {
+    color: COLORS.light.background,
+    fontSize: 10,
+    lineHeight: 16,
+    fontFamily: TEXT.family.medium,
+  },
+  row: {
+    overflow: 'hidden',
+  },
+  rowRuled: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: HAIRLINE,
+  },
+  rowOpen: {
+    backgroundColor: ACCENT_TINT,
+  },
+  head: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    // Wide enough that a question wraps before it ever crowds the chevron
+    gap: SPACING.header + SPACING.xs,
+    paddingVertical: SPACING.mid,
+    paddingLeft: SPACING.header,
+    paddingRight: SPACING.header,
+  },
   question: {
+    flex: 1,
     fontSize: 15,
+    lineHeight: 20,
     fontFamily: TEXT.family.medium,
     color: INK,
     letterSpacing: TEXT.letterSpacing.default,
   },
-  answer: {
+  chevron: {
+    width: CHEVRON_SIZE,
+    textAlign: 'right',
+    fontSize: 20,
+    lineHeight: 12,
+    color: CHEVRON,
+    transform: [{ scaleY: 0.6 }],
+  },
+  panel: {
+    paddingBottom: SPACING.lg2,
+    paddingLeft: SPACING.header,
+    // Ends where the question does, so the text column is identical open or closed, at any width
+    paddingRight: SPACING.header + CHEVRON_SIZE,
+  },
+
+  cause: {
     fontSize: TEXT.sizeDetail - 1,
     fontFamily: TEXT.family.regular,
     color: BODY,
     lineHeight: 20,
-    marginTop: SPACING.xs,
   },
-  steps: {
+  fix: {
     marginTop: SPACING.smd,
     gap: SPACING.xs,
   },
@@ -98,41 +232,39 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: SPACING.sm,
   },
-  stepNumber: {
-    minWidth: 10,
-    fontSize: 12,
-    fontFamily: TEXT.family.medium,
-    color: MUTED,
+  stepMark: {
+    fontSize: 13,
+    lineHeight: 20,
+    color: ACCENT,
   },
   stepText: {
     flex: 1,
     fontSize: TEXT.sizeDetail - 1,
-    fontFamily: TEXT.family.regular,
-    color: BODY,
-    lineHeight: 19,
+    fontFamily: TEXT.family.medium,
+    color: INK,
+    lineHeight: 20,
   },
   action: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'flex-end',
+    alignSelf: 'flex-start',
     gap: SPACING.xs,
     marginTop: SPACING.md,
-    paddingVertical: SPACING.sm,
+    paddingVertical: SPACING.xs,
   },
   actionText: {
-    color: INK,
+    color: ACCENT,
     fontSize: 13,
     fontFamily: TEXT.family.medium,
   },
-  actionChevron: {
-    color: INK,
-    fontSize: 15,
-    fontFamily: TEXT.family.regular,
+  buttonRow: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
   },
   button: {
     width: SIZE.modal.buttonWidth,
-    alignSelf: 'center',
-    marginTop: SPACING.lg,
+    // The air the other modals leave above their button, so the list never crowds it
+    marginTop: SPACING.section - SPACING.mid,
     paddingVertical: SPACING.md,
     borderRadius: RADIUS.lg,
     alignItems: 'center',
