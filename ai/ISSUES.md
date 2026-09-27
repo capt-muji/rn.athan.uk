@@ -3,7 +3,7 @@
 Last updated: 2026-09-24 — #36 added and fixed (lost alarms stayed lost, because the refresh gate
 trusted a timestamp), #37 opened (the background task demands a network it does not use). Ledger
 compacted 2026-09-20: closed issues moved to the one-line index at the bottom (full detail in git
-history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, G.1, G.2.
+history); open issues keep their detail verbatim. Open now: #10, #17, #27, #37, #38, G.1, G.2.
 
 Notes: the fleet gained a Huawei/Honor phone 2026-09-09 (owner-installed 1.24.1 via the EAS
 link; its USB never enumerated on the Mac). Upstream watches dropped: #44540 (closed upstream via
@@ -894,6 +894,51 @@ answered from this Mac (`resultCount 1 version 1.5.1` for iTunes, `key141 1.5.2`
 `readPlayListingVersion` was run against the 1.14 MB page as served that day. Evidence in
 `ai/plans/30-store-version-automatic/` and `~/athan-device-sweep/session30/`.
 
+### 41. [FIXED 2026-09-27, session 31] Five notification tests passed only before 12:00 London, because the seed read the real clock
+
+**Symptom.** `stores/__tests__/notifications.test.ts` fails 5 of its 160 tests when run after 12:00 Europe/London, and
+passes all 160 before it. Nothing in the repository changes between the two runs. Reproduced at 13:56 on 2026-09-27
+against `uat-2` at `5c3f2f00`, and confirmed present at `a265ec1d` and every commit between, so it predates sessions
+30 and 31.
+
+The five:
+- `updates lastNotificationScheduleAtom on success`
+- `refreshes prayer data (sync) before rescheduling — year-boundary guard`
+- `still reschedules from cache when sync fails (best-effort data contract)`
+- `leaves the gate open when that happens while it reschedules`
+- `stamps the gate when only its own sync changed them, since it reads the days after that sync`
+
+**Root cause, proven by changing one thing.** The `beforeEach` of the `rescheduleAllNotificationsFromBackground`
+describe seeds today's prayer record with **every prayer at `12:00`**, using `TimeUtils.getTodayDateString()`, which
+reads the real system clock. Session 28 made the scheduler take rows in time order and skip rows already past, so
+after 12:00 every seeded row is in the past, the reschedule arms nothing, and the assertions about a completed
+reschedule fail. Changing the seeded times from `12:00` to a spread of `23:50` to `23:58` and changing nothing else
+makes all 160 pass: measured, `Tests: 160 passed, 160 total`.
+
+**Why it was never seen.** Every commit on 2026-09-27 ran before 12:00 (10:29 to 10:33), so the pre-commit hook was
+green each time. The suite is a time bomb that arms itself at noon every day.
+
+**Where to fix.** `stores/__tests__/notifications.test.ts`, the `beforeEach` at the top of the
+`rescheduleAllNotificationsFromBackground` describe. The seed must not depend on the wall clock: either pin the clock
+with `jest.useFakeTimers({ now: ... })` as the rest of the repo does, or seed times that are always in the future
+relative to a pinned now. **Do not fix it by choosing a later constant**, which only moves the bomb to a later hour.
+
+**The fix.** The clock is pinned with `jest.useFakeTimers({ now: london('2026-09-11', '09:00') })` before the seed is
+built, the seeded day is the fixed `SEEDED_DAY` constant rather than `TimeUtils.getTodayDateString()`, and the nine
+prayers are spread `12:00` to `12:08` so their order is distinguishable. An `afterEach` restores real timers. The
+suite now passes at any hour: `Tests: 160 passed, 160 total`.
+
+**Owner's ruling, 2026-09-27, and it is the general rule here:** 🐋  "a test should not be based on what time of date
+being run. Our test should be mocking the time... everything should be mocked so that we can properly test the
+scenarios. That's the whole point of a test." Any test whose result can depend on when it runs is a defect, not a
+flake to be re-run.
+
+**Audited for the same class of bug across the suite.** The dangerous pattern is a REAL-clock day read
+(`getTodayDateString()`) feeding a FIXED clock time, because the two disagree once the day advances past that time.
+`getTodayDateString()` now appears in exactly one other test, `shared/__tests__/time.test.ts:705`, which pins the
+clock with `setSystemTime` first and is correct. Every remaining `Date.now()` in the notification suite is a relative
+offset (`Date.now() - N hours`), which is hour-independent by construction.
+
 ---
 
 ## Fixed (index)
@@ -935,6 +980,7 @@ characterised).
 - #33 — One-in-sixty flaky test from an unpinned fake clock (fixed)
 - #34 — App update cancelled every armed alert, then stayed quiet 12 h (fixed)
 - #35 — Update prompt read a hand-edited releases.json; both stores now answer for themselves (fixed)
+- #41 — Five notification tests passed only before 12:00 London; the seed read the real clock (fixed)
 - F.1 — Render crash selecting a prayer during a schedule refresh (fixed)
 - F.2 — @expo/ui community bottom sheets migration (reverted)
 - F.3 — Per-prayer alert config is index-keyed, not name-keyed (accepted)
