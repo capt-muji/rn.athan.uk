@@ -196,7 +196,7 @@ export default function Index() {
     setPopupUpdateEnabled(false);
   };
 
-  const handleContinueWhatsNew = () => {
+  const handleCloseWhatsNew = () => {
     setPopupWhatsNewEnabled(false);
   };
 
@@ -222,7 +222,7 @@ export default function Index() {
           visible={whatsNewVisible}
           version={installedVersion}
           items={VISIBLE_WHATS_NEW.items}
-          onContinue={handleContinueWhatsNew}
+          onClose={handleCloseWhatsNew}
         />
       ) : null}
       {chromeDeferred && <ModalHelp visible={helpVisible} onClose={handleCloseHelp} />}

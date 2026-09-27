@@ -1,5 +1,5 @@
 /**
- * The What's New modal: the version it is headed with, each item and its platform note, and Continue
+ * The What's New modal: the version it is headed with, each item and its platform note, and Close
  */
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
@@ -14,19 +14,19 @@ const SOUNDS: WhatsNewItem = { title: 'Athan sounds', body: 'New Athan sounds ad
 
 describe("the What's New modal after an update to 1.27.140", () => {
   it('shows nothing while it is not visible', async () => {
-    await render(<ModalWhatsNew visible={false} version='1.27.140' items={[TABLETS]} onContinue={jest.fn()} />);
+    await render(<ModalWhatsNew visible={false} version='1.27.140' items={[TABLETS]} onClose={jest.fn()} />);
 
     expect(screen.queryByText("What's New")).toBeNull();
   });
 
   it('heads the list with the installed version', async () => {
-    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS]} onContinue={jest.fn()} />);
+    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS]} onClose={jest.fn()} />);
 
     expect(screen.getByText('v1.27.140')).toBeOnTheScreen();
   });
 
   it('lists every item by title and body, with no platform note on an item available everywhere', async () => {
-    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS, SOUNDS]} onContinue={jest.fn()} />);
+    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS, SOUNDS]} onClose={jest.fn()} />);
 
     expect(screen.getByText('Tablet support')).toBeOnTheScreen();
     expect(screen.getByText('Athan now supported on tablets')).toBeOnTheScreen();
@@ -45,7 +45,7 @@ describe("the What's New modal after an update to 1.27.140", () => {
       platform,
       version: '1.27.140',
     };
-    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[item]} onContinue={jest.fn()} />);
+    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[item]} onClose={jest.fn()} />);
 
     expect(screen.getByText(`Add prayer times to your Home Screen (${platformName} only)`)).toBeOnTheScreen();
   });
@@ -63,25 +63,25 @@ describe("the What's New modal after an update to 1.27.140", () => {
       version: '1.27.140',
     };
 
-    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[item]} onContinue={jest.fn()} />);
+    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[item]} onClose={jest.fn()} />);
 
     expect(screen.getByTestId(badge, { includeHiddenElements: true })).toBeOnTheScreen();
     expect(screen.queryByTestId(otherBadge, { includeHiddenElements: true })).not.toBeOnTheScreen();
   });
 
   it('badges an item available everywhere with both glyphs', async () => {
-    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS]} onContinue={jest.fn()} />);
+    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS]} onClose={jest.fn()} />);
 
     expect(screen.getByTestId('svg:apple', { includeHiddenElements: true })).toBeOnTheScreen();
     expect(screen.getByTestId('svg:android', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
-  it('reports Continue when it is pressed', async () => {
-    const onContinue = jest.fn();
-    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS]} onContinue={onContinue} />);
+  it('reports Close when it is pressed', async () => {
+    const onClose = jest.fn();
+    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS]} onClose={onClose} />);
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Close' }));
 
-    expect(onContinue).toHaveBeenCalledTimes(1);
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

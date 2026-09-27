@@ -2,7 +2,7 @@ import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-n
 
 import { openAppSettings, openDndAccessSettings } from '@/device/notifications';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { getHelpTopics, HELP_ACTION_LABELS, type HelpAction } from '@/shared/help';
 
 import Modal from './Modal';
@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
   },
   button: {
-    alignSelf: 'stretch',
+    width: SIZE.modal.buttonWidth,
+    alignSelf: 'center',
     marginTop: SPACING.lg,
     paddingVertical: SPACING.md,
     borderRadius: RADIUS.lg,
