@@ -83,11 +83,12 @@ export const NOTIFICATION_REQUEST_BUDGET = 64;
 /**
  * How far ahead the candidate walk may look for rows to arm.
  *
- * A loop guard, never a coverage limit: the budget or the end of the cached year stops the
- * walk first for every user, which `shared/__tests__/constants.test.ts` pins. Without it a
- * thin cache would make the walk scan forever for a candidate that does not exist.
+ * A loop guard, never a coverage limit, so it must exceed the furthest the budget could ever
+ * reach: one prayer armed with no reminder spends one request per day, so the budget alone can
+ * reach `NOTIFICATION_REQUEST_BUDGET` days and anything smaller would silently cap that user.
+ * Without a bound, a thin cache would make the walk scan forever for a row that does not exist.
  */
-export const SCHEDULE_CANDIDATE_DAYS = 60;
+export const SCHEDULE_CANDIDATE_DAYS = NOTIFICATION_REQUEST_BUDGET + 1;
 
 /**
  * Valid reminder intervals in minutes before prayer time
