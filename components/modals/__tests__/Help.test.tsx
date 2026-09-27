@@ -27,7 +27,7 @@ describe('the Help modal', () => {
   it('answers the question a silent phone raises first', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    expect(screen.getByText('Are notifications turned on for Athan?')).toBeOnTheScreen();
+    expect(screen.getByText('Notifications are turned off')).toBeOnTheScreen();
   });
 
   it('lists every question its platform answers', async () => {
@@ -68,6 +68,19 @@ describe('the Help modal', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
+  it('draws a dot before every question, so a question reads as one', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    expect(screen.getAllByText('\u2022')).toHaveLength(getHelpTopics('ios').length);
+  });
+
+  it('numbers the steps it lists', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    expect(screen.getByText('Turn on Allow Notifications')).toBeOnTheScreen();
+    expect(screen.getAllByText('2.').length).toBeGreaterThan(0);
+  });
+
   // A style is read because it is a rule the app keeps: the answers must scroll, or ten of them push Close off screen
   it('scrolls its answers rather than growing past the screen', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
@@ -94,6 +107,6 @@ describe('the Help modal on Android', () => {
     onPlatform('android');
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    expect(screen.getByText('I restarted my phone and heard nothing.')).toBeOnTheScreen();
+    expect(screen.getByText('Nothing played after a restart')).toBeOnTheScreen();
   });
 });
