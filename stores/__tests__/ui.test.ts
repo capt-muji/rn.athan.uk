@@ -62,14 +62,10 @@ const {
   countdownBarShownAtom,
   englishWidthExtraAtom,
   englishWidthStandardAtom,
-  getAlertSheetState,
-  getMeasurementsDate,
   getMeasurementsList,
   getPopupUpdateLastCheck,
-  hideAlertSheet,
   hideSettingsSheet,
   hijriDateEnabledAtom,
-  measurementsDateAtom,
   measurementsListAtom,
   playingSoundIndexAtom,
   popupHelpEnabledAtom,
@@ -79,7 +75,6 @@ const {
   setAlertSheetModal,
   setBottomSheetModal,
   setEnglishWidth,
-  setMeasurementsDate,
   setMeasurementsList,
   setPlayingSoundIndex,
   setPopupHelpEnabled,
@@ -180,15 +175,6 @@ describe('sheet modal functions', () => {
 
     expect(mockDismiss).toHaveBeenCalled();
   });
-
-  it('hideAlertSheet calls dismiss on modal', () => {
-    const mockModal = createMockModal();
-    mockDefaultStoreGet.mockReturnValue(mockModal);
-
-    hideAlertSheet();
-
-    expect(mockDismiss).toHaveBeenCalled();
-  });
 });
 
 // =============================================================================
@@ -239,14 +225,6 @@ describe('alert sheet state functions', () => {
 
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(alertSheetStateAtom, mockAlertState);
     expect(mockPresent).toHaveBeenCalled();
-  });
-
-  it('getAlertSheetState returns the state', () => {
-    mockDefaultStoreGet.mockReturnValue(mockAlertState);
-
-    const result = getAlertSheetState();
-
-    expect(result).toBe(mockAlertState);
   });
 });
 
@@ -365,15 +343,5 @@ describe('measurement functions', () => {
   it('setMeasurementsList sets value', () => {
     setMeasurementsList(mockCoordinates);
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(measurementsListAtom, mockCoordinates);
-  });
-
-  it('getMeasurementsDate returns value', () => {
-    mockDefaultStoreGet.mockReturnValue(mockCoordinates);
-    expect(getMeasurementsDate()).toBe(mockCoordinates);
-  });
-
-  it('setMeasurementsDate sets value', () => {
-    setMeasurementsDate(mockCoordinates);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(measurementsDateAtom, mockCoordinates);
   });
 });

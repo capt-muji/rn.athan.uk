@@ -536,17 +536,6 @@ export const getPrevPrayer = (type: ScheduleType): ReadablePrayer | null => {
 };
 
 /**
- * Gets the current display date for a schedule
- *
- * @param type Schedule type (Standard or Extra)
- * @returns Display date string (YYYY-MM-DD) or null
- */
-export const getDisplayDate = (type: ScheduleType): string | null => {
-  const displayDateAtom = type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom;
-  return store.get(displayDateAtom);
-};
-
-/**
  * Gets the next moment what a schedule shows changes: its next readable prayer, or 00:00 London ending a
  * list on screen that waits for its day to end (a day with no readable row, or the day before one)
  *
