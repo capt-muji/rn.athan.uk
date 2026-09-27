@@ -15,14 +15,10 @@ import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 
-let firstProvider = 'unavailable';
-
 if (Platform.OS === 'android') {
   try {
-    firstProvider = requireNativeModule('Tls13').status() as string;
+    logger.info('TLS13: first security provider', { provider: requireNativeModule('Tls13').status() as string });
   } catch (error) {
     logger.warn('TLS13: module unavailable', { error });
   }
 }
-
-export const tls13FirstProvider = firstProvider;
