@@ -158,7 +158,7 @@
    python3 scripts/find-unused-exports.py | head -2
    ```
 
-   prints `NEVER reachable from production code: 8`.
+   prints `NEVER reachable from production code: 7`.
 
 7. **Breaks.** Save as `$TMPDIR/breaks-34-5.sh` and run `bash $TMPDIR/breaks-34-5.sh` from the
    repository root.
@@ -311,7 +311,7 @@
 11. **Done when:**
 
     - `python3 scripts/find-unused-exports.py | head -2` prints
-      `NEVER reachable from production code: 8`;
+      `NEVER reachable from production code: 7`;
     - `npx tsc --noEmit` exits 0;
     - `npx biome check . --error-on-warnings` exits 0;
     - `grep -rn 'getDisplayDate\|hideAlertSheet\|getAlertSheetState\|getMeasurementsDate\|setMeasurementsDate\|measurementsDateAtom' app/ components/ shared/ stores/ hooks/ device/` prints nothing;

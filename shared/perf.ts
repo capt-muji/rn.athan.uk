@@ -16,8 +16,8 @@
  *   ring buffer, mirrored to the 'perf-monitor' MMKV instance (separate from
  *   the app schema) and streamed to pino ('PERF' lines) for syslog/logcat
  *   extraction on physical devices.
- * - MMKV flushes: every FLUSH_THRESHOLD entries, on app background, and via
- *   perfFlush(). The ring is a snapshot (bounded overwrite), never a log.
+ * - MMKV flushes: every FLUSH_THRESHOLD entries and on app background. The ring
+ *   is a snapshot (bounded overwrite), never a log.
  * - Marks made BEFORE initPerfMonitor() (import-time work such as the
  *   synchronous cache bootstrap) are buffered and replayed at init, carrying
  *   their true epoch in detail.at — see pendingMarks.
@@ -52,7 +52,6 @@ type PerfPerformance = PerfModule['default'];
 type PerfStorage = ReturnType<typeof createMMKV>;
 
 let perfModule: PerfModule | null = null;
-let perfStorage: PerfStorage | null = null;
 const ring: RingEntry[] = [];
 let seq = 0;
 let epochOffset = 0;
@@ -194,7 +193,6 @@ export const initPerfMonitor = (): void => {
   // require above happens to be what loaded it. now() has no such coupling.
   epochOffset = Date.now() - lib.default.now();
   const storage = createMMKV({ id: MMKV_ID });
-  perfStorage = storage;
 
   const recordEntries = recordEntriesInto(storage);
   new lib.PerformanceObserver(recordEntries).observe({ type: 'mark', buffered: true });
@@ -246,13 +244,3 @@ export const perfMeasure = (name: string, startMark: string, detail?: Record<str
 
   perfModule.default.measure(name, { start: startMark, ...(detail ? { detail } : {}) });
 };
-
-/** Flushes the ring buffer to MMKV immediately (e.g. before a measurement run ends) */
-export const perfFlush = (reason = 'manual'): void => {
-  if (!PERF_ENABLED || !perfStorage) return;
-
-  flushRing(perfStorage, reason);
-};
-
-/** Test/inspection access to the in-memory ring (empty when disabled) */
-export const getPerfRing = (): RingEntry[] => ring;

@@ -12,7 +12,6 @@ import {
   EXTRAS_ENGLISH,
   EXTRAS_EXPLANATIONS,
   EXTRAS_EXPLANATIONS_ARABIC,
-  ISTIJABA_INDEX,
   NIGHT_PRAYER_NAMES,
   NOTIFICATION_REQUEST_BUDGET,
   PRAYERS_ARABIC,
@@ -83,20 +82,6 @@ describe('prayer arrays alignment', () => {
 
   it('EXTRAS_ENGLISH contains 5 extra prayers', () => {
     expect(EXTRAS_ENGLISH).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba']);
-  });
-});
-
-// =============================================================================
-// ISTIJABA_INDEX TESTS
-// =============================================================================
-
-describe('ISTIJABA_INDEX', () => {
-  it('points to Istijaba in EXTRAS_ENGLISH', () => {
-    expect(EXTRAS_ENGLISH[ISTIJABA_INDEX]).toBe('Istijaba');
-  });
-
-  it('is the last index in EXTRAS arrays', () => {
-    expect(ISTIJABA_INDEX).toBe(EXTRAS_ENGLISH.length - 1);
   });
 });
 
