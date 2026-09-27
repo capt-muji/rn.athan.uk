@@ -1,0 +1,8 @@
+      {/* Gated so the nag never stacks on the What's New or Help modal */}
+      {chromeDeferred && (
+        <ModalUpdate
+          visible={updateAvailable && !whatsNewVisible && !helpVisible}
+          onClose={handleCloseUpdate}
+          onUpdate={handleUpdate}
+        />
+      )}
