@@ -1,0 +1,19 @@
+  const commitSoundSelection = async (selection: number): Promise<boolean> => {
+    const previousSelection = NotificationStore.getSoundPreference();
+
+    perfMark('sound_commit_start');
+    NotificationStore.setSoundPreference(selection);
+
+    try {
+      await Device.updateAndroidChannel(selection);
+      await NotificationStore.rescheduleAllNotifications();
+      perfMeasure('sound_commit', 'sound_commit_start');
+
+      logger.info('NOTIFICATION: Committed athan selection:', { previousSelection, selection });
+      return true;
+    } catch (error) {
+      NotificationStore.setSoundPreference(previousSelection);
+      logger.error('NOTIFICATION: Failed to commit athan selection, rolled back:', error);
+      return false;
+    }
+  };
