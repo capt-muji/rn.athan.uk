@@ -10,24 +10,24 @@ describe('getHelpTopics', () => {
   });
 
   it('asks about notifications first on both platforms, since it is the most common cause', () => {
-    expect(getHelpTopics('ios')[0].question).toBe('Notifications are turned off');
-    expect(getHelpTopics('android')[0].question).toBe('Notifications are turned off');
+    expect(getHelpTopics('ios')[0].question).toBe('Why do I get no alerts at all?');
+    expect(getHelpTopics('android')[0].question).toBe('Why do I get no alerts at all?');
   });
 
   it('keeps the reboot question for Android alone, where an alarm is cleared by a restart', () => {
     const iosQuestions = getHelpTopics('ios').map((topic) => topic.question);
     const androidQuestions = getHelpTopics('android').map((topic) => topic.question);
 
-    expect(androidQuestions).toContain('Nothing played after a restart');
-    expect(iosQuestions).not.toContain('Nothing played after a restart');
+    expect(androidQuestions).toContain('Why did nothing play after a restart?');
+    expect(iosQuestions).not.toContain('Why did nothing play after a restart?');
   });
 
   it('keeps the alarm volume question for Android alone, which is the platform that plays on that stream', () => {
     const iosQuestions = getHelpTopics('ios').map((topic) => topic.question);
     const androidQuestions = getHelpTopics('android').map((topic) => topic.question);
 
-    expect(androidQuestions).toContain('The athan is too quiet');
-    expect(iosQuestions).not.toContain('The athan is too quiet');
+    expect(androidQuestions).toContain('Why is the athan so quiet?');
+    expect(iosQuestions).not.toContain('Why is the athan so quiet?');
   });
 
   it('offers the Do Not Disturb grant on Android only, which is the one platform that has it', () => {
@@ -45,7 +45,7 @@ describe('getHelpTopics', () => {
 
   it('words the silent switch answer for each platform rather than sharing one', () => {
     const silentOn = (os: 'ios' | 'android') =>
-      getHelpTopics(os).find((topic) => topic.question === 'The silence switch is on')?.text;
+      getHelpTopics(os).find((topic) => topic.question === 'Why does an alert show but play no sound?')?.text;
 
     expect(silentOn('ios')).toContain('mutes notification sound');
     expect(silentOn('android')).toContain('Silent mode');
@@ -53,7 +53,7 @@ describe('getHelpTopics', () => {
 
   it('never claims an app setting can play through the silent switch', () => {
     for (const os of ['ios', 'android'] as const) {
-      const silent = getHelpTopics(os).find((topic) => topic.question === 'The silence switch is on');
+      const silent = getHelpTopics(os).find((topic) => topic.question === 'Why does an alert show but play no sound?');
 
       expect(silent?.text).toContain('No app can play through it.');
     }
