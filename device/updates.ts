@@ -1,3 +1,4 @@
+import * as InAppUpdates from 'expo-in-app-updates';
 import { Linking, Platform } from 'react-native';
 
 import { APP_CONFIG } from '@/shared/config';
@@ -12,26 +13,26 @@ const IS_IOS = Platform.OS === 'ios';
 // country=gb is load-bearing, not tidiable: the app is published in the GB storefront alone and a
 // bundleId lookup is storefront-scoped, so every other country answers resultCount 0
 const ITUNES_LOOKUP_URL = 'https://itunes.apple.com/lookup?bundleId=com.mugtaba.athan&country=gb';
-const PLAY_LISTING_URL = `https://play.google.com/store/apps/details?id=${APP_CONFIG.androidPackage}&hl=en&gl=GB`;
 
 const APP_STORE_URL = `https://apps.apple.com/gb/app/athan-london/id${APP_CONFIG.iosAppId}`;
-const PLAY_STORE_URL = `market://details?id=${APP_CONFIG.androidPackage}`;
-// A device without the Play client refuses the market:// intent, and the button did nothing at all
-const PLAY_STORE_WEB_URL = `https://play.google.com/store/apps/details?id=${APP_CONFIG.androidPackage}`;
-
-// Keyed on the payload's version field, never on the version's shape: the listing holds 8 matches for a
-// bare dotted number and 7 of them are SVG path coordinates
-const PLAY_VERSION_KEY = /"141":\s*\[\s*\[\s*\[\s*"([^"]+)"/;
-const DOTTED_NUMBERS = /^\d+(\.\d+)*$/;
 
 /**
- * The version the Play listing publishes, or null when it carries none this reader can compare
- * @param html The listing page as served
+ * Asks Play for an update and starts the flexible flow when there is one
+ * @returns Whether Play answered, which is false when it could not be reached
  */
-export const readPlayListingVersion = (html: string): string | null => {
-  const version = PLAY_VERSION_KEY.exec(html)?.[1];
+export const startNativeUpdate = async (): Promise<boolean> => {
+  try {
+    const { updateAvailable } = await InAppUpdates.checkForUpdate();
 
-  return version !== undefined && DOTTED_NUMBERS.test(version) ? version : null;
+    // No argument selects flexible, so the app stays usable while Play downloads, and Play Console's
+    // updatePriority can escalate later without an app change
+    if (updateAvailable) await InAppUpdates.startUpdate();
+
+    return true;
+  } catch (error) {
+    logger.warn('Failed to start native update:', error);
+    return false;
+  }
 };
 
 // AbortSignal.timeout reads better and is armed by a host timer jest's fake timers cannot drive, so a
@@ -48,20 +49,14 @@ const fetchWithTimeout = async (url: string): Promise<Response> => {
 };
 
 /**
- * The version the platform's own store publishes: the App Store on iOS, the Play listing on Android
- * @returns The store's version, null when the store published none, or false when the read failed
+ * The version the App Store publishes
+ * @returns The store's version, null when it published none, or false when the read failed
  */
 const getStoreVersion = async (): Promise<string | null | false> => {
   try {
-    if (IS_IOS) {
-      const response = await fetchWithTimeout(ITUNES_LOOKUP_URL);
-      const data: { results: { version: string }[] } = await response.json();
-      return data.results[0]?.version ?? null;
-    }
-
-    const response = await fetchWithTimeout(PLAY_LISTING_URL);
-    const html = await response.text();
-    return readPlayListingVersion(html);
+    const response = await fetchWithTimeout(ITUNES_LOOKUP_URL);
+    const data: { results: { version: string }[] } = await response.json();
+    return data.results[0]?.version ?? null;
   } catch (error) {
     logger.warn('Failed to fetch store version:', error);
     return false;
@@ -69,9 +64,8 @@ const getStoreVersion = async (): Promise<string | null | false> => {
 };
 
 /**
- * Checks if app needs an update by comparing installed version with store version
- * Throttled to once per 24 hours
- * @returns true if update is needed (installed < store), false otherwise
+ * Checks whether an update is available, throttled to once per 24 hours
+ * @returns Whether to show the update modal, which is always false on Android because Play's own overlay owns that flow
  */
 export const checkForUpdates = async (): Promise<boolean> => {
   const now = Date.now();
@@ -83,6 +77,15 @@ export const checkForUpdates = async (): Promise<boolean> => {
   const stampFailure = () => setPopupUpdateLastCheck(now - TIME_CONSTANTS.ONE_DAY_MS + TIME_CONSTANTS.UPDATE_RETRY_MS);
 
   try {
+    if (!IS_IOS) {
+      const awaitedNative = await startNativeUpdate();
+
+      if (awaitedNative) setPopupUpdateLastCheck(now);
+      else stampFailure();
+
+      return false;
+    }
+
     const installedVersion = getInstalledVersion();
     const storeVersion = await getStoreVersion();
 
@@ -105,17 +108,8 @@ export const checkForUpdates = async (): Promise<boolean> => {
 
 export const openStore = async (): Promise<void> => {
   try {
-    await Linking.openURL(IS_IOS ? APP_STORE_URL : PLAY_STORE_URL);
+    await Linking.openURL(APP_STORE_URL);
   } catch (error) {
-    if (IS_IOS) {
-      logger.error('Failed to open store URL:', error);
-      return;
-    }
-
-    try {
-      await Linking.openURL(PLAY_STORE_WEB_URL);
-    } catch (fallbackError) {
-      logger.error('Failed to open store URL:', fallbackError);
-    }
+    logger.error('Failed to open store URL:', error);
   }
 };
