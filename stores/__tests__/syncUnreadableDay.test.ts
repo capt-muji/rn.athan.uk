@@ -42,7 +42,13 @@ import { type CountdownStore, type ISingleApiResponseTransformed, ScheduleType }
 import { overlayAtom } from '@/stores/atoms/overlay';
 import { clearOverlayBoundary, getCountdownAtom } from '@/stores/countdown';
 import * as Database from '@/stores/database';
-import { extraSequenceAtom, getDisplayDate, getSequenceAtom, standardSequenceAtom } from '@/stores/schedule';
+import {
+  extraDisplayDateAtom,
+  extraSequenceAtom,
+  getSequenceAtom,
+  standardDisplayDateAtom,
+  standardSequenceAtom,
+} from '@/stores/schedule';
 
 import { sync } from '../sync';
 
@@ -54,6 +60,9 @@ const STANDARD = ScheduleType.Standard;
 const EXTRA = ScheduleType.Extra;
 
 const store = getDefaultStore();
+/** The display date a schedule shows, read from the atom the day header renders */
+const displayDateOf = (type: ScheduleType): string | null =>
+  store.get(type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom);
 
 const THE_DAY = '2026-09-14';
 
@@ -161,7 +170,7 @@ const rowsOf = (type: ScheduleType, listDay: string) =>
     .map((prayer) => (prayer.datetime ? prayer.english : `[${prayer.english}]`));
 
 const onScreen = (type: ScheduleType) => ({
-  listDay: getDisplayDate(type),
+  listDay: displayDateOf(type),
   countdown: store.get(getCountdownAtom(type)),
 });
 
@@ -296,8 +305,8 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
 
     expect(standardOutOfTheDay).toEqual(['2026-09-14T23:00:00.000Z']);
     expect(extraOutOfTheDay).toEqual(['2026-09-14T23:00:00.000Z']);
-    expect(getDisplayDate(STANDARD)).toBe('2026-09-15');
-    expect(getDisplayDate(EXTRA)).toBe('2026-09-15');
+    expect(displayDateOf(STANDARD)).toBe('2026-09-15');
+    expect(displayDateOf(EXTRA)).toBe('2026-09-15');
     // The 15th's night starts at the 14th's Magrib, which the provider did not give, so nothing may stand in for it
     expect(rowsOf(STANDARD, '2026-09-15')).toEqual(['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha']);
     expect(rowsOf(EXTRA, '2026-09-15')).toEqual(['[Midnight]', '[Last Third]', 'Suhoor', 'Duha']);
