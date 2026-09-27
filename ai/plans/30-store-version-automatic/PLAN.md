@@ -363,8 +363,8 @@ findings, all applied before the steps were written:
 ## 6. Steps
 
 - [x] Step 1: DONE in `fb79a770`
-- [x] Step 2: DONE in `89f28ce3`
-- [x] Step 3: DONE in the commit this step makes
+- [x] Step 2: DONE in `bb281574`
+- [x] Step 3: DONE in `472f734b`
 
 ---
 
