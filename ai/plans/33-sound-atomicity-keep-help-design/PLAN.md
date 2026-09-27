@@ -266,9 +266,9 @@ into a test edit. Only the two rules are pinned.
 
 ## 6. Steps
 
-- [ ] Step 1: The athan change is all or nothing, selection included (specified)
-- [ ] Step 2: ISSUES #42, the previous-row keep, guarded by what it actually decides (specified)
-- [ ] Step 3: The Help modal's visual design, as the owner specified it (specified)
+- [x] Step 1: DONE in `41c3a7c6` (merged `e23e952d`)
+- [x] Step 2: DONE in `5e8272ac` (merged `6e658872`)
+- [x] Step 3: DONE in `475176d4` (merged `9f1f4924`)
 
 Each step is in its own file, run in this order:
 
