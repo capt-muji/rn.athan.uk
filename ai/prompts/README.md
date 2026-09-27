@@ -43,6 +43,25 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-09-27, after session 32: the remaining work is two sessions
+
+Session 32 listed everything still waiting, and the owner grouped it all in one pass.
+
+- **Row 33 takes three items together, and it is the very next session.** 🐋  "I want to address the advanced
+  sound, the change bug, the issue number 42, and the help Murdo's visual design. I want to address all of
+  those in this next session." So the athan sound change bug (owner-approved as its own session back on
+  2026-09-15 and never given a row), ISSUES #42's untested keep test, and the Help modal's visual design
+  share one session, one branch and commit per finding.
+- **Row 34 takes the rest, in one session of its own.** Everything that had accumulated in `ai/plans/README.md`'s
+  "Waiting on the owner" list: the accessibility fixes, the edge-to-edge built-in switch, finding 74, the
+  `audioMatrix` timeout and the leftover 3T channels. The owner's framing: all of these live in one, its own
+  session, but after the next one.
+- **What did NOT get queued, and why.** `allowFontScaling: false` is inside row 34's accessibility step but is an
+  owner DECISION rather than a fix: it is deliberate, it protects the layout's single `57` constant, and it is a
+  recorded WCAG 1.4.4 trade-off. The edge-to-edge step is blocked on hardware, needing an Android 10+ device beside
+  the 3T. The dashes approval page's open choices and the five deferred features (D2 qibla, D4 localization, D5
+  location) stay unqueued until the owner specs them.
+
 ## Decided by the owner, 2026-09-27, while planning session 29 (the Help page)
 
 - **It is a MODAL, not a second bottom sheet.** 🐋  "I have decided to make it a modal. It needs to be
