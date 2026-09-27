@@ -306,8 +306,8 @@ Reviewed by this planning session on 2026-09-27, reading the design cold and att
 
 ## 6. Steps
 
-- [x] Step 1: DONE in `559b2c8e`
-- [ ] Step 2: the Update button is iOS-only (specified)
+- [x] Step 1: DONE in `31b5f511`
+- [x] Step 2: DONE in the commit this step makes
 - [ ] Step 3: the package's own contract is pinned by a test (specified)
 - [ ] Step 4: `releases.json` is deleted, and every live rule that names it (specified)
 
