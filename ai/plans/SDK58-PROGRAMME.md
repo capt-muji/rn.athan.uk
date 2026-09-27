@@ -348,7 +348,12 @@ shrink and the freed iOS pending-notification slots pay for a second reminder.
 
 - UI shape (owner): a Reminders master toggle, then Reminder 1, then Reminder 2, where
   Reminder 2 stays disabled until Reminder 1 is enabled.
-- **DECIDED by the owner, 2026-09-26: 1 day, one at-time alert and TWO reminders.**
+- **SUPERSEDED, and D3 is DONE (session 28, 2026-09-27).** The window is no longer counted in days at
+  all: rows are armed in time order, each one whole, until the next will not fit in a 64-request
+  budget. Everything below this line is the reasoning that led to the day-count ruling, kept because
+  it explains why the unit had to change; the arithmetic in it no longer describes the code. The
+  record is `ai/plans/28-d3-rolling-buffer/PLAN.md` and its `AUDIT.md`.
+- **DECIDED by the owner, 2026-09-26, then superseded: 1 day, one at-time alert and TWO reminders.**
 - iOS 64-pending cap maths, corrected on 2026-09-26 against `rollingDaysForPrayer`. The earlier
   figures here (44 today, 33 after) were wrong because they multiplied 11 prayers by the window
   directly. The window is NOT uniform: Midnight and Last Third fire the evening before their list
