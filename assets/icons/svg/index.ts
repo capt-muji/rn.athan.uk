@@ -10,7 +10,6 @@ import InfoIcon from './info.svg';
 import MusicNoteIcon from './music-note.svg';
 import PauseIcon from './pause.svg';
 import PlayIcon from './play.svg';
-import QuestionIcon from './question.svg';
 import SpeakerIcon from './speaker.svg';
 import WidgetIcon from './widget.svg';
 
@@ -22,7 +21,6 @@ const ICONS: Record<Icon, typeof BellRingIcon> = {
   [Icon.PAUSE]: PauseIcon,
   [Icon.INFO]: InfoIcon,
   [Icon.MUSIC_NOTE]: MusicNoteIcon,
-  [Icon.QUESTION]: QuestionIcon,
   [Icon.CHECK]: CheckIcon,
   [Icon.CLOSE]: CloseIcon,
   [Icon.WIDGET]: WidgetIcon,
