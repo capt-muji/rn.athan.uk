@@ -236,6 +236,20 @@ Status legend: [FIXED 1.5.3] shipped in commit 438f8e5 / PR #164 · [OPEN] not y
   DIFFERENT toggles from the per-app battery optimization already tried) — feeds #10. The
   dumpsys EXACT ground-truth check lives in #10/#14; the clock-skew test only if #11-style
   early fires recur.
+- **#44 (FIXED 2026-09-28, session 34): `widgetAndroid.test.ts` failed for part of every hour, and
+  ISSUES #41's rule is the reason.** `stores/__tests__/widgetAndroid.test.ts`'s "reloads the home
+  kinds at a minute flip" seeded today's prayers at FIXED wall-clock times (the last at 22:45) and
+  advanced 61 seconds. `msUntilMinuteFlip` arms its timer at `(msRemaining % 60000) + 250` and
+  answers null once the target has passed, so whenever the suite ran with under 61 seconds to the
+  next seeded row, the advance sailed PAST that target, the re-arm took its null branch, and no kind
+  reloaded. Proven deterministically by pinning the clock: 22:44:33 fails, 22:35:00 passes, on
+  identical code. The line dates from 1.27.246 (2026-09-19), so it was nine days old when a planning
+  session's scratch-worktree baseline hit it on clean `uat-2`; no session caused it, and it blocked
+  every commit made inside the window. Fix: `jest.useFakeTimers({ now: SEEDED_NOW })` before the
+  seed, exactly as #41's rule requires, with `SEEDED_NOW` four hours clear of the nearest seeded row.
+  Verified across five machine timezones. DURABLE LESSON: #41 was closed by fixing five tests in one
+  file, and the same shape sat in another file the whole time. The tell is a test that seeds a fixed
+  wall-clock time and then advances the clock by a bounded amount.
 
 ---
 
