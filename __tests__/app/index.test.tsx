@@ -26,7 +26,7 @@ import * as Database from '@/stores/database';
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
 import { setSequence } from '@/stores/schedule';
-import { decorationsEnabledAtom, markDecorationsLoaded, markMasjidIconLoaded } from '@/stores/ui';
+import { decorationsEnabledAtom, markDecorationsLoaded, markMasjidIconLoaded, setPopupHelpEnabled } from '@/stores/ui';
 import {
   CACHE_SCHEMA_VERSION,
   getInstalledVersion,
@@ -184,6 +184,30 @@ describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 inst
 
     expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
     expect(screen.queryByText("What's New")).not.toBeOnTheScreen();
+  });
+
+  it('shows Help when the settings sheet asks for it', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    relaunchRelease();
+    await render(<Index />);
+    await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
+
+    await act(() => setPopupHelpEnabled(true));
+
+    expect(screen.getByText('Help')).toBeOnTheScreen();
+    expect(screen.getByText('Are notifications turned on for Athan?')).toBeOnTheScreen();
+  });
+
+  it('closes Help when Close is pressed', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    relaunchRelease();
+    await render(<Index />);
+    await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
+    await act(() => setPopupHelpEnabled(true));
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Close' }));
+
+    expect(screen.queryByText('Help')).not.toBeOnTheScreen();
   });
 
   it("closes What's New when Continue is pressed", async () => {
@@ -544,6 +568,18 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
 
     expect(openStore).toHaveBeenCalledTimes(1);
     expect(screen.queryByText(UPDATE_PROMPT_TITLE)).not.toBeOnTheScreen();
+  });
+
+  it('holds the update prompt back while Help is showing', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    relaunchRelease();
+    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    await render(<Index />);
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+    await act(() => setPopupHelpEnabled(true));
+
+    expect(screen.queryByText(UPDATE_PROMPT_TITLE)).not.toBeOnTheScreen();
+    expect(screen.getByText('Help')).toBeOnTheScreen();
   });
 
   it("holds the update prompt back while What's New is showing", async () => {

@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import Navigation from '@/app/Navigation';
-import { ModalUpdate, ModalWhatsNew } from '@/components/modals';
+import { ModalHelp, ModalUpdate, ModalWhatsNew } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
@@ -28,8 +28,10 @@ import {
   decorationsEnabledAtom,
   decorationsLoadedAtom,
   masjidIconLoadedAtom,
+  popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
+  setPopupHelpEnabled,
   setPopupUpdateEnabled,
   setPopupWhatsNewEnabled,
 } from '@/stores/ui';
@@ -60,6 +62,7 @@ export default function Index() {
   const sequenceReady = useAtomValue(standardSequenceAtom) !== null;
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const whatsNewVisible = useAtomValue(popupWhatsNewEnabledAtom);
+  const helpVisible = useAtomValue(popupHelpEnabledAtom);
   // Splash gate: the Masjid icon's PNG arrives async (Fresco) after the first
   // content commit — hold the splash until its bitmap exists so the first
   // revealed frame is complete (no icon pop-in)
@@ -197,6 +200,10 @@ export default function Index() {
     setPopupWhatsNewEnabled(false);
   };
 
+  const handleCloseHelp = () => {
+    setPopupHelpEnabled(false);
+  };
+
   // Loading state only covers genuinely cache-less launches (fresh install,
   // upgrade wipe, year gap) — warm-cache launches render content immediately
   if (waitingForData) {
@@ -218,10 +225,11 @@ export default function Index() {
           onContinue={handleContinueWhatsNew}
         />
       ) : null}
-      {/* Gated so the nag never stacks on top of the What's New modal */}
+      {chromeDeferred && <ModalHelp visible={helpVisible} onClose={handleCloseHelp} />}
+      {/* Gated so the nag never stacks on the What's New or Help modal */}
       {chromeDeferred && (
         <ModalUpdate
-          visible={updateAvailable && !whatsNewVisible}
+          visible={updateAvailable && !whatsNewVisible && !helpVisible}
           onClose={handleCloseUpdate}
           onUpdate={handleUpdate}
         />

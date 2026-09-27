@@ -81,6 +81,9 @@ export const decorationsLoadedAtom = atom(false);
 /** Whether the What's New popup should be shown (post-update announcement) */
 export const popupWhatsNewEnabledAtom = atom(false);
 
+/** Whether the Help modal should be shown */
+export const popupHelpEnabledAtom = atom(false);
+
 /** Timestamp of last update check (persisted) */
 export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last_check', 0);
 
@@ -195,6 +198,9 @@ export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdate
 
 /** Sets whether the What's New popup should be shown */
 export const setPopupWhatsNewEnabled = (enabled: boolean) => store.set(popupWhatsNewEnabledAtom, enabled);
+
+/** Sets whether the Help modal should be shown */
+export const setPopupHelpEnabled = (enabled: boolean) => store.set(popupHelpEnabledAtom, enabled);
 
 /** Sets the timestamp of the last app update check */
 export const setPopupUpdateLastCheck = (timestamp: number) => store.set(popupUpdateLastCheckAtom, timestamp);
