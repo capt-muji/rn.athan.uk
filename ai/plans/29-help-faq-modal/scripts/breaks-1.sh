@@ -46,17 +46,17 @@ run_break "the questions are reordered" shared/help.ts \
 
 # 3. The silent-switch answer promises a setting that does not exist
 run_break "the silent answer claims a setting can override it" shared/help.ts \
-  "s/No app setting can play through it\. /Turn on override in Athan settings. /g" \
+  "s/No app can play through it\./Turn on override in the app settings./g" \
   unit "$UNIT" "never claims an app setting can play through the silent switch"
 
 # 4. Both platforms share one silent-switch wording, which the brief forbids
 run_break "the silent answer is shared across platforms" shared/help.ts \
-  "s/'Silent mode silences notification sound/'The mute switch silences notification sound/" \
+  "s/'Silent mode mutes notification sound/'It mutes notification sound/" \
   unit "$UNIT" "words the silent switch answer for each platform"
 
 # 5. The Do Not Disturb grant leaks onto iOS, which has no such screen
 run_break "the Do Not Disturb grant is offered on iOS" shared/help.ts \
-  "s/      text: 'A Focus holds/      action: 'dndAccess',\n      text: 'A Focus holds/" \
+  "s/      text: 'It holds notifications back/      action: 'dndAccess',\n      text: 'It holds notifications back/" \
   unit "$UNIT" "offers the Do Not Disturb grant on Android only"
 
 # 6. A button loses its label, so an action would render blank

@@ -2,13 +2,19 @@ import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-n
 
 import { openAppSettings, openDndAccessSettings } from '@/device/notifications';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { getHelpTopics, HELP_ACTION_LABELS, type HelpAction } from '@/shared/help';
 
 import Modal from './Modal';
 
 /** Share of the screen the scrolling answers may take, so the card and its Close button fit every size */
-const ANSWERS_HEIGHT_SHARE = 0.7;
+const ANSWERS_HEIGHT_SHARE = 0.66;
+
+/** Slate, never the app's indigo: the modal is a light surface of its own */
+const INK = COLORS.light.text;
+const BODY = 'rgba(52, 78, 92, 0.72)';
+const MUTED = 'rgba(52, 78, 92, 0.5)';
+const CARD = 'rgba(52, 78, 92, 0.05)';
 
 const runAction = (action: HelpAction) => {
   if (action === 'dndAccess') {
@@ -28,30 +34,27 @@ export default function ModalHelp({ visible, onClose }: Props) {
   const topics = getHelpTopics(Platform.OS === 'android' ? 'android' : 'ios');
 
   return (
-    <Modal
-      visible={visible}
-      title='Help'
-      wide
-      divider
-      icon={
-        <View style={styles.titleBadge}>
-          <Text style={styles.titleBadgeGlyph}>?</Text>
-        </View>
-      }>
+    <Modal visible={visible} title='Help' wide divider centreTitle>
       <ScrollView style={{ maxHeight: height * ANSWERS_HEIGHT_SHARE }} showsVerticalScrollIndicator={false}>
-        {topics.map(({ question, text, steps, action }, index) => (
-          <View key={question}>
-            <View style={styles.questionRow}>
-              <Text style={styles.dot}>•</Text>
+        {topics.map(({ question, text, steps, action }) => (
+          <View key={question} style={styles.card}>
+            <View style={styles.head}>
+              <View style={styles.badge}>
+                <Text style={styles.badgeGlyph}>?</Text>
+              </View>
               <Text style={styles.question}>{question}</Text>
             </View>
             <Text style={styles.answer}>{text}</Text>
-            {steps?.map((step, stepIndex) => (
-              <View key={step} style={styles.stepRow}>
-                <Text style={styles.stepNumber}>{stepIndex + 1}.</Text>
-                <Text style={styles.stepText}>{step}</Text>
+            {steps ? (
+              <View style={styles.steps}>
+                {steps.map((step, index) => (
+                  <View key={step} style={styles.stepRow}>
+                    <Text style={styles.stepNumber}>{index + 1}</Text>
+                    <Text style={styles.stepText}>{step}</Text>
+                  </View>
+                ))}
               </View>
-            ))}
+            ) : null}
             {action ? (
               <Pressable
                 style={styles.action}
@@ -59,9 +62,9 @@ export default function ModalHelp({ visible, onClose }: Props) {
                 accessibilityRole='button'
                 accessibilityLabel={HELP_ACTION_LABELS[action]}>
                 <Text style={styles.actionText}>{HELP_ACTION_LABELS[action]}</Text>
+                <Text style={styles.actionChevron}>›</Text>
               </Pressable>
             ) : null}
-            {index < topics.length - 1 ? <View style={styles.topicDivider} /> : null}
           </View>
         ))}
       </ScrollView>
@@ -73,86 +76,91 @@ export default function ModalHelp({ visible, onClose }: Props) {
 }
 
 const styles = StyleSheet.create({
-  titleBadge: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: COLORS.light.text,
+  card: {
+    backgroundColor: CARD,
+    borderRadius: RADIUS.xl,
+    padding: SPACING.md,
+    marginBottom: SPACING.smd,
+  },
+  head: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SPACING.sm,
+  },
+  badge: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: INK,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  titleBadgeGlyph: {
+  badgeGlyph: {
     color: COLORS.light.background,
-    fontSize: 11,
-    fontFamily: TEXT.family.regular,
-  },
-  questionRow: {
-    flexDirection: 'row',
-    gap: SPACING.sm,
-  },
-  dot: {
-    fontSize: TEXT.sizeSmall,
+    fontSize: 10,
+    lineHeight: 16,
     fontFamily: TEXT.family.medium,
-    color: COLORS.light.text,
-    lineHeight: TEXT.lineHeight.default,
+    textAlign: 'center',
   },
   question: {
     flex: 1,
-    fontSize: TEXT.sizeSmall,
+    fontSize: 15,
     fontFamily: TEXT.family.medium,
-    color: COLORS.light.text,
-    lineHeight: TEXT.lineHeight.default,
+    color: INK,
     letterSpacing: TEXT.letterSpacing.default,
   },
   answer: {
-    fontSize: TEXT.sizeDetail,
+    fontSize: TEXT.sizeDetail - 1,
     fontFamily: TEXT.family.regular,
-    color: COLORS.light.textSecondary,
-    lineHeight: TEXT.lineHeight.default,
-    letterSpacing: TEXT.letterSpacing.default,
-    marginTop: SPACING.xxs,
-    marginLeft: SPACING.lg,
+    color: BODY,
+    lineHeight: 20,
+    marginTop: SPACING.xs,
+  },
+  steps: {
+    marginTop: SPACING.smd,
+    gap: SPACING.xs,
   },
   stepRow: {
     flexDirection: 'row',
-    marginTop: SPACING.xs,
-    marginLeft: SPACING.lg,
-    gap: SPACING.xs,
+    gap: SPACING.sm,
   },
   stepNumber: {
-    fontSize: TEXT.sizeDetail,
+    minWidth: 10,
+    fontSize: 12,
     fontFamily: TEXT.family.medium,
-    color: COLORS.light.textSecondary,
+    color: MUTED,
   },
   stepText: {
     flex: 1,
-    fontSize: TEXT.sizeDetail,
+    fontSize: TEXT.sizeDetail - 1,
     fontFamily: TEXT.family.regular,
-    color: COLORS.light.textSecondary,
-    letterSpacing: TEXT.letterSpacing.default,
+    color: BODY,
+    lineHeight: 19,
   },
   action: {
+    flexDirection: 'row',
+    alignItems: 'center',
     alignSelf: 'flex-start',
-    marginTop: SPACING.smd,
-    marginLeft: SPACING.lg,
+    gap: SPACING.xs,
+    marginTop: SPACING.md,
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.md,
     borderRadius: RADIUS.md,
-    backgroundColor: COLORS.light.buttonCancel,
+    backgroundColor: INK,
   },
   actionText: {
-    color: COLORS.light.textSecondary,
-    fontSize: TEXT.sizeDetail,
+    color: COLORS.light.background,
+    fontSize: 13,
     fontFamily: TEXT.family.medium,
   },
-  topicDivider: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: COLORS.light.textSecondary,
-    opacity: 0.15,
-    marginVertical: SPACING.lg,
+  actionChevron: {
+    color: COLORS.light.background,
+    fontSize: 15,
+    fontFamily: TEXT.family.regular,
   },
   button: {
-    alignSelf: 'stretch',
+    width: SIZE.modal.buttonWidth,
+    alignSelf: 'center',
     marginTop: SPACING.lg,
     paddingVertical: SPACING.md,
     borderRadius: RADIUS.lg,

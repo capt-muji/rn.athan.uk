@@ -43,7 +43,7 @@ export const HELP_ACTION_LABELS: Record<HelpAction, string> = {
 /** Ordered by how often each one turns out to be the cause */
 const HELP_ENTRIES: HelpEntry[] = [
   {
-    question: 'Notifications are turned off',
+    question: 'Why do I get no alerts at all?',
     ios: {
       text: 'Without permission this app cannot alert you at all.',
       steps: ['Open Settings below', 'Turn on Allow Notifications', 'Leave Sounds on'],
@@ -56,7 +56,7 @@ const HELP_ENTRIES: HelpEntry[] = [
     },
   },
   {
-    question: 'Background activity is off',
+    question: 'Why did the alerts stop after a few days?',
     ios: {
       text: 'Alerts are topped up in the background. Turned off, the ones already set still play and no new ones are added.',
       steps: ['Open Settings below', 'Turn on Background App Refresh', 'Turn off Low Power Mode'],
@@ -69,7 +69,7 @@ const HELP_ENTRIES: HelpEntry[] = [
     },
   },
   {
-    question: 'The silence switch is on',
+    question: 'Why does an alert show but play no sound?',
     ios: {
       text: 'It mutes notification sound before any app is asked. No app can play through it.',
       steps: ['Flick the switch on the side of your phone', 'Or turn Silent off in Control Centre'],
@@ -80,7 +80,7 @@ const HELP_ENTRIES: HelpEntry[] = [
     },
   },
   {
-    question: 'Do Not Disturb is on',
+    question: 'Why are alerts held back until later?',
     ios: {
       text: 'It holds notifications back unless this app is allowed through.',
       steps: ['Open Settings, then Focus', 'Pick the mode you use', 'Under Apps, add this app'],
@@ -92,7 +92,7 @@ const HELP_ENTRIES: HelpEntry[] = [
     },
   },
   {
-    question: 'The athan stops before it finishes',
+    question: 'Why does the athan cut off early?',
     ios: {
       text: 'Phones play 30 seconds of a notification sound, then fall back to the default tone. Every athan is trimmed to fit.',
     },
@@ -101,7 +101,7 @@ const HELP_ENTRIES: HelpEntry[] = [
     },
   },
   {
-    question: 'Nothing played after a restart',
+    question: 'Why did nothing play after a restart?',
     ios: null,
     android: {
       text: 'A restart clears every alarm, and some phones block them being set again.',
@@ -109,7 +109,7 @@ const HELP_ENTRIES: HelpEntry[] = [
     },
   },
   {
-    question: 'The athan is too quiet',
+    question: 'Why is the athan so quiet?',
     ios: null,
     android: {
       text: 'It plays at alarm volume, not ring volume.',
@@ -117,7 +117,7 @@ const HELP_ENTRIES: HelpEntry[] = [
     },
   },
   {
-    question: 'Changing the athan sound',
+    question: 'How do I change the athan sound?',
     ios: {
       text: 'Open Settings, then Change athan, and pick the one you want.',
     },
