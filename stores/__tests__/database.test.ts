@@ -17,10 +17,6 @@ import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/s
 import {
   addOneScheduledNotificationForPrayer,
   addOneScheduledReminderForPrayer,
-  clearAllScheduledNotificationsForPrayer,
-  clearAllScheduledNotificationsForSchedule,
-  clearAllScheduledRemindersForPrayer,
-  clearAllScheduledRemindersForSchedule,
   clearPrefix,
   database,
   getAllScheduledNotificationsForPrayer,
@@ -393,50 +389,6 @@ describe('notification scheduling records', () => {
       expect(result).toHaveLength(1);
     });
   });
-
-  describe('clearAllScheduledNotificationsForPrayer', () => {
-    beforeEach(() => {
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, createMockNotification('fajr-1'));
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, createMockNotification('fajr-2'));
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 1, createMockNotification('sunrise'));
-    });
-
-    it('clears all notifications for specified prayer', () => {
-      clearAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
-
-      const fajrNotifications = getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
-      expect(fajrNotifications).toHaveLength(0);
-    });
-
-    it('does not clear notifications for other prayers', () => {
-      clearAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
-
-      const sunriseNotifications = getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 1);
-      expect(sunriseNotifications).toHaveLength(1);
-    });
-  });
-
-  describe('clearAllScheduledNotificationsForSchedule', () => {
-    beforeEach(() => {
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, createMockNotification('std-1'));
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 1, createMockNotification('std-2'));
-      addOneScheduledNotificationForPrayer(ScheduleType.Extra, 0, createMockNotification('ext-1'));
-    });
-
-    it('clears all notifications for Standard schedule', () => {
-      clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
-
-      const standardNotifications = getAllScheduledNotificationsForSchedule(ScheduleType.Standard);
-      expect(standardNotifications).toHaveLength(0);
-    });
-
-    it('does not clear Extra schedule notifications', () => {
-      clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
-
-      const extraNotifications = getAllScheduledNotificationsForSchedule(ScheduleType.Extra);
-      expect(extraNotifications).toHaveLength(1);
-    });
-  });
 });
 
 // =============================================================================
@@ -526,52 +478,6 @@ describe('reminder scheduling records', () => {
       database.clearAll();
       const result = getAllScheduledRemindersForSchedule(ScheduleType.Standard);
       expect(result).toEqual([]);
-    });
-  });
-
-  describe('clearAllScheduledRemindersForPrayer', () => {
-    beforeEach(() => {
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('fajr-1'));
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('fajr-2'));
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 1, createMockReminder('sunrise'));
-    });
-
-    it('clears all reminders for specified prayer', () => {
-      clearAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
-
-      const fajrReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
-      expect(fajrReminders).toHaveLength(0);
-    });
-
-    it('does not clear reminders for other prayers', () => {
-      clearAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
-
-      const sunriseReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 1);
-      expect(sunriseReminders).toHaveLength(1);
-    });
-  });
-
-  describe('clearAllScheduledRemindersForSchedule', () => {
-    beforeEach(() => {
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('std-1'));
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 1, createMockReminder('std-2'));
-      addOneScheduledReminderForPrayer(ScheduleType.Extra, 0, createMockReminder('ext-1'));
-    });
-
-    it('clears all reminders for Standard schedule', () => {
-      clearAllScheduledRemindersForSchedule(ScheduleType.Standard);
-
-      const fajrReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
-      const sunriseReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 1);
-      expect(fajrReminders).toHaveLength(0);
-      expect(sunriseReminders).toHaveLength(0);
-    });
-
-    it('does not clear Extra schedule reminders', () => {
-      clearAllScheduledRemindersForSchedule(ScheduleType.Standard);
-
-      const extraReminders = getAllScheduledRemindersForPrayer(ScheduleType.Extra, 0);
-      expect(extraReminders).toHaveLength(1);
     });
   });
 });
