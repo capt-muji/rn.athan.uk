@@ -396,6 +396,18 @@ One line each; a session's row moves here when it closes. Full detail is in git 
 `ai/plans/` and `ai/features/`. The numbers are the table's session numbers, including the
 2026-09-15 renumbering (see the ordering note above).
 
+- 33. The athan sound change + `ai/ISSUES.md` #42 + the Help design — DONE 2026-09-27 — three open items closed in
+  one session. The athan change is now ALL OR NOTHING including the selection, on the owner's ruling: the commit
+  moved into the store, where the scheduling lock lives, and does the write, the channel, the re-arm and the undo in
+  ONE acquisition, with the undo re-arming on the previous athan. Two defects, one of them unrecorded: the re-arm was
+  never atomic, and the undo ran AFTER `rescheduleAllNotifications` had released the lock, so a queued pass armed
+  with the athan about to be abandoned. ISSUES #42 is CLOSED as untestable-by-mutation rather than fixed: measured
+  over 1,209,600 states, the `>=` and `===` forms keep the identical row set in every one, because the display date
+  and the previous row are each never after next's list day, so the clause is guarded against REMOVAL instead and the
+  break script pins the mutation as expected-to-survive. The Help modal ships the design the owner specified in words
+  rather than one of the 25 candidates: faint cards, a small radius, and the settings actions as right-aligned text
+  links, with Close the one filled button spanning the card. DURABLE LESSON: a surviving mutant is not always a
+  missing test.
 - 32. `ai/ISSUES.md` #27 — DONE 2026-09-27 — the day-roll one-row list: root cause found (a keep test that compared
   list day for EQUALITY with the display date, so every already-passed row of the day coming on screen was dropped),
   already fixed by the 2026-09-13 dashes work, reproduced 562 times against the old algorithm and zero times against
