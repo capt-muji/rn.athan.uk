@@ -817,12 +817,55 @@ production release; G.6 noted but deferred by owner.
   The audit's red check confirmed the tests guard it: reverting `widgets/PrayerWidget.tsx` fails 8 of the 41 renderer
   tests, exactly the 8 that session added or changed.
 
-### 27. [OPEN, found 2026-09-10, presentation-rearchitecture session] Prayer list shows only one row for a period after a day-roll cascade instead of the full six
+### 27. [FIXED 2026-09-13, diagnosed and guarded 2026-09-27, session 32] Prayer list shows only one row for a period after a day-roll cascade instead of the full six
 
 - **Symptom (S23, Android 16, mock data, Release build)**: after the sequence cascades past the final prayer of one day into the next (observed via the mock rig's compressed near-term window), the list briefly renders only the new day's Isha row — Fajr, Sunrise, Dhuhr, Asr, and Magrib are entirely absent, not dimmed or collapsed. The countdown hero and date header are correct and the countdown ticks correctly (confirmed across two captures 5 minutes apart, decrementing by exactly 5 minutes). A fresh cold relaunch (which reseeds the mock) showed the full six-row list correctly; continuing to watch the same process past that point also self-resolved to six rows once the display date advanced further into the new day. Not yet confirmed whether this reproduces on real (non-mock) data or only at the specific moment the display date first rolls over.
 - **Where to look**: `components/prayer/List.tsx:33`, `components/prayer/ActiveBackground.tsx:24`, `hooks/usePrayer.ts:36`, and `hooks/useSchedule.ts:35` all independently filter `prayers` to `p.belongsToDate === displayDate`; `displayDate` is the `belongsToDate` of the next future prayer (`stores/schedule.ts:184`). Since only Isha rendered, either `displayDate` was set to a value that only Isha's entry matches, or the other five prayers of the same intended day were computed with a different `belongsToDate` than Isha's. `calculateBelongsToDate` (`shared/prayer.ts:141`) only special-cases Isha before its early-morning cutoff hour, which does not apply here (the observed Isha was at 21:31, not early morning) — the mismatch is not explained by that rule, and is not a mock-authoring artifact either (`mocks/simple.ts` stamps one `date` per whole day-block, so a per-prayer date mismatch in the raw fixture is structurally impossible). Root cause not yet found; likely in how the sequence is built or how `displayDate`/`getNextPrayer` is selected across the cascade, in `stores/schedule.ts`.
 - **Out of scope for the presentation-rearchitecture fix** (ai/features/presentation-rearchitecture/): this is a schedule/sequence data-layer question, not a Reanimated/animation-ownership one — flagged here rather than folded into that session's work.
 - **Verify**: reproduce on the mock rig by watching a day-roll happen live (or forcing one), screenshot immediately after and once more a few minutes later; separately check whether this reproduces against real API data near a real day boundary.
+- **Root cause**: `filterRelevantPrayers` in `stores/schedule.ts` kept a passed row only when
+  `p.belongsToDate === displayDate`, an equality. Every already-passed row of the day coming on screen was therefore
+  dropped, and a dropped row never returned, because the refetch only adds days AFTER the sequence. The code of the
+  day carried a second defect beside it, a display date taken as the first row in ARRAY order whose instant was
+  future, which just after a roll can belong to the OLD day. Measured one at a time, that second defect was NOT what
+  broke the list: fixing the display-date rule alone still leaves 5 rows of 6, and fixing the keep test alone gives
+  6 of 6.
+- **Fixed** by the dashes work of 2026-09-13 (`da39c9c8` onward), which replaced both equalities with `>=` tests and
+  the display-date rule with `resolveDisplayDate`. Not by a session that knew about this issue, which is why it stayed
+  open for 17 days. The two keep tests OVERLAP: on this shape either one alone holds the invariant, so mutating one
+  today changes nothing, and reproducing the defect needs the day-roll keep removed outright (1,014 short-list states
+  on the overlap fixture) or both reduced to equalities (966).
+- **It could never have happened on real London data.** The whole real 2024 London year, 360 days at nine launch
+  hours each, produces zero short lists even under the 2026-09-10 algorithm. Under that algorithm the mock rig's bad
+  download minutes are 04:00 to 05:56 and nothing else, which is inside the band `mocks/simple.ts`'s own header
+  forbids ("To test the Magrib->Isha handoff and day rollover cleanly, simulate during 06:00-23:55"). Inside the
+  supported band, zero of 1440 minutes reproduce. The shape IS reachable on readable provider data above about 60N,
+  where an Isha after midnight keeps its list day on the day before while the next day's early rows pass.
+- **Reproduction**: 562 short-list states against the 2026-09-10 algorithm, re-implemented verbatim from
+  `8630f75d`'s own source, across all 1440 download minutes; zero for today's code over the same sweep, over a
+  20,000-state randomised sweep of random rigs, resume jumps and the four paths a session takes, over the whole real
+  London year at every minute, and over high-latitude and overlapping-day fixtures. The smallest list any sweep
+  reached was 4 rows, never the 1 row originally reported, so that observation needed a rig compressing more than one
+  day, which is not in this repository.
+- **Guarded** by `keeps every row of the day on screen while the day before it is still counting down` in
+  `stores/__tests__/schedule.test.ts` (1.29.34). The 13 tests that fail on the day-roll keep's equality mutation are
+  all about a day with NO readable row (R8), where the other keep cannot help because such a day has no readable row
+  for the bar to measure from. No existing test covered the day roll's own readable shape.
+
+### 42. [OPEN, found 2026-09-27, session 32] `filterRelevantPrayers`' previous-row keep survives mutation to an equality
+
+- **The gap**: `prayer.belongsToDate >= previous.belongsToDate`, the first of the two keep tests in
+  `filterRelevantPrayers` (`stores/schedule.ts`), survives mutation to `===`. The whole unit project, 4,372 tests
+  before session 32, passes with it mutated, and so does every sweep session 32 ran.
+- **Why it matters**: that clause is what keeps a whole earlier list day while it holds the row the countdown bar
+  measures from. Instrumenting it over a 20,000-state randomised sweep counted 3,748 rows it kept that the day-roll
+  clause did not, so it is load-bearing rather than redundant: it is the clause that answers when there is no display
+  date yet to compare against. With BOTH keeps mutated together the overlap fixture short-lists 966 times, so the
+  pair is guarded only as a pair.
+- **How to close it**: a test in `stores/__tests__/schedule.test.ts`'s "on the real builder" describe that puts the
+  bar's previous row on an earlier list day than the day on screen, then refreshes, and asserts the earlier day is
+  kept whole. Reverting the clause to `===` must fail it.
+- **Not fixed in session 32**, under the standing one-finding-one-branch rule.
 
 ---
 
@@ -1014,6 +1057,7 @@ characterised).
 - #24 — Splash held through the entire first-launch fetch (fixed)
 - #25 — Sound-sheet preview dead on first tap after natural clip completion (fixed)
 - #26 — Android overlay dimmed the header / dropped "London, UK" (closed)
+- #27 — Day-roll list showed one row: a keep test compared list day for equality (fixed 2026-09-13, guarded 2026-09-27)
 - #28 — Fetch on a clock-change-eve Saturday shifted every Midnight/Last Third 20–40 min (fixed)
 - #29 — Extras Midnight/Last Third were a night late; alerts could fire on another night than their row (fixed)
 - #30 — Phone in another timezone read London's calendar from the phone's clock (fixed)

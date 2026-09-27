@@ -27,3 +27,16 @@
   test's name, inputs and assertions, not its surrounding whitespace); it changes no name, signature, log-line text,
   behaviour or test the plan specified; and every acceptance criterion still holds. The break script was re-run
   afterwards, as item 8 requires, and still ended `ALL AS EXPECTED: 1`.
+
+## Step 2: Close ISSUES #27 and record the surviving mutant
+
+- **Branch:** `docs/32-close-issue-27`
+- **Anchor checks:** `grep -c "^### 27\. \[OPEN, found 2026-09-10" ai/ISSUES.md` printed `1`, and
+  `grep -c "^- #7 — 2-day rolling notification horizon" ai/ISSUES.md` printed `1`.
+- **Green:** `npx tsc --noEmit` exited 0, `npx biome check . --error-on-warnings` exited 0 over 350 files, and
+  `schedule.test.ts` still printed `Tests: 109 passed, 109 total`.
+- **Breaks:** none, as the plan says: a documentation step has no decision to break.
+- **Edits:** #27's heading became FIXED with five bullets carrying the root cause, the fix commit, the
+  never-a-production-bug evidence, the reproduction numbers and the guard; `ai/ISSUES.md` #42 opened for the surviving
+  `previous >=` mutant; one line added to the closed index between #26 and #28; one Recent Decisions entry in
+  `ai/AGENTS.md` carrying the three durable lessons.
