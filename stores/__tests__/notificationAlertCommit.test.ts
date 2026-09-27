@@ -16,13 +16,16 @@ import {
   type AlertMenuState,
   AlertType,
   type ISingleApiResponseTransformed,
+  REMINDER_SLOTS,
   type ReminderInterval,
+  type ReminderSetting,
   ScheduleType,
 } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   commitPrayerAlertChange,
   extraPrayerAlertAtoms,
+  extraReminderAlertAtoms,
   getPrayerAlertType,
   getReminderAlertType,
   getReminderInterval,
@@ -54,12 +57,22 @@ const store = getDefaultStore();
 const NOW = Date.parse('2026-08-29T08:00:00.000Z');
 const TODAY = '2026-08-29';
 const TOMORROW = '2026-08-30';
-const WINDOW = [TODAY, TOMORROW];
+/**
+ * The days a Standard prayer is armed for: every day stored, since the budget reaches them all
+ * and cannot reach past them.
+ */
+const DAY_AFTER_TOMORROW = '2026-08-31';
+const WINDOW = [TODAY, TOMORROW, DAY_AFTER_TOMORROW];
+/** Stored but never armed: a night row divides the night from the PREVIOUS day's Magrib */
+const YESTERDAY = '2026-08-28';
 const MINUTE = 60_000;
 const INTERVAL = 15 as ReminderInterval;
 const OLD_INTERVAL = 30 as ReminderInterval;
+const SECOND_INTERVAL = 25 as ReminderInterval;
 const FAJR = 0;
 const ISHA = 5;
+/** Canonical index in EXTRAS_ENGLISH, which is what the Extras alert atoms are keyed on */
+const LAST_THIRD = 1;
 
 const athanIds = (name: string, type = ScheduleType.Standard) =>
   WINDOW.map((date) => prayerNotificationIdentifier(type, name, date));
@@ -95,20 +108,26 @@ const refusal = Object.assign(new Error('Failed to cancel notification.'), {
   code: 'ERR_NOTIFICATIONS_FAILED_TO_CANCEL',
 });
 
-/** The three settings an alert sheet closes on */
+/** The settings an alert sheet closes on, with the second reminder off unless a test says otherwise */
 const alerts = (
   atTimeAlert: AlertType,
   reminderAlert: AlertType = AlertType.Off,
-  reminderInterval: ReminderInterval = INTERVAL
-): AlertMenuState => ({ atTimeAlert, reminderAlert, reminderInterval });
+  reminderInterval: ReminderInterval = INTERVAL,
+  second: ReminderSetting = { alert: AlertType.Off, interval: SECOND_INTERVAL }
+): AlertMenuState => ({
+  atTimeAlert,
+  reminders: [{ alert: reminderAlert, interval: reminderInterval }, second],
+});
 
 const OFF = alerts(AlertType.Off);
 
-/** What the prayer's bell says: its three saved settings */
+/** What the prayer's bell says: its saved settings */
 const saved = (prayerIndex: number, type = ScheduleType.Standard): AlertMenuState => ({
   atTimeAlert: getPrayerAlertType(type, prayerIndex),
-  reminderAlert: getReminderAlertType(type, prayerIndex),
-  reminderInterval: getReminderInterval(type, prayerIndex),
+  reminders: REMINDER_SLOTS.map((slot) => ({
+    alert: getReminderAlertType(type, prayerIndex, slot),
+    interval: getReminderInterval(type, prayerIndex, slot),
+  })) as unknown as AlertMenuState['reminders'],
 });
 
 /** The at-time records the app holds for one prayer */
@@ -152,23 +171,30 @@ beforeEach(() => {
   holdsCancel = () => false;
   Database.database.clearAll();
 
-  for (const date of WINDOW) {
+  for (const date of [YESTERDAY, ...WINDOW]) {
+    // A real night between Magrib and the next day's Fajr, so the night rows have something to
+    // divide, and their instants land at 09:16 BST, just after NOW, so they are armable
     const day: ISingleApiResponseTransformed = {
       date,
-      fajr: '12:00',
-      sunrise: '12:00',
-      dhuhr: '12:00',
-      asr: '12:00',
-      magrib: '12:00',
-      isha: '12:00',
-      suhoor: '12:00',
-      duha: '12:00',
-      istijaba: '12:00',
+      fajr: '14:00',
+      sunrise: '15:00',
+      dhuhr: '16:00',
+      asr: '17:00',
+      magrib: '23:50',
+      isha: '23:55',
+      suhoor: '13:20',
+      duha: '15:20',
+      istijaba: '22:00',
     };
     Database.database.set(`prayer_${date}`, JSON.stringify(day));
   }
 
-  for (const atom of [...standardPrayerAlertAtoms, ...standardReminderAlertAtoms, ...extraPrayerAlertAtoms]) {
+  for (const atom of [
+    ...standardPrayerAlertAtoms,
+    ...extraPrayerAlertAtoms,
+    ...standardReminderAlertAtoms.flat(),
+    ...extraReminderAlertAtoms.flat(),
+  ]) {
     store.set(atom, AlertType.Off);
   }
   // Stamped just now, so only a prayer marked to be put right can make a refresh do anything
@@ -263,11 +289,12 @@ describe('a change the phone takes', () => {
   it('arms an Extras prayer from its own list', async () => {
     const next = alerts(AlertType.Silent);
 
-    await expect(commitPrayerAlertChange(ScheduleType.Extra, 3, 'Last Third', 'الثلث الأخير', next, OFF)).resolves.toBe(
-      true
-    );
+    // LAST_THIRD is the canonical index of that name, which is what the alert atoms are keyed on
+    await expect(
+      commitPrayerAlertChange(ScheduleType.Extra, LAST_THIRD, 'Last Third', 'الثلث الأخير', next, OFF)
+    ).resolves.toBe(true);
 
-    expect(saved(3, ScheduleType.Extra)).toEqual(next);
+    expect(saved(LAST_THIRD, ScheduleType.Extra)).toEqual(next);
     expect(armedFor('last third').length).toBeGreaterThan(0);
   });
 });
@@ -314,7 +341,7 @@ describe('a change the phone refuses', () => {
     armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
     armedEarlier(FAJR, 'Fajr', reminderIdsAt('Fajr', OLD_INTERVAL), Database.addOneScheduledReminderForPrayer);
     store.set(standardPrayerAlertAtoms[FAJR], AlertType.Sound);
-    store.set(standardReminderAlertAtoms[FAJR], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[0][FAJR], AlertType.Sound);
     refusedCancels.add(reminderIdsAt('Fajr', OLD_INTERVAL)[0]);
 
     const result = await commitPrayerAlertChange(
@@ -336,7 +363,7 @@ describe('a change the phone refuses', () => {
     armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
     armedEarlier(FAJR, 'Fajr', reminderIdsAt('Fajr', INTERVAL), Database.addOneScheduledReminderForPrayer);
     store.set(standardPrayerAlertAtoms[FAJR], AlertType.Sound);
-    store.set(standardReminderAlertAtoms[FAJR], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[0][FAJR], AlertType.Sound);
     refusedCancels.add(reminderIdsAt('Fajr', INTERVAL)[0]);
 
     const result = await commitPrayerAlertChange(
@@ -439,7 +466,7 @@ describe('two changes to the same prayer, one behind the other', () => {
     armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
     armedEarlier(FAJR, 'Fajr', reminderIdsAt('Fajr', OLD_INTERVAL), Database.addOneScheduledReminderForPrayer);
     store.set(standardPrayerAlertAtoms[FAJR], AlertType.Silent);
-    store.set(standardReminderAlertAtoms[FAJR], AlertType.Silent);
+    store.set(standardReminderAlertAtoms[0][FAJR], AlertType.Silent);
     refusedCancels.add(athanIds('Fajr')[0]);
     const older = alerts(AlertType.Silent, AlertType.Silent, OLD_INTERVAL);
     const newer = alerts(AlertType.Sound, AlertType.Sound, INTERVAL);
@@ -534,9 +561,10 @@ describe('a change the phone refuses to put back', () => {
   it('leaves the bell as it was and asks again on the next return to the app', async () => {
     armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
     store.set(standardPrayerAlertAtoms[FAJR], AlertType.Sound);
-    // Today's alarm will not cancel, and tomorrow's will not arm again, so neither the change nor its undo can land
+    // Today's alarm will not cancel, and no later day will arm again, so neither the change nor its
+    // undo can land: every day but the first is refused, whatever the budget reached
     refusedCancels.add(athanIds('Fajr')[0]);
-    refusedSchedules.add(athanIds('Fajr')[1]);
+    for (const identifier of athanIds('Fajr').slice(1)) refusedSchedules.add(identifier);
 
     const result = await commitPrayerAlertChange(
       ScheduleType.Standard,
@@ -611,5 +639,180 @@ describe('a change the phone refuses to put back', () => {
 
     expect(scheduleMock).not.toHaveBeenCalled();
     expect(cancelMock).not.toHaveBeenCalled();
+  });
+});
+
+// =============================================================================
+// THREE ALERTS, ALL OR NOTHING
+//
+// A prayer now commits THREE alarms at once: the at-time alert and both reminders. Finding 81's
+// rule is unchanged by the count, but the failure it has to survive is bigger, because the two
+// that landed are already armed AND recorded by the time the third refuses.
+// =============================================================================
+
+describe('a prayer whose three alerts are committed together', () => {
+  /** Every reminder record the app holds for one prayer */
+  const reminderRecordsFor = (prayerIndex: number, type = ScheduleType.Standard) =>
+    Database.getAllScheduledRemindersForPrayer(type, prayerIndex)
+      .map((record) => record.id)
+      .sort();
+
+  /** The at-time alert and both reminders on, each with its own sound and its own minute */
+  const ALL_THREE: AlertMenuState = {
+    atTimeAlert: AlertType.Sound,
+    reminders: [
+      { alert: AlertType.Sound, interval: INTERVAL },
+      { alert: AlertType.Silent, interval: SECOND_INTERVAL },
+    ],
+  };
+
+  const savedFor = (prayerIndex: number) => [
+    getPrayerAlertType(ScheduleType.Standard, prayerIndex),
+    getReminderAlertType(ScheduleType.Standard, prayerIndex, 0),
+    getReminderAlertType(ScheduleType.Standard, prayerIndex, 1),
+  ];
+
+  it('arms all three when the phone takes them, each at its own moment', async () => {
+    const committed = await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    expect(committed).toBe(true);
+    expect(armedFor('Fajr')).toEqual(
+      [...athanIds('Fajr'), ...reminderIdsAt('Fajr', INTERVAL), ...reminderIdsAt('Fajr', SECOND_INTERVAL)].sort()
+    );
+    expect(savedFor(FAJR)).toEqual([AlertType.Sound, AlertType.Sound, AlertType.Silent]);
+  });
+
+  // The case a third alert introduces: the other two are ALREADY armed and recorded when this one
+  // refuses, so the undo has to reach alarms that did land, not merely abandon the one that did not
+  it.each([
+    ['the second reminder', () => reminderIdsAt('Fajr', SECOND_INTERVAL)[0]],
+    ['the first reminder', () => reminderIdsAt('Fajr', INTERVAL)[0]],
+    ['the at-time alert', () => athanIds('Fajr')[0]],
+  ])('puts the whole prayer back when the phone refuses %s', async (_label, refused) => {
+    refusedSchedules.add(refused());
+
+    const committed = await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    expect(committed).toBe(false);
+    expect(savedFor(FAJR)).toEqual([AlertType.Off, AlertType.Off, AlertType.Off]);
+    expect(armedFor('Fajr')).toEqual([]);
+    expect(recordsFor(FAJR)).toEqual([]);
+    expect(reminderRecordsFor(FAJR)).toEqual([]);
+  });
+
+  it('leaves no record of an alarm it could not leave armed', async () => {
+    refusedSchedules.add(reminderIdsAt('Fajr', SECOND_INTERVAL)[0]);
+
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    expect([...recordsFor(FAJR), ...reminderRecordsFor(FAJR)]).toEqual(armedFor('Fajr'));
+  });
+
+  it('turns all three off together, cancelling every alarm the prayer had', async () => {
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    const committed = await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', OFF, ALL_THREE);
+
+    expect(committed).toBe(true);
+    expect(armedFor('Fajr')).toEqual([]);
+    expect([...recordsFor(FAJR), ...reminderRecordsFor(FAJR)]).toEqual([]);
+  });
+
+  // Every alarm of the change goes to the phone at once: three alerts must not cost three round trips
+  it('sends all three to the phone in parallel, never one after the other', async () => {
+    const inFlight: number[] = [];
+    let live = 0;
+    held.clear();
+    scheduleMock.mockImplementation(async (request: Notifications.NotificationRequestInput) => {
+      live += 1;
+      inFlight.push(live);
+      await Promise.resolve();
+      live -= 1;
+      const identifier = request.identifier as string;
+      osState.add(identifier);
+      return identifier;
+    });
+
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', ALL_THREE, OFF);
+
+    expect(Math.max(...inFlight)).toBeGreaterThan(1);
+  });
+});
+
+// =============================================================================
+// THE ROW A PLAN COUNTED ON, GONE BY THE TIME IT IS ARMED
+//
+// The budget plans which days to arm, then the arming paths read each day's row again. Those two
+// reads are not one atomic step: a download can land between them, so a row the plan counted on
+// can be missing, unreadable or already past when the arming path looks. Each path keeps its own
+// guard for that, and these prove the guards rather than trusting the plan.
+// =============================================================================
+
+describe('a row that changes between being planned and being armed', () => {
+  /** The row reads normally for the plan, then differently once `changed` is set */
+  const rowChangesAfterPlanning = (replacement: ReturnType<typeof PrayerUtils.getPrayerForDate>) => {
+    const readRow = PrayerUtils.getPrayerForDate;
+    // Both arming paths plan for themselves, so each one reads this row twice: once while planning
+    // and once while arming. The odd reads are the plans, and the even reads are the armings.
+    let reads = 0;
+
+    jest.spyOn(PrayerUtils, 'getPrayerForDate').mockImplementation((type, name, date) => {
+      const row = readRow(type, name, date);
+      if (name !== 'Fajr' || date !== TOMORROW) return row;
+
+      reads += 1;
+      return reads % 2 === 1 ? row : replacement;
+    });
+  };
+
+  it('arms nothing for a day whose row has gone', async () => {
+    rowChangesAfterPlanning(null);
+
+    // A reminder is armed too, so the reminder path's own guard is exercised beside the at-time one
+    const next = alerts(AlertType.Silent, AlertType.Silent);
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', next, OFF);
+
+    expect(armedFor('Fajr')).not.toContain(prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', TOMORROW));
+    expect(armedFor('Fajr')).not.toContain(
+      reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', TOMORROW, INTERVAL)
+    );
+  });
+
+  it('arms nothing for a day whose time the provider has withdrawn', async () => {
+    const unreadable = {
+      ...(PrayerUtils.getPrayerForDate(ScheduleType.Standard, 'Fajr', TOMORROW) as NonNullable<
+        ReturnType<typeof PrayerUtils.getPrayerForDate>
+      >),
+      time: null,
+      datetime: null,
+    } as unknown as ReturnType<typeof PrayerUtils.getPrayerForDate>;
+    rowChangesAfterPlanning(unreadable);
+
+    // A reminder is armed too, so the reminder path's own guard is exercised beside the at-time one
+    const next = alerts(AlertType.Silent, AlertType.Silent);
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', next, OFF);
+
+    expect(armedFor('Fajr')).not.toContain(prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', TOMORROW));
+    expect(armedFor('Fajr')).not.toContain(
+      reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', TOMORROW, INTERVAL)
+    );
+  });
+
+  it('arms nothing for a day whose moment has passed', async () => {
+    const row = PrayerUtils.getPrayerForDate(ScheduleType.Standard, 'Fajr', TOMORROW) as NonNullable<
+      ReturnType<typeof PrayerUtils.getPrayerForDate>
+    >;
+    rowChangesAfterPlanning({ ...row, datetime: new Date(NOW - MINUTE) } as ReturnType<
+      typeof PrayerUtils.getPrayerForDate
+    >);
+
+    // A reminder is armed too, so the reminder path's own guard is exercised beside the at-time one
+    const next = alerts(AlertType.Silent, AlertType.Silent);
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', 'الفجر', next, OFF);
+
+    expect(armedFor('Fajr')).not.toContain(prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', TOMORROW));
+    expect(armedFor('Fajr')).not.toContain(
+      reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', TOMORROW, INTERVAL)
+    );
   });
 });

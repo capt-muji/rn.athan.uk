@@ -10,7 +10,12 @@
 import * as Notifications from 'expo-notifications';
 import { Alert, AppState, type AppStateStatus, Linking, Platform } from 'react-native';
 
-import { AlertType, ScheduleType } from '@/shared/types';
+import { AlertType, type ReminderSetting, ScheduleType } from '@/shared/types';
+
+const OFF_REMINDERS: readonly [ReminderSetting, ReminderSetting] = [
+  { alert: AlertType.Off, interval: 5 },
+  { alert: AlertType.Off, interval: 30 },
+];
 
 import { useNotification } from '../useNotification';
 
@@ -233,8 +238,8 @@ describe('a permission API that throws', () => {
       0,
       'Fajr',
       'الفجر',
-      { atTimeAlert: AlertType.Off, reminderAlert: AlertType.Off, reminderInterval: 15 },
-      { atTimeAlert: AlertType.Sound, reminderAlert: AlertType.Off, reminderInterval: 15 }
+      { atTimeAlert: AlertType.Off, reminders: OFF_REMINDERS },
+      { atTimeAlert: AlertType.Sound, reminders: OFF_REMINDERS }
     );
 
     expect(committed).toBe(false);

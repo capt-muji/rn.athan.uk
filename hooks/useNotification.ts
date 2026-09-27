@@ -216,9 +216,11 @@ export const useNotification = () => {
     currentState: AlertMenuState
   ): Promise<boolean> => {
     const atTimeChanged = originalState.atTimeAlert !== currentState.atTimeAlert;
-    const reminderChanged =
-      originalState.reminderAlert !== currentState.reminderAlert ||
-      originalState.reminderInterval !== currentState.reminderInterval;
+    const reminderChanged = currentState.reminders.some(
+      (reminder, slot) =>
+        reminder.alert !== originalState.reminders[slot].alert ||
+        reminder.interval !== originalState.reminders[slot].interval
+    );
 
     // No changes, skip scheduling
     if (!atTimeChanged && !reminderChanged) {
@@ -227,10 +229,11 @@ export const useNotification = () => {
     }
 
     // Check permissions if enabling any notification
-    if (
-      (currentState.atTimeAlert !== AlertType.Off || currentState.reminderAlert !== AlertType.Off) &&
-      !(await ensurePermissions())
-    ) {
+    const enablesAnything =
+      currentState.atTimeAlert !== AlertType.Off ||
+      currentState.reminders.some((reminder) => reminder.alert !== AlertType.Off);
+
+    if (enablesAnything && !(await ensurePermissions())) {
       logger.warn('NOTIFICATION: Permissions not granted');
       return false;
     }
