@@ -32,21 +32,34 @@ export const readPlayListingVersion = (html: string): string | null => {
   return version !== undefined && DOTTED_NUMBERS.test(version) ? version : null;
 };
 
+// AbortSignal.timeout reads better and is armed by a host timer jest's fake timers cannot drive, so a
+// test of this would cost its whole timeout in real seconds
+const fetchWithTimeout = async (url: string): Promise<Response> => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIME_CONSTANTS.UPDATE_FETCH_TIMEOUT_MS);
+
+  try {
+    return await fetch(url, { headers: { 'Cache-Control': 'no-cache' }, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+};
+
 /**
  * The version the platform's own store publishes: the App Store on iOS, the Play listing on Android
- * @returns The store's version, or false when it could not be read
+ * @returns The store's version, null when the store published none, or false when the read failed
  */
-const getStoreVersion = async (): Promise<string | false> => {
+const getStoreVersion = async (): Promise<string | null | false> => {
   try {
     if (IS_IOS) {
-      const response = await fetch(ITUNES_LOOKUP_URL, { headers: { 'Cache-Control': 'no-cache' } });
+      const response = await fetchWithTimeout(ITUNES_LOOKUP_URL);
       const data: { results: { version: string }[] } = await response.json();
-      return data.results[0]?.version || false;
+      return data.results[0]?.version ?? null;
     }
 
-    const response = await fetch(PLAY_LISTING_URL, { headers: { 'Cache-Control': 'no-cache' } });
+    const response = await fetchWithTimeout(PLAY_LISTING_URL);
     const html = await response.text();
-    return readPlayListingVersion(html) || false;
+    return readPlayListingVersion(html);
   } catch (error) {
     logger.warn('Failed to fetch store version:', error);
     return false;
@@ -64,18 +77,27 @@ export const checkForUpdates = async (): Promise<boolean> => {
 
   if (now - lastCheck < TIME_CONSTANTS.ONE_DAY_MS) return false;
 
+  // A read that never reached the store is not a check, so it costs an hour instead of the whole day
+  const stampFailure = () => setPopupUpdateLastCheck(now - TIME_CONSTANTS.ONE_DAY_MS + TIME_CONSTANTS.UPDATE_RETRY_MS);
+
   try {
     const installedVersion = getInstalledVersion();
     const storeVersion = await getStoreVersion();
+
+    if (storeVersion === false) {
+      stampFailure();
+      return false;
+    }
+
+    setPopupUpdateLastCheck(now);
 
     if (!installedVersion || !storeVersion) return false;
 
     return isNewerVersion(installedVersion, storeVersion);
   } catch (error) {
     logger.error('Failed to check for updates:', error);
+    stampFailure();
     return false;
-  } finally {
-    setPopupUpdateLastCheck(now);
   }
 };
 

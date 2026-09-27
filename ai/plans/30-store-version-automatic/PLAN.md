@@ -362,8 +362,8 @@ findings, all applied before the steps were written:
 
 ## 6. Steps
 
-- [ ] Step 1: Android reads its own Play listing, and `releases.json` is read by nothing (specified)
-- [ ] Step 2: a failed check costs an hour, not a day, and no fetch can hang (specified)
+- [x] Step 1: DONE in `fb79a770`
+- [x] Step 2: DONE in `89f28ce3`
 - [ ] Step 3: the Android store button resolves without a Play client (specified)
 
 ---
@@ -847,8 +847,8 @@ findings, all applied before the steps were written:
    run_break retryLongerThanWindow shared/constants.ts 's|\QUPDATE_RETRY_MS: 60 * 60 * 1000\E|UPDATE_RETRY_MS: 48 * 60 * 60 * 1000|'
    # Without the abort the fetch stays pending for the life of the process.
    run_break noAbortSignal device/updates.ts 's|\Q, signal: controller.signal\E||'
-   # The timeout must actually fire.
-   run_break timeoutNeverFires device/updates.ts 's|\QTIME_CONSTANTS.UPDATE_FETCH_TIMEOUT_MS\E|Number.MAX_SAFE_INTEGER|'
+   # The timer must actually abort the fetch, not merely exist.
+   run_break timerNeverAborts device/updates.ts 's|\QsetTimeout(() => controller.abort(), TIME_CONSTANTS.UPDATE_FETCH_TIMEOUT_MS)\E|setTimeout(() => undefined, TIME_CONSTANTS.UPDATE_FETCH_TIMEOUT_MS)|'
    # A successful check must still cost the full day.
    run_break successStampsRetry device/updates.ts 's|\QsetPopupUpdateLastCheck(now);\E|setPopupUpdateLastCheck(now - TIME_CONSTANTS.ONE_DAY_MS + TIME_CONSTANTS.UPDATE_RETRY_MS);|'
 
@@ -856,6 +856,11 @@ findings, all applied before the steps were written:
    ```
 
    The `\Q...\E` and `$` rules from step 1's part 7 apply here too, and all five were proven to apply while planning.
+
+   **Why `timerNeverAborts` targets the callback and not the delay.** The obvious break is to make the delay enormous,
+   and it does not work: `setTimeout` clamps any delay above 2^31-1 to **1 ms**, so `Number.MAX_SAFE_INTEGER` makes the
+   timeout fire SOONER rather than never, node warns `Timeout duration was set to 1`, and the test still passes. That
+   version was written first and printed `BREAK NOT CAUGHT`. Breaking the abort itself is the honest target.
 
    Two of these constrain how you may write the code, so read them before step 5 rather than after:
 
@@ -874,7 +879,7 @@ findings, all applied before the steps were written:
    | `failureBurnsTheDay` | `stamps a failed check an hour back so the day is not lost`, `retries an hour after a failure and not before` |
    | `retryLongerThanWindow` | `the update retry is shorter than the update check window`, `stamps a failed check an hour back so the day is not lost` |
    | `noAbortSignal` | `abandons a fetch that has not answered in ten seconds` |
-   | `timeoutNeverFires` | `abandons a fetch that has not answered in ten seconds` |
+   | `timerNeverAborts` | `abandons a fetch that has not answered in ten seconds`, which takes about 10 s to fail, because jest's own test timeout is what ends a promise the code never settles |
    | `successStampsRetry` | `stamps a successful check with now` |
 
 8. **Version and commit.** The same version command as step 1. Add, by name: `device/updates.ts`,
@@ -1190,9 +1195,14 @@ Run it in the background with its log. Success ends `BUILD-MOCK OK`; a `FAILED` 
 adb -s 8f7ada76 install -r ~/athan-device-sweep/session30/athan-30.apk
 ```
 
-`-r` keeps the app's data. Then launch, following the ritual in `ai/AGENTS.md`: never force-stop, press HOME, then
-`adb -s 8f7ada76 shell am kill com.mugtaba.athan.fleettest`, then a DOUBLED `am start`, because the first start after
-an install lands on the launcher.
+`-r` keeps the app's data. `build-mock.zsh` installs under `com.mugtaba.athan`, NOT
+`com.mugtaba.athan.fleettest`: it sets `PKG=com.mugtaba.athan` and `versionCode 1000000` with the debug keystore
+precisely so it goes on over the owner's local build, and the `fleettest` suffix belongs to the separate
+`EXPO_ANDROID_SUFFIX` ritual in `ai/AGENTS.md`. Every command below therefore names `com.mugtaba.athan`.
+
+Then launch, following the ritual in `ai/AGENTS.md`: never force-stop, press HOME, then
+`adb -s 8f7ada76 shell am kill com.mugtaba.athan`, then a DOUBLED `am start`, because the first start after an install
+lands on the launcher.
 
 **For iOS, use the booted simulator** (`xcrun simctl list devices booted` showed `iPhone XS replica (18)` booted at
 planning time). Build and run it with xcodebuildmcp against the existing `ios/Athan.xcworkspace`, scheme `Athan`,
