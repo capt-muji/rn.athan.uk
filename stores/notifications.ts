@@ -1696,6 +1696,51 @@ export const rescheduleAllNotifications = async () => {
 };
 
 /**
+ * Makes the phone play one athan everywhere, or leaves it playing the one it already had
+ *
+ * The selection is part of the commit rather than a setting beside it (owner, 2026-09-27), so a stored athan the
+ * alarms do not play is finding 79's defect wearing a different hat. Hence one lock acquisition around the write,
+ * the channel, the re-arm and the undo: releasing it between them let anything queued behind arm with the athan
+ * being thrown away, which is the same trap session 6b removed from the alert sheet.
+ *
+ * @param selection The athan the user picked
+ * @param previousSelection The athan in force before the sheet opened
+ * @param updateChannel Creates an athan's Android channel, passed in because stores never import device
+ * @returns Whether the phone now plays the chosen athan everywhere
+ */
+export const commitSoundSelection = async (
+  selection: number,
+  previousSelection: number,
+  updateChannel: (sound: number) => Promise<unknown>
+): Promise<boolean> => {
+  return withSchedulingLock(async () => {
+    const armEverything = async (sound: number) => {
+      setSoundPreference(sound);
+      await updateChannel(sound);
+      await _rescheduleAllNotifications({ deferWidgetRefresh: true });
+    };
+
+    try {
+      await armEverything(selection);
+      logger.info('NOTIFICATION: Committed athan selection:', { previousSelection, selection });
+      return true;
+    } catch (error) {
+      logger.error('NOTIFICATION: The athan change failed, putting the athan back:', error);
+    }
+
+    try {
+      await armEverything(previousSelection);
+    } catch (error) {
+      // Settings shows the stored athan, so it names one the user can still hear whatever the alarms did
+      setSoundPreference(previousSelection);
+      logger.error('NOTIFICATION: Putting the athan back failed; the next refresh re-arms it:', error);
+    }
+
+    return false;
+  }, 'commitSoundSelection');
+};
+
+/**
  * Refreshes notifications if enough time has elapsed since last refresh
  *
  * Checks if NOTIFICATION_REFRESH_HOURS have passed since the last schedule.
