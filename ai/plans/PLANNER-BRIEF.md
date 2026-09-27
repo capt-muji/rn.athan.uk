@@ -252,7 +252,7 @@ The plan is not READY until every line below is true.
 - Nothing asks the executor to:
   - change visuals;
   - substitute a prayer time;
-  - touch `releases.json`, `uat` or EAS;
+  - add a hand-edited release file, or touch `uat` or EAS;
   - commit the API key;
   - install a dependency outside an exact command;
   - skip a hook;
@@ -345,7 +345,7 @@ The plan is not READY until every line below is true.
   - never copy, average or synthesise a prayer time;
   - visuals are settled, so no pixel changes without the owner's approval;
   - comments explain why;
-  - `releases.json` is untouchable;
+  - a hand-edited release file is never added;
   - EAS and the Expo MCP are read-only;
   - the API key is never committed;
   - nothing of OpenCode's is changed.
