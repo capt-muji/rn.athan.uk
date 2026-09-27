@@ -119,3 +119,28 @@ Step 1 installs a dependency, so it must run the nested-copy remedy afterwards. 
 - Historical plan folders keep their text unchanged: they record what was true when they ran.
 - No breaks: the step deletes a file and edits prose, so there is no decision in code to substitute. The two grep
   gates are the guard, and `yarn validate` at commit time is the check.
+
+## Device proof
+
+- `zsh build-mock.zsh uat-2 mocks/simple.ts` ended **`BUILD-MOCK OK` in 488s** from `6d5096ed`, at
+  `versionName 1.29.29`. The fresh `expo prebuild` inside it is itself the proof that the new native module autolinks
+  and compiles.
+- **The module reaches the APK**, and finding that took two tries worth recording. `aapt2 dump strings` returned `0`
+  for `inappupdates`, which reads like a missing module and is a FALSE NEGATIVE: it does not reach the dex sections.
+  Per-dex search found it: `ExpoInAppUpdates` in `classes2.dex`. Play Core's class PATHS are absent because R8
+  obfuscates them, but its surviving string literals `appUpdateManager` and `InstallState{installStatus=` are there.
+- Installed with `adb install -r`: `Performing Streamed Install / Success`, and the phone reads
+  `versionName=1.29.29`. Play Protect was pre-empted by setting `verifier_verify_adb_installs 0` before the install,
+  **restored to `1` afterwards**; `auto_time` was never touched and reads `1`.
+- **The run proved more than expected.** The plan predicted silence on a side-loaded build. Logcat shows the whole
+  path working and Play refusing for the right reason: `AppUpdateService : Initiate binding to the service`, then
+  `onServiceConnected(...DevTriggeredUpdateService)`, `linkToDeath`, `OnRequestInstallCallback : onRequestInfo`, and
+  finally one warning, `Failed to start native update: Install Error(-10) ... ERROR_APP_NOT_OWNED`. The app bound to
+  Play, sent the request, got a callback, and caught the refusal on its own error path, logging once and showing the
+  user nothing.
+- The app kept running: `dumpsys window` shows `com.mugtaba.athan/.MainActivity` focused, and the screenshot at
+  `~/athan-store-update-shots/android-31-home.png`, read by this session, shows the full prayer list, a live
+  countdown, no error screen and **no update modal**, which is the session's invariant.
+- Evidence saved under `~/athan-device-sweep/session31/`: `alarms-before.txt` (91 lines, healthy),
+  `android-update-log.txt` (the single expected warning), `playcore-log.txt` (6 lines).
+- The phone is left on this session's mock build at 1.29.29.
