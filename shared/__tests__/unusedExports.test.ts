@@ -36,8 +36,7 @@ const sweepUnreachable = (): string[] => {
     .map((line) => line.trim());
 };
 
-// Skipped until session 34's last deletion lands: the symbols it reports are still in the tree
-describe.skip('exported symbols reachable from production code', () => {
+describe('exported symbols reachable from production code', () => {
   it('reports only the symbols a framework or a test-time rule reaches', () => {
     const unexpected = sweepUnreachable().filter((entry) => {
       const symbol = entry.slice(entry.lastIndexOf(': ') + 2);
