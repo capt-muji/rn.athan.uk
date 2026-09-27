@@ -177,8 +177,7 @@ purpose, because that tag tracks the Node LTS line.
 ├── device/                # Platform-specific code
 ├── mocks/                 # Test fixtures
 │   ├── simple.ts          # Mock API data, today seeded at each download (dev mode)
-│   ├── full.ts            # Full-year reference dataset (structure reference, unused)
-│   └── timing-system-schema.ts  # Timing system type reference (unused)
+│   └── full.ts            # Full-year reference dataset (structure reference, unused)
 ├── assets/                # Icons, images, audio (athans/ 32 mp3s + reminders/ 66 prayer×interval mp3s)
 └── ai/               # AI agent documentation
 ```
