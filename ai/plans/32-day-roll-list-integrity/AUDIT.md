@@ -59,3 +59,26 @@ changed in the commit. The two em-dash-or-arrow matches in the diff are both cor
 **PASS.** The session answered the owner's question with evidence rather than assertion: #27 was real, its cause is
 named, it was fixed on 2026-09-13, it was never reachable on real London data, and the day roll now has a test of its
 own where before it had only thirteen tests about a different rule. One finding is left open as `ai/ISSUES.md` #42.
+
+## Addendum, 2026-09-27: the owner's polar question
+
+The owner asked, after the verdict, whether Magrib or Isha past midnight is accounted for at high latitude, since
+London never exercises those rules. Answered by measurement rather than by reading the code, and recorded as
+`ai/ISSUES.md` #43: **verified safe, no code changed.**
+
+Real 2026 times from `adhan@4.4.6` (kept at `~/athan-device-sweep/session32/polar2026.json`) confirm the owner's
+reading exactly. London and Oslo cross on zero days; Reykjavik crosses on 18 Magribs and 46 Ishas, Tromso on 62 and
+74, Nuuk on 65 and 98.
+
+| What was swept | Scale | Violations |
+| --- | --- | --- |
+| Four list invariants, three cities, whole year, 37-minute samples, both schedules | 84,006 states | 0 |
+| The alarm path: armed instant vs list instant vs the provider's clock | 6,570 rows, 363 of them crossing | 0 |
+
+The limit worth knowing is `ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR = 6`: a crossing row later than 06:00 would be
+filed a day late, and the latest in real data is Nuuk's Isha at `01:28`, so over five hours of headroom.
+
+**Two of the three things the first sweep flagged were my own invariant being wrong, not the app**, which is the
+lesson carried into `ai/AGENTS.md`: the night rows fire the evening BEFORE their list day by design, and `adhan`'s
+polar fallback itself emits Asr after Magrib on some Tromso winter days. Both were corrected in the sweep, not the
+code.
