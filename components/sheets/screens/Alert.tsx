@@ -245,7 +245,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
 
       <ReminderCard
         title='Reminder 2'
-        hint='A second, optional reminder'
+        hint='Notification before prayer time'
         reminder={reminders[1]}
         sound={sounds[1]}
         taken={takenInterval(reminders[0])}
