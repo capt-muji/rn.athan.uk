@@ -14,15 +14,15 @@ import {
   EXTRAS_EXPLANATIONS_ARABIC,
   ISTIJABA_INDEX,
   NIGHT_PRAYER_NAMES,
-  NOTIFICATION_ROLLING_DAYS,
+  NOTIFICATION_REQUEST_BUDGET,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
   REMINDER_INTERVALS,
+  SCHEDULE_CANDIDATE_DAYS,
   validateReminderInterval,
 } from '../constants';
-import { rollingDaysForPrayer } from '../notifications';
-import { ScheduleType } from '../types';
+import { REMINDER_SLOTS } from '../types';
 
 // =============================================================================
 // NIGHT_PRAYER_NAMES TESTS
@@ -319,107 +319,65 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
 /** UNUserNotificationCenter keeps the soonest-firing 64 requests and drops the remainder */
 const IOS_PENDING_REQUEST_CEILING = 64;
 
-/** Every prayer on both lists can carry an at-time alert AND a pre-prayer reminder */
-const ALERTS_PER_PRAYER = 2;
+/** Every prayer on both lists can carry an at-time alert AND both pre-prayer reminders */
+const ALERTS_PER_PRAYER = 1 + REMINDER_SLOTS.length;
 
-describe('the rolling buffer fits inside the iOS pending-request ceiling', () => {
+describe('the request budget fits inside the iOS pending-request ceiling', () => {
   const prayersPerDay = PRAYERS_ENGLISH.length + EXTRAS_ENGLISH.length;
 
-  /** Every list day the app actually arms, summed prayer by prayer through the production rule */
-  const listDaysArmed =
-    PRAYERS_ENGLISH.reduce((sum, name) => sum + rollingDaysForPrayer(ScheduleType.Standard, name), 0) +
-    EXTRAS_ENGLISH.reduce((sum, name) => sum + rollingDaysForPrayer(ScheduleType.Extra, name), 0);
-
-  const worstCase = listDaysArmed * ALERTS_PER_PRAYER;
-
-  /** Rows granted more than the base window, counted from the rule rather than named here */
-  const nightRows = EXTRAS_ENGLISH.filter(
-    (name) => rollingDaysForPrayer(ScheduleType.Extra, name) > NOTIFICATION_ROLLING_DAYS
-  ).length;
-
-  /**
-   * The same shape at a hypothetical base window: every prayer for `baseDays`, plus one more
-   * day for each night row. Tied to production by the test below, so it cannot drift.
-   */
-  const worstCaseAt = (baseDays: number) => (prayersPerDay * baseDays + nightRows) * ALERTS_PER_PRAYER;
-
-  it('schedules at most 64 requests with every prayer fully armed', () => {
-    expect(worstCase).toBeLessThanOrEqual(IOS_PENDING_REQUEST_CEILING);
+  it('never asks the phone for more requests than it keeps', () => {
+    expect(NOTIFICATION_REQUEST_BUDGET).toBeLessThanOrEqual(IOS_PENDING_REQUEST_CEILING);
   });
 
-  it('pins the arithmetic, so a change to any input has to come through here', () => {
-    expect({
-      prayersPerDay,
-      days: NOTIFICATION_ROLLING_DAYS,
-      nightRows,
-      worstCase,
-      headroom: IOS_PENDING_REQUEST_CEILING - worstCase,
-    }).toEqual({
-      prayersPerDay: 11,
-      days: 2,
-      nightRows: 2,
-      worstCase: 48,
-      headroom: 16,
-    });
+  it('counts one at-time alert and one request per reminder slot', () => {
+    expect(ALERTS_PER_PRAYER).toBe(3);
   });
 
-  it('counts the night-row day through the production rule, not a restatement of it', () => {
-    expect(worstCase).toBe(worstCaseAt(NOTIFICATION_ROLLING_DAYS));
+  // The budget is spent a whole row at a time, so the last row that fits is the last whole
+  // multiple of its cost. The worst-case user pays the full three for every row.
+  it('leaves under one row of headroom, so the budget is genuinely spent', () => {
+    const rowsAffordable = Math.floor(NOTIFICATION_REQUEST_BUDGET / ALERTS_PER_PRAYER);
+    const spent = rowsAffordable * ALERTS_PER_PRAYER;
+
+    expect(spent).toBe(63);
+    expect(NOTIFICATION_REQUEST_BUDGET - spent).toBeLessThan(ALERTS_PER_PRAYER);
   });
 
-  it('grants the extra day to the two evening-before rows and to nothing else', () => {
-    const extended = EXTRAS_ENGLISH.filter(
-      (name) => rollingDaysForPrayer(ScheduleType.Extra, name) > NOTIFICATION_ROLLING_DAYS
-    );
-    const standardExtended = PRAYERS_ENGLISH.filter(
-      (name) => rollingDaysForPrayer(ScheduleType.Standard, name) > NOTIFICATION_ROLLING_DAYS
-    );
+  // What the old day-count window could not do, and the reason the unit changed: two list days
+  // of every row at three alerts each breaches the ceiling, so the day count had to choose
+  // between the second reminder and the next Fajr
+  it('carries both reminders where a two-day window could not', () => {
+    const twoDayWorstCase = prayersPerDay * 2 * ALERTS_PER_PRAYER;
 
-    // Suhoor is a night row on the list, but its instant is on its own date: no extra day
-    expect(extended).toEqual(['Midnight', 'Last Third']);
-    expect(standardExtended).toEqual([]);
+    expect(twoDayWorstCase).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+    expect(NOTIFICATION_REQUEST_BUDGET).toBeLessThan(twoDayWorstCase);
   });
 
-  it('shows that one more day would breach the ceiling', () => {
-    expect(worstCaseAt(3)).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+  // The walk's guard is not a coverage number: the worst-case user's budget runs out long
+  // before it, so it can never be what limits how far ahead the app arms
+  it('bounds the candidate walk far beyond what the worst-case user can afford', () => {
+    const daysTheWorstCaseUserCanAfford = NOTIFICATION_REQUEST_BUDGET / (prayersPerDay * ALERTS_PER_PRAYER);
+
+    expect(SCHEDULE_CANDIDATE_DAYS).toBeGreaterThan(daysTheWorstCaseUserCanAfford);
   });
 });
 
 // =============================================================================
 // ROLLING HORIZON TESTS
 //
-// The buffer is two LIST days, not 48 hours. Three comments claimed 48h and sized
-// the refresh cadences against it; the real floor is the winter worst case, where a
-// late-evening refresh reaches only as far as the next day's Isha. The arithmetic
-// lives here so the comment cannot drift from the constants again.
+// The horizon is no longer a span the app can state: it is however far the budget
+// reaches for the rows that user armed, which is days for a heavy user and weeks for
+// a light one. What can still be pinned is the relationship the cadence depends on,
+// that the background task runs many times inside even the shortest horizon.
 // =============================================================================
 
-describe('the rolling horizon is two list days, not 48 hours', () => {
-  /** Winter worst case from the repo's own fixture: 2026-12-31 Isha is 17:41 */
-  const WINTER_ISHA_HOUR = 17 + 41 / 60;
+describe('the background task runs many times inside even the shortest horizon', () => {
+  /** The worst-case user arms all 11 rows with both reminders, which the budget covers for two days */
+  const WORST_CASE_HORIZON_HOURS = 47;
 
-  /** A refresh that lands just before midnight reaches the least far */
-  const LATEST_REFRESH_HOUR = 23 + 50 / 60;
+  it('gets many attempts to re-arm before the shortest horizon runs out', () => {
+    const attempts = Math.floor(WORST_CASE_HORIZON_HOURS / BACKGROUND_TASK_INTERVAL_HOURS);
 
-  it('reaches under 18 hours when a refresh lands late on a winter evening', () => {
-    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
-
-    expect(hoursToTomorrowsLastPrayer).toBeLessThan(18);
-    expect(hoursToTomorrowsLastPrayer).toBeGreaterThan(17);
-  });
-
-  it('is far short of the 48 hours the cadence comments used to claim', () => {
-    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
-
-    expect(hoursToTomorrowsLastPrayer).toBeLessThan(NOTIFICATION_ROLLING_DAYS * 24);
-  });
-
-  // The buffer only needs ONE run inside the floor to keep rolling. Spare attempts are what
-  // absorb a deferred or skipped run, so the margin is the point rather than the exact count
-  it('leaves the background task spare attempts inside that floor', () => {
-    const hoursToTomorrowsLastPrayer = 24 - LATEST_REFRESH_HOUR + WINTER_ISHA_HOUR;
-    const attempts = Math.floor(hoursToTomorrowsLastPrayer / BACKGROUND_TASK_INTERVAL_HOURS);
-
-    expect(attempts).toBeGreaterThan(1);
+    expect(attempts).toBeGreaterThan(4);
   });
 });

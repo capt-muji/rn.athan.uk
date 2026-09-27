@@ -7,7 +7,7 @@
  */
 
 import { DEFAULT_REMINDER_INTERVAL, validateReminderInterval } from '@/shared/constants';
-import { AlertType, type ReminderInterval } from '@/shared/types';
+import { AlertType, type ReminderInterval, type ReminderSetting } from '@/shared/types';
 
 /**
  * The sound the reminder toggle turns on with. An Off reminder still needs one, and silent is the choice that
@@ -69,3 +69,15 @@ export const toggledReminder = ({
   if (!canEnableReminder) return null;
   return isReminderOn ? AlertType.Off : reminderType;
 };
+
+/**
+ * The minute the other reminder holds, which this one must not be able to reach.
+ *
+ * Only a reminder that is ON reserves its minute: two that are Off may sit on the same stored value, since neither
+ * fires, and freeing it back up is what lets the user switch one on without the other's value moving.
+ *
+ * @param other The other slot's reminder
+ * @returns Its interval while it is on, else null
+ */
+export const takenInterval = (other: ReminderSetting): number | null =>
+  other.alert === AlertType.Off ? null : other.interval;

@@ -1,0 +1,15 @@
+export const rollingDaysForPrayer = (scheduleType: ScheduleType, englishName: string): number => {
+  const isEveningBeforeRow = scheduleType === ScheduleType.Extra && EVENING_BEFORE_ROWS.has(englishName);
+
+  return NOTIFICATION_ROLLING_DAYS + (isEveningBeforeRow ? 1 : 0);
+};
+
+/**
+ * The list days to schedule one prayer on — the single source both schedule paths read, so
+ * the at-time and reminder windows cannot drift apart.
+ */
+export const genScheduleDatesForPrayer = (scheduleType: ScheduleType, englishName: string): string[] =>
+  genNextXDays(
+    rollingDaysForPrayer(scheduleType, englishName),
+    PrayerUtils.firstStillDueListDayForPrayer(scheduleType, englishName, TimeUtils.createInstant())
+  );

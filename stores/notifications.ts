@@ -9,12 +9,11 @@ import * as Device from '@/device/notifications';
 import {
   BACKGROUND_TASK_INTERVAL_MINUTES,
   BACKGROUND_TASK_NAME,
-  DEFAULT_REMINDER_INTERVAL,
+  DEFAULT_REMINDER_SLOT_INTERVALS,
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   ISLAMIC_DAY,
   NOTIFICATION_REFRESH_HOURS,
-  NOTIFICATION_ROLLING_DAYS,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
@@ -25,7 +24,15 @@ import { perfMark, perfMeasure } from '@/shared/perf';
 import * as PrayerUtils from '@/shared/prayer';
 import { isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
-import { type AlertMenuState, AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
+import {
+  type AlertMenuState,
+  AlertType,
+  REMINDER_SLOTS,
+  type ReminderInterval,
+  type ReminderSetting,
+  type ReminderSlot,
+  ScheduleType,
+} from '@/shared/types';
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber, resetStoredAtom } from '@/stores/storage';
@@ -223,19 +230,34 @@ export const extraPrayerAlertAtoms = EXTRAS_ENGLISH.map((prayerName) =>
 // =============================================================================
 
 /**
+ * The key suffix that separates one reminder slot from the other.
+ *
+ * Slot 0 takes NO suffix, so it keeps the exact keys every install already wrote while there
+ * was only one reminder: an upgrade therefore carries the user's reminder over untouched, and
+ * no migration exists to get wrong.
+ *
+ * @param slot Which of the prayer's two reminders
+ */
+const reminderSlotSuffix = (slot: ReminderSlot): string => (slot === 0 ? '' : `_${slot + 1}`);
+
+/**
  * Factory function to create a reminder alert atom for persisting reminder notification preferences
  *
  * Keys are name-based (not index-based); see createPrayerAlertAtom.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerName English prayer name
+ * @param slot Which of the prayer's two reminders
  * @returns Jotai atom with MMKV persistence for the reminder alert type
  */
-export const createReminderAlertAtom = (scheduleType: ScheduleType, prayerName: string) => {
+export const createReminderAlertAtom = (scheduleType: ScheduleType, prayerName: string, slot: ReminderSlot) => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const type = isStandard ? 'standard' : 'extra';
 
-  return atomWithStorageNumber(`preference_reminder_alert_${type}_${prayerName.toLowerCase()}`, AlertType.Off);
+  return atomWithStorageNumber(
+    `preference_reminder_alert_${type}_${prayerName.toLowerCase()}${reminderSlotSuffix(slot)}`,
+    AlertType.Off
+  );
 };
 
 /**
@@ -245,48 +267,49 @@ export const createReminderAlertAtom = (scheduleType: ScheduleType, prayerName: 
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerName English prayer name
+ * @param slot Which of the prayer's two reminders
  * @returns Jotai atom with MMKV persistence for the reminder interval
  */
-export const createReminderIntervalAtom = (scheduleType: ScheduleType, prayerName: string) => {
+export const createReminderIntervalAtom = (scheduleType: ScheduleType, prayerName: string, slot: ReminderSlot) => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const type = isStandard ? 'standard' : 'extra';
 
   return atomWithStorageNumber(
-    `preference_reminder_interval_${type}_${prayerName.toLowerCase()}`,
-    DEFAULT_REMINDER_INTERVAL
+    `preference_reminder_interval_${type}_${prayerName.toLowerCase()}${reminderSlotSuffix(slot)}`,
+    DEFAULT_REMINDER_SLOT_INTERVALS[slot]
   );
 };
 
 /**
- * Array of reminder alert atoms for all standard prayers
+ * Reminder alert atoms for all standard prayers, one array per slot
  * Each atom persists the user's reminder notification preference for that prayer
  */
-export const standardReminderAlertAtoms = PRAYERS_ENGLISH.map((prayerName) =>
-  createReminderAlertAtom(ScheduleType.Standard, prayerName)
+export const standardReminderAlertAtoms = REMINDER_SLOTS.map((slot) =>
+  PRAYERS_ENGLISH.map((prayerName) => createReminderAlertAtom(ScheduleType.Standard, prayerName, slot))
 );
 
 /**
- * Array of reminder alert atoms for all extra prayers
+ * Reminder alert atoms for all extra prayers, one array per slot
  * Each atom persists the user's reminder notification preference for that prayer
  */
-export const extraReminderAlertAtoms = EXTRAS_ENGLISH.map((prayerName) =>
-  createReminderAlertAtom(ScheduleType.Extra, prayerName)
+export const extraReminderAlertAtoms = REMINDER_SLOTS.map((slot) =>
+  EXTRAS_ENGLISH.map((prayerName) => createReminderAlertAtom(ScheduleType.Extra, prayerName, slot))
 );
 
 /**
- * Array of reminder interval atoms for all standard prayers
+ * Reminder interval atoms for all standard prayers, one array per slot
  * Each atom persists the user's reminder interval preference for that prayer
  */
-export const standardReminderIntervalAtoms = PRAYERS_ENGLISH.map((prayerName) =>
-  createReminderIntervalAtom(ScheduleType.Standard, prayerName)
+export const standardReminderIntervalAtoms = REMINDER_SLOTS.map((slot) =>
+  PRAYERS_ENGLISH.map((prayerName) => createReminderIntervalAtom(ScheduleType.Standard, prayerName, slot))
 );
 
 /**
- * Array of reminder interval atoms for all extra prayers
+ * Reminder interval atoms for all extra prayers, one array per slot
  * Each atom persists the user's reminder interval preference for that prayer
  */
-export const extraReminderIntervalAtoms = EXTRAS_ENGLISH.map((prayerName) =>
-  createReminderIntervalAtom(ScheduleType.Extra, prayerName)
+export const extraReminderIntervalAtoms = REMINDER_SLOTS.map((slot) =>
+  EXTRAS_ENGLISH.map((prayerName) => createReminderIntervalAtom(ScheduleType.Extra, prayerName, slot))
 );
 
 // =============================================================================
@@ -383,6 +406,40 @@ const clearPrayerRepairMark = (scheduleType: ScheduleType, prayerIndex: number, 
   if (store.get(atom) !== generation) return;
 
   resetStoredAtom(atom, key);
+};
+
+/**
+ * What one prayer's alerts cost against the request budget, 0 when its bell is Off.
+ *
+ * A reminder only counts while the at-time alert is on, which is the same constraint the
+ * arming paths apply, so the budget can never reserve a slot the app would not use.
+ *
+ * `armingNow` is the prayer the caller is arming this instant, with the settings it was called
+ * with. Its preferences may already hold a LATER change's values, because a commit writes them
+ * before it takes the scheduling lock, and costing that prayer from storage would then plan zero
+ * days for the very rows the caller is about to arm.
+ */
+const requestCostReader = (armingNow?: {
+  scheduleType: ScheduleType;
+  englishName: string;
+  cost: number;
+}): NotificationUtils.RequestCostReader => {
+  return (scheduleType, englishName) => {
+    if (armingNow && armingNow.scheduleType === scheduleType && armingNow.englishName === englishName) {
+      return armingNow.cost;
+    }
+
+    // The walk reads the same name arrays the atoms are keyed on, so this always resolves
+    const prayerIndex = getPrayerArrays(scheduleType).english.indexOf(englishName);
+
+    if (getPrayerAlertType(scheduleType, prayerIndex) === AlertType.Off) return 0;
+
+    const armedReminders = REMINDER_SLOTS.filter(
+      (slot) => getReminderAlertType(scheduleType, prayerIndex, slot) !== AlertType.Off
+    ).length;
+
+    return 1 + armedReminders;
+  };
 };
 
 /** One prayer, named the way the scheduling paths take it */
@@ -500,8 +557,9 @@ export const migrateIndexKeyedAlertPreferences = (storedVersion: string | null):
     const sourceNames: readonly string[] = isStandard ? PRAYERS_ENGLISH : extrasSourceNames;
     const currentNames: readonly string[] = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
     const alertAtoms = isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms;
-    const reminderAtoms = isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms;
-    const intervalAtoms = isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms;
+    // Slot 0 only: these index keys predate the second reminder, so there is nothing of slot 1's to migrate
+    const reminderAtoms = (isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[0];
+    const intervalAtoms = (isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms)[0];
 
     sourceNames.forEach((prayerName, index) => {
       // The index says what the key MEANT when it was written; the atom arrays are
@@ -637,10 +695,11 @@ export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
   const atom = getPrayerAlertAtom(scheduleType, prayerIndex);
   store.set(atom, alertType);
 
-  // Constraint: when at-time alert is Off, reminder must also be Off
+  // Constraint: when at-time alert is Off, every reminder must also be Off
   if (alertType === AlertType.Off) {
-    const reminderAtom = getReminderAlertAtom(scheduleType, prayerIndex);
-    store.set(reminderAtom, AlertType.Off);
+    for (const slot of REMINDER_SLOTS) {
+      store.set(getReminderAlertAtom(scheduleType, prayerIndex, slot), AlertType.Off);
+    }
   }
 };
 
@@ -649,78 +708,102 @@ export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
 // =============================================================================
 
 /**
- * Gets the Jotai atom for a specific prayer's reminder alert setting
+ * Gets the Jotai atom for one of a prayer's reminder alert settings
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param slot Which of the prayer's two reminders
  * @returns Jotai atom for the prayer's reminder alert type
  */
-export const getReminderAlertAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+export const getReminderAlertAtom = (scheduleType: ScheduleType, prayerIndex: number, slot: ReminderSlot) => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const atoms = isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms;
 
-  return atoms[prayerIndex];
+  return atoms[slot][prayerIndex];
 };
 
 /**
- * Gets the current reminder alert type for a specific prayer
+ * Gets the current reminder alert type for one of a prayer's reminders
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param slot Which of the prayer's two reminders
  * @returns Current AlertType (Off, Silent, or Sound) for reminder
  */
-export const getReminderAlertType = (scheduleType: ScheduleType, prayerIndex: number): AlertType => {
-  const atom = getReminderAlertAtom(scheduleType, prayerIndex);
+export const getReminderAlertType = (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  slot: ReminderSlot
+): AlertType => {
+  const atom = getReminderAlertAtom(scheduleType, prayerIndex, slot);
   return store.get(atom);
 };
 
 /**
- * Sets the reminder alert type for a specific prayer
+ * Sets the reminder alert type for one of a prayer's reminders
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param slot Which of the prayer's two reminders
  * @param alertType New alert type (Off, Silent, or Sound)
  */
-export const setReminderAlertType = (scheduleType: ScheduleType, prayerIndex: number, alertType: AlertType) => {
-  const atom = getReminderAlertAtom(scheduleType, prayerIndex);
+export const setReminderAlertType = (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  slot: ReminderSlot,
+  alertType: AlertType
+) => {
+  const atom = getReminderAlertAtom(scheduleType, prayerIndex, slot);
   store.set(atom, alertType);
 };
 
 /**
- * Gets the Jotai atom for a specific prayer's reminder interval setting
+ * Gets the Jotai atom for one of a prayer's reminder interval settings
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param slot Which of the prayer's two reminders
  * @returns Jotai atom for the prayer's reminder interval
  */
-export const getReminderIntervalAtom = (scheduleType: ScheduleType, prayerIndex: number) => {
+export const getReminderIntervalAtom = (scheduleType: ScheduleType, prayerIndex: number, slot: ReminderSlot) => {
   const isStandard = scheduleType === ScheduleType.Standard;
   const atoms = isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms;
 
-  return atoms[prayerIndex];
+  return atoms[slot][prayerIndex];
 };
 
 /**
- * Gets the current reminder interval for a specific prayer
+ * Gets the current reminder interval for one of a prayer's reminders
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param slot Which of the prayer's two reminders
  * @returns Current reminder interval in minutes
  */
-export const getReminderInterval = (scheduleType: ScheduleType, prayerIndex: number): ReminderInterval => {
-  const atom = getReminderIntervalAtom(scheduleType, prayerIndex);
+export const getReminderInterval = (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  slot: ReminderSlot
+): ReminderInterval => {
+  const atom = getReminderIntervalAtom(scheduleType, prayerIndex, slot);
   return store.get(atom) as ReminderInterval;
 };
 
 /**
- * Sets the reminder interval for a specific prayer
+ * Sets the reminder interval for one of a prayer's reminders
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
+ * @param slot Which of the prayer's two reminders
  * @param interval Reminder interval in minutes
  */
-export const setReminderInterval = (scheduleType: ScheduleType, prayerIndex: number, interval: ReminderInterval) => {
-  const atom = getReminderIntervalAtom(scheduleType, prayerIndex);
+export const setReminderInterval = (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  slot: ReminderSlot,
+  interval: ReminderInterval
+) => {
+  const atom = getReminderIntervalAtom(scheduleType, prayerIndex, slot);
   store.set(atom, interval);
 };
 
@@ -813,6 +896,8 @@ async function scheduleNotificationForDate(
  * @param englishName English prayer name
  * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
+ * @param requestCost What this prayer costs the budget, when the caller knows it better than
+ *   storage does; omitted by a full reschedule, which reads every prayer from storage anyway
  *
  * @see scheduleNotificationForDate - Helper for single-day scheduling
  */
@@ -821,13 +906,18 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   prayerIndex: number,
   englishName: string,
   arabicName: string,
-  alertType: AlertType
+  alertType: AlertType,
+  requestCost?: number
 ): Promise<number> => {
   // The records are NOT cleared first. A day whose stored row cannot be read rejects outside its own try, and
   // clearing first left that day's record gone while its alarm stayed armed, with nothing left to find it by
   const existingRecords = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
-  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(scheduleType, englishName);
+  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(
+    scheduleType,
+    englishName,
+    requestCostReader(requestCost === undefined ? undefined : { scheduleType, englishName, cost: requestCost })
+  );
   const sound = getSoundPreference();
 
   // Schedule notifications for each day in parallel. Each result is the
@@ -986,7 +1076,7 @@ async function scheduleReminderNotificationForDate(
 }
 
 /**
- * Schedule multiple reminders (X days) for a single prayer
+ * Schedule every reminder a prayer has (X days each) in one pass
  *
  * Schedule-first-then-cancel-stale (issue #15), mirroring the at-time
  * notification path: reminders are scheduled before anything is cancelled.
@@ -998,34 +1088,41 @@ async function scheduleReminderNotificationForDate(
  * @param prayerIndex Index of the prayer in its schedule
  * @param englishName English prayer name
  * @param arabicName Arabic prayer name
- * @param alertType Alert type (Off, Silent, Sound)
+ * @param reminders The prayer's reminders that are on, each with its own sound and interval
+ * @param requestCost What this prayer costs the budget, as the at-time path takes it
  */
 const _addMultipleScheduleRemindersForPrayer = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
   arabicName: string,
-  alertType: AlertType
+  reminders: ReminderSetting[],
+  requestCost?: number
 ): Promise<number> => {
   // Not cleared first, for the same reason as the at-time path above
   const existingRecords = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
-  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(scheduleType, englishName);
-  const intervalMinutes = getReminderInterval(scheduleType, prayerIndex);
+  const nextXDays = NotificationUtils.genScheduleDatesForPrayer(
+    scheduleType,
+    englishName,
+    requestCostReader(requestCost === undefined ? undefined : { scheduleType, englishName, cost: requestCost })
+  );
 
-  // Schedule reminders for each day in parallel. Each result is the attempted
-  // identifier (null only when skipped) — a failed scheduling keeps the
-  // existing OS reminder alive instead of staling it (see above).
+  // Both slots are armed in ONE pass, because the stale sweep below is computed across the
+  // prayer's whole record set: done a slot at a time, each pass would read the other slot's
+  // alarms as unattempted and cancel them.
   const attempts = await settleAll(
-    nextXDays.map((date) =>
-      scheduleReminderNotificationForDate(
-        scheduleType,
-        prayerIndex,
-        date,
-        englishName,
-        arabicName,
-        alertType,
-        intervalMinutes
+    reminders.flatMap((reminder) =>
+      nextXDays.map((date) =>
+        scheduleReminderNotificationForDate(
+          scheduleType,
+          prayerIndex,
+          date,
+          englishName,
+          arabicName,
+          reminder.alert,
+          reminder.interval
+        )
       )
     )
   );
@@ -1098,7 +1195,7 @@ const clearAllScheduledRemindersForPrayer = async (
  * @param englishName English prayer name
  * @param arabicName Arabic prayer name
  * @param atTimeAlert At-time alert type (Off, Silent, Sound)
- * @param reminderAlert Reminder alert type (Off, Silent, Sound)
+ * @param reminders Both reminders, in slot order
  * @returns How many parts of the work the phone refused that can still fire
  */
 const applyPrayerAlerts = async (
@@ -1107,20 +1204,34 @@ const applyPrayerAlerts = async (
   englishName: string,
   arabicName: string,
   atTimeAlert: AlertType,
-  reminderAlert: AlertType
+  reminders: readonly [ReminderSetting, ReminderSetting]
 ): Promise<number> => {
   const work: Promise<number>[] = [];
 
+  // Constraint: a reminder is kept only while the at-time alert is on too
+  const armed = atTimeAlert === AlertType.Off ? [] : reminders.filter((reminder) => reminder.alert !== AlertType.Off);
+
+  // Both halves cost this prayer the same, from the settings this call was given: computed here
+  // because only this function sees both, and a half reading storage could disagree with the other
+  // while a commit's preferences are still those of a later change
+  const requestCost = atTimeAlert === AlertType.Off ? 0 : 1 + armed.length;
+
   work.push(
     atTimeAlert !== AlertType.Off
-      ? _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, arabicName, atTimeAlert)
+      ? _addMultipleScheduleNotificationsForPrayer(
+          scheduleType,
+          prayerIndex,
+          englishName,
+          arabicName,
+          atTimeAlert,
+          requestCost
+        )
       : clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex)
   );
 
-  // Constraint: a reminder is kept only while the at-time alert is on too
   work.push(
-    atTimeAlert !== AlertType.Off && reminderAlert !== AlertType.Off
-      ? _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, reminderAlert)
+    armed.length > 0
+      ? _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, armed, requestCost)
       : clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex)
   );
 
@@ -1141,8 +1252,11 @@ const applyPrayerAlerts = async (
  */
 const applyPrayerPreferences = (scheduleType: ScheduleType, prayerIndex: number, state: AlertMenuState): void => {
   setPrayerAlertType(scheduleType, prayerIndex, state.atTimeAlert);
-  setReminderAlertType(scheduleType, prayerIndex, state.reminderAlert);
-  setReminderInterval(scheduleType, prayerIndex, state.reminderInterval);
+
+  for (const slot of REMINDER_SLOTS) {
+    setReminderAlertType(scheduleType, prayerIndex, slot, state.reminders[slot].alert);
+    setReminderInterval(scheduleType, prayerIndex, slot, state.reminders[slot].interval);
+  }
 };
 
 /**
@@ -1178,7 +1292,7 @@ const undoPrayerAlertChange = async (
       englishName,
       arabicName,
       previous.atTimeAlert,
-      previous.reminderAlert
+      previous.reminders
     );
     if (refusals === 0) {
       clearPrayerRepairMark(scheduleType, prayerIndex, generation);
@@ -1234,7 +1348,7 @@ export const commitPrayerAlertChange = async (
         englishName,
         arabicName,
         next.atTimeAlert,
-        next.reminderAlert
+        next.reminders
       );
     } catch (error) {
       logger.error('NOTIFICATION: The alert change failed, putting the prayer back:', error);
@@ -1316,23 +1430,21 @@ const _addAllScheduleRemindersForSchedule = async (
     // null, not 0; see the at-time path above
     if (only && !only.has(index)) return null;
 
-    const reminderAlertType = getReminderAlertType(scheduleType, index);
-
-    // Constraint: reminder requires at-time alert to be enabled
+    // Constraint: a reminder requires the at-time alert to be enabled
     const atTimeAlertType = getPrayerAlertType(scheduleType, index);
-    const reminderEnabled = reminderAlertType !== AlertType.Off && atTimeAlertType !== AlertType.Off;
+    const armed =
+      atTimeAlertType === AlertType.Off
+        ? []
+        : REMINDER_SLOTS.map((slot) => ({
+            alert: getReminderAlertType(scheduleType, index, slot),
+            interval: getReminderInterval(scheduleType, index, slot),
+          })).filter((reminder) => reminder.alert !== AlertType.Off);
 
-    if (!reminderEnabled) {
+    if (armed.length === 0) {
       return clearAllScheduledRemindersForPrayer(scheduleType, index);
     }
 
-    return _addMultipleScheduleRemindersForPrayer(
-      scheduleType,
-      index,
-      prayers[index],
-      arabicPrayers[index],
-      reminderAlertType
-    );
+    return _addMultipleScheduleRemindersForPrayer(scheduleType, index, prayers[index], arabicPrayers[index], armed);
   });
 
   const refusals = await settleAll(promises);
@@ -1475,7 +1587,7 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   const preferenceSnapshot = PRAYERS_ENGLISH.map((prayer, i) => ({
     prayer,
     alert: getPrayerAlertType(ScheduleType.Standard, i),
-    reminder: getReminderAlertType(ScheduleType.Standard, i),
+    reminders: REMINDER_SLOTS.map((slot) => getReminderAlertType(ScheduleType.Standard, i, slot)),
   }));
   logger.info('NOTIFICATION: Preference snapshot before reschedule:', preferenceSnapshot);
 
@@ -1485,20 +1597,13 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // below would treat every notification the OS still holds as stale. Bailing
   // leaves the existing alarms alone; the next refresh runs once data exists.
   //
-  // The test is every list day that can arm a prayer from today on, not today
-  // alone: while yesterday still has a row due the windows start there, but
-  // reading yesterday too would treat an unstored yesterday as an empty cache
-  // between 00:00 and that row, and bailing is the safe direction anyway, since
-  // it arms nothing, cancels nothing and the download that lands reopens the
-  // gate. An upgrade wipe still leaves all of these unstored, so it still bails;
-  // but one day missing from the payload (R7) is a day of unreadable rows, and
-  // treating it as an empty cache would stop the readable day beside it from
-  // being armed. The night rows' extra list day does not count: its rows need
-  // tomorrow's Magrib, so with only that day stored nothing can be armed, and
-  // stamping the gate would silence the next whole gate.
-  const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);
-  if (!armedListDays.some((date) => Database.getPrayerByDateString(date))) {
-    logger.warn('NOTIFICATION: No prayer data for today or tomorrow, skipping reschedule so nothing is cancelled', {
+  // The question is whether any day the windows reach is stored, which the candidate walk
+  // already answers exactly: a day count restates it and gets the night rows and the
+  // still-due yesterday wrong. Bailing is the safe direction anyway, since it arms nothing,
+  // cancels nothing, and the download that lands reopens the gate.
+  const armedListDays = NotificationUtils.candidateListDays();
+  if (armedListDays.length === 0) {
+    logger.warn('NOTIFICATION: No prayer data for the days the windows reach, skipping reschedule', {
       armedListDays,
     });
     return false;

@@ -9,8 +9,13 @@
 
 import { getDefaultStore } from 'jotai';
 
-import { DEFAULT_REMINDER_INTERVAL, EXTRAS_ENGLISH, PRAYERS_ENGLISH, REMINDER_INTERVALS } from '@/shared/constants';
-import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
+import {
+  DEFAULT_REMINDER_SLOT_INTERVALS,
+  EXTRAS_ENGLISH,
+  PRAYERS_ENGLISH,
+  REMINDER_INTERVALS,
+} from '@/shared/constants';
+import { AlertType, REMINDER_SLOTS, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   extraPrayerAlertAtoms,
@@ -61,24 +66,26 @@ const everyPreference = () =>
       label(type, name),
       {
         atTime: getPrayerAlertType(type, index),
-        reminder: getReminderAlertType(type, index),
-        interval: getReminderInterval(type, index),
+        reminder: getReminderAlertType(type, index, 0),
+        interval: getReminderInterval(type, index, 0),
       },
     ])
   );
 
 beforeEach(() => {
   Database.database.clearAll();
-  for (const atoms of [
-    standardPrayerAlertAtoms,
-    extraPrayerAlertAtoms,
-    standardReminderAlertAtoms,
-    extraReminderAlertAtoms,
+  for (const atom of [
+    ...standardPrayerAlertAtoms,
+    ...extraPrayerAlertAtoms,
+    ...standardReminderAlertAtoms.flat(),
+    ...extraReminderAlertAtoms.flat(),
   ]) {
-    for (const atom of atoms) store.set(atom, AlertType.Off);
+    store.set(atom, AlertType.Off);
   }
-  for (const atoms of [standardReminderIntervalAtoms, extraReminderIntervalAtoms]) {
-    for (const atom of atoms) store.set(atom, DEFAULT_REMINDER_INTERVAL);
+  for (const slot of REMINDER_SLOTS) {
+    for (const atom of [...standardReminderIntervalAtoms[slot], ...extraReminderIntervalAtoms[slot]]) {
+      store.set(atom, DEFAULT_REMINDER_SLOT_INTERVALS[slot]);
+    }
   }
   store.set(soundPreferenceAtom, 0);
   Database.database.clearAll();
@@ -96,7 +103,7 @@ describe('setReminderAlertType', () => {
     const expected = everyPreference();
     expected[label(type, name)].reminder = AlertType.Silent;
 
-    setReminderAlertType(type, index, AlertType.Silent);
+    setReminderAlertType(type, index, 0, AlertType.Silent);
 
     expect(everyPreference()).toEqual(expected);
     expect(Database.database.getString(`preference_reminder_alert_${type}_${name.toLowerCase()}`)).toBe(
@@ -106,23 +113,23 @@ describe('setReminderAlertType', () => {
 
   it('turns a reminder off without touching its at-time alert, unlike turning the at-time alert off', () => {
     store.set(standardPrayerAlertAtoms[3], AlertType.Sound);
-    setReminderAlertType(ScheduleType.Standard, 3, AlertType.Sound);
-    expect(getReminderAlertType(ScheduleType.Standard, 3)).toBe(AlertType.Sound);
+    setReminderAlertType(ScheduleType.Standard, 3, 0, AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 3, 0)).toBe(AlertType.Sound);
 
-    setReminderAlertType(ScheduleType.Standard, 3, AlertType.Off);
+    setReminderAlertType(ScheduleType.Standard, 3, 0, AlertType.Off);
 
-    expect(getReminderAlertType(ScheduleType.Standard, 3)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, 3, 0)).toBe(AlertType.Off);
     expect(getPrayerAlertType(ScheduleType.Standard, 3)).toBe(AlertType.Sound);
   });
 
   it('puts back the original value on a failed commit, the way the sheet rolls back', () => {
     store.set(extraPrayerAlertAtoms[1], AlertType.Silent);
-    setReminderAlertType(ScheduleType.Extra, 1, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Extra, 1, 0, AlertType.Silent);
 
-    setReminderAlertType(ScheduleType.Extra, 1, AlertType.Sound);
-    setReminderAlertType(ScheduleType.Extra, 1, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Extra, 1, 0, AlertType.Sound);
+    setReminderAlertType(ScheduleType.Extra, 1, 0, AlertType.Silent);
 
-    expect(getReminderAlertType(ScheduleType.Extra, 1)).toBe(AlertType.Silent);
+    expect(getReminderAlertType(ScheduleType.Extra, 1, 0)).toBe(AlertType.Silent);
     expect(Database.database.getString('preference_reminder_alert_extra_last third')).toBe(String(AlertType.Silent));
   });
 });
@@ -136,18 +143,18 @@ describe('setReminderInterval', () => {
     const expected = everyPreference();
     expected[label(type, name)].interval = 25;
 
-    setReminderInterval(type, index, 25);
+    setReminderInterval(type, index, 0, 25);
 
     expect(everyPreference()).toEqual(expected);
     expect(Database.database.getString(`preference_reminder_interval_${type}_${name.toLowerCase()}`)).toBe('25');
   });
 
   it.each(REMINDER_INTERVALS.map((interval) => [interval]))('reads back an interval of %i minutes', (interval) => {
-    setReminderInterval(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'), interval as ReminderInterval);
+    setReminderInterval(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'), 0, interval as ReminderInterval);
 
-    expect(getReminderInterval(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'))).toBe(interval);
+    expect(getReminderInterval(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'), 0)).toBe(interval);
     // The reminder alert beside it is a different preference
-    expect(getReminderAlertType(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'))).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'), 0)).toBe(AlertType.Off);
   });
 });
 
