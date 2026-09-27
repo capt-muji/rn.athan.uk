@@ -308,8 +308,8 @@ Reviewed by this planning session on 2026-09-27, reading the design cold and att
 
 - [x] Step 1: DONE in `31b5f511`
 - [x] Step 2: DONE in `dd052bf2`
-- [x] Step 3: DONE in the commit this step makes
-- [ ] Step 4: `releases.json` is deleted, and every live rule that names it (specified)
+- [x] Step 3: DONE in `139b7b98`
+- [x] Step 4: DONE in the commit this step makes
 
 ---
 
