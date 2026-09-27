@@ -45,23 +45,27 @@ describe('the 25 October 2026 clock change', () => {
     expect(triggers()).toEqual({
       'athan_extra_last third_2026-10-25': '2026-10-25T01:00:00.000Z',
       'athan_extra_last third_2026-10-26': '2026-10-26T01:00:00.000Z',
+      'athan_extra_last third_2026-10-27': '2026-10-27T01:00:00.000Z',
       'athan_extra_midnight_2026-10-25': '2026-10-24T22:58:00.000Z',
       'athan_extra_midnight_2026-10-26': '2026-10-25T22:57:00.000Z',
+      'athan_extra_midnight_2026-10-27': '2026-10-26T22:57:00.000Z',
       'athan_standard_fajr_2026-10-25': '2026-10-25T05:04:00.000Z',
+      'athan_standard_fajr_2026-10-26': '2026-10-26T05:05:00.000Z',
+      'athan_standard_fajr_2026-10-27': '2026-10-27T05:06:00.000Z',
     });
   });
 
   // Every reminder for list 25 falls in the first pass of 01:xx, BST
-  it.each<[ReminderInterval, string, string]>([
-    [5, '2026-10-25T00:55:00.000Z', '2026-10-26T00:55:00.000Z'],
-    [10, '2026-10-25T00:50:00.000Z', '2026-10-26T00:50:00.000Z'],
-    [15, '2026-10-25T00:45:00.000Z', '2026-10-26T00:45:00.000Z'],
-    [20, '2026-10-25T00:40:00.000Z', '2026-10-26T00:40:00.000Z'],
-    [25, '2026-10-25T00:35:00.000Z', '2026-10-26T00:35:00.000Z'],
-    [30, '2026-10-25T00:30:00.000Z', '2026-10-26T00:30:00.000Z'],
+  it.each<[ReminderInterval, string, string, string]>([
+    [5, '2026-10-25T00:55:00.000Z', '2026-10-26T00:55:00.000Z', '2026-10-27T00:55:00.000Z'],
+    [10, '2026-10-25T00:50:00.000Z', '2026-10-26T00:50:00.000Z', '2026-10-27T00:50:00.000Z'],
+    [15, '2026-10-25T00:45:00.000Z', '2026-10-26T00:45:00.000Z', '2026-10-27T00:45:00.000Z'],
+    [20, '2026-10-25T00:40:00.000Z', '2026-10-26T00:40:00.000Z', '2026-10-27T00:40:00.000Z'],
+    [25, '2026-10-25T00:35:00.000Z', '2026-10-26T00:35:00.000Z', '2026-10-27T00:35:00.000Z'],
+    [30, '2026-10-25T00:30:00.000Z', '2026-10-26T00:30:00.000Z', '2026-10-27T00:30:00.000Z'],
   ])(
     'arms the %i-minute Last Third reminder at %s, that much real time before the second 01:00',
-    async (interval, list25, list26) => {
+    async (interval, list25, list26, list27) => {
       jest.setSystemTime(new Date('2026-10-24T21:00:00.000Z'));
       enable(ScheduleType.Extra, 'Last Third', interval);
 
@@ -70,8 +74,10 @@ describe('the 25 October 2026 clock change', () => {
       expect(triggers()).toEqual({
         'athan_extra_last third_2026-10-25': '2026-10-25T01:00:00.000Z',
         'athan_extra_last third_2026-10-26': '2026-10-26T01:00:00.000Z',
+        'athan_extra_last third_2026-10-27': '2026-10-27T01:00:00.000Z',
         [`reminder_extra_last third_2026-10-25_${interval}`]: list25,
         [`reminder_extra_last third_2026-10-26_${interval}`]: list26,
+        [`reminder_extra_last third_2026-10-27_${interval}`]: list27,
       });
     }
   );
@@ -140,7 +146,9 @@ describe('the 29 March 2026 clock change', () => {
       'athan_extra_midnight_2026-03-29': '2026-03-28T23:18:00.000Z',
       'athan_extra_midnight_2026-03-30': '2026-03-29T23:18:00.000Z',
       'athan_extra_suhoor_2026-03-29': '2026-03-29T03:47:00.000Z',
+      'athan_extra_suhoor_2026-03-30': '2026-03-30T03:45:00.000Z',
       'athan_standard_fajr_2026-03-29': '2026-03-29T04:07:00.000Z',
+      'athan_standard_fajr_2026-03-30': '2026-03-30T04:05:00.000Z',
     });
   });
 });

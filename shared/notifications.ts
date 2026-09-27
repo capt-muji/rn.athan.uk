@@ -1,9 +1,16 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
-import { EXTRAS_ENGLISH, NOTIFICATION_ROLLING_DAYS, PRAYERS_ENGLISH, REMINDER_INTERVALS } from '@/shared/constants';
+import {
+  EXTRAS_ENGLISH,
+  NOTIFICATION_REQUEST_BUDGET,
+  PRAYERS_ENGLISH,
+  REMINDER_INTERVALS,
+  SCHEDULE_CANDIDATE_DAYS,
+} from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
+import { isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 
@@ -223,41 +230,135 @@ export const genNextXDays = (numberOfDays: number, startDate?: string): string[]
   return Array.from({ length: numberOfDays }, (_, i) => TimeUtils.addDaysToDateString(first, i));
 };
 
-/**
- * Extras rows whose instant falls on the evening BEFORE the list day they are filed under.
- *
- * A night belongs to the day it leads into (ISSUES #29), so Midnight and Last Third for day D
- * fire on D minus 1. Suhoor is a night row on the list too, but its instant is on its own
- * date, so it is deliberately not here — and neither is anything on the Standard list.
- */
-const EVENING_BEFORE_ROWS = new Set(['Midnight', 'Last Third']);
+/** One prayer's row on one list day, and what arming it costs against the budget */
+export interface CandidateRow {
+  scheduleType: ScheduleType;
+  englishName: string;
+  date: string;
+  instant: Date;
+  /** The at-time alert plus one per reminder slot that is on for this prayer */
+  requestCost: number;
+}
 
 /**
- * List days to arm for one prayer.
+ * What one prayer's alerts cost against the budget, 0 when the user has it switched off.
  *
- * The window is counted in LIST days, not in hours, so the two rows whose instant precedes
- * their list day lose a whole day of buffer against every other row: today's night row is
- * already past whenever the app looks, leaving exactly one armed, while Isha still has two.
- * One extra list day for those two rows only restores the buffer the rest of the list has.
- *
- * The iOS pending-request ceiling is the constraint on this arithmetic and
- * `shared/__tests__/constants.test.ts` computes the worst case from this very function.
+ * Passed in rather than read here: the preferences live in the store, which imports this
+ * module, so reading them here would close an import cycle.
  */
-export const rollingDaysForPrayer = (scheduleType: ScheduleType, englishName: string): number => {
-  const isEveningBeforeRow = scheduleType === ScheduleType.Extra && EVENING_BEFORE_ROWS.has(englishName);
+export type RequestCostReader = (scheduleType: ScheduleType, englishName: string) => number;
 
-  return NOTIFICATION_ROLLING_DAYS + (isEveningBeforeRow ? 1 : 0);
+/** How a prayer is keyed in a schedule plan, so the two lists cannot merge on a shared name */
+export const schedulePlanKey = (scheduleType: ScheduleType, englishName: string): string =>
+  `${scheduleType}_${englishName}`;
+
+/**
+ * The list days each prayer arms, chosen by request budget rather than by day count.
+ *
+ * A day is the wrong unit for a prayer schedule: counting days armed rows the user may not
+ * need while refusing the one row they did, purely because it sat after midnight. Rows are
+ * taken in time order instead, each one WHOLE, because a reminder fires before the athan it
+ * warns about, so cutting mid-row would leave the phone warning about an athan it never
+ * plays. The walk stops at the first row it cannot afford rather than skipping on to a
+ * cheaper one, which would put a gap in the middle of the covered span.
+ *
+ * @param rows Every candidate row, in any order
+ * @param budget The most requests the app may hold at once
+ */
+export const buildSchedulePlan = (rows: CandidateRow[], budget: number): Map<string, string[]> => {
+  const inTimeOrder = [...rows].sort((a, b) => a.instant.getTime() - b.instant.getTime());
+  const plan = new Map<string, string[]>();
+  let spent = 0;
+
+  for (const row of inTimeOrder) {
+    if (spent + row.requestCost > budget) break;
+    spent += row.requestCost;
+
+    const key = schedulePlanKey(row.scheduleType, row.englishName);
+    const days = plan.get(key) ?? [];
+    days.push(row.date);
+    plan.set(key, days);
+  }
+
+  return plan;
+};
+
+/**
+ * Every row the app could arm, from each prayer's first still-due list day forward.
+ *
+ * A row with nothing armed is left out rather than costed at zero, so it cannot take a place
+ * in the time order that a row the user does want would otherwise hold.
+ *
+ * @param requestCostFor What each prayer's alerts cost, 0 when it is switched off
+ */
+export const collectCandidateRows = (requestCostFor: RequestCostReader): CandidateRow[] => {
+  const now = TimeUtils.createInstant();
+  const rows: CandidateRow[] = [];
+
+  const collectSchedule = (scheduleType: ScheduleType, names: readonly string[]) => {
+    for (const englishName of names) {
+      const requestCost = requestCostFor(scheduleType, englishName);
+      if (requestCost === 0) continue;
+
+      const firstDay = PrayerUtils.firstStillDueListDayForPrayer(scheduleType, englishName, now);
+
+      for (const date of genNextXDays(SCHEDULE_CANDIDATE_DAYS, firstDay)) {
+        const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
+        if (!prayer) continue;
+
+        // No alert may fire for a time the provider did not give (R5). Tested explicitly rather
+        // than left to the past-row check below, which drops it only because `null <= now`
+        // coerces to `0 <= now`, and logged because the arming paths never see such a day now.
+        if (!isReadable(prayer)) {
+          logger.info('Skipping prayer with no readable time:', { date, englishName });
+          continue;
+        }
+
+        if (prayer.datetime <= now) continue;
+
+        rows.push({ scheduleType, englishName, date, instant: prayer.datetime, requestCost });
+      }
+    }
+  };
+
+  collectSchedule(ScheduleType.Standard, PRAYERS_ENGLISH);
+  collectSchedule(ScheduleType.Extra, EXTRAS_ENGLISH);
+
+  return rows;
+};
+
+/**
+ * Every list day that holds a row the app could still arm, whatever the user switched on.
+ *
+ * The empty-cache bail asks this rather than counting days: the windows start at each
+ * prayer's first still-due day, so a day count gets the night rows and a still-due yesterday
+ * wrong in opposite directions.
+ */
+export const candidateListDays = (): string[] => {
+  const everyPrayerCosted = () => 1;
+  const dates = collectCandidateRows(everyPrayerCosted).map((row) => row.date);
+
+  return [...new Set(dates)].sort();
 };
 
 /**
  * The list days to schedule one prayer on — the single source both schedule paths read, so
  * the at-time and reminder windows cannot drift apart.
+ *
+ * The whole schedule is planned on every call because one prayer's days depend on what the
+ * other ten have already spent, which a per-prayer answer cannot know.
+ *
+ * @param requestCostFor What each prayer's alerts cost, 0 when it is switched off
  */
-export const genScheduleDatesForPrayer = (scheduleType: ScheduleType, englishName: string): string[] =>
-  genNextXDays(
-    rollingDaysForPrayer(scheduleType, englishName),
-    PrayerUtils.firstStillDueListDayForPrayer(scheduleType, englishName, TimeUtils.createInstant())
-  );
+export const genScheduleDatesForPrayer = (
+  scheduleType: ScheduleType,
+  englishName: string,
+  requestCostFor: RequestCostReader
+): string[] => {
+  const plan = buildSchedulePlan(collectCandidateRows(requestCostFor), NOTIFICATION_REQUEST_BUDGET);
+
+  return plan.get(schedulePlanKey(scheduleType, englishName)) ?? [];
+};
 
 /**
  * Plays every alert on the alarm stream, which the ringer's silent switch never mutes

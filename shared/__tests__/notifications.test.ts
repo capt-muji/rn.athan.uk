@@ -7,11 +7,16 @@ import {
 } from 'expo-notifications';
 import { Platform } from 'react-native';
 
-import { NOTIFICATION_ROLLING_DAYS, PRAYER_TIMEZONE, PRAYERS_ENGLISH } from '../constants';
+import { london, saveLondonDays } from '@/hooks/__tests__/londonDays';
+
+import { PRAYER_TIMEZONE } from '../constants';
 import {
   ALARM_AUDIO_ATTRIBUTES,
   athanAndroidChannelId,
   atTimeAndroidChannelId,
+  buildSchedulePlan,
+  type CandidateRow,
+  collectCandidateRows,
   createAthanAndroidChannel,
   createDefaultAndroidChannel,
   createExtrasAndroidChannel,
@@ -28,7 +33,6 @@ import {
   getReminderNotificationSound,
   initializeNotifications,
   reminderAndroidChannelId,
-  rollingDaysForPrayer,
   type ScheduledNotification,
 } from '../notifications';
 import { AlertType, ScheduleType } from '../types';
@@ -91,48 +95,159 @@ describe('genNextXDays', () => {
 // =============================================================================
 // PER-PRAYER ROLLING WINDOW TESTS
 //
-// The window is counted in LIST days. Midnight and Last Third for day D fire on the
-// evening of D minus 1, so at the base window their furthest-out armed alert sits a
-// whole day nearer than every other row's — today's is always already past. One extra
-// list day for those two rows, and only those two, restores that buffer.
+// Rows are armed in time order, each one whole, until the next will not fit in the iOS
+// request budget. A day count no longer decides anything: a night row is simply a row
+// whose instant falls where it falls, and Istijaba is absent from the list on six days
+// in seven rather than being a special case.
 // =============================================================================
 
-describe('rollingDaysForPrayer', () => {
-  it('gives the base window to every standard prayer', () => {
-    PRAYERS_ENGLISH.forEach((name) => {
-      expect(rollingDaysForPrayer(ScheduleType.Standard, name)).toBe(NOTIFICATION_ROLLING_DAYS);
-    });
+/** One candidate row, named the way buildSchedulePlan takes them */
+const candidate = (englishName: string, date: string, isoInstant: string, requestCost: number): CandidateRow => ({
+  scheduleType: ScheduleType.Standard,
+  englishName,
+  date,
+  instant: new Date(isoInstant),
+  requestCost,
+});
+
+describe('buildSchedulePlan', () => {
+  it('arms whole rows in time order until the budget is full', () => {
+    const rows = [
+      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
+      candidate('Dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
+      candidate('Fajr', '2026-09-12', '2026-09-12T03:56:00.000Z', 3),
+    ];
+
+    const plan = buildSchedulePlan(rows, 6);
+
+    // The budget holds the first two rows; the third is beyond it
+    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11']);
+    expect(plan.get('standard_Dhuhr')).toEqual(['2026-09-11']);
   });
 
-  it('gives one extra list day to the two Extras rows that fire the evening before', () => {
-    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Midnight')).toBe(NOTIFICATION_ROLLING_DAYS + 1);
-    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Last Third')).toBe(NOTIFICATION_ROLLING_DAYS + 1);
+  it('never arms a row in part, so a row too big for the remaining budget is left whole', () => {
+    const rows = [
+      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
+      candidate('Dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
+    ];
+
+    // Room for the first row and one request of the second: the second must not be armed at all
+    const plan = buildSchedulePlan(rows, 4);
+
+    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11']);
+    expect(plan.has('standard_Dhuhr')).toBe(false);
   });
 
-  it('leaves Suhoor on the base window, since its instant is on its own date', () => {
-    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Suhoor')).toBe(NOTIFICATION_ROLLING_DAYS);
+  it('stops at the first row that does not fit rather than skipping it for a cheaper one', () => {
+    const rows = [
+      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
+      candidate('Dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
+      candidate('Duha', '2026-09-11', '2026-09-11T13:00:00.000Z', 1),
+    ];
+
+    // Skipping Dhuhr would leave a gap mid-span, making "covered until X" untrue
+    const plan = buildSchedulePlan(rows, 4);
+
+    expect(plan.has('standard_Duha')).toBe(false);
   });
 
-  it('gives the base window to the remaining extras', () => {
-    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Duha')).toBe(NOTIFICATION_ROLLING_DAYS);
-    expect(rollingDaysForPrayer(ScheduleType.Extra, 'Istijaba')).toBe(NOTIFICATION_ROLLING_DAYS);
+  it('reads the rows in time order whatever order they arrive in', () => {
+    const rows = [
+      candidate('Dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
+      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
+    ];
+
+    const plan = buildSchedulePlan(rows, 3);
+
+    // Fajr is earlier, so it is the row the budget buys
+    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11']);
+    expect(plan.has('standard_Dhuhr')).toBe(false);
   });
 
-  it('keys off the schedule as well as the name, so a standard row can never widen', () => {
-    expect(rollingDaysForPrayer(ScheduleType.Standard, 'Midnight')).toBe(NOTIFICATION_ROLLING_DAYS);
+  it('gathers every armed day of one prayer under that prayer', () => {
+    const rows = [
+      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1),
+      candidate('Fajr', '2026-09-12', '2026-09-12T03:56:00.000Z', 1),
+      candidate('Fajr', '2026-09-13', '2026-09-13T03:58:00.000Z', 1),
+    ];
+
+    const plan = buildSchedulePlan(rows, 64);
+
+    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11', '2026-09-12', '2026-09-13']);
+  });
+
+  it('keeps the two schedules apart, so a shared name cannot merge them', () => {
+    const rows = [
+      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1),
+      { ...candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1), scheduleType: ScheduleType.Extra },
+    ];
+
+    const plan = buildSchedulePlan(rows, 64);
+
+    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11']);
+    expect(plan.get('extra_Fajr')).toEqual(['2026-09-11']);
+  });
+
+  it('arms nothing when the budget cannot hold even the first row', () => {
+    const rows = [candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3)];
+
+    expect(buildSchedulePlan(rows, 2).size).toBe(0);
   });
 });
 
-describe('genScheduleDatesForPrayer', () => {
-  it('reaches one list day further for a night row than for a daily prayer', () => {
-    const isha = genScheduleDatesForPrayer(ScheduleType.Standard, 'Isha');
-    const midnight = genScheduleDatesForPrayer(ScheduleType.Extra, 'Midnight');
+describe('genScheduleDatesForPrayer, on the stored London days from 10 to 12 September 2026', () => {
+  /** Every prayer armed at-time with both reminders: the worst case the budget must hold */
+  const fullyArmed = () => 3;
+  const onlyFajr = (_scheduleType: ScheduleType, englishName: string) => (englishName === 'Fajr' ? 1 : 0);
 
-    expect(isha).toHaveLength(NOTIFICATION_ROLLING_DAYS);
-    expect(midnight).toHaveLength(NOTIFICATION_ROLLING_DAYS + 1);
-    // The shorter window is a prefix of the longer one: same start, one more day on the end
-    expect(midnight.slice(0, isha.length)).toEqual(isha);
-    expect(midnight[0]).toBe(prayerZoneDate());
+  beforeEach(() => {
+    jest.useFakeTimers({ now: london('2026-09-10', '12:00') });
+    saveLondonDays();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('starts a prayer on the first list day whose row can still fire', () => {
+    const isha = genScheduleDatesForPrayer(ScheduleType.Standard, 'Isha', fullyArmed);
+
+    expect(isha[0]).toBe('2026-09-10');
+  });
+
+  it('gives a prayer nothing while its bell is off, so an unarmed row costs no budget', () => {
+    expect(genScheduleDatesForPrayer(ScheduleType.Standard, 'Isha', onlyFajr)).toEqual([]);
+  });
+
+  it('arms every stored day of the one prayer a light user switched on', () => {
+    // Fajr on the 10th has passed at 12:00, so the 11th and 12th are what remain
+    expect(genScheduleDatesForPrayer(ScheduleType.Standard, 'Fajr', onlyFajr)).toEqual(['2026-09-11', '2026-09-12']);
+  });
+
+  it('stops at the end of the stored days rather than inventing more', () => {
+    const fajr = genScheduleDatesForPrayer(ScheduleType.Standard, 'Fajr', onlyFajr);
+
+    expect(fajr.every((date) => date <= '2026-09-12')).toBe(true);
+  });
+
+  it('leaves out a day whose time the provider did not give, so no alert can fire for it', () => {
+    // The 11th's Fajr came through unreadably; the 12th's did not (R5). Its row still exists, with
+    // a null datetime, so the plan must drop it rather than carry a candidate with no instant.
+    saveLondonDays({ '2026-09-11': ['fajr'] });
+
+    const days = genScheduleDatesForPrayer(ScheduleType.Standard, 'Fajr', onlyFajr);
+
+    expect(days).toEqual(['2026-09-12']);
+    expect(days).not.toContain('2026-09-11');
+  });
+
+  it('never plans a row whose instant is missing, whatever order the walk reached it in', () => {
+    saveLondonDays({ '2026-09-11': ['fajr'] });
+
+    const rows = collectCandidateRows((_scheduleType, englishName) => (englishName === 'Fajr' ? 1 : 0));
+
+    expect(rows.every((row) => row.instant instanceof Date)).toBe(true);
+    expect(rows.map((row) => row.date)).not.toContain('2026-09-11');
   });
 });
 
