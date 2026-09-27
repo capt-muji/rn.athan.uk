@@ -867,6 +867,62 @@ production release; G.6 noted but deferred by owner.
   kept whole. Reverting the clause to `===` must fail it.
 - **Not fixed in session 32**, under the standing one-finding-one-branch rule.
 
+### 43. [VERIFIED SAFE 2026-09-27, session 32] Magrib and Isha past midnight at polar latitude: measured against real Tromso, Reykjavik and Nuuk data
+
+Raised by the owner while session 32 closed: London will almost never put Magrib or Isha past midnight, but Norway,
+Iceland or Greenland will, so is that accounted for? **It is, and this is the measurement rather than the assurance.**
+
+**The machinery.** `MIDNIGHT_CROSSING_PRAYERS = ['Isha', 'Magrib']` feeds a matched pair in `shared/prayer.ts`:
+`adjustPrayerDateForMidnightCrossing` moves a small-hours row's INSTANT to the next calendar day, and
+`calculateBelongsToDate` moves its LIST DAY back, so the row fires at the right moment while staying on the list of
+the day it belongs to. Both halves read the one constant, so they cannot drift apart.
+
+**The data.** Real 2026 times for three cities, computed with `adhan@4.4.6` (MoonsightingCommittee, AqrabBalad,
+MiddleOfTheNight) and kept at `~/athan-device-sweep/session32/polar2026.json`. Days where the row falls before 06:00:
+
+| City | Magrib crossing | Isha crossing | Both |
+|---|---|---|---|
+| London | 0 | 0 | 0 |
+| Oslo (59.9N) | 0 | 0 | 0 |
+| Reykjavik (64.1N) | 18 | 46 | 18 |
+| Tromso (69.6N) | 62 | 74 | 62 |
+| Nuuk (64.2N) | 65 | 98 | 65 |
+
+So the owner's reading is exactly right: London and even Oslo never cross, and the Arctic cities cross for a third of
+the year.
+
+**What was checked.** Every day of 2026 for each city, pushed through the app's own builder and stores, sampled every
+37 minutes with a rebuild per day and a `refreshSequence` per sample: **84,006 states**, on both schedules. Four
+invariants held at every one of them, with zero violations: a list day on screen holds every one of its rows; no row
+is duplicated or missing; every row's instant lies inside its list day's window; and the rows of a day run in time
+order. The notification path was checked separately, because a misfiled row means an athan at the wrong time:
+**6,570 rows**, of which **363 fire on a later calendar day than their list day**, and for every one the instant
+`getPrayerForDate` arms equals the instant the list shows and reads back as the provider's own HH:mm. Zero mismatches.
+
+Worked example, Tromso, showing the pair doing its job (the provider files Magrib under the 16th at `00:04`):
+
+```
+2026-05-15  provider magrib 23:51 isha 00:02   ->  Magrib@2026-05-15 = 15 May 23:51,  Isha@2026-05-15 = 16 May 00:02
+2026-05-16  provider magrib 00:04 isha 00:12   ->  Magrib@2026-05-16 = 17 May 00:04,  Isha@2026-05-16 = 17 May 00:12
+```
+
+**The one real limit, with its margin.** `ISLAMIC_DAY.EARLY_MORNING_CUTOFF_HOUR` is 6, so a crossing row later than
+06:00 would not be recognised as crossing and would be filed a day late. The latest crossing row in real data is
+Nuuk's Isha at `01:28`, and Tromso's is `00:33`, leaving over five hours of headroom. The tightest related margin is
+different and worth recording: a crossing Isha and the FOLLOWING day's Fajr come within **28 minutes** of each other
+at Tromso on 21 June (`00:32` then `01:00`), and they never invert, so the list order is safe there too.
+
+**Two findings that were NOT app defects**, recorded so a later session does not chase them:
+- `adhan`'s own polar fallback emits Asr AFTER Magrib on some Tromso winter days (9 January: Asr `12:23`, Magrib
+  `12:22`). That is provider data, and `shared/sequence.ts` already orders rows by list position rather than by
+  instant for exactly this reason (`compareListOrder`'s doc comment names the polar case).
+- Islamic Midnight and Last Third fire the EVENING BEFORE their list day by design (`getNightTimesForDay`), so a
+  naive "row must fall inside its own calendar day" check reports thousands of false positives. The first draft of
+  this sweep did, and the invariant was corrected rather than the code.
+
+**Nothing to fix, so nothing shipped.** No code changed for this issue. The evidence is the point, and v2.0's
+location work inherits it.
+
 ---
 
 ## J. Release distribution & the update prompt (2026-09-12)
@@ -1058,6 +1114,7 @@ characterised).
 - #25 — Sound-sheet preview dead on first tap after natural clip completion (fixed)
 - #26 — Android overlay dimmed the header / dropped "London, UK" (closed)
 - #27 — Day-roll list showed one row: a keep test compared list day for equality (fixed 2026-09-13, guarded 2026-09-27)
+- #43 — Magrib/Isha past midnight at polar latitude: 84,006 states and 6,570 alarm rows clean (verified safe)
 - #28 — Fetch on a clock-change-eve Saturday shifted every Midnight/Last Third 20–40 min (fixed)
 - #29 — Extras Midnight/Last Third were a night late; alerts could fire on another night than their row (fixed)
 - #30 — Phone in another timezone read London's calendar from the phone's clock (fixed)
