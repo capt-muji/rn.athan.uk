@@ -1,0 +1,12 @@
+function filterRelevantPrayers(
+  prayers: Prayer[],
+  now: Date,
+  currentDisplayDate: string | null,
+  previous: ReadablePrayer | null
+): Prayer[] {
+  return prayers.filter((prayer) => {
+    if (isReadable(prayer) && prayer.datetime > now) return true;
+    if (previous && prayer.belongsToDate >= previous.belongsToDate) return true;
+    return currentDisplayDate !== null && prayer.belongsToDate >= currentDisplayDate;
+  });
+}
