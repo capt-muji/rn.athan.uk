@@ -172,3 +172,37 @@ describe('the Help modal on Android', () => {
     expect(screen.getByText('Why did notifications stop after a restart?')).toBeOnTheScreen();
   });
 });
+
+describe("the Help modal's chevron", () => {
+  /** Every chevron drawn, which is one per question */
+  const chevrons = () => screen.root?.queryAll((node) => node.props.children === '\u2304') ?? [];
+
+  it('turns about its own centre, so it never swings sideways as it opens', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    const style = StyleSheet.flatten(chevrons()[0].props.style);
+
+    expect(style.textAlign).toBe('center');
+    expect(style.lineHeight).toBeGreaterThanOrEqual(style.fontSize);
+  });
+
+  it('keeps its squash while it turns, which a replaced transform array would drop', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    const transform = StyleSheet.flatten(chevrons()[0].props.style).transform as Record<string, unknown>[];
+
+    // Squashed then turned: applied right to left, so the squash rides with the glyph
+    expect(transform).toEqual([{ rotate: '0deg' }, { scaleY: 0.6 }]);
+  });
+
+  it('turns upside down once its answer is open, and back when it closes', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    const rotation = () => (StyleSheet.flatten(chevrons()[0].props.style).transform as { rotate: string }[])[0].rotate;
+
+    await fireEvent.press(screen.getByRole('button', { name: "Why don't I get any notifications?" }));
+    expect(rotation()).toBe('-180deg');
+
+    await fireEvent.press(screen.getByRole('button', { name: "Why don't I get any notifications?" }));
+    expect(rotation()).toBe('0deg');
+  });
+});
