@@ -90,3 +90,12 @@ Step 1 installs a dependency, so it must run the nested-copy remedy afterwards. 
   driving this step's change. The step's own change is the comment, and the breaks are what prove the guarantee holds.
 - Green: `41 passed, 41 total`, `tsc` exit 0, Biome exit 0.
 - Breaks: `BREAK CAUGHT` for modalStacks and updateDoesNothing, then `ALL AS EXPECTED: 1`.
+
+## Step 3: the package's own contract is pinned by a test
+
+- Branch: `test/31-in-app-updates-contract`. No anchor: the step adds a new file.
+- No red phase, which the plan states by design: the suite describes what is installed, so it passes immediately. Its
+  break is what proves it guards.
+- Green: `3 passed, 3 total`, `tsc` exit 0, Biome exit 0.
+- Break: `BREAK CAUGHT: versionDrift`, then `ALL AS EXPECTED: 1`. The package's own `package.json` was restored and
+  reads `0.12.0` afterwards.
