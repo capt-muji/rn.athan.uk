@@ -14,6 +14,7 @@ import * as TaskManager from 'expo-task-manager';
 import { createStore, getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
+import { london } from '@/hooks/__tests__/londonDays';
 import {
   BACKGROUND_TASK_INTERVAL_HOURS,
   BACKGROUND_TASK_INTERVAL_MINUTES,
@@ -29,7 +30,6 @@ import {
 import logger from '@/shared/logger';
 import type { ScheduledNotification } from '@/shared/notifications';
 import { transformApiData } from '@/shared/prayer';
-import * as TimeUtils from '@/shared/time';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
@@ -1022,28 +1022,38 @@ describe('rescheduleAllNotificationsFromBackground', () => {
   const { getDefaultStore } = require('jotai/vanilla');
   const store = getDefaultStore();
 
+  /** A fixed London day, so the seeded rows below sit at a known distance from the pinned clock */
+  const SEEDED_DAY = '2026-09-11';
+
   beforeEach(() => {
     jest.clearAllMocks();
     store.set(lastNotificationScheduleAtom, 0);
+
+    // The clock is pinned before the seed is built, so the rows below are always ahead of "now". Read off the real
+    // clock these tests passed only before 12:00 London and failed after it, every day (ISSUES #41)
+    jest.useFakeTimers({ now: london(SEEDED_DAY, '09:00') });
 
     // A reschedule refuses to run against an empty prayer cache — it would
     // schedule nothing and then sweep away the alarms the OS restored after an
     // app update. These tests have always meant "a normal device with data", so
     // seed today; without it they would assert the bail path instead.
-    const today = TimeUtils.getTodayDateString();
     const seed: ISingleApiResponseTransformed = {
-      date: today,
+      date: SEEDED_DAY,
       fajr: '12:00',
-      sunrise: '12:00',
-      dhuhr: '12:00',
-      asr: '12:00',
-      magrib: '12:00',
-      isha: '12:00',
-      suhoor: '12:00',
-      duha: '12:00',
-      istijaba: '12:00',
+      sunrise: '12:01',
+      dhuhr: '12:02',
+      asr: '12:03',
+      magrib: '12:04',
+      isha: '12:05',
+      suhoor: '12:06',
+      duha: '12:07',
+      istijaba: '12:08',
     };
-    Database.database.set(`prayer_${today}`, JSON.stringify(seed));
+    Database.database.set(`prayer_${SEEDED_DAY}`, JSON.stringify(seed));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it('updates lastNotificationScheduleAtom on success', async () => {
