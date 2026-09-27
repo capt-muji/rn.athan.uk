@@ -37,3 +37,46 @@ Measured before the change, as the plan predicted:
 own baseline on `uat-2` is 37, measured by restoring it from `git show uat-2:` and running it, so this step's
 three tests make 40. The step file now says 40 and names the 37 it builds on. The 42 was a stale figure carried
 from an earlier draft of the spike; nothing in the code was wrong.
+
+### Breaks
+
+`bash ai/plans/29-help-faq-modal/scripts/breaks-1.sh` ended `ALL AS EXPECTED: 1`. All 13 caught against the code
+this session wrote, not the spike's.
+
+### Commit
+
+`8ce3b205`, version 1.29.9. Hook reported `Tests: 4747 passed, 4747 total` and
+`Statements 100% (4381/4381)`, `Branches 100% (1954/1954)`, `Functions 100% (910/910)`,
+`Lines 100% (3947/3947)`.
+
+### Review
+
+One round, clean. Read `git show 8ce3b205` back cold against the step's 15 points. Also verified mechanically
+that all 17 user-facing strings the step specifies appear in `shared/help.ts` byte for byte, by extracting them
+from the step file and searching the source: 17 checked, 0 missing. No finding, so no fix was applied.
+
+Merged at `259d694a`.
+
+## Step 2: The Other card, the Help row and the What's New item
+
+Branch `feat/29-help-row`.
+
+### Red
+
+`keeps Help reachable on a release with no notes to show` and
+`closes itself, then opens Help once the close has had time to finish` both failed with
+`Unable to find an element with role: button, name: Help`. The file's other 13 tests passed:
+`Tests: 2 failed, 13 passed, 15 total`.
+
+The plan predicted the first would fail on `Unable to find an element with text: Other`. It failed on the Help
+button instead, because that assertion comes first in the test. Same test, same cause, so this is the plan's
+expected red reached by the earlier of its two assertions.
+
+### Green
+
+| Command | Result |
+| --- | --- |
+| `npx jest components/sheets/screens/__tests__/Settings.test.tsx --selectProjects=components` | `Tests: 15 passed, 15 total` |
+| `npx jest shared/__tests__/whatsNew.test.ts --selectProjects=unit` | `Tests: 49 passed, 49 total` |
+| `npx tsc --noEmit` | exit 0 |
+| `npx biome check . --error-on-warnings` | exit 0 |
