@@ -18,6 +18,8 @@ const mockIsNewerVersion = jest.fn().mockReturnValue(false);
 const mockOpenURL = jest.fn().mockResolvedValue(undefined);
 const mockLoggerWarn = jest.fn();
 const mockLoggerError = jest.fn();
+const mockCheckForUpdate = jest.fn();
+const mockStartUpdate = jest.fn();
 
 jest.mock('@/shared/config', () => ({
   APP_CONFIG: {
@@ -57,11 +59,21 @@ jest.mock('react-native', () => ({
   Linking: { openURL: (...args: unknown[]) => mockOpenURL(...args) },
 }));
 
+// Virtual: the native module is Android-only, so the iOS-default suite must still resolve the import
+jest.mock(
+  'expo-in-app-updates',
+  () => ({
+    checkForUpdate: () => mockCheckForUpdate(),
+    startUpdate: (isImmediate?: boolean) => mockStartUpdate(isImmediate),
+  }),
+  { virtual: true }
+);
+
 // Global fetch mock
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
-import { checkForUpdates, openStore, readPlayListingVersion } from '../updates';
+import { checkForUpdates, openStore } from '../updates';
 
 // =============================================================================
 // SETUP
@@ -72,20 +84,9 @@ const RETRY_MS = 60 * 60 * 1000;
 const FETCH_TIMEOUT_MS = 10 * 1000;
 const PINNED_NOW = 1_700_000_000_000;
 
-/** A Play listing page reduced to what the parse must survive: the version key, and SVG path data a shape-only regex would match */
-const playListingHtml = (version: string | null): string =>
-  [
-    '<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12"/>',
-    '<path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11"/>',
-    '"139":[[["Tools"]]],',
-    version === null ? '"140":[[["no version here"]]],' : `"141":[[["${version}"]],[[[36]],[[[24,"7.0"]]]]],`,
-    '"145":[null,[null,"- Changed daily reset from midnight to last prayer"]]',
-  ].join('');
-
-/** iOS reads the body as json, Android as text: a fixture answers whichever the platform under test asks for */
-const storeResponse = (body: { json?: unknown; text?: string }) => ({
+/** The iTunes lookup body, which is the only store body the app reads now */
+const storeResponse = (body: { json: unknown }) => ({
   json: () => Promise.resolve(body.json),
-  text: () => Promise.resolve(body.text ?? ''),
 });
 
 beforeEach(() => {
@@ -361,6 +362,15 @@ describe('checkForUpdates', () => {
     jest.useRealTimers();
   });
 
+  it('never asks Play on iOS', async () => {
+    mockGetPopupUpdateLastCheck.mockReturnValue(0);
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
+
+    await checkForUpdates();
+
+    expect(mockCheckForUpdate).not.toHaveBeenCalled();
+  });
+
   it('fetches exactly once for production iOS (iTunes API only)', async () => {
     mockIsProd.mockReturnValue(true);
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
@@ -435,58 +445,63 @@ describe('checkForUpdates (Android)', () => {
     mockIsNewerVersion.mockReturnValue(false);
   });
 
-  it('reads the version from the Play listing on Android', async () => {
-    mockIsProd.mockReturnValue(true);
-    mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue(storeResponse({ text: playListingHtml('2.0.0') }));
-    mockIsNewerVersion.mockReturnValue(true);
+  it('asks Play and starts the update when one is available', async () => {
+    mockCheckForUpdate.mockResolvedValue({ updateAvailable: true });
+    mockStartUpdate.mockResolvedValue(true);
 
-    const result = await checkForUpdatesAndroid();
+    await checkForUpdatesAndroid();
 
-    expect(mockFetch).toHaveBeenCalledWith(
-      'https://play.google.com/store/apps/details?id=com.mugtaba.athan&hl=en&gl=GB',
-      expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
-    );
-    expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '2.0.0');
-    expect(result).toBe(true);
+    expect(mockStartUpdate).toHaveBeenCalledTimes(1);
+    expect(mockStartUpdate).toHaveBeenCalledWith(undefined);
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
-  it('reads the Play listing on Android whatever the environment', async () => {
-    mockIsProd.mockReturnValue(false);
-    mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue(storeResponse({ text: playListingHtml('3.0.0') }));
-    mockIsNewerVersion.mockReturnValue(true);
-
-    const result = await checkForUpdatesAndroid();
-
-    expect(mockFetch).toHaveBeenCalledWith(
-      'https://play.google.com/store/apps/details?id=com.mugtaba.athan&hl=en&gl=GB',
-      expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
-    );
-    expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '3.0.0');
-    expect(result).toBe(true);
-  });
-
-  it('returns false when the Play listing carries no version', async () => {
-    mockIsProd.mockReturnValue(true);
-    mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue(storeResponse({ text: playListingHtml(null) }));
+  it('never shows our modal on Android, even when Play has an update', async () => {
+    mockCheckForUpdate.mockResolvedValue({ updateAvailable: true });
+    mockStartUpdate.mockResolvedValue(true);
 
     const result = await checkForUpdatesAndroid();
 
     expect(result).toBe(false);
-    expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 
-  it('returns false when the Play listing version is not a dotted number', async () => {
-    mockIsProd.mockReturnValue(true);
-    mockGetPopupUpdateLastCheck.mockReturnValue(0);
-    mockFetch.mockResolvedValue(storeResponse({ text: playListingHtml('varies with device') }));
+  it('does nothing when Play reports no update', async () => {
+    mockCheckForUpdate.mockResolvedValue({ updateAvailable: false });
 
     const result = await checkForUpdatesAndroid();
 
     expect(result).toBe(false);
-    expect(mockIsNewerVersion).not.toHaveBeenCalled();
+    expect(mockStartUpdate).not.toHaveBeenCalled();
+  });
+
+  it('shows nothing when Play rejects the check', async () => {
+    const error = new Error('AppUpdateService : Binder has died');
+    mockCheckForUpdate.mockRejectedValue(error);
+
+    const result = await checkForUpdatesAndroid();
+
+    expect(result).toBe(false);
+    expect(mockLoggerWarn).toHaveBeenCalledWith('Failed to start native update:', error);
+  });
+
+  it('stamps a Play failure an hour back so the day is not lost', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockCheckForUpdate.mockRejectedValue(new Error('Binder has died'));
+
+    await checkForUpdatesAndroid();
+
+    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
+    jest.useRealTimers();
+  });
+
+  it('stamps a successful Play check with now', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockCheckForUpdate.mockResolvedValue({ updateAvailable: false });
+
+    await checkForUpdatesAndroid();
+
+    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW);
+    jest.useRealTimers();
   });
 });
 
@@ -517,111 +532,5 @@ describe('openStore', () => {
 
     expect(mockOpenURL).toHaveBeenCalledTimes(1);
     expect(mockOpenURL).toHaveBeenCalledWith('https://apps.apple.com/gb/app/athan-london/id123456789');
-  });
-});
-
-// =============================================================================
-// openStore TESTS (Android - requires module re-import)
-// =============================================================================
-
-describe('openStore (Android)', () => {
-  let openStoreAndroid: typeof openStore;
-
-  beforeAll(() => {
-    jest.resetModules();
-
-    jest.mock('react-native', () => ({
-      Platform: { OS: 'android' },
-      Linking: { openURL: (...args: unknown[]) => mockOpenURL(...args) },
-    }));
-
-    jest.mock('@/shared/config', () => ({
-      APP_CONFIG: {
-        iosAppId: '123456789',
-        androidPackage: 'com.mugtaba.athan',
-      },
-      isProd: () => mockIsProd(),
-      isPreview: () => false,
-      isTest: () => true,
-    }));
-
-    jest.mock('@/shared/logger', () => ({
-      __esModule: true,
-      default: {
-        info: jest.fn(),
-        warn: (...args: unknown[]) => mockLoggerWarn(...args),
-        error: (...args: unknown[]) => mockLoggerError(...args),
-        debug: jest.fn(),
-      },
-    }));
-
-    jest.mock('@/stores/version', () => ({
-      getInstalledVersion: () => mockGetInstalledVersion(),
-    }));
-
-    jest.mock('@/stores/ui', () => ({
-      getPopupUpdateLastCheck: () => mockGetPopupUpdateLastCheck(),
-      setPopupUpdateLastCheck: (ts: number) => mockSetPopupUpdateLastCheck(ts),
-    }));
-
-    jest.mock('@/shared/versionUtils', () => ({
-      isNewerVersion: (installed: string, remote: string) => mockIsNewerVersion(installed, remote),
-    }));
-
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    openStoreAndroid = require('../updates').openStore;
-  });
-
-  beforeEach(() => {
-    jest.clearAllMocks();
-    mockOpenURL.mockResolvedValue(undefined);
-  });
-
-  it('opens Play Store URL on Android', async () => {
-    await openStoreAndroid();
-
-    expect(mockOpenURL).toHaveBeenCalledWith('market://details?id=com.mugtaba.athan');
-  });
-
-  it('falls back to the Play web page when no Play client handles the intent', async () => {
-    mockOpenURL.mockRejectedValueOnce(new Error('No activity found')).mockResolvedValueOnce(undefined);
-
-    await openStoreAndroid();
-
-    expect(mockOpenURL).toHaveBeenCalledTimes(2);
-    expect(mockOpenURL).toHaveBeenLastCalledWith('https://play.google.com/store/apps/details?id=com.mugtaba.athan');
-    expect(mockLoggerError).not.toHaveBeenCalled();
-  });
-
-  it('logs error when Linking.openURL throws on Android', async () => {
-    const error = new Error('Cannot open URL');
-    mockOpenURL.mockRejectedValue(error);
-
-    await openStoreAndroid();
-
-    expect(mockOpenURL).toHaveBeenCalledTimes(2);
-    expect(mockLoggerError).toHaveBeenCalledWith('Failed to open store URL:', error);
-  });
-});
-
-// =============================================================================
-// readPlayListingVersion TESTS
-// =============================================================================
-
-describe('readPlayListingVersion', () => {
-  it('reads the version out of a real Play listing payload', () => {
-    expect(readPlayListingVersion(playListingHtml('1.5.2'))).toBe('1.5.2');
-  });
-
-  it('answers null when the version key is absent', () => {
-    expect(readPlayListingVersion(playListingHtml(null))).toBeNull();
-  });
-
-  it('answers null for a version that is not dotted numbers', () => {
-    expect(readPlayListingVersion(playListingHtml('varies with device'))).toBeNull();
-  });
-
-  it('answers null for an empty document', () => {
-    expect(readPlayListingVersion('')).toBeNull();
   });
 });
