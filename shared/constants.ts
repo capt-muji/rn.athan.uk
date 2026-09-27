@@ -32,12 +32,6 @@ export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Isti
 export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 
 /**
- * Index position of Istijaba prayer in EXTRAS arrays (0-indexed: 4)
- * Used for special handling: Istijaba notifications only scheduled on Fridays
- */
-export const ISTIJABA_INDEX = 4;
-
-/**
  * Night prayer names that cross midnight boundary
  * Used for determining which prayers belong to the previous/next Islamic day
  * These prayers occur after Isha but before Fajr (the nighttime portion)
@@ -635,24 +629,6 @@ export const LAYOUT = {
 export const GLOW = {
   /** Size multiplier for glow relative to screen width */
   sizeFactor: 1.5,
-} as const;
-
-// =============================================================================
-// PLATFORM-SPECIFIC
-// =============================================================================
-
-/**
- * Platform-specific styling adjustments
- * Use with Platform.OS checks for cross-platform consistency
- */
-export const PLATFORM = {
-  /** Android-specific values */
-  android: {
-    /** Bottom padding for screens */
-    bottomPadding: 15,
-    /** Navigation bar bottom padding */
-    navigationBottomPadding: 40,
-  },
 } as const;
 
 // =============================================================================

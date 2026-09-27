@@ -157,6 +157,24 @@ const requirePerf = () => require('@/shared/perf') as typeof import('@/shared/pe
 
 const lastMmkvInstance = () => mockMmkvInstances[mockMmkvInstances.length - 1];
 
+/** One entry of the persisted ring, as JSON carries it */
+type FlushedEntry = { name: string; type: string; ts: number; duration?: number; detail?: unknown };
+
+/** Backgrounds the app, the one path that flushes the ring on demand */
+const backgroundTheApp = () => {
+  const { AppState } = require('react-native') as { AppState: { addEventListener: jest.Mock } };
+  const registration = AppState.addEventListener.mock.calls.find(([event]: [string]) => event === 'change');
+  if (!registration) throw new Error('the monitor registered no AppState listener');
+  (registration[1] as (state: string) => void)('background');
+};
+
+/** The ring as the app persists it: background the app, then read the snapshot back */
+const flushedRing = (): FlushedEntry[] => {
+  backgroundTheApp();
+  const raw = lastMmkvInstance()?.getString('perf_ring');
+  return raw ? (JSON.parse(raw) as { entries: FlushedEntry[] }).entries : [];
+};
+
 beforeEach(() => {
   jest.resetModules();
   delete process.env.EXPO_PUBLIC_PERF_MONITOR;
@@ -179,10 +197,8 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR unset (default builds)', () => {
     perf.initPerfMonitor();
     perf.perfMark('anything');
     perf.perfMeasure('anything', 'start');
-    perf.perfFlush();
 
     expect(mockMmkvInstances).toHaveLength(0);
-    expect(perf.getPerfRing()).toEqual([]);
   });
 
   it('is safe to call from every call site shape used in the app', () => {
@@ -192,7 +208,6 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR unset (default builds)', () => {
       perf.initPerfMonitor();
       perf.perfMark('toggle_tap', { label: 'Show hijri date' });
       perf.perfMeasure('overlay_open', 'overlay_open_start', { scheduleType: 'standard' });
-      perf.perfFlush('test');
     }).not.toThrow();
   });
 
@@ -204,7 +219,6 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR unset (default builds)', () => {
     perf.initPerfMonitor();
 
     expect(mockMmkvInstances).toHaveLength(0);
-    expect(perf.getPerfRing()).toEqual([]);
   });
 
   // The variable can survive into a store build (a stale .env, an EAS profile
@@ -217,10 +231,8 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR unset (default builds)', () => {
 
     perf.initPerfMonitor();
     perf.perfMark('toggle_tap');
-    perf.perfFlush('test');
 
     expect(mockMmkvInstances).toHaveLength(0);
-    expect(perf.getPerfRing()).toEqual([]);
   });
 });
 
@@ -237,7 +249,7 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
 
     perf.perfMark('toggle_tap', { label: 'Show hijri date' });
 
-    const ring = perf.getPerfRing();
+    const ring = flushedRing();
     const names = ring.map((entry) => entry.name);
     expect(names).toContain('perf_monitor_init');
     expect(names).toContain('toggle_tap');
@@ -254,15 +266,17 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
     const before = Date.now();
     perf.perfMark('bootstrap_start');
     perf.perfMark('bootstrap_done', { didBootstrap: true });
-    expect(perf.getPerfRing()).toEqual([]);
+    // Nothing is written before init: these two marks sit in the pre-init buffer
+    const instancesBeforeInit = mockMmkvInstances.length;
 
     perf.initPerfMonitor();
 
-    const names = perf.getPerfRing().map((entry) => entry.name);
+    expect(mockMmkvInstances).toHaveLength(instancesBeforeInit + 1);
+    const names = flushedRing().map((entry) => entry.name);
     expect(names.slice(0, 3)).toEqual(['bootstrap_start', 'bootstrap_done', 'perf_monitor_init']);
 
     // The ring ts is the REPLAY time, so the capture epoch rides in detail.at
-    const done = perf.getPerfRing().find((entry) => entry.name === 'bootstrap_done');
+    const done = flushedRing().find((entry) => entry.name === 'bootstrap_done');
     const detail = done?.detail as { didBootstrap: boolean; at: number };
     expect(detail.didBootstrap).toBe(true);
     expect(detail.at).toBeGreaterThanOrEqual(before);
@@ -278,10 +292,10 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
     }
     perf.initPerfMonitor();
 
-    const replayed = perf.getPerfRing().filter((entry) => entry.name.startsWith('early_'));
+    const replayed = flushedRing().filter((entry) => entry.name.startsWith('early_'));
     expect(replayed).toHaveLength(50);
     expect(replayed[0].name).toBe('early_0');
-    expect(perf.getPerfRing().some((entry) => entry.name === 'early_79')).toBe(false);
+    expect(flushedRing().some((entry) => entry.name === 'early_79')).toBe(false);
   });
 
   it('records a measure only when the start mark exists', () => {
@@ -291,12 +305,12 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
 
     // Missing start mark: silent no-op (first-render effects, dropped taps)
     perf.perfMeasure('overlay_close', 'overlay_close_start');
-    expect(perf.getPerfRing().some((entry) => entry.name === 'overlay_close')).toBe(false);
+    expect(flushedRing().some((entry) => entry.name === 'overlay_close')).toBe(false);
 
     perf.perfMark('overlay_open_start');
     perf.perfMeasure('overlay_open', 'overlay_open_start');
 
-    const opened = perf.getPerfRing().find((entry) => entry.name === 'overlay_open');
+    const opened = flushedRing().find((entry) => entry.name === 'overlay_open');
     expect(opened?.type).toBe('measure');
     expect(opened?.duration).toBeGreaterThan(0);
   });
@@ -309,13 +323,13 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
     perf.perfMark('sheet_settings_present');
     perf.perfMark('sheet_settings_animate');
     perf.perfMeasure('sheet_settings_open', 'sheet_settings_present');
-    perf.perfFlush('test');
+    backgroundTheApp();
 
     const raw = lastMmkvInstance()?.getString('perf_ring');
     expect(raw).toBeDefined();
 
     const parsed = JSON.parse(raw as string) as { reason: string; count: number; entries: Array<{ name: string }> };
-    expect(parsed.reason).toBe('test');
+    expect(parsed.reason).toBe('background');
     expect(parsed.count).toBeGreaterThan(0);
     expect(parsed.entries.map((entry) => entry.name)).toContain('sheet_settings_open');
   });
@@ -329,9 +343,9 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
       perf.perfMark(`spam_${i}`);
     }
 
-    expect(perf.getPerfRing().length).toBeLessThanOrEqual(600);
-    expect(perf.getPerfRing().some((entry) => entry.name === 'spam_0')).toBe(false);
-    expect(perf.getPerfRing().some((entry) => entry.name === 'spam_699')).toBe(true);
+    expect(flushedRing().length).toBeLessThanOrEqual(600);
+    expect(flushedRing().some((entry) => entry.name === 'spam_0')).toBe(false);
+    expect(flushedRing().some((entry) => entry.name === 'spam_699')).toBe(true);
   });
 
   it('derives launch measures from native marks idempotently', () => {
@@ -347,26 +361,13 @@ describe('perf with EXPO_PUBLIC_PERF_MONITOR=1', () => {
     mockFakeLib.emit('contentAppeared', 'react-native-mark');
 
     const launchMeasures = (name: string) =>
-      perf.getPerfRing().filter((entry) => entry.name === name && entry.type === 'measure');
+      flushedRing().filter((entry) => entry.name === name && entry.type === 'measure');
     expect(launchMeasures('launch_native')).toHaveLength(1);
     expect(launchMeasures('launch_js_bundle')).toHaveLength(1);
 
     // A second native-mark batch must not duplicate the derived measures
     mockFakeLib.emit('nativeLaunchEnd', 'react-native-mark');
     expect(launchMeasures('launch_native')).toHaveLength(1);
-  });
-
-  it('writes nothing, and does not throw, when flushed before the monitor has started', () => {
-    process.env.EXPO_PUBLIC_PERF_MONITOR = '1';
-    const perf = requirePerf();
-    // Instances from earlier tests stay in the list, so a flush that wrote would show as a new instance or a new ring
-    const instancesBefore = mockMmkvInstances.length;
-    const ringsBefore = mockMmkvInstances.map((instance) => instance.getString('perf_ring'));
-
-    expect(() => perf.perfFlush('early')).not.toThrow();
-
-    expect(mockMmkvInstances).toHaveLength(instancesBefore);
-    expect(mockMmkvInstances.map((instance) => instance.getString('perf_ring'))).toEqual(ringsBefore);
   });
 });
 
@@ -406,8 +407,7 @@ describe('perf ring timestamps', () => {
     mockFakeLib.advance(ms);
   };
 
-  const tsByName = (perf: ReturnType<typeof requirePerf>, name: string): number | undefined =>
-    perf.getPerfRing().find((entry) => entry.name === name)?.ts;
+  const tsByName = (name: string): number | undefined => flushedRing().find((entry) => entry.name === name)?.ts;
 
   it('dates entries on the epoch axis, so mark-to-mark deltas are the true wall spans', () => {
     const perf = requirePerf();
@@ -418,14 +418,14 @@ describe('perf ring timestamps', () => {
     advance(676);
     perf.perfMark('home_content');
 
-    expect(tsByName(perf, 'perf_monitor_init')).toBe(EPOCH_AT_INIT);
-    expect(tsByName(perf, 'index_first_render')).toBe(EPOCH_AT_INIT + 900);
-    expect(tsByName(perf, 'home_content')).toBe(EPOCH_AT_INIT + 1576);
+    expect(tsByName('perf_monitor_init')).toBe(EPOCH_AT_INIT);
+    expect(tsByName('index_first_render')).toBe(EPOCH_AT_INIT + 900);
+    expect(tsByName('home_content')).toBe(EPOCH_AT_INIT + 1576);
 
     // Stated as spans too, because the span is what the analysis reads
-    const init = tsByName(perf, 'perf_monitor_init') as number;
-    const render = tsByName(perf, 'index_first_render') as number;
-    const content = tsByName(perf, 'home_content') as number;
+    const init = tsByName('perf_monitor_init') as number;
+    const render = tsByName('index_first_render') as number;
+    const content = tsByName('home_content') as number;
     expect(render - init).toBe(900);
     expect(content - render).toBe(676);
     expect(content - init).toBe(1576);
@@ -444,8 +444,8 @@ describe('perf ring timestamps', () => {
     advance(400);
     mockFakeLib.releaseDelivery();
 
-    expect(tsByName(perf, 'delivered_late')).toBe(tsByName(perf, 'delivered_now'));
-    expect(tsByName(perf, 'delivered_late')).toBe(EPOCH_AT_INIT);
+    expect(tsByName('delivered_late')).toBe(tsByName('delivered_now'));
+    expect(tsByName('delivered_late')).toBe(EPOCH_AT_INIT);
   });
 
   it('is unaffected by how long the library sat loaded before init ran', () => {
@@ -459,7 +459,7 @@ describe('perf ring timestamps', () => {
     advance(900);
     perf.perfMark('index_first_render');
 
-    expect(tsByName(perf, 'perf_monitor_init')).toBe(EPOCH_AT_INIT + 5000);
-    expect(tsByName(perf, 'index_first_render')).toBe(EPOCH_AT_INIT + 5900);
+    expect(tsByName('perf_monitor_init')).toBe(EPOCH_AT_INIT + 5000);
+    expect(tsByName('index_first_render')).toBe(EPOCH_AT_INIT + 5900);
   });
 });

@@ -16,7 +16,6 @@ import {
   getDayAnchor,
   getNightTimes,
   getPreviousDateString,
-  getSecondsBetween,
   getSecondsRemaining,
   getTodayDateString,
   getWallSecondDelay,
@@ -533,29 +532,6 @@ describe('formatDateShort', () => {
     // 23:30 UTC on Dec 20 is 23:30 London (GMT, UTC+0) — still Dec 20.
     const instant = new Date('2026-12-20T23:30:00Z');
     expect(formatDateShort(instant)).toBe('2026-12-20');
-  });
-});
-
-// =============================================================================
-// COUNTDOWN UTILITIES
-// =============================================================================
-
-describe('getSecondsBetween', () => {
-  it('returns positive seconds for future time', () => {
-    const now = new Date('2026-01-18T06:00:00Z');
-    const future = new Date('2026-01-18T07:00:00Z');
-    expect(getSecondsBetween(now, future)).toBe(3600); // 1 hour
-  });
-
-  it('returns negative seconds for past time', () => {
-    const now = new Date('2026-01-18T07:00:00Z');
-    const past = new Date('2026-01-18T06:00:00Z');
-    expect(getSecondsBetween(now, past)).toBe(-3600); // -1 hour
-  });
-
-  it('returns 0 for same time', () => {
-    const time = new Date('2026-01-18T06:00:00Z');
-    expect(getSecondsBetween(time, time)).toBe(0);
   });
 });
 

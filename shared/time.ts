@@ -440,22 +440,6 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
 // =============================================================================
 
 /**
- * Calculates the difference in seconds between two dates
- * Used for countdown calculation: nextPrayer.datetime - now
- *
- * @param from Start date (typically "now")
- * @param to End date (typically prayer.datetime)
- * @returns Difference in seconds (positive if 'to' is in future)
- *
- * @example
- * getSecondsBetween(now, prayerTime)
- * // Returns: 7234 (seconds until prayer)
- */
-export const getSecondsBetween = (from: Date, to: Date): number => {
-  return Math.floor((to.getTime() - from.getTime()) / 1000);
-};
-
-/**
  * Whole seconds remaining until a target instant, for live countdown display.
  *
  * Rounding model (countdown display contract):
