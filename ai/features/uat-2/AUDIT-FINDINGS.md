@@ -1816,6 +1816,32 @@ preferences back on failure (`hooks/useNotification.ts:191-222`). The sound path
 
 CONFIRMED.
 
+## 49b. The sound commit, finished
+
+Finding 49 said the sound sheet persisted the athan before a reschedule that can throw, with no
+rollback. Session 6b's sibling work added the rollback, so by 2026-09-27 the preference did go back.
+Session 33 found the two halves that were still wrong, and the owner ruled on both.
+
+The re-arm is not atomic, so a failure part way left some prayers on the new athan and the rest on the
+old, while the restored preference agreed with neither. And rescheduleAllNotifications takes the
+scheduling lock itself and had therefore RELEASED it before it rethrew, so the undo ran outside the
+lock: anything queued behind the commit armed with the athan that was about to be abandoned. Measured
+with the real lock while planning, a queued refresh saw the abandoned athan every time.
+
+The owner's ruling, 2026-09-27: the selection is part of the commit, so a failure puts back everything
+including the selection. The commit moved into stores/notifications.ts and now does the write, the
+channel, the re-arm and the undo inside ONE lock acquisition, with the undo RE-ARMING on the previous
+athan rather than only rewriting the preference. A failed undo still restores the preference, because
+that is what Settings shows.
+
+Tests after: 175 suites, 4778 tests, 100% on all four measures. Breaks: 6 of 6 caught.
+
+One break was corrected by running it. `return withSchedulingLock(async () => {` appears six times in
+the file, so `perl -0p` rewrote the FIRST one, in a different function, and the break SURVIVED while
+breaking nothing in the code under test. It now anchors on this function's own undo line and takes a
+second acquisition instead, which deadlocks the undo and is caught by three tests. DURABLE LESSON: a
+break must name something unique to the code it breaks, and only running it tells you that.
+
 ## 50. The alert sheet ignores the permission result and shows a selection it will never save
 
 `components/sheets/screens/Alert.tsx:129-140`.
