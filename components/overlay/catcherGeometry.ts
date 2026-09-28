@@ -25,8 +25,6 @@ export interface CatcherInput {
   windowHeight: number;
   list: PageCoordinates | null;
   rowIndex: number;
-  /** Window-to-root offset, so the exempt row lands on the row the user sees (see stores/ui.ts) */
-  originOffset: { x: number; y: number };
 }
 
 /**
@@ -35,15 +33,15 @@ export interface CatcherInput {
  * did); the row body, its time and its bell receive taps directly.
  */
 export const buildCatcherRegions = (input: CatcherInput): CatcherRegion[] => {
-  const { windowWidth, windowHeight, list, rowIndex, originOffset } = input;
+  const { windowWidth, windowHeight, list, rowIndex } = input;
 
   if (!list || list.width <= 0) {
     return [{ id: 'full', top: 0, left: 0, width: windowWidth, height: windowHeight }];
   }
 
-  const rowTop = list.pageY - originOffset.y + rowIndex * STYLES.prayer.height;
+  const rowTop = list.pageY + rowIndex * STYLES.prayer.height;
   const rowBottom = rowTop + STYLES.prayer.height;
-  const rowLeft = list.pageX - originOffset.x;
+  const rowLeft = list.pageX;
   const rowRight = list.pageX + list.width;
   const rowSpan = rowBottom - rowTop;
 

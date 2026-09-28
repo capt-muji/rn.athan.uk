@@ -2,6 +2,7 @@ import { useAtomValue } from 'jotai';
 import { useEffect, useRef } from 'react';
 import { StyleSheet, View, type ViewInstance } from 'react-native';
 
+import { OverlayInfoBox } from '@/components/overlay';
 import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
@@ -81,6 +82,7 @@ export default function List({ type }: Props) {
       {displayOrder.map((prayerIndex) => (
         <Prayer key={prayerIndex} index={prayerIndex} type={type} />
       ))}
+      <OverlayInfoBox type={type} />
     </View>
   );
 }

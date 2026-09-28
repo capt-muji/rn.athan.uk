@@ -62,7 +62,7 @@ export default function BottomSheetSettings() {
       title='Settings'
       subtitle='Set your preferences'
       icon={<SettingsIcon width={16} height={16} color='rgba(165, 180, 252, 0.8)' />}
-      snapPoints={['70%']}
+      snapPoints={['85%']}
       perfName='sheet_settings'
       // The sound sheet is only reachable through this sheet: warming its
       // 32-row list on our first full open builds it invisibly, one tap
@@ -206,9 +206,12 @@ const styles = StyleSheet.create({
   helpGlyph: {
     color: COLORS.text.primary,
     fontSize: 12,
-    // Matches the circle's height, or the glyph sits off-centre and reads as a stray mark
+    // Roboto's ? glyph hangs below the metric centre; 4px total lifts it into the circle's middle
     lineHeight: 20,
     fontFamily: TEXT.family.medium,
+    textAlignVertical: 'center',
+    includeFontPadding: false,
+    paddingBottom: 4,
   },
   infoButton: {
     width: 20,
