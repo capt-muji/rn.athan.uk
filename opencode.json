@@ -9,11 +9,6 @@
       "command": ["/Users/muji/.local/bin/codegraph", "serve", "--mcp"],
       "enabled": true
     },
-    "expo": {
-      "type": "remote",
-      "url": "https://mcp.expo.dev/mcp",
-      "enabled": true
-    },
     "mobile-mcp": {
       "type": "local",
       "command": ["npx", "-y", "@mobilenext/mobile-mcp@latest"],
@@ -26,15 +21,20 @@
       "environment": { "MAESTRO_CLI_NO_ANALYTICS": "1" },
       "enabled": true
     },
+    "agent-device": {
+      "type": "local",
+      "command": ["npx", "-y", "agent-device@latest", "mcp"],
+      "enabled": true
+    },
     "xcodebuildmcp": {
       "type": "local",
       "command": ["npx", "-y", "xcodebuildmcp@latest", "mcp"],
       "enabled": true
     },
-    "agent-device": {
-      "type": "local",
-      "command": ["npx", "-y", "agent-device@latest", "mcp"],
-      "enabled": true
+    "expo": {
+      "type": "remote",
+      "url": "https://mcp.expo.dev/mcp",
+      "enabled": false
     }
   }
 }
