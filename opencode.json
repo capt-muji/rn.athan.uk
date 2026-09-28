@@ -13,13 +13,13 @@
       "type": "local",
       "command": ["npx", "-y", "@mobilenext/mobile-mcp@latest"],
       "environment": { "MOBILEMCP_DISABLE_TELEMETRY": "1" },
-      "enabled": true
+      "enabled": false
     },
     "maestro": {
       "type": "local",
       "command": ["/Users/muji/.maestro/bin/maestro", "mcp"],
       "environment": { "MAESTRO_CLI_NO_ANALYTICS": "1" },
-      "enabled": true
+      "enabled": false
     },
     "agent-device": {
       "type": "local",
