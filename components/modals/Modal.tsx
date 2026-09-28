@@ -139,7 +139,8 @@ const styles = StyleSheet.create({
     elevation: ELEVATION.maximum,
   },
   modalWide: {
-    width: '95%',
+    // 94%, owner-ruled (2026-09-28): 3% in from each edge, generous without touching the screen sides
+    width: '94%',
     maxWidth: SIZE.contentMaxWidth,
     maxHeight: '96%',
     padding: SPACING.lg2,
@@ -171,7 +172,8 @@ const styles = StyleSheet.create({
     letterSpacing: TEXT.letterSpacing.wide,
   },
   titleWithDivider: {
-    marginBottom: SPACING.md,
+    // Matches the space above the title, so the separator sits centered in its breathing room
+    marginBottom: SPACING.lg,
   },
   divider: {
     height: StyleSheet.hairlineWidth,
@@ -179,7 +181,6 @@ const styles = StyleSheet.create({
     opacity: 0.2,
     alignSelf: 'stretch',
     marginHorizontal: -SPACING.xxl,
-    marginBottom: SPACING.md,
   },
   dividerWide: {
     marginHorizontal: -SPACING.lg2,
