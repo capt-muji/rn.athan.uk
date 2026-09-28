@@ -47,12 +47,19 @@ others) and this is the shape all of them use, down to the labels.
    be translated. Translating the name silently orphans every user's alert preferences. This is the
    session's central risk and it is why the structural work moves into row 38.
 
-2. **The prayer-name column does not fit most languages.** The budget is **123pt** on the narrowest
-   screen with a second name shown. Measured: Arabic 68pt, English 80pt, Urdu 120pt, then Hindi
-   131pt, Turkish 172pt, German 194pt, Indonesian 205pt, Swahili 226pt. **Five of the eight launch
-   languages are over.** Your instinct about this was right, and the surprise is which languages
-   break: Arabic and Chinese are NARROWER than English, while Latin-script languages that translate
-   the concept into a phrase are the problem.
+2. **The prayer-name column has a 123pt budget, and your instinct to worry was right, but it is
+   solvable.** With literal translations, five of the eight launch languages overflow. With
+   **properly sourced terse forms** (R6 sourced 28 languages from Diyanet, Kemenag, JAKIM, MUIS and
+   others), **19 of 28 locales fit and seven of the eight launch languages fit**, the exception
+   being French by 9pt.
+
+   The surprise is which languages break: Arabic and Chinese are NARROWER than English. The problem
+   is Latin-script languages that TRANSLATE the concept rather than transliterating it. German
+   "Nachmittagsgebet" is 148pt where "Asr" is 30pt, and both are correct German.
+
+   Sharpest evidence: a shipping app's own English "Last Third of the Night" is **178pt**, which
+   would overflow your row too. Your existing Arabic `آخر ثلث` is 49pt. Whoever chose the app's
+   current labels already solved this once.
 
 3. **Notification copy is frozen at schedule time on both platforms.** Read from the
    `expo-notifications` Swift source. So a language change re-arms the whole plan, up to 64
@@ -85,9 +92,11 @@ and making the shipped Arabic worse. Details in `PROPOSALS.md` P4.
 - **`PLAN.md` itself.** The outline is in `PLAN-OUTLINE.md`: 11 steps, 3 device proofs, and the
   invariant. The plan is written once you have ruled on `PROPOSALS.md` P1 and P2, because those two
   change what the steps build.
-- **R6, the sourced prayer-name catalog**, was still running when this was written. It produces the
-  11 names and 5 explanations per language with citations from national Islamic authorities, which
-  is what lets you ship translations you cannot personally verify.
+- **R6's written report.** Its data landed: `research/prayer-names.json`, 28 locales, every term
+  carrying a source, a confidence grade and a note, with honest nulls where nothing could be
+  sourced. All six daily prayer names are high-confidence in seven of eight launch locales. The
+  gaps are `Istijaba` and `Duha` in a few languages, exactly as expected, since those have no
+  standard rendering outside Arabic.
 
 ## Where this work lives
 
@@ -110,6 +119,7 @@ checkout. Nothing here touches `uat-2`. A mirror sits at `~/athan-localisation-b
 | `VERSIONS.md` | Registry truth, including the `next`-tag trap |
 | `OWNER-DECISIONS.md` | Your rulings, D1 through D14 |
 | `OPEN-DESIGN-QUESTION.md` | The deadlock as you stated it |
+| `CATALOG-EVIDENCE.md` | Two shipping apps' catalogs, measured |
 | `R1` to `R7` `-FINDINGS.md` | What each research report changed |
 | `research/` | The seven full reports |
 | `scripts/` | Every measurement, reproducible |

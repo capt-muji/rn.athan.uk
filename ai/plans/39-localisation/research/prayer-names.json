@@ -63,6 +63,7 @@
       "existing-app-catalog": "already in shared/constants.ts of this repository"
     },
     "unusedSlugNote": "es-wikipedia, frtjislam-ta, gebet, hi-wikipedia, islamqa, muis, islamkavadam-ml and ps-wikipedia are registered as cross-checks for entries credited to a stronger source; no entry rests on them alone. The generic slug wikipedia-<lang> resolves to the specific lang slugs (ur-wikipedia, ru-wikipedia and so on).",
+    "confidenceKey": {
       "high": "national authority, or two independent source classes agree",
       "medium": "one good source",
       "low": "inference or AGPL-only catalog support"
