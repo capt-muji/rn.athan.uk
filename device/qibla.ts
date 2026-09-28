@@ -52,7 +52,28 @@ export const readPosition = async (): Promise<Position | null> => {
     const { coords } = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
     return { latitude: coords.latitude, longitude: coords.longitude };
   } catch (error) {
-    logger.error('QIBLA: Failed to read position:', error);
+    logger.warn('QIBLA: Failed to read position, falling back to the last known one', { error });
+
+    return readLastKnownPosition();
+  }
+};
+
+/**
+ * The fix the phone already had
+ *
+ * A live read fails indoors and on a phone whose radio is cold, where a fix from minutes ago is still worth far more
+ * than nothing: the qibla moves half a degree per 10 km, so a stale city is the same answer as a fresh one.
+ *
+ * @returns The last known position, or null when the phone holds none
+ */
+const readLastKnownPosition = async (): Promise<Position | null> => {
+  try {
+    const last = await Location.getLastKnownPositionAsync();
+    if (!last) return null;
+
+    return { latitude: last.coords.latitude, longitude: last.coords.longitude };
+  } catch (error) {
+    logger.warn('QIBLA: No last known position either', { error });
     return null;
   }
 };

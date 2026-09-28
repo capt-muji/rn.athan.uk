@@ -17,8 +17,17 @@ import { Sheet } from '../parts';
  * The dial and the live needle land in the step after this one. The bearing itself is read here, so the maths is
  * reachable from production rather than sitting behind a test alone.
  */
+/** A bearing once the position is known, and which of the two blank states to show until then */
+type Reading = { status: 'looking' | 'unavailable' } | { status: 'found'; bearing: number };
+
+const readingText = (reading: Reading): string => {
+  if (reading.status === 'found') return `${Math.round(reading.bearing)}° from north`;
+
+  return reading.status === 'looking' ? 'Finding your position' : 'Your location is not available right now';
+};
+
 export default function BottomSheetQibla() {
-  const [bearing, setBearing] = useState<number | null>(null);
+  const [reading, setReading] = useState<Reading>({ status: 'looking' });
   /** Unbounded on purpose: an interpolation runs between the numbers it is given, so a wrapped angle spins the dial */
   const heading = useSharedValue(0);
   const stopHeading = useRef<(() => void) | null>(null);
@@ -26,8 +35,10 @@ export default function BottomSheetQibla() {
   // Keyed on presentation, never on mount: every sheet is mounted from launch, so a mount-keyed subscription would
   // run on every device, forever, for a screen the user may never open.
   const handlePresent = useCallback(async () => {
+    setReading({ status: 'looking' });
+
     const position = await readPosition();
-    setBearing(position ? qiblaBearing(position) : null);
+    setReading(position ? { status: 'found', bearing: qiblaBearing(position) } : { status: 'unavailable' });
 
     stopHeading.current = await watchHeading((sample) => {
       heading.value = unwrapAngle(heading.value, sample);
@@ -51,9 +62,7 @@ export default function BottomSheetQibla() {
       onDismiss={handleDismiss}
       stackBehavior='push'>
       <View style={styles.card}>
-        <Text style={styles.hint}>
-          {bearing === null ? 'Finding your position' : `${Math.round(bearing)}° from north`}
-        </Text>
+        <Text style={styles.hint}>{readingText(reading)}</Text>
       </View>
     </Sheet>
   );
