@@ -71,6 +71,40 @@ nobody in this session can read, and it materially raises confidence in the othe
 **Coverage: all 28 locales carry all six daily prayer names non-null.** The nulls are confined to
 the extras, and to `Istijaba` and `Duha` in particular.
 
+## The trap: Turkish Fajr is `İmsak`, not `Sabah`
+
+R6's headline finding, and it is a real defect waiting to happen rather than a style note.
+
+Diyanet's own site prints **İmsak** in its Turkish table where its English table prints **Fajr**,
+for the same city and the same day, at identical times. R6 verified this by reading both language
+versions of the same page.
+
+Independently corroborated here: Al-Azan's shipped `values-tr/strings.xml` carries
+`fajr = İmsak`, and its `fajr_angle = Fecr Açısı`, so the app uses İmsak for the row label and
+keeps Fecr for the technical parameter. Two unrelated sources agree.
+
+**The same convention runs through a family of languages, and it runs in both directions:**
+
+| Language | Dawn row reads | Why |
+| --- | --- | --- |
+| Turkish | `İmsak` | Diyanet convention. `Sabah` is the prayer's name in prose, not the table label |
+| Albanian | `Imsaku` | KMSH follows the same convention |
+| Indonesian | `Subuh` | Kemenag. **Imsak is a SEPARATE earlier row**, about 10 minutes before, never a synonym |
+| Malay | `Subuh` | JAKIM and MUIS agree. Imsak is again a separate row |
+
+So a naive mapping of "Fajr" to each language's word for the fast's start would label the Turkish
+row correctly by accident and the Indonesian row **wrongly**, pointing at a time roughly ten
+minutes off the prayer it names.
+
+This is an offset-by-definition problem, not a translation problem, which is exactly the class
+`R2-FINDINGS.md` predicted when it flagged the Suhoor versus Imsak conflation. It is also
+unreachable by any automated check: both candidate strings are real words in the language, both
+appear on real prayer timetables, and no placeholder or length test distinguishes them.
+
+**The plan's response:** the four affected locales carry this note in the glossary's provenance
+field, and the launch checklist for any new locale asks explicitly whether the dawn row follows the
+İmsak convention or the Subuh convention. It is a question for the source, not for a translator.
+
 ## The measurement that decides the layout
 
 `scripts/catalog-widths.py` measures every locale's widest name, preferring `shortText` where R6
