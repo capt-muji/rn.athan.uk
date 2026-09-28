@@ -6285,3 +6285,69 @@ mutation to `===` with the whole 4,372-test unit project green. Instrumenting it
 fixed here.
 
 No source file changed in this session. Tests after: 4775 passed, 4775 total, with 100% on all four measures.
+
+## Session 34: the dead-code sweep, and the measurement that was wrong
+
+**27 exported symbols were unreachable from production code, not the 18 the row was queued with.**
+Each sat at 100% coverage because its own tests called it, so every gate reported it healthy while
+nothing on screen used it. Deleting them orphaned 6 private symbols and one 791-line reference
+file: 1,567 lines deleted against 404 added.
+
+**The queued count was wrong because the committed script had three blind spots**, and correcting it
+was step 1. It counted a bare identifier, so a different symbol with the same name read as a caller:
+THREE symbols are named `clearAllScheduledRemindersForPrayer`, and the two live ones hid the dead
+one. It counted a name mentioned in its own JSDoc, which hid 8 more. And `mocks/` was outside its
+scan. The replacement resolves by import graph, through `@/` aliases, relative specifiers,
+`require()` and barrel re-exports, with comments stripped before the search, and it is verified in
+both directions with planted canaries.
+
+**THE PROOF THAT NOTHING CHANGED IS THE PRODUCTION BUNDLE.** Built with `expo export:embed --dev
+false` before any deletion and again after all of them, on both platforms: 2503 exported names
+before, 2485 after, **exactly 18 removed and 0 added**, iOS shrinking 5,850 bytes and Android 5,797.
+The 18 are exactly the planned list, so every deletion was dead weight users were shipping. The four
+`clearAllScheduled*` wrappers never appear in either count, because Metro had already tree-shaken
+them. Only 16 lines were added to production files in the whole session, and each was read
+individually.
+
+**DURABLE LESSON: a guard that under-reports is worse than no guard, because it is trusted.** The
+row was queued from that script's output and would have left 9 dead symbols behind while reporting
+the sweep complete. The standing guard is therefore a test, `shared/__tests__/unusedExports.test.ts`,
+running inside `yarn validate` at 0.5 seconds, with an allow-list that names the mechanism reaching
+each kept symbol. Its own three breaks were run before it was trusted.
+
+**DURABLE LESSON: a deletion runs to a fixpoint, and Biome is the detector.** Removing an export
+orphans the private helpers that served only it, and `noUnusedVariables` fails the build on them, so
+`biome check . --error-on-warnings` after each deletion names what else must go. The chain reached
+depth 3: `useAnimationOpacity`, then `createTimingAnimation`, then `DEFAULT_TIMING`, each revealed
+only after the one above it went.
+
+**The trap that would have broken the app: an export whose INITIALISER does the work.**
+`stores/bootstrap.ts` ended `export const didBootstrapFromCache = bootstrapFromCache();`, and that
+call is what hydrates the prayer sequences before React renders. `device/tls13.ts` had the same
+shape, and its call installs the TLS 1.3 provider Android 9 needs to reach the API at all. Deleting
+the export naively deletes the call, and no test would necessarily catch it. Both keep the call and
+lose only the name, and BOTH WERE VERIFIED ALIVE IN THE 3T's LOG after the sweep:
+`TLS13: first security provider { provider: 'GmsCore_OpenSSL' }` and `MMKV READ: prayer_2026-09-28`
+at import time.
+
+**Five symbols that looked like exceptions were not.** `getDisplayDate` (42 assertions),
+`getPerfRing` (17), `perfFlush` (5), `getAlertSheetState` (3) and `didBootstrapFromCache` (10) each
+had tests that seemed load-bearing. The owner ruled that unused code and its tests go together, and
+was right: every one was a DOORWAY onto live code, so its tests repoint onto the atom or the
+persisted snapshot the app itself uses, and the coverage moved rather than vanishing. The diff was
+checked assertion by assertion: with the renames normalised, not one expected value differs. One
+repoint came out STRONGER, the bulk-wipe guard now spying on `clearPrefix`, the single primitive all
+four deleted wrappers called, which catches a bulk wipe however it is spelled.
+
+**Verified on hardware.** The 3T ran a release build through R8 minification, which re-resolves every
+symbol, and launched clean with the widget rendering, 21 future prayer alerts armed and
+`yarn check:device` green. The iPhone XS replica simulator exercised the Standard and Extras pages,
+the alert sheet, an alert committed to Sound with its MMKV records confirmed, the overlay, and a day
+roll observed live.
+
+**Three defects outside the sweep were found and fixed on the way.** The Help chevron pivoted about
+its box rather than its glyph, from three causes in one style block, all dating to 1.29.46
+(1.29.50, owner-approved on device). ISSUES #44, a test that read the real clock and failed for part
+of every hour, nine days old (1.29.51). And `yarn check:device` failing on a healthy phone because it
+grepped notification channels by a retired generation suffix, wrong since 2026-09-26 (1.29.58): a
+safety net that cries wolf is worse than none, because it trains you to ignore it.

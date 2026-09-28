@@ -380,13 +380,13 @@ order, verified by `__tests__/app/_layout.test.tsx` passing unchanged.
 
 ## 6. Steps
 
-- [ ] Step 1: Replace the sweep script and add the standing guard (specified)
-- [ ] Step 2: Delete four dead symbols in `shared/` (specified)
-- [ ] Step 3: Delete three dead symbols in `device/` and `stores/bootstrap.ts` (specified)
-- [ ] Step 4: Delete seven dead symbols in `stores/database.ts` and `stores/notifications.ts` (specified)
-- [ ] Step 5: Delete five dead symbols in `stores/schedule.ts` and `stores/ui.ts` (specified)
-- [ ] Step 6: Delete the animation chain, the two stored types and the reference file (specified)
-- [ ] Step 7: Pin `widgetAndroid.test.ts`'s clock (specified)
+- [x] Step 1: Replace the sweep script and add the standing guard (specified)
+- [x] Step 2: Delete four dead symbols in `shared/` (specified)
+- [x] Step 3: Delete three dead symbols in `device/` and `stores/bootstrap.ts` (specified)
+- [x] Step 4: Delete seven dead symbols in `stores/database.ts` and `stores/notifications.ts` (specified)
+- [x] Step 5: Delete five dead symbols in `stores/schedule.ts` and `stores/ui.ts` (specified)
+- [x] Step 6: Delete the animation chain, the two stored types and the reference file (specified)
+- [x] Step 7: Pin `widgetAndroid.test.ts`'s clock (specified)
 
 Each step file is in `steps/`. Read the step file, not this list.
 
