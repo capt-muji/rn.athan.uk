@@ -84,11 +84,66 @@ under test.
 Every commit in the range is a docs commit that does what its message says, at a correct version, with no
 app code and no owner rule bent.
 
-## 5. Verdict
+## 5. The execution audit, 2026-09-29
 
-**PASS**, with the section 4.1 fix carried into `PLAN.md` rather than into a code commit, because the range
-contains no code.
+Audited on `feat/37-qibla-compass`, covering 1.29.95 to 1.29.102. Nothing is merged to `uat-2`, on the
+owner's instruction.
 
-The row stays **PLANNING**: this audit closes the research range, and the last thing audited is
-`77eb52fe`. `uat-2` is NOT pushed, on the owner's instruction of 2026-09-28 that nothing lands until the
-execution and its audit are finished and approved.
+### 5.1 Checked
+
+| Check | Result |
+| --- | --- |
+| Full suite | **180 suites, 4851 tests, 100% statements / branches / functions / lines** |
+| Break script | **14 of 14 caught**, `ALL AS EXPECTED: 1` |
+| `tsc --noEmit` | clean |
+| Biome, on the 18 changed files | clean |
+| Dead code (`find-unused-exports.py`) | no new orphan; `KAABA` allow-listed with its reason |
+| Versions | 1.29.95 to 1.29.102, consecutive, all three files in step |
+| iPhone XS simulator | built, installed, launched, driven to the bearing |
+| Owner rules | no visual change outside the feature, no prayer time touched, no release file, no `uat`, no EAS, no API key, no ignore comment, no skipped hook |
+
+### 5.2 Device evidence
+
+Verified on the booted iPhone XS replica with the simulator location set to London:
+
+1. The Settings sheet shows a **Qibla** row directly beneath **Change athan**, with the compass needle in the
+   same purple circle.
+2. Tapping it raises the iOS permission dialog carrying the exact purpose string:
+   *"Your location is used to point the compass toward the Kaaba. It never leaves your device."*
+3. Granting it opens the Qibla sheet, titled **Qibla** / *The direction of prayer*.
+4. The card reads **`119° from north`**, against the 118.99° this session computed independently from the
+   great-circle formula. No error overlay.
+
+### 5.3 Findings, all fixed in this session
+
+| # | Finding | Severity | Fix |
+| --- | --- | --- | --- |
+| 1 | `onFirstPresent` latches on a ref, so the sensor armed once and never again: the needle would be dead on every later open | **Real defect** | `Sheet` gained `onPresent`, which fires on every open. 1.29.98 |
+| 2 | A live position read throws `LocationUnavailable` with no fix, leaving the sheet on "Finding your position" forever | **Real defect**, found on the simulator | Falls back to the last known fix, and says so when there is none. 1.29.100 |
+| 3 | `handlePresent` overwrote the stop function without calling it, stranding the previous stream | **Real defect** | The release runs at the top of every present as well as on dismiss. 1.29.101 |
+| 4 | Handled failures logged at `error`, raising a LogBox overlay in development | Minor | All four calls log at `warn` with structured data. 1.29.100, 1.29.102 |
+| 5 | The component's doc comment had drifted above the `Reading` type | Minor | Moved. 1.29.101 |
+| 6 | The card's corner radius was a literal where the repo has a token | Minor | `RADIUS.xxl`. 1.29.101 |
+| 7 | The break script backed files up by basename, and `shared/qibla.ts` sits beside `device/qibla.ts`: the first run corrupted the maths file and reported six breaks as NOT APPLIED | **Tooling defect** | Keyed on the full path. Recorded as the session's durable lesson |
+| 8 | `expo-location` forces `ACCESS_FINE_LOCATION` into the manifest and hardcodes it in the runtime request, so the owner's coarse-only decision is not reachable by configuration | **Open**, needs the owner | Researched in full in `ANDROID-PERMISSIONS.md`; the remedy is a fourth config plugin |
+
+### 5.4 What is NOT done
+
+- **The dial.** This session ships the bearing as text. The compass face, its ticks and the rotating needle
+  are the next step, and the 60fps architecture they must follow is specified in `PLAN.md` section 4.1.
+- **Android.** Not built or run. The 3T proof is the owner's, and `ANDROID-PERMISSIONS.md` finding 8 must be
+  settled before an Android build is meaningful.
+- **The frame audit.** It needs the dial, so it waits for that step.
+
+## 6. Verdict
+
+**PASS** for the research range, with the section 4.1 fix carried into `PLAN.md` rather than into a code
+commit, because that range contains no code.
+
+**PASS** for the executed work, with all seven code findings fixed in this session and the eighth
+(`ANDROID-PERMISSIONS.md`) put to the owner, because it changes a decision they already took.
+
+The row is **IN PROGRESS**: the bearing, the gate and the sheet ship and are proven on the simulator; the
+dial and the Android proof remain. `uat-2` is NOT pushed and nothing is merged into it, on the owner's
+instruction of 2026-09-28 that nothing lands until execution and audit are finished and they have approved.
+Everything lives on `feat/37-qibla-compass`.
