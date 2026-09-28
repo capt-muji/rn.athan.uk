@@ -60,52 +60,53 @@ const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onT
   const { question, text, steps, action } = topic;
 
   return (
-    <Animated.View layout={GROW} style={[styles.row, open && styles.rowOpen]}>
-      <Pressable
-        style={styles.head}
-        onPress={onToggle}
-        accessibilityRole='button'
-        accessibilityState={{ expanded: open }}
-        accessibilityLabel={question}>
-        <Text style={styles.question}>{question}</Text>
-        <Animated.Text style={[styles.chevron, chevronStyle]}>{'\u2304'}</Animated.Text>
-      </Pressable>
+    <Pressable
+      accessibilityRole='button'
+      accessibilityState={{ expanded: open }}
+      accessibilityLabel={question}
+      onPress={onToggle}>
+      <Animated.View layout={GROW} style={[styles.row, open && styles.rowOpen]}>
+        <View style={styles.head}>
+          <Text style={styles.question}>{question}</Text>
+          <Animated.Text style={[styles.chevron, chevronStyle]}>{'\u2304'}</Animated.Text>
+        </View>
 
-      {open ? (
-        <Animated.View entering={FadeIn.duration(ANIMATION.duration)} exiting={FadeOut.duration(80)}>
-          <View style={styles.panel}>
-            <Text style={styles.cause}>{text}</Text>
+        {open ? (
+          <Animated.View entering={FadeIn.duration(ANIMATION.duration)} exiting={FadeOut.duration(80)}>
+            <View style={styles.panel}>
+              <Text style={styles.cause}>{text}</Text>
 
-            {steps ? (
-              <View style={styles.fix}>
-                {steps.map((step) => (
-                  <View key={step} style={styles.stepRow}>
-                    <Text style={styles.stepMark}>{'\u00bb'}</Text>
-                    <Text style={styles.stepText}>{step}</Text>
-                  </View>
-                ))}
-              </View>
-            ) : null}
+              {steps ? (
+                <View style={styles.fix}>
+                  {steps.map((step) => (
+                    <View key={step} style={styles.stepRow}>
+                      <Text style={styles.stepMark}>{'\u00bb'}</Text>
+                      <Text style={styles.stepText}>{step}</Text>
+                    </View>
+                  ))}
+                </View>
+              ) : null}
 
-            {action ? (
-              <Pressable
-                style={styles.action}
-                onPress={() => openDndAccessSettings()}
-                accessibilityRole='button'
-                accessibilityLabel={HELP_ACTION_LABELS[action]}>
-                <Text style={styles.actionText}>{HELP_ACTION_LABELS[action]}</Text>
-                <Text style={styles.actionText}>{'\u203a'}</Text>
-              </Pressable>
-            ) : null}
-          </View>
-        </Animated.View>
-      ) : null}
+              {action ? (
+                <Pressable
+                  style={styles.action}
+                  onPress={() => openDndAccessSettings()}
+                  accessibilityRole='button'
+                  accessibilityLabel={HELP_ACTION_LABELS[action]}>
+                  <Text style={styles.actionText}>{HELP_ACTION_LABELS[action]}</Text>
+                  <Text style={styles.actionText}>{'\u203a'}</Text>
+                </Pressable>
+              ) : null}
+            </View>
+          </Animated.View>
+        ) : null}
 
-      {/* A child rule, not a border on this view: the layout animation redraws borders as part of
-          the animating frame and can drop the last row's on close, while a child renders at
-          whatever the animated height is */}
-      <View style={styles.rule} />
-    </Animated.View>
+        {/* A child rule, not a border on this view: the layout animation redraws borders as part of
+            the animating frame and can drop the last row's on close, while a child renders at
+            whatever the animated height is */}
+        <View style={styles.rule} />
+      </Animated.View>
+    </Pressable>
   );
 };
 
@@ -263,11 +264,13 @@ const styles = StyleSheet.create({
   buttonRow: {
     alignSelf: 'stretch',
     alignItems: 'center',
+    // Opaque through the button's air, matching the card: a closing row slides beneath it
+    // instead of flashing through the transparent gap above the button
+    backgroundColor: COLORS.light.background,
+    paddingTop: SPACING.section - SPACING.mid,
   },
   button: {
     width: SIZE.modal.buttonWidth,
-    // The air the other modals leave above their button, so the list never crowds it
-    marginTop: SPACING.section - SPACING.mid,
     paddingVertical: SPACING.md,
     borderRadius: RADIUS.lg,
     alignItems: 'center',
