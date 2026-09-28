@@ -137,16 +137,15 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     expect(screen.queryByRole('button', { name: "What's new" })).not.toBeOnTheScreen();
   });
 
-  // The badges are plain glyphs rather than the ringed info SVG (owner, 2026-09-27: the outline ring and the thick
-  // question mark did not fit the theme), so a regression to an icon file would otherwise pass unseen
-  it('badges What\u2019s new with an icon and Help with a question mark', async () => {
+  // Both badges are vectors cropped to their own ink, so each centres itself in its pill. A regression to a text
+  // glyph would bring back the hand-tuned padding that never sat straight on both platforms
+  it('badges What\u2019s new and Help with centred vector glyphs', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
 
     await render(<SettingsSheet />);
 
     expect(screen.getByTestId('svg:info', { includeHiddenElements: true })).toBeOnTheScreen();
-    // The Help badge matches the one in the Help modal's own title, which is a glyph rather than a vector
-    expect(screen.getByText('?')).toBeOnTheScreen();
+    expect(screen.getByTestId('svg:question', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
   it('keeps Help reachable on a release with no notes to show', async () => {
