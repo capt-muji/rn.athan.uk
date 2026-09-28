@@ -30,18 +30,18 @@ Five round-1 agents launched. Three complete, two outstanding.
 
 | Report | Subject | Status |
 | --- | --- | --- |
-| R1 | i18n library landscape, Intl on Hermes, catalog loading | running |
+| R1 | i18n library landscape, Intl on Hermes, catalog loading | **done**, `R1-FINDINGS.md` |
 | R2 | Translation supply chain without a reviewer | **done**, `R2-FINDINGS.md` |
 | R3 | RTL, bidi, fonts, scripts, column widths | **done**, `R3-FINDINGS.md` |
 | R4 | Locale detection, picker UX, the language set | **done**, `R4-FINDINGS.md` |
-| R5 | Production engineering, keys, migration, hostile runtimes | running |
+| R5 | Production engineering, keys, migration, hostile runtimes | **done**, `R5-FINDINGS.md` |
 
 Two round-2 agents launched, both sharpened against what round 1 returned.
 
 | Report | Subject | Status |
 | --- | --- | --- |
-| R6 | The sourced prayer-name catalog, 11 names x 20+ languages, with citations | running |
-| R7 | The two-setting model that resolves the owner's deadlock | running |
+| R6 | The sourced prayer-name catalog, 11 names x 28 languages, with citations | **data done** (`prayer-names.json`), report pending |
+| R7 | The two-setting model that resolves the owner's deadlock | **done**, `R7-FINDINGS.md` |
 
 ## What this session measured itself
 
@@ -95,8 +95,8 @@ Recorded in full in `OWNER-DECISIONS.md`. The ones taken while it ran:
 
 ## What is left
 
-1. R1 and R5 land, then round-2 R6 and R7.
-2. Write `PROPOSALS.md`: the two-setting model, the notification answer, the RTL alternatives, and
+1. Write `PLAN.md` itself, once the owner rules on `PROPOSALS.md` P1 and P2.
+2. (done) `PROPOSALS.md`: the two-setting model, the notification answer, the RTL alternatives, and
    the language-set recommendation. All owner-facing, none decided unilaterally.
 3. Write the plan itself: `PLAN.md` with steps, contracts, tests, acceptance criteria, break
    scripts, per `ai/plans/PLANNER-BRIEF.md` and `TEMPLATE.md`.
