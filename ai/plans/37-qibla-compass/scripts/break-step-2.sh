@@ -118,13 +118,20 @@ break_one "the sensor is armed before the sheet opens" components/sheets/screens
   "" \
   "$SHEET" "watches the heading once it is opened"
 
-# 12. A one-time present callback, which arms the sensor once and leaves the needle dead on every later open.
+# 12. A second present without a dismiss, which strands the first stream forever.
+break_one "a re-present strands the previous stream" components/sheets/screens/Qibla.tsx \
+  "    releaseSensor();
+    setReading({ status: 'looking' });" \
+  "    setReading({ status: 'looking' });" \
+  "$SHEET" "releases the previous stream when it is presented twice without a dismiss"
+
+# 13. A one-time present callback, which arms the sensor once and leaves the needle dead on every later open.
 break_one "the sensor arms only on the first open" components/sheets/screens/Qibla.tsx \
   "onPresent={handlePresent}" \
   "onFirstPresent={handlePresent}" \
   "$SHEET" "arms the sensor again every time it is reopened"
 
-# 13. The gate opened without a permission, so the compass points from nowhere.
+# 14. The gate opened without a permission, so the compass points from nowhere.
 break_one "the qibla row opens without a permission" components/sheets/screens/Settings.tsx \
   "if (!granted) return;" \
   "" \
