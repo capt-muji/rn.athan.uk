@@ -6,7 +6,7 @@ that record.
 
 The risk being retired: R1 recommends a hand-rolled `t()` with no library, against a repo that
 enforces 100% coverage on statements, branches, functions and lines with no ignore comments. If
-that bar cannot be met, or if compile-time key safety does not actually work, the recommendation
+that bar cannot be met, or if compile-time key safety does not work, the recommendation
 collapses and a library is needed after all.
 
 ## What was built

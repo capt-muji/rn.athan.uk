@@ -8,7 +8,7 @@ first-eval-snapped.
 
 Traced through the real code, the risk does not arise, provided one rule is followed.
 
-## How the width actually reaches the row
+## How the width reaches the row
 
 ```
 stores/ui.ts        englishWidthStandardAtom / englishWidthExtraAtom   (Jotai, MMKV-backed)
@@ -25,7 +25,7 @@ So when the width changes, React re-renders and the new width is present in the 
 frame. That satisfies Rule 2 (static-in-render) and Rule 3 (no post-paint initialisation of visible
 state) by construction, and it is why the existing grow-only cache never produced a pop.
 
-## What the animated styles actually carry
+## What the animated styles carry
 
 `components/prayer/Prayer.tsx` uses two animated styles, and neither carries text or geometry that
 a locale change alters:

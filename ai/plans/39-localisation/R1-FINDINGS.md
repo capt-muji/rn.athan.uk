@@ -108,7 +108,7 @@ Point 4 is the one that makes the decision reversible, which matters because R1 
 crossover: past roughly 40 languages, or the moment a translation-management system with human
 review enters the picture, i18next's operations tooling earns its 24 KB.
 
-## How much plural support this app actually needs
+## How much plural support this app needs
 
 Worth stating, because it changes the weight of the counter-argument. The app's copy is almost
 entirely fixed labels: "Settings", "Close", "Change athan", prayer names. The measured plural

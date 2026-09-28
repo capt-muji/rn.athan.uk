@@ -152,7 +152,7 @@ The budget itself is an owner-facing number, because it trades name fidelity aga
 
 The 15 locales' names above are a working set assembled for the width question, not a sourced
 catalog. Round 2 sources them properly (`R2` is looking for licence-checked open-source Islamic app
-catalogs). The width CONCLUSIONS are robust to that: the phrases that break the layout are
+catalogs). The width CONCLUSIONS survive that: the phrases that break the layout are
 literal translations of "Last Third", and any faithful translation of that concept is long in
 those languages. The exact points will move; the shape will not.
 
