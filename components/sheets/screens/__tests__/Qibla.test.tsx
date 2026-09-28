@@ -102,4 +102,17 @@ describe('the qibla sheet', () => {
 
     expect(stop).toHaveBeenCalledTimes(1);
   });
+
+  // A one-time present callback would arm the sensor on the first open and never again, leaving the needle dead for
+  // the rest of the app's life
+  it('arms the sensor again every time it is reopened', async () => {
+    await render(<QiblaSheet />);
+
+    await present();
+    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
+    await dismiss();
+    await present();
+
+    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(2));
+  });
 });
