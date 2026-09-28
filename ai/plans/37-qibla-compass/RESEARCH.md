@@ -458,6 +458,51 @@ at `borderRadius: 10`, `backgroundColor: COLORS.interactive.active` (`#5015b5`) 
 `COLORS.interactive.activeBorder` (`#672bcf`) hairline, holding a `size={9}` glyph. The qibla row reuses it
 exactly, so nothing new is designed for the row itself.
 
+### 4-OWNER.2a THE LIFECYCLE TRAP: a sheet is ALWAYS MOUNTED, so the sensor must not follow the mount
+
+`app/_layout.tsx:86` mounts all three sheets together under `chromeDeferred`, and they stay mounted for the
+whole life of the app:
+
+```tsx
+{chromeDeferred && (
+  <>
+    <BottomSheetSound />
+    <BottomSheetSettings />
+    <BottomSheetAlert />
+  </>
+)}
+```
+
+A `BottomSheetModal` is present-on-demand, not mount-on-demand. **So a qibla sheet mounted this way exists
+from launch, and any `useEffect` in it that subscribes to the magnetometer would run at launch and keep
+running forever, on every device, for a screen the user may never open.** That is precisely Performance
+Design Rule 7 ("gate invisible work"), and the RamadanDecorations precedent in `ai/AGENTS.md` measured the
+cost of getting it wrong at 93% main-thread CPU while rendering nothing.
+
+**The subscription must therefore be keyed on PRESENTATION, not on mount.** `Sheet.tsx` already exposes the
+exact signal: `handleChange` sets `presented` on `index !== -1`, and `onFirstPresent` fires once on the
+first open. The sound sheet uses the same machinery for its own warming (`soundListReadyAtom`), so the
+pattern to copy already exists in the file.
+
+Three things follow for the plan:
+
+1. The sensor subscription starts when the sheet is presented and **stops when it is dismissed**, verified
+   by a test that asserts the unsubscribe ran.
+2. The heavy compass subtree may warm invisibly the way the sound list does, but it must tick nothing while
+   closed.
+3. The 60fps animation must not run while the sheet is shut. A shared value that is not being written costs
+   nothing, but a `withRepeat` or a frame callback would.
+
+### 4-OWNER.2b Two behaviours the sheet gives for free, which the plan must not rebuild
+
+- **Drag-down to close** is `enablePanDownToClose` on the shared `Sheet`, already set. The owner's "you can
+  close it by dragging it down" needs no work.
+- **Android back closes the sheet**, via `Sheet.tsx`'s own `BackHandler` subscription keyed on `presented`.
+  Session 35 established the rule that back closes every open surface; the shared component already honours
+  it.
+- **One unified close haptic** fires on every close path (swipe, backdrop, back, programmatic), so the
+  qibla sheet must not add its own.
+
 ### 4-OWNER.3 The palette question is SETTLED by this ruling
 
 Section 4a found that modals are white and worried the compass would have to be designed for a white card.
