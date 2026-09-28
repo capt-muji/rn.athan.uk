@@ -1,21 +1,34 @@
 /**
- * The overlay's input layer: the Close targets around the selected row, the Extras explanation, and the close fade
+ * The overlay's input layer: the Close targets around the selected row, the Extras explanation, the close fade, and
+ * Android's back press
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { getDefaultStore } from 'jotai/vanilla';
+import { BackHandler, DeviceEventEmitter } from 'react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { ANIMATION } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
-import { closeOverlay, openOverlay } from '@/stores/overlay';
+import { closeOverlay, openOverlay, overlayAtom } from '@/stores/overlay';
 import { setMeasurementsList } from '@/stores/ui';
 
 import Overlay from '../Overlay';
 
 // Opening and closing are measured for the device performance runs, which read the pairing of names
 jest.mock('@/shared/perf', () => ({ perfMark: jest.fn(), perfMeasure: jest.fn() }));
+// Jest resolves React Native for iOS, whose BackHandler never fires. The overlay's back handling exists for Android,
+// so the hardware back press runs through React Native's own Android implementation
+jest.mock('react-native/Libraries/Utilities/BackHandler.ios', () =>
+  jest.requireActual('react-native/Libraries/Utilities/BackHandler.android')
+);
+
+const pressBack = () =>
+  act(() => {
+    DeviceEventEmitter.emit('hardwareBackPress');
+  });
 
 const DHUHR = 2;
 
@@ -135,5 +148,61 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     await act(() => change());
 
     expect(perfMeasure).toHaveBeenLastCalledWith(measure, startMark);
+  });
+});
+
+describe("Android's back button and the overlay", () => {
+  /** Whether the overlay is open, as the store holds it */
+  const isOpen = () => getDefaultStore().get(overlayAtom).isOn;
+
+  it('closes the overlay while it is open, and keeps the app from going back', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    const exitApp = jest.spyOn(BackHandler, 'exitApp');
+    await render(<Overlay />);
+    await act(() => openOverlay(ScheduleType.Standard, DHUHR));
+
+    await pressBack();
+
+    expect(isOpen()).toBe(false);
+    expect(exitApp).not.toHaveBeenCalled();
+  });
+
+  it('leaves the press to the app while the overlay is closed', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    const exitApp = jest.spyOn(BackHandler, 'exitApp');
+    await render(<Overlay />);
+
+    await pressBack();
+
+    expect(exitApp).toHaveBeenCalledTimes(1);
+  });
+
+  it('leaves the press to the app again once the overlay has closed', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    const exitApp = jest.spyOn(BackHandler, 'exitApp');
+    await render(<Overlay />);
+    await act(() => openOverlay(ScheduleType.Standard, DHUHR));
+    await act(() => closeOverlay());
+
+    await pressBack();
+
+    expect(exitApp).toHaveBeenCalledTimes(1);
+  });
+
+  // The catchers fire a haptic because a finger touched the screen; a back press did not
+  it('closes without the tap haptic, which only a press on the screen earns', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    await render(<Overlay />);
+    await act(() => openOverlay(ScheduleType.Extra, 0));
+    jest.mocked(Haptics.impactAsync).mockClear();
+
+    await pressBack();
+
+    expect(isOpen()).toBe(false);
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 });

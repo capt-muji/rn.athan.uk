@@ -20,9 +20,8 @@ const store = getDefaultStore();
 /** Opens the picker the way a person does, by pressing the row */
 const openPicker = () => fireEvent.press(screen.getByText('Countdown bar color'));
 
-// The picker's close and Done buttons are icons with neither a label nor a role, so each is found by its icon
-const closeButton = () => screen.getByTestId('svg:close');
-const doneButton = () => screen.getByTestId('svg:check');
+const closeButton = () => screen.getByRole('button', { name: 'Cancel' });
+const doneButton = () => screen.getByRole('button', { name: 'Done' });
 
 describe('the countdown bar colour row in the settings sheet', () => {
   it('opens the picker with a haptic when pressed while the bar is shown', async () => {
@@ -92,7 +91,22 @@ describe('the countdown bar colour row in the settings sheet', () => {
 
     await render(<ColorPickerSettings />);
 
-    expect(screen.getByText('Reset').parent).toHaveProp('accessibilityState', { disabled });
+    // Drawn but hidden from the accessibility tree on the default colour, so this reads what is DRAWN
+    expect(screen.getByText('Reset', { includeHiddenElements: true }).parent).toHaveProp('accessibilityState', {
+      disabled,
+    });
+  });
+
+  // The row is invisible at the default colour, so a screen reader must not be offered a Reset that does nothing
+  it.each([
+    [COLOR_PICKER_DEFAULT, 0],
+    [CUSTOM_COLOUR, 1],
+  ])('reaches Reset for the saved colour %s only when it does something: %i found', async (colour, reachable) => {
+    store.set(countdownBarColorAtom, colour);
+
+    await render(<ColorPickerSettings />);
+
+    expect(screen.queryAllByRole('button', { name: 'Reset to the default colour' })).toHaveLength(reachable);
   });
 
   it('puts the default colour back with a haptic when Reset is pressed', async () => {
