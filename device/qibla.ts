@@ -19,7 +19,7 @@ export const hasLocationPermission = async (): Promise<boolean> => {
     const { granted } = await Location.getForegroundPermissionsAsync();
     return granted;
   } catch (error) {
-    logger.error('QIBLA: Failed to read location permissions:', error);
+    logger.warn('QIBLA: Failed to read location permissions', { error });
     return false;
   }
 };
@@ -34,7 +34,7 @@ export const requestLocationPermission = async (): Promise<boolean> => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
     return granted;
   } catch (error) {
-    logger.error('QIBLA: Failed to request location permissions:', error);
+    logger.warn('QIBLA: Failed to request location permissions', { error });
     return false;
   }
 };

@@ -100,9 +100,9 @@ break_one "the position asks for the finest accuracy" device/qibla.ts \
 
 # 9. A permission failure read as a grant.
 break_one "a permission read failure answers true" device/qibla.ts \
-  "logger.error('QIBLA: Failed to read location permissions:', error);
+  "logger.warn('QIBLA: Failed to read location permissions', { error });
     return false;" \
-  "logger.error('QIBLA: Failed to read location permissions:', error);
+  "logger.warn('QIBLA: Failed to read location permissions', { error });
     return true;" \
   "$DEVICE" "answers false when the permission cannot be read"
 
