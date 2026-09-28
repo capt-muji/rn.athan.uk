@@ -1537,3 +1537,154 @@ Location is turned off." / **Open Settings** and **Not now**.
 
 **Both go to the owner with the rest of the copy**, and the app is never named, per the rule pinned by
 `shared/__tests__/help.test.ts:88`.
+
+## 21. R3 agent 2 (`adhan` deep dive): the recommendation REVERSES
+
+Full report at `agent-reports/R3-02-adhan-deep-dive.md`. **Section 19.5's provisional line was "write the
+ten lines unless we also want sun-transit". That line is withdrawn.**
+
+### 21.1 The citation checks out, which is the real signal
+
+The agent was asked to verify adhan's source comment, *"Equation from 'Spherical Trigonometry For the use
+of colleges and schools' page 50"*, as a proxy for care. **It did, in the original text:** Todhunter,
+revised by Leathem, read on archive.org, where **printed page 50 is Article 76, Napier's Rules for
+right-angled spherical triangles**, and the formula adhan implements is exactly what those rules yield for
+the triangle formed by dropping a perpendicular from the Kaaba to the observer's meridian.
+
+> **"The citation is genuine, points at the right theorem, and tells you the authors derived the bearing
+> from a classical source rather than copy-pasting a blog post."**
+
+A library that cites a 19th-century theorem correctly, and whose four official ports carry that same
+comment byte-for-byte, is not a library to reimplement from scratch.
+
+### 21.2 The tree-shaking trap, verified independently
+
+The agent warned that the 1.5 KB qibla-only subset is unreachable. **This session verified both halves
+against the npm registry:**
+
+- **`sideEffects` is absent** from `package.json`, so Expo will not shake the rest away.
+- **The `exports` map contains exactly one key, `"."`**, so `adhan/lib/esm/Qibla.js` is blocked wherever
+  package-exports resolution is on. Our `metro.config.js` runs `experimentalImportSupport: true`.
+
+> **Ruling: take the 13.5 KB. "Thirteen kilobytes of Hermes bytecode is a rounding error; a bundler
+> workaround is a real liability."** Chasing the subpath would be exactly the kind of clever fragility
+> `ai/AGENTS.md` warns against.
+
+### 21.3 What changed the recommendation
+
+Three things, none of which is the qibla function:
+
+1. **The London fixture.** adhan's prayer-time tests use a sourced dataset, and **one of the eight fixtures
+   is London / MoonsightingCommittee / Hanafi / MiddleOfTheNight, which is this app's exact current
+   configuration.** So the v2.0 migration is not a leap into an unvalidated library; it is a swap onto one
+   already fixture-tested against our own market.
+2. **Its qibla test asserts London at 118.987**, which is the value this session computed independently,
+   at a tolerance of 0.001°.
+3. **Zero qibla bugs in a decade.** An issue search returns six results and no correctness reports, while
+   the bugs that do surface are exotic polar-circle cases, which the agent reads as "the signature of a
+   library whose core has been stable for a decade".
+
+### 21.4 The honest caveats, recorded
+
+- **adhan's 11 qibla reference values are hardcoded and cite no external source.** They prove internal
+  consistency and regression safety, **not external correctness.** That gap is exactly what section 22's
+  surveyed fixtures close.
+- **The Kaaba constant's provenance is undocumented.** No geodetic survey is cited anywhere in the family,
+  and an unmerged 2026 PR glosses it with a value that does not exactly reproduce the constant. Section
+  22's measurement shows the impact is under 0.004° anywhere, so this is a documentation gap rather than a
+  defect.
+- **A live 2026 PR (#209) reports `HighLatitudeRule.recommended()` ignores the southern hemisphere.** Not a
+  qibla issue, but it matters for v2.0 and belongs in that row's notes.
+- **The two-sources risk is real and the mitigation is explicit:** while our API serves prayer times and
+  adhan serves only the qibla, the outputs never overlap. **The risk appears only at v2.0 if both compute
+  prayer times**, and the rule is "treat adhan as the single calculation engine and the API as a temporary
+  data source, never both live for the same output."
+
+### 21.5 The ruling
+
+**Recommend adopting `adhan@4.4.6` for the qibla bearing, and putting it to the owner as a decision.**
+
+It is a dependency decision in a project whose stated preference is deleting code over adding it, so it is
+not the planner's to take alone. The case, in one line for the owner: **13.5 KB, zero dependencies, MIT,
+48k weekly downloads, a formula verified against the 19th-century theorem it cites, zero qibla bugs in ten
+years, and a prayer-time fixture set that already contains our exact London configuration.**
+
+**The fallback if the owner prefers no dependency:** vendor the 25-line `Qibla.ts` **with its MIT header**,
+never a hand-rewrite, and revisit at v2.0.
+
+## 22. R3 agent 3 (validation): the owner's question is ANSWERED, and it is testable
+
+Full report at `agent-reports/R3-03-validation-strategy.md`. This answers 🐋  "How do we know if this is
+correct? Is it proven and tested?"
+
+### 22.1 The strongest single fact this session has produced
+
+**Our computed bearing matches a published theodolite survey to 0.012°.**
+
+The Universiti Teknologi Malaysia campus was surveyed by theodolite and solar observation at
+**292°57′44″ (292.9622°)**, published in *IJARPED* 13(4) with its method. This session computed the bearing
+for those coordinates: **292.9742°**.
+
+**A difference of 0.012° is under one arc-minute.** That is the answer to the owner's question, and it is
+citable.
+
+### 22.2 The study that shows what actually goes wrong
+
+The same paper tested **the 20 most-downloaded qibla apps** against that theodolite value. **15 of 20 agreed
+to the degree. Five showed a consistent 295°, identically on both platforms**, which means **the error was
+ALGORITHMIC, not sensor-related.**
+
+**So a quarter of the shipped market has a wrong formula**, and the failure is systematic rather than noisy.
+That justifies the fixture suite far better than any argument from principle.
+
+### 22.3 Invariant 6 is the test that catches exactly that failure
+
+**From the Kaaba's own latitude, the bearing is NOT 90° or 270°.** Verified this session: **86.3477° from
+20°E, 271.8622° from 50°E.**
+
+An implementation that returns exactly 90 or 270 there has the rhumb-line bug or a flat-map formula.
+**That one test would have caught the five apps scoring 295° in Malaysia.** It goes in the suite.
+
+Five more invariants were verified independently this session and all pass exactly: 180.000000 north of the
+Kaaba on its meridian, 0.000000 south of it, 140.1738 from the north pole for any longitude, 39.8262 from
+the south pole, and exact mirror symmetry on the Kaaba's parallel.
+
+### 22.4 The Kaaba coordinate question is closed by measurement
+
+Four candidates circulate, including Google's officially documented one and adhan's. **Measured across
+eight cities this session: maximum spread 0.0037°**, reproducing the agent's figure exactly, with London at
+0.0011°.
+
+**The choice does not matter. A test asserting that all four agree within 0.005° documents the decision and
+proves its irrelevance at the same time**, which is a better artefact than a comment.
+
+### 22.5 The device protocol, and its timing
+
+**Rasd al-qibla is the free ground truth**: on 27/28 May at 09:18 UTC and 15/16 July at 09:27 UTC the sun
+sits over the Kaaba, so its azimuth IS the qibla to within a fraction of a degree, with no instrument
+beyond a vertical stick.
+
+**Both 2026 windows have passed. The next London-observable dates are 27/28 May 2027 and 15/16 July 2027**,
+because the January and November antipodal events happen at night in Britain.
+
+**So the sun-transit proof cannot gate this session's release**, and the plan's device verification falls
+back to the fixtures plus a magnetometer sanity check on the two fleet devices. The sun protocol is
+recorded as the strongest available future verification, worth scheduling.
+
+### 22.6 What goes into the plan
+
+A five-layer test strategy, all of it executable and none of it requiring the device:
+
+1. **Surveyed fixtures** at 0.05°: UTM Johor Bahru (theodolite), Washington DC (boundary survey), four Greek
+   mosques (astrogeodetic).
+2. **Cross-validation fixtures** at 0.05°: adhan's 11 published values plus three independent publishers'
+   London, Birmingham and Jakarta.
+3. **The thirteen invariants**, with invariant 6 as the headline.
+4. **Coordinate robustness** across all four Kaaba candidates.
+5. **An oracle regression** against GeographicLib's WGS84 geodesic at a 0.25° bound, anchored by this
+   session's own measured 0.181° maximum.
+
+**One caution for the copy**: the agent found that London's Fazl Mosque (1926) deviates most among six
+surveyed English mosques, **and its own community confirms praying at an angle to correct it.** So
+**historic mosque walls are not ground truth anywhere**, and no copy may imply that matching a local mosque
+validates the reading.
