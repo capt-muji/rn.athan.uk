@@ -5,15 +5,12 @@ import { BackHandler, Pressable, StyleSheet, type ViewProps } from 'react-native
 import Reanimated from 'react-native-reanimated';
 
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
-import { getOverlayExplanation, getOverlayRow } from '@/components/overlay/overlayContent';
-import { PrayerExplanation } from '@/components/prayer';
+import { getOverlayRow } from '@/components/overlay/overlayContent';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
-import { usePrayer } from '@/hooks/usePrayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { ANIMATION, OVERLAY, SPACING, STYLES } from '@/shared/constants';
+import { ANIMATION, OVERLAY } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
-import { ScheduleType } from '@/shared/types';
 import { closeOverlay, overlayAtom } from '@/stores/overlay';
 import { measurementsListAtom } from '@/stores/ui';
 
@@ -85,10 +82,7 @@ export default function Overlay() {
     display: visible ? 'flex' : 'none',
   };
 
-  const isExtra = overlay.scheduleType === ScheduleType.Extra;
-
   // selectedPrayerIndex indexes the sequence's rows; position uses the row List actually renders
-  const selectedPrayer = usePrayer(overlay.scheduleType, overlay.selectedPrayerIndex, true);
   const { prayers, displayDate } = usePrayerSequence(overlay.scheduleType);
   const visualRowIndex = getOverlayRow(prayers, displayDate, overlay.scheduleType, overlay.selectedPrayerIndex);
 
@@ -99,48 +93,8 @@ export default function Overlay() {
     rowIndex: visualRowIndex,
   });
 
-  // Info box geometry: unchanged from the copy era (list measurement anchors)
-  const showInfoBoxAbove = visualRowIndex >= 3;
-  const INFO_BOX_HEIGHT = 300;
-
-  // Info box positioned below prayer row (for first 3 items)
-  const computedStyleInfoBoxBelow: ViewProps['style'] = {
-    top: listMeasurements.pageY + visualRowIndex * STYLES.prayer.height + STYLES.prayer.height + SPACING.sm,
-    left: listMeasurements.pageX,
-    width: listMeasurements.width,
-    height: INFO_BOX_HEIGHT,
-  };
-
-  // Info box positioned above prayer row (for items 4+)
-  const computedStyleInfoBoxAbove: ViewProps['style'] = {
-    top: listMeasurements.pageY + visualRowIndex * STYLES.prayer.height - INFO_BOX_HEIGHT - SPACING.sm,
-    left: listMeasurements.pageX,
-    width: listMeasurements.width,
-    height: INFO_BOX_HEIGHT,
-    justifyContent: 'flex-end',
-  };
-
-  const computedStyleInfoBox = showInfoBoxAbove ? computedStyleInfoBoxAbove : computedStyleInfoBoxBelow;
-
-  const { prayerName, explanation, explanationArabic } = getOverlayExplanation(
-    overlay.scheduleType,
-    selectedPrayer.english
-  );
-
   return (
-    <Reanimated.View style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
-      {/* Prayer explanation box (extras only — overlay-native UI, faded by
-          this layer; the background morph lives in VeilBackdrop) */}
-      {isExtra && prayerName && explanation && explanationArabic && (
-        <PrayerExplanation
-          prayerName={prayerName}
-          explanation={explanation}
-          explanationArabic={explanationArabic}
-          arrowPosition={showInfoBoxAbove ? 'bottom' : 'top'}
-          style={computedStyleInfoBox}
-        />
-      )}
-
+    <Reanimated.View testID='overlay-layer' style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
       {/* Press-catcher: everything except the selected row closes the overlay.
           All four regions share one name deliberately — they are one dismiss
           target split only for hit-testing around the exempt row, so wherever

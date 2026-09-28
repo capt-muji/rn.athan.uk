@@ -16,6 +16,7 @@ import { closeOverlay, openOverlay, overlayAtom } from '@/stores/overlay';
 import { setMeasurementsList } from '@/stores/ui';
 
 import Overlay from '../Overlay';
+import OverlayInfoBox from '../OverlayInfoBox';
 
 // Opening and closing are measured for the device performance runs, which read the pairing of names
 jest.mock('@/shared/perf', () => ({ perfMark: jest.fn(), perfMeasure: jest.fn() }));
@@ -102,7 +103,8 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
 
     await act(() => jest.advanceTimersByTime(elapsed));
 
-    expect(screen.root).toHaveStyle({ display });
+    const layer = screen.queryAllByTestId('overlay-layer', { includeHiddenElements: true })[0];
+    expect(layer).toHaveStyle({ display });
   });
 
   it('stays shown when it opens again before the close fade has run', async () => {
@@ -126,7 +128,12 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
   ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english, arabic) => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
-    await render(<Overlay />);
+    await render(
+      <>
+        <Overlay />
+        <OverlayInfoBox type={ScheduleType.Extra} />
+      </>
+    );
 
     await act(() => openOverlay(ScheduleType.Extra, index));
 
