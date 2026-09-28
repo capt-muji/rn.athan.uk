@@ -43,6 +43,29 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-09-28, during session 35: back closes what is open
+
+A new feature, given while the accessibility step was being built: 🐋  "When any modal is open, the
+back press should close the modal... Same thing for the help... Same thing for the updates. If we
+press the back button, the update modal should not update, it should close. Same thing for the
+overlay... For the colour picker, pressing the software back should also cancel the changes and
+close the colour picker without saving."
+
+- **Every open surface closes on the Android back press**, rather than letting the press leave the
+  app with the surface still drawn. `Modal.tsx` takes an optional `onRequestClose`, matching the
+  handler `Sheet.tsx` already had, and What's New, Help and the update prompt each pass theirs.
+- **The update prompt's back press means Later, never Update.** An accidental gesture must not start
+  a download, so the back press is wired to `onClose` and a test pins it.
+- **The overlay closes without the tap haptic**, which only a finger on the screen earns.
+- **The colour picker already behaved this way** and was left alone: React Native's own `Modal`
+  routes the back press to `onRequestClose`, which is wired to `handleDismiss`, so the change is
+  discarded. Verified in RN's Android source and already covered by its own test. Sheets were
+  already correct too.
+- **Predictive back is not a risk here, and it was checked rather than assumed.** The app targets
+  SDK 36, where RN's own comment says `onBackPressed()` is disabled by default, but Expo writes
+  `enableOnBackInvokedCallback="false"` unless `predictiveBackGestureEnabled` is set, which this
+  project does not set. Confirmed in the APK installed on the 3T.
+
 ## Decided by the owner, 2026-09-27, after session 32: the remaining work is two sessions
 
 Session 32 listed everything still waiting, and the owner grouped it all in one pass.
