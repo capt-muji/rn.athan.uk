@@ -39,11 +39,16 @@ jest.mock('jotai', () => ({
 jest.mock('react', () => ({
   ...jest.requireActual<typeof import('react')>('react'),
   useState: <T>(initial: T) => [initial, () => undefined],
+  useRef: <T>(initial: T) => ({ current: initial }),
   useEffect: () => undefined,
   useLayoutEffect: () => undefined,
 }));
 
-jest.mock('react-native', () => ({ Pressable: 'Pressable', StyleSheet: { create: <T>(styles: T) => styles } }));
+jest.mock('react-native', () => ({
+  Pressable: 'Pressable',
+  View: 'View',
+  StyleSheet: { create: <T>(styles: T) => styles },
+}));
 jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View' } }));
 jest.mock('expo-haptics', () => ({ impactAsync: jest.fn(), ImpactFeedbackStyle: { Medium: 'medium' } }));
 jest.mock('@/components/prayer', () => ({ PrayerExplanation: 'PrayerExplanation' }));
@@ -71,6 +76,8 @@ jest.mock('@/stores/schedule', () => ({
 
 jest.mock('@/stores/ui', () => ({
   measurementsListAtom: 'measurementsListAtom',
+  measurementOriginOffsetAtom: 'measurementOriginOffsetAtom',
+  setMeasurementOriginOffset: jest.fn(),
   englishWidthStandardAtom: 'englishWidthStandardAtom',
   englishWidthExtraAtom: 'englishWidthExtraAtom',
 }));
@@ -87,6 +94,9 @@ const findAll = (node: ReactNode, type: string): Element[] => {
 
 /** Where the list sits on screen, as List measured it */
 const LIST = { pageX: 16, pageY: 200, width: 379, height: 285 };
+
+/** The window and root spaces coincide, which is the case every existing expectation was written against */
+const NO_OFFSET = { x: 0, y: 0 };
 
 /**
  * Friday 11 September's Extras list gathered in reverse, on screen at noon, with the overlay open on it
@@ -106,6 +116,7 @@ const openOnReversedFriday = (selectedPrayerIndex: number) => {
   mockAtomValues.set('extraSequenceAtom', { type: ScheduleType.Extra, prayers });
   mockAtomValues.set('extraDisplayDateAtom', displayDate);
   mockAtomValues.set('measurementsListAtom', LIST);
+  mockAtomValues.set('measurementOriginOffsetAtom', NO_OFFSET);
   mockStore.current = createStore();
   mockStore.current.set(overlayAtom, { isOn: true, selectedPrayerIndex, scheduleType: ScheduleType.Extra });
 
@@ -174,7 +185,7 @@ describe('the Extras overlay on a list whose selected index is not its drawn row
   );
 });
 
-/** Where a drawn row's top edge sits, in the space the list was measured in */
+/** Where a drawn row's top edge sits, in the root space the overlay places its children in */
 const rowTop = (row: number) => LIST.pageY + row * STYLES.prayer.height;
 
 /** Saturday 12 September's Extras list, in the owner's order: 4 rows, no Istijaba */
@@ -186,6 +197,7 @@ const openOnSaturday = (selectedPrayerIndex: number) => {
   mockAtomValues.set('extraSequenceAtom', { type: ScheduleType.Extra, prayers });
   mockAtomValues.set('extraDisplayDateAtom', '2026-09-12');
   mockAtomValues.set('measurementsListAtom', LIST);
+  mockAtomValues.set('measurementOriginOffsetAtom', NO_OFFSET);
   mockStore.current = createStore();
   mockStore.current.set(overlayAtom, { isOn: true, selectedPrayerIndex, scheduleType: ScheduleType.Extra });
 };
@@ -220,6 +232,19 @@ describe('the Extras overlay on a four-row list, where only the last row may fli
 
     expect(style.top).toBe(LIST.pageY + STYLES.prayer.height + SPACING.sm);
     expect(style.height).toBeUndefined();
+  });
+
+  // The iOS defect: `measureInWindow` reports window space while the overlay's absolute children
+  // are placed in root space, and on iOS the two origins differ (23.67pt on the XS). Without the
+  // subtraction the box rides that far too high, landing its arrow on the row's Arabic text
+  it('drops the box by the window-to-root offset, so the arrow clears the row it explains', () => {
+    openOnSaturday(0);
+    mockAtomValues.set('measurementOriginOffsetAtom', { x: 0, y: 23.67 });
+
+    const style = findAll(Overlay(), 'PrayerExplanation')[0].props.style as ViewStyle;
+
+    expect(style.top).toBe(LIST.pageY - 23.67 + STYLES.prayer.height + SPACING.sm);
+    expect(style.left).toBe(LIST.pageX);
   });
 });
 

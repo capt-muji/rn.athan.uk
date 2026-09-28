@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useEffect, useLayoutEffect, useState } from 'react';
-import { BackHandler, Pressable, StyleSheet, type ViewProps } from 'react-native';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { BackHandler, Pressable, StyleSheet, View, type ViewInstance, type ViewProps } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
@@ -15,7 +15,7 @@ import { ANIMATION, OVERLAY, SPACING, STYLES } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { closeOverlay, overlayAtom } from '@/stores/overlay';
-import { measurementsListAtom } from '@/stores/ui';
+import { measurementOriginOffsetAtom, measurementsListAtom, setMeasurementOriginOffset } from '@/stores/ui';
 
 /**
  * Overlay input layer for the focused prayer view (ADR-014, per-element)
@@ -32,6 +32,18 @@ export default function Overlay() {
   const layerOpacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, { duration: ANIMATION.duration });
 
   const listMeasurements = useAtomValue(measurementsListAtom);
+
+  const originOffset = useAtomValue(measurementOriginOffsetAtom);
+
+  const originRef = useRef<ViewInstance>(null);
+
+  // onLayout, not a mount effect: the probe must exist in the native tree before it can measure,
+  // and a window resize (Mac, iPad) re-fires it, which is exactly when the offset must refresh
+  const measureOriginOffset = () => {
+    originRef.current?.measureInWindow((x, y) => {
+      setMeasurementOriginOffset({ x, y });
+    });
+  };
 
   const window = useWindowDimensions();
 
@@ -97,6 +109,7 @@ export default function Overlay() {
     windowHeight: window.height,
     list: listMeasurements.width > 0 ? listMeasurements : null,
     rowIndex: visualRowIndex,
+    originOffset,
   });
 
   // The box flips above the row only when it would otherwise run past the last row of THIS list.
@@ -105,24 +118,26 @@ export default function Overlay() {
   const rowsOnThisList = prayers.filter((prayer) => prayer.belongsToDate === displayDate).length;
   const showInfoBoxAbove = visualRowIndex >= rowsOnThisList - 1 && rowsOnThisList > 1;
 
-  const rowTop = listMeasurements.pageY + visualRowIndex * STYLES.prayer.height;
+  // Root space, not window space: the list rect comes from `measureInWindow`, whose origin on iOS
+  // sits above the root view's own, so the measured offset lifts the rect into the space this
+  // layer's absolute children are placed in. On Android the two spaces coincide and it reads zero.
+  const rowTop = listMeasurements.pageY - originOffset.y + visualRowIndex * STYLES.prayer.height;
+  const rowLeft = listMeasurements.pageX - originOffset.x;
 
   // Anchored to the row edge it hangs from, and never given a height: the box is ~166pt of content,
   // so a fixed 300 left the below-branch hugging the top of an empty box (reading as touching the
-  // row) and the above-branch floating its content far from it.
-  // Both branches anchor with `top`, in the measurement's own space: `bottom` measures from the
-  // window's edge, which on iOS sits below the screen's, so mixing the two drifted the box by the
-  // difference (23.67pt on the XS) while Android, where the two coincide, looked correct
+  // row) and the above-branch floating its content far from it. Both branches anchor with `top` in
+  // the same space; the above-branch lifts itself clear by its own height.
   const computedStyleInfoBox: ViewProps['style'] = showInfoBoxAbove
     ? {
         top: rowTop - SPACING.sm,
         transform: [{ translateY: '-100%' }],
-        left: listMeasurements.pageX,
+        left: rowLeft,
         width: listMeasurements.width,
       }
     : {
         top: rowTop + STYLES.prayer.height + SPACING.sm,
-        left: listMeasurements.pageX,
+        left: rowLeft,
         width: listMeasurements.width,
       };
 
@@ -132,35 +147,49 @@ export default function Overlay() {
   );
 
   return (
-    <Reanimated.View style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
-      {/* Prayer explanation box (extras only — overlay-native UI, faded by
-          this layer; the background morph lives in VeilBackdrop) */}
-      {isExtra && prayerName && explanation && explanationArabic && (
-        <PrayerExplanation
-          prayerName={prayerName}
-          explanation={explanation}
-          explanationArabic={explanationArabic}
-          arrowPosition={showInfoBoxAbove ? 'bottom' : 'top'}
-          style={computedStyleInfoBox}
-        />
-      )}
+    <>
+      {/* Zero-size, always laid out OUTSIDE the fading container: its own window-space position is
+          the offset between the coordinate space `measureInWindow` reports and the root's, which is
+          the space the box and the catchers are placed in. Inside, display:none while closed would
+          stop it measuring at launch, which is exactly when the offset is needed. */}
+      <View
+        ref={originRef}
+        collapsable={false}
+        testID='overlay-origin'
+        style={styles.origin}
+        onLayout={measureOriginOffset}
+      />
 
-      {/* Press-catcher: everything except the selected row closes the overlay.
+      <Reanimated.View testID='overlay-layer' style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
+        {/* Prayer explanation box (extras only — overlay-native UI, faded by
+          this layer; the background morph lives in VeilBackdrop) */}
+        {isExtra && prayerName && explanation && explanationArabic && (
+          <PrayerExplanation
+            prayerName={prayerName}
+            explanation={explanation}
+            explanationArabic={explanationArabic}
+            arrowPosition={showInfoBoxAbove ? 'bottom' : 'top'}
+            style={computedStyleInfoBox}
+          />
+        )}
+
+        {/* Press-catcher: everything except the selected row closes the overlay.
           All four regions share one name deliberately — they are one dismiss
           target split only for hit-testing around the exempt row, so wherever
           a screen-reader user explores outside that row they hear the same
           thing. Unnamed, they were four anonymous buttons wrapped around the
           content. */}
-      {catcherRegions.map((region) => (
-        <Pressable
-          key={region.id}
-          onPress={handleClose}
-          accessibilityRole='button'
-          accessibilityLabel='Close prayer details'
-          style={[styles.catcher, { top: region.top, left: region.left, width: region.width, height: region.height }]}
-        />
-      ))}
-    </Reanimated.View>
+        {catcherRegions.map((region) => (
+          <Pressable
+            key={region.id}
+            onPress={handleClose}
+            accessibilityRole='button'
+            accessibilityLabel='Close prayer details'
+            style={[styles.catcher, { top: region.top, left: region.left, width: region.width, height: region.height }]}
+          />
+        ))}
+      </Reanimated.View>
+    </>
   );
 }
 
@@ -172,6 +201,13 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: OVERLAY.zindexes.overlay,
+  },
+  origin: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: 0,
+    height: 0,
   },
   catcher: {
     position: 'absolute',
