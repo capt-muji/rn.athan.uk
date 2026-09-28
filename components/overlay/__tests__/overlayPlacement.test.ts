@@ -123,15 +123,21 @@ const openSpan = (tree: ReactNode) => {
   return { from: above?.height, to: below?.top };
 };
 
+/** The window the mocked useWindowDimensions reports, which the above-branch measures its bottom from */
+const WINDOW_HEIGHT = 823;
+
 describe('the Extras overlay on a list whose selected index is not its drawn row (real London 2026 days)', () => {
-  // [selected index, its prayer, the row drawn for it, arrow, box top, explanation, Arabic explanation]
-  it.each<[number, string, number, string, number, string, string]>([
+  // The box hangs from a row EDGE and is never given a height, so it is as tall as its own content.
+  // Friday lists 5 Extras rows, so only the last one flips above: that is what keeps the box off the
+  // rows it would otherwise cover.
+  // [selected index, its prayer, the row drawn for it, arrow, the anchor it hangs from, explanation, Arabic]
+  it.each<[number, string, number, string, ViewStyle, string, string]>([
     [
       0,
       'Istijaba',
       4,
       'bottom',
-      LIST.pageY + 4 * STYLES.prayer.height - 300 - SPACING.sm,
+      { bottom: WINDOW_HEIGHT - (LIST.pageY + 4 * STYLES.prayer.height) + SPACING.sm },
       '1 hour before Magrib (Fridays only)',
       'ساعة قبل المغرب (الجمعة فقط)',
     ],
@@ -140,13 +146,13 @@ describe('the Extras overlay on a list whose selected index is not its drawn row
       'Midnight',
       0,
       'top',
-      LIST.pageY + STYLES.prayer.height + SPACING.sm,
+      { top: LIST.pageY + STYLES.prayer.height + SPACING.sm },
       'Halfway between Magrib and Fajr',
       'نصف الليل بين المغرب والفجر',
     ],
   ])(
     'index %i is %s, drawn on row %i: the box explains it against that row and the catchers leave that row open',
-    (index, english, row, arrowPosition, top, explanation, explanationArabic) => {
+    (index, english, row, arrowPosition, anchor, explanation, explanationArabic) => {
       const { displayDate, names } = openOnReversedFriday(index);
       expect([displayDate, names[index]]).toEqual(['2026-09-11', english]);
 
@@ -159,12 +165,59 @@ describe('the Extras overlay on a list whose selected index is not its drawn row
         explanation,
         explanationArabic,
         arrowPosition,
-        style: { top },
+        style: anchor,
       });
+      // Never a fixed height: the box sizes itself, or an empty 300pt box pushes its content off the row
+      expect((boxes[0].props.style as ViewStyle).height).toBeUndefined();
       expect(openSpan(tree)).toEqual({
         from: LIST.pageY + row * STYLES.prayer.height,
         to: LIST.pageY + (row + 1) * STYLES.prayer.height,
       });
     }
   );
+});
+
+/** Saturday 12 September's Extras list, in the owner's order: 4 rows, no Istijaba */
+const openOnSaturday = (selectedPrayerIndex: number) => {
+  storeLondonDays();
+  const prayers = sequenceFrom(ScheduleType.Extra, '2026-09-10');
+
+  mockClock.now = london('2026-09-12', '12:00');
+  mockAtomValues.set('extraSequenceAtom', { type: ScheduleType.Extra, prayers });
+  mockAtomValues.set('extraDisplayDateAtom', '2026-09-12');
+  mockAtomValues.set('measurementsListAtom', LIST);
+  mockStore.current = createStore();
+  mockStore.current.set(overlayAtom, { isOn: true, selectedPrayerIndex, scheduleType: ScheduleType.Extra });
+};
+
+// The Extras list is shorter than the Standard one, which is what the old fixed `index >= 3` ignored:
+// it flipped Duha, the LAST row of four, and drew its box back over the three rows above it
+describe('the Extras overlay on a four-row list, where only the last row may flip above', () => {
+  // [selected index, the prayer, whether its box hangs above the row]
+  it.each<[number, string, boolean]>([
+    [0, 'Midnight', false],
+    [1, 'Last Third', false],
+    [2, 'Suhoor', false],
+    [3, 'Duha', true],
+  ])('index %i (%s) hangs above the row: %s', (index, english, above) => {
+    openOnSaturday(index);
+
+    const tree = Overlay();
+    const box = findAll(tree, 'PrayerExplanation')[0];
+    const style = box.props.style as ViewStyle;
+
+    expect(box.props).toMatchObject({ prayerName: english, arrowPosition: above ? 'bottom' : 'top' });
+    expect(style.top === undefined).toBe(above);
+    expect(style.bottom === undefined).toBe(!above);
+  });
+
+  // The symptom the owner reported: the box sat against the row's Arabic text with a dead gap beneath it
+  it('hangs the box from the row edge rather than filling a fixed-height box', () => {
+    openOnSaturday(0);
+
+    const style = findAll(Overlay(), 'PrayerExplanation')[0].props.style as ViewStyle;
+
+    expect(style.top).toBe(LIST.pageY + STYLES.prayer.height + SPACING.sm);
+    expect(style.height).toBeUndefined();
+  });
 });
