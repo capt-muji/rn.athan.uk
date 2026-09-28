@@ -1462,3 +1462,78 @@ carefully the library was built.
 **The provisional recommendation, to be revisited when that report lands:** use `adhan` ONLY if the session
 also wants the sun-transit verification, and otherwise write the ten lines. A dependency justified by one
 function is a dependency justified by nothing.
+
+## 20. R3 agent 1 (permission gating): the pattern ALREADY EXISTS IN THIS REPO
+
+Full report at `agent-reports/R3-01-permission-gating.md`. The brief was redirected mid-flight by the
+owner's ruling in section 18, from refusal UX to gating.
+
+### 20.1 The finding that matters most is not in the report
+
+The agent described the correct flow: request on tap, never re-prompt after denial, open Settings,
+listen on `AppState` for the return, re-query, and proceed if granted.
+
+**`hooks/useNotification.ts` already implements exactly that, for the notification permission, and it is
+shipped and tested.** `listenForReturnToApp` (line 28) and `showSettingsDialog` (line 55) are the pattern,
+and they are covered by `hooks/__tests__/notificationSettingsFallback.test.ts`.
+
+**So the qibla gate is not new work: it is the same shape, against
+`Location.getForegroundPermissionsAsync` instead of `Notifications.getPermissionsAsync`.** The plan follows
+that file rather than inventing a second convention, which is `ai/AGENTS.md`'s prime directive ("Read
+Before Writing", "Zero New Patterns").
+
+Two details in the existing implementation the plan must copy, because both were learned the hard way:
+
+- **`listenForReturnToApp` waits for a LEAVE before it accepts a return** (`leftApp` guard, line 33). That
+  is precisely the defence against the spurious background/active cycles the agent warns about on Android.
+- It resolves `false` on every failure path (Settings will not open, the permission cannot be read, the
+  dialog is dismissed), **so the caller can never wait forever.**
+
+### 20.2 The row is NOT greyed out
+
+The agent's reasoning is sound and this session adopts it: **the row is never actually disabled, because
+tapping it always does something purposeful.** A grey row would say "broken" when the control works.
+
+State goes in a **trailing value**, not in a disabled style, which also gives the accessibility layer the
+right channel (`accessibilityValue`, which maps to Android's `stateDescription`).
+
+**This differs from the Settings rows around it**, which carry a `›` chevron and no value. The plan will
+put the treatment to the owner, since it is visual.
+
+### 20.3 Rules that become hard constraints
+
+| Rule | Source | Consequence |
+| --- | --- | --- |
+| **Never cache "granted" across sessions** | iOS one-time authorisation reverts to `notDetermined` | query at tap time, every time |
+| **`useForegroundPermissions()` does not refresh after a Settings change** | expo/expo#30351 | use the imperative `getForegroundPermissionsAsync`, not the hook |
+| iOS: one "Don't Allow" is **terminal**; re-requesting is a silent no-op | Apple | iOS goes straight to the Settings route |
+| Android: **two** denials are terminal; `shouldShowRequestPermissionRationale` is **false both before the first request and after permanent denial** | Android 11+ | the ladder differs per platform and the plan must encode both |
+| **Revoking a permission terminates the app process** | Android | "will look like a crash if it happens mid-compass" |
+| `Linking.openSettings()` opens **app details** on Android, not the Permissions pane | RN | the copy cannot promise a one-tap fix on Android |
+| **Do not link to Settings after a FIRST soft denial on Android** | Android guidance | only the terminal state gets the link |
+
+### 20.4 Store review is cleared, with one action
+
+**"It is the documented, encouraged pattern."** Apple's 5.1.1 "must not refuse to function" doctrine applies
+to the WHOLE app, and prayer times, notifications and widgets all work without location. Google's own
+guidance recommends disabling the affected feature on denial.
+
+**The one action: put the flow in the App Review notes**, because a reviewer who cannot exercise the
+feature may ask about it. That is a release-time step, recorded here so it is not discovered at submission.
+
+**Two things that WOULD be manipulative and are therefore banned:** re-showing anything on app open after a
+denial (only the tap may prompt), and wording the recovery as blame. **"Location is off", never "You
+refused."**
+
+### 20.5 The copy, adopted
+
+The purpose string, which satisfies Apple's "verb, data, outcome" test and states the fact that
+differentiates this app:
+
+> **"Your location is used to point the compass toward the Kaaba. It never leaves your device."**
+
+The recovery sheet: **"Qibla needs your location"** / "The compass points to the Kaaba from where you are.
+Location is turned off." / **Open Settings** and **Not now**.
+
+**Both go to the owner with the rest of the copy**, and the app is never named, per the rule pinned by
+`shared/__tests__/help.test.ts:88`.
