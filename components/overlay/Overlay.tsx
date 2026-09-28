@@ -99,28 +99,24 @@ export default function Overlay() {
     rowIndex: visualRowIndex,
   });
 
-  // Info box geometry: unchanged from the copy era (list measurement anchors)
-  const showInfoBoxAbove = visualRowIndex >= 3;
-  const INFO_BOX_HEIGHT = 300;
+  // The box flips above the row only when it would otherwise run past the last row of THIS list.
+  // A fixed index cannot decide that: Standard lists 6 rows and Extras 4 (5 on Fridays), so
+  // `index >= 3` flipped the Extras list's LAST row and drew the box back over the rows above it
+  const rowsOnThisList = prayers.filter((prayer) => prayer.belongsToDate === displayDate).length;
+  const showInfoBoxAbove = visualRowIndex >= rowsOnThisList - 1 && rowsOnThisList > 1;
 
-  // Info box positioned below prayer row (for first 3 items)
-  const computedStyleInfoBoxBelow: ViewProps['style'] = {
-    top: listMeasurements.pageY + visualRowIndex * STYLES.prayer.height + STYLES.prayer.height + SPACING.sm,
-    left: listMeasurements.pageX,
-    width: listMeasurements.width,
-    height: INFO_BOX_HEIGHT,
-  };
+  const rowTop = listMeasurements.pageY + visualRowIndex * STYLES.prayer.height;
 
-  // Info box positioned above prayer row (for items 4+)
-  const computedStyleInfoBoxAbove: ViewProps['style'] = {
-    top: listMeasurements.pageY + visualRowIndex * STYLES.prayer.height - INFO_BOX_HEIGHT - SPACING.sm,
-    left: listMeasurements.pageX,
-    width: listMeasurements.width,
-    height: INFO_BOX_HEIGHT,
-    justifyContent: 'flex-end',
-  };
-
-  const computedStyleInfoBox = showInfoBoxAbove ? computedStyleInfoBoxAbove : computedStyleInfoBoxBelow;
+  // Anchored to the row edge it hangs from, and never given a height: the box is ~166pt of content,
+  // so a fixed 300 left the below-branch hugging the top of an empty box (reading as touching the
+  // row) and the above-branch floating its content far from it
+  const computedStyleInfoBox: ViewProps['style'] = showInfoBoxAbove
+    ? { bottom: window.height - rowTop + SPACING.sm, left: listMeasurements.pageX, width: listMeasurements.width }
+    : {
+        top: rowTop + STYLES.prayer.height + SPACING.sm,
+        left: listMeasurements.pageX,
+        width: listMeasurements.width,
+      };
 
   const { prayerName, explanation, explanationArabic } = getOverlayExplanation(
     overlay.scheduleType,
