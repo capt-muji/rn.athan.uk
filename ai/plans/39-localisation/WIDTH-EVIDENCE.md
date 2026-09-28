@@ -67,6 +67,65 @@ Bengali are all at or below English, and the damage comes from Latin-script lang
 translate the CONCEPT into a phrase. Swahili, Indonesian, Spanish and German break the layout;
 Arabic and Chinese improve it.
 
+## The width-setting name is not the same name in every language
+
+R3 raised this and the measurement confirms it, harder than R3 stated. Measuring which INDEX of the
+name array produces the widest string, per locale:
+
+| Column | Distinct width-setting names across 15 locales |
+| --- | --- |
+| Standard | **3**: Fajr (zh), Sunrise (en ar ur bn hi th fr de es), Magrib (id tr ru sw ms) |
+| Extras | **2**: Midnight (ar), Last Third (everyone else) |
+
+So in Chinese the standard column is set by "Fajr", in Indonesian and Turkish by "Magrib", and in
+English by "Sunrise". In Arabic the extras column is set by "Midnight" (`نصف الليل`), not by the
+translation of "Last Third".
+
+**This is a live defect for the feature.** `shared/prayer.ts`'s `getLongestPrayerNameIndex` returns
+an index computed from the ENGLISH arrays, and `components/ui/InitialWidthMeasurement.tsx` uses it
+to pick which single string to measure:
+
+```tsx
+{PRAYERS_ENGLISH[getLongestPrayerNameIndex(ScheduleType.Standard)]}
+```
+
+Under any locale in the Magrib or Fajr groups, that measures the wrong string and the column comes
+out too narrow, which clips the actual longest name. The widen-only cache then pins the wrong width
+permanently.
+
+The fix is small and matches the existing shape: measure the longest name **in the active locale**,
+which means `getLongestPrayerNameIndex` reads the active catalog instead of `PRAYERS_ENGLISH` and
+`EXTRAS_ENGLISH`, and `InitialWidthMeasurement` indexes that same catalog.
+
+### The selection rule itself is safe, tested rather than assumed
+
+`getLongestPrayerNameIndex` picks by **character length**, not by rendered width. That is
+theoretically wrong, because a Devanagari conjunct is several codepoints in one cluster and Arabic
+letters change width when they join, so character count and advance width can disagree.
+
+Measured across six scripts, comparing the name chosen by character count against the name chosen
+by CoreText advance width:
+
+| Case | By character count | By measured width | Agree |
+| --- | --- | --- | --- |
+| Arabic extras | `نصف الليل` | `نصف الليل` | yes |
+| Urdu standard | `طلوع آفتاب` | `طلوع آفتاب` | yes |
+| Hindi standard | `सूर्योदय` | `सूर्योदय` | yes |
+| Thai standard | `ตะวันขึ้น` | `ตะวันขึ้น` | yes |
+| Chinese standard | `晨礼` | `晨礼` | yes |
+| English standard | `Sunrise` | `Sunrise` | yes |
+
+They agree in every case. This is an honest negative result and it makes the fix cheaper: the
+selection LOGIC stays as it is, and only its INPUT changes from the English array to the active
+catalog. No new measurement machinery is needed.
+
+The agreement is not a coincidence. Within one script, character count and advance width correlate
+strongly, and the comparison is only ever made within a single locale's array. The theoretical
+failure would need two names in the SAME locale where the shorter string renders wider, which needs
+a script mixing wide and narrow glyph classes. Chinese is the candidate (all names are two
+full-width characters, so the comparison is a tie broken by array order), and the plan pins this
+with a test rather than trusting it to hold for a locale nobody has measured yet.
+
 ## What follows for the design
 
 Wrapping is unavailable: `STYLES.prayer.height` is a fixed 57 and the overlay positions the Extras

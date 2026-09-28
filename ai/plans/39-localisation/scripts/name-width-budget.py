@@ -82,20 +82,31 @@ def widths(strings):
 
 
 print(f'Advance widths at fontSize {SIZE}, Roboto with CoreText system fallback\n')
+
 rows = []
-for tag, (std, ext) in LOCALES.items():
-    ws, we = widths(std), widths(ext)
-    rows.append((tag, max(ws), std[ws.index(max(ws))], max(we), ext[we.index(max(we))]))
+for tag, (standard, extras) in LOCALES.items():
+    ws, we = widths(standard), widths(extras)
+    rows.append({
+        'tag': tag,
+        'std': max(ws), 'std_name': standard[ws.index(max(ws))],
+        'std_idx': ws.index(max(ws)),
+        'ext': max(we), 'ext_name': extras[we.index(max(we))],
+        'ext_idx': we.index(max(we)),
+    })
 
-base_std = next(r[1] for r in rows if r[0] == 'en')
-base_ext = next(r[3] for r in rows if r[0] == 'en')
-print(f"{'loc':5} {'standard':>9} {'x en':>6}  {'longest':<14} {'extras':>9} {'x en':>6}  longest")
-for tag, s, sn, e, en_ in sorted(rows, key=lambda r: -r[3]):
-    print(f'{tag:5} {s:>8.1f}p {s/base_std:>5.2f}x  {sn:<14} {e:>8.1f}p {e/base_ext:>5.2f}x  {en_}')
+base = {r['tag']: r for r in rows}['en']
+print(f"{'loc':5} {'standard':>9} {'x en':>6}  {'longest':<16} {'extras':>9} {'x en':>6}  longest")
+for r in sorted(rows, key=lambda r: -r['ext']):
+    print(f"{r['tag']:5} {r['std']:>8.1f}p {r['std']/base['std']:>5.2f}x  {r['std_name']:<16}"
+          f" {r['ext']:>8.1f}p {r['ext']/base['ext']:>5.2f}x  {r['ext_name']}")
 
-print(f'\nEnglish today: standard {base_std:.1f}pt ("Sunrise"), extras {base_ext:.1f}pt ("Last Third")')
-worst = max(rows, key=lambda r: r[3])
-print(f'Worst extras: {worst[0]} at {worst[3]:.1f}pt, {worst[3]/base_ext:.2f}x English, "{worst[4]}"')
-SCREEN = 360  # dp, a conservative small-phone width
-print(f'\nA {SCREEN}dp screen minus 20dp padding leaves {SCREEN-40}dp for name + time + bell.')
-print(f'Worst name alone takes {worst[3]/ (SCREEN-40) * 100:.0f}% of that.')
+print('\n--- Which NAME sets the column width, per locale ---')
+print('If this index is not constant, a fixed index into the name array is wrong.')
+std_idx = {r['tag']: r['std_idx'] for r in rows}
+ext_idx = {r['tag']: r['ext_idx'] for r in rows}
+print(f"standard: {sorted(set(std_idx.values()))} distinct index(es) across {len(rows)} locales")
+for i in sorted(set(std_idx.values())):
+    print(f"  index {i} ({STANDARD[i]} in English): {[t for t,v in std_idx.items() if v==i]}")
+print(f"extras:   {sorted(set(ext_idx.values()))} distinct index(es)")
+for i in sorted(set(ext_idx.values())):
+    print(f"  index {i} ({EXTRAS[i]} in English): {[t for t,v in ext_idx.items() if v==i]}")
