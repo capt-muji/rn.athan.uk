@@ -40,30 +40,57 @@ setting, choosing Arabic names forced Arabic notifications on an English speaker
 
 ### The naming
 
-The owner proposed "primary language / secondary language". I recommend against it, for one
-concrete reason: it describes the two NAME SLOTS, not the two SETTINGS, so it cannot name the app
-language at all. It is also used by other apps for fallback ordering, which is a different concept.
+The owner proposed "primary language / secondary language". I recommend against it, and R7's survey
+of eight comparable apps supports that with four reasons, the first of which I had not found:
 
-Recommended labels, which say what they do:
+1. **The industry already uses that pair for a different concept: fallback order.** Android's
+   per-app language list, iOS's Preferred Language Order, Adyen's terminal firmware and KDE's font
+   settings all use "primary" and "secondary" to mean "what to fall back to". A user who has met the
+   words elsewhere will read them that way.
+2. A rank does not say WHERE it applies. The owner's deadlock came from exactly this.
+3. It does not survive both slots becoming selectable, which the owner said may happen.
+4. It implies the second is lesser, when the Arabic name is often the more important one.
 
-- **App language** with the current language's endonym as the value, in the settings sheet.
-- **Prayer names** as a second row, showing the current pair, opening its own screen with the
-  primary and secondary choices inside it.
+**Recommended labels: "App language" and "Prayer names".** Six of the eight surveyed apps use "App
+language" or "Display Language" for the interface, and every one names the content setting after the
+noun it governs (Wikipedia languages, Bible Text, Preferred languages, and in Muslim Pro's case,
+Prayer names).
 
-Wikipedia's app uses exactly this split ("App language" versus "Wikipedia languages"), and it is
-the vocabulary the industry has converged on. R7 is surveying this and may sharpen it.
+Both sit in one "Language" card as two chevron rows, each opening its own sheet built like the sound
+sheet.
+
+### The second name's default
+
+| App language | Second name | Row reads |
+| --- | --- | --- |
+| English | Arabic | Fajr, الفجر (exactly today) |
+| Any non-Arabic | Arabic | Subuh, الفجر |
+| Arabic | Hidden | الفجر once |
+
+The existing on/off toggle becomes the **None** value rather than a separate control, so this
+removes a setting rather than adding one.
 
 ### Migration, which is non-negotiable
 
 An existing user has `preference_show_arabic_names` set true or false. On upgrade:
 
-- App language: whatever the device locale negotiates, which for the existing base is English.
-- Prayer names primary: English. Secondary: Arabic, shown if the old toggle was true, hidden if
-  false.
+| Existing state | Becomes | Visible change |
+| --- | --- | --- |
+| Toggle true | Prayer names = Arabic | None |
+| Toggle false | Prayer names = None | None |
+| No app language value (every existing install) | App language = **English, written explicitly** | None |
 
-So nobody's app changes appearance on upgrade. A silent visual change is a defect, and this repo
-already has the `migrate(oldKey, newKey, atom)` helper for exactly this
-(`stores/notifications.ts:575`).
+**The third row is a correction R7 forced, and it prevents a real defect.** My first version said
+the app language would be "whatever the device locale negotiates, which for the existing base is
+English". That is an assumption about the base, not a guarantee: an existing user in Jakarta with an
+Indonesian phone would have had their app silently switch to Indonesian on upgrade.
+
+So the rule is: **existing installs pin to English explicitly, and only fresh installs negotiate
+from the device locale.** The What's New entry (D13) then invites the user to change it, which is
+what that entry is for.
+
+Nobody's app changes appearance on upgrade. This repo already has the
+`migrate(oldKey, newKey, atom)` helper for exactly this shape (`stores/notifications.ts:575`).
 
 ### Rejected alternatives
 
@@ -135,6 +162,16 @@ The measurements say he was right:
 - The app ships **title only, no body**, deliberately, recorded twice in `shared/notifications.ts`.
 - So the whole budget is one short line under a system label. "Fajr / الفجر now" truncates on a
   narrow phone, and truncation loses the end of the string.
+
+**The decisive reason is not display, and I had missed it.** R7 found that arming two notifications
+per prayer, one per language, doubles the request cost of every row against the fixed
+`NOTIFICATION_REQUEST_BUDGET` of 64. Session 28 measured the standard profile at 3 days of coverage
+with both reminders; doubling the rows cuts that toward 1.5 days.
+
+So a bilingual notification would **halve how long the app keeps working when the background refresh
+chain dies**, which is the exact failure `ai/AGENTS.md` records costing a user their Magrib and Isha
+across 18 app opens on a OnePlus 8T. That turns a cosmetic preference into a reliability regression,
+and it settles the question on its own. No surveyed app ships a bilingual local notification.
 
 The one real merit is a household where two people read different languages off the same phone.
 That is a genuine case, and the honest answer is that the phone has one owner and one language
