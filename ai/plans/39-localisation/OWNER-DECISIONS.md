@@ -136,7 +136,43 @@ alternatives, look at the industry standard, look at how to do it, the best appr
 So this session plans and does not execute, asks nothing, records every assumption it made, and
 leaves the commit to the owner's word.
 
-## D12. Ordering: this row runs after the qibla compass
+## D12. Notification copy follows the selected language (2026-09-29)
+
+🐋  "Should we change the notification text language? I think so, yes."
+
+So a notification reads in the user's chosen language. Today `shared/notifications.ts` builds
+`${englishName} now` and `${englishName} in ${intervalMinutes}m` at schedule time.
+
+This is the most expensive ruling in the session, and the cost depends on a research answer:
+
+| If the platform can localise at DELIVERY time | If it can only localise at SCHEDULE time |
+| --- | --- |
+| Copy resolves when the notification fires | Copy is frozen into up to 64 armed requests |
+| A language change needs no re-arm | A language change must cancel and re-arm the whole plan |
+| Catalogs must exist as native resources, not JS | The JS catalog is enough |
+
+Both halves have a real cost. The native-resource route needs the strings in `InfoPlist.strings`
+or `res/values-<locale>/strings.xml`, which means a second catalog format kept in step with the
+JS one. The re-arm route reuses `commitSoundSelection`'s proven pattern but inherits session 33's
+partial-failure problem.
+
+The plan picks one on R5's evidence and records why. The prayer NAME inside that copy is a
+separate question: under D5 the prayer row keeps its English name, and whether a notification
+does the same or uses the selected language is an open point the plan must settle explicitly.
+
+## D13. The language feature is announced in What's New (2026-09-29)
+
+🐋  "Because this is a new feature, we do want to add it to the What's New modal."
+
+`shared/whatsNew.ts` holds 13 display strings and `VISIBLE_WHATS_NEW` gates the Settings row.
+Two consequences the plan must carry:
+
+- The What's New entry announcing the language feature is itself translated, so a user who
+  switches language sees the announcement in that language.
+- `ai/AGENTS.md` records that items may declare `flags: []` and that a dark feature can never be
+  advertised, so the entry lands in the same release that ships the feature, never before.
+
+## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
 while localisation is a sweep over the whole finished surface, so every feature built after a
