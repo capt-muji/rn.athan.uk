@@ -475,6 +475,8 @@ Retrieved 2026-09-29 unless noted.
   https://apps.apple.com/us/app/athan-prayer-times-dua-azkar/id505858403
 - Duolingo Wiki, "Frequently asked questions/Courses" (base language changes interface):
   https://duolingo.fandom.com/wiki/Frequently_asked_questions/Courses
+- Quranic, Play listing (course teaches Quranic Arabic, Arabic plus transliteration plus
+  meaning): https://play.google.com/store/apps/details?id=com.pnw.quranic.quranicandroid
 - Memrise forum, interface follows device with no override:
   https://memriseforum.mylittlewordland.com/community.memrise.com/t/how-can-i-switch-to-english-user-interface/9347.html
 - Android developers, "Per-app language preferences" (in-app pickers sync with system):

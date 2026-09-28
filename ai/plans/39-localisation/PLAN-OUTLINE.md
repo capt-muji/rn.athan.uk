@@ -47,7 +47,7 @@ Taken and recorded in `OWNER-DECISIONS.md`: D1 through D14.
 | # | Question | Plan's position if the owner does not answer |
 | --- | --- | --- |
 | P1 | Two settings rather than one | Build two. It is the only model that preserves today's default |
-| P2 | Does the first column follow the app language, or stay English? | Follow the app language. One-line switch if wrong |
+| P2 | Does the first column follow the app language, or stay English? | Follow the app language (Muslim Pro markets exactly this). One-line switch if wrong |
 | P3 | Notifications in the app language, one language only | Yes |
 | P4 | The RTL alignment amendment | Report only. Build the owner's literal ruling until he rules |
 | P5.1 | The icon | Material Symbols `translate` |
