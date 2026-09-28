@@ -1039,3 +1039,177 @@ readings are worse.
 **Most prayer happens indoors.** So the realistic error for our actual use case is ~17°, which is four
 times agent 5's proposed ±5° alignment window, and inside only the lenient 45° tolerance. This is the
 single strongest justification for the honest-number architecture, and it should be quoted in the plan.
+
+# ROUND 2
+
+The owner asked for a second research wave rather than a repeat of the first. Five briefs were dispatched
+on the questions round 1 OPENED, not on its topics. Three have returned; two are running.
+
+## 14. R2 agent 1 (visual design): the dial is now specified, not sketched
+
+Full report at `agent-reports/R2-01-visual-design.md`.
+
+### 14.1 The tick spec, verified against our own measurements
+
+The agent derived 72 minor ticks from arc spacing. **Checked independently this session against the real
+dial sizes from section 4.2b:**
+
+| Device | Dial | Circumference | 72 ticks | 120 ticks |
+| --- | --- | --- | --- | --- |
+| OnePlus 3T | 312pt | 980pt | **13.6pt** | 8.2pt |
+| Find X8 | 364pt | 1144pt | 15.9pt | 9.5pt |
+
+Its arithmetic is exact, and **72 is also precisely 360/5**, so the 5° minor interval and the comfortable
+spacing are the same choice. Adopted with the rest of the spec: **12 labelled majors at 30° in two digits,
+N/E/S/W replacing 0/90/180/270, tick length ratio 1 : 1.6 : 2.2, cardinals rotating with the dial.**
+
+This comes from **Garmin's published HSI specification**, not from taste, which is worth more than any
+design opinion the session could have formed.
+
+### 14.2 It re-confirms the architecture from the other direction
+
+88 paths (72 + 12 + 4) costed against section 4.2a's measured 1.33 to 1.87 ms per path:
+**117 to 165 ms per frame IF the tree re-recorded**, which is 7 to 10 times over a 60fps budget.
+
+**So the tick count the design wants is only affordable under the transform-only architecture, and is free
+under it.** Design and performance agree, which is the outcome section 4.2a predicted.
+
+### 14.3 The single most useful find: a complete anti-flicker spec
+
+**GeoQibla**, an open-source Kotlin Multiplatform qibla library, publishes its `QiblaConfig` defaults:
+near = 10°, **aligned = within 3° held for 750 ms**, with a state priority that makes aligned sticky over
+near.
+
+And a **shipping app's changelog** carries the bug that spec prevents, verbatim: *"the alignment tap no
+longer repeats at the edge of alignment."*
+
+**Adopted, merged with our ±5° window:** near ±10°, **aligned ±5° sustained 750 ms**, exit only beyond
+**±7°**, no re-animation while held. That is a 2° hysteresis band, and it is the difference between a
+feature that feels solid and one that buzzes at the boundary.
+
+### 14.4 Three findings that change specific decisions
+
+| Finding | Effect |
+| --- | --- |
+| **Apple reserves green EXCLUSIVELY for success** across Compass and Level | **Green may not appear anywhere else on the sheet.** A palette rule, not a preference |
+| A black Kaaba cube **disappears** on `#0b183a` | The glyph is **front elevation, ~34pt, dark fill with a lilac stroke, and the gold band carries the identity**. Halo only when aligned |
+| The khatam is **two squares, one rotated 45°** | Trivially cheap as a static asset, and its 8 points land exactly on N/NE/E/SE/S/SW/W/NW. Ornament at 4 to 8% opacity, in ONE place only |
+
+### 14.5 What goes to the owner
+
+Every visual choice above is a recommendation, not a decision. Visuals are the owner's alone
+(`ai/AGENTS.md`), and session 29's Help design is the precedent: 25 candidates were built and the owner
+chose. The plan will carry the dial spec as a proposal.
+
+## 15. R2 agent 2 (honest copy): the most directly shippable report of the seven
+
+Full report at `agent-reports/R2-02-honest-copy.md`.
+
+### 15.1 It supplies the copy this feature could not have written safely
+
+Two examples that no amount of internal drafting would have produced:
+
+- **Apple Compass ships exactly ONE uncertainty string**, and it is the model: *"Hold the device flat for
+  accurate bearing."* A condition and an instruction, no apology. **We should near-quote it, deliberately,
+  because Apple has already trained every iPhone user on that sentence.**
+- **Muslim App's developer reply** to a one-star review from a user standing in front of the Kaaba is
+  exactly our governing principle in one sentence: *"the direction may appear incorrect **even though our
+  Qibla calculation is accurate**."*
+
+### 15.2 The permission evidence is quantitative
+
+Asking at the moment of use, with a primer and a proper purpose string, moved one app from **45% to 93%**
+opt-in. A purpose string at all moves opt-in from **62.8% to 73.6%**. **This validates the decision to ask
+on the sheet rather than at launch**, and it is now backed by numbers rather than by instinct.
+
+**Apple's 5.1.1 test, from a real rejection sequence: the string needs a specific EXAMPLE of what the user
+sees, not a category of benefit.**
+
+### 15.3 FOUR ITEMS ARE FLAGGED AS RELIGIOUS CLAIMS, NOT PRODUCT DECISIONS
+
+**This is the most valuable thing in the report and the plan must carry it verbatim.**
+
+1. **"Facing qibla" as the aligned label.** Describes geometry, but the word in an asserted state is worth
+   a check.
+2. **Any sentence asserting scholarly consensus**, such as "scholars agree that sincere effort is what
+   counts". It is well supported by IslamQA 42574 and 148900, **but it is still the app stating fiqh.**
+3. **The near-Kaaba screen in any wording.**
+4. **Any mention of tolerance ranges.** The ranges exist and differ by authority (Malaysia 3°, Egypt 45°),
+   **so quoting one is a de facto ruling.** The agent's recommendation, which this session adopts:
+   **do not surface tolerance ranges in the UI at all.**
+
+**The test the agent proposes for every line is the best single sentence in all seven reports: "can a
+sensor engineer and a mufti both sign it?"**
+
+### 15.4 Copy that is now banned, with evidence
+
+"Exact", "precise" or "always accurate" describing the direction shown, because JAKIM and Mufti Selangor
+both measured 3 to 45° of app error. "Ensures your prayers are aligned", because it promises a religious
+outcome. **"Your prayer is valid" in any form.** And no exclamation marks anywhere near a religious term.
+
+**The app is never named**, which is already this repo's rule and already pinned by
+`shared/__tests__/help.test.ts:88`. The qibla copy inherits that test's pattern.
+
+## 16. R2 agent 3 (expo-location field reality): THE DECISION IS RESOLVED
+
+Full report at `agent-reports/R2-03-expo-location-field.md`. **This settles section 13.2's open question.**
+
+### 16.1 The verdict: Option A, expo-location, with three defences
+
+**The evidence, not a preference:**
+
+- **Seven real heading bug reports in expo/expo's ENTIRE history**, none since September 2022, none open,
+  **zero heading issues among current SDK 58 issues.** iOS is consistently reported fine.
+- Both lifecycle risks this session worried about are **already fixed in the version we are on**: the iOS
+  streamer emitting after unsubscribe (PR #35004) and **an Android watch leak fixed in 58.0.0 itself**
+  (PR #48294).
+- `watchHeadingAsync` gained an **`errorHandler` second argument**, verified present in the installed
+  source.
+
+**Against that, all three source defects are confirmed real in the field**, and all three are cheap to
+defend in JS. So Option A ships, and Option B (a native module) is explicitly **held as the fallback if the
+3T proof shows the tilt bug hurting real use**, not adopted preemptively.
+
+### 16.2 The negative-heading bug has a four-year history, and we are not the first
+
+- **Issue #19071** (2022) reported it with logs.
+- **PR #19629** claimed to fix it, stating in its own body that it fixes "trueHeading reports a negative
+  value right before rolling back to zero".
+- **It only clamped the top end**, because Kotlin's `%` keeps the dividend's sign.
+- **Nobody has reported the remaining case in four years.**
+
+**Two consequences for the plan.** The guard is mandatory: `((h % 360) + 360) % 360`, and the `-1` sentinel
+must be tested with `=== -1` before normalising, never `< 0`. And **this session should file the upstream
+issue**, because it is a one-line fix with a documented history and reporting it costs nothing.
+
+### 16.3 The tilt bug is REPORTED AND NEVER FIXED
+
+**Issue #16640** (2022): "heading values go totally out of order if the telephone is tilted". Stale-closed,
+never fixed. That is the user-visible symptom of the missing `remapCoordinateSystem` this session found in
+source, and it pairs with section 11.1's measurement that **1° of tilt costs about 5° of heading at
+London's magnetic dip.**
+
+**So "hold the phone flat" is not merely good advice: it is working around a known, open, unfixed library
+defect.** The copy from section 15 covers it, and Apple's own string is the wording.
+
+### 16.4 The escape hatch is closer than expected
+
+The accepted Stack Overflow answer for this exact problem recommends `DeviceMotion` from **expo-sensors**,
+and the agent verified that **`DeviceMotionModule.kt` on the sdk-58 branch is backed by
+`TYPE_ROTATION_VECTOR`.**
+
+**So the fused, tilt-compensated path is reachable with a package already in our dependency tree**, at the
+cost of computing declination ourselves. `react-native-attitude` (TurboModule, RN >= 0.82, actively
+maintained, adds `remapCoordinateSystem`) is the better-engineered version of the same idea, also
+magnetic-referenced.
+
+**Both are recorded as the fallback ladder. Neither is adopted now.**
+
+### 16.5 The 3T question is answered, and two of our own notes were wrong
+
+**OnePlus's official spec page confirms the 3T has a gyroscope, an electronic compass and an
+accelerometer**, so every alternative path would work on it.
+
+Two corrections to this session's own record: **the 3T is a Snapdragon 821, not 820** (this repo's pages
+say 820 in several places), and **Google Play services supports Android 6.0 and up**, so an Android 9
+device is comfortably supported.
