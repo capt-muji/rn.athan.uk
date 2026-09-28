@@ -677,13 +677,13 @@ reproducible from the topic list below.
 
 | # | Brief | State at pause |
 | --- | --- | --- |
-| 1 | Jurisprudence: fatwa councils on great circle vs rhumb line, required precision, ruling if a prayer faced wrong | Attempt 3 running (`ses_f1633271bffe`) |
-| 2 | Shipped-app engineering failures: bug reports, GitHub issues, app-store complaints, recurring traps | Attempt 3 running (`ses_f1633271affe`) |
-| 3 | Sensor and platform engineering: Android/iOS heading APIs, declination, untrustworthy-reading detection, 60fps rotation | Attempt 3 running (`ses_f16332718ffe`) |
-| 4 | Professional practice: how mosque surveyors work, mosque-misalignment studies, why professionals distrust magnetic compasses | Attempt 3 running (`ses_f16332716ffe`) |
-| 5 | UX, visual design and accessibility: existing qibla screens, honest uncertainty wording, Islamic geometric motifs | Attempt 3 running (`ses_f16332714ffe`) |
+| 1 | Jurisprudence: fatwa councils on great circle vs rhumb line, required precision, ruling if a prayer faced wrong | **COMPLETE** (attempt 3; reports in `agent-reports/`) |
+| 2 | Shipped-app engineering failures: bug reports, GitHub issues, app-store complaints, recurring traps | **COMPLETE** (attempt 3; reports in `agent-reports/`) |
+| 3 | Sensor and platform engineering: Android/iOS heading APIs, declination, untrustworthy-reading detection, 60fps rotation | **COMPLETE** (attempt 3; reports in `agent-reports/`) |
+| 4 | Professional practice: how mosque surveyors work, mosque-misalignment studies, why professionals distrust magnetic compasses | **COMPLETE** (attempt 3; reports in `agent-reports/`) |
+| 5 | UX, visual design and accessibility: existing qibla screens, honest uncertainty wording, Islamic geometric motifs | **COMPLETE** (attempt 3; reports in `agent-reports/`) |
 
-**All five were re-dispatched together once the owner raised the ceiling, and every prior failure was the gateway rather than the work.** Each of those failures was the gateway returning
+**ALL FIVE COMPLETED on attempt 3**, once the owner raised the ceiling and restarted the gateway. Every prior failure was the gateway returning
 `Chat admission capacity is temporarily unavailable`, never an agent error, so no brief needs rewriting.
 
 ### 8.3 The retry policy, which survives the pause
@@ -735,3 +735,307 @@ The earlier three-strike wording is dead for this session. No brief has come clo
 `expo-location` is NOT installed in the main checkout. The install was proven in a scratch worktree that has
 been removed, so `package.json` is unchanged and the tree is clean. Step 1 of the plan does the real install,
 and it MUST carry the `rm -rf node_modules/expo-widgets/node_modules` remedy from section 3.
+
+## 9. Agent report 5 (UX, design, accessibility): what it changes
+
+Full report at `agent-reports/05-ux-design.md`. It is the strongest of the five briefs so far and it
+changes four things. Read this section as the planner's ruling on it, not as a summary.
+
+### 9.1 IT CONTRADICTS THIS SESSION'S OWN PLAN, and the agent is right
+
+Section 4.3 of this file established that every rotation must go through a shortest-arc form,
+`((to - from + 180) mod 360) - 180`. **That is correct for a single step and INSUFFICIENT for an
+animation**, and the agent found the evidence this session did not: Reanimated discussion #4353, where the
+library's own maintainer confirms there is no built-in solution.
+
+The distinction matters and the plan must carry it:
+
+- **Shortest-arc delta** answers "which way is nearer". It is what a filter needs.
+- **Unwrapping** answers "what continuous number do I hand the animation". Without it `withTiming` still
+  interpolates between two WRAPPED values and spins the long way.
+
+So the shared value driving the transform holds an **unwrapped, monotonic-ish angle that may exceed 360 or
+fall below 0**, accumulated by adding ±360 on each wrap. The displayed bearing stays wrapped; only the
+animated one accumulates. This session's section 4.3 is amended accordingly rather than deleted, because
+its measurement of the naive failure is still what proves the problem.
+
+### 9.2 A BOOBY TRAP inside the very solution the report recommends
+
+The accepted answer in #4353 carries a correct one-liner AND a WRONG "equivalent" in its own comment:
+
+```ts
+if (Math.abs(diff) > 180) delta += Math.sign(diff) * -360;   // correct
+/* Equivalent to:
+if (diff > 180) delta -= 360;
+else if (diff < 180) delta += 360;   // WRONG: should be diff < -180
+*/
+```
+
+Measured this session across 10 transitions: **the two disagree on 6 of them.** The commented form fires
+`else if (diff < 180)` for every ordinary small step, adding 360 on a 5° turn. A developer who copies the
+comment rather than the code ships a compass that spins constantly.
+
+**The plan therefore writes the guard out verbatim and its break script mutates `-180` to `180`**, because
+that is the exact mutation that reproduces the community's own bug. This is the kind of trap the owner's
+"no vagueness" rule exists for.
+
+### 9.3 Findings adopted into the design
+
+| Finding | Source | Ruling |
+| --- | --- | --- |
+| Alignment window **±5°** with green, haptic and a text change | Garmin's stated spec [V]; JUTeC cites a Malaysian fatwa tolerance of ~10.8°, so ±5° sits comfortably inside | **Adopt.** Three channels, which is also what WCAG 1.4.1 requires |
+| Snap the STATE, never the needle | No surveyed app snaps the needle; it always jitters 1 to 3° | **Adopt** |
+| A "Turn right 28°" instruction beside the dial | Resolves a documented, reproducible user misunderstanding of which thing rotates | **Adopt.** It is also the WCAG 1.3.3 text equivalent, so it pays twice |
+| Keep the exact bearing visible when the sensor is untrustworthy | lghou's exact/estimate split | **Adopt.** Degrade, never disappear |
+| Dynamic-alpha smoothing: heavy when still, responsive when turning | NorthPin | **Adopt** |
+| ~200ms ease, critically damped, no overshoot | Reanimated #4353 recipe; wobble reads as sensor failure | **Adopt** |
+| Field-strength sanity check (Earth is 25 to 65 µT) | NorthPin | **Note only.** `expo-location` does not expose raw µT; it would need `expo-sensors` as a second dependency. Costed, not adopted, and put to the owner |
+| Khatam (8-point star) tick geometry | 8-fold symmetry is native to 45° divisions | **Recommend to the owner.** Visual decisions are the owner's |
+| Kaaba icon: black cube with the gold hizam band | Universal convention; the band is the identifying feature | **Adopt for the glyph** |
+| Distance to Makkah | Near-universal | **Recommend.** Cheap, and it earns the screen meaning |
+| Uncertainty as an arc width, Google Maps' beam | `headingAccuracy` maps to it directly | **Recommend to the owner** |
+
+### 9.4 What it CONFIRMS independently
+
+- The permission-free compass is not a thing anyone ships. Every surveyed app has a position.
+- `headingAccuracy` is the right uncertainty signal, which matches section 2.7's reading of the two
+  platforms' differing scales.
+- The near-Kaaba case is real and users hit it: the Pillars team's public reply says GPS "would quite
+  literally have to be accurate to <5m" there. **That independently confirms section 1.7's measurement**
+  that a 50 km error at Jeddah swings the bearing 49°, arrived at from geometry rather than from support
+  threads.
+
+### 9.5 One thing to weigh against the app's own rules
+
+The report recommends copy such as "This is a technical Qibla estimate, not an official religious ruling."
+That is honest and this session endorses the spirit. **But `ai/AGENTS.md` records that the app is never
+named in user copy** (owner, session 29), and any wording that edges toward a religious claim is the
+owner's to approve. The plan will carry proposed copy to the owner rather than ship it.
+
+## 10. Agent report 4 (professional practice): the finding that reframes the feature
+
+Full report at `agent-reports/04-professional-practice.md`.
+
+### 10.1 THE DECISIVE MEASUREMENT
+
+**JAKIM, Malaysia's official Islamic authority, tested phone qibla apps and measured errors "between 3° and
+45° depending on the app and the phone", ruling that app results "only count as an estimate (anggaran)".**
+
+Set that against the religious tolerances the same brief documented:
+
+| Authority | Tolerance |
+| --- | --- |
+| Malaysia (National Fatwa Committee) | **3°** |
+| Indonesian practitioner norm | ~2° |
+| Pahang, old mosques | 23° |
+| Egypt Dar al-Ifta / Perlis / IslamQA | **45°** |
+
+**The phone's error band (3 to 45°) spans every tolerance in the table, from the strictest to the most
+lenient.** So a phone compass cannot guarantee even the loosest religious tolerance.
+
+Meanwhile our COMPUTED bearing is accurate to 0.05° and our coarse position costs another 0.05°. **The
+number beats the strictest tolerance by about sixty times; the needle cannot reliably meet the loosest.**
+
+### 10.2 What follows, and it is the feature's governing principle
+
+> **The computed bearing is professional-grade. The needle is not. The number must therefore always be on
+> screen, and the needle must never be the only answer the app gives.**
+
+This is independently what the honest practitioners do. The Turkish site namazvakti.com publishes three
+values per city: true-north qibla angle, magnetic declination, and the derived compass angle. The US land
+surveyor who oriented a Tennessee mosque computed the true bearing and applied declination by hand rather
+than trusting a qibla compass, noting that sources advise "it is not advisable to determine qibla using a
+compass".
+
+### 10.3 Adopted
+
+| Finding | Ruling |
+| --- | --- |
+| Show the computed bearing as a first-class number, never only a needle | **Adopt.** Governing principle above |
+| Never tell a user their prayers were invalid | **Adopt as a copy rule.** Every authority separates measurement from validity: MUI ruled "realign the rows, don't demolish", Pahang that past prayers are never repeated, Dar al-Ifta that a 13° mosque need not change |
+| Never claim "100% accurate" | **Adopt as a copy rule.** Contradicted by every published measurement |
+| Teach the sun check | **Recommend to the owner as a follow-up**, not this session. It is the one method that beats the sensor, and Kemenag's national campaign is built on it |
+| The 0.4° "ihtiyat al-qiblah" tolerance in the IKN study | **Note only.** It is one jurisdiction's operational figure, far below what any phone delivers |
+
+### 10.4 What it independently CONFIRMS
+
+- Earthquakes do not move the qibla (LAPAN/BHR, explicitly), so nothing about our bearing needs to age.
+- Great circle is right: Malaysia's official 291 to 293° band, Google's method, and the geodesy literature
+  all use it. The rhumb line remains a documented minority.
+- Al-Khalili's 14th-century table of 4,000 entries was accurate to **1 to 2 arc-minutes**, which is a
+  useful humility check: the mathematics was solved 660 years ago and our contribution is honesty about
+  sensors, not arithmetic.
+
+## 11. Agent report 2 (engineering war stories): the trap that would have shipped
+
+Full report at `agent-reports/02-engineering-traps.md`.
+
+### 11.1 TILT, which no other source raised and which London makes worse
+
+Measured (ASYU 2023): **"The Qibla error without tilt compensation can reach up to 100 degrees for 30
+degrees pitch."** And the sensitivity is dip-dependent: at magnetic dip 5° near the magnetic equator, 1° of
+tilt error costs 0.09° of heading; at dip 80° it costs **up to 6°**.
+
+**London's magnetic dip is about 66°.** Interpolating between those published points puts 1° of tilt error
+at roughly **5° of heading error here.** So "hold the phone flat" is an instruction, not a footnote, and it
+matters more in the UK than almost anywhere the feature was tested by others.
+
+`expo-location`'s Android path uses `getRotationMatrix`, which IS tilt-compensated for the matrix itself,
+so this is about the user's posture rather than a library defect. iOS Core Location compensates internally.
+
+### 11.2 The MagSafe asymmetry, which decides the copy
+
+**Figure-8 calibration only fixes fields that move WITH the device.** Apple's own wording: calibration "is
+able to filter out only those magnetic fields that move with the device"; for external sources "the user
+must either move the device away from the source or move the source in conjunction with the device."
+
+A MagSafe array measures **68.8 mT at the phone's back**, against Earth's **0.05 mT**: three orders of
+magnitude. **So a permanently attached magnetic case cannot be calibrated away, and the only honest advice
+is "take the case off".** An app that tells such a user to wave a figure-8 is wasting their time.
+
+### 11.3 Adopted
+
+| Finding | Ruling |
+| --- | --- |
+| "A confident wrong arrow is worse than a 'move away from interference' prompt" | **Adopt as the governing UX principle**, and it agrees exactly with section 10.2 |
+| Hold the phone flat, prominently | **Adopt.** Section 11.1 makes it a UK-critical instruction |
+| Magnetic case advice must be "remove it", not "calibrate" | **Adopt** |
+| Field-strength sanity check (25 to 65 µT) | **Now upgraded from "note only" to RECOMMENDED**, because two independent briefs reached it and Android exposes the expectation directly via `GeomagneticField.getFieldStrength()`. Still costs `expo-sensors` as a second dependency, so it goes to the owner |
+| Great-circle education copy | **Adopt as a copy requirement.** Muslim Pro carries it in writing precisely because North American users report the correct answer as a bug |
+| Never render raw `atan2(mag.y, mag.x)` as a heading | **Adopt.** We do not: `expo-location` fuses |
+| The iOS Simulator has no magnetometer | **Adopt into the plan's device proof.** It will hang a naive dev loop, and this session's own device testing must account for it |
+
+### 11.4 The reassurance, which is worth as much as the warnings
+
+The agent searched specifically for formula bugs and **found none**: "A public post-mortem where a named
+qibla app fixed a formula bug... Math bugs are conspicuously absent, consistent with the math being settled
+and libraries being copies of one formula." It also found **no Southern-Hemisphere-specific bug**, because
+"the formula is symmetric", which independently supports this session's own global sweep in section 1.7a.
+
+**Every catastrophic failure in the field is a SENSOR or a GPS failure. Not one is arithmetic.** That is
+the strongest possible argument for spending this session's remaining effort on trust signalling rather
+than on the bearing.
+
+## 12. Agent report 1 (jurisprudence): what may and may not be said
+
+Full report at `agent-reports/01-jurisprudence.md`.
+
+### 12.1 The great circle is confirmed, and the dispute is real but minority
+
+Al-Azhar's 1998 fatwa endorsed the great circle. The southeast position is held by essentially one
+organised body (AICP / Al-Ahbash) plus one Quranist sect. Twelve centuries of Muslim astronomers used the
+great circle. **Section 1.5's decision stands, now on far better evidence than "most apps do it".**
+
+Two details worth keeping:
+
+- **The Islamic Center of Washington DC has faced 56°33′15″ since 1953**, calculated by the Egyptian
+  Ministry of Works and checked by a National Geographic cartographer. The north-easterly answer is older
+  than the controversy about it.
+- Abdali's geometric refutation is decisive and worth recording: **rhumb lines between two points are not
+  unique**, so "the constant-bearing route" is not even a well-defined single answer.
+
+### 12.2 The tolerance question is ANSWERED, and it reframes the ±5° alignment window
+
+The agent verified the 45° figure to an official state muftiate: **Egypt's Dar al-Ifta, Fatwa 6453: "Scholars
+determined this to be 90 degrees i.e. 45 degrees from each direction."** Hanafi fatwa literature says
+deviation beyond 45° invalidates the prayer. Sistani gives no number, only "not a lot". The Shafi'i school
+is the strict outlier.
+
+**So agent 5's proposed ±5° alignment window is comfortably inside every documented tolerance except the
+Shafi'i ideal, which is unattainable by any instrument.** It is a UI affordance, not a religious claim, and
+that is exactly how the copy must treat it.
+
+### 12.3 THE COPY RULE THIS SETTLES
+
+The jurisprudence is unambiguous that **diligence, not outcome, decides validity.** Ibn al-'Uthaymeen: "if
+he put effort into working it out... he does not have to repeat the prayer at all, **whether he got it
+right or not**."
+
+**Therefore the app must never imply a prayer was invalid, and never imply a past prayer must be repeated.**
+That is now backed by fatwa rather than by taste, and it aligns with agent 4's independent finding from
+MUI, Pahang and Dar al-Ifta.
+
+**One finding cuts the other way and must be handled carefully.** IslamQA 483121 (2024) names the
+**cell-phone compass** as "the most readily available" method and treats IGNORING it as negligence
+requiring repetition. So a user may reasonably believe our number carries religious weight. **That raises
+the bar on honesty rather than lowering it**, and it is the strongest argument for section 10.2's rule.
+
+### 12.4 The antipode, now with a ruling
+
+At the antipode every direction reaches the Kaaba along an equal 10,008 km great circle, **so any facing is
+correct.** No formal fatwa was located, but it follows from jihat. The agent's engineering note matches
+this session's measurement in section 1.7a: **display large uncertainty near the antipode** rather than a
+confident arrow.
+
+### 12.5 Deferred with better information
+
+The sun method's dates are **not stable constants**: sources disagree on 12 vs 13 vs 14 January and 28 vs
+29 November, and the classical sources specified **solar longitude rather than a calendar date** because
+the Islamic calendar is lunar. **If the sun check is ever built, it must compute the instant per year and
+never hardcode the dates**, which is a stronger statement than section 1.8 made.
+
+## 13. Agent report 3 (sensor engineering): a CONTRADICTION this session must resolve
+
+Full report at `agent-reports/03-sensor-engineering.md`.
+
+### 13.1 The contradiction, stated plainly
+
+**The agent recommends** the Fused Orientation Provider on Android and `CLLocationManager` on iOS, and
+states there is "no rotation-vector/FOP/CLHeading equivalent in Expo's sensor suite", so a native module is
+needed.
+
+**This session read `expo-location@58.0.8`'s actual source** (section 2), and the agent is **half right**:
+
+| Claim | Verdict |
+| --- | --- |
+| No CLHeading equivalent in Expo | **WRONG.** `expo-location`'s iOS path IS `CLLocationManager` heading (`DeviceHeadingStreamer`), verified in `LocationModule.swift` |
+| No rotation-vector or FOP path on Android | **RIGHT.** Verified: `LocationModule.kt:636` registers `TYPE_MAGNETIC_FIELD` and `TYPE_ACCELEROMETER` and fuses with `getRotationMatrix`. No rotation vector, no FOP |
+| `expo-sensors` gives raw µT with no fusion | Right, but irrelevant: we would use `expo-location`, not `expo-sensors` |
+
+The agent evidently reasoned about `expo-sensors` and generalised to Expo as a whole. **Its Android
+conclusion survives that error, and its Android conclusion is the one that matters**, because agent 2
+independently found that the Android sensor layer is the number one source of wrong-direction reports in
+shipped apps.
+
+### 13.2 THE DECISION THIS FORCES, and it is the owner's
+
+| | Option A: `expo-location` as shipped | Option B: a native module for Android |
+| --- | --- | --- |
+| iOS quality | Core Location, best available | identical |
+| Android quality | raw mag + accel, no gyro fusion, no rotation vector | FOP: gyro-fused, declination built in, explicit error cone |
+| Android accuracy signal | `SENSOR_STATUS_*` only, a coarse 0 to 3 band | `getHeadingErrorDegrees()` in real degrees |
+| Cost | zero, one `expo install` | a new local Expo module, second only to `modules/tls13` |
+| Risk on the 3T | none new | needs GMS, needs a gyroscope, needs proving on Android 9 |
+| Known upstream bug | the negative `trueHeading` of section 2.1 | avoided entirely, FOP applies declination itself |
+
+**This is a genuine engineering trade with no obviously right answer, so it goes to the owner in the plan's
+section 2 rather than being taken here.** The planner's recommendation is **Option A for this session**,
+because it ships the feature, and the honest-number architecture of section 10.2 means the app never stakes
+its answer on the needle alone. Option B becomes a follow-up row if the 3T proof shows the Android needle
+is unusable.
+
+### 13.3 Adopted outright
+
+| Finding | Ruling |
+| --- | --- |
+| **Filter the wrapped delta, never the raw angle**, and keep the ANIMATED value unbounded | **Adopt.** Third independent confirmation, after section 4.3 and agent 5 |
+| α ≈ 0.15, or 0.1 to 0.3 at 50 Hz for a 100 to 300 ms settle | **Adopt as the starting value** |
+| One-Euro filter as the adaptive upgrade | **Note.** Try only if a fixed α feels wrong |
+| **No Kalman needed**: the platform already fuses | **Adopt.** Removes a whole class of work |
+| Animate `transform` on a plain View; never per-frame SVG attributes | **Adopt.** This is the FOURTH independent source for section 4.2's architecture, and the strongest: react-native-svg's own maintainers say "everything gets redrawn, and there's no caching involved" |
+| Enable `ANDROID_SYNCHRONOUSLY_UPDATE_UI_PROPS` and the iOS equivalent | **Investigate in the plan.** They are Reanimated feature flags and this app is on 4.7.0 |
+| **Measure in release builds only** | **Adopt.** Already this repo's rule (Performance Design Rule 8) |
+| Field-strength check via `GeomagneticField.getFieldStrength()` | Reinforces section 11.3 |
+| London declination is **+1.2°** | **Confirms section 1.7d** independently, from NOAA live |
+| Boston −13.9°, Seattle +14.9°, Tokyo −7.9° | **Adopt into the declination test fixtures** as the synthetic cases section 1.7d requires |
+| iOS `headingOrientation` unset means heading is referenced to the portrait top edge | **Adopt.** `expo-location` does NOT set it (verified: zero matches in its Swift source), so **the qibla sheet must be portrait-only or the heading will be 90° out in landscape** |
+
+### 13.4 The most useful single number in the report
+
+**Indoor heading RMSE is about 17.4° even with a purpose-built EKF anomaly-rejection algorithm** (Ettlinger
+& Weiss, *NAVIGATION*, 2024), and that was state of the art beating prior work by 40%. Naive indoor
+readings are worse.
+
+**Most prayer happens indoors.** So the realistic error for our actual use case is ~17°, which is four
+times agent 5's proposed ±5° alignment window, and inside only the lenient 45° tolerance. This is the
+single strongest justification for the honest-number architecture, and it should be quoted in the plan.
