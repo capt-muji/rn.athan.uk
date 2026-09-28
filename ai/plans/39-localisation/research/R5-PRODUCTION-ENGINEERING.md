@@ -49,7 +49,7 @@ The collision problem is not theoretical for this repo. `components/sheets/scree
 
 The copy-change problem hits this repo's test culture hardest. The suite holds about 4,800 tests and a pre-commit hook runs all of them (ai/AGENTS.md section 2 and 6). With natural keys, every English copy tweak changes a key and fails every test asserting it. The repo rule "tests before refactoring" depends on assertions that survive cosmetic change. Structured keys plus a test-mode `t` that returns the key keeps 4,800 tests silent through copy edits.
 
-Rewrites are the cautionary tale: a Medium write-up of renaming just under 500 keys in a large frontend describes the rename as a multi-developer project (https://jdudzik.medium.com/rewriting-every-i18n-key-in-a-large-frontend-codebase-8fcf01dbcea). Choose as if renaming is expensive, because it is.
+Rewrites are the cautionary tale: a Medium write-up of renaming roughly 500 keys in a large frontend describes the rename as a multi-developer project (https://jdudzik.medium.com/rewriting-every-i18n-key-in-a-large-frontend-codebase-8fcf01dbcea). Choose as if renaming is expensive, because it is.
 
 **Finding: structured keys win here on three repo-specific grounds: test stability under the 100% coverage regime, the existing `Off`/`Silent`/`Sound` collision, and free English copy edits. The cost is naming 194 strings once.**
 
@@ -252,14 +252,14 @@ Layer it with Biome for fast feedback in the editor:
   "linter": {
     "rules": {
       "style": {
-        "noJsxLiterals": { "level": "error", "options": { "noStrings": true, "allowedStrings": ["·", "—", " ", ":", "%"] } }
+        "noJsxLiterals": { "level": "error", "options": { "noStrings": true, "allowedStrings": ["·", "-", " ", ":", "%"] } }
       }
     }
   }
 }
 ```
 
-Note `allowedStrings` needs the separator characters this UI actually renders inline. Enabling `noStrings: true` also flags attribute literals such as `label='Settings'`, which is the majority of this repo's surface, so the rule earns its place here more than in most codebases.
+Note `allowedStrings` needs the separator characters this UI renders inline. Enabling `noStrings: true` also flags attribute literals such as `label='Settings'`, which is the majority of this repo's surface, so the rule earns its place here more than in most codebases.
 
 `i18next-cli lint` exists and reports hardcoded strings "with smart heuristics to reduce false positives" (https://www.npmjs.com/package/i18next-cli). It is a periodic sweep, not a pre-commit gate: it adds a dependency and duplicates what the Jest test already enforces inside the existing hook.
 
@@ -363,7 +363,7 @@ Locale changes text width. "Magrib" and "المغرب" and "Maghrib" measure dif
 | Per-locale width keys (`..._standard_ar`) | Correct per-locale geometry | Requires a reset-and-remeasure on locale change, which is a visible reflow at launch and a new key family in the `clearAllExcept` whitelist (a known trap, ai/AGENTS.md performance campaign notes) |
 | Precompute max across all bundled locales | One-time cost, stable forever | Needs every locale's names measured or estimated before first render; the font-registration race that motivated grow-only still applies |
 
-**Finding: keep the single grow-only max.** The mechanism already handles "a wider measurement arrived late" (that is its whole design), a locale change is just another late wider measurement, and the alternatives violate settled rules the owner has already adjudicated. Note it as an accepted cost: a user whose locale renders narrower than English keeps the English-width column.
+**Finding: keep the single grow-only max.** The mechanism already handles "a wider measurement arrived late" (that is its whole design), a locale change is another late wider measurement, and the alternatives violate settled rules the owner has already adjudicated. Note it as an accepted cost: a user whose locale renders narrower than English keeps the English-width column.
 
 The wider rule for keeping strings out of the animation path: text content flows through props and derived atoms, never through a worklet. Worklets hold geometry and colours only. `t()` inside a `useAnimatedStyle` or a worklet function would capture the string at worklet-creation time and cannot re-run on a locale change without re-creating the worklet, which is the same remount hazard as above. This repo's existing structure already complies; state it as an invariant so it stays true.
 
@@ -405,7 +405,7 @@ Up to 64 pending requests are armed in advance, each with its title fixed at sch
 
 So the finding is: **iOS has a delivery-time localisation path designed for exactly this, and it is not reachable from this stack without native work plus bundle strings files duplicating the JS catalog. Android has no delivery-time path for scheduled local notifications at all.** A dual-source-of-truth catalog (JS plus `Localizable.strings`) for one platform only, reachable only through a patch, fails this repo's consistency bar.
 
-**The re-arm path, which is what this repo actually needs:**
+**The re-arm path, which is what this repo needs:**
 
 Cancelling and re-arming 64 requests is cheap in API terms: `removeAllPendingNotificationRequests` exists on both platforms (https://docs.expo.dev/versions/latest/sdk/notifications/), and iOS exposes `removeAllPendingNotificationRequests()` at the OS level (https://developer.apple.com/documentation/usernotifications/unusernotificationcenter/removeallpendingnotificationrequests()). It is not atomic: there is no transaction spanning cancel plus re-add. The failure surface:
 
