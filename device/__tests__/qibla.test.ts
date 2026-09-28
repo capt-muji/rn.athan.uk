@@ -92,8 +92,25 @@ describe('readPosition', () => {
     expect(mockLocation.getCurrentPositionAsync).toHaveBeenCalledWith({ accuracy: Location.Accuracy.Balanced });
   });
 
-  it('answers null when the position cannot be read', async () => {
-    mockLocation.getCurrentPositionAsync.mockRejectedValueOnce(new Error('timeout'));
+  // A live read fails indoors and on a cold radio, where a fix from minutes ago is the same answer: the qibla moves
+  // half a degree per 10 km
+  it('falls back to the last known fix when the live read fails', async () => {
+    mockLocation.getCurrentPositionAsync.mockRejectedValueOnce(new Error('LocationUnavailable'));
+    mockLocation.getLastKnownPositionAsync.mockResolvedValueOnce(position(51.5074, -0.1278));
+
+    await expect(readPosition()).resolves.toEqual({ latitude: 51.5074, longitude: -0.1278 });
+  });
+
+  it('answers null when the phone holds no last known fix either', async () => {
+    mockLocation.getCurrentPositionAsync.mockRejectedValueOnce(new Error('LocationUnavailable'));
+    mockLocation.getLastKnownPositionAsync.mockResolvedValueOnce(null);
+
+    await expect(readPosition()).resolves.toBeNull();
+  });
+
+  it('answers null when even the last known read throws', async () => {
+    mockLocation.getCurrentPositionAsync.mockRejectedValueOnce(new Error('LocationUnavailable'));
+    mockLocation.getLastKnownPositionAsync.mockRejectedValueOnce(new Error('no provider'));
 
     await expect(readPosition()).resolves.toBeNull();
   });
