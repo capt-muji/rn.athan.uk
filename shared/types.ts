@@ -247,6 +247,7 @@ export enum Icon {
   PLAY = 'PLAY',
   PAUSE = 'PAUSE',
   INFO = 'INFO',
+  QUESTION = 'QUESTION',
   MUSIC_NOTE = 'MUSIC_NOTE',
   CHECK = 'CHECK',
   CLOSE = 'CLOSE',
