@@ -6351,3 +6351,58 @@ its box rather than its glyph, from three causes in one style block, all dating 
 of every hour, nine days old (1.29.51). And `yarn check:device` failing on a healthy phone because it
 grepped notification channels by a retired generation suffix, wrong since 2026-09-26 (1.29.58): a
 safety net that cries wolf is worse than none, because it trains you to ignore it.
+
+# Session 35 of the queue: the housekeeping batch, 2026-09-28
+
+Five queued items, of which **three were already closed** by later work, one was real with a cause
+the row did not name, and one had a root cause rather than the tuning knob the row offered. The owner
+added a sixth mid-session, the back-press rule, as a new feature. 1.29.61 to 1.29.63; 177 suites,
+4778 tests, 100% on all four measures; 18 of 18 breaks caught. Evidence in
+`ai/plans/35-housekeeping/FINDINGS.md`.
+
+**The findings page was 13 days old and was re-measured rather than trusted**, which is the main
+lesson of the session: 8 of its 13 accessibility claims had already been fixed by sessions 5, 6 and
+29 (the alert bell's role, label and spoken state; the overlay catchers' shared name; the
+explanation's live region; `SegmentedControl`'s `selected`; `Stepper`'s named arrows; `Modal`'s
+`accessibilityViewIsModal`). Five were real and shipped: `SoundItem` gained role `radio`, its chosen
+state and a play button named for the way it acts; `LabeledToggle`'s switch had a role and a checked
+state but **no name**, so it announced only "off"; `SettingsButton`, the update prompt's two buttons
+and the colour picker's Cancel, Done and Reset were unnamed; an invisible Reset read to a screen
+reader at the default colour, where it is drawn at zero opacity and does nothing; the launch spinner
+was unnamed, and the page dots are now hidden rather than named, because the pager already announces
+its page. `allowFontScaling: false` is untouched, being an owner decision.
+
+**Edge-to-edge is CANCELLED, not blocked on hardware.** The row wanted RN's built-in
+`edgeToEdgeEnabled`; SDK 58 removed it, and `@expo/prebuild-config` warns it "is no longer available
+- Android 16 makes edge-to-edge mandatory". `react-native-edge-to-edge` still supplies the
+`Theme.EdgeToEdge` parent the app's `AppTheme` inherits, the `enforceNavigationBarContrast` attribute
+the app sets false, and the `SystemBars` component used in two files, which RN 0.88 does not export
+at all. Dropping it would mean hand-writing its theme and its API to lose a dependency that works.
+The hardware blocker is moot regardless: two API 35 AVDs exist on this Mac.
+
+**Finding 74 is closed, and probing it found a different defect.** Its claim, that a Suhoor wrapped
+onto the evening before loses a day of buffer, does not hold: wrapped and unwrapped Suhoor are both
+planned 64 days. But `SCHEDULE_CANDIDATE_DAYS` was `NOTIFICATION_REQUEST_BUDGET + 1`, and that `+1`
+pays for the one already-past row the walk drops at its head, which is correct only for a row firing
+ON its list day. Midnight and Last Third fire the evening BEFORE theirs, so once that evening's row
+passes there are two, and the walk ends at 63 days with the budget unspent. Swept 10,300 samples over
+five time shapes, every prayer, every seventh minute: the worst head count is exactly 2, never 3.
+**The request budget and session 28's reminder arithmetic are untouched**, measured at `+1` and `+2`
+across 216 scenarios: both arm at most 64 requests and leave the worst-case user at 63 with an
+identical row set.
+
+**The audioMatrix timeout had a root cause.** `mp3-duration` given a path does its own streaming file
+I/O; given a buffer it decodes in memory. 440ms against 14ms over the same 67 files, durations
+bit-identical, and the suite went from 5.70s to 0.70s. That is also why this suite alone timed out
+while `athanDurations.test.ts` never did on 32 larger files: it already passed buffers.
+
+**The leftover 3T channels are already clean:** 3 live app channels and zero tombstones, because
+`deleteLegacyAndroidAudioChannels` runs on every init.
+
+**The owner's new rule:** back closes every open surface. What's New, Help, the update prompt and the
+overlay gained handlers; the colour picker and the sheets already behaved correctly and were left
+alone, verified in React Native's Android source rather than assumed. The update prompt's back press
+means Later and never Update, so an accidental gesture cannot start a download. Predictive back was
+the risk and was checked: the app targets SDK 36, where RN disables `onBackPressed()` by default, but
+Expo writes `enableOnBackInvokedCallback="false"` unless `predictiveBackGestureEnabled` is set, which
+this project does not set, confirmed in the APK installed on the 3T.

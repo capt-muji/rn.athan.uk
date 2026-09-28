@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect, useLayoutEffect, useState } from 'react';
-import { Pressable, StyleSheet, type ViewProps } from 'react-native';
+import { BackHandler, Pressable, StyleSheet, type ViewProps } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
@@ -46,6 +46,18 @@ export default function Overlay() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     closeOverlay();
   };
+
+  // Back closes the overlay rather than leaving the app, which is what an open veil looks like
+  // it should do. Silent on the haptic: closeOverlay, not handleClose, because the press was not
+  // a tap on the screen
+  useEffect(() => {
+    if (!overlay.isOn) return;
+    const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
+      closeOverlay();
+      return true;
+    });
+    return () => subscription.remove();
+  }, [overlay.isOn]);
 
   // Layout effect: fires synchronously after the commit — the mark measures
   // the true commit span, not scheduler-deferred effect-flush latency

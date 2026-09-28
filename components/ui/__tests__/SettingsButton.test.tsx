@@ -10,9 +10,15 @@ import { setSettingsSheetModal } from '@/stores/ui';
 
 import SettingsButton from '../SettingsButton';
 
-// The button has no role, label or text to be found by, so it is reached as the root of what it renders
-
 describe('the settings button, with the settings sheet mounted', () => {
+  // An icon-only control, so its name is the only thing a screen reader could announce
+  it('is named for a screen reader', async () => {
+    setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
+    await render(<SettingsButton />);
+
+    expect(screen.getByRole('button', { name: 'Settings' })).toBeOnTheScreen();
+  });
+
   it('opens the settings sheet when pressed', async () => {
     const sheet = { present: jest.fn() };
     setSettingsSheetModal(sheet as unknown as BottomSheetModal);

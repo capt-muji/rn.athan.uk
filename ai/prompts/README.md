@@ -43,6 +43,29 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-09-28, during session 35: back closes what is open
+
+A new feature, given while the accessibility step was being built: 🐋  "When any modal is open, the
+back press should close the modal... Same thing for the help... Same thing for the updates. If we
+press the back button, the update modal should not update, it should close. Same thing for the
+overlay... For the colour picker, pressing the software back should also cancel the changes and
+close the colour picker without saving."
+
+- **Every open surface closes on the Android back press**, rather than letting the press leave the
+  app with the surface still drawn. `Modal.tsx` takes an optional `onRequestClose`, matching the
+  handler `Sheet.tsx` already had, and What's New, Help and the update prompt each pass theirs.
+- **The update prompt's back press means Later, never Update.** An accidental gesture must not start
+  a download, so the back press is wired to `onClose` and a test pins it.
+- **The overlay closes without the tap haptic**, which only a finger on the screen earns.
+- **The colour picker already behaved this way** and was left alone: React Native's own `Modal`
+  routes the back press to `onRequestClose`, which is wired to `handleDismiss`, so the change is
+  discarded. Verified in RN's Android source and already covered by its own test. Sheets were
+  already correct too.
+- **Predictive back is not a risk here, and it was checked rather than assumed.** The app targets
+  SDK 36, where RN's own comment says `onBackPressed()` is disabled by default, but Expo writes
+  `enableOnBackInvokedCallback="false"` unless `predictiveBackGestureEnabled` is set, which this
+  project does not set. Confirmed in the APK installed on the 3T.
+
 ## Decided by the owner, 2026-09-27, after session 32: the remaining work is two sessions
 
 Session 32 listed everything still waiting, and the owner grouped it all in one pass.
@@ -428,6 +451,18 @@ kinds they describe are gone.
   "the user never needs to open the app"; 30 days is the floor of the ambition, not the ceiling.
 
 ## Closed prompts (index)
+
+- 35. The housekeeping batch — DONE 2026-09-28 (1.29.61 to 1.29.65) — five queued items, of which
+  **three were already closed** by later work. The accessibility findings were 13 days old and were
+  re-measured rather than trusted: 8 of 13 had been fixed by sessions 5, 6 and 29, and the five real
+  ones shipped (`SoundItem`'s role and chosen state, `LabeledToggle`'s unnamed switch, the icon-only
+  buttons, an invisible Reset that still read to a screen reader, the launch spinner). **Edge-to-edge
+  is CANCELLED, not blocked**: SDK 58 removed the `edgeToEdgeEnabled` it was to migrate to, and the
+  library still supplies the theme parent, `enforceNavigationBarContrast` and `SystemBars`. **Finding
+  74 is closed** but probing it found a separate defect, the candidate horizon paying for only one of
+  the two past rows a night row leaves at the head of the walk. **The audioMatrix timeout had a root
+  cause**, `mp3-duration` streaming from a path where a buffer decodes in memory, 31x faster. The
+  owner's new back-press rule landed in the same session. 19 of 19 breaks caught.
 
 One line each; a session's row moves here when it closes. Full detail is in git history,
 `ai/plans/` and `ai/features/`. The numbers are the table's session numbers, including the
