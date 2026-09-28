@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
+import { hasLocationPermission, requestLocationPermission } from '@/device/qibla';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
@@ -19,6 +20,7 @@ import {
   setSettingsSheetModal,
   setSoundListReady,
   showArabicNamesAtom,
+  showQiblaSheet,
   showSecondsAtom,
   showSheet,
   showTimePassedAtom,
@@ -40,6 +42,18 @@ export default function BottomSheetSettings() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
     showSheet();
+  };
+
+  // The compass needs a position to point from, so the permission is asked for here, with the reason already on
+  // screen. A refusal leaves the row working: the next tap asks again.
+  const handleQiblaPress = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    const granted = (await hasLocationPermission()) || (await requestLocationPermission());
+    if (!granted) return;
+
+    hideSettingsSheet();
+    showQiblaSheet();
   };
 
   // Re-opens the What's New modal for the installed version - display-only,
@@ -81,6 +95,18 @@ export default function BottomSheetSettings() {
             <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.athanLabel}>Change athan</Text>
+          <Text style={styles.chevron}>›</Text>
+        </Pressable>
+        <Pressable
+          style={styles.athanButton}
+          onPress={handleQiblaPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel='Qibla'
+          accessibilityRole='button'>
+          <View style={styles.musicButton}>
+            <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.athanLabel}>Qibla</Text>
           <Text style={styles.chevron}>›</Text>
         </Pressable>
       </View>
