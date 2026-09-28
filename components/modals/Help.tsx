@@ -131,6 +131,7 @@ export default function ModalHelp({ visible, onClose }: Props) {
       wide
       divider
       trailingIcon
+      onRequestClose={onClose}
       icon={
         <View style={styles.titleBadge}>
           <Text style={styles.titleBadgeGlyph}>?</Text>

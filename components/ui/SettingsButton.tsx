@@ -29,7 +29,10 @@ export default function SettingsButton() {
       style={[styles.container, computedStylesContainer, AnimScale.style]}
       onPress={handlePress}
       onPressIn={() => AnimScale.animate(0.9)}
-      onPressOut={() => AnimScale.animate(1)}>
+      onPressOut={() => AnimScale.animate(1)}
+      accessibilityRole='button'
+      // An icon-only control, so the glyph is all a sighted user needs and a screen reader gets nothing
+      accessibilityLabel='Settings'>
       <SettingsIcon width={SIZE.icon.md} height={SIZE.icon.md} style={styles.icon} />
     </AnimatedPressable>
   );

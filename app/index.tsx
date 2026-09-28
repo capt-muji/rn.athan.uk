@@ -208,7 +208,7 @@ export default function Index() {
   // upgrade wipe, year gap) — warm-cache launches render content immediately
   if (waitingForData) {
     return (
-      <View style={styles.loadingContainer}>
+      <View style={styles.loadingContainer} accessibilityRole='progressbar' accessibilityLabel='Loading prayer times'>
         <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
       </View>
     );

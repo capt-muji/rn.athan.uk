@@ -8,6 +8,8 @@ interface ToggleProps {
   value: boolean;
   onToggle: () => void;
   disabled?: boolean;
+  /** What the switch announces; the setting's own label, since the track carries no text */
+  accessibilityLabel?: string;
 }
 
 /**
@@ -21,7 +23,7 @@ interface ToggleProps {
  * @example
  * <Toggle value={isOn} onToggle={() => setIsOn(!isOn)} />
  */
-export default function Toggle({ value, onToggle, disabled }: ToggleProps) {
+export default function Toggle({ value, onToggle, disabled, accessibilityLabel }: ToggleProps) {
   // Derived, not effect-driven: every value flip re-runs the timing from the
   // thumb's live position on the UI thread, so the knob always converges on
   // the current value. The previous effect + JS-side shared-value
@@ -56,6 +58,7 @@ export default function Toggle({ value, onToggle, disabled }: ToggleProps) {
       // `checked` is what a screen reader announces as on/off; without it the state is
       // carried only by the thumb's position and the track colour
       accessibilityState={{ checked: value, disabled: disabled === true }}
+      accessibilityLabel={accessibilityLabel}
       onPress={handlePress}
       style={[styles.track, value && styles.trackOn, disabled && styles.disabled]}>
       <Animated.View style={[styles.thumb, thumbStyle]} />

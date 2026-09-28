@@ -1,12 +1,25 @@
 /**
- * The What's New modal: the version it is headed with, each item and its platform note, and Close
+ * The What's New modal: the version it is headed with, each item and its platform note, Close, and Android's back
+ * press
  */
 
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import { BackHandler, DeviceEventEmitter } from 'react-native';
 
 import type { WhatsNewItem } from '@/shared/whatsNew';
 
 import ModalWhatsNew from '../WhatsNew';
+
+// Jest resolves React Native for iOS, whose BackHandler never fires. The back handling exists for Android, so the
+// hardware back press runs through React Native's own Android implementation
+jest.mock('react-native/Libraries/Utilities/BackHandler.ios', () =>
+  jest.requireActual('react-native/Libraries/Utilities/BackHandler.android')
+);
+
+const pressBack = () =>
+  act(() => {
+    DeviceEventEmitter.emit('hardwareBackPress');
+  });
 
 // Items of its own rather than the shipped archive, whose content changes with every release
 const TABLETS: WhatsNewItem = { title: 'Tablet support', body: 'Athan now supported on tablets', version: '1.27.140' };
@@ -83,5 +96,16 @@ describe("the What's New modal after an update to 1.27.140", () => {
     await fireEvent.press(screen.getByRole('button', { name: 'Close' }));
 
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('closes when Android\u2019s back button is pressed, rather than leaving the app', async () => {
+    const onClose = jest.fn();
+    const exitApp = jest.spyOn(BackHandler, 'exitApp');
+    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS]} onClose={onClose} />);
+
+    await pressBack();
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(exitApp).not.toHaveBeenCalled();
   });
 });
