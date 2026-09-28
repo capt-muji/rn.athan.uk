@@ -55,7 +55,7 @@ Today's shipped behaviour is then just one point in that space: app language Eng
 Arabic, second name shown. Nothing regresses.
 
 The existing `showArabicNamesAtom` is already the on/off half of the second setting, which is
-evidence the split matches how the app is actually built.
+evidence the split matches how the app is built.
 
 ## What is still open for the owner
 

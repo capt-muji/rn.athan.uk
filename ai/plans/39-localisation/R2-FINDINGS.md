@@ -117,7 +117,7 @@ rather than waiting for catalogs.
 Lingui 6.7+ ships pseudolocales including an RTL one; `pseudo-localization` 3.1.3 (MIT) is the
 standalone.
 
-## Verification without a reader: what actually works
+## Verification without a reader: what works
 
 R2 ranks the techniques honestly and draws a line the plan adopts:
 
