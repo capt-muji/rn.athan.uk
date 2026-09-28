@@ -49,13 +49,26 @@ describe('the qibla sheet', () => {
     await waitFor(() => expect(screen.getByText('119° from north')).toBeTruthy());
   });
 
-  it('keeps looking when the position cannot be read', async () => {
+  // Saying "finding" forever is a lie the user cannot act on, so a failed read names what happened
+  it('says so when the position cannot be read', async () => {
     mockReadPosition.mockResolvedValue(null);
     await render(<QiblaSheet />);
 
     await present();
 
-    await waitFor(() => expect(screen.getByText('Finding your position')).toBeTruthy());
+    await waitFor(() => expect(screen.getByText('Your location is not available right now')).toBeTruthy());
+  });
+
+  it('goes back to looking when it is reopened after a failure', async () => {
+    mockReadPosition.mockResolvedValueOnce(null);
+    await render(<QiblaSheet />);
+    await present();
+    await waitFor(() => expect(screen.getByText('Your location is not available right now')).toBeTruthy());
+
+    await dismiss();
+    await present();
+
+    await waitFor(() => expect(screen.getByText('119° from north')).toBeTruthy());
   });
 
   // Every sheet is mounted from launch, so a mount-keyed subscription would run forever on every device
