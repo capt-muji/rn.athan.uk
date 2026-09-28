@@ -377,6 +377,45 @@ the 30fps floor** (`gaps <= 33ms = 30fps floor pass`), so the 60fps target needs
 against **16.67 ms**, not the harness's default verdict. Its `FRAME_AUDIT=sf` fallback reads
 SurfaceFlinger `--latency` cadence directly, which is the right instrument for a gap distribution.
 
+### 4.2a The ornament budget, derived from the Masjid measurement, and why the DESIGN is not constrained
+
+The Masjid figure (30 paths, 40 to 56 ms per record on the SD820) implies **1.33 to 1.87 ms per path** for
+a full-window re-record:
+
+| Paths | Estimated cost | Verdict against a 16.67 ms frame |
+| --- | --- | --- |
+| 8 | 10.7 to 14.9 ms | fits even if re-recorded |
+| 12 | 16.0 to 22.4 ms | only safe if never re-recorded |
+| 32 | 42.7 to 59.7 ms | only safe if never re-recorded |
+| 72 | 96 to 134 ms | only safe if never re-recorded |
+
+**The conclusion is liberating rather than limiting.** A static tree rotated by a transform is recorded
+ONCE; the per-frame cost is then a compositor matrix multiply that does not depend on path count at all.
+So the rule for the plan is:
+
+> Draw the dial as richly as the design wants. The moving layer must be transform-only, never
+> attribute-animated.
+
+A 72-tick dial with Islamic geometric ornament is affordable if it never re-records, and an 8-path dial is
+still too slow if it re-records every frame. **Architecture decides this, not ornament.**
+
+### 4.2b The space the compass actually gets, measured
+
+Inside a `snapPoints={['85%']}` sheet, after `Header`, `SHEET_BOTTOM_PADDING`, the `SPACING.xl` side
+padding and the `SIZE.contentMaxWidth` cap of 500:
+
+| Device | Screen pt | Sheet height | Usable width | Usable height | Largest square dial |
+| --- | --- | --- | --- | --- | --- |
+| OnePlus 3T | 360x640 | 544 | 312 | 366 | **312** |
+| iPhone XS | 375x812 | 690 | 327 | 512 | 327 |
+| iPhone 16 | 393x852 | 724 | 345 | 546 | 345 |
+| Find X8 | 412x915 | 778 | 364 | 600 | 364 |
+
+**The dial is width-bound on every phone**, and the floor device gives the smallest at 312pt, which is
+still generous. Vertical room is left over everywhere (366pt spare even on the 3T), so a numeric heading
+readout and a status line fit beneath the dial without a scroll. The dial should therefore size from
+width, not from a fixed constant, exactly as session 15d's Android widget lesson required.
+
 ### 4.3 TRAP: naive rotation spins the long way round
 
 Interpolating a heading from 359 to 1 naively travels −358°, a visible full spin. Measured:
