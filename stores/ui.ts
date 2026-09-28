@@ -106,6 +106,14 @@ export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_w
 /** Page coordinates of the prayer list component (for animations) */
 export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
 
+/**
+ * Offset between the window space `measureInWindow` reports and the root view's own space, which is
+ * where the overlay's absolute container positions its children. Zero whenever the two spaces
+ * coincide (every Android we have measured); a constant otherwise (23.67pt on the iPhone XS), which
+ * is why anchoring overlay geometry with raw window coordinates drifted the box off its row on iOS.
+ */
+export const measurementOriginOffsetAtom = atom({ x: 0, y: 0 });
+
 // =============================================================================
 // ATOMS - User Preferences (persisted)
 // =============================================================================
@@ -223,3 +231,7 @@ export const getMeasurementsList = () => store.get(measurementsListAtom);
 
 /** Sets the page coordinates of the prayer list component */
 export const setMeasurementsList = (measurements: PageCoordinates) => store.set(measurementsListAtom, measurements);
+
+/** Records the window-to-root coordinate offset, measured once beside the list rect */
+export const setMeasurementOriginOffset = (offset: { x: number; y: number }) =>
+  store.set(measurementOriginOffsetAtom, offset);
