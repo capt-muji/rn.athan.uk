@@ -116,6 +116,102 @@ So a commute never matters and coarse location is ample. **Two exceptions:**
    mathematically degenerate: every direction is equally "toward" the Kaaba. No inhabited place is inside
    the degenerate cap, but the code must not produce NaN there.
 
+### 1.7a Numerical safety: measured, and the formula cannot produce NaN
+
+Every degenerate input was run through the formula this session:
+
+| Input | Result |
+| --- | --- |
+| The Kaaba itself | 0.00, finite |
+| 1 m north of the Kaaba | 180.00, finite |
+| The exact antipode | 90.00, finite |
+| North Pole | 140.17, finite |
+| South Pole | 39.83, finite |
+| Date line, `+180` and `-180` | 301.49 both, identical |
+
+**No input produces NaN.** The only candidate degeneracy is `atan2(0, 0)`, and IEEE 754 defines that as
+`0` rather than NaN in both Python and JavaScript. The antipode is therefore "arbitrary but stable" rather
+than undefined: the bearing is meaningless there in the real world, but the code never breaks. A guard is
+still warranted for the *display*, not for the maths.
+
+### 1.7b The Kaaba's angular size, which is the geometric heart of the tolerance question
+
+The Kaaba is about 12.86 m wide. Its angular size from a distance is what any "exact direction" claim runs
+into:
+
+| From | Distance | Kaaba subtends |
+| --- | --- | --- |
+| Inside the Sacred Mosque | ~50 m | 14.66° |
+| Makkah, edge of city | 5 km | 0.147° |
+| Jeddah | 66 km | 0.011° |
+| Cairo | 1,287 km | 0.00057° |
+| London | 4,794 km | **0.000154°**, about 1/6,500th of one degree |
+| New York | 10,307 km | 0.000071° |
+
+**From London the Kaaba covers roughly one six-thousandth of a single degree.** No compass, no survey
+instrument, and no human body can be aimed that finely. This is the geometric reason the schools of
+jurisprudence discuss facing the *direction* (jihat al-Kaaba) rather than the *point* (ayn al-Kaaba), and
+it is the strongest possible argument that our effort belongs in sensor honesty rather than decimal places.
+
+Read the other way, an angular error costs this much miss-distance at Mecca:
+
+| From | 1° error | 5° error | 22.5° error |
+| --- | --- | --- | --- |
+| Cairo | 22 km | 112 km | 505 km |
+| London | 84 km | 418 km | 1,883 km |
+| Jakarta | 138 km | 691 km | 3,108 km |
+| New York | 180 km | 899 km | 4,048 km |
+
+The 22.5° column is there because it is half of a 45° sector, the tolerance some scholarly positions
+describe as facing the general direction. **Agent research is confirming the actual jurisprudential
+positions; these are the geometric consequences, not a ruling.**
+
+### 1.7c London is a single bearing, which is how this ships safely
+
+Measured across Greater London, which is the app's ENTIRE current user base:
+
+| Place | Qibla | Δ from Charing Cross |
+| --- | --- | --- |
+| Charing Cross | 118.987 | — |
+| Ilford | 119.259 | +0.272 |
+| East Ham | 119.215 | +0.227 |
+| Woolwich | 119.185 | +0.198 |
+| Enfield | 119.174 | +0.187 |
+| Croydon | 118.897 | −0.090 |
+| Wembley | 118.844 | −0.143 |
+| Heathrow | 118.593 | −0.395 |
+
+**The total spread across Greater London is 0.666°**, and the compass cannot resolve better than about 5°.
+
+Two consequences the plan uses:
+
+1. **The feature can be verified on device against a known constant.** A London device must read
+   119° ± 1, and any reading outside that is a defect, regardless of what the location layer reports. This
+   gives a device proof that does not depend on trusting the location code, which is exactly the property
+   session 25's drift work lacked when its "after" run silently used mock data.
+2. **A wrong location is detectable in London but invisible elsewhere.** If the position fell back to
+   something absurd, London's expected 119° would not appear. The device proof therefore has real
+   diagnostic power here that it would not have in, say, Cairo.
+
+### 1.7d London's magnetic declination is currently near zero, which is a TRAP for our own testing
+
+The British Geological Survey records that the **agonic line, where declination is exactly zero, crossed
+Greenwich in September 2019 for the first time since about 1660**, and is moving west at roughly 20 km per
+year. BGS's Dr Ciarán Beggan: "By 2040, all compasses will probably point eastwards of true north."
+
+So in London today, **magnetic north and true north very nearly coincide**. That is a testing hazard rather
+than a benefit: section 2.1's negative-`trueHeading` bug, and any confusion between `magHeading` and
+`trueHeading`, are **invisible in London** because the two values are nearly equal here. A London device
+cannot prove that the declination handling is correct.
+
+**The plan must therefore test declination handling with unit tests over synthetic values, not on the
+owner's phone.** The simulator can be given any coordinates, which is the honest way to exercise a
+negative-declination location such as New York without travelling.
+
+WMM2025 is the model behind both platforms, released 2024-12-17 and valid to 2029-12-31; BGS's own
+calculator accepts dates from 2024-01-01 to 2034-12-31 but warns that "inputs beyond 2030 are not
+recommended as accuracy will be reduced".
+
 ### 1.8 A free precision check nobody needs to build
 
 Twice a year the sun passes directly over the Kaaba: **27/28 May at 09:18 UTC and 15/16 July at 09:27 UTC.**
@@ -329,3 +425,70 @@ a deliberate tap, which is also what makes it defensible at App Store review und
 - Apple App Review Guideline 5.1.1 (purpose strings).
 - `ai/AGENTS.md`: the `@expo/ui` nested-copy trap; Performance Design Rules; `components/ui/Masjid.tsx`'s
   measured SVG cost.
+
+## 7. Research method and retry policy
+
+**OWNER RULING, 2026-09-28, on how research is delegated:** five research briefs were dispatched in
+parallel to independent agents (jurisprudence; shipped-app engineering failures; sensor and platform
+engineering; professional mosque-surveying practice; UX, visual design and accessibility). The owner's
+standing rule for this session and any like it:
+
+> An agent that fails or times out is redeployed on the same brief. If it fails a second time, it is
+> redeployed once more. If it fails a third time, the session takes that brief over and does the research
+> itself rather than leaving the topic unresearched.
+
+No brief is ever dropped. Findings that contradict sections 1 to 6 above are recorded as contradictions
+with both sources named, and the contradiction is resolved by measurement where a measurement is possible.
+
+## 8. PAUSED: resume from here
+
+**Paused 2026-09-28 at the owner's instruction, to restart the LLM gateway.** The repeated
+`Chat admission capacity is temporarily unavailable` failures were the GATEWAY, not the research agents or
+their briefs. Nothing below is a finding; it is the state to resume from.
+
+### 8.1 What is already done and committed
+
+- Sections 1 to 6 of this file: the mathematics, the great-circle vs rhumb-line dispute, the error budget,
+  the five `expo-location@58.0.8` source traps, the measured install cost, the 60fps architecture ruling,
+  and where the screen lives. All verified this session.
+- Sections 1.7a to 1.7d: numerical edge cases (no NaN anywhere), the Kaaba's angular size, the London
+  single-bearing property, and London's near-zero declination as a testing hazard.
+- Row 36 CANCELLED and rows 37 to 39 queued in `ai/plans/README.md`. Row 37 is PLANNING.
+
+### 8.2 The five research briefs, and their state at the pause
+
+All five were dispatched to independent agents. Their full briefs are in this session's history; each is
+reproducible from the topic list below.
+
+| # | Brief | State at pause |
+| --- | --- | --- |
+| 1 | Jurisprudence: fatwa councils on great circle vs rhumb line, required precision, ruling if a prayer faced wrong | Dispatched, no result yet |
+| 2 | Shipped-app engineering failures: bug reports, GitHub issues, app-store complaints, recurring traps | Failed once on gateway capacity, redeployed, no result yet |
+| 3 | Sensor and platform engineering: Android/iOS heading APIs, declination, untrustworthy-reading detection, 60fps rotation | Failed once on gateway capacity, redeployed, no result yet |
+| 4 | Professional practice: how mosque surveyors work, mosque-misalignment studies, why professionals distrust magnetic compasses | Failed once on gateway capacity, redeployed, no result yet |
+| 5 | UX, visual design and accessibility: existing qibla screens, honest uncertainty wording, Islamic geometric motifs | Dispatched, no result yet |
+
+**None has reported.** Every one of those failures was the gateway returning
+`Chat admission capacity is temporarily unavailable`, never an agent error, so no brief needs rewriting.
+
+### 8.3 The retry policy, which survives the pause
+
+Owner's rule, 2026-09-28: an agent that fails is redeployed on the same brief; if it fails a second time it
+is redeployed once more; **if it fails a third time the session takes that brief over itself.** The counts
+above are per-brief and carry forward: briefs 2, 3 and 4 have each used ONE of their two retries.
+
+### 8.4 Resume by doing exactly this
+
+1. Re-dispatch all five briefs, honouring the counts in 8.2.
+2. Fold each report into this file as its own section, naming the source for every claim.
+3. **Flag any finding that contradicts sections 1 to 6**, naming both sources, and resolve it by measurement
+   where a measurement is possible. The likeliest contradictions are the jurisprudential tolerance figures
+   (section 1.7b computes the geometry but takes no ruling) and whether professionals accept a magnetic
+   compass at all (section 4.2's architecture assumes the app's answer is sensor-limited).
+4. Only then write `PLAN.md`. No app code has been written and none should be until the research settles.
+
+### 8.5 The one thing to re-check on resume
+
+`expo-location` is NOT installed in the main checkout. The install was proven in a scratch worktree that has
+been removed, so `package.json` is unchanged and the tree is clean. Step 1 of the plan does the real install,
+and it MUST carry the `rm -rf node_modules/expo-widgets/node_modules` remedy from section 3.
