@@ -452,6 +452,18 @@ kinds they describe are gone.
 
 ## Closed prompts (index)
 
+- 35. The housekeeping batch — DONE 2026-09-28 (1.29.61 to 1.29.65) — five queued items, of which
+  **three were already closed** by later work. The accessibility findings were 13 days old and were
+  re-measured rather than trusted: 8 of 13 had been fixed by sessions 5, 6 and 29, and the five real
+  ones shipped (`SoundItem`'s role and chosen state, `LabeledToggle`'s unnamed switch, the icon-only
+  buttons, an invisible Reset that still read to a screen reader, the launch spinner). **Edge-to-edge
+  is CANCELLED, not blocked**: SDK 58 removed the `edgeToEdgeEnabled` it was to migrate to, and the
+  library still supplies the theme parent, `enforceNavigationBarContrast` and `SystemBars`. **Finding
+  74 is closed** but probing it found a separate defect, the candidate horizon paying for only one of
+  the two past rows a night row leaves at the head of the walk. **The audioMatrix timeout had a root
+  cause**, `mp3-duration` streaming from a path where a buffer decodes in memory, 31x faster. The
+  owner's new back-press rule landed in the same session. 19 of 19 breaks caught.
+
 One line each; a session's row moves here when it closes. Full detail is in git history,
 `ai/plans/` and `ai/features/`. The numbers are the table's session numbers, including the
 2026-09-15 renumbering (see the ordering note above).
