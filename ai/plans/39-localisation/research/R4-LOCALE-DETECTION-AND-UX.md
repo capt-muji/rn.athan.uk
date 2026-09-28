@@ -84,7 +84,7 @@ Lookup is what an app picker wants. The code shape, using the FormatJS implement
 import { match } from '@formatjs/intl-localematcher';
 import { getLocales } from 'expo-localization';
 
-const APP_LOCALES = ['en', 'ar', 'bn', 'id', 'tr', 'ur']; // what we actually ship
+const APP_LOCALES = ['en', 'ar', 'bn', 'id', 'tr', 'ur']; // the shipped set
 const requested = getLocales().map((l) => l.languageTag);  // ordered user preferences
 const chosen = match(requested, APP_LOCALES, 'en');        // RFC 4647 lookup + CLDR distance
 ```
@@ -129,7 +129,7 @@ The Philippines case is the owner's sharpest example, so take it literally. A ph
 
 Region-based language guessing does exist in production, in one narrow form: storefront defaulting. Apple and Google decide which store listing language to show from the storefront plus device languages, not from GPS. In-app, the honest uses of region are defaults for things that are genuinely regional and not exposed by the locale: currency, first weekday, date formats when the user has not expressed one. React-native-localize's `getCountry()` exists for exactly this and its author still documents it as locale-derived, never position-derived.
 
-What would location actually buy over the locale list here? Consider the failure matrix. A location query in the Philippines returns a Filipino speaker who reads English, or it returns a Filipino-Chinese user, an English expat, a Muslim Tausug speaker in Zamboanga whose phone is set to `fil`, or a returning OFW worker in London whose GPS is in Manila on a UK phone. The signal is coarse country-level data used to guess at a preference the user has already stated, in writing, one screen deeper in the same Settings app. Tagalog itself sits 22nd in the Ethnologue 2026 total-speakers table (87M) and Philippine Muslims are roughly 5.5M, about 5% of the population (worldpopulationreview.com/country-rankings/muslim-population-by-country, 2026 data), so for this app specifically the Philippines is not even a priority market.
+What would location buy over the locale list here? Consider the failure matrix. A location query in the Philippines returns a Filipino speaker who reads English, or it returns a Filipino-Chinese user, an English expat, a Muslim Tausug speaker in Zamboanga whose phone is set to `fil`, or a returning OFW worker in London whose GPS is in Manila on a UK phone. The signal is coarse country-level data used to guess at a preference the user has already stated, in writing, one screen deeper in the same Settings app. Tagalog itself sits 22nd in the Ethnologue 2026 total-speakers table (87M) and Philippine Muslims are roughly 5.5M, about 5% of the population (worldpopulationreview.com/country-rankings/muslim-population-by-country, 2026 data), so for this app specifically the Philippines is not even a priority market.
 
 **Verdict: region never beats language for UI language.** The device locale list is a direct statement of preference. Location is an inference about nationality. When they disagree, the stated preference wins, and the in-app picker is the correction valve for the residual cases.
 
@@ -274,7 +274,7 @@ Two distinct cases, and conflating them is where most Expo apps go wrong.
 
 **Recommendation.** Same-direction switches apply live. Direction flips write the choice, then `Updates.reloadAsync()`, with the sheet dismissed first so the user returns to the home screen in the new direction rather than into a re-mounted sheet. This is a deliberate, disclosed trade, not a failure to modernise: every app that truly flips direction live (browsers, some native apps) does it with a per-view direction value instead of the global `I18nManager`, which in React Native means hand-rolling `flexDirection` swaps everywhere. That is not worth it for a settings action performed once or twice in an install's life.
 
-**Accessibility at the switch.** Announce the change. `AccessibilityInfo.announceForAccessibility` posts a string to VoiceOver or TalkBack (reactnative.dev/docs/accessibilityinfo, retrieved 2026-09-29), and the announcement must be in the new language, phrased with the new language's own endonym, because the user just told the phone they read that one: for example `اللغة: العربية` or `Language: English`. Then fire `sendAccessibilityEvent` with `focus` on the settings row the user came from, so focus does not strand on a re-rendered node. The overlay workstream already treats screen-reader routing as a hard requirement, and a language change is the single most disruptive re-render the app will ever do.
+**Accessibility at the switch.** Announce the change. `AccessibilityInfo.announceForAccessibility` posts a string to VoiceOver or TalkBack (reactnative.dev/docs/accessibilityinfo, retrieved 2026-09-29), and the announcement must be in the new language, phrased with the new language's own endonym, because the user has now told the phone they read that one: for example `اللغة: العربية` or `Language: English`. Then fire `sendAccessibilityEvent` with `focus` on the settings row the user came from, so focus does not strand on a re-rendered node. The overlay workstream already treats screen-reader routing as a hard requirement, and a language change is the single most disruptive re-render the app will ever do.
 
 ### B.8 Side effects specific to this app
 
@@ -355,7 +355,7 @@ Notes that matter for shipping decisions:
 - **Arabic as a macrolanguage** has roughly 332M MSA users plus dialect L1 speakers; Ethnologue's macro view puts all Arabic varieties near the top five. For an app, `ar` in MSA is correct: it is the written register every literate Arabic speaker reads.
 - **Nigerian Pidgin** has no CLDR plural entry and thin localisation tooling. It is enormous in L2 and irrelevant to this app's audience; it appears here for completeness of the top-20, not as a shipping candidate.
 - **Turkish and Hausa tie at 94M.** For this app Hausa and Turkish both matter (Part C.2), which is convenient.
-- Tagalog (`tl` / `fil`, 87M total) and Western Punjabi (`pa`, 90M) sit just outside the top 20; both appear in the Muslim-overlap analysis.
+- Tagalog (`tl` / `fil`, 87M total) and Western Punjabi (`pa`, 90M) sit outside the top 20; both appear in the Muslim-overlap analysis.
 
 ### C.2 Ranked by Muslim-population overlap
 
@@ -378,7 +378,7 @@ Sources: Pew Research Center, "How the Global Religious Landscape Changed From 2
 | 13 | Kurdish (`ku`) | Turkey southeast, Iran west, Iraq north, diaspora | 30+ | not in top 20 | Full set, lower priority; fragmented standard (`ku` covers Kurmanji; Sorani is `ckb`, RTL). |
 | 14 | Uzbek (`uz`) | Uzbekistan 29.9 (88.7%) | 27 | not in top 20 | Full set. Latin-script since the 1990s, straightforward. |
 | 15 | Azerbaijani (`az`) | Azerbaijan 10.1 (97.3%), Iran north | 15+ | not in top 20 | Full set, lower priority. |
-| 16 | Tamil (`ta`) | India Tamil Nadu and Sri Lanka 2.1 (9.7%), Singapore 0.9, Malaysia | 10+ | just outside top 20 (86M total) | Full set. Sri Lankan and Tamil Muslim diaspora in the UK. |
+| 16 | Tamil (`ta`) | India Tamil Nadu and Sri Lanka 2.1 (9.7%), Singapore 0.9, Malaysia | 10+ | outside top 20 (86M total) | Full set. Sri Lankan and Tamil Muslim diaspora in the UK. |
 | 17 | Malayalam (`ml`) | Kerala, UAE diaspora | 10+ | not in top 20 (59M L1) | Full set. Kerala's Muslim community is a third of the state. |
 | 18 | Bosnian (`bs`) | Bosnia 2 (50.7%), diaspora | 2+ | not in top 20 | Full set, last. Plurals: 4 forms. |
 | 19 | Albanian (`sq`) | Albania 1.2 (50.7%), Kosovo, North Macedonia 0.6 | 5+ | not in top 20 | Full set, last. |
