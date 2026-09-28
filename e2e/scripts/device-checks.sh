@@ -153,13 +153,15 @@ else
     sed -E "s/mId='([^']*)'.*mImportance=([0-9-]+)/        \1 (importance \2)/" | sort | head -12
   # extras_at_time carries Sunrise + every extra; a missing channel means Android
   # silently drops those notifications (ISSUES #23)
-  grep -q "mId='extras_at_time'" "$OUT/channels.txt" &&
+  # Generation-agnostic: a channel's sound, attributes and importance are frozen at creation,
+  # so every fix ships a new suffix and a check pinned to one generation fails on the next
+  grep -qE "mId='extras_at_time(_v[0-9]+)?'" "$OUT/channels.txt" &&
     pass "extras_at_time present" || fail "extras_at_time MISSING — extras alerts would be dropped"
-  grep -qE "mId='athan_[0-9]+_v2'" "$OUT/channels.txt" &&
-    pass "athan_<n>_v2 present" || note "no athan_<n>_v2 channel yet (created when a Sound alert is first set)"
+  grep -qE "mId='athan_[0-9]+(_v[0-9]+)?'" "$OUT/channels.txt" &&
+    pass "an athan channel is present" || note "no athan channel yet (created when a Sound alert is first set)"
   # Count first. With no matching channels the inner grep fails and the `||`
   # branch fires, which printed a pass for a set that was never examined.
-  grep -E "mId='(extras_at_time|athan_[0-9]+_v2)'" "$OUT/channels.txt" > "$OUT/prayer-channels.txt"
+  grep -E "mId='(extras_at_time(_v[0-9]+)?|athan_[0-9]+(_v[0-9]+)?)'" "$OUT/channels.txt" > "$OUT/prayer-channels.txt"
   PRAYER_CHANNELS=$(grep -c . "$OUT/prayer-channels.txt")
   if (( PRAYER_CHANNELS == 0 )); then
     fail "no prayer channels to inspect — their sound was not checked"
