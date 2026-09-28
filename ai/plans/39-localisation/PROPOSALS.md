@@ -177,6 +177,22 @@ why I did not simply take "left align everything" literally:
 - It costs nothing. The boxes stay LTR, the 63 directional style props stay untouched, and the
   30 absolute-positioning call sites are not involved.
 
+**The decisive evidence is in the owner's own code.** `components/prayer/Explanation.tsx` already
+draws the Arabic explanation like this:
+
+```ts
+infoExplanationArabic: {
+  textAlign: 'right',
+  lineHeight: TEXT.lineHeight.arabic,
+}
+```
+
+Right-aligned, with its own line height, inside an LTR box. So the app has already met this problem
+once, on its only Arabic prose surface, and solved it exactly the way the amendment describes. The
+proposal is not a new pattern; it is applying the pattern the app already uses to the surfaces that
+are about to become translatable. Under a literal "left align everything" reading, this shipped
+line would have to be REMOVED, making the Arabic explanation worse than it is today.
+
 So the owner gets the layout simplicity he wanted, and the first column behaves like the second
 column already does.
 
