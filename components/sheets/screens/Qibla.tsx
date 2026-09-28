@@ -4,19 +4,13 @@ import { useSharedValue } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { readPosition, watchHeading } from '@/device/qibla';
-import { COLORS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { qiblaBearing, unwrapAngle } from '@/shared/qibla';
 import { Icon } from '@/shared/types';
 import { setQiblaSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
 
-/**
- * The qibla compass
- *
- * The dial and the live needle land in the step after this one. The bearing itself is read here, so the maths is
- * reachable from production rather than sitting behind a test alone.
- */
 /** A bearing once the position is known, and which of the two blank states to show until then */
 type Reading = { status: 'looking' | 'unavailable' } | { status: 'found'; bearing: number };
 
@@ -26,15 +20,27 @@ const readingText = (reading: Reading): string => {
   return reading.status === 'looking' ? 'Finding your position' : 'Your location is not available right now';
 };
 
+/**
+ * The qibla compass
+ *
+ * The dial and the live needle land in the step after this one. The bearing itself is read here, so the maths is
+ * reachable from production rather than sitting behind a test alone.
+ */
 export default function BottomSheetQibla() {
   const [reading, setReading] = useState<Reading>({ status: 'looking' });
   /** Unbounded on purpose: an interpolation runs between the numbers it is given, so a wrapped angle spins the dial */
   const heading = useSharedValue(0);
   const stopHeading = useRef<(() => void) | null>(null);
 
+  const releaseSensor = useCallback(() => {
+    stopHeading.current?.();
+    stopHeading.current = null;
+  }, []);
+
   // Keyed on presentation, never on mount: every sheet is mounted from launch, so a mount-keyed subscription would
   // run on every device, forever, for a screen the user may never open.
   const handlePresent = useCallback(async () => {
+    releaseSensor();
     setReading({ status: 'looking' });
 
     const position = await readPosition();
@@ -43,12 +49,7 @@ export default function BottomSheetQibla() {
     stopHeading.current = await watchHeading((sample) => {
       heading.value = unwrapAngle(heading.value, sample);
     });
-  }, [heading]);
-
-  const handleDismiss = useCallback(() => {
-    stopHeading.current?.();
-    stopHeading.current = null;
-  }, []);
+  }, [heading, releaseSensor]);
 
   return (
     <Sheet
@@ -59,7 +60,7 @@ export default function BottomSheetQibla() {
       snapPoints={['85%']}
       perfName='sheet_qibla'
       onPresent={handlePresent}
-      onDismiss={handleDismiss}
+      onDismiss={releaseSensor}
       stackBehavior='push'>
       <View style={styles.card}>
         <Text style={styles.hint}>{readingText(reading)}</Text>
@@ -71,7 +72,7 @@ export default function BottomSheetQibla() {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: COLORS.surface.elevated,
-    borderRadius: 16,
+    borderRadius: RADIUS.xxl,
     padding: SPACING.xl,
   },
   hint: {
