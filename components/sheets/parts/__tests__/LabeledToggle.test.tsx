@@ -20,6 +20,13 @@ describe('the Show seconds row in the settings sheet, switched off', () => {
     expect(screen.getByRole('switch', { checked: false })).toBeOnTheScreen();
   });
 
+  // The track carries no text, so without the setting's own label the switch announces only "off"
+  it('names the switch with the setting it controls', async () => {
+    await render(<LabeledToggle label='Show seconds' value={false} onToggle={jest.fn()} />);
+
+    expect(screen.getByRole('switch', { name: 'Show seconds' })).toBeOnTheScreen();
+  });
+
   it('toggles once, with no haptic, when the label is pressed', async () => {
     const onToggle = jest.fn();
     await render(<LabeledToggle label='Show seconds' value={false} onToggle={onToggle} />);

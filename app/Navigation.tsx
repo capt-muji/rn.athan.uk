@@ -106,7 +106,9 @@ export default function Navigation() {
         <View style={styles.buttonWrapper}>
           <MemoSettingsButton />
         </View>
-        <View style={styles.dotsRow}>
+        {/* Decorative: the pager already announces which page it is on, so naming the dots
+            would have a screen reader read the position twice */}
+        <View style={styles.dotsRow} accessibilityElementsHidden importantForAccessibility='no-hide-descendants'>
           <Animated.View style={[styles.dot, dot0OpacityStyle]} />
           <Animated.View style={[styles.dot, dot1OpacityStyle]} />
         </View>
