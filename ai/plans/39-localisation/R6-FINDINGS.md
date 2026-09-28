@@ -49,6 +49,28 @@ as having no standard rendering outside Arabic.
 property of the file. A null with an honest note is actionable; a plausible invention is a silent
 defect nobody could catch.
 
+## The validation that raises confidence in the whole file
+
+R6 never saw this repository's source. Its Arabic explanation strings were sourced independently
+from authority material. Compared against the app's shipped `EXTRAS_EXPLANATIONS_ARABIC`:
+
+| App's shipped string | R6's sourced string | Match |
+| --- | --- | --- |
+| نصف الليل بين المغرب والفجر | same | yes |
+| عند بداية الثلث الأخير من الليل | same | yes |
+| 20 دقيقة قبل الفجر | same | yes |
+| 20 دقيقة بعد الشروق | same | yes |
+| ساعة قبل المغرب (الجمعة فقط) | same | yes |
+
+**Five of five, character for character.**
+
+The app's Arabic was written by a human who reads Arabic, years ago. An independent sourcing pass
+reproduced it exactly. That is the closest thing available to a correctness check on a catalog
+nobody in this session can read, and it materially raises confidence in the other 27 locales.
+
+**Coverage: all 28 locales carry all six daily prayer names non-null.** The nulls are confined to
+the extras, and to `Istijaba` and `Duha` in particular.
+
 ## The measurement that decides the layout
 
 `scripts/catalog-widths.py` measures every locale's widest name, preferring `shortText` where R6
