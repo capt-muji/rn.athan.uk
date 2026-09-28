@@ -139,7 +139,7 @@ export default function BottomSheetSettings() {
             accessibilityLabel="What's new"
             accessibilityRole='button'>
             <View style={styles.infoButton}>
-              <IconView type={Icon.INFO} size={12} color={COLORS.text.primary} />
+              <IconView type={Icon.INFO} size={9} color={COLORS.text.primary} />
             </View>
             <Text style={styles.whatsNewLabel}>What&#8217;s new</Text>
             <Text style={styles.chevron}>›</Text>
@@ -152,7 +152,7 @@ export default function BottomSheetSettings() {
           accessibilityLabel='Help'
           accessibilityRole='button'>
           <View style={styles.infoButton}>
-            <Text style={styles.helpGlyph}>?</Text>
+            <IconView type={Icon.QUESTION} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.whatsNewLabel}>Help</Text>
           <Text style={styles.chevron}>›</Text>
@@ -202,16 +202,6 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
     paddingRight: SPACING.md,
-  },
-  helpGlyph: {
-    color: COLORS.text.primary,
-    fontSize: 12,
-    // Roboto's ? glyph hangs below the metric centre; 6px total lifts it into the circle's middle
-    lineHeight: 20,
-    fontFamily: TEXT.family.medium,
-    textAlignVertical: 'center',
-    includeFontPadding: false,
-    paddingBottom: 6,
   },
   infoButton: {
     width: 20,
