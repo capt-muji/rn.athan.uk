@@ -1,0 +1,704 @@
+{
+  "_meta": {
+    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md.",
+    "sourceSlugs": {
+      "diyanet": "Diyanet Isleri Baskanligi, namazvakitleri.diyanet.gov.tr (tr-TR and en-US pages)",
+      "kemenag": "Kementerian Agama RI schedule criteria and the Indonesian imsakiyah convention it defines (bimasislam.kemenag.go.id)",
+      "nu-online": "NU Online jadwalsholat.nu.or.id (Indonesia)",
+      "jakim": "JAKIM e-Solat label set, corroborated on mufti.pahang.gov.my/solat (Malaysia)",
+      "muis": "Majlis Ugama Islam Singapura, muis.gov.sg (Singapore)",
+      "kmsh": "Komuniteti Mysliman i Shqiperise, namaz.kmsh.al (Albania)",
+      "habous": "Ministere des Habous et des Affaires Islamiques, habous.gov.ma (Morocco, French-language tables)",
+      "islom-uz": "islom.uz namoz vaqtlari taqvimi (Uzbekistan)",
+      "islamhouse-ha": "islamhouse.com Hausa library (Saudi Dawah office)",
+      "vaktija": "vaktija.ba (Bosnian vaktija, Sandzak)",
+      "diyanethaber": "diyanethaber.com.tr (Diyanet-affiliated news outlet)",
+      "gebet": "gebetszeiten.de (Germany)",
+      "mihrab@77e846d": "MihrabHQ/Mihrab src/i18n/locales/*.json at commit 77e846d53a3871496fd9d61d4ef4d5ffbde9e49b (AGPL-3.0)",
+      "al-azan@d89b047": "meypod/al-azan-compose app/src/main/res/values-*/strings.xml at commit d89b047df4955d675072d4e4a44888f3742ff1c3 (AGPL-3.0)",
+      "bahesab": "bahesab.ir Iranian prayer-time portal",
+      "islamqa": "islamqa.info fatwa 112165 (Arabic and English)",
+      "wikipedia-<lang>": "Wikipedia in that language, article on salah/namaz",
+      "wikishia-sw": "sw.wikishia.net Nyakati za Swala",
+      "masjidbox-so": "masjidbox.com Somali mosque-page label set",
+      "muslimthaipost": "prayertimes.muslimthaipost.com (Thai prayer times)",
+      "whitechannel": "whitechannel.tv/solahtimes (Thai Islamic TV calendar)",
+      "namazvaxti-az": "namazvaxti.az / islam.az (Azerbaijan)",
+      "ps-islamery": "ps.islamery.com (Pashto prayer times)",
+      "ps-wikipedia": "ps.wikipedia.org article on prayer times",
+      "ku-wikipedia": "ku.wikipedia.org Nimêj article",
+      "true-time-ta": "ta.true-time.com Tamil prayer times",
+      "frtjislam-ta": "frtjislam.blogspot.com Tamil fiqh page",
+      "islamkavadam-ml": "islamkavadam.com Malayalam",
+      "ml-wikipedia": "ml.wikipedia.org Asr article and prayer navbox",
+      "ha-wikipedia": "ha.wikipedia.org Sallar asuba / isha'i / la'asar articles",
+      "ur-wikipedia": "ur.wikipedia.org Namaz article",
+      "ru-wikipedia": "ru.wikipedia.org Namaz article (Пятикратная ежедневная молитва table)",
+      "zh-wikipedia": "zh.wikipedia.org 禮拜(伊斯蘭教) article; Taiwan religion.moi.gov.tw and PRC mzzjj.gz.gov.cn corroborate the five names",
+      "nl-wikipedia": "nl.wikipedia.org Salat (islam) article",
+      "es-wikipedia": "es.wikipedia.org Salat article",
+      "hi-wikipedia": "hi.wikipedia.org नमाज़ के औक़ात article",
+      "ku-wikipedia": "ku.wikipedia.org Nimêj article",
+      "ps-wikipedia": "ps.wikipedia.org د لمانځه وختونه article",
+      "ilamebidar": "ilamebidar.ir (Persian religious news, Duha/Chasht)",
+      "apple-so": "Qur'aan Af-Soomaali App Store listing (Somali row names)",
+      "youtube-th": "Thai Islamic sermon titles (Duha)",
+      "persian-usage": "ordinary Persian religious usage, no single portal",
+      "nl-usage": "ordinary Dutch Islamic-site usage, no single portal",
+      "derived": "assembled from the sourced names of that language with standard syntax; not itself a citation",
+      "namajersomoysuchi": "namajersomoysuchi.com (Bangladesh)",
+      "muslimbangla": "muslimbangla.com (Bangladesh)",
+      "ismailaga": "ismailaga.org.tr (Turkish mosque foundation)",
+      "existing-app-catalog": "already in shared/constants.ts of this repository"
+    },
+    "confidenceKey": {
+      "high": "national authority, or two independent source classes agree",
+      "medium": "one good source",
+      "low": "inference or AGPL-only catalog support"
+    }
+  },
+
+  "en": {
+    "names": {
+      "Fajr":    { "text": "Fajr", "source": "existing-app-catalog", "confidence": "high", "note": "Source language." },
+      "Sunrise": { "text": "Sunrise", "source": "existing-app-catalog", "confidence": "high", "note": "Astronomical event, not a prayer." },
+      "Dhuhr":   { "text": "Dhuhr", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Asr":     { "text": "Asr", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Magrib":  { "text": "Magrib", "source": "existing-app-catalog", "confidence": "high", "note": "App deliberately uses one h; the rest of the world writes Maghrib. Do not let a translation vendor normalize this." },
+      "Isha":    { "text": "Isha", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Midnight":     { "text": "Midnight", "source": "existing-app-catalog", "confidence": "high", "note": "Islamic midnight, midpoint of Magrib to Fajr." },
+      "Last Third":   { "text": "Last Third", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Suhoor":       { "text": "Suhoor", "source": "existing-app-catalog", "confidence": "high", "note": "The meal, not its deadline." },
+      "Duha":         { "text": "Duha", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Istijaba":     { "text": "Istijaba", "source": "existing-app-catalog", "confidence": "high", "note": "" }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":    { "text": "Halfway between Magrib and Fajr", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Start of the last third of the night": { "text": "Start of the last third of the night", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "20 mins before Fajr":                { "text": "20 mins before Fajr", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "20 mins after Sunrise":              { "text": "20 mins after Sunrise", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "1 hour before Magrib (Fridays only)": { "text": "1 hour before Magrib (Fridays only)", "source": "existing-app-catalog", "confidence": "high", "note": "" }
+    }
+  },
+
+  "ar": {
+    "names": {
+      "Fajr":    { "text": "الفجر", "source": "existing-app-catalog", "confidence": "high", "note": "Mihrab and al-azan agree. Diyanet's own Arabic-facing pages and KMSH's Arabic column use the same." },
+      "Sunrise": { "text": "الشروق", "source": "existing-app-catalog", "confidence": "high", "note": "KMSH prints الشروق beside Lindja; al-azan uses the longer شروق الشمس. The short form is the standard table label." },
+      "Dhuhr":   { "text": "الظهر", "source": "existing-app-catalog", "confidence": "high", "note": "Also صلاة الظهر in full form." },
+      "Asr":     { "text": "العصر", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Magrib":  { "text": "المغرب", "source": "existing-app-catalog", "confidence": "high", "note": "Arabic has the h; the English-only spelling Magrib is a Latin-script issue." },
+      "Isha":    { "text": "العشاء", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Midnight":   { "text": "نصف الليل", "source": "existing-app-catalog", "confidence": "high", "note": "Mihrab uses منتصف الليل. Both are current; نصف الليل matches the app's existing catalog. Iranian tables say نیمه شب شرعی (legal midnight), a Persian-only distinction." },
+      "Last Third": { "text": "آخر ثلث", "source": "existing-app-catalog", "confidence": "medium", "note": "App catalog. The fuller phrasing is الثلث الأخير من الليل (Mihrab: الثلث الأخير). Either is defensible; keep app form for consistency." },
+      "Suhoor":     { "text": "السحور", "source": "mihrab@77e846d", "confidence": "high", "note": "AGPL catalog but also the ordinary Arabic word for the meal; dictionary-level certainty. Distinct from الإمساك, which is the deadline." },
+      "Duha":       { "text": "الضحى", "source": "existing-app-catalog", "confidence": "high", "note": "Quranic sura name, so dictionary-certain." },
+      "Istijaba":   { "text": "استجابة", "source": "existing-app-catalog", "confidence": "medium", "note": "Stands for ساعة الاستجابة, the hour of answered supplication (islamqa.info 112165 uses وقت الاستجابة and الساعة الأخيرة من يوم الجمعة). Keep استجابة as the row label for length; the explanation string carries the full sense." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "نصف الليل بين المغرب والفجر", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "Start of the last third of the night": { "text": "عند بداية الثلث الأخير من الليل", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "20 mins before Fajr":                  { "text": "20 دقيقة قبل الفجر", "source": "existing-app-catalog", "confidence": "high", "note": "Arabic uses Arabic-Indic digits in some houses; Western digits are widely accepted. Verify digit shaping with the RTL plan (R3)." },
+      "20 mins after Sunrise":                { "text": "20 دقيقة بعد الشروق", "source": "existing-app-catalog", "confidence": "high", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "ساعة قبل المغرب (الجمعة فقط)", "source": "existing-app-catalog", "confidence": "high", "note": "" }
+    }
+  },
+
+  "id": {
+    "names": {
+      "Fajr":    { "text": "Subuh", "source": "kemenag", "confidence": "high", "note": "Kemenag criteria and NU Online both print Subuh. Imsak is a separate earlier row (10 min before), never a synonym here. al-azan and Mihrab agree: Subuh." },
+      "Sunrise": { "text": "Terbit", "source": "kemenag", "confidence": "high", "note": "jadwalsholat.org (Kemenag criteria) prints Terbit; NU Online prints Terbit; al-azan prints Terbit. Mihrab uses the longer Matahari terbit (16 chars) with abbreviation Terbt. Terbit alone is the standard table label." },
+      "Dhuhr":   { "text": "Dzuhur", "source": "kemenag", "confidence": "high", "note": "Spelling varies: Dzuhur (jadwalsholat.org, al-azan), Zuhur (NU Online), Dhuhur (Mihrab). All three read the same aloud. Dzuhur is the most common in Kemenag-derived tables." },
+      "Asr":     { "text": "Ashar", "source": "kemenag", "confidence": "high", "note": "Ashar (jadwalsholat.org, NU) vs Asar (al-azan, Mihrab). Both seen; Ashar is more common in Kemenag-derived tables." },
+      "Magrib":  { "text": "Maghrib", "source": "kemenag", "confidence": "high", "note": "Indonesian keeps the h. All four Indonesian sources agree." },
+      "Isha":    { "text": "Isya", "source": "kemenag", "confidence": "high", "note": "Sometimes Isya' with an apostrophe (NU, al-azan). Plain Isya is the cleaner table label." },
+      "Midnight":   { "text": "Tengah malam", "source": "al-azan@d89b047", "confidence": "medium", "note": "al-azan and Mihrab agree. No Kemenag table row exists; this is the ordinary Indonesian phrase." },
+      "Last Third": { "text": "Sepertiga akhir", "source": "mihrab@77e846d", "confidence": "medium", "note": "AGPL-only. The phrase is ordinary Indonesian (se pertiga, one third). Low legal risk but confirm with a speaker." },
+      "Suhoor":     { "text": "Sahur", "source": "kemenag", "confidence": "high", "note": "Universally Sahur in Indonesia. Imsak is the separate deadline row, exactly the distinction the app needs." },
+      "Duha":       { "text": "Dhuha", "source": "nu-online", "confidence": "high", "note": "NU Online prints Dhuha as its own row between Terbit and Zuhur. jadwalsholat.org does too. Rare among authorities; Indonesia and Malaysia are the two that publish it." },
+      "Istijaba":   { "text": "Istijabah", "source": "nu-online", "confidence": "low", "note": "Indonesian religious press says waktu istijabah for the Friday hour of answered dua (detik.com example). Not a standard table row anywhere. Consider leaving the Arabic-English form or dropping the row for id." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Tengah antara Maghrib dan Subuh", "source": "derived", "confidence": "medium", "note": "Assembled from the sourced name set and standard Indonesian syntax (antara X dan Y). Meaning-safe; have a speaker polish." },
+      "Start of the last third of the night": { "text": "Awal sepertiga malam terakhir", "source": "derived", "confidence": "medium", "note": "Derived from sepertiga akhir plus standard syntax." },
+      "20 mins before Fajr":                  { "text": "20 menit sebelum Subuh", "source": "derived", "confidence": "medium", "note": "menit (Jakarta usage) vs menit/menit; Kemenag tables say menit." },
+      "20 mins after Sunrise":                { "text": "20 menit setelah Terbit", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "1 jam sebelum Maghrib (hari Jumat saja)", "source": "derived", "confidence": "medium", "note": "hari Jumat, standard Indonesian capitalization of day names." }
+    }
+  },
+
+  "ur": {
+    "names": {
+      "Fajr":    { "text": "فجر", "source": "ur-wikipedia", "confidence": "high", "note": "Urdu Wikipedia: نماز فجر. Tables print the bare name فجر; Mihrab and al-azan agree." },
+      "Sunrise": { "text": "طلوع آفتاب", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab and al-azan print it identically. The shorter طلوع also circulates. Do not use صبح صادق: that is true dawn, a different concept." },
+      "Dhuhr":   { "text": "ظہر", "source": "ur-wikipedia", "confidence": "high", "note": "Both catalogs agree." },
+      "Asr":     { "text": "عصر", "source": "ur-wikipedia", "confidence": "high", "note": "" },
+      "Magrib":  { "text": "مغرب", "source": "ur-wikipedia", "confidence": "high", "note": "" },
+      "Isha":    { "text": "عشاء", "source": "ur-wikipedia", "confidence": "high", "note": "" },
+      "Midnight":   { "text": "نصف شب", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. al-azan uses آدھی رات. Both are ordinary Urdu; نصف شب is the more formal table label." },
+      "Last Third": { "text": "آخری تہائی", "source": "mihrab@77e846d", "confidence": "medium", "note": "AGPL-only. Ordinary Urdu construction. Confirm with a speaker." },
+      "Suhoor":     { "text": "سحری", "source": "mihrab@77e846d", "confidence": "high", "note": "سحری is the meal; اختیارِ سحری / سحری کا وقت is the deadline. Pakistan tables print سحری for the meal row. Also called Sehri in roman Urdu." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Urdu authority or catalog found that prints a Duha/Chasht row. The Arabic loanwword چاشت exists in religious prose (from Persian chasht). Recommend dropping the row for ur or keeping the Arabic الضحى." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Urdu table or catalog found. Urdu religious prose says دعائیں قبول ہونے کی گھڑی (the hour when duas are accepted), a phrase, not a name. Recommend dropping the row for ur." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "مغرب اور فجر کے درمیان آدھی رات", "source": "derived", "confidence": "medium", "note": "Assembled from sourced names and al-azan's آدھی رات. Have a speaker polish the izafat." },
+      "Start of the last third of the night": { "text": "رات کے آخری تہائی کا آغاز", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "20 mins before Fajr":                  { "text": "فجر سے 20 منٹ پہلے", "source": "derived", "confidence": "medium", "note": "Derived; منٹ is the standard Urdu word for minute." },
+      "20 mins after Sunrise":                { "text": "طلوع آفتاب سے 20 منٹ بعد", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "1 hour before Magrib (Fridays only)":  { "text": "مغرب سے ایک گھنٹہ پہلے (صرف جمعہ)", "source": "derived", "confidence": "medium", "note": "Derived." }
+    }
+  },
+
+  "bn": {
+    "names": {
+      "Fajr":    { "text": "ফজর", "source": "namajersomoysuchi", "confidence": "high", "note": "Bangladeshi tables print ফজর. Mihrab agrees; al-azan agrees." },
+      "Sunrise": { "text": "সূর্যোদয়", "source": "namajersomoysuchi", "confidence": "high", "note": "Both catalogs agree; Bangladeshi papers use it. Astronomical register, as in English." },
+      "Dhuhr":   { "text": "যোহর", "source": "muslimbangla", "confidence": "high", "note": "Spelling varies: যোহর (muslimbangla, al-azan), জোহর (dhakapost), ধুহর (Mihrab). The যোহর/জোহর pair dominates Bangladeshi tables." },
+      "Asr":     { "text": "আসর", "source": "namajersomoysuchi", "confidence": "high", "note": "Also আছর in some papers. Both catalogs print আসর." },
+      "Magrib":  { "text": "মাগরিব", "source": "namajersomoysuchi", "confidence": "high", "note": "All sources agree." },
+      "Isha":    { "text": "ইশা", "source": "namajersomoysuchi", "confidence": "high", "note": "Also এশা in dhakapost. ইশা (al-azan, Mihrab) vs এশা (dhakapost): both widely seen." },
+      "Midnight":   { "text": "মধ্যরাত", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab and al-azan agree. Standard Bengali word." },
+      "Last Third": { "text": "শেষ তৃতীয়াংশ", "source": "mihrab@77e846d", "confidence": "medium", "note": "AGPL-only but ordinary Bengali (tritiyangsh, one third). Bangladeshi tables also say তাহাজ্জুদ for the same row." },
+      "Suhoor":     { "text": "সাহরি", "source": "muslimbangla", "confidence": "high", "note": "muslimbangla prints সাহরী(শেষ) for the deadline; the meal is সাহরি/সেহরি. Mihrab prints সাহরি. Bangladeshi Ramadan calendars say সেহরি. Either সাহরি or সেহরি is correct; সেহরি is the common Ramadan-calendar form." },
+      "Duha":       { "text": "চাশত", "source": "namajersomoysuchi", "confidence": "high", "note": "Bangladeshi nafil table prints চাশত (from Persian chasht) beside ইশরাক. The Arabic loan দোহা is rare in Bengali." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Bengali table or catalog found. Bengali religious prose describes it, never names it in one word. Recommend dropping the row for bn." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "মাগরিব ও ফজরের মধ্যবর্তী সময়", "source": "derived", "confidence": "medium", "note": "Derived; মধ্যবর্তী is the standard Bengali for midway." },
+      "Start of the last third of the night": { "text": "রাতের শেষ তৃতীয়াংশের শুরু", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "20 mins before Fajr":                  { "text": "ফজরের ২০ মিনিট পূর্বে", "source": "derived", "confidence": "medium", "note": "Bengali uses its own digits; verify rendering with the script plan (R3)." },
+      "20 mins after Sunrise":                { "text": "সূর্যোদয়ের ২০ মিনিট পরে", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "1 hour before Magrib (Fridays only)":  { "text": "মাগরিবের ১ ঘণ্টা আগে (শুধুমাত্র শুক্রবার)", "source": "derived", "confidence": "medium", "note": "Derived." }
+    }
+  },
+
+  "tr": {
+    "names": {
+      "Fajr":    { "text": "İmsak", "source": "diyanet", "confidence": "high", "note": "THE trap. Diyanet's Turkish table prints İmsak where the English table prints Fajr (verified on both language versions of the same page, same times). İmsak is the fast's start, which Diyanet treats as the Fajr row label. Sabah is the prayer's name; Mihrab and al-azan split exactly this way (Mihrab: Sabah, al-azan: İmsak). Diyanet's own English page prints Fajr for the same instant." },
+      "Sunrise": { "text": "Güneş", "source": "diyanet", "confidence": "high", "note": "Diyanet prints Güneş. Mihrab prints Gündoğumu (9 chars). Both current; Güneş is the Diyanet table label." },
+      "Dhuhr":   { "text": "Öğle", "source": "diyanet", "confidence": "high", "note": "All three sources agree." },
+      "Asr":     { "text": "İkindi", "source": "diyanet", "confidence": "high", "note": "All three agree." },
+      "Magrib":  { "text": "Akşam", "source": "diyanet", "confidence": "high", "note": "All three agree." },
+      "Isha":    { "text": "Yatsı", "source": "diyanet", "confidence": "high", "note": "All three agree." },
+      "Midnight":   { "text": "Gece yarısı", "source": "diyanet", "confidence": "high", "note": "Diyanet's own app and both catalogs print Gece yarısı." },
+      "Last Third": { "text": "Teheccüd", "source": "al-azan@d89b047", "confidence": "medium", "note": "Turkish Islam names the last third by its prayer: Teheccüd (al-azan prints it; Diyanet TV uses it). A literal translation gecenin son üçte biri is a sentence, not a row label. shortText consideration: Teheccüd is the culturally correct row name." },
+      "Suhoor":     { "text": "Sahur", "source": "diyanet", "confidence": "high", "note": "Sahur is the meal (Mihrab). İmsak is its end. If Fajr is labelled İmsak, labelling Suhoor as Sahur is consistent and correct." },
+      "Duha":       { "text": "Kuşluk", "source": "diyanethaber", "confidence": "high", "note": "diyanethaber.com.tr: Duha veya işrak (kuşluk) namazı. Kuşluk is the Turkish name; İşrak is the rival term for the same 20-minute mark. Either works; Kuşluk is more common." },
+      "Istijaba":   { "text": "İcabet saati", "source": "ismailaga", "confidence": "medium", "note": "İsmail Ağa Camii materials call it İcâbet Saati. Not a Diyanet table row. Turkish convention writes it with a circumflex in older texts (İcâbet); modern spelling drops it." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Akşam ile İmsak arasının ortası", "source": "derived", "confidence": "medium", "note": "Derived from Diyanet's own names; verify with a speaker." },
+      "Start of the last third of the night": { "text": "Gecenin son üçte birinin başlangıcı", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan's own hint string Teheccüd gecenin son üçte birlik kısmıdır attests every word of this." },
+      "20 mins before Fajr":                  { "text": "İmsak'tan 20 dakika önce", "source": "derived", "confidence": "medium", "note": "Uses İmsak as the Fajr anchor, matching the row label. If the row is labelled İmsak this reads naturally." },
+      "20 mins after Sunrise":                { "text": "Güneş doğduktan 20 dakika sonra", "source": "diyanethaber", "confidence": "high", "note": "diyanethaber.com.tr describes the Duha time exactly this way (güneşin doğuşundan yaklaşık 20 dakika sonra)." },
+      "1 hour before Magrib (Fridays only)":  { "text": "Akşam'dan 1 saat önce (yalnızca cuma günleri)", "source": "derived", "confidence": "medium", "note": "Derived." }
+    }
+  },
+
+  "fr": {
+    "names": {
+      "Fajr":    { "text": "Fajr", "source": "habous", "confidence": "high", "note": "Habous prints Alfajr; the Grande Mosquée de Paris and mawaqit print Fajr. Mihrab agrees." },
+      "Sunrise": { "text": "Lever du soleil", "source": "habous", "confidence": "high", "note": "Habous prints Chourouq (the Arabic loan, 8 chars); Mihrab and mawaqit print Lever du soleil (16 chars). French Muslim usage is split. Chourouq is common in mosque calendars; Lever du soleil in apps. shortText: Chourouq." },
+      "Dhuhr":   { "text": "Dhuhr", "source": "habous", "confidence": "high", "note": "Habous prints Dhuhr. Dohr/Ad-dohr also seen (lematin.ma). Dhuhr is the app-neutral choice." },
+      "Asr":     { "text": "Asr", "source": "habous", "confidence": "high", "note": "Habous prints Asr. Al-asr also seen." },
+      "Magrib":  { "text": "Maghrib", "source": "habous", "confidence": "high", "note": "Habous prints Maghrib; Mihrab prints Maghreb (the French word for west/Morocco region). Mosques print Maghrib. Use Maghrib to keep the loanword distinct from the country name." },
+      "Isha":    { "text": "Isha", "source": "habous", "confidence": "high", "note": "Habous prints Ishae; Mihrab prints Icha; mawaqit prints Isha. Isha is the neutral form." },
+      "Midnight":   { "text": "Minuit islamique", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. al-azan prints plain Minuit. The qualifier islamic disambiguates from 00:00; keep it. shortText: Minuit." },
+      "Last Third": { "text": "Dernier tiers", "source": "mihrab@77e846d", "confidence": "medium", "note": "AGPL-only but ordinary French." },
+      "Suhoor":     { "text": "Sahour", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab prints Souhour. French mosque calendars commonly write Sahour or Sohour. No authority prints it; pick Sahour and confirm." },
+      "Duha":       { "text": "Duha", "source": null, "confidence": "low", "note": "No French authority or catalog found. French Muslim texts say prière du Duha or ad-Duha. Safest: keep the transliteration Duha." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No French table or catalog found. French fatwa sites describe l'heure d'exaucement du vendredi, a phrase. Recommend dropping the row for fr or shipping the transliteration Istijaba." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "À mi-chemin entre Maghrib et Fajr", "source": "derived", "confidence": "medium", "note": "Derived; standard French syntax." },
+      "Start of the last third of the night": { "text": "Début du dernier tiers de la nuit", "source": "derived", "confidence": "medium", "note": "Derived from Dernier tiers." },
+      "20 mins before Fajr":                  { "text": "20 min avant le Fajr", "source": "derived", "confidence": "medium", "note": "French abbreviates minutes as min." },
+      "20 mins after Sunrise":                { "text": "20 min après le lever du soleil", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "1 heure avant le Maghrib (vendredis uniquement)", "source": "derived", "confidence": "medium", "note": "" }
+    }
+  },
+
+  "de": {
+    "names": {
+      "Fajr":    { "text": "Fadschr", "source": "al-azan@d89b047", "confidence": "medium", "note": "German-Islamic usage: Fadschr (al-azan, gebetszeiten.de) or Fajr (Mihrab). Fadschr is the German transliteration standard (dsch for j); Fajr is also common in mosque calendars. Both defensible; Fajr is shorter and matches the app's other languages." },
+      "Sunrise": { "text": "Sonnenaufgang", "source": "al-azan@d89b047", "confidence": "high", "note": "Both catalogs print Sonnenaufgang. gebetszeiten.de uses the Arabic loan Schuruk for the row. Sonnenaufgang is the plain-German label; Schuruk is the community label." },
+      "Dhuhr":   { "text": "Dhuhr", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab Dhuhr; al-azan Zuhr; gebetszeiten.de Dhuhr. Dhuhr dominates German mosque calendars." },
+      "Asr":     { "text": "Asr", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab and gebetszeiten.de print Asr. al-azan prints Nachmittagsgebet (19 chars), the translated concept." },
+      "Magrib":  { "text": "Maghrib", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab and gebetszeiten.de print Maghrib. al-azan prints Abendgebet (evening prayer), the translated concept." },
+      "Isha":    { "text": "Ischa", "source": "al-azan@d89b047", "confidence": "medium", "note": "German transliteration: Ischa (al-azan), Isha (Mihrab). German orthography writes sch for sh, so Ischa is the German-standard form; Isha is also widespread." },
+      "Midnight":   { "text": "Mitternacht", "source": "al-azan@d89b047", "confidence": "high", "note": "Both catalogs print Mitternacht. Mihrab's fuller Islamische Mitternacht (21 chars) disambiguates; plain Mitternacht is the row label." },
+      "Last Third": { "text": "Letztes Drittel", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab; al-azan's hint string attestiert das letzte Drittel der Nacht." },
+      "Suhoor":     { "text": "Suhur", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. German Ramadan calendars say Suhur or Sahur. No authority source." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No German authority or catalog found. German texts say Duha-Gebet or Morgengebet (which more often means Fajr). Recommend keeping the transliteration Duha." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No German table or catalog found. German fatwa sites describe die Stunde der Erhörung am Freitag, a phrase. Recommend dropping the row for de." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Genau zwischen Maghrib und Fadschr", "source": "derived", "confidence": "medium", "note": "Derived; halbwegs zwischen is more colloquial. Confirm." },
+      "Start of the last third of the night": { "text": "Beginn des letzten Drittels der Nacht", "source": "al-azan@d89b047", "confidence": "high", "note": "Every word attested in al-azan's German hint string." },
+      "20 mins before Fajr":                  { "text": "20 Min. vor dem Fadschr", "source": "derived", "confidence": "medium", "note": "German abbreviates Minuten as Min." },
+      "20 mins after Sunrise":                { "text": "20 Min. nach Sonnenaufgang", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "1 Stunde vor Maghrib (nur freitags)", "source": "derived", "confidence": "medium", "note": "" }
+    }
+  },
+
+  "fa": {
+    "names": {
+      "Fajr":    { "text": "اذان صبح", "source": "bahesab", "confidence": "high", "note": "Iranian tables print اذان صبح (badesaba, tala, tabdil). The bare word فجر is the Quranic name (al-azan prints it). اذان صبح is the row label users expect; فجر is the short form." },
+      "Sunrise": { "text": "طلوع آفتاب", "source": "bahesab", "confidence": "high", "note": "All Iranian portals agree. al-azan prints the shorter طلوع. Either works; طلوع آفتاب is the full table label." },
+      "Dhuhr":   { "text": "اذان ظهر", "source": "bahesab", "confidence": "high", "note": "Iranian tables print اذان ظهر; the bare form is ظهر (al-azan)." },
+      "Asr":     { "text": "اذان عصر", "source": "badesaba", "confidence": "high", "note": "badesaba lists اذان عصر; some portals omit this row and print only غروب آفتاب next. Attested." },
+      "Magrib":  { "text": "اذان مغرب", "source": "bahesab", "confidence": "high", "note": "Iranian tables distinguish غروب آفتاب (sunset) from اذان مغرب (the prayer, some minutes later). The app's single Magrib row is the prayer, so اذان مغرب is correct." },
+      "Isha":    { "text": "اذان عشا", "source": "badesaba", "confidence": "high", "note": "Bare form عشاء (al-azan). Iranian convention writes عشا without hamza." },
+      "Midnight":   { "text": "نیمه شب شرعی", "source": "bahesab", "confidence": "high", "note": "All Iranian portals print نیمه شب شرعی (legal midnight). The qualifier شرعی is mandatory in Persian to distinguish from 00:00 clock midnight." },
+      "Last Third": { "text": "ثلث آخر شب", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan's Persian hint: تهجد ثلث آخر شب است. Iranian sites also say آخر شب for the same instant. ثلث آخر شب is precise." },
+      "Suhoor":     { "text": "سحری", "source": "persian-usage", "confidence": "medium", "note": "Persian religious press uses سحری for the meal. No portal prints a سحری row outside Ramadan. The deadline is اذان صبح, so the split matches the app's Suhoor-vs-Fajr distinction." },
+      "Duha":       { "text": "نماز چاشت", "source": "ilamebidar", "confidence": "medium", "note": "Persian religious press: نماز چاشت یا ضحی. چاشت (from Persian chasht) is the Iranian name; ضحی is the Arabic loan. Either works." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Persian portal prints it. Shia sources place the Friday answered-hour differently, so the Saudi-fixed definition may not suit the Iranian calendar anyway. Recommend dropping the row for fa." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "نیمه شب بین مغرب و صبح", "source": "derived", "confidence": "medium", "note": "Assembled from the app's existing Arabic phrasing and the sourced Persian names. Confirm with a speaker." },
+      "Start of the last third of the night": { "text": "شروع ثلث آخر شب", "source": "al-azan@d89b047", "confidence": "high", "note": "Built from al-azan's attested ثلث آخر شب." },
+      "20 mins before Fajr":                  { "text": "20 دقیقه قبل از اذان صبح", "source": "derived", "confidence": "medium", "note": "Persian uses Persian digits; verify with script plan (R3)." },
+      "20 mins after Sunrise":                { "text": "20 دقیقه بعد از طلوع آفتاب", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "یک ساعت قبل از اذان مغرب (فقط جمعه‌ها)", "source": "derived", "confidence": "medium", "note": "" }
+    }
+  },
+
+  "ms": {
+    "names": {
+      "Fajr":    { "text": "Subuh", "source": "jakim", "confidence": "high", "note": "JAKIM e-Solat label set, verified on mufti.pahang.gov.my (JAKIM data): Subuh. MUIS Singapore uses Subuh too. Imsak is the separate earlier row (10 min), never a synonym." },
+      "Sunrise": { "text": "Syuruk", "source": "jakim", "confidence": "high", "note": "JAKIM prints Syuruk (also spelled Syuruq). The astronomical alternative is Matahari terbit; Syuruk is the standard Malaysian table label." },
+      "Dhuhr":   { "text": "Zohor", "source": "jakim", "confidence": "high", "note": "JAKIM prints Zohor (also Zuhr/Dhuhr in some Malaysian apps). MUIS prints Zohor." },
+      "Asr":     { "text": "Asar", "source": "jakim", "confidence": "high", "note": "JAKIM prints Asar; also spelled Asar/Ashar. Mihrab's id locale uses Asar for the same concept." },
+      "Magrib":  { "text": "Maghrib", "source": "jakim", "confidence": "high", "note": "JAKIM and MUIS print Maghrib." },
+      "Isha":    { "text": "Isyak", "source": "jakim", "confidence": "high", "note": "JAKIM prints Isyak; MUIS prints Isyak. (Indonesian is Isya; the k is the Malaysian marker.)" },
+      "Midnight":   { "text": "Tengah malam", "source": "al-azan@d89b047", "confidence": "medium", "note": "Malaysian apps print Tengah malam. No JAKIM row. Ordinary Malay phrase, same as Indonesian." },
+      "Last Third": { "text": "Sepertiga akhir malam", "source": "derived", "confidence": "low", "note": "No authority or catalog found for ms specifically. Indonesian Sepertiga akhir (Mihrab) plus malam is the obvious Malay construction; needs a speaker." },
+      "Suhoor":     { "text": "Sahur", "source": "jakim", "confidence": "high", "note": "Malaysian Ramadan calendars universally print Sahur; Imsak is the separate deadline row in JAKIM's set." },
+      "Duha":       { "text": "Dhuha", "source": "jakim", "confidence": "high", "note": "JAKIM-family tables print Dhuha as its own row between Syuruk and Zohor (verified: mufti.pahang.gov.my). Malaysia and Indonesia are the two authorities that publish it." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Malaysian table or catalog found. Malay religious press says waktu mustajab (the accepted time) for the Friday hour. Recommend dropping the row or using Waktu mustajab after speaker review." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Pertengahan antara Maghrib dan Subuh", "source": "derived", "confidence": "medium", "note": "Derived; standard Malay syntax." },
+      "Start of the last third of the night": { "text": "Permulaan sepertiga akhir malam", "source": "derived", "confidence": "low", "note": "Derived; same caveat as the name." },
+      "20 mins before Fajr":                  { "text": "20 minit sebelum Subuh", "source": "derived", "confidence": "medium", "note": "" },
+      "20 mins after Sunrise":                { "text": "20 minit selepas Syuruk", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "1 jam sebelum Maghrib (hari Jumaat sahaja)", "source": "derived", "confidence": "medium", "note": "" }
+    }
+  },
+
+  "sw": {
+    "names": {
+      "Fajr":    { "text": "Alfajiri", "source": "wikishia-sw", "confidence": "high", "note": "Swahili Wikishia and the bongoclass hadith translation both use Alfajiri. Note bongoclass spells it Alfajir; Alfajiri (the dawn) is the standard Swahili word. al-azan keeps Fajr. East African mosque calendars print Alfajiri." },
+      "Sunrise": { "text": "Macheo", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan prints Macheo (also tama). Standard Swahili for sunrise. al-azan's Swahili midnight string confirms machweo (sunset) vs macheo (sunrise) distinction: Machweo hadi Macheo." },
+      "Dhuhr":   { "text": "Adhuhuri", "source": "wikishia-sw", "confidence": "high", "note": "Swahili Wikishia prints Adhuhuri; bongoclass prints Adhuhuri. Also Dhuhur. The doubled form with the Arabic article (Ad-) is the Swahili convention: Adhuhuri, Alasiri, Magharibi." },
+      "Asr":     { "text": "Alasiri", "source": "wikishia-sw", "confidence": "high", "note": "Wikishia prints Alasiri; bongoclass prints Al'asiri/Alasiri. Standard Swahili afternoon-prayer name." },
+      "Magrib":  { "text": "Magharibi", "source": "wikishia-sw", "confidence": "high", "note": "Wikishia prints Magharibi; bongoclass prints Magharibi. al-azan prints Magharibi. Same word as the Swahili compass direction (west), so it reads naturally." },
+      "Isha":    { "text": "Isha", "source": "wikishia-sw", "confidence": "high", "note": "Wikishia prints Isha; bongoclass prints Ishai. Both seen; Isha matches the app's English." },
+      "Midnight":   { "text": "Katikati ya usiku", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan prints Katikati ya usiku (middle of the night)." },
+      "Last Third": { "text": "Theluthi ya mwisho ya usiku", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan's hint string: Tahajjud ni theluthi ya mwisho ya usiku. Attested verbatim." },
+      "Suhoor":     { "text": null, "source": null, "confidence": "low", "note": "No Swahili authority or catalog found for the meal row. Swahili Ramadan usage says mlo wa usiku wa manane or the Arabic Suhur. Recommend keeping the transliteration Suhur after speaker review." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Swahili authority or catalog found. The Arabic loan Duha is used in Swahili religious radio. Keep the transliteration Duha." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Swahili table or catalog found. Swahili describes it as saa ya maombi kukubalika Ijumaa. Recommend dropping the row for sw." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Katikati ya Magharibi na Alfajiri", "source": "derived", "confidence": "medium", "note": "Derived; katikati ya X na Y is the standard construction." },
+      "Start of the last third of the night": { "text": "Mwanzo wa theluthi ya mwisho ya usiku", "source": "derived", "confidence": "high", "note": "Assembled from al-azan's attested phrase plus mwanzo wa (start of)." },
+      "20 mins before Fajr":                  { "text": "Dakika 20 kabla ya Alfajiri", "source": "derived", "confidence": "medium", "note": "Swahili puts the number after dakika; kabla ya is before." },
+      "20 mins after Sunrise":                { "text": "Dakika 20 baada ya Macheo", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "Saa 1 kabla ya Magharibi (Ijumaa tu)", "source": "derived", "confidence": "medium", "note": "Ijumaa is Friday; tu is only." }
+    }
+  },
+
+  "ha": {
+    "names": {
+      "Fajr":    { "text": "Sallar Asuba", "source": "islamhouse-ha", "confidence": "high", "note": "islamhouse Hausa and Hausa Wikipedia: Sallar asuba (dawn prayer). Bare form Asuba works as the row label; Hausa convention is Sallar X (the prayer of X)." },
+      "Sunrise": { "text": "Fitowar rana", "source": "islamhouse-ha", "confidence": "high", "note": "islamhouse uses fitowar rana repeatedly (sunrise) as the boundary of the dawn prayer. Astronomical register, not a prayer name." },
+      "Dhuhr":   { "text": "Sallar Azahar", "source": "islamhouse-ha", "confidence": "high", "note": "islamhouse and Hausa Wikipedia: Azahar. Hausa keeps the Persian-derived name (from zuhr via Persian)." },
+      "Asr":     { "text": "Sallar Asora", "source": "ha-wikipedia", "confidence": "medium", "note": "Hausa Wikipedia calls it La'asar (also Sallar La'asar); islamhouse prose says la'asar. Asora appears in Hausa Islamic lists. La'asar is the more common Hausa name; category pages use both." },
+      "Magrib":  { "text": "Sallar Magriba", "source": "ha-wikipedia", "confidence": "medium", "note": "Hausa Wikipedia article title is Maghrib with prose Magrib; the Hausa form is Magriba or La'asar rinjeya. Northern Nigerian calendars print Magriba." },
+      "Isha":    { "text": "Sallar Isha'i", "source": "ha-wikipedia", "confidence": "high", "note": "Hausa Wikipedia: Sallar isha'i. The apostrophe is part of the spelling." },
+      "Midnight":   { "text": null, "source": null, "confidence": "low", "note": "No Hausa table found printing a midnight row. Hausa says tsakar dare (midnight). Not attested in an Islamic-time context; needs a speaker." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "No Hausa source found for the last-third concept. Tahajjud is the name used in Hausa religious radio. Needs a speaker." },
+      "Suhoor":     { "text": null, "source": null, "confidence": "low", "note": "Hausa Ramadan usage says azumin rana with the pre-dawn meal called shan izza or sallar asuba time. Not attested as a table row. Needs a speaker." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Hausa source found. The Arabic loan Duha appears in Hausa religious audio. Needs a speaker." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Hausa source found. Recommend dropping the row for ha." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the name set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins after Sunrise":                { "text": null, "source": null, "confidence": "low", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": null, "source": null, "confidence": "low", "note": "" }
+    }
+  },
+
+  "so": {
+    "names": {
+      "Fajr":    { "text": "Subax", "source": "masjidbox-so", "confidence": "high", "note": "Somali mosque page (masjidbox, ISWA) prints Subax. Somali tawkit.net mirror prints Subax. The Arabic loan Fajr also circulates; Subax is the Somali word." },
+      "Sunrise": { "text": "Waaberi", "source": "masjidbox-so", "confidence": "medium", "note": "masjidbox prints Waaberi for the sunrise row. Also qorrax soobaxa (sun rising) in Somali tables. Waaberi is the compact table label." },
+      "Dhuhr":   { "text": "Duhur", "source": "masjidbox-so", "confidence": "high", "note": "masjidbox prints Duhur; tawkit prints Dhuhr." },
+      "Asr":     { "text": "Casar", "source": "masjidbox-so", "confidence": "high", "note": "masjidbox prints Casar; tawkit prints Casr. Casar is the fuller Somali form." },
+      "Magrib":  { "text": "Maqrib", "source": "masjidbox-so", "confidence": "high", "note": "masjidbox prints Maqrib; tawkit prints Maghrib. Somali drops the gh for q; Maqrib is the Somali spelling." },
+      "Isha":    { "text": "Cishaa'i", "source": "masjidbox-so", "confidence": "high", "note": "masjidbox prints Cishaa'i (with the Somali c for ayn). Apostrophe is part of the spelling." },
+      "Midnight":   { "text": "Habeennimo dhexe", "source": null, "confidence": "low", "note": "Ordinary Somali for midnight is hora hose/habeen dhexe. Not attested in an Islamic-time table. Needs a speaker." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "Not found. Somali religious audio uses Tahajjud. Needs a speaker." },
+      "Suhoor":     { "text": "Sahri", "source": "apple-so", "confidence": "low", "note": "The Somali Qur'aan Af-Soomaali app listing shows Sahri among its row names (Apple App Store). Single app source; also needs a better slug registered if promoted." },
+      "Duha":       { "text": "Duha", "source": "apple-so", "confidence": "low", "note": "Same Somali app listing shows Duha (Chast). Single app source." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Somali source found. Recommend dropping the row for so." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the name set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins after Sunrise":                { "text": null, "source": null, "confidence": "low", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": null, "source": null, "confidence": "low", "note": "" }
+    }
+  },
+
+  "ps": {
+    "names": {
+      "Fajr":    { "text": "د سهار لمونځ", "source": "ps-islamery", "confidence": "medium", "note": "ps.wikipedia describes د سهار د لمانځه وخت. islamery.ps prints the Arabic loan صبح for the row. Two conventions: Arabic loan (فجر/صبح) or Pashto phrase. Tables prefer the short loan." },
+      "Sunrise": { "text": "لمرختنه", "source": "ps-islamery", "confidence": "high", "note": "ps.islamery prints لمرختنه for the sunrise row. Attested exactly." },
+      "Dhuhr":   { "text": "د غرمې لمونځ", "source": "ps-islamery", "confidence": "high", "note": "islamery prints غرمې لمونځ. The bare time word is غرمې." },
+      "Asr":     { "text": "د ماسپښين لمونځ", "source": "ps-islamery", "confidence": "high", "note": "islamery prints ماسپښين لمونځ. Note: Pashto ماسپښين means afternoon; مازديګر (from Persian) is the rival term for the same prayer. Tables use either." },
+      "Magrib":  { "text": "د ماښام لمونځ", "source": "ps-islamery", "confidence": "high", "note": "islamery prints ماښام لمونځ. From Persian khwab-maaz; means evening." },
+      "Isha":    { "text": "د ماسختن لمونځ", "source": "ps-islamery", "confidence": "high", "note": "islamery prints ماسخوتن لمونځ (note the o vs kh variance: ماسخوتن/ماسختن both appear). Also عشاء kept in Arabic script." },
+      "Midnight":   { "text": null, "source": null, "confidence": "low", "note": "No Pashto table row found. Pashto says د شپې نيمه. Needs a speaker." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "No Pashto source found for the row. Tahajjud is the circulating name. Needs a speaker." },
+      "Suhoor":     { "text": null, "source": null, "confidence": "low", "note": "Pashto Ramadan calendars say سهاري (sahari). Not attested in a table I could read. Needs a speaker." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Pashto source found. Recommend keeping the Arabic الضحى or dropping." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Pashto source found. Recommend dropping the row for ps." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the name set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins after Sunrise":                { "text": null, "source": null, "confidence": "low", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": null, "source": null, "confidence": "low", "note": "" }
+    }
+  },
+
+  "ku": {
+    "names": {
+      "Fajr":    { "text": "Sibe", "source": "ku-wikipedia", "confidence": "medium", "note": "ku.wikipedia (Kurmanji) Nimêj table: Sibe. Alternative: dema sibê. Turkish-influenced Kurmanji speakers say Sabah (from Turkish); Sibe is the Kurmanji word." },
+      "Sunrise": { "text": "Derketina rojê", "source": "ku-wikipedia", "confidence": "low", "note": "ku.wikipedia attests derketina rojê (rising of the sun) in prose. No table row found. Kurmanji also uses Rojhilat (east, where the sun rises) loosely for the morning prayer, which is ambiguous. Needs a speaker." },
+      "Dhuhr":   { "text": "Nîvro", "source": "ku-wikipedia", "confidence": "high", "note": "ku.wikipedia table: Nîvro." },
+      "Asr":     { "text": "Esir", "source": "ku-wikipedia", "confidence": "high", "note": "ku.wikipedia table: Esir / Piştî Nivro." },
+      "Magrib":  { "text": "Mexreb", "source": "ku-wikipedia", "confidence": "high", "note": "ku.wikipedia table: Mexreb / Êvar. Two names circulate: the Arabic loan Mexreb and the Kurmanji word Êvar (evening)." },
+      "Isha":    { "text": "Eşa", "source": "ku-wikipedia", "confidence": "high", "note": "ku.wikipedia table: Eşa / Şev. Same duality: Arabic loan vs Kurmanji Şev (night)." },
+      "Midnight":   { "text": "Nîveşev", "source": null, "confidence": "low", "note": "Kurmanji for midnight is nîvşev / nîveşev. Not attested in an Islamic-time table. Needs a speaker." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "Not found. Needs a speaker." },
+      "Suhoor":     { "text": null, "source": null, "confidence": "low", "note": "Not found. Kurmanji Ramadan usage says xwarina seherê. Needs a speaker." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "Not found. Recommend dropping the row for ku." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "Not found. Recommend dropping the row for ku." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the name set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins after Sunrise":                { "text": null, "source": null, "confidence": "low", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": null, "source": null, "confidence": "low", "note": "" }
+    }
+  },
+
+  "uz": {
+    "names": {
+      "Fajr":    { "text": "Bomdod", "source": "islom-uz", "confidence": "high", "note": "islom.uz prints Бомдод (Cyrillic) / Bomdod (Latin). Also Tong (dawn) on praytime.uz. Bomdod is the canonical Uzbek name; Tong is praytime.uz's label for the same row." },
+      "Sunrise": { "text": "Quyosh", "source": "islom-uz", "confidence": "high", "note": "islom.uz prints Қуёш. praytime.uz agrees (Quyosh)." },
+      "Dhuhr":   { "text": "Peshin", "source": "islom-uz", "confidence": "high", "note": "Both portals agree." },
+      "Asr":     { "text": "Asr", "source": "islom-uz", "confidence": "high", "note": "Both portals print Asr." },
+      "Magrib":  { "text": "Shom", "source": "islom-uz", "confidence": "high", "note": "Both portals print Shom. Uzbek Ramadan tables annotate it Iftorlik (iftar time), exactly parallel to Bomdod's Saharlik annotation." },
+      "Isha":    { "text": "Xufton", "source": "islom-uz", "confidence": "high", "note": "Both portals print Xufton (also Xufton)." },
+      "Midnight":   { "text": null, "source": null, "confidence": "low", "note": "Neither Uzbek portal prints a midnight row. Uzbek says yarim kecha. Needs a speaker." },
+      "Last Third": { "text": "Tahajjud", "source": "islom-uz", "confidence": "high", "note": "Both portals print Tahajjud as a row (01:24 in the data), the same convention as Turkish." },
+      "Suhoor":     { "text": "Saharlik", "source": "islom-uz", "confidence": "high", "note": "islom.uz annotates Bomdod with Saharlik (the fast-start). namozvaqti.uz prints Saharlik as its own row label. The meal itself is saharlik ovqati; the deadline word is Saharlik. For the app's Suhoor row (deadline convention), Saharlik is correct." },
+      "Duha":       { "text": "Ishroq", "source": "islom-uz", "confidence": "high", "note": "islom.uz prints Ишроқ as its own row and defines it exactly as the app defines Duha: 20 minutes after sunrise (Кун чиққандан сўнг 20 дақиқа ўтгач). This is the best authority match for Duha in any language." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Uzbek source found. Recommend dropping the row for uz." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Shom va Bomdod o'rtasidagi yarim kecha", "source": "derived", "confidence": "low", "note": "Derived; o'rtasida is between. Needs a speaker." },
+      "Start of the last third of the night": { "text": "Tungan so'nggi uchdan birining boshlanishi", "source": "derived", "confidence": "low", "note": "Derived; tunda (in the night), uchdan biri (one third). Needs a speaker." },
+      "20 mins before Fajr":                  { "text": "Bomdoddan 20 daqiqa oldin", "source": "islom-uz", "confidence": "high", "note": "Every word attested: daqiqa on islom.uz, oldin is standard." },
+      "20 mins after Sunrise":                { "text": "Quyosh chiqqandan 20 daqiqa keyin", "source": "islom-uz", "confidence": "high", "note": "islom.uz's Ishroq definition says Кун чиққандан сўнг 20 дақиқа ўтгач (after the sun rises, 20 minutes later). Latin-script equivalent." },
+      "1 hour before Magrib (Fridays only)":  { "text": "Shomdan 1 soat oldin (faqat juma kunlari)", "source": "derived", "confidence": "medium", "note": "Derived; soat is hour, juma is Friday." }
+    }
+  },
+
+  "az": {
+    "names": {
+      "Fajr":    { "text": "Sübh", "source": "namazvaxti-az", "confidence": "high", "note": "namazvaxti.az and islam.az print Sübh. hacishahin.az prints Fəcr. Sübh is the standard Azerbaijani table label; Fəcr the rival." },
+      "Sunrise": { "text": "Gün çıxır", "source": "metbuat-az", "confidence": "high", "note": "metbuat.az and islam.az print Gün çıxır. namazvaxti.az prints Günəş. Both current; Gün çıxır is more explicit, Günəş shorter." },
+      "Dhuhr":   { "text": "Zöhr", "source": "namazvaxti-az", "confidence": "high", "note": "All three Azerbaijani sources print Zöhr." },
+      "Asr":     { "text": "Əsr", "source": "namazvaxti-az", "confidence": "high", "note": "All three print Əsr." },
+      "Magrib":  { "text": "Məğrib", "source": "namazvaxti-az", "confidence": "high", "note": "All three print Məğrib. Note the ğ (g with tilde), Azerbaijani's letter for gh." },
+      "Isha":    { "text": "İşa", "source": "namazvaxti-az", "confidence": "high", "note": "All three print İşa." },
+      "Midnight":   { "text": "Gecə yarısı", "source": "islam-az", "confidence": "high", "note": "islam.az prints Gecə yarısı as its own row. Same form as Turkish." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "No Azerbaijani table row found. Azerbaijani Islamic sites say gecənin son üçdə biri. Needs a speaker." },
+      "Suhoor":     { "text": "Səhər yeməyi", "source": null, "confidence": "low", "note": "Azerbaijani Ramadan usage: sübh yeməyi / sahur. Not attested in a table. Needs a speaker." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Azerbaijani source found. Recommend dropping the row for az." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Azerbaijani source found. Recommend dropping the row for az." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the extras set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": "Sübh'dən 20 dəqiqə əvvəl", "source": "derived", "confidence": "medium", "note": "Derived; dəqiqə is minute, əvvəl is before." },
+      "20 mins after Sunrise":                { "text": "Gün çıxandan 20 dəqiqə sonra", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "1 hour before Magrib (Fridays only)":  { "text": "Məğrib'dən 1 saat əvvəl (yalnız cümə günləri)", "source": "derived", "confidence": "medium", "note": "Derived." }
+    }
+  },
+
+  "ta": {
+    "names": {
+      "Fajr":    { "text": "ஃபஜ்ர்", "source": "true-time-ta", "confidence": "high", "note": "Tamil prayer-time sites print ஃபஜ்ர் (true-time.com) or ஃபஜர். Tamil Muslim usage keeps the Arabic loan. The religious alternative is சுப்ஹு (Subuh)." },
+      "Sunrise": { "text": "சூரிய உதயம்", "source": "true-time-ta", "confidence": "high", "note": "Standard Tamil for sunrise, astronomical register. Tamil Nadu mosque calendars print it in full." },
+      "Dhuhr":   { "text": "ழுஹர்", "source": "true-time-ta", "confidence": "high", "note": "true-time prints ழுஹ்ர். Tamil Muslim usage also writes நமது தோஹ்ர் variants; ழுஹர் is the standard transliteration. (Note ழ, the retroflex l, is the Tamil letter used for z-l sounds in Arabic loans.)" },
+      "Asr":     { "text": "அஸ்ர்", "source": "true-time-ta", "confidence": "high", "note": "true-time prints அஸ்ர். frtjislam prose uses அஸ்ர் too." },
+      "Magrib":  { "text": "மஃகிரிப்", "source": "true-time-ta", "confidence": "high", "note": "true-time prints மக்ரிப்; religious pages print மஃகிரிப் with the ஃ (aytam) for ayn. Sri Lankan Tamil tables print மக்ரிப்." },
+      "Isha":    { "text": "இஷா", "source": "true-time-ta", "confidence": "high", "note": "true-time prints இஷா." },
+      "Midnight":   { "text": null, "source": null, "confidence": "low", "note": "No Tamil table row found. Tamil says நள்ளிரவு. Needs a speaker." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "No Tamil table row found. Tamil Tahajjud (தஹஜ்ஜுத்) is the circulating name. Needs a speaker." },
+      "Suhoor":     { "text": "நோன்பு உணவு", "source": null, "confidence": "low", "note": "Tamil Ramadan calendars say நோன்பு உணவு (fast food, literally) or the Arabic Sahar. Not attested in a table I could read. Needs a speaker." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Tamil source found. Tamil religious pages say துஹா. Needs a speaker." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Tamil source found. Recommend dropping the row for ta." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the extras set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": "ஃபஜ்ருக்கு 20 நிமிடம் முன்பு", "source": "derived", "confidence": "medium", "note": "Derived; நிமிடம் is minute, முன்பு is before. Tamil places digits in Western form or Tamil numerals; verify." },
+      "20 mins after Sunrise":                { "text": "சூரிய உதயத்திற்கு 20 நிமிடம் பின்பு", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "1 hour before Magrib (Fridays only)":  { "text": "மஃகிரிபுக்கு 1 மணி நேரத்திற்கு முன்பு (வெள்ளிக்கிழமை மட்டும்)", "source": "derived", "confidence": "medium", "note": "Derived; வெள்ளிக்கிழமை is Friday." }
+    }
+  },
+
+  "ml": {
+    "names": {
+      "Fajr":    { "text": "സുബഹ്", "source": "ml-wikipedia", "confidence": "high", "note": "ml.wikipedia navbox: സുബഹ്. Kerala Muslim usage says സുബഹ് (Subah) rather than the Arabic ഫജർ; both understood." },
+      "Sunrise": { "text": "സൂര്യോദയം", "source": "ml-wikipedia", "confidence": "high", "note": "Standard Malayalam, astronomical register." },
+      "Dhuhr":   { "text": "ളുഹർ", "source": "ml-wikipedia", "confidence": "high", "note": "ml.wikipedia prints ളുഹർ (and ദുഹർ in the navbox). The retroflex ള is the Malayalam letter used for the Arabic d-emphatic in this loan." },
+      "Asr":     { "text": "അസർ", "source": "ml-wikipedia", "confidence": "high", "note": "ml.wikipedia article title: അസ്ർ, body അസർ." },
+      "Magrib":  { "text": "മഗ്രിബ്", "source": "ml-wikipedia", "confidence": "high", "note": "ml.wikipedia navbox: മഗ്രിബ്." },
+      "Isha":    { "text": "ഇശാ", "source": "ml-wikipedia", "confidence": "high", "note": "ml.wikipedia navbox: ഇശാ (also ഇശാഉ)." },
+      "Midnight":   { "text": null, "source": null, "confidence": "low", "note": "No Malayalam table row found. Malayalam says അർദ്ധരാത്രി. Needs a speaker." },
+      "Last Third": { "text": "തഹജ്ജുദ്", "source": "ml-wikipedia", "confidence": "medium", "note": "ml.wikipedia lists തഹജ്ജുദ് among the sunnah prayers; the last-third concept goes by that name in Malayalam. Not a table row per se." },
+      "Suhoor":     { "text": null, "source": null, "confidence": "low", "note": "Kerala Ramadan calendars say സഹർ (Sahar). Not attested in a table I could read. Needs a speaker." },
+      "Duha":       { "text": "ളുഹാ", "source": "ml-wikipedia", "confidence": "medium", "note": "ml.wikipedia navbox lists ളുഹാ among sunnah prayers. Attested." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Malayalam source found. Recommend dropping the row for ml." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the extras set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": "സുബഹിന് 20 മിനിറ്റ് മുമ്പ്", "source": "derived", "confidence": "medium", "note": "Derived; മിനിറ്റ് is minute, മുമ്പ് is before." },
+      "20 mins after Sunrise":                { "text": "സൂര്യോദയത്തിന് 20 മിനിറ്റ് ശേഷം", "source": "derived", "confidence": "medium", "note": "Derived; ശേഷം is after." },
+      "1 hour before Magrib (Fridays only)":  { "text": "മഗ്രിബിന് 1 മണിക്കൂർ മുമ്പ് (വെള്ളിയാഴ്ച മാത്രം)", "source": "derived", "confidence": "medium", "note": "Derived; വെള്ളിയാഴ്ച is Friday." }
+    }
+  },
+
+  "hi": {
+    "names": {
+      "Fajr":    { "text": "फज्र", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab and al-azan both print फज्र. Hindi Wikipedia uses फज्र की नमाज़. The Arabic loan dominates; Hindutva-neutral Hindi sometimes prefers सुबह (morning)." },
+      "Sunrise": { "text": "सूर्योदय", "source": "mihrab@77e846d", "confidence": "high", "note": "Both catalogs print सूर्योदय. Standard Hindi, astronomical register." },
+      "Dhuhr":   { "text": "ज़ुहर", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan prints ज़ुहर (with nukta z); Mihrab prints धुहर. Hindi Wikipedia says जुहर/ज़ुहर. The nukta form ज़ुहर is standard Urdu-Hindi." },
+      "Asr":     { "text": "असर", "source": "mihrab@77e846d", "confidence": "high", "note": "Both catalogs print असर. Hindi Wikipedia अस्र." },
+      "Magrib":  { "text": "मग़रिब", "source": "mihrab@77e846d", "confidence": "high", "note": "Both print मग़रिब (with nukta g). Hindi Wikipedia मगरिब/मग़रिब." },
+      "Isha":    { "text": "ईशा", "source": "mihrab@77e846d", "confidence": "high", "note": "Both print ईशा." },
+      "Midnight":   { "text": "इस्लामी आधी रात", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. Plain आधी रात also works (al-azan prints मध्यरात्रि). The qualifier इस्लामी disambiguates." },
+      "Last Third": { "text": "अंतिम तिहाई", "source": "mihrab@77e846d", "confidence": "medium", "note": "AGPL-only but ordinary Hindi (तिहाई = one third)." },
+      "Suhoor":     { "text": "सहरी", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab prints सहरी. Hindi Ramadan calendars say सेहरी. Both are the Urdu-Hindi word for the meal." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Hindi authority or catalog found. Hindi religious pages say चाश्त (from Persian) or दुहा. Recommend keeping the transliteration or dropping." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Hindi table or catalog found. Hindi describes it as जुमे की दुआ कबूल होने की घंटी. Recommend dropping the row for hi." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "मग़रिब और फज्र के बीच का मध्य बिंदु", "source": "derived", "confidence": "medium", "note": "Derived; के बीच is between, मध्य बिंदु is midpoint." },
+      "Start of the last third of the night": { "text": "रात के अंतिम तिहाई की शुरुआत", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "20 mins before Fajr":                  { "text": "फज्र से 20 मिनट पहले", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "20 mins after Sunrise":                { "text": "सूर्योदय के 20 मिनट बाद", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "1 hour before Magrib (Fridays only)":  { "text": "मग़रिब से 1 घंटा पहले (केवल शुक्रवार)", "source": "derived", "confidence": "medium", "note": "Derived; शुक्रवार is Friday." }
+    }
+  },
+
+  "ru": {
+    "names": {
+      "Fajr":    { "text": "Фаджр", "source": "ru-wikipedia", "confidence": "high", "note": "ru.wikipedia table: Фаджр. Mihrab agrees. Russian Muslim usage keeps the transliteration." },
+      "Sunrise": { "text": "Восход", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab prints Восход (short for восход солнца). Russian tables print Восход. Attested." },
+      "Dhuhr":   { "text": "Зухр", "source": "ru-wikipedia", "confidence": "high", "note": "ru.wikipedia and Mihrab agree: Зухр." },
+      "Asr":     { "text": "Аср", "source": "ru-wikipedia", "confidence": "high", "note": "Both agree." },
+      "Magrib":  { "text": "Магриб", "source": "ru-wikipedia", "confidence": "high", "note": "Both agree." },
+      "Isha":    { "text": "Иша", "source": "ru-wikipedia", "confidence": "high", "note": "Both agree. Also written Иша́ with stress mark in dictionaries; table label is plain Иша." },
+      "Midnight":   { "text": "Исламская полночь", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. Russian sites also say Полночь (islamic). The qualifier matters because Russian tables print a plain Полночь row for clock midnight in some layouts." },
+      "Last Third": { "text": "Последняя треть", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. Russian Islamic sites say последняя треть ночи." },
+      "Suhoor":     { "text": "Сухур", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. Russian Ramadan calendars say Сухур; Имсак is the deadline. Consistent with the app's split." },
+      "Duha":       { "text": "Духа", "source": null, "confidence": "low", "note": "No Russian authority or catalog found. Russian texts say молитва Духа or ад-Духа. Keep the transliteration Духа after review." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Russian table or catalog found. Russian fatwa sites describe час принятия мольбы в пятницу. Recommend dropping the row for ru." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Середина между Магрибом и Фаджром", "source": "derived", "confidence": "medium", "note": "Derived; instrumental case after между is standard Russian." },
+      "Start of the last third of the night": { "text": "Начало последней трети ночи", "source": "derived", "confidence": "medium", "note": "Derived from Последняя треть." },
+      "20 mins before Fajr":                  { "text": "За 20 минут до Фаджра", "source": "derived", "confidence": "medium", "note": "Derived; за X до Y is the standard Russian pattern." },
+      "20 mins after Sunrise":                { "text": "Через 20 минут после восхода солнца", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "1 hour before Magrib (Fridays only)":  { "text": "За 1 час до Магриба (только по пятницам)", "source": "derived", "confidence": "medium", "note": "Derived." }
+    }
+  },
+
+  "es": {
+    "names": {
+      "Fajr":    { "text": "Fayr", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab prints Fayr (Spanish orthography, y for j). Spanish Muslim usage is split between Fayr and Fajr. The es.wikipedia article says oración del alba (Al-Fajr), keeping Fajr. Fajr is more common in Spanish mosque calendars." },
+      "Sunrise": { "text": "Amanecer", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab prints Amanecer. Spanish tables also print Salida del sol. Amanecer is the shorter label." },
+      "Dhuhr":   { "text": "Dhuhr", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. Spanish usage: Dhuhr, Zuhr, or el mediodía. Dhuhr matches the app." },
+      "Asr":     { "text": "Asr", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab and es.wikipedia agree on Asr." },
+      "Magrib":  { "text": "Magreb", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab prints Magreb (Spanish spelling, like the region). es.wikipedia says Al-Magrib. Both work; Magreb is the Spanish-standard form." },
+      "Isha":    { "text": "Isha", "source": "mihrab@77e846d", "confidence": "high", "note": "Mihrab agrees. Also Ishá in older Spanish texts." },
+      "Midnight":   { "text": "Medianoche islámica", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. Plain Medianoche also fine." },
+      "Last Third": { "text": "Último tercio", "source": "mihrab@77e846d", "confidence": "medium", "note": "AGPL-only but ordinary Spanish." },
+      "Suhoor":     { "text": "Suhur", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab. Spanish Ramadan usage: Suhur. No authority prints it." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Spanish authority or catalog found. Spanish texts say oración del Duha. Keep the transliteration." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Spanish table or catalog found. Recommend dropping the row for es." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Punto medio entre Magreb y Fayr", "source": "derived", "confidence": "medium", "note": "Derived; punto medio is midpoint." },
+      "Start of the last third of the night": { "text": "Inicio del último tercio de la noche", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "20 mins before Fajr":                  { "text": "20 min antes del Fayr", "source": "derived", "confidence": "medium", "note": "Spanish abbreviates minutos as min." },
+      "20 mins after Sunrise":                { "text": "20 min después del amanecer", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "1 hora antes del Magreb (solo viernes)", "source": "derived", "confidence": "medium", "note": "" }
+    }
+  },
+
+  "zh-Hans": {
+    "names": {
+      "Fajr":    { "text": "晨礼", "source": "zh-wikipedia", "confidence": "high", "note": "zh.wikipedia and al-azan's zh-rCN agree: 晨礼. This is the written-Chinese standard used by both the PRC religious-affairs pages (mzzjj.gz.gov.cn) and Taiwan's religion ministry. The Hui folk name is 邦达 (banda, from Persian bamdad)." },
+      "Sunrise": { "text": "日出", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan zh-rCN prints 日出. Both Mihrab zh and zh.wikipedia agree. Astronomical register, same as English." },
+      "Dhuhr":   { "text": "晌礼", "source": "zh-wikipedia", "confidence": "high", "note": "All sources agree. Hui folk name: 撇申 (piěshēn, from Persian)." },
+      "Asr":     { "text": "晡礼", "source": "zh-wikipedia", "confidence": "high", "note": "All agree. Hui folk name: 底盖尔 (dǐgàir, from Persian digar)." },
+      "Magrib":  { "text": "昏礼", "source": "zh-wikipedia", "confidence": "high", "note": "All agree. Hui folk name: 沙目 (shāmù, from Persian sham)." },
+      "Isha":    { "text": "宵礼", "source": "zh-wikipedia", "confidence": "high", "note": "All agree. Hui folk name: 呼福坦 (hūfútǎn, from Persian khuftan)." },
+      "Midnight":   { "text": "午夜", "source": "al-azan@d89b047", "confidence": "medium", "note": "al-azan prints 午夜. Mihrab prints the disambiguated 伊斯兰午夜 (Islamic midnight), which is safer next to a clock-midnight reading." },
+      "Last Third": { "text": "夜间后三分之一", "source": "mihrab@77e846d", "confidence": "low", "note": "Mihrab's zh prints 最后三分之一 (last one-third), a literal rendering. Chinese Islamic texts say 夜的后三分之一. Neither is a table row anywhere. Needs a speaker." },
+      "Suhoor":     { "text": "封斋饭", "source": "mihrab@77e846d", "confidence": "medium", "note": "Mihrab prints 封斋饭 (the meal that seals the fast). Hui usage also says 封斋. The deadline concept is 停食 (stop eating), which is the Imsak equivalent." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Chinese source found. Hui texts say 晨礼拜后之副功拜 or the Arabic 杜哈. Recommend dropping or keeping the transliteration 杜哈 after review." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Chinese source found. Recommend dropping the row for zh-Hans." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "No sourced Chinese phrasing found. Likely 昏礼与晨礼之间的中点 but that is my construction, not a citation. Needs a speaker." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "Needs a speaker." },
+      "20 mins before Fajr":                  { "text": "晨礼前20分钟", "source": "derived", "confidence": "medium", "note": "Derived; standard Chinese time pattern X前N分钟." },
+      "20 mins after Sunrise":                { "text": "日出后20分钟", "source": "derived", "confidence": "medium", "note": "Derived; X后N分钟." },
+      "1 hour before Magrib (Fridays only)":  { "text": "昏礼前1小时（仅限周五）", "source": "derived", "confidence": "medium", "note": "Derived; 周五 is Friday, 仅限 is only." }
+    }
+  },
+
+  "zh-Hant": {
+    "names": {
+      "Fajr":    { "text": "晨禮", "source": "zh-wikipedia", "confidence": "high", "note": "zh.wikipedia is written in Traditional and prints 晨禮; Taiwan's religion.moi.gov.cn (sic: gov.tw) prints the same five names in Traditional. Direct attestation." },
+      "Sunrise": { "text": "日出", "source": "zh-wikipedia", "confidence": "high", "note": "Same in both scripts." },
+      "Dhuhr":   { "text": "晌禮", "source": "zh-wikipedia", "confidence": "high", "note": "" },
+      "Asr":     { "text": "晡禮", "source": "zh-wikipedia", "confidence": "high", "note": "" },
+      "Magrib":  { "text": "昏禮", "source": "zh-wikipedia", "confidence": "high", "note": "" },
+      "Isha":    { "text": "宵禮", "source": "zh-wikipedia", "confidence": "high", "note": "" },
+      "Midnight":   { "text": "午夜", "source": "al-azan@d89b047", "confidence": "medium", "note": "Character-for-character identical to Simplified. Same caveat about the qualifier." },
+      "Last Third": { "text": "夜間後三分之一", "source": null, "confidence": "low", "note": "Same situation as zh-Hans: no table row exists. Needs a speaker." },
+      "Suhoor":     { "text": "封齋飯", "source": "mihrab@77e846d", "confidence": "medium", "note": "Traditional form of 封斋饭." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "Same as zh-Hans." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "Same as zh-Hans." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs a speaker." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": "晨禮前20分鐘", "source": "derived", "confidence": "medium", "note": "Traditional 分鐘." },
+      "20 mins after Sunrise":                { "text": "日出後20分鐘", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "昏禮前1小時（僅限週五）", "source": "derived", "confidence": "medium", "note": "Traditional 週五/小時." }
+    }
+  },
+
+  "bs": {
+    "names": {
+      "Fajr":    { "text": "Sabah", "source": "vaktija", "confidence": "high", "note": "Bosnian vaktija prints Zora (dawn) for the Fajr row on vaktija.ba; al-azan prints Sabah; Bosnian Islamic usage says Sabah-namaz. Both attested. Zora is the dawn instant; Sabah is the prayer's name." },
+      "Sunrise": { "text": "Izlazak sunca", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan prints Izlazak (short for izlazak sunca, sunrise is izlazak, sunset zalazak; verify direction). vaktija.ba prints Izlazak sunca. Standard Bosnian, astronomical register." },
+      "Dhuhr":   { "text": "Podne", "source": "vaktija", "confidence": "high", "note": "Both sources agree: Podne." },
+      "Asr":     { "text": "Ikindija", "source": "vaktija", "confidence": "high", "note": "Both agree. Bosnian keeps the Turkish loan İkindi as Ikindija." },
+      "Magrib":  { "text": "Akšam", "source": "vaktija", "confidence": "high", "note": "Both agree. Akšam (with š) from Turkish Akşam." },
+      "Isha":    { "text": "Jacija", "source": "vaktija", "confidence": "high", "note": "Both agree. From Turkish Yatsı via Balkan phonology." },
+      "Midnight":   { "text": "Ponoć", "source": "al-azan@d89b047", "confidence": "high", "note": "al-azan prints Ponoć. Standard Bosnian." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "No Bosnian table row found. Bosnian Islamic texts say zadnja trećina noći. Needs a speaker." },
+      "Suhoor":     { "text": null, "source": null, "confidence": "low", "note": "Bosnian Ramadan usage: sehur / iftar pair. Not attested in a vaktija row. Needs a speaker." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Bosnian source found. Bosnian texts say sabahski podne or the Arabic Duha. Recommend dropping." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Bosnian source found. Recommend dropping the row for bs." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the extras set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": "20 minuta prije Sabaha", "source": "derived", "confidence": "medium", "note": "Derived; prije is before." },
+      "20 mins after Sunrise":                { "text": "20 minuta poslije izlaska sunca", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "1 hour before Magrib (Fridays only)":  { "text": "1 sat prije Akšama (samo petkom)", "source": "derived", "confidence": "medium", "note": "Derived; petkom is on Fridays." }
+    }
+  },
+
+  "sq": {
+    "names": {
+      "Fajr":    { "text": "Imsaku", "source": "kmsh", "confidence": "high", "note": "KMSH prints Imsaku for the dawn row, with الفجر as its Arabic gloss. Same İmsak convention as Turkish. The prayer's name in Albanian religious prose is Sabahu (KMSH's own site uses Sabah-namaz in Albanian too); the table label is Imsaku." },
+      "Sunrise": { "text": "Lindja", "source": "kmsh", "confidence": "high", "note": "KMSH prints Lindja (rising), short for Lindja e Diellit, with الشروق as its Arabic gloss. takvimi.net prints Lindja e Diellit in full." },
+      "Dhuhr":   { "text": "Yleja", "source": "kmsh", "confidence": "high", "note": "KMSH prints Yleja for noon (from Turkish Öğle). Albanian Islamic prose also says Dreka (takvimi.net prints Dreka). Both current: Yleja on KMSH, Dreka on takvimi.net." },
+      "Asr":     { "text": "Ikindia", "source": "kmsh", "confidence": "high", "note": "KMSH and takvimi.net both print Ikindia. From Turkish İkindi." },
+      "Magrib":  { "text": "Akshami", "source": "kmsh", "confidence": "high", "note": "Both print Akshami. From Turkish Akşam." },
+      "Isha":    { "text": "Jacia", "source": "kmsh", "confidence": "high", "note": "Both print Jacia. From Turkish Yatsı via Balkan phonology." },
+      "Midnight":   { "text": null, "source": null, "confidence": "low", "note": "KMSH does not print a midnight row. Albanian says mesnatë (attested in the Facebook KMSH-style posts: nga mesnata). Needs a speaker to confirm as a row label." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "No Albanian source found. Needs a speaker." },
+      "Suhoor":     { "text": null, "source": null, "confidence": "low", "note": "Albanian Ramadan pair is imsaku/iftari (the same split as the table). No separate meal-row label found. Needs a speaker." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Albanian source found. Recommend dropping." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Albanian source found. Recommend dropping the row for sq." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the extras set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": "20 minuta para Imsakut", "source": "derived", "confidence": "medium", "note": "Derived; para is before." },
+      "20 mins after Sunrise":                { "text": "20 minuta pas Lindjes", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "1 hour before Magrib (Fridays only)":  { "text": "1 orë para Akshamit (vetëm të premten)", "source": "derived", "confidence": "medium", "note": "Derived; të premten is on Friday." }
+    }
+  },
+
+  "th": {
+    "names": {
+      "Fajr":    { "text": "ซุบฮิ", "source": "muslimthaipost", "confidence": "high", "note": "Thai Islamic media print ซุบฮิ (muslimthaipost) or ศุบฮิ (whitechannel). Both are the Thai script renderings of Subhi. muslimthaipost also prints อิมซาก as a separate earlier row, confirming the Imsak/Subuh split in Thai." },
+      "Sunrise": { "text": "ตะวันขึ้น", "source": "muslimthaipost", "confidence": "high", "note": "muslimthaipost prints ตะวันขึ้น (plain Thai for sunrise). whitechannel prints ชุรูก (the Arabic loan Suruq). Two conventions: Thai-native at muslimthaipost, Arabic loan at whitechannel." },
+      "Dhuhr":   { "text": "ซุฮฺริ", "source": "muslimthaipost", "confidence": "high", "note": "Both sources print ซุฮฺริ/ซุฮ์รี variants. Note the ฮฺ (with nikhahit) vs ฮ์ (with thanthakhat) punctuation variance between sources." },
+      "Asr":     { "text": "อัศริ", "source": "muslimthaipost", "confidence": "high", "note": "Both print อัศริ (Asri)." },
+      "Magrib":  { "text": "มัฆริบ", "source": "muslimthaipost", "confidence": "high", "note": "Both print มัฆริบ (Maghrib, with the ฆ for gh)." },
+      "Isha":    { "text": "อิชาอฺ", "source": "whitechannel", "confidence": "high", "note": "whitechannel prints อีชาอฺ; muslimthaipost prints อิชา. The final อฺ (alif with nikhahit) is the hamza marker." },
+      "Midnight":   { "text": null, "source": null, "confidence": "low", "note": "No Thai table row found. Thai says เที่ยงคืน. Needs a speaker." },
+      "Last Third": { "text": null, "source": null, "confidence": "low", "note": "No Thai source found. Thai Islamic audio uses Tahajjud (ตะฮัจญุด). Needs a speaker." },
+      "Suhoor":     { "text": null, "source": null, "confidence": "low", "note": "Thai Ramadan calendars say ซูฮูร or อาหารก่อนถือศีลอด. Needs a speaker." },
+      "Duha":       { "text": "ดุฮา", "source": "youtube-th", "confidence": "low", "note": "Thai Islamic preachers teach ละหมาดดุฮา (Duha prayer), attested in sermon titles. Single-source-class evidence." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Thai source found. Recommend dropping the row for th." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": null, "source": null, "confidence": "low", "note": "Needs the extras set confirmed first." },
+      "Start of the last third of the night": { "text": null, "source": null, "confidence": "low", "note": "" },
+      "20 mins before Fajr":                  { "text": "ก่อนซุบฮิ 20 นาที", "source": "derived", "confidence": "medium", "note": "Derived; นาที is minute, ก่อน is before (preposed)." },
+      "20 mins after Sunrise":                { "text": "หลังตะวันขึ้น 20 นาที", "source": "derived", "confidence": "medium", "note": "Derived; หลัง is after." },
+      "1 hour before Magrib (Fridays only)":  { "text": "ก่อนมัฆริบ 1 ชั่วโมง (เฉพาะวันศุกร์)", "source": "derived", "confidence": "medium", "note": "Derived; วันศุกร์ is Friday, เฉพาะ is only." }
+    }
+  },
+
+  "nl": {
+    "names": {
+      "Fajr":    { "text": "Fajr", "source": "nl-wikipedia", "confidence": "high", "note": "nl.wikipedia lists Fajr (dageraad). Dutch mosque calendars print Fajr. No translation convention; the loan dominates." },
+      "Sunrise": { "text": "Zonsopkomst", "source": "nl-usage", "confidence": "medium", "note": "Dutch prayer-time sites print Zonsopkomst or Zonsopgang. Both are standard Dutch; Zonsopkomst is the more common label on Dutch Islamic sites. Needs one confirming source." },
+      "Dhuhr":   { "text": "Dhuhr", "source": "nl-wikipedia", "confidence": "high", "note": "nl.wikipedia: Dhuhr (middag)." },
+      "Asr":     { "text": "Asr", "source": "nl-wikipedia", "confidence": "high", "note": "nl.wikipedia: Asr (namiddag)." },
+      "Magrib":  { "text": "Maghrib", "source": "nl-wikipedia", "confidence": "high", "note": "nl.wikipedia: Maghrib (zonsondergang of avond)." },
+      "Isha":    { "text": "Isha", "source": "nl-wikipedia", "confidence": "high", "note": "nl.wikipedia: Isha (nacht)." },
+      "Midnight":   { "text": "Middernacht", "source": "derived", "confidence": "low", "note": "Ordinary Dutch. No Islamic-table attestation found. Islamitische middernacht is the disambiguated form." },
+      "Last Third": { "text": "Laatste derde", "source": "derived", "confidence": "low", "note": "Ordinary Dutch (derde = third). No Islamic-table attestation found." },
+      "Suhoor":     { "text": "Sohoer", "source": null, "confidence": "low", "note": "Dutch Ramadan usage: sohoer / suhur / sahri. Not attested in a table I could read. Needs a speaker." },
+      "Duha":       { "text": null, "source": null, "confidence": "low", "note": "No Dutch source found. Recommend keeping the transliteration or dropping." },
+      "Istijaba":   { "text": null, "source": null, "confidence": "low", "note": "No Dutch source found. Recommend dropping the row for nl." }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr":      { "text": "Halfweg tussen Maghrib en Fajr", "source": "derived", "confidence": "medium", "note": "Derived; standard Dutch pattern." },
+      "Start of the last third of the night": { "text": "Begin van het laatste derde deel van de nacht", "source": "derived", "confidence": "medium", "note": "Derived." },
+      "20 mins before Fajr":                  { "text": "20 min voor de Fajr", "source": "derived", "confidence": "medium", "note": "Dutch abbreviates minuten as min; voor is before." },
+      "20 mins after Sunrise":                { "text": "20 min na zonsopkomst", "source": "derived", "confidence": "medium", "note": "" },
+      "1 hour before Magrib (Fridays only)":  { "text": "1 uur vóór Maghrib (alleen vrijdag)", "source": "derived", "confidence": "medium", "note": "Derived." }
+    }
+  }
+}
