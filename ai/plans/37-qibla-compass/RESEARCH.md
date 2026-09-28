@@ -466,9 +466,9 @@ reproducible from the topic list below.
 | 2 | Shipped-app engineering failures: bug reports, GitHub issues, app-store complaints, recurring traps | Failed once on gateway capacity, redeployed, no result yet |
 | 3 | Sensor and platform engineering: Android/iOS heading APIs, declination, untrustworthy-reading detection, 60fps rotation | Failed once on gateway capacity, redeployed, no result yet |
 | 4 | Professional practice: how mosque surveyors work, mosque-misalignment studies, why professionals distrust magnetic compasses | Failed once on gateway capacity, redeployed, no result yet |
-| 5 | UX, visual design and accessibility: existing qibla screens, honest uncertainty wording, Islamic geometric motifs | Dispatched, no result yet |
+| 5 | UX, visual design and accessibility: existing qibla screens, honest uncertainty wording, Islamic geometric motifs | Failed once on gateway capacity at the pause; ONE retry used |
 
-**None has reported.** Every one of those failures was the gateway returning
+**None has reported.** Briefs 2, 3, 4 and 5 have each used ONE retry; brief 1 has used none. Every one of those failures was the gateway returning
 `Chat admission capacity is temporarily unavailable`, never an agent error, so no brief needs rewriting.
 
 ### 8.3 The retry policy, which survives the pause
