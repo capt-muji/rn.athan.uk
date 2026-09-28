@@ -71,6 +71,11 @@ interface SheetProps {
    */
   onFirstPresent?: () => void;
   /**
+   * Called every time the sheet fully opens. For work that is undone on dismiss and must be redone on the next open,
+   * such as a sensor subscription, which `onFirstPresent` would arm once and never again
+   */
+  onPresent?: () => void;
+  /**
    * Bottom-sheet stack behavior when presented over another sheet. Default
    * 'switch' serializes: the lib waits for the previous sheet to unmount
    * before animating this one in. 'push' presents immediately on top — used
@@ -111,6 +116,7 @@ export default function Sheet({
   onDismiss,
   onAnimate,
   onFirstPresent,
+  onPresent,
   perfName,
   snapPoints = ['70%'],
   contentCap,
@@ -178,9 +184,12 @@ export default function Sheet({
   const handleChange = useCallback(
     (index: number) => {
       setPresented(index !== -1);
-      if (index === 0 && !firstPresentFiredRef.current) {
-        firstPresentFiredRef.current = true;
-        onFirstPresent?.();
+      if (index === 0) {
+        if (!firstPresentFiredRef.current) {
+          firstPresentFiredRef.current = true;
+          onFirstPresent?.();
+        }
+        onPresent?.();
       }
       if (!perfName) return;
       if (index === 0) {
@@ -190,7 +199,7 @@ export default function Sheet({
         perfMeasure(`${perfName}_close`, `${perfName}_close_start`);
       }
     },
-    [perfName, onFirstPresent]
+    [perfName, onFirstPresent, onPresent]
   );
 
   const ContentWrapper = scrollable ? BottomSheetScrollView : BottomSheetView;
