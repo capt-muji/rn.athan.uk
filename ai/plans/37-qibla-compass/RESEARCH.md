@@ -1213,3 +1213,84 @@ accelerometer**, so every alternative path would work on it.
 Two corrections to this session's own record: **the 3T is a Snapdragon 821, not 820** (this repo's pages
 say 820 in several places), and **Google Play services supports Android 6.0 and up**, so an Android 9
 device is comfortably supported.
+
+## 17. R2 agent 4 (location strategy): the critical question is answered, and staleness dissolves
+
+Full report at `agent-reports/R2-04-location-strategy.md`.
+
+### 17.1 iOS reduced accuracy does NOT break trueHeading
+
+**This question could have invalidated the entire coarse-location plan, and the answer is no.**
+
+`trueHeading` needs *a* position only to look up the magnetic declination. Reduced accuracy gives a point
+**within 1 to 20 km**, and declination varies by roughly 0.01 to 0.1° per km, **so the correction changes by
+well under 2° even in the worst geomagnetic patches.** WWDC20 disabled only beacons and region monitoring
+under reduced accuracy; heading was never restricted.
+
+Android is safe for the same reason: `LocationModule.kt` builds its `GeomagneticField` from the last known
+location and **explicitly accepts COARSE permission**.
+
+### 17.2 One caveat that changes the implementation, verified in source
+
+**`expo-location`'s iOS heading streamer calls only `startUpdatingHeading()`**, never
+`startUpdatingLocation()`. This session verified it independently in the installed package:
+`startUpdatingHeading` at `DeviceHeadingStreamer.swift:28`, and `startUpdatingLocation` **zero times**.
+
+Apple's documentation says location updates should be enabled for a valid `trueHeading`. In practice iOS
+uses its own estimate, but the mitigation is free and the plan takes it:
+
+> **Call `getCurrentPositionAsync` BEFORE or alongside `watchHeadingAsync`. We need the position for the
+> bearing anyway, and it guarantees location services are warm.**
+
+### 17.3 THE STALENESS PROBLEM DISSOLVES
+
+The owner's traveller objection (section 4-OWNER and the earlier correction) drove a search for cache
+invalidation: timers, significant-location-change, timezone listeners. **The agent's answer removes the
+problem instead of solving it:**
+
+> **Do not cache authoritatively. Every sheet open re-fixes with `Balanced`, which takes 1 to 5 seconds
+> behind an instantly-painted cached arrow. The cache is a paint-over and a refusal fallback, never the
+> answer. A cached fix therefore cannot mislead a traveller, because it is never shown without a refresh
+> already in flight.**
+
+No timers, no background permission, no significant-location-change (which on iOS **would require Always
+authorisation**, indefensible for this feature), and no Play background-location review. **This is
+strictly simpler than what this session had planned, and strictly more correct.**
+
+### 17.4 A 2026 store policy that argues for coarse-only
+
+**Play's "Minimum Scope" location policy, announced 15 April 2026:** from **November 2026** every app
+requesting `ACCESS_FINE_LOCATION` must file a Play Console declaration explaining "why
+`ACCESS_COARSE_LOCATION` or LocationButton is not sufficient", **enforced 27 January 2027 for new AND
+existing apps.**
+
+**A coarse-only app is exempt.** Google's own list of coarse-appropriate uses reads like a description of
+this feature.
+
+**But `expo-location` always requests BOTH permissions**, so coarse-only needs a config plugin that strips
+`ACCESS_FINE_LOCATION` from the merged manifest. **That is a real cost to weigh**, and it goes to the owner:
+the privacy posture and the policy exemption against one more plugin in a project that already carries
+`plugins/androidWidgetGrid.js` and `plugins/portraitOnlyIpad.js`.
+
+**Detection is free either way:** `getForegroundPermissionsAsync()` returns `android.accuracy` of
+`fine | coarse | none` and `ios.accuracy` of `full | reduced`, verified this session at
+`LocationModule.kt:402-409`.
+
+### 17.5 Store declaration: "Data Not Collected"
+
+Both stores define collection as transmission off the device. **We compute the bearing locally and transmit
+nothing, so the App Store declaration is "Data Not Collected" and Play's Data Safety form records no
+collection**, with the caveat that no analytics or crash SDK may carry coordinates. This app has none on
+that path.
+
+### 17.6 The manual fallback is bundled, not networked
+
+**`geocodeAsync` is not an option for the refusal path**: iOS CLGeocoder is network-based and rate-limited
+to about one request per minute, and **on Android expo's own docs say geocoding requires location
+permission already granted**, which defeats the entire purpose of a refusal fallback.
+
+**The answer is a bundled list: GeoNames `cities15000`, about 1 MB trimmed to name, country, latitude and
+longitude, CC BY 4.0 with an attribution line.** 25,000 rows is instant to search in JS with no database.
+
+**This is the largest single addition the feature would make to the bundle, so it goes to the owner** with
+the alternative of a much smaller curated list of major cities.
