@@ -55,6 +55,10 @@ interface SheetProps {
   perfName?: string;
   /** Snap points for the sheet. Ignored if enableDynamicSizing is true */
   snapPoints?: (string | number)[];
+  /** Owner cap (2026-09-28): a dynamically-sized sheet may never pass this share of the screen
+   *  height, or it slides under the status bar and the notch. A fraction of the window, handed
+   *  to the library's own maxDynamicContentSize in points */
+  contentCap?: number;
   /** Enable dynamic sizing based on content */
   enableDynamicSizing?: boolean;
   /** Use scrollable content area */
@@ -109,6 +113,7 @@ export default function Sheet({
   onFirstPresent,
   perfName,
   snapPoints = ['70%'],
+  contentCap,
   enableDynamicSizing = false,
   scrollable = true,
   stackBehavior,
@@ -116,7 +121,7 @@ export default function Sheet({
   const { bottom: safeBottom } = useSafeAreaInsets();
   const bottom = Platform.OS === 'android' ? 0 : safeBottom;
   const contentPadding = bottom + SPACING.xxxl + SHEET_BOTTOM_PADDING;
-  const { width: windowWidth } = useWindowDimensions();
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   // Capped via explicit width + insets because the lib pins this container
   // left/right (maxWidth/alignment cannot act). Capping here, not only the
   // card, keeps the full-width sheet body from covering the area beside
@@ -198,6 +203,7 @@ export default function Sheet({
       ref={handleRef}
       snapPoints={enableDynamicSizing ? undefined : snapPoints}
       enableDynamicSizing={enableDynamicSizing}
+      maxDynamicContentSize={contentCap ? windowHeight * contentCap : undefined}
       enablePanDownToClose
       animationConfigs={SHEET_ANIMATION_CONFIGS}
       stackBehavior={stackBehavior}

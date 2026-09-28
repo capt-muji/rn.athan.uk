@@ -96,7 +96,7 @@ export default function BottomSheetAlert() {
       subtitle='Close to save'
       icon={<IconView type={Icon.BELL_RING} size={16} color='rgba(165, 180, 252, 0.8)' />}
       enableDynamicSizing
-      scrollable={false}
+      contentCap={0.85}
       onDismiss={handleDismiss}
       perfName='sheet_alert'>
       {sheetState?.isUnavailable && (
