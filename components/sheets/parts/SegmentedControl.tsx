@@ -199,7 +199,9 @@ const styles = StyleSheet.create({
     borderColor: COLORS.interactive.activeBorder,
   },
   option: {
-    flex: 1,
+    // flexGrow, not flex: in a column parent the shorthand's 0 basis lets a squeezed layout
+    // collapse the option to its padding; flexGrow shares width in rows without that failure
+    flexGrow: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

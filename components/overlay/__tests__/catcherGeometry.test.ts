@@ -27,8 +27,6 @@ const WINDOW_HEIGHT = 800;
 
 const listMeasurement = { pageX: 12, pageY: 300, width: 376, height: 342 };
 const ROW_INDEX = 2;
-/** A phone where the window and root spaces coincide, which is every case the grid needs to stay honest */
-const noOffset = { x: 0, y: 0 };
 
 const rowRect = (rowIndex: number, list = listMeasurement): Rect => ({
   top: list.pageY + rowIndex * STYLES.prayer.height,
@@ -58,7 +56,6 @@ describe('buildCatcherRegions', () => {
       windowHeight: WINDOW_HEIGHT,
       list: listMeasurement,
       rowIndex: ROW_INDEX,
-      originOffset: noOffset,
     });
 
     const row = rowRect(ROW_INDEX);
@@ -68,32 +65,12 @@ describe('buildCatcherRegions', () => {
     }
   });
 
-  it('shifts the exempt row by the window-to-root offset, so the hole lands on the row the user sees', () => {
-    // iOS: the window origin sits 23.67pt above the root's, so the same list rect must land lower
-    const offset = { x: 0, y: 23.67 };
-    const regions = buildCatcherRegions({
-      windowWidth: WINDOW_WIDTH,
-      windowHeight: WINDOW_HEIGHT,
-      list: listMeasurement,
-      rowIndex: ROW_INDEX,
-      originOffset: offset,
-    });
-
-    const row = rowRect(ROW_INDEX);
-    const shiftedRow = { ...row, top: row.top - offset.y };
-    for (const point of samplePoints()) {
-      const caught = regions.some((region) => contains(region, point));
-      expect(caught).toBe(!contains(shiftedRow, point));
-    }
-  });
-
   it('falls back to one full-screen region when the list is unmeasured', () => {
     const regions = buildCatcherRegions({
       windowWidth: WINDOW_WIDTH,
       windowHeight: WINDOW_HEIGHT,
       list: null,
       rowIndex: ROW_INDEX,
-      originOffset: noOffset,
     });
 
     expect(regions).toHaveLength(1);

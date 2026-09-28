@@ -6,16 +6,17 @@
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai/vanilla';
-import { BackHandler, DeviceEventEmitter, View } from 'react-native';
+import { BackHandler, DeviceEventEmitter } from 'react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { ANIMATION } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { closeOverlay, openOverlay, overlayAtom } from '@/stores/overlay';
-import { measurementOriginOffsetAtom, setMeasurementOriginOffset, setMeasurementsList } from '@/stores/ui';
+import { setMeasurementsList } from '@/stores/ui';
 
 import Overlay from '../Overlay';
+import OverlayInfoBox from '../OverlayInfoBox';
 
 // Opening and closing are measured for the device performance runs, which read the pairing of names
 jest.mock('@/shared/perf', () => ({ perfMark: jest.fn(), perfMeasure: jest.fn() }));
@@ -35,15 +36,6 @@ const DHUHR = 2;
 /** Where the list sits on screen, as List measures it */
 const LIST = { pageX: 16, pageY: 200, width: 379, height: 342 };
 
-type Measured = (x: number, y: number) => void;
-
-// React Native's Jest View never answers measureInWindow, so a test hands back the place a phone would report
-const measureInWindow = jest.mocked(
-  (View as unknown as { prototype: { measureInWindow: (cb: Measured) => void } }).prototype.measureInWindow
-);
-
-afterEach(() => measureInWindow.mockReset());
-
 const closeTargets = (options: { includeHiddenElements?: boolean } = {}) =>
   screen.queryAllByRole('button', { name: 'Close prayer details', ...options });
 
@@ -55,23 +47,6 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     await render(<Overlay />);
 
     expect(closeTargets()).toHaveLength(0);
-  });
-
-  // The zero-size probe's own window position is what the box and catchers subtract. React
-  // Native's Jest View never answers measureInWindow, so a test hands back the place a phone
-  // would report, exactly as the List suite does for the list rect
-  it('measures its origin probe at layout and records the offset it answers', async () => {
-    showLondonDay('2026-09-11', '14:00');
-    setMeasurementsList(LIST);
-    measureInWindow.mockImplementationOnce((cb) => cb(0, 23.67));
-
-    await render(<Overlay />);
-    await fireEvent(screen.getByTestId('overlay-origin'), 'layout', {
-      nativeEvent: { layout: { x: 0, y: 0, width: 0, height: 0 } },
-    });
-
-    expect(getDefaultStore().get(measurementOriginOffsetAtom)).toEqual({ x: 0, y: 23.67 });
-    setMeasurementOriginOffset({ x: 0, y: 0 });
   });
 
   // [situation, Close targets, the list as measured]
@@ -153,7 +128,12 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
   ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english, arabic) => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
-    await render(<Overlay />);
+    await render(
+      <>
+        <Overlay />
+        <OverlayInfoBox type={ScheduleType.Extra} />
+      </>
+    );
 
     await act(() => openOverlay(ScheduleType.Extra, index));
 

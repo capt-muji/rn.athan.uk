@@ -48,17 +48,7 @@ const CHEVRON_SIZE = 20;
  * a list of causes to scan, and only the one a user recognises costs them any reading. The whole row
  * is the trigger, because a chevron alone is a small target on a phone.
  */
-const Topic = ({
-  topic,
-  last,
-  open,
-  onToggle,
-}: {
-  topic: HelpTopic;
-  last: boolean;
-  open: boolean;
-  onToggle: () => void;
-}) => {
+const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onToggle: () => void }) => {
   const turn = useSharedValue(open ? 1 : 0);
 
   turn.value = withTiming(open ? 1 : 0, CHEVRON_TURN);
@@ -70,7 +60,7 @@ const Topic = ({
   const { question, text, steps, action } = topic;
 
   return (
-    <Animated.View layout={GROW} style={[styles.row, !last && styles.rowRuled, open && styles.rowOpen]}>
+    <Animated.View layout={GROW} style={[styles.row, open && styles.rowOpen]}>
       <Pressable
         style={styles.head}
         onPress={onToggle}
@@ -110,6 +100,11 @@ const Topic = ({
           </View>
         </Animated.View>
       ) : null}
+
+      {/* A child rule, not a border on this view: the layout animation redraws borders as part of
+          the animating frame and can drop the last row's on close, while a child renders at
+          whatever the animated height is */}
+      <View style={styles.rule} />
     </Animated.View>
   );
 };
@@ -141,11 +136,10 @@ export default function ModalHelp({ visible, onClose }: Props) {
       <ScrollView
         style={[styles.list, { maxHeight: height * ANSWERS_HEIGHT_SHARE }]}
         showsVerticalScrollIndicator={false}>
-        {topics.map((topic, index) => (
+        {topics.map((topic) => (
           <Topic
             key={topic.question}
             topic={topic}
-            last={index === topics.length - 1}
             open={openQuestion === topic.question}
             onToggle={() => setOpenQuestion(openQuestion === topic.question ? null : topic.question)}
           />
@@ -171,23 +165,26 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: INK,
+    // Muted grey, owner-ruled: quiet against the dark card, unlike the near-black it replaced
+    backgroundColor: 'rgba(203, 213, 225, 0.8)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: SPACING.md,
   },
   titleBadgeGlyph: {
-    color: COLORS.light.background,
+    // Near-black on the muted grey circle, owner-ruled: reads as engraving rather than a light bulb
+    color: 'rgba(71, 85, 105, 0.7)',
     fontSize: 10,
     lineHeight: 16,
     fontFamily: TEXT.family.medium,
+    paddingBottom: 1.5,
   },
   row: {
     overflow: 'hidden',
   },
-  rowRuled: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: HAIRLINE,
+  rule: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: HAIRLINE,
   },
   rowOpen: {
     backgroundColor: ACCENT_TINT,
