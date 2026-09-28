@@ -67,7 +67,7 @@ app, and it holds at the current version. `react-i18next` adds three, of which
 pulls 2 more) is the heaviest of the three.
 
 The dependency counts above are direct dependencies only. R1 was asked for transitive counts and
-installed sizes, which is the number that actually decides a bundle question, so its verdict
+installed sizes, which is the number that decides a bundle question, so its verdict
 supersedes this table on size. This table is the version and licence truth.
 
 ## Reproducing

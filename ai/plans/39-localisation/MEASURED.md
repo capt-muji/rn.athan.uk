@@ -1,4 +1,4 @@
-# Session 39: what this repository actually contains
+# Session 39: what this repository contains
 
 Everything here was measured on `uat-2` at `77eb52fe` on 2026-09-29, by the scripts in
 `scripts/`, which are committed so any later session can reproduce the numbers rather than
