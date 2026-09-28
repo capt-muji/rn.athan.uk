@@ -397,7 +397,79 @@ Practitioner consensus (Android compass write-ups, the low-pass filter literatur
 markedly at the cost of lag. Combined with Android's own 2°/50 ms throttle, the filter is what makes the
 needle feel solid.
 
-## 4a. CORRECTION: every modal in this app is LIGHT, and the compass must be designed for white
+## 4-OWNER. THE SURFACE IS A BOTTOM SHEET, NOT A MODAL (owner ruling, 2026-09-28)
+
+**This supersedes section 5 below and makes most of section 4a moot. It is the owner's ruling and it is
+not re-litigated.**
+
+🐋  "I want this to be a bottom sheet... in the settings button, I want an option underneath Change athan,
+I want an option underneath that to compass or Qibla. I want it to be called Qibla, and it will be a
+compass icon in the purple circular, you know, same exact button as Change athan, but instead of the music
+icon it will be a compass icon, and then that will open a second bottom sheet. Same behaviour as the
+others. Open a second bottom sheet, and that's where we will have the compass, and then you can close it by
+dragging it down."
+
+And the rule behind it, which is the durable part:
+
+🐋  "We usually only display modals for information, but for like features and stuff like that, we show, we
+use the bottom sheets."
+
+**So: modals are for INFORMATION (Help, What's New, Update). Bottom sheets are for FEATURES (Sound, Alert,
+Qibla).** The qibla is a feature, so it is a sheet. Record this as the app's standing convention, because
+it decides where every future surface goes without asking.
+
+### 4-OWNER.1 The exact shape, read from the code it must match
+
+The owner named `Change athan` as the template, and that row is `components/sheets/screens/Settings.tsx:75`.
+Its handler is the SECOND of the two patterns in that file, and it is the RIGHT one:
+
+```ts
+const handleAthanPress = () => {
+  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  hideSettingsSheet();
+  showSheet();
+};
+```
+
+**Note there is NO `setTimeout` here.** The 150ms delay documented in section 4a.1 belongs to the MODAL
+handlers (What's New, Help) and must NOT be copied: a sheet-to-sheet transition is handled by
+`@gorhom/bottom-sheet` itself. Copying the modal delay into the qibla row would be a real defect, and it is
+exactly the kind of thing a plan that skimmed one handler would get wrong.
+
+The sheet it opens (`components/sheets/screens/Sound.tsx:163`) carries `stackBehavior='push'`, which is
+what makes the second sheet stack over the settings sheet rather than replace it, and `snapPoints={['85%']}`.
+
+### 4-OWNER.2 What the row costs, precisely
+
+Five edits, all mirroring `Change athan`:
+
+| Piece | Where | Note |
+| --- | --- | --- |
+| The row | `Settings.tsx`, in the Sound card or its own | `Pressable` + circular icon + label `Qibla` + `›` chevron |
+| The icon glyph | `assets/icons/svg/compass.svg` | **Does not exist yet.** 16 SVGs are there; no compass |
+| The icon id | `shared/types.ts`, `Icon` enum | `COMPASS = 'COMPASS'`, 13 members today |
+| The icon registration | `assets/icons/svg/index.ts` | one import, one `ICONS` entry |
+| The sheet | `components/sheets/screens/Qibla.tsx` | new, `stackBehavior='push'` |
+| Its ref atom | `stores/ui.ts` | `qiblaSheetModalAtom` + `showQiblaSheet` + setter, mirroring `bottomSheetModalAtom` |
+| The mount | `app/_layout.tsx` | beside the other sheets |
+
+The circular purple button the owner described is `styles.musicButton` / `styles.infoButton`: a 20x20 circle
+at `borderRadius: 10`, `backgroundColor: COLORS.interactive.active` (`#5015b5`) with a
+`COLORS.interactive.activeBorder` (`#672bcf`) hairline, holding a `size={9}` glyph. The qibla row reuses it
+exactly, so nothing new is designed for the row itself.
+
+### 4-OWNER.3 The palette question is SETTLED by this ruling
+
+Section 4a found that modals are white and worried the compass would have to be designed for a white card.
+**A sheet is not a modal, and the sheets are DARK**: `Sheet.tsx` renders on `COLORS.surface.sheet`
+(`#0b183a`) with a `COLORS.surface.sheetBorder` (`#0f1d46`) edge.
+
+So the compass IS drawn on the app's dark ground after all, the UX agent's dark-theme brief was correct as
+issued, and section 4a's alternative (a full-bleed dark screen) is withdrawn: the owner has chosen the
+surface and it is already dark. **Section 4a is kept only for its five-touchpoint wiring map and the
+modal/feature distinction it helped uncover.**
+
+## 4a. Superseded: the modal palette finding (kept for its wiring map)
 
 **This contradicts the brief given to the UX research agent, and the correction is recorded rather than
 quietly applied.** That brief described the app's palette as a deep indigo/purple gradient with white text
@@ -459,11 +531,14 @@ pays for the magnetometer from launch for a screen nobody opened.
 button beneath. Adding a third page would change the app's primary navigation, re-pitch the dots, and put
 a location permission in the swipe path of every user. **Rejected.**
 
-The Settings sheet (`components/sheets/screens/Settings.tsx`) already has titled cards and rows, and the
-Help modal (`components/modals/Help.tsx`) is the precedent for a full-screen surface opened from a row.
-**The qibla opens from a Settings row, as a modal, exactly as Help does.** That keeps the permission behind
-a deliberate tap, which is also what makes it defensible at App Store review under Guideline 5.1.1
+The Settings sheet (`components/sheets/screens/Settings.tsx`) already has titled cards and rows. **The
+qibla opens from a Settings row, which the owner has now ruled opens a SECOND BOTTOM SHEET rather than a
+modal (section 4-OWNER), exactly as `Change athan` opens the Sound sheet.** That keeps the permission
+behind a deliberate tap, which is also what makes it defensible at App Store review under Guideline 5.1.1
 (purpose strings must describe use; unused or unexplained permissions are the most common rejection).
+
+The paragraph above originally named the Help modal as the precedent; the owner corrected it to the Sound
+sheet, on the rule that modals inform and sheets carry features.
 
 ## 6. Sources
 
