@@ -221,3 +221,24 @@ describe('the Extras overlay on a four-row list, where only the last row may fli
     expect(style.height).toBeUndefined();
   });
 });
+
+// Friday adds Istijaba, so the list is FIVE rows and the row that may flip moves with it. The owner
+// saw the old rule flip the last TWO here, Duha and Istijaba, which is what `index >= 3` does to a
+// five-row list: Duha must hang below on a Friday and above on no other day.
+describe('the Extras overlay on a five-row Friday list, where the flip follows the extra row', () => {
+  // [drawn row, the prayer, whether its box hangs above the row]
+  it.each<[number, string, boolean]>([
+    [2, 'Suhoor', false],
+    [3, 'Duha', false],
+    [4, 'Istijaba', true],
+  ])('row %i (%s) hangs above: %s', (row, english, above) => {
+    // openOnReversedFriday takes a SEQUENCE index against the reversed list, so the drawn row inverts
+    openOnReversedFriday(4 - row);
+
+    const box = findAll(Overlay(), 'PrayerExplanation')[0];
+    const style = box.props.style as ViewStyle;
+
+    expect(box.props).toMatchObject({ prayerName: english, arrowPosition: above ? 'bottom' : 'top' });
+    expect(style.top === undefined).toBe(above);
+  });
+});
