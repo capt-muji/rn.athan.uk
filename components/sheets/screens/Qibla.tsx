@@ -47,7 +47,7 @@ export default function BottomSheetQibla() {
       icon={<IconView type={Icon.COMPASS} size={16} color='rgba(165, 180, 252, 0.8)' />}
       snapPoints={['85%']}
       perfName='sheet_qibla'
-      onFirstPresent={handlePresent}
+      onPresent={handlePresent}
       onDismiss={handleDismiss}
       stackBehavior='push'>
       <View style={styles.card}>
