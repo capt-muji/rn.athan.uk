@@ -1,0 +1,42 @@
+appId: com.mugtaba.athan
+name: android15-edge-to-edge
+tags:
+  - android15
+---
+# Android 15 (API 35) proof, where the platform ENFORCES edge-to-edge: the app draws, the overlay
+# opens on a row and closes on the back press, and the back press at rest leaves the app.
+# Targets are found by text and role rather than by pixel, so this flow is device-agnostic: the
+# 3T flows above are pinned to its 1080x1920 panel and cannot run here.
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: 'London, UK'
+    timeout: 30000
+
+# The list drew under the enforced edge-to-edge window
+- assertVisible: 'Fajr'
+- assertVisible: 'Dhuhr'
+- assertVisible: 'Isha'
+
+# The overlay opens on a tapped row
+- tapOn: 'Dhuhr'
+- waitForAnimationToEnd:
+    timeout: 2500
+
+# Back closes the overlay and keeps the app open, which is the rule this session added
+- pressKey: back
+- waitForAnimationToEnd:
+    timeout: 2500
+- assertVisible: 'London, UK'
+- assertVisible: 'Fajr'
+
+# The settings sheet opens, and back closes it rather than leaving the app
+- tapOn:
+    id: 'Settings'
+- waitForAnimationToEnd:
+    timeout: 2500
+- assertVisible: 'Set your preferences'
+- pressKey: back
+- waitForAnimationToEnd:
+    timeout: 2500
+- assertVisible: 'London, UK'
