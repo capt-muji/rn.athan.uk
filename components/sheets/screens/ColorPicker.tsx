@@ -98,14 +98,26 @@ export default function ColorPickerSettings() {
 
   return (
     <>
-      <Pressable style={[styles.container, { opacity }]} onPress={handlePress} hitSlop={HIT_SLOP.md}>
+      <Pressable
+        style={[styles.container, { opacity }]}
+        onPress={handlePress}
+        hitSlop={HIT_SLOP.md}
+        accessibilityRole='button'
+        accessibilityState={{ disabled: isDisabled }}
+        accessibilityLabel='Countdown bar color'>
         <Text style={[styles.label, isDisabled && styles.labelDisabled]}>Countdown bar color</Text>
         <View style={styles.rightContainer}>
           <Pressable
             onPress={handleReset}
             hitSlop={HIT_SLOP.sm}
             style={[styles.resetButton, { opacity: isCustomColor ? 1 : 0 }]}
-            disabled={!isCustomColor}>
+            disabled={!isCustomColor}
+            accessibilityRole='button'
+            accessibilityLabel='Reset to the default colour'
+            // Drawn at zero opacity on the default colour, so without these a screen reader offers
+            // a Reset that is invisible and does nothing. Both, because one is iOS and one Android
+            accessibilityElementsHidden={!isCustomColor}
+            importantForAccessibility={isCustomColor ? 'yes' : 'no-hide-descendants'}>
             <Text style={styles.resetText}>Reset</Text>
           </Pressable>
           <View style={styles.colorPreviewContainer}>
@@ -120,13 +132,23 @@ export default function ColorPickerSettings() {
           <View style={[styles.modalContent, { paddingBottom: bottom + 50 }]}>
             <View style={styles.modalHeader}>
               <View style={styles.headerSide}>
-                <Pressable onPress={handleDismiss} hitSlop={HIT_SLOP.md} style={styles.cancelButton}>
+                <Pressable
+                  onPress={handleDismiss}
+                  hitSlop={HIT_SLOP.md}
+                  style={styles.cancelButton}
+                  accessibilityRole='button'
+                  accessibilityLabel='Cancel'>
                   <CloseIcon width={SIZE.icon.md} height={SIZE.icon.md} color={COLORS.icon.primary} />
                 </Pressable>
               </View>
               <Text style={styles.modalTitle}>Select Color</Text>
               <View style={[styles.headerSide, styles.headerSideRight]}>
-                <Pressable onPress={handleDone} hitSlop={HIT_SLOP.md} style={styles.saveButton}>
+                <Pressable
+                  onPress={handleDone}
+                  hitSlop={HIT_SLOP.md}
+                  style={styles.saveButton}
+                  accessibilityRole='button'
+                  accessibilityLabel='Done'>
                   <CheckIcon width={SIZE.icon.md} height={SIZE.icon.md} color={COLORS.modal.saveText} />
                 </Pressable>
               </View>

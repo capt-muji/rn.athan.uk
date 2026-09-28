@@ -31,17 +31,32 @@ const athan3 = (props: Partial<ComponentProps<typeof SoundItem>> = {}) => (
   />
 );
 
-/** The play button has no role or label, so it is found as the element drawn beside the countdown */
-const playButton = () => {
-  const [, button] = screen.getByText(COUNTDOWN).parent!.children.filter((child) => typeof child !== 'string');
-  return button;
-};
+const playButton = () => screen.getByRole('button', { name: /^(Preview|Stop previewing) Athan 3$/ });
 
 describe('the Athan 3 row, not playing', () => {
   it('is named by its place in the list', async () => {
     await render(athan3());
 
     expect(screen.getByText('Athan 3')).toBeOnTheScreen();
+  });
+
+  // Which athan is chosen is drawn only as a text colour, so `selected` is all a screen reader has
+  // [whether the row is the chosen athan]
+  it.each([[true], [false]])('tells a screen reader it is the chosen athan: %s', async (isSelected) => {
+    await render(athan3({ isSelected }));
+
+    expect(screen.getByRole('radio', { name: 'Athan 3', selected: isSelected })).toBeOnTheScreen();
+  });
+
+  // The glyph is the only thing that says play or pause, so the name has to carry it
+  // [playing, what the button is called]
+  it.each([
+    [false, 'Preview Athan 3'],
+    [true, 'Stop previewing Athan 3'],
+  ])('names its play button for a screen reader while playing is %s', async (isPlaying, name) => {
+    await render(athan3({ isPlaying, remainingSeconds: isPlaying ? 12 : 0 }));
+
+    expect(screen.getByRole('button', { name })).toBeOnTheScreen();
   });
 
   it('selects the row, with a medium haptic, when the row is pressed', async () => {

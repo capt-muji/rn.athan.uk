@@ -12,16 +12,24 @@ type Props = {
 
 export default function ModalUpdate({ visible, onClose, onUpdate }: Props) {
   return (
-    <Modal visible={visible} title='Update Available!'>
+    <Modal visible={visible} title='Update Available!' onRequestClose={onClose}>
       <Text style={styles.message}>
         A new version is available.
         {'\n'}Would you like to update now?
       </Text>
       <View style={styles.buttonContainer}>
-        <Pressable style={[styles.button, styles.cancelButton]} onPress={onClose}>
+        <Pressable
+          style={[styles.button, styles.cancelButton]}
+          onPress={onClose}
+          accessibilityRole='button'
+          accessibilityLabel='Later'>
           <Text style={styles.cancelText}>Later</Text>
         </Pressable>
-        <Pressable style={[styles.button, styles.updateButton]} onPress={onUpdate}>
+        <Pressable
+          style={[styles.button, styles.updateButton]}
+          onPress={onUpdate}
+          accessibilityRole='button'
+          accessibilityLabel='Update'>
           <Text style={styles.updateText}>Update</Text>
         </Pressable>
       </View>

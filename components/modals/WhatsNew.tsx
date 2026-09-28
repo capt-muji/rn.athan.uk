@@ -25,7 +25,7 @@ type Props = {
 
 export default function ModalWhatsNew({ visible, version, items, onClose }: Props) {
   return (
-    <Modal visible={visible} title="What's New">
+    <Modal visible={visible} title="What's New" onRequestClose={onClose}>
       <Text style={styles.version}>v{version}</Text>
       <View style={styles.list}>
         {items.map((item) => (

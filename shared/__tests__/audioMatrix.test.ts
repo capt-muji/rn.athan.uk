@@ -156,11 +156,13 @@ describe('the audio matrix closes across every surface', () => {
 describe('reminder audio integrity', () => {
   const reminderFiles = mp3sIn(REMINDERS_DIR).sort();
 
+  // Decoded from a BUFFER, not a path: given a path mp3-duration does its own streaming file I/O,
+  // which cost 440ms against 14ms for the same 67 files and timed out this suite under load
   it('decodes every reminder file to a plausible length', async () => {
     const tooShort: string[] = [];
 
     for (const file of reminderFiles) {
-      const seconds: number = await getDuration(join(REMINDERS_DIR, file));
+      const seconds: number = await getDuration(readFileSync(join(REMINDERS_DIR, file)));
       if (!Number.isFinite(seconds) || seconds < 1) tooShort.push(`${file} (${seconds}s)`);
     }
 

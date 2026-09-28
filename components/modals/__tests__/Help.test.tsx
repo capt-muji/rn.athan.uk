@@ -1,9 +1,10 @@
 /**
- * The Help modal: the questions it lists on each platform, the settings screens its buttons open, and Close
+ * The Help modal: the questions it lists on each platform, the settings screens its buttons open, Close, and
+ * Android's back press
  */
 
-import { fireEvent, render, screen } from '@testing-library/react-native';
-import { StyleSheet } from 'react-native';
+import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import { BackHandler, DeviceEventEmitter, StyleSheet } from 'react-native';
 
 import { onPlatform } from '@/__tests__/harness';
 import { openDndAccessSettings } from '@/device/notifications';
@@ -16,6 +17,16 @@ import ModalHelp from '../Help';
 jest.mock('@/device/notifications', () => ({
   openDndAccessSettings: jest.fn(() => Promise.resolve(true)),
 }));
+// Jest resolves React Native for iOS, whose BackHandler never fires. The back handling exists for Android, so the
+// hardware back press runs through React Native's own Android implementation
+jest.mock('react-native/Libraries/Utilities/BackHandler.ios', () =>
+  jest.requireActual('react-native/Libraries/Utilities/BackHandler.android')
+);
+
+const pressBack = () =>
+  act(() => {
+    DeviceEventEmitter.emit('hardwareBackPress');
+  });
 
 describe('the Help modal', () => {
   it('shows nothing while it is not visible', async () => {
@@ -201,5 +212,16 @@ describe("the Help modal's chevron", () => {
 
     await fireEvent.press(screen.getByRole('button', { name: "Why don't I get any notifications?" }));
     expect(rotation()).toBe('0deg');
+  });
+
+  it('closes when Android\u2019s back button is pressed, rather than leaving the app', async () => {
+    const onClose = jest.fn();
+    const exitApp = jest.spyOn(BackHandler, 'exitApp');
+    await render(<ModalHelp visible={true} onClose={onClose} />);
+
+    await pressBack();
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(exitApp).not.toHaveBeenCalled();
   });
 });
