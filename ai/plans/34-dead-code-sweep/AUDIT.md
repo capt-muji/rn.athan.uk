@@ -151,3 +151,31 @@ side effects proven alive in the device log.
 Two defects outside the sweep's scope were found and fixed on the way: the Help chevron's pivot,
 which the owner reported and approved (1.29.50), and ISSUES #44's clock-dependent test (1.29.51).
 One more was found during the audit itself and fixed here (1.29.58).
+
+## 7. Final overlook, 2026-09-28, on the pushed commit
+
+Run against `886ee92b` after the push, from a clean tree, to confirm nothing drifted:
+
+| Check | Result |
+| --- | --- |
+| Tree clean, fully pushed, local equals `origin/uat-2` | yes, `886ee92b` both sides, 0 unpushed |
+| Version lockstep across `app.json`, `package.json` and the gradle file | all three 1.29.59 |
+| `yarn validate` | 176 suites, 4753 tests, 100% on all four measures |
+| `tsc --noEmit` | no unresolved import anywhere |
+| TODO, FIXME, XXX or HACK added | 0 |
+| Commented-out code added | none; every added comment explains why |
+| The standing guard, with a planted dead export | CAUGHT |
+| Rows in flight in `ai/plans/README.md` | 0, and all 7 steps ticked |
+| Row 18's blocker re-checked | `npm view expo dist-tags` still `latest: 57.0.25`, so row 35 is next |
+| **Bundle rebuilt from the pushed code** | 2503 exported names before the session, 2485 now: **18 removed, 0 added** |
+| 3T cold launch | 0 crashes, 77 alarms armed |
+
+**One reading needed explaining rather than accepting.** The TLS log line counted 0 on the first
+launch check, which would have meant the side effect had stopped running. It had not: that launch was
+a RESUME, and the log window showed zero JS bundle loads, so no import-time code ran at all. Forcing a
+genuine cold start produced `TLS13: first security provider { provider: 'GmsCore_OpenSSL' }`
+immediately. A zero from a resume is not evidence of absence, and the check is only meaningful
+against a cold process.
+
+**Verdict unchanged: PASS.** The pushed code is byte-comparable to the audited code, the app runs on
+device, and the guard is live for the next session.
