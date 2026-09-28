@@ -39,12 +39,18 @@ break_one "horizon back to budget + 1" \
 # --- The modal's back press ---
 break_one "modal ignores the back press" \
   components/modals/Modal.tsx \
-  's/if \(!visible \|\| !onRequestClose\) return;/if (true) return;/' \
+  's/    if \(!visible\) return;\n    const subscription = BackHandler/    if (true) return;\n    const subscription = BackHandler/' \
   components/modals/__tests__/Modal.test.tsx components
 
 break_one "modal lets the back press fall through to the app" \
   components/modals/Modal.tsx \
-  's/      onRequestClose\(\);\n      return true;/      onRequestClose();\n      return false;/' \
+  's/      closeRef\.current\(\);\n      return true;/      closeRef.current();\n      return false;/' \
+  components/modals/__tests__/Modal.test.tsx components
+
+# A modal given no close handler must leave the press alone rather than swallowing it
+break_one "modal swallows the press even with no close handler" \
+  components/modals/Modal.tsx \
+  's/      if \(!closeRef\.current\) return false;/      if (!closeRef.current) return true;/' \
   components/modals/__tests__/Modal.test.tsx components
 
 break_one "Help does not pass its close handler to the modal" \

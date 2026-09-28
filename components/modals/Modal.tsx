@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { BackHandler, Platform, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Easing,
@@ -58,16 +58,22 @@ export default function Modal({
   trailingIcon,
   onRequestClose,
 }: Props) {
+  // Read through a ref so a caller passing a fresh closure each render does not re-subscribe;
+  // callers define these inline (app/index.tsx), so the identity changes on every render
+  const closeRef = useRef(onRequestClose);
+  closeRef.current = onRequestClose;
+
   // Android's back press would otherwise fall through to the screen behind and leave the app,
   // with the modal still covering it (Sheet.tsx carries the same handler for the same reason)
   useEffect(() => {
-    if (!visible || !onRequestClose) return;
+    if (!visible) return;
     const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
-      onRequestClose();
+      if (!closeRef.current) return false;
+      closeRef.current();
       return true;
     });
     return () => subscription.remove();
-  }, [visible, onRequestClose]);
+  }, [visible]);
 
   if (!visible) return null;
 
