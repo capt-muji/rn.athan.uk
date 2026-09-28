@@ -462,13 +462,13 @@ reproducible from the topic list below.
 
 | # | Brief | State at pause |
 | --- | --- | --- |
-| 1 | Jurisprudence: fatwa councils on great circle vs rhumb line, required precision, ruling if a prayer faced wrong | Failed once on gateway capacity at the pause; ONE retry used |
-| 2 | Shipped-app engineering failures: bug reports, GitHub issues, app-store complaints, recurring traps | Failed once on gateway capacity, redeployed, no result yet |
-| 3 | Sensor and platform engineering: Android/iOS heading APIs, declination, untrustworthy-reading detection, 60fps rotation | Failed TWICE, both infrastructure: gateway capacity, then `ECONNRESET` during the owner's gateway restart. See 8.3a |
-| 4 | Professional practice: how mosque surveyors work, mosque-misalignment studies, why professionals distrust magnetic compasses | Failed TWICE, both gateway capacity, the second during the owner's gateway restart. See 8.3a |
-| 5 | UX, visual design and accessibility: existing qibla screens, honest uncertainty wording, Islamic geometric motifs | Failed once on gateway capacity at the pause; ONE retry used |
+| 1 | Jurisprudence: fatwa councils on great circle vs rhumb line, required precision, ruling if a prayer faced wrong | Attempt 3 running (`ses_f1633271bffe`) |
+| 2 | Shipped-app engineering failures: bug reports, GitHub issues, app-store complaints, recurring traps | Attempt 3 running (`ses_f1633271affe`) |
+| 3 | Sensor and platform engineering: Android/iOS heading APIs, declination, untrustworthy-reading detection, 60fps rotation | Attempt 3 running (`ses_f16332718ffe`) |
+| 4 | Professional practice: how mosque surveyors work, mosque-misalignment studies, why professionals distrust magnetic compasses | Attempt 3 running (`ses_f16332716ffe`) |
+| 5 | UX, visual design and accessibility: existing qibla screens, honest uncertainty wording, Islamic geometric motifs | Attempt 3 running (`ses_f16332714ffe`) |
 
-**None has reported, and ALL FIVE failed on the gateway rather than on their work, so each has used exactly ONE of its two retries.** Every one of those failures was the gateway returning
+**All five were re-dispatched together once the owner raised the ceiling, and every prior failure was the gateway rather than the work.** Each of those failures was the gateway returning
 `Chat admission capacity is temporarily unavailable`, never an agent error, so no brief needs rewriting.
 
 ### 8.3 The retry policy, which survives the pause
@@ -487,11 +487,23 @@ cannot do the work, not to punish a brief for a restart the owner performed on p
 
 **The reading applied here: a failure whose cause is the gateway does not consume a brief's attempts, and
 the brief is re-dispatched once the gateway is up.** A failure where the agent returns but its work is
-wrong, empty or off-brief DOES consume one. If the owner prefers the strict count, briefs 3 and 4 are the
-two that would pass to this session first, and section 8.4 stands ready either way.
+wrong, empty or off-brief DOES consume one.
 
-The distinction is recorded rather than assumed, and it is listed as an assumption in the report to the
-owner.
+**OWNER RULING, 2026-09-28, confirming that reading and raising the ceiling:** 🐋  "that is just an LLM
+gateway error on omniroute, which is an LLM gateway. It's not the actual agent itself failing... So maybe
+we should be a little bit more lenient. If an agent fails, don't take over, just let them fail and try
+again, fail and try again, fail and try again. A maximum of 20 times, I guess, if they hit the limit 20
+times, then we can stop them and take over their work."
+
+So the policy for this session, superseding the three-strike rule of earlier today:
+
+| Failure kind | What happens |
+| --- | --- |
+| Gateway or transport (`admission capacity`, `ECONNRESET`) | Re-dispatch the same brief. **Up to 20 attempts.** Never take over. |
+| The agent returns wrong, empty or off-brief work | Counts as a real attempt; the session may take the brief over. |
+| 20 gateway failures on one brief | Stop that brief and the session researches it itself. |
+
+The earlier three-strike wording is dead for this session. No brief has come close to 20.
 
 ### 8.4 Resume by doing exactly this
 
