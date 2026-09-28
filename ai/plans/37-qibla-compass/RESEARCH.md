@@ -1294,3 +1294,171 @@ longitude, CC BY 4.0 with an attribution line.** 25,000 rows is instant to searc
 
 **This is the largest single addition the feature would make to the bundle, so it goes to the owner** with
 the alternative of a much smaller curated list of major cities.
+
+## 18. OWNER RULING: no permission, no compass. The fallback branch is CANCELLED
+
+**Owner, 2026-09-28, closing the question this session had left open:**
+
+🐋  "If the user says no, we just won't, yeah, we'll just deny them. We'll prevent them from clicking the
+compass. They need to accept permissions before being able to click on the compass to show the bottom sheet
+for the compass. That's just how it is."
+
+### 18.1 What this deletes
+
+| Cancelled | Why it existed |
+| --- | --- |
+| **The bundled city dataset**, ~1 MB of GeoNames `cities15000` | Section 17.6's answer for a refusing user |
+| The city-search UI, its list, its matching | the same |
+| `geocodeAsync` as any part of the design | already rejected as network-bound; now moot entirely |
+| Every "enter a city instead" string in section 15's copy | the same |
+| **R3 agent 3's entire brief** (refusal UX, timezone and locale proxies, SIM country, sun-position fix) | it was researching a branch that no longer exists |
+| The CC BY 4.0 attribution line the dataset would have required | the same |
+
+**The largest single addition the feature would have made to the bundle is gone, and so is its licence
+obligation.**
+
+### 18.2 What replaces it
+
+The Qibla row in Settings is **gated**: the sheet does not open until foreground location permission is
+granted. The row is present and visible, because hiding it would leave the user no way to change their
+mind, but tapping it when permission is absent requests permission rather than opening the sheet.
+
+Three states, and no fourth:
+
+| Permission | The row does |
+| --- | --- |
+| `undetermined` | requests it, then opens the sheet on grant |
+| `granted` | opens the sheet |
+| `denied` | explains that the compass needs location, and offers the route to Settings |
+
+The denied state still needs copy, and section 15's research still supplies it: name what is unavailable,
+name the consequence, and give the exact route back (NN/g's documented pattern). **What it no longer needs
+is an alternative path to a bearing.**
+
+### 18.3 Why this is defensible rather than merely simpler
+
+It is also the *honest* shape, and it matches the governing principle of section 10.2. A city-picked
+position is a position the user asserted rather than one the device measured, and section 1.7's arithmetic
+shows a wrong city is worth far more error than anything else in the chain: **200 km of position error is
+9.7° of bearing**, which is larger than the entire great-circle-versus-ellipsoid debate and larger than any
+filtering improvement. A feature whose stated principle is "the number is professional-grade" should not
+quietly accept a number the user typed.
+
+**Store review note:** gating a feature behind a permission is not a dark pattern when the permission is
+genuinely required for the feature and the app still functions without it. Prayer times, notifications and
+widgets are all untouched, so a refusing user loses exactly one screen and nothing else. Apple's Guideline
+5.1.1 objection is to apps that refuse to work *at all* without an unnecessary permission, which is not
+this.
+
+### 18.4 What survives from the cancelled research
+
+Section 17's location strategy is unaffected and still correct: `Balanced` accuracy, refreshed on every
+sheet open, painted over a cached fix, never cached authoritatively. **The staleness finding of 17.3 is
+untouched**, because it never depended on the fallback.
+
+The two decisions still open for the owner shrink to one: **the coarse-only Android posture** (a config
+plugin, in exchange for Play's Minimum Scope exemption). The dataset question is closed.
+
+## 19. `adhan` is flagged by the owner as interesting, and it is more interesting than the qibla function alone
+
+**Owner, 2026-09-28:** 🐋  "The adhan function, or package, which has the qibla, is an interesting one. Keep
+this in mind, it's a very interesting one."
+
+Recorded so a later session does not have to rediscover why. A dedicated R3 brief is running on it; these
+are the facts this session has already verified for itself.
+
+### 19.1 Its qibla function is algebraically ours
+
+`adhan@4.4.6` exports `Qibla(coordinates)`, read from source via `opensrc`:
+
+```ts
+const makkah = new Coordinates(21.4225241, 39.8261818);
+// Equation from "Spherical Trigonometry For the use of colleges and schools" page 50
+const term1 = sin(makkahLon - lon);
+const term2 = cos(lat) * tan(makkahLat);
+const term3 = sin(lat) * cos(makkahLon - lon);
+return unwindAngle(radiansToDegrees(atan2(term1, term2 - term3)));
+```
+
+Measured against this session's own implementation:
+
+| Comparison | Max difference |
+| --- | --- |
+| 12 cities including Jeddah, Anchorage, Nuuk | **0.00214°** |
+| A 2,555-point global sweep | **0.00056°** |
+
+**The two are the same formula in a different algebraic arrangement.** The entire discrepancy is the Kaaba
+coordinate in the 5th decimal, about 2 metres on the ground.
+
+**So "build or adopt" cannot be decided on correctness: both are correct, and both are roughly four orders
+of magnitude better than the sensor.** It must be decided on everything else.
+
+### 19.2 The numbers that make it a serious candidate
+
+Measured live from npm and bundlephobia this session:
+
+| Metric | Value |
+| --- | --- |
+| Version | 4.4.6, published 2026-08-31 |
+| **Weekly downloads** | **48,154** |
+| **Minified** | **13.2 KB** |
+| **Minified + gzipped** | **4.6 KB** |
+| **Runtime dependencies** | **zero** |
+| Licence | MIT |
+| First published | 2016 |
+
+**4.6 KB gzipped with no dependencies** is small enough that the bundle argument against it is weak, and
+`hasSideEffects: true` is the one flag worth checking, since it may block tree-shaking down to `Qibla`
+alone.
+
+### 19.3 THE REASON IT IS ACTUALLY INTERESTING, which is not the qibla
+
+The package's real value to this project is what sits beside `Qibla.ts` in the same 4.6 KB:
+
+```
+Astronomical.ts   CalculationMethod.ts   HighLatitudeRule.ts   Madhab.ts
+PolarCircleResolution.ts   PrayerTimes.ts   Shafaq.ts   SolarCoordinates.ts
+SolarTime.ts   SunnahTimes.ts
+```
+
+**Three of those matter to work this repo has already queued or considered.**
+
+1. **`PrayerTimes`, `CalculationMethod`, `HighLatitudeRule` and `PolarCircleResolution` are the global
+   prayer-times problem**, which is row 39's v2.0 premise. This repo ALREADY researched `adhan` for exactly
+   that: `ai/features/moonsighting/RESEARCH-FINDINGS.md` section 2.11 records `adhan@4.4.6` being read with
+   `opensrc` and diffed against our own endpoint **for every day of 2026, across twelve cities and three
+   methods**, with the scripts kept in `ai/features/moonsighting/data/adhan/`. **So the library is already
+   partly validated against our own production data**, which is a far stronger position than adopting it
+   cold.
+
+2. **`SolarCoordinates` exposes solar declination and right ascension, and `SolarTime` the transit.** That
+   is the machinery for **rasd al-qibla**, the sun-transit verification method that sections 1.8 and 12.5
+   identified as the one technique that beats the magnetometer outright, and that section 10.4 recorded
+   Kemenag building a national campaign around. Section 12.5 also established that the dates must be
+   COMPUTED per year rather than hardcoded, because sources disagree on the day. **`adhan` already carries
+   the solar maths to do that.**
+
+3. **Session 32's polar work used `adhan` as its reference implementation** for the high-latitude sweep
+   (`ai/AGENTS.md` [2026-09-27]), so the library has already been trusted as ground truth by an audited
+   session in this repo.
+
+### 19.4 The honest counter-argument
+
+The qibla formula is ten lines. Adopting a dependency for ten lines is the wrong trade on its own, and
+`ai/AGENTS.md` records this project's preference for deleting code over adding it. **The case for `adhan`
+rests entirely on the three points above, not on the qibla.**
+
+There is also a real risk worth naming: **two sources of prayer times in one app.** Our API is the source
+of truth today (`ai/AGENTS.md`: "Prayer times must always be accurate (API is source of truth)"), and
+importing a library that can also compute them invites future drift unless the boundary is explicit.
+
+### 19.5 What the plan will do
+
+**Nothing yet.** This is a decision for the owner, and the R3 brief is gathering the evidence: bundle
+impact with and without tree-shaking, the test suite's own qibla reference values, whether the ports agree,
+and whether the "Spherical Trigonometry page 50" citation checks out, which is a good proxy for how
+carefully the library was built.
+
+**The provisional recommendation, to be revisited when that report lands:** use `adhan` ONLY if the session
+also wants the sun-transit verification, and otherwise write the ten lines. A dependency justified by one
+function is a dependency justified by nothing.
