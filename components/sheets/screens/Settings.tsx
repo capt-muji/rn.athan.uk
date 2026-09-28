@@ -206,12 +206,12 @@ const styles = StyleSheet.create({
   helpGlyph: {
     color: COLORS.text.primary,
     fontSize: 12,
-    // Roboto's ? glyph hangs below the metric centre; 4px total lifts it into the circle's middle
+    // Roboto's ? glyph hangs below the metric centre; 6px total lifts it into the circle's middle
     lineHeight: 20,
     fontFamily: TEXT.family.medium,
     textAlignVertical: 'center',
     includeFontPadding: false,
-    paddingBottom: 4,
+    paddingBottom: 6,
   },
   infoButton: {
     width: 20,
