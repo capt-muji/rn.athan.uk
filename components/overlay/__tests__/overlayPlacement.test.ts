@@ -123,9 +123,6 @@ const openSpan = (tree: ReactNode) => {
   return { from: above?.height, to: below?.top };
 };
 
-/** The window the mocked useWindowDimensions reports, which the above-branch measures its bottom from */
-const WINDOW_HEIGHT = 823;
-
 describe('the Extras overlay on a list whose selected index is not its drawn row (real London 2026 days)', () => {
   // The box hangs from a row EDGE and is never given a height, so it is as tall as its own content.
   // Friday lists 5 Extras rows, so only the last one flips above: that is what keeps the box off the
@@ -137,7 +134,7 @@ describe('the Extras overlay on a list whose selected index is not its drawn row
       'Istijaba',
       4,
       'bottom',
-      { bottom: WINDOW_HEIGHT - (LIST.pageY + 4 * STYLES.prayer.height) + SPACING.sm },
+      { top: LIST.pageY + 4 * STYLES.prayer.height - SPACING.sm, transform: [{ translateY: '-100%' }] },
       '1 hour before Magrib (Fridays only)',
       'ساعة قبل المغرب (الجمعة فقط)',
     ],
@@ -177,6 +174,9 @@ describe('the Extras overlay on a list whose selected index is not its drawn row
   );
 });
 
+/** Where a drawn row's top edge sits, in the space the list was measured in */
+const rowTop = (row: number) => LIST.pageY + row * STYLES.prayer.height;
+
 /** Saturday 12 September's Extras list, in the owner's order: 4 rows, no Istijaba */
 const openOnSaturday = (selectedPrayerIndex: number) => {
   storeLondonDays();
@@ -207,8 +207,9 @@ describe('the Extras overlay on a four-row list, where only the last row may fli
     const style = box.props.style as ViewStyle;
 
     expect(box.props).toMatchObject({ prayerName: english, arrowPosition: above ? 'bottom' : 'top' });
-    expect(style.top === undefined).toBe(above);
-    expect(style.bottom === undefined).toBe(!above);
+    // Both branches anchor with `top`; only the above-branch lifts itself clear by its own height
+    expect(style.top).toBe(above ? rowTop(index) - SPACING.sm : rowTop(index) + STYLES.prayer.height + SPACING.sm);
+    expect(style.transform).toEqual(above ? [{ translateY: '-100%' }] : undefined);
   });
 
   // The symptom the owner reported: the box sat against the row's Arabic text with a dead gap beneath it
@@ -239,6 +240,6 @@ describe('the Extras overlay on a five-row Friday list, where the flip follows t
     const style = box.props.style as ViewStyle;
 
     expect(box.props).toMatchObject({ prayerName: english, arrowPosition: above ? 'bottom' : 'top' });
-    expect(style.top === undefined).toBe(above);
+    expect(style.top).toBe(above ? rowTop(row) - SPACING.sm : rowTop(row) + STYLES.prayer.height + SPACING.sm);
   });
 });

@@ -109,9 +109,17 @@ export default function Overlay() {
 
   // Anchored to the row edge it hangs from, and never given a height: the box is ~166pt of content,
   // so a fixed 300 left the below-branch hugging the top of an empty box (reading as touching the
-  // row) and the above-branch floating its content far from it
+  // row) and the above-branch floating its content far from it.
+  // Both branches anchor with `top`, in the measurement's own space: `bottom` measures from the
+  // window's edge, which on iOS sits below the screen's, so mixing the two drifted the box by the
+  // difference (23.67pt on the XS) while Android, where the two coincide, looked correct
   const computedStyleInfoBox: ViewProps['style'] = showInfoBoxAbove
-    ? { bottom: window.height - rowTop + SPACING.sm, left: listMeasurements.pageX, width: listMeasurements.width }
+    ? {
+        top: rowTop - SPACING.sm,
+        transform: [{ translateY: '-100%' }],
+        left: listMeasurements.pageX,
+        width: listMeasurements.width,
+      }
     : {
         top: rowTop + STYLES.prayer.height + SPACING.sm,
         left: listMeasurements.pageX,
