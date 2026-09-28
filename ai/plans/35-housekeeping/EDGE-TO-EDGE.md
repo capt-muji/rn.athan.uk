@@ -72,6 +72,12 @@ Android 15 device is on the bench:
   what makes the two platforms agree. This is the same shape as the owner's 2026-09-26 ruling on the
   widget card PNGs: keep the working path when the floor device needs it.
 
-**What SHOULD be done instead, and is:** verify on Android 15 that the current setup behaves, since
-that is the thing nobody had ever checked. That is the device proof below, and it is the real value
-this row was holding.
+**What SHOULD be done instead, and was:** verify on Android 15 that the current setup behaves, since
+that is the thing nobody had ever checked. Done, and it does: the overlay is pixel-aligned on the
+top row, a deep row and an Extras row with its explanation box, with no status-bar offset, so
+ISSUES F.10 has not regressed on RN 0.88. The back-press rule holds there too. Numbers, screenshots
+and the tooling caveats are in `ANDROID15-PROOF.md`.
+
+That is the real value this row was holding, and it is why the row closes as CANCELLED-and-VERIFIED
+rather than simply cancelled: the migration is not worth doing, and the thing the migration was
+meant to protect has now been measured on the hardware it needed.

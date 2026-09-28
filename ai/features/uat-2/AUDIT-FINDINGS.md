@@ -6406,3 +6406,37 @@ means Later and never Update, so an accidental gesture cannot start a download. 
 the risk and was checked: the app targets SDK 36, where RN disables `onBackPressed()` by default, but
 Expo writes `enableOnBackInvokedCallback="false"` unless `predictiveBackGestureEnabled` is set, which
 this project does not set, confirmed in the APK installed on the 3T.
+
+## Session 35 follow-up: the Android 15 proof, 2026-09-28
+
+The edge-to-edge step was closed as CANCELLED on source evidence alone. The owner then put an
+Android 15 device on the bench, which both sharpened the verdict and produced the proof the row was
+actually holding.
+
+**The verdict is unchanged but better argued.** There are two spellings of `edgeToEdgeEnabled` and
+the first pass conflated them: the `app.json` key is removed in SDK 58, but the **Gradle property
+exists** and is read into an `IS_EDGE_TO_EDGE_ENABLED` BuildConfig field. It is still not worth
+taking, because `WindowUtil.updateEdgeToEdgeFeatureFlag` already forces edge-to-edge for any app
+targeting SDK 35+ running Android 15+, with no property set. This app targets 36, so it is already
+edge-to-edge there and the property would change nothing a user could see, while the library still
+supplies the `Theme.EdgeToEdge` parent across four API-level variants, its own
+`enforceNavigationBarContrast` attribute, and `SystemBars`, which RN 0.88 does not export at all.
+
+**The proof.** ISSUES F.10 was the Android overlay rendering one status bar too low under
+edge-to-edge, from an `+ insets.top` that double-counted once `measureInWindow` became
+window-absolute. Fixed in 1.6.0 against RN 0.86 and never re-checked. Measured now on API 35 at
+420dpi, where the status bar is the same 63px: the overlay's press-catcher hole, which is the
+overlay's own idea of where the selected row sits, matches the row's drawn rect with **every top,
+left and right delta exactly 0**, on the top row, a deep row and an Extras row. The only variance is
+±1px on the bottom edge, appearing as both +1 and −1, which is DIP-to-px rounding rather than a
+constant offset. The Extras explanation box renders above its row with its arrow on the row's centre.
+**F.10 has not regressed on RN 0.88.** The back-press rule holds on device for both the overlay and
+the settings sheet, with the app still focused afterwards.
+
+**DURABLE LESSON: a stale `uiautomator` dump nearly produced a false defect report.** The first
+back-press reading showed the launcher, which read as the app being left. `dumpsys window` three
+seconds later showed the app still focused, and a settled re-read agreed. Confirm a suspected device
+failure against `dumpsys window` before believing the tree. A second tooling note: Maestro and
+`mobile-mcp` cannot both hold UiAutomation, and Maestro's driver times out on this arm64 Android 15
+image more often than it starts, so the committed flow is not yet green end to end and says so; no
+alignment number depends on it.
