@@ -77,6 +77,31 @@ This also happens to match owner decision D5: the prayer row keeps its English n
 The identifier and the primary label are the same string today, which is exactly why the danger
 is invisible.
 
+### The four systems, enumerated
+
+`scripts/identifier-contract.py` lists every site, so step 38.1 is specified rather than described:
+
+| System | File | Sites |
+| --- | --- | --- |
+| MMKV preference keys | `stores/notifications.ts` | 8 |
+| OS notification identifiers | `device/notifications.ts` | 2 |
+| Audio resource slugs | `shared/notifications.ts` | 11 |
+| Ordering and Islamic-day rules | `shared/prayer.ts` | 5 |
+
+**The hardest constraint is on disk.** `assets/audio/reminders/` holds **67 mp3 files** whose names
+are built from the English prayer name, one per prayer and interval, with these 11 prayer slugs:
+
+```
+asr, dhuhr, duha, fajr, isha, istijaba, last_third, magrib, midnight, suhoor, sunrise
+```
+
+Android's `res/raw` accepts `[a-z0-9_]` only, so a slug can never carry a translated name in any
+non-Latin script, and renaming 67 shipped audio files is not a change anyone would make to add a
+language. The audio layer physically cannot be localised.
+
+That settles the question rather than merely arguing it: the English name is the identifier,
+permanently, and no design that translates it is viable.
+
 ## 3. Roboto cannot draw any of the scripts this feature is for
 
 `scripts/font-coverage.py` reads the bundled fonts' cmap tables directly.
