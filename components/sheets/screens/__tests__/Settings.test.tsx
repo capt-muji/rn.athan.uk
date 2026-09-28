@@ -8,6 +8,7 @@ import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
 
 import { london } from '@/__tests__/harness';
+import { hasLocationPermission, requestLocationPermission } from '@/device/qibla';
 import type { WhatsNewRelease } from '@/shared/whatsNew';
 import {
   bottomSheetModalAtom,
@@ -16,14 +17,28 @@ import {
   hijriDateEnabledAtom,
   popupHelpEnabledAtom,
   popupWhatsNewEnabledAtom,
+  qiblaSheetModalAtom,
   settingsSheetModalAtom,
   showArabicNamesAtom,
   showSecondsAtom,
   showTimePassedAtom,
 } from '@/stores/ui';
 
+import QiblaSheet from '../Qibla';
 import SettingsSheet from '../Settings';
 import SoundSheet from '../Sound';
+
+jest.mock('@/device/qibla', () => ({
+  hasLocationPermission: jest.fn(async () => true),
+  requestLocationPermission: jest.fn(async () => true),
+  readPosition: jest.fn(async () => ({ latitude: 51.5074, longitude: -0.1278 })),
+  watchHeading: jest.fn(async () => jest.fn()),
+}));
+
+const mockHasLocationPermission = hasLocationPermission as jest.MockedFunction<typeof hasLocationPermission>;
+const mockRequestLocationPermission = requestLocationPermission as jest.MockedFunction<
+  typeof requestLocationPermission
+>;
 
 // Whether a release has notes to show is an editorial choice made per release, so the suite sets it both ways rather
 // than depending on the stamp the current release happens to carry
@@ -126,6 +141,85 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     expect(settingsDismiss).toHaveBeenCalledTimes(1);
     expect(store.get(popupWhatsNewEnabledAtom)).toBe(true);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  it('opens the qibla sheet when the permission is already granted', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockHasLocationPermission.mockResolvedValueOnce(true);
+    await render(
+      <>
+        <SettingsSheet />
+        <QiblaSheet />
+      </>
+    );
+    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(mockRequestLocationPermission).not.toHaveBeenCalled();
+    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(qiblaPresent).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  // The request arrives with its reason already on screen, which is why it is asked here and never at launch
+  it('asks for the permission on the tap, then opens the sheet once it is granted', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockHasLocationPermission.mockResolvedValueOnce(false);
+    mockRequestLocationPermission.mockResolvedValueOnce(true);
+    await render(
+      <>
+        <SettingsSheet />
+        <QiblaSheet />
+      </>
+    );
+    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(mockRequestLocationPermission).toHaveBeenCalledTimes(1);
+    expect(qiblaPresent).toHaveBeenCalledTimes(1);
+  });
+
+  // The compass cannot point without a position, so a refusal opens nothing and leaves the settings sheet up
+  it('opens nothing when the permission is refused', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockHasLocationPermission.mockResolvedValueOnce(false);
+    mockRequestLocationPermission.mockResolvedValueOnce(false);
+    await render(
+      <>
+        <SettingsSheet />
+        <QiblaSheet />
+      </>
+    );
+    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(qiblaPresent).not.toHaveBeenCalled();
+    expect(settingsDismiss).not.toHaveBeenCalled();
+  });
+
+  // A refusal is never final: the row keeps working, so the next tap asks again
+  it('asks again on the next tap after a refusal', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockHasLocationPermission.mockResolvedValue(false);
+    mockRequestLocationPermission.mockResolvedValueOnce(false).mockResolvedValueOnce(true);
+    await render(
+      <>
+        <SettingsSheet />
+        <QiblaSheet />
+      </>
+    );
+    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(mockRequestLocationPermission).toHaveBeenCalledTimes(2);
+    expect(qiblaPresent).toHaveBeenCalledTimes(1);
   });
 
   it("offers no What's New button on a release with no notes to show", async () => {
