@@ -4,7 +4,7 @@
 
 set -u
 
-FILES=(shared/qibla.ts device/qibla.ts components/sheets/screens/Qibla.tsx components/sheets/screens/Settings.tsx)
+FILES=(shared/qibla.ts device/qibla.ts components/sheets/screens/Qibla.tsx components/sheets/screens/Settings.tsx components/sheets/parts/Sheet.tsx)
 BACKUP_DIR="$(mktemp -d)"
 # Keyed on the full path with separators flattened: two of these files are both named qibla.ts, and a basename key
 # silently restores one over the other
@@ -114,11 +114,17 @@ break_one "the sensor is never stopped" components/sheets/screens/Qibla.tsx \
 
 # 11. The sensor armed at mount, so it runs from launch on every device.
 break_one "the sensor is armed before the sheet opens" components/sheets/screens/Qibla.tsx \
-  "onFirstPresent={handlePresent}" \
+  "onPresent={handlePresent}" \
   "" \
   "$SHEET" "watches the heading once it is opened"
 
-# 12. The gate opened without a permission, so the compass points from nowhere.
+# 12. A one-time present callback, which arms the sensor once and leaves the needle dead on every later open.
+break_one "the sensor arms only on the first open" components/sheets/screens/Qibla.tsx \
+  "onPresent={handlePresent}" \
+  "onFirstPresent={handlePresent}" \
+  "$SHEET" "arms the sensor again every time it is reopened"
+
+# 13. The gate opened without a permission, so the compass points from nowhere.
 break_one "the qibla row opens without a permission" components/sheets/screens/Settings.tsx \
   "if (!granted) return;" \
   "" \
