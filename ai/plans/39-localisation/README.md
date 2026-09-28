@@ -13,7 +13,8 @@ merged, per the owner's instruction:
 | 2 | `ASSUMPTIONS.md` | Every judgement made while you slept, in one table, with the five to read first |
 | 3 | `MEASURED.md` | What this repository contains, measured rather than assumed |
 | 4 | `SELF-REVIEW.md` | This session attacking its own conclusions. Four were weakened or corrected |
-| 5 | `SPLIT.md` | How the work divides between rows 38 and 39 |
+| 5 | `LAUNCH-SET.md` | Which six languages ship first, and the one ruling that unblocks four more |
+| 6 | `SPLIT.md` | How the work divides between rows 38 and 39 |
 
 Everything else is supporting evidence, listed at the bottom.
 
@@ -92,11 +93,7 @@ and making the shipped Arabic worse. Details in `PROPOSALS.md` P4.
 - **`PLAN.md` itself.** The outline is in `PLAN-OUTLINE.md`: 11 steps, 3 device proofs, and the
   invariant. The plan is written once you have ruled on `PROPOSALS.md` P1 and P2, because those two
   change what the steps build.
-- **R6's written report.** Its data landed: `research/prayer-names.json`, 28 locales, every term
-  carrying a source, a confidence grade and a note, with honest nulls where nothing could be
-  sourced. All six daily prayer names are high-confidence in seven of eight launch locales. The
-  gaps are `Istijaba` and `Duha` in a few languages, exactly as expected, since those have no
-  standard rendering outside Arabic.
+Nothing. All seven research reports are in.
 
 ## Where this work lives
 
@@ -120,6 +117,7 @@ checkout. Nothing here touches `uat-2`. A mirror sits at `~/athan-localisation-b
 | `OWNER-DECISIONS.md` | Your rulings, D1 through D14 |
 | `OPEN-DESIGN-QUESTION.md` | The deadlock as you stated it |
 | `CATALOG-EVIDENCE.md` | Two shipping apps' catalogs, measured |
+| `research/prayer-names.json` | The sourced catalog: 28 locales, with provenance per term |
 | `R1` to `R7` `-FINDINGS.md` | What each research report changed |
 | `research/` | The seven full reports |
 | `scripts/` | Every measurement, reproducible |
