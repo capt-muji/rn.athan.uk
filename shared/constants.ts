@@ -81,8 +81,12 @@ export const NOTIFICATION_REQUEST_BUDGET = 64;
  * reach: one prayer armed with no reminder spends one request per day, so the budget alone can
  * reach `NOTIFICATION_REQUEST_BUDGET` days and anything smaller would silently cap that user.
  * Without a bound, a thin cache would make the walk scan forever for a row that does not exist.
+ *
+ * The two extra days pay for the already-past rows the walk drops at its head. A row firing on
+ * its own list day leaves one; a row firing the evening before its list day (Midnight and Last
+ * Third, and Suhoor at high latitude) leaves two once that evening's row has passed.
  */
-export const SCHEDULE_CANDIDATE_DAYS = NOTIFICATION_REQUEST_BUDGET + 1;
+export const SCHEDULE_CANDIDATE_DAYS = NOTIFICATION_REQUEST_BUDGET + 2;
 
 /**
  * Valid reminder intervals in minutes before prayer time
