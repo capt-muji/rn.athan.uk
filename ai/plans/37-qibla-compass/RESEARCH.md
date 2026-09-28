@@ -397,6 +397,62 @@ Practitioner consensus (Android compass write-ups, the low-pass filter literatur
 markedly at the cost of lag. Combined with Android's own 2°/50 ms throttle, the filter is what makes the
 needle feel solid.
 
+## 4a. CORRECTION: every modal in this app is LIGHT, and the compass must be designed for white
+
+**This contradicts the brief given to the UX research agent, and the correction is recorded rather than
+quietly applied.** That brief described the app's palette as a deep indigo/purple gradient with white text
+and asked for a dark-theme compass. That is the palette of the app's SCREENS. It is not the palette of its
+MODALS.
+
+Measured: `components/modals/` uses `COLORS.light` **19 times** and the dark gradient **zero** times.
+`Modal.tsx` hardcodes `backgroundColor: COLORS.light.background`, which is `#ffffff`, with
+`COLORS.light.text` at `#1a1a1a`. Help, What's New, Update and the colour picker all render as a white card
+over a dimmed backdrop.
+
+So if the qibla opens as a modal (section 5), **the compass is drawn on white, not on the indigo gradient**,
+and a dial designed for a dark background would be illegible in it. Three consequences:
+
+1. Any dark-theme compass concept the UX agent returns must be re-read against a white card before it is
+   adopted. Its findings on layout, metaphor, alignment feedback and accessibility transfer regardless of
+   palette; its colour recommendations do not.
+2. The app's own accent colours still apply, because they are palette-independent: the indigo family
+   (`COLORS.interactive.active` `#5015b5`, `COLORS.icon.primary` `rgba(165, 180, 252, 1)`) reads correctly
+   on both grounds, which is presumably why `Help.tsx` already defines its own `INK`, `BODY` and
+   `ACCENT_TINT` constants locally rather than pulling screen colours.
+3. **An alternative worth putting to the owner:** the qibla is the one surface where a full-bleed dark
+   screen would suit the subject, and a modal is not the only option. A dark full-screen presentation would
+   match the app's screens and make a glowing dial possible, at the cost of departing from the Help
+   precedent. This is a visual decision, and section 2.2 of the plan will carry it to the owner rather than
+   take it.
+
+### 4a.1 The wiring is a five-touchpoint pattern, already proven by Help
+
+Help was added by session 29 and its wiring is the template, measured this session:
+
+| Touchpoint | File | What it is |
+| --- | --- | --- |
+| The visibility atom | `stores/ui.ts:85` | `popupHelpEnabledAtom`, ephemeral, not persisted |
+| Its setter | `stores/ui.ts:194` | `setPopupHelpEnabled` |
+| The Settings row | `components/sheets/screens/Settings.tsx:150` | a `Pressable` with icon, label and a `›` chevron |
+| The open handler | `components/sheets/screens/Settings.tsx:53` | haptic, dismiss the sheet, then open |
+| The mount | `app/index.tsx:228` | rendered under `chromeDeferred`, with an `onClose` |
+
+**The trap inside that handler, which the plan must repeat verbatim:**
+
+```ts
+Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+hideSettingsSheet();
+setTimeout(() => setPopupHelpEnabled(true), 150);
+```
+
+The `150`ms delay exists because the sheet's dismissal animation and the modal's entrance would otherwise
+run together and fight. A qibla row that opens without it will look wrong in exactly the way Help would
+have.
+
+`chromeDeferred` matters too: the modal mounts only past the first content frame, which is Performance
+Design Rule 4's warm-but-idle-cheap pattern. **A sensor subscription must not arm at mount**, or the app
+pays for the magnetometer from launch for a screen nobody opened.
+
 ## 5. Where it goes, and how it is reached
 
 `app/Navigation.tsx` is a two-page `PagerView` (Standard, Extras) with two page dots and the settings
