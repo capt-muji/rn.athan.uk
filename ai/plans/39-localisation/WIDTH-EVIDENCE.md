@@ -148,6 +148,50 @@ guard, which is the only form that survives 20-plus languages being added over t
 The budget itself is an owner-facing number, because it trades name fidelity against column width.
 `PROPOSALS.md` proposes one with its reasoning.
 
+## The budget, derived rather than asserted
+
+The self-review found this file asserted names were "too long" without ever saying too long for
+what. `scripts/width-budget.py` derives the budget from the row's real composition.
+
+A row holds, left to right: 20pt padding, the name column, the second name, the time (measured at
+45pt for `23:59`), the 20pt alert bell, a 24pt gap and 20pt padding.
+
+| Screen | Usable | Budget, no second name | Budget with second name |
+| --- | --- | --- | --- |
+| iPhone SE, small Android (320dp) | 280pt | 191pt | **123pt** |
+| OnePlus 3T, floor device (360dp) | 320pt | 231pt | 163pt |
+| iPhone 15 (393dp) | 353pt | 264pt | 196pt |
+| Tablet, capped at `contentMaxWidth` 500 | 460pt | 371pt | 303pt |
+
+**The budget is 123pt** on the narrowest supported screen with a second name shown, which is the
+configuration that ships today.
+
+Measured against it:
+
+| Locale | Longest extras name | Width | Verdict |
+| --- | --- | --- | --- |
+| Arabic | `نصف الليل` | 68.1pt | fits |
+| English | `Last Third` | 79.8pt | fits |
+| Urdu | `رات کا آخری تہائی` | 119.9pt | fits, 3pt spare |
+| Hindi | `रात का अंतिम तिहाई` | 131.2pt | over by 8pt |
+| Turkish | `Gecenin Son Üçte Biri` | 171.8pt | over by 49pt |
+| German | `Letztes Drittel der Nacht` | 193.6pt | over by 70pt |
+| Indonesian | `Sepertiga Malam Terakhir` | 205.0pt | over by 82pt |
+| Swahili | `Theluthi ya Mwisho ya Usiku` | 226.3pt | over by 103pt |
+
+**Five of the eight launch languages exceed the budget on a 320dp screen.** English itself has only
+43pt of headroom, so this is a tight layout before any translation arrives.
+
+Three honest qualifications:
+
+1. The 320dp case is the worst one. On the 3T at 360dp the budget is 163pt, which Hindi clears and
+   Turkish still fails.
+2. Turning the second name off raises the budget to 191pt, which everything except Indonesian and
+   Swahili clears. So the second-name toggle is also a width valve, which is worth saying in the UI
+   design rather than leaving implicit.
+3. These names come from the working set, not the sourced catalog. R6 may return shorter legitimate
+   forms, which is exactly the remedy this file recommends.
+
 ## Caveat
 
 The 15 locales' names above are a working set assembled for the width question, not a sourced
