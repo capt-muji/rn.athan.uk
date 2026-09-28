@@ -1,4 +1,5 @@
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { BackHandler, Platform, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Easing,
   FadeIn,
@@ -42,9 +43,32 @@ type Props = {
   centreTitle?: boolean;
   /** Pushes the icon to the trailing edge, with the title against the leading one */
   trailingIcon?: boolean;
+  /** Android's back gesture closes the modal, matching the Sheet's own handler */
+  onRequestClose?: () => void;
 };
 
-export default function Modal({ visible, children, title, wide, divider, icon, centreTitle, trailingIcon }: Props) {
+export default function Modal({
+  visible,
+  children,
+  title,
+  wide,
+  divider,
+  icon,
+  centreTitle,
+  trailingIcon,
+  onRequestClose,
+}: Props) {
+  // Android's back press would otherwise fall through to the screen behind and leave the app,
+  // with the modal still covering it (Sheet.tsx carries the same handler for the same reason)
+  useEffect(() => {
+    if (!visible || !onRequestClose) return;
+    const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
+      onRequestClose();
+      return true;
+    });
+    return () => subscription.remove();
+  }, [visible, onRequestClose]);
+
   if (!visible) return null;
 
   return (
