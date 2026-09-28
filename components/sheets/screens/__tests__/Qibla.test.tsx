@@ -116,6 +116,19 @@ describe('the qibla sheet', () => {
     expect(stop).toHaveBeenCalledTimes(1);
   });
 
+  // A present that never reached its dismiss would otherwise overwrite the stop function and strand the old stream
+  it('releases the previous stream when it is presented twice without a dismiss', async () => {
+    const first = jest.fn();
+    mockWatchHeading.mockResolvedValueOnce(first).mockResolvedValueOnce(jest.fn());
+    await render(<QiblaSheet />);
+
+    await present();
+    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
+    await present();
+
+    await waitFor(() => expect(first).toHaveBeenCalledTimes(1));
+  });
+
   // A one-time present callback would arm the sensor on the first open and never again, leaving the needle dead for
   // the rest of the app's life
   it('arms the sensor again every time it is reopened', async () => {
