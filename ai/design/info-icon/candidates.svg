@@ -1,0 +1,45 @@
+<svg width="500" height="320" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+<rect width="480" height="300" fill="#1e1550"/>
+<style>text{font-family:-apple-system,Segoe UI,Roboto,sans-serif}</style>
+<g transform="translate(0,0)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<circle cx="68" cy="52" r="17" fill="none" stroke="#a5b4fc" stroke-width="3.5"/><circle cx="68" cy="44" r="2.6" fill="#a5b4fc"/><path d="M68 52v14" stroke="#a5b4fc" stroke-width="3.5" stroke-linecap="round"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">1 circle-i</text>
+</g><g transform="translate(96,0)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<path d="M68 36a3.5 3.5 0 1 0 .01 0z" fill="#a5b4fc"/><path d="M64.5 52v16a3.5 3.5 0 0 0 7 0V52a3.5 3.5 0 0 0-7 0z" fill="#a5b4fc"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">2 rounded-i</text>
+</g><g transform="translate(192,0)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<circle cx="68" cy="52" r="17" fill="none" stroke="#a5b4fc" stroke-width="3.5"/><path d="M61 48a7 7 0 1 1 12 5l-3 3v3" fill="none" stroke="#a5b4fc" stroke-width="3.2" stroke-linecap="round"/><circle cx="68" cy="64" r="1.8" fill="#a5b4fc"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">3 circle-q</text>
+</g><g transform="translate(288,0)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<path d="M52 40a8 8 0 0 1 8-8h16a8 8 0 0 1 8 8v14a8 8 0 0 1-8 8h-9l-8 7v-7h-.2a7.8 7.8 0 0 1-6.8-8z" fill="#a5b4fc" opacity="0.95"/><circle cx="61" cy="47" r="2" fill="#1e1550"/><circle cx="68" cy="47" r="2" fill="#1e1550"/><circle cx="75" cy="47" r="2" fill="#1e1550"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">4 chat-bubble</text>
+</g><g transform="translate(384,0)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<path d="M56 36c4-2.5 8-2.5 12 0 4-2.5 8-2.5 12 0v24c-4-2.5-8-2.5-12 0-4-2.5-8-2.5-12 0z" fill="none" stroke="#a5b4fc" stroke-width="3" stroke-linejoin="round"/><path d="M68 36v24" stroke="#a5b4fc" stroke-width="3"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">5 book</text>
+</g><g transform="translate(0,140)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<path d="M68 34a12 12 0 0 0-7 21.8c1.4 1 2 2.4 2 4V62h10v-2.2c0-1.6.6-3 2-4A12 12 0 0 0 68 34z" fill="none" stroke="#a5b4fc" stroke-width="3" stroke-linejoin="round"/><path d="M64 67h8M66 71h4" stroke="#a5b4fc" stroke-width="3" stroke-linecap="round"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">6 lightbulb</text>
+</g><g transform="translate(96,140)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<path d="M68 32l3.2 10.4L82 46l-10.8 3.6L68 60l-3.2-10.4L54 46l10.8-3.6z" fill="#a5b4fc"/><circle cx="68" cy="70" r="2" fill="#a5b4fc" opacity=".7"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">7 spark</text>
+</g><g transform="translate(192,140)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<circle cx="68" cy="52" r="17" fill="none" stroke="#a5b4fc" stroke-width="3.5"/><path d="M75 45l-4 9-9 4 4-9z" fill="#a5b4fc"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">8 compass</text>
+</g><g transform="translate(288,140)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<path d="M60 66V50a3 3 0 0 1 6 0v-3a3 3 0 0 1 6 0v3a3 3 0 0 1 6 0v9a10 10 0 0 1-10 10h-1a7 7 0 0 1-7-7z" fill="#a5b4fc"/><path d="M56 44l-3-5M80 44l3-5" stroke="#a5b4fc" stroke-width="2.4" stroke-linecap="round"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">9 hand-guide</text>
+</g><g transform="translate(384,140)">
+<rect x="40" y="24" width="56" height="56" rx="16" fill="#2a2070"/>
+<path d="M68 37a4 4 0 1 0 .01 0z" fill="none" stroke="#a5b4fc" stroke-width="2.6"/><path d="M68 50v15a4 4 0 0 0 8 0" fill="none" stroke="#a5b4fc" stroke-width="2.6" stroke-linecap="round"/>
+<text x="68" y="104" fill="#c7d2fe" font-size="12" text-anchor="middle">10 outline-i-serif</text>
+</g>
+</svg>

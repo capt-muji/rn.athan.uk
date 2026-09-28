@@ -165,7 +165,7 @@ export default function BottomSheetSound() {
       title='Select Athan'
       subtitle='Close to save'
       icon={<IconView type={Icon.SPEAKER} size={16} color='rgba(165, 180, 252, 0.8)' />}
-      snapPoints={['80%']}
+      snapPoints={['85%']}
       onDismiss={handleDismiss}
       onAnimate={clearAudio}
       perfName='sheet_sound'
