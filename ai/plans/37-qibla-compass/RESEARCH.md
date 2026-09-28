@@ -464,8 +464,8 @@ reproducible from the topic list below.
 | --- | --- | --- |
 | 1 | Jurisprudence: fatwa councils on great circle vs rhumb line, required precision, ruling if a prayer faced wrong | Failed once on gateway capacity at the pause; ONE retry used |
 | 2 | Shipped-app engineering failures: bug reports, GitHub issues, app-store complaints, recurring traps | Failed once on gateway capacity, redeployed, no result yet |
-| 3 | Sensor and platform engineering: Android/iOS heading APIs, declination, untrustworthy-reading detection, 60fps rotation | Failed once on gateway capacity, redeployed, no result yet |
-| 4 | Professional practice: how mosque surveyors work, mosque-misalignment studies, why professionals distrust magnetic compasses | Failed once on gateway capacity, redeployed, no result yet |
+| 3 | Sensor and platform engineering: Android/iOS heading APIs, declination, untrustworthy-reading detection, 60fps rotation | Failed TWICE, both infrastructure: gateway capacity, then `ECONNRESET` during the owner's gateway restart. See 8.3a |
+| 4 | Professional practice: how mosque surveyors work, mosque-misalignment studies, why professionals distrust magnetic compasses | Failed TWICE, both gateway capacity, the second during the owner's gateway restart. See 8.3a |
 | 5 | UX, visual design and accessibility: existing qibla screens, honest uncertainty wording, Islamic geometric motifs | Failed once on gateway capacity at the pause; ONE retry used |
 
 **None has reported, and ALL FIVE failed on the gateway rather than on their work, so each has used exactly ONE of its two retries.** Every one of those failures was the gateway returning
@@ -475,7 +475,23 @@ reproducible from the topic list below.
 
 Owner's rule, 2026-09-28: an agent that fails is redeployed on the same brief; if it fails a second time it
 is redeployed once more; **if it fails a third time the session takes that brief over itself.** The counts
-above are per-brief and carry forward: briefs 2, 3 and 4 have each used ONE of their two retries.
+above are per-brief and carry forward.
+
+### 8.3a An infrastructure failure is NOT one of a brief's attempts
+
+Every failure so far has been the transport: `Chat admission capacity is temporarily unavailable`, and once
+`ECONNRESET` while the owner was deliberately restarting the gateway. **Not one agent has failed at its
+research.** Counting those against the three-strike rule would hand five briefs to this session because a
+socket closed, which inverts the rule's purpose: it exists to stop a session waiting on an agent that
+cannot do the work, not to punish a brief for a restart the owner performed on purpose.
+
+**The reading applied here: a failure whose cause is the gateway does not consume a brief's attempts, and
+the brief is re-dispatched once the gateway is up.** A failure where the agent returns but its work is
+wrong, empty or off-brief DOES consume one. If the owner prefers the strict count, briefs 3 and 4 are the
+two that would pass to this session first, and section 8.4 stands ready either way.
+
+The distinction is recorded rather than assumed, and it is listed as an assumption in the report to the
+owner.
 
 ### 8.4 Resume by doing exactly this
 
