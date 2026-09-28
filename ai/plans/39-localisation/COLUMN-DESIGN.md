@@ -42,6 +42,44 @@ MORE authentic one rather than a compromise.
 
 **This is the primary remedy and it is free.** A shorter name is data.
 
+#### Evidence that layer 1 is sufficient, from a shipping app
+
+Al-Azan (`github.com/meypod/al-azan-compose`, AGPL, 14 locales) is a production Islamic prayer app.
+Its own `res/values-*/strings.xml` catalogs were fetched and measured with the same CoreText method,
+as an independent cross-check of the working set:
+
+| Locale | Longest standard name | Width | Midnight | Width |
+| --- | --- | --- | --- | --- |
+| English | Maghrib | 66.1pt | Midnight | 70.4pt |
+| Arabic | شروق الشمس | 88.2pt | منتصف الليل | 81.3pt |
+| Turkish | Akşam | 55.7pt | Gece yarısı | 87.7pt |
+| Indonesian | Maghrib | 66.1pt | Tengah malam | 119.1pt |
+| Urdu | طلوع آفتاب | 69.5pt | آدھی رات | 60.9pt |
+| Bengali | সূর্যোদয় | 51.8pt | মধ্যরাত | 53.1pt |
+| Hindi | सूर्योदय | 48.5pt | मध्यरात्रि | 55.4pt |
+| Swahili | Magharibi | 80.2pt | Katikati ya usiku | **130.2pt** |
+| French | Lever du soleil | 114.5pt | Minuit | 50.2pt |
+| German | **Nachmittagsgebet** | **148.2pt** | Mitternacht | 92.4pt |
+
+**Eighteen of twenty fit the 123pt budget.** Only German's "Nachmittagsgebet" (Asr, translated as
+"afternoon prayer" rather than transliterated) and Swahili's "Katikati ya usiku" exceed it.
+
+This materially changes the outlook. My working set had five of eight launch languages over budget,
+because it used literal translations of the English phrases. A real app's shipped vocabulary mostly
+fits, because real apps use the short forms speakers actually say.
+
+Two lessons for the catalog work:
+
+1. **The width problem is largely self-inflicted by bad source data.** Source the names properly
+   (which is R6's job) and most of it disappears.
+2. **Where it remains, the cause is translating rather than transliterating.** German's
+   "Nachmittagsgebet" is 148pt where "Asr" is 30pt, and both are correct German usage. The catalog
+   should prefer the transliteration for the prayer names, which is also what Muslim-majority
+   languages do naturally.
+
+Note Al-Azan ships `Tahajjud` rather than a "Last Third" row, so it does not answer the hardest
+term. R6 covers that.
+
 ### Layer 2: a per-locale measured column
 
 `InitialWidthMeasurement` already measures the longest name and caches it, widen-only. Making the
