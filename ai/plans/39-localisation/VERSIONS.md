@@ -57,6 +57,36 @@ So `expo-localization` is the same situation, and the plan must:
 
 That last point is not hypothetical. Session 31 hit it while adding an unrelated dependency.
 
+## The install contract for `expo-localization`
+
+Read from `registry.npmjs.org/expo-localization/58.0.1` on 2026-09-29:
+
+| Field | Value |
+| --- | --- |
+| Version | 58.0.1 |
+| Licence | MIT |
+| Runtime dependencies | 1, `rtl-detect@^1.0.2` |
+| Peer dependencies | `expo`, `react` |
+| Entry | `build/Localization.js`, types at `build/Localization.d.ts` |
+
+So the exact command, and the plan gives it verbatim rather than leaving it to the executor:
+
+```bash
+yarn add expo-localization@58.0.1
+```
+
+Never `expo install expo-localization`, which resolves the `latest` tag and installs 57.0.2.
+
+**After the install, run `shared/__tests__/widgetRuntimeLoads.test.ts`.** `ai/AGENTS.md` records
+that ANY `yarn add` can re-resolve the tree and reintroduce a nested `@expo/ui@58.0.7` under
+`node_modules/expo-widgets/`, which blanks every widget card while the flat pin still reads
+58.0.5. Session 31 hit this while adding an unrelated dependency. The recovery is
+`rm -rf node_modules/expo-widgets/node_modules && yarn install --frozen-lockfile`.
+
+The `rtl-detect` dependency is worth one note: it maps a language tag to a direction. The app pins
+its layout LTR under owner decision D7, so `rtl-detect`'s answer is used to choose TEXT alignment
+and base direction, never layout direction.
+
 ## What this says about the library choice
 
 `i18next` having **zero runtime dependencies** is the strongest single fact for a bundle-sensitive
