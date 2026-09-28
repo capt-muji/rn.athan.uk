@@ -48,6 +48,11 @@ The academic literature (Helmi 2024; the Haversine/Vincenty comparative study; a
 spherical against ellipsoidal earth models. Measured across 12 cities, **great-circle against Vincenty on
 the WGS84 ellipsoid differs by at most 0.181°** (Sydney), typically under 0.1°.
 
+**CORRECTED in section 23.2.** That 0.181° was a TWELVE-CITY sample presented as a bound. Measured over a
+16,200-point global grid the true figure is **0.387° for populated latitudes** and 1.301° within 170° of
+Mecca. The conclusion is unchanged, because 0.39° is still an order of magnitude below the sensor floor,
+but the bound in any test must be 0.5°, never 0.25°.
+
 **Vincenty is therefore rejected**: it is an iterative solver that can fail to converge for near-antipodal
 pairs, and it buys under 0.2° against a sensor that is wrong by 5 to 30°.
 
@@ -1688,3 +1693,111 @@ A five-layer test strategy, all of it executable and none of it requiring the de
 surveyed English mosques, **and its own community confirms praying at an angle to correct it.** So
 **historic mosque walls are not ground truth anywhere**, and no copy may imply that matching a local mosque
 validates the reading.
+
+## 23. R3 agent 4 (ecosystem audit): two published packages are WRONG, and one of my numbers was too
+
+Full report at `agent-reports/R3-04-ecosystem-audit.md`. The agent swept ~45 keyword families across 567
+package names and read the published tarballs of the serious candidates.
+
+### 23.1 TWO PACKAGES ON NPM RIGHT NOW RETURN WRONG ANSWERS, reproduced here
+
+**`qibla@1.1.0`** computes `deltaL = longitude − kaabaLongitude`, the sign flipped, which negates the
+`atan2` numerator and **mirrors every bearing about the north-south axis.** Reproduced this session:
+
+| City | Correct | `qibla` package | Error |
+| --- | --- | --- | --- |
+| London | 118.99 | **241.01** | 122.03 |
+| New York | 58.48 | **301.52** | 116.96 |
+| Jakarta | 295.15 | **64.85** | 129.70 |
+| Tokyo | 293.00 | **67.00** | 134.00 |
+
+**`qibla-direction@1.0.0`** normalises with `if (C < 0) C *= 360` instead of `C += 360`. Reproduced:
+**Jakarta returns −23,345° and Tokyo −24,120°.**
+
+**Both are published and installable today.** This is the concrete justification for section 22's fixture
+suite: the failure mode in this ecosystem is not drift, it is a wrong formula shipped with confidence.
+
+### 23.2 A CORRECTION TO THIS SESSION'S OWN WORK
+
+Section 1.4 reported the sphere-versus-ellipsoid difference as **"at most 0.181°"**, measured over **12
+cities**. The agent measured it over a **16,200-point global grid** and got a larger number. **Re-measured
+independently this session, and the agent is right:**
+
+| Band | n | Mean | **Max** |
+| --- | --- | --- | --- |
+| Populated (abs lat <= 60, within 150° of Mecca) | 10,268 | 0.112 | **0.387** |
+| Within 170° of Mecca | 15,482 | 0.107 | **1.301** |
+
+**Section 1.4's 0.181° was a twelve-city sample presented as a bound, which is exactly the fixture-blind-spot
+error this repo's own planning rules warn about.** The honest figure for populated latitudes is **0.39°**,
+and the oracle bound in section 22.6 should be **0.5°**, not the 0.25° drafted there.
+
+**The conclusion is unchanged**: 0.39° is still an order of magnitude below the sensor floor, so great
+circle stands. But the number in the record is now measured rather than sampled.
+
+### 23.3 The ecosystem's shape, in one line
+
+> **"No package on npm combines correct math + a proper sensor path + a compass UI. The ecosystem is:
+> correct math libs with no UI, and UI libs with broken physics."**
+
+Every *correct* implementation agrees within **0.01°**, because they are all the same formula. The
+disagreement in the wild comes entirely from the two broken packages and from sphere versus ellipsoid.
+
+### 23.4 The RN qibla UI components are all unusable, read at source level
+
+The agent read `react-native-qibla-compass@1.4.0` (20 stars, the "maintained" one) and
+`react-native-qibla-finder` in full. **Their maths is correct and their sensor handling is not:**
+
+- **Raw `atan2(y, x)` of the magnetometer**, so **no tilt compensation**: "tilt it 30° and the heading is
+  wrong by 15 to 30°". That is section 11.1's trap, shipped.
+- **No declination**, so a *magnetic* heading is compared against a *true* bearing, a systematic error equal
+  to local declination.
+- **A `+271` fudge where `+270` was meant**, an off-by-one degree.
+- **No shortest-path interpolation**, so the dial spins the long way round at north, which is section 9.1's
+  trap, shipped.
+- `react-native-qibla-finder` computes alignment as a raw subtraction, **so it is broken across the 0/360
+  boundary**: heading 359 against qibla 1 reports 358° off when it is 2° off, and **the vibration never
+  fires for users whose qibla is near north.**
+- 10 to 50 React state updates per second, against a Reanimated shared value.
+
+> **The agent's verdict: "Adopting one means inheriting precisely the parts we'd have to rewrite, while the
+> parts worth keeping are ~30 lines each."** Adopted.
+
+### 23.5 A new heading candidate, and it is the best-architected thing found
+
+**`react-native-nitro-compass@1.2.5`** is the only RN package whose sensor design is actually right:
+Android fuses accelerometer, magnetometer and `TYPE_GAME_ROTATION_VECTOR` with an adaptive low-pass and
+**an EMA on (sin, cos) so it is wrap-safe**; iOS uses `CLHeading`. It surfaces interference detection, a
+calibration quality signal, `setDeclination()`, `setLocation()` with WMM2025, and a Reanimated-friendly
+listener.
+
+**Its risk is organisational, not technical: 3 stars, a single author, 10 open issues, released 2026-05,
+and a `react-native-nitro-modules` peer dependency.**
+
+**Ruling: this does NOT displace section 16's decision.** `expo-location` ships this session. But
+nitro-compass is now the **first** fallback on the ladder if the 3T proof shows the tilt defect hurting
+real use, ahead of `react-native-attitude`, because it already implements the fusion, the wrap-safe
+smoothing and the declination input we would otherwise write ourselves.
+
+### 23.6 An independent government cross-check, which is better than another calculator
+
+**Turkey's Diyanet publishes an official city qibla table** (Türkiye Takvimi, "İstikbâl-i Kıble", PDFs in
+nine languages). Its Istanbul value, converted from their from-south convention, is **152° from north
+against our computed 151.62°**.
+
+**That is a state religious authority publishing numbers our formula reproduces**, which is a stronger
+fixture than agreement with another JavaScript library. It joins section 22's surveyed tier.
+
+**A second live oracle:** `api.aladhan.com/v1/qibla/{lat}/{lng}`, verified by the agent as pure spherical
+and matching to 4 decimal places at five coordinates. Usable as a CI cross-check, though it is a network
+dependency and therefore optional.
+
+### 23.7 The dataset question, now moot but worth recording
+
+The owner's ruling in section 18 already cancelled the bundled dataset. The agent's audit confirms that was
+the right call for a second reason: **GeoNames is a crowd-edited gazetteer, not a surveyed authority**,
+with city-centre precision of only 1 to 5 km and coordinates that "wander between releases".
+
+Had we shipped it, **Natural Earth's 50m populated places (1,249 cities, CC0, no attribution required)**
+would have beaten every npm option on licence, size and curation. Recorded in case a future session revisits
+it.
