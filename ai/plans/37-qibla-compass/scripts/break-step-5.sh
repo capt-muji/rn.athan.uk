@@ -195,6 +195,19 @@ break_one "the dial is drawn before a position is known" components/sheets/scree
   "<Dial bearing={reading.status === 'found' ? reading.bearing : 0} heading={heading} />" \
   "$SHEET" "draws no dial until the position is known"
 
+# 24. The labels counter-rotated for a rotation the layer already carries, which lays E and W on their sides.
+break_one "the labels are rotated by their own bearing" components/qibla/Dial.tsx \
+  "            alignmentBaseline='central'>" \
+  "            alignmentBaseline='central'
+            transform={\`rotate(\${-label.angle} \${at.x} \${at.y})\`}>" \
+  "$DIAL" "leaves all twelve of its labels upright"
+
+# 25. A mark reaching as far in as the label ring, which hides N behind it.
+break_one "the fixed mark reaches over the labels" components/qibla/Dial.tsx \
+  "const MARK_LENGTH = 0.04;" \
+  "const MARK_LENGTH = 0.2;" \
+  "$DIAL" "keeps its fixed mark clear of the labels"
+
 restore
 echo
 echo "caught $caught of $total"
