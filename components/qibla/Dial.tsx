@@ -28,7 +28,8 @@ const MARKER_RADIUS = 0.62;
 const MARKER_SIZE = 0.11;
 const MARKER_BAND = 0.2;
 const MARKER_CORNER = 0.12;
-const MARK_LENGTH = 0.09;
+/** Short enough to clear the labels, which sit at LABEL_RADIUS and would otherwise be hidden under it at north */
+const MARK_LENGTH = 0.04;
 const STROKE = 0.008;
 
 /**
@@ -75,10 +76,7 @@ const Face = memo(({ size, bearing }: { size: number; bearing: number }) => {
             fill={COLORS.text.secondary}
             fontSize={radius * LABEL_SIZE}
             textAnchor='middle'
-            alignmentBaseline='central'
-            // Counter-rotated so the letters stay upright on a dial that turns, which costs nothing: the angle is
-            // fixed at record time
-            transform={`rotate(${-label.angle} ${at.x} ${at.y})`}>
+            alignmentBaseline='central'>
             {label.text}
           </Text>
         );
