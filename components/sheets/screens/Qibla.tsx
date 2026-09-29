@@ -38,10 +38,10 @@ const SENSOR_INTERVAL_MS = 100;
  * What iOS yaw needs before it is a bearing, beyond the sign
  *
  * Under `XTrueNorthZVertical` yaw turns about the vertical axis from a reference near half a turn from the bearing the
- * top edge points at. Read off the dial on the owner's iPhone rather than derived, because Core Location's own
- * `trueHeading` sits exactly 90 degrees away and matches no physical direction on that handset.
+ * top edge points at. Read off the dial rather than derived, and the direction was confirmed by moving it the wrong
+ * way first: 170 pushed the marker further clockwise, so the correction grows rather than shrinks.
  */
-const IOS_AXIS_CORRECTION = 170;
+const IOS_AXIS_CORRECTION = 190;
 
 /**
  * Feeds the dial from the OS-fused rotation vector
