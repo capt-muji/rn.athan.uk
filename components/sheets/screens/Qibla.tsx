@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useSharedValue } from 'react-native-reanimated';
 
+import Dial from '@/components/qibla/Dial';
 import { IconView } from '@/components/ui';
 import { readPosition, watchHeading } from '@/device/qibla';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
@@ -23,8 +24,8 @@ const readingText = (reading: Reading): string => {
 /**
  * The qibla compass
  *
- * The dial and the live needle land in the step after this one. The bearing itself is read here, so the maths is
- * reachable from production rather than sitting behind a test alone.
+ * The bearing is arithmetic and exact; the needle is only as good as the phone's magnetometer, so the screen states
+ * the number and never claims the needle.
  */
 export default function BottomSheetQibla() {
   const [reading, setReading] = useState<Reading>({ status: 'looking' });
@@ -62,8 +63,10 @@ export default function BottomSheetQibla() {
       onPresent={handlePresent}
       onDismiss={releaseSensor}
       stackBehavior='push'>
+      {reading.status === 'found' && <Dial bearing={reading.bearing} heading={heading} />}
       <View style={styles.card}>
-        <Text style={styles.hint}>{readingText(reading)}</Text>
+        <Text style={styles.reading}>{readingText(reading)}</Text>
+        {reading.status === 'found' && <Text style={styles.hint}>Hold the phone flat for an accurate reading</Text>}
       </View>
     </Sheet>
   );
@@ -73,11 +76,18 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: COLORS.surface.elevated,
     borderRadius: RADIUS.xxl,
+    gap: SPACING.sm,
+    marginTop: SPACING.xl,
     padding: SPACING.xl,
   },
-  hint: {
+  reading: {
     color: COLORS.text.secondary,
     fontSize: TEXT.size,
+    textAlign: 'center',
+  },
+  hint: {
+    color: COLORS.text.muted,
+    fontSize: TEXT.sizeDetail,
     textAlign: 'center',
   },
 });
