@@ -73,6 +73,59 @@ describe('the qibla sheet', () => {
     await waitFor(() => expect(screen.getByText('Hold the phone flat for an accurate reading')).toBeTruthy());
   });
 
+  // The phone reports its own calibration on every sample. Drawing a confident needle while it says the heading could
+  // be 50 degrees out is the one thing this screen promised never to do
+  it('says how to fix the compass when the phone reports it is out of calibration', async () => {
+    let onHeading!: Parameters<typeof watchHeading>[0];
+    mockWatchHeading.mockImplementation(async (listener) => {
+      onHeading = listener;
+      return jest.fn();
+    });
+    await render(<QiblaSheet />);
+    await present();
+    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
+
+    await act(async () => onHeading({ heading: 119, calibrated: false }));
+
+    expect(
+      screen.getByText('Move the phone in a figure of eight a few times, away from metal and magnets')
+    ).toBeTruthy();
+  });
+
+  // A warning left over from the last time the sheet was open describes a sensor state that is no longer being measured
+  it('drops a stale calibration warning when it is reopened', async () => {
+    let onHeading!: Parameters<typeof watchHeading>[0];
+    mockWatchHeading.mockImplementation(async (listener) => {
+      onHeading = listener;
+      return jest.fn();
+    });
+    await render(<QiblaSheet />);
+    await present();
+    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
+    await act(async () => onHeading({ heading: 119, calibrated: false }));
+
+    await dismiss();
+    await present();
+
+    await waitFor(() => expect(screen.getByText('Hold the phone flat for an accurate reading')).toBeTruthy());
+  });
+
+  it('goes back to the ordinary hint once the phone reports it is calibrated again', async () => {
+    let onHeading!: Parameters<typeof watchHeading>[0];
+    mockWatchHeading.mockImplementation(async (listener) => {
+      onHeading = listener;
+      return jest.fn();
+    });
+    await render(<QiblaSheet />);
+    await present();
+    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
+    await act(async () => onHeading({ heading: 119, calibrated: false }));
+
+    await act(async () => onHeading({ heading: 119, calibrated: true }));
+
+    expect(screen.getByText('Hold the phone flat for an accurate reading')).toBeTruthy();
+  });
+
   it('says nothing about holding the phone flat while there is no bearing to read', async () => {
     mockReadPosition.mockResolvedValue(null);
     await render(<QiblaSheet />);
@@ -123,7 +176,7 @@ describe('the qibla sheet', () => {
   // The needle animates between the numbers it is handed, so the seam readings must accumulate rather than wrap: 350
   // then 10 is a 20 deg step forward, never a 340 deg spin backwards
   it('keeps the needle continuous across the north seam', async () => {
-    let onHeading!: (heading: number) => void;
+    let onHeading!: Parameters<typeof watchHeading>[0];
     mockWatchHeading.mockImplementation(async (listener) => {
       onHeading = listener;
       return jest.fn();
@@ -133,8 +186,8 @@ describe('the qibla sheet', () => {
     await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
 
     expect(() => {
-      onHeading(350);
-      onHeading(10);
+      onHeading({ heading: 350, calibrated: true });
+      onHeading({ heading: 10, calibrated: true });
     }).not.toThrow();
   });
 

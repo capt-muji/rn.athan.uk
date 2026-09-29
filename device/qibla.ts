@@ -8,6 +8,20 @@ import { normaliseHeading, type Position } from '@/shared/qibla';
 const NO_HEADING = -1;
 
 /**
+ * The calibration level below which the phone's own uncertainty exceeds 35 degrees (iOS band 1: "< 50 degrees").
+ *
+ * Both platforms report this per sample: iOS from Core Location, Android from `onAccuracyChanged`. At or below it the
+ * needle is not worth trusting, and saying so is the whole reason the compass never claims the needle.
+ */
+const POOR_CALIBRATION = 1;
+
+/** A heading with the phone's own verdict on how much it can be trusted */
+export interface HeadingReading {
+  heading: number;
+  calibrated: boolean;
+}
+
+/**
  * Whether the compass may open
  *
  * Read at every tap rather than cached: an iOS one-time grant reverts to undetermined on its own, so a remembered
@@ -79,14 +93,17 @@ export const readPosition = async (): Promise<Position | null> => {
  * "not ready" sentinel to anything that merely tests for a negative number. So the sentinel is matched exactly, before
  * normalising.
  *
- * @param onHeading Called with each heading in [0, 360)
+ * @param onHeading Called with each reading, its heading in [0, 360)
  * @returns A function that stops the stream, which the caller must run on dismiss
  */
-export const watchHeading = async (onHeading: (heading: number) => void): Promise<() => void> => {
+export const watchHeading = async (onHeading: (reading: HeadingReading) => void): Promise<() => void> => {
   const subscription = await Location.watchHeadingAsync((heading) => {
     if (heading.trueHeading === NO_HEADING) return;
 
-    onHeading(normaliseHeading(heading.trueHeading));
+    onHeading({
+      heading: normaliseHeading(heading.trueHeading),
+      calibrated: heading.accuracy > POOR_CALIBRATION,
+    });
   });
 
   return () => subscription.remove();
