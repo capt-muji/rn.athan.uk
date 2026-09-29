@@ -11,7 +11,8 @@
       "!**/.agents",
       "!**/metro.config.js",
       "!**/jest.config.js",
-      "!**/ai/features/moonsighting"
+      "!**/ai/features/moonsighting",
+      "!**/ai/plans/41-qibla-map/proof"
     ]
   },
   "formatter": {
