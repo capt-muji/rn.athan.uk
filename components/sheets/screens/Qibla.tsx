@@ -37,13 +37,12 @@ const SENSOR_INTERVAL_MS = 100;
 /**
  * What iOS yaw needs before it is a bearing, beyond the sign
  *
- * Under `XTrueNorthZVertical` yaw turns about the vertical axis from a reference roughly half a turn from the bearing
- * the top edge points at. Measured on device rather than derived, because Core Location's own `trueHeading` disagrees
- * with the fused sensor by exactly 90 degrees on the test iPhone and is the reading that matches no physical
- * direction. The ten degrees past the half turn came from reading the dial: the marker sat two five-degree ticks
- * clockwise of the mark across repeated deliberate re-aims.
+ * Under `XTrueNorthZVertical` yaw turns about the vertical axis from a reference half a turn from the bearing the top
+ * edge points at. A half turn is the only multiple of 90 the device readings support, and the axis relationship can
+ * only be a multiple of 90, so this is the whole correction: anything left over is the phone's own magnetometer, which
+ * wandered 7.6 degrees on a stationary handset over twelve minutes and which no constant can absorb.
  */
-const IOS_AXIS_CORRECTION = 190;
+const IOS_AXIS_CORRECTION = 180;
 
 /**
  * Feeds the dial from the OS-fused rotation vector
