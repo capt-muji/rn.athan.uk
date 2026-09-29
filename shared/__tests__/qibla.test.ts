@@ -10,6 +10,7 @@
 import {
   dialAngleFromYaw,
   headingFromYaw,
+  isFieldTrustworthy,
   KAABA,
   normaliseHeading,
   qiblaBearing,
@@ -213,14 +214,14 @@ describe('headingFromYaw', () => {
     expect(headingFromYaw(-Math.PI / 2, -14)).toBeCloseTo(76, 6);
   });
 
-  // On iOS the correction is 190, read off the dial: a flat phone aimed at 118.9 degrees reports a yaw of about 71
+  // On iOS the correction is a half turn, an axis relationship that is the same on every iPhone in every country
   it.each([
-    [71.1, 118.9],
-    [0, 190],
-    [90, 100],
-    [190, 0],
+    [61.1, 118.9],
+    [0, 180],
+    [90, 90],
+    [180, 0],
   ])('turns an iOS yaw of %s into a bearing of %s', (yaw, expected) => {
-    expect(headingFromYaw((yaw * Math.PI) / 180, 190)).toBeCloseTo(expected, 1);
+    expect(headingFromYaw((yaw * Math.PI) / 180, 180)).toBeCloseTo(expected, 1);
   });
 
   // A bearing that leaves the turn would spin the dial the long way round, so the wrap is closed at both ends
@@ -245,5 +246,30 @@ describe('dialAngleFromYaw', () => {
 
   it('carries the declination through', () => {
     expect(dialAngleFromYaw(0, -Math.PI / 2, 1.2)).toBeCloseTo(91.2, 6);
+  });
+});
+
+describe('isFieldTrustworthy', () => {
+  // Earth's field runs 22 to 67 microtesla at the surface, so a reading in that band is plausibly Earth's alone
+  it.each([
+    [49, 'London'],
+    [25, 'the weakest place on Earth'],
+    [65, 'the strongest'],
+  ])('trusts a field of %s microtesla, %s', (strength) => {
+    expect(isFieldTrustworthy(strength, 0, 0)).toBe(true);
+  });
+
+  // A laptop or a steel stud ADDS to the field, and the sum still points somewhere, so strength is what exposes it
+  it('rejects the 104 microtesla this project measured on its own desk', () => {
+    expect(isFieldTrustworthy(104.5, 0, 0)).toBe(false);
+  });
+
+  it('rejects a field too weak to be Earth, which is a shielded reading', () => {
+    expect(isFieldTrustworthy(10, 0, 0)).toBe(false);
+  });
+
+  // Strength is the length of the vector, never one axis, or a tilted phone would read as interference
+  it('measures the whole vector rather than any one axis', () => {
+    expect(isFieldTrustworthy(20, 30, 30)).toBe(true);
   });
 });
