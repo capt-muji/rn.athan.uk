@@ -9,12 +9,13 @@ merged, per the owner's instruction:
 
 | # | File | What it gives you |
 | --- | --- | --- |
-| 1 | `PROPOSALS.md` | The decisions waiting for you, each with its reasoning and cost. **The deadlock answer is P1** |
-| 2 | `ASSUMPTIONS.md` | Every judgement made while you slept, in one table, with the five to read first |
-| 3 | `MEASURED.md` | What this repository contains, measured rather than assumed |
-| 4 | `SELF-REVIEW.md` | This session attacking its own conclusions. Four were weakened or corrected |
-| 5 | `LAUNCH-SET.md` | Which six languages ship first, and the one ruling that unblocks four more |
-| 6 | `SPLIT.md` | How the work divides between rows 38 and 39 |
+| 1 | `ONE-OR-TWO-LANGUAGES.md` | **The deadlock answer, revised to one setting on your simplicity objection** |
+| 2 | `PROPOSALS.md` | The other decisions, each with its reasoning and cost |
+| 3 | `ASSUMPTIONS.md` | Every judgement made while you slept, in one table, with the five to read first |
+| 4 | `MEASURED.md` | What this repository contains, measured rather than assumed |
+| 5 | `SELF-REVIEW.md` | This session attacking its own conclusions. Four were weakened or corrected |
+| 6 | `LAUNCH-SET.md` | Which six languages ship first, and the one ruling that unblocks four more |
+| 7 | `SPLIT.md` | How the work divides between rows 38 and 39 |
 
 Everything else is supporting evidence, listed at the bottom.
 
