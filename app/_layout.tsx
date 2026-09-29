@@ -18,7 +18,7 @@ import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
-import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
+import { BottomSheetAlert, BottomSheetQibla, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
 import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
@@ -88,6 +88,7 @@ export default function Layout() {
             <BottomSheetSound />
             <BottomSheetSettings />
             <BottomSheetAlert />
+            <BottomSheetQibla />
           </>
         )}
       </BottomSheetModalProvider>
