@@ -89,7 +89,25 @@ and `app.json` currently carries no location key at all. The research already se
 the compass never runs in the background. Reduced accuracy ("Precise: Off") is the iOS analogue of coarse
 and does not break `trueHeading`, which section 17.1 of `RESEARCH.md` established.
 
-## 5. What this means for the owner's decision
+## 4a. OWNER RULING, 2026-09-29: ship the default, no plugin
+
+🐋  "I want to keep my config very simple... course versus fine, it's not a problem. We just want the
+simplest approach. If we get fine as a bonus, even better... So I think what I'm saying is, yes, please go
+ahead with the default."
+
+**The coarse-only plugin is CANCELLED.** The decision that justified it rested on a premise this session
+then measured and found false: fine location costs the user **no extra steps**. It is one dialog and one
+tap on every Android version, and on API 31+ the Precise/Approximate choice is a toggle INSIDE that same
+dialog, never a second trip. So the plugin bought store posture alone, at the cost of a fourth piece of
+custom build machinery.
+
+**Approximate is fully supported, verified in source.** `startHeadingUpdate` (`LocationModule.kt:597`)
+bails only when fine AND coarse are both missing, so coarse alone passes, and
+`getForegroundPermissionsAsync` (`:401`) reads `granted` off the COARSE permission, reporting accuracy as
+`"coarse"` rather than failing. Coarse is about 3 km, and the qibla needs 10 km to move half a degree, so a
+user who leaves the toggle on Approximate gets a correct compass.
+
+## 5. Superseded: what this meant for the owner's decision
 
 The decision was "coarse only, via a config plugin". That is still achievable, but it costs a **fourth
 local config plugin** plus a device proof on two phones, rather than the one plugin flag the decision was

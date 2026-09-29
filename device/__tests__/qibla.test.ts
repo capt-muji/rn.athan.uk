@@ -71,6 +71,25 @@ describe('requestLocationPermission', () => {
     await expect(requestLocationPermission()).resolves.toEqual({ granted: false, canAskAgain: true });
   });
 
+  // Android shows the dialog again after ONE refusal, so a re-ask is a real prompt and not a silent no-op
+  it('reports that asking again can still work after a first refusal', async () => {
+    mockLocation.requestForegroundPermissionsAsync.mockResolvedValueOnce(permission(false));
+
+    const { canAskAgain } = await requestLocationPermission();
+
+    expect(canAskAgain).toBe(true);
+  });
+
+  // Leaving the Android 12+ toggle on Approximate grants coarse alone, which the compass fully supports: coarse is
+  // about 3 km and the qibla needs 10 km to move half a degree
+  it('counts an approximate grant as granted', async () => {
+    mockLocation.requestForegroundPermissionsAsync.mockResolvedValueOnce(permission(true));
+
+    const { granted } = await requestLocationPermission();
+
+    expect(granted).toBe(true);
+  });
+
   // A permanent refusal makes every later request a silent no-op, so the caller must be told to stop asking
   it('reports that asking again cannot work once the refusal is permanent', async () => {
     mockLocation.requestForegroundPermissionsAsync.mockResolvedValueOnce({
