@@ -21,6 +21,12 @@ const readingText = (reading: Reading): string => {
   return reading.status === 'looking' ? 'Finding your position' : 'Your location is not available right now';
 };
 
+/** Names the condition and what to do about it, never apologising for the reading and never blaming the phone */
+const hintText = (calibrated: boolean): string =>
+  calibrated
+    ? 'Hold the phone flat for an accurate reading'
+    : 'Move the phone in a figure of eight a few times, away from metal and magnets';
+
 /**
  * The qibla compass
  *
@@ -29,6 +35,7 @@ const readingText = (reading: Reading): string => {
  */
 export default function BottomSheetQibla() {
   const [reading, setReading] = useState<Reading>({ status: 'looking' });
+  const [calibrated, setCalibrated] = useState(true);
   /** Unbounded on purpose: an interpolation runs between the numbers it is given, so a wrapped angle spins the dial */
   const heading = useSharedValue(0);
   const stopHeading = useRef<(() => void) | null>(null);
@@ -43,12 +50,14 @@ export default function BottomSheetQibla() {
   const handlePresent = useCallback(async () => {
     releaseSensor();
     setReading({ status: 'looking' });
+    setCalibrated(true);
 
     const position = await readPosition();
     setReading(position ? { status: 'found', bearing: qiblaBearing(position) } : { status: 'unavailable' });
 
     stopHeading.current = await watchHeading((sample) => {
-      heading.value = unwrapAngle(heading.value, sample);
+      heading.value = unwrapAngle(heading.value, sample.heading);
+      setCalibrated(sample.calibrated);
     });
   }, [heading, releaseSensor]);
 
@@ -66,7 +75,7 @@ export default function BottomSheetQibla() {
       {reading.status === 'found' && <Dial bearing={reading.bearing} heading={heading} />}
       <View style={styles.card}>
         <Text style={styles.reading}>{readingText(reading)}</Text>
-        {reading.status === 'found' && <Text style={styles.hint}>Hold the phone flat for an accurate reading</Text>}
+        {reading.status === 'found' && <Text style={styles.hint}>{hintText(calibrated)}</Text>}
       </View>
     </Sheet>
   );
