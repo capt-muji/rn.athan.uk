@@ -208,6 +208,24 @@ break_one "the fixed mark reaches over the labels" components/qibla/Dial.tsx \
   "const MARK_LENGTH = 0.2;" \
   "$DIAL" "keeps its fixed mark clear of the labels"
 
+# 26. The phone's own calibration verdict thrown away, so a needle up to 50 degrees out is drawn confidently.
+break_one "the calibration level is ignored" device/qibla.ts \
+  "calibrated: heading.accuracy > POOR_CALIBRATION," \
+  "calibrated: true," \
+  "$DEVICE" "reports accuracy 1 and 0 as calibrated=false"
+
+# 27. A warning from the last open left standing, describing a sensor state nobody is measuring.
+break_one "a stale calibration warning survives a reopen" components/sheets/screens/Qibla.tsx \
+  "    setCalibrated(true);" \
+  "" \
+  "$SHEET" "drops a stale calibration warning when it is reopened"
+
+# 28. The warning computed but never shown, which is the same lie one layer further out.
+break_one "the calibration warning never reaches the screen" components/sheets/screens/Qibla.tsx \
+  "{hintText(calibrated)}" \
+  "{hintText(true)}" \
+  "$SHEET" "says how to fix the compass when the phone reports it is out of calibration"
+
 restore
 echo
 echo "caught $caught of $total"
