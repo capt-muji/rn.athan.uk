@@ -8,9 +8,9 @@ import { Linking } from 'react-native';
 import {
   hasLocationPermission,
   openLocationSettings,
+  readDeclination,
   readPosition,
   requestLocationPermission,
-  watchHeading,
 } from '../qibla';
 
 const mockLocation = Location as jest.Mocked<typeof Location>;
@@ -155,83 +155,40 @@ describe('readPosition', () => {
   });
 });
 
-describe('watchHeading', () => {
+describe('readDeclination', () => {
   beforeEach(() => jest.clearAllMocks());
 
-  /** Hands back the listener expo-location was given, so a test can feed it readings */
-  const captureListener = () => {
-    const remove = jest.fn();
-    let listener!: Location.LocationHeadingCallback;
+  // The fused sensor is magnetic-referenced, so this gap is the whole correction that makes the needle point true
+  it('reports the gap between the magnetic and true headings', async () => {
+    mockLocation.getHeadingAsync.mockResolvedValueOnce({ trueHeading: 120.2, magHeading: 119, accuracy: 3 });
 
-    mockLocation.watchHeadingAsync.mockImplementationOnce(async (given) => {
-      listener = given;
-      return { remove };
-    });
-
-    return {
-      remove,
-      emit: (trueHeading: number, accuracy = 3) => listener({ trueHeading, magHeading: 0, accuracy }),
-    };
-  };
-
-  it('reports a heading the phone gives', async () => {
-    const heard: number[] = [];
-    const stream = captureListener();
-
-    await watchHeading((reading) => heard.push(reading.heading));
-    stream.emit(118.99);
-
-    expect(heard).toHaveLength(1);
-    expect(heard[0]).toBeCloseTo(118.99, 6);
+    await expect(readDeclination()).resolves.toBeCloseTo(1.2, 6);
   });
 
-  // Android's calcTrueNorth keeps the sign of the dividend, so declination west of zero yields a negative bearing
-  it('turns the negative heading Android reports into a compass bearing', async () => {
-    const heard: number[] = [];
-    const stream = captureListener();
+  // Declination is negative across the Americas, and a correction that cannot go negative would bend every bearing
+  it('reports a westward declination as negative', async () => {
+    mockLocation.getHeadingAsync.mockResolvedValueOnce({ trueHeading: 105, magHeading: 119, accuracy: 3 });
 
-    await watchHeading((reading) => heard.push(reading.heading));
-    stream.emit(-3);
-
-    expect(heard).toHaveLength(1);
-    expect(heard[0]).toBeCloseTo(357, 6);
+    await expect(readDeclination()).resolves.toBeCloseTo(-14, 6);
   });
 
-  // -1 means "no fix yet", and normalising it first would draw it as 359 deg: a confident arrow pointing nowhere
-  it('ignores the not-ready reading rather than drawing it', async () => {
-    const heard: number[] = [];
-    const stream = captureListener();
+  // The gap is a turn, not a subtraction: 359 to 1 is two degrees east, never 358 west
+  it('takes the short way round the wrap', async () => {
+    mockLocation.getHeadingAsync.mockResolvedValueOnce({ trueHeading: 1, magHeading: 359, accuracy: 3 });
 
-    await watchHeading((reading) => heard.push(reading.heading));
-    stream.emit(-1);
-
-    expect(heard).toEqual([]);
+    await expect(readDeclination()).resolves.toBeCloseTo(2, 6);
   });
 
-  // The phone knows when its own needle is unreliable, and a compass that hides that claims more than it can back.
-  // Columns: the accuracy the platform reports, whether the reading counts as calibrated.
-  // iOS bands: 3 is under 20 deg of uncertainty, 2 under 35, 1 under 50, 0 over 50.
-  it.each([
-    [3, true],
-    [2, true],
-    [1, false],
-    [0, false],
-  ])('reports accuracy %s as calibrated=%s', async (accuracy, expected) => {
-    const heard: boolean[] = [];
-    const stream = captureListener();
+  // -1 is the platform's "no fix yet", and treating it as a bearing would bend the needle by a whole degree
+  it('corrects nothing when the platform has no true heading', async () => {
+    mockLocation.getHeadingAsync.mockResolvedValueOnce({ trueHeading: -1, magHeading: 119, accuracy: 0 });
 
-    await watchHeading((reading) => heard.push(reading.calibrated));
-    stream.emit(119, accuracy);
-
-    expect(heard).toEqual([expected]);
+    await expect(readDeclination()).resolves.toBe(0);
   });
 
-  it('stops the stream when the caller lets go', async () => {
-    const stream = captureListener();
+  it('corrects nothing when the read throws', async () => {
+    mockLocation.getHeadingAsync.mockRejectedValueOnce(new Error('no sensor'));
 
-    const stop = await watchHeading(() => {});
-    stop();
-
-    expect(stream.remove).toHaveBeenCalledTimes(1);
+    await expect(readDeclination()).resolves.toBe(0);
   });
 });

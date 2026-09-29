@@ -1,21 +1,40 @@
 /**
- * The qibla sheet: what it shows before and after a position, and that its sensor never outlives the sheet
+ * The qibla sheet: what it shows before and after a position, and that its needle reads the fused sensor
  */
 
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react-native';
+import { Platform } from 'react-native';
 
-import { readPosition, watchHeading } from '@/device/qibla';
+import { readDeclination, readPosition } from '@/device/qibla';
 
 import QiblaSheet from '../Qibla';
 
 jest.mock('@/device/qibla', () => ({
   readPosition: jest.fn(),
-  watchHeading: jest.fn(),
+  readDeclination: jest.fn(),
 }));
 
+/** Nothing delivers sensor samples off a device, so the yaw the sheet reads is driven from here */
+const mockYaw = { value: 0 };
+
+jest.mock('react-native-reanimated', () => {
+  const actual = jest.requireActual<typeof import('react-native-reanimated')>('react-native-reanimated/mock');
+
+  return {
+    ...actual,
+    IOSReferenceFrame: { XTrueNorthZVertical: 3 },
+    SensorType: { ROTATION: 5 },
+    useAnimatedReaction: (prepare: () => number, react: (value: number) => void) => react(prepare()),
+    useAnimatedSensor: () => ({ sensor: { value: { yaw: mockYaw.value } }, unregister: jest.fn(), isAvailable: true }),
+  };
+});
+
 const mockReadPosition = readPosition as jest.MockedFunction<typeof readPosition>;
-const mockWatchHeading = watchHeading as jest.MockedFunction<typeof watchHeading>;
-/** The sheet reads its position and arms the sensor when it finishes opening, never on mount */
+const mockReadDeclination = readDeclination as jest.MockedFunction<typeof readDeclination>;
+
+const HINT = 'Point the top of the phone at the marker. Move away from metal and magnets if it will not settle.';
+
+/** The sheet reads its position when it finishes opening, never on mount */
 const present = async () => {
   await act(async () => {
     fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -32,7 +51,7 @@ describe('the qibla sheet', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockReadPosition.mockResolvedValue({ latitude: 51.5074, longitude: -0.1278 });
-    mockWatchHeading.mockResolvedValue(jest.fn());
+    mockReadDeclination.mockResolvedValue(1.2);
   });
 
   it('says it is looking before a position arrives', async () => {
@@ -64,76 +83,23 @@ describe('the qibla sheet', () => {
     await waitFor(() => expect(screen.getByTestId('qibla-face')).toBeTruthy());
   });
 
-  // The number is arithmetic and exact; the needle is only as good as the magnetometer, so the screen says so
-  it('names the one thing the user can do about the sensor, beside a live bearing', async () => {
+  it('names the one thing the user can do about the needle, beside a live bearing', async () => {
     await render(<QiblaSheet />);
 
     await present();
 
-    await waitFor(() => expect(screen.getByText('Hold the phone flat for an accurate reading')).toBeTruthy());
+    await waitFor(() => expect(screen.getByText(HINT)).toBeTruthy());
   });
 
-  // The phone reports its own calibration on every sample. Drawing a confident needle while it says the heading could
-  // be 50 degrees out is the one thing this screen promised never to do
-  it('says how to fix the compass when the phone reports it is out of calibration', async () => {
-    let onHeading!: Parameters<typeof watchHeading>[0];
-    mockWatchHeading.mockImplementation(async (listener) => {
-      onHeading = listener;
-      return jest.fn();
-    });
-    await render(<QiblaSheet />);
-    await present();
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
-
-    await act(async () => onHeading({ heading: 119, calibrated: false }));
-
-    expect(
-      screen.getByText('Move the phone in a figure of eight a few times, away from metal and magnets')
-    ).toBeTruthy();
-  });
-
-  // A warning left over from the last time the sheet was open describes a sensor state that is no longer being measured
-  it('drops a stale calibration warning when it is reopened', async () => {
-    let onHeading!: Parameters<typeof watchHeading>[0];
-    mockWatchHeading.mockImplementation(async (listener) => {
-      onHeading = listener;
-      return jest.fn();
-    });
-    await render(<QiblaSheet />);
-    await present();
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
-    await act(async () => onHeading({ heading: 119, calibrated: false }));
-
-    await dismiss();
-    await present();
-
-    await waitFor(() => expect(screen.getByText('Hold the phone flat for an accurate reading')).toBeTruthy());
-  });
-
-  it('goes back to the ordinary hint once the phone reports it is calibrated again', async () => {
-    let onHeading!: Parameters<typeof watchHeading>[0];
-    mockWatchHeading.mockImplementation(async (listener) => {
-      onHeading = listener;
-      return jest.fn();
-    });
-    await render(<QiblaSheet />);
-    await present();
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
-    await act(async () => onHeading({ heading: 119, calibrated: false }));
-
-    await act(async () => onHeading({ heading: 119, calibrated: true }));
-
-    expect(screen.getByText('Hold the phone flat for an accurate reading')).toBeTruthy();
-  });
-
-  it('says nothing about holding the phone flat while there is no bearing to read', async () => {
+  // The hint tells the user how to aim a needle, so it says nothing while there is no needle to aim
+  it('says nothing about aiming the phone while there is no bearing to read', async () => {
     mockReadPosition.mockResolvedValue(null);
     await render(<QiblaSheet />);
 
     await present();
 
     await waitFor(() => expect(screen.getByText('Your location is not available right now')).toBeTruthy());
-    expect(screen.queryByText('Hold the phone flat for an accurate reading')).toBeNull();
+    expect(screen.queryByText(HINT)).toBeNull();
   });
 
   // Saying "finding" forever is a lie the user cannot act on, so a failed read names what happened
@@ -158,74 +124,62 @@ describe('the qibla sheet', () => {
     await waitFor(() => expect(screen.getByText('119° from north')).toBeTruthy());
   });
 
-  // Every sheet is mounted from launch, so a mount-keyed subscription would run forever on every device
-  it('does not touch the sensor until it is opened', async () => {
+  // Every sheet is mounted from launch, so a mount-keyed read would run forever on every device
+  it('does not read the position until it is opened', async () => {
     await render(<QiblaSheet />);
 
-    expect(mockWatchHeading).not.toHaveBeenCalled();
+    expect(mockReadPosition).not.toHaveBeenCalled();
   });
 
-  it('watches the heading once it is opened', async () => {
+  // iOS reports yaw from true north already, so correcting it again would bend the needle by twice the declination
+  it('does not correct the declination on iOS', async () => {
+    Platform.OS = 'ios';
     await render(<QiblaSheet />);
 
     await present();
 
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(screen.getByText('119° from north')).toBeTruthy());
+    expect(mockReadDeclination).not.toHaveBeenCalled();
   });
 
-  // The needle animates between the numbers it is handed, so the seam readings must accumulate rather than wrap: 350
-  // then 10 is a 20 deg step forward, never a 340 deg spin backwards
-  it('keeps the needle continuous across the north seam', async () => {
-    let onHeading!: Parameters<typeof watchHeading>[0];
-    mockWatchHeading.mockImplementation(async (listener) => {
-      onHeading = listener;
-      return jest.fn();
+  // The reaction that turns a sensor sample into the dial's angle is the one line a device would otherwise own
+  it('feeds the dial from the sensor yaw', async () => {
+    mockYaw.value = -Math.PI / 2;
+    await render(<QiblaSheet />);
+
+    await present();
+
+    await waitFor(() => expect(screen.getByTestId('qibla-face')).toBeTruthy());
+  });
+
+  describe('on android, where the sensor is magnetic-referenced', () => {
+    beforeEach(() => {
+      Platform.OS = 'android';
     });
-    await render(<QiblaSheet />);
-    await present();
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
 
-    expect(() => {
-      onHeading({ heading: 350, calibrated: true });
-      onHeading({ heading: 10, calibrated: true });
-    }).not.toThrow();
-  });
+    afterEach(() => {
+      Platform.OS = 'ios';
+    });
 
-  it('stops watching when it is closed', async () => {
-    const stop = jest.fn();
-    mockWatchHeading.mockResolvedValue(stop);
-    await render(<QiblaSheet />);
+    // Without this correction every needle is off by the local declination, which is over 20 degrees in places
+    it('corrects the declination once it is opened', async () => {
+      await render(<QiblaSheet />);
 
-    await present();
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
-    await dismiss();
+      await present();
 
-    expect(stop).toHaveBeenCalledTimes(1);
-  });
+      await waitFor(() => expect(mockReadDeclination).toHaveBeenCalledTimes(1));
+    });
 
-  // A present that never reached its dismiss would otherwise overwrite the stop function and strand the old stream
-  it('releases the previous stream when it is presented twice without a dismiss', async () => {
-    const first = jest.fn();
-    mockWatchHeading.mockResolvedValueOnce(first).mockResolvedValueOnce(jest.fn());
-    await render(<QiblaSheet />);
+    // A user who travels crosses into a different declination, so a reopen must not reuse the last one
+    it('corrects the declination again every time it is reopened', async () => {
+      await render(<QiblaSheet />);
+      await present();
+      await waitFor(() => expect(mockReadDeclination).toHaveBeenCalledTimes(1));
 
-    await present();
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
-    await present();
+      await dismiss();
+      await present();
 
-    await waitFor(() => expect(first).toHaveBeenCalledTimes(1));
-  });
-
-  // A one-time present callback would arm the sensor on the first open and never again, leaving the needle dead for
-  // the rest of the app's life
-  it('arms the sensor again every time it is reopened', async () => {
-    await render(<QiblaSheet />);
-
-    await present();
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(1));
-    await dismiss();
-    await present();
-
-    await waitFor(() => expect(mockWatchHeading).toHaveBeenCalledTimes(2));
+      await waitFor(() => expect(mockReadDeclination).toHaveBeenCalledTimes(2));
+    });
   });
 });
