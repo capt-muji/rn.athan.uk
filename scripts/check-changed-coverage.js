@@ -41,6 +41,10 @@ const UNMEASURED = [
   { path: 'assets/', reason: 'static asset registries (require maps and SVG path strings), no logic' },
   { path: 'mocks/', reason: 'fabricated API data for dev builds' },
   { path: 'e2e/', reason: 'device test harness, run against the app on hardware' },
+  {
+    path: 'ai/plans/41-qibla-map/proof/',
+    reason: 'executed research artefacts, run once under Node against a live tile archive, never by the app',
+  },
   { path: 'scripts/', reason: 'repository tooling, including this gate' },
   { path: '.agents/', reason: 'Expo and EAS agent skills, documentation for coding agents' },
   { path: 'jest.config.js', reason: 'test runner configuration' },
