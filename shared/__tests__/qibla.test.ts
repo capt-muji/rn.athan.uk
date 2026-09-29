@@ -213,15 +213,15 @@ describe('headingFromYaw', () => {
     expect(headingFromYaw(-Math.PI / 2, -14)).toBeCloseTo(76, 6);
   });
 
-  // On iOS the correction is a half turn, measured on device: a flat phone aimed at 118.9 degrees reports a yaw of
-  // about 65 degrees, and 180 minus 65 is the bearing back.
+  // On iOS the correction is measured on device at 190: a flat phone aimed at 118.9 degrees reports a yaw of about 71
+  // degrees, and 190 minus 71 is the bearing back.
   it.each([
-    [65, 115],
-    [0, 180],
-    [90, 90],
-    [180, 0],
+    [71.1, 118.9],
+    [0, 190],
+    [90, 100],
+    [190, 0],
   ])('turns an iOS yaw of %s into a bearing of %s', (yaw, expected) => {
-    expect(headingFromYaw((yaw * Math.PI) / 180, 180)).toBeCloseTo(expected, 1);
+    expect(headingFromYaw((yaw * Math.PI) / 180, 190)).toBeCloseTo(expected, 1);
   });
 
   // A bearing that leaves the turn would spin the dial the long way round, so the wrap is closed at both ends
