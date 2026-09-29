@@ -42,6 +42,22 @@ MORE authentic one rather than a compromise.
 
 **This is the primary remedy and it is free.** A shorter name is data.
 
+**But the remedy is SOURCING a terser term, never trimming one this session cannot read.**
+Learned by getting it wrong (owner, 2026-09-29): a first pass shortened five terms, three of which
+already fit, and two of the cuts destroyed the meaning. Indonesian `Tengah malam` IS midnight;
+bare `Tengah` is the adjective "middle", qualifying nothing. German `Aufgang` means ascent, not
+sunrise. Both read as plausible words to anyone who does not speak the language, which is exactly
+why the width script cannot be trusted to drive the edit: **it measures, and it cannot tell whether
+the result still means anything.**
+
+Three rules follow, and the plan carries them as the guard's operating instructions:
+
+1. A term that fits is never touched. Brevity is not a virtue on its own.
+2. A shorter form comes from the SOURCE (what the national authority's own timetable prints),
+   never from cutting words off the long form.
+3. When no correct shorter form exists, the long form STAYS and the locale is flagged for a layout
+   remedy. German `Sonnenaufgang` is that case: one correct word, 3pt over, no alternative.
+
 #### Evidence that layer 1 is sufficient, from a shipping app
 
 Al-Azan (`github.com/meypod/al-azan-compose`, AGPL, 14 locales) is a production Islamic prayer app.
