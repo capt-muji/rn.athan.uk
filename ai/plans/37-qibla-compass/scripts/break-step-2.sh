@@ -131,11 +131,19 @@ break_one "the sensor arms only on the first open" components/sheets/screens/Qib
   "onFirstPresent={handlePresent}" \
   "$SHEET" "arms the sensor again every time it is reopened"
 
-# 14. The gate opened without a permission, so the compass points from nowhere.
-break_one "the qibla row opens without a permission" components/sheets/screens/Settings.tsx \
-  "if (!granted) return;" \
+# 14. A stale fix drawn as a live one, which points a traveller at the country they left.
+break_one "a failed position falls back to an older one" device/qibla.ts \
+  "logger.warn('QIBLA: Failed to read position', { error });
+    return null;" \
+  "logger.warn('QIBLA: Failed to read position', { error });
+    return Location.getLastKnownPositionAsync().then((l) => (l ? { latitude: l.coords.latitude, longitude: l.coords.longitude } : null));" \
+  "$DEVICE" "answers null when the position cannot be read, rather than an older one"
+
+# 15. A dead row: a permanent refusal makes every further request a silent no-op.
+break_one "a permanent refusal offers no way back" components/sheets/screens/Settings.tsx \
+  "if (!canAskAgain) offerLocationSettings();" \
   "" \
-  "$SETTINGS" "opens nothing when the permission is refused"
+  "$SETTINGS" "offers the route to Settings when the refusal is permanent"
 
 restore
 echo

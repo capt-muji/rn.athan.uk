@@ -1,11 +1,11 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useMemo } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
-import { hasLocationPermission, requestLocationPermission } from '@/device/qibla';
+import { hasLocationPermission, openLocationSettings, requestLocationPermission } from '@/device/qibla';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
@@ -29,6 +29,18 @@ import {
 import { SettingsToggle, Sheet } from '../parts';
 import ColorPicker from './ColorPicker';
 
+/** Names what is unavailable and the one route back, never blaming the user for the refusal */
+const offerLocationSettings = () => {
+  Alert.alert(
+    'Qibla needs your location',
+    'The compass points to the Kaaba from where you are. Location is turned off.',
+    [
+      { text: 'Not now', style: 'cancel' },
+      { text: 'Open Settings', onPress: openLocationSettings },
+    ]
+  );
+};
+
 export default function BottomSheetSettings() {
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
@@ -45,15 +57,24 @@ export default function BottomSheetSettings() {
   };
 
   // The compass needs a position to point from, so the permission is asked for here, with the reason already on
-  // screen. A refusal leaves the row working: the next tap asks again.
+  // screen. Once it is permanently denied a further request is a silent no-op, and Settings is the only route left.
   const handleQiblaPress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    const granted = (await hasLocationPermission()) || (await requestLocationPermission());
-    if (!granted) return;
+    if (await hasLocationPermission()) {
+      hideSettingsSheet();
+      showQiblaSheet();
+      return;
+    }
 
-    hideSettingsSheet();
-    showQiblaSheet();
+    const { granted, canAskAgain } = await requestLocationPermission();
+    if (granted) {
+      hideSettingsSheet();
+      showQiblaSheet();
+      return;
+    }
+
+    if (!canAskAgain) offerLocationSettings();
   };
 
   // Re-opens the What's New modal for the installed version - display-only,

@@ -1,4 +1,5 @@
 import * as Location from 'expo-location';
+import { Linking } from 'react-native';
 
 import logger from '@/shared/logger';
 import { normaliseHeading, type Position } from '@/shared/qibla';
@@ -27,15 +28,29 @@ export const hasLocationPermission = async (): Promise<boolean> => {
 /**
  * Asks for foreground location
  *
- * @returns Whether the request ended granted
+ * @returns Whether the request ended granted, and whether asking again could ever succeed
  */
-export const requestLocationPermission = async (): Promise<boolean> => {
+export const requestLocationPermission = async (): Promise<{ granted: boolean; canAskAgain: boolean }> => {
   try {
-    const { granted } = await Location.requestForegroundPermissionsAsync();
-    return granted;
+    const { granted, canAskAgain } = await Location.requestForegroundPermissionsAsync();
+    return { granted, canAskAgain };
   } catch (error) {
     logger.warn('QIBLA: Failed to request location permissions', { error });
-    return false;
+    return { granted: false, canAskAgain: false };
+  }
+};
+
+/**
+ * Opens the app's own settings page
+ *
+ * The only route left once the permission is permanently denied: no app can grant itself location, and a further
+ * request is a silent no-op, so without this the row would be a button that does nothing.
+ */
+export const openLocationSettings = async (): Promise<void> => {
+  try {
+    await Linking.openSettings();
+  } catch (error) {
+    logger.warn('QIBLA: Failed to open settings', { error });
   }
 };
 
@@ -52,28 +67,7 @@ export const readPosition = async (): Promise<Position | null> => {
     const { coords } = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
     return { latitude: coords.latitude, longitude: coords.longitude };
   } catch (error) {
-    logger.warn('QIBLA: Failed to read position, falling back to the last known one', { error });
-
-    return readLastKnownPosition();
-  }
-};
-
-/**
- * The fix the phone already had
- *
- * A live read fails indoors and on a phone whose radio is cold, where a fix from minutes ago is still worth far more
- * than nothing: the qibla moves half a degree per 10 km, so a stale city is the same answer as a fresh one.
- *
- * @returns The last known position, or null when the phone holds none
- */
-const readLastKnownPosition = async (): Promise<Position | null> => {
-  try {
-    const last = await Location.getLastKnownPositionAsync();
-    if (!last) return null;
-
-    return { latitude: last.coords.latitude, longitude: last.coords.longitude };
-  } catch (error) {
-    logger.warn('QIBLA: No last known position either', { error });
+    logger.warn('QIBLA: Failed to read position', { error });
     return null;
   }
 };

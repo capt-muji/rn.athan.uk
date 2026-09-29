@@ -5,6 +5,7 @@
 
 import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { Alert } from 'react-native';
 import { getDefaultStore } from 'jotai';
 
 import { london } from '@/__tests__/harness';
@@ -30,7 +31,8 @@ import SoundSheet from '../Sound';
 
 jest.mock('@/device/qibla', () => ({
   hasLocationPermission: jest.fn(async () => true),
-  requestLocationPermission: jest.fn(async () => true),
+  requestLocationPermission: jest.fn(async () => ({ granted: true, canAskAgain: true })),
+  openLocationSettings: jest.fn(async () => {}),
   readPosition: jest.fn(async () => ({ latitude: 51.5074, longitude: -0.1278 })),
   watchHeading: jest.fn(async () => jest.fn()),
 }));
@@ -167,7 +169,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
   it('asks for the permission on the tap, then opens the sheet once it is granted', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     mockHasLocationPermission.mockResolvedValueOnce(false);
-    mockRequestLocationPermission.mockResolvedValueOnce(true);
+    mockRequestLocationPermission.mockResolvedValueOnce({ granted: true, canAskAgain: true });
     await render(
       <>
         <SettingsSheet />
@@ -186,7 +188,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
   it('opens nothing when the permission is refused', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     mockHasLocationPermission.mockResolvedValueOnce(false);
-    mockRequestLocationPermission.mockResolvedValueOnce(false);
+    mockRequestLocationPermission.mockResolvedValueOnce({ granted: false, canAskAgain: true });
     await render(
       <>
         <SettingsSheet />
@@ -202,11 +204,50 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     expect(settingsDismiss).not.toHaveBeenCalled();
   });
 
+  // Once the refusal is permanent every further request is a silent no-op, so without this the row is a dead button
+  it('offers the route to Settings when the refusal is permanent', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockHasLocationPermission.mockResolvedValueOnce(false);
+    mockRequestLocationPermission.mockResolvedValueOnce({ granted: false, canAskAgain: false });
+    const alert = jest.spyOn(Alert, 'alert');
+    await render(
+      <>
+        <SettingsSheet />
+        <QiblaSheet />
+      </>
+    );
+    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(alert).toHaveBeenCalledWith(
+      'Qibla needs your location',
+      'The compass points to the Kaaba from where you are. Location is turned off.',
+      expect.any(Array)
+    );
+    expect(qiblaPresent).not.toHaveBeenCalled();
+  });
+
+  // Blaming the user, or nagging them when a plain re-ask still works, is the manipulative version of this flow
+  it('does not offer Settings while asking again could still work', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockHasLocationPermission.mockResolvedValueOnce(false);
+    mockRequestLocationPermission.mockResolvedValueOnce({ granted: false, canAskAgain: true });
+    const alert = jest.spyOn(Alert, 'alert');
+    await render(<SettingsSheet />);
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(alert).not.toHaveBeenCalled();
+  });
+
   // A refusal is never final: the row keeps working, so the next tap asks again
   it('asks again on the next tap after a refusal', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     mockHasLocationPermission.mockResolvedValue(false);
-    mockRequestLocationPermission.mockResolvedValueOnce(false).mockResolvedValueOnce(true);
+    mockRequestLocationPermission
+      .mockResolvedValueOnce({ granted: false, canAskAgain: true })
+      .mockResolvedValueOnce({ granted: true, canAskAgain: true });
     await render(
       <>
         <SettingsSheet />
