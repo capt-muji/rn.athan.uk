@@ -265,20 +265,59 @@ for a word.
 **The rule: translate the TERM, never the DEFINITION.** The explanation string already carries the
 definition, so the label does not have to.
 
-### Measured, and it closes every gap
+### The planning session got this wrong first, and the owner caught it
 
-The sourced catalog carried two terms over the 123pt budget in the launch set. Applying the rule:
+🐋  "Tengah in bahasa means middle. Middle of what? That's just wrong. We need MIDNIGHT not middle
+of the night."
 
-| Locale | Term | As sourced | Width | Terse | Width | Saved |
+**He is right, and the error was worse than one bad word.** The first version of this ruling
+proposed five shortenings. Re-measured against the budget:
+
+| Locale | Term | Sourced | Width | Over 123pt? | Proposed | Verdict |
 | --- | --- | --- | --- | --- | --- | --- |
-| French | Midnight | Minuit islamique | 132.3pt | **Minuit** | 50.2pt | 82pt |
-| German | Sunrise | Sonnenaufgang | 125.9pt | **Aufgang** | 67.5pt | 58pt |
-| Indonesian | Midnight | Tengah malam | 119.1pt | **Tengah** | 59.1pt | 60pt |
-| Indonesian | Last Third | Sepertiga akhir | 120.3pt | **Sepertiga** | 76.5pt | 44pt |
-| French | Sunrise | Lever du soleil | 114.5pt | **Lever** | 43.3pt | 71pt |
+| French | Midnight | Minuit islamique | 132.3pt | **yes** | Minuit | valid |
+| German | Sunrise | Sonnenaufgang | 125.9pt | **yes** | Aufgang | **WRONG WORD** |
+| Indonesian | Midnight | Tengah malam | 119.1pt | no | Tengah | **needless AND wrong** |
+| Indonesian | Last Third | Sepertiga akhir | 120.3pt | no | Sepertiga | **needless** |
+| French | Sunrise | Lever du soleil | 114.5pt | no | Lever | **needless** |
 
-**Every launch locale now fits, with room to spare.** The two that were over are the two the rule
-targets, which is the confirmation that the rule is aimed correctly rather than a coincidence.
+**Three of the five terms already fit.** They were shortened for no reason at all, and two of those
+shortenings destroyed the meaning:
+
+- `Tengah malam` is "middle of the night", which IS midnight in Indonesian. `Tengah` alone is the
+  bare adjective "middle", qualifying nothing. It is a truncation wearing a real word's clothes.
+- `Aufgang` is a real German word meaning ascent or stairway entrance. It is not sunrise.
+  `Sonnenaufgang` is one word and it is the only word.
+- `Lever` alone is the verb "to lift". `Lever du soleil` is the phrase French actually uses.
+
+### The corrected rule
+
+D16 stands, but it governs the SOURCE, not a post-hoc trim:
+
+1. **Ask the source for the term a timetable prints**, which is naturally terse. Do not translate
+   the English definition and then cut it down.
+2. **Only act when a term is actually over budget.** A term that fits is never touched. Brevity is
+   not a virtue on its own.
+3. **A shorter form must mean the same thing.** If the only shorter option changes the meaning,
+   the long form stays and the locale is flagged for a different remedy.
+
+### What genuinely needs a remedy
+
+Exactly two terms in the launch set, not five:
+
+| Locale | Term | Sourced | Width | Honest options |
+| --- | --- | --- | --- | --- |
+| French | Midnight | Minuit islamique | 132.3pt | **`Minuit`** at 50.2pt is a real word meaning midnight, and the "islamique" qualifier is what the explanation string is for. Safe |
+| German | Sunrise | Sonnenaufgang | 125.9pt | No correct shorter word exists. **This one needs a different remedy**, not a shorter label |
+
+German Sunrise is the honest residual: one correct word, 3pt over a budget derived for the
+narrowest screen with a second name shown. `COLUMN-DESIGN.md`'s later layers exist for exactly this
+case, and the cheapest is that the budget rises to 191pt when the second name is hidden, which the
+Arabic-derived rule already does for no locale but which the toggle does for any user.
+
+**Durable lesson for the plan: never shorten a translation this session cannot read.** The width
+script measures; it cannot tell whether the result still means anything. Any shortening is a
+question for the source, and a term that fits is left alone.
 
 ### Why this is safe to do
 
