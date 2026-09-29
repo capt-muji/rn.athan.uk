@@ -24,3 +24,9 @@ format rather than reveal it.
 first render. It counts how many features fall within a radius of the tile centre, which is what turned the
 feature cap from an unwritten worry into the measured rule in `P3` section 7: a 122 m view is 49 paths and
 92 ms on the floor device, and it still holds 16 roads.
+
+Two more scripts close the Hermes question, which was `P3`'s largest open item. `decode-hermes-safe.js` is
+the MVT decoder rewritten against `Uint8Array`, `DataView` and `TextDecoder` with zero Node builtins, fed an
+input that is verifiably not a `Buffer`. `gunzip-without-zlib.js` proves `fflate`'s browser build inflates a
+real tile to a byte-identical result in 4.3 ms with zero `require` calls to Node. See
+`../agent-reports/P4-hermes-viability.md`.

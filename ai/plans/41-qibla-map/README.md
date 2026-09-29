@@ -27,7 +27,8 @@ GB ceiling, so no whole-world offline map can ship, and R1 was right about that.
 a map: it needs the tile the user is standing in. A zoom-15 tile is 761 m across, so their street is inside
 it. Measured worst case for a 3 by 3 grid plus district context: **1.7 MB**.
 
-**3. No map library is needed.** A qibla map is a static picture with no panning, zooming or gestures, so the
+**3. No map library and almost no new code is needed.** One 91 KB dependency (`fflate`, for gzip) and
+nothing else: `react-native-svg` draws it and `expo-file-system` reads the bytes, both already installed. A qibla map is a static picture with no panning, zooming or gestures, so the
 whole pipeline is 173 lines of JavaScript over the `react-native-svg` already installed. The alternative was
 priced honestly at +39.9 MB of native binary.
 
@@ -38,7 +39,7 @@ priced honestly at +39.9 MB of native binary.
 | `PROPOSALS.md` | **The five owner decisions.** Start here |
 | `BRIEF.md` | The research brief, the constraints, and the size ruling |
 | `ASSUMPTIONS.md` | Every judgement taken unattended, with the five likeliest to need correction flagged |
-| `proof/` | **The executed proof.** Five scripts that run, plus the rendered output |
+| `proof/` | **The executed proof.** Seven scripts that run, plus the rendered output |
 
 ### The planning session's own work, in order
 
@@ -48,6 +49,7 @@ priced honestly at +39.9 MB of native binary.
 | `agent-reports/P1-solar-proof.md` | The solar method, validated two ways, with the altitude gate swept and the formulation that fails in North America |
 | `agent-reports/P2-the-design.md` | The ladder, the 24 to 40% coverage finding that forced it, and the per-spot offset hypothesis |
 | `agent-reports/P3-the-concrete-solution.md` | The map, executed end to end, with the feature cap measured |
+| `agent-reports/P4-hermes-viability.md` | That the pipeline runs in Hermes: every Node dependency eliminated and gzip proven |
 
 ### The five research reports
 
@@ -70,9 +72,10 @@ magnetic offset at a fixed spot is stable across hours and days. Same spot, same
 time. If it holds, rung 2 is a compass correction. If it drifts, rung 2 becomes a landmark note and the
 ladder still stands.
 
-**Four things are unproven and named as such:** Metro's resolver against `adhan`'s internals (with a 30-line
-fallback already written), the decode cost on the SD820 and A12, the feature cap for Jakarta's 6,189
-buildings, and above all that the map can be DRAWN rather than that users can READ it. The 6.2-degree
+**What is still unproven, named as such.** `P4` closed the Hermes question, so the list is shorter than it
+was: Metro's resolver against `adhan`'s internals (with a 30-line fallback already written), the decode and
+record cost on the actual SD820 and A12 rather than under V8, whether nine decoded tiles fit in memory on a
+2016 phone, and above all that the map can be DRAWN rather than that users can READ it. The 6.2-degree
 alignment figure is the only load-bearing number in the whole session that is an estimate.
 
 ## Status
