@@ -54,12 +54,16 @@ long-press sheet (learned the hard way).
 | Element | Tap point | Notes |
 | --- | --- | --- |
 | Settings (hex-nut) button | bottom-centre, ~ (540, 1830) | dev-client builds also show a blue circle FAB (dev menu) nearby; the FAB never renders on iOS 26.5 scene builds |
+| Settings sheet: Change athan row | (540, 851) | first row of the Sound card, sheet open at its default snap |
+| Settings sheet: Qibla row | (540, 977) | second row of the Sound card (session 37) |
 
 ## Known dialogs
 
 | Element | Tap point | Notes |
 | --- | --- | --- |
 | Play Protect "security check" prompt on install | varies | PREVENTED for adb installs by `settings put global verifier_verify_adb_installs 0` and `package_verifier_enable 0` (session 15; original values were 1 and 1) |
+| Location permission: DENY / ALLOW | (607, 1113) / (783, 1113) | Android 9 asks once with NO precise/approximate choice; that split arrives at API 31 (session 37) |
+| Play Services "Location Accuracy": No thanks / Turn on | (657, 1543) / (878, 1543) | a SECOND prompt after the grant, from Play Services rather than the app; declining it leaves `getCurrentPositionAsync` with no fix (session 37) |
 
 ## Launcher: widget placement mechanics ( OxygenOS 3 / Android 9 )
 

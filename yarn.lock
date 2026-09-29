@@ -2673,6 +2673,11 @@ acorn@^8.1.0, acorn@^8.11.0, acorn@^8.15.0, acorn@^8.8.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.18.0.tgz#4faf01b2d6d326bfeed97aea1f52220b5f4c1940"
   integrity sha512-lGq+9yr1/GuAWaVYIHRjvvySG5/4VfKIvC8EWxStPdcDh/Ka7FG3twP6v4d5BkravUilhIAsG4Qj83t02LWUPQ==
 
+adhan@4.4.6:
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/adhan/-/adhan-4.4.6.tgz#2367ebc37efe849f9385b9f29ebf805d4b62b791"
+  integrity sha512-cpLLcr6qxx+mLc6jgSXJwAAHxDFrhXhVLuzRbZPrpQKIEpJw+0LcfG6u9WEjq66kcTX/2sCkI3VztgRoUXBnFg==
+
 agent-base@6:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-6.0.2.tgz#49fff58577cfee3f37176feab4c22e00f86d7f77"
@@ -3962,6 +3967,13 @@ expo-linking@~58.0.7:
   dependencies:
     expo-constants "~58.0.7"
     invariant "^2.2.4"
+
+expo-location@~58.0.8:
+  version "58.0.8"
+  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-58.0.8.tgz#3564cd2301217ea973971aa8336ec3b0b6c711a7"
+  integrity sha512-IeP0lm3xroi+/2vc0Es+zwLoAQXqIWLM1qT0pcjRHDPGG+hPOml+SDUTuumJ8xTThpEKlmb/pv0o+uAyBl2FUg==
+  dependencies:
+    "@expo/image-utils" "^0.12.1"
 
 expo-manifests@~58.0.0:
   version "58.0.0"

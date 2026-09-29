@@ -37,10 +37,11 @@ if [[ ${FRAME_AUDIT:-video} == sf ]]; then
   sleep 1
   adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency 'com.mugtaba.athan/com.mugtaba.athan.MainActivity#0'" \
     > "$OUT/latency.txt" 2>&1
-  # `|| status=$?` so `set -e` does not abort on a FAIL verdict before it can be
-  # reported; the status is re-raised deliberately below.
-  status=0
-  python3 - "$OUT/latency.txt" << 'EOF' || status=$?
+  # `|| verdict=$?` so `set -e` does not abort on a FAIL before it can be reported; the
+  # status is re-raised deliberately below. Never name this `status`: zsh reserves it as a
+  # read-only alias for `$?`, and assigning it kills the script before it measures anything.
+  verdict=0
+  python3 - "$OUT/latency.txt" << 'EOF' || verdict=$?
 import sys
 lines = [l.split() for l in open(sys.argv[1]) if len(l.split()) == 3]
 pts = sorted(int(f[1]) for f in lines if int(f[1]) != 0)
@@ -68,7 +69,7 @@ print("30fps FLOOR (cadence only):", "PASS" if passed else "FAIL")
 sys.exit(0 if passed else 1)
 EOF
   echo "evidence: $OUT"
-  exit $status
+  exit $verdict
 fi
 
 adb -s "$SERIAL" shell "rm -f /sdcard/frame_audit.mp4"
