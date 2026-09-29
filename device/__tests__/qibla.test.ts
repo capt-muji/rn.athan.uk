@@ -4,7 +4,9 @@
 
 import * as Location from 'expo-location';
 
-import { hasLocationPermission, readPosition, requestLocationPermission, watchHeading } from '../qibla';
+import { Linking } from 'react-native';
+
+import { hasLocationPermission, openLocationSettings, readPosition, requestLocationPermission, watchHeading } from '../qibla';
 
 const mockLocation = Location as jest.Mocked<typeof Location>;
 
@@ -57,22 +59,49 @@ describe('hasLocationPermission', () => {
 describe('requestLocationPermission', () => {
   beforeEach(() => jest.clearAllMocks());
 
-  it('answers true when the request ends granted', async () => {
+  it('answers granted when the request ends granted', async () => {
     mockLocation.requestForegroundPermissionsAsync.mockResolvedValueOnce(permission(true));
 
-    await expect(requestLocationPermission()).resolves.toBe(true);
+    await expect(requestLocationPermission()).resolves.toEqual({ granted: true, canAskAgain: true });
   });
 
-  it('answers false when the request is refused', async () => {
+  it('answers refused, and whether asking again could ever work', async () => {
     mockLocation.requestForegroundPermissionsAsync.mockResolvedValueOnce(permission(false));
 
-    await expect(requestLocationPermission()).resolves.toBe(false);
+    await expect(requestLocationPermission()).resolves.toEqual({ granted: false, canAskAgain: true });
   });
 
-  it('answers false when the request throws', async () => {
+  // A permanent refusal makes every later request a silent no-op, so the caller must be told to stop asking
+  it('reports that asking again cannot work once the refusal is permanent', async () => {
+    mockLocation.requestForegroundPermissionsAsync.mockResolvedValueOnce({
+      ...permission(false),
+      canAskAgain: false,
+    });
+
+    await expect(requestLocationPermission()).resolves.toEqual({ granted: false, canAskAgain: false });
+  });
+
+  it('answers refused and final when the request throws', async () => {
     mockLocation.requestForegroundPermissionsAsync.mockRejectedValueOnce(new Error('unavailable'));
 
-    await expect(requestLocationPermission()).resolves.toBe(false);
+    await expect(requestLocationPermission()).resolves.toEqual({ granted: false, canAskAgain: false });
+  });
+});
+
+describe('openLocationSettings', () => {
+  beforeEach(() => jest.clearAllMocks());
+
+  it('opens the app settings page', async () => {
+    await openLocationSettings();
+
+    expect(Linking.openSettings).toHaveBeenCalledTimes(1);
+  });
+
+  // The caller has nothing to fall back on, so a failure to open must not take the app down with it
+  it('does not throw when settings cannot open', async () => {
+    (Linking.openSettings as jest.Mock).mockRejectedValueOnce(new Error('no activity'));
+
+    await expect(openLocationSettings()).resolves.toBeUndefined();
   });
 });
 
@@ -92,27 +121,13 @@ describe('readPosition', () => {
     expect(mockLocation.getCurrentPositionAsync).toHaveBeenCalledWith({ accuracy: Location.Accuracy.Balanced });
   });
 
-  // A live read fails indoors and on a cold radio, where a fix from minutes ago is the same answer: the qibla moves
-  // half a degree per 10 km
-  it('falls back to the last known fix when the live read fails', async () => {
+  // A stale fix draws a confidently wrong arrow, which is worse than no arrow: a traveller who has just landed would
+  // be pointed at the qibla for the country they left
+  it('answers null when the position cannot be read, rather than an older one', async () => {
     mockLocation.getCurrentPositionAsync.mockRejectedValueOnce(new Error('LocationUnavailable'));
-    mockLocation.getLastKnownPositionAsync.mockResolvedValueOnce(position(51.5074, -0.1278));
-
-    await expect(readPosition()).resolves.toEqual({ latitude: 51.5074, longitude: -0.1278 });
-  });
-
-  it('answers null when the phone holds no last known fix either', async () => {
-    mockLocation.getCurrentPositionAsync.mockRejectedValueOnce(new Error('LocationUnavailable'));
-    mockLocation.getLastKnownPositionAsync.mockResolvedValueOnce(null);
 
     await expect(readPosition()).resolves.toBeNull();
-  });
-
-  it('answers null when even the last known read throws', async () => {
-    mockLocation.getCurrentPositionAsync.mockRejectedValueOnce(new Error('LocationUnavailable'));
-    mockLocation.getLastKnownPositionAsync.mockRejectedValueOnce(new Error('no provider'));
-
-    await expect(readPosition()).resolves.toBeNull();
+    expect(mockLocation.getLastKnownPositionAsync).not.toHaveBeenCalled();
   });
 });
 
