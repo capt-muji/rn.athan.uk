@@ -5,8 +5,8 @@
 
 import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
-import { Alert } from 'react-native';
 import { getDefaultStore } from 'jotai';
+import { Alert } from 'react-native';
 
 import { london } from '@/__tests__/harness';
 import { hasLocationPermission, requestLocationPermission } from '@/device/qibla';
