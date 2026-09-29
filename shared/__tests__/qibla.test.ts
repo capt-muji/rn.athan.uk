@@ -204,13 +204,24 @@ describe('headingFromYaw', () => {
     expect(headingFromYaw(0, 0)).toBeCloseTo(0, 6);
   });
 
-  // The rotation sensor is magnetic-referenced on Android, and this is the whole correction that makes it point true
+  // On Android the correction is the declination, which is what makes a magnetic reading point true
   it('adds an eastward declination', () => {
     expect(headingFromYaw(-Math.PI / 2, 1.2)).toBeCloseTo(91.2, 6);
   });
 
   it('subtracts a westward declination', () => {
     expect(headingFromYaw(-Math.PI / 2, -14)).toBeCloseTo(76, 6);
+  });
+
+  // On iOS the correction is a half turn, measured on device: a flat phone aimed at 118.9 degrees reports a yaw of
+  // about 65 degrees, and 180 minus 65 is the bearing back.
+  it.each([
+    [65, 115],
+    [0, 180],
+    [90, 90],
+    [180, 0],
+  ])('turns an iOS yaw of %s into a bearing of %s', (yaw, expected) => {
+    expect(headingFromYaw((yaw * Math.PI) / 180, 180)).toBeCloseTo(expected, 1);
   });
 
   // A bearing that leaves the turn would spin the dial the long way round, so the wrap is closed at both ends

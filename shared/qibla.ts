@@ -47,18 +47,18 @@ export const normaliseHeading = (heading: number): number => {
 /**
  * A compass bearing from the fused rotation sensor's yaw
  *
- * Reanimated negates the Android azimuth so its axes match iOS, so the sign is flipped back here. Yaw is
- * magnetic-referenced on both platforms, which is why the declination is added rather than assumed to be zero.
+ * Yaw grows anticlockwise and a bearing grows clockwise, so the sign flips here. What the correction carries differs by
+ * platform, which is why the caller supplies it rather than this knowing.
  *
  * @param yaw The sensor's yaw in radians
- * @param declination Degrees to add for true north, east positive
+ * @param correction Degrees to add once the sign is flipped
  * @returns The bearing in degrees clockwise from true north, in [0, 360)
  */
-export const headingFromYaw = (yaw: number, declination: number): number => {
+export const headingFromYaw = (yaw: number, correction: number): number => {
   'worklet';
   const degrees = (-yaw * HALF_TURN) / Math.PI;
 
-  return normaliseHeading(degrees + declination);
+  return normaliseHeading(degrees + correction);
 };
 
 /**
@@ -102,10 +102,10 @@ export const unwrapAngle = (current: number, heading: number): number => {
  *
  * @param current The continuous angle the dial holds now
  * @param yaw The sensor's yaw in radians
- * @param declination Degrees to add for true north, east positive
+ * @param correction Degrees to add once the sign is flipped
  * @returns The angle to animate to, which may sit outside [0, 360)
  */
-export const dialAngleFromYaw = (current: number, yaw: number, declination: number): number => {
+export const dialAngleFromYaw = (current: number, yaw: number, correction: number): number => {
   'worklet';
-  return unwrapAngle(current, headingFromYaw(yaw, declination));
+  return unwrapAngle(current, headingFromYaw(yaw, correction));
 };
