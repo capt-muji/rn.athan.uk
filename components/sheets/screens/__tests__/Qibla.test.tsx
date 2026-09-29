@@ -49,6 +49,40 @@ describe('the qibla sheet', () => {
     await waitFor(() => expect(screen.getByText('119° from north')).toBeTruthy());
   });
 
+  // A dial drawn before the bearing arrives would point somewhere, and anywhere it pointed would be a guess
+  it('draws no dial until the position is known', async () => {
+    await render(<QiblaSheet />);
+
+    expect(screen.queryByTestId('qibla-face')).toBeNull();
+  });
+
+  it('draws the dial once the position is known', async () => {
+    await render(<QiblaSheet />);
+
+    await present();
+
+    await waitFor(() => expect(screen.getByTestId('qibla-face')).toBeTruthy());
+  });
+
+  // The number is arithmetic and exact; the needle is only as good as the magnetometer, so the screen says so
+  it('names the one thing the user can do about the sensor, beside a live bearing', async () => {
+    await render(<QiblaSheet />);
+
+    await present();
+
+    await waitFor(() => expect(screen.getByText('Hold the phone flat for an accurate reading')).toBeTruthy());
+  });
+
+  it('says nothing about holding the phone flat while there is no bearing to read', async () => {
+    mockReadPosition.mockResolvedValue(null);
+    await render(<QiblaSheet />);
+
+    await present();
+
+    await waitFor(() => expect(screen.getByText('Your location is not available right now')).toBeTruthy());
+    expect(screen.queryByText('Hold the phone flat for an accurate reading')).toBeNull();
+  });
+
   // Saying "finding" forever is a lie the user cannot act on, so a failed read names what happened
   it('says so when the position cannot be read', async () => {
     mockReadPosition.mockResolvedValue(null);

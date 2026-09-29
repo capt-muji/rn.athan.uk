@@ -3,10 +3,15 @@
  */
 
 import * as Location from 'expo-location';
-
 import { Linking } from 'react-native';
 
-import { hasLocationPermission, openLocationSettings, readPosition, requestLocationPermission, watchHeading } from '../qibla';
+import {
+  hasLocationPermission,
+  openLocationSettings,
+  readPosition,
+  requestLocationPermission,
+  watchHeading,
+} from '../qibla';
 
 const mockLocation = Location as jest.Mocked<typeof Location>;
 
