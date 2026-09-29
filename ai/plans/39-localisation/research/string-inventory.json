@@ -1,0 +1,972 @@
+[
+ {
+  "file": "app.config.ts",
+  "line": 14,
+  "text": "BGTest"
+ },
+ {
+  "file": "app/index.tsx",
+  "line": 44,
+  "text": "React render"
+ },
+ {
+  "file": "app/index.tsx",
+  "line": 211,
+  "text": "Loading prayer times"
+ },
+ {
+  "file": "app/_layout.tsx",
+  "line": 63,
+  "text": "Require cycle"
+ },
+ {
+  "file": "stores/countdown.ts",
+  "line": 46,
+  "text": "Fajr"
+ },
+ {
+  "file": "stores/notifications.ts",
+  "line": 197,
+  "text": "Fajr"
+ },
+ {
+  "file": "stores/notifications.ts",
+  "line": 197,
+  "text": "Last Third"
+ },
+ {
+  "file": "stores/notifications.ts",
+  "line": 201,
+  "text": "Fajr"
+ },
+ {
+  "file": "stores/notifications.ts",
+  "line": 487,
+  "text": "Last Third', 'Suhoor', 'Duha', 'Istijaba"
+ },
+ {
+  "file": "stores/notifications.ts",
+  "line": 655,
+  "text": "Fajr"
+ },
+ {
+  "file": "stores/notifications.ts",
+  "line": 655,
+  "text": "Last Third"
+ },
+ {
+  "file": "stores/ui.ts",
+  "line": 207,
+  "text": "Sunrise"
+ },
+ {
+  "file": "stores/widget.ts",
+  "line": 26,
+  "text": "Please adopt containerBackground API"
+ },
+ {
+  "file": "stores/widget.ts",
+  "line": 220,
+  "text": "Standard' : 'Extras"
+ },
+ {
+  "file": "stores/widget.ts",
+  "line": 379,
+  "text": "Standard' : 'Extras"
+ },
+ {
+  "file": "shared/widgetTypes.ts",
+  "line": 49,
+  "text": "Fajr"
+ },
+ {
+  "file": "shared/widgetTypes.ts",
+  "line": 80,
+  "text": "Asr"
+ },
+ {
+  "file": "shared/widgetTypes.ts",
+  "line": 128,
+  "text": "Fajr"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 47,
+  "text": "Grant Do Not Disturb access"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 54,
+  "text": "Why don't I get any notifications?"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 56,
+  "text": "Without permission, notifications cannot be shown."
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 57,
+  "text": "Turn on Allow Notifications in the app settings"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 60,
+  "text": "Without permission, notifications cannot be shown."
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 61,
+  "text": "Turn on notifications in the app settings', 'Leave the athan categories on"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 65,
+  "text": "Why did notifications stop after a few days?"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 67,
+  "text": "Two settings stop new notifications being sent."
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 68,
+  "text": "Turn on Background App Refresh in the app settings', 'Turn off Low Power Mode"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 71,
+  "text": "Battery optimisation stops new notifications being sent."
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 72,
+  "text": "Set battery usage to Unrestricted in the app settings', 'Turn off Battery Saver"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 76,
+  "text": "Why did notifications stop after a restart?"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 79,
+  "text": "Open this app after rebooting the phone"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 83,
+  "text": "Open this app after rebooting the phone"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 89,
+  "text": "Why does a notification show but play no sound?"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 91,
+  "text": "A silent phone mutes notification sound."
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 92,
+  "text": "Take the phone out of silent mode"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 95,
+  "text": "A silent phone mutes notification sound."
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 96,
+  "text": "Take the phone out of silent mode"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 100,
+  "text": "Why are notifications silenced at certain times?"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 103,
+  "text": "Allow Time Sensitive Notifications in the app settings', "
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 106,
+  "text": "Do Not Disturb mode silences notifications until this app is allowed through."
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 107,
+  "text": "Allow Do Not Disturb access"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 112,
+  "text": "Why is the athan so quiet?"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 115,
+  "text": "It plays at alarm volume, not ring volume."
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 116,
+  "text": "Raise the Alarm volume in your sound settings"
+ },
+ {
+  "file": "shared/help.ts",
+  "line": 122,
+  "text": "Why does the athan cut off early?"
+ },
+ {
+  "file": "shared/prayer.ts",
+  "line": 181,
+  "text": "Midnight"
+ },
+ {
+  "file": "shared/prayer.ts",
+  "line": 289,
+  "text": "Fajr"
+ },
+ {
+  "file": "shared/prayer.ts",
+  "line": 293,
+  "text": "Isha"
+ },
+ {
+  "file": "shared/prayer.ts",
+  "line": 398,
+  "text": "Istijaba"
+ },
+ {
+  "file": "shared/prayer.ts",
+  "line": 399,
+  "text": "Midnight"
+ },
+ {
+  "file": "shared/prayer.ts",
+  "line": 399,
+  "text": "Last Third"
+ },
+ {
+  "file": "shared/prayer.ts",
+  "line": 501,
+  "text": "Midnight', '2026-10-24"
+ },
+ {
+  "file": "shared/notifications.ts",
+  "line": 145,
+  "text": "Last Third') // "
+ },
+ {
+  "file": "shared/notifications.ts",
+  "line": 451,
+  "text": "Extra Times"
+ },
+ {
+  "file": "shared/text.ts",
+  "line": 22,
+  "text": "Prayer at 5:30') // "
+ },
+ {
+  "file": "shared/text.ts",
+  "line": 23,
+  "text": "Test') // 'Test"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 58,
+  "text": "London"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 67,
+  "text": "London"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 246,
+  "text": "SPEAKER"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 247,
+  "text": "PLAY"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 248,
+  "text": "PAUSE"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 249,
+  "text": "INFO"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 250,
+  "text": "QUESTION"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 252,
+  "text": "CHECK"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 253,
+  "text": "CLOSE"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 254,
+  "text": "WIDGET"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 255,
+  "text": "APPLE"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 256,
+  "text": "ANDROID"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 268,
+  "text": "Fajr"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 268,
+  "text": "Isha"
+ },
+ {
+  "file": "shared/types.ts",
+  "line": 268,
+  "text": "Midnight"
+ },
+ {
+  "file": "shared/logger.ts",
+  "line": 22,
+  "text": "HH:MM:ss"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 9,
+  "text": "Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 26,
+  "text": "Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 39,
+  "text": "Midnight', 'Last Third', 'Suhoor"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 47,
+  "text": "Isha', 'Magrib"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 55,
+  "text": "Halfway between Magrib and Fajr"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 56,
+  "text": "Start of the last third of the night"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 258,
+  "text": "Europe/London"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 284,
+  "text": "Roboto-Regular"
+ },
+ {
+  "file": "shared/constants.ts",
+  "line": 286,
+  "text": "Roboto-Medium"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 80,
+  "text": "Tablet support"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 81,
+  "text": "Athan now supported on tablets"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 85,
+  "text": "Athan sounds"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 86,
+  "text": "New Athan sounds added"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 90,
+  "text": "Reminder sounds"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 91,
+  "text": "Every reminder now has its own sound"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 97,
+  "text": "Home & Lock widgets"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 98,
+  "text": "Add prayer times to your Home and Lock Screen"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 106,
+  "text": "A second reminder"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 107,
+  "text": "Each prayer can now carry two reminders, each with its own sound and timing"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 113,
+  "text": "Help page"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 229,
+  "text": "Android"
+ },
+ {
+  "file": "shared/whatsNew.ts",
+  "line": 230,
+  "text": "Android"
+ },
+ {
+  "file": "shared/perf.ts",
+  "line": 17,
+  "text": "PERF"
+ },
+ {
+  "file": "shared/time.ts",
+  "line": 227,
+  "text": "Fri, 20 Nov 2024"
+ },
+ {
+  "file": "shared/time.ts",
+  "line": 232,
+  "text": "EEE, d MMM yyyy"
+ },
+ {
+  "file": "shared/time.ts",
+  "line": 239,
+  "text": "Rajab 1, 1447"
+ },
+ {
+  "file": "shared/time.ts",
+  "line": 449,
+  "text": "N seconds remaining"
+ },
+ {
+  "file": "shared/time.ts",
+  "line": 555,
+  "text": "Xh Ym"
+ },
+ {
+  "file": "components/ui/SettingsButton.tsx",
+  "line": 35,
+  "text": "Settings"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 62,
+  "text": "Settings"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 63,
+  "text": "Set your preferences"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 78,
+  "text": "Change athan"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 93,
+  "text": "Show hijri date"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 97,
+  "text": "Show seconds"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 99,
+  "text": "Show time passed"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 104,
+  "text": "Show arabic names"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 110,
+  "text": "Show decorations"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 123,
+  "text": "Show countdown bar"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 139,
+  "text": "What's new"
+ },
+ {
+  "file": "components/sheets/screens/Settings.tsx",
+  "line": 152,
+  "text": "Help"
+ },
+ {
+  "file": "components/sheets/screens/Sound.tsx",
+  "line": 165,
+  "text": "Select Athan"
+ },
+ {
+  "file": "components/sheets/screens/Sound.tsx",
+  "line": 166,
+  "text": "Close to save"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 31,
+  "text": "Off"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 32,
+  "text": "Silent"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 33,
+  "text": "Sound"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 42,
+  "text": "This prayer's time isn't available"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 45,
+  "text": "Your alert setting is kept and will"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 96,
+  "text": "Close to save"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 235,
+  "text": "Reminder 1"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 236,
+  "text": "Notification before prayer time"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 247,
+  "text": "Reminder 2"
+ },
+ {
+  "file": "components/sheets/screens/Alert.tsx",
+  "line": 248,
+  "text": "Notification before prayer time"
+ },
+ {
+  "file": "components/sheets/screens/ReminderCard.tsx",
+  "line": 10,
+  "text": "Silent"
+ },
+ {
+  "file": "components/sheets/screens/ReminderCard.tsx",
+  "line": 11,
+  "text": "Sound"
+ },
+ {
+  "file": "components/sheets/screens/ColorPicker.tsx",
+  "line": 107,
+  "text": "Countdown bar color"
+ },
+ {
+  "file": "components/sheets/screens/ColorPicker.tsx",
+  "line": 116,
+  "text": "Reset to the default colour"
+ },
+ {
+  "file": "components/sheets/screens/ColorPicker.tsx",
+  "line": 140,
+  "text": "Cancel"
+ },
+ {
+  "file": "components/sheets/screens/ColorPicker.tsx",
+  "line": 151,
+  "text": "Done"
+ },
+ {
+  "file": "components/sheets/parts/LabeledToggle.tsx",
+  "line": 18,
+  "text": "Enable feature"
+ },
+ {
+  "file": "components/sheets/parts/Sheet.tsx",
+  "line": 77,
+  "text": "Change athan"
+ },
+ {
+  "file": "components/sheets/parts/Sheet.tsx",
+  "line": 97,
+  "text": "Settings"
+ },
+ {
+  "file": "components/sheets/parts/Sheet.tsx",
+  "line": 98,
+  "text": "Set your preferences"
+ },
+ {
+  "file": "components/sheets/parts/Header.tsx",
+  "line": 21,
+  "text": "Settings"
+ },
+ {
+  "file": "components/sheets/parts/Header.tsx",
+  "line": 22,
+  "text": "Set your preferences"
+ },
+ {
+  "file": "components/countdown/Countdown.tsx",
+  "line": 47,
+  "text": "No prayer time to count down to"
+ },
+ {
+  "file": "components/prayer/Ago.tsx",
+  "line": 18,
+  "text": "Xh Ym"
+ },
+ {
+  "file": "components/prayer/Explanation.tsx",
+  "line": 23,
+  "text": "Midnight"
+ },
+ {
+  "file": "components/prayer/Explanation.tsx",
+  "line": 50,
+  "text": "M0 12 L12 3.5 Q15 1 18 3.5 L30 12 Z"
+ },
+ {
+  "file": "components/prayer/Explanation.tsx",
+  "line": 53,
+  "text": "M0 12 L12 3.5 Q15 1 18 3.5 L30 12"
+ },
+ {
+  "file": "components/prayer/Explanation.tsx",
+  "line": 88,
+  "text": "M0 0 L12 8.5 Q15 11 18 8.5 L30 0 Z"
+ },
+ {
+  "file": "components/prayer/Explanation.tsx",
+  "line": 91,
+  "text": "M0 0 L12 8.5 Q15 11 18 8.5 L30 0"
+ },
+ {
+  "file": "components/prayer/rowPress.ts",
+  "line": 33,
+  "text": "Istijaba' && isPassed) return 'none"
+ },
+ {
+  "file": "components/prayer/Alert.tsx",
+  "line": 189,
+  "text": "Explains why no alert can be set for this prayer' : "
+ },
+ {
+  "file": "components/modals/Update.tsx",
+  "line": 15,
+  "text": "Update Available!"
+ },
+ {
+  "file": "components/modals/Update.tsx",
+  "line": 25,
+  "text": "Later"
+ },
+ {
+  "file": "components/modals/Update.tsx",
+  "line": 32,
+  "text": "Update"
+ },
+ {
+  "file": "components/modals/WhatsNew.tsx",
+  "line": 28,
+  "text": "What's New"
+ },
+ {
+  "file": "components/modals/WhatsNew.tsx",
+  "line": 45,
+  "text": "Android"
+ },
+ {
+  "file": "components/modals/WhatsNew.tsx",
+  "line": 52,
+  "text": "Close"
+ },
+ {
+  "file": "components/modals/Help.tsx",
+  "line": 126,
+  "text": "Help"
+ },
+ {
+  "file": "components/modals/Help.tsx",
+  "line": 151,
+  "text": "Close"
+ },
+ {
+  "file": "components/overlay/Overlay.tsx",
+  "line": 109,
+  "text": "Close prayer details"
+ },
+ {
+  "file": "hooks/useNotification.ts",
+  "line": 58,
+  "text": "Enable Notifications"
+ },
+ {
+  "file": "hooks/useNotification.ts",
+  "line": 62,
+  "text": "Cancel"
+ },
+ {
+  "file": "hooks/useNotification.ts",
+  "line": 67,
+  "text": "Open Settings"
+ },
+ {
+  "file": "hooks/usePrayerAgo.ts",
+  "line": 49,
+  "text": "Fajr now"
+ },
+ {
+  "file": "hooks/usePrayerAgo.ts",
+  "line": 49,
+  "text": "Dhuhr 10h 15m ago"
+ },
+ {
+  "file": "hooks/usePrayerAgo.ts",
+  "line": 55,
+  "text": "Fajr now"
+ },
+ {
+  "file": "hooks/usePrayerAgo.ts",
+  "line": 56,
+  "text": "Asr 2h 30m ago"
+ },
+ {
+  "file": "api/client.ts",
+  "line": 26,
+  "text": "GET"
+ },
+ {
+  "file": "api/client.ts",
+  "line": 26,
+  "text": "Cache-Control': 'no-cache"
+ },
+ {
+  "file": "api/client.ts",
+  "line": 42,
+  "text": "Incomplete data received"
+ },
+ {
+  "file": "api/client.ts",
+  "line": 80,
+  "text": "Incomplete data received"
+ },
+ {
+  "file": "api/client.ts",
+  "line": 108,
+  "text": "Malformed prayer times: nothing in the payload is readable"
+ },
+ {
+  "file": "device/updates.ts",
+  "line": 45,
+  "text": "Cache-Control': 'no-cache"
+ },
+ {
+  "file": "modules/widgetrefresh/index.ts",
+  "line": 24,
+  "text": "ExpoWidgetRefresh"
+ },
+ {
+  "file": "widgets/LockPrayerWidget.tsx",
+  "line": 192,
+  "text": "PrayerLockWidget"
+ },
+ {
+  "file": "widgets/LockPrayerWidget.tsx",
+  "line": 193,
+  "text": "ExtrasLockWidget"
+ },
+ {
+  "file": "widgets/LockPrayerWidget.tsx",
+  "line": 335,
+  "text": "PrayerLockWidget2"
+ },
+ {
+  "file": "widgets/LockPrayerWidget.tsx",
+  "line": 336,
+  "text": "ExtrasLockWidget2"
+ },
+ {
+  "file": "widgets/LockPrayerWidget.tsx",
+  "line": 494,
+  "text": "PrayerLockWidget3"
+ },
+ {
+  "file": "widgets/LockPrayerWidget.tsx",
+  "line": 495,
+  "text": "ExtrasLockWidget3"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 316,
+  "text": "Athan', 15, '600"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 318,
+  "text": "Prayer times for London', 12, 'normal"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 328,
+  "text": "Out of date', 14, 'bold"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 331,
+  "text": "Open Athan to refresh', 12, 'normal"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 334,
+  "text": "Open Athan', 12, 'normal"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 421,
+  "text": "Last Third"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 495,
+  "text": "Open Athan to refresh"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 498,
+  "text": "Open Athan"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 524,
+  "text": "Athan"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 524,
+  "text": "Prayer times for London"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 759,
+  "text": "Athan"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 759,
+  "text": "Open the app to refresh"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 769,
+  "text": "PrayerWidget"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 770,
+  "text": "ExtrasWidget"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 771,
+  "text": "PrayerWidgetMedium"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 772,
+  "text": "ExtrasWidgetMedium"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 773,
+  "text": "PrayerWidgetDark"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 774,
+  "text": "ExtrasWidgetDark"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 775,
+  "text": "PrayerWidgetDarkMedium"
+ },
+ {
+  "file": "widgets/PrayerWidget.tsx",
+  "line": 776,
+  "text": "ExtrasWidgetDarkMedium"
+ }
+]
