@@ -106,7 +106,35 @@ It is charming and it is useless as the main answer, because a user needs the qi
 
 ---
 
-## D5. Is a fifth rung wanted: "where does my mosque face"?
+## D5. One new dependency, 91 KB, or the map cannot read its own tiles
+
+**The repo rule:** no new dependencies without approval. So this is a decision rather than a detail.
+
+Map tiles arrive gzipped and nothing in the app can inflate them. React Native has no `zlib`, and the repo
+has no compression library at all.
+
+**`fflate@0.8.3` is the recommendation, and it was measured rather than picked:**
+
+| Check | Result |
+| --- | --- |
+| Browser build size | **91 KB** of pure JavaScript |
+| Transitive dependencies | **Zero** |
+| Node builtins it needs | **Zero**, verified by grep on the shipped file |
+| Inflates a real tile | Yes, 62 KB to 113 KB in **4.3 ms** |
+| Output correctness | **Byte-identical** to Node's own `zlib`, checked element by element |
+| Against the alternative | `pako` is 2.49 MB unpacked against `fflate`'s 0.80 MB, for the same job |
+
+**Everything else the pipeline needs is already installed:** `react-native-svg` draws it, and
+`expo-file-system`'s `File` reads raw bytes because it implements `Blob`.
+
+**Recommendation: approve `fflate`.** It is the cheapest possible shape for a new dependency, and the
+alternative is that rung 3 does not work.
+
+**Note this does not affect the sun rung**, which needs no new dependency at all.
+
+---
+
+## D6. Is a fifth rung wanted: "where does my mosque face"?
 
 **What the research found.** OpenStreetMap holds about 290,000 to 339,000 muslim places of worship, so the
 nearest mosque can be drawn on the map as a second reference the user can verify by walking to it.
