@@ -1,5 +1,11 @@
 # The launch set, revised by what R6 could actually source
 
+> **Superseded in part by owner decision D15 (2026-09-29): transliterate, never translate.**
+> That ruling was the single question holding `fr` and `de` back, so the launch set returns to
+> **eight**: `en ar id ur bn tr fr de`. The sourcing grades below stand, but the "needs a native
+> speaker" tier was about an unresolved convention rather than missing data, and the convention is
+> now resolved. `es` and `nl` unblock on the same ruling when they are wanted.
+
 R4 recommended eight languages on audience grounds: `en ar id ur bn tr fr de`. R6 then tried to
 source all 28 and graded what it found. The two do not fully agree, and the sourcing wins, because
 a language with unsourced religious vocabulary cannot ship to an owner who cannot read it.
