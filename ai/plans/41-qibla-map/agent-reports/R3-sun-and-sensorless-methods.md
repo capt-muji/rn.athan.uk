@@ -6,7 +6,9 @@ cited URL. Sibling reports `P0-error-budget.md`, `P1-solar-proof.md`, `P2-the-de
 read after this report's arithmetic was complete; cross-checks are noted where they agree.
 
 Tools used: `tinyfish` MCP for all web search and URL fetch (announced per section); `node` for all
-arithmetic; no repo file was modified.
+arithmetic; no repo file was modified except this report. A verification pass on 2026-09-30 re-ran the
+core computations independently and settled the resolver question the first pass left open
+(section 1.1.1); its additions are marked inline.
 
 ## Verdict table
 
