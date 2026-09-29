@@ -168,14 +168,17 @@ describe('watchHeading', () => {
       return { remove };
     });
 
-    return { remove, emit: (trueHeading: number) => listener({ trueHeading, magHeading: 0, accuracy: 3 }) };
+    return {
+      remove,
+      emit: (trueHeading: number, accuracy = 3) => listener({ trueHeading, magHeading: 0, accuracy }),
+    };
   };
 
   it('reports a heading the phone gives', async () => {
     const heard: number[] = [];
     const stream = captureListener();
 
-    await watchHeading((heading) => heard.push(heading));
+    await watchHeading((reading) => heard.push(reading.heading));
     stream.emit(118.99);
 
     expect(heard).toHaveLength(1);
@@ -187,7 +190,7 @@ describe('watchHeading', () => {
     const heard: number[] = [];
     const stream = captureListener();
 
-    await watchHeading((heading) => heard.push(heading));
+    await watchHeading((reading) => heard.push(reading.heading));
     stream.emit(-3);
 
     expect(heard).toHaveLength(1);
@@ -199,10 +202,28 @@ describe('watchHeading', () => {
     const heard: number[] = [];
     const stream = captureListener();
 
-    await watchHeading((heading) => heard.push(heading));
+    await watchHeading((reading) => heard.push(reading.heading));
     stream.emit(-1);
 
     expect(heard).toEqual([]);
+  });
+
+  // The phone knows when its own needle is unreliable, and a compass that hides that claims more than it can back.
+  // Columns: the accuracy the platform reports, whether the reading counts as calibrated.
+  // iOS bands: 3 is under 20 deg of uncertainty, 2 under 35, 1 under 50, 0 over 50.
+  it.each([
+    [3, true],
+    [2, true],
+    [1, false],
+    [0, false],
+  ])('reports accuracy %s as calibrated=%s', async (accuracy, expected) => {
+    const heard: boolean[] = [];
+    const stream = captureListener();
+
+    await watchHeading((reading) => heard.push(reading.calibrated));
+    stream.emit(119, accuracy);
+
+    expect(heard).toEqual([expected]);
   });
 
   it('stops the stream when the caller lets go', async () => {
