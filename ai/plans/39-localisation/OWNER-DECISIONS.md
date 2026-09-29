@@ -172,6 +172,80 @@ Two consequences the plan must carry:
 - `ai/AGENTS.md` records that items may declare `flags: []` and that a dark feature can never be
   advertised, so the entry lands in the same release that ships the feature, never before.
 
+## D15. Transliterate, never translate, the prayer names (2026-09-29)
+
+🐋  "I think we should do transliterate, not translate. Transliterate is the best option, especially
+for Friday, the extra prayer that we have. Istijaba, there's no word for it in English or in any
+other language except Arabic. That's why Istijaba is actually a transliteration of the Arabic word.
+So we should be doing transliteration everywhere, I think."
+
+**This answers proposal P5.8 and it is the right call.** Three independent lines of evidence support
+it, and the owner's own reasoning from Istijaba is the strongest of them.
+
+### 1. The app already does this. The ruling makes an existing policy explicit.
+
+Classified from `shared/constants.ts`, **8 of the 11 names in the "English" catalog are already
+transliterations of Arabic**:
+
+| Catalog | Transliterated | Translated |
+| --- | --- | --- |
+| `PRAYERS_ENGLISH` | Fajr, Dhuhr, Asr, Magrib, Isha | Sunrise |
+| `EXTRAS_ENGLISH` | Suhoor, Duha, Istijaba | Midnight, Last Third |
+
+So there is no policy change here, only a policy that was never written down. The three exceptions
+are the three concepts that are astronomical or arithmetic rather than liturgical: a sunrise, a
+midpoint and a third of a night. Those are the ones that legitimately translate, and every language
+has a word for them.
+
+**The rule, stated precisely:** a name that IS an Arabic term is transliterated into the target
+script. A name that describes a time of day or a fraction of the night is translated. The existing
+English catalog is the reference implementation of that rule.
+
+### 2. Istijaba proves it, exactly as the owner argued
+
+`Istijaba` is null in **24 of 28** sourced locales, because almost no prayer timetable in any
+language publishes it. There is nothing to translate TO. The owner's point is that "Istijaba" in the
+English catalog is itself a transliteration, so the app has already answered this question once and
+the answer generalises.
+
+The design that makes it work is also already in the app: a transliterated label in the column, with
+the explanation string carrying the meaning. So a null in the sourced catalog is not missing work,
+it is a signal to transliterate.
+
+### 3. It fixes the width problem
+
+Measured, and this is the practical payoff: German `Nachmittagsgebet` (translated) is **148pt**
+against `Asr` (transliterated) at **30pt**, and both are correct German. The launch-set languages
+that overflowed the 123pt column were overflowing precisely because they translated.
+
+`CATALOG-EVIDENCE.md` measured this across two shipping apps and `LAUNCH-SET.md` identified it as
+the single question holding back French and German.
+
+### What this unblocks immediately
+
+`LAUNCH-SET.md` held `fr` and `de` back for one reason: European languages fork on whether to
+transliterate or translate, and R6 would not choose for the owner. That fork is now closed.
+
+| Locale | Was | Now |
+| --- | --- | --- |
+| French | blocked on the convention | **unblocked**, transliterate |
+| German | blocked on the convention | **unblocked**, transliterate |
+| Spanish | later, same question | unblocked on the same ruling |
+| Dutch | later, same question | unblocked on the same ruling |
+
+So the launch set can return to eight (`en ar id ur bn tr fr de`) if the owner wants it, and
+`ASSUMPTIONS.md` A7's revision to six is reversed by this ruling.
+
+### The one limit the plan must respect
+
+Transliteration is into the target SCRIPT, not a copy of the Latin string. Arabic renders `الفجر`,
+Urdu `فجر`, Bengali `ফজর`, Hindi `फ़ज्र`, Russian `Фаджр`. A Bengali user must not see Latin
+"Fajr" in a Bengali interface. The sourced catalog already carries the correct script per locale, so
+this is a constraint on interpretation rather than new work.
+
+The Turkish exception survives unchanged and is not a counter-example: Diyanet prints `İmsak` for
+the dawn row, which is a different TERM rather than a translation of Fajr, and it stays.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
