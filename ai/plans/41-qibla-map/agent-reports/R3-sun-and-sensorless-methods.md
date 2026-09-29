@@ -74,6 +74,55 @@ the meridian.
 these files from Node's resolver, so an absolute-path require proves the maths but not Metro's behaviour;
 P1 records the same caveat and the same conclusion (30-line fallback already proven).
 
+### 1.1.1 The exports-map question, now settled empirically (R3 verification pass, 2026-09-30)
+
+The caveat above is no longer open. This pass drove the exact specifier `adhan/lib/cjs/SolarTime.js`
+through all three resolvers the app actually runs under, with real resolver instances rather than reasoning:
+
+| Resolver | Result | Evidence |
+| --- | --- | --- |
+| **Metro 0.87.1** (the app's bundler, `unstable_enablePackageExports: true` from Expo's default config) | **Resolves.** `metro-resolver/src/PackageExportsResolve.js:44` throws `PackagePathNotExportedError` for the subpath, and `metro-resolver/src/resolve.js:512-527` catches exactly that error class, logs "Falling back to file-based resolution. Consider updating the call site or asking the package maintainer(s) to expose this API." and continues hierarchically into `node_modules/adhan/lib/cjs/SolarTime.js` | `metro-resolver.resolve(ctx, 'adhan/lib/cjs/SolarTime.js', 'ios')` returned `{type: 'sourceFile', filePath: .../node_modules/adhan/lib/cjs/SolarTime.js}` with the warning firing |
+| **Jest 30.5.1, both projects** (the repo's `unit` default resolver and the `components` project's `@react-native/jest-preset/jest/resolver.js`) | **Fails.** "Cannot find module 'adhan/lib/cjs/SolarTime.js'" | scratch jest runs through the repo's own `node_modules/jest` and the RN preset resolver, both suites failing on resolution |
+| **TypeScript 7.0.2, `moduleResolution: bundler`** (the repo's `tsc --noEmit`) | **Fails.** `TS2307: Cannot find module 'adhan/lib/cjs/SolarTime.js' or its corresponding type declarations` | tsc trace shows the exports map consulted and the subpath rejected |
+
+The repo's `jest.config.js` `moduleNameMapper` has no adhan entry today, so the deep package specifier
+would ship in the bundle but break the suite and the typecheck. Three working integrations, all verified:
+
+1. **A relative file path** (`require('../node_modules/adhan/lib/cjs/SolarTime.js')` from `shared/`):
+   no exports map governs a file path. Verified under jest (suite passed against the real package) and
+   tsc needs `lib/types/SolarTime.d.ts` beside it or a local declaration.
+2. **One `moduleNameMapper` line** (`'^adhan/lib/cjs/(.*)$': '<rootDir>/node_modules/adhan/lib/cjs/$1.js'`)
+   fixes jest while Metro and the specifier stay as they are.
+3. **The 30-line self-contained module** (P1's fallback): no adhan internals at all, sidesteps every
+   resolver, at the cost of duplicating Meeus coefficients this report has already cross-validated twice.
+
+**The finding that changes nothing and confirms everything: the solar code is already in the shipped
+bundle.** `PrayerTimes` (the public export, `lib/cjs/Adhan.js:8`) constructs `SolarTime` at
+`lib/cjs/PrayerTimes.js:16`, which constructs `SolarCoordinates` and pulls in the whole `Astronomical`
+module. Since `shared/qibla.ts:1` imports from `'adhan'`, Metro's module graph already contains every
+solar function this report relies on. The bundle cost of the sun feature is the 30 lines of azimuth
+arithmetic, not the astronomy.
+
+### 1.1.2 The public-API-only route, measured (the no-deep-import fallback)
+
+If the plan wants zero contact with adhan internals, solar azimuth is derivable from the public exports
+alone: `PrayerTimes` gives `sunrise`, `sunset`, `dhuhr` as `Date`s; half the sunrise-to-sunset span gives
+the hour angle at adhan's own -50-arcmin altitude; that equation solves for the sun's declination
+(bisection, both hemispheres); `dhuhr` anchors the hour angle for any instant. Measured against the
+direct model over 112 samples (5 cities, 6 dates, 5 times each):
+
+```
+worst azimuth error: 1.350 deg (Cairo, 21 Jun, near-noon)
+mean azimuth error: 0.288 deg
+worst altitude error: 0.311 deg
+```
+
+Two documented limits: the day-length-to-declination inversion is ill-conditioned near the solstices
+(day length changes least there, so adhan's minute-rounded sunrise/sunset saturates the solve), and it
+collapses entirely above the polar circle. **0.29 degrees mean is accurate enough for a 45-degree fiqh
+floor and a 2-degree accuracy bracket, but the deep import's 0.004 degrees is free, so the public-only
+route is the fallback, not the plan.**
+
 ### 1.2 Validation: 0.006 degrees against the NOAA reference
 
 The NOAA solar calculator's own implementation was fetched and read in full
@@ -301,7 +350,7 @@ interpolated crossings, deduplicated:
 | Jakarta | 295.2 | 218 | 146 | **364** | 1 |
 | Makkah | 324.9 | 43 | 311 | 354 | 6 |
 | New York | 58.5 | **0** | 301 | 301 | 43 |
-| London | 119.0 | 258 | 42 | 258 | 64 |
+| London | 119.0 | 258 | 42 | 258 | 64 (30 Oct to 12 Feb at the 5-degree gate; 14 Nov to 28 Jan at a 0-degree gate) |
 | Reykjavik | 106.1 | 197 | 123 | 197 | 94 |
 | Sydney | 277.5 | 195 | 130 | 195 | **170** |
 
@@ -324,6 +373,12 @@ available.
 - **In Reykjavik? No, and worse than London.** 197 of 365 days, with a 94-day winter gap. The polar day
   helps in summer (events at 33 degrees of sun, midnight sun coverage), but from October to February there
   is neither a crossing nor usable sun.
+- **In New York and Cairo (this pass's additions)?** New York: 0 face-sun days, 301 shadow days at the
+  5-degree gate, because the qibla (58.5, north-east) lies between summer's extreme sunrise azimuth and
+  due east, and the sun's whole morning arc north of east only brushes it at the solstice sunrise. Cairo:
+  365 face-sun days, the best case in the table, because a 136-degree qibla sits inside the sunrise-to-
+  transit arc every day of the year at that latitude. The daily event's existence is a property of
+  (latitude, qibla bearing) as a pair, which is why no single interaction can serve all cities.
 
 **The design consequence, agreeing with P1 section 4:** formulations A and B are complementary but their
 union still leaves months-long holes. Formulation C (continuous offset, "the qibla is N degrees from the sun
@@ -673,6 +728,11 @@ nothing.
 
 ## What I attacked in my own conclusion
 
+- **A verification pass attacked this report's own open caveat on 2026-09-30.** The exports-map question
+  (below, first bullet) was the plan's first verification step; this pass ran the specifier through the
+  real Metro, Jest and tsc resolvers and settled it: Metro resolves with a warning, Jest and tsc reject,
+  and three working integrations are now documented in section 1.1.1 with the public-API fallback measured
+  in 1.1.2. Nothing in the verdict changed; the risk shrank from "unknown" to "one jest config line".
 - **I attacked the headline finding by trying to break the cross-validation.** The first comparison run
   showed a 3.9-degree disagreement at Makkah and I initially read it as an implementation error; isolating
   it showed azimuth near zenith is ill-conditioned by `1/cos(zenith)` and both implementations were right.
@@ -682,9 +742,12 @@ nothing.
   days), Sydney (170-day gap) and Reykjavik (94-day gap) killed that reading. Formulation C survives
   specifically because A and B fail on different continents, and P1's independent sweep reached the same
   verdict from different fixtures.
-- **I attacked the adhan finding with the exports-map caveat.** The deep require works in node and may not
-  under Metro; the report states it as the plan's first verification step rather than claiming the feature
-  is free. The 30-line fallback is proven, so the caveat delays nothing.
+- **I attacked the adhan finding with the exports-map caveat, and the verification pass closed it.** The
+  deep require works in node and may not under Metro; the report stated it as the plan's first
+  verification step rather than claiming the feature is free. The 2026-09-30 pass (section 1.1.1)
+  resolved it empirically: Metro warns and falls back to file-based resolution, so the specifier bundles;
+  Jest and tsc need the one-line mapping or a relative path. The 30-line fallback remains proven, so the
+  caveat delays nothing.
 - **I attacked the fiqh section's circularity risk.** The 45-degree figure circulates on forums; I traced
   it to Shurunbulali's face-surface criterion and al-Tahtawi's gloss via islamanswers' Arabic quotations,
   and to a second independent fatwa (islamqa 101449, citing al-Dardeer). The two agree on 45 degrees from
