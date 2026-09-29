@@ -114,6 +114,13 @@ export const WHATS_NEW: WhatsNewRelease | null = {
       body: 'Settings now answers why an athan was not heard, and opens the setting that caused it',
       version: null,
     },
+    {
+      // PARKED: stamped at the store release, like every item. No flag and no platform: the
+      // compass ships on both
+      title: 'Qibla compass',
+      body: 'Settings now points the way to the Kaaba from wherever you are',
+      version: null,
+    },
   ],
 };
 

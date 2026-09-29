@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.29.108",
+    "version": "1.29.113",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -21,7 +21,8 @@
       },
       "infoPlist": {
         "CFBundleDisplayName": "Athan",
-        "NSUserNotificationsUsageDescription": "Receive prayer time notifications"
+        "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
+        "NSLocationWhenInUseUsageDescription": "Your location is used to point the compass toward the Kaaba. It never leaves your device."
       },
       "backgroundColor": "#2c1c77"
     },

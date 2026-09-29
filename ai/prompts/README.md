@@ -43,6 +43,26 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-09-28, while planning session 37 (the qibla finder)
+
+Four decisions, each taken against measured evidence in `ai/plans/37-qibla-compass/RESEARCH.md`.
+
+- **The bearing comes from `adhan@4.4.6`, not from our own maths.** Correctness could not decide it:
+  the two agree to 0.002°, four orders of magnitude better than the sensor. What decided it is 13.5 KB,
+  zero dependencies, MIT, a formula whose 19th-century citation was checked and is genuine, zero qibla
+  bugs in a decade, and prayer-time fixtures that already carry this app's exact London configuration.
+  Session 32 already trusted it as ground truth for the polar sweep.
+- **Android ships `expo-location` as it is**, with no native module this session. Its needle is raw
+  magnetometer plus accelerometer with no gyro fusion, which is a real quality ceiling; the screen is
+  honest about the sensor instead of hiding it. A native Fused Orientation Provider module becomes a
+  follow-up row only if the 3T proof shows the needle is unusable.
+- **The denied Qibla row looks exactly like its neighbours**, chevron and all. A grey row reads as
+  broken when the control still works: tapping it explains that the compass needs location and offers
+  the route to Settings.
+- **Android declares coarse location only**, via a config plugin, which qualifies for Google Play's
+  Minimum Scope exemption. The feature cannot use more: 10 km of position error moves the qibla by
+  0.48°, and city-level accuracy is ample.
+
 ## Decided by the owner, 2026-09-28, during session 35: back closes what is open
 
 A new feature, given while the accessibility step was being built: 🐋  "When any modal is open, the
