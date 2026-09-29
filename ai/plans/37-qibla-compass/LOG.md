@@ -32,4 +32,34 @@ The pre-commit hook runs `yarn validate`, so no commit was possible until they w
 | Break script | **23 of 23 caught**, `ALL AS EXPECTED: 1` (step 2's 15, plus 8 for the dial) |
 | `tsc --noEmit` | clean |
 | `biome check . --error-on-warnings` | clean |
+| Full suite | **182 suites, 4877 tests, 100% statements / branches / functions / lines** |
 | Coverage, new files | `Dial.tsx` and `dialGeometry.ts` both 100% on all four measures |
+
+## Step 5a: two defects the simulator found, which no test could have
+
+**Branch:** `step/37-5a-dial-device-fixes`. **Version:** 1.29.108.
+
+Both were invisible to a green suite and obvious the moment the dial was on a screen, which is the whole
+argument for the device proof being a step rather than a formality.
+
+**(1) Every label was rotated by its own bearing.** I had counter-rotated each one to keep it upright, reasoning
+from a rotation that is never applied: the labels are placed by coordinate, and the only thing that turns is the
+LAYER above them, which carries the letters with it for free. So the counter-rotation was not cancelling anything,
+it was the only rotation there was. On screen `E` and `W` lay on their sides and the bottom half of the dial read
+upside down.
+
+**The research said this and I did not follow it:** "cardinal letters rotate with the dial", which iOS, Apple
+Watch, Garmin and marine compasses all do, and which the whole-layer transform gives at no cost.
+
+**(2) The fixed mark reached into the label ring and hid N.** `MARK_LENGTH` was 3x the rim inset, which put its
+inner end past the labels at `LABEL_RADIUS`. North was behind the one element that is supposed to point at it.
+
+**Both now have a test that fails without the fix**, and both are breaks 24 and 25. The label test asserts on the
+`matrix` prop, because react-native-svg resolves ANY transform into a matrix: asserting on `rotate` printed
+SURVIVED against a genuinely broken dial, which is the session's durable lesson. **A break script is not verified
+until it is run**, and this one was wrong on its first draft for the same reason session 32's was.
+
+| Check | Result |
+| --- | --- |
+| Break script | **25 of 25 caught**, `ALL AS EXPECTED: 1` |
+| iPhone XS simulator, London | dial renders, 12 labels upright, needle at 119 degrees between E and S |
