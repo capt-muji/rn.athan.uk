@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import {
   IOSReferenceFrame,
+  runOnJS,
   SensorType,
   type SharedValue,
   useAnimatedReaction,
@@ -13,7 +14,7 @@ import Dial from '@/components/qibla/Dial';
 import { IconView } from '@/components/ui';
 import { readDeclination, readPosition } from '@/device/qibla';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { dialAngleFromYaw, qiblaBearing } from '@/shared/qibla';
+import { dialAngleFromYaw, isFieldTrustworthy, qiblaBearing } from '@/shared/qibla';
 import { Icon } from '@/shared/types';
 import { setQiblaSheetModal } from '@/stores/ui';
 
@@ -29,7 +30,10 @@ const readingText = (reading: Reading): string => {
 };
 
 /** Names the condition and what to do about it, never apologising for the reading and never blaming the phone */
-const HINT = 'Point the top of the phone at the marker. Move away from metal and magnets if it will not settle.';
+const HINT = 'Point the top of the phone at the marker.';
+
+/** Names what is wrong and what to do, never apologising for the reading and never blaming the phone */
+const INTERFERENCE = 'Something nearby is bending the reading. Step away from metal, magnets and electronics.';
 
 /** The sensor streams faster than this; 100ms is six frames of the dial, which reads as continuous */
 const SENSOR_INTERVAL_MS = 100;
@@ -37,11 +41,12 @@ const SENSOR_INTERVAL_MS = 100;
 /**
  * What iOS yaw needs before it is a bearing, beyond the sign
  *
- * Under `XTrueNorthZVertical` yaw turns about the vertical axis from a reference near half a turn from the bearing the
- * top edge points at. Read off the dial rather than derived, and the direction was confirmed by moving it the wrong
- * way first: 170 pushed the marker further clockwise, so the correction grows rather than shrinks.
+ * Under `XTrueNorthZVertical` yaw turns about the vertical axis from a reference half a turn from the bearing the top
+ * edge points at. This is an axis relationship, so it can only be a multiple of 90 and is the same on every iPhone in
+ * every country. Tuning it to a room's own reading was tried and reverted: the same phone in the same orientation
+ * wanted 190 beside a laptop and 220 on open floor, and shipping either would export one room's steel to everyone.
  */
-const IOS_AXIS_CORRECTION = 190;
+const IOS_AXIS_CORRECTION = 180;
 
 /**
  * Feeds the dial from the OS-fused rotation vector
@@ -50,7 +55,24 @@ const IOS_AXIS_CORRECTION = 190;
  * reads 10. Mounted only while the sheet is open, because `useAnimatedSensor` subscribes for the life of its component
  * and every sheet is mounted from launch.
  */
-const HeadingSensor = ({ heading, correction }: { heading: SharedValue<number>; correction: SharedValue<number> }) => {
+const HeadingSensor = ({
+  heading,
+  correction,
+  onFieldChange,
+}: {
+  heading: SharedValue<number>;
+  correction: SharedValue<number>;
+  onFieldChange: (trustworthy: boolean) => void;
+}) => {
+  const field = useAnimatedSensor(SensorType.MAGNETIC_FIELD, { interval: SENSOR_INTERVAL_MS });
+
+  useAnimatedReaction(
+    () => isFieldTrustworthy(field.sensor.value.x, field.sensor.value.y, field.sensor.value.z),
+    (trustworthy) => {
+      runOnJS(onFieldChange)(trustworthy);
+    }
+  );
+
   const rotation = useAnimatedSensor(SensorType.ROTATION, {
     interval: SENSOR_INTERVAL_MS,
     // Reanimated's default frame is ARBITRARY on iOS: yaw zero lands wherever the phone woke up, so a compass built on
@@ -76,6 +98,7 @@ const HeadingSensor = ({ heading, correction }: { heading: SharedValue<number>; 
  */
 export default function BottomSheetQibla() {
   const [isOpen, setIsOpen] = useState(false);
+  const [fieldIsClean, setFieldIsClean] = useState(true);
   const [reading, setReading] = useState<Reading>({ status: 'looking' });
   /** Unbounded on purpose: an interpolation runs between the numbers it is given, so a wrapped angle spins the dial */
   const heading = useSharedValue(0);
@@ -87,6 +110,7 @@ export default function BottomSheetQibla() {
   const handlePresent = useCallback(async () => {
     setReading({ status: 'looking' });
     setIsOpen(true);
+    setFieldIsClean(true);
 
     const position = await readPosition();
     setReading(position ? { status: 'found', bearing: qiblaBearing(position) } : { status: 'unavailable' });
@@ -108,11 +132,11 @@ export default function BottomSheetQibla() {
       onPresent={handlePresent}
       onDismiss={handleDismiss}
       stackBehavior='push'>
-      {isOpen && <HeadingSensor heading={heading} correction={correction} />}
+      {isOpen && <HeadingSensor heading={heading} correction={correction} onFieldChange={setFieldIsClean} />}
       {reading.status === 'found' && <Dial bearing={reading.bearing} heading={heading} />}
       <View style={styles.card}>
         <Text style={styles.reading}>{readingText(reading)}</Text>
-        {reading.status === 'found' && <Text style={styles.hint}>{HINT}</Text>}
+        {reading.status === 'found' && <Text style={styles.hint}>{fieldIsClean ? HINT : INTERFERENCE}</Text>}
       </View>
     </Sheet>
   );

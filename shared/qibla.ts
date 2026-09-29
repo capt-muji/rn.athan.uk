@@ -109,3 +109,26 @@ export const dialAngleFromYaw = (current: number, yaw: number, correction: numbe
   'worklet';
   return unwrapAngle(current, headingFromYaw(yaw, correction));
 };
+
+/** Earth's field is 22 to 67 microtesla everywhere on the surface, so a reading outside this is not Earth's */
+const FIELD_MIN = 25;
+const FIELD_MAX = 65;
+
+/**
+ * Whether a magnetic reading is Earth's field rather than the room's
+ *
+ * A laptop or a steel stud adds to the field, and the sum still points somewhere, so the needle stays confident while
+ * being wrong. Strength is the one check that catches it: this app's own desk measured 104 microtesla against
+ * London's 49, which is a 30 degree error a heading alone cannot reveal.
+ *
+ * @param x Field on the device x axis, microtesla
+ * @param y Field on the device y axis, microtesla
+ * @param z Field on the device z axis, microtesla
+ * @returns Whether the needle drawn from this reading can be trusted
+ */
+export const isFieldTrustworthy = (x: number, y: number, z: number): boolean => {
+  'worklet';
+  const strength = Math.sqrt(x * x + y * y + z * z);
+
+  return strength >= FIELD_MIN && strength <= FIELD_MAX;
+};

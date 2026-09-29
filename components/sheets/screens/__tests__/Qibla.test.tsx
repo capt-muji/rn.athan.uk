@@ -17,22 +17,33 @@ jest.mock('@/device/qibla', () => ({
 /** Nothing delivers sensor samples off a device, so the yaw the sheet reads is driven from here */
 const mockYaw = { value: 0 };
 
+/** London's field, so the sheet reads a clean one unless a test bends it */
+const mockField = { value: { x: 0, y: 19.5, z: -45 } };
+
 jest.mock('react-native-reanimated', () => {
   const actual = jest.requireActual<typeof import('react-native-reanimated')>('react-native-reanimated/mock');
 
   return {
     ...actual,
     IOSReferenceFrame: { XTrueNorthZVertical: 3 },
-    SensorType: { ROTATION: 5 },
+    SensorType: { MAGNETIC_FIELD: 4, ROTATION: 5 },
     useAnimatedReaction: (prepare: () => number, react: (value: number) => void) => react(prepare()),
-    useAnimatedSensor: () => ({ sensor: { value: { yaw: mockYaw.value } }, unregister: jest.fn(), isAvailable: true }),
+    useAnimatedSensor: (type: number) => ({
+      sensor: { value: type === 4 ? mockField.value : { yaw: mockYaw.value } },
+      unregister: jest.fn(),
+      isAvailable: true,
+    }),
   };
 });
 
 const mockReadPosition = readPosition as jest.MockedFunction<typeof readPosition>;
 const mockReadDeclination = readDeclination as jest.MockedFunction<typeof readDeclination>;
 
-const HINT = 'Point the top of the phone at the marker. Move away from metal and magnets if it will not settle.';
+const HINT = 'Point the top of the phone at the marker.';
+const INTERFERENCE = 'Something nearby is bending the reading. Step away from metal, magnets and electronics.';
+
+/** London's field */
+const CLEAN_FIELD = { x: 0, y: 19.5, z: -45 };
 
 /** The sheet reads its position when it finishes opening, never on mount */
 const present = async () => {
@@ -150,6 +161,18 @@ describe('the qibla sheet', () => {
     await present();
 
     await waitFor(() => expect(screen.getByTestId('qibla-face')).toBeTruthy());
+  });
+
+  // A laptop or a steel stud adds to the field, and the needle stays confident while being wrong, so the screen says so
+  it('says what to do when something nearby bends the reading', async () => {
+    mockField.value = { x: 0, y: 90, z: -50 };
+    await render(<QiblaSheet />);
+
+    await present();
+
+    await waitFor(() => expect(screen.getByText(INTERFERENCE)).toBeTruthy());
+    expect(screen.queryByText(HINT)).toBeNull();
+    mockField.value = CLEAN_FIELD;
   });
 
   describe('on android, where the sensor is magnetic-referenced', () => {
