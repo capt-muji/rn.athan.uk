@@ -11,7 +11,19 @@ Read P1 first. The rest follow from it.
 
 ---
 
-## P1. The two-language deadlock: two settings, not one
+## P1. The two-language deadlock: ONE setting, and the second name derived
+
+> **SUPERSEDED 2026-09-29 by the owner's simplicity objection.** 🐋  "I don't want multiple
+> settings. It's really against my workflow, the simplicity... do people really need 2 languages?"
+> The analysis below is correct about the MECHANISM and wrong about the SETTINGS COUNT, and the two
+> are separable. **`ONE-OR-TWO-LANGUAGES.md` carries the revised recommendation: one picker, plus
+> the toggle that already exists, with the second name DERIVED as Arabic unless the app language is
+> Arabic.** That solves the deadlock just as cleanly, because the cause was the coupling rather
+> than the count, and it removes a control instead of adding one. The section below is kept because
+> its reasoning about why the coupling breaks is still the argument, and because the second picker
+> remains a reversible addition if users ever ask for it.
+
+### The original two-setting analysis, kept for its reasoning
 
 ### The problem in one line
 
