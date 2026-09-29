@@ -35,19 +35,22 @@ const HINT = 'Point the top of the phone at the marker. Move away from metal and
 const SENSOR_INTERVAL_MS = 100;
 
 /**
+ * What iOS yaw needs before it is a bearing, beyond the sign
+ *
+ * Under `XTrueNorthZVertical` yaw turns about the vertical axis from a reference half a turn from the bearing the top
+ * edge points at. Measured on device rather than derived, because Core Location's own `trueHeading` disagrees with the
+ * fused sensor by exactly 90 degrees on the test iPhone and is the reading that matches no physical direction.
+ */
+const IOS_AXIS_CORRECTION = 180;
+
+/**
  * Feeds the dial from the OS-fused rotation vector
  *
  * It carries the gyroscope, which `expo-location`'s heading does not: measured 71 degrees out on a phone where this
  * reads 10. Mounted only while the sheet is open, because `useAnimatedSensor` subscribes for the life of its component
  * and every sheet is mounted from launch.
  */
-const HeadingSensor = ({
-  heading,
-  declination,
-}: {
-  heading: SharedValue<number>;
-  declination: SharedValue<number>;
-}) => {
+const HeadingSensor = ({ heading, correction }: { heading: SharedValue<number>; correction: SharedValue<number> }) => {
   const rotation = useAnimatedSensor(SensorType.ROTATION, {
     interval: SENSOR_INTERVAL_MS,
     // Reanimated's default frame is ARBITRARY on iOS: yaw zero lands wherever the phone woke up, so a compass built on
@@ -58,7 +61,7 @@ const HeadingSensor = ({
   useAnimatedReaction(
     () => rotation.sensor.value.yaw,
     (yaw) => {
-      heading.value = dialAngleFromYaw(heading.value, yaw, declination.value);
+      heading.value = dialAngleFromYaw(heading.value, yaw, correction.value);
     }
   );
 
@@ -76,7 +79,8 @@ export default function BottomSheetQibla() {
   const [reading, setReading] = useState<Reading>({ status: 'looking' });
   /** Unbounded on purpose: an interpolation runs between the numbers it is given, so a wrapped angle spins the dial */
   const heading = useSharedValue(0);
-  const declination = useSharedValue(0);
+  /** iOS needs the axis quarter turn; Android is magnetic-referenced and needs the declination instead */
+  const correction = useSharedValue(Platform.OS === 'ios' ? IOS_AXIS_CORRECTION : 0);
 
   // Keyed on presentation, never on mount: every sheet is mounted from launch, so a mount-keyed read would run on
   // every device, forever, for a screen the user may never open.
@@ -87,9 +91,9 @@ export default function BottomSheetQibla() {
     const position = await readPosition();
     setReading(position ? { status: 'found', bearing: qiblaBearing(position) } : { status: 'unavailable' });
 
-    // iOS reports yaw from TRUE north already, so correcting it again would bend the needle by twice the declination
-    if (Platform.OS === 'android') declination.value = await readDeclination();
-  }, [declination]);
+    // iOS reads from true north already, so correcting it again would bend the needle by twice the declination
+    if (Platform.OS === 'android') correction.value = await readDeclination();
+  }, [correction]);
 
   const handleDismiss = useCallback(() => setIsOpen(false), []);
 
@@ -104,7 +108,7 @@ export default function BottomSheetQibla() {
       onPresent={handlePresent}
       onDismiss={handleDismiss}
       stackBehavior='push'>
-      {isOpen && <HeadingSensor heading={heading} declination={declination} />}
+      {isOpen && <HeadingSensor heading={heading} correction={correction} />}
       {reading.status === 'found' && <Dial bearing={reading.bearing} heading={heading} />}
       <View style={styles.card}>
         <Text style={styles.reading}>{readingText(reading)}</Text>
