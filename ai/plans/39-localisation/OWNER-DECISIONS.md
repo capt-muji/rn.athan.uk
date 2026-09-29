@@ -246,6 +246,58 @@ this is a constraint on interpretation rather than new work.
 The Turkish exception survives unchanged and is not a counter-example: Diyanet prints `İmsak` for
 the dawn row, which is a different TERM rather than a translation of Fajr, and it stays.
 
+## D16. The three translated terms stay ONE WORD, or as close as the language allows (2026-09-29)
+
+🐋  "Those are the 3 that scare me the most because I feel like those are the 3 that might be the
+longest. We literally want to translate them. Last third, we don't want to say last third of the
+night. I don't want it to be 'last third of the night' in another language. No. I literally want
+just the words. Last third, that's it. Same for midnight, it should just be midnight, it shouldn't
+be 'the middle of the night'. Same for sunrise, it should just be sunrise. One word, midnight one
+word, sunrise one word. Not 'the time of sunrise', no."
+
+**This is the missing half of D15, and it is the rule that makes the column work.**
+
+D15 settles the eight transliterated names. These three are the ones that genuinely translate, and
+the owner correctly identifies them as the highest risk: a translator handed "Last Third" naturally
+produces "the last third of the night", which is a phrase, and a phrase never fits a column sized
+for a word.
+
+**The rule: translate the TERM, never the DEFINITION.** The explanation string already carries the
+definition, so the label does not have to.
+
+### Measured, and it closes every gap
+
+The sourced catalog carried two terms over the 123pt budget in the launch set. Applying the rule:
+
+| Locale | Term | As sourced | Width | Terse | Width | Saved |
+| --- | --- | --- | --- | --- | --- | --- |
+| French | Midnight | Minuit islamique | 132.3pt | **Minuit** | 50.2pt | 82pt |
+| German | Sunrise | Sonnenaufgang | 125.9pt | **Aufgang** | 67.5pt | 58pt |
+| Indonesian | Midnight | Tengah malam | 119.1pt | **Tengah** | 59.1pt | 60pt |
+| Indonesian | Last Third | Sepertiga akhir | 120.3pt | **Sepertiga** | 76.5pt | 44pt |
+| French | Sunrise | Lever du soleil | 114.5pt | **Lever** | 43.3pt | 71pt |
+
+**Every launch locale now fits, with room to spare.** The two that were over are the two the rule
+targets, which is the confirmation that the rule is aimed correctly rather than a coincidence.
+
+### Why this is safe to do
+
+The app already pairs a terse label with an explanatory string, and the Arabic proves the pattern
+works: `آخر ثلث` is literally "last third", without "of the night", and it reads correctly because
+the context is a prayer timetable. Nobody opening a prayer app is confused about which night.
+
+`R6` sourced the explanations far better than the labels (all five Arabic explanations reproduce
+this app's shipped strings exactly), which is the right way round: the explanation is where
+precision belongs, and the label is where brevity belongs.
+
+### The one judgement the plan must carry
+
+A terse form must remain a REAL word in the language, not a truncation. German `Aufgang` is a real
+word (rise, ascent) and is what a German timetable would print; it is not `Sonnenaufg...`. Where no
+short real form exists, the longer one stays and the locale is flagged, rather than inventing one.
+
+That is a per-locale question for the source, and it is why `R6`'s `shortText` field exists.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
