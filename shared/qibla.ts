@@ -39,7 +39,27 @@ export const qiblaBearing = (position: Position): number => {
  * @param heading A heading in degrees, possibly negative or past a full turn
  * @returns The same direction in [0, 360)
  */
-export const normaliseHeading = (heading: number): number => ((heading % FULL_TURN) + FULL_TURN) % FULL_TURN;
+export const normaliseHeading = (heading: number): number => {
+  'worklet';
+  return ((heading % FULL_TURN) + FULL_TURN) % FULL_TURN;
+};
+
+/**
+ * A compass bearing from the fused rotation sensor's yaw
+ *
+ * Reanimated negates the Android azimuth so its axes match iOS, so the sign is flipped back here. Yaw is
+ * magnetic-referenced on both platforms, which is why the declination is added rather than assumed to be zero.
+ *
+ * @param yaw The sensor's yaw in radians
+ * @param declination Degrees to add for true north, east positive
+ * @returns The bearing in degrees clockwise from true north, in [0, 360)
+ */
+export const headingFromYaw = (yaw: number, declination: number): number => {
+  'worklet';
+  const degrees = (-yaw * HALF_TURN) / Math.PI;
+
+  return normaliseHeading(degrees + declination);
+};
 
 /**
  * The shorter of the two ways round from one bearing to another
@@ -52,6 +72,7 @@ export const normaliseHeading = (heading: number): number => ((heading % FULL_TU
  * @returns The turn in degrees, within (-180, 180], negative anticlockwise
  */
 export const shortestDelta = (from: number, to: number): number => {
+  'worklet';
   const difference = to - from + HALF_TURN;
   const delta = normaliseHeading(difference) - HALF_TURN;
 
@@ -68,4 +89,23 @@ export const shortestDelta = (from: number, to: number): number => {
  * @param heading The new heading, in [0, 360)
  * @returns The angle to animate to, which may sit outside [0, 360)
  */
-export const unwrapAngle = (current: number, heading: number): number => current + shortestDelta(current, heading);
+export const unwrapAngle = (current: number, heading: number): number => {
+  'worklet';
+  return current + shortestDelta(current, heading);
+};
+
+/**
+ * The next continuous dial angle for a sensor sample
+ *
+ * One step so the sensor reaction stays a single call: a reaction body is the only code on this path a test cannot
+ * reach, because nothing delivers sensor samples off a device.
+ *
+ * @param current The continuous angle the dial holds now
+ * @param yaw The sensor's yaw in radians
+ * @param declination Degrees to add for true north, east positive
+ * @returns The angle to animate to, which may sit outside [0, 360)
+ */
+export const dialAngleFromYaw = (current: number, yaw: number, declination: number): number => {
+  'worklet';
+  return unwrapAngle(current, headingFromYaw(yaw, declination));
+};

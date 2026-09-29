@@ -2,24 +2,10 @@ import * as Location from 'expo-location';
 import { Linking } from 'react-native';
 
 import logger from '@/shared/logger';
-import { normaliseHeading, type Position } from '@/shared/qibla';
+import { type Position, shortestDelta } from '@/shared/qibla';
 
 /** What `expo-location` reports for a heading it cannot resolve, before any normalisation can hide it */
 const NO_HEADING = -1;
-
-/**
- * The calibration level below which the phone's own uncertainty exceeds 35 degrees (iOS band 1: "< 50 degrees").
- *
- * Both platforms report this per sample: iOS from Core Location, Android from `onAccuracyChanged`. At or below it the
- * needle is not worth trusting, and saying so is the whole reason the compass never claims the needle.
- */
-const POOR_CALIBRATION = 1;
-
-/** A heading with the phone's own verdict on how much it can be trusted */
-export interface HeadingReading {
-  heading: number;
-  calibrated: boolean;
-}
 
 /**
  * Whether the compass may open
@@ -87,24 +73,21 @@ export const readPosition = async (): Promise<Position | null> => {
 };
 
 /**
- * Streams the phone's heading while the compass is open
+ * The local magnetic declination, read once from the platform's own geomagnetic model
  *
- * Android reports a NEGATIVE trueHeading wherever declination is negative, which is indistinguishable from its own -1
- * "not ready" sentinel to anything that merely tests for a negative number. So the sentinel is matched exactly, before
- * normalising.
+ * The fused rotation sensor is magnetic-referenced on both platforms, so the needle needs this to point at TRUE north.
+ * It is taken as the gap between the two headings the platform already reports rather than by shipping a model.
  *
- * @param onHeading Called with each reading, its heading in [0, 360)
- * @returns A function that stops the stream, which the caller must run on dismiss
+ * @returns Degrees to add to a magnetic bearing, east positive, or 0 when the platform cannot say
  */
-export const watchHeading = async (onHeading: (reading: HeadingReading) => void): Promise<() => void> => {
-  const subscription = await Location.watchHeadingAsync((heading) => {
-    if (heading.trueHeading === NO_HEADING) return;
+export const readDeclination = async (): Promise<number> => {
+  try {
+    const heading = await Location.getHeadingAsync();
+    if (heading.trueHeading === NO_HEADING) return 0;
 
-    onHeading({
-      heading: normaliseHeading(heading.trueHeading),
-      calibrated: heading.accuracy > POOR_CALIBRATION,
-    });
-  });
-
-  return () => subscription.remove();
+    return shortestDelta(heading.magHeading, heading.trueHeading);
+  } catch (error) {
+    logger.warn('QIBLA: Failed to read declination', { error });
+    return 0;
+  }
 };

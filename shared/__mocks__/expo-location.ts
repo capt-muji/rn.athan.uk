@@ -46,3 +46,6 @@ export const getLastKnownPositionAsync = jest.fn(async () => ({
   timestamp: 0,
 }));
 export const watchHeadingAsync = jest.fn(async (_listener: LocationHeadingCallback) => ({ remove: jest.fn() }));
+export const getHeadingAsync = jest.fn(
+  async (): Promise<LocationHeadingObject> => ({ trueHeading: 120.2, magHeading: 119, accuracy: 3 })
+);

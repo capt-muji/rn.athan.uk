@@ -1,12 +1,19 @@
-import { useCallback, useRef, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { useSharedValue } from 'react-native-reanimated';
+import { useCallback, useState } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import {
+  IOSReferenceFrame,
+  SensorType,
+  type SharedValue,
+  useAnimatedReaction,
+  useAnimatedSensor,
+  useSharedValue,
+} from 'react-native-reanimated';
 
 import Dial from '@/components/qibla/Dial';
 import { IconView } from '@/components/ui';
-import { readPosition, watchHeading } from '@/device/qibla';
+import { readDeclination, readPosition } from '@/device/qibla';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { qiblaBearing, unwrapAngle } from '@/shared/qibla';
+import { dialAngleFromYaw, qiblaBearing } from '@/shared/qibla';
 import { Icon } from '@/shared/types';
 import { setQiblaSheetModal } from '@/stores/ui';
 
@@ -22,44 +29,69 @@ const readingText = (reading: Reading): string => {
 };
 
 /** Names the condition and what to do about it, never apologising for the reading and never blaming the phone */
-const hintText = (calibrated: boolean): string =>
-  calibrated
-    ? 'Hold the phone flat for an accurate reading'
-    : 'Move the phone in a figure of eight a few times, away from metal and magnets';
+const HINT = 'Point the top of the phone at the marker. Move away from metal and magnets if it will not settle.';
+
+/** The sensor streams faster than this; 100ms is six frames of the dial, which reads as continuous */
+const SENSOR_INTERVAL_MS = 100;
+
+/**
+ * Feeds the dial from the OS-fused rotation vector
+ *
+ * It carries the gyroscope, which `expo-location`'s heading does not: measured 71 degrees out on a phone where this
+ * reads 10. Mounted only while the sheet is open, because `useAnimatedSensor` subscribes for the life of its component
+ * and every sheet is mounted from launch.
+ */
+const HeadingSensor = ({
+  heading,
+  declination,
+}: {
+  heading: SharedValue<number>;
+  declination: SharedValue<number>;
+}) => {
+  const rotation = useAnimatedSensor(SensorType.ROTATION, {
+    interval: SENSOR_INTERVAL_MS,
+    // Reanimated's default frame is ARBITRARY on iOS: yaw zero lands wherever the phone woke up, so a compass built on
+    // it points at nothing. This is the only frame that references north.
+    iosReferenceFrame: IOSReferenceFrame.XTrueNorthZVertical,
+  });
+
+  useAnimatedReaction(
+    () => rotation.sensor.value.yaw,
+    (yaw) => {
+      heading.value = dialAngleFromYaw(heading.value, yaw, declination.value);
+    }
+  );
+
+  return null;
+};
 
 /**
  * The qibla compass
  *
- * The bearing is arithmetic and exact; the needle is only as good as the phone's magnetometer, so the screen states
- * the number and never claims the needle.
+ * The bearing is arithmetic and exact; the needle comes from the OS-fused rotation sensor, so the screen states the
+ * number and never claims the needle.
  */
 export default function BottomSheetQibla() {
+  const [isOpen, setIsOpen] = useState(false);
   const [reading, setReading] = useState<Reading>({ status: 'looking' });
-  const [calibrated, setCalibrated] = useState(true);
   /** Unbounded on purpose: an interpolation runs between the numbers it is given, so a wrapped angle spins the dial */
   const heading = useSharedValue(0);
-  const stopHeading = useRef<(() => void) | null>(null);
+  const declination = useSharedValue(0);
 
-  const releaseSensor = useCallback(() => {
-    stopHeading.current?.();
-    stopHeading.current = null;
-  }, []);
-
-  // Keyed on presentation, never on mount: every sheet is mounted from launch, so a mount-keyed subscription would
-  // run on every device, forever, for a screen the user may never open.
+  // Keyed on presentation, never on mount: every sheet is mounted from launch, so a mount-keyed read would run on
+  // every device, forever, for a screen the user may never open.
   const handlePresent = useCallback(async () => {
-    releaseSensor();
     setReading({ status: 'looking' });
-    setCalibrated(true);
+    setIsOpen(true);
 
     const position = await readPosition();
     setReading(position ? { status: 'found', bearing: qiblaBearing(position) } : { status: 'unavailable' });
 
-    stopHeading.current = await watchHeading((sample) => {
-      heading.value = unwrapAngle(heading.value, sample.heading);
-      setCalibrated(sample.calibrated);
-    });
-  }, [heading, releaseSensor]);
+    // iOS reports yaw from TRUE north already, so correcting it again would bend the needle by twice the declination
+    if (Platform.OS === 'android') declination.value = await readDeclination();
+  }, [declination]);
+
+  const handleDismiss = useCallback(() => setIsOpen(false), []);
 
   return (
     <Sheet
@@ -70,12 +102,13 @@ export default function BottomSheetQibla() {
       snapPoints={['85%']}
       perfName='sheet_qibla'
       onPresent={handlePresent}
-      onDismiss={releaseSensor}
+      onDismiss={handleDismiss}
       stackBehavior='push'>
+      {isOpen && <HeadingSensor heading={heading} declination={declination} />}
       {reading.status === 'found' && <Dial bearing={reading.bearing} heading={heading} />}
       <View style={styles.card}>
         <Text style={styles.reading}>{readingText(reading)}</Text>
-        {reading.status === 'found' && <Text style={styles.hint}>{hintText(calibrated)}</Text>}
+        {reading.status === 'found' && <Text style={styles.hint}>{HINT}</Text>}
       </View>
     </Sheet>
   );
