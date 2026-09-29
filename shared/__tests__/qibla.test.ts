@@ -7,7 +7,15 @@
  * qibla apps.
  */
 
-import { KAABA, normaliseHeading, qiblaBearing, shortestDelta, unwrapAngle } from '../qibla';
+import {
+  dialAngleFromYaw,
+  headingFromYaw,
+  KAABA,
+  normaliseHeading,
+  qiblaBearing,
+  shortestDelta,
+  unwrapAngle,
+} from '../qibla';
 
 /** Every fixture below is quoted to 4dp, so a bound tighter than the quoting would test the quoting */
 const SURVEY_TOLERANCE = 0.05;
@@ -183,5 +191,49 @@ describe('unwrapAngle', () => {
       expect(Math.abs(next - current)).toBeLessThanOrEqual(180);
       current = next;
     }
+  });
+});
+
+describe('headingFromYaw', () => {
+  // Reanimated negates the platform azimuth so its axes match iOS, so a positive turn arrives as a negative yaw
+  it('turns the sensor yaw into a compass bearing', () => {
+    expect(headingFromYaw(-Math.PI / 2, 0)).toBeCloseTo(90, 6);
+  });
+
+  it('reads a yaw of zero as north', () => {
+    expect(headingFromYaw(0, 0)).toBeCloseTo(0, 6);
+  });
+
+  // The rotation sensor is magnetic-referenced on Android, and this is the whole correction that makes it point true
+  it('adds an eastward declination', () => {
+    expect(headingFromYaw(-Math.PI / 2, 1.2)).toBeCloseTo(91.2, 6);
+  });
+
+  it('subtracts a westward declination', () => {
+    expect(headingFromYaw(-Math.PI / 2, -14)).toBeCloseTo(76, 6);
+  });
+
+  // A bearing that leaves the turn would spin the dial the long way round, so the wrap is closed at both ends
+  it('wraps a correction past north back into a bearing', () => {
+    expect(headingFromYaw(-Math.PI, 181)).toBeCloseTo(1, 6);
+  });
+
+  it('wraps a correction below north back into a bearing', () => {
+    expect(headingFromYaw(0, -1)).toBeCloseTo(359, 6);
+  });
+});
+
+describe('dialAngleFromYaw', () => {
+  it('turns a sensor sample into a dial angle', () => {
+    expect(dialAngleFromYaw(0, -Math.PI / 2, 0)).toBeCloseTo(90, 6);
+  });
+
+  // The dial interpolates between the numbers it is given, so a wrapped angle would spin it the long way round
+  it('stays continuous across the north seam', () => {
+    expect(dialAngleFromYaw(350, -(10 * Math.PI) / 180, 0)).toBeCloseTo(370, 6);
+  });
+
+  it('carries the declination through', () => {
+    expect(dialAngleFromYaw(0, -Math.PI / 2, 1.2)).toBeCloseTo(91.2, 6);
   });
 });
