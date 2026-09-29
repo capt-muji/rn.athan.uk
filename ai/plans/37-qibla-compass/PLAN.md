@@ -103,14 +103,14 @@ which is 2.4x to 3.4x the entire 16.67 ms budget for one 60fps frame. So:
 One finding, one branch off `feat/37-qibla-compass`, one commit, version-bumped, merged `--no-ff` back into
 `feat/37-qibla-compass`. Each step leaves the branch green.
 
-| # | Step | Proves |
-| --- | --- | --- |
-| 1 | Install `expo-location@58.0.8` and `adhan@4.4.6`, with the nested-copy remedy | The tree still builds both widget bundles |
-| 2 | `shared/qibla.ts`: the bearing and the angle maths | The 13 invariants and the surveyed fixtures |
-| 3 | `device/heading.ts` + `stores/qibla.ts`: the sensor boundary and the permission gate | Negative headings normalise, the `-1` sentinel is distinguished, unsubscribe runs |
-| 4 | The Settings row, the icon, the sheet shell | The row opens the sheet when granted and explains when denied |
-| 5 | `Dial.tsx`: the static tree, transform-rotated | 60fps on the frame audit, no re-record |
-| 6 | Device proof on the 3T and the iOS simulator | The needle tracks and the screen is honest |
+| # | Step | Proves | Outcome |
+| --- | --- | --- | --- |
+| 1 | Install `expo-location@58.0.8` and `adhan@4.4.6`, with the nested-copy remedy | The tree still builds both widget bundles | DONE 1.29.96 |
+| 2 | `shared/qibla.ts`: the bearing and the angle maths | The 13 invariants and the surveyed fixtures | DONE 1.29.97 |
+| 3 | `device/heading.ts` + `stores/qibla.ts`: the sensor boundary and the permission gate | Negative headings normalise, the `-1` sentinel is distinguished, unsubscribe runs | DONE 1.29.97, landed with step 2 as `device/qibla.ts` |
+| 4 | The Settings row, the icon, the sheet shell | The row opens the sheet when granted and explains when denied | DONE 1.29.97 to 1.29.105 |
+| 5 | `Dial.tsx`: the static tree, transform-rotated | 60fps on the frame audit, no re-record | DONE 1.29.107, plus 1.29.108 for the two defects the simulator found |
+| 6 | Device proof on the 3T and the iOS simulator | The needle tracks and the screen is honest | DONE 1.29.109. **60fps measured on the 3T**, median gap 16.7ms |
 
 ### Step 1: the dependencies
 
