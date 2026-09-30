@@ -616,11 +616,39 @@ Read ai/prompts/document.md
 
 ## 7. Boundaries & Permissions (Three-Tier)
 
+### A worktree you create, you delete, and its branch goes with it (owner rule 2026-09-30)
+
+🐋  "for any work trees you create, please make sure to delete them after you are finished with
+them... because we have left over 400 branches last time."
+
+**A session that creates a worktree removes it before it ends, in the same session, and deletes the
+branch that came with it.** Both halves, because `git worktree remove` leaves the branch behind and
+the branch is what accumulates:
+
+```bash
+git worktree remove --force <path>
+git branch -D <branch>          # only when the work is merged or deliberately thrown away
+git worktree prune              # clears admin entries for a directory deleted by hand
+```
+
+Removal happens **always before 00:00**, when the nightly job clears build folders, and a worktree
+outliving its session is a defect to fix on sight: check `git worktree list` and `git branch` at the
+start of every session, and clean up anything whose session is over. Verify a leftover branch is
+merged (`git log --oneline uat-2..<branch>` prints nothing, or its commits landed under other shas)
+before deleting it; when it holds unmerged work, say so and leave it.
+
+**The one exception, and it is the only one: the five build worktrees under
+`~/athan-device-sweep/worktrees/`** (`mock-build`, `mock-patch-build`, `mock-widgets-build`,
+`prod-build`, `prod-widgets-build`). `build-prod.zsh` and `build-mock.zsh` reuse them as Gradle
+caches and move an existing one to a new sha rather than recreating it, so deleting one costs a full
+rebuild. They are detached, they carry no branch, and they stay.
+
 ### Always Do
 
 - Read files, list files
 - Run file-scoped lint/test/typecheck
 - Clean up empty files/folders created this session
+- Remove every worktree this session created, and its branch (see the rule above)
 - Match existing code patterns
 
 ### Ask First
