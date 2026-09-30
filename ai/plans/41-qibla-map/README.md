@@ -1,7 +1,11 @@
 # Session 41: the qibla, made checkable
 
-Research complete, 2026-09-30. **Read `PROPOSALS.md` first** if you are the owner: it holds the seven
-decisions and nothing else. Read this file if you are the next session.
+Research complete, 2026-09-30.
+
+**If you are the owner, two files and nothing else:** `VERDICT.md` answers whether this approach is better
+and whether anyone else uses it, in plain terms; `PROPOSALS.md` holds the seven decisions only you can take.
+
+Read this file if you are the next session.
 
 ## What this session concluded
 
@@ -36,7 +40,9 @@ priced honestly at +39.9 MB of native binary.
 
 | File | What it is |
 | --- | --- |
-| `PROPOSALS.md` | **The seven owner decisions.** Start here |
+| `VERDICT.md` | **Is the map better, is it proven, do others use it, and what about the direction.** Start here |
+| `PROPOSALS.md` | **The seven owner decisions.** Then here |
+| `PROTOTYPE-FINDINGS.md` | What building it on the real toolchain proved, and the two config one-liners it found |
 | `BRIEF.md` | The research brief, the constraints, and the size ruling |
 | `ASSUMPTIONS.md` | Every judgement taken unattended, with the five likeliest to need correction flagged |
 | `PROTOTYPE-PLAN.md` | **The next thing to do.** Three theories to test on the iPhone XS, cheapest first, merging nothing |
