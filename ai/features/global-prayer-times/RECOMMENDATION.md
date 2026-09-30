@@ -16,6 +16,13 @@ the source from the user's country, let them change it, name it on screen, and n
 **This is the only architecture found that is simultaneously offline, faithful to real national timetables, and
 honest about what it does not know.**
 
+**Waves 3 and 4 strengthened this and changed one thing.** The strengthening: **London, the app's own source and the
+hardest case in the world, turns out to need no network at all** (a 732-byte interval table reproduces fifty
+published years exactly), and `SOURCE-CATALOG.md` now holds 39 sources across 30 countries with every inter-report
+conflict resolved. The change: **the app cannot work out where it is for free.** Timezone inference is a median 16
+displayed minutes wrong, so a worldwide app needs either a location permission or a manual city and zone picker.
+That is now the largest open owner decision, and the architecture stands under either answer.
+
 ---
 
 ## Why not the obvious alternatives
@@ -91,10 +98,18 @@ before anything that depends on it, and everything invisible comes before anythi
 | S4 | Build the USNO verification fixtures (already built in `data/validation/`, 37,340 comparisons, 0 failures) | No |
 | S5 | Name the authority on screen, with the honest wording | Yes, small |
 | S6 | Surface jamaah, which is already typed and never read | Yes |
+| S6b | **London's own interval table, making London permanently offline** (R13). New in wave 4, and it belongs here because it removes the app's only network dependency and its only single-operator risk, for its existing users, before any new country is added | No, times are unchanged |
 | S7 | Add ONE second source: Malaysia (JAKIM) | Yes |
+| S7b | **The location layer**: whichever of a permission or a city-and-zone picker the owner chooses (R14). It has to precede the source switch, because a switch needs something to switch on | Yes |
 | S8 | The source switch, with its cache wipe, alarm re-arm and delta warning | Yes |
 | S9 | Per-prayer manual offsets, if the owner permits them | Yes |
 | S10 | The computed source with `adhan@4.4.6`, last and deliberately so | Yes |
+
+**Two additions from wave 4, and one warning.** S6b is the cheapest high-value step in the whole sequence: 10,290
+bytes buys fifty years of London times, removes the API key, and changes nothing a user sees. S7b is unavoidable and
+its shape is an owner decision. The warning is R13's: **the notification sweep cannot detect a moved time**, because
+`findStaleScheduledNotificationIds` compares identifiers and the identifier carries no time, so any step that can
+move times must re-arm explicitly rather than relying on the sweep.
 
 **S1 to S4 are invisible to users and all four are worth doing regardless of what the owner decides about
 sources.** S6 is the cheapest real improvement for the app's existing London users, because the jamaah data is
@@ -152,6 +167,12 @@ remaining risks are both owner decisions rather than unknowns.
 
 ## What I would do first, if asked
 
-**Build S1 to S4.** All four are invisible to users, independently valuable, and required under every outcome of
-the two open decisions above, so none of them waits on anything. S2 in particular closes the largest silent risk in
-the codebase, the location-free MMKV key, and it must land before a second source exists rather than after.
+**Build S1 to S4, then S6b.** All five are invisible to users, independently valuable, and required under every
+outcome of the open decisions, so none waits on anything. S2 closes the largest silent risk in the codebase, the
+location-free MMKV key, and it must land before a second source exists rather than after. S6b is the one that pays
+back immediately: it makes the app's existing London users independent of a single manually-issued API key and a
+single small operator, for 10,290 bytes, with no visible change at all.
+
+**The one thing worth putting to the owner before anything else is built:** whether v2.0 asks for a location
+permission or ships a city and zone picker. It does not block S1 to S4 or S6b, and everything after them assumes an
+answer.
