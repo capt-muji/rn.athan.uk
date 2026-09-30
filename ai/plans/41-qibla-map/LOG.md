@@ -157,3 +157,18 @@ returns nothing outside tests. Deleted with the dial: `Dial.tsx`, `dialGeometry.
 **A break script needs re-running after a refactor, not only after a formatter.** Removing `clearTiles`
 made break 7 of `breaks-2.sh` print `BREAK NOT APPLIED`, which is the script correctly reporting that its
 target is gone. It was deleted rather than repointed, because the behaviour it guarded no longer exists.
+
+**Review of the commit, read back cold.** Three findings, all in code the plan did not give verbatim, so all
+three were applied under `EXECUTOR-BRIEF.md` section 4 item 8:
+
+1. A **nested ternary** chose between the three non-ready strings. Replaced with a `WITHOUT_A_MAP` record
+   keyed on the status, which also removed the separate `state.status === 'ready'` branch around the `Text`:
+   one element now renders either the sentence or the state's line.
+2. `handlePresent` was an `async` arrow whose whole body was `await start()`. It is `() => start()`.
+3. A comment read "Named the condition" where it meant "Names the condition".
+
+Everything else checked clean: the settled visuals are untouched (title, subtitle, icon, snap point,
+`perfName` and both styles are byte-identical to what shipped), no name or log line differs from the plan's
+contracts, and nothing outside the step's file list changed. **`opencode.json` was swept into the first
+commit by a `git add -A` and was removed by amend**: the MCP toggles are the owner's configuration, not this
+step's work.
