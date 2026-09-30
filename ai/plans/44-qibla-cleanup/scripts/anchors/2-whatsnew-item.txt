@@ -1,0 +1,8 @@
+    {
+      // PARKED: stamped at the store release, like every item. No flag and no platform: the
+      // compass ships on both
+      title: 'Qibla compass',
+      body: 'Settings now points the way to the Kaaba from wherever you are',
+      version: null,
+    },
+  ],
