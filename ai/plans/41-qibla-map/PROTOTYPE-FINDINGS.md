@@ -142,11 +142,70 @@ sequencing constraint the plan has to carry, and it was found by building rather
 
 ---
 
+## Step P3, part 1: how tiles get into the app. The trap was real, and the fix is two lines.
+
+`PROTOTYPE-PLAN.md` flagged as unproven whether Metro will bundle a binary tile at all. **It will not, by
+default.** Read from Expo's own resolver config rather than assumed:
+
+```
+total assetExts: 33
+  .mp3       BUNDLED
+  .mvt       not an asset ext
+  .pmtiles   not an asset ext
+  .pbf       not an asset ext
+  .bin       not an asset ext
+```
+
+So a `require('./tile.mvt')` fails today. Three routes out, each measured on the real London tile:
+
+| Route | Bytes for one tile | Cost |
+| --- | --- | --- |
+| **Raw gzipped, via `assetExts`** | **62,219** | Two lines in `metro.config.js` |
+| Base64 in a `.ts` module | 82,960 | **+33.3%**, the classic 4/3, and no config change |
+| Decompressed MVT, skipping `fflate` | 112,968 | +82%, but removes the one new dependency |
+
+For the design's 3x3 pack, using London's measured 655 KB: raw is **655 KB**, base64 is **873 KB**, so the
+config-free route costs **218 KB extra per location**.
+
+**Recommendation: add the extensions to `assetExts`.** Two lines is cheaper than 33% of bytes, and **the repo
+already edits that exact array** (it removes `svg` so the SVG transformer can own it), so the pattern exists
+and needs no new concept.
+
+**The base64 route also carries an unmeasured risk that tips the decision.** `ai/AGENTS.md` records for row
+39 that "the `JSON.parse`-beats-literals trick is a V8 result that does NOT transfer to Hermes
+(facebook/hermes#1046)". A 873 KB string literal is exactly the shape that warning is about, and its Hermes
+parse cost is unmeasured. The `assetExts` route avoids the question entirely rather than betting on it.
+
+**The byte-read path is confirmed by the compiler, not by documentation.** `P4` claimed
+`expo-file-system`'s `File` gives raw bytes because it declares `implements Blob`. Verified by writing a
+probe and running `tsc`:
+
+```ts
+const f = new File(uri);
+const ab: ArrayBuffer = await f.arrayBuffer();
+const u8: Uint8Array = await f.bytes();
+const s: ReadableStream<Uint8Array> = f.readableStream();
+```
+
+**`tsc --noEmit` exits 0 with no cast.** So all three reads are real, typed, and in the installed tree.
+
+---
+
+## Running total: what the prototype has settled
+
+| Theory | Status |
+| --- | --- |
+| Solar azimuth belongs to the deep import, not the public API | **Settled.** Public route fails at 7.8 deg near the equator, and the cause is a measured singularity |
+| The module builds, typechecks, tests and covers | **Settled.** 100% on four measures; two one-line config fixes recorded verbatim |
+| The solar module and its first caller must ship in ONE commit | **Settled**, by the dead-code guard refusing a caller-less export |
+| Tiles need `assetExts`, and the alternative costs 33% | **Settled**, with the Hermes string-literal risk as the tie-breaker |
+| Bundled tiles can be read as bytes | **Settled** by `tsc`, no cast needed |
+
 ## Still to run
 
 | Step | Theory | Blocked on |
 | --- | --- | --- |
-| P1 | The magnetic offset is a repeatable property of a spot | Nothing. Needs the phone still and an instrumented build |
-| P2a part 3 | The solar azimuth agrees ON DEVICE to 0.1 deg | The instrumented build |
+| P1 | The magnetic offset is a repeatable property of a spot | **Nothing.** The highest-value item left |
+| P2a part 3 | The solar azimuth agrees ON DEVICE to 0.1 deg | An instrumented build on the XS |
 | P2b | The shadow interaction is usable | Daylight, and the owner's judgement |
-| P3 | The tile pipeline holds its timings in Hermes on the A12 | A prototype screen |
+| P3 part 2 | Decode and record timings in Hermes on the A12 | A prototype screen on the XS |
