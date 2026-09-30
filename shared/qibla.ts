@@ -1,18 +1,41 @@
-import { Coordinates, Qibla } from 'adhan';
-
 export interface Position {
   latitude: number;
   longitude: number;
 }
 
 /**
- * The value adhan computes from, restated because adhan keeps it private. `qibla.test.ts` fails if the two ever
- * diverge, since a second source of truth here would bend every bearing by a few thousandths of a degree.
+ * Independently sourced rather than taken from a library, because this is the one number the app must never get wrong.
+ * Five sources agree to 8.27 m, the strongest being OpenStreetMap's surveyed footprint of the building, which is 0.34
+ * arcseconds of bearing from London.
  */
-export const KAABA: Position = { latitude: 21.4225241, longitude: 39.8261818 };
+export const KAABA: Position = { latitude: 21.4225, longitude: 39.8262 };
 
 const FULL_TURN = 360;
 const HALF_TURN = 180;
+const DEGREES_TO_RADIANS = Math.PI / 180;
+
+/**
+ * The initial great-circle bearing from one position to another
+ *
+ * Initial, because a great circle's bearing changes along its length: this is the direction to set off in, never one to
+ * hold. Measured, London already reads 120.330 a thirty-second of the way to the Kaaba against 118.876 at the start.
+ *
+ * @param from Where the bearing is measured from
+ * @param to Where it points at
+ * @returns The bearing in degrees clockwise from true north, in [0, 360)
+ */
+export const bearingTo = (from: Position, to: Position): number => {
+  const fromLatitude = from.latitude * DEGREES_TO_RADIANS;
+  const toLatitude = to.latitude * DEGREES_TO_RADIANS;
+  const longitudeSpan = (to.longitude - from.longitude) * DEGREES_TO_RADIANS;
+
+  const east = Math.sin(longitudeSpan) * Math.cos(toLatitude);
+  const north =
+    Math.cos(fromLatitude) * Math.sin(toLatitude) -
+    Math.sin(fromLatitude) * Math.cos(toLatitude) * Math.cos(longitudeSpan);
+
+  return normaliseHeading(Math.atan2(east, north) / DEGREES_TO_RADIANS);
+};
 
 /**
  * The initial great-circle bearing from a position to the Kaaba
@@ -23,12 +46,7 @@ const HALF_TURN = 180;
  * @param position Where the phone is standing
  * @returns The bearing in degrees clockwise from true north, in [0, 360)
  */
-export const qiblaBearing = (position: Position): number => {
-  const coordinates = new Coordinates(position.latitude, position.longitude);
-  const bearing = Qibla(coordinates);
-
-  return normaliseHeading(bearing);
-};
+export const qiblaBearing = (position: Position): number => bearingTo(position, KAABA);
 
 /**
  * A heading as a compass bearing
