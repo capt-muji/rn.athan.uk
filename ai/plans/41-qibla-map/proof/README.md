@@ -41,3 +41,10 @@ It recovers each street's true bearing from the tile geometry and states the qib
 the app can say "the qibla is 53 degrees left of the line of Whitehall". Every number needs ZERO sensors: a
 street bearing is a fact of the ground held in the tile, the qibla is arithmetic, and the difference is
 arithmetic.
+
+Two scripts record a REJECTED route, kept because the rejection is the finding.
+`public-api-solar-rejected.js` derives solar azimuth from `adhan`'s public exports alone, avoiding the deep
+import: mean 0.484 degrees over 419 in-gate samples but **7.847 worst at Singapore**.
+`why-equator-breaks-it.js` shows why, and it is a singularity rather than a bug: the half-day angle moves only
+1.17 degrees across a whole year at Singapore's latitude, and `adhan` rounds to the minute, so one minute of
+rounding costs **9.07 degrees of declination** there against 0.20 in London. See `../PROTOTYPE-FINDINGS.md`.
