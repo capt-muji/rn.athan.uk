@@ -12,26 +12,31 @@
 
 | File | Kind |
 | --- | --- |
-| `shared/pmtiles.ts` | new |
-| `device/tiles.ts` | new |
-| `shared/__tests__/pmtiles.test.ts` | new |
-| `device/__tests__/tiles.test.ts` | new |
+| `shared/pmtiles.ts` | new, copied from `files/shared/pmtiles.ts.txt` |
+| `shared/__tests__/pmtiles.test.ts` | new, copied |
+| `shared/__tests__/pmtilesLive.test.ts` | new, copied |
+| `device/tiles.ts` | new, built from the contract in part 5 |
+| `device/__tests__/tiles.test.ts` | new, built from the rows in part 4 |
+
+The three `shared/` files are a `(files)` sub-step: copy them and strip the `.txt`. They were built,
+typechecked, linted, tested at 100% and break-tested by the planning session. `device/tiles.ts` is
+`(specified)`, because it touches the network and its test needs mocks the executor writes.
 
 4. **Tests first (red).**
 
-`shared/__tests__/pmtiles.test.ts` covers the pure archive arithmetic:
+The two `shared/` suites are carried whole, 28 tests between them. What they prove:
 
-| Test | What it proves | Inputs | Asserts |
-| --- | --- | --- | --- |
-| `reads the header the spec describes` | Field offsets are right | the real 127-byte header, as a fixture | version 3, tile type 1, zoom 0 to 15, bounds -180 to 180 and -85.0511 to 85.0511 |
-| `refuses a file that is not a PMTiles archive` | A wrong URL fails loudly | bytes starting `NOTPMTIL` | throws, with the magic in the message |
-| `refuses a version it does not understand` | Format drift is caught | a header with version 4 | throws, naming the version |
-| `indexes the spec's own worked Hilbert examples` | The tile id is right | z0 (0,0); z1 (0,0), (0,1), (1,1), (1,0); z2 (0,0) | 0, 1, 2, 3, 4, 5 |
-| `finds London's z15 tile id` | Real agreement with the archive | z15 (16372, 10896) | 518974351 |
-| `decodes a directory of entries` | The varint directory walk | a hand-built 3-entry directory | the three entries, with running-total tile ids |
-| `reads a run-length entry as covering a span of tiles` | Run-length encoding | an entry with runLength 4 | a tile inside the run is found |
-| `reports no entry for a tile the directory does not hold` | A miss is a miss | a tile id past the last entry | `null` |
-| `treats a zero offset after the first entry as following the one before` | The spec's offset shorthand | two entries, the second with offset 0 | the second's offset is the first's offset plus its length |
+`shared/__tests__/pmtiles.test.ts`, 22 tests over synthetic fixtures built field by field from the spec, so a
+wrong field POSITION fails rather than being baked into the fixture: the header's layout, the magic and
+version guards with their exact messages, the spec's own six worked Hilbert examples, London's real tile id
+518974351, the directory's delta-encoded tile ids, its zero-offset shorthand, run-length spans, leaf pointers,
+and the empty directory.
+
+`shared/__tests__/pmtilesLive.test.ts`, 6 tests over **the real 127 header bytes the live planet archive
+served on 2026-09-30**, checked in as base64 so the suite needs no network. This is the suite that matters:
+a reader and a fixture written from the same wrong understanding agree with each other perfectly, and only
+real bytes catch that. It pins the Web Mercator bounds, the zoom range, the root offset at 127, and that
+London's position resolves to the tile id the archive actually served.
 
 `device/__tests__/tiles.test.ts` covers the fetching, with `fetch` mocked:
 
@@ -55,20 +60,22 @@ Expected before the change: `Cannot find module '@/shared/pmtiles'` and `Cannot 
 
 5. **Change.**
 
-**`shared/pmtiles.ts`**, pure, no I/O:
+**`shared/pmtiles.ts`**, copied from the plan, pure and with no I/O. Its contracts:
 
 | Export | Signature | Answers | Must never |
 | --- | --- | --- | --- |
 | `PMTILES_HEADER_BYTES` | `127` | How much of the file the header occupies | |
 | `parseHeader` | `(bytes: Uint8Array) => PmTilesHeader` | The archive's layout | Accept a bad magic or an unknown version; it throws instead |
+| `holdsVectorTiles` | `(header: PmTilesHeader) => boolean` | Whether the decoder can read this archive | Pass a raster archive |
 | `tileIdFor` | `(tile: TileAddress) => number` | The Hilbert index of a tile | Disagree with the spec's worked examples |
 | `decodeDirectory` | `(bytes: Uint8Array) => DirectoryEntry[]` | A directory's entries | Mis-handle the zero-offset shorthand |
 | `findEntry` | `(entries: DirectoryEntry[], tileId: number) => DirectoryEntry \| null` | The entry holding a tile | Return an entry whose run does not cover the id |
+| `pointsAtLeaf` | `(entry: DirectoryEntry) => boolean` | Whether an entry is a leaf directory rather than a tile | |
 
-`parseHeader` throws `new Error(...)` with the offending value in the message; the two messages are
-`PMTiles: unexpected magic <magic>` and `PMTiles: unsupported version <n>`. The planning session's own header
-parse was wrong first and reported "minzoom 15, maxzoom 0" with impossible bounds, so the sanity of these
-fields is what the first test exists to pin.
+`parseHeader` throws with the offending value in the message: `PMTiles: unexpected magic <magic>` and
+`PMTiles: unsupported version <n>`. The planning session's first header parse was wrong and reported
+"minzoom 15, maxzoom 0" with impossible bounds, which is exactly the wrong-but-plausible result the
+live-bytes suite exists to catch.
 
 **`device/tiles.ts`**, the only file in this step that touches the network:
 
@@ -103,9 +110,25 @@ again.
 
 **The invariant:** `tilesAround` performs no network request for a tile the cache already holds.
 
-6. **Green.** The same command, 100% coverage of both new modules, tsc and Biome at 0.
+6. **Green.** The same command. The two carried suites were measured by the planning session at:
 
-7. **Breaks.** `bash ai/plans/41-qibla-map/scripts/breaks-3.sh`, ending `ALL AS EXPECTED: 1`.
+```
+Tests:       28 passed, 28 total
+Statements   : 100% ( 88/88 )
+Branches     : 100% ( 24/24 )
+Functions    : 100% ( 9/9 )
+Lines        : 100% ( 73/73 )
+```
+
+`device/tiles.ts` must reach 100% on all four too. tsc and Biome exit 0.
+
+7. **Breaks.** `bash ai/plans/41-qibla-map/scripts/breaks-3.sh`. The planning session ran it against the
+   formatted code and it printed `caught 14 of 14` and `ALL AS EXPECTED: 1`.
+
+**Run Biome BEFORE the break script, never after.** The planning session ran the breaks first, got 14 of 14,
+then formatted, and break 10 went `BREAK NOT APPLIED`: Biome had wrapped the assignment it targets across
+two lines, so a single-line search matched nothing. The script now targets the wrapped form. A break whose
+text a formatter can move is a break that silently stops testing anything.
 
 8. **Version and commit.** At the end of step 4.
 
