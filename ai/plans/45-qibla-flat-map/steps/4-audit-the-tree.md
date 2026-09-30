@@ -156,7 +156,7 @@
    Dead exports: <what the sweep found, or "none beyond the five pre-existing allow-listed entries">.
    ```
 
-10. **Review.** Read `git show <sha>` back cold:
+10. **Review.** Read `git show <sha>` back cold, against this checklist:
 
     - [ ] `metro.config.js` no longer names `pmtiles` or `mvt`, and the comment that explained them is gone with them.
     - [ ] Every surviving comment explains WHY, in one line wherever one line does.
