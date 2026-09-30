@@ -116,3 +116,44 @@ excluded in `biome.json` beside `ai/features/moonsighting` and this row's own `p
 **DURABLE LESSON: a commit that stages only three files still leaves everything else it wrote in the tree,
 and the gates are staged-only, so unstaged research output can block the NEXT session rather than the one
 that produced it.** A session that writes data artefacts registers them in both gates in the same commit.
+
+## Execution, 2026-09-30
+
+Steps 1 to 5 are built. `yarn validate` passes at **192 suites, 5006 tests, 100% on all four measures**, and
+the four break scripts catch **47 of 47**.
+
+**The invariant holds and is checkable:**
+`grep -rn 'useAnimatedSensor\|MAGNETIC_FIELD\|SensorType\|IOSReferenceFrame' components/ shared/ device/ hooks/ app/ stores/`
+returns nothing outside tests. Deleted with the dial: `Dial.tsx`, `dialGeometry.ts` and their two suites,
+`headingFromYaw`, `unwrapAngle`, `dialAngleFromYaw`, `isFieldTrustworthy`, `FIELD_MIN`, `FIELD_MAX`,
+`readDeclination` and `NO_HEADING`.
+
+**What execution found that planning did not, each a real defect:**
+
+1. **The nested-copy trap fired, exactly as `ai/AGENTS.md` predicts.** `yarn add fflate@0.8.3` re-resolved
+   the tree and put `@expo/ui@58.0.7` back under `node_modules/expo-widgets/`, shadowing the flat 58.0.5
+   pin; `widgetRuntimeLoads.test.ts` failed with the production error. The recorded remedy fixed it. **The
+   plan told the executor to run that suite after the install, and that instruction is why this was caught
+   in seconds rather than on a blank widget.**
+2. **The sheet was passing the STREET's bearing to the map instead of the qibla**, so the ray would have
+   been drawn along the road rather than toward Makkah. Caught reading my own diff back, not by a test,
+   because every test had been written against the hook rather than the wiring. `QiblaMapState` now carries
+   `qibla` explicitly so the two cannot be confused again.
+3. **`renderHook` does not exist in the `unit` project.** The repo has its own `hooks/__tests__/hookHarness.ts`
+   for hook tests, which the plan should have named.
+4. **Three exports had no production caller and the dead-code guard refused all three**: `readDeclination`
+   (its last caller was the dial), `cachedBytes` and `clearTiles`. The first two are genuinely dead and were
+   deleted. `clearTiles` was too, on a finding rather than a whim: `clearAllExcept` already drops every
+   `tile_` key on upgrade, because the tile prefix is deliberately absent from the keep list, so a separate
+   clear path was duplicating a wipe that already happens.
+5. **`shortestDelta` was about to become dead with `readDeclination`**, and deleting it would have taken a
+   real invariant test with it. Instead `qiblaFromStreet` now uses it, which is what it always meant: the
+   signed shortest turn between two bearings. Four lines of duplicated angle logic and a `FULL_TURN`
+   constant went with the change.
+6. **`SIZE.contentPadding` and `COLORS.activeBackground` do not exist.** I invented both while writing the
+   map component. The real names are `SPACING.xl` (the sizing the dial itself used) and
+   `COLORS.prayer.activeBackground`.
+
+**A break script needs re-running after a refactor, not only after a formatter.** Removing `clearTiles`
+made break 7 of `breaks-2.sh` print `BREAK NOT APPLIED`, which is the script correctly reporting that its
+target is gone. It was deleted rather than repointed, because the behaviour it guarded no longer exists.

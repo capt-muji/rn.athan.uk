@@ -7,13 +7,12 @@
  * decimal places, because the turn is recomputed for whichever street is named.
  */
 
-import { normaliseHeading, type Position } from '@/shared/qibla';
+import { normaliseHeading, type Position, shortestDelta } from '@/shared/qibla';
 import { metresPerDegree, offsetInMetres, positionInTile, type TileAddress } from '@/shared/tileGeometry';
 import type { TileLayer } from '@/shared/vectorTile';
 
 const HALF_TURN = 180;
 const QUARTER_TURN = 90;
-const FULL_TURN = 360;
 const DEGREES_PER_RADIAN = HALF_TURN / Math.PI;
 
 /** What the user standing on a pavement can actually see. Everything else in the layer is rail, path or service. */
@@ -174,9 +173,9 @@ export const nearbyStreets = (roads: TileLayer, tile: TileAddress, here: Positio
  * @returns The street, the acute turn in [0, 90], and the side to turn
  */
 export const qiblaFromStreet = (qibla: number, street: NearbyStreet): QiblaFromStreet => {
-  const clockwise = normaliseHeading(qibla - street.bearing);
-  const isRight = clockwise <= HALF_TURN;
-  const magnitude = isRight ? clockwise : FULL_TURN - clockwise;
+  const signed = shortestDelta(street.bearing, qibla);
+  const isRight = signed > 0;
+  const magnitude = Math.abs(signed);
 
   if (magnitude > QUARTER_TURN) {
     return { street, turn: HALF_TURN - magnitude, side: isRight ? 'left' : 'right' };

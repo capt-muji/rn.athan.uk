@@ -37,13 +37,6 @@ const storageKey = (key: string): string => `${TILE_PREFIX}${key}`;
 const totalBytes = (order: CacheEntry[]): number => order.reduce((sum, entry) => sum + entry.bytes, 0);
 
 /**
- * How many bytes of tiles are held
- *
- * @returns The total size of every cached tile
- */
-export const cachedBytes = (): number => totalBytes(readOrder());
-
-/**
  * A cached tile's bytes
  *
  * Reading counts as a use, so the tile a user keeps opening survives eviction.
@@ -85,14 +78,4 @@ export const writeTile = (key: string, bytes: Uint8Array): void => {
   }
 
   writeOrder(order);
-};
-
-/**
- * Forgets every cached tile
- *
- * The cache is rebuildable, so a version upgrade drops it rather than risk reading a tile written by older code.
- */
-export const clearTiles = (): void => {
-  for (const entry of readOrder()) database.remove(storageKey(entry.key));
-  database.remove(ORDER_KEY);
 };
