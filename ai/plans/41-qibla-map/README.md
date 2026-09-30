@@ -16,7 +16,7 @@ than a map:
 | Rung | Method | Error | Proven how |
 | --- | --- | --- | --- |
 | 1 | The sun, shadow on a flat phone | **2.3 deg** | 0.54 arcmin against a second algorithm; the published `rashd al-qiblah` dates reproduced to the minute |
-| 2 | A saved spot | Whatever saved it | **Hypothesis.** Session 40's two readings are consistent with it and do not establish it |
+| 2 | A saved landmark note | Whatever saved it | **Tested 2026-09-30.** The stored-magnetic-offset version FAILED on the owner's desk; the landmark note replaces it and needs no sensor |
 | 3 | The map, streets around the user | 6.2 deg, estimated | A real London tile fetched, decoded and drawn, checked in the pixels by an independent pass |
 | 4 | The compass, as the last resort | 9.7 outdoors, 30 indoors | Measured in session 40 |
 
@@ -43,7 +43,8 @@ priced honestly at +39.9 MB of native binary.
 | `VERDICT.md` | **Is the map better, is it proven, do others use it, and what about the direction.** Start here |
 | `PROPOSALS.md` | **The seven owner decisions.** Then here |
 | `PROTOTYPE-FINDINGS.md` | What building it on the real toolchain proved, and the two config one-liners it found |
-| `TEN-DEGREE-TEST.md` | **The one measurement left that needs the owner's hands.** A predicted number, on his own desk |
+| `TEN-DEGREE-TEST.md` | The test protocol, with its prediction written before the measurement |
+| `TEN-DEGREE-RESULT.md` | **The result: the prediction failed, and that killed a feature before it was built** |
 | `BRIEF.md` | The research brief, the constraints, and the size ruling |
 | `ASSUMPTIONS.md` | Every judgement taken unattended, with the five likeliest to need correction flagged |
 | `PROTOTYPE-PLAN.md` | **The next thing to do.** Three theories to test on the iPhone XS, cheapest first, merging nothing |
@@ -77,10 +78,10 @@ priced honestly at +39.9 MB of native binary.
 **Do not re-derive anything in R5's register.** It exists because sessions 37 and 40 each shipped correct
 code that missed the goal, and it lists every number already proven with its source.
 
-**The first job is not building.** It is verifying the one hypothesis the design rests on: whether the
-magnetic offset at a fixed spot is stable across hours and days. Same spot, same phone, readings separated by
-time. If it holds, rung 2 is a compass correction. If it drifts, rung 2 becomes a landmark note and the
-ladder still stands.
+**That first job is DONE and it came back negative.** The magnetic offset at a fixed spot drifts about 20
+degrees in hours, measured on the owner's desk (`TEN-DEGREE-RESULT.md`), so rung 2 is a landmark note rather
+than a stored magnetic correction. **The next job is the sun rung on device**, which is now the most valuable
+unmeasured thing in the row.
 
 **What is still unproven, named as such.** `P4` closed the Hermes question, so the list is shorter than it
 was: Metro's resolver against `adhan`'s internals (with a 30-line fallback already written), the decode and

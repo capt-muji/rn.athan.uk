@@ -48,3 +48,7 @@ import: mean 0.484 degrees over 419 in-gate samples but **7.847 worst at Singapo
 `why-equator-breaks-it.js` shows why, and it is a singularity rather than a bug: the half-day angle moves only
 1.17 degrees across a whole year at Singapore's latitude, and `adhan` rounds to the minute, so one minute of
 rounding costs **9.07 degrees of declination** there against 0.20 in London. See `../PROTOTYPE-FINDINGS.md`.
+
+`ten-degree-analysis.js` works through the 10 degree test's result: the predicted 10 degree swing against
+the observed 30, the elimination of "something else changed" from the git diff, and why 20 unexplained
+degrees at a fixed spot kills a stored magnetic offset. See `../TEN-DEGREE-RESULT.md`.
