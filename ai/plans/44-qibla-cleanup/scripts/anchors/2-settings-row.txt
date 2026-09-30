@@ -1,0 +1,12 @@
+        <Pressable
+          style={styles.athanButton}
+          onPress={handleQiblaPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel='Qibla'
+          accessibilityRole='button'>
+          <View style={styles.musicButton}>
+            <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.athanLabel}>Qibla</Text>
+          <Text style={styles.chevron}>›</Text>
+        </Pressable>

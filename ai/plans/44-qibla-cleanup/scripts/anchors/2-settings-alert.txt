@@ -1,0 +1,11 @@
+/** Names what is unavailable and the one route back, never blaming the user for the refusal */
+const offerLocationSettings = () => {
+  Alert.alert(
+    'Qibla needs your location',
+    'The compass points to the Kaaba from where you are. Location is turned off.',
+    [
+      { text: 'Not now', style: 'cancel' },
+      { text: 'Open Settings', onPress: openLocationSettings },
+    ]
+  );
+};
