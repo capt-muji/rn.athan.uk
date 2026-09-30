@@ -11,25 +11,26 @@
 
 | File | Kind |
 | --- | --- |
-| `components/qibla/QiblaMap.tsx` | new |
-| `components/qibla/mapProjection.ts` | new |
-| `components/qibla/__tests__/QiblaMap.test.tsx` | new |
-| `components/qibla/__tests__/mapProjection.test.ts` | new |
-| `hooks/useQiblaMap.ts` | new |
-| `hooks/__tests__/useQiblaMap.test.ts` | new |
+| `components/qibla/mapProjection.ts` | new, copied from `files/components/qibla/mapProjection.ts.txt` |
+| `components/qibla/__tests__/mapProjection.test.ts` | new, copied |
+| `shared/qiblaSentence.ts` | new, copied from `files/shared/qiblaSentence.ts.txt` |
+| `shared/__tests__/qiblaSentence.test.ts` | new, copied |
+| `components/qibla/QiblaMap.tsx` | new, built from the contract in part 5 |
+| `components/qibla/__tests__/QiblaMap.test.tsx` | new, built from the rows in part 4 |
+| `hooks/useQiblaMap.ts` | new, built from the contract in part 5 |
+| `hooks/__tests__/useQiblaMap.test.ts` | new, built from the rows in part 4 |
+
+The four copied files are a `(files)` sub-step: copy them and strip the `.txt`. All four were built,
+typechecked, linted, tested at 100% and break-tested by the planning session, which measured 15 tests for
+the projection and 8 for the sentence. The component and the hook are `(specified)`.
 
 4. **Tests first (red).**
 
-`components/qibla/__tests__/mapProjection.test.ts`, the pure screen arithmetic:
-
-| Test | What it proves | Inputs | Asserts |
-| --- | --- | --- | --- |
-| `puts the user at the centre of the canvas` | The user is the origin | a 300 pt canvas, the user's own position | `{ x: 150, y: 150 }` |
-| `puts a position due north above the centre` | Screen y is inverted against north | 50 m north | y is less than 150, x is 150 |
-| `puts a position due east to the right of centre` | Screen x follows east | 50 m east | x is greater than 150, y is 150 |
-| `scales a position by the drawn radius` | The radius sets the scale | 61 m north on a 300 pt canvas at 122 m radius | y is a quarter of the canvas above centre |
-| `draws the qibla ray at the great-circle bearing, never the rhumb line` | The measured trap | qibla 119 degrees | the ray's screen angle matches 119 degrees clockwise from up, within 0.01 |
-| `draws the ray from the exact centre` | It starts where the user is | any bearing | the first point is the centre |
+`components/qibla/__tests__/mapProjection.test.ts` and `shared/__tests__/qiblaSentence.test.ts` are carried
+whole, 23 tests between them. What they prove: the user at the centre, each of the four compass directions
+placed on the right side of it, the radius reaching the canvas edge, the ray at each quarter turn, the ray
+drawn at exactly the bearing it is given, and the sentence in each of its forms including a name in another
+script.
 
 `hooks/__tests__/useQiblaMap.test.ts`, the state machine:
 
@@ -63,13 +64,14 @@ Expected before the change: `Cannot find module` for each new path.
 
 5. **Change.**
 
-**`components/qibla/mapProjection.ts`:**
+**`components/qibla/mapProjection.ts`** and **`shared/qiblaSentence.ts`**, copied. Their contracts:
 
 | Export | Signature | Answers | Must never |
 | --- | --- | --- | --- |
 | `DRAWN_RADIUS_METRES` | `122` | The ground radius drawn | Exceed the measured 49-path budget |
-| `projectToCanvas` | `(here: Position, target: Position, canvas: number) => { x: number; y: number }` | Where a position falls on the canvas | Use a Mercator straight line for the ray |
-| `rayEndpoint` | `(bearing: number, canvas: number) => { x: number; y: number }` | Where the qibla ray ends | Be drawn from anywhere but the centre |
+| `projectToCanvas` | `(here: Position, target: Position, canvas: number) => CanvasPoint` | Where a position falls on the canvas | Rotate with the phone |
+| `rayEndpoint` | `(bearing: number, canvas: number) => CanvasPoint` | Where the qibla ray ends | Be drawn from anywhere but the centre |
+| `qiblaSentence` | `(answer: QiblaFromStreet) => string` | The line under the map | State a turn under 5 degrees, which the map's own alignment cannot support |
 
 **`hooks/useQiblaMap.ts`:**
 
@@ -88,10 +90,9 @@ Expected before the change: `Cannot find module` for each new path.
 - **Buildings are drawn beneath the streets and are the first thing to drop** if a device cannot afford
   them: two thirds of the path cost at every radius.
 
-The sentence text, verbatim, because a person reads it:
+The street sentence comes from `qiblaSentence`, which the plan carries. The three state strings the screen
+adds are verbatim, because a person reads them:
 
-- `Stand along ${name}, then turn ${turn} degrees to the ${side}.`
-- `The qibla runs along ${name}.` when the turn is under 5 degrees
 - `No map data for this spot` for `nomap`
 - `Finding your position` for `looking`
 - `Your location is not available right now` for `unavailable`, which is the string the sheet already ships
@@ -103,7 +104,9 @@ The sentence text, verbatim, because a person reads it:
 **`shared/__tests__/unusedExports.test.ts` must now PASS**, because this step is the caller for steps 1 to 3.
 If it still names a symbol, that symbol is genuinely unreachable and the step is incomplete: STOP.
 
-7. **Breaks.** `bash ai/plans/41-qibla-map/scripts/breaks-4.sh`, ending `ALL AS EXPECTED: 1`.
+7. **Breaks.** Run `npx biome check --write` FIRST, then
+   `bash ai/plans/41-qibla-map/scripts/breaks-4.sh`. The planning session ran it against the formatted code
+   and it printed `caught 9 of 9` and `ALL AS EXPECTED: 1`.
 
 8. **Version and commit.** This is the commit for steps 1 to 4.
 

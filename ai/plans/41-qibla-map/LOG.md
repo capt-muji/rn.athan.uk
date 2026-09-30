@@ -70,3 +70,20 @@ fixtures are still built field by field from the spec rather than captured as a 
 The breaks passed 14 of 14, then `biome check --write` wrapped one assignment across two lines, and break 10
 went `BREAK NOT APPLIED` on the rerun. A break whose search text a formatter can move is a break that
 silently stops testing anything, and the only reason it was caught is that the script was run twice.
+
+### Step 4's pure halves, proven
+
+| What | Result |
+| --- | --- |
+| `components/qibla/mapProjection.ts` | 15 tests, **100% on all four measures** |
+| `shared/qiblaSentence.ts` | 8 tests, **100% on all four measures** |
+| `scripts/breaks-4.sh` | **caught 9 of 9, ALL AS EXPECTED: 1**, with the formatter run first this time |
+| tsc, Biome | both 0 |
+
+The sentence was pulled out of the component into `shared/qiblaSentence.ts` while writing it: the wording is
+logic, it is the product the whole row exists to deliver, and a string built inside a component can only be
+tested by rendering one.
+
+Left for the execution session, and named as such: `hooks/useQiblaMap.ts`, `components/qibla/QiblaMap.tsx`
+and `device/tiles.ts`. Each needs mocks or a renderer rather than pure inputs, so each is specified by
+contract rather than carried, and the plan gives every test row for them.
