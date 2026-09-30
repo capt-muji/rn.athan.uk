@@ -19,6 +19,9 @@
 | `shared/__tests__/vectorTile.test.ts` | new, copied |
 | `shared/__tests__/qiblaStreet.test.ts` | new, copied |
 
+`shared/__tests__/realTile.test.ts` belongs to step 4, not here: it asserts the finished sentence, so it
+cannot pass until `shared/qiblaSentence.ts` exists.
+
 Nothing else, apart from `ai/plans/README.md`, this folder's `PLAN.md` and `LOG.md`, and the three version
 files.
 
