@@ -35,3 +35,9 @@ real tile to a byte-identical result in 4.3 ms with zero `require` calls to Node
 collection while still holding the decoded tiles, which is the difference between measuring what is RETAINED
 and measuring the decode's transient garbage. The naive version of this measurement reported 1,289 KB per
 tile for 48 paths, which is absurd, and that is why the script exists in this form.
+
+`street-bearings.js` answers the owner's question "okay we have a map, but what about the actual direction?"
+It recovers each street's true bearing from the tile geometry and states the qibla as an offset from it, so
+the app can say "the qibla is 53 degrees left of the line of Whitehall". Every number needs ZERO sensors: a
+street bearing is a fact of the ground held in the tile, the qibla is arithmetic, and the difference is
+arithmetic.
