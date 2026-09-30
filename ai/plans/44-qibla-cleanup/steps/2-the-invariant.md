@@ -46,7 +46,7 @@ a test the suite runs on every commit forever.
    ```
 
    Expected: the suite FAILS, with the first failing test
-   `the qibla work removed by session 44 › leaves no trace of itself in any shipped directory, tests included`
+   `the qibla work removed by session 44 › leaves no trace of itself in any shipped directory, tests and committed binaries included`
    and a diff naming `shared/qiblaReborn.ts:qibla`. Measured in the scratch worktree: `Tests: 1 failed, 1 passed, 2 total`.
 
    Then remove the planted file, and the suite must pass:
@@ -68,9 +68,11 @@ a test the suite runs on every commit forever.
    - **The words are built from fragments** (`'qib' + 'la'`) and the file excludes itself by path,
      because a suite that lists forbidden words CONTAINS them: the first draft's only failure was
      itself.
-   - **Content and filename use different word lists.** `mvt` is forbidden in a FILENAME, where it
-     catches the two binary `.mvt.gz` fixtures that a content search of `.ts` files can never read, and
-     allowed in content, where it would match ordinary prose.
+   - **Content and filename use different word lists, and the filename check walks EVERY file rather
+     than only `.ts` and `.tsx`.** `mvt` is forbidden in a filename, where it catches the two binary
+     `.mvt.gz` fixtures that a content search can never read, and allowed in content, where three
+     letters that short match ordinary prose. A cold reread of the first draft caught this: it collected
+     source files only, so it could not have seen a restored fixture at all.
    - **The search's own coverage is pinned by a second test**, because widening the self-exclusion from
      one file to every test file left the first draft passing while a planted artefact went unseen.
 
@@ -100,8 +102,16 @@ a test the suite runs on every commit forever.
 7. **Breaks.** Save to `$TMPDIR/breaks-44-2.sh` and run `bash $TMPDIR/breaks-44-2.sh` from
    `/Users/muji/repos/rn.athan.uk`.
 
-   Breaks 1 and 2 plant an artefact and expect the guard to catch it. Break 3 attacks the guard itself,
-   which is the one that mattered: it SURVIVED the first draft and is the reason the second test exists.
+   Breaks 1 and 2 plant an artefact and expect the guard to catch it. Break 3 restores a committed
+   BINARY fixture, which no content search can read and which the filename list exists for. Break 4
+   attacks the guard itself, and it is the one that mattered: it SURVIVED the first draft and is the
+   reason the second test exists.
+
+   **One trap in this script, met while proving it.** A break that edits a file this session already
+   changed must restore it with `cp` from a backup taken FIRST, never with `git checkout --`: that
+   command restores the file as `uat-2` had it, which for `stores/ui.ts` means putting the qibla code
+   back, and the next check then fails for a reason that has nothing to do with the break. The script
+   below uses `cp` for exactly that reason.
 
    ```bash
    #!/bin/bash
@@ -127,17 +137,34 @@ a test the suite runs on every commit forever.
    judge "a new shared/ file naming the feature"
    rm -f shared/qiblaReborn.ts
 
-   # 2. One word creeps back as a comment in a file that legitimately survives.
-   cp stores/ui.ts stores/ui.ts.bak44
+   # 2. One word creeps back as a comment in a file that legitimately survives. Restored with cp, never
+   #    `git checkout --`, which would bring back the qibla code this session removed from that file.
+   cp stores/ui.ts "$TMPDIR/ui.ts.bak44"
    printf '\n/** Reference to the qibla sheet */\n' >> stores/ui.ts
    judge "a comment in a surviving file"
-   mv stores/ui.ts.bak44 stores/ui.ts
+   cp "$TMPDIR/ui.ts.bak44" stores/ui.ts
 
-   # 3. The guard's own self-exclusion is widened to hide a planted artefact. Without the coverage
+   # 3. A committed binary fixture comes back. No content search can read a gzipped file, so the
+   #    filename list is the only thing that can catch this.
+   mkdir -p shared/__tests__/fixtures
+   git show "$(git rev-parse HEAD)~1:shared/__tests__/fixtures/London.mvt.gz" > shared/__tests__/fixtures/London.mvt.gz 2>/dev/null \
+     || printf 'not really gzip\n' > shared/__tests__/fixtures/London.mvt.gz
+   judge "a committed binary tile fixture restored"
+   rm -rf shared/__tests__/fixtures
+
+   # 4. The What's New archive advertises the deleted feature. whatsNew.test.ts does NOT catch this: an
+   #    item stamped for a release that is not the installed one is a valid archive entry, so only this
+   #    guard rejects it. Measured while planning, which is why the break lives here and not in step 1.
+   cp shared/whatsNew.ts "$TMPDIR/whatsNew.ts.bak44"
+   perl -0pi -e "s|^  \],|    {\n      title: 'Qibla compass',\n      body: 'Settings now points the way to the Kaaba from wherever you are',\n      version: '1.29.166',\n    },\n  ],|m" shared/whatsNew.ts
+   judge "What's New advertises the deleted feature"
+   cp "$TMPDIR/whatsNew.ts.bak44" shared/whatsNew.ts
+
+   # 5. The guard's own self-exclusion is widened to hide a planted artefact. Without the coverage
    #    test this SURVIVES, which is exactly what the first draft did.
-   cp "$SUITE" "$SUITE.bak44"
-   perl -0pi -e "s|if \(path === SELF\) continue;|if (path.includes('__tests__')) continue;|" "$SUITE"
-   if cmp -s "$SUITE" "$SUITE.bak44"; then
+   cp "$SUITE" "$TMPDIR/suite.bak44"
+   perl -0pi -e "s|\.filter\(\(path\) => path !== SELF\)|.filter((path) => !path.includes('__tests__'))|" "$SUITE"
+   if cmp -s "$SUITE" "$TMPDIR/suite.bak44"; then
      echo "BREAK NOT APPLIED: the guard's self-exclusion widened"
      TOTAL=$((TOTAL + 1))
    else
@@ -145,15 +172,17 @@ a test the suite runs on every commit forever.
      judge "the guard's self-exclusion widened to every test file"
      rm -f shared/__tests__/sneak.test.ts
    fi
-   mv "$SUITE.bak44" "$SUITE"
+   cp "$TMPDIR/suite.bak44" "$SUITE"
 
    echo "caught $CAUGHT of $TOTAL"
    [ "$CAUGHT" = "$TOTAL" ] && echo "ALL AS EXPECTED: 1" || echo "ALL AS EXPECTED: 0"
    ```
 
-   Expected: three `CAUGHT` lines, `caught 3 of 3`, `ALL AS EXPECTED: 1`. Afterwards
-   `git status --porcelain` lists only this step's files and the three plan files, and no `.bak44` or
-   `sneak.test.ts` remains. A `SURVIVED` or `BREAK NOT APPLIED` line is a STOP (section 2.2, item 3).
+   Expected: five `CAUGHT` lines, `caught 5 of 5`, `ALL AS EXPECTED: 1`. All five were measured in the
+   scratch worktree. Afterwards `git status --porcelain` lists only this step's files and the three plan
+   files, and neither `shared/__tests__/fixtures/` nor `shared/__tests__/sneak.test.ts` nor
+   `shared/qiblaReborn.ts` remains. A `SURVIVED` or `BREAK NOT APPLIED` line is a STOP (section 2.2,
+   item 3).
 
 8. **Version and commit.**
 
