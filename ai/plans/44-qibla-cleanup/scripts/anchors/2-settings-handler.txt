@@ -1,0 +1,20 @@
+  // The compass needs a position to point from, so the permission is asked for here, with the reason already on
+  // screen. Once it is permanently denied a further request is a silent no-op, and Settings is the only route left.
+  const handleQiblaPress = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    if (await hasLocationPermission()) {
+      hideSettingsSheet();
+      showQiblaSheet();
+      return;
+    }
+
+    const { granted, canAskAgain } = await requestLocationPermission();
+    if (granted) {
+      hideSettingsSheet();
+      showQiblaSheet();
+      return;
+    }
+
+    if (!canAskAgain) offerLocationSettings();
+  };

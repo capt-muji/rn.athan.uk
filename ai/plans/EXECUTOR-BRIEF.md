@@ -360,6 +360,8 @@ Do these for each step in the plan, in order. Do not start a step until the prev
    audit session does.
 3. **Docs commit.** Make an `executed` docs commit (section 4b). Do not push.
 4. **Worktrees.** Remove any scratch worktree this session made: `git worktree remove --force <path>`, for this
-   session's worktrees only.
+   session's worktrees only, and delete the branch each one carried (`ai/AGENTS.md` section 7: removing the worktree
+   leaves the branch behind). The five build worktrees under `~/athan-device-sweep/worktrees/` stay: the build scripts
+   reuse them as caches.
 5. **Report.** Report to the owner as the plan's section 12 says. End with the four-line handoff from the
    `athan-next` skill, section 5.

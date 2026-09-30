@@ -1,0 +1,8 @@
+/** Presents the qibla bottom sheet */
+export const showQiblaSheet = () => {
+  perfMark('sheet_qibla_present');
+  store.get(qiblaSheetModalAtom)?.present();
+};
+
+/** Sets the qibla bottom sheet modal reference */
+export const setQiblaSheetModal = (modal: BottomSheetModal | null) => store.set(qiblaSheetModalAtom, modal);
