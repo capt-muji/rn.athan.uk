@@ -1,0 +1,67 @@
+{
+  "apiversion": "4.0.1", 
+  "geometry": {
+    "coordinates": [
+      3.3792, 
+      6.5244
+    ], 
+    "type": "Point"
+  }, 
+  "properties": {
+    "data": {
+      "closestphase": {
+        "day": 12, 
+        "month": 8, 
+        "phase": "New Moon", 
+        "time": "17:37", 
+        "year": 2026
+      }, 
+      "curphase": "Waxing Crescent", 
+      "day": 15, 
+      "day_of_week": "Saturday", 
+      "fracillum": "10%", 
+      "isdst": false, 
+      "label": null, 
+      "month": 8, 
+      "moondata": [
+        {
+          "phen": "Rise", 
+          "time": "07:55"
+        }, 
+        {
+          "phen": "Upper Transit", 
+          "time": "14:06"
+        }, 
+        {
+          "phen": "Set", 
+          "time": "20:15"
+        }
+      ], 
+      "sundata": [
+        {
+          "phen": "Begin Civil Twilight", 
+          "time": "05:20"
+        }, 
+        {
+          "phen": "Rise", 
+          "time": "05:41"
+        }, 
+        {
+          "phen": "Upper Transit", 
+          "time": "11:51"
+        }, 
+        {
+          "phen": "Set", 
+          "time": "18:01"
+        }, 
+        {
+          "phen": "End Civil Twilight", 
+          "time": "18:22"
+        }
+      ], 
+      "tz": 0.0, 
+      "year": 2026
+    }
+  }, 
+  "type": "Feature"
+}
