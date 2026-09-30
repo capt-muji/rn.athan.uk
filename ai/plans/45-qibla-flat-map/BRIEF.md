@@ -72,8 +72,27 @@ least-permissions rule applies to any answer.
 | 9 | Silence while held on the line | Hold still: nothing further |
 | 10 | Silence while off the line | Hold away: nothing |
 | 11 | One tap again on returning | Turn off and back: one tap |
-| 12 | 60 fps, lightweight | Frame evidence on device, `e2e/scripts/frame-audit.sh` |
+| 12 | 60 fps, lightweight | **DEFERRED by the owner, 2026-09-30.** No frame evidence is required to call this row done |
 | 13 | Fewest possible permissions | Count what the app asks for |
+
+## Where this is tested, and it is one device (owner, 2026-09-30)
+
+🐋  "we will completely working the iPhone XS for now the physical device, the Android testing comes later. After we
+are happy with the iPhone." And on requirement 12: 🐋  "Don't worry about the 60 FPS for now, that's something we can
+adjust later."
+
+**The physical iPhone XS is the only device that gives a verdict, and every step's gate is read there.** Android is
+out of scope for this row, so trap 5 below (the Android heading) is recorded for the row that brings Android back and
+is not this row's problem. `e2e/scripts/frame-audit.sh` is `adb`-only and measures the 3T, so it plays no part here,
+which is consistent with requirement 12 being deferred rather than a gap to work around.
+
+**The simulator draws, the phone decides.** A simulator has no magnetometer, no taptic engine and cannot be turned on
+the spot, so it cannot test the heading, the haptic or the alignment: what it can do is iterate the PICTURE cheaply,
+which is what four rejections were about. Use it for the visual loop only, and never let it produce a verdict.
+
+`agent-device` drives the XS directly, including `press`, `gesture`, `orientation`, `screenshot` and `install`
+(measured; `ai/AGENTS.md` carries the detail), so a step needing a tap does not need the owner's hands. What still
+needs them is judgement: whether the map is ugly, and whether the tap lands when he faces Makkah.
 
 Requirement 8 and 9 together are hysteresis: enter and leave on different thresholds. Session 43 measured a single
 threshold firing **49 taps in 100 samples** of 0.3-degree jitter, which is exactly the buzzing the owner refuses, and
