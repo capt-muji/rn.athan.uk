@@ -1,125 +1,36 @@
-import { useCallback, useState } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import {
-  IOSReferenceFrame,
-  runOnJS,
-  SensorType,
-  type SharedValue,
-  useAnimatedReaction,
-  useAnimatedSensor,
-  useSharedValue,
-} from 'react-native-reanimated';
+import { useCallback } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import Dial from '@/components/qibla/Dial';
+import QiblaMap from '@/components/qibla/QiblaMap';
 import { IconView } from '@/components/ui';
-import { readDeclination, readPosition } from '@/device/qibla';
+import { useQiblaMap } from '@/hooks/useQiblaMap';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { dialAngleFromYaw, isFieldTrustworthy, qiblaBearing } from '@/shared/qibla';
+import { qiblaSentence } from '@/shared/qiblaSentence';
 import { Icon } from '@/shared/types';
 import { setQiblaSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
 
-/** A bearing once the position is known, and which of the two blank states to show until then */
-type Reading = { status: 'looking' | 'unavailable' } | { status: 'found'; bearing: number };
-
-const readingText = (reading: Reading): string => {
-  if (reading.status === 'found') return `${Math.round(reading.bearing)}° from north`;
-
-  return reading.status === 'looking' ? 'Finding your position' : 'Your location is not available right now';
-};
-
-/** Names the condition and what to do about it, never apologising for the reading and never blaming the phone */
-const HINT = 'Point the top of the phone at the marker.';
-
-/** Names what is wrong and what to do, never apologising for the reading and never blaming the phone */
-const INTERFERENCE = 'Something nearby is bending the reading. Step away from metal, magnets and electronics.';
-
-/** The sensor streams faster than this; 100ms is six frames of the dial, which reads as continuous */
-const SENSOR_INTERVAL_MS = 100;
-
-/**
- * What iOS yaw needs before it is a bearing, beyond the sign
- *
- * Under `XTrueNorthZVertical` yaw turns about the vertical axis from a reference half a turn from the bearing the top
- * edge points at. This is an axis relationship, so it can only be a multiple of 90 and is the same on every iPhone in
- * every country. Tuning it to a room's own reading was tried and reverted: the same phone in the same orientation
- * wanted 190 beside a laptop and 220 on open floor, and shipping either would export one room's steel to everyone.
- */
-const IOS_AXIS_CORRECTION = 180;
-
-/**
- * Feeds the dial from the OS-fused rotation vector
- *
- * It carries the gyroscope, which `expo-location`'s heading does not: measured 71 degrees out on a phone where this
- * reads 10. Mounted only while the sheet is open, because `useAnimatedSensor` subscribes for the life of its component
- * and every sheet is mounted from launch.
- */
-const HeadingSensor = ({
-  heading,
-  correction,
-  onFieldChange,
-}: {
-  heading: SharedValue<number>;
-  correction: SharedValue<number>;
-  onFieldChange: (trustworthy: boolean) => void;
-}) => {
-  const field = useAnimatedSensor(SensorType.MAGNETIC_FIELD, { interval: SENSOR_INTERVAL_MS });
-
-  useAnimatedReaction(
-    () => isFieldTrustworthy(field.sensor.value.x, field.sensor.value.y, field.sensor.value.z),
-    (trustworthy) => {
-      runOnJS(onFieldChange)(trustworthy);
-    }
-  );
-
-  const rotation = useAnimatedSensor(SensorType.ROTATION, {
-    interval: SENSOR_INTERVAL_MS,
-    // Reanimated's default frame is ARBITRARY on iOS: yaw zero lands wherever the phone woke up, so a compass built on
-    // it points at nothing. This is the only frame that references north.
-    iosReferenceFrame: IOSReferenceFrame.XTrueNorthZVertical,
-  });
-
-  useAnimatedReaction(
-    () => rotation.sensor.value.yaw,
-    (yaw) => {
-      heading.value = dialAngleFromYaw(heading.value, yaw, correction.value);
-    }
-  );
-
-  return null;
+/** Names the condition plainly, never apologising for the reading and never blaming the phone */
+const WITHOUT_A_MAP: Record<'looking' | 'unavailable' | 'nomap', string> = {
+  looking: 'Finding your position',
+  unavailable: 'Your location is not available right now',
+  nomap: 'No map data for this spot',
 };
 
 /**
- * The qibla compass
+ * The qibla, drawn against the streets around the user
  *
- * The bearing is arithmetic and exact; the needle comes from the OS-fused rotation sensor, so the screen states the
- * number and never claims the needle.
+ * No sensor is read anywhere on this screen. The bearing is arithmetic and a street's direction is a fact of the
+ * ground held in the map data, so neither can be bent by the steel in a room: the magnetometer dial this replaced
+ * measured 30 degrees wrong indoors while printing a confident three-figure number.
  */
 export default function BottomSheetQibla() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [fieldIsClean, setFieldIsClean] = useState(true);
-  const [reading, setReading] = useState<Reading>({ status: 'looking' });
-  /** Unbounded on purpose: an interpolation runs between the numbers it is given, so a wrapped angle spins the dial */
-  const heading = useSharedValue(0);
-  /** iOS needs the axis quarter turn; Android is magnetic-referenced and needs the declination instead */
-  const correction = useSharedValue(Platform.OS === 'ios' ? IOS_AXIS_CORRECTION : 0);
+  const { state, start } = useQiblaMap();
 
-  // Keyed on presentation, never on mount: every sheet is mounted from launch, so a mount-keyed read would run on
-  // every device, forever, for a screen the user may never open.
-  const handlePresent = useCallback(async () => {
-    setReading({ status: 'looking' });
-    setIsOpen(true);
-    setFieldIsClean(true);
-
-    const position = await readPosition();
-    setReading(position ? { status: 'found', bearing: qiblaBearing(position) } : { status: 'unavailable' });
-
-    // iOS reads from true north already, so correcting it again would bend the needle by twice the declination
-    if (Platform.OS === 'android') correction.value = await readDeclination();
-  }, [correction]);
-
-  const handleDismiss = useCallback(() => setIsOpen(false), []);
+  // Keyed on presentation, never on mount: every sheet is mounted from launch, so a mount-keyed read would fetch
+  // tiles on every device, forever, for a screen the user may never open.
+  const handlePresent = useCallback(() => start(), [start]);
 
   return (
     <Sheet
@@ -130,13 +41,12 @@ export default function BottomSheetQibla() {
       snapPoints={['85%']}
       perfName='sheet_qibla'
       onPresent={handlePresent}
-      onDismiss={handleDismiss}
       stackBehavior='push'>
-      {isOpen && <HeadingSensor heading={heading} correction={correction} onFieldChange={setFieldIsClean} />}
-      {reading.status === 'found' && <Dial bearing={reading.bearing} heading={heading} />}
+      {state.status === 'ready' && <QiblaMap here={state.here} bearing={state.qibla} roads={state.roads} />}
       <View style={styles.card}>
-        <Text style={styles.reading}>{readingText(reading)}</Text>
-        {reading.status === 'found' && <Text style={styles.hint}>{fieldIsClean ? HINT : INTERFERENCE}</Text>}
+        <Text style={styles.reading}>
+          {state.status === 'ready' ? qiblaSentence(state.answer) : WITHOUT_A_MAP[state.status]}
+        </Text>
       </View>
     </Sheet>
   );
@@ -153,11 +63,6 @@ const styles = StyleSheet.create({
   reading: {
     color: COLORS.text.secondary,
     fontSize: TEXT.size,
-    textAlign: 'center',
-  },
-  hint: {
-    color: COLORS.text.muted,
-    fontSize: TEXT.sizeDetail,
     textAlign: 'center',
   },
 });
