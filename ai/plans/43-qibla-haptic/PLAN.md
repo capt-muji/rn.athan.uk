@@ -257,7 +257,7 @@ attacks landed.
 
 ## 6. Steps
 
-- [ ] Step 1: Our own qibla bearing, with no `adhan` (specified)
+- [x] Step 1: DONE in `edad8439`
 - [ ] Step 2: The great-circle path, as drawn positions (specified)
 - [ ] Step 3: The alignment state machine, with hysteresis (specified)
 - [ ] Step 4: The screen: the world map, the arrow and the haptic (specified)

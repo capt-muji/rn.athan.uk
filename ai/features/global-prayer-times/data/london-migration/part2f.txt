@@ -1,0 +1,12 @@
+R13 PART 2f: Asr reproduced by an apparent-altitude solve
+Solver: NOAA/Meeus solar position, bisected to the second. Used as a measuring instrument only.
+Point: 51.5, -0.165. Era B2: 2022, 2025, 2026.
+
+column  factor  refraction  exact            within 1 min     worst
+asr          1  geometric  814/1095 (74.34%)   1095 (100.00%)     1
+asr          1  apparent   891/1095 (81.37%)   1095 (100.00%)     1
+asr_2        2  geometric  616/1095 (56.26%)   1095 (100.00%)     1
+asr_2        2  apparent   1003/1095 (91.60%)   1095 (100.00%)     1
+
+Reference, from Part 2e: adhan's own Asr reached 37.63% exact on Mithl 1 and 56.53% on Mithl 2,
+both within 1 minute on 95.34% and 99.00% respectively, worst 2 minutes.

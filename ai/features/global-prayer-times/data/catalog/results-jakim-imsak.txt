@@ -1,0 +1,48 @@
+=== R12: is JAKIM's cited 20 degrees the angle of its IMSAK row? ===
+
+--- JHR02 Johor Bahru, 1.4655 N ---
+  published Imsak implied angle      {"n":365,"min":19.78,"max":20.26,"mean":20.05,"sd":0.11}
+  published Fajr implied angle       {"n":365,"min":17.48,"max":17.92,"mean":17.67,"sd":0.11}
+  Imsak minus 20-deg computation, min {"n":365,"min":-1.07,"max":0.96,"mean":-0.22,"sd":0.46}
+  Fajr minus 18-deg computation, min  {"n":365,"min":0.35,"max":2.2,"mean":1.38,"sd":0.43}
+  Fajr minus Imsak, min               {"n":365,"min":10,"max":10,"mean":10,"sd":0}
+
+--- MLK01 Melaka, 2.1896 N ---
+  published Imsak implied angle      {"n":365,"min":19.75,"max":20.23,"mean":20.01,"sd":0.11}
+  published Fajr implied angle       {"n":365,"min":17.44,"max":17.83,"mean":17.62,"sd":0.09}
+  Imsak minus 20-deg computation, min {"n":365,"min":-0.92,"max":1.12,"mean":-0.01,"sd":0.46}
+  Fajr minus 18-deg computation, min  {"n":365,"min":0.75,"max":2.37,"mean":1.58,"sd":0.38}
+  Fajr minus Imsak, min               {"n":365,"min":10,"max":10,"mean":10,"sd":0}
+
+--- WLY01 Kuala Lumpur, 3.139 N ---
+  published Imsak implied angle      {"n":365,"min":19.57,"max":20.25,"mean":19.93,"sd":0.16}
+  published Fajr implied angle       {"n":365,"min":17.28,"max":17.8,"mean":17.55,"sd":0.13}
+  Imsak minus 20-deg computation, min {"n":365,"min":-1.02,"max":1.87,"mean":0.3,"sd":0.69}
+  Fajr minus 18-deg computation, min  {"n":365,"min":0.82,"max":3.15,"mean":1.89,"sd":0.57}
+  Fajr minus Imsak, min               {"n":365,"min":10,"max":10,"mean":10,"sd":0}
+
+--- PNG01 Penang, 5.4141 N ---
+  published Imsak implied angle      {"n":365,"min":19.83,"max":20.32,"mean":20.08,"sd":0.1}
+  published Fajr implied angle       {"n":365,"min":17.57,"max":17.87,"mean":17.71,"sd":0.07}
+  Imsak minus 20-deg computation, min {"n":365,"min":-1.29,"max":0.76,"mean":-0.33,"sd":0.42}
+  Fajr minus 18-deg computation, min  {"n":365,"min":0.56,"max":1.78,"mean":1.22,"sd":0.3}
+  Fajr minus Imsak, min               {"n":365,"min":10,"max":10,"mean":10,"sd":0}
+
+--- KTN01 Kota Bharu, 6.1254 N ---
+  published Imsak implied angle      {"n":365,"min":19.72,"max":20.24,"mean":20.01,"sd":0.12}
+  published Fajr implied angle       {"n":365,"min":17.48,"max":17.8,"mean":17.64,"sd":0.07}
+  Imsak minus 20-deg computation, min {"n":365,"min":-0.95,"max":1.27,"mean":-0.01,"sd":0.5}
+  Fajr minus 18-deg computation, min  {"n":365,"min":0.86,"max":2.26,"mean":1.53,"sd":0.32}
+  Fajr minus Imsak, min               {"n":365,"min":10,"max":10,"mean":10,"sd":0}
+
+--- PLS01 Perlis, 6.4414 N ---
+  published Imsak implied angle      {"n":365,"min":17.68,"max":18.15,"mean":17.89,"sd":0.11}
+  published Fajr implied angle       {"n":365,"min":17.68,"max":18.15,"mean":17.89,"sd":0.11}
+  Imsak minus 20-deg computation, min {"n":365,"min":8.31,"max":9.81,"mean":8.91,"sd":0.33}
+  Fajr minus 18-deg computation, min  {"n":365,"min":-0.68,"max":1.28,"mean":0.44,"sd":0.46}
+  Fajr minus Imsak, min               {"n":365,"min":0,"max":0,"mean":0,"sd":0}
+
+=== the Imsak-to-Fajr gap across every JAKIM zone ===
+zones that answered: 60 of 126 codes probed
+  gap 0 min: 1 zones  PLS01
+  gap 10 min: 59 zones  JHR01 JHR02 JHR03 JHR04 KDH01 KDH02 KDH03 KDH04 KDH05 KDH06 KDH07 KTN01 KTN02 MLK01 NGS01 NGS02 NGS03 PHG01 PHG02 PHG03 PHG04 PHG05 PHG06 PHG07 PNG01 PRK01 PRK02 PRK03 PRK04 PRK05 PRK06 PRK07 SBH01 SBH02 SBH03 SBH04 SBH05 SBH06 SBH07 SBH08 SBH09 SGR01 SGR02 SGR03 SWK01 SWK02 SWK03 SWK04 SWK05 SWK06 SWK07 SWK08 SWK09 TRG01 TRG02 TRG03 TRG04 WLY01 WLY02

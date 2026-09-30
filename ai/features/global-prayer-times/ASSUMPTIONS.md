@@ -127,22 +127,59 @@ values are internally consistent across 30 days, but OCR is a weaker source than
 
 ---
 
-## What a third wave would do, if the owner wants one
+## Added by waves 3 and 4
+
+**A24. It was assumed `SOURCE-CATALOG.md` supersedes the individual reports wherever they disagree.** It was
+written to reconcile them and its verdicts are measured on wider samples. The reports are kept unedited as the
+record of how each number was reached, which is why several now carry a losing reading.
+
+**A25. LIKELIEST TO BE WRONG. It was assumed the app will ask for a location permission.** R14 measured that the
+permission-free route fails (median 16 displayed minutes wrong), so worldwide needs a location signal. **The owner
+has never agreed to add a permission to this app and has been explicit that he dislikes prompts.** If he refuses,
+the honest fallback is a manual city or zone picker, which R14 costs and which needs no permission at all. That is
+a worse first-run experience and an entirely viable product.
+
+**A26. It was assumed London stays on its own published timetable.** R13 measured that no computed configuration
+comes close, and that the publisher ships fifty years, so this is now evidence-led rather than an assumption. The
+remaining judgement is that existing users should be pinned explicitly rather than re-negotiated.
+
+**A27. It was assumed the app should read device elevation.** R14 measured that JAKIM applies a horizon-dip
+correction, so not reading elevation is what makes the app differ from that authority. This reverses R1's warning
+and it rests on one authority, so it is the weaker kind of conclusion.
+
+**A28. It was assumed a rule recovered by measurement is safe to implement.** Sweden's day-length clamp and
+Norway's frozen clock were both recovered by fitting, not read from a published rule. R11 warns that Sweden's rule
+scores zero days out of order against its own clamped sunrise and 56 against the true one, so such a rule cannot be
+adopted in part. Norway's remains unexplained and should not be implemented on the current evidence.
+
+---
+
+## What a further wave would do, if the owner wants one
 
 Ordered by value. None of these blocks a decision; they sharpen one.
 
-1. **Settle the licensing question.** R4 and R6 both stop at the same wall. Five emails to five authorities would
-   answer more than any further measurement. This is the single highest-value open item and it is not research,
-   it is correspondence.
+1. **Licensing: CLOSED by the owner, 2026-09-30.** R4 and R6 both stopped at the same wall, with one authority of
+   eleven permitting commercial use and eight silent. The owner has since confirmed he corresponded with the
+   authorities himself and has permission to use their data. **No session contacts anyone, drafts any letter, or
+   gathers contact details, ever, without the owner asking for it first** (owner, 2026-09-30). The item is
+   recorded as settled and is not re-opened.
 2. **Close Pakistan and Afghanistan**, the largest NULLs. Pakistan is the second-largest Muslim population and its
    convention rests on a university with no findable publication.
-3. **Measure the remaining tier-D states** the way Oman and Qatar were measured: Kuwait, Bahrain, Jordan, Algeria,
-   Tunisia, Libya, Portugal. Two of the four Gulf constants measured so far were wrong.
-4. **Test the correction model on a second category-4 candidate.** Only London is category 4, and it is the app's
-   own source. One more would show whether hand-edited timetables are rare or merely rarely visible.
+3. **Measure the remaining tier-D states** the way Oman and Qatar were measured: Kuwait, Bahrain, Jordan, Libya,
+   Portugal. Algeria and Tunisia were closed by R9. Two of the four Gulf constants measured so far were wrong.
+4. **Test the correction model on a second category-4 candidate.** Only London was category 4, and R13 has now
+   solved it, so the category is currently empty. One more candidate would show whether hand-edited timetables are
+   rare or merely rarely visible.
 5. **Verify the residual-expiry result on a third authority year.** It is the decisive negative in the whole
-   research and it rests on Singapore, Oman and the UAE.
-6. **Resolve the JAKIM contradiction**, where the authority's journal and its own API disagree by 10 minutes.
+   research and it rests on Singapore, Oman and the UAE. Note that London is the counter-example: its INTERVAL
+   table does not expire at all, and the difference between an interval and a residual is why.
+6. **Finish Norway.** R11 could not explain Islamsk Råd Norge's construction: the frozen-clock reading reproduces
+   its blank-cell counts exactly but is 42.3 minutes off on the days that bind. It is the last unexplained
+   authority behaviour in the programme. **The JAKIM contradiction that stood here is RESOLVED** by
+   `SOURCE-CATALOG.md`: the cited 20 degrees is the Imsak row.
+7. **Establish whether coordinate-to-zone generalises beyond Malaysia.** R14 built it for JAKIM at 96.5% from 63 KB
+   of polygons. Indonesia, Brunei, Sri Lanka, Bangladesh and Turkey all publish by administrative area and none was
+   tested.
 
 ---
 
@@ -150,11 +187,21 @@ Ordered by value. None of these blocks a decision; they sharpen one.
 
 Listed plainly, because none of them is a research question and each changes the build.
 
-1. Does "completely offline" permit a yearly fetch? (A10, A11)
-2. Are per-prayer user offsets allowed under the never-invent rule? (A8)
-3. Is the app willing to ship data derived from authorities that publish no terms? (A13)
+1. **Will the app ask for a location permission?** (A25) This is now the biggest one, and wave 4 created it. R14
+   measured that the permission-free route fails, so worldwide needs either a permission or a manual city and zone
+   picker. The owner has never agreed to add a permission and dislikes prompts. Everything else in the architecture
+   works under either answer.
+2. Does "completely offline" permit a yearly fetch? (A10, A11) **Less critical than it was**: R13 proved London
+   needs no fetch ever, and R14 showed the location layer needs none either, so the question now applies only to
+   non-London authority sources.
+3. Are per-prayer user offsets allowed under the never-invent rule? (A8)
 4. Is the reproduction claim, rather than an accuracy claim, acceptable as the product's promise? (A6, A7)
-5. Which countries are in the launch set, and is Malaysia the right first non-London source? (A15)
-6. What happens to existing London users, who would see different times under any computed source? (R8 section 6)
-7. Which Asr does a user see by default, given that the app currently shows the Shafi one and documents it as
+5. Which countries are in the launch set, and is Malaysia the right first non-London source? (A15) `SOURCE-CATALOG.md`
+   says yes but for a corrected reason: Malaysia is 21st by population, and it earns its place as the hardest cheap
+   source rather than the biggest one.
+6. Which Asr does a user see by default, given that the app currently shows the Shafi one and documents it as
    Hanafi?
+7. **Does the app read device elevation?** (A27) R14 recommends yes, reversing R1, on the evidence of one authority.
+
+**Settled since the first draft of this file:** licensing (the owner has permission), and what happens to existing
+London users (R13: they stay on their own published timetable, which is now provably permanent and offline).

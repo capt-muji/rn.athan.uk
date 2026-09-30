@@ -1,0 +1,36 @@
+R13 PART 2j: the 2027 published year, obtained from the timetable's own publisher
+Source: londonsalahtimes.com/downloads/LUPT-2027.xlsx, fetched 2026-09-30, 70,171 bytes.
+The workbook's own absPath is "ELM/Prayer timetables and calendar/London Unified Prayer
+Timetable/Generated years/", and its header reads "times & dates valid when generated in
+July 2026". Downloads are offered for every year from 2027 to 2076.
+
+Days parsed: 365
+First: {"date":"2027-01-01","fajr":"06:26","sunrise":"08:03","dhuhr":"12:09","asr":"13:47","asr_2":"14:17","magrib":"16:05","isha":"17:42"}
+Last:  {"date":"2027-12-31","fajr":"06:26","sunrise":"08:03","dhuhr":"12:08","asr":"13:46","asr_2":"14:16","magrib":"16:04","isha":"17:41"}
+
+== 2j.1 Does the 2026 interval table still hold in 2027? ==
+  Slots compared: 365
+  Fajr interval identical: 365 (100.0%)
+  Isha interval identical: 361 (98.9%)
+  Fajr slots that differ: none
+  Isha slots that differ: 06-17 (2026:84 2027:83), 06-18 (2026:83 2027:82), 06-19 (2026:83 2027:82), 11-29 (2026:99 2027:100)
+
+  Against the app's own captured 2026 API year rather than the ELM PDF:
+  Fajr identical 365/365, Isha identical 361/365
+
+== 2j.2 Reconstructing 2027 from the 2026 table and 2027's own published sun ==
+  Fajr 365/365 exact, Isha 361/365 exact. Misses: I06-17+1 I06-18+1 I06-19+1 I11-29-1
+  This is the durability test the residual model failed: a 2026 table applied to a 2027
+  the table was not built from.
+
+== 2j.3 The Asr margin question, settled on 2027 ==
+The publisher documents "'Asr: 2 minutes later". Part 2i measured that no shipped year
+carries a +2 margin over a plain shadow solve. 2027 is the check.
+  Mithl 2 minus Mithl 1 across 2027: 29 to 75 minutes.
+  The same gap in 2026: 29 to 75 minutes.
+
+== 2j.4 Byte cost of the interval table, recomputed on 2027 ==
+  two uint8 arrays: 730 raw, 349 gzip, 245 brotli
+  run-length encoded: 350 raw, 277 gzip, 207 brotli
+  the whole 2027 year as JSON: 53291 raw, 7234 gzip, 3138 brotli
+  the .xlsx as published: 70171 bytes
