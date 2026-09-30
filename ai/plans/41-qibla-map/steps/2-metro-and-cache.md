@@ -18,23 +18,35 @@ Must print `1`. Anything else means NEEDS REPLAN.
 | File | Kind |
 | --- | --- |
 | `metro.config.js` | changed, at anchor `2-1.txt` |
-| `shared/tileCache.ts` | new |
-| `shared/__tests__/tileCache.test.ts` | new |
+| `shared/tileCache.ts` | new, copied from `files/shared/tileCache.ts.txt` |
+| `shared/__tests__/tileCache.test.ts` | new, copied from `files/shared/__tests__/tileCache.test.ts.txt` |
+| `shared/__mocks__/react-native-mmkv.ts` | changed, three edits given verbatim in part 5 |
+
+**This is a `(files)` step** for the two new files: copy them and strip the `.txt`. Both were built,
+typechecked, linted, tested at 100% and break-tested by the planning session.
 
 4. **Tests first (red).** New suite `shared/__tests__/tileCache.test.ts`.
 
-| Test | What it proves | Inputs | Asserts |
-| --- | --- | --- | --- |
-| `keeps a tile it was given` | A stored tile comes back | one tile, 60 KB, then read it | the same bytes |
-| `reports nothing for a tile it has never seen` | A miss is a miss, not an empty tile | read an unstored key | `null` |
-| `keeps two locations at once` | The cache is not a single slot | store 9 London tiles then 9 Jakarta tiles, read one London tile | the London bytes |
-| `evicts the least recently used tile when the cap is passed` | The 25 MB rule | store tiles of 10 MB, 10 MB, 10 MB in that order, having read the first after the second | the second is gone and the first and third remain |
-| `never exceeds the cap after an eviction` | The cap is a ceiling, not a target | store 4 tiles of 10 MB | total held is at most 25 MB |
-| `evicts more than one tile when a single tile needs the room` | Eviction loops | fill to 24 MB with 12 tiles of 2 MB, then store a 6 MB tile | enough tiles are gone that the total is at most 25 MB |
-| `refuses a tile larger than the whole cap` | A pathological tile cannot empty the cache | store a 30 MB tile | it is not stored and the cache still holds what it had |
-| `reading a tile makes it most recently used` | LRU reads, not just writes | store A then B, read A, store enough to force one eviction | B is gone, A remains |
-| `reports how many bytes it is holding` | The cap is checkable | store 3 tiles of 1 MB | the reported total is 3 MB |
-| `forgets everything when asked` | A clear path exists for the cache-wipe on upgrade | store tiles, clear, read one | `null` |
+The suite is carried whole, so these are what its eleven tests prove rather than a specification to build from:
+
+| Test | What it proves |
+| --- | --- |
+| `keeps a tile it was given` | A stored tile comes back byte for byte |
+| `reports nothing for a tile it has never seen` | A miss is a miss, not an empty tile |
+| `keeps two locations at once` | The cache is not a single slot |
+| `reports how many bytes it is holding` | The cap is checkable |
+| `evicts the least recently used tile when the cap is passed` | The 25 MB rule, with a read making the first tile newer than the second |
+| `never exceeds the cap after an eviction` | The cap is a ceiling, not a target |
+| `evicts more than one tile when a single tile needs the room` | Eviction loops rather than dropping one and giving up |
+| `refuses a tile larger than the whole cap` | A pathological tile cannot empty the cache |
+| `treats a read as a use, so the tile a user keeps opening survives` | LRU reads, not just writes |
+| `forgets everything when asked` | The clear path the upgrade wipe needs |
+| `caps at the 25 MB the owner asked for` | The constant is the owner's number |
+
+**The suite resets storage itself**, with `database.clearAll()` in a `beforeEach`, following
+`stores/__tests__/syncUnreadableDay.test.ts`. The planning session's first draft did not, and the
+`reports how many bytes` test read 5 MB where it expected 3, because the harness resets atoms and this suite
+writes raw MMKV.
 
 Command:
 
@@ -60,8 +72,7 @@ pattern exists. The replacement, verbatim:
   };
 ```
 
-**`shared/tileCache.ts`**, a new module. It is pure bookkeeping over MMKV and holds no file I/O, so it is
-testable without a device.
+**`shared/tileCache.ts`**, copied from the plan. Its contracts, for the review and the audit:
 
 | Export | Signature | Answers | Must never |
 | --- | --- | --- | --- |
@@ -71,32 +82,74 @@ testable without a device.
 | `cachedBytes` | `() => number` | How much the cache is holding | Disagree with the sum of what it stores |
 | `clearTiles` | `() => void` | Empties the cache | Touch any key outside the tile prefix |
 
-Storage keys follow the repo's convention (`ai/AGENTS.md`, "Storage (MMKV)"): every key is prefixed
-`tile_`, and the access order is kept under `tile_order`. Use the existing `stores/database.ts` wrapper
-rather than a new MMKV instance.
+Storage keys follow the repo's convention (`ai/AGENTS.md`, "Storage (MMKV)"): every key is prefixed `tile_`,
+and the access order is kept under `tile_order` as a list of `{ key, bytes }`. The size is carried in that
+list rather than measured from storage, so evicting never reads a megabyte of tile just to weigh it.
 
-**One rule that must be written into the code**, because the widget lesson applies: the tile keys must be
-added to BOTH `clearAllExcept` keep-prefix whitelists if and only if they should survive a version upgrade.
-They should NOT: a cache is rebuildable, and keeping stale tiles through an upgrade risks serving a tile
-whose format the new code reads differently. So they are deliberately absent from the whitelist, and the
-test `forgets everything when asked` is what pins the clear path.
+**The tile keys are deliberately ABSENT from both `clearAllExcept` keep-prefix whitelists.** A cache is
+rebuildable, and a stale tile outliving a format change is worse than a refetch. The test
+`forgets everything when asked` pins the clear path.
 
 No log lines: the cache is pure and the caller reports.
 
+**`shared/__mocks__/react-native-mmkv.ts`**, three edits, because the mock has no buffer support and MMKV
+4.3.2 does. Its own header warns that a mocked method the device lacks "passes every test and then throws in
+the user's hand", so these were checked against the real surface first: `set(key, ArrayBuffer)` and
+`getBuffer(key): ArrayBuffer | undefined` are both declared in the installed package.
+
+Change the storage type:
+
+```ts
+  const storage: Record<string, string | number | boolean | ArrayBuffer> = {};
+```
+
+Add `getBuffer`, directly after `getString`:
+
+```ts
+    getBuffer: (key: string) => {
+      const value = storage[key];
+      return value instanceof ArrayBuffer ? value : undefined;
+    },
+```
+
+Widen `set`:
+
+```ts
+    set: (key: string, value: string | number | boolean | ArrayBuffer) => {
+```
+
 **The invariant:** after any `writeTile`, `cachedBytes()` is at most `TILE_CACHE_CAP_BYTES`.
 
-6. **Green.** The same command, then:
+6. **Green.** The same command, expecting exactly:
+
+```
+Tests:       11 passed, 11 total
+```
+
+Then coverage, which the planning session measured at 100% on all four:
 
 ```
 npx jest shared/__tests__/tileCache.test.ts --watchman=false --selectProjects=unit --coverage --collectCoverageFrom='shared/tileCache.ts'
 ```
 
-100% on all four measures. Then `npx tsc --noEmit` and `npx biome check . --error-on-warnings`, both 0.
+```
+Statements   : 100% ( 38/38 )
+Branches     : 100% ( 8/8 )
+Functions    : 100% ( 11/11 )
+Lines        : 100% ( 29/29 )
+```
+
+Then `npx tsc --noEmit` and `npx biome check . --error-on-warnings`, both 0.
 
 `unusedExports` still fails until step 4. That is expected.
 
-7. **Breaks.** `bash ai/plans/41-qibla-map/scripts/breaks-2.sh`, given in full in `scripts/breaks-2.sh`. It
-   must end `ALL AS EXPECTED: 1`.
+7. **Breaks.** `bash ai/plans/41-qibla-map/scripts/breaks-2.sh`, run from the repository root. The planning
+   session ran it against this exact code and it printed:
+
+```
+caught 7 of 7
+ALL AS EXPECTED: 1
+```
 
 8. **Version and commit.** At the end of step 4.
 
