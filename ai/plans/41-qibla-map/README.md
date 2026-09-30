@@ -1,6 +1,6 @@
 # Session 41: the qibla, made checkable
 
-Research complete, 2026-09-30. **Read `PROPOSALS.md` first** if you are the owner: it holds the six
+Research complete, 2026-09-30. **Read `PROPOSALS.md` first** if you are the owner: it holds the seven
 decisions and nothing else. Read this file if you are the next session.
 
 ## What this session concluded
@@ -36,10 +36,12 @@ priced honestly at +39.9 MB of native binary.
 
 | File | What it is |
 | --- | --- |
-| `PROPOSALS.md` | **The six owner decisions.** Start here |
+| `PROPOSALS.md` | **The seven owner decisions.** Start here |
 | `BRIEF.md` | The research brief, the constraints, and the size ruling |
 | `ASSUMPTIONS.md` | Every judgement taken unattended, with the five likeliest to need correction flagged |
-| `proof/` | **The executed proof.** Seven scripts that run, plus the rendered output |
+| `PROTOTYPE-PLAN.md` | **The next thing to do.** Three theories to test on the iPhone XS, cheapest first, merging nothing |
+| `RESEARCH-STATE.md` | What each agent finished, and who can settle every open item |
+| `proof/` | **The executed proof.** Eight scripts that run, plus the rendered output |
 
 ### The planning session's own work, in order
 
@@ -50,6 +52,7 @@ priced honestly at +39.9 MB of native binary.
 | `agent-reports/P2-the-design.md` | The ladder, the 24 to 40% coverage finding that forced it, and the per-spot offset hypothesis |
 | `agent-reports/P3-the-concrete-solution.md` | The map, executed end to end, with the feature cap measured |
 | `agent-reports/P4-hermes-viability.md` | That the pipeline runs in Hermes: every Node dependency eliminated and gzip proven |
+| `agent-reports/P5-why-the-owners-phone-lies.md` | Why a phone that points the right way is the worst outcome, and the experiment that settles the hypothesis |
 
 ### The six research reports, from five agents
 
@@ -80,6 +83,6 @@ alignment figure is the only load-bearing number in the whole session that is an
 
 ## Status
 
-Row 41 is **RESEARCH COMPLETE**, awaiting the six rulings. `PLAN.md` is deliberately unwritten until the
-`PROPOSALS.md` decisions land, because all six change what the steps build. Everything in this folder is
+Row 41 is **RESEARCH COMPLETE**, awaiting the seven rulings. `PLAN.md` is deliberately unwritten until the
+`PROPOSALS.md` decisions land, because all seven change what the steps build. Everything in this folder is
 committed and pushed to `origin/uat-2`.

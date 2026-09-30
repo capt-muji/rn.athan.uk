@@ -1,6 +1,6 @@
 # Owner decisions, session 41
 
-The research is finished and it proved more than the row asked for. These are the six decisions only the
+The research is finished and it proved more than the row asked for. These are the seven decisions only the
 owner can take, each with a recommendation and the measurement behind it. `PLAN.md` is deliberately unwritten
 until they land, which is the precedent row 39 set.
 
@@ -134,7 +134,41 @@ alternative is that rung 3 does not work.
 
 ---
 
-## D6. Is a fifth rung wanted: "where does my mosque face"?
+## D6. On the compass rung, should the app stop printing a bearing to the degree?
+
+**Why this is now a question.** You noted your phone points at your wall corner and called the hardcoding
+"very, very, very bad". The tuned value was actually reverted before release, so the build ships the honest
+`180`. **But your underlying judgement is right and is the more important point:** what you are seeing is a
+property of your room, not of the app.
+
+Measured from session 40's own readings: at your desk the shipped constant is about **10 degrees off**, and
+on open floor about **40**. A 10-degree error on a phone-sized dial is roughly one needle width, so **it
+looks correct**.
+
+**That is the worst of the three possible outcomes.** An obviously wrong needle gets checked. An exactly
+right needle needs nothing. A needle that is 10 degrees wrong and looks right **teaches you to trust it**,
+then delivers 40 degrees two metres away.
+
+**The prayer stays valid either way.** The Hanafi and majority position accepts `jihat al-Ka'bah` outside
+Makkah with a commonly cited 45-degree floor (islamqa 101449). **So the defect is not invalidity, it is
+dishonesty:** the screen prints `119° from north`, and printing three figures while delivering 129 or 159 is
+a claim the app cannot support.
+
+It also breaks session 37's own rule, that the compass "is honest about the needle and never about the
+number". The shipped screen inverts it.
+
+| Option | What the user sees on the compass rung |
+| --- | --- |
+| **Show a sector, not a number** | "The qibla is in this direction, within about 30 degrees." Honest about what a magnetometer can deliver indoors |
+| **Show the dial with no figure** | The needle and the Kaaba marker, and no digits to over-trust |
+| Keep the number, keep the warning | What ships today, and what made your phone look right while being wrong |
+
+**Recommendation: show a sector.** The number is earned only on the rungs whose source supports it, which is
+the sun at 2.3 degrees or a spot calibrated against the sun. This is a visible change, so it is yours.
+
+---
+
+## D7. Is a fifth rung wanted: "where does my mosque face"?
 
 **What the research found.** OpenStreetMap holds about 290,000 to 339,000 muslim places of worship, so the
 nearest mosque can be drawn on the map as a second reference the user can verify by walking to it.
