@@ -1,0 +1,87 @@
+=== R11 Part 5: population by latitude band, built from named administrative regions ===
+Every population figure is CITED to a statistical office. Every band total is arithmetic
+on those citations. The Muslim column applies a NATIONAL share to a REGIONAL population,
+which is the weakest step and is flagged on every row.
+
+--- band 48-55 N: 12 regions, total 274.30 million people ---
+    60.900 m   52.5N  share  6.5%  England and Wales
+     1.900 m   54.6N  share  6.5%  Northern Ireland
+     5.300 m   53.3N  share  1.4%  Ireland
+    17.900 m   52.1N  share  6.0%  Netherlands
+    11.800 m   50.8N  share  7.1%  Belgium
+    83.400 m   51.0N  share  6.7%  Germany
+    26.000 m   49.3N  share  8.7%  northern France, Hauts-de-France and Normandy and Ile-de-France
+    37.600 m   52.0N  share  0.1%  Poland
+    10.900 m   50.0N  share  0.2%  Czechia
+     9.200 m   53.9N  share  0.1%  Belarus
+     5.000 m   52.3N  share 70.0%  Kazakhstan northern oblasts
+     4.400 m   52.0N  share  4.9%  Canadian prairies, Edmonton and Calgary and Saskatoon and Winnipeg metros
+  EXCLUDED, centre at 47.6N is outside the band: Austria and Switzerland
+  EXCLUDED, centre at 55.6N is outside the band: Denmark
+  EXCLUDED, centre at 56.5N is outside the band: southern Sweden, Skane and Vastra Gotaland and Halland
+  EXCLUDED, centre at 56.3N is outside the band: Baltic states
+  EXCLUDED, centre at 55.8N is outside the band: Moscow and central Russia
+  EXCLUDED, centre at 45.5N is outside the band: southern Canada, Vancouver to Montreal corridor
+  EXCLUDED, centre at 47.0N is outside the band: Mongolia and northern China, Heilongjiang and Inner Mongolia
+  band population  274.30 million
+  band Muslims, national shares applied  17.70 million
+
+--- band 55-60 N: 5 regions, total 29.40 million people ---
+     5.400 m   55.9N  share  6.5%  Scotland
+     4.200 m   59.3N  share  8.1%  central Sweden including Stockholm and Uppsala
+     4.300 m   59.9N  share  5.7%  southern Norway including Oslo and Bergen
+     7.500 m   59.9N  share 10.0%  Saint Petersburg city and Leningrad Oblast
+     8.000 m   57.0N  share 10.0%  Russian northwest and Urals, Perm and Yekaterinburg and Tyumen belt
+  band population  29.40 million
+  band Muslims, national shares applied  2.49 million
+
+--- band 60-66.5 N: 8 regions, total 13.46 million people ---
+     5.600 m   61.5N  share  2.9%  Finland
+     0.400 m   64.0N  share  8.1%  northern Sweden, Vasterbotten and Norrbotten below the Circle
+     0.600 m   63.4N  share  5.7%  central Norway, Trondelag and Nordland below the Circle
+     0.390 m   64.1N  share  0.5%  Iceland
+     4.500 m   62.5N  share 10.0%  Russian north below the Circle, Arkhangelsk and Komi and Karelia and Khanty-Mansi
+     0.600 m   61.5N  share  1.3%  Alaska, Anchorage and Fairbanks and the interior
+     0.070 m   62.5N  share  4.9%  Canadian territories below the Circle, Whitehorse and Yellowknife
+     1.300 m   62.0N  share 10.0%  Russian Siberia at this latitude, Yakutsk and Surgut and Nizhnevartovsk
+  band population  13.46 million
+  band Muslims, national shares applied  0.82 million
+
+--- band 66.5+ N: 14 regions, total 2.26 million people ---
+     0.651 m   68.0N  share 10.0%  Murmansk Oblast
+     0.190 m   69.3N  share 10.0%  Norilsk and Taymyr, Krasnoyarsk Krai
+     0.060 m   67.5N  share 10.0%  Vorkuta and Komi above the Circle
+     0.600 m   66.9N  share 10.0%  Yamalo-Nenets and Nenets autonomous okrugs
+     0.100 m   68.0N  share 10.0%  Sakha Republic above the Circle
+     0.030 m   67.5N  share 10.0%  Chukotka and Magadan above the Circle
+     0.310 m   69.6N  share  5.7%  Troms and Finnmark, Norway
+     0.130 m   67.3N  share  5.7%  Nordland above the Circle, Bodo and Narvik
+     0.050 m   67.5N  share  8.1%  Norrbotten above the Circle, Kiruna and Gallivare and Jokkmokk and Pajala
+     0.060 m   67.0N  share  2.9%  Lapland, Finland, above the Circle
+     0.020 m   70.0N  share  1.3%  Alaska North Slope and Northwest Arctic boroughs
+     0.040 m   68.0N  share  4.9%  Canadian Arctic, Nunavut and Inuvik region
+     0.020 m   69.0N  share  5.5%  Greenland
+     0.003 m   78.2N  share  5.7%  Svalbard, Longyearbyen
+  band population  2.26 million
+  band Muslims, national shares applied  0.20 million
+
+=== the four bands side by side ===
+band        regions   population(m)   Muslims(m), national shares   share of the four-band total
+48-55           12         274.30                         17.70                       83.5%
+55-60            5          29.40                          2.49                       11.7%
+60-66.5          8          13.46                          0.82                        3.9%
+66.5+           14           2.26                          0.20                        0.9%
+total           39         319.42                         21.21
+
+=== the ratio that decides the engineering priority ===
+Muslims in 48 to 60 N, where a rule binds but no polar day ever occurs: 20.19 million
+Muslims in 60 to 66.5 N, where no day of the year has all rules agreeing: 0.82 million
+Muslims above 66.5 N, where every portion rule is undefined for part of the year: 0.20 million
+ratio, 48-to-60 against above-66.5: 102 to 1
+ratio, 60-to-66.5 against above-66.5: 4.2 to 1
+
+=== against R7 number, which this replaces ===
+R7: "about 4 million people live above the Arctic Circle", secondary sources, flagged UNVERIFIED as a census aggregate.
+R11, built from named statistical-office regions: 2.26 million total population above 66.5 N.
+Russia alone supplies 1.63 million of it, which is 72% of the band.
+The Nordic countries together supply only 0.57 million.

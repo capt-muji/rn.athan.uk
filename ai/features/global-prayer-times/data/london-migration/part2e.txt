@@ -1,0 +1,35 @@
+R13 PART 2e: the full six-field offline reconstruction of London
+Point: 51.5, -0.165. adhan 4.4.6 sun, rounding None then half-up. Era B2: 2022, 2025, 2026.
+Published rules, per East London Mosque's own explainer:
+  sunrise = HMNAO sunrise - 3      Dhuhr = HMNAO transit + 5
+  Maghrib = HMNAO sunset  + 3      Asr   = Mithl 1 (one shadow), Asr 2 = Mithl 2
+  Fajr    = (published sunrise + 3) - interval
+  Isha    = (published Maghrib - 3) + interval
+
+== 2e.1 Six fields plus the second Asr column, all at once ==
+field    n      exact              within 1 min       worst  misses beyond 1 min
+fajr      1095      1085 (99.09%)     1095 (100.00%)     1  0
+sunrise   1095      1085 (99.09%)     1095 (100.00%)     1  0
+dhuhr     1095      1086 (99.18%)     1095 (100.00%)     1  0
+asr       1095       412 (37.63%)      1044 (95.34%)     2  51
+magrib    1095      1082 (98.81%)     1095 (100.00%)     1  0
+isha      1095      1082 (98.81%)     1095 (100.00%)     1  0
+asr_2     1095       619 (56.53%)      1084 (99.00%)     2  11
+
+Six fields combined: 5832/6570 exact (88.77%), 6519/6570 within 1 minute (99.22%).
+Worst error on any of the six: 2 minute(s).
+
+== 2e.2 The Asr problem, stated plainly ==
+adhan's Shafi Asr against published asr (Mithl 1): exact 412/1095 (37.63%), within 1 min 95.34%, worst 2
+adhan's Hanafi Asr against published asr_2 (Mithl 2): exact 619/1095 (56.53%), within 1 min 99.00%, worst 2
+Wave 1 recorded the same gap: adhan uses the noon declination, London's source treats the
+shadow target as an apparent altitude with refraction, so the two differ on boundary days.
+
+== 2e.3 Per-field misses, listed in full where few enough ==
+fajr: 10 misses -> 2022-02-08+1 2022-03-24+1 2022-07-08-1 2022-08-26-1 2022-11-15+1 2022-12-25+1 2025-10-04-1 2025-10-20-1 2025-11-01-1 2026-09-05-1
+sunrise: 10 misses -> 2022-02-08+1 2022-03-24+1 2022-07-08-1 2022-08-26-1 2022-11-15+1 2022-12-25+1 2025-10-04-1 2025-10-20-1 2025-11-01-1 2026-09-05-1
+dhuhr: 9 misses -> 2022-02-26+1 2022-11-21+1 2025-04-20+1 2025-08-13-1 2025-08-22-1 2025-09-13-1 2025-11-09-1 2026-04-08+1 2026-08-26-1
+asr: 683 misses
+magrib: 13 misses -> 2022-01-16+1 2022-02-04+1 2022-02-21+1 2022-04-02+1 2022-07-08-1 2022-11-18+1 2022-12-12+1 2022-12-13+1 2025-08-11-1 2025-11-02-1 2026-06-03+1 2026-09-11-1 2026-12-04-1
+isha: 13 misses -> 2022-01-16+1 2022-02-04+1 2022-02-21+1 2022-04-02+1 2022-07-08-1 2022-11-18+1 2022-12-12+1 2022-12-13+1 2025-08-11-1 2025-11-02-1 2026-06-03+1 2026-09-11-1 2026-12-04-1
+asr_2: 476 misses

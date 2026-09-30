@@ -1,0 +1,28 @@
+R13 PART 1b: best-fitting computed configuration, searched
+Configurations evaluated: 29781
+Days: 365, fields: 6, values: 2190
+Each configuration is also given a per-field integer offset fitted to London itself,
+so these numbers are an upper bound on what any computed source could achieve.
+
+BEST OVERALL (maximising values within 1 minute): moonsighting shafaq=general hlr=MiddleOfTheNight at 51.5,-0.1275 round=up
+  total within 1 min: 1733 of 2190 (79.1%)
+  total exact:        969 of 2190 (44.2%)
+  worst error across all six fields: 9 min
+
+field    offset    exact      <=1min     <=2min   worst
+fajr          0   47 (12.9%)  112 (30.7%)  165 (45.2%)     7
+sunrise      -3  245 (67.1%) 365 (100.0%) 365 (100.0%)     1
+dhuhr         0  239 (65.5%) 365 (100.0%) 365 (100.0%)     1
+asr           0  125 (34.2%)  363 (99.5%) 365 (100.0%)     2
+magrib        0  253 (69.3%) 365 (100.0%) 365 (100.0%)     1
+isha          5   60 (16.4%)  163 (44.7%)  214 (58.6%)     9
+
+PER-FIELD CEILING: the best any configuration in the search achieved on that field alone.
+These cannot all be had at once; they are separate configurations.
+field    best <=1min    exact    worst   configuration
+fajr       182 (49.9%)      49       8   offset -40, Fajr 9 / Isha 8 hlr=MiddleOfTheNight at 51.5,-0.1275 round=up
+sunrise   365 (100.0%)     364       1   offset -3, Fajr 8 / Isha 8 hlr=MiddleOfTheNight at 51.5,-0.165 round=nearest
+dhuhr     365 (100.0%)     363       1   offset 5, Fajr 8 / Isha 8 hlr=MiddleOfTheNight at 51.5,-0.165 round=nearest
+asr        363 (99.5%)     125       2   offset 0, Fajr 8 / Isha 8 hlr=MiddleOfTheNight at 51.5,-0.1275 round=up
+magrib    365 (100.0%)     362       1   offset 3, Fajr 8 / Isha 8 hlr=MiddleOfTheNight at 51.5,-0.165 round=nearest
+isha       164 (44.9%)      60       9   offset 6, moonsighting shafaq=general hlr=MiddleOfTheNight at 51.5072,-0.1276 round=down

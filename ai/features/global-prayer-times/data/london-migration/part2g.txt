@@ -1,0 +1,69 @@
+R13 PART 2g: reconstruction with the publisher's OWN documented parameters
+Source: londonsalahtimes.com/technical, fetched 2026-09-30, credited on East London Mosque's
+own prayer-times page as "Prayer times produced by London Salah Times".
+Charing Cross 51.5073 N, 0.12755 W. Margins: sunrise -3, Zuhr +5, Asr +2, sunset +3.
+
+-- era B2: 2022, 2025, 2026
+field    n      exact              within 1 min       worst  beyond 1 min
+fajr      1095       923 (84.29%)     1095 (100.00%)     1  0
+sunrise   1095       923 (84.29%)     1095 (100.00%)     1  0
+dhuhr     1095       947 (86.48%)     1095 (100.00%)     1  0
+asr       1095       111 (10.14%)       506 (46.21%)     3  589
+magrib    1095       918 (83.84%)     1095 (100.00%)     1  0
+isha      1095       918 (83.84%)     1095 (100.00%)     1  0
+asr_2     1095         35 (3.20%)       588 (53.70%)     2  507
+SIX FIELDS: 4740/6570 exact (72.15%), 5981/6570 within 1 min (91.04%), worst 3
+
+-- era B1: 2015 to 2021
+field    n      exact              within 1 min       worst  beyond 1 min
+fajr      2191      2147 (97.99%)     2191 (100.00%)     1  0
+sunrise   2191      2147 (97.99%)     2191 (100.00%)     1  0
+dhuhr     2191      2175 (99.27%)     2191 (100.00%)     1  0
+asr       2191        135 (6.16%)       912 (41.62%)     3  1279
+magrib    2191      2135 (97.44%)     2191 (100.00%)     1  0
+isha      2191      2135 (97.44%)     2191 (100.00%)     1  0
+asr_2     2191         31 (1.41%)       922 (42.08%)     3  1269
+SIX FIELDS: 10874/13146 exact (82.72%), 11867/13146 within 1 min (90.27%), worst 3
+
+-- all era B: 2015 to 2026
+field    n      exact              within 1 min       worst  beyond 1 min
+fajr      3286      3070 (93.43%)     3286 (100.00%)     1  0
+sunrise   3286      3070 (93.43%)     3286 (100.00%)     1  0
+dhuhr     3286      3122 (95.01%)     3286 (100.00%)     1  0
+asr       3286        246 (7.49%)      1418 (43.15%)     3  1868
+magrib    3286      3053 (92.91%)     3286 (100.00%)     1  0
+isha      3286      3053 (92.91%)     3286 (100.00%)     1  0
+asr_2     3286         66 (2.01%)      1510 (45.95%)     3  1776
+SIX FIELDS: 15614/19716 exact (79.19%), 17848/19716 within 1 min (90.53%), worst 3
+
+== 2g.1 Sensitivity: the Asr +2 margin the publisher documents ==
+  Asr margin +0: asr exact 1302/3286 (39.62%), within 1 min 92.51%, worst 2; asr_2 exact 1767/3286 (53.77%), worst 2
+  Asr margin +1: asr exact 1172/3286 (35.67%), within 1 min 82.78%, worst 2; asr_2 exact 1444/3286 (43.94%), worst 2
+  Asr margin +2: asr exact 246/3286 (7.49%), within 1 min 43.15%, worst 3; asr_2 exact 66/3286 (2.01%), worst 3
+  Asr margin +3: asr exact 0/3286 (0.00%), within 1 min 7.49%, worst 4; asr_2 exact 0/3286 (0.00%), worst 4
+
+== 2g.2 Charing Cross against the points wave 1 fitted ==
+  Charing Cross 51.5073,-0.12755 (publisher's own) six fields exact 15614/19716 (79.19%), within 1 min 90.53%, worst 3
+  51.5,-0.1275 (wave 1 era B1 fit)                 six fields exact 15728/19716 (79.77%), within 1 min 90.52%, worst 3
+  51.5,-0.165 (wave 1 era B2 fit)                  six fields exact 14903/19716 (75.59%), within 1 min 89.69%, worst 3
+  51.5072,-0.1276 (generic London)                 six fields exact 15620/19716 (79.22%), within 1 min 90.52%, worst 3
+
+== 2g.3 Charing Cross on 2026 alone, against the app's own captured API year ==
+-- 2026, app API year, Charing Cross + published margins
+field    n      exact              within 1 min       worst  beyond 1 min
+fajr       365       311 (85.21%)      365 (100.00%)     1  0
+sunrise    365       311 (85.21%)      365 (100.00%)     1  0
+dhuhr      365       315 (86.30%)      365 (100.00%)     1  0
+asr        365        37 (10.14%)       164 (44.93%)     3  201
+magrib     365       308 (84.38%)      365 (100.00%)     1  0
+isha       365       308 (84.38%)      365 (100.00%)     1  0
+asr_2      365         14 (3.84%)       197 (53.97%)     2  168
+SIX FIELDS: 1590/2190 exact (72.60%), 1989/2190 within 1 min (90.82%), worst 3
+
+  fajr misses (54): too many to list
+  sunrise misses (54): too many to list
+  dhuhr misses (50): too many to list
+  asr misses (328): too many to list
+  magrib misses (57): too many to list
+  isha misses (57): too many to list
+  asr_2 misses (351): too many to list
