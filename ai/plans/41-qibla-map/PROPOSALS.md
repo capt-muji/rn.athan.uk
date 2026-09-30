@@ -1,7 +1,7 @@
 # Owner decisions, session 41
 
-The research is finished and it proved more than the row asked for. These are the decisions only the owner
-can take, each with a recommendation and the measurement behind it. `PLAN.md` is deliberately unwritten
+The research is finished and it proved more than the row asked for. These are the six decisions only the
+owner can take, each with a recommendation and the measurement behind it. `PLAN.md` is deliberately unwritten
 until they land, which is the precedent row 39 set.
 
 Nothing here asks the owner to read a report. Each item is self-contained.
