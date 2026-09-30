@@ -100,3 +100,19 @@ Its remedy is to take the version from `origin/uat-2` at the moment of the bump 
 tree. **This session read the working tree, as every previous one has.** Nothing shipped wrong because the
 conflict is loud and `versionLockstep.test.ts` guards the three files, but the lesson is now recorded twice
 and the cheap fix is a `git fetch` immediately before each bump.
+
+**The same merge also left `uat-2` unable to commit at all**, and that is the more serious half. The other
+session committed 444 research data files (`ai/features/global-prayer-times/data/`) that neither gate
+accepts: Biome reported 1,656 formatting errors across its JSON measurements, and the coverage gate
+reported seven `.mjs` scripts as unmeasured. Their own push succeeded because the hook only inspects
+STAGED files and those commits staged just `README.md`, `app.json` and `package.json`; the files arrived in
+the tree without ever passing a gate, and the next session to stage anything inherits the failure.
+
+Fixed here by the precedent each gate already carries for exactly this kind of artefact: the folder is
+excluded in `biome.json` beside `ai/features/moonsighting` and this row's own `proof/`, and registered in
+`UNMEASURED` in `scripts/check-changed-coverage.js` beside the same `proof/` entry, with the reason
+"executed research artefacts, run once under Node against published timetables, never by the app".
+
+**DURABLE LESSON: a commit that stages only three files still leaves everything else it wrote in the tree,
+and the gates are staged-only, so unstaged research output can block the NEXT session rather than the one
+that produced it.** A session that writes data artefacts registers them in both gates in the same commit.
