@@ -6,7 +6,7 @@
 # counts as not caught, because a break that cannot be applied proves nothing about the tests.
 set -u
 
-SUITES="shared/__tests__/tileGeometry.test.ts shared/__tests__/vectorTile.test.ts shared/__tests__/qiblaStreet.test.ts"
+SUITES="shared/__tests__/tileGeometry.test.ts shared/__tests__/vectorTile.test.ts shared/__tests__/qiblaStreet.test.ts hooks/__tests__/useQiblaMap.test.ts"
 CAUGHT=0
 TOTAL=0
 
@@ -77,7 +77,11 @@ run_break "nearness weight removed" shared/qiblaStreet.ts \
 
 # 11. Deduplication by name: one road split into segments must be one reference.
 run_break "dedupe disabled" shared/qiblaStreet.ts \
-  '    if (seen.has(street.name)) return false;' '    if (false) return false;'
+  '      if (seen.has(street.name)) return false;' '      if (false) return false;'
+
+# 11a. The ranking itself, which the caller re-applies across the whole tile grid.
+run_break "ranking disabled" shared/qiblaStreet.ts \
+  '    .sort((first, second) => usefulness(second) - usefulness(first))' ''
 
 # 12. Zigzag decoding, which every signed coordinate in every tile depends on.
 run_break "zigzag sign dropped" shared/vectorTile.ts \
