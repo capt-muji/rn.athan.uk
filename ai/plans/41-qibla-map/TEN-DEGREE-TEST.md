@@ -74,5 +74,29 @@ less accurate**, and that distinction is the thing the row exists to fix.
   existing native directory (`ai/AGENTS.md`; violating this order once shipped 1.22.10 code stamped 1.22.9).
 - `npx expo prebuild -p ios --no-install`, then `ios/Athan/Info.plist` verified to read **1.29.138**.
 - `DEVELOPMENT_TEAM=9V3WAU9Z54 npx expo run:ios --configuration Release --device 00008020-0015585C22D2002E`.
-- **Release, not debug**, because the comparison is against a Release build and a heading path should not be
-  compared across configurations.
+- **Release, not Debug**, even though the owner has since ruled the XS a test device where Debug is
+  preferred. This one test compares against the Release build already on the phone, and a Debug reading
+  would confound the measurement with a configuration change. Every later prototype is Debug.
+
+## BUILD DONE, 2026-09-30 01:58. The phone is ready and the test is waiting on the owner.
+
+Verified after the build rather than assumed:
+
+```
+$ xcrun devicectl device info apps --device 00008020-0015585C22D2002E
+Athan   com.mugtaba.athan   1.29.138
+```
+
+| | Before | Now |
+| --- | --- | --- |
+| Version on the XS | 1.29.120 | **1.29.138** |
+| `IOS_AXIS_CORRECTION` | 190, tuned to the desk | **180, the honest geometry** |
+
+`Info.plist` in the installed artifact reads 1.29.138, the bundle is 5,992,032 bytes written at 01:58, and
+the build reports `0 error(s)`. Built from `uat-2` at `18d6ccca` with only documentation modified.
+
+**The phone has not been moved by this session**, since everything above ran over USB with no taps.
+
+**What is left is four steps of the owner's, in section "What the owner does, exactly":** open the sheet,
+see where the marker sits now, and report the swing. The prediction is written above and cannot be edited
+after the fact: about 10 degrees means the hypothesis holds.

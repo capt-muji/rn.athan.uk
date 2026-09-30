@@ -138,9 +138,19 @@ only the specific files the prototype touched, from their own diff.
 
 **The device.** iPhone XS, `00008020-0015585C22D2002E`, physical. A local Release build needs
 `DEVELOPMENT_TEAM=9V3WAU9Z54` with `-allowProvisioningUpdates` (`ai/AGENTS.md`), and the version-sync ritual
-requires `npx expo prebuild -p ios --no-install` BEFORE `expo run:ios`, in that order. **A debug build is
-enough for every measurement here**, and is far cheaper, because none of T1, T2a or T3 depends on Release
-optimisation. State that in the findings so nobody mistakes a debug timing for a shipped one.
+requires `npx expo prebuild -p ios --no-install` BEFORE `expo run:ios`, in that order.
+
+**The XS is a TEST DEVICE and Debug builds are preferred** (owner, 2026-09-30): 🐋  "the iPhone XS is a test
+device, so feel free to delete, create any type of build you want... debug builds are usually faster and
+easier to prototype on, quicker to reload, with hot reloading." So every prototype screen is Debug, and the
+app may be deleted and reinstalled freely.
+
+**One exception, and it matters:** the 10 degree test of `TEN-DEGREE-TEST.md` compares a new build against
+the Release build already on the phone. **Comparing a Debug reading to a Release one would confound the
+measurement with a configuration change**, so that one test builds Release. Every later prototype is Debug.
+
+**A Debug timing is never quoted as a shipped number.** Say so in the findings, since Hermes runs unoptimised
+there and `inlineRequires` changes evaluation order (`metro.config.js`).
 
 **What is NOT in this prototype.** No MapLibre, no WebView, no Skia, no new native module, no tile
 downloading, no permission changes, no notification changes, and nothing outside the Qibla sheet.
