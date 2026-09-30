@@ -1,0 +1,256 @@
+import { memo } from 'react';
+import { StyleSheet, View } from 'react-native';
+import Animated, {
+  type SharedValue,
+  useAnimatedProps,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import Svg, { Circle, G, Line, Path, Rect, Text } from 'react-native-svg';
+
+import { ANIMATION, COLORS } from '@/shared/constants';
+import { DIAL_LABELS, DIAL_STUDS, DIAL_TICKS, dialPoint, rosetteRays, rubElHizbPath } from '@/shared/qiblaCompass';
+
+interface QiblaCompassProps {
+  size: number;
+  /** Where the Kaaba lies, in degrees clockwise from true north */
+  bearing: number;
+  /** The phone's heading, unwrapped so a turn past north never spins the face the long way round */
+  heading: SharedValue<number>;
+  /** Whether the phone is on the line, which is what lights the housing */
+  aligned: SharedValue<boolean>;
+}
+
+const RIM = 0.985;
+const RIM_INNER = 0.925;
+const TICK = 0.895;
+const LABEL = 0.79;
+const MEDALLION = 0.72;
+const STAR = 0.5;
+const KAABA = 0.6;
+const KAABA_SIZE = 0.15;
+const HUB = 0.045;
+const STROKE = 0.006;
+const ARROWHEAD = 0.055;
+
+const AnimatedG = Animated.createAnimatedComponent(G);
+const AnimatedLine = Animated.createAnimatedComponent(Line);
+const AnimatedPath = Animated.createAnimatedComponent(Path);
+
+interface FaceProps {
+  size: number;
+  bearing: number;
+  /** The needle's colour, which turns as the phone reaches the line */
+  needleProps: ReturnType<typeof useAnimatedProps<{ stroke: string }>>;
+}
+
+/** A cardinal letter, counter-rotated so it stays upright however far the face has turned */
+const Label = ({
+  angle,
+  text,
+  radius,
+  heading,
+}: {
+  angle: number;
+  text: string;
+  radius: number;
+  heading: SharedValue<number>;
+}) => {
+  const at = dialPoint(angle, radius * LABEL);
+  // Undoes the face's own turn, so the letter orbits to where its direction lies and still reads upright
+  const props = useAnimatedProps(() => ({ rotation: -heading.value }));
+
+  return (
+    <AnimatedG animatedProps={props} originX={at.x} originY={at.y}>
+      <Text
+        x={at.x}
+        y={at.y}
+        fill={angle === 0 ? COLORS.qibla.brass : COLORS.qibla.cardinal}
+        fontSize={radius * 0.1}
+        fontWeight='600'
+        textAnchor='middle'
+        alignmentBaseline='central'>
+        {text}
+      </Text>
+    </AnimatedG>
+  );
+};
+
+/**
+ * The engraved face, drawn once.
+ *
+ * Memoised because re-recording it is the one thing that must not happen: react-native-svg re-walks its whole drawing
+ * pipeline on any attribute change, measured at 40 to 56 ms for 30 paths on the floor device, which is several frames
+ * for one turn of a 100-element face. Only the layer above it turns, which is a compositor matrix multiply.
+ */
+const Face = memo(({ size, bearing, needleProps }: FaceProps) => {
+  const radius = size / 2;
+  const stroke = radius * STROKE;
+  const kaaba = dialPoint(bearing, radius * KAABA);
+  const kaabaSize = radius * KAABA_SIZE;
+
+  return (
+    <>
+      <Circle r={radius * RIM} fill={COLORS.qibla.face} stroke={COLORS.qibla.brass} strokeWidth={stroke * 2.2} />
+      <Circle r={radius * RIM_INNER} fill='none' stroke={COLORS.qibla.brassSoft} strokeWidth={stroke} />
+      {DIAL_STUDS.map((angle) => {
+        const at = dialPoint(angle, radius * ((RIM + RIM_INNER) / 2));
+
+        return <Circle key={angle} cx={at.x} cy={at.y} r={stroke * 1.6} fill={COLORS.qibla.brass} />;
+      })}
+
+      {DIAL_TICKS.map((tick) => {
+        const outer = dialPoint(tick.angle, radius * TICK);
+        const inner = dialPoint(tick.angle, radius * (TICK - tick.length));
+
+        return (
+          <Line
+            key={tick.angle}
+            x1={outer.x}
+            y1={outer.y}
+            x2={inner.x}
+            y2={inner.y}
+            stroke={tick.cardinal ? COLORS.qibla.brass : tick.mid ? COLORS.qibla.cardinal : COLORS.qibla.ring}
+            strokeWidth={tick.cardinal ? stroke * 2 : tick.mid ? stroke * 1.2 : stroke}
+            strokeLinecap='round'
+          />
+        );
+      })}
+
+      <Circle
+        r={radius * MEDALLION}
+        fill={COLORS.qibla.faceInner}
+        stroke={COLORS.qibla.brassSoft}
+        strokeWidth={stroke}
+      />
+
+      <Path
+        testID='qibla-star'
+        d={rubElHizbPath(radius * STAR)}
+        fill={COLORS.qibla.brassFaint}
+        stroke={COLORS.qibla.brass}
+        strokeWidth={stroke * 1.8}
+        strokeLinejoin='round'
+      />
+      <Path
+        d={rubElHizbPath(radius * STAR * 0.84)}
+        fill='none'
+        stroke={COLORS.qibla.brassSoft}
+        strokeWidth={stroke}
+        strokeLinejoin='round'
+      />
+      {rosetteRays(radius * STAR).map((ray) => (
+        <Path
+          key={ray}
+          d={ray}
+          fill='none'
+          stroke={COLORS.qibla.brassSoft}
+          strokeWidth={stroke * 0.9}
+          strokeLinejoin='round'
+        />
+      ))}
+
+      <AnimatedLine
+        x1={0}
+        y1={0}
+        x2={kaaba.x}
+        y2={kaaba.y}
+        animatedProps={needleProps}
+        strokeWidth={stroke * 2.2}
+        strokeLinecap='round'
+      />
+      <Circle r={radius * HUB} fill={COLORS.qibla.brass} />
+
+      {/* Upright on the face, so the Kaaba never reads upside down when the qibla is southward */}
+      <G transform={`translate(${kaaba.x} ${kaaba.y}) rotate(${-bearing})`}>
+        <Rect
+          testID='qibla-kaaba'
+          x={-kaabaSize / 2}
+          y={-kaabaSize / 2}
+          width={kaabaSize}
+          height={kaabaSize}
+          rx={kaabaSize * 0.08}
+          fill={COLORS.qibla.kaaba}
+          stroke={COLORS.qibla.brass}
+          strokeWidth={stroke * 1.2}
+        />
+        {/* The kiswah's gold band and door, which is what makes a small square read as the Kaaba */}
+        <Rect
+          x={-kaabaSize / 2}
+          y={-kaabaSize * 0.16}
+          width={kaabaSize}
+          height={kaabaSize * 0.2}
+          fill={COLORS.qibla.brass}
+        />
+        <Rect
+          x={kaabaSize * 0.08}
+          y={kaabaSize * 0.06}
+          width={kaabaSize * 0.16}
+          height={kaabaSize * 0.32}
+          fill={COLORS.qibla.brass}
+        />
+      </G>
+    </>
+  );
+});
+
+/**
+ * The qibla compass: an engraved face that turns under a fixed mark.
+ *
+ * The face carries the Kaaba, so bringing the Kaaba to the mark is facing the qibla, which is the same arithmetic the
+ * haptic reads and never a measurement off the drawing.
+ */
+export default function QiblaCompass({ size, bearing, heading, aligned }: QiblaCompassProps) {
+  const radius = size / 2;
+
+  // First evaluation snaps, so the face draws at the phone's real heading rather than spinning to it from north
+  const isFirstEvaluation = useSharedValue(true);
+  const rotation = useDerivedValue(() => {
+    if (isFirstEvaluation.value) {
+      isFirstEvaluation.value = false;
+      return -heading.value;
+    }
+
+    return withTiming(-heading.value, { duration: ANIMATION.durationFade });
+  });
+
+  const faceStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${rotation.value}deg` }] }));
+  const needleProps = useAnimatedProps(() => ({
+    stroke: aligned.value ? COLORS.qibla.onLine : COLORS.qibla.needle,
+  }));
+  const arrowProps = useAnimatedProps(() => ({
+    fill: aligned.value ? COLORS.qibla.onLine : COLORS.qibla.mark,
+  }));
+  const head = size * ARROWHEAD;
+
+  return (
+    <View style={[styles.compass, { width: size, height: size }]}>
+      <Animated.View testID='qibla-face' style={faceStyle}>
+        <Svg width={size} height={size} viewBox={`${-radius} ${-radius} ${size} ${size}`}>
+          <Face size={size} bearing={bearing} needleProps={needleProps} />
+          {DIAL_LABELS.map((label) => (
+            <Label key={label.angle} angle={label.angle} text={label.text} radius={radius} heading={rotation} />
+          ))}
+        </Svg>
+      </Animated.View>
+      {/* Points down into the dial, so the needle's head meets its notch when the phone is on the line */}
+      <Svg testID='qibla-mark' width={head * 2} height={head} style={styles.mark}>
+        <AnimatedPath d={`M0,0L${head * 2},0L${head},${head}Z`} animatedProps={arrowProps} />
+      </Svg>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  compass: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
+  mark: {
+    position: 'absolute',
+    top: 0,
+  },
+});

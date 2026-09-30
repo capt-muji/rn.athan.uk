@@ -1,0 +1,134 @@
+import { pt, f2, rub, ticks, arc, kaaba, cardinals, R, BEARING } from './lib.mjs';
+
+/* ── r8-a.mjs — n:1 'Plain Line' ─────────────────────────────────────────────
+   ROUND 8 anatomy, centre outward: a solid gold dot at the pivot → the tiny
+   Rub el Hizb jewel as an open outline over it → ONE line out to the inner
+   circle → design 2's barbed arrowhead on that circle → the dimmed letters →
+   the Kaaba riding the dial's edge → the ±6.5° gold arc on the rim → and
+   NOTHING above the dial.
+
+   THE LINE — the one free choice, and here the purest reading of it: line and
+   arrowhead are a SINGLE closed path, so there is no seam, no joint and no
+   ornament anywhere along the run. The shaft is 0.025R wide at the dot and
+   0.022R where it meets the head — the barest taper, 12% over 108px, felt
+   rather than seen. Its flanks land exactly on the arrowhead's notch edges, so
+   the line emerges from the head's own notch and the barbs keep design 2's
+   sweep: 43.6° included, to the decimal. Shaft-to-head width is 0.24 — the head
+   reads as a head, the line as a line.
+
+   GEOMETRY, swept 0→360 (R = 170; the face, the letters, the arrow and the cube
+   all turn together, so every angular separation below is heading-invariant —
+   only the letters' upright counter-rotation moves, and each is checked at its
+   worst 45° orientation):
+     line      0 → 0.6366R, half-width 2.13 → 1.87; base hidden under the dot
+     head      barbs on the inner circle at 0.600R ±0.046R, notch vertex
+               0.648R, tip 0.715R — the notch is 42% of the head's length,
+               deeper than design 2's 31%, because at this size 31% closes up
+               behind the shaft and the head reads as a plain triangle
+     medallion 0.600R — the "inner circle"; the barbs sit on its own edge
+     letters   0.760R, size 0.096R → worst-case corner radius 139.52
+     ticks     draw INWARD from 0.905R, so they occupy 144.5–153.85
+               → letters clear the major tick tips by 4.98
+     cube      centre 0.88R, size 0.116R → radial corner max 163.54,
+               min 135.66 → 14.11 clear of the arrow's tip (121.55)
+     cube↔letter  min gap 48.10; arrow↔letter min gap 45.38
+     arc       0.9815R, band 165.22–168.48 → 1.68 clear of the cube's worst
+               corner, flush inside the rim disc's own stroke (166.33–168.57)
+   The cube crosses the 120° minor tick and the 0.945R ring; it is opaque and
+   rides the dial, which is design 6's accepted treatment.
+
+   Violet-tinted near-black ground, a structure grey that leans indigo, one
+   true gold accent. Aligned, the whole instrument turns gold — ground, grey,
+   ticks, letters, jewel, line, arrow and the cube's band. No green anywhere. */
+
+const st = R * 0.006;
+const A = (c, v) => `rgba(${c},${v})`;
+
+/* off: violet-tinted dark, indigo-leaning grey, true gold accent
+   on : the same instrument lit from within — every role warmed to gold      */
+const T = (on) => (on ? {
+  sheet: '#15120b', face: 'rgba(30,25,12,1)', med: 'rgba(44,36,17,1)',
+  grey: '212,178,102', ink: 'rgba(240,225,190,0.55)',
+  acc: 'rgba(255,205,110,1)', kBody: 'rgba(18,14,7,1)',
+} : {
+  sheet: '#0a0812', face: 'rgba(18,16,30,1)', med: 'rgba(28,26,44,1)',
+  grey: '176,178,208', ink: 'rgba(206,208,232,0.5)',
+  acc: 'rgba(218,179,95,1)', kBody: 'rgba(12,11,20,1)',
+});
+
+const disc = (r, fill, stroke = 'none', w = 0) =>
+  `<circle r="${f2(r)}" fill="${fill}"${stroke === 'none' ? '' : ` stroke="${stroke}" stroke-width="${f2(w)}"`}/>`;
+
+/* The gesture: shaft and barbed head as one closed path. The shaft's flanks
+   meet the head's notch edges exactly, so the rear edges stay collinear with
+   the notch and the barbs keep their full sweep. */
+const GESTURE = (() => {
+  const rb = 0.600 * R;                 // barb tips — on the inner circle
+  const rn = 0.648 * R;                 // notch vertex
+  const rt = 0.715 * R;                 // tip
+  const bw = 0.046 * R;                 // barb half-width
+  const w0 = 0.0125 * R;                // shaft half-width at the dot
+  const w1 = 0.0110 * R;                // shaft half-width at the head
+  const rj = rn - (rn - rb) * (w1 / bw); // where the flank meets the notch edge
+  return `M${f2(-w0)},0`
+    + `L${f2(-w1)},${f2(-rj)}L${f2(-bw)},${f2(-rb)}L0,${f2(-rt)}`
+    + `L${f2(bw)},${f2(-rb)}L${f2(w1)},${f2(-rj)}L${f2(w0)},0Z`;
+})();
+
+export default [
+  {
+    n: 1,
+    title: 'Plain Line',
+    blurb:
+      'The purest reading of his line: shaft and barbed arrowhead are one closed path, so a single '
+      + 'unbroken gesture runs from the gold dot at the pivot out to the inner circle, with no '
+      + 'ornament anywhere along it. The shaft carries the barest taper \u2014 0.025R at the dot to '
+      + '0.022R at the head, 12% over its length \u2014 and its flanks land exactly on the notch edges '
+      + 'of the barbed head, so the line emerges from the head\u2019s own notch and the barbs keep '
+      + 'their full sweep, sitting on the inner circle\u2019s own edge. Nothing is drawn above the dial: the Kaaba rides the rim '
+      + 'under its \u00B16.5\u00B0 gold arc, the arrow rides the inner circle, and alignment is simply '
+      + 'the arrow arriving beneath the cube. Within \u00B11\u00B0 of the bearing \u2014 a 3\u00B0 window '
+      + '\u2014 the haptic fires and the whole instrument turns gold.',
+    build: ({ on, heading }) => {
+      const t = T(on);
+      const acc = t.acc;
+
+      /* rim: the disc at 0.985R, the one ring at 0.945R, 17's ticks verbatim */
+      let f = disc(0.985 * R, t.face, A(t.grey, 0.92), 2.2 * st);
+      f += `<circle r="${f2(0.945 * R)}" fill="none" stroke="${A(t.grey, 0.5)}" stroke-width="${f2(1.1 * st)}"/>`;
+      f += ticks({
+        from: 0.905 * R, to: R, step: 15, major: 90, mid: 45,
+        lenMinor: 0.026, lenMid: 0.038, lenMajor: 0.055,
+        colMinor: A(t.grey, 0.38), colMid: A(t.grey, 0.62), colMajor: A(t.grey, 0.95), w: 1.2 * st,
+      });
+
+      /* design 6's qibla arc, inlaid into the rim's own stroke */
+      f += `<path d="${arc(BEARING - 6.5, BEARING + 6.5, 0.9815 * R)}" fill="none" stroke="${acc}" stroke-width="${f2(3.2 * st)}" stroke-linecap="round"/>`;
+
+      /* the inner circle the arrow lands on */
+      f += disc(0.6 * R, t.med, A(t.grey, 0.5), 1.2 * st);
+
+      /* the line, aimed along the bearing */
+      f += `<g transform="rotate(${f2(BEARING)})"><path d="${GESTURE}" fill="${acc}"/></g>`;
+
+      /* the jewel: an open outline, so the line runs through it unbroken;
+         turned so the line leaves through one of its notches              */
+      f += `<path d="${rub(0.125 * R, BEARING - 22.5)}" fill="none" stroke="${A(t.grey, 1)}" stroke-width="${f2(1.5 * st)}"/>`;
+      f += `<path d="${rub(0.083 * R, BEARING)}" fill="none" stroke="${A(t.grey, 0.5)}" stroke-width="${f2(0.9 * st)}"/>`;
+
+      /* the gold dot at the exact centre, capping the line's base — 0.034R,
+         so it stands 3.6px proud of the shaft on every side and reads as the
+         pivot the line is hinged on, not a bulge in the line */
+      f += `<circle r="${f2(0.034 * R)}" fill="${acc}"/>`;
+
+      /* design 6's Kaaba on the dial's edge, upright on the card */
+      const q = pt(BEARING, 0.88 * R);
+      f += kaaba(q.x, q.y, 0.116 * R, -heading, { body: t.kBody, band: acc, edge: A(t.grey, 0.55), ew: st });
+
+      /* the dimmed letters, plain ink, never gold */
+      f += cardinals(0.76 * R, heading, { fill: t.ink, north: t.ink, size: 0.096 * R });
+
+      return { face: f, head: '', bg: t.sheet, defs: '' };
+    },
+  },
+];
