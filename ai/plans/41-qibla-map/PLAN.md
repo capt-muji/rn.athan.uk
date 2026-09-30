@@ -298,11 +298,11 @@ Reviewed by the planning session on 2026-09-30, reading the design back cold and
 
 ## 6. Steps
 
-- [ ] Step 1: The tile reader and the street finder, with their first caller (specified)
-- [ ] Step 2: Metro learns the tile extension, and the cache (specified)
-- [ ] Step 3: Fetching a location's tiles, with the 25 MB cap (specified)
-- [ ] Step 4: The drawn map (specified)
-- [ ] Step 5: The Qibla sheet becomes the map, and the dial is deleted (specified)
+- [x] Step 1: The tile reader and the street finder (files) DONE
+- [x] Step 2: Metro learns the tile extension, and the cache (files) DONE
+- [x] Step 3: Fetching a location's tiles, with the 25 MB cap (files + specified) DONE
+- [x] Step 4: The drawn map (files + specified) DONE
+- [x] Step 5: The Qibla sheet becomes the map, and the dial is deleted (specified) DONE
 - [ ] Step 6: The device proof on the iPhone XS (specified)
 
 Each step's detail is in `steps/<k>-<name>.md`. Scripts are in `scripts/`, anchors in `scripts/anchors/`.
