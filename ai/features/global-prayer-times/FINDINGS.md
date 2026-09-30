@@ -19,6 +19,7 @@ decision: `RECOMMENDATION.md` holds the answer, and `ASSUMPTIONS.md` holds every
 | `agent-reports/R13-london-migration.md` | the existing London base, and London's fifty published years | 1,086 |
 | `agent-reports/R14-location-and-device.md` | how the app knows where it is, offline | 1,446 |
 | `SOURCE-CATALOG.md` | the consolidated catalog: 39 sources, 30 countries, every conflict resolved | 989 |
+| `LONDON-LINEAGE.md` | whether the app's API and the fifty-year publisher are the same timetable. **Yes, verified** | 120 |
 
 `SOURCE-CATALOG.md` is the operational document. It supersedes the individual reports wherever they disagree,
 because it was written to reconcile them, and `data/catalog/sources.json` is its machine-readable form with a
@@ -40,9 +41,10 @@ What the app can promise instead is faithful reproduction of a named authority's
 honest and, measured against the competition, a differentiator.
 
 **Waves 3 and 4 changed four things and it is worth knowing which, because the earlier sections were written before
-them.** (1) **London is now solved and permanently offline**: its own publisher ships fifty future years, 2027 to
-2076, and a 732-byte interval table reproduces all of them exactly, which is the opposite of the residual-expiry
-problem that defeats every other authority. (2) **The permission-free option is dead**: placing a user at their
+them.** (1) **London is now solved and offline to within a minute**: its own publisher, verified as the producer of
+the app's own timetable, ships fifty future years, 2027 to 2076, and a 732-byte interval table reproduces all of
+them, which is the opposite of the residual-expiry problem that defeats every other authority. Exact against each
+year's own published sun; within one minute against a computed one, which is the figure that matters offline. (2) **The permission-free option is dead**: placing a user at their
 timezone's most populous city is a median 16 displayed minutes wrong, so the app cannot go worldwide without a
 location signal. (3) **Authorities use high-latitude rules no library implements**, and two neighbouring
 Scandinavian countries use incompatible ones. (4) **JAKIM never contradicted itself**: its cited 20 degrees is its
@@ -314,10 +316,17 @@ INTERVALS applied to sunrise and Maghrib, and that table is tiny and stable:
 - Against a **computed** sun it reproduces the published Fajr on 364 of 365 days and Isha on 362 of 365 in 2026,
   every miss exactly one minute. **So London does not need a fetch at all.**
 - **The timetable's own publisher ships fifty future years, 2027 to 2076, as keyless downloads**, and publishes its
-  equations. All fifty were fetched and parsed: 18,263 days, 127,841 values. **The 2027 interval table reproduces
-  all fifty years exactly**, and the table plus the publisher's own equations reproduce 127,838 of 127,841 values
-  exactly, with four of seven fields perfect on every day.
+  equations. All fifty were fetched and parsed: 18,263 days, 127,841 values. **One 2027 interval table reproduces
+  all fifty years exactly against each year's OWN published sun** (18,250 of 18,250, worst error 0).
+- **The publisher IS the app's own timetable's producer, verified 2026-09-30.** East London Mosque's page credits
+  "Prayer times produced by London Salah Times", the app's API says it republishes ELM's timetable unmodified, and
+  all seven fields of the producer's live day match the app's captured API year exactly. See `LONDON-LINEAGE.md`.
+- **The "exact" claim is narrower than it first reads, and this is a correction.** Against a **computed** sun, which
+  is what "no network" actually means, it is **61 to 64% exact and 100% within one minute, with Isha 2 minutes out on
+  22 of 18,250 values**. The honest claim is "within a minute", not "exact".
 - Fifty years cost **10,290 bytes brotli**, 0.015% of the release bundle.
+- **One cheap test still outstanding:** no producer file overlaps a year the app has captured, since the downloads
+  begin at 2027 and the capture is 2026. In January 2027, diff one API month against `LUPT-2027.xlsx`.
 
 **Three findings inside that change decisions.** The provider **already changed its Asr margin**: every year to
 2026 carries none and every year from 2027 carries a documented +2, so a London user's Asr moves 1 to 3 minutes in
