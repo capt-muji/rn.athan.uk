@@ -132,17 +132,19 @@ disclaimer makes "no representations as to the accuracy". **A claim the app can 
 
 ---
 
-## The three things that could sink this
+## The two things that could sink this
 
-1. **Licensing.** Of eleven authorities measured, one permits commercial use, two explicitly forbid reproduction,
-   and eight are silent. Silence is not permission. **This is the highest-value open item in the entire research
-   and it is answered by five emails, not by more measurement.** If the answer is broadly no, kind-1 sources
-   disappear and the architecture falls back to kinds 2 and 3.
-2. **The meaning of "completely offline".** If the owner means literally zero network, a correction table cannot
+**Licensing was the third, and it is CLOSED.** The research had measured that of eleven authorities one permits
+commercial use, two forbid reproduction and eight are silent, and it flagged that as the highest-value open item.
+**The owner settled it on 2026-09-30: he corresponded with the authorities himself and has permission to use their
+data.** No session contacts anyone about it, or about anything else, without the owner asking first. The two
+remaining risks are both owner decisions rather than unknowns.
+
+1. **The meaning of "completely offline".** If the owner means literally zero network, a correction table cannot
    stay current: measured, carrying one year's residual to the next reproduces only 55.1% of values exactly, which
    is worse than reusing the previous year's published times. Zero network means computed times only, and fidelity
    to national timetables is lost. A yearly fetch, which the app already does, preserves everything.
-3. **The never-invent rule applied strictly.** It forbids showing the six-constant approximation, which is the
+2. **The never-invent rule applied strictly.** It forbids showing the six-constant approximation, which is the
    cheap version. The compliant version, the exact residual, costs 282 bytes per city-year against 6, which is
    still trivial. This one is survivable; it just removes the cheapest option.
 
@@ -150,6 +152,6 @@ disclaimer makes "no representations as to the accuracy". **A claim the app can 
 
 ## What I would do first, if asked
 
-**Send the five licensing emails, and build S1 to S4 while waiting.** The emails unblock the only question that
-can invalidate the architecture, and S1 to S4 are invisible, independently valuable, and required under every
-outcome. Nothing else needs deciding until they come back.
+**Build S1 to S4.** All four are invisible to users, independently valuable, and required under every outcome of
+the two open decisions above, so none of them waits on anything. S2 in particular closes the largest silent risk in
+the codebase, the location-free MMKV key, and it must land before a second source exists rather than after.

@@ -76,6 +76,11 @@ The session is an orchestrator. Research agents run in parallel waves of at most
 found. Wave 1 asks the four independent questions. Later waves close the gaps, measure what the decisions actually
 hinge on, and attack the conclusions.
 
+**No session ever contacts anyone** (owner, 2026-09-30). No email, no drafted letter, no contact form, no
+gathering of contact addresses, for any reason, unless the owner explicitly asks for it in that session. The
+licensing question this might once have served is CLOSED: the owner corresponded with the authorities himself and
+has permission. A report may record that a fact is unobtainable; it never proposes reaching out to obtain it.
+
 **A research agent never spawns a research agent** (owner, 2026-09-30). Only the orchestrator delegates, every
 agent is pinned to the same model the owner named, and each does its own work sequentially. Nested delegation
 spends an allowance nobody is watching and it already cost this programme a deliverable: wave 1's country agent
