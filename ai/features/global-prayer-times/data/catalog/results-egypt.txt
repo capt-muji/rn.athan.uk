@@ -1,0 +1,66 @@
+=== R12: Egyptian General Authority of Survey, its own table for 2026-09-30 ===
+city rows the authority served: 78
+cities matched to a coordinate: 49, of which 47 pass the anchor gate
+
+    Alamein            Fajr 19.43  Isha 17.56  Asr 1      Dhuhr -0.2  Maghrib 0   Isha-Maghrib 78m
+    Alexandria         Fajr 19.62  Isha 17.49  Asr 1      Dhuhr -0.3  Maghrib 0   Isha-Maghrib 78m
+    Arish              Fajr 19.51  Isha 17.39  Asr 0.993  Dhuhr 0.2   Maghrib 0   Isha-Maghrib 77m
+    Aswan              Fajr 19.45  Isha 17.55  Asr 0.992  Dhuhr -0.4  Maghrib 0   Isha-Maghrib 73m
+    Asyut              Fajr 19.52  Isha 17.52  Asr 0.993  Dhuhr -0.3  Maghrib 0   Isha-Maghrib 75m
+    Badr               Fajr 19.52  Isha 17.44  Asr 0.999  Dhuhr -0.1  Maghrib 0   Isha-Maghrib 77m
+    Beni Suef          Fajr 19.56  Isha 17.47  Asr 1.003  Dhuhr 0.4   Maghrib 0   Isha-Maghrib 76m
+    Berenice           Fajr 19.4   Isha 17.4   Asr 0.996  Dhuhr -0.1  Maghrib 0   Isha-Maghrib 73m
+    Cairo              Fajr 19.52  Isha 17.47  Asr 1      Dhuhr -0.1  Maghrib 0   Isha-Maghrib 77m
+    Dabaa              Fajr 19.41  Isha 17.53  Asr 1.001  Dhuhr -0.2  Maghrib 0   Isha-Maghrib 78m
+    Dahab              Fajr 19.49  Isha 17.45  Asr 0.998  Dhuhr 0.1   Maghrib 0   Isha-Maghrib 76m
+    Damanhour          Fajr 19.39  Isha 17.55  Asr 1.002  Dhuhr -0.1  Maghrib 0   Isha-Maghrib 78m
+    Damietta           Fajr 19.46  Isha 17.58  Asr 0.995  Dhuhr 0.2   Maghrib 0   Isha-Maghrib 79m
+    Edfu               Fajr 19.38  Isha 17.45  Asr 1.002  Dhuhr 0.5   Maghrib 0   Isha-Maghrib 73m
+    El Tor             Fajr 19.44  Isha 17.58  Asr 1.003  Dhuhr 0.5   Maghrib 0   Isha-Maghrib 76m
+    Esna               Fajr 19.41  Isha 17.58  Asr 0.999  Dhuhr 0.2   Maghrib 0   Isha-Maghrib 74m
+    Farafra            Fajr 19.5   Isha 17.35  Asr 0.995  Dhuhr -0.1  Maghrib 0   Isha-Maghrib 74m
+    Fayoum             Fajr 19.53  Isha 17.43  Asr 1.004  Dhuhr 0.4   Maghrib 0   Isha-Maghrib 76m
+    Hurghada           Fajr 19.4   Isha 17.4   Asr 0.999  Dhuhr 0.2   Maghrib 0   Isha-Maghrib 75m
+    Ismailia           Fajr 19.41  Isha 17.43  Asr 1.003  Dhuhr 0.1   Maghrib 0   Isha-Maghrib 77m
+    Kafr el-Sheikh     Fajr 19.4   Isha 17.52  Asr 1      Dhuhr -0.2  Maghrib 0   Isha-Maghrib 78m
+  x Kharga             Fajr 19.18  Isha 17.79  Asr 1.011  Dhuhr 1.2   Maghrib 1   Isha-Maghrib 74m
+    Luxor              Fajr 19.51  Isha 17.4   Asr 1.003  Dhuhr -0.4  Maghrib 0   Isha-Maghrib 74m
+    Mahalla            Fajr 19.23  Isha 17.73  Asr 1.012  Dhuhr 0.7   Maghrib 1   Isha-Maghrib 78m
+    Mansoura           Fajr 19.46  Isha 17.47  Asr 0.997  Dhuhr -0.5  Maghrib 0   Isha-Maghrib 78m
+    Marsa Alam         Fajr 19.36  Isha 17.45  Asr 1.003  Dhuhr -0.4  Maghrib 0   Isha-Maghrib 73m
+    Marsa Matruh       Fajr 19.54  Isha 17.53  Asr 0.991  Dhuhr -0.1  Maghrib 0   Isha-Maghrib 78m
+    Minya              Fajr 19.56  Isha 17.48  Asr 0.997  Dhuhr 0     Maghrib 0   Isha-Maghrib 76m
+    Nag Hammadi        Fajr 19.37  Isha 17.47  Asr 0.996  Dhuhr 0     Maghrib 0   Isha-Maghrib 74m
+    Nuweiba            Fajr 19.51  Isha 17.53  Asr 0.994  Dhuhr -0.3  Maghrib 0   Isha-Maghrib 76m
+    Obour              Fajr 19.51  Isha 17.43  Asr 0.987  Dhuhr -0.1  Maghrib 0   Isha-Maghrib 77m
+    Port Said          Fajr 19.49  Isha 17.38  Asr 0.994  Dhuhr 0.2   Maghrib 0   Isha-Maghrib 78m
+    Qena               Fajr 19.39  Isha 17.43  Asr 0.994  Dhuhr -0.1  Maghrib 0   Isha-Maghrib 74m
+    Quseer             Fajr 19.56  Isha 17.49  Asr 0.997  Dhuhr 0.1   Maghrib 0   Isha-Maghrib 74m
+    Ras Gharib         Fajr 19.68  Isha 17.31  Asr 0.989  Dhuhr -0.7  Maghrib -1  Isha-Maghrib 76m
+    Rosetta            Fajr 19.38  Isha 17.46  Asr 1      Dhuhr 0.7   Maghrib 0   Isha-Maghrib 78m
+    Sadat City         Fajr 19.45  Isha 17.46  Asr 1.002  Dhuhr 0.1   Maghrib 0   Isha-Maghrib 77m
+    Safaga             Fajr 19.57  Isha 17.56  Asr 0.993  Dhuhr -0.3  Maghrib 0   Isha-Maghrib 75m
+    Saint Catherine    Fajr 19.55  Isha 17.39  Asr 0.995  Dhuhr -0.2  Maghrib 0   Isha-Maghrib 75m
+    Sallum             Fajr 19.57  Isha 17.43  Asr 1      Dhuhr -0.4  Maghrib 0   Isha-Maghrib 78m
+    Shalateen          Fajr 19.38  Isha 17.56  Asr 1.002  Dhuhr 0.3   Maghrib 0   Isha-Maghrib 73m
+    Sharm el-Sheikh    Fajr 19.52  Isha 17.57  Asr 1.001  Dhuhr 0.3   Maghrib 0   Isha-Maghrib 76m
+    Sidi Barrani       Fajr 19.55  Isha 17.44  Asr 1.002  Dhuhr -0.3  Maghrib 0   Isha-Maghrib 78m
+    Siwa               Fajr 19.4   Isha 17.39  Asr 1      Dhuhr 0.1   Maghrib 0   Isha-Maghrib 76m
+    Sohag              Fajr 19.36  Isha 17.37  Asr 0.993  Dhuhr -0.2  Maghrib 0   Isha-Maghrib 74m
+    Suez               Fajr 19.48  Isha 17.53  Asr 1.003  Dhuhr 0.2   Maghrib 0   Isha-Maghrib 77m
+  x Taba               Fajr 19.04  Isha 17.88  Asr 1.019  Dhuhr 1.6   Maghrib 2   Isha-Maghrib 76m
+    Tanta              Fajr 19.4   Isha 17.39  Asr 1.003  Dhuhr 0     Maghrib 0   Isha-Maghrib 77m
+    Zagazig            Fajr 19.43  Isha 17.42  Asr 1.002  Dhuhr 0     Maghrib 0   Isha-Maghrib 77m
+
+excluded by the anchor gate (Dhuhr past 1 min from true noon): Kharga, Taba
+
+Fajr angle                   n=47 min=19.23 median=19.46 max=19.68 mean=19.47 spread=0.45
+Isha angle                   n=47 min=17.31 median=17.46 max=17.73 mean=17.47 spread=0.42
+Asr shadow factor            n=47 min=0.987 median=1 max=1.012 mean=1.00 spread=0.03
+Dhuhr offset, min            n=47 min=-0.7 median=-0.1 max=0.7 mean=-0.01 spread=1.40
+Maghrib minus sunset, min    n=47 min=-1 median=0 max=1 mean=0.00 spread=2.00
+sunrise angle                n=47 min=0.65 median=0.83 max=1.03 mean=0.83 spread=0.38
+Isha after Maghrib, min      n=47 min=73 median=76 max=79 mean=76.06 spread=6.00
+
+The Isha-after-Maghrib spread discriminates an angle from an interval: a fixed
+interval is constant across cities, an angle is not.

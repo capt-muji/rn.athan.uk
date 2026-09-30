@@ -1,0 +1,29 @@
+# R14 part 2: each positioning method scored in prayer minutes
+
+adhan@4.4.6, MWL, SeventhOfTheNight, rounding=Nearest. For each method, the position is
+displaced by its documented accuracy radius in 16 directions on 12 dates of 2026, and the
+worst displayed-minute change of any of the six times is reported.
+
+| method                                 | radius km | Jakarta 6.2S | Makkah 21.4N | Istanbul 41.0N | London 51.5N | Oslo 59.9N | accuracy figure quoted                    |
+| -------------------------------------- | --------- | ------------ | ------------ | -------------- | ------------ | ---------- | ----------------------------------------- |
+| fine GPS, `Accuracy.High`              | 0.05      | 1            | 0            | 0              | 0            | 1          | Android: "usually within about 50 meters" |
+| `Accuracy.Balanced`, 100 m             | 0.10      | 1            | 0            | 0              | 1            | 1          | iOS kCLLocationAccuracyHundredMeters      |
+| Android approximate, 2 km grid         | 2.00      | 1            | 1            | 1              | 1            | 1          | Android: "about 3 square kilometers"      |
+| Android `Accuracy.Lowest`              | 3.00      | 1            | 1            | 1              | 1            | 1          | iOS kCLLocationAccuracyThreeKilometers    |
+| iOS reduced accuracy, best case        | 1.00      | 1            | 1            | 1              | 1            | 1          | Apple: "usually within 1-20 kilometers"   |
+| iOS reduced accuracy, worst case       | 20.00     | 1            | 1            | 2              | 2            | 3          | Apple: "usually within 1-20 kilometers"   |
+| a city picked from a list, city centre | 15.00     | 1            | 1            | 1              | 2            | 2          | a large city is tens of km across         |
+
+## The two tolerance thresholds, restated as radii
+
+From part 1E. The radius inside which every one of the six times stays within the tolerance,
+measured by binary search over 16 bearings and four dates.
+
+| place          | within 0.5 min | within 1 min | within 2 min | within 5 min |
+| -------------- | -------------- | ------------ | ------------ | ------------ |
+| Jakarta 6.2S   | 0.0            | 26.4         | 52.5         | 127.7        |
+| Makkah 21.4N   | 0.1            | 22.9         | 45.1         | 111.4        |
+| Istanbul 41.0N | 0.3            | 18.6         | 36.8         | 91.4         |
+| London 51.5N   | 0.1            | 13.5         | 26.6         | 66.3         |
+| Oslo 59.9N     | 0.0            | 10.0         | 18.4         | 42.6         |
+

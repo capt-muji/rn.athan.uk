@@ -1,0 +1,29 @@
+=== R12: the French choice, priced at Paris against the GMP's own calendar ===
+Source A: Musulmans de France, 12/12, Maghrib sunset +3 (R9 measured, 48.1% of 52 mosques)
+Source B: Grande Mosquee de Paris, its own published 366-day calendar (R9 measured)
+
+month  GMP Fajr  MdF Fajr  delta   GMP Isha  MdF Isha  delta   MdF Fajr solvable?
+Jan       07:01     07:24     23      18:52     18:37    -15   31 of 31 days
+Feb       06:23     06:49     26      19:41     19:21    -20   29 of 29 days
+Mar       05:31     05:56     25      20:26     20:04    -21   31 of 31 days
+Apr       05:22     05:46     24      22:12     21:57    -15   30 of 30 days
+May       04:23     04:41     18      22:56     22:54     -1   31 of 31 days
+Jun       03:51     04:04     14      23:26     23:39     12   30 of 30 days
+Jul       04:12     04:27     15      23:19     23:25      4   31 of 31 days
+Aug       05:01     05:24     23      22:36     22:25    -12   31 of 31 days
+Sep       05:53     06:17     24      21:34     21:13    -21   30 of 30 days
+Oct       06:28     07:02     34      20:32     20:10    -23   31 of 31 days
+Nov       06:09     06:46     37      18:48     18:23    -25   30 of 30 days
+Dec       06:42     07:20     38      18:37     18:12    -26   31 of 31 days
+
+whole year, Musulmans de France minus Grande Mosquee de Paris, minutes
+  Fajr {"n":366,"min":13,"median":24,"max":39,"mean":25.2}
+  Isha {"n":366,"min":-26,"median":-18,"max":14,"mean":-13.5}
+  days a 12-degree Fajr has NO solution at Paris: 0
+  days a 12-degree Isha has NO solution at Paris: 0
+
+=== verdict ===
+The two French sources are not close and the gap is not constant, so a picker
+that names only the authority is not enough: it must show the delta the user
+would actually see, at their own place, because the delta is what decides
+whether the choice matters to them.

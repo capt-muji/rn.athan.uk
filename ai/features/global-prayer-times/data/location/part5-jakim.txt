@@ -1,0 +1,59 @@
+# R14 part 5C: does JAKIM already apply an elevation correction?
+
+JAKIM zone times fetched from `e-solat.gov.my` `esolatApi/takwimsolat`, `period=month`,
+on the date recorded in the report. Computed times from adhan@4.4.6 MWL, Rounding.None,
+at the named coordinate treated as SEA LEVEL. Residual = published minus computed, in
+minutes. A positive Maghrib residual means JAKIM publishes a LATER sunset than a
+sea-level computation, which is the signature of a horizon dip (or of a safety margin).
+
+## The residual of each zone against a sea-level computation at its own coordinate
+
+| zone    | place                           | elev m | days | Maghrib resid | Syuruk resid | Dhuhr resid | dip predicts |
+| ------- | ------------------------------- | ------ | ---- | ------------- | ------------ | ----------- | ------------ |
+| `PHG06` | Cameron Highlands (Tanah Rata)  | 1440   | 30   | 6.03          | -6.19        | 0.71        | +4.89        |
+| `PHG04` | Raub                            | 105    | 30   | 1.04          | 0.03         | 1.29        | 1.32         |
+| `PRK07` | Bukit Larut                     | 1250   | 30   | 5.48          | -5.51        | 0.47        | +4.56        |
+| `PRK06` | Taiping                         | 43     | 30   | 2.04          | -1.42        | 2.06        | 0.85         |
+| `SBH06` | Gunung Kinabalu (Kinabalu Park) | 1563   | 30   | 8.19          | -7.98        | 0.74        | +5.11        |
+| `SBH07` | Ranau                           | 480    | 30   | 3.67          | 2.50         | 3.58        | 2.83         |
+| `KDH07` | Puncak Gunung Jerai             | 1180   | 30   | 4.64          | -5.21        | 0.47        | +4.44        |
+| `KDH02` | Kuala Muda (Sungai Petani)      | 20     | 30   | 1.47          | -1.43        | 0.68        | 0.58         |
+| `SGR01` | Shah Alam                       | 30     | 30   | 1.35          | -2.02        | 1.13        | 0.71         |
+| `WLY01` | Kuala Lumpur                    | 56     | 30   | 1.95          | -0.86        | 1.74        | 0.96         |
+
+## The decomposition that needs no elevation guess
+
+A horizon dip is ANTISYMMETRIC: it moves sunset later by X and sunrise earlier by X.
+A safety margin is SYMMETRIC: it moves both later. So from the two residuals:
+
+  dip component    = (maghribResid - syurukResid) / 2
+  margin component = (maghribResid + syurukResid) / 2
+
+The dip component is then inverted to the elevation that would produce it, which is a
+measurement of what JAKIM used rather than a guess at what the ground is.
+
+| zone    | place                           | assumed elev m | dip component min | symmetric margin min | elevation the dip implies, m |
+| ------- | ------------------------------- | -------------- | ----------------- | -------------------- | ---------------------------- |
+| `PHG06` | Cameron Highlands (Tanah Rata)  | 1440           | 6.11              | -0.08                | 2,244                        |
+| `PHG04` | Raub                            | 105            | 0.51              | 0.53                 | 16                           |
+| `PRK07` | Bukit Larut                     | 1250           | 5.50              | -0.01                | 1,815                        |
+| `PRK06` | Taiping                         | 43             | 1.73              | 0.31                 | 180                          |
+| `SBH06` | Gunung Kinabalu (Kinabalu Park) | 1563           | 8.09              | 0.10                 | 3,917                        |
+| `SBH07` | Ranau                           | 480            | 0.58              | 3.08                 | 20                           |
+| `KDH07` | Puncak Gunung Jerai             | 1180           | 4.92              | -0.29                | 1,452                        |
+| `KDH02` | Kuala Muda (Sungai Petani)      | 20             | 1.45              | 0.02                 | 126                          |
+| `SGR01` | Shah Alam                       | 30             | 1.68              | -0.33                | 171                          |
+| `WLY01` | Kuala Lumpur                    | 56             | 1.41              | 0.55                 | 119                          |
+
+## The paired test: high zone against its low-ground neighbour
+
+If JAKIM applied a dip, the high zone would show a Maghrib residual LARGER than its
+low neighbour by roughly the dip difference, and a Syuruk residual SMALLER by the same.
+
+| high zone                               | low zone                           | elev m      | dip diff predicts | observed Maghrib diff | observed Syuruk diff | verdict |
+| --------------------------------------- | ---------------------------------- | ----------- | ----------------- | --------------------- | -------------------- | ------- |
+| `PHG06` Cameron Highlands (Tanah Rata)  | `PHG04` Raub                       | 1440 vs 105 | 3.57              | 4.98                  | -6.21                | inspect |
+| `PRK07` Bukit Larut                     | `PRK06` Taiping                    | 1250 vs 43  | 3.72              | 3.44                  | -4.09                | inspect |
+| `SBH06` Gunung Kinabalu (Kinabalu Park) | `SBH07` Ranau                      | 1563 vs 480 | 2.28              | 4.53                  | -10.49               | inspect |
+| `KDH07` Puncak Gunung Jerai             | `KDH02` Kuala Muda (Sungai Petani) | 1180 vs 20  | 3.86              | 3.17                  | -3.77                | inspect |
+

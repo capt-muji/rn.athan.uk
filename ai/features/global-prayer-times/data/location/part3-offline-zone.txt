@@ -1,0 +1,115 @@
+# R14 part 3E: can coordinate-to-JAKIM-zone ship offline?
+
+Oracle: the 425 grid points where `api.waktusolat.app` returned a zone.
+Offline candidate: point-in-polygon over geoBoundaries gbOpen MYS ADM2, 159 district
+polygons, `Creative Commons Attribution 3.0 License` per its own metadata (measured).
+
+## 3E-1. Does the service's district vocabulary match the open polygon set?
+
+| measure                                      | value       |
+| -------------------------------------------- | ----------- |
+| distinct district names the service returned | 143         |
+| of those, present in the ADM2 polygon names  | 132 (92.3%) |
+| ADM2 polygons in the file                    | 159         |
+
+District names the service returns that the polygon set does not carry (11):
+
+```
+Belukar Samang, Belum, Hulu Langat, Hulu Selangor, Kenering, Kulai, Lenggong, Nabawan, Tangkak, Temengor, W.P. Labuan
+```
+
+## 3E-2. Is the district-to-zone relation a FUNCTION?
+
+Distinct districts observed: 143. Districts the service mapped to more than one zone: **0**.
+
+## 3E-3. Offline reproduction of the service, point by point
+
+| outcome                               | points | share |
+| ------------------------------------- | ------ | ----- |
+| offline answer equals the service     | 398    | 93.6% |
+| offline polygon gave a different zone | 6      | 1.4%  |
+| point fell in no ADM2 polygon         | 0      | 0.0%  |
+| polygon has no zone assignment        | 21     | 4.9%  |
+
+The failures, by reason, first 25:
+
+| lat  | lon    | service zone | reason                                                  |
+| ---- | ------ | ------------ | ------------------------------------------------------- |
+| 1.80 | 103.50 | JHR02        | polygon "Kulaijaya" has no zone in the table            |
+| 2.30 | 102.75 | JHR04        | polygon "Ledang" has no zone in the table               |
+| 3.05 | 101.75 | SGR01        | polygon "Ulu Langat" has no zone in the table           |
+| 3.55 | 101.50 | SGR01        | polygon "Ulu Selangor" has no zone in the table         |
+| 3.55 | 101.75 | SGR01        | polygon "Ulu Selangor" has no zone in the table         |
+| 3.80 | 101.00 | SGR02        | polygon "Bagan Datuk" has no zone in the table          |
+| 5.05 | 101.00 | PRK03        | polygon "Hulu Perak" has no zone in the table           |
+| 5.30 | 101.50 | PRK04        | polygon "Hulu Perak" has no zone in the table           |
+| 5.30 | 101.00 | PRK03        | polygon "Hulu Perak" has no zone in the table           |
+| 5.30 | 101.25 | PRK04        | polygon "Hulu Perak" has no zone in the table           |
+| 5.55 | 101.00 | PRK03        | polygon "Hulu Perak" has no zone in the table           |
+| 5.55 | 101.50 | PRK04        | polygon "Hulu Perak" has no zone in the table           |
+| 5.55 | 101.25 | PRK04        | polygon "Hulu Perak" has no zone in the table           |
+| 5.80 | 101.50 | PRK04        | polygon "Hulu Perak" has no zone in the table           |
+| 2.30 | 112.75 | SWK03        | polygon "Selangau" gave SWK04, service said SWK03       |
+| 2.55 | 112.75 | SWK03        | polygon "Selangau" gave SWK04, service said SWK03       |
+| 2.80 | 112.75 | SWK03        | polygon "Selangau" gave SWK04, service said SWK03       |
+| 3.30 | 114.25 | SWK02        | polygon "Belaga" gave SWK03, service said SWK02         |
+| 4.55 | 116.25 | SBH08        | polygon "Nabawan / Persiangan" has no zone in the table |
+| 4.55 | 116.50 | SBH08        | polygon "Nabawan / Persiangan" has no zone in the table |
+| 4.55 | 116.75 | SBH08        | polygon "Nabawan / Persiangan" has no zone in the table |
+| 4.80 | 116.50 | SBH08        | polygon "Nabawan / Persiangan" has no zone in the table |
+| 4.80 | 116.25 | SBH08        | polygon "Nabawan / Persiangan" has no zone in the table |
+| 5.05 | 116.00 | SBH09        | polygon "Keningau" gave SBH08, service said SBH09       |
+| 5.05 | 116.50 | SBH08        | polygon "Nabawan / Persiangan" has no zone in the table |
+
+## 3E-3b. The ceiling, with a hand-written alias table for the spelling variants
+
+The failures above are dominated by orthography: `Kulaijaya` against `Kulai`, `Ulu Langat`
+against `Hulu Langat`, `Hulu Perak` covering three JAKIM zones at once. This pass adds an
+alias table and measures what a real implementation would reach.
+
+| outcome                                         | points | share |
+| ----------------------------------------------- | ------ | ----- |
+| offline answer equals the service               | 410    | 96.5% |
+| one ADM2 polygon spans more than one JAKIM zone | 9      | 2.1%  |
+| genuine polygon disagreement                    | 6      | 1.4%  |
+
+The residue, which is the real limit:
+
+| lat  | lon    | service zone | polygon      | reason                               |
+| ---- | ------ | ------------ | ------------ | ------------------------------------ |
+| 5.05 | 101.00 | PRK03        | Hulu Perak   | one polygon spans more than one zone |
+| 5.30 | 101.50 | PRK04        | Hulu Perak   | one polygon spans more than one zone |
+| 5.30 | 101.00 | PRK03        | Hulu Perak   | one polygon spans more than one zone |
+| 5.30 | 101.25 | PRK04        | Hulu Perak   | one polygon spans more than one zone |
+| 5.55 | 101.00 | PRK03        | Hulu Perak   | one polygon spans more than one zone |
+| 5.55 | 101.50 | PRK04        | Hulu Perak   | one polygon spans more than one zone |
+| 5.55 | 101.25 | PRK04        | Hulu Perak   | one polygon spans more than one zone |
+| 5.80 | 101.50 | PRK04        | Hulu Perak   | one polygon spans more than one zone |
+| 2.30 | 112.75 | SWK03        | Selangau     | gave SWK04                           |
+| 2.55 | 112.75 | SWK03        | Selangau     | gave SWK04                           |
+| 2.80 | 112.75 | SWK03        | Selangau     | gave SWK04                           |
+| 3.30 | 114.25 | SWK02        | Belaga       | gave SWK03                           |
+| 5.05 | 116.00 | SBH09        | Keningau     | gave SBH08                           |
+| 5.30 | 115.25 | WLY02        | Labuan       | one polygon spans more than one zone |
+| 5.55 | 118.00 | SBH01        | Kinabatangan | gave SBH02                           |
+
+## 3E-4. What the polygon set costs to ship
+
+| artefact                                              | raw bytes | gzip bytes | brotli bytes |
+| ----------------------------------------------------- | --------- | ---------- | ------------ |
+| geoBoundaries MYS ADM2 as downloaded                  | 1,161,210 | 288,051    | 190,122      |
+| same, coordinates rounded to 3 dp, properties dropped | 411,935   | 97,633     | 64,976       |
+
+Vertices across all 159 polygons: 25,751 (measured).
+
+## 3E-5. The same polygon cost for the other countries R8 flagged
+
+| country    | polygons | level called  | vertices | raw GeoJSON | brotli, 3 dp | licence stated in its metadata                                                   |
+| ---------- | -------- | ------------- | -------- | ----------- | ------------ | -------------------------------------------------------------------------------- |
+| Malaysia   | 159      | Districts     | 25,751   | 1,134 KB    | 63 KB        | Creative Commons Attribution 3.0 License                                         |
+| Indonesia  | 519      | regency, city | 260,746  | 10,745 KB   | 592 KB       | Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO) |
+| Brunei     | 38       | Mukim         | 1,168    | 58 KB       | 3 KB         | Public Domain                                                                    |
+| Sri Lanka  | 25       | Unknown       | 9,073    | 236 KB      | 21 KB        | Open Data Commons Open Database License 1.0                                      |
+| Bangladesh | 64       | district      | 38,112   | 1,647 KB    | 84 KB        | Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO) |
+| Turkey     | 973      | Districts     | 132,258  | 3,778 KB    | 317 KB       | Open Data Commons Open Database License 1.0                                      |
+

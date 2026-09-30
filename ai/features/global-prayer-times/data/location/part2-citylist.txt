@@ -1,0 +1,45 @@
+# R14 part 2: the cost of a worldwide city list
+
+GeoNames `cities15000`, downloaded 2026-09-30: 34152 places over 15,000 population, CC BY 4.0.
+
+## 2K. Byte cost of the full 34,152-city list, four encodings
+
+| encoding | raw bytes | gzip bytes | brotli bytes | brotli B per city |
+| -------- | --------- | ---------- | ------------ | ----------------- |
+| json     | 1,145,114 | 418,591    | 348,671      | 10.2              |
+| tsv3     | 949,936   | 411,140    | 341,276      | 10.0              |
+| tsv2     | 881,640   | 362,813    | 302,545      | 8.9               |
+| bin      | 559,822   | 361,875    | 312,897      | 9.2               |
+
+`bin` stores latitude and longitude as int16 at 0.01 degree, which is 1.1 km of latitude
+resolution, well inside the tolerance part 1 establishes.
+
+## 2L. How many cities are needed to cover every one of the 34,152 places within R km
+
+Greedy set cover: repeatedly take the city whose R-km disc contains the most uncovered
+population, until every place is covered. This is the honest answer to "how many cities
+does the picker actually need".
+
+| R km | cities for 100% coverage | for 50% pop | for 80% | for 90% | for 95% | for 99% | brotli bin cost of full cover |
+| ---- | ------------------------ | ----------- | ------- | ------- | ------- | ------- | ----------------------------- |
+| 10   | 22,136                   | 648         | 4156    | 8605    | 13091   | 19649   | 198 KB                        |
+| 25   | 13,473                   | 379         | 2100    | 4280    | 6743    | 11204   | 122 KB                        |
+| 50   | 7,198                    | 230         | 1098    | 2029    | 3090    | 5413    | 64 KB                         |
+| 100  | 3,211                    | 124         | 487     | 847     | 1230    | 2112    | 30 KB                         |
+| 200  | 1,292                    | 58          | 195     | 318     | 450     | 755     | 13 KB                         |
+
+## 2M. Population coverage of just the N most populous cities in `cities15000`
+
+| N cities | share of cities15000 population | bin raw bytes | bin brotli bytes |
+| -------- | ------------------------------- | ------------- | ---------------- |
+| 50       | 13.9%                           | 711           | 589              |
+| 100      | 20.0%                           | 1,455         | 1,104            |
+| 250      | 29.3%                           | 3,619         | 2,641            |
+| 500      | 37.9%                           | 7,360         | 5,212            |
+| 1000     | 47.7%                           | 15,003        | 10,288           |
+| 2500     | 61.3%                           | 38,592        | 26,254           |
+| 5000     | 71.8%                           | 78,883        | 52,836           |
+| 10000    | 82.4%                           | 159,299       | 104,912          |
+
+This is population coverage, not coverage of where people are. Section 2L is the honest one.
+

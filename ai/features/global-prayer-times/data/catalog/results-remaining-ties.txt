@@ -1,0 +1,25 @@
+=== 1. KOSOVO, Islamic Community of Kosovo, third independent reading ===
+  clock strings found on the page: 11
+  first 10: 12:29 | 12:29 pm | 51:00
+             | 5:22 am | 6:23 am | 12:29 pm | 3:48 pm | 6:27 pm | 7:58 pm | 1:16
+  candidate row: 5:22 am 6:23 am 12:29 pm 3:48 pm 6:27 pm 7:58 pm
+    fajrAngle   13.48
+    sunriseAngle 2.32
+    dhuhrOffset  3.7 min
+    asrFactor    1.074
+    maghribMinusSunset 8 min
+    ishaAngle    18.93
+    ishaAfterMaghrib 91 min
+
+=== 2. UMM AL-QURA, 18.5 cited against 18.3 measured ===
+The discriminator: how many minutes apart are 18.3 and 18.5 at each latitude?
+  Makkah   lat 21.4267  18.3 sits 0.86 to 1.03 min after 18.5
+  Riyadh   lat 24.7136  18.3 sits 0.88 to 1.08 min after 18.5
+  Tabuk    lat 28.3838  18.3 sits 0.91 to 1.16 min after 18.5
+  So 0.2 degrees is worth well under a minute anywhere in Saudi Arabia, and the
+  two figures are not distinguishable in a table printed to the minute.
+
+=== 3. MUIS SINGAPORE, 20/18 cited against 19.88/18.13 measured ===
+  header: date | day | subuh | syuruk | zohor | asar | maghrib | isyak
+  Subuh angle across the published year  {"n":365,"min":19.68,"median":19.88,"max":20.08,"mean":19.88}
+  Isyak angle across the published year  {"n":365,"min":17.9,"median":18.13,"max":18.37,"mean":18.13}
