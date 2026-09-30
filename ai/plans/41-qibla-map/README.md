@@ -1,6 +1,6 @@
 # Session 41: the qibla, made checkable
 
-Research complete, 2026-09-30. **Read `PROPOSALS.md` first** if you are the owner: it holds the five
+Research complete, 2026-09-30. **Read `PROPOSALS.md` first** if you are the owner: it holds the six
 decisions and nothing else. Read this file if you are the next session.
 
 ## What this session concluded
@@ -36,7 +36,7 @@ priced honestly at +39.9 MB of native binary.
 
 | File | What it is |
 | --- | --- |
-| `PROPOSALS.md` | **The five owner decisions.** Start here |
+| `PROPOSALS.md` | **The six owner decisions.** Start here |
 | `BRIEF.md` | The research brief, the constraints, and the size ruling |
 | `ASSUMPTIONS.md` | Every judgement taken unattended, with the five likeliest to need correction flagged |
 | `proof/` | **The executed proof.** Seven scripts that run, plus the rendered output |
@@ -51,7 +51,7 @@ priced honestly at +39.9 MB of native binary.
 | `agent-reports/P3-the-concrete-solution.md` | The map, executed end to end, with the feature cap measured |
 | `agent-reports/P4-hermes-viability.md` | That the pipeline runs in Hermes: every Node dependency eliminated and gzip proven |
 
-### The five research reports
+### The six research reports, from five agents
 
 | File | What it answers |
 | --- | --- |
@@ -80,5 +80,6 @@ alignment figure is the only load-bearing number in the whole session that is an
 
 ## Status
 
-Row 41 is **PLANNING**. `PLAN.md` is deliberately unwritten until the `PROPOSALS.md` decisions land, because
-all five change what the steps build. Everything in this folder is committed and pushed to `origin/uat-2`.
+Row 41 is **RESEARCH COMPLETE**, awaiting the six rulings. `PLAN.md` is deliberately unwritten until the
+`PROPOSALS.md` decisions land, because all six change what the steps build. Everything in this folder is
+committed and pushed to `origin/uat-2`.
