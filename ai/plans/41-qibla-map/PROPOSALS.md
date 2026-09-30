@@ -18,13 +18,19 @@ The honest ordering, by how wrong each method is:
 | Rung | Method | Error | Works when |
 | --- | --- | --- | --- |
 | 1 | **The sun**, shadow on a flat phone | **2.3 deg** | The sun is out and between 5 and 65 degrees high |
-| 2 | **A saved spot** | Whatever saved it | Always, once saved: indoors, at night, overcast |
+| 2 | **A saved landmark note** | Whatever saved it | Always, once saved: indoors, at night, overcast |
 | 3 | **The map**, streets around you | 6.2 deg estimated | Anywhere with streets in the data |
 | 4 | **The compass**, named as the last resort | 9.7 outdoors, **30 indoors** | Always, and trusted least |
 
 **Recommendation: accept the ladder.** The map alone leaves the user with nothing at night and nothing
 indoors without landmarks, which is most prayers. The ladder covers every case and is honest about which
 rung the user is on.
+
+**UPDATED 2026-09-30 by your own measurement, and it simplified rung 2.** Rung 2 was going to store the
+magnetic offset at a spot, calibrated against the sun. Your 30-degree reading proved that offset drifts about
+20 degrees in hours at one fixed spot, so a stored offset would go quietly wrong. **Rung 2 is now a landmark
+note instead: "the qibla is 20 degrees right of your window".** It needs no sensor, so it cannot drift, and
+it keeps the same 100% coverage. See `TEN-DEGREE-RESULT.md`. The ladder's shape is unchanged.
 
 **The cost of accepting:** the Qibla screen becomes four states rather than one dial, which is more design
 than the row imagined. **The cost of refusing:** the compass stays the primary answer, and it is the thing

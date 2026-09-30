@@ -1,5 +1,11 @@
 # P2: the design, and the finding that session 40 called unfixable was the answer
 
+> **SUPERSEDED IN ONE PLACE, 2026-09-30.** This report's central hypothesis, that the magnetic offset is a
+> repeatable property of a spot and can therefore be stored, was **tested on the owner's desk and FAILED**:
+> the reading drifted about 20 degrees in hours at a fixed spot. Rung 2 is a landmark note rather than a
+> stored magnetic offset. Everything else here stands, including the coverage arithmetic that forced the
+> ladder. See `../TEN-DEGREE-RESULT.md`.
+
 Computed in this planning session, 2026-09-30, continuing `P0-error-budget.md` and `P1-solar-proof.md`.
 
 ## The finding that reframes everything
