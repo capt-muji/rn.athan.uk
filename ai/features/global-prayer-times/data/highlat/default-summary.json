@@ -1,0 +1,618 @@
+{
+  "Paris": {
+    "lat": 48.8566,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 10,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 3,
+      "SwedenIFiS": 3,
+      "Diyanet": 2,
+      "AqrabAyyam3Day": 10,
+      "MoonsightingText": 10
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 5.8,
+      "SeventhOfTheNight": 2.1,
+      "TwilightAngle": 2.9,
+      "SwedenIFiS": 2.7,
+      "Diyanet": 2.1,
+      "AqrabAyyam3Day": 6.1,
+      "MoonsightingText": 5.8
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/347"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 18
+    },
+    "hardship": {
+      "daysIshaAfter23": 67,
+      "daysIshaAfterMidnight": 16,
+      "daysFajrBefore02": 29
+    }
+  },
+  "London": {
+    "lat": 51.5074,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 23,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 4,
+      "SwedenIFiS": 3,
+      "Diyanet": 2,
+      "AqrabAyyam3Day": 11,
+      "MoonsightingText": 11
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 10.4,
+      "SeventhOfTheNight": 2.1,
+      "TwilightAngle": 3.6,
+      "SwedenIFiS": 3,
+      "Diyanet": 2.3,
+      "AqrabAyyam3Day": 8.1,
+      "MoonsightingText": 8.1
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/305"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 60
+    },
+    "hardship": {
+      "daysIshaAfter23": 14,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 38
+    }
+  },
+  "Manchester": {
+    "lat": 53.4808,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 25,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 4,
+      "SwedenIFiS": 3,
+      "Diyanet": 2,
+      "AqrabAyyam3Day": 13,
+      "MoonsightingText": 13
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 12,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 4.1,
+      "SwedenIFiS": 3.1,
+      "Diyanet": 2.4,
+      "AqrabAyyam3Day": 9.1,
+      "MoonsightingText": 9.5
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/287"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 78
+    },
+    "hardship": {
+      "daysIshaAfter23": 13,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 28
+    }
+  },
+  "Copenhagen": {
+    "lat": 55.6761,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 22,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 5,
+      "SwedenIFiS": 3,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 16,
+      "MoonsightingText": 2
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 16,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 4.5,
+      "SwedenIFiS": 3.3,
+      "Diyanet": 2.6,
+      "AqrabAyyam3Day": 11,
+      "MoonsightingText": 2
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/365"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 11,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 25
+    }
+  },
+  "Aberdeen": {
+    "lat": 57.1497,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 22,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 5,
+      "SwedenIFiS": 4,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 17,
+      "MoonsightingText": 2
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 17.1,
+      "SeventhOfTheNight": 2.1,
+      "TwilightAngle": 4.7,
+      "SwedenIFiS": 3.4,
+      "Diyanet": 2.8,
+      "AqrabAyyam3Day": 11.5,
+      "MoonsightingText": 2.1
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/365"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 9,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 23
+    }
+  },
+  "Stockholm": {
+    "lat": 59.3293,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 29,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 6,
+      "SwedenIFiS": 4,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 18,
+      "MoonsightingText": 2
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 16.4,
+      "SeventhOfTheNight": 2.2,
+      "TwilightAngle": 5,
+      "SwedenIFiS": 3.5,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 12,
+      "MoonsightingText": 2.2
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/365"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 4,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 29
+    }
+  },
+  "Oslo": {
+    "lat": 59.9139,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 34,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 6,
+      "SwedenIFiS": 4,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 16,
+      "MoonsightingText": 2
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 15.2,
+      "SeventhOfTheNight": 2.3,
+      "TwilightAngle": 5.1,
+      "SwedenIFiS": 3.6,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 11.6,
+      "MoonsightingText": 2.3
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/365"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 9,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 16
+    }
+  },
+  "Helsinki": {
+    "lat": 60.1699,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 32,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 6,
+      "SwedenIFiS": 4,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 23,
+      "MoonsightingText": 2
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 14.8,
+      "SeventhOfTheNight": 2.3,
+      "TwilightAngle": 5.2,
+      "SwedenIFiS": 3.6,
+      "Diyanet": 3.1,
+      "AqrabAyyam3Day": 13.9,
+      "MoonsightingText": 2.3
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/365"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 10,
+      "daysIshaAfterMidnight": 1,
+      "daysFajrBefore02": 16
+    }
+  },
+  "Anchorage": {
+    "lat": 61.2181,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 30,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 6,
+      "SwedenIFiS": 4,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 21,
+      "MoonsightingText": 2
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 17.4,
+      "SeventhOfTheNight": 2.4,
+      "TwilightAngle": 5.3,
+      "SwedenIFiS": 3.6,
+      "Diyanet": 3.2,
+      "AqrabAyyam3Day": 13.3,
+      "MoonsightingText": 2.4
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/365"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 21,
+      "daysIshaAfterMidnight": 5,
+      "daysFajrBefore02": 6
+    }
+  },
+  "Reykjavik": {
+    "lat": 64.1466,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 37,
+      "SeventhOfTheNight": 3,
+      "TwilightAngle": 6,
+      "SwedenIFiS": 4,
+      "Diyanet": 4,
+      "AqrabAyyam3Day": 18,
+      "MoonsightingText": 3
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 17.1,
+      "SeventhOfTheNight": 2.6,
+      "TwilightAngle": 5.7,
+      "SwedenIFiS": 3.7,
+      "Diyanet": 3.6,
+      "AqrabAyyam3Day": 12.8,
+      "MoonsightingText": 2.8
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "21/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/365"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 29,
+      "daysIshaAfterMidnight": 10,
+      "daysFajrBefore02": 1
+    }
+  },
+  "ArcticCircle": {
+    "lat": 66.5,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 44,
+      "SeventhOfTheNight": 9,
+      "TwilightAngle": 7,
+      "SwedenIFiS": 4,
+      "Diyanet": 4,
+      "AqrabAyyam3Day": 19,
+      "MoonsightingText": 149
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 15.4,
+      "SeventhOfTheNight": 6.2,
+      "TwilightAngle": 6,
+      "SwedenIFiS": 3.7,
+      "Diyanet": 4.3,
+      "AqrabAyyam3Day": 12.5,
+      "MoonsightingText": 11.4
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/335",
+      "SeventhOfTheNight": "0/335",
+      "TwilightAngle": "0/335",
+      "SwedenIFiS": "26/335",
+      "Diyanet": "0/335",
+      "AqrabAyyam3Day": "0/335",
+      "MoonsightingText": "0/335"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 30,
+      "SeventhOfTheNight": 30,
+      "TwilightAngle": 30,
+      "SwedenIFiS": 0,
+      "Diyanet": 30,
+      "AqrabAyyam3Day": 30,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 2,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 22
+    }
+  },
+  "Tromso": {
+    "lat": 69.6492,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 43,
+      "SeventhOfTheNight": 18,
+      "TwilightAngle": 10,
+      "SwedenIFiS": 3,
+      "Diyanet": 16,
+      "AqrabAyyam3Day": 25,
+      "MoonsightingText": 186
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 21.9,
+      "SeventhOfTheNight": 10.3,
+      "TwilightAngle": 6.7,
+      "SwedenIFiS": 3.4,
+      "Diyanet": 11.5,
+      "AqrabAyyam3Day": 18,
+      "MoonsightingText": 162.6
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/247",
+      "SeventhOfTheNight": "0/247",
+      "TwilightAngle": "0/247",
+      "SwedenIFiS": "13/247",
+      "Diyanet": "0/247",
+      "AqrabAyyam3Day": "0/247",
+      "MoonsightingText": "0/247"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 118,
+      "SeventhOfTheNight": 118,
+      "TwilightAngle": 118,
+      "SwedenIFiS": 0,
+      "Diyanet": 118,
+      "AqrabAyyam3Day": 118,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 3,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 18
+    }
+  },
+  "Longyearbyen": {
+    "lat": 78.2232,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 53,
+      "SeventhOfTheNight": 31,
+      "TwilightAngle": 18,
+      "SwedenIFiS": 7,
+      "Diyanet": 44,
+      "AqrabAyyam3Day": 33,
+      "MoonsightingText": 259
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 51.1,
+      "SeventhOfTheNight": 24.4,
+      "TwilightAngle": 13.6,
+      "SwedenIFiS": 6.5,
+      "Diyanet": 34.2,
+      "AqrabAyyam3Day": 28.5,
+      "MoonsightingText": 230
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/126",
+      "SeventhOfTheNight": "0/126",
+      "TwilightAngle": "0/126",
+      "SwedenIFiS": "6/126",
+      "Diyanet": "0/126",
+      "AqrabAyyam3Day": "0/126",
+      "MoonsightingText": "0/126"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 239,
+      "SeventhOfTheNight": 239,
+      "TwilightAngle": 239,
+      "SwedenIFiS": 0,
+      "Diyanet": 239,
+      "AqrabAyyam3Day": 239,
+      "MoonsightingText": 0
+    },
+    "hardship": {
+      "daysIshaAfter23": 2,
+      "daysIshaAfterMidnight": 0,
+      "daysFajrBefore02": 8
+    }
+  },
+  "Ushuaia": {
+    "lat": -54.8019,
+    "maxDailyJump": {
+      "MiddleOfTheNight": 18,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 5,
+      "SwedenIFiS": 3,
+      "Diyanet": 3,
+      "AqrabAyyam3Day": 18,
+      "MoonsightingText": 18
+    },
+    "p99DailyJump": {
+      "MiddleOfTheNight": 15.1,
+      "SeventhOfTheNight": 2,
+      "TwilightAngle": 4.4,
+      "SwedenIFiS": 3.3,
+      "Diyanet": 2.6,
+      "AqrabAyyam3Day": 11.5,
+      "MoonsightingText": 11.5
+    },
+    "outOfOrder": {
+      "MiddleOfTheNight": "0/365",
+      "SeventhOfTheNight": "0/365",
+      "TwilightAngle": "0/365",
+      "SwedenIFiS": "0/365",
+      "Diyanet": "0/365",
+      "AqrabAyyam3Day": "0/365",
+      "MoonsightingText": "0/283"
+    },
+    "fajrNulls": {
+      "MiddleOfTheNight": 0,
+      "SeventhOfTheNight": 0,
+      "TwilightAngle": 0,
+      "SwedenIFiS": 0,
+      "Diyanet": 0,
+      "AqrabAyyam3Day": 0,
+      "MoonsightingText": 82
+    },
+    "hardship": {
+      "daysIshaAfter23": 46,
+      "daysIshaAfterMidnight": 18,
+      "daysFajrBefore02": 2
+    }
+  }
+}

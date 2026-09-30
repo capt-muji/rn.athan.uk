@@ -1,0 +1,25 @@
+=== R12: the South African split, priced in minutes ===
+MJC published table (measured by R9): Fajr 17.96, Isha 16.99, std Asr, Maghrib +0
+KZN Jamiat fatwa (cited): Karachi 18/18, Hanafi Asr, Maghrib +3
+
+--- Cape Town (MJC home) ---
+  date    Fajr MJC/KZN        Asr MJC/KZN         Maghrib MJC/KZN     Isha MJC/KZN        deltas F/A/M/I
+  01-15   04:11 / 04:11      16:40 / 17:53       20:00 / 20:03       21:34 / 21:40         0   73   3    7
+  03-15   05:22 / 05:21      16:25 / 17:19       19:04 / 19:07       20:23 / 20:28         0   54   3    5
+  06-15   06:20 / 06:20      15:26 / 16:06       17:44 / 17:47       19:08 / 19:13         0   40   3    5
+  09-15   05:23 / 05:23      16:04 / 16:55       18:38 / 18:41       19:56 / 20:01         0   51   3    5
+  12-15   03:46 / 03:45      16:26 / 17:42       19:53 / 19:56       21:31 / 21:38         0   76   3    7
+
+--- Durban (KZN Jamiat home) ---
+  date    Fajr MJC/KZN        Asr MJC/KZN         Maghrib MJC/KZN     Isha MJC/KZN        deltas F/A/M/I
+  01-15   03:37 / 03:37      15:41 / 16:56       19:01 / 19:04       20:28 / 20:33         0   74   3    6
+  03-15   04:36 / 04:36      15:34 / 16:29       18:13 / 18:16       19:28 / 19:33         0   55   3    5
+  06-15   05:24 / 05:24      14:45 / 15:27       17:03 / 17:06       18:24 / 18:29         0   42   3    5
+  09-15   04:35 / 04:35      15:15 / 16:07       17:48 / 17:51       19:03 / 19:08         0   52   3    5
+  12-15   03:14 / 03:13      15:26 / 16:44       18:53 / 18:56       20:22 / 20:29         0   78   3    6
+
+=== what following the wrong South African body costs ===
+Fajr:    0 to 0 min
+Asr:     40 to 78 min     <- the decisive one
+Maghrib: 3 to 3 min
+Isha:    5 to 7 min

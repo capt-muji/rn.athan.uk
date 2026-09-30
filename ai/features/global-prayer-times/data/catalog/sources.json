@@ -13,7 +13,7 @@
     "highLatitudeRule": "Named rule from `ruleCatalog`, or `none` where the source's latitude never engages one.",
     "rounding": "How the authority rounds its published digits. R6 measured that adhan's own `nearest` default was the single biggest source of apparent disagreement, so this field is load-bearing.",
     "conceptToRow": "Which published row carries which prayer concept. The field that prevents a 10-minute error: Turkey's `İmsak` IS fajr, Malaysia's `Imsak` is a distinct row 10 minutes earlier.",
-    "extraRows": "Published rows beyond the six standard ones, with what each means.",
+    "extraRows": "Published rows beyond the six standard ones, with what each means. `derivation` states whether the row is its own `angle` or an `offset` from another row, which the row NAME does not determine: R12 measured JAKIM's `Imsak` as a 20-degree angle and Kemenag's identically named row as a 10-minute offset inverting to 22 degrees, in two countries printing the same eight-row set.",
     "r6Category": "1 exactly computable, 2 computable plus constants, 3 computable plus a seasonal curve, 4 genuinely irregular. `null` where R6 did not measure the authority.",
     "obtain": "How the source's times are obtained.",
     "evidence": "A the authority's own site read or its own output measured; B a major mosque or network's timetable; C a newspaper, local app or academic paper; D a library constant only; NULL nothing sourceable.",
@@ -74,6 +74,24 @@
       "evidence": "A, cited, wave 1"
     },
     {
+      "rule": "NOT-PUBLISHED",
+      "description": "The authority publishes NO ROW for this prayer at all, which is different from publishing one this research could not read. Iran's state table prints `azan maghrib` and `nimeshab` and no Isha; the Islamic Foundation Bangladesh's Ramadan artefact gives sahri, Fajr azan and iftar only. The app renders `--:--` and NEVER substitutes a library constant, because a substituted value is indistinguishable on screen from a published one.",
+      "usedBy": "ir-calendarcentre-tehran for isha, bd-islamicfoundation-dhaka for isha",
+      "evidence": "A, the absence read on the authority's own output, R5"
+    },
+    {
+      "rule": "seasonally-varying-angle",
+      "description": "The published Fajr is not a fixed angle: its implied angle is a smooth function of the day of the year. R9 measured the Grande Mosquee de Paris's own 366-day calendar sweeping 18.0 in December and January to 13.05 in June and back, whole-year range 13.03 to 18.10, matching an exact 18 degrees on only 78 of 348 solvable days. R12 reproduced it. The one clean category 3 the programme found, and the reason `fr-gmparis-paris` must never carry the 18 degrees every earlier report cited.",
+      "usedBy": "fr-gmparis-paris",
+      "evidence": "A, measured on the mosque's own published year, R9, reproduced R12"
+    },
+    {
+      "rule": "angle-based",
+      "description": "Fajr and Isha held at their own angle relative to sunrise and sunset when the angle itself has no solution, which is `praytimes.org`'s `AngleBased` and the rule the Kazakh muftiate's vendored `prayTimes.js` leaves at its default. Named because it is what the muftiate's own code does rather than a rule the muftiate published, so it is the weakest high-latitude attribution in the catalog.",
+      "usedBy": "kz-muftiyat-astana",
+      "evidence": "A for the code read in the page source, NULL as a stated muftiate position, R5"
+    },
+    {
       "rule": "UNKNOWN-arctic",
       "description": "Islamiska Forbundet publishes a full year for Kiruna, Gallivare, Jokkmokk, Haparanda and Pajala, all at or above the Arctic Circle, and no construction tested reproduces it. R9's frozen fraction leaves a median 23.5 and worst 89.3 minutes; R11's sweep of Aqrab al-Bilad, frozen clock time and a frozen printed-Shuruk offset all fail too, and at Kiruna the printed Shuruk itself runs a median 27.2 and worst 142.2 minutes from true sunrise, so even the SUNRISE column is substituted. Named so it is not silently defaulted.",
       "usedBy": "se-ifis-kiruna and the four other Swedish Arctic cities",
@@ -129,7 +147,7 @@
       "rounding": { "fajr": "down", "sunrise": "nearest", "dhuhr": "nearest", "asr": "nearest", "maghrib": "nearest", "isha": "nearest" },
       "conceptToRow": { "imsak": "IMSAK", "fajr": "SUBUH", "sunrise": "SYURUK", "duha": "DUHA", "dhuhr": "ZOHOR", "asr": "ASAR", "maghrib": "MAGHRIB", "isha": "ISYAK" },
       "extraRows": [
-        { "row": "IMSAK", "concept": "imsak", "offsetFromFajrMin": -10, "note": "A REAL EXTRA ROW, exactly 10 minutes before Subuh, measured invariant on 365 of 365 days at 59 of the 60 zones that answered. Measures at 20.01 degrees, which is JAKIM's cited national figure." },
+        { "row": "IMSAK", "concept": "imsak", "offsetFromFajrMin": -10, "derivation": "angle", "angle": 20.0, "note": "A REAL EXTRA ROW, exactly 10 minutes before Subuh, measured invariant on 365 of 365 days at 59 of the 60 zones that answered. THE ROW IS AN ANGLE, NOT AN OFFSET: it measures 19.93 to 20.08 across six zones and a full year, which IS JAKIM's cited national 20. Kemenag's identically named row is the reverse, a 10-minute offset inverting to 22 degrees, so the row name alone does not determine the parameter." },
         { "row": "SYURUK", "concept": "sunrise", "note": "the app's `Sunrise` covers it" },
         { "row": "DUHA", "concept": "duha", "note": "A PUBLISHED ROW, 20 to 28 minutes after Syuruk depending on the zone, invariant within a zone across the year. This COLLIDES with the app's own `Duha` of `Sunrise + 20`, which is worse than a missing row because it looks right." }
       ],
@@ -159,7 +177,7 @@
       "rounding": { "fajr": "down", "sunrise": "nearest", "dhuhr": "nearest", "asr": "nearest", "maghrib": "nearest", "isha": "nearest" },
       "conceptToRow": { "imsak": "IMSAK", "fajr": "SUBUH", "sunrise": "SYURUK", "duha": "DUHA", "dhuhr": "ZOHOR", "asr": "ASAR", "maghrib": "MAGHRIB", "isha": "ISYAK" },
       "extraRows": [
-        { "row": "IMSAK", "concept": "imsak", "offsetFromFajrMin": -10 },
+        { "row": "IMSAK", "concept": "imsak", "offsetFromFajrMin": -10, "derivation": "angle", "angle": 20.0, "note": "measured 19.72 to 20.24, mean 20.01, R12, the same national 20-degree angle as every other zone that publishes a distinct Imsak" },
         { "row": "DUHA", "concept": "duha", "note": "28 minutes after Syuruk at this zone, against 25 at WLY01" }
       ],
       "r6Category": 2,
@@ -317,7 +335,7 @@
       "zoneCode": "1301",
       "coordinates": [-6.2088, 106.8456],
       "timezone": "Asia/Jakarta",
-      "fajr": { "angle": 20.0, "note": "Kemenag's own numbered criteria, cited: Subuh at the sun 20 degrees below the horizon plus 2 minutes of ihtiyati" },
+      "fajr": { "angle": 20.0, "note": "Kemenag's own numbered criteria, cited: Subuh at the sun 20 degrees below the horizon plus 2 minutes of ihtiyati. R12 re-measured the SUBUH row across three cities and 123 days each: 19.40 to 20.06. The cited 20 is correct and it sits on SUBUH, which is the opposite of Malaysia." },
       "isha": { "angle": 18.0 },
       "asrShadowFactor": 1.0,
       "asrAlternateShadowFactor": null,
@@ -326,14 +344,14 @@
       "rounding": { "fajr": "down", "sunrise": "nearest", "dhuhr": "down", "asr": "down", "maghrib": "up", "isha": "down" },
       "conceptToRow": { "imsak": "Imsak", "fajr": "Subuh", "sunrise": "Terbit", "duha": "Dhuha", "dhuhr": "Dzuhur", "asr": "Ashar", "maghrib": "Maghrib", "isha": "Isya" },
       "extraRows": [
-        { "row": "Imsak", "concept": "imsak", "offsetFromFajrMin": -10, "note": "Kemenag's own words: `Kementerian Agama menggunakan waktu imsak sepuluh menit sebelum masuk waktu subuh`. Its Hisab Rukyat team read the Prophetic report of `the length of time a person reads 50 verses` as 10 minutes and calls the result a `katup pengaman`, a safety valve. Measured at 10 minutes on 30 of 30 days." },
+        { "row": "Imsak", "concept": "imsak", "offsetFromFajrMin": -10, "derivation": "offset", "note": "Kemenag's own words: `Kementerian Agama menggunakan waktu imsak sepuluh menit sebelum masuk waktu subuh`. Its Hisab Rukyat team read the Prophetic report of `the length of time a person reads 50 verses` as 10 minutes and calls the result a `katup pengaman`, a safety valve. R12 measured the gap at exactly 10 minutes on 123 of 123 days at each of three cities. THE ROW IS AN OFFSET, NOT AN ANGLE: it inverts to 21.77 to 22.42 degrees, which Kemenag never publishes. This is the exact opposite of JAKIM, whose Imsak IS the published 20-degree angle, and the two countries print the same eight-row set." },
         { "row": "Dhuha", "concept": "duha", "note": "defined by Kemenag at the sun 4.5 degrees ABOVE the horizon, which collides with the app's `Sunrise + 20`" }
       ],
       "r6Category": 2,
       "r6Note": "Matching Kemenag's own rounding moved it from 62.5% to 90.3% exact. The SUNRISE SIGN FLIP is deliberate policy, not an error: a safety margin on sunrise must run the other way because sunrise ENDS the Fajr window.",
       "obtain": { "kind": "third-party-proxy", "detail": "`api.myquran.com/v2/sholat/jadwal/<id>/<y>/<m>`, twelve calls per city-year. Kemenag's own endpoint was located but its province codes remain unknown, and the third party's Kemenag provenance is UNVERIFIED.", "wholeYear": false, "keyless": true },
       "evidence": "A for the criteria, C for the feed",
-      "report": "R1/R2/R4/R6",
+      "report": "R1/R2/R4/R6, Subuh angle and Imsak derivation re-measured R12",
       "notes": "The ONLY authority-linked publication in the programme that quantifies ELEVATION: a correction table from no correction at 0 to 250 m up to 6 minutes at 2,000 to 2,500 m, with the formula `D = sqrt(2h/R)`, applied ADDED to Maghrib and SUBTRACTED from sunrise. It also states the table is valid only within a 30 km radius of the city centre. An app that reads device elevation and applies a dip correction will differ from every OTHER authority's published table, because they do not apply one."
     },
     {
