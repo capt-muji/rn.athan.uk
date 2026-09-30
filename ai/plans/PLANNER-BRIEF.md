@@ -185,7 +185,8 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    - Run at least the breaks you are least sure of, and the pre-flight script.
    - Record the observed output in the plan as the expected output.
    - Remove the worktree when done (`git worktree remove --force <path>`), and always before 00:00, when a nightly job
-     clears build folders. Never commit from it.
+     clears build folders. Never commit from it. `ai/AGENTS.md` section 7 has the rule in full: the branch goes with
+     the worktree, because `git worktree remove` leaves it behind and leftover branches are what accumulate.
    - No row ahead of this one is PLANNING, READY, IN PROGRESS or EXECUTED while this plan is written (section 2), and
      a BLOCKED or OWNER-LED row ahead holds no merged code of its own, so the scratch worktree starts at `uat-2` itself
      and no step is ever proven against code that is not merged. If a step seems to need an unmerged plan's changes
@@ -417,7 +418,9 @@ The plan is not READY until every line below is true.
    `git checkout uat-2 && git merge --no-ff <branch> -m "Merge <branch> into uat-2: session <N> planned, reviewed"`,
    then `git push origin uat-2`, which is allowed only if section 2 found no unaudited commits. The owner approved
    pushing plans to `uat-2` on 2026-09-15.
-6. **Remove your worktrees** once every verdict is in: your scratch worktree and your agent worktrees.
+6. **Remove your worktrees** once every verdict is in, and delete the branch each one carried
+   (`ai/AGENTS.md` section 7). Then `git worktree list` holds only the main checkout and the five build worktrees,
+   and `git branch` holds no branch this session made.
 7. **Report to the owner.** In a few plain sentences, say:
    - which session is planned, how many steps it has, and what the executor will prove;
    - the decisions the owner took in this session;
