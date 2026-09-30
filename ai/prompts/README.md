@@ -591,3 +591,30 @@ zero-entry self-ticking countdown, so the platforms converge.
 
 The minute chain still has a job afterwards, the day rollover and the times; it simply stops being
 what per-second accuracy depends on.
+
+## Decided by the owner, 2026-09-30, while planning session 41 (the qibla map)
+
+Seven decisions, which together replace the compass with a map and a sentence.
+
+- **The map approach is built first, then the landmark.** 🐋  "I would ask you to do the map approach
+  first. Then I would ask you to do the sun approach." The research had recommended the sun as the most
+  accurate rung; the owner reversed the order and the sun then fell to the ruling below.
+- **Nothing may ask the user to do anything.** 🐋  "We do not want the user to have to do anything...
+  if you ask them to draw a line or put it in the shadow or, you know, something stupid like that. No,
+  no, no." This CUTS the sun rung, whose 2.3-degree accuracy came entirely from the user aligning a real
+  shadow. The solar maths stays free in `adhan` and is addable later as its own row.
+- **The compass is deleted entirely.** 🐋  "30 degrees is a big difference. We don't want that at all.
+  We're not, 30 degree difference is horrible. We would rather ditch the compass feature entirely if
+  that's the case." The dial, its geometry, the iOS axis correction, the field-strength check and the
+  declination read all went with it.
+- **London is not bundled.** 🐋  "let's not bundle London, because we are going global. This will have
+  nothing to do with London as a base in the future." Tiles are fetched once per location instead.
+- **The tile cache is capped at 25 MB, evicting the least recently used.** 🐋  "maybe 25 megabytes worth
+  of date. If it goes above 25 megabytes, then we should start clearing, you know, the old values." The
+  owner also said two cities maximum in the same breath; the megabyte cap was taken as the rule, because
+  it bounds the thing the owner was actually protecting, and 25 MB is about 15 locations.
+- **`fflate@0.8.3` is approved**, the one new dependency: 91 KB, zero transitive dependencies, and the
+  map cannot read its own gzipped tiles without it.
+- **No mosque rung.** 🐋  "there's 1000000s of mosques around the world. 300,000 is so small." The
+  arithmetic agrees independently: a mosque 300 m away inherits 3.8 degrees of error from a 20 m fix
+  before any question of how the building faces.
