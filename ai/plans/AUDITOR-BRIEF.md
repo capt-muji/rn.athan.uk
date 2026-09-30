@@ -134,7 +134,9 @@ Then act on the verdict:
 
 ## 5. Finish
 
-1. Remove your scratch and agent worktrees once every verdict is in.
+1. Remove your scratch and agent worktrees once every verdict is in, and delete the branch each one carried
+   (`ai/AGENTS.md` section 7). Check `git worktree list` and `git branch` before you push: anything left from an
+   earlier session is a leftover to clean up here, and an unmerged one is reported rather than deleted.
 2. Report to the owner in a few plain sentences: the verdict, what was checked, what you fixed yourself, and whether
    `uat-2` is pushed.
 3. End with the progress table and the four-line handoff from the `athan-next` skill, section 5: the job just done,
