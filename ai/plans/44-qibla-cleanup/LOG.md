@@ -19,3 +19,15 @@ and runs them here. Both step files and `PLAN.md` are corrected to 4786, with th
 the next reader does not re-derive it.
 
 `yarn.lock` lost 12 lines, only the two packages and what was theirs alone.
+
+## Step 2: the invariant that keeps it gone
+
+Branch `test/44-qibla-stays-deleted`. One file added, copied byte for byte from `files/`.
+
+Red as the plan predicted, and caught twice over: the planted `shared/qiblaReborn.ts` is reported by
+BOTH the filename check and the content check, printing
+`shared/qiblaReborn.ts (name):qibla` and `shared/qiblaReborn.ts:qibla`. Green once removed.
+
+Breaks 5 of 5 caught, `ALL AS EXPECTED: 1`, including the two the plan exists to prove: a restored
+BINARY tile fixture, which no content search can read, and the guard's own self-exclusion widened to
+every test file, which the first draft SURVIVED.
