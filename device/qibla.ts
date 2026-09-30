@@ -2,10 +2,7 @@ import * as Location from 'expo-location';
 import { Linking } from 'react-native';
 
 import logger from '@/shared/logger';
-import { type Position, shortestDelta } from '@/shared/qibla';
-
-/** What `expo-location` reports for a heading it cannot resolve, before any normalisation can hide it */
-const NO_HEADING = -1;
+import type { Position } from '@/shared/qibla';
 
 /**
  * Whether the compass may open
@@ -69,25 +66,5 @@ export const readPosition = async (): Promise<Position | null> => {
   } catch (error) {
     logger.warn('QIBLA: Failed to read position', { error });
     return null;
-  }
-};
-
-/**
- * The local magnetic declination, read once from the platform's own geomagnetic model
- *
- * The fused rotation sensor is magnetic-referenced on both platforms, so the needle needs this to point at TRUE north.
- * It is taken as the gap between the two headings the platform already reports rather than by shipping a model.
- *
- * @returns Degrees to add to a magnetic bearing, east positive, or 0 when the platform cannot say
- */
-export const readDeclination = async (): Promise<number> => {
-  try {
-    const heading = await Location.getHeadingAsync();
-    if (heading.trueHeading === NO_HEADING) return 0;
-
-    return shortestDelta(heading.magHeading, heading.trueHeading);
-  } catch (error) {
-    logger.warn('QIBLA: Failed to read declination', { error });
-    return 0;
   }
 };

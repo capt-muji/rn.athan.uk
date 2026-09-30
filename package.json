@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.29.148",
+  "version": "1.29.150",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -57,6 +57,7 @@
     "expo-task-manager": "~58.0.8",
     "expo-updates": "~58.0.9",
     "expo-widgets": "58.0.5",
+    "fflate": "0.8.3",
     "jotai": "3.0.0",
     "pino": "10.3.1",
     "react": "19.3.0",
