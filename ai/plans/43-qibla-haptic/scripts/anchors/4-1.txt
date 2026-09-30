@@ -1,0 +1,26 @@
+export default function BottomSheetQibla() {
+  const { state, start } = useQiblaMap();
+
+  // Keyed on presentation, never on mount: every sheet is mounted from launch, so a mount-keyed read would fetch
+  // tiles on every device, forever, for a screen the user may never open.
+  const handlePresent = useCallback(() => start(), [start]);
+
+  return (
+    <Sheet
+      setRef={setQiblaSheetModal}
+      title='Qibla'
+      subtitle='The direction of prayer'
+      icon={<IconView type={Icon.COMPASS} size={16} color='rgba(165, 180, 252, 0.8)' />}
+      snapPoints={['85%']}
+      perfName='sheet_qibla'
+      onPresent={handlePresent}
+      stackBehavior='push'>
+      {state.status === 'ready' && <QiblaMap here={state.here} bearing={state.qibla} roads={state.roads} />}
+      <View style={styles.card}>
+        <Text style={styles.reading}>
+          {state.status === 'ready' ? qiblaSentence(state.answer) : WITHOUT_A_MAP[state.status]}
+        </Text>
+      </View>
+    </Sheet>
+  );
+}
