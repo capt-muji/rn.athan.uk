@@ -15,6 +15,9 @@
 | `components/qibla/__tests__/mapProjection.test.ts` | new, copied |
 | `shared/qiblaSentence.ts` | new, copied from `files/shared/qiblaSentence.ts.txt` |
 | `shared/__tests__/qiblaSentence.test.ts` | new, copied |
+| `shared/__tests__/realTile.test.ts` | new, copied |
+| `shared/__tests__/fixtures/London.mvt.gz` | new, copied byte for byte |
+| `shared/__tests__/fixtures/Makkah.mvt.gz` | new, copied byte for byte |
 | `components/qibla/QiblaMap.tsx` | new, built from the contract in part 5 |
 | `components/qibla/__tests__/QiblaMap.test.tsx` | new, built from the rows in part 4 |
 | `hooks/useQiblaMap.ts` | new, built from the contract in part 5 |
@@ -26,11 +29,21 @@ the projection and 8 for the sentence. The component and the hook are `(specifie
 
 4. **Tests first (red).**
 
-`components/qibla/__tests__/mapProjection.test.ts` and `shared/__tests__/qiblaSentence.test.ts` are carried
-whole, 23 tests between them. What they prove: the user at the centre, each of the four compass directions
-placed on the right side of it, the radius reaching the canvas edge, the ray at each quarter turn, the ray
-drawn at exactly the bearing it is given, and the sentence in each of its forms including a name in another
-script.
+Three suites are carried whole, 32 tests.
+
+`components/qibla/__tests__/mapProjection.test.ts` and `shared/__tests__/qiblaSentence.test.ts`, 23 tests:
+the user at the centre, each of the four compass directions placed on the right side of it, the radius
+reaching the canvas edge, the ray at each quarter turn, the ray drawn at exactly the bearing it is given,
+and the sentence in each of its forms including a name in another script.
+
+**`shared/__tests__/realTile.test.ts`, 9 tests, is the one that matters most.** It runs the whole path over
+two REAL tiles fetched from the planet archive on 2026-09-30 and stored gzipped, as the archive serves them.
+It pins the layer names and feature counts the archive reported, London's qibla at 119 degrees, the finished
+sentence `Stand along Whitehall, then turn 53 degrees to the left.`, an Arabic street name read straight out
+of the Makkah tile, that no rail line is ever named, and **the session's central finding: a position 100 m
+away delivers the same direction.** Its two fixtures are binary and are copied byte for byte, never opened
+in an editor. It loads them with Node's own `zlib` rather than the app's `fflate`, because a fixture loader
+must not depend on the code under test.
 
 `hooks/__tests__/useQiblaMap.test.ts`, the state machine:
 
@@ -43,15 +56,24 @@ script.
 | `reports that there is no map here when the archive cannot be reached` | Offline, never visited | `tilesAround` returns empty | status `nomap` |
 | `reads nothing until it is asked to` | Performance Design Rule 7 | mounted but never started | `readPosition` was not called |
 
-`components/qibla/__tests__/QiblaMap.test.tsx`, what a person sees:
+`components/qibla/__tests__/QiblaMap.test.tsx`, what a person sees.
+
+**How to find the drawn parts.** An SVG shape has no role, no label and no text, so it is reached by
+`testID`, which is what `components/qibla/__tests__/Dial.test.tsx` already does with `qibla-face`. This plan
+fixes three ids, so the tests and the component cannot disagree: **`qibla-streets`** on the group holding
+the street paths, **`qibla-ray`** on the ray, and **`qibla-here`** on the centre dot. Text is found with
+`screen.getByText`.
 
 | Test | What it proves | Inputs | Asserts |
 | --- | --- | --- | --- |
-| `draws a path for every street it is given` | The streets are drawn | 4 streets | 4 street paths are rendered |
-| `draws the qibla ray` | The answer is on screen | any state | the ray element is present |
-| `names the street in the sentence` | The sentence is the product | Whitehall, 53, left | the text `Stand along Whitehall, then turn 53 degrees to the left` |
-| `says the qibla runs along the street when the turn is under 5 degrees` | The degenerate case reads naturally | turn 3 | the text `The qibla runs along Gang Bhakti IV` |
-| `says nothing about a street when there is no usable one` | The honest empty state | status `nomap` | the text `No map data for this spot` and no sentence |
+| `draws a path for every street it is given` | The streets are drawn | 4 streets | `qibla-streets` has 4 children |
+| `draws the qibla ray` | The answer is on screen | a `ready` state | `qibla-ray` is present |
+| `marks where the user is standing` | The ray's origin is visible | a `ready` state | `qibla-here` is present |
+| `names the street in the sentence` | The sentence is the product | Whitehall, turn 53, side left | the text `Stand along Whitehall, then turn 53 degrees to the left.` |
+| `says the qibla runs along the street when the turn is under 5 degrees` | The degenerate case reads naturally | Gang Bhakti IV, turn 3 | the text `The qibla runs along Gang Bhakti IV.` |
+| `says there is no map data when no street is usable` | The honest empty state | status `nomap` | the text `No map data for this spot`, and `qibla-ray` is absent |
+| `says it is finding the position before anything arrives` | The first state | status `looking` | the text `Finding your position` |
+| `says the location is unavailable when there is no position` | Refused permission | status `unavailable` | the text `Your location is not available right now` |
 
 Commands, both projects:
 
@@ -99,7 +121,19 @@ adds are verbatim, because a person reads them:
 
 **The invariant:** every value the screen renders derives from the position and the tile data alone.
 
-6. **Green.** Both commands pass, 100% coverage of the four new modules, tsc and Biome at 0.
+6. **Green.** Both commands pass. With steps 1 to 4's `shared/` suites together, the planning session
+   measured:
+
+```
+Test Suites: 5 passed, 5 total
+Tests:       79 passed, 79 total
+Statements   : 100% ( 242/242 )
+Branches     : 100% ( 97/97 )
+Functions    : 100% ( 25/25 )
+Lines        : 100% ( 211/211 )
+```
+
+The hook and the component must reach 100% on all four too. tsc and Biome exit 0.
 
 **`shared/__tests__/unusedExports.test.ts` must now PASS**, because this step is the caller for steps 1 to 3.
 If it still names a symbol, that symbol is genuinely unreachable and the step is incomplete: STOP.
