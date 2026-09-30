@@ -1,11 +1,10 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useMemo } from 'react';
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
-import { hasLocationPermission, openLocationSettings, requestLocationPermission } from '@/device/qibla';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
@@ -20,7 +19,6 @@ import {
   setSettingsSheetModal,
   setSoundListReady,
   showArabicNamesAtom,
-  showQiblaSheet,
   showSecondsAtom,
   showSheet,
   showTimePassedAtom,
@@ -28,18 +26,6 @@ import {
 
 import { SettingsToggle, Sheet } from '../parts';
 import ColorPicker from './ColorPicker';
-
-/** Names what is unavailable and the one route back, never blaming the user for the refusal */
-const offerLocationSettings = () => {
-  Alert.alert(
-    'Qibla needs your location',
-    'The compass points to the Kaaba from where you are. Location is turned off.',
-    [
-      { text: 'Not now', style: 'cancel' },
-      { text: 'Open Settings', onPress: openLocationSettings },
-    ]
-  );
-};
 
 export default function BottomSheetSettings() {
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
@@ -54,27 +40,6 @@ export default function BottomSheetSettings() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
     showSheet();
-  };
-
-  // The compass needs a position to point from, so the permission is asked for here, with the reason already on
-  // screen. Once it is permanently denied a further request is a silent no-op, and Settings is the only route left.
-  const handleQiblaPress = async () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    if (await hasLocationPermission()) {
-      hideSettingsSheet();
-      showQiblaSheet();
-      return;
-    }
-
-    const { granted, canAskAgain } = await requestLocationPermission();
-    if (granted) {
-      hideSettingsSheet();
-      showQiblaSheet();
-      return;
-    }
-
-    if (!canAskAgain) offerLocationSettings();
   };
 
   // Re-opens the What's New modal for the installed version - display-only,
@@ -116,18 +81,6 @@ export default function BottomSheetSettings() {
             <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.athanLabel}>Change athan</Text>
-          <Text style={styles.chevron}>›</Text>
-        </Pressable>
-        <Pressable
-          style={styles.athanButton}
-          onPress={handleQiblaPress}
-          hitSlop={HIT_SLOP.md}
-          accessibilityLabel='Qibla'
-          accessibilityRole='button'>
-          <View style={styles.musicButton}>
-            <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
-          </View>
-          <Text style={styles.athanLabel}>Qibla</Text>
           <Text style={styles.chevron}>›</Text>
         </Pressable>
       </View>
