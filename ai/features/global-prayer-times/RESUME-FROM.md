@@ -21,9 +21,11 @@ run, because this was a research programme.
 2. `SOURCE-CATALOG.md`, the operational document. **It supersedes the individual reports wherever they disagree**,
    because it was written to reconcile them. `data/catalog/sources.json` is its machine-readable form, and
    `node data/catalog/build-catalog.mjs --check` fails if the two drift.
-3. `RECOMMENDATION.md`, the answer: make the SOURCE the central concept, and the twelve-step sequence.
-4. `ASSUMPTIONS.md`, every judgement made without the owner, with the likeliest to be wrong flagged.
-5. The twelve reports in `agent-reports/`, only as needed. They are kept unedited as the record of how each number
+3. `LONDON-LINEAGE.md`, which settles that the app's API and the fifty-year publisher are the SAME timetable, and
+   records the one cheap test still outstanding (diff an API month against `LUPT-2027.xlsx` in January 2027).
+4. `RECOMMENDATION.md`, the answer: make the SOURCE the central concept, and the twelve-step sequence.
+5. `ASSUMPTIONS.md`, every judgement made without the owner, with the likeliest to be wrong flagged.
+6. The twelve reports in `agent-reports/`, only as needed. They are kept unedited as the record of how each number
    was reached, which is why several now carry a reading the catalog overturned.
 
 ## The seven decisions that block planning
@@ -56,7 +58,7 @@ decision at all and are worth queueing immediately.**
 | S2 | Make the source explicit, with exactly one source. Moves the MMKV key to `prayer_${sourceId}_${date}` and pins every existing install to `london-prayer-times`. **Closes the largest silent risk in the codebase** | S1 | No |
 | S3 | Make the timezone a property of the source. The two zone-blind offset caches at `shared/time.ts:67-68` are the specific trap | S2 | No |
 | S4 | Commit the USNO verification fixtures. **Already built, in `data/validation/`: 37,340 comparisons, 0 failures** | nothing | No |
-| S6b | **London's own interval table.** 10,290 bytes buys fifty published years, 2027 to 2076, removing the API key, the network dependency and the single-operator risk | S2 | No, times unchanged |
+| S6b | **London's own interval table.** 10,290 bytes buys fifty published years, 2027 to 2076, removing the API key, the network dependency and the single-operator risk. **Offline fidelity is within one minute, not exact** (Isha 2 min out on 22 of 18,250 values). `LONDON-LINEAGE.md` verifies the publisher IS the app's own producer, and names the one test still outstanding | S2 | No, times unchanged |
 | S5 | Name the authority on screen, with the honest wording | S2 | Yes, small |
 | S6 | Surface jamaah. Already typed at `shared/types.ts:18-38` and never read, so the wire data is arriving and being discarded | nothing | Yes |
 | S7 | Add ONE second source: Malaysia (JAKIM) | S2, S3 | Yes |
@@ -70,9 +72,9 @@ decision at all and are worth queueing immediately.**
 1. **The notification sweep cannot detect a moved time.** `findStaleScheduledNotificationIds` compares identifiers,
    and the identifier carries no time. Any step that can move times must re-arm explicitly rather than trust the
    sweep, or the phone silently fires old instants.
-2. **The provider already changed its Asr margin.** Every London year to 2026 carries none and every year from 2027
-   carries a documented +2, so a London user's Asr moves 1 to 3 minutes in January 2027 whatever this app does. It
-   needs a decision, not a fix.
+2. **The provider already changed its Asr margin, and it is documented on its own technical page.** Every London
+   year to 2026 carries none and every year from 2027 carries +2, so a London user's Asr moves 1 to 3 minutes in
+   January 2027 whatever this app does. It needs a decision, not a fix.
 3. **`MiddleOfTheNight` is adhan's default and is measurably the worst high-latitude rule at every authority
    tested.** Set `highLatitudeRule` explicitly and never call `recommended()`, which never fires below the equator.
 4. **Test any northern authority's high-latitude rule below the equator before trusting it.** Three sign bugs were
