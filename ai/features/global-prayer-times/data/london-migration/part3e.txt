@@ -1,0 +1,61 @@
+R13 PART 3e: the complete offline reconstruction of London, and the 2027 Asr shift
+
+== 3e.1 All seven published fields, fifty published future years, nothing fetched ==
+Inputs: the 366-slot interval table (732 bytes) and the publisher's own equations. No network.
+
+field      n       exact                 within 1 min          worst  beyond 1 min
+fajr       18263       18262 (99.995%)      18263 (100.000%)      1  0
+sunrise    18263       18262 (99.995%)      18263 (100.000%)      1  0
+dhuhr      18263       18262 (99.995%)      18263 (100.000%)      1  0
+asr        18263      18263 (100.000%)      18263 (100.000%)      0  0
+asr_2      18263      18263 (100.000%)      18263 (100.000%)      0  0
+magrib     18263      18263 (100.000%)      18263 (100.000%)      0  0
+isha       18263      18263 (100.000%)      18263 (100.000%)      0  0
+
+SEVEN FIELDS: 127838 of 127841 exact (99.998%), 127841 within 1 minute (100.000%), 0 beyond 1 minute.
+That is 18263 days, 2027 to 2076, reproduced from 732 bytes of table plus arithmetic.
+
+== 3e.2 The Asr margin changed between the 2026 timetable and the 2027 one ==
+3d.1 fitted margin 0 on the ELM PDFs 2015 to 2026 and margin +2 on the .xlsx years 2027 to 2076.
+The published digits are the evidence, so this compares them directly: the same calendar slot,
+the same Asr column, in consecutive published years.
+
+The Asr interval after solar noon, which removes the sun and leaves the margin:
+slot     2025 asr  2026 asr  2027 asr   2026 gap-from-noon  2027 gap-from-noon  shift
+01-15        842       842       843               112.08              113.17   1.09
+03-15        921       921       922               191.61              192.54   0.93
+06-21       1046      1045      1047               262.67              264.72   2.05
+09-15        982       983       985               207.26              209.17   1.91
+12-15        816       816       817               100.35              101.47   1.12
+
+Across the whole year, mean (published Asr minus computed Asr) per published year:
+source            Mithl 1 margin   Mithl 2 margin
+ELM PDF 2015               0.314            0.404
+ELM PDF 2017               0.279            0.432
+ELM PDF 2018               0.279            0.449
+ELM PDF 2019               0.304            0.419
+ELM PDF 2020               0.294            0.446
+ELM PDF 2021               0.298            0.432
+ELM PDF 2022               0.411            0.588
+ELM PDF 2025               0.436            0.565
+ELM PDF 2026               0.417            0.616
+app API 2026               0.417            0.616
+.xlsx 2027                 1.983            1.997
+.xlsx 2028                 1.994            2.032
+.xlsx 2035                 1.981            2.014
+.xlsx 2050                 1.995            1.983
+.xlsx 2076                 1.990            2.027
+
+== 3e.3 What the shift is worth to a London user, day by day ==
+The same calendar slot in the app's own 2026 year against the published 2027 year, Asr only,
+with the sun's own annual drift removed by comparing each to its own year's computed Asr.
+  Asr margin shift, 2026 to 2027, distribution over 365 slots: +1: 166 days, +2: 195 days, +3: 4 days
+  This is the provider's own change, not the app's. It arrives whether v2.0 ships or not.
+
+== 3e.4 Byte cost of the offline London, stated once ==
+  366 slots, two uint8 arrays:   732 raw, 352 gzip, 246 brotli
+  the same, run-length encoded:  350 raw, 277 gzip, 208 brotli
+  Fajr runs: 88, Isha runs: 87
+  Fajr range: 90 to 124 minutes
+  Isha range: 66 to 100 minutes
+  Both fit uint8, so the table needs no encoding cleverness at all.

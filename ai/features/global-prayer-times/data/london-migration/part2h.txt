@@ -1,0 +1,71 @@
+R13 PART 2h: London reproduced from its publisher's own published formulas
+Every equation transcribed from londonsalahtimes.com/technical, fetched 2026-09-30.
+Charing Cross 51.5073 N, 0.12755 W. Meeus Astronomical Algorithms 2nd ed. 1998.
+Fajr and Isha are the Hizbul Ulama intervals against this computed sun, exactly as the
+publisher describes them: "they determined the times between Fajr and sunrise, and between
+sunset and Isha".
+
+== 2h.1 The publisher's stated Asr margin of +2 minutes, tested ==
+  Asr +0: asr exact 1986/3286 (60.44%), within 1 min 100.00%, worst 1  |  asr_2 exact 1634/3286 (49.73%), within 1 min 99.70%, worst 2
+  Asr +1: asr exact 1214/3286 (36.94%), within 1 min 97.38%, worst 2  |  asr_2 exact 1600/3286 (48.69%), within 1 min 98.72%, worst 2
+  Asr +2: asr exact 0/3286 (0.00%), within 1 min 36.94%, worst 3  |  asr_2 exact 10/3286 (0.30%), within 1 min 49.00%, worst 3
+  Asr +3: asr exact 0/3286 (0.00%), within 1 min 0.00%, worst 4  |  asr_2 exact 0/3286 (0.00%), within 1 min 0.30%, worst 4
+
+Asr margin that best reproduces the published digits: +0
+
+-- era B2 (2022, 2025, 2026), Asr +0
+field    n      exact              within 1 min       worst  beyond 1 min
+fajr      1095       702 (64.11%)     1095 (100.00%)     1  0
+sunrise   1095       702 (64.11%)     1095 (100.00%)     1  0
+dhuhr     1095       951 (86.85%)     1095 (100.00%)     1  0
+asr       1095       609 (55.62%)     1095 (100.00%)     1  0
+magrib    1095       663 (60.55%)     1095 (100.00%)     1  0
+isha      1095       663 (60.55%)     1095 (100.00%)     1  0
+asr_2     1095       471 (43.01%)      1085 (99.09%)     2  10
+SIX FIELDS: 4290/6570 exact (65.30%), 6570/6570 within 1 min (100.00%), worst 1
+
+-- era B1 (2015 to 2021), Asr +0
+field    n      exact              within 1 min       worst  beyond 1 min
+fajr      2191      1396 (63.72%)     2191 (100.00%)     1  0
+sunrise   2191      1396 (63.72%)     2191 (100.00%)     1  0
+dhuhr     2191      2156 (98.40%)     2191 (100.00%)     1  0
+asr       2191      1377 (62.85%)     2191 (100.00%)     1  0
+magrib    2191      1354 (61.80%)      2190 (99.95%)     2  1
+isha      2191      1354 (61.80%)      2190 (99.95%)     2  1
+asr_2     2191      1163 (53.08%)     2191 (100.00%)     1  0
+SIX FIELDS: 9033/13146 exact (68.71%), 13144/13146 within 1 min (99.98%), worst 2
+
+-- all era B (2015 to 2026), Asr +0
+field    n      exact              within 1 min       worst  beyond 1 min
+fajr      3286      2098 (63.85%)     3286 (100.00%)     1  0
+sunrise   3286      2098 (63.85%)     3286 (100.00%)     1  0
+dhuhr     3286      3107 (94.55%)     3286 (100.00%)     1  0
+asr       3286      1986 (60.44%)     3286 (100.00%)     1  0
+magrib    3286      2017 (61.38%)      3285 (99.97%)     2  1
+isha      3286      2017 (61.38%)      3285 (99.97%)     2  1
+asr_2     3286      1634 (49.73%)      3276 (99.70%)     2  10
+SIX FIELDS: 13323/19716 exact (67.57%), 19714/19716 within 1 min (99.99%), worst 2
+
+== 2h.2 2026 alone, against the app's OWN captured API year ==
+-- 2026 API year, publisher formulas
+field    n      exact              within 1 min       worst  beyond 1 min
+fajr       365       236 (64.66%)      365 (100.00%)     1  0
+sunrise    365       236 (64.66%)      365 (100.00%)     1  0
+dhuhr      365       316 (86.58%)      365 (100.00%)     1  0
+asr        365       198 (54.25%)      365 (100.00%)     1  0
+magrib     365       224 (61.37%)      365 (100.00%)     1  0
+isha       365       224 (61.37%)      365 (100.00%)     1  0
+asr_2      365       151 (41.37%)       360 (98.63%)     2  5
+SIX FIELDS: 1434/2190 exact (65.48%), 2190/2190 within 1 min (100.00%), worst 1
+
+  fajr: 129 misses
+  sunrise: 129 misses
+  dhuhr: 49 misses -> 2026-01-04-1 2026-01-06-1 2026-01-11-1 2026-01-28-1 2026-02-04-1 2026-02-17-1 2026-02-18-1 2026-02-26-1 2026-03-03-1 2026-03-07-1 2026-03-11-1 2026-03-15-1 2026-03-22-1 2026-03-25-1 2026-04-01-1 2026-04-04-1 2026-04-20-1 2026-04-25-1 2026-05-03-1 2026-05-24-1 2026-05-25-1 2026-06-01-1 2026-06-07-1 2026-06-12-1 2026-06-17-1 2026-06-26-1 2026-07-01-1 2026-07-07-1 2026-07-14-1 2026-08-06-1 2026-08-13-1 2026-08-18-1 2026-08-22-1 2026-08-26-1 2026-08-29-1 2026-09-13-1 2026-09-16-1 2026-10-14-1 2026-10-19-1 2026-10-26-1 2026-10-27-1 2026-11-10-1 2026-11-11-1 2026-11-17-1 2026-11-21-1 2026-11-25-1 2026-11-28-1 2026-12-08-1 2026-12-31-1
+  asr: 167 misses
+  magrib: 141 misses
+  isha: 141 misses
+  asr_2: 214 misses
+
+== 2h.3 Verdict inputs ==
+Six fields across era B: 13323/19716 exact, 19714/19716 within 1 minute.
+Values beyond 1 minute: 2.

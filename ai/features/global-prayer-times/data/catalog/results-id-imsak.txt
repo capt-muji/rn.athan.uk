@@ -1,0 +1,37 @@
+=== R12: does Kemenag put its cited 20 degrees on Subuh or on Imsak? ===
+
+--- Jakarta, -6.2088 ---
+  published Imsak implied angle   {"n":123,"min":21.59,"median":21.77,"max":21.96,"mean":21.78}
+  published Subuh implied angle   {"n":123,"min":19.26,"median":19.42,"max":19.56,"mean":19.41}
+  Subuh minus Imsak, min          {"n":123,"min":10,"median":10,"max":10,"mean":10}
+
+--- Bandung, -6.9175 ---
+  published Imsak implied angle   {"n":123,"min":21.56,"median":21.77,"max":21.95,"mean":21.77}
+  published Subuh implied angle   {"n":123,"min":19.23,"median":19.4,"max":19.57,"mean":19.4}
+  Subuh minus Imsak, min          {"n":123,"min":10,"median":10,"max":10,"mean":10}
+
+--- Surabaya, -7.2575 ---
+  published Imsak implied angle   {"n":123,"min":22.07,"median":22.45,"max":22.65,"mean":22.42}
+  published Subuh implied angle   {"n":123,"min":19.77,"median":20.04,"max":20.41,"mean":20.06}
+  Subuh minus Imsak, min          {"n":123,"min":10,"median":10,"max":10,"mean":10}
+
+--- Medan (code UNVERIFIED, fails the anchor gate), 3.5952 ---
+  published Imsak implied angle   {"n":123,"min":24.23,"median":29.87,"max":32.85,"mean":28.9}
+  published Subuh implied angle   {"n":123,"min":22.01,"median":27.38,"max":30.59,"mean":26.53}
+  Subuh minus Imsak, min          {"n":123,"min":10,"median":10,"max":10,"mean":10}
+
+=== verdict ===
+From `measure-jakim-imsak.mjs`: JAKIM IMSAK 19.93 to 20.08, SUBUH 17.55 to 17.89.
+Measured here: Kemenag SUBUH 19.40 to 20.06 across the three cities that pass
+the anchor gate, and its IMSAK 21.77 to 22.42.
+
+So the SAME CITED NUMBER, 20 degrees, binds to DIFFERENT ROWS in two
+neighbouring countries that print the SAME eight-row set with the SAME
+10-minute Imsak gap:
+  Malaysia  20 degrees is the IMSAK row; SUBUH is 18 plus a 2-minute ihtiyati.
+  Indonesia 20 degrees is the SUBUH row; IMSAK is 10 minutes earlier, which
+            falls at about 22 degrees and is NOT a published angle at all.
+
+A concept-to-row map that carries only the row NAME is therefore not
+sufficient. The map must bind each CONCEPT to its own parameter, because
+`Imsak` is an angle in Malaysia and a derived offset in Indonesia.

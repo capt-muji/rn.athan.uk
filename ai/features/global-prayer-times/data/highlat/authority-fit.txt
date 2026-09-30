@@ -1,0 +1,159 @@
+
+=== Sweden, Islamiska Forbundet i Sverige, Stockholm ===
+base convention Fajr 17.98 / Isha 15.9 at 59.33 N, 365 published days
+days the base Fajr angle has NO solution: 118; Isha: 105. Those are the scored days.
+rule                  FAJR on unsolvable days            ISHA on unsolvable days
+                      med  p90   max  %<=2  %<=5      med  p90   max  %<=2  %<=5
+MiddleOfTheNight      109.8 142.6 150.9     0     0     114.8 143.4   152     0     0
+SeventhOfTheNight       29 36.1  38.6     0     0       20 24.1  26.4     0     0
+TwilightAngle           32   42  45.7     0     0     25.9 33.3  36.7     0     0
+SwedenIFiS             4.4  5.8   6.2     0  59.3      5.2  6.9   7.4     0  43.8
+Diyanet               13.2 19.3  23.3   7.6  18.6      9.8 15.9  16.9   9.5  23.8
+BelgiumLat45          51.5 80.8  83.1   2.5   5.9     43.4 62.2  63.4     0     1
+AqrabBalad485         78.1 142.2 150.6     0     0     63.6 91.5  93.4     0     0
+AqrabBaladWalk        130.5 141.1 151.9     0     0     83.6 90.7  92.7     0     0
+AqrabAyyamLast         154 166.6 170.4     0     0     147.8  166 167.5     0     0
+AqrabAyyam3Day        141.3 154.5   164     0     0     135.8 150.6 155.6     0     0
+NorwayFrozenClock     83.7 115.7 124.7     0     0     88.2 120.2 135.2     0     0
+MoonsightingText        29 36.1  38.6     0     0       20 24.1  26.4     0     0
+  whole-year median abs error, all published days, for comparison:
+    MiddleOfTheNight      fajr   2.7 (n 365)   isha   3.2 (n 365)
+    SeventhOfTheNight     fajr  25.9 (n 365)   isha  17.8 (n 365)
+    TwilightAngle         fajr   2.7 (n 365)   isha   3.2 (n 365)
+    SwedenIFiS            fajr   2.8 (n 365)   isha   3.5 (n 365)
+    Diyanet               fajr  47.5 (n 365)   isha  41.9 (n 365)
+    BelgiumLat45          fajr  43.1 (n 365)   isha  38.3 (n 365)
+    AqrabBalad485         fajr  37.6 (n 365)   isha  33.9 (n 365)
+    AqrabBaladWalk        fajr   2.7 (n 365)   isha   3.2 (n 365)
+    AqrabAyyamLast        fajr   2.7 (n 365)   isha   3.2 (n 365)
+    AqrabAyyam3Day        fajr   2.7 (n 365)   isha   3.2 (n 365)
+    NorwayFrozenClock     fajr   2.7 (n 365)   isha   3.2 (n 365)
+    MoonsightingText      fajr  25.9 (n 365)   isha  17.8 (n 365)
+
+=== Sweden, Islamiska Forbundet i Sverige, Kiruna ===
+base convention Fajr 17.98 / Isha 15.9 at 67.86 N, 365 published days
+days the base Fajr angle has NO solution: 165; Isha: 155. Those are the scored days.
+rule                  FAJR on unsolvable days            ISHA on unsolvable days
+                      med  p90   max  %<=2  %<=5      med  p90   max  %<=2  %<=5
+MiddleOfTheNight      129.2 168.2 175.3     0     0     134.2 176.8 183.8     0     0
+SeventhOfTheNight     19.9 47.6  85.9   5.2  12.2     13.5 43.8    81   7.6    19
+TwilightAngle         53.7 67.7  91.6     0     0     50.3 59.5  85.9     0     0
+SwedenIFiS               9 18.2  24.5   4.2  13.3      5.4 19.5  25.6  18.1  43.2
+Diyanet               35.9 82.1 102.8   3.5   7.8     32.9 69.4  88.6   3.8   9.5
+BelgiumLat45          52.2 156.2 219.7   2.6   4.3     53.7 137.8 192.5   3.8   7.6
+AqrabBalad485         58.3 162.6 250.2   1.8   3.6     27.8  140   213   4.5  12.9
+AqrabBaladWalk        152.4 218.9 288.4     0     0     102.3 169.4 230.6     0   2.6
+AqrabAyyamLast        219.9  306 369.2     0     0      204 274.5 327.8     0     0
+AqrabAyyam3Day        203.7 290.4 350.8     0     0     190.1 260.5 313.7     0     0
+NorwayFrozenClock     76.7 137.2 148.2     0     0     65.8 130.8 147.8     0     0
+MoonsightingText      21.4 63.9 132.5     3   7.9     22.2 65.9   127   4.5   9.7
+  whole-year median abs error, all published days, for comparison:
+    MiddleOfTheNight      fajr  32.7 (n 293)   isha    24 (n 293)
+    SeventhOfTheNight     fajr  48.2 (n 293)   isha  31.1 (n 293)
+    TwilightAngle         fajr  32.7 (n 293)   isha    24 (n 293)
+    SwedenIFiS            fajr   8.4 (n 365)   isha   7.7 (n 365)
+    Diyanet               fajr  79.6 (n 293)   isha  69.4 (n 293)
+    BelgiumLat45          fajr  78.1 (n 293)   isha  71.1 (n 293)
+    AqrabBalad485         fajr  68.3 (n 365)   isha  58.5 (n 365)
+    AqrabBaladWalk        fajr  54.4 (n 365)   isha  15.7 (n 365)
+    AqrabAyyamLast        fajr  32.7 (n 293)   isha    24 (n 293)
+    AqrabAyyam3Day        fajr  32.7 (n 293)   isha    24 (n 293)
+    NorwayFrozenClock     fajr  54.7 (n 365)   isha  34.9 (n 365)
+    MoonsightingText      fajr  52.8 (n 365)   isha  37.2 (n 365)
+
+=== Sweden, IFiS, Kiruna computed at the 63.68 N its own table implies ===
+base convention Fajr 17.98 / Isha 15.9 at 63.68 N, 365 published days
+days the base Fajr angle has NO solution: 143; Isha: 131. Those are the scored days.
+rule                  FAJR on unsolvable days            ISHA on unsolvable days
+                      med  p90   max  %<=2  %<=5      med  p90   max  %<=2  %<=5
+MiddleOfTheNight      99.4 149.8 163.8     0     0     95.6 149.3 163.7     0     0
+SeventhOfTheNight     25.2 36.1    40   2.8   7.7     19.7 24.1  26.7   3.8   8.4
+TwilightAngle         42.4 54.6  55.8     0     0     32.4 44.4  45.9     0     0
+SwedenIFiS             5.3    9  10.8   9.1    42      4.6  7.3   8.6    13  58.8
+Diyanet               26.2 71.3  72.4   4.9  11.2     18.6 58.2  59.1   5.3  14.5
+BelgiumLat45          56.6 145.5 150.6   2.8   7.7     48.5 116.9 121.3   3.8   9.2
+AqrabBalad485         77.8  204 218.1   2.8   6.3     65.8 145.7 151.3   0.8   3.1
+AqrabBaladWalk        153.3 201.3 228.4     0     0     95.9 146.2 150.7     0     0
+AqrabAyyamLast        184.5 248.9 259.9     0     0     184.3 234.2 247.2     0     0
+AqrabAyyam3Day        169.2 234.2 248.9     0     0     166.3 215.9 232.3     0     0
+NorwayFrozenClock     72.3 119.9 141.3     0     0     80.4 128.3 151.4     0     0
+MoonsightingText      25.5 38.5  41.5   2.1   6.3     16.5 35.8  38.5   2.3   6.9
+  whole-year median abs error, all published days, for comparison:
+    MiddleOfTheNight      fajr   8.6 (n 365)   isha   5.7 (n 365)
+    SeventhOfTheNight     fajr  30.3 (n 365)   isha    18 (n 365)
+    TwilightAngle         fajr   8.6 (n 365)   isha   5.7 (n 365)
+    SwedenIFiS            fajr   3.2 (n 365)   isha   3.5 (n 365)
+    Diyanet               fajr  69.6 (n 365)   isha  58.7 (n 365)
+    BelgiumLat45          fajr  65.3 (n 365)   isha  57.3 (n 365)
+    AqrabBalad485         fajr    60 (n 365)   isha  53.3 (n 365)
+    AqrabBaladWalk        fajr   8.6 (n 365)   isha   5.7 (n 365)
+    AqrabAyyamLast        fajr   8.6 (n 365)   isha   5.7 (n 365)
+    AqrabAyyam3Day        fajr   8.6 (n 365)   isha   5.7 (n 365)
+    NorwayFrozenClock     fajr   8.6 (n 365)   isha   5.7 (n 365)
+    MoonsightingText      fajr  35.2 (n 365)   isha  23.3 (n 365)
+
+Norway rows parsed: 365; days IRN leaves Morgengry 16 blank: 136; Kveldsgry 15 blank: 162
+
+=== Norway, Islamsk Rad Norge, Oslo ===
+base convention Fajr 16.08 / Isha 14.93 at 59.91 N, 365 published days
+days the base Fajr angle has NO solution: 110; Isha: 102. Those are the scored days.
+rule                  FAJR on unsolvable days            ISHA on unsolvable days
+                      med  p90   max  %<=2  %<=5      med  p90   max  %<=2  %<=5
+MiddleOfTheNight      113.6 143.3 143.6     0     0      134  159 167.4     0     0
+SeventhOfTheNight     16.3 45.9  62.5     0   5.5      2.9  8.5  11.2  43.1  73.5
+TwilightAngle         26.4 42.9  48.5   2.7   5.5     40.8 49.6  51.2     0     0
+SwedenIFiS             8.1 21.9  31.3   5.5  34.5     15.1   22  24.8     0     0
+Diyanet               28.2 29.9  43.7   3.6   7.3     33.9 35.5    36     2   3.9
+BelgiumLat45          55.3 67.2  68.1   1.8   5.5       61 70.7  71.4     0     0
+AqrabBalad485         75.2 97.8  99.5   0.9   3.6     78.7 94.6  95.6     0     0
+AqrabBaladWalk        135.5 150.1 169.2     0     0     116.4 120.7 124.3     0     0
+AqrabAyyamLast        81.8 132.4 161.8   0.9   1.8     91.9 141.7 175.1     0     0
+AqrabAyyam3Day        75.8 102.8 111.1   1.8   3.6     80.4 105.8 115.5     0     0
+NorwayFrozenClock     42.3 72.7  89.9   2.7   5.5     32.8 70.6 106.3   2.9   6.9
+MoonsightingText      16.3 45.9  62.5     0   5.5      2.9  8.5  11.2  43.1  73.5
+  whole-year median abs error, all published days, for comparison:
+    MiddleOfTheNight      fajr   2.2 (n 365)   isha   0.5 (n 365)
+    SeventhOfTheNight     fajr  12.7 (n 365)   isha   1.2 (n 365)
+    TwilightAngle         fajr   2.1 (n 365)   isha   0.5 (n 365)
+    SwedenIFiS            fajr   2.1 (n 365)   isha   0.6 (n 365)
+    Diyanet               fajr  36.4 (n 365)   isha  35.1 (n 365)
+    BelgiumLat45          fajr    44 (n 365)   isha  38.3 (n 365)
+    AqrabBalad485         fajr  38.4 (n 365)   isha  33.6 (n 365)
+    AqrabBaladWalk        fajr   2.2 (n 365)   isha   0.5 (n 365)
+    AqrabAyyamLast        fajr   2.2 (n 365)   isha   0.5 (n 365)
+    AqrabAyyam3Day        fajr   2.2 (n 365)   isha   0.5 (n 365)
+    NorwayFrozenClock     fajr   2.1 (n 365)   isha   0.5 (n 365)
+    MoonsightingText      fajr  12.7 (n 365)   isha   1.2 (n 365)
+
+Belgium rows parsed: 348
+
+=== Belgium, Executief van de Moslims van Belgie, Brussels ===
+base convention Fajr 17.99 / Isha 18 at 50.85 N, 348 published days
+days the base Fajr angle has NO solution: 47; Isha: 47. Those are the scored days.
+rule                  FAJR on unsolvable days            ISHA on unsolvable days
+                      med  p90   max  %<=2  %<=5      med  p90   max  %<=2  %<=5
+MiddleOfTheNight      91.8 103.8 104.3     0     0     104.2  119 123.7     0     0
+SeventhOfTheNight     73.5 76.7  77.3     0     0     59.1 62.4  62.9     0     0
+TwilightAngle          3.7  8.8   9.6  27.7  57.4     12.6   24  27.9     0     0
+SwedenIFiS            44.2 48.5  49.1     0     0     41.5   45  45.6     0     0
+Diyanet               48.9 51.2  54.1     0     0       44 46.8    47     0     0
+BelgiumLat45          11.7 13.7  14.4   4.3  12.8     25.6 27.5  28.4     0     0
+AqrabBalad485         60.5 79.7    81     0     0     73.8   95  96.4     0     0
+AqrabBaladWalk        70.6 80.1  91.2     0     0       86 97.7   108     0     0
+AqrabAyyamLast        85.5 93.2  94.8     0     0     101.7 109.3 111.2     0     0
+AqrabAyyam3Day        76.4 83.2  84.8     0     0     92.1 98.9 100.7     0     0
+NorwayFrozenClock     76.7 89.6  89.6     0     0     89.2 103.7 109.7     0     0
+MoonsightingText         no answer on any day         no answer on any day 
+  whole-year median abs error, all published days, for comparison:
+    MiddleOfTheNight      fajr   1.7 (n 348)   isha   0.4 (n 348)
+    SeventhOfTheNight     fajr  11.3 (n 348)   isha  11.9 (n 348)
+    TwilightAngle         fajr   1.6 (n 348)   isha   0.4 (n 348)
+    SwedenIFiS            fajr   1.7 (n 348)   isha   0.5 (n 348)
+    Diyanet               fajr  30.4 (n 348)   isha  38.4 (n 348)
+    BelgiumLat45          fajr  13.8 (n 348)   isha  14.5 (n 348)
+    AqrabBalad485         fajr     7 (n 348)   isha   6.6 (n 348)
+    AqrabBaladWalk        fajr   1.7 (n 348)   isha   0.4 (n 348)
+    AqrabAyyamLast        fajr   1.7 (n 348)   isha   0.4 (n 348)
+    AqrabAyyam3Day        fajr   1.7 (n 348)   isha   0.4 (n 348)
+    NorwayFrozenClock     fajr   1.7 (n 348)   isha   0.4 (n 348)
+    MoonsightingText      fajr   1.5 (n 301)   isha   0.3 (n 301)

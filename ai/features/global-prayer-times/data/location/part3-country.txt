@@ -1,0 +1,57 @@
+# R14 part 3: does the device timezone identify the COUNTRY?
+
+Source: `zone1970.tab` from the IANA distribution, which unlike `zone.tab` lists every
+country a zone covers. Read from the copy fetched with the tzdata distribution.
+
+Zones in `zone1970.tab`: 312. Zones naming more than one country: **34**.
+
+## 3A. Every ambiguous zone that touches a Muslim-majority country
+
+These are the cases where the device zone alone cannot pick a national authority, because
+two or more countries share the zone and R1 measured that their authorities differ.
+
+| zone              | countries | Muslim-majority members with `cities15000` population                    | other members           |
+| ----------------- | --------- | ------------------------------------------------------------------------ | ----------------------- |
+| `Africa/Abidjan`  | 12        | CI 17.5M, SN 10.1M, ML 7.7M, GN 6.7M, BF 6.1M, MR 2.2M, SL 1.8M, GM 1.3M | GH TG IS SH             |
+| `Africa/Lagos`    | 10        | NG 75.2M, NE 3.7M                                                        | CD AO CM BJ CG CF GA GQ |
+| `Africa/Nairobi`  | 10        | TZ 21.4M, SO 6.4M, DJ 1.3M, ER 0.8M, KM 0.1M                             | ET KE UG MG YT          |
+| `Asia/Dubai`      | 5         | AE 12.9M, OM 3.3M                                                        | RE SC TF                |
+| `Asia/Kuching`    | 2         | MY 37.3M, BN 0.2M                                                        |                         |
+| `Asia/Qatar`      | 2         | QA 1.6M, BH 0.8M                                                         |                         |
+| `Asia/Riyadh`     | 4         | SA 23.9M, YE 6.9M, KW 1.7M                                               | AQ                      |
+| `Asia/Singapore`  | 3         | MY 37.3M                                                                 | SG AQ                   |
+| `Europe/Belgrade` | 6         | MK 1.8M                                                                  | RS BA HR SI ME          |
+| `Indian/Maldives` | 2         | MV 0.1M                                                                  | TF                      |
+
+## 3B. The counts that decide the design
+
+| measure                                     | value                             |
+| ------------------------------------------- | --------------------------------- |
+| Muslim-majority countries in `zone1970.tab` | 51                                |
+| of those, exactly ONE IANA zone             | **47**                            |
+| of those, more than one zone                | 4: ID (4), KZ (7), MY (2), PS (2) |
+
+So for a large majority of Muslim-majority countries the zone and the country carry the
+SAME information, which is why the zone is a usable country signal despite the ten
+ambiguous cases above.
+
+## 3C. The ambiguity from the other side: how many people live in an ambiguous zone?
+
+| measure                                                              | value       |
+| -------------------------------------------------------------------- | ----------- |
+| `cities15000` population in Muslim-majority countries                | 779,145,461 |
+| of that, living in a zone `zone1970.tab` shares with another country | 135,250,527 |
+| share                                                                | 17.4%       |
+
+By country, so the affected populations are named rather than aggregated:
+
+| cc | population in a shared zone | the zone          |
+| -- | --------------------------- | ----------------- |
+| NG | 75,225,576                  | `Africa/Lagos`    |
+| SA | 23,913,997                  | `Asia/Riyadh`     |
+| CI | 17,496,811                  | `Africa/Abidjan`  |
+| AE | 12,931,222                  | `Asia/Dubai`      |
+| MY | 4,013,140                   | `Asia/Kuching`    |
+| QA | 1,566,088                   | `Asia/Qatar`      |
+| MV | 103,693                     | `Indian/Maldives` |
+

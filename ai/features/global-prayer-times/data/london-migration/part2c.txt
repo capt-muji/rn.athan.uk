@@ -1,0 +1,76 @@
+R13 PART 2c: fully offline London, era by era, with per-era coordinates
+Baseline: adhan 4.4.6 sun, rounding None then nearest. Only sunrise and sunset are used,
+so the Fajr and Isha ANGLES of the method are irrelevant here.
+
+== era B1 (2015 to 2021), per-year interval table (what a source carrying its own edits would ship) ==
+lat      lon       n days  Fajr exact  Isha exact  combined        worst  sunrise exact  maghrib exact
+51.5000  -0.1300    2191        2173        2163    4336/4382 (98.95%)      1           2173           2163
+51.5025  -0.1300    2191        2175        2160    4335/4382 (98.93%)      1           2175           2160
+51.5000  -0.1275    2191        2169        2163    4332/4382 (98.86%)      1           2169           2163
+51.5025  -0.1275    2191        2168        2161    4329/4382 (98.79%)      1           2168           2161
+51.4975  -0.1275    2191        2163        2157    4320/4382 (98.59%)      1           2163           2157
+51.5050  -0.1300    2191        2163        2155    4318/4382 (98.54%)      1           2163           2155
+  Grid points evaluated: 1113
+  Best: 51.5, -0.13. Within 1 minute: Fajr 2191/2191, Isha 2191/2191. Worst error 1 min.
+  Misses beyond 1 minute: 0
+
+== era B2 (2022, 2025, 2026), per-year interval table (what a source carrying its own edits would ship) ==
+lat      lon       n days  Fajr exact  Isha exact  combined        worst  sunrise exact  maghrib exact
+51.5000  -0.1650    1095        1085        1082    2167/2190 (98.95%)      1           1085           1082
+51.4975  -0.1650    1095        1081        1079    2160/2190 (98.63%)      1           1081           1079
+51.5000  -0.1675    1095        1081        1077    2158/2190 (98.54%)      1           1081           1077
+51.4975  -0.1625    1095        1083        1074    2157/2190 (98.49%)      1           1083           1074
+51.4975  -0.1675    1095        1078        1076    2154/2190 (98.36%)      1           1078           1076
+51.5025  -0.1650    1095        1077        1077    2154/2190 (98.36%)      1           1077           1077
+  Grid points evaluated: 1113
+  Best: 51.5, -0.165. Within 1 minute: Fajr 1095/1095, Isha 1095/1095. Worst error 1 min.
+  Misses beyond 1 minute: 0
+
+== 2c.1 One shipped table (2026's) across BOTH eras, at each era's own best point ==
+era B1 2015-2021     at 51.5,-0.13: Fajr 2172/2190 exact, Isha 2140/2190 exact, within 1 min 4380/4380, worst 1
+era B2 2022/25/26    at 51.5,-0.165: Fajr 1085/1095 exact, Isha 1078/1095 exact, within 1 min 2190/2190, worst 1
+
+== 2c.2 The current era alone (2022, 2025, 2026), which is what ships today ==
+Best point: 51.5, -0.165
+  Days: 1095. Values: 2190.
+  Fajr exact 1085/1095 (99.09%), within 1 min 1095/1095 (100.00%)
+  Isha exact 1078/1095 (98.45%), within 1 min 1095/1095 (100.00%)
+  Worst error: 1 min. Values beyond 1 minute: 0
+  Sunrise reproduced (computed - 3 = published): 1085/1095
+  Maghrib reproduced (computed + 3 = published): 1082/1095
+  Every miss: I2022-01-16+1 I2022-02-04+1 F2022-02-08+1 I2022-02-21+1 F2022-03-24+1 I2022-04-02+1 I2022-06-16+1 I2022-06-17+1 I2022-06-18+1 I2022-06-19+1 F2022-07-08-1 I2022-07-08-1 F2022-08-26-1 F2022-11-15+1 I2022-11-18+1 I2022-12-12+1 I2022-12-13+1 F2022-12-25+1 I2025-08-11-1 F2025-10-04-1 F2025-10-20-1 F2025-11-01-1 I2025-11-02-1 I2026-06-03+1 F2026-09-05-1 I2026-09-11-1 I2026-12-04-1
+
+== 2c.3 2026 alone, against the app's own captured API year rather than the ELM PDF ==
+  51.5,-0.165 nearest: Fajr 364/365, Isha 362/365. Misses: I2026-06-03+1 F2026-09-05-1 I2026-09-11-1 I2026-12-04-1
+
+== 2c.4 How near the misses are to a rounding boundary ==
+If every miss is a computed sun event within a fraction of a second of a half-minute,
+the gap is HMNAO's own rounding, not a modelling error.
+  27 misses across 2022, 2025 and 2026.
+  2022-01-16 sunset   computed 982.5167 min, fraction 0.5167, distance from .5 boundary 0.0167 min (1.0 s), delta +1
+  2022-02-04 sunset   computed 1015.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2022-02-08 sunrise  computed 447.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2022-02-21 sunset   computed 1046.5167 min, fraction 0.5167, distance from .5 boundary 0.0167 min (1.0 s), delta +1
+  2022-03-24 sunrise  computed 354.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2022-04-02 sunset   computed 1175.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2022-06-16 sunset   computed 1280.0667 min, fraction 0.0667, distance from .5 boundary 0.4333 min (26.0 s), delta +1
+  2022-06-17 sunset   computed 1280.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta +1
+  2022-06-18 sunset   computed 1280.8500 min, fraction 0.8500, distance from .5 boundary 0.3500 min (21.0 s), delta +1
+  2022-06-19 sunset   computed 1281.1667 min, fraction 0.1667, distance from .5 boundary 0.3333 min (20.0 s), delta +1
+  2022-07-08 sunrise  computed 293.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1
+  2022-07-08 sunset   computed 1277.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1
+  2022-08-26 sunrise  computed 363.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1
+  2022-11-15 sunrise  computed 438.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2022-11-18 sunset   computed 967.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2022-12-12 sunset   computed 951.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2022-12-13 sunset   computed 951.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2022-12-25 sunrise  computed 485.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2025-08-11 sunset   computed 1230.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1
+  2025-10-04 sunrise  computed 426.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1
+  2025-10-20 sunrise  computed 453.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1
+  2025-11-01 sunrise  computed 414.4667 min, fraction 0.4667, distance from .5 boundary 0.0333 min (2.0 s), delta -1
+  2025-11-02 sunset   computed 991.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1
+  2026-06-03 sunset   computed 1270.5000 min, fraction 0.5000, distance from .5 boundary 0.0000 min (0.0 s), delta +1
+  2026-09-05 sunrise  computed 379.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1
+  2026-09-11 sunset   computed 1164.4667 min, fraction 0.4667, distance from .5 boundary 0.0333 min (2.0 s), delta -1
+  2026-12-04 sunset   computed 953.4833 min, fraction 0.4833, distance from .5 boundary 0.0167 min (1.0 s), delta -1

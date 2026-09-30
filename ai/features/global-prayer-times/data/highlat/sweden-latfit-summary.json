@@ -1,0 +1,62 @@
+{
+  "params": {
+    "horizon": 1.51,
+    "dayMin": 300,
+    "dayMax": 1140,
+    "fajrAngle": 17.98,
+    "ishaAngle": 15.9,
+    "fF": 0.2055,
+    "fI": 0.1815
+  },
+  "fits": [
+    {
+      "city": "Malmo",
+      "trueLat": 55.605,
+      "bestFitLat": 55.53,
+      "gap": -0.08,
+      "medianErr": 1.2
+    },
+    {
+      "city": "Stockholm",
+      "trueLat": 59.3293,
+      "bestFitLat": 59.15,
+      "gap": -0.18,
+      "medianErr": 1.4
+    },
+    {
+      "city": "Umea",
+      "trueLat": 63.8258,
+      "bestFitLat": 63.93,
+      "gap": 0.1,
+      "medianErr": 2.4
+    },
+    {
+      "city": "Lulea",
+      "trueLat": 65.5848,
+      "bestFitLat": 65.44,
+      "gap": -0.14,
+      "medianErr": 2.9
+    },
+    {
+      "city": "Gallivare",
+      "trueLat": 67.1333,
+      "bestFitLat": 66.95,
+      "gap": -0.18,
+      "medianErr": 3.3
+    },
+    {
+      "city": "Pajala",
+      "trueLat": 67.2117,
+      "bestFitLat": 67.37,
+      "gap": 0.16,
+      "medianErr": 2.8
+    },
+    {
+      "city": "Kiruna",
+      "trueLat": 67.8558,
+      "bestFitLat": 63.68,
+      "gap": -4.18,
+      "medianErr": 2.5
+    }
+  ]
+}
