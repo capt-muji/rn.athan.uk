@@ -86,6 +86,55 @@ has every term in it:
 optimise and the feature cap is. Hermes being slower than V8 on the byte loops has room to absorb a large
 multiple before it rivals 92 ms.
 
+## 4. The memory objection, measured after I refused to bet on it
+
+The last line of the first draft of this report said nine decoded tiles in memory on a 2016 phone was "the
+one thing in this report I would not bet on without a device". It is now measured, and the first measurement
+was wrong in an instructive way.
+
+**The naive run reported 1,289 KB per tile for 48 paths**, which is absurd: 48 paths cannot cost 1.3 MB. The
+figure was the decode's TRANSIENT garbage, not what is retained, because the heap was sampled without
+collecting first. Forcing two GC passes while still holding the result gives the real number:
+
+| View radius | Paths kept | Coordinates | Retained, 9 tiles | Per tile |
+| --- | --- | --- | --- | --- |
+| **122 m** | **48** | 4,498 | **1.28 MB** | **146 KB** |
+| 228 m | 118 | 5,936 | 1.58 MB | 180 KB |
+| 381 m | 249 | 8,702 | 2.11 MB | 240 KB |
+| Whole tile | 953 | 17,864 | 4.45 MB | 506 KB |
+
+**At the 122 m view the design actually uses, nine tiles retain 1.28 MB.** Even holding nine whole tiles
+uncapped is 4.45 MB. Against a phone with gigabytes, on a screen the user opens deliberately and closes, this
+is not a constraint. **The objection is withdrawn on measurement rather than on argument.**
+
+Two honest notes. The floor is 17.6 KB of pure `Float32Array` geometry per tile against 146 KB retained, so
+about 88% is JavaScript object overhead around the arrays, which a flatter representation could reclaim if it
+ever mattered. And these are V8 heap figures; Hermes allocates differently, so the ratio may shift while the
+order of magnitude will not.
+
+**The architectural point that makes even 1.28 MB pessimistic:** only the CENTRE tile needs features within
+the radius. The eight ring tiles contribute only where the radius overlaps them, which at 122 m is almost
+nothing, so a real implementation decodes one tile fully and the ring lazily or not at all.
+
+## 5. A toolchain trap R3 found, which this pipeline shares
+
+R3's verification pass drove the deep `adhan` import through all three resolvers and found they disagree:
+
+| Tool | Deep import `adhan/lib/cjs/SolarTime.js` |
+| --- | --- |
+| **Metro 0.87.1** | **Resolves**, via `PackagePathNotExportedError` caught at `resolve.js:512-527`, with a fallback warning |
+| **Jest 30.5.1** | **Fails**, in both projects |
+| **tsc 7.0.2** | **Fails** |
+
+**This is a trap with the exact shape this repo has been bitten by before:** the app builds and runs, and the
+test suite and the typechecker refuse the same line. A session that only ran the app would ship it; a session
+that only ran `yarn validate` would conclude it is impossible. Both would be wrong.
+
+It matters to this report because the map pipeline is one `fflate` import away from the same class of
+problem, and `fflate` publishes separate Node and browser entries. **The plan must import the browser entry
+explicitly and prove it under Jest AND tsc AND Metro**, not just under one of them. R3 records the fix for
+the adhan case as one Jest config line; the same remedy is likely here.
+
 ## What I attacked in my own conclusion
 
 - **I nearly declared `TextDecoder` available because the decode worked.** It worked in Node, which proves
@@ -103,7 +152,12 @@ multiple before it rivals 92 ms.
   `PROPOSALS.md` as a decision rather than in a plan as a fact. It is one 91 KB pure-JS package with zero
   transitive dependencies, which is the cheapest possible shape for a new dependency, and the alternative is
   that the map cannot read its own tiles.
-- **The strongest remaining objection:** none of this proves the app can hold nine decoded tiles in memory at
-  once on a 2016 phone with 6 GB of RAM shared with everything else. A decoded tile is 113 KB of MVT that
-  expands into JavaScript objects, and nine of those is the real memory question. Unmeasured, and it is the
-  one thing in this report I would not bet on without a device.
+- **I refused to bet on the memory question, then measured it, and my first measurement was wrong.** It
+  reported 1,289 KB per tile for 48 paths, which is absurd on its face, because it sampled the heap without
+  collecting the decode's garbage first. Section 4 has the real figures. The lesson is the one this repo
+  already carries about `grep -c` on a missing command: a number that is wrong but plausible is more
+  dangerous than an error, and the only defence is asking whether the magnitude makes sense.
+- **The strongest remaining objection is now the toolchain, not the engine.** Section 5 records that Metro,
+  Jest and tsc disagree about a deep package import, and `fflate` ships separate Node and browser entries,
+  so the plan has to prove its import under all three rather than one. That is a real risk and it is a
+  config-line risk rather than a design risk.

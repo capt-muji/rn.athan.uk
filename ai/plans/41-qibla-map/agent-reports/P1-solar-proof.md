@@ -27,11 +27,20 @@ Constructing `new SolarCoordinates(2460000.5)` returns declination `-9.269391275
 apparent sidereal time is a complete horizontal-coordinate solution**, so azimuth and altitude follow from
 the standard transformation with the observer's latitude and longitude, which the app already has.
 
-**One caveat for the plan:** the deep-path `require` bypasses the package's `exports` field. Node rejects
-`require('adhan/lib/cjs/SolarCoordinates.js')` with `ERR_PACKAGE_PATH_NOT_EXPORTED`, so an absolute path was
-used to prove the maths. **Metro's resolver is not Node's and this must not be assumed to work in the app.**
-The plan's first step verifies it under Metro; if it is blocked, the transformation is 30 lines of arithmetic
-and section 3 below shows it already reproduced independently, so the fallback is proven before it is needed.
+**One caveat, now SETTLED and left in place because the reasoning matters.** The deep-path `require`
+bypasses the package's `exports` field: Node rejects `require('adhan/lib/cjs/SolarCoordinates.js')` with
+`ERR_PACKAGE_PATH_NOT_EXPORTED`, so an absolute path was used to prove the maths, and this report first
+recorded Metro's behaviour as unverified rather than assuming it.
+
+**R3's verification pass then settled it empirically** (`R3-sun-and-sensorless-methods.md` section 1.1.1) by
+driving the specifier through real resolver instances rather than reasoning about them: **Metro 0.87.1
+resolves it.** `metro-resolver/src/PackageExportsResolve.js:44` throws `PackagePathNotExportedError`, and
+`resolve.js:512-527` catches that exact class, logs a fallback warning, and continues into
+`node_modules/adhan/lib/cjs/SolarCoordinates.js`.
+
+So no new code is needed to reach the solar series. The 30-line transformation stays documented in section 2
+as the answer if that fallback warning ever becomes an error, which is a real risk on a future Metro rather
+than a present blocker.
 
 ## 2. The validation that makes this PROVEN rather than researched
 

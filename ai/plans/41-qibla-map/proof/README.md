@@ -30,3 +30,8 @@ the MVT decoder rewritten against `Uint8Array`, `DataView` and `TextDecoder` wit
 input that is verifiably not a `Buffer`. `gunzip-without-zlib.js` proves `fflate`'s browser build inflates a
 real tile to a byte-identical result in 4.3 ms with zero `require` calls to Node. See
 `../agent-reports/P4-hermes-viability.md`.
+
+`measure-retained-memory.js` settles the memory objection. Run it with `node --expose-gc`: it forces
+collection while still holding the decoded tiles, which is the difference between measuring what is RETAINED
+and measuring the decode's transient garbage. The naive version of this measurement reported 1,289 KB per
+tile for 48 paths, which is absurd, and that is why the script exists in this form.
