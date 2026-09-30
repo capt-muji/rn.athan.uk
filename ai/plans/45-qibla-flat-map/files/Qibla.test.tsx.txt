@@ -1,0 +1,219 @@
+/**
+ * The qibla sheet: the world map, the user's dot, the arrow and the line to Makkah
+ */
+
+import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import * as Haptics from 'expo-haptics';
+import { Dimensions } from 'react-native';
+
+import { readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
+import { SIZE as SIZES, SPACING } from '@/shared/constants';
+import { KAABA, projectMercator, qiblaPathData } from '@/shared/qiblaGeometry';
+import { WORLD_PATH } from '@/shared/worldPath';
+
+import QiblaSheet from '../Qibla';
+
+// The platform this screen exists to draw: mocked so the whole sheet is testable without a device
+const mockWatchers: Array<(reading: { trueHeading: number }) => void> = [];
+const mockUnwatch = jest.fn();
+let mockGranted = true;
+let mockPosition = { latitude: 51.475, longitude: -0.2015 };
+
+jest.mock('@/device/qibla', () => ({
+  requestQiblaPermission: jest.fn(async () => mockGranted),
+  readPosition: jest.fn(async () => mockPosition),
+  watchHeading: jest.fn(async (onReading: (r: { trueHeading: number }) => void) => {
+    mockWatchers.push(onReading);
+    return mockUnwatch;
+  }),
+}));
+
+const LONDON = { latitude: 51.475, longitude: -0.2015 };
+const LOS_ANGELES = { latitude: 34.0522, longitude: -118.2437 };
+// Derived exactly as the screen derives it, so a harness window change cannot make two wrong values agree
+const MAP = Math.min(Dimensions.get('window').width - SPACING.xl * 2, SIZES.contentMaxWidth);
+
+// The sheet arms its sensors on present, which the library reports as a change to index 0
+const openSheet = async () => {
+  await render(<QiblaSheet />);
+  await fireEvent(screen.getByText('Qibla'), 'change', 0);
+  await act(async () => {});
+};
+
+const sendHeading = async (trueHeading: number) => {
+  await act(async () => {
+    for (const watcher of mockWatchers) watcher({ trueHeading });
+  });
+};
+
+beforeEach(() => {
+  mockWatchers.length = 0;
+  mockGranted = true;
+  mockPosition = LONDON;
+});
+
+describe('the qibla sheet', () => {
+  it('draws the whole world map, the same one wherever the user is', async () => {
+    await openSheet();
+    const atLondon = screen.getByTestId('qibla-world').props.d;
+
+    expect(atLondon).toBe(WORLD_PATH);
+  });
+
+  it('marks Makkah', async () => {
+    await openSheet();
+    const mark = screen.getByTestId('qibla-makkah');
+    const kaaba = projectMercator(KAABA, MAP);
+
+    expect(mark.props.x).toBeCloseTo(kaaba.x - 5, 5);
+    expect(mark.props.y).toBeCloseTo(kaaba.y - 5, 5);
+  });
+
+  it('puts the dot where the user stands', async () => {
+    await openSheet();
+    const dot = screen.getByTestId('qibla-dot');
+    const expected = projectMercator(LONDON, MAP);
+
+    expect(dot.props.cx).toBeCloseTo(expected.x, 5);
+    expect(dot.props.cy).toBeCloseTo(expected.y, 5);
+  });
+
+  it('draws the line from the user to Makkah', async () => {
+    await openSheet();
+
+    expect(screen.getByTestId('qibla-line').props.d).toBe(qiblaPathData(LONDON, MAP));
+  });
+
+  it('turns the arrow to follow the phone', async () => {
+    await openSheet();
+    await sendHeading(0);
+    const north = screen.getByTestId('qibla-arrow').props;
+    await sendHeading(90);
+    const east = screen.getByTestId('qibla-arrow').props;
+
+    expect(north.y2).toBeLessThan(north.y1);
+    expect(east.x2).toBeGreaterThan(east.x1);
+  });
+
+  it('draws no arrow while the phone cannot tell which way it points', async () => {
+    await openSheet();
+    await sendHeading(-1);
+
+    expect(screen.queryByTestId('qibla-arrow')).toBeNull();
+  });
+
+  it('explains that it needs location when the user refuses', async () => {
+    mockGranted = false;
+    await openSheet();
+
+    expect(screen.getByText('The qibla needs your location.')).toBeTruthy();
+    expect(screen.queryByTestId('qibla-dot')).toBeNull();
+    expect(screen.queryByTestId('qibla-line')).toBeNull();
+  });
+
+  it('reads no sensor until the sheet is presented', async () => {
+    await render(<QiblaSheet />);
+
+    expect(watchHeading).not.toHaveBeenCalled();
+  });
+
+  it('taps once when the phone turns onto the line', async () => {
+    await openSheet();
+
+    for (const heading of [130, 125, 120, 119]) await sendHeading(heading);
+
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  it('does not tap again while the phone holds on the line', async () => {
+    await openSheet();
+
+    for (const heading of [119, 119.2, 118.9, 119.1]) await sendHeading(heading);
+
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('taps again when the phone turns away and comes back', async () => {
+    await openSheet();
+
+    for (const heading of [119, 140, 119]) await sendHeading(heading);
+
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(2);
+  });
+
+  it('asks for nothing more when the sheet closes while the permission prompt is still up', async () => {
+    let grantPermission: (() => void) | undefined;
+    (requestQiblaPermission as jest.Mock).mockImplementationOnce(
+      async () =>
+        new Promise<boolean>((resolve) => {
+          grantPermission = () => resolve(true);
+        })
+    );
+
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await act(async () => {
+      grantPermission?.();
+    });
+
+    expect(readPosition).not.toHaveBeenCalled();
+  });
+
+  it('draws nothing when the sheet closes while the position is still being read', async () => {
+    let reportPosition: (() => void) | undefined;
+    (readPosition as jest.Mock).mockImplementationOnce(
+      async () =>
+        new Promise<typeof LONDON>((resolve) => {
+          reportPosition = () => resolve(LONDON);
+        })
+    );
+
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await act(async () => {
+      reportPosition?.();
+    });
+
+    expect(watchHeading).not.toHaveBeenCalled();
+    expect(screen.queryByTestId('qibla-dot')).toBeNull();
+  });
+
+  it('stops a heading watch that finished setting up after the sheet had already closed', async () => {
+    let releaseWatch: (() => void) | undefined;
+    (watchHeading as jest.Mock).mockImplementationOnce(
+      async () =>
+        new Promise<() => void>((resolve) => {
+          releaseWatch = () => resolve(mockUnwatch);
+        })
+    );
+
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await act(async () => {
+      releaseWatch?.();
+    });
+
+    expect(mockUnwatch).toHaveBeenCalled();
+  });
+
+  it('stops the heading watch when the sheet closes', async () => {
+    await openSheet();
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    expect(mockUnwatch).toHaveBeenCalled();
+  });
+
+  it('draws the dot somewhere else for a user somewhere else', async () => {
+    mockPosition = LOS_ANGELES;
+    await openSheet();
+    const dot = screen.getByTestId('qibla-dot');
+    const expected = projectMercator(LOS_ANGELES, MAP);
+
+    expect(dot.props.cx).toBeCloseTo(expected.x, 5);
+  });
+});

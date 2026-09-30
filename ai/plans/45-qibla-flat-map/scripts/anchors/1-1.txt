@@ -1,0 +1,1 @@
+const GONE = ['qib' + 'la', 'kaa' + 'ba', 'pm' + 'tiles', 'tile' + 'cache', 'great' + 'circle'];
