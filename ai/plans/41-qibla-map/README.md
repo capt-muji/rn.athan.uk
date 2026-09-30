@@ -43,6 +43,7 @@ priced honestly at +39.9 MB of native binary.
 | `VERDICT.md` | **Is the map better, is it proven, do others use it, and what about the direction.** Start here |
 | `PROPOSALS.md` | **The seven owner decisions.** Then here |
 | `PROTOTYPE-FINDINGS.md` | What building it on the real toolchain proved, and the two config one-liners it found |
+| `TEN-DEGREE-TEST.md` | **The one measurement left that needs the owner's hands.** A predicted number, on his own desk |
 | `BRIEF.md` | The research brief, the constraints, and the size ruling |
 | `ASSUMPTIONS.md` | Every judgement taken unattended, with the five likeliest to need correction flagged |
 | `PROTOTYPE-PLAN.md` | **The next thing to do.** Three theories to test on the iPhone XS, cheapest first, merging nothing |
