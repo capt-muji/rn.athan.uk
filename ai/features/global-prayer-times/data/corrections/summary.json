@@ -1,0 +1,6409 @@
+[
+ {
+  "id": "MY-WLY01",
+  "authority": "JAKIM Malaysia",
+  "place": "Kuala Lumpur (WLY01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM Jurnal Falak 20/18",
+  "constants": {
+   "fajr": 11,
+   "sunrise": -1,
+   "dhuhr": 3,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1292,
+   "within1": 2182,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 11,
+  "bytes": {
+   "naiveBrotli": 1414,
+   "residInt8Brotli": 364,
+   "resid4bitBrotli": 339,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 13,
+    "mean": 10.803,
+    "sd": 0.787,
+    "mode": 11,
+    "modeShare": 0.4,
+    "lag1": 0.799
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.797,
+    "sd": 0.402,
+    "mode": -1,
+    "modeShare": 0.797,
+    "lag1": -0.048
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.767,
+    "sd": 0.423,
+    "mode": 3,
+    "modeShare": 0.767,
+    "lag1": 0.021
+   },
+   "asr": {
+    "min": 1,
+    "max": 4,
+    "mean": 1.764,
+    "sd": 0.64,
+    "mode": 2,
+    "modeShare": 0.542,
+    "lag1": 0.555
+   },
+   "maghrib": {
+    "min": 1,
+    "max": 3,
+    "mean": 1.937,
+    "sd": 0.694,
+    "mode": 2,
+    "modeShare": 0.515,
+    "lag1": 0.635
+   },
+   "isha": {
+    "min": 1,
+    "max": 3,
+    "mean": 1.967,
+    "sd": 0.694,
+    "mode": 2,
+    "modeShare": 0.518,
+    "lag1": 0.573
+   }
+  }
+ },
+ {
+  "id": "MY-SGR01",
+  "authority": "JAKIM Malaysia",
+  "place": "Selangor west (SGR01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 10,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1347,
+   "within1": 2135,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 10,
+  "bytes": {
+   "naiveBrotli": 1406,
+   "residInt8Brotli": 355,
+   "resid4bitBrotli": 325,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 12,
+    "mean": 10.142,
+    "sd": 0.877,
+    "mode": 10,
+    "modeShare": 0.416,
+    "lag1": 0.745
+   },
+   "sunrise": {
+    "min": -3,
+    "max": -1,
+    "mean": -2.008,
+    "sd": 0.381,
+    "mode": -2,
+    "modeShare": 0.855,
+    "lag1": 0.245
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.118,
+    "sd": 0.322,
+    "mode": 2,
+    "modeShare": 0.882,
+    "lag1": 0.13
+   },
+   "asr": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.082,
+    "sd": 0.653,
+    "mode": 1,
+    "modeShare": 0.641,
+    "lag1": 0.549
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.258,
+    "sd": 0.729,
+    "mode": 1,
+    "modeShare": 0.46,
+    "lag1": 0.716
+   },
+   "isha": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.312,
+    "sd": 0.763,
+    "mode": 1,
+    "modeShare": 0.436,
+    "lag1": 0.701
+   }
+  }
+ },
+ {
+  "id": "MY-JHR02",
+  "authority": "JAKIM Malaysia",
+  "place": "Johor Bahru (JHR02)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 10,
+   "sunrise": 0,
+   "dhuhr": 3,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1306,
+   "within1": 2181,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 10,
+  "bytes": {
+   "naiveBrotli": 1414,
+   "residInt8Brotli": 363,
+   "resid4bitBrotli": 339,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 12,
+    "mean": 10.274,
+    "sd": 0.575,
+    "mode": 10,
+    "modeShare": 0.668,
+    "lag1": 0.583
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.378,
+    "sd": 0.496,
+    "mode": 0,
+    "modeShare": 0.611,
+    "lag1": 0.379
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.501,
+    "sd": 0.5,
+    "mode": 3,
+    "modeShare": 0.501,
+    "lag1": 0.159
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.386,
+    "sd": 0.492,
+    "mode": 1,
+    "modeShare": 0.608,
+    "lag1": 0.144
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.375,
+    "sd": 0.501,
+    "mode": 1,
+    "modeShare": 0.608,
+    "lag1": 0.387
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.403,
+    "sd": 0.507,
+    "mode": 1,
+    "modeShare": 0.581,
+    "lag1": 0.359
+   }
+  }
+ },
+ {
+  "id": "MY-PLS01",
+  "authority": "JAKIM Malaysia",
+  "place": "Perlis (PLS01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 9,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1649,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 9,
+  "bytes": {
+   "naiveBrotli": 1438,
+   "residInt8Brotli": 342,
+   "resid4bitBrotli": 281,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 10,
+    "mean": 9.416,
+    "sd": 0.493,
+    "mode": 9,
+    "modeShare": 0.584,
+    "lag1": 0.128
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.214,
+    "sd": 0.41,
+    "mode": 0,
+    "modeShare": 0.786,
+    "lag1": 0.119
+   },
+   "dhuhr": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.852,
+    "sd": 0.355,
+    "mode": 2,
+    "modeShare": 0.852,
+    "lag1": 0.043
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.822,
+    "sd": 0.489,
+    "mode": 1,
+    "modeShare": 0.729,
+    "lag1": 0.338
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.811,
+    "sd": 0.392,
+    "mode": 1,
+    "modeShare": 0.811,
+    "lag1": 0.124
+   },
+   "isha": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.756,
+    "sd": 0.429,
+    "mode": 1,
+    "modeShare": 0.756,
+    "lag1": 0.141
+   }
+  }
+ },
+ {
+  "id": "MY-SBH01",
+  "authority": "JAKIM Malaysia",
+  "place": "Sandakan (SBH01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 11,
+   "sunrise": 1,
+   "dhuhr": 3,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1414,
+   "within1": 2188,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 2,
+  "maxAbsConstant": 11,
+  "bytes": {
+   "naiveBrotli": 1421,
+   "residInt8Brotli": 351,
+   "resid4bitBrotli": 322,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 10,
+    "max": 13,
+    "mean": 10.775,
+    "sd": 0.747,
+    "mode": 10,
+    "modeShare": 0.414,
+    "lag1": 0.637
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.795,
+    "sd": 0.572,
+    "mode": 1,
+    "modeShare": 0.63,
+    "lag1": 0.409
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.838,
+    "sd": 0.368,
+    "mode": 3,
+    "modeShare": 0.838,
+    "lag1": 0.009
+   },
+   "asr": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.808,
+    "sd": 0.498,
+    "mode": 2,
+    "modeShare": 0.723,
+    "lag1": 0.425
+   },
+   "maghrib": {
+    "min": 1,
+    "max": 3,
+    "mean": 1.745,
+    "sd": 0.522,
+    "mode": 2,
+    "modeShare": 0.663,
+    "lag1": 0.607
+   },
+   "isha": {
+    "min": 1,
+    "max": 3,
+    "mean": 1.718,
+    "sd": 0.549,
+    "mode": 2,
+    "modeShare": 0.619,
+    "lag1": 0.551
+   }
+  }
+ },
+ {
+  "id": "MY-KTN01",
+  "authority": "JAKIM Malaysia",
+  "place": "Kota Bharu (KTN01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 10,
+   "sunrise": 1,
+   "dhuhr": 3,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": -3
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1251,
+   "within1": 2169,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 10,
+  "bytes": {
+   "naiveBrotli": 1422,
+   "residInt8Brotli": 359,
+   "resid4bitBrotli": 350,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 12,
+    "mean": 10.471,
+    "sd": 0.608,
+    "mode": 10,
+    "modeShare": 0.581,
+    "lag1": 0.609
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.553,
+    "sd": 0.497,
+    "mode": 1,
+    "modeShare": 0.553,
+    "lag1": 0.049
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.584,
+    "sd": 0.493,
+    "mode": 3,
+    "modeShare": 0.584,
+    "lag1": 0.157
+   },
+   "asr": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.507,
+    "sd": 0.5,
+    "mode": 2,
+    "modeShare": 0.507,
+    "lag1": 0.115
+   },
+   "maghrib": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.542,
+    "sd": 0.498,
+    "mode": 2,
+    "modeShare": 0.542,
+    "lag1": 0.087
+   },
+   "isha": {
+    "min": -4,
+    "max": -2,
+    "mean": -2.759,
+    "sd": 0.531,
+    "mode": -3,
+    "modeShare": 0.66,
+    "lag1": 0.348
+   }
+  }
+ },
+ {
+  "id": "MY-PNG01",
+  "authority": "JAKIM Malaysia",
+  "place": "Penang (PNG01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 10,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1605,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 10,
+  "bytes": {
+   "naiveBrotli": 1421,
+   "residInt8Brotli": 346,
+   "resid4bitBrotli": 290,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 11,
+    "mean": 10.153,
+    "sd": 0.537,
+    "mode": 10,
+    "modeShare": 0.688,
+    "lag1": 0.421
+   },
+   "sunrise": {
+    "min": -2,
+    "max": -1,
+    "mean": -1.556,
+    "sd": 0.497,
+    "mode": -2,
+    "modeShare": 0.556,
+    "lag1": 0.276
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.142,
+    "sd": 0.35,
+    "mode": 2,
+    "modeShare": 0.858,
+    "lag1": -0.054
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.162,
+    "sd": 0.577,
+    "mode": 1,
+    "modeShare": 0.641,
+    "lag1": 0.318
+   },
+   "maghrib": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.164,
+    "sd": 0.371,
+    "mode": 1,
+    "modeShare": 0.836,
+    "lag1": 0.062
+   },
+   "isha": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.181,
+    "sd": 0.385,
+    "mode": 1,
+    "modeShare": 0.819,
+    "lag1": -0.052
+   }
+  }
+ },
+ {
+  "id": "MY-SWK01",
+  "authority": "JAKIM Malaysia",
+  "place": "Limbang (SWK01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 10,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1727,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 10,
+  "bytes": {
+   "naiveBrotli": 1414,
+   "residInt8Brotli": 321,
+   "resid4bitBrotli": 267,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 11,
+    "mean": 10.077,
+    "sd": 0.578,
+    "mode": 10,
+    "modeShare": 0.66,
+    "lag1": 0.344
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.178,
+    "sd": 0.383,
+    "mode": 0,
+    "modeShare": 0.822,
+    "lag1": -0.064
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.238,
+    "sd": 0.426,
+    "mode": 2,
+    "modeShare": 0.762,
+    "lag1": -0.039
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.181,
+    "sd": 0.399,
+    "mode": 1,
+    "modeShare": 0.808,
+    "lag1": 0.121
+   },
+   "maghrib": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.162,
+    "sd": 0.368,
+    "mode": 1,
+    "modeShare": 0.838,
+    "lag1": 0.069
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.153,
+    "sd": 0.368,
+    "mode": 1,
+    "modeShare": 0.841,
+    "lag1": 0.008
+   }
+  }
+ },
+ {
+  "id": "MY-TRG01",
+  "authority": "JAKIM Malaysia",
+  "place": "Kuala Terengganu (TRG01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 10,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1657,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 10,
+  "bytes": {
+   "naiveBrotli": 1429,
+   "residInt8Brotli": 333,
+   "resid4bitBrotli": 278,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 11,
+    "mean": 10.137,
+    "sd": 0.586,
+    "mode": 10,
+    "modeShare": 0.638,
+    "lag1": 0.442
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.208,
+    "sd": 0.406,
+    "mode": 0,
+    "modeShare": 0.792,
+    "lag1": 0.185
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.252,
+    "sd": 0.434,
+    "mode": 2,
+    "modeShare": 0.748,
+    "lag1": 0
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.197,
+    "sd": 0.444,
+    "mode": 1,
+    "modeShare": 0.764,
+    "lag1": 0.275
+   },
+   "maghrib": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.23,
+    "sd": 0.421,
+    "mode": 1,
+    "modeShare": 0.77,
+    "lag1": 0.195
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.156,
+    "sd": 0.385,
+    "mode": 1,
+    "modeShare": 0.827,
+    "lag1": 0.094
+   }
+  }
+ },
+ {
+  "id": "MY-MLK01",
+  "authority": "JAKIM Malaysia",
+  "place": "Melaka (MLK01)",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, JAKIM 20/18",
+  "constants": {
+   "fajr": 10,
+   "sunrise": 1,
+   "dhuhr": 3,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1344,
+   "within1": 2172,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 10,
+  "bytes": {
+   "naiveBrotli": 1425,
+   "residInt8Brotli": 352,
+   "resid4bitBrotli": 320,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 9,
+    "max": 12,
+    "mean": 10.499,
+    "sd": 0.595,
+    "mode": 10,
+    "modeShare": 0.545,
+    "lag1": 0.6
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.605,
+    "sd": 0.527,
+    "mode": 1,
+    "modeShare": 0.567,
+    "lag1": 0.396
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.685,
+    "sd": 0.465,
+    "mode": 3,
+    "modeShare": 0.685,
+    "lag1": 0.11
+   },
+   "asr": {
+    "min": 1,
+    "max": 3,
+    "mean": 1.63,
+    "sd": 0.521,
+    "mode": 2,
+    "modeShare": 0.592,
+    "lag1": 0.128
+   },
+   "maghrib": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.644,
+    "sd": 0.479,
+    "mode": 2,
+    "modeShare": 0.644,
+    "lag1": 0.286
+   },
+   "isha": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.649,
+    "sd": 0.477,
+    "mode": 2,
+    "modeShare": 0.649,
+    "lag1": 0.478
+   }
+  }
+ },
+ {
+  "id": "SG-2026",
+  "authority": "MUIS Singapore",
+  "place": "Singapore 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited 20/18; R1 measured 19.88/18.13",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 1,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1557,
+   "within1": 2184,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 2,
+  "maxAbsConstant": 2,
+  "bytes": {
+   "naiveBrotli": 1421,
+   "residInt8Brotli": 320,
+   "resid4bitBrotli": 300,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.997,
+    "sd": 0.571,
+    "mode": 1,
+    "modeShare": 0.674,
+    "lag1": 0.311
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.011,
+    "sd": 0.518,
+    "mode": 1,
+    "modeShare": 0.732,
+    "lag1": 0.286
+   },
+   "dhuhr": {
+    "min": 1,
+    "max": 3,
+    "mean": 2.074,
+    "sd": 0.471,
+    "mode": 2,
+    "modeShare": 0.773,
+    "lag1": 0.149
+   },
+   "asr": {
+    "min": -1,
+    "max": 2,
+    "mean": 1.019,
+    "sd": 0.708,
+    "mode": 1,
+    "modeShare": 0.548,
+    "lag1": 0.552
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.099,
+    "sd": 0.514,
+    "mode": 1,
+    "modeShare": 0.726,
+    "lag1": 0.327
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.011,
+    "sd": 0.431,
+    "mode": 1,
+    "modeShare": 0.814,
+    "lag1": 0.103
+   }
+  }
+ },
+ {
+  "id": "SG-2025",
+  "authority": "MUIS Singapore",
+  "place": "Singapore 2025",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited 20/18",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 1,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1623,
+   "within1": 2177,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 2,
+  "maxAbsConstant": 2,
+  "bytes": {
+   "naiveBrotli": 1422,
+   "residInt8Brotli": 321,
+   "resid4bitBrotli": 300,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.025,
+    "sd": 0.47,
+    "mode": 1,
+    "modeShare": 0.778,
+    "lag1": 0.096
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.022,
+    "sd": 0.444,
+    "mode": 1,
+    "modeShare": 0.803,
+    "lag1": 0.081
+   },
+   "dhuhr": {
+    "min": 1,
+    "max": 3,
+    "mean": 2.063,
+    "sd": 0.467,
+    "mode": 2,
+    "modeShare": 0.778,
+    "lag1": 0.119
+   },
+   "asr": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.038,
+    "sd": 0.548,
+    "mode": 1,
+    "modeShare": 0.715,
+    "lag1": 0.388
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.104,
+    "sd": 0.633,
+    "mode": 1,
+    "modeShare": 0.679,
+    "lag1": 0.486
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.005,
+    "sd": 0.554,
+    "mode": 1,
+    "modeShare": 0.693,
+    "lag1": 0.259
+   }
+  }
+ },
+ {
+  "id": "SG-ALL",
+  "authority": "MUIS Singapore",
+  "place": "Singapore 2024 to 2026",
+  "days": 1096,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited 20/18",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 1,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 6576,
+   "exact": 4770,
+   "within1": 6557,
+   "within2": 6576,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 2,
+  "maxAbsConstant": 2,
+  "bytes": {
+   "naiveBrotli": 3157,
+   "residInt8Brotli": 834,
+   "resid4bitBrotli": 814,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.015,
+    "sd": 0.532,
+    "mode": 1,
+    "modeShare": 0.717,
+    "lag1": 0.241
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.016,
+    "sd": 0.494,
+    "mode": 1,
+    "modeShare": 0.755,
+    "lag1": 0.201
+   },
+   "dhuhr": {
+    "min": 1,
+    "max": 3,
+    "mean": 2.069,
+    "sd": 0.463,
+    "mode": 2,
+    "modeShare": 0.781,
+    "lag1": 0.123
+   },
+   "asr": {
+    "min": -1,
+    "max": 3,
+    "mean": 1.026,
+    "sd": 0.642,
+    "mode": 1,
+    "modeShare": 0.609,
+    "lag1": 0.504
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.103,
+    "sd": 0.543,
+    "mode": 1,
+    "modeShare": 0.724,
+    "lag1": 0.372
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.011,
+    "sd": 0.485,
+    "mode": 1,
+    "modeShare": 0.765,
+    "lag1": 0.186
+   }
+  }
+ },
+ {
+  "id": "TR-9541",
+  "authority": "Diyanet Turkey",
+  "place": "Istanbul",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17; R1 measured 18.0-18.2/17.05-17.24",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1271,
+   "within1": 2110,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2268,
+   "residInt8Brotli": 348,
+   "resid4bitBrotli": 311,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.025,
+    "sd": 0.334,
+    "mode": 0,
+    "modeShare": 0.888,
+    "lag1": 0.313
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.964,
+    "sd": 0.379,
+    "mode": -7,
+    "modeShare": 0.855,
+    "lag1": 0.086
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.016,
+    "sd": 0.305,
+    "mode": 5,
+    "modeShare": 0.907,
+    "lag1": -0.003
+   },
+   "asr": {
+    "min": 2,
+    "max": 6,
+    "mean": 4.047,
+    "sd": 0.96,
+    "mode": 3,
+    "modeShare": 0.348,
+    "lag1": 0.845
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.014,
+    "sd": 0.865,
+    "mode": 7,
+    "modeShare": 0.342,
+    "lag1": 0.798
+   },
+   "isha": {
+    "min": -2,
+    "max": 2,
+    "mean": 0.047,
+    "sd": 1.073,
+    "mode": -1,
+    "modeShare": 0.4,
+    "lag1": 0.876
+   }
+  }
+ },
+ {
+  "id": "TR-9206",
+  "authority": "Diyanet Turkey",
+  "place": "Ankara",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1298,
+   "within1": 2125,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2255,
+   "residInt8Brotli": 318,
+   "resid4bitBrotli": 295,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.025,
+    "sd": 0.366,
+    "mode": 0,
+    "modeShare": 0.866,
+    "lag1": 0.487
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.923,
+    "sd": 0.37,
+    "mode": -7,
+    "modeShare": 0.858,
+    "lag1": 0.198
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.055,
+    "sd": 0.3,
+    "mode": 5,
+    "modeShare": 0.907,
+    "lag1": -0.033
+   },
+   "asr": {
+    "min": 2,
+    "max": 6,
+    "mean": 4.09,
+    "sd": 0.945,
+    "mode": 3,
+    "modeShare": 0.337,
+    "lag1": 0.85
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.079,
+    "sd": 0.829,
+    "mode": 7,
+    "modeShare": 0.389,
+    "lag1": 0.788
+   },
+   "isha": {
+    "min": -2,
+    "max": 2,
+    "mean": 0.066,
+    "sd": 1.005,
+    "mode": -1,
+    "modeShare": 0.381,
+    "lag1": 0.861
+   }
+  }
+ },
+ {
+  "id": "TR-9560",
+  "authority": "Diyanet Turkey",
+  "place": "Izmir",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1327,
+   "within1": 2136,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2212,
+   "residInt8Brotli": 332,
+   "resid4bitBrotli": 301,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.033,
+    "sd": 0.303,
+    "mode": 0,
+    "modeShare": 0.907,
+    "lag1": -0.012
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.918,
+    "sd": 0.376,
+    "mode": -7,
+    "modeShare": 0.852,
+    "lag1": 0.165
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.027,
+    "sd": 0.276,
+    "mode": 5,
+    "modeShare": 0.923,
+    "lag1": -0.01
+   },
+   "asr": {
+    "min": 2,
+    "max": 6,
+    "mean": 4.077,
+    "sd": 0.921,
+    "mode": 3,
+    "modeShare": 0.318,
+    "lag1": 0.845
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.082,
+    "sd": 0.803,
+    "mode": 7,
+    "modeShare": 0.397,
+    "lag1": 0.805
+   },
+   "isha": {
+    "min": -1,
+    "max": 2,
+    "mean": -0.003,
+    "sd": 0.992,
+    "mode": -1,
+    "modeShare": 0.416,
+    "lag1": 0.858
+   }
+  }
+ },
+ {
+  "id": "TR-9225",
+  "authority": "Diyanet Turkey",
+  "place": "Antalya",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1331,
+   "within1": 2132,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2208,
+   "residInt8Brotli": 367,
+   "resid4bitBrotli": 321,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.219,
+    "sd": 0.414,
+    "mode": 0,
+    "modeShare": 0.781,
+    "lag1": 0.039
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.8,
+    "sd": 0.413,
+    "mode": -7,
+    "modeShare": 0.789,
+    "lag1": 0.102
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.104,
+    "sd": 0.347,
+    "mode": 5,
+    "modeShare": 0.868,
+    "lag1": -0.045
+   },
+   "asr": {
+    "min": 3,
+    "max": 6,
+    "mean": 4.189,
+    "sd": 0.876,
+    "mode": 4,
+    "modeShare": 0.411,
+    "lag1": 0.818
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.181,
+    "sd": 0.787,
+    "mode": 7,
+    "modeShare": 0.43,
+    "lag1": 0.765
+   },
+   "isha": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.162,
+    "sd": 0.887,
+    "mode": 0,
+    "modeShare": 0.367,
+    "lag1": 0.78
+   }
+  }
+ },
+ {
+  "id": "TR-9451",
+  "authority": "Diyanet Turkey",
+  "place": "Erzurum",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1338,
+   "within1": 2151,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2266,
+   "residInt8Brotli": 330,
+   "resid4bitBrotli": 292,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.038,
+    "sd": 0.254,
+    "mode": 0,
+    "modeShare": 0.934,
+    "lag1": 0.02
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.962,
+    "sd": 0.345,
+    "mode": -7,
+    "modeShare": 0.879,
+    "lag1": 0.103
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.025,
+    "sd": 0.29,
+    "mode": 5,
+    "modeShare": 0.915,
+    "lag1": -0.007
+   },
+   "asr": {
+    "min": 3,
+    "max": 6,
+    "mean": 4.041,
+    "sd": 0.857,
+    "mode": 4,
+    "modeShare": 0.329,
+    "lag1": 0.791
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 6.964,
+    "sd": 0.828,
+    "mode": 6,
+    "modeShare": 0.351,
+    "lag1": 0.82
+   },
+   "isha": {
+    "min": -2,
+    "max": 2,
+    "mean": 0.016,
+    "sd": 0.979,
+    "mode": -1,
+    "modeShare": 0.375,
+    "lag1": 0.846
+   }
+  }
+ },
+ {
+  "id": "TR-9930",
+  "authority": "Diyanet Turkey",
+  "place": "Van",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1346,
+   "within1": 2147,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2220,
+   "residInt8Brotli": 350,
+   "resid4bitBrotli": 305,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.134,
+    "sd": 0.341,
+    "mode": 0,
+    "modeShare": 0.866,
+    "lag1": 0.036
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.852,
+    "sd": 0.363,
+    "mode": -7,
+    "modeShare": 0.847,
+    "lag1": 0.041
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.099,
+    "sd": 0.325,
+    "mode": 5,
+    "modeShare": 0.885,
+    "lag1": -0.015
+   },
+   "asr": {
+    "min": 3,
+    "max": 6,
+    "mean": 4.129,
+    "sd": 0.855,
+    "mode": 4,
+    "modeShare": 0.359,
+    "lag1": 0.813
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.132,
+    "sd": 0.765,
+    "mode": 7,
+    "modeShare": 0.43,
+    "lag1": 0.794
+   },
+   "isha": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.101,
+    "sd": 0.95,
+    "mode": -1,
+    "modeShare": 0.334,
+    "lag1": 0.805
+   }
+  }
+ },
+ {
+  "id": "TR-9905",
+  "authority": "Diyanet Turkey",
+  "place": "Trabzon",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1303,
+   "within1": 2119,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2284,
+   "residInt8Brotli": 347,
+   "resid4bitBrotli": 310,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.145,
+    "sd": 0.352,
+    "mode": 0,
+    "modeShare": 0.855,
+    "lag1": 0.028
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.877,
+    "sd": 0.337,
+    "mode": -7,
+    "modeShare": 0.871,
+    "lag1": 0.059
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.079,
+    "sd": 0.342,
+    "mode": 5,
+    "modeShare": 0.877,
+    "lag1": 0.038
+   },
+   "asr": {
+    "min": 3,
+    "max": 6,
+    "mean": 4.175,
+    "sd": 0.92,
+    "mode": 4,
+    "modeShare": 0.353,
+    "lag1": 0.817
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.096,
+    "sd": 0.82,
+    "mode": 7,
+    "modeShare": 0.375,
+    "lag1": 0.805
+   },
+   "isha": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.11,
+    "sd": 1.023,
+    "mode": -1,
+    "modeShare": 0.375,
+    "lag1": 0.874
+   }
+  }
+ },
+ {
+  "id": "TR-9402",
+  "authority": "Diyanet Turkey",
+  "place": "Diyarbakir",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1418,
+   "within1": 2149,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2212,
+   "residInt8Brotli": 315,
+   "resid4bitBrotli": 290,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.06,
+    "sd": 0.238,
+    "mode": 0,
+    "modeShare": 0.94,
+    "lag1": -0.064
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.945,
+    "sd": 0.318,
+    "mode": -7,
+    "modeShare": 0.896,
+    "lag1": 0.106
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.058,
+    "sd": 0.295,
+    "mode": 5,
+    "modeShare": 0.91,
+    "lag1": 0.025
+   },
+   "asr": {
+    "min": 3,
+    "max": 6,
+    "mean": 4.09,
+    "sd": 0.866,
+    "mode": 4,
+    "modeShare": 0.364,
+    "lag1": 0.824
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.088,
+    "sd": 0.761,
+    "mode": 7,
+    "modeShare": 0.438,
+    "lag1": 0.787
+   },
+   "isha": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.09,
+    "sd": 0.919,
+    "mode": 0,
+    "modeShare": 0.337,
+    "lag1": 0.818
+   }
+  }
+ },
+ {
+  "id": "TR-9419",
+  "authority": "Diyanet Turkey",
+  "place": "Edirne",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1279,
+   "within1": 2082,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2275,
+   "residInt8Brotli": 335,
+   "resid4bitBrotli": 316,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.079,
+    "sd": 0.326,
+    "mode": 0,
+    "modeShare": 0.888,
+    "lag1": 0.302
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.918,
+    "sd": 0.397,
+    "mode": -7,
+    "modeShare": 0.836,
+    "lag1": 0.131
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.047,
+    "sd": 0.278,
+    "mode": 5,
+    "modeShare": 0.921,
+    "lag1": -0.03
+   },
+   "asr": {
+    "min": 2,
+    "max": 6,
+    "mean": 4.099,
+    "sd": 1.04,
+    "mode": 3,
+    "modeShare": 0.326,
+    "lag1": 0.853
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.085,
+    "sd": 0.848,
+    "mode": 7,
+    "modeShare": 0.364,
+    "lag1": 0.79
+   },
+   "isha": {
+    "min": -2,
+    "max": 2,
+    "mean": 0.055,
+    "sd": 1.099,
+    "mode": -1,
+    "modeShare": 0.389,
+    "lag1": 0.873
+   }
+  }
+ },
+ {
+  "id": "TR-9831",
+  "authority": "Diyanet Turkey",
+  "place": "Sanliurfa",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 17
+  },
+  "specNote": "cited, Diyanet 18/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1460,
+   "within1": 2167,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 7,
+  "bytes": {
+   "naiveBrotli": 2202,
+   "residInt8Brotli": 324,
+   "resid4bitBrotli": 281,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.06,
+    "sd": 0.26,
+    "mode": 0,
+    "modeShare": 0.929,
+    "lag1": -0.013
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -6.929,
+    "sd": 0.315,
+    "mode": -7,
+    "modeShare": 0.896,
+    "lag1": 0.089
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.038,
+    "sd": 0.274,
+    "mode": 5,
+    "modeShare": 0.923,
+    "lag1": -0.021
+   },
+   "asr": {
+    "min": 3,
+    "max": 6,
+    "mean": 4.044,
+    "sd": 0.803,
+    "mode": 4,
+    "modeShare": 0.403,
+    "lag1": 0.77
+   },
+   "maghrib": {
+    "min": 6,
+    "max": 9,
+    "mean": 7.049,
+    "sd": 0.727,
+    "mode": 7,
+    "modeShare": 0.477,
+    "lag1": 0.751
+   },
+   "isha": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.074,
+    "sd": 0.868,
+    "mode": 0,
+    "modeShare": 0.373,
+    "lag1": 0.811
+   }
+  }
+ },
+ {
+  "id": "SA-makkah",
+  "authority": "Umm al-Qura Saudi Arabia",
+  "place": "Makkah 1448H",
+  "days": 355,
+  "spec": {
+   "fajr": 18.5,
+   "isha": 0,
+   "ishaInterval": 90,
+   "ramadanIshaInterval": 120
+  },
+  "specNote": "cited 18.5; R1 measured 18.28-18.33 and Isha = Maghrib + 90 min exactly",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2130,
+   "exact": 1820,
+   "within1": 2130,
+   "within2": 2130,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1703,
+   "residInt8Brotli": 220,
+   "resid4bitBrotli": 211,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.014,
+    "sd": 0.635,
+    "mode": 1,
+    "modeShare": 0.597,
+    "lag1": 0.356
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.042,
+    "sd": 0.24,
+    "mode": 0,
+    "modeShare": 0.941,
+    "lag1": 0.018
+   },
+   "dhuhr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.003,
+    "sd": 0.159,
+    "mode": 1,
+    "modeShare": 0.975,
+    "lag1": 0.111
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.037,
+    "sd": 0.568,
+    "mode": 1,
+    "modeShare": 0.676,
+    "lag1": 0.301
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.003,
+    "sd": 0.176,
+    "mode": 1,
+    "modeShare": 0.969,
+    "lag1": 0.091
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.003,
+    "sd": 0.176,
+    "mode": 1,
+    "modeShare": 0.969,
+    "lag1": 0.091
+   }
+  }
+ },
+ {
+  "id": "SA-riyadh",
+  "authority": "Umm al-Qura Saudi Arabia",
+  "place": "Riyadh 1448H",
+  "days": 355,
+  "spec": {
+   "fajr": 18.5,
+   "isha": 0,
+   "ishaInterval": 90,
+   "ramadanIshaInterval": 120
+  },
+  "specNote": "cited 18.5, Isha +90",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2130,
+   "exact": 1804,
+   "within1": 2130,
+   "within2": 2130,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 2,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1774,
+   "residInt8Brotli": 215,
+   "resid4bitBrotli": 212,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.039,
+    "sd": 0.679,
+    "mode": 1,
+    "modeShare": 0.538,
+    "lag1": 0.382
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.02,
+    "sd": 0.19,
+    "mode": 0,
+    "modeShare": 0.963,
+    "lag1": 0.145
+   },
+   "dhuhr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.003,
+    "sd": 0.119,
+    "mode": 1,
+    "modeShare": 0.986,
+    "lag1": -0.001
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.034,
+    "sd": 0.571,
+    "mode": 1,
+    "modeShare": 0.673,
+    "lag1": 0.36
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.017,
+    "sd": 0.198,
+    "mode": 1,
+    "modeShare": 0.961,
+    "lag1": 0.065
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.017,
+    "sd": 0.198,
+    "mode": 1,
+    "modeShare": 0.961,
+    "lag1": 0.065
+   }
+  }
+ },
+ {
+  "id": "SA-jeddah",
+  "authority": "Umm al-Qura Saudi Arabia",
+  "place": "Jeddah 1448H",
+  "days": 355,
+  "spec": {
+   "fajr": 18.5,
+   "isha": 0,
+   "ishaInterval": 90,
+   "ramadanIshaInterval": 120
+  },
+  "specNote": "cited 18.5, Isha +90",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2130,
+   "exact": 1842,
+   "within1": 2130,
+   "within2": 2130,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1715,
+   "residInt8Brotli": 219,
+   "resid4bitBrotli": 206,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.054,
+    "sd": 0.572,
+    "mode": 1,
+    "modeShare": 0.67,
+    "lag1": 0.258
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.023,
+    "sd": 0.236,
+    "mode": 0,
+    "modeShare": 0.944,
+    "lag1": 0.092
+   },
+   "dhuhr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.003,
+    "sd": 0.119,
+    "mode": 1,
+    "modeShare": 0.986,
+    "lag1": -0.001
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.977,
+    "sd": 0.591,
+    "mode": 1,
+    "modeShare": 0.651,
+    "lag1": 0.354
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.014,
+    "sd": 0.175,
+    "mode": 1,
+    "modeShare": 0.969,
+    "lag1": 0.085
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.014,
+    "sd": 0.175,
+    "mode": 1,
+    "modeShare": 0.969,
+    "lag1": 0.085
+   }
+  }
+ },
+ {
+  "id": "SA-dammam",
+  "authority": "Umm al-Qura Saudi Arabia",
+  "place": "Dammam 1448H",
+  "days": 355,
+  "spec": {
+   "fajr": 18.5,
+   "isha": 0,
+   "ishaInterval": 90,
+   "ramadanIshaInterval": 120
+  },
+  "specNote": "cited 18.5, Isha +90",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2130,
+   "exact": 1805,
+   "within1": 2130,
+   "within2": 2130,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 2,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1818,
+   "residInt8Brotli": 226,
+   "resid4bitBrotli": 209,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.023,
+    "sd": 0.692,
+    "mode": 1,
+    "modeShare": 0.521,
+    "lag1": 0.429
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.031,
+    "sd": 0.241,
+    "mode": 0,
+    "modeShare": 0.941,
+    "lag1": 0.032
+   },
+   "dhuhr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.008,
+    "sd": 0.159,
+    "mode": 1,
+    "modeShare": 0.975,
+    "lag1": 0.109
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.98,
+    "sd": 0.528,
+    "mode": 1,
+    "modeShare": 0.721,
+    "lag1": 0.343
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.02,
+    "sd": 0.19,
+    "mode": 1,
+    "modeShare": 0.963,
+    "lag1": 0.145
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.02,
+    "sd": 0.19,
+    "mode": 1,
+    "modeShare": 0.963,
+    "lag1": 0.145
+   }
+  }
+ },
+ {
+  "id": "SA-tabuk",
+  "authority": "Umm al-Qura Saudi Arabia",
+  "place": "Tabuk 1448H",
+  "days": 355,
+  "spec": {
+   "fajr": 18.5,
+   "isha": 0,
+   "ishaInterval": 90,
+   "ramadanIshaInterval": 120
+  },
+  "specNote": "cited 18.5, Isha +90",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2130,
+   "exact": 1780,
+   "within1": 2128,
+   "within2": 2130,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 2,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1875,
+   "residInt8Brotli": 233,
+   "resid4bitBrotli": 223,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.98,
+    "sd": 0.729,
+    "mode": 1,
+    "modeShare": 0.468,
+    "lag1": 0.545
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.045,
+    "sd": 0.287,
+    "mode": 0,
+    "modeShare": 0.915,
+    "lag1": 0.044
+   },
+   "dhuhr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1,
+    "sd": 0.15,
+    "mode": 1,
+    "modeShare": 0.977,
+    "lag1": 0
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.025,
+    "sd": 0.522,
+    "mode": 1,
+    "modeShare": 0.727,
+    "lag1": 0.37
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.017,
+    "sd": 0.212,
+    "mode": 1,
+    "modeShare": 0.963,
+    "lag1": 0.119
+   },
+   "isha": {
+    "min": 0,
+    "max": 3,
+    "mean": 1.017,
+    "sd": 0.212,
+    "mode": 1,
+    "modeShare": 0.963,
+    "lag1": 0.119
+   }
+  }
+ },
+ {
+  "id": "SA-abha",
+  "authority": "Umm al-Qura Saudi Arabia",
+  "place": "Abha 1448H",
+  "days": 355,
+  "spec": {
+   "fajr": 18.5,
+   "isha": 0,
+   "ishaInterval": 90,
+   "ramadanIshaInterval": 120
+  },
+  "specNote": "cited 18.5, Isha +90",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2130,
+   "exact": 1855,
+   "within1": 2130,
+   "within2": 2130,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1626,
+   "residInt8Brotli": 215,
+   "resid4bitBrotli": 204,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.003,
+    "sd": 0.533,
+    "mode": 1,
+    "modeShare": 0.715,
+    "lag1": 0.257
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.034,
+    "sd": 0.21,
+    "mode": 0,
+    "modeShare": 0.955,
+    "lag1": 0.038
+   },
+   "dhuhr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.011,
+    "sd": 0.13,
+    "mode": 1,
+    "modeShare": 0.983,
+    "lag1": 0.16
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.977,
+    "sd": 0.595,
+    "mode": 1,
+    "modeShare": 0.645,
+    "lag1": 0.324
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.014,
+    "sd": 0.191,
+    "mode": 1,
+    "modeShare": 0.963,
+    "lag1": -0.005
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.014,
+    "sd": 0.191,
+    "mode": 1,
+    "modeShare": 0.963,
+    "lag1": -0.005
+   }
+  }
+ },
+ {
+  "id": "SA-makkah-1447",
+  "authority": "Umm al-Qura Saudi Arabia",
+  "place": "Makkah 1447H",
+  "days": 355,
+  "spec": {
+   "fajr": 18.5,
+   "isha": 0,
+   "ishaInterval": 90,
+   "ramadanIshaInterval": 120
+  },
+  "specNote": "cited 18.5, Isha +90",
+  "constants": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "modelA": {
+   "values": 2130,
+   "exact": 1825,
+   "within1": 2130,
+   "within2": 2130,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 2,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1708,
+   "residInt8Brotli": 215,
+   "resid4bitBrotli": 218,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.98,
+    "sd": 0.607,
+    "mode": 1,
+    "modeShare": 0.631,
+    "lag1": 0.366
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.02,
+    "sd": 0.218,
+    "mode": 0,
+    "modeShare": 0.952,
+    "lag1": 0.051
+   },
+   "dhuhr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.006,
+    "sd": 0.168,
+    "mode": 1,
+    "modeShare": 0.972,
+    "lag1": -0.001
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.042,
+    "sd": 0.577,
+    "mode": 1,
+    "modeShare": 0.665,
+    "lag1": 0.349
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.006,
+    "sd": 0.199,
+    "mode": 1,
+    "modeShare": 0.961,
+    "lag1": -0.001
+   },
+   "isha": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.006,
+    "sd": 0.199,
+    "mode": 1,
+    "modeShare": 0.961,
+    "lag1": -0.001
+   }
+  }
+ },
+ {
+  "id": "BN-2026",
+  "authority": "MORA Brunei",
+  "place": "Brunei 2026",
+  "days": 364,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, Brunei 20/18",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2148,
+   "exact": 1955,
+   "within1": 2146,
+   "within2": 2146,
+   "worst": 10
+  },
+  "worstAfterHarmonic4": 10,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1474,
+   "residInt8Brotli": 240,
+   "resid4bitBrotli": 198,
+   "fits4bit": true,
+   "centredRange": [
+    -10,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.031,
+    "sd": 0.202,
+    "mode": 0,
+    "modeShare": 0.958,
+    "lag1": 0.113
+   },
+   "sunrise": {
+    "min": -3,
+    "max": 1,
+    "mean": 0.008,
+    "sd": 0.205,
+    "mode": 0,
+    "modeShare": 0.98,
+    "lag1": -0.002
+   },
+   "dhuhr": {
+    "min": -9,
+    "max": 2,
+    "mean": 1.067,
+    "sd": 0.608,
+    "mode": 1,
+    "modeShare": 0.902,
+    "lag1": 0.01
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.008,
+    "sd": 0.37,
+    "mode": 0,
+    "modeShare": 0.863,
+    "lag1": 0.183
+   },
+   "maghrib": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.022,
+    "sd": 0.334,
+    "mode": 0,
+    "modeShare": 0.888,
+    "lag1": -0.005
+   },
+   "isha": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.02,
+    "sd": 0.362,
+    "mode": 0,
+    "modeShare": 0.869,
+    "lag1": -0.003
+   }
+  }
+ },
+ {
+  "id": "BN-2025",
+  "authority": "MORA Brunei",
+  "place": "Brunei 2025",
+  "days": 358,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, Brunei 20/18",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2142,
+   "exact": 1962,
+   "within1": 2142,
+   "within2": 2142,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 1,
+  "bytes": {
+   "naiveBrotli": 1402,
+   "residInt8Brotli": 223,
+   "resid4bitBrotli": 198,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.014,
+    "sd": 0.205,
+    "mode": 0,
+    "modeShare": 0.958,
+    "lag1": 0.062
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.014,
+    "sd": 0.158,
+    "mode": 0,
+    "modeShare": 0.975,
+    "lag1": -0.008
+   },
+   "dhuhr": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.07,
+    "sd": 0.255,
+    "mode": 1,
+    "modeShare": 0.93,
+    "lag1": 0.097
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.045,
+    "sd": 0.34,
+    "mode": 0,
+    "modeShare": 0.882,
+    "lag1": 0.175
+   },
+   "maghrib": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.006,
+    "sd": 0.351,
+    "mode": 0,
+    "modeShare": 0.877,
+    "lag1": 0
+   },
+   "isha": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.02,
+    "sd": 0.354,
+    "mode": 0,
+    "modeShare": 0.874,
+    "lag1": -0.003
+   }
+  }
+ },
+ {
+  "id": "EG-cairo",
+  "authority": "Egyptian GAS",
+  "place": "Cairo",
+  "days": 365,
+  "spec": {
+   "fajr": 19.5,
+   "isha": 17.5
+  },
+  "specNote": "cited 19.5/17.5; R1 measured 19.59/17.43",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1745,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 0,
+  "bytes": {
+   "naiveBrotli": 2030,
+   "residInt8Brotli": 302,
+   "resid4bitBrotli": 261,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.227,
+    "sd": 0.419,
+    "mode": 0,
+    "modeShare": 0.773,
+    "lag1": 0.067
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.211,
+    "sd": 0.408,
+    "mode": 0,
+    "modeShare": 0.789,
+    "lag1": -0.12
+   },
+   "dhuhr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.197,
+    "sd": 0.398,
+    "mode": 0,
+    "modeShare": 0.803,
+    "lag1": 0.068
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.203,
+    "sd": 0.576,
+    "mode": 0,
+    "modeShare": 0.627,
+    "lag1": 0.497
+   },
+   "maghrib": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.082,
+    "sd": 0.275,
+    "mode": 0,
+    "modeShare": 0.918,
+    "lag1": -0.09
+   },
+   "isha": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.129,
+    "sd": 0.335,
+    "mode": 0,
+    "modeShare": 0.871,
+    "lag1": -0.148
+   }
+  }
+ },
+ {
+  "id": "EG-alex",
+  "authority": "Egyptian GAS",
+  "place": "Alexandria",
+  "days": 365,
+  "spec": {
+   "fajr": 19.5,
+   "isha": 17.5
+  },
+  "specNote": "cited 19.5/17.5",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1706,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 0,
+  "bytes": {
+   "naiveBrotli": 2060,
+   "residInt8Brotli": 322,
+   "resid4bitBrotli": 266,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.263,
+    "sd": 0.44,
+    "mode": 0,
+    "modeShare": 0.737,
+    "lag1": -0.047
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.263,
+    "sd": 0.44,
+    "mode": 0,
+    "modeShare": 0.737,
+    "lag1": -0.057
+   },
+   "dhuhr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.173,
+    "sd": 0.378,
+    "mode": 0,
+    "modeShare": 0.827,
+    "lag1": -0.017
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.181,
+    "sd": 0.564,
+    "mode": 0,
+    "modeShare": 0.649,
+    "lag1": 0.426
+   },
+   "maghrib": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.134,
+    "sd": 0.341,
+    "mode": 0,
+    "modeShare": 0.866,
+    "lag1": -0.014
+   },
+   "isha": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.142,
+    "sd": 0.35,
+    "mode": 0,
+    "modeShare": 0.858,
+    "lag1": -0.032
+   }
+  }
+ },
+ {
+  "id": "EG-aswan",
+  "authority": "Egyptian GAS",
+  "place": "Aswan",
+  "days": 305,
+  "spec": {
+   "fajr": 19.5,
+   "isha": 17.5
+  },
+  "specNote": "cited 19.5/17.5",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 1830,
+   "exact": 1415,
+   "within1": 1830,
+   "within2": 1830,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 0,
+  "bytes": {
+   "naiveBrotli": 1599,
+   "residInt8Brotli": 260,
+   "resid4bitBrotli": 254,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.016,
+    "sd": 0.468,
+    "mode": 0,
+    "modeShare": 0.78,
+    "lag1": 0.073
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.161,
+    "sd": 0.455,
+    "mode": 0,
+    "modeShare": 0.767,
+    "lag1": 0.163
+   },
+   "dhuhr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.062,
+    "sd": 0.242,
+    "mode": 0,
+    "modeShare": 0.938,
+    "lag1": 0.046
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.125,
+    "sd": 0.593,
+    "mode": 0,
+    "modeShare": 0.633,
+    "lag1": 0.411
+   },
+   "maghrib": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.007,
+    "sd": 0.479,
+    "mode": 0,
+    "modeShare": 0.77,
+    "lag1": 0.071
+   },
+   "isha": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.17,
+    "sd": 0.469,
+    "mode": 0,
+    "modeShare": 0.751,
+    "lag1": 0.27
+   }
+  }
+ },
+ {
+  "id": "EG-luxor",
+  "authority": "Egyptian GAS",
+  "place": "Luxor",
+  "days": 365,
+  "spec": {
+   "fajr": 19.5,
+   "isha": 17.5
+  },
+  "specNote": "cited 19.5/17.5",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1980,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 0,
+  "bytes": {
+   "naiveBrotli": 1912,
+   "residInt8Brotli": 217,
+   "resid4bitBrotli": 201,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.052,
+    "sd": 0.222,
+    "mode": 0,
+    "modeShare": 0.948,
+    "lag1": -0.055
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.118,
+    "sd": 0.322,
+    "mode": 0,
+    "modeShare": 0.882,
+    "lag1": -0.025
+   },
+   "dhuhr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.047,
+    "sd": 0.211,
+    "mode": 0,
+    "modeShare": 0.953,
+    "lag1": -0.049
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.071,
+    "sd": 0.534,
+    "mode": 0,
+    "modeShare": 0.71,
+    "lag1": 0.329
+   },
+   "maghrib": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.003,
+    "sd": 0.157,
+    "mode": 0,
+    "modeShare": 0.975,
+    "lag1": 0
+   },
+   "isha": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.027,
+    "sd": 0.208,
+    "mode": 0,
+    "modeShare": 0.956,
+    "lag1": 0.046
+   }
+  }
+ },
+ {
+  "id": "OM-muscat",
+  "authority": "MARA Oman",
+  "place": "Muscat 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 17.95,
+   "isha": 18.2
+  },
+  "specNote": "R1 MEASURED 17.95/18.20",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 5,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1347,
+   "within1": 2179,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 1825,
+   "residInt8Brotli": 342,
+   "resid4bitBrotli": 302,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.192,
+    "sd": 0.394,
+    "mode": 0,
+    "modeShare": 0.808,
+    "lag1": -0.022
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.411,
+    "sd": 0.492,
+    "mode": 0,
+    "modeShare": 0.589,
+    "lag1": -0.152
+   },
+   "dhuhr": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.373,
+    "sd": 0.483,
+    "mode": 5,
+    "modeShare": 0.627,
+    "lag1": 0.112
+   },
+   "asr": {
+    "min": 4,
+    "max": 7,
+    "mean": 5.414,
+    "sd": 0.56,
+    "mode": 5,
+    "modeShare": 0.548,
+    "lag1": 0.544
+   },
+   "maghrib": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.427,
+    "sd": 0.495,
+    "mode": 5,
+    "modeShare": 0.573,
+    "lag1": 0.449
+   },
+   "isha": {
+    "min": -2,
+    "max": 1,
+    "mean": -0.542,
+    "sd": 0.55,
+    "mode": -1,
+    "modeShare": 0.545,
+    "lag1": 0.564
+   }
+  }
+ },
+ {
+  "id": "OM-salalah",
+  "authority": "MARA Oman",
+  "place": "Salalah 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 17.95,
+   "isha": 18.2
+  },
+  "specNote": "R1 MEASURED 17.95/18.20",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 5,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1782,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 1647,
+   "residInt8Brotli": 296,
+   "resid4bitBrotli": 259,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.178,
+    "sd": 0.383,
+    "mode": 0,
+    "modeShare": 0.822,
+    "lag1": -0.12
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.041,
+    "sd": 0.199,
+    "mode": 0,
+    "modeShare": 0.959,
+    "lag1": -0.043
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.03,
+    "sd": 0.317,
+    "mode": 5,
+    "modeShare": 0.899,
+    "lag1": -0.01
+   },
+   "asr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.049,
+    "sd": 0.516,
+    "mode": 5,
+    "modeShare": 0.732,
+    "lag1": 0.361
+   },
+   "maghrib": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.027,
+    "sd": 0.485,
+    "mode": 5,
+    "modeShare": 0.764,
+    "lag1": 0.206
+   },
+   "isha": {
+    "min": -2,
+    "max": 0,
+    "mean": -0.833,
+    "sd": 0.515,
+    "mode": -1,
+    "modeShare": 0.707,
+    "lag1": 0.358
+   }
+  }
+ },
+ {
+  "id": "OM-sohar",
+  "authority": "MARA Oman",
+  "place": "Sohar 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 17.95,
+   "isha": 18.2
+  },
+  "specNote": "R1 MEASURED 17.95/18.20",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 5,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1580,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 1832,
+   "residInt8Brotli": 331,
+   "resid4bitBrotli": 283,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.318,
+    "sd": 0.466,
+    "mode": 0,
+    "modeShare": 0.682,
+    "lag1": -0.122
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.077,
+    "sd": 0.276,
+    "mode": 0,
+    "modeShare": 0.918,
+    "lag1": -0.077
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 4.89,
+    "sd": 0.329,
+    "mode": 5,
+    "modeShare": 0.879,
+    "lag1": 0.069
+   },
+   "asr": {
+    "min": 4,
+    "max": 6,
+    "mean": 4.921,
+    "sd": 0.603,
+    "mode": 5,
+    "modeShare": 0.63,
+    "lag1": 0.398
+   },
+   "maghrib": {
+    "min": 4,
+    "max": 6,
+    "mean": 4.888,
+    "sd": 0.579,
+    "mode": 5,
+    "modeShare": 0.652,
+    "lag1": 0.299
+   },
+   "isha": {
+    "min": -2,
+    "max": 0,
+    "mean": -1.049,
+    "sd": 0.656,
+    "mode": -1,
+    "modeShare": 0.567,
+    "lag1": 0.415
+   }
+  }
+ },
+ {
+  "id": "OM-thumrait",
+  "authority": "MARA Oman",
+  "place": "Thumrait 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 17.95,
+   "isha": 18.2
+  },
+  "specNote": "R1 MEASURED 17.95/18.20",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 5,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1692,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 1653,
+   "residInt8Brotli": 310,
+   "resid4bitBrotli": 278,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.274,
+    "sd": 0.446,
+    "mode": 0,
+    "modeShare": 0.726,
+    "lag1": -0.223
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.112,
+    "sd": 0.324,
+    "mode": 0,
+    "modeShare": 0.882,
+    "lag1": -0.117
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.923,
+    "sd": 0.266,
+    "mode": 5,
+    "modeShare": 0.923,
+    "lag1": 0.033
+   },
+   "asr": {
+    "min": 4,
+    "max": 6,
+    "mean": 4.907,
+    "sd": 0.566,
+    "mode": 5,
+    "modeShare": 0.671,
+    "lag1": 0.282
+   },
+   "maghrib": {
+    "min": 4,
+    "max": 6,
+    "mean": 4.91,
+    "sd": 0.513,
+    "mode": 5,
+    "modeShare": 0.729,
+    "lag1": 0.116
+   },
+   "isha": {
+    "min": -2,
+    "max": 0,
+    "mean": -1.011,
+    "sd": 0.544,
+    "mode": -1,
+    "modeShare": 0.704,
+    "lag1": 0.333
+   }
+  }
+ },
+ {
+  "id": "OM-samad",
+  "authority": "MARA Oman",
+  "place": "Samad Shan 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 17.95,
+   "isha": 18.2
+  },
+  "specNote": "R1 MEASURED 17.95/18.20",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 5,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1682,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 1791,
+   "residInt8Brotli": 316,
+   "resid4bitBrotli": 279,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.066,
+    "sd": 0.279,
+    "mode": 0,
+    "modeShare": 0.918,
+    "lag1": 0.052
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.137,
+    "sd": 0.374,
+    "mode": 0,
+    "modeShare": 0.841,
+    "lag1": 0.022
+   },
+   "dhuhr": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.137,
+    "sd": 0.344,
+    "mode": 5,
+    "modeShare": 0.863,
+    "lag1": 0.049
+   },
+   "asr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.093,
+    "sd": 0.571,
+    "mode": 5,
+    "modeShare": 0.666,
+    "lag1": 0.453
+   },
+   "maghrib": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.167,
+    "sd": 0.546,
+    "mode": 5,
+    "modeShare": 0.674,
+    "lag1": 0.467
+   },
+   "isha": {
+    "min": -2,
+    "max": 0,
+    "mean": -0.833,
+    "sd": 0.571,
+    "mode": -1,
+    "modeShare": 0.647,
+    "lag1": 0.512
+   }
+  }
+ },
+ {
+  "id": "OM-muscat-2025",
+  "authority": "MARA Oman",
+  "place": "Muscat 2025",
+  "days": 365,
+  "spec": {
+   "fajr": 17.95,
+   "isha": 18.2
+  },
+  "specNote": "R1 MEASURED 17.95/18.20",
+  "constants": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 5,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1343,
+   "within1": 2168,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 1821,
+   "residInt8Brotli": 344,
+   "resid4bitBrotli": 303,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.175,
+    "sd": 0.38,
+    "mode": 0,
+    "modeShare": 0.825,
+    "lag1": 0.055
+   },
+   "sunrise": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.411,
+    "sd": 0.492,
+    "mode": 0,
+    "modeShare": 0.589,
+    "lag1": -0.095
+   },
+   "dhuhr": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.386,
+    "sd": 0.487,
+    "mode": 5,
+    "modeShare": 0.614,
+    "lag1": 0.217
+   },
+   "asr": {
+    "min": 4,
+    "max": 7,
+    "mean": 5.425,
+    "sd": 0.567,
+    "mode": 5,
+    "modeShare": 0.548,
+    "lag1": 0.572
+   },
+   "maghrib": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.438,
+    "sd": 0.496,
+    "mode": 5,
+    "modeShare": 0.562,
+    "lag1": 0.486
+   },
+   "isha": {
+    "min": -2,
+    "max": 1,
+    "mean": -0.521,
+    "sd": 0.599,
+    "mode": -1,
+    "modeShare": 0.542,
+    "lag1": 0.64
+   }
+  }
+ },
+ {
+  "id": "ID-jakarta",
+  "authority": "Kemenag Indonesia",
+  "place": "Jakarta",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, Kemenag 20/18 + 2 min ihtiyati",
+  "constants": {
+   "fajr": 3,
+   "sunrise": -3,
+   "dhuhr": 4,
+   "asr": 3,
+   "maghrib": 3,
+   "isha": 3
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1978,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 4,
+  "bytes": {
+   "naiveBrotli": 1428,
+   "residInt8Brotli": 244,
+   "resid4bitBrotli": 202,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.033,
+    "sd": 0.207,
+    "mode": 3,
+    "modeShare": 0.956,
+    "lag1": 0.039
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -3,
+    "mean": -3.14,
+    "sd": 0.347,
+    "mode": -3,
+    "modeShare": 0.86,
+    "lag1": 0.065
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.058,
+    "sd": 0.233,
+    "mode": 4,
+    "modeShare": 0.942,
+    "lag1": -0.011
+   },
+   "asr": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.038,
+    "sd": 0.192,
+    "mode": 3,
+    "modeShare": 0.962,
+    "lag1": 0.183
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 4,
+    "mean": 2.762,
+    "sd": 0.432,
+    "mode": 3,
+    "modeShare": 0.756,
+    "lag1": -0.012
+   },
+   "isha": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.041,
+    "sd": 0.236,
+    "mode": 3,
+    "modeShare": 0.942,
+    "lag1": 0.117
+   }
+  }
+ },
+ {
+  "id": "ID-surabaya",
+  "authority": "Kemenag Indonesia",
+  "place": "Surabaya",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, Kemenag 20/18",
+  "constants": {
+   "fajr": 3,
+   "sunrise": -3,
+   "dhuhr": 4,
+   "asr": 3,
+   "maghrib": 3,
+   "isha": 3
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1912,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 4,
+  "bytes": {
+   "naiveBrotli": 1453,
+   "residInt8Brotli": 286,
+   "resid4bitBrotli": 223,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.11,
+    "sd": 0.312,
+    "mode": 3,
+    "modeShare": 0.89,
+    "lag1": 0.129
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -2,
+    "mean": -3.052,
+    "sd": 0.267,
+    "mode": -3,
+    "modeShare": 0.926,
+    "lag1": -0.036
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.129,
+    "sd": 0.335,
+    "mode": 4,
+    "modeShare": 0.871,
+    "lag1": -0.051
+   },
+   "asr": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.159,
+    "sd": 0.366,
+    "mode": 3,
+    "modeShare": 0.841,
+    "lag1": 0.306
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 4,
+    "mean": 2.863,
+    "sd": 0.352,
+    "mode": 3,
+    "modeShare": 0.858,
+    "lag1": 0.136
+   },
+   "isha": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.148,
+    "sd": 0.355,
+    "mode": 3,
+    "modeShare": 0.852,
+    "lag1": 0.177
+   }
+  }
+ },
+ {
+  "id": "ID-bandaaceh",
+  "authority": "Kemenag Indonesia",
+  "place": "Banda Aceh",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, Kemenag 20/18",
+  "constants": {
+   "fajr": 3,
+   "sunrise": -3,
+   "dhuhr": 4,
+   "asr": 3,
+   "maghrib": 3,
+   "isha": 3
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1995,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 4,
+  "bytes": {
+   "naiveBrotli": 1420,
+   "residInt8Brotli": 197,
+   "resid4bitBrotli": 157,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.019,
+    "sd": 0.137,
+    "mode": 3,
+    "modeShare": 0.981,
+    "lag1": -0.02
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -3,
+    "mean": -3.219,
+    "sd": 0.414,
+    "mode": -3,
+    "modeShare": 0.781,
+    "lag1": 0.087
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.008,
+    "sd": 0.09,
+    "mode": 4,
+    "modeShare": 0.992,
+    "lag1": -0.008
+   },
+   "asr": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.022,
+    "sd": 0.164,
+    "mode": 3,
+    "modeShare": 0.973,
+    "lag1": -0.018
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.751,
+    "sd": 0.433,
+    "mode": 3,
+    "modeShare": 0.751,
+    "lag1": 0.165
+   },
+   "isha": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.011,
+    "sd": 0.104,
+    "mode": 3,
+    "modeShare": 0.989,
+    "lag1": -0.011
+   }
+  }
+ },
+ {
+  "id": "ID-jayapura",
+  "authority": "Kemenag Indonesia",
+  "place": "Jayapura",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, Kemenag 20/18",
+  "constants": {
+   "fajr": 3,
+   "sunrise": -3,
+   "dhuhr": 4,
+   "asr": 3,
+   "maghrib": 3,
+   "isha": 3
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1959,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 4,
+  "bytes": {
+   "naiveBrotli": 1417,
+   "residInt8Brotli": 250,
+   "resid4bitBrotli": 219,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.071,
+    "sd": 0.257,
+    "mode": 3,
+    "modeShare": 0.929,
+    "lag1": -0.077
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -3,
+    "mean": -3.151,
+    "sd": 0.358,
+    "mode": -3,
+    "modeShare": 0.849,
+    "lag1": 0.058
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.088,
+    "sd": 0.283,
+    "mode": 4,
+    "modeShare": 0.912,
+    "lag1": -0.096
+   },
+   "asr": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.058,
+    "sd": 0.233,
+    "mode": 3,
+    "modeShare": 0.942,
+    "lag1": -0.008
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.792,
+    "sd": 0.406,
+    "mode": 3,
+    "modeShare": 0.792,
+    "lag1": -0.098
+   },
+   "isha": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.058,
+    "sd": 0.233,
+    "mode": 3,
+    "modeShare": 0.942,
+    "lag1": -0.061
+   }
+  }
+ },
+ {
+  "id": "ID-makassar",
+  "authority": "Kemenag Indonesia",
+  "place": "Makassar",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, Kemenag 20/18",
+  "constants": {
+   "fajr": 3,
+   "sunrise": -3,
+   "dhuhr": 4,
+   "asr": 3,
+   "maghrib": 3,
+   "isha": 3
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1968,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 4,
+  "bytes": {
+   "naiveBrotli": 1420,
+   "residInt8Brotli": 236,
+   "resid4bitBrotli": 190,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.041,
+    "sd": 0.199,
+    "mode": 3,
+    "modeShare": 0.959,
+    "lag1": -0.043
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -3,
+    "mean": -3.211,
+    "sd": 0.408,
+    "mode": -3,
+    "modeShare": 0.789,
+    "lag1": 0.163
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.027,
+    "sd": 0.163,
+    "mode": 4,
+    "modeShare": 0.973,
+    "lag1": -0.028
+   },
+   "asr": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.036,
+    "sd": 0.185,
+    "mode": 3,
+    "modeShare": 0.964,
+    "lag1": 0.043
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.764,
+    "sd": 0.424,
+    "mode": 3,
+    "modeShare": 0.764,
+    "lag1": 0.044
+   },
+   "isha": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.058,
+    "sd": 0.233,
+    "mode": 3,
+    "modeShare": 0.942,
+    "lag1": 0.141
+   }
+  }
+ },
+ {
+  "id": "ID-pontianak",
+  "authority": "Kemenag Indonesia",
+  "place": "Pontianak",
+  "days": 365,
+  "spec": {
+   "fajr": 20,
+   "isha": 18
+  },
+  "specNote": "cited, Kemenag 20/18",
+  "constants": {
+   "fajr": 3,
+   "sunrise": -3,
+   "dhuhr": 4,
+   "asr": 3,
+   "maghrib": 3,
+   "isha": 3
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1945,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 4,
+  "bytes": {
+   "naiveBrotli": 1401,
+   "residInt8Brotli": 248,
+   "resid4bitBrotli": 207,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.003,
+    "sd": 0.282,
+    "mode": 3,
+    "modeShare": 0.921,
+    "lag1": 0.034
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -3,
+    "mean": -3.195,
+    "sd": 0.396,
+    "mode": -3,
+    "modeShare": 0.805,
+    "lag1": 0.352
+   },
+   "dhuhr": {
+    "min": 3,
+    "max": 5,
+    "mean": 4.014,
+    "sd": 0.138,
+    "mode": 4,
+    "modeShare": 0.981,
+    "lag1": -0.01
+   },
+   "asr": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.008,
+    "sd": 0.203,
+    "mode": 3,
+    "modeShare": 0.959,
+    "lag1": -0.002
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.729,
+    "sd": 0.445,
+    "mode": 3,
+    "modeShare": 0.729,
+    "lag1": 0.005
+   },
+   "isha": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.027,
+    "sd": 0.255,
+    "mode": 3,
+    "modeShare": 0.934,
+    "lag1": 0.073
+   }
+  }
+ },
+ {
+  "id": "AE-dubai",
+  "authority": "Awqaf UAE",
+  "place": "Dubai 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED; AlAdhan Dubai 18.2/18.2, self-described as a Batoul Apps convention",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 3,
+   "asr": 1,
+   "maghrib": 3,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1545,
+   "within1": 2185,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 3,
+  "bytes": {
+   "naiveBrotli": 1858,
+   "residInt8Brotli": 344,
+   "resid4bitBrotli": 317,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.156,
+    "sd": 0.578,
+    "mode": 0,
+    "modeShare": 0.641,
+    "lag1": 0.443
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -2,
+    "mean": -2.929,
+    "sd": 0.534,
+    "mode": -3,
+    "modeShare": 0.71,
+    "lag1": 0.51
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.784,
+    "sd": 0.412,
+    "mode": 3,
+    "modeShare": 0.784,
+    "lag1": 0.175
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.871,
+    "sd": 0.515,
+    "mode": 1,
+    "modeShare": 0.718,
+    "lag1": 0.36
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.203,
+    "sd": 0.499,
+    "mode": 3,
+    "modeShare": 0.71,
+    "lag1": 0.276
+   },
+   "isha": {
+    "min": -2,
+    "max": 1,
+    "mean": -0.321,
+    "sd": 0.517,
+    "mode": 0,
+    "modeShare": 0.671,
+    "lag1": 0.486
+   }
+  }
+ },
+ {
+  "id": "AE-abudhabi",
+  "authority": "Awqaf UAE",
+  "place": "Abu Dhabi 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED 18.2/18.2",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1648,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 3,
+  "bytes": {
+   "naiveBrotli": 1839,
+   "residInt8Brotli": 333,
+   "resid4bitBrotli": 289,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.132,
+    "sd": 0.338,
+    "mode": 0,
+    "modeShare": 0.868,
+    "lag1": 0.088
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -2,
+    "mean": -3.079,
+    "sd": 0.299,
+    "mode": -3,
+    "modeShare": 0.904,
+    "lag1": -0.04
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.274,
+    "sd": 0.446,
+    "mode": 2,
+    "modeShare": 0.726,
+    "lag1": -0.044
+   },
+   "asr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.455,
+    "sd": 0.498,
+    "mode": 0,
+    "modeShare": 0.545,
+    "lag1": 0.302
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.825,
+    "sd": 0.38,
+    "mode": 3,
+    "modeShare": 0.825,
+    "lag1": 0.147
+   },
+   "isha": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.647,
+    "sd": 0.478,
+    "mode": -1,
+    "modeShare": 0.647,
+    "lag1": -0.093
+   }
+  }
+ },
+ {
+  "id": "AE-alain",
+  "authority": "Awqaf UAE",
+  "place": "Al Ain 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED 18.2/18.2",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -4,
+   "dhuhr": 3,
+   "asr": 1,
+   "maghrib": 4,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1645,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 4,
+  "bytes": {
+   "naiveBrotli": 1841,
+   "residInt8Brotli": 339,
+   "resid4bitBrotli": 282,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.392,
+    "sd": 0.488,
+    "mode": 0,
+    "modeShare": 0.608,
+    "lag1": -0.147
+   },
+   "sunrise": {
+    "min": -5,
+    "max": -4,
+    "mean": -4.332,
+    "sd": 0.471,
+    "mode": -4,
+    "modeShare": 0.668,
+    "lag1": -0.056
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.819,
+    "sd": 0.385,
+    "mode": 3,
+    "modeShare": 0.819,
+    "lag1": 0.096
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.019,
+    "sd": 0.482,
+    "mode": 1,
+    "modeShare": 0.767,
+    "lag1": 0.211
+   },
+   "maghrib": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.74,
+    "sd": 0.439,
+    "mode": 4,
+    "modeShare": 0.74,
+    "lag1": -0.054
+   },
+   "isha": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.09,
+    "sd": 0.296,
+    "mode": 0,
+    "modeShare": 0.904,
+    "lag1": -0.093
+   }
+  }
+ },
+ {
+  "id": "AE-sharjah",
+  "authority": "Awqaf UAE",
+  "place": "Sharjah 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED 18.2/18.2",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1670,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 3,
+  "bytes": {
+   "naiveBrotli": 1858,
+   "residInt8Brotli": 312,
+   "resid4bitBrotli": 276,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.093,
+    "sd": 0.334,
+    "mode": 0,
+    "modeShare": 0.879,
+    "lag1": 0.167
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -2,
+    "mean": -2.937,
+    "sd": 0.303,
+    "mode": -3,
+    "modeShare": 0.904,
+    "lag1": 0.253
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.277,
+    "sd": 0.447,
+    "mode": 2,
+    "modeShare": 0.723,
+    "lag1": -0.01
+   },
+   "asr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.441,
+    "sd": 0.497,
+    "mode": 0,
+    "modeShare": 0.559,
+    "lag1": 0.33
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.816,
+    "sd": 0.387,
+    "mode": 3,
+    "modeShare": 0.816,
+    "lag1": 0.049
+   },
+   "isha": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.693,
+    "sd": 0.461,
+    "mode": -1,
+    "modeShare": 0.693,
+    "lag1": -0.037
+   }
+  }
+ },
+ {
+  "id": "AE-fujairah",
+  "authority": "Awqaf UAE",
+  "place": "Fujairah 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED 18.2/18.2",
+  "constants": {
+   "fajr": 1,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 3,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1490,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 3,
+  "bytes": {
+   "naiveBrotli": 1869,
+   "residInt8Brotli": 348,
+   "resid4bitBrotli": 310,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.797,
+    "sd": 0.402,
+    "mode": 1,
+    "modeShare": 0.797,
+    "lag1": -0.048
+   },
+   "sunrise": {
+    "min": -3,
+    "max": -2,
+    "mean": -2.307,
+    "sd": 0.461,
+    "mode": -2,
+    "modeShare": 0.693,
+    "lag1": 0.007
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.436,
+    "sd": 0.496,
+    "mode": 2,
+    "modeShare": 0.564,
+    "lag1": 0.1
+   },
+   "asr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.567,
+    "sd": 0.495,
+    "mode": 1,
+    "modeShare": 0.567,
+    "lag1": 0.333
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.063,
+    "sd": 0.294,
+    "mode": 3,
+    "modeShare": 0.91,
+    "lag1": 0.051
+   },
+   "isha": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.551,
+    "sd": 0.497,
+    "mode": -1,
+    "modeShare": 0.551,
+    "lag1": -0.149
+   }
+  }
+ },
+ {
+  "id": "AE-rak",
+  "authority": "Awqaf UAE",
+  "place": "Ras Al Khaimah 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED 18.2/18.2",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1627,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 3,
+  "bytes": {
+   "naiveBrotli": 1878,
+   "residInt8Brotli": 330,
+   "resid4bitBrotli": 286,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.274,
+    "sd": 0.446,
+    "mode": 0,
+    "modeShare": 0.726,
+    "lag1": 0.104
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -2,
+    "mean": -2.797,
+    "sd": 0.422,
+    "mode": -3,
+    "modeShare": 0.781,
+    "lag1": 0.107
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.216,
+    "sd": 0.412,
+    "mode": 2,
+    "modeShare": 0.784,
+    "lag1": 0.014
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.337,
+    "sd": 0.478,
+    "mode": 0,
+    "modeShare": 0.658,
+    "lag1": 0.313
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 4,
+    "mean": 2.767,
+    "sd": 0.435,
+    "mode": 3,
+    "modeShare": 0.756,
+    "lag1": 0.089
+   },
+   "isha": {
+    "min": -2,
+    "max": 0,
+    "mean": -0.775,
+    "sd": 0.443,
+    "mode": -1,
+    "modeShare": 0.753,
+    "lag1": 0.052
+   }
+  }
+ },
+ {
+  "id": "AE-jebeljais",
+  "authority": "Awqaf UAE",
+  "place": "Jebel Jais 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED 18.2/18.2",
+  "constants": {
+   "fajr": 1,
+   "sunrise": -7,
+   "dhuhr": 2,
+   "asr": 0,
+   "maghrib": 8,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1641,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 8,
+  "bytes": {
+   "naiveBrotli": 1887,
+   "residInt8Brotli": 341,
+   "resid4bitBrotli": 276,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.825,
+    "sd": 0.38,
+    "mode": 1,
+    "modeShare": 0.825,
+    "lag1": -0.024
+   },
+   "sunrise": {
+    "min": -8,
+    "max": -6,
+    "mean": -7.367,
+    "sd": 0.499,
+    "mode": -7,
+    "modeShare": 0.616,
+    "lag1": 0.236
+   },
+   "dhuhr": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.868,
+    "sd": 0.338,
+    "mode": 2,
+    "modeShare": 0.868,
+    "lag1": 0.064
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.005,
+    "sd": 0.534,
+    "mode": 0,
+    "modeShare": 0.715,
+    "lag1": 0.327
+   },
+   "maghrib": {
+    "min": 7,
+    "max": 9,
+    "mean": 7.584,
+    "sd": 0.504,
+    "mode": 8,
+    "modeShare": 0.573,
+    "lag1": 0.297
+   },
+   "isha": {
+    "min": -2,
+    "max": -1,
+    "mean": -1.101,
+    "sd": 0.302,
+    "mode": -1,
+    "modeShare": 0.899,
+    "lag1": 0.01
+   }
+  }
+ },
+ {
+  "id": "AE-hatta",
+  "authority": "Awqaf UAE",
+  "place": "Hatta 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED 18.2/18.2",
+  "constants": {
+   "fajr": 1,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 0,
+   "maghrib": 4,
+   "isha": -1
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1594,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 4,
+  "bytes": {
+   "naiveBrotli": 1853,
+   "residInt8Brotli": 327,
+   "resid4bitBrotli": 290,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 0,
+    "max": 2,
+    "mean": 1.025,
+    "sd": 0.515,
+    "mode": 1,
+    "modeShare": 0.734,
+    "lag1": 0.38
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -2,
+    "mean": -2.962,
+    "sd": 0.538,
+    "mode": -3,
+    "modeShare": 0.71,
+    "lag1": 0.507
+   },
+   "dhuhr": {
+    "min": 1,
+    "max": 3,
+    "mean": 2.107,
+    "sd": 0.334,
+    "mode": 2,
+    "modeShare": 0.877,
+    "lag1": 0.047
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.26,
+    "sd": 0.486,
+    "mode": 0,
+    "modeShare": 0.696,
+    "lag1": 0.214
+   },
+   "maghrib": {
+    "min": 3,
+    "max": 5,
+    "mean": 3.636,
+    "sd": 0.487,
+    "mode": 4,
+    "modeShare": 0.63,
+    "lag1": 0.166
+   },
+   "isha": {
+    "min": -2,
+    "max": 0,
+    "mean": -0.907,
+    "sd": 0.52,
+    "mode": -1,
+    "modeShare": 0.721,
+    "lag1": 0.313
+   }
+  }
+ },
+ {
+  "id": "AE-dubai-2025",
+  "authority": "Awqaf UAE",
+  "place": "Dubai 2025",
+  "days": 365,
+  "spec": {
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  "specNote": "UNVERIFIED 18.2/18.2",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 3,
+   "asr": 1,
+   "maghrib": 3,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1393,
+   "within1": 2177,
+   "within2": 2190,
+   "worst": 2
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 3,
+  "bytes": {
+   "naiveBrotli": 1855,
+   "residInt8Brotli": 356,
+   "resid4bitBrotli": 332,
+   "fits4bit": true,
+   "centredRange": [
+    -2,
+    2
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.153,
+    "sd": 0.648,
+    "mode": 0,
+    "modeShare": 0.573,
+    "lag1": 0.595
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -2,
+    "mean": -2.959,
+    "sd": 0.616,
+    "mode": -3,
+    "modeShare": 0.619,
+    "lag1": 0.624
+   },
+   "dhuhr": {
+    "min": 2,
+    "max": 4,
+    "mean": 2.762,
+    "sd": 0.445,
+    "mode": 3,
+    "modeShare": 0.745,
+    "lag1": 0.131
+   },
+   "asr": {
+    "min": 0,
+    "max": 2,
+    "mean": 0.877,
+    "sd": 0.572,
+    "mode": 1,
+    "modeShare": 0.658,
+    "lag1": 0.339
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.17,
+    "sd": 0.562,
+    "mode": 3,
+    "modeShare": 0.655,
+    "lag1": 0.282
+   },
+   "isha": {
+    "min": -2,
+    "max": 1,
+    "mean": -0.321,
+    "sd": 0.648,
+    "mode": 0,
+    "modeShare": 0.567,
+    "lag1": 0.595
+   }
+  }
+ },
+ {
+  "id": "MA-rabat",
+  "authority": "Habous Morocco",
+  "place": "Rabat, one Hijri month",
+  "days": 30,
+  "spec": {
+   "fajr": 19,
+   "isha": 17
+  },
+  "specNote": "cited 19/17; R1 measured 19.04/16.85",
+  "constants": {
+   "fajr": -1,
+   "sunrise": -3,
+   "dhuhr": 5,
+   "asr": 1,
+   "maghrib": 4,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 180,
+   "exact": 162,
+   "within1": 180,
+   "within2": 180,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 309,
+   "residInt8Brotli": 57,
+   "resid4bitBrotli": 29,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.967,
+    "sd": 0.18,
+    "mode": -1,
+    "modeShare": 0.967,
+    "lag1": -0.036
+   },
+   "sunrise": {
+    "min": -3,
+    "max": -2,
+    "mean": -2.867,
+    "sd": 0.34,
+    "mode": -3,
+    "modeShare": 0.867,
+    "lag1": -0.159
+   },
+   "dhuhr": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.067,
+    "sd": 0.249,
+    "mode": 5,
+    "modeShare": 0.933,
+    "lag1": -0.074
+   },
+   "asr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.733,
+    "sd": 0.442,
+    "mode": 1,
+    "modeShare": 0.733,
+    "lag1": 0.522
+   },
+   "maghrib": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.967,
+    "sd": 0.18,
+    "mode": 4,
+    "modeShare": 0.967,
+    "lag1": -0.036
+   },
+   "isha": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.067,
+    "sd": 0.249,
+    "mode": 0,
+    "modeShare": 0.933,
+    "lag1": -0.074
+   }
+  }
+ },
+ {
+  "id": "MA-casa",
+  "authority": "Habous Morocco",
+  "place": "Casablanca, one Hijri month",
+  "days": 30,
+  "spec": {
+   "fajr": 19,
+   "isha": 17
+  },
+  "specNote": "cited 19/17",
+  "constants": {
+   "fajr": -1,
+   "sunrise": -3,
+   "dhuhr": 5,
+   "asr": 1,
+   "maghrib": 5,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 180,
+   "exact": 136,
+   "within1": 180,
+   "within2": 180,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 306,
+   "residInt8Brotli": 67,
+   "resid4bitBrotli": 46,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.667,
+    "sd": 0.471,
+    "mode": -1,
+    "modeShare": 0.667,
+    "lag1": -0.067
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -3,
+    "mean": -3.033,
+    "sd": 0.18,
+    "mode": -3,
+    "modeShare": 0.967,
+    "lag1": -0.036
+   },
+   "dhuhr": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.333,
+    "sd": 0.471,
+    "mode": 5,
+    "modeShare": 0.667,
+    "lag1": -0.467
+   },
+   "asr": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.033,
+    "sd": 0.18,
+    "mode": 1,
+    "modeShare": 0.967,
+    "lag1": -0.036
+   },
+   "maghrib": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.567,
+    "sd": 0.496,
+    "mode": 5,
+    "modeShare": 0.567,
+    "lag1": -0.46
+   },
+   "isha": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.3,
+    "sd": 0.458,
+    "mode": 0,
+    "modeShare": 0.7,
+    "lag1": -0.237
+   }
+  }
+ },
+ {
+  "id": "MA-marrakech",
+  "authority": "Habous Morocco",
+  "place": "Marrakech, one Hijri month",
+  "days": 30,
+  "spec": {
+   "fajr": 19,
+   "isha": 17
+  },
+  "specNote": "cited 19/17",
+  "constants": {
+   "fajr": -1,
+   "sunrise": -5,
+   "dhuhr": 5,
+   "asr": 1,
+   "maghrib": 6,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 180,
+   "exact": 147,
+   "within1": 180,
+   "within2": 180,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 6,
+  "bytes": {
+   "naiveBrotli": 302,
+   "residInt8Brotli": 77,
+   "resid4bitBrotli": 36,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.9,
+    "sd": 0.3,
+    "mode": -1,
+    "modeShare": 0.9,
+    "lag1": -0.115
+   },
+   "sunrise": {
+    "min": -5,
+    "max": -4,
+    "mean": -4.7,
+    "sd": 0.458,
+    "mode": -5,
+    "modeShare": 0.7,
+    "lag1": -0.443
+   },
+   "dhuhr": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.2,
+    "sd": 0.4,
+    "mode": 5,
+    "modeShare": 0.8,
+    "lag1": -0.217
+   },
+   "asr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.867,
+    "sd": 0.34,
+    "mode": 1,
+    "modeShare": 0.867,
+    "lag1": -0.159
+   },
+   "maghrib": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.833,
+    "sd": 0.373,
+    "mode": 6,
+    "modeShare": 0.833,
+    "lag1": -0.207
+   },
+   "isha": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.2,
+    "sd": 0.4,
+    "mode": 0,
+    "modeShare": 0.8,
+    "lag1": -0.258
+   }
+  }
+ },
+ {
+  "id": "MA-fes",
+  "authority": "Habous Morocco",
+  "place": "Fes, one Hijri month",
+  "days": 30,
+  "spec": {
+   "fajr": 19,
+   "isha": 17
+  },
+  "specNote": "cited 19/17",
+  "constants": {
+   "fajr": -1,
+   "sunrise": -4,
+   "dhuhr": 5,
+   "asr": 1,
+   "maghrib": 5,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 180,
+   "exact": 138,
+   "within1": 180,
+   "within2": 180,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 307,
+   "residInt8Brotli": 62,
+   "resid4bitBrotli": 43,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.967,
+    "sd": 0.18,
+    "mode": -1,
+    "modeShare": 0.967,
+    "lag1": -0.001
+   },
+   "sunrise": {
+    "min": -5,
+    "max": -4,
+    "mean": -4.5,
+    "sd": 0.5,
+    "mode": -5,
+    "modeShare": 0.5,
+    "lag1": -0.1
+   },
+   "dhuhr": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.067,
+    "sd": 0.249,
+    "mode": 5,
+    "modeShare": 0.933,
+    "lag1": -0.038
+   },
+   "asr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.733,
+    "sd": 0.442,
+    "mode": 1,
+    "modeShare": 0.733,
+    "lag1": 0.522
+   },
+   "maghrib": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.267,
+    "sd": 0.442,
+    "mode": 5,
+    "modeShare": 0.733,
+    "lag1": -0.376
+   },
+   "isha": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.267,
+    "sd": 0.442,
+    "mode": 0,
+    "modeShare": 0.733,
+    "lag1": -0.376
+   }
+  }
+ },
+ {
+  "id": "MA-laayoune",
+  "authority": "Habous Morocco",
+  "place": "Laayoune, one Hijri month",
+  "days": 30,
+  "spec": {
+   "fajr": 19,
+   "isha": 17
+  },
+  "specNote": "cited 19/17",
+  "constants": {
+   "fajr": 0,
+   "sunrise": -2,
+   "dhuhr": 5,
+   "asr": 1,
+   "maghrib": 4,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 180,
+   "exact": 128,
+   "within1": 180,
+   "within2": 180,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 296,
+   "residInt8Brotli": 58,
+   "resid4bitBrotli": 42,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.5,
+    "sd": 0.5,
+    "mode": -1,
+    "modeShare": 0.5,
+    "lag1": -0.967
+   },
+   "sunrise": {
+    "min": -3,
+    "max": -2,
+    "mean": -2.4,
+    "sd": 0.49,
+    "mode": -2,
+    "modeShare": 0.6,
+    "lag1": -0.633
+   },
+   "dhuhr": {
+    "min": 5,
+    "max": 6,
+    "mean": 5.3,
+    "sd": 0.458,
+    "mode": 5,
+    "modeShare": 0.7,
+    "lag1": -0.443
+   },
+   "asr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.9,
+    "sd": 0.3,
+    "mode": 1,
+    "modeShare": 0.9,
+    "lag1": -0.115
+   },
+   "maghrib": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.9,
+    "sd": 0.3,
+    "mode": 4,
+    "modeShare": 0.9,
+    "lag1": -0.078
+   },
+   "isha": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.333,
+    "sd": 0.471,
+    "mode": 0,
+    "modeShare": 0.667,
+    "lag1": 0.383
+   }
+  }
+ },
+ {
+  "id": "MA-agadir",
+  "authority": "Habous Morocco",
+  "place": "Agadir, one Hijri month",
+  "days": 30,
+  "spec": {
+   "fajr": 19,
+   "isha": 17
+  },
+  "specNote": "cited 19/17",
+  "constants": {
+   "fajr": -1,
+   "sunrise": -4,
+   "dhuhr": 5,
+   "asr": 1,
+   "maghrib": 5,
+   "isha": 0
+  },
+  "modelA": {
+   "values": 180,
+   "exact": 141,
+   "within1": 180,
+   "within2": 180,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 5,
+  "bytes": {
+   "naiveBrotli": 296,
+   "residInt8Brotli": 56,
+   "resid4bitBrotli": 42,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -2,
+    "max": -1,
+    "mean": -1.1,
+    "sd": 0.3,
+    "mode": -1,
+    "modeShare": 0.9,
+    "lag1": -0.078
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -3,
+    "mean": -3.933,
+    "sd": 0.249,
+    "mode": -4,
+    "modeShare": 0.933,
+    "lag1": -0.074
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.933,
+    "sd": 0.249,
+    "mode": 5,
+    "modeShare": 0.933,
+    "lag1": -0.074
+   },
+   "asr": {
+    "min": 0,
+    "max": 1,
+    "mean": 0.567,
+    "sd": 0.496,
+    "mode": 1,
+    "modeShare": 0.567,
+    "lag1": 0.083
+   },
+   "maghrib": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.5,
+    "sd": 0.5,
+    "mode": 5,
+    "modeShare": 0.5,
+    "lag1": 0.1
+   },
+   "isha": {
+    "min": -1,
+    "max": 0,
+    "mean": -0.133,
+    "sd": 0.34,
+    "mode": 0,
+    "modeShare": 0.867,
+    "lag1": -0.121
+   }
+  }
+ },
+ {
+  "id": "QA-doha",
+  "authority": "Qatar Calendar House (digitised)",
+  "place": "Doha, perpetual table",
+  "days": 365,
+  "spec": {
+   "fajr": 17.81,
+   "isha": 0,
+   "ishaInterval": 90
+  },
+  "specNote": "R1 MEASURED 17.81 and Isha = Maghrib + 90 min",
+  "constants": {
+   "fajr": -2,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 2,
+   "isha": 2
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1891,
+   "within1": 2190,
+   "within2": 2190,
+   "worst": 1
+  },
+  "worstAfterHarmonic4": 1,
+  "maxAbsConstant": 2,
+  "bytes": {
+   "naiveBrotli": 1857,
+   "residInt8Brotli": 233,
+   "resid4bitBrotli": 237,
+   "fits4bit": true,
+   "centredRange": [
+    -1,
+    1
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": -3,
+    "max": -1,
+    "mean": -1.921,
+    "sd": 0.373,
+    "mode": -2,
+    "modeShare": 0.855,
+    "lag1": 0.29
+   },
+   "sunrise": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.014,
+    "sd": 0.291,
+    "mode": 0,
+    "modeShare": 0.915,
+    "lag1": 0.225
+   },
+   "dhuhr": {
+    "min": -1,
+    "max": 1,
+    "mean": -0.011,
+    "sd": 0.181,
+    "mode": 0,
+    "modeShare": 0.967,
+    "lag1": -0.004
+   },
+   "asr": {
+    "min": -1,
+    "max": 1,
+    "mean": 0.003,
+    "sd": 0.505,
+    "mode": 0,
+    "modeShare": 0.745,
+    "lag1": 0.226
+   },
+   "maghrib": {
+    "min": 1,
+    "max": 3,
+    "mean": 2.074,
+    "sd": 0.381,
+    "mode": 2,
+    "modeShare": 0.849,
+    "lag1": 0.508
+   },
+   "isha": {
+    "min": 1,
+    "max": 3,
+    "mean": 2.074,
+    "sd": 0.381,
+    "mode": 2,
+    "modeShare": 0.849,
+    "lag1": 0.508
+   }
+  }
+ },
+ {
+  "id": "UK-london-2026",
+  "authority": "London unified timetable",
+  "place": "London 2026",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "specNote": "no published angle exists; 18/18 is the nearest UK convention",
+  "constants": {
+   "fajr": 41,
+   "sunrise": -3,
+   "dhuhr": 5,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": -60
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1237,
+   "within1": 1452,
+   "within2": 1479,
+   "worst": 113
+  },
+  "worstAfterHarmonic4": 42,
+  "maxAbsConstant": 60,
+  "bytes": {
+   "naiveBrotli": 2441,
+   "residInt8Brotli": 614,
+   "resid4bitBrotli": 39,
+   "fits4bit": false,
+   "centredRange": [
+    -113,
+    91
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 10,
+    "max": 132,
+    "mean": 41.208,
+    "sd": 35.799,
+    "mode": 13,
+    "modeShare": 0.068,
+    "lag1": 0.997
+   },
+   "sunrise": {
+    "min": -3,
+    "max": -2,
+    "mean": -2.997,
+    "sd": 0.052,
+    "mode": -3,
+    "modeShare": 0.997,
+    "lag1": -0.003
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5,
+    "sd": 0.074,
+    "mode": 5,
+    "modeShare": 0.995,
+    "lag1": 0
+   },
+   "asr": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.249,
+    "sd": 0.831,
+    "mode": 0,
+    "modeShare": 0.395,
+    "lag1": 0.699
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 4,
+    "mean": 3.003,
+    "sd": 0.091,
+    "mode": 3,
+    "modeShare": 0.992,
+    "lag1": -0.001
+   },
+   "isha": {
+    "min": -173,
+    "max": -16,
+    "mean": -59.885,
+    "sd": 48.939,
+    "mode": -21,
+    "modeShare": 0.079,
+    "lag1": 0.997
+   }
+  }
+ },
+ {
+  "id": "UK-london-2025",
+  "authority": "London unified timetable",
+  "place": "London 2025 (ELM PDF)",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "specNote": "no published angle exists",
+  "constants": {
+   "fajr": 41,
+   "sunrise": -3,
+   "dhuhr": 5,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": -60
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1212,
+   "within1": 1452,
+   "within2": 1477,
+   "worst": 112
+  },
+  "worstAfterHarmonic4": 41,
+  "maxAbsConstant": 60,
+  "bytes": {
+   "naiveBrotli": 2426,
+   "residInt8Brotli": 600,
+   "resid4bitBrotli": 40,
+   "fits4bit": false,
+   "centredRange": [
+    -112,
+    90
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 10,
+    "max": 131,
+    "mean": 41.184,
+    "sd": 35.756,
+    "mode": 13,
+    "modeShare": 0.074,
+    "lag1": 0.998
+   },
+   "sunrise": {
+    "min": -3,
+    "max": -2,
+    "mean": -2.992,
+    "sd": 0.09,
+    "mode": -3,
+    "modeShare": 0.992,
+    "lag1": -0.008
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 6,
+    "mean": 5.008,
+    "sd": 0.117,
+    "mode": 5,
+    "modeShare": 0.986,
+    "lag1": -0.005
+   },
+   "asr": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.285,
+    "sd": 0.851,
+    "mode": 1,
+    "modeShare": 0.397,
+    "lag1": 0.747
+   },
+   "maghrib": {
+    "min": 3,
+    "max": 4,
+    "mean": 3.005,
+    "sd": 0.074,
+    "mode": 3,
+    "modeShare": 0.995,
+    "lag1": -0.006
+   },
+   "isha": {
+    "min": -172,
+    "max": -15,
+    "mean": -59.803,
+    "sd": 48.78,
+    "mode": -21,
+    "modeShare": 0.088,
+    "lag1": 0.997
+   }
+  }
+ },
+ {
+  "id": "UK-london-2022",
+  "authority": "London unified timetable",
+  "place": "London 2022 (ELM PDF)",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "specNote": "no published angle exists",
+  "constants": {
+   "fajr": 41,
+   "sunrise": -3,
+   "dhuhr": 5,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": -60
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1226,
+   "within1": 1455,
+   "within2": 1480,
+   "worst": 113
+  },
+  "worstAfterHarmonic4": 42,
+  "maxAbsConstant": 60,
+  "bytes": {
+   "naiveBrotli": 2440,
+   "residInt8Brotli": 638,
+   "resid4bitBrotli": 39,
+   "fits4bit": false,
+   "centredRange": [
+    -113,
+    91
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 10,
+    "max": 132,
+    "mean": 41.214,
+    "sd": 35.808,
+    "mode": 13,
+    "modeShare": 0.071,
+    "lag1": 0.997
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -2,
+    "mean": -3.005,
+    "sd": 0.128,
+    "mode": -3,
+    "modeShare": 0.984,
+    "lag1": -0.002
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.995,
+    "sd": 0.074,
+    "mode": 5,
+    "modeShare": 0.995,
+    "lag1": -0.006
+   },
+   "asr": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.238,
+    "sd": 0.821,
+    "mode": 0,
+    "modeShare": 0.392,
+    "lag1": 0.711
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 4,
+    "mean": 2.984,
+    "sd": 0.147,
+    "mode": 3,
+    "modeShare": 0.978,
+    "lag1": 0.114
+   },
+   "isha": {
+    "min": -173,
+    "max": -16,
+    "mean": -59.945,
+    "sd": 48.935,
+    "mode": -21,
+    "modeShare": 0.085,
+    "lag1": 0.997
+   }
+  }
+ },
+ {
+  "id": "UK-london-2019",
+  "authority": "London unified timetable",
+  "place": "London 2019 (ELM PDF)",
+  "days": 365,
+  "spec": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "specNote": "no published angle exists",
+  "constants": {
+   "fajr": 41,
+   "sunrise": -3,
+   "dhuhr": 5,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": -60
+  },
+  "modelA": {
+   "values": 2190,
+   "exact": 1090,
+   "within1": 1457,
+   "within2": 1478,
+   "worst": 113
+  },
+  "worstAfterHarmonic4": 42,
+  "maxAbsConstant": 60,
+  "bytes": {
+   "naiveBrotli": 2433,
+   "residInt8Brotli": 735,
+   "resid4bitBrotli": 39,
+   "fits4bit": false,
+   "centredRange": [
+    -113,
+    90
+   ]
+  },
+  "stats": {
+   "fajr": {
+    "min": 10,
+    "max": 131,
+    "mean": 41.041,
+    "sd": 35.753,
+    "mode": 13,
+    "modeShare": 0.074,
+    "lag1": 0.998
+   },
+   "sunrise": {
+    "min": -4,
+    "max": -3,
+    "mean": -3.14,
+    "sd": 0.347,
+    "mode": -3,
+    "modeShare": 0.86,
+    "lag1": -0.163
+   },
+   "dhuhr": {
+    "min": 4,
+    "max": 5,
+    "mean": 4.852,
+    "sd": 0.355,
+    "mode": 5,
+    "modeShare": 0.852,
+    "lag1": -0.084
+   },
+   "asr": {
+    "min": -1,
+    "max": 2,
+    "mean": 0.148,
+    "sd": 0.804,
+    "mode": 0,
+    "modeShare": 0.422,
+    "lag1": 0.686
+   },
+   "maghrib": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.844,
+    "sd": 0.363,
+    "mode": 3,
+    "modeShare": 0.844,
+    "lag1": 0.064
+   },
+   "isha": {
+    "min": -173,
+    "max": -16,
+    "mean": -60.036,
+    "sd": 48.871,
+    "mode": -21,
+    "modeShare": 0.068,
+    "lag1": 0.997
+   }
+  }
+ }
+]

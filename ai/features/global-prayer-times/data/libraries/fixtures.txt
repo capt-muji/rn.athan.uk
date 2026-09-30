@@ -1,0 +1,36 @@
+## adhan@4.4.6 against its own shared fixtures
+
+`variance` is the fixture's own declared tolerance in minutes. `worst` is
+the largest absolute delta the library produced on that fixture. A fixture
+passes when `worst <= variance`, which is what `test/times.test.ts` L131
+asserts (it reads `data["variance"] || 0`, so a missing key means EXACT).
+
+| fixture | method | madhab | days | variance | worst | verdict | source authority |
+|---|---|---|---|---|---|---|---|
+| Ankara-Turkey | Turkey | Shafi | 24 | 2 | 2 | PASS | https://www.yenisafak.com/en/ankara-prayer-times-01.01.2019 |
+| Doha-Qatar | Qatar | Shafi | 12 | 0 | 0 | PASS | http://www.islam.gov.qa/ |
+| Dubai-Gulf | Dubai | Shafi | 12 | 1 | 1 | PASS | https://www.awqaf.gov.ae/en/Pages/PrayerTimes.aspx |
+| Kuwait City-Kuwait | Kuwait | Shafi | 12 | 2 | 2 | PASS | https://itunes.apple.com/us/app/kuwait-prayer-times/id723108544?mt=12 |
+| London-MoonsightingCommittee | MoonsightingCommittee | Hanafi | 12 | 0 | 0 | PASS | http://www.moonsighting.com/pray.php |
+| Makkah-UmmAlQura | UmmAlQura | Shafi | 12 | 0 | 0 | PASS | http://www.ummulqura.org.sa/Index.aspx |
+| Singapore-Singapore | Singapore | Shafi | 366 | 2 | 2 | PASS | http://www.muis.gov.sg |
+| Tehran-Tehran | Tehran | Shafi | 12 | 1 | 1 | PASS | http://praytimes.org/ |
+
+Total fixture days across all files: 462.
+
+## Which of the library's 13 methods have any fixture at all
+
+| method | has a fixture |
+|---|---|
+| MuslimWorldLeague | NO |
+| Egyptian | NO |
+| Karachi | NO |
+| UmmAlQura | yes |
+| Dubai | yes |
+| MoonsightingCommittee | yes |
+| NorthAmerica | NO |
+| Kuwait | yes |
+| Qatar | yes |
+| Singapore | yes |
+| Tehran | yes |
+| Turkey | yes |

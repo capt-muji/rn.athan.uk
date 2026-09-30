@@ -1,0 +1,59 @@
+## E. Carrying a table forward one year, scored against the later year's own published times
+
+Three strategies, all scored on the SAME later-year days.
+
+| authority | later year | values | strategy | exact | <=1 min | <=2 min | worst |
+|---|---|---|---|---|---|---|---|
+| MUIS Singapore | `SG-2026` | 2190 | reuse last year's PUBLISHED times verbatim | 1222 (55.8%) | 2155 (98.4%) | 2190 (100.0%) | 2 |
+| MUIS Singapore | `SG-2026` | 2190 | last year's SIX CONSTANTS on this year's baseline | 1557 (71.1%) | 2184 (99.7%) | 2190 (100.0%) | 2 |
+| MUIS Singapore | `SG-2026` | 2190 | last year's EXACT RESIDUAL on this year's baseline | 1206 (55.1%) | 2048 (93.5%) | 2183 (99.7%) | 3 |
+| MUIS Singapore | `SG-2026` | 2190 | this year's own exact residual (the lossless reference) | 2190 (100.0%) | 2190 (100.0%) | 2190 (100.0%) | 0 |
+| MARA Oman, Muscat | `OM-muscat` | 2190 | reuse last year's PUBLISHED times verbatim | 1976 (90.2%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| MARA Oman, Muscat | `OM-muscat` | 2190 | last year's SIX CONSTANTS on this year's baseline | 1347 (61.5%) | 2179 (99.5%) | 2190 (100.0%) | 2 |
+| MARA Oman, Muscat | `OM-muscat` | 2190 | last year's EXACT RESIDUAL on this year's baseline | 1789 (81.7%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| MARA Oman, Muscat | `OM-muscat` | 2190 | this year's own exact residual (the lossless reference) | 2190 (100.0%) | 2190 (100.0%) | 2190 (100.0%) | 0 |
+| Awqaf UAE, Dubai | `AE-dubai` | 2190 | reuse last year's PUBLISHED times verbatim | 2177 (99.4%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Awqaf UAE, Dubai | `AE-dubai` | 2190 | last year's SIX CONSTANTS on this year's baseline | 1545 (70.5%) | 2185 (99.8%) | 2190 (100.0%) | 2 |
+| Awqaf UAE, Dubai | `AE-dubai` | 2190 | last year's EXACT RESIDUAL on this year's baseline | 1913 (87.4%) | 2189 (100.0%) | 2190 (100.0%) | 2 |
+| Awqaf UAE, Dubai | `AE-dubai` | 2190 | this year's own exact residual (the lossless reference) | 2190 (100.0%) | 2190 (100.0%) | 2190 (100.0%) | 0 |
+| MORA Brunei | `BN-2026` | 2100 | reuse last year's PUBLISHED times verbatim | 1949 (92.8%) | 2098 (99.9%) | 2098 (99.9%) | 10 |
+| MORA Brunei | `BN-2026` | 2106 | last year's SIX CONSTANTS on this year's baseline | 1921 (91.2%) | 2104 (99.9%) | 2104 (99.9%) | 10 |
+| MORA Brunei | `BN-2026` | 2106 | last year's EXACT RESIDUAL on this year's baseline | 1910 (90.7%) | 2104 (99.9%) | 2104 (99.9%) | 10 |
+| MORA Brunei | `BN-2026` | 2106 | this year's own exact residual (the lossless reference) | 2106 (100.0%) | 2106 (100.0%) | 2106 (100.0%) | 0 |
+
+## E2. Where the year-over-year movement comes from
+
+| authority | field | published times move | computed baseline moves | residual moves |
+|---|---|---|---|---|
+| MUIS Singapore | fajr | mean 0.42, max 1 | mean 0.08, max 1 | mean 0.50, max 2 |
+| MUIS Singapore | sunrise | mean 0.39, max 1 | mean 0.07, max 1 | mean 0.45, max 2 |
+| MUIS Singapore | dhuhr | mean 0.41, max 1 | mean 0.04, max 1 | mean 0.45, max 2 |
+| MUIS Singapore | asr | mean 0.66, max 2 | mean 0.08, max 1 | mean 0.74, max 3 |
+| MUIS Singapore | maghrib | mean 0.45, max 2 | mean 0.05, max 1 | mean 0.50, max 2 |
+| MUIS Singapore | isha | mean 0.43, max 1 | mean 0.04, max 1 | mean 0.47, max 2 |
+| MARA Oman, Muscat | fajr | mean 0.13, max 1 | mean 0.13, max 1 | mean 0.25, max 1 |
+| MARA Oman, Muscat | sunrise | mean 0.11, max 1 | mean 0.12, max 1 | mean 0.22, max 1 |
+| MARA Oman, Muscat | dhuhr | mean 0.04, max 1 | mean 0.09, max 1 | mean 0.13, max 1 |
+| MARA Oman, Muscat | asr | mean 0.09, max 1 | mean 0.09, max 1 | mean 0.14, max 1 |
+| MARA Oman, Muscat | maghrib | mean 0.11, max 1 | mean 0.11, max 1 | mean 0.15, max 1 |
+| MARA Oman, Muscat | isha | mean 0.10, max 1 | mean 0.13, max 1 | mean 0.20, max 1 |
+| Awqaf UAE, Dubai | fajr | mean 0.01, max 1 | mean 0.16, max 1 | mean 0.17, max 1 |
+| Awqaf UAE, Dubai | sunrise | mean 0.01, max 1 | mean 0.13, max 1 | mean 0.14, max 1 |
+| Awqaf UAE, Dubai | dhuhr | mean 0.01, max 1 | mean 0.06, max 1 | mean 0.07, max 1 |
+| Awqaf UAE, Dubai | asr | mean 0.01, max 1 | mean 0.09, max 1 | mean 0.09, max 1 |
+| Awqaf UAE, Dubai | maghrib | mean 0.01, max 1 | mean 0.12, max 1 | mean 0.13, max 1 |
+| Awqaf UAE, Dubai | isha | mean 0.01, max 1 | mean 0.16, max 1 | mean 0.17, max 2 |
+| MORA Brunei | fajr | mean 0.06, max 1 | mean 0.06, max 1 | mean 0.05, max 1 |
+| MORA Brunei | sunrise | mean 0.08, max 3 | mean 0.07, max 1 | mean 0.04, max 3 |
+| MORA Brunei | dhuhr | mean 0.08, max 10 | mean 0.05, max 1 | mean 0.11, max 10 |
+| MORA Brunei | asr | mean 0.11, max 1 | mean 0.09, max 1 | mean 0.13, max 1 |
+| MORA Brunei | maghrib | mean 0.06, max 1 | mean 0.08, max 1 | mean 0.14, max 1 |
+| MORA Brunei | isha | mean 0.07, max 1 | mean 0.06, max 1 | mean 0.12, max 1 |
+
+## F. The Maldives trick: a perpetual residual table in a dummy leap year
+
+| perpetual table source | applied to | values | exact | <=1 min | <=2 min | worst |
+|---|---|---|---|---|---|---|
+| 2024, a leap year | 2024 | 2196 | 2196 (100.0%) | 2196 (100.0%) | 2196 (100.0%) | 0 |
+| 2024, a leap year | 2025 | 2190 | 1183 (54.0%) | 2086 (95.3%) | 2188 (99.9%) | 3 |
+| 2024, a leap year | 2026 | 2190 | 1706 (77.9%) | 2186 (99.8%) | 2190 (100.0%) | 2 |
