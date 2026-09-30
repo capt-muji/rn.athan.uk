@@ -131,9 +131,11 @@ values are internally consistent across 30 days, but OCR is a weaker source than
 
 Ordered by value. None of these blocks a decision; they sharpen one.
 
-1. **Settle the licensing question.** R4 and R6 both stop at the same wall. Five emails to five authorities would
-   answer more than any further measurement. This is the single highest-value open item and it is not research,
-   it is correspondence.
+1. **Licensing: CLOSED by the owner, 2026-09-30.** R4 and R6 both stopped at the same wall, with one authority of
+   eleven permitting commercial use and eight silent. The owner has since confirmed he corresponded with the
+   authorities himself and has permission to use their data. **No session contacts anyone, drafts any letter, or
+   gathers contact details, ever, without the owner asking for it first** (owner, 2026-09-30). The item is
+   recorded as settled and is not re-opened.
 2. **Close Pakistan and Afghanistan**, the largest NULLs. Pakistan is the second-largest Muslim population and its
    convention rests on a university with no findable publication.
 3. **Measure the remaining tier-D states** the way Oman and Qatar were measured: Kuwait, Bahrain, Jordan, Algeria,
