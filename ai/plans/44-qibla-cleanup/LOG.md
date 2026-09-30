@@ -31,3 +31,8 @@ BOTH the filename check and the content check, printing
 Breaks 5 of 5 caught, `ALL AS EXPECTED: 1`, including the two the plan exists to prove: a restored
 BINARY tile fixture, which no content search can read, and the guard's own self-exclusion widened to
 every test file, which the first draft SURVIVED.
+
+## Both steps done
+
+Step 1 merged, step 2 merged, row set to EXECUTED. Suite 178 suites / 4788 tests at 100% on all
+four measures. Nothing is pushed: the audit does that.
