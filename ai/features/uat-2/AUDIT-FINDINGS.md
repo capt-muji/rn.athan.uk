@@ -6437,7 +6437,29 @@ not are rural and get an honest empty state.
 
 Suite after: 192 suites, 5006 tests, 100% on all four measures, and 47 of 47 breaks caught.
 
-NOT PROVEN ON DEVICE. No phone was connected during this session, so the tile fetch over the network,
-the decode cost on the SD820 and the A12, and the drawn map itself are all unproven on hardware. Step
-6 of the plan carries the protocol, and it needs the owner to hold the phone. This joins row 40's own
-outstanding Android heading proof rather than replacing it.
+PROVEN ON THE iPHONE XS, AND REJECTED BY THE OWNER ON SIGHT (2026-09-30, 1.29.154). The Release build
+installed and the sheet rendered a real street, so the tile fetch, the decode and the drawing all work
+on an A12. The INTERACTION failed. The screen read "Stand along Parsons Green Lane, then turn 49
+degrees to the left."
+
+The owner: "No user in their mind knows absolutely what 49 degrees looks like. This is really hard,
+absolutely not. No."
+
+He is right and no measurement was needed. The sentence asks a person to estimate an angle by eye,
+which is the one thing a person cannot do. Every accuracy argument in this row concerns whether the
+NUMBER is correct; none asked whether a person can ACT on a number. 49 degrees is exact and useless.
+
+THE DURABLE LESSON, and it is the third time this programme has learned a version of it: a correct,
+audited, 100%-covered screen can still fail the moment a person touches it. Session 37 shipped a dial
+whose labels were upside down, session 40 shipped a heading that was 71 degrees wrong, and session 41
+shipped a direction no one can follow. The common cause is that the acceptance criteria measured the
+output and never the user's next action.
+
+The replacement is queued as row 43: a north-locked map with the user and the Kaaba on it, and haptic
+feedback as the user turns, so the direction is FELT rather than read. The owner's requirement that
+decides it: "We want this to work on the phone completely in the dark without any reference looking
+around" (in a room, in a shopping centre, with nothing outside to sight along). That reverses this
+row's founding decision, because only the magnetometer knows which way a phone points.
+
+Android remains unproven: no Android phone was connected. Row 40's outstanding Android heading proof
+is not superseded, because the heading path it concerned was deleted rather than fixed.

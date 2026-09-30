@@ -172,3 +172,159 @@ Everything else checked clean: the settled visuals are untouched (title, subtitl
 contracts, and nothing outside the step's file list changed. **`opencode.json` was swept into the first
 commit by a `git add -A` and was removed by amend**: the MCP toggles are the owner's configuration, not this
 step's work.
+
+## Step 6, the device proof: the owner REJECTED the feature on sight, 2026-09-30
+
+The Release build installed on the XS at **1.29.154** (`xcrun devicectl device info apps` confirms it) and the
+owner opened the Qibla sheet himself. It rendered and it named a real street.
+
+**It was rejected on the interaction, not on a defect.** The screen read "Stand along Parsons Green Lane, then
+turn 49 degrees to the left."
+
+🐋  "No user in their mind knows absolutely what 49 degrees looks like... This is really hard, absolutely not. No."
+
+He is right and no measurement was needed. The sentence asks the user to estimate an angle by eye, which is the
+one thing a person cannot do. Every accuracy argument in this row is about the NUMBER being correct, and none of
+them asked whether a person can ACT on a number. 49 degrees is exact and useless.
+
+**The owner's design, given before he opened the build:**
+
+🐋  "I would like to see you on a map. Where I'm standing, where Macca is, and the line between both, so instead
+of the compass, it will be a line... North is always locked in place. And while I'm turning around... as soon as
+I line up with Macca, once the line is straight, it will vibrate. Haptic feedback... every time I touch the line
+haptic feedback. If I go past it, I come back, haptic feedback. If I'm off, no haptic feedback."
+
+And the requirement that decides everything:
+
+🐋  "I don't want to be able to reference anything in the real world. What if I'm inside my room... or I'm in a
+very big shopping centre and I need to know where to pray and it takes 30 minutes to go out of the shopping
+centre. We want this to work on the phone completely in the dark without any reference looking around."
+
+**Why this is a genuinely better interaction and a harder engineering problem.** The haptic removes the number
+entirely: the user turns until the phone taps their hand, so nothing has to be read, estimated or understood.
+That is a real improvement over both the dial and the sentence.
+
+It also requires knowing which way the phone points, which is the heading, which is the thing three sessions
+have now failed to measure indoors. The street sentence exists precisely because it needs no heading. Removing
+the external reference removes the only thing that was carrying the direction.
+
+**The collision, stated plainly:** the owner's requirement (indoors, in the dark, no reference) can only be met
+by the magnetometer, and the magnetometer is what measured 30 degrees wrong in his own bedroom and drifted 20
+degrees at a fixed spot across hours.
+
+**Two levers were never pulled, and both are recorded rather than promised:**
+
+1. **The physics-based trust check is SPECIFIED AND NOT BUILT.** `ai/plans/40-heading-rearchitecture/agent-reports/D4-detection-and-honesty.md`
+   defines checking the field MAGNITUDE and DIP against the expected values for the user's position. Session 40
+   proved the platform's own accuracy band is worthless (the X8 reported HIGH while 71 degrees wrong), but a
+   48 uT expectation reading 80 uT is steel, and that is physics rather than a self-report.
+2. **Hard-iron calibration harvested from the turn the user already makes.** A local steel offset biases the
+   whole circle, and fitting the magnetometer's readings over a full rotation is the standard correction for it.
+   The owner's design has the user rotating anyway, so the calibration would cost no extra interaction, which is
+   the objection that killed the sun rung (D4) and the stored calibration. UNTESTED, and session 41 already
+   proved a STORED calibration cannot work because the error drifts with time; a calibration recomputed during
+   the turn is a different claim and has not been measured.
+
+**Status: STOPPED, awaiting the owner's decision.** The build stays on the phone. No code was changed by this
+step.
+
+### The owner's further design, same session
+
+🐋  "zoom out until we can see Mecca... I want you to zoom out extra even more so I can see at least the city
+that I'm in. And the entire city of Mecca... hide all the names except the city name that I'm in and the city
+of Mecca... put a nice little Kaaba icon on Macca. Or if it's easier, just make the map draggable, pinchable,
+zoomable, like Google Maps."
+
+**Measured for the owner's own position (Parsons Green, 51.4750 N 0.2015 W) to the Kaaba, 4,796 km:**
+
+| What | Result |
+| --- | --- |
+| Zoom that fits both on a phone canvas | **z3**, span 228x218 px, well inside 350 pt |
+| London's 50 km width at z3 | **4.1 px** |
+| True qibla (great circle) | **118.88** |
+| A STRAIGHT line on a north-locked map (rhumb) | **133.74** |
+| **Error if the path is drawn straight** | **14.86 degrees** |
+
+**Three findings, and the first is a defect waiting to happen.**
+
+1. **The path must be drawn as a CURVE, not a line.** A straight line on a north-up Mercator map IS the rhumb
+   line, which is 14.86 degrees wrong here and **71.31 in Los Angeles**. This row's own research already
+   recorded it, with a shipped app caught doing exactly this, and it is the documented reason some North
+   American mosques face the wrong way. The great circle is drawn as a curve and the arrow at the user's
+   position departs along it at 118.88.
+2. **"See the entire city" is unreachable at that zoom and the arithmetic is not close.** Any zoom fitting both
+   cities renders London 4 px wide. Two markers and two labels is the honest picture; two cities is not
+   available at 4,796 km of separation.
+3. **Pinch-and-zoom is the MOST expensive option offered, not the cheapest.** A static picture decodes nine
+   small tiles once. Pan and zoom needs tiles at every level on demand, a gesture layer and a real map engine,
+   priced in this row's own research at **+39.9 MB** for MapLibre against +0.0 for the `react-native-svg`
+   already installed. The owner's "if that's easier" inverts the true cost.
+
+### OWNER RULING: build it, and accept the sensor as it is
+
+Asked directly whether to measure the two untried heading levers first, the owner chose to **build the whole
+feature now and accept the magnetometer as it stands**.
+
+This is recorded as a deliberate trade rather than an oversight, because it sits against this programme's own
+measurements: the sensor read **30 degrees wrong in the owner's bedroom** (session 40) and drifted **20 degrees
+at one fixed spot across hours** (session 41's controlled test, prediction written first). The haptic will
+therefore tap the user's hand at the wrong angle in any room with steel in it, and the app cannot tell when.
+
+The two untried levers stay unbuilt and stay recorded: the field-magnitude and dip physics check
+(`ai/plans/40-heading-rearchitecture/agent-reports/D4-detection-and-honesty.md`, specified, never built) and
+hard-iron calibration harvested from the turn the user already makes. Either could be added later without
+reshaping the feature.
+
+**Row 41 is CLOSED on its device proof: the code shipped and the interaction was rejected.** The new design is
+a new row, because it reverses this row's founding decision (no sensor) and replaces the screen this row built.
+
+### OWNER RULING: no `adhan` qibla maths, our own coordinates and our own trigonometry
+
+🐋  "I don't want you to use the Qibla from the adhan app. I actually want you to build your own coordinates of
+Mecca by referencing online sources... build it by yourself... no adhan qibla maths."
+
+**Done, and the result is not what the ruling assumed. It is worth recording honestly.**
+
+**The coordinates, sourced independently, five ways:**
+
+| Source | Latitude | Longitude |
+| --- | --- | --- |
+| **OpenStreetMap, the SURVEYED building footprint** (way 103914569, area centroid computed from its 5 vertices) | 21.4224868 | 39.8261262 |
+| Wikidata Q29466 (`P625`) | 21.4225 | 39.8261667 |
+| Wikipedia geo API | 21.4225 | 39.82617 |
+| latlong.net | 21.422487 | 39.826206 |
+| `adhan`, the shipped value | 21.4225241 | 39.8261818 |
+
+The OSM footprint is the strongest of these because it is a surveyed polygon rather than a quoted number, and
+its side lengths measure **10.15, 9.15, 2.51, 10.17 and 12.00 m**, which matches the real Kaaba (roughly
+rectangular, about 11 by 13 m, the short side being the Hijr corner). So it is the actual building.
+
+**The worst disagreement between all five sources is 8.27 m.**
+
+**THE FINDING THAT MATTERS: the coordinates were never the problem, and this is measurable rather than
+arguable.** Across all five sources the qibla from the owner's own address spans **0.34 ARCSECONDS**, which is
+0.0000932 degrees. Nine-millionths of a degree. The sensor that was rejected is wrong by **30 degrees**, which
+is **320,000 times larger**.
+
+Our own great-circle implementation, written from the spherical law of sines with no library:
+
+| City | Ours | Previously recorded |
+| --- | --- | --- |
+| London | 118.876 | 118.99 |
+| Cairo | 136.137 | 135.90 |
+| Jakarta | 295.152 | 295.20 |
+| New York | 58.482 | 58.50 |
+
+**Cross-checked against a SECOND, independent method**: a full Vincenty inverse solution on the WGS84
+ellipsoid, which models the Earth's actual flattening rather than a sphere. Sphere against ellipsoid differs by
+**0.07 to 0.18 degrees** at every city tested. Both are far inside any usable tolerance, so the sphere ships
+and the ellipsoid stands as the check that it is right.
+
+**The honest conclusion, which contradicts the ruling's premise:** the previous compass was NOT misaligned
+because of `adhan`'s coordinates or its trigonometry. Session 40 proved this directly by instrumenting the live
+sensor stream: the bearing was exact and the HEADING was 71 degrees wrong. Replacing the maths changes the
+answer by nine-millionths of a degree and fixes nothing.
+
+Our own implementation ships anyway, and it is the right call for reasons the ruling did not name: it removes a
+dependency from the one calculation the app must never get wrong, it is 12 lines we control and can test to the
+arcsecond, and it makes the app's most important number auditable rather than borrowed.
