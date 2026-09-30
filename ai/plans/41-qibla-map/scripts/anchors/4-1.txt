@@ -1,0 +1,7 @@
+  const handlePresent = useCallback(async () => {
+    setReading({ status: 'looking' });
+    setIsOpen(true);
+    setFieldIsClean(true);
+
+    const position = await readPosition();
+    setReading(position ? { status: 'found', bearing: qiblaBearing(position) } : { status: 'unavailable' });
