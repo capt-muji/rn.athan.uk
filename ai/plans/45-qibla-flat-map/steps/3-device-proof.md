@@ -90,8 +90,16 @@
    The owner turned on the spot and reported: <his words>.
    ```
 
-9. **Review.** Read `git show <sha>` back. `LOG.md` records what each check actually read, and the owner's words are
-   quoted rather than paraphrased. Nothing but the version files and the records changed.
+9. **Review.** Read `git show <sha>` back cold, against this checklist:
+
+   - [ ] `LOG.md` records what each of the six checks actually READ, not what it was expected to read.
+   - [ ] The owner's words are quoted verbatim, marked with `🐋  `, not paraphrased.
+   - [ ] Every artefact the checks name exists under `~/athan-device-sweep/session45/`.
+   - [ ] No screenshot was sent to the owner; each one is described in words instead.
+   - [ ] Nothing but `app.json`, `package.json` and the records changed. No source file is in the diff.
+   - [ ] Automatic time was never turned off, and no alarm was touched.
+
+   A finding is handled by `EXECUTOR-BRIEF.md` section 4, item 8.
 
 10. **Merge.**
 
