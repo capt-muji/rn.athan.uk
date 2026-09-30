@@ -1,0 +1,629 @@
+{
+  "date": "2026-9-30",
+  "summary": {
+    "FI": {
+      "kept": 10,
+      "dropped": 0,
+      "citiesWithNoMosque": 0,
+      "fajr": {
+        "n": 10,
+        "min": 14.56,
+        "q1": 14.57,
+        "median": 14.65,
+        "q3": 15.87,
+        "max": 18.01
+      },
+      "isha": {
+        "n": 10,
+        "min": 11.9,
+        "q1": 11.93,
+        "median": 15.07,
+        "q3": 15.1,
+        "max": 16.96
+      },
+      "asr": {
+        "n": 10,
+        "min": 0.972,
+        "q1": 0.986,
+        "median": 0.996,
+        "q3": 0.998,
+        "max": 1
+      },
+      "dhuhr": {
+        "n": 10,
+        "min": 0,
+        "q1": 0.1,
+        "median": 1.7,
+        "q3": 1.9,
+        "max": 2.4
+      },
+      "maghrib": {
+        "n": 10,
+        "min": -1,
+        "q1": 0,
+        "median": 1,
+        "q3": 2,
+        "max": 3
+      },
+      "hanafi": 0,
+      "rows": [
+        {
+          "city": "Helsinki",
+          "name": "مسجد الرابطة الإسلامية في فنلندا",
+          "lat": 60.164,
+          "fajr": 18.01,
+          "isha": 16.96,
+          "asr": 0.996,
+          "mgrb": 3
+        },
+        {
+          "city": "Turku",
+          "name": "Masjid Annur",
+          "lat": 60.437,
+          "fajr": 14.59,
+          "isha": 11.9,
+          "asr": 0.996,
+          "mgrb": 0
+        },
+        {
+          "city": "Turku",
+          "name": "Ashtin Moskeija مزگەوتی ئاشتی",
+          "lat": 60.459,
+          "fajr": 14.57,
+          "isha": 11.91,
+          "asr": 0.998,
+          "mgrb": 0
+        },
+        {
+          "city": "Turku",
+          "name": "Al-Isra Mosque",
+          "lat": 60.449,
+          "fajr": 14.57,
+          "isha": 15.08,
+          "asr": 0.998,
+          "mgrb": 1
+        },
+        {
+          "city": "Turku",
+          "name": "Taqwan moskeija",
+          "lat": 60.442,
+          "fajr": 14.56,
+          "isha": 11.93,
+          "asr": 1,
+          "mgrb": 1
+        },
+        {
+          "city": "Turku",
+          "name": "Masjid Al-Furqan",
+          "lat": 60.433,
+          "fajr": 14.56,
+          "isha": 15.1,
+          "asr": 1,
+          "mgrb": 1
+        },
+        {
+          "city": "Tampere",
+          "name": "ZamZam Mosque",
+          "lat": 61.495,
+          "fajr": 17.57,
+          "isha": 16.85,
+          "asr": 0.985,
+          "mgrb": -1
+        },
+        {
+          "city": "Tampere",
+          "name": "Tampereen Islamin Yhdyskunta",
+          "lat": 61.495,
+          "fajr": 14.65,
+          "isha": 14.79,
+          "asr": 0.972,
+          "mgrb": 0
+        },
+        {
+          "city": "Oulu",
+          "name": "Yusuf An-Naaghi Oulun Keskus Moskeija",
+          "lat": 65.014,
+          "fajr": 15.87,
+          "isha": 15.07,
+          "asr": 0.986,
+          "mgrb": 2
+        },
+        {
+          "city": "Oulu",
+          "name": "Al-Nur Moskeija",
+          "lat": 65.033,
+          "fajr": 15.86,
+          "isha": 15.06,
+          "asr": 0.987,
+          "mgrb": 2
+        }
+      ]
+    },
+    "IS": {
+      "kept": 1,
+      "dropped": 0,
+      "citiesWithNoMosque": 0,
+      "fajr": {
+        "n": 1,
+        "min": 14.66,
+        "q1": 14.66,
+        "median": 14.66,
+        "q3": 14.66,
+        "max": 14.66
+      },
+      "isha": {
+        "n": 1,
+        "min": 10.56,
+        "q1": 10.56,
+        "median": 10.56,
+        "q3": 10.56,
+        "max": 10.56
+      },
+      "asr": {
+        "n": 1,
+        "min": 0.99,
+        "q1": 0.99,
+        "median": 0.99,
+        "q3": 0.99,
+        "max": 0.99
+      },
+      "dhuhr": {
+        "n": 1,
+        "min": 0.4,
+        "q1": 0.4,
+        "median": 0.4,
+        "q3": 0.4,
+        "max": 0.4
+      },
+      "maghrib": {
+        "n": 1,
+        "min": 0,
+        "q1": 0,
+        "median": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "hanafi": 0,
+      "rows": [
+        {
+          "city": "Reykjavik",
+          "name": "The Grand Mosque of Iceland",
+          "lat": 64.131,
+          "fajr": 14.66,
+          "isha": 10.56,
+          "asr": 0.99,
+          "mgrb": 0
+        }
+      ]
+    },
+    "DK": {
+      "kept": 2,
+      "dropped": 0,
+      "citiesWithNoMosque": 1,
+      "fajr": {
+        "n": 2,
+        "min": 14.77,
+        "q1": 14.77,
+        "median": 15.02,
+        "q3": 15.02,
+        "max": 15.02
+      },
+      "isha": {
+        "n": 2,
+        "min": 13.85,
+        "q1": 13.85,
+        "median": 14.1,
+        "q3": 14.1,
+        "max": 14.1
+      },
+      "asr": {
+        "n": 2,
+        "min": 0.994,
+        "q1": 0.994,
+        "median": 1.008,
+        "q3": 1.008,
+        "max": 1.008
+      },
+      "dhuhr": {
+        "n": 2,
+        "min": 0.4,
+        "q1": 0.4,
+        "median": 0.8,
+        "q3": 0.8,
+        "max": 0.8
+      },
+      "maghrib": {
+        "n": 2,
+        "min": 1,
+        "q1": 1,
+        "median": 2,
+        "q3": 2,
+        "max": 2
+      },
+      "hanafi": 0,
+      "rows": [
+        {
+          "city": "Copenhagen",
+          "name": "المركز الثقافي الإسلامي فيستاين",
+          "lat": 55.666,
+          "fajr": 15.02,
+          "isha": 13.85,
+          "asr": 0.994,
+          "mgrb": 1
+        },
+        {
+          "city": "Odense",
+          "name": "Iman Moske",
+          "lat": 55.432,
+          "fajr": 14.77,
+          "isha": 14.1,
+          "asr": 1.008,
+          "mgrb": 2
+        }
+      ]
+    },
+    "GB_SCT": {
+      "kept": 11,
+      "dropped": 0,
+      "citiesWithNoMosque": 2,
+      "fajr": {
+        "n": 11,
+        "min": 15.39,
+        "q1": 15.42,
+        "median": 15.43,
+        "q3": 17.5,
+        "max": 18
+      },
+      "isha": {
+        "n": 11,
+        "min": 14.97,
+        "q1": 16.02,
+        "median": 16.03,
+        "q3": 16.06,
+        "max": 18.15
+      },
+      "asr": {
+        "n": 11,
+        "min": 1.009,
+        "q1": 1.012,
+        "median": 2.004,
+        "q3": 2.289,
+        "max": 2.291
+      },
+      "dhuhr": {
+        "n": 11,
+        "min": 4.9,
+        "q1": 4.9,
+        "median": 5.1,
+        "q3": 5.2,
+        "max": 6.2
+      },
+      "maghrib": {
+        "n": 11,
+        "min": 4,
+        "q1": 7,
+        "median": 7,
+        "q3": 9,
+        "max": 10
+      },
+      "hanafi": 6,
+      "rows": [
+        {
+          "city": "Glasgow",
+          "name": "Strathclyde Muslim Student Association",
+          "lat": 55.862,
+          "fajr": 15.42,
+          "isha": 16.04,
+          "asr": 1.009,
+          "mgrb": 7
+        },
+        {
+          "city": "Glasgow",
+          "name": "Mena Trust",
+          "lat": 55.867,
+          "fajr": 15.42,
+          "isha": 16.04,
+          "asr": 1.009,
+          "mgrb": 7
+        },
+        {
+          "city": "Glasgow",
+          "name": "Al-Furqan Mosque",
+          "lat": 55.872,
+          "fajr": 15.43,
+          "isha": 16.03,
+          "asr": 2.291,
+          "mgrb": 9
+        },
+        {
+          "city": "Glasgow",
+          "name": "Al Rahmah Centre",
+          "lat": 55.875,
+          "fajr": 15.43,
+          "isha": 16.03,
+          "asr": 1.135,
+          "mgrb": 10
+        },
+        {
+          "city": "Glasgow",
+          "name": "Dawatul Islam",
+          "lat": 55.874,
+          "fajr": 15.44,
+          "isha": 16.02,
+          "asr": 2.289,
+          "mgrb": 9
+        },
+        {
+          "city": "Glasgow",
+          "name": "GUMSA",
+          "lat": 55.874,
+          "fajr": 15.44,
+          "isha": 16.02,
+          "asr": 2.289,
+          "mgrb": 9
+        },
+        {
+          "city": "Glasgow",
+          "name": "Masjid Bilal",
+          "lat": 55.85,
+          "fajr": 15.41,
+          "isha": 16.06,
+          "asr": 1.137,
+          "mgrb": 9
+        },
+        {
+          "city": "Glasgow",
+          "name": "Community Masjid",
+          "lat": 55.884,
+          "fajr": 15.39,
+          "isha": 17.51,
+          "asr": 1.012,
+          "mgrb": 7
+        },
+        {
+          "city": "Glasgow",
+          "name": "Bishopbriggs Islamic Community Centre",
+          "lat": 55.898,
+          "fajr": 17.5,
+          "isha": 18.15,
+          "asr": 2.065,
+          "mgrb": 7
+        },
+        {
+          "city": "Edinburgh",
+          "name": "Roxburgh Street Masjid",
+          "lat": 55.948,
+          "fajr": 17.98,
+          "isha": 14.98,
+          "asr": 2.009,
+          "mgrb": 4
+        },
+        {
+          "city": "Edinburgh",
+          "name": "IdaraTaleem-ul-Quran Polwarth Mosque",
+          "lat": 55.938,
+          "fajr": 18,
+          "isha": 14.97,
+          "asr": 2.004,
+          "mgrb": 4
+        }
+      ]
+    },
+    "RU_N": {
+      "kept": 0,
+      "dropped": 0,
+      "citiesWithNoMosque": 4,
+      "fajr": null,
+      "isha": null,
+      "asr": null,
+      "dhuhr": null,
+      "maghrib": null,
+      "hanafi": 0,
+      "rows": []
+    },
+    "CA_PRAIRIE": {
+      "kept": 2,
+      "dropped": 3,
+      "citiesWithNoMosque": 1,
+      "fajr": {
+        "n": 2,
+        "min": 9.96,
+        "q1": 9.96,
+        "median": 18.34,
+        "q3": 18.34,
+        "max": 18.34
+      },
+      "isha": {
+        "n": 2,
+        "min": 9.96,
+        "q1": 9.96,
+        "median": 17.44,
+        "q3": 17.44,
+        "max": 17.44
+      },
+      "asr": {
+        "n": 2,
+        "min": 1.005,
+        "q1": 1.005,
+        "median": 1.032,
+        "q3": 1.032,
+        "max": 1.032
+      },
+      "dhuhr": {
+        "n": 2,
+        "min": -0.1,
+        "q1": -0.1,
+        "median": 1,
+        "q3": 1,
+        "max": 1
+      },
+      "maghrib": {
+        "n": 2,
+        "min": 0,
+        "q1": 0,
+        "median": 5,
+        "q3": 5,
+        "max": 5
+      },
+      "hanafi": 0,
+      "rows": [
+        {
+          "city": "Edmonton",
+          "name": "Masjid Al Ansar",
+          "lat": 53.561,
+          "fajr": 18.34,
+          "isha": 17.44,
+          "asr": 1.032,
+          "mgrb": 5
+        },
+        {
+          "city": "Calgary",
+          "name": "Islamic Information Society Calgary",
+          "lat": 51.09,
+          "fajr": 9.96,
+          "isha": 9.96,
+          "asr": 1.005,
+          "mgrb": 0
+        }
+      ]
+    },
+    "CA_OTHER": {
+      "kept": 0,
+      "dropped": 1,
+      "citiesWithNoMosque": 0,
+      "fajr": null,
+      "isha": null,
+      "asr": null,
+      "dhuhr": null,
+      "maghrib": null,
+      "hanafi": 0,
+      "rows": []
+    },
+    "US_AK": {
+      "kept": 0,
+      "dropped": 0,
+      "citiesWithNoMosque": 2,
+      "fajr": null,
+      "isha": null,
+      "asr": null,
+      "dhuhr": null,
+      "maghrib": null,
+      "hanafi": 0,
+      "rows": []
+    },
+    "SE_N": {
+      "kept": 1,
+      "dropped": 0,
+      "citiesWithNoMosque": 2,
+      "fajr": {
+        "n": 1,
+        "min": 17.66,
+        "q1": 17.66,
+        "median": 17.66,
+        "q3": 17.66,
+        "max": 17.66
+      },
+      "isha": {
+        "n": 1,
+        "min": 16.36,
+        "q1": 16.36,
+        "median": 16.36,
+        "q3": 16.36,
+        "max": 16.36
+      },
+      "asr": {
+        "n": 1,
+        "min": 1.098,
+        "q1": 1.098,
+        "median": 1.098,
+        "q3": 1.098,
+        "max": 1.098
+      },
+      "dhuhr": {
+        "n": 1,
+        "min": 6,
+        "q1": 6,
+        "median": 6,
+        "q3": 6,
+        "max": 6
+      },
+      "maghrib": {
+        "n": 1,
+        "min": 10,
+        "q1": 10,
+        "median": 10,
+        "q3": 10,
+        "max": 10
+      },
+      "hanafi": 0,
+      "rows": [
+        {
+          "city": "Lulea",
+          "name": "Stora mosken",
+          "lat": 65.592,
+          "fajr": 17.66,
+          "isha": 16.36,
+          "asr": 1.098,
+          "mgrb": 10
+        }
+      ]
+    },
+    "NO_N": {
+      "kept": 1,
+      "dropped": 0,
+      "citiesWithNoMosque": 2,
+      "fajr": {
+        "n": 1,
+        "min": 16.39,
+        "q1": 16.39,
+        "median": 16.39,
+        "q3": 16.39,
+        "max": 16.39
+      },
+      "isha": {
+        "n": 1,
+        "min": 10.84,
+        "q1": 10.84,
+        "median": 10.84,
+        "q3": 10.84,
+        "max": 10.84
+      },
+      "asr": {
+        "n": 1,
+        "min": 1.354,
+        "q1": 1.354,
+        "median": 1.354,
+        "q3": 1.354,
+        "max": 1.354
+      },
+      "dhuhr": {
+        "n": 1,
+        "min": 10.6,
+        "q1": 10.6,
+        "median": 10.6,
+        "q3": 10.6,
+        "max": 10.6
+      },
+      "maghrib": {
+        "n": 1,
+        "min": 0,
+        "q1": 0,
+        "median": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "hanafi": 0,
+      "rows": [
+        {
+          "city": "Trondheim",
+          "name": "Dar EL Eman Islamic Center",
+          "lat": 63.434,
+          "fajr": 16.39,
+          "isha": 10.84,
+          "asr": 1.354,
+          "mgrb": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,90 @@
+R13 PART 3c: can a London user be served with the network off, forever?
+
+The shipped table: the publisher's 2027 intervals, 365 slots, plus 02-29 from the 2028 year.
+  02-29: Fajr 100, Isha 89. Part 3.3 measured this pair identical
+  across all 13 leap years in the corpus, so one slot settles it and nothing is interpolated.
+
+== 3c.1 The reconstruction, field by field, over every year available ==
+Rules, all from the publisher's own technical page (cited, londonsalahtimes.com/technical):
+  sunrise = computed sunrise - 3      Zuhr    = computed transit + 5
+  Maghrib = computed sunset  + 3      Fajr    = (that sunrise + 3) - interval
+  Asr     = Mithl 1 shadow solve      Isha    = (that Maghrib - 3) + interval
+Computed sun: adhan 4.4.6, rounding None, then half-up to the minute.
+
+-- ELM PDFs, era B, 2015 to 2026
+point                              field      exact                within 1 min         worst  beyond 1
+Charing Cross 51.5073,-0.12755     fajr            3070 (93.43%)      3286 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     sunrise         3070 (93.43%)      3286 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     dhuhr           3122 (95.01%)      3286 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     magrib          3053 (92.91%)      3286 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     isha            3038 (92.45%)       3285 (99.97%)     2  1
+
+51.5,-0.1275                       fajr            3100 (94.34%)      3286 (100.00%)     1  0
+51.5,-0.1275                       sunrise         3100 (94.34%)      3286 (100.00%)     1  0
+51.5,-0.1275                       dhuhr           3122 (95.01%)      3286 (100.00%)     1  0
+51.5,-0.1275                       magrib          3089 (94.00%)      3286 (100.00%)     1  0
+51.5,-0.1275                       isha            3075 (93.58%)       3284 (99.94%)     2  2
+
+51.5,-0.165                        fajr            2979 (90.66%)      3286 (100.00%)     1  0
+51.5,-0.165                        sunrise         2979 (90.66%)      3286 (100.00%)     1  0
+51.5,-0.165                        dhuhr           2973 (90.47%)      3286 (100.00%)     1  0
+51.5,-0.165                        magrib          2932 (89.23%)      3286 (100.00%)     1  0
+51.5,-0.165                        isha            2913 (88.65%)       3285 (99.97%)     2  1
+
+-- publisher .xlsx, 2027 to 2076
+point                              field      exact                within 1 min         worst  beyond 1
+Charing Cross 51.5073,-0.12755     fajr           11584 (63.43%)     18263 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     sunrise        11584 (63.43%)     18263 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     dhuhr          18038 (98.77%)     18263 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     magrib         11412 (62.49%)     18263 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     isha           11412 (62.49%)     18263 (100.00%)     1  0
+
+51.5,-0.1275                       fajr           11589 (63.46%)     18263 (100.00%)     1  0
+51.5,-0.1275                       sunrise        11589 (63.46%)     18263 (100.00%)     1  0
+51.5,-0.1275                       dhuhr          18041 (98.78%)     18263 (100.00%)     1  0
+51.5,-0.1275                       magrib         11401 (62.43%)     18263 (100.00%)     1  0
+51.5,-0.1275                       isha           11401 (62.43%)     18263 (100.00%)     1  0
+
+51.5,-0.165                        fajr           11730 (64.23%)     18263 (100.00%)     1  0
+51.5,-0.165                        sunrise        11730 (64.23%)     18263 (100.00%)     1  0
+51.5,-0.165                        dhuhr          15689 (85.91%)     18263 (100.00%)     1  0
+51.5,-0.165                        magrib         10901 (59.69%)     18263 (100.00%)     1  0
+51.5,-0.165                        isha           10901 (59.69%)     18263 (100.00%)     1  0
+
+== 3c.2 The best point, and every value it puts more than 1 minute out ==
+ELM PDFs, era B, 2015 to 2026: 3286 days, 16430 values across the five sun-derived fields.
+  exact 15353 (93.44%), within 1 minute 16429 (99.99%), beyond 1 minute 1
+  isha: 1 beyond 1 min -> 2026-06-17-2
+
+publisher .xlsx, 2027 to 2076: 18263 days, 91315 values across the five sun-derived fields.
+  exact 64030 (70.12%), within 1 minute 91315 (100.00%), beyond 1 minute 0
+
+== 3c.3 Asr, the one field an interval table cannot carry ==
+Asr is not an interval against sunrise or Maghrib; it is a shadow solve. Part 2f and 2i measured
+that adhan's own Asr reproduces this source poorly and an apparent-altitude solve does better.
+Restated here on the fifty published future years, which neither was fitted against.
+
+column  factor  refraction  margin  exact                within 1 min         worst
+asr          1  geometric       0            0 (0.00%)           0 (0.00%)     2
+asr          1  geometric       2      18263 (100.00%)     18263 (100.00%)     0
+asr          1  apparent        0          279 (1.53%)       8023 (43.93%)     2
+asr          1  apparent        2       10240 (56.07%)      17984 (98.47%)     2
+asr_2        2  geometric       0            0 (0.00%)           0 (0.00%)     2
+asr_2        2  geometric       2      18263 (100.00%)     18263 (100.00%)     0
+asr_2        2  apparent        0          181 (0.99%)       8957 (49.04%)     2
+asr_2        2  apparent        2        9306 (50.96%)      18082 (99.01%)     2
+
+  adhan 4.4.6's own Asr at Charing Cross, for comparison, on the same fifty years:
+  asr vs adhan madhab=Shafi: 943/18263 exact (5.16%), 7116 within 1 (38.96%), worst 4
+  asr_2 vs adhan madhab=Hanafi: 0/18263 exact (0.00%), 5303 within 1 (29.04%), worst 3
+
+== 3c.4 What the three options actually cost in bytes ==
+  Option A, the interval table (366 slots x 2 uint8): 732 raw, 246 brotli
+    Needs a computed sun and a computed Asr in the app. Fajr and Isha exact where the sun is exact.
+  Option B, all fifty published years (uint16 minutes): 255682 raw, 10290 brotli
+    Needs no computation at all. Every value is the authority's own digit. Expires in 2077.
+  Option B', ten published years 2027 to 2036: 51142 raw, 6320 brotli
+  Option C, one fetched year as the app does today: 53291 raw JSON, 7234 gzip on the wire
+
+  For scale, from R6: the app's 4.9 MB JS bundle and 67 MB release bundle.
+  Option B is 0.200% of the JS bundle and 0.0146% of the release bundle.

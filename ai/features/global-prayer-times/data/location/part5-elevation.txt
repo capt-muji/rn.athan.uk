@@ -1,0 +1,82 @@
+# R14 part 5: elevation
+
+## 5A. The horizon dip through adhan itself
+
+adhan has no elevation input. The dip is applied by treating sunset as the sun reaching
+`-(0.833 + dip)` rather than `-0.833`, solved the same way. `dip = acos(R/(R+h))` with R = 6,371,000 m.
+
+| place and date                 | 100 m | 200 m | 500 m | 1000 m | 2000 m | 2500 m |
+| ------------------------------ | ----- | ----- | ----- | ------ | ------ | ------ |
+| equator, equinox               | 1.28  | 1.82  | 2.87  | 4.06   | 5.74   | 6.42   |
+| Makkah 21.4, equinox           | 1.38  | 1.95  | 3.08  | 4.36   | 6.17   | 6.90   |
+| Makkah 21.4, June              | 1.53  | 2.17  | 3.43  | 4.85   | 6.86   | 7.67   |
+| Cameron Highlands 4.5, equinox | 1.29  | 1.82  | 2.88  | 4.07   | 5.76   | 6.44   |
+| London 51.5, equinox           | 2.06  | 2.92  | 4.61  | 6.53   | 9.23   | 10.32  |
+| London 51.5, June              | 2.75  | 3.89  | 6.18  | 8.77   | 12.48  | 13.98  |
+| Oslo 59.9, June                | 4.51  | 6.41  | 10.25 | 14.68  | 21.16  | 23.85  |
+
+Dip in degrees: 50 m 0.2270, 100 m 0.3210, 200 m 0.4540, 500 m 0.7178, 1000 m 1.0151, 2000 m 1.4355, 2500 m 1.6048.
+
+## 5B. How high the world actually lives, from GeoNames
+
+| statistic                        | value          |
+| -------------------------------- | -------------- |
+| cities with an `elevation` value | 4496 of 34152  |
+| cities with a `dem` value        | 34152 of 34152 |
+| median city `dem`                | 128 m          |
+| 75th percentile                  | 378 m          |
+| 90th percentile                  | 937 m          |
+| 99th percentile                  | 2279 m         |
+| highest                          | 5022 m         |
+| population at or above 200 m     | 35.5%          |
+| population at or above 500 m     | 19.6%          |
+| population at or above 1000 m    | 10.2%          |
+| population at or above 1500 m    | 5.3%           |
+| population at or above 2000 m    | 2.2%           |
+
+| storage                            | bytes  |
+| ---------------------------------- | ------ |
+| one int16 per city, all 34,152     | 68,304 |
+| the same, gzip                     | 48,764 |
+| the same, brotli                   | 40,989 |
+| one int16 per city, 1,000 cities   | 2,000  |
+| one int16 per city, 60 JAKIM zones | 120    |
+
+### The 25 highest cities over 300,000 in Muslim-majority countries
+
+| city           | cc | population | dem m | Maghrib later, equinox | Maghrib later, local summer |
+| -------------- | -- | ---------- | ----- | ---------------------- | --------------------------- |
+| Asmara         | ER | 563,930    | 2334  | 6.43                   | 7.09                        |
+| Sanaa          | YE | 1,937,451  | 2253  | 6.32                   | 6.96                        |
+| Khamis Mushait | SA | 387,553    | 1998  | 6.04                   | 6.69                        |
+| Ibb            | YE | 771,514    | 1931  | 5.81                   | 6.40                        |
+| Erzurum        | TR | 767,848    | 1914  | 7.32                   | 8.71                        |
+| Sumbawanga     | TZ | 303,986    | 1833  | 5.55                   | 6.07                        |
+| Hamadān        | IR | 528,256    | 1820  | 6.67                   | 7.72                        |
+| Kabul          | AF | 4,434,550  | 1798  | 6.61                   | 7.64                        |
+| Kerman         | IR | 577,514    | 1760  | 6.24                   | 7.09                        |
+| Arāk           | IR | 503,647    | 1738  | 6.46                   | 7.46                        |
+| Van            | TR | 525,016    | 1708  | 6.78                   | 7.99                        |
+| Mbeya          | TZ | 541,603    | 1697  | 5.35                   | 5.86                        |
+| Quetta         | PK | 1,565,546  | 1683  | 6.09                   | 6.93                        |
+| Ta’if          | SA | 688,693    | 1672  | 5.63                   | 6.26                        |
+| Zanjan         | IR | 357,471    | 1666  | 6.54                   | 7.63                        |
+| Isfahan        | IR | 1,547,164  | 1578  | 6.06                   | 6.95                        |
+| Shiraz         | IR | 1,249,942  | 1545  | 5.81                   | 6.59                        |
+| Sanandaj       | IR | 349,176    | 1494  | 6.08                   | 7.05                        |
+| Borama         | SO | 597,842    | 1468  | 4.99                   | 5.47                        |
+| Arusha         | TZ | 617,631    | 1415  | 4.84                   | 5.28                        |
+| Tabriz         | IR | 1,424,641  | 1396  | 6.10                   | 7.16                        |
+| Kermanshah     | IR | 621,100    | 1392  | 5.80                   | 6.69                        |
+| Zahedan        | IR | 551,980    | 1380  | 5.48                   | 6.21                        |
+| Ardabīl        | IR | 410,753    | 1353  | 6.02                   | 7.07                        |
+| Orūmīyeh       | IR | 577,307    | 1350  | 5.95                   | 6.97                        |
+
+## 5C. The decisive test: does elevation move the app toward or away from JAKIM?
+
+JAKIM assigns separate zones to high ground: `PHG06` Cameron Highlands, `PRK07` Bukit Larut,
+`SBH06` Gunung Kinabalu, `KDH07` Puncak Gunung Jerai (R1, cited; zone names read from
+e-solat.gov.my 2026-09-30). If JAKIM already accounts for elevation in those zones, then an app
+applying its OWN elevation correction on top would double-count. This is measured in
+`part5-jakim.mjs` against JAKIM's own published September 2026 times.
+

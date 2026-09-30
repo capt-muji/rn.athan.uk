@@ -1,0 +1,90 @@
+=== T1. the DISCONTINUITY test: the largest day-to-day jump each rule produces, minutes ===
+R7 argued MiddleOfTheNight is a cliff and SeventhOfTheNight is smooth. This measures it.
+A well-behaved rule moves a few minutes a day, which is the rate the sun itself moves.
+city              MiddleOfTh  SeventhOfT  TwilightAn  SwedenIFiS     Diyanet  AqrabAyyam  Moonsighti
+Paris                    10           2           3           3           2          10          10
+London                   23           2           4           3           2          11          11
+Manchester               25           2           4           3           2          13          13
+Copenhagen               22           2           5           3           3          16           2
+Aberdeen                 22           2           5           4           3          17           2
+Stockholm                29           2           6           4           3          18           2
+Oslo                     34           2           6           4           3          16           2
+Helsinki                 32           2           6           4           3          23           2
+Anchorage                30           2           6           4           3          21           2
+Reykjavik                37           3           6           4           4          18           3
+ArcticCircle             44           9           7           4           4          19         149
+Tromso                   43          18          10           3          16          25         186
+Longyearbyen             53          31          18           7          44          33         259
+Ushuaia                  18           2           5           3           3          18          18
+
+=== T1b. the same, as the 99th-percentile daily move, which is what a user feels ===
+city              MiddleOfTh  SeventhOfT  TwilightAn  SwedenIFiS     Diyanet  AqrabAyyam  Moonsighti
+Paris                   5.8         2.1         2.9         2.7         2.1         6.1         5.8
+London                 10.4         2.1         3.6         3.0         2.3         8.1         8.1
+Manchester             12.0         2.0         4.1         3.1         2.4         9.1         9.5
+Copenhagen             16.0         2.0         4.5         3.3         2.6        11.0         2.0
+Aberdeen               17.1         2.1         4.7         3.4         2.8        11.5         2.1
+Stockholm              16.4         2.2         5.0         3.5         3.0        12.0         2.2
+Oslo                   15.2         2.3         5.1         3.6         3.0        11.6         2.3
+Helsinki               14.8         2.3         5.2         3.6         3.1        13.9         2.3
+Anchorage              17.4         2.4         5.3         3.6         3.2        13.3         2.4
+Reykjavik              17.1         2.6         5.7         3.7         3.6        12.8         2.8
+ArcticCircle           15.4         6.2         6.0         3.7         4.3        12.5        11.4
+Tromso                 21.9        10.3         6.7         3.4        11.5        18.0       162.6
+Longyearbyen           51.1        24.4        13.6         6.5        34.2        28.5       230.0
+Ushuaia                15.1         2.0         4.4         3.3         2.6        11.5        11.5
+
+=== T2. the ORDERING test: days on which the card is out of time order ===
+A prayer card must read Fajr, Sunrise, Dhuhr, Maghrib, Isha in order. Counted only on
+days where the rule supplied BOTH Fajr and Isha, so a null is not scored as a failure.
+city              MiddleOfTh  SeventhOfT  TwilightAn  SwedenIFiS     Diyanet  AqrabAyyam  Moonsighti
+Paris                 0/365       0/365       0/365       0/365       0/365       0/365       0/347
+London                0/365       0/365       0/365       0/365       0/365       0/365       0/305
+Manchester            0/365       0/365       0/365       0/365       0/365       0/365       0/287
+Copenhagen            0/365       0/365       0/365       0/365       0/365       0/365       0/365
+Aberdeen              0/365       0/365       0/365       0/365       0/365       0/365       0/365
+Stockholm             0/365       0/365       0/365       0/365       0/365       0/365       0/365
+Oslo                  0/365       0/365       0/365       0/365       0/365       0/365       0/365
+Helsinki              0/365       0/365       0/365       0/365       0/365       0/365       0/365
+Anchorage             0/365       0/365       0/365       0/365       0/365       0/365       0/365
+Reykjavik             0/365       0/365       0/365      21/365       0/365       0/365       0/365
+ArcticCircle          0/335       0/335       0/335      26/335       0/335       0/335       0/335
+Tromso                0/247       0/247       0/247      13/247       0/247       0/247       0/247
+Longyearbyen          0/126       0/126       0/126       6/126       0/126       0/126       0/126
+Ushuaia               0/365       0/365       0/365       0/365       0/365       0/365       0/283
+
+=== T2b. nulls: days each candidate rule leaves with NO Fajr answer ===
+city              MiddleOfTh  SeventhOfT  TwilightAn  SwedenIFiS     Diyanet  AqrabAyyam  Moonsighti
+Paris                     0           0           0           0           0           0          18
+London                    0           0           0           0           0           0          60
+Manchester                0           0           0           0           0           0          78
+Copenhagen                0           0           0           0           0           0           0
+Aberdeen                  0           0           0           0           0           0           0
+Stockholm                 0           0           0           0           0           0           0
+Oslo                      0           0           0           0           0           0           0
+Helsinki                  0           0           0           0           0           0           0
+Anchorage                 0           0           0           0           0           0           0
+Reykjavik                 0           0           0           0           0           0           0
+ArcticCircle             30          30          30           0          30          30           0
+Tromso                  118         118         118           0         118         118           0
+Longyearbyen            239         239         239           0         239         239           0
+Ushuaia                   0           0           0           0           0           0          82
+
+=== T3. the gap between an angle-only Isha and midnight, which is the HARDSHIP the rules exist to relieve ===
+Wifaqul Ulama named Haraj explicitly, Diyanet named istihsan and maslahat, and the Swedish and
+Belgian fatwa sides both permit combining. This measures what they are relieving.
+city            lat     daysIshaAfter23:00  daysIshaAfterMidnight  latestIsha  daysFajrBefore02:00
+Paris           48.86                  67                     16       00:07                   29
+London          51.51                  14                      0       23:49                   38
+Manchester      53.48                  13                      0       23:59                   28
+Copenhagen      55.68                  11                      0       23:56                   25
+Aberdeen        57.15                   9                      0       23:46                   23
+Stockholm       59.33                   4                      0       23:27                   29
+Oslo            59.91                   9                      0       23:52                   16
+Helsinki        60.17                  10                      1       00:04                   16
+Anchorage       61.22                  21                      5       00:32                    6
+Reykjavik       64.15                  29                     10       01:03                    1
+ArcticCircle    66.50                   2                      0       23:17                   22
+Tromso          69.65                   3                      0       23:29                   18
+Longyearbyen    78.22                   2                      0       23:32                    8
+Ushuaia        -54.80                  46                     18       01:17                    2

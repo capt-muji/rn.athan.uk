@@ -1,0 +1,110 @@
+R13 PART 3d: verifying the two surprising results of Part 3c
+Solver: the publisher's own Meeus equations, transcribed from londonsalahtimes.com/technical.
+Charing Cross 51.5073 N, 0.12755 W, the publisher's own stated point.
+
+== 3d.1 The Asr result, re-derived on three corpora ==
+The publisher documents: "'Asr: 2 minutes later". Its own Asr equation is A = m0 + acos(...)/15
+with the shadow target acot(factor + tan|lat - dec|), geometric, no refraction correction.
+
+corpus                          column  rounder     margin  exact                within 1
+ELM PDFs, era B, 2015 to 2026   asr     half-up          0        1967 (59.86%)  100.00%
+ELM PDFs, era B, 2015 to 2026   asr     half-up          2            0 (0.00%)  37.52%
+ELM PDFs, era B, 2015 to 2026   asr     half-down        0        1967 (59.86%)  100.00%
+ELM PDFs, era B, 2015 to 2026   asr     half-down        2            0 (0.00%)  37.52%
+ELM PDFs, era B, 2015 to 2026   asr_2   half-up          0        1616 (49.18%)  99.63%
+ELM PDFs, era B, 2015 to 2026   asr_2   half-up          2           12 (0.37%)  49.54%
+ELM PDFs, era B, 2015 to 2026   asr_2   half-down        0        1616 (49.18%)  99.63%
+ELM PDFs, era B, 2015 to 2026   asr_2   half-down        2           12 (0.37%)  49.54%
+
+ELM PDF 2026 + app API 2026     asr     half-up          0         390 (53.42%)  100.00%
+ELM PDF 2026 + app API 2026     asr     half-up          2            0 (0.00%)  45.48%
+ELM PDF 2026 + app API 2026     asr     half-down        0         390 (53.42%)  100.00%
+ELM PDF 2026 + app API 2026     asr     half-down        2            0 (0.00%)  45.48%
+ELM PDF 2026 + app API 2026     asr_2   half-up          0         300 (41.10%)  98.08%
+ELM PDF 2026 + app API 2026     asr_2   half-up          2           14 (1.92%)  58.90%
+ELM PDF 2026 + app API 2026     asr_2   half-down        0         300 (41.10%)  98.08%
+ELM PDF 2026 + app API 2026     asr_2   half-down        2           14 (1.92%)  58.90%
+
+publisher .xlsx, 2027 to 2076   asr     half-up          0            0 (0.00%)  0.00%
+publisher .xlsx, 2027 to 2076   asr     half-up          2      18263 (100.00%)  100.00%
+publisher .xlsx, 2027 to 2076   asr     half-down        0            0 (0.00%)  0.00%
+publisher .xlsx, 2027 to 2076   asr     half-down        2      18263 (100.00%)  100.00%
+publisher .xlsx, 2027 to 2076   asr_2   half-up          0            0 (0.00%)  0.00%
+publisher .xlsx, 2027 to 2076   asr_2   half-up          2      18263 (100.00%)  100.00%
+publisher .xlsx, 2027 to 2076   asr_2   half-down        0            0 (0.00%)  0.00%
+publisher .xlsx, 2027 to 2076   asr_2   half-down        2      18263 (100.00%)  100.00%
+
+== 3d.2 The 1-minute split on the sun fields: fitting the rounder ==
+Sunrise = computed sunrise - 3, Maghrib = computed sunset + 3, Zuhr = computed transit + 5.
+
+corpus                          field    rounder      exact                within 1
+ELM PDFs, era B, 2015 to 2026   sunrise  half-up            2097 (63.82%)  100.00%
+ELM PDFs, era B, 2015 to 2026   sunrise  half-down          2097 (63.82%)  100.00%
+ELM PDFs, era B, 2015 to 2026   sunrise  half-even          2097 (63.82%)  100.00%
+ELM PDFs, era B, 2015 to 2026   sunrise  floor              1548 (47.11%)  96.99%
+ELM PDFs, era B, 2015 to 2026   sunrise  ceil               1639 (49.88%)  100.00%
+
+ELM PDFs, era B, 2015 to 2026   dhuhr    half-up            3109 (94.61%)  100.00%
+ELM PDFs, era B, 2015 to 2026   dhuhr    half-down          3109 (94.61%)  100.00%
+ELM PDFs, era B, 2015 to 2026   dhuhr    half-even          3109 (94.61%)  100.00%
+ELM PDFs, era B, 2015 to 2026   dhuhr    floor              1491 (45.37%)  100.00%
+ELM PDFs, era B, 2015 to 2026   dhuhr    ceil               1795 (54.63%)  100.00%
+
+ELM PDFs, era B, 2015 to 2026   magrib   half-up            2015 (61.32%)  99.97%
+ELM PDFs, era B, 2015 to 2026   magrib   half-down          2015 (61.32%)  99.97%
+ELM PDFs, era B, 2015 to 2026   magrib   half-even          2015 (61.32%)  99.97%
+ELM PDFs, era B, 2015 to 2026   magrib   floor              1386 (42.18%)  98.97%
+ELM PDFs, era B, 2015 to 2026   magrib   ceil               1821 (55.42%)  98.63%
+
+ELM PDF 2026 + app API 2026     sunrise  half-up             472 (64.66%)  100.00%
+ELM PDF 2026 + app API 2026     sunrise  half-down           472 (64.66%)  100.00%
+ELM PDF 2026 + app API 2026     sunrise  half-even           472 (64.66%)  100.00%
+ELM PDF 2026 + app API 2026     sunrise  floor               294 (40.27%)  94.25%
+ELM PDF 2026 + app API 2026     sunrise  ceil                394 (53.97%)  100.00%
+
+ELM PDF 2026 + app API 2026     dhuhr    half-up             634 (86.85%)  100.00%
+ELM PDF 2026 + app API 2026     dhuhr    half-down           634 (86.85%)  100.00%
+ELM PDF 2026 + app API 2026     dhuhr    half-even           634 (86.85%)  100.00%
+ELM PDF 2026 + app API 2026     dhuhr    floor               272 (37.26%)  100.00%
+ELM PDF 2026 + app API 2026     dhuhr    ceil                458 (62.74%)  100.00%
+
+ELM PDF 2026 + app API 2026     magrib   half-up             448 (61.37%)  100.00%
+ELM PDF 2026 + app API 2026     magrib   half-down           448 (61.37%)  100.00%
+ELM PDF 2026 + app API 2026     magrib   half-even           448 (61.37%)  100.00%
+ELM PDF 2026 + app API 2026     magrib   floor               272 (37.26%)  96.71%
+ELM PDF 2026 + app API 2026     magrib   ceil                434 (59.45%)  100.00%
+
+publisher .xlsx, 2027 to 2076   sunrise  half-up           18262 (99.99%)  100.00%
+publisher .xlsx, 2027 to 2076   sunrise  half-down         18262 (99.99%)  100.00%
+publisher .xlsx, 2027 to 2076   sunrise  half-even         18262 (99.99%)  100.00%
+publisher .xlsx, 2027 to 2076   sunrise  floor              9101 (49.83%)  100.00%
+publisher .xlsx, 2027 to 2076   sunrise  ceil               9162 (50.17%)  100.00%
+
+publisher .xlsx, 2027 to 2076   dhuhr    half-up           18262 (99.99%)  100.00%
+publisher .xlsx, 2027 to 2076   dhuhr    half-down         18262 (99.99%)  100.00%
+publisher .xlsx, 2027 to 2076   dhuhr    half-even         18262 (99.99%)  100.00%
+publisher .xlsx, 2027 to 2076   dhuhr    floor              9372 (51.32%)  100.00%
+publisher .xlsx, 2027 to 2076   dhuhr    ceil               8891 (48.68%)  100.00%
+
+publisher .xlsx, 2027 to 2076   magrib   half-up          18263 (100.00%)  100.00%
+publisher .xlsx, 2027 to 2076   magrib   half-down        18263 (100.00%)  100.00%
+publisher .xlsx, 2027 to 2076   magrib   half-even        18263 (100.00%)  100.00%
+publisher .xlsx, 2027 to 2076   magrib   floor              9023 (49.41%)  100.00%
+publisher .xlsx, 2027 to 2076   magrib   ceil               9240 (50.59%)  100.00%
+
+== 3d.3 The mean signed residual, which says whether the gap is a rule or noise ==
+ELM PDFs, era B, 2015 to 2026   sunrise  mean   -0.0588  median   -0.0375  min   -1.286  max    0.956
+ELM PDFs, era B, 2015 to 2026   dhuhr    mean   -0.0518  median   -0.0434  min   -0.694  max    0.525
+ELM PDFs, era B, 2015 to 2026   magrib   mean   -0.0539  median   -0.0932  min   -1.661  max    1.146
+ELM PDFs, era B, 2015 to 2026   asr(+2)  mean    1.6631  median    1.6568  min    0.589  max    2.713
+
+ELM PDF 2026 + app API 2026     sunrise  mean   -0.1600  median   -0.1595  min   -1.259  max    0.789
+ELM PDF 2026 + app API 2026     dhuhr    mean   -0.1494  median   -0.1327  min   -0.666  max    0.347
+ELM PDF 2026 + app API 2026     magrib   mean   -0.1499  median   -0.1707  min   -1.087  max    0.954
+ELM PDF 2026 + app API 2026     asr(+2)  mean    1.5832  median    1.5496  min    0.589  max    2.567
+
+publisher .xlsx, 2027 to 2076   sunrise  mean   -0.0020  median   -0.0018  min   -0.500  max    0.500
+publisher .xlsx, 2027 to 2076   dhuhr    mean    0.0009  median    0.0094  min   -0.500  max    0.500
+publisher .xlsx, 2027 to 2076   magrib   mean    0.0000  median   -0.0059  min   -0.500  max    0.500
+publisher .xlsx, 2027 to 2076   asr(+2)  mean    0.0080  median    0.0102  min   -0.500  max    0.500
+

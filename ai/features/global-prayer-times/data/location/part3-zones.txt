@@ -1,0 +1,63 @@
+# R14 part 3: resolving a coordinate to a JAKIM zone
+
+JAKIM zones read from e-solat.gov.my: 60.
+geoBoundaries gbOpen MYS ADM2 polygons: 159.
+
+## 3A. Do JAKIM zone district names match the ADM2 polygon names?
+
+Named places across all 60 zones: 224. Matched to an ADM2 `shapeName`: 128 (57.1%).
+Zones with at least one unmatched name: 42 of 60.
+
+| zone  | names | matched | unmatched names                                                                     |
+| ----- | ----- | ------- | ----------------------------------------------------------------------------------- |
+| JHR01 | 1     | 0       | Pulau Aur dan Pulau Pemanggil                                                       |
+| JHR02 | 4     | 3       | Kulai                                                                               |
+| JHR04 | 5     | 3       | Gemas Johor; Tangkak                                                                |
+| KDH07 | 1     | 0       | Puncak Gunung Jerai                                                                 |
+| KTN01 | 9     | 8       | Mukim Chiku                                                                         |
+| KTN02 | 3     | 2       | Jajahan Kecil Lojing                                                                |
+| MLK01 | 1     | 0       | SELURUH NEGERI MELAKA                                                               |
+| PHG01 | 1     | 0       | Pulau Tioman                                                                        |
+| PHG02 | 3     | 2       | Muadzam Shah                                                                        |
+| PHG03 | 6     | 4       | Chenor; Jengka                                                                      |
+| PHG05 | 3     | 0       | Genting Sempah; Janda Baik; Bukit Tinggi                                            |
+| PHG06 | 3     | 1       | Genting Higlands; Bukit Fraser                                                      |
+| PHG07 | 4     | 1       | Zon Khas Daerah Rompin; (Mukim Rompin; Mukim Endau                                  |
+| PLS01 | 3     | 0       | Kangar; Padang Besar; Arau                                                          |
+| PNG01 | 1     | 0       | Seluruh Negeri Pulau Pinang                                                         |
+| PRK01 | 3     | 0       | Tapah; Slim River; Tanjung Malim                                                    |
+| PRK02 | 5     | 2       | Sg. Siput; Ipoh; Batu Gajah                                                         |
+| PRK03 | 3     | 0       | Lenggong; Pengkalan Hulu; Grik                                                      |
+| PRK04 | 2     | 0       | Temengor; Belum                                                                     |
+| PRK05 | 9     | 1       | Kg Gajah; Teluk Intan; Seri Iskandar; Beruas; Parit; Lumut; Sitiawan; Pulau Pangkor |
+| PRK06 | 4     | 1       | Taiping; Bagan Serai; Parit Buntar                                                  |
+| PRK07 | 1     | 0       | Bukit Larut                                                                         |
+| SBH01 | 7     | 2       | Bukit Garam; Semawang; Temanggong; Tambisan; Sukau                                  |
+| SBH02 | 6     | 3       | Pinangah; Terusan; Kuamut                                                           |
+| SBH03 | 7     | 4       | Silabukan; Sahabat; Tungku                                                          |
+| SBH04 | 5     | 3       | Balong; Merotai                                                                     |
+| SBH05 | 5     | 4       | Pulau Banggi                                                                        |
+| SBH06 | 1     | 0       | Gunung Kinabalu                                                                     |
+| SBH07 | 8     | 7       | Bahagian Pantai Barat                                                               |
+| SBH08 | 5     | 2       | Pensiangan; Nabawan; Bahagian Pendalaman (Atas)                                     |
+| SBH09 | 8     | 4       | Long Pasia; Membakut; Weston; Bahagian Pendalaman (Bawah)                           |
+| SGR01 | 6     | 3       | Hulu Langat; Hulu Selangor; S.Alam                                                  |
+| SWK01 | 4     | 2       | Sundar; Trusan                                                                      |
+| SWK02 | 5     | 2       | Niah; Bekenu; Sibuti                                                                |
+| SWK03 | 6     | 4       | Pandan; Suai                                                                        |
+| SWK04 | 9     | 6       | Igan; Oya; Balingian                                                                |
+| SWK05 | 7     | 4       | Rajang; Bintangor; Belawai                                                          |
+| SWK06 | 11    | 6       | Roban; Debak; Lingga; Engkelili; Spaoh                                              |
+| SWK07 | 5     | 3       | Sebuyau; Meludam                                                                    |
+| SWK08 | 4     | 3       | Sematan                                                                             |
+| SWK09 | 1     | 0       | Zon Khas (Kampung Patarikan)                                                        |
+| WLY01 | 2     | 1       | Putrajaya                                                                           |
+
+## 3B. The ADM2 polygons JAKIM never names
+
+ADM2 districts not named by any JAKIM zone: 39 of 159.
+
+```
+Alor Gajah, Asajaya, Barat Daya, Batang Padang, Beluru, Bukit Mabong, Hilir Perak, Hulu Perak, Jasin, Kecil Lojing, Kerian, Kinabatangan, Kinta, Kulaijaya, Larut dan Matang, Ledang, Manjung, Maradong, Melaka Tengah, Muallim, Nabawan / Persiangan, Pakan, Perak Tengah, Perlis, Rompin, Sandakan, Seberang Perai Selatan, Seberang Perai Tengah, Seberang Perai Utara, Selangau, Subis, Tanjung Manis, Tawau, Tebedu, Telang Usan, Timur Laut, Tongod, Ulu Langat, Ulu Selangor
+```
+

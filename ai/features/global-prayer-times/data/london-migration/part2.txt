@@ -1,0 +1,114 @@
+R13 PART 2: London reproduced by its own interval table
+
+== 2.1 Source identity: the app API year against the ELM 2026 PDF ==
+  2190 cells compared, 0 differences.
+
+== 2.2 The interval table, per year ==
+year        days  Fajr distinct  Fajr min-max  Isha distinct  Isha min-max
+2012         366             28     96 to 123             38     69 to 106
+2013         365             28     96 to 123             38     69 to 106
+2014         365             28     96 to 123             38     69 to 106
+2015         365             35     90 to 124             35     66 to 100
+2017         365             35     90 to 124             35     66 to 100
+2018         365             35     90 to 124             35     66 to 100
+2019         365             35     90 to 124             35     66 to 100
+2020         366             35     90 to 124             35     66 to 100
+2021         365             35     90 to 124             35     66 to 100
+2022         365             35     90 to 124             35     66 to 100
+2025         365             35     90 to 124             35     66 to 100
+2026         365             35     90 to 124             35     66 to 100
+2026-LPT     365             35     90 to 124             35     66 to 100
+
+== 2.3 Year-over-year stability of the interval table ==
+pair              common  Fajr identical      Isha identical      Isha days that differ
+2012 vs 2013         365        239 (65.5%)        220 (60.3%)  145 days
+2013 vs 2014         365       365 (100.0%)       365 (100.0%)  
+2014 vs 2015         365          31 (8.5%)          23 (6.3%)  342 days
+2015 vs 2017         365       365 (100.0%)       365 (100.0%)  
+2017 vs 2018         365       365 (100.0%)       365 (100.0%)  
+2018 vs 2019         365       365 (100.0%)       365 (100.0%)  
+2019 vs 2020         365       365 (100.0%)        363 (99.5%)  03-31, 06-16
+2020 vs 2021         365       365 (100.0%)        363 (99.5%)  03-31, 06-16
+2021 vs 2022         365       365 (100.0%)       365 (100.0%)  
+2022 vs 2025         365       365 (100.0%)        361 (98.9%)  06-16, 06-17, 06-18, 06-19
+2025 vs 2026         365       365 (100.0%)       365 (100.0%)  
+
+== 2.4 Era B only (2015 onward), every day that moves in EITHER column ==
+Years in era B present here: 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2025, 2026
+Slots where either interval is NOT constant across era B: 5 of 365
+  03-31  Fajr 95  Isha {2015:80 2017:80 2018:80 2019:80 2020:79 2021:80 2022:80 2025:80 2026:80}
+  06-16  Fajr 124  Isha {2015:83 2017:83 2018:83 2019:83 2020:84 2021:83 2022:83 2025:84 2026:84}
+  06-17  Fajr 124  Isha {2015:83 2017:83 2018:83 2019:83 2020:83 2021:83 2022:83 2025:84 2026:84}
+  06-18  Fajr 124  Isha {2015:82 2017:82 2018:82 2019:82 2020:82 2021:82 2022:82 2025:83 2026:83}
+  06-19  Fajr 124  Isha {2015:82 2017:82 2018:82 2019:82 2020:82 2021:82 2022:82 2025:83 2026:83}
+
+== 2.5 Era A (2012 to 2014) against era B, to show where the break is ==
+  2012 vs 2026: Fajr identical 33/365, Isha identical 29/365
+  2013 vs 2026: Fajr identical 31/365, Isha identical 23/365
+  2014 vs 2026: Fajr identical 31/365, Isha identical 23/365
+  2015 vs 2026: Fajr identical 365/365, Isha identical 361/365
+
+== 2.6 THE CRUX: intervals against a COMPUTED sunrise and Maghrib ==
+If this reproduces the published Fajr and Isha to the minute, London goes fully offline.
+If it does not, London still needs the authority's own sun times, so it still needs a fetch.
+
+Computed sun reproducing the PUBLISHED sunrise and Maghrib (the -3 and +3 margins applied):
+coordinates                                round    sunrise exact  maghrib exact
+51.5,-0.165 (Hizbul Ulama LONDON point)    nearest        364/365        362/365
+51.5,-0.165 (Hizbul Ulama LONDON point)    down           176/365        183/365
+51.5,-0.165 (Hizbul Ulama LONDON point)    up             198/365        190/365
+51.5072,-0.1276 (generic London)           nearest        311/365        308/365
+51.5072,-0.1276 (generic London)           down           126/365        119/365
+51.5072,-0.1276 (generic London)           up             244/365        252/365
+51.5,-0.1275                               nearest        308/365        308/365
+51.5,-0.1275                               down           126/365        124/365
+51.5,-0.1275                               up             245/365        253/365
+51.5,-0.1167 (51:30N 0:07W)                nearest        294/365        295/365
+51.5,-0.1167 (51:30N 0:07W)                down           108/365        101/365
+51.5,-0.1167 (51:30N 0:07W)                up             261/365        268/365
+
+Intervals chained to that computed sun, reproducing the PUBLISHED Fajr and Isha:
+coordinates                                round    Fajr exact   Fajr<=1  worst   Isha exact   Isha<=1  worst
+51.5,-0.165 (Hizbul Ulama LONDON point)    nearest      364/365      365      1      362/365      365      1
+51.5,-0.165 (Hizbul Ulama LONDON point)    down         176/365      365      1      183/365      365      1
+51.5,-0.165 (Hizbul Ulama LONDON point)    up           198/365      365      1      190/365      365      1
+51.5072,-0.1276 (generic London)           nearest      311/365      365      1      308/365      365      1
+51.5072,-0.1276 (generic London)           down         126/365      365      1      119/365      365      1
+51.5072,-0.1276 (generic London)           up           244/365      365      1      252/365      365      1
+51.5,-0.1275                               nearest      308/365      365      1      308/365      365      1
+51.5,-0.1275                               down         126/365      365      1      124/365      365      1
+51.5,-0.1275                               up           245/365      365      1      253/365      365      1
+51.5,-0.1167 (51:30N 0:07W)                nearest      294/365      365      1      295/365      365      1
+51.5,-0.1167 (51:30N 0:07W)                down         108/365      365      1      101/365      365      1
+51.5,-0.1167 (51:30N 0:07W)                up           261/365      365      1      268/365      365      1
+
+Best configuration: 51.5,-0.165 (Hizbul Ulama LONDON point), rounding nearest
+  Fajr: 364 of 365 exact, 365 within 1 minute, worst 1
+  Isha: 362 of 365 exact, 365 within 1 minute, worst 1
+  Fajr misses (1): 2026-09-05:-1
+  Isha misses (3): 2026-06-03:+1 2026-09-11:-1 2026-12-04:-1
+
+== 2.7 Control: the SAME intervals against the authority's own published sun ==
+  Fajr 365/365 exact, Isha 365/365 exact. Misses: none
+  (Exact by construction: the table is derived from these same columns. Stated as the control.)
+
+== 2.8 Does ONE table serve other years, against those years' own published sun? ==
+  2026 table on 2015: Fajr 365/365 exact (worst 0), Isha 361/365 exact (worst 1)  Isha misses: 06-16+1 06-17+1 06-18+1 06-19+1
+  2026 table on 2017: Fajr 365/365 exact (worst 0), Isha 361/365 exact (worst 1)  Isha misses: 06-16+1 06-17+1 06-18+1 06-19+1
+  2026 table on 2018: Fajr 365/365 exact (worst 0), Isha 361/365 exact (worst 1)  Isha misses: 06-16+1 06-17+1 06-18+1 06-19+1
+  2026 table on 2019: Fajr 365/365 exact (worst 0), Isha 361/365 exact (worst 1)  Isha misses: 06-16+1 06-17+1 06-18+1 06-19+1
+  2026 table on 2020: Fajr 365/365 exact (worst 0), Isha 361/365 exact (worst 1)  Isha misses: 03-31+1 06-17+1 06-18+1 06-19+1
+  2026 table on 2021: Fajr 365/365 exact (worst 0), Isha 361/365 exact (worst 1)  Isha misses: 06-16+1 06-17+1 06-18+1 06-19+1
+  2026 table on 2022: Fajr 365/365 exact (worst 0), Isha 361/365 exact (worst 1)  Isha misses: 06-16+1 06-17+1 06-18+1 06-19+1
+  2026 table on 2025: Fajr 365/365 exact (worst 0), Isha 365/365 exact (worst 0)
+  2026 table on 2026: Fajr 365/365 exact (worst 0), Isha 365/365 exact (worst 0)
+
+== 2.9 Byte cost of the interval table ==
+encoding                          raw   gzip  brotli
+two uint8 arrays, 365 each        730    352     249
+run-length encoded pairs          350    277     208
+CSV text                         2503    365     240
+JSON object keyed by MM-DD      11265   1221     737
+Fajr runs: 88, Isha runs: 87
+
+Whole published 2026 year as fetched: 92346 raw, 9734 gzip, 4641 brotli
