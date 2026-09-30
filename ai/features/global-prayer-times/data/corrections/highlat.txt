@@ -1,0 +1,44 @@
+## I. Days per year on which the depression angle is never reached
+
+Pure solar geometry, no library. On these days the sun does not go far enough
+below the horizon for the angle to have an answer, so no correction table can
+exist and the authority must publish a non-angle rule instead.
+
+| place | latitude | Fajr/Isha 18 deg | 15 deg | 12 deg |
+|---|---|---|---|---|
+| Cairo | 30.04 | 0 | 0 | 0 |
+| Istanbul | 41.01 | 0 | 0 | 0 |
+| London | 51.51 | 59 | 0 | 0 |
+| Manchester | 53.48 | 77 | 47 | 0 |
+| Copenhagen | 55.68 | 93 | 70 | 36 |
+| Edinburgh | 55.95 | 95 | 72 | 40 |
+| Stockholm | 59.33 | 116 | 97 | 75 |
+| Oslo | 59.91 | 120 | 101 | 80 |
+| Helsinki | 60.17 | 121 | 103 | 82 |
+| Reykjavik | 64.15 | 143 | 127 | 109 |
+| Tromso | 69.65 | 171 | 156 | 140 |
+
+## I2. The same question asked of `adhan` 4.4.6
+
+Days on which the pure twilight-angle result and the middle-of-the-night
+fallback differ by more than a minute, which is the fallback taking over.
+
+| place | latitude | Fajr 18 | Isha 18 | Fajr 15 | Isha 15 | Fajr 12 | Isha 12 |
+|---|---|---|---|---|---|---|---|
+| Cairo | 30.04 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Istanbul | 41.01 | 0 | 0 | 0 | 0 | 0 | 0 |
+| London | 51.51 | 91 | 90 | 79 | 80 | 70 | 68 |
+| Manchester | 53.48 | 104 | 104 | 96 | 94 | 85 | 84 |
+| Copenhagen | 55.68 | 119 | 118 | 111 | 110 | 103 | 102 |
+| Edinburgh | 55.95 | 120 | 120 | 113 | 112 | 104 | 103 |
+| Stockholm | 59.33 | 140 | 140 | 133 | 132 | 125 | 124 |
+| Oslo | 59.91 | 144 | 143 | 136 | 136 | 129 | 128 |
+| Helsinki | 60.17 | 145 | 144 | 138 | 137 | 130 | 130 |
+| Reykjavik | 64.15 | 167 | 166 | 159 | 160 | 153 | 152 |
+| Tromso | 69.65 | 127 | 127 | 121 | 121 | 115 | 114 |
+
+## I3. What `adhan` returns when the angle has no answer
+
+London at 18 degrees, `TwilightAngle`: `adhan` returned NaN on **0** of 365 days (measured).
+So the library never signals failure. It silently substitutes a night-portion value.
+On 2026-06-21 it returns Fajr 02:31 and Isha 23:34, both of which are substitutions, not 18-degree times (measured).

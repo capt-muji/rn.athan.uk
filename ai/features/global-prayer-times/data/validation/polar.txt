@@ -1,0 +1,211 @@
+# R7 Part 3: the polar policy
+
+## A. What each `PolarCircleResolution` produces across a whole year
+
+Method `MuslimWorldLeague`, `highLatitudeRule` at its default
+`MiddleOfTheNight`, `adhan@4.4.6`. Null count is days on which the value is
+`Invalid Date`. Displacement is the resolution's value minus the
+`Unresolved` value on days where BOTH are defined, so it isolates what the
+resolution changes about a day it did not need to touch. All **measured**.
+
+### Tromso (69.65N)
+
+| resolution | fajr nulls | sunrise nulls | dhuhr nulls | asr nulls | maghrib nulls | isha nulls |
+|---|---|---|---|---|---|---|
+| `Unresolved` | 69 | 116 | 0 | 0 | 116 | 69 |
+| `AqrabBalad` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `AqrabYaum` | 0 | 0 | 0 | 0 | 0 | 0 |
+
+| resolution | quantity | days it moved a value that was already defined | mean move (min) | max move (min) |
+|---|---|---|---|---|
+| `AqrabBalad` | fajr | 49/296 | -6.0 | 9 |
+| `AqrabBalad` | sunrise | 2/249 | 1.5 | 42 |
+| `AqrabBalad` | dhuhr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | asr | 117/365 | -16.1 | 92 |
+| `AqrabBalad` | maghrib | 2/249 | -37.0 | 113 |
+| `AqrabBalad` | isha | 49/296 | 7.1 | 11 |
+| `AqrabYaum` | fajr | 49/296 | -18.1 | 38 |
+| `AqrabYaum` | sunrise | 2/249 | 2.5 | 25 |
+| `AqrabYaum` | dhuhr | 100/365 | 0.1 | 11 |
+| `AqrabYaum` | asr | 118/365 | -19.2 | 82 |
+| `AqrabYaum` | maghrib | 2/249 | -35.5 | 91 |
+| `AqrabYaum` | isha | 49/296 | 18.3 | 40 |
+
+### Reykjavik (64.15N)
+
+| resolution | fajr nulls | sunrise nulls | dhuhr nulls | asr nulls | maghrib nulls | isha nulls |
+|---|---|---|---|---|---|---|
+| `Unresolved` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `AqrabBalad` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `AqrabYaum` | 0 | 0 | 0 | 0 | 0 | 0 |
+
+| resolution | quantity | days it moved a value that was already defined | mean move (min) | max move (min) |
+|---|---|---|---|---|
+| `AqrabBalad` | fajr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | sunrise | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | dhuhr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | asr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | maghrib | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | isha | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | fajr | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | sunrise | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | dhuhr | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | asr | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | maghrib | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | isha | 0/365 | 0.0 | 0 |
+
+### Murmansk (68.96N)
+
+| resolution | fajr nulls | sunrise nulls | dhuhr nulls | asr nulls | maghrib nulls | isha nulls |
+|---|---|---|---|---|---|---|
+| `Unresolved` | 63 | 102 | 0 | 0 | 102 | 63 |
+| `AqrabBalad` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `AqrabYaum` | 0 | 0 | 0 | 0 | 0 | 0 |
+
+| resolution | quantity | days it moved a value that was already defined | mean move (min) | max move (min) |
+|---|---|---|---|---|
+| `AqrabBalad` | fajr | 41/302 | -4.4 | 7 |
+| `AqrabBalad` | sunrise | 2/263 | -1.0 | 37 |
+| `AqrabBalad` | dhuhr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | asr | 102/365 | -11.8 | 63 |
+| `AqrabBalad` | maghrib | 2/263 | -8.5 | 54 |
+| `AqrabBalad` | isha | 41/302 | 5.2 | 8 |
+| `AqrabYaum` | fajr | 41/302 | -12.2 | 29 |
+| `AqrabYaum` | sunrise | 2/263 | 1.0 | 19 |
+| `AqrabYaum` | dhuhr | 92/365 | -0.1 | 9 |
+| `AqrabYaum` | asr | 104/365 | -14.5 | 61 |
+| `AqrabYaum` | maghrib | 2/263 | -8.5 | 33 |
+| `AqrabYaum` | isha | 41/302 | 13.0 | 28 |
+
+### Longyearbyen (78.22N)
+
+| resolution | fajr nulls | sunrise nulls | dhuhr nulls | asr nulls | maghrib nulls | isha nulls |
+|---|---|---|---|---|---|---|
+| `Unresolved` | 129 | 240 | 0 | 0 | 240 | 129 |
+| `AqrabBalad` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `AqrabYaum` | 0 | 0 | 0 | 0 | 0 | 0 |
+
+| resolution | quantity | days it moved a value that was already defined | mean move (min) | max move (min) |
+|---|---|---|---|---|
+| `AqrabBalad` | fajr | 113/236 | -25.7 | 65 |
+| `AqrabBalad` | sunrise | 2/125 | -2.5 | 41 |
+| `AqrabBalad` | dhuhr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | asr | 241/365 | -92.4 | 1547 |
+| `AqrabBalad` | maghrib | 2/125 | -6.5 | 54 |
+| `AqrabBalad` | isha | 112/236 | 34.2 | 77 |
+| `AqrabYaum` | fajr | 113/236 | -145.4 | 241 |
+| `AqrabYaum` | sunrise | 2/125 | -1.5 | 31 |
+| `AqrabYaum` | dhuhr | 203/365 | -0.1 | 16 |
+| `AqrabYaum` | asr | 241/365 | -122.8 | 401 |
+| `AqrabYaum` | maghrib | 2/125 | -5.5 | 43 |
+| `AqrabYaum` | isha | 113/236 | 146.5 | 242 |
+
+### Utqiagvik (71.29N)
+
+| resolution | fajr nulls | sunrise nulls | dhuhr nulls | asr nulls | maghrib nulls | isha nulls |
+|---|---|---|---|---|---|---|
+| `Unresolved` | 83 | 146 | 0 | 0 | 146 | 83 |
+| `AqrabBalad` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `AqrabYaum` | 0 | 0 | 0 | 0 | 0 | 0 |
+
+| resolution | quantity | days it moved a value that was already defined | mean move (min) | max move (min) |
+|---|---|---|---|---|
+| `AqrabBalad` | fajr | 65/282 | -9.7 | 16 |
+| `AqrabBalad` | sunrise | 2/219 | 5.0 | 55 |
+| `AqrabBalad` | dhuhr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | asr | 148/365 | -32.0 | 402 |
+| `AqrabBalad` | maghrib | 2/219 | -21.5 | 88 |
+| `AqrabBalad` | isha | 65/282 | 11.4 | 18 |
+| `AqrabYaum` | fajr | 65/282 | -33.6 | 63 |
+| `AqrabYaum` | sunrise | 2/219 | 5.5 | 39 |
+| `AqrabYaum` | dhuhr | 119/365 | -0.4 | 13 |
+| `AqrabYaum` | asr | 148/365 | -38.6 | 206 |
+| `AqrabYaum` | maghrib | 2/219 | -20.0 | 67 |
+| `AqrabYaum` | isha | 65/282 | 34.0 | 67 |
+
+### Anchorage (61.22N)
+
+| resolution | fajr nulls | sunrise nulls | dhuhr nulls | asr nulls | maghrib nulls | isha nulls |
+|---|---|---|---|---|---|---|
+| `Unresolved` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `AqrabBalad` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `AqrabYaum` | 0 | 0 | 0 | 0 | 0 | 0 |
+
+| resolution | quantity | days it moved a value that was already defined | mean move (min) | max move (min) |
+|---|---|---|---|---|
+| `AqrabBalad` | fajr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | sunrise | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | dhuhr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | asr | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | maghrib | 0/365 | 0.0 | 0 |
+| `AqrabBalad` | isha | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | fajr | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | sunrise | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | dhuhr | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | asr | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | maghrib | 0/365 | 0.0 | 0 |
+| `AqrabYaum` | isha | 0/365 | 0.0 | 0 |
+
+## B. How far each resolution reaches for its substitute
+
+`AqrabBalad` walks latitude toward the equator in 0.5-degree steps until the
+sun both rises and sets (`PolarCircleResolution.ts`, `LATITUDE_VARIATION_STEP`
+= 0.5, `UNSAFE_LATITUDE` = 65). `AqrabYaum` walks the date outward from the
+requested day, up to `Math.ceil(365 / 2)` days. This table measures how far
+each actually had to go. All **measured**.
+
+| city | days needing a resolution | AqrabBalad max latitude walked (deg) | AqrabYaum max days walked |
+|---|---|---|---|
+| Tromso | 117 | 4.0 | 35 |
+| Reykjavik | 0 | n/a | n/a |
+| Murmansk | 103 | 3.5 | 32 |
+| Longyearbyen | 240 | 12.5 | 65 |
+| Utqiagvik | 148 | 6.0 | 42 |
+| Anchorage | 0 | n/a | n/a |
+
+## C. Does the prayer card stay in order
+
+A card must read Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha in time order. A
+resolution that returns a value but breaks the order is worse than a null,
+because nothing downstream can detect it. Counted over 365 days, on days
+where all six values exist. All **measured**.
+
+| city | resolution | days with all six defined | days out of order | worst inversion (min) |
+|---|---|---|---|---|
+| Tromso | `Unresolved` | 248 | 18 | 2208 |
+| Tromso | `AqrabBalad` | 365 | 43 | 2208 |
+| Tromso | `AqrabYaum` | 365 | 66 | 2208 |
+| Reykjavik | `Unresolved` | 365 | 0 | 0 |
+| Reykjavik | `AqrabBalad` | 365 | 0 | 0 |
+| Reykjavik | `AqrabYaum` | 365 | 0 | 0 |
+| Murmansk | `Unresolved` | 262 | 18 | 706 |
+| Murmansk | `AqrabBalad` | 365 | 36 | 706 |
+| Murmansk | `AqrabYaum` | 365 | 47 | 706 |
+| Longyearbyen | `Unresolved` | 124 | 13 | 686 |
+| Longyearbyen | `AqrabBalad` | 365 | 103 | 1516 |
+| Longyearbyen | `AqrabYaum` | 365 | 125 | 686 |
+| Utqiagvik | `Unresolved` | 218 | 21 | 5761 |
+| Utqiagvik | `AqrabBalad` | 365 | 74 | 5761 |
+| Utqiagvik | `AqrabYaum` | 365 | 85 | 5761 |
+| Anchorage | `Unresolved` | 365 | 0 | 0 |
+| Anchorage | `AqrabBalad` | 365 | 0 | 0 |
+| Anchorage | `AqrabYaum` | 365 | 0 | 0 |
+
+## D. The two solstices at Tromso, verbatim
+
+### 2026-06-21, midnight sun
+
+| resolution | fajr | sunrise | dhuhr | asr | maghrib | isha |
+|---|---|---|---|---|---|---|
+| `Unresolved` | Invalid Date | Invalid Date | 10:47 | 15:58 | Invalid Date | Invalid Date |
+| `AqrabBalad` | 22:46 | 23:06 | 10:47 | 15:43 | 22:26 | 22:46 |
+| `AqrabYaum` | 22:19 | 23:05 | 10:52 | 15:37 | 21:58 | 22:43 |
+
+### 2026-12-21, polar night
+
+| resolution | fajr | sunrise | dhuhr | asr | maghrib | isha |
+|---|---|---|---|---|---|---|
+| `Unresolved` | 05:28 | Invalid Date | 10:43 | 11:14 | Invalid Date | 15:44 |
+| `AqrabBalad` | 05:19 | 10:07 | 10:43 | 10:47 | 11:18 | 15:54 |
+| `AqrabYaum` | 04:50 | 09:57 | 10:32 | 09:52 | 11:06 | 16:00 |
+

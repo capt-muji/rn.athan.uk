@@ -1,0 +1,29 @@
+## Model A: one constant per field per zone (6 integers per zone, no per-day data)
+
+| zone | fajr | syuruk | dhuhr | asr | maghrib | isha | worst residual after the constant (min) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| WLY01 | +10 | -1 | +3 | +2 | +2 | +2 | 2 |
+| SGR01 | +10 | -2 | +2 | +1 | +1 | +1 | 2 |
+| JHR02 | +10 | +0 | +3 | +1 | +1 | +1 | 1 |
+| PLS01 | +9 | +0 | +2 | +1 | +1 | +1 | 1 |
+| SBH01 | +10 | +1 | +3 | +2 | +2 | +2 | 2 |
+
+## Model B: one constant per field per zone, plus a 12-value monthly correction per field
+
+| zone | worst residual after constant + monthly (min) | values stored |
+| --- | --- | --- |
+| WLY01 | 2 | 72 integers |
+| SGR01 | 2 | 72 integers |
+| JHR02 | 1 | 72 integers |
+| PLS01 | 1 | 72 integers |
+| SBH01 | 1 | 72 integers |
+
+## Model C: the exact per-day residual, which reproduces the published year to the minute
+
+| encoding | raw B | gzip B | brotli B | B/zone-year |
+| --- | --- | --- | --- | --- |
+| exact residual, int8 per field per day | 2190 | 374 | 362 | 362 |
+| exact residual, 4 bits per field per day (constant removed) | 1095 | 368 | 345 | 345 |
+
+WLY01 residual after the per-field constant is removed: range -1 to 2 minutes, so 4 bits per value is enough.
+Model A constant table, all 5 zones: 30 signed bytes = 30 B raw.

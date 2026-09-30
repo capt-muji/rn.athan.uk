@@ -1,0 +1,83 @@
+# R3 astronomy accuracy. Oracle: astronomy-engine 2.1.19.
+# decl error in ARCSECONDS, EoT error in SECONDS OF TIME. n = 365 or 366 dates per year, daily.
+#
+# The three test years are not a trend. The declination error of a truncated
+# periodic series oscillates in SIGN with the 18.6-year nutation cycle rather
+# than growing away from the epoch: sampling adhan every 2 years from 2010 to
+# 2046 gives signed annual peaks of +7.50, +7.83, +8.42, -10.63, +6.69, -7.58,
+# +6.39, -7.15, +11.67, -7.90, -7.17, -11.41, +8.22, +7.55, +7.35, -9.33,
+# +7.05, -6.69, +6.96 arcsec, with no secular drift. 2026 is simply a high
+# year, so the max below is a fair worst case and not a special case.
+
+## Solar declination and equation of time versus the oracle
+| engine | year | decl mean abs (arcsec) | decl max abs (arcsec) | EoT mean abs (s) | EoT max abs (s) |
+|---|---|---|---|---|---|
+| `adhan@4.4.6` | 1950 | 1.7 | 4.7 | 0.46 | 1.80 |
+| `adhan@4.4.6` | 2026 | 3.3 | 11.7 | 0.83 | 2.17 |
+| `adhan@4.4.6` | 2100 | 1.8 | 5.1 | 0.51 | 1.74 |
+| `pray-calc@2.4.0 (nrel-spa)` | 1950 | 1.7 | 4.7 | 0.00 | 0.00 |
+| `pray-calc@2.4.0 (nrel-spa)` | 2026 | 3.3 | 11.7 | 0.00 | 0.00 |
+| `pray-calc@2.4.0 (nrel-spa)` | 2100 | 1.8 | 5.0 | 0.00 | 0.00 |
+| `praytime@3.2.0` | 1950 | 6.1 | 12.0 | 0.55 | 1.75 |
+| `praytime@3.2.0` | 2026 | 7.2 | 15.2 | 0.98 | 2.50 |
+| `praytime@3.2.0` | 2100 | 8.1 | 20.5 | 1.04 | 2.41 |
+| `praytimes@0.0.5` | 1950 | 6.1 | 12.0 | 0.55 | 1.75 |
+| `praytimes@0.0.5` | 2026 | 7.2 | 15.2 | 0.98 | 2.50 |
+| `praytimes@0.0.5` | 2100 | 8.1 | 20.5 | 1.04 | 2.41 |
+
+## What the declination error costs in clock time at sunrise
+
+A declination error `dDecl` shifts the sunrise hour angle. Differentiating
+`cos(H) = (sin(h0) - sin(phi) sin(delta)) / (cos(phi) cos(delta))` gives the
+sensitivity below. Values are SECONDS OF TIME for the engine max decl error.
+
+| latitude | `adhan@4.4.6` | `pray-calc@2.4.0 (nrel-spa)` | `praytime@3.2.0` | `praytimes@0.0.5` |
+|---|---|---|---|---|
+| 0N | 0.0 | 0.0 | 0.0 | 0.0 |
+| 21.4N | 0.4 | 0.4 | 0.5 | 0.5 |
+| 40.7N | 0.9 | 0.9 | 1.1 | 1.1 |
+| 51.5N | 1.4 | 1.4 | 1.8 | 1.8 |
+| 59.9N | 2.5 | 2.5 | 3.2 | 3.2 |
+| 64.1N | 4.7 | 4.7 | 6.1 | 6.1 |
+| 69.6N | 88.8 | 88.8 | 115.8 | 115.8 |
+
+## Sensitivity table (seconds of sunrise time per arcsecond of declination error)
+| latitude | seconds per arcsec |
+|---|---|
+| 0N | 0.0005 |
+| 21.4N | 0.0319 |
+| 40.7N | 0.0741 |
+| 51.5N | 0.1204 |
+| 59.9N | 0.2127 |
+| 64.1N | 0.3998 |
+| 69.6N | 7.6063 |
+
+## Engine basis, from source
+- `adhan@4.4.6`: Meeus, Astronomical Algorithms ch.25, with nutation and apparent obliquity (SolarCoordinates.ts L13-54)
+- `pray-calc@2.4.0 (nrel-spa)`: NREL SPA via `nrel-spa`, claimed +/-0.0003 deg (1.08 arcsec), -2000 to 6000
+- `praytime@3.2.0`: USNO "Computing Approximate Solar Coordinates" two-term series, claimed about 1 arcminute within two centuries of 2000 (praytime.js L246-260)
+- `praytimes@0.0.5`: the same USNO two-term series, PrayTimes.org v2.5 (praytimes.js sunPosition)
+
+## Where the declination error actually comes from
+
+`adhan` and `pray-calc` return the same declination to 0.005 arcseconds
+(measured: 8.24260433 versus 8.24260558 degrees on 2026-04-11), despite one
+using Meeus and the other NREL SPA. So their shared ~12 arcsec peak is not a
+coding difference. Tracing it one step up the chain on the same date:
+
+| quantity | value | versus oracle |
+|---|---|---|
+| adhan apparent ecliptic longitude | 21.126636 deg | +31.46 arcsec |
+| astronomy-engine apparent ecliptic longitude | 21.117897 deg | reference |
+| resulting declination error | | +11.49 arcsec |
+
+The error is in the SOLAR LONGITUDE, not the obliquity or the declination
+formula. Both libraries carry the same truncated equation of the centre
+(`solarEquationOfTheCenter`, Astronomical.ts L58-67: three sine terms), which
+omits the planetary perturbation terms that VSOP87 and the JPL ephemerides
+include. The projection factor from ecliptic longitude onto declination is
+`cos(eps) cos(lambda) / cos(delta)`, which is about 0.37 in April, so 31.5
+arcsec of longitude becomes about 11.7 arcsec of declination. This bounds the
+honest accuracy claim: neither library is a 1-arcsecond ephemeris, whatever
+its dependency advertises, and both are far better than they need to be for
+a time quoted to the minute below 65 degrees.

@@ -1,0 +1,157 @@
+## A. Is the residual the same on the same calendar day in a different year?
+
+| authority | year pair | common days | field | identical | differ by 1 | differ by 2+ | worst |
+|---|---|---|---|---|---|---|---|
+| MUIS Singapore | SG-2025 vs SG-2026 | 365 | fajr | 209 (57.3%) | 130 | 26 | 2 |
+| MUIS Singapore | SG-2025 vs SG-2026 | 365 | sunrise | 217 (59.5%) | 130 | 18 | 2 |
+| MUIS Singapore | SG-2025 vs SG-2026 | 365 | dhuhr | 216 (59.2%) | 134 | 15 | 2 |
+| MUIS Singapore | SG-2025 vs SG-2026 | 365 | asr | 153 (41.9%) | 162 | 50 | 3 |
+| MUIS Singapore | SG-2025 vs SG-2026 | 365 | maghrib | 204 (55.9%) | 140 | 21 | 2 |
+| MUIS Singapore | SG-2025 vs SG-2026 | 365 | isha | 207 (56.7%) | 146 | 12 | 2 |
+| MARA Oman, Muscat | OM-muscat-2025 vs OM-muscat | 365 | fajr | 273 (74.8%) | 92 | 0 | 1 |
+| MARA Oman, Muscat | OM-muscat-2025 vs OM-muscat | 365 | sunrise | 283 (77.5%) | 82 | 0 | 1 |
+| MARA Oman, Muscat | OM-muscat-2025 vs OM-muscat | 365 | dhuhr | 316 (86.6%) | 49 | 0 | 1 |
+| MARA Oman, Muscat | OM-muscat-2025 vs OM-muscat | 365 | asr | 315 (86.3%) | 50 | 0 | 1 |
+| MARA Oman, Muscat | OM-muscat-2025 vs OM-muscat | 365 | maghrib | 311 (85.2%) | 54 | 0 | 1 |
+| MARA Oman, Muscat | OM-muscat-2025 vs OM-muscat | 365 | isha | 291 (79.7%) | 74 | 0 | 1 |
+| Awqaf UAE, Dubai | AE-dubai-2025 vs AE-dubai | 365 | fajr | 304 (83.3%) | 61 | 0 | 1 |
+| Awqaf UAE, Dubai | AE-dubai-2025 vs AE-dubai | 365 | sunrise | 314 (86.0%) | 51 | 0 | 1 |
+| Awqaf UAE, Dubai | AE-dubai-2025 vs AE-dubai | 365 | dhuhr | 341 (93.4%) | 24 | 0 | 1 |
+| Awqaf UAE, Dubai | AE-dubai-2025 vs AE-dubai | 365 | asr | 331 (90.7%) | 34 | 0 | 1 |
+| Awqaf UAE, Dubai | AE-dubai-2025 vs AE-dubai | 365 | maghrib | 319 (87.4%) | 46 | 0 | 1 |
+| Awqaf UAE, Dubai | AE-dubai-2025 vs AE-dubai | 365 | isha | 304 (83.3%) | 60 | 1 | 2 |
+| MORA Brunei | BN-2025 vs BN-2026 | 350 | fajr | 331 (94.6%) | 19 | 0 | 1 |
+| MORA Brunei | BN-2025 vs BN-2026 | 350 | sunrise | 338 (96.6%) | 11 | 1 | 3 |
+| MORA Brunei | BN-2025 vs BN-2026 | 350 | dhuhr | 322 (92.0%) | 27 | 1 | 10 |
+| MORA Brunei | BN-2025 vs BN-2026 | 350 | asr | 304 (86.9%) | 46 | 0 | 1 |
+| MORA Brunei | BN-2025 vs BN-2026 | 350 | maghrib | 302 (86.3%) | 48 | 0 | 1 |
+| MORA Brunei | BN-2025 vs BN-2026 | 350 | isha | 308 (88.0%) | 42 | 0 | 1 |
+| Umm al-Qura Makkah | SA-makkah-1447 vs SA-makkah | 345 | fajr | 263 (76.2%) | 81 | 1 | 2 |
+| Umm al-Qura Makkah | SA-makkah-1447 vs SA-makkah | 345 | sunrise | 311 (90.1%) | 33 | 1 | 2 |
+| Umm al-Qura Makkah | SA-makkah-1447 vs SA-makkah | 345 | dhuhr | 327 (94.8%) | 18 | 0 | 1 |
+| Umm al-Qura Makkah | SA-makkah-1447 vs SA-makkah | 345 | asr | 283 (82.0%) | 62 | 0 | 1 |
+| Umm al-Qura Makkah | SA-makkah-1447 vs SA-makkah | 345 | maghrib | 321 (93.0%) | 24 | 0 | 1 |
+| Umm al-Qura Makkah | SA-makkah-1447 vs SA-makkah | 345 | isha | 321 (93.0%) | 24 | 0 | 1 |
+
+## A2. Do the six Model A constants change from one year to the next?
+
+| authority | year | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
+|---|---|---|---|---|---|---|---|
+| MUIS Singapore | `SG-2025` | +1 | +1 | +2 | +1 | +1 | +1 |
+| MUIS Singapore | `SG-2026` | +1 | +1 | +2 | +1 | +1 | +1 |
+| MARA Oman, Muscat | `OM-muscat-2025` | +0 | +0 | +5 | +5 | +5 | -1 |
+| MARA Oman, Muscat | `OM-muscat` | +0 | +0 | +5 | +5 | +5 | -1 |
+| Awqaf UAE, Dubai | `AE-dubai-2025` | +0 | -3 | +3 | +1 | +3 | +0 |
+| Awqaf UAE, Dubai | `AE-dubai` | +0 | -3 | +3 | +1 | +3 | +0 |
+| MORA Brunei | `BN-2025` | +0 | +0 | +1 | +0 | +0 | +0 |
+| MORA Brunei | `BN-2026` | +0 | +0 | +1 | +0 | +0 | +0 |
+| Umm al-Qura Makkah | `SA-makkah-1447` | +1 | +0 | +1 | +1 | +1 | +1 |
+| Umm al-Qura Makkah | `SA-makkah` | +1 | +0 | +1 | +1 | +1 | +1 |
+
+## A3. MUIS Singapore, the consolidated 2024 to 2026 CSV, day by day
+
+| comparison | days | all six fields identical | any field differs by 1 | any field differs by 2+ |
+|---|---|---|---|---|
+| 2024 vs 2025 | 365 | 23 (6.3%) | 260 | 82 |
+| 2025 vs 2026 | 365 | 33 (9.0%) | 219 | 113 |
+| 2024 vs 2026 | 365 | 106 (29.0%) | 255 | 4 |
+
+| comparison | days | all six published times identical | max difference, minutes |
+|---|---|---|---|
+| 2024 vs 2025 | 365 | 25 (6.8%) | 3 |
+| 2025 vs 2026 | 365 | 34 (9.3%) | 2 |
+| 2024 vs 2026 | 365 | 171 (46.8%) | 2 |
+
+## B. The 365 / 366 boundary: what a perpetual day-of-year table costs
+
+| baseline year used | published year | days | exact | within 1 min | worst |
+|---|---|---|---|---|---|
+| the real year | 2024 | 366 | 1590 (72.4%) | 2196 (100.0%) | 1 |
+| the real year | 2025 | 365 | 1623 (74.1%) | 2177 (99.4%) | 2 |
+| the real year | 2026 | 365 | 1557 (71.1%) | 2184 (99.7%) | 2 |
+| 2024 | 2024 | 366 | 1590 (72.4%) | 2196 (100.0%) | 1 |
+| 2024 | 2025 | 365 | 1574 (71.9%) | 2172 (99.2%) | 2 |
+| 2024 | 2026 | 365 | 1704 (77.8%) | 2189 (100.0%) | 2 |
+
+## C. How far does one city's correction table travel?
+
+Apply city X's SIX CONSTANTS, and separately city X's EXACT per-day residual,
+to city Y's own baseline, and score against city Y's published times.
+
+| authority | donor | recipient | values | six constants: exact | <=1 | <=2 | worst | exact residual: exact | <=1 | <=2 | worst |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| JAKIM Malaysia | `MY-WLY01` | `MY-SGR01` | 2190 | 504 (23.0%) | 1906 (87.0%) | 2190 (100.0%) | 2 | 634 (28.9%) | 2090 (95.4%) | 2190 (100.0%) | 2 |
+| JAKIM Malaysia | `MY-WLY01` | `MY-JHR02` | 2190 | 714 (32.6%) | 2028 (92.6%) | 2190 (100.0%) | 2 | 760 (34.7%) | 2021 (92.3%) | 2189 (100.0%) | 3 |
+| JAKIM Malaysia | `MY-WLY01` | `MY-PLS01` | 2190 | 95 (4.3%) | 1683 (76.8%) | 2190 (100.0%) | 2 | 466 (21.3%) | 1710 (78.1%) | 2120 (96.8%) | 3 |
+| JAKIM Malaysia | `MY-WLY01` | `MY-SBH01` | 2190 | 1184 (54.1%) | 1928 (88.0%) | 2160 (98.6%) | 3 | 764 (34.9%) | 1750 (79.9%) | 2166 (98.9%) | 3 |
+| JAKIM Malaysia | `MY-WLY01` | `MY-KTN01` | 2190 | 727 (33.2%) | 1622 (74.1%) | 1825 (83.3%) | 6 | 665 (30.4%) | 1568 (71.6%) | 1825 (83.3%) | 7 |
+| JAKIM Malaysia | `MY-WLY01` | `MY-PNG01` | 2190 | 520 (23.7%) | 2125 (97.0%) | 2190 (100.0%) | 2 | 755 (34.5%) | 1897 (86.6%) | 2181 (99.6%) | 3 |
+| JAKIM Malaysia | `MY-WLY01` | `MY-SWK01` | 2190 | 347 (15.8%) | 2074 (94.7%) | 2190 (100.0%) | 2 | 577 (26.3%) | 1930 (88.1%) | 2190 (100.0%) | 2 |
+| JAKIM Malaysia | `MY-WLY01` | `MY-TRG01` | 2190 | 406 (18.5%) | 2063 (94.2%) | 2190 (100.0%) | 2 | 730 (33.3%) | 1888 (86.2%) | 2185 (99.8%) | 3 |
+| JAKIM Malaysia | `MY-WLY01` | `MY-MLK01` | 2190 | 1085 (49.5%) | 1975 (90.2%) | 2183 (99.7%) | 3 | 1016 (46.4%) | 2001 (91.4%) | 2190 (100.0%) | 2 |
+| Diyanet Turkey | `TR-9541` | `TR-9206` | 2190 | 1298 (59.3%) | 2125 (97.0%) | 2190 (100.0%) | 2 | 1596 (72.9%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Diyanet Turkey | `TR-9541` | `TR-9560` | 2190 | 1327 (60.6%) | 2136 (97.5%) | 2190 (100.0%) | 2 | 1620 (74.0%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Diyanet Turkey | `TR-9541` | `TR-9225` | 2190 | 1331 (60.8%) | 2132 (97.4%) | 2190 (100.0%) | 2 | 1482 (67.7%) | 2188 (99.9%) | 2190 (100.0%) | 2 |
+| Diyanet Turkey | `TR-9541` | `TR-9451` | 2190 | 1338 (61.1%) | 2151 (98.2%) | 2190 (100.0%) | 2 | 1635 (74.7%) | 2189 (100.0%) | 2190 (100.0%) | 2 |
+| Diyanet Turkey | `TR-9541` | `TR-9930` | 2190 | 1346 (61.5%) | 2147 (98.0%) | 2190 (100.0%) | 2 | 1546 (70.6%) | 2186 (99.8%) | 2190 (100.0%) | 2 |
+| Diyanet Turkey | `TR-9541` | `TR-9905` | 2190 | 1303 (59.5%) | 2119 (96.8%) | 2190 (100.0%) | 2 | 1830 (83.6%) | 2189 (100.0%) | 2190 (100.0%) | 2 |
+| Diyanet Turkey | `TR-9541` | `TR-9402` | 2190 | 1418 (64.7%) | 2149 (98.1%) | 2190 (100.0%) | 2 | 1625 (74.2%) | 2189 (100.0%) | 2190 (100.0%) | 2 |
+| Diyanet Turkey | `TR-9541` | `TR-9419` | 2190 | 1279 (58.4%) | 2082 (95.1%) | 2190 (100.0%) | 2 | 1612 (73.6%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Diyanet Turkey | `TR-9541` | `TR-9831` | 2190 | 1460 (66.7%) | 2167 (98.9%) | 2190 (100.0%) | 2 | 1574 (71.9%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Kemenag Indonesia | `ID-jakarta` | `ID-surabaya` | 2190 | 1912 (87.3%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1739 (79.4%) | 2189 (100.0%) | 2190 (100.0%) | 2 |
+| Kemenag Indonesia | `ID-jakarta` | `ID-bandaaceh` | 2190 | 1995 (91.1%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1861 (85.0%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Kemenag Indonesia | `ID-jakarta` | `ID-jayapura` | 2190 | 1959 (89.5%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1801 (82.2%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Kemenag Indonesia | `ID-jakarta` | `ID-makassar` | 2190 | 1968 (89.9%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1840 (84.0%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Kemenag Indonesia | `ID-jakarta` | `ID-pontianak` | 2190 | 1945 (88.8%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1828 (83.5%) | 2189 (100.0%) | 2190 (100.0%) | 2 |
+| Awqaf UAE | `AE-dubai` | `AE-abudhabi` | 2190 | 1343 (61.3%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1105 (50.5%) | 2154 (98.4%) | 2190 (100.0%) | 2 |
+| Awqaf UAE | `AE-dubai` | `AE-alain` | 2190 | 1226 (56.0%) | 2069 (94.5%) | 2190 (100.0%) | 2 | 1020 (46.6%) | 1987 (90.7%) | 2176 (99.4%) | 3 |
+| Awqaf UAE | `AE-dubai` | `AE-sharjah` | 2190 | 1323 (60.4%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1248 (57.0%) | 2157 (98.5%) | 2190 (100.0%) | 2 |
+| Awqaf UAE | `AE-dubai` | `AE-fujairah` | 2190 | 1048 (47.9%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 967 (44.2%) | 2117 (96.7%) | 2190 (100.0%) | 2 |
+| Awqaf UAE | `AE-dubai` | `AE-rak` | 2190 | 1115 (50.9%) | 2185 (99.8%) | 2190 (100.0%) | 2 | 1097 (50.1%) | 2159 (98.6%) | 2190 (100.0%) | 2 |
+| Awqaf UAE | `AE-dubai` | `AE-jebeljais` | 2190 | 115 (5.3%) | 1322 (60.4%) | 1460 (66.7%) | 6 | 384 (17.5%) | 1306 (59.6%) | 1459 (66.6%) | 6 |
+| Awqaf UAE | `AE-dubai` | `AE-hatta` | 2190 | 650 (29.7%) | 2091 (95.5%) | 2190 (100.0%) | 2 | 975 (44.5%) | 2104 (96.1%) | 2190 (100.0%) | 2 |
+| MARA Oman | `OM-muscat` | `OM-salalah` | 2190 | 1782 (81.4%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1373 (62.7%) | 2149 (98.1%) | 2190 (100.0%) | 2 |
+| MARA Oman | `OM-muscat` | `OM-sohar` | 2190 | 1580 (72.1%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1131 (51.6%) | 2115 (96.6%) | 2190 (100.0%) | 2 |
+| MARA Oman | `OM-muscat` | `OM-thumrait` | 2190 | 1692 (77.3%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1178 (53.8%) | 2114 (96.5%) | 2190 (100.0%) | 2 |
+| MARA Oman | `OM-muscat` | `OM-samad` | 2190 | 1682 (76.8%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1367 (62.4%) | 2171 (99.1%) | 2190 (100.0%) | 2 |
+| Umm al-Qura Saudi | `SA-makkah` | `SA-riyadh` | 2130 | 1804 (84.7%) | 2130 (100.0%) | 2130 (100.0%) | 1 | 1784 (83.8%) | 2130 (100.0%) | 2130 (100.0%) | 1 |
+| Umm al-Qura Saudi | `SA-makkah` | `SA-jeddah` | 2130 | 1842 (86.5%) | 2130 (100.0%) | 2130 (100.0%) | 1 | 1636 (76.8%) | 2130 (100.0%) | 2130 (100.0%) | 1 |
+| Umm al-Qura Saudi | `SA-makkah` | `SA-dammam` | 2130 | 1805 (84.7%) | 2130 (100.0%) | 2130 (100.0%) | 1 | 1783 (83.7%) | 2130 (100.0%) | 2130 (100.0%) | 1 |
+| Umm al-Qura Saudi | `SA-makkah` | `SA-tabuk` | 2130 | 1780 (83.6%) | 2128 (99.9%) | 2130 (100.0%) | 2 | 1798 (84.4%) | 2128 (99.9%) | 2130 (100.0%) | 2 |
+| Umm al-Qura Saudi | `SA-makkah` | `SA-abha` | 2130 | 1855 (87.1%) | 2130 (100.0%) | 2130 (100.0%) | 1 | 1792 (84.1%) | 2125 (99.8%) | 2130 (100.0%) | 2 |
+| Egyptian GAS | `EG-cairo` | `EG-alex` | 2190 | 1706 (77.9%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1513 (69.1%) | 2190 (100.0%) | 2190 (100.0%) | 1 |
+| Egyptian GAS | `EG-cairo` | `EG-aswan` | 1830 | 1415 (77.3%) | 1830 (100.0%) | 1830 (100.0%) | 1 | 1199 (65.5%) | 1807 (98.7%) | 1830 (100.0%) | 2 |
+| Egyptian GAS | `EG-cairo` | `EG-luxor` | 2190 | 1980 (90.4%) | 2190 (100.0%) | 2190 (100.0%) | 1 | 1650 (75.3%) | 2189 (100.0%) | 2190 (100.0%) | 2 |
+| Habous Morocco | `MA-rabat` | `MA-casa` | 180 | 132 (73.3%) | 180 (100.0%) | 180 (100.0%) | 1 | 120 (66.7%) | 180 (100.0%) | 180 (100.0%) | 1 |
+| Habous Morocco | `MA-rabat` | `MA-marrakech` | 180 | 101 (56.1%) | 134 (74.4%) | 180 (100.0%) | 2 | 90 (50.0%) | 132 (73.3%) | 177 (98.3%) | 3 |
+| Habous Morocco | `MA-rabat` | `MA-fes` | 180 | 101 (56.1%) | 157 (87.2%) | 180 (100.0%) | 2 | 88 (48.9%) | 152 (84.4%) | 180 (100.0%) | 2 |
+| Habous Morocco | `MA-rabat` | `MA-laayoune` | 180 | 122 (67.8%) | 180 (100.0%) | 180 (100.0%) | 1 | 114 (63.3%) | 180 (100.0%) | 180 (100.0%) | 1 |
+| Habous Morocco | `MA-rabat` | `MA-agadir` | 180 | 115 (63.9%) | 180 (100.0%) | 180 (100.0%) | 1 | 112 (62.2%) | 173 (96.1%) | 180 (100.0%) | 2 |
+
+## C2. Summary: worst error a donor city leaves on its neighbours
+
+| authority | recipients | worst with donor constants | worst with donor exact residual |
+|---|---|---|---|
+| JAKIM Malaysia | 9 | 6 | 7 |
+| Diyanet Turkey | 9 | 2 | 2 |
+| Kemenag Indonesia | 5 | 1 | 2 |
+| Awqaf UAE | 7 | 6 | 6 |
+| MARA Oman | 4 | 1 | 2 |
+| Umm al-Qura Saudi | 5 | 2 | 2 |
+| Egyptian GAS | 3 | 1 | 2 |
+| Habous Morocco | 5 | 2 | 3 |
+
+## D. How many DISTINCT exact residual tables does an authority need?
+
+Two cities share a table only when their per-day residual is identical on every day.
+
+| authority | cities measured | distinct exact residual tables | distinct six-constant sets | bytes if each ships its own (brotli) | bytes if shared |
+|---|---|---|---|---|---|
+| JAKIM Malaysia | 10 | 10 | 8 | 3111 | 3111 |
+| Diyanet Turkey | 10 | 10 | 1 | 3022 | 3022 |
+| Kemenag Indonesia | 6 | 6 | 1 | 1198 | 1198 |
+| Awqaf UAE | 8 | 8 | 6 | 2326 | 2326 |
+| MARA Oman | 5 | 5 | 1 | 1401 | 1401 |
+| Umm al-Qura Saudi | 6 | 6 | 1 | 1265 | 1265 |
+| Egyptian GAS | 4 | 4 | 1 | 982 | 982 |
+| Habous Morocco | 6 | 6 | 5 | 238 | 238 |
