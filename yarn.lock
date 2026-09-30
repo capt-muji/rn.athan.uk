@@ -3968,13 +3968,6 @@ expo-linking@~58.0.7:
     expo-constants "~58.0.7"
     invariant "^2.2.4"
 
-expo-location@~58.0.8:
-  version "58.0.8"
-  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-58.0.8.tgz#3564cd2301217ea973971aa8336ec3b0b6c711a7"
-  integrity sha512-IeP0lm3xroi+/2vc0Es+zwLoAQXqIWLM1qT0pcjRHDPGG+hPOml+SDUTuumJ8xTThpEKlmb/pv0o+uAyBl2FUg==
-  dependencies:
-    "@expo/image-utils" "^0.12.1"
-
 expo-manifests@~58.0.0:
   version "58.0.0"
   resolved "https://registry.yarnpkg.com/expo-manifests/-/expo-manifests-58.0.0.tgz#8c1f58a92abde7e5f77fe62ccf44520fc4343b1f"
@@ -4181,11 +4174,6 @@ fetch-nodeshim@^0.4.10:
   version "0.4.10"
   resolved "https://registry.yarnpkg.com/fetch-nodeshim/-/fetch-nodeshim-0.4.10.tgz#0bde71d3c87fcbd87e037dd498e743d9361b0f71"
   integrity sha512-m6I8ALe4L4XpdETy7MJZWs6L1IVMbjs99bwbpIKphxX+0CTns4IKDWJY0LWfr4YsFjfg+z1TjzTMU8lKl8rG0w==
-
-fflate@0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.8.3.tgz#bc27d8eb30343d4d512abb03480202ce65d825fc"
-  integrity sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==
 
 fill-range@^7.1.1:
   version "7.1.1"
