@@ -55,6 +55,7 @@ must not depend on the code under test.
 | `reports that there is no map here when the tiles hold no usable street` | The measured rural case | a tile with no named road | status `nomap` |
 | `reports that there is no map here when the archive cannot be reached` | Offline, never visited | `tilesAround` returns empty | status `nomap` |
 | `reads nothing until it is asked to` | Performance Design Rule 7 | mounted but never started | `readPosition` was not called |
+| `names the nearest street in the whole grid, not the nearest in the first tile that had one` | **Added by the audit.** Each tile is searched separately, so concatenating the per-tile results names whichever street the first tile held | two tiles, one holding a road at 100 m and one at 5 m | the answer names the near one |
 
 `components/qibla/__tests__/QiblaMap.test.tsx`, what a person sees.
 
@@ -100,7 +101,7 @@ Expected before the change: `Cannot find module` for each new path.
 | Export | Signature | Answers | Must never |
 | --- | --- | --- | --- |
 | `QiblaMapState` | a discriminated union on `status`: `looking`, `unavailable`, `nomap`, `ready` | What the screen shows | Have a `ready` state without a street |
-| `useQiblaMap` | `() => { state: QiblaMapState; start: () => Promise<void> }` | The screen's whole state | Read a position, a tile or a sensor at mount; `start` is called from `onPresent` |
+| `useQiblaMap` | `() => { state: QiblaMapState; start: () => Promise<void> }` | The screen's whole state | Read a position, a tile or a sensor at mount; `start` is called from `onPresent`. **Rank the streets across the whole grid with `rankStreets`, never per tile** |
 
 **`components/qibla/QiblaMap.tsx`**, drawing with `react-native-svg`, already installed:
 
