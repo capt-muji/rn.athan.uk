@@ -1,0 +1,13 @@
+        <Pressable
+          style={styles.whatsNewButton}
+          onPress={handleHelpPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel='Help'
+          accessibilityRole='button'>
+          <View style={styles.infoButton}>
+            <IconView type={Icon.QUESTION} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.whatsNewLabel}>Help</Text>
+          <Text style={styles.chevron}>›</Text>
+        </Pressable>
+      </View>
