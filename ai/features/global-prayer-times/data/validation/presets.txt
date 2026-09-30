@@ -1,0 +1,229 @@
+# R7 Part 1: the four untested adhan presets
+
+adhan constants read from `src/CalculationMethod.ts` of `adhan@4.4.6`
+(`opensrc path npm:adhan@4.4.6`):
+
+| preset | fajrAngle | ishaAngle | ishaInterval | methodAdjustments |
+|---|---|---|---|---|
+| `MuslimWorldLeague` | 18 | 17 | 0 | `dhuhr: 1` |
+| `Egyptian` | 19.5 | 17.5 | 0 | `dhuhr: 1` |
+| `Karachi` | 18 | 18 | 0 | `dhuhr: 1` |
+| `NorthAmerica` | 15 | 15 | 0 | `dhuhr: 1` |
+
+## Egypt: the authority publishes, so the preset is checkable
+
+Source: `https://esa.gov.eg/praytimes.aspx`, fetched 2026-09-30T01:18:08.426Z, 78 cities.
+Angles recovered by inverting the authority's OWN published clock times with
+`astronomy-engine@2.1.19`. All **measured**.
+
+| city | lat | published Fajr | implied Fajr deg | published Isha | implied Isha deg |
+|---|---|---|---|---|---|
+| Damietta | 31.42 | 05:18 | 19.49 | 19:58 | 17.60 |
+| MarsaMatruh | 31.35 | 05:36 | 19.56 | 20:16 | 17.55 |
+| PortSaid | 31.27 | 05:16 | 19.52 | 19:55 | 17.40 |
+| Alexandria | 31.20 | 05:25 | 19.64 | 20:05 | 17.51 |
+| ElArish | 31.13 | 05:10 | 19.54 | 19:49 | 17.41 |
+| Mansoura | 31.04 | 05:20 | 19.49 | 19:59 | 17.49 |
+| Damanhur | 31.03 | 05:24 | 19.42 | 20:03 | 17.57 |
+| Tanta | 30.79 | 05:22 | 19.43 | 20:00 | 17.42 |
+| Ismailia | 30.60 | 05:17 | 19.44 | 19:55 | 17.46 |
+| Zagazig | 30.59 | 05:20 | 19.45 | 19:58 | 17.44 |
+| Cairo | 30.04 | 05:21 | 19.55 | 19:59 | 17.49 |
+| Suez | 29.97 | 05:16 | 19.50 | 19:54 | 17.56 |
+| Faiyum | 29.31 | 05:23 | 19.56 | 20:00 | 17.46 |
+| BeniSuef | 29.07 | 05:22 | 19.59 | 19:59 | 17.49 |
+| Minya | 28.11 | 05:24 | 19.59 | 20:00 | 17.51 |
+| SharmElSheikh | 27.92 | 05:10 | 19.54 | 19:46 | 17.60 |
+| Hurghada | 27.26 | 05:13 | 19.42 | 19:47 | 17.43 |
+| Asyut | 27.18 | 05:23 | 19.55 | 19:58 | 17.55 |
+| Sohag | 26.56 | 05:22 | 19.39 | 19:55 | 17.39 |
+| Qena | 26.16 | 05:18 | 19.42 | 19:51 | 17.45 |
+| Luxor | 25.69 | 05:18 | 19.54 | 19:51 | 17.42 |
+| Aswan | 24.09 | 05:18 | 19.48 | 19:50 | 17.57 |
+
+Fajr across 22 cities: mean 19.51, range 19.39 to 19.64.
+Isha across 22 cities: mean 17.49, range 17.39 to 17.60.
+adhan ships 19.5 / 17.5. Deltas: Fajr 0.01 deg, Isha -0.01 deg.
+
+## MWL: what its own portal actually serves
+
+Source: `https://portal.themwl.org/api/salat/prayer-times`, POST {latitude, longitude, zoneId}, fetched 2026-09-30T01:18:07.068Z.
+the Muslim World League's own portal application endpoint, found in its Angular chunk 2569.fedca3ed5e30bcba.js
+
+| city | lat | Fajr | implied Fajr deg | Isha | implied Isha deg | Isha minus Maghrib (min) |
+|---|---|---|---|---|---|---|
+| Makkah | 21.42 | 04:56 | 18.41 | 19:40 | 21.87 | 90 |
+| Madinah | 24.47 | 04:55 | 18.57 | 19:40 | 21.35 | 90 |
+| Riyadh | 24.71 | 04:27 | 18.48 | 19:11 | 21.15 | 90 |
+| Cairo | 30.04 | 05:28 | 18.05 | 19:57 | 17.06 | 75 |
+| London | 51.51 | 05:07 | 18.04 | 20:26 | 17.06 | 105 |
+| Manchester | 53.48 | 05:11 | 18.01 | 20:38 | 16.97 | 110 |
+| Berlin | 52.52 | 05:11 | 17.96 | 20:34 | 17.05 | 108 |
+| Istanbul | 41.01 | 05:28 | 17.97 | 20:14 | 16.99 | 86 |
+| Karachi | 24.86 | 05:08 | 17.95 | 19:31 | 16.90 | 71 |
+| Lahore | 31.52 | 04:35 | 17.94 | 19:05 | 16.96 | 76 |
+| Dhaka | 23.81 | 04:35 | 17.89 | 18:57 | 16.88 | 70 |
+| Delhi | 28.61 | 04:55 | 18.02 | 19:22 | 16.95 | 73 |
+| Jakarta | -6.21 | 04:29 | 18.01 | 18:52 | 16.90 | 65 |
+| KualaLumpur | 3.14 | 05:52 | 17.97 | 20:11 | 17.06 | 65 |
+| Singapore | 1.35 | 05:43 | 18.02 | 20:03 | 17.12 | 65 |
+| NewYork | 40.71 | 05:19 | 18.06 | 20:07 | 17.01 | 86 |
+| Chicago | 41.88 | 05:12 | 18.08 | 20:03 | 17.06 | 88 |
+| Toronto | 43.65 | 05:37 | 18.01 | 20:32 | 17.03 | 90 |
+| Vancouver | 49.28 | 05:23 | 17.96 | 20:35 | 17.01 | 100 |
+| Lagos | 6.52 | 05:25 | 18.09 | 19:43 | 16.88 | 65 |
+| CapeTown | -33.92 | 05:01 | 17.95 | 20:08 | 17.08 | 80 |
+| Oslo | 59.91 | 04:58 | 18.01 | 21:05 | 17.01 | 132 |
+| Sydney | -33.87 | 04:10 | 18.05 | 19:16 | 16.99 | 79 |
+| Casablanca | 33.57 | 06:01 | 18.05 | 20:34 | 17.01 | 78 |
+
+Fajr across 24 cities: mean 18.06, range 17.89 to 18.57.
+Isha across 24 cities: mean 17.56, range 16.88 to 21.87.
+Isha minus Maghrib: mean 84.9 min, range 65 to 132.
+adhan ships 18 / 17 for `MuslimWorldLeague`.
+
+## What each disputed angle is worth in minutes, across a full year
+
+For each preset: hold everything else identical and swap only the angle. The
+delta is |adhan preset| minus |authority value|, in minutes, over all 365 days
+of 2026. All **measured**.
+
+### Egypt: adhan 19.5 / 17.5 minus the authority's measured 19.51 / 17.49
+
+| city | lat | mean (min) | min | max | days adhan has no solution | days authority has no solution |
+|---|---|---|---|---|---|---|
+| Cairo Fajr | 30.04 | 0.00 | 0 | 0 | 0 | 0 |
+| Cairo Isha | 30.04 | 0.00 | 0 | 0 | 0 | 0 |
+| Alexandria Fajr | 31.20 | 0.00 | 0 | 0 | 0 | 0 |
+| Alexandria Isha | 31.20 | 0.00 | 0 | 0 | 0 | 0 |
+| Aswan Fajr | 24.09 | 0.00 | 0 | 0 | 0 | 0 |
+| Aswan Isha | 24.09 | 0.00 | 0 | 0 | 0 | 0 |
+| Khartoum Fajr | 15.50 | 0.00 | 0 | 0 | 0 | 0 |
+| Khartoum Isha | 15.50 | 0.00 | 0 | 0 | 0 | 0 |
+| Makkah Fajr | 21.42 | 0.00 | 0 | 0 | 0 | 0 |
+| Makkah Isha | 21.42 | 0.00 | 0 | 0 | 0 | 0 |
+
+### Canada: adhan `NorthAmerica` 15/15 minus FCNA's own 13/13 for Canada
+
+| city | lat | mean (min) | min | max | days adhan has no solution | days authority has no solution |
+|---|---|---|---|---|---|---|
+| Toronto Fajr | 43.65 | -13.06 | -19 | -11 | 0 | 0 |
+| Toronto Isha | 43.65 | 13.06 | 11 | 19 | 0 | 0 |
+| Montreal Fajr | 45.50 | -13.86 | -21 | -11 | 0 | 0 |
+| Montreal Isha | 45.50 | 13.86 | 11 | 21 | 0 | 0 |
+| Calgary Fajr | 51.04 | -18.88 | -49 | -13 | 0 | 0 |
+| Calgary Isha | 51.04 | 18.88 | 13 | 49 | 0 | 0 |
+| Edmonton Fajr | 53.55 | -18.05 | -64 | -13 | 49 | 0 |
+| Edmonton Isha | 53.55 | 18.06 | 13 | 64 | 49 | 0 |
+| Vancouver Fajr | 49.28 | -16.32 | -31 | -12 | 0 | 0 |
+| Vancouver Isha | 49.28 | 16.32 | 12 | 31 | 0 | 0 |
+
+### MWL: adhan 18 minus the mean angle its own portal implies (18.06)
+
+| city | lat | mean (min) | min | max | days adhan has no solution | days authority has no solution |
+|---|---|---|---|---|---|---|
+| Cairo Fajr | 30.04 | 0.00 | 0 | 0 | 0 | 0 |
+| London Fajr | 51.51 | 0.38 | 0 | 5 | 60 | 60 |
+| Karachi Fajr | 24.86 | 0.00 | 0 | 0 | 0 | 0 |
+| Jakarta Fajr | -6.21 | 0.00 | 0 | 0 | 0 | 0 |
+
+## adhan `MuslimWorldLeague` against the MWL portal, time by time
+
+Both on the same date and coordinates. Delta is adhan minus the portal, in
+minutes. All **measured**.
+
+| city | lat | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
+|---|---|---|---|---|---|---|---|
+| Makkah | 21.42 | +2 | 0 | +1 | 0 | 0 | -21 |
+| Madinah | 24.47 | +2 | 0 | +1 | 0 | 0 | -19 |
+| Riyadh | 24.71 | +2 | 0 | +1 | 0 | 0 | -18 |
+| Cairo | 30.04 | 0 | 0 | 0 | 0 | 0 | 0 |
+| London | 51.51 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Manchester | 53.48 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Berlin | 52.52 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Istanbul | 41.01 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Karachi | 24.86 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Lahore | 31.52 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Dhaka | 23.81 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Delhi | 28.61 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Jakarta | -6.21 | 0 | 0 | 0 | 0 | 0 | 0 |
+| KualaLumpur | 3.14 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Singapore | 1.35 | 0 | 0 | 0 | 0 | 0 | 0 |
+| NewYork | 40.71 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Chicago | 41.88 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Toronto | 43.65 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Vancouver | 49.28 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Lagos | 6.52 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CapeTown | -33.92 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Oslo | 59.91 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Sydney | -33.87 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Casablanca | 33.57 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+| prayer | n | mean | min | max | within 1 min |
+|---|---|---|---|---|---|
+| fajr | 24 | 0.3 | 0 | 2 | 21/24 |
+| sunrise | 24 | 0.0 | 0 | 0 | 24/24 |
+| dhuhr | 24 | 0.1 | 0 | 1 | 24/24 |
+| asr | 24 | 0.0 | 0 | 0 | 24/24 |
+| maghrib | 24 | 0.0 | 0 | 0 | 24/24 |
+| isha | 24 | -2.4 | -21 | 0 | 21/24 |
+
+## adhan `Egyptian` against the ESA's own table, city by city
+
+Delta is adhan minus the authority, in minutes. All **measured**.
+
+| city | lat | Fajr | Sunrise | Dhuhr | Asr | Maghrib | Isha |
+|---|---|---|---|---|---|---|---|
+| Damietta | 31.42 | 0 | 0 | +1 | 0 | 0 | -1 |
+| MarsaMatruh | 31.35 | 0 | 0 | +1 | 0 | 0 | 0 |
+| PortSaid | 31.27 | 0 | 0 | +1 | 0 | 0 | 0 |
+| Alexandria | 31.20 | +1 | 0 | +1 | -1 | 0 | 0 |
+| ElArish | 31.13 | 0 | 0 | +1 | 0 | -1 | 0 |
+| Mansoura | 31.04 | 0 | 0 | +1 | 0 | 0 | 0 |
+| Damanhur | 31.03 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Tanta | 30.79 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Ismailia | 30.60 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Zagazig | 30.59 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Cairo | 30.04 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Suez | 29.97 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Faiyum | 29.31 | 0 | 0 | +1 | -1 | 0 | 0 |
+| BeniSuef | 29.07 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Minya | 28.11 | 0 | 0 | +1 | 0 | 0 | 0 |
+| SharmElSheikh | 27.92 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Hurghada | 27.26 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Asyut | 27.18 | 0 | 0 | +1 | 0 | 0 | 0 |
+| Sohag | 26.56 | -1 | 0 | +1 | 0 | 0 | 0 |
+| Qena | 26.16 | 0 | 0 | +1 | 0 | 0 | 0 |
+| Luxor | 25.69 | 0 | 0 | +1 | -1 | 0 | 0 |
+| Aswan | 24.09 | 0 | 0 | +1 | 0 | 0 | 0 |
+
+| prayer | n | mean | min | max | exact | within 1 min |
+|---|---|---|---|---|---|---|
+| fajr | 22 | 0.0 | -1 | 1 | 20/22 | 22/22 |
+| sunrise | 22 | 0.0 | 0 | 0 | 22/22 | 22/22 |
+| dhuhr | 22 | 1.0 | 1 | 1 | 0/22 | 22/22 |
+| asr | 22 | -0.5 | -1 | 0 | 10/22 | 22/22 |
+| maghrib | 22 | -0.0 | -1 | 0 | 21/22 | 22/22 |
+| isha | 22 | -0.0 | -1 | 0 | 21/22 | 22/22 |
+
+Same comparison with adhan's `methodAdjustments.dhuhr = 1` removed:
+
+| dhuhr, adjustment zeroed | 22 | 0.0 | 0 | 0 | 22/22 exact |
+
+## Karachi: there is no authority to check against
+
+R1 searched for a University of Islamic Sciences, Karachi publication and found
+none. The 18/18 pair traces to `praytimes.org` and Arabeyes ITL, and ITL's own
+documentation states "no contacts have been made to obtain the correct (or
+up-to-date) numbers as published by such organizations" (cited, R1).
+
+What can be measured is how far 18/18 sits from the other defensible values in
+the region, so the size of the unverifiability is at least known:
+
+| city | lat | 18 vs 19.5 Fajr (min) | 18 vs 15 Fajr (min) | 18 vs 17 Isha (min) |
+|---|---|---|---|---|
+| Karachi | 24.86 | 7.3 [7,8] | -14.2 [-16,-13] | 4.8 [4,6] |
+| Lahore | 31.52 | 7.8 [7,10] | -15.5 [-19,-14] | 5.3 [5,6] |
+| Delhi | 28.61 | 7.5 [7,9] | -14.9 [-18,-14] | 5.2 [5,6] |
+| Dhaka | 23.81 | 7.2 [7,8] | -14.1 [-16,-13] | 4.6 [4,5] |
+

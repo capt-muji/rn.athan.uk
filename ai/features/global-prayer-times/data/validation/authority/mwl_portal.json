@@ -1,0 +1,1376 @@
+{
+  "source": "https://portal.themwl.org/api/salat/prayer-times",
+  "method": "POST {latitude, longitude, zoneId}",
+  "note": "the Muslim World League's own portal application endpoint, found in its Angular chunk 2569.fedca3ed5e30bcba.js",
+  "fetchedUtc": "2026-09-30T01:18:07.068Z",
+  "cities": {
+    "Makkah": {
+      "lat": 21.4225,
+      "lon": 39.8262,
+      "tz": "Asia/Riyadh",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:56 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:12 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:11 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:34 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:10 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:40 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "04:56 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Madinah": {
+      "lat": 24.4686,
+      "lon": 39.6142,
+      "tz": "Asia/Riyadh",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:55 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:13 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:12 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:35 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:10 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:40 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "04:55 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Riyadh": {
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "tz": "Asia/Riyadh",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:27 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "05:45 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "11:43 AM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:07 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "05:41 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:11 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "04:27 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Cairo": {
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "tz": "Africa/Cairo",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:28 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:48 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:46 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:08 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:42 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:57 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:28 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "London": {
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "tz": "Europe/London",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:07 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:59 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:51 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:57 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:41 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:26 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:07 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Manchester": {
+      "lat": 53.4808,
+      "lon": -2.2426,
+      "tz": "Europe/London",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:11 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "07:09 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "01:00 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:02 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:48 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:38 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:11 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Berlin": {
+      "lat": 52.52,
+      "lon": 13.405,
+      "tz": "Europe/Berlin",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:11 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "07:06 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:57 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:01 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:46 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:34 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:11 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Istanbul": {
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "tz": "Europe/Istanbul",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:28 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:59 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:55 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:12 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:48 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:14 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:28 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Karachi": {
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "tz": "Asia/Karachi",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:08 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:24 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:23 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:46 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:20 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:31 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:08 AM"
+          },
+          "nextPrayer": {
+            "salatAr": "الشروق",
+            "salatEn": "Sunrise",
+            "time": "06:24 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Lahore": {
+      "lat": 31.5204,
+      "lon": 74.3587,
+      "tz": "Asia/Karachi",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:35 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "05:56 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "11:54 AM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:16 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "05:49 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:05 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "الشروق",
+            "salatEn": "Sunrise",
+            "time": "05:56 AM"
+          },
+          "nextPrayer": {
+            "salatAr": "الظهر",
+            "salatEn": "Dhuhr",
+            "time": "11:54 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Dhaka": {
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "tz": "Asia/Dhaka",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:35 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "05:50 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "11:49 AM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:12 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "05:47 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "06:57 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "الشروق",
+            "salatEn": "Sunrise",
+            "time": "05:50 AM"
+          },
+          "nextPrayer": {
+            "salatAr": "الظهر",
+            "salatEn": "Dhuhr",
+            "time": "11:49 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Delhi": {
+      "lat": 28.6139,
+      "lon": 77.209,
+      "tz": "Asia/Kolkata",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:55 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:13 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:12 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:35 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:09 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:22 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "الشروق",
+            "salatEn": "Sunrise",
+            "time": "06:13 AM"
+          },
+          "nextPrayer": {
+            "salatAr": "الظهر",
+            "salatEn": "Dhuhr",
+            "time": "12:12 PM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Jakarta": {
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "tz": "Asia/Jakarta",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:29 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "05:38 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "11:44 AM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "02:50 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "05:47 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "06:52 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "الشروق",
+            "salatEn": "Sunrise",
+            "time": "05:38 AM"
+          },
+          "nextPrayer": {
+            "salatAr": "الظهر",
+            "salatEn": "Dhuhr",
+            "time": "11:44 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "KualaLumpur": {
+      "lat": 3.139,
+      "lon": 101.6869,
+      "tz": "Asia/Kuala_Lumpur",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:52 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "07:01 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "01:04 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:13 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "07:06 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:11 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "الشروق",
+            "salatEn": "Sunrise",
+            "time": "07:01 AM"
+          },
+          "nextPrayer": {
+            "salatAr": "الظهر",
+            "salatEn": "Dhuhr",
+            "time": "01:04 PM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Singapore": {
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "tz": "Asia/Singapore",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:43 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:52 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:56 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:02 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:58 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:03 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "الشروق",
+            "salatEn": "Sunrise",
+            "time": "06:52 AM"
+          },
+          "nextPrayer": {
+            "salatAr": "الظهر",
+            "salatEn": "Dhuhr",
+            "time": "12:56 PM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "NewYork": {
+      "lat": 40.7128,
+      "lon": -74.006,
+      "tz": "America/New_York",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:19 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:51 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:47 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:05 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:41 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:07 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "العشاء",
+            "salatEn": "Isha",
+            "time": "08:07 PM"
+          },
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:20 AM"
+          },
+          "gregorianDateEn": "29 September 2026",
+          "gregorianDateAr": "29 سبتمبر 2026",
+          "hijriDateEn": "18 Rabiʻ II 1448",
+          "hijriDateAr": "18 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Chicago": {
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "tz": "America/Chicago",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:12 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:45 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:42 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:58 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:35 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:03 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "العشاء",
+            "salatEn": "Isha",
+            "time": "08:03 PM"
+          },
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:14 AM"
+          },
+          "gregorianDateEn": "29 September 2026",
+          "gregorianDateAr": "29 سبتمبر 2026",
+          "hijriDateEn": "18 Rabiʻ II 1448",
+          "hijriDateAr": "18 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Toronto": {
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "tz": "America/Toronto",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:37 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "07:13 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "01:09 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:24 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "07:02 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:32 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "العشاء",
+            "salatEn": "Isha",
+            "time": "08:32 PM"
+          },
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:38 AM"
+          },
+          "gregorianDateEn": "29 September 2026",
+          "gregorianDateAr": "29 سبتمبر 2026",
+          "hijriDateEn": "18 Rabiʻ II 1448",
+          "hijriDateAr": "18 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Vancouver": {
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "tz": "America/Vancouver",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:23 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "07:10 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "01:04 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:12 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:55 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:35 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "العصر",
+            "salatEn": "Asr",
+            "time": "04:12 PM"
+          },
+          "nextPrayer": {
+            "salatAr": "المغرب",
+            "salatEn": "Maghrib",
+            "time": "06:55 PM"
+          },
+          "gregorianDateEn": "29 September 2026",
+          "gregorianDateAr": "29 سبتمبر 2026",
+          "hijriDateEn": "18 Rabiʻ II 1448",
+          "hijriDateAr": "18 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Lagos": {
+      "lat": 6.5244,
+      "lon": 3.3792,
+      "tz": "Africa/Lagos",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:25 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:34 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:37 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:50 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:38 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:43 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:25 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "CapeTown": {
+      "lat": -33.9249,
+      "lon": 18.4241,
+      "tz": "Africa/Johannesburg",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "05:01 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "06:25 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "12:37 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:08 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:48 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:08 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "05:01 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Oslo": {
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "tz": "Europe/Oslo",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:58 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "07:20 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "01:08 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:58 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "06:53 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "09:05 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "04:58 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Sydney": {
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "tz": "Australia/Sydney",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "04:10 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "05:34 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "11:46 AM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "03:16 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "05:57 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "07:16 PM"
+            }
+          ],
+          "currentPrayer": {
+            "salatAr": "الشروق",
+            "salatEn": "Sunrise",
+            "time": "05:34 AM"
+          },
+          "nextPrayer": {
+            "salatAr": "الظهر",
+            "salatEn": "Dhuhr",
+            "time": "11:46 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    },
+    "Casablanca": {
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "tz": "Africa/Casablanca",
+      "body": {
+        "result": {
+          "code": 0,
+          "message": ""
+        },
+        "data": {
+          "prayerTimeInfoList": [
+            {
+              "salatAr": "الفجر",
+              "salatEn": "Fajr",
+              "time": "06:01 AM"
+            },
+            {
+              "salatAr": "الشروق",
+              "salatEn": "Sunrise",
+              "time": "07:24 AM"
+            },
+            {
+              "salatAr": "الظهر",
+              "salatEn": "Dhuhr",
+              "time": "01:21 PM"
+            },
+            {
+              "salatAr": "العصر",
+              "salatEn": "Asr",
+              "time": "04:42 PM"
+            },
+            {
+              "salatAr": "المغرب",
+              "salatEn": "Maghrib",
+              "time": "07:16 PM"
+            },
+            {
+              "salatAr": "العشاء",
+              "salatEn": "Isha",
+              "time": "08:34 PM"
+            }
+          ],
+          "currentPrayer": null,
+          "nextPrayer": {
+            "salatAr": "الفجر",
+            "salatEn": "Fajr",
+            "time": "06:01 AM"
+          },
+          "gregorianDateEn": "30 September 2026",
+          "gregorianDateAr": "30 سبتمبر 2026",
+          "hijriDateEn": "19 Rabiʻ II 1448",
+          "hijriDateAr": "19 ربيع الآخر 1448"
+        }
+      }
+    }
+  }
+}
