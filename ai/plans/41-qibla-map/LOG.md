@@ -87,3 +87,16 @@ tested by rendering one.
 Left for the execution session, and named as such: `hooks/useQiblaMap.ts`, `components/qibla/QiblaMap.tsx`
 and `device/tiles.ts`. Each needs mocks or a renderer rather than pure inputs, so each is specified by
 contract rather than carried, and the plan gives every test row for them.
+
+### The version collision, which R5's repeat-risk list predicted
+
+A concurrent session queued row 42 and pushed `1.29.141` and `1.29.142` while this session was using the
+same two numbers locally, so the merge conflicted on `app.json` and `package.json`. Resolved to the higher
+version, `1.29.146`, with the gradle file already matching.
+
+This is repeat-risk 5 in `agent-reports/R5-prior-attempts-and-adversarial.md`, which named the exact
+condition: "the version-counter collision... the exact condition that stamped 1.29.107 and 1.29.108 twice".
+Its remedy is to take the version from `origin/uat-2` at the moment of the bump rather than from the working
+tree. **This session read the working tree, as every previous one has.** Nothing shipped wrong because the
+conflict is loud and `versionLockstep.test.ts` guards the three files, but the lesson is now recorded twice
+and the cheap fix is a `git fetch` immediately before each bump.

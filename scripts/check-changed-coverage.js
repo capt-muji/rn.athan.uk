@@ -45,6 +45,10 @@ const UNMEASURED = [
     path: 'ai/plans/41-qibla-map/proof/',
     reason: 'executed research artefacts, run once under Node against a live tile archive, never by the app',
   },
+  {
+    path: 'ai/features/global-prayer-times/data/',
+    reason: 'executed research artefacts, run once under Node against published timetables, never by the app',
+  },
   { path: 'scripts/', reason: 'repository tooling, including this gate' },
   { path: '.agents/', reason: 'Expo and EAS agent skills, documentation for coding agents' },
   { path: 'jest.config.js', reason: 'test runner configuration' },

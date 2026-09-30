@@ -1,0 +1,161 @@
+
+=== London / AlAdhan method 3 (MWL) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=244 within1=275 range=-97..1 nulls=0
+           hist -97:2 -96:3 -95:6 -94:3 -93:5 -92:6 -91:6 -90:10 -89:13 -88:6 -76:1 -73:1 -66:1 -64:1 -58:1 -56:1 -51:1 -50:1 -45:1 -44:1 -40:1 -39:1 -35:1 -34:1 -31:1 -30:1 -26:1 -25:1 -22:1 -21:1 -19:1 -18:1 -15:1 -14:1 -11:2 -8:1 -7:1 -4:2 -1:13 +0:244 +1:18
+  Sunrise  n=365 exact=344 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=1 within1=364 range=0..2 nulls=0
+           hist +0:1 +1:363 +2:1
+  Asr      n=365 exact=31 within1=123 range=-4..4 nulls=0
+           hist -4:1 -3:59 -2:61 -1:46 +0:31 +1:46 +2:57 +3:60 +4:4
+  Maghrib  n=365 exact=341 within1=365 range=-1..1 nulls=0
+  Isha     n=365 exact=219 within1=278 range=-1..102 nulls=0
+           hist -1:31 +0:219 +1:28 +2:1 +4:1 +5:1 +7:2 +10:2 +13:1 +14:1 +16:2 +19:2 +23:2 +26:2 +29:1 +30:1 +33:1 +34:1 +37:1 +38:1 +41:2 +45:1 +46:1 +50:2 +54:1 +56:1 +60:1 +61:1 +65:1 +67:1 +70:1 +75:1 +85:1 +95:1 +96:15 +97:7 +98:8 +99:7 +100:6 +101:1 +102:4
+
+=== London / AlAdhan method 2 (ISNA) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=258 within1=285 range=-98..1 nulls=0
+           hist -98:1 -97:2 -96:1 -95:1 -94:1 -93:2 -91:2 -89:1 -88:1 -87:1 -86:1 -84:1 -83:1 -81:2 -79:1 -78:1 -76:1 -74:1 -73:1 -72:1 -70:1 -69:1 -67:2 -64:1 -63:1 -62:1 -61:1 -59:1 -58:1 -57:1 -55:1 -54:1 -53:1 -52:1 -50:1 -49:1 -48:1 -46:1 -44:2 -42:1 -41:1 -40:1 -38:1 -37:1 -36:1 -35:1 -33:2 -31:1 -29:1 -28:1 -27:1 -26:1 -25:1 -23:1 -22:1 -21:1 -20:1 -19:1 -18:1 -16:1 -15:1 -14:1 -13:1 -12:1 -11:1 -9:1 -8:1 -7:1 -6:1 -5:1 -4:1 -3:1 -2:1 -1:14 +0:258 +1:13
+  Sunrise  n=365 exact=344 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=1 within1=364 range=0..2 nulls=0
+           hist +0:1 +1:363 +2:1
+  Asr      n=365 exact=31 within1=125 range=-4..4 nulls=0
+           hist -4:1 -3:58 -2:62 -1:46 +0:31 +1:48 +2:56 +3:59 +4:4
+  Maghrib  n=365 exact=341 within1=365 range=-1..1 nulls=0
+  Isha     n=365 exact=231 within1=285 range=-1..97 nulls=0
+           hist -1:28 +0:231 +1:26 +3:2 +5:2 +7:2 +9:2 +12:2 +14:2 +15:1 +16:1 +18:2 +20:1 +21:1 +22:1 +23:1 +25:2 +27:1 +28:1 +30:2 +32:1 +33:1 +35:2 +37:1 +38:1 +40:2 +42:2 +45:1 +46:1 +47:1 +48:1 +50:1 +51:1 +53:1 +54:1 +56:2 +58:1 +59:1 +61:2 +64:1 +65:1 +67:2 +70:2 +71:1 +73:1 +74:1 +76:1 +77:1 +78:1 +80:1 +81:1 +83:2 +85:1 +86:1 +88:1 +89:1 +90:1 +91:1 +93:2 +95:1 +96:1 +97:4
+
+=== London / AlAdhan method 15 (Moonsighting) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=262 within1=365 range=-1..1 nulls=0
+  Sunrise  n=365 exact=344 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=0 within1=0 range=4..6 nulls=0
+           hist +4:1 +5:363 +6:1
+  Asr      n=365 exact=31 within1=124 range=-4..4 nulls=0
+           hist -4:1 -3:58 -2:62 -1:46 +0:31 +1:47 +2:56 +3:60 +4:4
+  Maghrib  n=365 exact=0 within1=0 range=2..4 nulls=0
+           hist +2:11 +3:341 +4:13
+  Isha     n=365 exact=265 within1=365 range=-1..1 nulls=0
+
+=== London / AlAdhan method 5 (Egyptian) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=242 within1=269 range=-89..1 nulls=0
+           hist -89:1 -88:2 -87:3 -86:4 -85:5 -84:4 -83:6 -82:4 -81:6 -80:9 -79:6 -78:16 -77:8 -66:1 -63:1 -55:1 -53:1 -46:1 -44:1 -39:1 -38:1 -32:1 -31:1 -27:1 -26:1 -22:1 -20:1 -17:1 -16:1 -13:1 -11:1 -9:1 -8:1 -4:1 -3:1 -1:13 +0:242 +1:14
+  Sunrise  n=365 exact=344 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=1 within1=364 range=0..2 nulls=0
+           hist +0:1 +1:363 +2:1
+  Asr      n=365 exact=31 within1=123 range=-4..4 nulls=0
+           hist -4:1 -3:59 -2:61 -1:46 +0:31 +1:46 +2:57 +3:60 +4:4
+  Maghrib  n=365 exact=341 within1=365 range=-1..1 nulls=0
+  Isha     n=365 exact=201 within1=276 range=-1..100 nulls=0
+           hist -1:45 +0:201 +1:30 +2:1 +4:2 +7:1 +8:1 +11:2 +14:2 +17:1 +18:1 +21:2 +24:2 +28:1 +29:1 +32:2 +35:1 +36:1 +40:1 +41:1 +45:1 +46:1 +50:2 +55:1 +57:1 +61:1 +63:1 +66:1 +71:1 +81:1 +92:11 +93:11 +94:9 +95:6 +96:6 +97:2 +98:6 +99:3 +100:1
+
+=== London / AlAdhan method 13 (Turkey) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=244 within1=275 range=-97..1 nulls=0
+           hist -97:2 -96:3 -95:6 -94:3 -93:5 -92:6 -91:6 -90:10 -89:13 -88:6 -76:1 -73:1 -66:1 -64:1 -58:1 -56:1 -51:1 -50:1 -45:1 -44:1 -40:1 -39:1 -35:1 -34:1 -31:1 -30:1 -26:1 -25:1 -22:1 -21:1 -19:1 -18:1 -15:1 -14:1 -11:2 -8:1 -7:1 -4:2 -1:13 +0:244 +1:18
+  Sunrise  n=365 exact=344 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=363 within1=365 range=-1..1 nulls=0
+  Asr      n=365 exact=31 within1=123 range=-4..4 nulls=0
+           hist -4:1 -3:59 -2:61 -1:46 +0:31 +1:46 +2:57 +3:60 +4:4
+  Maghrib  n=365 exact=341 within1=365 range=-1..1 nulls=0
+  Isha     n=365 exact=219 within1=278 range=-1..102 nulls=0
+           hist -1:31 +0:219 +1:28 +2:1 +4:1 +5:1 +7:2 +10:2 +13:1 +14:1 +16:2 +19:2 +23:2 +26:2 +29:1 +30:1 +33:1 +34:1 +37:1 +38:1 +41:2 +45:1 +46:1 +50:2 +54:1 +56:1 +60:1 +61:1 +65:1 +67:1 +70:1 +75:1 +85:1 +95:1 +96:15 +97:7 +98:8 +99:7 +100:6 +101:1 +102:4
+
+=== Jakarta / AlAdhan method 20 (Kemenag) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=358 within1=365 range=-1..1 nulls=0
+  Sunrise  n=365 exact=365 within1=365 range=0..0 nulls=0
+  Dhuhr    n=365 exact=362 within1=365 range=0..1 nulls=0
+  Asr      n=365 exact=107 within1=353 range=-2..2 nulls=0
+           hist -2:7 -1:126 +0:107 +1:120 +2:5
+  Maghrib  n=365 exact=363 within1=365 range=-1..0 nulls=0
+  Isha     n=365 exact=352 within1=365 range=-1..1 nulls=0
+
+=== Jakarta / AlAdhan method 3 (MWL) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=361 within1=365 range=-1..1 nulls=0
+  Sunrise  n=365 exact=365 within1=365 range=0..0 nulls=0
+  Dhuhr    n=365 exact=0 within1=362 range=1..2 nulls=0
+           hist +1:362 +2:3
+  Asr      n=365 exact=107 within1=352 range=-2..2 nulls=0
+           hist -2:8 -1:125 +0:107 +1:120 +2:5
+  Maghrib  n=365 exact=363 within1=365 range=-1..0 nulls=0
+  Isha     n=365 exact=357 within1=365 range=-1..1 nulls=0
+
+=== Makkah / AlAdhan method 4 (UmmAlQura) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=364 within1=365 range=-1..0 nulls=0
+  Sunrise  n=365 exact=363 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=361 within1=365 range=-1..1 nulls=0
+  Asr      n=365 exact=78 within1=338 range=-2..2 nulls=0
+           hist -2:15 -1:126 +0:78 +1:134 +2:12
+  Maghrib  n=365 exact=365 within1=365 range=0..0 nulls=0
+  Isha     n=365 exact=335 within1=335 range=-30..0 nulls=0
+           hist -30:30 +0:335
+
+=== KualaLumpur / AlAdhan method 17 (JAKIM) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=364 within1=365 range=0..1 nulls=0
+  Sunrise  n=365 exact=364 within1=365 range=0..1 nulls=0
+  Dhuhr    n=365 exact=364 within1=365 range=-1..0 nulls=0
+  Asr      n=365 exact=103 within1=354 range=-2..2 nulls=0
+           hist -2:7 -1:117 +0:103 +1:134 +2:4
+  Maghrib  n=365 exact=361 within1=365 range=0..1 nulls=0
+  Isha     n=365 exact=360 within1=365 range=-1..1 nulls=0
+
+=== Istanbul / AlAdhan method 13 (Turkey) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=348 within1=365 range=-1..1 nulls=0
+  Sunrise  n=365 exact=353 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=364 within1=365 range=-1..0 nulls=0
+  Asr      n=365 exact=54 within1=201 range=-2..2 nulls=0
+           hist -2:83 -1:72 +0:54 +1:75 +2:81
+  Maghrib  n=365 exact=356 within1=365 range=-1..1 nulls=0
+  Isha     n=365 exact=319 within1=365 range=-1..1 nulls=0
+
+=== Singapore / AlAdhan method 11 (MUIS) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=188 within1=365 range=0..1 nulls=0
+  Sunrise  n=365 exact=193 within1=365 range=0..1 nulls=0
+  Dhuhr    n=365 exact=0 within1=175 range=1..2 nulls=0
+           hist +1:175 +2:190
+  Asr      n=365 exact=119 within1=314 range=-1..2 nulls=0
+           hist -1:58 +0:119 +1:137 +2:51
+  Maghrib  n=365 exact=191 within1=365 range=0..1 nulls=0
+  Isha     n=365 exact=175 within1=365 range=0..1 nulls=0
+
+=== Oslo / AlAdhan method 3 (MWL) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=192 within1=222 range=-108..1 nulls=0
+           hist -108:1 -107:1 -105:2 -104:2 -103:2 -102:2 -101:1 -100:2 -99:3 -98:2 -97:1 -96:3 -95:1 -94:2 -93:2 -92:3 -91:1 -90:2 -89:2 -88:2 -87:2 -86:3 -85:1 -84:2 -83:3 -82:2 -81:2 -80:3 -79:2 -78:3 -77:2 -76:2 -75:6 -74:1 -73:2 -72:3 -71:3 -70:3 -69:3 -68:4 -67:4 -66:3 -65:4 -64:7 -63:7 -62:11 -60:1 -51:2 -43:1 -42:1 -35:1 -34:1 -29:1 -28:1 -23:1 -22:1 -16:2 -12:1 -11:1 -7:1 -6:1 -2:1 -1:12 +0:192 +1:18
+  Sunrise  n=365 exact=319 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=3 within1=363 range=0..2 nulls=0
+           hist +0:3 +1:360 +2:2
+  Asr      n=365 exact=28 within1=85 range=-7..7 nulls=0
+           hist -7:1 -6:30 -5:23 -4:26 -3:27 -2:32 -1:28 +0:28 +1:29 +2:33 +3:30 +4:21 +5:22 +6:24 +7:11
+  Maghrib  n=365 exact=310 within1=365 range=-1..1 nulls=0
+  Isha     n=365 exact=162 within1=224 range=-1..113 nulls=0
+           hist -1:32 +0:162 +1:30 +2:1 +4:1 +5:1 +8:1 +10:1 +12:1 +14:1 +17:1 +19:1 +22:1 +24:1 +28:1 +29:1 +33:1 +35:1 +40:1 +41:1 +47:1 +49:1 +55:1 +57:1 +64:1 +65:1 +67:6 +68:10 +69:7 +70:3 +71:4 +72:4 +73:3 +74:2 +75:4 +76:2 +77:4 +78:2 +79:4 +80:1 +81:3 +82:2 +83:2 +84:2 +85:2 +86:3 +87:2 +88:2 +89:2 +90:2 +91:2 +92:2 +93:1 +94:2 +95:2 +96:2 +97:4 +98:1 +99:2 +100:1 +101:2 +102:1 +103:2 +104:2 +105:1 +106:3 +107:2 +108:3 +109:1 +110:1 +111:2 +113:1
+
+=== Oslo / AlAdhan method 15 (Moonsighting) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=130 within1=190 range=-1..83 nulls=0
+           hist -1:29 +0:130 +1:31 +2:3 +3:2 +4:1 +5:3 +6:1 +7:2 +8:2 +9:2 +10:2 +12:4 +13:2 +15:3 +16:1 +17:4 +18:1 +19:1 +20:3 +21:1 +22:1 +23:4 +24:1 +26:3 +27:2 +28:1 +29:2 +30:2 +31:2 +32:3 +33:1 +34:2 +35:2 +36:1 +37:4 +38:1 +39:1 +40:3 +41:2 +42:1 +43:2 +44:3 +45:1 +46:1 +47:3 +48:2 +49:1 +50:3 +51:1 +52:2 +53:2 +54:1 +55:3 +56:3 +58:3 +59:2 +60:2 +61:3 +62:2 +63:1 +64:2 +65:1 +66:4 +67:2 +68:2 +69:3 +70:3 +71:3 +72:1 +73:2 +74:2 +75:5 +76:1 +77:5 +78:2 +79:4 +80:3 +81:6 +82:4 +83:2
+  Sunrise  n=365 exact=319 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=0 within1=0 range=4..6 nulls=0
+           hist +4:3 +5:360 +6:2
+  Asr      n=365 exact=28 within1=85 range=-7..7 nulls=0
+           hist -7:1 -6:30 -5:23 -4:26 -3:27 -2:32 -1:28 +0:28 +1:29 +2:33 +3:30 +4:21 +5:22 +6:24 +7:11
+  Maghrib  n=365 exact=0 within1=0 range=2..4 nulls=0
+           hist +2:30 +3:310 +4:25
+  Isha     n=365 exact=181 within1=276 range=-38..1 nulls=0
+           hist -38:1 -37:5 -36:4 -35:3 -34:2 -33:5 -32:3 -31:6 -29:3 -28:3 -27:2 -26:2 -25:3 -24:3 -22:4 -21:2 -20:2 -19:3 -18:1 -17:3 -16:1 -15:2 -14:4 -12:3 -11:3 -9:3 -8:3 -6:2 -5:2 -4:2 -3:3 -2:1 -1:56 +0:181 +1:39
+
+=== NewYork / AlAdhan method 2 (ISNA) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=347 within1=365 range=-1..1 nulls=0
+  Sunrise  n=365 exact=352 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=1 within1=364 range=0..2 nulls=0
+           hist +0:1 +1:363 +2:1
+  Asr      n=365 exact=46 within1=211 range=-2..2 nulls=0
+           hist -2:75 -1:84 +0:46 +1:81 +2:79
+  Maghrib  n=365 exact=347 within1=365 range=-1..1 nulls=0
+  Isha     n=365 exact=327 within1=365 range=-1..1 nulls=0
+
+=== Karachi / AlAdhan method 1 (Karachi) vs local adhan 4.4.6 ===
+  Fajr     n=365 exact=363 within1=365 range=-1..0 nulls=0
+  Sunrise  n=365 exact=359 within1=365 range=-1..1 nulls=0
+  Dhuhr    n=365 exact=2 within1=365 range=0..1 nulls=0
+  Asr      n=365 exact=80 within1=328 range=-2..2 nulls=0
+           hist -2:22 -1:116 +0:80 +1:132 +2:15
+  Maghrib  n=365 exact=360 within1=365 range=-1..1 nulls=0
+  Isha     n=365 exact=338 within1=365 range=-1..1 nulls=0
+
+wrote /tmp/athan-r4-trust/trust-result.json

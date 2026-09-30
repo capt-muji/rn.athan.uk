@@ -1,0 +1,244 @@
+# R7 Part 2: the high-latitude rule decision
+
+## A. Where an angle stops having a solution
+
+Days per year on which the sun never reaches the given depression before
+sunrise (so Fajr has no angle-based answer). Computed from a pure solar
+solve with `astronomy-engine@2.1.19`, no library and no rule involved. All
+**measured**, 365 days of 2026, longitude 0.
+
+| latitude | 12 deg | 13 deg | 15 deg | 17 deg | 18 deg | 19.5 deg | 20 deg | no sunrise |
+|---|---|---|---|---|---|---|---|---|
+| 40 N | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 45 N | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 48 N | 0 | 0 | 0 | 0 | 0 | 33 | 41 | 0 |
+| 48.5 N | 0 | 0 | 0 | 0 | 0 | 41 | 48 | 0 |
+| 49 N | 0 | 0 | 0 | 0 | 22 | 48 | 54 | 0 |
+| 50 N | 0 | 0 | 0 | 22 | 41 | 60 | 64 | 0 |
+| 51.5 N | 0 | 0 | 0 | 48 | 60 | 74 | 78 | 0 |
+| 52.5 N | 0 | 0 | 33 | 60 | 69 | 82 | 86 | 0 |
+| 53.5 N | 0 | 0 | 48 | 69 | 78 | 90 | 92 | 0 |
+| 55 N | 22 | 41 | 64 | 82 | 90 | 100 | 104 | 0 |
+| 56 N | 41 | 54 | 74 | 90 | 96 | 106 | 110 | 0 |
+| 57 N | 54 | 64 | 82 | 96 | 104 | 112 | 116 | 0 |
+| 58 N | 64 | 74 | 90 | 104 | 110 | 119 | 122 | 0 |
+| 59 N | 74 | 82 | 96 | 110 | 116 | 125 | 128 | 0 |
+| 60 N | 82 | 90 | 104 | 116 | 122 | 130 | 134 | 0 |
+| 61 N | 90 | 96 | 110 | 122 | 128 | 136 | 139 | 0 |
+| 62 N | 96 | 104 | 116 | 128 | 134 | 142 | 144 | 0 |
+| 63 N | 104 | 110 | 122 | 134 | 139 | 147 | 150 | 0 |
+| 64 N | 110 | 116 | 128 | 139 | 144 | 153 | 155 | 0 |
+| 65 N | 116 | 122 | 134 | 144 | 150 | 158 | 161 | 0 |
+| 66.5 N | 125 | 130 | 142 | 153 | 158 | 166 | 168 | 30 |
+| 69.6 N | 142 | 148 | 158 | 169 | 174 | 182 | 184 | 116 |
+
+The exact latitude at which each angle first loses a single day of the year:
+
+| angle | first latitude with any null day | days lost there |
+|---|---|---|
+| 12 | 54.6 N | 6 |
+| 13 | 53.6 N | 6 |
+| 15 | 51.6 N | 6 |
+| 17 | 49.6 N | 6 |
+| 18 | 48.6 N | 6 |
+| 19.5 | 47.1 N | 6 |
+| 20 | 46.6 N | 6 |
+
+## B. Every high-latitude rule, defined
+
+| rule | source | definition as implemented here |
+|---|---|---|
+| `MiddleOfTheNight` | `adhan@4.4.6` `CalculationParameters.nightPortions` | Fajr no earlier than sunset + 1/2 of `tomorrowSunrise - sunset`; Isha no later than sunset + 1/2 |
+| `SeventhOfTheNight` | same | the same bound at 1/7 of the night |
+| `TwilightAngle` | same | the bound at `fajrAngle / 60` and `ishaAngle / 60` of the night |
+| `recommended()` | `adhan@4.4.6` `HighLatitudeRule.ts` | `SeventhOfTheNight` above 48 degrees, `MiddleOfTheNight` at or below. Note it tests `coordinates.latitude > 48`, not the absolute value, so it NEVER fires in the southern hemisphere |
+| Diyanet | R1, cited, `ditib.de/detail2.php?id=424`, the Din Isleri Yuksek Kurulu explanation of 2009-08-28 | above 45 degrees, Isha is Maghrib + 1h20m, capped so it never falls later than one third of the shar'i night (sunset to true dawn). Fajr by the mirrored Imsak construction |
+| Nisful-Layl | R1, cited, Wifaqul Ulama `wifaqululama.co.uk/highlat/`, ruling of 2018-11-11 | the night is halved; Isha and Fajr are bounded at the midpoint. Numerically `MiddleOfTheNight` |
+| Aqrabul-Ayyam | same source | use the times of the NEAREST DAY on which the angle does have a solution. Wifaqul Ulama specifies a 3-day average, not the single last day. Both are computed below |
+| Moonsighting 1/7 | R1, cited, wave 1 | above 55 degrees latitude, 1/7 of the night, applied by adhan inside the `MoonsightingCommittee` path only |
+| Aqrab al-Bilad | adhan `PolarCircleResolution.AqrabBalad` | walk the latitude toward the equator in 0.5-degree steps until the sun rises and sets, then use that latitude's solar day |
+
+## C. Every rule at 11 cities, across 2026
+
+Base convention is MWL 18/17, so that the rule is the only thing varying. A
+day "changed by the rule" is one where the portion bound displaced the
+angle-based time. "No answer" counts days on which the rule itself cannot
+produce a value. All **measured**.
+
+### London (51.5N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **60** | 0 | 0.00 | 0 | **48** |
+| MiddleOfTheNight / Nisful-Layl | 60 | 0.0 | 0 | 0 | 48 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 221 | 47.6 | 152 | 0 | 200 | -49.9 | 154 | 0 |
+| TwilightAngle | 92 | 31.1 | 77 | 0 | 88 | -35.3 | 88 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -41.8 | 141 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 30) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 4 | 0.0 | 9 | 0 (furthest donor day: 31) | n/a | n/a | n/a | n/a |
+
+### Berlin (52.5N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **69** | 0 | 0.00 | 0 | **60** |
+| MiddleOfTheNight / Nisful-Layl | 69 | 0.0 | 0 | 0 | 60 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 229 | 46.9 | 172 | 0 | 207 | -47.8 | 149 | 0 |
+| TwilightAngle | 99 | 32.7 | 95 | 0 | 96 | -33.2 | 82 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -43.3 | 137 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 35) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 5 | 0.1 | 18 | 0 (furthest donor day: 36) | n/a | n/a | n/a | n/a |
+
+### Manchester (53.5N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **78** | 0 | 0.00 | 0 | **68** |
+| MiddleOfTheNight / Nisful-Layl | 78 | 0.0 | 0 | 0 | 68 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 237 | 45.3 | 153 | 0 | 214 | -47.7 | 164 | 0 |
+| TwilightAngle | 105 | 31.5 | 76 | 0 | 102 | -36.0 | 97 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -45.8 | 152 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 39) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 5 | 0.0 | 10 | 0 (furthest donor day: 40) | n/a | n/a | n/a | n/a |
+
+### Copenhagen (55.7N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **94** | 0 | 0.00 | 0 | **86** |
+| MiddleOfTheNight / Nisful-Layl | 94 | 0.0 | 0 | 0 | 86 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 260 | 43.2 | 160 | 0 | 230 | -46.3 | 165 | 0 |
+| TwilightAngle | 119 | 33.1 | 81 | 0 | 116 | -36.6 | 96 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -51.6 | 155 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 47) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 6 | 0.1 | 12 | 0 (furthest donor day: 48) | n/a | n/a | n/a | n/a |
+
+### Stockholm (59.3N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **118** | 0 | 0.00 | 0 | **112** |
+| MiddleOfTheNight / Nisful-Layl | 118 | 0.0 | 0 | 0 | 112 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 365 | 32.6 | 165 | 0 | 276 | -40.0 | 158 | 0 |
+| TwilightAngle | 140 | 34.2 | 81 | 0 | 138 | -34.5 | 86 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -64.4 | 152 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 59) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 6 | 0.1 | 14 | 0 (furthest donor day: 60) | n/a | n/a | n/a | n/a |
+
+### Oslo (59.9N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **122** | 0 | 0.00 | 0 | **116** |
+| MiddleOfTheNight / Nisful-Layl | 122 | 0.0 | 0 | 0 | 116 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 365 | 34.0 | 161 | 0 | 355 | -27.9 | 156 | 0 |
+| TwilightAngle | 144 | 32.1 | 76 | 0 | 142 | -32.9 | 83 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -66.9 | 150 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 61) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 6 | 0.1 | 12 | 0 (furthest donor day: 62) | n/a | n/a | n/a | n/a |
+
+### Helsinki (60.2N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **123** | 0 | 0.00 | 0 | **117** |
+| MiddleOfTheNight / Nisful-Layl | 123 | 0.0 | 0 | 0 | 117 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 365 | 35.0 | 176 | 0 | 365 | -27.8 | 171 | 0 |
+| TwilightAngle | 146 | 32.9 | 93 | 0 | 143 | -35.2 | 98 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -68.3 | 165 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 62) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 7 | 0.1 | 17 | 0 (furthest donor day: 63) | n/a | n/a | n/a | n/a |
+
+### Anchorage (61.2N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **129** | 0 | 0.00 | 0 | **123** |
+| MiddleOfTheNight / Nisful-Layl | 129 | 0.0 | 0 | 0 | 123 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 365 | 38.4 | 174 | 0 | 365 | -31.0 | 171 | 0 |
+| TwilightAngle | 151 | 34.7 | 87 | 0 | 149 | -36.0 | 97 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -73.6 | 166 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 65) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 6 | 0.1 | 16 | 0 (furthest donor day: 66) | n/a | n/a | n/a | n/a |
+
+### Reykjavik (64.1N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **146** | 0 | 0.00 | 0 | **140** |
+| MiddleOfTheNight / Nisful-Layl | 146 | 0.0 | 0 | 0 | 140 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 365 | 50.1 | 173 | 0 | 365 | -42.0 | 172 | 0 |
+| TwilightAngle | 167 | 34.1 | 81 | 0 | 164 | -38.2 | 94 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -92.0 | 172 | 0 (cap bound on 42 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 73) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 6 | 0.1 | 13 | 0 (furthest donor day: 74) | n/a | n/a | n/a | n/a |
+
+### Tromso (69.6N)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **174** | 0 | 0.00 | 0 | **169** |
+| MiddleOfTheNight / Nisful-Layl | 105 | 0.0 | 0 | 118 | 100 | 0.0 | 0 | 118 |
+| SeventhOfTheNight | 247 | 90.8 | 228 | 118 | 247 | -79.7 | 205 | 118 |
+| TwilightAngle | 127 | 43.1 | 124 | 118 | 125 | -43.2 | 117 | 118 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -136.5 | 224 | 118 (cap bound on 21 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 116 (furthest donor day: 53) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 14 | 0.3 | 29 | 116 (furthest donor day: 55) | n/a | n/a | n/a | n/a |
+
+### Ushuaia (-54.8S)
+
+| rule | Fajr days changed | Fajr change mean (min) | Fajr change max (min) | Fajr no answer | Isha days changed | Isha change mean | Isha change max | Isha no answer |
+|---|---|---|---|---|---|---|---|---|
+| angle only (no rule) | 0 | 0.00 | 0 | **82** | 0 | 0.00 | 0 | **75** |
+| MiddleOfTheNight / Nisful-Layl | 82 | 0.0 | 0 | 0 | 75 | 0.0 | 0 | 0 |
+| SeventhOfTheNight | 243 | 43.7 | 164 | 0 | 216 | -45.5 | 170 | 0 |
+| TwilightAngle | 107 | 34.0 | 86 | 0 | 104 | -35.3 | 102 | 0 |
+| Diyanet Maghrib+80 capped at night/3 | n/a | n/a | n/a | n/a | 365 (always applies above 45) | -48.4 | 159 | 0 (cap bound on 0 days) |
+| Aqrabul-Ayyam Fajr (1-day) | 0 | 0.0 | 0 | 0 (furthest donor day: 41) | n/a | n/a | n/a | n/a |
+| Aqrabul-Ayyam Fajr (3-day) | 6 | 0.1 | 14 | 0 (furthest donor day: 42) | n/a | n/a | n/a | n/a |
+
+## D. The spread BETWEEN rules, which is what the user actually feels
+
+On each day, the widest gap between any two rules' Fajr, and the same for
+Isha. This is the honest size of the decision. Rules compared:
+`MiddleOfTheNight`, `SeventhOfTheNight`, `TwilightAngle`, and for Isha also
+Diyanet. All **measured**, 365 days of 2026.
+
+| city | lat | Fajr spread mean (min) | Fajr spread max | Isha spread mean | Isha spread max | days all rules agree within 1 min |
+|---|---|---|---|---|---|---|
+| London | 51.5 | 47.8 | 173 | 58.6 | 167 | 148/365 |
+| Berlin | 52.5 | 50.9 | 174 | 63.2 | 169 | 140/365 |
+| Manchester | 53.5 | 53.6 | 177 | 67.2 | 170 | 132/365 |
+| Copenhagen | 55.7 | 59.1 | 180 | 75.6 | 173 | 110/365 |
+| Stockholm | 59.3 | 68.3 | 189 | 88.0 | 182 | 0/365 |
+| Oslo | 59.9 | 69.9 | 191 | 89.9 | 184 | 0/365 |
+| Helsinki | 60.2 | 70.5 | 192 | 90.7 | 185 | 0/365 |
+| Anchorage | 61.2 | 73.0 | 194 | 94.0 | 187 | 0/365 |
+| Reykjavik | 64.1 | 79.1 | 206 | 102.5 | 197 | 0/365 |
+| Tromso | 69.6 | 112.7 | 232 | 137.5 | 232 | 0/365 |
+| Ushuaia | -54.8 | 54.2 | 178 | 70.6 | 173 | 126/365 |
+
+## E. adhan's `highLatitudeRule` is ignored by the `MoonsightingCommittee` path
+
+Wave 1 read this in the source. Reproduced here as a measurement.
+`PrayerTimes.ts` L120-131: when `method === 'MoonsightingCommittee'` the
+`safeFajr` branch calls `Astronomical.seasonAdjustedMorningTwilight` and
+never reads `nightPortions()`, so `highLatitudeRule` has no effect at all.
+
+Every rule, same city, same day, `MoonsightingCommittee` versus
+`MuslimWorldLeague`. All **measured**.
+
+| city | method | rule | Fajr distinct values across the year | Isha distinct |
+|---|---|---|---|---|
+| London | `MoonsightingCommittee` | all three | 1 | 1 |
+| London | `MuslimWorldLeague` | all three | 3 | 3 |
+| Oslo | `MoonsightingCommittee` | all three | 1 | 1 |
+| Oslo | `MuslimWorldLeague` | all three | 3 | 3 |
+| Reykjavik | `MoonsightingCommittee` | all three | 1 | 1 |
+| Reykjavik | `MuslimWorldLeague` | all three | 3 | 3 |
+| Tromso | `MoonsightingCommittee` | all three | 1 | 1 |
+| Tromso | `MuslimWorldLeague` | all three | 3 | 3 |
+
+A count of 1 means all three rules produced a byte-identical year, so the
+setting did nothing.
+
