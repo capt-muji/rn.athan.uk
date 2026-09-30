@@ -52,3 +52,21 @@ Birmingham. The filter now reads the name as well.
    tested.** An `if (oldest === undefined) break;` that the loop guard already prevented, and an `if (entry)`
    whose false path cannot happen because a stored buffer always has an order entry. Carrying the byte size
    in the order list removed both, and it also stopped eviction reading a megabyte of tile just to weigh it.
+
+### Step 3's archive reader, proven the same way
+
+| What | Result |
+| --- | --- |
+| `shared/pmtiles.ts` | 28 tests across two suites, **100% on all four measures** |
+| `scripts/breaks-3.sh` | **caught 14 of 14, ALL AS EXPECTED: 1** |
+| tsc, Biome | both 0 |
+
+**The suite that earns its place is `pmtilesLive.test.ts`**, which parses the REAL 127 header bytes the live
+planet archive served, checked in as base64 so it needs no network. A reader and a fixture written from the
+same wrong understanding agree with each other perfectly, and only real bytes catch that. The synthetic
+fixtures are still built field by field from the spec rather than captured as a blob, for the same reason.
+
+**A NEW DURABLE LESSON, and it cost a false green: run the formatter BEFORE the break script, never after.**
+The breaks passed 14 of 14, then `biome check --write` wrapped one assignment across two lines, and break 10
+went `BREAK NOT APPLIED` on the rerun. A break whose search text a formatter can move is a break that
+silently stops testing anything, and the only reason it was caught is that the script was run twice.
