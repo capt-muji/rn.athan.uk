@@ -1,0 +1,112 @@
+/**
+ * One tap on reaching the line, silence on it, silence off it, one tap on returning
+ */
+
+import {
+  ALIGNMENT_ENTER_DEGREES,
+  ALIGNMENT_EXIT_DEGREES,
+  alignmentOffset,
+  isAligned,
+  shouldTap,
+} from '../qiblaAlignment';
+
+const QIBLA = 118.876;
+
+/** Taps counted over a run of headings, exactly as the screen counts them */
+const tapsOver = (headings: number[], bearing: number): number => {
+  let aligned = false;
+  let taps = 0;
+
+  for (const heading of headings) {
+    const now = isAligned(alignmentOffset(heading, bearing), aligned);
+    if (shouldTap(aligned, now)) taps++;
+    aligned = now;
+  }
+
+  return taps;
+};
+
+/** A turn that starts well off the line, sweeps across it and carries on */
+const sweepAcross = (jitter: number): number[] => {
+  const headings: number[] = [];
+  for (let offset = -40; offset <= 40; offset += 1) headings.push(QIBLA + offset, QIBLA + offset + jitter);
+  return headings;
+};
+
+describe('the turn to the qibla', () => {
+  it.each([
+    // case, heading, bearing, offset
+    ['just right of the line', 110, 118, 8],
+    ['just left of the line', 126, 118, -8],
+    ['the short way across north', 350, 10, 20],
+    ['the short way back across north', 10, 350, -20],
+    ['directly away, resolved one way rather than flickering', 0, 180, 180],
+  ])('%s is %p degrees', (_case, heading, bearing, expected) => {
+    expect(alignmentOffset(heading, bearing)).toBe(expected);
+  });
+
+  it('never answers outside a half turn, so a tap can never fire at the antipode', () => {
+    for (let heading = 0; heading < 360; heading += 1) {
+      expect(Math.abs(alignmentOffset(heading, QIBLA))).toBeLessThanOrEqual(180);
+    }
+  });
+});
+
+describe('being on the line', () => {
+  it('needs the tighter angle to arrive and the wider one to leave', () => {
+    expect(isAligned(6, false)).toBe(false);
+    expect(isAligned(6, true)).toBe(true);
+  });
+
+  it.each([
+    // offset, was aligned, is aligned
+    [ALIGNMENT_ENTER_DEGREES, false, true],
+    [ALIGNMENT_ENTER_DEGREES + 0.1, false, false],
+    [ALIGNMENT_EXIT_DEGREES, true, true],
+    [ALIGNMENT_EXIT_DEGREES + 0.1, true, false],
+    [-ALIGNMENT_ENTER_DEGREES, false, true],
+    [-ALIGNMENT_EXIT_DEGREES - 0.1, true, false],
+  ])('at %p degrees, having been %p, reads %p', (offset, was, expected) => {
+    expect(isAligned(offset, was)).toBe(expected);
+  });
+});
+
+describe('the tap', () => {
+  it('fires once on arriving and not again while held there', () => {
+    expect(shouldTap(false, true)).toBe(true);
+    expect(shouldTap(true, true)).toBe(false);
+    expect(shouldTap(true, false)).toBe(false);
+    expect(shouldTap(false, false)).toBe(false);
+  });
+
+  it('fires once for a turn that crosses the line, even with the phone jittering', () => {
+    expect(tapsOver(sweepAcross(0.3), QIBLA)).toBe(1);
+  });
+
+  it('fires once per return, so turning away and back gives exactly two', () => {
+    const away = sweepAcross(0);
+
+    expect(tapsOver([...away, ...[...away].reverse()], QIBLA)).toBe(2);
+  });
+
+  it('stays silent for a whole turn that never reaches the line', () => {
+    const headings: number[] = [];
+    for (let offset = 20; offset <= 90; offset += 1) headings.push(QIBLA + offset);
+
+    expect(tapsOver(headings, QIBLA)).toBe(0);
+  });
+
+  it('never taps when the phone faces directly away from Makkah', () => {
+    const headings: number[] = [];
+    for (let offset = 170; offset <= 190; offset += 0.5) headings.push((QIBLA + offset) % 360);
+
+    expect(tapsOver(headings, QIBLA)).toBe(0);
+  });
+
+  it('taps twice, not fifty, for two full revolutions', () => {
+    const headings: number[] = [];
+    for (let turn = 0; turn < 2; turn++) for (let step = 0; step < 360; step += 1) headings.push(step);
+
+    expect(tapsOver(headings, QIBLA)).toBe(2);
+  });
+});

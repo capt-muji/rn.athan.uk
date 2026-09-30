@@ -592,6 +592,34 @@ zero-entry self-ticking countdown, so the platforms converge.
 The minute chain still has a job afterwards, the day rollover and the times; it simply stops being
 what per-second accuracy depends on.
 
+## Decided by the owner, 2026-09-30, while planning session 45 (the qibla on a flat world map)
+
+Two decisions, each taken with the measurements in front of him, plus two standing rulings on how
+the session works.
+
+- **A NEEDLE, NOT APPLE'S CONE.** The brief made this the row's central design question, since the
+  owner's own measurement showed the platform's maps are jittery indoors and Apple's answer is to
+  draw a cone whose width IS the reported heading accuracy. He chose the needle. The obstacle that
+  decided it is real: `expo-location` BUCKETS that accuracy into 0 to 3 at the 50, 35 and 20 degree
+  boundaries, so a drawn cone would be 20, 35 or 50 degrees and nothing between, which is a coarse
+  lie about a fine quantity. The screen draws the arrow and the line, and goes quiet, drawing no
+  arrow and firing no tap, only when the phone itself reports `trueHeading === -1`. The rejected
+  third option, suppressing the haptic whenever accuracy is poor, would leave a blind user in a
+  steel-framed room feeling nothing with no way to know why, which defeats the feature's whole
+  purpose.
+- **iOS ONLY, and the Qibla row is ABSENT on Android rather than present and wrong.** Android's
+  `expo-location` heading fuses the accelerometer with the RAW magnetometer, no gyroscope, and
+  measured 71 degrees wrong with 2 samples in 40 seconds on a Find X8. The owner's absolute rule is
+  that the app never shows a direction it knows to be wrong, so the row returns on Android only in
+  the row that fixes Android's heading.
+- **The owner is the device, and his report is the verdict.** 🐋  "I will physically pick up the
+  device and test it, walk around the house, et cetera, et cetera. And I'll tell you if anything is
+  visually incorrect." A session reads a screenshot as its own sanity check; it never substitutes
+  that for his ruling, and four builds have already been rejected on sight.
+- **No subagent but `vision`, and only when the session's own model cannot see images** (owner,
+  2026-09-30, tightening the 2026-09-26 ban): a subagent may never spawn its own, and a session
+  whose model can read an image reads it itself.
+
 ## Decided by the owner, 2026-09-30, while planning session 41 (the qibla map)
 
 Seven decisions, which together replace the compass with a map and a sentence.

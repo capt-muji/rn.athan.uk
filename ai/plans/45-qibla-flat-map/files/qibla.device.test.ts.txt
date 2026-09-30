@@ -1,0 +1,65 @@
+/**
+ * The platform's own position and heading, and the least it is asked for
+ */
+
+import * as Location from 'expo-location';
+
+import { readPosition, requestQiblaPermission, watchHeading } from '../qibla';
+
+// The platform this file exists to wrap: mocked so the wrapper's own contract is testable without a device
+jest.mock('expo-location', () => ({
+  Accuracy: { Lowest: 1 },
+  requestForegroundPermissionsAsync: jest.fn(),
+  getCurrentPositionAsync: jest.fn(),
+  watchHeadingAsync: jest.fn(),
+}));
+
+describe('asking for location', () => {
+  it('asks for foreground location, which is what both the position and the heading need', async () => {
+    (Location.requestForegroundPermissionsAsync as jest.Mock).mockResolvedValue({ granted: true });
+
+    await expect(requestQiblaPermission()).resolves.toBe(true);
+    expect(Location.requestForegroundPermissionsAsync).toHaveBeenCalled();
+  });
+
+  it('answers false when the user refuses', async () => {
+    (Location.requestForegroundPermissionsAsync as jest.Mock).mockResolvedValue({ granted: false });
+
+    await expect(requestQiblaPermission()).resolves.toBe(false);
+  });
+});
+
+describe('reading the position', () => {
+  it('reads it at the coarsest accuracy, because 3 km moves the qibla under 0.15 degrees', async () => {
+    (Location.getCurrentPositionAsync as jest.Mock).mockResolvedValue({
+      coords: { latitude: 51.475, longitude: -0.2015, altitude: 12 },
+    });
+
+    await expect(readPosition()).resolves.toEqual({ latitude: 51.475, longitude: -0.2015 });
+    expect(Location.getCurrentPositionAsync).toHaveBeenCalledWith({ accuracy: Location.Accuracy.Lowest });
+  });
+});
+
+describe('watching the heading', () => {
+  it('reports each heading the platform gives, and nothing else about it', async () => {
+    const onReading = jest.fn();
+    (Location.watchHeadingAsync as jest.Mock).mockImplementation(async (callback) => {
+      callback({ trueHeading: 42, magHeading: 40, accuracy: 3 });
+      return { remove: jest.fn() };
+    });
+
+    await watchHeading(onReading);
+
+    expect(onReading).toHaveBeenCalledWith({ trueHeading: 42 });
+  });
+
+  it('stops the watch when its returned function is called, so the magnetometer goes quiet', async () => {
+    const remove = jest.fn();
+    (Location.watchHeadingAsync as jest.Mock).mockResolvedValue({ remove });
+
+    const unwatch = await watchHeading(jest.fn());
+    unwatch();
+
+    expect(remove).toHaveBeenCalled();
+  });
+});

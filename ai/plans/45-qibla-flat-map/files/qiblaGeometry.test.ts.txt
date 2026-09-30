@@ -1,0 +1,103 @@
+/**
+ * Where Makkah lies, and the drawn path to it on a flat world map
+ */
+
+import {
+  type Coordinates,
+  greatCirclePoint,
+  KAABA,
+  MERCATOR_MAX_LATITUDE,
+  projectMercator,
+  qiblaBearing,
+  qiblaPathData,
+} from '../qiblaGeometry';
+
+const MAP = 350;
+const LONDON: Coordinates = { latitude: 51.475, longitude: -0.2015 };
+const LOS_ANGELES: Coordinates = { latitude: 34.0522, longitude: -118.2437 };
+const HONOLULU: Coordinates = { latitude: 21.3069, longitude: -157.8583 };
+
+/** Degrees clockwise from straight up, between two points on the drawn map */
+const screenAngle = (from: { x: number; y: number }, to: { x: number; y: number }): number =>
+  ((Math.atan2(to.x - from.x, from.y - to.y) * 180) / Math.PI + 360) % 360;
+
+/** The first two points of an SVG path, as drawn */
+const firstSegment = (data: string): Array<{ x: number; y: number }> =>
+  data
+    .split('M')[1]
+    .split('L')
+    .slice(0, 2)
+    .map((pair) => {
+      const [x, y] = pair.split(',');
+      return { x: Number(x), y: Number(y) };
+    });
+
+describe('the bearing to Makkah', () => {
+  // Spanning the range on purpose: a qibla north of east (Los Angeles 23.9) is what a straight line on a flat map
+  // gets 71 degrees wrong, and London alone would have looked correct
+  it.each([
+    // city, latitude, longitude, bearing
+    ['London', 51.475, -0.2015, 118.8756],
+    ['New York', 40.7128, -74.006, 58.4817],
+    ['Los Angeles', 34.0522, -118.2437, 23.8571],
+    ['Jakarta', -6.2088, 106.8456, 295.1517],
+    ['Sydney', -33.8688, 151.2093, 277.4996],
+    ['Cairo', 30.0444, 31.2357, 136.1373],
+  ])('reads %s as %p degrees', (_city, latitude, longitude, expected) => {
+    expect(qiblaBearing({ latitude, longitude })).toBeCloseTo(expected, 3);
+  });
+
+  it('answers 0 to under 360 rather than a negative angle west of Makkah', () => {
+    expect(qiblaBearing(LOS_ANGELES)).toBeGreaterThanOrEqual(0);
+    expect(qiblaBearing({ latitude: 60, longitude: 100 })).toBeLessThan(360);
+  });
+});
+
+describe('placing a position on the square map', () => {
+  it('puts the equator and the prime meridian at the centre', () => {
+    expect(projectMercator({ latitude: 0, longitude: 0 }, MAP)).toEqual({ x: 175, y: 175 });
+  });
+
+  it('clamps beyond the projection limit rather than running to infinity', () => {
+    const pole = projectMercator({ latitude: 89.9, longitude: 0 }, MAP);
+
+    expect(pole.y).toBeCloseTo(projectMercator({ latitude: MERCATOR_MAX_LATITUDE, longitude: 0 }, MAP).y, 9);
+    expect(Number.isFinite(pole.y)).toBe(true);
+  });
+});
+
+describe('the drawn path to Makkah', () => {
+  it('leaves the user at the true bearing, so the arrow and the line agree', () => {
+    for (const city of [LONDON, LOS_ANGELES]) {
+      const [start, next] = firstSegment(qiblaPathData(city, MAP));
+
+      expect(screenAngle(start, next)).toBeCloseTo(qiblaBearing(city), 0);
+    }
+  });
+
+  it('curves rather than running straight, so Los Angeles never points east', () => {
+    const [start, next] = firstSegment(qiblaPathData(LOS_ANGELES, MAP));
+
+    expect(screenAngle(start, next)).toBeLessThan(45);
+  });
+
+  it('breaks into two sub-paths where the route leaves the map edge', () => {
+    expect(qiblaPathData(HONOLULU, MAP).split('M').filter(Boolean)).toHaveLength(2);
+    expect(qiblaPathData(LONDON, MAP).split('M').filter(Boolean)).toHaveLength(1);
+  });
+
+  it('ends at Makkah', () => {
+    const last = qiblaPathData(LONDON, MAP).split('L').pop() as string;
+    const [x, y] = last.split(',').map(Number);
+    const kaaba = projectMercator(KAABA, MAP);
+
+    expect(x).toBeCloseTo(kaaba.x, 1);
+    expect(y).toBeCloseTo(kaaba.y, 1);
+  });
+});
+
+describe('a point along the great circle', () => {
+  it('returns the start itself when the user is at Makkah, rather than dividing by zero', () => {
+    expect(greatCirclePoint(KAABA, 0.5)).toEqual({ latitude: KAABA.latitude, longitude: KAABA.longitude });
+  });
+});
