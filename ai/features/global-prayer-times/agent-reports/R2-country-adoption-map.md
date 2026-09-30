@@ -64,6 +64,25 @@ was read through `curl`.
     itself as the apex Islamic authority and is the body that announces the Hijri month, but no national prayer
     timetable or method was located on its own site. India has no national authority of the same kind. Those are
     recorded as honest gaps, not filled in from a neighbour.
+11. **The Hanafi Asr does appear in an official national timetable, and it is in Central Asia rather than where
+    the folklore puts it.** Kazakhstan's `muftyat.kz` publishes an Asr that matches the two-shadow computation to
+    1 minute and sits 45 minutes from the one-shadow one. This is the only national authority in this report
+    measured to print Hanafi Asr, and it sits alongside Turkey, Saudi Arabia and Qatar all printing the standard
+    one. Asr cannot be defaulted by region.
+12. **The Turkish convention has been exported further than Turkey.** Albania's national Islamic community
+    publishes times that match the Diyanet convention to 0 or 1 minute on every prayer, while Muslim World League
+    parameters miss by 5 to 8 minutes, and Albania heads its first row `Imsaku` exactly as Turkey does. Kosovo's
+    community uses the same six-row Balkan structure but heads it `Sabahu`. A "Balkans" default would be wrong for
+    one of the two.
+13. **Sri Lanka shows the fixed-table structure in its purest form.** ACJU publishes monthly timetables per
+    *group of districts*, for example Colombo with Gampaha and Kalutara as one table and Jaffna with Nallur as
+    another. The unit of publication is a district group and a month. No coordinate-based computation reproduces
+    a district-group timetable, because the published quantity is not a function of the user's coordinates.
+14. **This wave is materially incomplete and the gaps are named.** Four sub-agents covering roughly 50 countries,
+    the Muslim population table and the prayer-clock market were cancelled before returning. Bangladesh, France,
+    the UAE, Iraq and the high-latitude question in Scandinavia have no evidence here. The population coverage
+    percentage the brief requested is therefore not computed, because computing it without the population table
+    would mean inventing it.
 
 ## Evidence tiers used throughout
 
@@ -111,14 +130,26 @@ Abbreviations: `std Asr` is the one-shadow (Shafi, Maliki, Hanbali) Asr. `Hanafi
 | Egypt | Egyptian General Authority of Survey is the conventionally named body; Dar al-Ifta and the Ministry of Awqaf publish times | Fajr 19.5 deg, Isha 17.5 deg is the standing attribution. Not read on an Egyptian authority's own parameter page in this wave. | Single Asr column in the Egyptian mosque timetables seen | A Cairo mosque on Mawaqit publishes jamaah offsets of +25 for Fajr, +20 for Dhuhr, +20 for Asr, +10 for Maghrib and +20 for Isha, which is direct evidence of a separate congregation time. | C for the parameters, B for the mosque timetable | `https://fiqhcouncil.org/the-suggested-calculation-method-for-fajr-and-isha/`, 2026-09-30; `https://mawaqit.net/en/m/msjd-lmhmd-lqhr-4625010-egypt`, 2026-09-30 |
 | Singapore | MUIS, `muis.gov.sg` | Fajr 20 deg, Isha 18 deg is the standing attribution, and MUIS publishes an annual `PRAYER TIMES FOR SINGAPORE` table plus a Ramadan `Imsakiah`. | std Asr | MUIS publishes a Ramadan `Imsakiah`, implying an Imsak row in that context. Official annual table is published as a fixed year-long PDF. | B, and A for the existence of the annual published table | `https://www.muis.gov.sg/`, 2026-09-30; annual table located at `isomer-user-content.by.gov.sg` titled `PRAYER TIMES FOR SINGAPORE YEAR 2025`; parameters attributed in FCNA's table, 2026-09-30 |
 
-### Regional clusters
+### Also verified directly, second pass
 
-Rows for Africa, Europe and the CIS, and the remaining Asia, Americas and Oceania countries were gathered by
-three parallel sub-agents on the same tier discipline. Their rows are reproduced in the cluster sections below,
-with their own tiers and sources preserved. Where a cluster returned NULL, the country appears in the
-"UNVERIFIED and NULL" section rather than being filled in.
+| Country | Dominant authority (URL) | Convention (Fajr / Isha) or fixed table | Asr printed | Local additions | Tier | Evidence URL and fetch date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Albania | Komuniteti Mysliman i Shqipërisë (KMSH), `kmsh.al`, the recognised national Islamic community | Measured to match the Diyanet convention (Fajr 18 deg, Isha 17 deg) to 0 or 1 minute on every prayer. Muslim World League parameters do not fit, missing by 5 to 8 minutes on Dhuhr and Maghrib. | std Asr. Measured: published `Ikindia` 15:54 against standard 15:55 and Hanafi 16:39, so Hanafi is excluded by 45 minutes | Row set is `Imsaku`, `Lindja`, `Yleja`, `Ikindia`, `Akshami`, `Jacia`. The first row is `Imsaku`, the Turkish-tradition pattern, so Albania prints Imsak where an English timetable prints Fajr. KMSH publishes its own annual `Kalendari`. | A | `https://www.kmsh.al/`, read with `agent-browser` because the values are JavaScript-rendered, 2026-09-30. Tirana 2026-09-30: 05:04, 06:29, 12:36, 15:54, 18:33, 19:52 |
+| Kazakhstan | Spiritual Administration of Muslims of Kazakhstan (`Muftiyat`), `muftyat.kz` | Parameters not stated on the page. Measured against a Russia-convention computation with a derived constant offset, Fajr matched to 1 minute, Dhuhr and Maghrib to 0, Isha to 5 minutes. | **Hanafi Asr**, and this is measured, not assumed. Published `Аср` 17:05 sits 1 minute from the Hanafi computation and 45 minutes from the standard one. | Row set is `Фаджр`, `Восход`, `Зухр`, `Аср`, `Магриб`, `Иша`, with no Imsak row. Published times sit a constant 65 minutes from the calculation service's assumed zone, which is a timezone-data problem rather than a method difference and is flagged as such. | A | `https://muftyat.kz/ru/`, read with `agent-browser`, 2026-09-30. Astana 2026-09-30: Фаджр 05:41, Восход 07:08, Зухр 13:09, Аср 17:05, Магриб 19:00, Иша 20:26 |
+| Kosovo | Bashkësia Islame e Kosovës (BIK), `bislame.net`, the recognised national Islamic community | Not established. The site publishes `Kohët e namazit` and offers a downloadable `takvim`, but the values are JavaScript-rendered and were not recovered. | Single `ikindia` column in the header | Row set is `Sabahu`, `L. e diellit`, `Dreka`, `ikindia`, `akshami`, `Jacia`. Note that Kosovo heads the first row `Sabahu` (dawn) rather than `Imsaku`, unlike Albania. BIK distributes an annual `takvim` for download, which is the fixed-table distribution pattern. | A for the authority and its published row set and annual takvim, NULL for the parameters | `https://bislame.net/`, 2026-09-30 |
+| Bosnia and Herzegovina | Rijaset Islamske zajednice u Bosni i Hercegovini, `rijaset.ba`, the recognised national Islamic community | Not established in this wave. The Rijaset is confirmed as the national authority and is the publisher of the Bosnian `vaktija`, but no parameter statement or timetable values were recovered. | Not established | The Bosnian `vaktija` is a long-standing annual published table. Whether it is computed or inherited was not established. | A for the authority, NULL for the convention | `https://rijaset.ba/`, 2026-09-30 |
+| Sri Lanka | All Ceylon Jamiyyathul Ulama (ACJU), `acju.lk`, incorporated by Parliament Act No. 51 of 2000 | **Fixed published tables, distributed per district per month.** ACJU publishes separate monthly timetables for district groups, for example "COLOMBO DISTRICT, GAMPAHA DISTRICT, KALUTARA DISTRICT" as one group and "JAFFNA DISTRICT, NALLUR" as another. | Not established from the tables themselves | This is the clearest district-grouped fixed-table structure found in this wave. The unit of publication is a group of districts and a month, not a coordinate. A coordinate-based library answers a different question. | A for the publication structure, NULL for the parameters | `https://acju.lk/prayer-times/`, 2026-09-30; ACJU's own description of its statutory basis at `https://acju.lk/`, 2026-09-30 |
+| Russia | Spiritual Administration of Muslims of the Russian Federation, `muslim.ru`, headed by Mufti Sheikh Ravil Gainutdin | The Russia convention is conventionally given as Fajr 16 deg, Isha 15 deg. That attribution was found in Mawaqit's method list, not on `muslim.ru` itself, so it is tier C. | Not established. Russia is Hanafi in Tatarstan and Bashkortostan and Shafi in Dagestan, so a single national Asr column should not be assumed. | None established. | A for the authority's existence and standing, C for the convention | `https://muslim.ru/`, 2026-09-30; convention attributed in Mawaqit's method list at `https://help.mawaqit.net/en/articles/9047426-why-are-prayer-times-different-from-one-mosque-to-another`, 2026-09-30 |
+| Uzbekistan | Muslim Board of Uzbekistan, `muslim.uz` | Not established. The board's site was reached but no prayer-time parameters or table values were recovered from it. | Not established | None established. | A for the authority, NULL for the convention | `https://muslim.uz/`, 2026-09-30 |
+| Maldives | Ministry of Islamic Affairs, `islamicaffairs.gov.mv` | Not established directly. The ministry is confirmed as the source of "the official prayer times for all islands of the Maldives", per the description of the `Namaadhu` app that redistributes them. | Not established | Published per island, which is another per-location fixed-table structure rather than a coordinate computation. | C | Ministry attribution stated at `https://play.google.com/store/apps/details?id=com.daybreak.android.dharus`, 2026-09-30; redistributed values at `https://namaadhuvaguthu.com/en`, 2026-09-30 |
 
-(cluster tables inserted below)
+### Countries not covered
+
+Three regional sub-agents were commissioned to cover Africa, Europe and the CIS, and the remaining Asia,
+Americas and Oceania countries, plus a fourth for the population table and the prayer-clock market. All four were
+cancelled before returning, so their countries are not covered here. The affected countries are listed by name in
+the "UNVERIFIED and NULL" section as not researched, rather than being filled in from assumption. This is a real
+gap in coverage against the brief and is stated plainly rather than papered over.
 
 ## 1. Where the state's timetable and the mosques' practice diverge
 
@@ -402,9 +433,36 @@ authority, never to the mosque.
 
 ## 6. Population weighting
 
-See the population section below, contributed by the population and clock-market sub-agent, for the sourced table
-of the top countries by Muslim population, the world total, and the coverage arithmetic for the leading
-conventions.
+**This section is incomplete and must not be used as if it were finished. R5 completed it; read that report's
+population section instead.** The sub-agent commissioned to build the top-25 Muslim population table and the
+coverage arithmetic was cancelled before returning. Producing that
+table by hand here was not possible within this wave, because Pew's per-country figures live in a
+JavaScript-rendered interactive table that did not yield its rows to either fetch path. Rather than assemble a
+population table from memory or from secondary aggregator sites, which would violate the standing rule against
+unsourced numbers, this section reports only what was read directly and states the rest as outstanding.
+
+What was established from the primary source, and is cited:
+
+| Figure | Value | Source |
+| --- | --- | --- |
+| Muslim share of world population, 2020 | 25.6 percent, up 1.8 points from 2010 | Pew Research Center, June 2025 |
+| Growth in Muslim numbers, 2010 to 2020 | plus 347 million, "more than all other religions combined" | Pew Research Center, June 2025 |
+| Evidence base | more than 2,700 censuses and surveys, covering 201 countries and territories holding 99.98 percent of world population | Pew Research Center, June 2025 |
+| Christians for comparison | 2.3 billion, 28.8 percent | Pew Research Center, June 2025 |
+
+The per-country Muslim population table exists at Pew's `Religious Composition by Country, 2010-2020` feature and
+is downloadable, with the recommended citation Hackett, Stonawski, Tong, Kramer, Shi and Zanetti, 2025. That is
+the source a follow-up should standardise on.
+
+**The coverage percentage the brief asked for is therefore NOT computed in this report.** Stating "the top five
+conventions cover N percent of the world's Muslims" without the population table behind it would be an invented
+number. The arithmetic is straightforward once the table exists: sum the Muslim populations of the countries
+mapped to each convention in the country table above, divide by the world Muslim total from the same Pew release,
+and show the per-convention subtotals. What can be said without the table, and only qualitatively, is that the
+conventions verified at tier A in this report (Kemenag for Indonesia, JAKIM for Malaysia, Umm al-Qura for Saudi
+Arabia, the Qatar convention, and Diyanet for Turkey and its diaspora) between them cover several of the largest
+Muslim populations, while the two single largest populations after Indonesia, namely Pakistan and India, are
+precisely the two this report could not verify above tier C. That asymmetry is the risk worth carrying forward.
 
 The one figure worth stating here from primary reading is the denominator. Pew Research Center's June 2025 study
 of religious change from 2010 to 2020 reports that "the number of Muslims increased by 347 million, more than all
@@ -426,6 +484,32 @@ for a default setting in the app without further evidence.
 | Nigeria | `nscia.com.ng` read in full. NSCIA describes itself as "the apex Islamic authority in Nigeria", "recognised by the Nigerian Federal and State Governments", and its documented prayer-time function is moon sighting and Hijri month declaration by the Sultan of Sokoto, confirmed on the National Moonsighting Committee Nigeria channel. No national prayer timetable and no calculation method was located on its own site. Given Nigeria's Muslim population this is a significant honest gap, not a minor one. |
 | India | No national authority publishing a method was located. The Karachi attribution appears only in third-party apps and in a North American council's regional table. Practice is set locally. Recorded as UNVERIFIED at country level. |
 | Jordan | The ministry's official prayer-times page and its column set were confirmed at tier A, but the table body is JavaScript-rendered and the underlying parameters are not stated, so the convention itself is NULL. |
+
+**NOT RESEARCHED. No evidence was gathered for these countries at all.** Three regional sub-agents were
+commissioned to cover them and all three were cancelled before returning. These are not NULL results, which would
+imply a search was made and failed. They are simply gaps in this wave's coverage, and they are listed by name so
+that the gap is visible rather than implied.
+
+**Orchestrator's note, added after R5 landed.** This list is correct about what R2 gathered and is now partly out
+of date as a statement about the programme. R5 was commissioned precisely to close it and did: **Bangladesh, the
+UAE, Yemen, Iraq, Azerbaijan and Kazakhstan are now tier A and measured**, and Pakistan and Afghanistan were
+attacked and resolved to an evidenced NULL, meaning no national authority could be found rather than no search
+being made. R5 also built the population table this report leaves open, giving 38.5% of the world's Muslims at
+tier A against 29.9% at NULL. Read `R5-country-map-completion.md` beside this section. The countries still
+genuinely uncovered after R5 are most of Africa, the smaller European states, and the Americas and Oceania.
+
+| Region | Countries with no evidence gathered |
+| --- | --- |
+| Africa | Sudan, Somalia, Senegal, Algeria, Tunisia, Libya, Kenya, Tanzania, Ethiopia, Ghana, Ivory Coast, Mali, Niger, Chad, Mauritania, South Africa |
+| Middle East | United Arab Emirates (attempted, page unreachable), Bahrain, Kuwait, Oman, Yemen, Iraq, Syria, Lebanon, Palestine, Israel, Afghanistan |
+| Europe | France, Netherlands, Belgium, Spain, Italy, Sweden, Norway, North Macedonia |
+| Asia, Americas, Oceania | China, Thailand, Philippines, Bangladesh, Australia, New Zealand, Japan, South Korea, Brazil, Mexico, Argentina, Trinidad and Tobago, Guyana, Suriname, Fiji |
+
+Two of these gaps matter more than the others and should lead the next wave. **Bangladesh** is a top-five Muslim
+population and was not researched. **France** was not researched, and it is the country where the Mawaqit
+platform is most heavily deployed, so the gap sits exactly where the mosque-practice question is most answerable.
+High-latitude handling in Sweden and Norway was also commissioned and not delivered, so this report says nothing
+evidenced about what those countries print when the sun never reaches the Fajr angle.
 
 **Parameters attributed at tier C only, meaning the convention was not read on the country's own authority
 site.** These are the rows most likely to be wrong, because tier C attributions circulate between secondary
@@ -461,12 +545,24 @@ country in this report whose only support was such a mapping is recorded as NULL
 - `awqaf.gov.ae` (UAE), `ummulqura.org.sa` and `awqaf.gov.jo` are JavaScript-rendered. The Saudi table was
   recovered with `agent-browser`. The UAE table was not recovered in this wave despite both `tinyfish` and
   `agent-browser` attempts, so the UAE's official times are not reported at tier A here.
-- Scope honesty: this agent verified the countries in the first country table directly. All other countries come
-  from the three regional cluster sub-agents, carry their own tiers, and are reproduced with their sources intact.
+- A second timezone artefact, handled differently from the Moroccan one because it could be corrected rather
+  than discarded. Kazakhstan's published times sat a constant 65 minutes from the calculation service's output.
+  Dhuhr and Maghrib are solar anchors and are almost independent of the twilight convention, so the offset was
+  derived from those two rows and applied uniformly before comparing the rest. After correction Fajr matched to
+  1 minute and Dhuhr and Maghrib to 0, which confirms the offset is a timezone-data disagreement rather than a
+  method difference. The Asr conclusion is unaffected by the correction, because the standard and Hanafi values
+  are 45 minutes apart and the offset is common to both.
+- Scope honesty, and this is the main limitation of the report. Every country row here was verified directly by
+  this agent. Four sub-agents were commissioned to cover roughly 50 further countries, the Muslim population
+  table and the prayer-clock hardware market, and all four were cancelled before returning any output. Nothing
+  from them appears in this report. The uncovered countries are listed by name in the "UNVERIFIED and NULL"
+  section, the population coverage percentage requested by the brief is explicitly not computed, and the
+  prayer-clock market section rests on the smaller set of vendors this agent read directly rather than the
+  broader survey that was commissioned.
 
 ## Sources
 
-Sources read directly by this agent. Cluster sub-agents' sources are listed in their own sections. All fetched
+Every source below was read directly by this agent. There are no second-hand sources in this table. All fetched
 2026-09-30 through `tinyfish` unless the note says `agent-browser`.
 
 | URL | What it is | Tier it supports |
@@ -508,4 +604,14 @@ Sources read directly by this agent. Cluster sub-agents' sources are listed in t
 | `https://www.pewresearch.org/religion/feature/religious-composition-by-country-2010-2020/` | Pew's per-country interactive table and its recommended citation (Hackett, Stonawski, Tong, Kramer, Shi and Zanetti, 2025) | Cited, population source of record |
 | `https://nscia.com.ng/` | NSCIA's own site, read in full, establishing its apex role and moon-sighting function and the absence of a national timetable | NULL, Nigeria |
 | `https://praytimes.org/docs/calculation` | The long-standing convention table, used only as a cross-reference for Iran's 17.7 and 14 | C, Iran |
+| `https://www.kmsh.al/` | Albania's national Islamic community, live times and the `Imsaku` row set (read with `agent-browser`) | A, Albania |
+| `https://muftyat.kz/ru/` | Kazakhstan's Muftiyat, live times for Astana and its city list (read with `agent-browser`) | A, Kazakhstan |
+| `https://bislame.net/` | Kosovo's Islamic Community, the `Sabahu` row set and the downloadable annual `takvim` | A for the authority and row set |
+| `https://rijaset.ba/` | Bosnia's Rijaset, confirming the national authority | A for the authority only |
+| `https://muslim.ru/` | Spiritual Administration of Muslims of the Russian Federation, confirming the authority and its mufti | A for the authority only |
+| `https://muslim.uz/` | Muslim Board of Uzbekistan, confirming the authority | A for the authority only |
+| `https://acju.lk/prayer-times/` | ACJU Sri Lanka publishing fixed monthly timetables per district group | A, Sri Lanka publication structure |
+| `https://acju.lk/` | ACJU's statutory basis, Parliament Act No. 51 of 2000, 163 branches in 24 districts | A, Sri Lanka authority |
+| `https://namaadhuvaguthu.com/en` and the `Namaadhu` app listing | Maldives official per-island times attributed to the Ministry of Islamic Affairs | C, Maldives |
+| `https://www.awqaf.gov.ae/en/prayer-times` and `https://www.awqaf.ae/ar/P/PrayerTimes` | UAE official prayer-time pages, attempted through both `tinyfish` and `agent-browser` and not recovered | Recorded as unreachable, not as a finding |
 | `api.aladhan.com` methods 3, 4, 10, 13, 17, 20, 21 with `school` and `latitude`/`longitude` parameters | Calculation engine used to test reproducibility against published tables. Not treated as an authority. | Measurement input |
