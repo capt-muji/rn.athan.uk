@@ -1,0 +1,336 @@
+diff --git a/__tests__/app/_layout.test.tsx b/__tests__/app/_layout.test.tsx
+index ca7c66ae..23868b1d 100644
+--- a/__tests__/app/_layout.test.tsx
++++ b/__tests__/app/_layout.test.tsx
+@@ -138,7 +138,7 @@ describe('the root layout on screen', () => {
+     expect(screen.queryByText('Set your preferences')).not.toBeOnTheScreen();
+   });
+ 
+-  it('mounts the Settings, Athan and alert sheets once the first frame has passed', async () => {
++  it('mounts the Settings, Athan, alert and qibla sheets once the first frame has passed', async () => {
+     jest.useFakeTimers();
+     await render(<Layout />);
+ 
+@@ -146,6 +146,7 @@ describe('the root layout on screen', () => {
+ 
+     expect(screen.getByText('Set your preferences')).toBeOnTheScreen();
+     expect(screen.getByText('Select Athan')).toBeOnTheScreen();
++    expect(screen.getByText('Turn until it vibrates')).toBeOnTheScreen();
+     // The alert sheet has no prayer until a bell opens it, so its subtitle is all it shows beside the Athan sheet's
+     expect(screen.getAllByText('Close to save')).toHaveLength(2);
+   });
+diff --git a/app.json b/app.json
+index 9293ccf1..5d433ff7 100644
+--- a/app.json
++++ b/app.json
+@@ -2,7 +2,7 @@
+   "expo": {
+     "name": "Athan",
+     "slug": "athan",
+-    "version": "1.29.176",
++    "version": "1.29.177",
+     "orientation": "portrait",
+     "scheme": "athan",
+     "userInterfaceStyle": "dark",
+@@ -21,6 +21,7 @@
+       },
+       "infoPlist": {
+         "CFBundleDisplayName": "Athan",
++        "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
+         "NSUserNotificationsUsageDescription": "Receive prayer time notifications"
+       },
+       "backgroundColor": "#2c1c77"
+diff --git a/app/_layout.tsx b/app/_layout.tsx
+index ac4822ed..4bcf3e9f 100644
+--- a/app/_layout.tsx
++++ b/app/_layout.tsx
+@@ -18,7 +18,7 @@ import { SystemBars } from 'react-native-edge-to-edge';
+ import { GestureHandlerRootView } from 'react-native-gesture-handler';
+ import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
+ 
+-import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
++import { BottomSheetAlert, BottomSheetQibla, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
+ import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
+ import { useChromeDeferred } from '@/hooks/useChromeDeferred';
+ import { COLORS } from '@/shared/constants';
+@@ -88,6 +88,7 @@ export default function Layout() {
+             <BottomSheetSound />
+             <BottomSheetSettings />
+             <BottomSheetAlert />
++            <BottomSheetQibla />
+           </>
+         )}
+       </BottomSheetModalProvider>
+diff --git a/assets/icons/svg/index.ts b/assets/icons/svg/index.ts
+index f6ac15d9..27e9af84 100644
+--- a/assets/icons/svg/index.ts
++++ b/assets/icons/svg/index.ts
+@@ -6,6 +6,7 @@ import BellRingIcon from './bell-ring.svg';
+ import BellSlashIcon from './bell-slash.svg';
+ import CheckIcon from './check.svg';
+ import CloseIcon from './close.svg';
++import CompassIcon from './compass.svg';
+ import InfoIcon from './info.svg';
+ import MusicNoteIcon from './music-note.svg';
+ import PauseIcon from './pause.svg';
+@@ -23,6 +24,7 @@ const ICONS: Record<Icon, typeof BellRingIcon> = {
+   [Icon.INFO]: InfoIcon,
+   [Icon.QUESTION]: QuestionIcon,
+   [Icon.MUSIC_NOTE]: MusicNoteIcon,
++  [Icon.COMPASS]: CompassIcon,
+   [Icon.CHECK]: CheckIcon,
+   [Icon.CLOSE]: CloseIcon,
+   [Icon.WIDGET]: WidgetIcon,
+diff --git a/components/sheets/index.ts b/components/sheets/index.ts
+index 17c93991..37d0dbf2 100644
+--- a/components/sheets/index.ts
++++ b/components/sheets/index.ts
+@@ -13,8 +13,9 @@ export {
+   Stepper,
+   Toggle,
+ } from './parts';
+-export { Alert, ColorPicker, Settings, Sound } from './screens';
++export { Alert, ColorPicker, Qibla, Settings, Sound } from './screens';
+ // Backward compatibility
+ export { default as BottomSheetAlert } from './screens/Alert';
++export { default as BottomSheetQibla } from './screens/Qibla';
+ export { default as BottomSheetSettings } from './screens/Settings';
+ export { default as BottomSheetSound } from './screens/Sound';
+diff --git a/components/sheets/screens/Settings.tsx b/components/sheets/screens/Settings.tsx
+index 65c31e94..bf71ed8e 100644
+--- a/components/sheets/screens/Settings.tsx
++++ b/components/sheets/screens/Settings.tsx
+@@ -1,7 +1,7 @@
+ import * as Haptics from 'expo-haptics';
+ import { useAtom } from 'jotai';
+ import { useMemo } from 'react';
+-import { Pressable, StyleSheet, Text, View } from 'react-native';
++import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+ 
+ import SettingsIcon from '@/assets/icons/svg/settings.svg';
+ import { IconView } from '@/components/ui';
+@@ -19,6 +19,7 @@ import {
+   setSettingsSheetModal,
+   setSoundListReady,
+   showArabicNamesAtom,
++  showQiblaSheet,
+   showSecondsAtom,
+   showSheet,
+   showTimePassedAtom,
+@@ -50,6 +51,12 @@ export default function BottomSheetSettings() {
+     setTimeout(() => setPopupWhatsNewEnabled(true), 150);
+   };
+ 
++  const handleQiblaPress = () => {
++    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
++    hideSettingsSheet();
++    showQiblaSheet();
++  };
++
+   const handleHelpPress = () => {
+     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+     hideSettingsSheet();
+@@ -68,9 +75,9 @@ export default function BottomSheetSettings() {
+       // 32-row list on our first full open builds it invisibly, one tap
+       // before it is needed (and off the launch path)
+       onFirstPresent={setSoundListReady}>
+-      {/* Sound Card */}
++      {/* Prayer Card */}
+       <View style={styles.card}>
+-        <Text style={styles.cardTitle}>Sound</Text>
++        <Text style={styles.cardTitle}>Prayer</Text>
+         <Pressable
+           style={styles.athanButton}
+           onPress={handleAthanPress}
+@@ -83,6 +90,22 @@ export default function BottomSheetSettings() {
+           <Text style={styles.athanLabel}>Change athan</Text>
+           <Text style={styles.chevron}>›</Text>
+         </Pressable>
++        {/* iOS only: Android's heading fuses the accelerometer with the raw magnetometer, no gyroscope, and measured
++            71 degrees wrong */}
++        {Platform.OS === 'ios' ? (
++          <Pressable
++            style={styles.athanButton}
++            onPress={handleQiblaPress}
++            hitSlop={HIT_SLOP.md}
++            accessibilityLabel='Qibla'
++            accessibilityRole='button'>
++            <View style={styles.musicButton}>
++              <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
++            </View>
++            <Text style={styles.athanLabel}>Qibla</Text>
++            <Text style={styles.chevron}>›</Text>
++          </Pressable>
++        ) : null}
+       </View>
+ 
+       {/* Display Card */}
+diff --git a/components/sheets/screens/__tests__/Settings.test.tsx b/components/sheets/screens/__tests__/Settings.test.tsx
+index 77816c8e..0bb128cf 100644
+--- a/components/sheets/screens/__tests__/Settings.test.tsx
++++ b/components/sheets/screens/__tests__/Settings.test.tsx
+@@ -7,7 +7,7 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react-n
+ import * as Haptics from 'expo-haptics';
+ import { getDefaultStore } from 'jotai';
+ 
+-import { london } from '@/__tests__/harness';
++import { london, onPlatform } from '@/__tests__/harness';
+ import type { WhatsNewRelease } from '@/shared/whatsNew';
+ import {
+   bottomSheetModalAtom,
+@@ -16,15 +16,24 @@ import {
+   hijriDateEnabledAtom,
+   popupHelpEnabledAtom,
+   popupWhatsNewEnabledAtom,
++  qiblaSheetModalAtom,
+   settingsSheetModalAtom,
+   showArabicNamesAtom,
+   showSecondsAtom,
+   showTimePassedAtom,
+ } from '@/stores/ui';
+ 
++import QiblaSheet from '../Qibla';
+ import SettingsSheet from '../Settings';
+ import SoundSheet from '../Sound';
+ 
++// The qibla sheet reaches the platform the moment it presents; the settings suite only needs it to exist
++jest.mock('@/device/qibla', () => ({
++  requestQiblaPermission: jest.fn(async () => true),
++  readPosition: jest.fn(async () => ({ latitude: 51.475, longitude: -0.2015 })),
++  watchHeading: jest.fn(async () => jest.fn()),
++}));
++
+ // Whether a release has notes to show is an editorial choice made per release, so the suite sets it both ways rather
+ // than depending on the stamp the current release happens to carry
+ let mockVisibleWhatsNew: WhatsNewRelease | null = null;
+@@ -97,6 +106,34 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
+     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+   });
+ 
++  it('closes itself and opens the qibla sheet with a haptic when Qibla is pressed', async () => {
++    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
++    await render(
++      <>
++        <SettingsSheet />
++        <QiblaSheet />
++      </>
++    );
++    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
++    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
++
++    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
++
++    expect(settingsDismiss).toHaveBeenCalledTimes(1);
++    expect(qiblaPresent).toHaveBeenCalledTimes(1);
++    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
++  });
++
++  it('shows no Qibla row on Android, where the heading has no gyroscope in it', async () => {
++    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
++    onPlatform('android');
++
++    await render(<SettingsSheet />);
++
++    expect(screen.queryByRole('button', { name: 'Qibla' })).toBeNull();
++    expect(screen.getByRole('button', { name: 'Change athan' })).toBeOnTheScreen();
++  });
++
+   it("builds the athan sheet's rows the first time it fully opens, one tap before they are needed", async () => {
+     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+     await render(
+diff --git a/components/sheets/screens/index.ts b/components/sheets/screens/index.ts
+index 02d061d3..6e80eda2 100644
+--- a/components/sheets/screens/index.ts
++++ b/components/sheets/screens/index.ts
+@@ -1,4 +1,5 @@
+ export { default as Alert } from './Alert';
+ export { default as ColorPicker } from './ColorPicker';
++export { default as Qibla } from './Qibla';
+ export { default as Settings } from './Settings';
+ export { default as Sound } from './Sound';
+diff --git a/shared/constants.ts b/shared/constants.ts
+index 7524a3c8..7907e1a5 100644
+--- a/shared/constants.ts
++++ b/shared/constants.ts
+@@ -824,6 +824,32 @@ export const COLORS = {
+     background: 'rgba(126, 189, 241, 0.19)',
+   },
+ 
++  /** The qibla compass: a brass-on-indigo reading of the app's own palette, after the Ottoman qibla indicators */
++  qibla: {
++    /** The face's outer disc */
++    face: 'rgba(13, 24, 62, 1)',
++    /** The medallion, a shade lifted so the rings read as engraved rather than drawn */
++    faceInner: 'rgba(20, 33, 82, 1)',
++    /** Engraved rings and minor ticks */
++    ring: 'rgba(165, 180, 252, 0.25)',
++    /** The letters and the thirty-degree ticks */
++    cardinal: 'rgba(224, 231, 255, 0.95)',
++    /** The housing, the Rub el Hizb and the Kaaba's kiswah band */
++    brass: 'rgba(222, 187, 106, 1)',
++    /** The engraved ornament inside the star */
++    brassSoft: 'rgba(222, 187, 106, 0.5)',
++    /** The star's own field */
++    brassFaint: 'rgba(222, 187, 106, 0.13)',
++    /** The Kaaba's cube */
++    kaaba: 'rgba(8, 10, 24, 1)',
++    /** The needle that points to Makkah */
++    needle: 'rgba(147, 157, 251, 1)',
++    /** The needle and the arrowhead once the phone is on the line, which is the only colour change on the screen */
++    onLine: 'rgba(52, 211, 153, 1)',
++    /** The fixed arrowhead at the top, which the needle meets when the user faces Makkah */
++    mark: 'rgba(255, 255, 255, 0.92)',
++  },
++
+   /** Color picker */
+   colorPicker: {
+     buttonBackground: 'rgba(79, 126, 180, 0.24)',
+diff --git a/shared/types.ts b/shared/types.ts
+index 7f093e8e..f4f52321 100644
+--- a/shared/types.ts
++++ b/shared/types.ts
+@@ -249,6 +249,7 @@ export enum Icon {
+   INFO = 'INFO',
+   QUESTION = 'QUESTION',
+   MUSIC_NOTE = 'MUSIC_NOTE',
++  COMPASS = 'COMPASS',
+   CHECK = 'CHECK',
+   CLOSE = 'CLOSE',
+   WIDGET = 'WIDGET',
+diff --git a/stores/ui.ts b/stores/ui.ts
+index 5468c433..f29ceaa4 100644
+--- a/stores/ui.ts
++++ b/stores/ui.ts
+@@ -93,6 +93,9 @@ export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
+ /** Reference to the settings bottom sheet modal */
+ export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
+ 
++/** Reference to the qibla bottom sheet modal */
++export const qiblaSheetModalAtom = atom<BottomSheetModal | null>(null);
++
+ // =============================================================================
+ // ATOMS - Layout Measurements
+ // =============================================================================
+@@ -150,6 +153,12 @@ export const showSettingsSheet = () => {
+   store.get(settingsSheetModalAtom)?.present();
+ };
+ 
++/** Presents the qibla bottom sheet */
++export const showQiblaSheet = () => {
++  perfMark('sheet_qibla_present');
++  store.get(qiblaSheetModalAtom)?.present();
++};
++
+ /** Dismisses the settings bottom sheet */
+ export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
+ 
+@@ -159,6 +168,9 @@ export const setBottomSheetModal = (modal: BottomSheetModal | null) => store.set
+ /** Sets the settings bottom sheet modal reference */
+ export const setSettingsSheetModal = (modal: BottomSheetModal | null) => store.set(settingsSheetModalAtom, modal);
+ 
++/** Sets the qibla bottom sheet modal reference */
++export const setQiblaSheetModal = (modal: BottomSheetModal | null) => store.set(qiblaSheetModalAtom, modal);
++
+ /** Sets the alert bottom sheet modal reference */
+ export const setAlertSheetModal = (modal: BottomSheetModal | null) => store.set(alertSheetModalAtom, modal);
+ 

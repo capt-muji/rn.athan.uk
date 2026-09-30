@@ -1,0 +1,26 @@
+/**
+ * Where Makkah lies from where the user stands
+ */
+
+import { qiblaBearing } from '../qiblaGeometry';
+
+describe('the bearing to Makkah', () => {
+  // Spanning the range on purpose: a qibla north of east (Los Angeles 23.9) is what a straight line on a flat map
+  // gets 71 degrees wrong, and London alone would have looked correct
+  it.each([
+    // city, latitude, longitude, bearing
+    ['London', 51.475, -0.2015, 118.8756],
+    ['New York', 40.7128, -74.006, 58.4817],
+    ['Los Angeles', 34.0522, -118.2437, 23.8571],
+    ['Jakarta', -6.2088, 106.8456, 295.1517],
+    ['Sydney', -33.8688, 151.2093, 277.4996],
+    ['Cairo', 30.0444, 31.2357, 136.1373],
+  ])('reads %s as %p degrees', (_city, latitude, longitude, expected) => {
+    expect(qiblaBearing({ latitude, longitude })).toBeCloseTo(expected, 3);
+  });
+
+  it('answers 0 to under 360 rather than a negative angle west of Makkah', () => {
+    expect(qiblaBearing({ latitude: 34.0522, longitude: -118.2437 })).toBeGreaterThanOrEqual(0);
+    expect(qiblaBearing({ latitude: 60, longitude: 100 })).toBeLessThan(360);
+  });
+});

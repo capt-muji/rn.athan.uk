@@ -1,0 +1,94 @@
+/**
+ * The compass face's geometry: its ticks, its cardinal letters and the Rub el Hizb at its centre.
+ *
+ * Pure arithmetic on a unit circle, so the face is drawn once at whatever size it is given and never recomputed.
+ */
+
+const DEGREES = Math.PI / 180;
+
+/** A mark around the rim */
+export interface DialTick {
+  angle: number;
+  /** Share of the radius the tick reaches inward */
+  length: number;
+  /** A cardinal, drawn in brass */
+  cardinal: boolean;
+  /** Every thirtieth degree, drawn brighter than the rest */
+  mid: boolean;
+}
+
+export interface DialLabel {
+  angle: number;
+  text: string;
+}
+
+export interface FacePoint {
+  x: number;
+  y: number;
+}
+
+/**
+ * Two squares at 45 degrees to each other, which is the Rub el Hizb's own construction.
+ *
+ * Its inner vertices sit where the squares' edges cross, at cos(45)/cos(22.5) of the outer radius: the ratio is the
+ * construction's, not a chosen one, so the star is the traditional shape rather than an approximation of it.
+ */
+export const RUB_EL_HIZB_INNER = Math.cos(Math.PI / 4) / Math.cos(Math.PI / 8);
+
+/** Where a bearing lands on a circle of that radius, y downward and 0 degrees straight up */
+export const dialPoint = (angle: number, radius: number): FacePoint => ({
+  x: Math.sin(angle * DEGREES) * radius,
+  y: -Math.cos(angle * DEGREES) * radius,
+});
+
+/** Every 5 degrees, with the cardinals and the 30s standing taller */
+export const DIAL_TICKS: DialTick[] = Array.from({ length: 72 }, (_, step) => {
+  const angle = step * 5;
+  const cardinal = angle % 90 === 0;
+  const mid = angle % 30 === 0;
+
+  return { angle, length: cardinal ? 0.08 : mid ? 0.055 : 0.032, cardinal, mid };
+});
+
+export const DIAL_LABELS: DialLabel[] = [
+  { angle: 0, text: 'N' },
+  { angle: 90, text: 'E' },
+  { angle: 180, text: 'S' },
+  { angle: 270, text: 'W' },
+];
+
+/** The eight brass studs set into the housing, after the Ottoman qibla indicators */
+export const DIAL_STUDS: number[] = Array.from({ length: 8 }, (_, index) => index * 45 + 22.5);
+
+/** The Rub el Hizb as a closed SVG path, 16 vertices alternating between the squares' corners and their crossings */
+export const rubElHizbPath = (radius: number): string => {
+  const points: FacePoint[] = [];
+  for (let vertex = 0; vertex < 16; vertex++) {
+    points.push(dialPoint(vertex * 22.5, vertex % 2 === 0 ? radius : radius * RUB_EL_HIZB_INNER));
+  }
+
+  return `${points.map((point, index) => `${index === 0 ? 'M' : 'L'}${point.x.toFixed(2)},${point.y.toFixed(2)}`).join('')}Z`;
+};
+
+/** The octagram's eight rays, each a chevron from the centre field out to a point of the star */
+export const rosetteRays = (radius: number): string[] =>
+  Array.from({ length: 8 }, (_, index) => {
+    const angle = index * 45;
+    const tip = dialPoint(angle, radius * 0.72);
+    const left = dialPoint(angle - 22.5, radius * 0.2);
+    const right = dialPoint(angle + 22.5, radius * 0.2);
+
+    return `M${left.x.toFixed(2)},${left.y.toFixed(2)}L${tip.x.toFixed(2)},${tip.y.toFixed(2)}L${right.x.toFixed(2)},${right.y.toFixed(2)}`;
+  });
+
+/**
+ * The heading, carried forward so it never jumps the long way round.
+ *
+ * An interpolation runs between the two numbers it is given, so a turn from 359 to 1 degrees would spin the face
+ * backwards through south unless the wrap is unrolled into a continuous angle first.
+ */
+export const unwrapHeading = (previous: number, heading: number): number => {
+  const turns = Math.round((previous - heading) / 360);
+
+  return heading + turns * 360;
+};

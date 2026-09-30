@@ -1,0 +1,77 @@
+export const DEG = Math.PI / 180;
+export const f2 = (n) => Number(n).toFixed(2);
+export const pt = (a, r) => ({ x: Math.sin(a * DEG) * r, y: -Math.cos(a * DEG) * r });
+
+/** Regular star polygon: n points, inner/outer ratio k, optional phase */
+export const starPath = (n, R, k, phase = 0) => {
+  const p = [];
+  for (let v = 0; v < n * 2; v++) p.push(pt(phase + (v * 180) / n, v % 2 === 0 ? R : R * k));
+  return p.map((q, i) => `${i === 0 ? 'M' : 'L'}${f2(q.x)},${f2(q.y)}`).join('') + 'Z';
+};
+
+/** Rub el Hizb: two squares at 45deg, the ratio is the construction's own */
+export const RUB = Math.cos(Math.PI / 4) / Math.cos(Math.PI / 8);
+export const rub = (R, phase = 0) => starPath(8, R, RUB, phase);
+
+/** Regular polygon */
+export const poly = (n, R, phase = 0) => {
+  const p = [];
+  for (let v = 0; v < n; v++) p.push(pt(phase + (v * 360) / n, R));
+  return p.map((q, i) => `${i === 0 ? 'M' : 'L'}${f2(q.x)},${f2(q.y)}`).join('') + 'Z';
+};
+
+/** A ring of tick marks */
+export const ticks = ({ from, to, step = 5, major = 90, mid = 30, lenMinor = 0.03, lenMid = 0.05, lenMajor = 0.075, colMinor, colMid, colMajor, w = 1 }) => {
+  let s = '';
+  for (let a = 0; a < 360; a += step) {
+    const isMajor = a % major === 0;
+    const isMid = !isMajor && a % mid === 0;
+    const len = isMajor ? lenMajor : isMid ? lenMid : lenMinor;
+    const o = pt(a, from);
+    const i = pt(a, from - to * len);
+    s += `<line x1="${f2(o.x)}" y1="${f2(o.y)}" x2="${f2(i.x)}" y2="${f2(i.y)}" stroke="${isMajor ? colMajor : isMid ? colMid : colMinor}" stroke-width="${f2(isMajor ? w * 2 : isMid ? w * 1.3 : w)}" stroke-linecap="round"/>`;
+  }
+  return s;
+};
+
+/** Arc path between two angles at a radius */
+export const arc = (a0, a1, r) => {
+  const s = pt(a0, r), e = pt(a1, r);
+  const large = Math.abs(a1 - a0) > 180 ? 1 : 0;
+  return `M${f2(s.x)},${f2(s.y)}A${f2(r)},${f2(r)} 0 ${large} 1 ${f2(e.x)},${f2(e.y)}`;
+};
+
+/** The Kaaba, drawn flat: cube, kiswah band, door. Always upright on the card. */
+export const kaaba = (x, y, size, bearing, { body, band, edge = 'none', ew = 0 }) =>
+  `<g transform="translate(${f2(x)} ${f2(y)}) rotate(${f2(-bearing)})">
+<rect x="${f2(-size / 2)}" y="${f2(-size / 2)}" width="${f2(size)}" height="${f2(size)}" rx="${f2(size * 0.07)}" fill="${body}" stroke="${edge}" stroke-width="${f2(ew)}"/>
+<rect x="${f2(-size / 2)}" y="${f2(-size * 0.17)}" width="${f2(size)}" height="${f2(size * 0.2)}" fill="${band}"/>
+<rect x="${f2(size * 0.07)}" y="${f2(size * 0.06)}" width="${f2(size * 0.17)}" height="${f2(size * 0.33)}" fill="${band}"/>
+</g>`;
+
+/** Cardinal letters, each upright regardless of the face's turn */
+export const cardinals = (R, heading, { fill, north, size, family = 'Helvetica', weight = 600, letters = ['N', 'E', 'S', 'W'] }) => {
+  let s = '';
+  const angles = [0, 90, 180, 270];
+  angles.forEach((a, i) => {
+    const at = pt(a, R);
+    s += `<g transform="rotate(${f2(heading)} ${f2(at.x)} ${f2(at.y)})"><text x="${f2(at.x)}" y="${f2(at.y)}" fill="${a === 0 ? north : fill}" font-size="${f2(size)}" text-anchor="middle" dominant-baseline="central" font-family="${family}" font-weight="${weight}">${letters[i]}</text></g>`;
+  });
+  return s;
+};
+
+/** Wrap a face in the standard card: sheet background, rotating face, fixed arrowhead on top */
+export const card = ({ size, bg, face, heading, head, label, labelColor = 'rgba(255,255,255,0.45)', defs = '' }) => {
+  const rad = size / 2;
+  const pad = 46;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size + pad + 26}" viewBox="0 0 ${size} ${size + pad + 26}">
+<defs>${defs}</defs>
+<rect width="${size}" height="${size + pad + 26}" fill="${bg}"/>
+<g transform="translate(${rad} ${rad + pad})"><g transform="rotate(${f2(-heading)})">${face}</g></g>
+${head}
+<text x="${rad}" y="${size + pad + 16}" fill="${labelColor}" font-size="12" text-anchor="middle" font-family="Helvetica">${label}</text>
+</svg>`;
+};
+
+export const R = 170;
+export const BEARING = 118.876;
