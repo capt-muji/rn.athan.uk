@@ -241,6 +241,16 @@ render the same design at several headings. **Any element that counter-rotates n
 than one heading**, which is the same lesson as the Kaaba/S collision that only appears at a southward
 bearing.
 
+**THE SESSION'S OWN WORST PROCESS FAILURE, and it happened THREE TIMES: the shared working folder was
+deleted while agents were still running in it.** Cleaning up between rounds destroyed live agents'
+source files mid-task. Every affected agent recovered by restoring its file verbatim from its own
+context and reported the deletion plainly, and one deliberately moved its verification into a private
+scratch directory rather than write files it did not own back into shared space. Nothing was lost, but
+only because the agents handled it better than the orchestration did. **The rule: scratch space shared
+by parallel agents is cleaned only when NOTHING is running in it**, and the durable fix is what this
+session eventually did anyway, which is to commit the chosen artefact into the repository rather than
+leave it in `$TMPDIR` at all.
+
 **A process failure worth recording: the working folder was deleted while agents were still running.**
 Two agents lost their files mid-task and one correctly STOPPED rather than ship work it knew was
 banned by a brief that had changed under it. Clean up scratch space only when nothing is running.
