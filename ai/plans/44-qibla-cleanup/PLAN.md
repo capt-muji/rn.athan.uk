@@ -313,8 +313,8 @@ Suite totals, measured in the scratch worktree at `4d734cfc`:
 | Point | Suites | Tests |
 | --- | --- | --- |
 | Before (baseline on `uat-2`) | 192 | 5011 |
-| After step 1 | 177 | 4784 |
-| After step 2 | 178 | 4786 |
+| After step 1 | 177 | 4786 (4784 + 2 prebuild-gated, which only a worktree skips) |
+| After step 2 | 178 | 4788 (4786 + 2) |
 
 The full step specifications are in `steps/`:
 

@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.29.169",
+  "version": "1.29.170",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -49,7 +49,6 @@
     "expo-in-app-updates": "0.12.0",
     "expo-linear-gradient": "~58.0.1",
     "expo-linking": "~58.0.7",
-    "expo-location": "~58.0.8",
     "expo-notifications": "~58.0.7",
     "expo-router": "~58.0.8",
     "expo-splash-screen": "~58.0.1",
@@ -57,7 +56,6 @@
     "expo-task-manager": "~58.0.8",
     "expo-updates": "~58.0.9",
     "expo-widgets": "58.0.5",
-    "fflate": "0.8.3",
     "jotai": "3.0.0",
     "pino": "10.3.1",
     "react": "19.3.0",
