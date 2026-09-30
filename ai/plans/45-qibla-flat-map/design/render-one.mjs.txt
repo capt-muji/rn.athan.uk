@@ -1,0 +1,38 @@
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { card } from './lib.mjs';
+
+const SIZE = 340;
+const BEARING = 118.876;
+const STATES = [
+  { name: 'off', heading: 95, on: false },
+  { name: 'on', heading: BEARING, on: true },
+];
+
+/** The old default marker, used only when a design supplies no head of its own */
+const defaultHead = (size, on) => {
+  const rad = size / 2;
+  return `<path d="M${rad - 12},8 L${rad + 12},8 L${rad},28 Z" fill="${on ? '#34d399' : 'rgba(255,255,255,0.95)'}"/>`;
+};
+
+const file = process.argv[2];
+const outDir = process.argv[3] || 'out';
+const designs = (await import(file.startsWith('.') || file.startsWith('/') ? file : `./${file}`)).default;
+
+mkdirSync(outDir, { recursive: true });
+for (const d of designs) {
+  for (const s of STATES) {
+    const built = d.build(s);
+    const svg = card({
+      size: SIZE,
+      bg: built.bg,
+      face: built.face,
+      heading: s.heading,
+      head: built.head ?? defaultHead(SIZE, s.on),
+      label: `${d.n}. ${d.title}  —  ${s.on ? 'FACING MAKKAH' : 'turned away'}`,
+      labelColor: built.labelColor || 'rgba(255,255,255,0.4)',
+      defs: built.defs || '',
+    });
+    writeFileSync(`${outDir}/d${String(d.n).padStart(2, '0')}-${s.name}.svg`, svg);
+  }
+}
+console.log(`wrote ${designs.length} design(s) to ${outDir}`);

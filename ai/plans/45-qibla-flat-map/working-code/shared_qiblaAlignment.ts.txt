@@ -1,0 +1,32 @@
+/**
+ * When the phone is on the line to Makkah, and when that earns a haptic tap.
+ *
+ * Two thresholds rather than one: a single threshold fired 49 taps in 100 samples of 0.3-degree jitter, which is the
+ * continuous buzz the owner refuses.
+ */
+
+export const ALIGNMENT_ENTER_DEGREES = 4;
+
+export const ALIGNMENT_EXIT_DEGREES = 8;
+
+/** What the platform reports with no fix, on both platforms */
+export const NO_HEADING = -1;
+
+/** The signed turn to the qibla, the short way: negative left, positive right */
+export const alignmentOffset = (heading: number, bearing: number): number => {
+  const raw = (bearing - heading) % 360;
+
+  if (raw > 180) return raw - 360;
+  if (raw <= -180) return raw + 360;
+  return raw;
+};
+
+/** Whether the user is on the line now, given whether they were */
+export const isAligned = (offset: number, wasAligned: boolean): boolean => {
+  const away = Math.abs(offset);
+
+  return wasAligned ? away <= ALIGNMENT_EXIT_DEGREES : away <= ALIGNMENT_ENTER_DEGREES;
+};
+
+/** Whether this reading earns a tap */
+export const shouldTap = (wasAligned: boolean, nowAligned: boolean): boolean => !wasAligned && nowAligned;
