@@ -27,7 +27,22 @@ unproven on hardware:
 
 ## Step P1. Settle T1: is the offset a property of the spot?
 
-**The single most valuable measurement in this row, and it needs no build.**
+**REVISED 2026-09-30 after reading the device.** The XS has **1.29.120** installed, whose
+`IOS_AXIS_CORRECTION` is **190**, the desk-tuned value. `uat-2` ships **180**. So the owner's phone is running
+the room-tuned build, which makes his "it points correctly" expected rather than surprising, and hands this
+step a falsifiable experiment with a **predicted number**. See `P5` sections 6 and 7.
+
+**The revised test, which needs no instrumented build at all:** leave the phone on its spot, install `uat-2`
+without moving it, and measure how far the dial swings. It must move by **exactly 10 degrees**, the difference
+between the two constants. If it does, the reading at that spot is repeatable and `P2`'s hypothesis holds. If
+it moves by anything else, no stored offset can work and rung 2 becomes a landmark note. **It also puts the
+defect on the owner's own desk in one install**, which is the demonstration this row has been arguing in
+prose.
+
+The time-and-place sweep below remains the fuller test and is worth running after it, because one comparison
+of two constants proves repeatability at one instant rather than across hours.
+
+**The original design, still valid as the follow-up.**
 
 The owner's own setup is the controlled experiment: the phone lies flat on a fixed surface, aimed at a known
 truth (his wall corner, which he states is the real qibla). `P5` section 5 has the design.
