@@ -17,12 +17,16 @@
 // method the device does not have passes every test and then throws in the
 // user's hand, on an alarm clock.
 const createStorage = () => {
-  const storage: Record<string, string | number | boolean> = {};
+  const storage: Record<string, string | number | boolean | ArrayBuffer> = {};
 
   return {
     getString: (key: string) => {
       const value = storage[key];
       return typeof value === 'string' ? value : undefined;
+    },
+    getBuffer: (key: string) => {
+      const value = storage[key];
+      return value instanceof ArrayBuffer ? value : undefined;
     },
     getNumber: (key: string) => {
       const value = storage[key];
@@ -32,7 +36,7 @@ const createStorage = () => {
       const value = storage[key];
       return typeof value === 'boolean' ? value : undefined;
     },
-    set: (key: string, value: string | number | boolean) => {
+    set: (key: string, value: string | number | boolean | ArrayBuffer) => {
       // The real v4 set() rejects an empty key; a mock that accepts one hides
       // a caller that would throw on device
       if (key === '') throw new Error('Cannot set a value for an empty key!');
