@@ -121,6 +121,36 @@ describe('the qibla map state', () => {
     expect(state.roads).toHaveLength(1);
   });
 
+  it('names the nearest street in the whole grid, not the nearest in the first tile that had one', async () => {
+    // Each tile is searched on its own, so a per-tile concatenation would answer with the far road
+    const northSouth = (offsetUnits: number) => [
+      { x: 2048 + offsetUnits, y: 2048 + 400 },
+      { x: 2048 + offsetUnits, y: 2048 },
+      { x: 2048 + offsetUnits, y: 2048 - 400 },
+    ];
+    const tileHolding = (name: string, offsetUnits: number) => ({
+      address: LONDON_TILE,
+      layers: {
+        roads: {
+          name: 'roads',
+          extent: 4096,
+          features: [
+            { tags: { name, kind: 'minor_road', kind_detail: 'residential' }, parts: [northSouth(offsetUnits)] },
+          ],
+        },
+      },
+    });
+    mockReadPosition.mockResolvedValue(LONDON);
+    mockTilesAround.mockResolvedValue([tileHolding('Far Road', 540), tileHolding('Near Road', 27)]);
+    const hook = mount();
+
+    await hook.result.start();
+
+    const state = hook.result.state;
+    if (state.status !== 'ready') throw new Error(`expected ready, got ${state.status}`);
+    expect(state.answer.street.name).toBe('Near Road');
+  });
+
   it('draws the tiles that have roads and skips the ones that do not', async () => {
     // A 3 by 3 grid at the coast holds tiles of open water, which carry no roads layer at all
     const tile = realLondonTile();

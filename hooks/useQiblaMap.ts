@@ -10,7 +10,13 @@ import { useCallback, useState } from 'react';
 import { readPosition } from '@/device/qibla';
 import { tilesAround } from '@/device/tiles';
 import { type Position, qiblaBearing } from '@/shared/qibla';
-import { type NearbyStreet, nearbyStreets, type QiblaFromStreet, qiblaFromStreet } from '@/shared/qiblaStreet';
+import {
+  type NearbyStreet,
+  nearbyStreets,
+  type QiblaFromStreet,
+  qiblaFromStreet,
+  rankStreets,
+} from '@/shared/qiblaStreet';
 import { distanceInMetres, positionInTile } from '@/shared/tileGeometry';
 
 /** What the screen is showing. `ready` is the only state that carries an answer. */
@@ -86,9 +92,12 @@ export const useQiblaMap = (): { state: QiblaMapState; start: () => Promise<void
     }
 
     const tiles = await tilesAround(here);
-    const streets = tiles.flatMap((tile) =>
+    // Ranked across the whole grid, never per tile: each tile is searched on its own, so concatenating leaves
+    // a street 100 m away in the first tile ahead of one 5 m away in the second
+    const found = tiles.flatMap((tile) =>
       tile.layers.roads ? nearbyStreets(tile.layers.roads, tile.address, here) : []
     );
+    const streets = rankStreets(found);
 
     if (streets.length === 0) {
       setState({ status: 'nomap' });
