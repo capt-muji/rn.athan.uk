@@ -7,10 +7,33 @@
  * qibla apps.
  */
 
-import { KAABA, normaliseHeading, qiblaBearing, shortestDelta } from '../qibla';
+import { bearingTo, KAABA, normaliseHeading, qiblaBearing, shortestDelta } from '../qibla';
 
 /** Every fixture below is quoted to 4dp, so a bound tighter than the quoting would test the quoting */
 const SURVEY_TOLERANCE = 0.05;
+
+describe('KAABA', () => {
+  // Every other fixture here is self-referential through KAABA, so only a literal can catch a coordinate that drifted.
+  it('reads the Kaaba from the surveyed footprint, not from a library', () => {
+    expect(KAABA).toEqual({ latitude: 21.4225, longitude: 39.8262 });
+  });
+});
+
+describe('bearingTo', () => {
+  it('gives the bearing between any two places, not only to the Kaaba', () => {
+    expect(bearingTo({ latitude: 0, longitude: 0 }, { latitude: 0, longitude: 10 })).toBeCloseTo(90, 6);
+  });
+
+  it('agrees with the qibla when the destination is the Kaaba', () => {
+    const london = { latitude: 51.475, longitude: -0.2015 };
+
+    expect(bearingTo(london, KAABA)).toBe(qiblaBearing(london));
+  });
+
+  it('points due north from directly south of the Kaaba', () => {
+    expect(bearingTo({ latitude: 0, longitude: 39.8262 }, KAABA)).toBeCloseTo(0, 6);
+  });
+});
 
 describe('qiblaBearing', () => {
   describe('against a published theodolite survey', () => {

@@ -15,7 +15,6 @@ import { join } from 'node:path';
  */
 const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
   ErrorBoundary: 'Expo Router renders it by file convention, so no file imports it',
-  KAABA: 'adhan keeps its own copy private, so this states it for the test that pins the two together',
   MAX_WHATS_NEW_ITEMS: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_ARCHIVE: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_TITLE_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
