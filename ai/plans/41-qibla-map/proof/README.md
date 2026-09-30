@@ -52,3 +52,27 @@ rounding costs **9.07 degrees of declination** there against 0.20 in London. See
 `ten-degree-analysis.js` works through the 10 degree test's result: the predicted 10 degree swing against
 the observed 30, the elimination of "something else changed" from the git diff, and why 20 unexplained
 degrees at a fixed spot kills a stored magnetic offset. See `../TEN-DEGREE-RESULT.md`.
+
+## The planning session's own scripts, 2026-09-30
+
+Added while the plan was written, after the owner's seven rulings. They are the measurements behind
+`../STREET-SENTENCE.md`, and they run under Node against the live archive.
+
+| File | What it establishes |
+| --- | --- |
+| `pmtiles.js` | The archive reader, with every offset read from the header rather than hardcoded, unlike `pmtiles-directory.js` above |
+| `mvt.js` | A full-geometry tile decoder, used by the scripts below |
+| `probe.js` | Four cities fetched live in 10 range requests, 873 KB, 5.0 s |
+| `streets.js` | The first street-sentence probe, which surfaced the subway defect |
+| `kinds.js` | Every `kind` and tag key across four tiles, which is where the filter comes from rather than judgement |
+| `tunnel-bug.js` | Why "Queensway Tunnel" survived a tag-only filter: `is_tunnel` is per SEGMENT, so approach ramps carry the name without the tag |
+| `landmark.js` | The selection rule, and the 180-degree ambiguity that makes the map mandatory |
+| `pointsat.js` | The POI targets a "points toward X" sentence would name |
+| `position-error.js` | **Why that sentence is rejected**: bearing error to a target is `atan(error / distance)`, so a 28 m café is 36 degrees wrong on a 20 m fix |
+| `self-consistency.js` | **The session's central finding**: the street sentence self-corrects, delivering 0.000 degrees in Manhattan while naming a different street four times out of five |
+| `coverage.js` | The 24-place hostile sweep: 20 have a usable named street within 122 m |
+| `side-check.js` | The acute-turn rule brute-forced against its definition over all 2,704 bearing pairs |
+
+`crosscheck.mjs` is kept as a failure: it tried to load the app's TypeScript modules from a temp directory
+and could not resolve them. The cross-check was done as a Jest suite instead, which is what
+`files/shared/__tests__/realTile.test.ts.txt` became.
