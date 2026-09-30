@@ -328,3 +328,19 @@ answer by nine-millionths of a degree and fixes nothing.
 Our own implementation ships anyway, and it is the right call for reasons the ruling did not name: it removes a
 dependency from the one calculation the app must never get wrong, it is 12 lines we control and can test to the
 arcsecond, and it makes the app's most important number auditable rather than borrowed.
+
+
+### The version collision fired again, exactly as this row predicted
+
+`uat-2` and a concurrent session both took **1.29.154**: this session bumped from a freshly fetched `origin`
+at 08:34, and the global-prayer-times session committed its own 1.29.154 afterwards. The merge itself was
+clean, because the two touched different files, but the version was duplicated.
+
+This is **repeat-risk 5 in this row's own register, and the second time it has fired in two days.** Session
+41's earlier note already says "fetch `origin` immediately before every version bump", and that was done; the
+gap is that a bump is only safe until the moment someone else commits, so a fetch at the START of a long
+session does not protect a commit made an hour later.
+
+**The rule that actually holds: fetch `origin` immediately before `git push`, not only before the bump, and
+re-bump if the version has been taken.** Resolved here by merging origin and moving this session's docs to
+**1.29.155**.
