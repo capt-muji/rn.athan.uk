@@ -5,9 +5,12 @@ wall... that's where the real direction is... And it currently is pointing there
 coded it. We tweaked it specifically for my room, my desk. Which is very, very, very bad. That was the whole
 purpose of this entire session."
 
-**The owner is right about the danger and half right about the cause, and the difference matters.**
+**The owner is right about the danger AND right about the cause.** This report first concluded he was half
+right, arguing from the repository; then it read his device and found the tuned value installed there.
+Section 6 carries the correction, and sections 1 to 5 are left as written because their argument about the
+shipped constant still holds.
 
-## 1. What is actually shipped
+## 1. What the REPOSITORY ships (see section 6: the owner's phone does not run this)
 
 The desk tuning was **reverted before release**. `components/sheets/screens/Qibla.tsx:49` ships
 `IOS_AXIS_CORRECTION = 180`, and the comment above it records why:
@@ -83,12 +86,66 @@ The test has two variables and needs one phone:
 time wanders, rung 2 becomes a landmark note and the ladder still stands. Either way the answer is cheap and
 it is the first thing the next session should do.
 
+## 6. CORRECTION: the owner's phone IS running the room-tuned build
+
+Read off the device rather than assumed, which section 1 of this report failed to do:
+
+```
+$ xcrun devicectl device info apps --device 00008020-0015585C22D2002E
+Athan   com.mugtaba.athan   1.29.120   1
+```
+
+**The XS has 1.29.120 installed, and `git show 0ee13ef8:components/sheets/screens/Qibla.tsx` line 44 reads
+`const IOS_AXIS_CORRECTION = 190`.** `uat-2` ships 180; the phone in the owner's hand does not.
+
+**So the owner was RIGHT and this report's section 1 was wrong.** I checked what the repository ships and
+concluded the tuned value was reverted, which is true of `uat-2` and false of his device. His words were
+🐋  "that's because we hard coded it. We tweaked it specifically for my room, my desk", and that is an exact
+description of the build he is holding. The revert landed in the repository after that build was installed.
+
+**Everything in sections 2 to 5 still stands**, because it argues about the shipped constant and the room's
+field, and neither claim depended on which build was on the phone. But the framing in section 1 is corrected:
+the danger is not hypothetical for him, it is literal.
+
+**And it hands the prototype a better experiment than the one section 5 designed.**
+
+## 7. The cleanest test of the hypothesis needs NO new code
+
+Because the two builds differ by exactly 10 degrees of constant, the phone itself becomes the instrument:
+
+| Step | What happens |
+| --- | --- |
+| 1 | Leave the phone on the same spot, same orientation, aimed at the wall corner |
+| 2 | Note where the dial points on 1.29.120 (correction 190), which the owner reports as correct |
+| 3 | Install `uat-2` (correction 180) and open the Qibla sheet **without moving the phone** |
+| 4 | Measure how far the dial moved |
+
+| Result | What it proves |
+| --- | --- |
+| **The dial moves by 10 degrees** | The correction is a pure constant offset and the sensor reading at that spot is **repeatable**. `P2`'s hypothesis holds and rung 2 is a real calibration |
+| **It moves by something else** | The reading is not stable, so no stored offset can work, and rung 2 becomes a landmark note |
+| **It does not move** | Something is wrong with the build or the install, not with the theory |
+
+**This is better than section 5's design in three ways.** It needs no instrumented build, so nothing has to be
+written or reverted. It has a **predicted number** (10 degrees) rather than a spread to interpret, which makes
+it falsifiable rather than suggestive. And it reuses the owner's existing setup exactly as it stands.
+
+**It also delivers the honest demonstration the row is about.** If the dial swings 10 degrees off his wall
+corner when the tuned constant is removed, that is the defect made visible on his own desk, with the shipped
+build, in one install. Session 40 argued this in prose and the owner accepted it; this shows it.
+
+**Prerequisite, and it is the only cost:** a local Release build of `uat-2` for the XS, which needs the
+version-sync ritual from `ai/AGENTS.md` (`npx expo prebuild -p ios --no-install`, verify the plist, then
+`npx expo run:ios --configuration Release --device 00008020-0015585C22D2002E`) and
+`DEVELOPMENT_TEAM=9V3WAU9Z54`. **The owner must perform the taps**, since local tooling drives none on a
+physical iPhone.
+
 ## What I attacked in my own conclusion
 
-- **I first wrote that the owner was wrong about the hardcoding, and that was too clean.** The tuned value is
-  not in the build, so the literal claim is inaccurate; but the owner's underlying judgement, that the
-  reading he sees is a property of his room rather than of the app, is **correct and is the more important
-  point**. Recorded as half right rather than wrong, because dismissing it would have missed the real defect.
+- **I wrote that the owner was wrong about the hardcoding, and then read the device and found he was right.**
+  Section 6 records the correction in full. The lesson is this repo's own, from session 40: **confirm which
+  build is installed before reasoning about what a phone is showing.** I argued from the repository state for
+  four sections before running one `devicectl` command that settled it, and the command took two seconds.
 - **I checked whether a 10-degree residual is worth acting on at all**, given that the prayer stays valid.
   It is, and the reason is the printed number rather than the angle: an app that prints three significant
   figures is claiming a precision it does not have, whatever the fiqh says about the sector.
