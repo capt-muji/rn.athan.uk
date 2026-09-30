@@ -35,7 +35,6 @@ const appModuleMocks = {
   '^expo-task-manager$': '<rootDir>/shared/__mocks__/expo-task-manager.ts',
   '^react-native-performance$': '<rootDir>/shared/__mocks__/react-native-performance.ts',
   '^expo-in-app-updates$': '<rootDir>/shared/__mocks__/expo-in-app-updates.ts',
-  '^expo-location$': '<rootDir>/shared/__mocks__/expo-location.ts',
 };
 
 module.exports = {

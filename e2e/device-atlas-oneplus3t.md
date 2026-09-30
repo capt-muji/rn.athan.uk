@@ -55,7 +55,6 @@ long-press sheet (learned the hard way).
 | --- | --- | --- |
 | Settings (hex-nut) button | bottom-centre, ~ (540, 1830) | dev-client builds also show a blue circle FAB (dev menu) nearby; the FAB never renders on iOS 26.5 scene builds |
 | Settings sheet: Change athan row | (540, 851) | first row of the Sound card, sheet open at its default snap |
-| Settings sheet: Qibla row | (540, 977) | second row of the Sound card (session 37) |
 
 ## Known dialogs
 
