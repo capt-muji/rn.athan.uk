@@ -6463,3 +6463,77 @@ row's founding decision, because only the magnetometer knows which way a phone p
 
 Android remains unproven: no Android phone was connected. Row 40's outstanding Android heading proof
 is not superseded, because the heading path it concerned was deleted rather than fixed.
+
+## Session 44: the qibla deleted, all of it
+
+Four sessions built a qibla screen and a device proof rejected every one: session 37's dial read 30
+degrees wrong indoors, session 40's heading was 71 degrees out, session 41's sentence asked a person to
+estimate 49 degrees by eye, and session 43's arrow pointed 90 degrees wrong and was then refused on the
+approach rather than the bug. This session removed all of it and shipped no feature.
+
+Gone: `components/qibla/`, the Qibla sheet, `hooks/useQiblaMap.ts`, `shared/qibla.ts`,
+`shared/qiblaStreet.ts`, `shared/qiblaSentence.ts`, the whole tile pipeline (`shared/pmtiles.ts`,
+`shared/vectorTile.ts`, `shared/tileCache.ts`, `shared/tileGeometry.ts`, `device/tiles.ts`), the 78 KB
+of committed tile fixtures, `device/qibla.ts`, the `COMPASS` icon and its SVG, the parked What's New
+item, the Settings row, and the `expo-location` and `fflate` dependencies. `adhan` stays: it computes
+the prayer times. 32 files deleted, 3939 lines gone, 38 added.
+
+Four owner decisions were taken by the planning session, because the owner was unavailable and asked
+for assumptions: the Settings row is deleted and session 45 re-adds it, both dependencies are
+uninstalled, `NSLocationWhenInUseUsageDescription` comes out of `app.json`, and the tile fixtures go.
+Each is reversible by session 45.
+
+THE DELIVERABLE IS A TEST, NOT A DELETION. A cleanup has no behaviour to prove, so the thing that makes
+it stick is `shared/__tests__/qiblaRemoved.test.ts`: no shipped file mentions the feature in its content
+or its filename, except that suite. Two defects in its own first draft were found by spiking it before
+it was specified, and both are the same shape, a guard that passes for the wrong reason. It matched its
+OWN source, because a suite listing forbidden words contains them, fixed by building the words from
+fragments and excluding the file by path. And widening its self-exclusion from one file to every test
+file left it passing while a planted artefact went unseen, fixed by a second test that pins the search
+to every shipped file but one. A THIRD defect was found by rereading the plan cold, and it is the
+sharpest: the guard collected only `.ts` and `.tsx` files, so the `mvt` entry in its filename list had
+nothing to match and a restored BINARY fixture would have come back unnoticed while the plan's own text
+claimed otherwise. The filename check now walks every file in a shipped directory; the content check
+still reads only source, because three letters that short match ordinary prose.
+
+THE DELETION CANNOT BE SPLIT, and this was measured rather than assumed. Two smaller cuts were built in
+a scratch worktree and both left `uat-2` red: deleting the screen alone breaks `Settings.test.tsx` on
+`Cannot find module '../Qibla'`, and deleting the screen plus the Settings row still fails
+`shared/__tests__/unusedExports.test.ts`, which reports `readPosition`, `tilesAround` and `qiblaBearing`
+the moment their last caller goes. That suite is a tripwire against half-deleted code and it is right to
+be, so the feature came out in one commit.
+
+`git revert` was rejected as the method. The feature landed across dozens of merges from 1.29.96 to
+1.29.158 interleaved with unrelated work, and `shared/types.ts`, `assets/icons/svg/index.ts` and
+`stores/ui.ts` each carry non-qibla changes made in the same commits, so reverting would have undone
+those too.
+
+Read from source rather than assumed: `expo-location`'s config plugin writes a DEFAULT
+`NSLocationWhenInUseUsageDescription` whenever it runs without one
+(`@expo/config-plugins/build/ios/Permissions.js`, `applyPermissions`), so removing the key is only
+durable because the plugin is not in this app's `plugins` array and the package is leaving. Android
+needed no change: its two `ACCESS_*_LOCATION` permissions come from the package's own manifest and go
+with it.
+
+THE NESTED-COPY TRAP FIRED, on an install that touched neither package involved. `yarn remove
+expo-location fflate` succeeded and then `widgetRuntimeLoads.test.ts` failed 2 of 3, because the install
+re-resolved the tree and put `@expo/ui@58.0.7` under `node_modules/expo-widgets/node_modules/` while the
+flat pin still read `58.0.5`. Both versions were read rather than assumed. `ai/AGENTS.md` predicts this
+of ANY install and gives the remedy, so it cost one command rather than a diagnosis. The plan named it
+as a STOP condition with the fix attached, which is why it was not one.
+
+One plan figure was wrong and the reason is benign: the plan predicted 4784 tests from a scratch
+worktree, where `audioMatrix.test.ts` skips two assertions gated on the prebuilt `android/` and `ios/`
+folders. The main checkout has both, so they run and it reports 4786. Corrected in the plan with the
+reason recorded.
+
+Suite before: 192 suites, 5011 tests. After: 178 suites, 4788 tests, 100% on all four measures. Breaks:
+4 of 4 in step 1 and 5 of 5 in step 2, every one caught. `find-unused-exports.py` reports exactly the
+five pre-existing allow-listed entries.
+
+NOT PROVEN, and named as such: that a build compiles and launches with `expo-location` gone from the
+native tree. No phone was connected and this session changed no behaviour a device could show, so there
+was nothing a device reading would add. Session 45 builds first and finds it immediately if it is wrong.
+
+The measurements that survive the owner's ruling are in `ai/plans/44-qibla-cleanup/FACTS.md`, and that
+page is the only thing session 45 may build on.
