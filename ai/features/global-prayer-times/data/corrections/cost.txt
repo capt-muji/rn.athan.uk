@@ -1,0 +1,63 @@
+## H. The measured price of the no-synthesis option, per authority
+
+Per-city-year figures are the MEASURED median over the cities this report obtained.
+Totals multiply that by the authority's own city or zone count.
+
+| authority | cities measured | zones or cities | median naive brotli B/city-yr | median exact residual 4-bit brotli B/city-yr | saving | whole authority, naive | whole authority, exact residual | Model A constants only |
+|---|---|---|---|---|---|---|---|---|
+| JAKIM Malaysia | 10 | 59 | 1421 | 322 | 4.4x | 81.9 KB | 18.6 KB | 354 B |
+| MUIS Singapore | 1 | 1 | 1421 | 300 | 4.7x | 1.4 KB | 300 B | 6 B |
+| Diyanet Turkey | 10 | 1055 | 2255 | 305 | 7.4x | 2.27 MB | 314.2 KB | 6.2 KB |
+| Umm al-Qura Saudi Arabia | 6 | 100 | 1774 | 211 | 8.4x | 173.2 KB | 20.6 KB | 600 B |
+| MORA Brunei | 1 | 1 | 1474 | 198 | 7.4x | 1.4 KB | 198 B | 6 B |
+| Egyptian GAS | 4 | 82 | 2030 | 261 | 7.8x | 162.6 KB | 20.9 KB | 492 B |
+| MARA Oman | 5 | 86 | 1791 | 279 | 6.4x | 150.4 KB | 23.4 KB | 516 B |
+| Kemenag Indonesia | 6 | 516 | 1420 | 207 | 6.9x | 715.5 KB | 104.3 KB | 3.0 KB |
+| Awqaf UAE | 8 | 60 | 1858 | 289 | 6.4x | 108.9 KB | 16.9 KB | 360 B |
+| Habous Morocco | 6 | 191 | 306 | 42 | 7.3x | 57.1 KB | 7.8 KB | 1.1 KB |
+| Qatar Calendar House (digitised) | 1 | 1 | 1857 | 237 | 7.8x | 1.8 KB | 237 B | 6 B |
+| London unified timetable | 1 | 1 | 2441 | 614 (int8, 4-bit does not fit) | 4.0x | 2.4 KB | 614 B | 6 B |
+| **all of the above** | | **2153** | | | | **3.69 MB** | **528.1 KB** | **12.6 KB** |
+
+## H2. In the app's own terms
+
+| what | brotli size | % of the 4.9 MB JS bundle | % of the 67 MB release bundle |
+|---|---|---|---|
+| every measured authority, every city, naive published times | 3.69 MB | 75.33% | 5.509% |
+| every measured authority, every city, EXACT residual | 528.1 KB | 10.53% | 0.770% |
+| every measured authority, every city, six constants only | 12.6 KB | 0.25% | 0.018% |
+| the ten capital cities measured here, exact residual | 2.6 KB | 0.05% | 0.004% |
+
+## H3. A plausible launch set, one capital per measured country
+
+| site | naive brotli | exact residual brotli | six constants |
+|---|---|---|---|
+| `MY-WLY01` | 1414 | 339 | 6 |
+| `SG-2026` | 1421 | 300 | 6 |
+| `TR-9541` | 2268 | 311 | 6 |
+| `SA-makkah` | 1703 | 211 | 6 |
+| `BN-2026` | 1474 | 198 | 6 |
+| `EG-cairo` | 2030 | 261 | 6 |
+| `OM-muscat` | 1825 | 302 | 6 |
+| `ID-jakarta` | 1428 | 202 | 6 |
+| `AE-dubai` | 1858 | 317 | 6 |
+| `MA-rabat` | 309 | 29 | 6 |
+| `QA-doha` | 1857 | 237 | 6 |
+| `UK-london-2026` | 2441 | 614 | 6 |
+| **total, 12 cities** | **20028** | **3321** | **72** |
+
+12 city-years as the exact residual: 3.2 KB, which is 0.065% of the JS bundle (measured).
+
+## H4. Scaling the exact residual
+
+Median exact-residual cost over every full-year site whose residual fits 4 bits: **282 B/city-year** (measured, n=58).
+
+| cities | exact residual, one year | % of the 4.9 MB JS bundle |
+|---|---|---|
+| 12 | 3.3 KB | 0.07% |
+| 100 | 27.5 KB | 0.55% |
+| 500 | 137.7 KB | 2.74% |
+| 1000 | 275.4 KB | 5.49% |
+| 2261 | 622.7 KB | 12.41% |
+| 5000 | 1.34 MB | 27.44% |
+| 20000 | 5.38 MB | 109.77% |

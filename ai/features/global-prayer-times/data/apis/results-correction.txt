@@ -1,0 +1,75 @@
+
+=== JAKIM WLY01 (Kuala Lumpur, Putrajaya), published year vs local adhan at Fajr 20 / Isha 18, Shafi Asr ===
+baseline coordinate used: 3.139, 101.6869 (cited, JAKIM does not publish one per zone in this response)
+| field | n | min | max | spread | mode | mode share | mean |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| fajr | 365 | 9 | 12 | 3 | 10 | 0.436 | 10.29 |
+| syuruk | 365 | -1 | 0 | 1 | -1 | 0.797 | -0.8 |
+| dhuhr | 365 | 2 | 3 | 1 | 3 | 0.767 | 2.77 |
+| asr | 365 | 1 | 4 | 3 | 2 | 0.542 | 1.76 |
+| maghrib | 365 | 1 | 3 | 2 | 2 | 0.515 | 1.94 |
+| isha | 365 | 1 | 3 | 2 | 2 | 0.518 | 1.97 |
+  fajr residual histogram: +9:64 +10:159 +11:114 +12:28
+  asr residual histogram: +1:127 +2:198 +3:39 +4:1
+
+--- byte cost, JAKIM WLY01 published year, 365 days ---
+| encoding | raw B | gzip B | brotli B | raw B/day | brotli B/day |
+| --- | --- | --- | --- | --- | --- |
+| naive JSON (HH:MM, named keys) | 43071 | 2452 | 1414 | 118.0 | 3.9 |
+| compact JSON (array of 6 HH:MM) | 18251 | 1337 | 759 | 50.0 | 2.1 |
+| minutes-since-midnight JSON | 10359 | 1212 | 743 | 28.4 | 2.0 |
+| binary uint16 x 6 x days | 4380 | 1257 | 755 | 12.0 | 2.1 |
+| residual JSON (int minutes) | 5703 | 627 | 540 | 15.6 | 1.5 |
+| residual binary int8 x 6 x days | 2190 | 507 | 436 | 6.0 | 1.2 |
+
+=== JAKIM SGR01 (Gombak, Petaling, Sepang, Hulu Langat, Hulu Selangor, Shah Alam), published year vs local adhan at Fajr 20 / Isha 18, Shafi Asr ===
+baseline coordinate used: 3.0738, 101.5183 (cited, JAKIM does not publish one per zone in this response)
+| field | n | min | max | spread | mode | mode share | mean |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| fajr | 365 | 8 | 11 | 3 | 9 | 0.449 | 9.61 |
+| syuruk | 365 | -3 | -1 | 2 | -2 | 0.855 | -2.01 |
+| dhuhr | 365 | 2 | 3 | 1 | 2 | 0.882 | 2.12 |
+| asr | 365 | 0 | 3 | 3 | 1 | 0.641 | 1.08 |
+| maghrib | 365 | 0 | 3 | 3 | 1 | 0.46 | 1.26 |
+| isha | 365 | 0 | 3 | 3 | 1 | 0.436 | 1.31 |
+  fajr residual histogram: +8:22 +9:164 +10:114 +11:65
+  asr residual histogram: +0:55 +1:234 +2:67 +3:9
+  maghrib residual histogram: +0:55 +1:168 +2:135 +3:7
+  isha residual histogram: +0:53 +1:159 +2:139 +3:14
+
+=== JAKIM JHR02 (Johor Bahru, Kota Tinggi, Mersing, Kulai), published year vs local adhan at Fajr 20 / Isha 18, Shafi Asr ===
+baseline coordinate used: 1.4655, 103.7578 (cited, JAKIM does not publish one per zone in this response)
+| field | n | min | max | spread | mode | mode share | mean |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| fajr | 365 | 9 | 11 | 2 | 10 | 0.57 | 9.8 |
+| syuruk | 365 | -1 | 1 | 2 | 0 | 0.611 | 0.38 |
+| dhuhr | 365 | 2 | 3 | 1 | 3 | 0.501 | 2.5 |
+| asr | 365 | 0 | 2 | 2 | 1 | 0.608 | 1.39 |
+| maghrib | 365 | 0 | 2 | 2 | 1 | 0.608 | 1.38 |
+| isha | 365 | 0 | 2 | 2 | 1 | 0.581 | 1.4 |
+
+=== JAKIM PLS01 (Kangar, Perlis), published year vs local adhan at Fajr 20 / Isha 18, Shafi Asr ===
+baseline coordinate used: 6.4414, 100.1986 (cited, JAKIM does not publish one per zone in this response)
+| field | n | min | max | spread | mode | mode share | mean |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| fajr | 365 | 8 | 10 | 2 | 9 | 0.819 | 8.92 |
+| syuruk | 365 | -1 | 0 | 1 | 0 | 0.786 | -0.21 |
+| dhuhr | 365 | 1 | 2 | 1 | 2 | 0.852 | 1.85 |
+| asr | 365 | 0 | 2 | 2 | 1 | 0.729 | 0.82 |
+| maghrib | 365 | 0 | 1 | 1 | 1 | 0.811 | 0.81 |
+| isha | 365 | 0 | 1 | 1 | 1 | 0.756 | 0.76 |
+
+=== JAKIM SBH01 (Sandakan, Sabah), published year vs local adhan at Fajr 20 / Isha 18, Shafi Asr ===
+baseline coordinate used: 5.8402, 118.1179 (cited, JAKIM does not publish one per zone in this response)
+| field | n | min | max | spread | mode | mode share | mean |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| fajr | 365 | 9 | 12 | 3 | 10 | 0.595 | 10.25 |
+| syuruk | 365 | 0 | 2 | 2 | 1 | 0.63 | 0.79 |
+| dhuhr | 365 | 2 | 3 | 1 | 3 | 0.838 | 2.84 |
+| asr | 365 | 0 | 3 | 3 | 2 | 0.723 | 1.81 |
+| maghrib | 365 | 1 | 3 | 2 | 2 | 0.663 | 1.75 |
+| isha | 365 | 1 | 3 | 2 | 2 | 0.619 | 1.72 |
+  fajr residual histogram: +9:39 +10:217 +11:86 +12:23
+  asr residual histogram: +0:1 +1:84 +2:264 +3:16
+
+wrote /tmp/athan-r4-trust/correction-result.json

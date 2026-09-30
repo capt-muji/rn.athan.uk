@@ -1,0 +1,90 @@
+## Part A: what each library returns at Tromso 69.6492N
+
+Times are UTC HH:MM. `Invalid Date` is a `Date` whose `getTime()` is NaN,
+which is what `new Date(NaN)` prints and what `isNaN()` detects. Rows are
+the midnight-sun solstice, the polar-night solstice, and the two equinoxes
+as a control where the sun does rise and set.
+
+### 2026-06-21 (midnight sun)
+| configuration | fajr | sunrise | dhuhr | asr | maghrib | isha |
+|---|---|---|---|---|---|---|
+| `adhan@4.4.6 Unresolved (default)` | Invalid Date | Invalid Date | 10:47 | 15:58 | Invalid Date | Invalid Date |
+| `adhan@4.4.6 AqrabBalad` | 22:46 | 23:06 | 10:47 | 15:43 | 22:26 | 22:46 |
+| `adhan@4.4.6 AqrabYaum` | 22:19 | 23:05 | 10:52 | 15:37 | 21:58 | 22:43 |
+| `praytime@3.2.0 highLats=NightMiddle (default)` | "-----" | "-----" | "10:46" | "15:58" | "-----" | "-----" |
+| `praytime@3.2.0 highLats=OneSeventh` | "-----" | "-----" | "10:46" | "15:58" | "-----" | "-----" |
+| `praytime@3.2.0 highLats=None` | "-----" | "-----" | "10:46" | "15:58" | "-----" | "-----" |
+| `praytimes@0.0.5 highLats=NightMiddle (default)` | "-----" | "-----" | "10:46" | "15:58" | "-----" | "-----" |
+| `praytimes@0.0.5 highLats=None` | "-----" | "-----" | "10:46" | "15:58" | "-----" | "-----" |
+| `@praytime/core@1.0.2 MIDDLE_OF_THE_NIGHT` | "22:46" | "22:46" | "10:46" | "15:58" | "22:46" | "22:46" |
+| `@praytime/core@1.0.2 NONE` | "22:46" | "22:46" | "10:46" | "15:58" | "22:46" | "22:46" |
+
+### 2026-12-21 (polar night)
+| configuration | fajr | sunrise | dhuhr | asr | maghrib | isha |
+|---|---|---|---|---|---|---|
+| `adhan@4.4.6 Unresolved (default)` | 05:28 | Invalid Date | 10:43 | 11:14 | Invalid Date | 15:44 |
+| `adhan@4.4.6 AqrabBalad` | 05:19 | 10:07 | 10:43 | 10:47 | 11:18 | 15:54 |
+| `adhan@4.4.6 AqrabYaum` | 04:50 | 09:57 | 10:32 | 09:52 | 11:06 | 16:00 |
+| `praytime@3.2.0 highLats=NightMiddle (default)` | "05:28" | "-----" | "10:42" | "11:14" | "-----" | "15:44" |
+| `praytime@3.2.0 highLats=OneSeventh` | "05:28" | "-----" | "10:42" | "11:14" | "-----" | "15:44" |
+| `praytime@3.2.0 highLats=None` | "05:28" | "-----" | "10:42" | "11:14" | "-----" | "15:44" |
+| `praytimes@0.0.5 highLats=NightMiddle (default)` | "05:28" | "-----" | "10:42" | "11:14" | "-----" | "15:44" |
+| `praytimes@0.0.5 highLats=None` | "05:28" | "-----" | "10:42" | "11:14" | "-----" | "15:44" |
+| `@praytime/core@1.0.2 MIDDLE_OF_THE_NIGHT` | "05:28" | "10:42" | "10:42" | "11:14" | "10:42" | "15:44" |
+| `@praytime/core@1.0.2 NONE` | "05:28" | "10:42" | "10:42" | "11:14" | "10:42" | "15:44" |
+
+### 2026-03-20 (equinox control)
+| configuration | fajr | sunrise | dhuhr | asr | maghrib | isha |
+|---|---|---|---|---|---|---|
+| `adhan@4.4.6 Unresolved (default)` | 00:46 | 04:44 | 10:53 | 13:39 | 17:02 | 20:43 |
+| `adhan@4.4.6 AqrabBalad` | 00:46 | 04:44 | 10:53 | 13:39 | 17:02 | 20:43 |
+| `adhan@4.4.6 AqrabYaum` | 00:46 | 04:44 | 10:53 | 13:39 | 17:02 | 20:43 |
+| `praytime@3.2.0 highLats=NightMiddle (default)` | "00:45" | "04:44" | "10:52" | "13:37" | "17:03" | "20:41" |
+| `praytime@3.2.0 highLats=OneSeventh` | "03:04" | "04:44" | "10:52" | "13:37" | "17:03" | "18:42" |
+| `praytime@3.2.0 highLats=None` | "00:45" | "04:44" | "10:52" | "13:37" | "17:03" | "20:41" |
+| `praytimes@0.0.5 highLats=NightMiddle (default)` | "00:45" | "04:44" | "10:52" | "13:37" | "17:02" | "20:41" |
+| `praytimes@0.0.5 highLats=None` | "00:45" | "04:44" | "10:52" | "13:37" | "17:02" | "20:41" |
+| `@praytime/core@1.0.2 MIDDLE_OF_THE_NIGHT` | "00:45" | "04:44" | "10:52" | "13:36" | "17:02" | "20:41" |
+| `@praytime/core@1.0.2 NONE` | "00:45" | "04:44" | "10:52" | "13:36" | "17:02" | "20:41" |
+
+### 2026-09-22 (equinox control)
+| configuration | fajr | sunrise | dhuhr | asr | maghrib | isha |
+|---|---|---|---|---|---|---|
+| `adhan@4.4.6 Unresolved (default)` | 00:17 | 04:24 | 10:38 | 13:21 | 16:48 | 20:26 |
+| `adhan@4.4.6 AqrabBalad` | 00:17 | 04:24 | 10:38 | 13:21 | 16:48 | 20:26 |
+| `adhan@4.4.6 AqrabYaum` | 00:17 | 04:24 | 10:38 | 13:21 | 16:48 | 20:26 |
+| `praytime@3.2.0 highLats=NightMiddle (default)` | "00:18" | "04:24" | "10:37" | "13:24" | "16:49" | "20:28" |
+| `praytime@3.2.0 highLats=OneSeventh` | "02:45" | "04:24" | "10:37" | "13:24" | "16:49" | "18:27" |
+| `praytime@3.2.0 highLats=None` | "00:18" | "04:24" | "10:37" | "13:24" | "16:49" | "20:28" |
+| `praytimes@0.0.5 highLats=NightMiddle (default)` | "00:18" | "04:24" | "10:37" | "13:24" | "16:48" | "20:28" |
+| `praytimes@0.0.5 highLats=None` | "00:18" | "04:24" | "10:37" | "13:24" | "16:48" | "20:28" |
+| `@praytime/core@1.0.2 MIDDLE_OF_THE_NIGHT` | "00:18" | "04:24" | "10:37" | "13:24" | "16:48" | "20:28" |
+| `@praytime/core@1.0.2 NONE` | "00:18" | "04:24" | "10:37" | "13:24" | "16:48" | "20:28" |
+
+### Days in 2026 with no usable value, Tromso
+| configuration | fajr | sunrise | dhuhr | asr | maghrib | isha |
+|---|---|---|---|---|---|---|
+| `adhan@4.4.6 Unresolved (default)` | 69 | 116 | 0 | 0 | 116 | 69 |
+| `adhan@4.4.6 AqrabBalad` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `adhan@4.4.6 AqrabYaum` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `praytime@3.2.0 highLats=NightMiddle (default)` | 69 | 117 | 0 | 0 | 118 | 69 |
+| `praytime@3.2.0 highLats=OneSeventh` | 69 | 117 | 0 | 0 | 118 | 69 |
+| `praytime@3.2.0 highLats=None` | 174 | 117 | 0 | 0 | 118 | 169 |
+| `praytimes@0.0.5 highLats=NightMiddle (default)` | 69 | 117 | 0 | 0 | 118 | 69 |
+| `praytimes@0.0.5 highLats=None` | 174 | 117 | 0 | 0 | 118 | 169 |
+| `@praytime/core@1.0.2 MIDDLE_OF_THE_NIGHT` | 0 | 0 | 0 | 0 | 0 | 0 |
+| `@praytime/core@1.0.2 NONE` | 0 | 0 | 0 | 0 | 0 | 0 |
+
+## Part B: performance
+
+Host: node v24.14.1, darwin arm64.
+Each figure is the best of 5 runs, to shed GC noise. "one day" is a single
+six-prayer computation at London including object construction, which is what
+an app actually does. "full year" is 365 consecutive days.
+
+| library | one day (ms) | full year (ms) | days per second | entry file (KB) | installed (KB) |
+|---|---|---|---|---|---|
+| `adhan@4.4.6` | 0.0048 | 1.8 | 208489 | 2.6 | 751 |
+| `praytime@3.2.0` | 0.0341 | 12.5 | 29309 | 11.9 | 32 |
+| `praytimes@0.0.5` | 0.0038 | 1.4 | 260043 | 22.5 | 32 |
+| `@praytime/core@1.0.2` | 0.0442 | 16.1 | 22640 | 24.0 | 164 |
