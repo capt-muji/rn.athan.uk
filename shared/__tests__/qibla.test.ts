@@ -1,5 +1,5 @@
 /**
- * The qibla bearing, and the angle maths the compass needle turns on
+ * The qibla bearing, and the angle maths behind it
  *
  * The bearing is validated three ways, because correctness here cannot be checked by inspection: against a published
  * theodolite survey, against independently published values, and against thirteen geometric invariants that separate a
@@ -7,16 +7,7 @@
  * qibla apps.
  */
 
-import {
-  dialAngleFromYaw,
-  headingFromYaw,
-  isFieldTrustworthy,
-  KAABA,
-  normaliseHeading,
-  qiblaBearing,
-  shortestDelta,
-  unwrapAngle,
-} from '../qibla';
+import { KAABA, normaliseHeading, qiblaBearing, shortestDelta } from '../qibla';
 
 /** Every fixture below is quoted to 4dp, so a bound tighter than the quoting would test the quoting */
 const SURVEY_TOLERANCE = 0.05;
@@ -168,108 +159,5 @@ describe('shortestDelta', () => {
         expect(Math.abs(shortestDelta(from, to))).toBeLessThanOrEqual(180);
       }
     }
-  });
-});
-
-describe('unwrapAngle', () => {
-  // The animated value must stay continuous, because withTiming interpolates between the numbers it is given: handing
-  // it a wrapped heading makes it travel the long way however correct that heading is.
-  it('carries the accumulated angle past a full turn rather than wrapping it', () => {
-    expect(unwrapAngle(359, 1)).toBeCloseTo(361, 6);
-  });
-
-  it('carries it below zero in the other direction', () => {
-    expect(unwrapAngle(1, 359)).toBeCloseTo(-1, 6);
-  });
-
-  it('stays continuous around repeated crossings', () => {
-    const samples = [350, 10, 350, 10, 350];
-    let current = 350;
-
-    for (const sample of samples) {
-      const next = unwrapAngle(current, sample);
-
-      expect(Math.abs(next - current)).toBeLessThanOrEqual(180);
-      current = next;
-    }
-  });
-});
-
-describe('headingFromYaw', () => {
-  // Reanimated negates the platform azimuth so its axes match iOS, so a positive turn arrives as a negative yaw
-  it('turns the sensor yaw into a compass bearing', () => {
-    expect(headingFromYaw(-Math.PI / 2, 0)).toBeCloseTo(90, 6);
-  });
-
-  it('reads a yaw of zero as north', () => {
-    expect(headingFromYaw(0, 0)).toBeCloseTo(0, 6);
-  });
-
-  // On Android the correction is the declination, which is what makes a magnetic reading point true
-  it('adds an eastward declination', () => {
-    expect(headingFromYaw(-Math.PI / 2, 1.2)).toBeCloseTo(91.2, 6);
-  });
-
-  it('subtracts a westward declination', () => {
-    expect(headingFromYaw(-Math.PI / 2, -14)).toBeCloseTo(76, 6);
-  });
-
-  // On iOS the correction is a half turn, an axis relationship that is the same on every iPhone in every country
-  it.each([
-    [61.1, 118.9],
-    [0, 180],
-    [90, 90],
-    [180, 0],
-  ])('turns an iOS yaw of %s into a bearing of %s', (yaw, expected) => {
-    expect(headingFromYaw((yaw * Math.PI) / 180, 180)).toBeCloseTo(expected, 1);
-  });
-
-  // A bearing that leaves the turn would spin the dial the long way round, so the wrap is closed at both ends
-  it('wraps a correction past north back into a bearing', () => {
-    expect(headingFromYaw(-Math.PI, 181)).toBeCloseTo(1, 6);
-  });
-
-  it('wraps a correction below north back into a bearing', () => {
-    expect(headingFromYaw(0, -1)).toBeCloseTo(359, 6);
-  });
-});
-
-describe('dialAngleFromYaw', () => {
-  it('turns a sensor sample into a dial angle', () => {
-    expect(dialAngleFromYaw(0, -Math.PI / 2, 0)).toBeCloseTo(90, 6);
-  });
-
-  // The dial interpolates between the numbers it is given, so a wrapped angle would spin it the long way round
-  it('stays continuous across the north seam', () => {
-    expect(dialAngleFromYaw(350, -(10 * Math.PI) / 180, 0)).toBeCloseTo(370, 6);
-  });
-
-  it('carries the declination through', () => {
-    expect(dialAngleFromYaw(0, -Math.PI / 2, 1.2)).toBeCloseTo(91.2, 6);
-  });
-});
-
-describe('isFieldTrustworthy', () => {
-  // Earth's field runs 22 to 67 microtesla at the surface, so a reading in that band is plausibly Earth's alone
-  it.each([
-    [49, 'London'],
-    [25, 'the weakest place on Earth'],
-    [65, 'the strongest'],
-  ])('trusts a field of %s microtesla, %s', (strength) => {
-    expect(isFieldTrustworthy(strength, 0, 0)).toBe(true);
-  });
-
-  // A laptop or a steel stud ADDS to the field, and the sum still points somewhere, so strength is what exposes it
-  it('rejects the 104 microtesla this project measured on its own desk', () => {
-    expect(isFieldTrustworthy(104.5, 0, 0)).toBe(false);
-  });
-
-  it('rejects a field too weak to be Earth, which is a shielded reading', () => {
-    expect(isFieldTrustworthy(10, 0, 0)).toBe(false);
-  });
-
-  // Strength is the length of the vector, never one axis, or a tilted phone would read as interference
-  it('measures the whole vector rather than any one axis', () => {
-    expect(isFieldTrustworthy(20, 30, 30)).toBe(true);
   });
 });

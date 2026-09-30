@@ -5,13 +5,7 @@
 import * as Location from 'expo-location';
 import { Linking } from 'react-native';
 
-import {
-  hasLocationPermission,
-  openLocationSettings,
-  readDeclination,
-  readPosition,
-  requestLocationPermission,
-} from '../qibla';
+import { hasLocationPermission, openLocationSettings, readPosition, requestLocationPermission } from '../qibla';
 
 const mockLocation = Location as jest.Mocked<typeof Location>;
 
@@ -152,43 +146,5 @@ describe('readPosition', () => {
 
     await expect(readPosition()).resolves.toBeNull();
     expect(mockLocation.getLastKnownPositionAsync).not.toHaveBeenCalled();
-  });
-});
-
-describe('readDeclination', () => {
-  beforeEach(() => jest.clearAllMocks());
-
-  // The fused sensor is magnetic-referenced, so this gap is the whole correction that makes the needle point true
-  it('reports the gap between the magnetic and true headings', async () => {
-    mockLocation.getHeadingAsync.mockResolvedValueOnce({ trueHeading: 120.2, magHeading: 119, accuracy: 3 });
-
-    await expect(readDeclination()).resolves.toBeCloseTo(1.2, 6);
-  });
-
-  // Declination is negative across the Americas, and a correction that cannot go negative would bend every bearing
-  it('reports a westward declination as negative', async () => {
-    mockLocation.getHeadingAsync.mockResolvedValueOnce({ trueHeading: 105, magHeading: 119, accuracy: 3 });
-
-    await expect(readDeclination()).resolves.toBeCloseTo(-14, 6);
-  });
-
-  // The gap is a turn, not a subtraction: 359 to 1 is two degrees east, never 358 west
-  it('takes the short way round the wrap', async () => {
-    mockLocation.getHeadingAsync.mockResolvedValueOnce({ trueHeading: 1, magHeading: 359, accuracy: 3 });
-
-    await expect(readDeclination()).resolves.toBeCloseTo(2, 6);
-  });
-
-  // -1 is the platform's "no fix yet", and treating it as a bearing would bend the needle by a whole degree
-  it('corrects nothing when the platform has no true heading', async () => {
-    mockLocation.getHeadingAsync.mockResolvedValueOnce({ trueHeading: -1, magHeading: 119, accuracy: 0 });
-
-    await expect(readDeclination()).resolves.toBe(0);
-  });
-
-  it('corrects nothing when the read throws', async () => {
-    mockLocation.getHeadingAsync.mockRejectedValueOnce(new Error('no sensor'));
-
-    await expect(readDeclination()).resolves.toBe(0);
   });
 });

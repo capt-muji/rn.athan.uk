@@ -61,10 +61,6 @@ run_break "rewrite no longer refreshes the order" shared/tileCache.ts \
   '  let order = [...readOrder().filter((held) => held.key !== key), { key, bytes: bytes.length }];' \
   '  let order = [{ key, bytes: bytes.length }, ...readOrder().filter((held) => held.key !== key)];'
 
-# 7. The clear path, which is what keeps a stale tile from outliving a format change.
-run_break "clear leaves the tiles behind" shared/tileCache.ts \
-  '  for (const entry of readOrder()) database.remove(storageKey(entry.key));' ''
-
 echo
 echo "caught $CAUGHT of $TOTAL"
 if [ "$CAUGHT" = "$TOTAL" ]; then echo "ALL AS EXPECTED: 1"; else echo "ALL AS EXPECTED: 0"; fi

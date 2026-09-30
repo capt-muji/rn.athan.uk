@@ -6406,3 +6406,38 @@ means Later and never Update, so an accidental gesture cannot start a download. 
 the risk and was checked: the app targets SDK 36, where RN disables `onBackPressed()` by default, but
 Expo writes `enableOnBackInvokedCallback="false"` unless `predictiveBackGestureEnabled` is set, which
 this project does not set, confirmed in the APK installed on the 3T.
+
+## Session 41: the qibla against a street
+
+The qibla screen no longer reads a magnetometer. It draws the streets around the user from map
+tiles and states the qibla as a turn from the nearest street they could sight along: "Stand along
+Whitehall, then turn 53 degrees to the left."
+
+Why: the shipped dial measured 30 degrees wrong indoors, and the owner ruled it out entirely rather
+than ship a wrong direction. Sessions 37 and 40 both shipped correct code whose bearing was exact and
+whose heading was not. The invariant is checkable, and it is that no `useAnimatedSensor`,
+`MAGNETIC_FIELD`, `SensorType` or `IOSReferenceFrame` appears anywhere outside tests.
+
+The street bearing is self-correcting under position error. Measured over 300 samples per cell, a
+100 m error names a different street four times out of five in Manhattan and still delivers 0.000
+degrees, because the turn is recomputed for whichever street is named. Position accuracy buys
+recognisability, not correctness. Makkah is the exception at 2.985 degrees mean, which comes from the
+near-Makkah geometry rather than the street rule.
+
+The map and the sentence ship together and neither works alone: a street is a line with two
+directions, so the sentence is 180 degrees ambiguous without the picture, and the picture is hard to
+read without a name to look for.
+
+Pointing at a landmark was measured and rejected. Bearing error to a target is
+`atan(positionError / distance)`, so a cafe 28 m away is 36 degrees wrong on an ordinary 20 m fix,
+and a target far enough to be safe is one the user cannot see. That also disposes of the mosque idea.
+
+Coverage: 20 of 24 sampled places worldwide have a usable named street within 122 m. The four that do
+not are rural and get an honest empty state.
+
+Suite after: 192 suites, 5006 tests, 100% on all four measures, and 47 of 47 breaks caught.
+
+NOT PROVEN ON DEVICE. No phone was connected during this session, so the tile fetch over the network,
+the decode cost on the SD820 and the A12, and the drawn map itself are all unproven on hardware. Step
+6 of the plan carries the protocol, and it needs the owner to hold the phone. This joins row 40's own
+outstanding Android heading proof rather than replacing it.
