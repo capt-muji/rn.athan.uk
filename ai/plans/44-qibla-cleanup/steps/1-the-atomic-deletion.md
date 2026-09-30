@@ -313,18 +313,19 @@ commit.
      "s|  \[Icon.CHECK\]: CheckIcon,|  [Icon.COMPASS]: CompassIcon,\n  [Icon.CHECK]: CheckIcon,|" \
      "npx tsc --noEmit"
 
-   # 5. The What's New archive advertises the deleted feature: the copy suite must refuse an item
-   #    stamped for no release it can show.
-   attempt "What's New advertises the deleted feature" \
-     shared/whatsNew.ts \
-     "s|^  \],|    {\n      title: 'Qibla compass',\n      body: 'Settings now points the way to the Kaaba from wherever you are',\n      version: '1.29.166',\n    },\n  ],|m" \
-     "npx jest shared/__tests__/whatsNew.test.ts --watchman=false --selectProjects=unit"
-
    echo "caught $CAUGHT of $TOTAL"
    [ "$CAUGHT" = "$TOTAL" ] && echo "ALL AS EXPECTED: 1" || echo "ALL AS EXPECTED: 0"
    ```
 
-   Expected: five `CAUGHT` lines, `caught 5 of 5`, `ALL AS EXPECTED: 1`. Afterwards
+   Expected: four `CAUGHT` lines, `caught 4 of 4`, `ALL AS EXPECTED: 1`. All four were measured in the
+   scratch worktree.
+
+   **A fifth break was written, run, and MOVED to step 2, which is worth knowing because it says what
+   this step can and cannot prove.** Putting the "Qibla compass" item back into `shared/whatsNew.ts`
+   does NOT fail `shared/__tests__/whatsNew.test.ts`: that suite checks an item's length, uniqueness and
+   version stamp, and an item stamped for a release that is not the installed one is a perfectly valid
+   ARCHIVE entry, so it passes. Nothing in the tree rejects it until step 2's guard exists, which is
+   where that break now lives. Do not add a break here that expects `whatsNew.test.ts` to catch it. Afterwards
    `git status --porcelain` lists only this step's files and the three plan files, and no `.bak44` file
    remains. A `SURVIVED` or `BREAK NOT APPLIED` line is a STOP (section 2.2, item 3).
 
