@@ -245,16 +245,17 @@ commit.
    Lines        : 100% ( 3961/3961 )
 
    Test Suites: 177 passed, 177 total
-   Tests:       4784 passed, 4784 total
+   Tests:       4786 passed, 4786 total
    ```
 
    Both `tsc` and Biome exit 0 with no diagnostic.
 
-   **Two notes on those numbers, so a difference is judged correctly.** The scratch worktree reported
-   `2 skipped, 4784 passed, 4786 total`; the two skips are `audioMatrix.test.ts`'s prebuild-gated
-   assertions, which skip only where `android/` and `ios/` are absent. The main checkout HAS those
-   folders, so it reports `4784 passed, 4784 total` with no skips. A count differing from this in any
-   other way is a STOP (section 2.2, item 4).
+   **A note on those numbers, so a difference is judged correctly.** The scratch worktree reported
+   `2 skipped, 4784 passed, 4786 total`, because `audioMatrix.test.ts` gates two assertions on the
+   prebuilt `android/` and `ios/` folders, which no worktree has. The main checkout HAS both, so those
+   two RUN and it reports `4786 passed, 4786 total` with no skips. Either shape is correct for where it
+   ran; the total of 4786 is the same. A count differing in any other way is a STOP (section 2.2,
+   item 4).
 
 7. **Breaks.** Save to `$TMPDIR/breaks-44-1.sh` and run `bash $TMPDIR/breaks-44-1.sh` from
    `/Users/muji/repos/rn.athan.uk`.
@@ -363,7 +364,7 @@ commit.
    ```
 
    Commit with `git commit -F $TMPDIR/msg-1.txt` in the background. In the log, the last `Tests:` line
-   must end `passed, 4784 total`, and four `100%` coverage lines must be present.
+   must end `passed, 4786 total`, and four `100%` coverage lines must be present.
 
 9. **Review.** Read `git show <sha>` back cold, as a stranger who did not write it, and check:
    - every path in part 3 changed, and no other file did;
@@ -395,5 +396,5 @@ commit.
     - `ls components/qibla shared/__tests__/fixtures` prints `No such file or directory` for both;
     - `grep -rniE 'qibla|kaaba|pmtiles|tilecache' app/ components/ device/ hooks/ shared/ stores/ widgets/ api/` prints nothing;
     - `grep -n 'expo-location\|fflate' package.json` prints nothing, and `grep -n 'adhan' package.json` prints one line;
-    - `npx jest --watchman=false 2>&1 | tail -3` reports 177 suites and 4784 tests passing;
+    - `npx jest --watchman=false 2>&1 | tail -3` reports 177 suites and 4786 tests passing;
     - the step is ticked in `PLAN.md` section 6 as `- [x] Step 1: DONE in <sha>`.
