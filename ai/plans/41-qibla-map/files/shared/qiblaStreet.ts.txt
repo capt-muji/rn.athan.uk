@@ -98,16 +98,27 @@ const usefulness = (street: NearbyStreet): number => {
   return nearness * 2 + reach;
 };
 
-/** One entry per street name: several segments of one road are one reference to the person reading it */
-const dedupeByName = (streets: NearbyStreet[]): NearbyStreet[] => {
+/**
+ * The streets worth naming, best first, with one entry per name
+ *
+ * Exported because the caller reads a GRID of tiles and each is searched separately: concatenating the
+ * per-tile results leaves a street 100 m away in the first tile ahead of one 5 m away in the second, which
+ * would name a road the user cannot see. Ranking the combined list is the caller's last step.
+ *
+ * @param streets Every candidate found, in any order
+ * @returns The same streets, best first, deduplicated by name
+ */
+export const rankStreets = (streets: NearbyStreet[]): NearbyStreet[] => {
   const seen = new Set<string>();
 
-  return streets.filter((street) => {
-    if (seen.has(street.name)) return false;
-    seen.add(street.name);
+  return [...streets]
+    .sort((first, second) => usefulness(second) - usefulness(first))
+    .filter((street) => {
+      if (seen.has(street.name)) return false;
+      seen.add(street.name);
 
-    return true;
-  });
+      return true;
+    });
 };
 
 /**
@@ -158,7 +169,7 @@ export const nearbyStreets = (roads: TileLayer, tile: TileAddress, here: Positio
     }
   }
 
-  return dedupeByName(found.sort((first, second) => usefulness(second) - usefulness(first)));
+  return rankStreets(found);
 };
 
 /**
