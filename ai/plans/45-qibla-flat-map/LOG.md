@@ -519,7 +519,7 @@ a DEV build on the physical XS, which is what gave hot reload on hardware that h
 
 ### The suites, and what they are worth
 
-**4883 tests, 182 suites, 100% on statements, branches, functions and lines.** Five new suites:
+**4884 tests, 182 suites, 100% on statements, branches, functions and lines.** Five new suites:
 
 | Suite | Tests | What it guards |
 | --- | --- | --- |
