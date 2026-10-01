@@ -949,6 +949,19 @@
     parse-png "^2.1.0"
     semver "^7.6.0"
 
+"@expo/image-utils@^0.12.2":
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/@expo/image-utils/-/image-utils-0.12.2.tgz#5417e7b0e24f498a6e4947c9ae70c634584e8409"
+  integrity sha512-lz4ShWkci1UYI8JhBywQM15hamJ5YLG3kz9qjNNKS7cOq4EKkzf4ZZXLEzAPpQaN1j1wWpY2MtbPIYXFLNUHsA==
+  dependencies:
+    "@expo/require-utils" "^58.0.2"
+    "@expo/spawn-async" "^1.8.0"
+    chalk "^4.0.0"
+    getenv "^2.0.0"
+    jimp-compact "0.16.1"
+    parse-png "^2.1.0"
+    semver "^7.6.0"
+
 "@expo/inline-modules@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@expo/inline-modules/-/inline-modules-0.2.0.tgz#3966f665b8b2e44fd90a1ddd8ce8adaac0705c48"
@@ -1112,6 +1125,15 @@
   version "58.0.1"
   resolved "https://registry.yarnpkg.com/@expo/require-utils/-/require-utils-58.0.1.tgz#68fed96aa94bd64a7c53f741d4e70de45deb7e8b"
   integrity sha512-/K1MYmlRVWEdIlMj9Af/hMVjQ6wZjxkthG5ymUrivmI8QC1fzfaKF55Pm2cQHNNTAtJhFBbmi87WLjoN4Vpzuw==
+  dependencies:
+    "@babel/code-frame" "^7.20.0"
+    "@babel/core" "^7.25.2"
+    "@babel/plugin-transform-modules-commonjs" "^7.24.8"
+
+"@expo/require-utils@^58.0.2":
+  version "58.0.2"
+  resolved "https://registry.yarnpkg.com/@expo/require-utils/-/require-utils-58.0.2.tgz#a2bb0689954e0d03879aa91a6c4e13197e609a3d"
+  integrity sha512-50w3h4s8eQze5L0PGfVAWGUWrT0ss9oHPa9INAIra43ScU+MP5s3b5qysvdv7mep9SgSX3+qdWIjcrOP5rNd+A==
   dependencies:
     "@babel/code-frame" "^7.20.0"
     "@babel/core" "^7.25.2"
@@ -3967,6 +3989,13 @@ expo-linking@~58.0.7:
   dependencies:
     expo-constants "~58.0.7"
     invariant "^2.2.4"
+
+expo-location@58.0.9:
+  version "58.0.9"
+  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-58.0.9.tgz#b5c0f436c67283278ef1266c3785f2a6faf4c4e9"
+  integrity sha512-5U8XKjC/HAzHGqmfbjh+8ORfwQ26DOXCFan9f47pgsFpsxiTQRJZnZwVHIZIV8P9pwDaf+KWRjv38+d80GE9sw==
+  dependencies:
+    "@expo/image-utils" "^0.12.2"
 
 expo-manifests@~58.0.0:
   version "58.0.0"

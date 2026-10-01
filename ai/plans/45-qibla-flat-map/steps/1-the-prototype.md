@@ -1,147 +1,117 @@
-# Step 1: A rough prototype the owner can hold, no tests, never committed
+# Step 1: The chosen compass as a prototype the owner can hold, no tests, never committed
 
-0. **Anchor check.** Run the section 3 counts for anchors `2-1`, `2-2`, `3-1`, `3-2`:
+**REFRESHED 2026-09-30.** The map this step originally specified was built, put on the XS, and rejected on looks
+while its FUNCTION was accepted. This step now builds the compass the owner locked in after eight design rounds.
+`design/README.md` is its specification and it is authoritative over every number below.
+
+0. **Anchor check.**
 
    ```bash
    C() { python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' "ai/plans/45-qibla-flat-map/scripts/anchors/$1.txt" "$2"; }
+   C 1-1 shared/__tests__/qiblaRemoved.test.ts
    C 2-1 app/_layout.tsx; C 2-2 components/sheets/index.ts
    C 3-1 components/sheets/screens/Settings.tsx; C 3-2 components/sheets/screens/Settings.tsx
+   C 3-3 stores/ui.ts
    ```
 
-   Expected: `1` four times. Any other count means NEEDS REPLAN.
+   Expected: `1` six times.
 
-1. **Goal:** put the picture in the owner's hands before a single test is written, because four builds have been
-   rejected on sight and three of them after a full test suite.
+1. **Goal:** the compass on the phone looks exactly like `design/out/d01-off.png` and `d01-on.png`, and taps once
+   each time the user turns onto the line.
 
-2. **Branch:** none, and **nothing is committed in this step.** Work in the working tree of `uat-2` itself.
+2. **Branch:** none, and **nothing is committed in this step.** The pre-commit hook enforces 100% coverage and
+   `unusedExports.test.ts` reports every new export as unreachable, so a prototype fails it twice over and
+   `--no-verify` is forbidden. The owner deferred the tests for this iteration by name: 🐋  "No need to do any
+   testing or unit testing or any coverage because it's just a prototype... I will do the testing physically on the
+   device."
 
-   **A prototype cannot be committed to `uat-2` at all**, and this is measured rather than assumed: the pre-commit
-   hook runs the full suite at 100% coverage plus `unusedExports.test.ts`, so untested code and unreachable exports
-   both fail it, and `--no-verify` is forbidden. Session 43 met the same wall and its prototype branch died
-   unmerged. So this step builds from the working tree, installs, gets the owner's verdict, and then **restores the
-   tree completely**. What survives is the owner's ruling, written into `LOG.md`.
-
-3. **Files.** Created in the working tree and **all deleted or restored at the end of this step**:
+3. **Files.**
 
    | File | What |
    | --- | --- |
-   | `shared/qiblaGeometry.ts`, `shared/qiblaAlignment.ts`, `shared/worldPath.ts` | New, exactly as step 2 specifies them |
-   | `device/qibla.ts`, `hooks/useQibla.ts`, `components/sheets/screens/Qibla.tsx` | New, exactly as step 2 specifies them |
-   | `shared/__tests__/qiblaRemoved.test.ts` | Deleted for the build, restored at the end |
-   | `app/_layout.tsx`, `components/sheets/index.ts`, `components/sheets/screens/index.ts`, `components/sheets/screens/Settings.tsx`, `stores/ui.ts` | Edited as step 2 specifies |
-   | `app.json` | `NSLocationWhenInUseUsageDescription` restored |
+   | `shared/qiblaGeometry.ts`, `shared/qiblaAlignment.ts`, `device/qibla.ts`, `hooks/useQibla.ts` | Restored from `working-code/`. **Proven on the owner's phone; do not redesign** |
+   | `shared/qiblaCompass.ts` | New: the face's geometry |
+   | `components/sheets/screens/QiblaCompass.tsx` | New: the drawing |
+   | `components/sheets/screens/Qibla.tsx` | New: the sheet |
+   | `shared/constants.ts` | `COLORS.qibla`, the design's two palettes |
+   | `assets/icons/svg/compass.svg`, `shared/types.ts`, `assets/icons/svg/index.ts` | The diamond icon the owner asked for by name, and `Icon.COMPASS` |
+   | `stores/ui.ts`, both barrels, `app/_layout.tsx`, `Settings.tsx`, `app.json` | The wiring |
+   | `shared/__tests__/qiblaRemoved.test.ts` | **Deleted**: it fails the moment any `qibla*` file exists |
 
-4. **Tests first (red).** None. This step writes no tests, by the owner's own structure: 🐋  "Step 3 is
-   implementing a prototype, first a quick prototype. Then the next step is to build it properly, test it properly,
-   have 100% coverage".
+4. **Tests first (red).** None, by the owner's instruction above.
 
-5. **Change.** Build exactly what step 2 specifies, in full. Read `steps/2-build-it-properly.md` completely first
-   and build every contract in it. The prototype and the tested version are the SAME code: this step is about
-   showing it, not about writing something throwaway.
+5. **Change.**
 
-   The one install command, run once:
+   ### The two behaviour changes the design demands
 
-   ```bash
-   yarn add expo-location@58.0.9
-   ```
+   1. **The window narrows to the owner's 3 degrees**: `ALIGNMENT_ENTER_DEGREES` 1.5 and `ALIGNMENT_EXIT_DEGREES` 3
+      (🐋  "one degree on the left, one degree in the middle perfectly, one degree on the right"). **The two must
+      stay different, and the RATIO is what matters**: a single threshold fired 49 taps in 100 samples of
+      0.3-degree jitter in session 43, and 28 on this session's own control. Keeping 2:1 preserves what was proven.
+   2. **The aligned state is GOLD, not green**, and the WHOLE instrument warms at once: ground, ticks, rings,
+      letters, jewel, line, arrow and the Kaaba's band.
 
-   Then confirm nothing else moved, and that the widget runtime still loads (`ai/AGENTS.md`: any `yarn add` can
-   reintroduce a nested `@expo/ui` copy):
+   ### The geometry, from `design/README.md`
 
-   ```bash
-   git diff package.json
-   npx jest shared/__tests__/widgetRuntimeLoads.test.ts --watchman=false --selectProjects=unit
-   ```
+   Every radius is a share of the face's radius and lives in one `FACE` object, so no number is invented at a call
+   site. Centre outward: the gold pivot dot `0.034`, the Rub el Hizb jewel outline `0.125` with a second at
+   `0.083`, the line and its barbed head as ONE closed path (barbs on `0.600`, notch `0.648`, tip `0.715`, barb
+   half-width `0.046`, shaft `0.0125` tapering to `0.0110`), the inner circle `0.6`, the letters `0.760` at size
+   `0.096` **always plain ink and never gold**, the ticks every 15 degrees hanging inward from `0.905` in three
+   weights, the rim disc `0.985` and one ring `0.945`, the Kaaba on the edge at `0.88` sized `0.116`, and the qibla
+   arc at `0.9815` spanning `±6.5`. **Nothing is drawn above the dial**: the owner removed the fixed marker
+   deliberately.
 
-   `git diff package.json` must show one added line, `"expo-location": "58.0.9",`, and nothing else. If it shows
-   anything else, or the suite fails, STOP and ask section 2.2's question 7.
+   ### The transform composition, which is where this has gone wrong three times
+
+   The face carries `rotate(-heading)`. Anything that must stay upright on the card counter-rotates by **`+heading`
+   about its own point**, which CANCELS the face's turn. Passing `-heading` makes it spin at double rate and
+   tumble, **and every still frame still looks correct**, so a single render cannot catch it.
+
+   ### The performance architecture, which is settled
+
+   The face is memoised and only the layer above it rotates, because `react-native-svg` re-walks its whole drawing
+   pipeline on any attribute change. The heading writes to a SHARED VALUE, never to React state, so a
+   twenty-a-second sensor stream costs no render. The two palettes are stacked and cross-faded on opacity, so
+   turning gold never redraws the face.
 
 6. **Green.** `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0. The full suite is NOT run
    and is expected to fail: this step has no tests and unreachable exports.
 
 7. **Breaks.** None. There are no tests to break.
 
-8. **Build and install on the iPhone XS.**
+8. **Prove the drawing before spending a build on it.** Render the SHIPPED component's own geometry and draw order
+   to SVG, convert with `rsvg-convert`, and LOOK at it. Three checks, each of which caught something here:
 
-   `expo-location` is back in the native tree, so a JS reload cannot carry it: the native project must be
-   regenerated. Follow `ai/AGENTS.md` section 6's ritual, in this order, because `expo run:ios` never re-syncs an
-   existing native directory:
+   - **Against the approved design**: the port must reproduce `lib.mjs`'s primitives exactly, and the generator must
+     still reproduce `design/out/*.svg` byte for byte.
+   - **Across a heading sweep**, not two states: 0, 40, 95, 160, 200, 250, 300, plus a southward bearing. A Kaaba
+     that collides with a letter appears at some bearings and not others.
+   - **Bounded numerically over every bearing**, because the eye cannot sweep 1,440 of them: the Kaaba against each
+     letter, the arrow tip against the Kaaba, the Kaaba's corner against the rim arc, and the letters against the
+     deepest tick.
+
+9. **Build and install on the iPhone XS.** `expo-location` is in the native tree, so a JS reload cannot carry it.
+   Bump the version FIRST, then prebuild, then build: `expo run:ios` never re-syncs an existing native directory.
 
    ```bash
    npx expo prebuild -p ios --no-install
    grep -A1 CFBundleShortVersionString ios/Athan/Info.plist
-   grep -A2 NSLocationWhenInUseUsageDescription ios/Athan/Info.plist
-   ```
-
-   The plist must show the `app.json` version, and must carry the location usage string. If the string is absent,
-   STOP: the prebuild did not pick up `app.json`.
-
-   Then build and install, in the background with a log (`EXECUTOR-BRIEF.md` section 3):
-
-   ```bash
+   grep -A1 NSLocationWhenInUseUsageDescription ios/Athan/Info.plist
    npx expo run:ios --configuration Release --device 00008020-0015585C22D2002E
    ```
 
-9. **The owner's verdict, which is the whole point of this step.**
+   `yarn add expo-location@58.0.9` reintroduces a nested `@expo/ui` under `expo-widgets`. This is mandatory, not a
+   contingency: `rm -rf node_modules/expo-widgets/node_modules && yarn install --frozen-lockfile`, then
+   `widgetRuntimeLoads.test.ts` must pass 3 of 3.
 
-   Ask the owner to open Settings, press Qibla, allow location, and look. Then ask him exactly this, in one message:
-
-   > The Qibla sheet is on your phone. Two questions.
-   >
-   > **1. The look.** Does the map, the arrow, the line, your dot and the Makkah mark fit the app? Anything you want
-   > changed, name it: the colours, the sizes, the thickness of the line, the mark on Makkah, the whole layout.
-   >
-   > **2. The feel.** Turn slowly on the spot. Does it tap once when the arrow reaches the line, stay quiet while you
-   > hold there, stay quiet while you are away, and tap once more when you come back? Does it ever buzz repeatedly?
-
-   Take a screenshot for your own reading, and read it yourself if your model can see images:
-
-   ```bash
-   # agent-device, which drives the physical XS (measured 2026-09-30, ai/AGENTS.md)
-   screenshot the device 00008020-0015585C22D2002E to ~/athan-device-sweep/session45/prototype.png
-   ```
-
-   The question to ask of that image, whether you read it or `vision` does: **"On this phone screenshot of a dark
-   world map, is a recognisable world map visible with identifiable continents; is there exactly one small mark on
-   Saudi Arabia, one dot elsewhere, one short line from that dot, and one curved line joining the dot to the mark;
-   and does the curved line stay on the map rather than streaking across it edge to edge?"** The owner receives no
-   screenshots.
-
-   **Write the owner's answer into `LOG.md` verbatim, marked with `🐋  `.**
-
-   - **If the owner accepts the look:** go to part 10, then step 2 builds exactly this, tested.
-   - **If the owner wants anything changed:** that is a visual change, which is his alone. Write it into `LOG.md`,
-     set the row to NEEDS REPLAN, make a docs commit as `EXECUTOR-BRIEF.md` section 4b says, and tell him a planning
-     session will fold his changes into step 2. **Never redraw it from your own judgement.**
-
-10. **Restore the tree completely.**
-
-    ```bash
-    git checkout -- app/_layout.tsx components/sheets/index.ts components/sheets/screens/index.ts \
-      components/sheets/screens/Settings.tsx stores/ui.ts \
-      app.json package.json yarn.lock shared/__tests__/qiblaRemoved.test.ts
-    rm -f shared/qiblaGeometry.ts shared/qiblaAlignment.ts shared/worldPath.ts device/qibla.ts hooks/useQibla.ts \
-      components/sheets/screens/Qibla.tsx
-    git status --porcelain
-    ```
-
-    `git status --porcelain` must list nothing but `ai/plans/README.md` and this folder's `PLAN.md` and `LOG.md`.
-
-    **`node_modules` keeps `expo-location`**, because `git checkout -- package.json yarn.lock` does not uninstall it
-    and step 2 adds it back by the same command. Nothing else in the tree references it, so the suite is unaffected.
+10. **The owner's verdict.** He opens Settings, presses Qibla, allows location, and judges two things: does it look
+    like the render, and does the haptic land where he faces Makkah. **If he rejects the look, that is a replan,
+    never a redraw from the session's own judgement.** Eight rounds of history say so.
 
 11. **Review.** None: nothing is committed.
 
 12. **Merge.** None.
 
-13. **Done when:**
-
-    ```bash
-    git status --porcelain
-    # only ai/plans/README.md and this folder's PLAN.md and LOG.md
-    grep -c '🐋' ai/plans/45-qibla-flat-map/LOG.md
-    # at least 1: the owner's verdict is recorded
-    ```
-
-    And `LOG.md` records: the build succeeded, the owner held the phone, and his answer to both questions in his own
-    words.
+13. **Done when:** the build is installed on the phone, `LOG.md` records what was built and measured, and the tree
+    holds only this feature's files plus the plan folder's own.
