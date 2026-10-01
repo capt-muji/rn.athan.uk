@@ -32,7 +32,7 @@ module.exports = (() => {
     ...resolver,
     // Metro carries no binary map tile by default, and base64 in a module would cost 33% more bytes plus an
     // unmeasured Hermes string-literal parse (facebook/hermes#1046)
-    assetExts: [...resolver.assetExts.filter((ext) => ext !== 'svg'), 'pmtiles', 'mvt'],
+    assetExts: resolver.assetExts.filter((ext) => ext !== 'svg'),
     sourceExts: [...resolver.sourceExts, 'svg'],
   };
 
