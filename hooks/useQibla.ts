@@ -19,6 +19,17 @@ export interface QiblaState {
 /** Long enough to ride out the gaps a settling magnetometer leaves, short enough that a real loss still shows */
 const HEADING_GRACE_MS = 1500;
 
+/** Past this the qibla itself has moved half a degree, so the fix and the place are worth taking again */
+const REPOSITION_METRES = 10_000;
+
+const metresBetween = (a: Coordinates, b: Coordinates): number => {
+  const rad = Math.PI / 180;
+  const east = (b.longitude - a.longitude) * rad * Math.cos(((a.latitude + b.latitude) / 2) * rad);
+  const north = (b.latitude - a.latitude) * rad;
+
+  return Math.hypot(east, north) * 6_371_000;
+};
+
 export interface QiblaReadings {
   /** The heading as a continuous angle, so the face never spins the long way round past north */
   heading: SharedValue<number>;
@@ -47,6 +58,10 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
   const activeRef = useRef(false);
   const unwatchRef = useRef<(() => void) | null>(null);
   const blankRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const bearingRef = useRef<number | null>(null);
+  const heldRef = useRef<number | null>(null);
+  const positionRef = useRef<Coordinates | null>(null);
+  const placeRef = useRef<string | null | undefined>(undefined);
 
   const clearBlank = useCallback(() => {
     if (!blankRef.current) return;
@@ -68,28 +83,16 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     unwatchRef.current = null;
   }, [aligned, clearBlank]);
 
-  const start = useCallback(async () => {
-    activeRef.current = true;
+  const processReading = useCallback(
+    (trueHeading: number) => {
+      const bearing = bearingRef.current;
 
-    const granted = await requestQiblaPermission();
-    if (!activeRef.current) return;
-    if (!granted) {
-      setState((previous) => ({ ...previous, permissionDenied: true }));
-      return;
-    }
+      // A reading with no bearing yet is held rather than dropped, so the compass appears the moment both exist
+      if (bearing === null) {
+        heldRef.current = trueHeading;
+        return;
+      }
 
-    const position: Coordinates = await readPosition();
-    if (!activeRef.current) return;
-
-    const bearing = qiblaBearing(position);
-    setState({ bearing, hasHeading: false, permissionDenied: false, place: undefined });
-
-    // Not awaited: the geocoder is a network call, and the compass must never wait on a label to start turning
-    readPlaceName(position).then((place) => {
-      if (activeRef.current) setState((previous) => ({ ...previous, place }));
-    });
-
-    const unwatch = await watchHeading(({ trueHeading }) => {
       if (trueHeading === NO_HEADING) {
         // The magnetometer drops the odd reading while it settles, and unmounting on one resizes the sheet
         alignedRef.current = false;
@@ -106,13 +109,68 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
       aligned.value = nowAligned;
       heading.value = unwrapHeading(heading.value, trueHeading);
       setState((previous) => (previous.hasHeading ? previous : { ...previous, hasHeading: true }));
-    });
+    },
+    [aligned, blank, clearBlank, heading]
+  );
 
+  const start = useCallback(async () => {
+    activeRef.current = true;
+    bearingRef.current = null;
+    heldRef.current = null;
+
+    const granted = await requestQiblaPermission();
+    if (!activeRef.current) return;
+    if (!granted) {
+      setState((previous) => ({ ...previous, permissionDenied: true }));
+      return;
+    }
+
+    // The magnetometer and the position warm up independently, so their startups run together: in series they are
+    // what the sheet's blank seconds were
+    const unwatchPromise = watchHeading(({ trueHeading }) => processReading(trueHeading));
+
+    // A position from an earlier open draws at once and the fresh read revalidates behind it, because the qibla
+    // moves under half a degree across the sort of distance a phone crosses between two opens in one place
+    const remembered = positionRef.current;
+    if (remembered) {
+      bearingRef.current = qiblaBearing(remembered);
+      setState((previous) => ({
+        ...previous,
+        bearing: bearingRef.current,
+        permissionDenied: false,
+        place: placeRef.current ?? undefined,
+      }));
+    }
+
+    const position = await readPosition();
+    const unwatch = await unwatchPromise;
     // The watch can finish setting up after the sheet closed and its cleanup ran, which would leave the magnetometer
     // armed for the life of the process
-    if (activeRef.current) unwatchRef.current = unwatch;
-    else unwatch();
-  }, [aligned, heading, blank, clearBlank]);
+    if (!activeRef.current) {
+      unwatch();
+      return;
+    }
+    unwatchRef.current = unwatch;
+
+    const moved = !remembered || metresBetween(remembered, position) > REPOSITION_METRES;
+    if (!moved) return;
+
+    positionRef.current = position;
+    placeRef.current = undefined;
+    bearingRef.current = qiblaBearing(position);
+    setState((previous) => ({ ...previous, bearing: bearingRef.current, permissionDenied: false, place: undefined }));
+
+    const held = heldRef.current;
+    heldRef.current = null;
+    if (held !== null && held !== NO_HEADING) processReading(held);
+
+    // Not awaited: the geocoder is a network call, and the compass must never wait on a label to start turning
+    readPlaceName(position).then((place) => {
+      if (!activeRef.current) return;
+      placeRef.current = place;
+      setState((previous) => ({ ...previous, place }));
+    });
+  }, [processReading]);
 
   useEffect(() => stop, [stop]);
 
