@@ -93,6 +93,9 @@ export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
 /** Reference to the settings bottom sheet modal */
 export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
 
+/** Reference to the qibla bottom sheet modal */
+export const qiblaSheetModalAtom = atom<BottomSheetModal | null>(null);
+
 // =============================================================================
 // ATOMS - Layout Measurements
 // =============================================================================
@@ -150,6 +153,12 @@ export const showSettingsSheet = () => {
   store.get(settingsSheetModalAtom)?.present();
 };
 
+/** Presents the qibla bottom sheet */
+export const showQiblaSheet = () => {
+  perfMark('sheet_qibla_present');
+  store.get(qiblaSheetModalAtom)?.present();
+};
+
 /** Dismisses the settings bottom sheet */
 export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
 
@@ -158,6 +167,9 @@ export const setBottomSheetModal = (modal: BottomSheetModal | null) => store.set
 
 /** Sets the settings bottom sheet modal reference */
 export const setSettingsSheetModal = (modal: BottomSheetModal | null) => store.set(settingsSheetModalAtom, modal);
+
+/** Sets the qibla bottom sheet modal reference */
+export const setQiblaSheetModal = (modal: BottomSheetModal | null) => store.set(qiblaSheetModalAtom, modal);
 
 /** Sets the alert bottom sheet modal reference */
 export const setAlertSheetModal = (modal: BottomSheetModal | null) => store.set(alertSheetModalAtom, modal);
