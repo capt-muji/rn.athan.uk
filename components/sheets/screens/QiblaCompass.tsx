@@ -7,9 +7,10 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import Svg, { Circle, G, Line, Path, Rect, Text } from 'react-native-svg';
+import Svg, { Circle, Defs, Line, LinearGradient, Path, Polygon, Rect, Stop, Text } from 'react-native-svg';
 
 import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
+import { FIGURE_CANVAS, kaabaShapes } from '@/shared/kaabaFigure';
 import { arcPath, CARDINALS, FACE, facePoint, qiblaLinePath, rubElHizbPath, TICKS } from '@/shared/qiblaCompass';
 
 type Palette = typeof COLORS.qibla.away;
@@ -28,34 +29,118 @@ interface QiblaCompassProps {
 const structure = (palette: Palette, alpha: number): string => `rgba(${palette.structure}, ${alpha})`;
 
 /**
- * The Kaaba, set into the dial's rim at the qibla's own bearing like a bezel marker.
+ * The Kaaba, standing on the dial's rim at the qibla's own bearing, drawn as the building rather than as a square.
  *
- * Squared to the rim rather than kept upright on the card, so its roof lies flat against the outer circle at every
- * heading. It is engraving: it turns with the plate and never animates, which is also why it costs nothing to draw.
+ * Two lit faces and a roof in cabinet projection, carrying the hizam and its inscription, the door, the Black
+ * Stone and the mizab at the heights they occupy on the building. It is engraving: it never animates, so the
+ * detail costs one record at mount and nothing per frame.
+ *
+ * Held UPRIGHT on the card rather than squared to the rim. A flat square survives being squared because a square
+ * looks the same at any rotation; a figure with a roof and a ground does not, and squaring it stands the building
+ * on its head for a third of the compass.
  */
-const Kaaba = ({ radius, bearing, palette }: { radius: number; bearing: number; palette: Palette }) => {
-  const at = facePoint(bearing, radius * FACE.kaaba);
-  const box = radius * FACE.kaabaSize;
-  const unit = radius * FACE.stroke;
+const Kaaba = memo(({ box, palette, idPrefix }: { box: number; palette: Palette; idPrefix: string }) => {
+  const shapes = kaabaShapes(box);
+  const hair = Math.max(0.3, box * 0.005);
+  const rim = Math.max(0.5, box * 0.011);
+  const id = (name: string) => `${idPrefix}-${name}`;
+  // The mizab reaches past the cube, so the canvas is wider than the box the figure is fitted to
+  const canvas = box * FIGURE_CANVAS;
 
   return (
-    <G transform={`rotate(${bearing} ${at.x} ${at.y}) translate(${at.x} ${at.y})`}>
-      <Rect
-        x={-box / 2}
-        y={-box / 2}
-        width={box}
-        height={box}
-        rx={box * 0.07}
-        fill={palette.kaaba}
-        stroke={palette.accent}
-        strokeWidth={unit * 2.2}
+    <Svg width={canvas} height={canvas} viewBox={`${-canvas / 2} ${-canvas / 2} ${canvas} ${canvas}`}>
+      <Defs>
+        <LinearGradient id={id('front')} x1='0' y1='0' x2='0.25' y2='1'>
+          <Stop offset='0' stopColor='#ffffff' stopOpacity='0.16' />
+          <Stop offset='0.6' stopColor='#ffffff' stopOpacity='0.05' />
+          <Stop offset='1' stopColor='#000000' stopOpacity='0.14' />
+        </LinearGradient>
+        <LinearGradient id={id('flank')} x1='0' y1='0' x2='1' y2='0.2'>
+          <Stop offset='0' stopColor='#000000' stopOpacity='0.36' />
+          <Stop offset='1' stopColor='#000000' stopOpacity='0.64' />
+        </LinearGradient>
+        <LinearGradient id={id('roof')} x1='0' y1='1' x2='0.4' y2='0'>
+          <Stop offset='0' stopColor='#ffffff' stopOpacity='0.24' />
+          <Stop offset='1' stopColor='#ffffff' stopOpacity='0.09' />
+        </LinearGradient>
+        <LinearGradient id={id('belt')} x1='0' y1='0' x2='0' y2='1'>
+          <Stop offset='0' stopColor='#000000' stopOpacity='0.3' />
+          <Stop offset='0.3' stopColor='#ffffff' stopOpacity='0.34' />
+          <Stop offset='0.7' stopColor='#ffffff' stopOpacity='0.02' />
+          <Stop offset='1' stopColor='#000000' stopOpacity='0.36' />
+        </LinearGradient>
+        <LinearGradient id={id('door')} x1='0' y1='0' x2='1' y2='0.5'>
+          <Stop offset='0' stopColor='#ffffff' stopOpacity='0.4' />
+          <Stop offset='0.45' stopColor='#ffffff' stopOpacity='0.03' />
+          <Stop offset='1' stopColor='#000000' stopOpacity='0.34' />
+        </LinearGradient>
+      </Defs>
+
+      {/* The mizab sits behind the cube, so the roof's own edge cuts it where it leaves the building */}
+      <Polygon points={shapes.spoutLip} fill={palette.accent} />
+      <Polygon points={shapes.spoutLip} fill='#000000' fillOpacity={0.42} />
+      <Polygon points={shapes.spout} fill={palette.accent} />
+      <Polygon points={shapes.spout} fill='#000000' fillOpacity={0.12} />
+
+      <Polygon points={shapes.flank} fill={palette.kaaba} />
+      <Polygon points={shapes.flank} fill={`url(#${id('flank')})`} />
+      <Polygon points={shapes.front} fill={palette.kaaba} />
+      <Polygon points={shapes.front} fill={`url(#${id('front')})`} />
+      <Polygon points={shapes.roof} fill={palette.kaaba} />
+      <Polygon points={shapes.roof} fill={`url(#${id('roof')})`} />
+
+      <Path d={shapes.seams} stroke='#000000' strokeOpacity={0.18} strokeWidth={hair} fill='none' />
+
+      <Polygon points={shapes.plinth.flank} fill='#ffffff' fillOpacity={0.05} />
+      <Polygon points={shapes.plinth.front} fill='#ffffff' fillOpacity={0.14} />
+
+      <Polygon points={shapes.belt.flank} fill={palette.accent} />
+      <Polygon points={shapes.belt.flank} fill='#000000' fillOpacity={0.52} />
+      <Polygon points={shapes.belt.front} fill={palette.accent} />
+      <Path
+        d={shapes.words}
+        stroke='#000000'
+        strokeOpacity={0.3}
+        strokeWidth={hair * 1.1}
+        strokeLinecap='round'
+        fill='none'
       />
-      {/* The kiswah's band and door, which is what makes a small square read as the Kaaba */}
-      <Rect x={-box / 2} y={-box * 0.17} width={box} height={box * 0.2} fill={palette.accent} />
-      <Rect x={box * 0.07} y={box * 0.06} width={box * 0.17} height={box * 0.33} fill={palette.accent} />
-    </G>
+      <Polygon points={shapes.braidTop} fill='#ffffff' fillOpacity={0.26} />
+      <Polygon points={shapes.braidBottom} fill='#000000' fillOpacity={0.22} />
+      <Polygon points={shapes.belt.front} fill={`url(#${id('belt')})`} />
+
+      <Rect
+        x={shapes.door.x}
+        y={shapes.door.y}
+        width={shapes.door.width}
+        height={shapes.door.height}
+        fill={palette.accent}
+      />
+      <Rect
+        x={shapes.doorPanel.x}
+        y={shapes.doorPanel.y}
+        width={shapes.doorPanel.width}
+        height={shapes.doorPanel.height}
+        fill='#000000'
+        fillOpacity={0.22}
+      />
+      <Rect
+        x={shapes.door.x}
+        y={shapes.door.y}
+        width={shapes.door.width}
+        height={shapes.door.height}
+        fill={`url(#${id('door')})`}
+      />
+
+      <Circle cx={shapes.stone.x} cy={shapes.stone.y} r={shapes.stone.r} fill={palette.accent} />
+      <Circle cx={shapes.stone.x} cy={shapes.stone.y} r={shapes.stone.r * 0.42} fill='#000000' fillOpacity={0.5} />
+
+      <Path d={shapes.eave} stroke={palette.accent} strokeOpacity={0.4} strokeWidth={hair} fill='none' />
+      <Path d={shapes.corner} stroke='#000000' strokeOpacity={0.32} strokeWidth={hair} fill='none' />
+      <Path d={shapes.silhouette} fill='none' stroke={palette.accent} strokeWidth={rim} strokeLinejoin='round' />
+    </Svg>
   );
-};
+});
 
 /**
  * The dial: the engraved plate that turns under a fixed arrow, in ONE palette.
@@ -65,7 +150,8 @@ const Kaaba = ({ radius, bearing, palette }: { radius: number; bearing: number; 
  * palettes are stacked and cross-faded instead, so turning gold costs one opacity and never a redraw.
  *
  * Everything here is drawn in the DIAL's own space, so it all turns together: the letters keep their bearings the
- * way a real compass card does, rather than pivoting about their own points.
+ * way a real compass card does, rather than pivoting about their own points. The Kaaba is the one exception and
+ * rides its own counter-turning layer, because a building has an up and the plate does not.
  */
 const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; palette: Palette }) => {
   const radius = size / 2;
@@ -129,8 +215,6 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
           </Text>
         );
       })}
-
-      <Kaaba radius={radius} bearing={bearing} palette={palette} />
     </Svg>
   );
 });
@@ -173,6 +257,7 @@ const Needle = memo(({ size, palette }: { size: number; palette: Palette }) => {
  * and the gold fire together off the same arithmetic, never off a measurement of the drawing.
  */
 export default function QiblaCompass({ size, bearing, heading, aligned }: QiblaCompassProps) {
+  const radius = size / 2;
   // First evaluation snaps, so the dial draws at the phone's real heading rather than spinning to it from north
   const isFirstEvaluation = useSharedValue(true);
   const turn = useDerivedValue(() => {
@@ -185,6 +270,15 @@ export default function QiblaCompass({ size, bearing, heading, aligned }: QiblaC
   });
 
   const dialStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${-turn.value}deg` }] }));
+  // The marker swings out to where the plate has carried its bearing, then stands straight back up, so the
+  // building keeps its own up at every heading. Three transforms on one layer, and never a redraw of the figure
+  const markerStyle = useAnimatedStyle(() => {
+    const swing = bearing - turn.value;
+
+    return {
+      transform: [{ rotate: `${swing}deg` }, { translateY: -radius * FACE.kaaba }, { rotate: `${-swing}deg` }],
+    };
+  });
   const goldStyle = useAnimatedStyle(() => ({
     opacity: withTiming(aligned.value ? 1 : 0, { duration: ANIMATION.duration }),
   }));
@@ -197,6 +291,15 @@ export default function QiblaCompass({ size, bearing, heading, aligned }: QiblaC
           <Dial size={size} bearing={bearing} palette={COLORS.qibla.facing} />
         </Animated.View>
       </Animated.View>
+      {/* The marker rides the plate's bearing but stands upright on the card, so it is its own layer */}
+      <View style={[StyleSheet.absoluteFill, styles.stage]} pointerEvents='none'>
+        <Animated.View testID='qibla-kaaba' style={markerStyle}>
+          <Kaaba box={radius * FACE.kaabaSize} palette={COLORS.qibla.away} idPrefix='kaaba-away' />
+          <Animated.View style={[StyleSheet.absoluteFill, goldStyle]}>
+            <Kaaba box={radius * FACE.kaabaSize} palette={COLORS.qibla.facing} idPrefix='kaaba-facing' />
+          </Animated.View>
+        </Animated.View>
+      </View>
       <View style={StyleSheet.absoluteFill} pointerEvents='none'>
         <Needle size={size} palette={COLORS.qibla.away} />
         <Animated.View style={[StyleSheet.absoluteFill, goldStyle]}>
