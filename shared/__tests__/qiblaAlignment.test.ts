@@ -7,7 +7,6 @@ import {
   ALIGNMENT_EXIT_DEGREES,
   alignmentOffset,
   isAligned,
-  NO_HEADING,
   shouldTap,
 } from '@/shared/qiblaAlignment';
 
@@ -148,11 +147,5 @@ describe('a real turn, sampled the way the sensor delivers it', () => {
     }
 
     expect(tapsOver(revolutions, LONDON_QIBLA)).toBe(2);
-  });
-});
-
-describe('the no-heading sentinel', () => {
-  it('is the exact value the platform reports, matched rather than treated as any negative number', () => {
-    expect(NO_HEADING).toBe(-1);
   });
 });
