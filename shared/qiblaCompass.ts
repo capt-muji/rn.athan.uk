@@ -47,7 +47,7 @@ export const FACE = {
    * Half the arc's PATH, shortened by the round caps' own overshoot so the DRAWN arc is exactly as wide as the
    * Kaaba: a round cap adds half a stroke beyond each end, which is what made it read longer than the cube.
    */
-  arcSpread: 6.31,
+  arcSpread: 6.523,
   /** The ticks hang inward from here */
   tick: 0.905,
   /** How far each weight of tick reaches in, as a share of the radius */
@@ -66,7 +66,7 @@ export const FACE = {
    * the size the owner judged it. A figure held upright turns UNDER the plate, so its far corner swings outward
    * at every heading rather than staying squared to the ring, and the orbit has to pay for that swing.
    */
-  kaaba: 0.836,
+  kaaba: 0.834,
   kaabaSize: 0.1941,
   /** The Rub el Hizb jewel over the pivot, and the smaller one nested inside it */
   jewel: 0.125,
