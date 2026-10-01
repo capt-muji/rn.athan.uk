@@ -6593,6 +6593,6 @@ deliberately drawn shorter than the angle it represents.
 proved. The ratio is what suppresses the buzz rather than the absolute value, and the control measures it: a
 SINGLE threshold on the same jitter samples fires 28 taps where the pair fires 1.
 
-Suite after: 4883 passed, 182 suites, 100% on all four measures. Breaks: 29 of 29 caught. One break was a no-op
+Suite after: 4884 passed and 2 skipped, 182 suites, 100% on all four measures. Breaks: 29 of 29 caught. One break was a no-op
 (`void 0` changes nothing) and printed SURVIVED against a hook that genuinely works, so it was rewritten rather
 than accepted.
