@@ -64,9 +64,12 @@ describe('the turn to the qibla', () => {
 });
 
 describe('whether the phone is on the line', () => {
+  // Derived from the thresholds rather than written as a number, so widening the window cannot silently stale it
   it('needs the tighter angle to arrive and the wider one to leave', () => {
-    expect(isAligned(2, false)).toBe(false);
-    expect(isAligned(2, true)).toBe(true);
+    const between = (ALIGNMENT_ENTER_DEGREES + ALIGNMENT_EXIT_DEGREES) / 2;
+
+    expect(isAligned(between, false)).toBe(false);
+    expect(isAligned(between, true)).toBe(true);
   });
 
   // Each threshold from both sides, at the boundary and just past it
