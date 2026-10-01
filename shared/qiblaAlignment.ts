@@ -5,16 +5,16 @@
  * continuous buzz the owner refuses.
  */
 
-/** The owner's window: one degree either side of the bearing, plus the bearing itself */
-export const ALIGNMENT_ENTER_DEGREES = 1.5;
+/** The owner's window: four degrees either side of the bearing, plus the bearing itself */
+export const ALIGNMENT_ENTER_DEGREES = 4;
 
 /**
  * Twice the enter threshold, so jitter inside the window cannot chatter across the boundary.
  *
- * The RATIO is what suppresses the buzz rather than the absolute value, so narrowing the window to the owner's
- * 3 degrees keeps session 43's proven 2:1 gap.
+ * The RATIO is what suppresses the buzz rather than the absolute value, so widening the window to the owner's
+ * four degrees keeps session 43's proven 2:1 gap.
  */
-export const ALIGNMENT_EXIT_DEGREES = 3;
+export const ALIGNMENT_EXIT_DEGREES = 8;
 
 /** What the platform reports with no fix, on both platforms */
 export const NO_HEADING = -1;
