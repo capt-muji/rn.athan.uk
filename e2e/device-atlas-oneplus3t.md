@@ -54,7 +54,7 @@ long-press sheet (learned the hard way).
 | Element | Tap point | Notes |
 | --- | --- | --- |
 | Settings (hex-nut) button | bottom-centre, ~ (540, 1830) | dev-client builds also show a blue circle FAB (dev menu) nearby; the FAB never renders on iOS 26.5 scene builds |
-| Settings sheet: Change athan row | (540, 851) | first row of the Sound card, sheet open at its default snap |
+| Settings sheet: Athan row | (540, 851) | first row of the Prayer card, sheet open at its default snap |
 
 ## Known dialogs
 

@@ -3,7 +3,7 @@ name: sounds-x5
 tags:
   - baseline
 ---
-# Sound sheet suite (OnePlus 3T pixels): open settings, then "Change athan"
+# Sound sheet suite (OnePlus 3T pixels): open settings, then the "Athan" row
 # (row 540,1138) — which closes settings and opens the sound sheet in the same
 # tick, so only ONE sheet is open from here on. Select row 2 then re-select
 # row 1 (selection restored), play/pause row 1 (play icon 930,975), dismiss
