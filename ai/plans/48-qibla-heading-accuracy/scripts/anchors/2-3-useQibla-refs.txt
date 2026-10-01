@@ -1,0 +1,2 @@
+  const bearingRef = useRef<number | null>(null);
+  const heldRef = useRef<number | null>(null);
