@@ -16,14 +16,23 @@ import {
   hijriDateEnabledAtom,
   popupHelpEnabledAtom,
   popupWhatsNewEnabledAtom,
+  qiblaSheetModalAtom,
   settingsSheetModalAtom,
   showArabicNamesAtom,
   showSecondsAtom,
   showTimePassedAtom,
 } from '@/stores/ui';
 
+import QiblaSheet from '../Qibla';
 import SettingsSheet from '../Settings';
 import SoundSheet from '../Sound';
+
+// The qibla sheet reaches the platform the moment it presents; the settings suite only needs it to exist
+jest.mock('@/device/qibla', () => ({
+  requestQiblaPermission: jest.fn(async () => true),
+  readPosition: jest.fn(async () => ({ latitude: 51.475, longitude: -0.2015 })),
+  watchHeading: jest.fn(async () => jest.fn()),
+}));
 
 // Whether a release has notes to show is an editorial choice made per release, so the suite sets it both ways rather
 // than depending on the stamp the current release happens to carry
@@ -94,6 +103,24 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
 
     expect(settingsDismiss).toHaveBeenCalledTimes(1);
     expect(athanPresent).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  it('closes itself and opens the qibla sheet with a haptic when Qibla is pressed', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(
+      <>
+        <SettingsSheet />
+        <QiblaSheet />
+      </>
+    );
+    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(qiblaPresent).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 

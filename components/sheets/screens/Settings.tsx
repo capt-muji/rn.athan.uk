@@ -19,6 +19,7 @@ import {
   setSettingsSheetModal,
   setSoundListReady,
   showArabicNamesAtom,
+  showQiblaSheet,
   showSecondsAtom,
   showSheet,
   showTimePassedAtom,
@@ -40,6 +41,12 @@ export default function BottomSheetSettings() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
     showSheet();
+  };
+
+  const handleQiblaPress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    hideSettingsSheet();
+    showQiblaSheet();
   };
 
   // Re-opens the What's New modal for the installed version - display-only,
@@ -68,9 +75,9 @@ export default function BottomSheetSettings() {
       // 32-row list on our first full open builds it invisibly, one tap
       // before it is needed (and off the launch path)
       onFirstPresent={setSoundListReady}>
-      {/* Sound Card */}
+      {/* Prayer Card */}
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Sound</Text>
+        <Text style={styles.cardTitle}>Prayer</Text>
         <Pressable
           style={styles.athanButton}
           onPress={handleAthanPress}
@@ -81,6 +88,18 @@ export default function BottomSheetSettings() {
             <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.athanLabel}>Change athan</Text>
+          <Text style={styles.chevron}>›</Text>
+        </Pressable>
+        <Pressable
+          style={styles.athanButton}
+          onPress={handleQiblaPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel='Qibla'
+          accessibilityRole='button'>
+          <View style={styles.musicButton}>
+            <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.athanLabel}>Qibla</Text>
           <Text style={styles.chevron}>›</Text>
         </Pressable>
       </View>

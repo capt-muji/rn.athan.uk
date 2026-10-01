@@ -824,6 +824,41 @@ export const COLORS = {
     background: 'rgba(126, 189, 241, 0.19)',
   },
 
+  /**
+   * The qibla compass, in the two states the owner locked in on 2026-09-30.
+   *
+   * `away` is the app's violet-tinted dark with one gold accent; `facing` warms EVERY role to gold at once, which is
+   * what tells the user they are on the line without anything to read.
+   */
+  qibla: {
+    away: {
+      /** The sheet behind the instrument, which is the app's own sheet colour */
+      sheet: '#0b183a',
+      /** The dial's ground: the alert sheet's indigo card, a shade deeper so the instrument sits ON the sheet */
+      face: 'rgba(23, 31, 72, 1)',
+      /** The inner circle the arrowhead rises from */
+      medallion: 'rgba(30, 40, 88, 1)',
+      /** Ticks, rings and the jewel, in the alert sheet's own label blue */
+      structure: '146, 184, 228',
+      /** The cardinal letters: the structure's own blue, faint enough to sit behind the instrument it labels */
+      ink: 'rgba(146, 184, 228, 0.45)',
+      /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
+      accent: 'rgba(212, 160, 58, 1)',
+      /** The Kaaba's cube: under the dial, so its outline is what carries it */
+      kaaba: 'rgba(16, 22, 56, 1)',
+    },
+    /** On the line: the whole instrument warms to gold, which is the only moment gold takes over */
+    facing: {
+      sheet: '#171233',
+      face: 'rgba(54, 44, 62, 1)',
+      medallion: 'rgba(66, 53, 72, 1)',
+      structure: '228, 192, 134',
+      ink: 'rgba(228, 192, 134, 0.5)',
+      accent: 'rgba(247, 191, 74, 1)',
+      kaaba: 'rgba(32, 25, 48, 1)',
+    },
+  },
+
   /** Color picker */
   colorPicker: {
     buttonBackground: 'rgba(79, 126, 180, 0.24)',

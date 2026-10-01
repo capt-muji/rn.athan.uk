@@ -1,5 +1,20 @@
 # Plan: Session 45. The qibla on a flat world map, the way a maps app does it
 
+> **REPLANNED 2026-09-30, and the map is gone.** The function was accepted on the iPhone XS and the LOOK was
+> rejected, so 188 designs over eight rounds ended in an Islamic compass the owner locked in: `design/README.md` is
+> its specification and `NEXT-SESSION.md` the order he set. **This plan's map sections are superseded by
+> `steps/1-the-prototype.md` as refreshed, and by `LOG.md`'s "Step 1c" record of what shipped.** Three of its
+> decisions are void, each by the owner's own later word:
+>
+> | Void decision | What replaced it |
+> | --- | --- |
+> | 2.1.2, iOS only | **Both platforms.** 🐋  "we shouldn't block this feature from Android... We just simply addressing iOS first." No `Platform` gate exists anywhere in the feature |
+> | 2.1.3 to 2.1.5, the Mercator map, its curved path and the drawn Makkah mark | The compass. No map, no projection, no world path: 🐋  "I actually want a compass, a very, very nice compass, not a map" |
+> | The 4-in, 8-out alignment window | **1.5 in, 3 out**, for the owner's 3-degree window, keeping the 2:1 ratio that is what actually suppresses the buzz |
+>
+> The behaviour below the screen (`qiblaBearing`, the hysteresis, `device/qibla.ts`, `useQibla`) is unchanged and is
+> already proven on his phone.
+
 | Field | Value |
 | --- | --- |
 | Brief | `ai/plans/45-qibla-flat-map/BRIEF.md` |
