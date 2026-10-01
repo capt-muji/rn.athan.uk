@@ -2,24 +2,22 @@ import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { type SharedValue, useSharedValue } from 'react-native-reanimated';
 
-import { readPlaceName, readPosition, requestQiblaPermission } from '@/device/qibla';
-import { readDeclination } from '@/device/qiblaSensor';
-import { alignmentOffset, isAligned, shouldTap } from '@/shared/qiblaAlignment';
+import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
+import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
 import { unwrapHeading } from '@/shared/qiblaCompass';
 import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
 
 export interface QiblaState {
-  /** Whether the sheet is open, which is what arms the sensor: it must warm up alongside the fix, not behind it */
-  active: boolean;
   bearing: number | null;
   /** Whether the phone can currently say which way it points */
   hasHeading: boolean;
   permissionDenied: boolean;
   /** Where the bearing was computed FROM: undefined while the geocoder is still looking, null when it found nothing */
   place: string | null | undefined;
-  /** The angle from magnetic to true north, which Android's sensor needs and iOS has already applied */
-  declination: number;
 }
+
+/** Long enough to ride out the gaps a settling magnetometer leaves, short enough that a real loss still shows */
+const HEADING_GRACE_MS = 1500;
 
 /** Past this the qibla itself has moved half a degree, so the fix and the place are worth taking again */
 const REPOSITION_METRES = 10_000;
@@ -41,45 +39,49 @@ export interface QiblaReadings {
 /**
  * The qibla sheet's whole behaviour: one position, a watched heading, and one tap per crossing onto the line.
  *
- * Nothing is read until `start`, because every sheet in this app mounts at launch and a sensor armed at mount would
- * run the gyroscope for the life of the process.
+ * Nothing is read until `start`, because every sheet in this app mounts at launch and a watch armed at mount would run
+ * the magnetometer for the life of the process.
  *
- * Each reading writes the angle to a shared value rather than to state, so the face turns from the sensor's own
- * stream without a React render per reading.
+ * Each reading writes the angle to a shared value rather than to state, so the face turns on the UI thread and the
+ * heading stream costs no React render.
  */
-export const useQibla = (): QiblaState &
-  QiblaReadings & {
-    start: () => Promise<void>;
-    stop: () => void;
-    /** Fed by the sensor component, which is mounted only while the compass is on screen */
-    onHeading: (heading: number) => void;
-  } => {
+export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<void>; stop: () => void } => {
   const [state, setState] = useState<QiblaState>({
-    active: false,
     bearing: null,
     hasHeading: false,
     permissionDenied: false,
     place: undefined,
-    declination: 0,
   });
   const heading = useSharedValue(0);
   const aligned = useSharedValue(false);
   const alignedRef = useRef(false);
   const activeRef = useRef(false);
+  const unwatchRef = useRef<(() => void) | null>(null);
+  const blankRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const bearingRef = useRef<number | null>(null);
   const heldRef = useRef<number | null>(null);
   const positionRef = useRef<Coordinates | null>(null);
   const placeRef = useRef<string | null | undefined>(undefined);
 
-  // The sensor unregisters by UNMOUNTING, so the state that keeps it on screen is what has to be cleared here
+  const clearBlank = useCallback(() => {
+    if (!blankRef.current) return;
+    clearTimeout(blankRef.current);
+    blankRef.current = null;
+  }, []);
+
+  const blank = useCallback(() => {
+    blankRef.current = null;
+    setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
+  }, []);
+
   const stop = useCallback(() => {
     activeRef.current = false;
     alignedRef.current = false;
     aligned.value = false;
-    bearingRef.current = null;
-    heldRef.current = null;
-    setState((previous) => ({ ...previous, active: false, bearing: null, hasHeading: false }));
-  }, [aligned]);
+    clearBlank();
+    unwatchRef.current?.();
+    unwatchRef.current = null;
+  }, [aligned, clearBlank]);
 
   const processReading = useCallback(
     (trueHeading: number) => {
@@ -91,6 +93,15 @@ export const useQibla = (): QiblaState &
         return;
       }
 
+      if (trueHeading === NO_HEADING) {
+        // The magnetometer drops the odd reading while it settles, and unmounting on one resizes the sheet
+        alignedRef.current = false;
+        aligned.value = false;
+        if (!blankRef.current) blankRef.current = setTimeout(blank, HEADING_GRACE_MS);
+        return;
+      }
+
+      clearBlank();
       const nowAligned = isAligned(alignmentOffset(trueHeading, bearing), alignedRef.current);
       // The strongest impact the platform offers, because a blind user feels this instead of reading anything
       if (shouldTap(alignedRef.current, nowAligned)) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
@@ -99,32 +110,24 @@ export const useQibla = (): QiblaState &
       heading.value = unwrapHeading(heading.value, trueHeading);
       setState((previous) => (previous.hasHeading ? previous : { ...previous, hasHeading: true }));
     },
-    [aligned, heading]
+    [aligned, blank, clearBlank, heading]
   );
 
   const start = useCallback(async () => {
     activeRef.current = true;
     bearingRef.current = null;
     heldRef.current = null;
-    // Armed before anything is awaited, so the gyroscope warms up DURING the permission and position reads rather
-    // than after them: its first readings are held until the bearing lands, and the dial then draws already turned
-    setState((previous) => ({ ...previous, active: true }));
 
     const granted = await requestQiblaPermission();
     if (!activeRef.current) return;
     if (!granted) {
-      // Disarms the sensor the optimistic start armed: with no position there is no bearing its readings could mean
-      setState((previous) => ({ ...previous, active: false, permissionDenied: true }));
+      setState((previous) => ({ ...previous, permissionDenied: true }));
       return;
     }
 
-    // Never awaited: it waits on a gated magnetometer that a still phone can leave pending for seconds, and the
-    // compass must not sit blank behind it. Until it lands the heading carries no declination, which is under a
-    // degree in London and visibly better than no dial at all
-    readDeclination().then((declination) => {
-      if (!activeRef.current) return;
-      setState((previous) => ({ ...previous, declination }));
-    });
+    // The heading watch and the position warm up independently, so their startups run together: in series they are
+    // what the sheet's blank seconds were
+    const unwatchPromise = watchHeading(({ trueHeading }) => processReading(trueHeading));
 
     // A position from an earlier open draws at once and the fresh read revalidates behind it, because the qibla
     // moves under half a degree across the sort of distance a phone crosses between two opens in one place
@@ -140,7 +143,14 @@ export const useQibla = (): QiblaState &
     }
 
     const position = await readPosition();
-    if (!activeRef.current) return;
+    const unwatch = await unwatchPromise;
+    // The watch can finish setting up after the sheet closed and its cleanup ran, which would leave the magnetometer
+    // armed for the life of the process
+    if (!activeRef.current) {
+      unwatch();
+      return;
+    }
+    unwatchRef.current = unwatch;
 
     const moved = !remembered || metresBetween(remembered, position) > REPOSITION_METRES;
     if (!moved) return;
@@ -152,7 +162,7 @@ export const useQibla = (): QiblaState &
 
     const held = heldRef.current;
     heldRef.current = null;
-    if (held !== null) processReading(held);
+    if (held !== null && held !== NO_HEADING) processReading(held);
 
     // Not awaited: the geocoder is a network call, and the compass must never wait on a label to start turning
     readPlaceName(position).then((place) => {
@@ -164,5 +174,5 @@ export const useQibla = (): QiblaState &
 
   useEffect(() => stop, [stop]);
 
-  return { ...state, heading, aligned, start, stop, onHeading: processReading };
+  return { ...state, heading, aligned, start, stop };
 };

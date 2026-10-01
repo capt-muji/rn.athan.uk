@@ -4,7 +4,7 @@
 
 import * as Location from 'expo-location';
 
-import { readPlaceName, readPosition, requestQiblaPermission } from '@/device/qibla';
+import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
 
 // The platform this file exists to wrap, so the suite owns what it answers
 jest.mock('expo-location', () => ({
@@ -14,6 +14,7 @@ jest.mock('expo-location', () => ({
   getLastKnownPositionAsync: jest.fn(),
   getCurrentPositionAsync: jest.fn(),
   reverseGeocodeAsync: jest.fn(),
+  watchHeadingAsync: jest.fn(),
 }));
 
 const mockLocation = Location as jest.Mocked<typeof Location>;
@@ -138,5 +139,54 @@ describe('naming the position', () => {
     ]);
 
     await expect(readPlaceName(london)).resolves.toBe('Makkah, Saudi Arabia');
+  });
+});
+
+describe('watching the heading', () => {
+  it('reports each heading the platform gives', async () => {
+    const onReading = jest.fn();
+    mockLocation.watchHeadingAsync.mockImplementation(async (callback) => {
+      callback({ trueHeading: 42, magHeading: 40, accuracy: 3 });
+      return { remove: jest.fn() } as unknown as Location.LocationSubscription;
+    });
+
+    await watchHeading(onReading);
+
+    expect(onReading).toHaveBeenCalledWith({ trueHeading: 42 });
+  });
+
+  // Core Location's own fused value: a correction of our own is what shipped a reading 90 degrees out
+  it('passes trueHeading on untouched, adding no axis, frame or declination term', async () => {
+    const onReading = jest.fn();
+    mockLocation.watchHeadingAsync.mockImplementation(async (callback) => {
+      callback({ trueHeading: 271.5, magHeading: 268, accuracy: 1 });
+      return { remove: jest.fn() } as unknown as Location.LocationSubscription;
+    });
+
+    await watchHeading(onReading);
+
+    expect(onReading).toHaveBeenCalledWith({ trueHeading: 271.5 });
+  });
+
+  it('passes the no-fix sentinel through rather than hiding it, so the screen can go quiet', async () => {
+    const onReading = jest.fn();
+    mockLocation.watchHeadingAsync.mockImplementation(async (callback) => {
+      callback({ trueHeading: -1, magHeading: -1, accuracy: 0 });
+      return { remove: jest.fn() } as unknown as Location.LocationSubscription;
+    });
+
+    await watchHeading(onReading);
+
+    expect(onReading).toHaveBeenCalledWith({ trueHeading: -1 });
+  });
+
+  it('stops the watch when its returned function is called, which is what disarms the magnetometer', async () => {
+    const remove = jest.fn();
+    mockLocation.watchHeadingAsync.mockResolvedValue({ remove } as unknown as Location.LocationSubscription);
+
+    const unwatch = await watchHeading(jest.fn());
+    unwatch();
+
+    expect(remove).toHaveBeenCalled();
   });
 });
