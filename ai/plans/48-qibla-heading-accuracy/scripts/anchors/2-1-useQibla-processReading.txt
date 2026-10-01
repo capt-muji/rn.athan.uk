@@ -1,0 +1,8 @@
+      clearBlank();
+      const nowAligned = isAligned(alignmentOffset(trueHeading, bearing), alignedRef.current);
+      // The strongest impact the platform offers, because a blind user feels this instead of reading anything
+      if (shouldTap(alignedRef.current, nowAligned)) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+      alignedRef.current = nowAligned;
+      aligned.value = nowAligned;
+      heading.value = unwrapHeading(heading.value, trueHeading);
+      setState((previous) => (previous.hasHeading ? previous : { ...previous, hasHeading: true }));

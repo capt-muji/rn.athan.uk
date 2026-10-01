@@ -189,7 +189,60 @@ convergence is under any useful threshold, so the gate opens at full error. The 
 the indoor jittery case went from **22.19** to **3.52**. A gate that samples a window without checking the
 window's own duration is measuring nothing.
 
-## 7. What this leaves
+## 7. THREE DEFECTS THE BREAK SCRIPT FOUND IN THIS PLAN'S OWN TESTS
+
+The plan was written, the code was built, the suite went green at 50 of 50 and the full validation passed at
+100% on all four measures. **Then the break script was run, and it caught three defects**, which is exactly
+the case `PLANNER-BRIEF.md` requires it for.
+
+### Defect 1, and it is the serious one: DELETING THE GATE ENTIRELY passed all 47 tests
+
+The first break removes `if (!hasSettled(window, nowMs)) return;` and the suite stayed green.
+
+**The cause is subtle and worth keeping.** Fixing the 18 tests that depended on one reading drawing the dial
+meant teaching the shared `reportHeadings` helper to report a SETTLED window. Once it did, **every test in
+the suite reports a settled window**, so no test could tell a gated compass from an ungated one. The suite
+had been made to accommodate the gate and in doing so lost the ability to detect it.
+
+The fix is three tests that drive the gate's refusal directly rather than through the helper:
+
+| Test | Catches |
+| --- | --- |
+| `draws nothing on a single reading, however good it looks` | The gate being removed or the window check being weakened |
+| `draws nothing while the stream is still converging, even though it is smooth` | A spread gate being substituted for the drift gate |
+| `fires no haptic on a reading it refuses to draw` | The gate being moved below the haptic |
+
+**The durable lesson:** when a change makes existing tests fail and the fix is to a shared HELPER, the helper
+may now satisfy the new precondition everywhere, and the suite stops guarding it. Add a test that exercises
+the refusal path directly, and prove it by deleting the feature.
+
+### Defect 2: a break whose search text spanned a comment never applied
+
+`BREAK NOT APPLIED` on the stale-half-window break. Two causes, both worth knowing:
+
+- The search text had to reproduce the comment line above it **exactly**, which a hand-written break will not
+  do reliably.
+- `perl -pi` with `\Q...\E` cannot match a string holding an embedded newline, because it processes one line
+  at a time. Python's `str.count` found the same text once, which is how the mismatch was diagnosed: the
+  text was present and the tool could not match it.
+
+The fix slurps the file with `perl -0pi` and targets the LAST of the two identical `samplesRef.current = []`
+lines by pattern rather than by literal. **This is session 41's lesson a second time** (a break whose search
+text a formatter can move stops testing anything), with a new cause: a break whose search text spans a
+comment is just as fragile.
+
+### Defect 3: the gate below the haptic survived
+
+The sixth break moves the gate below the haptic, which would let a blind user feel a tap on a reading the
+screen refuses to draw. It survived until `fires no haptic on a reading it refuses to draw` existed.
+
+**That is the owner's accessibility requirement**, 🐋  "this is going to be useful for blind people", and
+nothing in the suite was checking it.
+
+**After all three fixes: 6 of 6 breaks caught, 50 of 50 tests passing, and the full suite at 184 suites,
+4947 tests, 100% on all four measures.**
+
+## 8. What this leaves
 
 | Idea | Verdict |
 | --- | --- |
