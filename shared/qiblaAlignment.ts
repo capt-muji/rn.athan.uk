@@ -16,9 +16,6 @@ export const ALIGNMENT_ENTER_DEGREES = 1.5;
  */
 export const ALIGNMENT_EXIT_DEGREES = 3;
 
-/** What the platform reports with no fix, on both platforms */
-export const NO_HEADING = -1;
-
 /** The signed turn to the qibla, the short way: negative left, positive right */
 export const alignmentOffset = (heading: number, bearing: number): number => {
   const raw = (bearing - heading) % 360;

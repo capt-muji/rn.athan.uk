@@ -9,16 +9,37 @@ import { setQiblaSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
 import QiblaCompass from './QiblaCompass';
+import QiblaHeadingSource from './QiblaHeadingSource';
 
-// Yoga never collapses margins, so the header's own gap stacks above the compass and must be carried below it too
-const HEADER_GAP = SPACING.xxxl;
-const BREATHING_ROOM = SPACING.header;
+const SPACE_ABOVE_DIAL = SPACING.xxl;
+const SPACE_BELOW_DIAL = SPACING.xxxl;
+
+/**
+ * The most of the screen's height the dial may take.
+ *
+ * Sizing it on width alone overflowed the sheet's own 85% cap on a short screen, and the sheet clamps rather
+ * than scrolls, so the overflow was taken off the BOTTOM: the place name ended up against the screen edge
+ * with its padding cut away. Bounding by height too keeps the whole column inside the cap.
+ */
+const DIAL_HEIGHT_SHARE = 0.45;
 
 export default function BottomSheetQibla() {
-  const { width } = useWindowDimensions();
-  const { bearing, hasHeading, permissionDenied, place, heading, aligned, start, stop } = useQibla();
+  const { width, height } = useWindowDimensions();
+  const {
+    active,
+    bearing,
+    hasHeading,
+    permissionDenied,
+    place,
+    declination,
+    heading,
+    aligned,
+    start,
+    stop,
+    onHeading,
+  } = useQibla();
 
-  const size = Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2;
+  const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
   const showsCompass = bearing !== null && hasHeading;
 
   return (
@@ -37,9 +58,11 @@ export default function BottomSheetQibla() {
           reserving nothing would open it at a sliver and then resize under the user once the fix arrives */}
       <View
         testID='qibla-stage'
-        style={[styles.stage, { height: size, marginTop: BREATHING_ROOM, marginBottom: HEADER_GAP + BREATHING_ROOM }]}>
+        style={[styles.stage, { height: size, marginTop: SPACE_ABOVE_DIAL, marginBottom: SPACE_BELOW_DIAL }]}>
         {/* A dial drawn without a live heading would hold its last angle and quietly point the wrong way, which is
             the one thing this feature must never do */}
+        {/* Mounted only while the sheet is open, so the gyroscope is idle every other moment of the process's life */}
+        {active && <QiblaHeadingSource declination={declination} onHeading={onHeading} />}
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
         {permissionDenied && <Text style={styles.message}>The qibla needs your location.</Text>}
       </View>
