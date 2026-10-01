@@ -9,7 +9,6 @@ import { setQiblaSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
 import QiblaCompass from './QiblaCompass';
-import QiblaHeadingSource from './QiblaHeadingSource';
 
 const SPACE_ABOVE_DIAL = SPACING.xxl;
 const SPACE_BELOW_DIAL = SPACING.xxxl;
@@ -25,19 +24,7 @@ const DIAL_HEIGHT_SHARE = 0.45;
 
 export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
-  const {
-    active,
-    bearing,
-    hasHeading,
-    permissionDenied,
-    place,
-    declination,
-    heading,
-    aligned,
-    start,
-    stop,
-    onHeading,
-  } = useQibla();
+  const { bearing, hasHeading, permissionDenied, place, heading, aligned, start, stop } = useQibla();
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
   const showsCompass = bearing !== null && hasHeading;
@@ -61,8 +48,6 @@ export default function BottomSheetQibla() {
         style={[styles.stage, { height: size, marginTop: SPACE_ABOVE_DIAL, marginBottom: SPACE_BELOW_DIAL }]}>
         {/* A dial drawn without a live heading would hold its last angle and quietly point the wrong way, which is
             the one thing this feature must never do */}
-        {/* Mounted only while the sheet is open, so the gyroscope is idle every other moment of the process's life */}
-        {active && <QiblaHeadingSource declination={declination} onHeading={onHeading} />}
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
         {permissionDenied && <Text style={styles.message}>The qibla needs your location.</Text>}
       </View>

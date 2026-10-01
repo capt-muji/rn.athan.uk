@@ -3,6 +3,11 @@ import * as Location from 'expo-location';
 import type { Coordinates } from '@/shared/qiblaGeometry';
 import { type PlaceParts, placeName } from '@/shared/qiblaPlace';
 
+/** What the screen needs from a heading reading */
+export interface HeadingReading {
+  trueHeading: number;
+}
+
 /**
  * One foreground prompt carries both the position and the heading, so the app asks for nothing more.
  *
@@ -47,4 +52,21 @@ export const readPlaceName = async (position: Coordinates): Promise<string | nul
   } catch {
     return null;
   }
+};
+
+/**
+ * Starts the heading watch and returns the function that stops it.
+ *
+ * `trueHeading` is the platform's OWN fused, declination-corrected bearing, passed on untouched: it is the value
+ * Google Maps and Apple Maps draw, measured against both on two handsets.
+ *
+ * It replaces Reanimated's `SensorType.ROTATION`, which was adopted for smoothness and proved inaccurate by an amount
+ * that VARIES with orientation, 5 degrees in one attitude and 34 in another, so no constant could correct it. This
+ * reading steps rather than glides, because the platform gates it at 2 degrees and 50ms, and that is the accepted
+ * cost of a bearing that is right.
+ */
+export const watchHeading = async (onReading: (reading: HeadingReading) => void): Promise<() => void> => {
+  const subscription = await Location.watchHeadingAsync(({ trueHeading }) => onReading({ trueHeading }));
+
+  return () => subscription.remove();
 };
