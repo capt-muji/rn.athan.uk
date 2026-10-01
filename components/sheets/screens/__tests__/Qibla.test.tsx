@@ -501,7 +501,9 @@ describe('closing the sheet', () => {
       mockState.releasePosition?.();
     });
 
-    expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
+    // The watch starts alongside the position read now, so the assertion is that it was torn down again, not that
+    // it never started
+    expect(mockUnwatch).toHaveBeenCalled();
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
@@ -528,5 +530,99 @@ describe('closing the sheet', () => {
     await act(async () => {});
 
     expect(qiblaDevice.watchHeading).toHaveBeenCalledTimes(2);
+  });
+
+  it('keeps the watch from an open that outlives the sheet, and tears it down', async () => {
+    mockState.releaseWatch = () => undefined;
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await act(async () => {
+      mockState.releaseWatch?.();
+    });
+
+    expect(mockUnwatch).toHaveBeenCalled();
+  });
+});
+
+describe('reopening the sheet in the same place', () => {
+  it('draws at once from the remembered position rather than going blank for a fresh read', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    // The next open's position read hangs, and the compass must still appear from what was remembered
+    mockState.releasePosition = () => undefined;
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportHeadings(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  it('remembers the place with the position, so the label does not blank between opens', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    mockState.releasePosition = () => undefined;
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+  });
+
+  // A remembered null is different from a forgotten one: the geocoder already answered and need not be asked again
+  it('reopens with a blank label when the geocoder had found nothing, without asking again', async () => {
+    mockState.place = null;
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    mockState.releasePosition = () => undefined;
+    qiblaDevice.readPlaceName.mockClear();
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    expect(qiblaDevice.readPlaceName).not.toHaveBeenCalled();
+  });
+
+  // The read still happens behind the remembered value, and a real move must be honoured when it lands
+  it('takes the fresh position once it arrives, recomputing the bearing', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    mockState.position = { latitude: 41.0082, longitude: 28.9784 }; // Istanbul, 2500 km away
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    expect(qiblaDevice.readPosition).toHaveBeenCalledTimes(2);
+    await reportHeadings(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+});
+
+describe('a heading that arrives before the position', () => {
+  it('is held and applied the moment the position lands, rather than dropped', async () => {
+    mockState.releasePosition = () => undefined;
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    // A reading can arrive while the fix is still being read, and the old code never saw it
+    await act(async () => {
+      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
+    });
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+
+    await act(async () => {
+      mockState.releasePosition?.();
+    });
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
 });
