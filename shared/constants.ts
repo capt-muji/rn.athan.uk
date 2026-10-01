@@ -832,8 +832,6 @@ export const COLORS = {
    */
   qibla: {
     away: {
-      /** The sheet behind the instrument, which is the app's own sheet colour */
-      sheet: '#0b183a',
       /** The dial's ground: the alert sheet's indigo card, a shade deeper so the instrument sits ON the sheet */
       face: 'rgba(23, 31, 72, 1)',
       /** The inner circle the arrowhead rises from */
@@ -849,7 +847,6 @@ export const COLORS = {
     },
     /** On the line: the whole instrument warms to gold, which is the only moment gold takes over */
     facing: {
-      sheet: '#171233',
       face: 'rgba(54, 44, 62, 1)',
       medallion: 'rgba(66, 53, 72, 1)',
       structure: '228, 192, 134',
