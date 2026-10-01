@@ -1,12 +1,6 @@
 import { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Animated, {
-  type SharedValue,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { type SharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import Svg, { Circle, Line, Path, Polygon, Rect, Text } from 'react-native-svg';
 
 import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
@@ -185,22 +179,13 @@ const Needle = memo(({ size, palette }: { size: number; palette: Palette }) => {
  */
 export default function QiblaCompass({ size, bearing, heading, aligned }: QiblaCompassProps) {
   const radius = size / 2;
-  // First evaluation snaps, so the dial draws at the phone's real heading rather than spinning to it from north
-  const isFirstEvaluation = useSharedValue(true);
-  const turn = useDerivedValue(() => {
-    if (isFirstEvaluation.value) {
-      isFirstEvaluation.value = false;
-      return heading.value;
-    }
-
-    return withTiming(heading.value, { duration: ANIMATION.durationFade });
-  });
-
-  const dialStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${-turn.value}deg` }] }));
+  // The fused sensor reports every 10ms and is already smooth, so the dial follows it directly: a tween here
+  // would be restarted ~15 times before its own duration elapsed and so could never settle
+  const dialStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${-heading.value}deg` }] }));
   // The marker swings out to where the plate has carried its bearing, then stands straight back up, so the
   // building keeps its own up at every heading. Three transforms on one layer, and never a redraw of the figure
   const markerStyle = useAnimatedStyle(() => {
-    const swing = bearing - turn.value;
+    const swing = bearing - heading.value;
 
     return {
       transform: [{ rotate: `${swing}deg` }, { translateY: -radius * FACE.kaaba }, { rotate: `${-swing}deg` }],

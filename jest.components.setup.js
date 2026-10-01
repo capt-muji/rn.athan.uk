@@ -93,6 +93,9 @@ jest.mock('./node_modules/react-native-reanimated/src/initializers', () => ({ in
 // The published mock builds a new shared value on every render, where the real hook keeps one for the component's
 // life. Left as it is, every effect that depends on a shared value re-runs on every render, and a first-evaluation
 // snap never ends, so "settled on the first frame, animated on a change" could not be tested at all
+// The published mock's useAnimatedReaction is a no-op (src/mock.ts), so a component whose whole job is to react to a
+// shared value does nothing at all under test. This runs the pair once per render, which is what the real hook does on
+// mount and on every change of the value it prepares
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
   const { useEffect, useState } = require('react');
@@ -108,6 +111,11 @@ jest.mock('react-native-reanimated', () => {
     // Looked up on the module at unmount, so a suite's jest.spyOn(Reanimated, 'cancelAnimation') sees the call
     useEffect(() => () => reanimated.cancelAnimation(value), [value]);
     return value;
+  };
+  reanimated.useAnimatedReaction = (prepare, react) => {
+    useEffect(() => {
+      react(prepare(), null);
+    });
   };
   return reanimated;
 });

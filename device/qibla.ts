@@ -3,13 +3,17 @@ import * as Location from 'expo-location';
 import type { Coordinates } from '@/shared/qiblaGeometry';
 import { type PlaceParts, placeName } from '@/shared/qiblaPlace';
 
-/** What the screen needs from a heading reading */
-export interface HeadingReading {
-  trueHeading: number;
-}
-
-/** One foreground prompt carries both the position and the heading, so the app asks for nothing more */
+/**
+ * One foreground prompt carries both the position and the heading, so the app asks for nothing more.
+ *
+ * What is already granted is read FIRST: asking outright re-prompts on every open, and on Android a user who has
+ * chosen "only this time" is asked again each visit rather than being left alone.
+ */
 export const requestQiblaPermission = async (): Promise<boolean> => {
+  const existing = await Location.getForegroundPermissionsAsync();
+  if (existing.granted) return true;
+  if (!existing.canAskAgain) return false;
+
   const { granted } = await Location.requestForegroundPermissionsAsync();
 
   return granted;
@@ -43,16 +47,4 @@ export const readPlaceName = async (position: Coordinates): Promise<string | nul
   } catch {
     return null;
   }
-};
-
-/**
- * Starts the heading watch and returns the function that stops it.
- *
- * `trueHeading` is passed on untouched: it is Core Location's own fused, declination-corrected value, and a correction
- * of our own is what shipped a reading 90 degrees out.
- */
-export const watchHeading = async (onReading: (reading: HeadingReading) => void): Promise<() => void> => {
-  const subscription = await Location.watchHeadingAsync(({ trueHeading }) => onReading({ trueHeading }));
-
-  return () => subscription.remove();
 };
