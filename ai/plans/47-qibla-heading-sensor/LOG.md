@@ -1,6 +1,32 @@
 # Session 47 execution log
 
-## DONE, merged at `d144d777` (1.29.193). 186 suites, 4964 tests, 100% on all four measures.
+## FINAL STATE: 1.29.196. The gyro-fused sensor was shipped, measured inaccurate, and REVERTED.
+
+**Read this first, because the headline reversed twice.** The session shipped `SensorType.ROTATION`
+for smoothness (1.29.193), the owner tested it outdoors against Google Maps and Apple Maps, and it was
+measurably pointing the wrong way. It is reverted to the platform's own `trueHeading` (1.29.195) and
+the alignment window widened to four degrees either side (1.29.196).
+
+**The owner's ruling that governs everything after this:** 🐋  "we want accuracy, 1000% accuracy,
+always, always, always accuracy. No. I don't care about smoothness anymore."
+
+| Device | Build installed | Owner's judgement |
+| --- | --- | --- |
+| Galaxy S23 | 1.29.196 | **~95% accurate**, up from ~70% |
+| iPhone XS | 1.29.196 | **still off**, around 85%, consistently |
+
+**The remaining work is queued as row 48**, which is a research row rather than a build row. Its brief
+is `ai/plans/48-qibla-heading-accuracy/BRIEF.md` and it carries the four options the owner named.
+
+## The three commits
+
+| Version | What |
+| --- | --- |
+| `d144d777` 1.29.193 | The gyro-fused sensor, the worklet crash fix, the pop-in fix, the padding fix |
+| 1.29.195 | **Reverted** to `watchHeadingAsync`, because the fused sensor is inaccurate |
+| 1.29.196 | The alignment window widened to 4 degrees either side, on the owner's request |
+
+## DONE at `d144d777` (1.29.193). 186 suites, 4964 tests, 100% on all four measures.
 
 **Accepted by the owner on both Android phones**: the OnePlus 3T and the Galaxy S23, on RELEASE builds.
 🐋  "the performance has been fixed, it's very smooth, it's very good" and, after the axis fix,
@@ -360,13 +386,90 @@ foreground location prompt that already existed.
 | Coverage | **100% statements, branches, functions and lines** |
 | `find-unused-exports.py` | 5 pre-existing entries, none new |
 
+## THE REVERSAL: the fused sensor was smooth and WRONG, proven outdoors against two map vendors
+
+The owner took both phones to a balcony, away from metal, and compared the compass against Google Maps
+on Android and both Google and Apple Maps on iOS. Facing the qibla by the maps' own reckoning, the app
+put the Kaaba at 9 to 10 o'clock where it should have been at 12.
+
+**The decisive log, captured seconds before his screenshot:**
+
+```
+22:15:07  fused: 149.7   platformTrue: 115.3   (true London qibla 118.99)
+```
+
+The platform's value would have drawn the Kaaba at 12 o'clock. Ours drew it at 11. That is exactly
+what the screenshot shows.
+
+**Why an earlier measurement in this same session said the opposite, and this is the lesson:** four
+samples taken with the phone flat on a desk showed the two sources only 5 degrees apart, and that was
+read as "the heading is correct". **The error VARIES with orientation**: 5 degrees on the desk, 34 on
+the balcony. One orientation is not a measurement of an orientation-dependent error, and the owner's
+outdoor test was better evidence than the desk test that preceded it.
+
+A varying error also rules out every fix that would have been attempted next: it is not a constant
+offset, not an axis swap, not a doubled heading, and not declination (1.3 degrees).
+
+## THE APP'S GEOMETRY IS PROVEN CORRECT, which is what made the diagnosis possible
+
+Measured off FULL-RESOLUTION frames of the owner's own screen recordings:
+
+| Source | Kaaba from dial North | True | Error |
+| --- | --- | --- | --- |
+| 22:38 recording, t=0 | 119.4 | 118.99 | **0.4** |
+| 23:23 recording, t=30 | 118.9 | 118.99 | **0.1** |
+
+Cardinal steps within about 1 degree of 90 in both. **So the dial, the SVG, `qiblaBearing`, the Kaaba
+coordinates, the bottom sheet and the position fix are all exonerated**, and the fault could only be
+the heading.
+
+**A METHOD WARNING WORTH MORE THAN THE RESULT: a low-resolution contact sheet produced a confident and
+WRONG conclusion.** Reading a 3x3 tile of 400px-wide frames suggested the Kaaba was drifting relative
+to North, which is geometrically impossible from a fixed position and would have sent the next session
+hunting a defect that does not exist. Re-measuring one frame at native 1080x2340 gave 0.4 degrees.
+**Measure full-resolution frames, and treat a contact sheet as an index rather than an instrument.**
+
+## What `watchHeadingAsync` actually is on each platform, which is NOT symmetric
+
+Read from `expo-location`'s own sources, and it inverts the assumption this session started with:
+
+| Platform | What `trueHeading` is built from |
+| --- | --- |
+| iOS | `CLHeading.trueHeading`, Apple's OWN fused value, the same one Apple Maps draws |
+| Android | accelerometer plus RAW magnetometer, no gyroscope, gated at 2 degrees and 50ms |
+
+So on iOS the app is already using the maps-grade value and the XS is STILL off, which is the open
+question row 48 inherits. On Android the cruder fusion happens to be well calibrated on the S23.
+
+## The tween returned with the revert, and the arithmetic is why
+
+It was deleted in 1.29.193 because the fused sensor fired every ~10ms, so a 150ms `withTiming`
+restarted about fifteen times inside its own duration and could never settle. The platform gates its
+heading at 2 degrees and 50ms, so the same tween now completes, and a STILL phone emits nothing at all
+and stops requesting frames. Smoothing came back for free as a property of the accurate source.
+
+## The alignment window, 1.29.196
+
+Widened on the owner's request from 1.5 degrees either side to **4**, an 8-degree window.
+`ALIGNMENT_EXIT_DEGREES` moved with it to 8, because the 2:1 RATIO is what suppresses the chatter
+rather than either absolute value. Re-measured against the jitter samples that justified the original
+pair: the widened hysteresis fires **1 tap** where a single threshold on the same samples fires **50**.
+
+One test needed correcting with it, and the defect was in the test rather than the rule: it asserted on
+a literal `2` degrees, which sat outside the old enter threshold and inside the new one. It now derives
+its probe from the midpoint of the two thresholds, so widening the window again cannot stale it.
+
 ## What the next session should pick up
 
-1. **Build 1.29.193 for the iPhone XS and judge iOS on it.** Until then no iOS claim is evidence, and
-   the owner's cross-platform comparison cannot be made. It is a local Xcode build to the physical
-   device, never EAS.
-2. **Re-measure the cold launch on a release build if the owner still wants it faster.** 3620 ms on the
-   3T is dominated by the TLS provider install and JS evaluation already measured in ISSUES #32, and
-   nothing in this session targeted it.
-3. The S23 was disconnected mid-session, so it still carries the build from before the axis fix. It
-   needs 1.29.193 before it is judged again.
+**Row 48 is the successor and carries the whole heading question**, including the four options the
+owner named: the `adhan` package, a different package, native Swift and Kotlin, or a fault inside
+`expo-location` itself. Its brief is written: `ai/plans/48-qibla-heading-accuracy/BRIEF.md`.
+
+Smaller items this session did not take, kept so they are not lost:
+
+1. **Re-measure the cold launch on a release build if the owner wants it faster.** 3620 ms on the 3T
+   is dominated by the TLS provider install and JS evaluation already measured in ISSUES #32, and
+   nothing here targeted it. The 20-to-30-second hang he reported was a DEBUG build fetching its
+   bundle from Metro and does not reproduce on release.
+2. **The OnePlus 3T has not run 1.29.195 or 1.29.196.** It was swapped out for the S23 mid-session
+   and carries 1.29.193, which holds the inaccurate fused sensor.
