@@ -114,6 +114,13 @@ export const WHATS_NEW: WhatsNewRelease | null = {
       body: 'Settings now answers why an athan was not heard, and opens the setting that caused it',
       version: null,
     },
+    {
+      // PARKED: stamped at the store release. No platform badge, because the compass ships on both:
+      // Android is simply tested after iOS
+      title: 'Qibla compass',
+      body: 'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
+      version: null,
+    },
   ],
 };
 
