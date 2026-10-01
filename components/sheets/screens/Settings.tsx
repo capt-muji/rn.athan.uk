@@ -82,12 +82,12 @@ export default function BottomSheetSettings() {
           style={styles.athanButton}
           onPress={handleAthanPress}
           hitSlop={HIT_SLOP.md}
-          accessibilityLabel='Athan'
+          accessibilityLabel='Change athan'
           accessibilityRole='button'>
           <View style={styles.musicButton}>
             <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
-          <Text style={styles.athanLabel}>Athan</Text>
+          <Text style={styles.athanLabel}>Change athan</Text>
           <Text style={styles.chevron}>›</Text>
         </Pressable>
         <Pressable

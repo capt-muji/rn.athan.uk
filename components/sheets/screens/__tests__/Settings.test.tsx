@@ -99,7 +99,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
     const athanPresent = jest.spyOn(renderedSheet(bottomSheetModalAtom), 'present');
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Athan' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Change athan' }));
 
     expect(settingsDismiss).toHaveBeenCalledTimes(1);
     expect(athanPresent).toHaveBeenCalledTimes(1);
