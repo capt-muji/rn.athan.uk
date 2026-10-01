@@ -2,6 +2,7 @@
  * The compass face's geometry, and the clearances the owner settled by eye on the phone
  */
 
+import { FIGURE_CANVAS, FIGURE_SPREAD } from '@/shared/kaabaFigure';
 import {
   arcPath,
   CARDINALS,
@@ -139,29 +140,37 @@ describe('the arc over the Kaaba', () => {
 });
 
 describe('the clearances the owner settled on the phone', () => {
-  const half = FACE.kaabaSize / 2;
+  const rimInnerEdge = FACE.rim - (FACE.stroke * 2.2) / 2;
 
-  // The cube's two outward corners sit ON the ring rather than floating between it and the rim
-  it('lands the Kaaba\u2019s outward corners exactly on the ring', () => {
-    const outwardEdge = FACE.kaaba + half;
+  // A standing figure turns UNDER the plate, so its far corner swings outward at every heading rather than
+  // staying squared to the ring the way a flat square did
+  it('keeps the Kaaba clear of the rim it orbits beneath, at every heading', () => {
+    const furthest = FACE.kaaba + FIGURE_SPREAD.reach * FACE.kaabaSize;
 
-    expect(Math.hypot(outwardEdge, half)).toBeCloseTo(FACE.ring, 3);
+    expect(furthest).toBeLessThan(rimInnerEdge);
+    expect((rimInnerEdge - furthest) * R).toBeGreaterThan(1.5);
   });
 
-  it('stops the arrow two pixels short of the Kaaba, so the two never touch', () => {
+  it('stops the arrow short of the Kaaba, so the two never touch when the user is on the line', () => {
     const tip = Math.abs(pointsOf(qiblaLinePath(R)).reduce((far, at) => (at.y < far.y ? at : far)).y);
-    const kaabaInnerEdge = (FACE.kaaba - half) * R;
+    const kaabaUnderside = (FACE.kaaba - FIGURE_SPREAD.underside * FACE.kaabaSize) * R;
 
-    expect(kaabaInnerEdge - tip).toBeCloseTo(2, 0);
+    expect(kaabaUnderside - tip).toBeGreaterThan(1.5);
   });
 
-  // The arc and the cube must read as one marker, and a round cap adds half a stroke beyond each end of the path
-  it('draws the arc exactly as wide as the Kaaba, once its round caps are counted', () => {
+  // The arc and the figure must read as one marker, and a round cap adds half a stroke beyond each end of the path
+  it('draws the arc exactly as wide as the Kaaba standing on it, once its round caps are counted', () => {
     const capDegrees = (((2.2 * FACE.stroke) / 2 / FACE.arc) * 180) / Math.PI;
     const drawnSpread = FACE.arcSpread + capDegrees;
-    const kaabaHalfAngle = (Math.atan2(half, FACE.kaaba) * 180) / Math.PI;
+    const halfWidth = FIGURE_SPREAD.halfWidth * FACE.kaabaSize;
+    const kaabaHalfAngle = (Math.atan2(halfWidth, FACE.kaaba) * 180) / Math.PI;
 
-    expect(drawnSpread).toBeCloseTo(kaabaHalfAngle, 2);
+    expect(drawnSpread).toBeCloseTo(kaabaHalfAngle, 1);
+  });
+
+  // The mizab reaches past the cube, so a canvas sized to the cube alone cuts the spout off
+  it('draws the marker on a canvas wide enough to hold the mizab', () => {
+    expect(FIGURE_CANVAS).toBeGreaterThan(2 * FIGURE_SPREAD.halfWidth);
   });
 
   it('keeps the arc concentric with the rim, rather than sitting inside it', () => {

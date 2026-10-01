@@ -120,6 +120,34 @@ describe('the qibla sheet, opened in London', () => {
     expect(screen.getByTestId('qibla-dial').props.style).toEqual({ transform: [{ rotate: '-95deg' }] });
   });
 
+  // A square survives any rotation and a building does not. The marker rides the plate out to its bearing and
+  // then stands straight back up, so the two rotations must cancel exactly or the Kaaba ends up on its head for
+  // whole stretches of the compass, which no assertion on the plate alone can see
+  it('leaves the Kaaba standing upright however far the plate has turned', async () => {
+    await openSheet();
+
+    await reportHeadings(95);
+
+    const { transform } = screen.getByTestId('qibla-kaaba').props.style;
+    const rotations = transform.filter((step: Record<string, string>) => 'rotate' in step);
+    const degrees = rotations.map((step: { rotate: string }) => Number.parseFloat(step.rotate));
+
+    expect(degrees).toHaveLength(2);
+    expect(degrees[0] + degrees[1]).toBeCloseTo(0, 6);
+  });
+
+  it('carries the Kaaba round to the bearing the plate has turned it to', async () => {
+    await openSheet();
+
+    await reportHeadings(95);
+
+    const { transform } = screen.getByTestId('qibla-kaaba').props.style;
+    const [swing] = transform.filter((step: Record<string, string>) => 'rotate' in step);
+
+    // London's qibla is 118.9 degrees, so a phone facing 95 leaves the marker 23.9 degrees clockwise of the arrow
+    expect(Number.parseFloat(swing.rotate)).toBeCloseTo(23.9, 1);
+  });
+
   it('keeps turning for every reading after the first, without ever leaving the dial blank', async () => {
     await openSheet();
     await reportHeadings(95);
