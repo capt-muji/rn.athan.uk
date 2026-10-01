@@ -6537,3 +6537,62 @@ was nothing a device reading would add. Session 45 builds first and finds it imm
 
 The measurements that survive the owner's ruling are in `ai/plans/44-qibla-cleanup/FACTS.md`, and that
 page is the only thing session 45 may build on.
+
+## Session 45: the qibla as an Islamic compass
+
+The qibla returns, rebuilt from nothing after session 44 deleted four rejected attempts. A north-locked dial that
+turns under a fixed arrow, with the Kaaba set into its rim: the user turns until the cube arrives beneath the
+arrow, the whole instrument warms to gold, and the phone taps once. Nothing has to be read, which is the point.
+
+**THE MAP WAS BUILT, PUT ON THE PHONE, AND REJECTED ON LOOKS WHILE ITS FUNCTION WAS ACCEPTED.** That split is the
+session's most useful result: the heading, the bearing, the hysteresis and the one-tap-per-crossing were proven on
+the owner's iPhone XS and never changed again, while the DRAWING was replaced entirely. Everything below the
+screen survived five rejections because it was never what was wrong.
+
+**THE OWNER REVERSED THE iOS-ONLY RULING, and it matters for every row after this one.** The plan gated the
+Settings row behind `Platform.OS === 'ios'`; he removed it on sight: a feature is not blocked from Android merely
+because iOS is being tested first. No `Platform` gate and no Android-blocking wording survives anywhere in the
+feature, verified by grep.
+
+**THE SIMULATOR CANNOT TEST THIS FEATURE, AND THE LOG PROVES IT.** CoreLocation reports `updatingHeading`
+transitioning `old:0, new:0` and then `Stop updating heading` on every attempt, because a simulator has no
+magnetometer, so `watchHeadingAsync` never starts. Position works there and heading never will. An hour was spent
+on the simulator before the log was read; the lesson is to read the platform's own log before diagnosing an empty
+screen. The loop moved to a DEV build on the physical XS, which is what gave hot reload on hardware with the sensor.
+
+**THE DESIGN WAS SETTLED LIVE, IN EIGHT ITERATIONS, AND ITS NUMBERS ARE NOW LOAD-BEARING.** The arrow is static and
+the DIAL turns beneath it, which inverts what all four previous attempts drew; the cardinal letters are engraving
+on the plate and no longer pivot about their own points, reversing session 37's fix because a compass card's
+letters turn with the card; and the Kaaba is squared to the rim rather than kept upright, so its roof lies flat
+against the arc. The palette went too purple, then too gold, and settled on the alert sheet's own indigo with gold
+reserved entirely for the aligned state, so gold means "you are facing Makkah" and nothing else.
+
+**FOUR DEFECTS WERE FOUND LIVE, EACH BEFORE A TEST EXISTED.** (1) `invalidTransform`, a real crash: a transform
+written as a STRING cannot be parsed by `react-native-svg` on the UI thread, and the array form is worklet-safe.
+The owner's separate report that the Kaaba "pivots from the corners" was the same bug, because `rotation` with
+`originX`/`originY` recomposes as the dial turns. (2) The sheet opened at a sliver, because `enableDynamicSizing`
+measures its content and the stage reserved nothing until the dial appeared. (3) The position read hung on a fresh
+fix; the cached fix is served first, which is better on hardware too since 3 km of staleness moves the qibla under
+0.15 degrees. (4) **A bigger Kaaba collided with the N, and this was found by sweeping all 1440 bearings rather
+than by looking**, because the clash depends on the user's own qibla: beyond 0.70R, 280 of 1440 bearings overlap,
+about one user in five. A single screenshot would have missed it.
+
+**THE TEST SUITE THEN FOUND A DEFECT THE LIVE SESSION HAD INTRODUCED, and it is the most valuable thing the tests
+did.** Drawing the dial on POSITION alone, added to work around the simulator, meant a lost heading left the dial
+frozen at its last angle: the app would have pointed confidently in a stale direction, which is the one thing this
+feature must never do. The test asserted the correct behaviour, failed, and the screen was fixed rather than the
+test.
+
+**The geometry suite pins the owner's own clearances**, not just the code's behaviour: the Kaaba's outward corners
+land on the ring to within 0.009 px, the arrow stops 2.00 px short of the cube, and the arc's DRAWN span matches
+the cube's width to three decimal places. That last one needed the round caps counted, since `strokeLinecap='round'`
+adds half a stroke beyond each end of the path, which is why the arc read longer than the cube until the path was
+deliberately drawn shorter than the angle it represents.
+
+**The haptic window narrowed to the owner's 3 degrees** (enter 1.5, exit 3), keeping the 2:1 ratio session 43
+proved. The ratio is what suppresses the buzz rather than the absolute value, and the control measures it: a
+SINGLE threshold on the same jitter samples fires 28 taps where the pair fires 1.
+
+Suite after: 4883 passed, 182 suites, 100% on all four measures. Breaks: 29 of 29 caught. One break was a no-op
+(`void 0` changes nothing) and printed SURVIVED against a hook that genuinely works, so it was rewritten rather
+than accepted.

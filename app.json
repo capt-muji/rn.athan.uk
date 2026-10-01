@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.29.178",
+    "version": "1.29.180",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -21,6 +21,7 @@
       },
       "infoPlist": {
         "CFBundleDisplayName": "Athan",
+        "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications"
       },
       "backgroundColor": "#2c1c77"
