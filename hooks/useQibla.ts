@@ -1,0 +1,90 @@
+import * as Haptics from 'expo-haptics';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { type SharedValue, useSharedValue } from 'react-native-reanimated';
+
+import { readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
+import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
+import { unwrapHeading } from '@/shared/qiblaCompass';
+import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
+
+export interface QiblaState {
+  bearing: number | null;
+  /** Whether the phone can currently say which way it points */
+  hasHeading: boolean;
+  permissionDenied: boolean;
+}
+
+export interface QiblaReadings {
+  /** The heading as a continuous angle, so the face never spins the long way round past north */
+  heading: SharedValue<number>;
+  aligned: SharedValue<boolean>;
+}
+
+/**
+ * The qibla sheet's whole behaviour: one position, a watched heading, and one tap per crossing onto the line.
+ *
+ * Nothing is read until `start`, because every sheet in this app mounts at launch and a watch armed at mount would run
+ * the magnetometer for the life of the process.
+ *
+ * Each reading writes the angle to a shared value rather than to state, so the face turns on the UI thread and a
+ * twenty-a-second sensor stream costs no React render.
+ */
+export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<void>; stop: () => void } => {
+  const [state, setState] = useState<QiblaState>({ bearing: null, hasHeading: false, permissionDenied: false });
+  const heading = useSharedValue(0);
+  const aligned = useSharedValue(false);
+  const alignedRef = useRef(false);
+  const activeRef = useRef(false);
+  const unwatchRef = useRef<(() => void) | null>(null);
+
+  const stop = useCallback(() => {
+    activeRef.current = false;
+    alignedRef.current = false;
+    aligned.value = false;
+    unwatchRef.current?.();
+    unwatchRef.current = null;
+  }, [aligned]);
+
+  const start = useCallback(async () => {
+    activeRef.current = true;
+
+    const granted = await requestQiblaPermission();
+    if (!activeRef.current) return;
+    if (!granted) {
+      setState((previous) => ({ ...previous, permissionDenied: true }));
+      return;
+    }
+
+    const position: Coordinates = await readPosition();
+    if (!activeRef.current) return;
+
+    const bearing = qiblaBearing(position);
+    setState({ bearing, hasHeading: false, permissionDenied: false });
+
+    const unwatch = await watchHeading(({ trueHeading }) => {
+      if (trueHeading === NO_HEADING) {
+        alignedRef.current = false;
+        aligned.value = false;
+        setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
+        return;
+      }
+
+      const nowAligned = isAligned(alignmentOffset(trueHeading, bearing), alignedRef.current);
+      // The strongest impact the platform offers, because a blind user feels this instead of reading anything
+      if (shouldTap(alignedRef.current, nowAligned)) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+      alignedRef.current = nowAligned;
+      aligned.value = nowAligned;
+      heading.value = unwrapHeading(heading.value, trueHeading);
+      setState((previous) => (previous.hasHeading ? previous : { ...previous, hasHeading: true }));
+    });
+
+    // The watch can finish setting up after the sheet closed and its cleanup ran, which would leave the magnetometer
+    // armed for the life of the process
+    if (activeRef.current) unwatchRef.current = unwatch;
+    else unwatch();
+  }, [aligned, heading]);
+
+  useEffect(() => stop, [stop]);
+
+  return { ...state, heading, aligned, start, stop };
+};
