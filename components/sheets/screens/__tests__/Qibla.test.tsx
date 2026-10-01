@@ -6,8 +6,6 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { Dimensions, StyleSheet } from 'react-native';
 
-import { headingFromYaw } from '@/shared/qiblaHeading';
-
 import QiblaSheet from '../Qibla';
 
 // Babel hoists jest.mock above these, so the names must carry the `mock` prefix to be reachable from the factory
@@ -22,7 +20,6 @@ const mockState = {
   releasePosition: null as (() => void) | null,
   releasePlace: null as (() => void) | null,
   releaseWatch: null as (() => void) | null,
-  releaseDeclination: null as (() => void) | null,
 };
 
 // The platform the sheet reaches the moment it presents
@@ -43,24 +40,6 @@ jest.mock('@/device/qibla', () => ({
     if (mockState.releaseWatch) await new Promise<void>((resolve) => (mockState.releaseWatch = resolve));
     mockWatchers.push(onReading);
     return mockUnwatch;
-  }),
-}));
-
-// The sensor component registers a real gyroscope on mount, which a test runner has none of. Standing in for it
-// keeps the screen's own wiring under test while the readings stay driven from here; its conversion is covered by
-// shared/__tests__/qiblaHeading.test.ts, which is where the arithmetic lives
-jest.mock('@/components/sheets/screens/QiblaHeadingSource', () => ({
-  __esModule: true,
-  default: ({ onHeading }: { onHeading: (heading: number) => void }) => {
-    mockWatchers.push(({ trueHeading }: { trueHeading: number }) => onHeading(trueHeading));
-    return null;
-  },
-}));
-
-jest.mock('@/device/qiblaSensor', () => ({
-  readDeclination: jest.fn(async () => {
-    if (mockState.releaseDeclination) await new Promise<void>((resolve) => (mockState.releaseDeclination = resolve));
-    return 0;
   }),
 }));
 
@@ -92,7 +71,6 @@ beforeEach(() => {
   mockState.releasePosition = null;
   mockState.releasePlace = null;
   mockState.releaseWatch = null;
-  mockState.releaseDeclination = null;
 });
 
 describe('the qibla sheet before it is opened', () => {
@@ -261,15 +239,20 @@ describe('the place the bearing was computed from', () => {
     expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
   });
 
-  // A line tied to the dial would leave with it and shrink the sheet under the user
-  it('keeps the line once the sheet closes and takes the dial with it', async () => {
+  // The dial is gone here, so a line tied to it would go too and shrink the sheet
+  it('keeps the line even once the dial has blanked for good', async () => {
+    jest.useFakeTimers();
     await openSheet();
     await reportHeadings(95);
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
     expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+    jest.useRealTimers();
   });
 
   it('holds the line before any heading has arrived, so the sheet opens at its settled height', async () => {
@@ -301,33 +284,9 @@ describe('the place the bearing was computed from', () => {
 
     expect(screen.queryByText('London, United Kingdom')).toBeNull();
   });
-
-  // The declination waits on a gated magnetometer, so it is the likeliest of all these reads to land after a close
-  it('drops a declination that arrives after the sheet closed', async () => {
-    mockState.releaseDeclination = () => undefined;
-    await openSheet();
-    await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-
-    await act(async () => {
-      mockState.releaseDeclination?.();
-    });
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-  });
 });
 
 describe('the air around the compass', () => {
-  it('leaves real air on both sides rather than collapsing the compass against its neighbours', async () => {
-    await openSheet();
-    await reportHeadings(95);
-
-    const style = StyleSheet.flatten(screen.getByTestId('qibla-stage').props.style);
-
-    expect(style.marginTop).toBeGreaterThan(0);
-    expect(style.marginBottom).toBeGreaterThan(style.marginTop);
-  });
-
   // The whole column must fit the sheet's own 85% cap: a BottomSheetView clamps instead of scrolling, so anything
   // over the cap is taken off the BOTTOM, which ate the place name's padding and put it against the screen edge
   it('keeps the dial short enough for the column to fit the sheet', async () => {
@@ -337,6 +296,16 @@ describe('the air around the compass', () => {
     const style = StyleSheet.flatten(screen.getByTestId('qibla-stage').props.style);
 
     expect(style.height).toBeLessThanOrEqual(Dimensions.get('window').height * 0.45);
+  });
+
+  it('leaves real air on both sides rather than collapsing the compass against its neighbours', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    const style = StyleSheet.flatten(screen.getByTestId('qibla-stage').props.style);
+
+    expect(style.marginTop).toBeGreaterThan(0);
+    expect(style.marginBottom).toBeGreaterThan(style.marginTop);
   });
 });
 
@@ -376,22 +345,83 @@ describe('the haptic a blind user feels', () => {
 });
 
 describe('when the phone cannot say which way it points', () => {
-  /**
-   * The fused sensor has no "no reading" value to report, which is what retired the old grace window.
-   *
-   * `headingFromYaw` ends in `normaliseBearing`, whose range is [0, 360), so the -1 the old
-   * `watchHeadingAsync` used to signal a lost fix can no longer reach the screen. The dial now leaves
-   * on the sheet closing and on nothing else.
-   */
-  it('never receives a heading outside the circle, whatever the sensor reports', () => {
-    const extremes = [-1e6, -Math.PI, 0, Math.PI, 1e6, 1e12];
+  // A settling magnetometer drops the odd reading, and blanking on one is what made the sheet jump
+  it('holds the dial through a brief dropout rather than blinking it out', async () => {
+    await openSheet();
+    await reportHeadings(95);
 
-    for (const yaw of extremes) {
-      const heading = headingFromYaw(yaw);
+    await reportHeadings(-1);
 
-      expect(heading).toBeGreaterThanOrEqual(0);
-      expect(heading).toBeLessThan(360);
-    }
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  it('stops drawing the dial once the loss lasts, rather than pointing somewhere it does not know', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  // A run of dropped readings must not restart the countdown, or a steady stream of them holds a stale dial forever
+  it('counts the grace window from the first dropped reading, not the last', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
+    await reportHeadings(-1, -1);
+    await act(async () => {
+      jest.advanceTimersByTime(800);
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  it('stays blank when the readings never return, rather than flipping state again', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  it('keeps the dial when a good reading returns inside the grace window', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(500);
+    });
+    await reportHeadings(140);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    jest.useRealTimers();
   });
 
   it('draws the dial again once a real heading returns', async () => {
@@ -424,26 +454,23 @@ describe('when the user refuses location', () => {
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  it('reads no position and arms no sensor', async () => {
+  it('reads no position and watches no heading', async () => {
     mockState.granted = false;
 
     await openSheet();
 
     expect(qiblaDevice.readPosition).not.toHaveBeenCalled();
-    expect(mockWatchers).toHaveLength(0);
+    expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
   });
 });
 
 describe('closing the sheet', () => {
-  // The sensor registers on mount and unregisters on unmount, so the compass leaving the tree IS the teardown
-  it('takes the sensor out of the tree, so the gyroscope is disarmed', async () => {
+  it('stops the heading watch, so the magnetometer is disarmed', async () => {
     await openSheet();
-    await reportHeadings(95);
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
 
     await fireEvent(screen.getByText('Qibla'), 'dismiss');
 
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    expect(mockUnwatch).toHaveBeenCalled();
   });
 
   it('asks for nothing more when it closes while the permission prompt is still up', async () => {
@@ -470,19 +497,49 @@ describe('closing the sheet', () => {
       mockState.releasePosition?.();
     });
 
+    // The watch starts alongside the position read now, so the assertion is that it was torn down again, not that
+    // it never started
+    expect(mockUnwatch).toHaveBeenCalled();
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  it('arms the sensor again on the next open, rather than staying dead', async () => {
+  // watchHeadingAsync is asynchronous, so it can resolve after the cleanup has already run
+  it('stops a heading watch that finished setting up after the sheet had already closed', async () => {
+    mockState.releaseWatch = () => undefined;
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await act(async () => {
+      mockState.releaseWatch?.();
+    });
+
+    expect(mockUnwatch).toHaveBeenCalled();
+  });
+
+  it('arms the sensors again on the next open, rather than staying dead', async () => {
     await openSheet();
-    await reportHeadings(95);
     await fireEvent(screen.getByText('Qibla'), 'dismiss');
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
-    await reportHeadings(95);
 
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(qiblaDevice.watchHeading).toHaveBeenCalledTimes(2);
+  });
+
+  it('keeps the watch from an open that outlives the sheet, and tears it down', async () => {
+    mockState.releaseWatch = () => undefined;
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await act(async () => {
+      mockState.releaseWatch?.();
+    });
+
+    expect(mockUnwatch).toHaveBeenCalled();
   });
 });
 
@@ -545,27 +602,17 @@ describe('reopening the sheet in the same place', () => {
   });
 });
 
-describe('the sensor and the position', () => {
-  // The gyroscope needs warming up, so it arms alongside the position read rather than behind it: waiting left the
-  // sheet blank for seconds, and its early readings are held until the bearing lands anyway
-  it('arms the sensor while the position is still being read', async () => {
+describe('a heading that arrives before the position', () => {
+  it('is held and applied the moment the position lands, rather than dropped', async () => {
     mockState.releasePosition = () => undefined;
     await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    expect(mockWatchers.length).toBeGreaterThan(0);
-  });
-
-  // Those early readings have no bearing to mean anything against yet, so the last one is held and replayed: without
-  // it the dial waits for the NEXT reading after the fix lands, and on a still phone that is a visible pause
-  it('draws the held reading the moment the position lands, rather than waiting for a fresh one', async () => {
-    mockState.releasePosition = () => undefined;
-    await render(<QiblaSheet />);
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-
-    await reportHeadings(95);
+    // A reading can arrive while the fix is still being read, and the old code never saw it
+    await act(async () => {
+      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
+    });
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
 
     await act(async () => {
