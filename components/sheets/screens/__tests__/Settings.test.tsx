@@ -86,7 +86,7 @@ beforeEach(() => {
 });
 
 describe('the settings sheet outside the Ramadan season, Friday 11 September 2026 at 14:00', () => {
-  it('closes itself and opens the athan sheet with a haptic when Change athan is pressed', async () => {
+  it('closes itself and opens the athan sheet with a haptic when Athan is pressed', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(
       <>
@@ -99,7 +99,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
     const athanPresent = jest.spyOn(renderedSheet(bottomSheetModalAtom), 'present');
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Change athan' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Athan' }));
 
     expect(settingsDismiss).toHaveBeenCalledTimes(1);
     expect(athanPresent).toHaveBeenCalledTimes(1);

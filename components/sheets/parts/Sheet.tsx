@@ -79,7 +79,7 @@ interface SheetProps {
    * Bottom-sheet stack behavior when presented over another sheet. Default
    * 'switch' serializes: the lib waits for the previous sheet to unmount
    * before animating this one in. 'push' presents immediately on top — used
-   * by the sound sheet so "Change athan" closes settings and opens it
+   * by the sound sheet so the Athan row closes settings and opens it
    * concurrently.
    */
   stackBehavior?: BottomSheetModalProps['stackBehavior'];
