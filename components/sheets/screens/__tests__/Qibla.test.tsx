@@ -4,6 +4,9 @@
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { StyleSheet } from 'react-native';
+
+import { SPACING } from '@/shared/constants';
 
 import QiblaSheet from '../Qibla';
 
@@ -13,9 +16,11 @@ const mockUnwatch = jest.fn();
 const mockState = {
   granted: true,
   position: { latitude: 51.475, longitude: -0.2015 },
+  place: 'London, United Kingdom' as string | null,
   /** Held open so a test can dismiss the sheet mid-await, which is the race the hook guards */
   releasePermission: null as (() => void) | null,
   releasePosition: null as (() => void) | null,
+  releasePlace: null as (() => void) | null,
   releaseWatch: null as (() => void) | null,
 };
 
@@ -28,6 +33,10 @@ jest.mock('@/device/qibla', () => ({
   readPosition: jest.fn(async () => {
     if (mockState.releasePosition) await new Promise<void>((resolve) => (mockState.releasePosition = resolve));
     return mockState.position;
+  }),
+  readPlaceName: jest.fn(async () => {
+    if (mockState.releasePlace) await new Promise<void>((resolve) => (mockState.releasePlace = resolve));
+    return mockState.place;
   }),
   watchHeading: jest.fn(async (onReading: (reading: { trueHeading: number }) => void) => {
     if (mockState.releaseWatch) await new Promise<void>((resolve) => (mockState.releaseWatch = resolve));
@@ -59,8 +68,10 @@ beforeEach(() => {
   mockUnwatch.mockClear();
   mockState.granted = true;
   mockState.position = { latitude: 51.475, longitude: -0.2015 };
+  mockState.place = 'London, United Kingdom';
   mockState.releasePermission = null;
   mockState.releasePosition = null;
+  mockState.releasePlace = null;
   mockState.releaseWatch = null;
 });
 
@@ -172,6 +183,136 @@ describe('the qibla sheet, opened in London', () => {
   });
 });
 
+describe('the place the bearing was computed from', () => {
+  it('names the place under the compass, so the user can see the fix is their own', async () => {
+    await openSheet();
+
+    await reportHeadings(95);
+
+    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+  });
+
+  it('asks the platform to name the position it computed the bearing from', async () => {
+    await openSheet();
+
+    await reportHeadings(95);
+
+    expect(qiblaDevice.readPlaceName).toHaveBeenCalledWith({ latitude: 51.475, longitude: -0.2015 });
+  });
+
+  it('names the place once, however many headings arrive', async () => {
+    await openSheet();
+
+    await reportHeadings(10, 20, 30);
+
+    expect(qiblaDevice.readPlaceName).toHaveBeenCalledTimes(1);
+  });
+
+  // The geocoder is network-backed, so it fails offline. The bearing is still correct and must still be drawn
+  it('draws the compass with a blank line when the place cannot be named', async () => {
+    mockState.place = null;
+    await openSheet();
+
+    await reportHeadings(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(screen.queryByText('London, United Kingdom')).toBeNull();
+  });
+
+  it('names the place without the line ever appearing or vanishing', async () => {
+    mockState.releasePlace = () => undefined;
+    await openSheet();
+    await reportHeadings(95);
+
+    await act(async () => {
+      mockState.releasePlace?.();
+    });
+
+    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+  });
+
+  // The sheet measures its content, so the line's slot must exist from the first frame and never leave
+  it('keeps the line through a dropped heading, so the sheet never resizes under the user', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+
+    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+  });
+
+  // The dial is gone here, so a line tied to it would go too and shrink the sheet
+  it('keeps the line even once the dial has blanked for good', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+    jest.useRealTimers();
+  });
+
+  it('holds the line before any heading has arrived, so the sheet opens at its settled height', async () => {
+    await openSheet();
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+  });
+
+  it('says nothing when the user refused location, having no position to name', async () => {
+    mockState.granted = false;
+
+    await openSheet();
+
+    expect(screen.queryByText('London, United Kingdom')).toBeNull();
+    expect(qiblaDevice.readPlaceName).not.toHaveBeenCalled();
+  });
+
+  // A network call can resolve long after the sheet closed, and setting state then would warn and leak
+  it('drops a name that arrives after the sheet closed', async () => {
+    mockState.releasePlace = () => undefined;
+    await openSheet();
+    await reportHeadings(95);
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await act(async () => {
+      mockState.releasePlace?.();
+    });
+
+    expect(screen.queryByText('London, United Kingdom')).toBeNull();
+  });
+});
+
+describe('the air around the compass', () => {
+  const HEADER_GAP = SPACING.xxxl;
+
+  // The margins are deliberately unequal: asserting they matched is what shipped the compass 60pt closer to the
+  // place name than to the subtitle
+  it('leaves the same air above the compass as below it, once the header\u2019s own gap is counted', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    const style = StyleSheet.flatten(screen.getByTestId('qibla-stage').props.style);
+
+    expect(HEADER_GAP + style.marginTop).toBe(style.marginBottom);
+  });
+
+  it('leaves real air on both sides rather than collapsing the compass against its neighbours', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    const style = StyleSheet.flatten(screen.getByTestId('qibla-stage').props.style);
+
+    expect(style.marginTop).toBeGreaterThan(0);
+    expect(style.marginBottom).toBeGreaterThan(style.marginTop);
+  });
+});
+
 describe('the haptic a blind user feels', () => {
   it('taps once when the phone turns onto the line', async () => {
     await openSheet();
@@ -208,13 +349,83 @@ describe('the haptic a blind user feels', () => {
 });
 
 describe('when the phone cannot say which way it points', () => {
-  it('stops drawing the dial rather than pointing somewhere it does not know', async () => {
+  // A settling magnetometer drops the odd reading, and blanking on one is what made the sheet jump
+  it('holds the dial through a brief dropout rather than blinking it out', async () => {
     await openSheet();
     await reportHeadings(95);
 
     await reportHeadings(-1);
 
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  it('stops drawing the dial once the loss lasts, rather than pointing somewhere it does not know', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  // A run of dropped readings must not restart the countdown, or a steady stream of them holds a stale dial forever
+  it('counts the grace window from the first dropped reading, not the last', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(1000);
+    });
+    await reportHeadings(-1, -1);
+    await act(async () => {
+      jest.advanceTimersByTime(800);
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  it('stays blank when the readings never return, rather than flipping state again', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  it('keeps the dial when a good reading returns inside the grace window', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportHeadings(-1);
+    await act(async () => {
+      jest.advanceTimersByTime(500);
+    });
+    await reportHeadings(140);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    jest.useRealTimers();
   });
 
   it('draws the dial again once a real heading returns', async () => {

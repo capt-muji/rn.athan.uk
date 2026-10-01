@@ -1,6 +1,7 @@
 import * as Location from 'expo-location';
 
 import type { Coordinates } from '@/shared/qiblaGeometry';
+import { type PlaceParts, placeName } from '@/shared/qiblaPlace';
 
 /** What the screen needs from a heading reading */
 export interface HeadingReading {
@@ -25,6 +26,23 @@ export const readPosition = async (): Promise<Coordinates> => {
   const { coords } = cached ?? (await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Lowest }));
 
   return { latitude: coords.latitude, longitude: coords.longitude };
+};
+
+/**
+ * The position written the way a person would say it, or null when the platform cannot name it.
+ *
+ * Needs no permission beyond the one already granted for the fix, and is deliberately best-effort: the geocoder is
+ * a network-backed system service on both platforms, so it fails offline and is rate-limited, and the compass works
+ * perfectly without it. A failure must never cost the user their bearing.
+ */
+export const readPlaceName = async (position: Coordinates): Promise<string | null> => {
+  try {
+    const [address] = await Location.reverseGeocodeAsync(position);
+
+    return placeName(address as PlaceParts | undefined);
+  } catch {
+    return null;
+  }
 };
 
 /**

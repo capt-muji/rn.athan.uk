@@ -10,11 +10,16 @@ import { setQiblaSheetModal } from '@/stores/ui';
 import { Sheet } from '../parts';
 import QiblaCompass from './QiblaCompass';
 
+// Yoga never collapses margins, so the header's own gap stacks above the compass and must be carried below it too
+const HEADER_GAP = SPACING.xxxl;
+const BREATHING_ROOM = SPACING.header;
+
 export default function BottomSheetQibla() {
   const { width } = useWindowDimensions();
-  const { bearing, hasHeading, permissionDenied, heading, aligned, start, stop } = useQibla();
+  const { bearing, hasHeading, permissionDenied, place, heading, aligned, start, stop } = useQibla();
 
   const size = Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2;
+  const showsCompass = bearing !== null && hasHeading;
 
   return (
     <Sheet
@@ -30,14 +35,18 @@ export default function BottomSheetQibla() {
       contentCap={0.85}>
       {/* The stage holds the dial's square from the first frame: a dynamically-sized sheet measures its content, so
           reserving nothing would open it at a sliver and then resize under the user once the fix arrives */}
-      <View style={[styles.stage, { height: size }]}>
+      <View
+        testID='qibla-stage'
+        style={[styles.stage, { height: size, marginTop: BREATHING_ROOM, marginBottom: HEADER_GAP + BREATHING_ROOM }]}>
         {/* A dial drawn without a live heading would hold its last angle and quietly point the wrong way, which is
             the one thing this feature must never do */}
-        {bearing !== null && hasHeading && (
-          <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />
-        )}
+        {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
         {permissionDenied && <Text style={styles.message}>The qibla needs your location.</Text>}
       </View>
+      {/* Never conditional: the sheet sizes itself from its content, so a line that comes and goes resizes it */}
+      <Text style={styles.place} numberOfLines={1}>
+        {place ?? ' '}
+      </Text>
     </Sheet>
   );
 }
@@ -47,6 +56,13 @@ const styles = StyleSheet.create({
     color: COLORS.text.secondary,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeDetail,
+    textAlign: 'center',
+  },
+  place: {
+    color: COLORS.text.muted,
+    fontFamily: TEXT.family.regular,
+    fontSize: TEXT.sizeDetail,
+    lineHeight: TEXT.lineHeight.default,
     textAlign: 'center',
   },
   stage: {

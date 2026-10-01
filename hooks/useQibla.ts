@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { type SharedValue, useSharedValue } from 'react-native-reanimated';
 
-import { readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
+import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
 import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
 import { unwrapHeading } from '@/shared/qiblaCompass';
 import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
@@ -12,7 +12,12 @@ export interface QiblaState {
   /** Whether the phone can currently say which way it points */
   hasHeading: boolean;
   permissionDenied: boolean;
+  /** Where the bearing was computed FROM: undefined while the geocoder is still looking, null when it found nothing */
+  place: string | null | undefined;
 }
+
+/** Long enough to ride out the gaps a settling magnetometer leaves, short enough that a real loss still shows */
+const HEADING_GRACE_MS = 1500;
 
 export interface QiblaReadings {
   /** The heading as a continuous angle, so the face never spins the long way round past north */
@@ -30,20 +35,38 @@ export interface QiblaReadings {
  * twenty-a-second sensor stream costs no React render.
  */
 export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<void>; stop: () => void } => {
-  const [state, setState] = useState<QiblaState>({ bearing: null, hasHeading: false, permissionDenied: false });
+  const [state, setState] = useState<QiblaState>({
+    bearing: null,
+    hasHeading: false,
+    permissionDenied: false,
+    place: undefined,
+  });
   const heading = useSharedValue(0);
   const aligned = useSharedValue(false);
   const alignedRef = useRef(false);
   const activeRef = useRef(false);
   const unwatchRef = useRef<(() => void) | null>(null);
+  const blankRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearBlank = useCallback(() => {
+    if (!blankRef.current) return;
+    clearTimeout(blankRef.current);
+    blankRef.current = null;
+  }, []);
+
+  const blank = useCallback(() => {
+    blankRef.current = null;
+    setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
+  }, []);
 
   const stop = useCallback(() => {
     activeRef.current = false;
     alignedRef.current = false;
     aligned.value = false;
+    clearBlank();
     unwatchRef.current?.();
     unwatchRef.current = null;
-  }, [aligned]);
+  }, [aligned, clearBlank]);
 
   const start = useCallback(async () => {
     activeRef.current = true;
@@ -59,16 +82,23 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     if (!activeRef.current) return;
 
     const bearing = qiblaBearing(position);
-    setState({ bearing, hasHeading: false, permissionDenied: false });
+    setState({ bearing, hasHeading: false, permissionDenied: false, place: undefined });
+
+    // Not awaited: the geocoder is a network call, and the compass must never wait on a label to start turning
+    readPlaceName(position).then((place) => {
+      if (activeRef.current) setState((previous) => ({ ...previous, place }));
+    });
 
     const unwatch = await watchHeading(({ trueHeading }) => {
       if (trueHeading === NO_HEADING) {
+        // The magnetometer drops the odd reading while it settles, and unmounting on one resizes the sheet
         alignedRef.current = false;
         aligned.value = false;
-        setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
+        if (!blankRef.current) blankRef.current = setTimeout(blank, HEADING_GRACE_MS);
         return;
       }
 
+      clearBlank();
       const nowAligned = isAligned(alignmentOffset(trueHeading, bearing), alignedRef.current);
       // The strongest impact the platform offers, because a blind user feels this instead of reading anything
       if (shouldTap(alignedRef.current, nowAligned)) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
@@ -82,7 +112,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     // armed for the life of the process
     if (activeRef.current) unwatchRef.current = unwatch;
     else unwatch();
-  }, [aligned, heading]);
+  }, [aligned, heading, blank, clearBlank]);
 
   useEffect(() => stop, [stop]);
 

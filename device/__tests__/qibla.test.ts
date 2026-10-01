@@ -4,7 +4,7 @@
 
 import * as Location from 'expo-location';
 
-import { readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
+import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
 
 // The platform this file exists to wrap, so the suite owns what it answers
 jest.mock('expo-location', () => ({
@@ -12,6 +12,7 @@ jest.mock('expo-location', () => ({
   requestForegroundPermissionsAsync: jest.fn(),
   getLastKnownPositionAsync: jest.fn(),
   getCurrentPositionAsync: jest.fn(),
+  reverseGeocodeAsync: jest.fn(),
   watchHeadingAsync: jest.fn(),
 }));
 
@@ -71,6 +72,42 @@ describe('reading the position', () => {
     } as Location.LocationObject);
 
     await expect(readPosition()).resolves.toEqual({ latitude: 1, longitude: 2 });
+  });
+});
+
+describe('naming the position', () => {
+  const london = { latitude: 51.475, longitude: -0.2015 };
+
+  it('names the place from the address the platform returns', async () => {
+    mockLocation.reverseGeocodeAsync.mockResolvedValue([
+      { city: 'London', country: 'United Kingdom' } as Location.LocationGeocodedAddress,
+    ]);
+
+    await expect(readPlaceName(london)).resolves.toBe('London, United Kingdom');
+    expect(mockLocation.reverseGeocodeAsync).toHaveBeenCalledWith(london);
+  });
+
+  // The geocoder is network-backed on both platforms, so it fails offline and is rate-limited. The compass works
+  // without it, and a thrown error here would cost the user their bearing
+  it('answers null when the geocoder throws, rather than failing the compass with it', async () => {
+    mockLocation.reverseGeocodeAsync.mockRejectedValue(new Error('offline'));
+
+    await expect(readPlaceName(london)).resolves.toBeNull();
+  });
+
+  it('answers null when the platform knows the coordinates but can name nothing there', async () => {
+    mockLocation.reverseGeocodeAsync.mockResolvedValue([]);
+
+    await expect(readPlaceName(london)).resolves.toBeNull();
+  });
+
+  it('reads the first address, which is the one the platform ranks best', async () => {
+    mockLocation.reverseGeocodeAsync.mockResolvedValue([
+      { city: 'Makkah', country: 'Saudi Arabia' } as Location.LocationGeocodedAddress,
+      { city: 'Jeddah', country: 'Saudi Arabia' } as Location.LocationGeocodedAddress,
+    ]);
+
+    await expect(readPlaceName(london)).resolves.toBe('Makkah, Saudi Arabia');
   });
 });
 
