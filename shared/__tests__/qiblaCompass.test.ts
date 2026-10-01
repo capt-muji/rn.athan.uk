@@ -168,9 +168,11 @@ describe('the clearances the owner settled on the phone', () => {
     expect(drawnSpread).toBeCloseTo(kaabaHalfAngle, 1);
   });
 
-  // The mizab reaches past the cube, so a canvas sized to the cube alone cuts the spout off
-  it('draws the marker on a canvas wide enough to hold the mizab', () => {
-    expect(FIGURE_CANVAS).toBeGreaterThan(2 * FIGURE_SPREAD.halfWidth);
+  // The gold outline reaches half its width beyond every corner it is drawn through, so a canvas sized to the
+  // cube's bare vertices shaves that line off along whichever edge the figure runs closest to
+  it('draws the marker on a canvas that holds its own outline', () => {
+    expect(FIGURE_CANVAS).toBeGreaterThanOrEqual(2 * FIGURE_SPREAD.halfWidth);
+    expect(FIGURE_CANVAS).toBeGreaterThanOrEqual(2 * FIGURE_SPREAD.underside);
   });
 
   it('keeps the arc concentric with the rim, rather than sitting inside it', () => {
