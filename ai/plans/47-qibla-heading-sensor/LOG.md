@@ -1,6 +1,16 @@
 # Session 47 execution log
 
-## Resume from: step 4 (device proof) is RUNNING. Nothing is committed yet.
+## DONE, merged at `d144d777` (1.29.193). 186 suites, 4964 tests, 100% on all four measures.
+
+**Accepted by the owner on both Android phones**: the OnePlus 3T and the Galaxy S23, on RELEASE builds.
+🐋  "the performance has been fixed, it's very smooth, it's very good" and, after the axis fix,
+🐋  "the direction now has been fixed."
+
+**Still open, and it is the one thing this session could not finish: the iPhone XS is on 1.29.191**, a
+build that predates this work and uses the OLD `watchHeadingAsync` path. So iOS has NEVER run this code,
+and the owner's report that iOS and Android point differently is a comparison of two different
+implementations rather than a defect in either. **Nothing about iOS is proven until the XS carries
+1.29.193.**
 
 ## The phone changed, and that is the headline
 
@@ -228,20 +238,52 @@ With the owner's two spacing asks applied as well (50% less below the dial, 20% 
 
 Both platforms now fit inside the cap with room to spare (3T 41.6 dp, XS 104.2 dp).
 
-## THE AXIS IS REPRODUCED AND DERIVED, BUT NOT FIXED (the owner deferred it)
+## THE FIFTH DEFECT: the dial turned backwards, and the fix came from a measurement rather than a derivation
 
-🐋  "we can ignore the compass... we'll address that next time, but we want to focus on the performance"
+The owner reported the dial spinning clockwise as he turned the phone clockwise, where it must spin
+anticlockwise. **Reasoning from the two platforms' sign conventions produced a contradiction**: the same
+argument said iOS should be wrong too, and he reported iOS as correct.
 
-Recorded so the next session does not start from zero. Android `getOrientation()[0]` is documented
-clockwise-positive ("when facing east, this angle is PI/2"), and `ReanimatedSensorListener.kt:50` emits
-`yaw = -orientation[0]`. Carried through `headingFromYaw` and the dial's `rotate(-heading)`, a user
-turning RIGHT gets a dial rotating **clockwise**, which is exactly what the owner reports.
+That contradiction is what made a device measurement non-negotiable, and session 40 is the precedent,
+having shipped a reading 90 degrees out by tuning a constant until a dial "looked right".
 
-**The derivation is incomplete and must not be acted on yet**: iOS CoreMotion yaw is counterclockwise-positive
-too, so the same reasoning predicts iOS would be wrong, and the owner says iOS is correct. Something
-platform-specific sits between the two and has not been identified. **A real fix needs a measurement on
-both phones, not this derivation.** Do not "fix" it by flipping a sign, which is how session 40 shipped a
-reading 90 degrees out.
+**A temporary probe was added to log the raw yaw beside the computed heading**, built, installed on the
+S23, and the owner turned the phone through a clockwise quarter turn:
+
+| yaw | heading, as computed |
+| --- | --- |
+| -1.535 | 273.4 |
+| -2.019 | 245.6 |
+| -2.502 | 218.0 |
+| -3.127 | 182.2 |
+| 2.547 | 147.3 |
+
+**The heading FELL while the phone turned clockwise. A compass bearing must climb**, N to E to S. So the
+conversion was inverted, and negating the yaw turns those same samples into 87.9, 115.7, 143.4, 179.2,
+214.1: a clean climb through a 126-degree sweep.
+
+**The contradiction then resolved itself**: the iPhone is on 1.29.191 and never runs this code at all,
+so "iOS is correct" was never evidence about this conversion. **The bug was in shared code and would
+have shipped to both platforms.**
+
+The probe was removed and **those five device samples are now the regression test**, in
+`shared/__tests__/qiblaHeading.test.ts`, asserting the heading climbs: the only test in the suite taken
+from hardware rather than from a convention.
+
+## DECLINATION IS NOW ANDROID ONLY, which the code claimed but never enforced
+
+`readDeclination` carried a comment saying "ANDROID ONLY ... passing it on both platforms double-counts
+it", and **the gate was never written**. Measured by reading both libraries' native sources:
+
+| Platform | What the sensor reports | What we add | Result |
+| --- | --- | --- | --- |
+| Android | `getOrientation` from MAGNETIC north | declination | true north, correct |
+| iOS | `XTrueNorthZVertical`, already TRUE north | declination | true north PLUS declination, wrong |
+
+About 0.9 degrees in London, which is why it had not been noticed, but it scales with place: the same
+code near Seattle would be about 15 degrees out. `readDeclination` now returns 0 on iOS without asking
+the platform at all, so **each platform ends on its own native true-north reading and the app invents
+nothing**, which is the owner's standing rule.
 
 ## Cold launch on the 3T
 
@@ -281,15 +323,50 @@ should use the release build**; the debug build earns its place for hot-reload i
 - **The 3T needs about 20 seconds from launch to first frame** on a debug build (10.8 s of that is
   Metro bundling 2924 modules). A screenshot taken earlier shows only the splash colour.
 
+## The audit: dead code, coverage, security
+
+**`NO_HEADING` and its grace window are DELETED, proven unreachable rather than assumed so.** The
+sentinel was `-1`, the value `watchHeadingAsync` used to report a lost fix. Every heading now arrives
+through `headingFromYaw`, which ends in `normaliseBearing`, whose range is `[0, 360)`: swept across
+extremes including the infinities' worth of turns, it never returns a negative. So the branch could not
+fire, and with it went `HEADING_GRACE_MS`, `blankRef`, `clearBlank` and `blank`.
+
+**Three test-infrastructure findings, each of which cost real time and is worth carrying:**
+
+1. **The published Reanimated mock's `useAnimatedReaction` is a no-op** (`src/mock.ts:67`), so a
+   component whose entire job is to react to a shared value did nothing under test. That is why
+   `QiblaHeadingSource.tsx` sat at 0% and the handoff called it untestable. `jest.components.setup.js`
+   now gives it a working implementation, and all 185 existing suites stayed green.
+2. **Only the FIRST `render()` in a file runs its effects unless the render is awaited.** A bare
+   `useEffect` probe fired once in test A and zero times in tests B and C; `await render(...)` fires in
+   all three. Every sheet suite here already used the awaited form, which is why none of them hit it.
+3. **`clearMocks: true` is set globally** (`jest.config.js:66`), so a module mock's implementation is
+   stripped between tests, not just its call records. A mock that must survive has to be restored in
+   `beforeEach`, not merely cleared.
+
+**Security: nothing added.** No key, token or secret in the diff; no new network call; `app.json`
+untouched apart from the version, so no new permission. The one permission the feature uses is the
+foreground location prompt that already existed.
+
+**`find-unused-exports.py` reports its five pre-existing entries and no new ones.**
+
 ## State of the checks
 
 | Check | Result |
 | --- | --- |
 | `npx tsc --noEmit` | exit 0 |
-| `npx biome check . --error-on-warnings` | exit 0, 380 files |
-| The three qibla suites | 79 tests, 3 suites, all passing |
-| Full `yarn validate` | NOT run yet; the previous session left coverage at 99.83% with two known gaps |
+| `npx biome check . --error-on-warnings` | exit 0, 381 files |
+| Suite | 186 suites, 4964 tests, all passing |
+| Coverage | **100% statements, branches, functions and lines** |
+| `find-unused-exports.py` | 5 pre-existing entries, none new |
 
-The two coverage gaps from the previous session are unchanged and still open, and `NEXT-SESSION.md`
-describes both. **The owner has asked for prototype efficiency work rather than testing for now**, so
-they stay open deliberately.
+## What the next session should pick up
+
+1. **Build 1.29.193 for the iPhone XS and judge iOS on it.** Until then no iOS claim is evidence, and
+   the owner's cross-platform comparison cannot be made. It is a local Xcode build to the physical
+   device, never EAS.
+2. **Re-measure the cold launch on a release build if the owner still wants it faster.** 3620 ms on the
+   3T is dominated by the TLS provider install and JS evaluation already measured in ISSUES #32, and
+   nothing in this session targeted it.
+3. The S23 was disconnected mid-session, so it still carries the build from before the axis fix. It
+   needs 1.29.193 before it is judged again.
