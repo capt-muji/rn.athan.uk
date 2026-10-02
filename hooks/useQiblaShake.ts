@@ -7,23 +7,18 @@ import { isShaking, type ShakeSample, shakeMagnitude, shakeProgress, shakeWindow
 const MAX_CREDIT_MS = 200;
 
 export interface QiblaShake {
-  /** How much of the asked-for wave is done, from 0 to 1, which the bar under the figure draws */
-  progress: number;
-  /** Whether the phone is being waved at this moment */
-  isWaving: boolean;
   /** Whether the whole gesture has been performed. LATCHES: the compass must not close again mid-use */
   hasWaved: boolean;
   /**
    * Takes one accelerometer magnitude, as the sensor delivers it.
    *
-   * Exposed because `useAnimatedReaction` reads the sensor on the UI runtime, which no test can drive: a suite
-   * covering the gate pushes readings through this instead, which is the same path the sensor takes.
+   * Exposed because `useAnimatedReaction` reads the sensor on the UI runtime, which no test can drive.
    */
   consumeSample: (magnitude: number) => void;
 }
 
 /**
- * Whether the user has actually waved the phone, and how far through the asked-for wave they are.
+ * Whether the user has actually waved the phone.
  *
  * THE WAVE IS THE GATE ON THE COMPASS, which is the owner's requirement. It is not decoration: the figure of
  * eight is the standard hard-iron re-estimation, and the hint asked for it while nothing checked it happened.
@@ -37,10 +32,12 @@ export interface QiblaShake {
  * away the moment the user held the phone still to read it, which is exactly when they need it.
  */
 export const useQiblaShake = (active: boolean): QiblaShake => {
-  const [state, setState] = useState({ progress: 0, isWaving: false, hasWaved: false });
+  const [hasWaved, setHasWaved] = useState(false);
   const samplesRef = useRef<ShakeSample[]>([]);
   const movingMsRef = useRef(0);
   const lastAtRef = useRef<number | null>(null);
+  // State is a render behind on the sampling path, which would let the gate publish itself twice
+  const wavedRef = useRef(false);
 
   // 20ms: the figure's own turns happen in a few hundred milliseconds, and a slower read would miss the moments
   // the wrist reverses, which are what tell a wave from a phone being carried
@@ -48,7 +45,7 @@ export const useQiblaShake = (active: boolean): QiblaShake => {
 
   const consumeSample = useCallback(
     (magnitude: number) => {
-      if (!active) return;
+      if (!active || wavedRef.current) return;
 
       const nowMs = Date.now();
       const window = shakeWindow([...samplesRef.current, { magnitude, atMs: nowMs }], nowMs);
@@ -60,15 +57,12 @@ export const useQiblaShake = (active: boolean): QiblaShake => {
       lastAtRef.current = nowMs;
       if (waving && since !== null) movingMsRef.current += Math.min(nowMs - since, MAX_CREDIT_MS);
 
-      const progress = shakeProgress(movingMsRef.current);
-      setState((previous) => {
-        const hasWaved = previous.hasWaved || progress >= 1;
-        if (previous.progress === progress && previous.isWaving === waving && previous.hasWaved === hasWaved) {
-          return previous;
-        }
+      if (shakeProgress(movingMsRef.current) < 1) return;
 
-        return { progress, isWaving: waving, hasWaved };
-      });
+      // Publishing per reading starved the gate: 50 renders a second slowed delivery below the rate the window
+      // needs to hold its minimum, so a half-second gesture took seconds
+      wavedRef.current = true;
+      setHasWaved(true);
     },
     [active]
   );
@@ -96,8 +90,9 @@ export const useQiblaShake = (active: boolean): QiblaShake => {
     samplesRef.current = [];
     movingMsRef.current = 0;
     lastAtRef.current = null;
-    setState({ progress: 0, isWaving: false, hasWaved: false });
+    wavedRef.current = false;
+    setHasWaved(false);
   }, [active]);
 
-  return { ...state, consumeSample };
+  return { hasWaved, consumeSample };
 };

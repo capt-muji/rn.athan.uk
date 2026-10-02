@@ -13,18 +13,18 @@ import { SHAKE } from '@/shared/qiblaShake';
 /** The shared value the hook reads, captured so a test can write readings into the very object it watches */
 let sensor: { value: { x: number; y: number; z: number; interfaceOrientation: number } } | null = null;
 
+/** Counts its own renders, because the gate publishing per reading is what made it take seconds on a device */
+let renders = 0;
+
 const Probe = ({ active }: { active: boolean }) => {
-  const { progress, isWaving, hasWaved } = useQiblaShake(active);
+  const { hasWaved } = useQiblaShake(active);
+  renders += 1;
 
-  return <Text>{`${progress.toFixed(3)}|${isWaving}|${hasWaved}`}</Text>;
+  return <Text>{`${hasWaved}`}</Text>;
 };
 
-/** What the probe currently reports, as the hook's three values */
-const reported = () => {
-  const [progress, waving, waved] = screen.getByText(/\|/).props.children.split('|');
-
-  return { progress: Number(progress), isWaving: waving === 'true', hasWaved: waved === 'true' };
-};
+/** Whether the probe reports the gesture done */
+const reported = () => screen.getByText(/true|false/).props.children === 'true';
 
 /**
  * Delivers `count` readings at `magnitude` metres per second squared away from gravity, advancing the clock the
@@ -68,7 +68,7 @@ describe('the wave the hint asks for', () => {
   it('reports nothing done before any reading arrives', async () => {
     await render(<Probe active />);
 
-    expect(reported()).toEqual({ progress: 0, isWaving: false, hasWaved: false });
+    expect(reported()).toBe(false);
   });
 
   // The owner's own phone sits tilted on a magnetic desk: it must never satisfy the gesture by sitting there
@@ -77,73 +77,7 @@ describe('the wave the hint asks for', () => {
 
     await deliver(rerender, 0.02, 60);
 
-    expect(reported()).toEqual({ progress: 0, isWaving: false, hasWaved: false });
-  });
-
-  it('credits a phone being waved', async () => {
-    const { rerender } = await render(<Probe active />);
-
-    await deliver(rerender, 5, 40);
-
-    expect(reported().isWaving).toBe(true);
-    expect(reported().progress).toBeGreaterThan(0);
-  });
-
-  it('reaches the whole way after the time the owner asked for', async () => {
-    const { rerender } = await render(<Probe active />);
-
-    await deliver(rerender, 5, Math.ceil(SHAKE.requiredMs / 20) + 10);
-
-    expect(reported().progress).toBe(1);
-  });
-
-  // Time spent in motion, not wall time: a user who stops stops EARNING, rather than losing what they did. The
-  // window takes its own length to empty of motion, so progress settles shortly after they stop rather than at
-  // the instant they do
-  it('stops earning when the user stops, and keeps what they already did', async () => {
-    const { rerender } = await render(<Probe active />);
-    await deliver(rerender, 5, 40);
-
-    await deliver(rerender, 0.02, 120);
-    const settled = reported().progress;
-    await deliver(rerender, 0.02, 60);
-
-    expect(reported().isWaving).toBe(false);
-    expect(reported().progress).toBe(settled);
-    expect(settled).toBeGreaterThan(0);
-  });
-
-  it('carries on from where it stopped when the user waves again', async () => {
-    const { rerender } = await render(<Probe active />);
-    await deliver(rerender, 5, 30);
-    const earned = reported().progress;
-    await deliver(rerender, 0.02, 40);
-
-    await deliver(rerender, 5, 30);
-
-    expect(reported().progress).toBeGreaterThan(earned);
-  });
-
-  // The sensor is armed only while the hint is up, so what it collected must not survive into the next open
-  it('forgets everything when the hint goes away', async () => {
-    const { rerender } = await render(<Probe active />);
-    await deliver(rerender, 5, 40);
-
-    await act(async () => {
-      rerender(<Probe active={false} />);
-    });
-
-    expect(reported()).toEqual({ progress: 0, isWaving: false, hasWaved: false });
-  });
-
-  // THE GATE ITSELF: the compass does not open until this turns true, so a phone that was never waved must
-  // never report it, however long the sheet is left open
-  it('refuses the gesture for a phone that is only sitting there', async () => {
-    const { rerender } = await render(<Probe active />);
-
-    await deliver(rerender, 0.02, Math.ceil(SHAKE.requiredMs / 20) * 4);
-
-    expect(reported().hasWaved).toBe(false);
+    expect(reported()).toBe(false);
   });
 
   it('opens the gate once the whole wave has been performed', async () => {
@@ -151,7 +85,44 @@ describe('the wave the hint asks for', () => {
 
     await deliver(rerender, 5, Math.ceil(SHAKE.requiredMs / 20) + 10);
 
-    expect(reported().hasWaved).toBe(true);
+    expect(reported()).toBe(true);
+  });
+
+  // THE DEFECT THIS PINS, measured by the owner on both phones: the gate took about three seconds for a
+  // gesture asking half a second, because publishing progress per reading meant 50 React renders a second,
+  // and a saturated JS thread then delivered readings too slowly for the window to hold its own minimum
+  it('renders once for the whole gesture rather than once per reading', async () => {
+    const { rerender } = await render(<Probe active />);
+    const readings = Math.ceil(SHAKE.requiredMs / 20) + 10;
+    renders = 0;
+
+    await deliver(rerender, 5, readings);
+
+    // Each `deliver` re-renders the probe itself, so the hook's own contribution is what is over that floor
+    expect(renders - readings).toBeLessThanOrEqual(2);
+  });
+
+  it('stops sampling once the gate is open, because nothing can change its answer', async () => {
+    const { rerender } = await render(<Probe active />);
+    await deliver(rerender, 5, Math.ceil(SHAKE.requiredMs / 20) + 10);
+    renders = 0;
+
+    await deliver(rerender, 5, 60);
+
+    expect(renders - 60).toBeLessThanOrEqual(1);
+  });
+
+  // Time spent in motion, not wall time: a user who waves, stops and waves again keeps what they have done
+  it('carries on from where it stopped when the user waves again', async () => {
+    const half = Math.ceil(SHAKE.requiredMs / 20 / 2);
+    const { rerender } = await render(<Probe active />);
+
+    await deliver(rerender, 5, half);
+    expect(reported()).toBe(false);
+    await deliver(rerender, 0.02, 40);
+    await deliver(rerender, 5, half + 6);
+
+    expect(reported()).toBe(true);
   });
 
   // The gesture is a one-time entry condition: re-testing it would take the compass away the moment the user
@@ -162,11 +133,10 @@ describe('the wave the hint asks for', () => {
 
     await deliver(rerender, 0.02, 200);
 
-    expect(reported().isWaving).toBe(false);
-    expect(reported().hasWaved).toBe(true);
+    expect(reported()).toBe(true);
   });
 
-  // A fresh wave is asked for on every open, because the calibration it performs goes stale with the room
+  // The sensor is armed only while the hint is up, so what it collected must not survive into the next open
   it('closes the gate again when the hint goes away, so the next open earns its own wave', async () => {
     const { rerender } = await render(<Probe active />);
     await deliver(rerender, 5, Math.ceil(SHAKE.requiredMs / 20) + 10);
@@ -175,7 +145,7 @@ describe('the wave the hint asks for', () => {
       rerender(<Probe active={false} />);
     });
 
-    expect(reported().hasWaved).toBe(false);
+    expect(reported()).toBe(false);
   });
 
   it('counts nothing while it is inactive, however hard the phone is moved', async () => {
@@ -184,11 +154,11 @@ describe('the wave the hint asks for', () => {
     for (let index = 0; index < 40; index++) {
       await act(async () => {
         jest.advanceTimersByTime(20);
-        if (sensor) sensor.value = { x: 0, y: 0, z: 9.81 + 5 + index * 1e-6, interfaceOrientation: 0 };
+        if (sensor) sensor.value = { x: 0, y: 0, z: 5 * Math.sin((index / 4) * Math.PI), interfaceOrientation: 0 };
         rerender(<Probe active={false} />);
       });
     }
 
-    expect(reported()).toEqual({ progress: 0, isWaving: false, hasWaved: false });
+    expect(reported()).toBe(false);
   });
 });
