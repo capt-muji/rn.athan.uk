@@ -320,8 +320,15 @@ Its claims must be only what was measured:
 > as a merely-poor 60-degree reading, so "the phone says this reading is invalid" is not recoverable
 > from JS even in principle. **A diagnostic belongs on the SCREEN rather than in a log on this
 > project**, because `shared/config.ts` disables Pino on `prod` and `preview` and those are the only
-> builds the owner tests. What the module measured on his own phones is in
-> `ai/plans/49-qibla-native-heading/LOG.md`.
+> builds the owner tests. **MEASURED ON THE FLOOR DEVICE: FOP runs on a 2016 OnePlus 3T and AGREES with
+> the heading already shipping, so it buys no accuracy there and the source was rightly not swapped.**
+> That FOP is genuinely fusing rather than failing silently is proven by its sensor clients: opening the
+> sheet registers the **UNCALIBRATED magnetometer and the UNCALIBRATED gyroscope**, neither of which this
+> app's own heading path has ever requested, which is Google's documented hard-iron and gyro-bias
+> estimation running. Three stationary frames put FOP within 0.3 degrees of itself across 8 seconds
+> against the drawn dial's 1.9, so FOP is marginally steadier and points the same way, which is exactly
+> what Google's own caveat about piping the Rotation Vector through predicts. What the module measured on
+> his own phones is in `ai/plans/49-qibla-native-heading/LOG.md`.
 
 Then set row 49 to EXECUTED in `ai/plans/README.md` and make an `executed` docs commit
 (`EXECUTOR-BRIEF.md` section 4b). Do not push: the audit pushes.
