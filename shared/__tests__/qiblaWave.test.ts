@@ -3,7 +3,7 @@
  * follows the same arithmetic the travelling phone does
  */
 
-import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint } from '@/shared/qiblaWave';
+import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint, waveRoll, waveTrail } from '@/shared/qiblaWave';
 
 /** The size the hint is drawn at on a phone, so a px figure here means a px the user sees */
 const WIDTH = 160;
@@ -136,6 +136,92 @@ describe('waveLean, the roll the phone carries through the figure', () => {
 
   it('returns to where it started, so a looping pass has no jump at its seam', () => {
     expect(waveLean(1)).toBeCloseTo(waveLean(0), 5);
+  });
+});
+
+describe('waveRoll, the bank that shows the phone turning out of the screen', () => {
+  // A flat drawing cannot rotate about the vertical, so it narrows instead. Passing through zero is what makes
+  // the phone read as banking like an aircraft rather than sliding flat through one plane
+  it('turns the phone through edge-on rather than keeping one face to the user', () => {
+    const rolls = Array.from({ length: 96 }, (_, index) => waveRoll(index / 96));
+
+    expect(Math.min(...rolls.map(Math.abs))).toBeLessThan(0.1);
+  });
+
+  it('shows both faces across one pass, so the turn reads as a roll rather than a squeeze', () => {
+    const rolls = Array.from({ length: 96 }, (_, index) => waveRoll(index / 96));
+
+    expect(Math.max(...rolls)).toBeGreaterThan(0.9);
+    expect(Math.min(...rolls)).toBeLessThan(-0.9);
+  });
+
+  it('never scales past full width, which would read as the phone growing', () => {
+    const rolls = Array.from({ length: 192 }, (_, index) => Math.abs(waveRoll(index / 192)));
+
+    expect(Math.max(...rolls)).toBeLessThanOrEqual(1);
+  });
+
+  it('returns to where it started, so a looping pass has no jump at its seam', () => {
+    expect(waveRoll(1)).toBeCloseTo(waveRoll(0), 5);
+  });
+
+  // Face-on at the ends of each lobe and edge-on where the path is steepest, which is the moment the wrist turns
+  it('is edge-on where the figure crosses its own centre', () => {
+    expect(Math.abs(waveRoll(0.125))).toBeLessThan(0.01);
+  });
+});
+
+describe('waveTrail, the comet tail behind the phone', () => {
+  it('ends exactly where the phone stands, so the tail is never detached from it', () => {
+    const points = pointsOf(waveTrail(0.3, WIDTH, HEIGHT));
+    const at = wavePoint(0.3, WIDTH, HEIGHT);
+    const last = points[points.length - 1];
+
+    expect(last.x).toBeCloseTo(at.x, 1);
+    expect(last.y).toBeCloseTo(at.y, 1);
+  });
+
+  // A literal, not WAVE.trail.samples: reading the constant on both sides makes the test follow whatever the
+  // constant says and catch nothing, which is how a coarse tail would ship looking tested
+  it('samples the tail finely enough that no segment reads as straight', () => {
+    const points = pointsOf(waveTrail(0.4, WIDTH, HEIGHT));
+
+    expect(points.length).toBeGreaterThanOrEqual(16);
+    const gaps = points
+      .slice(1)
+      .map((point, index) => Math.hypot(point.x - points[index].x, point.y - points[index].y));
+    expect(Math.max(...gaps)).toBeLessThan(WIDTH * 0.1);
+  });
+
+  it('reaches back along the path the phone came from, not ahead of it', () => {
+    const points = pointsOf(waveTrail(0.25, WIDTH, HEIGHT));
+    const behind = wavePoint(0.25 - WAVE.trail.span, WIDTH, HEIGHT);
+
+    expect(points[0].x).toBeCloseTo(behind.x, 1);
+    expect(points[0].y).toBeCloseTo(behind.y, 1);
+  });
+
+  // The tail reaches back past 0 for the first part of every loop, where a negative progress would place it
+  // off the curve entirely
+  it('stays on the figure when the tail reaches back past the start of the loop', () => {
+    const points = pointsOf(waveTrail(0.05, WIDTH, HEIGHT));
+
+    for (const point of points) {
+      expect(Math.abs(point.x)).toBeLessThanOrEqual(WIDTH / 2 + 0.01);
+      expect(Math.abs(point.y)).toBeLessThanOrEqual(HEIGHT / 2 + 0.01);
+    }
+  });
+
+  it('is an open path, because a closed one would draw the whole figure at once', () => {
+    expect(waveTrail(0.5, WIDTH, HEIGHT)).not.toContain('Z');
+  });
+
+  it('scales with the box it is given rather than holding a fixed size', () => {
+    const small = pointsOf(waveTrail(0.3, WIDTH, HEIGHT));
+    const large = pointsOf(waveTrail(0.3, WIDTH * 2, HEIGHT * 2));
+
+    expect(large[0].x).toBeCloseTo(small[0].x * 2, 1);
+    expect(large[0].y).toBeCloseTo(small[0].y * 2, 1);
   });
 });
 

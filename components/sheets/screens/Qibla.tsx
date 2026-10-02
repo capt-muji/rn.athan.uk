@@ -67,9 +67,11 @@ export default function BottomSheetQibla() {
         )}
         {permissionDenied && <Text style={styles.message}>The qibla needs your location.</Text>}
       </View>
-      {/* Never conditional: the sheet sizes itself from its content, so a line that comes and goes resizes it */}
-      <Text style={styles.place} numberOfLines={1}>
-        {place ?? ' '}
+      {/* The place belongs to the compass and arrives with it: shown while the hint is up, it answers a question
+          the user has not been asked yet. Its height is held either way, because the sheet sizes itself from its
+          content and a line that comes and goes would resize it under them */}
+      <Text testID='qibla-place' style={styles.place} numberOfLines={1}>
+        {showsCompass ? (place ?? ' ') : ' '}
       </Text>
       {/* The flag is build-time static, so this whole block folds away when it is off. It renders before the
           first reading for the same reason the place line is never conditional */}
