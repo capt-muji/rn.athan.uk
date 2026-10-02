@@ -15,8 +15,17 @@ const round = (value: number): string => value.toFixed(2);
 
 type Point = [x: number, y: number];
 
-const point = ([x, y]: Point): string => `${round(x)},${round(y)}`;
-const polygon = (...points: Point[]): string => points.map(point).join(' ');
+const point = ([x, y]: Point): string => {
+  'worklet';
+
+  return `${x.toFixed(2)},${y.toFixed(2)}`;
+};
+
+const polygon = (...points: Point[]): string => {
+  'worklet';
+
+  return points.map(point).join(' ');
+};
 
 /** Every proportion and count the figure is built from, as a share of the box it is drawn in */
 export const WAVE = {
@@ -146,8 +155,12 @@ export interface PhoneSlab {
  * a flat card scaled to edge-on disappears, which is the defect this replaces.
  *
  * Drawn about the phone's own centre, so one transform places it on the curve.
+ *
+ * A worklet, and every helper it calls is one too: it is rebuilt on the UI thread every frame, and a plain JS
+ * function reached from there throws "Tried to synchronously call a Remote Function" and blanks the screen.
  */
 export const phoneSlab = (size: number, yaw: number): PhoneSlab => {
+  'worklet';
   const body = phoneBody(size);
   const depth = body.width * WAVE.slab.depth * yaw;
   const rise = Math.abs(depth) * WAVE.slab.rake;
@@ -178,9 +191,17 @@ export const phoneSlab = (size: number, yaw: number): PhoneSlab => {
   };
 };
 
-/** The phone's body, as a rounded rectangle centred on its own origin, so a transform alone places it */
-export const phoneBody = (size: number): { width: number; height: number; radius: number } => ({
-  width: size * WAVE.phone.width,
-  height: size * WAVE.phone.height,
-  radius: size * WAVE.phone.radius,
-});
+/**
+ * The phone's body, as a rounded rectangle centred on its own origin, so a transform alone places it.
+ *
+ * A worklet, because `phoneSlab` is rebuilt on the UI thread every frame and calls this.
+ */
+export const phoneBody = (size: number): { width: number; height: number; radius: number } => {
+  'worklet';
+
+  return {
+    width: size * WAVE.phone.width,
+    height: size * WAVE.phone.height,
+    radius: size * WAVE.phone.radius,
+  };
+};
