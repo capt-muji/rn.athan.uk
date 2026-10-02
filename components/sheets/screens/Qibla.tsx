@@ -1,7 +1,10 @@
+import * as Haptics from 'expo-haptics';
+import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
+import { useQiblaShake } from '@/hooks/useQiblaShake';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
@@ -34,10 +37,21 @@ export default function BottomSheetQibla() {
   const { bearing, hasHeading, permissionDenied, place, heading, aligned, diagnostic, start, stop } = useQibla();
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
-  const showsCompass = bearing !== null && hasHeading;
+  const headingReady = bearing !== null && hasHeading;
   // The magnetometer arms cold and the settling gate refuses to draw until it converges, which is the few blank
   // seconds the user was left looking at
-  const isCalibrating = !showsCompass && !permissionDenied;
+  const isCalibrating = !headingReady && !permissionDenied;
+  const { progress: shakeProgress } = useQiblaShake(isCalibrating);
+  const showsCompass = headingReady;
+
+  // The owner's requirement: the user is told they may stop waving by FEEL, because they are looking at the phone
+  // they are moving rather than at the screen. The effect runs only when `showsCompass` itself changes, so the
+  // tap lands once per arrival without a guard of its own, and a compass lost and regained earns a second one
+  useEffect(() => {
+    if (!showsCompass) return;
+
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+  }, [showsCompass]);
 
   return (
     <Sheet
@@ -62,7 +76,7 @@ export default function BottomSheetQibla() {
         {isCalibrating && (
           <View style={styles.waiting}>
             <Text style={styles.message}>Wave the phone in a figure eight to calibrate the compass.</Text>
-            <QiblaWave size={size} />
+            <QiblaWave size={size} progress={shakeProgress} />
           </View>
         )}
         {permissionDenied && <Text style={styles.message}>The qibla needs your location.</Text>}
