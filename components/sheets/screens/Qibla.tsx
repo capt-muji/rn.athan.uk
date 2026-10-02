@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
-import { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useCallback, useEffect, useState } from 'react';
+import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
@@ -32,21 +32,75 @@ const PENDING = '-';
 
 const oneDecimal = (value: number | undefined): string => value?.toFixed(1) ?? PENDING;
 
+/**
+ * The wave the user must perform before the compass opens, and the bar showing how much of it is done.
+ *
+ * Its OWN component because `useQiblaShake` arms the accelerometer for the life of whatever calls it, and every
+ * sheet in this app is mounted from launch: called in the sheet itself it would run the sensor forever
+ * (Performance Design Rule 7). Mounted only while the hint is on screen, it arms and unregisters with the hint.
+ */
+const QiblaCalibration = ({ size, onWaved }: { size: number; onWaved: () => void }) => {
+  const { progress, hasWaved } = useQiblaShake(true);
+
+  useEffect(() => {
+    if (hasWaved) onWaved();
+  }, [hasWaved, onWaved]);
+
+  return (
+    <View style={styles.waiting}>
+      <Text style={styles.message}>Wave the phone in a figure eight to calibrate the compass.</Text>
+      <QiblaWave size={size} progress={progress} />
+    </View>
+  );
+};
+
+/**
+ * What the user is told when the qibla cannot be computed, with the one action that fixes it.
+ *
+ * A bearing needs a position, so a refusal is the end of the feature rather than a degraded version of it. The
+ * settings link is offered because the permission cannot be asked for twice: once refused, the system dialog
+ * never appears again and the app's own screen is the only route back.
+ */
+const QiblaPermissionDenied = () => (
+  <View style={styles.waiting}>
+    <Text style={styles.message}>
+      The qibla is worked out from where you are, so it needs location access. Turn it on in Settings, then open this
+      sheet again.
+    </Text>
+    <Pressable
+      accessibilityRole='button'
+      accessibilityLabel='Open settings'
+      testID='qibla-open-settings'
+      onPress={() => Linking.openSettings()}>
+      <Text style={styles.action}>Open Settings</Text>
+    </Pressable>
+  </View>
+);
+
 export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
   const { bearing, hasHeading, permissionDenied, place, heading, aligned, diagnostic, start, stop } = useQibla();
+  const [hasWaved, setHasWaved] = useState(false);
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
   const headingReady = bearing !== null && hasHeading;
-  // The magnetometer arms cold and the settling gate refuses to draw until it converges, which is the few blank
-  // seconds the user was left looking at
-  const isCalibrating = !headingReady && !permissionDenied;
-  const { progress: shakeProgress } = useQiblaShake(isCalibrating);
-  const showsCompass = headingReady;
 
-  // The owner's requirement: the user is told they may stop waving by FEEL, because they are looking at the phone
-  // they are moving rather than at the screen. The effect runs only when `showsCompass` itself changes, so the
-  // tap lands once per arrival without a guard of its own, and a compass lost and regained earns a second one
+  // THE SHAKE IS THE GATE, which is the owner's requirement: the compass waits for a real wave even once the
+  // heading is ready, because the gesture is what re-estimates the hard-iron offset the magnetometer carries,
+  // and the wait doubles as the time the heading needs to converge behind it
+  const showsCompass = headingReady && hasWaved;
+  const isCalibrating = !showsCompass && !permissionDenied;
+
+  // A fresh wave is asked for on every open, because the calibration it performs goes stale with the room
+  const open = useCallback(async () => {
+    setHasWaved(false);
+    await start();
+  }, [start]);
+
+  const markWaved = useCallback(() => setHasWaved(true), []);
+
+  // The user is told they may stop by FEEL, because they are watching the phone they are moving rather than the
+  // screen. Fires once per arrival, and a compass lost and regained earns a second tap
   useEffect(() => {
     if (!showsCompass) return;
 
@@ -59,7 +113,7 @@ export default function BottomSheetQibla() {
       title='Qibla'
       subtitle='Turn until it vibrates'
       icon={<IconView type={Icon.COMPASS} size={16} color='rgba(165, 180, 252, 0.8)' />}
-      onPresent={start}
+      onPresent={open}
       onDismiss={stop}
       perfName='sheet_qibla'
       scrollable={false}
@@ -73,13 +127,9 @@ export default function BottomSheetQibla() {
         {/* A dial drawn without a live heading would hold its last angle and quietly point the wrong way, which is
             the one thing this feature must never do */}
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
-        {isCalibrating && (
-          <View style={styles.waiting}>
-            <Text style={styles.message}>Wave the phone in a figure eight to calibrate the compass.</Text>
-            <QiblaWave size={size} progress={shakeProgress} />
-          </View>
-        )}
-        {permissionDenied && <Text style={styles.message}>The qibla needs your location.</Text>}
+        {/* Mounted only while the hint is up, which is what keeps the accelerometer off behind the compass */}
+        {isCalibrating && <QiblaCalibration size={size} onWaved={markWaved} />}
+        {permissionDenied && <QiblaPermissionDenied />}
       </View>
       {/* The place belongs to the compass and arrives with it: shown while the hint is up, it answers a question
           the user has not been asked yet. Its height is held either way, because the sheet sizes itself from its
@@ -102,6 +152,12 @@ export default function BottomSheetQibla() {
 }
 
 const styles = StyleSheet.create({
+  action: {
+    color: COLORS.qibla.away.accent,
+    fontFamily: TEXT.family.medium,
+    fontSize: TEXT.sizeDetail,
+    textAlign: 'center',
+  },
   message: {
     color: COLORS.text.secondary,
     fontFamily: TEXT.family.regular,

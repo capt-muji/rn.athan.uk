@@ -27,17 +27,24 @@ export const SHAKE = {
   motionThreshold: 1.4,
   /** How many of the last samples must show motion, as a share, so one jolt is not a wave */
   motionShare: 0.35,
-  /** The window the share is measured over, long enough to hold a whole lobe of the figure */
-  windowMs: 1200,
+  /**
+   * The window the share is measured over.
+   *
+   * Shorter than `requiredMs` on purpose: a window that outlives the requirement keeps reporting motion from
+   * samples the user has already stopped producing, so a wave shorter than the gate asks for would still
+   * finish it on stale readings alone.
+   */
+  windowMs: 400,
   /** Below this the window is too sparse to mean anything, so one jolt cannot read as a wave */
   minReadings: 8,
   /**
    * How long the user must have been waving in total before the gesture counts as done.
    *
-   * The owner's number: 🐋  "Have the user shake it for 3 seconds. Maximum 3 seconds." Counted as time spent in
-   * motion rather than wall time, so a user who waves for one second, stops, and waves again still gets there.
+   * The owner's number, settled at 500ms: long enough to be a deliberate gesture, short enough not to be a
+   * chore. Counted as time spent IN MOTION rather than wall time, so a user who waves, pauses and waves again
+   * keeps what they have already done.
    */
-  requiredMs: 3000,
+  requiredMs: 500,
 } as const;
 
 /** A sample as the accelerometer delivers it, in g, with the moment it arrived */
