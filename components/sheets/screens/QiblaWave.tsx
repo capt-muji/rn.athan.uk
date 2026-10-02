@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   Easing,
+  useAnimatedProps,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
@@ -11,7 +12,9 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 
 import { COLORS } from '@/shared/constants';
-import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint } from '@/shared/qiblaWave';
+import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint, waveRoll, waveTrail } from '@/shared/qiblaWave';
+
+const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 const PALETTE = COLORS.qibla.away;
 
@@ -19,11 +22,18 @@ const PALETTE = COLORS.qibla.away;
 const WAVE_DURATION = 3200;
 
 /**
- * The figure of eight the user waves the phone through, drawn as a phone travelling its traced path.
+ * The figure of eight the user waves the phone through, drawn as a phone trailing a comet's tail.
  *
  * A phone rather than a dot, because the instruction is to move THIS OBJECT: a dot teaches a shape where the
- * device teaches the gesture. It leans into each turn off the curve's own tangent, which is what tells the user
- * to roll their wrist rather than slide a flat hand through one plane.
+ * device teaches the gesture. It banks through each turn, scaled edge-on about its own long axis, so the figure
+ * asks for a wrist that rolls like an aircraft rather than a hand sliding flat through one plane.
+ *
+ * The tail is what makes the shape readable: the phone alone is a dot moving, where a trail leaves the whole
+ * figure visible for a moment after it has passed, so a user who looks up mid-loop still sees what to copy.
+ *
+ * THE GLOW IS THREE STACKED STROKES, not a shadow. Android's Glance and React Native's elevation cannot blur a
+ * stroke, and `shadow*` props do not cross to Android at all, so a real glow would be iOS-only. Three passes of
+ * the same path at falling width and opacity read as a glow on both platforms and cost three paints of one path.
  *
  * Shown only while the compass waits for the heading to converge, which is what waving the phone brings about.
  * Mounted for exactly that long, so the loop is never ticking behind the compass (Performance Design Rule 7).
@@ -46,11 +56,21 @@ export default function QiblaWave({ size }: { size: number }) {
     return () => cancelAnimation(progress);
   }, [progress]);
 
+  const trailProps = useAnimatedProps(() => ({
+    d: waveTrail(progress.value, figureWidth, figureHeight),
+  }));
+
   const phoneStyle = useAnimatedStyle(() => {
     const at = wavePoint(progress.value, figureWidth, figureHeight);
 
     return {
-      transform: [{ translateX: at.x }, { translateY: at.y }, { rotate: `${waveLean(progress.value)}deg` }],
+      transform: [
+        { translateX: at.x },
+        { translateY: at.y },
+        { rotate: `${waveLean(progress.value)}deg` },
+        // The bank: a flat drawing shows a turn out of the screen by narrowing, and this passes through edge-on
+        { scaleX: waveRoll(progress.value) },
+      ],
     };
   });
 
@@ -67,10 +87,33 @@ export default function QiblaWave({ size }: { size: number }) {
         <Path
           d={wavePath(figureWidth, figureHeight)}
           fill='none'
-          stroke={`rgba(${PALETTE.structure}, 0.3)`}
+          stroke={`rgba(${PALETTE.structure}, 0.16)`}
           strokeWidth={size * WAVE.stroke}
           strokeLinecap='round'
-          strokeDasharray={`${size * WAVE.stroke * 3} ${size * WAVE.stroke * 3}`}
+        />
+        <AnimatedPath
+          animatedProps={trailProps}
+          fill='none'
+          stroke={PALETTE.accent}
+          strokeWidth={size * WAVE.trail.halo}
+          strokeLinecap='round'
+          opacity={0.12}
+        />
+        <AnimatedPath
+          animatedProps={trailProps}
+          fill='none'
+          stroke={PALETTE.accent}
+          strokeWidth={size * WAVE.trail.halo * 0.5}
+          strokeLinecap='round'
+          opacity={0.3}
+        />
+        <AnimatedPath
+          animatedProps={trailProps}
+          fill='none'
+          stroke={PALETTE.accent}
+          strokeWidth={size * WAVE.trail.core}
+          strokeLinecap='round'
+          opacity={0.85}
         />
       </Svg>
       {/* Views rather than animated SVG nodes: react-native-svg re-walks its whole drawing pipeline on any
@@ -91,12 +134,13 @@ export default function QiblaWave({ size }: { size: number }) {
 const styles = StyleSheet.create({
   phone: {
     alignItems: 'center',
+    backgroundColor: PALETTE.kaaba,
     borderColor: PALETTE.accent,
     justifyContent: 'center',
     position: 'absolute',
   },
   screen: {
-    backgroundColor: `rgba(${PALETTE.structure}, 0.28)`,
+    backgroundColor: `rgba(${PALETTE.structure}, 0.2)`,
   },
   stage: {
     alignItems: 'center',
