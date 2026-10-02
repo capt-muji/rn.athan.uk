@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
+import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
@@ -43,8 +44,13 @@ export default function BottomSheetSettings() {
     showSheet();
   };
 
-  const handleQiblaPress = () => {
+  // The permission is settled BEFORE the sheet opens, which is the owner's order: a compass that opens and then
+  // asks shows the user an empty instrument with the system dialog sitting over it. A refusal opens nothing
+  const handleQiblaPress = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    if (!(await requestQiblaPermission())) return showQiblaLocationDialog();
+
     hideSettingsSheet();
     showQiblaSheet();
   };
