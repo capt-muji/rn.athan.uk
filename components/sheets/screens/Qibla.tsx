@@ -1,12 +1,12 @@
 import * as Haptics from 'expo-haptics';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
-import { useQiblaShake } from '@/hooks/useQiblaShake';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
 import { Icon } from '@/shared/types';
 import { setQiblaSheetModal } from '@/stores/ui';
@@ -33,28 +33,48 @@ const PENDING = '-';
 const oneDecimal = (value: number | undefined): string => value?.toFixed(1) ?? PENDING;
 
 /**
- * The wave the user must perform before the compass opens, and the bar showing how much of it is done.
+ * The invitation to wave, shown for a fixed time while the compass warms up behind it.
  *
- * Its OWN component because `useQiblaShake` arms the accelerometer for the life of whatever calls it, and every
- * sheet in this app is mounted from launch: called in the sheet itself it would run the sensor forever
- * (Performance Design Rule 7). Mounted only while the hint is on screen, it arms and unregisters with the hint.
+ * NOTHING MEASURES THE WAVE, deliberately. Reading the accelerometer to verify it cost the compass its own
+ * accuracy: the heading needs the accelerometer AND the magnetometer, the 3T's magnetometer tops out at 52Hz,
+ * and a second 50Hz subscriber alongside it made the dial lag on exactly the slow, careful turn a qibla asks
+ * for. The gesture was never verifiable anyway, only a proxy for the OS having re-estimated its hard iron.
+ *
+ * So the wait FAILS OPEN. A gate that waits for a gesture can refuse forever on a phone whose magnetometer
+ * misbehaves, leaving the user no way through; a timer always ends, and a user who ignores the invitation
+ * simply gets what the settling gate alone can give them.
  */
-const QiblaCalibration = ({ size, onWaved }: { size: number; onWaved: () => void }) => {
-  const { hasWaved } = useQiblaShake(true);
+const QiblaCalibration = ({ size }: { size: number }) => (
+  <View style={styles.waiting}>
+    <View style={styles.instruction}>
+      {/* No "calibrate" and no "figure eight": both are engineering words, and the drawing below already
+          shows the motion better than a sentence naming it could */}
+      <Text style={styles.headline}>Wake up the compass</Text>
+      <Text style={styles.message}>Move your phone like this</Text>
+    </View>
+    <QiblaWave size={size} />
+  </View>
+);
 
-  useEffect(() => {
-    if (hasWaved) onWaved();
-  }, [hasWaved, onWaved]);
+/**
+ * The sheet's own subtitle, which changes when the compass arrives and cross-fades rather than snapping.
+ *
+ * Two lines stacked and faded against each other, because a swap in place would resize the header mid-fade:
+ * the absolute one is taken out of the layout, so the height is whichever line is on top.
+ *
+ * It fades on the SAME flag the compass does, so the words and the instrument change together.
+ */
+const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
+  const progress = useDerivedValue(() => withTiming(showsCompass ? 1 : 0, { duration: ANIMATION.durationFade }));
+  const waiting = useAnimatedStyle(() => ({ opacity: 1 - progress.value }));
+  const ready = useAnimatedStyle(() => ({ opacity: progress.value }));
 
   return (
-    <View style={styles.waiting}>
-      <View style={styles.instruction}>
-        {/* No "calibrate" and no "figure eight": both are engineering words, and the drawing below already
-            shows the motion better than a sentence naming it could */}
-        <Text style={styles.headline}>Wake up the compass</Text>
-        <Text style={styles.message}>Move your phone like this</Text>
-      </View>
-      <QiblaWave size={size} />
+    <View>
+      <Animated.Text style={[styles.subtitle, waiting]}>Just a moment</Animated.Text>
+      <Animated.Text style={[styles.subtitle, styles.subtitleOver, ready]}>
+        Hold flat, turn until it vibrates
+      </Animated.Text>
     </View>
   );
 };
@@ -85,29 +105,16 @@ const QiblaPermissionDenied = () => (
 export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
   const { bearing, hasHeading, permissionDenied, place, heading, aligned, diagnostic, start, stop } = useQibla();
-  const [hasWaved, setHasWaved] = useState(false);
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
-  const headingReady = bearing !== null && hasHeading;
-
-  // THE SHAKE IS THE GATE, which is the owner's requirement: the compass waits for a real wave even once the
-  // heading is ready, because the gesture is what re-estimates the hard-iron offset the magnetometer carries,
-  // and the wait doubles as the time the heading needs to converge behind it
-  const showsCompass = headingReady && hasWaved;
+  // The settling gate is the whole wait, and it is the reason there is no timer beside it: it refuses to draw
+  // until the heading has stopped drifting across its own 3000ms window, measured at 30 degrees of error on a
+  // cold magnetometer against 0.71 once converged
+  const showsCompass = bearing !== null && hasHeading;
   const isCalibrating = !showsCompass && !permissionDenied;
 
-  const markWaved = useCallback(() => setHasWaved(true), []);
-
-  // A fresh wave is asked for on every open, because the calibration goes stale with the room. Cleared on
-  // CLOSE rather than open: a reset at open runs after the sheet has begun presenting, so the first frame
-  // still carried the last visit's answer and flashed the compass before the hint
-  const close = useCallback(() => {
-    setHasWaved(false);
-    stop();
-  }, [stop]);
-
-  // The user is told they may stop by FEEL, because they are watching the phone they are moving rather than the
-  // screen. Fires once per arrival, and a compass lost and regained earns a second tap
+  // The user is told the compass has arrived by FEEL, because they are most likely looking at the phone they
+  // are moving rather than at its screen
   useEffect(() => {
     if (!showsCompass) return;
 
@@ -118,10 +125,10 @@ export default function BottomSheetQibla() {
     <Sheet
       setRef={setQiblaSheetModal}
       title='Qibla'
-      subtitle='Turn until it vibrates'
+      subtitle={<QiblaSubtitle showsCompass={showsCompass} />}
       icon={<IconView type={Icon.COMPASS} size={16} color='rgba(165, 180, 252, 0.8)' />}
       onPresent={start}
-      onDismiss={close}
+      onDismiss={stop}
       perfName='sheet_qibla'
       scrollable={false}
       enableDynamicSizing
@@ -135,7 +142,7 @@ export default function BottomSheetQibla() {
             the one thing this feature must never do */}
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
         {/* Mounted only while the hint is up, which is what keeps the accelerometer off behind the compass */}
-        {isCalibrating && <QiblaCalibration size={size} onWaved={markWaved} />}
+        {isCalibrating && <QiblaCalibration size={size} />}
         {permissionDenied && <QiblaPermissionDenied />}
       </View>
       {/* The place belongs to the compass and arrives with it: shown while the hint is up, it answers a question
@@ -190,6 +197,18 @@ const styles = StyleSheet.create({
   },
   stage: {
     justifyContent: 'center',
+  },
+  // Matches the shared header's own subtitle, because this one replaces it for this sheet alone
+  subtitle: {
+    color: COLORS.text.sheetSubtitle,
+    fontFamily: TEXT.family.regular,
+    fontSize: TEXT.sizeDetail,
+    marginTop: SPACING.xs,
+  },
+  // Stacked rather than swapped, so the header keeps one height through the fade
+  subtitleOver: {
+    position: 'absolute',
+    top: 0,
   },
   waiting: {
     alignItems: 'center',

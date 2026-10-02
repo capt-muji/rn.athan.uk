@@ -38,7 +38,7 @@ interface SheetProps {
   /** Sheet header title */
   title: string;
   /** Sheet header subtitle */
-  subtitle: string;
+  subtitle: React.ReactNode;
   /** Sheet header icon */
   icon: React.ReactNode;
   /** Sheet content */
