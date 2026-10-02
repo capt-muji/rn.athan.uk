@@ -95,7 +95,7 @@ jest.mock('./node_modules/react-native-reanimated/src/initializers', () => ({ in
 // snap never ends, so "settled on the first frame, animated on a change" could not be tested at all
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
-  const { useEffect, useState } = require('react');
+  const { useEffect, useRef, useState } = require('react');
   // The mock's own version calls no React hook: it builds a plain value, which this keeps for the component's life
   const createSharedValue = Reanimated.useSharedValue;
   const reanimated = { ...Reanimated };
@@ -108,6 +108,26 @@ jest.mock('react-native-reanimated', () => {
     // Looked up on the module at unmount, so a suite's jest.spyOn(Reanimated, 'cancelAnimation') sees the call
     useEffect(() => () => reanimated.cancelAnimation(value), [value]);
     return value;
+  };
+  // The published mock's useAnimatedSensor returns one frozen all-zero reading, so a hook that reads a sensor
+  // cannot be tested against it at all. This keeps a shared value a suite can write, which is what lets a test
+  // deliver readings: `act(() => { sensor.value = { x, y, z }; })`
+  reanimated.useAnimatedSensor = () => {
+    const [sensor] = useState(() => createSharedValue({ x: 0, y: 0, z: 0, interfaceOrientation: 0 }));
+    return { sensor, isAvailable: true, config: {} };
+  };
+  // The published mock's useAnimatedReaction is a NOOP (src/mock.ts:67), which is why session 47 found
+  // QiblaHeadingSource sitting at 0% and called untestable. Run both halves eagerly on every render instead: the
+  // real hook re-runs its prepare function whenever its dependencies change, and a render is the only signal a
+  // test harness has
+  reanimated.useAnimatedReaction = (prepare, react, dependencies) => {
+    const previous = useRef(undefined);
+    useEffect(() => {
+      const value = prepare();
+      react(value, previous.current);
+      previous.current = value;
+    });
+    void dependencies;
   };
   return reanimated;
 });

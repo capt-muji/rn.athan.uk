@@ -831,7 +831,7 @@ describe('the wait before the compass can be drawn', () => {
   ])('hides the drawing from %s while leaving the line readable', async (_reader, prop, hidden) => {
     await openSheet();
 
-    expect(waveDot()?.parent).toHaveProp(prop, hidden);
+    expect(screen.getByTestId('qibla-wave-stage', { includeHiddenElements: true })).toHaveProp(prop, hidden);
     expect(screen.getByText('Wave the phone in a figure eight to calibrate the compass.')).toBeOnTheScreen();
   });
 
@@ -852,6 +852,57 @@ describe('the wait before the compass can be drawn', () => {
     await openSheet();
 
     expect(armed).toHaveBeenCalledTimes(1);
+  });
+
+  // The owner's requirement: the user is told they may stop waving by FEEL, because they are looking at the
+  // phone they are moving rather than at the screen
+  it('taps once when the compass is ready, so the user knows to stop waving', async () => {
+    await openSheet();
+
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+
+    await reportHeadings(95);
+
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.notificationAsync).toHaveBeenCalledWith(Haptics.NotificationFeedbackType.Success);
+  });
+
+  it('taps once however many headings follow, because a repeated tap is a buzz rather than a signal', async () => {
+    await openSheet();
+
+    await reportHeadings(95, 96, 97, 98);
+
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
+  });
+
+  // The heading can be lost for good and come back, which is a second wait and so earns a second tap
+  it('taps again when the compass returns after being lost', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+    await reportHeadings(95);
+
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(2);
+    jest.useRealTimers();
+  });
+
+  // Nothing to stop waving for, so nothing to say
+  it('stays silent while the compass is still waiting', async () => {
+    await openSheet();
+
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+  });
+
+  // The gesture has an end the user can see, rather than running until something invisible decides it is done
+  it('draws how much of the wave is still to do', async () => {
+    await openSheet();
+
+    expect(screen.getByTestId('qibla-wave-progress', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
   // Waving the phone cannot help a sheet that was never given a position, and asking for it would be a lie

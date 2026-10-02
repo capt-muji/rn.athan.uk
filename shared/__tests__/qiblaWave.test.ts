@@ -3,7 +3,7 @@
  * follows the same arithmetic the travelling phone does
  */
 
-import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint, waveRoll, waveTrail } from '@/shared/qiblaWave';
+import { phoneBody, phoneSlab, WAVE, waveLean, wavePath, wavePoint, waveTrail, waveYaw } from '@/shared/qiblaWave';
 
 /** The size the hint is drawn at on a phone, so a px figure here means a px the user sees */
 const WIDTH = 160;
@@ -139,35 +139,27 @@ describe('waveLean, the roll the phone carries through the figure', () => {
   });
 });
 
-describe('waveRoll, the bank that shows the phone turning out of the screen', () => {
-  // A flat drawing cannot rotate about the vertical, so it narrows instead. Passing through zero is what makes
-  // the phone read as banking like an aircraft rather than sliding flat through one plane
-  it('turns the phone through edge-on rather than keeping one face to the user', () => {
-    const rolls = Array.from({ length: 96 }, (_, index) => waveRoll(index / 96));
-
-    expect(Math.min(...rolls.map(Math.abs))).toBeLessThan(0.1);
-  });
-
-  it('shows both faces across one pass, so the turn reads as a roll rather than a squeeze', () => {
-    const rolls = Array.from({ length: 96 }, (_, index) => waveRoll(index / 96));
+describe('waveYaw, the turn that shows the phone rotating out of the screen', () => {
+  it('turns both ways across a pass, so the phone is seen from either side rather than held square', () => {
+    const rolls = Array.from({ length: 96 }, (_, index) => waveYaw(index / 96));
 
     expect(Math.max(...rolls)).toBeGreaterThan(0.9);
     expect(Math.min(...rolls)).toBeLessThan(-0.9);
   });
 
-  it('never scales past full width, which would read as the phone growing', () => {
-    const rolls = Array.from({ length: 192 }, (_, index) => Math.abs(waveRoll(index / 192)));
+  it('never turns past square-on, which is what bounds the flank the slab draws', () => {
+    const turns = Array.from({ length: 192 }, (_, index) => Math.abs(waveYaw(index / 192)));
 
-    expect(Math.max(...rolls)).toBeLessThanOrEqual(1);
+    expect(Math.max(...turns)).toBeLessThanOrEqual(1);
   });
 
   it('returns to where it started, so a looping pass has no jump at its seam', () => {
-    expect(waveRoll(1)).toBeCloseTo(waveRoll(0), 5);
+    expect(waveYaw(1)).toBeCloseTo(waveYaw(0), 5);
   });
 
-  // Face-on at the ends of each lobe and edge-on where the path is steepest, which is the moment the wrist turns
-  it('is edge-on where the figure crosses its own centre', () => {
-    expect(Math.abs(waveRoll(0.125))).toBeLessThan(0.01);
+  // Square-on where the path is steepest, which is the moment the wrist turns, and fully turned at each end
+  it('is square-on where the figure crosses its own centre', () => {
+    expect(Math.abs(waveYaw(0.125))).toBeLessThan(0.01);
   });
 });
 
@@ -225,21 +217,65 @@ describe('waveTrail, the comet tail behind the phone', () => {
   });
 });
 
-describe('the phone the figure carries', () => {
-  it('insets the screen inside the body on every side', () => {
+describe('phoneSlab, the phone drawn as a solid rather than a flat card', () => {
+  // The defect this replaces: a card rotated toward edge-on vanishes, so the user lost the object they were
+  // being asked to move. The front face is what they read, and it must survive every turn
+  // EVERY corner is checked, not the face's overall span: a narrowing that moves one corner leaves the span
+  // intact and the face a wedge, which still reads as the phone collapsing
+  it.each([-1, -0.5, 0, 0.5, 1])('keeps all four corners of the front face square when turned %p', (yaw) => {
+    const half = phoneBody(300).width / 2;
+    const corners = pointsOf(phoneSlab(300, yaw).front);
+
+    expect(corners).toHaveLength(4);
+    for (const corner of corners) expect(Math.abs(corner.x)).toBeCloseTo(half, 1);
+  });
+
+  it('shows no flank when the phone faces straight on, so a square phone reads flat', () => {
+    const xs = pointsOf(phoneSlab(300, 0).flank).map(({ x }) => x);
+
+    expect(Math.max(...xs) - Math.min(...xs)).toBeCloseTo(0, 5);
+  });
+
+  it('puts the flank on opposite sides for opposite turns, which is what reads as a rotation', () => {
+    const right = pointsOf(phoneSlab(300, 1).flank).map(({ x }) => x);
+    const left = pointsOf(phoneSlab(300, -1).flank).map(({ x }) => x);
+
+    expect(Math.max(...right)).toBeGreaterThan(0);
+    expect(Math.min(...left)).toBeLessThan(0);
+  });
+
+  it('bounds the flank by the depth the proportions declare, so the phone never reads as a box', () => {
     const body = phoneBody(300);
-    const screen = phoneScreen(300);
+    const xs = pointsOf(phoneSlab(300, 1).flank).map(({ x }) => x);
 
-    expect(screen.width).toBeLessThan(body.width);
-    expect(screen.height).toBeLessThan(body.height);
+    expect(Math.max(...xs) - body.width / 2).toBeCloseTo(body.width * WAVE.slab.depth, 5);
   });
 
+  it('keeps the screen inside the front face on every side', () => {
+    const front = pointsOf(phoneSlab(300, 0.5).front);
+    const screen = pointsOf(phoneSlab(300, 0.5).screen);
+    const bound = (points: { x: number; y: number }[]) => ({
+      x: Math.max(...points.map(({ x }) => Math.abs(x))),
+      y: Math.max(...points.map(({ y }) => Math.abs(y))),
+    });
+
+    expect(bound(screen).x).toBeLessThan(bound(front).x);
+    expect(bound(screen).y).toBeLessThan(bound(front).y);
+  });
+
+  // The trail leaves the phone's foot, so the foot has to be where the drawing actually ends
+  it('reports a foot at the bottom of the front face, where the trail meets it', () => {
+    const ys = pointsOf(phoneSlab(300, 0.4).front).map(({ y }) => y);
+
+    expect(phoneSlab(300, 0.4).foot).toBeCloseTo(Math.max(...ys), 5);
+  });
+
+  // To 1dp, not 5: every path rounds to two decimals, so doubling a rounded coordinate cannot land exactly on
+  // the rounded double of it
   it('scales with the stage it is drawn in', () => {
-    expect(phoneBody(600).width).toBeCloseTo(phoneBody(300).width * 2, 5);
-  });
+    const small = pointsOf(phoneSlab(150, 1).front).map(({ x }) => x);
+    const large = pointsOf(phoneSlab(300, 1).front).map(({ x }) => x);
 
-  // A radius wider than the box it rounds draws an arc that folds back on itself
-  it('never gives the screen a negative corner', () => {
-    expect(phoneScreen(40).radius).toBeGreaterThanOrEqual(0);
+    expect(Math.max(...large)).toBeCloseTo(Math.max(...small) * 2, 1);
   });
 });
