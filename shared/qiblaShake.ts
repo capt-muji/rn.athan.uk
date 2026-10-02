@@ -69,9 +69,17 @@ export const shakeMagnitude = (x: number, y: number, z: number): number => {
   return Math.sqrt(x * x + y * y + z * z);
 };
 
-/** The samples of the last `SHAKE.windowMs`, oldest first, with anything older dropped */
-export const shakeWindow = (samples: ShakeSample[], nowMs: number): ShakeSample[] =>
-  samples.filter((sample) => nowMs - sample.atMs <= SHAKE.windowMs);
+/**
+ * The samples of the last `SHAKE.windowMs`, oldest first, with anything older dropped.
+ *
+ * A worklet, as everything the gate touches is: the whole gesture is judged on the UI thread, because a hop to
+ * JS per reading starved it (`useQiblaShake`).
+ */
+export const shakeWindow = (samples: ShakeSample[], nowMs: number): ShakeSample[] => {
+  'worklet';
+
+  return samples.filter((sample) => nowMs - sample.atMs <= SHAKE.windowMs);
+};
 
 /**
  * Whether the window shows the phone being waved right now.
@@ -84,11 +92,21 @@ export const shakeWindow = (samples: ShakeSample[], nowMs: number): ShakeSample[
  * the instant the phone is picked up off a table.
  */
 export const isShaking = (window: ShakeSample[]): boolean => {
+  'worklet';
   if (window.length < SHAKE.minReadings) return false;
 
-  const magnitudes = window.map((sample) => sample.magnitude);
+  let lowest = window[0].magnitude;
+  let highest = window[0].magnitude;
 
-  return Math.max(...magnitudes) - Math.min(...magnitudes) >= SHAKE.motionThreshold;
+  // A plain loop rather than map plus spread: a worklet handed by reference to a higher-order function arrives
+  // undefined on the UI runtime, and spreading a long window into Math.max risks the argument limit
+  for (let index = 1; index < window.length; index++) {
+    const { magnitude } = window[index];
+    if (magnitude < lowest) lowest = magnitude;
+    if (magnitude > highest) highest = magnitude;
+  }
+
+  return highest - lowest >= SHAKE.motionThreshold;
 };
 
 /**

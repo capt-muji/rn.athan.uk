@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { runOnJS, SensorType, useAnimatedReaction, useAnimatedSensor } from 'react-native-reanimated';
+import { SensorType, useAnimatedReaction, useAnimatedSensor, useSharedValue } from 'react-native-reanimated';
+import { scheduleOnRN } from 'react-native-worklets';
 
 import { isShaking, type ShakeSample, shakeMagnitude, shakeProgress, shakeWindow } from '@/shared/qiblaShake';
 
@@ -9,12 +10,6 @@ const MAX_CREDIT_MS = 200;
 export interface QiblaShake {
   /** Whether the whole gesture has been performed. LATCHES: the compass must not close again mid-use */
   hasWaved: boolean;
-  /**
-   * Takes one accelerometer magnitude, as the sensor delivers it.
-   *
-   * Exposed because `useAnimatedReaction` reads the sensor on the UI runtime, which no test can drive.
-   */
-  consumeSample: (magnitude: number) => void;
 }
 
 /**
@@ -33,39 +28,32 @@ export interface QiblaShake {
  */
 export const useQiblaShake = (active: boolean): QiblaShake => {
   const [hasWaved, setHasWaved] = useState(false);
-  const samplesRef = useRef<ShakeSample[]>([]);
-  const movingMsRef = useRef(0);
-  const lastAtRef = useRef<number | null>(null);
   // State is a render behind on the sampling path, which would let the gate publish itself twice
   const wavedRef = useRef(false);
+
+  const onWaved = useCallback(() => {
+    if (wavedRef.current) return;
+    wavedRef.current = true;
+    setHasWaved(true);
+  }, []);
 
   // 20ms: the figure's own turns happen in a few hundred milliseconds, and a slower read would miss the moments
   // the wrist reverses, which are what tell a wave from a phone being carried
   const accelerometer = useAnimatedSensor(SensorType.ACCELEROMETER, { interval: 20 });
 
-  const consumeSample = useCallback(
-    (magnitude: number) => {
-      if (!active || wavedRef.current) return;
-
-      const nowMs = Date.now();
-      const window = shakeWindow([...samplesRef.current, { magnitude, atMs: nowMs }], nowMs);
-      samplesRef.current = window;
-
-      const waving = isShaking(window);
-      // Time is credited only while the phone is actually moving, so a user who pauses keeps what they have done
-      const since = lastAtRef.current;
-      lastAtRef.current = nowMs;
-      if (waving && since !== null) movingMsRef.current += Math.min(nowMs - since, MAX_CREDIT_MS);
-
-      if (shakeProgress(movingMsRef.current) < 1) return;
-
-      // Publishing per reading starved the gate: 50 renders a second slowed delivery below the rate the window
-      // needs to hold its minimum, so a half-second gesture took seconds
-      wavedRef.current = true;
-      setHasWaved(true);
-    },
-    [active]
-  );
+  /**
+   * The whole gesture is judged ON THE UI THREAD, which crosses to JS exactly once: when it opens.
+   *
+   * MEASURED on the owner's phones: a `runOnJS` per reading made the gate take 3 seconds on an iPhone XS and
+   * 8 on a OnePlus 3T for a gesture asking half a second. Every reading was a separate cross-thread dispatch
+   * queued behind the figure-eight animation, so readings arrived far slower than the 50Hz the sensor was
+   * registered at, and `windowMs / minReadings` needs 20 a second to call the window valid at all. Below that
+   * `isShaking` is false on every sample however hard the phone is waved, and the gate opens only when the JS
+   * thread happens to free up. Here the readings never leave the thread they arrive on.
+   */
+  const samples = useSharedValue<ShakeSample[]>([]);
+  const movingMs = useSharedValue(0);
+  const lastAt = useSharedValue(0);
 
   useAnimatedReaction(
     () => {
@@ -74,12 +62,24 @@ export const useQiblaShake = (active: boolean): QiblaShake => {
       return shakeMagnitude(x, y, z);
     },
     (magnitude, previous) => {
-      if (magnitude === previous) return;
-      // The reaction runs on the UI runtime, where `consumeSample` is a plain JS function: calling it directly
-      // throws "Tried to synchronously call a Remote Function"
-      runOnJS(consumeSample)(magnitude);
+      if (magnitude === previous || !active) return;
+
+      const nowMs = Date.now();
+      const window = shakeWindow([...samples.value, { magnitude, atMs: nowMs }], nowMs);
+      samples.value = window;
+
+      const since = lastAt.value;
+      lastAt.value = nowMs;
+      if (isShaking(window) && since !== 0) movingMs.value += Math.min(nowMs - since, MAX_CREDIT_MS);
+
+      if (shakeProgress(movingMs.value) < 1) return;
+
+      samples.value = [];
+      movingMs.value = 0;
+      lastAt.value = 0;
+      scheduleOnRN(onWaved);
     },
-    [consumeSample]
+    [active, onWaved]
   );
 
   // A fresh wave is asked for every time the sheet opens, because the calibration it performs goes stale with
@@ -87,12 +87,12 @@ export const useQiblaShake = (active: boolean): QiblaShake => {
   useEffect(() => {
     if (active) return;
 
-    samplesRef.current = [];
-    movingMsRef.current = 0;
-    lastAtRef.current = null;
+    samples.value = [];
+    movingMs.value = 0;
+    lastAt.value = 0;
     wavedRef.current = false;
     setHasWaved(false);
-  }, [active]);
+  }, [active, samples, movingMs, lastAt]);
 
-  return { hasWaved, consumeSample };
+  return { hasWaved };
 };
