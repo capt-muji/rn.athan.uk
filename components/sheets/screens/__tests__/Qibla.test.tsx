@@ -6,6 +6,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { SETTLE_MIN_READINGS, SETTLE_WINDOW_MS } from '@/shared/qiblaSettle';
 
@@ -763,6 +764,80 @@ describe('the settling gate', () => {
     });
 
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+});
+
+describe('the wait before the compass can be drawn', () => {
+  /** The travelling dot, which the figure hides from the screen reader, so only a hidden query finds it */
+  const waveDot = () => screen.queryByTestId('qibla-wave-dot', { includeHiddenElements: true });
+
+  it('tells the user what to do about it, rather than leaving the stage blank', async () => {
+    await openSheet();
+
+    expect(screen.getByText('Wave the phone in a figure eight to calibrate the compass.')).toBeOnTheScreen();
+  });
+
+  // Queried including hidden elements throughout, because the figure is deliberately hidden from the screen
+  // reader: a plain query would answer "absent" for a drawing that is on screen
+  it('shows the motion as well as naming it, for a user who would not read the line', async () => {
+    await openSheet();
+
+    expect(waveDot()).toBeOnTheScreen();
+  });
+
+  // A drawn gesture is nothing a screen reader can convey, and each platform's reader reads only its own prop,
+  // so a figure carrying one of them is still announced on the other platform
+  it.each<[string, string, boolean | string]>([
+    ['VoiceOver', 'accessibilityElementsHidden', true],
+    ['TalkBack', 'importantForAccessibility', 'no-hide-descendants'],
+  ])('hides the drawing from %s while leaving the line readable', async (_reader, prop, hidden) => {
+    await openSheet();
+
+    expect(waveDot()?.parent).toHaveProp(prop, hidden);
+    expect(screen.getByText('Wave the phone in a figure eight to calibrate the compass.')).toBeOnTheScreen();
+  });
+
+  // The hint and its looping animation exist only while the wait does: an infinite loop left behind the compass
+  // would tick the UI thread for as long as the sheet stayed open
+  it('takes the hint and its animation away the moment the compass draws', async () => {
+    await openSheet();
+
+    await reportHeadings(95);
+
+    expect(screen.queryByText('Wave the phone in a figure eight to calibrate the compass.')).toBeNull();
+    expect(waveDot()).toBeNull();
+  });
+
+  it('arms one looping motion for the hint it shows', async () => {
+    const armed = jest.spyOn(Reanimated, 'withRepeat');
+
+    await openSheet();
+
+    expect(armed).toHaveBeenCalledTimes(1);
+  });
+
+  // Waving the phone cannot help a sheet that was never given a position, and asking for it would be a lie
+  it('says nothing about waving when the user refused location', async () => {
+    mockState.granted = false;
+
+    await openSheet();
+
+    expect(screen.queryByText('Wave the phone in a figure eight to calibrate the compass.')).toBeNull();
+    expect(waveDot()).toBeNull();
+  });
+
+  it('asks again once the heading is lost for good, which is the same wait over', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    expect(screen.getByText('Wave the phone in a figure eight to calibrate the compass.')).toBeOnTheScreen();
+    jest.useRealTimers();
   });
 });
 

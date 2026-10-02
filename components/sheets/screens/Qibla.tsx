@@ -9,6 +9,7 @@ import { setQiblaSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
 import QiblaCompass from './QiblaCompass';
+import QiblaWave from './QiblaWave';
 
 const SPACE_ABOVE_DIAL = SPACING.xxl;
 const SPACE_BELOW_DIAL = SPACING.xxxl;
@@ -28,6 +29,9 @@ export default function BottomSheetQibla() {
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
   const showsCompass = bearing !== null && hasHeading;
+  // The magnetometer arms cold and the settling gate refuses to draw until it converges, which is the few blank
+  // seconds the user was left looking at
+  const isCalibrating = !showsCompass && !permissionDenied;
 
   return (
     <Sheet
@@ -49,6 +53,12 @@ export default function BottomSheetQibla() {
         {/* A dial drawn without a live heading would hold its last angle and quietly point the wrong way, which is
             the one thing this feature must never do */}
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
+        {isCalibrating && (
+          <View style={styles.waiting}>
+            <Text style={styles.message}>Wave the phone in a figure eight to calibrate the compass.</Text>
+            <QiblaWave size={size} />
+          </View>
+        )}
         {permissionDenied && <Text style={styles.message}>The qibla needs your location.</Text>}
       </View>
       {/* Never conditional: the sheet sizes itself from its content, so a line that comes and goes resizes it */}
@@ -75,5 +85,8 @@ const styles = StyleSheet.create({
   },
   stage: {
     justifyContent: 'center',
+  },
+  waiting: {
+    gap: SPACING.xxl,
   },
 });
