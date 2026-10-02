@@ -170,7 +170,9 @@ state=$(adb -s 8f7ada76 get-state 2>&1)
 echo "adb 8f7ada76: $state   (expected device)"
 [ "$state" = "device" ] || fail "the 3T is not connected over USB"
 
-[ -x "$HOME/athan-device-sweep/session3/bin/build-prod.zsh" ] || fail "build-prod.zsh is missing"
+# -s, not -x: the file is not executable and never needs to be, because every build script in this
+# programme is invoked as `zsh <script>` rather than run directly
+[ -s "$HOME/athan-device-sweep/session3/bin/build-prod.zsh" ] || fail "build-prod.zsh is missing"
 echo "build-prod.zsh: present"
 
 [ -s "$HOME/.config/athan/.api_key" ] || fail "no API key file; a prod build is impossible"
@@ -533,9 +535,13 @@ the device proof, because its content IS the device proof's result.
    break_one "publication block check deleted" 's/publication/publication_BREAK/g'
    # 5. The local-maven-repo check removed
    break_one "local maven repo check deleted" 's/local-maven-repo/local-maven-repo-BREAK/g'
-   # 6. Always exit 0, so a bad tree reports as good
-   break_one "always exits 0" 's/PATCH NOT AS SHIPPED/PATCH AS SHIPPED/'
-   # 7. The missing-tree guard removed, so a wrong root passes vacuously
+   # 6. Always report success, so a bad tree reads as good. The target is the echo in refuse(), not the
+   # word anywhere in the file: the first draft substituted the DOC COMMENT and left the code untouched,
+   # which is session 44's "a guard matched its own source" in a new place.
+   break_one "always reports as shipped" 's/echo "PATCH NOT AS SHIPPED"/echo "PATCH AS SHIPPED"/'
+   # 7. refuse() stops exiting non-zero, so every caller reads as a pass
+   break_one "refuse exits 0" 's/  exit 1\n\}/  exit 0\n}/'
+   # 8. The missing-tree guard removed, so a wrong root passes vacuously
    break_one "missing tree reported as shipped" 's/expo-location not found/expo-location absent but fine/'
 
    restore
@@ -543,9 +549,16 @@ the device proof, because its content IS the device proof's result.
    if [ "$caught" = "$total" ]; then echo "ALL AS EXPECTED: 1"; else echo "ALL AS EXPECTED: 0"; fi
    ```
 
-   Expected: each break prints `caught: <label>`, then `caught 7 of 7` and `ALL AS EXPECTED: 1`. A
+   Expected: each break prints `caught: <label>`, then `caught 8 of 8` and `ALL AS EXPECTED: 1`. A
    `BREAK NOT APPLIED` line means the script's text does not match the contract: STOP (section 2.2,
    item 3). A `SURVIVED` line means a test is not doing its job: STOP.
+
+   **Break 6's target is the code line, and the first draft got it wrong.** Substituting
+   `PATCH NOT AS SHIPPED` anywhere in the file hits the doc comment on line 11 first, leaves the `echo`
+   in `refuse()` untouched, and the break SURVIVED at 6 of 7 while the script was perfectly healthy.
+   That is the shape of defect session 44 recorded as a guard matching its own source, met here in the
+   break script rather than the guard. Break 7 was added at the same time, because the banner and the
+   exit code are two separate claims and the suite must hold both.
 
 8. **Version and commit.**
 
@@ -585,7 +598,7 @@ the device proof, because its content IS the device proof's result.
    grep -c on a missing command returns 0 indistinguishably from a real zero.
 
    8 tests, each running the script against a fixture tree in a temp directory rather than against
-   the real node_modules. 7 of 7 breaks caught.
+   the real node_modules. 8 of 8 breaks caught.
 
    biome.json excludes this plan's probes folder, as it already does session 48's: session 41's
    lesson is that an unregistered folder of throwaway scripts falls on whoever stages next.
