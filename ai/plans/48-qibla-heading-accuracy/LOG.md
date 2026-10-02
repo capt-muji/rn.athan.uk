@@ -112,3 +112,102 @@ close, reopen, lay both phones flat, and see whether the restarts now agree.
 reading the heading stream (`MEASURED.md` sections 3 and 4), and it does not touch the heading SOURCE.
 Row 49 carries the native module for `headingAccuracy` in real degrees, Apple's calibration prompt and
 Android's Fused Orientation Provider.
+
+## The owner's device verdict on 1.29.203, and the two defects it found
+
+He installed 1.29.203 on both phones and reported: "once the compass has actually loaded, it is
+extremely unresponsive... I have shaken the phone a thousand times and it doesn't move. And it just
+loves to move by itself."
+
+### Defect 1, MINE: the settling gate was re-tested on every reading
+
+`hasSettled` gated EVERY reading rather than deciding once. A turning phone is a moving window, so
+drift exceeded the threshold and the gate DROPPED the update: the compass advanced only while the
+phone was held still, which is the inverse of a compass.
+
+Fixed in 1.29.204 by latching: the gate decides once, and resets through `blank` when the heading is
+genuinely lost rather than on each dropped reading, so a brief dropout does not re-arm it.
+
+**The suite could not see this, and that is the lesson.** Its only assertion about a turning dial was
+`toBeOnTheScreen`, which a dial frozen at its first reading passes. The dial reads the heading off a
+shared value, so a turn costs no render and the rendered transform never changes; the new tests
+re-render to publish the live value into the style, then assert the rotation.
+
+### Defect 2, UPSTREAM: the stream was never fast enough for the latch to matter
+
+Measured on the 3T with `dumpsys sensorservice`:
+
+| | Period | Rate |
+| --- | --- | --- |
+| Hardware ceiling, magnetometer-bound | 19.2 ms | 52 Hz |
+| What `expo-location` requested | 199.95 ms, zero jitter | **5.00 Hz** |
+| The owner's bar | 100 ms | 10 Hz |
+
+**10.4x of headroom discarded.** Reanimated, in the same process and uid, already pulled
+`rotation_vector` at 16 ms, so only the compass was slow.
+
+Its 2-degree emission gate is worse for this app specifically. Simulated against the measured arrival
+pattern, a user creeping the last few degrees onto the line at 2 degrees a second is served **0.83
+Hz**, and a stationary phone nothing at all. That is "it doesn't move, then it moves by itself". The
+gate also floored the heading's own resolution at 2 degrees.
+
+`patches/expo-location+58.0.9.patch` now carries three changes, each a documented platform constant or
+the removal of a threshold:
+
+| Platform | Change |
+| --- | --- |
+| Android | `SENSOR_DELAY_NORMAL` to `SENSOR_DELAY_GAME` on both registrations |
+| Android | The 2-degree `DEGREE_DELTA` gate removed, the 50 ms rate limit kept. `DEGREE_DELTA` and the orphaned `kotlin.math.abs` import go with it |
+| iOS | `headingFilter = kCLHeadingFilterNone`, which `expo-location` never set. CoreLocation fuses at about 50 Hz on the XS and its 1-degree default rejected 731 of 731 readings of a stationary phone |
+
+The 2-degree constant was itself a magic number of the kind the owner bans, so removing it moves the
+code toward that rule.
+
+### PROVEN ON THE DEVICE, not inferred
+
+The patch could have been a no-op: `ai/AGENTS.md` records that a patched Expo module is skipped when
+its `expo-module.config.json` still declares a `publication` block, because autolinking then resolves
+a prebuilt AAR. Verified that the existing patch already removes that block, then verified the
+compiled bytecode in the shipped APK:
+
+```
+invoke-virtual {v1, v4}, SensorManager;.getDefaultSensor:(I)Landroid/hardware/Sensor;   // v4 = 2, magnetometer
+const/4 v5, #int 1                                                                       // SENSOR_DELAY_GAME
+invoke-virtual {v1, v0, v4, v5}, SensorManager;.registerListener:(...)Z
+```
+
+`SENSOR_DELAY_GAME` is 1 where `SENSOR_DELAY_NORMAL` is 3, on both registrations.
+
+Then measured live with the qibla sheet open on 1.29.205:
+
+```
+0x00000001) active-count = 1; sampling_period(ms) = {20.0}, selected = 20.00 ms
+0x00000003) active-count = 1; sampling_period(ms) = {20.0}, selected = 20.00 ms
+```
+
+**20.00 ms is 50 Hz, up from 200 ms and 5 Hz: a tenfold improvement, measured on the floor device.**
+Confirmed again in the raw event timestamps, which are 20 ms apart. A first reading of `200000us`
+came from a STALE dump entry belonging to the previous process, which is a trap worth recording:
+`dumpsys sensorservice` lists historical registrations by pid, so a rate must be read from the live
+`active-count` block or from a pid confirmed current.
+
+### The calibration hint, shipped in 1.29.205 on the owner's request
+
+🐋  "At least put a message there to tell the user to shake the phone... put like a figure-8 motion
+for them to shake the phone with a path, like an 8 figure."
+
+The waiting state now reads "Wave the phone in a figure eight to calibrate the compass." above a
+looping figure of eight with a dot travelling it. Verified by screenshot on the 3T.
+
+### State of the phones
+
+| Phone | Build |
+| --- | --- |
+| OnePlus 3T | 1.29.205, production release, automatic time on |
+| iPhone XS | 1.29.205, production release |
+
+### Still open, and NOT claimed as fixed
+
+The residual error from iron in the owner's house. Nothing here attacks it, and `MEASURED.md`
+sections 3 and 4 measure it as invisible to any gate reading the heading stream. Row 49 carries the
+native module.
