@@ -56,6 +56,19 @@ export const FEATURE_FLAGS = {
    * Now scaffolding awaiting deletion, per the lifecycle rule above.
    */
   androidWidgets: process.env.EXPO_PUBLIC_ANDROID_WIDGETS === '1',
+  /**
+   * The platform's own heading uncertainty, shown on the qibla sheet. A diagnostic instrument rather
+   * than a feature: `expo-location` buckets iOS's `headingAccuracy` degrees into 0 to 3 and never
+   * offers Android's Fused Orientation Provider, so `modules/qiblaheading` reads both and this shows
+   * what it read.
+   *
+   * Deleted, gate and all, once the owner has the measurements he needs: whether his heading scatter
+   * correlates with the accuracy the phone reports, and whether FOP differs from the platform value.
+   *
+   * Guarded against prod like every other gate that spells its own variable, so a variable left set
+   * cannot put a diagnostic readout in front of a user.
+   */
+  qiblaDiagnostic: process.env.EXPO_PUBLIC_QIBLA_DIAGNOSTIC === '1' && process.env.EXPO_PUBLIC_ENV !== 'prod',
 } as const;
 
 export type FeatureFlagId = keyof typeof FEATURE_FLAGS;

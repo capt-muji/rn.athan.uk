@@ -1,0 +1,26 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+group = 'expo.modules.qiblaheading'
+version = '0.1.0'
+
+android {
+    namespace "expo.modules.qiblaheading"
+
+    compileSdk 37
+
+    defaultConfig {
+        minSdk 24
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation project(':expo-modules-core')
+    // Gradle resolves a conflict to the highest request, so this lifts expo-location's own 21.0.1
+    // for the whole app: the Fused Orientation Provider first ships in 21.2.0.
+    implementation 'com.google.android.gms:play-services-location:21.4.0'
+}

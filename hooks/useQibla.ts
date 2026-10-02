@@ -3,6 +3,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { type SharedValue, useSharedValue } from 'react-native-reanimated';
 
 import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
+import { type QiblaDiagnostic, watchQiblaDiagnostic } from '@/modules/qiblaheading';
+import { FEATURE_FLAGS } from '@/shared/flags';
 import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
 import { unwrapHeading } from '@/shared/qiblaCompass';
 import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
@@ -15,6 +17,8 @@ export interface QiblaState {
   permissionDenied: boolean;
   /** Where the bearing was computed FROM: undefined while the geocoder is still looking, null when it found nothing */
   place: string | null | undefined;
+  /** What the platform says about its own heading, behind the diagnostic flag. Null until a reading arrives */
+  diagnostic: QiblaDiagnostic | null;
 }
 
 /** Long enough to ride out the gaps a settling magnetometer leaves, short enough that a real loss still shows */
@@ -52,12 +56,14 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     hasHeading: false,
     permissionDenied: false,
     place: undefined,
+    diagnostic: null,
   });
   const heading = useSharedValue(0);
   const aligned = useSharedValue(false);
   const alignedRef = useRef(false);
   const activeRef = useRef(false);
   const unwatchRef = useRef<(() => void) | null>(null);
+  const unwatchDiagnosticRef = useRef<(() => void) | null>(null);
   const blankRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const bearingRef = useRef<number | null>(null);
   const samplesRef = useRef<HeadingSample[]>([]);
@@ -87,6 +93,8 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     clearBlank();
     unwatchRef.current?.();
     unwatchRef.current = null;
+    unwatchDiagnosticRef.current?.();
+    unwatchDiagnosticRef.current = null;
   }, [aligned, clearBlank]);
 
   const processReading = useCallback(
@@ -142,6 +150,12 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     // The heading watch and the position warm up independently, so their startups run together: in series they are
     // what the sheet's blank seconds were
     const unwatchPromise = watchHeading(({ trueHeading }) => processReading(trueHeading));
+
+    if (FEATURE_FLAGS.qiblaDiagnostic) {
+      unwatchDiagnosticRef.current = watchQiblaDiagnostic((diagnostic) =>
+        setState((previous) => ({ ...previous, diagnostic }))
+      );
+    }
 
     // A position from an earlier open draws at once and the fresh read revalidates behind it, because the qibla
     // moves under half a degree across the sort of distance a phone crosses between two opens in one place

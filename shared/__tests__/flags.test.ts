@@ -98,6 +98,52 @@ describe('FEATURE_FLAGS.androidWidgets parsing', () => {
   });
 });
 
+describe('FEATURE_FLAGS.qiblaDiagnostic parsing', () => {
+  const setDiagnosticEnv = (value: string | undefined, env?: string) => {
+    if (value === undefined) {
+      delete process.env.EXPO_PUBLIC_QIBLA_DIAGNOSTIC;
+    } else {
+      process.env.EXPO_PUBLIC_QIBLA_DIAGNOSTIC = value;
+    }
+    if (env === undefined) {
+      delete process.env.EXPO_PUBLIC_ENV;
+    } else {
+      process.env.EXPO_PUBLIC_ENV = env;
+    }
+  };
+
+  afterEach(() => {
+    setDiagnosticEnv(undefined, undefined);
+  });
+
+  it('is disabled when the variable is absent', () => {
+    setDiagnosticEnv(undefined);
+    expect(loadFlagsFresh().FEATURE_FLAGS.qiblaDiagnostic).toBe(false);
+  });
+
+  it('is enabled only for the exact string 1', () => {
+    setDiagnosticEnv('1');
+    expect(loadFlagsFresh().FEATURE_FLAGS.qiblaDiagnostic).toBe(true);
+  });
+
+  it.each(['0', '', 'true', 'yes', '2', 'on'])('is disabled for %p', (value) => {
+    setDiagnosticEnv(value);
+    expect(loadFlagsFresh().FEATURE_FLAGS.qiblaDiagnostic).toBe(false);
+  });
+
+  // The guard every gate in this repo that spells its own variable carries, so a variable left set
+  // can never put a diagnostic readout in front of a user
+  it('stays disabled in a prod build even when the variable says 1', () => {
+    setDiagnosticEnv('1', 'prod');
+    expect(loadFlagsFresh().FEATURE_FLAGS.qiblaDiagnostic).toBe(false);
+  });
+
+  it('is enabled with the variable set on a non-prod build', () => {
+    setDiagnosticEnv('1', 'preview');
+    expect(loadFlagsFresh().FEATURE_FLAGS.qiblaDiagnostic).toBe(true);
+  });
+});
+
 // =============================================================================
 // app.config.ts CONTRACT
 // =============================================================================
