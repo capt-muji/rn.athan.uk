@@ -172,12 +172,40 @@
    }
 
    run_break "the gate is removed, so a cold first reading is drawn" \
-     'if (!hasSettled(window, nowMs)) return;' \
+     'if (!settledRef.current && !hasSettled(window, nowMs)) return;' \
      ''
 
+   # The defect the owner found on device: a gate re-tested per reading drops every update made while the
+   # phone turns, so the compass only moves when it is held still
+   run_break "the gate stops latching, so it re-tests on every reading" \
+     'if (!settledRef.current && !hasSettled(window, nowMs)) return;' \
+     'if (!hasSettled(window, nowMs)) return;'
+
+   # Deletes the latch reset inside `blank` only, identified by the comment that sits above it, because the
+   # same assignment also appears in `stop` and a bare substitution would hit the wrong one
+   run_break_blank_latch() {
+     local label="the latch is never reset, so a lost stream draws cold on its return"
+     TOTAL=$((TOTAL + 1))
+     cp "$SRC" "$SRC.bak"
+     perl -0pi -e 's|// The stream is genuinely gone[^\n]*\n(\s*)settledRef\.current = false;\n|$1|s' "$SRC"
+     if cmp -s "$SRC" "$SRC.bak"; then
+       echo "BREAK NOT APPLIED: $label"
+       mv "$SRC.bak" "$SRC"
+       return
+     fi
+     if npx jest "$TESTS" --watchman=false --selectProjects=components >/dev/null 2>&1; then
+       echo "SURVIVED: $label"
+     else
+       echo "caught: $label"
+       CAUGHT=$((CAUGHT + 1))
+     fi
+     mv "$SRC.bak" "$SRC"
+   }
+   run_break_blank_latch
+
    run_break "the gate is inverted" \
-     'if (!hasSettled(window, nowMs)) return;' \
-     'if (hasSettled(window, nowMs)) return;'
+     'if (!settledRef.current && !hasSettled(window, nowMs)) return;' \
+     'if (!settledRef.current && hasSettled(window, nowMs)) return;'
 
    run_break "the window is not trimmed, so samples accumulate forever" \
      'const window = trailingWindow([...samplesRef.current, { degrees: trueHeading, atMs: nowMs }], nowMs);' \
@@ -211,7 +239,7 @@
    run_break_last_clear
 
    run_break "the gate sits BELOW the haptic, so a tap fires on a refused reading" \
-     'if (!hasSettled(window, nowMs)) return;' \
+     'if (!settledRef.current && !hasSettled(window, nowMs)) return;' \
      'const settled = hasSettled(window, nowMs);'
 
    echo ""
