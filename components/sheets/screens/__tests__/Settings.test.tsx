@@ -28,11 +28,15 @@ import SettingsSheet from '../Settings';
 import SoundSheet from '../Sound';
 
 // The qibla sheet reaches the platform the moment it presents; the settings suite only needs it to exist
+const mockQiblaGranted = { value: true };
 jest.mock('@/device/qibla', () => ({
-  requestQiblaPermission: jest.fn(async () => true),
+  requestQiblaPermission: jest.fn(async () => mockQiblaGranted.value),
+  showQiblaLocationDialog: jest.fn(),
   readPosition: jest.fn(async () => ({ latitude: 51.475, longitude: -0.2015 })),
   watchHeading: jest.fn(async () => jest.fn()),
 }));
+
+const qiblaDevice = jest.requireMock('@/device/qibla');
 
 // Whether a release has notes to show is an editorial choice made per release, so the suite sets it both ways rather
 // than depending on the stamp the current release happens to carry
@@ -83,6 +87,7 @@ const renderedSheet = (modal: typeof settingsSheetModalAtom) => {
 
 beforeEach(() => {
   mockVisibleWhatsNew = RELEASE_WITH_NOTES;
+  mockQiblaGranted.value = true;
 });
 
 describe('the settings sheet outside the Ramadan season, Friday 11 September 2026 at 14:00', () => {
@@ -122,6 +127,45 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     expect(settingsDismiss).toHaveBeenCalledTimes(1);
     expect(qiblaPresent).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  // The owner's order: a compass that opens and THEN asks shows an empty instrument with the system dialog
+  // sitting over it. The permission is settled on the tap, before anything opens
+  it('asks for location on the tap, before the qibla sheet is opened', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(
+      <>
+        <SettingsSheet />
+        <QiblaSheet />
+      </>
+    );
+    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(qiblaDevice.requestQiblaPermission).toHaveBeenCalled();
+    expect(qiblaPresent).toHaveBeenCalledTimes(1);
+  });
+
+  // A compass with no position is not a degraded compass, it is nothing at all, so opening one would be showing
+  // an instrument that cannot work
+  it('opens nothing at all when location is refused, and says why instead', async () => {
+    mockQiblaGranted.value = false;
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(
+      <>
+        <SettingsSheet />
+        <QiblaSheet />
+      </>
+    );
+    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
+
+    expect(qiblaPresent).not.toHaveBeenCalled();
+    expect(settingsDismiss).not.toHaveBeenCalled();
+    expect(qiblaDevice.showQiblaLocationDialog).toHaveBeenCalledTimes(1);
   });
 
   it("builds the athan sheet's rows the first time it fully opens, one tap before they are needed", async () => {
