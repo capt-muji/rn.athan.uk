@@ -107,3 +107,42 @@ Carried forward from session 48's `DECISION.md`, so no future session spends tim
 
 And the standing rule, which binds every line this row ships: **no invented constant, no tuned
 offset, no per-location calibration.**
+
+## 5. THE WORD "CALIBRATION" IN THIS ROW MEANS A READING, NEVER A CORRECTION
+
+The owner raised this directly on 2026-10-02, and he was right to:
+
+🐋  "this calibration talk a bit scares me because I'm recalibrating based on my room, on London, my
+house. What about someone in a completely different country? My calibration is not going to fit their
+calibration."
+
+**He is describing a thing this programme already tried, already shipped, and has permanently banned.**
+Session 40 tuned seven constants by eye (270, 180, 190, 180, 170, 190, 220) and shipped a reading 90
+degrees out. Session 41 then proved why no such constant can exist, with a prediction written down
+before the measurement: at one FIXED spot the error drifted 20 degrees across a few hours. So a stored
+offset fails in the owner's own house across one afternoon, before any question of another country
+arises.
+
+**Nothing in this row calibrates anything.** The module is a read-only instrument:
+
+| What it does | What it does NOT do |
+| --- | --- |
+| Reads `CLHeading.headingAccuracy`, which Apple computes, and shows it | Change the heading by any amount |
+| Reads whether iOS ASKED to show its calibration HUD, and answers no | Store an offset, per place or per user |
+| Reads FOP's heading beside the platform's, for comparison | Replace the heading the compass draws |
+
+Checkable rather than asserted: across `modules/qiblaheading/`, `hooks/useQibla.ts`,
+`shared/qiblaAlignment.ts`, `shared/qiblaGeometry.ts` and `device/qibla.ts`, every occurrence of
+`offset`, `calibrat`, `correction` or `declination` is a NAME or a COMMENT, never an arithmetic
+operation. The whole alignment maths is `bearing - heading` wrapped to the short way round
+(`shared/qiblaAlignment.ts:23-29`).
+
+**And the measurement points the opposite way from calibrating.** `wantsCalibration` came back FALSE
+on the XS while the accuracy sat at about 25 degrees, so iOS considers itself calibrated and is still
+uncertain. That is a field fixed in the ROOM, which Apple states in writing cannot be filtered because
+calibration removes only fields that move WITH the device. **The shaking the owner has been doing, and
+which 1.29.207 asks for in words and animation, addresses a condition the OS says is not present.**
+
+The product answer this supports is showing the uncertainty, the way Apple Maps draws a cone rather
+than a confident needle. It is not a correction, and a later session must not read this page as
+licence to build one.

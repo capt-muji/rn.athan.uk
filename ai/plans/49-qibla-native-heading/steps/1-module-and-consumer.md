@@ -32,9 +32,35 @@ The owner deferred them: 🐋  "maybe we should save the testing for later." `mo
 `UNMEASURED` (`scripts/check-changed-coverage.js:40`) and outside `collectCoverageFrom`
 (`jest.config.js:110-122`), so nothing in the native module is measurable by Jest.
 
-**The four files outside `modules/` ARE measured, and the existing suites cover them**, so no
-coverage gap opens. Verify that claim with the acceptance commands in part 6 rather than assuming it:
-if `shared/__tests__/flags.test.ts` or the Qibla suites fail, that is work still to do, not a finding.
+**CORRECTED DURING EXECUTION, and this was a defect in the plan rather than in the build.** The plan
+claimed the four files outside `modules/` needed no new tests because the existing suites cover them.
+The pre-commit hook refused the commit at **99.91% statements, 99.66% branches**, and the reason is
+structural: the flag-ON path cannot be reached by a suite that runs with the flag off, so every line
+the flag gates is uncovered by construction. Measured, three gaps:
+
+| File | Uncovered | Why |
+| --- | --- | --- |
+| `shared/flags.ts` | the new branch | No test sets the variable |
+| `hooks/useQibla.ts` | the arming block | Flag off, so it never runs |
+| `components/sheets/screens/Qibla.tsx` | the readout and `oneDecimal` | Same |
+
+**So the owner's deferral holds where the plan's reasoning was right and fails where it was not.**
+`modules/` is genuinely outside the measure (`UNMEASURED`, `collectCoverageFrom`), so the Kotlin, the
+Swift and `modules/qiblaheading/index.ts` need no tests. Anything the flag GATES still lives in a
+measured file and must be covered.
+
+Two suites close it, both following patterns this repo already has:
+
+- `shared/__tests__/flags.test.ts` gains a `FEATURE_FLAGS.qiblaDiagnostic` describe block in the shape
+  of the two beside it, plus two tests the others do not have: that a `prod` build stays disabled with
+  the variable set to `1`, and that a non-prod build with it set is enabled. Those two are what pin the
+  guard;
+- `components/sheets/screens/__tests__/QiblaDiagnostic.test.tsx` renders the sheet with
+  `jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { qiblaDiagnostic: true } }))` hoisted above its
+  imports, which is the opt-in `stores/__tests__/widgetIo.test.ts` uses for the widget flag and is
+  required because `flags.ts` is read once at module evaluation.
+
+Result: **186 suites, 5000 tests, 100% on all four measures.**
 
 ## 3. The contracts
 
