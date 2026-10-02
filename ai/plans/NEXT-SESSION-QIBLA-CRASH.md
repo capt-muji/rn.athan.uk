@@ -186,12 +186,33 @@ The owner raised this and it is unexplored. A warm reopen can have a settled str
 could appear almost at once, while a cold open waits the full window. Nobody has measured the two apart or
 decided whether the warm case should still show the animation briefly for consistency.
 
-### 7.3 The 3T's lag, re-measured
+### 7.3 The compass subtitle wraps to two lines
 
-The second sensor subscription is gone, so the regression's cause is removed. **It has NOT been confirmed
-fixed on the device**, because the session ended first. First job next time: open the compass on the 3T,
-confirm `dumpsys sensorservice` shows `active-count = 1` on `0x00000001`, and have the owner judge the slow
-turn.
+Seen on the 3T at 1.29.233: *Hold flat, turn until it vibrates* does not fit one line beside the header icon
+and wraps. It is legible and nothing overlaps, but the header is taller while the compass is up than while
+the hint is, so the cross-fade is not a pure fade. Either shorten the phrase (*Hold your phone flat* was the
+owner's other candidate) or let the header reserve two lines throughout. **The owner has not seen this yet
+and should choose.**
+
+### 7.4 The 3T's lag, re-measured
+
+**The second subscription is gone and that is CONFIRMED on the device at 1.29.233.** With the compass open,
+`dumpsys sensorservice` lists the app (`hn4`, uid 10201) holding exactly one of each:
+
+```
+Connection Number: 2
+   hn4 | uid 10201
+   LSM6DS3 Accelerometer 0x00000001 | status: active
+   MMC3416PJ Magnetometer 0x00000003 | status: active
+```
+
+**Read `active-count` carefully, which is the trap here.** It still shows 2 on the accelerometer after the
+fix, and the second holder is **Google Play Services' own location collector**
+(`com.google.android.location.collectionlib.BatchSignalCollector`), not this app. Count the per-connection
+list rather than the aggregate, or a clean build reads like a leak.
+
+**What is NOT confirmed is the FEEL.** The owner has not judged the slow turn since the gate was removed, and
+that is the only test that matters for this symptom.
 
 ---
 
