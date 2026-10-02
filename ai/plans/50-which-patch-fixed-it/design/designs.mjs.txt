@@ -1,0 +1,285 @@
+/**
+ * Ten calibration animations for the qibla sheet, all in the app's own qibla palette.
+ *
+ * The brief: 🐋  "Really ugly. Super ugly. Okay, scrap it, redesign it from the ground up... design 10
+ * different animations... they should look really, really illustrative because a lot of people will not
+ * read and don't know how to read... people are visual learners."
+ *
+ * So every design teaches the gesture with no words at all, and looks like it belongs on this sheet.
+ * References consulted: Apple's own compass HUD (tilt to roll a ball around a ring until it FILLS, a
+ * progress metaphor rather than a bare instruction), Android's figure-eight prompt, and the app's own
+ * Rub el Hizb jewel from the compass design the owner locked in.
+ *
+ * Revised after reading every strip back: the first pass drew everything too small for a sheet the user
+ * holds at arm's length, the stars were spiky rather than Islamic, the arch read as a rounded rectangle
+ * rather than architecture, the ripples were too faint to see, and design 8's ticks overflowed the cell
+ * while its jewel collided with the phone.
+ */
+
+import { P, s } from './palette.mjs';
+
+const TURN = Math.PI * 2;
+const r2 = (v) => Number(v.toFixed(2));
+
+/** The lemniscate the gesture traces, as the app's own `wavePoint` computes it */
+const fig8 = (t, w, h) => {
+  const a = t * TURN;
+  return { x: (w / 2) * Math.sin(a), y: h * Math.sin(a) * Math.cos(a) };
+};
+
+const fig8Path = (w, h, n = 72) => {
+  const pts = Array.from({ length: n }, (_, i) => fig8(i / n, w, h));
+  return `${pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${r2(p.x)},${r2(p.y)}`).join('')}Z`;
+};
+
+/** The lean off the curve's own tangent, which is what teaches a wrist that rolls */
+const lean = (t, deg = 22) => {
+  const a = t * TURN;
+  return Math.sin(Math.atan2(2 * Math.cos(2 * a), Math.cos(a))) * deg;
+};
+
+/** A phone glyph centred on its own origin, so one transform places it */
+const phone = (w, h, { stroke = P.accent, sw = 2.4, glow = 0 } = {}) => {
+  const rad = w * 0.2;
+  return `${glow ? `<rect x="${-w / 2 - glow}" y="${-h / 2 - glow}" width="${w + glow * 2}" height="${h + glow * 2}" rx="${rad + glow}" fill="${P.accent}" opacity="0.12"/>` : ''}
+<rect x="${-w / 2}" y="${-h / 2}" width="${w}" height="${h}" rx="${rad}" fill="${P.kaaba}" stroke="${stroke}" stroke-width="${sw}"/>
+<rect x="${-w / 2 + 4}" y="${-h / 2 + 5}" width="${w - 8}" height="${h - 10}" rx="${rad * 0.55}" fill="${s(0.2)}"/>
+<rect x="-3" y="${-h / 2 + 2}" width="6" height="1.8" rx="0.9" fill="${s(0.45)}"/>`;
+};
+
+/** The app's Rub el Hizb jewel: two squares at 45 degrees, outline only */
+const jewel = (rad, { stroke = P.accent, sw = 1.8, op = 1 } = {}) =>
+  `<g opacity="${op}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-linejoin="round">
+<rect x="${-rad}" y="${-rad}" width="${rad * 2}" height="${rad * 2}"/>
+<rect x="${-rad}" y="${-rad}" width="${rad * 2}" height="${rad * 2}" transform="rotate(45)"/></g>`;
+
+/** An eight-point Islamic star with SOFT points, drawn from two overlaid squares rather than spikes */
+const star8 = (rad, { fill = P.accent, op = 1, stroke = 'none' } = {}) => {
+  const pts = Array.from({ length: 16 }, (_, i) => {
+    const a = (i / 16) * TURN - Math.PI / 2;
+    const rr = i % 2 ? rad * 0.72 : rad;
+    return `${r2(Math.cos(a) * rr)},${r2(Math.sin(a) * rr)}`;
+  });
+  return `<polygon points="${pts.join(' ')}" fill="${fill}" opacity="${op}" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round"/>`;
+};
+
+const designs = [
+  {
+    n: 1,
+    title: 'Lantern on a chain',
+    note: 'A masjid lantern swings the figure of eight. The gesture is the swing of a familiar object, so the shape is learned from something already understood.',
+    build: (t) => {
+      const W = 140;
+      const H = 56;
+      const at = fig8(t, W, H);
+      const sway = Math.sin(t * TURN + Math.PI / 2) * 18;
+      return `
+<path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.16)}" stroke-width="9" stroke-linecap="round"/>
+<path d="${fig8Path(W, H)}" fill="none" stroke="${P.accent}" stroke-width="1.6" stroke-dasharray="3 9" opacity="0.45"/>
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(sway)})">
+  <line x1="0" y1="-40" x2="0" y2="-22" stroke="${s(0.45)}" stroke-width="1.6"/>
+  <ellipse cy="2" rx="26" ry="29" fill="${P.accent}" opacity="0.14"/>
+  <path d="M0,-22 L7,-16 L7,-14 L-7,-14 L-7,-16 Z" fill="${P.accent}" opacity="0.85"/>
+  <path d="M-13,-14 L13,-14 L17,8 L0,26 L-17,8 Z" fill="${P.kaaba}" stroke="${P.accent}" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M-7,-8 L7,-8 L9,6 L0,16 L-9,6 Z" fill="${P.accent}" opacity="0.55"/>
+  <circle cy="30" r="2.6" fill="${P.accent}"/>
+</g>`;
+    },
+  },
+  {
+    n: 2,
+    title: 'Ring that fills',
+    note: "Apple's own metaphor in our palette: the ring FILLS as the phone travels it, so the user can see how far through they are and when to stop.",
+    build: (t) => {
+      const R = 74;
+      const a = t * TURN - Math.PI / 2;
+      const C = TURN * R;
+      return `
+<circle r="${R}" fill="none" stroke="${s(0.14)}" stroke-width="14"/>
+<circle r="${R}" fill="none" stroke="${P.accent}" stroke-width="14" stroke-linecap="round"
+  stroke-dasharray="${r2(C)}" stroke-dashoffset="${r2(C * (1 - t))}" transform="rotate(-90)" opacity="0.9"/>
+${jewel(17, { op: 0.35, sw: 1.6 })}
+<g transform="translate(${r2(Math.cos(a) * R)},${r2(Math.sin(a) * R)}) rotate(${r2((t * 360 + 90) % 360)})">
+  ${phone(30, 56, { glow: 7 })}
+</g>`;
+    },
+  },
+  {
+    n: 3,
+    title: 'Comet trail',
+    note: 'The phone leaves a smooth glowing tail. The trail IS the instruction: the whole shape stays visible for a moment after the phone has gone.',
+    build: (t) => {
+      const W = 142;
+      const H = 58;
+      const at = fig8(t, W, H);
+      const n = 30;
+      const tail = Array.from({ length: n }, (_, i) => {
+        const tt = (t - i * 0.009 + 1) % 1;
+        const p = fig8(tt, W, H);
+        return `${i === 0 ? 'M' : 'L'}${r2(p.x)},${r2(p.y)}`;
+      }).join('');
+      return `
+<path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.1)}" stroke-width="2"/>
+<path d="${tail}" fill="none" stroke="${P.accent}" stroke-width="13" stroke-linecap="round" opacity="0.12"/>
+<path d="${tail}" fill="none" stroke="${P.accent}" stroke-width="7" stroke-linecap="round" opacity="0.3"/>
+<path d="${tail}" fill="none" stroke="${P.accent}" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(lean(t))})">${phone(30, 56, { glow: 9 })}</g>`;
+    },
+  },
+  {
+    n: 4,
+    title: 'Hand holding the phone',
+    note: 'A hand is drawn around the phone, so the picture shows a PERSON doing it. The most literal of the ten and the easiest to copy without reading.',
+    build: (t) => {
+      const W = 124;
+      const H = 50;
+      const at = fig8(t, W, H);
+      return `
+<path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.17)}" stroke-width="8" stroke-linecap="round"/>
+<path d="${fig8Path(W, H)}" fill="none" stroke="${P.accent}" stroke-width="1.5" stroke-dasharray="4 9" opacity="0.5"/>
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(lean(t))})">
+  ${phone(30, 56)}
+  <path d="M-19,20 Q-23,36 -11,39 L13,39 Q24,37 22,22 L22,11 Q22,5 17,6.5 L16,17 L16,1 Q16,-5 11,-3.5 L11,16 L11,-1 Q11,-7 6,-5.5 L6,16 L6,2 Q6,-3 1,-1.5 L1,19"
+    fill="${P.kaaba}" stroke="${s(0.6)}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>`;
+    },
+  },
+  {
+    n: 5,
+    title: 'Lanterns lighting up',
+    note: 'Eight-point stars sit along the path and light one by one as the phone reaches them. Progress told entirely in the app\u2019s own motif.',
+    build: (t) => {
+      const W = 138;
+      const H = 54;
+      const at = fig8(t, W, H);
+      const stars = Array.from({ length: 8 }, (_, i) => {
+        const st = i / 8;
+        const p = fig8(st, W, H);
+        const lit = st <= t;
+        return `<g transform="translate(${r2(p.x)},${r2(p.y)})">
+${lit ? `<circle r="16" fill="${P.accent}" opacity="0.16"/>` : ''}
+${star8(lit ? 12 : 8, { fill: lit ? P.accent : 'none', op: lit ? 0.95 : 0.55, stroke: lit ? 'none' : s(0.4) })}</g>`;
+      }).join('');
+      return `
+<path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.12)}" stroke-width="1.8" stroke-dasharray="2 7"/>
+${stars}
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(lean(t))})">${phone(29, 54, { glow: 8 })}</g>`;
+    },
+  },
+  {
+    n: 6,
+    title: 'The phone paints the path',
+    note: 'The figure of eight paints itself in a calligraphic stroke, drawn BY the phone rather than by a pen, so the object moved is the object held.',
+    build: (t) => {
+      const W = 140;
+      const H = 56;
+      const n = 72;
+      const upto = Math.max(2, Math.round(n * t));
+      const seg = Array.from({ length: upto }, (_, i) => {
+        const p = fig8(i / n, W, H);
+        return `${i === 0 ? 'M' : 'L'}${r2(p.x)},${r2(p.y)}`;
+      }).join('');
+      const at = fig8(t, W, H);
+      return `
+<path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.1)}" stroke-width="1.6"/>
+<path d="${seg}" fill="none" stroke="${P.accent}" stroke-width="14" stroke-linecap="round" opacity="0.14"/>
+<path d="${seg}" fill="none" stroke="${P.accent}" stroke-width="6" stroke-linecap="round" opacity="0.92"/>
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(lean(t))})">${phone(30, 56, { glow: 8 })}</g>`;
+    },
+  },
+  {
+    n: 7,
+    title: 'Masjid arch',
+    note: 'The gesture sits inside a pointed arch with its own lamp and keystone, the architecture the app already draws. The most decorative of the ten.',
+    build: (t) => {
+      const W = 108;
+      const H = 42;
+      const at = fig8(t, W, H);
+      return `
+<path d="M-76,86 L-76,-6 Q-76,-44 -34,-62 Q-10,-73 0,-86 Q10,-73 34,-62 Q76,-44 76,-6 L76,86"
+  fill="none" stroke="${s(0.26)}" stroke-width="3"/>
+<path d="M-62,86 L-62,-4 Q-62,-37 -27,-52 Q-8,-61 0,-72 Q8,-61 27,-52 Q62,-37 62,-4 L62,86"
+  fill="none" stroke="${s(0.12)}" stroke-width="1.6"/>
+<g transform="translate(0,-54)">${star8(11, { fill: P.accent, op: 0.6 })}</g>
+<path d="M-76,86 L76,86" stroke="${s(0.3)}" stroke-width="3" stroke-linecap="round"/>
+<path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.16)}" stroke-width="7" stroke-linecap="round"/>
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(lean(t))})">${phone(28, 52, { glow: 7 })}</g>`;
+    },
+  },
+  {
+    n: 8,
+    title: 'The compass assembles',
+    note: 'The dial the user is waiting for lies scattered and pulls itself together as the phone waves. The wait becomes the arrival, with no words at all.',
+    build: (t) => {
+      const R = 72;
+      const W = 96;
+      const H = 36;
+      const at = fig8(t, W, H);
+      const ticks = Array.from({ length: 24 }, (_, i) => {
+        const a = (i / 24) * TURN - Math.PI / 2;
+        const scatter = (1 - t) * (10 + ((i * 29) % 16));
+        const r1 = R - (i % 6 === 0 ? 14 : 8) + scatter;
+        const r2v = R + scatter;
+        return `<line x1="${r2(Math.cos(a) * r1)}" y1="${r2(Math.sin(a) * r1)}" x2="${r2(Math.cos(a) * r2v)}" y2="${r2(Math.sin(a) * r2v)}" stroke="${s(r2(0.2 + t * 0.5))}" stroke-width="${i % 6 === 0 ? 3 : 1.5}" stroke-linecap="round"/>`;
+      }).join('');
+      return `
+${ticks}
+<circle r="${r2(R + (1 - t) * 14)}" fill="none" stroke="${s(r2(0.1 + t * 0.2))}" stroke-width="1.6" opacity="${r2(0.25 + t * 0.65)}"/>
+<path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.15)}" stroke-width="6" stroke-linecap="round" opacity="${r2(1 - t * 0.55)}"/>
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(lean(t))})">${phone(27, 50, { glow: 7 })}</g>`;
+    },
+  },
+  {
+    n: 9,
+    title: 'Ripple pool',
+    note: 'Each pass sheds a ring that spreads and fades, like a stone dropped on water. The calmest of the ten, and it reads as the sensor listening.',
+    build: (t) => {
+      const W = 132;
+      const H = 52;
+      const at = fig8(t, W, H);
+      const rings = Array.from({ length: 5 }, (_, i) => {
+        const rt = (i * 0.2 + t) % 1;
+        const p = fig8((t - i * 0.14 + 1) % 1, W, H);
+        return `<circle cx="${r2(p.x)}" cy="${r2(p.y)}" r="${r2(10 + rt * 44)}" fill="none" stroke="${P.accent}" stroke-width="${r2(3.4 * (1 - rt))}" opacity="${r2(0.6 * (1 - rt) ** 1.2)}"/>`;
+      }).join('');
+      return `
+<path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.12)}" stroke-width="2"/>
+${rings}
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(lean(t))})">${phone(29, 54, { glow: 7 })}</g>`;
+    },
+  },
+  {
+    n: 10,
+    title: 'Needle finding north',
+    note: 'A needle swings wildly and settles as the phone waves: cause and effect in one picture. The only design that explains WHY the gesture is asked for.',
+    build: (t) => {
+      const W = 96;
+      const H = 34;
+      const at = fig8(t, W, H);
+      const wobble = (1 - t) ** 1.4 * 140;
+      const angle = Math.sin(t * TURN * 2.5) * wobble;
+      const R = 62;
+      return `
+<g transform="translate(0,-26)">
+  <circle r="${R}" fill="${P.medallion}" opacity="0.55"/>
+  <circle r="${R}" fill="none" stroke="${s(r2(0.22 + t * 0.2))}" stroke-width="2"/>
+  ${Array.from({ length: 12 }, (_, i) => {
+    const a = (i / 12) * TURN - Math.PI / 2;
+    const inner = i % 3 === 0 ? R - 12 : R - 7;
+    return `<line x1="${r2(Math.cos(a) * inner)}" y1="${r2(Math.sin(a) * inner)}" x2="${r2(Math.cos(a) * (R - 2))}" y2="${r2(Math.sin(a) * (R - 2))}" stroke="${s(i % 3 === 0 ? 0.45 : 0.25)}" stroke-width="${i % 3 === 0 ? 2.6 : 1.4}" stroke-linecap="round"/>`;
+  }).join('')}
+  <g transform="rotate(${r2(angle)})">
+    <path d="M0,-${R - 16} L8,2 L0,16 L-8,2 Z" fill="${P.accent}" opacity="${r2(0.5 + t * 0.45)}"/>
+    <path d="M0,${R - 22} L6,2 L0,-12 L-6,2 Z" fill="${s(0.32)}"/>
+  </g>
+  <circle r="4" fill="${P.accent}"/>
+</g>
+<g transform="translate(0,78)">
+  <path d="${fig8Path(W, H)}" fill="none" stroke="${s(0.16)}" stroke-width="6" stroke-linecap="round"/>
+  <g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(lean(t))})">${phone(22, 41, { sw: 2, glow: 5 })}</g>
+</g>`;
+    },
+  },
+];
+
+export default designs;
