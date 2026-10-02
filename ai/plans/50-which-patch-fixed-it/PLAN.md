@@ -371,8 +371,8 @@ in flight at once. The pre-flight checks for a competing build, and section 7 bu
 
 ## 6. Steps
 
-- [ ] Step 1: the guard that proves `node_modules` was put back (specified)
-- [ ] Step 2: the records, written from the owner's verdicts (specified)
+- [x] Step 1: DONE in c0cf68a3, merged 476522b7
+- [x] Step 2: DONE
 
 Step 1 ships before any experiment runs, because it is what makes the experiments safe. Step 2 runs after
 the device proof, because its content IS the device proof's result.
@@ -887,6 +887,22 @@ Expected at the end of phase 1: five APKs in `~/athan-device-sweep/session50/`
 
 Each build takes about 4 minutes, so phase 1 is about 25 minutes. Run every build in the background with
 its log (`EXECUTOR-BRIEF.md` section 3), and never two at once.
+
+**A build log that has not yet printed `BUILD-PROD OK` or `BUILD-PROD FAILED` is still running, and
+reading it mid-flight proves nothing.** This session read a log that stopped mid-task, concluded the
+build had been killed, and relaunched it; the first build was in fact still going and failed on its own
+three minutes later. Two consequences, both of which cost time here:
+
+- **Wait on the process, not the log.** `pgrep -f 'Dorg.gradle.appname=gradlew'` is the gradlew wrapper
+  this script starts. Waiting on `GradleWrapperMain` instead matches a DIFFERENT process name and
+  returns immediately, which is what produced the false "it was killed" reading.
+- **Never relaunch a build before confirming the first one is gone.** Two builds share one worktree and
+  one log, and `ai/AGENTS.md` records the symptom exactly: R8 or CMake reports a missing intermediate,
+  which reads as a corrupt dependency and is nothing of the kind. The real failure here was
+  `java.io.FileNotFoundException: .../cxx/RelWithDebInfo/.../build_stdout_targets.txt`.
+
+**The first `assembleRelease` of a session can fail on that CMake path and succeed on a rerun**, which
+is what happened here. A rerun is the first response; a second identical failure is a STOP.
 
 ### Phase 2: wireless adb, so the phone leaves the cable behind
 
