@@ -249,13 +249,36 @@ a 34-degree reading.
    a local field has been absorbed into the calibration and no software fix exists.
 3. **The value is STABLE at about 25 rather than scattering**, which rules out a convergence problem on
    this handset: 0.6 degrees of movement across two minutes is not a sensor still settling. It is a
-   steady declaration of steady uncertainty, which is what a fixed field in a room produces.
+   steady declaration of steady uncertainty.
 
-**What this does NOT establish**, and must not be written as if it did: the accuracy was not measured
-against a known true bearing in this session, so "the phone claims 25 and is wrong by 25" is untested.
-The honest claim is that the phone declares about 25 degrees of uncertainty and does not want
-calibrating. Pairing that claim with a measured error needs an outdoor reading against a known
-landmark, which is a later session's work.
+**THE CONDITIONS INVALIDATE ANY CLAIM ABOUT THE OWNER'S HOUSE, AND HE IS THE ONE WHO POINTED IT OUT**
+(2026-10-02): 🐋  "I did move the mobile phones from the table to the floor because the table is very
+magnetic and the laptop is there... if you are connected, that means there's magnets."
+
+**Every reading in this session was taken on a phone tethered by cable, beside a laptop, in a room he
+describes as magnetically dirty.** That is close to the worst case, and session 41 measured this exact
+effect: the same iPhone wanted a 190 correction beside a laptop and 220 two metres away on open floor,
+at one spot, within one session. **So the 25 degrees is a reading of THIS DESK, not of his house and
+not of the phone's general behaviour.**
+
+The claim that survives is narrow and is the one worth having: **the module can report iOS's own
+uncertainty in degrees, and in a magnetically hostile spot that figure was about 25 while iOS still
+said it did not need calibrating.** Whether it falls to 3 outdoors is UNMEASURED and is the whole
+question.
+
+**Two things are therefore NOT established and must not be written as if they were:**
+
+- the accuracy was never checked against a known true bearing, so "the phone claims 25 and is wrong by
+  25" is untested;
+- nothing here characterises the owner's house, let alone any user's, because the instrument was sitting
+  in the interference.
+
+**THE METHOD RULE THIS SETS, and it binds every future heading measurement in this programme: a
+tethered phone is inside the magnetic field of the thing tethering it, so no heading or accuracy
+reading taken over a cable is evidence about anywhere.** The owner's protocol is the correct one and
+this row adopts it: he disconnects, leaves the room, records video or screenshots outdoors, and brings
+the frames back for frame-by-frame reading. Session 47 already proved the same point from the other
+side, when a desk measurement said 5 degrees and a balcony said 34.
 
 ### The platform split is visible on the phones, and is correct
 
@@ -269,3 +292,34 @@ right:
 
 Each platform fills its own half, chosen by which function the native module exposes rather than by a
 `Platform.OS` branch, which is the rule the qibla path has held since session 47.
+
+### Both phones end on the same clean build, which is what the owner asked for
+
+🐋  "please make sure both phones have the latest code so I can test both phones at the same time"
+
+| Phone | Build | Diagnostic | Checked |
+| --- | --- | --- | --- |
+| OnePlus 3T `8f7ada76` | 1.29.211, production release | off, folded away by the prod guard | `versionName=1.29.211`, `fleettest` package absent, `auto_time` 1, readout confirmed absent by screenshot |
+| iPhone XS | 1.29.211, local Release | off | `devicectl` reports 1.29.211 |
+
+Both built from `75e1e17b`, the iOS fix merge. The Android APK is `BUILD-PROD OK`, 767s, real API key,
+built locally with Gradle and never on EAS.
+
+### What row 49 does NOT answer, asked by the owner directly
+
+🐋  "Which test will number 49 allow us to do? Is it A, B, C, or D?"
+
+**None of them.** A, B, C and D are row 50's four isolation experiments over the patches that shipped in
+1.29.205, and this row ran none of them. The four changes are all still in, verified in the live code:
+`SENSOR_DELAY_GAME` on both registrations, the `DEGREE_DELTA` gate removed with `TIME_DELTA` kept,
+`headingFilter = kCLHeadingFilterNone`, and the latch at `hooks/useQibla.ts:126`.
+
+**What this row gives row 50 is the INSTRUMENT those experiments were missing.** Before it, A against B
+could only be judged by eye, which cannot separate a 5-degree change from a 15-degree one and varies with
+where the owner stands. Now each build reports iOS's own uncertainty in degrees, so "which patch was the
+hero" becomes a reading rather than an argument.
+
+**The honest limit on that, so row 50 does not over-plan around it:** `headingAccuracy` is iOS only. On
+the S23 and the 3T, A and B still have to be judged against Google Maps by eye, because Android's
+equivalent number comes from FOP and this session measured FOP to be no better than what already ships
+on the 3T.

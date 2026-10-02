@@ -327,8 +327,30 @@ Its claims must be only what was measured:
 > app's own heading path has ever requested, which is Google's documented hard-iron and gyro-bias
 > estimation running. Three stationary frames put FOP within 0.3 degrees of itself across 8 seconds
 > against the drawn dial's 1.9, so FOP is marginally steadier and points the same way, which is exactly
-> what Google's own caveat about piping the Rotation Vector through predicts. What the module measured on
-> his own phones is in `ai/plans/49-qibla-native-heading/LOG.md`.
+> what Google's own caveat about piping the Rotation Vector through predicts. **ON THE iPhone XS THE
+> NUMBER NO BUILD OF THIS APP HAS EVER SEEN READ 25.4, 24.8, 24.8 DEGREES across two minutes with
+> `wantsCalibration` FALSE throughout**, which `expo-location` would have reported as bucket 2, spanning
+> 20 to 35. Two things follow: the number is READABLE at all, which is what the row existed to prove, and
+> the shaking is pointless because iOS does not consider itself uncalibrated. **WHAT THE READING DOES NOT
+> MEAN, and the owner is the one who caught it: every sample was taken on a phone TETHERED BY CABLE beside
+> a laptop, in a room he calls magnetically dirty, so 25 degrees measures THAT DESK and says nothing about
+> his house or about the phone in the open.** Session 41 measured the same iPhone wanting a 190 correction
+> beside a laptop and 220 two metres away on open floor. **THE METHOD RULE THIS SETS: a tethered phone sits
+> inside the field of the thing tethering it, so no heading or accuracy reading taken over a cable is
+> evidence about anywhere.** The owner's protocol replaces it: disconnect, leave the room, record video
+> outdoors, bring the frames back for frame-by-frame reading. The accuracy was also never checked against a
+> known true bearing, so "the phone claims 25 and is wrong by 25" is untested. **A DEFECT ONLY A
+> PHONE COULD FIND**: the first XS build showed `accuracy -` while the compass turned, because an Expo
+> `AsyncFunction` runs off the main queue and `CLLocationManager` delivers delegate callbacks only on a
+> thread with a live run loop, so the manager started cleanly, reported no error and was never called
+> back; `.runOnQueue(.main)` fixes it, and nothing else could have caught it since the Swift compiles
+> either way, the function returns `true`, and a simulator has no magnetometer. **AND THE OWNER'S
+> CALIBRATION WORRY IS ANSWERED IN `FINDINGS.md` SECTION 5**: nothing in this row calibrates anything,
+> every occurrence of `offset`, `calibrat`, `correction` or `declination` across the qibla path is a name
+> or a comment rather than an operation, the whole alignment maths is `bearing - heading`, and the qibla
+> itself is recomputed from each user's own position by great-circle trigonometry, so no value travels
+> from one user's room to another's. What the module measured on his own phones is in
+> `ai/plans/49-qibla-native-heading/LOG.md`.
 
 Then set row 49 to EXECUTED in `ai/plans/README.md` and make an `executed` docs commit
 (`EXECUTOR-BRIEF.md` section 4b). Do not push: the audit pushes.
