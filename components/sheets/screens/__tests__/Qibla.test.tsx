@@ -6,6 +6,8 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { Dimensions, StyleSheet } from 'react-native';
 
+import { SETTLE_MIN_READINGS, SETTLE_WINDOW_MS } from '@/shared/qiblaSettle';
+
 import QiblaSheet from '../Qibla';
 
 // Babel hoists jest.mock above these, so the names must carry the `mock` prefix to be reachable from the factory
@@ -52,11 +54,35 @@ const openSheet = async () => {
   await act(async () => {});
 };
 
-/** Drives headings through the watch exactly as the platform would */
+/**
+ * Drives headings through the watch exactly as the platform would.
+ *
+ * The settling gate draws nothing until the stream has been steady across its whole window, so a reading
+ * is preceded by enough steady samples, spread over real time, for the window to span and settle. Without
+ * them the sheet correctly refuses to draw and every assertion about the dial is about a blank stage.
+ */
 const reportHeadings = async (...headings: number[]) => {
+  jest.useFakeTimers();
+  for (const trueHeading of headings) {
+    for (let i = 0; i < SETTLE_MIN_READINGS; i++) {
+      await act(async () => {
+        for (const watcher of mockWatchers) watcher({ trueHeading });
+        jest.advanceTimersByTime(SETTLE_WINDOW_MS / (SETTLE_MIN_READINGS - 1));
+      });
+    }
+  }
+};
+
+/**
+ * Drives a lost heading, which both platforms report as -1.
+ *
+ * Separate from `reportHeadings` and advancing no clock of its own, because the grace window that
+ * survives a dropout is counted in real time and these tests drive that clock themselves.
+ */
+const reportLostHeadings = async (count = 1) => {
   await act(async () => {
-    for (const trueHeading of headings) {
-      for (const watcher of mockWatchers) watcher({ trueHeading });
+    for (let i = 0; i < count; i++) {
+      for (const watcher of mockWatchers) watcher({ trueHeading: -1 });
     }
   });
 };
@@ -234,7 +260,7 @@ describe('the place the bearing was computed from', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await reportHeadings(-1);
+    await reportLostHeadings();
 
     expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
   });
@@ -245,7 +271,7 @@ describe('the place the bearing was computed from', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await reportHeadings(-1);
+    await reportLostHeadings();
     await act(async () => {
       jest.advanceTimersByTime(2000);
     });
@@ -350,7 +376,7 @@ describe('when the phone cannot say which way it points', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await reportHeadings(-1);
+    await reportLostHeadings();
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
@@ -360,7 +386,7 @@ describe('when the phone cannot say which way it points', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await reportHeadings(-1);
+    await reportLostHeadings();
     await act(async () => {
       jest.advanceTimersByTime(2000);
     });
@@ -375,11 +401,11 @@ describe('when the phone cannot say which way it points', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await reportHeadings(-1);
+    await reportLostHeadings();
     await act(async () => {
       jest.advanceTimersByTime(1000);
     });
-    await reportHeadings(-1, -1);
+    await reportLostHeadings(2);
     await act(async () => {
       jest.advanceTimersByTime(800);
     });
@@ -393,11 +419,11 @@ describe('when the phone cannot say which way it points', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await reportHeadings(-1);
+    await reportLostHeadings();
     await act(async () => {
       jest.advanceTimersByTime(2000);
     });
-    await reportHeadings(-1);
+    await reportLostHeadings();
     await act(async () => {
       jest.advanceTimersByTime(2000);
     });
@@ -411,7 +437,7 @@ describe('when the phone cannot say which way it points', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await reportHeadings(-1);
+    await reportLostHeadings();
     await act(async () => {
       jest.advanceTimersByTime(500);
     });
@@ -426,7 +452,7 @@ describe('when the phone cannot say which way it points', () => {
 
   it('draws the dial again once a real heading returns', async () => {
     await openSheet();
-    await reportHeadings(-1);
+    await reportLostHeadings();
 
     await reportHeadings(95);
 
@@ -436,7 +462,7 @@ describe('when the phone cannot say which way it points', () => {
   it('taps on arriving at the line after a lost heading, rather than staying silent', async () => {
     await openSheet();
     await reportHeadings(118.9);
-    await reportHeadings(-1);
+    await reportLostHeadings();
 
     await reportHeadings(118.9);
 
@@ -602,21 +628,63 @@ describe('reopening the sheet in the same place', () => {
   });
 });
 
+describe('the settling gate', () => {
+  it('draws nothing on a single reading, however good it looks', async () => {
+    await openSheet();
+
+    // One reading cannot span the window, so the stream has not been shown to have converged
+    await act(async () => {
+      for (const watcher of mockWatchers) watcher({ trueHeading: 118 });
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('draws nothing while the stream is still converging, even though it is smooth', async () => {
+    await openSheet();
+    jest.useFakeTimers();
+
+    // A cold fusion walks toward the truth: quiet between readings and still 20 degrees out, which is
+    // exactly the stream a spread gate would have accepted
+    await act(async () => {
+      for (let i = 0; i < SETTLE_MIN_READINGS * 2; i++) {
+        for (const watcher of mockWatchers) watcher({ trueHeading: 118 + 20 * Math.exp(-i / 6) });
+        jest.advanceTimersByTime(SETTLE_WINDOW_MS / (SETTLE_MIN_READINGS - 1));
+      }
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('fires no haptic on a reading it refuses to draw', async () => {
+    await openSheet();
+
+    // Dead on the line, so a tap would fire the moment the gate let it through
+    await act(async () => {
+      for (const watcher of mockWatchers) watcher({ trueHeading: 118.99 });
+    });
+
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+});
+
 describe('a heading that arrives before the position', () => {
-  it('is held and applied the moment the position lands, rather than dropped', async () => {
+  it('counts toward the settling window while the fix is still being read, rather than being dropped', async () => {
     mockState.releasePosition = () => undefined;
     await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    // A reading can arrive while the fix is still being read, and the old code never saw it
-    await act(async () => {
-      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
-    });
+    // Readings arrive while the fix is still being read, and they must fill the window rather than wait for it
+    await reportHeadings(140);
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
 
     await act(async () => {
       mockState.releasePosition?.();
+    });
+    // One further reading finds a window already settled, so the compass appears immediately
+    await act(async () => {
+      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
     });
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
