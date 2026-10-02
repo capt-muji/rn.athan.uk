@@ -46,7 +46,6 @@ const WAVE_DURATION = 3200;
 export default function QiblaWave({ size, progress }: { size: number; progress: number }) {
   const figureWidth = size * WAVE.width;
   const figureHeight = size * WAVE.height;
-  const slabAt = (yaw: number) => phoneSlab(size, yaw);
   const canvasWidth = figureWidth + size * WAVE.phone.height;
   const canvasHeight = figureHeight + size * WAVE.phone.height;
 
@@ -64,18 +63,19 @@ export default function QiblaWave({ size, progress }: { size: number; progress: 
     d: waveTrail(travel.value, figureWidth, figureHeight),
   }));
 
-  const yaw = useDerivedValue(() => waveYaw(travel.value));
-
   const placement = useAnimatedProps(() => {
     const at = wavePoint(travel.value, figureWidth, figureHeight);
 
     return { transform: `translate(${at.x} ${at.y}) rotate(${waveLean(travel.value)})` };
   });
 
-  const frontProps = useAnimatedProps(() => ({ points: slabAt(yaw.value).front }));
-  const flankProps = useAnimatedProps(() => ({ points: slabAt(yaw.value).flank }));
-  const roofProps = useAnimatedProps(() => ({ points: slabAt(yaw.value).roof }));
-  const screenProps = useAnimatedProps(() => ({ points: slabAt(yaw.value).screen }));
+  // One slab per frame rather than one per face: four calls would rebuild the same geometry four times
+  const slab = useDerivedValue(() => phoneSlab(size, waveYaw(travel.value)));
+
+  const frontProps = useAnimatedProps(() => ({ points: slab.value.front }));
+  const flankProps = useAnimatedProps(() => ({ points: slab.value.flank }));
+  const roofProps = useAnimatedProps(() => ({ points: slab.value.roof }));
+  const screenProps = useAnimatedProps(() => ({ points: slab.value.screen }));
 
   // The bar sits below everything the figure draws, including the phone at its lowest point
   const barHalfWidth = figureWidth * 0.42;
