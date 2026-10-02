@@ -6596,3 +6596,66 @@ SINGLE threshold on the same jitter samples fires 28 taps where the pair fires 1
 Suite after: 4884 passed and 2 skipped, 182 suites, 100% on all four measures. Breaks: 29 of 29 caught. One break was a no-op
 (`void 0` changes nothing) and printed SURVIVED against a hook that genuinely works, so it was rewritten rather
 than accepted.
+
+## Session 48: the heading settles before it is drawn
+
+The qibla compass refused to agree with itself across app restarts: the same phone at the same spot read 5,
+10, 20 or 30 degrees differently each time the owner reopened the sheet. The research behind this session
+divided that symptom in two, and only one half is the app's.
+
+**The fixable half is a cold sensor fusion.** A fused heading arms from cold and walks toward the truth, and
+the app drew the first step of that walk. Measured against a simulated stream carrying `expo-location`'s own
+2-degree and 50ms gate, the first reading is about 30 degrees out where the converged one is 0.71.
+
+`shared/qiblaSettle.ts` holds the gate. It tests DRIFT between the two halves of a trailing 3000ms window,
+requires at least 8 readings, and requires the window to be SPANNED rather than merely filled.
+
+Three negative results shaped it, and each would have shipped a worse gate:
+
+- A SPREAD gate passes a smoothly converging stream at 27.22 degrees of error, because a stream still
+  converging is quiet between consecutive readings. Smoothness is not correctness.
+- A window counted in READINGS needs 120 seconds to open on a still phone, because the platform suppresses
+  anything within 2 degrees of the last reading and a converged stream emits almost nothing: at 0.5 degrees
+  of jitter only 0.1% of readings survive that gate.
+- The SPAN requirement was found by a defect in the plan's own first gate. Without it a fast stream fills the
+  count in 400ms, and the 8-second convergence opened at 29.18 degrees rather than 9.70 while the indoor
+  jittery case read 22.19 rather than 3.52.
+
+**The unfixable half is iron in the room**, and this is recorded so no later session spends a session on it.
+No gate reading the heading stream alone can see a STABLE bias, by construction: it is quiet and it is not
+moving, which is what settled means, and it was measured passing every gate at 1.0x improvement. **The
+field-magnitude and dip physics check cannot bound it either, which retires the lever session 40 specified
+and row 46 still lists as untried.** Swept over every offset direction and every phone heading, a 10 uT
+offset swings the heading 30.8 degrees and passes gates of 10% on magnitude and 5 degrees on dip. The reason
+generalises: a compass reads only the HORIZONTAL field, which at London is 40% of the total, and an offset
+adds linearly to that component and in quadrature to the total, so 20 uT costs 45.7 degrees of heading and
+8.0% of magnitude. The check is weakest exactly where the owner lives and weaker still toward the poles.
+
+Apple states the limit in its own documentation: calibration "is able to filter out only those magnetic
+fields that move with the device", so a field fixed in the room is indistinguishable from the earth's by any
+software.
+
+**What the research established about the platform, read from source rather than inferred.** `expo-location`
+58.0.9 is faithful to `CLHeading` on iOS: `DeviceHeadingStreamer.swift` yields the raw value and
+`BaseLocationProvider.swift` configures nothing, so the XS is already on the value Apple Maps draws and
+there is no module bug to fix there. On Android the same API is accelerometer plus magnetometer with **no
+gyroscope**, fused in Kotlin inside the module, so `watchHeadingAsync` is not symmetric across platforms and
+no single swap could have fixed both.
+
+Four smaller real defects were found and are recorded rather than fixed, each with its measured magnitude:
+`DeviceHeadingStreamer` never calls `startUpdatingLocation` on its own manager, which Apple requires for a
+valid `trueHeading`, worth about 1.2 degrees in London and more at high declination;
+`onAccuracyChanged` has no sensor-type guard, so the Android accuracy this app receives is usually the
+ACCELEROMETER's, which explains session 40's band 3 while 71 degrees wrong; `calcTrueNorth` does not
+normalise and Kotlin's `%` keeps the sign, so a negative declination near north returns a negative heading
+that collides with this app's own `NO_HEADING = -1`; and the app never gates on `headingAccuracy < 0`, which
+Apple's own sample does unconditionally.
+
+Two open items from earlier sessions are CLOSED. The `event.values` by-reference storage session 40 flagged
+is refuted: AOSP allocates one `SensorEvent` per sensor handle and both of the module's registrations share
+one Looper, so the arrays can never alias and delivery is serialized, verified in the Android 9 tree. And
+the proposal to revisit Reanimated's gyro-fused sensor on a mirrored-sign theory is refuted three ways:
+session 47's own `headingFromYaw` negated the yaw back, a test pinned it, and a mirror predicts a 122 degree
+error at the London qibla rather than the 5 and 34 that were measured.
+
+Suite after: 4949 tests across 184 suites, 100% on all four measures.
