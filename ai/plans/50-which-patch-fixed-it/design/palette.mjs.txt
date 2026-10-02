@@ -1,0 +1,11 @@
+/** COLORS.qibla.away from shared/constants.ts, verbatim */
+export const P = {
+  face: 'rgba(23, 31, 72, 1)',
+  medallion: 'rgba(30, 40, 88, 1)',
+  structure: '146, 184, 228',
+  ink: 'rgba(146, 184, 228, 0.45)',
+  accent: 'rgba(212, 160, 58, 1)',
+  kaaba: 'rgba(16, 22, 56, 1)',
+};
+
+export const s = (n) => `rgba(${P.structure}, ${n})`;
