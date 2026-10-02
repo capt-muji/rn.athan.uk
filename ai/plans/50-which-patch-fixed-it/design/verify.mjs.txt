@@ -1,0 +1,85 @@
+/**
+ * Does the SHIPPED geometry draw what the owner approved?
+ *
+ * The design was judged from a generator; the app is TypeScript. Session 45 proved the port rather than
+ * assuming it matched, and this is the same check: the app's own wavePoint, waveTrail and waveRoll are
+ * re-implemented here verbatim from shared/qiblaWave.ts and rendered through the same strip harness.
+ * If the picture matches design 3, the port is faithful.
+ */
+
+import { P, s } from './palette.mjs';
+
+const TURN = Math.PI * 2;
+const r2 = (v) => Number(v.toFixed(2));
+
+/** Verbatim from shared/qiblaWave.ts */
+const WAVE = {
+  width: 0.58,
+  height: 0.24,
+  stroke: 0.008,
+  segments: 72,
+  phone: { width: 0.088, height: 0.164, radius: 0.018, screenInset: 0.14 },
+  lean: 30,
+  trail: { span: 0.3, samples: 24, core: 0.009, halo: 0.03 },
+};
+
+const wavePoint = (progress, width, height) => {
+  const angle = progress * TURN;
+  return { x: (width / 2) * Math.sin(angle), y: height * Math.sin(angle) * Math.cos(angle) };
+};
+
+const waveLean = (progress) => {
+  const angle = progress * TURN;
+  const tangent = Math.atan2(2 * Math.cos(2 * angle), Math.cos(angle));
+  return Math.sin(tangent) * WAVE.lean;
+};
+
+const waveRoll = (progress) => Math.cos(progress * TURN * 2);
+
+const wavePath = (width, height) => {
+  const v = Array.from({ length: WAVE.segments }, (_, i) => wavePoint(i / WAVE.segments, width, height));
+  return `${v.map((a, i) => `${i === 0 ? 'M' : 'L'}${r2(a.x)},${r2(a.y)}`).join('')}Z`;
+};
+
+const waveTrail = (progress, width, height) => {
+  const step = WAVE.trail.span / WAVE.trail.samples;
+  let path = '';
+  for (let i = WAVE.trail.samples; i >= 0; i--) {
+    const at = wavePoint((progress - i * step + 1) % 1, width, height);
+    path += `${i === WAVE.trail.samples ? 'M' : 'L'}${at.x.toFixed(2)},${at.y.toFixed(2)}`;
+  }
+  return path;
+};
+
+/** The stage the sheet gives the hint, at the size a 3T draws it */
+const SIZE = 240;
+
+export default [
+  {
+    n: 3,
+    title: 'Comet trail, AS SHIPPED',
+    note: 'Rendered from the app\u2019s own geometry: three stacked strokes rather than a shadow, and the phone banks edge-on through each turn.',
+    build: (t) => {
+      const W = SIZE * WAVE.width;
+      const H = SIZE * WAVE.height;
+      const at = wavePoint(t, W, H);
+      const trail = waveTrail(t, W, H);
+      const bw = SIZE * WAVE.phone.width;
+      const bh = SIZE * WAVE.phone.height;
+      const br = SIZE * WAVE.phone.radius;
+      const inset = bw * WAVE.phone.screenInset;
+      const roll = waveRoll(t);
+      return `
+<path d="${wavePath(W, H)}" fill="none" stroke="${s(0.16)}" stroke-width="${r2(SIZE * WAVE.stroke)}" stroke-linecap="round"/>
+<path d="${trail}" fill="none" stroke="${P.accent}" stroke-width="${r2(SIZE * WAVE.trail.halo)}" stroke-linecap="round" opacity="0.12"/>
+<path d="${trail}" fill="none" stroke="${P.accent}" stroke-width="${r2(SIZE * WAVE.trail.halo * 0.5)}" stroke-linecap="round" opacity="0.3"/>
+<path d="${trail}" fill="none" stroke="${P.accent}" stroke-width="${r2(SIZE * WAVE.trail.core)}" stroke-linecap="round" opacity="0.85"/>
+<g transform="translate(${r2(at.x)},${r2(at.y)}) rotate(${r2(waveLean(t))}) scale(${r2(roll)},1)">
+  <rect x="${r2(-bw / 2)}" y="${r2(-bh / 2)}" width="${r2(bw)}" height="${r2(bh)}" rx="${r2(br)}"
+    fill="${P.kaaba}" stroke="${P.accent}" stroke-width="${r2(SIZE * WAVE.stroke)}"/>
+  <rect x="${r2(-bw / 2 + inset)}" y="${r2(-bh / 2 + inset)}" width="${r2(bw - inset * 2)}" height="${r2(bh - inset * 2)}"
+    rx="${r2(Math.max(br - inset, 0))}" fill="${s(0.2)}"/>
+</g>`;
+    },
+  },
+];
