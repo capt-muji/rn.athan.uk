@@ -3,6 +3,9 @@
  * follows the same arithmetic the travelling phone does
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { phoneBody, phoneSlab, WAVE, waveLean, wavePath, wavePoint, waveTrail, waveYaw } from '@/shared/qiblaWave';
 
 /** The size the hint is drawn at on a phone, so a px figure here means a px the user sees */
@@ -12,6 +15,30 @@ const HEIGHT = 84;
 /** Every coordinate pair in an SVG path, as numbers */
 const pointsOf = (path: string): { x: number; y: number }[] =>
   [...path.matchAll(/(-?\d+\.?\d*),(-?\d+\.?\d*)/g)].map((match) => ({ x: Number(match[1]), y: Number(match[2]) }));
+
+// Every function the drawing reaches on the UI thread must carry the directive, including the helpers it calls.
+// A plain JS function called from a worklet throws "[Worklets] Tried to synchronously call a Remote Function"
+// and blanks the whole sheet, which has now shipped twice: session 47's heading source, and this file's own
+// phoneSlab. tsc cannot see it and a component test cannot either, because the Jest mock runs everything on one
+// thread, so the source text is the only thing that can be checked.
+describe('the directives the UI thread needs', () => {
+  const source = readFileSync(join(__dirname, '..', 'qiblaWave.ts'), 'utf8');
+
+  /** Everything between a function's declaration and the next blank line after its opening brace */
+  const opens = (name: string): string => {
+    const at = source.indexOf(`const ${name} = `);
+    expect(at).toBeGreaterThan(-1);
+
+    return source.slice(at, at + 400);
+  };
+
+  it.each(['wavePoint', 'waveLean', 'waveYaw', 'waveTrail', 'phoneSlab', 'phoneBody', 'point', 'polygon'])(
+    '%s is a worklet, because the drawing calls it every frame on the UI thread',
+    (name) => {
+      expect(opens(name)).toContain("'worklet'");
+    }
+  );
+});
 
 describe('a point on the wave', () => {
   // The curve crosses its own centre twice per lap, which is what makes the two lobes one gesture rather than
