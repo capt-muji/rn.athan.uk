@@ -16,6 +16,24 @@
 
 ---
 
+## 1b. THE OWNER'S VERDICT, 2026-10-02, on 1.29.233
+
+He tested both phones and accepted them:
+
+> "Both phones work fantastically. I tested both. They both work accurately 100%. I love it, very smooth,
+> fantastic, amazing."
+
+**This closes the regression of section 3 and answers 7.4's open half.** The 3T's lag is gone by his own
+judgement on the slow turn, which is the only test that matters for that symptom, and the compass is accurate
+on both handsets with the shake gate removed and the settling gate alone deciding.
+
+**It also settles 7.1 in practice, though not in theory.** The settling gate is doing its job at 3000ms on
+both phones, so nothing is broken and nothing must change. What remains worth measuring is whether that
+window could be SHORTER now that the `expo-location` patch delivers a denser stream, which is an improvement
+to the wait rather than a fix to a defect. Treat row 52 as optional tuning, not as outstanding work.
+
+---
+
 ## 2. The crash, and the two defects behind it
 
 The sheet died on open: a hard crash on the iPhone XS and the error page on the 3T. **Two defects, both
