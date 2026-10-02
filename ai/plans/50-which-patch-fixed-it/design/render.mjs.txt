@@ -1,0 +1,57 @@
+/**
+ * Renders each calibration animation as a FILMSTRIP: one card per design, five frames across it.
+ *
+ * An animation cannot be judged from a single still, and the owner judges by eye, so each design is
+ * sampled at five points through one loop and laid out left to right. The strip is what tells him
+ * whether the motion reads as an instruction.
+ *
+ * The palette is the app's own `COLORS.qibla.away`, verbatim, because the hint sits on the qibla
+ * sheet and anything else would read as a foreign element.
+ */
+
+import { mkdirSync, writeFileSync } from 'node:fs';
+
+import { P } from './palette.mjs';
+
+/** The sheet's own ground, so each card sits on what the user actually sees behind it */
+const SHEET_BG = '#0d1030';
+
+const CELL = 240;
+const FRAMES = 5;
+const PAD = 18;
+const LABEL_H = 46;
+
+export const round = (v) => Number(v.toFixed(2));
+
+/**
+ * One design, drawn as a strip of frames plus a title.
+ * `build(t)` returns the SVG body for progress t in 0..1, drawn in a CELL x CELL box centred on 0,0.
+ */
+export const strip = ({ n, title, note, build, defs = '' }) => {
+  const width = PAD + FRAMES * (CELL + PAD);
+  const height = LABEL_H + CELL + PAD * 2;
+  const cells = Array.from({ length: FRAMES }, (_, i) => {
+    const t = i / FRAMES;
+    const x = PAD + i * (CELL + PAD) + CELL / 2;
+    const y = LABEL_H + PAD + CELL / 2;
+    return `<g transform="translate(${x},${y})">${build(t)}</g>`;
+  }).join('');
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+<defs>${defs}</defs>
+<rect width="${width}" height="${height}" fill="${SHEET_BG}"/>
+<text x="${PAD}" y="26" font-family="Helvetica,Arial" font-size="17" font-weight="600" fill="rgba(255,255,255,0.92)">${n}. ${title}</text>
+<text x="${PAD}" y="41" font-family="Helvetica,Arial" font-size="12" fill="rgba(255,255,255,0.45)">${note}</text>
+${cells}
+</svg>`;
+};
+
+const file = process.argv[2];
+const outDir = process.argv[3] || 'out';
+const designs = (await import(file.startsWith('.') || file.startsWith('/') ? file : `./${file}`)).default;
+
+mkdirSync(outDir, { recursive: true });
+for (const d of designs) {
+  writeFileSync(`${outDir}/w${String(d.n).padStart(2, '0')}.svg`, strip(d));
+}
+console.log(`wrote ${designs.length} strip(s) to ${outDir}`);
