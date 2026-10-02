@@ -67,3 +67,48 @@ branch rather than being restored.
 | --- | --- |
 | `scripts/breaks-step2.sh` (the arithmetic) | `caught 10 of 10`, `ALL AS EXPECTED: 1` |
 | `$TMPDIR/breaks-48-2.sh` (the hook) | `caught 6 of 6`, `ALL AS EXPECTED: 1` |
+
+### Commit and review
+
+| What | Value |
+| --- | --- |
+| Commit | `1c947980`, version 1.29.201 |
+| Hook's last `Tests:` line | `Tests: 4949 passed, 4949 total` across 184 suites |
+| Coverage | `100% ( 4737/4737 )` statements, `100% ( 2077/2077 )` branches, `100% ( 983/983 )` functions, `100% ( 4250/4250 )` lines |
+| Review | Clean on the first read, one round |
+| Merge | `bce99f94` |
+
+The review checked and confirmed, reading `git show 1c947980` back cold:
+
+- `processReading` runs in the plan's order: `NO_HEADING` first, then the window append, then the
+  `bearing === null` return, then `clearBlank`, then the gate, then the alignment work;
+- **the gate sits ABOVE the haptic**, at line 112 against the haptic's 116, so a refused reading fires
+  nothing. That is the owner's accessibility requirement;
+- `samplesRef` is cleared in `stop` and in the `NO_HEADING` branch;
+- `heldRef` is gone: `grep -c heldRef hooks/useQibla.ts` prints 0;
+- `trailingWindow` is called exactly once per reading;
+- all four carried files are byte-identical to the proven copies under `working-code/`;
+- no `Platform` check in either changed file, and no change to `shared/qiblaAlignment.ts`,
+  `shared/qiblaGeometry.ts`, `shared/qiblaCompass.ts`, `device/qibla.ts` or
+  `components/sheets/screens/Qibla.tsx`.
+
+### Done when
+
+| Check | Result |
+| --- | --- |
+| `npx jest components/sheets/screens/__tests__/Qibla.test.tsx --selectProjects=components` | `Tests: 50 passed, 50 total` |
+| `npx jest device/__tests__/qibla.test.ts shared/__tests__/qiblaSettle.test.ts --selectProjects=unit` | `Tests: 32 passed, 32 total` |
+| `grep -c heldRef hooks/useQibla.ts` | 0 |
+| `scripts/breaks-step2.sh` | `ALL AS EXPECTED: 1`, 10 of 10 |
+| `$TMPDIR/breaks-48-2.sh` | `ALL AS EXPECTED: 1`, 6 of 6 |
+
+## What the owner judges next, and what this does NOT fix
+
+The compass now stays blank for about 3 seconds on opening, then draws. It refuses to draw at all while
+the stream never converges, rather than drawing badly. The owner tests it the way he has been: open, shake,
+close, reopen, lay both phones flat, and see whether the restarts now agree.
+
+**It does not fix the residual error from iron in his house**, which is measured as unfixable by any gate
+reading the heading stream (`MEASURED.md` sections 3 and 4), and it does not touch the heading SOURCE.
+Row 49 carries the native module for `headingAccuracy` in real degrees, Apple's calibration prompt and
+Android's Fused Orientation Provider.
