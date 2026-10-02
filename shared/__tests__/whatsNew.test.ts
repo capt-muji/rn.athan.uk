@@ -197,8 +197,8 @@ describe('WHATS_NEW content contract', () => {
 // =============================================================================
 
 describe('filterWhatsNewItems', () => {
-  const flagsOn = { iosWidgets: true, androidWidgets: true };
-  const flagsOff = { iosWidgets: false, androidWidgets: false };
+  const flagsOn = { iosWidgets: true, androidWidgets: true, qiblaDiagnostic: true };
+  const flagsOff = { iosWidgets: false, androidWidgets: false, qiblaDiagnostic: false };
 
   it('shows items stamped with the presenting release', () => {
     const items = [item({ version: '1.13.0' })];
@@ -279,8 +279,8 @@ describe('VISIBLE_WHATS_NEW', () => {
 });
 
 describe('getVisibleWhatsNew', () => {
-  const flagsOn = { iosWidgets: true, androidWidgets: true };
-  const flagsOff = { iosWidgets: false, androidWidgets: false };
+  const flagsOn = { iosWidgets: true, androidWidgets: true, qiblaDiagnostic: true };
+  const flagsOff = { iosWidgets: false, androidWidgets: false, qiblaDiagnostic: false };
 
   it('presents nothing for a silent release', () => {
     expect(getVisibleWhatsNew(null, flagsOn)).toBeNull();
