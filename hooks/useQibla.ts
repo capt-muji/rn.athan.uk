@@ -6,6 +6,7 @@ import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } fro
 import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
 import { unwrapHeading } from '@/shared/qiblaCompass';
 import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
+import { type HeadingSample, hasSettled, trailingWindow } from '@/shared/qiblaSettle';
 
 export interface QiblaState {
   bearing: number | null;
@@ -59,7 +60,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
   const unwatchRef = useRef<(() => void) | null>(null);
   const blankRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const bearingRef = useRef<number | null>(null);
-  const heldRef = useRef<number | null>(null);
+  const samplesRef = useRef<HeadingSample[]>([]);
   const positionRef = useRef<Coordinates | null>(null);
   const placeRef = useRef<string | null | undefined>(undefined);
 
@@ -78,6 +79,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     activeRef.current = false;
     alignedRef.current = false;
     aligned.value = false;
+    samplesRef.current = [];
     clearBlank();
     unwatchRef.current?.();
     unwatchRef.current = null;
@@ -85,23 +87,30 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
 
   const processReading = useCallback(
     (trueHeading: number) => {
-      const bearing = bearingRef.current;
-
-      // A reading with no bearing yet is held rather than dropped, so the compass appears the moment both exist
-      if (bearing === null) {
-        heldRef.current = trueHeading;
-        return;
-      }
-
       if (trueHeading === NO_HEADING) {
         // The magnetometer drops the odd reading while it settles, and unmounting on one resizes the sheet
         alignedRef.current = false;
         aligned.value = false;
+        // A stale half-window would otherwise settle the moment the fix returns, on readings from before it was lost
+        samplesRef.current = [];
         if (!blankRef.current) blankRef.current = setTimeout(blank, HEADING_GRACE_MS);
         return;
       }
 
+      // Collected before the bearing exists, so the window fills while the position is still being read
+      const nowMs = Date.now();
+      const window = trailingWindow([...samplesRef.current, { degrees: trueHeading, atMs: nowMs }], nowMs);
+      samplesRef.current = window;
+
+      const bearing = bearingRef.current;
+      if (bearing === null) return;
+
       clearBlank();
+
+      // A cold fusion walks toward the truth, and its first step measured about 30 degrees out against 0.71
+      // settled, so nothing is drawn and no tap is felt until the stream stops moving
+      if (!hasSettled(window, nowMs)) return;
+
       const nowAligned = isAligned(alignmentOffset(trueHeading, bearing), alignedRef.current);
       // The strongest impact the platform offers, because a blind user feels this instead of reading anything
       if (shouldTap(alignedRef.current, nowAligned)) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
@@ -116,7 +125,6 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
   const start = useCallback(async () => {
     activeRef.current = true;
     bearingRef.current = null;
-    heldRef.current = null;
 
     const granted = await requestQiblaPermission();
     if (!activeRef.current) return;
@@ -159,10 +167,6 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     placeRef.current = undefined;
     bearingRef.current = qiblaBearing(position);
     setState((previous) => ({ ...previous, bearing: bearingRef.current, permissionDenied: false, place: undefined }));
-
-    const held = heldRef.current;
-    heldRef.current = null;
-    if (held !== null && held !== NO_HEADING) processReading(held);
 
     // Not awaited: the geocoder is a network call, and the compass must never wait on a label to start turning
     readPlaceName(position).then((place) => {
