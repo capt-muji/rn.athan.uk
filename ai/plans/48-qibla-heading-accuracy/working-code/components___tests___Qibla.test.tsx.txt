@@ -4,6 +4,7 @@
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import type React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 
 import { SETTLE_MIN_READINGS, SETTLE_WINDOW_MS } from '@/shared/qiblaSettle';
@@ -638,6 +639,103 @@ describe('the settling gate', () => {
     });
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // The dial reads the heading off a shared value, so a turn costs no render and the rendered transform cannot
+  // see it. Re-rendering publishes the live value into the style, which is how the turn becomes observable
+  const liveDialRotation = async (rerender: (ui: React.ReactElement) => Promise<void>) => {
+    await rerender(<QiblaSheet />);
+
+    return screen.getByTestId('qibla-dial').props.style.transform[0].rotate;
+  };
+
+  it('follows every reading once it has settled, which is the whole point of a compass', async () => {
+    const { rerender } = await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportHeadings(95);
+
+    // A TURNING phone is a moving window, so a gate re-tested per reading would drop exactly these updates and
+    // the dial would only move when the phone was held still
+    await act(async () => {
+      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
+    });
+
+    expect(await liveDialRotation(rerender)).toBe('-140deg');
+  });
+
+  it('keeps following through a fast sweep, where no window could ever look settled', async () => {
+    const { rerender } = await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportHeadings(95);
+
+    // 20 degrees a reading: the window drifts far past the threshold on every one of them
+    await act(async () => {
+      for (const degrees of [115, 135, 155, 175, 195]) {
+        for (const watcher of mockWatchers) watcher({ trueHeading: degrees });
+      }
+    });
+
+    expect(await liveDialRotation(rerender)).toBe('-195deg');
+  });
+
+  it('proves itself again after the heading is genuinely lost, rather than drawing a cold stream', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(95);
+
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+    // The loss outlasted the grace window, so a single fresh reading must not bring the dial straight back
+    await act(async () => {
+      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  it('drops readings older than the window, so a slow trickle can never settle', async () => {
+    await openSheet();
+    jest.useFakeTimers();
+
+    // One reading per window: the trailing window holds exactly one at a time, so the count gate never clears.
+    // An untrimmed window would accumulate these and settle on readings minutes apart
+    await act(async () => {
+      for (let i = 0; i < SETTLE_MIN_READINGS * 2; i++) {
+        for (const watcher of mockWatchers) watcher({ trueHeading: 118 });
+        jest.advanceTimersByTime(SETTLE_WINDOW_MS + 100);
+      }
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
+  });
+
+  it('starts the window again after a lost heading, rather than settling on readings from before it', async () => {
+    await openSheet();
+    jest.useFakeTimers();
+
+    // Half a window, then the stream drops, then half a window: a kept window would total enough to settle
+    await act(async () => {
+      for (let i = 0; i < 4; i++) {
+        for (const watcher of mockWatchers) watcher({ trueHeading: 118 });
+        jest.advanceTimersByTime(400);
+      }
+    });
+    await reportLostHeadings();
+    await act(async () => {
+      for (let i = 0; i < 4; i++) {
+        for (const watcher of mockWatchers) watcher({ trueHeading: 118 });
+        jest.advanceTimersByTime(400);
+      }
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    jest.useRealTimers();
   });
 
   it('draws nothing while the stream is still converging, even though it is smooth', async () => {
