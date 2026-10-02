@@ -38,8 +38,10 @@ const deliver = async (rerender: (ui: React.ReactElement) => void, magnitude: nu
       // Each reading differs from the one before it, because the reaction skips a repeated value exactly as a
       // real sensor's stream never repeats a float. The jitter is what a hand actually delivers
       if (sensor) {
-        const jitter = magnitude === 0 ? 0 : magnitude * (1 + (index % 5) * 0.03);
-        sensor.value = { x: 0, y: 0, z: 9.81 + jitter + index * 1e-6, interfaceOrientation: 0 };
+        // SWINGS either side of rest, because the gate reads how much the reading MOVES rather than how large
+        // it is: a constant feed, however big, is a phone nobody is touching
+        const swing = magnitude * Math.sin((index / 4) * Math.PI);
+        sensor.value = { x: 0, y: 0, z: swing + index * 1e-6, interfaceOrientation: 0 };
       }
       rerender(<Probe active />);
     });

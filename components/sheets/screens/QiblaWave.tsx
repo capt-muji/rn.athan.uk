@@ -12,7 +12,7 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 
 import { COLORS } from '@/shared/constants';
-import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint, waveRoll, waveTrail } from '@/shared/qiblaWave';
+import { phoneBody, phoneScreen, WAVE, waveHeading, wavePath, wavePoint, waveTrail } from '@/shared/qiblaWave';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
@@ -38,17 +38,13 @@ const WAVE_DURATION = 3200;
  * Shown only while the compass waits for the heading to converge, which is what waving the phone brings about.
  * Mounted for exactly that long, so the loop is never ticking behind the compass (Performance Design Rule 7).
  */
-export default function QiblaWave({ size, progress: waved }: { size: number; progress: number }) {
+export default function QiblaWave({ size }: { size: number }) {
   const figureWidth = size * WAVE.width;
   const figureHeight = size * WAVE.height;
   const body = phoneBody(size);
   const screen = phoneScreen(size);
   const canvasWidth = figureWidth + body.height;
   const canvasHeight = figureHeight + body.height;
-
-  // The bar sits below everything the figure draws, including the phone at its lowest point
-  const barHalfWidth = figureWidth * 0.42;
-  const barY = canvasHeight / 2 - size * WAVE.stroke * 3;
 
   const progress = useSharedValue(0);
 
@@ -64,6 +60,8 @@ export default function QiblaWave({ size, progress: waved }: { size: number; pro
     d: waveTrail(progress.value, figureWidth, figureHeight),
   }));
 
+  // Travels and TURNS, never scales: the phone keeps its dimensions the whole way round, and facing along the
+  // curve is what keeps the trail leaving its bottom edge
   const phoneStyle = useAnimatedStyle(() => {
     const at = wavePoint(progress.value, figureWidth, figureHeight);
 
@@ -71,9 +69,7 @@ export default function QiblaWave({ size, progress: waved }: { size: number; pro
       transform: [
         { translateX: at.x },
         { translateY: at.y },
-        { rotate: `${waveLean(progress.value)}deg` },
-        // The bank: a flat drawing shows a turn out of the screen by narrowing, and this passes through edge-on
-        { scaleX: waveRoll(progress.value) },
+        { rotate: `${waveHeading(progress.value, figureWidth, figureHeight)}deg` },
       ],
     };
   });
@@ -118,27 +114,6 @@ export default function QiblaWave({ size, progress: waved }: { size: number; pro
           strokeWidth={size * WAVE.trail.core}
           strokeLinecap='round'
           opacity={0.85}
-        />
-        {/* How much of the wave is done, so the gesture has a visible end rather than running until something
-            invisible decides it is finished. A bar UNDER the figure rather than a ring around it: a ring at this
-            size cuts through the lobes and reads as part of the drawing */}
-        <Path
-          d={`M${-barHalfWidth},${barY}L${barHalfWidth},${barY}`}
-          fill='none'
-          stroke={`rgba(${PALETTE.structure}, 0.18)`}
-          strokeWidth={size * WAVE.stroke * 1.4}
-          strokeLinecap='round'
-        />
-        <Path
-          testID='qibla-wave-progress'
-          d={`M${-barHalfWidth},${barY}L${barHalfWidth},${barY}`}
-          fill='none'
-          stroke={PALETTE.accent}
-          strokeWidth={size * WAVE.stroke * 1.4}
-          strokeLinecap='round'
-          strokeDasharray={`${barHalfWidth * 2} ${barHalfWidth * 2}`}
-          strokeDashoffset={barHalfWidth * 2 * (1 - waved)}
-          opacity={0.9}
         />
       </Svg>
       {/* Views rather than animated SVG nodes: react-native-svg re-walks its whole drawing pipeline on any
