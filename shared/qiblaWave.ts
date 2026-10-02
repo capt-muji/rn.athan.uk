@@ -16,21 +16,23 @@ const round = (value: number): string => value.toFixed(2);
 /** Every proportion and count the figure is built from, as a share of the box it is drawn in */
 export const WAVE = {
   /** Half the stage the compass would have filled, so the hint never reads as the instrument */
-  width: 0.5,
+  width: 0.58,
   /** Flatter than it is wide, which is the shape a wrist actually traces */
-  height: 0.26,
+  height: 0.24,
   stroke: 0.008,
   /** How many straight segments stand in for the curve */
-  segments: 48,
+  segments: 72,
   /** The phone the user is being asked to move, drawn to the proportions of a real one */
-  phone: { width: 0.072, height: 0.148, radius: 0.016, screenInset: 0.1 },
+  phone: { width: 0.088, height: 0.164, radius: 0.018, screenInset: 0.14 },
   /**
    * How far the phone leans into its turn, in degrees either side of upright.
    *
    * The lean follows the curve's own direction, so the figure teaches a WRIST that rolls rather than a hand
    * sliding flat: a phone held rigid through a figure of eight sweeps one plane and calibrates nothing.
    */
-  lean: 26,
+  lean: 30,
+  /** The glowing tail behind the phone, as a share of one loop and of the figure's own stroke */
+  trail: { span: 0.3, samples: 24, core: 0.009, halo: 0.03 },
 } as const;
 
 export interface WavePoint {
@@ -71,6 +73,22 @@ export const waveLean = (progress: number): number => {
 };
 
 /**
+ * How far the phone is turned about its own long axis at a progress of 0 to 1, as a scale of 1 to -1.
+ *
+ * The owner's requirement: the phone must read as banking through the turn like an aircraft rather than sliding
+ * flat, because a hand that never rolls sweeps one plane and calibrates nothing. A horizontal scale is how a flat
+ * drawing shows a rotation out of the screen, and it passes through 0 at each turn, which is the edge-on moment.
+ *
+ * Driven by the same angle as the lean, a quarter turn behind it, so the phone is edge-on exactly where the path
+ * is steepest and face-on at the ends of each lobe.
+ */
+export const waveRoll = (progress: number): number => {
+  'worklet';
+
+  return Math.cos(progress * TURN * 2);
+};
+
+/**
  * The whole figure as one closed path, sampled as segments too short to read as straight.
  *
  * Sampled through `wavePoint` rather than alongside it, so the phone can never run beside the line it is meant
@@ -80,6 +98,26 @@ export const wavePath = (width: number, height: number): string => {
   const vertices = Array.from({ length: WAVE.segments }, (_, index) => wavePoint(index / WAVE.segments, width, height));
 
   return `${vertices.map((at, index) => `${index === 0 ? 'M' : 'L'}${round(at.x)},${round(at.y)}`).join('')}Z`;
+};
+
+/**
+ * The tail behind the phone at a progress of 0 to 1, as an open path ending where the phone is.
+ *
+ * A worklet: the tail is rebuilt every frame on the UI thread, which is what makes the trail follow rather than
+ * sit still. Sampled through `wavePoint` so it cannot drift off the line, and walked BACKWARDS from the phone so
+ * the path's last point is always exactly where the phone stands.
+ */
+export const waveTrail = (progress: number, width: number, height: number): string => {
+  'worklet';
+  const step = WAVE.trail.span / WAVE.trail.samples;
+  let path = '';
+
+  for (let index = WAVE.trail.samples; index >= 0; index--) {
+    const at = wavePoint(progress - index * step, width, height);
+    path += `${index === WAVE.trail.samples ? 'M' : 'L'}${at.x.toFixed(2)},${at.y.toFixed(2)}`;
+  }
+
+  return path;
 };
 
 /** The phone's body, as a rounded rectangle centred on its own origin, so a transform alone places it */
