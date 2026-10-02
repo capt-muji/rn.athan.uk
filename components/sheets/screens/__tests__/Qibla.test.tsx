@@ -15,6 +15,7 @@ import QiblaSheet from '../Qibla';
 // Babel hoists jest.mock above these, so the names must carry the `mock` prefix to be reachable from the factory
 const mockWatchers: ((reading: { trueHeading: number }) => void)[] = [];
 const mockUnwatch = jest.fn();
+
 const mockState = {
   granted: true,
   position: { latitude: 51.475, longitude: -0.2015 },
@@ -25,6 +26,10 @@ const mockState = {
   releasePlace: null as (() => void) | null,
   releaseWatch: null as (() => void) | null,
 };
+
+// The diagnostic module, so this suite can prove the shipped build never reaches it. The factory builds its own
+// mock because babel hoists it above every declaration in this file
+jest.mock('@/modules/qiblaheading', () => ({ watchQiblaDiagnostic: jest.fn(() => jest.fn()) }));
 
 // The platform the sheet reaches the moment it presents
 jest.mock('@/device/qibla', () => ({
@@ -113,6 +118,24 @@ describe('the qibla sheet before it is opened', () => {
     await render(<QiblaSheet />);
 
     expect(screen.getByText('Turn until it vibrates')).toBeOnTheScreen();
+  });
+});
+
+// This suite runs the SHIPPED configuration, with the diagnostic flag off. QiblaDiagnostic.test.tsx is its
+// opposite half, and neither alone can tell a gated feature from an ungated one.
+describe('the diagnostic the shipped build never arms', () => {
+  it('reads no diagnostic sensor when the sheet opens, because the flag is off', async () => {
+    const { watchQiblaDiagnostic } = jest.requireMock('@/modules/qiblaheading');
+
+    await openSheet();
+
+    expect(watchQiblaDiagnostic).not.toHaveBeenCalled();
+  });
+
+  it('draws no readout, so the sheet is the one the owner accepted', async () => {
+    await openSheet();
+
+    expect(screen.queryByTestId('qibla-diagnostic')).toBeNull();
   });
 });
 
