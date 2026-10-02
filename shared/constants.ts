@@ -430,7 +430,7 @@ export const SHADOW = {
   /** Settings button shadow */
   button: {
     shadowOffset: { width: 1, height: 10 },
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.75,
     shadowRadius: 10,
   },
   /** Modal shadow */
@@ -766,8 +766,8 @@ export const COLORS = {
     prayer: '#081a76',
     /** Active prayer shadow (extras page) */
     prayerExtras: '#6e006b',
-    /** Settings button shadow: the button's own violet rather than a near-black, so it reads as soft depth */
-    button: '#5b3fa8',
+    /** Settings button shadow */
+    button: '#27035c',
     /** Alert popup shadow */
     alert: '#010931',
   },

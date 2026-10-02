@@ -31,35 +31,6 @@ const mockState = {
 // mock because babel hoists it above every declaration in this file
 jest.mock('@/modules/qiblaheading', () => ({ watchQiblaDiagnostic: jest.fn(() => jest.fn()) }));
 
-/**
- * The calibration gate's state, which this suite SETS rather than earns.
- *
- * The gate reads the accelerometer through `useAnimatedReaction`, which runs on the UI runtime and which no
- * test can drive: `hooks/__tests__/useQiblaShake.test.tsx` owns proving a wave is judged correctly. What this
- * suite tests is what the SHEET does with the answer, so it hands the answer over directly.
- */
-const mockShake = { hasWaved: false, notify: null as (() => void) | null };
-
-jest.mock('@/hooks/useQiblaShake', () => ({
-  useQiblaShake: (active: boolean) => {
-    const React = require('react');
-    const [, bump] = React.useState(0);
-    mockShake.notify = () => bump((count: number) => count + 1);
-
-    // The real hook holds its gesture in STATE and the hint unmounts between opens, so a second open starts at
-    // false whatever the first one did. Modelled here, or these tests would describe a hook this app does not
-    // have and the sheet's own reset would never be exercised
-    React.useEffect(
-      () => () => {
-        mockShake.hasWaved = false;
-      },
-      []
-    );
-
-    return active ? mockShake : { hasWaved: false };
-  },
-}));
-
 // The platform the sheet reaches the moment it presents
 jest.mock('@/device/qibla', () => ({
   requestQiblaPermission: jest.fn(async () => {
@@ -83,26 +54,17 @@ jest.mock('@/device/qibla', () => ({
 
 const qiblaDevice = jest.requireMock('@/device/qibla');
 
-/** The sheet arms its sensors on present, which the library reports as a change to index 0 */
+/**
+ * The sheet arms its sensors on present, which the library reports as a change to index 0.
+ *
+ * Timers are faked BEFORE the open, because the invitation to wave is a timeout armed by `onPresent`: one
+ * installed under real timers could never be advanced by a test.
+ */
 const openSheet = async () => {
+  jest.useFakeTimers();
   await render(<QiblaSheet />);
   await fireEvent(screen.getByText('Qibla'), 'change', 0);
   await act(async () => {});
-};
-
-/**
- * Waves the phone until the gate is satisfied, which the compass now waits for.
- *
- * The shake is the owner's entry condition, so almost every assertion about a drawn dial has to perform the
- * gesture first: a heading alone no longer draws anything. Readings are delivered the way the sensor does,
- * each differing from the last, because the reaction skips a repeated value exactly as a real stream never
- * repeats a float.
- */
-const performWave = async () => {
-  await act(async () => {
-    mockShake.hasWaved = true;
-    mockShake.notify?.();
-  });
 };
 
 /**
@@ -113,10 +75,6 @@ const performWave = async () => {
  * them the sheet correctly refuses to draw and every assertion about the dial is about a blank stage.
  */
 const reportHeadings = async (...headings: number[]) => {
-  jest.useFakeTimers();
-  // The wave gates the compass, so a test asking for a drawn dial has to perform it: these two together are
-  // what "the compass is up" now means. A test about the gate itself drives the sensor directly instead
-  await performWave();
   for (const trueHeading of headings) {
     for (let i = 0; i < SETTLE_MIN_READINGS; i++) {
       await act(async () => {
@@ -125,6 +83,8 @@ const reportHeadings = async (...headings: number[]) => {
       });
     }
   }
+  // No separate wait for the invitation: the settling window is 3000ms against its 2000ms, so spanning the
+  // window has already outlasted it
 };
 
 /**
@@ -142,8 +102,6 @@ const reportLostHeadings = async (count = 1) => {
 };
 
 beforeEach(() => {
-  mockShake.hasWaved = false;
-  mockShake.notify = null;
   mockWatchers.length = 0;
   mockUnwatch.mockClear();
   mockState.granted = true;
@@ -166,7 +124,16 @@ describe('the qibla sheet before it is opened', () => {
   it('tells the user what to do without naming a number to read', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Turn until it vibrates')).toBeOnTheScreen();
+    expect(screen.getByText('Hold flat, turn until it vibrates')).toBeOnTheScreen();
+  });
+
+  // Both lines are mounted the whole time and cross-faded, so the header keeps one height: a swap in place
+  // would resize it mid-fade, and the words must change on the same flag the compass does
+  it('carries both subtitles, so the change costs a fade rather than a resize', async () => {
+    await render(<QiblaSheet />);
+
+    expect(screen.getByText('Just a moment')).toBeOnTheScreen();
+    expect(screen.getByText('Hold flat, turn until it vibrates')).toBeOnTheScreen();
   });
 });
 
@@ -269,6 +236,7 @@ describe('the qibla sheet, opened in London', () => {
   // A re-render while the dial stays mounted, such as the sheet settling to its height, must turn the face to the
   // live heading rather than snap it: the snap is for the first frame alone
   it('turns rather than snaps when the sheet re-renders under a live heading', async () => {
+    jest.useFakeTimers();
     const { rerender } = await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -769,6 +737,7 @@ describe('the settling gate', () => {
   };
 
   it('follows every reading once it has settled, which is the whole point of a compass', async () => {
+    jest.useFakeTimers();
     const { rerender } = await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -784,6 +753,7 @@ describe('the settling gate', () => {
   });
 
   it('keeps following through a fast sweep, where no window could ever look settled', async () => {
+    jest.useFakeTimers();
     const { rerender } = await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -885,52 +855,39 @@ describe('the settling gate', () => {
   });
 });
 
-// The owner's requirement: the wave is the GATE, not decoration. The figure of eight is the standard hard-iron
-// re-estimation, and the wait doubles as the time the heading needs to converge behind it
-describe('the wave that unlocks the compass', () => {
-  /** A settled heading delivered WITHOUT the wave, which is the state the gate exists to refuse */
-  const reportHeadingsUnwaved = async (...headings: number[]) => {
-    jest.useFakeTimers();
-    for (const trueHeading of headings) {
-      for (let index = 0; index < SETTLE_MIN_READINGS; index++) {
-        await act(async () => {
-          for (const watcher of mockWatchers) watcher({ trueHeading });
-          jest.advanceTimersByTime(SETTLE_WINDOW_MS / (SETTLE_MIN_READINGS - 1));
-        });
-      }
-    }
-  };
-
-  it('keeps the compass shut while the phone has not been waved, however good the heading is', async () => {
+/**
+ * The wait the user sees, and what decides its length.
+ *
+ * NOTHING measures the wave and no timer runs beside the compass. Verifying the gesture cost the compass its
+ * own accuracy, because the heading needs the same accelerometer and the 3T's magnetometer tops out at 52Hz,
+ * so a second 50Hz subscriber made the dial lag on the slow careful turn a qibla asks for. A fixed timer was
+ * then measured to be invisible: the settling window is 3000ms, so the heading is always the longer wait.
+ *
+ * So the settling gate alone decides, which also means the wait FAILS OPEN in the only way that matters: a
+ * user who ignores the invitation still gets a compass, as soon as one can honestly be drawn.
+ */
+describe('the wait before the compass is drawn', () => {
+  it('shows the invitation while the heading is still settling', async () => {
     await openSheet();
 
-    await reportHeadingsUnwaved(95);
+    await act(async () => {
+      for (const watcher of mockWatchers) watcher({ trueHeading: 95 });
+      jest.advanceTimersByTime(SETTLE_WINDOW_MS / 4);
+    });
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
     expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
   });
 
-  it('opens the compass once the wave is done and the heading is ready', async () => {
+  it('draws the compass once the heading has settled, waved or not', async () => {
     await openSheet();
-    await reportHeadingsUnwaved(95);
 
-    await performWave();
+    await reportHeadings(95);
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
 
-  // The wave alone is not enough either: a dial drawn without a live heading would hold its last angle and
-  // quietly point the wrong way, which is the one thing this feature must never do
-  it('keeps the compass shut for a wave with no heading behind it', async () => {
-    await openSheet();
-
-    await performWave();
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-  });
-
-  // A fresh wave is asked for on every open, because the calibration it performs goes stale with the room
-  it('asks for the wave again the next time the sheet is opened', async () => {
+  it('invites again the next time the sheet is opened', async () => {
     await openSheet();
     await reportHeadings(95);
 
@@ -944,9 +901,9 @@ describe('the wave that unlocks the compass', () => {
   /**
    * THE FLASH THE OWNER SAW: the dial for one frame, then the hint, then the dial.
    *
-   * Both halves of the gate survived the close, so the first frame of the second open was drawn with the last
-   * visit's answers: `hasHeading` was never cleared when the watch was torn down, and the wave was reset in
-   * `onPresent`, which runs after the sheet has already begun presenting. Both now clear on CLOSE.
+   * `hasHeading` was never cleared when the watch was torn down, so the first frame of the second open was
+   * drawn with the last visit's answer. There is no live heading while the watch is down, so reporting one
+   * would be a lie in any case.
    */
   it('never draws the compass on the first frame of a reopen, however complete the last visit was', async () => {
     await openSheet();
@@ -957,37 +914,6 @@ describe('the wave that unlocks the compass', () => {
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
-  });
-
-  // The heading half, pinned where the wave cannot mask it: with the gesture already done, a heading that
-  // survived the close is on its own enough to draw the compass before the user has waved for this visit
-  it('forgets the heading on close, because no heading is live while the watch is torn down', async () => {
-    await openSheet();
-    await reportHeadings(95);
-
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-    mockShake.hasWaved = true;
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-  });
-
-  // The two halves are tested apart because either one alone is enough to hide the other: a heading that
-  // cleared would mask a wave that did not, and the flash needs only one of them to survive the close
-  it('forgets the gesture on close, so the wave alone cannot reopen the compass', async () => {
-    await openSheet();
-    await reportHeadings(95);
-
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    // The heading returns at once, as it does on a real reopen from a remembered position: only the missing
-    // wave can hold the compass back now
-    await reportHeadingsUnwaved(95);
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
   });
 });
 
@@ -1068,6 +994,7 @@ describe('the wait before the compass can be drawn', () => {
 describe('a heading that arrives before the position', () => {
   it('counts toward the settling window while the fix is still being read, rather than being dropped', async () => {
     mockState.releasePosition = () => undefined;
+    jest.useFakeTimers();
     await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
