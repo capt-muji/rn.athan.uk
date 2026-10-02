@@ -6,7 +6,7 @@
 | Planned at | `ad131a51` (version 1.29.198), 2026-10-02 |
 | Planned by | Planning session on 2026-10-02 |
 | Needs first | 47 |
-| Steps | 2, each one branch, one commit, one version |
+| Steps | 1 (the two step files run as ONE commit; see section 6) |
 | Device | None in this plan. Step 2 ships a gate the owner judges on his own phones afterwards, and `DECISION.md` names the diagnostic that needs a native module he has not yet approved |
 | Owner decisions still needed | None (every one was taken while planning; see section 2) |
 
@@ -235,13 +235,83 @@ Three orderings matter and each is covered by a named test:
 
 ## 6. Steps
 
-- [ ] Step 1: The settling arithmetic, as a pure module (specified)
-- [ ] Step 2: The compass waits for the stream to converge (specified)
+- [ ] Step 1: The settling arithmetic AND the gate, in one commit (specified)
 
-Each step's detail is in `steps/`:
+Its detail is in both step files, which are run together as one commit:
 
 - `steps/1-settle-arithmetic.md`
 - `steps/2-gate-the-compass.md`
+
+**CORRECTED DURING EXECUTION, 2026-10-02: THE TWO STEPS ARE ONE COMMIT, AND THE PLAN WAS WRONG TO SPLIT
+THEM.** The executing session ran step 1 exactly as written, and the pre-commit hook refused it:
+
+```
+FAIL unit shared/__tests__/unusedExports.test.ts
++   "hasSettled",
++   "trailingWindow",
+```
+
+`shared/__tests__/unusedExports.test.ts` fails the moment a module exports a symbol no production file
+imports, and step 1 ships `shared/qiblaSettle.ts` with nothing importing it until step 2. Measured:
+`python3 scripts/find-unused-exports.py` reports 7 unreachable exports after step 1 alone and the
+pre-existing 5 once step 2's hook change lands.
+
+**This is a defect in this plan, not in the executor**, and it is the third session running to meet it:
+session 44 measured that its deletion could not be split for the same reason, and session 45 measured that
+its whole feature was one commit because `unusedExports.test.ts` reports every new export as unreachable
+until a production file imports it. Both wrote it down. This plan's section 6 split the work anyway.
+
+So the two step files are run as ONE step: step 1's red, then step 2's change, then both break scripts, then
+one commit carrying the message below. Everything else in both files stands, including every acceptance
+criterion, and both break scripts are run and must each end `ALL AS EXPECTED: 1`.
+
+**The combined commit message**, replacing the message in each step file:
+
+```
+<VERSION> - fix(qibla): the compass waits for the heading to settle before it draws
+
+The owner's symptom: the same phone at the same spot read 5, 10, 20 or 30 degrees differently on
+each app restart, which is why the feature is not released.
+
+Half of that is a cold sensor fusion. A fused heading arms from cold and walks toward the truth,
+and the app drew the first step of that walk: measured against a stream carrying expo-location's
+own 2-degree and 50ms gate, the first reading is about 30 degrees out where the converged one is
+0.71. `shared/qiblaSettle.ts` holds the gate, and the compass now draws nothing, and the haptic
+fires nothing, until the stream's trailing 3000ms window holds 8 readings spanning the period
+whose two halves agree within 1.5 degrees.
+
+The gate tests DRIFT rather than spread, because a stream still converging is quiet between
+consecutive readings: measured, a spread gate passes such a stream at 27.22 degrees of error.
+Smoothness is not correctness, which is session 47's lesson in a new place. The window is counted
+in TIME and must be SPANNED rather than merely filled: counting readings alone needs 120 seconds
+to open on a still phone, because a converged stream emits almost nothing through the platform's
+2-degree gate, and without the span check a fast stream fills the count in 400ms, which measured
+29.18 degrees of error at the gate rather than 9.70.
+
+`heldRef` is DELETED, and that is an improvement rather than a trade. It kept ONE reading to
+replay once the bearing arrived; readings now enter the settling window before the bearing exists,
+so the window fills DURING the position read instead of waiting for it.
+
+The other half of the symptom is iron in the room and no software can fix it. That is measured
+rather than asserted, and it retires the lever session 40 specified: a stable bias passes every
+gate on the heading stream at 1.0x improvement, and the field-magnitude and dip check cannot bound
+it either, missing 30.8 degrees at a 10 uT offset because a compass reads only the horizontal
+field, 40% of the total at London. Detail in
+`ai/plans/48-qibla-heading-accuracy/MEASURED.md` and `DECISION.md`.
+
+18 of the sheet suite's 47 tests depended on one reading drawing the dial, and each was measured
+rather than adjusted until green: a shared helper now reports a settled window, a separate helper
+drives a lost heading without running down the dropout grace, and one test's name changed because
+its behaviour genuinely did. Three tests were then added that drive the gate's refusal directly,
+because the break script found that DELETING THE GATE still passed all 47: teaching the shared
+helper to report a settled window had left no test able to tell a gated compass from an ungated
+one.
+
+The two steps this plan specified are ONE commit, because `unusedExports.test.ts` refuses a
+module whose exports no production file imports yet. Sessions 44 and 45 both measured the same
+thing about their own work; this plan split it anyway, and the correction is recorded in its
+section 6.
+```
 
 ## 7. Device proof
 
