@@ -4,6 +4,7 @@ import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { FEATURE_FLAGS } from '@/shared/flags';
 import { Icon } from '@/shared/types';
 import { setQiblaSheetModal } from '@/stores/ui';
 
@@ -23,9 +24,14 @@ const SPACE_BELOW_DIAL = SPACING.xxxl;
  */
 const DIAL_HEIGHT_SHARE = 0.45;
 
+/** A reading that has not arrived yet, so the readout holds its height from the first frame */
+const PENDING = '-';
+
+const oneDecimal = (value: number | undefined): string => value?.toFixed(1) ?? PENDING;
+
 export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
-  const { bearing, hasHeading, permissionDenied, place, heading, aligned, start, stop } = useQibla();
+  const { bearing, hasHeading, permissionDenied, place, heading, aligned, diagnostic, start, stop } = useQibla();
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
   const showsCompass = bearing !== null && hasHeading;
@@ -65,6 +71,16 @@ export default function BottomSheetQibla() {
       <Text style={styles.place} numberOfLines={1}>
         {place ?? ' '}
       </Text>
+      {/* The flag is build-time static, so this whole block folds away when it is off. It renders before the
+          first reading for the same reason the place line is never conditional */}
+      {FEATURE_FLAGS.qiblaDiagnostic && (
+        <View testID='qibla-diagnostic'>
+          <Text style={styles.place}>{`accuracy ${oneDecimal(diagnostic?.accuracyDegrees)}`}</Text>
+          <Text style={styles.place}>{`wants calibration ${diagnostic?.wantsCalibration ?? PENDING}`}</Text>
+          <Text style={styles.place}>{`fused heading ${oneDecimal(diagnostic?.fusedHeadingDegrees)}`}</Text>
+          <Text style={styles.place}>{`fused error ${oneDecimal(diagnostic?.fusedErrorDegrees)}`}</Text>
+        </View>
+      )}
     </Sheet>
   );
 }
