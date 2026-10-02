@@ -235,7 +235,7 @@ Three orderings matter and each is covered by a named test:
 
 ## 6. Steps
 
-- [ ] Step 1: The settling arithmetic AND the gate, in one commit (specified)
+- [x] Step 1: DONE in `1c947980` (the settling arithmetic AND the gate, one commit) (specified)
 
 Its detail is in both step files, which are run together as one commit:
 
