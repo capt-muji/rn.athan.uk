@@ -61,6 +61,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
   const blankRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const bearingRef = useRef<number | null>(null);
   const samplesRef = useRef<HeadingSample[]>([]);
+  const settledRef = useRef(false);
   const positionRef = useRef<Coordinates | null>(null);
   const placeRef = useRef<string | null | undefined>(undefined);
 
@@ -72,6 +73,8 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
 
   const blank = useCallback(() => {
     blankRef.current = null;
+    // The stream is genuinely gone rather than blinking, so the fusion must prove itself again before it is drawn
+    settledRef.current = false;
     setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
   }, []);
 
@@ -80,6 +83,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     alignedRef.current = false;
     aligned.value = false;
     samplesRef.current = [];
+    settledRef.current = false;
     clearBlank();
     unwatchRef.current?.();
     unwatchRef.current = null;
@@ -107,9 +111,11 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
 
       clearBlank();
 
-      // A cold fusion walks toward the truth, and its first step measured about 30 degrees out against 0.71
-      // settled, so nothing is drawn and no tap is felt until the stream stops moving
-      if (!hasSettled(window, nowMs)) return;
+      // The gate LATCHES: a cold fusion's first reading measured about 30 degrees out against 0.71 settled, so the
+      // compass waits once for the stream to converge. Re-testing it per reading would drop every update made while
+      // the user turns the phone, which is the one moment the dial has to follow.
+      if (!settledRef.current && !hasSettled(window, nowMs)) return;
+      settledRef.current = true;
 
       const nowAligned = isAligned(alignmentOffset(trueHeading, bearing), alignedRef.current);
       // The strongest impact the platform offers, because a blind user feels this instead of reading anything
