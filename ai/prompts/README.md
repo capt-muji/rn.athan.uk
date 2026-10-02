@@ -43,6 +43,38 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Decided by the owner, 2026-10-02, after reading session 48's research: the gate ships first, the native module is its own session
+
+The owner read the verdicts on the four heading options he had named and chose the order the work runs in.
+
+🐋  "We do the settling gates now and then save option 3 and 4 for the next session."
+
+**What this settles, and why it was his call rather than the planner's.** Session 48's research answered his
+four options: the `adhan` package is a dead end (it computes a bearing, which the app already does correctly
+to 0.002 degrees, and nothing in it reads a sensor); no third-party package is worth adopting, every
+candidate having been judged by reading its source rather than its README; and **his option 4 was
+substantially right**, because the fault IS in `expo-location`, though not as he guessed. Both remaining
+options, his option 3 (native Swift and Kotlin) and acting on option 4, need a native module in the app, so
+each is a dependency decision he owns.
+
+**The split he chose:**
+
+| Now, row 48 | Deferred, row 49 |
+| --- | --- |
+| The settling gate: the compass draws nothing and fires no haptic until the heading stops moving. Pure arithmetic, no native code, already built and proven at 50 tests, 100% coverage and 6 of 6 breaks caught | `headingAccuracy` in real degrees, Apple's calibration prompt, and Android's Fused Orientation Provider, which Google states is what draws the Google Maps heading |
+
+**He also declined the diagnostic as a separate exercise, and his reasoning is recorded because it is
+sound:** 🐋  "me doing testing is not going to change anything. Right? I've done already so many tests." The
+diagnostic was ten more restarts by hand to confirm a number the app will be able to read for itself once
+row 49 ships, and the gate's own effect on his phones answers the same question either way.
+
+**The planner's correction to its own earlier answer, recorded so the next session does not repeat it.** The
+owner asked which of his four options session 48 was tackling and the honest answer is NONE of them: the
+settling gate is a fifth thing, which the research turned up only after his report of 2026-10-02 that the
+compass reads differently on each app restart. His four options had been answered rather than acted on, and
+saying option 4 was "the best instinct of the four" without saying that nothing was yet being DONE about it
+was misleading. Row 49 is where it gets done.
+
 ## Decided by the owner, 2026-09-28, while planning session 37 (the qibla finder)
 
 Four decisions, each taken against measured evidence in `ai/plans/37-qibla-compass/RESEARCH.md`.
