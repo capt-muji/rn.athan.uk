@@ -15,16 +15,24 @@ const round = (value: number): string => value.toFixed(2);
 
 type Point = [x: number, y: number];
 
-const point = ([x, y]: Point): string => {
-  'worklet';
-
-  return `${x.toFixed(2)},${y.toFixed(2)}`;
-};
-
+/**
+ * A list of points as an SVG `points` attribute.
+ *
+ * The loop is written out rather than `points.map(point)`, because passing a worklet BY REFERENCE to
+ * `map` does not survive the hop to the UI runtime: it arrives undefined and the sheet throws
+ * "undefined is not a function". A worklet may call another worklet by name; it may not hand one to a
+ * higher-order function.
+ */
 const polygon = (...points: Point[]): string => {
   'worklet';
+  let out = '';
 
-  return points.map(point).join(' ');
+  for (let index = 0; index < points.length; index++) {
+    const [x, y] = points[index];
+    out += `${index === 0 ? '' : ' '}${x.toFixed(2)},${y.toFixed(2)}`;
+  }
+
+  return out;
 };
 
 /** Every proportion and count the figure is built from, as a share of the box it is drawn in */
