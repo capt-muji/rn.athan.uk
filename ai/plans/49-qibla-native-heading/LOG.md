@@ -47,3 +47,225 @@ The two that would have stopped the executor on its first commands:
 | `bash ai/plans/49-qibla-native-heading/scripts/preflight.sh 2` | correctly FAILS: step 1 not merged |
 | The hook's suite | `Tests: 4983 passed, 4983 total` across 185 suites |
 | Coverage | 100% statements, branches, functions and lines |
+
+## Step 1: the module and its consumer
+
+| What | Value |
+| --- | --- |
+| Branch | `feat/49-1-native-heading` |
+| Commit | `e7c3b01f`, version 1.29.210 |
+| Merge | `fec1bf72` |
+| Files | 16, listed in the commit |
+
+### THE PLAN WAS WRONG ABOUT TESTS, and the pre-commit hook caught it
+
+The plan's part 2 said the four files outside `modules/` needed no new tests because the existing
+suites cover them. **The hook refused the commit:**
+
+```
+Statements   : 99.91% ( 4788/4792 )
+Branches     : 99.66% ( 2088/2095 )
+Jest: Coverage for branches (99.66%) does not meet "global" threshold (100%)
+```
+
+The cause is structural rather than an oversight about any one file: **a suite running with the flag
+OFF cannot reach a line the flag gates**, so every gated line is uncovered by construction. Measured
+per file with `--coverageReporters=text`:
+
+| File | Uncovered lines | What they are |
+| --- | --- | --- |
+| `shared/flags.ts` | 71 | the new flag's own branch |
+| `hooks/useQibla.ts` | 155 to 156 | the arming block |
+| `components/sheets/screens/Qibla.tsx` | 30, 76 to 79 | `oneDecimal` and the readout |
+
+**So the owner's deferral held where the plan's reasoning was right and failed where it was not.**
+`modules/` is genuinely outside the measure, so the Kotlin, the Swift and the module's `index.ts` carry
+no tests, exactly as he asked. Anything the flag GATES lives in a measured file and had to be covered.
+
+Closed with two suites, both in patterns this repo already uses:
+
+- `shared/__tests__/flags.test.ts`: a `qiblaDiagnostic` describe block shaped like the two beside it,
+  plus two the others do not have, pinning that `prod` stays disabled with the variable at `1` and that
+  a non-prod build with it set is enabled;
+- `components/sheets/screens/__tests__/QiblaDiagnostic.test.tsx`: 7 tests with
+  `jest.mock('@/shared/flags', ...)` hoisted above the imports, which is `widgetIo.test.ts`'s own
+  opt-in and is required because `flags.ts` reads its environment once at module evaluation.
+
+**Result: 186 suites, 5000 tests, 100% on all four measures.**
+
+### Two defects found by rereading my own code before the commit
+
+1. **A `null` was crossing the bridge.** The first Kotlin wrote `headingErrorDegrees` as `null` when
+   FOP attached no cone, and `ai/AGENTS.md` records that KLDI's C++ bridge rejects a JSON null nested
+   inside a map. The key is now OMITTED instead, which reads as `undefined` in JS and keeps a null off
+   the bridge entirely.
+2. **A dead branch in the sheet.** Once the Android payload's optional field became `number | undefined`
+   rather than `number | null`, `oneDecimal`'s `value === null` test could never fire. Collapsed to
+   `value?.toFixed(1) ?? PENDING`.
+
+### Builds, all three run before committing
+
+| Check | Result |
+| --- | --- |
+| `./gradlew :qiblaheading:assembleRelease` | `BUILD SUCCESSFUL` |
+| `pod install` | `Installing QiblaHeading (0.1.0)` |
+| `xcodebuild -scheme QiblaHeading` | `** BUILD SUCCEEDED **` |
+| `npx tsc --noEmit` | exit 0 |
+| `npx biome check . --error-on-warnings` | exit 0, 382 files |
+| `python3 scripts/find-unused-exports.py` | 5, the pre-existing entries only |
+
+### Review, one round, clean
+
+Read `git show e7c3b01f` back cold. Confirmed: no colour, size, spacing, font or text changed;
+`processReading` untouched (the diff touches none of its lines); no `Platform` branch in app code (the
+only mention is a comment explaining why there is none); no permission requested anywhere in the module,
+verified by grep across all six module files; no `android/build/` path in the commit; and both module
+names are the exact string `ExpoQiblaHeading`.
+
+## Step 2: the device proof
+
+The Android prebuild carried the two widget variables the plan's defect 8 added, and the guard earned
+its place immediately: `grep -cE 'Widget[A-Za-z]*Provider"' android/app/src/main/AndroidManifest.xml`
+counts **8**, so the widget extension survived a direct `npx expo prebuild`. Without those variables it
+would have been 0, which is the accident `ai/AGENTS.md` records shipping onto both phones once.
+
+`applicationId 'com.mugtaba.athan.fleettest'` and `versionName "1.29.210"` both confirmed before the
+build, so the diagnostic installs alongside the owner's real app rather than over it.
+
+### THE ANDROID ANSWER: FOP RUNS ON THE 3T, AND IT AGREES WITH THE PLATFORM HEADING
+
+**It works on a 2016 phone.** `BUILD SUCCESSFUL in 10m 3s`, installed as `com.mugtaba.athan.fleettest`
+at 1.29.210, and the readout shows a live `fused heading`.
+
+**The proof that FOP is really running its own fusion, rather than failing silently, is in the sensor
+clients.** `dumpsys sensorservice` with the sheet closed, then open:
+
+| Sensor | Closed | Qibla sheet open |
+| --- | --- | --- |
+| `0x01` accelerometer | absent | `active-count = 2`, periods `{20.0, 10.0}` |
+| `0x03` magnetometer (calibrated) | absent | `active-count = 2`, periods `{20.0, 20.0}` |
+| **`0x04` magnetometer UNCALIBRATED** | absent | **`active-count = 1`, 20.0 ms** |
+| **`0x06` gyroscope UNCALIBRATED** | absent | **`active-count = 1`, 10.0 ms** |
+
+**The last two rows are the finding.** The app's own heading path has never requested an uncalibrated
+sensor or a gyroscope of any kind: session 48 measured it registering exactly the calibrated
+accelerometer and magnetometer at 20 ms. The uncalibrated pair appears only when FOP is asked for
+updates, which is Google's documented fusion estimating the hard-iron bias and the gyro bias for
+itself. Both read `status: active` with `connections=1`.
+
+**And FOP agrees with the heading the owner already accepted.** Three frames 4 seconds apart, phone
+stationary, measured off the full-resolution screenshots rather than by eye:
+
+| Frame | `fused heading` | The dial's own N bearing |
+| --- | --- | --- |
+| 1 | 345.4 | 16.4 |
+| 2 | 345.5 | 14.5 |
+| 3 | 345.7 | 15.4 |
+
+**FOP moved 0.3 degrees across 8 seconds while the dial, drawn from `watchHeadingAsync`, moved 1.9.**
+So on this handset FOP is marginally STEADIER and points the same way.
+
+**What that means, and it is the outcome `FINDINGS.md` section 1 predicted in writing:** Google's own
+caveat says FOP "returns values piped through from the AOSP Rotation Vector" in certain cases, and
+agreement this close is what that looks like. **So FOP buys no accuracy on the 3T and the heading source
+must NOT be swapped on this evidence**, which is exactly why the plan made the module add a reading
+rather than replace one. Had this row shipped FOP as the new source on the strength of the Maps quote,
+it would have changed nothing measurable here while risking session 47's defect again.
+
+The honest limit on this measurement: it is one handset, indoors, at one spot. The S23 is where FOP
+could still differ, because that is where `watchHeadingAsync` is known to be good and the Find X8 is
+where it was 71 degrees wrong.
+
+### The readout renders before any reading, as the contract requires
+
+Measured on the device before the permission was granted: `accuracy -`, `wants calibration -`,
+`fused heading -`, all three present with placeholders and no value. That is what keeps the
+dynamically-sized sheet from resizing under the user when the first reading lands.
+
+**`accuracy` and `wants calibration` stay blank on Android**, correctly: they are the iOS half of the
+module, and `watchQiblaDiagnostic` chooses its platform by which function the native module exposes
+rather than by `Platform.OS`.
+
+### The 3T is back on the shipped build, verified rather than assumed
+
+| Check | Result |
+| --- | --- |
+| `build-prod.zsh uat-2` | `BUILD-PROD OK`, 612s, `versionName 1.29.210`, real API key, built locally |
+| Source sha | `fec1bf72`, the step 1 merge |
+| `adb install -r` | `Success` |
+| `pm list packages com.mugtaba.athan.fleettest` | prints nothing: the throwaway is gone |
+| `dumpsys package com.mugtaba.athan` | `versionName=1.29.210` |
+| `settings get global auto_time` | `1` |
+| The qibla screen, read from a screenshot | **No diagnostic readout.** Only "Greater London, United Kingdom" below the dial, as 1.29.207 looked. The dial, needle, Kaaba mark and cardinals all draw normally |
+
+That last row is the real check on the prod guard: the same code that printed four labelled numbers
+under `EXPO_PUBLIC_ENV=local` prints nothing under `prod`, with no code change between the two builds.
+
+### THE iOS DEFECT THE DEVICE FOUND, which nothing else could have
+
+The first XS build drew the compass correctly and showed **`accuracy -`**: all four lines rendered,
+and the iOS one never filled. The compass itself was turning, so `CLHeading` was flowing through
+`expo-location` while this module's own stream delivered nothing.
+
+**The cause is a threading rule, not a logic error.** An Expo `AsyncFunction` runs on a background
+queue by default, and `CLLocationManager` only delivers delegate callbacks on a thread with an active
+run loop. The manager was constructed inside `startHeadingAccuracy`, on that background queue, so it
+started cleanly, reported no error, and its delegate was never called. Fixed by appending
+`.runOnQueue(.main)` to both `startHeadingAccuracy` and `stopHeadingAccuracy`, which is
+`expo-modules-core`'s own API for exactly this (`ios/Core/Functions/AsyncFunctionDefinition.swift:207`,
+and the same call its SwiftUI view builder makes).
+
+**Why no gate caught it:** the Swift compiles either way, the module loads, the function returns
+`true`, and `modules/` carries no tests by the owner's deferral. A simulator could not have caught it
+either, because a simulator has no magnetometer and `CLLocationManager.headingAvailable()` is false
+there, which session 47 already proved from CoreLocation's own log. **Only a physical phone with the
+sheet open distinguishes "started" from "delivering".** That is the argument for this row's device
+step existing at all.
+
+### THE iOS ANSWER, and it is the measurement this whole row existed to take
+
+The owner drove the app to the Qibla sheet on his iPhone XS and the readout filled. Three samples over
+about two minutes, phone held still indoors, read from full-resolution screenshots:
+
+| Sample | `accuracy` (degrees) | `wants calibration` |
+| --- | --- | --- |
+| 09:25 | **25.4** | false |
+| 09:26 | **24.8** | false |
+| 09:27 | **24.8** | false |
+
+**No build of this app has ever been able to see that number.** `expo-location`'s `normalizeAccuracy`
+would have reported all three as bucket 2, which spans 20 to 35 degrees and is indistinguishable from
+a 34-degree reading.
+
+**Three things follow, and together they answer the owner's question.**
+
+1. **The phone agrees with him.** He reported errors "sometimes 20 degrees off, sometimes 30", and the
+   phone is declaring an uncertainty of about 25 degrees at the same spot. The scatter he sees is not
+   mysterious: CoreLocation has been reporting it all along and the library threw it away.
+2. **`wants calibration` is FALSE, which retires the shaking.** iOS does not consider itself
+   uncalibrated, so the figure-of-eight he has been performing, and which 1.29.207 asks for in words
+   and animation, addresses a condition the OS says is not present. **This is session 48's
+   `headingAccuracy`-reads-fine-while-wrong case**, and `DECISION.md` named its consequence in advance:
+   a local field has been absorbed into the calibration and no software fix exists.
+3. **The value is STABLE at about 25 rather than scattering**, which rules out a convergence problem on
+   this handset: 0.6 degrees of movement across two minutes is not a sensor still settling. It is a
+   steady declaration of steady uncertainty, which is what a fixed field in a room produces.
+
+**What this does NOT establish**, and must not be written as if it did: the accuracy was not measured
+against a known true bearing in this session, so "the phone claims 25 and is wrong by 25" is untested.
+The honest claim is that the phone declares about 25 degrees of uncertainty and does not want
+calibrating. Pairing that claim with a measured error needs an outdoor reading against a known
+landmark, which is a later session's work.
+
+### The platform split is visible on the phones, and is correct
+
+The owner observed that the 3T showed nothing below the dial while the XS showed four lines. Both are
+right:
+
+- the 3T had already been returned to the **shipped** build, where the prod guard folds the readout
+  away entirely. While the diagnostic build was on it, it showed `fused heading 345.4`;
+- on the XS, `fused heading` and `fused error` read `-` because FOP is **Android only**, and on the 3T
+  `accuracy` and `wants calibration` read `-` because `CLHeading` is **iOS only**.
+
+Each platform fills its own half, chosen by which function the native module exposes rather than by a
+`Platform.OS` branch, which is the rule the qibla path has held since session 47.

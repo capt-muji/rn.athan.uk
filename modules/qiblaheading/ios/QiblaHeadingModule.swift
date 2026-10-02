@@ -41,11 +41,15 @@ public class QiblaHeadingModule: Module {
 
       return true
     }
+    // CLLocationManager delivers its delegate callbacks only on a thread with a live run loop, and an
+    // AsyncFunction runs off the main queue by default: built there it starts cleanly and never calls back
+    .runOnQueue(.main)
 
     AsyncFunction("stopHeadingAccuracy") {
       self.streamer?.stop()
       self.streamer = nil
     }
+    .runOnQueue(.main)
 
     OnDestroy {
       self.streamer?.stop()
