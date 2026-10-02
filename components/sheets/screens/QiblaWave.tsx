@@ -14,7 +14,7 @@ import Svg, { Path } from 'react-native-svg';
 import { COLORS } from '@/shared/constants';
 import {
   phoneBody,
-  phoneMarks,
+  phoneNotch,
   phoneScreen,
   WAVE,
   waveHeading,
@@ -52,7 +52,7 @@ export default function QiblaWave({ size }: { size: number }) {
   const figureHeight = size * WAVE.height;
   const body = phoneBody(size);
   const screen = phoneScreen(size);
-  const marks = phoneMarks(size);
+  const notch = phoneNotch(size);
   const canvasWidth = figureWidth + body.height;
   const canvasHeight = figureHeight + body.height;
 
@@ -135,26 +135,28 @@ export default function QiblaWave({ size }: { size: number }) {
           { width: body.width, height: body.height, borderRadius: body.radius, borderWidth: size * WAVE.stroke },
           phoneStyle,
         ]}>
-        <View style={[styles.mark, { width: marks.camera, height: marks.camera, borderRadius: marks.camera / 2 }]} />
-        <View style={[styles.screen, { width: screen.width, height: screen.height, borderRadius: screen.radius }]} />
-        <View style={[styles.mark, { width: marks.button, height: marks.camera, borderRadius: marks.camera / 2 }]} />
+        <View style={[styles.screen, { width: screen.width, height: screen.height, borderRadius: screen.radius }]}>
+          {/* Sits ON the screen's top edge, as a real notch does: cut out of the glass rather than beside it */}
+          <View style={[styles.notch, { width: notch.width, height: notch.height, borderRadius: notch.height / 2 }]} />
+        </View>
       </Animated.View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  mark: {
-    backgroundColor: `rgba(${PALETTE.structure}, 0.55)`,
+  notch: {
+    backgroundColor: PALETTE.kaaba,
   },
   phone: {
     alignItems: 'center',
     backgroundColor: PALETTE.kaaba,
     borderColor: PALETTE.accent,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     position: 'absolute',
   },
   screen: {
+    alignItems: 'center',
     backgroundColor: `rgba(${PALETTE.structure}, 0.2)`,
   },
   stage: {

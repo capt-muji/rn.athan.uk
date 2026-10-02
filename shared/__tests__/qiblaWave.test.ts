@@ -5,7 +5,7 @@
 
 import {
   phoneBody,
-  phoneMarks,
+  phoneNotch,
   phoneScreen,
   WAVE,
   waveHeading,
@@ -180,36 +180,44 @@ describe('waveHeading, which way the phone points as it travels', () => {
   });
 });
 
-describe('the marks that name the shape as a phone', () => {
-  // The owner's own words about the version without them: "I can't really tell it's a phone. It looks like a
-  // car." A bare rounded rectangle is a card; the camera and the button are what make it a device
-  it('leaves room above and below the screen for both marks to sit in', () => {
+describe('the notch that names the shape as a phone', () => {
+  // The owner's own words about the version without it: "I can't really tell it's a phone. It looks like a
+  // car." A bare rounded rectangle is a card; one notch is what reads as a device, where a camera dot and a
+  // home button read as two specks and as a phone from a decade ago
+  it('draws a notch wide enough to read as one rather than as a speck', () => {
+    const body = phoneBody(300);
+    const notch = phoneNotch(300);
+
+    expect(notch.width).toBeGreaterThan(body.width * 0.3);
+    expect(notch.width).toBeLessThan(body.width * 0.6);
+  });
+
+  it('keeps the notch a bar rather than a block, which is the shape a phone has', () => {
+    const notch = phoneNotch(300);
+
+    expect(notch.width).toBeGreaterThan(notch.height * 2);
+  });
+
+  it('fits the notch inside the screen it is cut from', () => {
+    const screen = phoneScreen(300);
+    const notch = phoneNotch(300);
+
+    expect(notch.width).toBeLessThan(screen.width);
+    expect(notch.height).toBeLessThan(screen.height);
+  });
+
+  // Edge to edge, as every phone is now: a header and a bumper date the drawing
+  it('gives the screen the whole body but its own inset, leaving no bars above or below', () => {
     const body = phoneBody(300);
     const screen = phoneScreen(300);
-    const marks = phoneMarks(300);
+    const inset = body.width * WAVE.phone.screenInset;
 
-    expect(body.height - screen.height).toBeGreaterThan(marks.camera * 2);
+    expect(screen.height).toBeCloseTo(body.height - inset * 2, 5);
   });
 
-  it('draws both marks large enough to be seen at the size the hint is drawn', () => {
-    const body = phoneBody(300);
-    const marks = phoneMarks(300);
-
-    expect(marks.camera).toBeGreaterThan(body.width * 0.1);
-    expect(marks.button).toBeGreaterThan(marks.camera);
-  });
-
-  it('keeps both marks inside the phone they are drawn on', () => {
-    const body = phoneBody(300);
-    const marks = phoneMarks(300);
-
-    expect(marks.button).toBeLessThan(body.width);
-    expect(marks.camera).toBeLessThan(body.width);
-  });
-
-  it('scales with the stage, so no mark is a fixed size on a larger screen', () => {
-    expect(phoneMarks(600).camera).toBeCloseTo(phoneMarks(300).camera * 2, 5);
-    expect(phoneMarks(600).button).toBeCloseTo(phoneMarks(300).button * 2, 5);
+  it('scales with the stage, so the notch is not a fixed size on a larger screen', () => {
+    expect(phoneNotch(600).width).toBeCloseTo(phoneNotch(300).width * 2, 5);
+    expect(phoneNotch(600).height).toBeCloseTo(phoneNotch(300).height * 2, 5);
   });
 });
 
