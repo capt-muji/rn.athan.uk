@@ -38,7 +38,7 @@ jest.mock('@/modules/qiblaheading', () => ({ watchQiblaDiagnostic: jest.fn(() =>
  * test can drive: `hooks/__tests__/useQiblaShake.test.tsx` owns proving a wave is judged correctly. What this
  * suite tests is what the SHEET does with the answer, so it hands the answer over directly.
  */
-const mockShake = { progress: 0, hasWaved: false, notify: null as (() => void) | null };
+const mockShake = { hasWaved: false, notify: null as (() => void) | null };
 
 jest.mock('@/hooks/useQiblaShake', () => ({
   useQiblaShake: (active: boolean) => {
@@ -50,13 +50,12 @@ jest.mock('@/hooks/useQiblaShake', () => ({
     // away would let a reopened sheet inherit the first open's gesture and pass a test it should fail
     React.useEffect(
       () => () => {
-        mockShake.progress = 0;
         mockShake.hasWaved = false;
       },
       []
     );
 
-    return active ? mockShake : { progress: 0, hasWaved: false };
+    return active ? mockShake : { hasWaved: false };
   },
 }));
 
@@ -101,7 +100,6 @@ const openSheet = async () => {
 const performWave = async () => {
   await act(async () => {
     mockShake.hasWaved = true;
-    mockShake.progress = 1;
     mockShake.notify?.();
   });
 };
@@ -143,7 +141,6 @@ const reportLostHeadings = async (count = 1) => {
 };
 
 beforeEach(() => {
-  mockShake.progress = 0;
   mockShake.hasWaved = false;
   mockShake.notify = null;
   mockWatchers.length = 0;
@@ -596,7 +593,7 @@ describe('when the user refuses location', () => {
 
     await openSheet();
 
-    expect(screen.queryByText(/Wave the phone/)).toBeNull();
+    expect(screen.queryByText(/Wave your phone/)).toBeNull();
   });
 
   it('reads no position and watches no heading', async () => {
@@ -908,7 +905,7 @@ describe('the wave that unlocks the compass', () => {
     await reportHeadingsUnwaved(95);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
-    expect(screen.getByText(/Wave the phone/)).toBeOnTheScreen();
+    expect(screen.getByText(/Wave your phone/)).toBeOnTheScreen();
   });
 
   it('opens the compass once the wave is done and the heading is ready', async () => {
@@ -939,7 +936,7 @@ describe('the wave that unlocks the compass', () => {
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    expect(screen.getByText(/Wave the phone/)).toBeOnTheScreen();
+    expect(screen.getByText(/Wave your phone/)).toBeOnTheScreen();
   });
 });
 
@@ -950,7 +947,7 @@ describe('the wait before the compass can be drawn', () => {
   it('tells the user what to do about it, rather than leaving the stage blank', async () => {
     await openSheet();
 
-    expect(screen.getByText('Wave the phone in a figure eight to calibrate the compass.')).toBeOnTheScreen();
+    expect(screen.getByText(/Wave your phone in a figure eight/)).toBeOnTheScreen();
   });
 
   // Queried including hidden elements throughout, because the figure is deliberately hidden from the screen
@@ -970,7 +967,7 @@ describe('the wait before the compass can be drawn', () => {
     await openSheet();
 
     expect(waveDot()?.parent).toHaveProp(prop, hidden);
-    expect(screen.getByText('Wave the phone in a figure eight to calibrate the compass.')).toBeOnTheScreen();
+    expect(screen.getByText(/Wave your phone in a figure eight/)).toBeOnTheScreen();
   });
 
   // The hint and its looping animation exist only while the wait does: an infinite loop left behind the compass
@@ -980,7 +977,7 @@ describe('the wait before the compass can be drawn', () => {
 
     await reportHeadings(95);
 
-    expect(screen.queryByText('Wave the phone in a figure eight to calibrate the compass.')).toBeNull();
+    expect(screen.queryByText(/Wave your phone in a figure eight/)).toBeNull();
     expect(waveDot()).toBeNull();
   });
 
@@ -998,7 +995,7 @@ describe('the wait before the compass can be drawn', () => {
 
     await openSheet();
 
-    expect(screen.queryByText('Wave the phone in a figure eight to calibrate the compass.')).toBeNull();
+    expect(screen.queryByText(/Wave your phone in a figure eight/)).toBeNull();
     expect(waveDot()).toBeNull();
   });
 
@@ -1012,7 +1009,7 @@ describe('the wait before the compass can be drawn', () => {
       jest.advanceTimersByTime(2000);
     });
 
-    expect(screen.getByText('Wave the phone in a figure eight to calibrate the compass.')).toBeOnTheScreen();
+    expect(screen.getByText(/Wave your phone in a figure eight/)).toBeOnTheScreen();
     jest.useRealTimers();
   });
 });

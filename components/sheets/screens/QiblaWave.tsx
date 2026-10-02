@@ -12,7 +12,16 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 
 import { COLORS } from '@/shared/constants';
-import { phoneBody, phoneScreen, WAVE, waveHeading, wavePath, wavePoint, waveTrail } from '@/shared/qiblaWave';
+import {
+  phoneBody,
+  phoneMarks,
+  phoneScreen,
+  WAVE,
+  waveHeading,
+  wavePath,
+  wavePoint,
+  waveTrail,
+} from '@/shared/qiblaWave';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
@@ -43,6 +52,7 @@ export default function QiblaWave({ size }: { size: number }) {
   const figureHeight = size * WAVE.height;
   const body = phoneBody(size);
   const screen = phoneScreen(size);
+  const marks = phoneMarks(size);
   const canvasWidth = figureWidth + body.height;
   const canvasHeight = figureHeight + body.height;
 
@@ -125,18 +135,23 @@ export default function QiblaWave({ size }: { size: number }) {
           { width: body.width, height: body.height, borderRadius: body.radius, borderWidth: size * WAVE.stroke },
           phoneStyle,
         ]}>
+        <View style={[styles.mark, { width: marks.camera, height: marks.camera, borderRadius: marks.camera / 2 }]} />
         <View style={[styles.screen, { width: screen.width, height: screen.height, borderRadius: screen.radius }]} />
+        <View style={[styles.mark, { width: marks.button, height: marks.camera, borderRadius: marks.camera / 2 }]} />
       </Animated.View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  mark: {
+    backgroundColor: `rgba(${PALETTE.structure}, 0.55)`,
+  },
   phone: {
     alignItems: 'center',
     backgroundColor: PALETTE.kaaba,
     borderColor: PALETTE.accent,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     position: 'absolute',
   },
   screen: {

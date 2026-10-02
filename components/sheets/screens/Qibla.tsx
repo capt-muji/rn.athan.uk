@@ -48,7 +48,10 @@ const QiblaCalibration = ({ size, onWaved }: { size: number; onWaved: () => void
 
   return (
     <View style={styles.waiting}>
-      <Text style={styles.message}>Wave the phone in a figure eight to calibrate the compass.</Text>
+      <View style={styles.instruction}>
+        <Text style={styles.headline}>Calibrate the compass</Text>
+        <Text style={styles.message}>Wave your phone in a figure eight</Text>
+      </View>
       <QiblaWave size={size} />
     </View>
   );
@@ -158,6 +161,16 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeDetail,
     textAlign: 'center',
   },
+  headline: {
+    color: COLORS.text.primary,
+    fontFamily: TEXT.family.medium,
+    fontSize: TEXT.sizeDetail,
+    textAlign: 'center',
+  },
+  instruction: {
+    alignItems: 'center',
+    gap: SPACING.xs,
+  },
   message: {
     color: COLORS.text.secondary,
     fontFamily: TEXT.family.regular,
@@ -175,6 +188,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   waiting: {
-    gap: SPACING.xxl,
+    alignItems: 'center',
+    gap: SPACING.xxxl,
+    // The hint and its figure share the square the dial would have filled, so the pair centres as one block
+    // rather than the text sitting at the middle with the drawing hanging below it
+    justifyContent: 'center',
   },
 });

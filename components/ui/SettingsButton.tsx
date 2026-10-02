@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    color: COLORS.icon.muted,
+    color: COLORS.icon.settings,
   },
 });
