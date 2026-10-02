@@ -32,12 +32,20 @@ describe('the directives the UI thread needs', () => {
     return source.slice(at, at + 400);
   };
 
-  it.each(['wavePoint', 'waveLean', 'waveYaw', 'waveTrail', 'phoneSlab', 'phoneBody', 'point', 'polygon'])(
+  it.each(['wavePoint', 'waveLean', 'waveYaw', 'waveTrail', 'phoneSlab', 'phoneBody', 'polygon'])(
     '%s is a worklet, because the drawing calls it every frame on the UI thread',
     (name) => {
       expect(opens(name)).toContain("'worklet'");
     }
   );
+
+  // A worklet passed BY REFERENCE to map, filter or forEach arrives undefined on the UI runtime, and the sheet
+  // throws "undefined is not a function". It shipped exactly that way once
+  it('hands no function to a higher-order call, which does not survive the hop to the UI runtime', () => {
+    const body = source.slice(source.indexOf("'worklet'"));
+
+    expect(body).not.toMatch(/\.(map|filter|forEach|reduce)\(\s*[A-Za-z_$][\w$]*\s*\)/);
+  });
 });
 
 describe('a point on the wave', () => {
