@@ -211,3 +211,52 @@ looping figure of eight with a dot travelling it. Verified by screenshot on the 
 The residual error from iron in the owner's house. Nothing here attacks it, and `MEASURED.md`
 sections 3 and 4 measure it as invisible to any gate reading the heading stream. Row 49 carries the
 native module.
+
+## The owner accepted it, and the hint was rebuilt on his judgement (1.29.207)
+
+🐋  "This works absolutely perfectly. I love it. It's amazing... It's so clear, it's so smooth...
+both phones are pointing in the perfect direction."
+
+**His acceptance covers 1.29.205**, which is tagged by that version and pushed, as he asked.
+
+### The hint now carries a phone, not a dot
+
+🐋  "I do like the animation that you put on the screen with the figure 8, but can you actually
+improve it, because it looks really out of shape and a bit boring. Does it suit the theme of the
+app? It doesn't. Can we make the dot look like a phone? It doesn't show the user to actually do
+anything."
+
+**The diagnosis is in his last sentence rather than his first.** A dot teaches a SHAPE; the
+instruction is to move a PHONE. So the travelling object is a phone: a rounded body in the dial's own
+gold with a lit screen inset inside it.
+
+**The roll is what makes it an instruction rather than an ornament.** The phone leans into each turn,
+taken from the curve's OWN tangent rather than a second invented motion, so the lean cannot drift out
+of step with the path however the figure is reshaped. That teaches a wrist that rolls, which is the
+gesture that actually calibrates a magnetometer: a phone held rigid through a figure of eight sweeps
+one plane and calibrates nothing.
+
+The path is dashed and fainter so it reads as a route rather than a drawn object competing with the
+phone, and the pass slowed from 2400ms to 3200ms because the gesture is meant to be copied by hand.
+
+21 geometry tests, up from 14. `toDegrees` was written, left unused and deleted, which
+`unusedExports.test.ts` caught: the third time that guard earned its place this session.
+
+### The question this session could NOT answer, and queued as row 50
+
+🐋  "which one was the issue? That's the real question. Because I think one of these three patches
+actually fixed it."
+
+**Nobody knows, because four changes landed together and were never tested apart.** The hypothesis
+and the four isolating experiments are in `WHAT-FIXED-IT.md`, queued as row 50. The short form: the
+latch was necessary and not sufficient, the 2-degree gate is the likely hero for ACCURACY because a
+sample rate cannot make a heading more correct while removing a quantisation floor can, and the rate
+is the likely hero for SMOOTHNESS.
+
+### Three of his questions answered in `WHAT-FIXED-IT.md` so no session re-derives them
+
+| Question | Answer |
+| --- | --- |
+| 🐋  "if we make this 52 hertz, would it be even better?" | **No, worse.** 52 Hz is the magnetometer's own 19.2 ms hardware ceiling, so asking for it removes all scheduling slack and drops samples rather than arriving late, for no visible gain when 50 Hz is already 5x his own 10 Hz bar. Nothing would break: Android clamps the request |
+| 🐋  "Did you create a custom module for this?" | **No.** Three edits to `expo-location`'s own source, in a patch file that already existed. Row 49 remains the only place a native module is planned |
+| 🐋  "You kept SENSOR_DELAY_GAME 50 Hz rather than UI 15 Hz. I don't understand." | `UI` clears his 10 Hz bar with little margin, `GAME` with 5x, and the app already pulls 16 ms through Reanimated in the same process. `UI` is a one-word fallback if battery ever becomes a complaint |
