@@ -6659,3 +6659,61 @@ session 47's own `headingFromYaw` negated the yaw back, a test pinned it, and a 
 error at the London qibla rather than the 5 and 34 that were measured.
 
 Suite after: 4949 tests across 184 suites, 100% on all four measures.
+
+## Session 50: which of the four changes fixed the compass
+
+The owner accepted 1.29.205 and asked which change was responsible: 🐋  "which one was the issue?
+That's the real question." Five changes were isolated and judged on his own hardware, outdoors and
+untethered, within one trip.
+
+**The answer: the LATCH fixed the compass, and all four changes earned their place, each owning a
+different quality.** 🐋  "The first test that we did is absolute best for both platforms no questions
+asked easily the best one. It's smooth and it's accurate."
+
+| Experiment | What it restored | Compass drew | Owner's verdict | Tested on |
+| --- | --- | --- | --- | --- |
+| Baseline | nothing, the shipped build | yes | 🐋  "works amazingly... fantastic" | 3T |
+| C | the unlatched settling gate | yes, then froze | 🐋  "lags really horribly... a flop" | 3T |
+| A | `SENSOR_DELAY_NORMAL`, 5 Hz | yes | 🐋  "accurate, but no smooth at all" | 3T |
+| B | the 2-degree emission gate | yes | 🐋  "very slow very jittery... not better than number one" | 3T |
+| D | iOS `headingFilter` at 1 degree | yes | 🐋  "not very smooth at all" | iPhone XS |
+
+**Each change owns a different quality, and none substitutes for another.** The latch owns whether the
+dial follows at all, proven by C failing with all three patches present. The removed 2-degree gate owns
+responsiveness while aligning, proven by B at full 50 Hz. The 50 Hz rate owns smoothness, proven by A
+holding its accuracy at one tenth of the rate. `kCLHeadingFilterNone` owns smoothness on the iPhone.
+
+**THE ROW'S OWN HYPOTHESIS WAS REFUTED THREE WAYS.** It named the 2-degree gate as the likely hero for
+ACCURACY. A quantiser's error is bounded by its step, measured at **2.38 degrees worst and 0.78 mean**
+against a complaint of 20 to 30 degrees; experiment A then held full accuracy at 5 Hz, which no
+accuracy mechanism would survive; and the owner reported B as a smoothness problem first, hedging on
+accuracy himself (🐋  "Could be just me in my eyes"). **What fixed his complaint was this app's own
+code, not a patch.**
+
+**A FIFTH CHANGE WAS FOUND THAT THE ROW DID NOT COUNT**: 1.29.205 is the figure-eight calibration hint
+and 1.29.204 is everything else, so the build he loved carries one more change than the question
+assumed.
+
+**AND THE HINT TURNS OUT TO CARRY A DEFECT, found by the owner's own question** (🐋  "what if the user
+doesn't actually shake their phone?"). Measured over 300 runs per cell against the shipped gate: a
+waved phone opens the gate at **3.7s and 11.88 degrees of error**, a still phone at **9.7s and 2.98
+degrees**. Waving fills the settling window with the user's own motion, whose halves average alike, so
+the gate opens while the fusion is still 12 degrees out. **A user who follows the instruction gets a
+confident compass four times wronger than one who ignores it.** The compass opens 100% of the time
+either way, so the hint is a loading screen rather than a correctness gate, and hard iron passes it
+untouched at 0, 5, 15 and 27 degrees, because the gate measures drift and a stable bias does not drift.
+Queued as the next session's first item.
+
+**TWO PREDICTIONS WERE WRONG AND ARE RECORDED AS SUCH.** Experiment B was predicted never to draw in
+87% of still runs and drew every time: the simulation held the phone still to 0.5 degrees of jitter
+where a hand moves several, so **that 87% describes a phone on a table rather than a phone in a hand**.
+And the figure-eight hint was assumed to help the first reading rather than harm it.
+
+**No experiment was ever committed.** Three changes live in `patches/expo-location+58.0.9.patch`, which
+git never sees, and the two touching app code were carried on `git commit-tree` throwaway refs that run
+no hook, create no branch and are unreachable from `uat-2`, verified with
+`git merge-base --is-ancestor`. `scripts/verify-expo-location-patch.sh` shipped first and proved the
+restore after each one; it caught a real miss after experiment D, whose iOS build is run by hand rather
+than through the build script, and a final `diff -r` against pristine upstream confirmed `node_modules`
+differs only by the intended patch. **`npx patch-package` alone cannot repair an edited tree**, measured:
+the restore replaces the package from yarn's cache first.
