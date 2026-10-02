@@ -241,6 +241,18 @@ describe('the place the bearing was computed from', () => {
     expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
   });
 
+  // The hint asks the user to wave the phone; naming where they are answers a question they have not been asked,
+  // and it arrives before the thing it labels
+  it('holds the place back until the compass is drawn', async () => {
+    await openSheet();
+
+    expect(screen.queryByText('London, United Kingdom')).toBeNull();
+
+    await reportHeadings(95);
+
+    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+  });
+
   it('asks the platform to name the position it computed the bearing from', async () => {
     await openSheet();
 
@@ -290,8 +302,9 @@ describe('the place the bearing was computed from', () => {
     expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
   });
 
-  // The dial is gone here, so a line tied to it would go too and shrink the sheet
-  it('keeps the line even once the dial has blanked for good', async () => {
+  // The name belongs to the compass, so it goes when the compass does. The LINE stays, holding its height,
+  // which is what stops the sheet resizing under the user
+  it('takes the name away with the dial, keeping the line that holds its height', async () => {
     jest.useFakeTimers();
     await openSheet();
     await reportHeadings(95);
@@ -302,7 +315,8 @@ describe('the place the bearing was computed from', () => {
     });
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
-    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+    expect(screen.queryByText('London, United Kingdom')).toBeNull();
+    expect(screen.getByTestId('qibla-place')).toBeOnTheScreen();
     jest.useRealTimers();
   });
 
@@ -310,7 +324,8 @@ describe('the place the bearing was computed from', () => {
     await openSheet();
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
-    expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
+    expect(screen.queryByText('London, United Kingdom')).toBeNull();
+    expect(screen.getByTestId('qibla-place')).toBeOnTheScreen();
   });
 
   it('says nothing when the user refused location, having no position to name', async () => {
