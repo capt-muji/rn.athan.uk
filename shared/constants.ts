@@ -694,6 +694,8 @@ export const COLORS = {
     disabled: 'rgba(146, 211, 255, 0.65)',
     /** Emphasis text: info box titles */
     emphasis: 'rgba(224, 231, 255, 1)',
+    /** Every supporting line under a sheet's own title, so they all read as one voice */
+    sheetSubtitle: 'rgba(86, 134, 189, 0.725)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -745,7 +747,7 @@ export const COLORS = {
     /** Icon wrapper background */
     background: 'rgba(99, 102, 241, 0.2)',
     /** The settings glyph, bright enough to read against its own circle in direct sunlight */
-    settings: 'rgba(222, 208, 255, 0.95)',
+    settings: 'rgba(200, 176, 255, 0.71)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -815,10 +817,10 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   /** Settings button (transparent style) */
   settingsButton: {
-    // Opaque enough to survive direct sunlight: at 0.29 the circle vanished against the gradient outdoors and
-    // users with poor eyesight could not find the control at all
-    background: 'rgba(105, 65, 198, 0.72)',
-    border: 'rgba(140, 108, 230, 0.9)',
+    // Halfway between the original, which vanished against the gradient in sunlight, and the first fix, which
+    // the owner judged too strong: findable with poor eyesight without taking the eye off the prayer list
+    background: 'rgba(105, 65, 198, 0.51)',
+    border: 'rgba(116, 80, 207, 0.68)',
   },
 
   /** Countdown bar */

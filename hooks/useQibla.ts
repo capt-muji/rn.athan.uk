@@ -95,6 +95,10 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     unwatchRef.current = null;
     unwatchDiagnosticRef.current?.();
     unwatchDiagnosticRef.current = null;
+    // Kept, the heading outlives the close and the next open paints ONE frame of compass before the gate can
+    // shut it: the owner saw the dial flash, then the hint, then the dial. There is no live heading while the
+    // watch is torn down, so reporting one would be a lie in any case
+    setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
   }, [aligned, clearBlank]);
 
   const processReading = useCallback(

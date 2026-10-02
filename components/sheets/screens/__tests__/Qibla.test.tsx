@@ -46,8 +46,9 @@ jest.mock('@/hooks/useQiblaShake', () => ({
     const [, bump] = React.useState(0);
     mockShake.notify = () => bump((count: number) => count + 1);
 
-    // The real hook clears itself whenever the hint UNMOUNTS, so a second open earns its own wave. Mocking that
-    // away would let a reopened sheet inherit the first open's gesture and pass a test it should fail
+    // The real hook holds its gesture in STATE and the hint unmounts between opens, so a second open starts at
+    // false whatever the first one did. Modelled here, or these tests would describe a hook this app does not
+    // have and the sheet's own reset would never be exercised
     React.useEffect(
       () => () => {
         mockShake.hasWaved = false;
@@ -593,7 +594,7 @@ describe('when the user refuses location', () => {
 
     await openSheet();
 
-    expect(screen.queryByText(/Wave your phone/)).toBeNull();
+    expect(screen.queryByText(/Move your phone like this/)).toBeNull();
   });
 
   it('reads no position and watches no heading', async () => {
@@ -708,8 +709,9 @@ describe('reopening the sheet in the same place', () => {
     mockState.releasePosition = () => undefined;
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
-    // The second open earns its own wave, so the compass and its label wait for the gesture again
-    await performWave();
+    // The second open earns its own wave AND its own heading: both are cleared on close, so that a reopen
+    // cannot flash the last visit's compass before the gate shuts it
+    await reportHeadings(95);
 
     expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
   });
@@ -905,7 +907,7 @@ describe('the wave that unlocks the compass', () => {
     await reportHeadingsUnwaved(95);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
-    expect(screen.getByText(/Wave your phone/)).toBeOnTheScreen();
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
   });
 
   it('opens the compass once the wave is done and the heading is ready', async () => {
@@ -932,11 +934,60 @@ describe('the wave that unlocks the compass', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await fireEvent(screen.getByText('Qibla'), 'change', -1);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    expect(screen.getByText(/Wave your phone/)).toBeOnTheScreen();
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
+  });
+
+  /**
+   * THE FLASH THE OWNER SAW: the dial for one frame, then the hint, then the dial.
+   *
+   * Both halves of the gate survived the close, so the first frame of the second open was drawn with the last
+   * visit's answers: `hasHeading` was never cleared when the watch was torn down, and the wave was reset in
+   * `onPresent`, which runs after the sheet has already begun presenting. Both now clear on CLOSE.
+   */
+  it('never draws the compass on the first frame of a reopen, however complete the last visit was', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // The heading half, pinned where the wave cannot mask it: with the gesture already done, a heading that
+  // survived the close is on its own enough to draw the compass before the user has waved for this visit
+  it('forgets the heading on close, because no heading is live while the watch is torn down', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    mockShake.hasWaved = true;
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // The two halves are tested apart because either one alone is enough to hide the other: a heading that
+  // cleared would mask a wave that did not, and the flash needs only one of them to survive the close
+  it('forgets the gesture on close, so the wave alone cannot reopen the compass', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    // The heading returns at once, as it does on a real reopen from a remembered position: only the missing
+    // wave can hold the compass back now
+    await reportHeadingsUnwaved(95);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
   });
 });
 
@@ -947,7 +998,7 @@ describe('the wait before the compass can be drawn', () => {
   it('tells the user what to do about it, rather than leaving the stage blank', async () => {
     await openSheet();
 
-    expect(screen.getByText(/Wave your phone in a figure eight/)).toBeOnTheScreen();
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
   });
 
   // Queried including hidden elements throughout, because the figure is deliberately hidden from the screen
@@ -967,7 +1018,7 @@ describe('the wait before the compass can be drawn', () => {
     await openSheet();
 
     expect(waveDot()?.parent).toHaveProp(prop, hidden);
-    expect(screen.getByText(/Wave your phone in a figure eight/)).toBeOnTheScreen();
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
   });
 
   // The hint and its looping animation exist only while the wait does: an infinite loop left behind the compass
@@ -977,7 +1028,7 @@ describe('the wait before the compass can be drawn', () => {
 
     await reportHeadings(95);
 
-    expect(screen.queryByText(/Wave your phone in a figure eight/)).toBeNull();
+    expect(screen.queryByText(/Move your phone like this/)).toBeNull();
     expect(waveDot()).toBeNull();
   });
 
@@ -995,7 +1046,7 @@ describe('the wait before the compass can be drawn', () => {
 
     await openSheet();
 
-    expect(screen.queryByText(/Wave your phone in a figure eight/)).toBeNull();
+    expect(screen.queryByText(/Move your phone like this/)).toBeNull();
     expect(waveDot()).toBeNull();
   });
 
@@ -1009,7 +1060,7 @@ describe('the wait before the compass can be drawn', () => {
       jest.advanceTimersByTime(2000);
     });
 
-    expect(screen.getByText(/Wave your phone in a figure eight/)).toBeOnTheScreen();
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
     jest.useRealTimers();
   });
 });
