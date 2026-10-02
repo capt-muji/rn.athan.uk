@@ -11,14 +11,19 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 
 import { COLORS } from '@/shared/constants';
-import { WAVE, wavePath, wavePoint } from '@/shared/qiblaWave';
+import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint } from '@/shared/qiblaWave';
 
 const PALETTE = COLORS.qibla.away;
 
-const WAVE_DURATION = 2400;
+/** One unhurried pass of the figure: fast enough to read as a motion, slow enough to copy by hand */
+const WAVE_DURATION = 3200;
 
 /**
- * The figure of eight the user waves the phone through, drawn as a dot running its traced path.
+ * The figure of eight the user waves the phone through, drawn as a phone travelling its traced path.
+ *
+ * A phone rather than a dot, because the instruction is to move THIS OBJECT: a dot teaches a shape where the
+ * device teaches the gesture. It leans into each turn off the curve's own tangent, which is what tells the user
+ * to roll their wrist rather than slide a flat hand through one plane.
  *
  * Shown only while the compass waits for the heading to converge, which is what waving the phone brings about.
  * Mounted for exactly that long, so the loop is never ticking behind the compass (Performance Design Rule 7).
@@ -26,24 +31,27 @@ const WAVE_DURATION = 2400;
 export default function QiblaWave({ size }: { size: number }) {
   const figureWidth = size * WAVE.width;
   const figureHeight = size * WAVE.height;
-  const dot = size * WAVE.dot;
-  const canvasWidth = figureWidth + dot;
-  const canvasHeight = figureHeight + dot;
+  const body = phoneBody(size);
+  const screen = phoneScreen(size);
+  const canvasWidth = figureWidth + body.height;
+  const canvasHeight = figureHeight + body.height;
 
   const progress = useSharedValue(0);
 
   useEffect(() => {
-    // Starts the motion and never places the dot, which first-frames settled at progress 0 on its own
+    // Starts the motion and never places the phone, which first-frames settled at progress 0 on its own
     progress.value = withRepeat(withTiming(1, { duration: WAVE_DURATION, easing: Easing.linear }), -1);
 
     // withRepeat(-1) would otherwise keep driving the UI thread once the compass has replaced this
     return () => cancelAnimation(progress);
   }, [progress]);
 
-  const dotStyle = useAnimatedStyle(() => {
+  const phoneStyle = useAnimatedStyle(() => {
     const at = wavePoint(progress.value, figureWidth, figureHeight);
 
-    return { transform: [{ translateX: at.x }, { translateY: at.y }] };
+    return {
+      transform: [{ translateX: at.x }, { translateY: at.y }, { rotate: `${waveLean(progress.value)}deg` }],
+    };
   });
 
   return (
@@ -59,25 +67,36 @@ export default function QiblaWave({ size }: { size: number }) {
         <Path
           d={wavePath(figureWidth, figureHeight)}
           fill='none'
-          stroke={`rgba(${PALETTE.structure}, 0.38)`}
+          stroke={`rgba(${PALETTE.structure}, 0.3)`}
           strokeWidth={size * WAVE.stroke}
           strokeLinecap='round'
+          strokeDasharray={`${size * WAVE.stroke * 3} ${size * WAVE.stroke * 3}`}
         />
       </Svg>
-      {/* A View rather than an animated SVG circle: react-native-svg re-walks its whole drawing pipeline on any
+      {/* Views rather than animated SVG nodes: react-native-svg re-walks its whole drawing pipeline on any
           attribute change, where a transform on a layer is composited */}
       <Animated.View
-        testID='qibla-wave-dot'
-        style={[styles.dot, { width: dot, height: dot, borderRadius: dot / 2 }, dotStyle]}
-      />
+        testID='qibla-wave-phone'
+        style={[
+          styles.phone,
+          { width: body.width, height: body.height, borderRadius: body.radius, borderWidth: size * WAVE.stroke },
+          phoneStyle,
+        ]}>
+        <View style={[styles.screen, { width: screen.width, height: screen.height, borderRadius: screen.radius }]} />
+      </Animated.View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  dot: {
-    backgroundColor: PALETTE.accent,
+  phone: {
+    alignItems: 'center',
+    borderColor: PALETTE.accent,
+    justifyContent: 'center',
     position: 'absolute',
+  },
+  screen: {
+    backgroundColor: `rgba(${PALETTE.structure}, 0.28)`,
   },
   stage: {
     alignItems: 'center',

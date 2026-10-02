@@ -1,9 +1,9 @@
 /**
  * The figure of eight the calibration hint traces: that it is an eight, that it closes, and that its path
- * follows the same arithmetic the travelling dot does
+ * follows the same arithmetic the travelling phone does
  */
 
-import { WAVE, wavePath, wavePoint } from '@/shared/qiblaWave';
+import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint } from '@/shared/qiblaWave';
 
 /** The size the hint is drawn at on a phone, so a px figure here means a px the user sees */
 const WIDTH = 160;
@@ -105,12 +105,55 @@ describe('the proportions the hint is built from', () => {
     expect(WAVE.height).toBeLessThan(WAVE.width);
   });
 
-  it('draws the dot larger than the line it runs along, so the eye follows the dot', () => {
-    expect(WAVE.dot).toBeGreaterThan(WAVE.stroke);
+  it('draws the phone taller than it is wide, which is the only way it reads as a phone', () => {
+    expect(WAVE.phone.height).toBeGreaterThan(WAVE.phone.width);
+  });
+
+  it('keeps the phone small enough beside the figure that the path stays the subject', () => {
+    expect(WAVE.phone.height).toBeLessThan(WAVE.height);
   });
 
   // Too few segments and the curve reads as a polygon at the size it is drawn
   it('samples the curve finely enough that no segment reads as straight', () => {
     expect(WAVE.segments).toBeGreaterThanOrEqual(24);
+  });
+});
+
+describe('waveLean, the roll the phone carries through the figure', () => {
+  // A phone held rigid sweeps one plane and calibrates nothing, so the lean is the instruction
+  it('leans both ways across a pass, so the wrist is shown rolling rather than held', () => {
+    const leans = Array.from({ length: 48 }, (_, index) => waveLean(index / 48));
+
+    expect(Math.max(...leans)).toBeGreaterThan(0);
+    expect(Math.min(...leans)).toBeLessThan(0);
+  });
+
+  it('never leans past the limit the proportions declare', () => {
+    const leans = Array.from({ length: 96 }, (_, index) => Math.abs(waveLean(index / 96)));
+
+    expect(Math.max(...leans)).toBeLessThanOrEqual(WAVE.lean);
+  });
+
+  it('returns to where it started, so a looping pass has no jump at its seam', () => {
+    expect(waveLean(1)).toBeCloseTo(waveLean(0), 5);
+  });
+});
+
+describe('the phone the figure carries', () => {
+  it('insets the screen inside the body on every side', () => {
+    const body = phoneBody(300);
+    const screen = phoneScreen(300);
+
+    expect(screen.width).toBeLessThan(body.width);
+    expect(screen.height).toBeLessThan(body.height);
+  });
+
+  it('scales with the stage it is drawn in', () => {
+    expect(phoneBody(600).width).toBeCloseTo(phoneBody(300).width * 2, 5);
+  });
+
+  // A radius wider than the box it rounds draws an arc that folds back on itself
+  it('never gives the screen a negative corner', () => {
+    expect(phoneScreen(40).radius).toBeGreaterThanOrEqual(0);
   });
 });
