@@ -49,8 +49,10 @@ const QiblaCalibration = ({ size, onWaved }: { size: number; onWaved: () => void
   return (
     <View style={styles.waiting}>
       <View style={styles.instruction}>
-        <Text style={styles.headline}>Calibrate the compass</Text>
-        <Text style={styles.message}>Wave your phone in a figure eight</Text>
+        {/* No "calibrate" and no "figure eight": both are engineering words, and the drawing below already
+            shows the motion better than a sentence naming it could */}
+        <Text style={styles.headline}>Wake up the compass</Text>
+        <Text style={styles.message}>Move your phone like this</Text>
       </View>
       <QiblaWave size={size} />
     </View>
@@ -94,13 +96,15 @@ export default function BottomSheetQibla() {
   const showsCompass = headingReady && hasWaved;
   const isCalibrating = !showsCompass && !permissionDenied;
 
-  // A fresh wave is asked for on every open, because the calibration it performs goes stale with the room
-  const open = useCallback(async () => {
-    setHasWaved(false);
-    await start();
-  }, [start]);
-
   const markWaved = useCallback(() => setHasWaved(true), []);
+
+  // A fresh wave is asked for on every open, because the calibration goes stale with the room. Cleared on
+  // CLOSE rather than open: a reset at open runs after the sheet has begun presenting, so the first frame
+  // still carried the last visit's answer and flashed the compass before the hint
+  const close = useCallback(() => {
+    setHasWaved(false);
+    stop();
+  }, [stop]);
 
   // The user is told they may stop by FEEL, because they are watching the phone they are moving rather than the
   // screen. Fires once per arrival, and a compass lost and regained earns a second tap
@@ -116,8 +120,8 @@ export default function BottomSheetQibla() {
       title='Qibla'
       subtitle='Turn until it vibrates'
       icon={<IconView type={Icon.COMPASS} size={16} color='rgba(165, 180, 252, 0.8)' />}
-      onPresent={open}
-      onDismiss={stop}
+      onPresent={start}
+      onDismiss={close}
       perfName='sheet_qibla'
       scrollable={false}
       enableDynamicSizing
@@ -172,13 +176,13 @@ const styles = StyleSheet.create({
     gap: SPACING.xs,
   },
   message: {
-    color: COLORS.text.secondary,
+    color: COLORS.text.sheetSubtitle,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeDetail,
     textAlign: 'center',
   },
   place: {
-    color: COLORS.text.muted,
+    color: COLORS.text.sheetSubtitle,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeDetail,
     lineHeight: TEXT.lineHeight.default,

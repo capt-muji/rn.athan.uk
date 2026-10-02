@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 
 interface BottomSheetHeaderProps {
   title: string;
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    color: 'rgba(86, 134, 189, 0.725)',
+    color: COLORS.text.sheetSubtitle,
     marginTop: SPACING.xs,
   },
 });

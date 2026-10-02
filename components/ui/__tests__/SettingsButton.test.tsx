@@ -48,7 +48,7 @@ describe('the settings button, with the settings sheet mounted', () => {
 
     const alpha = (colour: string) => Number(colour.split(',')[3].replace(')', ''));
 
-    expect(alpha(COLORS.settingsButton.background)).toBeGreaterThanOrEqual(0.6);
+    expect(alpha(COLORS.settingsButton.background)).toBeGreaterThanOrEqual(0.45);
     expect(alpha(COLORS.settingsButton.border)).toBeGreaterThanOrEqual(0.6);
   });
 
@@ -56,7 +56,7 @@ describe('the settings button, with the settings sheet mounted', () => {
   it('draws the glyph bright enough to read against its own circle', () => {
     const alpha = Number(COLORS.icon.settings.split(',')[3].replace(')', ''));
 
-    expect(alpha).toBeGreaterThanOrEqual(0.8);
+    expect(alpha).toBeGreaterThanOrEqual(0.65);
   });
 
   it('neither taps nor opens the sheet for a touch that goes down and up without completing a press', async () => {

@@ -23,7 +23,7 @@ export const WAVE = {
   /** How many straight segments stand in for the curve */
   segments: 72,
   /** The phone the user is being asked to move, drawn to the proportions of a real one */
-  phone: { width: 0.088, height: 0.164, radius: 0.018, screenInset: 0.14, bezel: 0.13, camera: 0.16, button: 0.42 },
+  phone: { width: 0.088, height: 0.164, radius: 0.018, screenInset: 0.14, notchWidth: 0.42, notchHeight: 0.055 },
   /** The glowing tail behind the phone, as a share of one loop and of the figure's own stroke */
   trail: { span: 0.21, samples: 24, core: 0.009, halo: 0.03 },
 } as const;
@@ -118,19 +118,22 @@ export const phoneScreen = (size: number): { width: number; height: number; radi
 
   return {
     width: body.width - inset * 2,
-    // Shorter than the body by a bezel at each end, which is the room the earpiece and the button need: a
-    // screen reaching the full height leaves a plain rounded rectangle that reads as a card
-    height: body.height - inset * 2 - body.height * WAVE.phone.bezel * 2,
+    height: body.height - inset * 2,
     radius: Math.max(body.radius - inset, 0),
   };
 };
 
-/** The camera dot above the screen and the home button below it, which is what names the shape as a phone */
-export const phoneMarks = (size: number): { camera: number; button: number } => {
+/**
+ * The notch at the top of the screen, which is the one mark that names the shape as a phone.
+ *
+ * A notch rather than a camera dot and a home button: every phone is edge to edge now, so a header and a
+ * bumper read as a device from a decade ago, and at this size two small marks read as specks.
+ */
+export const phoneNotch = (size: number): { width: number; height: number } => {
   const body = phoneBody(size);
 
   return {
-    camera: body.width * WAVE.phone.camera,
-    button: body.width * WAVE.phone.button,
+    width: body.width * WAVE.phone.notchWidth,
+    height: body.height * WAVE.phone.notchHeight,
   };
 };
