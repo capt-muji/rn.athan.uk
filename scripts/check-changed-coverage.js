@@ -53,6 +53,10 @@ const UNMEASURED = [
     path: 'ai/plans/48-qibla-heading-accuracy/scripts/probes/',
     reason: 'executed research artefacts, run once under Node to measure heading gates, never by the app',
   },
+  {
+    path: 'ai/plans/50-which-patch-fixed-it/scripts/probes/',
+    reason: 'executed research artefacts, run once under Node to separate the heading patches, never by the app',
+  },
   { path: 'scripts/', reason: 'repository tooling, including this gate' },
   { path: '.agents/', reason: 'Expo and EAS agent skills, documentation for coding agents' },
   { path: 'jest.config.js', reason: 'test runner configuration' },

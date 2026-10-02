@@ -1,0 +1,2 @@
+      "!**/ai/plans/48-qibla-heading-accuracy/scripts/probes",
+      "!**/ai/plans/50-which-patch-fixed-it/scripts/probes"
