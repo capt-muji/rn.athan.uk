@@ -40,7 +40,7 @@ const oneDecimal = (value: number | undefined): string => value?.toFixed(1) ?? P
  * (Performance Design Rule 7). Mounted only while the hint is on screen, it arms and unregisters with the hint.
  */
 const QiblaCalibration = ({ size, onWaved }: { size: number; onWaved: () => void }) => {
-  const { progress, hasWaved } = useQiblaShake(true);
+  const { hasWaved } = useQiblaShake(true);
 
   useEffect(() => {
     if (hasWaved) onWaved();
@@ -49,7 +49,7 @@ const QiblaCalibration = ({ size, onWaved }: { size: number; onWaved: () => void
   return (
     <View style={styles.waiting}>
       <Text style={styles.message}>Wave the phone in a figure eight to calibrate the compass.</Text>
-      <QiblaWave size={size} progress={progress} />
+      <QiblaWave size={size} />
     </View>
   );
 };

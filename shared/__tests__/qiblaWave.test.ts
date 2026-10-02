@@ -3,7 +3,7 @@
  * follows the same arithmetic the travelling phone does
  */
 
-import { phoneBody, phoneScreen, WAVE, waveLean, wavePath, wavePoint, waveRoll, waveTrail } from '@/shared/qiblaWave';
+import { phoneBody, phoneScreen, WAVE, waveHeading, wavePath, wavePoint, waveTrail } from '@/shared/qiblaWave';
 
 /** The size the hint is drawn at on a phone, so a px figure here means a px the user sees */
 const WIDTH = 160;
@@ -119,65 +119,55 @@ describe('the proportions the hint is built from', () => {
   });
 });
 
-describe('waveLean, the roll the phone carries through the figure', () => {
-  // A phone held rigid sweeps one plane and calibrates nothing, so the lean is the instruction
-  it('leans both ways across a pass, so the wrist is shown rolling rather than held', () => {
-    const leans = Array.from({ length: 48 }, (_, index) => waveLean(index / 48));
+describe('waveHeading, which way the phone points as it travels', () => {
+  const WIDTH_ = WIDTH;
+  const HEIGHT_ = HEIGHT;
+  const heading = (progress: number) => waveHeading(progress, WIDTH_, HEIGHT_);
 
-    expect(Math.max(...leans)).toBeGreaterThan(0);
-    expect(Math.min(...leans)).toBeLessThan(0);
+  /** Where the phone's own foot points at a progress, as a unit vector in screen space */
+  const footDirection = (progress: number) => {
+    const radians = (heading(progress) * Math.PI) / 180;
+
+    // The phone is drawn pointing up, so its foot points the opposite way once the whole body is turned
+    return { x: -Math.sin(radians), y: Math.cos(radians) };
+  };
+
+  /** The direction the phone has just come FROM, which is where the trail runs back along */
+  const behind = (progress: number) => {
+    const at = wavePoint(progress, WIDTH_, HEIGHT_);
+    const just = wavePoint(progress - 0.004, WIDTH_, HEIGHT_);
+    const dx = just.x - at.x;
+    const dy = just.y - at.y;
+    const length = Math.hypot(dx, dy);
+
+    return { x: dx / length, y: dy / length };
+  };
+
+  // THE OWNER'S REQUIREMENT: the trail must leave the BOTTOM of the phone the whole way round, so the phone
+  // faces along the curve and its foot points back down the path it has just travelled
+  it.each([0.03, 0.17, 0.3, 0.45, 0.62, 0.8, 0.94])('points its foot back along the path at %p', (progress) => {
+    const foot = footDirection(progress);
+    const tail = behind(progress);
+
+    // The dot product of two unit vectors is 1 when they agree exactly
+    expect(foot.x * tail.x + foot.y * tail.y).toBeCloseTo(1, 1);
   });
 
-  it('never leans past the limit the proportions declare', () => {
-    const leans = Array.from({ length: 96 }, (_, index) => Math.abs(waveLean(index / 96)));
+  it('turns through a whole circle across one pass, which is what a phone going round does', () => {
+    const headings = Array.from({ length: 240 }, (_, index) => heading(index / 240));
 
-    expect(Math.max(...leans)).toBeLessThanOrEqual(WAVE.lean);
-  });
-
-  it('returns to where it started, so a looping pass has no jump at its seam', () => {
-    expect(waveLean(1)).toBeCloseTo(waveLean(0), 5);
-  });
-});
-
-describe('waveRoll, the bank that shows the phone turning out of the screen', () => {
-  // THE DEFECT THIS PINS: the first version ran a raw cosine through 0, so the phone vanished completely at
-  // each turn. The owner saw it and said so. A drawing nobody can see teaches nothing
-  it('never narrows to nothing, because a phone that vanishes is not showing a gesture', () => {
-    const rolls = Array.from({ length: 480 }, (_, index) => waveRoll(index / 480));
-
-    expect(Math.min(...rolls)).toBeGreaterThan(0.2);
-  });
-
-  // A negative scale mirrors the drawing, which draws the phone back-to-front for half of every pass
-  it('never turns the phone inside out, which a negative scale would do', () => {
-    const rolls = Array.from({ length: 480 }, (_, index) => waveRoll(index / 480));
-
-    expect(Math.min(...rolls)).toBeGreaterThan(0);
-  });
-
-  it('still narrows enough to read as a turn rather than a phone held flat', () => {
-    const rolls = Array.from({ length: 96 }, (_, index) => waveRoll(index / 96));
-
-    expect(Math.max(...rolls)).toBeGreaterThan(0.9);
-    expect(Math.min(...rolls)).toBeLessThan(0.6);
-  });
-
-  it('never scales past full width, which would read as the phone growing', () => {
-    const rolls = Array.from({ length: 192 }, (_, index) => Math.abs(waveRoll(index / 192)));
-
-    expect(Math.max(...rolls)).toBeLessThanOrEqual(1);
+    expect(Math.max(...headings)).toBeGreaterThan(90);
+    expect(Math.min(...headings)).toBeLessThan(-90);
   });
 
   it('returns to where it started, so a looping pass has no jump at its seam', () => {
-    expect(waveRoll(1)).toBeCloseTo(waveRoll(0), 5);
+    expect(heading(1)).toBeCloseTo(heading(0), 5);
   });
 
-  // Face-on at the ends of each lobe and at its narrowest where the path is steepest, which is the moment the
-  // wrist turns. At its narrowest rather than edge-on, because edge-on is invisible
-  it('is at its narrowest where the figure crosses its own centre', () => {
-    const rolls = Array.from({ length: 480 }, (_, index) => waveRoll(index / 480));
-
-    expect(waveRoll(0.125)).toBeCloseTo(Math.min(...rolls), 5);
+  // The figure is wider than it is tall, so a heading computed without both would be wrong everywhere but the
+  // four points where the curve happens to run straight
+  it('follows the shape of the box it is drawn in, rather than assuming a square', () => {
+    expect(waveHeading(0.17, WIDTH_, HEIGHT_)).not.toBeCloseTo(waveHeading(0.17, WIDTH_, WIDTH_), 1);
   });
 });
 

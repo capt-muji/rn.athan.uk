@@ -13,20 +13,20 @@
  * Pure arithmetic over samples, so every rule here is testable without a device.
  */
 
-/** Gravity in m/s squared, which is what a still phone reads and what is subtracted to leave the shaking */
-const GRAVITY = 9.81;
-
 export const SHAKE = {
   /**
-   * How far from gravity a sample must sit to count as motion.
+   * How much the reading must VARY across the window to count as motion, in m/s squared.
    *
-   * A phone resting on a desk reads about 9.81 with a few hundredths of noise, and a hand holding one still
-   * reads a few tenths more. Measured against both: 1.4 clears a held phone and a tap on the table, and a
-   * figure of eight at the speed the hint draws exceeds it on most samples.
+   * Variation rather than distance from gravity, because Reanimated's ACCELEROMETER is a different sensor on
+   * each platform: Android gives `TYPE_LINEAR_ACCELERATION`, with gravity already removed, so a still phone
+   * reads about 0, while iOS passes `CMAccelerometerData` through, so a still phone reads about 9.81. Any
+   * threshold against a gravity constant is therefore correct on one platform and inverted on the other, which
+   * shipped once: a still 3T read 9.81 away from gravity and satisfied the whole gesture without being touched.
+   *
+   * A phone's own noise is a few hundredths either way. 1.4 clears a held phone and a tap on the table, and a
+   * figure of eight at the speed the hint draws exceeds it easily.
    */
   motionThreshold: 1.4,
-  /** How many of the last samples must show motion, as a share, so one jolt is not a wave */
-  motionShare: 0.35,
   /**
    * The window the share is measured over.
    *
@@ -47,22 +47,26 @@ export const SHAKE = {
   requiredMs: 500,
 } as const;
 
-/** A sample as the accelerometer delivers it, in g, with the moment it arrived */
+/** A sample as the accelerometer delivers it, in m/s squared, with the moment it arrived */
 export interface ShakeSample {
   magnitude: number;
   atMs: number;
 }
 
 /**
- * The magnitude of an accelerometer reading in m/s squared, with gravity removed.
+ * The strength of an accelerometer reading in m/s squared, gravity included.
  *
- * A worklet: the sensor is read on the UI thread, so the arithmetic that decides whether a sample counts as
- * motion runs there too rather than hopping to JS for every reading.
+ * Gravity is LEFT IN because the two platforms disagree about whether it is there at all, so removing it needs
+ * a constant that is right on one and wrong on the other. What the gate reads instead is how much this value
+ * MOVES, which is the same on both: gravity is a constant offset and a constant offset does not vary.
+ *
+ * A worklet: the sensor is read on the UI thread, so the arithmetic runs there rather than hopping to JS for
+ * every reading.
  */
 export const shakeMagnitude = (x: number, y: number, z: number): number => {
   'worklet';
 
-  return Math.abs(Math.sqrt(x * x + y * y + z * z) - GRAVITY);
+  return Math.sqrt(x * x + y * y + z * z);
 };
 
 /** The samples of the last `SHAKE.windowMs`, oldest first, with anything older dropped */
@@ -72,18 +76,19 @@ export const shakeWindow = (samples: ShakeSample[], nowMs: number): ShakeSample[
 /**
  * Whether the window shows the phone being waved right now.
  *
- * A SHARE of samples rather than a mean, because a mean is dragged under the threshold by the two moments every
- * figure of eight is nearly still: the ends of each lobe, where the wrist turns around.
+ * The SPREAD of the window, which is what separates a phone being moved from a phone being held: a still phone
+ * reads a near-constant value, whatever that value happens to be on the platform, and a waved one swings. A
+ * test against the readings themselves cannot do this, because the resting value differs per platform.
  *
- * The minimum count is what stops a single jolt reading as a wave: at one sample, any share test passes on the
- * first reading above the threshold, so a phone picked up off a table would satisfy the gesture instantly.
+ * The minimum count is what stops a single jolt reading as a wave: at one or two samples any spread test passes
+ * the instant the phone is picked up off a table.
  */
 export const isShaking = (window: ShakeSample[]): boolean => {
   if (window.length < SHAKE.minReadings) return false;
 
-  const moving = window.filter((sample) => sample.magnitude >= SHAKE.motionThreshold).length;
+  const magnitudes = window.map((sample) => sample.magnitude);
 
-  return moving / window.length >= SHAKE.motionShare;
+  return Math.max(...magnitudes) - Math.min(...magnitudes) >= SHAKE.motionThreshold;
 };
 
 /**

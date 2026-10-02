@@ -5,28 +5,51 @@
 
 import { isShaking, SHAKE, shakeMagnitude, shakeProgress, shakeWindow } from '@/shared/qiblaShake';
 
-/** A run of samples all at one magnitude, spaced the way the sensor delivers them */
+/** A run of samples all at one magnitude, which is what a phone nobody is touching delivers */
 const run = (magnitude: number, count: number, startMs = 0, stepMs = 20) =>
   Array.from({ length: count }, (_, index) => ({ magnitude, atMs: startMs + index * stepMs }));
 
+/**
+ * A run that SWINGS by `swing` either side of a resting value, which is what a waved phone delivers.
+ *
+ * `resting` is the platform's own still reading: about 0 on Android, where gravity is already removed, and
+ * about 9.81 on iOS, where it is not. Every wave here is run at both, because the gate must not care.
+ */
+const waving = (swing: number, count: number, resting = 0, startMs = 0, stepMs = 20) =>
+  Array.from({ length: count }, (_, index) => ({
+    magnitude: resting + swing * Math.sin((index / 4) * Math.PI),
+    atMs: startMs + index * stepMs,
+  }));
+
 describe('shakeMagnitude, what one accelerometer reading says about motion', () => {
-  // A phone lying on a desk reads gravity alone on one axis, which must come out as no motion at all
-  it('reads a phone at rest as still, whichever way up it is', () => {
-    expect(shakeMagnitude(0, 0, 9.81)).toBeCloseTo(0, 5);
-    expect(shakeMagnitude(9.81, 0, 0)).toBeCloseTo(0, 5);
-    expect(shakeMagnitude(0, -9.81, 0)).toBeCloseTo(0, 5);
+  it('is the strength of the reading, however it is spread across the axes', () => {
+    expect(shakeMagnitude(0, 0, 9.81)).toBeCloseTo(9.81, 5);
+    expect(shakeMagnitude(9.81, 0, 0)).toBeCloseTo(9.81, 5);
+    expect(shakeMagnitude(0, -9.81, 0)).toBeCloseTo(9.81, 5);
   });
 
-  // The owner's phone sits tilted on a desk with a ring attachment, so gravity is split across two axes
-  it('reads a tilted phone as still, because only the total matters', () => {
+  // The owner's phone sits tilted on a desk, so gravity is split across two axes rather than sitting on one
+  it('reads a tilted phone the same as a flat one, because only the total matters', () => {
     const tilted = 9.81 / Math.SQRT2;
 
-    expect(shakeMagnitude(tilted, tilted, 0)).toBeCloseTo(0, 5);
+    expect(shakeMagnitude(tilted, tilted, 0)).toBeCloseTo(9.81, 5);
   });
 
-  it('grows with how hard the phone is moved, in either direction', () => {
-    expect(shakeMagnitude(0, 0, 14)).toBeCloseTo(4.19, 2);
-    expect(shakeMagnitude(0, 0, 5)).toBeCloseTo(4.81, 2);
+  /**
+   * THE DEFECT THIS PINS, found on the owner's 3T with the phone untouched on a desk: Reanimated's
+   * ACCELEROMETER is a DIFFERENT SENSOR on each platform. Android gives `TYPE_LINEAR_ACCELERATION`, gravity
+   * already removed, so a still phone reads about 0; iOS passes `CMAccelerometerData` through, so a still
+   * phone reads about 9.81. Subtracting a gravity constant is therefore correct on iOS and inverted on
+   * Android, where it made a still phone read 9.81 of motion and satisfy the whole gesture by itself.
+   *
+   * So the magnitude keeps gravity, whether or not it was ever there, and the gate reads how much it VARIES.
+   */
+  it('leaves a still phone reading a CONSTANT on either platform, which is what the gate needs', () => {
+    const androidStill = [shakeMagnitude(0, 0, 0), shakeMagnitude(0.01, 0, 0.01)];
+    const iosStill = [shakeMagnitude(0, 0, 9.81), shakeMagnitude(0.01, 0, 9.8)];
+
+    expect(androidStill[1] - androidStill[0]).toBeLessThan(SHAKE.motionThreshold);
+    expect(iosStill[1] - iosStill[0]).toBeLessThan(SHAKE.motionThreshold);
   });
 });
 
@@ -56,49 +79,53 @@ describe('isShaking, whether the phone is being waved right now', () => {
     expect(isShaking([])).toBe(false);
   });
 
-  // The defect this whole module exists for: a phone sitting on a magnetic desk must never satisfy the gesture
-  it('says no for a phone lying still', () => {
-    expect(isShaking(run(0.02, 60))).toBe(false);
+  // THE DEFECT THIS WHOLE MODULE EXISTS FOR, and it shipped once: a phone sitting untouched on the owner's
+  // desk satisfied the entire gesture, because on Android a still reading is 0 and the old test measured
+  // distance from 9.81. Both platforms' resting values are run here, so neither can pass by sitting there
+  it.each([
+    ['Android, gravity already removed', 0],
+    ['iOS, gravity included', 9.81],
+  ])('says no for a phone lying still on %s', (_platform, resting) => {
+    expect(isShaking(run(resting, 60))).toBe(false);
   });
 
-  it('says no for a phone merely held in a hand, which is never perfectly still', () => {
-    expect(isShaking(run(0.4, 60))).toBe(false);
+  it.each([
+    ['Android', 0],
+    ['iOS', 9.81],
+  ])('says no for a phone merely held in a hand on %s, which is never perfectly still', (_platform, resting) => {
+    expect(isShaking(waving(0.2, 60, resting))).toBe(false);
   });
 
-  it('says yes for a phone being waved', () => {
-    expect(isShaking(run(4, 60))).toBe(true);
+  it.each([
+    ['Android', 0],
+    ['iOS', 9.81],
+  ])('says yes for a phone being waved on %s', (_platform, resting) => {
+    expect(isShaking(waving(4, 60, resting))).toBe(true);
   });
 
-  // A figure of eight is nearly still twice a lap, at the ends of each lobe, so a MEAN would be dragged under
-  // the threshold by exactly the gesture being asked for
+  // A figure of eight is nearly still twice a lap, at the ends of each lobe, where the wrist turns around
   it('says yes for a wave that pauses at the ends of each lobe', () => {
-    const lobe = [...run(5, 20), ...run(0.1, 20, 400)];
+    const lobe = [...waving(5, 12), ...run(0, 8, 240)];
 
     expect(isShaking(lobe)).toBe(true);
-  });
-
-  it('says no when only a moment of the window moved, so one jolt is not a wave', () => {
-    const jolt = [...run(6, 4), ...run(0.1, 56, 80)];
-
-    expect(isShaking(jolt)).toBe(false);
   });
 
   // LITERALS, not SHAKE.minReadings: reading the constant on both sides makes the test follow whatever the
   // constant says, so lowering it to 1 would pass and a single jolt would ship counting as a wave
   it('says no to a single hard jolt, which is a phone picked up rather than waved', () => {
-    expect(isShaking(run(8, 1))).toBe(false);
-    expect(isShaking(run(8, 3))).toBe(false);
+    expect(isShaking(waving(8, 1))).toBe(false);
+    expect(isShaking(waving(8, 3))).toBe(false);
   });
 
   it('says yes once a real wave has had time to show itself', () => {
-    expect(isShaking(run(4, 12))).toBe(true);
+    expect(isShaking(waving(4, 12))).toBe(true);
   });
 
-  it('decides on the share of the window that moved rather than its length', () => {
-    const short = run(4, SHAKE.minReadings);
-    const long = run(4, 60);
-
-    expect(isShaking(short)).toBe(isShaking(long));
+  // The whole point of measuring SPREAD: a reading's own size says nothing about motion, because the size of a
+  // resting reading is the platform's choice rather than the user's
+  it('cares how much the reading moves, never how large it is', () => {
+    expect(isShaking(run(100, 60))).toBe(false);
+    expect(isShaking(waving(4, 60))).toBe(true);
   });
 });
 
@@ -143,8 +170,9 @@ describe('the thresholds the gesture is judged by', () => {
     expect(SHAKE.motionThreshold).toBeLessThan(3);
   });
 
-  it('asks for a minority of the window to be moving, because a wave rests twice a lap', () => {
-    expect(SHAKE.motionShare).toBeGreaterThan(0);
-    expect(SHAKE.motionShare).toBeLessThan(0.5);
+  // Neither platform's resting reading may be mistaken for a wave, and they sit about 9.81 apart
+  it('judges motion by a spread small enough to be reached by a hand and larger than sensor noise', () => {
+    expect(isShaking(run(0, 60))).toBe(false);
+    expect(isShaking(run(9.81, 60))).toBe(false);
   });
 });

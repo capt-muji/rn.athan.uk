@@ -10,9 +10,6 @@
 
 const TURN = Math.PI * 2;
 
-/** The narrowest the phone is ever drawn, as a share of its width: at 0 it disappears, which it did */
-const MIN_ROLL = 0.28;
-
 /** Two decimal places, matching the rounding the compass face's own paths use */
 const round = (value: number): string => value.toFixed(2);
 
@@ -27,13 +24,6 @@ export const WAVE = {
   segments: 72,
   /** The phone the user is being asked to move, drawn to the proportions of a real one */
   phone: { width: 0.088, height: 0.164, radius: 0.018, screenInset: 0.14 },
-  /**
-   * How far the phone leans into its turn, in degrees either side of upright.
-   *
-   * The lean follows the curve's own direction, so the figure teaches a WRIST that rolls rather than a hand
-   * sliding flat: a phone held rigid through a figure of eight sweeps one plane and calibrates nothing.
-   */
-  lean: 30,
   /** The glowing tail behind the phone, as a share of one loop and of the figure's own stroke */
   trail: { span: 0.3, samples: 24, core: 0.009, halo: 0.03 },
 } as const;
@@ -59,36 +49,27 @@ export const wavePoint = (progress: number, width: number, height: number): Wave
 };
 
 /**
- * How far the phone leans at a progress of 0 to 1, in degrees.
+ * Which way the phone points at a progress of 0 to 1, in degrees, with its top leading.
  *
- * Taken from the curve's own tangent rather than from a second invented motion, so the lean cannot drift out of
- * step with the path however the figure is reshaped. Scaled to `WAVE.lean` at its steepest.
+ * The phone FACES ALONG THE CURVE, like a car on a road, which is what keeps the trail leaving its bottom edge
+ * the whole way round: the direction the tail runs back along and the direction the phone's foot points are the
+ * same direction by construction, so they cannot drift apart however the figure is reshaped.
  *
- * A worklet, for the same reason as `wavePoint`.
+ * It turns only in the plane of the screen. There is no roll out of the screen and no scaling: the phone keeps
+ * its dimensions all the way round, because a drawing that narrows reads as a phone turning edge-on and at the
+ * extreme it vanishes, which it did.
+ *
+ * Taken from the curve's own derivative, so the heading is the tangent rather than a second invented motion.
+ * The width and height are needed because the figure is wider than it is tall, which tilts every tangent on it.
  */
-export const waveLean = (progress: number): number => {
+export const waveHeading = (progress: number, width: number, height: number): number => {
   'worklet';
   const angle = progress * TURN;
-  // d/dt of the lemniscate: the x term leads the y term by a quarter turn, and their ratio is the tangent's slope
-  const tangent = Math.atan2(2 * Math.cos(2 * angle), Math.cos(angle));
+  const dx = (width / 2) * Math.cos(angle);
+  const dy = height * Math.cos(2 * angle);
 
-  return Math.sin(tangent) * WAVE.lean;
-};
-
-/**
- * How far the phone is turned about its own long axis at a progress of 0 to 1, as a horizontal scale.
- *
- * The phone reads as banking through each turn rather than sliding flat, because a hand that never rolls sweeps
- * one plane and calibrates nothing. A horizontal scale is how a flat drawing shows a rotation out of the screen.
- *
- * NEVER reaches zero, and that is the whole point: the first version ran the raw cosine through 0 and -1, so the
- * phone vanished entirely at each turn and then drew itself mirrored. `MIN_ROLL` floors it at a narrow but
- * visible sliver, and the absolute value keeps the face toward the user instead of flipping it.
- */
-export const waveRoll = (progress: number): number => {
-  'worklet';
-
-  return MIN_ROLL + (1 - MIN_ROLL) * Math.abs(Math.cos(progress * TURN * 2));
+  // The phone is drawn pointing up, so its top is turned onto the travel direction: atan2(dx, -dy), not (dy, dx)
+  return (Math.atan2(dx, -dy) * 180) / Math.PI;
 };
 
 /**
