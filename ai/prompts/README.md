@@ -43,6 +43,23 @@ rather than which model".)
   revisited at session 16, the SDK 58 stable re-pin (planner, 2026-09-18; findings in
   `ai/features/agent-tooling/FINDINGS.md`).
 
+## Session 48 shipped, 2026-10-02: the compass waits for the heading to settle
+
+**DONE 2026-10-02 (1.29.201 to 1.29.202), audited.** The heading settles before it is drawn, and the half of
+the owner's symptom that is not fixable is measured and recorded rather than left for another session.
+
+The compass now draws nothing, and fires no haptic, until the heading stream's trailing 3000ms window holds
+8 readings spanning the period whose two halves agree within 1.5 degrees. Measured, that takes the error at
+the first reading from about 30 degrees to 0.71.
+
+**What the owner judges next, on his own phones:** open the sheet, shake, close, reopen, lay both phones flat,
+and see whether the restarts now agree. The sheet stays blank for about 3 seconds on opening, which is the
+trade: a short wait instead of a confident wrong arrow, and a blank face rather than a lie when the stream
+never converges.
+
+**What it does not fix, and this is in the records rather than implied:** the residual error from iron in his
+house, which no gate reading the heading stream can see, and the heading SOURCE. Row 49 carries those.
+
 ## Decided by the owner, 2026-10-02, after reading session 48's research: the gate ships first, the native module is its own session
 
 The owner read the verdicts on the four heading options he had named and chose the order the work runs in.
