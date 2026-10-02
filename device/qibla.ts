@@ -1,4 +1,5 @@
 import * as Location from 'expo-location';
+import { Alert, Linking } from 'react-native';
 
 import type { Coordinates } from '@/shared/qiblaGeometry';
 import { type PlaceParts, placeName } from '@/shared/qiblaPlace';
@@ -22,6 +23,24 @@ export const requestQiblaPermission = async (): Promise<boolean> => {
   const { granted } = await Location.requestForegroundPermissionsAsync();
 
   return granted;
+};
+
+/**
+ * Why the qibla cannot be shown, and the one action that fixes it.
+ *
+ * Shown INSTEAD of the sheet rather than inside it: a compass with no position is not a degraded compass, it is
+ * nothing at all, so opening one would be showing an instrument that cannot work. Settings is offered because
+ * once the permission is refused the system dialog never appears again, leaving no other route back.
+ */
+export const showQiblaLocationDialog = (): void => {
+  Alert.alert(
+    'Enable Location',
+    'The qibla is worked out from where you are, so it needs location access. Would you like to enable it in settings?',
+    [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Open Settings', onPress: () => Linking.openSettings() },
+    ]
+  );
 };
 
 /**

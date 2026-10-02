@@ -3,8 +3,15 @@
  */
 
 import * as Location from 'expo-location';
+import { Alert, Linking } from 'react-native';
 
-import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
+import {
+  readPlaceName,
+  readPosition,
+  requestQiblaPermission,
+  showQiblaLocationDialog,
+  watchHeading,
+} from '@/device/qibla';
 
 // The platform this file exists to wrap, so the suite owns what it answers
 jest.mock('expo-location', () => ({
@@ -19,11 +26,45 @@ jest.mock('expo-location', () => ({
 
 const mockLocation = Location as jest.Mocked<typeof Location>;
 
+/** The mock's own button-pressing helper, which React Native's types know nothing about */
+const alertDialog = Alert as unknown as { alert: jest.Mock; _pressButton: (text: string) => Promise<void> };
+
 const coordsOf = (latitude: number, longitude: number) =>
   ({ coords: { latitude, longitude } }) as Location.LocationObject;
 
 // This project does not clear mocks between tests, and a call count is what several of these assert on
 beforeEach(() => jest.clearAllMocks());
+
+// A compass with no position is not a degraded compass, it is nothing at all, so the refusal is explained
+// INSTEAD of the sheet rather than inside it
+describe('the dialog shown when location is refused', () => {
+  it('says why the qibla needs the permission, rather than only that it does', () => {
+    showQiblaLocationDialog();
+
+    expect(Alert.alert).toHaveBeenCalledWith(
+      'Enable Location',
+      expect.stringContaining('worked out from where you are'),
+      expect.any(Array)
+    );
+  });
+
+  // Once refused, the system dialog never appears again, so the app's own settings screen is the only route back
+  it('opens the settings screen, which is the only route left after a refusal', async () => {
+    showQiblaLocationDialog();
+
+    await alertDialog._pressButton('Open Settings');
+
+    expect(Linking.openSettings).toHaveBeenCalledTimes(1);
+  });
+
+  it('lets the user walk away without being sent anywhere', async () => {
+    showQiblaLocationDialog();
+
+    await alertDialog._pressButton('Cancel');
+
+    expect(Linking.openSettings).not.toHaveBeenCalled();
+  });
+});
 
 describe('asking for permission', () => {
   /** What the platform reports when nothing has been granted yet and the user can still be asked */
