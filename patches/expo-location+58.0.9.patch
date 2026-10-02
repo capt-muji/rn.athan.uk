@@ -1,3 +1,52 @@
+diff --git a/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.kt b/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.kt
+index 8088ec6..b043ed7 100644
+--- a/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.kt
++++ b/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.kt
+@@ -72,7 +72,6 @@ import java.util.Locale
+ import kotlin.coroutines.resume
+ import kotlin.coroutines.resumeWithException
+ import kotlin.coroutines.suspendCoroutine
+-import kotlin.math.abs
+ 
+ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+   private var mGeofield: GeomagneticField? = null
+@@ -634,12 +633,12 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+     mSensorManager.registerListener(
+       this,
+       mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
+-      SensorManager.SENSOR_DELAY_NORMAL
++      SensorManager.SENSOR_DELAY_GAME
+     )
+     mSensorManager.registerListener(
+       this,
+       mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+-      SensorManager.SENSOR_DELAY_NORMAL
++      SensorManager.SENSOR_DELAY_GAME
+     )
+   }
+ 
+@@ -651,9 +650,10 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+       val orientation = FloatArray(3)
+       SensorManager.getOrientation(rotationMatrix, orientation)
+ 
+-      // Make sure Delta is big enough to warrant an update
+-      // Currently: 50ms and ~2 degrees of change (android has a lot of useless updates block up the sending)
+-      if (abs(orientation[0] - mLastAzimuth) > DEGREE_DELTA && System.currentTimeMillis() - mLastUpdate > TIME_DELTA) {
++      // Rate-limited only. The upstream 2-degree gate also starved a compass: measured on a OnePlus 3T it
++      // emitted 0.83Hz while a user turned at 2 degrees a second, which is exactly the careful alignment a
++      // qibla compass asks for, and it floored the reported heading's own resolution at 2 degrees.
++      if (System.currentTimeMillis() - mLastUpdate > TIME_DELTA) {
+         mLastAzimuth = orientation[0]
+         mLastUpdate = System.currentTimeMillis()
+         val magneticNorth: Float = calcMagNorth(orientation[0])
+@@ -1091,7 +1091,6 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+     const val GEOFENCING_EVENT_ENTER = 1
+     const val GEOFENCING_EVENT_EXIT = 2
+ 
+-    const val DEGREE_DELTA = 0.0355 // in radians, about 2 degrees
+     const val TIME_DELTA = 50f // in milliseconds
+   }
+ 
 diff --git a/node_modules/expo-location/expo-module.config.json b/node_modules/expo-location/expo-module.config.json
 index c58cd04..642913d 100644
 --- a/node_modules/expo-location/expo-module.config.json
@@ -27,3 +76,17 @@ index c58cd04..642913d 100644
 +    ]
    }
  }
+diff --git a/node_modules/expo-location/ios/Providers/DeviceHeadingStreamer.swift b/node_modules/expo-location/ios/Providers/DeviceHeadingStreamer.swift
+index 802bf57..313224f 100644
+--- a/node_modules/expo-location/ios/Providers/DeviceHeadingStreamer.swift
++++ b/node_modules/expo-location/ios/Providers/DeviceHeadingStreamer.swift
+@@ -25,6 +25,9 @@ internal class DeviceHeadingStreamer: BaseStreamer {
+     }
+     let stream = DeviceHeadingStream { continuation in
+       self.continuation = continuation
++      // CoreLocation fuses heading at about 50Hz and its default 1-degree filter rejected every reading of a
++      // stationary phone, measured on an iPhone XS, so a compass asking for careful alignment never updates
++      manager.headingFilter = kCLHeadingFilterNone
+       manager.startUpdatingHeading()
+     }
+     headingStream = stream
