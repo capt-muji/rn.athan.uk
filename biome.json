@@ -14,7 +14,8 @@
       "!**/ai/features/moonsighting",
       "!**/ai/features/global-prayer-times/data",
       "!**/ai/plans/41-qibla-map/proof",
-      "!**/ai/plans/48-qibla-heading-accuracy/scripts/probes"
+      "!**/ai/plans/48-qibla-heading-accuracy/scripts/probes",
+      "!**/ai/plans/50-which-patch-fixed-it/scripts/probes"
     ]
   },
   "formatter": {
