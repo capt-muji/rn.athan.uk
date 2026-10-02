@@ -233,6 +233,10 @@ experiments are now worse than the baseline, and each for its own reason.
 Both gates discard readings before the app sees them, B at 2 degrees on Android and D at 1 degree on
 iOS. Modelled on CoreLocation's ~50 Hz fusion on the XS:
 
+**Modelled, not measured on the phone:** no `dumpsys` equivalent was captured on iOS, so unlike every
+other rate figure in this row these come from the same model as the Android probes rather than from the
+device. Stated plainly because the distinction matters.
+
 | Motion | Shipped, filter NONE | D, 1-degree filter |
 | --- | --- | --- |
 | Phone held still | 50.0/s (100%) | **8.5/s (17%)** |
