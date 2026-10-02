@@ -14,16 +14,16 @@ import { SHAKE } from '@/shared/qiblaShake';
 let sensor: { value: { x: number; y: number; z: number; interfaceOrientation: number } } | null = null;
 
 const Probe = ({ active }: { active: boolean }) => {
-  const { progress, isWaving } = useQiblaShake(active);
+  const { progress, isWaving, hasWaved } = useQiblaShake(active);
 
-  return <Text>{`${progress.toFixed(3)}|${isWaving}`}</Text>;
+  return <Text>{`${progress.toFixed(3)}|${isWaving}|${hasWaved}`}</Text>;
 };
 
-/** What the probe currently reports, as the hook's two values */
+/** What the probe currently reports, as the hook's three values */
 const reported = () => {
-  const [progress, waving] = screen.getByText(/\|/).props.children.split('|');
+  const [progress, waving, waved] = screen.getByText(/\|/).props.children.split('|');
 
-  return { progress: Number(progress), isWaving: waving === 'true' };
+  return { progress: Number(progress), isWaving: waving === 'true', hasWaved: waved === 'true' };
 };
 
 /**
@@ -66,7 +66,7 @@ describe('the wave the hint asks for', () => {
   it('reports nothing done before any reading arrives', async () => {
     await render(<Probe active />);
 
-    expect(reported()).toEqual({ progress: 0, isWaving: false });
+    expect(reported()).toEqual({ progress: 0, isWaving: false, hasWaved: false });
   });
 
   // The owner's own phone sits tilted on a magnetic desk: it must never satisfy the gesture by sitting there
@@ -75,7 +75,7 @@ describe('the wave the hint asks for', () => {
 
     await deliver(rerender, 0.02, 60);
 
-    expect(reported()).toEqual({ progress: 0, isWaving: false });
+    expect(reported()).toEqual({ progress: 0, isWaving: false, hasWaved: false });
   });
 
   it('credits a phone being waved', async () => {
@@ -131,7 +131,49 @@ describe('the wave the hint asks for', () => {
       rerender(<Probe active={false} />);
     });
 
-    expect(reported()).toEqual({ progress: 0, isWaving: false });
+    expect(reported()).toEqual({ progress: 0, isWaving: false, hasWaved: false });
+  });
+
+  // THE GATE ITSELF: the compass does not open until this turns true, so a phone that was never waved must
+  // never report it, however long the sheet is left open
+  it('refuses the gesture for a phone that is only sitting there', async () => {
+    const { rerender } = await render(<Probe active />);
+
+    await deliver(rerender, 0.02, Math.ceil(SHAKE.requiredMs / 20) * 4);
+
+    expect(reported().hasWaved).toBe(false);
+  });
+
+  it('opens the gate once the whole wave has been performed', async () => {
+    const { rerender } = await render(<Probe active />);
+
+    await deliver(rerender, 5, Math.ceil(SHAKE.requiredMs / 20) + 10);
+
+    expect(reported().hasWaved).toBe(true);
+  });
+
+  // The gesture is a one-time entry condition: re-testing it would take the compass away the moment the user
+  // held the phone still to READ it, which is exactly when they need it
+  it('keeps the gate open once it is open, however still the phone goes', async () => {
+    const { rerender } = await render(<Probe active />);
+    await deliver(rerender, 5, Math.ceil(SHAKE.requiredMs / 20) + 10);
+
+    await deliver(rerender, 0.02, 200);
+
+    expect(reported().isWaving).toBe(false);
+    expect(reported().hasWaved).toBe(true);
+  });
+
+  // A fresh wave is asked for on every open, because the calibration it performs goes stale with the room
+  it('closes the gate again when the hint goes away, so the next open earns its own wave', async () => {
+    const { rerender } = await render(<Probe active />);
+    await deliver(rerender, 5, Math.ceil(SHAKE.requiredMs / 20) + 10);
+
+    await act(async () => {
+      rerender(<Probe active={false} />);
+    });
+
+    expect(reported().hasWaved).toBe(false);
   });
 
   it('counts nothing while it is inactive, however hard the phone is moved', async () => {
@@ -145,6 +187,6 @@ describe('the wave the hint asks for', () => {
       });
     }
 
-    expect(reported()).toEqual({ progress: 0, isWaving: false });
+    expect(reported()).toEqual({ progress: 0, isWaving: false, hasWaved: false });
   });
 });

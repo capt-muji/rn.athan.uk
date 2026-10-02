@@ -10,30 +10,11 @@
 
 const TURN = Math.PI * 2;
 
+/** The narrowest the phone is ever drawn, as a share of its width: at 0 it disappears, which it did */
+const MIN_ROLL = 0.28;
+
 /** Two decimal places, matching the rounding the compass face's own paths use */
 const round = (value: number): string => value.toFixed(2);
-
-type Point = [x: number, y: number];
-
-/**
- * A list of points as an SVG `points` attribute.
- *
- * The loop is written out rather than `points.map(point)`, because passing a worklet BY REFERENCE to
- * `map` does not survive the hop to the UI runtime: it arrives undefined and the sheet throws
- * "undefined is not a function". A worklet may call another worklet by name; it may not hand one to a
- * higher-order function.
- */
-const polygon = (...points: Point[]): string => {
-  'worklet';
-  let out = '';
-
-  for (let index = 0; index < points.length; index++) {
-    const [x, y] = points[index];
-    out += `${index === 0 ? '' : ' '}${x.toFixed(2)},${y.toFixed(2)}`;
-  }
-
-  return out;
-};
 
 /** Every proportion and count the figure is built from, as a share of the box it is drawn in */
 export const WAVE = {
@@ -45,7 +26,7 @@ export const WAVE = {
   /** How many straight segments stand in for the curve */
   segments: 72,
   /** The phone the user is being asked to move, drawn to the proportions of a real one */
-  phone: { width: 0.105, height: 0.188, radius: 0.02, screenInset: 0.13 },
+  phone: { width: 0.088, height: 0.164, radius: 0.018, screenInset: 0.14 },
   /**
    * How far the phone leans into its turn, in degrees either side of upright.
    *
@@ -55,13 +36,6 @@ export const WAVE = {
   lean: 30,
   /** The glowing tail behind the phone, as a share of one loop and of the figure's own stroke */
   trail: { span: 0.3, samples: 24, core: 0.009, halo: 0.03 },
-  /**
-   * The depth the phone is drawn with, as a share of its own width.
-   *
-   * The phone is a SOLID seen obliquely rather than a flat card: a card scaled to edge-on vanishes, which is
-   * exactly what the owner saw. Drawn the way the Kaaba is, with a front, a receding flank and a roof.
-   */
-  slab: { depth: 0.46, rake: 0.42 },
 } as const;
 
 export interface WavePoint {
@@ -102,16 +76,19 @@ export const waveLean = (progress: number): number => {
 };
 
 /**
- * How far the phone has turned about its own long axis at a progress of 0 to 1, as a share of a quarter turn.
+ * How far the phone is turned about its own long axis at a progress of 0 to 1, as a horizontal scale.
  *
- * NEVER reaches a quarter turn, which is the whole point: a phone turned fully edge-on is a line, and the owner
- * saw exactly that. `WAVE.slab.depth` bounds it so the front face is always the face the user is looking at and
- * the trail always leaves the phone's foot.
+ * The phone reads as banking through each turn rather than sliding flat, because a hand that never rolls sweeps
+ * one plane and calibrates nothing. A horizontal scale is how a flat drawing shows a rotation out of the screen.
+ *
+ * NEVER reaches zero, and that is the whole point: the first version ran the raw cosine through 0 and -1, so the
+ * phone vanished entirely at each turn and then drew itself mirrored. `MIN_ROLL` floors it at a narrow but
+ * visible sliver, and the absolute value keeps the face toward the user instead of flipping it.
  */
-export const waveYaw = (progress: number): number => {
+export const waveRoll = (progress: number): number => {
   'worklet';
 
-  return Math.cos(progress * TURN * 2);
+  return MIN_ROLL + (1 - MIN_ROLL) * Math.abs(Math.cos(progress * TURN * 2));
 };
 
 /**
@@ -146,70 +123,21 @@ export const waveTrail = (progress: number, width: number, height: number): stri
   return path;
 };
 
-export interface PhoneSlab {
-  front: string;
-  flank: string;
-  roof: string;
-  screen: string;
-  /** How far the drawn solid reaches below its own centre, which is where the trail must leave it */
-  foot: number;
-}
+/** The phone's body, as a rounded rectangle centred on its own origin, so a transform alone places it */
+export const phoneBody = (size: number): { width: number; height: number; radius: number } => ({
+  width: size * WAVE.phone.width,
+  height: size * WAVE.phone.height,
+  radius: size * WAVE.phone.radius,
+});
 
-/**
- * The phone as a solid seen obliquely, drawn the way the Kaaba is: a front, a receding flank and a roof.
- *
- * `yaw` of 1 shows the flank on the right, -1 on the left, 0 straight on. The flank's width is a share of the
- * phone's own width rather than a rotation, so the front face never narrows to nothing however the phone turns:
- * a flat card scaled to edge-on disappears, which is the defect this replaces.
- *
- * Drawn about the phone's own centre, so one transform places it on the curve.
- *
- * A worklet, and every helper it calls is one too: it is rebuilt on the UI thread every frame, and a plain JS
- * function reached from there throws "Tried to synchronously call a Remote Function" and blanks the screen.
- */
-export const phoneSlab = (size: number, yaw: number): PhoneSlab => {
-  'worklet';
+/** The lit screen inside that body, inset on every side so the phone reads as a device rather than a slab */
+export const phoneScreen = (size: number): { width: number; height: number; radius: number } => {
   const body = phoneBody(size);
-  const depth = body.width * WAVE.slab.depth * yaw;
-  const rise = Math.abs(depth) * WAVE.slab.rake;
-  const halfWidth = body.width / 2;
-  const halfHeight = body.height / 2;
   const inset = body.width * WAVE.phone.screenInset;
 
-  const frontTopLeft: Point = [-halfWidth, -halfHeight];
-  const frontTopRight: Point = [halfWidth, -halfHeight];
-  const frontBottomRight: Point = [halfWidth, halfHeight];
-  const frontBottomLeft: Point = [-halfWidth, halfHeight];
-  // The flank recedes from whichever edge the yaw turns away from, and climbs as it goes
-  const edgeX = depth >= 0 ? halfWidth : -halfWidth;
-  const backTop: Point = [edgeX + depth, -halfHeight - rise];
-  const backBottom: Point = [edgeX + depth, halfHeight - rise];
-
   return {
-    front: polygon(frontTopLeft, frontTopRight, frontBottomRight, frontBottomLeft),
-    flank: polygon([edgeX, -halfHeight], backTop, backBottom, [edgeX, halfHeight]),
-    roof: polygon(frontTopLeft, frontTopRight, backTop, [frontTopLeft[0] + depth, -halfHeight - rise]),
-    screen: polygon(
-      [-halfWidth + inset, -halfHeight + inset],
-      [halfWidth - inset, -halfHeight + inset],
-      [halfWidth - inset, halfHeight - inset],
-      [-halfWidth + inset, halfHeight - inset]
-    ),
-    foot: halfHeight,
-  };
-};
-
-/**
- * The phone's body, as a rounded rectangle centred on its own origin, so a transform alone places it.
- *
- * A worklet, because `phoneSlab` is rebuilt on the UI thread every frame and calls this.
- */
-export const phoneBody = (size: number): { width: number; height: number; radius: number } => {
-  'worklet';
-
-  return {
-    width: size * WAVE.phone.width,
-    height: size * WAVE.phone.height,
-    radius: size * WAVE.phone.radius,
+    width: body.width - inset * 2,
+    height: body.height - inset * 2,
+    radius: Math.max(body.radius - inset, 0),
   };
 };

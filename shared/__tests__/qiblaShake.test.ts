@@ -32,13 +32,14 @@ describe('shakeMagnitude, what one accelerometer reading says about motion', () 
 
 describe('shakeWindow, the samples a decision is made from', () => {
   it('keeps the samples inside its own span and drops what is older', () => {
+    const nowMs = 2000;
     const samples = [
-      { magnitude: 3, atMs: 0 },
-      { magnitude: 3, atMs: 1000 },
-      { magnitude: 3, atMs: 2000 },
+      { magnitude: 3, atMs: nowMs - SHAKE.windowMs * 2 },
+      { magnitude: 3, atMs: nowMs - SHAKE.windowMs / 2 },
+      { magnitude: 3, atMs: nowMs },
     ];
 
-    expect(shakeWindow(samples, 2000)).toHaveLength(2);
+    expect(shakeWindow(samples, nowMs)).toHaveLength(2);
   });
 
   it('keeps a sample exactly on its own boundary, so the window never flickers', () => {
@@ -121,9 +122,20 @@ describe('shakeProgress, how far through the asked-for wave the user is', () => 
 });
 
 describe('the thresholds the gesture is judged by', () => {
-  // The owner's own number, counted on his phone: "Have the user shake it for 3 seconds. Maximum 3 seconds."
-  it('asks for three seconds of waving', () => {
-    expect(SHAKE.requiredMs).toBe(3000);
+  // The owner's own number: 🐋  "let's do it for 500 milliseconds, so half a second... just so it can be much quicker"
+  it('asks for half a second of waving', () => {
+    expect(SHAKE.requiredMs).toBe(500);
+  });
+
+  // A window outliving the requirement would keep crediting motion from samples the user has stopped producing,
+  // so a wave shorter than the gate asks for could finish it on stale readings alone
+  it('measures over a window shorter than the wave it asks for', () => {
+    expect(SHAKE.windowMs).toBeLessThan(SHAKE.requiredMs);
+  });
+
+  // The accelerometer is read at 20ms, so the window must still hold enough samples to clear its own minimum
+  it('holds enough readings in its window to make a decision at all', () => {
+    expect(SHAKE.windowMs / 20).toBeGreaterThanOrEqual(SHAKE.minReadings);
   });
 
   it('sets its motion threshold above a held phone and below a wave', () => {
