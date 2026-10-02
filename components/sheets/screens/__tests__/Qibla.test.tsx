@@ -769,7 +769,7 @@ describe('the settling gate', () => {
 
 describe('the wait before the compass can be drawn', () => {
   /** The travelling dot, which the figure hides from the screen reader, so only a hidden query finds it */
-  const waveDot = () => screen.queryByTestId('qibla-wave-dot', { includeHiddenElements: true });
+  const waveDot = () => screen.queryByTestId('qibla-wave-phone', { includeHiddenElements: true });
 
   it('tells the user what to do about it, rather than leaving the stage blank', async () => {
     await openSheet();
