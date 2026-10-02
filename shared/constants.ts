@@ -744,8 +744,8 @@ export const COLORS = {
     primary: 'rgba(165, 180, 252, 1)',
     /** Icon wrapper background */
     background: 'rgba(99, 102, 241, 0.2)',
-    /** Muted icon color */
-    muted: 'rgba(177, 143, 255, 0.46)',
+    /** The settings glyph, bright enough to read against its own circle in direct sunlight */
+    settings: 'rgba(222, 208, 255, 0.95)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -815,8 +815,10 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   /** Settings button (transparent style) */
   settingsButton: {
-    background: 'rgba(105, 65, 198, 0.29)',
-    border: 'rgba(91, 51, 184, 0.46)',
+    // Opaque enough to survive direct sunlight: at 0.29 the circle vanished against the gradient outdoors and
+    // users with poor eyesight could not find the control at all
+    background: 'rgba(105, 65, 198, 0.72)',
+    border: 'rgba(140, 108, 230, 0.9)',
   },
 
   /** Countdown bar */

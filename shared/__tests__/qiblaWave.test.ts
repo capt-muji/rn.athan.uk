@@ -3,7 +3,16 @@
  * follows the same arithmetic the travelling phone does
  */
 
-import { phoneBody, phoneScreen, WAVE, waveHeading, wavePath, wavePoint, waveTrail } from '@/shared/qiblaWave';
+import {
+  phoneBody,
+  phoneMarks,
+  phoneScreen,
+  WAVE,
+  waveHeading,
+  wavePath,
+  wavePoint,
+  waveTrail,
+} from '@/shared/qiblaWave';
 
 /** The size the hint is drawn at on a phone, so a px figure here means a px the user sees */
 const WIDTH = 160;
@@ -168,6 +177,39 @@ describe('waveHeading, which way the phone points as it travels', () => {
   // four points where the curve happens to run straight
   it('follows the shape of the box it is drawn in, rather than assuming a square', () => {
     expect(waveHeading(0.17, WIDTH_, HEIGHT_)).not.toBeCloseTo(waveHeading(0.17, WIDTH_, WIDTH_), 1);
+  });
+});
+
+describe('the marks that name the shape as a phone', () => {
+  // The owner's own words about the version without them: "I can't really tell it's a phone. It looks like a
+  // car." A bare rounded rectangle is a card; the camera and the button are what make it a device
+  it('leaves room above and below the screen for both marks to sit in', () => {
+    const body = phoneBody(300);
+    const screen = phoneScreen(300);
+    const marks = phoneMarks(300);
+
+    expect(body.height - screen.height).toBeGreaterThan(marks.camera * 2);
+  });
+
+  it('draws both marks large enough to be seen at the size the hint is drawn', () => {
+    const body = phoneBody(300);
+    const marks = phoneMarks(300);
+
+    expect(marks.camera).toBeGreaterThan(body.width * 0.1);
+    expect(marks.button).toBeGreaterThan(marks.camera);
+  });
+
+  it('keeps both marks inside the phone they are drawn on', () => {
+    const body = phoneBody(300);
+    const marks = phoneMarks(300);
+
+    expect(marks.button).toBeLessThan(body.width);
+    expect(marks.camera).toBeLessThan(body.width);
+  });
+
+  it('scales with the stage, so no mark is a fixed size on a larger screen', () => {
+    expect(phoneMarks(600).camera).toBeCloseTo(phoneMarks(300).camera * 2, 5);
+    expect(phoneMarks(600).button).toBeCloseTo(phoneMarks(300).button * 2, 5);
   });
 });
 
