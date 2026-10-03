@@ -169,6 +169,15 @@ broken sheet. Render wide grids at the right aspect or check the output before s
 
 ## 7. OPEN QUESTIONS for the next session
 
+**ALL FOUR ARE NOW ANSWERED by session 52 (1.29.236 to 1.29.239).** Read
+`ai/plans/52-qibla-wait/MEASURED.md` and `RESEARCH.md` for the measurements. In short: 7.1's window stays at
+3000ms because it is the shortest value whose p95 error fits the 4-degree alignment window, and the row's
+premise that 50Hz sets the wait is refuted by the patch's own surviving `TIME_DELTA = 50f`; 7.2 shipped, with a
+warm reopen verified against the remembered heading rather than assumed from elapsed time, and the owner ruled
+no animation and no haptic on an instant open; 7.3 shipped as *Hold flat and turn slowly*, his choice from five
+candidates; and 7.4 was already confirmed by his own verdict on 1.29.233. The sections below are kept as the
+record of what was open and why.
+
 ### 7.1 Is the settling gate still needed? (the owner's question, unanswered)
 
 He asked directly: *"Are you sure we still need the settling gate? Does it cause jitters? Is it for

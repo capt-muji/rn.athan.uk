@@ -6717,3 +6717,75 @@ restore after each one; it caught a real miss after experiment D, whose iOS buil
 than through the build script, and a final `diff -r` against pristine upstream confirmed `node_modules`
 differs only by the intended patch. **`npx patch-package` alone cannot repair an edited tree**, measured:
 the restore replaces the package from yarn's cache first.
+
+### Session 52: the qibla wait, measured rather than shortened
+
+**The row asked whether the settling gate's 3 seconds could shrink, and the answer is no, with the arithmetic
+to show why.** `SETTLE_WINDOW_MS` is not a timer: the gate opens once the heading's drift across a trailing
+3000ms window is under 1.5 degrees, which on a cold fusion takes 9.7 seconds, and that is the wait the owner was
+actually asking about. **Shrinking it costs accuracy linearly and 3000ms is the shortest value whose p95 error
+fits `ALIGNMENT_ENTER_DEGREES = 4`** (2000ms gives 5.51 degrees, 2500ms gives 4.02, 3000ms gives 3.02), so the
+constant is now justified by the app's own alignment window rather than by preference. **The row's premise that
+50Hz sets the wait is refuted by the patch's own code**: `patches/expo-location+58.0.9.patch` leaves
+`TIME_DELTA = 50f` in place, so the gate receives ~14Hz at any sensor rate, and dropping to 25Hz changes the
+wait by 1.4% while costing the smoothness row 50 measured on the device.
+
+**THE OWNER CAUGHT TWO WRONG CLAIMS AND WAS RIGHT BOTH TIMES, which is the most valuable thing in this row.**
+First, this session told him waving the phone during the animation costs a 4x worse reading, repeating row 50's
+own figure. He answered that he shakes his phone on every test and feels no penalty. He is right: that figure
+measures the error at the instant the gate OPENS, and the gate LATCHES, so the fusion keeps converging while the
+user turns toward the qibla. Simulating the whole visit including the turn, **the true error at the moment the
+app fires the alignment haptic is 0.70 degrees for a still user and 0.73 for a waving one, with zero false taps
+in 300 runs each.** The durable rule: the error at the instant a gate opens is not a user-facing quantity, and
+the user-facing one is the error at the moment the app makes a claim. Row 50's figure carries the same defect.
+**Second, he then asked what the point of the animation is if the wave costs nothing, and that exposed a hole in
+the probe itself: "costs nothing" is not "does nothing".** The probe models a converging FUSION and contains no
+hard iron at all, so it could never have shown the wave's benefit; the wave's job is hard iron, which is a
+different mechanism. Both claims are true at once and neither is evidence about the other.
+
+**THE WAVE HINT IS KEPT ON EXTERNAL EVIDENCE rather than assumption, answering his question about replacing it
+with a flat hint.** Running NXP AN4246's own hard-iron least-squares fit per gesture, at London's field with a
+9.9 uT offset: a flat still phone leaves **497.6%** of the offset unremoved and a flat phone turning on the spot
+lies on a CIRCLE, which does not determine a sphere's centre, while the figure of eight leaves 1.3% and a
+wrist-rolled figure of eight 1.3%. AN4246 section 6 states the requirement outright, that measurements must be
+"taken at significantly different roll and pitch angles". The trap in that table is "tilt up and down only",
+which feels like diligent calibration and costs **176.90 degrees** of heading error. **Both platforms were
+compared from their own headers on this machine** (iPhoneOS27.0.sdk, android-35): iOS reports `headingAccuracy`
+in degrees with a negative value meaning invalid, and has an OS-drawn calibration alert behind
+`locationManagerShouldDisplayHeadingCalibration:` that this app's users have never seen; Android offers only a 0
+to 3 accuracy band and no OS prompt at all, which is why every Android compass draws its own hint. **Android's
+hard-iron estimation predates the 3T by three years** (`TYPE_MAGNETIC_FIELD_UNCALIBRATED`, API 18, reporting
+`x_bias, y_bias, z_bias`), so the OnePlus 3T and a Galaxy S23 calibrate by the same mechanism and only sensor
+quality differs. Neither platform's signal is reachable through `expo-location`, which is row 51's work.
+
+**THE OWNER'S CHOSEN MOTION-REJECTING GATE IS VOID, refuted before any code was written.** No gate reading the
+heading stream alone separates a 60-degree wave from a 12-degree hand sway: a 15-degree range cap refuses a
+hand-held phone 100% of the time, and of fifteen window-and-segment combinations swept together exactly one met
+the 4-degree bar and it too refuses a hand 100%. That is session 48's own finding in a new place, since a slow
+user turn and a slow fusion drift are the same signal. **The shipped gate is also gamed by NOISE**, measured: a
+still phone at jitter 0.5 opens at 9705ms and at jitter 5 opens at 7453ms, earlier and wronger. **A 13-second
+time floor WAS measured to work** (3.43 degrees worst case across all seven user behaviours, refusing nobody,
+because a term that reads no readings cannot be gamed by any motion) **and is deliberately NOT shipped**,
+because it adds up to 3.5 seconds to every open on two phones the owner has judged accurate; it is the right fix
+for a slow-fusion phone, where an 8000ms time constant gives 99.7% false taps when waving, and that regime is
+UNCONFIRMED on either handset.
+
+**What shipped is the three changes measured to cost zero degrees**: the subtitle on one line as *Hold flat and
+turn slowly* (his choice from five candidates, 25 characters against the 32 that wrapped, with both cross-fade
+lines capped at one line so the header's height is guaranteed); a warm reopen that draws the compass on its
+first frame once eight readings agree within 3 degrees of the heading the sheet last drew, falling through to
+the full gate at 5 degrees of disagreement; and no success haptic on an instant open, because nothing arrived.
+Elapsed time is deliberately not the reopen's test, since the fusion may have been reset and the phone carried.
+
+**TWO SUITE-BLINDNESS TRAPS, and the first is the serious one: deleting the ENTIRE warm path passed all 221
+existing qibla tests**, which is session 49's audit finding in a new place, so the plan specifies the tests that
+can SEE it. **THREE BREAKS THEN SURVIVED THE FIRST SWEEP OF THE REAL IMPLEMENTATION and each found something
+real.** A test spending `WARM_CONFIRM_READINGS - 1` readings MOVES WITH THE CONSTANT IT GUARDS, so lowering that
+constant to 1 left the test spending 0 readings and still passing; a count is now asserted against a literal as
+well. The confirmation buffer surviving a close and surviving a lost fix were both unguarded. And the third
+survivor was not a missing test but **DEAD CODE**: clearing the buffer in `start()` could never be the thing
+that emptied it, because `stop()` already does and `useRef` seeds it empty, so it was deleted rather than
+tested. **A coverage trap was also fixed by SIMPLIFYING rather than by a wider test**: a guarded second
+`setState` inside the latch had an unreachable branch, since the latch runs once per visit, and the gate refused
+the commit at 97.82%; one local flag written once with `hasHeading` has no dead branch. Final state: 187 suites,
+5064 tests, 100% on all four measures, 15 of 15 breaks caught from a clean tree.
