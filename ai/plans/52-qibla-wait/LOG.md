@@ -102,11 +102,37 @@ POINTS rather than how fast it appears.
 
 ---
 
-## The phone
+## The phone, and the mistake made with it
 
-Left on whatever build it carried before this session. **The owner's own build was deliberately not replaced**,
-because he installs what he tests, and the measurement this build existed for could not be taken. Automatic time
-was never turned off.
+**`build-mock.zsh` does NOT produce a `.fleettest` package, and installing its APK replaces the owner's real
+app.** `ai/AGENTS.md` section 6 documents `EXPO_ANDROID_SUFFIX=fleettest EXPO_NAME_SUFFIX=FleetTest` for exactly
+this, and the script was run without them, so the APK declared `com.mugtaba.athan` and `adb install -r` put a
+MOCK-DATA build over the owner's production app. `aapt2 dump badging` confirmed it afterwards, which is the check
+that should have run BEFORE the install.
+
+**THE RULE, and it is cheap: read the package name out of the APK before installing it to a phone that carries
+the owner's own app.**
+
+```bash
+AAPT2=~/Library/Android/sdk/build-tools/37.0.0/aapt2
+"$AAPT2" dump badging <apk> | grep "^package"
+```
+
+A mock build must read `com.mugtaba.athan.fleettest`. Anything else is the production package and overwrites what
+the owner tests on.
+
+**What it cost and what it did not.** `adb install -r` keeps app data, so his settings and alarm preferences
+survived; what changed was the code and the data source, since a mock build shows fabricated prayer times. The
+restore to `athan-233.apk` (`EXPO_PUBLIC_ENV=prod`, real API key, the build he accepted) reported `Success` and
+then the package queried empty, because **he had already deleted the app from both phones himself** to clear the
+clash. His instruction then was to install the latest build on both, mock or production, whichever was quickest.
+
+**Final state: both phones carry this session's code.** The 3T runs the already-built mock APK at 1.29.239,
+launched and confirmed focused on `com.mugtaba.athan/.MainActivity`. The iPhone XS was prebuilt (its plist had
+gone stale at 1.29.233 and now reads 1.29.241, which is the ORDER `ai/AGENTS.md` requires: bump, then prebuild,
+then build) and a Release build was installed to it.
+
+Automatic time was never turned off, and no clock was changed in this session.
 
 ---
 

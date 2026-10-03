@@ -507,6 +507,21 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
 
 ## 6. Commands (Copy/Paste Ready)
 
+### Read an APK's package name BEFORE installing it to a phone the owner uses (session 52, learned the hard way)
+
+**`build-mock.zsh` run without its env vars produces the PRODUCTION package**, so `adb install -r` silently
+replaces the owner's real app with a mock-data build. One command prevents it:
+
+```bash
+AAPT2=~/Library/Android/sdk/build-tools/37.0.0/aapt2   # confirm this path exists first
+"$AAPT2" dump badging <apk> | grep "^package"
+```
+
+A mock build must read `com.mugtaba.athan.fleettest`; `com.mugtaba.athan` is the production package. The suffix
+comes from `EXPO_ANDROID_SUFFIX=fleettest EXPO_NAME_SUFFIX=FleetTest`, which must be set on **prebuild as well as
+build** (see the Native Version Sync ritual below). `install -r` keeps app data, so the symptom is not a wiped
+phone: it is the owner opening his app and seeing fabricated prayer times.
+
 ### Development
 
 ```bash
