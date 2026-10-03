@@ -1,204 +1,328 @@
-# The qibla wait: replace the stopwatch with the phone's own uncertainty
+# Row 53: gate the qibla compass on the phone's own uncertainty, not on a stopwatch
 
-**Read this first and in full.** It is the whole handoff for the next qibla session, written after the owner ran
-20 trials on his own two phones and overturned the model this programme had been designing against.
+**Read this first and in full.** It is the whole brief for the next session: what to build, what the owner has
+already decided, the three traps that will bite, and what must not be re-investigated. Written 2026-10-03 at the
+close of session 52, which is DONE and pushed.
 
 ---
 
-## 1. The revert point, and the owner named it himself
+## 1. The one-sentence goal
 
-🐋 "Right now the build, I am on build number 1.29.239. So I want you to save this in your mind because this is
-a good build that we will come back to, that we will revert to, should things go wrong."
+**Stop timing the heading and start asking it.** Replace `hasSettled`'s 2700ms span requirement with a reading of
+the uncertainty the phone itself reports, so the compass draws as soon as the phone says it is certain and waits
+only as long as the phone says it is not.
 
-| | |
+The owner's framing: 🐋 "instead of inferring, convergence from drift every time, ask the phone how sure it is if
+iOS is 5 degrees, draw immediately if it says 25 weight, and say why. Okay, okay. I think, yeah. This is good."
+
+---
+
+## 2. Why the current wait exists, measured
+
+The animation shows for 2 to 3 seconds on both of the owner's phones, every single time, cold or warm. He
+measured this himself across 20 trials on 2026-10-03.
+
+**It is not waiting for accuracy. It is waiting for a clock.** `hasSettled` has three conditions and on his
+phones two are already satisfied before the third can be:
+
+| Condition in `shared/qiblaSettle.ts` | On his phones |
 | --- | --- |
-| **Known-good build** | **1.29.239** |
-| Commit | `7904e00f` (merged as `55e6659b`) |
-| Judged on | OnePlus 3T and iPhone XS, 20 trials, 2026-10-03 |
-| His verdict | 🐋 "the compass is absolutely smooth and absolutely perfect" |
-| Android APK | `~/athan-device-sweep/session52/mock.apk` (MOCK data, package `com.mugtaba.athan`) |
-| iOS | Built from `uat-2` at 1.29.241, installed on the XS |
+| `window.length < SETTLE_MIN_READINGS` (8) | met in about 570ms at the measured ~14Hz |
+| **`nowMs - window[0].atMs < SETTLE_WINDOW_MS * 0.9`** | **2700ms. THIS IS THE ENTIRE WAIT** |
+| drift between the window's halves over 1.5 degrees | already false, because the fusion is already converged |
 
-**To revert:** `git revert` back to `7904e00f`, or rebuild from that sha. Anything the next session ships sits
-on top of a build the owner has already accepted, so there is always a known-good floor.
+So the gate sits holding a **correct heading** waiting for the stopwatch to reach 2700ms before it is allowed to
+believe itself.
 
-**One caveat on that APK, and it is the mistake session 52 made:** it carries the PRODUCTION package name with
-MOCK data, because `build-mock.zsh` was run without `EXPO_ANDROID_SUFFIX=fleettest`. Its prayer times are
-fabricated. `ai/AGENTS.md` now carries the `aapt2 dump badging` check that catches this before an install.
+**And there is no cold start to wait through**, which is why his cold and warm trials were indistinguishable.
+Hard-iron estimation and sensor fusion are OS-level services: clearing app data, force-stopping and reinstalling
+do not reset them, so a phone in daily use hands this app an already-converged fusion. Session 48's
+30-degrees-out first reading cannot occur on such a phone.
 
 ---
 
-## 2. THE OWNER'S 20 TRIALS, and what they refute
+## 3. What is already built, and what is missing
 
-He ran the protocol this programme asked for, on both phones, 2026-10-03:
+**Built, in row 49 and shipping today: the module READS both platforms' numbers.**
 
-| Phone | Still | Waving | Mix |
-| --- | --- | --- | --- |
-| OnePlus 3T | 5 | 5 | cold and warm |
-| iPhone XS | 5 | 5 | cold and warm |
+`modules/qiblaheading/index.ts` normalises them behind one shape, so the JS never branches on platform:
 
-🐋 "For both phones, absolutely no difference in terms of accuracy, both of them. Always show the animation,
-always, always show the animation for about 2 seconds. And then after about 2, 3 seconds the compass pops up and
-the compass is absolutely smooth and absolutely perfect. So shaking the phone doesn't actually do anything at
-all. Nor does cold, nor does warm."
+```typescript
+accuracyDegrees?: number;        // iOS: CLHeading.headingAccuracy, in real degrees
+wantsCalibration?: boolean;      // iOS: whether CoreLocation wants a calibration gesture
+headingErrorDegrees?: number;    // Android: FOP's conservative heading error cone
+```
 
-**Three findings, and each one contradicts something this programme believed.**
+**Missing: nothing ACTS on them.** In `hooks/useQibla.ts` the reading is written into state for display only:
 
-### 2.1 The 9.7-second wait does not exist on his phones. The real wait is the SPAN, and it is 2.7 seconds
+```typescript
+unwatchDiagnosticRef.current = watchQiblaDiagnostic((diagnostic) =>
+  setState((previous) => ({ ...previous, diagnostic }))
+);
+```
 
-Session 52 predicted 9.7 seconds from a cold fusion converging on a 4000ms time constant (session 48's
-measurement). **He measured 2 to 3 seconds, every single time, on both phones, cold or warm.**
+It never reaches a decision. The gate still reads only the window and the clock.
 
-2.7 seconds is `SETTLE_WINDOW_MS * 0.9`, which is `hasSettled`'s span requirement. So on his phones the gate's
-three conditions resolve like this:
+**Why these numbers are worth reaching for:** `expo-location` destroys both. On iOS it buckets
+`headingAccuracy`'s degrees to 0 to 3 where bucket 3 spans 0 to 20 degrees, and it maps Apple's NEGATIVE
+"invalid heading" sentinel into the same bucket as a merely poor reading. On Android it never exposes FOP at all,
+and Google states FOP is the same heading Google Maps draws.
 
-| Condition | On his phones |
+---
+
+## 4. The owner's decisions, already taken
+
+Do not re-ask these. Each is his, dated 2026-10-03.
+
+1. **The accuracy gate REPLACES the 2700ms wait. It does not sit beside it.** 🐋 "it should be replaced that the
+   whole purpose. We want to make it as quick as possible. We want to replace it, not beside it. So if it takes a
+   long time to settle, then it's going to take a long time to load. If it takes a shorter time to settle, then
+   it's going to load faster. Let's replace." **Rejected: running both and opening on whichever fires first**,
+   because a gate that can only ever be faster would show no change if accuracy always lost, and would teach
+   nothing.
+2. **ONE session covers both platforms.** 🐋 "I think we can do iOS and android. Separately, in separate
+   sessions, because it's different technologies, even though they touch the same code, it's different
+   technologies, so. Or actually, let's do it in 1 session." The code is one gate reading one normalised field,
+   so splitting it would mean planning the same gate twice.
+3. **Plan AND execute in that one session. Coverage, cleanup and audit come later.** 🐋 "We plan it in the next
+   session. We execute it for both platforms in the next session. without testing, actually, without any
+   coverage. We don't implement coverage because leave it as a prototype. I want to check if it works. If it
+   works, I'll come back and tell you that both phones work perfectly. Then we can begin the coverage and the
+   cleanup and the auditing and the completion of it of both platforms."
+4. **Build with MOCK data, and install on both phones.** His words: build and compile on both devices with mock
+   data.
+5. **He tests iOS FIRST, then Android.** 🐋 "The 1st thing we will do is test iOS only, and then we'll test on
+   Android once." This is a sequencing decision inside the one session, not two sessions.
+6. **The wave hint and its animation STAY, unchanged.** Settled in session 52 and he ruled on it directly:
+   🐋 "if we remove that, the user is not going to shake their phone. And we're going to lose the insurance. So
+   maybe we should just keep everything as is." The geometry is why: the turn a user makes to face the qibla is
+   rotation about the VERTICAL axis alone, which traces a circle and cannot determine a sphere's centre, so only
+   a figure of eight supplies the pitch and roll that calibrates hard iron. **Remove the instruction and the
+   insurance goes with it.**
+7. **No technical explanation in the UI.** 🐋 "I don't really want to put more information like. You know, the
+   compass reads the horizontal component, blah, blah, blah, that's no, that's too technical too much for
+   people."
+8. **1.29.239 (`7904e00f`) is the revert point.** 🐋 "this is a good build that we will come back to, that we
+   will revert to, should things go wrong." He has accepted it on both phones.
+9. **Row 46 is CLOSED as superseded**, not planned. 🐋 "go ahead and close it, supersede it."
+10. **Questions are asked in the next session, not this one.** 🐋 "Any questions you have for me should be asked
+    in that session."
+
+---
+
+## 5. THREE TRAPS THAT WILL BITE, each with its remedy
+
+These are the reason this brief exists rather than a one-line instruction.
+
+### 5.1 The coverage gate will refuse an untested commit
+
+The owner deferred tests, and the pre-commit hook does not know that. It runs `yarn validate` with 100%
+thresholds on all four measures plus `scripts/check-changed-coverage.js --staged`. **New logic in `hooks/` is
+measured and will fail the gate at under 100%.**
+
+Row 49 hit this exact wall. `modules/` is listed in `UNMEASURED` inside `scripts/check-changed-coverage.js`:
+
+```javascript
+{ path: 'modules/', reason: 'native Kotlin module; its JavaScript surface is device/tls13.ts, which is measured' },
+```
+
+**Two routes, and the planning session chooses one and writes it down:**
+
+- **Put the prototype's decision logic inside `modules/qiblaheading/`**, which is already exempt, and have
+  `hooks/useQibla.ts` call it. Needs no new exemption and no `--no-verify`. **This is the recommended route.**
+- Or gate it behind a flag and cover the off-path, which is what row 49 ended up doing and what cost it a refused
+  commit at 99.91%.
+
+**`--no-verify` is not an option.** It is banned by `ai/AGENTS.md`.
+
+### 5.2 The flag makes the module unreachable in a mock build, so a naive build would change nothing
+
+Two separate problems compound here.
+
+**First, the flag excludes production and preview:**
+
+```typescript
+qiblaDiagnostic: process.env.EXPO_PUBLIC_QIBLA_DIAGNOSTIC === '1' && process.env.EXPO_PUBLIC_ENV !== 'prod',
+```
+
+**Second, `build-mock.zsh` unsets every `EXPO_PUBLIC_*` variable on purpose**, so the flag cannot be passed in
+from the caller's environment:
+
+```bash
+# Only this build's variables reach prebuild, Metro and Gradle: no API key, no package suffix
+unset -m 'EXPO_PUBLIC_*'
+unset EXPO_ANDROID_SUFFIX EXPO_NAME_SUFFIX 2>/dev/null
+export EXPO_PUBLIC_ENV=local EXPO_PUBLIC_API_KEY=key CI=1 EXPO_NO_TELEMETRY=1
+```
+
+So a build made without addressing this ships a phone where **nothing changed**, and the owner would test a
+no-op. The planning session must decide how the accuracy path reaches a mock build: either the gate does not sit
+behind `qiblaDiagnostic` at all (it is becoming a real feature rather than a diagnostic), or the build script is
+given the variable explicitly. **Verify the decision by reading the flag's value out of the built bundle or by
+observing the behaviour on device, not by assuming.**
+
+### 5.3 The threshold cannot be chosen from any existing measurement
+
+Every accuracy reading this programme holds was taken **over a cable beside a laptop on a magnetic table**.
+Session 49 read 25.4, 24.8 and 24.8 degrees on the owner's iPhone XS that way, with `wantsCalibration` FALSE.
+
+**The owner's own rule, which he set after catching it: a tethered phone sits inside the magnetic field of the
+thing tethering it, so no heading or accuracy reading taken over a cable is evidence about anywhere.** Session 41
+measured the same iPhone wanting a 190-degree correction beside a laptop and 220 two metres away on open floor.
+
+**So the first build's job is to SHOW the numbers, not to act on a guessed threshold.** `ALIGNMENT_ENTER_DEGREES`
+is 4 and is the obvious candidate, because it is the window the haptic announces, but a gate set to 4 degrees
+would refuse to draw at all if his phones genuinely report 25 untethered. Design the first prototype so it draws
+AND reveals what it read, then set the threshold from real numbers.
+
+There is also an Android-specific trap from row 49: **FOP's error cone is OPTIONAL per sample.**
+`hasConservativeHeadingErrorDegrees()` exists, so an unguarded read publishes a default dressed as an accuracy.
+`modules/qiblaheading/index.ts` already types it as optional (`headingErrorDegrees?: number`), and the gate must
+treat its absence as "no reading" rather than as zero.
+
+---
+
+## 6. What the planning session must settle
+
+1. **The threshold, and how it is reached.** A fixed constant, or `ALIGNMENT_ENTER_DEGREES`, or a first build
+   that reveals the numbers and a second that acts on them. Trap 5.3 applies.
+2. **The ceiling.** Decision 4.1 replaces the stopwatch, so a phone that never reports a good accuracy must still
+   draw eventually. `ai/AGENTS.md` carries the owner's absolute rule that anything gating this screen **fails
+   OPEN**: 🐋 "we don't want to lock it... what if the magnetometer doesn't actually work the first time". Decide
+   the ceiling's value and what the user sees when it is hit.
+3. **Where the logic lives**, per trap 5.1.
+4. **How the flag reaches a mock build**, per trap 5.2.
+5. **What is drawn while waiting.** The wave hint stays (decision 4.6). What is undecided is whether a
+   sub-second wait should show the animation at all, and that is a question for the owner in that session: he
+   liked it as a loading screen and has never seen it at that length.
+6. **What happens when the phone reports an INVALID heading.** Apple documents a negative `headingAccuracy` as
+   "invalid heading" and gates on it unconditionally in its own sample code. `expo-location` collapses that into
+   bucket 0; `modules/qiblaheading` does not. This is the one case the current app cannot see at all.
+
+---
+
+## 7. What must NOT be re-investigated
+
+| Settled | By, and the measurement |
 | --- | --- |
-| `window.length >= SETTLE_MIN_READINGS` (8) | met in about 570ms at the measured ~14Hz |
-| **`nowMs - window[0].atMs >= SETTLE_WINDOW_MS * 0.9`** | **2700ms. THIS IS THE ENTIRE WAIT** |
-| drift between the window's halves `<= 1.5` degrees | already true, because the fusion is already converged |
-
-**The gate is holding a correct heading and waiting for a stopwatch.** That is the answer to his question
-🐋 "Why is the animation there? What's blocking it?"
-
-### 2.2 There is no cold start, because calibration is the OS's and not the app's
-
-**Why session 48's 30-degrees-out cold fusion never appeared:** magnetometer hard-iron estimation and sensor
-fusion are OS-level services. Clearing app data, force-stopping, even reinstalling does not reset them. A phone
-in daily use already holds a good hard-iron estimate and a converged fusion before this app asks for a heading.
-
-**So "cold" for the app is not cold for the phone**, which is exactly what he measured: 🐋 "Nor does cold, nor
-does warm."
-
-### 2.3 Waving does nothing ON HIS PHONES, and that is not the same as the gesture being useless
-
-**Both are true and they are not in conflict:**
-
-- Session 52 measured, from NXP AN4246's own least-squares fit, that the figure of eight is the ONLY gesture
-  that can determine a hard-iron offset: a flat still phone leaves 497.6% of it unremoved, a flat phone turning
-  on the spot lies on a CIRCLE which does not determine a sphere's centre, and the figure of eight leaves 1.3%.
-- His phones have no significant hard iron left to remove, because the OS already removed it.
-
-**The wave is insurance against a state he is not in.** It costs nothing when it is not needed (0.70 degrees
-still against 0.73 waving at the alignment tap) and it is the only thing that helps when it is.
-
-**THE OWNER CAUGHT A CONTRADICTION IN THIS PROGRAMME'S OWN ADVICE AND HE WAS RIGHT.** Session 52 said the wave
-is insurance and then suggested dropping the instruction. He answered: 🐋 "But then if we remove that, the user
-is not going to shake their phone. And we're going to lose the insurance. So maybe we should just keep
-everything as is."
-
-**That is the correct reading, and the geometry proves it.** The turn a user makes to face the qibla is rotation
-about the VERTICAL axis only, a flat phone spinning, which is precisely the degenerate circle case that cannot
-calibrate. Only the figure of eight supplies the pitch and roll that closes it. **Remove the instruction and the
-insurance goes with it. The hint and its animation STAY.**
-
-### 2.4 A fourth observation of his, worth keeping
-
-🐋 "Laying the phone flat is actually makes it a smoother experience, less bobble, less jitter, but holding the
-phone up straight does cause a jitter, and that's, I guess, that's expected."
-
-Correct and expected: a compass reads the HORIZONTAL component of the field, so tilting the phone shrinks the
-signal being measured while the noise stays, and the heading gets noisier. **His existing copy already says the
-right thing** (*Hold flat and turn slowly*), and he has ruled out explaining the physics in the UI:
-🐋 "that's too technical, too much for people."
+| `SETTLE_WINDOW_MS` is not shortened as a fix | Session 52: it is the shortest window whose p95 error fits the 4-degree alignment window (2000ms gives 5.51 degrees, 2500ms gives 4.02, 3000ms gives 3.02) |
+| The sensor rate is not a lever on the wait | `TIME_DELTA = 50f` survives the patch, so the gate receives ~14Hz at any sensor rate. 50Hz opens at 9703ms, 5Hz at 9844ms: a 1.4% difference |
+| No stream-only gate separates motion from convergence | Sessions 48 and 52: a slow turn and a slow drift are the same signal. A 15-degree range cap refuses a hand-held phone 100% of the time |
+| The wave hint stays | Decision 4.6, on AN4246's per-gesture fit plus the owner's ruling |
+| A flat hint cannot replace it | A flat still phone leaves 497.6% of the hard-iron offset unremoved; a figure of eight leaves 1.3% |
+| The 13-second time floor is not shipped | It fixes a regime his phones are not in, at up to 3.5s added to every open |
+| The field-magnitude and dip physics check is dead | Session 48: a 10 uT offset swings the heading 30.8 degrees while passing a 5-degree dip gate |
+| Hard-iron calibration from the user's own turn is impossible | Session 52: that turn traces a circle, which does not determine a sphere's centre |
+| The app's geometry is correct to 0.1 degrees | Session 47, measured off the owner's own screen recordings |
+| Reanimated's gyro-fused sensor stays rejected | Session 47: beautifully smooth and 5 to 34 degrees wrong outdoors, varying with orientation |
 
 ---
 
-## 3. WHAT THE NEXT SESSION BUILDS: gate on the platform's own uncertainty
+## 8. The build and install ritual, with the trap that cost this session real time
 
-The owner chose this directly: 🐋 "Okay, okay. I think, yeah. This is good... I do want to implement what you
-said about the modules, qibla heading."
+**Read an APK's package name BEFORE installing it to a phone the owner uses:**
 
-**Replace the 2700ms drift stopwatch with a reading of how certain the phone says it is.** The instrument
-already exists: row 49 shipped `modules/qiblaheading`, which reads what `expo-location` destroys.
+```bash
+AAPT2=~/Library/Android/sdk/build-tools/37.0.0/aapt2
+"$AAPT2" dump badging <apk> | grep "^package"
+```
 
-| Platform | What the module already reads | What `expo-location` does with it |
-| --- | --- | --- |
-| iOS | `CLHeading.headingAccuracy` in DEGREES, and a negative value meaning "invalid heading" | buckets it to 0 to 3, where bucket 3 spans 0 to 20 degrees |
-| Android | FOP's `getConservativeHeadingErrorDegrees()`, a per-sample error cone | never exposes FOP at all |
+**`build-mock.zsh` ALWAYS declares `com.mugtaba.athan`, the PRODUCTION package, carrying MOCK data.** Installing
+it with `adb install -r` replaced the owner's real app with fabricated prayer times in session 52. App data
+survives, so nothing looks broken: the times are simply invented. **Passing `EXPO_ANDROID_SUFFIX=fleettest` to
+the script does not help**, because line 56 unsets it (see trap 5.2's excerpt). Verified by exporting it and
+reading the resulting APK, which still declared the production package.
 
-**The shape of the change:** when the phone reports its uncertainty is inside the alignment window, draw
-immediately; when it reports worse, keep waiting and say so. A phone that is already certain stops waiting for a
-clock, and a phone that is genuinely uncertain is caught, which the drift gate cannot do (it passes a stable
-hard-iron bias untouched at 0, 5, 15 and 27 degrees).
+Confirm `$AAPT2` exists before trusting its output: a `grep` on a missing command returns the same empty result
+as a real absence.
 
-### What a planning session must settle before any code
+**Android:**
 
-1. **The threshold.** `ALIGNMENT_ENTER_DEGREES` is 4, so a reported uncertainty under 4 degrees is the obvious
-   candidate. It needs measuring on both phones first: session 49 read 25.4, 24.8, 24.8 degrees on the XS, but
-   **every one of those samples was taken over a cable beside a laptop on a magnetic table**, so they measure
-   that desk and nothing else (session 49's own rule). Untethered readings are the first task.
-2. **Android's availability.** Session 49 measured FOP on the 3T registering the uncalibrated magnetometer and
-   gyroscope and then AGREEING with the shipped heading, moving 0.3 degrees across 8 seconds. Its error cone is
-   OPTIONAL per sample (`hasConservativeHeadingErrorDegrees()`), so an unguarded read publishes a default
-   dressed as an accuracy.
-3. **The fallback, which must fail OPEN.** A phone reporting no accuracy at all, or a build whose native module
-   is missing, must still draw a compass. The drift gate is the natural fallback and it already works.
-4. **The flag.** `qiblaDiagnostic` currently gates the module and carries `EXPO_PUBLIC_ENV !== 'prod'`, so the
-   module is UNREACHABLE in production today. Making the accuracy gate real means promoting that path out from
-   behind the diagnostic flag, which is a decision with its own test surface (session 49's audit found the flag
-   check guarded by nothing and the whole suite blind to it).
-5. **What the user sees while waiting.** He asked directly: 🐋 "Should we keep the animation, but then it makes
-   the users shake their phone... Maybe we keep the animation and treat it as a loading screen perhaps." Section
-   2.3 answers the wave question (keep it). What is undecided is whether a sub-second wait should show the
-   animation at all, or whether it should appear only when the wait will actually be long enough to notice.
+```bash
+zsh ~/athan-device-sweep/session3/bin/build-mock.zsh uat-2 mocks/simple.ts <out.apk>
+```
 
-### What must NOT be re-investigated
+Success ends `BUILD-MOCK OK`. Measured at 481s warm and 1784s cold in session 52.
 
-| Settled | By |
-| --- | --- |
-| `SETTLE_WINDOW_MS` is not shortened as a fix | It is the shortest window whose p95 error fits the 4-degree alignment window (session 52) |
-| The sensor rate is not a lever | `TIME_DELTA = 50f` survives the patch, so the gate sees ~14Hz at any rate |
-| No stream-only gate separates motion from convergence | A slow turn and a slow drift are the same signal (sessions 48 and 52) |
-| The wave hint stays | Section 2.3, on AN4246's own fit plus the owner's ruling |
-| The 13-second time floor is not shipped | It fixes a regime his phones are not in, at 3.5s per open |
-| The app's geometry is correct to 0.1 degrees | Measured off his own recordings (session 47) |
+**iOS, in this order, because `expo run:ios` never re-syncs an existing native directory:**
+
+```bash
+npx expo prebuild -p ios --no-install
+grep -A1 CFBundleShortVersionString ios/Athan/Info.plist
+npx expo run:ios --configuration Release --device 00008020-0015585C22D2002E
+```
+
+The plist must show the `app.json` version before the build runs. Session 52 found it stale at 1.29.233 while
+`app.json` said 1.29.241.
+
+**A Gradle TLS handshake failure reads like a toolchain fault and is a network one.** Session 52 lost a build to
+`Could not download kotlin-scripting-jvm-2.2.21.jar` with `Remote host terminated the handshake`; `curl` returned
+HTTP 200 for the same URL seconds later and a plain retry succeeded. Check the URL with `curl` before changing
+any configuration.
+
+**An empty `adb` result is not evidence the app is absent.** `pm list packages | grep athan` and
+`dumpsys package ... | grep versionName` both returned nothing in session 52 because the phone had been
+unplugged. Run `adb devices` first.
 
 ---
 
-## 4. What session 52 shipped, and the defect it introduced and fixed
+## 9. Where the phones are now
 
-| Version | Change |
-| --- | --- |
-| 1.29.237 | The compass subtitle on one line |
-| 1.29.238 | A verified warm reopen draws the compass at once |
-| 1.29.239 | No arrival haptic on an instant open. **THE OWNER'S REVERT POINT** |
-| 1.29.240 | Records |
-| 1.29.241 | The latch comment sits above the latch |
-| 1.29.242 | The APK package-name check in `ai/AGENTS.md` |
-| 1.29.243 | **The subtitle truncation fixed** |
+| Phone | Version | Build | Carries the session 52 subtitle fix? | Prayer times |
+| --- | --- | --- | --- | --- |
+| OnePlus 3T (`8f7ada76`) | 1.29.244 | mock | **Yes** | Fabricated |
+| iPhone XS (`00008020-0015585C22D2002E`) | 1.29.241 | production | **No** | Real |
 
-**THE DEFECT, and it was session 52's own.** The owner reported 🐋 "It says hold the phone flat and dot dot dot,
-3 ellipses. I don't see the rest." Adding `numberOfLines={1}` turned a WRAP into a TRUNCATION: two readable
-lines became one unreadable one.
+**They are not on matching builds**, and the next session's first act should be to put both on the same mock
+build of whatever it ships, so the owner judges identical code. The iPhone currently predates the truncation fix
+and would still show `Hold flat and...`.
 
-**The cause is not the text length, and that is the useful part.** An absolutely positioned child contributes NO
-width, so the subtitle column shrink-wrapped to whichever line was left in flow, which was *Just a moment* at
-roughly 91dp. The longer line was then clipped inside that, against a text column measured at **299dp** on the
-3T (411dp screen, minus 40dp of sheet padding, 32dp of header padding and the 40dp icon). **Both the original
-wrap and the ellipsis come from the same place.**
+Verify before building:
 
-Fixed in 1.29.243 by leaving the LONGER line in flow and taking the shorter one out, so the column measures the
-widest text it must hold. The header still keeps one height through the cross-fade, which is the only reason the
-lines are stacked. A test asserts which line is absolute, so swapping them back fails.
-
-**DURABLE LESSON: `numberOfLines` hides a layout fault rather than fixing one.** When text does not fit, measure
-the box before capping the lines.
+```bash
+adb -s 8f7ada76 shell dumpsys package com.mugtaba.athan | grep versionName
+xcrun devicectl device info apps --device 00008020-0015585C22D2002E | grep "com.mugtaba.athan "
+```
 
 ---
 
-## 5. The measurement rule this session earned
+## 10. The two measurement rules session 52 earned
 
-**The error at the instant a gate opens is not a user-facing quantity.** Session 52 told the owner that waving
-costs a 4x worse reading, repeating row 50's figure, and he refused it from his own hands. He was right: the
-gate LATCHES, so the fusion keeps converging while the user turns toward the qibla, and at the moment the app
-actually claims alignment the error is 0.70 degrees still against 0.73 waving, with zero false taps in 300 runs
-each.
+Both bind the next session, because both were learned by getting something wrong.
 
-**Measure the error at the moment the app makes a claim a user acts on, never at the moment an internal gate
-changes state.** Row 50's own figure carries the same defect.
+**1. The error at the instant a gate opens is not a user-facing quantity.** Session 52 told the owner that waving
+the phone costs a 4x worse reading, repeating row 50's figure, and he refused it from his own hands: 🐋 "I've
+been shaking my phone during the animation with every test that I do, and I don't really find myself being
+penalised." He was right. The gate LATCHES, so the fusion keeps converging while the user turns toward the
+qibla, and at the moment the app actually claims alignment the error is **0.70 degrees still against 0.73
+waving**, with zero false taps in 300 runs each. **Measure the error at the moment the app makes a claim a user
+acts on, never at the moment an internal state flips.**
 
-**And its companion, from his 20 trials: a simulation's premise is worth less than one trial on the real
-device.** The 9.7-second wait, the cold-fusion convergence and the wave penalty were all predicted off a model
-whose starting assumption, that the app sees a cold fusion, is false on a phone in daily use. He found that in
-twenty opens.
+**2. A simulation's premise is worth less than one trial on the real device.** The predicted 9.7-second wait, the
+cold-fusion convergence and the wave penalty were all derived from a model whose starting assumption, that the
+app meets a cold fusion about 30 degrees out, is false on a phone in daily use. The owner found that in twenty
+opens. **Every number in `ai/plans/52-qibla-wait/MEASURED.md` is a bound on the gate's arithmetic, never a
+prediction about his hardware.**
+
+And one layout rule, from the defect session 52 introduced and fixed: **`numberOfLines` hides a layout fault
+rather than fixing one.** Capping the subtitle at one line turned a wrap into a truncation and the owner saw
+🐋 "hold the phone flat and dot dot dot". The cause was never text length: an absolutely positioned child
+contributes NO width, so the column shrink-wrapped to the shorter in-flow line and clipped the longer one inside
+it. **Measure the box before capping the lines.**
+
+---
+
+## 11. Reading order for the next session
+
+1. This file.
+2. `ai/plans/52-qibla-wait/MEASURED.md`: every number session 52 measured, and section 8's table of what is
+   closed.
+3. `ai/plans/52-qibla-wait/RESEARCH.md`: the AN4246 per-gesture fit, the both-platform comparison from the SDK
+   headers on this machine, and the owner's two corrections.
+4. `ai/plans/49-qibla-native-heading/`: `MEASURED.md` and `FINDINGS.md`, for what the module reads and the
+   defects found building it.
+5. `ai/plans/48-qibla-heading-accuracy/DECISION.md`: why the settling gate exists and what the research rejected.
+6. `ai/AGENTS.md` sections 0, 6, 7 and 15, plus the Recent Decisions entries dated 2026-10-03.
+7. `opencode.json` at the repo root, for the MCP servers this project has wired up.
+
+Then `ai/plans/PLANNER-BRIEF.md`, and plan row 53.
