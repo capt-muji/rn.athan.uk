@@ -132,11 +132,11 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
 
       clearBlank();
 
+      let arrivedWarm = false;
+
       // The gate LATCHES: a cold fusion's first reading measured about 30 degrees out against 0.71 settled, so the
       // compass waits once for the stream to converge. Re-testing it per reading would drop every update made while
       // the user turns the phone, which is the one moment the dial has to follow.
-      let arrivedWarm = false;
-
       if (!settledRef.current) {
         const remembered = warmHeadingRef.current;
         confirmRef.current = [...confirmRef.current, trueHeading];
