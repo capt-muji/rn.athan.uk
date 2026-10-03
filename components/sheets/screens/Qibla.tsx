@@ -71,9 +71,11 @@ const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
 
   return (
     <View>
-      <Animated.Text style={[styles.subtitle, waiting]}>Just a moment</Animated.Text>
-      <Animated.Text style={[styles.subtitle, styles.subtitleOver, ready]}>
-        Hold flat, turn until it vibrates
+      <Animated.Text style={[styles.subtitle, waiting]} numberOfLines={1}>
+        Just a moment
+      </Animated.Text>
+      <Animated.Text style={[styles.subtitle, styles.subtitleOver, ready]} numberOfLines={1}>
+        Hold flat and turn slowly
       </Animated.Text>
     </View>
   );
