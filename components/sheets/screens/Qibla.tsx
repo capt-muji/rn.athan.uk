@@ -106,22 +106,24 @@ const QiblaPermissionDenied = () => (
 
 export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
-  const { bearing, hasHeading, permissionDenied, place, heading, aligned, diagnostic, start, stop } = useQibla();
+  const { bearing, hasHeading, permissionDenied, place, heading, aligned, diagnostic, arrivedWarm, start, stop } =
+    useQibla();
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
-  // The settling gate is the whole wait, and it is the reason there is no timer beside it: it refuses to draw
-  // until the heading has stopped drifting across its own 3000ms window, measured at 30 degrees of error on a
-  // cold magnetometer against 0.71 once converged
+  // There is no timer beside the settling gate: a cold open waits for the heading to stop drifting across its
+  // own 3000ms window, measured at 30 degrees of error on a cold magnetometer against 0.71 once converged, and
+  // a reopen that meets the stream it left skips the wait instead of re-proving it
   const showsCompass = bearing !== null && hasHeading;
   const isCalibrating = !showsCompass && !permissionDenied;
 
   // The user is told the compass has arrived by FEEL, because they are most likely looking at the phone they
-  // are moving rather than at its screen
+  // are moving rather than at its screen. A warm reopen announces nothing, because nothing arrived: the compass
+  // is there on the first frame and the tap would land as part of the sheet opening
   useEffect(() => {
-    if (!showsCompass) return;
+    if (!showsCompass || arrivedWarm) return;
 
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-  }, [showsCompass]);
+  }, [showsCompass, arrivedWarm]);
 
   return (
     <Sheet
