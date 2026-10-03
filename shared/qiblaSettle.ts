@@ -24,6 +24,22 @@ export const SETTLE_MIN_READINGS = 8;
 /** The window's two halves must agree within this for the stream to count as no longer moving */
 export const SETTLE_DRIFT_DEGREES = 1.5;
 
+/**
+ * How many readings of a reopen must agree with the heading the sheet last drew before it is trusted.
+ *
+ * Eight is the first count that agreed on every run across every noise level measured, so it is the first that
+ * never discards a genuinely warm stream, and at the ~14Hz the platform emits it costs about 420ms.
+ */
+export const WARM_CONFIRM_READINGS = 8;
+
+/**
+ * How far a reopen's readings may sit from the remembered heading and still count as the same stream.
+ *
+ * Three degrees accepts a phone that has not moved and refuses one carried or turned: five degrees of real
+ * movement fails it every time, which is what makes this a measurement rather than an assumption about the OS.
+ */
+export const WARM_TOLERANCE_DEGREES = 3;
+
 /** A reading as the watch delivers it, with the moment it arrived */
 export interface HeadingSample {
   degrees: number;
@@ -56,6 +72,20 @@ export const headingDelta = (to: number, from: number): number => {
 /** The samples of the last `SETTLE_WINDOW_MS`, oldest first, with anything older dropped */
 export const trailingWindow = (samples: HeadingSample[], nowMs: number): HeadingSample[] =>
   samples.filter((sample) => nowMs - sample.atMs <= SETTLE_WINDOW_MS);
+
+/**
+ * Whether a reopen has met the SAME stream it left, so the settling wait would only re-prove what it proved.
+ *
+ * A reopen cannot be trusted because it happened recently: the fusion may have been reset and the phone may
+ * have been carried or turned. So the remembered heading is VERIFIED against live readings instead.
+ */
+export const isWarmStream = (readings: number[], rememberedDegrees: number): boolean => {
+  if (readings.length < WARM_CONFIRM_READINGS) return false;
+
+  const recent = readings.slice(-WARM_CONFIRM_READINGS);
+
+  return Math.abs(headingDelta(circularMean(recent), rememberedDegrees)) <= WARM_TOLERANCE_DEGREES;
+};
 
 /**
  * Whether the window has converged: enough readings, spanning enough time, whose two halves agree.
