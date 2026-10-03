@@ -8,7 +8,7 @@ import type React from 'react';
 import { Dimensions, Linking, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { SETTLE_MIN_READINGS, SETTLE_WINDOW_MS } from '@/shared/qiblaSettle';
+import { SETTLE_MIN_READINGS, SETTLE_WINDOW_MS, WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
 
 import QiblaSheet from '../Qibla';
 
@@ -98,6 +98,22 @@ const reportLostHeadings = async (count = 1) => {
     for (let i = 0; i < count; i++) {
       for (const watcher of mockWatchers) watcher({ trueHeading: -1 });
     }
+  });
+};
+
+/**
+ * Drives exactly the readings a warm reopen is confirmed by, advancing NO clock.
+ *
+ * Advancing none is the point: a warm reopen must draw without the settling window ever spanning, so a helper
+ * that moved the clock could not tell the warm path from the ordinary gate.
+ */
+const reportWarmConfirmation = async (trueHeading: number, count = WARM_CONFIRM_READINGS) => {
+  // The LIVE watcher only: mockWatchers keeps every open's subscription, so notifying all of them would
+  // deliver one reading per past visit and a test counting readings would be counting opens
+  const watcher = mockWatchers[mockWatchers.length - 1];
+
+  await act(async () => {
+    for (let i = 0; i < count; i++) watcher({ trueHeading });
   });
 };
 
@@ -919,6 +935,95 @@ describe('the wait before the compass is drawn', () => {
 
     await fireEvent(screen.getByText('Qibla'), 'dismiss');
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('draws the compass without the settling wait when the phone has not moved since it last drew', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportWarmConfirmation(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  // One matching reading is noise, not a converged stream, and the count is asserted against a LITERAL: a test
+  // spending WARM_CONFIRM_READINGS - 1 readings moves with the constant it is meant to guard, so lowering the
+  // constant to 1 would leave it spending 0 and still passing
+  it('refuses to draw on a single reading that happens to agree', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportWarmConfirmation(95, 1);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('refuses to draw on one reading fewer than the confirmation asks for', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportWarmConfirmation(95, WARM_CONFIRM_READINGS - 1);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('still waits out the settling gate when the phone was turned while the sheet was closed', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportWarmConfirmation(200);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('waits out the settling gate on a first open, because nothing is remembered to check against', async () => {
+    await openSheet();
+    await reportWarmConfirmation(95);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // The confirmation buffer belongs to ONE visit. Carried across opens, the readings of a visit that refused
+  // would be joined by a few from the next and confirm a phone that has since been turned
+  it('starts each visit with an empty confirmation, so a refused visit cannot confirm the next one', async () => {
+    await openSheet();
+    await reportWarmConfirmation(95, WARM_CONFIRM_READINGS - 1);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportWarmConfirmation(95, 1);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // A lost fix may mean the phone was carried, so readings from before the loss must not confirm what comes after
+  it('discards the confirmation when the fix is lost, so readings either side of it cannot combine', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportWarmConfirmation(95, WARM_CONFIRM_READINGS - 1);
+    await reportLostHeadings();
+    await reportWarmConfirmation(95, 1);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });

@@ -37,6 +37,61 @@ quantity.** The user-facing quantity is the error at the moment the app makes a 
 Measuring the convenient moment instead of the decisive one produced a confident wrong conclusion, and row 50's
 own figure has the same defect, so this correction applies to it too.
 
+### "Costs nothing" is NOT "does nothing", and the owner caught that too
+
+🐋 "If the wave doesn't cost us anything, then what's the point of the animation? Don't remove it. I'm just
+questioning."
+
+**He is right that the two claims are different, and only the first was proven. The second was never tested,
+because the probe above could not have tested it.**
+
+| Claim | Status |
+| --- | --- |
+| Waving does not PENALISE the user | **Proven**: 0.70 degrees still against 0.73 waving at the alignment tap |
+| Waving does not HELP the user | **Never tested.** The probe models a converging FUSION and contains no hard iron at all |
+
+The wave's job is hard iron, and a fusion's convergence is a different mechanism entirely. A gesture cannot
+speed up a convergence, which is what the probe measured; it can only re-estimate a magnetic offset, which the
+probe does not model. **So the figure above says the wave is free, and Part 2 says it is also the only gesture
+that works.** Both are true at once and neither is evidence about the other.
+
+**Why the app can never tell him whether his wave worked**, which is the honest limit: the settling gate is
+blind to hard iron by construction, measured passing untouched at 0, 5, 15 and 27 degrees (`MEASURED.md`
+section 8), and neither platform exposes a calibration-quality signal through `expo-location` (Part 3). The
+only instrument is a user comparing the drawn direction against a known one.
+
+### The owner's own 20-test protocol, and the one change that makes it decisive
+
+He proposed it himself: 🐋 "maybe 10 tests. Opening and closing the compass over and over and clearing the
+cash... 5 cold starts and 5 warm starts... Without shaking the phone, just keeping it completely still. And
+then I guess I can feedback on both phones. So I guess 10 each, 20 total."
+
+**His instinct is right and it is a better instrument than any simulation in this folder, because it is the
+real magnetometer in the real room. Three corrections make it answer the question he is asking:**
+
+1. **It needs BOTH arms.** As stated it measures the still case 20 times with nothing to compare against.
+   Testing whether waving helps needs still AND waving on each phone: 5 still plus 5 waving, cold, per phone.
+2. **Warm starts cannot discriminate.** After step 2 a warm reopen draws instantly without the gate deciding
+   at all, so a warm start tests the reopen path rather than calibration. Every calibration trial must be cold.
+3. **The reading is WHERE IT POINTS, not how long it took.** Iron error does not show up as a slow open; it
+   shows up as a confident wrong direction. Each trial is judged against Google Maps or Apple Maps on the same
+   spot, which is the comparison he has used throughout.
+
+**And the confound that would otherwise ruin it: the ROOM matters more than the phone.** Session 41 measured
+the same iPhone wanting a 190-degree correction beside a laptop and 220 two metres away. All trials for a given
+comparison belong in one spot, and a difference between phones measured in two different places is a difference
+between places.
+
+| Phone | Cold, held still | Cold, waved |
+| --- | --- | --- |
+| OnePlus 3T | 5 trials | 5 trials |
+| iPhone XS or S23 | 5 trials | 5 trials |
+
+Each trial: clear the app's data for a genuinely cold fusion, open the sheet, let the compass appear, and record
+the drawn direction against Maps. **This is the measurement that would close `MEASURED.md` section 6's open
+question**, because a still phone that points correctly every time says hard iron is not his problem, and one
+that scatters says it is.
+
 ### The one regime where waving genuinely does harm, recorded rather than buried
 
 | Fusion time constant | Still: error when aligned | Waving: error when aligned | Waving: false taps |
