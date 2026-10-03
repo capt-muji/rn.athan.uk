@@ -1,0 +1,3 @@
+      <Animated.Text style={[styles.subtitle, styles.subtitleOver, ready]}>
+        Hold flat, turn until it vibrates
+      </Animated.Text>

@@ -1,0 +1,5 @@
+  useEffect(() => {
+    if (!showsCompass) return;
+
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+  }, [showsCompass]);
