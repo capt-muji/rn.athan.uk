@@ -8,7 +8,7 @@ import { FEATURE_FLAGS } from '@/shared/flags';
 import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
 import { unwrapHeading } from '@/shared/qiblaCompass';
 import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
-import { type HeadingSample, hasSettled, trailingWindow } from '@/shared/qiblaSettle';
+import { type HeadingSample, hasSettled, isWarmStream, trailingWindow } from '@/shared/qiblaSettle';
 
 export interface QiblaState {
   bearing: number | null;
@@ -19,6 +19,8 @@ export interface QiblaState {
   place: string | null | undefined;
   /** What the platform says about its own heading, behind the diagnostic flag. Null until a reading arrives */
   diagnostic: QiblaDiagnostic | null;
+  /** Whether the compass arrived on a stream proven warm, so nothing was waited for and nothing arrived to announce */
+  arrivedWarm: boolean;
 }
 
 /** Long enough to ride out the gaps a settling magnetometer leaves, short enough that a real loss still shows */
@@ -57,6 +59,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     permissionDenied: false,
     place: undefined,
     diagnostic: null,
+    arrivedWarm: false,
   });
   const heading = useSharedValue(0);
   const aligned = useSharedValue(false);
@@ -70,6 +73,9 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
   const settledRef = useRef(false);
   const positionRef = useRef<Coordinates | null>(null);
   const placeRef = useRef<string | null | undefined>(undefined);
+  // Outlives stop(), which is the whole point: it is what a reopen checks the fresh stream against
+  const warmHeadingRef = useRef<number | null>(null);
+  const confirmRef = useRef<number[]>([]);
 
   const clearBlank = useCallback(() => {
     if (!blankRef.current) return;
@@ -81,6 +87,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     blankRef.current = null;
     // The stream is genuinely gone rather than blinking, so the fusion must prove itself again before it is drawn
     settledRef.current = false;
+    warmHeadingRef.current = null;
     setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
   }, []);
 
@@ -90,6 +97,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     aligned.value = false;
     samplesRef.current = [];
     settledRef.current = false;
+    confirmRef.current = [];
     clearBlank();
     unwatchRef.current?.();
     unwatchRef.current = null;
@@ -98,7 +106,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     // Kept, the heading outlives the close and the next open paints ONE frame of compass before the gate can
     // shut it: the owner saw the dial flash, then the hint, then the dial. There is no live heading while the
     // watch is torn down, so reporting one would be a lie in any case
-    setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
+    setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false, arrivedWarm: false } : previous));
   }, [aligned, clearBlank]);
 
   const processReading = useCallback(
@@ -109,6 +117,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
         aligned.value = false;
         // A stale half-window would otherwise settle the moment the fix returns, on readings from before it was lost
         samplesRef.current = [];
+        confirmRef.current = [];
         if (!blankRef.current) blankRef.current = setTimeout(blank, HEADING_GRACE_MS);
         return;
       }
@@ -126,8 +135,17 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
       // The gate LATCHES: a cold fusion's first reading measured about 30 degrees out against 0.71 settled, so the
       // compass waits once for the stream to converge. Re-testing it per reading would drop every update made while
       // the user turns the phone, which is the one moment the dial has to follow.
-      if (!settledRef.current && !hasSettled(window, nowMs)) return;
-      settledRef.current = true;
+      let arrivedWarm = false;
+
+      if (!settledRef.current) {
+        const remembered = warmHeadingRef.current;
+        confirmRef.current = [...confirmRef.current, trueHeading];
+        // A reopen meeting the stream it left has already paid for this window once, so re-proving it is pure wait
+        arrivedWarm = remembered !== null && isWarmStream(confirmRef.current, remembered);
+
+        if (!arrivedWarm && !hasSettled(window, nowMs)) return;
+        settledRef.current = true;
+      }
 
       const nowAligned = isAligned(alignmentOffset(trueHeading, bearing), alignedRef.current);
       // The strongest impact the platform offers, because a blind user feels this instead of reading anything
@@ -135,7 +153,8 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
       alignedRef.current = nowAligned;
       aligned.value = nowAligned;
       heading.value = unwrapHeading(heading.value, trueHeading);
-      setState((previous) => (previous.hasHeading ? previous : { ...previous, hasHeading: true }));
+      warmHeadingRef.current = trueHeading;
+      setState((previous) => (previous.hasHeading ? previous : { ...previous, hasHeading: true, arrivedWarm }));
     },
     [aligned, blank, clearBlank, heading]
   );
