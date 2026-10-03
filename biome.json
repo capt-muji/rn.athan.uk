@@ -16,7 +16,8 @@
       "!**/ai/plans/41-qibla-map/proof",
       "!**/ai/plans/48-qibla-heading-accuracy/scripts/probes",
       "!**/ai/plans/50-which-patch-fixed-it/scripts/probes",
-      "!**/ai/plans/52-qibla-wait/scripts/probes"
+      "!**/ai/plans/52-qibla-wait/scripts/probes",
+      "!**/ai/plans/53-qibla-accuracy-gate/scripts/probes"
     ]
   },
   "formatter": {
