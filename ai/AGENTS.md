@@ -509,18 +509,24 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
 
 ### Read an APK's package name BEFORE installing it to a phone the owner uses (session 52, learned the hard way)
 
-**`build-mock.zsh` run without its env vars produces the PRODUCTION package**, so `adb install -r` silently
-replaces the owner's real app with a mock-data build. One command prevents it:
+**`build-mock.zsh` ALWAYS produces the production package `com.mugtaba.athan`, carrying MOCK data.** Installing
+it over the owner's app leaves him opening his own phone to fabricated prayer times. `install -r` keeps app data,
+so nothing looks broken; the times are simply invented.
+
+**Passing `EXPO_ANDROID_SUFFIX=fleettest` to the script does NOT change this, and it is not a bug.** Line 56
+unsets that pair along with every `EXPO_PUBLIC_*` variable, on purpose, so only the build's own variables reach
+prebuild, Metro and Gradle and the output is reproducible. A caller cannot override it from the environment.
+
+So the check is the protection, not the env var:
 
 ```bash
 AAPT2=~/Library/Android/sdk/build-tools/37.0.0/aapt2   # confirm this path exists first
 "$AAPT2" dump badging <apk> | grep "^package"
 ```
 
-A mock build must read `com.mugtaba.athan.fleettest`; `com.mugtaba.athan` is the production package. The suffix
-comes from `EXPO_ANDROID_SUFFIX=fleettest EXPO_NAME_SUFFIX=FleetTest`, which must be set on **prebuild as well as
-build** (see the Native Version Sync ritual below). `install -r` keeps app data, so the symptom is not a wiped
-phone: it is the owner opening his app and seeing fabricated prayer times.
+Read the package name before every install to a phone the owner uses, and treat `com.mugtaba.athan` from a mock
+build as "this will overwrite his app". A genuinely separate `.fleettest` install needs the suffix exported
+inside a prebuild and build of its own (the Native Version Sync ritual below), not passed to `build-mock.zsh`.
 
 ### Development
 
