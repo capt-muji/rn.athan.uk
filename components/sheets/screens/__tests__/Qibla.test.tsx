@@ -1027,6 +1027,33 @@ describe('the wait before the compass is drawn', () => {
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
+
+  it('fires no arrival haptic on a warm reopen, because nothing arrived', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    jest.mocked(Haptics.notificationAsync).mockClear();
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportWarmConfirmation(95);
+
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+  });
+
+  // The pair is what gives the test above meaning: a suppression that fired never would pass it too
+  it('fires the arrival haptic on a reopen that had to wait, because the compass did arrive', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    jest.mocked(Haptics.notificationAsync).mockClear();
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportHeadings(200);
+
+    expect(Haptics.notificationAsync).toHaveBeenCalled();
+  });
 });
 
 describe('the wait before the compass can be drawn', () => {
