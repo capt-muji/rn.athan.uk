@@ -124,7 +124,7 @@ describe('the qibla sheet before it is opened', () => {
   it('tells the user what to do without naming a number to read', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Hold flat, turn until it vibrates')).toBeOnTheScreen();
+    expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
   });
 
   // Both lines are mounted the whole time and cross-faded, so the header keeps one height: a swap in place
@@ -133,7 +133,14 @@ describe('the qibla sheet before it is opened', () => {
     await render(<QiblaSheet />);
 
     expect(screen.getByText('Just a moment')).toBeOnTheScreen();
-    expect(screen.getByText('Hold flat, turn until it vibrates')).toBeOnTheScreen();
+    expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
+  });
+
+  it('caps both subtitles at one line, so the header keeps its height', async () => {
+    await render(<QiblaSheet />);
+
+    expect(screen.getByText('Just a moment').props.numberOfLines).toBe(1);
+    expect(screen.getByText('Hold flat and turn slowly').props.numberOfLines).toBe(1);
   });
 });
 
