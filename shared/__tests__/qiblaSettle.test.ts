@@ -7,10 +7,13 @@ import {
   type HeadingSample,
   hasSettled,
   headingDelta,
+  isWarmStream,
   SETTLE_DRIFT_DEGREES,
   SETTLE_MIN_READINGS,
   SETTLE_WINDOW_MS,
   trailingWindow,
+  WARM_CONFIRM_READINGS,
+  WARM_TOLERANCE_DEGREES,
 } from '../qiblaSettle';
 
 /** A window of `count` readings spread evenly across the full period, all at `degrees` */
@@ -117,5 +120,40 @@ describe('hasSettled', () => {
     }));
 
     expect(hasSettled(window, SETTLE_WINDOW_MS)).toBe(true);
+  });
+});
+
+describe('isWarmStream', () => {
+  const steadyReadings = (degrees: number, count = WARM_CONFIRM_READINGS): number[] =>
+    Array.from({ length: count }, () => degrees);
+
+  it('refuses a buffer holding one reading fewer than the confirmation needs', () => {
+    expect(isWarmStream(steadyReadings(118.99, WARM_CONFIRM_READINGS - 1), 118.99)).toBe(false);
+  });
+
+  it('accepts a phone that has not moved since the sheet last drew', () => {
+    expect(isWarmStream(steadyReadings(118.99), 118.99)).toBe(true);
+  });
+
+  it('accepts readings inside the tolerance', () => {
+    expect(isWarmStream(steadyReadings(118.99 + WARM_TOLERANCE_DEGREES - 0.1), 118.99)).toBe(true);
+  });
+
+  it('refuses readings just outside the tolerance, so a moved phone pays the full gate', () => {
+    expect(isWarmStream(steadyReadings(118.99 + WARM_TOLERANCE_DEGREES + 0.1), 118.99)).toBe(false);
+  });
+
+  it.each([5, 15, 40, 90])('refuses a phone turned %p degrees while the sheet was closed', (moved) => {
+    expect(isWarmStream(steadyReadings(118.99 + moved), 118.99)).toBe(false);
+  });
+
+  it('compares across north, where a plain mean would read half a turn out', () => {
+    expect(isWarmStream(steadyReadings(359), 1)).toBe(true);
+  });
+
+  it('reads only the most recent readings, so a stale buffer cannot carry a refusal', () => {
+    const stale = [...steadyReadings(40, WARM_CONFIRM_READINGS), ...steadyReadings(118.99)];
+
+    expect(isWarmStream(stale, 118.99)).toBe(true);
   });
 });
