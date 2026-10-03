@@ -8,6 +8,7 @@ import { useQibla } from '@/hooks/useQibla';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
+import { CERTAINTY_CEILING_MS, CERTAINTY_THRESHOLD_DEGREES } from '@/shared/qiblaSettle';
 import { Icon } from '@/shared/types';
 import { setQiblaSheetModal } from '@/stores/ui';
 
@@ -41,8 +42,8 @@ const oneDecimal = (value: number | undefined): string => value?.toFixed(1) ?? P
  * for. The gesture was never verifiable anyway, only a proxy for the OS having re-estimated its hard iron.
  *
  * So the wait FAILS OPEN. A gate that waits for a gesture can refuse forever on a phone whose magnetometer
- * misbehaves, leaving the user no way through; a timer always ends, and a user who ignores the invitation
- * simply gets what the settling gate alone can give them.
+ * misbehaves, leaving the user no way through; a user who ignores the invitation simply gets whatever certainty
+ * the phone reports on its own.
  */
 const QiblaCalibration = ({ size }: { size: number }) => (
   <View style={styles.waiting}>
@@ -108,13 +109,23 @@ const QiblaPermissionDenied = () => (
 
 export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
-  const { bearing, hasHeading, permissionDenied, place, heading, aligned, diagnostic, arrivedWarm, start, stop } =
-    useQibla();
+  const {
+    bearing,
+    hasHeading,
+    permissionDenied,
+    place,
+    heading,
+    aligned,
+    diagnostic,
+    arrivedWarm,
+    openedBy,
+    start,
+    stop,
+  } = useQibla();
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
-  // There is no timer beside the settling gate: a cold open waits for the heading to stop drifting across its
-  // own 3000ms window, measured at 30 degrees of error on a cold magnetometer against 0.71 once converged, and
-  // a reopen that meets the stream it left skips the wait instead of re-proving it
+  // The wait is the phone's own uncertainty rather than a clock: it draws as soon as the phone reports a heading
+  // it trusts, and a ceiling keeps a phone that never does from locking the screen
   const showsCompass = bearing !== null && hasHeading;
   const isCalibrating = !showsCompass && !permissionDenied;
 
@@ -165,6 +176,9 @@ export default function BottomSheetQibla() {
           <Text style={styles.place}>{`wants calibration ${diagnostic?.wantsCalibration ?? PENDING}`}</Text>
           <Text style={styles.place}>{`fused heading ${oneDecimal(diagnostic?.fusedHeadingDegrees)}`}</Text>
           <Text style={styles.place}>{`fused error ${oneDecimal(diagnostic?.fusedErrorDegrees)}`}</Text>
+          {/* The two readings this prototype exists to produce: what opened the gate, against the bar it was judged on */}
+          <Text style={styles.place}>{`drew on ${openedBy ?? PENDING}`}</Text>
+          <Text style={styles.place}>{`bar ${CERTAINTY_THRESHOLD_DEGREES} / ceiling ${CERTAINTY_CEILING_MS}ms`}</Text>
         </View>
       )}
     </Sheet>
