@@ -158,6 +158,19 @@ describe('the qibla sheet before it is opened', () => {
     expect(screen.getByText('Just a moment').props.numberOfLines).toBe(1);
     expect(screen.getByText('Hold flat and turn slowly').props.numberOfLines).toBe(1);
   });
+
+  // An absolutely positioned child contributes NO width, so whichever line is taken out of flow cannot widen
+  // the container. Leaving the SHORTER line in flow shrink-wraps the column to it and truncates the longer one
+  // to an ellipsis, which is what the owner saw: "it says hold the phone flat and dot dot dot".
+  it('leaves the longer subtitle in flow, so neither line is truncated', async () => {
+    await render(<QiblaSheet />);
+
+    const position = (text: string) =>
+      (StyleSheet.flatten(screen.getByText(text).props.style) as { position?: string }).position;
+
+    expect(position('Hold flat and turn slowly')).toBeUndefined();
+    expect(position('Just a moment')).toBe('absolute');
+  });
 });
 
 // This suite runs the SHIPPED configuration, with the diagnostic flag off. QiblaDiagnostic.test.tsx is its
