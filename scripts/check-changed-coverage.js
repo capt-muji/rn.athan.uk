@@ -61,6 +61,10 @@ const UNMEASURED = [
     path: 'ai/plans/52-qibla-wait/scripts/probes/',
     reason: 'executed research artefacts, run once under Node to size the settling wait, never by the app',
   },
+  {
+    path: 'ai/plans/53-qibla-accuracy-gate/scripts/probes/',
+    reason: 'executed research artefacts, run once under Node to size the accuracy gate, never by the app',
+  },
   { path: 'scripts/', reason: 'repository tooling, including this gate' },
   { path: '.agents/', reason: 'Expo and EAS agent skills, documentation for coding agents' },
   { path: 'jest.config.js', reason: 'test runner configuration' },
