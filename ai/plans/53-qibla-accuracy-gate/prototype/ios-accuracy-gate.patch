@@ -1,0 +1,288 @@
+diff --git a/components/sheets/screens/Qibla.tsx b/components/sheets/screens/Qibla.tsx
+index 6966085e..d56b5643 100644
+--- a/components/sheets/screens/Qibla.tsx
++++ b/components/sheets/screens/Qibla.tsx
+@@ -8,6 +8,7 @@ import { useQibla } from '@/hooks/useQibla';
+ import { useWindowDimensions } from '@/hooks/useWindowDimensions';
+ import { ANIMATION, COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
+ import { FEATURE_FLAGS } from '@/shared/flags';
++import { CERTAINTY_CEILING_MS, CERTAINTY_THRESHOLD_DEGREES } from '@/shared/qiblaSettle';
+ import { Icon } from '@/shared/types';
+ import { setQiblaSheetModal } from '@/stores/ui';
+ 
+@@ -41,8 +42,8 @@ const oneDecimal = (value: number | undefined): string => value?.toFixed(1) ?? P
+  * for. The gesture was never verifiable anyway, only a proxy for the OS having re-estimated its hard iron.
+  *
+  * So the wait FAILS OPEN. A gate that waits for a gesture can refuse forever on a phone whose magnetometer
+- * misbehaves, leaving the user no way through; a timer always ends, and a user who ignores the invitation
+- * simply gets what the settling gate alone can give them.
++ * misbehaves, leaving the user no way through; a user who ignores the invitation simply gets whatever certainty
++ * the phone reports on its own.
+  */
+ const QiblaCalibration = ({ size }: { size: number }) => (
+   <View style={styles.waiting}>
+@@ -108,13 +109,23 @@ const QiblaPermissionDenied = () => (
+ 
+ export default function BottomSheetQibla() {
+   const { width, height } = useWindowDimensions();
+-  const { bearing, hasHeading, permissionDenied, place, heading, aligned, diagnostic, arrivedWarm, start, stop } =
+-    useQibla();
++  const {
++    bearing,
++    hasHeading,
++    permissionDenied,
++    place,
++    heading,
++    aligned,
++    diagnostic,
++    arrivedWarm,
++    openedBy,
++    start,
++    stop,
++  } = useQibla();
+ 
+   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
+-  // There is no timer beside the settling gate: a cold open waits for the heading to stop drifting across its
+-  // own 3000ms window, measured at 30 degrees of error on a cold magnetometer against 0.71 once converged, and
+-  // a reopen that meets the stream it left skips the wait instead of re-proving it
++  // The wait is the phone's own uncertainty rather than a clock: it draws as soon as the phone reports a heading
++  // it trusts, and a ceiling keeps a phone that never does from locking the screen
+   const showsCompass = bearing !== null && hasHeading;
+   const isCalibrating = !showsCompass && !permissionDenied;
+ 
+@@ -165,6 +176,9 @@ export default function BottomSheetQibla() {
+           <Text style={styles.place}>{`wants calibration ${diagnostic?.wantsCalibration ?? PENDING}`}</Text>
+           <Text style={styles.place}>{`fused heading ${oneDecimal(diagnostic?.fusedHeadingDegrees)}`}</Text>
+           <Text style={styles.place}>{`fused error ${oneDecimal(diagnostic?.fusedErrorDegrees)}`}</Text>
++          {/* The two readings this prototype exists to produce: what opened the gate, against the bar it was judged on */}
++          <Text style={styles.place}>{`drew on ${openedBy ?? PENDING}`}</Text>
++          <Text style={styles.place}>{`bar ${CERTAINTY_THRESHOLD_DEGREES} / ceiling ${CERTAINTY_CEILING_MS}ms`}</Text>
+         </View>
+       )}
+     </Sheet>
+diff --git a/hooks/useQibla.ts b/hooks/useQibla.ts
+index 16ac99e7..b62b3bdf 100644
+--- a/hooks/useQibla.ts
++++ b/hooks/useQibla.ts
+@@ -4,11 +4,10 @@ import { type SharedValue, useSharedValue } from 'react-native-reanimated';
+ 
+ import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
+ import { type QiblaDiagnostic, watchQiblaDiagnostic } from '@/modules/qiblaheading';
+-import { FEATURE_FLAGS } from '@/shared/flags';
+ import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
+ import { unwrapHeading } from '@/shared/qiblaCompass';
+ import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
+-import { type HeadingSample, hasSettled, isWarmStream, trailingWindow } from '@/shared/qiblaSettle';
++import { CERTAINTY_CEILING_MS, isCertain, isWarmStream } from '@/shared/qiblaSettle';
+ 
+ export interface QiblaState {
+   bearing: number | null;
+@@ -21,8 +20,13 @@ export interface QiblaState {
+   diagnostic: QiblaDiagnostic | null;
+   /** Whether the compass arrived on a stream proven warm, so nothing was waited for and nothing arrived to announce */
+   arrivedWarm: boolean;
++  /** What opened the gate, so a prototype build can report whether the phone's own certainty or the ceiling did */
++  openedBy: GateOpening;
+ }
+ 
++/** Null until the compass is drawn, then which of the three paths drew it */
++export type GateOpening = 'warm' | 'certainty' | 'ceiling' | null;
++
+ /** Long enough to ride out the gaps a settling magnetometer leaves, short enough that a real loss still shows */
+ const HEADING_GRACE_MS = 1500;
+ 
+@@ -60,6 +64,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+     place: undefined,
+     diagnostic: null,
+     arrivedWarm: false,
++    openedBy: null,
+   });
+   const heading = useSharedValue(0);
+   const aligned = useSharedValue(false);
+@@ -69,13 +74,16 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+   const unwatchDiagnosticRef = useRef<(() => void) | null>(null);
+   const blankRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+   const bearingRef = useRef<number | null>(null);
+-  const samplesRef = useRef<HeadingSample[]>([]);
+   const settledRef = useRef(false);
+   const positionRef = useRef<Coordinates | null>(null);
+   const placeRef = useRef<string | null | undefined>(undefined);
+   // Outlives stop(), which is the whole point: it is what a reopen checks the fresh stream against
+   const warmHeadingRef = useRef<number | null>(null);
+   const confirmRef = useRef<number[]>([]);
++  // The gate runs on the heading stream while the accuracy arrives on its own, so the latest reading is held here
++  const accuracyRef = useRef<number | undefined>(undefined);
++  // The ceiling is measured from the first reading of THIS stream, so a lost fix restarts it rather than firing at once
++  const firstReadingAtRef = useRef<number | null>(null);
+ 
+   const clearBlank = useCallback(() => {
+     if (!blankRef.current) return;
+@@ -88,6 +96,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+     // The stream is genuinely gone rather than blinking, so the fusion must prove itself again before it is drawn
+     settledRef.current = false;
+     warmHeadingRef.current = null;
++    firstReadingAtRef.current = null;
+     setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
+   }, []);
+ 
+@@ -95,9 +104,10 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+     activeRef.current = false;
+     alignedRef.current = false;
+     aligned.value = false;
+-    samplesRef.current = [];
+     settledRef.current = false;
+     confirmRef.current = [];
++    accuracyRef.current = undefined;
++    firstReadingAtRef.current = null;
+     clearBlank();
+     unwatchRef.current?.();
+     unwatchRef.current = null;
+@@ -106,7 +116,9 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+     // Kept, the heading outlives the close and the next open paints ONE frame of compass before the gate can
+     // shut it: the owner saw the dial flash, then the hint, then the dial. There is no live heading while the
+     // watch is torn down, so reporting one would be a lie in any case
+-    setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false, arrivedWarm: false } : previous));
++    setState((previous) =>
++      previous.hasHeading ? { ...previous, hasHeading: false, arrivedWarm: false, openedBy: null } : previous
++    );
+   }, [aligned, clearBlank]);
+ 
+   const processReading = useCallback(
+@@ -115,17 +127,18 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+         // The magnetometer drops the odd reading while it settles, and unmounting on one resizes the sheet
+         alignedRef.current = false;
+         aligned.value = false;
+-        // A stale half-window would otherwise settle the moment the fix returns, on readings from before it was lost
+-        samplesRef.current = [];
++        // Stale readings from before the loss would otherwise confirm a warm stream, and the ceiling would fire the
++        // instant the fix returned
+         confirmRef.current = [];
++        firstReadingAtRef.current = null;
+         if (!blankRef.current) blankRef.current = setTimeout(blank, HEADING_GRACE_MS);
+         return;
+       }
+ 
+-      // Collected before the bearing exists, so the window fills while the position is still being read
+       const nowMs = Date.now();
+-      const window = trailingWindow([...samplesRef.current, { degrees: trueHeading, atMs: nowMs }], nowMs);
+-      samplesRef.current = window;
++      // Started before the bearing exists, so the ceiling counts from the stream's real start rather than from
++      // whenever the position read happened to return
++      firstReadingAtRef.current ??= nowMs;
+ 
+       const bearing = bearingRef.current;
+       if (bearing === null) return;
+@@ -133,17 +146,27 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+       clearBlank();
+ 
+       let arrivedWarm = false;
+-
+-      // The gate LATCHES: a cold fusion's first reading measured about 30 degrees out against 0.71 settled, so the
+-      // compass waits once for the stream to converge. Re-testing it per reading would drop every update made while
+-      // the user turns the phone, which is the one moment the dial has to follow.
++      let openedBy: GateOpening = null;
++
++      // The gate LATCHES: once the compass is drawn every later reading reaches the dial, because re-testing per
++      // reading would drop exactly the updates made while the user turns the phone.
++      //
++      // It ASKS the phone rather than timing it. The old span check was a stopwatch: the owner's 20 trials across
++      // both phones found the drift test already satisfied on the first reading, so the gate sat holding a correct
++      // heading for 2700ms waiting for the clock. The phone reports its own uncertainty in degrees, so that is what
++      // decides, and the ceiling is what keeps a phone that never reports one from locking the screen.
+       if (!settledRef.current) {
+         const remembered = warmHeadingRef.current;
+         confirmRef.current = [...confirmRef.current, trueHeading];
+         // A reopen meeting the stream it left has already paid for this window once, so re-proving it is pure wait
+         arrivedWarm = remembered !== null && isWarmStream(confirmRef.current, remembered);
+ 
+-        if (!arrivedWarm && !hasSettled(window, nowMs)) return;
++        const waitedMs = nowMs - firstReadingAtRef.current;
++        if (arrivedWarm) openedBy = 'warm';
++        else if (isCertain(accuracyRef.current)) openedBy = 'certainty';
++        else if (waitedMs >= CERTAINTY_CEILING_MS) openedBy = 'ceiling';
++
++        if (openedBy === null) return;
+         settledRef.current = true;
+       }
+ 
+@@ -154,7 +177,9 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+       aligned.value = nowAligned;
+       heading.value = unwrapHeading(heading.value, trueHeading);
+       warmHeadingRef.current = trueHeading;
+-      setState((previous) => (previous.hasHeading ? previous : { ...previous, hasHeading: true, arrivedWarm }));
++      setState((previous) =>
++        previous.hasHeading ? previous : { ...previous, hasHeading: true, arrivedWarm, openedBy }
++      );
+     },
+     [aligned, blank, clearBlank, heading]
+   );
+@@ -174,11 +199,15 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
+     // what the sheet's blank seconds were
+     const unwatchPromise = watchHeading(({ trueHeading }) => processReading(trueHeading));
+ 
+-    if (FEATURE_FLAGS.qiblaDiagnostic) {
+-      unwatchDiagnosticRef.current = watchQiblaDiagnostic((diagnostic) =>
+-        setState((previous) => ({ ...previous, diagnostic }))
+-      );
+-    }
++    // Unconditional, because the gate now DECIDES on this reading rather than merely displaying it. Only the
++    // readout stays behind the flag.
++    unwatchDiagnosticRef.current = watchQiblaDiagnostic((diagnostic) => {
++      // FOP attaches its cone to SOME samples only, so a silent sample must leave the last reading standing: taking
++      // it as the new value would erase a good reading and strand the gate on the ceiling
++      const reported = diagnostic.accuracyDegrees ?? diagnostic.fusedErrorDegrees;
++      if (reported !== undefined) accuracyRef.current = reported;
++      setState((previous) => ({ ...previous, diagnostic }));
++    });
+ 
+     // A position from an earlier open draws at once and the fresh read revalidates behind it, because the qibla
+     // moves under half a degree across the sort of distance a phone crosses between two opens in one place
+diff --git a/shared/qiblaSettle.ts b/shared/qiblaSettle.ts
+index e4e07bc2..e2c3dc4c 100644
+--- a/shared/qiblaSettle.ts
++++ b/shared/qiblaSettle.ts
+@@ -40,6 +40,44 @@ export const WARM_CONFIRM_READINGS = 8;
+  */
+ export const WARM_TOLERANCE_DEGREES = 3;
+ 
++/**
++ * The worst uncertainty the phone may report and still have its heading drawn.
++ *
++ * Apple states the units: "the maximum deviation of where the magnetic heading may differ from the actual
++ * geomagnetic heading in degrees", so this is a HALF-angle and fifteen means fifteen either way.
++ *
++ * No scholar fixes a number: the classical rule is qualitative, and the sources give a principle instead, that
++ * the attainable is not forfeited for the unattainable. So this is the best the hardware can actually promise,
++ * which is what that principle asks for. A tighter bar is not piety, it is a refusal screen: at 5 the gate never
++ * fired once, because the measured floor on a phone indoors is about 12.
++ *
++ * Reasoned in full, with the sources verified, in ai/plans/53-qibla-accuracy-gate/RESEARCH.md.
++ */
++export const CERTAINTY_THRESHOLD_DEGREES = 15;
++
++/**
++ * How long the gate waits for a certainty the phone may never report.
++ *
++ * A phone can sit at 25 degrees indefinitely, and this screen must never lock, so the wait is bounded. The bound
++ * reads no readings, which is what makes it immune to the motion and noise that defeat a stream test.
++ *
++ * It is not shorter than the 2700ms the span check used to take: a phone that cannot say it is certain must not be
++ * drawn SOONER than before, because that would buy speed with accuracy.
++ */
++export const CERTAINTY_CEILING_MS = 3000;
++
++/**
++ * Whether the phone has reported an uncertainty tight enough to draw on.
++ *
++ * Absence is not certainty: FOP attaches its error cone per sample, so a missing value means the phone said
++ * nothing, and reading it as zero would make silence the most confident answer there is.
++ *
++ * A NEGATIVE value is Apple's documented sentinel for a heading it considers invalid, and Apple gates on it
++ * unconditionally in its own sample code. A bare `value <= threshold` would open on exactly that reading.
++ */
++export const isCertain = (accuracyDegrees: number | undefined): boolean =>
++  accuracyDegrees !== undefined && accuracyDegrees >= 0 && accuracyDegrees <= CERTAINTY_THRESHOLD_DEGREES;
++
+ /** A reading as the watch delivers it, with the moment it arrived */
+ export interface HeadingSample {
+   degrees: number;
