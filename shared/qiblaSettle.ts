@@ -40,6 +40,44 @@ export const WARM_CONFIRM_READINGS = 8;
  */
 export const WARM_TOLERANCE_DEGREES = 3;
 
+/**
+ * The worst uncertainty the phone may report and still have its heading drawn.
+ *
+ * Apple states the units: "the maximum deviation of where the magnetic heading may differ from the actual
+ * geomagnetic heading in degrees", so this is a HALF-angle and fifteen means fifteen either way.
+ *
+ * No scholar fixes a number: the classical rule is qualitative, and the sources give a principle instead, that
+ * the attainable is not forfeited for the unattainable. So this is the best the hardware can actually promise,
+ * which is what that principle asks for. A tighter bar is not piety, it is a refusal screen: at 5 the gate never
+ * fired once, because the measured floor on a phone indoors is about 12.
+ *
+ * Reasoned in full, with the sources verified, in ai/plans/53-qibla-accuracy-gate/RESEARCH.md.
+ */
+export const CERTAINTY_THRESHOLD_DEGREES = 15;
+
+/**
+ * How long the gate waits for a certainty the phone may never report.
+ *
+ * A phone can sit at 25 degrees indefinitely, and this screen must never lock, so the wait is bounded. The bound
+ * reads no readings, which is what makes it immune to the motion and noise that defeat a stream test.
+ *
+ * It is not shorter than the 2700ms the span check used to take: a phone that cannot say it is certain must not be
+ * drawn SOONER than before, because that would buy speed with accuracy.
+ */
+export const CERTAINTY_CEILING_MS = 3000;
+
+/**
+ * Whether the phone has reported an uncertainty tight enough to draw on.
+ *
+ * Absence is not certainty: FOP attaches its error cone per sample, so a missing value means the phone said
+ * nothing, and reading it as zero would make silence the most confident answer there is.
+ *
+ * A NEGATIVE value is Apple's documented sentinel for a heading it considers invalid, and Apple gates on it
+ * unconditionally in its own sample code. A bare `value <= threshold` would open on exactly that reading.
+ */
+export const isCertain = (accuracyDegrees: number | undefined): boolean =>
+  accuracyDegrees !== undefined && accuracyDegrees >= 0 && accuracyDegrees <= CERTAINTY_THRESHOLD_DEGREES;
+
 /** A reading as the watch delivers it, with the moment it arrived */
 export interface HeadingSample {
   degrees: number;

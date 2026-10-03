@@ -1,0 +1,9 @@
+      if (!settledRef.current) {
+        const remembered = warmHeadingRef.current;
+        confirmRef.current = [...confirmRef.current, trueHeading];
+        // A reopen meeting the stream it left has already paid for this window once, so re-proving it is pure wait
+        arrivedWarm = remembered !== null && isWarmStream(confirmRef.current, remembered);
+
+        if (!arrivedWarm && !hasSettled(window, nowMs)) return;
+        settledRef.current = true;
+      }
