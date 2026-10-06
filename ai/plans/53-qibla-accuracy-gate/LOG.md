@@ -466,3 +466,85 @@ a lot of magnetism, it's not accurate."
   app the owner is testing.
 - **`expo run:ios` can stay attached after it installs**, printing `Waiting on http://localhost:8081`, so it sends
   no finish notice. Read the phone's reported version to know the install landed.
+
+## The Android prototype: the same gate on three phones, and the owner rejected it (2026-10-06)
+
+The owner's item 5. No app code was changed for it, on his rule that the compass logic is not touched.
+
+### The build
+
+The readout flag reaches a mock build through `.env.example` alone (`MEASURED.md` section 3), so the build came
+from a throwaway commit object: `7f3a796e` (1.29.249) with that one line set to `1`, made with `git commit-tree`,
+on no branch and never merged.
+
+```
+git diff --stat 7f3a796e 80029f50
+ .env.example | 2 +-
+
+zsh ~/athan-device-sweep/session3/bin/build-mock.zsh 80029f50a127e63e2bc8b793d8913d6a3bb9e5b9 mocks/simple.ts \
+  ~/athan-device-sweep/session53/android/mock-249-readout.apk
+BUILD-MOCK OK
+package        com.mugtaba.athan
+versionName    1.29.249
+built          2026-10-06 23:12:34 BST in 622s
+
+aapt2 dump xmltree --file AndroidManifest.xml <apk> | grep -cE "Widget[A-Za-z]*Provider"
+8
+```
+
+### Where it went
+
+| Phone | Serial | Android | Before the install |
+| --- | --- | --- | --- |
+| OnePlus 3T | `3T_SERIAL` | 9 | No Athan package |
+| OPPO Find X8 (`CPH2659`) | `X8_SERIAL` | 16 | No Athan package, no alarms, no widgets |
+| Samsung Galaxy S23 (`SM-S911B`) | `S23_SERIAL` | 16 | No Athan package for either user. Its alarm history held widget refreshes until 20:25 that evening, so the app had been removed since |
+
+Each answered `Success` and reported `versionName=1.29.249`. Nothing was overwritten on any of them.
+
+### What the owner found
+
+🐋  "I tested the same build on Android, all 3 Android phones, all of them, horrible jittery, very inaccurate. All
+of them drew on ceiling. In fact, the Samsung Galaxy S 23 took like 8 seconds to draw... The fused error says 180,
+the fused heading says, 260, 70."
+
+🐋  "I think the previous build on Android was actually accurate and smooth."
+
+He also reported one phone turning the opposite way to the other two, and the dial not following him as he
+turned.
+
+### What this is, and what is NOT yet known
+
+**Tonight is the first time any Android phone has run the gate of 1.29.248.** The 3T's last build was 1.29.244.
+Between that build and this one the app's code differs in three files and by two commits:
+
+```
+git log --oneline f1602822..7f3a796e -- hooks/useQibla.ts shared/qiblaSettle.ts components/sheets/screens/Qibla.tsx
+f6624843 1.29.249 - test: the qibla certainty gate is covered, and the stopwatch it replaced is deleted
+f7eeb1c5 1.29.248 - feat: the qibla compass asks the phone how sure it is, instead of timing it
+```
+
+`f6624843` changes comments and removes code nothing called (step 2's proof). `f7eeb1c5` is the gate.
+
+**What that gate changed for Android, READ from the code and not measured on a phone:**
+
+1. **Google's fused provider now starts on every open.** Until 1.29.248 it started only behind the diagnostic
+   flag, which the owner's Android builds had off. The module asks for `OUTPUT_PERIOD_DEFAULT` and sends every
+   sample across to JavaScript (`QiblaHeadingModule.kt`, `emit`).
+2. **Every one of those samples sets state**, so the sheet renders once per sample, on the thread the heading
+   itself arrives on.
+3. **`fused error` read 180 on all three phones**, so the bar of 15 was never met and every open waited for the
+   ceiling.
+
+Step 2's findings 2 and 3 named the first two as risks an hour before the phones showed them. **Nothing here is
+proven as the cause yet**: no `dumpsys sensorservice` reading and no thread measurement was taken, because the
+owner tested with the cable out.
+
+### What is ready, and what waits on the owner
+
+- **The previous Android build is kept**, `~/athan-device-sweep/session52/mock-244.apk` (1.29.244, 8 widget
+  providers), so any of the three phones can be swapped back with `adb install -r` in seconds, as the iPhone was.
+- **What the gate does on Android is his decision**, and it is a change to compass logic, so nothing is built.
+  The stopwatch step 2 deleted is in git at 1.29.248 if Android returns to it.
+- **All three Android phones are left on the mock build of 1.29.249 with the readout on**, until he says
+  otherwise. It carries invented prayer times.
