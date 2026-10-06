@@ -274,7 +274,7 @@ and what changed:
 - [x] Prototype P1: the accuracy gate, built and installed on the iPhone XS (specified, no tests). DONE in
       `f7eeb1c5`, 1.29.248, committed under the owner's one-time `--no-verify`
 - [x] Step 2: the iOS half covered, and the stopwatch it replaced deleted (specified, `steps/2-ios-coverage.md`).
-      DONE in 1.29.249, through the hook
+      DONE in `f6624843`, 1.29.249, through the hook. Audited: `AUDIT.md`
 
 ### Prototype P1: gate the compass on the reported accuracy, iOS first
 
