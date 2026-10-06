@@ -400,3 +400,69 @@ NEVER reachable from production code: 5      (the five standing entries)
 - **A break's search text can hold a `/`, a `$` or a backtick when it travels in the environment.** The earlier
   scripts interpolate it into the `perl` program, where a template literal cannot survive. `breaks-1.sh` reads
   `$ENV{SEARCH}` instead.
+
+### Step 2: the commit, the review, the merge and the phone
+
+| | |
+| --- | --- |
+| Branch | `test/qibla-certainty-gate-coverage`, deleted after the merge |
+| Commit | `f6624843`, 1.29.249, amended once from `f29e486f` before it was merged |
+| Hook, both times | `Test Suites: 187 passed, 187 total`, `Tests: 5086 passed, 5086 total`, four `100%` lines |
+| Breaks | `CAUGHT: 23 of 23`, `ALL AS EXPECTED: 1` |
+| Review | One finding, fixed by the amend: the suite's `openSheet` helper still described a timeout session 52 had removed. The second read was clean |
+| Merge | `7f3a796e` |
+| Audit | `AUDIT.md`, verdict PASS. Not pushed |
+
+```
+npx expo prebuild -p ios --no-install
+grep -A1 CFBundleShortVersionString ios/Athan/Info.plist     -> 1.29.249
+npx expo run:ios --configuration Release --device IPHONE_UDID
+› Build Succeeded
+› 0 error(s), and 5 warning(s)
+
+xcrun devicectl device info apps --device IPHONE_UDID | grep "com.mugtaba.athan "
+Athan   com.mugtaba.athan   1.29.249   1
+```
+
+### The owner judged 1.29.249 broken, and a side by side on his own phone settled it
+
+He opened the new build and read `accuracy` at 18 to 20 with `drew on ceiling`, where he remembered 12.5 and
+`drew on certainty`: 🐋  "whatever changes you just made in the session completely ruined it because it was never,
+ever, ever drawing on a ceiling before." With 1.29.248 put back, it read 13 and `drew on certainty`, and he asked
+for the difference to be found.
+
+**Nothing that runs differs between the two builds.** Measured on the bundles themselves, each exported from its
+own commit in one environment with `npx expo export:embed --platform ios --dev false --minify false`:
+
+| Check | Result |
+| --- | --- |
+| Code lines only in 1.29.249 | 0 |
+| Code lines only in 1.29.248 | 42, every one the stopwatch's definitions and export getters |
+| `hasSettled` and `trailingWindow` in the 1.29.248 bundle | 3 occurrences each: defined, exported, returned. No caller |
+| The gate's three branches, the bar and the ceiling | Character for character identical |
+| Native code, patches and dependencies | No file differs. `app.json` and `package.json` differ by the version alone |
+
+The number on the screen is Apple's, passed through untouched by `modules/qiblaheading`:
+`"accuracyDegrees": heading.headingAccuracy`. Nothing in the JavaScript can move it. So both readings obey one
+rule, 18 fails the bar and 13 passes it, and what differed was the number the phone reported.
+
+**What settled it was removing time and place from the comparison.** Both signed apps are kept at
+`~/athan-device-sweep/session53/ab/` (`Athan-1.29.248.app`, `Athan-1.29.249.app`), and
+`xcrun devicectl device install app --device <udid> <path>` swaps one for the other in 7 to 8 seconds. He tested
+each build in the same two rooms and ruled: 🐋  "I think both the builds are the same. So let's just keep 249".
+His reading of the rooms, on both builds: 🐋  "It's very accurate in another room. But in one room where I have
+a lot of magnetism, it's not accurate."
+
+**The phone is left on 1.29.249**, the mock build with the readout on.
+
+### Three things this cost, worth carrying
+
+- **A side by side taken minutes apart, across a reinstall, cannot separate a build from a place** when the
+  quantity is a magnetometer's own uncertainty. Keep both signed apps and swap them in seconds, with the phone
+  left where it is. That is the only comparison the owner accepted, and it is the only one that could have failed.
+- **`expo prebuild --no-install` leaves `ios/` with no Pods and no workspace**, so a direct `xcodebuild` needs
+  `pod install` first, and it needs `DEVELOPMENT_TEAM=TEAM_ID` on its command line. `expo run:ios` supplies both
+  silently, which is why neither had come up. The direct route is the one that builds WITHOUT installing over the
+  app the owner is testing.
+- **`expo run:ios` can stay attached after it installs**, printing `Waiting on http://localhost:8081`, so it sends
+  no finish notice. Read the phone's reported version to know the install landed.
