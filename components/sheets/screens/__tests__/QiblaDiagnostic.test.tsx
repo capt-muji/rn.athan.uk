@@ -13,6 +13,7 @@ jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { qiblaDiagnostic: true } })
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 
 import type { QiblaDiagnostic } from '@/modules/qiblaheading';
+import { WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
 
 import QiblaSheet from '../Qibla';
 
@@ -45,6 +46,24 @@ const openSheet = async () => {
   await render(<QiblaSheet />);
   await fireEvent(screen.getByText('Qibla'), 'change', 0);
   await act(async () => {});
+};
+
+/** Delivers headings through the live watch, moving no clock and vouching for nothing */
+const reportHeadings = async (...headings: number[]) => {
+  const watcher = mockHeadingWatchers[mockHeadingWatchers.length - 1];
+
+  await act(async () => {
+    for (const trueHeading of headings) watcher({ trueHeading });
+  });
+};
+
+/** Delivers what the phone says about its own heading, to the live watch only */
+const reportAccuracy = async (reading: QiblaDiagnostic) => {
+  const watcher = mockDiagnosticWatchers[mockDiagnosticWatchers.length - 1];
+
+  await act(async () => {
+    watcher(reading);
+  });
 };
 
 beforeEach(() => {
@@ -108,6 +127,77 @@ describe('the diagnostic readout', () => {
 
     expect(screen.getByText('fused heading 200.0')).toBeOnTheScreen();
     expect(screen.getByText('fused error -')).toBeOnTheScreen();
+  });
+});
+
+// The readout is how the owner reports what a phone did, so each path through the gate must name itself
+describe('what the readout says drew the compass', () => {
+  it('names nothing before the compass is drawn, beside the bar and the ceiling it is judged on', async () => {
+    await openSheet();
+
+    expect(screen.getByText('drew on -')).toBeOnTheScreen();
+    expect(screen.getByText('bar 15 / ceiling 3000ms')).toBeOnTheScreen();
+  });
+
+  it('names the phone\u2019s certainty when a report inside the bar drew the compass', async () => {
+    await openSheet();
+
+    await reportAccuracy({ accuracyDegrees: 12.5, wantsCalibration: false });
+    await reportHeadings(118);
+
+    expect(screen.getByText('drew on certainty')).toBeOnTheScreen();
+  });
+
+  it('names the ceiling when the phone never vouched for its heading', async () => {
+    jest.useFakeTimers();
+    await openSheet();
+    await reportHeadings(118);
+
+    await act(async () => {
+      jest.advanceTimersByTime(3000);
+    });
+    await reportHeadings(118);
+
+    expect(screen.getByText('drew on ceiling')).toBeOnTheScreen();
+  });
+
+  it('names the warm reopen when the phone had not moved since the sheet last drew', async () => {
+    await openSheet();
+    await reportAccuracy({ accuracyDegrees: 12.5, wantsCalibration: false });
+    await reportHeadings(118);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportHeadings(...Array.from({ length: WARM_CONFIRM_READINGS }, () => 118));
+
+    expect(screen.getByText('drew on warm')).toBeOnTheScreen();
+  });
+
+  // Both are true on the confirming reading here, and warm must win: nothing arrived, so nothing is announced
+  it('names the warm reopen even when the phone vouches for its heading on the confirming reading', async () => {
+    await openSheet();
+    await reportAccuracy({ accuracyDegrees: 12.5, wantsCalibration: false });
+    await reportHeadings(118);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportHeadings(...Array.from({ length: WARM_CONFIRM_READINGS - 1 }, () => 118));
+    await reportAccuracy({ accuracyDegrees: 12.5, wantsCalibration: false });
+    await reportHeadings(118);
+
+    expect(screen.getByText('drew on warm')).toBeOnTheScreen();
+  });
+
+  it('forgets what drew the compass when the sheet closes, so a reopen never reports the last visit', async () => {
+    await openSheet();
+    await reportAccuracy({ accuracyDegrees: 12.5, wantsCalibration: false });
+    await reportHeadings(118);
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    expect(screen.getByText('drew on -')).toBeOnTheScreen();
   });
 });
 

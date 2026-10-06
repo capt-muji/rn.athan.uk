@@ -1,24 +1,16 @@
 /**
- * When the heading stream counts as converged, so the compass never draws a cold fusion's first guess
+ * When the compass may be drawn: the phone's own certainty, and a reopen proven warm
  */
 
 import {
+  CERTAINTY_CEILING_MS,
   circularMean,
-  type HeadingSample,
-  hasSettled,
   headingDelta,
+  isCertain,
   isWarmStream,
-  SETTLE_DRIFT_DEGREES,
-  SETTLE_MIN_READINGS,
-  SETTLE_WINDOW_MS,
-  trailingWindow,
   WARM_CONFIRM_READINGS,
   WARM_TOLERANCE_DEGREES,
 } from '../qiblaSettle';
-
-/** A window of `count` readings spread evenly across the full period, all at `degrees` */
-const steady = (degrees: number, count: number, spanMs = SETTLE_WINDOW_MS): HeadingSample[] =>
-  Array.from({ length: count }, (_, i) => ({ degrees, atMs: (i * spanMs) / (count - 1) }));
 
 describe('circularMean', () => {
   it('averages headings either side of north to north, where a plain mean gives south', () => {
@@ -43,83 +35,35 @@ describe('headingDelta', () => {
   });
 });
 
-describe('trailingWindow', () => {
-  it('drops a reading older than the window and keeps one exactly on its edge', () => {
-    const samples: HeadingSample[] = [
-      { degrees: 100, atMs: 0 },
-      { degrees: 110, atMs: 1000 },
-      { degrees: 120, atMs: 4000 },
-    ];
+describe('isCertain', () => {
+  // Android attaches its error cone to some samples only, so a missing value is the phone saying nothing
+  it('takes an absent report as silence, never as certainty', () => {
+    expect(isCertain(undefined)).toBe(false);
+  });
 
-    expect(trailingWindow(samples, 4000)).toEqual([
-      { degrees: 110, atMs: 1000 },
-      { degrees: 120, atMs: 4000 },
-    ]);
+  // Apple's sentinel for a heading it considers invalid, which a bare comparison would open on
+  it('refuses a negative report, which is the phone disowning its own heading', () => {
+    expect(isCertain(-1)).toBe(false);
+  });
+
+  // reported uncertainty in degrees, whether it is tight enough. The bar is written as literals, each side of it,
+  // beside the two readings taken on the owner's iPhone: 12.5 indoors, which must draw, and 25.4 on a cable
+  // beside a laptop, which must not
+  it.each([
+    [0, true],
+    [12.5, true],
+    [15, true],
+    [15.1, false],
+    [25.4, false],
+  ])('a reported uncertainty of %p degrees is tight enough to draw on: %p', (accuracyDegrees, expected) => {
+    expect(isCertain(accuracyDegrees)).toBe(expected);
   });
 });
 
-describe('hasSettled', () => {
-  it('refuses a window holding one reading fewer than the minimum', () => {
-    const window = steady(118.99, SETTLE_MIN_READINGS - 1);
-
-    expect(hasSettled(window, SETTLE_WINDOW_MS)).toBe(false);
-  });
-
-  it('accepts a steady window holding exactly the minimum', () => {
-    const window = steady(118.99, SETTLE_MIN_READINGS);
-
-    expect(hasSettled(window, SETTLE_WINDOW_MS)).toBe(true);
-  });
-
-  it('refuses a window with enough readings that does not SPAN the period, however steady it looks', () => {
-    // The trap the probes caught: a fast stream fills the count in a fraction of the window, and a drift
-    // measured over that fraction of a slow convergence passes at 29 degrees of error rather than 10
-    const window = steady(118.99, SETTLE_MIN_READINGS + 4, 400);
-
-    expect(hasSettled(window, 400)).toBe(false);
-  });
-
-  it('accepts a window spanning nine tenths of the period, which is the stated tolerance', () => {
-    const window = steady(118.99, SETTLE_MIN_READINGS, SETTLE_WINDOW_MS * 0.9);
-
-    expect(hasSettled(window, SETTLE_WINDOW_MS * 0.9)).toBe(true);
-  });
-
-  it('refuses a stream still converging, because its two halves disagree', () => {
-    // 30 degrees of cold error decaying across the window: quiet between readings, still moving overall
-    const window: HeadingSample[] = Array.from({ length: 12 }, (_, i) => ({
-      degrees: 118.99 + 30 * Math.exp(-i / 4),
-      atMs: (i * SETTLE_WINDOW_MS) / 11,
-    }));
-
-    expect(hasSettled(window, SETTLE_WINDOW_MS)).toBe(false);
-  });
-
-  it('accepts a window whose halves differ by exactly the drift threshold', () => {
-    const window: HeadingSample[] = Array.from({ length: 8 }, (_, i) => ({
-      degrees: i < 4 ? 118 : 118 + SETTLE_DRIFT_DEGREES,
-      atMs: (i * SETTLE_WINDOW_MS) / 7,
-    }));
-
-    expect(hasSettled(window, SETTLE_WINDOW_MS)).toBe(true);
-  });
-
-  it('refuses a window whose halves differ by just over the drift threshold', () => {
-    const window: HeadingSample[] = Array.from({ length: 8 }, (_, i) => ({
-      degrees: i < 4 ? 118 : 118 + SETTLE_DRIFT_DEGREES + 0.2,
-      atMs: (i * SETTLE_WINDOW_MS) / 7,
-    }));
-
-    expect(hasSettled(window, SETTLE_WINDOW_MS)).toBe(false);
-  });
-
-  it('settles across north, where a plain mean of each half would read south and refuse', () => {
-    const window: HeadingSample[] = Array.from({ length: 8 }, (_, i) => ({
-      degrees: i % 2 === 0 ? 359.5 : 0.5,
-      atMs: (i * SETTLE_WINDOW_MS) / 7,
-    }));
-
-    expect(hasSettled(window, SETTLE_WINDOW_MS)).toBe(true);
+describe('the ceiling', () => {
+  // A phone that cannot vouch for its heading must not be drawn sooner than the stopwatch this replaced drew it
+  it('is no shorter than the 2700ms wait it replaced, so speed is never bought with accuracy', () => {
+    expect(CERTAINTY_CEILING_MS).toBeGreaterThanOrEqual(2700);
   });
 });
 

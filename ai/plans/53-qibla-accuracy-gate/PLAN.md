@@ -6,12 +6,13 @@
 | Planned at | `380a2a41` (version 1.29.246), 2026-10-03 |
 | Planned by | Planning session on 2026-10-03 |
 | Needs first | nothing |
-| Steps | 1 prototype phase (iOS), then a later phase per the owner's loop. **No commits in this session** |
+| Steps | Prototype P1 (iOS), then step 2 (iOS coverage, `steps/2-ios-coverage.md`). The Android loop is not yet specified |
 | Device | iPhone XS `IPHONE_UDID`, mock build, FIRST. OnePlus 3T `3T_SERIAL` in the Android loop afterwards |
 | Owner decisions still needed | None (see section 2) |
 
-> **Resume from:** the iOS prototype is specified in section 6 and executed in this same session. Nothing is
-> committed. The owner tests the iPhone, reports back, and the coverage-and-commit phase follows in a new session.
+> **Resume from:** the Android loop, which is the owner's item 5 and is not yet specified. The iOS half is done:
+> prototype P1 landed as 1.29.248 and step 2 covered it. Read `LOG.md`'s step 2 section first: it records the
+> owner's rule that no compass logic is touched, the findings waiting on him, and his direction on the ceiling.
 
 ---
 
@@ -270,7 +271,10 @@ and what changed:
 
 ## 6. Steps
 
-- [ ] Prototype P1: the accuracy gate, built and installed on the iPhone XS (specified, **no tests, no commit**)
+- [x] Prototype P1: the accuracy gate, built and installed on the iPhone XS (specified, no tests). DONE in
+      `f7eeb1c5`, 1.29.248, committed under the owner's one-time `--no-verify`
+- [x] Step 2: the iOS half covered, and the stopwatch it replaced deleted (specified, `steps/2-ios-coverage.md`).
+      DONE in 1.29.249, through the hook
 
 ### Prototype P1: gate the compass on the reported accuracy, iOS first
 

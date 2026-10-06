@@ -1,28 +1,9 @@
 /**
- * Whether the heading stream has CONVERGED, so the compass never draws a cold fusion's first guess.
+ * When the compass may be drawn.
  *
- * The owner's symptom: the same phone at the same spot answers 5 to 30 degrees differently on each app
- * restart. A fused heading arms cold and walks toward the truth, and the app was drawing the first step of
- * that walk. Measured, the first reading is about 30 degrees out where the converged one is 0.71.
- *
- * DRIFT is the test, never spread: a stream still converging is quiet between consecutive readings, so a
- * spread gate passes it at 27 degrees of error. Drift asks whether the window's own mean is still moving,
- * which is what convergence means.
- *
- * The window is counted in TIME and must be SPANNED. Counting readings alone needs 120 seconds on a still
- * phone, because the platform suppresses anything within 2 degrees of the last reading; and a window that
- * holds enough readings without spanning its period measures a 400ms slice of a slow convergence and opens
- * at full error.
+ * The phone is ASKED how sure it is, because the heading stream cannot say: a fused heading reads just as steady
+ * tens of degrees out as it does on the truth, so no test of the stream alone can tell the two apart.
  */
-
-/** Long enough for a cold fusion to show its drift, short enough that the user is not left waiting */
-export const SETTLE_WINDOW_MS = 3000;
-
-/** Below this the window is too sparse to mean anything, however long it has been open */
-export const SETTLE_MIN_READINGS = 8;
-
-/** The window's two halves must agree within this for the stream to count as no longer moving */
-export const SETTLE_DRIFT_DEGREES = 1.5;
 
 /**
  * How many readings of a reopen must agree with the heading the sheet last drew before it is trusted.
@@ -41,48 +22,29 @@ export const WARM_CONFIRM_READINGS = 8;
 export const WARM_TOLERANCE_DEGREES = 3;
 
 /**
- * The worst uncertainty the phone may report and still have its heading drawn.
+ * The worst uncertainty the phone may report and still have its heading drawn, as a half-angle: fifteen either way.
  *
- * Apple states the units: "the maximum deviation of where the magnetic heading may differ from the actual
- * geomagnetic heading in degrees", so this is a HALF-angle and fifteen means fifteen either way.
- *
- * No scholar fixes a number: the classical rule is qualitative, and the sources give a principle instead, that
- * the attainable is not forfeited for the unattainable. So this is the best the hardware can actually promise,
- * which is what that principle asks for. A tighter bar is not piety, it is a refusal screen: at 5 the gate never
- * fired once, because the measured floor on a phone indoors is about 12.
- *
- * Reasoned in full, with the sources verified, in ai/plans/53-qibla-accuracy-gate/RESEARCH.md.
+ * It is the best the hardware can promise rather than a ruling. No source fixes a number, and a tighter bar is a
+ * refusal screen: at 5 the gate never fired once, because a phone indoors reports about 12.
  */
 export const CERTAINTY_THRESHOLD_DEGREES = 15;
 
 /**
- * How long the gate waits for a certainty the phone may never report.
+ * How long the gate waits for a certainty the phone may never report, because this screen must never lock.
  *
- * A phone can sit at 25 degrees indefinitely, and this screen must never lock, so the wait is bounded. The bound
- * reads no readings, which is what makes it immune to the motion and noise that defeat a stream test.
- *
- * It is not shorter than the 2700ms the span check used to take: a phone that cannot say it is certain must not be
- * drawn SOONER than before, because that would buy speed with accuracy.
+ * No shorter than the 2700ms wait it replaced: a phone that cannot vouch for its heading must not be drawn sooner
+ * than it used to be.
  */
 export const CERTAINTY_CEILING_MS = 3000;
 
 /**
  * Whether the phone has reported an uncertainty tight enough to draw on.
  *
- * Absence is not certainty: FOP attaches its error cone per sample, so a missing value means the phone said
- * nothing, and reading it as zero would make silence the most confident answer there is.
- *
- * A NEGATIVE value is Apple's documented sentinel for a heading it considers invalid, and Apple gates on it
- * unconditionally in its own sample code. A bare `value <= threshold` would open on exactly that reading.
+ * Absence is not certainty, since Android attaches its error cone to some samples only. A NEGATIVE value is Apple's
+ * sentinel for a heading it considers invalid, which a bare `<=` would open on.
  */
 export const isCertain = (accuracyDegrees: number | undefined): boolean =>
   accuracyDegrees !== undefined && accuracyDegrees >= 0 && accuracyDegrees <= CERTAINTY_THRESHOLD_DEGREES;
-
-/** A reading as the watch delivers it, with the moment it arrived */
-export interface HeadingSample {
-  degrees: number;
-  atMs: number;
-}
 
 const DEGREES = Math.PI / 180;
 
@@ -107,12 +69,8 @@ export const headingDelta = (to: number, from: number): number => {
   return raw;
 };
 
-/** The samples of the last `SETTLE_WINDOW_MS`, oldest first, with anything older dropped */
-export const trailingWindow = (samples: HeadingSample[], nowMs: number): HeadingSample[] =>
-  samples.filter((sample) => nowMs - sample.atMs <= SETTLE_WINDOW_MS);
-
 /**
- * Whether a reopen has met the SAME stream it left, so the settling wait would only re-prove what it proved.
+ * Whether a reopen has met the SAME stream it left, so waiting on the phone again would only re-prove it.
  *
  * A reopen cannot be trusted because it happened recently: the fusion may have been reset and the phone may
  * have been carried or turned. So the remembered heading is VERIFIED against live readings instead.
@@ -123,21 +81,4 @@ export const isWarmStream = (readings: number[], rememberedDegrees: number): boo
   const recent = readings.slice(-WARM_CONFIRM_READINGS);
 
   return Math.abs(headingDelta(circularMean(recent), rememberedDegrees)) <= WARM_TOLERANCE_DEGREES;
-};
-
-/**
- * Whether the window has converged: enough readings, spanning enough time, whose two halves agree.
- *
- * The span check is load-bearing. Without it a fast stream fills the count in 400ms and a drift measured
- * over 400ms of an 8-second convergence passes at 29 degrees of error rather than 10.
- */
-export const hasSettled = (window: HeadingSample[], nowMs: number): boolean => {
-  if (window.length < SETTLE_MIN_READINGS) return false;
-  if (nowMs - window[0].atMs < SETTLE_WINDOW_MS * 0.9) return false;
-
-  const half = Math.floor(window.length / 2);
-  const older = circularMean(window.slice(0, half).map((sample) => sample.degrees));
-  const newer = circularMean(window.slice(half).map((sample) => sample.degrees));
-
-  return Math.abs(headingDelta(newer, older)) <= SETTLE_DRIFT_DEGREES;
 };

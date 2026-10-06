@@ -8,13 +8,22 @@ import type React from 'react';
 import { Dimensions, Linking, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { SETTLE_MIN_READINGS, SETTLE_WINDOW_MS, WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
+import type { QiblaDiagnostic } from '@/modules/qiblaheading';
+import { WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
 
 import QiblaSheet from '../Qibla';
 
 // Babel hoists jest.mock above these, so the names must carry the `mock` prefix to be reachable from the factory
 const mockWatchers: ((reading: { trueHeading: number }) => void)[] = [];
 const mockUnwatch = jest.fn();
+const mockAccuracyWatchers: ((reading: QiblaDiagnostic) => void)[] = [];
+const mockStopAccuracy = jest.fn();
+
+/** What the owner's iPhone reported indoors, off its cable: inside the bar */
+const CERTAIN: QiblaDiagnostic = { accuracyDegrees: 12.5, wantsCalibration: false };
+
+/** The ceiling as a LITERAL, because a test spending the constant it guards moves with it and guards nothing */
+const CEILING_MS = 3000;
 
 const mockState = {
   granted: true,
@@ -27,9 +36,13 @@ const mockState = {
   releaseWatch: null as (() => void) | null,
 };
 
-// The diagnostic module, so this suite can prove the shipped build never reaches it. The factory builds its own
-// mock because babel hoists it above every declaration in this file
-jest.mock('@/modules/qiblaheading', () => ({ watchQiblaDiagnostic: jest.fn(() => jest.fn()) }));
+// What the phone says about its own heading, which the gate decides on, so each test reports it by hand
+jest.mock('@/modules/qiblaheading', () => ({
+  watchQiblaDiagnostic: jest.fn((onReading: (reading: QiblaDiagnostic) => void) => {
+    mockAccuracyWatchers.push(onReading);
+    return mockStopAccuracy;
+  }),
+}));
 
 // The platform the sheet reaches the moment it presents
 jest.mock('@/device/qibla', () => ({
@@ -57,8 +70,8 @@ const qiblaDevice = jest.requireMock('@/device/qibla');
 /**
  * The sheet arms its sensors on present, which the library reports as a change to index 0.
  *
- * Timers are faked BEFORE the open, because the invitation to wave is a timeout armed by `onPresent`: one
- * installed under real timers could never be advanced by a test.
+ * Timers are faked BEFORE the open, because the ceiling counts from the first heading reading: a start taken off
+ * the real clock could never be advanced by a test.
  */
 const openSheet = async () => {
   jest.useFakeTimers();
@@ -67,31 +80,44 @@ const openSheet = async () => {
   await act(async () => {});
 };
 
+/** Delivers what the phone says about its own heading, to the live watch only */
+const reportAccuracy = async (reading: QiblaDiagnostic) => {
+  const watcher = mockAccuracyWatchers[mockAccuracyWatchers.length - 1];
+
+  await act(async () => {
+    watcher(reading);
+  });
+};
+
 /**
- * Drives headings through the watch exactly as the platform would.
+ * Delivers headings the phone has NOT vouched for, moving no clock.
  *
- * The settling gate draws nothing until the stream has been steady across its whole window, so a reading
- * is preceded by enough steady samples, spread over real time, for the window to span and settle. Without
- * them the sheet correctly refuses to draw and every assertion about the dial is about a blank stage.
+ * Neither path through the gate is helped along, so a test built on this alone shows what the gate itself decides.
+ */
+const reportBareHeadings = async (...headings: number[]) => {
+  // The LIVE watcher only: mockWatchers keeps every open's subscription, and a torn-down watch is never called
+  const watcher = mockWatchers[mockWatchers.length - 1];
+
+  await act(async () => {
+    for (const trueHeading of headings) watcher({ trueHeading });
+  });
+};
+
+/**
+ * Drives headings the compass will draw, as a phone in daily use delivers them: it vouches for its heading first.
+ *
+ * Without that the sheet correctly refuses to draw, and every assertion about the dial is about a blank stage.
  */
 const reportHeadings = async (...headings: number[]) => {
-  for (const trueHeading of headings) {
-    for (let i = 0; i < SETTLE_MIN_READINGS; i++) {
-      await act(async () => {
-        for (const watcher of mockWatchers) watcher({ trueHeading });
-        jest.advanceTimersByTime(SETTLE_WINDOW_MS / (SETTLE_MIN_READINGS - 1));
-      });
-    }
-  }
-  // No separate wait for the invitation: the settling window is 3000ms against its 2000ms, so spanning the
-  // window has already outlasted it
+  await reportAccuracy(CERTAIN);
+  await reportBareHeadings(...headings);
 };
 
 /**
  * Drives a lost heading, which both platforms report as -1.
  *
- * Separate from `reportHeadings` and advancing no clock of its own, because the grace window that
- * survives a dropout is counted in real time and these tests drive that clock themselves.
+ * It advances no clock of its own, because the grace window that survives a dropout is counted in real time and
+ * these tests drive that clock themselves.
  */
 const reportLostHeadings = async (count = 1) => {
   await act(async () => {
@@ -104,8 +130,8 @@ const reportLostHeadings = async (count = 1) => {
 /**
  * Drives exactly the readings a warm reopen is confirmed by, advancing NO clock.
  *
- * Advancing none is the point: a warm reopen must draw without the settling window ever spanning, so a helper
- * that moved the clock could not tell the warm path from the ordinary gate.
+ * Advancing none, and reporting no certainty, is the point: a warm reopen must draw on agreement alone, so a helper
+ * that moved the clock or vouched for the heading could not tell the warm path from the ordinary gate.
  */
 const reportWarmConfirmation = async (trueHeading: number, count = WARM_CONFIRM_READINGS) => {
   // The LIVE watcher only: mockWatchers keeps every open's subscription, so notifying all of them would
@@ -120,6 +146,8 @@ const reportWarmConfirmation = async (trueHeading: number, count = WARM_CONFIRM_
 beforeEach(() => {
   mockWatchers.length = 0;
   mockUnwatch.mockClear();
+  mockAccuracyWatchers.length = 0;
+  mockStopAccuracy.mockClear();
   mockState.granted = true;
   mockState.position = { latitude: 51.5074, longitude: -0.1278 };
   mockState.place = 'London, United Kingdom';
@@ -173,21 +201,39 @@ describe('the qibla sheet before it is opened', () => {
   });
 });
 
-// This suite runs the SHIPPED configuration, with the diagnostic flag off. QiblaDiagnostic.test.tsx is its
-// opposite half, and neither alone can tell a gated feature from an ungated one.
-describe('the diagnostic the shipped build never arms', () => {
-  it('reads no diagnostic sensor when the sheet opens, because the flag is off', async () => {
+// This suite runs the SHIPPED configuration, with the diagnostic flag off: the watch still arms, because the gate
+// decides on it, and only the readout is absent. QiblaDiagnostic.test.tsx is the half with the readout on.
+describe('the accuracy watch the gate decides on', () => {
+  it('arms one accuracy watch when the sheet opens, with the readout off', async () => {
     const { watchQiblaDiagnostic } = jest.requireMock('@/modules/qiblaheading');
 
     await openSheet();
 
-    expect(watchQiblaDiagnostic).not.toHaveBeenCalled();
+    expect(watchQiblaDiagnostic).toHaveBeenCalledTimes(1);
   });
 
   it('draws no readout, so the sheet is the one the owner accepted', async () => {
     await openSheet();
 
     expect(screen.queryByTestId('qibla-diagnostic')).toBeNull();
+  });
+
+  // The sensors would otherwise run for the life of the process, which every sheet in this app mounts into
+  it('stops the accuracy watch when the sheet closes', async () => {
+    await openSheet();
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    expect(mockStopAccuracy).toHaveBeenCalledTimes(1);
+  });
+
+  it('arms no accuracy watch when the user refused location, having no compass to gate', async () => {
+    const { watchQiblaDiagnostic } = jest.requireMock('@/modules/qiblaheading');
+    mockState.granted = false;
+
+    await openSheet();
+
+    expect(watchQiblaDiagnostic).not.toHaveBeenCalled();
   });
 });
 
@@ -713,8 +759,8 @@ describe('reopening the sheet in the same place', () => {
     mockState.releasePosition = () => undefined;
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
-    // The second open earns its own wave AND its own heading: both are cleared on close, so that a reopen
-    // cannot flash the last visit's compass before the gate shuts it
+    // The second open earns its own heading: it is cleared on close, so that a reopen cannot flash the last
+    // visit's compass before the gate shuts it
     await reportHeadings(95);
 
     expect(screen.getByText('London, United Kingdom')).toBeOnTheScreen();
@@ -752,14 +798,142 @@ describe('reopening the sheet in the same place', () => {
   });
 });
 
-describe('the settling gate', () => {
-  it('draws nothing on a single reading, however good it looks', async () => {
+describe('the gate the compass waits behind', () => {
+  it('draws nothing on a heading the phone has not vouched for, however good it looks', async () => {
     await openSheet();
 
-    // One reading cannot span the window, so the stream has not been shown to have converged
+    await reportBareHeadings(118);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('draws on the very next heading once the phone reports a certainty inside the bar', async () => {
+    await openSheet();
+
+    await reportAccuracy(CERTAIN);
+    await reportBareHeadings(118);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  // reported uncertainty in degrees, whether the compass draws. The bar as literals, each side of it, beside the
+  // two readings taken on the owner's iPhone: 12.5 indoors and 25.4 on a cable beside a laptop
+  it.each([
+    [0, true],
+    [12.5, true],
+    [15, true],
+    [15.1, false],
+    [25.4, false],
+  ])('given a reported uncertainty of %p degrees, draws the compass at once: %p', async (accuracyDegrees, draws) => {
+    await openSheet();
+
+    await reportAccuracy({ accuracyDegrees, wantsCalibration: false });
+    await reportBareHeadings(118);
+
+    expect(screen.queryByTestId('qibla-dial') !== null).toBe(draws);
+  });
+
+  // Apple's sentinel for a heading it considers invalid, which a bare comparison against the bar would open on
+  it('refuses a negative accuracy, which is the phone disowning its own heading', async () => {
+    await openSheet();
+
+    await reportAccuracy({ accuracyDegrees: -1, wantsCalibration: true });
+    await reportBareHeadings(118);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('draws on the error cone Android reports, which arrives under another name', async () => {
+    await openSheet();
+
+    await reportAccuracy({ fusedHeadingDegrees: 118, fusedErrorDegrees: 9 });
+    await reportBareHeadings(118);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  // Android attaches its cone to SOME samples only, so the sample after a good one usually carries none
+  it('keeps the last certainty through a sample that carries no cone', async () => {
+    await openSheet();
+
+    await reportAccuracy({ fusedHeadingDegrees: 118, fusedErrorDegrees: 9 });
+    await reportAccuracy({ fusedHeadingDegrees: 119 });
+    await reportBareHeadings(118);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  it('takes a sample that carries no cone as silence, never as certainty', async () => {
+    await openSheet();
+
+    await reportAccuracy({ fusedHeadingDegrees: 118 });
+    await reportBareHeadings(118);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('decides on the latest report, so a phone grown unsure is not drawn on what it said before', async () => {
+    await openSheet();
+
+    await reportAccuracy(CERTAIN);
+    await reportAccuracy({ accuracyDegrees: 40, wantsCalibration: false });
+    await reportBareHeadings(118);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // This screen must never lock: a phone can sit outside the bar indefinitely, and one may never report at all
+  it('draws at the ceiling when the phone never vouches for its heading', async () => {
+    await openSheet();
+    await reportBareHeadings(118);
+
     await act(async () => {
-      for (const watcher of mockWatchers) watcher({ trueHeading: 118 });
+      jest.advanceTimersByTime(CEILING_MS);
     });
+    await reportBareHeadings(118);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  it('holds one millisecond short of the ceiling, so an unsure phone is never drawn sooner than it used to be', async () => {
+    await openSheet();
+    await reportBareHeadings(118);
+
+    await act(async () => {
+      jest.advanceTimersByTime(CEILING_MS - 1);
+    });
+    await reportBareHeadings(118);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  it('draws at the ceiling on a phone reporting itself outside the bar, rather than refusing it for ever', async () => {
+    await openSheet();
+    await reportAccuracy({ accuracyDegrees: 25.4, wantsCalibration: false });
+    await reportBareHeadings(118);
+
+    await act(async () => {
+      jest.advanceTimersByTime(CEILING_MS);
+    });
+    await reportBareHeadings(118);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  // Counted across the gap, the ceiling would fire the instant the stream returned, on its first reading back
+  it('restarts the ceiling after a dropped reading, rather than firing the moment the stream returns', async () => {
+    await openSheet();
+    await reportBareHeadings(118);
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    await reportLostHeadings();
+    await reportBareHeadings(118);
+    await act(async () => {
+      jest.advanceTimersByTime(1500);
+    });
+    await reportBareHeadings(118);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
@@ -772,41 +946,43 @@ describe('the settling gate', () => {
     return screen.getByTestId('qibla-dial').props.style.transform[0].rotate;
   };
 
-  it('follows every reading once it has settled, which is the whole point of a compass', async () => {
+  // A gate re-tested per reading would drop exactly these updates, and a phone held in a hand drifts in and out
+  // of the bar while it is turned
+  it('latches once drawn, following every reading even after the phone grows less sure', async () => {
     jest.useFakeTimers();
     const { rerender } = await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
     await reportHeadings(95);
 
-    // A TURNING phone is a moving window, so a gate re-tested per reading would drop exactly these updates and
-    // the dial would only move when the phone was held still
-    await act(async () => {
-      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
-    });
+    await reportAccuracy({ accuracyDegrees: 40, wantsCalibration: false });
+    await reportBareHeadings(140);
 
     expect(await liveDialRotation(rerender)).toBe('-140deg');
   });
 
-  it('keeps following through a fast sweep, where no window could ever look settled', async () => {
-    jest.useFakeTimers();
-    const { rerender } = await render(<QiblaSheet />);
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await reportHeadings(95);
-
-    // 20 degrees a reading: the window drifts far past the threshold on every one of them
+  it('waits out the ceiling again after the heading is genuinely lost, rather than drawing the stream straight back', async () => {
+    await openSheet();
+    await reportBareHeadings(95);
     await act(async () => {
-      for (const degrees of [115, 135, 155, 175, 195]) {
-        for (const watcher of mockWatchers) watcher({ trueHeading: degrees });
-      }
+      jest.advanceTimersByTime(CEILING_MS);
     });
+    await reportBareHeadings(95);
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
 
-    expect(await liveDialRotation(rerender)).toBe('-195deg');
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+    // The loss outlasted the grace window, so a fresh reading the phone has not vouched for must not bring the
+    // dial straight back
+    await reportBareHeadings(140);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  it('proves itself again after the heading is genuinely lost, rather than drawing a cold stream', async () => {
-    jest.useFakeTimers();
+  // The pair is what gives the test above meaning: a compass that never returned would pass it too
+  it('draws again after a genuine loss once the phone vouches for the stream that returned', async () => {
     await openSheet();
     await reportHeadings(95);
 
@@ -814,67 +990,36 @@ describe('the settling gate', () => {
     await act(async () => {
       jest.advanceTimersByTime(2000);
     });
-    // The loss outlasted the grace window, so a single fresh reading must not bring the dial straight back
-    await act(async () => {
-      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
-    });
+    await reportHeadings(140);
 
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-    jest.useRealTimers();
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
 
-  it('drops readings older than the window, so a slow trickle can never settle', async () => {
+  // Counted from the last visit's first reading, the ceiling would already have passed when this one began
+  it('starts the ceiling afresh on each visit, rather than counting from the last one', async () => {
     await openSheet();
-    jest.useFakeTimers();
-
-    // One reading per window: the trailing window holds exactly one at a time, so the count gate never clears.
-    // An untrimmed window would accumulate these and settle on readings minutes apart
+    await reportBareHeadings(118);
     await act(async () => {
-      for (let i = 0; i < SETTLE_MIN_READINGS * 2; i++) {
-        for (const watcher of mockWatchers) watcher({ trueHeading: 118 });
-        jest.advanceTimersByTime(SETTLE_WINDOW_MS + 100);
-      }
+      jest.advanceTimersByTime(CEILING_MS);
     });
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportBareHeadings(118);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
-    jest.useRealTimers();
   });
 
-  it('starts the window again after a lost heading, rather than settling on readings from before it', async () => {
+  // A reading that differs from the remembered heading, so the warm path cannot be what draws it
+  it('never draws on a certainty carried over from the last visit', async () => {
     await openSheet();
-    jest.useFakeTimers();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
 
-    // Half a window, then the stream drops, then half a window: a kept window would total enough to settle
-    await act(async () => {
-      for (let i = 0; i < 4; i++) {
-        for (const watcher of mockWatchers) watcher({ trueHeading: 118 });
-        jest.advanceTimersByTime(400);
-      }
-    });
-    await reportLostHeadings();
-    await act(async () => {
-      for (let i = 0; i < 4; i++) {
-        for (const watcher of mockWatchers) watcher({ trueHeading: 118 });
-        jest.advanceTimersByTime(400);
-      }
-    });
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-    jest.useRealTimers();
-  });
-
-  it('draws nothing while the stream is still converging, even though it is smooth', async () => {
-    await openSheet();
-    jest.useFakeTimers();
-
-    // A cold fusion walks toward the truth: quiet between readings and still 20 degrees out, which is
-    // exactly the stream a spread gate would have accepted
-    await act(async () => {
-      for (let i = 0; i < SETTLE_MIN_READINGS * 2; i++) {
-        for (const watcher of mockWatchers) watcher({ trueHeading: 118 + 20 * Math.exp(-i / 6) });
-        jest.advanceTimersByTime(SETTLE_WINDOW_MS / (SETTLE_MIN_READINGS - 1));
-      }
-    });
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await reportBareHeadings(200);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
@@ -883,9 +1028,7 @@ describe('the settling gate', () => {
     await openSheet();
 
     // Dead on the line, so a tap would fire the moment the gate let it through
-    await act(async () => {
-      for (const watcher of mockWatchers) watcher({ trueHeading: 118.99 });
-    });
+    await reportBareHeadings(118.99);
 
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
@@ -894,28 +1037,24 @@ describe('the settling gate', () => {
 /**
  * The wait the user sees, and what decides its length.
  *
- * NOTHING measures the wave and no timer runs beside the compass. Verifying the gesture cost the compass its
- * own accuracy, because the heading needs the same accelerometer and the 3T's magnetometer tops out at 52Hz,
- * so a second 50Hz subscriber made the dial lag on the slow careful turn a qibla asks for. A fixed timer was
- * then measured to be invisible: the settling window is 3000ms, so the heading is always the longer wait.
- *
- * So the settling gate alone decides, which also means the wait FAILS OPEN in the only way that matters: a
- * user who ignores the invitation still gets a compass, as soon as one can honestly be drawn.
+ * NOTHING measures the wave and no timer runs beside the compass: reading the accelerometer to verify the gesture
+ * cost the compass its own accuracy. The phone's certainty decides, and the ceiling means the wait FAILS OPEN: a
+ * user who ignores the invitation still gets a compass.
  */
 describe('the wait before the compass is drawn', () => {
-  it('shows the invitation while the heading is still settling', async () => {
+  it('shows the invitation while the phone has not yet vouched for its heading', async () => {
     await openSheet();
 
+    await reportBareHeadings(95);
     await act(async () => {
-      for (const watcher of mockWatchers) watcher({ trueHeading: 95 });
-      jest.advanceTimersByTime(SETTLE_WINDOW_MS / 4);
+      jest.advanceTimersByTime(CEILING_MS / 4);
     });
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
     expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
   });
 
-  it('draws the compass once the heading has settled, waved or not', async () => {
+  it('draws the compass once the phone vouches for its heading, waved or not', async () => {
     await openSheet();
 
     await reportHeadings(95);
@@ -952,7 +1091,7 @@ describe('the wait before the compass is drawn', () => {
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  it('draws the compass without the settling wait when the phone has not moved since it last drew', async () => {
+  it('draws the compass without waiting on the phone when it has not moved since it last drew', async () => {
     await openSheet();
     await reportHeadings(95);
     await fireEvent(screen.getByText('Qibla'), 'dismiss');
@@ -991,7 +1130,7 @@ describe('the wait before the compass is drawn', () => {
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  it('still waits out the settling gate when the phone was turned while the sheet was closed', async () => {
+  it('still waits on the phone when it was turned while the sheet was closed', async () => {
     await openSheet();
     await reportHeadings(95);
     await fireEvent(screen.getByText('Qibla'), 'dismiss');
@@ -1003,7 +1142,7 @@ describe('the wait before the compass is drawn', () => {
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  it('waits out the settling gate on a first open, because nothing is remembered to check against', async () => {
+  it('waits on the phone on a first open, because nothing is remembered to check against', async () => {
     await openSheet();
     await reportWarmConfirmation(95);
 
@@ -1055,7 +1194,7 @@ describe('the wait before the compass is drawn', () => {
   });
 
   // The pair is what gives the test above meaning: a suppression that fired never would pass it too
-  it('fires the arrival haptic on a reopen that had to wait, because the compass did arrive', async () => {
+  it('fires the arrival haptic on a reopen the phone had to vouch for, because the compass did arrive', async () => {
     await openSheet();
     await reportHeadings(95);
     await fireEvent(screen.getByText('Qibla'), 'dismiss');
@@ -1144,24 +1283,25 @@ describe('the wait before the compass can be drawn', () => {
 });
 
 describe('a heading that arrives before the position', () => {
-  it('counts toward the settling window while the fix is still being read, rather than being dropped', async () => {
+  // The readings start with the watch, not with the fix, so a slow position read must not add its own length to
+  // the wait
+  it('starts the ceiling at the first reading, rather than restarting it when the fix lands', async () => {
     mockState.releasePosition = () => undefined;
     jest.useFakeTimers();
     await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    // Readings arrive while the fix is still being read, and they must fill the window rather than wait for it
-    await reportHeadings(140);
+    await reportBareHeadings(140);
+    await act(async () => {
+      jest.advanceTimersByTime(CEILING_MS);
+    });
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
 
     await act(async () => {
       mockState.releasePosition?.();
     });
-    // One further reading finds a window already settled, so the compass appears immediately
-    await act(async () => {
-      for (const watcher of mockWatchers) watcher({ trueHeading: 140 });
-    });
+    await reportBareHeadings(140);
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
