@@ -20,7 +20,7 @@ export interface QiblaState {
   diagnostic: QiblaDiagnostic | null;
   /** Whether the compass arrived on a stream proven warm, so nothing was waited for and nothing arrived to announce */
   arrivedWarm: boolean;
-  /** What opened the gate, so a prototype build can report whether the phone's own certainty or the ceiling did */
+  /** What opened the gate, which only the diagnostic readout shows */
   openedBy: GateOpening;
 }
 
@@ -149,18 +149,14 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
       let openedBy: GateOpening = null;
 
       // The gate LATCHES: once the compass is drawn every later reading reaches the dial, because re-testing per
-      // reading would drop exactly the updates made while the user turns the phone.
-      //
-      // It ASKS the phone rather than timing it. The old span check was a stopwatch: the owner's 20 trials across
-      // both phones found the drift test already satisfied on the first reading, so the gate sat holding a correct
-      // heading for 2700ms waiting for the clock. The phone reports its own uncertainty in degrees, so that is what
-      // decides, and the ceiling is what keeps a phone that never reports one from locking the screen.
+      // reading would drop exactly the updates made while the user turns the phone
       if (!settledRef.current) {
         const remembered = warmHeadingRef.current;
         confirmRef.current = [...confirmRef.current, trueHeading];
         // A reopen meeting the stream it left has already paid for this window once, so re-proving it is pure wait
         arrivedWarm = remembered !== null && isWarmStream(confirmRef.current, remembered);
 
+        // The phone is asked rather than timed, and the ceiling keeps one that never answers from locking the screen
         const waitedMs = nowMs - firstReadingAtRef.current;
         if (arrivedWarm) openedBy = 'warm';
         else if (isCertain(accuracyRef.current)) openedBy = 'certainty';
@@ -199,11 +195,10 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     // what the sheet's blank seconds were
     const unwatchPromise = watchHeading(({ trueHeading }) => processReading(trueHeading));
 
-    // Unconditional, because the gate now DECIDES on this reading rather than merely displaying it. Only the
-    // readout stays behind the flag.
+    // Unconditional, because the gate decides on this reading: only the readout sits behind the flag
     unwatchDiagnosticRef.current = watchQiblaDiagnostic((diagnostic) => {
-      // FOP attaches its cone to SOME samples only, so a silent sample must leave the last reading standing: taking
-      // it as the new value would erase a good reading and strand the gate on the ceiling
+      // Android attaches its cone to SOME samples only, so a silent sample must leave the last reading standing:
+      // taking it as the new value would erase a good reading and strand the gate on the ceiling
       const reported = diagnostic.accuracyDegrees ?? diagnostic.fusedErrorDegrees;
       if (reported !== undefined) accuracyRef.current = reported;
       setState((previous) => ({ ...previous, diagnostic }));

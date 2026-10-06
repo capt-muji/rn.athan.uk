@@ -34,7 +34,7 @@ const PENDING = '-';
 const oneDecimal = (value: number | undefined): string => value?.toFixed(1) ?? PENDING;
 
 /**
- * The invitation to wave, shown for a fixed time while the compass warms up behind it.
+ * The invitation to wave, shown until the phone vouches for its heading or the ceiling passes.
  *
  * NOTHING MEASURES THE WAVE, deliberately. Reading the accelerometer to verify it cost the compass its own
  * accuracy: the heading needs the accelerometer AND the magnetometer, the 3T's magnetometer tops out at 52Hz,
@@ -176,7 +176,6 @@ export default function BottomSheetQibla() {
           <Text style={styles.place}>{`wants calibration ${diagnostic?.wantsCalibration ?? PENDING}`}</Text>
           <Text style={styles.place}>{`fused heading ${oneDecimal(diagnostic?.fusedHeadingDegrees)}`}</Text>
           <Text style={styles.place}>{`fused error ${oneDecimal(diagnostic?.fusedErrorDegrees)}`}</Text>
-          {/* The two readings this prototype exists to produce: what opened the gate, against the bar it was judged on */}
           <Text style={styles.place}>{`drew on ${openedBy ?? PENDING}`}</Text>
           <Text style={styles.place}>{`bar ${CERTAINTY_THRESHOLD_DEGREES} / ceiling ${CERTAINTY_CEILING_MS}ms`}</Text>
         </View>
