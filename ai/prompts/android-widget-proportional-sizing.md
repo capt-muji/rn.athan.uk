@@ -162,5 +162,3 @@ Read ai/features/android-widgets-x8/FINDINGS.md first: the root cause is already
 measured and does not need re-deriving.
 ```
 
-
-**Note:** the images this file names (`x8-page4-broken.png`, `reference-ios-target-look.png`, `qibla-london.png`) were removed from the public repository on 2026-10-07. They were screenshots of a phone and a street map.
