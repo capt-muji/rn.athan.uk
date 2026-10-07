@@ -21,7 +21,7 @@
 # Exit status: 0 all checks passed, 1 at least one FAIL.
 
 set -u
-SERIAL=${1:-3T_SERIAL}
+SERIAL=${1:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
 PKG=${2:-com.mugtaba.athan}
 EXPECTED=${3:-}
 ROOT=${0:A:h:h}

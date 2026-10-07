@@ -38,7 +38,7 @@ Part of `ai/plans/13-agent-tooling/PLAN.md`. Kind: **specified**.
    2. **Expected output, `agent-cli-status.txt`.** Last line `EXIT:0`. Fixed lines, each exact:
       - `project     athan · SDK 58.0.0-preview.3 · CNG · dev client · no web`
       - `expo go     not compatible (14 reasons)`
-      - `auth        mugtaba · per expo whoami`
+      - `auth        <user> · per expo whoami`
       - `build       local · this machine has Xcode — Xcode 27.0 at /Applications/Xcode.app/Contents/Developer.`
 
       Varying lines, with what they may say: the `freshness` block (`local stale · eas unknown`
