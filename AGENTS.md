@@ -28,7 +28,7 @@ repo: run them, don't reinvent them.
 | Drive the simulator: tap, type, scroll, snapshot | `agent-device` |
 | Author or run a flow | `maestro` CLI, flows in `e2e/flows/*.yaml` |
 | iOS build / simulator | `xcodebuildmcp` |
-| Expo project brief, dev-server smoke loop | `npx @expo/agent-cli status` / `smoke --ios` (rules in ai/AGENTS.md §6) |
+| Expo project brief, dev-server smoke loop | `npx @expo/agent-cli status` / `smoke --ios` (rules in ai/AGENTS.md, Commands and Device testing) |
 | Expo/EAS API question | the matching `expo-*` / `eas-*` skill |
 | "Are alarms armed?" | `yarn check:device` |
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
