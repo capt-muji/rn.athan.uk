@@ -251,5 +251,3 @@ attempt on the launcher. The widget's tap coordinates were found instead by deco
 the `screencap` PNG and scanning it for the card's bright block, which put the medium
 card at roughly y 700 to 1250, full width, so its centre is (540, 975).
 
-
-**Note:** the images this file names (`x8-page4-broken.png`, `reference-ios-target-look.png`, `qibla-london.png`) were removed from the public repository on 2026-10-07. They were screenshots of a phone and a street map.

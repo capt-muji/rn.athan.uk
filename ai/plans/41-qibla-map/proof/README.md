@@ -77,5 +77,3 @@ Added while the plan was written, after the owner's seven rulings. They are the 
 and could not resolve them. The cross-check was done as a Jest suite instead, which is what
 `files/shared/__tests__/realTile.test.ts.txt` became.
 
-
-**Note:** the images this file names (`x8-page4-broken.png`, `reference-ios-target-look.png`, `qibla-london.png`) were removed from the public repository on 2026-10-07. They were screenshots of a phone and a street map.

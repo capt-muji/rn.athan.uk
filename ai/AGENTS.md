@@ -28,25 +28,20 @@ that is already configured and paid for.
 `codegraph_explore` call returns the verbatim source plus the blast radius of what depends on it,
 which is cheaper and more accurate than a grep-and-read loop.
 
-### This repository is PUBLIC: nothing that identifies a person or a device is written into it (owner rule 2026-10-07)
+### Keep the repository free of personal and device identifiers
 
-**Never write any of these into a tracked file, a commit message or a branch name:** a person's full name, a local
-username or a home-directory path, a phone's serial, an iPhone's identifier or device name, the Apple team id, a real
-position or a map of one, or anything about a home. **Never commit a screenshot of a phone or a screen recording.**
-Evidence from a device goes into the record as text read off it, and the raw file stays outside the repository.
+This repository is public. Tracked files, commit messages and branch names hold only what the project needs.
 
-| Instead of | Write |
-| --- | --- |
-| A phone's serial | `3T_SERIAL`, `X8_SERIAL`, `S23_SERIAL`, `8T_SERIAL` |
-| The iPhone's identifier | `IPHONE_UDID` |
-| The Apple team id | `TEAM_ID` |
-| A path under the home directory | `$HOME/...` |
-| A position | The public central London point the tests use, `51.5074, -0.1278` |
-| Which room a reading was taken in | "one room", "another room", "indoors", "outdoors" |
-
-The app id `com.mugtaba.athan` is public on both stores and stays as it is. On 2026-10-07 the working tree was
-scrubbed and the history of every branch was rewritten to remove what earlier sessions had written. **A session
-that finds such a string in the repository removes it and tells the owner, before doing anything else.**
+- **Use a placeholder for anything specific to a person or a device:** `3T_SERIAL`, `X8_SERIAL`, `S23_SERIAL`,
+  `8T_SERIAL`, `IPHONE_UDID`, `TEAM_ID`, and `$HOME/...` for a path under the home directory.
+- **Use the fixture position already in the tests** wherever an example position is needed.
+- **Say where a measurement was taken in general terms:** indoors, outdoors, one room, another room.
+- **Do not commit a screenshot or a screen recording of a device.** Record what was read off the screen as text,
+  and keep the raw file outside the repository.
+- **Write what the owner decided, not how he said it.** Quote him only where the exact words are the specification,
+  such as a line of copy.
+- The app id is public on both stores and stays as it is.
+- A session that finds a file breaking this rule fixes it and tells the owner.
 
 ### Subagents are banned, except `vision` (owner rule 2026-09-26)
 
