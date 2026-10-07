@@ -2,7 +2,7 @@
  * The qibla sheet: what it draws, when it arms the sensors, and the one tap the user feels per crossing
  */
 
-import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type React from 'react';
 import { Dimensions, Linking, StyleSheet } from 'react-native';
@@ -10,6 +10,7 @@ import * as Reanimated from 'react-native-reanimated';
 
 import type { FusedHeading } from '@/modules/qiblaheading';
 import logger from '@/shared/logger';
+import * as qiblaSettle from '@/shared/qiblaSettle';
 import { WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
 import type { Attitude } from '@/shared/qiblaWaveGate';
 
@@ -26,14 +27,17 @@ const mockStopFused = jest.fn();
 /** What the owner's iPhone reported indoors, off its cable, in degrees: inside the bar */
 const CERTAIN = 12.5;
 
-/** The ceiling as a LITERAL, because a test spending the constant it guards moves with it and guards nothing */
-const CEILING_MS = 3000;
+/**
+ * How long the hint must have been up for the compass's arrival to be felt, as a LITERAL: a test spending the constant
+ * it guards moves with it and guards nothing
+ */
+const ANNOUNCE_AFTER_MS = 1000;
 
-/** The ceiling a phone on Google's fused sensor waits for a wave, as a literal for the same reason */
-const WAVE_CEILING_MS = 10_000;
+/** How long a phone may go without finding north before the user is told so, as a literal for the same reason */
+const LOST_AFTER_MS = 5000;
 
-/** How long a fused sensor that has delivered nothing is waited on, as a literal for the same reason */
-const FUSED_SILENCE_MS = 3000;
+/** Far longer than any wait this screen has ever counted, for proving that waiting alone draws nothing */
+const A_LONG_WAIT_MS = 60_000;
 
 const mockState = {
   /** Whether the phone carries Google's fused sensor, which decides who reads the heading. False is an iPhone */
@@ -89,7 +93,7 @@ const qiblaHeading = jest.requireMock('@/modules/qiblaheading');
 /**
  * The sheet arms its sensors on present, which the library reports as a change to index 0.
  *
- * Timers are faked BEFORE the open, because the ceiling counts from the first heading reading: a start taken off
+ * Timers are faked BEFORE the open, because every wait on this screen is counted from the open: a start taken off
  * the real clock could never be advanced by a test.
  */
 const openSheet = async () => {
@@ -909,60 +913,46 @@ describe('the gate the compass waits behind', () => {
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  // This screen must never lock: a phone can sit outside the bar indefinitely, and one may never report at all
-  it('draws at the ceiling when the phone never vouches for its heading', async () => {
+  // A wrong qibla is worse than none, so a heading the phone never vouches for is never drawn, however long it is
+  // waited on. This screen once drew it after three seconds
+  it('never draws a heading the phone has not vouched for, however long it is waited on', async () => {
     await openSheet();
     await reportBareHeadings(118);
 
     await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS);
-    });
-    await reportBareHeadings(118);
-
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-  });
-
-  it('holds one millisecond short of the ceiling, so an unsure phone is never drawn sooner than it used to be', async () => {
-    await openSheet();
-    await reportBareHeadings(118);
-
-    await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS - 1);
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
     });
     await reportBareHeadings(118);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  it('draws at the ceiling on a phone reporting itself outside the bar, rather than refusing it for ever', async () => {
+  it('never draws a phone that reports itself outside the bar, however long it is waited on', async () => {
     await openSheet();
     await reportAccuracy(25.4);
     await reportBareHeadings(118);
 
     await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS);
-    });
-    await reportBareHeadings(118);
-
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-  });
-
-  // Counted across the gap, the ceiling would fire the instant the stream returned, on its first reading back
-  it('restarts the ceiling after a dropped reading, rather than firing the moment the stream returns', async () => {
-    await openSheet();
-    await reportBareHeadings(118);
-    await act(async () => {
-      jest.advanceTimersByTime(2000);
-    });
-
-    await reportLostHeadings();
-    await reportBareHeadings(118);
-    await act(async () => {
-      jest.advanceTimersByTime(1500);
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
     });
     await reportBareHeadings(118);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // The pair is what gives the two tests above meaning: a compass that could never be drawn would pass them too
+  it('draws that same phone the moment it reports itself inside the bar, however long it had been waited on', async () => {
+    await openSheet();
+    await reportAccuracy(25.4);
+    await reportBareHeadings(118);
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    await reportAccuracy(CERTAIN);
+    await reportBareHeadings(118);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
 
   // The dial reads the heading off a shared value, so a turn costs no render and the rendered transform cannot
@@ -988,21 +978,18 @@ describe('the gate the compass waits behind', () => {
     expect(await liveDialRotation(rerender)).toBe('-140deg');
   });
 
-  it('waits out the ceiling again after the heading is genuinely lost, rather than drawing the stream straight back', async () => {
+  it('draws nothing after a genuine loss while the phone is unsure of the stream that returned', async () => {
     await openSheet();
-    await reportBareHeadings(95);
-    await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS);
-    });
-    await reportBareHeadings(95);
+    await reportHeadings(95);
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
 
     await reportLostHeadings();
     await act(async () => {
       jest.advanceTimersByTime(2000);
     });
-    // The loss outlasted the grace window, so a fresh reading the phone has not vouched for must not bring the
-    // dial straight back
+    // The loss outlasted the grace window, so a reading the phone no longer vouches for must not bring the dial
+    // straight back
+    await reportAccuracy(40);
     await reportBareHeadings(140);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
@@ -1020,22 +1007,6 @@ describe('the gate the compass waits behind', () => {
     await reportHeadings(140);
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-  });
-
-  // Counted from the last visit's first reading, the ceiling would already have passed when this one began
-  it('starts the ceiling afresh on each visit, rather than counting from the last one', async () => {
-    await openSheet();
-    await reportBareHeadings(118);
-    await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS);
-    });
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await reportBareHeadings(118);
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
   // A reading that differs from the remembered heading, so the warm path cannot be what draws it
@@ -1064,9 +1035,8 @@ describe('the gate the compass waits behind', () => {
 /**
  * The wait the user sees on a phone WITHOUT Google's fused sensor, and what decides its length.
  *
- * Nothing measures the wave there and no timer runs beside the compass: reading the accelerometer to verify the
- * gesture cost the compass its own accuracy. The phone's certainty decides, and the ceiling means the wait FAILS
- * OPEN: a user who ignores the invitation still gets a compass.
+ * Nothing measures the wave there: reading the accelerometer to verify the gesture cost the compass its own accuracy.
+ * The phone's certainty decides, and nothing else does: a phone that never reports itself sure is never drawn.
  */
 describe('the wait before the compass is drawn', () => {
   it('shows the invitation while the phone has not yet vouched for its heading', async () => {
@@ -1074,7 +1044,7 @@ describe('the wait before the compass is drawn', () => {
 
     await reportBareHeadings(95);
     await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS / 4);
+      jest.advanceTimersByTime(750);
     });
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
@@ -1220,23 +1190,6 @@ describe('the wait before the compass is drawn', () => {
     expect(Haptics.notificationAsync).not.toHaveBeenCalled();
   });
 
-  // Warm and certain both hold on the confirming reading here, and warm must win: nothing arrived to announce
-  it('fires no arrival haptic when the phone also vouches for its heading on the confirming reading', async () => {
-    await openSheet();
-    await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-    jest.mocked(Haptics.notificationAsync).mockClear();
-
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await reportWarmConfirmation(95, 7);
-    await reportAccuracy(CERTAIN);
-    await reportWarmConfirmation(95, 1);
-
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
-  });
-
   // A warm visit leaves its mark in state across the close, so the visit after it must overwrite that mark rather
   // than inherit it, or every arrival after the first warm reopen would be silent
   it('announces a cold arrival on the visit after a warm one', async () => {
@@ -1251,13 +1204,16 @@ describe('the wait before the compass is drawn', () => {
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS);
+    });
     await reportHeadings(200);
 
     expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
   });
 
   // The pair is what gives the test above meaning: a suppression that fired never would pass it too
-  it('fires the arrival haptic on a reopen the phone had to vouch for, because the compass did arrive', async () => {
+  it('fires the arrival haptic on a reopen the user had to wait a second for, because the compass did arrive', async () => {
     await openSheet();
     await reportHeadings(95);
     await fireEvent(screen.getByText('Qibla'), 'dismiss');
@@ -1265,9 +1221,123 @@ describe('the wait before the compass is drawn', () => {
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS);
+    });
     await reportHeadings(200);
 
-    expect(Haptics.notificationAsync).toHaveBeenCalled();
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('the arrival the user feels, on a phone without the fused sensor', () => {
+  // A phone already sure of itself draws in well under a second, before the hint could be read. Nothing was waited
+  // for, so the tap would land as part of the sheet opening
+  it('announces nothing when the compass arrives at once', async () => {
+    await openSheet();
+
+    await reportHeadings(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+  });
+
+  it('announces nothing one millisecond short of a second', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS - 1);
+    });
+
+    await reportHeadings(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+  });
+
+  it('announces the compass once the hint has been up for a second', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS);
+    });
+
+    await reportHeadings(95);
+
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.notificationAsync).toHaveBeenCalledWith(Haptics.NotificationFeedbackType.Success);
+  });
+
+  // The hint came back when the heading was lost, so the second is counted from THEN: measured from the open, a
+  // compass that returned at once after a long visit would be announced as though it had been waited for
+  it('counts the second from when the hint returned, after a heading was lost', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(1500);
+    });
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS - 1);
+    });
+    await reportHeadings(140);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+  });
+
+  // A warm reopen is silent because it is QUICK. One that took a second was waited for like any other arrival
+  it('announces a warm reopen whose confirmation took a second to come', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    jest.mocked(Haptics.notificationAsync).mockClear();
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS);
+    });
+    await reportWarmConfirmation(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
+  });
+
+  // Three seconds of a stream that keeps saying it has no heading are three seconds the user waited. Counted from
+  // the last such gap instead, the arrival that ends them would pass for a quick one
+  it('announces a compass that arrives after seconds of a stream with no heading to give', async () => {
+    await openSheet();
+    for (let tenth = 0; tenth < 30; tenth++) {
+      await reportLostHeadings();
+      await act(async () => {
+        jest.advanceTimersByTime(100);
+      });
+    }
+
+    await reportHeadings(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('announces a compass that took a second to return, after a heading was lost', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(1500);
+    });
+
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS);
+    });
+    await reportHeadings(140);
+
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -1346,19 +1416,16 @@ describe('the wait before the compass can be drawn', () => {
 });
 
 describe('a heading that arrives before the position', () => {
-  // The readings start with the watch, not with the fix, so a slow position read must not add its own length to
-  // the wait
-  it('starts the ceiling at the first reading, rather than restarting it when the fix lands', async () => {
+  // The readings start with the watch, not with the fix, and a bearing cannot be drawn against a position that has
+  // not arrived
+  it('draws nothing until the position lands, and then draws on the next heading', async () => {
     mockState.releasePosition = () => undefined;
     jest.useFakeTimers();
     await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    await reportBareHeadings(140);
-    await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS);
-    });
+    await reportHeadings(140);
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
 
     await act(async () => {
@@ -1541,59 +1608,45 @@ describe('the wave an Android phone waits for', () => {
   });
 });
 
-describe('the ceiling an Android phone waits for a wave', () => {
-  // This screen must never lock: a user may be unable to wave, and a phone's attitude may never move
-  it('draws an unwaved phone at the ceiling', async () => {
+describe('an Android phone that is never waved', () => {
+  // A wrong qibla is worse than none, and on this sensor the wave is all that vouches for the heading. This screen
+  // once drew an unwaved phone after ten seconds
+  it('never draws, however long it is waited on', async () => {
     await openFusedSheet();
     await reportFused(...heldStill(95));
 
     await act(async () => {
-      jest.advanceTimersByTime(WAVE_CEILING_MS);
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
     });
+    await reportFused(...heldStill(95, 50));
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
+  });
+
+  it('does not let time make up for a wave one turn short', async () => {
+    await openFusedSheet();
+    await reportFused(...waved(7));
+
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+    await reportFused({ headingDegrees: 95, attitude: tipped(7 * 31) });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // The pair is what gives the two tests above meaning: a compass that could never be drawn would pass them too
+  it('draws the moment it is waved, however long it had been waited on', async () => {
+    await openFusedSheet();
     await reportFused(...heldStill(95));
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    await reportFused(...waved(8));
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-  });
-
-  it('holds one millisecond short of the ceiling', async () => {
-    await openFusedSheet();
-    await reportFused(...heldStill(95));
-
-    await act(async () => {
-      jest.advanceTimersByTime(WAVE_CEILING_MS - 1);
-    });
-    await reportFused(...heldStill(95));
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-  });
-
-  // The iPhone's ceiling is 3000ms, and drawing on it here would hand an unwaved phone its compass in a third of
-  // the time the wave is given
-  it('does not draw at the shorter ceiling a phone without the sensor waits', async () => {
-    await openFusedSheet();
-    await reportFused(...heldStill(95));
-
-    await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS);
-    });
-    await reportFused(...heldStill(95));
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-  });
-
-  it('starts the ceiling afresh on each visit, rather than counting from the last one', async () => {
-    await openFusedSheet();
-    await reportFused(...heldStill(95));
-    await act(async () => {
-      jest.advanceTimersByTime(WAVE_CEILING_MS);
-    });
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await reportFused(...heldStill(95));
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 });
 
@@ -1637,12 +1690,13 @@ describe('reopening the sheet on an Android phone', () => {
     await act(async () => {});
     await reportFused(...waved(8));
 
+    expect(qiblaHeading.hasFusedHeading).toHaveBeenCalledTimes(2);
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
 
-  // Every wave ends in an arrival, so the user is told by feel each time, where a warm reopen on a phone without
-  // the sensor is told nothing
-  it('announces the compass after every wave, a reopen included', async () => {
+  // A user who is waving is looking at the phone they are moving, not at its screen, so every wave is announced
+  // by feel however quickly it was made. On a phone without the sensor an arrival this quick is silent
+  it('announces the compass after every wave, however quick, a reopen included', async () => {
     await openFusedSheet();
     await reportFused(...waved(8));
     expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
@@ -1659,34 +1713,17 @@ describe('reopening the sheet on an Android phone', () => {
 });
 
 describe('what an Android phone records when its compass is drawn', () => {
-  // The line a mock build leaves in the phone's log, which is how a wave that would not open is diagnosed
-  it('records a wave, with the turns that made it', async () => {
+  // The line a mock build leaves in the phone's log, which is how long the user's own wave took
+  it('records how long the wave took, counted from when the hint went up', async () => {
     await openFusedSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(2500);
+    });
 
     await reportFused(...waved(8));
 
     expect(logger.info).toHaveBeenCalledTimes(1);
-    expect(logger.info).toHaveBeenCalledWith('QIBLA: compass drawn on the fused sensor', {
-      waved: true,
-      turns: 8,
-      waitedMs: 0,
-    });
-  });
-
-  it('records the ceiling, with the turns that fell short of a wave', async () => {
-    await openFusedSheet();
-    await reportFused(...waved(3));
-
-    await act(async () => {
-      jest.advanceTimersByTime(WAVE_CEILING_MS);
-    });
-    await reportFused({ headingDegrees: 95, attitude: tipped(3 * 31) });
-
-    expect(logger.info).toHaveBeenCalledWith('QIBLA: compass drawn on the fused sensor', {
-      waved: false,
-      turns: 3,
-      waitedMs: WAVE_CEILING_MS,
-    });
+    expect(logger.info).toHaveBeenCalledWith('QIBLA: compass drawn after a wave', { waitedMs: 2500 });
   });
 
   it('records nothing while the compass is still waited for, and nothing again once it is drawn', async () => {
@@ -1720,232 +1757,24 @@ describe('an Android phone whose sensor sends an attitude that is no attitude', 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  // A native side out of step with this code could send no attitude at all. Reading one that is not there would
-  // throw before the heading was judged, on every sample, and the hint would never clear
-  it('still draws the heading at the ceiling when the attitude is missing altogether', async () => {
-    const bare = { headingDegrees: 95 } as FusedHeading;
+  it('counts the wave that follows as though those readings had never arrived', async () => {
     await openFusedSheet();
-    await reportFused(bare);
+    await reportFused(...Array.from({ length: 5 }, () => garbled(95)));
 
-    await act(async () => {
-      jest.advanceTimersByTime(WAVE_CEILING_MS);
-    });
-    await reportFused(bare);
-
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-  });
-
-  // The heading itself is sound, so the ceiling must still be reached: a wave that can never be counted must not
-  // become a compass that can never be drawn
-  it('still draws the heading at the ceiling', async () => {
-    await openFusedSheet();
-    await reportFused(garbled(95));
-
-    await act(async () => {
-      jest.advanceTimersByTime(WAVE_CEILING_MS);
-    });
-    await reportFused(garbled(95));
-
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-    expect(logger.info).toHaveBeenCalledWith('QIBLA: compass drawn on the fused sensor', {
-      waved: false,
-      turns: undefined,
-      waitedMs: WAVE_CEILING_MS,
-    });
-  });
-});
-
-describe('an Android phone whose fused sensor reports itself and delivers nothing', () => {
-  // A Play services too old to carry the sensor still reports it. Every wait on this screen is counted from a
-  // reading, so a sensor that never sends one would leave the hint up for ever
-  it('hands the visit to the platform heading once the sensor has been silent for three seconds', async () => {
-    await openFusedSheet();
-    expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
-
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-
-    expect(qiblaDevice.watchHeading).toHaveBeenCalledTimes(1);
-    expect(mockStopFused).toHaveBeenCalledTimes(1);
-    expect(logger.warn).toHaveBeenCalledWith(
-      'QIBLA: the fused sensor delivered nothing, reading the platform heading instead'
-    );
-  });
-
-  it('keeps waiting on the sensor one millisecond short of that', async () => {
-    await openFusedSheet();
-
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS - 1);
-    });
-
-    expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
-    expect(mockStopFused).not.toHaveBeenCalled();
-  });
-
-  it('never gives up on a sensor that has delivered a sample, however long it then takes', async () => {
-    await openFusedSheet();
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS - 1);
-    });
-    await reportFused(...heldStill(95));
-
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS * 3);
-    });
-
-    expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
-    expect(mockStopFused).not.toHaveBeenCalled();
-    expect(logger.warn).not.toHaveBeenCalled();
-  });
-
-  it('starts nothing after the sheet has closed', async () => {
-    await openFusedSheet();
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-
-    expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
-  });
-
-  // The visit runs on as a phone without the sensor does: no wave is asked for, and the shorter ceiling draws
-  it('draws the compass at the platform heading’s own ceiling, with no wave asked for', async () => {
-    await openFusedSheet();
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-    await reportBareHeadings(118);
-
-    await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS);
-    });
-    await reportBareHeadings(118);
-
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-  });
-
-  it('holds one millisecond short of that ceiling', async () => {
-    await openFusedSheet();
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-    await reportBareHeadings(118);
-
-    await act(async () => {
-      jest.advanceTimersByTime(CEILING_MS - 1);
-    });
-    await reportBareHeadings(118);
-
-    expect(screen.queryByTestId('qibla-dial')).toBeNull();
-  });
-
-  it('stops the platform heading it fell back to when the sheet closes', async () => {
-    await openFusedSheet();
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-    expect(mockUnwatch).not.toHaveBeenCalled();
-
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-
-    expect(mockUnwatch).toHaveBeenCalledTimes(1);
-    // The silent sensor was stopped when the visit fell back, and is not stopped a second time by the close
-    expect(mockStopFused).toHaveBeenCalledTimes(1);
-  });
-
-  // watchHeadingAsync is asynchronous, so the watch can finish setting up after the cleanup has already run
-  it('stops a fallback watch that finished setting up after the sheet had closed', async () => {
-    mockState.releaseWatch = () => undefined;
-    await openFusedSheet();
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-    await act(async () => {
-      mockState.releaseWatch?.();
-    });
-
-    expect(mockUnwatch).toHaveBeenCalledTimes(1);
-  });
-
-  // The sheet is open again by the time the watch arrives, so "is the sheet open" would wrongly keep it: it belongs
-  // to a visit that is over, and kept, it would read the magnetometer beside the new visit's sensor
-  it('stops a fallback watch that finished setting up after the sheet had closed and opened again', async () => {
-    mockState.releaseWatch = () => undefined;
-    await openFusedSheet();
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-    const releaseFirstVisitsWatch = mockState.releaseWatch;
-
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await act(async () => {
-      releaseFirstVisitsWatch?.();
-    });
-
-    expect(mockUnwatch).toHaveBeenCalledTimes(1);
-  });
-
-  it('tries the sensor afresh on the next open, rather than writing the phone off', async () => {
-    await openFusedSheet();
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
     await reportFused(...waved(8));
 
-    expect(qiblaHeading.hasFusedHeading).toHaveBeenCalledTimes(2);
-    expect(qiblaHeading.watchFusedHeading).toHaveBeenCalledTimes(2);
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
 
-  // The position read outlasts the three seconds of silence, so the open's own last steps run AFTER the visit
-  // has fallen back. What they store must not displace the platform heading's stop, or the magnetometer would stay
-  // armed for the life of the process
-  it('still stops the platform heading when the open that fell back was slow to read the position', async () => {
-    mockState.fused = true;
-    mockState.releasePosition = () => undefined;
-    jest.useFakeTimers();
-    await render(<QiblaSheet />);
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-    await act(async () => {
-      mockState.releasePosition?.();
-    });
+  // A native side out of step with this code could send no attitude at all. Reading one that is not there would
+  // throw on every sample, before the heading was ever judged
+  it('is not thrown by a sample with no attitude at all, and counts the wave that follows', async () => {
+    await openFusedSheet();
+    await reportFused(...Array.from({ length: 5 }, () => ({ headingDegrees: 95 }) as FusedHeading));
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await reportFused(...waved(8));
 
-    expect(mockUnwatch).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe('a phone without the fused sensor, three seconds into an open', () => {
-  // The wait for a first fused sample belongs to a fused phone alone. Armed here, it would stop the accuracy watch
-  // and start a second heading watch on every open of every other phone
-  it('has given up on nothing: one heading watch, the accuracy watch still running, no fallback recorded', async () => {
-    await openSheet();
-    await reportBareHeadings(118);
-
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS * 2);
-    });
-
-    expect(qiblaDevice.watchHeading).toHaveBeenCalledTimes(1);
-    expect(mockStopAccuracy).not.toHaveBeenCalled();
-    expect(mockUnwatch).not.toHaveBeenCalled();
-    expect(logger.warn).not.toHaveBeenCalled();
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
 });
 
@@ -1963,22 +1792,6 @@ describe('an Android phone whose sheet is opened again before the first open has
 
     expect(qiblaHeading.watchFusedHeading).toHaveBeenCalledTimes(2);
     expect(mockStopFused).toHaveBeenCalledTimes(1);
-  });
-
-  it('waits on the sensor once, so one silence means one fallback', async () => {
-    mockState.fused = true;
-    jest.useFakeTimers();
-    await render(<QiblaSheet />);
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-
-    expect(qiblaDevice.watchHeading).toHaveBeenCalledTimes(1);
   });
 
   // The first open is still reading the position when the sheet closes and opens again. Each read parks its own
@@ -2009,45 +1822,6 @@ describe('an Android phone whose sheet is opened again before the first open has
     expect(mockUnwatch).not.toHaveBeenCalled();
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
   });
-
-  // The first open had already given up on a silent sensor and fallen back when the second one arrived
-  it('stops the platform heading the first open had fallen back to', async () => {
-    mockState.fused = true;
-    jest.useFakeTimers();
-    await render(<QiblaSheet />);
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-    expect(mockUnwatch).not.toHaveBeenCalled();
-
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-
-    expect(mockUnwatch).toHaveBeenCalledTimes(1);
-  });
-
-  it('stops a platform heading the first open was still setting up when the second arrived', async () => {
-    mockState.fused = true;
-    mockState.releaseWatch = () => undefined;
-    jest.useFakeTimers();
-    await render(<QiblaSheet />);
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await act(async () => {
-      jest.advanceTimersByTime(FUSED_SILENCE_MS);
-    });
-    const releaseFirstOpensWatch = mockState.releaseWatch;
-
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await act(async () => {
-      releaseFirstOpensWatch?.();
-    });
-
-    expect(mockUnwatch).toHaveBeenCalledTimes(1);
-  });
 });
 
 describe('leaving the screen on an Android phone', () => {
@@ -2060,5 +1834,375 @@ describe('leaving the screen on an Android phone', () => {
     await unmount();
 
     expect(mockStopFused).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('when north cannot be found', () => {
+  const FIRST_LINE = 'Could not find north';
+  const SECOND_LINE = 'Please try standing in a different location';
+
+  const colourOf = (text: string | RegExp) =>
+    (StyleSheet.flatten(screen.getByText(text).props.style) as { color?: string }).color;
+
+  // A phone can sit outside the bar for as long as it stays where it is, and waving it there changes nothing. With
+  // no ceiling to draw it anyway, the user must be told why the compass is not coming
+  it('says so in two lines, once a phone outside the bar has shown the hint for five seconds', async () => {
+    await openSheet();
+    await reportAccuracy(25.4);
+    await reportBareHeadings(118);
+
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+
+    const [first, second] = within(screen.getByTestId('qibla-lost')).getAllByText(/\w/);
+
+    expect(first).toHaveTextContent(FIRST_LINE);
+    expect(second).toHaveTextContent(SECOND_LINE);
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // A stream can report that it has no heading over and over, which is exactly the phone that has no north. Each
+  // gap must not start the five seconds again, or that phone would never be told
+  it('says so at five seconds on a phone whose stream keeps reporting that it has no heading', async () => {
+    await openSheet();
+    for (let tenth = 0; tenth < 50; tenth++) {
+      await reportLostHeadings();
+      await act(async () => {
+        jest.advanceTimersByTime(100);
+      });
+    }
+
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+  });
+
+  it('says nothing one millisecond sooner', async () => {
+    await openSheet();
+    await reportAccuracy(25.4);
+    await reportBareHeadings(118);
+
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS - 1);
+    });
+
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+    expect(screen.queryByText(FIRST_LINE)).toBeNull();
+  });
+
+  // No gyroscope, or no Play services, and no accuracy of its own: nothing on such a phone can vouch for a heading
+  it('says so on a phone that never reports anything about its heading at all', async () => {
+    await openSheet();
+
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+
+    expect(screen.getByText(FIRST_LINE)).toBeOnTheScreen();
+    expect(screen.getByText(SECOND_LINE)).toBeOnTheScreen();
+  });
+
+  it('wears the colour of the line that asks for the wave, on both of its lines', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+
+    expect(colourOf(FIRST_LINE)).toBe(colourOf(/Move your phone like this/));
+    expect(colourOf(SECOND_LINE)).toBe(colourOf(/Move your phone like this/));
+  });
+
+  // Added to the stage's column instead, its arrival would push the hint and its drawing upwards
+  it('is laid over the stage rather than added to its column, so the hint does not move when it arrives', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+
+    const style = StyleSheet.flatten(screen.getByTestId('qibla-lost').props.style) as {
+      position?: string;
+      bottom?: number;
+    };
+
+    expect(style.position).toBe('absolute');
+    expect(style.bottom).toBe(0);
+  });
+
+  // An open that overtakes one whose compass is already drawn starts a wait nothing will end
+  it('is never laid over a compass, even when a second open found one already drawn', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  it('is never said once the compass has been drawn', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  it('goes away when the phone comes inside the bar and the compass is drawn', async () => {
+    await openSheet();
+    await reportAccuracy(25.4);
+    await reportBareHeadings(118);
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+
+    await reportHeadings(118);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  // A sheet that was never given a position is waiting on nothing, and is already saying why
+  it('is not said when the user refused location', async () => {
+    mockState.granted = false;
+    await openSheet();
+
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  it('is forgotten when the sheet closes, and waits its five seconds again on the next open', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS - 1);
+    });
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+  });
+
+  // The wait must not run on behind a closed sheet: reaching its end there, it would leave the next open beginning
+  // with the report already on screen
+  it('stops its wait when the sheet closes, so the next open does not begin with it', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS - 1000);
+    });
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  // The permission prompt can stay up for as long as the user likes, and nothing is being waited on behind it
+  it('starts its wait when location is granted, not while the prompt is still up', async () => {
+    mockState.releasePermission = () => undefined;
+    jest.useFakeTimers();
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    await act(async () => {
+      mockState.releasePermission?.();
+    });
+
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  // Said once, then answered by a compass: when that compass later loses its heading the report must be earned
+  // again, not found still standing from before
+  it('does not come straight back when a compass drawn after it loses its heading', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+    await reportHeadings(95);
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(1500);
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  // The hint is back, so the same five seconds are owed before the room is blamed for it. The compass stands for
+  // a long while first: a wait left running behind it would have ended there, and be found already said
+  it('waits its five seconds again after a drawn compass loses its heading', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(1500);
+    });
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS - 1);
+    });
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+  });
+
+  // Two seconds of the first open and three of the second are not five seconds of waiting
+  it('starts its wait afresh when an open overtakes another', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS - 1);
+    });
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+    });
+
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+  });
+
+  // A Play services too old to carry the sensor still reports it, and then delivers nothing
+  it('is said on an Android phone whose sensor reports itself and delivers nothing', async () => {
+    await openFusedSheet();
+
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+
+    expect(screen.getByText(FIRST_LINE)).toBeOnTheScreen();
+    expect(screen.getByText(SECOND_LINE)).toBeOnTheScreen();
+    // No other heading is started in its place: on this phone nothing could ever draw one
+    expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
+  });
+
+  // A slow Play services can deliver its first sample after the five seconds are up. The sensor has not lost north
+  // after all, so the report must not stay
+  it('is taken back when the sensor’s first sample arrives after it was said', async () => {
+    await openFusedSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+
+    await reportFused(...heldStill(95));
+
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  // Its sensor has not lost north. All the phone lacks is the wave, and the hint is already asking for that
+  it('is never said on an Android phone whose sensor is delivering, however long it goes unwaved', async () => {
+    await openFusedSheet();
+    await reportFused(...heldStill(95));
+
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  it('is not said when the sensor’s first sample arrives one millisecond before it would be', async () => {
+    await openFusedSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS - 1);
+    });
+
+    await reportFused(...heldStill(95));
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+});
+
+describe('a reading that arrives after the sheet has closed', () => {
+  // A heading watch can outlive the close that should have ended it, when the open that started it was still
+  // reading the position. The mock keeps every watcher, so the closed visit's own is still the latest one here
+  it('draws nothing, taps nothing and announces nothing, and leaves the next open to earn its own compass', async () => {
+    await openSheet();
+    await reportHeadings(118.9);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    jest.mocked(Haptics.impactAsync).mockClear();
+    jest.mocked(Haptics.notificationAsync).mockClear();
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS);
+    });
+
+    await reportWarmConfirmation(118.9);
+
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+});
+
+describe('the readings a warm reopen is judged on', () => {
+  // Only the latest eight are ever read. A phone that is never sure keeps sending for as long as the sheet is open,
+  // and with no ceiling to end that, a list kept whole would be copied in full on every reading
+  it('are kept to the latest eight, however many arrive unvouched', async () => {
+    const judged = jest.spyOn(qiblaSettle, 'isWarmStream');
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    await reportBareHeadings(...Array.from({ length: 200 }, () => 300));
+
+    expect(judged).toHaveBeenCalledTimes(200);
+    expect(judged.mock.calls.at(-1)?.[0]).toHaveLength(8);
+    judged.mockRestore();
   });
 });
