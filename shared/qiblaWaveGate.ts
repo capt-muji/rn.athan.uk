@@ -18,11 +18,11 @@ export type Wave = { from: Attitude; turns: number };
 /**
  * How far the phone must turn from the last counted attitude for the turn to count.
  *
- * A light shake wobbles inside this and never counts, however long it lasts, and so do a hand's tremor and a walk.
+ * A shake that swings the phone less than this from one end to the other never counts, however long it lasts.
  */
 const WAVE_TURN_DEGREES = 30;
 
-/** How many turns complete a wave: more than picking the phone up, less than two seconds of a real figure of eight */
+/** How many turns complete a wave: 240 degrees of turning in all, which lifting the phone to look at it is not */
 const WAVE_TURNS = 8;
 
 /** How long the gate waits for a wave that may never come, because this screen must never lock */
@@ -30,19 +30,22 @@ export const WAVE_CEILING_MS = 10_000;
 
 const DEGREES = Math.PI / 180;
 
-/** The product of two unit quaternions is the cosine of HALF the angle between them, so a turn is judged on this */
-const TURN_COSINE = Math.cos((WAVE_TURN_DEGREES * DEGREES) / 2);
+/** The dot product of two unit quaternions is the cosine of HALF the angle between them, so a turn is judged on it */
+const TURN_COSINE_SQUARED = Math.cos((WAVE_TURN_DEGREES * DEGREES) / 2) ** 2;
 
 const dot = (a: Attitude, b: Attitude): number => a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
 
 /**
  * Whether a reading is an attitude at all, which is a quaternion one long.
  *
- * The sensor's own class lets a quaternion of zeros or of infinities through. Counted, one would be a turn the phone
- * never made, and counted FROM, it would cost the visit its whole wave, so it is passed over as if it never arrived.
- * The bounds are far looser than the single precision the sensor reports in needs, and far tighter than any of those.
+ * The sensor's own class lets a quaternion of zeros or of infinities through, and a native side out of step with this
+ * file could send none. Counted, such a reading would be a turn the phone never made, and counted FROM, it would cost
+ * the visit its whole wave, so it is passed over as if it never arrived. The bounds are far looser than the single
+ * precision the sensor reports in needs, and far tighter than any of those.
  */
 const isAttitude = (reading: Attitude): boolean => {
+  if (!Array.isArray(reading)) return false;
+
   const lengthSquared = dot(reading, reading);
 
   return lengthSquared > 0.5 && lengthSquared < 2;
@@ -51,9 +54,14 @@ const isAttitude = (reading: Attitude): boolean => {
 /**
  * Whether the phone has turned a counted turn between two attitudes, by whichever axis it turned about.
  *
- * A quaternion and its negative are one attitude, hence the absolute value.
+ * Squared, so that a quaternion and its negative, which are one attitude, compare alike. The two lengths are
+ * multiplied back in so that a reading a little off unit length is judged on its angle and not on its length.
  */
-const hasTurned = (from: Attitude, to: Attitude): boolean => Math.abs(dot(from, to)) <= TURN_COSINE;
+const hasTurned = (from: Attitude, to: Attitude): boolean => {
+  const along = dot(from, to);
+
+  return along * along <= TURN_COSINE_SQUARED * dot(from, from) * dot(to, to);
+};
 
 /**
  * Takes one more attitude into the wave.

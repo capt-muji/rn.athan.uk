@@ -42,9 +42,15 @@ run_break "nine turns are needed" "$W" "const WAVE_TURNS = 8;" "const WAVE_TURNS
 run_break "the ceiling shortened" "$W" "export const WAVE_CEILING_MS = 10_000;" "export const WAVE_CEILING_MS = 9_999;"
 run_break "the ceiling lengthened" "$W" "export const WAVE_CEILING_MS = 10_000;" "export const WAVE_CEILING_MS = 10_001;"
 run_break "the whole angle taken for half of it" "$W" \
-  "Math.cos((WAVE_TURN_DEGREES * DEGREES) / 2)" "Math.cos(WAVE_TURN_DEGREES * DEGREES)"
+  "Math.cos((WAVE_TURN_DEGREES * DEGREES) / 2) ** 2" "Math.cos(WAVE_TURN_DEGREES * DEGREES) ** 2"
 run_break "an attitude and its negative taken for two" "$W" \
-  "Math.abs(dot(from, to)) <= TURN_COSINE" "dot(from, to) <= TURN_COSINE"
+  "along * along <= TURN_COSINE_SQUARED * dot(from, from) * dot(to, to)" \
+  "along <= Math.sqrt(TURN_COSINE_SQUARED * dot(from, from) * dot(to, to))"
+run_break "a turn judged on a quaternion's length as well as its angle" "$W" \
+  "along * along <= TURN_COSINE_SQUARED * dot(from, from) * dot(to, to)" "along * along <= TURN_COSINE_SQUARED"
+run_break "a reading that is missing altogether is read anyway" "$W" \
+  "  if (!Array.isArray(reading)) return false;
+" ""
 run_break "a reading that is no attitude is taken for one" "$W" \
   "  if (!isAttitude(attitude)) return wave;
 " ""
@@ -128,8 +134,8 @@ run_break "an overtaking open leaves the first open's wait running" "$H" \
   "      silenceRef.current = setTimeout(fallBack, FUSED_SILENCE_MS);"
 run_break "an overtaking open strands the first open's listener" "$H" \
   "      unwatchNativeRef.current?.();
-      unwatchNativeRef.current = watchFusedHeading(" \
-  "      unwatchNativeRef.current = watchFusedHeading("
+      unwatchFallbackRef.current?.();" \
+  "      unwatchFallbackRef.current?.();"
 run_break "the fallback is not recorded" "$H" \
   "    logger.warn('QIBLA: the fused sensor delivered nothing, reading the platform heading instead');
 " ""
@@ -166,8 +172,26 @@ run_break "a kept fallback watch outlives the close" "$H" \
   "    unwatchFallbackRef.current?.();
 " ""
 run_break "a close does not end the visit" "$H" \
-  "    visitRef.current += 1;
-" ""
+  "    activeRef.current = false;
+    visitRef.current += 1;" \
+  "    activeRef.current = false;"
+run_break "the fallback's stop is kept where the open's own last steps overwrite it" "$H" \
+  "      unwatchFallbackRef.current = unwatch;" "      unwatchRef.current = unwatch;"
+run_break "an overtaking open leaves a fallback's heading running" "$H" \
+  "      unwatchFallbackRef.current?.();
+      unwatchFallbackRef.current = null;
+      visitRef.current += 1;" \
+  "      visitRef.current += 1;"
+run_break "an overtaking open leaves a fallback that is still setting up" "$H" \
+  "      unwatchFallbackRef.current = null;
+      visitRef.current += 1;
+      unwatchNativeRef.current = watchFusedHeading(" \
+  "      unwatchFallbackRef.current = null;
+      unwatchNativeRef.current = watchFusedHeading("
+run_break "every phone waits on the fused sensor" "$H" \
+  "      unwatchPromise = watchHeading(({ trueHeading }) => processReading(trueHeading));" \
+  "      unwatchPromise = watchHeading(({ trueHeading }) => processReading(trueHeading));
+      silenceRef.current = setTimeout(fallBack, FUSED_SILENCE_MS);"
 
 # ---- which phone reads what, and what the other phones still do ----
 run_break "the fused sensor is never chosen" "$H" "fusedRef.current = hasFusedHeading();" "fusedRef.current = false;"
@@ -217,6 +241,10 @@ run_break "the fused sensor is stopped off the native side" "$B" \
   "    native.stopFusedOrientation();" \
   "    const { stopFusedOrientation } = native;
     stopFusedOrientation();"
+run_break "the accuracy listener is added off the native side" "$B" \
+  "  const subscription = native.addListener('onHeadingAccuracy'," \
+  "  const { addListener } = native;
+  const subscription = addListener('onHeadingAccuracy',"
 run_break "the accuracy readings are started off the native side" "$B" \
   "  native.startHeadingAccuracy();" \
   "  const { startHeadingAccuracy } = native;

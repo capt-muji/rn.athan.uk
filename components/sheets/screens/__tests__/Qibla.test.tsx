@@ -1464,7 +1464,7 @@ describe('the wave an Android phone waits for', () => {
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
-  // The owner's question: what if the phone is shaken lightly? 200 swings of 28 degrees stay inside the 30 a turn
+  // What must happen when the phone is only shaken lightly: 200 swings of 28 degrees stay inside the 30 a turn
   // must reach, though they travel 5600 degrees in all
   it('draws nothing for a light shake, however long it goes on', async () => {
     await openFusedSheet();
@@ -1720,6 +1720,21 @@ describe('an Android phone whose sensor sends an attitude that is no attitude', 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
   });
 
+  // A native side out of step with this code could send no attitude at all. Reading one that is not there would
+  // throw before the heading was judged, on every sample, and the hint would never clear
+  it('still draws the heading at the ceiling when the attitude is missing altogether', async () => {
+    const bare = { headingDegrees: 95 } as FusedHeading;
+    await openFusedSheet();
+    await reportFused(bare);
+
+    await act(async () => {
+      jest.advanceTimersByTime(WAVE_CEILING_MS);
+    });
+    await reportFused(bare);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
   // The heading itself is sound, so the ceiling must still be reached: a wave that can never be counted must not
   // become a compass that can never be drawn
   it('still draws the heading at the ceiling', async () => {
@@ -1888,8 +1903,49 @@ describe('an Android phone whose fused sensor reports itself and delivers nothin
     await act(async () => {});
     await reportFused(...waved(8));
 
+    expect(qiblaHeading.hasFusedHeading).toHaveBeenCalledTimes(2);
     expect(qiblaHeading.watchFusedHeading).toHaveBeenCalledTimes(2);
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  // The position read outlasts the three seconds of silence, so the open's own last steps run AFTER the visit
+  // has fallen back. What they store must not displace the platform heading's stop, or the magnetometer would stay
+  // armed for the life of the process
+  it('still stops the platform heading when the open that fell back was slow to read the position', async () => {
+    mockState.fused = true;
+    mockState.releasePosition = () => undefined;
+    jest.useFakeTimers();
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(FUSED_SILENCE_MS);
+    });
+    await act(async () => {
+      mockState.releasePosition?.();
+    });
+
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+
+    expect(mockUnwatch).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('a phone without the fused sensor, three seconds into an open', () => {
+  // The wait for a first fused sample belongs to a fused phone alone. Armed here, it would stop the accuracy watch
+  // and start a second heading watch on every open of every other phone
+  it('has given up on nothing: one heading watch, the accuracy watch still running, no fallback recorded', async () => {
+    await openSheet();
+    await reportBareHeadings(118);
+
+    await act(async () => {
+      jest.advanceTimersByTime(FUSED_SILENCE_MS * 2);
+    });
+
+    expect(qiblaDevice.watchHeading).toHaveBeenCalledTimes(1);
+    expect(mockStopAccuracy).not.toHaveBeenCalled();
+    expect(mockUnwatch).not.toHaveBeenCalled();
+    expect(logger.warn).not.toHaveBeenCalled();
   });
 });
 
@@ -1925,7 +1981,9 @@ describe('an Android phone whose sheet is opened again before the first open has
     expect(qiblaDevice.watchHeading).toHaveBeenCalledTimes(1);
   });
 
-  // The first open is still reading the position when the sheet closes and opens again
+  // The first open is still reading the position when the sheet closes and opens again. Each read parks its own
+  // release, so the first one is kept before the second replaces it, and BOTH are released: the first open's
+  // remaining steps are what must leave the second open's sensor alone
   it('keeps the second open’s sensor running when the first open finally finishes', async () => {
     mockState.fused = true;
     mockState.releasePosition = () => undefined;
@@ -1934,16 +1992,61 @@ describe('an Android phone whose sheet is opened again before the first open has
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
     await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    const releaseFirstOpensRead = mockState.releasePosition;
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
+    expect(mockState.releasePosition).not.toBe(releaseFirstOpensRead);
+    await act(async () => {
+      releaseFirstOpensRead?.();
+    });
     await act(async () => {
       mockState.releasePosition?.();
     });
     await reportFused(...waved(8));
 
     expect(mockStopFused).toHaveBeenCalledTimes(1);
+    expect(mockUnwatch).not.toHaveBeenCalled();
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+
+  // The first open had already given up on a silent sensor and fallen back when the second one arrived
+  it('stops the platform heading the first open had fallen back to', async () => {
+    mockState.fused = true;
+    jest.useFakeTimers();
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(FUSED_SILENCE_MS);
+    });
+    expect(mockUnwatch).not.toHaveBeenCalled();
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    expect(mockUnwatch).toHaveBeenCalledTimes(1);
+  });
+
+  it('stops a platform heading the first open was still setting up when the second arrived', async () => {
+    mockState.fused = true;
+    mockState.releaseWatch = () => undefined;
+    jest.useFakeTimers();
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(FUSED_SILENCE_MS);
+    });
+    const releaseFirstOpensWatch = mockState.releaseWatch;
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      releaseFirstOpensWatch?.();
+    });
+
+    expect(mockUnwatch).toHaveBeenCalledTimes(1);
   });
 });
 
