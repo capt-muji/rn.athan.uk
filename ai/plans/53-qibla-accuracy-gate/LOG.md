@@ -903,3 +903,40 @@ is green first.**
 
 **1.29.256 has not had its own desk check.** The check recorded above was on 1.29.255, and the two differ by the
 review's four fixes, none of which a still phone on a desk exercises.
+
+## The owner accepted it on three phones, and locked both platforms (2026-10-07, morning)
+
+The Samsung S23 was given 1.29.256 that morning, at his request (`md5` equal to the built file). He then tested the
+iPhone XS, the OnePlus 3T and the S23.
+
+🐋  "On the iOS, it works. Perfectly... directional wise, it's perfect. I love it. iPhone, don't touch the iPhone
+anymore. iPhone is locked in place. Android, let's also lock it in place. It's about 98% accurate. Sometimes it
+shows me 2 degrees difference, or like maybe 5 degree difference... it's within the 30 degree radius. So that's
+marked as successful."
+
+**Both platforms are locked.** That answers the three findings step 5's review left for his ruling
+(`steps/5-vouched-or-nothing.md`, part 12, items 6 to 8): none is to be built. They stay recorded there.
+
+### The close
+
+- **One last independent review**, read-only, of the fixes made in 1.29.256, which no reviewer had seen. Its
+  verdict is in `AUDIT.md`.
+- **Twenty lines of test scaffolding removed** from `jest.components.setup.js`: working stand-ins for
+  `useAnimatedSensor` and `useAnimatedReaction`, written for the shake gate that was deleted on 2026-10-02. Nothing
+  in the app has called either since. `yarn validate` is unchanged without them: 188 suites, 5198 tests, 100%.
+- **No compass code changed after his acceptance.**
+- **Left as found, because the files are locked:** comments that name the owner in `hooks/useQibla.ts`,
+  `shared/qiblaCompass.ts`, `shared/qiblaAlignment.ts` and the two suites, which `ai/AGENTS.md` section 15 excludes
+  and which all predate this session's own additions. And one write nothing reads: `warmHeadingRef` is still set on
+  a fused phone.
+- **Tonight's four merged branches are deleted locally.** The prototype builds stay in
+  `~/athan-device-sweep/session53/`, outside the repository.
+
+### What the next session should know
+
+1. **The Find X8 still holds the 1.29.249 mock**, which reads two sensors at once. It needs a current build
+   before it is used.
+2. **The 3T, the S23 and the iPhone hold 1.29.256, mock builds with invented prayer times.** A phone that leaves the
+   owner needs a production build.
+3. **The handoff `replace-qibla-stopwatch-phone-certainty.md` in `.local-handoffs/` is spent.** Its index has no
+   status but in-progress, so it was not edited.
