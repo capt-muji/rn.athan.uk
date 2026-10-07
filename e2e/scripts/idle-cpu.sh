@@ -9,7 +9,7 @@
 
 set -u
 LABEL=${1:?usage: idle-cpu.sh <label> [device-serial]}
-SERIAL=${2:-3T_SERIAL}
+SERIAL=${2:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
 ROOT=${0:A:h:h}
 OUT=$(mktemp -d)/idle-$LABEL; mkdir -p "$OUT"
 a() { adb -s "$SERIAL" "$@"; }

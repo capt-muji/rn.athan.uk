@@ -23,7 +23,7 @@ LABEL=${1:?label}
 TAPX=${2:?tap-x}
 TAPY=${3:?tap-y}
 SECONDS_LIMIT=${4:-3}
-SERIAL=${5:-3T_SERIAL}
+SERIAL=${5:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
 ROOT=${0:h:h}
 OUT="$ROOT/evidence/$LABEL-$(date +%H%M%S)"
 mkdir -p "$OUT"
