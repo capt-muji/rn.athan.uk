@@ -33,8 +33,11 @@ which is cheaper and more accurate than a grep-and-read loop.
 This repository is public. Tracked files, commit messages and branch names hold only what the project needs.
 
 - **Use a placeholder for anything specific to a person or a device:** `3T_SERIAL`, `X8_SERIAL`, `S23_SERIAL`,
-  `8T_SERIAL`, `IPHONE_UDID`, `TEAM_ID`, and `$HOME/...` for a path under the home directory.
-- **Use the fixture position already in the tests** wherever an example position is needed.
+  `8T_SERIAL`, `IPHONE_UDID` for any identifier of the iPhone, `SIMULATOR_UDID`, `TEAM_ID`, `CERT_TEAM_ID`,
+  `PHONE_ADDRESS` for a phone's network address, `WIFI_NAME`, and `$HOME/...` for a path under the home directory.
+  A shortened identifier is still an identifier: write the placeholder, never the first or last characters.
+- **Use the fixture position already in the tests** wherever an example position is needed. Never write a
+  position, an address or a place name that a phone or a geocoder reported: say what kind of thing it returned.
 - **Say where a measurement was taken in general terms:** indoors, outdoors, one room, another room.
 - **Do not commit a screenshot or a screen recording of a device.** Record what was read off the screen as text,
   and keep the raw file outside the repository.
