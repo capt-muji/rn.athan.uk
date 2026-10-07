@@ -21,7 +21,7 @@ Read ai/AGENTS.md and begin as Orchestrator.
 ## Tool Routing
 
 Reach for these without being asked. Every command below already exists in this
-repo — run them, don't reinvent them.
+repo: run them, don't reinvent them.
 
 | Work | Route to |
 |---|---|
@@ -30,7 +30,7 @@ repo — run them, don't reinvent them.
 | iOS build / simulator | `xcodebuildmcp` |
 | Expo project brief, dev-server smoke loop | `npx @expo/agent-cli status` / `smoke --ios` (rules in ai/AGENTS.md §6) |
 | Expo/EAS API question | the matching `expo-*` / `eas-*` skill |
-| "Are alarms actually armed?" | `yarn check:device` |
+| "Are alarms armed?" | `yarn check:device` |
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
 | Perf regression vs baseline | `e2e/scripts/baseline-compare.sh e2e/flows/<flow>.yaml` |
 | Before calling anything done | `yarn validate` (tsc + biome + jest) |
@@ -38,8 +38,8 @@ repo — run them, don't reinvent them.
 Maestro needs `export PATH="$HOME/.maestro/bin:$PATH"`.
 
 **MCP servers on for the simulator-only stretch** (`opencode.json`, 2026-09-28): `agent-device`
-drives, `xcodebuildmcp` builds, and nothing else covers both — XcodeBuildMCP has no tap, swipe or
-type, and its accessibility snapshot is not the points-accurate one row 36 measures with. Off:
+drives, `xcodebuildmcp` builds, and nothing else covers both (XcodeBuildMCP has no tap, swipe or
+type, and its accessibility snapshot is not the points-accurate one row 36 measures with). Off:
 `mobile-mcp` (the Android/3T path; re-enable when a phone is plugged in), `maestro` MCP (the
 scripts and `e2e/flows/*.yaml` drive the CLI binary, not the server) and `expo` (nothing is shipping
 through EAS). Turning one back on is an `enabled` flip.
@@ -51,5 +51,5 @@ delegate to it).
 API, whose prayers sit either side of launch. Everything else in `check:device` is
 build-agnostic.
 
-Before measuring anything, read `e2e/README.md` — its Gotchas section documents
+Before measuring anything, read `e2e/README.md`: its Gotchas section documents
 Metro's env-blindness and the dev-env confound, and each one cost real time.

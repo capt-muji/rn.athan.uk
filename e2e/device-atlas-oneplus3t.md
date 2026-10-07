@@ -79,7 +79,7 @@ long-press sheet (learned the hard way).
   NP(Light) 2x2, NP(Light) 4x2 (ET = Extra Times, NP = Next Prayer).
 - Strip at its start: cell row occupies y~284-643 with labels to ~730; centers x=234 / 655 / 987
   (col 3 clipped at the screen edge; swipe the strip horizontally `input swipe 950 460 200 460 400`
-  to advance, verify by screenshot before long-pressing — after a strip scroll the cell under a
+  to advance, verify by screenshot before long-pressing: after a strip scroll the cell under a
   remembered coordinate CHANGES; that is how a dead ColorNote widget got placed by accident).
 - Previews render the generic app-icon fallback (initialLayout is a loading view); real art appears
   after placement and the first snapshot render.

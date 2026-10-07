@@ -21,7 +21,7 @@ by taking the HIGHEST request, not the first:
 | With a local module asking 21.4.0 | the same command, with `modules/qiblaheading` present | **`play-services-location:21.0.1 -> 21.4.0`** |
 
 So a local Expo module declaring `play-services-location:21.4.0` lifts the whole app's resolution,
-`expo-location` included, with **no patch to `expo-location` at all** — and avoids the class of
+`expo-location` included, with **no patch to `expo-location` at all**, and avoids the class of
 defect `ai/AGENTS.md` records from patching that package's Android source (one silent no-op
 already: the `publication` block resolving a prebuilt AAR instead of patched Kotlin). Proven to
 compile, not merely to resolve:
@@ -128,7 +128,7 @@ sendEvent(EVENT_HEADING_CHANGED, [
 
 **Two separate losses, and the second is the one nobody had written down.**
 
-1. The degrees collapse into four buckets, and bucket 3 spans 0 to 20 degrees — the entire range
+1. The degrees collapse into four buckets, and bucket 3 spans 0 to 20 degrees, the entire range
    the owner was complaining about. (Session 48's finding, confirmed verbatim.)
 2. **A NEGATIVE accuracy, which Apple documents as "invalid heading", maps to bucket 0, and bucket 0
    is ALSO what a merely-poor 60-degree reading maps to.** So the one value Apple's own sample code
@@ -149,8 +149,8 @@ Installing QiblaHeading (0.1.0)
   QiblaHeading (iOS=16.4)
 ```
 
-(The spike's own throwaway podspec declared iOS=16.4; the podspec actually committed —
-`modules/qiblaheading/ios/QiblaHeading.podspec`, `4b2f490e` — declares 15.1. The recorded line is the
+(The spike's own throwaway podspec declared iOS=16.4; the podspec committed as
+`modules/qiblaheading/ios/QiblaHeading.podspec`, `4b2f490e`, declares 15.1. The recorded line is the
 spike's output, kept verbatim.)
 
 So both halves of this module reach both platforms through mechanisms the repository already uses

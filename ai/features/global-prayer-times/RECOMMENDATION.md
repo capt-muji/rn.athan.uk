@@ -143,7 +143,7 @@ It never promises the user's mosque, because nine central London mosques disagre
 
 That is not a weaker claim than the competition's. IslamicFinder titles a page "Most Accurate Prayer Times" while
 its own help page tells users to fix the times by hand; Muslim Pro's marketing says "most accurate" while its
-disclaimer makes "no representations as to the accuracy". **A claim the app can actually keep is a differentiator.**
+disclaimer makes "no representations as to the accuracy". **A claim the app can keep is a differentiator.**
 
 ---
 
@@ -161,7 +161,7 @@ remaining risks are both owner decisions rather than unknowns.
    to national timetables is lost. A yearly fetch, which the app already does, preserves everything.
 2. **The never-invent rule applied strictly.** It forbids showing the six-constant approximation, which is the
    cheap version. The compliant version, the exact residual, costs 282 bytes per city-year against 6, which is
-   still trivial. This one is survivable; it just removes the cheapest option.
+   still trivial. This one is survivable; it removes the cheapest option.
 
 ---
 

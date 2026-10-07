@@ -5,7 +5,7 @@
 owner stopped the research there to work on other parts of the app.
 
 **The owner has not read the findings yet and has answered none of section 5's questions.** Whether
-the research is conclusive, and whether v2.0 can actually use it, is still open. Research only.
+the research is conclusive, and whether v2.0 can use it, is still open. Research only.
 Nothing on that branch is merged or pushed without the owner's go-ahead.
 
 ## Where everything is

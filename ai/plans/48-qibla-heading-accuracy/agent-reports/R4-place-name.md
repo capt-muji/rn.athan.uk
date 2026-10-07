@@ -9,8 +9,9 @@ changed; the investigating agent measured rather than reasoned, and the measurem
 ## Mechanism, from the installed native source
 
 `device/qibla.ts:49` calls `Location.reverseGeocodeAsync`; `shared/qiblaPlace.ts:39` picks narrowest-first
-(`city ?? district ?? subregion ?? region`). Both platforms expose the same JS keys — `city` from
-`placemark.locality` / `address.locality` (`ios/Geocoder.swift:33`, `records/LocationResults.kt:221`),
+(`city ?? district ?? subregion ?? region`). Both platforms expose the same JS keys, read from the expo-location sources: `city` from
+`placemark.locality` / `address.locality` (`expo-location/ios/Geocoder.swift:33`,
+`expo-location/android/.../records/LocationResults.kt:221`),
 `district` from `subLocality`/`subLocality` (`:34`/`:222`), `subregion` from
 `subAdministrativeArea`/`subAdminArea` (`:38`/`:226`), `region` from `administrativeArea`/`adminArea`
 (`:37`/`:225`), `country` from `country`/`countryName` (`:39`/`:227`). **The selection order runs identically;
@@ -24,9 +25,9 @@ logging):
 
 | Field | Apple `CLGeocoder` | Android `Geocoder` |
 | --- | --- | --- |
-| `locality` (city) | **London** ← wins | **null** |
+| `locality` (city) | **London** (wins) | **null** |
 | `subLocality` (district) | the borough | null |
-| `subAdminArea` (subregion) | London | **Greater London** ← wins |
+| `subAdminArea` (subregion) | London | **Greater London** (wins) |
 | `adminArea` (region) | England | England |
 | `country` | United Kingdom | United Kingdom |
 
@@ -39,7 +40,7 @@ geocoder is not broken; UK addresses are modelled differently.
 ## Not a position difference, not a bearing difference
 
 **Both labels were reproduced from a SINGLE coordinate**, so the divergence is fully explained with the
-position held constant — no evidence of a position difference (the iPhone's own coordinate has no read-only
+position held constant: no evidence of a position difference (the iPhone's own coordinate has no read-only
 route and was correctly left UNVERIFIED). Moot regardless: **the qibla bearing across the whole of Greater
 London spans 0.818 degrees** (Uxbridge 118.638 to Upminster 119.455), and the 3T's own fine-vs-coarse fixes
 differ by 0.0026 degrees. The place name is fetched un-awaited on a path that only writes `state.place`;
@@ -48,9 +49,9 @@ nothing reads it back into the geometry, and `readPlaceName` swallows its own fa
 
 ## The one judgement left for the owner
 
-No reordering can fix it — "London" is not in any field `placeName` reads on Android. The alternatives are
+No reordering can fix it: "London" is not in any field `placeName` reads on Android. The alternatives are
 worse: `formattedAddress` prints the user's house number, street and postcode (a privacy regression for a
 label); stripping a `"Greater "` prefix mangles Greater Manchester, where that is the only name the place has.
 Because this app is London-only today, every Android user reads "Greater London" and every iOS user reads
-"London" — the whole user base, not an edge case. Making them agree is a product decision about what the label
+"London": the whole user base, not an edge case. Making them agree is a product decision about what the label
 should say, left to the owner.

@@ -1,7 +1,7 @@
-# R2: what people actually pray by, country by country
+# R2: what people pray by, country by country
 
 **Status: RESEARCH ONLY.** This report is an adoption study. It answers "which convention do the mosques and the
-state in this country actually use", not "what are the published parameters of each authority". The authority
+state in this country use", not "what are the published parameters of each authority". The authority
 parameter table is R1's subject and is not repeated here.
 
 Research window 2026-09-30. All fetch dates in this report are 2026-09-30 unless a row states otherwise. Web
@@ -49,7 +49,7 @@ was read through `curl`.
    Mosque prints `Begins` and `Jamā'ah` for every prayer. `londonprayertimes.com`, this app's current provider,
    returns a `Jama'ah` column. Masjidbox exposes "Athan times (Start)" and "Iqamah Time (Jamaah)" as separate
    configurable things. A worldwide app that models only one time per prayer cannot express what a mosque
-   timetable actually says.
+   timetable says.
 8. **The app's own London timetable is a mosque-adopted unified table, not a national method, and its own
    publisher says so.** The `Unified Prayer Timetable for London` was adopted from 1 Ramadan 1432 (1 August
    2011) by a group of London mosques, is based on Khalid Shaukat's observation-guided model, is explicitly
@@ -121,7 +121,7 @@ Abbreviations: `std Asr` is the one-shadow (Shafi, Maliki, Hanbali) Asr. `Hanafi
 | Brunei | Ministry of Religious Affairs, `mora.gov.bn` | Official monthly `Jadual Waktu Sembahyang`. Parameters not stated on the page. | Single `Asar` column | Official column set is `Imsak`, `Suboh`, `Syuruk`, `Doha`, `Zohor`, `Asar`, `Maghrib`, `Isyak`. The page publishes district offsets in writing: add 3 minutes for Belait district, add 1 minute for Tutong district. | A | `https://www.mora.gov.bn/SitePages/WaktuSembahyang.aspx`, 2026-09-30 |
 | Jordan | Ministry of Awqaf, Islamic Affairs and Holy Places, `awqaf.gov.jo` | Official prayer-times page exists with the expected column set. Parameters not stated on the page and the table body is JavaScript-rendered, so the convention is not established. | Single `العصر` column in the header | None established. | A for the authority and its column set, NULL for the parameters | `https://www.awqaf.gov.jo/ar/Pages/PrayerTime`, 2026-09-30. Header row read: `الفجر`, `الشروق`, `الظهر`, `العصر`, `المغرب`, `العشاء` |
 | United Kingdom | No national authority. In London the `Unified Prayer Timetable for London` is the mosque-adopted table; `londonprayertimes.com` publishes it | Not a national method. The unified table is based on Khalid Shaukat's observation-guided model at `moonsighting.com`, not on a fixed angle. Adopted 1 Ramadan 1432 (1 August 2011). Valid only inside the M25 by its own statement. | Both printed at East London Mosque: `1 Mithl` and `2 Mithl` columns side by side. `Wifaqul Ulama` publishes both, defining Shafi Asr at shadow factor 1 and Hanafi Asr at factor 2 | `Begins` and `Jamā'ah` columns for every prayer. Wifaqul Ulama adds 4 minutes to Istiwa for Zuhr and 5 minutes to astronomical sunset for Maghrib, and uses `Aqrabul-Ayyam` or `Nisful-Layl` during persistent twilight. | A for the adopting body's own announcement, B for the mosque timetables | `http://www.hizbululama.org.uk/articles/english/Unified.pdf`, 2026-09-30; `https://www.eastlondonmosque.org.uk/prayer-times`, 2026-09-30; `https://www.wifaqululama.co.uk/salahtimes/`, 2026-09-30 |
-| United States | No single authority. The Fiqh Council of North America is the nearest thing, and its ruling is a suggestion | FCNA suggests 15 deg for both Fajr and Isha in the USA, and says this "corresponds to Islamic Society of North America in most prayer apps". Many mosques decline it in favour of 18 deg or `moonsighting.com`. | Varies by masjid. Not standardised nationally. | Iqamah times distinct from Athan times are near-universal in US masjid practice. | A for the FCNA ruling itself, C for what mosques actually do | `https://fiqhcouncil.org/the-suggested-calculation-method-for-fajr-and-isha/`, 2026-09-30 |
+| United States | No single authority. The Fiqh Council of North America is the nearest thing, and its ruling is a suggestion | FCNA suggests 15 deg for both Fajr and Isha in the USA, and says this "corresponds to Islamic Society of North America in most prayer apps". Many mosques decline it in favour of 18 deg or `moonsighting.com`. | Varies by masjid. Not standardised nationally. | Iqamah times distinct from Athan times are near-universal in US masjid practice. | A for the FCNA ruling itself, C for what mosques do | `https://fiqhcouncil.org/the-suggested-calculation-method-for-fajr-and-isha/`, 2026-09-30 |
 | Canada | No single authority. FCNA addresses Canada explicitly; ISNA Canada operates the largest centres | FCNA suggests 13 deg for both Fajr and Isha in Canada. Whether Canadian mosques follow it is not established. | Varies. Not established nationally. | ISNA-Jami Mosque Toronto publishes a prayer time and a separate `Athan` time per prayer, for example Fajr 06:30 with Athan 05:42, which is a 48-minute gap. | A for the FCNA ruling, B for the Toronto mosque timetable | `https://fiqhcouncil.org/the-suggested-calculation-method-for-fajr-and-isha/`, 2026-09-30; `https://masjidbox.com/prayer-times/isna-jami-mosque`, 2026-09-30 |
 | Germany | DITIB, `ditib.de`, which follows Turkey's Diyanet. Diyanet itself publishes German city times | Diyanet convention, Fajr 18 deg, Isha 17 deg, inherited from Turkey | std Asr, following Diyanet | Inherits the Turkish row set, so `İmsak` appears where an English timetable prints Fajr. DITIB publishes a `Ramazan İmsakiyesi`. | A | `https://namazvakitleri.diyanet.gov.tr/tr-TR/11002/berlin-icin-namaz-vakti`, 2026-09-30, Berlin: İmsak 05:11, Güneş 06:58, Öğle 13:02, İkindi 16:07, Akşam 18:55, Yatsı 20:29; `https://www.ditib.de/`, 2026-09-30 |
 | Nigeria | NSCIA, `nscia.com.ng`, describes itself as the apex Islamic authority and announces the Hijri month | No national prayer timetable or calculation method was found on NSCIA's own site. The convention is not established. | Not established | NSCIA's documented prayer-time role is moon sighting and month declaration, not a daily timetable. | NULL for the timetable convention, A only for the body's own self-description | `https://nscia.com.ng/`, 2026-09-30 |
@@ -173,7 +173,7 @@ user's local masjid follows it.
 
 **Canada.** The same FCNA document sets Canada apart at 13 degrees for both Fajr and Isha. That is a distinct
 national recommendation, and it is a reminder that a single North America setting is wrong. Whether Canadian
-mosques actually print 13 degrees was not established. What was established is that the largest Canadian network
+mosques print 13 degrees was not established. What was established is that the largest Canadian network
 prints something a calculation cannot produce: ISNA-Jami Mosque in Toronto lists Fajr at 06:30 with an `Athan`
 time of 05:42, and Isha at 08:45 with an Athan of 08:30. The 06:30 figure is an administrative congregation time,
 fixed for convenience, and no angle produces it.
@@ -222,7 +222,7 @@ minutes at Imsak by design.
 This section corrects an assumption worth correcting, because it changes what the app has to build.
 
 The expectation was that a country publishing fixed tables cannot be reproduced by a calculation library at any
-accuracy. That turned out to be false for the two cases measured most carefully. The distinction that actually
+accuracy. That turned out to be false for the two cases measured most carefully. The distinction that
 matters is not table versus method. It is whether the rule behind the table is recoverable, and whether the
 authority publishes local offsets that a coordinate-based library will not apply.
 
@@ -378,7 +378,7 @@ horizon, and Turkey publishes `Kıble Saati` (a qibla time) plus astronomical su
 `Güneş` and `Akşam` prayer rows. None of these are prayers, and all of them appear on the official timetable the
 user expects to see.
 
-## 5. How mosque clocks actually get their times
+## 5. How mosque clocks get their times
 
 This was an explicit owner question, and the answer is the most decisive accuracy finding in the report. There are
 four distinct supply paths, and three of the four break the assumption that a computed time can match a mosque's
@@ -411,7 +411,7 @@ override.
 | Masjidal | `https://mymasjidal.com/` | North America | Calculation method and Asr method, with optional custom angles | Yes. "Save the settings for calculating salah times or mass upload your timings using the provided template", plus per-prayer offsets | Documentation warns that regenerating "will override existing timings", implying admins maintain edits |
 
 **Path 3: copying the national authority's annual table.** This path is documented from the platform side, which
-is the strongest form of the evidence because it describes what mosques actually asked for. Mawaqit's help centre
+is the strongest form of the evidence because it describes what mosques asked for. Mawaqit's help centre
 states that mosques choosing to upload their own calendar "sometimes want the same calendar as their city (in
 Arabic countries for example) or as The Ministry of Religious Affairs of their country (like in Turkey)". The
 national artefacts that make this possible were located: Diyanet's own per-city yearly tables at
@@ -516,7 +516,7 @@ site.** These are the rows most likely to be wrong, because tier C attributions 
 sources. Egypt, Iran, Pakistan, Bangladesh and Afghanistan all sit here. For each, the commonly asserted
 convention is recorded in the country table with its tier, and none of them was confirmed against the national
 authority's own published parameters in this wave. Closing these five is the highest-value follow-up, because
-between them they account for a very large share of the world's Muslims.
+between them they account for a large share of the world's Muslims.
 
 **A specific warning about tier D, and why no row in this report rests on it.** Tier D is a software library's
 country-to-method mapping. This wave found direct evidence of why such mappings should not be trusted. The

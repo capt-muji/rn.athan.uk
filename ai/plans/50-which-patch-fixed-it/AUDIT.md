@@ -21,7 +21,7 @@ Audited 2026-10-02, in a scratch worktree with `node_modules` symlinked from the
 | Automatic time restored | `adb shell settings get global auto_time` | `1`. It was never changed |
 | The widget nested-copy trap | `shared/__tests__/widgetRuntimeLoads.test.ts` after the full restore | `3 passed` |
 
-## Finding: FIXED — the device evidence files the plan specified were never written
+## Finding: FIXED, the device evidence files the plan specified were never written
 
 **The finding.** The plan required the owner's verdict recorded verbatim in
 `~/athan-device-sweep/session50/<X>-verdict.txt` and the sensor rate in `<X>-rate.txt`. Execution
@@ -29,7 +29,7 @@ captured the guard output, build logs and diffstats, but wrote the verdicts only
 
 **Why it matters.** `AUDITOR-BRIEF.md` requires every claim in the records to be backed by a file under
 `~/athan-device-sweep/session<N>/`; with the verdicts living only in the prose that cites them, the
-prose was its own evidence — the shape of defect sessions 44 and 49 both recorded (a guard that passes
+prose was its own evidence: the shape of defect sessions 44 and 49 both recorded (a guard that passes
 because it matched its own source).
 
 **The fix, applied:** five `<X>-verdict.txt` files written, each carrying the owner's words verbatim,
@@ -48,7 +48,7 @@ claim in the row is a device reading.
   describes a phone on a table, not in a hand; the figure-eight hint makes the first reading four
   times worse, not better).
 - **The founding hypothesis recorded as refuted** three ways, not quietly dropped.
-- **A defect in shipped behaviour found and queued rather than fixed in passing** — the calibration
+- **A defect in shipped behaviour found and queued rather than fixed in passing**: the calibration
   hint's 3.7s/11.88deg vs 9.7s/2.98deg defect went to `NEXT-SESSION.md` with the design decision left to
   the owner (row 52 has since taken the animation).
 

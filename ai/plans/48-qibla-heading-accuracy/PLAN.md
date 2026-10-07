@@ -6,7 +6,7 @@
 | Needs first | 47 |
 | Status | DONE 2026-10-02, audit PASS (`AUDIT.md`), accepted by the owner on 1.29.205 |
 
-**The finding: the symptom has two halves — a cold sensor fusion the app can fix, and iron in the room that
+**The finding: the symptom has two halves, a cold sensor fusion the app can fix, and iron in the room that
 no software can.** The fix shipped is `shared/qiblaSettle.ts`: a settling gate that refuses to draw until the
 stream converges, taking first-reading error from about 30 degrees to 0.71. The research records are
 `MEASURED.md`, `FINDINGS.md`, `DECISION.md` and `agent-reports/`.
@@ -20,7 +20,7 @@ anymore. Accuracy is number 1 importance." (2026-10-01)
 There's a lot of inconsistencies... I'm not happy settling with this yet." (2026-10-02)
 
 🐋  "I want it to work, same as Android, Android phones, Android Google Maps... it should work in the whole
-world." (2026-10-01) — hence: no invented constant, no tuned offset, no per-location calibration.
+world." (2026-10-01) Hence: no invented constant, no tuned offset, no per-location calibration.
 
 🐋  "the comments should be extremely compact, and they should only explain the why, and they should never
 explain the how or the what." (2026-09-26)
@@ -32,7 +32,7 @@ explain the how or the what." (2026-09-26)
    a spread gate at 27.22 degrees wrong (`MEASURED.md` 1).
 3. The window is counted in TIME and must be SPANNED: a reading-counted window needs 120s on a still phone
    (`MEASURED.md` 5); without the span check the gate opens at 29.18 rather than 9.70 degrees (`MEASURED.md` 6).
-4. Constants are 3000ms, 8 readings, 1.5 degrees — swept, not tuned by eye; thresholds on a measured residual,
+4. Constants are 3000ms, 8 readings, 1.5 degrees; swept, not tuned by eye; thresholds on a measured residual,
    which the no-constants rule permits.
 5. The field-magnitude and dip physics check is REJECTED: misses 30.8 degrees at a 10 uT offset, worst at
    London's latitude (`MEASURED.md` 4). Retires the lever session 40 specified and row 46 listed as untried.
@@ -44,7 +44,7 @@ explain the how or the what." (2026-09-26)
 The gate itself: `hasSettled` requires a trailing 3000ms window holding at least 8 readings spanning nine
 tenths of the window whose two halves agree within 1.5 degrees. `processReading` is its only caller; samples
 clear on `NO_HEADING` and on `stop()`; the earliest pre-bearing reading is no longer held and replayed
-(`heldRef` deleted — readings fill the window during the position read instead).
+(`heldRef` deleted; readings fill the window during the position read instead).
 
 ## The execution correction: the two steps were ONE commit
 
@@ -65,7 +65,7 @@ should name that guard in its background.
 
 ## Records
 
-- Device proof: none, deliberately — the symptom lives in the owner's room; he judged it on his own phones
+- Device proof: none, deliberately. The symptom lives in the owner's room; he judged it on his own phones
   (verdict and aftermath in `LOG.md` and `WHAT-FIXED-IT.md`).
 - The native diagnostic that would settle the residual question (`headingAccuracy` in degrees, ten restarts,
   then outdoors) is specified in `DECISION.md`; it cannot be taken through `expo-location`.

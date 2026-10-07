@@ -380,7 +380,7 @@ Readings:
 ### 2.8 The www host versus the bukhamsin host
 Covered in §2.1 and §2.3: the www JSON returns nothing to diff. Its `praytable.php` equals bukhamsin, §3.1.
 
-### 2.9 Which rules the generator actually applies (rules model)
+### 2.9 Which rules the generator applies (rules model)
 
 Script: `impls/rules_model.py`. Output: `impls/rules_model.txt` and `impls/rules_model.json`.
 - **This is a hypothesis test, not a source of times.**
@@ -502,12 +502,12 @@ Kiritimati (+14), Pago Pago (−11), Ushuaia (54.8°S, no DST), Jakarta (6.2°S)
 - Kolkata, Kathmandu, St John's (including its 05:30/04:30 UTC transitions), Kiritimati and Pago Pago are
   handled correctly.
 - Adelaide's half-hour offset is correct, but it has the same day-early DST defect as Sydney.
-- Casablanca's Ramadan transitions (tzdata: +1→+0 on 2026-02-15 02:00 UTC, +0→+1 on 2026-03-22 02:00 UTC) are
-  followed exactly. The endpoint rows are Feb 14 Dhuhr 13:49 → Feb 15 12:49, and Mar 21 12:43 → Mar 22 13:42.
+- Casablanca's Ramadan transitions (tzdata: +1 to +0 on 2026-02-15 02:00 UTC, and +0 to +1 on 2026-03-22 02:00 UTC) are
+  followed exactly. The endpoint rows are Feb 14 Dhuhr 13:49, then Feb 15 12:49, and Mar 21 12:43, then Mar 22 13:42.
 
 **Casablanca after 20 September: a tz database version dependency.**
 - This Mac's IANA tzdata is **2026c** (`/var/db/timezone/zoneinfo/+VERSION`, Python `tzdata.IANA_VERSION`). It
-  has Morocco moving +1→+0 on 2026-09-20 01:00 UTC and staying at +0 to year end.
+  has Morocco moving +1 to +0 on 2026-09-20 01:00 UTC and staying at +0 to year end.
 - Node 24.14.1's ICU tz **2025c** still shows +1 for 2026-09-21 and 2026-12-01.
 - The endpoint (PHP 8.2.27, bundled timezonedb version unknown) shows +1: Sep 19 Dhuhr 13:29, Sep 20 13:29,
   Sep 22 13:28, Dec 31 13:38.
@@ -605,12 +605,12 @@ kskhan77 repos: `d2faa6c1…5c08b63`.
 - Isha, Shafaq Abyad: `A = 75 + 25.6/55·|LT|`, `B = 75 + 7.16/55·|LT|`, `C = 75 + 36.84/55·|LT|`, `D = 75 + 81.84/55·|LT|`.
 - Isha, Shafaq General: `A = 75 + 25.6/55·|LT|`, `B = 75 + 2.05/55·|LT|`, `C = 75 − 9.21/55·|LT|`, `D = 75 + 6.14/55·|LT|`.
 - MIN, with DYY in days:
-  - DYY < 91: A → B over 91 days.
-  - < 137: B → C over 46.
-  - < 183: C → D over 46.
-  - < 229: D → C over 46.
-  - < 275: C → B over 46.
-  - otherwise: B → A over 91.
+  - DYY < 91: A to B over 91 days.
+  - < 137: B to C over 46.
+  - < 183: C to D over 46.
+  - < 229: D to C over 46.
+  - < 275: C to B over 46.
+  - otherwise: B to A over 91.
 - Fajr = sunrise − MIN; Isha = sunset + MIN.
 - The written rules (booklet §12 and how-we.html) are:
   - Up to 55°, compare with 18°, taking the later Fajr and the earlier Isha.
@@ -732,7 +732,7 @@ kskhan77 repos: `d2faa6c1…5c08b63`.
     Isha = sunset + MIN. There is no 18° bound and no 1/7.
   - `SunAngleTime` clamps `cosRange` (740-743), so polar dates give clock values, never `-----`.
   - **The shafaq default depends on the school** (`ConfigureMoonsightingDefaults`, 118-131; README table
-    134-138): STANDARD → General, **HANAFI → Abyad**, JAFARI → Ahmer. Maghrib gets +3 (Sunni) or +17 (Jafari),
+    134-138): STANDARD gives General, **HANAFI gives Abyad**, JAFARI gives Ahmer. Maghrib gets +3 (Sunni) or +17 (Jafari),
     and Zuhr +5, through tune offsets.
   - The site's generator is different: its method 0 is "Hanafi (Shafaq General)", so a Hanafi user of this
     library gets the site's method 1 Isha, not method 0.
@@ -787,8 +787,8 @@ kskhan77 repos: `d2faa6c1…5c08b63`.
 - **Read in full**: `src/schedule.rs` (1384), `src/models/polar.rs` (138), `src/astronomy/solar.rs` (532),
   `src/models/method.rs` (333), `src/models/parameters.rs` (307), `src/methods/moonsighting.rs` (189),
   `tests/moonsighting_committee.rs` (445), `README.md` (329), `CHANGELOG.md` (116). What they add:
-  - **Default shafaq is Ahmer, not General.** `Configuration::with(method, madhab)` sets Shafi → **Ahmer**,
-    Hanafi → **Abyad** (parameters.rs:152-161). General is used only by `Configuration::new`.
+  - **Default shafaq is Ahmer, not General.** `Configuration::with(method, madhab)` sets Shafi to **Ahmer**,
+    Hanafi to **Abyad** (parameters.rs:152-161). General is used only by `Configuration::new`.
   - All of the crate's own MC tests use `Configuration::with(MoonsightingCommittee, Shafi)`, so they exercise
     Ahmer. Against the site, that corresponds to method 2, not method 0.
   - **Zones** (schedule.rs:76-137, 199-271):
@@ -836,7 +836,7 @@ See §5. `src/getMSC.ts`:
     (getTimesAll.ts:208-213, 258-263). There is no 18° bound and no 1/7. Polar dates give NaN.
   - Dhuhr = noon + **2.5 min** (`constants.ts:17`), not +5.
   - The last seasonal segment has length `daysInYear − 275` (getMSC.ts:91): 90 days in a common year and 91 in a
-    leap year. The booklet uses 91 in every year, so days near 20 Dec differ very slightly.
+    leap year. The booklet uses 91 in every year, so days near 20 Dec differ slightly.
   - Civil date is pinned to UTC noon of the caller's local calendar day (civilDate.ts:50-81). `tz` is a numeric
     offset supplied by the caller, so DST is the caller's responsibility.
   - The high-latitude rules for the dynamic path (`highLatitude.ts`) default to `none`. `aqrabAlBilad` means
@@ -854,7 +854,7 @@ See §5. `src/getMSC.ts`:
 
 ### 4.12 Mislabelled or empty "Moonsighting" implementations
 
-| Implementation | What it actually does (source) |
+| Implementation | What it does (source) |
 |---|---|
 | muslimtify-org/libmuslim `prayertimes.h` (C, MIT, pushed 2026-09-07; **read in full**, 1093 lines: v0.2.4 header; `calculate_prayer_times` 923-1092 has Dhuhr = noon with no +5 (1078, 1085); 1/7 used **only when 18° is unreachable** (`high_lat_substitute`, 883-921); polar days solve the whole day at `high_lat_ref` = 60 (964-975); the caller passes a fixed numeric `timezone`, so the header has no DST logic) | `[CALC_MOONSIGHTING] = {"Moonsighting Committee", 18.0, 18.0, 0, 3, …, HIGHLAT_ONE_SEVENTH, 60.0}` (line 558): 18°/18° angles, Maghrib +3, 1/7 when the angle is unreachable, reference latitude 60 in polar cases. **No seasonal function** (no `28.65` anywhere). Its comment at 555-557 paraphrases how-we.html |
 | salahapi/salahapi-php (MIT, 2025-12-25; **read in full**: PrayerTimes.php 748, Method.php 396) | `moonsightingRecalculation()` returns `$times` unchanged in both branches (PrayerTimes.php:350-357) and **is never called** by `computeTimes` (370-393). `setMethod` maps method codes through `$methodMapping`, which has no MOONSIGHTING key, so `?? 'MWL'` applies (166-189). **MOONSIGHTING silently computes MWL**: Fajr 18°, Isha 17°, Maghrib "1 min" from `defaults`. The code header says "Based on times.js v3.2 by Hamid Zarrabi-Zadeh" (PrayerTimes.php:10) |
@@ -1107,7 +1107,7 @@ Checked and not implementing MC: `praytime` 3.2.0 (Zarrabi, 95 weekly), `islamic
    the 1x.ax sources is unknown.
 9. **Upstream licences.** islamic-network/prayer-times ships an LGPL-3.0 LICENSE while composer.json says
    GPL-3.0-or-later. prayer-times-moonsighting has no LICENSE file.
-10. **Author identity.** Whether `abukhams` and `ambu50` are the same person as the pray.php credit is very
+10. **Author identity.** Whether `abukhams` and `ambu50` are the same person as the pray.php credit is
     likely (same name) but not formally verified.
 11. **McMurdo polar-edge values** (§2.7b). The identical after-midnight Fajr/Isha runs and the 30-105 min Isha
     offsets are unexplained. A middle-of-night fallback is an inference only.
@@ -1118,7 +1118,7 @@ Checked and not implementing MC: `praytime` 3.2.0 (Zarrabi, 95 weekly), `islamic
 14. **The International Date Line guard** missing from adhan-extended, namaz and calgiellc. Its effect near
     ±180° was not run (Kiritimati, Pago Pago).
 15. **@tawfeeqmartin/fajr outside the four test cities.** Its registry elevation varies by city (Bradford 110 m
-    → 2.28 min). Only London, Bradford, Oslo and Tromsø were run.
+    gives 2.28 min). Only London, Bradford, Oslo and Tromsø were run.
 16. **Sky Prayers apps** (the developer's own apps linked from pray.php) were not examined. They may carry the
     same generator.
 
@@ -1147,7 +1147,7 @@ Checked and not implementing MC: `praytime` 3.2.0 (Zarrabi, 95 weekly), `islamic
 | `~/athan-research/impls/south_analysis.py`, `.txt` | southern high latitudes and McMurdo DST (§2.7b); endpoint files `moonsighting.ahmedbukhamsin.sa_{capehorn,palmer,rothera,mcmurdo}_2026_m0.json` |
 | `~/athan-research/impls/masaajid_instant_check.mjs` | @masaajid time-of-day dependence proof (§4.12) |
 | `~/athan-research/impls/npm/@masaajid__prayer-times.formatted.js` | esbuild reformat of the minified bundle, used for line references |
-| `~/athan-research/impls/run_fajr.mjs`, `fajr_run.txt` | @tawfeeqmartin/fajr run (§4.13); symlink `npm/@tawfeeqmartin__fajr/package/node_modules/adhan` → extracted adhan 4.4.6 |
+| `~/athan-research/impls/run_fajr.mjs`, `fajr_run.txt` | @tawfeeqmartin/fajr run (§4.13); symlink `npm/@tawfeeqmartin__fajr/package/node_modules/adhan` points at extracted adhan 4.4.6 |
 | `~/athan-research/impls/js_impls.rerun.log` | 2026-09-14 rerun of `run_js_impls.mjs` (masjiduna harness fix, masaajid 00:00 UTC variant) |
 
 ---

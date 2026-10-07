@@ -25,7 +25,7 @@ The worst case across every configuration is **2.38 degrees**. The owner's compl
 it's 20 degrees off, sometimes 30 degrees off". A 2-degree quantiser cannot produce a 20-degree error
 at any sensor rate, so neither change 2 nor change 3 is the hero for accuracy.
 
-### What CAN produce 20 to 30 degrees, measured — two mechanisms, and only two
+### What CAN produce 20 to 30 degrees, measured: two mechanisms, and only two
 
 **The cold fusion the settling gate exists to exclude**, time constant about 4 seconds from about 30
 degrees out (session 48):
@@ -66,14 +66,14 @@ stream emits almost nothing, so the gate starves:
 | REJECTED 1.29.203 | never | 100% |
 
 The owner ruled B still runs, its verdict being pass or fail on whether a compass appears at all
-(2026-10-02). Waving the figure eight changes it — motion feeds the window, so B then draws at 3.5s
+(2026-10-02). Waving the figure eight changes it: motion feeds the window, so B then draws at 3.5s
 with only 2% never drawing. **B's outcome depends on whether the owner waves first**, which is why the
 protocol fixes the gesture.
 
 ## 3. The latch is the dominant change, and its effect is 20x, measured while TURNING
 
 `probe-latch.mjs` isolated the latch with the fusion pre-converged, so the gate is the only variable,
-and measured the dial update rate DURING a continuous turn — the right question for the latch, since an
+and measured the dial update rate DURING a continuous turn, the right question for the latch, since an
 unlatched gate re-opens as soon as the phone stops and a mostly-stationary average flatters it:
 
 | Configuration | Creeping 2 deg/s | Turning 10 deg/s | Turning 45 deg/s |
@@ -85,7 +85,7 @@ unlatched gate re-opens as soon as the phone stops and a mostly-stationary avera
 | REJECTED 1.29.203 | 0.1/s (13%) | 0.1/s (4%) | 0.1/s (2%) |
 
 An unlatched gate discards 95% of readings while the user turns at 10 degrees a second, and the faster
-the turn the worse it gets — the owner's 🐋  "I have shaken the phone a thousand times and it doesn't
+the turn the worse it gets, the owner's 🐋  "I have shaken the phone a thousand times and it doesn't
 move" exactly. The latch is worth 0.9/s to 16.7/s, a factor of 18.
 
 **The counter-intuitive part, and why C was worth running:** C's dial is not merely slow, it is FROZEN
@@ -123,7 +123,7 @@ The three `expo-location` changes live in `patches/expo-location+58.0.9.patch`, 
 (`build-prod.zsh`). **So an experiment is an edit to `node_modules`, never a commit**, and three
 consequences follow, each verified: the edit is invisible to git (no experiment branch can exist);
 every build worktree sees it, so two builds must never run at once; and Gradle compiles the patched
-Kotlin from source — session 49's `publication` block / prebuilt-AAR trap verified absent.
+Kotlin from source (session 49's `publication` block / prebuilt-AAR trap verified absent).
 
 The restore is the risk that matters: a `node_modules` left edited silently changes every later build
 in this repository, and nothing in the test suite would catch it, because the suite never compiles
@@ -134,12 +134,12 @@ from `patch-package` itself rather than from a copy (section 8).
 
 The guard script, built and run against the real tree, printed its five expected lines and
 `PATCH AS SHIPPED`. All five substitutions were then applied to copies of the day's source, 9 of 9
-checks passing — A: `SENSOR_DELAY_NORMAL` = 2; B: the gate condition replaced whole so `TIME_DELTA`
+checks passing. A: `SENSOR_DELAY_NORMAL` = 2; B: the gate condition replaced whole so `TIME_DELTA`
 still counted 2 (the check that makes B "the gate alone"); C: unlatched condition = 1, latch read = 0;
 D: `kCLHeadingFilterNone` = 0; E: `<QiblaWave` = 0 with one usage before.
 
 **Experiment C was confirmed in JS before any APK existed**: with the latch reverted,
-`components/sheets/screens/__tests__/Qibla.test.tsx` fails exactly 2 of 65 —
+`components/sheets/screens/__tests__/Qibla.test.tsx` fails exactly 2 of 65:
 
 ```
 ● the settling gate › keeps following while the user turns
@@ -149,7 +149,7 @@ D: `kCLHeadingFilterNone` = 0; E: `<QiblaWave` = 0 with one usage before.
 ```
 
 The received values are the measurement: the dial strands about 100 degrees short of where the phone is
-pointing — stronger than the probe's 5%-of-readings figure, and this repository's own suite saying it.
+pointing, stronger than the probe's 5%-of-readings figure, and this repository's own suite saying it.
 
 ## 8. THE PLAN'S OWN RESTORE PATH WAS WRONG, and only RUNNING it found that out
 
@@ -162,22 +162,22 @@ FIRST experiment, and every later build would have silently compiled the wrong c
 
 **The restore that works, measured end to end:** replace the package wholesale from yarn's cache
 (`~/Library/Caches/Yarn/v6/npm-expo-location-58.0.9-<hash>/node_modules/expo-location`), then
-`npx patch-package` (`expo-location@58.0.9 ✔`), then the guard printing `PATCH AS SHIPPED` — reachable
+`npx patch-package` (`expo-location@58.0.9 ✔`), then the guard printing `PATCH AS SHIPPED`, reachable
 from ANY edited state, which is the property the restore needs. Two fixes from the same dry run: the
 build script traps its own exit so no failure path strands the tree (verified by stubbing a failed
 build), and a full restore cycle was followed by
 `shared/__tests__/widgetRuntimeLoads.test.ts` (`3 passed`), because any install can reintroduce a
-nested `@expo/ui` copy under `expo-widgets` and blank every widget — checked rather than assumed.
+nested `@expo/ui` copy under `expo-widgets` and blank every widget, checked rather than assumed.
 
 ## 9. A probes folder needs TWO registrations, not one
 
 The commit was refused with the suite fully green: the coverage gate
 (`scripts/check-changed-coverage.js`) demands each changed source file be measured or declared
-`UNMEASURED` with a reason, and `.mjs` matches its source pattern — so Biome's exclusion alone is not
+`UNMEASURED` with a reason, and `.mjs` matches its source pattern, so Biome's exclusion alone is not
 enough. A probes folder needs an entry in BOTH `biome.json` `files.includes` and the gate's
 `UNMEASURED` list (session 48's folder has exactly that). The gate's message is well designed: it
 offers the two legitimate answers, so it cannot be silenced without a sentence explaining the
 exemption. Third behaviour, constraining EXECUTION ORDER: coverage is measured on the WORKING tree, so
-an untracked test would cover a file whose commit does not carry it — the gate refuses that, and the
+an untracked test would cover a file whose commit does not carry it: the gate refuses that, and the
 planning commit and step 1's files cannot coexist in the tree. The gate working correctly, not an
 obstacle.

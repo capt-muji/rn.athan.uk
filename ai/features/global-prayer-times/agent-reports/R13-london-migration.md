@@ -374,7 +374,7 @@ whose service returned HTTP 503 to wave 1, so the last second of agreement can o
 
 **The answer, stated plainly. The intervals work against a computed sun. London can be fully offline.** The gap is
 1 minute on about 10% of days, it is a half-minute rounding tie rather than a modelling error, and section 2.6
-shows that against the publisher's own equations it very nearly vanishes.
+shows that against the publisher's own equations it nearly vanishes.
 
 ### 2.5 The fifty published future years, which the programme had not found
 
@@ -443,7 +443,7 @@ calculation, not a close one.
 Three values out of 127,841 are 1 minute out, all on the same day, all traceable to one half-minute tie. **Nothing
 is beyond 1 minute. Four of the seven fields are exact on every one of 18,263 days.**
 
-For the years the app's users have actually lived through, the 2027 table plus `adhan`'s sun and the documented
+For the years the app's users have lived through, the 2027 table plus `adhan`'s sun and the documented
 margins against the ELM PDFs 2015 to 2026 gives **15,353 of 16,430 sun-derived values exact, 93.44%, and 16,429 of
 16,430 within 1 minute, with one value 2 minutes out** (measured, `part3c.txt` 3c.2, Charing Cross). The older years
 score lower on exact matches than the future years for the reason the next section gives: the generator changed, and
@@ -793,7 +793,7 @@ source change measured in section 1.
    `time` field still equals the time the row now renders. **That last clause is the one finding 12 argues for**: it
    is the assertion that would have caught a time-moving change the identifier comparison cannot see.
 
-**What no test can prove.** That the OS actually still holds the alarm. `expo-notifications` state lives outside the
+**What no test can prove.** That the OS still holds the alarm. `expo-notifications` state lives outside the
 app's storage, Android's battery managers can drop it, and sessions 25, 27 and 28 exist because of that. The
 records are the app's best evidence and the sweep's no-records guard (`stores/notifications.ts:1521-1527`) is the
 app's admission that the records can be wrong.
@@ -835,7 +835,7 @@ The source abstraction lands, London is its first instance, and a London user's 
 
 | | |
 | --- | --- |
-| **For** | Honest. Puts the choice with the user, which is where a religious choice arguably belongs |
+| **For** | Honest. Puts the choice with the user, which is where a religious choice belongs |
 | **Against** | **Section 1 measured what the choice is between, and it is not a real choice.** One option is the timetable 36 or more London organisations adopted; the other is a computation that differs from it by up to 11 minutes on Isha and matches it on 3 of 365 days. Offering it implies the two are comparable. R8's section 4.2 evidence is that users do not want this decision: "it's still too technical and I just want to know how to fix it." And every one of the five computing competitors hides the method list behind an "advanced" toggle |
 | **Verdict** | **Reject as a primary offering.** The one thing worth keeping from it is the **delta warning** on a deliberate source change, which is R8's S8 and is right |
 
@@ -878,7 +878,7 @@ Khalid Shaukat's model, then the Hizbul Ulama 1989 Blackburn observations, then 
 by "at least 36 organisations ... just before Ramadan 1432 (July 2011)", then East London Mosque's published
 timetable, then `londonprayertimes.com` serving it over an API with a manually issued key.
 
-**What the app actually depends on** (measured):
+**What the app depends on** (measured):
 
 | Dependency | Where | Exposure |
 | --- | --- | --- |

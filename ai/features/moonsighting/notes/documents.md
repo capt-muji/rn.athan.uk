@@ -286,7 +286,7 @@ The Urdu front matter (A3, printed p.358) confirms the history: the English book
 - **PDF metadata:** author "Safwan", created 2008-09-14. 20 pages, 420×595 pt.
 - **Text layer:** unusable (legacy Urdu font encoding). Only English fragments survive.
 - **Read:** 20/20 pages as images rendered at 130 dpi. PDF pp.19–20 are blank apart from page numbers.
-- **What it is:** the Urdu section, printed pp.364→349 (numbered right to left), of a 366-page book.
+- **What it is:** the Urdu section, printed pp.364 down to 349 (numbered right to left), of a 366-page book.
   - Title page (PDF p.1): "برطانیہ میں طلوع آفتاب، زوال، پنج وقتہ نمازیں، روزہ اوقات کیلنڈر وقبلہ گائڈ" ("Sunrise, Zawal, five daily prayers, fasting-times calendar and Qibla guide in Britain"). Compiler: "مولوی یعقوب احمد مفتاحی" (Molvi Yaqub Ahmad Miftahi). Publisher: Hizbul Ulama UK.
   - PDF p.2: "کل صفحات: ۳٦٦"; "اشاعتِ اوّل: محرّم ۱۴۲۸ھ / جنوری ۲۰۰۷ء"; book name "فجر وعشاء اور برطانیہ میں نماز روزہ اوقات وقبلہ کیلنڈر (حصہ ۱-۲)".
   - Part 2's English name (PDF p.3): "SALAT TIMES, QIBLAH FOR TOWNS AND CITIES IN THE UNITED KINGDOM(v-2)". Part 1 is "Fajar and Isha (v-1)", i.e. A1.
@@ -732,7 +732,7 @@ Method: every page of every text layer was read with the Read tool, with nothing
 ### B17a. eid-article.doc vs articles__eid-or-hajj.doc: complete token diff, read in full
 - **Sizes:** 3616 vs 4085 tokens, ratio 0.8438. Every hunk was printed and read.
 - **What the diff shows:** eid-article.doc is the **earlier draft**; eid-or-hajj ("Revised") is the rewrite.
-- **Wording changes:** "Way of the Prophet" → "Sunnah"; "arafah" → "Arafah"; "Islamic law" → "Sharia".
+- **Wording changes:** "Way of the Prophet" became "Sunnah"; "arafah" became "Arafah"; "Islamic law" became "Sharia".
 - **Revised version adds:**
   - an "Introduction" heading;
   - the Eid prayer instituted in year 1 AH ("شرعت صلاة العيد سنة الأولى من الهجرة", Bayhaqi), with Hajj obligatory only in 9th/10th year;

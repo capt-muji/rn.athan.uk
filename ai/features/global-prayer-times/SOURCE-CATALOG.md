@@ -23,7 +23,7 @@ section below discusses terms, copyright or licensing, and no session contacts a
 | Input | What it carried into this catalog |
 | --- | --- |
 | `agent-reports/R1-authorities-and-conventions.md` | the first parameter sweep of every authority worldwide |
-| `agent-reports/R2-country-adoption-map.md` | what mosques and states actually use; the Imsak trap both ways |
+| `agent-reports/R2-country-adoption-map.md` | what mosques and states use; the Imsak trap both ways |
 | `agent-reports/R4-apis-and-data-sources.md` | which authorities serve a whole keyless year; the correction table |
 | `agent-reports/R5-country-map-completion.md` | the five tier-C giants; the temkin resolution; the population weighting |
 | `agent-reports/R6-correction-table-generality.md` | the four-category classification and the rounding discovery |
@@ -67,7 +67,7 @@ section below discusses terms, copyright or licensing, and no session contacts a
 7. **France needs the disambiguation worse than anywhere, and naming the authority is not enough.** R12 priced the
    two French positions at Paris against the Grande Mosquée's own calendar: Musulmans de France runs **13 to 39
    minutes later on Fajr, median 24**, and its Isha **reverses sign across the year**, 26 minutes earlier in
-   December and 14 later in June. A picker must show the delta the user would actually see.
+   December and 14 later in June. A picker must show the delta the user would see.
 8. **Rounding is load-bearing and it is not the authority's fault.** R6 measured that `adhan`'s own nearest-minute
    default was the single biggest source of apparent disagreement with authorities in the entire programme. The
    catalog carries a rounding rule per source, and **18 of 39 rows carry it as UNVERIFIED**, because no authority
@@ -138,7 +138,7 @@ Neither "20 degrees" nor "18 plus 10" describes the Fajr row. A bare 18 degrees 
 across all six zones and 2,190 days, with the per-zone means running 0.44 to 1.89, which is the size of a small
 ihtiyati and nothing else.
 
-**Test two: where does the cited 20 actually land?** On the **Imsak** row, and the fit is near-exact
+**Test two: where does the cited 20 land?** On the **Imsak** row, and the fit is near-exact
 (`data/catalog/results-jakim-imsak.txt`):
 
 | Zone | Published Imsak implied angle | Imsak minus a 20-degree computation | Published Fajr implied angle | Imsak-to-Fajr gap |
@@ -161,7 +161,7 @@ rest of Malaysia, so it is the exception that confirms the reading.
 **Verdict: JAKIM is best modelled as Fajr 18 degrees plus a documented 2-minute ihtiyati, with a separate Imsak
 row at 20 degrees exactly 10 minutes earlier.** Model B reproduces JAKIM's published year better on both
 measures: a smaller residual (worst mean 1.89 minutes against Model A's 10.30) and a smaller, uniform, explained
-constant. And Model B explains the 20 rather than contradicting it: **JAKIM's journal is correct, it is just
+constant. And Model B explains the 20 rather than contradicting it: **JAKIM's journal is correct, and it is
 describing the Imsak row.** The authority does not contradict itself; the software that read its cited number onto
 the wrong row does.
 
@@ -496,7 +496,7 @@ below; R11 owns that catalogue and these names are placeholders pending its repo
 ### Rows: the concept-to-row map and the extra published rows
 
 **This is the field that prevents a 10-minute error, and conflicts 2 and 10 are why.** The left column binds a
-prayer concept to the row the authority actually prints. The right column lists everything beyond the six
+prayer concept to the row the authority prints. The right column lists everything beyond the six
 standard rows, with each row's `derivation` where R12 measured it: `angle` means the row has its own published
 angle, `offset` means it is derived from another row.
 

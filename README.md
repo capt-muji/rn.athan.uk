@@ -58,25 +58,25 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ### v1.17.0 (2026-09-01)
 
-- ✅ **Light & Dark home widgets**: each home-screen widget now comes in a Light and a Dark variant whose look is fixed when you place it — they no longer follow the system appearance. The gallery lists eight kinds (Next Prayer / Extra Times × Light / Dark, each in Small and Medium).
+- ✅ **Light & Dark home widgets**: each home-screen widget now comes in a Light and a Dark variant whose look is fixed when you place it; they no longer follow the system appearance. The gallery lists eight kinds (Next Prayer / Extra Times × Light / Dark, each in Small and Medium).
 
 ### v1.14.0 (2026-08-31)
 
-- ✅ **Extra Times widgets**: a second Home screen pair ("Extra Times", small + medium) and a second Lock Screen pair (rectangular + inline) mirroring the app's Extras page — Midnight, Last Third, Suhoor, Duha, and Friday-only Istijaba. Styling is identical to the prayer widgets; the medium list reads in the app's canonical order (Istijaba last on Fridays — 4 rows normally, 5 on Fridays) and center-anchors vertically so the top/bottom spacing stays symmetric, with a rose active pill instead of indigo. One shared layout serves both schedules, so the pairs can never drift apart.
+- ✅ **Extra Times widgets**: a second Home screen pair ("Extra Times", small + medium) and a second Lock Screen pair (rectangular + inline) mirroring the app's Extras page: Midnight, Last Third, Suhoor, Duha, and Friday-only Istijaba. Styling is identical to the prayer widgets; the medium list reads in the app's canonical order (Istijaba last on Fridays; 4 rows normally, 5 on Fridays) and center-anchors vertically so the top/bottom spacing stays symmetric, with a rose active pill instead of indigo. One shared layout serves both schedules, so the pairs can never drift apart.
 
 ### v1.10.0 – v1.12.1 (2026-08-30)
 
-- ✅ **Medium home screen widget**: the 2×4 size pairs the small widget's trio (name · countdown · `HH:mm`) with the day's six prayers exactly like the app's Standard page — the blue active background on the next prayer, passed rows solid, upcoming rows muted, rolling to the next day at Isha (no alert icons, no countdown bar)
-- ✅ **Eyebrow pill badge**: the prayer name sits in a soft capsule — periwinkle-white lowercase text over a whisper of sky blue (a hint of the active-prayer blue)
+- ✅ **Medium home screen widget**: the 2×4 size pairs the small widget's trio (name · countdown · `HH:mm`) with the day's six prayers exactly like the app's Standard page: the blue active background on the next prayer, passed rows solid, upcoming rows muted, rolling to the next day at Isha (no alert icons, no countdown bar)
+- ✅ **Eyebrow pill badge**: the prayer name sits in a soft capsule, periwinkle-white lowercase text over a whisper of sky blue (a hint of the active-prayer blue)
 - ✅ **Stale card redesign**: when the timeline runs dry, every surface shows the moon-and-stars mark above "Out of date" with an "Open Athan to refresh" call (two lines on the small card, one on medium)
 
 ### v1.9.1 (2026-08-30)
 
-- ✅ **Widget visual polish**: the home screen prayer name is now an uppercase letter-spaced eyebrow in a soft periwinkle that fades into the purple card, the `Sat · London` footer sits closer to the absolute time's tone, and the Lock Screen rectangular widget pairs the countdown with the prayer name (`Magrib · 9m`) with the absolute `HH:mm` below — the duplicate-countdown circular face is retired (orphaned placements render blank)
+- ✅ **Widget visual polish**: the home screen prayer name is now an uppercase letter-spaced eyebrow in a soft periwinkle that fades into the purple card, the `Sat · London` footer sits closer to the absolute time's tone, and the Lock Screen rectangular widget pairs the countdown with the prayer name (`Magrib · 9m`) with the absolute `HH:mm` below. The duplicate-countdown circular face is retired (orphaned placements render blank)
 
 ### v1.9.0 (2026-08-30)
 
-- ✅ **Home screen widget redesign**: "Flat royal" app-theme card (prayer name · minute-ceil countdown · `HH:mm` · `Sat · London` footer), minute-ceil labels everywhere (seconds never display; `59s` → `1m`), a label-flip scheduler that re-pushes within 250ms of every minute change while the app runs, and realistic launch-relative mock data for repeatable testing
+- ✅ **Home screen widget redesign**: "Flat royal" app-theme card (prayer name · minute-ceil countdown · `HH:mm` · `Sat · London` footer), minute-ceil labels everywhere (seconds never display; `59s` becomes `1m`), a label-flip scheduler that re-pushes within 250ms of every minute change while the app runs, and realistic launch-relative mock data for repeatable testing
 
 Full history: `git log --oneline` (every commit carries its version number).
 
@@ -99,7 +99,7 @@ Full history: `git log --oneline` (every commit carries its version number).
 - [x] Fix UI countdown drift when app in background
 - [x] Settings bottom sheet (countdown bar, Hijri date, seconds, time passed, Arabic names, decorations, color picker)
 - [x] Alert menu with per-prayer at-time and reminder notification controls
-- [x] Background notification refresh task (~6 hour intervals, verified on device to keep the buffer rolling unattended — incl. reboots and closed-app states)
+- [x] Background notification refresh task (~6 hour intervals, verified on device to keep the buffer rolling unattended, incl. reboots and closed-app states)
 - [x] SDK 57 upgrade (React 19, RN 0.86, Expo 57)
 - [x] Update popup with version checking and store redirect
 - [x] Ramadan seasonal decorations (lantern, moon, stars, spark particles, clouds)
@@ -108,11 +108,11 @@ Full history: `git log --oneline` (every commit carries its version number).
 
 ### Known Limitations
 
-- Some Android devices may receive notifications 1–3 minutes off (hardware/driver issue, unfixable in app — see ai/ISSUES.md #10/#11)
+- Some Android devices may receive notifications 1–3 minutes off (hardware/driver issue, unfixable in app; see ai/ISSUES.md #10/#11)
 
 ### Upcoming Improvements
 
-- [ ] Multi-location support — deferred indefinitely; the research concluded scraping is unnecessary ([ADR-008](ai/adr/008/ADR.md) / [ADR-009](ai/adr/009/ADR.md))
+- [ ] Multi-location support, deferred indefinitely; the research concluded scraping is unnecessary ([ADR-008](ai/adr/008/ADR.md) / [ADR-009](ai/adr/009/ADR.md))
 - [ ] Qibla direction finder
 
 <br/>
@@ -120,32 +120,32 @@ Full history: `git log --oneline` (every commit carries its version number).
 
 ## 📱 iOS Widgets
 
-Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](https://docs.expo.dev/versions/latest/sdk/widgets/) and [`@expo/ui`](https://docs.expo.dev/versions/latest/sdk/ui/swift-ui/) — no native SwiftUI code required.
+Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](https://docs.expo.dev/versions/latest/sdk/widgets/) and [`@expo/ui`](https://docs.expo.dev/versions/latest/sdk/ui/swift-ui/); no native SwiftUI code required.
 
 | Widget | Families | Shows |
 | --- | --- | --- |
-| **Next Prayer** (home screen) | Small, Medium | Offered in **Light** and **Dark**. **Small** — the next prayer only, on the translucent card: uppercase bold rose prayer name, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · Lon` footer. **Medium** — the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the indigo active pill on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
-| **Extra Times** (home screen) | Small, Medium | Offered in **Light** and **Dark**. The same two sizes for the Extras schedule. **Small** — identical to the prayer widget (next extra time only). **Medium** — the app's Extras page list in canonical order: Midnight, Last Third, Suhoor, Duha, Istijaba (Fridays only — 4 rows normally, 5 on Fridays), center-anchored vertically so the spacing stays symmetric as the list grows, with a **rose** active pill instead of indigo |
+| **Next Prayer** (home screen) | Small, Medium | Offered in **Light** and **Dark**. **Small**: the next prayer only, on the translucent card: uppercase bold rose prayer name, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · Lon` footer. **Medium**: the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the indigo active pill on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
+| **Extra Times** (home screen) | Small, Medium | Offered in **Light** and **Dark**. The same two sizes for the Extras schedule. **Small**: identical to the prayer widget (next extra time only). **Medium**: the app's Extras page list in canonical order: Midnight, Last Third, Suhoor, Duha, Istijaba (Fridays only; 4 rows normally, 5 on Fridays), center-anchored vertically so the spacing stays symmetric as the list grows, with a **rose** active pill instead of indigo |
 | **Next Prayer** (Lock Screen) | Rectangular, Inline | The next prayer paired with the minute-ceil countdown (`Magrib · 9m`) and the absolute `HH:mm` below, rendered in the system's vibrant (monochrome) style |
-| **Extra Times** (Lock Screen) | Rectangular, Inline | The same faces for the Extras schedule — the next extra time with its countdown and absolute `HH:mm`, in the same vibrant style |
+| **Extra Times** (Lock Screen) | Rectangular, Inline | The same faces for the Extras schedule: the next extra time with its countdown and absolute `HH:mm`, in the same vibrant style |
 
-Each home-screen widget's Light or Dark look is fixed when you place it — it never follows the system appearance.
+Each home-screen widget's Light or Dark look is fixed when you place it; it never follows the system appearance.
 
 **Always in sync, never stale:**
 
-- The app pushes a **14-day timeline per schedule × theme** (one entry per boundary, eight home widgets in four schedule×theme pairs plus the two Lock Screen pairs) at every point fresh data is known: app sync, foreground return, the 12-hour notification refresh, the 6-hour background task, and — debounced — any change to a widget-visible setting.
-- The countdown label is a **minute-ceil value** — seconds never display at any distance and the label always rounds up (`1h 59m 01s` → `2h`, `59s` → `1m`; WidgetKit can only tick its own built-in colon formats, so a per-second label would never re-render — the label is precomputed), holding its value until the true minute flips. It is precomputed per timeline entry and refreshed by stepped entries every 5 minutes (WidgetKit's minimum entry spacing) for the first 24 hours; beyond that it updates at each boundary. The final step before a boundary always anchors exactly one spacing ahead of the flip.
+- The app pushes a **14-day timeline per schedule × theme** (one entry per boundary, eight home widgets in four schedule×theme pairs plus the two Lock Screen pairs) at every point fresh data is known: app sync, foreground return, the 12-hour notification refresh, the 6-hour background task, and (debounced) any change to a widget-visible setting.
+- The countdown label is a **minute-ceil value**: seconds never display at any distance and the label always rounds up (`1h 59m 01s` becomes `2h`, `59s` becomes `1m`; WidgetKit can only tick its own built-in colon formats, so a per-second label would never re-render, and the label is precomputed). It holds its value until the true minute flips. It is precomputed per timeline entry and refreshed by stepped entries every 5 minutes (WidgetKit's minimum entry spacing) for the first 24 hours; beyond that it updates at each boundary. The final step before a boundary always anchors exactly one spacing ahead of the flip.
 - While the app is running, a **label-flip scheduler** re-pushes both timelines within a quarter second of every countdown minute change (armed at whichever schedule's label flips next), so no widget shows a stale minute for long. Backgrounded timers coalesce into one refresh on the app's return to the foreground.
-- Entries transition automatically at each time's boundary; the list rolls to the next day exactly when the countdown target does (at Isha for the prayer widgets, at the night's Midnight for the extras widgets) — DST-safe via the same zoned-time logic as the app. Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time (whose label describes the push instant, never a backdated one).
-- If the app stays unopened past the full timeline, the widgets switch to the **stale card** — the moon-and-stars mark above "Out of date" with an "Open Athan to refresh" call (two lines on the small card, one line on medium) — instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
+- Entries transition automatically at each time's boundary; the list rolls to the next day exactly when the countdown target does (at Isha for the prayer widgets, at the night's Midnight for the extras widgets), DST-safe via the same zoned-time logic as the app. Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time (whose label describes the push instant, never a backdated one).
+- If the app stays unopened past the full timeline, the widgets switch to the **stale card**, the moon-and-stars mark above "Out of date" with an "Open Athan to refresh" call (two lines on the small card, one line on medium), instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
 
-**Widget preferences — the widget has no configuration of its own; it mirrors the app:**
+**Widget preferences (the widget has no configuration of its own; it mirrors the app):**
 
-- Hijri dates (`preference_hijri_date` — the footer shows the Hijri month when enabled)
+- Hijri dates (`preference_hijri_date`; the footer shows the Hijri month when enabled)
 
 Changing it in the app re-pushes the widget timeline within about a second.
 
-**Adding a widget:** long-press the home screen → **Edit → Add Widget** → *Athan* → choose **Next Prayer** or **Extra Times** in your preferred **Light** or **Dark**. Lock Screen widgets: long-press the Lock Screen → **Customise → Add Widgets** → *Athan* (rectangular + inline faces per schedule; the circular face was retired in v1.9.1 and fully removed from the picker in v1.14.1).
+**Adding a widget:** long-press the home screen, then choose **Edit**, **Add Widget**, *Athan*, and **Next Prayer** or **Extra Times** in your preferred **Light** or **Dark**. Lock Screen widgets: long-press the Lock Screen, then choose **Customise**, **Add Widgets**, and *Athan* (rectangular + inline faces per schedule; the circular face was retired in v1.9.1 and fully removed from the picker in v1.14.1).
 
 > Widgets require a development build or production binary (iOS 16.4+); they are not available in Expo Go.
 
@@ -199,7 +199,7 @@ Every selectable Athan sound comes from a public recording
 
 ## 🎙️ Reminder Audio Sources
 
-Every reminder sound is custom recorded audio for reminders — recorded and edited by the maintainer in [Audacity](https://www.audacityteam.org/), not published elsewhere.
+Every reminder sound is custom recorded audio for reminders, recorded and edited by the maintainer in [Audacity](https://www.audacityteam.org/), not published elsewhere.
 
 <br/>
 
@@ -225,11 +225,11 @@ The full Audacity projects for all Athan and reminder audio (for anyone who want
 ### Notifications & Alerts
 
 - 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer (at-time and reminder)
-- ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval — every prayer × interval plays its own custom audio (see [Reminder Audio Sources](#-reminder-audio-sources))
+- ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval; every prayer × interval plays its own custom audio (see [Reminder Audio Sources](#-reminder-audio-sources))
 - 📢 **Selectable Athan Sounds**: Every sound linked to its source (see [Athan Audio Sources](#-athan-audio-sources))
 - 📅 **Smart Notification Buffer**: 2-day rolling schedule that keeps renewing itself in the background (~every 3 hours) even if the app is never opened
 - 🛡️ **Sequential Scheduling Queue**: Operations queued and executed in order, never dropped
-- 🪪 **Deterministic Notification IDs**: `athan_<schedule>_<prayer>_<date>` (reminders include the interval) — re-scheduling with the same ID replaces in place on both platforms, so orphaned alarms can never double-fire
+- 🪪 **Deterministic Notification IDs**: `athan_<schedule>_<prayer>_<date>` (reminders include the interval); re-scheduling with the same ID replaces in place on both platforms, so orphaned alarms can never double-fire
 
 ### Data & Offline Support
 
@@ -296,30 +296,30 @@ abandoned after 10 seconds.
 
 ## 🆕 What's New Popup
 
-After a user updates the app, a one-time "What's New" modal tells them what they got (`shared/whatsNew.ts` + `components/modals/WhatsNew.tsx`). It exists because ~half the base auto-updates (never seeing store release notes) — this is the only channel that reliably reaches them.
+After a user updates the app, a one-time "What's New" modal tells them what they got (`shared/whatsNew.ts` + `components/modals/WhatsNew.tsx`). It exists because ~half the base auto-updates (never seeing store release notes); this is the only channel that reliably reaches them.
 
 | Scenario                                        | Result                                                                                              |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | **Update to a release with What's New content** | Modal shows once, on the first launch after the update (works identically for auto and manual updates) |
-| **Update skipping several versions**            | Same modal — only the installed version's items, never accumulated history                          |
-| **Update to a silent release (content is null)**| No modal — bug-fix-only releases stay quiet                                                         |
-| **Fresh install**                               | Never shows — the shown-version tracker is seeded at first boot                                     |
-| **Uninstall + reinstall**                        | Never shows — storage is wiped, reinstall counts as a fresh install                                 |
-| **Relaunch on the same version**                 | Never shows again — shown once per version, marked on display (crash-safe)                          |
+| **Update skipping several versions**            | Same modal: only the installed version's items, never accumulated history                          |
+| **Update to a silent release (content is null)**| No modal; bug-fix-only releases stay quiet                                                         |
+| **Fresh install**                               | Never shows: the shown-version tracker is seeded at first boot                                     |
+| **Uninstall + reinstall**                        | Never shows: storage is wiped, reinstall counts as a fresh install                                 |
+| **Relaunch on the same version**                 | Never shows again: shown once per version, marked on display (crash-safe)                          |
 
 Behavior notes:
 
 - The version in the title is read from the installed binary at runtime (never a hand-typed string; EAS manages store versions remotely)
-- Every item declares its platform availability with glyphs in the leading column: Apple for iOS-exclusive, Android for Android-exclusive, both stacked for cross-platform — identical on every device, never a filter
-- If the update nag is also eligible (user landed on a non-latest version), What's New shows first; the nag appears after Continue — modals never stack
-- Settings → About → "What's new" re-opens the modal anytime (hidden automatically on silent releases)
+- Every item declares its platform availability with glyphs in the leading column: Apple for iOS-exclusive, Android for Android-exclusive, both stacked for cross-platform; identical on every device, never a filter
+- If the update nag is also eligible (user landed on a non-latest version), What's New shows first; the nag appears after Continue; modals never stack
+- In Settings, open About and tap "What's new" to re-open the modal anytime (hidden automatically on silent releases)
 
 ### Release Ritual (What's New)
 
 Every store release, edit `WHATS_NEW` in `shared/whatsNew.ts`:
 
 1. Set `version` to the store version being submitted
-2. List 1–4 **user-facing items only** — new abilities, removed functionality, behavior changes users will notice. No technical work (SDK migrations, performance, refactors belong in store release notes/README). Factual copy, no marketing
+2. List 1–4 **user-facing items only**: new abilities, removed functionality, behavior changes users will notice. No technical work (SDK migrations, performance, refactors belong in store release notes/README). Factual copy, no marketing
 3. Set `WHATS_NEW` to `null` to silent-ship a release (fixes/polish only)
 
 A content contract test (`shared/__tests__/whatsNew.test.ts`) guards the shape: item count, title/body length caps, valid icons and platforms. Dev preview: `EXPO_PUBLIC_WHATS_NEW_PREVIEW=1` in `.env` forces the modal on cold launch (dev builds only). Design rationale: [ADR-012](ai/adr/012/ADR.md).
@@ -477,7 +477,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 
 ### Key Patterns
 
-1. **Data Flow**: Components → Hooks → Stores → Shared/Api → MMKV
+1. **Data Flow**: Components, then Hooks, then Stores, then Shared/Api, then MMKV
 2. **State Management**: Jotai atoms with derived atoms for computed values
 3. **Animations**: Reanimated worklets with custom hooks
 4. **Date Handling**: All dates in London timezone using date-fns-tz
@@ -626,7 +626,7 @@ In the output, you'll find options to open the app in a:
 
 A **2-day rolling buffer** of scheduled notifications per enabled prayer (6 Standard + 5 Extra), refreshed every 2 hours in the foreground and no sooner than every 3 hours by the background task:
 
-- Deterministic identifiers (`athan_<schedule>_<prayer>_<date>`) make duplicate alarms structurally impossible — rescheduling an existing ID replaces it natively
+- Deterministic identifiers (`athan_<schedule>_<prayer>_<date>`) make duplicate alarms structurally impossible: rescheduling an existing ID replaces it natively
 - All entry points serialize through `withSchedulingLock()` (queue-based, no operation ever dropped)
 - Per-prayer at-time + reminder preferences (sound, interval) stored under name-based MMKV keys, auto-migrated from legacy keys
 - Cache wipes (app upgrade, error boundary, lock contention) trigger a full reschedule on next launch/resume

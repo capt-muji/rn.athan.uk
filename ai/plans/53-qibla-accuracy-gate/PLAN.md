@@ -44,7 +44,7 @@ And the standing rule this gate must satisfy, from `ai/AGENTS.md`: anything gati
    section 6 answers it from the code (`showsCompass` requires a bearing).
 4. **The 3T stays on mock data.**
 5. **iOS prototyped and judged FIRST; Android its own loop after.**
-6. **Nothing committed in the prototype phase** — which is what makes decision 7 possible.
+6. **Nothing committed in the prototype phase**, which is what makes decision 7 possible.
 7. **The gate lives in `shared/qiblaSettle.ts`, NOT `modules/qiblaheading/`.** The brief recommended `modules/`
    only to dodge the coverage gate on an untested prototype; with no commit there is no gate to dodge, and
    `MEASURED.md` section 1 measures that route at 58 failing tests. `qiblaSettle.ts` is pure arithmetic with no
@@ -56,7 +56,7 @@ And the standing rule this gate must satisfy, from `ai/AGENTS.md`: anything gati
 8b. **The threshold starts at `ALIGNMENT_ENTER_DEGREES`, 4** (the window the haptic already announces), with the
     readout revealing whether that was right; the ceiling keeps the worst case at today's behaviour.
 9. **The ceiling is 3000ms from the first heading reading** (both ceilings deleted by step 5 on the owner's ruling;
-    fail-open consciously traded away — see `steps/5-vouched-or-nothing.md`) — up to 2727ms faster in the measured regimes, at worst
+    fail-open consciously traded away, see `steps/5-vouched-or-nothing.md`): up to 2727ms faster in the measured regimes, at worst
     273ms slower, never trading accuracy for speed, never breaking fail-open.
 10. **A negative accuracy is NO READING, never a number.** Apple documents a negative `headingAccuracy` as an
     invalid heading; a bare comparison opens on it (`-1 <= 4` is true).
@@ -64,7 +64,7 @@ And the standing rule this gate must satisfy, from `ai/AGENTS.md`: anything gati
     and absence must never read as zero, the most certain value there is.
 12. **The accuracy watch arms unconditionally**; only the readout stays behind the flag. The gate cannot read an
     accuracy that is never watched.
-13. **The warm-reopen path STAYS, untouched** — row 52's shipped work at the owner's named revert point.
+13. **The warm-reopen path STAYS, untouched**: row 52's shipped work at the owner's named revert point.
 14. **The prototype flag is turned on in the gitignored `.env`, not `.env.example`** (no commit); `MEASURED.md`
     section 3 is where the catalogue route is proven for the commit phase.
 
@@ -76,7 +76,7 @@ approved readout, prayer times, release files, `uat` or EAS.
 
 **Invariant:** the compass is drawn on the first heading reading for which the phone reports a non-negative
 accuracy no worse than `CERTAINTY_THRESHOLD_DEGREES`, or on the first reading after `CERTAINTY_CEILING_MS` from the
-first reading — whichever comes first, never before either.
+first reading, whichever comes first, never before either.
 
 `isCertain(accuracy)` answers usable-certainty (absent false, negative false); the gate opens on `isCertain` or
 the ceiling; `openedBy` recorded which, for the readout.
@@ -85,17 +85,17 @@ Two **independent** watches feed one gate evaluated only on the heading stream: 
 what the next heading reading will read; a heading with no accuracy yet falls to the ceiling (decision 11). A lost
 fix clears the first-reading timestamp so the ceiling restarts. The obvious `accuracy <= 4` is wrong twice: it
 opens on Apple's negative sentinel (decision 10, measured) and treating absence as 0 opens on Android's optional
-cone (decision 11) — both fail in the direction that draws a compass the phone has disowned.
+cone (decision 11): both fail in the direction that draws a compass the phone has disowned.
 
 **Rejected alternatives:** run beside `hasSettled` (decision 1); keep `hasSettled` as the ceiling (it is the
-stopwatch being replaced, and its 2700ms span is not a clean time bound — `MEASURED.md` section 4); no ceiling
+stopwatch being replaced, and its 2700ms span is not a clean time bound (`MEASURED.md` section 4)); no ceiling
 (breaks fail-open); a ceiling under 2700ms (trades accuracy for speed); `modules/` (58 failing tests); deleting
 warm-reopen (deletes the owner's accepted work and the no-accuracy cover).
 
-**Design-review attacks, answered:** the ceiling is not "`hasSettled` with extra steps" — it measures nothing, so
+**Design-review attacks, answered:** the ceiling is not "`hasSettled` with extra steps" (it measures nothing, so
 motion cannot game it; a first-reading draw is deliberate (the fusion is already converged; row 52 measured that);
 a stale accuracy is pessimistic and safe; iOS accuracy and Android cone are the same quantity in degrees (whether
-one threshold fits both is what the prototype measures); dropping the drift test loses nothing — row 52 measured
+one threshold fits both is what the prototype measures); dropping the drift test loses nothing (row 52 measured
 that no stream-only gate separates the user's motion from convergence, and every shape tried refused a hand-held
 phone 100% of the time.
 
@@ -118,10 +118,10 @@ inherited red state was RECORDED in `LOG.md`, not gated on.
 In `qiblaSettle.ts`: `CERTAINTY_THRESHOLD_DEGREES = 4` (must never exceed `ALIGNMENT_ENTER_DEGREES`),
 `CERTAINTY_CEILING_MS = 3000` (must never drop below the 2700ms the span check took), `isCertain` (must never
 return true for `undefined` or a negative). In the hook: an accuracy ref written only by samples that CARRY a
-reading (a coneless FOP sample must leave the last one standing — the defect that would have broken Android,
+reading (a coneless FOP sample must leave the last one standing: the defect that would have broken Android,
 `LOG.md` prototype section), a first-reading timestamp cleared on a lost fix, the watch armed unconditionally, the
 gate replacing `hasSettled`, `openedBy` for the readout, and the trailing sample window deleted as dead. In the
 sheet: the flagged readout gained accuracy, why it drew, and how long it waited; no other pixel changed.
 
 Done when: tsc and Biome exit 0, the build reports 0 errors, the XS reports the new version, the owner has the
-phone. **He then reported: threshold 4→5→15, `drew on certainty` at 12.5 — the full account is `LOG.md`.**
+phone. **He then reported: threshold 4 then 5 then 15, `drew on certainty` at 12.5; the full account is `LOG.md`.**

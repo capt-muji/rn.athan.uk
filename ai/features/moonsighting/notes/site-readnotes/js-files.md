@@ -27,41 +27,41 @@ Identity check: all nine files `cmp` byte-identical between `site/www.moonsighti
 
 **Settings (quoted):** `timegap=500`, `followspeed=5`, `followrate=40` (comment: "use a minimum of 40 or you may experience problems"), `suboffset_top=6;`, `suboffset_left=12;`. The IE6 check `navigator.appVersion.indexOf("MSIE 6.0")>0` picks `effect = "Fade(duration=0.2);Shadow(color='#777777', Direction=135, Strength=5)"`; any other browser gets `"Shadow(color='#777777', Direction=135, Strength=5);"`. `style1` colours: off font `#000000`, off background `#D2DDE4` (comment "fffacd Mouse Off Background Color  #B6C7D0"), on font `#000000`, on background `#FDFDF7`, border `#0A780A`, `"12px"`, `"normal"`, `"bold"`, `"Verdana"`, padding `3`, sub-menu image `"images/tri.gif"`, 3D high `#66ffff`, low `#000099`, header font `#ffffff` on `#000000`. Commented out: `//"arrowdn.gif"`, `//effect2 = "Alpha( style=0,opacity=65)"`, `//effect=""`.
 
-**Main menu `"sidemenu"`** (width 129, top 0, left 0). Every entry, in order, as "label" -> target:
-1. "Home" -> `moon.html`
-2. "Moon - FAQs" -> `faq_ms.html`
-3. "Moon Photos" -> `moonphotos.html`
-4. "Moonsighting Committee Worldwide(MCW)" -> `mcw.html`
-5. "Articles" -> `articles.html target=_blank`
-6. "Astronomy" -> `show-menu=Astronomy`
-7. "Countries" -> `show-menu=Countries`
-8. "Do Not Click" -> `dont/don_a.html`
-9. "Ever Wonder Why" -> `ever-wonder.html`
-10. "Fun Time" -> `show-menu=fun-time`
-11. "Islam Chronology" -> `articles/chronology.html target=_blank`
-12. "Calendar" -> `show-menu=Islamic Calendar`
-13. "Lectures" -> `lectures.html`
-14. "Links" -> `links.html`
-15. "LatitudeLongitude" -> `https://www.latlong.net/ target=_blank`
-16. "Prayer Times" -> `show-menu=Prayer Times`
-17. "Qibla Direction" -> `show-menu=Qibla`
-18. "Ramadan & Eid" -> `ramadan-eid.html`
-19. "Time Zones" -> `show-menu=Time Zones`
-20. "Visibility Curves" -> `visibility.html`
-21. "World Mosques" -> `mosques.html`
-22. "About Us" -> `about-us.html`
+**Main menu `"sidemenu"`** (width 129, top 0, left 0). Every entry, in order ("label": target):
+1. "Home": `moon.html`
+2. "Moon - FAQs": `faq_ms.html`
+3. "Moon Photos": `moonphotos.html`
+4. "Moonsighting Committee Worldwide(MCW)": `mcw.html`
+5. "Articles": `articles.html target=_blank`
+6. "Astronomy": `show-menu=Astronomy`
+7. "Countries": `show-menu=Countries`
+8. "Do Not Click": `dont/don_a.html`
+9. "Ever Wonder Why": `ever-wonder.html`
+10. "Fun Time": `show-menu=fun-time`
+11. "Islam Chronology": `articles/chronology.html target=_blank`
+12. "Calendar": `show-menu=Islamic Calendar`
+13. "Lectures": `lectures.html`
+14. "Links": `links.html`
+15. "LatitudeLongitude": `https://www.latlong.net/ target=_blank`
+16. "Prayer Times": `show-menu=Prayer Times`
+17. "Qibla Direction": `show-menu=Qibla`
+18. "Ramadan & Eid": `ramadan-eid.html`
+19. "Time Zones": `show-menu=Time Zones`
+20. "Visibility Curves": `visibility.html`
+21. "World Mosques": `mosques.html`
+22. "About Us": `about-us.html`
 
-**Sub-menus** (every entry):
-- "Astronomy" (w125): "Astronomy for Beginners" -> `https://alexandertutoring.com/astronomy-guide-for-beginners/ target=_blank`; "Astronomy Links" -> `links.html target=_blank`; "Eclipses" -> `eclipses.html target=_blank`; "Planets" -> `planets.html target=_blank`; "Conjunction Maps" -> `https://www.timeanddate.com/worldclock/sunearth.html target=_blank`; "Eqinox/Solstice" [sic] -> `https://stellafane.org/misc/equinox.html target=_blank`; "Perigee-Apogee, New-Full Moon" -> `perigee-apogee-new-full.html target=_blank`
-- "Countries" (w146): "Countries that have used our website" -> `countries.html target=_blank`; "How Countries start Islamic month" -> `how-countries.html target=_blank`
-- "Fun-time" (w138): "Fun-Time - Enjoy" -> `fun-time.html target=_blank`; "NED67-Warrenton" -> `ned67warrenton.html target=_blank`
-- "Islamic Calendar" (w165): "Global Hijri Calendar" -> `globalcalendar.html target=_blank`; "Soomu li-Ru'yatihi" -> `soomu-hadith.html target=_blank`; "FCNA & UQ Calendar" -> `fcna-uq-calendar.html target=_blank`; "Hijri Comittee of India" [sic] -> `1444HijriCalendar.pdf target=_blank`; "Important Hijri Dates" -> `important-dates.html target=_blank`; "Actual Saudi Dates" -> `actual-saudi-dates.pdf target=_blank`; "Gregorian Calendar" -> `gregorian-calendar.php target=_blank`
-- **"Prayer Times" (w133):** "Prayer Times" -> `pray.php target=_blank`; "How We Calculate" -> `how-we.html target=_blank`; "PrayerTimes-FAQs" -> `faq_pt.html target=_blank`; **"API Prayer Times for Programmers" -> `https://github.com/PrayerTimeResearch/PrayerTimeAPI target=_blank`**
-- "Qibla" (w110): "Qibla Direction" -> `qibla.html target=_blank`; "Second Qibla" -> `secondqibla.html target=_blank`; "Qibla FAQs" -> `faq_qd.html target=_blank`
-- "Time Zones" (w110): "Time Zones" -> `http://www.worldtimezone.com target=_blank`; "Time Zone Map" -> `http://www.worldtimezone.com/wtz011-24.php target=_blank`
+**Sub-menus** (every entry; "label": target):
+- "Astronomy" (w125): "Astronomy for Beginners": `https://alexandertutoring.com/astronomy-guide-for-beginners/ target=_blank`; "Astronomy Links": `links.html target=_blank`; "Eclipses": `eclipses.html target=_blank`; "Planets": `planets.html target=_blank`; "Conjunction Maps": `https://www.timeanddate.com/worldclock/sunearth.html target=_blank`; "Eqinox/Solstice" [sic]: `https://stellafane.org/misc/equinox.html target=_blank`; "Perigee-Apogee, New-Full Moon": `perigee-apogee-new-full.html target=_blank`
+- "Countries" (w146): "Countries that have used our website": `countries.html target=_blank`; "How Countries start Islamic month": `how-countries.html target=_blank`
+- "Fun-time" (w138): "Fun-Time - Enjoy": `fun-time.html target=_blank`; "NED67-Warrenton": `ned67warrenton.html target=_blank`
+- "Islamic Calendar" (w165): "Global Hijri Calendar": `globalcalendar.html target=_blank`; "Soomu li-Ru'yatihi": `soomu-hadith.html target=_blank`; "FCNA & UQ Calendar": `fcna-uq-calendar.html target=_blank`; "Hijri Comittee of India" [sic]: `1444HijriCalendar.pdf target=_blank`; "Important Hijri Dates": `important-dates.html target=_blank`; "Actual Saudi Dates": `actual-saudi-dates.pdf target=_blank`; "Gregorian Calendar": `gregorian-calendar.php target=_blank`
+- **"Prayer Times" (w133):** "Prayer Times": `pray.php target=_blank`; "How We Calculate": `how-we.html target=_blank`; "PrayerTimes-FAQs": `faq_pt.html target=_blank`; **"API Prayer Times for Programmers": `https://github.com/PrayerTimeResearch/PrayerTimeAPI target=_blank`**
+- "Qibla" (w110): "Qibla Direction": `qibla.html target=_blank`; "Second Qibla": `secondqibla.html target=_blank`; "Qibla FAQs": `faq_qd.html target=_blank`
+- "Time Zones" (w110): "Time Zones": `http://www.worldtimezone.com target=_blank`; "Time Zone Map": `http://www.worldtimezone.com/wtz011-24.php target=_blank`
 
 **Notes:**
-- **Name matching:** the main menu calls `show-menu=fun-time` while the sub-menu is named `"Fun-time"`. mmenu.js lower-cases both sides (`Mname[m]=tmenu[0].toLowerCase()`, and in `hl()` `arg[1]=arg[1].toLowerCase()`), so they match. "Calendar" -> "Islamic Calendar" works the same way.
+- **Name matching:** the main menu calls `show-menu=fun-time` while the sub-menu is named `"Fun-time"`. mmenu.js lower-cases both sides (`Mname[m]=tmenu[0].toLowerCase()`, and in `hl()` `arg[1]=arg[1].toLowerCase()`), so they match. "Calendar" to "Islamic Calendar" works the same way.
 - **Dates and hosts:** the only date-like token is `1444HijriCalendar.pdf`, which suggests the menu was last edited around 1444 AH (2022-23). Third-party hosts: www.latlong.net, alexandertutoring.com, www.timeanddate.com, stellafane.org, github.com (PrayerTimeResearch/PrayerTimeAPI), www.worldtimezone.com (plain http), www.milonic.co.uk (comment only).
 - **Nothing prayer-maths:** no trackers and no coordinates. The only prayer-time content is the four Prayer Times links; there are no method indices or parameters.
 
@@ -171,7 +171,7 @@ xmlhttp.open("GET",url + "praytable.php?year=" + year + "&tz=" + timezoneID + "&
 - **Legacy branch:** `new ActiveXObject("Microsoft.XMLHTTP")` with the comment `// code for IE6, IE5`.
 
 **Where the time zone comes from (the timezone differs by path):**
-- **Geolocation success** (`foundPosition` -> `myFunction`): `timezoneID = Intl.DateTimeFormat().resolvedOptions().timeZone;`, i.e. the **browser's own zone, not the zone of the located point**. Offset code is commented out: `//    var zone=-1 * rightNow.getTimezoneOffset()/60;`. `//timezoneService(latitude,longitude);` is also commented out.
+- **Geolocation success** (`foundPosition`, then `myFunction`): `timezoneID = Intl.DateTimeFormat().resolvedOptions().timeZone;`, i.e. the **browser's own zone, not the zone of the located point**. Offset code is commented out: `//    var zone=-1 * rightNow.getTimezoneOffset()/60;`. `//timezoneService(latitude,longitude);` is also commented out.
 - **Geolocation failure:** it still calls `myFunction(24.5247,39.5692)`, so it sends the Madinah-area coordinates with the **viewer's** browser zone (e.g. Europe/London). The `tz` does not match the location.
 - **Pin drag** (`dragEnd`): `document.getElementById('timeZone').value = tzlookup(marker.coordinate.latitude,marker.coordinate.longitude);`, i.e. the point's zone from **tz.js**.
 - **Location preset** (`latitude` field != 0): `timeZone` is whatever the page pre-filled.
@@ -186,7 +186,7 @@ No trackers or analytics in this file. `console.log(location.hostname)` and `con
 
 ### assets/js/tz.js (73439 bytes, 1 line)
 
-**What it is:** one self-contained function, `function tzlookup(Y,W){"use strict";...}`, ending with `"undefined"!=typeof module&&(module.exports=tzlookup);`. The name, the `(lat, lon)` signature, the packed quadtree string and the CommonJS export match the **`tz-lookup` npm package by Dark Sky (darkskyapp/tz-lookup)**. The file has **no banner, version string or licence comment**, so the exact package version cannot be read from it. apple_map.js calls it in exactly one place: `dragEnd()` -> `tzlookup(marker.coordinate.latitude, marker.coordinate.longitude)`.
+**What it is:** one self-contained function, `function tzlookup(Y,W){"use strict";...}`, ending with `"undefined"!=typeof module&&(module.exports=tzlookup);`. The name, the `(lat, lon)` signature, the packed quadtree string and the CommonJS export match the **`tz-lookup` npm package by Dark Sky (darkskyapp/tz-lookup)**. The file has **no banner, version string or licence comment**, so the exact package version cannot be read from it. apple_map.js calls it in exactly one place: `dragEnd()` calls `tzlookup(marker.coordinate.latitude, marker.coordinate.longitude)`.
 
 **Structure:**
 - **`var U`:** a 65,024-character packed string built from two-character base-56 codes (`56*U.charCodeAt(G)+U.charCodeAt(G+1)-1995`). I read the whole string through fold lines 1-217; it is opaque data with no embedded text, URLs or dates.
@@ -195,7 +195,7 @@ No trackers or analytics in this file. `console.log(location.hostname)` and `con
   - It starts from a coarse 48 x 24 grid of 7.5° cells.
   - It then descends a 2x2 quadtree (`G=8*(S=S+G+1)+4*(M=0|(X=2*(X-M)%2))+2*(Z=0|(V=2*(V-Z)%2))+2304`) until `G+T.length>=3136`.
   - It returns `T[G+T.length-3136]`.
-  - It is a raster approximation of timezone-boundary-builder polygons, so points very near a border can resolve to the neighbouring zone.
+  - It is a raster approximation of timezone-boundary-builder polygons, so points close to a border can resolve to the neighbouring zone.
   - Exactly lat 90 returns "Etc/GMT".
 - **Data vintage** (inferred from which zone names are present):
   - `Asia/Qostanay` is present (added in tzdata 2018h), as are `Asia/Famagusta`, `Europe/Saratov` (2016j), `America/Punta_Arenas` (2017a) and `America/Fort_Nelson`.

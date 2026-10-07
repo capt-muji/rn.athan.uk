@@ -1,6 +1,6 @@
 # Conflicts (compressed)
 
-Three real conflicts between the five reports, each resolved by `ASSUMPTIONS.md` — B2/B5 (library
+Three real conflicts between the five reports, each resolved by `ASSUMPTIONS.md`: B2/B5 (library
 and key style) and B10 (per-locale width) carry the resolutions. Written 2026-09-29 at 123 lines;
 **compressed 2026-10-07** to the grounds other documents do not carry. Recover the full original
 from git history (C4).

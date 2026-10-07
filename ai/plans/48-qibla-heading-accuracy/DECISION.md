@@ -19,7 +19,7 @@ this feature."
 
 **"1000% accuracy" is not available on a magnetometer compass, from any app, on any phone.** Apple's own docs
 say a field fixed in the room cannot be calibrated away; Google's Qibla Finder documents its bearing and then
-just says "we recommend calibrating your compass" — no accuracy display, no uncertainty, no settling; Apple
+just says "we recommend calibrating your compass": no accuracy display, no uncertainty, no settling; Apple
 Maps does not draw a confident needle, it draws a CONE whose width is its own heading uncertainty, and is
 still wrong sometimes.
 
@@ -31,7 +31,7 @@ case 29.48 becomes 3.52. A stream that never converges is refused, not drawn bad
 dependency, no permission, no native code. Proven: 16 tests, 100% on four measures, 10 of 10 breaks caught.
 
 Why drift and not spread: a stream converging from 30 degrees is quiet between consecutive readings, so a
-spread gate passes it at **27.22 degrees wrong** — session 47's lesson again, a SMOOTH heading is not a RIGHT
+spread gate passes it at **27.22 degrees wrong**, session 47's lesson again, a SMOOTH heading is not a RIGHT
 one. Why spanned: without the span check a fast stream fills the count in 400ms and the gate opens at 29.18
 rather than 9.70 (indoor case 22.19 rather than 3.52).
 
@@ -47,12 +47,12 @@ rather than 9.70 (indoor case 22.19 rather than 3.52).
 | The scatter collapses outdoors | The answer is physics, and the product answer is honesty plus guidance |
 
 It needs native code: `ios/LocationUtils.swift:9-20` buckets `headingAccuracy` to 0–3 at the 50/35/20
-boundaries, and bucket 3 means "anywhere from 0 to 20 degrees" — the entire range the owner complains about,
+boundaries, and bucket 3 means "anywhere from 0 to 20 degrees", the entire range the owner complains about,
 quantised to uselessness at Expo's JS boundary.
 
 ## 3. On Android, the forward answer is the Fused Orientation Provider
 
-Google states **FOP is what draws the Google Maps heading** — the comparison the owner has been making all
+Google states **FOP is what draws the Google Maps heading**, the comparison the owner has been making all
 along. Its documented jobs are this row's defect list (sync sensors on different clocks, compensate hard-iron,
 fuse accelerometer/gyro/magnetometer, compensate gyro drift, produce a realistic heading-accuracy estimate),
 and its stated reason is this row's founding contradiction: "an API in Google Play services means that there
@@ -60,7 +60,7 @@ is no implementation variance across different manufacturers."
 
 Android 5+ with Play services (3T in scope); **no permissions**; declination applied internally; accuracy via
 `getConservativeHeadingErrorDegrees()`. **Blocker:** `expo-location` pins `play-services-location:21.0.1`,
-FOP needs 21.2.0+. **No JS wrapper** — needs a native module. It replaces the weakest Android heading source:
+FOP needs 21.2.0+. **No JS wrapper**: it needs a native module. It replaces the weakest Android heading source:
 accelerometer plus magnetometer, no gyroscope, ~5 Hz, gated so a still phone sees nothing, reporting the wrong
 sensor's accuracy band.
 
@@ -84,11 +84,11 @@ sensor's accuracy band.
 | Finding | Where | Magnitude |
 | --- | --- | --- |
 | `DeviceHeadingStreamer` never calls `startUpdatingLocation`, which Apple requires for a valid `trueHeading` | `ios/Providers/DeviceHeadingStreamer.swift:28` | **~1.2 degrees in London** (NOAA WMM-2025: declination 1.205 ± 0.380), more at high declination. Real, NOT the owner's bug |
-| `onAccuracyChanged` has no sensor-type guard — the accuracy this app receives on Android is usually the ACCELEROMETER's | `android/.../LocationModule.kt:1108-1110` | **Explains session 40's band 3 while 71 degrees wrong** (and band 0 at a fine 47.3 uT field) |
+| `onAccuracyChanged` has no sensor-type guard; the accuracy this app receives on Android is usually the ACCELEROMETER's | `android/.../LocationModule.kt:1108-1110` | **Explains session 40's band 3 while 71 degrees wrong** (and band 0 at a fine 47.3 uT field) |
 | `calcTrueNorth` does not normalise; Kotlin's `%` keeps the sign, so a negative declination near north returns a NEGATIVE heading | `android/.../LocationModule.kt:691` | Collides with this app's `NO_HEADING = -1`. Narrow but real |
 | The app never gates on `headingAccuracy < 0`, which Apple's own sample does unconditionally | `hooks/useQibla.ts:96` | An uncalibrated reading with a plausible heading is drawn at full confidence |
-| `device/qibla.ts:65` says the platform gates at 2 degrees — that is ANDROID's gate; iOS's `headingFilter` default is 1 degree | `device/qibla.ts:65` | A wrong comment in shipped code |
-| `remapCoordinateSystem` absent — CORRECT for a flat phone, degrades toward vertical | `android/.../LocationModule.kt` | Not the owner's bug; a real usability limit at other angles |
+| `device/qibla.ts:65` says the platform gates at 2 degrees, which is ANDROID's gate; iOS's `headingFilter` default is 1 degree | `device/qibla.ts:65` | A wrong comment in shipped code |
+| `remapCoordinateSystem` absent, CORRECT for a flat phone, degrades toward vertical | `android/.../LocationModule.kt` | Not the owner's bug; a real usability limit at other angles |
 
 ## What the owner is asked to accept
 
@@ -98,4 +98,4 @@ The residual from iron indoors remains: Apple says in writing no software can re
 app has the same limit without admitting it. The one thing that would answer his question properly is the
 measurement above, which needs a small native module only because `expo-location` throws the number away.
 If his bar is a trustworthy absolute bearing indoors on demand, the only path abandons the magnetometer for a
-user-confirmed direction tracked by gyroscope — a different feature, his decision.
+user-confirmed direction tracked by gyroscope: a different feature, his decision.

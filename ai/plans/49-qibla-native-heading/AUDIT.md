@@ -10,7 +10,7 @@ Audited from a scratch worktree at `uat-2`, `node_modules` symlinked from the ma
 
 `git log --oneline origin/uat-2..uat-2` listed six commits, all this session's, nothing foreign:
 `4b2f490e` 1.29.210 (step 1: the module and its consumer), `42bb6742` 1.29.211 (the iOS run-loop
-fix), `0fcb5fdc` 1.29.212 (the executed docs commit) — each with its `--no-ff` merge — plus the
+fix), `0fcb5fdc` 1.29.212 (the executed docs commit), each with its `--no-ff` merge, plus the
 planning commit `015f23a0` (1.29.209).
 
 ## 2. What was checked
@@ -50,7 +50,7 @@ calls `watchQiblaDiagnostic` zero times, and renders no readout. `QiblaDiagnosti
 opposite half with the flag mocked on. **Neither alone proves the gate; both together do.**
 
 The mock factory builds its own `jest.fn` rather than closing over a file-scope variable, because
-babel hoists `jest.mock` above every declaration — the trap `ai/AGENTS.md` records.
+babel hoists `jest.mock` above every declaration, the trap `ai/AGENTS.md` records.
 
 | | Before | After |
 | --- | --- | --- |
@@ -87,7 +87,7 @@ frames, and is correctly bounded to that handset indoors.
 ## 7. What this audit did NOT verify, stated so nothing is overclaimed
 
 - **No outdoor reading.** Every device measurement was taken indoors on a tethered phone. The
-  owner's protocol — disconnect and record outdoors — had not yet run, so nothing here says what
+  owner's protocol (disconnect and record outdoors) had not yet run, so nothing here says what
   either phone does in the open.
 - **FOP on the S23 is unmeasured.** It is the handset where `watchHeadingAsync` is known good, so it
   is where FOP could still differ, and this session never had it.

@@ -33,7 +33,7 @@ RIGHT one.
 
 ## 2. A DRIFT gate works
 
-Drift asks "is the window's own mean still MOVING" — a converging fusion has it, a converged one does not.
+Drift asks "is the window's own mean still MOVING": a converging fusion has it, a converged one does not.
 16-reading window split into halves of 8, comparing circular means (`probe-drift.mjs`):
 
 | Stream | Settles at | Error of the window mean when settled | Error of the FIRST reading |
@@ -52,7 +52,7 @@ limit: a fusion drifting slower than 1 degree per 8 readings is indistinguishabl
 ## 3. The decisive negative: NO gate reading the heading stream can see a stable bias
 
 The stable 25-degree bias passes at **25.03 degrees of error** because it is genuinely quiet and genuinely
-not moving — those properties ARE what "settled" means. **This is a proof, not a measurement:** any function
+not moving; those properties ARE what "settled" means. **This is a proof, not a measurement:** any function
 of the heading stream alone is blind to a constant added to that stream. Catching it needs a second,
 independent quantity.
 
@@ -69,7 +69,7 @@ every phone heading against gates of 10% magnitude and 5 degrees dip (`probe-phy
 | 15 | 49.9 | 74% | 66% | 95% | **49.3** |
 | 20 | 180.0 | 81% | 75% | 96% | **69.1** |
 
-A 10 uT offset swings the heading **30.8 degrees** and passes both gates — the owner's reported range. The
+A 10 uT offset swings the heading **30.8 degrees** and passes both gates: the owner's reported range. The
 misses are the offsets lying in the horizontal plane, where they do the most heading damage.
 
 **Why, and it generalises:** a compass reads only the HORIZONTAL field. World Magnetic Model values, NOAA,
@@ -109,7 +109,7 @@ Against the rates session 47 took off hardware (`probe-cost.mjs`):
 | Phone turning briskly, 20 Hz | 0.8s | 1.5s | 3.3s |
 
 `expo-location` suppresses any reading within 2 degrees of the last one on BOTH platforms, so a converged
-phone emits almost nothing — the readings a window sees are precisely the ones that moved:
+phone emits almost nothing. The readings a window sees are precisely the ones that moved:
 
 | Jitter | Share of readings surviving the 2-degree gate |
 | --- | --- |
@@ -120,7 +120,7 @@ phone emits almost nothing — the readings a window sees are precisely the ones
 | 8 deg | 87.1% |
 
 **The platform-silence gate fails too** (`probe-timed.mjs`): at a 400ms quiet period it opens after ~15s; at
-800ms or longer **it never opens at all in any scenario** — 1 degree of jitter re-triggers the 2-degree gate
+800ms or longer **it never opens at all in any scenario**. 1 degree of jitter re-triggers the 2-degree gate
 often enough that silence never arrives.
 
 ## 6. The gate that works: drift over a trailing TIME window that must be SPANNED
@@ -140,17 +140,17 @@ often enough that silence never arrives.
 **THE SPAN REQUIREMENT IS LOAD-BEARING AND WAS FOUND BY A DEFECT IN THIS SESSION'S OWN FIRST GATE.** Without
 it a fast stream fills the count in 400ms and a drift measured over 400ms of a slow convergence is under any
 useful threshold: the 8-second convergence opened at **29.18** without the span check and **9.70** with it;
-the indoor jittery case went **22.19 → 3.52**. A gate that samples a window without checking the window's own
+the indoor jittery case went from **22.19 to 3.52**. A gate that samples a window without checking the window's own
 duration is measuring nothing.
 
 ## 7. Three defects the break script found in this plan's own tests
 
-Written, built, suite green at 50/50, full validation 100% — then the break script caught three defects.
+Written, built, suite green at 50/50, full validation 100%; then the break script caught three defects.
 
 **Defect 1, the serious one: DELETING THE GATE ENTIRELY passed all 47 tests.** Fixing the 18 tests that
 depended on one reading drawing the dial meant teaching the shared `reportHeadings` helper to report a
-SETTLED window — once it did, **every test reported a settled window**, so no test could tell a gated
-compass from an ungated one. Fix: three tests driving the refusal directly — `draws nothing on a single
+SETTLED window; once it did, **every test reported a settled window**, so no test could tell a gated
+compass from an ungated one. Fix: three tests driving the refusal directly: `draws nothing on a single
 reading, however good it looks`, `draws nothing while the stream is still converging, even though it is
 smooth`, `fires no haptic on a reading it refuses to draw`. Durable lesson: when the fix to failing tests is
 a shared HELPER, the helper may satisfy the new precondition everywhere and the suite stops guarding it; add
@@ -162,7 +162,7 @@ once, proving the mismatch was the tool's. Fix: slurp with `perl -0pi`, target b
 Session 41's lesson a second time, new cause.
 
 **Defect 3: the gate below the haptic survived** until `fires no haptic on a reading it refuses to draw`
-existed — the owner's accessibility requirement, 🐋  "this is going to be useful for blind people", which
+existed (the owner's accessibility requirement, 🐋  "this is going to be useful for blind people"), which
 nothing in the suite was checking. After all three fixes: 6 of 6 caught, 50/50, full suite 184 suites, 4947
 tests, 100% on four measures.
 
@@ -173,10 +173,10 @@ tests, 100% on four measures.
 | Spread gate | **Rejected, measured.** Passes a smoothly wrong stream at 27.22 degrees |
 | Window counted in READINGS | **Rejected.** 120s on a still phone (platform gates at 2 degrees) |
 | Gate waiting for SILENCE | **Rejected.** Never opens at 800ms or longer |
-| **Drift over a trailing TIME window, SPANNED** | **Works — the recommendation.** 30.05→0.71, 42.1x; indoor 29.48→3.52 |
+| **Drift over a trailing TIME window, SPANNED** | **Works, and is the recommendation.** 30.05 to 0.71, 42.1x; indoor 29.48 to 3.52 |
 | Any gate on the heading stream | **Cannot see a stable bias**, by construction; measured 1.0x |
 | Field magnitude and dip check | **Rejected.** Misses 30.8 degrees at 10 uT; worst at high latitude |
 | Tuned constant / stored offset | **Forbidden**, and the error drifts with time anyway (session 41) |
 
-The honest division: a cold fusion that has not converged — every app restart — **is attackable, 42.1x**; a
+The honest division: a cold fusion that has not converged, which is every app restart, **is attackable, 42.1x**; a
 residual from iron in the room is **invisible to every gate measured, and the field check cannot bound it**.

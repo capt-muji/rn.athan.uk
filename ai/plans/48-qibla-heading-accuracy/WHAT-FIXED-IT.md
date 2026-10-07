@@ -1,4 +1,4 @@
-# What actually fixed the compass, and what is still unproven
+# What fixed the compass, and what is still unproven
 
 The owner's verdict on 1.29.205, having tested both phones:
 
@@ -7,7 +7,7 @@ are pointing in the perfect direction."
 
 **Four changes landed between the build he rejected and the build he loves, never tested apart**, and he asked
 the right question: 🐋  "which one was the issue? That's the real question. Because I think one of these three
-patches actually fixed it." — **Resolved by row 50**: `ai/plans/50-which-patch-fixed-it/VERDICT.md` isolated
+patches actually fixed it." **Resolved by row 50**: `ai/plans/50-which-patch-fixed-it/VERDICT.md` isolated
 them and named the heroes.
 
 ## The four changes, and what each could have done
@@ -30,13 +30,13 @@ not across days.
 
 ## Three of his questions, answered so no session re-derives them
 
-**Would 52 Hz be better? 🐋  "if we make this 52 hertz, would it be even better?" — No, worse.** 52 Hz is the
+**Would 52 Hz be better? 🐋  "if we make this 52 hertz, would it be even better?" No, worse.** 52 Hz is the
 magnetometer's own hardware ceiling (measured 19.2 ms minimum delay from `dumpsys sensorservice`); asking for
 it removes all scheduling slack so any delay drops a sample rather than arriving late. Nothing visible is
 gained (50 Hz is 5x his own 10 Hz bar) and it costs battery. Nothing would "break": Android clamps the
 request. The risk is power and jitter, never correctness.
 
-**Was a native module written? 🐋  "Did you create a custom module for this, a custom native module or what?" — No.** All three patches are
+**Was a native module written? 🐋  "Did you create a custom module for this, a custom native module or what?" No.** All three patches are
 edits to `expo-location`'s own source, carried in `patches/expo-location+58.0.9.patch`, which already existed.
 Row 49 remains the only place a native module is planned (`headingAccuracy` in real degrees, Apple's
 calibration prompt, Android's Fused Orientation Provider).
@@ -44,7 +44,7 @@ calibration prompt, Android's Fused Orientation Provider).
 **Why `SENSOR_DELAY_GAME` rather than `_UI`? 🐋  "You kept SENSOR_DELAY_GAME 50 Hz rather than UI 15 Hz. I
 don't understand."** `NORMAL` is 200 ms / 5 Hz, `UI` 66.7 ms / 15 Hz, `GAME` 20 ms / 50 Hz. `UI` clears his
 10 Hz bar with little margin; `GAME` with 5x; the app already pulls a sensor at 16 ms in the same process
-through Reanimated. **If battery while the sheet is open ever becomes a complaint, `UI` is the fallback** —
+through Reanimated. **If battery while the sheet is open ever becomes a complaint, `UI` is the fallback**:
 a one-word change; nothing else moves.
 
 ## What is NOT fixed, and is not claimed to be

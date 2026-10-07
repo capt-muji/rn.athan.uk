@@ -16,7 +16,7 @@ table. No `curl` was used. No `agent-browser` was needed. No page required a rea
 - **cited** means a named source asserts it, with a URL and a fetch date in the sources table.
 - **measured** means this research computed it. Every measured angle was derived by taking an authority's OWN
   published timetable and inverting the standard solar-hour-angle equation to recover the solar depression the
-  authority actually used. The solar model is the U.S. Naval Observatory low-precision algorithm that
+  authority used. The solar model is the U.S. Naval Observatory low-precision algorithm that
   `praytimes.org/docs/calculation` publishes, implemented in the `execute` runtime for this report. It is accurate
   to about one arcminute, which is well inside the one-minute rounding every authority applies, so a measured angle
   is trustworthy to roughly +/- 0.1 degrees.
@@ -60,7 +60,7 @@ table. No `curl` was used. No `agent-browser` was needed. No page required a rea
    (cited and measured). Morocco adds 5 to Dhuhr and 3 to Maghrib (measured). Oman adds about 5 to 6 minutes to
    Dhuhr, Asr and Maghrib (measured). Ignoring these margins produces times that are wrong against the authority
    even when the angle is right.
-7. **The Fiqh Council of North America, not ISNA, is the body that actually published the North American position,
+7. **The Fiqh Council of North America, not ISNA, is the body that published the North American position,
    and it has moved twice.** September 2011: use the moonsighting.com seasonal functions, "for most areas in USA
    this will result Fajr around sun being 17.5 below horizon, and Isha around 15" (cited, an email from FCNA's
    executive director published by the International Astronomical Center). October 2017, reaffirmed on the FCNA
@@ -182,7 +182,7 @@ Column key. **Publishes** is `METHOD` (a parameter set others compute from), `TI
 
 ---
 
-## 1. What actually varies, and by how much in degrees
+## 1. What varies, and by how much in degrees
 
 ### Every distinct Fajr angle found in real, sourced use, sorted
 
@@ -301,7 +301,7 @@ two equations as (5) and (6) and adds a refraction correction (6a to 6c) applied
 | Jakarta | 6.2 S | 52 min | 61 min |
 
 The gap is never small in absolute terms and it is not monotonic in latitude: it is largest where the noon sun is
-high (Makkah in June, 79 min) and smallest where the noon sun is very low (Oslo in December, 18 min). This is the
+high (Makkah in June, 79 min) and smallest where the noon sun is low (Oslo in December, 18 min). This is the
 opposite of the Fajr and Isha pattern, where high latitude means large disagreement.
 
 **Which regions use which.** The IAC paper states the position plainly: "most Islamic countries adopt the Shafi'i
@@ -485,7 +485,7 @@ be wrong** (Oman uses an angle) and Qatar right.
 Qatar (17.8), Oman (17.95), Diyanet (18.0 to 18.2), Iran's state table (18.17) and Umm al-Qura (18.28 to 18.33)
 span 0.9 degrees, which near the equator is under 4 minutes. **Six national authorities, six different labels, and
 an output spread smaller than the rounding some of them apply.** For an app, that is one of the most useful facts
-here: a very large share of the Muslim world's Fajr times are within a few minutes of each other regardless of
+here: a large share of the Muslim world's Fajr times are within a few minutes of each other regardless of
 which of these six labels is chosen.
 
 **Group G: not convergent with anything.** Musulmans de France at 12/12 (cited) stands alone at the low end;
@@ -605,7 +605,7 @@ Listed in descending order of how much the gap would matter to a worldwide app.
     a high-latitude Saudi city such as Tabuk, where 0.2 degrees is worth more.**
 11. **Iran's state table measures at Fajr 18.17, not the cited 17.7.** A 0.47-degree gap, worth about 2 minutes at
     Tehran. `time.ir` publishes no Isha at all, so the cited 14-degree Isha could not be tested. **Next step: find
-    which Iranian body actually authors `time.ir`'s times and whether the Institute of Geophysics attribution is
+    which Iranian body authors `time.ir`'s times and whether the Institute of Geophysics attribution is
     correct.**
 12. **Diyanet's own primary document could not be reached on a `diyanet.gov.tr` host.** The verbatim text used here
     is DITIB's reproduction of the Din Isleri Yuksek Kurulu statement, which is authoritative (DITIB is Diyanet's

@@ -10,7 +10,7 @@ no-bundled-fonts verdict, the per-locale width-setting-name finding) and in `MEA
 (directional/measure-site counts: 63 directional props, 30 flexDirection, 32 absolute, 30
 measure sites, 11 textAlign, 0 I18nManager). Recover the full original from git history (C4).
 
-App facts used throughout, read from this worktree (kept — the anchor table for every count):
+App facts used throughout, read from this worktree (kept as the anchor table for every count):
 
 | Fact | Value | Source |
 |---|---|---|
@@ -35,7 +35,7 @@ RLI and PDI are in R3-FINDINGS. The other controls, from the W3C
 | LRI LEFT-TO-RIGHT ISOLATE | U+2066 | Paired isolate, closes with PDI U+2069 | Preferred wrapper for LTR islands (times, numbers) inside RTL text: `صلاة الفجر في ⁦05:42⁩` |
 | RLI RIGHT-TO-LEFT ISOLATE | U+2067 | Paired isolate, closes with PDI U+2069 | Preferred wrapper for RTL islands inside LTR text; the fix for every prayer-name-in-LTR-column case: `⁧الفجر⁩` |
 | FSI FIRST-STRONG ISOLATE | U+2068 | Paired isolate, closes with PDI | Preferred when the embedded content's direction is unknown at authoring time |
-| LRE / RLE | U+202A / U+202B | Paired embedding, closes with PDF U+202C | Deprecated for hand-authoring (W3C: use RLI and LRI, avoid RLE and LRE — embeddings allow spillover) |
+| LRE / RLE | U+202A / U+202B | Paired embedding, closes with PDF U+202C | Deprecated for hand-authoring (W3C: use RLI and LRI, avoid RLE and LRE, since embeddings allow spillover) |
 | LRM / RLM | U+200E / U+200F | Single strong mark | Spot fix for one neutral |
 | LRO / RLO | U+202D / U+202E | Override | Avoid; forces character order against the algorithm |
 
@@ -58,9 +58,9 @@ Yoga resolves logical edges from the node's own direction
 | `position: 'absolute'` with `left` | left edge | same, modulo the swap above |
 
 Two consequences kept: (1) the app's `paddingLeft` on the English column and `textAlign:
-'right'` on the Arabic column are physical, so under the pinned-LTR policy they never move —
+'right'` on the Arabic column are physical, so under the pinned-LTR policy they never move,
 the desired outcome; (2) if mirroring is ever enabled, every physical style in
-`shared/constants.ts` and the components becomes a per-locale branch — the concrete measure
+`shared/constants.ts` and the components becomes a per-locale branch, the concrete measure
 of how much work full mirroring is in this codebase, which never used the `start`/`end`
 authoring style.
 

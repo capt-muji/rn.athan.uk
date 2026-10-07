@@ -1,4 +1,4 @@
-# R4: every endpoint actually called, with the measured result
+# R4: every endpoint called, with the measured result
 
 All rows measured from London on 2026-09-29/30 with `curl` via `measure.sh`.
 `size` is the response body in bytes as served. `ttfb` and `total` are seconds.

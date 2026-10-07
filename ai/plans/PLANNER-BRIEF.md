@@ -58,7 +58,7 @@ whale emoji and two spaces (`🐋  `).
 session).
 
 - **Documents get ONE review.** A change to briefs, templates, plans, records, or anything else a person reads and no
-  machine runs, is reviewed once. Apply the findings that change what someone would actually do; note the rest in the
+  machine runs, is reviewed once. Apply the findings that change what someone would do; note the rest in the
   commit message and move on. **Never review the fixes to a review of a document.**
 - **Code gets at most TWO rounds.** One review, one verification of its fixes. After that, apply what is clearly
   right, write what is not into the commit or `LOG.md`, and go on.

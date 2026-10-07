@@ -13,7 +13,7 @@ What is kept here, because nothing else carries it:
 
 Versions, bytes, downloads and dates read from the npm registry, Bundlephobia and unpkg on
 2026-09-29. `expo-localization` reads from the `next` dist-tag on install day, never a
-remembered pin — dist-tags move (it was 57.0.2 on `latest` and the SDK-58 preview line on
+remembered pin; dist-tags move (it was 57.0.2 on `latest` and the SDK-58 preview line on
 `next` when this was written; see `VERSIONS.md` for the install contract).
 
 | Candidate | Latest (date) | Licence | Runtime deps (transitive) | Min+gz bundle | Weekly downloads | Bus factor |
@@ -38,17 +38,17 @@ Per-candidate detail that survives compression, because it is not restated in R1
 
 - **i18next 26.4.2**: zero runtime deps in i18next itself; `react-i18next` adds
   `@babel/runtime`, `html-parse-stringify` (1,878 B gz) and `use-sync-external-store` (221 B
-  gz). `context.js` calls `React.createContext()` at module scope — a name the widget stub
+  gz). `context.js` calls `React.createContext()` at module scope, a name the widget stub
   provides today, with no guarantee about the next release. TypeScript `CustomTypeOptions`
   gives compile-time key checking; the selector API is default in v26.
 - **Lingui 6.8.0**: ESM-only, Node 22.19+; install footprint cut 62 MB to 35 MB, transitive
-  tree 146 to 104 packages (their measured numbers). `@lingui/macro` has no v6 — the macro
+  tree 146 to 104 packages (their measured numbers). `@lingui/macro` has no v6: the macro
   moved into `@lingui/babel-plugin-lingui-macro` in the Babel config, `babel-plugin-macros`
   deprecated. Its Metro transformer adds a `.po` compile stage beside this repo's existing
-  svg transformer, jsx-runtime shim and widget transform — the integration risk that ranked
+  svg transformer, jsx-runtime shim and widget transform, the integration risk that ranked
   it third.
-- **react-intl 12.1.3**: reads `RelativeTimeFormat`, `ListFormat`, `DisplayNames` — every one
-  missing on Hermes — and calls `onError(MISSING_INTL_API)` when absent. Strongest
+- **react-intl 12.1.3**: reads `RelativeTimeFormat`, `ListFormat`, `DisplayNames` (every one
+  missing on Hermes) and calls `onError(MISSING_INTL_API)` when absent. Strongest
   maintenance of the set.
 - **i18n-js 4.5.3**: embedded `make-plural` 7.5.0, the only library whose pluralisation works
   with zero `Intl` support out of the box; costs `lodash` + `bignumber.js`, no compile-time
@@ -71,7 +71,7 @@ Maven directory for `260318099.0.3` holds exactly one release AAR (85,411,457 B)
 variant. Intl support is compiled in and cannot be toggled by an app.
 
 **Status: R1's "no `Intl.PluralRules` on Hermes" claim is credible and corroborated by the
-build flag's own framing, but it is not independently verified here** — the Hermes source is
+build flag's own framing, but it is not independently verified here.** The Hermes source is
 not vendored into `node_modules` (only `sdks/hermes-engine` is present). `R1-FINDINGS.md`
 carries the settling experiment: one `logger.info({ pluralRules: typeof Intl.PluralRules,
 locale: typeof Intl.Locale })` line on the OnePlus 3T (Android 9, floor device) and the

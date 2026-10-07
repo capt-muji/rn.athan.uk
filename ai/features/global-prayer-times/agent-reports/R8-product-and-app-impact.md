@@ -5,7 +5,7 @@
 
 **Scope.** Wave 1 established what is true about prayer times worldwide. This report is the bridge from that
 evidence to a product decision and a work plan. It answers five things: what the shipped app assumes and where,
-which data-model gaps wave 1 exposed that parameterisation cannot close, what comparable apps actually do, what
+which data-model gaps wave 1 exposed that parameterisation cannot close, what comparable apps do, what
 this app can honestly claim, and how to sequence the work.
 
 **How claims are marked.**
@@ -235,7 +235,7 @@ endpoint: 'https://www.londonprayertimes.com/api/times'
   `getPrayerByDateString` reads `prayer_${date}` (`:152-160`). **No location, no source, no zone.** Two
   consequences. First, cached data from city A is indistinguishable from city B. Second,
   `stores/sync.ts:67-74`'s `isTodayGapInStoredYear` and `:393`'s `getAllWithPrefix('prayer_${year}-')` both scan by
-  the prefix, so the key change reaches the sync layer, not just the database layer.
+  the prefix, so the key change reaches the sync layer as well as the database layer.
 - **What the schema marker buys.** `CACHE_SCHEMA_VERSION = 1` (`stores/version.ts:135`) exists for exactly this
   case: its own comment says to bump it "when a release changes the SHAPE of cached data". A key-scheme change is
   the textbook bump, and `cacheSchemaChanged` (`stores/version.ts:166-186`) treats a missing marker as changed, so
@@ -436,7 +436,7 @@ must respect:
 1. It exists for some prayers and not others.
 2. It is not available from any computation, so a computed source has no jamaah at all, and that null must be
    representable.
-3. It is the time the user attending that mosque actually acts on, so it competes with the start time for the
+3. It is the time the user attending that mosque acts on, so it competes with the start time for the
    countdown and the notification.
 
 **Proposal J1: jamaah is an optional second instant per row, never a replacement, and never the default alarm.**
@@ -575,7 +575,7 @@ Its location model is a single implicit constant and its provider takes a `key` 
 
 Properties this buys, each answering something wave 1 found:
 
-- **A zone needs no coordinate at all**, which is what JAKIM's model actually is.
+- **A zone needs no coordinate at all**, which is what JAKIM's model is.
 - **The timezone travels with the source**, which is A1's fix and R4's finding 17 (a stale tz database made every
   Moroccan prayer time an hour wrong on 103 days of 2026).
 - **The source identity is the natural MMKV key prefix**, which closes A9: `prayer_${sourceId}_${date}`.
@@ -592,7 +592,7 @@ select "cities by international telephone dialing code".
 
 ---
 
-## 4. What comparable apps actually do, and what they claim
+## 4. What comparable apps do, and what they claim
 
 Every row below is **cited** from the source named. Where a figure could not be established from the vendor's own
 material it is marked UNVERIFIED rather than estimated. These are documentation and store-listing readings, not
@@ -639,7 +639,7 @@ different commenters: follow your local mosque's timetable, apps can be wrong.
 **What the products do about it, which is the stronger evidence than what users say.** Every one of the five
 computing apps in the table ships auto-selection as the default and hides the method list behind a toggle, a
 switch, or an "advanced" label. Muslim Pro requires turning OFF "App Recommended" to see the list at all. Pillars
-calls its version "Autopilot". Guidance's entire pitch is "no setup required". **Four independent teams, with very
+calls its version "Autopilot". Guidance's entire pitch is "no setup required". **Four independent teams, with
 different philosophies about ads, privacy and price, converged on the same interaction model.** That is the
 strongest available evidence that method choice is an expert control, and the product's real job is picking
 correctly on the user's behalf and being clear about what it picked.

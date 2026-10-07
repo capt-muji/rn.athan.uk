@@ -1,7 +1,7 @@
 # The shake gate: how the hint stopped lying, and what it cost
 
 Session 50 measured a defect it could not fix inside its own scope; session 52's wave gate closed it.
-This is the record of the gate that was built for that closure — **now itself removed**:
+This is the record of the gate that was built for that closure, **now itself removed**:
 `shared/qiblaShake.ts` shipped in `681c8c59` (1.29.222) and was deleted in `eeebc2ba` (1.29.233),
 "the shake is deleted, the settling gate alone decides", when rows 52/53's settling-model work
 superseded it. The measured defect and the owner's rulings below stand independently of that removal.
@@ -54,7 +54,7 @@ out of the screen, and at `scaleX` near zero a card IS a line. `phoneSlab` drew 
 `shared/kaabaFigure.ts` draws the Kaaba: a front face that never narrows at any yaw (the face the user
 reads, and where the trail leaves its foot), a flank that recedes from the turn-away edge bounded at
 46% of the phone's width, and a roof joining them that catches the most light. **Three tones, because
-a solid reads as 3D only when its faces differ** — the first attempt filled the flank with
+a solid reads as 3D only when its faces differ**; the first attempt filled the flank with
 `PALETTE.kaaba`, nearly the front's colour, and the phone read as flat in the rendered frames even
 though the geometry was correct.
 

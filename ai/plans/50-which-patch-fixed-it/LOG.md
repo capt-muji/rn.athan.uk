@@ -10,7 +10,7 @@ nothing. Lesson: after a refused commit, rebuild the message file from scratch, 
 `git log -1 --format=%s` before moving on.
 
 **2. `--no-verify` was used once, which this programme forbids absolutely, and it was undone.** The
-amend fixing fault 1 ran with `--no-verify` to get past a tree holding two untracked files — a rule
+amend fixing fault 1 ran with `--no-verify` to get past a tree holding two untracked files, a rule
 break regardless of the commit being docs-only and unmerged. Corrected in the same session: the
 untracked files moved out, the amend re-run through the full hook, so the standing commit was verified
 by `tsc`, Biome, the whole suite and the coverage gate. Recorded here because the commit's own history
@@ -40,7 +40,7 @@ one."
 **Both isolation mechanisms worked as specified.** The throwaway `git commit-tree` refs carried
 precisely one file each, verified by the script's own assertion; all four refs unreachable from
 `uat-2`, confirmed with `git merge-base --is-ancestor`. `scripts/verify-expo-location-patch.sh`
-printed `PATCH AS SHIPPED` after every experiment — and earned its place for real: after experiment D
+printed `PATCH AS SHIPPED` after every experiment, and earned its place for real: after experiment D
 it printed `PATCH NOT AS SHIPPED`, because D is the one edit the Android build script does not restore
 (iOS builds by hand). The guard caught it, the cache-then-patch-package restore fixed it, and a final
 `diff -r` against pristine upstream confirmed `node_modules` differs only by the intended patch.
@@ -64,7 +64,7 @@ it printed `PATCH NOT AS SHIPPED`, because D is the one edit the Android build s
 `BUILD-PROD OK` nor `BUILD-PROD FAILED` is still running: I read one mid-flight, concluded it had been
 killed, and relaunched; the first build was still going and failed on its own three minutes later with
 `java.io.FileNotFoundException: .../cxx/RelWithDebInfo/.../build_stdout_targets.txt` (the
-overlapping-build symptom `ai/AGENTS.md` records). **Wait on the process, not the log** — and the
+overlapping-build symptom `ai/AGENTS.md` records). **Wait on the process, not the log**; and the
 matcher is `Dorg.gradle.appname=gradlew`, not `GradleWrapperMain`, which names a different process and
 returns immediately. I also wrote a `pgrep` wait-loop whose own command line contained the pattern it
 searched for, so it matched itself and never exited. And I twice told the owner a build was "stuck" on
@@ -86,13 +86,13 @@ passed once it existed.
 
 **THE BREAK SCRIPT CARRIED A DEFECT OF THE EXACT SHAPE IT EXISTS TO CATCH.** Break 6 substituted
 `PATCH NOT AS SHIPPED` anywhere in the file, which hits the doc comment on line 11 before the `echo`
-inside `refuse()`, so the break reported `SURVIVED` at 6 of 7 against a completely healthy script —
+inside `refuse()`, so the break reported `SURVIVED` at 6 of 7 against a completely healthy script:
 session 44's "a guard passed for the wrong reason by matching its own source", met in the break
 matching the guard's own documentation. Fixed by targeting the code line; break 7 added for
 `refuse()`'s exit status, because the banner and the exit code are two separate claims the suite must
 hold independently.
 
-**Biome ran BEFORE the break script, not after** — the suite needed one reformat, and session 41
+**Biome ran BEFORE the break script, not after**; the suite needed one reformat, and session 41
 recorded a break going `BREAK NOT APPLIED` because the formatter had moved the text its substitution
 targeted. Formatting first, then breaking.
 

@@ -34,7 +34,7 @@ Survey's own published Cairo row for 2026-09-30 on all six times to the minute. 
    freezes a **CLOCK TIME**, printing Fajr 03:37 unchanged for 34 days and 03:17 for 46 days while leaving its own
    `Morgengry 16°` column visibly blank. Both measured. Two neighbouring countries in the same latitude band, two
    incompatible constructions, and neither is any `highLatitudeRule` a library ships.
-2. **France's 12-versus-18 split is real between the two bodies and is NOT how French mosques actually resolve.**
+2. **France's 12-versus-18 split is real between the two bodies and is NOT how French mosques resolve.**
    Measuring **52 mosques** across six French cities through Mawaqit's keyless search, the modal Fajr angle is
    **12 degrees at 48.1%** of mosques, against **11.5% near 18**, with 28.8% in a 13-to-15 band. Musulmans de
    France's position, not the Grande Mosquée de Paris's, is what most measured French mosques print. Measured.
@@ -169,7 +169,7 @@ NULL the convention column is a lead and not a finding.
 
 ## The four questions, answered
 
-### 1. What do Sweden and Norway actually print in summer?
+### 1. What do Sweden and Norway print in summer?
 
 Both print a real, specific number on every single day of the year, and they do it by two different rules. This is
 the most useful pair of measurements in the report, because it settles a question no earlier wave could reach and
@@ -293,7 +293,7 @@ A there, Libya is an authority with no table.
 
 **Authorities that exist, whose own site was read, and that publish no prayer timetable on it:**
 
-| Country | Body checked | URL read | What its site actually does |
+| Country | Body checked | URL read | What its site does |
 | --- | --- | --- | --- |
 | Kenya | Supreme Council of Kenya Muslims (SUPKEM) | `supkem.org/en` | Marriage registration, halal certification, study-abroad letters, employment referral, pilgrimage, membership accreditation. No prayer times anywhere |
 | Ethiopia | Ethiopian Islamic Affairs Supreme Council | `ethiopianmajlis.org.et` | Statements, Hajj and Umrah coordination, proclamation 1207/2020. No prayer times |
@@ -519,7 +519,7 @@ All under `ai/features/global-prayer-times/data/countries/`. R5's `solar-harness
 | --- | --- |
 | `measure-france-mawaqit.mjs` | 52 French mosques through Mawaqit's keyless search, inverted at each mosque's own coordinates, bucketed onto the two published French positions |
 | `measure-france-gmparis.mjs` | The Grande Mosquée de Paris's own 366-day calendar, inverted month by month |
-| `measure-france-gmparis-hilat.mjs` | Which high-latitude construction and which Isha rule the mosque's summer actually follows |
+| `measure-france-gmparis-hilat.mjs` | Which high-latitude construction and which Isha rule the mosque's summer follows |
 | `mawaqit-grab.sh` | Pulls one Mawaqit mosque's whole annual calendar out of the page's `confData` |
 | `grab-sweden.sh` | Drives the IFiS WordPress widget month by month for one Swedish city |
 | `measure-sweden.mjs` | Stockholm, Malmö and Kiruna: unsolvable-day counts, implied angles, and the summer plateau |

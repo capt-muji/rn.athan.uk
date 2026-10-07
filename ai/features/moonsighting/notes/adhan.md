@@ -11,8 +11,8 @@ Researcher notes, 2026-09-14. Deltas in minutes, sign = **adhan minus endpoint**
 | npm `adhan@4.4.6` used by the harness | `~/athan-research/adhan/harness/node_modules/adhan` |
 | endpoint tables (365 days × 12 cities × m0/m1/m2, 2026; London 2024 m0–m2; Sydney 2024 m0) | `~/athan-research/endpoint/moonsighting.ahmedbukhamsin.sa_<city>_<year>_m<n>.json` |
 | fetch script and log (timestamps and URLs of every request) | `~/athan-research/adhan/scripts/fetch_endpoint.py`, `~/athan-research/adhan/fetch_endpoint.log` |
-| main comparison script → output | `~/athan-research/adhan/harness/compare.cjs` → `~/athan-research/adhan/results/tables.md`, `summary.json` |
-| follow-up script → output | `~/athan-research/adhan/harness/edges.cjs` → `~/athan-research/adhan/results/edges.md` |
+| main comparison script and output | `~/athan-research/adhan/harness/compare.cjs` writes `~/athan-research/adhan/results/tables.md` and `summary.json` |
+| follow-up script and output | `~/athan-research/adhan/harness/edges.cjs` writes `~/athan-research/adhan/results/edges.md` |
 
 Run with `cd ~/athan-research/adhan/harness && TZ=UTC node compare.cjs` (and `TZ=UTC node edges.cjs > ../results/edges.md`). `TZ=UTC` is needed because adhan reads the calendar date from the `Date`'s *local* getters (`date.getFullYear()/getMonth()/getDate()`, `PrayerTimes.ts` L52–56; `dayOfYear()` in `DateUtils.ts` L50–61). Adhan's UTC instants are converted to each city's IANA zone with `Intl.DateTimeFormat`. After-midnight endpoint values such as `00:12` are compared by wrapping the delta into (−720, 720].
 
@@ -25,7 +25,7 @@ Endpoint: `https://moonsighting.ahmedbukhamsin.sa/time_json.php?year=Y&tz=Z&lat=
 - **Up to 64°N (London, Makkah, Jakarta, Cape Town, Sydney, New York, Toronto, Oslo, Helsinki, Anchorage, Reykjavik), for all 365 days of 2026 and all three methods, Fajr, Sunrise, Dhuhr, Maghrib and Isha are within ±1 minute of the endpoint on every day.** The only exception is Sydney on 2 days, where the endpoint applies the DST change a day early (±60; §5.7).
 - The share of ±1 days grows with latitude. Fajr ±1: Makkah 3/365, London 26/365, Oslo 100/365, Reykjavik 156/365. Mean Δ stays within ±0.04 everywhere (tables.md §1). The endpoint-minus-raw spread of sunrise widens the same way: Jakarta [−0.483, +0.5], Reykjavik [−0.9, +1.0] (tables.md §3). This is sub-minute ephemeris or refraction disagreement, not a rule difference.
 - **Asr is where the two disagree.** Hanafi at London: 163 days Δ=0, 202 days ±1, none ≥2. Shafi at London: 28 days of ±2. Toward 60–64°N it grows to ±3 (Hanafi Anchorage), ±4 (Hanafi Reykjavik), −5…+5 (Shafi Anchorage) and −5…+6 (Shafi Reykjavik), mean ≈ 0. Asr is not part of Shaukat's twilight model; the endpoint and adhan use different Asr algorithms (§5.9).
-- **Tromsø (69.65°N)** is the only city where the methods really part: the polar night, the midnight sun and the days around them (§6).
+- **Tromsø (69.65°N)** is the only city where the methods part: the polar night, the midnight sun and the days around them (§6).
 - **Endpoint offsets:** Dhuhr = transit + 5 and Maghrib = sunset + 3, matching adhan's `methodAdjustments` (§5.5).
 - **Endpoint rounding:** nearest minute, matching adhan's default `Rounding.Nearest` (§5.4).
 - **Method mapping:** m0 = Shafaq.General + Hanafi Asr, m1 = Shafaq.Abyad + Hanafi, m2 = Shafaq.Ahmer + Shafi, confirmed empirically (§5.3).
@@ -63,9 +63,9 @@ a = 75 + 28.65/55·|lat|   b = 75 + 19.44/55·|lat|   c = 75 + 32.74/55·|lat|  
 | General (else, L376–380) | 75 + 25.6/55·\|lat\| | 75 + 2.05/55·\|lat\| | 75 − 9.21/55·\|lat\| | 75 + 6.14/55·\|lat\| |
 
 **Piecewise-linear interpolation over dyy** (identical in both functions, L340–352 and L385–397):
-dyy<91: a→b over 91 days; <137: b→c over 46; <183: c→d over 46; <229: d→c over 46; <275: c→b over 46; else b→a over 91 (the last span actually runs 90 days in a 365-day year). Result is applied as `dateByAddingSeconds(sunrise, Math.round(adj·−60))` or `(sunset, Math.round(adj·60))`, i.e. rounded to whole seconds.
+dyy<91: a to b over 91 days; <137: b to c over 46; <183: c to d over 46; <229: d to c over 46; <275: c to b over 46; else b to a over 91 (the last span runs 90 days in a 365-day year). Result is applied as `dateByAddingSeconds(sunrise, Math.round(adj·−60))` or `(sunset, Math.round(adj·60))`, i.e. rounded to whole seconds.
 
-**`daysSinceSolstice` (L403–422):** `latitude >= 0` → `dayOfYear + 10`, wrapped at 365/366, so dyy 0 = 21 Dec. Otherwise `dayOfYear − 172` (173 in leap years), wrapped, so dyy 0 = 21 Jun. Evaluated through adhan's own function, the anchors land on 21 Dec, 22 Mar, 7 May and 22 Jun (edges.md E1).
+**`daysSinceSolstice` (L403–422):** `latitude >= 0` gives `dayOfYear + 10`, wrapped at 365/366, so dyy 0 = 21 Dec. Otherwise `dayOfYear − 172` (173 in leap years), wrapped, so dyy 0 = 21 Jun. Evaluated through adhan's own function, the anchors land on 21 Dec, 22 Mar, 7 May and 22 Jun (edges.md E1).
 
 ### 2.4 `PrayerTimes.ts`, how Fajr and Isha are chosen
 - L22–24 `const HIGH_LATITUDE_THRESHOLD = 55;` (named in PR #204, 2026-08-14; value unchanged since 2016).
@@ -74,8 +74,8 @@ dyy<91: a→b over 91 days; <137: b→c over 46; <183: c→d over 46; <229: d→
   1. `fajrTime = hourAngle(−18, before transit)`
   2. `if (method === 'MoonsightingCommittee' && coordinates.latitude >= 55) fajrTime = sunrise − night/7` (replaces the 18° value; it is not compared with it).
   3. `safeFajr = seasonAdjustedMorningTwilight(...)` for MC. Otherwise `sunrise − nightPortions().fajr·night`.
-  4. `if (isNaN(fajrTime) || safeFajr > fajrTime) fajrTime = safeFajr` → **later of the two**.
-- **Isha** L143–181, mirror image: 18° angle, replaced by `sunset + night/7` at lat ≥ 55, then `if (isNaN(ishaTime) || safeIsha < ishaTime) ishaTime = safeIsha` → **earlier of the two**. `shafaq` picks the coefficient set.
+  4. `if (isNaN(fajrTime) || safeFajr > fajrTime) fajrTime = safeFajr`, taking the **later of the two**.
+- **Isha** L143–181, mirror image: 18° angle, replaced by `sunset + night/7` at lat ≥ 55, then `if (isNaN(ishaTime) || safeIsha < ishaTime) ishaTime = safeIsha`, taking the **earlier of the two**. `shafaq` picks the coefficient set.
 - **Threshold is signed.** `coordinates.latitude >= 55` has no `Math.abs`, so the 1/7-night branch never fires in the southern hemisphere (≤ −55°). The seasonal coefficients do use `Math.abs(latitude)`. The RagibHasin/adhaan Rust port uses `latitude.abs() >= 55.0` (see §4.4).
 - **HighLatitudeRule is ignored for MC:** `nightPortions()` is only reached in the non-MC `else` branches. Empirically, 0 instants differ between MiddleOfTheNight, SeventhOfTheNight and TwilightAngle across 12 cities × 365 days × 6 prayers (tables.md §6).
 - **Invalid propagation:** if sunrise or sunset is NaN (polar day or night) and `polarCircleResolution` is `Unresolved`, the seasonal value and the 1/7 value are NaN too, so Fajr, Sunrise, Maghrib and Isha come back as `Invalid Date`. The 18° candidate may well exist (e.g. Tromsø in polar night) but is discarded, because at lat ≥ 55 it has already been overwritten.
@@ -89,7 +89,7 @@ dyy<91: a→b over 91 days; <137: b→c over 46; <183: c→d over 46; <229: d→
 - `Rounding.ts`: `Nearest | Up | None`.
 
 ### 2.6 `HighLatitudeRule.ts`
-`recommended(coords)`: `latitude > 48` → SeventhOfTheNight, else MiddleOfTheNight (L8–14). Irrelevant to MC (§2.4). Also signed, with no `abs`.
+`recommended(coords)`: `latitude > 48` gives SeventhOfTheNight, else MiddleOfTheNight (L8–14). Irrelevant to MC (§2.4). Also signed, with no `abs`.
 
 ### 2.7 `PolarCircleResolution.ts`
 - **AqrabBalad** (L57–91, L110–119): recomputes `SolarTime` at `lat − 0.5°`. It keeps stepping by 0.5° only while `|lat| >= 65` (`UNSAFE_LATITUDE`, L13); below 65 without a valid result it returns the unresolved default. The shifted `SolarTime` replaces the original **for every prayer, including Dhuhr and Asr**.
@@ -115,7 +115,7 @@ Middle and last third of the night, from Maghrib to the next day's Fajr, using t
 | 2017-08-15 | batoulapps/Adhan#79 | A user reports up to 10 min Fajr/Isha variance vs London Central Mosque Oct–Dec. z3bi: "the London Unified Timetable is based off of the moonsighting committee method". These are claims, not measured here. |
 | 2016-03-18 | `21e8d86` "finished javascript implementation" | MC's Dhuhr +5 and Maghrib +3 already present as hard-coded `dhuhrOffset`/`maghribOffset` switch cases, commented "Moonsighting Committee requires 5 minutes for the sun to pass the zenith" and "adds 3 minutes to sunset time to account for light refraction". |
 | 2018-09-28 | `08bf81b` "support new dubai method" | The same +5/+3 moved from the switch into `params.methodAdjustments = { dhuhr: 5, maghrib: 3 }` (verified with `git show 08bf81b`). No value change. |
-| 2021-12-16..23 | adhan-js#78 "Incorrect Isha timing in Milton Canada" → PR #79 `4c62bdf` (v4.3.0) | Isha differed by ~19 min from moonsighting.com for a Shafi user. Adds `Shafaq.Ahmer` / `Shafaq.Abyad` (coefficients 17.4, 7.16, 5.12, 19.44, 36.84, 81.84 first appear here). z3bi, 2021-12-21: **"I have a document from Khalid Shaukat explaining all the calculations."** This is a private document; it was never published in the repo. Reviewer korbav noted a recurring 1-minute Asr difference against pray.php. |
+| 2021-12-16..23 | adhan-js#78 "Incorrect Isha timing in Milton Canada", fixed by PR #79 `4c62bdf` (v4.3.0) | Isha differed by ~19 min from moonsighting.com for a Shafi user. Adds `Shafaq.Ahmer` / `Shafaq.Abyad` (coefficients 17.4, 7.16, 5.12, 19.44, 36.84, 81.84 first appear here). z3bi, 2021-12-21: **"I have a document from Khalid Shaukat explaining all the calculations."** This is a private document; it was never published in the repo. Reviewer korbav noted a recurring 1-minute Asr difference against pray.php. |
 | 2026-08-14 | PR #204 `d8d247f` | `HIGH_LATITUDE_THRESHOLD` constant. No behaviour change. |
 | 2026-08-15 | PR #206 | METHODS.md changed "above 55°" to "at or above 55°" to match `>=`. |
 
@@ -166,7 +166,7 @@ Differences between the PHP port (the one moonsighting.com links) and adhan:
 
 | aspect | PHP port | adhan | size of effect |
 |---|---|---|---|
-| dyy on 21 Dec itself | diff = 0 → `dyy = 365` → last branch ≈ a − (a−b)/91 | dyy = 0 → a | London Fajr (101.83−93.20)/91 = 0.095 min; London General (98.97−76.92)/91 = 0.24 min (from E1 values) |
+| dyy on 21 Dec itself | diff = 0, so `dyy = 365` and the last branch ≈ a − (a−b)/91 | dyy = 0 gives a | London Fajr (101.83−93.20)/91 = 0.095 min; London General (98.97−76.92)/91 = 0.24 min (from E1 values) |
 | leap years | `365 + diff`, constant 365 | 366 | 1 dyy ≈ ≤0.25 min. Measured London 2024 and Sydney 2024: all ±1 (edges.md E5) |
 | hemisphere | `latitude > 0` north | `latitude >= 0` | none (equator coefficients are constant) |
 | rounding | returns `round(minutes)` | rounds to seconds, then the final minute | ≤ 1 min |
@@ -182,7 +182,7 @@ Differences between the PHP port (the one moonsighting.com links) and adhan:
 | Isha < 55° | earlier of (18°, seasonal) | seasonal function | same | same |
 | 55–60° | later/earlier of (seasonal, 1/7 night) | 1/7 night between 55 and 66° | 1/7 replaces 18°, then compared with seasonal | same, ±1 (Oslo, Helsinki) |
 | > 60° | "slide down to 60°" for 1/7 in summer; functions in winter | 1/7 up to 66° | local 1/7 night, no slide | local 1/7 night, **no slide**: sliding makes Anchorage and Reykjavik worse by up to 5 and 20 min (§5.6) |
-| no sunrise/sunset (polar night) | Aqrabul-Bilaad by 0.1° (FAQ 1.2) | nearest lower latitude | Unresolved → Invalid; AqrabBalad 0.5° steps; AqrabYaum | Fajr/Isha = pure 18° times; sunrise/maghrib `-----` (§6) |
+| no sunrise/sunset (polar night) | Aqrabul-Bilaad by 0.1° (FAQ 1.2) | nearest lower latitude | Unresolved returns Invalid; AqrabBalad 0.5° steps; AqrabYaum | Fajr/Isha = pure 18° times; sunrise/maghrib `-----` (§6) |
 | midnight sun | same | same | Invalid, or resolved values | all four `-----` |
 | Dhuhr/Asr under polar resolution | "always calculable" (FAQ 1.2) | – | shifted along with the other prayers | not shifted |
 | southern ≥ 55° | not stated | not stated | 1/7 branch never fires (signed test) | not measured, **UNVERIFIED** |
@@ -303,8 +303,8 @@ Oslo, Helsinki and Anchorage on 21 Jun agree to ±1 across all 9 combinations (1
 ### 6.2 Tromsø through the year (edges.md E3, tables.md §5 and §7)
 - **Polar night, Nov 28 – Jan 14 (48 days):** the endpoint gives Fajr and Isha; adhan Unresolved gives Invalid. Rounding adhan's raw 18° times to the nearest minute reproduces the endpoint: Fajr 41 days Δ=0 and 7 days ±1; Isha 48/48 Δ=0. **The endpoint falls back to pure 18° Fajr and Isha when sunrise and sunset do not exist.** No moonsighting.com text found documents this. R2, the documented rule applied without adhan's ≥55° overwrite, reproduces it: Fajr n 296, 110 exact vs A's 69; Isha 206 exact vs 158; same ≥2 counts.
 - **Midnight sun, May 19 – Jul 25:** both sides empty for Fajr, Sunrise, Maghrib and Isha.
-- **Existence mismatches beyond polar night:** May 18 (endpoint all `-----`; adhan Sunrise 00:52, Maghrib 01:54(+1d), Isha 02:59(+1d), Fajr 22:51(−1d), i.e. sunset after sunrise) and Nov 27 (endpoint Maghrib `-----` but Isha 17:11 = 18° time; adhan sunset 11:45 → Maghrib 11:49, Isha 13:25, Δ −226).
-- **Transition days with large deltas:** Jan 15 (Fajr/Sunrise −13), Jul 26 (Fajr −13, Maghrib −19, Isha −14), May 17 (Fajr +7). On these days the sun just grazes the horizon, so sub-arc-minute ephemeris or refraction differences flip rise and set times by many minutes.
+- **Existence mismatches beyond polar night:** May 18 (endpoint all `-----`; adhan Sunrise 00:52, Maghrib 01:54(+1d), Isha 02:59(+1d), Fajr 22:51(−1d), i.e. sunset after sunrise) and Nov 27 (endpoint Maghrib `-----` but Isha 17:11 = 18° time; adhan sunset 11:45 gives Maghrib 11:49, Isha 13:25, Δ −226).
+- **Transition days with large deltas:** Jan 15 (Fajr/Sunrise −13), Jul 26 (Fajr −13, Maghrib −19, Isha −14), May 17 (Fajr +7). On these days the sun grazes the horizon, so sub-arc-minute ephemeris or refraction differences flip rise and set times by many minutes.
 - **Asr (edges.md E4):** adhan's Asr runs away when the noon solar altitude drops below ~2°. Nov 15: −11 (noon altitude 1.92°). Nov 21: −39 (0.49°). Nov 23: adhan 04:56 vs endpoint 11:31, Δ −395 (0.06°). Jan 19: adhan 07:53 on the next day (−0.03°). The endpoint's Asr stays near noon (11:31–12:06). Neither side returns "no Asr".
 - **PolarCircleResolution over the year:**
   - AqrabBalad emits Fajr and Isha on the 69 days the endpoint leaves empty. Where both have values: Fajr Δ −35..+196 (mean +27.8), Isha −204..+4 (mean −29.7), Asr only 1 day Δ=0.
@@ -334,7 +334,7 @@ Oslo, Helsinki and Anchorage on 21 Jun agree to ±1 across all 9 combinations (1
 9. At ≥55° the 18° candidate is overwritten instead of compared. There is no measurable effect at 55–64°. In polar night it discards the 18° times the endpoint shows, so adhan returns Invalid for 48 Tromsø days.
 10. Polar handling. Default Unresolved returns Invalid. AqrabBalad steps 0.5° and only continues while |lat| ≥ 65 (FAQ 1.2: 0.1° steps). AqrabYaum does not appear in the moonsighting.com text. Both resolutions move Dhuhr and/or Asr, which FAQ 1.2 says are always calculable. None of the three reproduces the endpoint's polar-night behaviour.
 11. The 1/7 threshold is signed (`latitude >= 55`), so it never applies at ≤ −55°. The seasonal coefficients use `|lat|`.
-12. `highLatitudeRule` (including `recommended()`, >48° → SeventhOfTheNight) is silently ignored for MC.
+12. `highLatitudeRule` (including `recommended()`, SeventhOfTheNight above 48°) is silently ignored for MC.
 13. The Asr algorithm uses the noon declination: ±1 at London Hanafi, up to ±6 at 64° Shafi, runaway near polar night.
 14. Seasonal offsets are rounded to whole seconds before the minute rounding (PHP port: whole minutes). Effect ≤ 1 min, not isolated.
 15. The calendar date is read from the JS `Date`'s local fields, so a device zone whose date differs from the location's date shifts the whole day (integration pitfall, not tested on device).

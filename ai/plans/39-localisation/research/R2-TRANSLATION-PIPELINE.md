@@ -61,7 +61,7 @@ strings never enter the statistical gate) is carried by R2-FINDINGS.
 
 ## 2. The live MyMemory probe (R2 §3.2, 2026-09-29)
 
-The 16 terms run through the free MyMemory translation-memory API — a memory engine, so it
+The 16 terms run through the free MyMemory translation-memory API, a memory engine, so it
 shows what "the community's settled answer" looks like:
 
 | Source | Target | Output |
@@ -80,9 +80,9 @@ shows what "the community's settled answer" looks like:
 | Change athan | fr | `Changer athan` |
 
 Readings: (1) prayer names survive as loanwords in Roman-script languages and transliterate
-into Cyrillic — they are transliterations, not translations; (2) engines leave `Istijaba` and
+into Cyrillic: they are transliterations, not translations; (2) engines leave `Istijaba` and
 `Duha` untouched rather than guessing, so "unchanged" must be a glossary whitelist, not a
 failure heuristic; (3) the `Tengah malamMidnight` echo is the concatenation artifact a
-placeholder/echo check catches; (4) `Changer athan` lost its article — acceptable for a
+placeholder/echo check catches; (4) `Changer athan` lost its article, which is acceptable for a
 button, but "athan" belongs in the glossary as a fixed term. R2-FINDINGS carries the Suhoor/
 Imsak offset trap from the same probe.

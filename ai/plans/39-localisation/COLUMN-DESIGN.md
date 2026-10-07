@@ -84,7 +84,7 @@ as an independent cross-check of the working set:
 
 This materially changes the outlook. My working set had five of eight launch languages over budget,
 because it used literal translations of the English phrases. A real app's shipped vocabulary mostly
-fits, because real apps use the short forms speakers actually say.
+fits, because real apps use the short forms speakers say.
 
 Two lessons for the catalog work:
 
@@ -117,7 +117,7 @@ whose names do not fit alongside a second name, the sensible default is second n
 can turn it on and see a tighter row, which is their choice to make.
 
 This also resolves a question `PROPOSALS.md` P1 left open: what the second name should default to
-when the app language is not English. The answer has a width component, not just a taste one.
+when the app language is not English. The answer has a width component, not merely a taste one.
 
 ### Layer 4: shrink-to-fit, per row, as the floor
 

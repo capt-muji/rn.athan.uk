@@ -45,7 +45,7 @@ The owner tested the 3T only, which is correct: the latch lives in `hooks/useQib
 platforms, and the iPhone never ran this code. 🐋  "I've just tested the 1+3T only not the iPhone."
 
 🐋  "it's for confirmation. The rest of the tests are for confirmation and also to see if they're
-actually even better than the first test." — each remaining experiment is judged backward (does
+actually even better than the first test." Each remaining experiment is judged backward (does
 removing it reproduce the defect?) and forward (is it as good or better without it, making it
 removable?).
 
@@ -61,7 +61,7 @@ slower. It jumps. The compass is not smooth. Accurate, but no smooth, no smoothi
 
 Kaaba still at 12 o'clock; immediately distinguishable on smoothness alone. The cleanest confirmation
 of arithmetic, not device, prediction: the rate's accuracy effect is bounded at 0.40 degrees mean
-either way (`MEASURED.md` section 1) and the dial drops to 5.1 updates/s against 16.7 — accuracy held,
+either way (`MEASURED.md` section 1) and the dial drops to 5.1 updates/s against 16.7: accuracy held,
 smoothness collapsed. **Forward answer NO:** `SENSOR_DELAY_GAME` stays, and `SENSOR_DELAY_UI` (15 Hz,
 nearer 5 than 50) is no longer an attractive fallback either.
 
@@ -74,7 +74,7 @@ accuracy at a tenth of the rate.
 
 `athan-B.apk`, `node_modules` edit: the 2-degree `DEGREE_DELTA` emission gate put back, as upstream
 ships it. Latch, 50 Hz, iOS filter, hint unchanged. Live rate: `sampling_period(ms) = {20.0},
-selected = 20.00 ms` — B isolated the GATE, not the rate.
+selected = 20.00 ms`: B isolated the GATE, not the rate.
 
 🐋  "very very wobbly as in very slow very jittery. It's not as accurate. I think. I feel like it's a
 little bit less accurate. Could be just me in my eyes, but yeah, it's not. It's not the one. Still
@@ -89,7 +89,7 @@ several degrees and the owner turns the phone to find the qibla, so readings cle
 often. **The 87% figure describes a phone on a table, not a phone in a hand.** The gate's real cost is
 what he felt: 0.83 Hz of updates while creeping onto the line, read as wobble and lag.
 
-On "less accurate": his own caveat is correct and the measurement supports it — the gate's bounded
+On "less accurate": his own caveat is correct and the measurement supports it: the gate's bounded
 error is 2.38 degrees worst, 0.78 mean while turning, near the limit of an eye judging against a map.
 **Verdict: the gate's removal earned its place, for RESPONSIVENESS.**
 
@@ -101,7 +101,7 @@ unchanged (none of which iOS runs).
 
 🐋  "I just tested the iOS build that it's not very smooth at all."
 
-**D is the iOS twin of B, and modelled rather than measured on the phone** — no `dumpsys` equivalent
+**D is the iOS twin of B, and modelled rather than measured on the phone**: no `dumpsys` equivalent
 was captured on iOS, so unlike every other rate figure in this row these come from the same model as
 the Android probes. Stated plainly because the distinction matters.
 
@@ -142,16 +142,16 @@ hunks are no longer reached on fused-sensor phones make rows 2 and 3 Android-con
 are untouched by that.)
 
 **The row's own hypothesis (the 2-degree emission gate was "the likely hero for ACCURACY") is REFUTED
-three separate ways:** (1) by arithmetic, before any build — a quantiser's error is bounded by its
-step, 2.38 degrees worst and 0.78 mean, against a complaint of 20 to 30 degrees; (2) by experiment A —
-accuracy held at one tenth of the sample rate; (3) by experiment B itself — the owner reported a
+three separate ways:** (1) by arithmetic, before any build: a quantiser's error is bounded by its
+step, 2.38 degrees worst and 0.78 mean, against a complaint of 20 to 30 degrees; (2) by experiment A:
+accuracy held at one tenth of the sample rate; (3) by experiment B itself: the owner reported a
 SMOOTHNESS problem first and hedged on accuracy, 🐋  "Could be just me in my eyes".
 
-**What actually fixed the owner's original complaint was the LATCH, which is this app's own code and
+**What fixed the owner's original complaint was the LATCH, which is this app's own code and
 not a patch at all.** The three `expo-location` patches make the compass pleasant; the latch is what
 makes it work. C is the proof: it carries every patch and still fails.
 
-None of A, B, D came back better without its change, so all four stay — a stronger statement than "we
+None of A, B, D came back better without its change, so all four stay, a stronger statement than "we
 think the latch did it". **`SENSOR_DELAY_UI` is ruled out as a battery fallback**: 5 Hz was
 immediately distinguishable and unacceptable, and 15 Hz sits far nearer 5 than 50.
 
@@ -182,8 +182,8 @@ Not answerable by the five experiments. Three measurements bound it:
 A 1-to-2-degree residual is at the noise floor of the instrument; no gate reading the heading stream
 can see a stable bias, by construction. The one unpulled lever is Apple's own calibration HUD (the app
 deliberately answers `false` to `locationManagerShouldDisplayHeadingCalibration`); session 48
-downgraded it honestly — UI rather than algorithm, supplying only the motion the hint already asks
-for. **Recommendation, stated plainly: do not chase this.** Every remaining mechanism would need an
+downgraded it honestly (UI rather than algorithm, supplying only the motion the hint already asks
+for). **Recommendation, stated plainly: do not chase this.** Every remaining mechanism would need an
 invented constant, a tuned offset or a per-location calibration, against the owner's standing rule.
 Experiment D says the filter is not where the last degree hides.
 
@@ -194,7 +194,7 @@ Because we just wait 3 seconds, isn't it? I like the fact that we are using it a
 load the compass behind the scenes. That's really smart. I like that idea. But what if the user doesn't
 actually shake their phone? Is it gonna give them a wrong reading or what?"
 
-`scripts/probes/probe-no-wave.mjs` replayed the shipped gate against a still phone and a waved one, in
+`scripts/probes/probe-no-wave.mjs`, deleted with the probe trees in 1.29.266 (recoverable from git history), replayed the shipped gate against a still phone and a waved one, in
 rooms carrying 0, 5, 15 and 27 degrees of hard iron (300 runs per cell):
 
 | Room | User | Gate opens | Median open | Error of the drawn heading | Residual bias |
@@ -206,7 +206,7 @@ rooms carrying 0, 5, 15 and 27 degrees of hard iron (300 runs per cell):
 | 15 deg hard iron | **still** | 100% | 9.7s | 2.94 deg | **15.0** |
 | 27 deg hard iron | **still** | 100% | 9.7s | 2.99 deg | **27.0** |
 
-**1. The compass ALWAYS opens, waved or not** — a cold fusion's drift decays whether or not the phone
+**1. The compass ALWAYS opens, waved or not**: a cold fusion's drift decays whether or not the phone
 moves, so the animation is a loading screen, exactly as he read it, not a correctness gate.
 
 **2. THE WAVE OPENS THE GATE EARLY AND AT A WORSE READING: 11.9 degrees of error at 3.7s against 2.98
@@ -214,7 +214,7 @@ at 9.7s.** Waving feeds the settling window with readings whose spread is the US
 window's halves agree, and the gate opens while the fusion is still 12 degrees out. **A defect in the
 shipped build: the animation rewards impatience.**
 
-**3. Hard iron passes the gate untouched in every case** — the gate measures DRIFT and a stable bias
+**3. Hard iron passes the gate untouched in every case**: the gate measures DRIFT and a stable bias
 does not drift (session 48, by construction). The wave COULD cure it, the figure eight being the
 standard hard-iron re-estimation the OS recalibrates from, but nothing verifies that it happened.
 

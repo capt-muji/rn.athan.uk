@@ -110,7 +110,7 @@ whale emoji and two spaces (`🐋  `).
   - Never commit the API key (`~/.config/athan/.api_key`) or print it.
   - No personal identifier in a tracked file: the hooks run `scripts/check-identifiers.js` at commit,
     commit-message and push time, backed by a denylist kept outside the repository. If it fires, remove the
-    identifier and commit again — never bypass the hook.
+    identifier and commit again; never bypass the hook.
   - Never run `env`, `printenv` or `set` unfiltered: this session's environment holds the gateway key.
   - Never write a gateway address, domain or key into any file.
 - **OpenCode.** Never change anything of OpenCode's: `~/.config/opencode/`, and any OpenCode file in the repository.
