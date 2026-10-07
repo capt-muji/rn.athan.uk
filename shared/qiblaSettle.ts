@@ -27,7 +27,7 @@ export const WARM_TOLERANCE_DEGREES = 3;
  * It is the best the hardware can promise rather than a ruling. No source fixes a number, and a tighter bar is a
  * refusal screen: at 5 the gate never fired once, because a phone indoors reports about 12.
  */
-export const CERTAINTY_THRESHOLD_DEGREES = 15;
+const CERTAINTY_THRESHOLD_DEGREES = 15;
 
 /**
  * How long the gate waits for a certainty the phone may never report, because this screen must never lock.

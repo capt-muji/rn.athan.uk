@@ -277,8 +277,8 @@ and what changed:
       DONE in `f6624843`, 1.29.249, through the hook. Audited: `AUDIT.md`
 - [x] Step 3: the debug readout removed (specified, `steps/3-readout-removed.md`). DONE in 1.29.252, through
       the hook
-- [ ] Step 4: Android reads Google's sensor alone, and waits for a wave (specified,
-      `steps/4-android-fused-wave.md`)
+- [x] Step 4: Android reads Google's sensor alone, and waits for a wave (specified,
+      `steps/4-android-fused-wave.md`). DONE in 1.29.253, through the hook. The owner's wave test is open
 
 ### Prototype P1: gate the compass on the reported accuracy, iOS first
 

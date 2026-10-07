@@ -37,7 +37,6 @@ const UNMEASURED = [
   { path: 'app.config.ts', reason: 'build-time Expo configuration' },
   { path: 'metro.config.js', reason: 'bundler configuration' },
   { path: 'jsx-runtime-shim.ts', reason: 'resolved only by Metro, which Jest does not use' },
-  { path: 'modules/', reason: 'native Kotlin module; its JavaScript surface is device/tls13.ts, which is measured' },
   { path: 'assets/', reason: 'static asset registries (require maps and SVG path strings), no logic' },
   { path: 'mocks/', reason: 'fabricated API data for dev builds' },
   { path: 'e2e/', reason: 'device test harness, run against the app on hardware' },
