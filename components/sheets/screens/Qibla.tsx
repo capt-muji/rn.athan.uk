@@ -79,13 +79,13 @@ const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
 
   return (
     <View>
-      {/* The LONGER line is the one left in flow, because an absolutely positioned child contributes no width:
-          the container would otherwise shrink-wrap the shorter line and clip this one inside it */}
-      <Animated.Text style={[styles.subtitle, ready]} numberOfLines={1}>
-        Hold flat and turn slowly
+      {/* The WIDER line is the one left in flow, because an absolutely positioned child contributes no width:
+          the container would otherwise shrink-wrap the narrower line and clip this one inside it */}
+      <Animated.Text style={[styles.subtitle, waiting]} numberOfLines={1}>
+        Follow below instructions
       </Animated.Text>
-      <Animated.Text style={[styles.subtitle, styles.subtitleOver, waiting]} numberOfLines={1}>
-        Just a moment
+      <Animated.Text style={[styles.subtitle, styles.subtitleOver, ready]} numberOfLines={1}>
+        Hold flat and turn slowly
       </Animated.Text>
     </View>
   );
