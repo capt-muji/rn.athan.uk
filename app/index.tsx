@@ -98,7 +98,7 @@ export default function Index() {
     // when users swipe to the extras page. Notification init (bridge +
     // channel work) and the update check add nothing visible — deferring them
     // past that window keeps the first swipes on an idle JS thread. The
-    // 12-hour refresh gate makes a ~1.5s delay immaterial.
+    // 2-hour refresh gate makes a ~1.5s delay immaterial.
     const initHandle = setTimeout(() => {
       // This effect runs once per cold launch, and on Android a cold launch may
       // follow a force-stop that cancelled every armed alarm without touching

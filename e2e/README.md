@@ -1,7 +1,8 @@
 # e2e — Performance & Behavior Harness
 
-Physical-device harness for the performance campaign (see
-`ai/features/performance/` for methodology and history). Target device:
+Physical-device harness for the performance campaign (methodology and history:
+`ai/plans/README.md` rows 1–11; the campaign folder left the repository in the
+2026-10-07 clean-up, except `ai/features/performance/`). Target device:
 **OnePlus 3T** (`3T_SERIAL`) — the floor device; smooth there means smooth
 everywhere.
 

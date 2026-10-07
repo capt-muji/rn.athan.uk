@@ -1,1 +1,1 @@
-npx lint-staged && yarn validate && node scripts/check-changed-coverage.js --staged
+node scripts/check-identifiers.js --staged && npx lint-staged && yarn validate && node scripts/check-changed-coverage.js --staged

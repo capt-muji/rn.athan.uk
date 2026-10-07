@@ -42,3 +42,6 @@ idb-frameworks/
 idb-test-bundles/
 .codegraph/
 
+
+# Claude Code session state (worktrees, scratch reviews, task output)
+.claude/
