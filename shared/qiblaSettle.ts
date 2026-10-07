@@ -30,14 +30,6 @@ export const WARM_TOLERANCE_DEGREES = 3;
 const CERTAINTY_THRESHOLD_DEGREES = 15;
 
 /**
- * How long the gate waits for a certainty the phone may never report, because this screen must never lock.
- *
- * No shorter than the 2700ms wait it replaced: a phone that cannot vouch for its heading must not be drawn sooner
- * than it used to be.
- */
-export const CERTAINTY_CEILING_MS = 3000;
-
-/**
  * Whether the phone has reported an uncertainty tight enough to draw on.
  *
  * Absence is not certainty: until the phone has reported, nothing is known. A NEGATIVE value is Apple's sentinel for

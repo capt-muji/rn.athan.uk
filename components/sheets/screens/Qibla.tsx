@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useEffect } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
+import Animated, { FadeIn, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
@@ -35,8 +35,8 @@ const DIAL_HEIGHT_SHARE = 0.45;
  * for. Where the wave IS measured, on a phone reading Google's fused sensor, it is measured from the attitude
  * that sensor already sends with each heading.
  *
- * Either way the wait FAILS OPEN. A gate that waits for a gesture can refuse forever on a phone whose sensors
- * misbehave, leaving the user no way through, so a ceiling draws the compass for a user who never waves.
+ * The wait does NOT fail open. A heading nothing has vouched for is never drawn, however long the user waits,
+ * because a wrong qibla is worse than none.
  */
 const QiblaCalibration = ({ size }: { size: number }) => (
   <View style={styles.waiting}>
@@ -48,6 +48,20 @@ const QiblaCalibration = ({ size }: { size: number }) => (
     </View>
     <QiblaWave size={size} />
   </View>
+);
+
+/**
+ * What the user is told once the phone has gone as long as a wave takes without finding north.
+ *
+ * Laid over the foot of the stage rather than added to its column, so the hint above it does not move when this
+ * arrives. Mounted only then, which is also what keeps a screen reader from announcing a failure that has not
+ * happened.
+ */
+const QiblaLost = () => (
+  <Animated.View testID='qibla-lost' style={styles.lost} entering={FadeIn.duration(ANIMATION.durationMedium)}>
+    <Text style={styles.message}>Could not find north</Text>
+    <Text style={styles.message}>Please try standing in a different location</Text>
+  </Animated.View>
 );
 
 /**
@@ -102,7 +116,8 @@ const QiblaPermissionDenied = () => (
 
 export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
-  const { bearing, hasHeading, permissionDenied, place, heading, aligned, arrivedWarm, start, stop } = useQibla();
+  const { bearing, hasHeading, permissionDenied, place, heading, aligned, arrivedQuietly, lost, start, stop } =
+    useQibla();
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
   // What the compass waits for depends on which sensor the phone reads, and the hook decides it: a heading
@@ -111,13 +126,13 @@ export default function BottomSheetQibla() {
   const isCalibrating = !showsCompass && !permissionDenied;
 
   // The user is told the compass has arrived by FEEL, because they are most likely looking at the phone they
-  // are moving rather than at its screen. A warm reopen announces nothing, because nothing arrived: the compass
-  // is back within a few readings and the tap would land as part of the sheet opening
+  // are moving rather than at its screen. One that arrives before the hint could be read announces nothing:
+  // nothing was waited for, and the tap would land as part of the sheet opening
   useEffect(() => {
-    if (!showsCompass || arrivedWarm) return;
+    if (!showsCompass || arrivedQuietly) return;
 
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-  }, [showsCompass, arrivedWarm]);
+  }, [showsCompass, arrivedQuietly]);
 
   return (
     <Sheet
@@ -141,6 +156,8 @@ export default function BottomSheetQibla() {
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
         {/* Mounted only while the hint is up, so its looping animation never ticks on behind the compass */}
         {isCalibrating && <QiblaCalibration size={size} />}
+        {/* Only ever beside the hint: over a drawn compass it would be reporting a north that was found */}
+        {lost && isCalibrating && <QiblaLost />}
         {permissionDenied && <QiblaPermissionDenied />}
       </View>
       {/* The place belongs to the compass and arrives with it: shown while the hint is up, it answers a question
@@ -169,6 +186,15 @@ const styles = StyleSheet.create({
   instruction: {
     alignItems: 'center',
     gap: SPACING.xs,
+  },
+  // Out of the column's flow, so the hint keeps its place when these lines arrive beneath it
+  lost: {
+    alignItems: 'center',
+    bottom: 0,
+    gap: SPACING.xs,
+    left: 0,
+    position: 'absolute',
+    right: 0,
   },
   message: {
     color: COLORS.text.sheetSubtitle,
