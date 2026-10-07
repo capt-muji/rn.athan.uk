@@ -27,7 +27,7 @@ export const WARM_TOLERANCE_DEGREES = 3;
  * It is the best the hardware can promise rather than a ruling. No source fixes a number, and a tighter bar is a
  * refusal screen: at 5 the gate never fired once, because a phone indoors reports about 12.
  */
-export const CERTAINTY_THRESHOLD_DEGREES = 15;
+const CERTAINTY_THRESHOLD_DEGREES = 15;
 
 /**
  * How long the gate waits for a certainty the phone may never report, because this screen must never lock.
@@ -40,8 +40,8 @@ export const CERTAINTY_CEILING_MS = 3000;
 /**
  * Whether the phone has reported an uncertainty tight enough to draw on.
  *
- * Absence is not certainty, since Android attaches its error cone to some samples only. A NEGATIVE value is Apple's
- * sentinel for a heading it considers invalid, which a bare `<=` would open on.
+ * Absence is not certainty: until the phone has reported, nothing is known. A NEGATIVE value is Apple's sentinel for
+ * a heading it considers invalid, which a bare `<=` would open on.
  */
 export const isCertain = (accuracyDegrees: number | undefined): boolean =>
   accuracyDegrees !== undefined && accuracyDegrees >= 0 && accuracyDegrees <= CERTAINTY_THRESHOLD_DEGREES;

@@ -36,7 +36,7 @@ describe('headingDelta', () => {
 });
 
 describe('isCertain', () => {
-  // Android attaches its error cone to some samples only, so a missing value is the phone saying nothing
+  // Before its first report the phone has said nothing, and nothing is not a certainty
   it('takes an absent report as silence, never as certainty', () => {
     expect(isCertain(undefined)).toBe(false);
   });
