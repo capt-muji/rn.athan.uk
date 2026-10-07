@@ -1,13 +1,13 @@
-# Next session: the patches we carry, one line of qibla copy, and the privacy follow-ups
+# Next session: the patches we carry, one line of qibla copy, and a repository hygiene check
 
 Written on 2026-10-07 at the close of session 53, for a session that starts with no memory of it. It is row 54 in
 `ai/plans/README.md`, and the owner wants it run next, ahead of row 18.
 
-**How it starts.** The owner types: *"Run row 54. Read `ai/plans/NEXT-SESSION-PATCHES-COPY-PRIVACY.md` and do it."*
+**How it starts.** The owner types: *"Run row 54. Read `ai/plans/NEXT-SESSION-PATCHES-AND-COPY.md` and do it."*
 The usual programme applies: plan, execute and audit in one session, every commit through the hook, 100% coverage,
 nothing pushed that he has not asked for.
 
-**Read first, in this order:** `ai/AGENTS.md` (the rule headed "This repository is PUBLIC", and the Recent Decisions
+**Read first, in this order:** `ai/AGENTS.md` (the rule on personal and device identifiers, and the Recent Decisions
 entry dated 2026-10-07), this file, then `ai/plans/53-qibla-accuracy-gate/AUDIT.md`.
 
 ---
@@ -22,10 +22,10 @@ entry dated 2026-10-07), this file, then `ai/plans/53-qibla-accuracy-gate/AUDIT.
    others.
 3. **One line of copy on the qibla sheet:** *Just a moment* reads as a loading screen. It is to say
    *Follow below instructions*.
-4. **Privacy:** nothing that identifies him or his devices may be in this public repository or its history.
+4. **Repository hygiene:** the rule headed "Keep the repository free of personal and device identifiers" in
+   `ai/AGENTS.md`.
 
-He asked that the first three wait for this session. The fourth was done at the close of session 53, and Job C
-checks it.
+He asked that the first three wait for this session.
 
 ---
 
@@ -74,7 +74,7 @@ behaviour as the default, not a changed default. That is row 51 of the queue, an
 `ai/plans/48-qibla-heading-accuracy/`, `49-qibla-native-heading/` and `50-which-patch-fixed-it/`.
 
 **The rule for anything posted upstream** (owner, standing): no app name, no repository link, no device serial, no
-secret, and nothing the rule in `ai/AGENTS.md` forbids.
+secret, and nothing the hygiene rule in `ai/AGENTS.md` excludes.
 
 **What to hand him at the end of Job A:** one table, three rows, with for each patch what it does, whether it is
 still needed, whether an upstream PR exists and in what state, and what he should do, if anything.
@@ -98,27 +98,13 @@ it. Change nothing else on the sheet.
 
 ---
 
-## 4. Job C: the privacy follow-ups
+## 4. Job C: the repository hygiene check
 
-**What happened on 2026-10-07.** The owner found that earlier sessions had written identifying material into this
-public repository: a full name, a local username in paths, phone serials, an iPhone identifier, the Apple team id,
-descriptions of rooms in a home, two screenshots of a phone's home screen, and a street-level map with a dot at the
-position the tests used. The working tree was scrubbed (1.29.260), the tests' position was moved to a public central
-London point, and the history of every branch was rewritten and force-pushed.
-
-**What this session must do about it:**
-
-1. **Verify the scrub held.** On the pushed branches, search for a serial pattern, `/Users/`, `UDID`, `TEAM_ID`
-   being a real value, and any tracked image outside `assets/`. Report what is found. Do not write the values found
-   into any file.
-2. **Check what a rewrite cannot reach, and tell him:** GitHub keeps old commits reachable by their id until its own
-   clean-up runs, pull request references keep the commits they were opened on, and forks keep their own copy.
-   **Only GitHub Support can purge those**, on a request from the account owner. Say whether such a request is still
-   needed, and draft it for him if so. It must contain no identifying value.
-3. **Every other clone and worktree of this repository holds the old history.** List the ones under
-   `$HOME/athan-device-sweep/worktrees/` and say which need re-creating.
-4. **Ask him one thing:** comments in the code that say "the owner" name a role and not a person. Session 53 left
-   them. Does he want them reworded?
+1. **Check the tracked files against the rule** in `ai/AGENTS.md`, "Keep the repository free of personal and device
+   identifiers". Fix what breaks it. Report what was found to the owner in the session, never in a file.
+2. **Re-create the build worktrees** under `$HOME/athan-device-sweep/worktrees/` from the current remote before the
+   first build. They were made from an earlier state of the branches.
+3. **Ask him one thing:** comments in the code that say "the owner" name a role. Does he want them reworded?
 
 ---
 
@@ -141,5 +127,4 @@ London point, and the history of every branch was rewritten and force-pushed.
 | Samsung Galaxy S23 | 1.29.256, the same |
 | iPhone XS | 1.29.256 |
 
-The compass code in 1.29.256 and 1.29.258 is the same. Everything after 1.29.256 is records, a test clean-up and the
-privacy scrub.
+The compass code in 1.29.256 and 1.29.258 is the same. Everything after 1.29.256 is records and test clean-up.
