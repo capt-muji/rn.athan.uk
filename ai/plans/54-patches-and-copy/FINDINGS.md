@@ -60,7 +60,7 @@ default. That is row 51.
 ## 3. Job B: the line of copy
 
 *Just a moment* becomes *Follow below instructions*. **The change is written, tested and committed on the local
-branch `fix/qibla-subtitle-copy` as 1.29.264. It is not merged and not pushed**, because the owner paused app
+branch `fix/qibla-subtitle-copy`, one commit ahead of `uat-2`. It is not merged and not pushed**, because the owner paused app
 work before the phone proof.
 
 | What | Result |
