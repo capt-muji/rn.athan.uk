@@ -132,7 +132,7 @@ verified on the 3T.
 - `yarn validate` and `yarn test:tz` green.
 - 3T local release build via the prebuild ritual, real data (the 3T currently runs the mock
   1.27.159, so install a production build first).
-- `adb -s 3T_SERIAL shell dumpsys alarm | grep -A2 mugtaba` shows `window=0` (alarm-clock
+- `adb -s 3T_SERIAL shell dumpsys alarm | grep -A2 <user>` shows `window=0` (alarm-clock
   class; was windowed `+1h`).
 - A prayer fires at the minute across a real boundary; foreground arrival looks and sounds
   the same as today.

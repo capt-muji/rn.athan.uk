@@ -19,7 +19,7 @@ freshness   ios      local stale · eas unknown
             EAS was not asked — pass --explain
 dev server  not running (http://127.0.0.1:8081)
 device      android 3T_SERIAL
-auth        mugtaba · per expo whoami
+auth        <user> · per expo whoami
 next        npx @expo/agent-cli dev --ios → dev-client-stale: expo prebuild --platform ios (+1 more step)
 build       local · this machine has Xcode — Xcode 27.0 at /Applications/Xcode.app/Contents/Developer.
 ```

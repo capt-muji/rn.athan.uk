@@ -136,7 +136,7 @@ today 09:38/11:01/12:01/13:01 + Sep-4 00:15/01:43/12:51/13:06/13:11/13:13/13:33/
 *(Superseded mid-session 01:33 pause block: build completed locally as build-1788398966295.apk
 after the queue sat >1h; the 01:42/Fajr natural experiments were extracted and are recorded in
 the §1 verdict blocks below. Historical record only.)*
-- **Background daemons (nohup + disown, verified surviving tool-call boundaries)**: caffeinate -dims; 4× per-device FILTERED logcat pipelines at `/tmp/opencode/bg/<name>-logcat.log` (pattern: backgroundtask|workermanager|WM-WorkerWrapper|AlarmManager|expo|mugtaba|ReactNativeJS|NotificationService|frozen|standby); 8T WAKEUP keepalive (10s loop); EAS build watcher (`/tmp/opencode/bg/build-watch.log`). Verify on resume: `pgrep -f "grep --line-buffered" | wc -l` (expect 4-8) + `tail build-watch.log`.
+- **Background daemons (nohup + disown, verified surviving tool-call boundaries)**: caffeinate -dims; 4× per-device FILTERED logcat pipelines at `/tmp/opencode/bg/<name>-logcat.log` (pattern: backgroundtask|workermanager|WM-WorkerWrapper|AlarmManager|expo|<user>|ReactNativeJS|NotificationService|frozen|standby); 8T WAKEUP keepalive (10s loop); EAS build watcher (`/tmp/opencode/bg/build-watch.log`). Verify on resume: `pgrep -f "grep --line-buffered" | wc -l` (expect 4-8) + `tail build-watch.log`.
   **macOS daemon lessons (do not relearn)**: (1) no `setsid` on macOS — use `nohup … & disown` (zsh builtin). (2) A bash-tool command that hits its TIMEOUT SIGKILLs its whole process group INCLUDING nohup'd background jobs started in it — never start long-lived daemons in a command that might time out. (3) `nohup adb logcat | grep > f &` protects only adb — nohup the `bash -c` pipeline wrapper or the grep dies with the shell and adb dies on SIGPIPE.
 - **iOS**: ship soak live (`~/bg-evidence/ship-soak.log`, full unfiltered syslog); registration verified `earliestBeginDate` = submit + exactly 6:00:00; first expected fire ~07:18 BST — grep `Athan{BackgroundTasks}` + dasd `Submitted`/`DASActivity` lines.
 - Working tree committed+pushed at session end (1.18.2 checkpoint: runbook + ISSUES + app.config.ts; owner instructed).
@@ -389,7 +389,7 @@ Precedence (expo docs, EAS Workflows §environment): profile `env` > EAS server 
 **Android-first-actions on each device (before anything else):**
 ISSUES #14 adb ground-truth checklist —
 `adb shell dumpsys package com.mugtaba.athan | grep -i -A2 EXACT` (runtime exact-alarm grant)
-+ `adb shell dumpsys deviceidle whitelist | grep mugtaba` (power allowlist).
++ `adb shell dumpsys deviceidle whitelist | grep <user>` (power allowlist).
 
 ---
 
@@ -538,7 +538,7 @@ D degrades gracefully to the 2-day buffer and recovers on open.
 - JS logs in release builds surface as `ReactNativeJS` tag logcat lines (pino→console). Logger
   is enabled in our preview builds ONLY because `EXPO_PUBLIC_ENV` is unset (env 'local');
   if a future profile sets `EXPO_PUBLIC_ENV=preview`, bgDebug snapshots vanish silently.
-- adb WorkManager introspection: `dumpsys jobscheduler | grep -A5 mugtaba` (look for
+- adb WorkManager introspection: `dumpsys jobscheduler | grep -A5 <user>` (look for
   `Minimum latency` on the SystemJobService job = live window), logcat tags
   `BackgroundTaskScheduler` + `WM-WorkerWrapper`.
 - OnePlus/Oppo quirk (8T/OxygenOS 12): `svc power stayon` does NOT stick and shell CANNOT

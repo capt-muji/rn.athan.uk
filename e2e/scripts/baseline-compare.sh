@@ -11,7 +11,7 @@
 set -euo pipefail
 
 FLOW=${1:?usage: baseline-compare.sh <flow.yaml> [device-serial]}
-SERIAL=${2:-3T_SERIAL}
+SERIAL=${2:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
 ROOT=${0:A:h:h}
 BASELINE="$ROOT/baselines/android-3t.json"
 OUT=$(mktemp -d)

@@ -1382,7 +1382,7 @@ Iteration protocol: profile → root-cause → fix → rebuild Release → re-me
      `TEAM_ID`, `-derivedDataPath ios/build`). If a build died mid-flight, relaunch it
      detached with nohup + same command, keep polling ≤15s cycles.
   2. Install: Android should auto-install via expo run (verify
-     `adb -s 3T_SERIAL shell pm list packages | grep mugtaba`). iOS:
+     `adb -s 3T_SERIAL shell pm list packages | grep <user>`). iOS:
      `xcrun devicectl device install app --device IPHONE_UDID
      ios/build/Build/Products/Release-iphoneos/Athan.app`.
   3. Re-assert Android keep-awake: `adb -s 3T_SERIAL shell svc power stayon usb`.
