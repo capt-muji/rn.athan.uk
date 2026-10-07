@@ -187,8 +187,7 @@ export default function QiblaCompass({ size, bearing, heading, aligned }: QiblaC
   const radius = size / 2;
   // First evaluation snaps, so the dial draws at the phone's real heading rather than spinning to it from north
   const isFirstEvaluation = useSharedValue(true);
-  // The platform gates its heading at 2 degrees, so the readings arrive as steps and this is what smooths them. It
-  // can settle because that same gate means a still phone sends nothing, which a 10ms sensor stream never allowed
+  // The heading arrives as steps, many a second, and this is what turns them into one motion
   const turn = useDerivedValue(() => {
     if (isFirstEvaluation.value) {
       isFirstEvaluation.value = false;

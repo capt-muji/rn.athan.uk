@@ -76,17 +76,17 @@ class QiblaHeadingModule : Module() {
     }
 
     private fun emit(orientation: DeviceOrientation) {
-        // FOP applies declination itself and reports geographic north when a fix is known, so any term of
-        // ours would double-count it
-        val payload = mutableMapOf<String, Any>("headingDegrees" to orientation.headingDegrees)
-
-        // The cone is optional per sample, so an unguarded read would publish a default dressed as an
-        // accuracy. An absent key reads as undefined in JS, which keeps a null off the bridge entirely
-        if (orientation.hasConservativeHeadingErrorDegrees()) {
-            payload["headingErrorDegrees"] = orientation.conservativeHeadingErrorDegrees
-        }
-
-        sendEvent(EVENT_NAME, payload)
+        sendEvent(
+            EVENT_NAME,
+            mapOf(
+                // FOP applies declination itself and reports geographic north when a fix is known, so any
+                // term of ours would double-count it
+                "headingDegrees" to orientation.headingDegrees,
+                // The quaternion x, y, z, w. It rides with the heading so that whether the phone has been
+                // waved is measured from this one reader: a second sensor listener degrades the compass
+                "attitude" to orientation.attitude.map { it.toDouble() },
+            ),
+        )
     }
 
     private fun stopUpdates() {
