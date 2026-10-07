@@ -33,8 +33,8 @@ each system geocoder fills in.
 
 ## The measurement: both labels from ONE coordinate
 
-The agent ran both geocoders against the same coordinate, `one position in London`, which is the OnePlus's own last
-known fix (`dumpsys location`, `hAcc=14`). Android was probed on the 3T itself with a dex probe through
+The agent ran both geocoders against the same coordinate, one position in London taken from the OnePlus's own last
+known fix (`dumpsys location`). Android was probed on the 3T itself with a dex probe through
 `app_process`, because a release build carries no app logging.
 
 | Field | Apple `CLGeocoder` | Android `Geocoder` |
@@ -51,7 +51,7 @@ lands on "Greater London".**
 This is a Google trait for UK addresses rather than a one-off: Android returned `locality=null` with
 `subAdminArea="Greater London"` at all four London coordinates tried (central London, Charing Cross, Uxbridge,
 Upminster). "London" exists on the Android side only inside the formatted line
-(`addressLine[0] = "a house number, street, town and postcode"`), because Google carries it as a `postal_town`, which
+(`addressLine[0]`, a house number, street, town and postcode), because Google carries it as a `postal_town`, which
 Android's `Address` does not map to `locality`. For contrast Android DOES populate `locality="Makkah"` at the
 Kaaba, so the geocoder is not broken; UK addresses are modelled differently.
 
@@ -87,7 +87,7 @@ alternatives are worse:
 
 | Alternative | Why not |
 | --- | --- |
-| Use `formattedAddress` / `addressLine[0]` | Prints "a house number, street, town and postcode": the user's street and postcode on screen, a privacy regression for a label |
+| Use `formattedAddress` / `addressLine[0]` | Prints the user's house number, street and postcode on screen, a privacy regression for a label |
 | Strip a `"Greater "` prefix | A UK-specific hack that mangles Greater Manchester, where that is the only name the place has |
 
 **The consequence worth the owner's judgement:** because this app is London-only today, every Android user reads
