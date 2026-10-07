@@ -2,7 +2,7 @@
  * The wave a phone on Google's fused sensor must be given: what counts as a turn, and how many make a wave
  */
 
-import { type Attitude, advanceWave, hasWaved, WAVE_CEILING_MS, type Wave } from '../qiblaWaveGate';
+import { type Attitude, advanceWave, hasWaved, type Wave } from '../qiblaWaveGate';
 
 /** A phone lying flat and facing wherever it was facing: the attitude most turns below are measured from */
 const FLAT: Attitude = [0, 0, 0, 1];
@@ -201,12 +201,5 @@ describe('hasWaved', () => {
 
     expect(hasWaved(waveThrough(turns(7)))).toBe(false);
     expect(hasWaved(waveThrough(turns(8)))).toBe(true);
-  });
-});
-
-describe('the ceiling', () => {
-  // Long enough that waving is quicker than waiting, and finite because this screen must never lock
-  it('lets an unwaved phone through after ten seconds', () => {
-    expect(WAVE_CEILING_MS).toBe(10_000);
   });
 });

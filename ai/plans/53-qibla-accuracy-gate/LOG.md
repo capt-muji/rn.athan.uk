@@ -799,3 +799,40 @@ It's almost consistently good enough."
 🐋  "The user must wave the phone. I don't care if they can't wave the phone... No, I will not make it 30 seconds,
 because then I run the risk of showing a wrong location. I would rather not show at all. I don't want the burden of
 showing the wrong location. This is extremely important. So, no, don't put a cap."
+
+## Step 5: a heading nothing has vouched for is never drawn (2026-10-07)
+
+`steps/5-vouched-or-nothing.md` is the specification, with the owner's rulings at its head and what they cost in
+its part 12. Branch `feat/qibla-vouched-or-nothing`, cut from `uat-2` after steps 3 and 4 were merged
+(`528dafed`, `06a20d8c`).
+
+### What he was advised, and what he ruled
+
+He was advised to lengthen Android's ceiling to 30 seconds rather than remove it, and to leave the iPhone's until
+one room had been tested, because both changes turn a wait into a refusal. He ruled against both, in the words
+at the head of the step file. The session built what he ruled.
+
+### What changed
+
+- **Both ceilings are gone.** `WAVE_CEILING_MS` and `CERTAINTY_CEILING_MS` are deleted with their tests.
+- **Step 4's fallback is deleted**, an hour after it was built and reviewed. It handed a silent fused sensor to the
+  platform heading, which on Android can no longer be drawn by anything. 61 lines and 14 tests.
+- **`arrivedWarm` became `arrivedQuietly`:** an arrival is felt only if the hint had been up for a second, or the
+  phone was waved.
+- **`lost`, and the two lines** *Could not find north* and *Please try standing in a different location*.
+
+### Green
+
+```
+yarn validate
+Test Suites: 188 passed, 188 total
+Tests:       5190 passed, 5190 total
+Statements 100% (4929/4929)  Branches 100% (2146/2146)  Functions 100% (1030/1030)  Lines 100% (4421/4421)
+
+bash ai/plans/53-qibla-accuracy-gate/scripts/breaks-4.sh
+CAUGHT: 42 of 42
+ALL AS EXPECTED: 1
+```
+
+The break script's first run found one test that did not test what it said (`steps/5-vouched-or-nothing.md`,
+part 7).
