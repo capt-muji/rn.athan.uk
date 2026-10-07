@@ -3,7 +3,6 @@
  */
 
 import {
-  CERTAINTY_CEILING_MS,
   circularMean,
   headingDelta,
   isCertain,
@@ -57,13 +56,6 @@ describe('isCertain', () => {
     [25.4, false],
   ])('a reported uncertainty of %p degrees is tight enough to draw on: %p', (accuracyDegrees, expected) => {
     expect(isCertain(accuracyDegrees)).toBe(expected);
-  });
-});
-
-describe('the ceiling', () => {
-  // A phone that cannot vouch for its heading must not be drawn sooner than the stopwatch this replaced drew it
-  it('is no shorter than the 2700ms wait it replaced, so speed is never bought with accuracy', () => {
-    expect(CERTAINTY_CEILING_MS).toBeGreaterThanOrEqual(2700);
   });
 });
 

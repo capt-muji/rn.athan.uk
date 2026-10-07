@@ -25,9 +25,6 @@ const WAVE_TURN_DEGREES = 30;
 /** How many turns complete a wave: 240 degrees of turning in all, which lifting the phone to look at it is not */
 const WAVE_TURNS = 8;
 
-/** How long the gate waits for a wave that may never come, because this screen must never lock */
-export const WAVE_CEILING_MS = 10_000;
-
 const DEGREES = Math.PI / 180;
 
 /** The dot product of two unit quaternions is the cosine of HALF the angle between them, so a turn is judged on it */

@@ -278,7 +278,10 @@ and what changed:
 - [x] Step 3: the debug readout removed (specified, `steps/3-readout-removed.md`). DONE in 1.29.252, through
       the hook
 - [x] Step 4: Android reads Google's sensor alone, and waits for a wave (specified,
-      `steps/4-android-fused-wave.md`). DONE in 1.29.253, through the hook. The owner's wave test is open
+      `steps/4-android-fused-wave.md`). DONE in 1.29.253 and 1.29.254, through the hook, reviewed. The owner waved
+      the 3T: 🐋 "It's very, very smooth"
+- [x] Step 5: a heading nothing has vouched for is never drawn, on either platform (specified,
+      `steps/5-vouched-or-nothing.md`). DONE in 1.29.255, through the hook. The owner's tests on both phones are open
 
 ### Prototype P1: gate the compass on the reported accuracy, iOS first
 
