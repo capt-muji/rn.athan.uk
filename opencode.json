@@ -6,7 +6,7 @@
   "mcp": {
     "codegraph": {
       "type": "local",
-      "command": ["$HOME/.local/bin/codegraph", "serve", "--mcp"],
+      "command": ["{env:HOME}/.local/bin/codegraph", "serve", "--mcp"],
       "enabled": true
     },
     "mobile-mcp": {
@@ -17,7 +17,7 @@
     },
     "maestro": {
       "type": "local",
-      "command": ["$HOME/.maestro/bin/maestro", "mcp"],
+      "command": ["{env:HOME}/.maestro/bin/maestro", "mcp"],
       "environment": { "MAESTRO_CLI_NO_ANALYTICS": "1" },
       "enabled": false
     },
