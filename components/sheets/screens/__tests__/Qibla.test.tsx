@@ -2,7 +2,7 @@
  * The qibla sheet: what it draws, when it arms the sensors, and the one tap the user feels per crossing
  */
 
-import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type React from 'react';
 import { Dimensions, Linking, StyleSheet } from 'react-native';
@@ -10,6 +10,7 @@ import * as Reanimated from 'react-native-reanimated';
 
 import type { FusedHeading } from '@/modules/qiblaheading';
 import logger from '@/shared/logger';
+import * as qiblaSettle from '@/shared/qiblaSettle';
 import { WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
 import type { Attitude } from '@/shared/qiblaWaveGate';
 
@@ -1189,23 +1190,6 @@ describe('the wait before the compass is drawn', () => {
     expect(Haptics.notificationAsync).not.toHaveBeenCalled();
   });
 
-  // Warm and certain both hold on the confirming reading here, and warm must win: nothing arrived to announce
-  it('fires no arrival haptic when the phone also vouches for its heading on the confirming reading', async () => {
-    await openSheet();
-    await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-    jest.mocked(Haptics.notificationAsync).mockClear();
-
-    await fireEvent(screen.getByText('Qibla'), 'change', 0);
-    await act(async () => {});
-    await reportWarmConfirmation(95, 7);
-    await reportAccuracy(CERTAIN);
-    await reportWarmConfirmation(95, 1);
-
-    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
-  });
-
   // A warm visit leaves its mark in state across the close, so the visit after it must overwrite that mark rather
   // than inherit it, or every arrival after the first warm reopen would be silent
   it('announces a cold arrival on the visit after a warm one', async () => {
@@ -1303,6 +1287,41 @@ describe('the arrival the user feels, on a phone without the fused sensor', () =
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
     expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+  });
+
+  // A warm reopen is silent because it is QUICK. One that took a second was waited for like any other arrival
+  it('announces a warm reopen whose confirmation took a second to come', async () => {
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    jest.mocked(Haptics.notificationAsync).mockClear();
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS);
+    });
+    await reportWarmConfirmation(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
+  });
+
+  // Three seconds of a stream that keeps saying it has no heading are three seconds the user waited. Counted from
+  // the last such gap instead, the arrival that ends them would pass for a quick one
+  it('announces a compass that arrives after seconds of a stream with no heading to give', async () => {
+    await openSheet();
+    for (let tenth = 0; tenth < 30; tenth++) {
+      await reportLostHeadings();
+      await act(async () => {
+        jest.advanceTimersByTime(100);
+      });
+    }
+
+    await reportHeadings(95);
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
   });
 
   it('announces a compass that took a second to return, after a heading was lost', async () => {
@@ -1836,10 +1855,26 @@ describe('when north cannot be found', () => {
       jest.advanceTimersByTime(LOST_AFTER_MS);
     });
 
-    expect(screen.getByText(FIRST_LINE)).toBeOnTheScreen();
-    expect(screen.getByText(SECOND_LINE)).toBeOnTheScreen();
+    const [first, second] = within(screen.getByTestId('qibla-lost')).getAllByText(/\w/);
+
+    expect(first).toHaveTextContent(FIRST_LINE);
+    expect(second).toHaveTextContent(SECOND_LINE);
     expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+
+  // A stream can report that it has no heading over and over, which is exactly the phone that has no north. Each
+  // gap must not start the five seconds again, or that phone would never be told
+  it('says so at five seconds on a phone whose stream keeps reporting that it has no heading', async () => {
+    await openSheet();
+    for (let tenth = 0; tenth < 50; tenth++) {
+      await reportLostHeadings();
+      await act(async () => {
+        jest.advanceTimersByTime(100);
+      });
+    }
+
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
   });
 
   it('says nothing one millisecond sooner', async () => {
@@ -1884,9 +1919,28 @@ describe('when north cannot be found', () => {
       jest.advanceTimersByTime(LOST_AFTER_MS);
     });
 
-    const style = StyleSheet.flatten(screen.getByTestId('qibla-lost').props.style) as { position?: string };
+    const style = StyleSheet.flatten(screen.getByTestId('qibla-lost').props.style) as {
+      position?: string;
+      bottom?: number;
+    };
 
     expect(style.position).toBe('absolute');
+    expect(style.bottom).toBe(0);
+  });
+
+  // An open that overtakes one whose compass is already drawn starts a wait nothing will end
+  it('is never laid over a compass, even when a second open found one already drawn', async () => {
+    await openSheet();
+    await reportHeadings(95);
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
   });
 
   it('is never said once the compass has been drawn', async () => {
@@ -1970,10 +2024,52 @@ describe('when north cannot be found', () => {
     expect(screen.queryByTestId('qibla-lost')).toBeNull();
   });
 
-  // The hint is back, so the same five seconds are owed before the room is blamed for it
+  // The permission prompt can stay up for as long as the user likes, and nothing is being waited on behind it
+  it('starts its wait when location is granted, not while the prompt is still up', async () => {
+    mockState.releasePermission = () => undefined;
+    jest.useFakeTimers();
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
+
+    await act(async () => {
+      mockState.releasePermission?.();
+    });
+
+    expect(screen.getByText(/Move your phone like this/)).toBeOnTheScreen();
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  // Said once, then answered by a compass: when that compass later loses its heading the report must be earned
+  // again, not found still standing from before
+  it('does not come straight back when a compass drawn after it loses its heading', async () => {
+    await openSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+    await reportHeadings(95);
+    expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+
+    await reportLostHeadings();
+    await act(async () => {
+      jest.advanceTimersByTime(1500);
+    });
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+
+  // The hint is back, so the same five seconds are owed before the room is blamed for it. The compass stands for
+  // a long while first: a wait left running behind it would have ended there, and be found already said
   it('waits its five seconds again after a drawn compass loses its heading', async () => {
     await openSheet();
     await reportHeadings(95);
+    await act(async () => {
+      jest.advanceTimersByTime(A_LONG_WAIT_MS);
+    });
     await reportLostHeadings();
     await act(async () => {
       jest.advanceTimersByTime(1500);
@@ -2023,6 +2119,22 @@ describe('when north cannot be found', () => {
 
     expect(screen.getByText(FIRST_LINE)).toBeOnTheScreen();
     expect(screen.getByText(SECOND_LINE)).toBeOnTheScreen();
+    // No other heading is started in its place: on this phone nothing could ever draw one
+    expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
+  });
+
+  // A slow Play services can deliver its first sample after the five seconds are up. The sensor has not lost north
+  // after all, so the report must not stay
+  it('is taken back when the sensor’s first sample arrives after it was said', async () => {
+    await openFusedSheet();
+    await act(async () => {
+      jest.advanceTimersByTime(LOST_AFTER_MS);
+    });
+    expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
+
+    await reportFused(...heldStill(95));
+
+    expect(screen.queryByTestId('qibla-lost')).toBeNull();
   });
 
   // Its sensor has not lost north. All the phone lacks is the wave, and the hint is already asking for that
@@ -2049,5 +2161,48 @@ describe('when north cannot be found', () => {
     });
 
     expect(screen.queryByTestId('qibla-lost')).toBeNull();
+  });
+});
+
+describe('a reading that arrives after the sheet has closed', () => {
+  // A heading watch can outlive the close that should have ended it, when the open that started it was still
+  // reading the position. The mock keeps every watcher, so the closed visit's own is still the latest one here
+  it('draws nothing, taps nothing and announces nothing, and leaves the next open to earn its own compass', async () => {
+    await openSheet();
+    await reportHeadings(118.9);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    jest.mocked(Haptics.impactAsync).mockClear();
+    jest.mocked(Haptics.notificationAsync).mockClear();
+    await act(async () => {
+      jest.advanceTimersByTime(ANNOUNCE_AFTER_MS);
+    });
+
+    await reportWarmConfirmation(118.9);
+
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
+
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+
+    expect(screen.queryByTestId('qibla-dial')).toBeNull();
+  });
+});
+
+describe('the readings a warm reopen is judged on', () => {
+  // Only the latest eight are ever read. A phone that is never sure keeps sending for as long as the sheet is open,
+  // and with no ceiling to end that, a list kept whole would be copied in full on every reading
+  it('are kept to the latest eight, however many arrive unvouched', async () => {
+    const judged = jest.spyOn(qiblaSettle, 'isWarmStream');
+    await openSheet();
+    await reportHeadings(95);
+    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await fireEvent(screen.getByText('Qibla'), 'change', 0);
+    await act(async () => {});
+
+    await reportBareHeadings(...Array.from({ length: 200 }, () => 300));
+
+    expect(judged).toHaveBeenCalledTimes(200);
+    expect(judged.mock.calls.at(-1)?.[0]).toHaveLength(8);
+    judged.mockRestore();
   });
 });

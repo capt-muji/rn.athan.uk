@@ -815,8 +815,8 @@ at the head of the step file. The session built what he ruled.
 ### What changed
 
 - **Both ceilings are gone.** `WAVE_CEILING_MS` and `CERTAINTY_CEILING_MS` are deleted with their tests.
-- **Step 4's fallback is deleted**, an hour after it was built and reviewed. It handed a silent fused sensor to the
-  platform heading, which on Android can no longer be drawn by anything. 61 lines and 14 tests.
+- **Step 4's fallback is deleted**, an hour after it was built and reviewed, with its tests. It handed a silent
+  fused sensor to the platform heading, which on Android can no longer be drawn by anything.
 - **`arrivedWarm` became `arrivedQuietly`:** an arrival is felt only if the hint had been up for a second, or the
   phone was waved.
 - **`lost`, and the two lines** *Could not find north* and *Please try standing in a different location*.
@@ -836,3 +836,55 @@ ALL AS EXPECTED: 1
 
 The break script's first run found one test that did not test what it said (`steps/5-vouched-or-nothing.md`,
 part 7).
+
+### Step 5: the commit and the OnePlus 3T
+
+`7b45fda0`, 1.29.255, through the hook. Built into
+`~/athan-device-sweep/session53/android/mock-255-vouched-or-nothing.apk` (352 seconds, `BUILD-MOCK OK`).
+Installed on the OnePlus 3T with `adb install -r`. The file on the phone and the file built have the same `md5`,
+`950a63277c5c65eb27aba9e067415f4d`.
+
+**The desk check, run by this session with the phone lying untouched:**
+
+| Check | Reading | Proves |
+| --- | --- | --- |
+| The screen 14 seconds and 30 seconds after the sheet opened | The hint and its drawing, both times. No compass, and no report | The ceiling is gone. The sensor is delivering, so north is not reported lost |
+| `adb logcat`, filtered to the app's own qibla lines | None | Nothing was drawn |
+| `dumpsys sensorservice`, sheet open | `1 active connections`: uid 10029, Google Play services, holding the four sensors. The app's uid holds none | Still one reader |
+
+The 3T is left on 1.29.255, a mock build with invented prayer times, with the qibla sheet open and waiting for a wave.
+
+### Step 5: the iPhone XS
+
+`npx expo prebuild -p ios --no-install`, then `npx expo run:ios --configuration Release --device
+IPHONE_UDID`, from the checkout at `7b45fda0`. `xcrun devicectl device info apps` reports
+`Athan com.mugtaba.athan 1.29.255`. The built app is kept at `~/athan-device-sweep/session53/ab/Athan-1.29.255.app`,
+beside 1.29.248 and 1.29.249, for the eight second swap.
+
+**Nothing on the iPhone was opened or measured by this session.** What it draws, how fast, and whether one room
+can pass at all are the owner's tests, listed in `steps/5-vouched-or-nothing.md`, part 9.
+
+### Step 5: the code review
+
+One independent reviewer, read-only against `7b45fda0`. **Verdict: pass with findings, no blocker.** It walked
+twelve paths to a drawn compass and found none that draws on time alone. Its findings and what was done are in
+`steps/5-vouched-or-nothing.md`, part 13. Its arithmetic for the two lines of text: on a 360 by 640 screen they clear
+the drawing's box by 8 to 15 points, and on a 320 by 568 screen by 6 points with iOS's text and by 2 points less
+than nothing with Android's, which still leaves about 3 points clear of anything drawn. **No overlap on either, and
+nothing holds it there on a smaller screen.**
+
+```
+yarn validate
+Test Suites: 188 passed, 188 total
+Tests:       5198 passed, 5198 total
+Statements 100% (4938/4938)  Branches 100% (2153/2153)  Functions 100% (1031/1031)  Lines 100% (4427/4427)
+
+bash ai/plans/53-qibla-accuracy-gate/scripts/breaks-4.sh
+CAUGHT: 50 of 50
+ALL AS EXPECTED: 1
+```
+
+**One run of the break script was worthless and is recorded as such.** It printed `50 of 50` while one test in the
+suite was already failing on a miscounted assertion, so every break was "caught" by a suite that failed anyway. The
+count above is from the run after `yarn validate` was green. **A break script proves nothing unless the suite it runs
+is green first.**
