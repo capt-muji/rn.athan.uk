@@ -57,8 +57,10 @@ alarm-clock arm on each phone is R18-4 in section 16.
 `@expo/agent-cli` adopted via npx; its guidance lives in `ai/AGENTS.md` (that file says to revisit
 it at the SDK 58 stable re-pin). `disableFab=1` documented and adopted into the workflow;
 `disableAutoLaunch` documented beside `disableFab` with the dev-launcher flags (`ai/AGENTS.md`,
-`ai/features/agent-tooling/FINDINGS.md`); the workflow's launch examples carry both. The Device Hub
-location and screen-share caveat: `ai/AGENTS.md` §6. Zero app-code changes.
+`ai/features/agent-tooling/FINDINGS.md`); the workflow's launch examples carry both. Device Hub
+(Xcode 27) replaced Simulator.app: the devices window lives at
+`/Applications/Xcode.app/Contents/Applications/DeviceHub.app`; simctl-based tooling is unaffected.
+Zero app-code changes.
 
 ## 14. Expo Modules 2.0 spike on modules/tls13 (CANCELLED by the owner, 2026-09-18; never re-queued)
 

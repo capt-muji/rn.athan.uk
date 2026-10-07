@@ -1,8 +1,10 @@
 # Issue Ledger
 
 Every issue this project has numbered. Code comments, tests and records cite them as `ISSUES #NN`, `F.x` and `G.x`,
-so a number is permanent and never reused. Open issues carry what a session needs to act on them. Closed issues carry
-one line: the cause, the fix and when it closed. The next free number is 45.
+so a number is permanent and never reused. Open issues carry what a session needs to act on them. Closed issues
+keep their number, title and closing stamp; the full cause-and-fix record lives in this file's git history and in
+the repository's commit history, and the campaign records in `ai/plans/README.md` carry the resolution detail. The
+next free number is 45.
 
 State as of 2026-10-07. Versions are repository versions, not store releases.
 
@@ -21,8 +23,8 @@ State as of 2026-10-07. Versions are repository versions, not store releases.
 - **Cause:** #17. Early fires are #11, a different cause.
 - **Ruled out by the owner on the phones:** per-app battery optimisation, app priority, and the Alarms and
   reminders toggle.
-- **Still to do:** nothing of its own. It closes with #17. On closing, remove the known-issue line in `README.md`
-  that cites #10.
+- **Still to do:** nothing of its own. It closes with #17. On closing, remove the known-issue
+  bullet in `README.md`'s Roadmap (the ColorOS/OxygenOS lateness line).
 - **If lateness survives #17's fix:** run `yarn check:device X8_SERIAL`, which fails when exact alarms are not
   permitted and reports the doze allowlist. Then switch off the system-wide battery features on the 8T (Deep
   optimisation, Adaptive Battery, Sleep Standby Optimisation). They differ from the per-app toggle and were never
@@ -87,82 +89,87 @@ State as of 2026-10-07. Versions are repository versions, not store releases.
 
 ### Numbered issues
 
-| # | Issue | Root cause | Fix | Closed |
-| --- | --- | --- | --- | --- |
-| 1 | An empty year counted as fetched | `validateApiResponse` checked the shape, not the content | An empty `times` throws, so the year is retried. A partial year is never published, so no minimum count is checked | 1.5.3 |
-| 2 | The December fetch was all or nothing | `Promise.all` rejected after the cache wipe while next year was unpublished | `Promise.allSettled`: each year saves and flags on its own | 1.5.3 |
-| 3 | Every December retry wiped and refetched the year | Nothing checked that the current year was already cached | `isCurrentYearCached()` fetches next year only | 1.5.3 |
-| 4 | 1 January downloaded the whole previous year | The wipe removed 31 December, which the countdown bar and the Extras night need | The refresh saves yesterday back across the wipe | 1.24.14 |
-| 5 | 31 December night times used the same day's Fajr | Next year's Fajr was not in the payload | Superseded by #29: night times are no longer stored | 1.24.12 |
-| 6 | Old-year records linger for months | Only a full refresh drops them, and nothing reads them | Accepted by design | accepted |
-| 7 | The alert horizon was two days | Sized to the iOS limit of 64 pending requests. The owner rejected a per-platform horizon | Superseded: the buffer is a request budget (`NOTIFICATION_REQUEST_BUDGET`), armed a whole row at a time, the same on both platforms | wontfix 2026-08-29, superseded 1.29.5 |
-| 8 | The background task never ran | `minimumInterval` takes minutes and received seconds (10800 is 7.5 days), and every launch re-armed the persisted value | `BACKGROUND_TASK_INTERVAL_MINUTES`, and `registerBackgroundTask` always unregisters first | 1.18.0 |
-| 9 | ADR-007 drift and a registration gap | The ADR described a skip lock where the code queues, and foreground return did not register the task | ADR corrected, registration added | 1.5.3 |
-| 11 | Alerts fire up to a minute early | Device clock skew. No Android alarm API fires early | Not fixable in the app. Compare the phone's clock with a reference when it happens | wontfix 2026-08-29 |
-| 12 | Double notifications | Random identifiers, so a process death between scheduling and the record left an orphan alarm | Deterministic identifiers replace in place, and a sweep cancels strays | 1.6.0 |
-| 13 | The shipped Android manifest was unverified | Prebuild merges permissions from libraries | Both exact-alarm permissions confirmed in the release APK. `RECORD_AUDIO` removed at its source | 1.5.3, 1.12.3 |
-| 14 | No exact-alarm observability in the app | expo-notifications exposes no `canScheduleExactAlarms` | An in-app module was rejected by the owner. `yarn check:device` reads the same state over adb | wontfix 2026-08-29 |
-| 15 | Zero alerts during a reschedule | The reschedule cancelled everything before scheduling | Schedule first under the same identifiers, then cancel only what is stale | 1.6.0 |
-| 16 | iOS keeps only the soonest 64 pending requests | Platform limit | It is the budget the buffer fills (#7) | closed with #7 |
-| 18 | Android force-stop cancels every alarm | AOSP behaviour, on every phone | None possible. The next app open re-arms (#36) | accepted 2026-09-03 |
-| 19 | The 8T loses its job and its alarms on every reboot | OnePlus Auto-launch, off by default, withholds the boot broadcast with no state adb can read | Only the user's own toggle. The part that is ours is #36 | mitigated 2026-09-03 |
-| 20 | After an Android reboot the headless task body never completes | Upstream and untraced. The signature is `No task registered for key expo-task-manager` at +2 s, then a cancel at 10 minutes | Accepted: boot restores the alarms already scheduled, and the next app open refreshes. iOS is unaffected | accepted 2026-09-09 |
-| 21 | Android 9 failed every real fetch | The API accepts TLS 1.3 only, Android 9 ships it disabled, and okhttp snapshots the SSL context before any JS runs | `modules/tls13`: a ContentProvider installs the GMS provider before `Application.onCreate` | 1.22.10 |
-| 22 | "Sunrise" wrapped onto two lines on the 3T | The write-once width measure could land narrow on a congested first launch | A grow-only cache, with the measuring texts kept mounted | 1.22.19 |
-| 23 | Extras at-time alerts played the athan | The sound choice ignored which prayer it was | Only the five daily prayers play the selected athan. Sunrise and every extra play the fixed `reminder.mp3` on their own channel | 1.22.23 |
-| 24 | The splash held through the whole first-launch fetch | The splash hid only once content existed | A cold launch hides it at the spinner frame. A warm launch keeps the complete-first-frame gate | 1.22.24 |
-| 25 | Sound preview dead on the first tap after a clip ends | `useAudioPlayerStatus` keeps the released player's last status, which reaped each new player | Status is ignored unless `status.id` is the current player's | 1.23.2 |
-| 26 | The Android overlay dimmed the header | Seen once on an emulator | Not reproducible on any owned target. No change | 2026-09-09 |
-| 27 | One row on the list after a day roll | `filterRelevantPrayers` kept a passed row only when its list day equalled the display date | The dashes work replaced the equality with `>=`. A test guards the day roll | 1.27.0, guarded 1.29.34 |
-| 28 | A fetch on a clock-change eve shifted night times by 20 to 40 minutes | The helpers built Maghrib and Fajr on the fetch day's date | Computed from the time strings, then superseded by #29 | 1.24.9 |
-| 29 | Extras Midnight and Last Third were a night late, and alerts could fire on another night | The night ran from the day's own Maghrib, and triggers were rebuilt from a date plus a time string | A night runs from the previous Maghrib to this Fajr as real instants and is never stored. Alerts fire at the list row's `datetime` | 1.24.12 |
-| 30 | A phone in another timezone read London's calendar from its own clock | Day keys, Friday, the year and the alert window used device-local getters | Days follow `PRAYER_TIMEZONE` through Intl and travel as `YYYY-MM-DD`. `yarn test:tz` guards it | 1.24.14 |
-| 31 | After three days in the background the list skipped today's prayers | `refreshSequence` rebuilt from tomorrow | It builds from today when nothing from today is left | 1.24.14 |
-| 32 | Cold launch on the 3T measured 6.6 s | 3.1 s was the TLS provider install of #21, on Android 9 and below only. About 1.9 s was JS evaluation and mount | Characterised, no fix. The provider install must stay where it is. A build at 1.27.394 read 3.1 s in total | 1.24.17 |
-| 33 | A test failed one run in sixty | A bare `jest.useFakeTimers()` seeds from the real clock | Clock pinned | 1.24.28 |
-| 34 | An app update cancelled every alert, then stayed quiet for 12 hours | The upgrade wipe removed the bookkeeping, the sweep cancelled the alarms Android had restored, and the gate was stamped anyway | Bail with no prayer data, never sweep on empty records, stamp only after a real reschedule. The cache is wiped only when `CACHE_SCHEMA_VERSION` changes | 1.24.31, 1.24.33 |
-| 35 | The update prompt read a hand-edited file | `releases.json` on GitHub needed an edit after every release, and a failed check cost a day | iOS reads iTunes Lookup. Android asks Play through `expo-in-app-updates`. A failed check retries in an hour. The file is deleted | 1.29.30 |
-| 36 | Lost alarms stayed lost | The refresh gate trusted a recent timestamp while no alarm existed | `reopenRefreshGateOnColdLaunch` on Android. Background interval 3 hours, foreground gate 2 hours (ADR-007 rev 4) | 1.27.326 |
-| 38 | Android widgets clipped prayer names outside the 3T | 332dp of fixed columns inside a 310dp `minWidth`, which is a floor and not a grant | Columns are shares of the width the launcher grants | 1.27.343 |
-| 39 | Android's dark widget card did not match iOS | The card is a pre-rendered bitmap with its own colour literal | One dark card colour on both platforms | 2026-09-24 |
-| 40 | The Android active pill overhung the times | The pill filled the list column while the rows sat padded inside it | Equal margins either side of the row text | 2026-09-24 |
-| 41 | Five notification tests failed after 12:00 London | The seed took the day from the real clock and put a fixed time on it | Clock pinned before the seed. The rule is in `__tests__/README.md` | 1.29.23 |
-| 42 | The previous-row keep in `filterRelevantPrayers` survives mutation to `===` | The mutation is equivalent over every reachable state | Closed by a test that fails when the clause is removed | 1.29.41 |
-| 43 | Magrib and Isha past midnight at polar latitudes | A question from the owner, not a defect | Verified safe against real Tromso, Reykjavik and Nuuk data. No change | 2026-09-27 |
-| 44 | `widgetAndroid.test.ts` failed for part of every hour | Fixed wall-clock seeds on an unpinned clock, the trap of #41 in another file | Clock pinned | 1.29.51 |
+| # | Issue | Closed |
+| --- | --- | --- |
+| 1 | An empty year counted as fetched | 1.5.3 |
+| 2 | The December fetch was all or nothing | 1.5.3 |
+| 3 | Every December retry wiped and refetched the year | 1.5.3 |
+| 4 | 1 January downloaded the whole previous year | 1.24.14 |
+| 5 | 31 December night times used the same day's Fajr | 1.24.12 |
+| 6 | Old-year records linger for months | accepted |
+| 7 | The alert horizon was two days | wontfix 2026-08-29, superseded 1.29.5 |
+| 8 | The background task never ran | 1.18.0 |
+| 9 | ADR-007 drift and a registration gap | 1.5.3 |
+| 11 | Alerts fire up to a minute early | wontfix 2026-08-29 |
+| 12 | Double notifications | 1.6.0 |
+| 13 | The shipped Android manifest was unverified | 1.5.3, 1.12.3 |
+| 14 | No exact-alarm observability in the app | wontfix 2026-08-29 |
+| 15 | Zero alerts during a reschedule | 1.6.0 |
+| 16 | iOS keeps only the soonest 64 pending requests | closed with #7 |
+| 18 | Android force-stop cancels every alarm | accepted 2026-09-03 |
+| 19 | The 8T loses its job and its alarms on every reboot | mitigated 2026-09-03 |
+| 20 | After an Android reboot the headless task body never completes | accepted 2026-09-09 |
+| 21 | Android 9 failed every real fetch | 1.22.10 |
+| 22 | "Sunrise" wrapped onto two lines on the 3T | 1.22.19 |
+| 23 | Extras at-time alerts played the athan | 1.22.23 |
+| 24 | The splash held through the whole first-launch fetch | 1.22.24 |
+| 25 | Sound preview dead on the first tap after a clip ends | 1.23.2 |
+| 26 | The Android overlay dimmed the header | 2026-09-09 |
+| 27 | One row on the list after a day roll | 1.27.0, guarded 1.29.34 |
+| 28 | A fetch on a clock-change eve shifted night times by 20 to 40 minutes | 1.24.9 |
+| 29 | Extras Midnight and Last Third were a night late, and alerts could fire on another night | 1.24.12 |
+| 30 | A phone in another timezone read London's calendar from its own clock | 1.24.14 |
+| 31 | After three days in the background the list skipped today's prayers | 1.24.14 |
+| 32 | Cold launch on the 3T measured 6.6 s | 1.24.17 |
+| 33 | A test failed one run in sixty | 1.24.28 |
+| 34 | An app update cancelled every alert, then stayed quiet for 12 hours | 1.24.31, 1.24.33 |
+| 35 | The update prompt read a hand-edited file | 1.29.30 |
+| 36 | Lost alarms stayed lost | 1.27.326 |
+| 38 | Android widgets clipped prayer names outside the 3T | 1.27.343 |
+| 39 | Android's dark widget card did not match iOS | 2026-09-24 |
+| 40 | The Android active pill overhung the times | 2026-09-24 |
+| 41 | Five notification tests failed after 12:00 London | 1.29.23 |
+| 42 | The previous-row keep in `filterRelevantPrayers` survives mutation to `===` | 1.29.41 |
+| 43 | Magrib and Isha past midnight at polar latitudes | 2026-09-27 |
+| 44 | `widgetAndroid.test.ts` failed for part of every hour | 1.29.51 |
 
 ### F. SDK 57 migration findings (2026-08-28)
 
-| # | Issue | Root cause | Fix | Closed |
-| --- | --- | --- | --- | --- |
-| F.1 | Render crash on selecting a prayer during a refresh | `usePrayer` indexed the filtered list unguarded | A missing row renders the loading placeholder | 2026-08-28 |
-| F.2 | `@expo/ui` bottom sheets | The native sheets could not be styled, and custom replacements failed on drag handling | Back to `@gorhom/bottom-sheet`. Android back dismisses the top sheet | reverted 1.6.0 |
-| F.3 | Alert settings were keyed by row index | Index and name agree while times are in order | Preferences are now keyed by prayer name. The scheduled-notification records still carry the index | accepted |
-| F.4 | Friday Extras order | The chronological render pushed Istijaba mid-list | `canonicalDisplayOrder`: the Extras order is fixed and Istijaba is always last | 1.5.3 |
-| F.5 | The font-scaling guard was dead on SDK 57 | React 19 dropped `defaultProps` on function components | `jsx-runtime-shim.ts` through a Metro `resolveRequest` hook | 2026-08-28 |
-| F.6 | The countdown stretched in its final seconds | `setInterval` drift, floor rounding and stacked tickers | A wall-second `setTimeout` chain, a ceil display that never shows 0, one ticker | 1.5.3 |
-| F.7 | The status bar flipped the minute before the countdown | The same drift | Fixed by F.6 | 1.5.3 |
-| F.8 | 77 Biome warnings | Backlog from the Biome migration | Cleared with the rule left on | 1.5.3 |
-| F.9 | The overlay drew about 70px high | The `@expo/ui` native pager shifts its children's coordinate space | Back to `react-native-pager-view`. `@expo/ui` is allowed only in widget layouts | 1.5.3 |
-| F.10 | The Android overlay sat one status bar too low | An old `+ insets.top` double-counted once `measureInWindow` became window-absolute under edge-to-edge | Term removed | 1.6.0 |
+| # | Issue | Closed |
+| --- | --- | --- |
+| F.1 | Render crash on selecting a prayer during a refresh | 2026-08-28 |
+| F.2 | `@expo/ui` bottom sheets | reverted 1.6.0 |
+| F.3 | Alert settings were keyed by row index | accepted |
+| F.4 | Friday Extras order | 1.5.3 |
+| F.5 | The font-scaling guard was dead on SDK 57 | 2026-08-28 |
+| F.6 | The countdown stretched in its final seconds | 1.5.3 |
+| F.7 | The status bar flipped the minute before the countdown | 1.5.3 |
+| F.8 | 77 Biome warnings | 1.5.3 |
+| F.9 | The overlay drew about 70px high | 1.5.3 |
+| F.10 | The Android overlay sat one status bar too low | 1.6.0 |
 
 ### G. First device test on the iPhone XS (2026-09-02)
 
-| # | Issue | Root cause | Fix | Closed |
-| --- | --- | --- | --- | --- |
-| G.1 | Five home widgets stayed blank | expo-widgets gave every view a new random identity per render, so each reload rebuilt the whole tree at 5 to 13 CPU-seconds per kind. Per-minute pushes of ten kinds exhausted the extension's CPU budget and WidgetKit retried an hour later | Upstream expo/expo#49810, in expo-widgets 58.0.1. The app pushes only when data changes, never on a timer. The iOS widgets flag ships on, and its comment in `shared/flags.ts` holds the acceptance check | 1.27.378 |
-| G.2 | A newly placed widget shows a blank card for a few seconds | The extension's cold start evaluates a 153 KB bundle before it can draw. Nothing of ours runs before it | None. The owner no longer sees it | 1.29.47 |
-| G.3 | A settings toggle thumb out of step with its value | An effect-driven `withTiming` could be interrupted | `useDerivedValue` | 1.17.6 |
-| G.4 | Sound preview silent on the iPhone | 32 concurrent players and no audio mode | One shared player, and `setAudioModeAsync` at startup | 1.17.6 |
-| G.5 | The preview countdown was missing | No status stream, from G.4 | Fixed by G.4 | 1.17.6 |
-| G.6 | The app felt slow on the device | Episodic JS-thread freezes | The performance campaign cut idle CPU on the 3T from 80.6% to 19.3%. The owner accepts the rest | accepted 2026-09-09 |
-| G.7 | A `widgetSettingsSync` test fired a third push in 1 to 2% of runs | An unpinned fake clock crossed a minute flip | Clock pinned | 1.17.6 |
-| G.8 | Rapid toggle presses crashed the app once | Intermittent. Suspected the same race as G.3 | No crash since the G.3 fix | 1.17.6 |
+| # | Issue | Closed |
+| --- | --- | --- |
+| G.1 | Five home widgets stayed blank | 1.27.378 |
+| G.2 | A newly placed widget shows a blank card for a few seconds | 1.29.47 |
+| G.3 | A settings toggle thumb out of step with its value | 1.17.6 |
+| G.4 | Sound preview silent on the iPhone | 1.17.6 |
+| G.5 | The preview countdown was missing | 1.17.6 |
+| G.6 | The app felt slow on the device | accepted 2026-09-09 |
+| G.7 | A `widgetSettingsSync` test fired a third push in 1 to 2% of runs | 1.17.6 |
+| G.8 | Rapid toggle presses crashed the app once | 1.17.6 |
 
 ### Facts that nothing else records
 
 | From | Fact | Why it matters |
 | --- | --- | --- |
+| 6 | Nothing reads old-year records; only a full refresh drops them. Accepted by design | Do not spend a session on the lingering rows |
+| 13 | `RECORD_AUDIO` was removed at its source; both exact-alarm permissions were confirmed in a release APK | The manifest has no mic permission; do not re-add it or re-verify |
+| 14 | An in-app exact-alarm module was rejected by the owner; `yarn check:device` is the observability | Do not propose it again |
+| 1 | A partial year is never published | No minimum-count check is needed anywhere |
+| 11 | Remedy for early alerts: compare the phone's clock with a reference when it happens | The only actionable response |
 | 35 | The Android update flow has never run its happy path on a phone. Play answers `ERROR_APP_NOT_OWNED` to a side-loaded build | Check it on the first build installed from Play |
 | 35 | `setTimeout` clamps a delay above 2^31-1 ms to 1 ms | A break script cannot disable a timer by enlarging its delay. Remove what the callback does |
 | 35 | `aapt2 dump strings` missed a native module that sat in `classes2.dex`, and R8 renames Play Core's class paths | To prove a module reached an APK, search each dex file for the module's own string literals |

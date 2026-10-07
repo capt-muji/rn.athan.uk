@@ -98,10 +98,10 @@ finished, and tell the owner to type `athan-next` again. The next session picks 
 
 ## 5. Tools: reach for the MCP servers, never re-derive what they know
 
-`opencode.json` at the repo root lists every MCP server this project has wired up, and `ai/AGENTS.md` section 0
+`opencode.json` at the repo root lists every MCP server this project has wired up, and `ai/AGENTS.md`
 requires reading it at the start of every session. Read it; do not work from memory of it.
 
-**Codegraph is the first stop for any code question** (`ai/AGENTS.md` section 15). It is a live, auto-indexed map of
+**Codegraph is the first stop for any code question** (`ai/AGENTS.md`, Codegraph section). It is a live, auto-indexed map of
 every symbol and edge in this repo. Before reading or editing code, call `codegraph_explore` with the symbols or a
 plain question: one call returns the verbatim line-numbered source PLUS the call path and the blast radius of what
 depends on it. That is the blast-radius read this programme's plans are built on. Treat what it returns as already

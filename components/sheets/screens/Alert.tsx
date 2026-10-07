@@ -131,7 +131,7 @@ export default function BottomSheetAlert() {
  * content — an effect-driven load painted the Off defaults first and
  * corrected them after, which surfaced as the first-frame flash. The parent
  * reads the draft via the imperative handle at dismiss for the deferred
- * commit (the AlertMenu pattern, ai/AGENTS.md §Component Communication).
+ * commit (the AlertMenu pattern).
  */
 const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ sheetState, ensurePermissions }, ref) => {
   const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(() =>

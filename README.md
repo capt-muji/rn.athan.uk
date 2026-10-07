@@ -56,6 +56,13 @@ A React Native mobile app for Muslim prayer times in London, UK
 
 ## 📝 Recent Updates
 
+### v1.29.0 era (2026-09-27 → 2026-10-07)
+
+- ✅ **Qibla compass**: a flat world-map dial that locks north and taps when you line up with Makkah. Android draws only after the phone has been waved in a figure eight (Google's own fused heading sensor); iPhone draws inside the accuracy cone the phone itself reports.
+- ✅ **Android home-screen widgets**: eight kinds (Next Prayer / Extra Times × Light / Dark × small / medium), self-refreshing, open the app on tap.
+- ✅ **Help modal** answering "why did I not hear the athan?"
+- ✅ **Request-budget notifications**: a 64-request budget armed a whole row at a time, next Fajr always armed, replacing the old day-window.
+
 ### v1.17.0 (2026-09-01)
 
 - ✅ **Light & Dark home widgets**: each home-screen widget now comes in a Light and a Dark variant whose look is fixed when you place it; they no longer follow the system appearance. The gallery lists eight kinds (Next Prayer / Extra Times × Light / Dark, each in Small and Medium).
@@ -85,67 +92,52 @@ Full history: `git log --oneline` (every commit carries its version number).
 
 ## 🗺 Roadmap
 
-### Completed Features
+### Shipped
 
-- [x] Prayer times display with real-time countdown
-- [x] Prayer-based day boundary with smooth animations (Islamic midnight)
-- [x] Offline support with local data caching
-- [x] Customizable notifications with multiple alert modes (at-time + reminder)
-- [x] Selectable Athan audio notification options (sources credited in the README)
-- [x] View tomorrow's prayer times
-- [x] Automatic yearly data refresh
-- [x] Multipage with special times (Midnight, Third of night, Duha, Suhoor, Istijaba)
-- [x] Large overlay font overlay for visually impaired
-- [x] Fix UI countdown drift when app in background
-- [x] Settings bottom sheet (countdown bar, Hijri date, seconds, time passed, Arabic names, decorations, color picker)
-- [x] Alert menu with per-prayer at-time and reminder notification controls
-- [x] Background notification refresh task (~6 hour intervals, verified on device to keep the buffer rolling unattended, incl. reboots and closed-app states)
-- [x] SDK 57 upgrade (React 19, RN 0.86, Expo 57)
-- [x] Update popup with version checking and store redirect
-- [x] Ramadan seasonal decorations (lantern, moon, stars, spark particles, clouds)
-- [x] Notification system documentation and scenario coverage (14 scenarios)
-- [x] iOS home screen + Lock Screen widgets, prayer + extras pairs (v1.7–v1.14)
+- [x] Prayer times display with real-time countdown; prayer-based day boundary (Islamic midnight); offline after first sync
+- [x] Customizable notifications: per-prayer at-time + up to two reminder slots, request-budget buffer (64 requests), deterministic IDs, sequential queue
+- [x] Selectable Athan audio (32 sources credited below); reminder audio recorded in-house
+- [x] Multipage with special times (Midnight, Last Third, Duha, Suhoor, Friday Istijaba)
+- [x] Home screen and Lock Screen widgets on **iOS and Android** (Light/Dark, self-refreshing, minute-ceil labels)
+- [x] **Qibla compass** on a flat world map: north-locked dial, haptic on alignment, vouched-heading-only drawing (2026-09-29 → 2026-10-07)
+- [x] Help modal answering "why did I not hear the athan?"
+- [x] Large overlay font for visually impaired; settings sheets (countdown bar, Hijri date, seconds, time passed, Arabic names, decorations, color picker)
+- [x] App updates: Play in-app updates on Android, iTunes Lookup + modal on iOS; What's New popup after every release
+- [x] SDK 58 preview (React 19, RN 0.88, Expo 58) riding since 2026-09
 
-### Known Limitations
+### Known limitations
 
-- Some Android devices may receive notifications 1–3 minutes off (hardware/driver issue, unfixable in app; see ai/ISSUES.md #10/#11)
+- On some Android phones (ColorOS / OxygenOS), at-time alerts can arrive about a minute late. The fix is built and proven on test devices; it ships with the next store release.
 
-### Upcoming Improvements
+### Upcoming
 
+- [ ] Store release carrying the exact-alarm fix for ColorOS / OxygenOS phones (waits on the SDK 58 stable re-pin)
 - [ ] Multi-location support, deferred indefinitely; the research concluded scraping is unnecessary ([ADR-008](ai/adr/008/ADR.md) / [ADR-009](ai/adr/009/ADR.md))
-- [ ] Qibla direction finder
+- [ ] Localisation groundwork and global prayer times are researched and awaiting product decisions; moonsighting research is paused
 
 <br/>
 <br/>
 
-## 📱 iOS Widgets
+## 📱 Widgets
 
-Athan ships iOS home screen and Lock Screen widgets built with [`expo-widgets`](https://docs.expo.dev/versions/latest/sdk/widgets/) and [`@expo/ui`](https://docs.expo.dev/versions/latest/sdk/ui/swift-ui/); no native SwiftUI code required.
+Athan ships home screen and Lock Screen widgets on **both platforms**, built with [`expo-widgets`](https://docs.expo.dev/versions/latest/sdk/widgets/) and [`@expo/ui`](https://docs.expo.dev/versions/latest/sdk/ui/swift-ui/) on iOS and Jetpack Glance on Android; no hand-written SwiftUI, and the Android cards self-refresh through their own native module.
 
-| Widget | Families | Shows |
-| --- | --- | --- |
-| **Next Prayer** (home screen) | Small, Medium | Offered in **Light** and **Dark**. **Small**: the next prayer only, on the translucent card: uppercase bold rose prayer name, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, and a `Sat · Lon` footer. **Medium**: the same trio on the left; on the right, the day's six prayers exactly like the app's Standard page: the indigo active pill on the next prayer, passed rows solid, upcoming rows muted (no alert icons, no countdown bar) |
-| **Extra Times** (home screen) | Small, Medium | Offered in **Light** and **Dark**. The same two sizes for the Extras schedule. **Small**: identical to the prayer widget (next extra time only). **Medium**: the app's Extras page list in canonical order: Midnight, Last Third, Suhoor, Duha, Istijaba (Fridays only; 4 rows normally, 5 on Fridays), center-anchored vertically so the spacing stays symmetric as the list grows, with a **rose** active pill instead of indigo |
-| **Next Prayer** (Lock Screen) | Rectangular, Inline | The next prayer paired with the minute-ceil countdown (`Magrib · 9m`) and the absolute `HH:mm` below, rendered in the system's vibrant (monochrome) style |
-| **Extra Times** (Lock Screen) | Rectangular, Inline | The same faces for the Extras schedule: the next extra time with its countdown and absolute `HH:mm`, in the same vibrant style |
+| Widget | Where | Sizes | Shows |
+| --- | --- | --- | --- |
+| **Next Prayer** | Home (iOS + Android) | Small, Medium | **Light and Dark variants. Small**: uppercase bold rose prayer name, minute-ceil countdown (`2h`, `1h 12m`, `9m`, `1m`), the prayer's `HH:mm`, a `Sat · Lon` footer. **Medium**: the same trio on the left; on the right, the day's six prayers like the app's Standard page: the indigo active pill on the next prayer, passed rows solid, upcoming muted. On Android the columns are proportional shares of whatever the launcher grants |
+| **Extra Times** | Home (iOS + Android) | Small, Medium | The same faces for the Extras schedule: Midnight, Last Third, Suhoor, Duha, Istijaba (Fridays only; 4 rows normally, 5 on Fridays), centre-anchored, a **rose** active pill instead of indigo |
+| **Next Prayer** | Lock Screen (iOS) | Rectangular, Inline | The next prayer with its minute-ceil countdown (`Magrib · 9m`) and absolute `HH:mm`, in the system's vibrant style. **Three layouts per schedule** are registered; the picker offers what your iOS version supports |
+| **Extra Times** | Lock Screen (iOS) | Rectangular, Inline | The same faces for the Extras schedule |
 
-Each home-screen widget's Light or Dark look is fixed when you place it; it never follows the system appearance.
+- Each home widget's Light or Dark look is fixed when you place it; it never follows the system appearance.
+- On Android, tapping a widget opens the app.
 
 **Always in sync, never stale:**
 
-- The app pushes a **14-day timeline per schedule × theme** (one entry per boundary, eight home widgets in four schedule×theme pairs plus the two Lock Screen pairs) at every point fresh data is known: app sync, foreground return, the 12-hour notification refresh, the 6-hour background task, and (debounced) any change to a widget-visible setting.
-- The countdown label is a **minute-ceil value**: seconds never display at any distance and the label always rounds up (`1h 59m 01s` becomes `2h`, `59s` becomes `1m`; WidgetKit can only tick its own built-in colon formats, so a per-second label would never re-render, and the label is precomputed). It holds its value until the true minute flips. It is precomputed per timeline entry and refreshed by stepped entries every 5 minutes (WidgetKit's minimum entry spacing) for the first 24 hours; beyond that it updates at each boundary. The final step before a boundary always anchors exactly one spacing ahead of the flip.
-- While the app is running, a **label-flip scheduler** re-pushes both timelines within a quarter second of every countdown minute change (armed at whichever schedule's label flips next), so no widget shows a stale minute for long. Backgrounded timers coalesce into one refresh on the app's return to the foreground.
-- Entries transition automatically at each time's boundary; the list rolls to the next day exactly when the countdown target does (at Isha for the prayer widgets, at the night's Midnight for the extras widgets), DST-safe via the same zoned-time logic as the app. Adjacent entries always keep WidgetKit's minimum 5-minute spacing, including the very first entry at push time (whose label describes the push instant, never a backdated one).
-- If the app stays unopened past the full timeline, the widgets switch to the **stale card**, the moon-and-stars mark above "Out of date" with an "Open Athan to refresh" call (two lines on the small card, one line on medium), instead of silently showing stale times. Opening the app (even for a second) pushes a fresh 14-day timeline immediately.
-
-**Widget preferences (the widget has no configuration of its own; it mirrors the app):**
-
-- Hijri dates (`preference_hijri_date`; the footer shows the Hijri month when enabled)
-
-Changing it in the app re-pushes the widget timeline within about a second.
-
-**Adding a widget:** long-press the home screen, then choose **Edit**, **Add Widget**, *Athan*, and **Next Prayer** or **Extra Times** in your preferred **Light** or **Dark**. Lock Screen widgets: long-press the Lock Screen, then choose **Customise**, **Add Widgets**, and *Athan* (rectangular + inline faces per schedule; the circular face was retired in v1.9.1 and fully removed from the picker in v1.14.1).
+- The app pushes a **3-day timeline per schedule × theme** at every point fresh data is known: app sync, foreground return, the 2-hour foreground notification refresh, the 3-hour background task, and (debounced) any change to a widget-visible setting.
+- The countdown label is a **minute-ceil value**: seconds never display and the label always rounds up (`59s` becomes `1m`). Each timeline entry carries its label; the countdown itself is a native text timer that iOS ticks every second in the widget's own process (Android computes the label when it renders). While the app runs, a label-flip scheduler re-pushes within a quarter second of every minute change.
+- Entries transition at each time's boundary; the list rolls to the next day exactly when the countdown target does, DST-safe. If the app stays unopened past the timeline, the widgets show the **stale card**: the moon-and-stars mark above "Out of date" with an "Open Athan to refresh" call.
+- Widget preferences mirror the app (Hijri date footer today; the widget has no configuration of its own). Changing one in the app re-pushes the timeline within about a second.
 
 > Widgets require a development build or production binary (iOS 16.4+); they are not available in Expo Go.
 
@@ -225,9 +217,9 @@ The full Audacity projects for all Athan and reminder audio (for anyone who want
 ### Notifications & Alerts
 
 - 🔔 **Customizable Alerts**: Off / Silent / Sound per prayer (at-time and reminder)
-- ⏰ **Configurable Reminders**: 5-30 minute pre-prayer reminders with adjustable interval; every prayer × interval plays its own custom audio (see [Reminder Audio Sources](#-reminder-audio-sources))
+- ⏰ **Configurable Reminders**: two independent reminder slots per prayer, 5-30 minutes before, adjustable interval; every prayer × interval plays its own custom audio (see [Reminder Audio Sources](#-reminder-audio-sources))
 - 📢 **Selectable Athan Sounds**: Every sound linked to its source (see [Athan Audio Sources](#-athan-audio-sources))
-- 📅 **Smart Notification Buffer**: 2-day rolling schedule that keeps renewing itself in the background (~every 3 hours) even if the app is never opened
+- 📅 **Smart Notification Buffer**: a 64-request budget of scheduled notifications armed a whole row at a time, next Fajr always armed, renewed every 2 hours in the foreground and by the 3-hour background task even if the app is never opened
 - 🛡️ **Sequential Scheduling Queue**: Operations queued and executed in order, never dropped
 - 🪪 **Deterministic Notification IDs**: `athan_<schedule>_<prayer>_<date>` (reminders include the interval); re-scheduling with the same ID replaces in place on both platforms, so orphaned alarms can never double-fire
 
@@ -239,8 +231,6 @@ The full Audacity projects for all Athan and reminder audio (for anyone who want
 - ➖ **Unreadable Times**: A time the source sends unreadably, or a day it leaves out, shows as `--:--`, never a guessed time; everything else on that day still shows, and no alert fires for a `--:--` row
 - 🎯 **Precise Synchronization**: Countdown countdowns sync with system clock
 - ⬆️ **Smart App Upgrades**: Clears stale cache, preserves preferences
-
-<br/>
 
 ## 🔄 App Updates
 
@@ -355,13 +345,14 @@ A content contract test (`shared/__tests__/whatsNew.test.ts`) guards the shape: 
 
 ### Architecture
 
-- **Framework**: React Native 0.86.3, Expo 57.0.22
+- **Framework**: React Native 0.88.0-rc, Expo 58 (preview)
 - **Language**: TypeScript 7.0 (strict)
 - **State**: Jotai atoms (no Redux/Context)
 - **Storage**: MMKV v4 (Nitro Module)
 - **Animation**: Reanimated 4 (worklets)
 - **Notifications**: Expo Notifications
 - **Dates**: date-fns / date-fns-tz (London timezone)
+- **Native modules** (`modules/`): qibla heading (Google Fused Orientation Provider on Android, Core Location on iOS), TLS 1.3 provider for Android 9 and below, Android widget self-refresh
 
 ### Key Design Decisions
 
@@ -389,91 +380,29 @@ MMKV
 
 ### Codebase Organization
 
-The codebase follows a clean architecture pattern with clear separation of concerns:
-
 ```
 ├── app/                    # App entry points and navigation
-│   ├── index.tsx          # Root component, initialization
-│   ├── _layout.tsx        # App layout wrapper
-│   ├── Navigation.tsx     # Pager navigation (Standard/Extra pages)
-│   └── Screen.tsx         # Screen wrapper
-│
-├── components/            # UI components (organized by feature)
-│   ├── prayer/            # Prayer display (Prayer, Alert, Time, Ago, etc.)
-│   ├── countdown/         # Countdown timer (Countdown, Bar)
-│   ├── overlay/           # Full-screen overlay
-│   ├── sheets/            # Bottom sheets (screens/, parts/)
-│   ├── modals/            # Modal dialogs (Modal, Update)
-│   ├── ui/                # Shared UI (Icon, Masjid, Glow, Error, etc.)
-│   └── day/               # Day component
-│
-├── hooks/                 # Custom React hooks (logic extraction)
-│   ├── useAlertAnimations.ts  # Alert icon animations
-│   ├── useAnimation.ts        # Animation utilities
-│   ├── useCountdown.ts        # Countdown state hook
-│   ├── useCountdownBar.ts     # Progress bar hook
-│   ├── useNotification.ts     # Notification handling
-│   ├── usePrayer.ts           # Prayer state and actions
-│   ├── usePrayerAgo.ts        # Time-ago display
-│   ├── usePrayerSequence.ts   # Prayer sequence logic
-│   ├── useSchedule.ts         # Schedule management
-│   └── useWindowDimensions.ts # Screen dimension hook
-│
-├── stores/                # State management (Jotai atoms)
-│   ├── atoms/
-│   │   └── overlay.ts     # Overlay atom (state)
-│   ├── schedule.ts        # Prayer sequence state
-│   ├── notifications.ts   # Notification state
-│   ├── countdown.ts       # Countdown state
-│   ├── widget.ts          # Widget IO layer (pushes timelines, iOS)
-│   ├── overlay.ts         # Overlay actions
-│   ├── sync.ts            # Data sync and initialization
-│   ├── database.ts        # MMKV storage wrapper
-│   ├── storage.ts         # MMKV instance setup
-│   ├── ui.ts              # UI state atoms
-│   └── version.ts         # App version management
-│
-├── widgets/               # iOS widget LAYOUTS ('widget'-directive functions)
-│   ├── PrayerWidget.tsx   # Home screen widget (systemSmall)
-│   └── LockPrayerWidget.tsx # Lock Screen widget (Rectangular/Inline)
-│
-├── shared/                # Shared utilities and constants
-│   ├── config.ts          # App configuration
-│   ├── constants.ts       # App constants (colors, timings, etc.)
-│   ├── logger.ts          # Logging wrapper (Pino)
-│   ├── notifications.ts   # Notification utilities
-│   ├── prayer.ts          # Prayer creation and calculations
-│   ├── text.ts            # Text formatting utilities
-│   ├── time.ts            # Time manipulation utilities
-│   ├── types.ts           # TypeScript type definitions
-│   ├── versionUtils.ts    # Version comparison utilities
-│   ├── widgetTimeline.ts  # Pure widget timeline builder
-│   ├── widgetTypes.ts     # Widget props contract + settings types
-│   ├── __tests__/         # Unit tests (incl. widget contract & simulation)
-│   └── __mocks__/         # Module mocks for testing
-│
-├── api/                   # API client
-│   ├── client.ts          # Prayer times API fetch/transform
-│   └── config.ts          # API configuration
-│
-├── device/                # Device-specific code
-│   ├── notifications.ts   # Platform notification handlers
-│   ├── listeners.ts       # App state listeners
-│   ├── updates.ts         # App update handling
-│   └── tasks.ts           # Background task management
-│
-├── mocks/                 # Mock data for development and testing
-│   ├── simple.ts          # Launch-relative mock data (used in dev mode)
-│   ├── full.ts            # Full-year reference dataset (structure reference, unused)
-│   └── timing-system-schema.ts  # Timing system type reference and examples (unused)
-│
-└── ai/                    # AI agent instructions and ADRs
-    ├── AGENTS.md          # Agent behavior instructions
-    ├── ISSUES.md          # Issue ledger (decisions, anti-re-litigation)
-    ├── prompts/           # The two moonsighting research briefs
-    ├── adr/               # Architecture Decision Records
-    └── features/          # Long-lived feature records still load-bearing
+├── components/             # UI components (prayer/, countdown/, overlay/, sheets/, modals/, ui/, day/)
+├── hooks/                  # Custom React hooks (useQibla, useCountdown, useSchedule, ...)
+├── stores/                 # Jotai atoms: schedule, notifications, countdown, widget IO, sync, database, ui, version
+├── widgets/                # Widget layouts: iOS ('widget'-directive) and the Android Glance layout
+├── modules/                # Native Expo modules: qiblaheading, tls13, widgetrefresh
+├── shared/                 # Utilities: constants, flags, prayer, time, notifications, qibla* (7 modules), widgetTimeline, whatsNew
+├── api/                    # Prayer times API client
+├── device/                 # Platform code: notifications, listeners, updates, tasks, qibla, tls13
+├── patches/                # patch-package patches (expo-background-task, expo-location, expo-widgets)
+├── e2e/                    # Maestro flows, device atlas, frame audit, baseline compare
+├── scripts/                # Probes and repo checks
+├── mocks/                  # Mock data for development and testing (simple.ts, full.ts)
+└── ai/                     # AI agent instructions and ADRs
+    ├── AGENTS.md           # Agent behavior instructions
+    ├── ISSUES.md           # Issue ledger (decisions, anti-re-litigation)
+    ├── prompts/            # The two moonsighting research briefs
+    ├── adr/                # Architecture Decision Records
+    └── features/           # Long-lived feature records still load-bearing
 ```
+
+`android/` and `ios/` are generated by `npx expo prebuild` and are git-ignored.
 
 ### Key Patterns
 
@@ -490,29 +419,7 @@ The codebase follows a clean architecture pattern with clear separation of conce
 - **Logging**: Pino logger (no console.log statements)
 - **JSDoc**: All public functions documented with examples
 
-### Architecture Patterns
-
-The codebase follows established patterns for consistency:
-
-1. **Helper Function Extraction**: Complex logic extracted into named functions
-   - Example: `getNightTimes()` in time.ts
-   - Example: `getNightTimesForDay()` in prayer.ts
-
-2. **Section Comments**: Files organized with clear section headers
-
-   ```typescript
-   // =============================================================================
-   // SECTION NAME
-   // =============================================================================
-   ```
-
-3. **Animation Hook Extraction**: Component animations encapsulated in hooks
-   - Example: `useAlertAnimations.ts` for Alert component
-
-4. **Sequential Queue Pattern**: Queue-based scheduling lock for notification operations
-   - Example: `withSchedulingLock()` in notifications.ts
-
-See `ai/adr/` for Architecture Decision Records.
+See [ai/adr/](ai/adr/) for Architecture Decision Records, and [ai/AGENTS.md](ai/AGENTS.md) for the full development protocol.
 
 ## 🎨 Tech Stack
 
@@ -526,109 +433,36 @@ See `ai/adr/` for Architecture Decision Records.
 ![Reanimated](https://img.shields.io/badge/Reanimated_4-6B52AE?style=for-the-badge)
 ![Offline Support](https://img.shields.io/badge/Offline_Support-4CAF50?style=for-the-badge)
 
+
 <br/>
 
 ## 🚀 Development
 
 ### Prerequisites
 
-- Node.js 24+
-- Expo CLI (v57+)
-- iOS: Xcode 15+ (for iOS simulator/device builds)
-- Android: Android Studio with NDK (for native module builds)
+- Node.js 24+ and Yarn
+- iOS: Xcode with an iOS simulator (for `yarn ios`)
+- Android: Android Studio (for `yarn android`)
 
-### Installation
+### Install and run
 
-1. Start the app (this will clear cache, install dependencies and start the server)
+```bash
+yarn reset      # clears cache, installs packages, sets up husky, starts Metro
+yarn ios        # build and run on the iOS simulator
+yarn android    # build and run on an Android emulator/device
+```
 
-   ```bash
-   # Clears cache, installs packages and starts server
-   yarn reset
-   ```
+Add a dependency with `npx expo install <package>` (never `npx expo install --fix`; this project intentionally runs newer jest and typescript than Expo pins).
 
-2. How to install new dependencies
+### The commands that gate work
 
-   ```bash
-   # Install package
-   npx expo install <package-name>
-   ```
+```bash
+yarn validate    # tsc + Biome + full Jest suite: the before-done gate
+yarn test:tz     # timezone matrix, for anything touching dates
+yarn format      # Biome format fixes
+yarn check:device <serial>   # audit alarms on a connected Android phone over adb
+```
 
-3. When installing new dependencies that require native modules
-
-   ```bash
-   # Install package
-   npx expo install <package-name>
-
-   # Development build for iOS
-   eas build --profile development --platform ios
-
-   # For physical device:
-   # 1. After build success, scan QR code from expo website to install on device
-   # 2. Start server
-   yarn reset
-   # 3. Open installed app that was installed from the QR code
-
-   # For iOS simulator:
-   yarn ios # builds native modules for simulator
-   yarn reset
-   ```
-
-In the output, you'll find options to open the app in a:
-
-- Development build
-- Android emulator
-- iOS simulator
+`e2e/` holds the Maestro flows and measurement scripts; `e2e/README.md` documents their gotchas. `ai/AGENTS.md` carries the full development protocol (version bump law, prebuild order, patching rules).
 
 <br/>
-
-## Athans
-
-- Athan 1: https://www.youtube.com/watch?v=oV-ZRQjgCSk
-- Athan 2: Unspecified
-- Athan 3: https://www.youtube.com/watch?v=tulY0QvKy_o
-- Athan 4: https://www.dailymotion.com/video/x8g7yz2
-- Athan 5: https://www.dailymotion.com/video/x8gmb7b
-- Athan 6: https://www.youtube.com/watch?v=vS0zBleiJuk
-- Athan 7: https://www.youtube.com/watch?v=G96FEkkFCzg
-- Athan 8: https://www.youtube.com/watch?v=iaWZ_3D6vOQ
-- Athan 9: https://www.youtube.com/watch?v=4_LN0hznp-A
-- Athan 10: https://www.youtube.com/watch?v=LHu2NbbZ0i0
-- Athan 11: https://www.youtube.com/watch?v=j-G8vgDpxiI
-- Athan 12: https://www.youtube.com/watch?v=9Y-8AtTDx20
-- Athan 13: https://www.youtube.com/watch?v=qijUyKRiaHw
-- Athan 14: Unspecified
-- Athan 15: https://www.youtube.com/watch?v=CxI53S_otJA
-- Athan 16: Unspecified
-
-<br/>
-
-### Screenshots
-
-<div align="center">
-  <img src="./assets/marketing/screenshots/app-shot1.png" height="500" alt="Prayer Details" style="margin: 0 20px"/>
-  <img src="./assets/marketing/screenshots/app-shot2.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot3.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot4.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot5.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot10.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot6.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot7.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot8.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot9.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot11.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot13.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-  <img src="./assets/marketing/screenshots/app-shot12.png" height="500" alt="Prayer Details" style="margin: 0 20px" />
-</div>
-
-<br/>
-
-### Notification System
-
-A **2-day rolling buffer** of scheduled notifications per enabled prayer (6 Standard + 5 Extra), refreshed every 2 hours in the foreground and no sooner than every 3 hours by the background task:
-
-- Deterministic identifiers (`athan_<schedule>_<prayer>_<date>`) make duplicate alarms structurally impossible: rescheduling an existing ID replaces it natively
-- All entry points serialize through `withSchedulingLock()` (queue-based, no operation ever dropped)
-- Per-prayer at-time + reminder preferences (sound, interval) stored under name-based MMKV keys, auto-migrated from legacy keys
-- Cache wipes (app upgrade, error boundary, lock contention) trigger a full reschedule on next launch/resume
-
-Architecture and the full 13-scenario reschedule matrix: [ADR-001](ai/adr/001-rolling-notification-buffer.md), [ADR-007](ai/adr/007-background-task-notification-refresh.md), and the issue ledger ([ai/ISSUES.md](ai/ISSUES.md)).

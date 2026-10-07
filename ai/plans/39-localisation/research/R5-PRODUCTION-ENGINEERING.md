@@ -47,7 +47,7 @@ The trade has real published evidence on both sides.
 
 The collision problem is not theoretical for this repo. `components/sheets/screens/Alert.tsx:31-33` defines labels `'Off'`, `'Silent'`, `'Sound'` for `AlertType`. `Off` as an alert mode and `off` as a generic disabled state are different words in plenty of languages. With natural keys both spell `'Off'` and share one catalog entry, so one of the two gets the wrong translation. The same file has `'Close to save'`, where `Close` is a verb; a natural key freezes that sense.
 
-The copy-change problem hits this repo's test culture hardest. The suite holds about 4,800 tests and a pre-commit hook runs all of them (ai/AGENTS.md section 2 and 6). With natural keys, every English copy tweak changes a key and fails every test asserting it. The repo rule "tests before refactoring" depends on assertions that survive cosmetic change. Structured keys plus a test-mode `t` that returns the key keeps 4,800 tests silent through copy edits.
+The copy-change problem hits this repo's test culture hardest. The suite holds about 4,800 tests and a pre-commit hook runs all of them. With natural keys, every English copy tweak changes a key and fails every test asserting it. The repo rule "tests before refactoring" depends on assertions that survive cosmetic change. Structured keys plus a test-mode `t` that returns the key keeps 4,800 tests silent through copy edits.
 
 Rewrites are the cautionary tale: a Medium write-up of renaming roughly 500 keys in a large frontend describes the rename as a multi-developer project (https://jdudzik.medium.com/rewriting-every-i18n-key-in-a-large-frontend-codebase-8fcf01dbcea). Choose as if renaming is expensive, because it is.
 
@@ -116,7 +116,7 @@ t('alerts.reminderIn', { minutes: 5 })     // ok only if the value declares {{mi
 t('alerts.reminderIn')                     // compile error: missing {{minutes}}
 ```
 
-Note the boundary condition that matters for the version pins in this repo: the i18next type system needs a recent TypeScript, and the project runs TypeScript 7.0.2 strict (ai/AGENTS.md section 2), which satisfies it.
+Note the boundary condition that matters for the version pins in this repo: the i18next type system needs a recent TypeScript, and the project runs TypeScript 7.0.2 strict, which satisfies it.
 
 **Finding: i18next with `CustomTypeOptions` over an `as const` TypeScript catalog is the strongest compile-time story available today. It catches typo'd keys and missing interpolation variables. It cannot catch a missing Arabic entry; that is a test problem, covered in section 5.**
 
