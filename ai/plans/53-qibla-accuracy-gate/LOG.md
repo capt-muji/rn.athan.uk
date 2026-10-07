@@ -888,3 +888,18 @@ ALL AS EXPECTED: 1
 suite was already failing on a miscounted assertion, so every break was "caught" by a suite that failed anyway. The
 count above is from the run after `yarn validate` was green. **A break script proves nothing unless the suite it runs
 is green first.**
+
+### Where the phones were left (2026-10-07, 04:36)
+
+1.29.256, the reviewed code, was built for both and installed over 1.29.255 before the owner had tested either: the
+3T's log held no qibla line from 1.29.255, so no test of his was interrupted.
+
+| Phone | Build | How it is known |
+| --- | --- | --- |
+| OnePlus 3T (`3T_SERIAL`) | 1.29.256, mock | `versionName=1.29.256`, and the installed file's `md5` equals the built one, `8ada4abeb263635099f7bed7ca6bcd98`. App open |
+| iPhone XS | 1.29.256 | `devicectl` reports `Athan com.mugtaba.athan 1.29.256`. Kept at `~/athan-device-sweep/session53/ab/Athan-1.29.256.app` |
+| Samsung S23 | Prototype C, the basic compass alone, from earlier that night | Not attached since. It needs 1.29.256 or a production build before it is used |
+| OPPO Find X8 | The 1.29.249 mock, with both readers | Not attached since. The same |
+
+**1.29.256 has not had its own desk check.** The check recorded above was on 1.29.255, and the two differ by the
+review's four fixes, none of which a still phone on a desk exercises.

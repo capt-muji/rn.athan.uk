@@ -24,7 +24,7 @@ hold, from a plan still in flight. Step 2's audit is this file at `1d5441ab`.
 | Nothing deleted was reachable, nothing added is unreachable | `python3 scripts/find-unused-exports.py` reports its five standing entries |
 | The owner's rules | No prayer time touched, no release file, no `uat`, no EAS, no ignore comment, no second sensor reader. ONE visual change, his own, word for word: the two lines of step 5 |
 | The Kotlin compiles | `> Task :qiblaheading:compileReleaseKotlin`, `BUILD SUCCESSFUL`, on every Android build of the night |
-| The phones carry what is in git | OnePlus 3T: `versionName=1.29.255`, the installed file's `md5` equal to the built one. iPhone XS: `devicectl` reports 1.29.255 |
+| The phones carry what is in git | OnePlus 3T: `versionName=1.29.256`, the installed file's `md5` equal to the built one. iPhone XS: `devicectl` reports 1.29.256 |
 | One reader, on the phone | `dumpsys sensorservice` with the sheet open, at 1.29.253 and again at 1.29.255: Google Play services holds the four sensors and the app's own uid holds none |
 | Step 4's ceiling, and step 5's lack of one, on the phone | At 1.29.253 the log line `{ waved: false, turns: 0, waitedMs: 10012 }`. At 1.29.255 the hint still up at 30 seconds, no compass, no report, no log line |
 | The wave, by the owner's hand | At 1.29.253 on the 3T: `{ waved: true, turns: 8, waitedMs: 1599 }`, and 🐋 "It's very, very smooth" |
@@ -35,7 +35,8 @@ hold, from a plan still in flight. Step 2's audit is this file at `1d5441ab`.
 2. **Whether the owner's room can pass at all.** It read 18 to 20 that night. With no ceiling it draws only if
    waving brings that under 15.
 3. **The two lines on a real screen.** Their place is arithmetic and a unit test, not a photograph.
-4. **The review fixes of step 5 on a phone.** They are in 1.29.256, which was built after the phones were handed over.
+4. **The review fixes of step 5 on a phone.** 1.29.256 is installed on the 3T and the iPhone, and nothing has been
+   run on it: the desk check was made on 1.29.255.
 
 ## Findings
 
