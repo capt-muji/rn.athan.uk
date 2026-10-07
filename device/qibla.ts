@@ -80,9 +80,9 @@ export const readPlaceName = async (position: Coordinates): Promise<string | nul
  * Google Maps and Apple Maps draw, measured against both on two handsets.
  *
  * It replaces Reanimated's `SensorType.ROTATION`, which was adopted for smoothness and proved inaccurate by an amount
- * that VARIES with orientation, 5 degrees in one attitude and 34 in another, so no constant could correct it. This
- * reading steps rather than glides, because the platform gates it at 2 degrees and 50ms, and that is the accepted
- * cost of a bearing that is right.
+ * that VARIES with orientation, 5 degrees in one attitude and 34 in another, so no constant could correct it.
+ *
+ * A phone that carries Google's fused sensor never starts this watch: the sheet reads that sensor instead.
  */
 export const watchHeading = async (onReading: (reading: HeadingReading) => void): Promise<() => void> => {
   const subscription = await Location.watchHeadingAsync(({ trueHeading }) => onReading({ trueHeading }));

@@ -1,46 +1,42 @@
 /**
- * JS binding for the native heading diagnostic (modules/qiblaheading).
+ * JS binding for the native heading module (modules/qiblaheading).
  *
- * `expo-location` reads both platforms' sensors faithfully and then discards how much to trust the
- * reading: iOS buckets `CLHeading.headingAccuracy` from degrees into 0 to 3, and Android never offers
- * Google's Fused Orientation Provider. This module exposes both.
+ * `expo-location` reads both platforms' sensors and then keeps back what the qibla needs from them: on iOS it buckets
+ * `CLHeading.headingAccuracy` from degrees into 0 to 3, and on Android it never offers Google's Fused Orientation
+ * Provider. This module exposes both.
  *
- * It ADDS a reading beside the one the compass draws and replaces nothing: Google states FOP returns
- * the AOSP Rotation Vector's values in certain cases, and that sensor was measured wrong by an amount
- * that varied with orientation, so the two are compared on a device before either is trusted.
+ * Each platform's native side carries one of the two, so a caller asks what the phone HAS rather than which system
+ * it runs. That also covers a build whose native side is missing: every export here is then inert.
  */
 
 import type { EventSubscription } from 'expo-modules-core';
 
-export type QiblaDiagnostic = {
-  /** iOS: CLHeading.headingAccuracy in degrees. Negative means Apple considers the reading invalid */
-  accuracyDegrees?: number;
-  /** iOS: whether the system asked to show its calibration HUD */
-  wantsCalibration?: boolean;
-  /** Android: the Fused Orientation Provider heading, the value Google states Google Maps draws */
-  fusedHeadingDegrees?: number;
-  /** Android: FOP's own error cone, absent on a sample that does not carry one */
-  fusedErrorDegrees?: number;
+import type { Attitude } from '@/shared/qiblaWaveGate';
+
+/** One sample of Google's Fused Orientation Provider, whose heading is the value Google states Google Maps draws */
+export type FusedHeading = { headingDegrees: number; attitude: Attitude };
+
+type Listen = (event: string, listener: (payload: never) => void) => EventSubscription;
+
+/** The Android side. It answers false on a phone missing Play services or any of the three sensors Google fuses */
+type FusedSide = {
+  addListener: Listen;
+  isFusedOrientationAvailable: () => boolean;
+  startFusedOrientation: () => Promise<boolean>;
+  stopFusedOrientation: () => Promise<void>;
+  isHeadingAccuracyAvailable?: undefined;
 };
 
-/** `headingErrorDegrees` is absent on a sample FOP did not attach a cone to */
-type AndroidPayload = { headingDegrees: number; headingErrorDegrees?: number };
-type ApplePayload = {
-  trueHeading: number;
-  magneticHeading: number;
-  accuracyDegrees: number;
-  wantsCalibration: boolean;
+/** The iOS side */
+type AccuracySide = {
+  addListener: Listen;
+  isHeadingAccuracyAvailable: () => boolean;
+  startHeadingAccuracy: () => Promise<boolean>;
+  stopHeadingAccuracy: () => Promise<void>;
+  isFusedOrientationAvailable?: undefined;
 };
 
-type NativeQiblaHeading = {
-  addListener?: (event: string, listener: (payload: never) => void) => EventSubscription;
-  isFusedOrientationAvailable?: () => boolean;
-  startFusedOrientation?: () => Promise<boolean>;
-  stopFusedOrientation?: () => Promise<void>;
-  isHeadingAccuracyAvailable?: () => boolean;
-  startHeadingAccuracy?: () => Promise<boolean>;
-  stopHeadingAccuracy?: () => Promise<void>;
-};
+type NativeQiblaHeading = FusedSide | AccuracySide;
 
 let nativeModule: NativeQiblaHeading | null | undefined;
 
@@ -57,41 +53,64 @@ const resolveNative = (): NativeQiblaHeading | null => {
   return nativeModule;
 };
 
+const NOTHING_TO_STOP = (): void => {};
+
 /**
- * Starts whichever diagnostic this platform carries and answers the function that stops it.
+ * Makes a stop function act once.
  *
- * The platform is chosen by what the module exposes rather than by `Platform.OS`, which also covers a
- * build whose native side is missing: the qibla path has held no platform branch since session 47.
- *
- * The returned function is synchronous while the native starts are not, because the sheet's cleanup
- * runs synchronously and a watch that resolved afterwards would leave the sensors armed.
+ * The native stop ends whichever watch is running, so a cleanup that ran a second time would otherwise end a watch
+ * that a later open had started.
  */
-export const watchQiblaDiagnostic = (onReading: (reading: QiblaDiagnostic) => void): (() => void) => {
-  const native = resolveNative();
-  if (!native?.addListener) return () => {};
-
+const once = (stop: () => void): (() => void) => {
   let stopped = false;
-  let subscription: EventSubscription | null = null;
-  let stopNative: (() => Promise<void>) | undefined;
-
-  if (native.isFusedOrientationAvailable?.()) {
-    subscription = native.addListener('onFusedOrientation', (payload: AndroidPayload) =>
-      onReading({ fusedHeadingDegrees: payload.headingDegrees, fusedErrorDegrees: payload.headingErrorDegrees })
-    );
-    stopNative = native.stopFusedOrientation;
-    native.startFusedOrientation?.();
-  } else if (native.isHeadingAccuracyAvailable?.()) {
-    subscription = native.addListener('onHeadingAccuracy', (payload: ApplePayload) =>
-      onReading({ accuracyDegrees: payload.accuracyDegrees, wantsCalibration: payload.wantsCalibration })
-    );
-    stopNative = native.stopHeadingAccuracy;
-    native.startHeadingAccuracy?.();
-  }
 
   return () => {
     if (stopped) return;
     stopped = true;
-    subscription?.remove();
-    stopNative?.();
+    stop();
   };
+};
+
+/** Whether this phone carries Google's fused sensor, which is then the only thing that reads its heading */
+export const hasFusedHeading = (): boolean => resolveNative()?.isFusedOrientationAvailable?.() ?? false;
+
+/**
+ * Watches Google's fused sensor, on a phone that carries it, and answers the function that stops the watch.
+ *
+ * The returned function is synchronous while the native start is not, because the sheet's cleanup runs
+ * synchronously and a watch that resolved afterwards would leave the sensors armed.
+ */
+export const watchFusedHeading = (onReading: (reading: FusedHeading) => void): (() => void) => {
+  const native = resolveNative();
+  if (!native?.isFusedOrientationAvailable?.()) return NOTHING_TO_STOP;
+
+  // Subscribed before the sensor starts, so its first sample has somewhere to land
+  const subscription = native.addListener('onFusedOrientation', onReading);
+  native.startFusedOrientation();
+
+  return once(() => {
+    subscription.remove();
+    native.stopFusedOrientation();
+  });
+};
+
+/**
+ * Watches how far the iPhone says its own heading may be out, in degrees, and answers the function that stops it.
+ *
+ * The value is passed on untouched, negatives included: Apple uses a negative for a heading it considers invalid.
+ * Synchronous to stop for the reason the fused watch is.
+ */
+export const watchHeadingAccuracy = (onReading: (accuracyDegrees: number) => void): (() => void) => {
+  const native = resolveNative();
+  if (!native?.isHeadingAccuracyAvailable?.()) return NOTHING_TO_STOP;
+
+  const subscription = native.addListener('onHeadingAccuracy', ({ accuracyDegrees }: { accuracyDegrees: number }) =>
+    onReading(accuracyDegrees)
+  );
+  native.startHeadingAccuracy();
+
+  return once(() => {
+    subscription.remove();
+    native.stopHeadingAccuracy();
+  });
 };

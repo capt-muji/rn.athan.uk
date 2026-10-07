@@ -27,16 +27,16 @@ const SPACE_BELOW_DIAL = SPACING.xxxl;
 const DIAL_HEIGHT_SHARE = 0.45;
 
 /**
- * The invitation to wave, shown until the phone vouches for its heading or the ceiling passes.
+ * The invitation to wave, shown until the compass may be drawn.
  *
- * NOTHING MEASURES THE WAVE, deliberately. Reading the accelerometer to verify it cost the compass its own
+ * NO SENSOR IS READ FOR THE WAVE, deliberately. Reading the accelerometer to verify it cost the compass its own
  * accuracy: the heading needs the accelerometer AND the magnetometer, the 3T's magnetometer tops out at 52Hz,
  * and a second 50Hz subscriber alongside it made the dial lag on exactly the slow, careful turn a qibla asks
- * for. The gesture was never verifiable anyway, only a proxy for the OS having re-estimated its hard iron.
+ * for. Where the wave IS measured, on a phone reading Google's fused sensor, it is measured from the attitude
+ * that sensor already sends with each heading.
  *
- * So the wait FAILS OPEN. A gate that waits for a gesture can refuse forever on a phone whose magnetometer
- * misbehaves, leaving the user no way through; a user who ignores the invitation simply gets whatever certainty
- * the phone reports on its own.
+ * Either way the wait FAILS OPEN. A gate that waits for a gesture can refuse forever on a phone whose sensors
+ * misbehave, leaving the user no way through, so a ceiling draws the compass for a user who never waves.
  */
 const QiblaCalibration = ({ size }: { size: number }) => (
   <View style={styles.waiting}>
@@ -105,14 +105,14 @@ export default function BottomSheetQibla() {
   const { bearing, hasHeading, permissionDenied, place, heading, aligned, arrivedWarm, start, stop } = useQibla();
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
-  // The wait is the phone's own uncertainty rather than a clock: it draws as soon as the phone reports a heading
-  // it trusts, and a ceiling keeps a phone that never does from locking the screen
+  // What the compass waits for depends on which sensor the phone reads, and the hook decides it: a heading
+  // reaches here only once it has passed that gate
   const showsCompass = bearing !== null && hasHeading;
   const isCalibrating = !showsCompass && !permissionDenied;
 
   // The user is told the compass has arrived by FEEL, because they are most likely looking at the phone they
   // are moving rather than at its screen. A warm reopen announces nothing, because nothing arrived: the compass
-  // is there on the first frame and the tap would land as part of the sheet opening
+  // is back within a few readings and the tap would land as part of the sheet opening
   useEffect(() => {
     if (!showsCompass || arrivedWarm) return;
 
@@ -139,7 +139,7 @@ export default function BottomSheetQibla() {
         {/* A dial drawn without a live heading would hold its last angle and quietly point the wrong way, which is
             the one thing this feature must never do */}
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
-        {/* Mounted only while the hint is up, which is what keeps the accelerometer off behind the compass */}
+        {/* Mounted only while the hint is up, so its looping animation never ticks on behind the compass */}
         {isCalibrating && <QiblaCalibration size={size} />}
         {permissionDenied && <QiblaPermissionDenied />}
       </View>

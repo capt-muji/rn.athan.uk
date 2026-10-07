@@ -656,3 +656,79 @@ ALL AS EXPECTED: 1
 
 The count fell from 5086 by exactly what was deleted: 13 in the readout's suite, 10 for the flag, 1 that asserted the
 readout was absent.
+
+### Step 3: the commit and its review
+
+`1bf2d8fc`, 1.29.252, through the hook. One independent reviewer read the commit against its parent, read-only.
+**Verdict: pass with findings, no blocker.** It built the gate's truth table (eight rows, old and new identical,
+including what `arrivedWarm` is written as) and proved by induction over every state update that the deleted reset
+in `stop()` cannot be observed.
+
+| Finding | What was done |
+| --- | --- |
+| A warm reopen that is ALSO certain on the confirming reading lost its only test with the readout's suite | A test, in step 4's commit, and a break for it |
+| The invariant that makes the deleted reset dead is unpinned: nothing drives warm visit, close, cold visit | A test, in step 4's commit, and a break for it |
+| The iPhone renders the sheet once less per accuracy reading, so it decides the same and is not timing-identical | Recorded for the owner, step 4 part 12 |
+| `CERTAINTY_THRESHOLD_DEGREES` was still exported with no importer | `export` dropped, in step 4's commit |
+| Two comments in `Qibla.tsx` were false before this step and stayed false | Corrected, in step 4's commit |
+| Readings are processed after `stop()`, and a reopen during the position read strands a watch. Both older than this session | Recorded for the owner, step 4 part 12. Not built: the fix changes code the iPhone runs |
+
+## Step 4: Android on Google's sensor alone, behind a wave (2026-10-07)
+
+`steps/4-android-fused-wave.md` is the specification, and its part 13 is what the design review changed. Branch
+`feat/qibla-android-fused-wave`, cut from step 3's branch so the two merge in order.
+
+### How it was run
+
+One writer. Two independent reviewers, each read-only against a fixed commit, while the writer carried on: one
+attacked step 3's commit, the other attacked step 4's design BEFORE its code was finished. The design review came
+back "build after changes" with three blockers, and every one was real:
+
+1. **A phone that reports the fused sensor and delivers nothing would have shown the hint for ever.** Now a
+   3000ms silence hands the visit to the platform heading.
+2. **The angle as first written fails at exactly 30 degrees and is not a number for half of all real samples.**
+   Now a turn is judged in cosine space and a reading is checked for being an attitude first.
+3. **The design named `shared/qiblaWave.ts` as a new file. It is the hint's drawing.**
+
+### The mistake this session made, recorded so it is not repeated
+
+The writer hit blocker 3 before the review reported it: it wrote the new module to `shared/qiblaWave.ts` and its
+suite to `shared/__tests__/qiblaWave.test.ts`, OVER the two files already there. `tsc` named it four minutes later
+(`QiblaWave.tsx: Module has no exported member 'phoneBody'`). Both were restored with `git checkout HEAD --`,
+`git diff HEAD` on them printed nothing, and their own suite passed untouched. Nothing was committed in between.
+**The rule: `ls` a path before writing a file described as new.** A plan that says NEW is a claim about the tree,
+and it was never checked.
+
+### One scare that the owner's own recording settled
+
+`QiblaCompass.tsx` smooths each heading with a 150ms timing animation, restarted at every reading. Modelled at
+Google's 50 readings a second, that animation never leaves its slow first frames, and the dial trails a turning
+phone by tens of degrees for seconds. Three frames of the recording said otherwise: at 11.25s the dial stood at
+about 114 against a reading of 142.0, and by 12.75s it read 131 against 132.4. **The dial follows Google's reading
+within about half a second, on the phone, whatever the model says.** Nothing was changed, and a pacing step that
+had been considered was not built. The five-second creep from 140 to 120 is in the READING, which is Google's own.
+
+### Green
+
+```
+yarn validate
+Test Suites: 188 passed, 188 total
+Tests:       5179 passed, 5179 total
+Statements 100% (4940/4940)  Branches 100% (2145/2145)  Functions 100% (1029/1029)  Lines 100% (4431/4431)
+
+bash ai/plans/53-qibla-accuracy-gate/scripts/breaks-3.sh
+CAUGHT: 84 of 84
+ALL AS EXPECTED: 1
+
+python3 scripts/find-unused-exports.py
+NEVER reachable from production code: 5        (the five standing entries)
+```
+
+The module's JavaScript binding stood at 0% and outside the coverage gate, under an `UNMEASURED` entry whose reason
+named another file. It is measured now, with `modules/widgetrefresh/index.ts`, and both are at 100%.
+
+### The native side
+
+`> Task :qiblaheading:compileReleaseKotlin` and `BUILD SUCCESSFUL`, on a throwaway build of the code as it stood
+before the design review landed (`~/athan-device-sweep/session53/android/mock-252-step4-probe.apk`, never
+installed). The Kotlin did not change after it.

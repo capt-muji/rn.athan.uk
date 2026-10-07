@@ -113,6 +113,8 @@ module.exports = {
     'components/**/*.{ts,tsx}',
     'device/**/*.{ts,tsx}',
     'hooks/**/*.{ts,tsx}',
+    // The native modules' JavaScript bindings: the Kotlin and Swift beside them are outside what Jest can run
+    'modules/**/*.{ts,tsx}',
     'stores/**/*.{ts,tsx}',
     'widgets/**/*.{ts,tsx}',
     'shared/**/*.{ts,tsx}',
