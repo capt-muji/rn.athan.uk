@@ -8,7 +8,7 @@ import logger from '@/shared/logger';
 import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
 import { unwrapHeading } from '@/shared/qiblaCompass';
 import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
-import { isCertain, isWarmStream } from '@/shared/qiblaSettle';
+import { isCertain, isWarmStream, WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
 import { advanceWave, hasWaved, type Wave } from '@/shared/qiblaWaveGate';
 
 export interface QiblaState {
@@ -88,6 +88,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
   const unwatchRef = useRef<(() => void) | null>(null);
   const unwatchNativeRef = useRef<(() => void) | null>(null);
   const lostRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const reportedLostRef = useRef(false);
   const blankRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const bearingRef = useRef<number | null>(null);
   const settledRef = useRef(false);
@@ -98,7 +99,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
   const confirmRef = useRef<number[]>([]);
   // The gate runs on the heading stream while the accuracy arrives on its own, so the latest reading is held here
   const accuracyRef = useRef<number | undefined>(undefined);
-  // When the hint last went up: at the open, and again when a drawn compass loses its heading
+  // When the hint last went up: once location is granted, and again when a drawn compass loses its heading
   const waitingSinceRef = useRef(0);
   // Whether Google's fused sensor is this visit's reader, which decides what the compass waits for
   const fusedRef = useRef(false);
@@ -110,25 +111,34 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     blankRef.current = null;
   }, []);
 
-  const clearLost = useCallback(() => {
-    if (!lostRef.current) return;
-    clearTimeout(lostRef.current);
+  /** Ends the wait for north, and answers whether the report had already gone up */
+  const endLostWait = useCallback((): boolean => {
+    const reported = reportedLostRef.current;
+    reportedLostRef.current = false;
+    if (lostRef.current) clearTimeout(lostRef.current);
     lostRef.current = null;
+
+    return reported;
   }, []);
 
   /** Starts the wait after which a phone still showing the hint is told that north could not be found */
   const awaitNorth = useCallback(() => {
-    clearLost();
+    endLostWait();
     waitingSinceRef.current = Date.now();
-    lostRef.current = setTimeout(() => setState((previous) => ({ ...previous, lost: true })), LOST_AFTER_MS);
-  }, [clearLost]);
+    lostRef.current = setTimeout(() => {
+      reportedLostRef.current = true;
+      setState((previous) => ({ ...previous, lost: true }));
+    }, LOST_AFTER_MS);
+  }, [endLostWait]);
 
   const blank = useCallback(() => {
     blankRef.current = null;
+    // Only a compass that was drawn has a hint coming back. A stream that never gave a heading is still inside its
+    // first wait, and restarting that on every gap would mean the phone with no north is never told so
+    if (settledRef.current) awaitNorth();
     // The stream is genuinely gone rather than blinking, so the fusion must prove itself again before it is drawn
     settledRef.current = false;
     warmHeadingRef.current = null;
-    awaitNorth();
     setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
   }, [awaitNorth]);
 
@@ -141,7 +151,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     accuracyRef.current = undefined;
     waveRef.current = null;
     clearBlank();
-    clearLost();
+    endLostWait();
     unwatchRef.current?.();
     unwatchRef.current = null;
     unwatchNativeRef.current?.();
@@ -152,10 +162,14 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     setState((previous) =>
       previous.hasHeading || previous.lost ? { ...previous, hasHeading: false, lost: false } : previous
     );
-  }, [aligned, clearBlank, clearLost]);
+  }, [aligned, clearBlank, endLostWait]);
 
   const processReading = useCallback(
     (trueHeading: number) => {
+      // A heading watch can outlive the close that should have ended it, when the open that started it was still
+      // reading the position. Its readings must not draw, tap or start a wait behind a closed sheet
+      if (!activeRef.current) return;
+
       if (trueHeading === NO_HEADING) {
         // The magnetometer drops the odd reading while it settles, and unmounting on one resizes the sheet
         alignedRef.current = false;
@@ -186,7 +200,8 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
           logger.info('QIBLA: compass drawn after a wave', { waitedMs });
         } else {
           const remembered = warmHeadingRef.current;
-          confirmRef.current = [...confirmRef.current, trueHeading];
+          // Only the latest few are ever read, and a phone that is never sure would otherwise grow this for ever
+          confirmRef.current = [...confirmRef.current, trueHeading].slice(-WARM_CONFIRM_READINGS);
           // A reopen meeting the stream it left has already been vouched for, so re-proving it is pure wait
           const arrivedWarm = remembered !== null && isWarmStream(confirmRef.current, remembered);
 
@@ -195,7 +210,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
           arrivedQuietly = waitedMs < ARRIVAL_ANNOUNCE_MS;
         }
         settledRef.current = true;
-        clearLost();
+        endLostWait();
       }
 
       const nowAligned = isAligned(alignmentOffset(trueHeading, bearing), alignedRef.current);
@@ -209,7 +224,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
         previous.hasHeading ? previous : { ...previous, hasHeading: true, arrivedQuietly, lost: false }
       );
     },
-    [aligned, blank, clearBlank, clearLost, heading]
+    [aligned, blank, clearBlank, endLostWait, heading]
   );
 
   const start = useCallback(async () => {
@@ -236,8 +251,9 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
       // An open that overtook an earlier one, while the permission prompt was up, must not strand its listener
       unwatchNativeRef.current?.();
       unwatchNativeRef.current = watchFusedHeading(({ headingDegrees, attitude }) => {
-        // A sensor that is delivering has not lost north. All it lacks is the wave the hint is already asking for
-        clearLost();
+        // A sensor that is delivering has not lost north. All it lacks is the wave the hint is already asking for,
+        // so the report is not owed, and is taken back if a slow first sample let it go up
+        if (endLostWait()) setState((previous) => ({ ...previous, lost: false }));
         // Counted before the reading is judged, and before the position is known, so no part of a wave is lost
         waveRef.current = advanceWave(waveRef.current, attitude);
         processReading(headingDegrees);
@@ -286,7 +302,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
       placeRef.current = place;
       setState((previous) => ({ ...previous, place }));
     });
-  }, [awaitNorth, clearLost, processReading]);
+  }, [awaitNorth, endLostWait, processReading]);
 
   useEffect(() => stop, [stop]);
 

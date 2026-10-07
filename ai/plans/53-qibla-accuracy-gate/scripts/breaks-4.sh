@@ -52,8 +52,8 @@ run_break "a warm reopen no longer draws" "$H" \
   "if (!arrivedWarm && !isCertain(accuracyRef.current)) return;" "if (!isCertain(accuracyRef.current)) return;"
 run_break "the latch removed" "$H" \
   "        settledRef.current = true;
-        clearLost();" \
-  "        clearLost();"
+        endLostWait();" \
+  "        endLostWait();"
 run_break "every phone runs the fused gate" "$H" "        if (fusedRef.current) {" "        if (true) {"
 run_break "a fused phone runs the other phones' gate" "$H" "        if (fusedRef.current) {" "        if (false) {"
 
@@ -83,9 +83,10 @@ run_break "the sheet feels no arrival" "$Q" \
   "    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 " ""
 run_break "the wait is counted from the open even after the hint returned" "$H" \
-  "    warmHeadingRef.current = null;
-    awaitNorth();" \
-  "    warmHeadingRef.current = null;"
+  "    if (settledRef.current) awaitNorth();
+" ""
+run_break "every gap in the stream starts the waits again, drawn or not" "$H" \
+  "    if (settledRef.current) awaitNorth();" "    awaitNorth();"
 run_break "the wait is never timed" "$H" \
   "    waitingSinceRef.current = Date.now();
 " ""
@@ -104,13 +105,13 @@ run_break "north is reported lost to a user who refused location" "$H" \
     const granted = await requestQiblaPermission();"
 run_break "a drawn compass does not end the wait" "$H" \
   "        settledRef.current = true;
-        clearLost();" \
+        endLostWait();" \
   "        settledRef.current = true;"
 run_break "a drawn compass keeps the report on screen" "$H" \
   "{ ...previous, hasHeading: true, arrivedQuietly, lost: false }" "{ ...previous, hasHeading: true, arrivedQuietly }"
 run_break "a close does not end the wait" "$H" \
   "    clearBlank();
-    clearLost();
+    endLostWait();
     unwatchRef.current?.();" \
   "    clearBlank();
     unwatchRef.current?.();"
@@ -119,13 +120,25 @@ run_break "a close keeps the report on screen" "$H" \
 run_break "a close forgets the report only when a compass was drawn" "$H" \
   "previous.hasHeading || previous.lost ?" "previous.hasHeading ?"
 run_break "a delivering sensor is reported lost for want of a wave" "$H" \
-  "        clearLost();
-        // Counted before the reading is judged" \
-  "        // Counted before the reading is judged"
+  "        if (endLostWait()) setState((previous) => ({ ...previous, lost: false }));
+" ""
+run_break "a report is left up on a sensor that turned out to be delivering" "$H" \
+  "        if (endLostWait()) setState((previous) => ({ ...previous, lost: false }));" \
+  "        endLostWait();"
 run_break "an overtaking open leaves the first open's wait running" "$H" \
-  "    clearLost();
+  "    endLostWait();
     waitingSinceRef.current = Date.now();" \
   "    waitingSinceRef.current = Date.now();"
+run_break "the wait's timer is never cancelled" "$H" \
+  "    if (lostRef.current) clearTimeout(lostRef.current);
+" ""
+run_break "a reading is acted on behind a closed sheet" "$H" \
+  "      if (!activeRef.current) return;
+
+      if (trueHeading === NO_HEADING) {" \
+  "      if (trueHeading === NO_HEADING) {"
+run_break "the readings a warm reopen is judged on are never trimmed" "$H" \
+  "[...confirmRef.current, trueHeading].slice(-WARM_CONFIRM_READINGS);" "[...confirmRef.current, trueHeading];"
 run_break "the report sets nothing" "$H" \
   "setState((previous) => ({ ...previous, lost: true }))" "setState((previous) => ({ ...previous, lost: false }))"
 
@@ -138,9 +151,18 @@ run_break "the first line in the headline's colour" "$Q" \
 run_break "the second line in the headline's colour" "$Q" \
   "<Text style={styles.message}>Please try standing in a different location</Text>" \
   "<Text style={styles.headline}>Please try standing in a different location</Text>"
-run_break "the report shown from the first frame" "$Q" "{lost && <QiblaLost />}" "{isCalibrating && <QiblaLost />}"
-run_break "the report never shown" "$Q" "        {lost && <QiblaLost />}
+run_break "the report shown from the first frame" "$Q" \
+  "{lost && isCalibrating && <QiblaLost />}" "{isCalibrating && <QiblaLost />}"
+run_break "the report never shown" "$Q" "        {lost && isCalibrating && <QiblaLost />}
 " ""
+run_break "the report laid over a drawn compass" "$Q" \
+  "{lost && isCalibrating && <QiblaLost />}" "{lost && <QiblaLost />}"
+run_break "the report at the head of the stage" "$Q" "    bottom: 0," "    top: 0,"
+run_break "the two lines in the wrong order" "$Q" \
+  "    <Text style={styles.message}>Could not find north</Text>
+    <Text style={styles.message}>Please try standing in a different location</Text>" \
+  "    <Text style={styles.message}>Please try standing in a different location</Text>
+    <Text style={styles.message}>Could not find north</Text>"
 run_break "the report added to the column, moving the hint" "$Q" \
   "    left: 0,
     position: 'absolute',

@@ -165,11 +165,11 @@ never lock, and it is the direction he gave on 2026-10-06 for a later session, b
    ```bash
    yarn validate
    ```
-   Measured: `Test Suites: 188 passed, 188 total`, `Tests: 5190 passed, 5190 total`, and `100%` on Statements
-   (4929), Branches (2146), Functions (1030) and Lines (4421).
+   Measured, after the review's fixes: `Test Suites: 188 passed, 188 total`, `Tests: 5198 passed, 5198 total`,
+   and `100%` on Statements (4938), Branches (2153), Functions (1031) and Lines (4427).
 
-7. **Breaks.** `bash ai/plans/53-qibla-accuracy-gate/scripts/breaks-4.sh`. Measured: `CAUGHT: 42 of 42`, then
-   `ALL AS EXPECTED: 1`. Its first run printed `SURVIVED: a close does not end the wait`: the test meant to catch
+7. **Breaks.** `bash ai/plans/53-qibla-accuracy-gate/scripts/breaks-4.sh`. Measured, after the review's fixes:
+   `CAUGHT: 50 of 50`, then `ALL AS EXPECTED: 1`. Its first run printed `SURVIVED: a close does not end the wait`: the test meant to catch
    it reopened the sheet, and the reopen clears the wait itself. The test now lets the wait run on behind the
    CLOSED sheet, which is where leaving it armed does its harm.
 
@@ -212,5 +212,30 @@ never lock, and it is the direction he gave on 2026-10-06 for a later session, b
     5. **The two leaks older than this session** (step 4, part 12.3) are still there on every phone that reads
        `expo-location`.
 
-13. **Done when:** `yarn validate` passes, the break script ends `ALL AS EXPECTED: 1`, part 9's first row is
+    6. **A fused phone that can never be waved gets the hint for ever and no report:** one whose attitude never
+       arrives as an attitude, or whose sensor sends one sample and stops. The ceiling used to cover both.
+    7. **The five seconds start when location is granted, not when the position is known.** On a first open with
+       no cached fix, a user can be told north could not be found while only the position is missing.
+    8. **A certainty held from before a genuine loss still draws the first heading back** (step 2's first finding).
+       `blank()` does not clear it. The owner stopped that edit once, on 2026-10-06, and it is his to rule on again
+       now that nothing unvouched is meant to be drawn.
+
+13. **What the code review changed.** One independent reviewer, read-only against `7b45fda0`. Verdict: pass with
+    findings, no blocker, and no timer, ceiling or fallback can draw a heading any more.
+
+    | Finding | What was done |
+    | --- | --- |
+    | `blank()` restarted both waits on every gap, drawn or not: a stream that keeps reporting no heading would never be shown the report, and its arrival would pass for a quick one | Restarted only when a compass was drawn. Two tests, two breaks |
+    | A fused sample that arrived after the report left the report up | It is taken back. A test, a break |
+    | With no ceiling the list a warm reopen is judged on grew for as long as the hint was up, copied whole on every reading | Kept to the latest eight. A test that counts them, a break |
+    | A reading from a watch that outlived its close could draw, tap and announce behind the closed sheet, and leave the next open drawn from its first frame | `processReading` returns at once on a closed sheet. A test, a break. The magnetometer half of that leak remains |
+    | The report could sit over a drawn compass if a second open found one | It is rendered only beside the hint. A test, a break |
+    | "At the bottom" and the order of the two lines were pinned by nothing | Both asserted, both broken |
+    | A test the new rule had made a duplicate of its neighbour | Deleted |
+
+    After those fixes the break script's next run printed three survivors, each a wait or a report left standing
+    behind a drawn compass or a permission prompt, where the sheet no longer shows it. Each is seen later, when
+    the hint returns, so each now has a test that waits for that.
+
+14. **Done when:** `yarn validate` passes, the break script ends `ALL AS EXPECTED: 1`, part 9's first row is
     measured, and the owner has judged the other three.

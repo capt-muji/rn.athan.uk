@@ -156,7 +156,8 @@ export default function BottomSheetQibla() {
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
         {/* Mounted only while the hint is up, so its looping animation never ticks on behind the compass */}
         {isCalibrating && <QiblaCalibration size={size} />}
-        {lost && <QiblaLost />}
+        {/* Only ever beside the hint: over a drawn compass it would be reporting a north that was found */}
+        {lost && isCalibrating && <QiblaLost />}
         {permissionDenied && <QiblaPermissionDenied />}
       </View>
       {/* The place belongs to the compass and arrives with it: shown while the hint is up, it answers a question
