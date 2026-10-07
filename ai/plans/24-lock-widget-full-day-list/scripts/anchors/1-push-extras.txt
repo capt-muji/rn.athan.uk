@@ -1,3 +1,0 @@
-      lock.ExtrasLockWidget.updateTimeline(lightEntries);
-      lock.ExtrasLockWidget2.updateTimeline(lightEntries);
-      lock.ExtrasLockWidget3.updateTimeline(lightEntries);

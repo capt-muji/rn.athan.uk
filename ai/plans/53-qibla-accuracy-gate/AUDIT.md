@@ -1,11 +1,9 @@
-# Audit: Session 53, steps 3 to 5 (the readout removed, Android on Google's sensor behind a wave, nothing unvouched drawn)
+# Audit: Session 53 (the gate, the wave, nothing unvouched drawn)
 
-**Last step audited: step 5, and the close of the row.** The row is DONE: the owner tested the iPhone XS, the
-OnePlus 3T and the Samsung S23 on 2026-10-07, accepted all three and locked both platforms. This is the audit `AUDITOR-BRIEF.md` section 2, item 2 describes: commits on `uat-2` that `origin` does not
-hold, from a plan still in flight. Step 2's audit is this file at `1d5441ab`.
-
-**Verdict: PASS.** `uat-2` is pushed to `origin` at the close, with nothing after the owner's acceptance changing
-what the compass does.
+The row is DONE: the owner tested the iPhone XS, the OnePlus 3T and the Samsung S23 on 2026-10-07, accepted all
+three and locked both platforms. This is the audit `AUDITOR-BRIEF.md` section 2, item 2 describes. **Verdict:
+PASS**, `uat-2` pushed to `origin` at the close, nothing after the owner's acceptance changing what the compass
+does. Step 2's audit was this file at `1d5441ab`.
 
 ## What was checked
 
@@ -17,10 +15,10 @@ what the compass does.
 | Step 4's design was attacked before its code was finished | A second reviewer, against `1bf2d8fc`. Three blockers, all fixed: `steps/4-android-fused-wave.md`, part 13 |
 | Step 4 left the iPhone alone | A third reviewer compared what an iPhone executes at `1bf2d8fc` and at `e1d3feba` in fourteen rows: it cannot behave differently |
 | Step 5 leaves nothing that draws on time alone | A fourth reviewer walked twelve paths to a drawn compass at `7b45fda0`. `grep -n "CEILING" hooks/useQibla.ts shared/qibla*.ts` prints nothing |
-| Every review's findings were acted on or recorded | `LOG.md`, the three sections headed "the code review" and step 4's part 13 |
-| The tests still guard | `breaks-2.sh` 10 of 10 at step 3. `breaks-3.sh` 91 of 91 at step 4. `breaks-4.sh` 50 of 50 at step 5. Each ended `ALL AS EXPECTED: 1`, each run on a green suite |
+| Every review's findings were acted on or recorded | `LOG.md`, the code-review passages in the step 3, 4 and 5 sections, and `steps/4-android-fused-wave.md`, section 7 (13) |
+| The tests still guard | The step break scripts: 10 of 10 at step 3, 91 of 91 at step 4, 50 of 50 at step 5. Each ended `ALL AS EXPECTED: 1`, each run on a green suite |
 | The whole suite | `yarn validate`: `Test Suites: 188 passed, 188 total`, `Tests: 5198 passed, 5198 total`, 100% on all four measures |
-| The hook ran on every commit | Each commit's own output ends with the suite count and four `100%` lines. No `--no-verify` |
+| The hook ran on every commit | Each commit's own output ends with the suite count and four `100%` lines. No `--no-verify` (the one-time grant for 1.29.247/248 aside) |
 | The module binding is inside the measure | `jest.config.js` collects `modules/**/*.{ts,tsx}`, and the coverage gate no longer excuses `modules/`. It stood at 0% |
 | Nothing deleted was reachable, nothing added is unreachable | `python3 scripts/find-unused-exports.py` reports its five standing entries |
 | The owner's rules | No prayer time touched, no release file, no `uat`, no EAS, no ignore comment, no second sensor reader. ONE visual change, his own, word for word: the two lines of step 5 |

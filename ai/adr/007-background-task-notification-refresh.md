@@ -1,297 +1,35 @@
-# ADR-007: Background Task Notification Refresh
+# ADR-007: Two refresh layers for the notification buffer
 
-**Status:** Accepted (implemented 1.5.x; ADR corrected 2026-08-29 — see Revision History)
-**Date:** 2026-01-26
-**Decision Makers:** <user>
-
----
-
-## Context
-
-ADR-001 established a rolling window notification buffer that refreshes when the app is foregrounded. The original decision rejected background tasks because they "never executed reliably" during testing. However, the current approach has a critical gap:
-
-**Problem:** Users who don't open the app for 2+ days will miss notifications because there's no mechanism to refresh the rolling window when the app is closed.
-
-**New requirements:**
-
-1. Reduce foreground refresh interval from 12 hours to 4 hours for faster responsiveness
-2. Add background task with 3-hour minimum interval as a redundant refresh mechanism (offset from foreground to reduce collision risk)
-3. System delays are acceptable as long as background task runs at least once within 24 hours
-4. Both iOS and Android support required
-
-**Platform capabilities have evolved:**
-
-- `expo-background-fetch` is deprecated
-- `expo-background-task` is the replacement with improved APIs
-- iOS requires `processing` in `UIBackgroundModes`
-- Android uses `WorkManager` with 15-minute minimum intervals
-
-**Key constraints:**
-
-- Background tasks are still throttled by both platforms
-- iOS doesn't support background tasks on simulators
-- Task execution timing is system-controlled, not guaranteed
-- Tasks stop if user force-closes the app
+**Status:** Accepted
+**Current as of:** rev 4, 2026-09-23 (issue #36). Checked against the code on 2026-10-07 (1.29.265).
+**Related:** ADR-001 (the buffer, the lock, the gate and every trigger)
 
 ## Decision
 
-Implement a **dual-layer notification refresh strategy**:
+Two layers re-arm the buffer. Both run the same full pass through `withSchedulingLock`.
 
-> The interval figures written through this section are the original 2026-01 draft's.
-> They have been retuned twice since; the Revision History at the foot of this file is
-> authoritative, and `shared/constants.ts` is the source of truth. The structure
-> described here — two layers, one shared lock, always a full reschedule — is unchanged.
+| Layer | Role | Runs | Constant |
+| --- | --- | --- | --- |
+| Background task (`expo-background-task`) | Primary. It keeps the buffer rolling with the app closed, and it alone recovers a phone that lost its alarms while nobody opens the app. | No sooner than every 3 hours, at a moment the OS chooses. Never gated. | `BACKGROUND_TASK_INTERVAL_HOURS = 3` |
+| Foreground refresh (launch and return from background) | Fallback for a starved background layer: force-quit, OEM kill, a suppressed boot broadcast, a new install. | When 2 hours have passed since the last full pass, or the gate was reopened. | `NOTIFICATION_REFRESH_HOURS = 2` |
 
-### Layer 1: Foreground Refresh (Primary)
+## Why these numbers (rev 4)
 
-- Reduce `NOTIFICATION_REFRESH_HOURS` from 12 to 4 hours
-- Continue triggering on app foreground and launch
-- This remains the primary, most reliable mechanism
+- The background interval is the ceiling on how long an unattended phone stays silent after losing its alarms. At 6 hours the measured latency was `+5h59m59s998ms`, and two prayers passed unrecovered (issue #36). That ceiling sizes the interval. The length of the buffer does not.
+- 3 hours is not an aggressive cadence. Every iOS scheduler deferral measured was at 15 minutes or below, and 180 minutes was verified delivering on schedule (issue #8).
+- `earliestBeginDate` is a floor, not a request rate. A shorter interval cannot make iOS run the task less often.
+- The foreground gate is the shorter of the two on purpose. It costs one timestamp comparison and no OS scheduler, so nothing rations it, and every opened app is a free chance to notice lost alarms.
+- The two intervals do not differ to avoid collisions. The lock is a queue, so overlapping passes run in turn.
 
-### Layer 2: Background Task (Redundant/Fallback)
+## Alternatives rejected
 
-- Register a background task using `expo-background-task`
-- Set minimum interval to 3 hours (10800 seconds)
-- Task performs the same refresh operation as foreground refresh
-- Both layers share the existing `withSchedulingLock()` guard to prevent concurrent scheduling
+| Alternative | Why it lost |
+| --- | --- |
+| Background task only | The OS may delay or skip it, and an opened app would have to wait for it. |
+| Foreground refresh only | A phone nobody opens runs out of buffer. |
+| Server push to wake the app | It needs a backend. The app has none by design. |
+| 6 hour background and 12 hour foreground gate (rev 3, 2026-09-02) | Sized only against how long the buffer may go unrefreshed. It ignored recovery after lost alarms. |
 
-### Design Principles
+## Where it lives
 
-1. **Always reschedule**: Both layers always perform a full reschedule when they run (cancel all → schedule fresh). This ensures consistency and reliability over optimization.
-
-2. **Offset intervals**: Foreground (4 hours) and background (3 hours) use different intervals to reduce the chance of simultaneous execution hitting the scheduling lock.
-
-3. **Extensive logging**: Background tasks are notoriously difficult to debug. Both layers log extensively to aid troubleshooting.
-
-4. **Concurrent execution handling**: If both layers attempt to run simultaneously, `withSchedulingLock()` serializes them — operations are chained in a sequential queue, a second caller waits its turn, and no operation is ever dropped. (The original draft described a skip-based lock where the second caller returns immediately; the shipped implementation is a queue — see `withSchedulingLock` in `stores/notifications.ts`.)
-
-### Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    NOTIFICATION REFRESH SYSTEM                       │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  ┌──────────────────────┐      ┌──────────────────────┐            │
-│  │  FOREGROUND REFRESH  │      │  BACKGROUND TASK     │            │
-│  │  (Primary Layer)     │      │  (Redundant Layer)   │            │
-│  ├──────────────────────┤      ├──────────────────────┤            │
-│  │ Trigger: App launch  │      │ Trigger: System      │            │
-│  │ Trigger: Foreground  │      │ Interval: ~3 hours   │            │
-│  │ Interval: 4 hours    │      │ (system may delay)   │            │
-│  │ Reliability: HIGH    │      │ Reliability: MEDIUM  │            │
-│  └──────────┬───────────┘      └──────────┬───────────┘            │
-│             │                              │                        │
-│             └──────────┬───────────────────┘                        │
-│                        │                                            │
-│                        ▼                                            │
-│             ┌──────────────────────┐                               │
-│             │  withSchedulingLock  │                               │
-│             │  (Dedup Guard)       │                               │
-│             └──────────┬───────────┘                               │
-│                        │                                            │
-│                        ▼                                            │
-│             ┌──────────────────────┐                               │
-│             │  shouldReschedule?   │                               │
-│             │  (4 hour check)      │                               │
-│             └──────────┬───────────┘                               │
-│                        │                                            │
-│                        ▼                                            │
-│             ┌──────────────────────┐                               │
-│             │ rescheduleAllNotifs  │                               │
-│             │ - Cancel all         │                               │
-│             │ - Schedule 2-day     │                               │
-│             └──────────────────────┘                               │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
-### Implementation Details
-
-1. **New constant:** `BACKGROUND_TASK_NAME = 'NOTIFICATION_REFRESH_TASK'`
-
-2. **Task definition** (must be at module level):
-
-   ```typescript
-   import * as TaskManager from 'expo-task-manager';
-   import * as BackgroundTask from 'expo-background-task';
-
-   TaskManager.defineTask(BACKGROUND_TASK_NAME, async () => {
-     try {
-       await refreshNotificationsFromBackground();
-       return BackgroundTask.BackgroundTaskResult.Success;
-     } catch (error) {
-       logger.error({ error }, 'BACKGROUND_TASK: Failed to refresh notifications');
-       return BackgroundTask.BackgroundTaskResult.Failed;
-     }
-   });
-   ```
-
-3. **Task registration** (in notification initialization):
-
-   ```typescript
-   await BackgroundTask.registerTaskAsync(BACKGROUND_TASK_NAME, {
-    minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES, // 180 — MINUTES, not seconds (ISSUES #8)
-   });
-   ```
-
-    IMPORTANT: `minimumInterval` is documented in MINUTES. The original draft passed
-    `3 * 60 * 60` (seconds), which iOS interpreted as 10800 MINUTES = a +7.5-day
-    `earliestBeginDate` — re-armed on every launch by the native restore path, the task
-    was never due (ISSUES #8, fixed 1.18.0). Registration also unregisters first when
-    already registered, so the persisted options can never go stale.
-
-   Registration runs on cold launch (`app/index.tsx`) AND on every foreground-return
-   (`device/listeners.ts` → `initializeNotifications(..., registerBackgroundTask)`).
-   This is idempotent: `registerBackgroundTask` early-returns via
-   `TaskManager.isTaskRegisteredAsync(BACKGROUND_TASK_NAME)`, so re-invocation only
-   re-checks registration (covering the case where the OS dropped the task while the
-   app process stayed alive across many background stints).
-
-4. **iOS configuration** (automatic via expo prebuild):
-   - `UIBackgroundModes` includes `processing`
-
-5. **Duplicate prevention:**
-   - Both layers use `withSchedulingLock()` to prevent concurrent execution
-   - Foreground checks `shouldRescheduleNotifications()` (4-hour elapsed time) to avoid excessive rescheduling on frequent app switches
-   - Background task always reschedules when system executes it (OS controls the 3-hour minimum)
-   - When rescheduling occurs, it's always a full reschedule (cancel all → schedule fresh) for consistency
-
-## Consequences
-
-### Positive
-
-- **Improved reliability**: Background task provides redundancy for users who rarely open the app
-- **Faster refresh**: 4-hour foreground / 3-hour background intervals instead of 12 hours means more responsive notification updates
-- **Self-healing**: If foreground refresh fails, background task can recover
-- **Works when closed**: Notifications can refresh even when app is not in foreground (when system allows)
-
-### Negative
-
-- **Not guaranteed**: Background task execution timing is system-controlled; may be delayed or skipped
-- **Testing difficulty**: iOS background tasks don't work on simulators; must test on physical devices
-- **Battery impact**: Background execution consumes battery (mitigated by 3-hour minimum interval and system throttling)
-- **Force-close breaks it**: If user force-closes app, background task stops
-
-### Neutral
-
-- **Complexity increase**: Two refresh mechanisms instead of one, but they share the same core logic
-- **Platform differences**: iOS and Android behave differently; need to accept variability
-
-## Alternatives Considered
-
-### Alternative 1: Background Task Only (No Foreground Refresh)
-
-**Description:** Remove foreground refresh entirely, rely only on background task.
-
-**Pros:**
-
-- Simpler single mechanism
-- No redundant code paths
-
-**Cons:**
-
-- Background task execution is unreliable
-- Users would wait for system-controlled timing even when opening the app
-
-**Why Rejected:** Foreground refresh is significantly more reliable. Removing it would degrade user experience.
-
-### Alternative 2: Push Notifications for Refresh Trigger
-
-**Description:** Use server-side push notifications to wake the app and trigger refresh.
-
-**Pros:**
-
-- Server controls timing
-- More predictable than background task
-
-**Cons:**
-
-- Requires backend infrastructure
-- Adds complexity and ongoing server costs
-- Privacy concerns: server needs to know when to wake each user's app
-
-**Why Rejected:** Overkill for this use case. Project explicitly avoids cloud/server dependencies.
-
-### Alternative 3: Keep 12-Hour Interval, Add Background Task
-
-**Description:** Add background task but keep 12-hour foreground refresh interval.
-
-**Pros:**
-
-- Less battery usage from foreground checks
-
-**Cons:**
-
-- Slower response to setting changes
-- Background task likely runs ~once per day anyway due to throttling
-
-**Why Rejected:** 4-hour foreground refresh is acceptable and improves responsiveness.
-
-## Implementation Notes
-
-### Files to Create/Modify
-
-| File                          | Change                                                                                                                 |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `shared/constants.ts`         | Change `NOTIFICATION_REFRESH_HOURS` from 12 to 4, add `BACKGROUND_TASK_NAME`, add `BACKGROUND_TASK_INTERVAL_HOURS = 3` |
-| `stores/notifications.ts`     | Add task definition, registration, background refresh function, and extensive logging                                  |
-| `app.json` or `app.config.ts` | Add `processing` to `UIBackgroundModes` for iOS (expo-background-task plugin handles this via prebuild)                |
-
-### Testing Strategy
-
-1. **Unit tests**: Mock `expo-background-task` and verify task definition
-2. **iOS physical device**: Test background task execution with physical device
-3. **Android emulator**: Test WorkManager-based execution
-4. **Regression**: Verify foreground refresh still works as primary mechanism
-5. **Debug tool**: Use `BackgroundTask.triggerTaskWorkerForTestingAsync()` for debug builds
-
-### Monitoring Consideration
-
-Background task execution is difficult to observe in production. Extensive Pino logging will capture execution events locally. If production monitoring is needed in the future, consider adding telemetry to track:
-
-- Background task execution count and success rate
-- Time since last successful refresh
-- Platform-specific execution patterns
-
-### Rollback Plan
-
-If background tasks cause issues:
-
-1. Call `BackgroundTask.unregisterTaskAsync(BACKGROUND_TASK_NAME)`
-2. Remove task definition
-3. Foreground refresh continues working independently
-
-### Platform-Specific Considerations
-
-**iOS:**
-
-- Background task requires physical device for testing
-- System heavily throttles based on battery, network, usage patterns
-- `processing` background mode enables longer-running tasks
-
-**Android:**
-
-- WorkManager handles task scheduling
-- 15-minute minimum interval enforced
-- OEM battery optimization may affect task execution
-- Some devices (Xiaomi, Huawei, etc.) are more aggressive about killing background work
-
-## Related Decisions
-
-- **ADR-001: Rolling Window Notification Buffer** - This ADR extends ADR-001 by:
-  - Changing `NOTIFICATION_REFRESH_HOURS` from 12 to 4 (supersedes ADR-001's value)
-  - Adding background task layer (new capability not in ADR-001)
-  - Retaining the 2-day rolling window and full reschedule approach from ADR-001
-
----
-
-## Revision History
-
-| Date       | Author | Change        |
-| ---------- | ------ | ------------- |
-| 2026-01-26 | <user>   | Initial draft |
-| 2026-08-29 | <user>   | Corrected §Decision 4 + architecture diagram: `withSchedulingLock` is a sequential queue (no skip, no drops), not the skip-based lock the draft described. Documented that task registration runs on launch AND foreground-return (idempotent `isTaskRegisteredAsync` guard) — the foreground-return path previously omitted registration (ISSUES #9). Status: Proposed → Accepted. |
-| 2026-09-02 (rev 3) | <user>   | Interval retune after on-device verification: background 3h → **6h** (more OS-lenient; dasd rate-limits aggressive cadences; 8 attempts per required 1-per-48h), foreground gate 4h → **12h** (foreground layer demoted to pure fallback — the background task is now primary). Rationale: only 1 successful run per 48h is needed to roll the 2-day window. |
-| 2026-09-23 (rev 4) | <user>   | Interval retune after the OnePlus 8T went silent: background 6h → **3h**, foreground gate 12h → **2h**. What changed is the requirement, not the evidence. Rev 3 sized both numbers against "how long may the rolling window go unrefreshed", where 6h was generous. The 8T showed a second and harsher job: after a reboot on an OEM that suppresses the boot broadcast, the background task is the ONLY thing that can recover a phone whose alarms are gone, and its interval is the ceiling on how long that phone stays silent (measured: `Minimum latency: +5h59m59s998ms`, so Magrib and Isha both passed unrecovered). 3h is not the sub-hour band rev 3 avoided: every dasd `group is full` deferral was measured at 15 minutes or below, and the XS verified 180 minutes delivering on schedule (ISSUES #8). `earliestBeginDate` is a floor, not a request rate, so a shorter one cannot make iOS run the task less often. The foreground gate goes to 2h so an opened app is never the slower of the two to notice lost alarms; it costs one timestamp comparison and no OS scheduler, so nothing rations it. Collision is not why the two differ — `withSchedulingLock` is a sequential queue, so overlapping passes serialise rather than conflict. Evidence: `ai/features/reboot-rearm/EVIDENCE.md`. |
-| 2026-09-02 | <user>   | Unit correction + always-re-register (ISSUES #8 fix, 1.18.0): `minimumInterval` is MINUTES — the draft's `3 * 60 * 60` seconds scheduled the task +7.5 days out on iOS and Android. `registerBackgroundTask` now unregisters before registering so persisted options refresh every launch (the old `isTaskRegisteredAsync` early-return let a stale 10800 persist forever). Device-verified on iPhone XS/iOS 18.7.10: natural fires in foreground/backgrounded states, dasd windows match the interval exactly, dasd rate-limits sub-hour cadences (180-min value is safe). |
+`shared/constants.ts` (intervals and their reasons), `device/tasks.ts` (task definition), `stores/notifications.ts` (`registerBackgroundTask`, `rescheduleAllNotificationsFromBackground`, `refreshNotifications`).

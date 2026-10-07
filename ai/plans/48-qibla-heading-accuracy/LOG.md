@@ -1,262 +1,91 @@
 # Execution log: Session 48
 
-## The plan's two steps are ONE commit, and the plan was wrong to split them
+## The plan's two steps were ONE commit, and the plan was wrong to split them
 
-The session ran step 1 exactly as written: pre-flight `PREFLIGHT OK`, the carried test file copied, red
-confirmed as `Cannot find module '../qiblaSettle'`, the carried module copied, 16 of 16 green, tsc 0,
-Biome 0, and the break script `ALL AS EXPECTED: 1` at 10 of 10.
-
-**Then the pre-commit hook refused the commit:**
+Step 1 ran clean to green (preflight OK, red as predicted — `Cannot find module '../qiblaSettle'` — then 16/16,
+tsc 0, Biome 0, breaks `ALL AS EXPECTED: 1` at 10 of 10). Then the pre-commit hook refused:
 
 ```
 FAIL unit shared/__tests__/unusedExports.test.ts
-    - Expected  - 0
-    + Received  + 2
-    +   "hasSettled",
-    +   "trailingWindow",
++   "hasSettled",
++   "trailingWindow",
 ```
 
-`shared/__tests__/unusedExports.test.ts` fails the moment a module exports a symbol that no production file
-imports, and step 1 ships `shared/qiblaSettle.ts` with nothing importing it until step 2. Measured both
-ways rather than assumed:
+`unusedExports.test.ts` fails the moment a module exports a symbol no production file imports. Measured both
+ways: **7** unreachable exports after step 1 alone, the pre-existing **5** once step 2 lands. No smaller cut
+leaves `uat-2` green; the steps merged into one commit. A defect in the plan, not the execution — the third
+session running to meet it (44 and 45 both measured the same). Nothing was committed by the refused attempt.
 
-| State | `python3 scripts/find-unused-exports.py` |
-| --- | --- |
-| Step 1 alone | **7** unreachable: `hasSettled`, `trailingWindow`, plus the 5 pre-existing |
-| Steps 1 and 2 together | **5** unreachable, the pre-existing entries only |
+## Step commit `1c947980` (1.29.201), on `feat/48-1-settle-arithmetic`
 
-So no smaller cut leaves `uat-2` green, and the two steps were merged into one commit.
+Files: `shared/qiblaSettle.ts`, `shared/__tests__/qiblaSettle.test.ts`, `hooks/useQibla.ts`,
+`components/sheets/screens/__tests__/Qibla.test.tsx`. Gate suite 32/32, sheet suite 50/50, tsc 0, Biome 0,
+`grep -c heldRef hooks/useQibla.ts` = 0, no new unused exports. Breaks: the arithmetic script `caught 10 of
+10`, the hook script `caught 6 of 6`, both `ALL AS EXPECTED: 1`. Hook's last `Tests:` line: 4949 passed across
+184 suites; coverage 100% on all four measures (4737/2077/983/4250). Review clean on the first read, one
+round, checking against `git show 1c947980`: `processReading` in the planned order with **the gate above the
+haptic** (a refused reading fires nothing — the accessibility requirement), `samplesRef` cleared in `stop` and
+the `NO_HEADING` branch, `heldRef` gone, `trailingWindow` called once per reading, all four carried files
+byte-identical to the proven copies, no `Platform` check, and no change to `qiblaAlignment`/`qiblaGeometry`/
+`qiblaCompass`/`device/qibla.ts`/`Qibla.tsx`. Merged as `bce99f94`; docs commit `e2de7ba5` (1.29.202), merged
+`fc261f38`.
 
-**This is a defect in the plan rather than in the execution, and it is the THIRD session running to meet
-it.** Session 44 measured that its deletion could not be split because `unusedExports.test.ts` reports an
-export the moment its last caller goes. Session 45 measured that its whole feature was one commit because
-the same guard reports every new export as unreachable until a production file imports it. Both wrote it
-into their records. This plan's section 6 split the work anyway, and its own section 4 never checked the
-guard. The correction is recorded in `PLAN.md` section 6, with the combined commit message.
-
-**Nothing was committed by the refused attempt**, so the tree was clean and the work continued on the same
-branch rather than being restored.
-
-## Step 1 (both step files, one commit)
-
-| What | Value |
-| --- | --- |
-| Branch | `feat/48-1-settle-arithmetic` |
-| Files | `shared/qiblaSettle.ts`, `shared/__tests__/qiblaSettle.test.ts`, `hooks/useQibla.ts`, `components/sheets/screens/__tests__/Qibla.test.tsx` |
-
-### Red, as the plan predicted
-
-| Suite | Before | Reason |
-| --- | --- | --- |
-| `shared/__tests__/qiblaSettle.test.ts` | 1 failed, 0 tests | `Cannot find module '../qiblaSettle'` |
-
-### Green
-
-| Command | Result |
-| --- | --- |
-| `npx jest shared/__tests__/qiblaSettle.test.ts device/__tests__/qibla.test.ts --selectProjects=unit` | `Tests: 32 passed, 32 total` |
-| `npx jest components/sheets/screens/__tests__/Qibla.test.tsx --selectProjects=components` | `Tests: 50 passed, 50 total` |
-| `npx tsc --noEmit` | exit 0 |
-| `npx biome check . --error-on-warnings` | exit 0, 377 files |
-| `grep -c heldRef hooks/useQibla.ts` | 0 |
-| `python3 scripts/find-unused-exports.py` | 5 pre-existing entries, none new |
-
-### Breaks
-
-| Script | Result |
-| --- | --- |
-| `scripts/breaks-step2.sh` (the arithmetic) | `caught 10 of 10`, `ALL AS EXPECTED: 1` |
-| `$TMPDIR/breaks-48-2.sh` (the hook) | `caught 6 of 6`, `ALL AS EXPECTED: 1` |
-
-### Commit and review
-
-| What | Value |
-| --- | --- |
-| Commit | `1c947980`, version 1.29.201 |
-| Hook's last `Tests:` line | `Tests: 4949 passed, 4949 total` across 184 suites |
-| Coverage | `100% ( 4737/4737 )` statements, `100% ( 2077/2077 )` branches, `100% ( 983/983 )` functions, `100% ( 4250/4250 )` lines |
-| Review | Clean on the first read, one round |
-| Merge | `bce99f94` |
-
-The review checked and confirmed, reading `git show 1c947980` back cold:
-
-- `processReading` runs in the plan's order: `NO_HEADING` first, then the window append, then the
-  `bearing === null` return, then `clearBlank`, then the gate, then the alignment work;
-- **the gate sits ABOVE the haptic**, at line 112 against the haptic's 116, so a refused reading fires
-  nothing. That is the owner's accessibility requirement;
-- `samplesRef` is cleared in `stop` and in the `NO_HEADING` branch;
-- `heldRef` is gone: `grep -c heldRef hooks/useQibla.ts` prints 0;
-- `trailingWindow` is called exactly once per reading;
-- all four carried files are byte-identical to the proven copies under `working-code/`;
-- no `Platform` check in either changed file, and no change to `shared/qiblaAlignment.ts`,
-  `shared/qiblaGeometry.ts`, `shared/qiblaCompass.ts`, `device/qibla.ts` or
-  `components/sheets/screens/Qibla.tsx`.
-
-### Done when
-
-| Check | Result |
-| --- | --- |
-| `npx jest components/sheets/screens/__tests__/Qibla.test.tsx --selectProjects=components` | `Tests: 50 passed, 50 total` |
-| `npx jest device/__tests__/qibla.test.ts shared/__tests__/qiblaSettle.test.ts --selectProjects=unit` | `Tests: 32 passed, 32 total` |
-| `grep -c heldRef hooks/useQibla.ts` | 0 |
-| `scripts/breaks-step2.sh` | `ALL AS EXPECTED: 1`, 10 of 10 |
-| `$TMPDIR/breaks-48-2.sh` | `ALL AS EXPECTED: 1`, 6 of 6 |
-
-## What the owner judges next, and what this does NOT fix
-
-The compass now stays blank for about 3 seconds on opening, then draws. It refuses to draw at all while
-the stream never converges, rather than drawing badly. The owner tests it the way he has been: open, shake,
-close, reopen, lay both phones flat, and see whether the restarts now agree.
-
-**It does not fix the residual error from iron indoors**, which is measured as unfixable by any gate
-reading the heading stream (`MEASURED.md` sections 3 and 4), and it does not touch the heading SOURCE.
-Row 49 carries the native module for `headingAccuracy` in real degrees, Apple's calibration prompt and
-Android's Fused Orientation Provider.
+It does not fix the residual error from iron indoors (measured unfixable by any gate reading the stream), and
+it does not touch the heading SOURCE — row 49 carries that.
 
 ## The owner's device verdict on 1.29.203, and the two defects it found
 
-He installed 1.29.203 on both phones and reported: "once the compass has actually loaded, it is
-extremely unresponsive... I have shaken the phone a thousand times and it doesn't move. And it just
-loves to move by itself."
+🐋  "once the compass has actually loaded, it is extremely unresponsive... I have shaken the phone a thousand
+times and it doesn't move. And it just loves to move by itself."
 
-### Defect 1, MINE: the settling gate was re-tested on every reading
+**Defect 1, MINE — the gate was re-tested on every reading.** A turning phone is a moving window, so drift
+stayed over threshold and updates were DROPPED: the compass advanced only while held still, the inverse of a
+compass. Fixed in **1.29.204** by latching: the gate decides once and resets only through `blank()` when the
+heading is genuinely lost. The suite could not see it — its only turning assertion was `toBeOnTheScreen`,
+which a frozen dial passes; the new tests re-render to publish the live shared value, then assert rotation.
 
-`hasSettled` gated EVERY reading rather than deciding once. A turning phone is a moving window, so
-drift exceeded the threshold and the gate DROPPED the update: the compass advanced only while the
-phone was held still, which is the inverse of a compass.
+**Defect 2, UPSTREAM — the stream was never fast enough for the latch to matter.** Measured on the 3T with
+`dumpsys sensorservice`: hardware ceiling 19.2 ms (52 Hz, magnetometer-bound); what `expo-location` requested
+**199.95 ms = 5.00 Hz**; the owner's bar 100 ms. **10.4x of headroom discarded**, while Reanimated in the same
+process already pulled `rotation_vector` at 16 ms. The 2-degree emission gate is worse: a user creeping the
+last degrees at 2 degrees a second is served **0.83 Hz**, a stationary phone nothing — "it doesn't move, then
+it moves by itself" — and it floored the heading's resolution at 2 degrees.
 
-Fixed in 1.29.204 by latching: the gate decides once, and resets through `blank` when the heading is
-genuinely lost rather than on each dropped reading, so a brief dropout does not re-arm it.
+`patches/expo-location+58.0.9.patch` now carries: Android `SENSOR_DELAY_NORMAL`→`_GAME` on both
+registrations; Android 2-degree `DEGREE_DELTA` gate removed (50ms rate limit kept); iOS
+`headingFilter = kCLHeadingFilterNone` (its 1-degree default rejected **731 of 731** readings of a stationary
+phone). Removing the 2-degree constant also removes a magic number of the kind the owner bans.
 
-**The suite could not see this, and that is the lesson.** Its only assertion about a turning dial was
-`toBeOnTheScreen`, which a dial frozen at its first reading passes. The dial reads the heading off a
-shared value, so a turn costs no render and the rendered transform never changes; the new tests
-re-render to publish the live value into the style, then assert the rotation.
+**Proven on the device, not inferred:** the patched module is compiled from source (the patch removes the
+`publication` block that would otherwise resolve a prebuilt AAR), the APK bytecode shows
+`const/4 v5, #int 1` (`SENSOR_DELAY_GAME`) on both registrations, and the live qibla sheet on 1.29.205 reads
+`selected = 20.00 ms` on both sensors — **50 Hz, up from 5 Hz, a tenfold improvement measured on the floor
+device**, confirmed in raw event timestamps 20 ms apart. Trap recorded: `dumpsys sensorservice` lists
+historical registrations by pid, so read the rate from the live `active-count` block, not a stale first line.
 
-### Defect 2, UPSTREAM: the stream was never fast enough for the latch to matter
+**The calibration hint, shipped 1.29.205 on his request:** 🐋  "At least put a message there to tell
+the user to shake the phone... put like a figure-8 motion for them to shake the phone with a path,
+like an 8 figure." — the waiting state reads "Wave the phone in a figure eight to calibrate the compass" over a looping figure of eight.
 
-Measured on the 3T with `dumpsys sensorservice`:
+Phones: 3T and XS both on 1.29.205 production. Still open and NOT claimed fixed: the residual from iron in
+the house; row 49 carries the native module.
 
-| | Period | Rate |
-| --- | --- | --- |
-| Hardware ceiling, magnetometer-bound | 19.2 ms | 52 Hz |
-| What `expo-location` requested | 199.95 ms, zero jitter | **5.00 Hz** |
-| The owner's bar | 100 ms | 10 Hz |
+## The owner accepted it; the hint was rebuilt on his judgement (1.29.207)
 
-**10.4x of headroom discarded.** Reanimated, in the same process and uid, already pulled
-`rotation_vector` at 16 ms, so only the compass was slow.
+🐋  "This works absolutely perfectly. I love it. It's amazing... It's so clear, it's so smooth... both phones
+are pointing in the perfect direction."
 
-Its 2-degree emission gate is worse for this app specifically. Simulated against the measured arrival
-pattern, a user creeping the last few degrees onto the line at 2 degrees a second is served **0.83
-Hz**, and a stationary phone nothing at all. That is "it doesn't move, then it moves by itself". The
-gate also floored the heading's own resolution at 2 degrees.
+The hint's travelling dot became a **phone** on his request: 🐋  "I do like the animation that you put
+on the screen with the figure 8, but can you actually improve it, because it looks really out of shape
+and a bit boring. Does it suit the theme of the app? It doesn't. Can we make the dot look like a phone?
+It doesn't show the user to actually do anything." A dot teaches a SHAPE; the instruction is to move a PHONE.
+The phone rolls into each turn taken from the curve's own tangent — a phone held rigid through a figure of
+eight calibrates nothing; the lean teaches the wrist roll that does. Path dashed and fainter, pass slowed
+2400→3200 ms. 21 geometry tests, up from 14; an unused `toDegrees` was deleted on `unusedExports.test.ts`'s
+catch — the third time that guard earned its place this session.
 
-`patches/expo-location+58.0.9.patch` now carries three changes, each a documented platform constant or
-the removal of a threshold:
-
-| Platform | Change |
-| --- | --- |
-| Android | `SENSOR_DELAY_NORMAL` to `SENSOR_DELAY_GAME` on both registrations |
-| Android | The 2-degree `DEGREE_DELTA` gate removed, the 50 ms rate limit kept. `DEGREE_DELTA` and the orphaned `kotlin.math.abs` import go with it |
-| iOS | `headingFilter = kCLHeadingFilterNone`, which `expo-location` never set. CoreLocation fuses at about 50 Hz on the XS and its 1-degree default rejected 731 of 731 readings of a stationary phone |
-
-The 2-degree constant was itself a magic number of the kind the owner bans, so removing it moves the
-code toward that rule.
-
-### PROVEN ON THE DEVICE, not inferred
-
-The patch could have been a no-op: `ai/AGENTS.md` records that a patched Expo module is skipped when
-its `expo-module.config.json` still declares a `publication` block, because autolinking then resolves
-a prebuilt AAR. Verified that the existing patch already removes that block, then verified the
-compiled bytecode in the shipped APK:
-
-```
-invoke-virtual {v1, v4}, SensorManager;.getDefaultSensor:(I)Landroid/hardware/Sensor;   // v4 = 2, magnetometer
-const/4 v5, #int 1                                                                       // SENSOR_DELAY_GAME
-invoke-virtual {v1, v0, v4, v5}, SensorManager;.registerListener:(...)Z
-```
-
-`SENSOR_DELAY_GAME` is 1 where `SENSOR_DELAY_NORMAL` is 3, on both registrations.
-
-Then measured live with the qibla sheet open on 1.29.205:
-
-```
-0x00000001) active-count = 1; sampling_period(ms) = {20.0}, selected = 20.00 ms
-0x00000003) active-count = 1; sampling_period(ms) = {20.0}, selected = 20.00 ms
-```
-
-**20.00 ms is 50 Hz, up from 200 ms and 5 Hz: a tenfold improvement, measured on the floor device.**
-Confirmed again in the raw event timestamps, which are 20 ms apart. A first reading of `200000us`
-came from a STALE dump entry belonging to the previous process, which is a trap worth recording:
-`dumpsys sensorservice` lists historical registrations by pid, so a rate must be read from the live
-`active-count` block or from a pid confirmed current.
-
-### The calibration hint, shipped in 1.29.205 on the owner's request
-
-🐋  "At least put a message there to tell the user to shake the phone... put like a figure-8 motion
-for them to shake the phone with a path, like an 8 figure."
-
-The waiting state now reads "Wave the phone in a figure eight to calibrate the compass." above a
-looping figure of eight with a dot travelling it. Verified by screenshot on the 3T.
-
-### State of the phones
-
-| Phone | Build |
-| --- | --- |
-| OnePlus 3T | 1.29.205, production release, automatic time on |
-| iPhone XS | 1.29.205, production release |
-
-### Still open, and NOT claimed as fixed
-
-The residual error from iron in the owner's house. Nothing here attacks it, and `MEASURED.md`
-sections 3 and 4 measure it as invisible to any gate reading the heading stream. Row 49 carries the
-native module.
-
-## The owner accepted it, and the hint was rebuilt on his judgement (1.29.207)
-
-🐋  "This works absolutely perfectly. I love it. It's amazing... It's so clear, it's so smooth...
-both phones are pointing in the perfect direction."
-
-**His acceptance covers 1.29.205**, which is tagged by that version and pushed, as he asked.
-
-### The hint now carries a phone, not a dot
-
-🐋  "I do like the animation that you put on the screen with the figure 8, but can you actually
-improve it, because it looks really out of shape and a bit boring. Does it suit the theme of the
-app? It doesn't. Can we make the dot look like a phone? It doesn't show the user to actually do
-anything."
-
-**The diagnosis is in his last sentence rather than his first.** A dot teaches a SHAPE; the
-instruction is to move a PHONE. So the travelling object is a phone: a rounded body in the dial's own
-gold with a lit screen inset inside it.
-
-**The roll is what makes it an instruction rather than an ornament.** The phone leans into each turn,
-taken from the curve's OWN tangent rather than a second invented motion, so the lean cannot drift out
-of step with the path however the figure is reshaped. That teaches a wrist that rolls, which is the
-gesture that actually calibrates a magnetometer: a phone held rigid through a figure of eight sweeps
-one plane and calibrates nothing.
-
-The path is dashed and fainter so it reads as a route rather than a drawn object competing with the
-phone, and the pass slowed from 2400ms to 3200ms because the gesture is meant to be copied by hand.
-
-21 geometry tests, up from 14. `toDegrees` was written, left unused and deleted, which
-`unusedExports.test.ts` caught: the third time that guard earned its place this session.
-
-### The question this session could NOT answer, and queued as row 50
-
-🐋  "which one was the issue? That's the real question. Because I think one of these three patches
-actually fixed it."
-
-**Nobody knows, because four changes landed together and were never tested apart.** The hypothesis
-and the four isolating experiments are in `WHAT-FIXED-IT.md`, queued as row 50. The short form: the
-latch was necessary and not sufficient, the 2-degree gate is the likely hero for ACCURACY because a
-sample rate cannot make a heading more correct while removing a quantisation floor can, and the rate
-is the likely hero for SMOOTHNESS.
-
-### Three of his questions answered in `WHAT-FIXED-IT.md` so no session re-derives them
-
-| Question | Answer |
-| --- | --- |
-| 🐋  "if we make this 52 hertz, would it be even better?" | **No, worse.** 52 Hz is the magnetometer's own 19.2 ms hardware ceiling, so asking for it removes all scheduling slack and drops samples rather than arriving late, for no visible gain when 50 Hz is already 5x his own 10 Hz bar. Nothing would break: Android clamps the request |
-| 🐋  "Did you create a custom module for this?" | **No.** Three edits to `expo-location`'s own source, in a patch file that already existed. Row 49 remains the only place a native module is planned |
-| 🐋  "You kept SENSOR_DELAY_GAME 50 Hz rather than UI 15 Hz. I don't understand." | `UI` clears his 10 Hz bar with little margin, `GAME` with 5x, and the app already pulls 16 ms through Reanimated in the same process. `UI` is a one-word fallback if battery ever becomes a complaint |
+**Row 50 queued from his question:** 🐋  "which one was the issue? That's the real question." Four changes
+landed together, never tested apart — hypothesis and experiments in `WHAT-FIXED-IT.md`; row 50's VERDICT
+resolved it. Three questions answered there: 52 Hz is worse (the magnetometer's own ceiling, drops samples
+for no gain); no custom module (three edits to `expo-location`'s source in an existing patch); `GAME` kept
+over `UI` (5x his 10 Hz bar vs little margin; `UI` is the one-word fallback if battery ever complains).

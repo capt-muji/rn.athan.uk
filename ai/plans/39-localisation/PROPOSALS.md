@@ -102,7 +102,7 @@ from the device locale.** The What's New entry (D13) then invites the user to ch
 what that entry is for.
 
 Nobody's app changes appearance on upgrade. This repo already has the
-`migrate(oldKey, newKey, atom)` helper for exactly this shape (`stores/notifications.ts:575`).
+`migrate(oldKey, newKey, atom)` helper for exactly this shape (`stores/notifications.ts:535`).
 
 ### Rejected alternatives
 

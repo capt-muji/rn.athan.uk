@@ -1,8 +1,8 @@
-# Session 49: what was read from the vendors, and the two findings that reshape the row
+# Session 49: what was read from the vendors, and the findings that reshape the row
 
 `MEASURED.md` holds what this machine measured. This page holds what was READ from Google's and
-Apple's own words, with the quotes that matter, because two of them change what this row should
-build.
+Apple's own words, because two of them change what this row should build. Compressed 2026-10-07
+after the row closed DONE; the quotes and the rulings stay.
 
 ---
 
@@ -24,24 +24,21 @@ in full during planning.
 > "**In certain cases, the FOP returns values piped through from the AOSP Rotation Vector**, adapted
 > to incorporate magnetic declination."
 
-This matters because `SensorType.ROTATION` in Reanimated IS the AOSP Rotation Vector, and session 47
-shipped it, measured it 5 to 34 degrees wrong outdoors, and reverted it. **So FOP is not
-guaranteed to be a different answer from the one this programme has already rejected once.** On some
-devices it is that same answer with declination applied. That does not make FOP worthless, since
-Google's own Maps rides it and the owner's comparison target IS Maps, but it does mean the Android
-half of this row **cannot be assumed to improve anything until it is measured against the platform
-value on the owner's own phone, side by side.** A plan that shipped FOP as the new heading source on
-the strength of the Maps quote alone would be repeating session 47's mistake with a different API.
+`SensorType.ROTATION` in Reanimated IS the AOSP Rotation Vector, and session 47 shipped it, measured
+it 5 to 34 degrees wrong outdoors, and reverted it. **So FOP is not guaranteed to be a different
+answer from the one this programme already rejected once** — on some devices it is that same answer
+with declination applied. The device proof (LOG.md) then measured exactly that agreement on the 3T,
+which is why the module ADDS a reading beside the platform's and replaces nothing.
 
-**Other load-bearing facts from the same page:**
+**Other load-bearing facts, quote and consequence:**
 
-| Fact | Quote or value | Consequence for this row |
+| Fact | Quote or value | Consequence |
 | --- | --- | --- |
-| Reference frame | "The orientation is referenced to **geographic** north. In cases where the local magnetic declination is not known (e.g., location is not available), the orientation will be relative to **magnetic** north" | The app must apply NO declination of its own, and the frame SILENTLY changes with location availability. There is no flag announcing which one you got |
-| Hardware floor | "must have an accelerometer, gyroscope, and magnetometer available to use the fused orientation provider" | The 3T qualifies (`MEASURED.md` section 3). A device missing a gyroscope gets nothing, so the JS layer needs a real absence path |
+| Reference frame | "The orientation is referenced to **geographic** north. In cases where the local magnetic declination is not known (e.g., location is not available), the orientation will be relative to **magnetic** north" | The app applies NO declination of its own, and the frame SILENTLY changes with location availability. No flag announces which one you got |
+| Hardware floor | "must have an accelerometer, gyroscope, and magnetometer available to use the fused orientation provider" | The 3T qualifies (MEASURED.md section 3). A device missing a gyroscope gets nothing, so the JS layer needs a real absence path |
 | Availability | "available on all devices running Google Play services on Android 5 (Lollipop) and above" | The 3T at API 28 is in scope |
 | Permissions | "**No permissions are required to use the FOP API**" | Satisfies the owner's least-permissions rule |
-| Dependency | "Developers need to add the dependency play-services-location:21.2.0 (or above)" | Confirms `MEASURED.md` section 2's bytecode finding |
+| Dependency | "Developers need to add the dependency play-services-location:21.2.0 (or above)" | Confirms MEASURED.md section 2's bytecode finding |
 | Rate honesty | "The FOP does not guarantee a minimum or maximum update rate... it can be slower as requested if the device doesn't support the high rate" | No rate assertion can be written as an acceptance criterion |
 | Power | "Always request the longest update period (lowest frequency) that is sufficient... If you do not know which update period to use, we recommend starting with `OUTPUT_PERIOD_DEFAULT`" | Use the default, 20 ms, which happens to equal what session 48 already proved affordable |
 | Foreground only | "**FOP updates are only available to apps running in the foreground**" | Exactly matches a sheet-scoped watch. No background concern |
@@ -79,19 +76,19 @@ it is the row's first deliverable for that reason.
 
 `CLLocationManagerDelegate.locationManagerShouldDisplayHeadingCalibration` is what permits the
 system calibration HUD, and with no implementation Core Location never shows it.
-`expo-location`'s `DeviceHeadingStreamer` implements no such delegate method, which this session
-confirmed by reading the file in full (`MEASURED.md` quotes it).
+`expo-location`'s `DeviceHeadingStreamer` implements no such delegate method, confirmed by reading
+the file in full.
 
-Session 48's research then downgraded it honestly, and this session agrees: the alert is UI, not
+Session 48's research downgraded the prompt honestly, and this session agrees: the alert is UI, not
 algorithm. It supplies the same figure-of-eight motion the owner is already performing by hand, and
-which the app now asks for in words and with an animation (1.29.207). **So its value is the OS-level
+which the app asks for in words and with an animation (1.29.207). **So its value is the OS-level
 signal that iOS considers itself uncalibrated, not the calibration itself.**
 
 There is a sharper reason to be careful with it, which no prior session recorded: the delegate
 method is a QUESTION iOS asks, and answering `true` hands the screen to a system HUD that can appear
-over the qibla sheet at a moment the app does not choose. The app's visuals are settled and the
-owner owns them. **Showing that HUD is therefore an owner decision rather than an implementation
-detail**, and this plan treats it as one.
+over the qibla sheet at a moment the app does not choose. **Showing that HUD is therefore an owner
+decision rather than an implementation detail** — the module answers `false` and reports whether
+iOS WANTED calibration, which is the signal without the HUD.
 
 ## 4. What this row must NOT re-investigate
 
@@ -116,20 +113,18 @@ The owner raised this directly on 2026-10-02, and he was right to:
 house. What about someone in a completely different country? My calibration is not going to fit their
 calibration."
 
-**He is describing a thing this programme already tried, already shipped, and has permanently banned.**
-Session 40 tuned seven constants by eye (270, 180, 190, 180, 170, 190, 220) and shipped a reading 90
-degrees out. Session 41 then proved why no such constant can exist, with a prediction written down
-before the measurement: at one FIXED spot the error drifted 20 degrees across a few hours. So a stored
-offset fails in the owner's own house across one afternoon, before any question of another country
-arises.
+**He is describing a thing this programme already tried, already shipped, and has permanently
+banned.** Session 40 tuned seven constants by eye (270, 180, 190, 180, 170, 190, 220) and shipped a
+reading 90 degrees out. Session 41 then proved why no such constant can exist, with a prediction
+written down before the measurement: at one FIXED spot the error drifted 20 degrees across a few
+hours. So a stored offset fails in the owner's own house across one afternoon, before any question
+of another country arises.
 
-**Nothing in this row calibrates anything.** The module is a read-only instrument:
-
-| What it does | What it does NOT do |
-| --- | --- |
-| Reads `CLHeading.headingAccuracy`, which Apple computes, and shows it | Change the heading by any amount |
-| Reads whether iOS ASKED to show its calibration HUD, and answers no | Store an offset, per place or per user |
-| Reads FOP's heading beside the platform's, for comparison | Replace the heading the compass draws |
+**Nothing in this row calibrates anything.** The module is a read-only instrument: it reads
+`CLHeading.headingAccuracy`, which Apple computes, and shows it; it reads whether iOS ASKED to show
+its calibration HUD, and answers no; it reads FOP's heading beside the platform's, for comparison.
+It does not change the heading by any amount, store an offset per place or per user, or replace the
+heading the compass draws.
 
 Checkable rather than asserted: across `modules/qiblaheading/`, `hooks/useQibla.ts`,
 `shared/qiblaAlignment.ts`, `shared/qiblaGeometry.ts` and `device/qibla.ts`, every occurrence of
@@ -138,11 +133,10 @@ operation. The whole alignment maths is `bearing - heading` wrapped to the short
 (`shared/qiblaAlignment.ts:23-29`).
 
 **And the measurement points the opposite way from calibrating.** `wantsCalibration` came back FALSE
-on the XS while the accuracy sat at about 25 degrees, so iOS considers itself calibrated and is still
-uncertain. That is a field fixed in the ROOM, which Apple states in writing cannot be filtered because
-calibration removes only fields that move WITH the device. **The shaking the owner has been doing, and
-which 1.29.207 asks for in words and animation, addresses a condition the OS says is not present.**
-
-The product answer this supports is showing the uncertainty, the way Apple Maps draws a cone rather
-than a confident needle. It is not a correction, and a later session must not read this page as
-licence to build one.
+on the XS while the accuracy sat at about 25 degrees (LOG.md), so iOS considered itself calibrated
+and was still uncertain. That is a field fixed in the ROOM, which Apple states in writing cannot be
+filtered because calibration removes only fields that move WITH the device. **The shaking the owner
+has been doing, and which 1.29.207 asks for in words and animation, addresses a condition the OS says
+is not present.** The product answer this supports is showing the uncertainty, the way Apple Maps
+draws a cone rather than a confident needle. It is not a correction, and a later session must not
+read this page as licence to build one.

@@ -1,5 +1,0 @@
-/** A reading as the watch delivers it, with the moment it arrived */
-export interface HeadingSample {
-  degrees: number;
-  atMs: number;
-}

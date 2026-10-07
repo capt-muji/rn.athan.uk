@@ -1,3 +1,0 @@
-  it('declares a prepare script, so yarn install arms the hook', () => {
-    expect(scripts().prepare).toContain('husky install');
-  });

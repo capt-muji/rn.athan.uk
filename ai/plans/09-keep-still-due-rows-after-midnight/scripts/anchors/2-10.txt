@@ -1,2 +1,0 @@
-  it('generates consecutive days', () => {
-    const days = genNextXDays(3);

@@ -1,2 +1,0 @@
-/** Reference to the settings bottom sheet modal */
-export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);

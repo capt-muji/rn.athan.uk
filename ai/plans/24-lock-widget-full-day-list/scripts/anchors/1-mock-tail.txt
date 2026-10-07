@@ -1,2 +1,0 @@
-export const PrayerLockWidget3 = makeWidgetMock();
-export const ExtrasLockWidget3 = makeWidgetMock();

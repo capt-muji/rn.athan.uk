@@ -1,2 +1,0 @@
-      {isOpen && <HeadingSensor heading={heading} correction={correction} onFieldChange={setFieldIsClean} />}
-      {reading.status === 'found' && <Dial bearing={reading.bearing} heading={heading} />}

@@ -3,7 +3,7 @@
 You are the planner: the architect, the security designer, the overseer and the project manager of ONE queued
 session. You decide **everything**. The executor decides **nothing**. You do not execute the session. You change no
 app code, no tests and no device state that you do not restore. You write files under `ai/plans/` (and record owner
-decisions in `ai/prompts/README.md`), and you commit, merge and push them.
+decisions in the plan's section 2, from where the audit writes them into the row), and you commit, merge and push them.
 
 **Specify; do not dictate** (owner, 2026-09-16). Deciding everything is not the same as writing the executor's code
 for it, letter by letter. Your job is to delegate a task with so much information that you are confident the executor
@@ -75,8 +75,8 @@ owner's rule is 100% of every source.
 2. `ai/plans/TEMPLATE.md`: the shape your plan must take.
 3. `ai/plans/EXECUTOR-BRIEF.md`: what the executor already knows and must do, so your plan fits it.
 4. `ai/plans/AUDITOR-BRIEF.md`: what the audit checks, so your plan gives it evidence.
-5. `ai/prompts/README.md`: the queue, the owner's decisions, the standing rules.
-6. The session's own brief in `ai/prompts/`.
+5. `ai/prompts/README.md`, when the row's brief is one of the two kept there (row 25): its standing rules.
+6. The row's own brief, wherever the queue's Brief column names it.
 7. Every section of `ai/features/uat-2/AUDIT-FINDINGS.md` that the brief cites, and "Session 5 of the queue".
 8. `__tests__/README.md`: the test pattern every new test follows.
 9. `ai/AGENTS.md`: the sections on the code the session touches, and the golden paths.
@@ -102,7 +102,7 @@ written against code that row is about to change (`README.md`, "Order").
    3. NOT PLANNED;
    4. BLOCKED or OWNER-LED: ask the owner whether its reason still holds. If not, set it to NOT PLANNED and plan it. If
       it still holds, leave the row as it is and take the next row. If the owner says an OWNER-LED row is finished,
-      set it, and its `ai/prompts/README.md` row, to DONE.
+      set it, and its queue row, to DONE.
 4. **Nothing left.** If no row is left to plan, tell the owner, and give them `athan-next`, which starts whatever can
    run next.
 
@@ -127,8 +127,8 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
      depends on it.
 4. **Take the owner's decisions now.** Anything only the owner can decide is asked in THIS session with
    AskUserQuestion: behaviour a user sees, a trade-off, a device the owner must hold. Use plain words, your
-   recommendation first, and two to four options. Record each answer, with the date, in the plan's section 2 and in
-   `ai/prompts/README.md`'s decided section. Never leave a decision for the execution session.
+   recommendation first, and two to four options. Record each answer, with the date, in the plan's section 2, from
+   where the audit writes it into the row. Never leave a decision for the execution session.
 5. **Design.** Choose the approach. Write the invariant as one sentence a test can check. List the alternatives
    rejected, with reasons. Behaviour changes to notifications, data or the schedule get a design review before you
    write steps: reread your own design and code map with fresh eyes and attack it, asking what a hostile reviewer
@@ -354,43 +354,8 @@ The plan is not READY until every line below is true.
   against the step's review checklist, and an audit session checks each executed plan before it is pushed (owner,
   2026-09-15). A finding is fixed and then re-read the same way, once.
 
-## 7. Session-specific notes known on 2026-09-15
+## 7. Session-specific notes still current
 
-- **Session 6, `alert-integrity.md`.**
-  - Four findings, each its own step.
-  - The owner decided 79: the small fix. They decided 80: any start-up error shows the error page.
-  - The brief demands a written design and an independent design review before building.
-  - Findings 81 and 82 are Android cancel failures: design how a refused cancel is retried or recorded, so the state
-    converges without waiting for a refresh.
-  - Findings 79, 81 and 82 are proven on a local production build.
-  - Finding 80 needs the Ramadan season and a start-up throw ("a forced-throw mock build on the 3T" in
-    `AUDIT-FINDINGS.md`). It uses `build-mock-ramadan.zsh` on a throwaway ref that forces the throw. Design how that
-    ref is made without `--no-verify` and never merged.
-- **Session 7, `replace-previous-notification.md`.**
-  - Android: one shared notification tag. Notifications due at the same instant are left to the system (owner,
-    2026-09-13).
-  - It is planned only after every row before it is DONE, so its anchors are verified against `uat-2` itself.
-    "Needs first" names the rows it depends on, and "Planned at" is the one `uat-2` commit it was verified against.
-- **Session 8, `ios-replace-previous-notification.md`.**
-  - Research first. The owner rejects "impossible" without proof on the iPhone.
-  - Physical-iPhone tooling is `xcrun devicectl` and `pymobiledevice3`, with `DEVELOPMENT_TEAM=TEAM_ID`
-    (`ai/AGENTS.md`). The owner must do the taps on a physical iPhone.
-  - Before writing steps, ask the owner whether the iPhone and Xcode signing are available. If not, the plan is
-    research-only, or BLOCKED with that reason.
-  - The reading and research happen in the planning session. The plan gives only device experiments, with expected
-    output.
-- **Session 9, `keep-still-due-rows-after-midnight.md`.**
-  - Device proof uses `zsh ~/athan-device-sweep/session3/bin/build-mock.zsh <ref> <mocks-file> <out.apk>` with a
-    mocks file holding the brief's five fixed high-latitude days, and the clock driven to Friday 25 September, as
-    session 1 did.
-  - It is not proven on a production build, because London 2026 never puts Magrib or Isha after 00:00. Nor on today's
-    `mocks/simple.ts`, which seeds today at each download. London staying unchanged is proven by tests over the 2026
-    London payload.
-  - The brief's open question from session 3 was answered as a default on 2026-09-14 ("moves on after its last
-    readable row", `AUDIT-FINDINGS.md`, "Defaults the owner has to rule on"). Confirm it with the owner while
-    planning.
-  - Finding 74's evening-Suhoor part is a separate owner decision.
-  - It must land before v2.0.
 - **Session 11, `moonsighting-research-2.md`.**
   - Its step 1 is a plain summary for the owner, then a wait for the owner's reading. Ask the owner whether they have
     read `ai/features/moonsighting/RESEARCH-FINDINGS.md`.
@@ -407,7 +372,8 @@ The plan is not READY until every line below is true.
 3. **Branch.** Run `git checkout -b docs/plan-<N>-$(date +%Y%m%d-%H%M) uat-2`, then add:
    - the plan folder;
    - the `ai/plans/README.md` change;
-   - `ai/prompts/README.md`, when section 3's owner decisions were recorded there.
+   - `ai/prompts/README.md`, only when the row's brief is one of the two kept there and the session recorded
+     something in its "Decided by the owner" section.
 
    Bump the patch version in the three places. Commit with a message that says which session was planned and what the
    plan covers. The hook runs the full suite.

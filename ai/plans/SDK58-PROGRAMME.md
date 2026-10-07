@@ -1,405 +1,270 @@
 # SDK 58 adoption programme (owner rulings, 2026-09-18)
 
-Briefs for queue rows 12 through 17. A row's planning session writes its
-`ai/plans/NN-*/PLAN.md` from the brief here; the queue table in `README.md` is the authority
-for order and status. Verified facts carry their source. Facts re-verified 2026-09-18.
+Briefs for queue rows 12 through 18 and the deferred owner features. The queue table in
+`ai/plans/README.md` is the authority for order and status. Facts carry their source. DONE and
+CANCELLED sections here are compressed records; the full narratives live in git history under the
+`ai/plans/NN-*/` folders this file names, each with the commit that still reaches it (the
+2026-10-07 clean deleted most of them — `23-sdk58-preview7` and `28-d3-rolling-buffer` among them;
+`27`, `39`, `50` and `54` stand).
 
 ## Programme rules (owner rulings, 2026-09-18)
 
-1. **Bleeding edge on purpose.** `uat-2` moves to the SDK 58 beta now and rides it. No store
-   or production release from the session 12 merge until session 16 (stable re-pin) is DONE
-   and RN 0.88 is out of release candidate. Full release notes land only at stable
-   (~Oct 7 to 14).
+1. **Bleeding edge on purpose.** `uat-2` moves to the SDK 58 beta now and rides it. No store or
+   production release until row 18 (stable re-pin) is DONE and RN 0.88 is out of release
+   candidate. Full release notes land only at stable (~Oct 7 to 14).
 2. **`experiment/alarmclock-backport` is kept**, frozen on SDK 57 at the 1.24.10 era, as the
-   known-good backup. Nothing deletes it. Its prompt (`ai/prompts/alarmclock-backport.md`)
-   records that deletion day (B9) is cancelled by owner ruling.
-3. **Moonsighting (session 11) is deferred until further notice**, absolute last, after the
-   SDK 58 programme and the deferred owner features at the bottom of this file.
-4. **Verify against real sources, always.** Every session confirms APIs via docs-mcp (scrape
-   the v58 docs first, resolving the exact version from the npm registry) and opensrc for
-   package source. The changelog under-specifies.
-5. **Full gates every session**: `yarn validate`, `yarn test:tz`, e2e/device checks where
-   relevant (`yarn check:device`, `e2e/flows`).
-6. **All dependencies move to latest compatible versions in session 12**, expo-managed and
+   known-good backup. Nothing deletes it. Deletion day (B9) was cancelled by owner ruling. FACTUAL
+   NOTE, 2026-10-07: the branch no longer exists in local refs or on origin; its last tips are
+   reflog-only (`ef33661b`, `c9614692`). Restoring it is the owner's call.
+3. **Moonsighting (session 11) is deferred until further notice**, absolute last, after the SDK 58
+   programme and the deferred owner features at the bottom of this file.
+4. **Verify against real sources, always.** Every session confirms APIs via docs-mcp (resolve the
+   exact version from the npm registry first) and opensrc for package source. The changelog
+   under-specifies.
+5. **Full gates every session**: `yarn validate`, `yarn test:tz`, e2e/device checks where relevant
+   (`yarn check:device`, `e2e/flows`).
+6. **All dependencies move to latest compatible versions at an upgrade row**, expo-managed and
    third-party, every package named explicitly. Never `npx expo install --fix`.
-7. **Foreground show-by-default is wanted** (owner ruling). Verified: our handler
-   (`hooks/useNotification.ts:11-18`) returns sound, badge, banner and list all true, which
-   matches SDK 58's new built-in default handler (PR #49072). The flip is a no-op for us by
-   construction; session 12 verifies on device only.
-8. **R8 stays on** (new default) for smaller and faster-starting release builds, unless the
-   first 3T release build misbehaves. Opt-out: `expo-build-properties`
-   `android.enableMinifyInReleaseBuilds: false`.
+7. **Foreground show-by-default is wanted** (owner ruling). Our handler
+   (`hooks/useNotification.ts:11-18`) returns sound, badge, banner and list all true, matching
+   SDK 58's built-in default handler (PR #49072); the flip is a no-op for us by construction.
+   Verified on device in row 12.
+8. **R8 stays on** (new default) for smaller, faster-starting release builds. ANSWERED: the first
+   3T release build was clean, so no opt-out was ever needed (none exists in `app.json`; it would
+   have been `enableMinifyInReleaseBuilds: false`).
 9. **Not adopted**: `threadIdentifier` grouping (visual change), SwiftPM (CocoaPods stays the
-   default supported path), Noxcturnal transformer (experimental, needs a Babel-free setup),
-   `backgroundOverlay` migration (unused), `disableAutoLaunch` (only `disableFab` gets
-   documented, session 13).
-10. **Adopted beyond the upgrade**: `delivery: 'alarmClock'` (session 12), `largeIcon`
-    notification icon on Android (session 12; owner wants the icon on the left, asset picked
-    from on-device screenshots; reverted 1.27.231 the same day, owner-rejected on the shade
-    proof).
+   default supported path), the Noxcturnal transformer (experimental, needs a Babel-free setup),
+   the `backgroundOverlay` migration (unused), `disableAutoLaunch` (documented beside `disableFab`
+   in `ai/AGENTS.md`; row 13).
+10. **Adopted beyond the upgrade**: `delivery: 'alarmClock'` (row 12; constant at
+    `shared/notifications.ts:101`, used at `device/notifications.ts:124` and `:242`), and the
+    Android notification large icon (adopted row 12, reverted 1.27.231 the same day: owner
+    rejected the shade proof).
 
-## Environment refresh (before session 12 executes)
+## 12. SDK 58 beta upgrade + alarmClock (DONE, `a2498afa`)
 
-| Item | Action | Owner |
-| --- | --- | --- |
-| macOS 26 to 27 | System upgrade, first | Owner |
-| Android Studio | `brew upgrade --cask android-studio android-commandlinetools` (installed 2024.3.1.13 from 2025-03-06; cask latest 2026.1.4.7), after macOS 27 | Agent, any session |
-| Android SDK components | Update via Android Studio SDK Manager after the cask upgrade | Agent |
-| Xcode | Already 27.0 (27A266a) | Done |
-| Device Hub | App lives at `/Applications/Xcode.app/Contents/Applications/DeviceHub.app`. Screen-share spinner is a known Xcode 27 beta rough edge; automation (simctl, mobile-mcp, xcodebuildmcp, Maestro) unaffected | Note only |
+**Goal.** `uat-2` runs the SDK 58 beta with `delivery: 'alarmClock'` adopted and everything else
+behaviorally identical, verified on the 3T.
 
-Session 12 planning needs none of this (no builds); only execution does.
+**What shipped and still anchors the code.** `delivery: 'alarmClock'` in both trigger literals
+(`device/notifications.ts:124` at-time, `:242` reminder). Permissions were already present
+(`app.json` `USE_EXACT_ALARM:39`, `SCHEDULE_EXACT_ALARM:40`); no permission work was needed. The
+`InteractionManager` migration and the test deep-import fix landed with the row. How to read an
+alarm-clock arm on each phone is R18-4 in section 16.
 
-## 12. SDK 58 beta upgrade + alarmClock + largeIcon
+## 13. Agent tooling (DONE, `423e2db1`)
 
-**Goal.** `uat-2` runs SDK 58 beta with `delivery: 'alarmClock'` adopted and the Android
-notification large icon configured, everything else visually and behaviorally identical,
-verified on the 3T.
+`@expo/agent-cli` adopted via npx; its guidance lives in `ai/AGENTS.md` (that file says to revisit
+it at the SDK 58 stable re-pin). `disableFab=1` documented and adopted into the workflow;
+`disableAutoLaunch` documented beside `disableFab` with the dev-launcher flags (`ai/AGENTS.md`,
+`ai/features/agent-tooling/FINDINGS.md`); the workflow's launch examples carry both. The Device Hub
+location and screen-share caveat: `ai/AGENTS.md` §6. Zero app-code changes.
 
-**Verified facts.**
+## 14. Expo Modules 2.0 spike on modules/tls13 (CANCELLED by the owner, 2026-09-18; never re-queued)
 
-- npm: `expo` beta line is `58.0.0-preview.N` on the `next` dist-tag; library packages are
-  plain `58.0.x` (`expo-notifications` at 58.0.3 as of 2026-09-18). #49687 merged 2026-09-08,
-  commit `257006e`, carried by the beta.
-- `delivery` API (from the backport prompt's merge-commit inspection; re-verify via opensrc
-  against installed 58.0.x): `delivery: 'bestEffort' | 'alarmClock'` on `DateTriggerInput`
-  and the repeating wall-clock triggers. Android-only, default `'bestEffort'`, degrades to
-  best-effort without the exact-alarm permission.
-- Permissions already present: `app.json` android.permissions has `USE_EXACT_ALARM` and
-  `SCHEDULE_EXACT_ALARM` (lines 35-36). No permission work needed.
-- Adoption sites (moved since the backport prompt was written): `device/notifications.ts`
-  lines 100-104 (at-time trigger) and 217-221 (reminder trigger), both
-  `type: SchedulableTriggerInputTypes.DATE` trigger literals.
-- Foreground flip (#49072) mechanics, from the PR diff: a default handler allowing
-  banner + list + sound + badge is auto-subscribed at import; native timeout paths present
-  instead of dropping. Our handler overrides it with the same values, so no-op for us.
-- `largeIcon` (#49481), from the PR diff: plugin prop `largeIcon?: string`, local image path,
-  resized to 64x64 dp and shown next to the notification text. Plugin writes
-  `notification_large_icon.png` into all drawable densities and a manifest meta-data
-  `expo.modules.notifications.large_notification_icon`. A notification carrying its own image
-  uses that instead (ours carry none). Unlike the small icon (all-white), the large icon may
-  be full-color art.
-- expo-widgets plugin config: top-level `supportedFamilies` and `contentMarginsDisabled` are
-  deprecated aliases; the v58 docs prescribe the nested `ios.supportedFamilies` form. Our
-  `app.json` uses the top-level form (10 widget entries).
-- RN removals that touch us: `InteractionManager.runAfterInteractions` at
-  `components/prayer/List.tsx:67` (migrate to `requestIdleCallback`, keep the cancel cleanup);
-  deep import `react-native/Libraries/Utilities/BackHandler.*` at
-  `components/sheets/parts/__tests__/Sheet.test.tsx:21-22`. No `expo-router/react-navigation`
-  imports anywhere (verified). Strict TS API is default; the `customConditions` opt-out
-  exists but is removed after 0.88, so migrate now, do not opt out.
-- Toolchain: Xcode 27.0 installed (SDK 58 builds for iOS 27, prebuild emits
-  `SceneDelegate.swift`); Node v24.14.1 satisfies the 24.3 floor.
-- iOS 27 caveats that cannot be tested yet (no iOS 27 runtime installed): `requireFullScreen`
-  (we set it, `app.json` line 14) and `ScreenOrientation.lockAsync` (our
-  `plugins/portraitOnlyIpad.js`) may no-op while apps are resizable. Record as deferred risk,
-  revisit when an iOS 27 runtime or device exists.
+Ruling: skip it, not wanted, cancelled outright — not deferred. Basis: in `expo-modules-core`
+58.0.3 the 2.0 API exists only as Swift macros, no Kotlin authoring API exists anywhere in the
+installed tree, and `modules/tls13` declares Android only, so there is no Swift side to migrate
+and nothing on the Kotlin side to migrate to. The module stays on the 1.0 DSL indefinitely. The
+3T verification the row wanted (release build, real data, cold launch, TLS fetch on Android 9) had
+already run in row 12.
 
-**Step sketch.**
+## 15. Android home-screen widgets (DONE, `0ec4fe70`), with the timeline horizon row
 
-1. Branch `upgrade/sdk-58-beta` from `uat-2`. Versioning as usual (bump every commit; minor
-   bump 1.28.0 at merge, feature grade).
-2. Docs prep: docs-mcp scrape of `https://docs.expo.dev/versions/v58.0.0/` root (exact version
-   resolved from npm first). opensrc reads: `expo-notifications@58` (trigger parsing,
-   `delivery` semantics, permission fallback), the plugin source for `largeIcon`.
-3. Package wave: expo-managed set from the beta `bundledNativeModules.json`, named explicitly.
-   Third-party by hand from their releases: `react-native-mmkv` + `react-native-nitro-modules`
-   (Nitro must match RN 0.88), `react-native-pager-view`, `react-native-svg`,
-   `react-native-edge-to-edge` (check whether RN 0.88 makes it obsolete; drop if so),
-   `react-native-screens`, `react-native-gesture-handler`, `react-native-safe-area-context`.
-   Re-derive the deliberately-ahead table (reanimated, worklets, jest, @types/jest,
-   typescript) against the 58 pins and update `ai/AGENTS.md` section 2 afterwards.
-4. Native regen: delete `ios/` and `android/` (gitignored prebuild artifacts), prebuild with
-   the usual env rituals. Confirm `SceneDelegate.swift` in the iOS template.
-5. Migrations: `InteractionManager` to `requestIdleCallback`; fix the test deep import; walk
-   the expo-router SDK 57 to 58 migration guide and the RN Strict TS guide; `tsc` gates the
-   rest.
-6. Adoptions: `delivery: 'alarmClock'` in both trigger literals (sites above). Update
-   trigger-shape expectations in `device/__tests__` and add one mock-capture assertion per
-   path proving the field reaches `scheduleNotificationAsync`.
-7. `largeIcon`: add the plugin prop with the chosen asset. Candidates:
-   `assets/icons/config/icon-android-adaptive.png` (glyph foreground, may read sparse) or
-   `icon-ios.png` (full square art). Owner picks from a 3T screenshot of a real notification.
-   Config change requires the prebuild regen (rides step 4).
-8. expo-widgets config hygiene: move the 10 widget entries to the nested `ios.*` form.
-9. R8 watch and fingerprint check on the first release build; confirm `expo-updates` runtime
-   version policy is unaffected by the `balanced` fingerprint default.
-10. iOS sanity: build with Xcode 27, run on the iOS 26.5 simulator, schedule a notification.
-    No XS release build needed (no iOS functional change).
+Android widgets shipped on the new `expo-widgets` Android implementation, reusing the pure builder
+`shared/widgetTimeline.ts` and the IO layer `stores/widget.ts`. The horizon row that followed
+(17) carried the owner's ruling that the user should never need to open the app; it shipped at
+`TIMELINE_DAYS = 3` (`shared/widgetTimeline.ts:76`), bounded by the payload guard, rather than the
+14-to-30-day arithmetic first sketched.
 
-**Acceptance seeds.**
+## 23. SDK 58 preview.7 + RN 0.88.0-rc.2 (DONE 2026-09-26, 1.28.34 to 1.28.45, `430fbfd6`)
 
-- `yarn validate` and `yarn test:tz` green.
-- 3T local release build via the prebuild ritual, real data (the 3T currently runs the mock
-  1.27.159, so install a production build first).
-- `adb -s 3T_SERIAL shell dumpsys alarm | grep -A2 <user>` shows `window=0` (alarm-clock
-  class; was windowed `+1h`).
-- A prayer fires at the minute across a real boundary; foreground arrival looks and sounds
-  the same as today.
-- Visual parity: settled-screen screenshots before and after, read by the vision subagent,
-  identical except the accepted notification large icon.
-- Disclose and observe: alarm-clock class alarms make most Android skins show the small
-  alarm icon in the status bar while armed. Report what the 3T, 8T and Find X8 actually show.
-- No R8 crash on launch or schedule.
+Owner instruction, 2026-09-26: ride the beta to its latest preview regardless of whether the
+pieces are released candidates. Full record in git history under `ai/plans/23-sdk58-preview7/`
+(reachable at `7d818d8c`). The durable findings, all still true:
 
-**Risks.**
+- **The widget-blanking root cause was neither the SDK, React, RN nor Reanimated**: `@expo/ui`
+  58.0.7 calls `React.memo` at MODULE scope and `expo-widgets`' react-stub exports only five
+  names, so the widget bundle dies at LOAD. iOS had broken one version earlier, at 58.0.6.
+- **Both packages are pinned to exact `58.0.5` and move together** (`package.json:36`, `:59`):
+  pinning `@expo/ui` alone installs a NESTED 58.0.7 that yarn never prunes.
+- A missing-name guard is the wrong tool; only a LOADED bundle catches a module-scope call.
+  `shared/__tests__/widgetRuntimeLoads.test.ts` builds and evaluates the real runtime bundle on
+  both platforms.
 
-- Beta and RC churn mid-row: 58.0.x patches keep landing; re-run
-  `npx expo install --check` (safe, report-only) before each device build.
-- `react-native-edge-to-edge` and Nitro/MMKV compatibility are the two most likely
-  third-party friction points.
-- Rollback: revert the merge commit on `uat-2`; the backport branch remains the SDK 57
-  known-good.
+## 16. SDK 58 stable re-pin (NOT PLANNED; blocked until SDK 58 stable is on npm)
 
-## 13. Agent tooling
+**Trigger.** The `latest` dist-tag moves to 58 stable, RN 0.88 is stable, the root `CHANGELOG.md`
+merges, the release blog post lands. Expected ~Oct 7 to 14. This row may jump the queue the day it
+triggers. Its second job is Babel 8.
 
-**Goal.** `@expo/agent-cli` investigated and, if it earns its place, wired into our tooling
-discovery, plus the dev-launcher and Device Hub workflow documented.
-
-**Verified facts.**
-
-- `@expo/agent-cli` (alias `expo-agent-cli`), experimental, announced in the SDK 58 beta
-  changelog. Sits atop Expo CLI, EAS CLI and `expo-doctor`, falls back to Expo CLI. Commands:
-  `status` (answers Expo Go compatibility without starting the app), `dev` (one-command start,
-  decides when a build is needed), `smoke` (dev plus screenshot plus stop),
-  `skills:sync` (installs co-located agent skills from node_modules). Setup:
-  `npx @expo/agent-cli@latest agents:setup`.
-- It is LOCAL tooling: it drives the local project, local devices and local servers on this
-  machine. The remote option is the separate paid EAS Simulator service, out of scope.
-- `expo-dev-launcher` 58 adds `disableFab=1` and `disableAutoLaunch=1` URL params on the dev
-  launcher deep link: hide the floating button, stop the dev menu auto-opening. Dev builds
-  only; no code change, pure workflow documentation (the FAB annoyed the owner on the
-  simulator).
-- Device Hub app path and the screen-share spinner caveat (environment refresh table above).
-
-**Scope.**
-
-1. Install nothing permanently unless it proves useful; run via npx first. `status` and
-   `smoke` against this repo; record honest results (beta software).
-2. Decision: adopt or shelve, with reasons. If adopt: npx-based usage documented in
-   `ai/AGENTS.md` Tool Routing (it must sit alongside the existing MCPs and CLIs, discoverable
-   by any future session), plus a devDep decision documented either way.
-3. Document the dev-launcher URL params (exact launch URL shape, verified on a dev build) in
-   the same Tool Routing section, and the Device Hub location and caveat.
-
-**Acceptance seeds.** AGENTS.md carries the guidance; `smoke` result recorded; zero app-code
-changes.
-
-## 14. Expo Modules 2.0 spike on modules/tls13
-
-**CANCELLED by the owner, 2026-09-18, while planning this row; never re-queued.** Their words:
-"Okay, skip this session. We don't care about it. We don't want it. Let's just ignore it. Not
-defer it. Just cancel this straight up. We don't want to do it ever again. At least not until
-the very far future, which will be never."
-
-The planning session's finding behind the cancellation: the "both platforms" fact below is
-wrong for the installed SDK. In `expo-modules-core` 58.0.3 (the newest published 58.x,
-2026-09-16) the 2.0 API exists only as Swift macros (`ios/Core/ExpoModulesMacros.swift`;
-`@expo/expo-modules-macros-plugin` ships an `apple` directory only), no Kotlin `@JS` or
-`@ExpoModule` annotation exists anywhere in the installed tree, the changelog tags every 2.0
-entry `[iOS]`, and the blog post says Android is "still in the works". `modules/tls13`
-declares `"platforms": ["android"]`, so there is no Swift side to migrate and nothing on the
-Kotlin side to migrate to; the `expo-migrate-module` skill is Swift-only and not installed.
-The 3T verification this row wanted (SDK 58 release build, real data, cold launch, TLS fetch
-on Android 9) already ran in session 12's proof ("the release TLS fetch works with
-compileSdk 37", session 12 `LOG.md`, 2026-09-18). The module stays on the 1.0 DSL
-indefinitely. The brief below is kept as the historical record.
-
-**Goal.** Learn Expo Modules 2.0 by migrating our one local module; keep it only if the 3T
-proves TLS still installs before any HTTP client on Android 9.
-
-**Verified facts (from the Expo blog, an early look at Expo Modules 2.0).**
-
-- 2.0 is beta in SDK 58 on both platforms. A module is an annotated Swift or Kotlin class:
-  `@JS` on methods (the async keyword decides Promise vs sync), plain `var`/`let` for
-  properties, `@ExpoModule` on the class. No DSL, no `definition()`.
-- Migration is incremental: `definition()` and annotations coexist in one module; move pieces
-  one at a time. An `expo-migrate-module` skill exists (ships with 2.0, agent-facing).
-- Performance: sync calls 2.5 to 5.6x faster than the DSL on iOS Release; Android beats both
-  the old DSL and TurboModules in their microbenchmarks.
-- Docs are thin during beta; source reading (opensrc, expo/expo repo) is the primary
-  reference.
-
-**Scope.**
-
-1. Read `modules/tls13` as it stands (Android ContentProvider calling GMS
-   `ProviderInstaller.installIfNeeded` before `Application.onCreate`, ISSUES #21).
-2. Migrate the Kotlin side to annotations, JS API unchanged. The manifest provider wiring may
-   stay as-is; only the module class modernizes.
-3. Verify on the 3T (Android 9, worst case by design): release build, real data, cold launch
-   fetch succeeds; optionally compare against the 1.24.17 cold-launch anatomy (the 3.1s GMS
-   `ProviderInstaller` chunk should be unchanged).
-4. Decision gate: keep if verification passes and the code reads simpler; revert if the beta
-   API gaps force workarounds.
-
-**Risks.** Production-critical module for Android 9 and below; beta API churn; that is why
-this is isolated from session 12.
-
-## 15. Android home-screen widgets
-
-**Goal.** Android prayer widgets via the new `expo-widgets` Android implementation, reusing
-our pure timeline architecture.
-
-**Verified facts.**
-
-- SDK 58 changelog: `expo-widgets` adds an Android implementation; widgets run their own JS
-  bundle on a dedicated Hermes runtime, with interactions and Material Colors
-  (#46961, #47035, #48454).
-- The v58 docs page still leads with iOS (plugin config, `ios.supportedFamilies` nested form,
-  `initialLayout`, `configuration` options exist now). The Android specifics (config keys,
-  layout authoring against the `@expo/ui` Jetpack Compose subset, timeline push API) must be
-  extracted from the docs' Android sections and the package source in the planning session.
-- Our architecture: pure builder `shared/widgetTimeline.ts` (no RN imports, platform-neutral
-  by construction), IO layer `stores/widget.ts`, layouts `widgets/*.tsx` written against the
-  SwiftUI subset. The `'widget'` directive constraints (no module-scope refs, static imports
-  only, props JSON-only with `v` schema) likely apply to the Android runtime too; verify.
-- The iOS `widgets` feature flag is OFF (G.1 pending) and `app.config.ts` strips the whole
-  `expo-widgets` plugin when OFF. Android widgets would need either their own flag or a
-  deliberate decision to ship them unflagged; decide in planning.
-
-**Scope.**
-
-1. Research pass: Android timeline API, layout runtime, families, interactions, Material
-   Colors, app-group equivalent, refresh mechanics. Sources: v58 docs, opensrc on
-   `expo-widgets@58`.
-2. Design the port: reuse the pure builder unchanged if possible; write Compose-subset
-   layouts mirroring the iOS compositions (small countdown trio first; medium list later).
-3. This row likely splits into a research session plus one or two build sessions once sized.
-
-**Risks.** New feature on a beta library; scope unknown until the research pass; that is why
-it is sequenced late and split.
-
-## 17. iOS widget timeline horizon, 14 to 30 days
-
-Owner ruling while planning session 15 (2026-09-18) widened the goal: the
-horizon should grow until the user never needs to open the app on either
-platform ("I don't want the user to have to open the app at all... maybe we
-can make it 1 year"). Android already computes at render time from carried
-data (session 15), so its horizon is pure payload size; iOS stays bounded
-by WidgetKit entry budget. The feasibility math below remains the starting
-point, with "30 days" as the floor of the ambition rather than the ceiling.
-
-**Goal.** Answer "can the widget timeline cover 30 days instead of 14 without bloating the
-payload or breaking WidgetKit rules", and do it if sound.
-
-**Verified facts.**
-
-- The horizon is one constant: `TIMELINE_DAYS = 14` at `stores/widget.ts:76`, feeding
-  `createPrayerSequence(schedule, startDate, TIMELINE_DAYS + 1)`.
-- Constraints in play: WidgetKit's ~5-minute entry spacing floor; the 200KB payload guard
-  (raised when the medium day list grew entries ~30 percent); the terminal stale-guard card
-  at the horizon; the virtual-week simulation and contract test suites pin current behavior.
-- Entries beyond the first 24h are boundary-flip entries only (6 to 7 per day), so 30 days
-  roughly triples far-future entries, not the minute-step entries. The medium widget's day
-  list is the payload driver. A possible shape: slim far-future entries (drop the day list,
-  countdown only) so the guard holds.
-
-**Scope.** Feasibility math and a decision; if green, extend the constant, adjust the builder
-and the simulation tests, verify on the iOS simulator. Owner leans 30 days but explicitly
-wants the feasibility answered first ("if we can even do it").
-
-## 16. SDK 58 stable re-pin (waits on the stable release)
-
-**Trigger.** The `latest` dist-tag moves to 58 stable, RN 0.88 is stable, the root
-`CHANGELOG.md` merges, the release blog post lands. Expected ~Oct 7 to 14. This row may jump
-the queue the day it triggers.
+**Babel 8 rider (added to this row by session 21).** `@babel/core` 8.0.6 and its three plugins
+cannot move while `babel-preset-expo@58.0.4` depends on 36 Babel 7 plugins and
+`@react-native/babel-preset` pins `@babel/core ^7.25.2`; a Babel 7 plugin under Babel 8 throws
+`BABEL_VERSION_UNSUPPORTED`. Bump the four together when the SDK presets move (the four `@babel`
+packages sit at `^7.29.x` in `package.json:79-82`).
 
 **Scope.**
 
 1. `npx expo install --check` against `latest`; name and bump everything it reports.
-2. Read the full release notes (the owner's standing instruction from 2026-09-16: the beta
-   changelog is incomplete) and act on anything new that touches us.
+2. Read the full release notes (standing owner instruction, 2026-09-16: the beta changelog is
+   incomplete) and act on anything new that touches us.
 3. Full regression: `yarn validate`, `yarn test:tz`, e2e, 3T release build, the dumpsys and
    punctuality gates one more time.
 4. Reopen the store-release path (programme rule 1 ends here).
-5. Bookkeeping: close the ISSUES #10/#17 references that waited on #49687 adoption; note in
-   `ai/prompts/alarmclock-backport.md` that B9 (deletion day) is cancelled and the branch is
-   the SDK 57 backup; update `ai/AGENTS.md` (stack table, ahead-pins table, prompt table row).
+5. Bookkeeping: update `ai/AGENTS.md` (stack table, ahead-pins table); close the ISSUES #10/#17
+   references that waited on #49687 adoption. The old note about
+   `ai/prompts/alarmclock-backport.md` is void: the file is deleted (git history) and the branch
+   it guarded is gone (rule 2).
 
-## Deferred owner features (recorded 2026-09-18, sequenced after the SDK 58 programme, before moonsighting)
+**Facts the re-pin needs (A1 to A11).** Recovered on 2026-10-07 from the pre-clean review of the
+deleted session 21-24 records, after the plan folders went; every fact below was re-verified
+against the working tree the same day and cites its own still-standing proof.
 
-Each becomes a row only when the owner specs and schedules it. Feasibility notes are the
-planning session's starting point, not settled fact; each gets its own research pass.
+- **A1 — The owner's upgrade policy, two parts (ruling).** (1) Take the absolute latest and fix
+  breaks in the code; never pin back or edit a test to pass. (2) A package broken upstream at its
+  latest rolls back alone, one version at a time, to an exact pin with no local workaround, until
+  a newer one ships.
+- **A2 — The Babel 8 blocker.** Stated above; it is this row's second job.
+- **A3 — Four packages differ from Expo's pin set on purpose** (installed
+  `expo@58.0.0-preview.7`): `react-native` 0.88.0-rc.2 against the rc.1 pin (the owner takes the
+  latest release candidate), `@expo/ui` and `expo-widgets` exact `58.0.5` against `~58.0.7`,
+  `expo-location` exact `58.0.9` against `~58.0.7` (`package.json:36`, `:52`, `:59`, `:62-64`).
+- **A4 — `@expo/log-box` is invisible to Expo checks.** It is not in `bundledNativeModules.json`,
+  so no Expo check reports it. It sits at `~58.0.5` (`package.json:34`) because `expo-router` and
+  `@expo/metro-runtime` both declare the peer range `^58.0.5`; move it by that peer range.
+- **A5 — The commit order that kept the tree green.** One commit: the SDK packages, the rebuilt
+  patches and the type fixes the bump forces (the pre-commit hook runs `tsc`). Then React,
+  `react-dom` and React Native with the two `@react-native/*` dev tools. Then Reanimated with
+  worklets.
+- **A6 — Rebuilding a patch.** `git apply --check` the old patch on the fresh package; apply it,
+  or make a rejected hunk's change by hand; `npx patch-package <name>`; delete the old file; then
+  delete the package folder and `yarn install --force` to prove a clean install. All three patches
+  are rebuilt at this row (`ai/plans/54-patches-and-copy/FINDINGS.md`, section 1).
+- **A7 — patch-package log semantics.** After a version bump the install still succeeds whatever
+  the patches did: a `warning` in its log means the old patch still applied; an `error` means that
+  package is running UNPATCHED. (`shared/__tests__/widgetOpenAppPatch.test.ts:24` words it
+  "silently skips"; the installed source applies a patch when it still fits and warns. Both
+  readings end the same way for a patch that no longer fits.)
+- **A8 — An ESM-only dependency is transformed to CommonJS in BOTH Jest projects;
+  `--experimental-vm-modules` is rejected.** Jest 30's `require(esm)` is also gated on
+  `canResolveSync()`, which the components project fails for its custom resolver, so the flag
+  gated on `canResolveSync()` (`jest-runtime`), which the components project fails for its custom
+  resolver (`jest.config.js:62`), so the flag repairs the unit project only; the CommonJS transform
+  both projects share is `jest.config.js:20`.
+- **A9 — Reanimated 4.7.0 ships the new layout-animation engine as the default.** The legacy proxy
+  flag `USE_LEGACY_LAYOUT_ANIMATIONS_PROXY` is `false` in the installed tree
+  (`node_modules/react-native-reanimated/src/featureFlags/staticFlags.json`) and no override is
+  set anywhere in the repo. Draw sites that ride it: `components/modals/Modal.tsx:81` and `:90`,
+  `components/modals/Help.tsx:75`, `components/sheets/screens/Qibla.tsx:61`.
+- **A10 — After the install, diff the pin set and read every peer warning.** Session 23 measured
+  26 packages and installed 25; `react-native-screens` surfaced only as an `expo-router` peer
+  warning (`package.json:73`). One warning is expected: `jest-expo > jest-watch-typeahead@2.2.1`
+  wants Jest 29.
+- **A11 — In `widgets/PrayerWidget.tsx` a fixed `frame()` comes before a flexible one, and no test
+  can see the order.** `@expo/ui` types `frame()` as two overloads that cannot be mixed, so each
+  mixed call became two chained modifiers; reversed, the greedy frame takes the space first and
+  the row changes size (`:657-658`, `:729`).
 
-### D1. Notification sound through silent mode (Android + iOS, user permission)
+**Traps carried from the row 12 record (R18-1 to R18-5).** Recovered and re-verified the same day
+as A1 to A11.
 
-Owner goal: prayer sounds play at full volume even when the phone is silenced, with user
-permission.
+- **R18-1 — Packages that depend on each other move in the same wave.** Owner ruling, 2026-09-18.
+- **R18-2 — Two groups must match exactly at every re-pin**: `react-dom` equals `react`, and
+  `@react-native/metro-config` and `@react-native/jest-preset` equal `react-native`
+  (`package.json:85-86`).
+- **R18-3 — Three local Android modules hardcode `compileSdk 37`, and only a release build
+  notices**: `modules/tls13/android/build.gradle:10`, `modules/qiblaheading/android/build.gradle:10`,
+  `modules/widgetrefresh/android/build.gradle:10`; `checkReleaseAarMetadata` fails the release build only.
+- **R18-4 — On the 3T the alarm-clock proof is a sub-block, never `flags=0x9`.** An alarm-clock
+  arm reads `window=0 flags=0x3` with an `Alarm clock:` sub-block in the dumpsys output.
+  `flags=0x9` is the windowed form shown by the 8T and the Find X8. This corrects the row 12
+  proof script, which predicted `0x9` for the 3T: the 3T was exact, not windowed.
+- **R18-5 — The owner accepts the system alarm icon that alarm-clock delivery can show, and no API
+  hides it.** The 3T shows none.
 
-- Android: feasible. Set `setBypassDnd(true)` on our notification channels; the app already
-  holds `ACCESS_NOTIFICATION_POLICY` (`app.json` line 38). The user must grant "Do Not
-  Disturb access" once in system settings (deep link exists); a small permission flow is the
-  session's work. Our new alarm-clock delivery class should also help on OEM skins.
-- iOS: the hardware mute switch can only be overridden by Critical Alerts, an entitlement
-  Apple grants narrowly (medical, security, public safety); prayer apps have historically
-  been rejected, so do not promise this. The reachable ceiling is Time Sensitive
-  notifications, which break through Focus and DND modes but still respect the mute switch
-  for sound. The research session verifies both claims against current Apple documentation.
+**Also true at the re-pin.**
 
-### D2. Qibla direction finder (compass to Mecca)
+- Predictive back is opted out: `app.json` sets no `predictiveBackGestureEnabled`, and the manifest
+  carries `android:enableOnBackInvokedCallback="false"`
+  (`android/app/src/main/AndroidManifest.xml:23`). Re-read both before adopting it.
+- `expo-in-app-updates` is pinned exactly `0.12.0` (`package.json:49`) and is not an SDK package
+  (its peer range on expo is `*`); it compiles Kotlin against `expo-modules-core` symbols. Do not
+  patch it.
+- The balanced fingerprint question, ANSWERED: no `runtimeVersion` policy exists anywhere in
+  `app.json`, so the default stands untouched.
 
-Owner-specced concept: a compass. Depends on device location (see D5) and device sensors.
-Defer until its time; needs location for true north vs magnetic north handling.
+**The three patches, and corrections to `ai/plans/54-patches-and-copy/FINDINGS.md` (read in full,
+2026-10-07).** Each patch is rebuilt at this row (A6). Upstream, none of the three is fixed in the
+newest published versions: `expo-background-task` 58.0.10, `expo-widgets` 58.0.14 and
+`expo-location` 58.0.12 all still carry the defects. expo/expo#50581 (ours) is open and unreviewed
+since 2026-09-24; the competing draft expo/expo#48469 has not moved since 2026-08-04.
 
-### D3. Rolling buffer 2 days to 1, plus a second reminder
+- **The `expo-location` publication-block hunk IS load-bearing**, and any reading of the Android
+  hunks as removable must respect it. Removing the `publication` block from the package's
+  `expo-module.config.json` is what forces autolinking to compile the patched Kotlin from source;
+  with the block present, autolinking resolves the prebuilt AAR and Gradle never compiles the
+  patched Kotlin (`ai/plans/50-which-patch-fixed-it/MEASURED.md`, the publication-block consequences).
+- The three Android sensor hunks are unreached on phones carrying Google's fused sensor
+  (`hooks/useQibla.ts:249-253` calls `watchFusedHeading` and never `watchHeadingAsync` there), but
+  no build without them was ever made, and the removal that was started was put back. A session
+  that removes them must also move the guard: `scripts/verify-expo-location-patch.sh` and
+  `shared/__tests__/expoLocationPatch.test.ts` assert the Android hunks are present, and the
+  guard's last check (`android/local-maven-repo`) can never fire as written, because the package
+  ships its prebuilt library at `local-maven-repo` in the package root.
+- Row 51 context: a 5-to-50 Hz sensor-rate change is the weakest of the three upstream candidates
+  and optional. The FOP as an npm package is deliberately NOT recommended. Corrections go upstream
+  as PRs — there is no process to hand modules to Expo — and `ai/AGENTS.md` section 8 binds every
+  post: anonymity absolute, no app name, repo link, device serial or secret.
 
-Owner rationale: background tasks now schedule notifications reliably, so the buffer can
-shrink and the freed iOS pending-notification slots pay for a second reminder.
+## Deferred owner features (recorded 2026-09-18; sequenced after the SDK 58 programme, before moonsighting)
 
-- UI shape (owner): a Reminders master toggle, then Reminder 1, then Reminder 2, where
-  Reminder 2 stays disabled until Reminder 1 is enabled.
-- **SUPERSEDED, and D3 is DONE (session 28, 2026-09-27).** The window is no longer counted in days at
-  all: rows are armed in time order, each one whole, until the next will not fit in a 64-request
-  budget. Everything below this line is the reasoning that led to the day-count ruling, kept because
-  it explains why the unit had to change; the arithmetic in it no longer describes the code. The
-  record is `ai/plans/28-d3-rolling-buffer/PLAN.md` and its `AUDIT.md`.
-- **DECIDED by the owner, 2026-09-26, then superseded: 1 day, one at-time alert and TWO reminders.**
-- iOS 64-pending cap maths, corrected on 2026-09-26 against `rollingDaysForPrayer`. The earlier
-  figures here (44 today, 33 after) were wrong because they multiplied 11 prayers by the window
-  directly. The window is NOT uniform: Midnight and Last Third fire the evening before their list
-  day, so they are armed for one list day more than everything else. Counted the way the code
-  counts it:
+Each became a row only when the owner specced and scheduled it. Outcomes below; the queue rows are
+the full record.
 
-  | Window | Alerts per prayer | List days armed | Total | Fits 64 |
-  | --- | --- | --- | --- | --- |
-  | 2 days | at-time + 1 reminder | 24 | 48 | yes, this is today |
-  | 2 days | at-time + 2 reminders | 24 | **72** | **NO, over by 8** |
-  | 1 day | at-time + 2 reminders | 13 | **39** | yes, comfortable |
+### D1. Notification sound through silent mode (DONE 1.28.58, `7b5e3a38`)
 
-  So the second reminder and the drop to one day are not independent choices: 2 days with two
-  reminders exceeds the cap, which is why D3 pairs them. `shared/__tests__/constants.test.ts`
-  already computes this worst case from `rollingDaysForPrayer` itself, so raising the alert count
-  past the ceiling fails the suite rather than silently dropping notifications on device.
-- Android is unaffected: `setAlarmClock` alarms carry no equivalent cap.
-- **The cost the owner accepted.** The rolling buffer is also the silence window when the
-  background chain dies, and session 27 established that nothing recovers it while the app stays
-  closed: the alarms already in AlarmManager keep firing (that is what `alarmClock` delivery buys),
-  but once the buffer is exhausted the app is silent until the next open. At 1 day that grace
-  period halves. The 8T incident in `ai/AGENTS.md` [2026-09-23] is the worked example of how long
-  a user can go without noticing.
+Owner goal: prayer sounds play at full volume even when the phone is silenced, with permission.
+Outcome: the mute switch itself is unreachable on both platforms and the owner accepted that; five
+real defects were fixed on the way. The record: `ai/plans/27-silent-mode-bypass/FINDINGS.md` (it
+backs the answers `shared/help.ts` gives) and queue row 27. From the original sketch, the Android
+part held: the app holds `ACCESS_NOTIFICATION_POLICY` (`app.json:42`) and a DND-access deep link
+exists.
 
-### D4. Localization for v2.0 (English, Arabic, Bahasa Indonesia, Urdu, more)
+### D2. Qibla direction finder and D5. Location support (both DONE 2026-09-29, queue row 37)
 
-Owner goal: the app goes global in v2.0 with a language switcher. Today Arabic is the
-hardcoded second language in many places. Touches prayer names and explanations
-(`EXTRAS_ENGLISH`/Arabic pairs), the Alert and What's New copy, widgets (labels are
-precomputed into timeline props), and every hardcoded string. v2.0-grade scope; keep the
-switcher manual (device-locale detection is optional polish via expo-localization).
+Shipped together, on a coarse cached location. The compass is locked on both platforms: never an
+unvouched heading; Android uses Google's fused sensor only; iPhone uses a 30-degree cone.
 
-### D5. Location support (v2.0)
+### D3. Rolling buffer, plus a second reminder (DONE 2026-09-27, 1.28.60 to 1.29.5, `0b4a1edc`)
 
-Prerequisite for multi-city and the qibla finder (D2). Note for that time: SDK 58 rewrote
-`expo-location` around a provider abstraction as an opt-in preview; the research session
-picks the preview vs classic API.
+Owner ruling on the UI, 2026-09-18: a Reminders master toggle, then Reminder 1, then Reminder 2,
+Reminder 2 disabled until Reminder 1 is enabled. Outcome: the window is no longer counted in days
+at all. Rows are armed whole, in time order, under the iOS 64-request ceiling, and the budget is
+spent a whole ROW at a time; the next Fajr is always armed.
+`shared/__tests__/constants.test.ts:306` computes the worst case from the code itself. The
+day-count arithmetic that led to the ruling explains why the unit had to change but no longer
+describes the code; it lives in git history under `ai/plans/28-d3-rolling-buffer/` (last touched
+at `5a8a98d7`).
 
-## Answered question: update prompt from the stores instead of releases.json
+### D4. Localization for v2.0 (NOT PLANNED; queue rows 38 and 39)
 
-Status: partially done, tracked as ISSUES #35 (not part of the SDK 58 programme). Production
-iOS already reads the live App Store version via iTunes Lookup automatically; Android and
-UAT iOS still read `releases.json`. Per the standing rule, `releases.json` becomes deletable
-only after the update-prompt feature is removed from the codebase AND that removal has
-shipped, in a separate commit. A future session implements ISSUES #35 when scheduled;
-nothing in the SDK 58 programme conflicts with it.
+Owner goal: the app goes global in v2.0 with a language switcher. Research lives in
+`ai/plans/39-localisation/`. Rows 38 and 39 carry the owner's decisions of 2026-09-28 (a typed
+English catalog and `t()`, no i18n library, no second language first; RTL is the real work).
+
+### D6. Help: one modal answering "why did I not hear the athan?" (DONE 2026-09-27, `a3f8812c`)
+
+Owner ruling: a modal, not the brief's second sheet. The shipped answers state plainly that no app
+can play through the silent switch on either platform. The page cannot lie (every claim was
+measured), and the app is never named in user copy (pinned by a test). The final visual treatment
+is still OPEN; the candidate layouts and their component source are kept outside the repo, as
+queue row 29 records.
+
+## Answered: update prompt from the stores instead of releases.json (DONE, ISSUES #35, 1.29.30)
+
+iOS reads iTunes Lookup; Android asks Play through `expo-in-app-updates`; a failed check retries
+in an hour; `releases.json` is deleted. Queue rows 30 and 31 carry the record.
 
 ## Ruling log (changelog sweep, owner decisions 2026-09-18)
 
@@ -409,12 +274,12 @@ nothing in the SDK 58 programme conflicts with it.
 | requireFullScreen + orientation locks | Care; deferred risk, no iOS 27 runtime yet |
 | Device Hub | In use by owner; CLI support rides the upgrade |
 | iPhone Duo | No |
-| `delivery: 'alarmClock'` | THE goal, session 12 |
-| Foreground flip | Wanted; no-op for us (handler matches the new default); verify |
+| `delivery: 'alarmClock'` | THE goal, row 12 |
+| Foreground flip | Wanted; no-op for us (handler matches the new default); verified |
 | iOS delegate forwarding | No |
 | `threadIdentifier` | No grouping |
-| `largeIcon` | Yes, adopt, session 12, asset from screenshots; reverted 1.27.231 the same day (owner rejected the shade proof) |
-| Android widgets | Definitely; own session (15) |
+| `largeIcon` | Yes, adopt, row 12, asset from screenshots; reverted 1.27.231 the same day (owner rejected the shade proof) |
+| Android widgets | Definitely; own row (15) |
 | Live Activities | Not us, double-checked (our staleness is the deliberate terminal card) |
 | @expo/ui spacing/Host changes | Care later; widgets flag is OFF so inert now |
 | Router core rework | Care at upgrade, migration guide; no deep imports today |
@@ -422,19 +287,19 @@ nothing in the SDK 58 programme conflicts with it.
 | Async web routes, web features | No |
 | Prebuilt expo-modules-core | Free win |
 | Faster module calls | Free |
-| Expo Modules 2.0 | Cancelled, session 14 (owner, 2026-09-18): iOS-only in SDK 58, no Kotlin authoring API to migrate to; row never re-queued |
+| Expo Modules 2.0 | Cancelled, row 14 (owner, 2026-09-18): iOS-only in SDK 58, no Kotlin authoring API to migrate to; row never re-queued |
 | SwiftPM | No, CocoaPods stays |
-| Fingerprint balanced | Verify in session 12 |
-| R8 | Keep on, watch first release build |
+| Fingerprint balanced | Verify in row 12 — ANSWERED: no `runtimeVersion` policy anywhere, default untouched |
+| R8 | Keep on, watch first release build — ANSWERED: clean, no opt-out added |
 | Noxcturnal | No |
 | NODE_ENV | Nothing to do |
 | Proxy/tunnel fixes, tunnel v2 | No |
-| AVD + adb rewrite | Rides the upgrade; env refresh ordered |
-| `@expo/agent-cli` | Yes, session 13 |
+| AVD + adb rewrite | Rode the upgrade |
+| `@expo/agent-cli` | Yes, row 13 |
 | EAS Observe, PostHog | No |
-| Strict TS, API removals | Care, migrations in session 12 |
+| Strict TS, API removals | Care, migrations landed in row 12 |
 | RN font variation, ArrayBuffer, DevTools | No |
-| `disableFab` / `disableAutoLaunch` | Document in session 13 (`disableFab` adopted in workflow) |
-| expo-audio, camera, file-system, image, secure-store, sqlite, location, font | Not installed or not needed; location noted for v2.0 (D5) |
+| `disableFab` / `disableAutoLaunch` | Row 13; both documented and verified (`ai/AGENTS.md`), `disableFab` the workflow default |
+| expo-audio, camera, file-system, image, secure-store, sqlite, location, font | camera, file-system, image, secure-store, sqlite, font not installed; expo-audio installed and in use; location answered by rows 37 and 51 |
 | Deprecations (File.md5, AppMetrics, useLibSQL, backgroundOverlay) | No |
 | Node floors, AGP 9 | Satisfied |

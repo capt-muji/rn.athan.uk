@@ -1,41 +1,26 @@
 # R4: why Android reads "Greater London" and iOS reads "London"
 
 The owner, testing 1.29.203 on both phones in the same spot: "I don't know how you get the location because on
-Android it says 'Greater London, United Kingdom', and then on iOS it says 'London, United Kingdom'. So I don't
-actually know how you get the location."
+Android it says 'Greater London, United Kingdom', and then on iOS it says 'London, United Kingdom'."
 
-**Verdict: NOT a defect. Both labels are true, the position is identical, and the bearing is untouched.** No code
-was changed. The investigating agent measured rather than reasoned, and the measurement is conclusive.
+**Verdict: NOT a defect. Both labels are true, the position is identical, the bearing is untouched. No code
+changed; the investigating agent measured rather than reasoned, and the measurement is conclusive.**
 
----
+## Mechanism, from the installed native source
 
-## The mechanism, read from the installed native source
-
-`device/qibla.ts:49` calls `Location.reverseGeocodeAsync`, and `shared/qiblaPlace.ts:39` picks a locality
-narrowest-first:
-
-```
-city ?? district ?? subregion ?? region
-```
-
-Both platforms expose the same five JS keys, mapped from each one's own native address type:
-
-| JS key | iOS source | Android source |
-| --- | --- | --- |
-| `city` | `placemark.locality` (`ios/Geocoder.swift:33`) | `address.locality` (`records/LocationResults.kt:221`) |
-| `district` | `placemark.subLocality` (`:34`) | `address.subLocality` (`:222`) |
-| `subregion` | `placemark.subAdministrativeArea` (`:38`) | `address.subAdminArea` (`:226`) |
-| `region` | `placemark.administrativeArea` (`:37`) | `address.adminArea` (`:225`) |
-| `country` | `placemark.country` (`:39`) | `address.countryName` (`:227`) |
-
-**So the selection order runs identically on both. The difference is entirely upstream**, in which native fields
-each system geocoder fills in.
+`device/qibla.ts:49` calls `Location.reverseGeocodeAsync`; `shared/qiblaPlace.ts:39` picks narrowest-first
+(`city ?? district ?? subregion ?? region`). Both platforms expose the same JS keys — `city` from
+`placemark.locality` / `address.locality` (`ios/Geocoder.swift:33`, `records/LocationResults.kt:221`),
+`district` from `subLocality`/`subLocality` (`:34`/`:222`), `subregion` from
+`subAdministrativeArea`/`subAdminArea` (`:38`/`:226`), `region` from `administrativeArea`/`adminArea`
+(`:37`/`:225`), `country` from `country`/`countryName` (`:39`/`:227`). **The selection order runs identically;
+the difference is entirely upstream**, in which fields each system geocoder fills.
 
 ## The measurement: both labels from ONE coordinate
 
-The agent ran both geocoders against the same coordinate, one position in London taken from the OnePlus's own last
-known fix (`dumpsys location`). Android was probed on the 3T itself with a dex probe through
-`app_process`, because a release build carries no app logging.
+Both geocoders run against the same coordinate (the OnePlus's own last known fix, from `dumpsys location`;
+Android probed on the 3T itself with a dex probe through `app_process`, because a release build carries no app
+logging):
 
 | Field | Apple `CLGeocoder` | Android `Geocoder` |
 | --- | --- | --- |
@@ -45,51 +30,27 @@ known fix (`dumpsys location`). Android was probed on the 3T itself with a dex p
 | `adminArea` (region) | England | England |
 | `country` | United Kingdom | United Kingdom |
 
-**iOS stops at the first branch. Android gets `null` for the two narrowest fields, falls through two steps, and
-lands on "Greater London".**
+**Android gets null for the two narrowest fields, falls through two steps, lands on "Greater London."** A
+Google trait for UK addresses, not a one-off: `locality=null` with `subAdminArea="Greater London"` at all four
+London coordinates tried; "London" exists on Android only inside `addressLine[0]` (Google carries it as a
+`postal_town`, unmapped to `locality`). Android DOES populate `locality="Makkah"` at the Kaaba, so the
+geocoder is not broken; UK addresses are modelled differently.
 
-This is a Google trait for UK addresses rather than a one-off: Android returned `locality=null` with
-`subAdminArea="Greater London"` at all four London coordinates tried (central London, Charing Cross, Uxbridge,
-Upminster). "London" exists on the Android side only inside the formatted line
-(`addressLine[0]`, a house number, street, town and postcode), because Google carries it as a `postal_town`, which
-Android's `Address` does not map to `locality`. For contrast Android DOES populate `locality="Makkah"` at the
-Kaaba, so the geocoder is not broken; UK addresses are modelled differently.
+## Not a position difference, not a bearing difference
 
-## Does it mean the phones have different positions? No
+**Both labels were reproduced from a SINGLE coordinate**, so the divergence is fully explained with the
+position held constant — no evidence of a position difference (the iPhone's own coordinate has no read-only
+route and was correctly left UNVERIFIED). Moot regardless: **the qibla bearing across the whole of Greater
+London spans 0.818 degrees** (Uxbridge 118.638 to Upminster 119.455), and the 3T's own fine-vs-coarse fixes
+differ by 0.0026 degrees. The place name is fetched un-awaited on a path that only writes `state.place`;
+nothing reads it back into the geometry, and `readPlaceName` swallows its own failures by design
+(`device/qibla.ts:52-54`). **Two phones showing different labels are pointing the same way.**
 
-**Both labels were reproduced from a SINGLE coordinate**, so the divergence is fully explained with the position
-held constant and is therefore no evidence of a position difference at all. That is the right shape of proof, and
-it did not require reading the iPhone's own coordinate (which has no read-only route and was correctly left
-UNVERIFIED).
+## The one judgement left for the owner
 
-The upper bound makes it moot regardless: **the qibla bearing across the whole of Greater London spans 0.818
-degrees** (Uxbridge 118.638 to Upminster 119.455). Even if the two phones disagreed by the full width of the
-capital the needle would move under a degree, and between the 3T's own fine and coarse fixes the difference is
-0.0026 degrees.
-
-## Is the bearing affected? Not in any way
-
-`hooks/useQibla.ts` computes the bearing from the coordinate pair alone, through `qiblaBearing`, which is pure
-trigonometry. The place name is fetched afterwards, un-awaited, on a path that only ever writes `state.place`, and
-nothing reads `place` back into the geometry. `readPlaceName` swallows its own failures by design
-(`device/qibla.ts:52-54`) precisely so a dead geocoder cannot cost the user a bearing.
-
-**The label is cosmetic. Two phones showing different labels are pointing the same way.**
-
-## Why no code changed, and the one judgement left for the owner
-
-The field order is correct, and this incident is it working rather than failing: narrowest-first is how a person
-names where they are, and the widening fallback is exactly what rescued the Android label from being blank, since
-Android had nothing narrower to offer.
-
-**No reordering can fix it, because "London" is not present in any field `placeName` reads on Android.** The
-alternatives are worse:
-
-| Alternative | Why not |
-| --- | --- |
-| Use `formattedAddress` / `addressLine[0]` | Prints the user's house number, street and postcode on screen, a privacy regression for a label |
-| Strip a `"Greater "` prefix | A UK-specific hack that mangles Greater Manchester, where that is the only name the place has |
-
-**The consequence worth the owner's judgement:** because this app is London-only today, every Android user reads
-"Greater London" and every iOS user reads "London". That is the whole user base rather than an edge case. Making
-them agree is a product decision about what the label should say, not a bug fix, so it is left to him.
+No reordering can fix it — "London" is not in any field `placeName` reads on Android. The alternatives are
+worse: `formattedAddress` prints the user's house number, street and postcode (a privacy regression for a
+label); stripping a `"Greater "` prefix mangles Greater Manchester, where that is the only name the place has.
+Because this app is London-only today, every Android user reads "Greater London" and every iOS user reads
+"London" — the whole user base, not an edge case. Making them agree is a product decision about what the label
+should say, left to the owner.

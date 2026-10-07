@@ -1,2 +1,0 @@
-/** Reference to the qibla bottom sheet modal */
-export const qiblaSheetModalAtom = atom<BottomSheetModal | null>(null);

@@ -1,4 +1,0 @@
-  beforeEach(() => {
-    resetMocks();
-    jest.useFakeTimers();
-  });

@@ -1,3 +1,0 @@
-      lock.PrayerLockWidget.updateTimeline(lightEntries);
-      lock.PrayerLockWidget2.updateTimeline(lightEntries);
-      lock.PrayerLockWidget3.updateTimeline(lightEntries);

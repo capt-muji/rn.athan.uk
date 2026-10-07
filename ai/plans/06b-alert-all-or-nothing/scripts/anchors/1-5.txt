@@ -1,2 +1,0 @@
-import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
-import * as PrayerUtils from '@/shared/prayer';

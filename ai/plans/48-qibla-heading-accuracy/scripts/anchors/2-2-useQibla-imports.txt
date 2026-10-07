@@ -1,3 +1,0 @@
-import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
-import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
-import { unwrapHeading } from '@/shared/qiblaCompass';

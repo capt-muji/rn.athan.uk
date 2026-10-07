@@ -182,6 +182,16 @@ and every load-bearing claim rests on a classical text or an official state body
 
 ## 11. One consequence the owner should decide deliberately
 
+> **Pointer, 2026-10-07:** the full classical-precision report (`agent-reports/R3-05-classical-precision-standard.md`,
+> 1,250 lines) is compressed to git history (`git show HEAD:ai/plans/53-qibla-accuracy-gate/agent-reports/R3-05-classical-precision-standard.md`).
+> Three of its items carry weight beyond what the sections above hold: **(1)** the jurists' *jiha* criterion —
+> al-Juwaynī and al-Subkī hold that the acceptable direction is the span within which a skilled observer cannot
+> say "I am precisely on it", which is the classical warrant for drawing a compass anywhere inside a cone;
+> **(2)** the caveat that the circulating "45°" figure was traced to NO classical source (section 2 above names
+> the 45 pole; only the report's §9 ledger carries that it is uncited); **(3)** its could-not-verify ledger, so no
+> future session re-litigates what could not be confirmed. Restoring the whole file is the owner's call — the
+> research is paused and unread.
+
 Under the relied-upon Shafi'i view, **certainty of a specific past error creates an obligation to repeat that
 prayer** (al-Majmu' 3/207; Mughni al-Muhtaj 1/338-339 via the Palestinian Islamic Council, no. 1403).
 

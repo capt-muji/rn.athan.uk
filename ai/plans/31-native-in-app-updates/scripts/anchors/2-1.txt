@@ -1,4 +1,0 @@
-  const handleUpdate = () => {
-    openStore();
-    setPopupUpdateEnabled(false);
-  };

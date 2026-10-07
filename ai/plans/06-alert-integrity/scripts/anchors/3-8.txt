@@ -1,3 +1,0 @@
-  // Cancel all notifications
-  const promises = notifications.map((notification) => Notifications.cancelScheduledNotificationAsync(notification.id));
-  await Promise.all(promises);

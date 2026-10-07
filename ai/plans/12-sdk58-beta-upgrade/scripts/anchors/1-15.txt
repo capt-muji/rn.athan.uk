@@ -1,3 +1,0 @@
-      testEnvironmentOptions: { customExportConditions: ['require', 'react-native'] },
-      moduleNameMapper: appModuleMocks,
-      testMatch: ['**/__tests__/**/*.test.tsx'],

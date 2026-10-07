@@ -1,3 +1,0 @@
-    "react-native-pager-view": "8.0.2",
-    "react-native-performance": "6.0.0",
-    "react-native-reanimated": "4.6.0",

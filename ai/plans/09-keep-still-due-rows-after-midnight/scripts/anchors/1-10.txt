@@ -1,1 +1,0 @@
-    expect(mockCreatePrayerSequence).toHaveBeenCalledWith(ScheduleType.Extra, date, 3);

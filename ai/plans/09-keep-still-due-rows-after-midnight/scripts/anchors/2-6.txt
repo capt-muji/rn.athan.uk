@@ -1,2 +1,0 @@
-const canStillFire = (record: NotificationUtils.ScheduledNotification): boolean =>
-  record.date >= TimeUtils.getTodayDateString();

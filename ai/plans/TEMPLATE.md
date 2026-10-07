@@ -22,7 +22,7 @@ see fit", "update any", "relevant", "handle edge cases", "should", "try", "ensur
 
 | Field | Value |
 | --- | --- |
-| Brief | `ai/prompts/<brief>.md` |
+| Brief | `<the file the queue's Brief column names>` |
 | Planned at | `<uat-2 sha>` (version <x.y.z>), <date> |
 | Planned by | Planning session on <date> |
 | Needs first | <Order numbers of rows in ai/plans/README.md that must be DONE, or "nothing"> |
@@ -159,8 +159,8 @@ State the phone left behind at the end (which build, automatic time on).
 
 - **Findings text.** The exact text to add to `ai/features/uat-2/AUDIT-FINDINGS.md`, under an exact heading. Only
   values the executor measures are placeholders, each one named, like `<TESTS_AFTER>`.
-- **Table rows.** The executor sets the `ai/plans/README.md` row to EXECUTED. The exact new cell text for the
-  `ai/prompts/README.md` row is given here for the auditor, who applies it on PASS.
+- **Table rows.** The executor sets the `ai/plans/README.md` row to EXECUTED. The exact new cell text for the queue
+  row is given here for the auditor, who applies it on PASS.
 - **Docs commit.** The docs commit message, starting `<VERSION> - `.
 
 ## 9. Push

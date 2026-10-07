@@ -37,7 +37,7 @@ Display copy by file, which is also the migration order:
 
 ## 2. The English prayer name is an IDENTIFIER, and this is the session's central risk
 
-`scripts/identifier-blast-radius.py` counts every site where an English prayer name is used
+`scripts/identifier-contract.py` enumerates every system where an English prayer name is used
 for something other than drawing. These are not labels. Translating them corrupts user data.
 
 | Use | Production sites | Example |
@@ -216,6 +216,11 @@ and re-arm the full plan, and `ai/AGENTS.md` records that a partial re-arm is ex
 failure session 33 was queued to fix. Whether either platform can localise at DELIVERY time
 instead is a research question with a real payoff, since it would make the re-arm unnecessary.
 
+> **SUPERSEDED 2026-10-07** by `R4-FINDINGS.md` (:7-30, :32-45): delivery-time localisation is
+> closed — `titleLocalizationKey` is inbound-push-only and copy stays frozen at schedule time;
+> and the re-arm needs NO cancel pass, because the deterministic identifiers replace each armed
+> request in place.
+
 Android notification channel names are fixed at creation, and this repo has already learned
 (session 27) that sound, audio attributes and importance are all frozen too, which is why the
 ids carry a `_v4` generation. Whether the NAME alone can be updated in place decides whether a
@@ -240,7 +245,7 @@ second name is drawn. Under owner decision D4 that atom is misnamed for its new 
 ```bash
 python3 ai/plans/39-localisation/scripts/inventory-strings.py
 python3 ai/plans/39-localisation/scripts/classify-strings.py
-python3 ai/plans/39-localisation/scripts/identifier-blast-radius.py
+python3 ai/plans/39-localisation/scripts/identifier-contract.py
 python3 ai/plans/39-localisation/scripts/font-coverage.py   # needs fonttools
 ```
 

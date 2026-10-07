@@ -26,6 +26,7 @@ You found a real design flaw:
 🐋  "We essentially have two primary languages... you'll never actually be able to set English as
 the notification. It seems wrong. We need a better approach."
 
+> SUPERSEDED 2026-09-29: the two-setting model below was the recommendation until the owner objected to its simplicity; the CURRENT answer is the one picker plus the existing language toggle in `ONE-OR-TWO-LANGUAGES.md` (ruling recorded there and in PROPOSALS P1). The survey and shape analysis in this file stand.
 **The cause: one setting was being asked to do two unrelated jobs.** The fix is two independent
 settings:
 
@@ -115,7 +116,7 @@ checkout. Nothing here touches `uat-2`. A mirror sits at `~/athan-localisation-b
 | `SPIKE-EVIDENCE.md` | The `t()` proven at 100% coverage, then deleted |
 | `LOCALIZATION-API.md` | The `expo-localization` API read from the package |
 | `VERSIONS.md` | Registry truth, including the `next`-tag trap |
-| `OWNER-DECISIONS.md` | Your rulings, D1 through D14 |
+| `OWNER-DECISIONS.md` | Your rulings, D1 through D16 (D14 to D16 added after this table was written) |
 | `OPEN-DESIGN-QUESTION.md` | The deadlock as you stated it |
 | `CATALOG-EVIDENCE.md` | Two shipping apps' catalogs, measured |
 | `research/prayer-names.json` | The sourced catalog: 28 locales, with provenance per term |

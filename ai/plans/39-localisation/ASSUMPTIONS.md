@@ -39,7 +39,7 @@ disagree, and they are the rows to read first.
 | B8 | An Android channel can be renamed in place | Two independent sources (R4, R5) plus Microsoft's API docs stating the intended use is exactly a locale change | High | A 3T check. This repo has been burned by documented-but-untrue Android behaviour before |
 | B9 | The notification re-arm needs no cancel pass | Identifiers are deterministic, so a reschedule replaces in place. R4 and R5 agree | High | |
 | B10 | The width cache becomes per-locale | Measured: Swahili is 2.83x English and Arabic 0.85x, so one grow-only max would pin a 226pt column forever for a user who tried one language once | High | R5 argued for one global max, on a cost estimate the measurement shows is far too low |
-| B11 | `expo-localization` is pinned to `58.0.1` from the `next` tag | Confirmed on the day: `latest` is 57.0.2. Same trap row 37 hit | Very high | |
+| B11 | `expo-localization` is pinned to the `next` tag (58.0.1 on the day this was written; dist-tags move — never a remembered pin) | Confirmed on the day: `latest` is 57.0.2. Same trap row 37 hit | Very high | |
 | B12 | The hardcoded-string guard is a Jest source-scan test, not a lint rule | Biome has no `no-literal-string` equivalent; the repo already uses source-reading contract tests (`widgetContract.test.ts`, `flags.test.ts`) | High | |
 | B13 | Widget text is resolved in the app and baked into timeline props | The widget runtime's React is a five-name stub; a module-scope library call blanks every card, which has already happened once | Very high | |
 | B14 | Translated widget payloads fit the guard | Measured: worst case (Thai) is 6% of the 200KB guard, 20x headroom | High | |

@@ -1,1 +1,0 @@
-  const armedListDays = NotificationUtils.genNextXDays(NOTIFICATION_ROLLING_DAYS);

@@ -108,6 +108,9 @@ whale emoji and two spaces (`🐋  `).
 - **Secrets.**
   - Never add a hand-edited release file.
   - Never commit the API key (`~/.config/athan/.api_key`) or print it.
+  - No personal identifier in a tracked file: the hooks run `scripts/check-identifiers.js` at commit,
+    commit-message and push time, backed by a denylist kept outside the repository. If it fires, remove the
+    identifier and commit again — never bypass the hook.
   - Never run `env`, `printenv` or `set` unfiltered: this session's environment holds the gateway key.
   - Never write a gateway address, domain or key into any file.
 - **OpenCode.** Never change anything of OpenCode's: `~/.config/opencode/`, and any OpenCode file in the repository.
@@ -356,8 +359,8 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 ## 8. Finishing a plan
 
 1. **Records.** Apply the plan's records text (section 8) with the values you measured.
-2. **Status.** Set the row in `ai/plans/README.md` to EXECUTED. Never change the table in `ai/prompts/README.md`: the
-   audit session does.
+2. **Status.** Set the row in `ai/plans/README.md` to EXECUTED, leaving the row's final wording to the audit
+   session, which applies the plan's section 8 text on PASS.
 3. **Docs commit.** Make an `executed` docs commit (section 4b). Do not push.
 4. **Worktrees.** Remove any scratch worktree this session made: `git worktree remove --force <path>`, for this
    session's worktrees only, and delete the branch each one carried (`ai/AGENTS.md` section 7: removing the worktree

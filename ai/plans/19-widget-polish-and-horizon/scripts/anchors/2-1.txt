@@ -1,3 +1,0 @@
-CARD_LIGHT = css("#fcfcfe")
-CARD_DARK = css("#252387")
-

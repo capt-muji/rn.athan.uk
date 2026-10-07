@@ -330,7 +330,7 @@ export const catalogLoaders: Record<Locale, () => Promise<{ default: Catalog }>>
 };
 ```
 
-Metro's `inlineRequires` (which this repo has already audited and tuned, ai/prompts/audit-changes-2.md) then bounds evaluation cost to the active locale plus the fallback regardless of how many ship. Plain TypeScript modules, not `JSON.parse` strings: they load as precompiled Hermes bytecode, they carry `as const` types for section 1.3, and at 10 KB each they are nowhere near the literal-size bug.
+Metro's `inlineRequires` (which this repo has already audited and tuned; the audit-changes-2 brief, in git history under ai/prompts/audit-changes-2.md) then bounds evaluation cost to the active locale plus the fallback regardless of how many ship. Plain TypeScript modules, not `JSON.parse` strings: they load as precompiled Hermes bytecode, they carry `as const` types for section 1.3, and at 10 KB each they are nowhere near the literal-size bug.
 
 ### 3.3 Re-render cost of a language switch
 

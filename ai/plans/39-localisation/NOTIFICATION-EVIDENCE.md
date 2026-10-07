@@ -1,5 +1,10 @@
 # Can a notification localise at delivery time? Read from the installed source
 
+> **SUPERSEDED 2026-10-07** in part by `R4-FINDINGS.md`: the open questions below are settled.
+> (:7-30) `titleLocalizationKey` is an inbound-push field only; copy stays frozen at schedule
+> time. (:32-45) the Android channel NAME and description CAN be renamed in place, and the
+> re-arm needs no cancel pass — deterministic identifiers replace each armed request in place.
+
 Owner decision D12 rules that notification copy follows the selected language. The cost of that
 ruling depends entirely on WHEN the copy resolves. This file answers it from
 `expo-notifications@58.0.3` as installed, not from documentation.
