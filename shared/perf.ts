@@ -1,6 +1,6 @@
 /**
  * Performance instrumentation — performance campaign Phase 2
- * (ai/features/performance/)
+ * (campaign record: ai/plans/README.md rows 1-11)
  *
  * Build-time gated by EXPO_PUBLIC_PERF_MONITOR=1 outside production: every
  * export is a no-op and react-native-performance is never even required when

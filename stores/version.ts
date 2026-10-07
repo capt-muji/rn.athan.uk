@@ -180,7 +180,7 @@ export const cacheSchemaChanged = (): boolean => {
 };
 
 /**
- * Reopens the 12-hour notification refresh gate so the next foreground
+ * Reopens the 2-hour notification refresh gate so the next foreground
  * reschedules.
  *
  * Goes through the atom, never the key. `lastNotificationScheduleAtom` is read

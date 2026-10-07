@@ -3,6 +3,9 @@ measured=
 while read -r local_ref local_sha remote_ref remote_sha; do
   [ "$local_sha" = "$zero" ] && continue
 
+  # Before the suite, which takes far longer: a commit made with the hooks off is caught here
+  node scripts/check-identifiers.js --push "$local_sha" || exit 1
+
   # Coverage is measured once, on the checked-out tree, which the gate requires every pushed commit to be
   if [ -z "$measured" ]; then
     yarn validate || exit 1

@@ -74,7 +74,7 @@ const isTodayGapInStoredYear = (): boolean => {
 };
 
 /**
- * Reopens the 12-hour notification refresh gate, through the atom as `stores/version.ts` does
+ * Reopens the 2-hour notification refresh gate, through the atom as `stores/version.ts` does
  *
  * A reschedule that ran before a download landed has already stamped the gate over the days it could find: the
  * post-paint refresh with today missing and tomorrow stored, or 1 January without 31 December. Days arriving
