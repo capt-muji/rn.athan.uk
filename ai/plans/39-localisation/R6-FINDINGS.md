@@ -110,7 +110,7 @@ field, and the launch checklist for any new locale asks explicitly whether the d
 `scripts/catalog-widths.py` measures every locale's widest name, preferring `shortText` where R6
 supplied one, against the 123pt budget.
 
-**19 of 28 locales fit. Seven of the eight launch locales fit.**
+**19 of 28 locales fit. Six of the eight launch locales fit.**
 
 | Over budget | Widest term | Overage |
 | --- | --- | --- |
@@ -124,7 +124,7 @@ supplied one, against the 123pt budget.
 | German | Sonnenaufgang | +3pt |
 
 Compare this session's own working set, which had **five of eight launch locales over budget**. With
-properly sourced terse forms, that falls to **one** (French, by 9pt).
+properly sourced terse forms, that falls to **two** (French +9pt, German +3pt).
 
 So the width problem was mostly an artefact of using literal translations. `CATALOG-EVIDENCE.md`
 reached the same conclusion from the shipping apps, and this confirms it with sourced data.

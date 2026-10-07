@@ -1,3 +1,0 @@
-    expect(triggers()).toEqual(armedWithReminder(ScheduleType.Standard, 'Fajr', '2026-06-21', instant));
-  });
-});

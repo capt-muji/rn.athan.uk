@@ -1,4 +1,0 @@
-      await alertMock._pressButton('Open Settings');
-
-      const result = await permissionPromise;
-      expect(result).toBe(true);

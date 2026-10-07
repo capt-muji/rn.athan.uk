@@ -1,2 +1,0 @@
-import { atom } from 'jotai';
-import { loadable } from 'jotai/utils';

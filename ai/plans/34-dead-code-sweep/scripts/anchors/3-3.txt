@@ -1,2 +1,0 @@
-/** Whether the synchronous bootstrap populated the sequences (readable in tests) */
-export const didBootstrapFromCache = bootstrapFromCache();

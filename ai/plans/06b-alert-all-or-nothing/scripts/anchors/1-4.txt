@@ -1,1 +1,0 @@
-  const scheduled = await Notifications.getAllScheduledNotificationsAsync();

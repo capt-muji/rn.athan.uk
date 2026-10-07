@@ -1,3 +1,0 @@
-    "postinstall": "patch-package",
-    "husky": "husky install",
-    "test": "jest",

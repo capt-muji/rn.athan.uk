@@ -1,2 +1,0 @@
-export const cancelScheduledNotificationById = async (notificationId: string) => {
-  await Notifications.cancelScheduledNotificationAsync(notificationId);

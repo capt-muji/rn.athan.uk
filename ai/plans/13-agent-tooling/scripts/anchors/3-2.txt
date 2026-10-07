@@ -1,3 +1,0 @@
-only consumer.
-
-## 7. Boundaries & Permissions (Three-Tier)

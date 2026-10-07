@@ -1,2 +1,0 @@
-      if (!settledRef.current && !hasSettled(window, nowMs)) return;
-      settledRef.current = true;

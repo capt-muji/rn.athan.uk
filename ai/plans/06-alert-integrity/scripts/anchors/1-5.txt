@@ -1,5 +1,0 @@
-      await alertMock._pressButton('Open Settings');
-
-      await permissionPromise;
-
-      expect(Linking.openSettings).toHaveBeenCalled();

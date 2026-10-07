@@ -1,1 +1,0 @@
-          <Text style={styles.place}>{`accuracy ${oneDecimal(diagnostic?.accuracyDegrees)}`}</Text>

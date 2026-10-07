@@ -1,3 +1,0 @@
-const DEFAULT_TIMING: WithTimingConfig = {
-  duration: ANIMATION.durationSlow,
-};

@@ -1,6 +1,7 @@
 # Global prayer times: what the research settles
 
-**Read this first.** It is the synthesis of eight research reports, 7,238 lines, run in two waves on 2026-09-30.
+**Read this first.** It is the synthesis of twelve research reports, 11,271 lines, run in two waves on 2026-09-30
+(the counts were corrected 2026-10-07 against `wc -l` on `agent-reports/`; RESUME-FROM.md records the same).
 Every claim here is carried by a report that measured it, and the report is named. Nothing in this file is a
 decision: `RECOMMENDATION.md` holds the answer, and `ASSUMPTIONS.md` holds every judgement made without the owner.
 

@@ -1,9 +1,0 @@
-const _addMultipleScheduleNotificationsForPrayer = async (
-  scheduleType: ScheduleType,
-  prayerIndex: number,
-  englishName: string,
-  arabicName: string,
-  alertType: AlertType
-) => {
-  const existingRecords = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
-  Database.clearAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);

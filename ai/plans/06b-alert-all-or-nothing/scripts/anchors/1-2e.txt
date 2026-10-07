@@ -1,3 +1,0 @@
-  if (isAndroidSound) {
-    await NotificationUtils.createReminderAndroidChannel(englishName, intervalMinutes);
-  }

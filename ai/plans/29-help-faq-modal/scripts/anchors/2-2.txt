@@ -1,5 +1,0 @@
-            <Text style={styles.whatsNewLabel}>What&#8217;s new</Text>
-            <Text style={styles.chevron}>›</Text>
-          </Pressable>
-        </View>
-      ) : null}

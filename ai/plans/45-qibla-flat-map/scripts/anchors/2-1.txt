@@ -1,7 +1,0 @@
-        {chromeDeferred && (
-          <>
-            <BottomSheetSound />
-            <BottomSheetSettings />
-            <BottomSheetAlert />
-          </>
-        )}

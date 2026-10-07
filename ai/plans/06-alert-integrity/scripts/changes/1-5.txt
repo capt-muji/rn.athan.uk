@@ -1,8 +1,0 @@
-      const pressed = alertMock._pressButton('Open Settings');
-      await new Promise((resolve) => setTimeout(resolve, 10));
-      returnFromSettings();
-      await pressed;
-
-      await permissionPromise;
-
-      expect(Linking.openSettings).toHaveBeenCalled();

@@ -1,3 +1,0 @@
-  const isStandard = type === ScheduleType.Standard;
-  const listRef = useRef<View>(null);
-  const isFirstRender = useRef(true);

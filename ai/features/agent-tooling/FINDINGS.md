@@ -1,150 +1,67 @@
-# Agent tooling findings (session 13, 2026-09-18)
+# Agent tooling: `@expo/agent-cli` and the dev-launcher URL
 
-`ai/plans/SDK58-PROGRAMME.md` §13, measured against this repository at `1.27.235`. Zero
-app-code changes. Command outputs are verbatim; the logs also live in
-`~/athan-device-sweep/session13/`. The planning session ran the same two commands on
-2026-09-18 as the baseline: status identical, smoke `passed` in 450.7 s with the first
-build at 413.8 s.
+Measured on 2026-09-18 with `@expo/agent-cli` 1.0.16 against this repository at 1.27.235, on the
+iOS simulator. `ai/AGENTS.md` section 6 carries the day to day guidance. This file holds the rulings
+and the numbers behind it.
 
-## Commands run
+## Rulings in force
 
-### `npx -y @expo/agent-cli@1.0.16 status` (exit 0)
+| # | Ruling | Revisit |
+| --- | --- | --- |
+| 1 | Use two commands only: `status` and `smoke --ios`. Nothing is installed or hooked | at the SDK 58 stable re-pin |
+| 2 | Not a devDependency. Run it through `npx @expo/agent-cli@latest <command>` | at the SDK 58 stable re-pin |
+| 3 | The iOS simulator is the verification platform for the dev loop | when a local Android debug build works again |
+| 4 | The owner can overturn any ruling by editing this file and `ai/AGENTS.md` section 6 | |
 
-```
-project     athan · SDK 58.0.0-preview.3 · CNG · dev client · no web
-expo go     not compatible (14 reasons)
-freshness   ios      local stale · eas unknown
-            android  local stale · eas unknown
-            no recorded build
-            EAS was not asked — pass --explain
-dev server  not running (http://127.0.0.1:8081)
-device      android 3T_SERIAL
-auth        <user> · per expo whoami
-next        npx @expo/agent-cli dev --ios → dev-client-stale: expo prebuild --platform ios (+1 more step)
-build       local · this machine has Xcode — Xcode 27.0 at /Applications/Xcode.app/Contents/Developer.
-```
+## Forbidden in a session
 
-Fixed lines the plan predicted: `project`, `expo go`, `auth`, `build`. Varying lines:
+`ai/AGENTS.md` section 6 lists the forbidden commands and why. Three more are off limits because they
+ask EAS for build state: `status --explain`, `status --build` and `--assert`.
+
+Not evaluated: `new`, `install`, `doctor`, `typecheck`, `runtime:*`, `navigate`, `dev`.
+
+## Measured results
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npx -y @expo/agent-cli@1.0.16 status` | 0 | one screen: project, SDK, CNG and dev client, Expo Go compatibility, build freshness, dev server, connected device, auth, next step, local build ability. Starts nothing |
+| `npx -y @expo/agent-cli@1.0.16 smoke --ios` | 0 | `smoke passed`, zero runtime errors over a 3 second window |
+
+`status` lines that stay fixed between runs: `project`, `expo go`, `auth`, `build`. Lines that vary:
 `freshness`, `dev server`, `device`, `next`.
 
-### `npx -y @expo/agent-cli@1.0.16 smoke --ios` (exit 0)
-
-```
-… Looking for a dev server
-… Starting a dev server for this run
-Building the ios development build first, on this machine. This project has none for its current fingerprint, and a native build takes some minutes — nothing is stuck.
-… Waiting for the bundler — a first build takes a while (up to 3m)
-… Checking that this project's own code compiles for ios (up to 3m)
-… Building and installing this project's development build — a native build takes some minutes (up to 30m)
-… Looking for an app attached to the dev server
-… Opening the app on the device, and waiting for it to attach (up to 2m)
-… Asking the app whether its runtime answers
-… Watching what the app reports
-… Taking the picture
-smoke       passed
-dev server  http://127.0.0.1:8081 · via lock, started by this run
-            ok                start-dev-server 322.4s · started for this run at http://127.0.0.1:8081, and stopped again afterwards
-            ok                dev-server 18ms · the dev server started above answered
-            ok                bundler-ready 1ms
-            ok                bundle 1.0s
-            ok                install-app 59.3s · installed the app on SIMULATOR_UDID, and left it there
-            ok                app 5.2s · opened athan:// to connect one
-            skipped           reload · this run opened the app, so it already fetched the bundle the dev server is serving
-            skipped           route · no --route was given, so the app was read where it already was
-            ok                runtime 270ms
-            ok                errors 3.1s
-            ok                screenshot 555ms
-screenshot  $HOME/repos/rn.athan.uk/.expo/agent-cli/smoke-2026-09-18T18-36-30-679Z.png
-environment started the dev server · stopped again
-took        394.6s
-
-Suggested next:
-  npx @expo/agent-cli typecheck                                                          — Nothing threw and the bundle compiled, which is not the same as the types being right — a value that is undefined renders rather than throwing.
-  open $HOME/repos/rn.athan.uk/.expo/agent-cli/smoke-2026-09-18T18-36-30-679Z.png  — The picture of the screen this run took, which is the half of "does it work" that no exit code answers.
-```
-
-Built the dev client when needed, opened the app through the athan:// link, read zero runtime errors over the 3-second window, and stopped the dev server it had started.
-
-## Not run, on purpose
-
-| Command | Reason |
+| `smoke --ios` timing | Seconds |
 | --- | --- |
-| `agents:setup` | writes user-home and project instruction files; OpenCode's and Claude's configuration and a managed `AGENTS.md` block are off limits |
-| `skills:sync` | creates skill symlinks under `.agents/skills/`, repo content beyond this session |
-| `status --explain`, `status --build`, `--assert` | they ask EAS for build state; EAS stays read-only and unbothered |
-| every `--eas` flag | routes to EAS Simulator/Build and spends credits; a session is billed until `simulator:stop` |
-| `deploy` | ships to EAS Hosting |
-| `smoke --android` | the connected OnePlus 3T would be the target, and it holds the owner's installed app |
-| `new`, `install`, `doctor`, `typecheck`, `runtime:*`, `navigate`, `dev` | outside the brief's two commands |
+| Whole run, dev client built in the run | 394.6 |
+| Of which starting the dev server and building | 322.4 |
+| Of which installing the app | 59.3 |
+| Earlier run on a clean machine | 450.7, first build 413.8 |
 
-## Machine notes
+- `smoke --ios` starts its own dev server, builds the dev client when none is recorded for the
+  fingerprint, opens the app through `athan://`, reads runtime errors, takes one picture under
+  `.expo/agent-cli/` and stops the server it started.
+- It leaves `ios/Pods` and the Xcode build products in place, so later runs are incremental.
 
-- The local Android debug-build path fails today (measured by the planning session on the
-  `athan_test_avd` emulator, 2026-09-18, both attempts preserved in the session record):
-  `npx expo run:android --variant debug` first fails at
-  `Failed to apply plugin 'com.android.internal.version-check'` because the generated
-  wrapper pins Gradle 9.3.1 while AGP demands at least 9.4.1; with the wrapper moved to
-  9.4.1 it fails at `Cannot add extension with name 'kotlin', as there is an extension
-  already registered with that name`. The wrapper was put back to 9.3.1. This blocks any
-  local Android dev build from the main checkout and is why the dev-launcher verification
-  ran on the iOS simulator. Not fixed here; whoever owns the local Android build path
-  (the SDK 58 stable re-pin session at the latest) picks it up.
-- The iOS build smoke drives leaves `ios/Pods` and Xcode build artifacts in place, so later
-  smoke runs are incremental and faster than the 450.7 s baseline.
+## Local Android debug build: blocked when measured
 
-## Rulings (autonomous, 2026-09-18; the owner was away)
+`npx expo run:android --variant debug` failed on 2026-09-18 on an emulator, in two ways.
 
-1. **Adopt, narrowly.** `status` and `smoke` are documented in `ai/AGENTS.md` §6 and the
-   root `AGENTS.md` routing table; nothing is installed or hooked. Four commands are
-   forbidden in sessions: `agents:setup`, `skills:sync`, `deploy`, every `--eas` flag; and
-   `smoke --android` is forbidden while the 3T is connected. Revisit at the SDK 58 stable
-   re-pin (session 16).
-2. **No devDependency.** npx keeps the experimental CLI opt-in per session. Revisit at
-   session 16.
-3. **iOS simulator is the verification platform.** The 3T holds the owner's app; the smoke
-   run builds the dev client on the simulator anyway; the Android form is source-verified
-   (`DevLauncherController.kt` parses the same flags; the manifest registers `athan` and
-   `exp+athan`) and its local build path is blocked (machine notes).
-4. **These findings live here**, per the moonsighting `ai/features/` precedent.
-5. **Out of scope:** everything in the not-run table.
+| Wrapper | Failure |
+| --- | --- |
+| Gradle 9.3.1, as generated | `Failed to apply plugin 'com.android.internal.version-check'`: AGP demands at least 9.4.1 |
+| Gradle 9.4.1 | `Cannot add extension with name 'kotlin', as there is an extension already registered with that name` |
 
-The owner can overturn any ruling by editing this file and `ai/AGENTS.md` §6.
+The wrapper stays at 9.3.1. Nobody has fixed or re-measured this. The SDK 58 stable re-pin is the
+latest point at which it is picked up. Re-measure before relying on it either way.
 
-## Dev-launcher URL verification
+## Dev-launcher launch URL
 
-### Measured on the iPhone 17 Pro Max simulator (SIMULATOR_UDID), 2026-09-18
+`ai/AGENTS.md` section 6 holds the link's shape and its flags. These facts are recorded only here,
+read on the iOS simulator dev build.
 
-| Proof | What was opened | Screenshot | vision's answer |
-| --- | --- | --- | --- |
-| A: plain link | `athan://expo-development-client/?url=http%3A%2F%2F127.0.0.1%3A8081` | `devlauncher-A-default.png` | no dev FAB, dev-menu onboarding sheet over the lower screen (see the divergence note), app up behind it, countdown 1m 2s |
-| B: both flags | `…&disableFab=1&disableAutoLaunch=1` (same link, flags appended) | `devlauncher-B-flags.png` | no dev FAB, no dev menu, app up, countdown 1m 32s |
-| C: plain relaunch | `simctl launch com.mugtaba.athan` | `devlauncher-C-persist.png` | no dev FAB, no dev menu at launch, app up, countdown 1m 3s |
-| D: FAB control | preference forced on (`defaults write … EXDevMenuShowFloatingActionButton -bool true`), then the plain link | `devlauncher-D-fabcontrol.png` | still no dev FAB, app up, countdown 1m 38s |
-
-The exact launch URL shape, verified: the flags belong on the OUTER link (a flag inside
-the encoded `url` value is ignored; expo-dev-launcher's own tests pin that), and the
-value must be exactly `1`. Proof B's plist read-back
-(`~/athan-device-sweep/session13/devlauncher-B-prefs.txt`): after the flagged link,
-`EXDevMenuShowFloatingActionButton => false`, `EXDevMenuShowsAtLaunch => false`,
-`EXDevMenuIsOnboardingFinished => true`, all three persisted through proof C's plain
-relaunch. The different countdown times between A and B prove each link re-loaded the app
-from Metro (the dev mock re-seeds at every load). The iOS 26.5 finding: the dev-menu FAB
-(an opaque blue circle with a white gear, a different thing from the app's own
-translucent hex-nut settings button at bottom-centre) never renders on this
-scene-life-cycle dev build, with the preference forced on (proof D), so `disableFab`'s
-visible effect here is nothing to hide; its effect is the persisted preference. Android
-parses the same flags (`DevLauncherController.kt:144-151`, value exactly `1`) and the
-generated manifest registers `athan` and `exp+athan`; on an Android emulator the Metro
-host is `10.0.2.2:8081`. Source-verified only, not device-verified, because the local
-Android debug-build path is blocked (machine notes above).
-
-Divergence from the plan's expected answers, recorded honestly (executor ruling, owner
-away): proof A's link opened onto the dev menu's first-run onboarding sheet ("This is the
-developer menu…"), because the step's own preference reset had deleted
-`EXDevMenuIsOnboardingFinished` and a genuinely fresh install has not finished onboarding.
-The planner's baseline A ran in a container where onboarding was already finished, which
-is why the plan predicted "none". The sheet changes nothing A exists to prove: the link
-still loaded the app from Metro (countdown `1m 2s`, a different seed from B's `1m 32s`)
-with no dev FAB anywhere, and proof B's flagged link finished onboarding, exactly as its
-plist (`EXDevMenuIsOnboardingFinished => true`) records.
-
+| Fact | Evidence |
+| --- | --- |
+| `disableFab=1` persists | `EXDevMenuShowFloatingActionButton` reads `false` after the flagged link and after a plain relaunch |
+| `disableAutoLaunch=1` persists | `EXDevMenuShowsAtLaunch` reads `false`, same two reads |
+| The flagged link finishes onboarding | `EXDevMenuIsOnboardingFinished` reads `true` |
+| A fresh install opens the dev menu's onboarding sheet on a plain link | the sheet shows until onboarding is finished; the app still loads behind it |

@@ -1,5 +1,11 @@
 # What R7 settles: the deadlock, with the industry's own vocabulary
 
+> **SUPERSEDED 2026-10-07** in part: the two-setting conclusion below is superseded by
+> `ASSUMPTIONS.md` A1 REVISED + `ONE-OR-TWO-LANGUAGES.md` (ONE setting plus the existing toggle,
+> second name derived). The evidence here survives: the naming grounds and survey are folded into
+> `research/R7-TWO-LANGUAGE-MODEL.md`, the migration pin into A1b, Muslim Pro into A2, the buffer
+> halving into A4.
+
 R7 (`research/R7-TWO-LANGUAGE-MODEL.md`, 514 lines) surveyed how apps with the same structure solve
 this, then tested the two-setting model against it. The model holds. The naming changes, and R7
 found one cost this session had missed.

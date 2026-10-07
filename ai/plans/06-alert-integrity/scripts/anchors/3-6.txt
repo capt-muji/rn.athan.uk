@@ -1,2 +1,0 @@
-  await Promise.all(promises);
-  logger.info('REMINDER: Rescheduled all reminders for schedule:', { scheduleType });

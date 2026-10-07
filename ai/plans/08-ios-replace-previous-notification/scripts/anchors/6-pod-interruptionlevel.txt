@@ -1,3 +1,0 @@
-    if let interruptionLevel = interruptionLevel {
-      content.interruptionLevel = interruptionLevel.toUNNotificationInterruptionLevel()
-    }

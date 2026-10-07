@@ -1,3 +1,0 @@
-jest.mock('jotai/vanilla', () => {
-  const vanilla = jest.requireActual('jotai/vanilla');
-  const { INTERNAL_buildStoreRev3: buildStore } = jest.requireActual('jotai/vanilla/internals');

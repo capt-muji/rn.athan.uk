@@ -28,7 +28,8 @@ a document. `PLANNER-BRIEF.md` section 0 has the rule in full.
 1. `ai/plans/README.md`.
 2. `ai/plans/EXECUTOR-BRIEF.md`: the rules the executor worked under.
 3. The plan folder of the row you audit: `PLAN.md`, every step file, `scripts/`, `LOG.md`.
-4. `ai/prompts/README.md`: the standing rules and the owner's decisions.
+4. `ai/prompts/README.md`, when the row's brief is one of the two kept there: its standing rules and the owner's
+   decisions recorded in it.
 5. `__tests__/README.md`: the test pattern.
 
 ## 2. Pick the plan
@@ -82,7 +83,9 @@ Remove it when done, and always before 00:00, when a nightly job clears build fo
    Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use
    read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.
 7. **The owner's rules.** No visual change, no substituted prayer time, no hand-edited release file, no touch of `uat` or EAS, no
-   API key, no ignore comment, no skipped hook.
+   API key, no ignore comment, no skipped hook. No personal identifier in a tracked file: the hooks run
+   `scripts/check-identifiers.js` at commit, commit-message and push time, backed by a denylist kept outside the
+   repository. If it fires, remove the identifier and commit again — never bypass the hook.
 8. **The records.** The `AUDIT-FINDINGS.md` text and the table rows are accurate against everything above.
 
 ## 4. Verdict
@@ -101,8 +104,8 @@ Then act on the verdict:
 - **PASS.** Nothing to fix.
   1. Set the row to DONE only when it was EXECUTED. After a section 2, item 2 audit, leave its status as it is, and
      write in `AUDIT.md` the last step audited.
-  2. On `docs/audit-<N>-$(date +%Y%m%d-%H%M)`, bump the version, and commit `AUDIT.md`, the row, and, when the row
-     became DONE, the `ai/prompts/README.md` row text from the plan's section 8.
+  2. On `docs/audit-<N>-$(date +%Y%m%d-%H%M)`, bump the version, and commit `AUDIT.md` and the row with the final
+     row text from the plan's section 8, which is what turns it DONE.
   3. Review that commit yourself: run `git show <sha>` and read it back cold, checking the row, `AUDIT.md` and the
      records text against what this audit actually found.
   4. Merge `--no-ff` into `uat-2`. Push with `git push origin uat-2` only if `git log --oneline origin/uat-2..uat-2`
@@ -129,8 +132,8 @@ Then act on the verdict:
 - **If your context runs low before the fixes are done.** Write "Resume from:" at the top of `AUDIT.md`, naming what is
   fixed and what is not. Leave the row at EXECUTED, commit and merge what is finished, do not push, and tell the owner
   to type `athan-next`: it starts another audit session, which carries on. The work stays with the auditor.
-- **Owner decisions.** Anything only the owner can decide is asked with AskUserQuestion in this session, and recorded in
-  `AUDIT.md` and `ai/prompts/README.md`.
+- **Owner decisions.** Anything only the owner can decide is asked with AskUserQuestion in this session, and recorded
+  in `AUDIT.md` and in the queue row it concerns.
 
 ## 5. Finish
 

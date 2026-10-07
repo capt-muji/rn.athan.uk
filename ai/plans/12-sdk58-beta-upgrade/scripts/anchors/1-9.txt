@@ -1,3 +1,0 @@
-    "@types/react": "~19.2.4",
-    "expo-dev-client": "~57.0.19",
-    "husky": "8.0.3",

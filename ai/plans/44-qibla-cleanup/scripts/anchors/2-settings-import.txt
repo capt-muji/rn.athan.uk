@@ -1,1 +1,0 @@
-import { hasLocationPermission, openLocationSettings, requestLocationPermission } from '@/device/qibla';

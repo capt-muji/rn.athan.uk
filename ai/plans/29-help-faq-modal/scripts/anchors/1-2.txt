@@ -1,2 +1,0 @@
-/** Whether the What's New popup should be shown (post-update announcement) */
-export const popupWhatsNewEnabledAtom = atom(false);

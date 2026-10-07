@@ -1,4 +1,0 @@
-    expect(checked.length).toBeGreaterThan(250);
-    expect(violations).toEqual([]);
-  });
-});

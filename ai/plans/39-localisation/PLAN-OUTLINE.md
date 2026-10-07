@@ -23,7 +23,9 @@ and each step is independently shippable.
 
 | Step | Title | Kind | Depends on |
 | --- | --- | --- | --- |
-| 1 | `expo-localization` at the pinned `58.0.1`, and the device `Intl` probe | specified | 38 complete |
+| 1 | `expo-localization` from the `next` tag (58.0.1 on the day this was written), and the device `Intl` probe | specified | 38 complete |
+> SUPERSEDED 2026-09-29: the two-setting model in this step was superseded by the owner's simplicity objection; the current answer is `ONE-OR-TWO-LANGUAGES.md` (one picker plus the existing toggle). PLAN.md follows that file when it is written.
+
 | 2 | The two settings: atoms, storage keys, migration from `preference_show_arabic_names` | specified | 1 |
 | 3 | First-run locale negotiation, `system` versus `user` mode | specified | 2 |
 | 4 | The language sheet, built on the sound sheet's pattern | specified | 2 |
@@ -40,7 +42,7 @@ verbatim. Everything else is `(specified)`.
 
 ## The owner decisions the plan must carry into section 2.1
 
-Taken and recorded in `OWNER-DECISIONS.md`: D1 through D14.
+Taken and recorded in `OWNER-DECISIONS.md`: D1 through D16 (D14 to D16 added after this outline was written).
 
 **Still open, and proposed rather than decided** (`PROPOSALS.md`):
 

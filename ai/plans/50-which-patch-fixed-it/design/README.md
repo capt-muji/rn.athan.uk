@@ -10,25 +10,15 @@ people are visual learners."
 **He chose design 3, the comet trail.** 🐋  "Very nice. I love it. Let's go for comet, comet Trail,
 number 3, comet Trail."
 
-## What is here
-
-| File | What it is |
-| --- | --- |
-| `designs.mjs.txt` | All ten designs, verbatim, as the generator that drew them |
-| `render.mjs.txt` | The filmstrip harness: one card per design, five frames across one loop |
-| `palette.mjs.txt` | `COLORS.qibla.away`, copied verbatim from `shared/constants.ts` |
-| `verify.mjs.txt` | The SHIPPED geometry, re-implemented from `shared/qiblaWave.ts`, rendered through the same harness |
-| `out/ALL-TEN.png` | All ten strips on one page, which is what the owner judged from |
-| `out/CHOSEN-comet-trail.png` | Design 3 alone, at full size |
-| `out/SHIPPED-check.png` | What the app's own geometry draws, for comparison against the design |
-
-To redraw: copy the four `.txt` files into a directory, rename them to `.mjs`, and run
-`node render.mjs designs.mjs out`.
-
-## Why a filmstrip rather than a still
-
-An animation cannot be judged from one frame, and the owner judges by eye. Each design is sampled at
-five points through one loop and laid out left to right, so the motion is readable from a still image.
+The design work was judged from rendered filmstrips (one card per design, five frames across one loop —
+an animation cannot be judged from one frame). The ten generators, the render harness and the three
+result PNGs lived in this folder; deleted in the record compression, recoverable from git (`b6949511`
+1.29.221 added the designs and the shipped-check render, `e99d2411` 1.29.223 the shake-gate ruling), or regenerable by re-implementing
+them: each design was a Node canvas generator; the shipped-geometry check re-implemented `wavePoint`,
+`waveTrail`, `waveLean` and `waveRoll` verbatim from `shared/qiblaWave.ts` and rendered them through
+the same harness, matching design 3 — same tail, same lean, phone narrowing to edge-on at each
+crossing. The port was PROVEN rather than assumed (session 45's rule), because a Node design and its
+TypeScript port can drift silently.
 
 ## The ten, and what each was trying to do
 
@@ -45,15 +35,13 @@ five points through one loop and laid out left to right, so the motion is readab
 | 9 | Ripple pool | Rings spread like a stone dropped on water |
 | 10 | Needle finding north | A needle settles as the phone waves: cause and effect in one picture |
 
-**Design references consulted**: Apple's own compass HUD, which asks the user to tilt the phone to roll
-a ball around a ring until it FILLS (a progress metaphor rather than a bare instruction, which is what
-designs 2, 5 and 8 borrow); Android's figure-eight prompt; and the app's own Rub el Hizb jewel and
-eight-point star from the compass design locked in at session 45.
+Design references: Apple's compass HUD (tilt to roll a ball until the ring FILLS — the progress
+metaphor designs 2, 5 and 8 borrow), Android's figure-eight prompt, and the app's own Rub el Hizb
+jewel and eight-point star from session 45's locked compass design. **Design 9 was weaker than the
+rest and is recorded as such rather than defended**: the ripple pool still read as scattered circles
+rather than water after a revision pass.
 
-**One design was weaker than the rest and is recorded as such rather than defended**: 9, the ripple
-pool, still reads as scattered circles rather than water even after a revision pass.
-
-## The revision pass, and what reading them back found
+## The revision pass, and what reading the frames back found
 
 Every strip was rendered, read, and redrawn once. The first pass had real faults:
 
@@ -66,21 +54,13 @@ Every strip was rendered, read, and redrawn once. The first pass had real faults
 | 8's ticks overflowed its cell and its jewel collided with the phone | Scatter reduced, jewel removed |
 | 3's tail was a row of circles, reading as a chain | Redrawn as three stacked strokes of one path |
 
-## How the port was proven, rather than assumed
-
-The design is a Node generator; the app is TypeScript. Session 45 established that the port must be
-PROVEN, because the two can drift silently. `verify.mjs.txt` re-implements the shipped `wavePoint`,
-`waveTrail`, `waveLean` and `waveRoll` verbatim from `shared/qiblaWave.ts` and renders them through the
-same harness. `out/SHIPPED-check.png` is the result, and it matches design 3: the same tail, the same
-lean, and the phone visibly narrowing to edge-on at each crossing.
-
 ## Two constraints from the owner that shaped the implementation
 
 **The glow is three stacked strokes, not a shadow** (🐋  "with the 1+3T, and Android, can't really do
 glows and shadows"). React Native's `shadow*` props do not cross to Android and `elevation` cannot blur
 a stroke, so a real glow would be iOS-only. Three passes of one path at falling width and opacity read
-as a glow on both platforms, and the owner had already spotted the technique in the design: 🐋  "I see
-you have like 3 layers of yellow to kind of mimic a glow."
+as a glow on both platforms, and the owner had already spotted the technique: 🐋  "I see you have like
+3 layers of yellow to kind of mimic a glow."
 
 **The phone banks like an aircraft** (🐋  "so that the user knows to actually turn the phone like an
 airplane, not just sideways"). `waveRoll` scales the phone horizontally through edge-on at each

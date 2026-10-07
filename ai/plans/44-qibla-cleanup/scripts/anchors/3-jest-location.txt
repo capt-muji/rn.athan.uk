@@ -1,1 +1,0 @@
-  '^expo-location$': '<rootDir>/shared/__mocks__/expo-location.ts',

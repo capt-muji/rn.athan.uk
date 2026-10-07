@@ -1,3 +1,0 @@
-  const attempts = await settleAll(
-    nextXDays.map((date) =>
-      scheduleReminderNotificationForDate(

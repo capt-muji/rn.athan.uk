@@ -1,5 +1,7 @@
 # The prayer row, redesigned for a 123pt budget
 
+> PREMISE RE-MEASURED: the 123pt budget here was the measurement error `BOTH-COLUMNS.md` corrects (21/24 fit 320dp with both columns; the queue row 39 guard is `first + second + 129pt <= screenWidth`). Do not act on layers premised on 123pt; the sourcing rules below stand (owner ruling D16).
+
 The derived budget changes this from "some languages need shorter names" to "the current row
 composition does not fit most languages". That deserves a design rather than a patch.
 

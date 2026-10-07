@@ -1,3 +1,0 @@
-export function clearAllScheduledRemindersForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
-  clearPrefix(`scheduled_reminders_${scheduleType}_${prayerIndex}`);
-}

@@ -1,242 +1,119 @@
-# ISSUE #37 — the background task demands a network it never uses
+# ISSUES #37: the readings, the commands and the rules
 
-Opened 2026-09-24 by the owner's question during the 1.27.326 soak: this app is
-offline-first, so why should connectivity decide whether the notification refresh runs?
+`ai/ISSUES.md` #37 holds the symptom, the cause, the patch in place and the upstream state. This file
+holds what it points here for: the readings per phone, the commands that give an immediate verdict,
+the rules for patching an Expo module, and what is still unwitnessed. The last section is the
+procedure that verifies alarms after a reboot.
 
-It should not. Everything below is the case for that, the measurements behind it, and the
-options for fixing it.
+## What was measured
 
----
+| Fact | Reading |
+| --- | --- |
+| Cost on the OnePlus 3T, 2026-09-24 | the job sat 3h16m overdue with `Unsatisfied constraints: CONNECTIVITY`, `Ready: false`, while the phone held a validated link and pinged at 0% loss |
+| The stale flag is the phone's | other packages' jobs, a Google app among them, sat behind the same flag; a Wi-Fi off and on cycle did not clear it |
+| Enqueue time or run time | run time. The dump shows `Tracking: CONNECTIVITY TIME`, and the constraint moves between the satisfied and unsatisfied lists as the link changes. The job is deferred, never dropped |
+| Not the cause of ISSUES #36 | the 8T's job recorded `CONNECTIVITY` satisfied and was waiting out its interval |
 
-## 1. The constraint, and where it lives
+## Proof, with and without the patch
 
-`expo-background-task` applies a network requirement to every task it schedules, on both
-platforms, with no way to switch it off.
+Local Release builds, mock data, 2026-09-24. Unpatched is 1.27.335, patched is 1.27.336.
 
-**Android** — `node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt:107`
-
-```kotlin
-val constraints = Constraints.Builder()
-  .setRequiredNetworkType(NetworkType.CONNECTED)
-  .build()
-```
-
-Applied to both scheduling paths in the same file: the `OneTimeWorkRequest` used on API 26
-and above (`.setConstraints(constraints)` at :124) and the periodic builder used on
-Android 14-15.
-
-**iOS** — `node_modules/expo-background-task/ios/BackgroundTaskScheduler.swift:93`
-
-```swift
-let request = BGProcessingTaskRequest(identifier: ...)
-request.requiresNetworkConnectivity = true
-request.requiresExternalPower = false
-request.earliestBeginDate = Date().addingTimeInterval(intervalSeconds)
-```
-
-**The public API offers no escape.** `BackgroundTaskOptions` in
-`src/BackgroundTask.types.ts` has exactly one field:
-
-```ts
-export type BackgroundTaskOptions = {
-  minimumInterval?: number;
-};
-```
-
-Installed version: `expo-background-task@58.0.3`.
-
-### Which platforms and versions it actually hits
-
-Not uniform, and the asymmetry is itself a finding. Android has two scheduling paths and
-**only one of them applies the constraint**:
-
-| Path | Condition | Constraint applied? | Line |
+| Phone | Build | Required constraints | Non-forced run while offline |
 | --- | --- | --- | --- |
-| `OneTimeWorkRequest` + `setInitialDelay` | `SDK_INT >= O` (API 26+) | **yes**, `.setConstraints(constraints)` | :124 |
-| `PeriodicWorkRequest` | `SDK_INT < O` (API 25 and below) | **no**, `builder.build()` with no constraints | :149-155 |
-| iOS `BGProcessingTaskRequest` | all versions | **yes**, `requiresNetworkConnectivity = true` | Swift :93 |
+| OnePlus 3T, Android 9, API 28 | unpatched | `TIMING_DELAY CONNECTIVITY` | refused, exit 22 |
+| OnePlus 3T, Android 9, API 28 | patched | `TIMING_DELAY`, no `Network type:` line | `Running job`, exit 0, headless cold start with no app process |
+| Oppo Find X8, Android 16, API 36 | patched, `com.mugtaba.athan.fleettest` | `TIMING_DELAY FLEXIBILITY` | `Running job`, exit 0, headless |
+| Oppo Find X8, same moment | unpatched, the installed `com.mugtaba.athan` | `TIMING_DELAY CONNECTIVITY FLEXIBILITY` | refused, exit 22 |
+| iPhone XS, iOS 18 | patched | the persisted task options hold the flag as `0` and survive a restore | cannot be forced on a Release build |
 
-So every device this app ships to is affected on Android, because `minSdk` is 24 but the
-API 26+ branch covers effectively the whole fleet, and every iOS device is affected. The
-pre-API-26 branch escaping the constraint looks like an oversight rather than a decision,
-and is worth raising in the same breath: the two paths should agree.
+- The patched and unpatched packages ran side by side on the Find X8, so that pair is a controlled
+  comparison on one phone at one instant.
+- The alarm count held across each run: 4 on the 3T, 21 on the Find X8's installed app.
+- The iOS proof is at request level only. The Android side carries the end to end offline run.
 
-The fleet as tested:
+## The commands that give an immediate verdict
 
-| Device | Serial | OS | API | Path taken | Constrained | Flag state as found |
-| --- | --- | --- | --- | --- | --- | --- |
-| OnePlus 3T | `3T_SERIAL` | Android 9 | 28 | OneTimeWork | yes | **stuck unsatisfied** with a validated link |
-| Oppo Find X8 | `X8_SERIAL` | Android 16 (ColorOS `16.0.10.500`) | 36 | OneTimeWork | yes | satisfied |
-| iPhone XS | `IPHONE_UDID` | iOS 18.7.x | — | BGProcessingTask | yes | n/a |
-
-Both ends of the supported Android range are covered by the fleet: API 28 and API 36, seven
-major versions apart, and both take the constrained path. The permission differs across them
-(`SCHEDULE_EXACT_ALARM` on API 31, auto-granted `USE_EXACT_ALARM` on API 36) but the network
-constraint does not.
-
----
-
-## 2. Why this app does not need it
-
-The background task exists to roll the 2-day alarm window forward. That work is a pure
-read of the MMKV cache.
-
-`rescheduleAllNotificationsFromBackground` (`stores/notifications.ts`) calls `sync()`
-first, and already treats it as optional:
-
-```ts
-try {
-  await sync();
-} catch (error) {
-  logger.error('BACKGROUND_TASK: Data refresh failed, rescheduling from cache', { error });
-}
-```
-
-The comment above it states the intent plainly: "Best-effort by design: a sync failure
-(e.g. API unreachable) must not skip the reschedule itself, which still rolls the window
-from cache."
-
-So the code is already correct for an offline device. The reschedule that follows reads
-`Database.getPrayerByDateString` and arms alarms from stored times. The API is fetched
-about once a year (`markYearAsFetched`), and the app is documented as fully offline after
-first sync.
-
-The result is a contradiction: **our own task body is built to survive having no network,
-and the scheduler refuses to start it without one.**
-
----
-
-## 3. What it costs, measured
-
-OnePlus 3T, 2026-09-24, during the 1.27.326 soak.
-
-The job was overdue by 3h16m and had never run:
-
-```
-Required constraints:    TIMING_DELAY CONNECTIVITY
-Satisfied constraints:   TIMING_DELAY DEVICE_NOT_DOZING BACKGROUND_NOT_RESTRICTED
-Unsatisfied constraints: CONNECTIVITY
-Ready: false
-```
-
-`TIMING_DELAY` satisfied means the 3-hour interval elapsed exactly as asked. The only
-thing holding it was the network flag. Meanwhile, from the same adb shell:
-
-```
-2 packets transmitted, 2 received, 0% packet loss   (ping 8.8.8.8)
-NetworkAgentInfo ... WIFI CONNECTED/CONNECTED ... VALIDATED ... SSID "WIFI_NAME"
-```
-
-The device had a validated link and working internet. A WiFi off/on cycle did not clear
-the flag.
-
-**The staleness is device-wide, not ours.** The same unsatisfied constraint sat on other
-packages' jobs at the same moment:
-
-- `com.google.android.apps.tachyon` (Google Meet)
-- `com.qualcomm.qti.qms.service.connectionsecurity`
-- `com.mugtaba.athan.fleettest`
-
-So there are two separate problems stacked here, and they should not be confused:
-
-| Problem | Owner | Severity |
-| --- | --- | --- |
-| The task requires a network it never uses | expo-background-task | design flaw, affects every offline device |
-| JobScheduler's connectivity flag goes stale | this 3T / Android 9 | device fault, Google's own apps hit it too |
-
-The library flaw is what turns the device fault into silence. Without the constraint, a
-stale flag would be irrelevant to us.
-
-**Forcing the job proved the body is fine**:
-
-```
-cmd jobscheduler run -f com.mugtaba.athan.fleettest 7
-BackgroundTaskConsumer: Executing task 'NOTIFICATION_REFRESH_TASK'
-TaskService: Started headless task 1 to keep JS timers alive
-```
-
-No app process existed beforehand. The task ran headlessly, the alarm set stayed correct
-at 4, and the next run re-enqueued at `+2h58m32s956ms`.
-
----
-
-## 4. What it did NOT cause
-
-It is not behind ISSUES #36, and saying so would be a tidy, wrong story.
-
-The 8T's job at 21:53 on 2026-09-23 recorded:
-
-```
-Required constraints:    TIMING_DELAY DEADLINE IDLE CONNECTIVITY PROTECT_FORE CPU
-Satisfied constraints:   CONNECTIVITY DEVICE_NOT_DOZING BACKGROUND_NOT_RESTRICTED WITHIN_QUOTA PROTECT_FORE CPU
-Unsatisfied constraints: TIMING_DELAY DEADLINE IDLE
-```
-
-`CONNECTIVITY` is in the satisfied list. That phone was simply waiting out its six-hour
-interval. #36 was the refresh gate trusting a timestamp; #37 is this. Independent.
-
----
-
-## 5. Who else is affected
-
-Any offline-capable app using `expo-background-task`. The library's own docs describe the
-task as suited to "syncing data with a server", so the constraint matches the assumed use
-case; it is the absence of an opt-out that is the defect, not the default.
-
-For a prayer app the exposure is specific and unpleasant: a user in airplane mode
-overnight, on a plane, in a dead-signal area, or on a phone with a stuck flag loses the
-unattended recovery that keeps alarms armed, and the app is silent until they open it.
-
----
-
-## 6. Options, with honest trade-offs
-
-| # | Option | Cost | Risk | Verdict |
-| --- | --- | --- | --- | --- |
-| 1 | Upstream PR: make the constraint opt-out via `BackgroundTaskOptions` | a PR plus release lag | low, additive and backwards-compatible | **the right fix** |
-| 2 | `patch-package` the two lines while waiting | small, precedent exists (G.1, the alarmClock backport) | must be re-verified on every SDK bump; invisible if undocumented | viable bridge, only alongside 1 |
-| 3 | Own the WorkManager scheduling in `modules/` | a native module we maintain forever | duplicates the library; more surface than the bug | no |
-| 4 | Accept it, rely on the foreground gate | nothing | offline users keep losing unattended recovery | current state, not a resolution |
-
-**Recommendation: 1, with 2 as the bridge if the upstream lag is long.** Both need
-device proof, not just a green build: arm alarms, put the device in airplane mode, wait
-out the interval, and confirm the task runs anyway.
-
-Rejected outright: editing `node_modules` in place. It vanishes on the next install and
-leaves no trace for the next reader.
-
----
-
-## 7. Open questions for the debugging session
-
-1. Does WorkManager evaluate the constraint at enqueue time or at run time? If at run
-   time, a device that regains a network later should run the job late rather than never,
-   which changes how bad this is.
-2. What does iOS actually do with `requiresNetworkConnectivity = true` on a device in
-   airplane mode? Deferral until connectivity returns, or a skipped window?
-3. Does the constraint survive `MY_PACKAGE_REPLACED` and reboot re-enqueues, or is it
-   re-applied fresh each time?
-4. Is there a second path worth having entirely, given the task needs no network: an
-   alarm-driven refresh like `modules/widgetrefresh` already does for widgets, which would
-   sidestep WorkManager constraints altogether?
-5. Would upstream accept `requiresNetwork?: boolean` on `BackgroundTaskOptions`, defaulting
-   true so nothing changes for existing users?
-
----
-
-## 8. Reproducing it
+`cmd jobscheduler run` without `-f` refuses a job whose constraints are unmet and names the reason.
+It turns a three hour wait into an immediate answer.
 
 ```bash
-# Arm something, then cut the network and wait out the interval
-adb -s <serial> shell svc wifi disable
-adb -s <serial> shell svc data disable
-adb -s <serial> shell dumpsys jobscheduler | grep -A20 com.mugtaba.athan | \
-  grep -E "Required|Satisfied|Unsatisfied|Ready"
-# expect: CONNECTIVITY unsatisfied, Ready: false, no run at the interval
-
-# The body itself is fine, which the forced run shows
-adb -s <serial> shell cmd jobscheduler run -f com.mugtaba.athan <jobId>
+adb -s <serial> shell dumpsys jobscheduler | grep -A20 <package> | grep -E "Required|Satisfied|Unsatisfied|Ready|Tracking|Network type"
+adb -s <serial> shell cmd jobscheduler run <package> <jobId>
 ```
 
-Count alarms with `ai/features/reboot-rearm/count-alarms.sh`, never a bare `grep -c`: the
-dump repeats each alarm under "Next wake from idle" as well as in its batch.
+| Output | Meaning |
+| --- | --- |
+| `Running job`, exit 0 | every constraint is met |
+| `has functional constraints but --force not specified`, exit 22 | a constraint is unmet |
+
+`-f` bypasses constraints. It proves the task body runs and nothing about the constraints.
+
+## Rules for patching an Expo module
+
+- A patch to an Expo module's Android source is a no-op while its `expo-module.config.json` declares
+  a `publication` block. Autolinking then resolves the module to its prebuilt AAR and Gradle never
+  compiles the patched Kotlin. The patch removes that block. The build log then shows
+  `:expo-background-task:compileReleaseKotlin`.
+- Verify a native patch by its runtime effect, never by a green build.
+- iOS compiles the module from source through its podspec, so it has no such trap.
+
+## Still unwitnessed
+
+| Item | Detail |
+| --- | --- |
+| Natural fire at the 3 hour interval | not seen on either platform. The 3T's connectivity flag was stale and the iPhone's scheduler log was unreachable. The interval reaches the OS correctly on both (`Minimum latency: +2h59m`, `minimumInterval = 180`) |
+| Offline fire on iOS | not tested; the system cannot be forced to launch a Release build |
+| The Android path below API 26 | upstream applies no constraint there (`PeriodicWorkRequest`), so the two Android paths disagree. Raise it if a maintainer asks |
+
+## Witness a natural background refresh on Android
+
+Source: in git history under `ai/RUNBOOK-background-tasks.md` (`:361-363`, `:442-457`, `:517-526`).
+Re-read against the installed `expo-background-task` 58.0.7.
+
+1. Launch the app once. Read the job: `adb -s 3T_SERIAL shell dumpsys jobscheduler | grep -A20 com.mugtaba.athan`.
+   Note the job number and the time. Due is that time plus the interval (`BACKGROUND_TASK_INTERVAL_HOURS`,
+   `shared/constants.ts:168`).
+2. Do not launch the app again before due. Every launch unregisters and registers the task, which restarts the
+   interval (`stores/notifications.ts:1935-1943`).
+3. Choose the state to test. Foreground: leave the app open. Backgrounded:
+   `adb -s 3T_SERIAL shell input keyevent KEYCODE_HOME`. Process death: HOME, then
+   `adb -s 3T_SERIAL shell am kill com.mugtaba.athan`. Never use `am force-stop` for this: it cancels the job and
+   every alarm (ISSUES #18).
+4. A fire is proven by two readings, never by `Minimum latency`. On OxygenOS and ColorOS that field shows the
+   requested delay and does not count down. Read the job number again: it increments on each enqueue. Read logcat
+   for the tags `BackgroundTaskWork` and `BackgroundTaskScheduler`: `doWork: Running worker`
+   (`BackgroundTaskWork.kt:19`), then `Enqueuing worker ...` with the interval in minutes
+   (`BackgroundTaskScheduler.kt:123`).
+5. Pass: the fire lands within minutes of due and the next enqueue is one interval later. With the app in the
+   foreground the library defers the run by the smaller of 60 minutes and the interval
+   (`BackgroundTaskScheduler.kt:241-246`), so a foreground run that is late by that much is correct.
+6. A shorter wait needs a build with `EXPO_PUBLIC_BG_INTERVAL_MINUTES` between 15 and 1440
+   (`shared/constants.ts:179-214`). `EXPO_PUBLIC_BG_DEBUG=1` logs a launch snapshot of the persisted interval
+   (`device/backgroundTaskDebug.ts:65`). Neither works in a production build.
+
+On an iPhone the same check reads the system log for `submitTaskRequest:`, which prints the earliest begin date.
+Low Power Mode and a user force-quit both suppress the task, and iOS rate-limits intervals under an hour. The
+record already says the iPhone's scheduler log was unreachable and a Release build cannot be forced.
+
+## Verify alarms after a reboot
+
+Run on a phone that is free to reboot. Count with `count-alarms.sh`, never a bare `grep -c`: the
+dump repeats each alarm under "Next wake from idle" as well as inside its batch.
+
+```bash
+ai/features/reboot-rearm/count-alarms.sh <serial>          # the count
+ai/features/reboot-rearm/count-alarms.sh <serial> --list   # the armed instants, then the count
+```
+
+| Case | Steps | Pass |
+| --- | --- | --- |
+| Reboot, app never opened | arm two prayers on Sound, record `--list`, `adb reboot`, wait for `sys.boot_completed=1`, do not open the app | the same instants return with `window=0`; one fires on its athan channel, not the fallback |
+| Alarms lost, then healed | record the count, `am force-stop`, count again, cold launch, count again | the count drops, then returns to the first set after one launch |
+| The interval reached the OS | read `dumpsys jobscheduler` after a launch | `Minimum latency` matches `BACKGROUND_TASK_INTERVAL_HOURS` |
+
+- Read the phone's own clock for anything timed.
+- Wait up to two minutes after `boot_completed` before judging: the restore can land that late.
+- A force-stop can leave the one imminent alarm armed. One survivor does not mean the buffer
+  survived.
+- Reference readings on the 3T at 1.27.326: 3 armed, 1 after force-stop, 3 after one cold launch;
+  after a reboot the set returned within 14 seconds and a prayer fired 5 ms after its instant.

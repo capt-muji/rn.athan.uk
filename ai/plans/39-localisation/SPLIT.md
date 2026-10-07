@@ -43,7 +43,7 @@ through `t()` and every structural decision made.
 
 | # | Work | Why it is here |
 | --- | --- | --- |
-| 39.1 | `expo-localization` at the pinned `58.0.1`, first-run locale negotiation, the `system` versus `user` mode | Nothing depends on it until a second language exists |
+| 39.1 | `expo-localization` from the `next` tag (58.0.1 on the day this was written), first-run locale negotiation, the `system` versus `user` mode | Nothing depends on it until a second language exists |
 | 39.2 | The two settings (`App language`, `Prayer names`) with their migration from `preference_show_arabic_names` | Owner-facing, and P1 must be settled first |
 | 39.3 | The language sheet, built on the sound sheet's pattern with its warming trick | Additive UI |
 | 39.4 | The sourced glossary: 11 names plus 5 explanations, per locale, with provenance | R6 produces the data |

@@ -1,5 +1,0 @@
-  const attempts = await Promise.all(
-    nextXDays.map((date) =>
-      scheduleNotificationForDate(scheduleType, prayerIndex, date, englishName, arabicName, alertType, sound)
-    )
-  );

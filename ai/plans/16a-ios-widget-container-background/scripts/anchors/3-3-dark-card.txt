@@ -1,3 +1,0 @@
-    card: 'rgba(18, 14, 40, 0.95)',
-    eyebrow: '#ff69b4',
-    hero: '#ffffff',

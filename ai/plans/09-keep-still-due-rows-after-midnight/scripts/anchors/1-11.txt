@@ -1,1 +1,0 @@
-    const { createPrayerSequence, createPrayersForDate } = actualPrayer();

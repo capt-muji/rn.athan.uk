@@ -3,7 +3,7 @@
 ## 0. Scope & Discovery
 
 - **Recursive Logic**: Subdirectory `AGENTS.md` overrides root for that folder
-- **Tool Compatibility**: This file is tool-agnostic. Pointers (root AGENTS.md, .cursorrules) redirect here
+- **Tool Compatibility**: This file is tool-agnostic. The root `AGENTS.md` redirects here
 - **Risk Profile**: Aggressive (fix and report)
 
 ### Read at the start of EVERY session, not only this file (owner rule 2026-09-12)
@@ -102,30 +102,30 @@ Play through the in-app updates API. **Never recreate it, and never add a hand-e
 
 ## 2. Stack & Versions
 
-Verified against `package.json` on 2026-09-18 at app version 1.27.226, after the SDK 58 beta
-wave (session 12). When these drift again, `package.json` is the source of truth.
+Verified against `package.json` and the installed `node_modules` on 2026-10-07. When these
+drift again, `package.json` is the source of truth.
 
 | Category        | Technology              | Version         |
 | --------------- | ----------------------- | --------------- |
-| Framework       | React Native            | 0.88.0-rc.0      |
-| Platform        | Expo                    | ~58.0.0-preview.3 |
-| UI Library      | React                   | 19.2.3          |
+| Framework       | React Native            | 0.88.0-rc.2     |
+| Platform        | Expo                    | 58.0.0-preview.7 |
+| UI Library      | React                   | 19.3.0          |
 | Language        | TypeScript              | ~7.0.2 (strict) |
-| Routing         | Expo Router             | ~58.0.4         |
-| State           | Jotai                   | 2.20.3          |
+| Routing         | Expo Router             | 58.0.8          |
+| State           | Jotai                   | 3.0.0           |
 | Storage         | React Native MMKV       | 4.3.2           |
-| Animation       | React Native Reanimated | 4.6.0 (worklets 0.12.2) |
-| Audio           | Expo Audio              | ~58.0.0         |
-| Notifications   | Expo Notifications      | ~58.0.3         |
-| Background      | expo-background-task / expo-task-manager | ~58.0.3 / ~58.0.4 |
-| Updates         | expo-updates            | ~58.0.5         |
+| Animation       | React Native Reanimated | 4.7.0 (worklets 0.13.0) |
+| Audio           | Expo Audio              | ~58.0.2         |
+| Notifications   | Expo Notifications      | ~58.0.7         |
+| Background      | expo-background-task / expo-task-manager | ~58.0.7 / ~58.0.8 |
+| Updates         | expo-updates            | ~58.0.9         |
 | Dates           | date-fns / date-fns-tz  | 4.4.0 / 3.2.0   |
-| Widgets         | expo-widgets            | ~58.0.3         |
-| Widget UI       | @expo/ui (SwiftUI)      | ~58.0.3         |
+| Widgets         | expo-widgets            | 58.0.5 (pinned exact) |
+| Widget UI       | @expo/ui (SwiftUI)      | 58.0.5 (pinned exact) |
 | Colour picker   | reanimated-color-picker | 5.1.3           |
 | Logging         | Pino                    | 10.3.1 (dev)    |
-| Testing         | Jest                    | 30.5.1          |
-| Lint + Format   | Biome                   | 2.5.13          |
+| Testing         | Jest                    | ^30.4.2 (30.5.2 installed) |
+| Lint + Format   | Biome                   | 2.5.14          |
 | Package Manager | Yarn                    | 1.x             |
 
 ### Deliberately ahead of Expo's pins
@@ -136,12 +136,12 @@ roll back three packages this project moved forward on purpose:
 
 | Package | Installed | `--fix` would install |
 | --- | --- | --- |
-| `jest` | 30.5.1 | ~29.7.0 |
-| `@types/jest` | 30.0.0 | 29.5.14 |
+| `jest` | 30.5.2 | ~29.7.0 |
+| `@types/jest` | ^30.0.0 | 29.5.14 |
 | `typescript` | 7.0.2 | ~6.0.3 |
 
 `npx expo install --check` is safe and reports the same three. Name every package
-explicitly when upgrading. `@types/node` 26.4.0 is also ahead of its `latest` dist-tag on
+explicitly when upgrading. `@types/node` 26.6.3 is also ahead of its `latest` dist-tag on
 purpose, because that tag tracks the Node LTS line.
 
 ## 3. Repo Map & Entry Points
@@ -154,45 +154,46 @@ purpose, because that tag tracks the Node LTS line.
 │   ├── Navigation.tsx     # Tab navigation
 │   └── Screen.tsx         # Screen wrapper
 ├── components/            # Reusable UI components
-│   ├── Prayer.tsx         # Prayer time display row
-│   ├── CountdownBar.tsx    # Countdown progress bar
-│   ├── Overlay.tsx        # Large text overlay (accessibility)
-│   ├── BottomSheetShared.tsx # Shared bottom sheet utilities (background, backdrop, styles)
-│   ├── BottomSheetSettings.tsx # Settings bottom sheet (Masjid icon tap)
-│   ├── BottomSheetSound.tsx # Athan sound selector
-│   ├── SettingsToggle.tsx # Reusable toggle component for settings
-│   ├── Alert.tsx          # Alert component
-│   └── Modal*.tsx         # Modal popups (Tips, Times, Update)
+│   ├── prayer/            # Prayer list, rows, Alert, Explanation, countdown aid (prayer/)
+│   ├── countdown/         # Countdown + bar, tip geometry (countdown/)
+│   ├── day/               # Day header, shown-date logic
+│   ├── overlay/           # Large-text accessibility overlay + veil + catcher geometry
+│   ├── modals/            # Help, Modal, Update, WhatsNew
+│   ├── sheets/            # Bottom sheets: parts/ (Toggle, LabeledToggle) + screens/
+│   │                      # (Alert+alertDraft, Settings, Sound+soundSheet, ColorPicker,
+│   │                      #  Qibla + Compass + Wave, ReminderCard)
+│   └── ui/                # Error, Icon, Masjid, Glow, BackgroundGradients, SettingsButton…
 ├── stores/                # Jotai atoms & state management
 │   ├── database.ts        # MMKV storage interface
 │   ├── notifications.ts   # Notification scheduling (2-day buffer)
 │   ├── sync.ts            # API sync logic
-│   ├── countdown.ts           # Countdown state atoms
-│   ├── schedule.ts        # Schedule atoms
-│   ├── overlay.ts         # Overlay state
-│   ├── version.ts         # App version detection & cache clearing
-│   ├── ui.ts              # UI state (date, settings)
-│   └── widget.ts          # Widget IO layer: reads cache + prefs, pushes timelines (iOS)
+│   ├── countdown.ts / schedule.ts / overlay.ts / ui.ts / version.ts / widget.ts
+│   ├── bootstrap.ts       # Launch-time wiring
+│   └── atoms/             # Atom definitions (overlay)
 ├── widgets/               # iOS widget LAYOUTS only ('widget'-directive functions, serialized at build)
 │   ├── PrayerWidget.tsx   # Home screen layouts — ONE shared function registered as PrayerWidget + ExtrasWidget (systemSmall trio; systemMedium adds the day list with the active pill: indigo standard / rose extras)
 │   └── LockPrayerWidget.tsx # Lock Screen layouts — ONE shared function registered as PrayerLockWidget + ExtrasLockWidget (accessoryRectangular/Inline; circular registered but renders blank)
 ├── modules/               # Local Expo modules (compiled in via autolinking)
-│   └── tls13/             # Android: TLS 1.3 provider install via ContentProvider (ISSUES.md #21 — API is TLS 1.3-only; Android <=9 needs GMS ProviderInstaller BEFORE any HTTP client is built)
-├── hooks/                 # Custom React hooks
-│   ├── useAnimation.ts    # Reanimated animation hook
-│   ├── useNotification.ts # Notification management
-│   ├── usePrayer.ts       # Prayer data hook
-│   └── useSchedule.ts     # Schedule hook
+│   ├── tls13/             # Android: TLS 1.3 provider install via ContentProvider (ISSUES.md #21 — API is TLS 1.3-only; Android <=9 needs GMS ProviderInstaller BEFORE any HTTP client is built)
+│   ├── qiblaheading/      # Native heading sensor module (iOS cone, Android fused)
+│   └── widgetrefresh/     # Widget timeline refresh plumbing
+├── hooks/                 # Custom React hooks (useSchedule, usePrayer, useCountdown,
+│                          #  useCountdownBar, useNotification, useQibla, usePrayerSequence…)
 ├── shared/                # Utility functions
 │   ├── logger.ts          # Pino logger instance
-│   ├── time.ts            # Time calculations (parseNightBoundaries helper)
+│   ├── time.ts            # Time + night-boundary calculations
+│   ├── prayer.ts          # Prayer derivation (getNightTimesForDay)
 │   ├── notifications.ts   # Notification utilities
+│   ├── flags.ts           # Feature flags (widgets etc.)
 │   ├── types.ts           # TypeScript interfaces
 │   ├── widgetTimeline.ts  # PURE widget timeline builder (no RN imports)
 │   ├── widgetTypes.ts     # Widget props contract + settings snapshot types
+│   ├── qibla*.ts          # Compass/heading/geometry/settle/wave modules
 │   ├── __tests__/         # Unit tests (Jest) incl. widget contract & simulation suites
 │   └── __mocks__/         # Module mocks for testing
-├── device/                # Platform-specific code
+├── device/                # Platform-specific code (tasks, listeners, notifications, qibla, updates, tls13)
+├── api/                   # client.ts + config.ts (API access)
+├── plugins/               # Config plugins (widget assets/grid, gradle memory, portrait-only, notification replace-previous)
 ├── mocks/                 # Test fixtures
 │   ├── simple.ts          # Mock API data, today seeded at each download (dev mode)
 │   └── full.ts            # Full-year reference dataset (structure reference, unused)
@@ -213,32 +214,12 @@ purpose, because that tag tracks the Node LTS line.
 API Fetch → Process (strip old dates, add derived prayers) → Cache in MMKV → Display with Reanimated countdowns → Schedule notifications
 ```
 
-**Architecture Diagram:**
+**Architecture (layers, top to bottom):**
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                                   APP                                        │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
-│  │   Screens   │    │ Components  │    │   Hooks     │    │   Stores    │  │
-│  │  app/*.tsx  │───▶│ components/ │◀───│  hooks/     │◀───│  stores/    │  │
-│  └─────────────┘    └─────────────┘    └─────────────┘    └──────┬──────┘  │
-│                                                                   │         │
-│  ┌────────────────────────────────────────────────────────────────┼───────┐ │
-│  │                         SHARED LAYER                           │       │ │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │       │ │
-│  │  │ time.ts  │  │prayer.ts │  │  types   │  │constants │       │       │ │
-│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │       │ │
-│  └────────────────────────────────────────────────────────────────┼───────┘ │
-│                                                                   │         │
-│  ┌────────────────────────────────────────────────────────────────▼───────┐ │
-│  │                         DEVICE LAYER                                   │ │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                 │ │
-│  │  │ MMKV Storage │  │ Notifications│  │   Updates    │                 │ │
-│  │  │  database.ts │  │   device/    │  │   device/    │                 │ │
-│  │  └──────────────┘  └──────────────┘  └──────────────┘                 │ │
-│  └────────────────────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────────────────┘
+Screens (app/) → Components (components/) ← Hooks (hooks/) ← Stores (stores/)
+                                                        ↘ Shared layer (shared/: time, prayer, types, constants)
+Device layer: MMKV storage (stores/database.ts) · Notifications (device/) · Updates (device/)
 ```
 
 **File Dependency Map:**
@@ -248,26 +229,26 @@ Prayer Display Flow:
   stores/schedule.ts (atoms)
     └─▶ hooks/useSchedule.ts
          └─▶ hooks/usePrayer.ts
-              └─▶ components/Prayer.tsx
-                   └─▶ components/PrayerTime.tsx, PrayerAgo.tsx, Alert.tsx
+              └─▶ components/prayer/List.tsx
+                   └─▶ components/prayer/Time.tsx, Ago.tsx, Alert.tsx
 
 Countdown Flow:
   stores/countdown.ts (atoms)
     └─▶ hooks/useCountdown.ts
-         └─▶ components/Countdown.tsx
+         └─▶ components/countdown/Countdown.tsx
     └─▶ hooks/useCountdownBar.ts
-         └─▶ components/CountdownBar.tsx
+         └─▶ components/countdown/Bar.tsx
 
 Notification Flow:
   shared/notifications.ts (utilities)
     └─▶ stores/notifications.ts (scheduling logic)
          └─▶ hooks/useNotification.ts
-              └─▶ components/Alert.tsx
+              └─▶ components/prayer/Alert.tsx
 
 Settings Flow:
   stores/ui.ts (preference atoms)
-    └─▶ components/BottomSheetSettings.tsx
-         └─▶ components/SettingsToggle.tsx, ColorPickerSettings.tsx
+    └─▶ components/sheets/screens/Settings.tsx
+         └─▶ components/sheets/parts/LabeledToggle.tsx, components/sheets/screens/ColorPicker.tsx
 
 Data Sync Flow:
   api/client.ts
@@ -302,10 +283,10 @@ Data Sync Flow:
 - **Design**: env transport + ONE typed reader. `shared/flags.ts` holds `FEATURE_FLAGS`; each flag is `process.env.EXPO_PUBLIC_<NAME> === '1'` with JSDoc naming its flip condition. Only the exact string `1` enables; absence/`0`/typos disable (fail direction: mistakes disable, never enable). Metro inlines the value at build time, so disabled branches dead-code-eliminate in Release.
 - **Single reader rule**: no module other than `shared/flags.ts` may spell an `EXPO_PUBLIC` flag variable. The one exception: `app.config.ts` mirrors the `widgets` flag to strip the `expo-widgets` plugin at prebuild (importing TS there would need `tsx`); `shared/__tests__/flags.test.ts` pins the mirror and the flag in lockstep.
 - **Catalog**: `.env.example` (committed) documents every variable; local `.env` stays untracked and holds personal values; production builds pass the API key inline via shell env only.
-- **Tests**: `jest.setup.js` (setupFiles) sets `EXPO_PUBLIC_WIDGETS=1` globally; disabled-path tests delete the variable and `jest.resetModules()` + `jest.isolateModules()` to re-evaluate `flags.ts` fresh.
+- **Tests**: `jest.setup.js` deletes `EXPO_PUBLIC_IOS_WIDGETS` only, so tests see the shipped flag defaults; enabled-path suites hoist a `jest.mock('@/shared/flags')` instead, and disabled-path tests delete the variable and use `jest.resetModules()` + `jest.isolateModules()` to re-evaluate `flags.ts` fresh.
 - **What's New interplay**: items may declare `flags: ['widgets']`; `filterWhatsNewItems` removes them when disabled and `VISIBLE_WHATS_NEW` (null when nothing remains) is what UI consumes — a dark feature can never be advertised.
 - **Lifecycle**: when a flag's flip condition lands, change the default in `flags.ts` in a version-bumped release; once stable, delete the flag (gate, `.env.example` line, and all). Flags are scaffolding, not furniture.
-- **Current flags**: `widgets` (iOS Home/Lock widgets, OFF — G.1/G.2 render-chain breakage until `expo-widgets@57.0.16` from expo/expo#49244 is verified on the XS per the G.1 acceptance protocol; Android is unaffected by this flag) and `androidWidgets` (Android home-screen widgets via expo-widgets' SDK 58 Glance implementation, OFF — added by session 15, same lifecycle as the iOS flag; flips on when the owner judges the 3T styling/performance proof and releases it; Android widgets push snapshots, not timelines: the layout computes content at render time from a 14-day carried window, minute-fresh while the app runs via reload flips, refreshed by the background task every ~3h with the app closed, stale card past the horizon; the PNG card/pill/moon drawables regenerate with `python3 scripts/generate-widget-assets.py`). Widgets-release note (owner 2026-09-09): users with Background App Refresh off go silent after the 2-day notification buffer while their widget keeps ticking its 14-day timeline — accepted risk; detection/warning deliberately not built (revisit only if observed in daily use).
+- **Current flags**: both ship ON (`.env.example`: `EXPO_PUBLIC_IOS_WIDGETS=1`, `EXPO_PUBLIC_ANDROID_WIDGETS=1`; owner ruling 2026-09-25). `widgets` (iOS Home/Lock widgets via expo-widgets — the G.1/G.2 render-chain identity bug was fixed upstream in expo-widgets 58.0.1, shipped here from app version 1.27.378; see ISSUES.md G.1 for the acceptance history) and `androidWidgets` (Android home-screen widgets via expo-widgets' SDK 58 Glance implementation — Android widgets push snapshots, not timelines: the layout computes content at render time from a 14-day carried window, minute-fresh while the app runs via reload flips, refreshed by the background task every ~3h with the app closed, stale card past the horizon; the PNG card/pill/moon drawables regenerate with `python3 scripts/generate-widget-assets.py`). Widgets-release note (owner 2026-09-09): users with Background App Refresh off go silent after the 2-day notification buffer while their widget keeps ticking its 14-day timeline — accepted risk; detection/warning deliberately not built (revisit only if observed in daily use).
 
 ### Animation (Reanimated 4)
 
@@ -337,7 +318,8 @@ Data Sync Flow:
 ### Error Handling
 
 - Use `try/catch` for async operations
-- Display errors via `components/Alert.tsx`
+- Display errors via `components/ui/Error.tsx` (ErrorScreen; consumed by `app/_layout.tsx`'s ErrorBoundary)
+- In-app alert UI is `components/prayer/Alert.tsx`
 - Log errors with Pino before displaying
 
 ### Imports
@@ -349,7 +331,7 @@ import { useAtom } from 'jotai';
 
 // 2. Internal (@/ alias)
 import { logger } from '@/shared/logger';
-import { Prayer } from '@/components/Prayer';
+import { Prayer } from '@/components/prayer/Prayer';
 ```
 
 ### Testing (Jest)
@@ -366,7 +348,7 @@ import { Prayer } from '@/components/Prayer';
 Use when a parent component needs to read internal state from a child component (e.g., for deferred commit on modal close). This is a new pattern for this codebase - use sparingly.
 
 ```typescript
-// Child component (AlertMenu.tsx)
+// Child component (AlertMenu inside components/sheets/screens/Alert.tsx)
 import { forwardRef, useImperativeHandle, useState } from 'react';
 
 export interface AlertMenuRef {
@@ -384,7 +366,7 @@ export const AlertMenu = forwardRef<AlertMenuRef, Props>(({ type, index }, ref) 
   return <View>...</View>;
 });
 
-// Parent component (Alert.tsx)
+// Parent component (components/sheets/screens/Alert.tsx)
 import { useRef } from 'react';
 import { AlertMenu, AlertMenuRef } from './AlertMenu';
 
@@ -405,7 +387,7 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
 - Extract duplicated logic into named helper functions
 - Keep helpers private (not exported) when used in one file
 - Add JSDoc with `@example` for reusable helpers
-- Example: `parseNightBoundaries()` in `shared/time.ts`
+- Example: `getNightTimesForDay()` in `shared/prayer.ts`
 
 **Section Comments:**
 
@@ -419,7 +401,7 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
 
 - Complex animation logic goes in dedicated hooks
 - Hooks return animation values + control functions
-- Example: `useAlertAnimations.ts`, `useAlertPopupState.ts`
+- Example: `useAlertAnimations.ts`, `useAlertSwapBounce.ts`
 
 **Concurrent Operation Protection:**
 
@@ -436,12 +418,12 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
    export const mySettingAtom = atomWithStorage('preference_my_setting', false, storage);
    ```
 
-2. **Add to BottomSheetSettings.tsx**:
+2. **Add to components/sheets/screens/Settings.tsx**:
 
    ```typescript
    const [mySetting, setMySetting] = useAtom(mySettingAtom);
-   // Add SettingsToggle component in JSX
-   <SettingsToggle
+   // Add LabeledToggle component in JSX
+   <LabeledToggle
      icon={<MyIcon />}
      label="My Setting"
      value={mySetting}
@@ -466,7 +448,7 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
 
 3. **Add UI control** in relevant component using `Alert.tsx` pattern
 
-4. **Add tests** in `shared/__tests__/notifications.test.ts`
+4. **Add tests** in `stores/__tests__/notifications.test.ts`
 
 #### Add a New Utility Function
 
@@ -484,7 +466,7 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
    ```
 
 2. **Add tests** in `shared/__tests__/[filename].test.ts`:
-   - Copy from `_template.test.ts`
+   - Copy from `_template.example.ts`
    - Test happy path, edge cases, errors
 
 3. **Run validation**: `yarn validate`
@@ -507,7 +489,7 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
 
 3. **If uses animations**: Follow `useAlertAnimations.ts` pattern
 
-4. **If uses popups/timers**: Follow `useAlertPopupState.ts` pattern
+4. **If uses popups/timers**: Follow `useAlertSwapBounce.ts` pattern
 
 ## 5. File Types & Locations
 
@@ -519,9 +501,8 @@ return <AlertMenu ref={alertMenuRef} type={type} index={index} />;
 | Utilities    | `shared/`                           | camelCase.ts                  |
 | Types        | `shared/types.ts`                   | Centralized                   |
 | Tests        | Co-located                          | `*.test.ts`                   |
-| **Features** | `ai/features/[name]/description.md` | **User-written requirements** |
-| **Progress** | `ai/features/[name]/progress.md`    | **AI-generated task tracker** |
-| ADRs         | `ai/adr/`                           | NNN-title.md                  |
+| **Features** | `ai/features/[name]/FINDINGS.md`    | **Findings + requirements** (the older per-feature `description.md`/`progress.md` convention is retired; those files are in git history) |
+| ADRs         | `ai/adr/NNN/ADR.md`                 | Numbered folder per decision  |
 
 ## 6. Commands (Copy/Paste Ready)
 
@@ -614,28 +595,14 @@ npx tsc --noEmit                      # Typecheck project
 
 ### AI Session Prompts
 
-Use these prompts to start specialized sessions:
+The one prompt that starts every queued session is `athan-next` (the queue is `ai/plans/README.md`). The per-task
+prompt files that used to live in `ai/prompts/` left the repository in the 2026-10-07 clean-up; only the two
+moonsighting research briefs remain, and the queue names them where they are still owed. Their completed work is
+recorded in the queue and in git history. The one resumable prompt whose record is still load-bearing:
 
-| Task                 | Prompt File                    | Description                         |
-| -------------------- | ------------------------------ | ----------------------------------- |
-| **Cleanup/Refactor** | `ai/prompts/cleanup.md`        | DRY, simplify, document, format     |
-| **Documentation**    | `ai/prompts/document.md`       | Add JSDoc, comments, README updates |
-| **New Feature**      | `ai/prompts/feature-init.md`   | Initialize feature with plan        |
-| **New ADR**          | `ai/prompts/architect-init.md` | Create architecture decision record |
-| **Code audit (changes, part 2)** | `ai/prompts/audit-changes-2.md` | Continues task 20 from 1.25.30; carries what part 1 learned about `inlineRequires`, mock contamination and the hook |
-| **Large-screen adaptation** | `ai/prompts/large-screen-adaptation.md` | Resumable feature: phone-view scaling for iPad/tablet/desktop-web (tracker inside) |
-| **ISSUES #37 network constraint** | `ai/prompts/issue-37-network-constraint.md` | expo-background-task refuses to run the refresh without a network the refresh never uses (CLOSED locally: patched, merged, upstream PR expo/expo#50581 open) |
-| **Android widget sizing (15d)** | `ai/prompts/android-widget-proportional-sizing.md` | DONE 2026-09-24: the Android medium sizes its columns from the width the launcher grants, stamped by the native tick |
-
-**Quick Start Examples:**
-
-```
-# Cleanup session
-Read ai/prompts/cleanup.md
-
-# Add docs to a file
-Read ai/prompts/document.md
-```
+| Task | Where | Description |
+| --- | --- | --- |
+| **ISSUES #37 network constraint** | `ai/features/reboot-rearm/ISSUE-37-NETWORK-CONSTRAINT.md` | expo-background-task refuses to run the refresh without a network the refresh never uses (CLOSED locally: patched, merged, upstream PR expo/expo#50581 open) |
 
 ### AI Tooling (project-scoped)
 
@@ -706,7 +673,7 @@ rebuild. They are detached, they carry no branch, and they stay.
 - Edit node_modules
 - Remove failing tests
 - Modify CI configuration
-- Run blocked commands (see Safety section in init.md)
+- Run blocked commands (the forbidden-commands list lives in git history under `ai/prompts/init.md`, sha 4b6c1f26, deleted in the 2026-10-07 clean-up)
 - Create shell script workarounds
 - Use `console.log` (use Pino logger)
 
@@ -830,44 +797,16 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 6. **Report Evidence**: Show commands run + outputs
 7. **Cleanup Before Exit**: Remove empty files/folders
 
-## 10. Orchestrator + Specialists + Skills
+## 10. Orchestrator + Specialists + Skills (LEGACY — superseded)
 
-### Orchestrator Responsibilities
-
-- Decompose work into tasks
-- Route to appropriate specialist
-- Guide user through proper workflow
-- Verify outputs against criteria
-- Enforce consistency
-- Track session artifacts
-- Pre-exit cleanup
-
-### Specialist Roles
-
-**CRITICAL: Implementer Workflow**
-
-- NEVER run compile/typecheck commands (tsc, yarn tsc, etc.)
-- After implementation, swap to ReviewerQA to verify code consistency
-- Always ask user to test manually when 100% confident code works
-
-| Specialist  | Responsibility              | When to Use              |
-| ----------- | --------------------------- | ------------------------ |
-| RepoMapper  | Discover codebase structure | New repo                 |
-| Architect   | Plan features, draft specs  | New feature, complex bug |
-| Implementer | Write production code       | After spec approved      |
-| TestWriter  | Create test coverage        | After implementation     |
-| ReviewerQA  | Security/quality review     | Before merge             |
-
-### Decision Tree
-
-- **New feature?** → Architect (spec) → Implementer → TestWriter
-- **Bug with error?** → Implementer + TestWriter
-- **Bug without error?** → Architect (trace logic)
-- **Refactor?** → ReviewerQA (risks) → Implementer
-
-### Skills
-
-- APIContract, SecurityAudit, PerformanceProfile, DocumentationAudit, ConsistencyAudit, CleanupAudit
+**This section predates the 2026-09-26 owner ruling (section 0): subagents are banned except
+`vision`, and ONE session does the planning, the execution and the audits itself.** The
+orchestrator/specialist split (RepoMapper, Architect, Implementer, TestWriter, ReviewerQA) and
+its decision tree describe work that a session now does itself, in one pass — read them as role
+checklists for the single session, not as agents to spawn. "Never run compile/typecheck" and
+"ask the user to test manually" no longer apply: `yarn validate` runs in-session after changes.
+The section's Skills list (APIContract, SecurityAudit, PerformanceProfile, DocumentationAudit,
+ConsistencyAudit, CleanupAudit) still names the review lenses to apply before declaring work done.
 
 ## 11. Memory / Lessons Learned
 
@@ -895,7 +834,7 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 
 - [2026-10-07] **A WRONG QIBLA IS WORSE THAN NONE, SO NO CLOCK MAY EVER DRAW THE COMPASS, and on Android the one reader that works is Google's** (session 53, 1.29.247 to 1.29.258, accepted by the owner on three phones: 🐋 "on the iOS, it works. Perfectly... iPhone is locked in place. Android, let's also lock it in place. It's about 98% accurate."). **THE OWNER TESTED THREE ANDROID BUILDS IN ONE NIGHT AND EACH ANSWERED A DIFFERENT QUESTION.** The basic `expo-location` compass beside Google's Fused Orientation Provider was jittery and wrong, which is the rule of 2026-10-02 again: a second sensor reader beside the compass degrades it. The basic compass ALONE was 🐋 "horrible... a slight change in direction makes it spin about 50 degrees". Google's sensor alone was right and smooth once the phone had been waved. **GOOGLE'S OWN ERROR FIGURE CANNOT GATE ANYTHING**, read off 374 frames of his screen recording: it never passed 15, it froze for the length of an open, and it did not follow the truth (81.2 with the needle 3 degrees out, 22.7 with it 75 out, 180 with it right). So on Android the user's WAVE vouches for the heading, and **the wave is measured from the attitude quaternion the fused sensor already sends with each heading, so nothing else reads a sensor**: a turn counts when the phone is 30 degrees or more, by any axis, from the attitude last COUNTED at, judged as a squared dot product against `cos(15)` with the two lengths multiplied back in, and eight turns make a wave. Counting from the last counted attitude is what makes a slow turn add up while a light shake never does. **THE RULING THAT REVERSED 2026-10-02:** 🐋 "I would rather not show at all. I don't want the burden of showing the wrong location." Both ceilings are deleted. An Android phone is drawn when waved, an iPhone inside 15 degrees either way or on a warm reopen, and neither on time alone. After five seconds a phone that cannot be vouched for is told *Could not find north* and *Please try standing in a different location*, and the arrival haptic fires only when the hint had been up a second or the phone was waved. He was advised to keep a long last-resort ceiling and ruled against it, and he ruled phones with no gyroscope out of scope. **FIVE PROCESS LESSONS, each of which cost something.** (1) **A design attacked BEFORE its code is finished is the cheapest review there is:** one reviewer, read-only against a fixed commit, found three blockers in the wave gate's design while it was being built, among them a phone that reports the sensor and delivers nothing, and an angle taken through `acos` that is not a number for half of all single-precision quaternions. (2) **`ls` a path before writing a file a plan calls NEW:** the plan named `shared/qiblaWave.ts`, which is the hint's drawing, and the session overwrote it and its suite for four minutes before `tsc` named the missing exports. (3) **A break script proves nothing unless the suite it runs is green first:** one run printed 50 of 50 while a miscounted assertion was already failing, so every break was caught by a suite that failed anyway. (4) **A guard in the sheet can HIDE a fault in the hook from every test:** once the report was rendered only beside the hint, three breaks survived, each a wait or a report left standing behind a drawn compass, and each is seen only when the hint returns, so the test has to wait for that. (5) **A native module's JavaScript binding is code like any other:** `modules/qiblaheading/index.ts` stood at 0% under an `UNMEASURED` entry whose reason named a different file, and `modules/**` is now inside `collectCoverageFrom`. **AND ONE ABOUT EVIDENCE:** a model of the dial's smoothing predicted it would trail Google's 50 readings a second by tens of degrees for seconds. Three frames of his recording showed it within half a second, and he judged it 🐋 "very, very smooth". The phone outranks the model.
 
-- [2026-10-03] **TWENTY OPENS ON THE REAL PHONES BEAT EVERY SIMULATION IN THIS PROGRAMME, because the simulations' shared premise was false** (session 52's close, 1.29.239 to 1.29.243; the handoff is `ai/plans/NEXT-SESSION-QIBLA-ACCURACY-GATE.md`). The owner ran 5 still and 5 waving opens per phone across both handsets, cold and warm, and reported: 🐋 "For both phones, absolutely no difference in terms of accuracy, both of them. Always show the animation, always, always show the animation for about 2 seconds... So shaking the phone doesn't actually do anything at all. Nor does cold, nor does warm." **THREE PREDICTIONS DIED AT ONCE.** (1) **The predicted 9.7-second wait does not exist: the real wait is 2.7 seconds and it is a STOPWATCH rather than a convergence.** `hasSettled`'s span check is `SETTLE_WINDOW_MS * 0.9`, and on his phones the other two conditions are already satisfied (8 readings arrive in about 570ms at the measured ~14Hz, and the drift test passes on the first reading), so the gate sits holding a CORRECT heading waiting for the clock. (2) **There is no cold start, because hard-iron estimation and sensor fusion are OS-LEVEL services**: clearing app data, force-stopping and reinstalling do not reset them, so a phone in daily use hands the app an already-converged fusion and session 48's 30-degrees-out first reading never appears. **"Cold" for the app is not cold for the phone.** (3) **Waving does nothing ON HIS PHONES and the gesture is still the only one that can work**, which is not a contradiction: NXP AN4246's own fit puts a flat still phone at 497.6% of the hard-iron offset unremoved and the figure of eight at 1.3%, and his OS has already removed what there was, so the wave is insurance against a state he is not in. **THE OWNER CAUGHT THIS PROGRAMME CONTRADICTING ITSELF AND WAS RIGHT**: it called the wave insurance and then proposed dropping the instruction, and he answered 🐋 "But then if we remove that, the user is not going to shake their phone. And we're going to lose the insurance. So maybe we should just keep everything as is." The geometry proves him right, and it is the same degenerate case AN4246 describes: **the turn a user makes to face the qibla is rotation about the VERTICAL axis alone, a flat phone spinning, which traces a CIRCLE and cannot determine a sphere's centre.** Only the figure of eight supplies the pitch and roll that closes it, so removing the instruction removes the insurance. The hint stays. **THE FORWARD FIX IS TO STOP TIMING AND START ASKING**: `modules/qiblaheading` already reads iOS's `CLHeading.headingAccuracy` in DEGREES and Android's FOP error cone, both of which `expo-location` destroys, so the gate can draw as soon as the phone reports an uncertainty inside `ALIGNMENT_ENTER_DEGREES` instead of waiting out a 2700ms window. That also catches the case the drift gate cannot see at all, a stable hard-iron bias, which passes it untouched at 0, 5, 15 and 27 degrees. **AND ONE LAYOUT LESSON THAT COST A REGRESSION: `numberOfLines` HIDES a layout fault rather than fixing one.** Capping the qibla subtitle at one line turned a WRAP into a TRUNCATION, and the owner saw 🐋 "hold the phone flat and dot dot dot, 3 ellipses. I don't see the rest." The cause was never the text length: **an absolutely positioned child contributes NO width**, so the column shrink-wrapped to whichever line was left in flow (*Just a moment*, about 91dp) and clipped the longer one inside it, against a text column measured at 299dp on the 3T. Both the original wrap and the ellipsis came from that one fact, and the fix was to leave the LONGER line in flow. **When text does not fit, measure the box before capping the lines.**
+- [2026-10-03] **TWENTY OPENS ON THE REAL PHONES BEAT EVERY SIMULATION IN THIS PROGRAMME, because the simulations' shared premise was false** (session 52's close, 1.29.239 to 1.29.243; the handoff is in git history under `ai/plans/NEXT-SESSION-QIBLA-ACCURACY-GATE.md`, sha 57d30a86). The owner ran 5 still and 5 waving opens per phone across both handsets, cold and warm, and reported: 🐋 "For both phones, absolutely no difference in terms of accuracy, both of them. Always show the animation, always, always show the animation for about 2 seconds... So shaking the phone doesn't actually do anything at all. Nor does cold, nor does warm." **THREE PREDICTIONS DIED AT ONCE.** (1) **The predicted 9.7-second wait does not exist: the real wait is 2.7 seconds and it is a STOPWATCH rather than a convergence.** `hasSettled`'s span check is `SETTLE_WINDOW_MS * 0.9`, and on his phones the other two conditions are already satisfied (8 readings arrive in about 570ms at the measured ~14Hz, and the drift test passes on the first reading), so the gate sits holding a CORRECT heading waiting for the clock. (2) **There is no cold start, because hard-iron estimation and sensor fusion are OS-LEVEL services**: clearing app data, force-stopping and reinstalling do not reset them, so a phone in daily use hands the app an already-converged fusion and session 48's 30-degrees-out first reading never appears. **"Cold" for the app is not cold for the phone.** (3) **Waving does nothing ON HIS PHONES and the gesture is still the only one that can work**, which is not a contradiction: NXP AN4246's own fit puts a flat still phone at 497.6% of the hard-iron offset unremoved and the figure of eight at 1.3%, and his OS has already removed what there was, so the wave is insurance against a state he is not in. **THE OWNER CAUGHT THIS PROGRAMME CONTRADICTING ITSELF AND WAS RIGHT**: it called the wave insurance and then proposed dropping the instruction, and he answered 🐋 "But then if we remove that, the user is not going to shake their phone. And we're going to lose the insurance. So maybe we should just keep everything as is." The geometry proves him right, and it is the same degenerate case AN4246 describes: **the turn a user makes to face the qibla is rotation about the VERTICAL axis alone, a flat phone spinning, which traces a CIRCLE and cannot determine a sphere's centre.** Only the figure of eight supplies the pitch and roll that closes it, so removing the instruction removes the insurance. The hint stays. **THE FORWARD FIX IS TO STOP TIMING AND START ASKING**: `modules/qiblaheading` already reads iOS's `CLHeading.headingAccuracy` in DEGREES and Android's FOP error cone, both of which `expo-location` destroys, so the gate can draw as soon as the phone reports an uncertainty inside `ALIGNMENT_ENTER_DEGREES` instead of waiting out a 2700ms window. That also catches the case the drift gate cannot see at all, a stable hard-iron bias, which passes it untouched at 0, 5, 15 and 27 degrees. **AND ONE LAYOUT LESSON THAT COST A REGRESSION: `numberOfLines` HIDES a layout fault rather than fixing one.** Capping the qibla subtitle at one line turned a WRAP into a TRUNCATION, and the owner saw 🐋 "hold the phone flat and dot dot dot, 3 ellipses. I don't see the rest." The cause was never the text length: **an absolutely positioned child contributes NO width**, so the column shrink-wrapped to whichever line was left in flow (*Just a moment*, about 91dp) and clipped the longer one inside it, against a text column measured at 299dp on the 3T. Both the original wrap and the ellipsis came from that one fact, and the fix was to leave the LONGER line in flow. **When text does not fit, measure the box before capping the lines.**
 
 - [2026-10-03] **THE ERROR AT THE INSTANT A GATE OPENS IS NOT A USER-FACING QUANTITY, and measuring the convenient moment instead of the decisive one produced a confident wrong conclusion twice** (session 52, 1.29.236 to 1.29.239). Row 50 measured, and session 52 repeated to the owner, that a user who waves the phone during the qibla animation gets the settling gate opening at 3.7s with 11.88 degrees of error against a still user's 9.7s and 2.98, and called the animation a reward for impatience. **The owner refused it from his own hands** (🐋 "I've been shaking my phone during the animation with every test that I do, and I don't really find myself being penalised... are you sure about this?") **and he was right.** The gate LATCHES, so once it opens every later reading reaches the dial and the fusion keeps converging while the user turns toward the qibla; simulating the whole visit including that turn, the error at the moment the app actually CLAIMS alignment is **0.70 degrees still against 0.73 waving, with zero false taps in 300 runs each**. **THE RULE: measure the error at the moment the app makes a claim a user acts on, never at the moment an internal gate changes state.** **The owner then found a second hole by asking a simpler question** (🐋 "If the wave doesn't cost us anything, then what's the point of the animation?"): "costs nothing" is not "does nothing", and the probe proving the wave free **models a converging FUSION and contains no hard iron at all**, so it was structurally incapable of showing the wave's benefit. Two true findings about different mechanisms, neither evidence about the other. **THE WAVE GESTURE IS NOW JUSTIFIED EXTERNALLY rather than assumed**, which also answers whether to ask for a flat phone instead: running NXP AN4246's own hard-iron least-squares fit per gesture at London's field, **a flat still phone leaves 497.6% of the offset unremoved and a flat phone turning on the spot lies on a CIRCLE, which does not determine a sphere's centre**, while a figure of eight leaves 1.3%. AN4246 section 6 states the requirement outright, "measurements... taken at significantly different roll and pitch angles", and the trap in the table is "tilt up and down only", which feels like diligent calibration and costs **176.90 degrees**. **Android's hard-iron estimation predates the 3T by three years** (`TYPE_MAGNETIC_FIELD_UNCALIBRATED`, API 18, reporting `x_bias, y_bias, z_bias`), so a 2016 OnePlus 3T and a Galaxy S23 calibrate by the same mechanism and only sensor quality differs; iOS additionally has an OS-drawn calibration alert behind `locationManagerShouldDisplayHeadingCalibration:` that this app's users have never seen, because `expo-location` implements no delegate for it. **`SETTLE_WINDOW_MS` IS NOT A TIMER AND "3 SECONDS" WAS NEVER THE WAIT: it is 9.7 seconds**, since the gate opens once drift across a trailing 3000ms window is under 1.5 degrees. It stays at 3000ms, now justified by arithmetic rather than preference: **it is the shortest window whose p95 error fits `ALIGNMENT_ENTER_DEGREES = 4`**, so a shorter one would let the haptic announce alignment while the user is outside the window it announces. **The row's premise that the sensor rate sets the wait is refuted by the patch's own code**: `patches/expo-location+58.0.9.patch` leaves `TIME_DELTA = 50f` in place, so the gate receives **~14Hz at any sensor rate** and dropping 50Hz to 25Hz changes the wait by 1.4% while costing the smoothness row 50 measured. **NO STREAM-ONLY GATE CAN SEPARATE THE USER'S MOTION FROM THE FUSION'S CONVERGENCE, which is session 48's hard-iron finding in a new place**, because a slow turn and a slow drift are the same signal: a 15-degree range cap refuses a hand-held phone 100% of the time, and of fifteen window-and-segment combinations swept together exactly one met the 4-degree bar and it too refuses a hand 100%. The shipped gate is also **gamed by NOISE**, opening at 9705ms at 0.5 degrees of jitter and 7453ms at 5, earlier and wronger. A 13-second time floor was measured to fix all of it (3.43 degrees worst case, refusing nobody, because a term that reads no readings cannot be gamed) and is deliberately NOT shipped, since it adds up to 3.5 seconds to every open on two phones the owner has judged accurate. **FOUR PROCESS LESSONS, each of which cost something.** (1) **A test spending `CONSTANT - 1` of anything MOVES WITH THE CONSTANT IT GUARDS**: lowering `WARM_CONFIRM_READINGS` from 8 to 1 left the test spending 0 readings and still passing, so a count needs a literal assertion beside the derived one. (2) **An unbreakable line is dead code, not an untested one**: a third surviving break pointed at a `confirmRef` clear in `start()` that could never be the thing emptying it, because `stop()` already does and `useRef` seeds it empty, and the right answer was deleting it. (3) **Deleting the ENTIRE new feature passed all 221 existing qibla tests**, which is session 49's audit finding again, so the tests that can SEE a gate must be specified rather than assumed. (4) **A coverage failure can be a design smell**: a `setState` guarded inside a latch that runs once per visit has an unreachable branch, and the honest fix was one local flag written once rather than a wider test. **And one device lesson: a Gradle TLS handshake failure reads like a toolchain problem and is a network one** (`Remote host terminated the handshake` fetching `kotlin-scripting-jvm`, with the same URL returning 200 to `curl` seconds later), so check the URL before changing any configuration.
 
@@ -926,13 +865,13 @@ Applies to every piece of agent-written prose, no exceptions and regardless of l
 
 - [2026-09-27] **An incidental guard is not a guard, and a break script is not verified until it is run** (session 32, ISSUES #27, 1.29.34). #27 sat OPEN for 17 days saying its root cause was never found: the prayer list rendered only the new day's Isha after a day roll. The cause was an equality where an inequality was needed. `filterRelevantPrayers` kept a passed row only when its list day EQUALLED the display date, so every already-passed row of the day coming on screen was dropped, and a dropped row never returned, because the refetch only adds days AFTER the sequence. It was already fixed, by the dashes work of 2026-09-13, which nobody connected to this issue. THREE DURABLE LESSONS. (1) **When two defects compound, measure them one at a time or the wrong one gets the credit.** The day's other suspect was the display date, taken as the first row in ARRAY order whose instant was future, which just after a roll can name the OLD day. Switched independently: fixing the display-date rule alone still gives 5 rows of 6, and fixing the keep test alone gives 6 of 6. (2) **A break script written from a diagnosis is not verified until it is run, and the first draft of this one printed `SURVIVED`.** Today's two keep tests OVERLAP: `>= previous.belongsToDate` and `>= currentDisplayDate` keep the same rows on the day-roll shape, so mutating either alone changes nothing. Measured per mutation on an overlap fixture: equality alone 0 bad, day-roll keep removed 1,014, both keeps reduced 966. A single-clause break would have shipped a plan that was wrong about its own red. (3) **"Is this still an issue?" is answered by re-implementing the OLD code verbatim from git and sweeping both**, never by observing that today's suite is green: 562 short-list states reproduce against the 2026-09-10 algorithm across all 1440 download minutes, and zero against today's over the same sweep, a 20,000-state randomised sweep, and the whole real London year. That last sweep also settled whether it was ever real: the real 2024 year gives zero short lists even under the OLD algorithm, and the mock rig only misbehaves between 04:00 and 05:56, inside the band `mocks/simple.ts`'s own header forbids. So a bug reported against a rig used outside its documented window may never have been a production bug, and the honest way to find out is to run real data through the old code. The shape is still reachable above about 60N, where an Isha after midnight keeps its list day on the day before, which is why the guard shipped rather than just the close. **The 13 tests that failed on that line all described a DIFFERENT rule** (R8, the unreadable day), so the day roll had no test of its own and a refactor would have read 13 failures about missing provider data.
 
-- [2026-09-26] **Subagents are banned except `vision`, and one session does the planning, the execution and the audit** (owner ruling, 1.28.26). 🐋  "I want to completely ban using subagents, and I want you to do all the work yourself every single time. So everything in one session, the planning, the execution and the audits." Every "spawn a Code Reviewer" in the three briefs became "read your own diff back cold"; the planner's agent-type table became a table of how the session does each job itself, with `codegraph_explore` named for the blast-radius reads it answers better than a grep loop. `vision` survives on a capability argument, recorded model-agnostically: some models can read an image and some cannot, so a session reads its own screenshots when it can and delegates only when it cannot. Two rules landed with it. **Comments are extremely compact, why only, never what or how**, with the corollary that a comment is never the fix for unclear code (rename or split it instead). And **no file in the workflow names a model**: 45 record files were scrubbed phrase by phrase, `ai/prompts/init.md` degeneralised, and ADR-008/009 deliberately kept theirs because there the models are third-party products being evaluated inside a rejected design, not the model running a session. DURABLE LESSON, learned by breaking it twice in one session: **a blind regex is the wrong tool for editing prose at scale.** A `\(\s*\)` cleanup rule meant for `(GLM 5.3)` silently turned `Date.now()` into `Date.now`, `sync()` into `sync` and `fillMaxWidth()` into `fillMaxWidth` across 45 files, and a whitespace-collapse rule destroyed markdown indentation. Both were caught only by reading the diff and by a word-level verifier that compares before/after token counts and fails on any word that is not a model name. Write that verifier BEFORE the bulk edit, and prefer enumerating the actual distinct phrases (there were ~30) over a pattern that matches shapes.
+- [2026-09-26] **Subagents are banned except `vision`, and one session does the planning, the execution and the audit** (owner ruling, 1.28.26). 🐋  "I want to completely ban using subagents, and I want you to do all the work yourself every single time. So everything in one session, the planning, the execution and the audits." Every "spawn a Code Reviewer" in the three briefs became "read your own diff back cold"; the planner's agent-type table became a table of how the session does each job itself, with `codegraph_explore` named for the blast-radius reads it answers better than a grep loop. `vision` survives on a capability argument, recorded model-agnostically: some models can read an image and some cannot, so a session reads its own screenshots when it can and delegates only when it cannot. Two rules landed with it. **Comments are extremely compact, why only, never what or how**, with the corollary that a comment is never the fix for unclear code (rename or split it instead). And **no file in the workflow names a model**: 45 record files were scrubbed phrase by phrase, `ai/prompts/init.md` (now in git history) degeneralised, and ADR-008/009 deliberately kept theirs because there the models are third-party products being evaluated inside a rejected design, not the model running a session. DURABLE LESSON, learned by breaking it twice in one session: **a blind regex is the wrong tool for editing prose at scale.** A `\(\s*\)` cleanup rule meant for `(GLM 5.3)` silently turned `Date.now()` into `Date.now`, `sync()` into `sync` and `fillMaxWidth()` into `fillMaxWidth` across 45 files, and a whitespace-collapse rule destroyed markdown indentation. Both were caught only by reading the diff and by a word-level verifier that compares before/after token counts and fails on any word that is not a model name. Write that verifier BEFORE the bulk edit, and prefer enumerating the actual distinct phrases (there were ~30) over a pattern that matches shapes.
 
 - [2026-09-27] **A test never reads the real clock, and one that does is a defect rather than a flake** (owner ruling, session 31; ISSUES #41). 🐋  "a test should not be based on what time of date being run. Our test should be mocking the time... everything should be mocked so that we can properly test the scenarios. That's the whole point of a test." Five tests in `stores/__tests__/notifications.test.ts` passed only before 12:00 Europe/London and failed after it, every day, on code nobody had touched. THE TRAP, because it reads as correct: the `beforeEach` took the DAY off the real clock (`TimeUtils.getTodayDateString()`) and seeded a FIXED time on it, every prayer at `12:00`. The two agree in the morning and disagree after noon, when session 28's time-ordered scheduler correctly skips every row as already past, so the reschedule arms nothing and five assertions about a completed reschedule fail. **The pre-commit hook hid it for a whole day** because every commit on 2026-09-27 ran between 10:29 and 10:33; it surfaced at 13:56 and reproduced identically at `a265ec1d`, `182a3e32`, `475c532f` and `5c3f2f00`, so it was never caused by the session that found it. Fix: pin the clock with `jest.useFakeTimers({ now: london(SEEDED_DAY, '09:00') })` BEFORE building the seed, take the day from a fixed constant, spread the seeded times so rows are distinguishable, and restore real timers in an `afterEach`. Removing the pin fails exactly those 5 again, which is the proof it guards. The rule and the trap are written into `__tests__/README.md`. A relative offset (`Date.now() - N hours`) is hour-independent and needs no pin; the dangerous shape is specifically a real-clock day read feeding a fixed time.
 
 - [2026-09-27] **The rolling buffer is a REQUEST BUDGET, not a day count** (session 28, owner ruling, 1.28.60 to 1.29.2; supersedes the 2026-09-26 entry below). A day is the wrong unit for a prayer schedule: counting days arms rows the user may not need while refusing the one they do, purely because it sits after midnight. At `NOTIFICATION_ROLLING_DAYS = 1` the next Fajr was unarmed **79.9% of the year**, measured against the real London year, because once today's Fajr passes it is neither future nor in range. `NOTIFICATION_ROLLING_DAYS` and `rollingDaysForPrayer` are DELETED, and with them the night rows' extra list day, which existed only to repair the day count's own distortion: a row is now taken on its own instant, so Midnight needs no special case and Istijaba is simply absent on six days in seven. `buildSchedulePlan` walks every candidate row in time order and arms each one WHOLE until the next will not fit in `NOTIFICATION_REQUEST_BUDGET` (64). **Rows, never individual requests: a reminder fires BEFORE the athan it warns about, so cutting by request orphans a reminder in 98.0% of samples for a two-reminder user, leaving the phone to warn about an athan it never plays** (finding 81's rule, extended to three alerts). The walk stops at the first row it cannot afford rather than skipping to a cheaper one, which would gap the middle of the covered span. Measured worst case per profile, against 23h before for all of them: 1 prayer 64 days, 5 prayers 12 days, 5 with one reminder 6 days, standard 6 with both reminders 3 days, all 11 with both 2 days. DURABLE LESSONS: (1) **`null <= now` is `true`**, because `null` coerces to 0, so a row with a null datetime is silently dropped by a past-row check and removing its `isReadable` guard alone changes no test: a mutation test has to remove both guards or it proves nothing; (2) **a preference write that happens before the scheduling lock is not yet the truth for a pass already queued** — `commitPrayerAlertChange` writes preferences then takes the lock, so with two sheet closes queued the second's values are stored while the first still runs, and costing a prayer from storage planned it zero days and armed nothing; the cost is now computed once in `applyPrayerAlerts`, the only place that sees both halves, and passed to each; (3) **a guard justified against the worst case can silently bind the best case** — `SCHEDULE_CANDIDATE_DAYS` was a literal 60 checked only against the heaviest user, who exhausts the budget in 2 days, while the lightest spends one request per day and reaches 64, so it was capping that user at 59 days; it now derives from the budget itself and is pinned against BOTH ends.
 
-- [2026-09-26] **D3's cap arithmetic, corrected and decided** (owner, closing session 27; SUPERSEDED by the 2026-09-27 entry above, which removes the day count entirely): the rolling buffer goes to **1 day with one at-time alert and TWO reminders**. The figures previously in `SDK58-PROGRAMME.md` were wrong because they multiplied 11 prayers by the window directly; the window is not uniform, since Midnight and Last Third fire the evening before their list day and are armed one list day longer (`rollingDaysForPrayer`). Counted the way the code counts: 2 days with one reminder is 24 list-days x 2 = 48, today's state; 2 days with two reminders is **72, over the 64 cap by 8**; 1 day with two reminders is 13 x 3 = **39**. So the second reminder and the drop to one day are one decision, not two. `shared/__tests__/constants.test.ts` already derives this worst case from `rollingDaysForPrayer` itself, so exceeding the ceiling fails the suite instead of silently dropping notifications on device. Android has no equivalent cap. ACCEPTED COST: the buffer is also the silence window when the background chain dies, and nothing recovers it while the app stays closed, so the grace period halves.
+- [2026-09-26] D3 cap arithmetic (1-day/two-reminder buffer; closing session 27) — SUPERSEDED days later by the 2026-09-27 request-budget ruling above, which removed the day count entirely (with it, the `rollingDaysForPrayer` arithmetic, the `constants.test.ts` derivation and the halved grace period all fell away). See that entry.
 
 - [2026-09-26] **Android notification sound in silent mode: the fix is the ALARM stream, and the bug was a deprecated importance** (session 27, 1.28.47-50). Silent mode and Do Not Disturb are different mechanisms and the D1 brief conflated them: the ringer switch mutes STREAM_NOTIFICATION (`ringer mode affected streams = 0x1a6`, which excludes bit 4) while DND suppresses by policy, so `bypassDnd` never addressed the owner's problem and `alarmClock` delivery could not either, because it picks the AlarmManager API rather than the audio stream. Every channel now declares `usage: ALARM` plus `enforceAudibility`, which expo-notifications wires to `channel.setSound(uri, attributes)`. **ROOT CAUSE of the silence, though, was `AndroidImportance.MAX`**: `IMPORTANCE_MAX` is 5, deprecated since Android 8.0, and above the documented ceiling of `IMPORTANCE_HIGH` (4). Android accepts such a channel and leaves its behaviour UNDEFINED, so it plays no sound AND does not vibrate. This predates the session; the athan channels always carried MAX. DURABLE LESSONS: (1) **silent AND no vibration means the channel's importance, not the audio stream** — a muted stream still vibrates, an undefined behaviour does neither; (2) **no log or dump can find this**: `dumpsys` reads healthy (`mImportance=5`, `mBypassDnd=true`, `usage=USAGE_ALARM`, `flags=0x1`, sound URI resolving to a real `res/*.mp3`), nothing throws, and the ONLY visible symptom is the empty behaviour radio group in Settings > Apps > Athan > Notifications > the channel, so read the channel in the system UI early; (3) **a channel's sound, audio attributes AND importance are all frozen at creation**, so every such fix needs a new id generation (now athan `_v4`, reminders `_v3`, extras `_v3`, with all 231 superseded ids deleted at init); (4) a user who picks a behaviour by hand sets `mUserLockedFields`, and Android then honours their choice over the app's for that channel forever; (5) `mDeleted=true` channels linger in `dumpsys` as tombstones and are NOT live, so a verify script counting them reports a false failure; (6) a mock build has a blank `athan-storage-dev`, so no prayer carries a Sound alert and `sound: false` is sent correctly — proving audio needs the owner's settings present, and a channel-config check is not an audio proof. iOS cannot bypass the mute switch at all without Critical Alerts, which Apple restricts to medical, security and public-safety apps and routinely refuses for alarms (a rejected alarm app re-applied citing an approved competitor and got the same copy-paste refusal); the real answer is iOS 26's AlarmKit, which the owner's iPhone XS can never run because iOS 26 dropped the XS, XS Max and XR. Evidence in `ai/plans/27-silent-mode-bypass/FINDINGS.md`.
 
@@ -947,21 +886,21 @@ AAPT2=~/Library/Android/sdk/build-tools/37.0.0/aapt2   # confirm this path exist
 
 Cross-check against the prebuilt source when the count surprises you: `grep -c WidgetProvider <worktree>/android/app/src/main/AndroidManifest.xml`. If the source manifest has the providers and the APK appears not to, suspect the reader before the build. The Glance/androidx trampoline receivers are always present, so grepping for a bare "appwidget" is a FALSE positive.
 
-- [2026-09-25] Android lock screen widgets ruled IMPOSSIBLE and the session closed with nothing shipped (session 18, investigation-only; evidence in `ai/plans/18-android-lock-screen-widgets/FINDINGS.md`). No public lock-screen widget API has existed since Android 5.0 removed it in 2014, and both phones confirm it: no keyguard widget host, no hosted keyguard-category provider, and the ONLY widget host on either device is the launcher (`hostId:1024`). The one working vehicle, an ongoing notification, was built and proven end to end (it renders on the X8's locked screen, release APK clean, suite green at 100%) and then REJECTED by the owner, who does not want a constant lock screen notification; it was reverted in full, leaving the code byte-identical to `uat-2`. DURABLE LESSONS: (1) **a phone can carry a whole AOSP feature's code with its flags ON while the OEM has stripped the UI** — the Find X8 has the entire Glanceable Hub (the one modern surface that hosts real AppWidgets on a lock screen), logs `LOCKSCREEN->GLANCEABLE_HUB` transitions and enables 7 `communal_*` flags, yet its container view is `G` (GONE) at 0x0, no communal widget host is ever created, `settings put secure glanceable_hub_enabled 1` changes nothing, and `EditWidgetsActivity` is not exported, so feature flags and class names prove NOTHING and the widget-host list plus the container's visibility are the only evidence; (2) OPPO's own lock cards (`com.oplus.keyguard.style.widgets`, and the `com.oplus.pantanal.ums` services) are `system_ext` with `prot=signature` / `OPLUS_COMPONENT_SAFE`, so no third-party APK can ever register one; (3) **Android's `Chronometer` ticks for free with zero app alarms but can only render `06:08:32`**, so a free-ticking countdown and this app's `6h 8m` shape are mutually exclusive on Android — any future attempt must recompute the text on a timer, which `modules/widgetrefresh`'s existing minute-edge alarm already makes free; (4) ColorOS blocks `adb install` behind an `InstallGuideActivity` scan dialog while the phone is locked — `settings put global verifier_verify_adb_installs 0` (restore it afterwards) installs without touching the screen.
+- [2026-09-25] Android lock screen widgets ruled IMPOSSIBLE and the session closed with nothing shipped (session 18, investigation-only; evidence in git history under that folder). No public lock-screen widget API has existed since Android 5.0 removed it in 2014, and both phones confirm it: no keyguard widget host, no hosted keyguard-category provider, and the ONLY widget host on either device is the launcher (`hostId:1024`). The one working vehicle, an ongoing notification, was built and proven end to end (it renders on the X8's locked screen, release APK clean, suite green at 100%) and then REJECTED by the owner, who does not want a constant lock screen notification; it was reverted in full, leaving the code byte-identical to `uat-2`. DURABLE LESSONS: (1) **a phone can carry a whole AOSP feature's code with its flags ON while the OEM has stripped the UI** — the Find X8 has the entire Glanceable Hub (the one modern surface that hosts real AppWidgets on a lock screen), logs `LOCKSCREEN->GLANCEABLE_HUB` transitions and enables 7 `communal_*` flags, yet its container view is `G` (GONE) at 0x0, no communal widget host is ever created, `settings put secure glanceable_hub_enabled 1` changes nothing, and `EditWidgetsActivity` is not exported, so feature flags and class names prove NOTHING and the widget-host list plus the container's visibility are the only evidence; (2) OPPO's own lock cards (`com.oplus.keyguard.style.widgets`, and the `com.oplus.pantanal.ums` services) are `system_ext` with `prot=signature` / `OPLUS_COMPONENT_SAFE`, so no third-party APK can ever register one; (3) **Android's `Chronometer` ticks for free with zero app alarms but can only render `06:08:32`**, so a free-ticking countdown and this app's `6h 8m` shape are mutually exclusive on Android — any future attempt must recompute the text on a timer, which `modules/widgetrefresh`'s existing minute-edge alarm already makes free; (4) ColorOS blocks `adb install` behind an `InstallGuideActivity` scan dialog while the phone is locked — `settings put global verifier_verify_adb_installs 0` (restore it afterwards) installs without touching the screen.
 
 - [2026-09-24] Android widget sizing FIXED (session 15d, 1.27.340-343): the medium composition holds PROPORTIONS, not dp. Every column is a share of the width the launcher actually granted, which `modules/widgetrefresh` stamps into each kind's props (`grantedWidthDp`) from `OPTION_APPWIDGET_MIN_WIDTH` beside the `size` stamp it already wrote; `LIST_WIDTH` takes the REMAINDER so the columns sum to the inner width exactly; the row text scales with its box, floored at 10sp. Proven on the Find X8 at both 480 (its display-size override) and native 560: all eleven names complete, one left origin, times right-aligned, at a 278dp grant where the old 332dp of fixed columns overflowed hardest. DURABLE LESSONS: (1) **neither Glance proportional primitive is reachable through expo-widgets 58.0.3**: its converter maps `fillMaxWidth(fraction)` to a bare `fillMaxWidth()`, discarding the fraction, and has no `weight` case at all, so `weight()` silently no-ops (`ExpoWidgetEmittableTree.kt:400-421`) — this is ALSO the true cause of the 15b 3T failure where a fraction "squeezed the day list to zero width", since the dropped 0.5 became 1.0, and the fixed dp were pinned to work around a library bug that was never diagnosed; (2) **Glance has no autoshrink**, so a box computed narrow still clips its text unless the font scales with it; (3) `OPTION_APPWIDGET_MIN_WIDTH` is the PORTRAIT grant and MAX_WIDTH the landscape one, so MIN is the right read for a phone and MAX would reintroduce the overflow; (4) a JS push cannot carry a launcher grant, so a pushed snapshot renders at the declared minimum until the next native tick, at most 60s, which is narrow-but-correct rather than broken; (5) the granted width changes WITHOUT a resize (`resizeMode="none"` throughout) whenever the user re-columns their home grid or changes display size, so the stamp must be re-read every tick, not written once; (6) a device proof needs the PRODUCTION package: a mock build installs under `com.mugtaba.athan.fleettest`, whose providers are never placed, so the launcher never measures them and the proof cannot run.
 
 - [2026-09-24] Two device findings, one closed and one opened. **ISSUES #37 closed locally** (1.27.335): `expo-background-task` hardcodes a network requirement on every scheduled task on both platforms, which withheld the notification refresh from an offline phone even though the refresh arms alarms from MMKV and already treats its `sync()` as best-effort. `patches/expo-background-task` adds `requiresNetworkConnectivity`, default `true` so the library is unchanged, and `registerBackgroundTask` passes `false`; upstream PR expo/expo#50581. DURABLE LESSONS: (1) **patching an Expo module's Android source is a no-op while its `expo-module.config.json` declares a `publication` block**: autolinking resolves the module to its prebuilt `local-maven-repo` AAR and Gradle never compiles the patched Kotlin, so the patch must delete that block too, and a native patch is verified by RUNTIME behaviour, never by a green build; (2) `cmd jobscheduler run` WITHOUT `-f` respects constraints and names the unmet ones, turning a 3-hour wait into an instant verdict, while `-f` bypasses them and proves nothing about them; (3) WorkManager's network constraint is evaluated at RUN time, not enqueue time (`Tracking: CONNECTIVITY TIME` in the dump), so it defers a job rather than dropping it. **Android widget sizing opened (row 15d)**: the widgets were tuned on the 3T alone and the Find X8 is the second Android phone they have ever been placed on; the medium kinds clip their prayer names from the left (`se`, `ar`, `ib`). Cause is arithmetic, not the OEM: `HERO_WIDTH` 170dp + `LIST_WIDTH` 162dp = 332dp of fixed content inside a provider declared `minWidth` 310dp. DURABLE LESSON: **`minWidth` on an appwidget-provider is a floor the launcher must respect, not a width it will grant**: any layout whose fixed children sum past it clips on a launcher that grants the minimum, and a device with a display-size override (the X8: 560 physical, 480 effective) scales the TEXT while leaving the dp boxes alone, so fixed-dp widget layouts fail twice over. Owner ruling: widgets are meant to be dynamic across phone, tablet and both platforms; never fix this by tuning a second set of constants against one more device.
 
-- [2026-09-23] Refresh cadence retuned after a user's 8T went silent (1.27.326, ISSUES #36, ADR-007 rev 4): `BACKGROUND_TASK_INTERVAL_HOURS` 6 -> 3 and `NOTIFICATION_REFRESH_HOURS` 12 -> 2. The 8T rebooted, Android cleared every alarm, OnePlus Auto-launch suppressed expo's boot receiver (ISSUES #19), and then 18 app opens armed nothing because `refreshNotifications` trusted a recent timestamp while zero alarms existed: Magrib and Isha were never heard. DURABLE LESSONS: (1) a stamp is not evidence that alarms exist, and the two diverge on reboot, force-stop and OEM kill, so any gate over scheduling must be reopened by a signal that tracks the alarms rather than the clock; (2) `getAllScheduledNotificationsAsync` reads expo's `SharedPreferencesNotificationsStore`, which SURVIVES a reboot, so it reports a full list while AlarmManager holds nothing - it cannot be used to detect the loss; (3) the background interval is not just "how stale may the window get", it is the ceiling on how long an unattended phone stays silent after losing its alarms, and that is the number that sizes it; (4) rev 3's dasd rate-limit evidence was measured at 15 minutes and below, and `earliestBeginDate` is a floor rather than a request rate, so 3h was never in the rationed band; (5) `dumpsys alarm` repeats each alarm under "Next wake from idle" as well as in its batch, so counting with `grep -c` double-counts - dedupe on the `Alarm{<id>}` object (`ai/features/reboot-rearm/count-alarms.sh`). Battery-optimisation and auto-launch toggles are NOT an acceptable remedy (owner): they differ across every skin and version and no API can set them. Evidence for every claim: `ai/features/reboot-rearm/EVIDENCE.md`.
+- [2026-09-23] Refresh cadence retuned after a user's 8T went silent (1.27.326, ISSUES #36, ADR-007 rev 4): `BACKGROUND_TASK_INTERVAL_HOURS` 6 -> 3 and `NOTIFICATION_REFRESH_HOURS` 12 -> 2. The 8T rebooted, Android cleared every alarm, OnePlus Auto-launch suppressed expo's boot receiver (ISSUES #19), and then 18 app opens armed nothing because `refreshNotifications` trusted a recent timestamp while zero alarms existed: Magrib and Isha were never heard. DURABLE LESSONS: (1) a stamp is not evidence that alarms exist, and the two diverge on reboot, force-stop and OEM kill, so any gate over scheduling must be reopened by a signal that tracks the alarms rather than the clock; (2) `getAllScheduledNotificationsAsync` reads expo's `SharedPreferencesNotificationsStore`, which SURVIVES a reboot, so it reports a full list while AlarmManager holds nothing - it cannot be used to detect the loss; (3) the background interval is not just "how stale may the window get", it is the ceiling on how long an unattended phone stays silent after losing its alarms, and that is the number that sizes it; (4) rev 3's dasd rate-limit evidence was measured at 15 minutes and below, and `earliestBeginDate` is a floor rather than a request rate, so 3h was never in the rationed band; (5) `dumpsys alarm` repeats each alarm under "Next wake from idle" as well as in its batch, so counting with `grep -c` double-counts - dedupe on the `Alarm{<id>}` object (`ai/features/reboot-rearm/count-alarms.sh`). Battery-optimisation and auto-launch toggles are NOT an acceptable remedy (owner): they differ across every skin and version and no API can set them. Evidence for every claim: in git history under `ai/features/reboot-rearm/EVIDENCE.md`, sha d862a6d0.
 
 - [2026-09-19] Android widget polish + native minute-refresh chain (session 15b, 1.27.271-282): widgets tick with the app closed via `modules/widgetrefresh` (exact alarm at each wall-minute edge -> ACTION_APPWIDGET_UPDATE to the 8 generated providers, self-re-arming while any widget is placed, boot + MY_PACKAGE_REPLACED re-arm, JS `armWidgetRefreshChain()` after every Android push; deep-doze coalescing accepted; force-stop still breaks it until the next app open). Sizing is grid-AGNOSTIC (owner ruling): `minWidth` 160dp small (~half the grid, 3-of-5 columns on the 3T) and 310dp medium (full grid width) with `resizeMode none` — sizes are LOCKED like iOS because the 8 kinds ARE the size choices; the expo-widgets plugin always writes grid-relative `targetCell*` attributes which Android 12+ prefers over minWidth, so `plugins/androidWidgetGrid.js` strips them after prebuild (dangerous mods run LAST-registered-FIRST — register before expo-widgets to run after it). DURABLE LESSONS: (1) the 3T launcher computes spans as ceil((minWidth+30)/70) and HIDES over-wide providers instead of clamping (400dp = 7 cells = invisible in the picker; 310dp = 5 cells); (2) KLDI's C++ bridge rejects JSON null nested inside updateSnapshot's maps/lists — unavailable rows must carry `epochMs: 0`, not null (real API data never hits it, mocks do); (3) the widget runtime passes NO size to the JS layout, so the small/medium composition is stamped in props — the refresh module patches it per kind from each placed id's OPTION_APPWIDGET_MIN_WIDTH (the morph safety net for launchers granting unexpected spans); (4) a Glance row's fixed height minus its bottom padding is the text's room — 16dp row + 16dp bottom pad clipped the footer to nothing on device while the renderer tree still held the text (pixel checks catch what tree assertions cannot). Stale "Out of date" title is bold; widget taps do NOT open the app (expo-widgets routes taps for layout buttons only) — possible @expo/ui Button follow-up.
 
-- [2026-09-18] SDK 58 programme queued (1.27.219, docs-only commit): the owner swept the SDK 58 beta changelog item by item and ruled that `uat-2` rides the beta now. Queue rows 12 through 17 are in `ai/plans/README.md`; the briefs, the deferred owner features D1-D5 and the full ruling log are in `ai/plans/SDK58-PROGRAMME.md`. Headlines: #49687 `delivery: 'alarmClock'` is adopted in session 12 through the SDK itself; `experiment/alarmclock-backport` (SDK 57, 1.24.10-era) is KEPT as the known-good backup and its deletion day B9 is CANCELLED. NO store release from the session 12 merge until session 16 (stable re-pin, expected ~Oct 7 to 14) is DONE and RN 0.88 is out of RC. Also adopted: the Android notification `largeIcon` (asset picked from on-device screenshots; reverted the same day in 1.27.231, the owner rejected the icon box on the notification shade, so the config no longer carries it). Not adopted: `threadIdentifier` grouping, SwiftPM, Noxcturnal, Live Activities (double-checked: our staleness is the deliberate WidgetKit terminal card, not an ActivityKit live activity). The foreground show-by-default flip is a no-op for us: the handler in `hooks/useNotification.ts` already returns banner+list+sound+badge, matching SDK 58's new built-in default (PR #49072). Moonsighting is deferred until further notice, absolute last, behind the deferred owner features. Environment refresh before session 12 executes: the owner upgrades macOS to 27; an agent session runs `brew upgrade --cask android-studio android-commandlinetools` (installed 2024.3.1.13, two years stale; cask latest 2026.1.4.7). Xcode 27 note: Simulator.app is replaced by Device Hub, which lives at `/Applications/Xcode.app/Contents/Applications/DeviceHub.app`; simctl-based automation (mobile-mcp, Maestro, xcodebuildmcp) is unaffected; the SDK 57 Expo CLI does not know Device Hub, SDK 58's does.
+- [2026-09-18] SDK 58 programme queued (1.27.219; briefs, deferred owner features D1-D5 and the full ruling log in `ai/plans/SDK58-PROGRAMME.md`, rows in `ai/plans/README.md`): the owner swept the SDK 58 beta changelog item by item and ruled that `uat-2` rides the beta. Standing outcomes: `delivery: 'alarmClock'` adopted through the SDK; `experiment/alarmclock-backport` KEPT as the known-good backup, its deletion day CANCELLED; NOT adopted: `threadIdentifier` grouping, SwiftPM, Noxcturnal, Live Activities (our staleness is the deliberate WidgetKit terminal card, not an ActivityKit live activity); the Android notification `largeIcon` was adopted and reverted the same day (owner rejected the icon box on the shade). The foreground show-by-default flip is a no-op for us (the handler in `hooks/useNotification.ts` already matches SDK 58's built-in default). Xcode 27 note: Simulator.app is replaced by Device Hub; simctl-based automation (mobile-mcp, Maestro, xcodebuildmcp) is unaffected; the SDK 57 Expo CLI does not know Device Hub, SDK 58's does.
 
 - [2026-09-12] Cold-launch anatomy on the 3T (1.24.17, ISSUES #32): 6.6s to first frame splits into 3.1s of GMS `ProviderInstaller` (the `modules/tls13` ContentProvider, Android 9 and below only, no-op on 10+), ~0.2s of RN native init plus Hermes eval, and ~1.9s of JS module evaluation and React mount; attribution needs the event log plus atrace, `am start -W` only gives the total. The 4.4MB Hermes bundle is mmap'd (~120ms). The TLS provider install must never move off the pre-`Application.onCreate` path (ISSUES #21: a JS-side install fixes debug and fails release, okhttp snapshots `SSLContext.getDefault()` at client construction). DURABLE LESSONS: this shell's `ls` emits ANSI colour codes, so capture paths as literals or via `command ls`; `strings` cannot see Hermes string literals (packed table), so grepping a bundle to prove a build flag compiled in returns a false negative, verify by runtime behaviour instead.
 
-- [2026-09-11] REVALIDATION (1.24.7, fix/revalidation-2026-09-11; full report and re-plan in `ai/features/revalidation-2026-09-11/REPORT.md`): the owner found the 2026-09-10 sessions had run on a weaker model and ordered a full re-audit; the record's root-cause claims were wrong. Truth: upstream reanimated#9574 is fixed in the installed 4.6.0 (present in 4.6.0, absent in 4.5.1; `NodesManager.kt` is byte-identical in both, its `mCallbackPosted` marker is resume-restart behaviour, not a defect); the `[resync]` dependency arrays did nothing on native (Reanimated 4.6 ignores that argument on native, web only) and are removed; the resume bounce guard is reverted (assigning mid-dip cancels the glyph swap). Standing outcomes: keep Reanimated 4.6.0 + worklets 0.12.2; row colour timings restored to pre-ADR-015 (selection 150ms, cascade and next-prayer advance 1000ms); the Extras night leading into day D computes from D-1's Maghrib and D's Fajr (ISSUES #29, own branch); the XS iOS check was pending. DURABLE LESSONS: verify a cited upstream fix against the actual diff, not the issue title; confirm which build is installed before measuring; pipe-to-`tail` hides a failed build's exit code; a helper that builds times from "now" makes cached data depend on when it was fetched.
+- [2026-09-11] REVALIDATION (1.24.7, fix/revalidation-2026-09-11; the report left the repository in the 2026-10-07 clean-up — git history under `ai/features/revalidation-2026-09-11/REPORT.md`, sha 4b6c1f26): the owner found the 2026-09-10 sessions had run on a weaker model and ordered a full re-audit; the record's root-cause claims were wrong. Truth: upstream reanimated#9574 is fixed in the installed 4.6.0 (present in 4.6.0, absent in 4.5.1; `NodesManager.kt` is byte-identical in both, its `mCallbackPosted` marker is resume-restart behaviour, not a defect); the `[resync]` dependency arrays did nothing on native (Reanimated 4.6 ignores that argument on native, web only) and are removed; the resume bounce guard is reverted (assigning mid-dip cancels the glyph swap). Standing outcomes: keep Reanimated 4.6.0 + worklets 0.12.2; row colour timings restored to pre-ADR-015 (selection 150ms, cascade and next-prayer advance 1000ms); the Extras night leading into day D computes from D-1's Maghrib and D's Fajr (ISSUES #29, own branch); the XS iOS check was pending. DURABLE LESSONS: verify a cited upstream fix against the actual diff, not the issue title; confirm which build is installed before measuring; pipe-to-`tail` hides a failed build's exit code; a helper that builds times from "now" makes cached data depend on when it was fetched.
 
 - [2026-09-10] `overlay.selectedPrayerIndex` is the chronological-sequence position and only equals the Extras display row by coincidence (Extras rows display in canonical order, Midnight through Istijaba): resolve any visual row, position or content lookup through the prayer's English name (`EXTRAS_ENGLISH.indexOf(...)`), never the raw index; Standard has no canonical reordering and is unaffected (1.24.4, device-verified).
 
@@ -978,12 +917,12 @@ Cross-check against the prebuilt source when the count surprises you: `grep -c W
 - [2026-09-09] Sound and splash rules (1.22.23-25, ISSUES #22/#23/#24 closed): only the 5 daily prayers play the selected athan; Sunrise and ALL extras at-time play the fixed owner-built `assets/audio/reminders/reminder.mp3`. The boundary is `isDailyPrayer` in `shared/notifications.ts`, prayer-aware NOT schedule-aware (Sunrise is standard-page but extras-audio), feeding both sound choice and Android channel id; extras Android channels are created at init AND at schedule time (headless BG-task reschedules never run UI init, and Android drops notifications to nonexistent channels). Splash is two-path: cold launches hide the splash at the first committed spinner frame (`coldLaunchRef`, never re-latches), warm launches keep the reveal gate. Local Release builds inject the API key with `eas env:exec preview '<cmd>'` (the environment is POSITIONAL, not `--environment`) on top of the prebuild ritual above.
 - [2026-09-08] Local builds with env unset run MOCK data, which masked ISSUES #21 for weeks: prod-config verification is part of any release-candidate build. (The flags and What's-New archive design of 1.22.9/1.22.10 lives in the Feature Flags golden path above.)
 
-- [2026-09-08] Alert icon bounce + sheet close choreography (1.22.6): the bounce is keyed on the alert-atom transition only (prevRef guard, first evaluation snaps, rollback replays), the glyph swap fires at the withSequence trough, and the rendered glyph lags the atom through `displayedAlert` state so the swap lands inside the animation. ONE unified close haptic for every sheet, fired at dismiss completion inside Sheet.tsx so it lands on the alert commit tick; the iOS close spring is duration-form (220ms, dampingRatio 0.9) because raw springs fire onDismiss ~400ms after the close began; alert-commit rollback is deliberately haptic-free. Fix-session prompt preserved at `ai/prompts/alert-icon-change-animation.md`.
+- [2026-09-08] Alert icon bounce + sheet close choreography (1.22.6): the bounce is keyed on the alert-atom transition only (prevRef guard, first evaluation snaps, rollback replays), the glyph swap fires at the withSequence trough, and the rendered glyph lags the atom through `displayedAlert` state so the swap lands inside the animation. ONE unified close haptic for every sheet, fired at dismiss completion inside Sheet.tsx so it lands on the alert commit tick; the iOS close spring is duration-form (220ms, dampingRatio 0.9) because raw springs fire onDismiss ~400ms after the close began; alert-commit rollback is deliberately haptic-free. Its fix-session prompt left the repository in the 2026-10-07 clean-up; the record lives here.
 - [2026-09-06] Performance campaign CLOSED (sessions 1-11, ADR-013/ADR-014; the 12 Performance Design Rules above are the codified outcome; full history and harness lessons in `ai/features/performance/progress.md`): idle CPU 80.6% down to a ~19-31% band on the 3T, all big animations at or above the 30fps floor. Surviving rulings and gotchas: the countdown merge leaves exactly 2 countdown timers app-wide (the sequence ticker writes the page countdown; see rule 12 above); the sound sheet uses `stackBehavior='push'` and KEEPS all 32 athan rows, no virtualization (the ~600ms remount cost is owner-accepted); `prayer_max_english_width_*` MMKV keys are write-once-forever and must stay in BOTH `clearAllExcept` keep-prefix whitelists (a wipe forces a visible re-measure reflow at launch); the phantom 60fps Choreographer loop at idle is UPSTREAM (repros with a bare View, ~22.5% isolated CPU on the SD820; revisit on upgrades); measurement gotchas (Metro env-blind transform cache, capture wedge, screen-share CPU burn, ffmpeg passthrough) live in `e2e/README.md`; this campaign NEVER commits, so never `git checkout --` paths holding uncommitted work, revert throwaway edits from their own diffs.
 
 **Widget architecture invariants (expo-widgets):**
 
-- **G.1 upstream fix (2026-09-02, owner: "our bread and butter")**: every expo-widgets render regenerates random SwiftUI view identities (`DynamicView.swift` `UUID()` per struct init) → each body eval is a full-tree ForEach teardown (~5–13 CPU-s per widget per reload on A12-class; the XS blank-widgets failure chain, ISSUES.md §G.1). Upstream PR [expo/expo#49244](https://github.com/expo/expo/pull/49244) fixes it (stable path-based identity honoring JSX `key`; `entryIndex` excluded so entry advances update in place). CHECK IT EVERY SESSION until `expo-widgets@57.0.16` ships; then bump + verify on the XS. Never reintroduce per-render-identity assumptions; keep JSX `key` on list rows (stability hooks for the fix).
+- **G.1 upstream fix (2026-09-02, owner: "our bread and butter")**: every expo-widgets render regenerates random SwiftUI view identities (`DynamicView.swift` `UUID()` per struct init) → each body eval is a full-tree ForEach teardown (~5–13 CPU-s per widget per reload on A12-class; the XS blank-widgets failure chain, ISSUES.md §G.1). Upstream PR [expo/expo#49810](https://github.com/expo/expo/pull/49810) fixes it (merged 2026-09-11; stable path-based identity honoring JSX `key`; `entryIndex` excluded so entry advances update in place). **SHIPPED:** the fix is in expo-widgets 58.0.1 and this app adopted it at version 1.27.378 (ISSUES.md G.1, the closing record — an earlier fix attempt, PR #49244, was closed unmerged, superseded by #49701's approach, of which #49810 is the widgets-level fix that shipped). Never reintroduce per-render-identity assumptions; keep JSX `key` on list rows (stability hooks for the fix).
 - The `'widget'` directive makes Babel serialize ONLY the function body into a string; the widget extension evaluates it in a separate JS runtime where `@expo/ui` components/modifiers are globals. Never reference module-scope values inside a widget function; helpers must live inside the function body. (Enforced by `widgetContract.test.ts`.)
 - One `'widget'` layout function can back MULTIPLE widget kinds: the transform replaces the function declaration with its serialized string, so `createWidget(name, layout)` may be called several times with the same identifier. Kind-specific rendering must branch on props (e.g. `schedule`) — the layout has no way to know its own kind (the props==null placeholder renders identically for every kind sharing a layout).
 - Widget props are JSON-only — pass epoch ms, never Date objects; rebuild Dates inside the widget. Every entry carries `v` (schema version); layouts must tolerate older/missing fields with defensive defaults and treat missing epoch bounds as the refresh card.
@@ -1003,7 +942,7 @@ Cross-check against the prebuilt source when the count surprises you: `grep -c W
 - Settings flow one way: app preference atoms → `readWidgetSettings()` → props field → layout conditional. Today that is `hijriDate` only. Adding a widget-visible setting = one atom read + one `PrayerWidgetSettings` field + one prop + one conditional. Never add widget-side configuration.
 - **The widget runtime is not React, and a reachable module-scope `React.memo` call blanks every widget (2026-09-26, session 23).** `expo-widgets` evaluates layouts in a cut-down runtime whose React is `bundle/react-stub.ts`, which exports exactly five names: `Fragment`, `Children`, `isValidElement`, `createContext`, `useContext`. `bundle/ui-globals.<platform>.ts` re-exports the whole `@expo/ui` platform entry, so EVERY module reachable from that entry is evaluated when the bundle loads, whether a layout uses it or not. `@expo/ui@58.0.7` added `recycling/useRecycledRows.js`, reached via `LazyColumn` then `LazyItems`, which calls `memo(...)` at module scope: the bundle throws `(0, n.memo) is not a function` before any layout runs, and every Android card renders `undefined is not a function`. iOS breaks one version EARLIER, at 58.0.6, through `swift-ui/List/DataListForEach.js` calling the same `memo`. **Both packages are therefore pinned to an exact `58.0.5`**, the last version where both platforms load; a `~` range admits the broken ones. They move together because `expo-widgets` declares `@expo/ui` at its own minor, so pinning `@expo/ui` alone installs a NESTED copy that the bundle resolves while the flat pin looks correct, and yarn does not prune that nested copy on a later install (`rm -rf node_modules/expo-widgets/node_modules`, then reinstall). DURABLE LESSON: **a missing-name check is the wrong guard.** `useRef`, `useEffect`, `useMemo`, `useCallback`, `useLayoutEffect`, `useState` and `createElement` are all imported from `react` by reachable modules in EVERY version including the working ones, and never throw, because they are only called inside component bodies the widget runtime never invokes. Only a module-scope call breaks, so the only honest guard is to build the bundle and load it, which `shared/__tests__/widgetRuntimeLoads.test.ts` does for both platforms. Retry a newer version by running that suite against it; do not patch the stub, because an upstream regression is upstream's to fix. **ANY `yarn add` can reintroduce the nested copy, not just one that touches these packages** (session 31, 2026-09-27): adding an unrelated dependency re-resolved the tree and put `@expo/ui@58.0.7` back under `node_modules/expo-widgets/node_modules/` while the flat pin still read `58.0.5`, and `widgetRuntimeLoads.test.ts` failed with the production error verbatim. After ANY install, run that suite; if it fails, `rm -rf node_modules/expo-widgets/node_modules && yarn install --frozen-lockfile`. The same install also left three copies of `@react-native/codegen` at three versions, so `yarn check --verify-tree` is worth a glance when tests fail for no reason a diff explains.
 
-**See Also:** `ai/adr/` for architectural decision records; `ai/RUNBOOK-background-tasks.md` — background-task/device-testing runbook, CAMPAIGN CLOSED 2026-09-09 (kept as protocol reference; ISSUES #20 closed as owner-accepted behavior, #10/#17 close when the #49687 adoption ships).
+**See Also:** `ai/adr/` for architectural decision records; `ai/RUNBOOK-background-tasks.md` (in git history, sha 6ba6a4a5) — background-task/device-testing runbook, CAMPAIGN CLOSED 2026-09-09 (kept as protocol reference; ISSUES #20 closed as owner-accepted behavior, #10/#17 close when the #49687 adoption ships).
 
 **Durable lessons (index):** one-line lessons from pruned history entries (2026-08 to 2026-09-02). Full context lives in git history, `ai/features/` and `ai/adr/`.
 
@@ -1047,20 +986,7 @@ Cross-check against the prebuilt source when the count surprises you: `grep -c W
 
 ## 13. Session Lifecycle
 
-### Session Start
-
-1. Load this file (ai/AGENTS.md)
-2. Initialize session artifact tracker
-3. Acknowledge: "Context loaded. Operating as Orchestrator. Ready."
-4. Ask: "What's the goal for this session?"
-
-### Session End
-
-1. Cleanup: Remove empty files/folders created this session
-2. Summary: What was done, verification steps, what's next
-3. Documentation check: Did we update README if needed?
-4. Memory check: Did we learn something new?
-5. Git reminder: User handles commits manually
+Session START (legacy Orchestrator ritual, kept for its duties): load this file; the "Operating as Orchestrator" script and the "what's the goal" question are superseded by the subagent ban (section 0) — one session plans, executes and audits. Session END duties, all still live: (1) cleanup — remove empty files/folders created this session; (2) summary — what was done, verification steps, what's next; (3) documentation check — README updated if a user-facing feature changed; (4) memory check — record anything newly learned; (5) git reminder — the user handles commits manually.
 
 ## 14. Anti-Patterns (What NOT To Do)
 
@@ -1120,4 +1046,6 @@ marginBottom: 36,
 - Modifying environment variables
 - Updating CLI commands
 
-- **CodeGraph (code map, always current)**: the `codegraph_explore` MCP tool is this repo's live code map (auto-indexed by a background watcher; never rebuild it manually). For structural questions — who calls X, where Y lives, trace flow Z — call `codegraph_explore` FIRST, then verify specifics by reading the cited file. Works for main agents and subagents alike.
+### CodeGraph (code map, always current)
+
+- The `codegraph_explore` MCP tool is this repo's live code map (auto-indexed by a background watcher; never rebuild it manually). For structural questions — who calls X, where Y lives, trace flow Z — call `codegraph_explore` FIRST, then verify specifics by reading the cited file. Works for main agents and subagents alike.
