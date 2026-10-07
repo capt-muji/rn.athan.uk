@@ -1,10 +1,11 @@
 # Audit: Session 53, steps 3 to 5 (the readout removed, Android on Google's sensor behind a wave, nothing unvouched drawn)
 
-**Last step audited: step 5.** The row is PLANNING and stays PLANNING: the owner's tests of step 5 on both phones are
-open. This is the audit `AUDITOR-BRIEF.md` section 2, item 2 describes: commits on `uat-2` that `origin` does not
+**Last step audited: step 5, and the close of the row.** The row is DONE: the owner tested the iPhone XS, the
+OnePlus 3T and the Samsung S23 on 2026-10-07, accepted all three and locked both platforms. This is the audit `AUDITOR-BRIEF.md` section 2, item 2 describes: commits on `uat-2` that `origin` does not
 hold, from a plan still in flight. Step 2's audit is this file at `1d5441ab`.
 
-**Verdict: PASS for what a machine can prove, OPEN for what only a hand can.** Nothing is pushed.
+**Verdict: PASS.** `uat-2` is pushed to `origin` at the close, with nothing after the owner's acceptance changing
+what the compass does.
 
 ## What was checked
 
@@ -29,14 +30,22 @@ hold, from a plan still in flight. Step 2's audit is this file at `1d5441ab`.
 | Step 4's ceiling, and step 5's lack of one, on the phone | At 1.29.253 the log line `{ waved: false, turns: 0, waitedMs: 10012 }`. At 1.29.255 the hint still up at 30 seconds, no compass, no report, no log line |
 | The wave, by the owner's hand | At 1.29.253 on the 3T: `{ waved: true, turns: 8, waitedMs: 1599 }`, and 🐋 "It's very, very smooth" |
 
-## What is NOT proven
+## The close
 
-1. **Step 5 by any hand.** No one has waved a phone at 1.29.255, and no one has opened the qibla on the iPhone.
-2. **Whether the owner's room can pass at all.** It read 18 to 20 that night. With no ceiling it draws only if
-   waving brings that under 15.
-3. **The two lines on a real screen.** Their place is arithmetic and a unit test, not a photograph.
-4. **The review fixes of step 5 on a phone.** 1.29.256 is installed on the 3T and the iPhone, and nothing has been
-   run on it: the desk check was made on 1.29.255.
+| Check | Evidence |
+| --- | --- |
+| The owner accepted it | 🐋 "On the iOS, it works. Perfectly... iPhone is locked in place. Android, let's also lock it in place. It's about 98% accurate... it's within the 30 degree radius. So that's marked as successful." (`LOG.md`, the last section) |
+| The fixes of 1.29.256 were reviewed, which no reviewer had seen | A fifth independent reviewer, read-only, `7b45fda0` to `47596764`. **Pass, no blocker, no regression for a phone without the fused sensor.** Each of the five fixes was walked and found correct in every visit that opens once |
+| No compass code changed after his acceptance | `git diff 47596764 HEAD -- hooks components device shared modules` prints nothing |
+| The clean-up changed no result | Twenty lines of unused test scaffolding left `jest.components.setup.js`. `yarn validate` after it: 188 suites, 5198 tests, 100% |
+| The Samsung S23 carries what is in git | `versionName=1.29.256`, the installed file's `md5` equal to the built one |
+
+## What is NOT known
+
+1. **Whether the owner's room, which read 18 to 20, can pass on the iPhone.** He reported the iPhone perfect and
+   did not say where he stood.
+2. **Whether he saw the two lines of text on a phone.** Their place is arithmetic and a unit test.
+3. **1.29.256 by this session's own check.** The still-phone check was made on 1.29.255. His three phones ran 1.29.256.
 
 ## Findings
 
@@ -52,10 +61,18 @@ hold, from a plan still in flight. Step 2's audit is this file at `1d5441ab`.
    part 12.3). Step 5 closed the half that could draw and tap behind a closed sheet. The watch itself can still be
    stranded with the magnetometer armed.
 6. **`stop()` in `hooks/useQibla.ts` still carries a comment that names the owner**, which `ai/AGENTS.md` section
-   15 excludes. Recorded at step 2 and left again.
+   15 excludes. Recorded at step 2 and left again, with the same in four other qibla files that predate this row.
+7. **Two defects the last review found are NOT fixed, because the owner had locked both platforms before it
+   reported.** Both need a second `start()` with no `stop()` between, which the sheet library does not produce on
+   its own. `awaitNorth()` ends the old wait and discards whether the report had gone up, so `lost` can stay true
+   in state: on a phone without the fused sensor the report can then return the instant a drawn compass loses its
+   heading, without its five seconds, and on a fused phone a report can outlast the sensor's first sample. The
+   reviewer's fix is one line in `awaitNorth`: `if (endLostWait()) setState((previous) => ({ ...previous, lost:
+   false }));`. It waits on the owner unlocking the hook.
+8. **Three findings of step 5's review are closed by the lock, unbuilt** (`steps/5-vouched-or-nothing.md`, part 12,
+   items 6 to 8).
 
 ## What this audit did not do
 
-- **It did not push.**
-- **It did not touch the Samsung S23 or the Find X8.** Neither was attached. The S23 still holds prototype C.
-- **It did not wave a phone or open the qibla on the iPhone.**
+- **It did not touch the Find X8.** It was not attached again and still holds the 1.29.249 mock.
+- **It did not wave a phone or open the qibla on the iPhone.** Those were the owner's tests.

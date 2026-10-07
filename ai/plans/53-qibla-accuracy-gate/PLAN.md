@@ -281,7 +281,9 @@ and what changed:
       `steps/4-android-fused-wave.md`). DONE in 1.29.253 and 1.29.254, through the hook, reviewed. The owner waved
       the 3T: 🐋 "It's very, very smooth"
 - [x] Step 5: a heading nothing has vouched for is never drawn, on either platform (specified,
-      `steps/5-vouched-or-nothing.md`). DONE in 1.29.255, through the hook. The owner's tests on both phones are open
+      `steps/5-vouched-or-nothing.md`). DONE in 1.29.255 and 1.29.256, through the hook, reviewed. ACCEPTED by the
+      owner on three phones on 2026-10-07, and both platforms locked
+- [x] The row is closed: `AUDIT.md`, pushed
 
 ### Prototype P1: gate the compass on the reported accuracy, iOS first
 
