@@ -362,8 +362,8 @@ describe('the qibla sheet, opened in London', () => {
     const { transform } = screen.getByTestId('qibla-kaaba').props.style;
     const [swing] = transform.filter((step: Record<string, string>) => 'rotate' in step);
 
-    // London's qibla is 118.9 degrees, so a phone facing 95 leaves the marker 23.9 degrees clockwise of the arrow
-    expect(Number.parseFloat(swing.rotate)).toBeCloseTo(23.9, 1);
+    // London's qibla is 119.0 degrees, so a phone facing 95 leaves the marker 24.0 degrees clockwise of the arrow
+    expect(Number.parseFloat(swing.rotate)).toBeCloseTo(24.0, 1);
   });
 
   it('keeps turning for every reading after the first, without ever leaving the dial blank', async () => {

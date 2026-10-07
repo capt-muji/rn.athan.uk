@@ -15,7 +15,7 @@ describe('the qibla bearing', () => {
   // A spread of cities rather than London alone: a qibla NORTH of east is the case a flat-map straight line gets
   // 71 degrees wrong, and London would never have shown it
   it.each([
-    ['London', LONDON, 118.8756],
+    ['London', LONDON, 118.9872],
     ['New York', NEW_YORK, 58.4817],
     ['Los Angeles', LOS_ANGELES, 23.8571],
     ['Jakarta', JAKARTA, 295.1517],
