@@ -202,6 +202,17 @@ row above.
   sequenced after the SDK 58 programme and before moonsighting: D1 sound through silent mode, D2 qibla finder,
   D3 rolling buffer 2 days to 1 plus a second reminder, D4 localization for v2.0, D5 location for v2.0. Each becomes a
   row only after the owner specs and schedules it.
+- **Left by row 53, the qibla compass, which the owner accepted and LOCKED on 2026-10-07.** None is a session, and
+  none may be built until he unlocks the compass or schedules it:
+  - **The hint's drawing is to be redesigned**, on his word of 2026-10-06 that the wave animation will change in a
+    later session. It now matters more: an Android phone is drawn only when it has been TURNED about, and the
+    drawing shows a path through the air, not a twist (`53-qibla-accuracy-gate/steps/5-vouched-or-nothing.md`,
+    part 12.2).
+  - **A one-line fix in `awaitNorth`** for two cases that need the sheet opened twice with no close between, and
+    **three smaller findings** he closed by locking (`53-qibla-accuracy-gate/AUDIT.md`, findings 7 and 8).
+  - **A heading watch that can be stranded with the magnetometer armed**, on every phone that reads
+    `expo-location`, older than row 53 (`53-qibla-accuracy-gate/steps/4-android-fused-wave.md`, part 12.3).
+  - **Comments in the qibla files that name the owner**, which `ai/AGENTS.md` section 15 excludes.
 - Informational: the update-prompt switch from `releases.json` to store data is ISSUES #35, pending; production iOS
   already reads the App Store via iTunes Lookup. Nothing in the SDK 58 programme conflicts with it.
 
