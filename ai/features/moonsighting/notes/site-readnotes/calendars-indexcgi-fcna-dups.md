@@ -77,7 +77,7 @@ All read full:
 ## Group 1: every non-grid difference
 Base page text: "Gregorian Calendar for 2026", nav "<<", "<", ">", ">>", weekday rows "S   M   T  W  T   F   S", then month names and day numbers 1..N. No FORMS. The links go to year-10, year-1, year+1 and year+10. There is no prayer time, method text, "Updated" date or UK content. For each `?<YEAR>` page the only differences are:
 1. `-Gregorian Calendar for 2026` / `+Gregorian Calendar for <YEAR>`
-2. The nav links, rewritten to `?<YEAR-10>`, `?<YEAR-1>`, `?<YEAR+1>`, `?<YEAR+10>`. Example for 1796: `[<<] -> ?1786`, `[<] -> ?1795`, `[>] -> ?1797`, `[>>] -> ?1806`.
+2. The nav links, rewritten to `?<YEAR-10>`, `?<YEAR-1>`, `?<YEAR+1>`, `?<YEAR+10>`. Example for 1796: `[<<]` targets `?1786`, `[<]` targets `?1795`, `[>]` targets `?1797`, `[>>]` targets `?1806`.
 3. Leap years only: one inserted line `+29` after February 28. The leap rule is proleptic Gregorian: 1900, 2100 and 2200 have no Feb 29; 1796, 2000 and 2400-style years do.
 
 Weekday placement is not recoverable from the text copy, because the grid cells flatten to plain numbers. So the text copies cannot prove that the weekday alignment differs per year.

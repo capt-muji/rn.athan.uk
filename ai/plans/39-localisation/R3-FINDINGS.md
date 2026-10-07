@@ -123,7 +123,7 @@ generalises it rather than adding a second exception.
 locale rule: **the Maghreb and the UAE use Western digits**, per CLDR. So the mapping must be
 locale-driven rather than applied whenever Arabic is displayed.
 
-This is a live defect in the shipped app, not just a future concern, and it is cheap to fix.
+This is a live defect in the shipped app, not merely a future concern, and it is cheap to fix.
 
 ## The highest-risk column finding, which corrects this session's own measurement
 

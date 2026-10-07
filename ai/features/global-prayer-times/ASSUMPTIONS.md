@@ -12,8 +12,8 @@ Nothing here is a decision the owner has taken. `RECOMMENDATION.md` is a recomme
 
 **A1. The research was widened from "which method" to "which source".** The owner asked which calculation method
 is most accurate worldwide. The research found that framing does not survive contact with the evidence, because
-national authorities publish timetables rather than methods, and the timetable is what their populations actually
-pray by. So the research answered "where should a time come from" instead. If the owner wanted only a method
+national authorities publish timetables rather than methods, and the timetable is what their populations pray
+by. So the research answered "where should a time come from" instead. If the owner wanted only a method
 comparison, sections 5 and 6 of `FINDINGS.md` are surplus, though they are also where the most useful results are.
 
 **A2. Moon sighting and the Hijri calendar were treated as out of scope.** Wave 1 studied the Moonsighting

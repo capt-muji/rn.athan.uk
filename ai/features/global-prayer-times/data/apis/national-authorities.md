@@ -666,7 +666,7 @@ authority feed, Diyanet is a real fallback with an institutional name behind it.
 - Kemenag's province and kabupaten codes for `getShalatbln`. The endpoint and its
   parameter names are measured; the code values are not. The page would not execute in
   my browser, so I could not capture a successful request.
-- Whether `api.myquran.com` actually carries Kemenag's numbers. Widely claimed, never
+- Whether `api.myquran.com` carries Kemenag's numbers. Widely claimed, never
   stated by Kemenag in anything I read.
 - UAE `prayerTimeByDateAndCityDownload`. Present in the bundle, never exercised. It is
   the most likely official bulk-file route and worth one attempt.

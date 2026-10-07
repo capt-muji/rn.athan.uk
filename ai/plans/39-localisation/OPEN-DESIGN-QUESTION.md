@@ -51,7 +51,7 @@ and nothing contradicts:
 - **Prayer-name display.** A separate setting about the prayer list only. Governs whether a second
   name is shown and in which script.
 
-Today's shipped behaviour is then just one point in that space: app language English, second name
+Today's shipped behaviour is then one point in that space: app language English, second name
 Arabic, second name shown. Nothing regresses.
 
 The existing `showArabicNamesAtom` is already the on/off half of the second setting, which is

@@ -7,8 +7,8 @@ in four details, each measured (in a scratch worktree at `uat-2` `380a2a41`, sin
 
 Two suites replace the module with a `jest.mock` factory that does not carry its other exports, so the moment the
 hook imports a new function from the module, every test in those suites throws (`58 failed, 34 passed`). The fix,
-which the coverage step specifies: both factories spread the real module first —
-`...jest.requireActual('@/modules/qiblaheading')` — so the REAL gate logic runs inside the suite. A stub would make
+which the coverage step specifies: both factories spread the real module first
+(`...jest.requireActual('@/modules/qiblaheading')`), so the REAL gate logic runs inside the suite. A stub would make
 the suite blind to the gate, which is the trap row 52 recorded as THE BIGGEST ONE.
 
 The `modules/` exemption from the coverage gate was proven real by making the gate refuse on an uncovered file,
@@ -17,7 +17,7 @@ and `--no-verify` is never needed for this route.
 ## 2. The field names in the brief do not exist
 
 The module exports `accuracyDegrees` (iOS, from `CLHeading.headingAccuracy`) and `wantsCalibration`; on Android it
-is `fusedErrorDegrees` (FOP's cone) and `fusedHeadingDegrees` — NOT `headingErrorDegrees`, which is only the native
+is `fusedErrorDegrees` (FOP's cone) and `fusedHeadingDegrees`, NOT `headingErrorDegrees`, which is only the native
 payload key inside the Kotlin (`QiblaHeadingModule.kt:86`). A gate coded against the brief's name would read
 `undefined` on every Android sample and fail closed on an optional field: the Android half would silently never open.
 
@@ -32,7 +32,7 @@ providers in `versionName=1.29.244`.
 ## 4. The 2700ms the stopwatch is blamed for is not the whole wait
 
 `hasSettled`'s span check is measured from the window's OLDEST sample, and the window is trailing, so the wait is
-2700ms AFTER the first reading the sheet ever receives — which is why the owner's measured 2 to 3 seconds exceeds
+2700ms AFTER the first reading the sheet ever receives, which is why the owner's measured 2 to 3 seconds exceeds
 a bare 2700ms. Consequence: the replacement gate opens on an ACCURACY reading, and anything it waits for must be
 bounded by a ceiling that cannot depend on a reading arriving.
 
@@ -44,7 +44,7 @@ truncation fix). Not on matching builds; the device proof put both on this row's
 ## 6. The owner's instant-draw worry, answered from the code
 
 He asked whether an instant draw could paint a half-built compass and self-corrected. The code agrees:
-`Qibla.tsx:118` — `const showsCompass = bearing !== null && hasHeading;` — cannot mount a compass without a
+`Qibla.tsx:118` (`const showsCompass = bearing !== null && hasHeading;`) cannot mount a compass without a
 bearing, the warm-reopen instant path already ships at his accepted build, and the dial is memoised on size and
 bearing (`QiblaCompass.tsx`), which session 37 measured at a 16.7ms median frame gap. The condition cannot arise;
 nothing is specified for it.

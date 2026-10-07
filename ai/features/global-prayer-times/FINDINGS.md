@@ -8,7 +8,7 @@ decision: `RECOMMENDATION.md` holds the answer, and `ASSUMPTIONS.md` holds every
 | Report | Subject | Lines |
 | --- | --- | --- |
 | `agent-reports/R1-authorities-and-conventions.md` | every calculation authority worldwide and its real parameters | 707 |
-| `agent-reports/R2-country-adoption-map.md` | what mosques and states actually use, about 20 countries at tier A | 530 |
+| `agent-reports/R2-country-adoption-map.md` | what mosques and states use, about 20 countries at tier A | 530 |
 | `agent-reports/R3-offline-libraries.md` | the offline library field, measured and recommended | 994 |
 | `agent-reports/R4-apis-and-data-sources.md` | every API, every bulk dataset, and the correction-table discovery | 1,056 |
 | `agent-reports/R5-country-map-completion.md` | the country map closed, the five tier-C giants resolved | 801 |
@@ -130,7 +130,7 @@ university is not a state body. The cost of that uncertainty is measured: choosi
 
 ---
 
-## 3. What countries actually use, and how much of the world we can honestly serve
+## 3. What countries use, and how much of the world we can honestly serve
 
 R2 and R5 built the adoption map on a strict evidence discipline: tier A means the authority's own site was read,
 down to NULL meaning nothing could be sourced and the report says so rather than guessing.
@@ -144,7 +144,7 @@ down to NULL meaning nothing could be sourced and the report says so rather than
 | C: asserted second-hand (Pakistan alone) | 233,000,000 | 11.7% |
 | D: library constant only (Algeria, Russia) | 61,500,000 | 3.1% |
 
-**Only about 40% of the world's Muslims live somewhere a convention is actually established, and no single
+**Only about 40% of the world's Muslims live somewhere a convention is established, and no single
 convention reaches 20% of them.** India, Pakistan, Nigeria, Iraq, Sudan, Afghanistan, Ethiopia, Uzbekistan, China,
 Niger, Mali, Tanzania, Senegal and Syria have no national prayer-time authority this research could find. That is
 not a gap in the searching; for several of them it is the fact.
@@ -184,7 +184,7 @@ Observatory's own service, over 10 cities and 12 dates, **no library disagreed b
 transit or sunset. adhan matched exactly on 106 of 116 sunrises (R3). Three independently written engines all clear
 the bar a minute-resolution app needs.
 
-**What actually decides it:** MIT licence (the whole AlAdhan PHP lineage is GPL-3.0 and cannot ship in a closed
+**What decides it:** MIT licence (the whole AlAdhan PHP lineage is GPL-3.0 and cannot ship in a closed
 app binary); a six-language family sharing byte-identical fixtures; the only candidate whose polar behaviour is a
 deliberate, documented design rather than an accident; and it ships the Moonsighting Committee method that wave 1
 already audited. Performance is a non-issue: a full year for one city is 11.6 ms, and 4.6 KB minified and gzipped.
@@ -292,7 +292,7 @@ bytes gzipped**, and the app already fetches a year from its current provider, s
 **Licensing is the real exposure, and it is not a technicality.** Of eleven authorities measured, **one** is
 licensed for commercial use (MUIS Singapore, under the Singapore Open Data Licence), **two** now carry explicit
 prohibitions found in their own copyright pages, and **eight are silent. Silence is not permission.** Mawaqit, the
-one product that serves what mosques actually pray by, states "Our API is currently private and not publicly
+one product that serves what mosques pray by, states "Our API is currently private and not publicly
 available" and "Any commercial use is strictly prohibited".
 
 ---
@@ -323,7 +323,7 @@ INTERVALS applied to sunrise and Maghrib, and that table is tiny and stable:
   "Prayer times produced by London Salah Times", the app's API says it republishes ELM's timetable unmodified, and
   all seven fields of the producer's live day match the app's captured API year exactly. See `LONDON-LINEAGE.md`.
 - **The "exact" claim is narrower than it first reads, and this is a correction.** Against a **computed** sun, which
-  is what "no network" actually means, it is **61 to 64% exact and 100% within one minute, with Isha 2 minutes out on
+  is what "no network" means, it is **61 to 64% exact and 100% within one minute, with Isha 2 minutes out on
   22 of 18,250 values**. The honest claim is "within a minute", not "exact".
 - Fifty years cost **10,290 bytes brotli**, 0.015% of the release bundle.
 - **One cheap test still outstanding:** no producer file overlaps a year the app has captured, since the downloads

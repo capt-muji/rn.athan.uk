@@ -18,13 +18,13 @@ plan could not answer by reading:
 | Does the iOS half integrate without a Podfile edit? | Yes | `Installing QiblaHeading (0.1.0)`, then `** BUILD SUCCEEDED **` |
 
 All of it was removed before the plan was committed. The planning worktree
-(`~/athan-device-sweep/worktrees/plan-49`) was not needed — the Gradle and CocoaPods state being
+(`~/athan-device-sweep/worktrees/plan-49`) was not needed: the Gradle and CocoaPods state being
 measured lives in the gitignored `android/` and `ios/` folders, which a worktree does not carry.
 
 Eight defects were found in this session's own plan before the executor met them (PLAN.md section
 4). The two that would have stopped the executor on its first commands: the pre-flight's own anchor
-counted 2, not 1 — found only by running the script, this programme's recurring lesson about break
-scripts applied to a pre-flight — and a direct `npx expo prebuild` omits the two widget variables
+counted 2, not 1 (found only by running the script, this programme's recurring lesson about break
+scripts applied to a pre-flight), and a direct `npx expo prebuild` omits the two widget variables
 that `app.config.ts` mirrors, so the diagnostic build would have **shipped both phones widget-less**
 (`ai/AGENTS.md` records that exact accident happening once already).
 
@@ -78,7 +78,7 @@ names the exact string `ExpoQiblaHeading`.
 
 The Android prebuild carried the two widget variables, and the guard earned its place immediately:
 the widget provider count in the manifest was 8, so the widget extension survived a direct prebuild;
-without those variables it would have been 0 — the accident `ai/AGENTS.md` records shipping onto
+without those variables it would have been 0: the accident `ai/AGENTS.md` records shipping onto
 both phones once. `applicationId com.mugtaba.athan.fleettest` and `versionName 1.29.210` were both
 confirmed before the build, so the diagnostic installs alongside the owner's real app rather than
 over it.
@@ -88,7 +88,7 @@ over it.
 **It works on a 2016 phone.** `BUILD SUCCESSFUL in 10m 3s`, installed as
 `com.mugtaba.athan.fleettest` at 1.29.210, and the readout shows a live `fused heading`.
 
-**The proof that FOP is really running its own fusion, rather than failing silently, is in the sensor
+**The proof that FOP is running its own fusion, rather than failing silently, is in the sensor
 clients.** `dumpsys sensorservice` with the sheet closed, then open:
 
 | Sensor | Closed | Qibla sheet open |
@@ -140,7 +140,7 @@ by `Platform.OS`.
 `build-prod.zsh uat-2` ended `BUILD-PROD OK` (612s, `versionName 1.29.210`, real API key, built
 locally), source sha `c5fe2556`, `adb install -r` Success; the `fleettest` package is gone
 (`pm list packages` prints nothing); `dumpsys package com.mugtaba.athan` reads `versionName=1.29.210`;
-`auto_time` is `1`; and the qibla screen shows **no diagnostic readout** — only "Greater London,
+`auto_time` is `1`; and the qibla screen shows **no diagnostic readout**: only "Greater London,
 United Kingdom" below the dial, drawing normally. That last row is the real check on the prod guard:
 the same code that printed four labelled numbers under `EXPO_PUBLIC_ENV=local` prints nothing under
 `prod`, with no code change between the two builds.

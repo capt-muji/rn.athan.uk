@@ -60,7 +60,7 @@ worse than all four:
 > against the fixed `NOTIFICATION_REQUEST_BUDGET` of 64. Session 28 measured the standard profile
 > at 3 days of horizon with both reminders; doubling rows cuts it toward 1.5 days.
 
-So a bilingual notification would not just look cramped. It would **halve how long the app keeps
+So a bilingual notification would not merely look cramped. It would **halve how long the app keeps
 working when the background refresh chain dies**, which is the exact failure `ai/AGENTS.md` records
 costing a user their Magrib and Isha on a OnePlus 8T. That converts a cosmetic preference into a
 reliability regression, and it settles the question.

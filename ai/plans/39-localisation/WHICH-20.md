@@ -110,7 +110,7 @@ So: 20 in the picker, 28 in the file, and the 21st is a pull request rather than
 
 ---
 
-## Question 3: what goes in the file? The whole app, or just the three?
+## Question 3: what goes in the file? The whole app, or only the three?
 
 🐋  "Will we have just a translation for these 3, midnight sunrise and last third? Or will it be
 translation for the entire app, the settings, the list, everything?"
@@ -118,7 +118,7 @@ translation for the entire app, the settings, the list, everything?"
 **The entire app. And the owner's instinct that a single giant file is "the wrong approach" is
 correct, which is why it is not one file.**
 
-Here is what is actually being translated, measured:
+Here is what is being translated, measured:
 
 | Content | Count | Where it comes from | File |
 | --- | --- | --- | --- |
@@ -129,7 +129,7 @@ Here is what is actually being translated, measured:
 So per locale it is **129 strings**, of which **16 are the sourced religious vocabulary** and 113
 are ordinary UI ("Settings", "Close", "Change athan", "A new version is available").
 
-### Why not just the three, or just the eleven
+### Why not only the three, or only the eleven
 
 Because the app language setting changes the whole interface. If the file held only the prayer
 names, an Indonesian user would get Indonesian prayer names inside an English settings sheet, an

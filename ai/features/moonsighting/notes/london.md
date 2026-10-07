@@ -56,10 +56,10 @@ The app's own fixture rows (`nightTimes.test.ts`, 13 days of 2026) also equal th
 | Year | Source | Days | Identity to API |
 |---|---|---|---|
 | 2026 | `london/lpt-2026.json`: London Prayer Times API, fetched 2026-09-14T04:45Z by the lead with the owner's key (not stored; `lpt-2026.meta.json`) | 365 | reference |
-| 2026 | ELM timetable PDF, https://www.eastlondonmosque.org.uk/Handlers/Download.ashx?IDMF=0a9e5418-6204-4d81-a374-9b7836148e2d (fetched 2026-09-14) → `data/elm_timetable_2026.json` | 365 | 4,380/4,380 cells identical |
-| 2026 | Table embedded in https://www.eastlondonmosque.org.uk/prayer-times and in /prayer-times-and-calendar-explained (fetched 2026-09-14) → `data/elm_web_explainer_embedded_2026.json` | 365 | 4,380/4,380 identical |
-| 2025 | ELM PDF IDMF=d276cafe-1b4c-4e6e-bb67-834cd842c129 (live) → `data/elm_timetable_2025.json` | 365 | UNVERIFIED vs API (no API 2025) |
-| 2024 | App repo `mocks/full.ts`: a single-line JSON API dump, first committed as `mocks/data_full.ts` in c78c36e (2024-11-16) → `data/upttl_2024_fullts.json` | 366 | is API output |
+| 2026 | ELM timetable PDF, https://www.eastlondonmosque.org.uk/Handlers/Download.ashx?IDMF=0a9e5418-6204-4d81-a374-9b7836148e2d (fetched 2026-09-14), saved as `data/elm_timetable_2026.json` | 365 | 4,380/4,380 cells identical |
+| 2026 | Table embedded in https://www.eastlondonmosque.org.uk/prayer-times and in /prayer-times-and-calendar-explained (fetched 2026-09-14), saved as `data/elm_web_explainer_embedded_2026.json` | 365 | 4,380/4,380 identical |
+| 2025 | ELM PDF IDMF=d276cafe-1b4c-4e6e-bb67-834cd842c129 (live), saved as `data/elm_timetable_2025.json` | 365 | UNVERIFIED vs API (no API 2025) |
+| 2024 | App repo `mocks/full.ts`: a single-line JSON API dump, first committed as `mocks/data_full.ts` in c78c36e (2024-11-16), saved as `data/upttl_2024_fullts.json` | 366 | is API output |
 | 2022, 2021, 2020 | ELM PDFs, IDMF 43e400b2-10a1-4cbd-9ddd-a43d120ad8fd, cf70f27e-e215-45e4-b6ab-5d07ea82f8c4, 412cad42-a836-45e8-b6b3-3c2644612b0f (links found in Wayback copies of /prayer-times, files still live; `london/elm/downloads.tsv`) | 365, 365, 366 | UNVERIFIED vs API |
 | 2019 | ELM PDF IDMF 60663843-9a7d-44d7-b1f9-05d2d742125d (live) | 365 | UNVERIFIED vs API |
 | 2012–2015, 2017, 2018 | ELM PDFs via Wayback `id_` captures (log `london/elm/wayback_downloads.tsv`) | full years | UNVERIFIED vs API |
@@ -102,7 +102,7 @@ Book p. 116 gives the method:
   - Table 5 June row 31: "1-59".
   - Table 6 row 29 of February: "1-29".
 
-Why the chart has this shape — Hizbul Ulama, "Why our fasting times and timetable are not wrong" (Y.A. Miftahi, 19 August 2011 / 19 Ramadan 1432). Source: http://www.hizbululama.org.uk/articles/english/Why_our_fasting_times_are_not_wrong.pdf, fetched 2026-09-14, read in full.
+Why the chart has this shape: Hizbul Ulama, "Why our fasting times and timetable are not wrong" (Y.A. Miftahi, 19 August 2011 / 19 Ramadan 1432). Source: http://www.hizbululama.org.uk/articles/english/Why_our_fasting_times_are_not_wrong.pdf, fetched 2026-09-14, read in full.
 > "It was agreed at this meeting [2 January 1989] to use First Light times generally for Subha Sadiq but to use Tabayyun times (spreading of light) during summer months. It was also agreed to use Shafaqe Abyadh (disappearance of whiteness) for Isha generally but to use Shafaqe Ahmer (disappearance of red after glow) during summer due to haraj (hardship). Phasing of times to get to one method to the other was agreed for both Subha and Isha. Accordingly, a chart based on the agreement of the Ulama was distributed to UK Masajids."
 
 > "This timetable, based on the observations in Blackburn, from September 1987 to August 1988 yielded 98 successful observations … These observations were used to construct a timetable for a full year which can be applied to all parts of the UK using the gaps in twilight length determined by the observations."
@@ -151,7 +151,7 @@ Computed for every calendar slot in every era-B year: 2015, 2017, 2018, 2019, 20
 | 11-29 | 100 (1-40) | 99: all years |
 
 Reading the edits:
-- **The 29 Apr–12 May flat 1-14 removes the book's early-May dip to 1-00.** That dip is the printed Abyad→Ahmar phasing. London holds 1-14 until the chart climbs back to 1-13 on 13 May.
+- **The 29 Apr–12 May flat 1-14 removes the book's early-May dip to 1-00.** That dip is the printed Abyad-to-Ahmar phasing. London holds 1-14 until the chart climbs back to 1-13 on 13 May.
 - **1 Feb and 29 Nov** each shift a chart step by one day.
 - **16–19 Jun** changed in the 2025 timetable (ELM PDF created 2024-11-25) and persists in 2026.
 - **No documented basis was found** for any edit. I searched:
@@ -174,7 +174,7 @@ Reading the edits:
 
 Checked: 0 Fajr disagreements; 0 disagreements between `isha_interval_2026` and the API.
 
-### 2.3 Against the moonsighting.com Fajr/Isha (the base) — `rules.py`, `data/rules_summary.txt`
+### 2.3 Against the moonsighting.com Fajr/Isha (the base): `rules.py`, `data/rules_summary.txt`
 Base endpoint at the HU point (`endpoint/moonsighting.ahmedbukhamsin.sa_hulondon_<year>_m<m>.json`, fetched 2026-09-14):
 
 | Rule, exact days | 2015 | 2017 | 2018 | 2019 | 2024 | 2025 | 2026 |
@@ -318,7 +318,7 @@ The Fajr/Isha interval rules were unchanged across that switch (§2.2).
 
 ## 6b. London Central Mosque (ICC) 2026 calendar: checked, not a copy of the API
 Sources, fetched 2026-09-14:
-- https://www.iccuk.org/2026/ICC_Calendar_2026b.pdf (29 pages; text read in full, all 5,262 lines) → `london/icc2026/`.
+- https://www.iccuk.org/2026/ICC_Calendar_2026b.pdf (29 pages; text read in full, all 5,262 lines), saved under `london/icc2026/`.
 - https://www.iccuk.org/2026/ICC_Calendar_2026.pdf: 16 pages, image only (198 characters of text). Its daily times were not checked.
 - https://www.iccuk.org/2026/Ramadan_timetable_2026.pdf: image only. Its daily times were not checked.
 
@@ -337,7 +337,7 @@ It is therefore a separately produced table, not a faithful UPTTL copy. It canno
 ## 7. Open questions
 1. **Documented basis for the 21 Isha edits:** not found in any ELM, ICC, Noor Ul Islam, Hizbul Ulama or moonsighting.com source read. Hizbul Ulama's successor chart (if any), or the Baig software, may hold them. UNVERIFIED.
 2. **HMNAO's algorithm** for the boundary days: service unavailable (503), with personal-use-only terms.
-3. **Who changed the coordinate** (2015–2021 → 2022) and the June 16–19 edits (2025), and why: no announcement found.
+3. **Who changed the coordinate** (2015–2021 to 2022) and the June 16–19 edits (2025), and why: no announcement found.
 4. **API identity for years before 2026:** not verifiable without the API's own years. The 2024 dump is API output and fits the same rules.
 
 ---

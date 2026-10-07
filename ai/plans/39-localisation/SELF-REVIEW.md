@@ -17,7 +17,7 @@ context, nesting, fallback chains, interpolation escaping, missing-key reporting
 owner wants a translation-management system with a web UI, i18next has integrations and a
 hand-rolled catalog has none.
 
-**The counter.** Three things hold the recommendation up, and only the third is really load-bearing:
+**The counter.** Three things hold the recommendation up, and only the third is load-bearing:
 
 1. The measured plural surface is zero, which removes the 46 KB polyfill every library needs to be
    correct in Arabic.
@@ -159,7 +159,7 @@ None of these blocks the plan. All of them are named experiments in it.
 
 I spent effort on the translation pipeline and the language set, which are interesting and
 well-sourced, before I had measured the identifier problem. The identifier split is the finding that
-actually decides whether this feature is safe, it was discoverable in the first ten minutes with a
+decides whether this feature is safe, it was discoverable in the first ten minutes with a
 grep, and it is the thing most likely to cause a silent production failure.
 
 The lesson for the plan's ordering is the same one: **do the structural, irreversible, silent-failure

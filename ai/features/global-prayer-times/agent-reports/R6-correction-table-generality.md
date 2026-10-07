@@ -42,7 +42,7 @@ authority's published digits and a library's output.
 
 4. **Egypt is the first true category 1 found: a correctly configured library IS the authority's timetable.**
    All six Model A constants are zero on all four Egyptian cities, and 100.0% of 8,400 published values land
-   within 1 minute (measured). Singapore, which wave 1 called the counter-example, is actually category 2 with
+   within 1 minute (measured). Singapore, which wave 1 called the counter-example, is category 2 with
    a uniform +1 and a `round-down` rule, not category 1.
 
 5. **The exact per-day residual costs a median of 282 bytes brotli per city-year** (measured, n=58 full-year
@@ -603,7 +603,7 @@ All measured. The two failures are specific and explicable:
 (Indonesia, Oman, Egypt, Turkey) and unsafe where a zone has its own angle or its own elevation (Malaysia,
 UAE). The safe default is a per-city table, and the per-city table is cheap.
 
-**How many distinct tables does an authority actually need?**
+**How many distinct tables does an authority need?**
 
 | Authority | cities measured | distinct exact residual tables | distinct six-constant sets |
 |---|---|---|---|

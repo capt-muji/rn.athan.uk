@@ -118,5 +118,5 @@ A session whose plan gives findings text adds it below, under the plan's exact h
 ## Evidence-grade glossary (added 2026-10-07)
 
 This ledger had no evidence-grade section before this line; the grades live in the test
-comments that cite findings. K1: a test may cite a source file by bare filename — recorded
+comments that cite findings. K1: a test may cite a source file by bare filename, recorded
 against the live instance `device/notifications.ts:105`.

@@ -638,7 +638,7 @@ architecture costs a fraction of a second of CPU, and computing six times on dem
 ## Part 3: the correctness oracle question
 
 The owner's constraint: he cannot verify hand-written mathematics. So the question is what this project can
-actually prove about a library it did not write.
+prove about a library it did not write.
 
 ### Every oracle, what it proves and what it does not
 
@@ -906,7 +906,7 @@ Environment for every measurement: node v24.14.1, darwin arm64 (Apple M1), `TZ=U
 
 ### Primary: `adhan@4.4.6` (npm `adhan`, MIT, `batoulapps/adhan-js`)
 
-**The reasoning, in the order it actually matters.**
+**The reasoning, in the order it matters.**
 
 1. **Licence.** MIT, cleanly, with the same licence across the whole six-language family. The two strongest
    alternatives on the calculation side, `islamic-network/prayer-times` and `@praytime/core`, are both
@@ -968,7 +968,7 @@ A genuinely good library that this research wave nearly missed, because wave 1 o
 LGPL `praytimes` package. It is the ancestor of most of this software, written by the author of the algorithm
 nearly every other implementation copies, relicensed to **MIT** in 2025, maintained, 2.4 KB minified and gzipped
 (**half** adhan's), zero dependencies, and per-instance state done correctly. Its Asr iterates the declination at
-the Asr time where adhan uses the noon value, which is arguably the better physics. Measured, it matches the USNO
+the Asr time where adhan uses the noon value, which is the better physics. Measured, it matches the USNO
 on 104 of 116 sunrises, statistically indistinguishable from adhan.
 
 It loses on four things, all measured: no Moonsighting Committee method; no polar-circle resolution at all; a

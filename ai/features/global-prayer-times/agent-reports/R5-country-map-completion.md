@@ -656,7 +656,7 @@ elevation correction at all, to any row.
 
 Both reports were reading a real fact and each generalised it wrongly.
 
-- **What the 1982-83 reform actually did**, per the Turkish sources, read in the original: `insanvehayat.com`
+- **What the 1982-83 reform did**, per the Turkish sources, read in the original: `insanvehayat.com`
   states that from 1983 "imsak derecesi -19'dan -18'e indirilmiş, imsak ve yatsı vakitlerinde temkin kaldırılmış,
   diğer vakitlerde de (öğle, ikindi) azaltılmıştır" (the imsak angle was lowered from -19 to -18, the temkin was
   **removed at the imsak and yatsi times**, and **reduced** at the other times, Öğle and İkindi). `Fazilet

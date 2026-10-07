@@ -16,7 +16,7 @@ Each schedule holds one sequence of prayers. Everything on screen derives from t
 | Which row is next? | The readable row with the earliest instant after now | `findNextReadable` |
 | Has a row passed? | A readable row passes at its instant | `isRowPassed` |
 | Which list day is on screen? | The earliest list day with a readable row still to come | `resolveDisplayDate` |
-| What does the bar measure from? | The row just above next, or the last row of the list before | `findPreviousRow` |
+| What does the bar measure from? | The row above next, or the last row of the list before | `findPreviousRow` |
 | When does the screen next change? | At the next readable prayer, or at the 00:00 that ends a held list day (ADR-004) | `getNextBoundary` |
 | How long is left? | `next.datetime - Date.now()` | `getSecondsRemaining` (`shared/time.ts`) |
 

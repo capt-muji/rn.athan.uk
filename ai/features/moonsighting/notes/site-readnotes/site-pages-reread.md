@@ -37,69 +37,69 @@ Reading rule: every line of every file, including "--- FORMS" and "--- LINKS", v
 | https://www.moonsighting.com/articles/story-of-wise-man.html | Story of a Wise Man | none on page | full, 62 lines | K.V. Aboobacker's satire of a traveller meeting Eid in Dubai, Kerala and Bangalore on three days (Oct 4 to 6, 2014) | no |
 | https://www.moonsighting.com/articles/when-hijri-calendar.html | When Would We Have Hijri Calendar? | none on page | full, 21 lines | Zaheer Hussain's airline-booking satire on why sighting makes the Hijri calendar unusable in daily life | no |
 | https://www.moonsighting.com/articles/why-islamic-dates-in-mess.html | Why are Islamic Dates in a Mess? | none on page | full, 59 lines | Irshad Sait (Hijri Committee of India) on Eid al-Fitr 2015 on three weekdays in India, and a list of "basics" (the conjunction day is the last day, observe at Maghrib then at Fajr) | yes (Maghrib and Fajr as observation times) |
-| https://www.moonsighting.com/dont/don_a.html | STOP!!! | none | full, 19 lines | Entry of the chain: "Don't go any further. This is a WARNING!" -> don_b | no |
-| https://www.moonsighting.com/dont/don_b.html | DON'T CLICK DON'T CLICK DON'T CLICK DON'T CLICK | none | full, 19 lines | "My Dear! I ASKED YOU NOT TO CLICK!" -> dont0 | no |
-| https://www.moonsighting.com/dont/don_s.html | DO NOT CLICK | none | full, 15 lines | "Y're a heck of a persistent fellow." -> don_t | no |
-| https://www.moonsighting.com/dont/don_t.html | DO NOT CLICK | none | full, 16 lines | Promises a counter on the next page -> don_u | no |
-| https://www.moonsighting.com/dont/don_u.html | DO NOT CLICK | none | full, 15 lines | Counter "must be the same color as background" -> don_v | no |
-| https://www.moonsighting.com/dont/don_v.html | DO NOT CLICK | none | full, 15 lines | "You need 3D glasses for that." -> don_w | no |
-| https://www.moonsighting.com/dont/don_w.html | DO NOT CLICK | none | full, 16 lines | "you did not bring the 3d glasses" -> don_x | no |
-| https://www.moonsighting.com/dont/don_x.html | DO NOT CLICK | none | full, 15 lines | "How about one more click" -> don_y | no |
-| https://www.moonsighting.com/dont/don_y.html | DO NOT CLICK | none | full, 20 lines | "LAST warning"; links "lectures" -> ../lectures.html; -> don_z | no |
+| https://www.moonsighting.com/dont/don_a.html | STOP!!! | none | full, 19 lines | Entry of the chain: "Don't go any further. This is a WARNING!", linking to don_b | no |
+| https://www.moonsighting.com/dont/don_b.html | DON'T CLICK DON'T CLICK DON'T CLICK DON'T CLICK | none | full, 19 lines | "My Dear! I ASKED YOU NOT TO CLICK!", linking to dont0 | no |
+| https://www.moonsighting.com/dont/don_s.html | DO NOT CLICK | none | full, 15 lines | "Y're a heck of a persistent fellow.", linking to don_t | no |
+| https://www.moonsighting.com/dont/don_t.html | DO NOT CLICK | none | full, 16 lines | Promises a counter on the next page, linking to don_u | no |
+| https://www.moonsighting.com/dont/don_u.html | DO NOT CLICK | none | full, 15 lines | Counter "must be the same color as background", linking to don_v | no |
+| https://www.moonsighting.com/dont/don_v.html | DO NOT CLICK | none | full, 15 lines | "You need 3D glasses for that.", linking to don_w | no |
+| https://www.moonsighting.com/dont/don_w.html | DO NOT CLICK | none | full, 16 lines | "you did not bring the 3d glasses", linking to don_x | no |
+| https://www.moonsighting.com/dont/don_x.html | DO NOT CLICK | none | full, 15 lines | "How about one more click", linking to don_y | no |
+| https://www.moonsighting.com/dont/don_y.html | DO NOT CLICK | none | full, 20 lines | "LAST warning"; links "lectures", linking to ../lectures.html; links don_z | no |
 | https://www.moonsighting.com/dont/don_z.html | DO NOT CLICK | none | full, 13 lines | End of the chain: "Now, you will never get out of this loop. ... Ha-ha-haaaaaaaaa"; no links at all | no |
-| https://www.moonsighting.com/dont/donlang.html | DO NOT CLICK | Updated April 7, 2023 | full, 147 lines | "DO NOT CLICK" in about 60 languages or places -> dont3 | no |
-| https://www.moonsighting.com/dont/donot0.html | DO NOT CLICK | none | full, 16 lines | "What an idea! It was fun, especially luring your curiosity." -> donot1 | no |
-| https://www.moonsighting.com/dont/donot1.html | DO NOT CLICK | none | full, 18 lines | "I am astonished at your determination." -> donot2 | no |
-| https://www.moonsighting.com/dont/donot10.html | DO NOT CLICK | none | full, 17 lines | "Most Useless Click Award." -> donot8 | no |
-| https://www.moonsighting.com/dont/donot11.html | DO NOT CLICK | none | full, 15 lines | "It is not the end." -> donot12 | no |
-| https://www.moonsighting.com/dont/donot12.html | DO NOT CLICK | none | full, 15 lines | "count down - 9 more clicks!!" -> donot13 | no |
-| https://www.moonsighting.com/dont/donot13.html | DO NOT CLICK | none | full, 15 lines | "8 more clicks!!" -> donot14 | no |
-| https://www.moonsighting.com/dont/donot14.html | DO NOT CLICK | none | full, 15 lines | "7 more clicks!!" -> donot15 | no |
-| https://www.moonsighting.com/dont/donot15.html | DO NOT CLICK | none | full, 15 lines | "6 more clicks!!" -> donot16 | no |
-| https://www.moonsighting.com/dont/donot16.html | DO NOT CLICK | none | full, 15 lines | "5 more clicks!!" -> donot17 | no |
-| https://www.moonsighting.com/dont/donot17.html | DO NOT CLICK | none | full, 16 lines | "I think it was 5 or may be 4 more clicks!" -> donot18 | no |
-| https://www.moonsighting.com/dont/donot18.html | DO NOT CLICK | none | full, 14 lines | "So, we start at 4 more clicks!!" -> donot19 | no |
-| https://www.moonsighting.com/dont/donot19.html | DO NOT CLICK | none | full, 14 lines | "3 more clicks!!" -> donot20 | no |
-| https://www.moonsighting.com/dont/donot2.html | DO NOT CLICK | none | full, 18 lines | "So, it is a WIT contest between you and me." -> donot3 | no |
-| https://www.moonsighting.com/dont/donot20.html | DO NOT CLICK | none | full, 14 lines | "Now 2 more clicks!!" -> donot21 | no |
-| https://www.moonsighting.com/dont/donot21.html | DO NOT CLICK | none | full, 14 lines | "Now 1 more clicks!!" -> don_s | no |
-| https://www.moonsighting.com/dont/donot3.html | DO NOT CLICK | none | full, 17 lines | "There is no end!?" -> donot4 | no |
-| https://www.moonsighting.com/dont/donot4.html | DO NOT CLICK | none | full, 16 lines | "Waste your time. What do I care?" -> donot5 | no |
-| https://www.moonsighting.com/dont/donot5.html | DO NOT CLICK | none | full, 16 lines | "Do something else!" -> donot6 | no |
-| https://www.moonsighting.com/dont/donot6.html | DO NOT CLICK | none | full, 17 lines | "If it is night time, count stars." -> donot7 | no |
-| https://www.moonsighting.com/dont/donot7.html | DO NOT CLICK | none | full, 17 lines | "Still believe that there is an end?" -> donot10 (skips 8 and 9) | no |
-| https://www.moonsighting.com/dont/donot8.html | DO NOT CLICK | none | full, 17 lines | "there would be a Voodoo curse" -> donot9 | no |
-| https://www.moonsighting.com/dont/donot9.html | DO NOT CLICK | none | full, 17 lines | "The Voodoo curse is on you now!" -> donoto0 | no |
-| https://www.moonsighting.com/dont/donoto0.html | DO NOT CLICK | none | full, 17 lines | "Are you nuts? Not bothered by the curse either?" -> donoto1 | no |
-| https://www.moonsighting.com/dont/donoto1.html | DO NOT CLICK | none | full, 17 lines | "Are you thinking to set a world record?" -> donoto2 | no |
-| https://www.moonsighting.com/dont/donoto2.html | DO NOT CLICK | none | full, 17 lines | "your computer will go in a never never land!" -> donoto3 | no |
-| https://www.moonsighting.com/dont/donoto3.html | DO NOT CLICK | none | full, 17 lines | "You may be thinking, I'm almost there!" -> donoto4 | no |
-| https://www.moonsighting.com/dont/donoto4.html | DO NOT CLICK | none | full, 17 lines | "I am reading your mind. Telepathy!" -> donoto5 | no |
-| https://www.moonsighting.com/dont/donoto5.html | DO NOT CLICK | none | full, 17 lines | "Reverse Telepathy!" -> donoto6 | no |
-| https://www.moonsighting.com/dont/donoto6.html | DO NOT CLICK | none | full, 18 lines | "Note down this number, [number redacted]" -> donoto7 | no |
-| https://www.moonsighting.com/dont/donoto7.html | DO NOT CLICK | none | full, 18 lines | "This is not a telephone number. You have spent that many [2122344400] microseconds" -> donoto8 | no |
-| https://www.moonsighting.com/dont/donoto8.html | DO NOT CLICK | none | full, 17 lines | "You are still at about 10% of this chain link." -> dont2 | no |
-| https://www.moonsighting.com/dont/dont0.html | DO NOT CLICK | none | full, 17 lines | "Hey, what did I say?" -> dont1 | no |
-| https://www.moonsighting.com/dont/dont1.html | DO NOT CLICK | none | full, 17 lines | "You did it anyways!" -> donlang | no |
-| https://www.moonsighting.com/dont/dont10.html | DO NOT CLICK | none | full, 18 lines | "Do NOT go any further, or ELSE......" -> donot0 | no |
-| https://www.moonsighting.com/dont/dont2.html | DO NOT CLICK | none | full, 15 lines | "You do opposit to what I say." -> dontc0 | no |
-| https://www.moonsighting.com/dont/dont3.html | DO NOT CLICK | none | full, 16 lines | "\"This is my Private Area.\" So don't peek here." -> dont4 | no |
-| https://www.moonsighting.com/dont/dont4.html | DO NOT CLICK | none | full, 15 lines | "Don't you have anything better to do?" -> dont5 | no |
-| https://www.moonsighting.com/dont/dont5.html | DO NOT CLICK | none | full, 15 lines | "You may be thinking that there is a prize" -> dont6 | no |
-| https://www.moonsighting.com/dont/dont6.html | DO NOT CLICK | none | full, 19 lines | "This is called Reverse Psychology" -> dont7 | no |
-| https://www.moonsighting.com/dont/dont7.html | DO NOT CLICK | none | full, 16 lines | "If you click now, you might regret!" -> dont8 | no |
-| https://www.moonsighting.com/dont/dont8.html | DO NOT CLICK | none | full, 16 lines | "You are a victim of STUPIDITY virus!" -> dont9 | no |
-| https://www.moonsighting.com/dont/dont9.html | DO NOT CLICK | none | full, 17 lines | "tHIS LINE sHowS thAT youR keY boArD is CoRruPt." -> dont10 | no |
-| https://www.moonsighting.com/dont/dontc0.html | DO NOT CLICK | none | full, 15 lines | "from now on, I will tell you to click, instead of Do NOT click" -> dontc1 | no |
-| https://www.moonsighting.com/dont/dontc1.html | DO NOT CLICK | none | full, 15 lines | "Go on; Click one more time." -> dontc2 | no |
-| https://www.moonsighting.com/dont/dontc2.html | DO NOT CLICK | none | full, 15 lines | "You are following my instructions" -> dontc3 | no |
-| https://www.moonsighting.com/dont/dontc3.html | DO NOT CLICK | none | full, 15 lines | "I knew, you are not going to quit after coming this far" -> dontc4 | no |
-| https://www.moonsighting.com/dont/dontc4.html | DO NOT CLICK | none | full, 15 lines | "So, I am going to give you a PRIZE!" -> dontc5 | no |
-| https://www.moonsighting.com/dont/dontc5.html | DO NOT CLICK | none | full, 15 lines | "About a hundred more clicks." -> dontc6 | no |
-| https://www.moonsighting.com/dont/dontc6.html | DO NOT CLICK | none | full, 15 lines | "Go on, 99 more clicks!" -> dontc7 | no |
-| https://www.moonsighting.com/dont/dontc7.html | DO NOT CLICK | none | full, 15 lines | "Go on, 98 more clicks!" -> dontc8 | no |
-| https://www.moonsighting.com/dont/dontc8.html | DO NOT CLICK | none | full, 15 lines | "I was just kidding! Forget about 98 clicks." -> dontc9 | no |
-| https://www.moonsighting.com/dont/dontc9.html | DO NOT CLICK | none | full, 15 lines | "Finally you arrived at the end.  Bravo!!" -> donot11 | no |
+| https://www.moonsighting.com/dont/donlang.html | DO NOT CLICK | Updated April 7, 2023 | full, 147 lines | "DO NOT CLICK" in about 60 languages or places, linking to dont3 | no |
+| https://www.moonsighting.com/dont/donot0.html | DO NOT CLICK | none | full, 16 lines | "What an idea! It was fun, especially luring your curiosity.", linking to donot1 | no |
+| https://www.moonsighting.com/dont/donot1.html | DO NOT CLICK | none | full, 18 lines | "I am astonished at your determination.", linking to donot2 | no |
+| https://www.moonsighting.com/dont/donot10.html | DO NOT CLICK | none | full, 17 lines | "Most Useless Click Award.", linking to donot8 | no |
+| https://www.moonsighting.com/dont/donot11.html | DO NOT CLICK | none | full, 15 lines | "It is not the end.", linking to donot12 | no |
+| https://www.moonsighting.com/dont/donot12.html | DO NOT CLICK | none | full, 15 lines | "count down - 9 more clicks!!", linking to donot13 | no |
+| https://www.moonsighting.com/dont/donot13.html | DO NOT CLICK | none | full, 15 lines | "8 more clicks!!", linking to donot14 | no |
+| https://www.moonsighting.com/dont/donot14.html | DO NOT CLICK | none | full, 15 lines | "7 more clicks!!", linking to donot15 | no |
+| https://www.moonsighting.com/dont/donot15.html | DO NOT CLICK | none | full, 15 lines | "6 more clicks!!", linking to donot16 | no |
+| https://www.moonsighting.com/dont/donot16.html | DO NOT CLICK | none | full, 15 lines | "5 more clicks!!", linking to donot17 | no |
+| https://www.moonsighting.com/dont/donot17.html | DO NOT CLICK | none | full, 16 lines | "I think it was 5 or may be 4 more clicks!", linking to donot18 | no |
+| https://www.moonsighting.com/dont/donot18.html | DO NOT CLICK | none | full, 14 lines | "So, we start at 4 more clicks!!", linking to donot19 | no |
+| https://www.moonsighting.com/dont/donot19.html | DO NOT CLICK | none | full, 14 lines | "3 more clicks!!", linking to donot20 | no |
+| https://www.moonsighting.com/dont/donot2.html | DO NOT CLICK | none | full, 18 lines | "So, it is a WIT contest between you and me.", linking to donot3 | no |
+| https://www.moonsighting.com/dont/donot20.html | DO NOT CLICK | none | full, 14 lines | "Now 2 more clicks!!", linking to donot21 | no |
+| https://www.moonsighting.com/dont/donot21.html | DO NOT CLICK | none | full, 14 lines | "Now 1 more clicks!!", linking to don_s | no |
+| https://www.moonsighting.com/dont/donot3.html | DO NOT CLICK | none | full, 17 lines | "There is no end!?", linking to donot4 | no |
+| https://www.moonsighting.com/dont/donot4.html | DO NOT CLICK | none | full, 16 lines | "Waste your time. What do I care?", linking to donot5 | no |
+| https://www.moonsighting.com/dont/donot5.html | DO NOT CLICK | none | full, 16 lines | "Do something else!", linking to donot6 | no |
+| https://www.moonsighting.com/dont/donot6.html | DO NOT CLICK | none | full, 17 lines | "If it is night time, count stars.", linking to donot7 | no |
+| https://www.moonsighting.com/dont/donot7.html | DO NOT CLICK | none | full, 17 lines | "Still believe that there is an end?", linking to donot10 (skips 8 and 9) | no |
+| https://www.moonsighting.com/dont/donot8.html | DO NOT CLICK | none | full, 17 lines | "there would be a Voodoo curse", linking to donot9 | no |
+| https://www.moonsighting.com/dont/donot9.html | DO NOT CLICK | none | full, 17 lines | "The Voodoo curse is on you now!", linking to donoto0 | no |
+| https://www.moonsighting.com/dont/donoto0.html | DO NOT CLICK | none | full, 17 lines | "Are you nuts? Not bothered by the curse either?", linking to donoto1 | no |
+| https://www.moonsighting.com/dont/donoto1.html | DO NOT CLICK | none | full, 17 lines | "Are you thinking to set a world record?", linking to donoto2 | no |
+| https://www.moonsighting.com/dont/donoto2.html | DO NOT CLICK | none | full, 17 lines | "your computer will go in a never never land!", linking to donoto3 | no |
+| https://www.moonsighting.com/dont/donoto3.html | DO NOT CLICK | none | full, 17 lines | "You may be thinking, I'm almost there!", linking to donoto4 | no |
+| https://www.moonsighting.com/dont/donoto4.html | DO NOT CLICK | none | full, 17 lines | "I am reading your mind. Telepathy!", linking to donoto5 | no |
+| https://www.moonsighting.com/dont/donoto5.html | DO NOT CLICK | none | full, 17 lines | "Reverse Telepathy!", linking to donoto6 | no |
+| https://www.moonsighting.com/dont/donoto6.html | DO NOT CLICK | none | full, 18 lines | "Note down this number, [number redacted]", linking to donoto7 | no |
+| https://www.moonsighting.com/dont/donoto7.html | DO NOT CLICK | none | full, 18 lines | "This is not a telephone number. You have spent that many [2122344400] microseconds", linking to donoto8 | no |
+| https://www.moonsighting.com/dont/donoto8.html | DO NOT CLICK | none | full, 17 lines | "You are still at about 10% of this chain link.", linking to dont2 | no |
+| https://www.moonsighting.com/dont/dont0.html | DO NOT CLICK | none | full, 17 lines | "Hey, what did I say?", linking to dont1 | no |
+| https://www.moonsighting.com/dont/dont1.html | DO NOT CLICK | none | full, 17 lines | "You did it anyways!", linking to donlang | no |
+| https://www.moonsighting.com/dont/dont10.html | DO NOT CLICK | none | full, 18 lines | "Do NOT go any further, or ELSE......", linking to donot0 | no |
+| https://www.moonsighting.com/dont/dont2.html | DO NOT CLICK | none | full, 15 lines | "You do opposit to what I say.", linking to dontc0 | no |
+| https://www.moonsighting.com/dont/dont3.html | DO NOT CLICK | none | full, 16 lines | "\"This is my Private Area.\" So don't peek here.", linking to dont4 | no |
+| https://www.moonsighting.com/dont/dont4.html | DO NOT CLICK | none | full, 15 lines | "Don't you have anything better to do?", linking to dont5 | no |
+| https://www.moonsighting.com/dont/dont5.html | DO NOT CLICK | none | full, 15 lines | "You may be thinking that there is a prize", linking to dont6 | no |
+| https://www.moonsighting.com/dont/dont6.html | DO NOT CLICK | none | full, 19 lines | "This is called Reverse Psychology", linking to dont7 | no |
+| https://www.moonsighting.com/dont/dont7.html | DO NOT CLICK | none | full, 16 lines | "If you click now, you might regret!", linking to dont8 | no |
+| https://www.moonsighting.com/dont/dont8.html | DO NOT CLICK | none | full, 16 lines | "You are a victim of STUPIDITY virus!", linking to dont9 | no |
+| https://www.moonsighting.com/dont/dont9.html | DO NOT CLICK | none | full, 17 lines | "tHIS LINE sHowS thAT youR keY boArD is CoRruPt.", linking to dont10 | no |
+| https://www.moonsighting.com/dont/dontc0.html | DO NOT CLICK | none | full, 15 lines | "from now on, I will tell you to click, instead of Do NOT click", linking to dontc1 | no |
+| https://www.moonsighting.com/dont/dontc1.html | DO NOT CLICK | none | full, 15 lines | "Go on; Click one more time.", linking to dontc2 | no |
+| https://www.moonsighting.com/dont/dontc2.html | DO NOT CLICK | none | full, 15 lines | "You are following my instructions", linking to dontc3 | no |
+| https://www.moonsighting.com/dont/dontc3.html | DO NOT CLICK | none | full, 15 lines | "I knew, you are not going to quit after coming this far", linking to dontc4 | no |
+| https://www.moonsighting.com/dont/dontc4.html | DO NOT CLICK | none | full, 15 lines | "So, I am going to give you a PRIZE!", linking to dontc5 | no |
+| https://www.moonsighting.com/dont/dontc5.html | DO NOT CLICK | none | full, 15 lines | "About a hundred more clicks.", linking to dontc6 | no |
+| https://www.moonsighting.com/dont/dontc6.html | DO NOT CLICK | none | full, 15 lines | "Go on, 99 more clicks!", linking to dontc7 | no |
+| https://www.moonsighting.com/dont/dontc7.html | DO NOT CLICK | none | full, 15 lines | "Go on, 98 more clicks!", linking to dontc8 | no |
+| https://www.moonsighting.com/dont/dontc8.html | DO NOT CLICK | none | full, 15 lines | "I was just kidding! Forget about 98 clicks.", linking to dontc9 | no |
+| https://www.moonsighting.com/dont/dontc9.html | DO NOT CLICK | none | full, 15 lines | "Finally you arrived at the end.  Bravo!!", linking to donot11 | no |
 
 ## Findings by topic
 
@@ -270,7 +270,7 @@ Row: | https://www.moonsighting.com/3books.html | Moonsighting Reports | none on
 ### hijri-calendar.html.txt
 Row: | https://www.moonsighting.com/hijri-calendar.html | Hijri Calendar | Updated May 2, 2020 | full, 54 lines | Qur'an verses and Ibn Kathir on the lunar calendar; Javed Ghamidi says month-start is astronomy; conference videos including UK 2010 | yes (Ghamidi's Iftar/Suhoor remark) |
 - Ghamidi on prayer and fasting times: "To Iftaar a fast no one watches the sun; every one relies on the watch. At suhoor time, no one watches white light appearing in the sky; every one relies on watch."
-- UK: "Moonsighting Conference in UK, 2010" / "Moonsighting Conference in UK, October 31, 2010" -> https://vimeo.com/17995767 (no detail of who held it).
+- UK: "Moonsighting Conference in UK, 2010" / "Moonsighting Conference in UK, October 31, 2010", linking to https://vimeo.com/17995767 (no detail of who held it).
 - Canada: "Masaajid in Greater Toronto accept global sighting". US: "Debate in Southern California just before Ramadan 1436 AH".
 - Surprising: "Tafseer Ibn Katheer in Qur'an Surah As-Shams, verses 92:1 & 2" (Surah As-Shams is chapter 91, not 92).
 - FORMS: none. LINKS: meezan.tv video, vimeo, 2 YouTube, fcna-uq-calendar.html, "#".
@@ -401,84 +401,84 @@ Chronology Julian weekday note (articles/chronology.html): all 21 Julian dates w
 Urjoonal byte note: "almost 12 �," in articles/significance%20of%20urjoonal-qadeem.html.txt is the replacement character EF BF BD (probably a lost degree sign; not assumed).
 
 ### dont/ part 1 (33 of 63 files): don_a to don_z, donlang, donot0 to donot21
-All are "DO NOT CLICK" joke pages chained by "Do NOT click here" links, each with "Back to Home Page" (-> ../, except don_a -> ../moon.html). None has prayer-time, UK, twilight or calculation content. Only donlang carries a date. FORMS: none on every page.
+All are "DO NOT CLICK" joke pages chained by "Do NOT click here" links, each with "Back to Home Page" (linking to ../, except don_a, which links to ../moon.html). None has prayer-time, UK, twilight or calculation content. Only donlang carries a date. FORMS: none on every page.
 
-Row: | https://www.moonsighting.com/dont/don_a.html | STOP!!! | none | full, 19 lines | Entry of the chain: "Don't go any further. This is a WARNING!" -> don_b | no |
-Row: | https://www.moonsighting.com/dont/don_b.html | DON'T CLICK DON'T CLICK DON'T CLICK DON'T CLICK | none | full, 19 lines | "My Dear! I ASKED YOU NOT TO CLICK!" -> dont0 | no |
-Row: | https://www.moonsighting.com/dont/don_s.html | DO NOT CLICK | none | full, 15 lines | "Y're a heck of a persistent fellow." -> don_t | no |
-Row: | https://www.moonsighting.com/dont/don_t.html | DO NOT CLICK | none | full, 16 lines | Promises a counter on the next page -> don_u | no |
-Row: | https://www.moonsighting.com/dont/don_u.html | DO NOT CLICK | none | full, 15 lines | Counter "must be the same color as background" -> don_v | no |
-Row: | https://www.moonsighting.com/dont/don_v.html | DO NOT CLICK | none | full, 15 lines | "You need 3D glasses for that." -> don_w | no |
-Row: | https://www.moonsighting.com/dont/don_w.html | DO NOT CLICK | none | full, 16 lines | "you did not bring the 3d glasses" -> don_x | no |
-Row: | https://www.moonsighting.com/dont/don_x.html | DO NOT CLICK | none | full, 15 lines | "How about one more click" -> don_y | no |
-Row: | https://www.moonsighting.com/dont/don_y.html | DO NOT CLICK | none | full, 20 lines | "LAST warning"; links "lectures" -> ../lectures.html; -> don_z | no |
+Row: | https://www.moonsighting.com/dont/don_a.html | STOP!!! | none | full, 19 lines | Entry of the chain: "Don't go any further. This is a WARNING!", linking to don_b | no |
+Row: | https://www.moonsighting.com/dont/don_b.html | DON'T CLICK DON'T CLICK DON'T CLICK DON'T CLICK | none | full, 19 lines | "My Dear! I ASKED YOU NOT TO CLICK!", linking to dont0 | no |
+Row: | https://www.moonsighting.com/dont/don_s.html | DO NOT CLICK | none | full, 15 lines | "Y're a heck of a persistent fellow.", linking to don_t | no |
+Row: | https://www.moonsighting.com/dont/don_t.html | DO NOT CLICK | none | full, 16 lines | Promises a counter on the next page, linking to don_u | no |
+Row: | https://www.moonsighting.com/dont/don_u.html | DO NOT CLICK | none | full, 15 lines | Counter "must be the same color as background", linking to don_v | no |
+Row: | https://www.moonsighting.com/dont/don_v.html | DO NOT CLICK | none | full, 15 lines | "You need 3D glasses for that.", linking to don_w | no |
+Row: | https://www.moonsighting.com/dont/don_w.html | DO NOT CLICK | none | full, 16 lines | "you did not bring the 3d glasses", linking to don_x | no |
+Row: | https://www.moonsighting.com/dont/don_x.html | DO NOT CLICK | none | full, 15 lines | "How about one more click", linking to don_y | no |
+Row: | https://www.moonsighting.com/dont/don_y.html | DO NOT CLICK | none | full, 20 lines | "LAST warning"; links "lectures", linking to ../lectures.html; links don_z | no |
 Row: | https://www.moonsighting.com/dont/don_z.html | DO NOT CLICK | none | full, 13 lines | End of the chain: "Now, you will never get out of this loop. ... Ha-ha-haaaaaaaaa"; no links at all | no |
-Row: | https://www.moonsighting.com/dont/donlang.html | DO NOT CLICK | Updated April 7, 2023 | full, 147 lines | "DO NOT CLICK" in about 60 languages or places -> dont3 | no |
-Row: | https://www.moonsighting.com/dont/donot0.html | DO NOT CLICK | none | full, 16 lines | "What an idea! It was fun, especially luring your curiosity." -> donot1 | no |
-Row: | https://www.moonsighting.com/dont/donot1.html | DO NOT CLICK | none | full, 18 lines | "I am astonished at your determination." -> donot2 | no |
-Row: | https://www.moonsighting.com/dont/donot2.html | DO NOT CLICK | none | full, 18 lines | "So, it is a WIT contest between you and me." -> donot3 | no |
-Row: | https://www.moonsighting.com/dont/donot3.html | DO NOT CLICK | none | full, 17 lines | "There is no end!?" -> donot4 | no |
-Row: | https://www.moonsighting.com/dont/donot4.html | DO NOT CLICK | none | full, 16 lines | "Waste your time. What do I care?" -> donot5 | no |
-Row: | https://www.moonsighting.com/dont/donot5.html | DO NOT CLICK | none | full, 16 lines | "Do something else!" -> donot6 | no |
-Row: | https://www.moonsighting.com/dont/donot6.html | DO NOT CLICK | none | full, 17 lines | "If it is night time, count stars." -> donot7 | no |
-Row: | https://www.moonsighting.com/dont/donot7.html | DO NOT CLICK | none | full, 17 lines | "Still believe that there is an end?" -> donot10 (skips 8 and 9) | no |
-Row: | https://www.moonsighting.com/dont/donot8.html | DO NOT CLICK | none | full, 17 lines | "there would be a Voodoo curse" -> donot9 | no |
-Row: | https://www.moonsighting.com/dont/donot9.html | DO NOT CLICK | none | full, 17 lines | "The Voodoo curse is on you now!" -> donoto0 | no |
-Row: | https://www.moonsighting.com/dont/donot10.html | DO NOT CLICK | none | full, 17 lines | "Most Useless Click Award." -> donot8 | no |
-Row: | https://www.moonsighting.com/dont/donot11.html | DO NOT CLICK | none | full, 15 lines | "It is not the end." -> donot12 | no |
-Row: | https://www.moonsighting.com/dont/donot12.html | DO NOT CLICK | none | full, 15 lines | "count down - 9 more clicks!!" -> donot13 | no |
-Row: | https://www.moonsighting.com/dont/donot13.html | DO NOT CLICK | none | full, 15 lines | "8 more clicks!!" -> donot14 | no |
-Row: | https://www.moonsighting.com/dont/donot14.html | DO NOT CLICK | none | full, 15 lines | "7 more clicks!!" -> donot15 | no |
-Row: | https://www.moonsighting.com/dont/donot15.html | DO NOT CLICK | none | full, 15 lines | "6 more clicks!!" -> donot16 | no |
-Row: | https://www.moonsighting.com/dont/donot16.html | DO NOT CLICK | none | full, 15 lines | "5 more clicks!!" -> donot17 | no |
-Row: | https://www.moonsighting.com/dont/donot17.html | DO NOT CLICK | none | full, 16 lines | "I think it was 5 or may be 4 more clicks!" -> donot18 | no |
-Row: | https://www.moonsighting.com/dont/donot18.html | DO NOT CLICK | none | full, 14 lines | "So, we start at 4 more clicks!!" -> donot19 | no |
-Row: | https://www.moonsighting.com/dont/donot19.html | DO NOT CLICK | none | full, 14 lines | "3 more clicks!!" -> donot20 | no |
-Row: | https://www.moonsighting.com/dont/donot20.html | DO NOT CLICK | none | full, 14 lines | "Now 2 more clicks!!" -> donot21 | no |
-Row: | https://www.moonsighting.com/dont/donot21.html | DO NOT CLICK | none | full, 14 lines | "Now 1 more clicks!!" -> don_s | no |
+Row: | https://www.moonsighting.com/dont/donlang.html | DO NOT CLICK | Updated April 7, 2023 | full, 147 lines | "DO NOT CLICK" in about 60 languages or places, linking to dont3 | no |
+Row: | https://www.moonsighting.com/dont/donot0.html | DO NOT CLICK | none | full, 16 lines | "What an idea! It was fun, especially luring your curiosity.", linking to donot1 | no |
+Row: | https://www.moonsighting.com/dont/donot1.html | DO NOT CLICK | none | full, 18 lines | "I am astonished at your determination.", linking to donot2 | no |
+Row: | https://www.moonsighting.com/dont/donot2.html | DO NOT CLICK | none | full, 18 lines | "So, it is a WIT contest between you and me.", linking to donot3 | no |
+Row: | https://www.moonsighting.com/dont/donot3.html | DO NOT CLICK | none | full, 17 lines | "There is no end!?", linking to donot4 | no |
+Row: | https://www.moonsighting.com/dont/donot4.html | DO NOT CLICK | none | full, 16 lines | "Waste your time. What do I care?", linking to donot5 | no |
+Row: | https://www.moonsighting.com/dont/donot5.html | DO NOT CLICK | none | full, 16 lines | "Do something else!", linking to donot6 | no |
+Row: | https://www.moonsighting.com/dont/donot6.html | DO NOT CLICK | none | full, 17 lines | "If it is night time, count stars.", linking to donot7 | no |
+Row: | https://www.moonsighting.com/dont/donot7.html | DO NOT CLICK | none | full, 17 lines | "Still believe that there is an end?", linking to donot10 (skips 8 and 9) | no |
+Row: | https://www.moonsighting.com/dont/donot8.html | DO NOT CLICK | none | full, 17 lines | "there would be a Voodoo curse", linking to donot9 | no |
+Row: | https://www.moonsighting.com/dont/donot9.html | DO NOT CLICK | none | full, 17 lines | "The Voodoo curse is on you now!", linking to donoto0 | no |
+Row: | https://www.moonsighting.com/dont/donot10.html | DO NOT CLICK | none | full, 17 lines | "Most Useless Click Award.", linking to donot8 | no |
+Row: | https://www.moonsighting.com/dont/donot11.html | DO NOT CLICK | none | full, 15 lines | "It is not the end.", linking to donot12 | no |
+Row: | https://www.moonsighting.com/dont/donot12.html | DO NOT CLICK | none | full, 15 lines | "count down - 9 more clicks!!", linking to donot13 | no |
+Row: | https://www.moonsighting.com/dont/donot13.html | DO NOT CLICK | none | full, 15 lines | "8 more clicks!!", linking to donot14 | no |
+Row: | https://www.moonsighting.com/dont/donot14.html | DO NOT CLICK | none | full, 15 lines | "7 more clicks!!", linking to donot15 | no |
+Row: | https://www.moonsighting.com/dont/donot15.html | DO NOT CLICK | none | full, 15 lines | "6 more clicks!!", linking to donot16 | no |
+Row: | https://www.moonsighting.com/dont/donot16.html | DO NOT CLICK | none | full, 15 lines | "5 more clicks!!", linking to donot17 | no |
+Row: | https://www.moonsighting.com/dont/donot17.html | DO NOT CLICK | none | full, 16 lines | "I think it was 5 or may be 4 more clicks!", linking to donot18 | no |
+Row: | https://www.moonsighting.com/dont/donot18.html | DO NOT CLICK | none | full, 14 lines | "So, we start at 4 more clicks!!", linking to donot19 | no |
+Row: | https://www.moonsighting.com/dont/donot19.html | DO NOT CLICK | none | full, 14 lines | "3 more clicks!!", linking to donot20 | no |
+Row: | https://www.moonsighting.com/dont/donot20.html | DO NOT CLICK | none | full, 14 lines | "Now 2 more clicks!!", linking to donot21 | no |
+Row: | https://www.moonsighting.com/dont/donot21.html | DO NOT CLICK | none | full, 14 lines | "Now 1 more clicks!!", linking to don_s | no |
 
 Notes on part 1:
 - donlang's sentence is cut off: "If you know how to say \"DO NOT CLICK\" in any other language, you can" and nothing follows. Its LINKS list has no mailto or contact, so the contact method is missing.
 - donlang hidden joke: "Cypress: toidI nA sI nahtanoJ!" reads backwards as "Jonathan Is An Idiot". The page's own disclaimer: "We don't take the responsibility of the accuracy of translation."
 - don_t promises "the counter on the next page", but no counter exists (that is the joke). The "counter" was probably a hit counter image that the text cannot show.
-- Chain order seen so far: don_a -> don_b -> dont0 ...; donot7 -> donot10 -> donot8 -> donot9 -> donoto0 ...; donot21 -> don_s -> don_t -> ... -> don_y -> don_z (dead end). donlang -> dont3.
+- Chain order seen so far: don_a, don_b, then dont0 and on; donot7, donot10, donot8, donot9, then donoto0 and on; donot21, don_s, don_t through don_y, then don_z (dead end). donlang links to dont3.
 
 ### dont/ part 2 (30 of 63 files): donoto0 to donoto8, dont0 to dont10, dontc0 to dontc9
-Same template as part 1: "DO NOT CLICK" title, one joke, a "Do NOT click here" link to the next page, "Back to Home Page" -> ../. No dates, no forms, no prayer-time or UK content.
+Same template as part 1: "DO NOT CLICK" title, one joke, a "Do NOT click here" link to the next page, "Back to Home Page", linking to ../. No dates, no forms, no prayer-time or UK content.
 
-Row: | https://www.moonsighting.com/dont/donoto0.html | DO NOT CLICK | none | full, 17 lines | "Are you nuts? Not bothered by the curse either?" -> donoto1 | no |
-Row: | https://www.moonsighting.com/dont/donoto1.html | DO NOT CLICK | none | full, 17 lines | "Are you thinking to set a world record?" -> donoto2 | no |
-Row: | https://www.moonsighting.com/dont/donoto2.html | DO NOT CLICK | none | full, 17 lines | "your computer will go in a never never land!" -> donoto3 | no |
-Row: | https://www.moonsighting.com/dont/donoto3.html | DO NOT CLICK | none | full, 17 lines | "You may be thinking, I'm almost there!" -> donoto4 | no |
-Row: | https://www.moonsighting.com/dont/donoto4.html | DO NOT CLICK | none | full, 17 lines | "I am reading your mind. Telepathy!" -> donoto5 | no |
-Row: | https://www.moonsighting.com/dont/donoto5.html | DO NOT CLICK | none | full, 17 lines | "Reverse Telepathy!" -> donoto6 | no |
-Row: | https://www.moonsighting.com/dont/donoto6.html | DO NOT CLICK | none | full, 18 lines | "Note down this number, [number redacted]" -> donoto7 | no |
-Row: | https://www.moonsighting.com/dont/donoto7.html | DO NOT CLICK | none | full, 18 lines | "This is not a telephone number. You have spent that many [2122344400] microseconds" -> donoto8 | no |
-Row: | https://www.moonsighting.com/dont/donoto8.html | DO NOT CLICK | none | full, 17 lines | "You are still at about 10% of this chain link." -> dont2 | no |
-Row: | https://www.moonsighting.com/dont/dont0.html | DO NOT CLICK | none | full, 17 lines | "Hey, what did I say?" -> dont1 | no |
-Row: | https://www.moonsighting.com/dont/dont1.html | DO NOT CLICK | none | full, 17 lines | "You did it anyways!" -> donlang | no |
-Row: | https://www.moonsighting.com/dont/dont2.html | DO NOT CLICK | none | full, 15 lines | "You do opposit to what I say." -> dontc0 | no |
-Row: | https://www.moonsighting.com/dont/dont3.html | DO NOT CLICK | none | full, 16 lines | "\"This is my Private Area.\" So don't peek here." -> dont4 | no |
-Row: | https://www.moonsighting.com/dont/dont4.html | DO NOT CLICK | none | full, 15 lines | "Don't you have anything better to do?" -> dont5 | no |
-Row: | https://www.moonsighting.com/dont/dont5.html | DO NOT CLICK | none | full, 15 lines | "You may be thinking that there is a prize" -> dont6 | no |
-Row: | https://www.moonsighting.com/dont/dont6.html | DO NOT CLICK | none | full, 19 lines | "This is called Reverse Psychology" -> dont7 | no |
-Row: | https://www.moonsighting.com/dont/dont7.html | DO NOT CLICK | none | full, 16 lines | "If you click now, you might regret!" -> dont8 | no |
-Row: | https://www.moonsighting.com/dont/dont8.html | DO NOT CLICK | none | full, 16 lines | "You are a victim of STUPIDITY virus!" -> dont9 | no |
-Row: | https://www.moonsighting.com/dont/dont9.html | DO NOT CLICK | none | full, 17 lines | "tHIS LINE sHowS thAT youR keY boArD is CoRruPt." -> dont10 | no |
-Row: | https://www.moonsighting.com/dont/dont10.html | DO NOT CLICK | none | full, 18 lines | "Do NOT go any further, or ELSE......" -> donot0 | no |
-Row: | https://www.moonsighting.com/dont/dontc0.html | DO NOT CLICK | none | full, 15 lines | "from now on, I will tell you to click, instead of Do NOT click" -> dontc1 | no |
-Row: | https://www.moonsighting.com/dont/dontc1.html | DO NOT CLICK | none | full, 15 lines | "Go on; Click one more time." -> dontc2 | no |
-Row: | https://www.moonsighting.com/dont/dontc2.html | DO NOT CLICK | none | full, 15 lines | "You are following my instructions" -> dontc3 | no |
-Row: | https://www.moonsighting.com/dont/dontc3.html | DO NOT CLICK | none | full, 15 lines | "I knew, you are not going to quit after coming this far" -> dontc4 | no |
-Row: | https://www.moonsighting.com/dont/dontc4.html | DO NOT CLICK | none | full, 15 lines | "So, I am going to give you a PRIZE!" -> dontc5 | no |
-Row: | https://www.moonsighting.com/dont/dontc5.html | DO NOT CLICK | none | full, 15 lines | "About a hundred more clicks." -> dontc6 | no |
-Row: | https://www.moonsighting.com/dont/dontc6.html | DO NOT CLICK | none | full, 15 lines | "Go on, 99 more clicks!" -> dontc7 | no |
-Row: | https://www.moonsighting.com/dont/dontc7.html | DO NOT CLICK | none | full, 15 lines | "Go on, 98 more clicks!" -> dontc8 | no |
-Row: | https://www.moonsighting.com/dont/dontc8.html | DO NOT CLICK | none | full, 15 lines | "I was just kidding! Forget about 98 clicks." -> dontc9 | no |
-Row: | https://www.moonsighting.com/dont/dontc9.html | DO NOT CLICK | none | full, 15 lines | "Finally you arrived at the end.  Bravo!!" -> donot11 | no |
+Row: | https://www.moonsighting.com/dont/donoto0.html | DO NOT CLICK | none | full, 17 lines | "Are you nuts? Not bothered by the curse either?", linking to donoto1 | no |
+Row: | https://www.moonsighting.com/dont/donoto1.html | DO NOT CLICK | none | full, 17 lines | "Are you thinking to set a world record?", linking to donoto2 | no |
+Row: | https://www.moonsighting.com/dont/donoto2.html | DO NOT CLICK | none | full, 17 lines | "your computer will go in a never never land!", linking to donoto3 | no |
+Row: | https://www.moonsighting.com/dont/donoto3.html | DO NOT CLICK | none | full, 17 lines | "You may be thinking, I'm almost there!", linking to donoto4 | no |
+Row: | https://www.moonsighting.com/dont/donoto4.html | DO NOT CLICK | none | full, 17 lines | "I am reading your mind. Telepathy!", linking to donoto5 | no |
+Row: | https://www.moonsighting.com/dont/donoto5.html | DO NOT CLICK | none | full, 17 lines | "Reverse Telepathy!", linking to donoto6 | no |
+Row: | https://www.moonsighting.com/dont/donoto6.html | DO NOT CLICK | none | full, 18 lines | "Note down this number, [number redacted]", linking to donoto7 | no |
+Row: | https://www.moonsighting.com/dont/donoto7.html | DO NOT CLICK | none | full, 18 lines | "This is not a telephone number. You have spent that many [2122344400] microseconds", linking to donoto8 | no |
+Row: | https://www.moonsighting.com/dont/donoto8.html | DO NOT CLICK | none | full, 17 lines | "You are still at about 10% of this chain link.", linking to dont2 | no |
+Row: | https://www.moonsighting.com/dont/dont0.html | DO NOT CLICK | none | full, 17 lines | "Hey, what did I say?", linking to dont1 | no |
+Row: | https://www.moonsighting.com/dont/dont1.html | DO NOT CLICK | none | full, 17 lines | "You did it anyways!", linking to donlang | no |
+Row: | https://www.moonsighting.com/dont/dont2.html | DO NOT CLICK | none | full, 15 lines | "You do opposit to what I say.", linking to dontc0 | no |
+Row: | https://www.moonsighting.com/dont/dont3.html | DO NOT CLICK | none | full, 16 lines | "\"This is my Private Area.\" So don't peek here.", linking to dont4 | no |
+Row: | https://www.moonsighting.com/dont/dont4.html | DO NOT CLICK | none | full, 15 lines | "Don't you have anything better to do?", linking to dont5 | no |
+Row: | https://www.moonsighting.com/dont/dont5.html | DO NOT CLICK | none | full, 15 lines | "You may be thinking that there is a prize", linking to dont6 | no |
+Row: | https://www.moonsighting.com/dont/dont6.html | DO NOT CLICK | none | full, 19 lines | "This is called Reverse Psychology", linking to dont7 | no |
+Row: | https://www.moonsighting.com/dont/dont7.html | DO NOT CLICK | none | full, 16 lines | "If you click now, you might regret!", linking to dont8 | no |
+Row: | https://www.moonsighting.com/dont/dont8.html | DO NOT CLICK | none | full, 16 lines | "You are a victim of STUPIDITY virus!", linking to dont9 | no |
+Row: | https://www.moonsighting.com/dont/dont9.html | DO NOT CLICK | none | full, 17 lines | "tHIS LINE sHowS thAT youR keY boArD is CoRruPt.", linking to dont10 | no |
+Row: | https://www.moonsighting.com/dont/dont10.html | DO NOT CLICK | none | full, 18 lines | "Do NOT go any further, or ELSE......", linking to donot0 | no |
+Row: | https://www.moonsighting.com/dont/dontc0.html | DO NOT CLICK | none | full, 15 lines | "from now on, I will tell you to click, instead of Do NOT click", linking to dontc1 | no |
+Row: | https://www.moonsighting.com/dont/dontc1.html | DO NOT CLICK | none | full, 15 lines | "Go on; Click one more time.", linking to dontc2 | no |
+Row: | https://www.moonsighting.com/dont/dontc2.html | DO NOT CLICK | none | full, 15 lines | "You are following my instructions", linking to dontc3 | no |
+Row: | https://www.moonsighting.com/dont/dontc3.html | DO NOT CLICK | none | full, 15 lines | "I knew, you are not going to quit after coming this far", linking to dontc4 | no |
+Row: | https://www.moonsighting.com/dont/dontc4.html | DO NOT CLICK | none | full, 15 lines | "So, I am going to give you a PRIZE!", linking to dontc5 | no |
+Row: | https://www.moonsighting.com/dont/dontc5.html | DO NOT CLICK | none | full, 15 lines | "About a hundred more clicks.", linking to dontc6 | no |
+Row: | https://www.moonsighting.com/dont/dontc6.html | DO NOT CLICK | none | full, 15 lines | "Go on, 99 more clicks!", linking to dontc7 | no |
+Row: | https://www.moonsighting.com/dont/dontc7.html | DO NOT CLICK | none | full, 15 lines | "Go on, 98 more clicks!", linking to dontc8 | no |
+Row: | https://www.moonsighting.com/dont/dontc8.html | DO NOT CLICK | none | full, 15 lines | "I was just kidding! Forget about 98 clicks.", linking to dontc9 | no |
+Row: | https://www.moonsighting.com/dont/dontc9.html | DO NOT CLICK | none | full, 15 lines | "Finally you arrived at the end.  Bravo!!", linking to donot11 | no |
 
 Notes on part 2 and the whole dont/ set:
-- The 63 pages form one linear chain with no orphan and one dead end: don_a -> don_b -> dont0 -> dont1 -> donlang -> dont3 -> ... -> dont10 -> donot0 -> ... -> donot7 -> donot10 -> donot8 -> donot9 -> donoto0 -> ... -> donoto8 -> dont2 -> dontc0 -> ... -> dontc9 -> donot11 -> ... -> donot21 -> don_s -> ... -> don_y -> don_z (no links). Counting: 2+2+1+8+8+3+9+1+10+11+8 = 63.
+- The 63 pages form one linear chain with no orphan and one dead end: don_a, don_b, dont0, dont1, donlang, dont3, onward through dont10, donot0, onward through donot7, donot10, donot8, donot9, donoto0, onward through donoto8, dont2, dontc0, onward through dontc9, donot11, onward through donot21, don_s, onward through don_y, then don_z (no links). Counting: 2+2+1+8+8+3+9+1+10+11+8 = 63.
 - The jokes contradict each other on purpose: dontc9 says "Finally you arrived at the end" with 19 pages still to go, and donoto8 says "about 10% of this chain link" at about page 34 of 63.
 - All line counts in these rows were confirmed with `wc -l`.
 

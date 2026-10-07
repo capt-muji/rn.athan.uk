@@ -74,7 +74,7 @@ adopts a degree figure. It rules on whether the instrument is trustworthy.
 
 **The classical conditions on an instrument** are qualitative too: al-Haskafi requires it be `صحيحة سليمة` (sound
 and intact); Ibn Badran, `إن تكررت إصابته` (if its hits are repeated); and al-Ashraf's compass treatise (c. 1290)
-labels every reading `بالتقريب`, approximately — a 13th-century instrument maker publishing his own uncertainty.
+labels every reading `بالتقريب`, approximately: a 13th-century instrument maker publishing his own uncertainty.
 
 ## 5. Refusing to show a direction is the one thing the sources condemn
 
@@ -95,12 +95,12 @@ The precision pole (3 degrees) is **unreachable** on real hardware indoors. The 
 reachable but is the validity floor, which Imam Ahmad forbids aiming at:
 
 **Imam Ahmad, in al-Istidhkar 7/220-221**, verified: asked whether prayer anywhere in the wide band is valid, he
-answered «نعم **وينبغي أن يتحرى الوسط**» — "yes, **and he should seek the middle**."
+answered «نعم **وينبغي أن يتحرى الوسط**»: "yes, **and he should seek the middle**."
 
 The maxim that closes it, recorded by **al-Suyuti** in *al-Ashbah wa'l-Naza'ir* from **al-Subki**, and by **Ibn
 Rajab al-Hanbali** in his *Qawa'id*:
 
-> **«الميسور لا يسقط بالمعسور»** — the attainable is not forfeited because of the unattainable.
+> **«الميسور لا يسقط بالمعسور»**: the attainable is not forfeited because of the unattainable.
 
 Al-Subki derives it from **Sahih al-Bukhari 7288**, verified at source in Arabic:
 
@@ -111,7 +111,7 @@ Al-Subki derives it from **Sahih al-Bukhari 7288**, verified at source in Arabic
 **THE GOVERNING PRINCIPLE: take the best the means allow. Not the ideal that cannot be reached, and not the floor
 that could be scraped.**
 
-## 7. What the hardware can actually deliver
+## 7. What the hardware can deliver
 
 | Measurement | Value |
 | --- | --- |
@@ -138,7 +138,7 @@ uncertainty; it does not detect wrongness.
 **No scholar said 15.** The sources give a principle, not a figure, and this document says so plainly. 15 is an
 engineering choice **inside** that principle:
 
-- **Reachable.** The owner's phone reports 12.8, so the gate actually fires. 3 and 5 never do, and a gate that
+- **Reachable.** The owner's phone reports 12.8, so the gate fires. 3 and 5 never do, and a gate that
   never fires is a refusal screen wearing a disguise.
 - **Tighter than the floor.** Well inside the 45-degree validity boundary, so it is "seeking the middle" rather
   than scraping the limit.
@@ -148,7 +148,7 @@ engineering choice **inside** that principle:
 
 ## 9. The scholars behind this, and their standing
 
-Verified independently, because the owner asked who these people actually are.
+Verified independently, because the owner asked who these people are.
 
 | Scholar | Standing |
 | --- | --- |
@@ -184,12 +184,12 @@ and every load-bearing claim rests on a classical text or an official state body
 
 > **Pointer, 2026-10-07:** the full classical-precision report (`agent-reports/R3-05-classical-precision-standard.md`,
 > 1,250 lines) is compressed to git history (`git show HEAD:ai/plans/53-qibla-accuracy-gate/agent-reports/R3-05-classical-precision-standard.md`).
-> Three of its items carry weight beyond what the sections above hold: **(1)** the jurists' *jiha* criterion —
-> al-Juwaynī and al-Subkī hold that the acceptable direction is the span within which a skilled observer cannot
-> say "I am precisely on it", which is the classical warrant for drawing a compass anywhere inside a cone;
+> Three of its items carry weight beyond what the sections above hold: **(1)** the jurists' *jiha* criterion
+> (al-Juwaynī and al-Subkī hold that the acceptable direction is the span within which a skilled observer cannot
+> say "I am precisely on it", which is the classical warrant for drawing a compass anywhere inside a cone);
 > **(2)** the caveat that the circulating "45°" figure was traced to NO classical source (section 2 above names
 > the 45 pole; only the report's §9 ledger carries that it is uncited); **(3)** its could-not-verify ledger, so no
-> future session re-litigates what could not be confirmed. Restoring the whole file is the owner's call — the
+> future session re-litigates what could not be confirmed. Restoring the whole file is the owner's call: the
 > research is paused and unread.
 
 Under the relied-upon Shafi'i view, **certainty of a specific past error creates an obligation to repeat that

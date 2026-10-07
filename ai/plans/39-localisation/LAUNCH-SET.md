@@ -1,4 +1,4 @@
-# The launch set, revised by what R6 could actually source
+# The launch set, revised by what R6 could source
 
 > **Superseded in part by owner decision D15 (2026-09-29): transliterate, never translate.**
 > That ruling was the single question holding `fr` and `de` back, so the launch set returns to

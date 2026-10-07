@@ -4,13 +4,13 @@ The answer to the row's question. `MEASURED.md` holds the numbers computed here;
 from installed source and primary documentation, cited line by line.
 
 1. **`expo-location`'s iOS path is faithful to `CLHeading`, so the XS was already on the value Apple Maps
-   draws.** No bug to fix there — it kills the row's fourth possibility ("the fault may be in
+   draws.** No bug to fix there. It kills the row's fourth possibility ("the fault may be in
    `expo-location` itself rather than in the sensor", one of four the owner named for research; the
    enumeration lives in git history, `git show HEAD:ai/plans/48-qibla-heading-accuracy/BRIEF.md`, the
    "options the owner named" section) as stated.
 2. **But the module never configures Core Location, and one omission is a real defect:** it never implements
    `locationManagerShouldDisplayHeadingCalibration`, and Apple documents that without it **the calibration
-   alert is never shown** — in four sessions the owner's iPhone was never offered the figure-of-eight prompt.
+   alert is never shown**: in four sessions the owner's iPhone was never offered the figure-of-eight prompt.
 3. **The "inconsistent run to run" symptom has two halves, only one fixable.** Cold sensor fusion: 42.1x.
    A biased field in the room: the physics check session 40 specified cannot bound it (30.8 degrees passes at
    a 10 uT offset).
@@ -24,22 +24,22 @@ from installed source and primary documentation, cited line by line.
 `allowsBackgroundLocationUpdates`, `distanceFilter`, `desiredAccuracy`, `delegate`. So `trueHeading` reaches
 the app exactly as Core Location produced it.
 
-Three things the module never sets: `headingOrientation` (default portrait-top — correct here by luck),
-`headingFilter` (default 1 degree — the 2-degree gate is Android's), and
+Three things the module never sets: `headingOrientation` (default portrait-top, correct here by luck),
+`headingFilter` (default 1 degree; the 2-degree gate is Android's), and
 `locationManagerShouldDisplayHeadingCalibration` (**the finding**).
 
 **The calibration alert.** Apple: return `false` "or do not provide an implementation for it in your delegate"
 and "Core Location does not display the heading calibration alert." It would otherwise fire on first heading
-request and on significant field changes — exactly the owner's situation. Its limit, which bounds what it
+request and on significant field changes, exactly the owner's situation. Its limit, which bounds what it
 buys: "The calibration process is able to filter out only those magnetic fields that move WITH the device."
-Calibration fixes a magnet in the phone case, not a steel joist in the wall — consistent with the residual
+Calibration fixes a magnet in the phone case, not a steel joist in the wall; consistent with the residual
 error no amount of shaking removes.
 
 **Android: accelerometer plus CALIBRATED magnetometer, no gyroscope.** `LocationModule.kt:~648` runs
 `getRotationMatrix`/`getOrientation` from gravity + geomagnetic; `:~656` gates on >2 degrees AND >50ms;
 `:~660-661` applies `calcMagNorth` then `calcTrueNorth`. The 2-degree gate is why a still phone emits almost
 nothing, which makes any reading-counted settling window unshippable (`MEASURED.md` 5). (R2 corrected this
-repo's own wording: `TYPE_MAGNETIC_FIELD` is already calibrated — the weakness is no gyro and no filtering,
+repo's own wording: `TYPE_MAGNETIC_FIELD` is already calibrated. The weakness is no gyro and no filtering,
 not raw input.)
 
 **So `watchHeadingAsync` is NOT symmetric across platforms:** iOS = `CLHeading.trueHeading`, Apple's own
@@ -81,16 +81,16 @@ measured the error drifting 20 degrees at a fixed spot). Detail in `MEASURED.md`
 
 ## 5. Recommendation, in the order the measurements support
 
-1. **The settling gate** as `MEASURED.md` 6 specifies — drift over a trailing 3000ms spanned window, 8
+1. **The settling gate** as `MEASURED.md` 6 specifies: drift over a trailing 3000ms spanned window, 8
    readings, 1.5 degrees. Pure arithmetic, 42.1x, refuses rather than draws badly.
-2. **The diagnostic:** `headingAccuracy` in DEGREES across ten restarts — decides whether anything further is
+2. **The diagnostic:** `headingAccuracy` in DEGREES across ten restarts, to decide whether anything further is
    worth building; `expo-location` makes it unmeasurable. See `DECISION.md`.
 3. **Honesty about the rest.** The residual cannot be removed by arithmetic; going quiet while the fusion is
    cold is a state the app previously drew through.
 
 **CORRECTED after the reports came in (2026-10-02):** this page originally ranked the iOS calibration alert
 second. **Withdrawn** on R3's argument: the alert is UI rather than algorithm, it only asks the user to supply
-motion diversity, and the owner already supplies exactly that motion by shaking the phone — the scatter
+motion diversity, and the owner already supplies exactly that motion by shaking the phone; the scatter
 persists through it. Still a real gap worth closing for its explanation and OS-level signal, no longer the
 second recommendation. Not recommended: replacing the heading source (iOS is already on the value Apple Maps
 draws; the gyro-fused alternative is smooth and wrong by an amount that varies with orientation).

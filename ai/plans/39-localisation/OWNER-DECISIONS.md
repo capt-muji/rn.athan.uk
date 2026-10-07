@@ -288,7 +288,7 @@ shortenings destroyed the meaning:
   bare adjective "middle", qualifying nothing. It is a truncation wearing a real word's clothes.
 - `Aufgang` is a real German word meaning ascent or stairway entrance. It is not sunrise.
   `Sonnenaufgang` is one word and it is the only word.
-- `Lever` alone is the verb "to lift". `Lever du soleil` is the phrase French actually uses.
+- `Lever` alone is the verb "to lift". `Lever du soleil` is the phrase French uses.
 
 ### The corrected rule
 
@@ -296,7 +296,7 @@ D16 stands, but it governs the SOURCE, not a post-hoc trim:
 
 1. **Ask the source for the term a timetable prints**, which is naturally terse. Do not translate
    the English definition and then cut it down.
-2. **Only act when a term is actually over budget.** A term that fits is never touched. Brevity is
+2. **Only act when a term is over budget.** A term that fits is never touched. Brevity is
    not a virtue on its own.
 3. **A shorter form must mean the same thing.** If the only shorter option changes the meaning,
    the long form stays and the locale is flagged for a different remedy.

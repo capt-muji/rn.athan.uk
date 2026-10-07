@@ -4,7 +4,7 @@ Briefs for queue rows 12 through 18 and the deferred owner features. The queue t
 `ai/plans/README.md` is the authority for order and status. Facts carry their source. DONE and
 CANCELLED sections here are compressed records; the full narratives live in git history under the
 `ai/plans/NN-*/` folders this file names, each with the commit that still reaches it (the
-2026-10-07 clean deleted most of them — `23-sdk58-preview7` and `28-d3-rolling-buffer` among them;
+2026-10-07 clean deleted most of them (`23-sdk58-preview7` and `28-d3-rolling-buffer` among them;
 `27`, `39`, `50` and `54` stand).
 
 ## Programme rules (owner rulings, 2026-09-18)
@@ -62,7 +62,7 @@ location and screen-share caveat: `ai/AGENTS.md` §6. Zero app-code changes.
 
 ## 14. Expo Modules 2.0 spike on modules/tls13 (CANCELLED by the owner, 2026-09-18; never re-queued)
 
-Ruling: skip it, not wanted, cancelled outright — not deferred. Basis: in `expo-modules-core`
+Ruling: skip it, not wanted, cancelled outright, not deferred. Basis: in `expo-modules-core`
 58.0.3 the 2.0 API exists only as Swift macros, no Kotlin authoring API exists anywhere in the
 installed tree, and `modules/tls13` declares Android only, so there is no Swift side to migrate
 and nothing on the Kotlin side to migrate to. The module stays on the 1.0 DSL indefinitely. The
@@ -121,47 +121,47 @@ packages sit at `^7.29.x` in `package.json:79-82`).
 deleted session 21-24 records, after the plan folders went; every fact below was re-verified
 against the working tree the same day and cites its own still-standing proof.
 
-- **A1 — The owner's upgrade policy, two parts (ruling).** (1) Take the absolute latest and fix
+- **A1. The owner's upgrade policy, two parts (ruling).** (1) Take the absolute latest and fix
   breaks in the code; never pin back or edit a test to pass. (2) A package broken upstream at its
   latest rolls back alone, one version at a time, to an exact pin with no local workaround, until
   a newer one ships.
-- **A2 — The Babel 8 blocker.** Stated above; it is this row's second job.
-- **A3 — Four packages differ from Expo's pin set on purpose** (installed
+- **A2. The Babel 8 blocker.** Stated above; it is this row's second job.
+- **A3. Four packages differ from Expo's pin set on purpose** (installed
   `expo@58.0.0-preview.7`): `react-native` 0.88.0-rc.2 against the rc.1 pin (the owner takes the
   latest release candidate), `@expo/ui` and `expo-widgets` exact `58.0.5` against `~58.0.7`,
   `expo-location` exact `58.0.9` against `~58.0.7` (`package.json:36`, `:52`, `:59`, `:62-64`).
-- **A4 — `@expo/log-box` is invisible to Expo checks.** It is not in `bundledNativeModules.json`,
+- **A4. `@expo/log-box` is invisible to Expo checks.** It is not in `bundledNativeModules.json`,
   so no Expo check reports it. It sits at `~58.0.5` (`package.json:34`) because `expo-router` and
   `@expo/metro-runtime` both declare the peer range `^58.0.5`; move it by that peer range.
-- **A5 — The commit order that kept the tree green.** One commit: the SDK packages, the rebuilt
+- **A5. The commit order that kept the tree green.** One commit: the SDK packages, the rebuilt
   patches and the type fixes the bump forces (the pre-commit hook runs `tsc`). Then React,
   `react-dom` and React Native with the two `@react-native/*` dev tools. Then Reanimated with
   worklets.
-- **A6 — Rebuilding a patch.** `git apply --check` the old patch on the fresh package; apply it,
+- **A6. Rebuilding a patch.** `git apply --check` the old patch on the fresh package; apply it,
   or make a rejected hunk's change by hand; `npx patch-package <name>`; delete the old file; then
   delete the package folder and `yarn install --force` to prove a clean install. All three patches
   are rebuilt at this row (`ai/plans/54-patches-and-copy/FINDINGS.md`, section 1).
-- **A7 — patch-package log semantics.** After a version bump the install still succeeds whatever
+- **A7. patch-package log semantics.** After a version bump the install still succeeds whatever
   the patches did: a `warning` in its log means the old patch still applied; an `error` means that
   package is running UNPATCHED. (`shared/__tests__/widgetOpenAppPatch.test.ts:24` words it
   "silently skips"; the installed source applies a patch when it still fits and warns. Both
   readings end the same way for a patch that no longer fits.)
-- **A8 — An ESM-only dependency is transformed to CommonJS in BOTH Jest projects;
+- **A8. An ESM-only dependency is transformed to CommonJS in BOTH Jest projects;
   `--experimental-vm-modules` is rejected.** Jest 30's `require(esm)` is also gated on
   `canResolveSync()`, which the components project fails for its custom resolver, so the flag
   gated on `canResolveSync()` (`jest-runtime`), which the components project fails for its custom
   resolver (`jest.config.js:62`), so the flag repairs the unit project only; the CommonJS transform
   both projects share is `jest.config.js:20`.
-- **A9 — Reanimated 4.7.0 ships the new layout-animation engine as the default.** The legacy proxy
+- **A9. Reanimated 4.7.0 ships the new layout-animation engine as the default.** The legacy proxy
   flag `USE_LEGACY_LAYOUT_ANIMATIONS_PROXY` is `false` in the installed tree
   (`node_modules/react-native-reanimated/src/featureFlags/staticFlags.json`) and no override is
   set anywhere in the repo. Draw sites that ride it: `components/modals/Modal.tsx:81` and `:90`,
   `components/modals/Help.tsx:75`, `components/sheets/screens/Qibla.tsx:61`.
-- **A10 — After the install, diff the pin set and read every peer warning.** Session 23 measured
+- **A10. After the install, diff the pin set and read every peer warning.** Session 23 measured
   26 packages and installed 25; `react-native-screens` surfaced only as an `expo-router` peer
   warning (`package.json:73`). One warning is expected: `jest-expo > jest-watch-typeahead@2.2.1`
   wants Jest 29.
-- **A11 — In `widgets/PrayerWidget.tsx` a fixed `frame()` comes before a flexible one, and no test
+- **A11. In `widgets/PrayerWidget.tsx` a fixed `frame()` comes before a flexible one, and no test
   can see the order.** `@expo/ui` types `frame()` as two overloads that cannot be mixed, so each
   mixed call became two chained modifiers; reversed, the greedy frame takes the space first and
   the row changes size (`:657-658`, `:729`).
@@ -169,18 +169,18 @@ against the working tree the same day and cites its own still-standing proof.
 **Traps carried from the row 12 record (R18-1 to R18-5).** Recovered and re-verified the same day
 as A1 to A11.
 
-- **R18-1 — Packages that depend on each other move in the same wave.** Owner ruling, 2026-09-18.
-- **R18-2 — Two groups must match exactly at every re-pin**: `react-dom` equals `react`, and
+- **R18-1. Packages that depend on each other move in the same wave.** Owner ruling, 2026-09-18.
+- **R18-2. Two groups must match exactly at every re-pin**: `react-dom` equals `react`, and
   `@react-native/metro-config` and `@react-native/jest-preset` equal `react-native`
   (`package.json:85-86`).
-- **R18-3 — Three local Android modules hardcode `compileSdk 37`, and only a release build
+- **R18-3. Three local Android modules hardcode `compileSdk 37`, and only a release build
   notices**: `modules/tls13/android/build.gradle:10`, `modules/qiblaheading/android/build.gradle:10`,
   `modules/widgetrefresh/android/build.gradle:10`; `checkReleaseAarMetadata` fails the release build only.
-- **R18-4 — On the 3T the alarm-clock proof is a sub-block, never `flags=0x9`.** An alarm-clock
+- **R18-4. On the 3T the alarm-clock proof is a sub-block, never `flags=0x9`.** An alarm-clock
   arm reads `window=0 flags=0x3` with an `Alarm clock:` sub-block in the dumpsys output.
   `flags=0x9` is the windowed form shown by the 8T and the Find X8. This corrects the row 12
   proof script, which predicted `0x9` for the 3T: the 3T was exact, not windowed.
-- **R18-5 — The owner accepts the system alarm icon that alarm-clock delivery can show, and no API
+- **R18-5. The owner accepts the system alarm icon that alarm-clock delivery can show, and no API
   hides it.** The 3T shows none.
 
 **Also true at the re-pin.**
@@ -214,7 +214,7 @@ since 2026-09-24; the competing draft expo/expo#48469 has not moved since 2026-0
   ships its prebuilt library at `local-maven-repo` in the package root.
 - Row 51 context: a 5-to-50 Hz sensor-rate change is the weakest of the three upstream candidates
   and optional. The FOP as an npm package is deliberately NOT recommended. Corrections go upstream
-  as PRs — there is no process to hand modules to Expo — and `ai/AGENTS.md` section 8 binds every
+  as PRs (there is no process to hand modules to Expo), and `ai/AGENTS.md` section 8 binds every
   post: anonymity absolute, no app name, repo link, device serial or secret.
 
 ## Deferred owner features (recorded 2026-09-18; sequenced after the SDK 58 programme, before moonsighting)
@@ -289,8 +289,8 @@ in an hour; `releases.json` is deleted. Queue rows 30 and 31 carry the record.
 | Faster module calls | Free |
 | Expo Modules 2.0 | Cancelled, row 14 (owner, 2026-09-18): iOS-only in SDK 58, no Kotlin authoring API to migrate to; row never re-queued |
 | SwiftPM | No, CocoaPods stays |
-| Fingerprint balanced | Verify in row 12 — ANSWERED: no `runtimeVersion` policy anywhere, default untouched |
-| R8 | Keep on, watch first release build — ANSWERED: clean, no opt-out added |
+| Fingerprint balanced | Verify in row 12. ANSWERED: no `runtimeVersion` policy anywhere, default untouched |
+| R8 | Keep on, watch first release build. ANSWERED: clean, no opt-out added |
 | Noxcturnal | No |
 | NODE_ENV | Nothing to do |
 | Proxy/tunnel fixes, tunnel v2 | No |

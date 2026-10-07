@@ -14,7 +14,7 @@ shared-engine caveat from R7's between-rule comparison. No new astronomy was wri
 be obtained it is recorded as unobtainable.
 
 **Building on prior work.** R7 Part 2 measured the between-rule spread at one library. R9 measured what Sweden,
-Norway and Belgium actually publish and left one gap explicitly named: what Islamiska Förbundet i Sverige does
+Norway and Belgium publish and left one gap explicitly named: what Islamiska Förbundet i Sverige does
 above the Arctic Circle. A cancelled earlier attempt at this task left seven Kiruna and Sweden scripts under
 `data/highlat/`; they were run first and their central finding is carried forward, credited and completed.
 
@@ -42,7 +42,7 @@ above the Arctic Circle. A cancelled earlier attempt at this task left seven Kir
    Norway's frozen clock, Belgium's latitude-45 relative estimate, Diyanet's capped interval with its mirrored Imsak
    rule, and Wifaqul Ulama's 3-day Aqrabul-Ayyam with its 65-minute Haraj cap. Each is stated by a named body on its
    own public page, with a URL, in section "The rule catalogue".
-4. **The decisive test: on the days a rule is actually doing the work, one rule is right and the rest are 30 to 150
+4. **The decisive test: on the days a rule is doing the work, one rule is right and the rest are 30 to 150
    minutes wrong.** Scored against each authority's own published year on only the days its base angle has no
    solution, not diluted across the year: at Stockholm the Swedish clamp is **median 4.4 minutes** on Fajr and the
    next-best library rule is **29.0**; at Kiruna run at its implied latitude, 5.3 against 25.2; at Oslo
@@ -127,7 +127,7 @@ evidence.
 | Aqrab al-Bilad at a fixed latitude | ITL options 1 to 3, `method-info.md`: "The recommended latitude by many schools of Fiqh is **48.5 degrees**". `prayertimes.dk/story.html`, read 2026-09-30: "**Muslim world league has moved nearest latitude to 45 degrees in March 1986**" | Compute at 48.5 (or 45), transfer the offset. `prayertimes.dk` attributes the principle to "the fellow jurists of the Shafii School" | **RULE**, and the 45 is attributed to a **1406 AH / 1986 CE MWL decision**. The MWL decision document itself was **not located**: UNVERIFIED as a primary source |
 | Aqrabul-Ayyam, absolute last day | Wifaqul Ulama, `wifaqululama.co.uk/salahtimes/`, naming **HMNAO** as the body that does this | "the last day when 18 degrees time was available, is used until 18 degrees becomes available again" | **RULE**, and named as HMNAO's practice |
 | **Aqrabul-Ayyam as a 3-day average** | Wifaqul Ulama, same page, read in full 2026-09-30 | "In the App, we use a different method for calculating Aqrabul-Ayyam and **not the absolute last day**." Its reason, in its own words: HMNAO's absolute last day "causes severe problems during leap years", demonstrated as "a difference of (10-15 minutes)", so after analysing "nearly **3,000 postcodes in Britain**" it adopted "a **3 day average** (near Aqrabul-Ayyam)" | **RULE**, with its own justification and the scholars' assent recorded |
-| **Wifaqul Ulama's warning never to mix** | same page | "During perpetual twilight, you should **only use one of the two methods, not both**; and, you should **not switch between the two methods**" | **RULE**, verbatim. This is a constraint on the app, not just on the arithmetic |
+| **Wifaqul Ulama's warning never to mix** | same page | "During perpetual twilight, you should **only use one of the two methods, not both**; and, you should **not switch between the two methods**" | **RULE**, verbatim. This is a constraint on the app, not only on the arithmetic |
 | **Wifaqul Ulama's Haraj cap on Isha** | `wifaqululama.co.uk/highlat/`, the Preston meeting of **2018-11-11**, "for over 7 hours", read in full | Its `Fāqid al-Layl` clause: Isha "restricted to **65 minutes after the local Astronomical sunset on the longest day of the year**". Three further options are recorded as not agreed, including a **hard 23:00 lock** and `min(15 degrees, 1/7 of night)`, and the meeting's own conclusion that "**no agreed upon National solution can be proposed since this is a grey area**" | **RULE**, and explicitly a non-consensus. Its Isha angle is **15 degrees at or above 48 latitude**, 18 below, with 24 named ulama listed |
 
 ### The Moonsighting Committee's own construction
@@ -576,7 +576,7 @@ largest day-to-day jump in Fajr, minutes:
 | Tromsø 69.6 | 43 | 18 | 10 | **3** | 16 | 25 | **186** |
 | Longyearbyen 78.2 | 53 | 31 | 18 | **7** | 44 | 33 | **259** |
 
-At the 99th percentile, which is what a user actually experiences, London reads `MiddleOfTheNight` **10.4** against
+At the 99th percentile, which is what a user experiences, London reads `MiddleOfTheNight` **10.4** against
 `SeventhOfTheNight` **2.1**, and Oslo 15.2 against 2.3.
 
 **Five conclusions, each from the measurement rather than from preference.**
@@ -735,7 +735,7 @@ more than its size suggests because Finland, Iceland and Alaska all live there w
 | Item | Status |
 | --- | --- |
 | **IFiS's own stored coordinate for Kiruna** | **Unobtainable.** The WordPress plugin computes server-side; `cities.php`, `data/cities.json` and `bonetider.php` all return the same 9,325-byte HTML shell rather than a coordinate table. The 4.18-degree gap is measured with certainty; whether it is a data error or a deliberate substitution is inferred from four converging measurements and is not proved |
-| **What Islamsk Råd Norge actually does** | **Open, and this report narrowed it without closing it.** R9's frozen-clock identification is confirmed in the data (136 and 162 blank angle cells reproduce exactly) but scores only **42.3 minutes median** against IRN's own table on the binding days. Something else is in IRN's construction. `api.bonnetid.no` refuses every keyless path, so only the rendered page is available |
+| **What Islamsk Råd Norge does** | **Open, and this report narrowed it without closing it.** R9's frozen-clock identification is confirmed in the data (136 and 162 blank angle cells reproduce exactly) but scores only **42.3 minutes median** against IRN's own table on the binding days. Something else is in IRN's construction. `api.bonnetid.no` refuses every keyless path, so only the rendered page is available |
 | **Why Belgium's table does not follow Belgium's stated rule** | **Open.** R9 measured the gap at 20.9 minutes; with the sign fixed and scored on binding days only it is 11.7. `TwilightAngle` fits better at 3.7. No construction tested reproduces the EMB table to within a few minutes |
 | **The MWL's 1406 AH / 1986 CE move of Aqrab al-Bilad from 48.5 to 45 degrees** | **UNVERIFIED as a primary source.** Recorded only by `prayertimes.dk`, tier C. R7 noted the MWL's collected Fiqh Academy resolutions contain **zero occurrences of the word "degree"**, which makes a primary document unlikely to exist in that corpus |
 | The Sheikh Abdulaziz bin Almusleh 20-hour fasting fatwa, 2007 | **UNVERIFIED.** One tier-C source |

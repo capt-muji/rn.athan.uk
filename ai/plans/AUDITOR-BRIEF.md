@@ -77,7 +77,7 @@ Remove it when done, and always before 00:00, when a nightly job clears build fo
 5. **Reviews.** `LOG.md` records a review verdict for every step commit; reread each docs commit yourself. Read the
    commits a reviewer asked to fix. Each fix is either one the plan's section 10 gives word for word, or one the
    executor applied under `EXECUTOR-BRIEF.md` section 4, item 8, which it must have recorded in `LOG.md`. A fix of
-   the second kind is not a finding in itself: check that it really met all three of that item's conditions, and then
+   the second kind is not a finding in itself: check that it met all three of that item's conditions, and then
    judge the code as you judge the rest. A fix of that kind with no `LOG.md` entry IS a finding.
 6. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-device-sweep/session<N>/`.
    Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use
@@ -85,7 +85,7 @@ Remove it when done, and always before 00:00, when a nightly job clears build fo
 7. **The owner's rules.** No visual change, no substituted prayer time, no hand-edited release file, no touch of `uat` or EAS, no
    API key, no ignore comment, no skipped hook. No personal identifier in a tracked file: the hooks run
    `scripts/check-identifiers.js` at commit, commit-message and push time, backed by a denylist kept outside the
-   repository. If it fires, remove the identifier and commit again — never bypass the hook.
+   repository. If it fires, remove the identifier and commit again; never bypass the hook.
 8. **The records.** The `AUDIT-FINDINGS.md` text and the table rows are accurate against everything above.
 
 ## 4. Verdict
@@ -107,7 +107,7 @@ Then act on the verdict:
   2. On `docs/audit-<N>-$(date +%Y%m%d-%H%M)`, bump the version, and commit `AUDIT.md` and the row with the final
      row text from the plan's section 8, which is what turns it DONE.
   3. Review that commit yourself: run `git show <sha>` and read it back cold, checking the row, `AUDIT.md` and the
-     records text against what this audit actually found.
+     records text against what this audit found.
   4. Merge `--no-ff` into `uat-2`. Push with `git push origin uat-2` only if `git log --oneline origin/uat-2..uat-2`
      lists nothing but the commits this audit checked and its own. Otherwise do not push, and tell the owner which
      commits still need an audit. The pre-push hook runs the full check.
@@ -120,7 +120,7 @@ Then act on the verdict:
   2. A fix needing a design choice is still yours: make the choice, write it and its reasoning in `AUDIT.md`, and put
      it through the design review the planner would have used (`PLANNER-BRIEF.md` section 3, item 5) when it changes
      notification, data or schedule behaviour.
-  3. Where the plan's own code was wrong, correct that step file too, so the plan records what actually shipped.
+  3. Where the plan's own code was wrong, correct that step file too, so the plan records what shipped.
   4. Record every fix in `AUDIT.md`, against the finding it answers.
   5. Then PASS.
 - **UNSAFE.** Anything that breaks an owner rule or leaves `uat-2` broken.
@@ -142,7 +142,7 @@ Then act on the verdict:
    earlier session is a leftover to clean up here, and an unmerged one is reported rather than deleted.
 2. Report to the owner in a few plain sentences: the verdict, what was checked, what you fixed yourself, and whether
    `uat-2` is pushed.
-3. End with the progress table and the four-line handoff from the `athan-next` skill, section 5: the job just done,
+3. End with the progress table and the four-line handoff from the `athan-next` skill, section 5: the job finished,
    the row and whether `uat-2` is pushed, the job that comes next, and `athan-next` as the thing the owner types. Each
    session is planned, executed and audited before the next one is planned (`README.md`, "Order"), so once a row
    becomes DONE the next step is planning the row after it.

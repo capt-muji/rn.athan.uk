@@ -64,7 +64,7 @@ Prior art read and not repeated: `ai/features/moonsighting/notes/implementations
    finding in the report: an API that names an authority is not serving that authority's times.
 
 7. **Mawaqit is a different and better kind of product, and its terms forbid this app from using it.** Its API
-   serves what a specific mosque actually prays by, including congregation (iqama) times, which no computation
+   serves the times a specific mosque prays by, including congregation (iqama) times, which no computation
    can reproduce. Its own help page says "Our API is currently private and not publicly available" (cited,
    `https://help.mawaqit.net/en/articles/11991838-can-i-use-your-api`, 2026-09-30) and its GitHub sponsor page
    says "Any commercial use is strictly prohibited" (cited, `https://github.com/sponsors/mawaqit`). Its legal
@@ -345,7 +345,7 @@ Only the second list has any claim on this app.
 ### 3.5 Mawaqit, and the evidence that computation is the wrong frame
 
 Mawaqit's unauthenticated search endpoint returns, for a coordinate, the nearby mosques with the times each one
-actually uses. Measured: `GET https://mawaqit.net/api/2.0/mosque/search?lat=51.5072&lon=-0.1276` returned 200,
+uses. Measured: `GET https://mawaqit.net/api/2.0/mosque/search?lat=51.5072&lon=-0.1276` returned 200,
 9,543 bytes, nine mosques, with no key and no token.
 
 The nine central London mosques it returned, on 2026-09-30:
@@ -368,7 +368,7 @@ Two readings follow, and both matter to the v2.0 decision:
   of timetable. So the question "which calculation is correct for London" has no single answer even inside one
   square mile. That is a product question, not a computation question.
 - The iqama times are not computable at all. They are what a mosque committee decided. An app that wants to tell
-  a user when their congregation actually starts needs per-mosque data, and Mawaqit is the only platform found
+  a user when their congregation starts needs per-mosque data, and Mawaqit is the only platform found
   that has it at scale, with 3,000-plus mosques in 70-plus countries (cited, its sponsor page).
 
 But the terms close the door. The help centre says the API is private (cited). The sponsor page says commercial
@@ -732,7 +732,7 @@ fault reaches the app whether the times are computed locally on a stale device o
 Morocco is the hard case and it is not going away. Its Ramadan transitions move with the lunar calendar, so
 **every single year needs a tzdata update**, and the app cannot compute the rule itself.
 
-**The device-side risk.** How stale the on-device tzdata actually gets was not measured on real hardware, so the
+**The device-side risk.** How stale the on-device tzdata gets was not measured on real hardware, so the
 specific claim is **UNVERIFIED**. What is established is the shape of the exposure:
 
 - Android's `tzdata` is updated through Play Services and mainline modules on newer releases, but an Android 9
@@ -864,7 +864,7 @@ accuracy improvement available to this app and it is currently being left on the
    not permission. Five separate conversations.
 4. **AlAdhan's real uptime.** No status page, no published history, and the Wayback CDX service was down
    during this research. Nobody's availability is established, including AlAdhan's.
-5. **Whether `api.myquran.com` really carries Kemenag's numbers.** Its residual against a 20/18 computation has
+5. **Whether `api.myquran.com` carries Kemenag's numbers.** Its residual against a 20/18 computation has
    the same 1-to-2-minute shape as an authority timetable, which is consistent with the claim, but no Kemenag
    page endorses it. The correction measured in 5.4 is therefore a correction to `myquran`, not provably to
    Kemenag.
@@ -872,7 +872,7 @@ accuracy improvement available to this app and it is currently being left on the
    POSTs return `{"status":"Illegal key"}`; adding `Referer` and a session cookie got an empty 200 instead. The
    province codes were never learned. Numeric province guesses 1, 2, 3, 11, 12, 31, 32 and 35 all returned
    empty (measured).
-7. **How stale device tzdata actually gets on real Android 9 and old iOS hardware.** The exposure is
+7. **How stale device tzdata gets on real Android 9 and old iOS hardware.** The exposure is
    established; the distribution is not. This needs measuring on devices and is the single most useful
    follow-up in section 6.
 8. **Whether any national authority accounts for elevation in its published tables.** Not established for

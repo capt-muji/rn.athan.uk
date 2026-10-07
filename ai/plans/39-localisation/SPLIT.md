@@ -65,7 +65,7 @@ through `t()` and every structural decision made.
 
 ## The dependency that is easy to miss
 
-39.6 (the language commit) depends on 38.1 (the identifier split), not just in the ordinary sense
+39.6 (the language commit) depends on 38.1 (the identifier split), not merely in the ordinary sense
 but structurally: the notification re-arm is only safe because identifiers are deterministic and
 built from the untranslated name. If 38.1 is skipped or done loosely, the re-arm orphans armed
 alarms instead of replacing them, and `R4-FINDINGS.md`'s "no cancel pass needed" conclusion stops

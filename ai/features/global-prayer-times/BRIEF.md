@@ -27,7 +27,7 @@ words, 2026-09-30:
 
 So the shape of the answer has three parts, and the research must serve all three:
 
-1. **What is correct.** Which calculation conventions the world's Muslims actually pray by, per country, and what
+1. **What is correct.** Which calculation conventions the world's Muslims pray by, per country, and what
    "accurate" can honestly mean when two correct authorities disagree by twenty minutes.
 2. **Where it comes from.** A credible, maintained, verifiable source of those times that is not hand-written
    mathematics: a library, a published parameter set, an API, or some combination.
@@ -51,7 +51,7 @@ So the shape of the answer has three parts, and the research must serve all thre
 Wave 1 covered one committee. This wave covers everything else:
 
 - every prominent calculation authority and convention worldwide, with its published parameters and primary source;
-- the country-by-country question: which body each country's mosques actually follow, and on what evidence;
+- the country-by-country question: which body each country's mosques follow, and on what evidence;
 - every credible calculation library in every ecosystem, judged on correctness, provenance, maintenance, licence and
   fitness for a React Native app that must work with the network off;
 - every public prayer-time API, judged on terms, cost, a whole-year fetch, and whether depending on one is
@@ -73,7 +73,7 @@ Wave 1 covered one committee. This wave covers everything else:
 
 The session is an orchestrator. Research agents run in parallel waves of at most four, each writing one report into
 `agent-reports/`. The orchestrator reads every report, judges it, and shapes the next wave from what the last one
-found. Wave 1 asks the four independent questions. Later waves close the gaps, measure what the decisions actually
+found. Wave 1 asks the four independent questions. Later waves close the gaps, measure what the decisions
 hinge on, and attack the conclusions.
 
 **No session ever contacts anyone** (owner, 2026-09-30). No email, no drafted letter, no contact form, no

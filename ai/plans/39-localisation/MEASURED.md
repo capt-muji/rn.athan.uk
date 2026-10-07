@@ -107,7 +107,7 @@ permanently, and no design that translates it is viable.
 `scripts/font-coverage.py` reads the bundled fonts' cmap tables directly.
 
 `assets/fonts/Roboto-Regular.ttf` and `Roboto-Medium.ttf` each cover **896 codepoints**. The app
-sets `fontFamily: 'Roboto-Regular'` or `Roboto-Medium` on essentially every `Text` node.
+sets `fontFamily: 'Roboto-Regular'` or `Roboto-Medium` on every `Text` node.
 
 | Script | Sample | Codepoints Roboto lacks |
 | --- | --- | --- |
@@ -217,7 +217,7 @@ failure session 33 was queued to fix. Whether either platform can localise at DE
 instead is a research question with a real payoff, since it would make the re-arm unnecessary.
 
 > **SUPERSEDED 2026-10-07** by `R4-FINDINGS.md` (:7-30, :32-45): delivery-time localisation is
-> closed — `titleLocalizationKey` is inbound-push-only and copy stays frozen at schedule time;
+> closed (`titleLocalizationKey` is inbound-push-only and copy stays frozen at schedule time),
 > and the re-arm needs NO cancel pass, because the deterministic identifiers replace each armed
 > request in place.
 

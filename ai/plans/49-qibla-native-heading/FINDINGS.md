@@ -26,7 +26,7 @@ in full during planning.
 
 `SensorType.ROTATION` in Reanimated IS the AOSP Rotation Vector, and session 47 shipped it, measured
 it 5 to 34 degrees wrong outdoors, and reverted it. **So FOP is not guaranteed to be a different
-answer from the one this programme already rejected once** — on some devices it is that same answer
+answer from the one this programme already rejected once**: on some devices it is that same answer
 with declination applied. The device proof (LOG.md) then measured exactly that agreement on the 3T,
 which is why the module ADDS a reading beside the platform's and replaces nothing.
 
@@ -87,7 +87,7 @@ signal that iOS considers itself uncalibrated, not the calibration itself.**
 There is a sharper reason to be careful with it, which no prior session recorded: the delegate
 method is a QUESTION iOS asks, and answering `true` hands the screen to a system HUD that can appear
 over the qibla sheet at a moment the app does not choose. **Showing that HUD is therefore an owner
-decision rather than an implementation detail** — the module answers `false` and reports whether
+decision rather than an implementation detail**: the module answers `false` and reports whether
 iOS WANTED calibration, which is the signal without the HUD.
 
 ## 4. What this row must NOT re-investigate

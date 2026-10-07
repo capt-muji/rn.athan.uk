@@ -67,13 +67,13 @@ never lock, and it is the direction he gave on 2026-10-06 for a later session, b
 
    **4.3 Step 4's fallback is deleted** (an hour after it was built and reviewed, with its tests):
    `fallBack`, `unwatchFallbackRef`, `visitRef`, `FUSED_SILENCE_MS` and its warning. With no ceiling, the platform
-   heading on Android can never be drawn — nothing there reports an accuracy — so the fallback would only have
+   heading on Android can never be drawn (nothing there reports an accuracy), so the fallback would only have
    armed the magnetometer for nothing. A phone whose fused sensor never delivers gets the report of 4.5.
 
    **4.4 The arrival the user feels.** `waitingSinceRef` holds when the hint last went up: at the open, and again
    when a drawn compass loses its heading. `ARRIVAL_ANNOUNCE_MS = 1000`. Without the fused sensor, the haptic fires
    only if the hint had been up a second or more (sooner, the hint could not be read and the tap lands as part of
-   the sheet opening). On the fused sensor, after every wave however quick — its user is looking at the phone they
+   the sheet opening). On the fused sensor, after every wave however quick, since its user is looking at the phone they
    are moving. This replaces `arrivedWarm`: a warm reopen is quiet because it is quick, the same reason, and one
    rule now covers a first open that is already certain.
 
@@ -87,14 +87,14 @@ never lock, and it is the direction he gave on 2026-10-06 for a later session, b
 
    Started by: the open once permission is granted; a drawn compass losing its heading (`blank`). Ended by: the
    compass being drawn (which also clears `lost`); a close (which also clears `lost`); on a fused phone, ANY sample
-   arriving. The last row is deliberate: a fused phone that is delivering has not lost north — all it lacks is the
+   arriving. The last row is deliberate: a fused phone that is delivering has not lost north, all it lacks is the
    wave, and the hint is already asking for that. It gets the report only if its sensor reports itself and delivers
    nothing. **Why five seconds and not his three of shaking:** nothing reads a sensor to see the wave on a phone
    without the fused one (the rule of 2026-10-02), so the app cannot know an iPhone was shaken. Five seconds from
    the hint appearing is about two to notice it and three of waving. He was told before it was built.
 
-   **4.6 The two lines on the sheet.** Both in `styles.message` — the style of *Move your phone like this*, the
-   colour he asked for — in a view positioned absolutely at the foot of the stage, so the hint and its drawing do
+   **4.6 The two lines on the sheet.** Both in `styles.message` (the style of *Move your phone like this*, the
+   colour he asked for), in a view positioned absolutely at the foot of the stage, so the hint and its drawing do
    not move when they arrive and the sheet does not resize. Mounted only while `lost`, with
    `FadeIn.duration(ANIMATION.durationMedium)`, as `Help.tsx` fades its own. Mounting is also what keeps a screen
    reader from announcing a failure that has not happened. **This is the one visual change of the row, and it is
@@ -116,7 +116,7 @@ never lock, and it is the direction he gave on 2026-10-06 for a later session, b
 
 5. **Green.** After the review's fixes: 188 suites, 5198 tests, 100% on Statements (4938), Branches (2153),
    Functions (1031), Lines (4427). Breaks: `CAUGHT: 50 of 50`, `ALL AS EXPECTED: 1`. First run printed
-   `SURVIVED: a close does not end the wait` — the test meant to catch it reopened the sheet, and the reopen clears
+   `SURVIVED: a close does not end the wait`, because the test meant to catch it reopened the sheet, and the reopen clears
    the wait itself; it now lets the wait run on behind the CLOSED sheet, which is where leaving it armed does its harm.
 
 6. **Commit.** `7b45fda0`, 1.29.255, through the hook. Mock build md5-equal on the 3T
@@ -124,7 +124,7 @@ never lock, and it is the direction he gave on 2026-10-06 for a later session, b
    for the eight-second swap. **1.29.256** (`47596764`) carries the review's four fixes; built and installed on the
    3T and XS before the owner tested (md5 `8ada4abeb263635099f7bed7ca6bcd98`).
 
-7. **Device proof.** Android still on a desk: the hint and NO compass after 10 and after 60 seconds — the ceiling
+7. **Device proof.** Android still on a desk: the hint and NO compass after 10 and after 60 seconds, the ceiling
    is gone; no report either, because the sensor is delivering (measured by the session at 1.29.255: 14s and 30s,
    no log line, `dumpsys` still one reader). A real wave draws with a vibration: the owner. iPhone inside the bar:
    compass in under a second, no vibration: the owner. iPhone in the room that read 18 to 20: the hint, the two

@@ -79,7 +79,7 @@ a notification is delivered and how long it stays, never whether the mute switch
 | Do Not Disturb | `bypassDnd` + alarm-stream channels, and DND access can now be granted | Time Sensitive, fixed in 1.28.52 |
 | Silent / mute switch | Only a self-played foreground service could, investigated and declined | Only Critical Alerts could, and Apple refuses it for this category |
 
-## iOS: the time-sensitive entitlement, what it is actually worth (1.28.52)
+## iOS: the time-sensitive entitlement, what it is worth (1.28.52)
 
 Both `genNotificationContent` and `genReminderNotificationContent` have always sent
 `interruptionLevel: 'timeSensitive'`, but `app.json` declared no `ios.entitlements`, and **iOS silently
@@ -137,7 +137,7 @@ A real check would need native code, and would still not solve it. iOS:
 `UIApplication.shared.backgroundRefreshStatus` is the honest API, but Low Power Mode self-heals (it
 switches off automatically above 80% charge and never alters the user's toggle), so the platform that
 CAN be read is the one that does not need it. Android: there is no reliable API. `ActivityManager.isBackgroundRestricted()`
-(API 28+) catches some cases, but the OEM killers that actually break this app (OnePlus Auto-launch,
+(API 28+) catches some cases, but the OEM killers that break this app (OnePlus Auto-launch,
 ColorOS app battery management) are invisible to it. The exact failure that silenced the 8T is
 undetectable. Opening the setting is possible on iOS (`Linking.openSettings()`), only partly on Android,
 where the OEM battery screens have no stable intent.

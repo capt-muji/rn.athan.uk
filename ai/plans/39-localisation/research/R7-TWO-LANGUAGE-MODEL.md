@@ -2,8 +2,8 @@
 
 > **SUPERSEDED 2026-10-07.** The two-setting model in this document is superseded by
 > `ASSUMPTIONS.md` A1 REVISED and `ONE-OR-TWO-LANGUAGES.md` as current: ONE setting (App
-> language) plus the EXISTING toggle, the second name DERIVED — Arabic, unless the app language
-> is Arabic. The survey evidence survives in A1 (shape and labels), A1b (upgrade pin), A2
+> language) plus the EXISTING toggle, the second name DERIVED (Arabic, unless the app language
+> is Arabic). The survey evidence survives in A1 (shape and labels), A1b (upgrade pin), A2
 > (Muslim Pro) and A4 (buffer halving).
 
 The owner's deadlock, in his words:
@@ -68,8 +68,8 @@ Subuh? You can change the Muslim Pro prayer names to match the names used in you
 sees Subuh as the primary name; their expectation carries over. No major prayer app keeps the
 primary name English while the interface is in another language.
 
-The engineering objection — the English name is the storage key, notification id, audio slug
-and ordering key — is an implementation detail this repository already solved: `CONSTRAINTS.md`
+The engineering objection (the English name is the storage key, notification id, audio slug
+and ordering key) is an implementation detail this repository already solved: `CONSTRAINTS.md`
 C3 and `MEASURED.md` §2 require the English name to remain the domain identifier forever, with
 translation as a presentation-time lookup keyed by it.
 
@@ -172,7 +172,7 @@ his notifications. It costs nothing here.
 | First name stays English permanently (D5 read literally) | Defensible for a London-only app, incoherent for the global audience of D1: no comparator ships a permanent English primary beside a localised interface, and Muslim Pro markets the opposite. Retained as the graceful degradation if the owner keeps the ruling; everything else in this model survives it |
 
 The strongest argument against putting the first name under the App language (R7 §10): it
-spends the app's layout stability to buy global coherence — every non-English user's first
+spends the app's layout stability to buy global coherence: every non-English user's first
 launch exercises the width programme (Indonesian "Sepertiga Malam Terakhir" at 2.57x English
 width) while the majority London audience gains nothing, and it overrides a standing ruling.
 Counterweight: the width programme is already required by the second column's localisation, and

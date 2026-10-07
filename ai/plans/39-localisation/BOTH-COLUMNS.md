@@ -49,7 +49,7 @@ The three that overflow are all the extras column, and two of them (Swahili, Mal
 launch set. **The only launch-set overflow is French extras, by 9pt, on a 320dp screen alone.**
 
 So the answer to the owner's question is: **keep both columns, change nothing structural.** The
-feature the owner really wants is already affordable.
+feature the owner wants is already affordable.
 
 ---
 
@@ -141,4 +141,4 @@ it the right guard:
 
 The owner can have both columns, on every launch locale, at one font size, with no per-row
 shrinking, no two-line rows, and no changes to the overlay. The earlier width alarm was real for
-the first column in isolation and does not survive measuring the row as it is actually laid out.
+the first column in isolation and does not survive measuring the row as it is laid out.

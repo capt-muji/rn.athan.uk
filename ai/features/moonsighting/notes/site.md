@@ -106,7 +106,7 @@ Updated dates are the page's own "Updated …" line; "-" means the page has none
 | `actual-saudi-dates.pdf` | Actual Saudi dates | - | Umm al-Qura vs observed, 1389 AH onward | no |
 
 ### 1.3 Monthly reports: what they are and how current
-- **Pattern:** conjunction time → visibility forecast → "earliest reported sighting" → per-date, per-country "Seen / Not Seen" reports by MCW members → a per-country table of the first day of the month.
+- **Pattern:** conjunction time, then visibility forecast, then "earliest reported sighting", then per-date, per-country "Seen / Not Seen" reports by MCW members, then a per-country table of the first day of the month.
 - **Reporting stopped in spring 2024.** Placeholder (`????`) counts and page sizes are in `reports-sweep.txt`.
   - The last report with real content is `1445shw.html` (Shawwal 1445, April 2024).
   - `1445zqd.html` (May 2024) onward are stubs: forecast text only, with "The earliest reported sighting of the new crescent was on ......... from ...................".
@@ -210,7 +210,7 @@ Lead has read it; confirmed. Key sentences verbatim:
   - A6: "15 degrees is the best approximation for both Fajr and Isha for all latitudes up to 45 degrees … I have been using 1/7th of the night rule".
   - A1: "5 to 10 minutes after Zawaal should be allowed for the beginning of Zuhr."
   - A2: "Isha ends at Midnight."
-- **June 2003 → November 2008, the switch.** The 2003-06-29 faq_pt still says "Islamic Society of North America (ISNA), has adopted to use the angle of depression as 15°, both for Isha and Fajr". The 2008-11-19 faq_pt already uses "a function of latitude and seasons" and claims it "matched observations with amazing accuracy" at Blackburn. Details in §8.3.
+- **June 2003 to November 2008, the switch.** The 2003-06-29 faq_pt still says "Islamic Society of North America (ISNA), has adopted to use the angle of depression as 15°, both for Isha and Fajr". The 2008-11-19 faq_pt already uses "a function of latitude and seasons" and claims it "matched observations with amazing accuracy" at Blackburn. Details in §8.3.
 - **2010, the latitude-season function, from `prayer-french.html`** (a translation of the then-English page, "Mise à jour 30 mars 2010"):
   - Limited observations are "délusoires". "Une observation plus complète pendant toute l'année a été effectuée à Blackburn (Lancashire, Angleterre) par un groupe de `oulamâ' (cliquez ici pour télécharger un livre publié par Hizbul Ulama, 74 Upton Lane London E7 9LW UK)".
   - "Le chafaq met entre 66 et 100 minutes (de 9 à 13,6 degrés) à disparaître à des latitudes plus élevées (comme l'Angleterre) selon la saison."
@@ -218,10 +218,10 @@ Lead has read it; confirmed. Key sentences verbatim:
   - Above the Arctic circle: "se baser sur les régions les plus proches situées à une latitude moindre où le soleil se lève et se couche."
   - Book "When to Pray Fajr & Isha" (~46 pages): "L'algorithme de moonsighting.com pour la fonction basée sur la latitude et la saison n'est pas encore inclu dans le livret."
   - Warning: "Ceci a également été confirmé par Hizbul Ulama UK, 74 Upton Lane London E7 9LW … Lisez le livre détaillé, « Fajr and Isha » écrit par Molvi Yaqub Ahmed Miftahi du Royaume-Uni. Cela a de plus été confirmé de manière indépendante par des scientifiques au Pakistan en 2007." (links `articles/fajr&isha-yam.pdf` and `articles/ghor-talab.gif`)
-  - "Cliquez ici pour avoir les horaires des prières des grandes villes du Royaume-Uni." → `articles/uk-prayercharts1.pdf`
+  - "Cliquez ici pour avoir les horaires des prières des grandes villes du Royaume-Uni." (link: `articles/uk-prayercharts1.pdf`)
   - ISNA: "J'ai vérifié avec l'ISNA (Dr. Muzammil Siddiqi et Dr. Sayyid Syeed), et l'ISNA n'a jamais eu de position officielle concernant les horaires des prières. Utiliser 15 ou 18 degrés pour le fajr ou le `ichâ' n'est pas correct."
   - "Moonsighting.com fournit des calendriers corrects sur simple demande par e-mail, et aucun degré fixe n'est utilisé. Nous utilisons une formule complexe comme fonction pour les latitudes et les saisons".
-- **Book 2 blurb, `3books.html` (undated):** "in the last few years the Ulama in England have switched from 102° to 108° and then back to 102°, etc., and yet no satisfactory answer has emerged". These are zenith angles, i.e. 12° → 18° → 12° depression.
+- **Book 2 blurb, `3books.html` (undated):** "in the last few years the Ulama in England have switched from 102° to 108° and then back to 102°, etc., and yet no satisfactory answer has emerged". These are zenith angles, i.e. depression 12° then 18° then 12°.
 
 ### 2.5 Other prayer-related statements
 - `ever-wonder.html`: "(2) 300 years ago, when clocks and watches were invented; use of those devices for prayer times was not allowed by Fatawa (Fatwas). (3) In 1900 AD, in Indian subcontinent, calculated Prayer Times were not acceptable by Fatawa (Fatwas)."
@@ -239,7 +239,7 @@ Lead has read it; confirmed. Key sentences verbatim:
   - `mcw.html` lists "Engr. Khalid Shaukat, Silver Spring, MD". The contact is `shaukat@moonsighting.com` (1999 pages).
 - **Table producer:**
   - 1998–2010: tables e-mailed on request ("send your city name", prayer.html 1999; French 2010 page).
-  - Since then: the web calculator `pray.php` → `praytable.php`, "Developed by Ahmed Bu-khamsin" (Twitter @techi50, whose apps are "Sky Prayers"), "Original code by PrayTimes.org". The map JS is dated "01/08/2022".
+  - Since then: the web calculator `pray.php` then `praytable.php`, "Developed by Ahmed Bu-khamsin" (Twitter @techi50, whose apps are "Sky Prayers"), "Original code by PrayTimes.org". The map JS is dated "01/08/2022".
   - The site publishes no algorithm or coefficients (§2.1). The French page says the algorithm was not in the book either.
   - From Dec 2012 (faq_pt) and Oct 2013 (how-we) to 2016–2017, both pages advertised **Shaukat's own unpublished ~28-page booklet "Fajr & Isha"**: "Moonsighting.com has developed algorithms for function of latitudes and seasons based on observations after decades of research. These algorithms are included in the booklet. … a hard (xeroxed) copy of the manuscript can be sent by postage mail (NOT by e-mail) upon request." This is the only place the site says the formula was ever written down. The paragraph was removed from how-we in 2016 and from faq_pt in 2017. The booklet was not found in the crawl or the Wayback index.
 - **Programmatic users named by the site:** `github.com/PrayerTimeResearch/PrayerTimeAPI` (menu: "API Prayer Times for Programmers") and `github.com/islamic-network/prayer-times-moonsighting` (how-we.html).
@@ -295,7 +295,7 @@ Lead has read it; confirmed. Key sentences verbatim:
   - "86. Islamic Education Board, London, UK (Sep 4, 2005) — Moonsighting: Science/Shari'ah Perspective"
   - "107. Live Talk, IQRA TV, London UK (Oct 30, 2010) — Moonsighting & Eid-al-Adha"
   - "108. Tooting Islamic Center, London UK (Oct 31, 2010) — Moonsighting (Visibility Maps)"
-  - video: "Khalid Shaukat on Moonsighting Conference in London, UK 2010" → vimeo.com/17995767
+  - video: "Khalid Shaukat on Moonsighting Conference in London, UK 2010", at vimeo.com/17995767
   - **None of the UK lectures is on prayer times.**
 - **Archived UK pages:**
   - `britain.html` (House of Lords fatwa, Dec 2000)
@@ -355,7 +355,7 @@ Lead has read it; confirmed. Key sentences verbatim:
 | 15° validity | 1998: 15° usable "anywhere in the world" up to 45° | how-we / faq_pt: "no fixed degree"; yet faq_pt 2.2 keeps the Miami e-mail praising "15° was 100% accurate" and 2.3 advises finishing Suhoor "20 to 30 minutes before" a 15° chart |
 | Research length | how-we, faq_pt 2.2, 2.10: "A decade long research" | faq_pt 2.6: "studying this problem for over 25 years" |
 | Blackburn Shafaq / Fajr | faq_pt since 2012: Red Shafaq "66 to 105 minutes (12° to 9.7°)", Subh Sadiq "94 to 122 minutes (14.6° to 10.6 degrees)" | faq_pt 2008 and prayer-french 2010: Shafaq "66 to 100 minutes (9 to 13.6 egrees)", Subh Sadiq "(14.5 to 10.6 degrees)"; faq_pt 2008 also: Fajr "12° to 13.5°", Isha "15° to 18°" |
-| England degree history | how-we: "switched from 18degrees to 15degrees or 12degrees or even 9degrees" | 3books: "switched from 102° to 108° and then back to 102°" (12°→18°→12°) |
+| England degree history | how-we: "switched from 18degrees to 15degrees or 12degrees or even 9degrees" | 3books: "switched from 102° to 108° and then back to 102°" (depression 12° then 18° then 12°) |
 | Observation site lists | how-we: Riyadh, Karachi, Tando Adam, Durban, Auckland, Sydney, Miami, Washington DC, Toronto, High Wycombe, Dewsbury, Blackburn | faq_pt 2.10: Riyadh, Tando Adam, Cape Town, NZ, Buffalo, Toronto, Sydney, Phoenix, Trinidad + Blackburn |
 | Qibla sun dates | faq_qd: "May 28, and July 16" ("12:27pm on July 16") | qibla.html: "May 28 at 9:18 UT / July 15 at 9:27 UT" |
 | FCNA month criterion | 1430shw (2009): "conjunction must take place before sunset in Makkah and the moon must set after sunset in Makkah"; morocco-meeting (2006): "Conjunction before 12:00 UT (Fiqh Council of North America)" | ramadan-eid / fcna-uq-calendar (2023): ECFR "elongation … at least 8 degrees and moon … at least 5 degrees above horizon" anywhere |
@@ -482,7 +482,7 @@ The CDX lists 79 digest-distinct captures, 2003–2026. Six were fetched: 2003-0
   - Adds "For most places in the world at temperate latitudes, Islamicfinder.org prayer times are reliable."
 - **2025-03-11 and the 2026-09 crawl:** identical to 2021-09-24.
 
-**Dating the switch from 15° to the function:** June 2003 (15°) → November 2008 (function). The lead's prayer.html series can narrow it further.
+**Dating the switch from 15° to the function:** June 2003 (15°) to November 2008 (function). The lead's prayer.html series can narrow it further.
 
 ### 8.4 Other archived pages fetched (all 404 live)
 | Page | Capture | Content | PT/UK |
@@ -525,7 +525,7 @@ The owner's rule is that every page is read at 100%, either in full or as a full
 - links.html, countries.html, how-countries.html, faq_qd.html, qibla.html, 1447rmd.html
 - actual-saudi-dates.pdf (text), 1444HijriCalendar.pdf (text)
 
-The bare-host copies: all 560 text files were diffed against their www copies. The complete diff is 2 lines (http→https links in articles/2eclipses and faq_ms).
+The bare-host copies: all 560 text files were diffed against their www copies. The complete diff is 2 lines (http to https links in articles/2eclipses and faq_ms).
 
 ## 10. HTML comments and inline scripts (hidden from the rendered text), read in full
 **Source and coverage:**

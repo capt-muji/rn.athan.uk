@@ -98,8 +98,8 @@ by these reads.
 - **`/news`, 13 August 2025:** "This API has been running for over a decade, however the website
   has just been through a refresh ... based on the official East London Mosque timetable ... The
   LPT API is completely free for all use."
-- So the chain is: Khalid Shaukat's model → the London unified timetable (modified) → East London
-  Mosque's published timetable → londonprayertimes.com → `api/client.ts`.
+- So the chain is: Khalid Shaukat's model, then the London unified timetable (modified), then East London
+  Mosque's published timetable, then londonprayertimes.com, then `api/client.ts`.
 
 ### 2.4 moonsighting.com's JSON endpoint, measured 2026-09-14
 
@@ -344,8 +344,8 @@ modified 2026-08-31).
   | --- | --- | --- | --- | --- |
   | Fajr | 75 + 28.65/55·\|lat\| | 75 + 19.44/55·\|lat\| | 75 + 32.74/55·\|lat\| | 75 + 48.1/55·\|lat\| |
 
-  The segments are `<91` (a→b), `<137` (b→c), `<183` (c→d), `<229` (d→c), `<275` (c→b), and
-  otherwise b→a.
+  The segments are `<91` (a to b), `<137` (b to c), `<183` (c to d), `<229` (d to c), `<275` (c to b), and
+  otherwise b to a.
 - `Astronomical.ts:358-400`, `seasonAdjustedEveningTwilight`: minutes after sunset, with the same
   segments.
 
@@ -415,7 +415,7 @@ minute on five of the six times. Asr diverges more, and Tromsø differs by up to
 ### 2.12 The endpoint changes the clock a day early in some timezones
 
 Measured on the cached 2026 method-0 years. For each city, the day Dhuhr jumps by about 60 minutes
-was compared with the day the zone's offset really changes (noon to noon, Python `zoneinfo`,
+was compared with the day the zone's offset changes (noon to noon, Python `zoneinfo`,
 IANA tzdata 2026c). **[lead-verified]** for all seven faulty zones.
 
 | Zone | Endpoint jumps | Real change | |
@@ -621,7 +621,7 @@ as date, API, rule, API minus rule and interval used:
 | 2026-06-19 | 22:44 | 22:43 | +1 | 1-22 |
 | 2026-11-29 | 17:36 | 17:37 | −1 | 1-40 |
 
-- **Early May is the book, not a misreading.** The rendered page really prints May 1-08, 1-05 on
+- **Early May is the book, not a misreading.** The rendered page prints May 1-08, 1-05 on
   the 2nd, 1-00 on the 4th, 1-05 on the 7th, 1-08 on the 9th and 1-10 on the 11th.
 - **London does not follow that dip.** The API's implied Isha interval keeps rising through early
   May, so London's Isha departs from the 2005 chart there, by up to 14 minutes.
@@ -856,7 +856,7 @@ Sources:
 - **The agent also found** that the booklet's "Sunset" column equals the generator's Maghrib, sunset + 3,
   in every city compared.
 
-**What the published generator actually does.** This was tested by a rules model
+**What the published generator does.** This was tested by a rules model
 (`impls/rules_model.py`), a hypothesis test and not a source of times:
 
 - **Rules model E reproduces every day of 2026 within ±1 minute on every field** at London, Oslo,
@@ -997,7 +997,7 @@ ledger in PART D. None was unobtainable.
   columns (0 differences), so the 2006 book is an exact subset of the 2009 book's 49 cities.
 - **When they were generated.** Every header carries a magnetic-declination epoch of 2006.91 to
   2006.94. They are the 2007-calendar directory Shaukat computed in late 2006.
-- **What they actually apply,** checked by the agent against an independent NOAA-style solar
+- **What they apply,** checked by the agent against an independent NOAA-style solar
   calculation at each printed coordinate:
   - Zuhr is noon + 4.3 to +5.7 minutes, median +5.0.
   - Maghrib is sea-level sunset + 1.8 to +4.2, median +3.0.
@@ -1448,6 +1448,6 @@ Draft. The London and implementations strands may add to these.
 | Every other document the site carried | `~/athan-research/pdfs/manifest.json` (58 of 59 recovered, source URL and capture per file) | 2026-09-14 |
 | Hizbul Ulama, "Why our fasting times and timetable are not wrong" (2011) | <http://www.hizbululama.org.uk/articles/english/Why_our_fasting_times_are_not_wrong.pdf> | 2026-09-14 |
 | East London Mosque, prayer times explained, and yearly timetables | <https://www.eastlondonmosque.org.uk/prayer-times-and-calendar-explained>, <https://www.eastlondonmosque.org.uk/prayer-times>; PDFs listed in `notes/london.md` §1 | 2026-09-14 |
-| London Prayer Times API, 2026 year | `https://www.londonprayertimes.com/api/times?format=json&year=2026&24hours=true` (key supplied by the owner, not stored) → `data/london/lpt-2026.json` | 2026-09-14 |
+| London Prayer Times API, 2026 year | `https://www.londonprayertimes.com/api/times?format=json&year=2026&24hours=true` (key supplied by the owner, not stored), saved to `data/london/lpt-2026.json` | 2026-09-14 |
 | `adhan` 4.4.6 source | npm `adhan@4.4.6`, <https://github.com/batoulapps/adhan-js>, read with `opensrc` | 2026-09-14 |
 | PrayerTimeAPI and mawaqit sources | <https://github.com/PrayerTimeResearch/PrayerTimeAPI>, <https://github.com/mawaqit/prayer-times-moonsighting>, read with `opensrc` | 2026-09-14 |

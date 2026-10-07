@@ -83,7 +83,7 @@ corrects one of R1's own measurements.
     **2,208 minutes**. That is the Asr runaway, not the polar rule. `AqrabBalad` raises it to 43 broken days and
     `AqrabYaum` to 66. **A polar policy that only fills nulls does not fix the card.**
 
-12. **The polar problem affects very few people and the report should say so.** About **4 million people live north
+12. **The polar problem affects few people and the report should say so.** About **4 million people live north
     of the Arctic Circle** (cited, multiple secondary sources agreeing at 4 to 6 million; no primary census
     aggregate found, so marked UNVERIFIED as a precise figure). The largest settlement above it is Murmansk at
     about 270,000 to 300,000 (cited). Tromso is about 78,000 (cited, Statistics Norway via secondary). By contrast
@@ -385,9 +385,9 @@ The exact latitude at which each angle first loses a single day, searched to 0.1
 | 13 | 53.6 N | FCNA Canada |
 | 12 | **54.6 N** | Musulmans de France |
 
-**Three consequences for the app.** adhan's own 48-degree threshold in `recommended()` is very close to right for
+**Three consequences for the app.** adhan's own 48-degree threshold in `recommended()` is close to right for
 an 18-degree Fajr (48.6 measured) and wrong by 2 degrees for Egypt's 19.5. Diyanet's published 45-degree threshold
-is deliberately conservative, three degrees below where its own 18-degree angle actually breaks, which is
+is deliberately conservative, three degrees below where its own 18-degree angle breaks, which is
 consistent with R1's note that Diyanet justified it on *istihsan* rather than astronomy. And the Moonsighting
 Committee's 55-degree threshold is far above where 18 degrees breaks, so between 48.6 and 55 the MC method relies
 on its seasonal function alone.
@@ -590,7 +590,7 @@ solar altitude dropping below about 2 degrees, and it is present under **every**
 touches the cause. A polar policy that only asks "does every field have a value" ships a card that says Asr comes
 before Fajr.
 
-### How many people this actually affects
+### How many people this affects
 
 Sized honestly, because the answer changes the engineering priority.
 
@@ -634,7 +634,7 @@ number of users, but a wrong answer there is visibly wrong, and an app claiming 
 
 4. **Bound Asr independently of the polar question.** The 2,208-minute inversion at Tromso and 5,761 at Utqiagvik
    are present under every resolution and are not a polar-circle problem; they are the shadow-ratio definition
-   failing when the noon sun is very low. See Part 5. Any polar policy that does not also bound Asr ships a broken
+   failing when the noon sun is low. See Part 5. Any polar policy that does not also bound Asr ships a broken
    card.
 
 ---
@@ -694,7 +694,7 @@ All **measured**, `adhan@4.4.6`, `MuslimWorldLeague` with method adjustments zer
 **Layer 1: 1,142 comparisons, 1,111 exact (97.3 percent), mean +0.01 minutes, worst 1 minute, 0 of 20 cities
 failing.**
 
-### Layer 2: the twilight solver, at the angle an authority actually uses
+### Layer 2: the twilight solver, at the angle an authority uses
 
 Days where adhan's night-portion bound displaced the value are excluded from the delta, because those measure the
 rule and not the solver. They are counted separately in the null table. All **measured**.
@@ -790,7 +790,7 @@ ephemeris update would break it.
 | Layer 3, not built | nothing; it is adhan's own 8 fixtures as a regression pin plus `authority/` as evidence | it is a pin, not a proof, and R3 said so |
 
 **The honest statement to the owner: the astronomy is now verifiable and verified, against a government source,
-offline, with the fixtures committed. The fiqh is not verifiable by anybody, and this report has just measured, in
+offline, with the fixtures committed. The fiqh is not verifiable by anybody, and this report has measured, in
 Part 1, that even the authorities' own software disagrees with their own labels.**
 
 ### Two harness traps, and a third this report found

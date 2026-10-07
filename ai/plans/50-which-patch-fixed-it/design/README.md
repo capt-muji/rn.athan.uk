@@ -10,13 +10,13 @@ people are visual learners."
 **He chose design 3, the comet trail.** 🐋  "Very nice. I love it. Let's go for comet, comet Trail,
 number 3, comet Trail."
 
-The design work was judged from rendered filmstrips (one card per design, five frames across one loop —
+The design work was judged from rendered filmstrips (one card per design, five frames across one loop;
 an animation cannot be judged from one frame). The ten generators, the render harness and the three
 result PNGs lived in this folder; deleted in the record compression, recoverable from git (`b6949511`
 1.29.221 added the designs and the shipped-check render, `e99d2411` 1.29.223 the shake-gate ruling), or regenerable by re-implementing
 them: each design was a Node canvas generator; the shipped-geometry check re-implemented `wavePoint`,
 `waveTrail`, `waveLean` and `waveRoll` verbatim from `shared/qiblaWave.ts` and rendered them through
-the same harness, matching design 3 — same tail, same lean, phone narrowing to edge-on at each
+the same harness, matching design 3 (same tail, same lean, phone narrowing to edge-on at each
 crossing. The port was PROVEN rather than assumed (session 45's rule), because a Node design and its
 TypeScript port can drift silently.
 
@@ -35,7 +35,7 @@ TypeScript port can drift silently.
 | 9 | Ripple pool | Rings spread like a stone dropped on water |
 | 10 | Needle finding north | A needle settles as the phone waves: cause and effect in one picture |
 
-Design references: Apple's compass HUD (tilt to roll a ball until the ring FILLS — the progress
+Design references: Apple's compass HUD (tilt to roll a ball until the ring FILLS, the progress
 metaphor designs 2, 5 and 8 borrow), Android's figure-eight prompt, and the app's own Rub el Hizb
 jewel and eight-point star from session 45's locked compass design. **Design 9 was weaker than the
 rest and is recorded as such rather than defended**: the ripple pool still read as scattered circles

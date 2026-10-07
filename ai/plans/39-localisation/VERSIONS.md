@@ -2,17 +2,17 @@
 
 Written 2026-09-29 at 113 lines from `registry.npmjs.org`; **compressed 2026-10-07**. The
 12-package rejected-library table and the historical `58.0.1` pin are dropped (the `next` tag is
-58.0.3 on 2026-10-07 — never reintroduce a remembered pin). What survives, because the plan still
+58.0.3 on 2026-10-07; never reintroduce a remembered pin). What survives, because the plan still
 needs it (C3):
 
 ## The install contract for `expo-localization`
 
-- Read the **`next` dist-tag on the day it installs**, never `latest` — `latest` pointed at the
+- Read the **`next` dist-tag on the day it installs**, never `latest`: `latest` pointed at the
   SDK 57 line (57.0.2) when this was written, and row 37 hit exactly this trap for
   `expo-location` and `expo-sensors`.
 - **Pin the exact version rather than a range**, matching how `expo-widgets` and `@expo/ui` are
   pinned to an exact `58.0.5` after the session 23 breakage.
-- **After ANY `yarn add`, run `shared/__tests__/widgetRuntimeLoads.test.ts`** — a re-resolve can
+- **After ANY `yarn add`, run `shared/__tests__/widgetRuntimeLoads.test.ts`**: a re-resolve can
   reintroduce a nested `@expo/ui` copy under `node_modules/expo-widgets/` that blanks every
   widget (session 31). Recovery: `rm -rf node_modules/expo-widgets/node_modules && yarn install
   --frozen-lockfile`.

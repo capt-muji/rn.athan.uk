@@ -99,7 +99,7 @@ Four constraints were fixed before it started, and all four are load-bearing.
 | --- | --- | --- |
 | The app asks for **no location permission for prayer times**, and for the qibla compass alone | measured in this worktree: `app.json:36-44` declares six Android permissions and not one is a location permission, so the two Android location permissions reach the build from `expo-location`'s own manifest rather than from `app.json`; `app.json:25` carries the one `NSLocationWhenInUseUsageDescription`, whose text names the compass | adding a launch-time permission prompt, or a second reason the user was never told about |
 | Inferring position from the timezone is **UNUSABLE for qibla** | row 37, cited in `ai/plans/README.md:127`: 0.5 degrees for Manchester, 6.5 Detroit, 13.7 Peshawar, 29.7 Diyarbakir, **147.5 for Jeddah** | assuming the same trick is safe here without measuring it |
-| **No network, no API key, no tile server** at runtime | row 41, `ai/plans/41-qibla-map/BRIEF.md:35` and `ASSUMPTIONS.md:23` | any coordinate-to-anything service call |
+| **No network, no API key, no tile server** at runtime | row 41, `ai/plans/41-qibla-map/BRIEF.md:35` (plan deleted 2026-10-07, recoverable from git history) and `ASSUMPTIONS.md:23` | any coordinate-to-anything service call |
 | A user's settings are **never silently changed** | the standing rule, restated in `R8` section 6.3 | a source that follows the user without asking |
 
 One prior ruling shapes the answer more than any measurement. Row 37's planning session proposed a
@@ -110,7 +110,7 @@ difference is the whole of section 3.
 
 ---
 
-## 2. Part 1: how position-sensitive is a prayer time, really?
+## 2. Part 1: how position-sensitive is a prayer time?
 
 All measured with `adhan@4.4.6`, `CalculationMethod.MuslimWorldLeague()`,
 `highLatitudeRule = SeventhOfTheNight`, `madhab = Shafi`. Sections 2.1 to 2.5 use
@@ -204,7 +204,7 @@ where position error stops being a clock offset and starts distorting the shape 
 Asr approximation running away above 60N, which `R7` measured at 2,279 minutes and this report
 confirms independently in 2.6.
 
-### 2.4 The worst case over eight compass directions, which is what a positioning error actually is
+### 2.4 The worst case over eight compass directions, which is what a positioning error is
 
 A real positioning error has a radius, not a direction. Measured (`part1.txt` 1D): the largest
 absolute shift of any of the six times over eight bearings and all four dates, with the prayer that
@@ -225,7 +225,7 @@ produced it.
 
 **1 km is 0.1 minutes everywhere on earth.** Nothing in this table justifies GPS.
 
-### 2.5 The direct answer: what radius does a prayer time actually need?
+### 2.5 The direct answer: what radius does a prayer time need?
 
 Binary search on the radius at which the worst of the six times over 16 bearings and four dates
 first exceeds the tolerance. Measured (`part1.txt` 1E), in km.
@@ -484,7 +484,7 @@ Read from the package's own type documentation (`expo-localization-58.0.1.tgz`,
 Session 39 already recorded the crucial caveat (`ai/plans/39-localisation/LOCALIZATION-API.md:56-60`):
 **`regionCode` is read from a settings menu, not from position.** So it is not a location signal.
 What it is, precisely, is **a statement of which country's conventions the user expects**, which for
-source selection is arguably a better signal than position anyway: a Malaysian working in Dubai who
+source selection is a better signal than position anyway: a Malaysian working in Dubai who
 has left their region as `MY` is telling the app something true.
 
 **Placing the user at their country's capital is worse than the zone for large countries and better
@@ -558,7 +558,7 @@ coarse position and the UTC offset; the region gives the country. Read both.
 
 ### 3.5 Coarse location, which is the right ask
 
-Session 37's `R2-04-location-strategy.md` established the permission landscape in depth and this
+Session 37's `R2-04-location-strategy.md` (plan folder deleted 2026-10-07, recoverable from git history) established the permission landscape in depth and this
 report has no reason to revisit it. What it adds is the prayer-time figure for each level, from 3.1:
 **coarse location at any of its documented accuracies produces an identical answer to fine GPS.**
 
@@ -579,8 +579,8 @@ Apple's own sentence answers this report's question directly. **"Typically prese
 exactly the accuracy class section 2.5 requires**, and "within 1-20 kilometers" straddles the 10 km
 design figure, producing at most 2 minutes of error at London and 3 at Oslo.
 
-**What the app actually ships today is FINE and COARSE, and this report reopens a question the owner
-already closed once.** Session 37's `ANDROID-PERMISSIONS.md` measured, from the installed
+**What the app ships today is FINE and COARSE, and this report reopens a question the owner
+already closed once.** Session 37's `ANDROID-PERMISSIONS.md` (same deleted plan, recoverable from git history) measured, from the installed
 `expo-location@58.0.8` source, that the module adds **both** `ACCESS_COARSE_LOCATION` and
 `ACCESS_FINE_LOCATION` in its own `AndroidManifest.xml`, hardcodes the pair in
 `LocationModule.kt:176-186`, and that its config plugin takes no option to drop either. **Coarse-only
@@ -649,7 +649,7 @@ Measured with `part2-citylist.mjs` against GeoNames `cities15000`, 34,152 places
 The binary encoding stores latitude and longitude as `int16` at 0.01 degree, which is 1.1 km of
 latitude resolution, comfortably inside the 10 km tolerance from 2.5.
 
-**How many cities are actually needed, which is the question the brief asked.** Since section 2.5
+**How many cities are needed, which is the question the brief asked.** Since section 2.5
 establishes a radius, a city list is a covering of the inhabited world by discs of that radius. A
 greedy set cover, taking the city whose R-km disc holds the most uncovered population, until every
 one of the 34,152 places is covered:
@@ -803,7 +803,7 @@ surrounding sea (`part3-gps.mjs`):
 | transport failure | 0 | 0.0% |
 
 The no-zone points are open sea inside the bounding boxes, which is correct behaviour. **What it
-establishes is that the service refuses rather than guesses**, so a user just offshore gets nothing.
+establishes is that the service refuses rather than guesses**, so a user a short distance offshore gets nothing.
 The service is a network dependency and therefore unusable under row 41's constraint, but it is an
 excellent ORACLE for building something that is not.
 
@@ -927,7 +927,7 @@ agree within 2 km:
 | tropical, 20 to 35 | 20 km | 41 km |
 | temperate, 40 to 45 | 17 km | 34 km |
 | high, 50 to 55 | 13 km | 25 km |
-| very high, 60 and above | 8 km | 16 km |
+| highest, 60 and above | 8 km | 16 km |
 
 **A movement trigger should use 10 km, and above 55 degrees latitude it should tighten to 8.**
 `part1b.txt` justifies a second, looser threshold from the other side: below Oslo's latitude a move
@@ -937,8 +937,8 @@ cosmetic and above 50 km is urgent.**
 ### 5.2 A timezone change as a travel signal: reliable when it fires, and it often does not
 
 A timezone change costs nothing and needs no permission. Session 37's own table listed it as a
-"free invalidation signal" (`R2-04-location-strategy.md:114`). This report measures how good it
-actually is, and the answer is: good as a positive signal, useless as a complete one.
+"free invalidation signal" (`R2-04-location-strategy.md:114`, deleted 2026-10-07, recoverable from git history). This report measures how good it
+is, and the answer is: good as a positive signal, useless as a complete one.
 
 **What it MISSES, measured** (`part4-travel.mjs` 4B). For every IANA zone with three or more
 cities, the two cities inside it whose prayer times differ most. A user making exactly that journey
@@ -951,7 +951,7 @@ gets no timezone event and no other permission-free signal at all.
 | worst intra-zone gap over 15 min | **200, 72%** |
 | worst intra-zone gap over 30 min | **126, 45%** |
 
-The worst cases include journeys people actually make:
+The worst cases include journeys people make:
 
 | Zone | City A | City B | km | Worst min |
 | --- | --- | --- | ---: | ---: |
@@ -1140,7 +1140,7 @@ Minutes that Maghrib is later at elevation `h`, recomputing the hour angle at
 which is a useful independent check on both. Sunrise moves by the same amount in the opposite
 direction, so the day lengthens by twice these figures.
 
-### 6.2 How high the world actually lives
+### 6.2 How high the world lives
 
 Measured from GeoNames `cities15000`, which carries a `dem` value (the SRTM or GTOPO30 elevation)
 for **34,152 of 34,152 places**, against only 4,496 with a populated `elevation` field.
@@ -1160,7 +1160,7 @@ for **34,152 of 34,152 places**, against only 4,496 with a populated `elevation`
 **A fifth of the sampled world population lives at or above 500 m, which is 3 to 6 minutes of
 Maghrib depending on latitude and season.** That is larger than JAKIM's whole declared safety margin
 of 2 minutes, which `R4` already noted, and larger than Turkey's temkin of 7 to 9 minutes only at
-the very top of the range.
+the top of the range.
 
 The 25 highest cities over 300,000 population in Muslim-majority countries (measured):
 
@@ -1308,7 +1308,7 @@ exactly the trade the never-invent rule forbids.**
 **Offline elevation DATA, costed for completeness.** `R4` measured `srtm-elevation` (ISC, 3,150,360
 B) and `geotiff` (MIT, 3,829,334 B), neither of which ships tiles, and SRTM's global 30 m coverage
 is hundreds of gigabytes. Confirmed and not worth pursuing: the per-place integer is four orders of
-magnitude smaller and answers the question that is actually being asked.
+magnitude smaller and answers the question being asked.
 
 ---
 
@@ -1359,7 +1359,7 @@ re-derive them.
 6. **The `PRK03` against `PRK04` delta.** Section 4.2's offline residue is 8 grid points confusing
    these two zones, and `zonedelta.txt` does not contain that pair, so the cost of that specific
    error is inferred from comparable adjacent Perak pairs at 1 to 3 minutes rather than measured.
-7. **How stale on-device tzdata actually gets on real hardware.** `R4` section 6.1 flagged this and
+7. **How stale on-device tzdata gets on real hardware.** `R4` section 6.1 flagged this and
    it remains UNVERIFIED. It matters here because 5.2's zone-change signal reads the device's zone,
    and `R4` measured that a year-old database makes every Moroccan prayer time an hour wrong for 103
    consecutive days.
@@ -1390,7 +1390,7 @@ re-derive them.
 | --- | --- |
 | No location permission declared for prayer times | `app.json:36-44`, six Android permissions, none of them location |
 | The one location string, whose text names the compass alone | `app.json:25`, `NSLocationWhenInUseUsageDescription` |
-| That `expo-location` forces both Android location permissions, and the owner's 2026-09-29 ruling to ship the default | `ai/plans/37-qibla-compass/ANDROID-PERMISSIONS.md` sections 1 and 4a |
+| That `expo-location` forces both Android location permissions, and the owner's 2026-09-29 ruling to ship the default | `ai/plans/37-qibla-compass/ANDROID-PERMISSIONS.md` (plan deleted 2026-10-07, recoverable from git history) sections 1 and 4a |
 | `Accuracy.Balanced` and why | `device/qibla.ts:62-70`, with its own comment on the 10 km figure |
 | The notification budget | `shared/constants.ts:75`, `NOTIFICATION_REQUEST_BUDGET = 64` |
 | The alarm lookahead | `shared/constants.ts:88`, `SCHEDULE_CANDIDATE_DAYS = 66` |
@@ -1399,9 +1399,9 @@ re-derive them.
 | The gate reopen | `stores/sync.ts:126-133`, `saveDownloadedDays` |
 | `adhan` at 4.4.6, `expo-location` at 58.0.8, no `expo-localization` | `package.json:52` and the dependency block |
 | Session 37's qibla figures | `ai/plans/README.md:127` |
-| Session 37's location strategy | `ai/plans/37-qibla-compass/agent-reports/R2-04-location-strategy.md` |
+| Session 37's location strategy | `ai/plans/37-qibla-compass/agent-reports/R2-04-location-strategy.md` (plan deleted 2026-10-07, recoverable from git history) |
 | Session 39 on `regionCode` not being a location signal | `ai/plans/39-localisation/LOCALIZATION-API.md:56-60` |
-| The no-network, no-key, no-tile rule | `ai/plans/41-qibla-map/BRIEF.md:35`, `ASSUMPTIONS.md:23` |
+| The no-network, no-key, no-tile rule | `ai/plans/41-qibla-map/BRIEF.md:35` (plan deleted 2026-10-07, recoverable from git history), `ASSUMPTIONS.md:23` |
 | Prior reports relied on | `R1` sections on Gulf angles and JAKIM high-ground zones, `R4` section 6, `R5` on the 29.9% and on Iraq and Lebanon, `R6` on JAKIM's per-field offsets, `R7` on the Tromso Asr runaway, `R8` sections 1 and 3, `R9` on France |
 
 ### 9.2 Packages, read from the installed tree or the npm registry on 2026-09-30
