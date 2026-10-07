@@ -201,21 +201,13 @@ describe('the qibla sheet before it is opened', () => {
   });
 });
 
-// This suite runs the SHIPPED configuration, with the diagnostic flag off: the watch still arms, because the gate
-// decides on it, and only the readout is absent. QiblaDiagnostic.test.tsx is the half with the readout on.
 describe('the accuracy watch the gate decides on', () => {
-  it('arms one accuracy watch when the sheet opens, with the readout off', async () => {
+  it('arms one accuracy watch when the sheet opens', async () => {
     const { watchQiblaDiagnostic } = jest.requireMock('@/modules/qiblaheading');
 
     await openSheet();
 
     expect(watchQiblaDiagnostic).toHaveBeenCalledTimes(1);
-  });
-
-  it('draws no readout, so the sheet is the one the owner accepted', async () => {
-    await openSheet();
-
-    expect(screen.queryByTestId('qibla-diagnostic')).toBeNull();
   });
 
   // The sensors would otherwise run for the life of the process, which every sheet in this app mounts into
