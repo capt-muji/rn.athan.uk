@@ -548,3 +548,111 @@ owner tested with the cable out.
   The stopwatch step 2 deleted is in git at 1.29.248 if Android returns to it.
 - **All three Android phones are left on the mock build of 1.29.249 with the readout on**, until he says
   otherwise. It carries invented prayer times.
+
+## The night Android's direction was settled: three builds on two phones (2026-10-07)
+
+Nothing in this section was committed as code. Each build was a throwaway commit made with `git commit-tree`, built by
+`~/athan-device-sweep/session3/bin/build-mock.zsh` and installed with `adb install -r`. Both prototypes are kept as
+patches in `~/athan-device-sweep/session53/`.
+
+### What the records already said, and tonight confirmed
+
+A second sensor reader beside the compass degrades it (`ai/AGENTS.md`, 2026-10-02). 1.29.248 made Google's Fused
+Orientation Provider start on every open, beside `expo-location`'s heading, which recreated exactly that. So the
+question for Android was never the gate. It was which ONE reader to keep.
+
+### Prototype B: Google's sensor alone
+
+`hooks/useQibla.ts` skipped `watchHeading` wherever the native module reports the fused sensor, and drew
+`fusedHeadingDegrees`. The gate was unchanged.
+
+| Phone | What the owner found |
+| --- | --- |
+| OnePlus 3T | 220 where 120 was true, for five opens, always `drew on ceiling`. One violent shake, then right on every open, even after clearing the app's data |
+| Samsung S23 | 194.5 before shaking with `fused error 22.7`. 121.3 after shaking, right, with `fused error 180.0` |
+
+### His screen recording, read frame by frame
+
+93.6 seconds on the S23, 374 frames at four a second, every frame's text read with the Mac's own text recognition
+(`~/athan-device-sweep/session53/s23-rec/ocr.tsv`). The qibla from his position is about 119.
+
+| Open | He did | `fused error` | `drew on` | The heading |
+| --- | --- | --- | --- | --- |
+| 1 | Shook | 51.0 | ceiling | Swung 72 to 307, read 140 when the shake ended, crept to 120 over 5 seconds, held 119.4 to 120.3 |
+| 2 | Cleared data, shook | 63.2 | ceiling | Swung 38 to 214, then 126, held 120.3 to 120.5 |
+| 3 | Cleared data, held still | 81.2 | ceiling | 115.9 to 123.4 from the first frame |
+| 4 to 6 | Reopened the sheet | 39.0, 42.0, 42.3 | warm | 120 to 131 |
+
+**Four findings, each read off the frames:**
+
+1. **The error figure never passed the bar of 15.** Its lowest value all night was 22.7.
+2. **It is frozen for the length of an open** and changes only when the sheet opens again. The module passes
+   Google's value through on every sample, so the freeze is Google's.
+3. **It does not follow the truth.** 81.2 with the needle 3 degrees out, 22.7 with it 75 out, 180 with it right.
+   The 15 degree gate cannot be built on it.
+4. **Clearing the app's data does not reset the sensor.** Its calibration lives in Google Play services, so opens
+   2 and 3 were not cold starts. This is session 52's finding, "cold for the app is not cold for the phone", seen
+   again.
+
+Outside the recording he also saw a true cold start: 220 on opening, creeping a degree at a time for 30 seconds
+while he stood still.
+
+### Prototype C: the basic compass alone
+
+The opposite experiment, at his request: Google's sensor never started, `expo-location` the only reader.
+
+🐋  "Horrible, horrible, horrible. The compass is all over the place... a slight change in direction makes it spin
+about 50 degrees."
+
+So the basic compass is not the answer on these phones even with nothing beside it. **Why 1.29.239 was accepted on
+the same phones on 2026-10-02 and this was not is NOT explained.** The patch is applied and the compass code is the
+same. It is recorded here as open.
+
+### His ruling
+
+🐋  "We should go completely Google-based... No basic compass reading at all, completely Google based and always
+shake the phone. Remove the 15 degrees gate... let's remove the debugging logs... This is only for the Android,
+okay? The iOS is perfectly fine."
+
+That is steps 3 and 4.
+
+## Step 3: the debug readout removed (2026-10-07)
+
+`steps/3-readout-removed.md` is the specification. Branch `refactor/qibla-readout-removed`.
+
+### What changed
+
+The flag `qiblaDiagnostic`, `EXPO_PUBLIC_QIBLA_DIAGNOSTIC`, the block on the sheet, `diagnostic` and `openedBy` in
+the hook's state, `GateOpening`, `QiblaDiagnostic.test.tsx` and the flag's own tests. 132 lines removed, 10 added.
+
+**The gate's three lines became one**, because `openedBy` existed only to name the path for the readout:
+
+```ts
+if (!arrivedWarm && !isCertain(accuracyRef.current) && waitedMs < CERTAINTY_CEILING_MS) return;
+```
+
+No test of the gate was edited to make that pass.
+
+### One line the breaks found dead, deleted
+
+The first run of `scripts/breaks-2.sh` printed `SURVIVED: a close leaves the last visit warm`. `stop()` reset
+`arrivedWarm` to false, and nothing can see it: the only write that makes the compass visible sets `hasHeading` and
+`arrivedWarm` together, so a value left over from the last visit is always overwritten before the sheet's haptic
+effect reads it. An unbreakable line is dead code, not an untested one (`ai/AGENTS.md`, 2026-10-03), so it is
+deleted and the break now aims at the `hasHeading` reset beside it.
+
+### Green
+
+```
+yarn validate
+Test Suites: 186 passed, 186 total
+Tests:       5062 passed, 5062 total
+Statements 100% (4837/4837)  Branches 100% (2111/2111)  Functions 100% (1007/1007)  Lines 100% (4340/4340)
+
+bash ai/plans/53-qibla-accuracy-gate/scripts/breaks-2.sh
+CAUGHT: 10 of 10
+ALL AS EXPECTED: 1
+```
+
+The count fell from 5086 by exactly what was deleted: 13 in the readout's suite, 10 for the flag, 1 that asserted the
+readout was absent.

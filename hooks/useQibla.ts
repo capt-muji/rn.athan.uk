@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { type SharedValue, useSharedValue } from 'react-native-reanimated';
 
 import { readPlaceName, readPosition, requestQiblaPermission, watchHeading } from '@/device/qibla';
-import { type QiblaDiagnostic, watchQiblaDiagnostic } from '@/modules/qiblaheading';
+import { watchQiblaDiagnostic } from '@/modules/qiblaheading';
 import { alignmentOffset, isAligned, NO_HEADING, shouldTap } from '@/shared/qiblaAlignment';
 import { unwrapHeading } from '@/shared/qiblaCompass';
 import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
@@ -16,16 +16,9 @@ export interface QiblaState {
   permissionDenied: boolean;
   /** Where the bearing was computed FROM: undefined while the geocoder is still looking, null when it found nothing */
   place: string | null | undefined;
-  /** What the platform says about its own heading, behind the diagnostic flag. Null until a reading arrives */
-  diagnostic: QiblaDiagnostic | null;
   /** Whether the compass arrived on a stream proven warm, so nothing was waited for and nothing arrived to announce */
   arrivedWarm: boolean;
-  /** What opened the gate, which only the diagnostic readout shows */
-  openedBy: GateOpening;
 }
-
-/** Null until the compass is drawn, then which of the three paths drew it */
-export type GateOpening = 'warm' | 'certainty' | 'ceiling' | null;
 
 /** Long enough to ride out the gaps a settling magnetometer leaves, short enough that a real loss still shows */
 const HEADING_GRACE_MS = 1500;
@@ -62,9 +55,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     hasHeading: false,
     permissionDenied: false,
     place: undefined,
-    diagnostic: null,
     arrivedWarm: false,
-    openedBy: null,
   });
   const heading = useSharedValue(0);
   const aligned = useSharedValue(false);
@@ -116,9 +107,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     // Kept, the heading outlives the close and the next open paints ONE frame of compass before the gate can
     // shut it: the owner saw the dial flash, then the hint, then the dial. There is no live heading while the
     // watch is torn down, so reporting one would be a lie in any case
-    setState((previous) =>
-      previous.hasHeading ? { ...previous, hasHeading: false, arrivedWarm: false, openedBy: null } : previous
-    );
+    setState((previous) => (previous.hasHeading ? { ...previous, hasHeading: false } : previous));
   }, [aligned, clearBlank]);
 
   const processReading = useCallback(
@@ -146,7 +135,6 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
       clearBlank();
 
       let arrivedWarm = false;
-      let openedBy: GateOpening = null;
 
       // The gate LATCHES: once the compass is drawn every later reading reaches the dial, because re-testing per
       // reading would drop exactly the updates made while the user turns the phone
@@ -158,11 +146,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
 
         // The phone is asked rather than timed, and the ceiling keeps one that never answers from locking the screen
         const waitedMs = nowMs - firstReadingAtRef.current;
-        if (arrivedWarm) openedBy = 'warm';
-        else if (isCertain(accuracyRef.current)) openedBy = 'certainty';
-        else if (waitedMs >= CERTAINTY_CEILING_MS) openedBy = 'ceiling';
-
-        if (openedBy === null) return;
+        if (!arrivedWarm && !isCertain(accuracyRef.current) && waitedMs < CERTAINTY_CEILING_MS) return;
         settledRef.current = true;
       }
 
@@ -173,9 +157,7 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
       aligned.value = nowAligned;
       heading.value = unwrapHeading(heading.value, trueHeading);
       warmHeadingRef.current = trueHeading;
-      setState((previous) =>
-        previous.hasHeading ? previous : { ...previous, hasHeading: true, arrivedWarm, openedBy }
-      );
+      setState((previous) => (previous.hasHeading ? previous : { ...previous, hasHeading: true, arrivedWarm }));
     },
     [aligned, blank, clearBlank, heading]
   );
@@ -195,13 +177,11 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     // what the sheet's blank seconds were
     const unwatchPromise = watchHeading(({ trueHeading }) => processReading(trueHeading));
 
-    // Unconditional, because the gate decides on this reading: only the readout sits behind the flag
     unwatchDiagnosticRef.current = watchQiblaDiagnostic((diagnostic) => {
       // Android attaches its cone to SOME samples only, so a silent sample must leave the last reading standing:
       // taking it as the new value would erase a good reading and strand the gate on the ceiling
       const reported = diagnostic.accuracyDegrees ?? diagnostic.fusedErrorDegrees;
       if (reported !== undefined) accuracyRef.current = reported;
-      setState((previous) => ({ ...previous, diagnostic }));
     });
 
     // A position from an earlier open draws at once and the fresh read revalidates behind it, because the qibla

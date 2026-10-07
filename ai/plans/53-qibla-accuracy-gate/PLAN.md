@@ -275,6 +275,10 @@ and what changed:
       `f7eeb1c5`, 1.29.248, committed under the owner's one-time `--no-verify`
 - [x] Step 2: the iOS half covered, and the stopwatch it replaced deleted (specified, `steps/2-ios-coverage.md`).
       DONE in `f6624843`, 1.29.249, through the hook. Audited: `AUDIT.md`
+- [x] Step 3: the debug readout removed (specified, `steps/3-readout-removed.md`). DONE in 1.29.252, through
+      the hook
+- [ ] Step 4: Android reads Google's sensor alone, and waits for a wave (specified,
+      `steps/4-android-fused-wave.md`)
 
 ### Prototype P1: gate the compass on the reported accuracy, iOS first
 

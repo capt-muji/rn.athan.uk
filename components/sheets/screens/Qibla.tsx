@@ -7,8 +7,6 @@ import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { FEATURE_FLAGS } from '@/shared/flags';
-import { CERTAINTY_CEILING_MS, CERTAINTY_THRESHOLD_DEGREES } from '@/shared/qiblaSettle';
 import { Icon } from '@/shared/types';
 import { setQiblaSheetModal } from '@/stores/ui';
 
@@ -27,11 +25,6 @@ const SPACE_BELOW_DIAL = SPACING.xxxl;
  * with its padding cut away. Bounding by height too keeps the whole column inside the cap.
  */
 const DIAL_HEIGHT_SHARE = 0.45;
-
-/** A reading that has not arrived yet, so the readout holds its height from the first frame */
-const PENDING = '-';
-
-const oneDecimal = (value: number | undefined): string => value?.toFixed(1) ?? PENDING;
 
 /**
  * The invitation to wave, shown until the phone vouches for its heading or the ceiling passes.
@@ -109,19 +102,7 @@ const QiblaPermissionDenied = () => (
 
 export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
-  const {
-    bearing,
-    hasHeading,
-    permissionDenied,
-    place,
-    heading,
-    aligned,
-    diagnostic,
-    arrivedWarm,
-    openedBy,
-    start,
-    stop,
-  } = useQibla();
+  const { bearing, hasHeading, permissionDenied, place, heading, aligned, arrivedWarm, start, stop } = useQibla();
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
   // The wait is the phone's own uncertainty rather than a clock: it draws as soon as the phone reports a heading
@@ -168,18 +149,6 @@ export default function BottomSheetQibla() {
       <Text testID='qibla-place' style={styles.place} numberOfLines={1}>
         {showsCompass ? (place ?? ' ') : ' '}
       </Text>
-      {/* The flag is build-time static, so this whole block folds away when it is off. It renders before the
-          first reading for the same reason the place line is never conditional */}
-      {FEATURE_FLAGS.qiblaDiagnostic && (
-        <View testID='qibla-diagnostic'>
-          <Text style={styles.place}>{`accuracy ${oneDecimal(diagnostic?.accuracyDegrees)}`}</Text>
-          <Text style={styles.place}>{`wants calibration ${diagnostic?.wantsCalibration ?? PENDING}`}</Text>
-          <Text style={styles.place}>{`fused heading ${oneDecimal(diagnostic?.fusedHeadingDegrees)}`}</Text>
-          <Text style={styles.place}>{`fused error ${oneDecimal(diagnostic?.fusedErrorDegrees)}`}</Text>
-          <Text style={styles.place}>{`drew on ${openedBy ?? PENDING}`}</Text>
-          <Text style={styles.place}>{`bar ${CERTAINTY_THRESHOLD_DEGREES} / ceiling ${CERTAINTY_CEILING_MS}ms`}</Text>
-        </View>
-      )}
     </Sheet>
   );
 }
