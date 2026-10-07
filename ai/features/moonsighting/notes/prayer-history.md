@@ -113,7 +113,7 @@ Format: capture where the change first appears (page's Updated date). "Before" i
   - Maghrib "is calculated as" becomes "should be calculated as 3 minutes after sunset".
   - New section "Fajr & Isha 15 VS 18 Degrees: Let me explain the controversy of 15 and 18 degrees. In the last 20 years, Muslim Groups from four continents have made a deliberate effort to observe Subh-e-Sadiq. Groups from Pakistan, England, USA, Caribbean Islands, and Australia have made actual observation for Subh-e-Sadiq (for Fajr) noting down the time for observation. I have made calculations to find the corresponding angle of depression for each observation, and found that the angle comes closer to 13.5 degrees. Keeping a little factor of safety, it makes sense to use 15 degrees everywhere in the world. On requests, I have been providing Prayer Schedule all around the world, with 15 degrees."
   - Also new: "Those who calculate it at 18 degrees have one of the two reasons; 1)Charts were available since last 60 years for astronomical twilight (18 degrees); 2)In tropical countries like India, Pakistan, and Arabia usual practice is 1.5 hours after sunset for Isha or 1.5 hours before sunrise for Fajr. This translates into 18 degrees approximately."
-  - Also new: the book "When to Pray Fajr & Isha", with "This was not yet published, but the manuscript is available at the cost of xeroxing and mailing" (`mailto:makhtoon@hotmail.com`).
+  - Also new: the book "When to Pray Fajr & Isha", with "This was not yet published, but the manuscript is available at the cost of xeroxing and mailing" (`mailto:<email removed>`).
   - The 15° paragraph drops "and disappearance of Shafaq" and now reads "… However, this is not applicable for latitudes higher than 45 degrees … suggested by Ulemaa' of Fiqh in the past centuries."
 - **19991110003800 (Nov 6, 1999).**
   - Maghrib: before "should be calculated as 3 minutes after sunset"; after "should be calculated at least as 1 minutes after sunset for the following considerations:", with "For major metropolitan cities, another 2 minutes should be added, because the sunset in a 30 mile radius from the point taken in calculation varies."
@@ -141,7 +141,7 @@ Format: capture where the change first appears (page's Updated date). "Before" i
   - Delivery: "For Prayer Schedule send email to Khalid Shaukat indicating city name and whether you need Asr Shafei, or Hanafi, or both and a column for Qibla direction."
 - **20021012095956 (June 30, 2002).**
   - DST item 3 becomes "Some states in USA (Alaska, Florida, Idaho, Indiana, Kansas, Kentucky, Michigan, Nebraska, N. Dakota, Oregon, S. Dakota, Tennessee, Texas) and Canada (British Columbia, Newfoundland, Saskatchewan) have two time zones. A user may not realize it and may not find the information easily."
-  - Email addresses are now written by JavaScript: the manuscript address becomes moon7415@hotmail.com, and shaukat@moonsighting.com is kept.
+  - Email addresses are now written by JavaScript: the manuscript address becomes <email removed>, and shaukat@moonsighting.com is kept.
 
 ### 2003: twilight argument; 15° still in use
 
@@ -435,8 +435,8 @@ Documents and method-relevant links:
 | href | First | Last | Notes |
 |---|---|---|---|
 | faq_ps.html ("Frequently Asked Questions" / "Questions & Answers" / "FAQs on Prayer Times") | 19990419193656 | 20021206215653 | |
-| mailto:makhtoon@hotmail.com (manuscript "When to Pray Fajr & Isha") | 19991012043239 | 20020610031936 | |
-| JS mailto moon7415@hotmail.com (manuscript) | 20021012095956 | 20021206215653 | |
+| mailto:<email removed> (manuscript "When to Pray Fajr & Isha") | 19991012043239 | 20020610031936 | |
+| JS mailto <email removed> (manuscript) | 20021012095956 | 20021206215653 | |
 | mailto:shaukat@moonsighting.com (direct link) | 19990221195144 | 20020610031936 | also 20070228233224–20070308233702; "mailto: shaukat@moonsighting.com" (with space) 20070202014744–20070220023056 |
 | JS mailto shaukat@moonsighting.com | 20021012095956 | 20100128054622 | |
 | JS mailto email@moonsighting.com | 20100728224828 | 20110827031037 | |

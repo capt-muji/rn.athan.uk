@@ -130,7 +130,7 @@ Source: `~/athan-research/src/PrayerTimeAPI` (opensrc copy, without `.git`). Met
 | Item | Value |
 |---|---|
 | Owner | GitHub org `PrayerTimeResearch`, created 2018-04-13, 1 public repo. Description: "This project has results of research for calculating Muslim Prayer Times for any place on the globe" |
-| Authors | Ahmed Bukhamsin: `ahmed.bukhamsin@five-tech.com` (2020 commits), `ambu50@gmail.com` (2024-25). Contributors `ambu50` (10 commits) and `abukhams` (9) |
+| Authors | Ahmed Bukhamsin: `ahmed.bukhamsin@five-tech.com` (2020 commits), `<email removed>` (2024-25). Contributors `ambu50` (10 commits) and `abukhams` (9) |
 | Repo | created 2020-04-23; last push 2025-02-12; Apache-2.0 (`LICENSE`); 34 stars, 2 forks |
 | Commit history | first commits 2020-04-23; `7739eae` 2020-04-24 "update the server name"; `1bd4fe1`/`0a8cfc7` 2024-10-31; `5c77419` 2025-02-12 "corrects the expected returned data type"; `eb4ea07` 2025-02-12 "revirt back the changes" |
 | Demo | https://prayertimeresearch.github.io/PrayerTimeAPI/ returns HTTP 200 (fetched 2026-09-14, `last-modified: Wed, 12 Feb 2025 07:53:43 GMT`) and loads `main-es2015.cffaf914efc3e22bb648.js`. Cached at `endpoint/prayertimeresearch.github.io_demo.html` |
@@ -703,7 +703,7 @@ kskhan77 repos: `d2faa6c1…5c08b63`.
 
 ### 4.5 muballighapp/moon-sighting and muballighapp/prayer-times (PHP)
 
-- **Repos.** Rizwan Ahmad `<rizwan_ranjha@hotmail.com>` (Muballigh App), created 2025-03-15, last push
+- **Repos.** Rizwan Ahmad `<<email removed>>` (Muballigh App), created 2025-03-15, last push
   2025-03-17. GPL-3.0 LICENSE files. Packagist `muballigh/moon-sighting` v1.0 (2025-03-17, 210 downloads) and
   `muballigh/prayer-times` v1.0.
 - **Code.** moon-sighting equals islamic-network apart from the namespace (`diff -w`). prayer-times is the
@@ -1035,7 +1035,7 @@ Summary table (`impls/npm_table.txt`):
 | masjiduna-waqt 1.0.2 | arafathusayn (preinstall URL: github.com/arafathusayn/masjiduna-waqt) | AGPL-3.0 | 2026-02-26 | 5 | adhan-derived TS rewrite; seasonal exported, not applied; preinstall downloads an unchecksummed binary (§4.12) | none effective | −101/+140 (middle of night) | −23/+25 |
 | namaz 4.4.0 | Gohar Anwar, github.com/goharanwar/adhan-js | MIT | 2023-12-23 | 4 | adhan fork (general Isha only) | via adhan | 0/0 | 0/0 |
 | adhanline 0.1.2 | abdalhalimalzohbi | MIT | 2026-05-22 | 4 | depends on `adhan` | via adhan | = adhan | = adhan |
-| @praytime/core 1.0.1 | dwekat `<mudwekat@gmail.com>`, **no repository** | GPL-3.0-or-later | 2026-02-16 | 3 | **TS port of islamic-network** (method table identical incl. MWL "Goodge Street" coordinates; `computeDyy` replicates the PHP off-by-one: `calendarDiff > 0 ? calendarDiff − 1 : 365 + calendarDiff`, dist/index.js:44) | Shaukat via islamic-network | 0/0 | 0/0 |
+| @praytime/core 1.0.1 | dwekat `<<email removed>>`, **no repository** | GPL-3.0-or-later | 2026-02-16 | 3 | **TS port of islamic-network** (method table identical incl. MWL "Goodge Street" coordinates; `computeDyy` replicates the PHP off-by-one: `calendarDiff > 0 ? calendarDiff − 1 : 365 + calendarDiff`, dist/index.js:44) | Shaukat via islamic-network | 0/0 | 0/0 |
 | prayers-call 1.7.0 | whiterocktech | MIT | 2023-10-27 | 3 | depends on `adhan` | via adhan | = adhan | = adhan |
 | @misque/prayer-times 0.2.1 | misque-dev, github.com/misque/misque | MIT | 2026-01-10 | 2 | own code; MC = 18/18 + adjustments; output broken | none effective | +199/−279 | +336/−334 |
 
