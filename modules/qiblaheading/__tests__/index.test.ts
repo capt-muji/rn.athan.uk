@@ -132,8 +132,8 @@ describe('watching Google’s fused sensor', () => {
     expect(side.addListener.mock.invocationCallOrder[0]).toBeLessThan(side.start.mock.invocationCallOrder[0]);
   });
 
-  // The emitter reads its own receiver, so a method lifted off the native side and called bare would fail on a phone
-  // while passing against a plain function
+  // The emitter reads its own receiver, so a listener added through a method lifted off the native side would fail
+  // on a phone while passing against a plain function. The start and the stop are called there for the same care
   it('calls each of the native side\u2019s methods on the native side itself', () => {
     const side = nativeSide('fused');
 

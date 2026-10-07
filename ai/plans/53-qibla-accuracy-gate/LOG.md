@@ -732,3 +732,70 @@ named another file. It is measured now, with `modules/widgetrefresh/index.ts`, a
 `> Task :qiblaheading:compileReleaseKotlin` and `BUILD SUCCESSFUL`, on a throwaway build of the code as it stood
 before the design review landed (`~/athan-device-sweep/session53/android/mock-252-step4-probe.apk`, never
 installed). The Kotlin did not change after it.
+
+### Step 4: the commit and the phone
+
+`e1d3feba`, 1.29.253, through the hook. Built with `build-mock.zsh e1d3feba mocks/simple.ts` into
+`~/athan-device-sweep/session53/android/mock-253-fused-wave.apk` (399 seconds, `BUILD SUCCESSFUL`, 1.29.253,
+the owner's debug certificate).
+
+**Installed on the OnePlus 3T (`3T_SERIAL`) with `adb install -r`**, over prototype B. The file on the phone and the
+file built have the same `md5`, `0b4b12b86f86b55344ffae4d4586a3d8`. The Samsung S23 was not attached and still
+holds prototype C.
+
+**The desk check, run by this session with the phone lying untouched:**
+
+| Check | Reading | Proves |
+| --- | --- | --- |
+| The hint at 7 seconds, the compass at 14 | Two screens read by this session. Neither shows a readout | The sensor delivers, and the ceiling draws |
+| `adb logcat` | `{ waved: false, turns: 0, waitedMs: 10012 }, 'QIBLA: compass drawn on the fused sensor'` | The ceiling at 10 seconds. `turns` is a number, so the attitude arrives and is taken for one |
+| `dumpsys sensorservice`, sheet open | `1 active connections`: uid 10029, which is Google Play services, holding the accelerometer, the magnetometer, the uncalibrated magnetometer and the uncalibrated gyroscope. **The app's uid, 10116, holds none** | One reader. The same dump's history shows uid 10116 registering the accelerometer and the magnetometer itself at 23:33 and 23:40, on the build that ran both |
+| `dumpsys sensorservice`, 3 seconds after closing the sheet | `0 active connections`, and the four registrations removed at 02:51:29 | The close releases the sensor on a real phone |
+
+**What it does not prove is the wave.** The phone was never moved. That test is the owner's.
+
+The 3T is left on 1.29.253, a mock build with invented prayer times, with the app open.
+
+### Step 4: the code review
+
+One independent reviewer, read-only against `e1d3feba`. **Verdict: pass with findings, no blocker.** It compared what
+an iPhone executes at `1bf2d8fc` and at `e1d3feba` in fourteen rows and concluded the iPhone's behaviour cannot
+differ: the only difference reachable in principle needs an accuracy of null, which the Swift side cannot send.
+
+| Finding | What was done |
+| --- | --- |
+| The reason the fallback's stop has its own ref was pinned by no test | A test that falls back while the position read is still pending, and a break |
+| The test claiming "the first open finally finishes" never released the first open's read | It keeps the first release before the second replaces it, and releases both |
+| Nothing pinned that a phone without the sensor never arms the silence wait | A test six seconds into such an open, and a break that arms it there |
+| An overtaking open did not end a fallback the first open had made | The guard now ends it, running or still setting up. Two tests, two breaks |
+| A missing `attitude` would throw before the heading was judged, on every sample | `isAttitude` asks `Array.isArray` first. A unit fixture, a sheet test, a break |
+| Inside the 0.5 to 2 band a turn was judged on length as well as angle: a still phone sending a quaternion nine tenths as long counted a turn per sample | The lengths are multiplied back in. Four tests, a break |
+| The silence wait covers only the first sample: a stream that stalls before the gate opens leaves the hint up | NOT built here. Step 5 removes the ceilings and replaces the wait |
+| Comments: two new ones named the owner, three were false, one was stale, two stated unmeasured things as fact | Corrected, in the files this step touched |
+| The dial trails a fused phone's reading | Recorded. The owner judged the 3T that night: 🐋  "It's very, very smooth." |
+
+```
+yarn validate
+Test Suites: 188 passed, 188 total
+Tests:       5191 passed, 5191 total
+Statements 100% (4946/4946)  Branches 100% (2147/2147)  Functions 100% (1029/1029)  Lines 100% (4437/4437)
+
+bash ai/plans/53-qibla-accuracy-gate/scripts/breaks-3.sh
+CAUGHT: 91 of 91
+ALL AS EXPECTED: 1
+```
+
+### Step 4: the owner's hands, on the OnePlus 3T
+
+The phone's log kept three opens: two unwaved, drawn at the ceiling (`waitedMs: 10012` and `10001`, `turns: 0`),
+and one of his waves, `{ waved: true, turns: 8, waitedMs: 1599 }`.
+
+🐋  "It's very, very smooth. It is about almost accurate... sometimes it's like 15 degrees off on 1 side or 15 degrees
+off on the other side, so there's like a, it's within a 30 degree radius. But it's not more than that, definitely...
+It's almost consistently good enough."
+
+**And then he removed the ceilings**, which is step 5:
+
+🐋  "The user must wave the phone. I don't care if they can't wave the phone... No, I will not make it 30 seconds,
+because then I run the risk of showing a wrong location. I would rather not show at all. I don't want the burden of
+showing the wrong location. This is extremely important. So, no, don't put a cap."

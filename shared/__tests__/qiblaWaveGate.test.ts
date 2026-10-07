@@ -104,8 +104,8 @@ describe('advanceWave', () => {
     expect(waveThrough(sweep)?.turns).toBe(2);
   });
 
-  // The owner's question was what happens when the phone is shaken lightly. 200 swings of 28 degrees travel 5600
-  // degrees in all, which a count of distance travelled would take for a wave many times over
+  // What must happen when the phone is only shaken lightly. 200 swings of 28 degrees travel 5600 degrees in all,
+  // which a count of distance travelled would take for a wave many times over
   it('never counts a wobble that stays inside the step, however long it goes on', () => {
     const wobble = Array.from({ length: 200 }, (_, sample) => (sample % 2 === 0 ? FLAT : turned('x', 28)));
 
@@ -141,6 +141,7 @@ describe('advanceWave, on attitudes as the sensor really reports them', () => {
     ['infinite', [Number.POSITIVE_INFINITY, 0, 0, 1]],
     ['five times the length an attitude has', [0, 0, 0, 5]],
     ['a fifth of the length an attitude has', [0, 0, 0, 0.2]],
+    ['missing altogether', undefined as unknown as Attitude],
     ['too short to be a quaternion', [0, 1] as unknown as Attitude],
   ];
 
@@ -156,6 +157,25 @@ describe('advanceWave, on attitudes as the sensor really reports them', () => {
 
   it.each(NOT_ATTITUDES)('keeps the turns already counted through a reading that is %s', (_name, garbage) => {
     expect(waveThrough([FLAT, turned('x', 31), garbage, turned('x', 62)])?.turns).toBe(2);
+  });
+});
+
+describe('advanceWave, on an attitude a little off unit length', () => {
+  /** The same attitude, longer or shorter: no sensor should send one, and if one did its ANGLE is what was turned */
+  const scaled = (attitude: Attitude, by: number): Attitude =>
+    [attitude[0] * by, attitude[1] * by, attitude[2] * by, attitude[3] * by] as const;
+
+  // Judged on the bare dot product, a still phone reporting a quaternion nine tenths as long would count a turn on
+  // every sample and open the gate in under a fifth of a second
+  it.each([0.9, 1.2])('counts nothing for a still phone whose quaternion is %p times as long', (by) => {
+    const held = scaled(compose(turned('x', 40), turned('z', 115)), by);
+
+    expect(waveThrough(Array.from({ length: 50 }, () => held))?.turns).toBe(0);
+  });
+
+  it.each([0.9, 1.2])('counts the step at the same angle when the quaternion is %p times as long', (by) => {
+    expect(waveThrough([scaled(FLAT, by), scaled(turned('y', 29.9), by)])?.turns).toBe(0);
+    expect(waveThrough([scaled(FLAT, by), scaled(turned('y', 30.1), by)])?.turns).toBe(1);
   });
 });
 

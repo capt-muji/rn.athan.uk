@@ -25,7 +25,7 @@ export interface QiblaState {
 /** Long enough to ride out the gaps a settling magnetometer leaves, short enough that a real loss still shows */
 const HEADING_GRACE_MS = 1500;
 
-/** What a phone on the fused sensor hands the open in place of a platform heading watch, which it never starts */
+/** What a phone on the fused sensor hands the open in place of a platform heading watch, which the open never starts */
 const NOTHING_TO_STOP = (): void => {};
 
 /**
@@ -246,8 +246,12 @@ export const useQibla = (): QiblaState & QiblaReadings & { start: () => Promise<
     // degrades both. The native watch is held synchronously, so a close ends it whichever await the open is at
     fusedRef.current = hasFusedHeading();
     if (fusedRef.current) {
-      // An open that overtook an earlier one, while the permission prompt was up, must not strand its listener
+      // An open that overtook an earlier one must not strand what that one armed: its listener, or the platform
+      // heading it had fallen back to, whether that watch is running or still being set up
       unwatchNativeRef.current?.();
+      unwatchFallbackRef.current?.();
+      unwatchFallbackRef.current = null;
+      visitRef.current += 1;
       unwatchNativeRef.current = watchFusedHeading(({ headingDegrees, attitude }) => {
         clearSilence();
         // Counted before the reading is judged, and before the position is known, so no part of a wave is lost
