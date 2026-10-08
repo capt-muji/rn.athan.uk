@@ -54,7 +54,8 @@ Write `AUDIT.md` in the plan folder: what you checked with the proving command o
   1. Set the row to DONE only when it was EXECUTED. After a section 2, item 2 audit leave the status as it is and record the last step audited in `AUDIT.md`. Never set a row back to READY.
   2. On `docs/audit-<N>-$(date +%Y%m%d-%H%M)`, bump the version and commit `AUDIT.md` and the row with the final row text from the plan.
   3. Review that commit yourself: run `git show <sha>` and read it back cold.
-  4. Merge `--no-ff` into `uat`. Push with `git push origin uat` only if `git log --oneline origin/uat..uat` lists nothing but commits this audit checked or made. Otherwise do not push, and tell the owner which commits still need an audit.
+  4. **Delete the plan folder.** A plan's documentation dies with its merge: `git rm -r` the session folder in the same docs commit that sets DONE. Code is the documentation. The one survivor is a file still cited by shipped code or config, which moves beside the queue or into the row before the folder goes.
+  5. Merge `--no-ff` into `uat`. Push with `git push origin uat` only if `git log --oneline origin/uat..uat` lists nothing but commits this audit checked or made. Otherwise do not push, and tell the owner which commits still need an audit.
 - **FIX IT.** Anything wrong, however large.
   1. Make each fix its own step. Branch off `uat`. Write the red test first wherever a test applies, then the change, then the plan's break script. Bump the version in all three files (`package.json`, `app.json`, `android/app/build.gradle`) to the next patch after the highest version `uat` has carried. Make one commit whose message starts `<VERSION> - `. Review `git show <sha>` yourself. Merge `--no-ff`.
   2. A fix needing a design choice is still yours. Make it, record it and the reasoning in `AUDIT.md`, and run the design review when it changes notification, data or schedule behaviour.
