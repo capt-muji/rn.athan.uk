@@ -22,7 +22,7 @@ Start every response with `Audit session`. Run `date '+%H:%M:%S %d.%m.%Y'` befor
 
 1. Take the first row, in the order column, whose status is EXECUTED.
 2. If there is none but `git log --oneline origin/uat..uat` lists commits, those are unaudited commits from a plan left IN PROGRESS, NEEDS REPLAN or BLOCKED. Audit them against their plan's ticked steps only and leave the row's status alone. The executor carries on with its unfinished plan afterwards.
-3. If there is nothing to audit, tell the owner and give them `athan-next`.
+3. If there is nothing to audit, tell the owner and end with the /handoff document.
 
 ## 3. Where to work
 
@@ -63,7 +63,7 @@ Write `AUDIT.md` in the plan folder: what you checked with the proving command o
 - **UNSAFE.** Anything that breaks an owner rule or leaves `uat` broken.
   1. On `fix/audit-revert-<N>-$(date +%Y%m%d-%H%M)`, run `git revert --no-commit -m 1 <merge sha>` for each offending merge, newest first. Set the three version files to the next patch after the highest version `uat` has carried. Commit, review `git show <sha>`, merge `--no-ff`. Never reset or rewrite `uat`.
   2. Record why in `AUDIT.md`. Then FIX IT, then PASS.
-- **Context low before fixes are done.** Write `Resume from:` at the top of `AUDIT.md`, naming what is fixed and what is not. Leave the row at EXECUTED, commit and merge the finished work, do not push, and tell the owner to run `athan-next`. Another audit session carries on.
+- **Context low before fixes are done.** Write `Resume from:` at the top of `AUDIT.md`, naming what is fixed and what is not. Leave the row at EXECUTED, commit and merge the finished work, do not push, and ask the owner for the /handoff document. Another audit session carries on.
 - **Owner decisions.** Anything only the owner can decide, ask in this session and record in `AUDIT.md` and the queue row.
 
 ## 6. Finish

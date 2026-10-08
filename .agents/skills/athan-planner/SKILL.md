@@ -23,11 +23,11 @@ Start every response with `Planning session`. Run `date '+%H:%M:%S %d.%m.%Y'` be
 
 ## 2. Pick the session
 
-One session at a time. If any row is PLANNING, READY, IN PROGRESS or EXECUTED, that row is in flight and you plan no other. A PLANNING row is resumed, a NEEDS REPLAN row is repaired (section 9), a plan the owner names is taken as named. Every other case: tell the owner to run `athan-next` and stop.
+One session at a time. If any row is PLANNING, READY, IN PROGRESS or EXECUTED, that row is in flight and you plan no other. A PLANNING row is resumed, a NEEDS REPLAN row is repaired (section 9), a plan the owner names is taken as named. Every other case: end with the /handoff document and stop.
 
-1. Run `git log --oneline origin/uat..uat`. If it lists commits and no row is NEEDS REPLAN, tell the owner to run `athan-next` first. If a row is NEEDS REPLAN, replan only that row and push nothing in this session.
+1. Run `git log --oneline origin/uat..uat`. If it lists commits and no row is NEEDS REPLAN, end with the /handoff document naming the audit as the next action. If a row is NEEDS REPLAN, replan only that row and push nothing in this session.
 2. Otherwise take the first row, in the order column, whose status is PLANNING, NEEDS REPLAN, NOT PLANNED, BLOCKED or OWNER-LED. For BLOCKED or OWNER-LED ask the owner whether the reason still holds. If not, set NOT PLANNED and plan it. If it holds, take the next row.
-3. If no row is left to plan, tell the owner and give them `athan-next`.
+3. If no row is left to plan, tell the owner and end with the /handoff document.
 
 As soon as the skeleton exists, set the row to PLANNING, commit, merge (section 7) and push, unless section 2 found unaudited commits.
 
@@ -84,8 +84,8 @@ Short sentences. One instruction per numbered item. Imperative verbs. No pronoun
 
 1. Read why the executor stopped, in the plan folder's `LOG.md` and its last commit.
 2. Diff `uat` against the plan's "Planned at" for every file the plan anchors on. Rewrite only the affected anchors, steps and expected outputs, and rerun the scratch-worktree proofs for those steps. Keep every step already DONE, ticked, with its commit.
-3. Finish as section 7 says, with status READY and a new "Planned at". If `uat` holds unaudited commits from this plan, tell the owner to run `athan-next` first.
+3. Finish as section 7 says, with status READY and a new "Planned at". If `uat` holds unaudited commits from this plan, end with the /handoff document naming the audit as the next action.
 
 ## 9. Context running low
 
-Stop adding and save. Write a "Resume from:" note at the top of the plan: the next section to write, and anything you learned that the plan does not yet hold. Leave the row at PLANNING. Commit and merge (section 7), and push only if section 2 found no unaudited commits. Give the owner `athan-next`.
+Stop adding and save. Write a "Resume from:" note at the top of the plan: the next section to write, and anything you learned that the plan does not yet hold. Leave the row at PLANNING. Commit and merge (section 7), and push only if section 2 found no unaudited commits. Ask the owner for the /handoff document.
