@@ -29,12 +29,12 @@ A **step** is finished only when every acceptance criterion holds: the named tes
 
 1. Read `ai/plans/README.md` in full.
 2. Pick the plan:
-   1. If any row is EXECUTED, stop: tell the owner to run `athan-next`.
-   2. Run `git log --oneline origin/uat..uat -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json'`. If it prints anything, take only an IN PROGRESS row whose `LOG.md` records a commit that command printed. Never take a READY row here. If there is no such row, stop and tell the owner to run `athan-next`.
+   1. If any row is EXECUTED, stop and end with the /handoff document, naming the audit as the next action.
+   2. Run `git log --oneline origin/uat..uat -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json'`. If it prints anything, take only an IN PROGRESS row whose `LOG.md` records a commit that command printed. Never take a READY row here. If there is no such row, stop and end with the /handoff document.
    3. If the owner's prompt names a plan file, take that row. Its status must be READY or IN PROGRESS and its "Needs first" rows DONE, else tell the owner which and stop.
-   4. Otherwise resume the first IN PROGRESS row, else take the first READY row whose "Needs first" rows are all DONE, else tell the owner nothing is ready and give them `athan-next`.
+   4. Otherwise resume the first IN PROGRESS row, else take the first READY row whose "Needs first" rows are all DONE, else tell the owner nothing is ready and end with the /handoff document.
 3. Read the whole plan folder: `PLAN.md`, every file it lists, and `LOG.md`. Do not skim.
-4. Save the plan's pre-flight script to `$TMPDIR/preflight-<N>.sh` and run `bash $TMPDIR/preflight-<N>.sh <k>`, where `<k>` is the first step not ticked DONE. `PREFLIGHT OK` goes on. An anchor count other than 1: append the anchor and the output to `LOG.md`, set the row to NEEDS REPLAN, make a docs commit and tell the owner to run `athan-next`. Any other failure: STOP and ask.
+4. Save the plan's pre-flight script to `$TMPDIR/preflight-<N>.sh` and run `bash $TMPDIR/preflight-<N>.sh <k>`, where `<k>` is the first step not ticked DONE. `PREFLIGHT OK` goes on. An anchor count other than 1: append the anchor and the output to `LOG.md`, set the row to NEEDS REPLAN, make a docs commit and end with the /handoff document. Any other failure: STOP and ask.
 5. Set the row to IN PROGRESS. That change is committed with the first step.
 
 ## 2. Rules you never break

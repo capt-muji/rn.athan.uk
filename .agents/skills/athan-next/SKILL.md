@@ -1,12 +1,12 @@
 ---
 name: athan-next
-description: Carry one queued session in ai/plans/README.md from planning through execution to audit, all three phases yourself in this one session, and stop when that session is DONE and pushed. Trigger on "athan-next", "what is the next step", "next session", "continue the queue", or any request to plan, execute or audit a session listed in ai/plans/README.md.
+description: Carry one queued session in ai/plans/README.md from planning through execution to audit, all three phases yourself in this one session, and stop when that session is DONE and pushed. Trigger on "what is the next step", "next session", "continue the queue", or any request to plan, execute or audit a session listed in ai/plans/README.md.
 version: 4.0.0
 ---
 
 # athan-next
 
-The owner types one prompt and walks away. This skill carries ONE queued session from planning through execution to audit and stops when that session is DONE and pushed, or the moment it needs the owner.
+The owner resumes with /go and walks away. This skill carries ONE queued session from planning through execution to audit and stops when that session is DONE and pushed, or the moment it needs the owner.
 
 **You do every phase yourself, in this session.** Subagents are banned, with one exception: `vision`, because seeing images is a capability, not a preference. If you can see images, read them yourself. If you cannot, call the `vision` subagent with the file path and one exact question, and rely on its report. Never guess what an image shows, and never claim to have checked one you did not.
 
@@ -73,7 +73,7 @@ Re-read section 1 after every phase. The table and git are the truth.
 | The row is unchanged and nothing was committed, twice running | Stop. The phase cannot finish as specified |
 | A row went BLOCKED or OWNER-LED, or the owner must hold a device | Stop and report it |
 
-**If your context runs low,** write the "Resume from" note the phase's skill specifies, commit and merge what is finished, and tell the owner to type `athan-next` again. The next session picks up from that note.
+**If your context runs low,** write the "Resume from" note the phase's skill specifies, commit and merge what is finished, and ask the owner for the /handoff document. The next session resumes from it.
 
 ## 5. Stop, and hand back
 
@@ -83,7 +83,7 @@ Stop as soon as one of these is true, and never start another phase after it:
 - a row is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such as holding a device or tapping a screen. An owner decision is not one of these: ask it with the `question` tool and carry on;
 - section 4 says stop.
 
-One session per run. Never carry on into the next row: the owner starts that with `athan-next` again.
+One session per run. Never carry on into the next row: the owner starts that with /go.
 
 ## 6. Your final reply: the handoff, four lines, nothing after it
 
@@ -91,7 +91,7 @@ One session per run. Never carry on into the next row: the owner starts that wit
 **Just done:** <Planning, Execution and Audit | the phases that ran>, session <n>. <one clause on what moved>
 **Row:** <status now>, `uat` <pushed | holds N unpushed commits>
 **Up next:** <the phase or session that comes next, or what it is waiting on>
-**You type:** `athan-next`
+**You type:** /handoff
 ```
 
 Above those four lines, at most three sentences: what the session delivered, and anything the owner must decide or hold. Nothing else. The detail lives in the plan folder's `LOG.md` and `AUDIT.md`.
