@@ -204,6 +204,10 @@ const heldStill = (headingDegrees: number, count = 1): FusedHeading[] =>
 const waved = (turns: number, headingDegrees = 95): FusedHeading[] =>
   Array.from({ length: turns + 1 }, (_, turn) => ({ headingDegrees, attitude: tipped(turn * 31) }));
 
+/** How much of a subtitle line shows: the two are stacked, and only this tells them apart on screen */
+const subtitleOpacity = (text: string) =>
+  (StyleSheet.flatten(screen.getByText(text).props.style) as { opacity?: number }).opacity;
+
 beforeEach(() => {
   mockWatchers.length = 0;
   mockUnwatch.mockClear();
@@ -240,28 +244,35 @@ describe('the qibla sheet before it is opened', () => {
   it('carries both subtitles, so the change costs a fade rather than a resize', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Just a moment')).toBeOnTheScreen();
+    expect(screen.getByText('Follow below instructions')).toBeOnTheScreen();
     expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
   });
 
   it('caps both subtitles at one line, so the header keeps its height', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Just a moment').props.numberOfLines).toBe(1);
+    expect(screen.getByText('Follow below instructions').props.numberOfLines).toBe(1);
     expect(screen.getByText('Hold flat and turn slowly').props.numberOfLines).toBe(1);
   });
 
-  // An absolutely positioned child contributes NO width, so whichever line is taken out of flow cannot widen
-  // the container. Leaving the SHORTER line in flow shrink-wraps the column to it and truncates the longer one
-  // to an ellipsis, which is what the owner saw: "it says hold the phone flat and dot dot dot".
-  it('leaves the longer subtitle in flow, so neither line is truncated', async () => {
+  // An absolutely positioned child contributes NO width, so the line taken out of flow cannot widen the container.
+  // Leaving the NARROWER line in flow shrink-wraps the column to it and cuts the wider one to an ellipsis. Measured
+  // in the bundled font at the subtitle's size: 158.6dp for the line in flow against 150.4dp for the other
+  it('leaves the wider subtitle in flow, so neither line is truncated', async () => {
     await render(<QiblaSheet />);
 
     const position = (text: string) =>
       (StyleSheet.flatten(screen.getByText(text).props.style) as { position?: string }).position;
 
-    expect(position('Hold flat and turn slowly')).toBeUndefined();
-    expect(position('Just a moment')).toBe('absolute');
+    expect(position('Follow below instructions')).toBeUndefined();
+    expect(position('Hold flat and turn slowly')).toBe('absolute');
+  });
+
+  it('shows the line that asks the user to act while the hint is up', async () => {
+    await render(<QiblaSheet />);
+
+    expect(subtitleOpacity('Follow below instructions')).toBe(1);
+    expect(subtitleOpacity('Hold flat and turn slowly')).toBe(0);
   });
 });
 
@@ -318,6 +329,15 @@ describe('the qibla sheet, opened in London', () => {
     await reportHeadings(95);
 
     expect(screen.getByTestId('qibla-dial-gold')).toBeOnTheScreen();
+  });
+
+  it('swaps the subtitle to the compass’s own line once the compass is drawn', async () => {
+    await openSheet();
+
+    await reportHeadings(95);
+
+    expect(subtitleOpacity('Hold flat and turn slowly')).toBe(1);
+    expect(subtitleOpacity('Follow below instructions')).toBe(0);
   });
 
   it('asks for the position once, however many headings arrive', async () => {
