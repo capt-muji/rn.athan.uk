@@ -83,7 +83,7 @@ Stop as soon as one of these is true, and never start another phase after it:
 - a row is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such as holding a device or tapping a screen. An owner decision is not one of these: ask it with the `question` tool and carry on;
 - section 4 says stop.
 
-One session per run. Never carry on into the next row: the owner starts that with /go.
+One session per run. Never carry on into the next row: the owner starts that with `/go` or `/athan-next`.
 
 ## 6. Your final reply: the handoff, four lines, nothing after it
 
@@ -91,7 +91,7 @@ One session per run. Never carry on into the next row: the owner starts that wit
 **Just done:** <Planning, Execution and Audit | the phases that ran>, session <n>. <one clause on what moved>
 **Row:** <status now>, `uat` <pushed | holds N unpushed commits>
 **Up next:** <the phase or session that comes next, or what it is waiting on>
-**You type:** /handoff
+**You type:** `/go` to continue, or `/athan-next` for the next queued session
 ```
 
 Above those four lines, at most three sentences: what the session delivered, and anything the owner must decide or hold. Nothing else. The detail lives in the plan folder's `LOG.md` and `AUDIT.md`.

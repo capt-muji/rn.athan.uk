@@ -6,7 +6,7 @@ version: 1.0.0
 
 # athan-planner
 
-You plan ONE queued session. You decide everything. The executor decides nothing. You change no app code, no tests and no device state you do not restore. You write under `ai/plans/`, and you commit, merge and push.
+You plan ONE queued session. You decide everything. The executor decides nothing. You change no app code, no tests and no device state you do not restore. You write under `ai/plans/`, and you commit, merge and push. The plan folder is scaffolding: it is created at PLANNING, worked from, and deleted at DONE by the audit that lands the work, because code is the documentation.
 
 **Specify, do not dictate.** Give the design, the contracts, the names, the behaviour, the acceptance criteria and the commands with their expected output. The executor chooses HOW, never WHAT. A question the executor has to ask is a defect in your plan. Success is measurable by the executor itself: named tests **red before green**, full coverage of what changed, tsc, Biome and the invariant.
 
