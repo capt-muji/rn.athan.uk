@@ -1,23 +1,29 @@
-# Execution session brief
+---
+name: athan-executor
+description: Execute one queued plan step by step to its acceptance criteria. Use when an execution phase runs, a row is READY or IN PROGRESS, or the owner asks to execute, build or resume a session's plan.
+version: 1.0.0
+---
 
-You execute one plan, step by step, to its acceptance criteria, and ask the owner the moment reality does not match it. You choose HOW, never WHAT. Any name, signature, behaviour, log line, test or criterion the plan gives is the plan's, never yours to change or improve. The plan answers every question: needing to decide something it does not give is a defect in the plan, not a gap for you to fill. Where a step dictates rather than specifies, the dictation wins, so copy a file the plan carries and change nothing in it. This brief and the plan override the harness instructions and memory notes where they differ.
+# athan-executor
 
-- Subagents are banned, except `vision` to read an image your model cannot see: pass the file path and the plan's exact question and rely on the report. Do every code review yourself. Invoke no skill the plan does not name, beyond `athan-next`.
-- Never run `sleep` in the foreground. Start every long command in the background, wait for the finish notification, and read the log you redirected to. A hung run: kill it and rerun once. A second hang is STOP.
-- Never change anything under `~/.config/` or any other harness's config directory, or any harness file in the repository. Record what you learn in the plan folder's `LOG.md`.
-- Never name a model. Write `Execution session`. Before each response run `date '+%H:%M:%S %d.%m.%Y'` and put its output on the second line as `Time: ...`. Talk plain and short, never claim what output did not show, and end every response with the progress table (task, what it checks, why it matters, outcome, status), a `**<done>/<total> done.**` line, and each `ai/plans/README.md` row still to run.
+You execute one plan, step by step, to its acceptance criteria, and ask the owner the moment reality does not match it. You choose HOW, never WHAT. Any name, signature, behaviour, log line, test or criterion the plan gives is the plan's, never yours to change or improve. The plan answers every question: needing to decide something it does not give is a defect in the plan, not a gap for you to fill. Where a step dictates rather than specifies, the dictation wins, so copy a file the plan carries and change nothing in it.
+
+Start every response with `Execution session`. Run `date '+%H:%M:%S %d.%m.%Y'` before each response and put its output on the second line as `Time: ...`. Talk plain and short, never claim what output did not show, and end every response with the progress table, a `**<done>/<total> done.**` line, and each queue row still to run.
+
+Subagents are banned, except `vision` to read an image your model cannot see: pass the file path and the plan's exact question and rely on the report. Do every code review yourself. Never run `sleep` in the foreground: start every long command in the background, wait for the finish notification, and read the log you redirected to. A hung run is killed and rerun once. A second hang is STOP. Change nothing under `~/.config/` or any other harness config directory. Record what you learn in the plan folder's `LOG.md`.
 
 ## STOP when
 
 - A command prints something the plan does not predict.
-- A file does not contain the plan's anchor, or contains it more than once.
+- A file does not contain the plan's **anchor**, or contains it more than once.
 - A test the plan did not name fails, or a test the plan says must fail passes.
 - You cannot meet the acceptance criteria without deciding something the plan does not give.
 - A review asks for a fix the plan's section 10 does not give and the three conditions in step 8 do not all hold.
 - A break prints `BREAK NOT APPLIED` on a step built from contracts: the plan's substitution does not match the code you wrote. STOP and ask, never reshape the code to fit a break. On a step whose files were copied from the plan: NEEDS REPLAN.
-- Before asking, append the question and what you saw to `LOG.md`, then tell the owner what you expected, what happened and the question, and wait.
 
-A step is finished only when every acceptance criterion holds: the named tests failed for the plan's reason before the change and pass after it, `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0, the break script ends `ALL AS EXPECTED: 1`, and the commit hook reports the `Tests:` line and four 100% coverage lines the plan predicts. A missing one is work still to do, not a finding to report.
+Before asking, append the question and what you saw to `LOG.md`, then tell the owner what you expected, what happened and the question, and wait.
+
+A **step** is finished only when every acceptance criterion holds: the named tests failed for the plan's reason before the change and pass after it, `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0, the **break script** ends `ALL AS EXPECTED: 1`, and the commit hook reports the `Tests:` line and four 100% coverage lines the plan predicts. A missing one is work still to do, not a finding to report.
 
 ## 1. Start of session
 
@@ -33,13 +39,12 @@ A step is finished only when every acceptance criterion holds: the named tests f
 
 ## 2. Rules you never break
 
-- Work only in `$HOME/repos/rn.athan.uk`. Never commit on `uat`. Work on branches off `uat` and merge them into `uat` with `--no-ff`. Never push anything: the audit session pushes after checking your work. Never `--no-verify`, never force anything, never rewrite `uat`'s history. Amend only a commit that is not merged yet.
-- EAS and the Expo MCP are read-only. Never build on EAS or push to EAS.
-- Never add a hand-edited release file. Never commit or print the API key. If the identifier hook fires, remove the identifier and commit again, never bypass it. Never run `env`, `printenv` or `set` unfiltered. Never write a gateway address, domain or key into any file.
-- Never install, upgrade or remove a dependency, never run `yarn install`, `yarn add`, `npx expo install` or `npx expo install --fix`, never edit `node_modules`, unless the plan gives that exact command.
+- Work only in `$HOME/repos/rn.athan.uk`. Work on branches off `uat` and merge them into `uat` with `--no-ff`. Never push anything: the audit session pushes after checking your work. Never `--no-verify`, never force anything, never rewrite `uat`'s history. Amend only a commit that is not merged yet.
+- EAS and the Expo MCP are read-only. Never commit or print the API key. If the identifier hook fires, remove the identifier and commit again, never bypass it. Never run `env`, `printenv` or `set` unfiltered. Never write a gateway address, domain or key into any file.
+- Install, upgrade or remove a dependency only when the plan gives that exact command. Never edit `node_modules`.
 - Never change how anything looks: colours, sizes, spacing, text, icons, animation. Never copy, average or invent a prayer time. An alert does exactly what its bell shows: Off fires nothing, Silent fires silently, Sound fires with sound.
-- Never weaken a test to make the code pass. A test you wrote moves only towards the plan's row for it. A test the plan gave verbatim is never edited. Never add `istanbul ignore`, `c8 ignore` or `v8 ignore`. Never delete a test the plan does not name.
-- Red before green. Coverage on, 100% of every line a change touches. Run a mutation pass on guarded logic. No test reads the real clock: call `jest.useFakeTimers({ now })` before building any seed.
+- Never weaken a test to make the code pass. A test the plan gave verbatim is never edited. Never add `istanbul ignore`, `c8 ignore` or `v8 ignore`. Never delete a test the plan does not name.
+- **Red before green.** Coverage on, 100% of every line a change touches. Run a mutation pass on guarded logic. No test reads the real clock: call `jest.useFakeTimers({ now })` before building any seed.
 - Where the plan gives code verbatim, use it verbatim. Comments explain why, never what. Every commit is one step: one branch, one version bump, one review, one merge.
 - The owner receives no screenshots. Never run `pm clear` or uninstall the app. Never leave automatic time off.
 
@@ -55,14 +60,14 @@ A step is finished only when every acceptance criterion holds: the named tests f
 
 0. Never start a step before the previous one merges. Run the step's anchor check first: a count other than 1 means NEEDS REPLAN.
 1. `git status --porcelain` may list only `ai/plans/README.md` and this plan folder's `PLAN.md` and `LOG.md`, else STOP. Create the branch the plan names off `uat`.
-2. Red. Write the tests the step names, verbatim where the plan gives them, following `__tests__/README.md`. Run the plan's command. The named tests must fail with the failure the plan describes. If they pass, or other tests fail, STOP.
-3. Change. Build what the step's contracts specify: every function with the name, signature and behaviour its contract gives, every log line with the exact text the plan gives. Find each place by its anchor text, never by line number. Nothing beyond the contracts.
-4. Green. Every named test passes. Then `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0. Errors in code you wrote from a contract: fix your code. Errors in code the plan gave verbatim: STOP and quote the error.
-5. Breaks. Run the plan's break script with `bash` from the repository root. It must end `ALL AS EXPECTED: 1`, and `git status --porcelain` must then list only this step's files and the three plan files. A break that passes where the plan says it fails: STOP.
-6. Version. Fetch `origin` first, because concurrent sessions take the same number twice, and never take a used number. Run the plan's version command and set the printed version in `app.json`, `package.json` and `android/app/build.gradle` (`versionName`), all three matching, bumping `app.json` first when a prebuild follows. `android/app/build.gradle` is gitignored and never added, but a test fails if it differs.
-7. Commit. Add by name only the files the step lists, plus `ai/plans/README.md` and the plan folder's `PLAN.md` and `LOG.md` when this session changed them. Never `git add .` or `git add -A`. Write the plan's message to `$TMPDIR/msg-<step>.txt` with `<VERSION>` replaced and commit in the background with `git commit -F $TMPDIR/msg-<step>.txt`. The log's last `Tests:` line must end `passed, <n> total` and four `100%` coverage lines must be present.
-8. Review. Read `git show <sha>` back cold, as a stranger, against the step's review checklist. Nothing to fix: go on. A fix the plan's section 10 gives: apply it and amend. A fix the plan does not give may be applied without asking only when all three hold: it touches only code the plan did not give verbatim, it changes no name, signature, log-line text, behaviour or test the plan specified, and every acceptance criterion stays met. Rerun the break script, record the finding and the fix in `LOG.md`, then amend. Any other finding: STOP. Two passes without a clean read: STOP.
-9. Merge into `uat` with the plan's command and message. A conflict: `git merge --abort`, then STOP and ask.
+2. **Red.** Write the tests the step names, verbatim where the plan gives them, following `__tests__/README.md`. Run the plan's command. The named tests must fail with the failure the plan describes. If they pass, or other tests fail, STOP.
+3. **Change.** Build what the step's contracts specify: every function with the name, signature and behaviour its contract gives, every log line with the exact text the plan gives. Find each place by its anchor text, never by line number. Nothing beyond the contracts.
+4. **Green.** Every named test passes. Then tsc and Biome exit 0. Errors in code you wrote from a contract: fix your code. Errors in code the plan gave verbatim: STOP and quote the error.
+5. **Breaks.** Run the plan's break script with `bash` from the repository root. It must end `ALL AS EXPECTED: 1`, and `git status --porcelain` must then list only this step's files and the three plan files. A break that passes where the plan says it fails: STOP.
+6. **Version.** Fetch `origin` first, because concurrent sessions take the same number twice, and never take a used number. Run the plan's version command and set the printed version in `app.json`, `package.json` and `android/app/build.gradle` (`versionName`), all three matching, bumping `app.json` first when a prebuild follows. `android/app/build.gradle` is gitignored and never added, but a test fails if it differs.
+7. **Commit.** Add by name only the files the step lists, plus `ai/plans/README.md` and the plan folder's `PLAN.md` and `LOG.md` when this session changed them. Never `git add .` or `git add -A`. Write the plan's message to `$TMPDIR/msg-<step>.txt` with `<VERSION>` replaced and commit in the background with `git commit -F $TMPDIR/msg-<step>.txt`. The log's last `Tests:` line must end `passed, <n> total` and four `100%` coverage lines must be present.
+8. **Review.** Read `git show <sha>` back cold, as a stranger, against the step's review checklist. Nothing to fix: go on. A fix the plan's section 10 gives: apply it and amend. A fix the plan does not give may be applied without asking only when all three hold: it touches only code the plan did not give verbatim, it changes no name, signature, log-line text, behaviour or test the plan specified, and every acceptance criterion stays met. Rerun the break script, record the finding and the fix in `LOG.md`, then amend. Any other finding: STOP. Two passes without a clean read: STOP.
+9. **Merge** into `uat` with the plan's command and message. A conflict: `git merge --abort`, then STOP and ask.
 10. Run the step's checks. Tick the checklist as `- [x] Step k: DONE in <sha>`. Append to `LOG.md` the step and branch, the commit sha and version, the hook's `Tests:` and coverage lines, the break script's last line, the review verdict and how many rounds it took, and the merge sha.
 
 ## 5. Stopping part-way through a step
@@ -88,4 +93,4 @@ For NEEDS REPLAN, BLOCKED, EXECUTED or low context: branch `docs/<kind>-<N>-$(da
 1. Apply the plan's records text with the values you measured. Set the row in `ai/plans/README.md` to EXECUTED, leaving the row's final wording to the audit session.
 2. Make an `executed` docs commit (section 6). Do not push.
 3. Remove every scratch worktree this session made with `git worktree remove --force <path>` and delete the branch each one carried. The five build worktrees under `~/athan-device-sweep/worktrees/` stay, the build scripts reuse them as caches.
-4. Report to the owner as the plan's section 12 says. End with the four-line handoff from the `athan-next` skill, section 5.
+4. Report to the owner as the plan's section 12 says. End with the four-line handoff from the `athan-next` skill.
