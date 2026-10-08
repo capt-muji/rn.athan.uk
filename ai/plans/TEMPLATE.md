@@ -23,7 +23,7 @@ see fit", "update any", "relevant", "handle edge cases", "should", "try", "ensur
 | Field | Value |
 | --- | --- |
 | Brief | `<the file the queue's Brief column names>` |
-| Planned at | `<uat-2 sha>` (version <x.y.z>), <date> |
+| Planned at | `<uat sha>` (version <x.y.z>), <date> |
 | Planned by | Planning session on <date> |
 | Needs first | <Order numbers of rows in ai/plans/README.md that must be DONE, or "nothing"> |
 | Steps | <count>, each one branch, one commit, one version |
@@ -57,10 +57,10 @@ At minimum:
 
 A bash script, given in full, saved to `$TMPDIR/preflight-<N>.sh` and run as `bash $TMPDIR/preflight-<N>.sh <k>`,
 where `<k>` is the first step in section 6's checklist not ticked DONE (1 for a new plan). It checks:
-- the checkout is `$HOME/repos/rn.athan.uk` on `uat-2`;
+- the checkout is `$HOME/repos/rn.athan.uk` on `uat`;
 - `git status --porcelain` lists nothing but `ai/plans/README.md` and this folder's `PLAN.md` and `LOG.md`;
-- after `git fetch origin uat-2`, `git merge-base --is-ancestor origin/uat-2 uat-2` exits 0. `uat-2` may be ahead of
-  `origin/uat-2`, because execution sessions never push;
+- after `git fetch origin uat`, `git merge-base --is-ancestor origin/uat uat` exits 0. `uat` may be ahead of
+  `origin/uat`, because execution sessions never push;
 - the version in `package.json`, printed, and not lower than the "Planned at" version. It is never compared with a
   fixed value, because later planning sessions bump the version too;
 - every "Needs first" row is DONE in `ai/plans/README.md`;
@@ -110,7 +110,7 @@ exactly these parts:
 0. **Anchor check:** the section 3 count for this step's anchors, run before anything else. Any count other than `1`
    means NEEDS REPLAN.
 1. **Goal:** one sentence.
-2. **Branch:** `git checkout -b <type>/<name> uat-2`.
+2. **Branch:** `git checkout -b <type>/<name> uat`.
 3. **Files:** the exact list. Nothing else may change, apart from `ai/plans/README.md` and this folder's `PLAN.md` and
    `LOG.md`.
 4. **Tests first (red).** For each suite, its path and whether it is new, and then one row per test: the test's
@@ -129,7 +129,7 @@ exactly these parts:
    substitution changed nothing it prints `BREAK NOT APPLIED: <label>` and counts the break as not caught: both
    briefs depend on that exact string. The expected result for each break. It ends with `ALL AS EXPECTED: 1`. Every
    path in it is relative to the repository root, and it runs from that root.
-8. **Version and commit.** The version command (next patch after `uat-2`'s `package.json`). The files to add, by name.
+8. **Version and commit.** The version command (next patch after `uat`'s `package.json`). The files to add, by name.
    The full commit message, in a heredoc, starting `<VERSION> - `; the executor replaces `<VERSION>` with the version
    the command printed. The pre-commit hook runs the full suite and the coverage gate: in the commit log, the last
    `Tests:` line ends `passed, <n> total`, and four `100%` coverage lines are present.
@@ -137,7 +137,7 @@ exactly these parts:
    criterion, the owner's rules, and that nothing beyond the step changed. What a clean read looks like. A finding is
    handled by `EXECUTOR-BRIEF.md` section 4, item 8, and this part says so rather than restating it: a fix section 10
    gives word for word, or a fix meeting all three of that item's conditions, is applied; anything else is a STOP.
-10. **Merge.** `git checkout uat-2 && git merge --no-ff <branch> -m "<message>"`, with the exact message.
+10. **Merge.** `git checkout uat && git merge --no-ff <branch> -m "<message>"`, with the exact message.
 11. **Done when:** the checks, as commands with expected output.
 
 ## 7. Device proof
@@ -165,7 +165,7 @@ State the phone left behind at the end (which build, automatic time on).
 
 ## 9. Push
 
-None in this plan. The executor never pushes (`EXECUTOR-BRIEF.md` section 2). The audit session pushes `uat-2` after a
+None in this plan. The executor never pushes (`EXECUTOR-BRIEF.md` section 2). The audit session pushes `uat` after a
 PASS verdict (`AUDITOR-BRIEF.md` section 4).
 
 ## 10. When something goes wrong

@@ -35,7 +35,7 @@ a document. `PLANNER-BRIEF.md` section 0 has the rule in full.
 ## 2. Pick the plan
 
 1. Take the first row, in the order column, whose status is EXECUTED.
-2. If there is none, but `git log --oneline origin/uat-2..uat-2` lists commits, those are unaudited execution commits
+2. If there is none, but `git log --oneline origin/uat..uat` lists commits, those are unaudited execution commits
    from a plan left IN PROGRESS, NEEDS REPLAN or BLOCKED. Audit them against their plan's ticked steps; the verdict
    rules in section 4 apply to those steps only. Section 4's FIX IT covers what those steps got wrong, not the steps
    that have not run: leave the row's status alone, and the executor carries on with its own unfinished plan
@@ -44,17 +44,17 @@ a document. `PLANNER-BRIEF.md` section 0 has the rule in full.
 
 ## 3. What to check
 
-Work in a scratch worktree at `uat-2`, outside the repo and outside `/tmp`, with `node_modules` symlinked from the main
+Work in a scratch worktree at `uat`, outside the repo and outside `/tmp`, with `node_modules` symlinked from the main
 checkout:
 
 ```bash
-git worktree add --detach ~/athan-device-sweep/worktrees/audit-<N> uat-2
+git worktree add --detach ~/athan-device-sweep/worktrees/audit-<N> uat
 ln -s $HOME/repos/rn.athan.uk/node_modules ~/athan-device-sweep/worktrees/audit-<N>/node_modules
 ```
 
 Remove it when done, and always before 00:00, when a nightly job clears build folders.
 
-1. **The range.** `git log --oneline origin/uat-2..uat-2` lists only step commits, their merges, docs commits,
+1. **The range.** `git log --oneline origin/uat..uat` lists only step commits, their merges, docs commits,
    planning commits and audit commits of plans in `ai/plans/README.md`. Reread every planning and audit commit in it;
    each one reread counts as checked for section 4's push rule. Anything else is a finding.
 2. **Plan against commits.** For every step, the commit does what the plan specified, and nothing else. The plan
@@ -108,12 +108,12 @@ Then act on the verdict:
      row text from the plan's section 8, which is what turns it DONE.
   3. Review that commit yourself: run `git show <sha>` and read it back cold, checking the row, `AUDIT.md` and the
      records text against what this audit found.
-  4. Merge `--no-ff` into `uat-2`. Push with `git push origin uat-2` only if `git log --oneline origin/uat-2..uat-2`
+  4. Merge `--no-ff` into `uat`. Push with `git push origin uat` only if `git log --oneline origin/uat..uat`
      lists nothing but the commits this audit checked and its own. Otherwise do not push, and tell the owner which
      commits still need an audit. The pre-push hook runs the full check.
 - **FIX IT.** Anything wrong, however large: a wrong comment, a missing assertion, a records typo, a step that does
   not match the plan, a missing test, a design the executor got wrong, or work it never finished.
-  1. Make each fix as its own step, to the standard the plan itself holds: branch off `uat-2`, the red test first
+  1. Make each fix as its own step, to the standard the plan itself holds: branch off `uat`, the red test first
      wherever a test applies, the change, the plan's break script, the version bump in all three files, one commit
      whose message starts `<VERSION> - `, and your own review of `git show <sha>` before it merges. Merge each one
      `--no-ff`.
@@ -123,10 +123,10 @@ Then act on the verdict:
   3. Where the plan's own code was wrong, correct that step file too, so the plan records what shipped.
   4. Record every fix in `AUDIT.md`, against the finding it answers.
   5. Then PASS.
-- **UNSAFE.** Anything that breaks an owner rule or leaves `uat-2` broken.
+- **UNSAFE.** Anything that breaks an owner rule or leaves `uat` broken.
   1. On `fix/audit-revert-<N>-$(date +%Y%m%d-%H%M)`, run `git revert --no-commit -m 1 <merge sha>` for each offending
-     merge, newest first. Set the three version files to the next patch after the highest version `uat-2` has carried.
-     Commit, review `git show <sha>` yourself, and merge `--no-ff`. Never reset or rewrite `uat-2`.
+     merge, newest first. Set the three version files to the next patch after the highest version `uat` has carried.
+     Commit, review `git show <sha>` yourself, and merge `--no-ff`. Never reset or rewrite `uat`.
   2. Record why in `AUDIT.md`.
   3. Then FIX IT: build that part of the session's work correctly yourself, and PASS.
 - **If your context runs low before the fixes are done.** Write "Resume from:" at the top of `AUDIT.md`, naming what is
@@ -141,8 +141,8 @@ Then act on the verdict:
    (`ai/AGENTS.md` section 7). Check `git worktree list` and `git branch` before you push: anything left from an
    earlier session is a leftover to clean up here, and an unmerged one is reported rather than deleted.
 2. Report to the owner in a few plain sentences: the verdict, what was checked, what you fixed yourself, and whether
-   `uat-2` is pushed.
+   `uat` is pushed.
 3. End with the progress table and the four-line handoff from the `athan-next` skill, section 5: the job finished,
-   the row and whether `uat-2` is pushed, the job that comes next, and `athan-next` as the thing the owner types. Each
+   the row and whether `uat` is pushed, the job that comes next, and `athan-next` as the thing the owner types. Each
    session is planned, executed and audited before the next one is planned (`README.md`, "Order"), so once a row
    becomes DONE the next step is planning the row after it.
