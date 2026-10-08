@@ -5,8 +5,6 @@
  * Which row is next, which list is on screen and when that changes are decided by the pure rules in
  * shared/sequence.ts; this store only holds the sequence and applies them to it.
  *
- * @see ai/adr/005-timing-system-overhaul.md
- * @see ai/features/uat-2/DASHES-DESIGN.md
  */
 
 import { type Atom, atom } from 'jotai';

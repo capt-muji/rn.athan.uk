@@ -1,9 +1,9 @@
 /**
- * shared/sequence.ts against ai/features/uat-2/DASHES-DESIGN.md §4
+ * shared/sequence.ts against the session 3 dashes rules §4
  *
  * Written by someone who did not write the rules, from the design and the brief
- * (rules R8 to R12, R14 in ai/features/uat-2/DASHES-DESIGN.md §0; the after-midnight
- * still-due-rows finding, finding 74 in ai/features/uat-2/AUDIT-FINDINGS.md) rather
+ * (rules R8 to R12, R14 in the session 3 dashes rules §0. The after-midnight
+ * still-due-rows finding, finding 74, session 3 audit) rather
  * than from the module's branches, because a fix's own tests sit where its bug cannot be seen.
  *
  * Every hold end is a literal worked out by hand from London's 2026 clock changes (BST from 29 March
