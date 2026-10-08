@@ -2,7 +2,6 @@
  * @file Hook for countdown to next prayer
  * Part of the new prayer-centric timing system
  *
- * @see ai/adr/005-timing-system-overhaul.md
  */
 
 import { useAtomValue } from 'jotai';

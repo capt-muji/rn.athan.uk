@@ -1,9 +1,9 @@
 # e2e: Performance & Behavior Harness
 
 Physical-device harness for the performance campaign (methodology and history:
-`ai/plans/README.md` rows 1–11; the campaign folder left the repository in the
-2026-10-07 clean-up, except `ai/features/performance/`). Target device:
-**OnePlus 3T** (`3T_SERIAL`), the floor device; smooth there means smooth
+`ai/plans/README.md` rows 1-11. The campaign folders left the repository in the
+2026-10-07 and 2026-10-08 clean-ups). Target device:
+**OnePlus 3T** (`3T_SERIAL`), the floor device. Smooth there means smooth
 everywhere.
 
 ## Layout
@@ -11,18 +11,18 @@ everywhere.
 - `flows/`: Maestro flows (tag `baseline`): smoke, overlay, sheets, swipes,
   toggles, sounds. Tap points are OnePlus 3T coordinates (1080×1920).
 - `scripts/baseline-compare.sh`: run a flow while streaming `ReactNativeJS`
-  perf marks; medians diffed against `baselines/android-3t.json`.
+  perf marks. Medians diffed against `baselines/android-3t.json`.
 - `scripts/frame-audit.sh`: FPS + visual-quality audit of one animation.
   Records per-frame pts (compositor truth), then a contact sheet, then a vision
   prompt for an image-capable subagent. `FRAME_AUDIT=sf` falls back to
   SurfaceFlinger compositor cadence when video capture is wedged.
 - `scripts/device-checks.sh` (`yarn check:device`): on-demand audit of what the
-  phone actually has: build identity, permissions, notification channels and
+  phone has: build identity, permissions, notification channels and
   every alarm the app has armed (`scripts/device_checks.py` parses
   `dumpsys alarm`). FAILS on nothing armed, a missing channel, or a trigger that
   is not a prayer time. Pass a JSON list of `"YYYY-MM-DD HH:MM"` trigger times
-  as the third argument to check the times themselves; no API key is read,
-  passed or stored. Alarm TIMES only mean anything on a production build; local
+  as the third argument to check the times themselves. No API key is read,
+  passed or stored. Alarm TIMES only mean anything on a production build. Local
   builds run the mock API, whose prayers sit either side of launch.
 - `baselines/`: measured medians + animation-floor verdicts per device.
 - `device-atlas-<model>.md`: the tap-point atlas for one device
@@ -31,7 +31,7 @@ everywhere.
   a screen is measured once and replayed thereafter. Screenshot only what is
   missing, then write back what you learned. Every coordinate is keyed on model,
   panel, density and screen state, and is void when any part changes. Only what
-  `mobile-mcp` and Maestro CANNOT reach belongs here; their refs survive a
+  `mobile-mcp` and Maestro CANNOT reach belongs here. Their refs survive a
   layout change and coordinates do not.
 
 ## Build (gate-ON Release, REQUIRED before measuring)
@@ -65,15 +65,15 @@ FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 540 1730 3   # cadence-only
 Big animations (overlay, sheets, cascade, segmented selection,
 prayer-transition UI) must hold frame gaps ≤33ms with no multi-frame
 freezes. 60fps is a bonus, never required. Per-second countdown text is
-exempt (tiny). Scripts measure (pts gaps, PIL bboxes); the vision subagent
-interprets (what the frame actually looks like). Always delegate frame
+exempt (tiny). Scripts measure (pts gaps, PIL bboxes). The vision subagent
+interprets (what the frame looks like). Always delegate frame
 verification, never infer visuals from pixels alone.
 
 ## Gotchas (each cost real time, read twice)
 
 - **Metro env-blindness**: changing ANY `EXPO_PUBLIC_*` variable (including
   `EXPO_PUBLIC_ENV`) requires clearing the metro cache AND deleting the
-  generated Android bundle or the stale transform ships; gradle marks the
+  generated Android bundle or the stale transform ships. Gradle marks the
   bundle task UP-TO-DATE on env-only changes, because the environment is not a
   declared input to `createBundleReleaseJsAndAssets`. **Restarting the gradle
   daemon is NOT enough**: the fresh daemon holds the new env, but the task
@@ -88,7 +88,7 @@ verification, never infer visuals from pixels alone.
 - **Dev-env confound**: local builds run the mock API (`api/client.ts` returns
   `MOCK_DATA_SIMPLE` whenever the env is neither `prod` nor `preview`, so every
   launch does a full mock refresh (~175ms Android). Baseline and iterations
-  share it; never compare absolute startup numbers to production. It also
+  share it. Never compare absolute startup numbers to production. It also
   **writes mock times into the device's MMKV cache**, so any device check about
   prayer times, notifications or armed alarm times is void until that build
   refetches. Since the store is namespaced by the same predicate that serves
@@ -100,7 +100,7 @@ verification, never infer visuals from pixels alone.
   to the app), with Asr next a minute or two away and Fajr a few minutes before
   the clock, so a "Fajr" minutes before the current clock is the mock, not a bug. Logging is disabled
   in prod and preview (`shared/logger.ts`), so the only build that gives both
-  real data and logs is none of them; on a real-data device run, the alarm
+  real data and logs is none of them. On a real-data device run, the alarm
   dump is the evidence and an empty logcat proves nothing either way.
 - **`--verbose` prints no test names here**: `yarn jest <file> --verbose` emitted
   only the summary (14 lines, no per-test output) with no `verbose`/`silent`/
@@ -108,7 +108,7 @@ verification, never infer visuals from pixels alone.
   what matters is that a passing COUNT is then the only signal, and "the total
   went up by the three I think I added" is not evidence those three ran. To
   confirm a specific test executed, filter by name:
-  `yarn jest <file> -t "<phrase>"` and read the `N passed, M skipped` line; a
+  `yarn jest <file> -t "<phrase>"` and read the `N passed, M skipped` line. A
   name that does not exist reports 0 matched instead of quietly passing.
 - **Android 9 AX trees are STALE** in `uiautomator dump`. Read live text with
   Maestro's `hierarchy`, which reads the live tree, or with screencap pixel
@@ -123,7 +123,7 @@ verification, never infer visuals from pixels alone.
   mock prayers sit from 3 min before a download to 4 min after it, and every
   return to the app downloads again, so sample ≥5.5 min after a cold launch
   without leaving the app (idle-cpu.sh does). At night (00:00–06:00) the mock's Isha becomes a
-  post-midnight Isha and the day-roll fires early; test day-rolls in daytime.
+  post-midnight Isha and the day-roll fires early. Test day-rolls in daytime.
 - **`expo run:android --device` takes a device NAME, not an adb serial**: with
   a serial it prebuilds, then fails, and a `| tail` pipe reports exit 0.
   Build with `./gradlew assembleRelease` + `adb install -r`, and check
@@ -133,7 +133,7 @@ verification, never infer visuals from pixels alone.
   shown the moment it appears: do one throwaway launch after each install.
 - **`overlay_open` mark semantics changed in s9** (useLayoutEffect instrument):
   JS works ~44-78ms then waits on a synchronous UI-thread mount, so the band
-  is ~180-240ms; the 80ms baseline predates it. Compare builds with frame
+  is ~180-240ms. The 80ms baseline predates it. Compare builds with frame
   evidence, never this mark (progress.md, "MARKS REGRESSION INVESTIGATION").
 - **zsh does not word-split** `D="adb -s X"; $D shell …` ("command not found"):
   use a function, and have scripts check every output file is non-empty.
@@ -141,7 +141,7 @@ verification, never infer visuals from pixels alone.
 - **BACK exits the app when no sheet is open**: flows end with exactly one
   BACK per open sheet.
 - **Aborted toggle flows double-flip prefs**: verify final state from pixels.
-- **screenrecord pace**: ≥1.2s between recorded transitions; the SD820
+- **screenrecord pace**: ≥1.2s between recorded transitions. The SD820
   encoder drops frames when animations arrive back-to-back. Extract frames
   with `-fps_mode passthrough` (output option) or VFR frames get duplicated.
 - **Video capture wedge**: if screenrecord emits ~1 frame despite display
@@ -154,6 +154,6 @@ verification, never infer visuals from pixels alone.
   `com.mugtaba.athan/com.mugtaba.athan.MainActivity#0` and the
   hash-prefixed variant from `dumpsys SurfaceFlinger --list`.
 - **iOS**: Maestro does not support physical devices. WDA (appium fork) +
-  `pymobiledevice3 syslog live` (tag `Athan{React}`); fast 140ms flicks
+  `pymobiledevice3 syslog live` (tag `Athan{React}`). Fast 140ms flicks
   dismiss scrollable sheets. Per campaign directive, iOS is verified by
-  owner eyeball; the 3T is the measurement device.
+  owner eyeball. The 3T is the measurement device.

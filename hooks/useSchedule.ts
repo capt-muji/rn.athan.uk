@@ -2,7 +2,6 @@
  * Hook for accessing prayer schedule data
  * Uses the prayer-centric sequence model
  *
- * @see ai/adr/005-timing-system-overhaul.md
  */
 
 import { type PrayerWithStatus, usePrayerSequence } from '@/hooks/usePrayerSequence';

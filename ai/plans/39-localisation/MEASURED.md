@@ -163,7 +163,7 @@ Three properties of that machinery decide the whole layout question:
    architectural cost.
 
 The second column (`styles.arabic`) is `flex: 1` with `textAlign: 'right'`. Under owner decision
-D7 the layout never mirrors, so this stays; what needs deciding is whether `right` remains
+D7 the layout never mirrors, so this stays. What needs deciding is whether `right` remains
 correct when the second language is Latin-script.
 
 `STYLES.prayer.height` is a fixed 57. A name that wraps to two lines does not fit, so the

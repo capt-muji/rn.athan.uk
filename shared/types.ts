@@ -259,7 +259,7 @@ export enum Icon {
 
 // =============================================================================
 // NEW TIMING SYSTEM TYPES (Prayer-Centric Model)
-// See: ai/adr/005-timing-system-overhaul.md
+
 // =============================================================================
 
 /** What every row on a list has, whether or not its time could be read */

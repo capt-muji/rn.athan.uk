@@ -2,7 +2,6 @@
  * Sync layer - App initialization and data fetching
  * Uses the prayer-centric sequence model
  *
- * @see ai/adr/005-timing-system-overhaul.md
  */
 
 import { type Atom, atom } from 'jotai';
@@ -234,7 +233,7 @@ const fetchLastDayOfPreviousYear = () => {
  */
 const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
   // Initialize prayer sequences (prayer-centric model)
-  // See: ai/adr/005-timing-system-overhaul.md
+
   ScheduleStore.setSequence(ScheduleType.Standard, date);
   ScheduleStore.setSequence(ScheduleType.Extra, date);
 
@@ -527,7 +526,7 @@ export const sync = async (options: { deferWidgetRefresh?: boolean } = {}) => {
       try {
         await updatePrayerData();
       } catch (error) {
-        // Only a launch with nothing usable stored may reach the error screen (DASHES-DESIGN §9): its Refresh wipes,
+        // Only a launch with nothing usable stored may reach the error screen (session 3 dashes rules §9): its Refresh wipes,
         // and the lists bootstrap already showed would go with it. The next sync asks again for what is missing
         if (!hasUsableDays()) throw error;
         logger.warn('SYNC: Refresh failed, showing the days already stored', { error });

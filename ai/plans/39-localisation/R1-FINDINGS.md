@@ -1,7 +1,7 @@
 # What R1 settles: the library choice, and the trap that would have shipped
 
 R1 (`research/R1-LIBRARY-LANDSCAPE.md`, 642 lines) compares the i18n libraries against this repo's
-real constraints. Its most valuable finding is not the recommendation; it is a failure mode that
+real constraints. Its most valuable finding is not the recommendation. It is a failure mode that
 would have reached production with a green test suite.
 
 ## The trap: Jest passes, Hermes fails

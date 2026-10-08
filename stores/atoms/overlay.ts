@@ -2,7 +2,6 @@
  * Overlay atom - extracted to break circular dependency
  * between stores/overlay.ts and stores/countdown.ts
  *
- * @see ai/adr/005-timing-system-overhaul.md
  */
 
 import { type Atom, atom } from 'jotai';

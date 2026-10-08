@@ -696,7 +696,7 @@ describe('canonicalDisplayOrder', () => {
 });
 
 // =============================================================================
-// UNREADABLE TIMES: `--:--` PER PRAYER (rules R1-R7 in ai/features/uat-2/DASHES-DESIGN.md §0)
+// UNREADABLE TIMES: `--:--` PER PRAYER (session 3 dashes rules R1-R7)
 //
 // A time the provider did not give readably takes away that row's time and the time of
 // every row worked out from it, and nothing else. A test that only looks at the broken

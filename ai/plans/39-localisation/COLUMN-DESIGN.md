@@ -1,6 +1,6 @@
 # The prayer row, redesigned for a 123pt budget
 
-> PREMISE RE-MEASURED: the 123pt budget here was the measurement error `BOTH-COLUMNS.md` corrects (21/24 fit 320dp with both columns; the queue row 39 guard is `first + second + 129pt <= screenWidth`). Do not act on layers premised on 123pt; the sourcing rules below stand (owner ruling D16).
+> PREMISE RE-MEASURED: the 123pt budget here was the measurement error `BOTH-COLUMNS.md` corrects (21/24 fit 320dp with both columns. The queue row 39 guard is `first + second + 129pt <= screenWidth`). Do not act on layers premised on 123pt. The sourcing rules below stand (owner ruling D16).
 
 The derived budget changes this from "some languages need shorter names" to "the current row
 composition does not fit most languages". That deserves a design rather than a patch.
@@ -147,7 +147,7 @@ form that survives languages being added over time by someone who does not remem
 
 **The measurement cannot run in Jest**, because Jest has no text shaper. Two options, and the plan
 picks the first: a build-time script using the same CoreText measurement
-(`scripts/measure-widths.swift`) that produces a committed widths file the test asserts against; or
+(`scripts/measure-widths.swift`) that produces a committed widths file the test asserts against. Or
 a character-count proxy, which `WIDTH-EVIDENCE.md` measured as agreeing with rendered width in all
 six scripts tested but which is not guaranteed for an unmeasured script.
 

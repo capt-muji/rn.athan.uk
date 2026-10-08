@@ -1907,7 +1907,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
   });
 
   // ==========================================================================
-  // UNREADABLE TIMES (session 3, ai/features/uat-2/DASHES-DESIGN.md §7)
+  // UNREADABLE TIMES (session 3 dashes rules)
   //
   // A row the provider gave no readable time for is drawn as --:-- and nothing may
   // fire for it (R5), while the saved preference survives to arm the next readable

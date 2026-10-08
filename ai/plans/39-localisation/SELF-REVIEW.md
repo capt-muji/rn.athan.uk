@@ -113,7 +113,7 @@ for an explicit ruling, which `PLANNER-BRIEF.md` forbids.
    Arabic text today. A literal reading would require DELETING that line and making the shipped
    Arabic worse.
 
-**Verdict: reporting it is correct; building it without his word would not be.** The plan is
+**Verdict: reporting it is correct. Building it without his word would not be.** The plan is
 written so this is a one-line switch either way, and the plan says which line.
 
 ---

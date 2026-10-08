@@ -40,7 +40,7 @@ Reanimated shared values survive a re-render untouched.
 
 ## The one rule this creates
 
-**A language change must never remount the prayer list.** Re-render, yes; remount, no.
+**A language change must never remount the prayer list.** Re-render, yes. Remount, no.
 
 Concretely, that forbids the "key on locale" pattern, which is a common way to force a tree to
 refresh after a language change:
