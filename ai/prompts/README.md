@@ -2,7 +2,7 @@
 
 This folder holds the briefs of the queued sessions that still start from a file here. Each brief
 says what one session is for. The queue is the Status table in `ai/plans/README.md`. Standing
-rules live in `ai/AGENTS.md` and the three briefs in `ai/plans/`. Where a brief here conflicts
+rules live in `ai/AGENTS.md` and the three session skills in `.agents/skills/`. Where a brief here conflicts
 with them, the planning session asks the owner which applies.
 
 | Queue row | Session | Brief | Status |
@@ -15,5 +15,5 @@ worldwide in `ai/features/global-prayer-times/`.
 
 ## Owner decisions
 
-Record each owner decision here, with its date and its queue row, when a brief in `ai/plans/`
+Record each owner decision here, with its date and its queue row, when a session skill
 says to. State what he decided in plain words.
