@@ -2,7 +2,7 @@
 
 ## Order
 
-One row at a time: plan it, execute it, audit it, only then plan the next. Each session ends with the /handoff document and the next one resumes with /go. The skill at `.agents/skills/athan-next/SKILL.md` reads the queue below and git, picks the step, runs it in this one session, and stops. A session does every phase itself and spawns no subagent, with one exception: a model that cannot see images delegates one image read to `vision`.
+One row at a time: plan it, execute it, audit it, only then plan the next. A fresh session with nothing to continue starts with `/athan-next`. A session carrying a handoff continues with `/go`. A session that is running long closes with `/handoff`. The skill at `.agents/skills/athan-next/SKILL.md` reads the queue below and git, picks the step, runs it in this one session, and stops. A session does every phase itself and spawns no subagent, with one exception: a model that cannot see images delegates one image read to `vision`.
 
 Planning specifies the work completely, down to contracts, names, behaviour, tests and acceptance criteria. A question the executor has to ask is a defect in the plan. Execution builds to those criteria: it chooses HOW, never WHAT, and never pushes. Audit checks the result against the plan, fixes what is wrong itself, then sets DONE and pushes `uat`. Work never returns to the executor.
 
@@ -24,7 +24,7 @@ A row moves through NOT PLANNED, PLANNING, READY, IN PROGRESS, EXECUTED, DONE. O
 
 ## The queue
 
-DONE rows keep order number and short name only, and their record is git history. Open rows keep the pointers, the facts and Needs first (the rows that must be DONE before a plan runs).
+The queue is the only tracking file. DONE rows keep order number and short name only, and their record is git history. **A plan's documentation dies with its merge: the session that merges the branch into `uat` deletes the plan folder in the same commit.** Code is the documentation, and MD files go stale. The one survivor is an artefact still cited by shipped code or config, named in the row. Open rows keep the pointers, the facts and Needs first (the rows that must be DONE before a plan runs).
 
 | Order | Session | Status |
 | --- | --- | --- |
@@ -108,9 +108,9 @@ A planning session may turn one of these into a plan only after the owner approv
 
 ## Files here
 
-- The session skills: `athan-planner`, `athan-executor` and `athan-auditor` in `.agents/skills/`, orchestrated by `athan-next`. `SDK58-PROGRAMME.md` holds the row 18 and D4 briefs.
-- `TEMPLATE.md` fixes the shape of every plan.
-- Surviving session folders: `27-silent-mode-bypass/FINDINGS.md` (backs the answers `shared/help.ts` gives), `39-localisation/` (rows 38 and 39) and `54-patches-and-copy/FINDINGS.md` (row 54). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other session's record lives in git history.
+- Briefs: the session skills `athan-planner`, `athan-executor` and `athan-auditor` in `.agents/skills/`, orchestrated by `athan-next` and started with `/athan-next`. `SDK58-PROGRAMME.md` holds the row 18 and D4 briefs.
+- `TEMPLATE.md` fixes the shape of every plan. A plan folder is scaffolding: it is created at PLANNING and deleted at DONE, in the merge that lands the work.
+- Surviving session folders: `27-silent-mode-bypass/FINDINGS.md` (cited by `shared/help.ts`), `39-localisation/` (rows 38 and 39) and `54-patches-and-copy/FINDINGS.md` (row 54). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other session's record lives in git history.
 
 ## Who changes a status, and who pushes
 

@@ -56,6 +56,9 @@ works fully offline after first sync, and notifications fire on time while backg
   on the OnePlus 3T and nowhere else.
 - `releases.json` is deleted. Never recreate it and never add any hand-edited release file. Store
   versions come from iTunes Lookup (iOS) and the in-app updates API (Android).
+- A plan's documentation dies with its merge. The session that merges a branch into `uat` deletes
+  the plan folder in the same commit. Code is the documentation: MD files go stale, history lives
+  in git, and only an artefact still cited by shipped code or config survives, named in its row.
 - Never name a model in any file (briefs, plans, logs, audits, records). Write the job: planning
   session, execution session, audit session.
 - Never run `npx expo install --fix`. It would roll back `jest`, `@types/jest` and `typescript`,
