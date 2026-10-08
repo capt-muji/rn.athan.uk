@@ -187,6 +187,21 @@ Ordered by value. None of these blocks a decision; they sharpen one.
 
 Listed plainly, because none of them is a research question and each changes the build.
 
+**Answered 2026-10-09:**
+
+1. **Will the app ask for a location permission? YES.** The owner took R14's recommendation.
+2. **Does completely offline permit a yearly fetch? YES**, fetch once a year and cache, per the owner's own earlier offer.
+
+**Deferred by the owner 2026-10-09 to the going-global planning sessions. Do not re-ask before then:**
+
+3. Per-prayer user offsets: decide at implementation, once the API hard-coding is gone and an offset is technically possible.
+4. The reproduction claim: re-ask in plain words inside that session. The owner found the framing unclear.
+5. The launch set: the owner's stated aim is every country by the user's location, not a single second country, and localisation ships before any of this.
+6. The default Asr school: decide in the same session.
+7. Device elevation: a prayer-times question (JAKIM's horizon-dip correction), parked with the rest.
+
+The questions as first drafted:
+
 1. **Will the app ask for a location permission?** (A25) This is now the biggest one, and wave 4 created it. R14
    measured that the permission-free route fails, so worldwide needs either a permission or a manual city and zone
    picker. The owner has never agreed to add a permission and dislikes prompts. Everything else in the architecture
