@@ -19,7 +19,7 @@ interface Props {
 
 export default function List({ type }: Props) {
   // NEW: Use sequence-based prayers
-  // See: ai/adr/005-timing-system-overhaul.md
+
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
   const isStandard = type === ScheduleType.Standard;
   const listRef = useRef<ViewInstance>(null);

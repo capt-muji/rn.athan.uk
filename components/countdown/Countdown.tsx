@@ -17,7 +17,6 @@ interface Props {
 
 export default function Countdown({ type }: Props) {
   // NEW: Use sequence-based countdown hook
-  // See: ai/adr/005-timing-system-overhaul.md
   //
   // While the overlay is open on this schedule the page countdown atom itself
   // carries the selected prayer's countdown (ADR-014 countdown merge — the

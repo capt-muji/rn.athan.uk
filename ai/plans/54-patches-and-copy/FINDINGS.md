@@ -1,7 +1,7 @@
 # Row 54: what was established, and where the row stands
 
-Planned, executed and audited by one session on 2026-10-07, against the brief
-`ai/plans/NEXT-SESSION-PATCHES-AND-COPY.md`. **The row is not finished.** The owner paused all app work part way
+Planned, executed and audited by one session on 2026-10-07, on the owner's questions at the close
+of row 53 (the brief left the repository in the 2026-10-08 clean-up). **The row is not finished.** The owner paused all app work part way
 through, so the hygiene check is complete and the other two jobs stop where section 4 says.
 
 ## 1. Job A: the three patches
@@ -60,7 +60,7 @@ default. That is row 51.
 ## 3. Job B: the line of copy
 
 *Just a moment* becomes *Follow below instructions*. The change was written, tested and committed on the local
-branch `fix/qibla-subtitle-copy`, one commit ahead of `uat-2`. **Merged into `uat-2` on 2026-10-08; the owner waived
+branch `fix/qibla-subtitle-copy`, one commit ahead of `uat-2`. **Merged into `uat-2` on 2026-10-08. The owner waived
 the phone proof the same day and confirmed the wording is what he wants.**
 
 | What | Result |

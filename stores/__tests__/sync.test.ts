@@ -691,7 +691,7 @@ describe('reopening the notification refresh gate when a download is stored', ()
 });
 
 // =============================================================================
-// A FAILED REFRESH WITH DAYS ALREADY STORED (DASHES-DESIGN §9)
+// A FAILED REFRESH WITH DAYS ALREADY STORED (session 3 dashes rules §9)
 // =============================================================================
 
 // The error screen's Refresh wipes, so it may only cover a launch with nothing the lists can show

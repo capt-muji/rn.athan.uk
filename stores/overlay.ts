@@ -4,8 +4,6 @@
  * `isOn` changes only on the owner's tap, app close, and the 2 second schedule
  * boundary. `openOverlay` and `closeOverlay` are the only writers.
  *
- * @see ai/features/overlay/spec.md
- * @see ai/adr/015/ADR.md
  */
 
 import { getDefaultStore } from 'jotai/vanilla';

@@ -2,7 +2,6 @@
  * Hook for accessing the full prayer sequence
  * Part of the new prayer-centric timing system
  *
- * @see ai/adr/005-timing-system-overhaul.md
  */
 
 import { useAtomValue } from 'jotai';

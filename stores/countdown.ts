@@ -2,7 +2,6 @@
  * Countdown store - manages countdown intervals for prayer times
  * Uses the prayer-centric sequence model
  *
- * @see ai/adr/005-timing-system-overhaul.md
  */
 
 import { type Atom, atom } from 'jotai';

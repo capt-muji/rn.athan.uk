@@ -757,7 +757,7 @@ describe('volume and payload invariants', () => {
 // follows the app's own rules for it (shared/sequence.ts): it is never a
 // boundary and never counted down to, it is drawn as --:--, and a list day
 // with no readable row stays on screen until 00:00 London
-// (ai/features/uat-2/DASHES-DESIGN.md §8).
+// the session 3 dashes rules §8.
 // =============================================================================
 
 describe('unreadable rows', () => {

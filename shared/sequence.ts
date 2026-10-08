@@ -10,7 +10,6 @@
  * Pure: no React Native or MMKV imports, so the iOS widget timeline builder follows exactly the rules
  * the app's own screens do.
  *
- * @see ai/features/uat-2/DASHES-DESIGN.md
  */
 
 import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
