@@ -1,7 +1,7 @@
 # Can a notification localise at delivery time? Read from the installed source
 
 > **SUPERSEDED 2026-10-07** in part by `R4-FINDINGS.md`: the open questions below are settled.
-> (:7-30) `titleLocalizationKey` is an inbound-push field only; copy stays frozen at schedule
+> (:7-30) `titleLocalizationKey` is an inbound-push field only. Copy stays frozen at schedule
 > time. (:32-45) the Android channel NAME and description CAN be renamed in place, and the
 > re-arm needs no cancel pass: deterministic identifiers replace each armed request in place.
 
@@ -100,7 +100,7 @@ check on the 3T rather than a desk answer. The plan carries it as a named experi
 
 ## The time-sensitive label the owner asked about
 
-🐋  "On an iPhone, where we have time sensitive notifications enabled, the first line is taken up
+"On an iPhone, where we have time sensitive notifications enabled, the first line is taken up
 by the time sensitive text. If we can hide that, that would be great, but I don't think so."
 
 The owner is right that it cannot be hidden. `shared/notifications.ts` sets

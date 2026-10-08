@@ -2,11 +2,11 @@
 
 Three questions from the owner, 2026-09-29. Answered with the data already sourced.
 
-🐋  "We want 25 languages perhaps, what is 2520? Find the 20 most spoken languages in the world,
+"We want 25 languages perhaps, what is 2520? Find the 20 most spoken languages in the world,
 maybe those are the ones we should cover. Should we hard code them, fix them, because 20 is good
 and it will cover the whole world, right?"
 
-🐋  "Should we have a fixed adjacent file of 20 languages with a translation or transliteration of
+"Should we have a fixed adjacent file of 20 languages with a translation or transliteration of
 every single object? But I feel like that's the wrong approach. What will we be covering in that
 file? Just the 3, midnight sunrise and last third? Or the entire app, the settings, the list,
 everything?"
@@ -91,7 +91,7 @@ They cost nothing to keep and they are there when wanted.
 
 ## Question 2: hard code 20, or keep it open?
 
-🐋  "Should we hard code them, fix them, because 20 is good and it will cover the whole world?"
+"Should we hard code them, fix them, because 20 is good and it will cover the whole world?"
 
 **Fix the SHIPPED LIST at 20. Never fix the ARCHITECTURE at 20.** Those are different decisions and
 only the first one should be made now.
@@ -112,7 +112,7 @@ So: 20 in the picker, 28 in the file, and the 21st is a pull request rather than
 
 ## Question 3: what goes in the file? The whole app, or only the three?
 
-🐋  "Will we have just a translation for these 3, midnight sunrise and last third? Or will it be
+"Will we have just a translation for these 3, midnight sunrise and last third? Or will it be
 translation for the entire app, the settings, the list, everything?"
 
 **The entire app. And the owner's instinct that a single giant file is "the wrong approach" is
@@ -133,7 +133,7 @@ are ordinary UI ("Settings", "Close", "Change athan", "A new version is availabl
 
 Because the app language setting changes the whole interface. If the file held only the prayer
 names, an Indonesian user would get Indonesian prayer names inside an English settings sheet, an
-English Help modal and English notifications. That is not a translated app; it is an English app
+English Help modal and English notifications. That is not a translated app. It is an English app
 with translated labels.
 
 The owner already ruled this, D6: "It will also change the settings, all the bottom sheets, all the
@@ -171,7 +171,7 @@ loads faster on Hermes than a runtime `JSON.parse` would.
 
 ## On the width problem, which the owner correctly says this does not solve
 
-🐋  "That still doesn't resolve our transliteration and the width, because some names are quite
+"That still doesn't resolve our transliteration and the width, because some names are quite
 long, especially Indonesian and French."
 
 Right, and the status after the D16 correction is narrower than it looked:

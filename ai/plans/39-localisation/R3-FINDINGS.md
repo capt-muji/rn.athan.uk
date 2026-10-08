@@ -8,7 +8,7 @@ it is implemented.
 
 The owner ruled:
 
-🐋  "We should always left align it exactly like English, even if the text is written right to
+"We should always left align it exactly like English, even if the text is written right to
 left... it should work exactly like the English, so it should be left to right."
 
 R3's finding is that this sentence conflates two things that do not have to move together:
@@ -28,7 +28,7 @@ the owner every bit of the layout simplicity he asked for, at no cost to the 155
 
 The owner explicitly asked to be told about alternatives:
 
-🐋  "If you have other alternatives, just tell me, don't implement them."
+"If you have other alternatives, just tell me, don't implement them."
 
 This is that, and it is smaller than an alternative: it is a refinement inside his own ruling, and
 it makes the first column behave exactly like the second column already does.
@@ -91,7 +91,7 @@ unreliable under the New Architecture** (RN issue #51235), so the one style prop
 base direction on a Text node cannot be depended on. Isolate characters in the string are the
 dependable route, and ICU MessageFormat 2 mandates exactly this approach.
 
-`MEASURED.md` already noted Roboto lacks the isolate codepoints; that is harmless, since they are
+`MEASURED.md` already noted Roboto lacks the isolate codepoints. That is harmless, since they are
 zero-width formatting controls the shaper consumes rather than glyphs it draws.
 
 ## Fonts: R3 confirms the measurement and prices the alternative
@@ -114,7 +114,7 @@ New and important: **line heights must become per-script.** R3 measured the line
 | Nastaliq (Urdu) | 2.50em |
 
 The app's fixed 22px line height clips Thai, Devanagari and Arabic. `TEXT.lineHeight.arabic`
-already exists as a hand-tuned exception, which confirms the problem was met once; the plan
+already exists as a hand-tuned exception, which confirms the problem was met once. The plan
 generalises it rather than adding a second exception.
 
 ## The digit-mapping finding, which changes existing behaviour

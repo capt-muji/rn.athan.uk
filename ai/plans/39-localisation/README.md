@@ -3,7 +3,7 @@
 Research and planning for making the app multilingual. No app code was written and nothing was
 merged, per the owner's instruction:
 
-🐋  "This is ONLY A RESEARCH TASK. Don't commit anything yet."
+"This is ONLY A RESEARCH TASK. Don't commit anything yet."
 
 ## Read in this order
 
@@ -23,10 +23,10 @@ Everything else is supporting evidence, listed at the bottom.
 
 You found a real design flaw:
 
-🐋  "We essentially have two primary languages... you'll never actually be able to set English as
+"We essentially have two primary languages... you'll never actually be able to set English as
 the notification. It seems wrong. We need a better approach."
 
-> SUPERSEDED 2026-09-29: the two-setting model below was the recommendation until the owner objected to its simplicity; the CURRENT answer is the one picker plus the existing language toggle in `ONE-OR-TWO-LANGUAGES.md` (ruling recorded there and in PROPOSALS P1). The survey and shape analysis in this file stand.
+> SUPERSEDED 2026-09-29: the two-setting model below was the recommendation until the owner objected to its simplicity. The CURRENT answer is the one picker plus the existing language toggle in `ONE-OR-TWO-LANGUAGES.md` (ruling recorded there and in PROPOSALS P1). The survey and shape analysis in this file stand.
 **The cause: one setting was being asked to do two unrelated jobs.** The fix is two independent
 settings:
 
@@ -71,7 +71,7 @@ others) and this is the shape all of them use, down to the labels.
 
 4. **Bilingual notifications would halve your notification buffer.** Two requests per prayer against
    a fixed budget of 64 cuts coverage from 3 days to about 1.5, which is the same failure that cost
-   a user their Magrib and Isha on a OnePlus 8T. You suspected this idea was messy; it is worse than
+   a user their Magrib and Isha on a OnePlus 8T. You suspected this idea was messy. It is worse than
    messy.
 
 5. **Hermes has no `Intl.PluralRules`, and Jest would hide it.** Node has full `Intl`, so plural

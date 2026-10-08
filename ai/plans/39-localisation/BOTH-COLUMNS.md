@@ -1,6 +1,6 @@
 # Keeping both columns: the measurement that changes the answer
 
-🐋  "I really, really, really do want to have both column names, the English and the second
+"I really, really, really do want to have both column names, the English and the second
 language, like we currently do with the English and Arabic. I just don't know what the best way to
 do it is. If a name isn't long enough, do we shrink it? Is there a way to detect if either of the
 two names is broken onto separate lines? Then does that mean we reduce the text size? But if we

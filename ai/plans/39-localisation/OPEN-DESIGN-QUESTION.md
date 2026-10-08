@@ -2,7 +2,7 @@
 
 ## The owner's words
 
-🐋  "Do we make a primary language or do we make a secondary language? Because now we have two
+"Do we make a primary language or do we make a secondary language? Because now we have two
 conflicting languages. We essentially have two primary languages. If a user selects English as a
 secondary, then you'll have English in the first column, then English in the second column, and
 then your notifications will also be in English. But if you select English as a primary and Arabic
@@ -74,7 +74,7 @@ C6 of `CONSTRAINTS.md` warns about for bidi reasons.
 
 ## The bilingual-notification idea, raised by the owner 2026-09-29
 
-🐋  "Or maybe we just include both languages in the notification. I don't know, but that can become
+"Or maybe we just include both languages in the notification. I don't know, but that can become
 really messy real quick. In the notification text, for example, Fajr now, then in 5 minutes, in
 English and in Arabic. But I'm not sure. On an iPhone, where we have time sensitive notifications
 enabled, the first line is taken up by the time sensitive text. If we can hide that, that would be

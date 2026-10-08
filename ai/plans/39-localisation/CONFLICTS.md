@@ -6,7 +6,7 @@ and key style) and B10 (per-locale width) carry the resolutions. Written 2026-09
 from git history (C4).
 
 - **In-app picker vs OS-only (R5's no-picker position): resolved for the picker.** R5's premise
-  fails on the floor device (per-app languages are Android 13+/iOS 13+; the 3T is Android 9), an
+  fails on the floor device (per-app languages are Android 13+/iOS 13+. The 3T is Android 9), an
   endonym-labelled list is readable without English, and D7 plus the deterministic-identifier
   re-arm already pay the costs R5 feared.
 - **Grow-only width vs per-locale (R5 vs R3/WIDTH-EVIDENCE): resolved per-locale.** A user who
