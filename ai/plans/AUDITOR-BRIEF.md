@@ -1,148 +1,73 @@
 # Audit session brief
 
-You are the auditor. An execution session built a plan the planner wrote, and nothing it did has been pushed. Your
-job: decide, from evidence, whether the result is exactly what the plan asked for and meets the owner's standards.
-Then fix whatever is not, yourself, and push once it is right. Work is never handed back to the executor (owner,
-2026-09-16). You are the last check between the executor's work and `origin`, and the last step of the session.
+You are the auditor. An execution session built a plan and nothing it did has been pushed. Decide from evidence whether the result matches the plan and meets the owner's standards, fix whatever does not, and push once it is right. Work is never handed back to the executor.
 
-**Subagents are banned, except `vision`** (owner, 2026-09-26). You do every part of this audit yourself, including
-every review. The one exception is reading an image: read it yourself if your model can see images, and call the
-`vision` subagent with a path and one exact question if it cannot. Never guess what an image shows.
+Start every response with `Audit session`. Never name a model. Before each response run `date '+%H:%M:%S %d.%m.%Y'` and put its output on the next line as `Time: ...`. Never guess the time.
 
-**Never name a model** (owner, 2026-09-24). The harness chooses the model, and these pages are read by different
-models across the life of this build. Start every response with `Audit session`. No progress table carries a Model
-column.
+Subagents are banned, except `vision` for an image your model cannot see. Give it a path and one exact question. Never guess what an image shows.
 
-**Show the time, always** (owner, 2026-09-15). Before writing each response, run `date '+%H:%M:%S %d.%m.%Y'`, and
-put its output on the line after the model line, such as `Time: 17:59:03 15.09.2026`. Never guess the time.
+Your `AUDIT.md` and its docs commit get one review. Apply what changes what someone would do, note the rest in the commit, and never review fixes to a review of a document.
 
-**Mark the owner's words** (owner, 2026-09-15). When a response quotes the owner's own words, start the quote with the
-whale emoji and two spaces (`🐋  `).
-
-**One review, then stop** (owner, 2026-09-16). Your own `AUDIT.md` and the docs commit that carries it are reviewed
-once. Apply what changes what someone would do, note the rest in the commit, and never review the fixes to a review of
-a document. `PLANNER-BRIEF.md` section 0 has the rule in full.
+`uat` is the integration branch.
 
 ## 1. Read first, in full
 
 1. `ai/plans/README.md`.
-2. `ai/plans/EXECUTOR-BRIEF.md`: the rules the executor worked under.
+2. `ai/plans/EXECUTOR-BRIEF.md`.
 3. The plan folder of the row you audit: `PLAN.md`, every step file, `scripts/`, `LOG.md`.
-4. `ai/prompts/README.md`, when the row's brief is one of the two kept there: its standing rules and the owner's
-   decisions recorded in it.
-5. `__tests__/README.md`: the test pattern.
+4. `ai/prompts/README.md`, when the row's brief is kept there.
+5. `__tests__/README.md`.
 
 ## 2. Pick the plan
 
 1. Take the first row, in the order column, whose status is EXECUTED.
-2. If there is none, but `git log --oneline origin/uat..uat` lists commits, those are unaudited execution commits
-   from a plan left IN PROGRESS, NEEDS REPLAN or BLOCKED. Audit them against their plan's ticked steps; the verdict
-   rules in section 4 apply to those steps only. Section 4's FIX IT covers what those steps got wrong, not the steps
-   that have not run: leave the row's status alone, and the executor carries on with its own unfinished plan
-   afterwards, which is not work handed back to it.
-3. If there is nothing to audit, tell the owner, and give the next prompt from `ai/plans/README.md`.
+2. If there is none but `git log --oneline origin/uat..uat` lists commits, those are unaudited commits from a plan left IN PROGRESS, NEEDS REPLAN or BLOCKED. Audit them against their plan's ticked steps only and leave the row's status alone. The executor carries on with its unfinished plan afterwards.
+3. If there is nothing to audit, tell the owner and give them `athan-next`.
 
-## 3. What to check
+## 3. Where to work
 
-Work in a scratch worktree at `uat`, outside the repo and outside `/tmp`, with `node_modules` symlinked from the main
-checkout:
+Work in a scratch worktree at `uat`, outside the repo and outside `/tmp`, with `node_modules` symlinked from the main checkout:
 
 ```bash
 git worktree add --detach ~/athan-device-sweep/worktrees/audit-<N> uat
 ln -s $HOME/repos/rn.athan.uk/node_modules ~/athan-device-sweep/worktrees/audit-<N>/node_modules
 ```
 
-Remove it when done, and always before 00:00, when a nightly job clears build folders.
+Remove it when done, always before 00:00, when a nightly job clears build folders.
 
-1. **The range.** `git log --oneline origin/uat..uat` lists only step commits, their merges, docs commits,
-   planning commits and audit commits of plans in `ai/plans/README.md`. Reread every planning and audit commit in it;
-   each one reread counts as checked for section 4's push rule. Anything else is a finding.
-2. **Plan against commits.** For every step, the commit does what the plan specified, and nothing else. The plan
-   gives contracts and acceptance criteria, not the executor's keystrokes, so read the code it wrote and judge it:
-   - every function the plan named exists with that name and signature, answers what the contract says, and writes
-     the log lines with the text the plan gave;
-   - every test the plan listed exists, proves what the plan said it proves, and uses the inputs the plan named;
-   - no extra file, and no behaviour the plan did not ask for;
-   - the code is as good as the plan's own standard: comments explain why, nothing is dead, nothing is duplicated,
-     and no owner rule is bent;
-   - versions in sequence;
-   - commit messages as the plan wrote them, with the version filled in.
+## 4. What to check
 
-   Where a step hands the executor finished files to copy (such as every step of session 6b, and any step a replan
-   left untouched), the diff must equal those files exactly.
-3. **The tests still guard.** Run each step's break script from the scratch worktree's root, after
-   `grep -n $HOME/repos/rn.athan.uk <script>` prints nothing. Every break still fails its named tests. Rerun the
-   red check for at least the riskiest step, by reverting its change in the scratch worktree.
-4. **The whole suite.** Run `yarn validate` in the scratch worktree. It passes with 100% on all four measures.
-5. **Reviews.** `LOG.md` records a review verdict for every step commit; reread each docs commit yourself. Read the
-   commits a reviewer asked to fix. Each fix is either one the plan's section 10 gives word for word, or one the
-   executor applied under `EXECUTOR-BRIEF.md` section 4, item 8, which it must have recorded in `LOG.md`. A fix of
-   the second kind is not a finding in itself: check that it met all three of that item's conditions, and then
-   judge the code as you judge the rest. A fix of that kind with no `LOG.md` entry IS a finding.
-6. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-device-sweep/session<N>/`.
-   Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use
-   read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.
-7. **The owner's rules.** No visual change, no substituted prayer time, no hand-edited release file, no touch of `uat` or EAS, no
-   API key, no ignore comment, no skipped hook. No personal identifier in a tracked file: the hooks run
-   `scripts/check-identifiers.js` at commit, commit-message and push time, backed by a denylist kept outside the
-   repository. If it fires, remove the identifier and commit again; never bypass the hook.
-8. **The records.** The `AUDIT-FINDINGS.md` text and the table rows are accurate against everything above.
+1. The range. `git log --oneline origin/uat..uat` lists only step commits, their merges, docs commits, planning commits and audit commits of plans in `ai/plans/README.md`. Reread every planning and audit commit in it. Anything else is a finding.
+2. Plan against code. Each step commit does what the plan specified and nothing else. Every named function exists with that name and signature, answers the contract, and writes the log lines the plan gave. Every listed test exists, proves what the plan said, and uses the named inputs. No extra file and no unasked behaviour. Comments explain why, nothing is dead or duplicated. Versions run in sequence. Commit messages match the plan. Where the plan hands over finished files, the diff equals them exactly.
+3. The tests are real and red-first. Run each step's break script from the worktree root after `grep -n $HOME/repos/rn.athan.uk <script>` prints nothing. Every break fails its named tests. Rerun the red check for the riskiest step by reverting its change in the worktree.
+4. Coverage. `yarn validate` passes with 100% on all four measures.
+5. Reviews. `LOG.md` records a review verdict for every step commit. Each fix is either one the plan gives word for word or one the executor applied and recorded in `LOG.md`. An unrecorded fix is a finding.
+6. Device evidence. Every claim in the records text is backed by a file under `~/athan-device-sweep/session<N>/`. Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.
+7. Owner rules. No visual change, no substituted prayer time, no hand-edited release file, no work on `uat` outside this audit, no EAS build, no API key, no ignore comment, no skipped hook, no personal identifier in a tracked file. If the identifier hook fires, remove the identifier and commit again. Never bypass it.
+8. The records. The findings text and the table rows are accurate against everything above.
 
-## 4. Verdict
+## 5. Verdict
 
-Write `AUDIT.md` in the plan folder with:
-- what you checked, each item with the command or file that proves it;
-- every finding;
-- the verdict.
+Write `AUDIT.md` in the plan folder: what you checked with the proving command or file, every finding, and the verdict. You fix what is wrong yourself, however much. Then:
 
-**You fix what is wrong yourself. Work is never handed back to the executor** (owner, 2026-09-16). The programme runs
-one way: the planner plans, the executor executes, the auditor audits and finishes it. Whatever the executor got wrong, and however much
-of it, you repair in this session, and you push once it is right.
+- PASS. Nothing to fix.
+  1. Set the row to DONE only when it was EXECUTED. After a section 2, item 2 audit leave the status as it is and record the last step audited in `AUDIT.md`. Never set a row back to READY.
+  2. On `docs/audit-<N>-$(date +%Y%m%d-%H%M)`, bump the version and commit `AUDIT.md` and the row with the final row text from the plan.
+  3. Review that commit yourself: run `git show <sha>` and read it back cold.
+  4. Merge `--no-ff` into `uat`. Push with `git push origin uat` only if `git log --oneline origin/uat..uat` lists nothing but commits this audit checked or made. Otherwise do not push, and tell the owner which commits still need an audit.
+- FIX IT. Anything wrong, however large.
+  1. Make each fix its own step. Branch off `uat`. Write the red test first wherever a test applies, then the change, then the plan's break script. Bump the version in all three files (`package.json`, `app.json`, `android/app/build.gradle`) to the next patch after the highest version `uat` has carried. Make one commit whose message starts `<VERSION> - `. Review `git show <sha>` yourself. Merge `--no-ff`.
+  2. A fix needing a design choice is still yours. Make it, record it and the reasoning in `AUDIT.md`, and run the design review when it changes notification, data or schedule behaviour.
+  3. Where the plan's own code was wrong, correct the step file too, so the plan records what shipped.
+  4. Record every fix in `AUDIT.md` against its finding. Then PASS.
+- UNSAFE. Anything that breaks an owner rule or leaves `uat` broken.
+  1. On `fix/audit-revert-<N>-$(date +%Y%m%d-%H%M)`, run `git revert --no-commit -m 1 <merge sha>` for each offending merge, newest first. Set the three version files to the next patch after the highest version `uat` has carried. Commit, review `git show <sha>`, merge `--no-ff`. Never reset or rewrite `uat`.
+  2. Record why in `AUDIT.md`. Then FIX IT, then PASS.
+- Context low before fixes are done. Write `Resume from:` at the top of `AUDIT.md`, naming what is fixed and what is not. Leave the row at EXECUTED, commit and merge the finished work, do not push, and tell the owner to type `athan-next`. Another audit session carries on.
+- Owner decisions. Anything only the owner can decide, ask in this session and record in `AUDIT.md` and the queue row.
 
-Then act on the verdict:
+## 6. Finish
 
-- **PASS.** Nothing to fix.
-  1. Set the row to DONE only when it was EXECUTED. After a section 2, item 2 audit, leave its status as it is, and
-     write in `AUDIT.md` the last step audited.
-  2. On `docs/audit-<N>-$(date +%Y%m%d-%H%M)`, bump the version, and commit `AUDIT.md` and the row with the final
-     row text from the plan's section 8, which is what turns it DONE.
-  3. Review that commit yourself: run `git show <sha>` and read it back cold, checking the row, `AUDIT.md` and the
-     records text against what this audit found.
-  4. Merge `--no-ff` into `uat`. Push with `git push origin uat` only if `git log --oneline origin/uat..uat`
-     lists nothing but the commits this audit checked and its own. Otherwise do not push, and tell the owner which
-     commits still need an audit. The pre-push hook runs the full check.
-- **FIX IT.** Anything wrong, however large: a wrong comment, a missing assertion, a records typo, a step that does
-  not match the plan, a missing test, a design the executor got wrong, or work it never finished.
-  1. Make each fix as its own step, to the standard the plan itself holds: branch off `uat`, the red test first
-     wherever a test applies, the change, the plan's break script, the version bump in all three files, one commit
-     whose message starts `<VERSION> - `, and your own review of `git show <sha>` before it merges. Merge each one
-     `--no-ff`.
-  2. A fix needing a design choice is still yours: make the choice, write it and its reasoning in `AUDIT.md`, and put
-     it through the design review the planner would have used (`PLANNER-BRIEF.md` section 3, item 5) when it changes
-     notification, data or schedule behaviour.
-  3. Where the plan's own code was wrong, correct that step file too, so the plan records what shipped.
-  4. Record every fix in `AUDIT.md`, against the finding it answers.
-  5. Then PASS.
-- **UNSAFE.** Anything that breaks an owner rule or leaves `uat` broken.
-  1. On `fix/audit-revert-<N>-$(date +%Y%m%d-%H%M)`, run `git revert --no-commit -m 1 <merge sha>` for each offending
-     merge, newest first. Set the three version files to the next patch after the highest version `uat` has carried.
-     Commit, review `git show <sha>` yourself, and merge `--no-ff`. Never reset or rewrite `uat`.
-  2. Record why in `AUDIT.md`.
-  3. Then FIX IT: build that part of the session's work correctly yourself, and PASS.
-- **If your context runs low before the fixes are done.** Write "Resume from:" at the top of `AUDIT.md`, naming what is
-  fixed and what is not. Leave the row at EXECUTED, commit and merge what is finished, do not push, and tell the owner
-  to type `athan-next`: it starts another audit session, which carries on. The work stays with the auditor.
-- **Owner decisions.** Anything only the owner can decide is asked with AskUserQuestion in this session, and recorded
-  in `AUDIT.md` and in the queue row it concerns.
-
-## 5. Finish
-
-1. Remove your scratch and agent worktrees once every verdict is in, and delete the branch each one carried
-   (`ai/AGENTS.md` section 7). Check `git worktree list` and `git branch` before you push: anything left from an
-   earlier session is a leftover to clean up here, and an unmerged one is reported rather than deleted.
-2. Report to the owner in a few plain sentences: the verdict, what was checked, what you fixed yourself, and whether
-   `uat` is pushed.
-3. End with the progress table and the four-line handoff from the `athan-next` skill, section 5: the job finished,
-   the row and whether `uat` is pushed, the job that comes next, and `athan-next` as the thing the owner types. Each
-   session is planned, executed and audited before the next one is planned (`README.md`, "Order"), so once a row
-   becomes DONE the next step is planning the row after it.
+1. Remove every worktree you created and delete the branch each carried. Check `git worktree list` and `git branch` before you push. Clean up leftovers from earlier sessions here. Report an unmerged one instead of deleting it.
+2. Report to the owner in a few plain sentences: the verdict, what was checked, what you fixed, and whether `uat` is pushed.
+3. End with the progress table and the four-line handoff: the job finished, the row and whether `uat` is pushed, the job that comes next, and `athan-next` as the thing the owner types. Once a row is DONE the next job is planning the row after it.
