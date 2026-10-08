@@ -59,9 +59,9 @@ default. That is row 51.
 
 ## 3. Job B: the line of copy
 
-*Just a moment* becomes *Follow below instructions*. **The change is written, tested and committed on the local
-branch `fix/qibla-subtitle-copy`, one commit ahead of `uat-2`. It is not merged and not pushed**, because the owner paused app
-work before the phone proof.
+*Just a moment* becomes *Follow below instructions*. The change was written, tested and committed on the local
+branch `fix/qibla-subtitle-copy`, one commit ahead of `uat-2`. **Merged into `uat-2` on 2026-10-08; the owner waived
+the phone proof the same day and confirmed the wording is what he wants.**
 
 | What | Result |
 | --- | --- |
@@ -71,7 +71,7 @@ work before the phone proof.
 | Red first | Five failures against the unchanged component, each `Unable to find an element with text: Follow below instructions` |
 | Breaks | Five of five caught: the fades swapped, the narrower line in flow, the cap removed, the old wording, both lines shown at once |
 | The suite at that commit | 188 suites, 5200 tests, 100% on all four measures |
-| **Not done** | The build on a phone, and the reading of the header's height when the compass arrives |
+| **Not done** | The build on a phone, and the reading of the header's height when the compass arrives. **Waived by the owner, 2026-10-08** |
 
 ## 4. Job C: the hygiene check, and what is left of the row
 
@@ -80,7 +80,7 @@ work before the phone proof.
 
 | Left to do | Waits on |
 | --- | --- |
-| Merge `fix/qibla-subtitle-copy`, build it, and read the line on a phone | The owner's word to resume app work |
-| The build without the Android hunks, and the decision to remove them | The same |
+| ~~Merge `fix/qibla-subtitle-copy`, build it, and read the line on a phone~~ Merged 2026-10-08, phone proof waived by the owner | Nothing |
+| The build without the Android hunks, and the decision to remove them | The owner's word to resume app work |
 | Whether comments in the code that name the owner as a role are reworded: 147 lines in 62 files, 69 of them in app source | His answer |
 | The build worktrees under `$HOME/athan-device-sweep/worktrees/` | Nothing. `build-mock.zsh` and `build-prod.zsh` create one on their first run |
