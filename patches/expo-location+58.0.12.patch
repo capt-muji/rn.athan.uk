@@ -48,10 +48,10 @@ index 8088ec6..b043ed7 100644
    }
  
 diff --git a/node_modules/expo-location/expo-module.config.json b/node_modules/expo-location/expo-module.config.json
-index c58cd04..642913d 100644
+index cd5144d..299327a 100644
 --- a/node_modules/expo-location/expo-module.config.json
 +++ b/node_modules/expo-location/expo-module.config.json
-@@ -1,14 +1,16 @@
+@@ -1,17 +1,17 @@
  {
 -  "platforms": ["apple", "android"],
 +  "platforms": [
@@ -65,14 +65,15 @@ index c58cd04..642913d 100644
 +    ]
    },
    "android": {
--    "modules": ["expo.modules.location.LocationModule"],
+     "modules": [
+       "expo.modules.location.LocationModule",
+       "expo.modules.location.next.LocationModuleNext"
+-    ],
 -    "publication": {
 -      "groupId": "host.exp.exponent",
 -      "artifactId": "expo.modules.location",
 -      "repository": "local-maven-repo"
 -    }
-+    "modules": [
-+      "expo.modules.location.LocationModule"
 +    ]
    }
  }
