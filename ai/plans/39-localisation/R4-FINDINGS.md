@@ -52,7 +52,7 @@ makes the in-place replace work.
   R4 costs the Philippines example the owner raised and finds that Philippine phones usually carry
   `fil-PH` in the locale list anyway, so the locale route serves that user better than location would.
 - **No first-run picker.** The first launch already gates on a network sync and a notification
-  permission; a language question would be the third thing asked before a prayer time renders.
+  permission. A language question would be the third thing asked before a prayer time renders.
 - **The settings-row-plus-sheet shape the owner sketched is the industry consensus**, confirmed
   across 18 surveyed apps including Muslim Pro and Athan by IslamicFinder.
 

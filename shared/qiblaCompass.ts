@@ -31,8 +31,8 @@ export interface DialCardinal {
 /**
  * Every radius, length and angle the face is built from, as a share of its radius.
  *
- * Taken from the design the owner locked in on 2026-09-30 (`ai/plans/45-qibla-flat-map/design/README.md`), whose
- * generator these reproduce exactly.
+ * Taken from the design the owner locked on 2026-09-30. The drawing code is the specification:
+ * where an old render and this file differ, this file is right.
  */
 export const FACE = {
   /** The stroke unit every line width is a multiple of */

@@ -58,7 +58,7 @@ This is a better outcome than the brief assumed: the catalogs are typed source, 
 
 R5 found a class of string this session had not counted. `shared/time.ts` renders
 `'EEE, d MMM yyyy'` through `date-fns` and pins the Hijri formatter to
-`'en-US-u-ca-islamic-umalqura'`. Those are not translatable strings; they are locale configuration,
+`'en-US-u-ca-islamic-umalqura'`. Those are not translatable strings. They are locale configuration,
 and they must take the active locale rather than be translated.
 
 Row 39's queue entry says "Dates and times are NOT touched (owner): `HH:mm` stays, and the

@@ -2,7 +2,7 @@
 
 Owner decision D9 named this as the feature's main risk:
 
-🐋  "What if the translation of sunrise in a different language might be like 20 characters, 30
+"What if the translation of sunrise in a different language might be like 20 characters, 30
 characters? I think we might have to run through a bunch of different languages and find out if
 this will ever break."
 
@@ -198,7 +198,7 @@ The 15 locales' names above are a working set assembled for the width question, 
 catalog. Round 2 sources them properly (`R2` is looking for licence-checked open-source Islamic app
 catalogs). The width CONCLUSIONS survive that: the phrases that break the layout are
 literal translations of "Last Third", and any faithful translation of that concept is long in
-those languages. The exact points will move; the shape will not.
+those languages. The exact points will move. The shape will not.
 
 ## Reproducing
 

@@ -60,7 +60,7 @@ through `t()` and every structural decision made.
 | Identifier/label split | Not called out | **38.1, first** | R5: the most expensive thing to reverse and every failure is silent |
 | Pseudolocale | Implied in 39 | **38.5** | R2: it is the width guard and needs no translations |
 | Width cache keys | 39 | **38.6** | The bug is only reachable in 39, but the key family and whitelist must exist before then |
-| `getLongestPrayerNameIndex` | Not identified | **38.7** | Measured this session; it is wrong today for any non-English locale |
+| `getLongestPrayerNameIndex` | Not identified | **38.7** | Measured this session. It is wrong today for any non-English locale |
 | Device `Intl` probe | Not identified | **38, pre-flight** | R1's Hermes claim decides whether any plural machinery is ever needed |
 
 ## The dependency that is easy to miss

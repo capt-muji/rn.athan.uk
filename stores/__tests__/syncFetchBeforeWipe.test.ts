@@ -223,7 +223,7 @@ describe('when the fetch fails', () => {
     },
   ];
 
-  // Days the lists can show never sit under the error screen, whose Refresh would wipe them (DASHES-DESIGN §9)
+  // Days the lists can show never sit under the error screen, whose Refresh would wipe them (session 3 dashes rules §9)
   const failuresWithDaysToShow: {
     when: string;
     now: string;

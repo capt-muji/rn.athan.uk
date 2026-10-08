@@ -24,7 +24,6 @@
  *   parked (null), or gated behind a disabled feature flag are removed
  *   (VISIBLE_WHATS_NEW), so a dark or future feature is never advertised
  *
- * @see ai/adr/012/ADR.md
  */
 
 import { FEATURE_FLAGS, type FeatureFlagId } from '@/shared/flags';

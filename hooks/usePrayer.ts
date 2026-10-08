@@ -2,7 +2,6 @@
  * Hook for accessing individual prayer data with derived status
  * Part of the new prayer-centric timing system
  *
- * @see ai/adr/005-timing-system-overhaul.md
  */
 
 import { useAtomValue } from 'jotai';

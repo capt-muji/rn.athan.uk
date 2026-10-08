@@ -25,7 +25,7 @@ const MemoSettingsButton = memo(SettingsButton);
 export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
   // Derived from state, not an effect: a suspend-dropped write cannot strand
-  // (see ai/features/overlay/spec.md)
+
   const [currentPage, setCurrentPage] = useState(0);
   const dot0OpacityStyle = useDerivedOpacity(currentPage === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
   const dot1OpacityStyle = useDerivedOpacity(currentPage === 1 ? 1 : 0.25, { duration: ANIMATION.duration });

@@ -782,7 +782,7 @@ const latest = (rows: ReadablePrayer[]): ReadablePrayer =>
 const endOfListDay = (date: string): number => createPrayerDatetime(addDaysToDateString(date, 1), '00:00').getTime();
 
 /**
- * What the app's screens show over `prayers`, restated from the rules (DASHES-DESIGN.md §4) rather than
+ * What the app's screens show over `prayers`, restated from the rules (session 3 dashes rules §4) rather than
  * taken from shared/sequence.ts
  */
 const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {

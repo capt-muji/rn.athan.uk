@@ -197,7 +197,7 @@ and the plan names the test that proves it.
 | Which library, and does it need an Intl polyfill on Hermes | R1 |
 | How 20 catalogs are produced and kept correct without a reviewer | R2 |
 | Whether pinned-LTR is acceptable, and what bidi rules are needed | R3 |
-| Whether notification copy can localise at DELIVERY time | R5 **ANSWERED 2026-10-07** in `R4-FINDINGS.md` (:7-30): it cannot; copy freezes at schedule time |
+| Whether notification copy can localise at DELIVERY time | R5 **ANSWERED 2026-10-07** in `R4-FINDINGS.md` (:7-30): it cannot. Copy freezes at schedule time |
 | Whether an Android channel NAME can be updated in place | R5 **ANSWERED 2026-10-07** in `R4-FINDINGS.md` (:32-45): it can, rename in place on the same ids |
 | The first-run locale algorithm, and the picker's shape | R4 |
 | The 11 prayer names in every candidate locale, with widths | R3 and round 2 |

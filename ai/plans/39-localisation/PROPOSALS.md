@@ -3,9 +3,9 @@
 Everything here is a recommendation with its reasoning and its cost. Nothing here was built. The
 owner asked for proposals at the end rather than questions during the work:
 
-🐋  "Brainstorm with yourself and propose me ideas at the very end after your assumptions."
+"Brainstorm with yourself and propose me ideas at the very end after your assumptions."
 
-🐋  "If you have other alternatives, just tell me, don't implement them."
+"If you have other alternatives, just tell me, don't implement them."
 
 Read P1 first. The rest follow from it.
 
@@ -13,12 +13,12 @@ Read P1 first. The rest follow from it.
 
 ## P1. The two-language deadlock: ONE setting, and the second name derived
 
-> **SUPERSEDED 2026-09-29 by the owner's simplicity objection.** 🐋  "I don't want multiple
+> **SUPERSEDED 2026-09-29 by the owner's simplicity objection.** "I don't want multiple
 > settings. It's really against my workflow, the simplicity... do people really need 2 languages?"
 > The analysis below is correct about the MECHANISM and wrong about the SETTINGS COUNT, and the two
 > are separable. **`ONE-OR-TWO-LANGUAGES.md` carries the revised recommendation: one picker, plus
 > the toggle that already exists, with the second name DERIVED as Arabic unless the app language is
-> Arabic.** That solves the deadlock just as cleanly, because the cause was the coupling rather
+> Arabic.** That solves the deadlock as cleanly, because the cause was the coupling rather
 > than the count, and it removes a control instead of adding one. The section below is kept because
 > its reasoning about why the coupling breaks is still the argument, and because the second picker
 > remains a reversible addition if users ever ask for it.
@@ -34,7 +34,7 @@ One setting is being asked to do two unrelated jobs, which is why every configur
 | Setting | Controls | Default |
 | --- | --- | --- |
 | **App language** | Settings, every sheet, every modal, Help, What's New, notification copy, widget chrome | From the device locale, falling back to English |
-| **Prayer names** | The prayer list's name columns and the explanation text | Primary follows the app language; secondary is Arabic, and can be turned off |
+| **Prayer names** | The prayer list's name columns and the explanation text | Primary follows the app language. Secondary is Arabic, and can be turned off |
 
 Two independent settings make every configuration the owner listed expressible, and none of them
 collide:
@@ -121,7 +121,7 @@ correctly.
 
 His words were:
 
-🐋  "The English prayer names, they will stay. On the prayer list itself, only the Arabic names will
+"The English prayer names, they will stay. On the prayer list itself, only the Arabic names will
 change to what the user has selected."
 
 That can be read two ways.
@@ -163,7 +163,7 @@ well as a name, and interface copy belongs to the interface language.
 
 The owner raised this and suspected it himself:
 
-🐋  "Maybe we just include both languages in the notification. I don't know, but that can become
+"Maybe we just include both languages in the notification. I don't know, but that can become
 really messy real quick."
 
 The measurements say he was right:
@@ -178,7 +178,7 @@ The measurements say he was right:
 **The decisive reason is not display, and I had missed it.** R7 found that arming two notifications
 per prayer, one per language, doubles the request cost of every row against the fixed
 `NOTIFICATION_REQUEST_BUDGET` of 64. Session 28 measured the standard profile at 3 days of coverage
-with both reminders; doubling the rows cuts that toward 1.5 days.
+with both reminders. Doubling the rows cuts that toward 1.5 days.
 
 So a bilingual notification would **halve how long the app keeps working when the background refresh
 chain dies**, which is the exact failure `ai/AGENTS.md` records costing a user their Magrib and Isha
@@ -238,7 +238,7 @@ infoExplanationArabic: {
 
 Right-aligned, with its own line height, inside an LTR box. So the app has already met this problem
 once, on its only Arabic prose surface, and solved it exactly the way the amendment describes. The
-proposal is not a new pattern; it is applying the pattern the app already uses to the surfaces that
+proposal is not a new pattern. It is applying the pattern the app already uses to the surfaces that
 are about to become translatable. Under a literal "left align everything" reading, this shipped
 line would have to be REMOVED, making the Arabic explanation worse than it is today.
 
@@ -256,7 +256,7 @@ column already does.
 ### The one thing that cannot be avoided either way
 
 The Unicode bidirectional algorithm runs inside every `Text` node regardless of layout direction.
-`الفجر 05:42` puts the time on the wrong side; a trailing colon lands where an Arabic reader
+`الفجر 05:42` puts the time on the wrong side. A trailing colon lands where an Arabic reader
 starts. The fix is string-level: wrap RTL content in isolate characters (`U+2067`, `U+2069`). This
 is required under the owner's ruling, under full mirroring, and under every option in the table.
 
