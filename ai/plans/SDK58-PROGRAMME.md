@@ -11,8 +11,9 @@ time, release candidates included. npm that day: `latest` 57.0.27, `next` 58.0.6
 unblocked and jumps the queue. Its second job is Babel 8.
 
 **Babel 8 rider.** `@babel/core` 8.0.6 and its three plugins cannot move while
-`babel-preset-expo@58.0.4` depends on 36 Babel 7 plugins and `@react-native/babel-preset` pins
-`@babel/core ^7.25.2`. A Babel 7 plugin under Babel 8 throws `BABEL_VERSION_UNSUPPORTED`. Bump
+`babel-preset-expo@58.0.11` (the preset `expo@58.0.6` pairs with) depends on 36 Babel 7 plugins
+and `@react-native/babel-preset` pins `@babel/core ^7.25.2`. A Babel 7 plugin under Babel 8
+throws `BABEL_VERSION_UNSUPPORTED`. Bump
 the four together when the SDK presets move: `@babel/core`,
 `@babel/plugin-transform-modules-commonjs`, `@babel/plugin-transform-react-jsx` and
 `@babel/preset-typescript`, all at `^7.29.x` in `package.json:79-82`.
@@ -50,10 +51,14 @@ the four together when the SDK presets move: `@babel/core`,
   latest rolls back alone, one version at a time, to an exact pin with no local workaround,
   until a newer one ships.
 - **A2. The Babel 8 blocker** is the rider above. It is this row's second job.
-- **A3. Four packages differ from Expo's pin set on purpose** (installed `expo@58.0.0-preview.7`):
-  `react-native` 0.88.0-rc.2 against the rc.1 pin (the owner takes the latest release
-  candidate), `@expo/ui` and `expo-widgets` exact `58.0.5` against `~58.0.7`, and
-  `expo-location` exact `58.0.9` against `~58.0.7` (`package.json:36`, `:52`, `:59`, `:62-64`).
+- **A3. Deliberate divergences from Expo's pin set** (installed `expo@58.0.6`, riding the `next`
+  tag on the owner's 2026-10-09 ruling):
+  `react-native` 0.88.0-rc.3 against the stable pin (the owner takes the latest release
+  candidate), `@expo/ui` and `expo-widgets` exact `58.0.5` against `~58.0.14`, and
+  `expo-location` exact `58.0.12` against `~58.0.12` (patched). A yarn resolution
+  `"**/@expo/ui": "58.0.5"` holds the whole graph at that version: without it a fresh
+  `yarn install --force` nests `@expo/ui@58.0.7` under `expo-widgets`, whose module-scope
+  `React.memo` kills the widget bundle at load (row 26's lesson, re-proven 2026-10-09).
 - **A4. `@expo/log-box` is invisible to Expo checks**: it is not in `bundledNativeModules.json`,
   so no Expo check reports it. It sits at `~58.0.5` (`package.json:34`) on the `^58.0.5` peer
   range that `expo-router` and `@expo/metro-runtime` declare. Move it by that peer range.

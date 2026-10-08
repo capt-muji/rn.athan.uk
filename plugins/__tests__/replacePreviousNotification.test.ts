@@ -161,7 +161,7 @@ describe('the upstream the plugin rides on', () => {
       'override fun presentNotification(notification: Notification, behavior: NotificationBehaviorRecord?)'
     );
     expect(delegate).not.toContain('final override fun presentNotification');
-    expect(delegate.split('NotificationManagerCompat.from(context).notify')).toHaveLength(2);
+    expect(delegate.split('notificationManager.notify(')).toHaveLength(3);
     expect(service).toContain('protected open fun getPresentationDelegate');
   });
 });
