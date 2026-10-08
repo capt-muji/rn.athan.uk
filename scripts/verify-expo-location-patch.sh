@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Is node_modules/expo-location in the state patches/expo-location+58.0.9.patch produces?
+# Is node_modules/expo-location in the state patches/expo-location+58.0.12.patch produces?
 #
 # Session 50 isolates four heading changes by editing node_modules and rebuilding, three of which
 # live in that patch. A tree left edited silently changes every later build in this repository and

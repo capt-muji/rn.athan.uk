@@ -24,7 +24,7 @@ index c8e51de..780d6af 100644
 +  }
  }
 diff --git a/node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt b/node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt
-index 74c5719..2e6d7ba 100644
+index 67097c6..b02a089 100644
 --- a/node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt
 +++ b/node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt
 @@ -28,6 +28,9 @@ object BackgroundTaskScheduler {
@@ -109,21 +109,36 @@ index 1c28333..901d90f 100644
 +    requiresNetworkConnectivity?: boolean;
  };
 diff --git a/node_modules/expo-background-task/expo-module.config.json b/node_modules/expo-background-task/expo-module.config.json
-index 669248e..d4690a8 100644
+index d1beef6..c4ec85d 100644
 --- a/node_modules/expo-background-task/expo-module.config.json
 +++ b/node_modules/expo-background-task/expo-module.config.json
-@@ -5,12 +5,6 @@
-     "modules": ["BackgroundTaskModule"]
+@@ -1,15 +1,19 @@
+ {
+-  "platforms": ["apple", "android"],
++  "platforms": [
++    "apple",
++    "android"
++  ],
+   "apple": {
+-    "appDelegateSubscribers": ["BackgroundTaskAppDelegateSubscriber"],
+-    "modules": ["BackgroundTaskModule"]
++    "appDelegateSubscribers": [
++      "BackgroundTaskAppDelegateSubscriber"
++    ],
++    "modules": [
++      "BackgroundTaskModule"
++    ]
    },
    "android": {
 -    "modules": ["expo.modules.backgroundtask.BackgroundTaskModule"],
 -    "publication": {
 -      "groupId": "host.exp.exponent",
 -      "artifactId": "expo.modules.backgroundtask",
--      "version": "58.0.7",
 -      "repository": "local-maven-repo"
 -    }
-+    "modules": ["expo.modules.backgroundtask.BackgroundTaskModule"]
++    "modules": [
++      "expo.modules.backgroundtask.BackgroundTaskModule"
++    ]
    }
  }
 diff --git a/node_modules/expo-background-task/ios/BackgroundTaskConstants.swift b/node_modules/expo-background-task/ios/BackgroundTaskConstants.swift
