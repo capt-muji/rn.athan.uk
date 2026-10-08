@@ -46,7 +46,7 @@ and `Duha` is null in Urdu and German. Those are the two terms this session flag
 as having no standard rendering outside Arabic.
 
 **R6 used nulls rather than guesses**, which was the instruction and is the single most valuable
-property of the file. A null with an honest note is actionable; a plausible invention is a silent
+property of the file. A null with an honest note is actionable. A plausible invention is a silent
 defect nobody could catch.
 
 ## The validation that raises confidence in the whole file

@@ -1,7 +1,7 @@
 # The `expo-localization` SDK-58 (`next`) API, read from the published package
 
 R4 describes this API from the documentation. The plan needs exact signatures, so this is read from
-the package itself: `npm pack expo-localization@58.0.3 (the `next` tag; was 58.0.1 when this was first read — dist-tags move)`, then
+the package itself: `npm pack expo-localization@58.0.3 (the `next` tag. Was 58.0.1 when this was first read — dist-tags move)`, then
 `package/build/Localization.d.ts` and `Localization.types.d.ts`.
 
 ## The four exports
@@ -84,7 +84,7 @@ date setting. Also out of scope, also worth recording.
 ## Reproducing
 
 ```bash
-cd $(mktemp -d) && npm pack expo-localization@58.0.3 (the `next` tag; was 58.0.1 when this was first read — dist-tags move) --silent
+cd $(mktemp -d) && npm pack expo-localization@58.0.3 (the `next` tag. Was 58.0.1 when this was first read — dist-tags move) --silent
 tar -xzf expo-localization-58.0.3.tgz
 cat package/build/Localization.d.ts
 cat package/build/Localization.types.d.ts

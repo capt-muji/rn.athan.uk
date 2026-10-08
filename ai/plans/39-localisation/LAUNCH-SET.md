@@ -65,7 +65,7 @@ R6 would ship `Istijaba` only in `ar` and `tr`, and `Duha` only in `ms id uz bn 
 
 This confirms the owner's instinct exactly:
 
-🐋  "Istijaba, the prayer that appears only on Fridays, doesn't actually have a direct
+"Istijaba, the prayer that appears only on Fridays, doesn't actually have a direct
 translation."
 
 **The design answer, which the app already uses:** the label is transliterated and the explanation
@@ -81,7 +81,7 @@ missing work.
 ## What this changes in the assumptions
 
 `ASSUMPTIONS.md` A7 assumed R4's eight. Revised: **six at launch**, with French and German behind
-one owner decision. A7b said a locale ships only when its 11 names are non-null; revised to: a
+one owner decision. A7b said a locale ships only when its 11 names are non-null. Revised to: a
 locale ships when its **six standard names** are non-null and its extras either resolve or
 transliterate.
 

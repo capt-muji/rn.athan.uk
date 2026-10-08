@@ -2,7 +2,7 @@
 
 R2 (`research/R2-TRANSLATION-PIPELINE.md`, 408 lines) answers the question the owner posed:
 
-🐋  "Do we really have to have a human reviewer review every single language? Because I don't know
+"Do we really have to have a human reviewer review every single language? Because I don't know
 any language... I'm just myself, me, myself and I."
 
 The answer is no, with a caveat that turns out to be cheap.
@@ -77,7 +77,7 @@ provenance field. That is the conservative reading and it is the one the plan ad
 
 `Istijaba` has no standard rendering in most languages, which confirms the owner's own instinct:
 
-🐋  "Istijaba, the prayer that appears only on Fridays, doesn't actually have a direct translation."
+"Istijaba, the prayer that appears only on Fridays, doesn't actually have a direct translation."
 
 R2's answer is the design the app already uses in English: transliterate the label, and let the
 explanation string carry the meaning.

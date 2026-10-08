@@ -2,7 +2,7 @@
 
 Written 2026-09-29 at 113 lines from `registry.npmjs.org`; **compressed 2026-10-07**. The
 12-package rejected-library table and the historical `58.0.1` pin are dropped (the `next` tag is
-58.0.3 on 2026-10-07; never reintroduce a remembered pin). What survives, because the plan still
+58.0.3 on 2026-10-07. Never reintroduce a remembered pin). What survives, because the plan still
 needs it (C3):
 
 ## The install contract for `expo-localization`
@@ -16,7 +16,7 @@ needs it (C3):
   reintroduce a nested `@expo/ui` copy under `node_modules/expo-widgets/` that blanks every
   widget (session 31). Recovery: `rm -rf node_modules/expo-widgets/node_modules && yarn install
   --frozen-lockfile`.
-- `rtl-detect` (its one runtime dep) maps a language tag to a direction; under D7 the answer
+- `rtl-detect` (its one runtime dep) maps a language tag to a direction. Under D7 the answer
   chooses TEXT alignment and base direction, never layout direction.
 - Tooling: `i18next-parser` is deprecated ("use i18next-cli instead"); `i18next` itself had zero
   runtime dependencies at 26.4.2.

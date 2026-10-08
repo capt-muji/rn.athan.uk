@@ -2,7 +2,7 @@
 
 The owner asked for these in one place:
 
-🐋  "Make assumptions and list them at the very end. The reason I'm telling you to make assumptions
+"Make assumptions and list them at the very end. The reason I'm telling you to make assumptions
 is because I don't want you to ask me any questions and then you stop working while I'm sleeping."
 
 So nothing below was asked. Each row records what was assumed, why, how confident the session is,
@@ -14,14 +14,14 @@ disagree, and they are the rows to read first.
 | # | Assumption | Why | Confidence | What would overturn it |
 | --- | --- | --- | --- | --- |
 | A1 | **REVISED 2026-09-29: ONE setting (App language) plus the EXISTING toggle. The second name is DERIVED: Arabic, unless the app language is Arabic.** See `ONE-OR-TWO-LANGUAGES.md` | The only model where every configuration the owner listed is expressible. R7 confirmed the shape and the labels against eight apps: six of eight use "App language" or "Display Language", and all name the content setting after its noun. "Primary/secondary" is rejected because the industry uses that pair for fallback order | High | The owner prefers one setting and accepts that some combinations are unreachable |
-| A1b | On upgrade, existing installs pin the app language to **English explicitly**; only fresh installs negotiate from the device locale | R7's correction. Negotiating on upgrade would silently switch an existing user in Jakarta with an Indonesian phone | Very high | |
+| A1b | On upgrade, existing installs pin the app language to **English explicitly**. Only fresh installs negotiate from the device locale | R7's correction. Negotiating on upgrade would silently switch an existing user in Jakarta with an Indonesian phone | Very high | |
 | A2 | **CHECK** The prayer row's FIRST name follows the app language, rather than staying English forever | An Indonesian user with an Indonesian app wants "Subuh" first. R7 found Muslim Pro markets exactly this: "Fajr or Subuh? You can change the prayer names to match the names used in your country." No surveyed app ships an English primary beside a localised interface | High on evidence, but it goes beyond D5 | The owner's D5 says "the English prayer names will stay". If he means permanently and literally, the first slot pins to English and every other conclusion survives unchanged |
-| A3 | Notification copy follows the APP language, not the prayer-name setting | D12 says notifications follow the selected language; the app language is the one that governs interface copy, and "now" and "in 5m" are interface copy | High | The owner wants notifications to track the prayer-name setting instead |
+| A3 | Notification copy follows the APP language, not the prayer-name setting | D12 says notifications follow the selected language. The app language is the one that governs interface copy, and "now" and "in 5m" are interface copy | High | The owner wants notifications to track the prayer-name setting instead |
 | A4 | Notifications carry ONE language, not two | Five reasons, the strongest found by R7: two notifications per prayer would double the request cost against the fixed 64 budget and **halve the notification buffer** from 3 days to about 1.5. The display reasons (unhideable Time Sensitive label, title-only design, truncation, bidi hazard) come second | Very high | Nothing reasonable. This became a reliability question rather than a taste one |
-| A5 | No language picker on first launch | First launch already gates on a network sync and a notification permission; a third question before any prayer time renders costs completion. R4 found this is the industry default | High | The owner wants an onboarding language step |
-| A6 | The Google Translate icon is replaced with Material Symbols `translate` | Google's brand guidance forbids imitating its product icons; the owner's own second suggestion was a globe | High | The owner has a licence or accepts the risk |
+| A5 | No language picker on first launch | First launch already gates on a network sync and a notification permission. A third question before any prayer time renders costs completion. R4 found this is the industry default | High | The owner wants an onboarding language step |
+| A6 | The Google Translate icon is replaced with Material Symbols `translate` | Google's brand guidance forbids imitating its product icons. The owner's own second suggestion was a globe | High | The owner has a licence or accepts the risk |
 | A7 | The launch set is **eight**: `en ar id ur bn tr fr de` | R4's audience ranking (Pew 2025). R6 graded `fr` and `de` as needing a speaker, but only over the transliterate-versus-translate fork, which owner decision D15 closed on 2026-09-29 | High | |
-| A7b | A locale ships when its **six standard names** are non-null and fit the budget; the extras may transliterate | `Istijaba` is null in **24 of 28** locales because almost no timetable in any language publishes it. Requiring all 11 would block every locale. The app already pairs a transliterated label with an explanatory string, which is the established answer | High | |
+| A7b | A locale ships when its **six standard names** are non-null and fit the budget. The extras may transliterate | `Istijaba` is null in **24 of 28** locales because almost no timetable in any language publishes it. Requiring all 11 would block every locale. The app already pairs a transliterated label with an explanatory string, which is the established answer | High | |
 | A8 | The second name is Arabic, derived rather than chosen, and the existing toggle still hides it | Preserves today's behaviour exactly and needs no migration at all. The Arabic name is the liturgical constant, the thing every local name is a rendering of, so it is what the column is FOR rather than a preference | High | A user asks for a second name in a third language, which the second picker can add later without breaking anything |
 | A9 | The Hijri and Gregorian date FORMATS are not touched, but month NAMES become locale-aware | Row 39's entry says dates are not touched, which reads as a format ruling. An English month name inside an Arabic interface is a visible defect | **Low** | This is the assumption most likely to be wrong. Raised as a proposal rather than built |
 
@@ -39,9 +39,9 @@ disagree, and they are the rows to read first.
 | B8 | An Android channel can be renamed in place | Two independent sources (R4, R5) plus Microsoft's API docs stating the intended use is exactly a locale change | High | A 3T check. This repo has been burned by documented-but-untrue Android behaviour before |
 | B9 | The notification re-arm needs no cancel pass | Identifiers are deterministic, so a reschedule replaces in place. R4 and R5 agree | High | |
 | B10 | The width cache becomes per-locale | Measured: Swahili is 2.83x English and Arabic 0.85x, so one grow-only max would pin a 226pt column forever for a user who tried one language once | High | R5 argued for one global max, on a cost estimate the measurement shows is far too low |
-| B11 | `expo-localization` is pinned to the `next` tag (58.0.1 on the day this was written; dist-tags move, never a remembered pin) | Confirmed on the day: `latest` is 57.0.2. Same trap row 37 hit | Very high | |
-| B12 | The hardcoded-string guard is a Jest source-scan test, not a lint rule | Biome has no `no-literal-string` equivalent; the repo already uses source-reading contract tests (`widgetContract.test.ts`, `flags.test.ts`) | High | |
-| B13 | Widget text is resolved in the app and baked into timeline props | The widget runtime's React is a five-name stub; a module-scope library call blanks every card, which has already happened once | Very high | |
+| B11 | `expo-localization` is pinned to the `next` tag (58.0.1 on the day this was written. Dist-tags move, never a remembered pin) | Confirmed on the day: `latest` is 57.0.2. Same trap row 37 hit | Very high | |
+| B12 | The hardcoded-string guard is a Jest source-scan test, not a lint rule | Biome has no `no-literal-string` equivalent. The repo already uses source-reading contract tests (`widgetContract.test.ts`, `flags.test.ts`) | High | |
+| B13 | Widget text is resolved in the app and baked into timeline props | The widget runtime's React is a five-name stub. A module-scope library call blanks every card, which has already happened once | Very high | |
 | B14 | Translated widget payloads fit the guard | Measured: worst case (Thai) is 6% of the 200KB guard, 20x headroom | High | |
 | B15 | No app restart is needed on a language change | Owner decision D7 pins the layout LTR, so there is no direction flip, which is the only thing that required a reload | High | The owner later allows mirroring, which reintroduces the restart |
 
@@ -61,7 +61,7 @@ disagree, and they are the rows to read first.
 
 | # | Assumption | Why | Confidence |
 | --- | --- | --- | --- |
-| D1 | This session plans only and ships no code | 🐋 "This is ONLY A RESEARCH TASK. Don't commit anything yet" | Very high |
+| D1 | This session plans only and ships no code | "This is ONLY A RESEARCH TASK. Don't commit anything yet" | Very high |
 | D2 | Work is isolated on `plan/39-localisation` in a worktree | Another session is executing row 37 in the main checkout | Very high |
 | D3 | The identifier/label split lands in row 38, not 39 | R5: it is the prerequisite for everything else and costs an afternoon before catalogs exist, versus a storage migration after | High |
 | D4 | Row 39 still waits on row 37 and row 36 | `ai/plans/README.md` records both. Row 36 is now CANCELLED, so only 37 remains | High |

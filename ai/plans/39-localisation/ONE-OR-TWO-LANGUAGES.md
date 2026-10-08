@@ -1,6 +1,6 @@
 # One language or two? The owner's open question, answered honestly
 
-🐋  "I'm honestly still not sure how to handle notifications, having two settings, because I want to
+"I'm honestly still not sure how to handle notifications, having two settings, because I want to
 make it as simple as possible for the user. I don't want multiple settings. It's really against my
 workflow, the simplicity. I love customisation. But do people really need 2 languages? Maybe we
 should enforce. No, I don't know. Just thoughts. Still open questions about whether to have one
@@ -100,7 +100,7 @@ owner's instinct here is better than my recommendation was.
 
 The deadlock is still solved, because the cause was never the count of settings. It was that ONE
 setting was driving both the interface and the notifications through an unrelated display choice.
-Deriving the second name removes that coupling just as cleanly as splitting the setting did, and it
+Deriving the second name removes that coupling as cleanly as splitting the setting did, and it
 removes a control instead of adding one.
 
 ## What this does NOT change
