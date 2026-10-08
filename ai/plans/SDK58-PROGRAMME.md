@@ -6,9 +6,9 @@ DONE records live in git history.
 
 ## 16. SDK 58 stable re-pin + full release-notes review (NOT PLANNED, blocked until SDK 58 stable is on npm)
 
-**Trigger.** The `latest` dist-tag moves to 58 stable, RN 0.88 is stable, the root `CHANGELOG.md`
-merges, the release blog post lands. Expected around Oct 7 to 14. The row may jump the queue the
-day it triggers. Its second job is Babel 8.
+**Trigger.** The owner ruled 2026-10-09: ride the `next` tag and repin to the newest version every
+time, release candidates included. npm that day: `latest` 57.0.27, `next` 58.0.6. The row is
+unblocked and jumps the queue. Its second job is Babel 8.
 
 **Babel 8 rider.** `@babel/core` 8.0.6 and its three plugins cannot move while
 `babel-preset-expo@58.0.4` depends on 36 Babel 7 plugins and `@react-native/babel-preset` pins
