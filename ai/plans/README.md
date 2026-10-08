@@ -108,7 +108,7 @@ A planning session may turn one of these into a plan only after the owner approv
 
 ## Files here
 
-- Briefs: `PLANNER-BRIEF.md`, `EXECUTOR-BRIEF.md`, `AUDITOR-BRIEF.md` and `SDK58-PROGRAMME.md` (the row 18 and D4 briefs).
+- The session skills: `athan-planner`, `athan-executor` and `athan-auditor` in `.agents/skills/`, orchestrated by `athan-next`. `SDK58-PROGRAMME.md` holds the row 18 and D4 briefs.
 - `TEMPLATE.md` fixes the shape of every plan.
 - Surviving session folders: `27-silent-mode-bypass/FINDINGS.md` (backs the answers `shared/help.ts` gives), `39-localisation/` (rows 38 and 39) and `54-patches-and-copy/FINDINGS.md` (row 54). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other session's record lives in git history.
 

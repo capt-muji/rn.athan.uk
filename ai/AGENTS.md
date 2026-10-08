@@ -8,8 +8,9 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
 1. This file.
 2. `opencode.json` (repo root): which MCP servers are wired and which are enabled (see the
    routing table below).
-3. `.agents/skills/` (repo root): the official Expo and EAS skills. Load the matching skill
-   (`expo-upgrade`, `eas-app-stores`, `expo-router`) instead of working from memory.
+3. `.agents/skills/` (repo root): the official Expo and EAS skills, and this repo's own session
+   skills (`athan-next`, `athan-planner`, `athan-executor`, `athan-auditor`). Load the matching
+   skill (`expo-upgrade`, `eas-app-stores`, `expo-router`) instead of working from memory.
 
 ## Tool routing
 

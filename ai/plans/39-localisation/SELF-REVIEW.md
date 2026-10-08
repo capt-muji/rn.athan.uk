@@ -1,7 +1,7 @@
 # Attacking this session's own conclusions
 
 `ai/AGENTS.md` requires attacking your own work from a different angle before anyone else sees it,
-and `PLANNER-BRIEF.md` section 3 item 11 requires reading the plan cold as a stranger. This is that
+and the `athan-planner` skill, section 3 item 11 requires reading the plan cold as a stranger. This is that
 pass, written before the plan itself, so what it finds changes the plan rather than annotating it.
 
 Each section states the conclusion, the strongest attack on it, and the verdict.
@@ -99,7 +99,7 @@ desk assumption, and `ASSUMPTIONS.md` B6 is marked medium confidence for this re
 
 **The attack.** He said "left align it exactly like English". I have written a plan that
 right-aligns RTL text. However well-reasoned, that is a planning session substituting its judgement
-for an explicit ruling, which `PLANNER-BRIEF.md` forbids.
+for an explicit ruling, which the `athan-planner` skill forbids.
 
 **The counter, and why I think this one is defensible:**
 

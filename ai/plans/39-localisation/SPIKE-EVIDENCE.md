@@ -1,6 +1,6 @@
 # The spike: the recommended approach was built and measured, then deleted
 
-`ai/plans/PLANNER-BRIEF.md` section 3 item 8 requires the risky parts to be proven before they are
+the `athan-planner` skill, section 3 item 8 requires the risky parts to be proven before they are
 written into a plan, with the spike's code thrown away and only what it TAUGHT recorded. This is
 that record.
 
