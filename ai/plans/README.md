@@ -13,7 +13,7 @@ across the life of the build, and a name in the text only dates it.
 2. **Execution.** One execution session per plan builds it to those acceptance criteria, reviewing every commit
    itself before merging it. It chooses HOW; it never chooses WHAT. It never pushes.
 3. **Audit.** An audit session checks the executed plan against the plan, fixes whatever is wrong itself, and pushes
-   `uat-2`. Work is never handed back to the executor (owner, 2026-09-16); a large repair may take more than one
+   `uat`. Work is never handed back to the executor (owner, 2026-09-16); a large repair may take more than one
    audit session, and every one of them is the auditor's.
 
 A plan is good when an executor that makes no decisions never has to make one, and can tell for itself when its work
@@ -49,7 +49,7 @@ guards went with it. No gateway address, domain or key is ever written into this
 1. Plan the first row that needs planning: a PLANNING row is resumed, and a NEEDS REPLAN row refreshed, before a NOT
    PLANNED row is started.
 2. Execute that row.
-3. Audit it. The audit fixes whatever the executor got wrong, itself, then sets the row DONE and pushes `uat-2`. It
+3. Audit it. The audit fixes whatever the executor got wrong, itself, then sets the row DONE and pushes `uat`. It
    never hands work back to the executor (owner, 2026-09-16).
 4. Only then plan the next row.
 
@@ -59,7 +59,7 @@ SDK 58 stable lands, row 18 jumps the queue.
 
 **The invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED.** A BLOCKED, OWNER-LED or
 research-parked row waits on the owner and holds no merged code of its own, so more than one of those may sit in the
-table at once. A plan is written against one `uat-2` commit and carries that commit's code verbatim: its anchors,
+table at once. A plan is written against one `uat` commit and carries that commit's code verbatim: its anchors,
 the lines around them, the tests' expected numbers, and owner decisions taken while looking at it. A row ahead of it
 changes that code, so a plan written early is stale before it runs, and a stale anchor that still matches by text is
 worse than one that fails, because nothing catches it. Replanning costs what planning cost, so planning ahead is not
@@ -85,7 +85,7 @@ Off that path:
 ## The queue
 
 DONE rows keep their order number, their "Planned at" commit and nothing else: their plan folders and prompts left
-the repository in the 2026-10-07 clean-up, and the `uat-2` history is their record. Where a DONE row's surviving
+the repository in the 2026-10-07 clean-up, and the `uat` history is their record. Where a DONE row's surviving
 artefact is still cited by shipped code or config, the Plan column names it. Open rows keep their pointers and the
 facts a cold-start session needs.
 
@@ -150,7 +150,7 @@ facts a cold-start session needs.
   of 2026-09-16. It hands the executor finished files and is executed exactly as written: where a STEP dictates
   rather than specifies, the dictation wins (`EXECUTOR-BRIEF.md`). Every plan from session 7 on is written to the
   new rules.
-- "Planned at" is the `uat-2` commit the plan's anchors were verified against (a version number where a session
+- "Planned at" is the `uat` commit the plan's anchors were verified against (a version number where a session
   wrote no plan).
 - "Needs first" lists the order numbers of the rows that must be DONE before this plan is executed, such as `1`, or
   `nothing`.
@@ -169,7 +169,7 @@ The owner's rule, refined through session 21, is **blast radius, not the version
 
 How to tell which, before queuing: install the candidate in a scratch worktree, run `tsc`, Biome and the full suite,
 and count what fails. That measurement is the whole decision, and it is cheap. Session 21's own numbers are the
-worked example, in its `uat-2` history.
+worked example, in its `uat` history.
 
 One package per branch and per commit stays the rule in every case (owner, 2026-09-25), because `yarn.lock` is one
 resolved graph: two packages in a commit cannot be reverted apart.
@@ -215,20 +215,20 @@ a row above.
   `27-silent-mode-bypass/FINDINGS.md` (backs the answers `shared/help.ts` gives),
   `39-localisation/` (the research behind rows 38 and 39), `45-qibla-flat-map/design/README.md` (the locked compass
   design), `48`, `49`, `50` and `53` (the qibla heading programme: plans, logs, audits), and
-  `54-patches-and-copy/FINDINGS.md`. Every deleted session's record lives in `uat-2` history.
+  `54-patches-and-copy/FINDINGS.md`. Every deleted session's record lives in `uat` history.
 - `ai/prompts/`, beside this folder: the two moonsighting research prompts and their README.
 
 ## Who changes a status, and who pushes
 
 - **A planning session** sets PLANNING, READY, OWNER-LED, BLOCKED or NOT PLANNED, and fills "Planned at" and
   "Needs first".
-- **An execution session** sets IN PROGRESS, EXECUTED, NEEDS REPLAN or BLOCKED. It commits and merges into `uat-2` on
+- **An execution session** sets IN PROGRESS, EXECUTED, NEEDS REPLAN or BLOCKED. It commits and merges into `uat` on
   this Mac, and never pushes.
 - **An audit session** sets DONE for an EXECUTED row. It never sets a row back to READY: what the executor got
   wrong, the audit repairs itself. Auditing an unfinished plan leaves its status as it is, so the executor carries on
   with the plan it has not finished. That is the executor resuming its own work, not work handed back to it.
-- **Pushing.** Only planning and audit sessions push `uat-2`, and only when every commit on `uat-2` that is not yet
-  on `origin/uat-2` has been audited. A planning session that finds unaudited commits asks the owner to run the audit
+- **Pushing.** Only planning and audit sessions push `uat`, and only when every commit on `uat` that is not yet
+  on `origin/uat` has been audited. A planning session that finds unaudited commits asks the owner to run the audit
   prompt first, unless it is replanning a NEEDS REPLAN row, which it does without pushing.
 
 ## State of the phone when this programme started

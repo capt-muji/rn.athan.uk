@@ -34,9 +34,9 @@ Repeat exactly this at the start, and again after each phase:
 
 | What | How |
 | --- | --- |
-| Refresh `origin` | `git fetch -q origin uat-2` |
-| Unpushed commits | `git log --oneline origin/uat-2..uat-2 \| wc -l` |
-| Unaudited code commits | `git log --oneline origin/uat-2..uat-2 -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json' \| wc -l` |
+| Refresh `origin` | `git fetch -q origin uat` |
+| Unpushed commits | `git log --oneline origin/uat..uat \| wc -l` |
+| Unaudited code commits | `git log --oneline origin/uat..uat -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json' \| wc -l` |
 | The queue | `grep -n '^| [0-9]' ai/plans/README.md` |
 
 That grep gives every row with its order number, session, plan path and status.
@@ -89,7 +89,7 @@ Re-read section 1 after every phase. The table and git are the truth.
 | What you find | What you do |
 | --- | --- |
 | The phase moved the row on (PLANNING or NEEDS REPLAN became READY, READY became IN PROGRESS then EXECUTED, EXECUTED became DONE) | Go on to the next phase from section 2 |
-| The row is unchanged but you committed to `uat-2` | Carry on with the same phase: it is getting somewhere |
+| The row is unchanged but you committed to `uat` | Carry on with the same phase: it is getting somewhere |
 | The row is unchanged and nothing was committed, twice running | Stop. The phase cannot finish as specified |
 | A row went BLOCKED or OWNER-LED, or the owner must hold a device | Stop and report it |
 
@@ -145,7 +145,7 @@ So:
 
 Stop as soon as one of these is true, and never start another phase after it:
 
-- the row is DONE and `uat-2` has no unpushed commits: the session is finished, which is where this skill stops;
+- the row is DONE and `uat` has no unpushed commits: the session is finished, which is where this skill stops;
 - a row is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such as holding a device or tapping a screen.
   An owner decision is not one of these: ask it with the `question` tool and carry on;
 - section 4 says stop.
@@ -156,7 +156,7 @@ One session per run. Never carry on into the next row: the owner starts that wit
 
 ```
 **Just done:** <Planning, Execution and Audit | the phases that ran>, session <n>. <one clause on what moved>
-**Row:** <status now>, `uat-2` <pushed | holds N unpushed commits>
+**Row:** <status now>, `uat` <pushed | holds N unpushed commits>
 **Up next:** <the phase or session that comes next, or what it is waiting on>
 **You type:** `athan-next`
 ```

@@ -91,7 +91,7 @@ not start or resume a plan for any other row: a PLANNING row is resumed (item 3.
 `athan-next`, which starts the step that row needs, and stop. A plan written while a row ahead of it is unfinished is
 written against code that row is about to change (`README.md`, "Order").
 
-1. **Unaudited commits.** Run `git log --oneline origin/uat-2..uat-2`. If it lists commits and no row is NEEDS
+1. **Unaudited commits.** Run `git log --oneline origin/uat..uat`. If it lists commits and no row is NEEDS
    REPLAN, stop: tell the owner to run the audit prompt first. If a row is NEEDS REPLAN, replan only that row
    (section 9), and push nothing in this session.
 2. **A named plan.** If the owner's prompt names a plan, take that row. A READY or NEEDS REPLAN row named this way is
@@ -134,8 +134,8 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    write steps: reread your own design and code map with fresh eyes and attack it, asking what a hostile reviewer
    would say, what breaks it and what it fails to cover. Fix what you find and record the review in section 5.
 6. **Cut the work into steps.** The standing rule: one finding, one branch, one commit, version-bumped, merged `--no-ff`
-   into `uat-2`. A step must be small enough that its change fits in the plan verbatim. Order steps so each leaves
-   `uat-2` green.
+   into `uat`. A step must be small enough that its change fits in the plan verbatim. Order steps so each leaves
+   `uat` green.
 7. **Specify each step so completely that no question can arise** (template section 6). Give the executor:
    - **Which kind of step it is.** Mark it in section 6's checklist as `(specified)` or `(files)`, and make the step's
      own part 5 say the same, because that part is what the executor reads when it is running the step.
@@ -176,7 +176,7 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
    a plan that is wrong, so you spike the risky parts yourself and the plan records what the spike TAUGHT you: that
    the approach builds, the trap it hides, the line a test fails on before the change, the totals the suite reports.
    The spike's code does not become the plan. Work in a scratch worktree outside the repo and outside `/tmp`:
-   `git worktree add --detach ~/athan-device-sweep/worktrees/plan-<N> uat-2`, with `node_modules` symlinked from the
+   `git worktree add --detach ~/athan-device-sweep/worktrees/plan-<N> uat`, with `node_modules` symlinked from the
    main checkout.
    - Write a throwaway version of each new test and run it against today's code, to confirm it fails for the reason
      the plan states, and record that failure line in the plan.
@@ -188,7 +188,7 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
      clears build folders. Never commit from it. `ai/AGENTS.md` section 7 has the rule in full: the branch goes with
      the worktree, because `git worktree remove` leaves it behind and leftover branches are what accumulate.
    - No row ahead of this one is PLANNING, READY, IN PROGRESS or EXECUTED while this plan is written (section 2), and
-     a BLOCKED or OWNER-LED row ahead holds no merged code of its own, so the scratch worktree starts at `uat-2` itself
+     a BLOCKED or OWNER-LED row ahead holds no merged code of its own, so the scratch worktree starts at `uat` itself
      and no step is ever proven against code that is not merged. If a step seems to need an unmerged plan's changes
      applied first, stop and ask the owner: the order has been broken.
 9. **Write the device proof** (template section 7), including the safety reading of `dumpsys alarm` before any clock
@@ -213,7 +213,7 @@ Work through these in order. Keep notes in the plan file as you go, not only in 
     - every step whose tests would not fail before the change;
     - every acceptance criterion you could not check for yourself.
 
-    Verify every anchor against `uat-2` at the "Planned at" sha. Fix everything you find. A second pass is required
+    Verify every anchor against `uat` at the "Planned at" sha. Fix everything you find. A second pass is required
     if the first found more than five problems.
 12. **Finish** (section 8 below).
 
@@ -297,7 +297,7 @@ The plan is not READY until every line below is true.
 
 ## 6. Facts every plan can rely on
 
-- **Branches.** `uat-2` is the integration branch and is pushed to `origin/uat-2` only by planning and audit sessions.
+- **Branches.** `uat` is the integration branch and is pushed to `origin/uat` only by planning and audit sessions.
   `uat` is never touched.
 - **Versions.** Each commit bumps the patch version in `app.json`, `package.json` and the gitignored local
   `android/app/build.gradle` `versionName`, all three in step, or `shared/__tests__/versionLockstep.test.ts` fails.
@@ -368,8 +368,8 @@ The plan is not READY until every line below is true.
 
 1. **Check the bar.** Go through section 4 line by line, and fix anything that fails.
 2. **Set the row.** In `ai/plans/README.md`, set status READY (or OWNER-LED, or BLOCKED with the reason), "Planned at"
-   (the `uat-2` sha your anchors were verified against) and "Needs first" (order numbers, or `nothing`).
-3. **Branch.** Run `git checkout -b docs/plan-<N>-$(date +%Y%m%d-%H%M) uat-2`, then add:
+   (the `uat` sha your anchors were verified against) and "Needs first" (order numbers, or `nothing`).
+3. **Branch.** Run `git checkout -b docs/plan-<N>-$(date +%Y%m%d-%H%M) uat`, then add:
    - the plan folder;
    - the `ai/plans/README.md` change;
    - `ai/prompts/README.md`, only when the row's brief is one of the two kept there and the session recorded
@@ -381,9 +381,9 @@ The plan is not READY until every line below is true.
    code at "Planned at", and the quality bar. Fix what you find. Section 0 applies: verify once if the plan changed,
    and never start a third round.
 5. **Merge and push.**
-   `git checkout uat-2 && git merge --no-ff <branch> -m "Merge <branch> into uat-2: session <N> planned, reviewed"`,
-   then `git push origin uat-2`, which is allowed only if section 2 found no unaudited commits. The owner approved
-   pushing plans to `uat-2` on 2026-09-15.
+   `git checkout uat && git merge --no-ff <branch> -m "Merge <branch> into uat: session <N> planned, reviewed"`,
+   then `git push origin uat`, which is allowed only if section 2 found no unaudited commits. The owner approved
+   pushing plans to the integration branch on 2026-09-15.
 6. **Remove your worktrees** once every verdict is in, and delete the branch each one carried
    (`ai/AGENTS.md` section 7). Then `git worktree list` holds only the main checkout and the five build worktrees,
    and `git branch` holds no branch this session made.
@@ -401,13 +401,13 @@ The plan is not READY until every line below is true.
 
 1. **Read why.** The executor recorded why it stopped: the missing anchor, the unexpected failure, or the owner's
    answer. Read that first, in the plan folder's `LOG.md` and its last commit.
-2. **Refresh.** Diff `uat-2` against the plan's "Planned at" for every file the plan anchors on. Rewrite only the
+2. **Refresh.** Diff `uat` against the plan's "Planned at" for every file the plan anchors on. Rewrite only the
    affected anchors, steps and expected outputs. Rerun the scratch-worktree proofs for those steps. A step you
    rewrite is rewritten to today's rules, as contracts; a step you do not touch keeps whatever it already has, files
    included. Mark each step in the plan's section 6 checklist as `specified` or `files`, so the executor knows which
    kind it is running.
 3. **Keep finished work.** Keep every step already DONE, ticked, with its commit.
-4. **Finish** as in section 8, with status READY and a new "Planned at". If `uat-2` holds unaudited commits from this
+4. **Finish** as in section 8, with status READY and a new "Planned at". If `uat` holds unaudited commits from this
    plan, do not push; tell the owner to run the audit prompt first.
 
 ## 10. If your context or the owner's limit runs low

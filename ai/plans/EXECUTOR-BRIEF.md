@@ -73,7 +73,7 @@ whale emoji and two spaces (`🐋  `).
 2. **Pick the plan:**
    1. If any row is EXECUTED, stop: tell the owner to run the audit prompt first, and give it from
       `ai/plans/README.md`.
-   2. Run `git log --oneline origin/uat-2..uat-2 -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json'`.
+   2. Run `git log --oneline origin/uat..uat -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json'`.
       If it prints anything, those are unaudited code commits: take only a row that is IN PROGRESS and whose `LOG.md`
       records a commit that command printed, which is this plan's own unfinished work. Never take a READY row here: an
       audit repairs what it finds and never hands work back (owner, 2026-09-16). If there is no such row, stop: tell
@@ -100,9 +100,9 @@ whale emoji and two spaces (`🐋  `).
 - **Where you work.** Work only in `$HOME/repos/rn.athan.uk`.
 - **Branches.**
   - Never touch the `uat` branch.
-  - Work on branches off `uat-2`, and merge them into `uat-2` with `--no-ff`.
+  - Work on branches off `uat`, and merge them into `uat` with `--no-ff`.
   - Never push anything: an audit session pushes after checking your work.
-- **Git history.** Never use `--no-verify`, never force anything, and never rewrite `uat-2`'s history. Amend only a
+- **Git history.** Never use `--no-verify`, never force anything, and never rewrite `uat`'s history. Amend only a
   commit that is not merged yet.
 - **EAS.** Never build on EAS or push to EAS. EAS and the Expo MCP are read-only.
 - **Secrets.**
@@ -185,7 +185,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 0. **Anchor check.** Run the step's anchor check (part 0 of the step). A count other than 1 means NEEDS REPLAN
    (section 1, item 4).
 1. **Branch.** Run `git status --porcelain`. It may list only `ai/plans/README.md` and this plan folder's `PLAN.md` and
-   `LOG.md`; if it lists anything else, STOP. Create the branch the plan names off `uat-2`. Those three files, if
+   `LOG.md`; if it lists anything else, STOP. Create the branch the plan names off `uat`. Those three files, if
    listed, go into this step's commit.
 2. **Red.** Write the tests the plan's step names: one test for each line it lists, with the name, the inputs and the
    assertions it gives, following `__tests__/README.md`, which you read before you write the first one. Where the plan
@@ -203,7 +203,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
 5. **Breaks.** Save and run the plan's break script with `bash`, from the repository root. It must end
    `ALL AS EXPECTED: 1`. Afterwards, `git status --porcelain` must list only this step's files and the three plan files.
    If a break passes when the plan says it fails, STOP.
-6. **Version.** Run the plan's version command. It prints the next patch version after `uat-2`'s `package.json`.
+6. **Version.** Run the plan's version command. It prints the next patch version after `uat`'s `package.json`.
    Set that version in `app.json`, `package.json` and `android/app/build.gradle` (`versionName`); all three must
    match. `android/app/build.gradle` is gitignored, so it is never added, but a test fails if it differs.
 7. **Commit.** Add, by name, only the files the plan lists for this step, plus `ai/plans/README.md` and this plan
@@ -226,7 +226,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
      - Any other finding: STOP. Give the owner each finding in your own words. If the owner wants any of them
        applied, that is NEEDS REPLAN (section 4a, then section 4b).
    - **Two passes without a clean read:** STOP and ask. A review is a gate, not a conversation.
-9. **Merge.** Merge into `uat-2` with the plan's command and message.
+9. **Merge.** Merge into `uat` with the plan's command and message.
 10. **Done when.** Run the step's checks. Tick the step in the plan's section 6 checklist (`- [x] Step k: DONE in
     <sha>`). Append to `LOG.md`:
     - the step and its branch;
@@ -243,14 +243,14 @@ Do these for each step in the plan, in order. Do not start a step until the prev
    - `git status --porcelain > ~/athan-device-sweep/session<N>/step<k>-unfinished-status.txt`.
 2. **Undo the step's files.** Run `git checkout -- <file>` for each changed file the plan's section 10 lists for this
    step, and for `app.json` and `package.json`. Delete each new file it lists that exists.
-3. **Drop the step branch.** Run `git checkout uat-2`. If `git log --oneline uat-2..<step branch>` prints nothing, run
+3. **Drop the step branch.** Run `git checkout uat`. If `git log --oneline uat..<step branch>` prints nothing, run
    `git branch -D <step branch>`.
 4. **Check the tree.** `git status --porcelain` must list nothing but `ai/plans/README.md` and this plan folder's
    `PLAN.md` and `LOG.md`.
 
 ## 4b. A docs commit: NEEDS REPLAN, BLOCKED, EXECUTED, or low context
 
-1. **Branch.** Run `git checkout -b docs/<replan|blocked|executed|progress>-<N>-$(date +%Y%m%d-%H%M) uat-2`. The branch
+1. **Branch.** Run `git checkout -b docs/<replan|blocked|executed|progress>-<N>-$(date +%Y%m%d-%H%M) uat`. The branch
    name is what `git branch --show-current` then prints.
 2. **Version.** The plan's version command, with the three files set as in step 6.
 3. **Add** these by name: `ai/plans/README.md`, this plan folder's `PLAN.md` and `LOG.md`, `app.json` and
@@ -259,7 +259,7 @@ Do these for each step in the plan, in order. Do not start a step until the prev
    `<VERSION> - docs(plans): session <N> <replan|blocked|executed|progress>: <the reason in one line>`.
 5. **Review.** Read `git show <sha>` back yourself: the status row and `LOG.md` match what happened in this session,
    and nothing else changed. Handle what you find as section 4, item 8 says.
-6. **Merge.** `git checkout uat-2 && git merge --no-ff <branch> -m "Merge <branch> into uat-2: session <N> <kind>, reviewed"`.
+6. **Merge.** `git checkout uat && git merge --no-ff <branch> -m "Merge <branch> into uat: session <N> <kind>, reviewed"`.
 7. **Do not push.**
 
 - **When to set BLOCKED:** when the owner answers a STOP with "wait", or cannot answer. The question is the reason in
