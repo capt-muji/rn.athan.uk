@@ -1,0 +1,22 @@
+=== R12: JAKIM, scoring the two parameter sets against its own published year ===
+
+zone   place              MODEL A: Fajr 20 deg      MODEL B: Fajr 18 deg      Isha 18 deg
+                          constant  share  spread   constant  share  spread   constant  share
+JHR02  Johor Bahru        +10       0.61   2        +1        0.58   2        +1        0.61
+MLK01  Melaka             +10       0.68   2        +2        0.58   1        +2        0.64
+WLY01  Kuala Lumpur       +10       0.47   3        +2        0.55   2        +2        0.51
+PNG01  Penang             +10       0.59   2        +1        0.78   1        +1        0.82
+KTN01  Kota Bharu         +10       0.65   2        +2        0.55   1        -3        0.65
+PLS01  Perlis             +9        0.83   2        +1        0.5    2        +1        0.75
+SBH01  Sandakan           +10       0.58   3        +2        0.61   2        +2        0.55
+TRG01  Kuala Terengganu   +10       0.57   2        +1        0.82   1        +1        0.82
+
+=== verdict ===
+MODEL A, Fajr 20 deg: the correction constant takes 2 distinct values across 8 zones: +9, +10
+MODEL B, Fajr 18 deg: the correction constant takes 2 distinct values across 8 zones: +1, +2
+
+JAKIM's own literature documents a 2-minute `ihtiyati` (UMP journal, cited by R4)
+and a Mufti of the Federal Territory ruling on 8 further minutes for the Fajr adhan.
+R4 read 2 + 8 = 10 as the explanation for Model A's +10 to +11. This measurement
+shows the 8 minutes is instead the distance from the Imsak row to the Fajr row, and
+Model B's constant lands on the documented ihtiyati alone.

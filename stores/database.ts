@@ -8,17 +8,31 @@
  * - App state (fetched_years, app_installed_version)
  */
 
-import { format } from 'date-fns';
-import { createJSONStorage } from 'jotai/utils';
 import { createMMKV } from 'react-native-mmkv';
 
+import { isPreview, isProd } from '@/shared/config';
 import logger from '@/shared/logger';
 import type * as NotificationUtils from '@/shared/notifications';
 import * as TimeUtils from '@/shared/time';
 import type { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 
+/**
+ * MMKV instance id, namespaced by the SAME predicate api/client.ts uses to
+ * decide whether to serve MOCK_DATA_SIMPLE.
+ *
+ * A build that fabricates prayer times used to write them into the store a
+ * production build reads, and neither gate clears them: installing a real
+ * build at the same version leaves wasAppUpgraded() false, and post-#34 even a
+ * version bump keeps the cache unless the schema marker moved. So fabricated
+ * rows were served as real times, and survived the build that wrote them.
+ *
+ * Prod and preview keep the original id, byte for byte, so every shipped
+ * install goes on reading the store it already has.
+ */
+const DATABASE_ID = isProd() || isPreview() ? 'athan-storage' : 'athan-storage-dev';
+
 /** MMKV database instance - explicit ID required for Android production persistence */
-export const database = createMMKV({ id: 'athan-storage' });
+export const database = createMMKV({ id: DATABASE_ID });
 
 /**
  * Gets a JSON-parsed item from storage
@@ -51,9 +65,6 @@ export const removeItem = (key: string) => {
   logger.info(`MMKV DELETE: ${key}`);
   database.remove(key);
 };
-
-/** Jotai-compatible storage interface for atomWithStorage */
-export const mmkvStorage = createJSONStorage(() => ({ getItem, setItem, removeItem }));
 
 /**
  * Gets all items with a given key prefix
@@ -134,20 +145,28 @@ export const saveAllPrayers = (prayers: ISingleApiResponseTransformed[]) => {
 };
 
 /**
- * Gets prayer data for a specific date
- * @param date Date to fetch prayer times for
+ * Gets prayer data for a calendar day of the prayer timetable
+ * @param date Date string in YYYY-MM-DD format
  * @returns Prayer data or null if not found
  */
-export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | null => {
-  const londonDate = TimeUtils.createLondonDate(date);
-  const keyDate = format(londonDate, 'yyyy-MM-dd');
-  const key = `prayer_${keyDate}`;
+export const getPrayerByDateString = (date: string): ISingleApiResponseTransformed | null => {
+  const key = `prayer_${date}`;
 
   const data = database.getString(key);
 
   logger.info(`MMKV READ: ${key}`);
 
   return data ? JSON.parse(data) : null;
+};
+
+/**
+ * Gets prayer data for the day an instant falls on
+ * @param date Any instant; its day is read in the prayer timezone, whatever the phone's own
+ * @returns Prayer data or null if not found
+ */
+export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | null => {
+  const keyDate = TimeUtils.formatDateShort(date);
+  return getPrayerByDateString(keyDate);
 };
 
 /**
@@ -159,23 +178,6 @@ export const markYearAsFetched = (year: number) => {
   const fetchedYears = getItem(key) || {};
   setItem(key, { ...fetchedYears, [year]: true });
 };
-
-/**
- * Clears all scheduled notification records for a schedule type
- * @param scheduleType Schedule type (Standard or Extra)
- */
-export function clearAllScheduledNotificationsForSchedule(scheduleType: ScheduleType) {
-  clearPrefix(`scheduled_notifications_${scheduleType}`);
-}
-
-/**
- * Clears all scheduled notification records for a specific prayer
- * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerIndex Index of the prayer in its schedule
- */
-export function clearAllScheduledNotificationsForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
-  clearPrefix(`scheduled_notifications_${scheduleType}_${prayerIndex}`);
-}
 
 /**
  * Adds a scheduled notification record for a prayer
@@ -194,6 +196,20 @@ export const addOneScheduledNotificationForPrayer = (
 
   logger.info('NOTIFICATION DB: Added:', notification);
 };
+
+/**
+ * Removes one scheduled notification record for a prayer
+ *
+ * The records are deleted one identifier at a time rather than by prefix, so the record of a cancel the phone refused
+ * can be kept: that record is the only way back to an alarm the OS still holds, since the sweep refuses to cancel
+ * anything when no records exist at all.
+ *
+ * @param scheduleType Schedule type (Standard or Extra)
+ * @param prayerIndex Index of the prayer in its schedule
+ * @param id Identifier of the notification whose record to remove
+ */
+export const removeOneScheduledNotificationForPrayer = (scheduleType: ScheduleType, prayerIndex: number, id: string) =>
+  removeItem(`scheduled_notifications_${scheduleType}_${prayerIndex}_${id}`);
 
 /**
  * Gets all scheduled notifications for a schedule type
@@ -276,18 +292,13 @@ export const getAllScheduledRemindersForSchedule = (
 };
 
 /**
- * Clears all scheduled reminder records for a specific prayer
+ * Removes one scheduled reminder record for a prayer
+ *
+ * Deleted one identifier at a time, for the same reason as the at-time records above.
+ *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
+ * @param id Identifier of the reminder whose record to remove
  */
-export function clearAllScheduledRemindersForPrayer(scheduleType: ScheduleType, prayerIndex: number) {
-  clearPrefix(`scheduled_reminders_${scheduleType}_${prayerIndex}`);
-}
-
-/**
- * Clears all scheduled reminder records for a schedule type
- * @param scheduleType Schedule type (Standard or Extra)
- */
-export function clearAllScheduledRemindersForSchedule(scheduleType: ScheduleType) {
-  clearPrefix(`scheduled_reminders_${scheduleType}`);
-}
+export const removeOneScheduledReminderForPrayer = (scheduleType: ScheduleType, prayerIndex: number, id: string) =>
+  removeItem(`scheduled_reminders_${scheduleType}_${prayerIndex}_${id}`);

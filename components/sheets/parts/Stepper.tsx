@@ -1,8 +1,10 @@
 import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { RADIUS, REMINDER_INTERVALS, SPACING, TEXT } from '@/shared/constants';
+import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import type { ReminderInterval } from '@/shared/types';
+
+import { stepReminderInterval } from './reminderStep';
 
 // =============================================================================
 // TYPES
@@ -14,6 +16,8 @@ export interface StepperProps {
   onIncrement: () => void;
   unit?: string;
   disabled?: boolean;
+  /** The other reminder's interval while it is on, so this stepper can neither reach nor offer it */
+  taken?: number | null;
 }
 
 // =============================================================================
@@ -32,14 +36,27 @@ export interface StepperProps {
  *   unit="min"
  * />
  */
-export default function Stepper({ value, onDecrement, onIncrement, unit = 'min', disabled }: StepperProps) {
-  const currentIndex = REMINDER_INTERVALS.indexOf(value);
-  const canDecrement = !disabled && currentIndex > 0;
-  const canIncrement = !disabled && currentIndex < REMINDER_INTERVALS.length - 1;
+export default function Stepper({
+  value,
+  onDecrement,
+  onIncrement,
+  unit = 'min',
+  disabled,
+  taken = null,
+}: StepperProps) {
+  const nextDown = stepReminderInterval(value, -1, taken);
+  const nextUp = stepReminderInterval(value, 1, taken);
+  const canDecrement = !disabled && nextDown !== null;
+  const canIncrement = !disabled && nextUp !== null;
 
   return (
     <View style={[styles.container, disabled && styles.disabled]}>
       <Pressable
+        accessibilityRole='button'
+        // The glyph is a minus sign, which reads as nothing useful; name the action and
+        // the unit so the control is usable without seeing the value beside it
+        accessibilityLabel={`Decrease to ${nextDown ?? value} ${unit}`}
+        accessibilityState={{ disabled: !canDecrement }}
         style={[styles.button, !canDecrement && styles.buttonDisabled]}
         onPress={() => {
           if (canDecrement) {
@@ -49,11 +66,14 @@ export default function Stepper({ value, onDecrement, onIncrement, unit = 'min',
         }}>
         <Text style={[styles.buttonText, !canDecrement && styles.buttonTextDisabled]}>−</Text>
       </Pressable>
-      <View style={styles.valueContainer}>
+      <View accessible={true} accessibilityLabel={`${value} ${unit}`} style={styles.valueContainer}>
         <Text style={styles.value}>{value}</Text>
         <Text style={styles.unit}>{unit}</Text>
       </View>
       <Pressable
+        accessibilityRole='button'
+        accessibilityLabel={`Increase to ${nextUp ?? value} ${unit}`}
+        accessibilityState={{ disabled: !canIncrement }}
         style={[styles.button, !canIncrement && styles.buttonDisabled]}
         onPress={() => {
           if (canIncrement) {

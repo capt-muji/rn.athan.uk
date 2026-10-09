@@ -32,17 +32,19 @@ export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Isti
 export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 
 /**
- * Index position of Istijaba prayer in EXTRAS arrays (0-indexed: 4)
- * Used for special handling: Istijaba notifications only scheduled on Fridays
- */
-export const ISTIJABA_INDEX = 4;
-
-/**
  * Night prayer names that cross midnight boundary
  * Used for determining which prayers belong to the previous/next Islamic day
  * These prayers occur after Isha but before Fajr (the nighttime portion)
  */
 export const NIGHT_PRAYER_NAMES = ['Midnight', 'Last Third', 'Suhoor'] as const;
+
+/**
+ * Standard prayers whose time can land after midnight, so the row's instant belongs to the
+ * next calendar day while the row itself stays on its own day's list. Isha does this at any
+ * latitude; Magrib only above roughly 60N, where sunset itself falls after midnight.
+ * Both halves of that mapping read this list, so they cannot drift apart.
+ */
+export const MIDNIGHT_CROSSING_PRAYERS: string[] = ['Isha', 'Magrib'];
 
 /**
  * Human-readable explanations for each extra prayer
@@ -62,10 +64,29 @@ export const EXTRAS_EXPLANATIONS = [
 // =============================================================================
 
 /**
- * Number of days ahead to schedule notifications (2-day rolling buffer)
- * Ensures notifications are always queued ahead without overwhelming the system
+ * How many pending notification requests the app may hold at once.
+ *
+ * iOS keeps the 64 soonest-firing requests per app and silently discards the rest, so this
+ * is a platform ceiling rather than a tuning knob: raising it does not buy reach, it just
+ * hands the phone requests it will drop. Rows are armed whole (`buildSchedulePlan`), so the
+ * worst-case user, every row armed with both reminders, spends 63 of these and the 22nd row
+ * is left for the next refresh.
  */
-export const NOTIFICATION_ROLLING_DAYS = 2;
+export const NOTIFICATION_REQUEST_BUDGET = 64;
+
+/**
+ * How far ahead the candidate walk may look for rows to arm.
+ *
+ * A loop guard, never a coverage limit, so it must exceed the furthest the budget could ever
+ * reach: one prayer armed with no reminder spends one request per day, so the budget alone can
+ * reach `NOTIFICATION_REQUEST_BUDGET` days and anything smaller would silently cap that user.
+ * Without a bound, a thin cache would make the walk scan forever for a row that does not exist.
+ *
+ * The two extra days pay for the already-past rows the walk drops at its head. A row firing on
+ * its own list day leaves one; a row firing the evening before its list day (Midnight and Last
+ * Third, and Suhoor at high latitude) leaves two once that evening's row has passed.
+ */
+export const SCHEDULE_CANDIDATE_DAYS = NOTIFICATION_REQUEST_BUDGET + 2;
 
 /**
  * Valid reminder intervals in minutes before prayer time
@@ -77,6 +98,14 @@ export const REMINDER_INTERVALS = [5, 10, 15, 20, 25, 30] as const;
  * Default reminder interval (5 minutes before prayer)
  */
 export const DEFAULT_REMINDER_INTERVAL = 5;
+
+/**
+ * The interval each reminder slot starts on, indexed by slot.
+ *
+ * They differ so a prayer's two reminders never open on the same minute, which is the one
+ * pairing the sheet has no way to let the user express.
+ */
+export const DEFAULT_REMINDER_SLOT_INTERVALS = [DEFAULT_REMINDER_INTERVAL, 30] as const;
 
 /**
  * Buffer in seconds - if a reminder would fire within this many seconds, skip it
@@ -96,9 +125,22 @@ export const validateReminderInterval = (value: number): boolean => {
 /**
  * Hours between automatic foreground notification refreshes
  * Notifications rescheduled when this interval elapses and app enters foreground
- * Offset from background task interval (3 hours) to reduce collision risk
+ *
+ * The foreground layer is the FALLBACK: the background task keeps the window
+ * rolling on its own, and this gate only matters when that layer has been
+ * starved (force-quit, OEM kill, reboot on a phone that suppressed the boot
+ * broadcast, new install).
+ *
+ * The window is two LIST days, not 48 hours, and the difference matters when
+ * sizing this. `genNextXDays(2)` arms today and tomorrow, so the horizon is
+ * "tomorrow's last prayer" — about 45h after an early-morning refresh, but only
+ * about 18h in the winter worst case (a 23:50 refresh against Isha 17:41).
+ *
+ * Shorter than the background interval on purpose: this gate costs one timestamp
+ * comparison and no OS scheduler, so nothing rations it, while every opened app
+ * is a free chance to notice alarms have been lost (ADR-007 rev 4).
  */
-export const NOTIFICATION_REFRESH_HOURS = 4;
+export const NOTIFICATION_REFRESH_HOURS = 2;
 
 // =============================================================================
 // BACKGROUND TASK CONFIGURATION
@@ -113,9 +155,63 @@ export const BACKGROUND_TASK_NAME = 'NOTIFICATION_REFRESH_TASK';
 /**
  * Hours between background task executions (minimum interval)
  * System may delay execution; this is a minimum, not exact timing
- * Offset from foreground refresh (4 hours) to reduce collision risk
+ *
+ * PRIMARY layer: keeps the rolling window rolling unattended, and the only layer
+ * that can recover a phone whose alarms were lost while the app stays closed.
+ * That recovery ceiling is what sizes this, not the two-list-day window.
+ *
+ * dasd rate-limits aggressive cadences, but every deferral measured was at 15
+ * minutes or below and the XS verified 180 minutes delivering on schedule
+ * (ISSUES #8). `earliestBeginDate` is a floor rather than a request rate, so a
+ * shorter one cannot make iOS run the task less often (ADR-007 rev 4).
  */
 export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
+
+/**
+ * Background task minimum interval in MINUTES passed to expo-background-task
+ *
+ * expo-background-task's `minimumInterval` option is documented in MINUTES
+ * (Android WorkManager TimeUnit.MINUTES; iOS multiplies by 60 for
+ * earliestBeginDate). Passing seconds here scheduled the task 60x too far
+ * out (10800 = 7.5 days) — see ISSUES.md #8.
+ *
+ * Resolution order:
+ * - EXPO_PUBLIC_BG_INTERVAL_MINUTES env var (interval-ladder experiments)
+ * - 15 minutes in development builds (fast iteration)
+ * - BACKGROUND_TASK_INTERVAL_HOURS * 60 in production
+ */
+/**
+ * Lowest rung the interval ladder actually uses, and a policy floor rather than a platform one.
+ * expo-background-task takes OneTimeWorkRequest + setInitialDelay on SDK 26 and above — every
+ * device this ships to — so WorkManager's 15-minute PeriodicWorkRequest floor does not apply
+ * here. iOS is the real constraint: dasd rate-limits sub-hour cadences with "group is full"
+ * deferrals, so anything lower measures the scheduler rather than the app.
+ */
+const MIN_BG_INTERVAL_MINUTES = 15;
+
+/** A day. Beyond this the override is the seconds-for-minutes mistake of ISSUES.md #8, not a choice */
+const MAX_BG_INTERVAL_MINUTES = 1440;
+
+const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
+// The env override is a measurement tool. A release build must never take it: this interval
+// is the mechanism that keeps the rolling buffer alive, so a variable left set in a store
+// build would silently change alarm delivery. Compared as a literal rather than via isProd(),
+// so Metro folds the branch away.
+//
+// Integer, not merely finite: iOS reads this option with `as? Int`, so a fractional value
+// fails the cast, falls back to its own default and disagrees with Android, which
+// truncates. 20.5 would mean 20 minutes on one platform and hours on the other, silently —
+// the same units-mismatch class as ISSUES.md #8 that the range check was added to close.
+const isEnvIntervalValid =
+  process.env.EXPO_PUBLIC_ENV !== 'prod' &&
+  Number.isInteger(envIntervalMinutes) &&
+  envIntervalMinutes >= MIN_BG_INTERVAL_MINUTES &&
+  envIntervalMinutes <= MAX_BG_INTERVAL_MINUTES;
+export const BACKGROUND_TASK_INTERVAL_MINUTES = isEnvIntervalValid
+  ? envIntervalMinutes
+  : process.env.NODE_ENV === 'development'
+    ? 15
+    : BACKGROUND_TASK_INTERVAL_HOURS * 60;
 
 // =============================================================================
 // TIME CALCULATIONS
@@ -139,6 +235,9 @@ export const TIME_ADJUSTMENTS = {
  */
 export const TIME_CONSTANTS = {
   ONE_DAY_MS: 24 * 60 * 60 * 1000,
+  /** What a check that never reached the store costs, so an offline launch loses an hour rather than its day */
+  UPDATE_RETRY_MS: 60 * 60 * 1000,
+  UPDATE_FETCH_TIMEOUT_MS: 10 * 1000,
 } as const;
 
 /**
@@ -152,9 +251,28 @@ export const ISLAMIC_DAY = {
   RAMADAN_DECORATION_DAYS_BEFORE: 15,
 } as const;
 
+/**
+ * Timezone of the prayer timetable: every stored prayer time is a wall-clock time here.
+ * The one place to change when the app serves other cities (v2.0)
+ */
+export const PRAYER_TIMEZONE = 'Europe/London';
+
 // =============================================================================
 // UI TEXT & TYPOGRAPHY
 // =============================================================================
+
+/**
+ * How a time the provider did not give readably is drawn (R2). Drawn only: it is never stored and never
+ * parsed, so nothing can mistake it for a time
+ */
+export const UNAVAILABLE_TIME = '--:--';
+
+/**
+ * The countdown's name while it shows UNAVAILABLE_TIME with no overlay open: the list on screen has no prayer
+ * left to count to, so none is named (owner ruling 2026-09-14). Three plain periods with no spaces; the overlay
+ * still names the prayer it shows
+ */
+export const COUNTDOWN_WAITING_NAME = '...';
 
 /**
  * Global text styling configuration
@@ -312,7 +430,7 @@ export const SHADOW = {
   /** Settings button shadow */
   button: {
     shadowOffset: { width: 1, height: 10 },
-    shadowOpacity: 1,
+    shadowOpacity: 0.75,
     shadowRadius: 10,
   },
   /** Modal shadow */
@@ -321,18 +439,25 @@ export const SHADOW = {
     shadowOpacity: 0.75,
     shadowRadius: 35,
   },
-  /** Masjid icon shadow */
-  masjid: {
-    shadowOffset: { width: 5, height: 5 },
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-  },
   /** Color picker modal shadow (upward) */
   colorPickerModal: {
     shadowOffset: { width: 0, height: -50 },
     shadowOpacity: 0.25,
     shadowRadius: 150,
   },
+} as const;
+
+/**
+ * Android counterparts of the iOS shadow presets (Platform-gated in the
+ * components): RN 0.86 renders boxShadow via a background drawable on
+ * API 28+ — a true offset/blur/color shadow with NO elevation, so it never
+ * reorders z. Each string mirrors its iOS preset's offset/radius/color+opacity.
+ */
+export const SHADOW_ANDROID = {
+  /** Prayer row shadow — purple-blue blend tuned against the navy-violet bg (owner-directed hue) */
+  prayer: '1px 10px 10px rgba(28, 22, 145, 0.4)',
+  /** Prayer row shadow, extras page (mirrors SHADOW.prayerExtras) */
+  prayerExtras: '1px 6px 6px rgba(110, 0, 107, 0.32)',
 } as const;
 
 // =============================================================================
@@ -368,9 +493,9 @@ export const COUNTDOWN_TIP = {
  * Primary swatch colors for quick selection (first is default)
  */
 export const COLOR_PICKER_SWATCHES = [
-  '#ffd000', // gold (default)
+  '#00ff88', // mint green (default)
+  '#ffd000', // gold
   '#ff3366', // hot pink
-  '#00ff88', // mint green
   '#ff9500', // orange
   '#ffee00', // yellow
   '#7b68ee', // medium purple
@@ -459,20 +584,26 @@ export const SIZE = {
   },
   /** Modal dimensions */
   modal: {
-    /** Maximum modal width (500px) */
-    maxWidth: 500,
+    /** Maximum modal width (400px) — keeps the card compact on large screens */
+    maxWidth: 400,
+    /** Shared width of all modal action buttons */
+    buttonWidth: 160,
   },
   /** Navigation dimensions */
   nav: {
     /** Bottom offset for navigation elements (25px) */
     bottomOffset: 25,
   },
-  /** Loading spinner size (unified across platforms) */
-  activityIndicator: 48,
+  /** Loading spinner size (matches the iOS 'small' 20pt spinner; Android renders this as dp) */
+  activityIndicator: 20,
   /** Navigation dot diameter */
   navigationDot: 6,
-  /** Maximum screen content width */
-  screenMaxWidth: 700,
+  /**
+   * Content column cap for large screens (iPad/tablet/Mac windows). The
+   * pager itself stays full-width so the whole screen remains swipeable;
+   * phones are narrower than this, so the cap never binds there.
+   */
+  contentMaxWidth: 500,
 } as const;
 
 // =============================================================================
@@ -502,24 +633,6 @@ export const LAYOUT = {
 export const GLOW = {
   /** Size multiplier for glow relative to screen width */
   sizeFactor: 1.5,
-} as const;
-
-// =============================================================================
-// PLATFORM-SPECIFIC
-// =============================================================================
-
-/**
- * Platform-specific styling adjustments
- * Use with Platform.OS checks for cross-platform consistency
- */
-export const PLATFORM = {
-  /** Android-specific values */
-  android: {
-    /** Bottom padding for screens */
-    bottomPadding: 15,
-    /** Navigation bar bottom padding */
-    navigationBottomPadding: 40,
-  },
 } as const;
 
 // =============================================================================
@@ -581,6 +694,8 @@ export const COLORS = {
     disabled: 'rgba(146, 211, 255, 0.65)',
     /** Emphasis text: info box titles */
     emphasis: 'rgba(224, 231, 255, 1)',
+    /** Every supporting line under a sheet's own title, so they all read as one voice */
+    sheetSubtitle: 'rgba(86, 134, 189, 0.725)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -631,8 +746,8 @@ export const COLORS = {
     primary: 'rgba(165, 180, 252, 1)',
     /** Icon wrapper background */
     background: 'rgba(99, 102, 241, 0.2)',
-    /** Muted icon color */
-    muted: 'rgba(177, 143, 255, 0.46)',
+    /** The settings glyph, bright enough to read against its own circle in direct sunlight */
+    settings: 'rgba(200, 176, 255, 0.71)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -702,13 +817,47 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   /** Settings button (transparent style) */
   settingsButton: {
-    background: 'rgba(105, 65, 198, 0.29)',
-    border: 'rgba(91, 51, 184, 0.46)',
+    // Halfway between the original, which vanished against the gradient in sunlight, and the first fix, which
+    // the owner judged too strong: findable with poor eyesight without taking the eye off the prayer list
+    background: 'rgba(105, 65, 198, 0.51)',
+    border: 'rgba(116, 80, 207, 0.68)',
   },
 
   /** Countdown bar */
   countdown: {
     background: 'rgba(126, 189, 241, 0.19)',
+  },
+
+  /**
+   * The qibla compass, in the two states the owner locked in on 2026-09-30.
+   *
+   * `away` is the app's violet-tinted dark with one gold accent; `facing` warms EVERY role to gold at once, which is
+   * what tells the user they are on the line without anything to read.
+   */
+  qibla: {
+    away: {
+      /** The dial's ground: the alert sheet's indigo card, a shade deeper so the instrument sits ON the sheet */
+      face: 'rgba(23, 31, 72, 1)',
+      /** The inner circle the arrowhead rises from */
+      medallion: 'rgba(30, 40, 88, 1)',
+      /** Ticks, rings and the jewel, in the alert sheet's own label blue */
+      structure: '146, 184, 228',
+      /** The cardinal letters: the structure's own blue, faint enough to sit behind the instrument it labels */
+      ink: 'rgba(146, 184, 228, 0.45)',
+      /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
+      accent: 'rgba(212, 160, 58, 1)',
+      /** The Kaaba's cube: under the dial, so its outline is what carries it */
+      kaaba: 'rgba(16, 22, 56, 1)',
+    },
+    /** On the line: the whole instrument warms to gold, which is the only moment gold takes over */
+    facing: {
+      face: 'rgba(54, 44, 62, 1)',
+      medallion: 'rgba(66, 53, 72, 1)',
+      structure: '228, 192, 134',
+      ink: 'rgba(228, 192, 134, 0.5)',
+      accent: 'rgba(247, 191, 74, 1)',
+      kaaba: 'rgba(32, 25, 48, 1)',
+    },
   },
 
   /** Color picker */
@@ -732,12 +881,6 @@ export const COLORS = {
   error: {
     /** Error screen button background */
     buttonBackground: '#030005',
-  },
-
-  /** Masjid icon */
-  masjid: {
-    /** Golden glow/shadow color */
-    glow: '#EF9C29',
   },
 
   /** Navigation colors */
@@ -794,8 +937,8 @@ export const ANIMATION = {
   durationSlow: 1000,
   /** Delay between consecutive prayer animations during cascade effect */
   cascadeDelay: 150,
-  /** Debounce interval for rapid user interactions */
-  debounce: 450,
+  /** Alert icon change-bounce: dip to 0.6 before the spring pop home (ms) */
+  alertBounceDip: 90,
 };
 
 // =============================================================================
@@ -807,6 +950,12 @@ export const ANIMATION = {
  * Ensures proper visual stacking order (popup > overlay > content > glow)
  */
 export const OVERLAY = {
+  /**
+   * The overlay closes when its schedule's next prayer is within this window
+   * (or has passed). Enforced by wall clock so a suspended crossing is caught
+   * on resume.
+   */
+  closeWindowMs: 2000,
   zindexes: {
     /** Popup/z-modal layer (highest) */
     popup: 1000,

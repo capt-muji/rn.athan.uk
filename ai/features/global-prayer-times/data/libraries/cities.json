@@ -1,0 +1,22 @@
+[
+  { "name": "London",       "lat": 51.5074,  "lon": -0.1278,   "tz": "Europe/London" },
+  { "name": "Makkah",       "lat": 21.4225,  "lon": 39.8262,   "tz": "Asia/Riyadh" },
+  { "name": "Jakarta",      "lat": -6.2088,  "lon": 106.8456,  "tz": "Asia/Jakarta" },
+  { "name": "Istanbul",     "lat": 41.0082,  "lon": 28.9784,   "tz": "Europe/Istanbul" },
+  { "name": "Karachi",      "lat": 24.8607,  "lon": 67.0011,   "tz": "Asia/Karachi" },
+  { "name": "Lagos",        "lat": 6.5244,   "lon": 3.3792,    "tz": "Africa/Lagos" },
+  { "name": "NewYork",      "lat": 40.7128,  "lon": -74.0060,  "tz": "America/New_York" },
+  { "name": "SaoPaulo",     "lat": -23.5505, "lon": -46.6333,  "tz": "America/Sao_Paulo" },
+  { "name": "CapeTown",     "lat": -33.9249, "lon": 18.4241,   "tz": "Africa/Johannesburg" },
+  { "name": "KualaLumpur",  "lat": 3.1390,   "lon": 101.6869,  "tz": "Asia/Kuala_Lumpur" },
+  { "name": "Dhaka",        "lat": 23.8103,  "lon": 90.4125,   "tz": "Asia/Dhaka" },
+  { "name": "Cairo",        "lat": 30.0444,  "lon": 31.2357,   "tz": "Africa/Cairo" },
+  { "name": "Oslo",         "lat": 59.9139,  "lon": 10.7522,   "tz": "Europe/Oslo" },
+  { "name": "Reykjavik",    "lat": 64.1466,  "lon": -21.9426,  "tz": "Atlantic/Reykjavik" },
+  { "name": "Tromso",       "lat": 69.6492,  "lon": 18.9553,   "tz": "Europe/Oslo" },
+  { "name": "Singapore",    "lat": 1.3521,   "lon": 103.8198,  "tz": "Asia/Singapore" },
+  { "name": "Dubai",        "lat": 25.2048,  "lon": 55.2708,   "tz": "Asia/Dubai" },
+  { "name": "Casablanca",   "lat": 33.5731,  "lon": -7.5898,   "tz": "Africa/Casablanca" },
+  { "name": "Tashkent",     "lat": 41.2995,  "lon": 69.2401,   "tz": "Asia/Tashkent" },
+  { "name": "Anchorage",    "lat": 61.2181,  "lon": -149.9003, "tz": "America/Anchorage" }
+]

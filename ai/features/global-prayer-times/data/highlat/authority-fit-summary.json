@@ -1,0 +1,2328 @@
+[
+  {
+    "authority": "Sweden, Islamiska Forbundet i Sverige, Stockholm",
+    "lat": 59.3293,
+    "lng": 18.0686,
+    "fajrAngle": 17.98,
+    "ishaAngle": 15.9,
+    "publishedDays": 365,
+    "bindDaysFajr": 118,
+    "bindDaysIsha": 105,
+    "rules": {
+      "MiddleOfTheNight": {
+        "fajr": {
+          "n": 118,
+          "median": 109.8,
+          "p90": 142.6,
+          "max": 150.9,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 114.8,
+          "p90": 143.4,
+          "max": 152,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.7,
+            "p90": 124.9,
+            "max": 150.9,
+            "within2": 37.5,
+            "within5": 55.9
+          },
+          "isha": {
+            "n": 365,
+            "median": 3.2,
+            "p90": 125.3,
+            "max": 152,
+            "within2": 37.8,
+            "within5": 57.8
+          }
+        }
+      },
+      "SeventhOfTheNight": {
+        "fajr": {
+          "n": 118,
+          "median": 29,
+          "p90": 36.1,
+          "max": 38.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 20,
+          "p90": 24.1,
+          "max": 26.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 25.9,
+            "p90": 48.4,
+            "max": 61.8,
+            "within2": 0,
+            "within5": 0.3
+          },
+          "isha": {
+            "n": 365,
+            "median": 17.8,
+            "p90": 33.9,
+            "max": 48.3,
+            "within2": 28.8,
+            "within5": 38.6
+          }
+        }
+      },
+      "TwilightAngle": {
+        "fajr": {
+          "n": 118,
+          "median": 32,
+          "p90": 42,
+          "max": 45.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 25.9,
+          "p90": 33.3,
+          "max": 36.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.7,
+            "p90": 41.7,
+            "max": 45.7,
+            "within2": 37.5,
+            "within5": 55.9
+          },
+          "isha": {
+            "n": 365,
+            "median": 3.2,
+            "p90": 34,
+            "max": 39.4,
+            "within2": 37.8,
+            "within5": 57.8
+          }
+        }
+      },
+      "SwedenIFiS": {
+        "fajr": {
+          "n": 118,
+          "median": 4.4,
+          "p90": 5.8,
+          "max": 6.2,
+          "within2": 0,
+          "within5": 59.3
+        },
+        "isha": {
+          "n": 105,
+          "median": 5.2,
+          "p90": 6.9,
+          "max": 7.4,
+          "within2": 0,
+          "within5": 43.8
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.8,
+            "p90": 10.3,
+            "max": 21.9,
+            "within2": 37.8,
+            "within5": 70.7
+          },
+          "isha": {
+            "n": 365,
+            "median": 3.5,
+            "p90": 10.5,
+            "max": 23.9,
+            "within2": 35.9,
+            "within5": 66.3
+          }
+        }
+      },
+      "Diyanet": {
+        "fajr": {
+          "n": 118,
+          "median": 13.2,
+          "p90": 19.3,
+          "max": 23.3,
+          "within2": 7.6,
+          "within5": 18.6
+        },
+        "isha": {
+          "n": 105,
+          "median": 9.8,
+          "p90": 15.9,
+          "max": 16.9,
+          "within2": 9.5,
+          "within5": 23.8
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 47.5,
+            "p90": 66.4,
+            "max": 71.9,
+            "within2": 2.5,
+            "within5": 6
+          },
+          "isha": {
+            "n": 365,
+            "median": 41.9,
+            "p90": 60.3,
+            "max": 65.4,
+            "within2": 2.7,
+            "within5": 6.8
+          }
+        }
+      },
+      "BelgiumLat45": {
+        "fajr": {
+          "n": 118,
+          "median": 51.5,
+          "p90": 80.8,
+          "max": 83.1,
+          "within2": 2.5,
+          "within5": 5.9
+        },
+        "isha": {
+          "n": 105,
+          "median": 43.4,
+          "p90": 62.2,
+          "max": 63.4,
+          "within2": 0,
+          "within5": 1
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 43.1,
+            "p90": 68.8,
+            "max": 83.1,
+            "within2": 0.8,
+            "within5": 3
+          },
+          "isha": {
+            "n": 365,
+            "median": 38.3,
+            "p90": 52.7,
+            "max": 63.4,
+            "within2": 1.4,
+            "within5": 3.3
+          }
+        }
+      },
+      "AqrabBalad485": {
+        "fajr": {
+          "n": 118,
+          "median": 78.1,
+          "p90": 142.2,
+          "max": 150.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 63.6,
+          "p90": 91.5,
+          "max": 93.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 37.6,
+            "p90": 107.9,
+            "max": 150.6,
+            "within2": 0.8,
+            "within5": 2.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 33.9,
+            "p90": 76.8,
+            "max": 93.4,
+            "within2": 1.1,
+            "within5": 2.7
+          }
+        }
+      },
+      "AqrabBaladWalk": {
+        "fajr": {
+          "n": 118,
+          "median": 130.5,
+          "p90": 141.1,
+          "max": 151.9,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 83.6,
+          "p90": 90.7,
+          "max": 92.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.7,
+            "p90": 134.9,
+            "max": 151.9,
+            "within2": 37.5,
+            "within5": 55.9
+          },
+          "isha": {
+            "n": 365,
+            "median": 3.2,
+            "p90": 86.8,
+            "max": 92.7,
+            "within2": 37.8,
+            "within5": 57.8
+          }
+        }
+      },
+      "AqrabAyyamLast": {
+        "fajr": {
+          "n": 118,
+          "median": 154,
+          "p90": 166.6,
+          "max": 170.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 147.8,
+          "p90": 166,
+          "max": 167.5,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.7,
+            "p90": 161.5,
+            "max": 170.4,
+            "within2": 37.5,
+            "within5": 55.9
+          },
+          "isha": {
+            "n": 365,
+            "median": 3.2,
+            "p90": 151,
+            "max": 167.5,
+            "within2": 37.8,
+            "within5": 57.8
+          }
+        }
+      },
+      "AqrabAyyam3Day": {
+        "fajr": {
+          "n": 118,
+          "median": 141.3,
+          "p90": 154.5,
+          "max": 164,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 135.8,
+          "p90": 150.6,
+          "max": 155.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.7,
+            "p90": 149.4,
+            "max": 164,
+            "within2": 37.5,
+            "within5": 55.9
+          },
+          "isha": {
+            "n": 365,
+            "median": 3.2,
+            "p90": 140.4,
+            "max": 155.6,
+            "within2": 37.8,
+            "within5": 57.8
+          }
+        }
+      },
+      "NorwayFrozenClock": {
+        "fajr": {
+          "n": 118,
+          "median": 83.7,
+          "p90": 115.7,
+          "max": 124.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 88.2,
+          "p90": 120.2,
+          "max": 135.2,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.7,
+            "p90": 101.1,
+            "max": 125.7,
+            "within2": 37.5,
+            "within5": 55.9
+          },
+          "isha": {
+            "n": 365,
+            "median": 3.2,
+            "p90": 102.2,
+            "max": 136.2,
+            "within2": 37.8,
+            "within5": 57.8
+          }
+        }
+      },
+      "MoonsightingText": {
+        "fajr": {
+          "n": 118,
+          "median": 29,
+          "p90": 36.1,
+          "max": 38.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 20,
+          "p90": 24.1,
+          "max": 26.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 118,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 25.9,
+            "p90": 48.4,
+            "max": 61.8,
+            "within2": 0,
+            "within5": 0.3
+          },
+          "isha": {
+            "n": 365,
+            "median": 17.8,
+            "p90": 33.9,
+            "max": 48.3,
+            "within2": 28.8,
+            "within5": 38.6
+          }
+        }
+      }
+    }
+  },
+  {
+    "authority": "Sweden, Islamiska Forbundet i Sverige, Kiruna",
+    "lat": 67.8558,
+    "lng": 20.2253,
+    "fajrAngle": 17.98,
+    "ishaAngle": 15.9,
+    "publishedDays": 365,
+    "bindDaysFajr": 165,
+    "bindDaysIsha": 155,
+    "rules": {
+      "MiddleOfTheNight": {
+        "fajr": {
+          "n": 115,
+          "median": 129.2,
+          "p90": 168.2,
+          "max": 175.3,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 134.2,
+          "p90": 176.8,
+          "max": 183.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 115,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 293,
+            "median": 32.7,
+            "p90": 156.8,
+            "max": 175.3,
+            "within2": 5.8,
+            "within5": 14
+          },
+          "isha": {
+            "n": 293,
+            "median": 24,
+            "p90": 157,
+            "max": 183.8,
+            "within2": 5.1,
+            "within5": 12.6
+          }
+        }
+      },
+      "SeventhOfTheNight": {
+        "fajr": {
+          "n": 115,
+          "median": 19.9,
+          "p90": 47.6,
+          "max": 85.9,
+          "within2": 5.2,
+          "within5": 12.2
+        },
+        "isha": {
+          "n": 105,
+          "median": 13.5,
+          "p90": 43.8,
+          "max": 81,
+          "within2": 7.6,
+          "within5": 19
+        },
+        "fajrAnswered": 115,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 293,
+            "median": 48.2,
+            "p90": 74.3,
+            "max": 119.5,
+            "within2": 2,
+            "within5": 4.8
+          },
+          "isha": {
+            "n": 293,
+            "median": 31.1,
+            "p90": 58.7,
+            "max": 99.9,
+            "within2": 2.7,
+            "within5": 6.8
+          }
+        }
+      },
+      "TwilightAngle": {
+        "fajr": {
+          "n": 115,
+          "median": 53.7,
+          "p90": 67.7,
+          "max": 91.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 50.3,
+          "p90": 59.5,
+          "max": 85.9,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 115,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 293,
+            "median": 32.7,
+            "p90": 56.3,
+            "max": 91.6,
+            "within2": 5.8,
+            "within5": 14
+          },
+          "isha": {
+            "n": 293,
+            "median": 24,
+            "p90": 51.8,
+            "max": 85.9,
+            "within2": 5.1,
+            "within5": 12.6
+          }
+        }
+      },
+      "SwedenIFiS": {
+        "fajr": {
+          "n": 165,
+          "median": 9,
+          "p90": 18.2,
+          "max": 24.5,
+          "within2": 4.2,
+          "within5": 13.3
+        },
+        "isha": {
+          "n": 155,
+          "median": 5.4,
+          "p90": 19.5,
+          "max": 25.6,
+          "within2": 18.1,
+          "within5": 43.2
+        },
+        "fajrAnswered": 165,
+        "ishaAnswered": 155,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 8.4,
+            "p90": 17.3,
+            "max": 25.6,
+            "within2": 8.2,
+            "within5": 21.9
+          },
+          "isha": {
+            "n": 365,
+            "median": 7.7,
+            "p90": 17.5,
+            "max": 26.5,
+            "within2": 14.2,
+            "within5": 35.9
+          }
+        }
+      },
+      "Diyanet": {
+        "fajr": {
+          "n": 115,
+          "median": 35.9,
+          "p90": 82.1,
+          "max": 102.8,
+          "within2": 3.5,
+          "within5": 7.8
+        },
+        "isha": {
+          "n": 105,
+          "median": 32.9,
+          "p90": 69.4,
+          "max": 88.6,
+          "within2": 3.8,
+          "within5": 9.5
+        },
+        "fajrAnswered": 115,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 293,
+            "median": 79.6,
+            "p90": 157.6,
+            "max": 230.6,
+            "within2": 1.4,
+            "within5": 3.1
+          },
+          "isha": {
+            "n": 293,
+            "median": 69.4,
+            "p90": 148.6,
+            "max": 220.9,
+            "within2": 1.4,
+            "within5": 3.4
+          }
+        }
+      },
+      "BelgiumLat45": {
+        "fajr": {
+          "n": 115,
+          "median": 52.2,
+          "p90": 156.2,
+          "max": 219.7,
+          "within2": 2.6,
+          "within5": 4.3
+        },
+        "isha": {
+          "n": 105,
+          "median": 53.7,
+          "p90": 137.8,
+          "max": 192.5,
+          "within2": 3.8,
+          "within5": 7.6
+        },
+        "fajrAnswered": 115,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 293,
+            "median": 78.1,
+            "p90": 161.9,
+            "max": 219.7,
+            "within2": 1,
+            "within5": 1.7
+          },
+          "isha": {
+            "n": 293,
+            "median": 71.1,
+            "p90": 149.3,
+            "max": 207,
+            "within2": 1.4,
+            "within5": 2.7
+          }
+        }
+      },
+      "AqrabBalad485": {
+        "fajr": {
+          "n": 165,
+          "median": 58.3,
+          "p90": 162.6,
+          "max": 250.2,
+          "within2": 1.8,
+          "within5": 3.6
+        },
+        "isha": {
+          "n": 155,
+          "median": 27.8,
+          "p90": 140,
+          "max": 213,
+          "within2": 4.5,
+          "within5": 12.9
+        },
+        "fajrAnswered": 165,
+        "ishaAnswered": 155,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 68.3,
+            "p90": 155.6,
+            "max": 250.2,
+            "within2": 0.8,
+            "within5": 1.6
+          },
+          "isha": {
+            "n": 365,
+            "median": 58.5,
+            "p90": 142.2,
+            "max": 213,
+            "within2": 1.9,
+            "within5": 5.5
+          }
+        }
+      },
+      "AqrabBaladWalk": {
+        "fajr": {
+          "n": 165,
+          "median": 152.4,
+          "p90": 218.9,
+          "max": 288.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 155,
+          "median": 102.3,
+          "p90": 169.4,
+          "max": 230.6,
+          "within2": 0,
+          "within5": 2.6
+        },
+        "fajrAnswered": 165,
+        "ishaAnswered": 155,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 54.4,
+            "p90": 187.6,
+            "max": 288.4,
+            "within2": 4.7,
+            "within5": 11.2
+          },
+          "isha": {
+            "n": 365,
+            "median": 15.7,
+            "p90": 136.3,
+            "max": 230.6,
+            "within2": 4.1,
+            "within5": 11.2
+          }
+        }
+      },
+      "AqrabAyyamLast": {
+        "fajr": {
+          "n": 115,
+          "median": 219.9,
+          "p90": 306,
+          "max": 369.2,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 204,
+          "p90": 274.5,
+          "max": 327.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 115,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 293,
+            "median": 32.7,
+            "p90": 258.8,
+            "max": 369.2,
+            "within2": 5.8,
+            "within5": 14
+          },
+          "isha": {
+            "n": 293,
+            "median": 24,
+            "p90": 235.1,
+            "max": 327.8,
+            "within2": 5.1,
+            "within5": 12.6
+          }
+        }
+      },
+      "AqrabAyyam3Day": {
+        "fajr": {
+          "n": 115,
+          "median": 203.7,
+          "p90": 290.4,
+          "max": 350.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 105,
+          "median": 190.1,
+          "p90": 260.5,
+          "max": 313.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 115,
+        "ishaAnswered": 105,
+        "wholeYear": {
+          "fajr": {
+            "n": 293,
+            "median": 32.7,
+            "p90": 241.5,
+            "max": 350.8,
+            "within2": 5.8,
+            "within5": 14
+          },
+          "isha": {
+            "n": 293,
+            "median": 24,
+            "p90": 221.2,
+            "max": 313.7,
+            "within2": 5.1,
+            "within5": 12.6
+          }
+        }
+      },
+      "NorwayFrozenClock": {
+        "fajr": {
+          "n": 165,
+          "median": 76.7,
+          "p90": 137.2,
+          "max": 148.2,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 155,
+          "median": 65.8,
+          "p90": 130.8,
+          "max": 147.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 165,
+        "ishaAnswered": 155,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 54.7,
+            "p90": 124.2,
+            "max": 149.2,
+            "within2": 4.7,
+            "within5": 11.2
+          },
+          "isha": {
+            "n": 365,
+            "median": 34.9,
+            "p90": 115.8,
+            "max": 148.8,
+            "within2": 4.1,
+            "within5": 10.1
+          }
+        }
+      },
+      "MoonsightingText": {
+        "fajr": {
+          "n": 165,
+          "median": 21.4,
+          "p90": 63.9,
+          "max": 132.5,
+          "within2": 3,
+          "within5": 7.9
+        },
+        "isha": {
+          "n": 155,
+          "median": 22.2,
+          "p90": 65.9,
+          "max": 127,
+          "within2": 4.5,
+          "within5": 9.7
+        },
+        "fajrAnswered": 165,
+        "ishaAnswered": 155,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 52.8,
+            "p90": 99.5,
+            "max": 166.9,
+            "within2": 7.4,
+            "within5": 9.6
+          },
+          "isha": {
+            "n": 365,
+            "median": 37.2,
+            "p90": 89.8,
+            "max": 154.6,
+            "within2": 1.9,
+            "within5": 4.1
+          }
+        }
+      }
+    }
+  },
+  {
+    "authority": "Sweden, IFiS, Kiruna computed at the 63.68 N its own table implies",
+    "lat": 63.68,
+    "lng": 20.2253,
+    "fajrAngle": 17.98,
+    "ishaAngle": 15.9,
+    "publishedDays": 365,
+    "bindDaysFajr": 143,
+    "bindDaysIsha": 131,
+    "rules": {
+      "MiddleOfTheNight": {
+        "fajr": {
+          "n": 143,
+          "median": 99.4,
+          "p90": 149.8,
+          "max": 163.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 131,
+          "median": 95.6,
+          "p90": 149.3,
+          "max": 163.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 8.6,
+            "p90": 129.2,
+            "max": 163.8,
+            "within2": 37.8,
+            "within5": 48.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 5.7,
+            "p90": 127.9,
+            "max": 163.7,
+            "within2": 37,
+            "within5": 47.1
+          }
+        }
+      },
+      "SeventhOfTheNight": {
+        "fajr": {
+          "n": 143,
+          "median": 25.2,
+          "p90": 36.1,
+          "max": 40,
+          "within2": 2.8,
+          "within5": 7.7
+        },
+        "isha": {
+          "n": 131,
+          "median": 19.7,
+          "p90": 24.1,
+          "max": 26.7,
+          "within2": 3.8,
+          "within5": 8.4
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 30.3,
+            "p90": 54.2,
+            "max": 70.6,
+            "within2": 1.1,
+            "within5": 3
+          },
+          "isha": {
+            "n": 365,
+            "median": 18,
+            "p90": 37.9,
+            "max": 55,
+            "within2": 1.4,
+            "within5": 6
+          }
+        }
+      },
+      "TwilightAngle": {
+        "fajr": {
+          "n": 143,
+          "median": 42.4,
+          "p90": 54.6,
+          "max": 55.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 131,
+          "median": 32.4,
+          "p90": 44.4,
+          "max": 45.9,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 8.6,
+            "p90": 49.7,
+            "max": 55.8,
+            "within2": 37.8,
+            "within5": 48.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 5.7,
+            "p90": 41.9,
+            "max": 45.9,
+            "within2": 37,
+            "within5": 47.1
+          }
+        }
+      },
+      "SwedenIFiS": {
+        "fajr": {
+          "n": 143,
+          "median": 5.3,
+          "p90": 9,
+          "max": 10.8,
+          "within2": 9.1,
+          "within5": 42
+        },
+        "isha": {
+          "n": 131,
+          "median": 4.6,
+          "p90": 7.3,
+          "max": 8.6,
+          "within2": 13,
+          "within5": 58.8
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 3.2,
+            "p90": 11.9,
+            "max": 26.8,
+            "within2": 38.1,
+            "within5": 61.1
+          },
+          "isha": {
+            "n": 365,
+            "median": 3.5,
+            "p90": 12,
+            "max": 28.4,
+            "within2": 38.4,
+            "within5": 66.8
+          }
+        }
+      },
+      "Diyanet": {
+        "fajr": {
+          "n": 143,
+          "median": 26.2,
+          "p90": 71.3,
+          "max": 72.4,
+          "within2": 4.9,
+          "within5": 11.2
+        },
+        "isha": {
+          "n": 131,
+          "median": 18.6,
+          "p90": 58.2,
+          "max": 59.1,
+          "within2": 5.3,
+          "within5": 14.5
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 69.6,
+            "p90": 101.2,
+            "max": 111.6,
+            "within2": 1.9,
+            "within5": 4.4
+          },
+          "isha": {
+            "n": 365,
+            "median": 58.7,
+            "p90": 91.7,
+            "max": 102,
+            "within2": 1.9,
+            "within5": 5.2
+          }
+        }
+      },
+      "BelgiumLat45": {
+        "fajr": {
+          "n": 143,
+          "median": 56.6,
+          "p90": 145.5,
+          "max": 150.6,
+          "within2": 2.8,
+          "within5": 7.7
+        },
+        "isha": {
+          "n": 131,
+          "median": 48.5,
+          "p90": 116.9,
+          "max": 121.3,
+          "within2": 3.8,
+          "within5": 9.2
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 65.3,
+            "p90": 120.4,
+            "max": 150.6,
+            "within2": 1.1,
+            "within5": 3
+          },
+          "isha": {
+            "n": 365,
+            "median": 57.3,
+            "p90": 93.2,
+            "max": 121.3,
+            "within2": 1.4,
+            "within5": 3.3
+          }
+        }
+      },
+      "AqrabBalad485": {
+        "fajr": {
+          "n": 143,
+          "median": 77.8,
+          "p90": 204,
+          "max": 218.1,
+          "within2": 2.8,
+          "within5": 6.3
+        },
+        "isha": {
+          "n": 131,
+          "median": 65.8,
+          "p90": 145.7,
+          "max": 151.3,
+          "within2": 0.8,
+          "within5": 3.1
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 60,
+            "p90": 160.6,
+            "max": 218.1,
+            "within2": 1.1,
+            "within5": 2.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 53.3,
+            "p90": 117.8,
+            "max": 151.3,
+            "within2": 1.4,
+            "within5": 3.3
+          }
+        }
+      },
+      "AqrabBaladWalk": {
+        "fajr": {
+          "n": 143,
+          "median": 153.3,
+          "p90": 201.3,
+          "max": 228.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 131,
+          "median": 95.9,
+          "p90": 146.2,
+          "max": 150.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 8.6,
+            "p90": 187.9,
+            "max": 228.4,
+            "within2": 37.8,
+            "within5": 48.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 5.7,
+            "p90": 127.7,
+            "max": 150.7,
+            "within2": 37,
+            "within5": 47.1
+          }
+        }
+      },
+      "AqrabAyyamLast": {
+        "fajr": {
+          "n": 143,
+          "median": 184.5,
+          "p90": 248.9,
+          "max": 259.9,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 131,
+          "median": 184.3,
+          "p90": 234.2,
+          "max": 247.2,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 8.6,
+            "p90": 230.1,
+            "max": 259.9,
+            "within2": 37.8,
+            "within5": 48.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 5.7,
+            "p90": 214.8,
+            "max": 247.2,
+            "within2": 37,
+            "within5": 47.1
+          }
+        }
+      },
+      "AqrabAyyam3Day": {
+        "fajr": {
+          "n": 143,
+          "median": 169.2,
+          "p90": 234.2,
+          "max": 248.9,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 131,
+          "median": 166.3,
+          "p90": 215.9,
+          "max": 232.3,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 8.6,
+            "p90": 216.1,
+            "max": 248.9,
+            "within2": 37.8,
+            "within5": 48.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 5.7,
+            "p90": 198.6,
+            "max": 232.3,
+            "within2": 37,
+            "within5": 47.1
+          }
+        }
+      },
+      "NorwayFrozenClock": {
+        "fajr": {
+          "n": 143,
+          "median": 72.3,
+          "p90": 119.9,
+          "max": 141.3,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 131,
+          "median": 80.4,
+          "p90": 128.3,
+          "max": 151.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 8.6,
+            "p90": 104.3,
+            "max": 142.3,
+            "within2": 37.8,
+            "within5": 48.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 5.7,
+            "p90": 108.4,
+            "max": 153.4,
+            "within2": 37,
+            "within5": 47.1
+          }
+        }
+      },
+      "MoonsightingText": {
+        "fajr": {
+          "n": 143,
+          "median": 25.5,
+          "p90": 38.5,
+          "max": 41.5,
+          "within2": 2.1,
+          "within5": 6.3
+        },
+        "isha": {
+          "n": 131,
+          "median": 16.5,
+          "p90": 35.8,
+          "max": 38.5,
+          "within2": 2.3,
+          "within5": 6.9
+        },
+        "fajrAnswered": 143,
+        "ishaAnswered": 131,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 35.2,
+            "p90": 54.5,
+            "max": 70.2,
+            "within2": 0.8,
+            "within5": 2.5
+          },
+          "isha": {
+            "n": 365,
+            "median": 23.3,
+            "p90": 38.1,
+            "max": 54.5,
+            "within2": 0.8,
+            "within5": 2.5
+          }
+        }
+      }
+    }
+  },
+  {
+    "authority": "Norway, Islamsk Rad Norge, Oslo",
+    "lat": 59.9139,
+    "lng": 10.7522,
+    "fajrAngle": 16.08,
+    "ishaAngle": 14.93,
+    "publishedDays": 365,
+    "bindDaysFajr": 110,
+    "bindDaysIsha": 102,
+    "rules": {
+      "MiddleOfTheNight": {
+        "fajr": {
+          "n": 110,
+          "median": 113.6,
+          "p90": 143.3,
+          "max": 143.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 102,
+          "median": 134,
+          "p90": 159,
+          "max": 167.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.2,
+            "p90": 114.8,
+            "max": 143.6,
+            "within2": 46.3,
+            "within5": 63
+          },
+          "isha": {
+            "n": 365,
+            "median": 0.5,
+            "p90": 144.4,
+            "max": 167.4,
+            "within2": 55.9,
+            "within5": 56.4
+          }
+        }
+      },
+      "SeventhOfTheNight": {
+        "fajr": {
+          "n": 110,
+          "median": 16.3,
+          "p90": 45.9,
+          "max": 62.5,
+          "within2": 0,
+          "within5": 5.5
+        },
+        "isha": {
+          "n": 102,
+          "median": 2.9,
+          "p90": 8.5,
+          "max": 11.2,
+          "within2": 43.1,
+          "within5": 73.5
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 12.7,
+            "p90": 56.6,
+            "max": 83.7,
+            "within2": 34.5,
+            "within5": 38.4
+          },
+          "isha": {
+            "n": 365,
+            "median": 1.2,
+            "p90": 23.4,
+            "max": 35.6,
+            "within2": 53.4,
+            "within5": 63.8
+          }
+        }
+      },
+      "TwilightAngle": {
+        "fajr": {
+          "n": 110,
+          "median": 26.4,
+          "p90": 42.9,
+          "max": 48.5,
+          "within2": 2.7,
+          "within5": 5.5
+        },
+        "isha": {
+          "n": 102,
+          "median": 40.8,
+          "p90": 49.6,
+          "max": 51.2,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.1,
+            "p90": 30.3,
+            "max": 48.5,
+            "within2": 47.1,
+            "within5": 64.9
+          },
+          "isha": {
+            "n": 365,
+            "median": 0.5,
+            "p90": 43.5,
+            "max": 51.2,
+            "within2": 55.9,
+            "within5": 56.4
+          }
+        }
+      },
+      "SwedenIFiS": {
+        "fajr": {
+          "n": 110,
+          "median": 8.1,
+          "p90": 21.9,
+          "max": 31.3,
+          "within2": 5.5,
+          "within5": 34.5
+        },
+        "isha": {
+          "n": 102,
+          "median": 15.1,
+          "p90": 22,
+          "max": 24.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.1,
+            "p90": 23.1,
+            "max": 48.3,
+            "within2": 48.2,
+            "within5": 65.8
+          },
+          "isha": {
+            "n": 365,
+            "median": 0.6,
+            "p90": 17,
+            "max": 24.8,
+            "within2": 57,
+            "within5": 64.1
+          }
+        }
+      },
+      "Diyanet": {
+        "fajr": {
+          "n": 110,
+          "median": 28.2,
+          "p90": 29.9,
+          "max": 43.7,
+          "within2": 3.6,
+          "within5": 7.3
+        },
+        "isha": {
+          "n": 102,
+          "median": 33.9,
+          "p90": 35.5,
+          "max": 36,
+          "within2": 2,
+          "within5": 3.9
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 36.4,
+            "p90": 58,
+            "max": 74.6,
+            "within2": 1.1,
+            "within5": 2.2
+          },
+          "isha": {
+            "n": 365,
+            "median": 35.1,
+            "p90": 54.4,
+            "max": 60.1,
+            "within2": 1.6,
+            "within5": 3.3
+          }
+        }
+      },
+      "BelgiumLat45": {
+        "fajr": {
+          "n": 110,
+          "median": 55.3,
+          "p90": 67.2,
+          "max": 68.1,
+          "within2": 1.8,
+          "within5": 5.5
+        },
+        "isha": {
+          "n": 102,
+          "median": 61,
+          "p90": 70.7,
+          "max": 71.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 44,
+            "p90": 63.8,
+            "max": 70.2,
+            "within2": 0.5,
+            "within5": 1.6
+          },
+          "isha": {
+            "n": 365,
+            "median": 38.3,
+            "p90": 66.4,
+            "max": 71.4,
+            "within2": 1.1,
+            "within5": 2.7
+          }
+        }
+      },
+      "AqrabBalad485": {
+        "fajr": {
+          "n": 110,
+          "median": 75.2,
+          "p90": 97.8,
+          "max": 99.5,
+          "within2": 0.9,
+          "within5": 3.6
+        },
+        "isha": {
+          "n": 102,
+          "median": 78.7,
+          "p90": 94.6,
+          "max": 95.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 38.4,
+            "p90": 87,
+            "max": 99.5,
+            "within2": 0.5,
+            "within5": 1.6
+          },
+          "isha": {
+            "n": 365,
+            "median": 33.6,
+            "p90": 86.4,
+            "max": 95.6,
+            "within2": 0.8,
+            "within5": 2.7
+          }
+        }
+      },
+      "AqrabBaladWalk": {
+        "fajr": {
+          "n": 110,
+          "median": 135.5,
+          "p90": 150.1,
+          "max": 169.2,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 102,
+          "median": 116.4,
+          "p90": 120.7,
+          "max": 124.3,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.2,
+            "p90": 142.2,
+            "max": 169.2,
+            "within2": 46.3,
+            "within5": 63
+          },
+          "isha": {
+            "n": 365,
+            "median": 0.5,
+            "p90": 118.5,
+            "max": 124.3,
+            "within2": 55.9,
+            "within5": 56.4
+          }
+        }
+      },
+      "AqrabAyyamLast": {
+        "fajr": {
+          "n": 110,
+          "median": 81.8,
+          "p90": 132.4,
+          "max": 161.8,
+          "within2": 0.9,
+          "within5": 1.8
+        },
+        "isha": {
+          "n": 102,
+          "median": 91.9,
+          "p90": 141.7,
+          "max": 175.1,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.2,
+            "p90": 95.8,
+            "max": 161.8,
+            "within2": 46.6,
+            "within5": 63.6
+          },
+          "isha": {
+            "n": 365,
+            "median": 0.5,
+            "p90": 110.2,
+            "max": 175.1,
+            "within2": 55.9,
+            "within5": 56.4
+          }
+        }
+      },
+      "AqrabAyyam3Day": {
+        "fajr": {
+          "n": 110,
+          "median": 75.8,
+          "p90": 102.8,
+          "max": 111.1,
+          "within2": 1.8,
+          "within5": 3.6
+        },
+        "isha": {
+          "n": 102,
+          "median": 80.4,
+          "p90": 105.8,
+          "max": 115.5,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.2,
+            "p90": 80.4,
+            "max": 111.9,
+            "within2": 46.8,
+            "within5": 64.1
+          },
+          "isha": {
+            "n": 365,
+            "median": 0.5,
+            "p90": 100.3,
+            "max": 147.3,
+            "within2": 55.9,
+            "within5": 56.4
+          }
+        }
+      },
+      "NorwayFrozenClock": {
+        "fajr": {
+          "n": 110,
+          "median": 42.3,
+          "p90": 72.7,
+          "max": 89.9,
+          "within2": 2.7,
+          "within5": 5.5
+        },
+        "isha": {
+          "n": 102,
+          "median": 32.8,
+          "p90": 70.6,
+          "max": 106.3,
+          "within2": 2.9,
+          "within5": 6.9
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 2.1,
+            "p90": 60,
+            "max": 111.9,
+            "within2": 47.1,
+            "within5": 64.7
+          },
+          "isha": {
+            "n": 365,
+            "median": 0.5,
+            "p90": 64.4,
+            "max": 147.3,
+            "within2": 56.7,
+            "within5": 58.4
+          }
+        }
+      },
+      "MoonsightingText": {
+        "fajr": {
+          "n": 110,
+          "median": 16.3,
+          "p90": 45.9,
+          "max": 62.5,
+          "within2": 0,
+          "within5": 5.5
+        },
+        "isha": {
+          "n": 102,
+          "median": 2.9,
+          "p90": 8.5,
+          "max": 11.2,
+          "within2": 43.1,
+          "within5": 73.5
+        },
+        "fajrAnswered": 110,
+        "ishaAnswered": 102,
+        "wholeYear": {
+          "fajr": {
+            "n": 365,
+            "median": 12.7,
+            "p90": 56.6,
+            "max": 83.7,
+            "within2": 34.5,
+            "within5": 38.4
+          },
+          "isha": {
+            "n": 365,
+            "median": 1.2,
+            "p90": 23.4,
+            "max": 35.6,
+            "within2": 53.4,
+            "within5": 63.8
+          }
+        }
+      }
+    }
+  },
+  {
+    "authority": "Belgium, Executief van de Moslims van Belgie, Brussels",
+    "lat": 50.8503,
+    "lng": 4.3517,
+    "fajrAngle": 17.99,
+    "ishaAngle": 18,
+    "publishedDays": 348,
+    "bindDaysFajr": 47,
+    "bindDaysIsha": 47,
+    "rules": {
+      "MiddleOfTheNight": {
+        "fajr": {
+          "n": 47,
+          "median": 91.8,
+          "p90": 103.8,
+          "max": 104.3,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 104.2,
+          "p90": 119,
+          "max": 123.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 1.7,
+            "p90": 86.1,
+            "max": 104.3,
+            "within2": 55.2,
+            "within5": 78.2
+          },
+          "isha": {
+            "n": 348,
+            "median": 0.4,
+            "p90": 100.3,
+            "max": 123.7,
+            "within2": 72.4,
+            "within5": 73
+          }
+        }
+      },
+      "SeventhOfTheNight": {
+        "fajr": {
+          "n": 47,
+          "median": 73.5,
+          "p90": 76.7,
+          "max": 77.3,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 59.1,
+          "p90": 62.4,
+          "max": 62.9,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 11.3,
+            "p90": 76.3,
+            "max": 91.2,
+            "within2": 43.1,
+            "within5": 45.7
+          },
+          "isha": {
+            "n": 348,
+            "median": 11.9,
+            "p90": 59.1,
+            "max": 63.3,
+            "within2": 42.8,
+            "within5": 45.4
+          }
+        }
+      },
+      "TwilightAngle": {
+        "fajr": {
+          "n": 47,
+          "median": 3.7,
+          "p90": 8.8,
+          "max": 9.6,
+          "within2": 27.7,
+          "within5": 57.4
+        },
+        "isha": {
+          "n": 47,
+          "median": 12.6,
+          "p90": 24,
+          "max": 27.9,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 1.6,
+            "p90": 5.4,
+            "max": 9.6,
+            "within2": 60.6,
+            "within5": 89.7
+          },
+          "isha": {
+            "n": 348,
+            "median": 0.4,
+            "p90": 26.4,
+            "max": 35.4,
+            "within2": 72.4,
+            "within5": 73
+          }
+        }
+      },
+      "SwedenIFiS": {
+        "fajr": {
+          "n": 47,
+          "median": 44.2,
+          "p90": 48.5,
+          "max": 49.1,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 41.5,
+          "p90": 45,
+          "max": 45.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 1.7,
+            "p90": 46.8,
+            "max": 58.5,
+            "within2": 55.7,
+            "within5": 65.2
+          },
+          "isha": {
+            "n": 348,
+            "median": 0.5,
+            "p90": 39.7,
+            "max": 45.6,
+            "within2": 58.6,
+            "within5": 60.1
+          }
+        }
+      },
+      "Diyanet": {
+        "fajr": {
+          "n": 47,
+          "median": 48.9,
+          "p90": 51.2,
+          "max": 54.1,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 44,
+          "p90": 46.8,
+          "max": 47,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 30.4,
+            "p90": 57.2,
+            "max": 75.6,
+            "within2": 0,
+            "within5": 0
+          },
+          "isha": {
+            "n": 348,
+            "median": 38.4,
+            "p90": 50.6,
+            "max": 62.9,
+            "within2": 0,
+            "within5": 0
+          }
+        }
+      },
+      "BelgiumLat45": {
+        "fajr": {
+          "n": 47,
+          "median": 11.7,
+          "p90": 13.7,
+          "max": 14.4,
+          "within2": 4.3,
+          "within5": 12.8
+        },
+        "isha": {
+          "n": 47,
+          "median": 25.6,
+          "p90": 27.5,
+          "max": 28.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 13.8,
+            "p90": 24.8,
+            "max": 40.8,
+            "within2": 1.1,
+            "within5": 2.9
+          },
+          "isha": {
+            "n": 348,
+            "median": 14.5,
+            "p90": 24.9,
+            "max": 28.4,
+            "within2": 0.9,
+            "within5": 2.3
+          }
+        }
+      },
+      "AqrabBalad485": {
+        "fajr": {
+          "n": 47,
+          "median": 60.5,
+          "p90": 79.7,
+          "max": 81,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 73.8,
+          "p90": 95,
+          "max": 96.4,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 7,
+            "p90": 46.4,
+            "max": 81,
+            "within2": 0.9,
+            "within5": 19.5
+          },
+          "isha": {
+            "n": 348,
+            "median": 6.6,
+            "p90": 60.9,
+            "max": 96.4,
+            "within2": 0.9,
+            "within5": 6.9
+          }
+        }
+      },
+      "AqrabBaladWalk": {
+        "fajr": {
+          "n": 47,
+          "median": 70.6,
+          "p90": 80.1,
+          "max": 91.2,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 86,
+          "p90": 97.7,
+          "max": 108,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 1.7,
+            "p90": 68.6,
+            "max": 91.2,
+            "within2": 55.2,
+            "within5": 78.2
+          },
+          "isha": {
+            "n": 348,
+            "median": 0.4,
+            "p90": 85.1,
+            "max": 112.7,
+            "within2": 72.4,
+            "within5": 73
+          }
+        }
+      },
+      "AqrabAyyamLast": {
+        "fajr": {
+          "n": 47,
+          "median": 85.5,
+          "p90": 93.2,
+          "max": 94.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 101.7,
+          "p90": 109.3,
+          "max": 111.2,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 1.7,
+            "p90": 83.5,
+            "max": 94.8,
+            "within2": 55.2,
+            "within5": 78.2
+          },
+          "isha": {
+            "n": 348,
+            "median": 0.4,
+            "p90": 100.2,
+            "max": 112.7,
+            "within2": 72.4,
+            "within5": 73
+          }
+        }
+      },
+      "AqrabAyyam3Day": {
+        "fajr": {
+          "n": 47,
+          "median": 76.4,
+          "p90": 83.2,
+          "max": 84.8,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 92.1,
+          "p90": 98.9,
+          "max": 100.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 1.7,
+            "p90": 75.1,
+            "max": 89.6,
+            "within2": 55.2,
+            "within5": 78.2
+          },
+          "isha": {
+            "n": 348,
+            "median": 0.4,
+            "p90": 91.2,
+            "max": 112.7,
+            "within2": 72.4,
+            "within5": 73
+          }
+        }
+      },
+      "NorwayFrozenClock": {
+        "fajr": {
+          "n": 47,
+          "median": 76.7,
+          "p90": 89.6,
+          "max": 89.6,
+          "within2": 0,
+          "within5": 0
+        },
+        "isha": {
+          "n": 47,
+          "median": 89.2,
+          "p90": 103.7,
+          "max": 109.7,
+          "within2": 0,
+          "within5": 0
+        },
+        "fajrAnswered": 47,
+        "ishaAnswered": 47,
+        "wholeYear": {
+          "fajr": {
+            "n": 348,
+            "median": 1.7,
+            "p90": 73.6,
+            "max": 89.6,
+            "within2": 55.2,
+            "within5": 78.2
+          },
+          "isha": {
+            "n": 348,
+            "median": 0.4,
+            "p90": 87.4,
+            "max": 112.7,
+            "within2": 72.4,
+            "within5": 73
+          }
+        }
+      },
+      "MoonsightingText": {
+        "fajr": null,
+        "isha": null,
+        "fajrAnswered": 0,
+        "ishaAnswered": 0,
+        "wholeYear": {
+          "fajr": {
+            "n": 301,
+            "median": 1.5,
+            "p90": 3.9,
+            "max": 89.6,
+            "within2": 63.8,
+            "within5": 90.4
+          },
+          "isha": {
+            "n": 301,
+            "median": 0.3,
+            "p90": 34.3,
+            "max": 112.7,
+            "within2": 83.7,
+            "within5": 84.4
+          }
+        }
+      }
+    }
+  }
+]

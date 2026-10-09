@@ -1,16 +1,20 @@
 import { BottomSheetBackdrop, type BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import { StyleSheet, View } from 'react-native';
 
-import { COLORS, OVERLAY, RADIUS, SPACING } from '@/shared/constants';
+import { COLORS, OVERLAY, RADIUS, SIZE, SPACING } from '@/shared/constants';
 
 /**
  * Shared background component for bottom sheets
  * Renders a flat background with border
  */
+// Pinned vertically but not horizontally: the lib body pins left/right,
+// so Yoga alignment can only center children that carry no horizontal
+// insets — the cap+center therefore lives here and on the content column.
 export const renderSheetBackground = () => (
   <View
     style={[
-      StyleSheet.absoluteFill,
+      { position: 'absolute', top: 0, bottom: 0 },
+      bottomSheetStyles.column,
       bottomSheetStyles.sheetBackground,
       {
         borderWidth: 1,
@@ -42,6 +46,11 @@ export const renderBackdrop = (props: BottomSheetBackdropProps) => (
  */
 export const bottomSheetStyles = StyleSheet.create({
   modal: { paddingTop: SPACING.popup },
+  column: {
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: SIZE.contentMaxWidth,
+  },
   container: { flex: 1 },
   indicator: { backgroundColor: COLORS.text.secondary },
   backdrop: { backgroundColor: COLORS.surface.backdrop },

@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 
 interface BottomSheetHeaderProps {
   title: string;
-  subtitle: string;
+  /** A node rather than only a string, so a sheet whose subtitle CHANGES can cross-fade it in place */
+  subtitle: React.ReactNode;
   icon: React.ReactNode;
 }
 
@@ -28,7 +29,7 @@ export default function BottomSheetHeader({ title, subtitle, icon }: BottomSheet
     <View style={styles.header}>
       <View>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subtitle}>{subtitle}</Text>
+        {typeof subtitle === 'string' ? <Text style={styles.subtitle}>{subtitle}</Text> : subtitle}
       </View>
       <View style={styles.headerIcon}>{icon}</View>
     </View>
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
-    color: 'rgba(86, 134, 189, 0.725)',
+    color: COLORS.text.sheetSubtitle,
     marginTop: SPACING.xs,
   },
 });

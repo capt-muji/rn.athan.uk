@@ -1,0 +1,401 @@
+# Session 39: the owner's rulings, taken 2026-09-28 and 2026-09-29
+
+Every ruling below is the owner's, quoted from the session that planned this row. A planning session
+never overrides one of these. Where research contradicts a ruling, the research is reported beside it
+and the ruling stands until the owner moves it.
+
+## D1. Scope: build for unlimited, launch with at least the top 20
+
+"We're gonna go global and we need to at least include the top 20 most spoken languages in the
+world."
+
+"I want to provide as many languages as possible to the users because this is going to be a
+global, global app."
+
+Adding a language is a data decision, never a code change. The launch set is chosen later. The
+architecture never caps the count.
+
+## D2. Nothing is hardcoded
+
+"I don't want to hard code every language and then have a translation for every single language."
+
+The catalogs are data. A translation is authored, generated or corrected outside the source tree and
+loaded as data, so the number of languages does not change the amount of code.
+
+## D3. Offline, always
+
+"It should be working offline because I don't see why a language would need an online connection
+to change the language."
+
+A language switch performs no network call. Catalogs ship with the binary or sit in on-device
+storage. A phone in aeroplane mode can change language and see every string.
+
+## D4. Primary and secondary language, not English and Arabic (2026-09-29)
+
+"English is the default, but as for example, the English names that we're keeping, for example on
+the prayer row, we're keeping the English name always, right? Because that's our primary language.
+And then we should have a secondary language. Primary language, secondary language. I think we should
+maybe have two different atoms at least, to differentiate. Rather than saying Arabic language or
+English language. We don't know how to put the language name in because we might end up making both
+dynamic."
+
+This supersedes the earlier framing of "English plus a chosen language". The prayer row carries two
+name slots, and neither is named for a language in the code:
+
+| Slot | Default | Selectable |
+| --- | --- | --- |
+| Primary name | English | Owner has not ruled. Design for it |
+| Secondary name | Arabic | Yes, this is the row the user changes |
+
+Consequences the plan must carry:
+- `showArabicNamesAtom` is the wrong name for the toggle that governs the second slot, because the
+  second slot stops being Arabic the moment the user changes it.
+- `PRAYERS_ARABIC` and `EXTRAS_ARABIC` stop being a hardcoded second language and become the default
+  value of the secondary catalog.
+- The `arabic` field on `PrayerRow` is named for a language it will not always hold.
+- A user may set the secondary language to the same language as the primary, or to none. Both cases
+  need a defined behaviour.
+
+## D5. The prayer row keeps its English name. The second column is what changes
+
+"The English prayer names, they will stay. On the prayer list itself, only the Arabic names will
+change to what the user has selected."
+
+"On the info box, all the Arabic will be changed to what you select."
+
+So the prayer list is bilingual by design and stays bilingual. The language setting changes the
+SECOND name, the explanation text and every surface below, never the first name.
+
+## D6. Every sheet, modal and setting is translated
+
+"It will also change the settings, all the bottom sheets, all the modals."
+
+The chrome of the app follows the selected language in full. The prayer row's primary name does not.
+
+## D7. The layout never mirrors. Left-align every language.
+
+"I know left to right is going to be an issue, but I think we should always left align it exactly
+like English, even if the text is written right to left, such as Arabic. Instead of shifting
+everything to the right, which our app shouldn't actually do because then it becomes a really
+difficult nightmare to handle the layout... it should work exactly like the English, so it should be
+left to right, even if it's a right to left language, we should basically replace it with a left to
+right alignment."
+
+"I am just really afraid of opening a kind of worms if we do shift all the text to a different
+alignment because the app is not built in that way."
+
+The ruling stands and the plan is built to it. The owner asked separately for the alternatives to be
+REPORTED, never built:
+
+"If you have other alternatives, just tell me, don't implement them. Follow what I said, but just
+tell me at the end what you think might be better or not."
+
+So the plan carries a read-only section comparing the alternatives, with the honest cost of each, and
+implements none of them.
+
+## D8. The language setting lives in Settings, behind a chevron, opening its own sheet
+
+"I want this to be a setting in the settings, and I want the Google Translate icon to be there. I
+think it has like English and Chinese icon. I don't know, or a globe, perhaps a globe with lines. And
+it will be a drop down option, like a selection of which language they want to choose. If they tap
+it, it's like a chevron, and if they tap it, it will go to the language bottom sheet where they can
+do a selection, just like the sound bottom sheet."
+
+"I'm not sure about the language bottom sheet, but I do feel like that's a decent approach. We can
+stick to that for now. Might not stick to it forever."
+
+So: a Settings row with an icon, a label and a chevron, opening a selection sheet built on the same
+machinery as the sound sheet. The approach is explicitly provisional, so the plan records what would
+change if the owner later prefers a full screen or a native picker.
+
+## D9. The prayer-name column width is the owner's named risk
+
+"My main concern is the width for the English prayer name. We have each row be the length of the
+longest prayer name for that schedule. So for example sunrise is the longest one... What if the
+translation of sunrise in a different language might be like 20 characters, 30 characters? I think we
+might have to run through a bunch of different languages and find out if this will ever break in the
+top 20 languages, in any of the 11 prayers that we have."
+
+"Istijaba, the prayer that appears only on Fridays, doesn't actually have a direct translation."
+
+The plan measures this rather than assuming it, across all 11 names in every candidate language.
+
+## D10. Research depth
+
+"This is basically a white paper level research thesis, PhD level research. Look at a lot of
+alternatives, look at the industry standard, look at how to do it, the best approach."
+
+## D11. Working method
+
+"Work autonomously and in a loop and make assumptions. Don't ask me any questions."
+
+"At the end, very clearly list all those assumptions."
+
+"This is ONLY A RESEARCH TASK. Don't commit anything yet."
+
+So this session plans and does not execute, asks nothing, records every assumption it made, and
+leaves the commit to the owner's word.
+
+## D12. Notification copy follows the selected language (2026-09-29)
+
+"Should we change the notification text language? I think so, yes."
+
+So a notification reads in the user's chosen language. Today `shared/notifications.ts` builds
+`${englishName} now` and `${englishName} in ${intervalMinutes}m` at schedule time.
+
+This is the most expensive ruling in the session, and the cost depends on a research answer:
+
+| If the platform can localise at DELIVERY time | If it can only localise at SCHEDULE time |
+| --- | --- |
+| Copy resolves when the notification fires | Copy is frozen into up to 64 armed requests |
+| A language change needs no re-arm | A language change must cancel and re-arm the whole plan |
+| Catalogs must exist as native resources, not JS | The JS catalog is enough |
+
+Both halves have a real cost. The native-resource route needs the strings in `InfoPlist.strings`
+or `res/values-<locale>/strings.xml`, which means a second catalog format kept in step with the
+JS one. The re-arm route reuses `commitSoundSelection`'s proven pattern but inherits session 33's
+partial-failure problem.
+
+The plan picks one on R5's evidence and records why. The prayer NAME inside that copy is a
+separate question: under D5 the prayer row keeps its English name, and whether a notification
+does the same or uses the selected language is an open point the plan must settle explicitly.
+
+## D13. The language feature is announced in What's New (2026-09-29)
+
+"Because this is a new feature, we do want to add it to the What's New modal."
+
+`shared/whatsNew.ts` holds 13 display strings and `VISIBLE_WHATS_NEW` gates the Settings row.
+Two consequences the plan must carry:
+
+- The What's New entry announcing the language feature is itself translated, so a user who
+  switches language sees the announcement in that language.
+- `ai/AGENTS.md` records that items may declare `flags: []` and that a dark feature can never be
+  advertised, so the entry lands in the same release that ships the feature, never before.
+
+## D15. Transliterate, never translate, the prayer names (2026-09-29)
+
+"I think we should do transliterate, not translate. Transliterate is the best option, especially
+for Friday, the extra prayer that we have. Istijaba, there's no word for it in English or in any
+other language except Arabic. That's why Istijaba is actually a transliteration of the Arabic word.
+So we should be doing transliteration everywhere, I think."
+
+**This answers proposal P5.8 and it is the right call.** Three independent lines of evidence support
+it, and the owner's own reasoning from Istijaba is the strongest of them.
+
+### 1. The app already does this. The ruling makes an existing policy explicit.
+
+Classified from `shared/constants.ts`, **8 of the 11 names in the "English" catalog are already
+transliterations of Arabic**:
+
+| Catalog | Transliterated | Translated |
+| --- | --- | --- |
+| `PRAYERS_ENGLISH` | Fajr, Dhuhr, Asr, Magrib, Isha | Sunrise |
+| `EXTRAS_ENGLISH` | Suhoor, Duha, Istijaba | Midnight, Last Third |
+
+So there is no policy change here, only a policy that was never written down. The three exceptions
+are the three concepts that are astronomical or arithmetic rather than liturgical: a sunrise, a
+midpoint and a third of a night. Those are the ones that legitimately translate, and every language
+has a word for them.
+
+**The rule, stated precisely:** a name that IS an Arabic term is transliterated into the target
+script. A name that describes a time of day or a fraction of the night is translated. The existing
+English catalog is the reference implementation of that rule.
+
+### 2. Istijaba proves it, exactly as the owner argued
+
+`Istijaba` is null in **24 of 28** sourced locales, because almost no prayer timetable in any
+language publishes it. There is nothing to translate TO. The owner's point is that "Istijaba" in the
+English catalog is itself a transliteration, so the app has already answered this question once and
+the answer generalises.
+
+The design that makes it work is also already in the app: a transliterated label in the column, with
+the explanation string carrying the meaning. So a null in the sourced catalog is not missing work,
+it is a signal to transliterate.
+
+### 3. It fixes the width problem
+
+Measured, and this is the practical payoff: German `Nachmittagsgebet` (translated) is **148pt**
+against `Asr` (transliterated) at **30pt**, and both are correct German. The launch-set languages
+that overflowed the 123pt column were overflowing precisely because they translated.
+
+`CATALOG-EVIDENCE.md` measured this across two shipping apps and `LAUNCH-SET.md` identified it as
+the single question holding back French and German.
+
+### What this unblocks immediately
+
+`LAUNCH-SET.md` held `fr` and `de` back for one reason: European languages fork on whether to
+transliterate or translate, and R6 would not choose for the owner. That fork is now closed.
+
+| Locale | Was | Now |
+| --- | --- | --- |
+| French | blocked on the convention | **unblocked**, transliterate |
+| German | blocked on the convention | **unblocked**, transliterate |
+| Spanish | later, same question | unblocked on the same ruling |
+| Dutch | later, same question | unblocked on the same ruling |
+
+So the launch set can return to eight (`en ar id ur bn tr fr de`) if the owner wants it, and
+`ASSUMPTIONS.md` A7's revision to six is reversed by this ruling.
+
+### The one limit the plan must respect
+
+Transliteration is into the target SCRIPT, not a copy of the Latin string. Arabic renders `الفجر`,
+Urdu `فجر`, Bengali `ফজর`, Hindi `फ़ज्र`, Russian `Фаджр`. A Bengali user must not see Latin
+"Fajr" in a Bengali interface. The sourced catalog already carries the correct script per locale, so
+this is a constraint on interpretation rather than new work.
+
+The Turkish exception survives unchanged and is not a counter-example: Diyanet prints `İmsak` for
+the dawn row, which is a different TERM rather than a translation of Fajr, and it stays.
+
+## D16. The three translated terms stay ONE WORD, or as close as the language allows (2026-09-29)
+
+"Those are the 3 that scare me the most because I feel like those are the 3 that might be the
+longest. We literally want to translate them. Last third, we don't want to say last third of the
+night. I don't want it to be 'last third of the night' in another language. No. I literally want
+just the words. Last third, that's it. Same for midnight, it should just be midnight, it shouldn't
+be 'the middle of the night'. Same for sunrise, it should just be sunrise. One word, midnight one
+word, sunrise one word. Not 'the time of sunrise', no."
+
+**This is the missing half of D15, and it is the rule that makes the column work.**
+
+D15 settles the eight transliterated names. These three are the ones that genuinely translate, and
+the owner correctly identifies them as the highest risk: a translator handed "Last Third" naturally
+produces "the last third of the night", which is a phrase, and a phrase never fits a column sized
+for a word.
+
+**The rule: translate the TERM, never the DEFINITION.** The explanation string already carries the
+definition, so the label does not have to.
+
+### The planning session got this wrong first, and the owner caught it
+
+"Tengah in bahasa means middle. Middle of what? That's just wrong. We need MIDNIGHT not middle
+of the night."
+
+**He is right, and the error was worse than one bad word.** The first version of this ruling
+proposed five shortenings. Re-measured against the budget:
+
+| Locale | Term | Sourced | Width | Over 123pt? | Proposed | Verdict |
+| --- | --- | --- | --- | --- | --- | --- |
+| French | Midnight | Minuit islamique | 132.3pt | **yes** | Minuit | valid |
+| German | Sunrise | Sonnenaufgang | 125.9pt | **yes** | Aufgang | **WRONG WORD** |
+| Indonesian | Midnight | Tengah malam | 119.1pt | no | Tengah | **needless AND wrong** |
+| Indonesian | Last Third | Sepertiga akhir | 120.3pt | no | Sepertiga | **needless** |
+| French | Sunrise | Lever du soleil | 114.5pt | no | Lever | **needless** |
+
+**Three of the five terms already fit.** They were shortened for no reason at all, and two of those
+shortenings destroyed the meaning:
+
+- `Tengah malam` is "middle of the night", which IS midnight in Indonesian. `Tengah` alone is the
+  bare adjective "middle", qualifying nothing. It is a truncation wearing a real word's clothes.
+- `Aufgang` is a real German word meaning ascent or stairway entrance. It is not sunrise.
+  `Sonnenaufgang` is one word and it is the only word.
+- `Lever` alone is the verb "to lift". `Lever du soleil` is the phrase French uses.
+
+### The corrected rule
+
+D16 stands, but it governs the SOURCE, not a post-hoc trim:
+
+1. **Ask the source for the term a timetable prints**, which is naturally terse. Do not translate
+   the English definition and then cut it down.
+2. **Only act when a term is over budget.** A term that fits is never touched. Brevity is
+   not a virtue on its own.
+3. **A shorter form must mean the same thing.** If the only shorter option changes the meaning,
+   the long form stays and the locale is flagged for a different remedy.
+
+### What genuinely needs a remedy
+
+Exactly two terms in the launch set, not five:
+
+| Locale | Term | Sourced | Width | Honest options |
+| --- | --- | --- | --- | --- |
+| French | Midnight | Minuit islamique | 132.3pt | **`Minuit`** at 50.2pt is a real word meaning midnight, and the "islamique" qualifier is what the explanation string is for. Safe |
+| German | Sunrise | Sonnenaufgang | 125.9pt | No correct shorter word exists. **This one needs a different remedy**, not a shorter label |
+
+German Sunrise is the honest residual: one correct word, 3pt over a budget derived for the
+narrowest screen with a second name shown. `COLUMN-DESIGN.md`'s later layers exist for exactly this
+case, and the cheapest is that the budget rises to 191pt when the second name is hidden, which the
+Arabic-derived rule already does for no locale but which the toggle does for any user.
+
+**Durable lesson for the plan: never shorten a translation this session cannot read.** The width
+script measures. It cannot tell whether the result still means anything. Any shortening is a
+question for the source, and a term that fits is left alone.
+
+### Why this is safe to do
+
+The app already pairs a terse label with an explanatory string, and the Arabic proves the pattern
+works: `آخر ثلث` is literally "last third", without "of the night", and it reads correctly because
+the context is a prayer timetable. Nobody opening a prayer app is confused about which night.
+
+`R6` sourced the explanations far better than the labels (all five Arabic explanations reproduce
+this app's shipped strings exactly), which is the right way round: the explanation is where
+precision belongs, and the label is where brevity belongs.
+
+### The one judgement the plan must carry
+
+A terse form must remain a REAL word in the language, not a truncation. German `Aufgang` is a real
+word (rise, ascent) and is what a German timetable would print. It is not `Sonnenaufg...`. Where no
+short real form exists, the longer one stays and the locale is flagged, rather than inventing one.
+
+That is a per-locale question for the source, and it is why `R6`'s `shortText` field exists.
+
+## D17. One language at a time; the Arabic column is removed (2026-10-09)
+
+The owner redirected the whole feature: the app renders exactly one language, selected in Settings
+and following the device locale on first run. The Arabic name column is removed everywhere: the
+prayer row, the explanation box, the Settings toggle, the stored data. Every user-visible string
+follows the selected language. Arabic strings remain only as source data for transliterations.
+
+This supersedes D4 and D5 as then read (the two-slot row), the two-setting model, the revised
+one-picker-plus-toggle model, and every conclusion built on the bilingual row. The term typing is
+confirmed: transliterated Fajr, Dhuhr, Asr, Magrib, Isha, Suhoor, Duha, Istijaba and Qibla;
+translated Sunrise, Midnight and Last Third. `SINGLE-LANGUAGE-PIVOT.md` is the record.
+
+## D18. The language switch is an all-or-nothing transaction (2026-10-09)
+
+Changing the language re-renders the UI, re-arms every armed notification, renames channels,
+re-pushes widget timelines and switches the width cache. The owner ruled: a progress UI shows while
+it applies, the user cannot cancel, and a crash or force quit mid-commit must never leave a
+half-applied state. The design follows `commitSoundSelection`'s lock-and-rollback shape with a
+persisted intent marker for recovery.
+
+## D19. The language release is 2.0.0; going global is 3.0.0 (2026-10-09)
+
+The single-language overhaul ships as version 2.0.0. The later global rollout (locations, worldwide
+timetables) ships as 3.0.0. The 1.29.x line continues until the 2.0.0 work opens.
+
+## D20. The qibla sensor code is untouched (2026-10-09)
+
+The compass is critical and language-independent. Only its labels and instructions translate; no
+sensor, settling or heading code changes in this feature.
+
+## D21. Latin numerals everywhere at 2.0.0 (2026-10-09)
+
+Times, countdown (`1H 10M`), dates and every other digit render in Latin numerals in every
+language, Arabic included. `toArabicNumbers` is deleted with the Arabic explanation line.
+Per-locale numeral systems (Persian and Bengali digits, the Western/Eastern toggle) are deferred
+to a later session; `research/R12-NUMERALS.md` carries the evidence for that pass.
+
+## D22. The audio never changes (2026-10-09)
+
+All athan and reminder audio files (99) stay exactly as recorded, in every language: the audio is
+recorded in Arabic, so it carries no English to translate and no per-language recording work
+exists. The notification TEXT translates to the selected language; the sound does not.
+
+## D23. Month names localise; the calendar choice does not (2026-10-09)
+
+Gregorian and Hijri month names localise per language; the date formats and day-month order stay
+as today; the Gregorian/Hijri toggle in Settings stays, independent of language. English Hijri
+months remain today's English transliterations; each language carries its own transliterations
+(verified: `Intl` localises both calendars per locale, including Indonesian "Juli" and "Safar").
+
+## D24. A missing name is always a transliteration (2026-10-09)
+
+Every language can transliterate the eight Arabic-term prayer names, so a locale with no sourced
+name for a slot gets the transliteration written in that language's script. No row suppression, no
+English fallback. Refines D15: the three translated slots (Sunrise, Midnight, Last Third) are the
+only exceptions.
+
+## D14. Ordering: this row runs after the qibla compass
+
+Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
+while localisation is a sweep over the whole finished surface, so every feature built after a
+translation sweep would otherwise have to be translated twice.

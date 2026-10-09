@@ -1,29 +1,144 @@
-import { addDays, format, intervalToDuration, isFuture, isToday, isYesterday, setHours, setMinutes } from 'date-fns';
-import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
+import { format, intervalToDuration } from 'date-fns';
 
-import { ISLAMIC_DAY, TIME_ADJUSTMENTS } from '@/shared/constants';
+import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
+
+// =============================================================================
+// PRAYER-TIMEZONE CLOCK
+// =============================================================================
+//
+// Calendar days follow the prayer timezone (PRAYER_TIMEZONE), never the phone's
+// own: a phone set to another timezone still reads London's date, weekday and
+// year (ISSUES #30). Calendar days travel as YYYY-MM-DD strings, moments as Dates;
+// never read getDate()/getMonth()/getFullYear() off a Date for a prayer day.
+//
+// The prayer timezone's clock is read by Intl from the instant itself. Helpers
+// that first rebuild a Date on the phone's own clock (date-fns-tz toZonedTime,
+// getTimezoneOffset) can shift by an hour when that clock skips or repeats an
+// hour of its own, so none of them are used for prayer time.
+
+const MINUTE_MS = 60 * 1000;
+const HOUR_MS = 60 * MINUTE_MS;
+const MINUTES_IN_DAY = 24 * 60;
+
+const pad2 = (value: number): string => String(value).padStart(2, '0');
+
+const prayerClockFormatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: PRAYER_TIMEZONE,
+  hourCycle: 'h23',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+});
+
+/** The prayer timezone's calendar and clock at one instant */
+interface PrayerClock {
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minute: number;
+  second: number;
+}
+
+/**
+ * Offset of the prayer timezone's clock from UTC at an instant, read by Intl
+ * @param instant Epoch milliseconds (whole seconds)
+ * @returns Offset in milliseconds (positive east of UTC, e.g. 3600000 for BST)
+ */
+const readOffsetByIntl = (instant: number): number => {
+  const parts = prayerClockFormatter.formatToParts(instant);
+  const field = (type: Intl.DateTimeFormatPartTypes): number => Number(parts.find((part) => part.type === type)?.value);
+  // Some engines print midnight as 24 even with hourCycle h23
+  const hour = field('hour') % 24;
+  const clockAsUtc = Date.UTC(field('year'), field('month') - 1, field('day'), hour, field('minute'), field('second'));
+  return clockAsUtc - Math.floor(instant / 1000) * 1000;
+};
+
+// Intl is slow on the phone's JavaScript engine and the lists read the clock for
+// every row, so offsets are remembered. A UTC day whose offset is the same at its
+// first and last minute has no clock change in it (clocks change at most once a
+// day): one pair of reads covers all of it. On the two days a year the clocks do
+// change, offsets are remembered per quarter hour (every clock change falls on one)
+const QUARTER_HOUR_MS = 15 * MINUTE_MS;
+const DAY_MS = 24 * HOUR_MS;
+const dayOffsets = new Map<string, number | null>();
+const quarterHourOffsets = new Map<number, number>();
+
+/**
+ * Offset of the prayer timezone's clock from UTC at an instant
+ * @param instant Epoch milliseconds
+ * @returns Offset in milliseconds (positive east of UTC, e.g. 3600000 for BST)
+ */
+const prayerTimezoneOffset = (instant: number): number => {
+  const utcDay = new Date(instant).toISOString().slice(0, 10);
+  let dayOffset = dayOffsets.get(utcDay);
+  if (dayOffset === undefined) {
+    const dayStart = Date.parse(`${utcDay}T00:00:00Z`);
+    const first = readOffsetByIntl(dayStart);
+    const last = readOffsetByIntl(dayStart + DAY_MS - MINUTE_MS);
+    dayOffset = first === last ? first : null;
+    dayOffsets.set(utcDay, dayOffset);
+  }
+  if (dayOffset !== null) return dayOffset;
+
+  const quarterHour = Math.floor(instant / QUARTER_HOUR_MS);
+  let offset = quarterHourOffsets.get(quarterHour);
+  if (offset === undefined) {
+    offset = readOffsetByIntl(quarterHour * QUARTER_HOUR_MS);
+    quarterHourOffsets.set(quarterHour, offset);
+  }
+  return offset;
+};
+
+/**
+ * Reads the prayer timezone's calendar and clock at an instant
+ * @param instant An exact instant
+ * @returns Year, month (1-12), day, hour (0-23), minute and second there
+ */
+const readPrayerClock = (instant: Date): PrayerClock => {
+  const ms = instant.getTime();
+  const clock = new Date(ms + prayerTimezoneOffset(ms));
+
+  return {
+    year: clock.getUTCFullYear(),
+    month: clock.getUTCMonth() + 1,
+    day: clock.getUTCDate(),
+    hour: clock.getUTCHours(),
+    minute: clock.getUTCMinutes(),
+    second: clock.getUTCSeconds(),
+  };
+};
 
 // =============================================================================
 // DATE CREATION & CONVERSION
 // =============================================================================
 
 /**
- * Creates a new Date object in London timezone
- * @param date Optional date to convert (defaults to current date)
- * @returns Date object in London timezone
+ * Returns the current instant (or the given one) as a Date
+ *
+ * A Date is an absolute instant, kept to the millisecond: the wall-clock ticker
+ * commits a boundary transition in the first ~100ms after :00, and a
+ * second-truncated "now" would equal the prayer datetime exactly. Its calendar
+ * day in the prayer timezone comes from formatDateShort, never from its
+ * device-local getters.
+ *
+ * @param date Optional date to convert (defaults to now)
+ * @returns Date for that instant
  */
-export const createLondonDate = (date?: Date | number | string): Date => {
-  const targetDate = date ? new Date(date) : new Date();
-  const londonTime = formatInTimeZone(targetDate, 'Europe/London', 'yyyy-MM-dd HH:mm:ssXXX');
-  return new Date(londonTime);
-};
+export const createInstant = (date?: Date | number | string): Date => (date ? new Date(date) : new Date());
 
 /**
  * Creates a full Date object from date and time strings
  * Used to combine API data (separate date/time) into Prayer.datetime
  *
- * IMPORTANT: Prayer times from API are in London timezone.
- * This function interprets the datetime as London time and converts to UTC.
+ * IMPORTANT: Prayer times are clock readings in the prayer timezone (London).
+ * The reading is shifted by whichever offset really applies at that instant —
+ * worked out from the timezone rules alone, so the result is the same on a phone
+ * set to any timezone. Around a clock change: a repeated reading (clocks back)
+ * takes the later occurrence and a skipped one (clocks forward) the new offset.
  *
  * @param date Date string in YYYY-MM-DD format
  * @param time Time string in HH:mm format
@@ -34,11 +149,73 @@ export const createLondonDate = (date?: Date | number | string): Date => {
  * // Returns: Date representing 2026-01-18T06:12:00 London time
  */
 export const createPrayerDatetime = (date: string, time: string): Date => {
-  // Create datetime string and interpret it as London time
-  // fromZonedTime: "this datetime IS in London timezone, give me the UTC equivalent"
-  const isoString = `${date}T${time}:00`;
-  return fromZonedTime(isoString, 'Europe/London');
+  const reading = Date.parse(`${date}T${time}:00Z`);
+  const offsetBefore = prayerTimezoneOffset(reading - 12 * HOUR_MS);
+  const offsetAfter = prayerTimezoneOffset(reading + 12 * HOUR_MS);
+
+  // No clock change within half a day: one offset, one answer
+  if (offsetBefore === offsetAfter) return new Date(reading - offsetBefore);
+
+  const holds = (offset: number) => prayerTimezoneOffset(reading - offset) === offset;
+  if (holds(offsetAfter)) return new Date(reading - offsetAfter);
+  if (holds(offsetBefore)) return new Date(reading - offsetBefore);
+
+  // A reading the clocks skip over
+  return new Date(reading - offsetAfter);
 };
+
+/**
+ * Formats an exact instant as HH:mm on the prayer timezone's wall clock
+ * @param date Date object (an exact instant)
+ * @returns Time string in HH:mm format
+ *
+ * @example
+ * formatPrayerTime(createPrayerDatetime("2026-10-23", "23:58")) // "23:58"
+ */
+export const formatPrayerTime = (date: Date): string => {
+  const clock = readPrayerClock(date);
+  return `${pad2(clock.hour)}:${pad2(clock.minute)}`;
+};
+
+/**
+ * Adds whole days to a YYYY-MM-DD date
+ * Pure calendar arithmetic — independent of every timezone and of clock changes
+ * @param date Date string in YYYY-MM-DD format
+ * @param days Days to add (negative to go back)
+ * @returns The resulting date in YYYY-MM-DD format
+ *
+ * @example
+ * addDaysToDateString("2026-12-31", 1) // "2027-01-01"
+ */
+export const addDaysToDateString = (date: string, days: number): string => {
+  const noonUtc = new Date(`${date}T12:00:00Z`);
+  noonUtc.setUTCDate(noonUtc.getUTCDate() + days);
+  return noonUtc.toISOString().slice(0, 10);
+};
+
+/**
+ * Returns the calendar date before a YYYY-MM-DD date
+ * @param date Date string in YYYY-MM-DD format
+ * @returns The previous date in YYYY-MM-DD format
+ *
+ * @example
+ * getPreviousDateString("2026-01-01") // "2025-12-31"
+ */
+export const getPreviousDateString = (date: string): string => addDaysToDateString(date, -1);
+
+/**
+ * Today's date in the prayer timezone
+ * @returns Date string in YYYY-MM-DD format
+ */
+export const getTodayDateString = (): string => formatDateShort(new Date());
+
+/**
+ * A moment inside a calendar day of the prayer timezone (12:00 there), for APIs
+ * that take a Date to name a day
+ * @param date Date string in YYYY-MM-DD format
+ * @returns Date at 12:00 prayer-timezone time on that date
+ */
+export const getDayAnchor = (date: string): Date => createPrayerDatetime(date, '12:00');
 
 // =============================================================================
 // DATE FORMATTING
@@ -50,7 +227,9 @@ export const createPrayerDatetime = (date: string, time: string): Date => {
  * @returns Formatted date string (e.g., "Fri, 20 Nov 2024")
  */
 export const formatDateLong = (date: string): string => {
-  return format(createLondonDate(date), 'EEE, d MMM yyyy');
+  const [year, month, day] = date.split('-').map(Number);
+  // A calendar date needs no timezone: noon on the phone's own clock always exists
+  return format(new Date(year, month - 1, day, 12), 'EEE, d MMM yyyy');
 };
 
 /**
@@ -61,32 +240,31 @@ export const formatDateLong = (date: string): string => {
  */
 export const formatHijriDateLong = (date: string): string => {
   try {
-    const gregorian = createLondonDate(date);
     const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
       day: 'numeric',
       month: 'long',
       year: 'numeric',
+      timeZone: PRAYER_TIMEZONE,
     });
     // Remove "AH" suffix from formatted date
-    return hijriFormatter.format(gregorian).replace(/ AH$/, '');
+    return hijriFormatter.format(getDayAnchor(date)).replace(/ AH$/, '');
   } catch {
     return formatDateLong(date);
   }
 };
 
 /**
- * Formats a date into YYYY-MM-DD format (London timezone)
+ * Formats an instant as its calendar date in the prayer timezone (YYYY-MM-DD)
  *
- * Converts through London wall time first (like formatDateLong), so the result
- * is the London calendar date of the instant regardless of the device's
- * timezone — required for cache keys and belongsToDate matching.
+ * The same on a phone set to any timezone — required for cache keys and
+ * belongsToDate matching.
  *
  * @param date Date object
  * @returns Date string in YYYY-MM-DD format
  */
 export const formatDateShort = (date: Date): string => {
-  const londonDate = createLondonDate(date);
-  return format(londonDate, 'yyyy-MM-dd');
+  const clock = readPrayerClock(date);
+  return `${clock.year}-${pad2(clock.month)}-${pad2(clock.day)}`;
 };
 
 // =============================================================================
@@ -94,42 +272,53 @@ export const formatDateShort = (date: Date): string => {
 // =============================================================================
 
 /**
- * Checks if a date is yesterday or in the future
+ * Checks if a date is yesterday or in the future (prayer timezone)
  * Used for filtering API response data
  * @param date Date string in YYYY-MM-DD format
  * @returns boolean indicating if date is yesterday or future
  */
 export const isDateYesterdayOrFuture = (date: string): boolean => {
-  const parsedDate = createLondonDate(date);
-  return isYesterday(parsedDate) || isToday(parsedDate) || isFuture(parsedDate);
+  const today = getTodayDateString();
+  return date >= getPreviousDateString(today);
 };
 
 /**
- * Checks if a given date string is Friday
- * @param date Optional date string or Date object
+ * Checks if a day is a Friday
+ * @param date Optional date string (YYYY-MM-DD) or instant; defaults to today (prayer timezone)
  * @returns boolean indicating if the date is Friday
  */
 export const isFriday = (date?: string | Date): boolean => {
-  const parsedDate = createLondonDate(date);
-  return format(parsedDate, 'EEEE') === 'Friday';
+  let day = getTodayDateString();
+  if (typeof date === 'string') day = date.slice(0, 10);
+  if (date instanceof Date) day = formatDateShort(date);
+
+  return new Date(`${day}T12:00:00Z`).getUTCDay() === 5;
 };
 
 /**
- * Checks if current month is December in London timezone
+ * Checks if the current month is December in the prayer timezone
  * @returns boolean indicating if current month is December
  */
-export const isDecember = (): boolean => createLondonDate().getMonth() === 11;
+export const isDecember = (): boolean => getTodayDateString().slice(5, 7) === '12';
 
 /**
  * Checks if the current date falls within Ramadan or the last days of Sha'ban
  * Uses ISLAMIC_DAY.RAMADAN_DECORATION_DAYS_BEFORE to determine the pre-Ramadan window
- * Uses the islamic-umalqura calendar via Intl.DateTimeFormat
+ * Uses the islamic-umalqura calendar via Intl.DateTimeFormat (prayer timezone)
  * @returns boolean indicating if current date is during Ramadan season
  */
 export const isRamadan = (): boolean => {
+  // Build-time preview gate: EXPO_PUBLIC_FORCE_RAMADAN=1 flips the whole
+  // season — icon variant, decorations, settings toggle — for off-season
+  // device evaluation. The prod check keeps a variable left set out of a
+  // store build; both operands are literals, so Metro folds the branch away.
+  if (process.env.EXPO_PUBLIC_FORCE_RAMADAN === '1' && process.env.EXPO_PUBLIC_ENV !== 'prod') return true;
   try {
-    const date = createLondonDate();
-    const monthFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', { month: 'numeric' });
+    const date = new Date();
+    const monthFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
+      month: 'numeric',
+      timeZone: PRAYER_TIMEZONE,
+    });
     const month = monthFmt.format(date);
 
     // During Ramadan (month 9)
@@ -137,7 +326,10 @@ export const isRamadan = (): boolean => {
 
     // Pre-Ramadan window in Sha'ban
     if (month === '8') {
-      const dayFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', { day: 'numeric' });
+      const dayFmt = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
+        day: 'numeric',
+        timeZone: PRAYER_TIMEZONE,
+      });
       const day = parseInt(dayFmt.format(date), 10);
       return day >= 30 - ISLAMIC_DAY.RAMADAN_DECORATION_DAYS_BEFORE;
     }
@@ -158,163 +350,75 @@ export const isDecorationSeason = (): boolean => {
 };
 
 /**
- * Checks if a given date is January 1st (needed for CountdownBar yesterday's data)
+ * Checks if an instant falls on January 1st in the prayer timezone
+ * (needed for CountdownBar yesterday's data)
  * @param date Date object
  * @returns boolean indicating if the date is January 1st
  */
-export const isJanuaryFirst = (date: Date): boolean => {
-  return date.getMonth() === 0 && date.getDate() === 1;
-};
+export const isJanuaryFirst = (date: Date): boolean => formatDateShort(date).endsWith('-01-01');
 
 /**
- * Returns current year in London timezone
+ * Returns the current year in the prayer timezone
  * @returns Current year number
  */
-export const getCurrentYear = (): number => createLondonDate().getFullYear();
+export const getCurrentYear = (): number => Number(getTodayDateString().slice(0, 4));
 
 // =============================================================================
 // NIGHT TIME CALCULATIONS (Islamic)
 // =============================================================================
 
-/**
- * Night boundary result for Islamic night calculations
- */
-interface NightBoundaries {
-  /** Magrib datetime (today's sunset) */
-  magrib: Date;
-  /** Fajr datetime (tomorrow's dawn) */
-  fajr: Date;
+/** Midnight and the last third of one night, as exact instants */
+export interface NightTimes {
+  /** Islamic midnight: the midpoint of the night */
+  midnight: Date;
+  /** Start of the last third of the night */
+  lastThird: Date;
 }
 
-/**
- * Parses Magrib and Fajr times into Date objects for night calculations
- *
- * This helper extracts the common parsing logic used by getLastThirdOfNight
- * and getMidnightTime. It creates Date objects representing:
- * - Magrib: Today's sunset (night starts)
- * - Fajr: Tomorrow's dawn (night ends)
- *
- * @param magribTime Magrib time in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time in HH:mm format (e.g., "06:15")
- * @returns Object with magrib (today) and fajr (tomorrow) as Date objects
- *
- * @example
- * const { magrib, fajr } = parseNightBoundaries("18:45", "06:15");
- * const nightDuration = fajr.getTime() - magrib.getTime();
- */
-function parseNightBoundaries(magribTime: string, fajrTime: string): NightBoundaries {
-  const [mHours, mMinutes] = magribTime.split(':').map(Number);
-  const [fHours, fMinutes] = fajrTime.split(':').map(Number);
-
-  // Magrib from today
-  const magribBase = createLondonDate();
-  const magribWithMinutes = setMinutes(magribBase, mMinutes);
-  const magrib = setHours(magribWithMinutes, mHours);
-
-  // Fajr from tomorrow
-  const fajrBase = createLondonDate();
-  const fajrWithMinutes = setMinutes(fajrBase, fMinutes);
-  const fajrWithHours = setHours(fajrWithMinutes, fHours);
-  const fajr = addDays(fajrWithHours, 1);
-
-  return { magrib, fajr };
-}
+/** Start of the whole minute an instant falls in (seconds dropped, like every HH:mm time shown) */
+const floorToMinute = (ms: number): Date => new Date(Math.floor(ms / MINUTE_MS) * MINUTE_MS);
 
 /**
- * Calculates the start time of the last third of the night (Islamic calculation)
+ * Calculates Islamic midnight and the start of the last third for one night
  *
- * Islamic Night Division:
- * In Islamic tradition, the night is divided into thirds for prayer purposes.
- * The night spans from Magrib (sunset) to Fajr (dawn), not system midnight.
- * The last third begins 2/3 through this period and is a blessed time for prayer.
+ * The Islamic date begins at Magrib, and a night belongs to the day that follows it:
+ * the night of Friday runs from Thursday's Magrib to Friday's Fajr (ISSUES #29). The
+ * night spans Magrib (sunset) to Fajr (dawn), not system midnight:
+ * - Midnight is its midpoint (the end of Isha's time)
+ * - The last third starts two-thirds of the way through (plus TIME_ADJUSTMENTS.lastThird)
  *
- * Calculation:
- * 1. Night starts: Today's Magrib (e.g., 18:45 Jan 19)
- * 2. Night ends: Tomorrow's Fajr (e.g., 06:15 Jan 20)
- * 3. Night duration: 11 hours 30 minutes (690 minutes)
- * 4. Last third starts: 2/3 through = 460 minutes after Magrib = 02:25 Jan 20
- * 5. +5 minute adjustment applied (see TIME_ADJUSTMENTS.lastThird)
- * 6. Final time: 02:30 Jan 20
+ * Measured between real instants, so a night that crosses a clock change (a 23- or
+ * 25-hour day) comes out exact, and the result depends only on the four inputs —
+ * never on the device's timezone or on when this runs (ISSUES #28). Floored to the
+ * whole minute.
  *
- * The +5 minute adjustment provides a safety buffer to ensure the prayer time
- * is well within the last third period.
- *
- * @param magribTime Magrib time from today in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time from tomorrow in HH:mm format (e.g., "06:15")
- * @returns Start time of the last third in HH:mm format (e.g., "02:30")
- *
- * @see parseNightBoundaries - Helper that parses the input times
+ * @param previousDate Date the night starts on, YYYY-MM-DD
+ * @param magribTime Magrib on that date, HH:mm in the prayer timezone
+ * @param date Date the night ends on (the day it belongs to), YYYY-MM-DD
+ * @param fajrTime Fajr on that date, HH:mm in the prayer timezone
+ * @returns Midnight and the start of the last third
  *
  * @example
- * getLastThirdOfNight("18:45", "06:15")
- * // Returns: "02:30" (accounting for the +5 min adjustment)
+ * // Magrib 18:45 on Jan 19, Fajr 06:15 on Jan 20: a 690-minute night
+ * getNightTimes('2026-01-19', '18:45', '2026-01-20', '06:15')
+ * // { midnight: 2026-01-20 00:30, lastThird: 2026-01-20 02:25 } (London)
  */
-export const getLastThirdOfNight = (magribTime: string, fajrTime: string): string => {
-  const { magrib, fajr } = parseNightBoundaries(magribTime, fajrTime);
+export const getNightTimes = (previousDate: string, magribTime: string, date: string, fajrTime: string): NightTimes => {
+  const start = createPrayerDatetime(previousDate, magribTime).getTime();
+  const length = createPrayerDatetime(date, fajrTime).getTime() - start;
 
-  // Calculate night duration and last third start
-  const nightDuration = fajr.getTime() - magrib.getTime();
-  const lastThirdStart = createLondonDate(magrib.getTime() + (nightDuration * 2) / 3);
-
-  // Add minutes to the last third start time
-  const minutesToAdd = TIME_ADJUSTMENTS.lastThird;
-  lastThirdStart.setMinutes(lastThirdStart.getMinutes() + minutesToAdd);
-
-  // Return formatted time string in 24-hour format (HH:mm)
-  return format(lastThirdStart, 'HH:mm');
-};
-
-/**
- * Calculates Islamic midnight (midpoint between Magrib and Fajr)
- *
- * Islamic vs System Midnight:
- * Islamic midnight is NOT 00:00 (system midnight). It is the exact midpoint
- * of the Islamic night, which spans from Magrib (sunset) to Fajr (dawn).
- *
- * Why the difference?
- * - System midnight: Fixed at 00:00 every day
- * - Islamic midnight: Varies daily based on sunset/sunrise times
- * - In summer (long days): Islamic midnight can be as late as ~01:00
- * - In winter (short days): Islamic midnight can be as early as ~23:15
- *
- * Calculation:
- * 1. Night starts: Today's Magrib (e.g., 18:45 Jan 19)
- * 2. Night ends: Tomorrow's Fajr (e.g., 06:15 Jan 20)
- * 3. Night duration: 11 hours 30 minutes (690 minutes)
- * 4. Midpoint: 345 minutes after Magrib = 00:30 Jan 20
- * 5. Final time: 00:30 Jan 20 (Islamic midnight)
- *
- * No adjustment is applied to this calculation - it's the pure midpoint.
- *
- * @param magribTime Magrib time from today in HH:mm format (e.g., "18:45")
- * @param fajrTime Fajr time from tomorrow in HH:mm format (e.g., "06:15")
- * @returns Islamic midnight time in HH:mm format (e.g., "00:30")
- *
- * @see parseNightBoundaries - Helper that parses the input times
- *
- * @example
- * getMidnightTime("18:45", "06:15")
- * // Returns: "00:30" (exact midpoint, no adjustment)
- */
-export const getMidnightTime = (magribTime: string, fajrTime: string): string => {
-  const { magrib, fajr } = parseNightBoundaries(magribTime, fajrTime);
-
-  // Calculate night duration and midpoint
-  const nightDuration = fajr.getTime() - magrib.getTime();
-  const midnight = createLondonDate(magrib.getTime() + nightDuration / 2);
-
-  // Return formatted time string in 24-hour format (HH:mm)
-  return format(midnight, 'HH:mm');
+  return {
+    midnight: floorToMinute(start + length / 2),
+    lastThird: floorToMinute(start + (length * 2) / 3 + TIME_ADJUSTMENTS.lastThird * MINUTE_MS),
+  };
 };
 
 /**
  * Adjusts a time string by adding or subtracting minutes
  *
  * Used for calculating derived prayer times (e.g., Suhoor = Fajr - 20min).
- * Handles day boundary crossing (e.g., 00:10 - 20min = 23:50).
- *
- * Timezone: Uses London timezone internally via createLondonDate().
- * The returned time string is in 24-hour format and represents London time.
+ * Pure clock arithmetic that wraps past midnight (e.g., 00:10 - 20min = 23:50) —
+ * independent of the date, the device's timezone and when it runs.
  *
  * @param time Time string in HH:mm format (e.g., "06:15")
  * @param minutesDiff Minutes to add (positive) or subtract (negative)
@@ -327,32 +431,13 @@ export const getMidnightTime = (magribTime: string, fajrTime: string): string =>
  */
 export const adjustTime = (time: string, minutesDiff: number): string => {
   const [hours, minutes] = time.split(':').map(Number);
-  const baseDate = createLondonDate();
-  const dateWithHours = setHours(baseDate, hours);
-  const date = setMinutes(dateWithHours, minutes);
-  date.setMinutes(date.getMinutes() + minutesDiff);
-  return format(date, 'HH:mm');
+  const total = (((hours * 60 + minutes + minutesDiff) % MINUTES_IN_DAY) + MINUTES_IN_DAY) % MINUTES_IN_DAY;
+  return `${pad2(Math.floor(total / 60))}:${pad2(total % 60)}`;
 };
 
 // =============================================================================
 // COUNTDOWN & DISPLAY FORMATTING
 // =============================================================================
-
-/**
- * Calculates the difference in seconds between two dates
- * Used for countdown calculation: nextPrayer.datetime - now
- *
- * @param from Start date (typically "now")
- * @param to End date (typically prayer.datetime)
- * @returns Difference in seconds (positive if 'to' is in future)
- *
- * @example
- * getSecondsBetween(now, prayerTime)
- * // Returns: 7234 (seconds until prayer)
- */
-export const getSecondsBetween = (from: Date, to: Date): number => {
-  return Math.floor((to.getTime() - from.getTime()) / 1000);
-};
 
 /**
  * Whole seconds remaining until a target instant, for live countdown display.
@@ -366,8 +451,8 @@ export const getSecondsBetween = (from: Date, to: Date): number => {
  *   target (prevents a frozen "0s" while the sequence refresh runs).
  *
  * Uses Date.now() directly: countdown targets are true UTC instants (built
- * via createPrayerDatetime/fromZonedTime), so no timezone conversion is
- * needed for a difference — the offset cancels.
+ * via createPrayerDatetime), so no timezone conversion is needed for a
+ * difference — the offset cancels.
  *
  * @param target Target instant (prayer datetime)
  * @returns Seconds remaining, always >= 1
@@ -405,32 +490,40 @@ export const getWallSecondDelay = (): number => {
  * 2. Days are converted to hours (48 hours, not 2 days)
  * 3. Seconds visibility:
  *    - If hideSeconds=false: Always show seconds (e.g., "1h 30m 45s")
- *    - If hideSeconds=true: Show seconds ONLY in last 60 seconds (e.g., "45s")
- *    - After 60s with hideSeconds=true: Hide seconds (e.g., "1h 30m")
+ *    - If hideSeconds=true: Show seconds only at 599s or less — the final
+ *      ~10 minutes, NOT the final minute (e.g., "9m 59s", "45s")
+ *    - Above 599s with hideSeconds=true: Hide seconds ("10m", "1h 30m")
  * 4. Zero handling:
  *    - Only units with non-zero values are shown
+ *    - A zero seconds value never renders beside another unit: a whole
+ *      minute reads "1m", a whole 25 hours reads "25h"
  *    - If all units are zero: Returns "0s"
  * 5. Spacing: Units separated by single space
  *
  * Use Cases:
  * - Countdown: Use hideSeconds=true to avoid flicker in UI
  * - Precise display: Use hideSeconds=false for exact timing
- * - Last minute urgency: hideSeconds=true shows seconds in final 60s
+ * - Final-stretch urgency: hideSeconds=true shows seconds in the final 599s
  *
  * @param seconds Time in seconds (can be negative, but returns "0s")
- * @param hideSeconds If true, hides seconds when time > 60s (default: false)
- * @param forceHideSeconds If true, seconds never render at any distance —
- *   the label is hours+minutes only (widget countdown label; default: false)
+ * @param hideSeconds If true, hides seconds when time > 599s (default: false)
+ * @param forceHideSeconds If true, seconds are suppressed beside hours and
+ *   minutes at any distance — but they still render when they are the only
+ *   unit, because an empty parts list always falls back to "Ns" (default:
+ *   false).
  * @returns Formatted time string
+ *
+ * Every example below is pinned by "pins every example in the JSDoc" in
+ * shared/__tests__/time.test.ts. Change one and change both.
  *
  * @example
  * formatTime(3665) // "1h 1m 5s" (default shows seconds)
  * formatTime(3665, true) // "1h 1m" (hideSeconds in effect)
- * formatTime(45, true) // "45s" (shows seconds in last 60s)
- * formatTime(45, true, true) // "1m" (forceHideSeconds: hours+minutes only)
+ * formatTime(45, true) // "45s" (shows seconds inside the final 599s)
+ * formatTime(45, true, true) // "45s" (forceHideSeconds: seconds still render alone)
  * formatTime(0) // "0s"
  * formatTime(-100) // "0s"
- * formatTime(90000) // "25h 0s" (days converted to hours)
+ * formatTime(90000) // "25h" (days converted to hours; no trailing "0s")
  */
 export const formatTime = (seconds: number, hideSeconds = false, forceHideSeconds = false): string => {
   if (seconds < 0) return '0s';
@@ -453,32 +546,6 @@ export const formatTime = (seconds: number, hideSeconds = false, forceHideSecond
   }
 
   return parts.join(' ');
-};
-
-/**
- * Formats remaining seconds as a minute-ceil countdown label — the widget's
- * display policy: hours + minutes only, seconds never render, and the value
- * always rounds UP to the next minute (1h 59m 01s → "2h", 59s → "1m").
- *
- * @param seconds Time remaining in seconds (values ≤ 0 clamp to "1m" —
- *   the label holds its final minute until the next-prayer flip)
- * @returns "Xh Ym" over an hour ("2h", "5h 21m"), else "Xm" ("45m", "1m")
- *
- * @example
- * formatCountdownMinutes(7141) // "2h" (1h 59m 1s rounds up)
- * formatCountdownMinutes(19201) // "5h 21m"
- * formatCountdownMinutes(59) // "1m"
- * formatCountdownMinutes(1) // "1m"
- * formatCountdownMinutes(0) // "1m"
- */
-export const formatCountdownMinutes = (seconds: number): string => {
-  const totalMinutes = Math.max(1, Math.ceil(seconds / 60));
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-
-  if (hours === 0) return `${minutes}m`;
-  if (minutes === 0) return `${hours}h`;
-  return `${hours}h ${minutes}m`;
 };
 
 /**

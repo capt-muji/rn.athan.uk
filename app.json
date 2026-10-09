@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.17.4",
+    "version": "1.29.291",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -11,12 +11,17 @@
     "ios": {
       "icon": "./assets/icons/config/icon-ios.png",
       "supportsTablet": true,
+      "requireFullScreen": true,
       "config": {
         "usesNonExemptEncryption": false
       },
       "bundleIdentifier": "com.mugtaba.athan",
+      "entitlements": {
+        "com.apple.developer.usernotifications.time-sensitive": true
+      },
       "infoPlist": {
         "CFBundleDisplayName": "Athan",
+        "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications"
       },
       "backgroundColor": "#2c1c77"
@@ -27,6 +32,7 @@
         "backgroundColor": "#2c1c77"
       },
       "package": "com.mugtaba.athan",
+      "versionCode": 1000000,
       "permissions": [
         "RECEIVE_BOOT_COMPLETED",
         "POST_NOTIFICATIONS",
@@ -40,6 +46,9 @@
       [
         "expo-build-properties",
         {
+          "android": {
+            "extraProguardRules": "# Glance composes widgets through WorkManager; R8 strips OverwritingInputMerger's constructor without these keeps (verified on the 3T: the widget stays on its loading layout forever and logcat shows WM-InputMerger NoSuchMethodException)\n-keep class androidx.work.** { *; }\n-keep class androidx.glance.** { *; }\n-dontwarn androidx.work.**\n-dontwarn androidx.glance.**\n# Expo 58 serves haptics and application through Modules v2: the host builds module classes from their no-arg constructors by reflection, the kolibri runtime reads its JNI bridge fields (NativeObject.nativePointer) from C++ alone, and the JSI dispatch reaches each module's @JS functions and argument types without a Java call graph for R8 to follow. io.github.expo ships no consumer rules for any of it, so R8 strips all of it (verified on the 3T: haptics never reach the vibrator; constructors alone crash at launch with NoSuchFieldError nativePointer; without the module packages the dispatch dies silently with VibrationType stripped)\n-keep class io.github.expo.kolibri.** { *; }\n-keep class io.github.expo.modules.v2.** { *; }\n-keep class expo.modules.haptics.** { *; }\n-keep class expo.modules.application.** { *; }\n-keep class expo.modules.ExpoModulesV2ModuleList { *; }"
+          },
           "ios": {
             "deploymentTarget": "16.4"
           }
@@ -170,7 +179,8 @@
             "./assets/audio/reminders/reminder_istijaba_15.mp3",
             "./assets/audio/reminders/reminder_istijaba_20.mp3",
             "./assets/audio/reminders/reminder_istijaba_25.mp3",
-            "./assets/audio/reminders/reminder_istijaba_30.mp3"
+            "./assets/audio/reminders/reminder_istijaba_30.mp3",
+            "./assets/audio/reminders/reminder.mp3"
           ]
         }
       ],
@@ -183,8 +193,9 @@
           "enableBackgroundPlayback": false
         }
       ],
-      "./plugins/removeUnusedAndroidPermissions",
       "./plugins/gradleJvmMemory",
+      "./plugins/portraitOnlyIpad",
+      "./plugins/replacePreviousNotification",
       "expo-asset",
       "expo-background-task",
       [
@@ -195,71 +206,178 @@
               "name": "PrayerWidget",
               "displayName": "Next Prayer (Light)",
               "description": "A countdown to the next prayer.",
-              "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemSmall"]
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 160,
+                "minHeight": 110,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
+              }
             },
             {
               "name": "ExtrasWidget",
               "displayName": "Extra Times (Light)",
               "description": "A countdown to the next extra time.",
-              "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemSmall"]
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 160,
+                "minHeight": 110,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
+              }
             },
             {
               "name": "PrayerWidgetMedium",
               "displayName": "Next Prayer (Light)",
               "description": "A countdown to the next prayer.",
-              "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemMedium"]
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 310,
+                "minHeight": 110,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
+              }
             },
             {
               "name": "ExtrasWidgetMedium",
               "displayName": "Extra Times (Light)",
               "description": "A countdown to the next extra time.",
-              "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemMedium"]
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 310,
+                "minHeight": 110,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
+              }
             },
             {
               "name": "PrayerWidgetDark",
               "displayName": "Next Prayer (Dark)",
               "description": "A countdown to the next prayer.",
-              "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemSmall"]
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 160,
+                "minHeight": 110,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
+              }
             },
             {
               "name": "ExtrasWidgetDark",
               "displayName": "Extra Times (Dark)",
               "description": "A countdown to the next extra time.",
-              "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemSmall"]
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 160,
+                "minHeight": 110,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
+              }
             },
             {
               "name": "PrayerWidgetDarkMedium",
               "displayName": "Next Prayer (Dark)",
               "description": "A countdown to the next prayer.",
-              "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemMedium"]
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 310,
+                "minHeight": 110,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
+              }
             },
             {
               "name": "ExtrasWidgetDarkMedium",
               "displayName": "Extra Times (Dark)",
               "description": "A countdown to the next extra time.",
-              "contentMarginsDisabled": true,
-              "supportedFamilies": ["systemMedium"]
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "contentMarginsDisabled": true
+              },
+              "android": {
+                "minWidth": 310,
+                "minHeight": 110,
+                "resizeMode": "none",
+                "initialLayout": "./widgets/PrayerWidget"
+              }
             },
             {
               "name": "PrayerLockWidget",
-              "displayName": "Next Prayer",
-              "description": "Live countdown to the next prayer on your Lock Screen.",
-              "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              "displayName": "Next Prayer (Layout 1)",
+              "description": "Countdown to the next prayer.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
             },
             {
               "name": "ExtrasLockWidget",
-              "displayName": "Extra Times",
-              "description": "Live countdown to the next extra time on your Lock Screen.",
-              "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              "displayName": "Extra Times (Layout 1)",
+              "description": "Countdown to the next extra time.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
+            },
+            {
+              "name": "PrayerLockWidget2",
+              "displayName": "Next Prayer (Layout 2)",
+              "description": "Next prayer time.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
+            },
+            {
+              "name": "ExtrasLockWidget2",
+              "displayName": "Extra Times (Layout 2)",
+              "description": "Next extra time.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
+            },
+            {
+              "name": "PrayerLockWidget3",
+              "displayName": "Next Prayer (Layout 3)",
+              "description": "Next prayer time with a countdown.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
+            },
+            {
+              "name": "ExtrasLockWidget3",
+              "displayName": "Extra Times (Layout 3)",
+              "description": "Next extra time with a countdown.",
+              "ios": {
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+              },
+              "android": null
             }
-          ]
+          ],
+          "groupIdentifier": "group.com.mugtaba.athan"
         }
       ]
     ],

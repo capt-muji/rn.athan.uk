@@ -1,0 +1,1941 @@
+[
+ {
+  "tz": "Europe/Moscow",
+  "worst": 274,
+  "a": "Makhachkala",
+  "b": "Murmansk",
+  "km": 3008
+ },
+ {
+  "tz": "Asia/Yekaterinburg",
+  "worst": 241,
+  "a": "Novyy Urengoy",
+  "b": "Buzuluk",
+  "km": 1996
+ },
+ {
+  "tz": "Asia/Krasnoyarsk",
+  "worst": 241,
+  "a": "Kyzyl",
+  "b": "Dudinka",
+  "km": 2014
+ },
+ {
+  "tz": "Asia/Yakutsk",
+  "worst": 236,
+  "a": "Raychikhinsk",
+  "b": "Udachny",
+  "km": 2086
+ },
+ {
+  "tz": "Europe/Oslo",
+  "worst": 232,
+  "a": "Tromsø",
+  "b": "Time",
+  "km": 1366
+ },
+ {
+  "tz": "Europe/Stockholm",
+  "worst": 195,
+  "a": "Malmö",
+  "b": "Luleå",
+  "km": 1214
+ },
+ {
+  "tz": "Asia/Shanghai",
+  "worst": 156,
+  "a": "Harbin",
+  "b": "Kunming",
+  "km": 3139
+ },
+ {
+  "tz": "Europe/Kirov",
+  "worst": 137,
+  "a": "Narian-Mar",
+  "b": "Yaransk",
+  "km": 1182
+ },
+ {
+  "tz": "America/Edmonton",
+  "worst": 122,
+  "a": "Medicine Hat",
+  "b": "Yellowknife",
+  "km": 1399
+ },
+ {
+  "tz": "Europe/Helsinki",
+  "worst": 115,
+  "a": "Turku",
+  "b": "Rovaniemi",
+  "km": 693
+ },
+ {
+  "tz": "Asia/Almaty",
+  "worst": 101,
+  "a": "Ridder",
+  "b": "Zhetysay",
+  "km": 1585
+ },
+ {
+  "tz": "Asia/Jakarta",
+  "worst": 100,
+  "a": "Situbondo",
+  "b": "Banda Aceh",
+  "km": 2542
+ },
+ {
+  "tz": "America/Chicago",
+  "worst": 90,
+  "a": "Milwaukee",
+  "b": "Laredo",
+  "km": 2018
+ },
+ {
+  "tz": "America/New_York",
+  "worst": 88,
+  "a": "Boston",
+  "b": "St. Petersburg",
+  "km": 1932
+ },
+ {
+  "tz": "Asia/Irkutsk",
+  "worst": 86,
+  "a": "Slyudyanka",
+  "b": "Bodaybo",
+  "km": 961
+ },
+ {
+  "tz": "Asia/Tehran",
+  "worst": 85,
+  "a": "Orūmīyeh",
+  "b": "Zahedan",
+  "km": 1712
+ },
+ {
+  "tz": "America/Argentina/Salta",
+  "worst": 84,
+  "a": "Profesor Salvador Mazza",
+  "b": "El Bolsón",
+  "km": 2332
+ },
+ {
+  "tz": "Asia/Kolkata",
+  "worst": 84,
+  "a": "Kolkata",
+  "b": "Srinagar",
+  "km": 1841
+ },
+ {
+  "tz": "Asia/Vladivostok",
+  "worst": 82,
+  "a": "Vladivostok",
+  "b": "Nikolayevsk-on-Amure",
+  "km": 1293
+ },
+ {
+  "tz": "Asia/Urumqi",
+  "worst": 81,
+  "a": "Kashgar",
+  "b": "Hami",
+  "km": 1511
+ },
+ {
+  "tz": "Atlantic/Reykjavik",
+  "worst": 81,
+  "a": "Reykjanesbær",
+  "b": "Akureyri",
+  "km": 282
+ },
+ {
+  "tz": "America/Anchorage",
+  "worst": 80,
+  "a": "Anchorage",
+  "b": "Fairbanks",
+  "km": 417
+ },
+ {
+  "tz": "America/Denver",
+  "worst": 79,
+  "a": "El Paso",
+  "b": "Missoula",
+  "km": 1798
+ },
+ {
+  "tz": "Asia/Tokyo",
+  "worst": 77,
+  "a": "Sapporo",
+  "b": "Kagoshima",
+  "km": 1593
+ },
+ {
+  "tz": "Australia/Brisbane",
+  "worst": 76,
+  "a": "Gold Coast",
+  "b": "Mount Isa",
+  "km": 1625
+ },
+ {
+  "tz": "America/Lima",
+  "worst": 75,
+  "a": "Tacna",
+  "b": "Talara",
+  "km": 1915
+ },
+ {
+  "tz": "Africa/Khartoum",
+  "worst": 75,
+  "a": "Port Sudan",
+  "b": "Al-Junaynah",
+  "km": 1716
+ },
+ {
+  "tz": "America/Sao_Paulo",
+  "worst": 73,
+  "a": "Porto Alegre",
+  "b": "Serra",
+  "km": 1555
+ },
+ {
+  "tz": "America/Toronto",
+  "worst": 73,
+  "a": "Windsor",
+  "b": "Saguenay",
+  "km": 1153
+ },
+ {
+  "tz": "Africa/Maputo",
+  "worst": 72,
+  "a": "Matola",
+  "b": "Mocímboa da Praia",
+  "km": 1824
+ },
+ {
+  "tz": "Asia/Tomsk",
+  "worst": 72,
+  "a": "Strezhevoy",
+  "b": "Asino",
+  "km": 643
+ },
+ {
+  "tz": "America/Los_Angeles",
+  "worst": 71,
+  "a": "San Diego",
+  "b": "Seattle",
+  "km": 1712
+ },
+ {
+  "tz": "Africa/Johannesburg",
+  "worst": 71,
+  "a": "Cape Town",
+  "b": "Polokwane",
+  "km": 1546
+ },
+ {
+  "tz": "Asia/Jayapura",
+  "worst": 70,
+  "a": "Ternate",
+  "b": "Merauke",
+  "km": 1775
+ },
+ {
+  "tz": "Africa/Tripoli",
+  "worst": 69,
+  "a": "Al Jumayl",
+  "b": "At Tāj",
+  "km": 1457
+ },
+ {
+  "tz": "America/Santiago",
+  "worst": 68,
+  "a": "Puerto Montt",
+  "b": "Arica",
+  "km": 2569
+ },
+ {
+  "tz": "America/Argentina/Catamarca",
+  "worst": 67,
+  "a": "Esquel",
+  "b": "Santa María",
+  "km": 1865
+ },
+ {
+  "tz": "Europe/Paris",
+  "worst": 67,
+  "a": "Nice",
+  "b": "Brest",
+  "km": 1044
+ },
+ {
+  "tz": "Pacific/Auckland",
+  "worst": 67,
+  "a": "Invercargill",
+  "b": "Gisborne",
+  "km": 1168
+ },
+ {
+  "tz": "Asia/Riyadh",
+  "worst": 67,
+  "a": "Al Hufūf",
+  "b": "Qurayyat",
+  "km": 1368
+ },
+ {
+  "tz": "Europe/Istanbul",
+  "worst": 67,
+  "a": "Esenyurt",
+  "b": "Van",
+  "km": 1286
+ },
+ {
+  "tz": "Europe/Kyiv",
+  "worst": 67,
+  "a": "Lviv",
+  "b": "Luhansk",
+  "km": 1117
+ },
+ {
+  "tz": "Asia/Ulaanbaatar",
+  "worst": 66,
+  "a": "Mörön",
+  "b": "Baruun-Urt",
+  "km": 1025
+ },
+ {
+  "tz": "Africa/Mogadishu",
+  "worst": 65,
+  "a": "El Dibir",
+  "b": "Kaambooni",
+  "km": 1831
+ },
+ {
+  "tz": "Africa/Windhoek",
+  "worst": 64,
+  "a": "Katima Mulilo",
+  "b": "Lüderitz",
+  "km": 1384
+ },
+ {
+  "tz": "Africa/Bamako",
+  "worst": 62,
+  "a": "Kayes",
+  "b": "Kidal",
+  "km": 1440
+ },
+ {
+  "tz": "Asia/Bangkok",
+  "worst": 62,
+  "a": "Lạng Sơn",
+  "b": "Hat Yai",
+  "km": 1783
+ },
+ {
+  "tz": "Asia/Makassar",
+  "worst": 61,
+  "a": "Bitung",
+  "b": "Negara",
+  "km": 1595
+ },
+ {
+  "tz": "Asia/Ashgabat",
+  "worst": 60,
+  "a": "Türkmenbaşy",
+  "b": "Magdanly",
+  "km": 1158
+ },
+ {
+  "tz": "America/Argentina/Cordoba",
+  "worst": 59,
+  "a": "Río Cuarto",
+  "b": "San Vicente",
+  "km": 1222
+ },
+ {
+  "tz": "Europe/Rome",
+  "worst": 58,
+  "a": "Turin",
+  "b": "Siracusa",
+  "km": 1093
+ },
+ {
+  "tz": "Africa/Nouakchott",
+  "worst": 58,
+  "a": "Nouadhibou",
+  "b": "Mbera",
+  "km": 1314
+ },
+ {
+  "tz": "Europe/Madrid",
+  "worst": 57,
+  "a": "Palma",
+  "b": "A Coruña",
+  "km": 1012
+ },
+ {
+  "tz": "America/Manaus",
+  "worst": 56,
+  "a": "Parintins",
+  "b": "Tabatinga",
+  "km": 1476
+ },
+ {
+  "tz": "America/Fortaleza",
+  "worst": 55,
+  "a": "João Pessoa",
+  "b": "Açailândia",
+  "km": 1418
+ },
+ {
+  "tz": "Africa/Kinshasa",
+  "worst": 55,
+  "a": "Bumba",
+  "b": "Moanda",
+  "km": 1439
+ },
+ {
+  "tz": "Africa/Lubumbashi",
+  "worst": 54,
+  "a": "Bunia",
+  "b": "Tshilenge",
+  "km": 1613
+ },
+ {
+  "tz": "Africa/Algiers",
+  "worst": 54,
+  "a": "Annaba",
+  "b": "Béchar",
+  "km": 1089
+ },
+ {
+  "tz": "Europe/Samara",
+  "worst": 54,
+  "a": "Syzran",
+  "b": "Glazov",
+  "km": 613
+ },
+ {
+  "tz": "Africa/Dar_es_Salaam",
+  "worst": 54,
+  "a": "Kigoma",
+  "b": "Mtwara",
+  "km": 1308
+ },
+ {
+  "tz": "Asia/Kabul",
+  "worst": 53,
+  "a": "Zaranj",
+  "b": "Bahārak",
+  "km": 1070
+ },
+ {
+  "tz": "Africa/Luanda",
+  "worst": 53,
+  "a": "Mossamedes",
+  "b": "Dundo",
+  "km": 1284
+ },
+ {
+  "tz": "Asia/Samarkand",
+  "worst": 53,
+  "a": "Tirmiz",
+  "b": "Qŭnghirot",
+  "km": 965
+ },
+ {
+  "tz": "Indian/Antananarivo",
+  "worst": 52,
+  "a": "Toliara",
+  "b": "Antsiranana",
+  "km": 1363
+ },
+ {
+  "tz": "Africa/Lusaka",
+  "worst": 52,
+  "a": "Mongu",
+  "b": "Nakonde",
+  "km": 1234
+ },
+ {
+  "tz": "Africa/Addis_Ababa",
+  "worst": 51,
+  "a": "Cabudwaaq",
+  "b": "Gambēla",
+  "km": 1303
+ },
+ {
+  "tz": "Africa/Lagos",
+  "worst": 51,
+  "a": "Lagos",
+  "b": "Maiduguri",
+  "km": 1228
+ },
+ {
+  "tz": "Africa/Niamey",
+  "worst": 50,
+  "a": "Diffa",
+  "b": "Ayorou",
+  "km": 1271
+ },
+ {
+  "tz": "Africa/Ndjamena",
+  "worst": 50,
+  "a": "Léré",
+  "b": "Amdjarass",
+  "km": 1176
+ },
+ {
+  "tz": "America/La_Paz",
+  "worst": 49,
+  "a": "Yacuiba",
+  "b": "Cobija",
+  "km": 1337
+ },
+ {
+  "tz": "Asia/Karachi",
+  "worst": 49,
+  "a": "Karachi",
+  "b": "Sialkot",
+  "km": 1121
+ },
+ {
+  "tz": "Europe/Warsaw",
+  "worst": 49,
+  "a": "Szczecin",
+  "b": "Rzeszów",
+  "km": 636
+ },
+ {
+  "tz": "Australia/Perth",
+  "worst": 48,
+  "a": "Busselton",
+  "b": "Port Hedland",
+  "km": 1518
+ },
+ {
+  "tz": "Europe/London",
+  "worst": 48,
+  "a": "Glasgow",
+  "b": "Southend-on-Sea",
+  "km": 582
+ },
+ {
+  "tz": "Africa/Casablanca",
+  "worst": 47,
+  "a": "Oujda",
+  "b": "Guelmim",
+  "km": 996
+ },
+ {
+  "tz": "Asia/Yangon",
+  "worst": 47,
+  "a": "Kalemyo",
+  "b": "Myeik",
+  "km": 1288
+ },
+ {
+  "tz": "Europe/Minsk",
+  "worst": 46,
+  "a": "Vitebsk",
+  "b": "Brest",
+  "km": 548
+ },
+ {
+  "tz": "Europe/Berlin",
+  "worst": 46,
+  "a": "Berlin",
+  "b": "Freiburg",
+  "km": 640
+ },
+ {
+  "tz": "Pacific/Port_Moresby",
+  "worst": 46,
+  "a": "Kokopo",
+  "b": "Daru",
+  "km": 1130
+ },
+ {
+  "tz": "America/Cuiaba",
+  "worst": 45,
+  "a": "Pontes e Lacerda",
+  "b": "Vila Rica",
+  "km": 1063
+ },
+ {
+  "tz": "Asia/Bishkek",
+  "worst": 44,
+  "a": "Karakol",
+  "b": "Razzakov",
+  "km": 798
+ },
+ {
+  "tz": "Australia/Darwin",
+  "worst": 43,
+  "a": "Darwin",
+  "b": "Alice Springs",
+  "km": 1290
+ },
+ {
+  "tz": "Africa/Bangui",
+  "worst": 43,
+  "a": "Baboua",
+  "b": "Zemio",
+  "km": 1144
+ },
+ {
+  "tz": "Asia/Chita",
+  "worst": 43,
+  "a": "Krasnokamensk",
+  "b": "Petrovsk-Zabaykal’skiy",
+  "km": 660
+ },
+ {
+  "tz": "Africa/Juba",
+  "worst": 43,
+  "a": "Pajok",
+  "b": "Kafia Kingi",
+  "km": 1075
+ },
+ {
+  "tz": "America/Caracas",
+  "worst": 43,
+  "a": "San Cristóbal",
+  "b": "Carúpano",
+  "km": 1037
+ },
+ {
+  "tz": "America/Mazatlan",
+  "worst": 42,
+  "a": "Ciudad Constitución",
+  "b": "Ixtlán del Río",
+  "km": 868
+ },
+ {
+  "tz": "Africa/Brazzaville",
+  "worst": 41,
+  "a": "Pointe-Noire",
+  "b": "Mindouli",
+  "km": 1146
+ },
+ {
+  "tz": "America/Bogota",
+  "worst": 41,
+  "a": "Pasto",
+  "b": "Maicao",
+  "km": 1260
+ },
+ {
+  "tz": "Asia/Kuching",
+  "worst": 41,
+  "a": "Sandakan",
+  "b": "Bau",
+  "km": 1012
+ },
+ {
+  "tz": "Africa/Douala",
+  "worst": 40,
+  "a": "Buea",
+  "b": "Kousséri",
+  "km": 1087
+ },
+ {
+  "tz": "America/Havana",
+  "worst": 40,
+  "a": "Guantánamo",
+  "b": "Pinar del Río",
+  "km": 915
+ },
+ {
+  "tz": "Asia/Qostanay",
+  "worst": 40,
+  "a": "Baikonur",
+  "b": "Zhitikara",
+  "km": 747
+ },
+ {
+  "tz": "Asia/Vientiane",
+  "worst": 40,
+  "a": "Ban Khoan",
+  "b": "Sekong",
+  "km": 896
+ },
+ {
+  "tz": "Asia/Sakhalin",
+  "worst": 40,
+  "a": "Okha",
+  "b": "Nevel’sk",
+  "km": 773
+ },
+ {
+  "tz": "Europe/Athens",
+  "worst": 39,
+  "a": "Ioánnina",
+  "b": "Rhodes",
+  "km": 738
+ },
+ {
+  "tz": "Asia/Baghdad",
+  "worst": 39,
+  "a": "Abū al-Kahṣīb",
+  "b": "Sumayl",
+  "km": 851
+ },
+ {
+  "tz": "Asia/Manila",
+  "worst": 39,
+  "a": "Davao",
+  "b": "Tarlac City",
+  "km": 1083
+ },
+ {
+  "tz": "Asia/Novosibirsk",
+  "worst": 39,
+  "a": "Karasuk",
+  "b": "Bolotnoye",
+  "km": 461
+ },
+ {
+  "tz": "America/Argentina/Rio_Gallegos",
+  "worst": 38,
+  "a": "El Calafate",
+  "b": "Puerto Deseado",
+  "km": 547
+ },
+ {
+  "tz": "America/Bahia",
+  "worst": 38,
+  "a": "Porto Seguro",
+  "b": "Luis Eduardo Magalhães",
+  "km": 871
+ },
+ {
+  "tz": "Europe/Bucharest",
+  "worst": 38,
+  "a": "Constanţa",
+  "b": "Oradea",
+  "km": 612
+ },
+ {
+  "tz": "America/Vancouver",
+  "worst": 37,
+  "a": "Kelowna",
+  "b": "Prince George",
+  "km": 501
+ },
+ {
+  "tz": "Asia/Ho_Chi_Minh",
+  "worst": 37,
+  "a": "Bắc Từ Liêm",
+  "b": "Phan Rang-Tháp Chàm",
+  "km": 1112
+ },
+ {
+  "tz": "Africa/Nairobi",
+  "worst": 37,
+  "a": "Mandera",
+  "b": "Kisii",
+  "km": 940
+ },
+ {
+  "tz": "Asia/Hovd",
+  "worst": 37,
+  "a": "Ölgii",
+  "b": "Altai",
+  "km": 553
+ },
+ {
+  "tz": "America/Hermosillo",
+  "worst": 37,
+  "a": "San Luis Río Colorado",
+  "b": "Navojoa",
+  "km": 789
+ },
+ {
+  "tz": "Asia/Kathmandu",
+  "worst": 37,
+  "a": "Biratnagar",
+  "b": "Bhimdatta",
+  "km": 752
+ },
+ {
+  "tz": "Asia/Muscat",
+  "worst": 37,
+  "a": "Şalālah",
+  "b": "Sur",
+  "km": 839
+ },
+ {
+  "tz": "Asia/Barnaul",
+  "worst": 35,
+  "a": "Gorno-Altaysk",
+  "b": "Slavgorod",
+  "km": 506
+ },
+ {
+  "tz": "America/Belem",
+  "worst": 34,
+  "a": "São Félix do Xingu",
+  "b": "Viseu",
+  "km": 888
+ },
+ {
+  "tz": "Asia/Pyongyang",
+  "worst": 34,
+  "a": "Ŭllyul",
+  "b": "Ŭndŏk",
+  "km": 622
+ },
+ {
+  "tz": "Asia/Qyzylorda",
+  "worst": 34,
+  "a": "Aral",
+  "b": "Zhangaqorghan",
+  "km": 542
+ },
+ {
+  "tz": "Africa/Harare",
+  "worst": 34,
+  "a": "Victoria Falls",
+  "b": "Chipinge",
+  "km": 757
+ },
+ {
+  "tz": "America/Regina",
+  "worst": 33,
+  "a": "North Battleford",
+  "b": "Yorkton",
+  "km": 435
+ },
+ {
+  "tz": "Africa/Cairo",
+  "worst": 33,
+  "a": "Alexandria",
+  "b": "Aswān",
+  "km": 843
+ },
+ {
+  "tz": "America/Monterrey",
+  "worst": 33,
+  "a": "Victoria de Durango",
+  "b": "Tampico",
+  "km": 719
+ },
+ {
+  "tz": "America/Mexico_City",
+  "worst": 33,
+  "a": "Zapopan",
+  "b": "Veracruz",
+  "km": 776
+ },
+ {
+  "tz": "America/Merida",
+  "worst": 33,
+  "a": "Tapachula",
+  "b": "Tizimín",
+  "km": 818
+ },
+ {
+  "tz": "Asia/Damascus",
+  "worst": 33,
+  "a": "Al Qāmishlī",
+  "b": "Dar‘ā",
+  "km": 680
+ },
+ {
+  "tz": "Europe/Vienna",
+  "worst": 32,
+  "a": "Vienna",
+  "b": "Feldkirch",
+  "km": 518
+ },
+ {
+  "tz": "Europe/Riga",
+  "worst": 32,
+  "a": "Daugavpils",
+  "b": "Ventspils",
+  "km": 347
+ },
+ {
+  "tz": "America/Santarem",
+  "worst": 31,
+  "a": "Porto de Moz",
+  "b": "Jacareacanga",
+  "km": 788
+ },
+ {
+  "tz": "Africa/Conakry",
+  "worst": 31,
+  "a": "Kamsar",
+  "b": "Lola",
+  "km": 739
+ },
+ {
+  "tz": "America/Asuncion",
+  "worst": 31,
+  "a": "Ciudad del Este",
+  "b": "Filadelfia",
+  "km": 650
+ },
+ {
+  "tz": "Asia/Novokuznetsk",
+  "worst": 31,
+  "a": "Yurga",
+  "b": "Tashtagol",
+  "km": 382
+ },
+ {
+  "tz": "Australia/Sydney",
+  "worst": 30,
+  "a": "Tuggeranong",
+  "b": "Coffs Harbour",
+  "km": 683
+ },
+ {
+  "tz": "America/Campo_Grande",
+  "worst": 30,
+  "a": "Corumbá",
+  "b": "Aparecida do Taboado",
+  "km": 698
+ },
+ {
+  "tz": "America/Argentina/Buenos_Aires",
+  "worst": 29,
+  "a": "Bahía Blanca",
+  "b": "Berisso",
+  "km": 579
+ },
+ {
+  "tz": "Africa/Ouagadougou",
+  "worst": 29,
+  "a": "Dori",
+  "b": "Niangoloko",
+  "km": 675
+ },
+ {
+  "tz": "America/Rio_Branco",
+  "worst": 29,
+  "a": "Mâncio Lima",
+  "b": "Plácido de Castro",
+  "km": 696
+ },
+ {
+  "tz": "Africa/Gaborone",
+  "worst": 28,
+  "a": "Bobonong",
+  "b": "Ghanzi",
+  "km": 701
+ },
+ {
+  "tz": "America/St_Johns",
+  "worst": 28,
+  "a": "St. John's",
+  "b": "Corner Brook",
+  "km": 417
+ },
+ {
+  "tz": "Asia/Pontianak",
+  "worst": 28,
+  "a": "Singkawang",
+  "b": "Muara Teweh",
+  "km": 689
+ },
+ {
+  "tz": "Asia/Aden",
+  "worst": 28,
+  "a": "Sa'dah",
+  "b": "Ghayl Bā Wazīr",
+  "km": 646
+ },
+ {
+  "tz": "Africa/Asmara",
+  "worst": 27,
+  "a": "Himora",
+  "b": "Assab",
+  "km": 678
+ },
+ {
+  "tz": "Europe/Volgograd",
+  "worst": 27,
+  "a": "Kotel’nikovo",
+  "b": "Pallasovka",
+  "km": 384
+ },
+ {
+  "tz": "Europe/Saratov",
+  "worst": 27,
+  "a": "Rtishchevo",
+  "b": "Novouzensk",
+  "km": 362
+ },
+ {
+  "tz": "Asia/Omsk",
+  "worst": 27,
+  "a": "Tara",
+  "b": "Isil’kul’",
+  "km": 293
+ },
+ {
+  "tz": "America/Phoenix",
+  "worst": 27,
+  "a": "Sierra Vista",
+  "b": "Bullhead City",
+  "km": 562
+ },
+ {
+  "tz": "Australia/Adelaide",
+  "worst": 26,
+  "a": "Mount Gambier",
+  "b": "Whyalla",
+  "km": 608
+ },
+ {
+  "tz": "Asia/Dhaka",
+  "worst": 26,
+  "a": "Cox’s Bāzār",
+  "b": "Dinajpur",
+  "km": 579
+ },
+ {
+  "tz": "Europe/Sofia",
+  "worst": 26,
+  "a": "Dobrich",
+  "b": "Petrich",
+  "km": 449
+ },
+ {
+  "tz": "America/Recife",
+  "worst": 26,
+  "a": "Petrolina",
+  "b": "Igarassu",
+  "km": 639
+ },
+ {
+  "tz": "America/Porto_Velho",
+  "worst": 26,
+  "a": "Vilhena",
+  "b": "Nova Mamoré",
+  "km": 621
+ },
+ {
+  "tz": "Europe/Zagreb",
+  "worst": 26,
+  "a": "Pula",
+  "b": "Dubrovnik",
+  "km": 422
+ },
+ {
+  "tz": "Europe/Vilnius",
+  "worst": 26,
+  "a": "Naujoji Vilnia",
+  "b": "Palanga",
+  "km": 307
+ },
+ {
+  "tz": "America/Matamoros",
+  "worst": 26,
+  "a": "Heroica Matamoros",
+  "b": "Ciudad Acuña",
+  "km": 512
+ },
+ {
+  "tz": "Australia/Melbourne",
+  "worst": 25,
+  "a": "Pakenham",
+  "b": "Mildura",
+  "km": 524
+ },
+ {
+  "tz": "Europe/Prague",
+  "worst": 25,
+  "a": "Havířov",
+  "b": "Karlovy Vary",
+  "km": 401
+ },
+ {
+  "tz": "Europe/Tallinn",
+  "worst": 25,
+  "a": "Narva",
+  "b": "Pärnu",
+  "km": 239
+ },
+ {
+  "tz": "Africa/Accra",
+  "worst": 25,
+  "a": "Jirapa",
+  "b": "Aflao",
+  "km": 652
+ },
+ {
+  "tz": "Europe/Budapest",
+  "worst": 25,
+  "a": "Nyíregyháza",
+  "b": "Zalaegerszeg",
+  "km": 387
+ },
+ {
+  "tz": "Europe/Dublin",
+  "worst": 25,
+  "a": "Tralee",
+  "b": "Letterkenny",
+  "km": 325
+ },
+ {
+  "tz": "Asia/Amman",
+  "worst": 25,
+  "a": "Aqaba",
+  "b": "Rukban",
+  "km": 548
+ },
+ {
+  "tz": "Asia/Atyrau",
+  "worst": 25,
+  "a": "Qulsary",
+  "b": "Shalkar",
+  "km": 403
+ },
+ {
+  "tz": "Africa/Blantyre",
+  "worst": 25,
+  "a": "Nsanje",
+  "b": "Chitipa",
+  "km": 831
+ },
+ {
+  "tz": "Africa/Abidjan",
+  "worst": 24,
+  "a": "Danané",
+  "b": "Aboisso",
+  "km": 582
+ },
+ {
+  "tz": "Europe/Belgrade",
+  "worst": 24,
+  "a": "Sombor",
+  "b": "Pirot",
+  "km": 401
+ },
+ {
+  "tz": "Europe/Bratislava",
+  "worst": 24,
+  "a": "Bratislava",
+  "b": "Snina",
+  "km": 383
+ },
+ {
+  "tz": "Asia/Dushanbe",
+  "worst": 24,
+  "a": "Panjakent",
+  "b": "Ishqoshim",
+  "km": 466
+ },
+ {
+  "tz": "Africa/Kampala",
+  "worst": 24,
+  "a": "Kotido",
+  "b": "Kabale",
+  "km": 658
+ },
+ {
+  "tz": "America/Boise",
+  "worst": 24,
+  "a": "Caldwell",
+  "b": "Conda",
+  "km": 431
+ },
+ {
+  "tz": "Asia/Baku",
+  "worst": 23,
+  "a": "Naxçıvan",
+  "b": "Buzovna",
+  "km": 427
+ },
+ {
+  "tz": "America/Winnipeg",
+  "worst": 23,
+  "a": "Brandon",
+  "b": "Kenora",
+  "km": 392
+ },
+ {
+  "tz": "Asia/Tbilisi",
+  "worst": 23,
+  "a": "Stantsiya Novyy Afon",
+  "b": "Telavi",
+  "km": 401
+ },
+ {
+  "tz": "Asia/Kuala_Lumpur",
+  "worst": 23,
+  "a": "Johor Bahru",
+  "b": "Alor Setar",
+  "km": 640
+ },
+ {
+  "tz": "America/Montevideo",
+  "worst": 23,
+  "a": "Salto",
+  "b": "Rocha",
+  "km": 483
+ },
+ {
+  "tz": "Europe/Copenhagen",
+  "worst": 22,
+  "a": "Copenhagen",
+  "b": "Aalborg",
+  "km": 223
+ },
+ {
+  "tz": "Asia/Aqtobe",
+  "worst": 22,
+  "a": "Aktobe",
+  "b": "Shalqar",
+  "km": 324
+ },
+ {
+  "tz": "America/Chihuahua",
+  "worst": 22,
+  "a": "Nuevo Casas Grandes",
+  "b": "José Mariano Jiménez",
+  "km": 467
+ },
+ {
+  "tz": "America/Araguaina",
+  "worst": 21,
+  "a": "Tocantinópolis",
+  "b": "Formoso do Araguaia",
+  "km": 651
+ },
+ {
+  "tz": "Africa/Libreville",
+  "worst": 21,
+  "a": "Port-Gentil",
+  "b": "Franceville",
+  "km": 543
+ },
+ {
+  "tz": "Asia/Phnom_Penh",
+  "worst": 21,
+  "a": "Paoy Paet",
+  "b": "Bavet",
+  "km": 483
+ },
+ {
+  "tz": "Europe/Sarajevo",
+  "worst": 20,
+  "a": "Trebinje",
+  "b": "Velika Kladuša",
+  "km": 342
+ },
+ {
+  "tz": "America/Moncton",
+  "worst": 20,
+  "a": "Moncton",
+  "b": "Edmundston",
+  "km": 304
+ },
+ {
+  "tz": "America/Guayaquil",
+  "worst": 20,
+  "a": "Puerto Francisco de Orellana",
+  "b": "Salinas",
+  "km": 481
+ },
+ {
+  "tz": "Africa/El_Aaiun",
+  "worst": 20,
+  "a": "Laayoune",
+  "b": "Dakhla",
+  "km": 474
+ },
+ {
+  "tz": "Europe/Astrakhan",
+  "worst": 20,
+  "a": "Znamensk",
+  "b": "Kamyzyak",
+  "km": 327
+ },
+ {
+  "tz": "Asia/Tashkent",
+  "worst": 20,
+  "a": "Xonobod",
+  "b": "Dashtobod",
+  "km": 386
+ },
+ {
+  "tz": "Atlantic/Canary",
+  "worst": 19,
+  "a": "Arrecife",
+  "b": "Los Llanos de Aridane",
+  "km": 427
+ },
+ {
+  "tz": "America/Managua",
+  "worst": 19,
+  "a": "Puerto Cabezas",
+  "b": "Corinto",
+  "km": 444
+ },
+ {
+  "tz": "Africa/Dakar",
+  "worst": 19,
+  "a": "Yoff",
+  "b": "Médina Gounas",
+  "km": 441
+ },
+ {
+  "tz": "Africa/Porto-Novo",
+  "worst": 18,
+  "a": "Malanville",
+  "b": "Lokossa",
+  "km": 610
+ },
+ {
+  "tz": "Europe/Zurich",
+  "worst": 18,
+  "a": "Geneva",
+  "b": "Sankt Gallen",
+  "km": 281
+ },
+ {
+  "tz": "Asia/Seoul",
+  "worst": 18,
+  "a": "Pohang",
+  "b": "Jeju City",
+  "km": 382
+ },
+ {
+  "tz": "Africa/Monrovia",
+  "worst": 18,
+  "a": "Harper",
+  "b": "Foya Kamara",
+  "km": 522
+ },
+ {
+  "tz": "Europe/Lisbon",
+  "worst": 18,
+  "a": "Faro",
+  "b": "Ponte de Lima",
+  "km": 531
+ },
+ {
+  "tz": "America/Eirunepe",
+  "worst": 17,
+  "a": "Benjamin Constant",
+  "b": "Guajará",
+  "km": 452
+ },
+ {
+  "tz": "Europe/Amsterdam",
+  "worst": 17,
+  "a": "Groningen",
+  "b": "Breda",
+  "km": 218
+ },
+ {
+  "tz": "Africa/Lome",
+  "worst": 17,
+  "a": "Aného",
+  "b": "Sinkassé",
+  "km": 569
+ },
+ {
+  "tz": "Africa/Tunis",
+  "worst": 17,
+  "a": "Bizerte",
+  "b": "Ben Gardane",
+  "km": 476
+ },
+ {
+  "tz": "Pacific/Honolulu",
+  "worst": 17,
+  "a": "Pearl City",
+  "b": "Hilo",
+  "km": 353
+ },
+ {
+  "tz": "Asia/Dubai",
+  "worst": 16,
+  "a": "Ras Al Khaimah",
+  "b": "Zayed City",
+  "km": 328
+ },
+ {
+  "tz": "Asia/Yerevan",
+  "worst": 16,
+  "a": "Gyumri",
+  "b": "Kapan",
+  "km": 280
+ },
+ {
+  "tz": "America/Maceio",
+  "worst": 16,
+  "a": "Tobias Barreto",
+  "b": "Maragogi",
+  "km": 388
+ },
+ {
+  "tz": "America/Guatemala",
+  "worst": 16,
+  "a": "Coatepeque",
+  "b": "Puerto Barrios",
+  "km": 368
+ },
+ {
+  "tz": "Europe/Chisinau",
+  "worst": 16,
+  "a": "Edineţ",
+  "b": "Ceadîr-Lunga",
+  "km": 262
+ },
+ {
+  "tz": "Europe/Ulyanovsk",
+  "worst": 16,
+  "a": "Dimitrovgrad",
+  "b": "Inza",
+  "km": 217
+ },
+ {
+  "tz": "America/Detroit",
+  "worst": 16,
+  "a": "Detroit",
+  "b": "Muskegon",
+  "km": 280
+ },
+ {
+  "tz": "Europe/Brussels",
+  "worst": 15,
+  "a": "Ostend",
+  "b": "Verviers",
+  "km": 217
+ },
+ {
+  "tz": "America/Tegucigalpa",
+  "worst": 15,
+  "a": "San Pedro de Copán",
+  "b": "Dulce Nombre de Culmí",
+  "km": 362
+ },
+ {
+  "tz": "America/Panama",
+  "worst": 15,
+  "a": "Tocumen",
+  "b": "La Concepción",
+  "km": 362
+ },
+ {
+  "tz": "Europe/Simferopol",
+  "worst": 15,
+  "a": "Sevastopol",
+  "b": "Kerch",
+  "km": 247
+ },
+ {
+  "tz": "America/Indiana/Indianapolis",
+  "worst": 15,
+  "a": "Fort Wayne",
+  "b": "Terre Haute",
+  "km": 268
+ },
+ {
+  "tz": "America/Santo_Domingo",
+  "worst": 14,
+  "a": "Punta Cana",
+  "b": "Mao",
+  "km": 301
+ },
+ {
+  "tz": "Africa/Malabo",
+  "worst": 14,
+  "a": "Malabo",
+  "b": "Aconibe",
+  "km": 363
+ },
+ {
+  "tz": "America/Cancun",
+  "worst": 14,
+  "a": "Cancún",
+  "b": "Chetumal",
+  "km": 332
+ },
+ {
+  "tz": "Asia/Colombo",
+  "worst": 13,
+  "a": "Jaffna",
+  "b": "Pottuvil",
+  "km": 369
+ },
+ {
+  "tz": "America/Tijuana",
+  "worst": 13,
+  "a": "Tijuana",
+  "b": "San Felipe",
+  "km": 262
+ },
+ {
+  "tz": "Europe/Ljubljana",
+  "worst": 13,
+  "a": "Koper",
+  "b": "Ptuj",
+  "km": 192
+ },
+ {
+  "tz": "Asia/Taipei",
+  "worst": 13,
+  "a": "Kaohsiung",
+  "b": "Keelung",
+  "km": 315
+ },
+ {
+  "tz": "Australia/Hobart",
+  "worst": 12,
+  "a": "Hobart",
+  "b": "Burnie",
+  "km": 235
+ },
+ {
+  "tz": "Pacific/Fiji",
+  "worst": 12,
+  "a": "Labasa",
+  "b": "Sigatoka",
+  "km": 274
+ },
+ {
+  "tz": "America/Port-au-Prince",
+  "worst": 12,
+  "a": "Les Cayes",
+  "b": "Terrier Rouge",
+  "km": 248
+ },
+ {
+  "tz": "Europe/Tirane",
+  "worst": 11,
+  "a": "Shkodër",
+  "b": "Korçë",
+  "km": 193
+ },
+ {
+  "tz": "America/Argentina/Mendoza",
+  "worst": 11,
+  "a": "Ciudad de Las Heras",
+  "b": "General Alvear",
+  "km": 259
+ },
+ {
+  "tz": "America/Nassau",
+  "worst": 11,
+  "a": "Nassau",
+  "b": "Lucaya",
+  "km": 211
+ },
+ {
+  "tz": "America/Costa_Rica",
+  "worst": 11,
+  "a": "Limón",
+  "b": "Liberia",
+  "km": 272
+ },
+ {
+  "tz": "Atlantic/Cape_Verde",
+  "worst": 11,
+  "a": "Praia",
+  "b": "Mindelo",
+  "km": 268
+ },
+ {
+  "tz": "Africa/Banjul",
+  "worst": 11,
+  "a": "Brufut",
+  "b": "Farato",
+  "km": 274
+ },
+ {
+  "tz": "Europe/Skopje",
+  "worst": 11,
+  "a": "Centar Župa",
+  "b": "Delcevo",
+  "km": 191
+ },
+ {
+  "tz": "Europe/Kaliningrad",
+  "worst": 11,
+  "a": "Sovetsk",
+  "b": "Baltiysk",
+  "km": 135
+ },
+ {
+  "tz": "Africa/Freetown",
+  "worst": 11,
+  "a": "Goderich",
+  "b": "Segbwema",
+  "km": 262
+ },
+ {
+  "tz": "America/Boa_Vista",
+  "worst": 10,
+  "a": "Rorainópolis",
+  "b": "Pacaraima",
+  "km": 396
+ },
+ {
+  "tz": "Asia/Jerusalem",
+  "worst": 10,
+  "a": "Nazareth",
+  "b": "Eilat",
+  "km": 351
+ },
+ {
+  "tz": "America/Halifax",
+  "worst": 9,
+  "a": "Charlottetown",
+  "b": "Halifax West End",
+  "km": 181
+ },
+ {
+  "tz": "America/Cayenne",
+  "worst": 9,
+  "a": "Matoury",
+  "b": "Saint-Laurent-du-Maroni",
+  "km": 202
+ },
+ {
+  "tz": "America/El_Salvador",
+  "worst": 9,
+  "a": "Sonsonate",
+  "b": "La Unión",
+  "km": 208
+ },
+ {
+  "tz": "Asia/Dili",
+  "worst": 9,
+  "a": "Suai",
+  "b": "Lospalos",
+  "km": 211
+ },
+ {
+  "tz": "Asia/Aqtau",
+  "worst": 8,
+  "a": "Aktau",
+  "b": "Zhanaozen",
+  "km": 141
+ },
+ {
+  "tz": "Asia/Beirut",
+  "worst": 8,
+  "a": "Tyre",
+  "b": "El Hermel",
+  "km": 166
+ },
+ {
+  "tz": "Africa/Maseru",
+  "worst": 8,
+  "a": "Mafeteng",
+  "b": "Butha-Buthe",
+  "km": 153
+ },
+ {
+  "tz": "Africa/Kigali",
+  "worst": 8,
+  "a": "Nyagatare",
+  "b": "Cyangugu",
+  "km": 205
+ },
+ {
+  "tz": "Africa/Bujumbura",
+  "worst": 7,
+  "a": "Cibitoke",
+  "b": "Cendajuru",
+  "km": 170
+ },
+ {
+  "tz": "America/Belize",
+  "worst": 7,
+  "a": "San Ignacio",
+  "b": "San Pedro",
+  "km": 144
+ },
+ {
+  "tz": "Africa/Bissau",
+  "worst": 7,
+  "a": "Bissau",
+  "b": "Gabú",
+  "km": 157
+ },
+ {
+  "tz": "Europe/Podgorica",
+  "worst": 7,
+  "a": "Herceg Novi",
+  "b": "Pljevlja",
+  "km": 121
+ },
+ {
+  "tz": "America/Puerto_Rico",
+  "worst": 7,
+  "a": "Mayagüez",
+  "b": "Fajardo",
+  "km": 158
+ },
+ {
+  "tz": "Asia/Nicosia",
+  "worst": 6,
+  "a": "Larnaca",
+  "b": "Paphos",
+  "km": 111
+ },
+ {
+  "tz": "Africa/Djibouti",
+  "worst": 6,
+  "a": "Dikhil",
+  "b": "Obock",
+  "km": 139
+ },
+ {
+  "tz": "America/Jamaica",
+  "worst": 6,
+  "a": "Kingston",
+  "b": "Montego Bay",
+  "km": 130
+ },
+ {
+  "tz": "Indian/Comoro",
+  "worst": 6,
+  "a": "Moroni",
+  "b": "Moutsamoudou",
+  "km": 135
+ },
+ {
+  "tz": "America/Port_of_Spain",
+  "worst": 6,
+  "a": "Point Fortin",
+  "b": "Scarborough",
+  "km": 153
+ },
+ {
+  "tz": "America/Argentina/La_Rioja",
+  "worst": 5,
+  "a": "Chilecito",
+  "b": "Aimogasta",
+  "km": 95
+ },
+ {
+  "tz": "Asia/Thimphu",
+  "worst": 5,
+  "a": "Phuntsholing",
+  "b": "Punākha",
+  "km": 95
+ },
+ {
+  "tz": "Asia/Hebron",
+  "worst": 5,
+  "a": "Janīn",
+  "b": "Az̧ Z̧āhirīyah",
+  "km": 121
+ },
+ {
+  "tz": "America/Argentina/Tucuman",
+  "worst": 4,
+  "a": "San Miguel de Tucumán",
+  "b": "Aguilares",
+  "km": 79
+ },
+ {
+  "tz": "Asia/Brunei",
+  "worst": 4,
+  "a": "Bandar Seri Begawan",
+  "b": "Kuala Belait",
+  "km": 86
+ },
+ {
+  "tz": "Asia/Famagusta",
+  "worst": 4,
+  "a": "Kyrenia",
+  "b": "Protaras",
+  "km": 76
+ },
+ {
+  "tz": "America/Guyana",
+  "worst": 4,
+  "a": "Georgetown",
+  "b": "New Amsterdam",
+  "km": 94
+ },
+ {
+  "tz": "America/Argentina/Jujuy",
+  "worst": 3,
+  "a": "San Salvador de Jujuy",
+  "b": "Libertador General San Martín",
+  "km": 66
+ },
+ {
+  "tz": "America/Guadeloupe",
+  "worst": 3,
+  "a": "Le Moule",
+  "b": "Basse-Terre",
+  "km": 55
+ },
+ {
+  "tz": "Asia/Kuwait",
+  "worst": 3,
+  "a": "Al Aḩmadī",
+  "b": "Al Jahrā’",
+  "km": 50
+ },
+ {
+  "tz": "Asia/Qatar",
+  "worst": 3,
+  "a": "Doha",
+  "b": "Umm Ghuwaylīnah",
+  "km": 51
+ },
+ {
+  "tz": "Indian/Reunion",
+  "worst": 3,
+  "a": "Saint-Joseph",
+  "b": "Le Port",
+  "km": 59
+ },
+ {
+  "tz": "America/Argentina/San_Juan",
+  "worst": 2,
+  "a": "Rawson",
+  "b": "Caucete",
+  "km": 26
+ },
+ {
+  "tz": "Asia/Hong_Kong",
+  "worst": 2,
+  "a": "Hong Kong",
+  "b": "Tuen Mun",
+  "km": 24
+ },
+ {
+  "tz": "Indian/Mauritius",
+  "worst": 2,
+  "a": "Port Louis",
+  "b": "Bel Air Rivière Sèche",
+  "km": 28
+ },
+ {
+  "tz": "Asia/Gaza",
+  "worst": 2,
+  "a": "Gaza",
+  "b": "Rafaḩ",
+  "km": 31
+ },
+ {
+  "tz": "Asia/Kamchatka",
+  "worst": 2,
+  "a": "Petropavlovsk-Kamchatsky",
+  "b": "Yelizovo",
+  "km": 21
+ },
+ {
+  "tz": "Africa/Mbabane",
+  "worst": 2,
+  "a": "Manzini",
+  "b": "Mbabane",
+  "km": 32
+ },
+ {
+  "tz": "America/Kentucky/Louisville",
+  "worst": 2,
+  "a": "New Albany",
+  "b": "Jeffersontown",
+  "km": 25
+ },
+ {
+  "tz": "America/Aruba",
+  "worst": 1,
+  "a": "Oranjestad",
+  "b": "Noord",
+  "km": 5
+ },
+ {
+  "tz": "Asia/Bahrain",
+  "worst": 1,
+  "a": "Al Muharraq",
+  "b": "Manama",
+  "km": 4
+ },
+ {
+  "tz": "Asia/Macau",
+  "worst": 1,
+  "a": "Macau",
+  "b": "Santo António",
+  "km": 0
+ },
+ {
+  "tz": "Pacific/Guam",
+  "worst": 1,
+  "a": "Dededo Village",
+  "b": "Yigo Village",
+  "km": 6
+ },
+ {
+  "tz": "Europe/Luxembourg",
+  "worst": 1,
+  "a": "Luxembourg",
+  "b": "Esch-sur-Alzette",
+  "km": 17
+ },
+ {
+  "tz": "America/Martinique",
+  "worst": 1,
+  "a": "Fort-de-France",
+  "b": "Le Lamentin",
+  "km": 8
+ },
+ {
+  "tz": "Europe/Malta",
+  "worst": 1,
+  "a": "San Pawl il-Baħar",
+  "b": "Birkirkara",
+  "km": 7
+ },
+ {
+  "tz": "Pacific/Noumea",
+  "worst": 1,
+  "a": "Nouméa",
+  "b": "Mont-Dore",
+  "km": 12
+ },
+ {
+  "tz": "Pacific/Tahiti",
+  "worst": 1,
+  "a": "Faaa",
+  "b": "Papeete",
+  "km": 5
+ },
+ {
+  "tz": "Atlantic/Madeira",
+  "worst": 1,
+  "a": "Funchal",
+  "b": "Câmara de Lobos",
+  "km": 5
+ },
+ {
+  "tz": "Pacific/Guadalcanal",
+  "worst": 1,
+  "a": "Honiara",
+  "b": "Panatina",
+  "km": 6
+ },
+ {
+  "tz": "Asia/Singapore",
+  "worst": 1,
+  "a": "Singapore",
+  "b": "Ulu Bedok",
+  "km": 10
+ },
+ {
+  "tz": "America/Paramaribo",
+  "worst": 1,
+  "a": "Paramaribo",
+  "b": "Blauwgrond",
+  "km": 6
+ },
+ {
+  "tz": "Indian/Mayotte",
+  "worst": 1,
+  "a": "Mamoudzou",
+  "b": "Koungou",
+  "km": 6
+ }
+]

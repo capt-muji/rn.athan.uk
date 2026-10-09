@@ -1,0 +1,27 @@
+## Every library against the US Naval Observatory
+
+Service `https://aa.usno.navy.mil/api/rstt/oneday`, API v4.0.1, tz=0 so all
+times are UTC. Cells are days equal / |delta|=1 / |delta|>=2, with the range
+and mean. 10 cities x 6 dates = 60 comparisons per quantity. Method offsets
+are zeroed, because Dhuhr +1 is a preset and not astronomy.
+
+| source | sunrise | transit (solar noon) | sunset |
+|---|---|---|---|
+| `astronomy-engine 2.1.19` (the oracle) | 114/2/0 mean -0.02 | 118/0/0 mean 0.00 | 112/4/0 mean 0.02 |
+| `adhan@4.4.6` | 106/10/0 mean -0.05 | 117/1/0 mean 0.01 | 87/9/0 mean 0.03 |
+| `praytime@3.2.0` | 104/12/0 mean -0.02 | 117/1/0 mean 0.01 | 82/14/0 mean 0.02 |
+| `praytimes@0.0.5` | 104/12/0 mean -0.02 | 115/3/0 mean 0.03 | 81/15/0 mean 0.03 |
+
+## The oracle against the USNO on civil twilight
+
+No authority publishes an 18-degree Fajr, but the USNO does publish civil
+twilight at -6 degrees. Agreeing there proves the twilight SOLVER, which is
+the same code path an 18-degree Fajr uses with a different constant.
+
+| quantity | astronomy-engine minus USNO |
+|---|---|
+| begin civil twilight | 112/2/0 mean 0.00 |
+| end civil twilight | 114/0/0 mean 0.00 |
+
+No library disagreed with the USNO by 2 minutes or more on any of the 60
+comparisons, for any of sunrise, transit or sunset.

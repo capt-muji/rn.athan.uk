@@ -11,7 +11,14 @@
  * shape changes: it lets layouts detect and tolerate entries written by an
  * older app version still sitting in the shared timeline store.
  */
-export const WIDGET_PROPS_VERSION = 4;
+export const WIDGET_PROPS_VERSION = 5;
+
+/**
+ * Current schema version of the Android widget snapshot contract. Android has
+ * no timeline: one snapshot carries the whole window and the layout computes
+ * what to show at render time. Bump when the snapshot shape changes.
+ */
+export const ANDROID_SNAPSHOT_VERSION = 1;
 
 /**
  * Which palette a home widget renders: 'light' or 'dark'. This is a
@@ -41,16 +48,16 @@ export interface PrayerWidgetSettings {
 export interface WidgetPrayerRow {
   /** English prayer name, e.g. "Fajr" */
   name: string;
-  /** Prayer time in HH:mm, e.g. "05:35" */
+  /** Prayer time in HH:mm, e.g. "05:35", or "--:--" when the source's time could not be read */
   time: string;
 }
 
 /**
  * Timeline props pushed to all four widgets at every prayer boundary (the
  * standard pair and the extras pair each receive their own schedule's
- * timeline). One timeline entry per prayer segment; within the stepped
- * countdown horizon the builder additionally emits one entry every five
- * minutes so the precomputed countdown label stays close to the truth.
+ * timeline). Exactly one entry per prayer segment: the countdown ticks
+ * itself from the segment bounds, so nothing in the card changes between
+ * boundaries and extra entries would only cost archive budget.
  */
 export interface PrayerWidgetProps {
   /** Props schema version (WIDGET_PROPS_VERSION) for cross-release tolerance */
@@ -76,21 +83,19 @@ export interface PrayerWidgetProps {
   nextTime: string;
   /** Upcoming prayer datetime as epoch ms */
   nextEpochMs: number;
-  /** Start of the current segment (previous prayer) as epoch ms */
-  prevEpochMs: number;
   /**
-   * Countdown to the upcoming prayer as a minute-ceil label ("2h", "1h 12m",
-   * "9m", "1m") computed for the entry's date — seconds never render, and
-   * the value rounds up so it holds until the true minute flips.
+   * Start of the current segment (previous prayer) as epoch ms. With
+   * nextEpochMs this is the interval the layouts hand to SwiftUI's ticking
+   * countdown, which iOS redraws every second without a timeline entry.
    */
-  countdownLabel: string;
+  prevEpochMs: number;
   /** Date of the upcoming prayer in the app's format (Hijri when enabled) */
   dateLabel: string;
   /**
-   * The displayed day's prayers for the medium widget's list — the prayers
-   * of the upcoming prayer's belongsToDate (the list rolls to the next day
-   * exactly when the countdown target does, mirroring the app's displayDate
-   * semantics). Standard entries are chronological; extras entries are in
+   * The displayed day's prayers for the medium widget's list: the list day
+   * the app shows at the entry's moment (usually the upcoming prayer's day;
+   * a day with no readable time stays until 00:00 London at its end, as it
+   * does in the app). Standard entries are chronological; extras entries are in
    * canonical EXTRAS_ENGLISH order with Istijaba present only on Fridays
    * (4 rows normally, 5 on Fridays). Rows before the active one are past,
    * rows after it are upcoming. Absent on entries from older app versions
@@ -99,8 +104,9 @@ export interface PrayerWidgetProps {
   prayers?: WidgetPrayerRow[];
   /**
    * Index of the active (next) prayer within `prayers` — the row carrying
-   * the blue active background. -1 when the next prayer is not part of the
-   * displayed day (should not happen; guarded in the layout).
+   * the blue active background. -1 when the next prayer is not on the
+   * displayed day, which happens while a day with no readable time is held
+   * on screen (the medium layout then shows the single-prayer composition).
    */
   activeIndex?: number;
   /**
@@ -109,4 +115,59 @@ export interface PrayerWidgetProps {
    * card instead of silently stale times. Absent on normal entries.
    */
   stale?: boolean;
+}
+
+/**
+ * One row of the Android widget's carried data. `epochMs` is 0 for rows
+ * whose time could not be read: they render as `--:--` and can never be the
+ * next prayer (0 predates every epoch the app deals in). JSON null cannot
+ * cross the Kotlin bridge nested inside the snapshot's maps and lists, so
+ * 0 is the unavailable encoding.
+ */
+export interface AndroidWidgetDayRow {
+  /** English prayer name, e.g. "Fajr" */
+  name: string;
+  /** Prayer time in HH:mm, or "--:--" when unreadable */
+  time: string;
+  /** The prayer's moment as epoch ms, or 0 when the row is unreadable */
+  epochMs: number;
+}
+
+/**
+ * One day of the Android snapshot: the list-day label the app would show,
+ * the London midnight starting the day (the render-time day picker compares
+ * against it), and the day's rows in its page's order.
+ */
+export interface AndroidWidgetDay {
+  /** The day's date in the app's display format (Hijri when enabled) */
+  dateLabel: string;
+  /** London midnight starting this day, as epoch ms */
+  startEpochMs: number;
+  rows: AndroidWidgetDayRow[];
+}
+
+/**
+ * The Android widget snapshot: everything the layout needs to compute its
+ * content at ANY render instant inside the carried window. The theme and
+ * size are stamped per widget kind by the push layer, not the builder.
+ */
+export interface PrayerWidgetAndroidProps {
+  /** Snapshot schema version (ANDROID_SNAPSHOT_VERSION) */
+  v: number;
+  /** Which schedule the snapshot describes */
+  schedule: 'standard' | 'extra';
+  /** Palette, stamped per kind (the gallery's Light/Dark pairs) */
+  theme: WidgetTheme;
+  /** Which size composition to render, stamped per kind */
+  size: 'small' | 'medium';
+  /**
+   * Launcher-granted width in dp, stamped by the native tick. Optional
+   * because only native can read a grant: the JS push renders at the
+   * declared minimum until the next tick.
+   */
+  grantedWidthDp?: number;
+  /** The window's days, in order */
+  days: AndroidWidgetDay[];
+  /** The last readable prayer in the window: renders past this go stale */
+  horizonEpochMs: number;
 }

@@ -1,0 +1,120 @@
+# R14 part 4: the travel problem, measured
+
+adhan@4.4.6, MWL, SeventhOfTheNight, rounding=Nearest. 12 dates (the 15th of each month of
+2026), 6 times each. The error is the worst displayed-minute gap. A gap over 720 minutes is a
+solver discontinuity and is excluded.
+
+## 4A. Real journeys: holding the origin position after arrival
+
+| journey                     | km   | IANA zone | fajr | sunrise | dhuhr | asr | maghrib | isha | worst | note                                                   |
+| --------------------------- | ---- | --------- | ---- | ------- | ----- | --- | ------- | ---- | ----- | ------------------------------------------------------ |
+| London to Makkah            | 4794 | changes   | 205  | 249     | 160   | 223 | 256     | 239  | 256   | Umrah, the archetypal journey for this app             |
+| London to Jeddah            | 4750 | changes   | 202  | 247     | 158   | 221 | 253     | 236  | 253   | the flight in                                          |
+| Jeddah to Makkah            | 66   | **same**  | 3    | 3       | 3     | 3   | 3       | 3    | 3     | the coach from the airport, 66 km                      |
+| Makkah to Madinah           | 346  | **same**  | 9    | 7       | 2     | 9   | 8       | 11   | 11    | the second half of Umrah, same zone                    |
+| Makkah to Mina              | 7    | **same**  | 1    | 1       | 1     | 1   | 0       | 1    | 1     | Hajj, 8 km, same zone                                  |
+| London to Manchester        | 262  | **same**  | 12   | 19      | 9     | 12  | 20      | 17   | 20    | a domestic trip, SAME zone                             |
+| London to Glasgow           | 555  | **same**  | 24   | 41      | 17    | 26  | 44      | 36   | 44    | further, still SAME zone                               |
+| London to Bradford          | 277  | **same**  | 10   | 18      | 7     | 11  | 20      | 16   | 20    | the largest Muslim diaspora move in Britain, SAME zone |
+| London to Paris             | 344  | changes   | 15   | 23      | 10    | 16  | 24      | 20   | 24    | different zone, small position change                  |
+| London to Istanbul          | 2501 | changes   | 133  | 158     | 117   | 138 | 162     | 149  | 162   |                                                        |
+| London to Karachi           | 6308 | changes   | 309  | 351     | 269   | 330 | 357     | 337  | 357   |                                                        |
+| Karachi to Lahore           | 1033 | **same**  | 45   | 45      | 30    | 42  | 44      | 39   | 45    | SAME zone, 1,030 km                                    |
+| KualaLumpur to KotaKinabalu | 1625 | changes   | 63   | 63      | 58    | 61  | 63      | 62   | 63    | different zone AND different JAKIM zone                |
+| Jakarta to Surabaya         | 663  | **same**  | 26   | 26      | 24    | 25  | 25      | 26   | 26    | SAME zone, 660 km                                      |
+| NewYork to Miami            | 1758 | **same**  | 53   | 65      | 25    | 61  | 63      | 47   | 65    | SAME zone, 1,760 km                                    |
+| Toronto to NewYork          | 550  | changes   | 26   | 31      | 22    | 28  | 32      | 29   | 32    | different zone, small position change                  |
+| Oslo to Tromso              | 1148 | **same**  | 134  | 177     | 33    | 115 | 203     | 156  | 203   | SAME zone, polar                                       |
+| Cairo to Aswan              | 682  | **same**  | 15   | 19      | 7     | 23  | 21      | 25   | 25    | SAME zone, 670 km                                      |
+| Moscow to Kazan             | 718  | **same**  | 46   | 47      | 46    | 46  | 46      | 46   | 47    | SAME zone, 720 km                                      |
+| Shanghai to Kashgar         | 4180 | changes   | 194  | 204     | 182   | 201 | 205     | 202  | 205   | different zone name, one legal zone                    |
+| Dubai to Makkah             | 1631 | changes   | 73   | 70      | 62    | 68  | 70      | 68   | 73    |                                                        |
+| Dhaka to Makkah             | 5172 | changes   | 210  | 207     | 203   | 206 | 207     | 206  | 210   |                                                        |
+
+## 4B. What a timezone-change signal misses: the worst intra-zone journey
+
+For each zone, the two cities within it whose prayer times differ most. A user making exactly
+that journey gets NO timezone event and no other permission-free signal at all. Only zones
+with 3 or more cities are shown, sorted by the worst gap, top 30.
+
+| zone                      | city A                  | city B               | km   | fajr | sunrise | dhuhr | asr | maghrib | isha | worst min |
+| ------------------------- | ----------------------- | -------------------- | ---- | ---- | ------- | ----- | --- | ------- | ---- | --------- |
+| `Europe/Moscow`           | Makhachkala             | Murmansk             | 3008 | 188  | 274     | 58    | 121 | 258     | 200  | 274       |
+| `Asia/Yekaterinburg`      | Novyy Urengoy           | Buzuluk              | 1996 | 199  | 239     | 98    | 192 | 241     | 181  | 241       |
+| `Asia/Krasnoyarsk`        | Kyzyl                   | Dudinka              | 2014 | 170  | 241     | 33    | 80  | 218     | 164  | 241       |
+| `Asia/Yakutsk`            | Raychikhinsk            | Udachny              | 2086 | 171  | 236     | 68    | 108 | 230     | 184  | 236       |
+| `Europe/Oslo`             | Tromsø                  | Time                 | 1366 | 160  | 205     | 53    | 142 | 232     | 179  | 232       |
+| `Europe/Stockholm`        | Malmö                   | Luleå                | 1214 | 149  | 195     | 37    | 110 | 151     | 105  | 195       |
+| `Asia/Shanghai`           | Harbin                  | Kunming              | 3139 | 139  | 156     | 96    | 150 | 153     | 127  | 156       |
+| `Europe/Kirov`            | Narian-Mar              | Yaransk              | 1182 | 95   | 127     | 21    | 90  | 137     | 97   | 137       |
+| `America/Edmonton`        | Medicine Hat            | Yellowknife          | 1399 | 63   | 107     | 15    | 58  | 122     | 91   | 122       |
+| `Europe/Helsinki`         | Turku                   | Rovaniemi            | 693  | 85   | 112     | 14    | 87  | 115     | 86   | 115       |
+| `Asia/Almaty`             | Ridder                  | Zhetysay             | 1585 | 89   | 101     | 61    | 96  | 97      | 77   | 101       |
+| `Asia/Jakarta`            | Situbondo               | Banda Aceh           | 2542 | 100  | 97      | 75    | 89  | 97      | 99   | 100       |
+| `America/Chicago`         | Milwaukee               | Laredo               | 2018 | 78   | 90      | 47    | 87  | 89      | 69   | 90        |
+| `America/New_York`        | Boston                  | St. Petersburg       | 1932 | 76   | 88      | 47    | 84  | 86      | 69   | 88        |
+| `Asia/Irkutsk`            | Slyudyanka              | Bodaybo              | 961  | 73   | 86      | 42    | 75  | 80      | 55   | 86        |
+| `Asia/Tehran`             | Orūmīyeh                | Zahedan              | 1712 | 75   | 84      | 64    | 83  | 85      | 85   | 85        |
+| `America/Argentina/Salta` | Profesor Salvador Mazza | El Bolsón            | 2332 | 60   | 81      | 32    | 75  | 84      | 78   | 84        |
+| `Asia/Kolkata`            | Kolkata                 | Srinagar             | 1841 | 70   | 80      | 55    | 82  | 82      | 84   | 84        |
+| `Asia/Vladivostok`        | Vladivostok             | Nikolayevsk-on-Amure | 1293 | 69   | 82      | 36    | 76  | 79      | 53   | 82        |
+| `Asia/Urumqi`             | Kashgar                 | Hami                 | 1511 | 79   | 81      | 71    | 80  | 81      | 76   | 81        |
+| `Atlantic/Reykjavik`      | Reykjanesbær            | Akureyri             | 282  | 62   | 81      | 18    | 36  | 51      | 41   | 81        |
+| `America/Anchorage`       | Anchorage               | Fairbanks            | 417  | 60   | 80      | 9     | 41  | 64      | 46   | 80        |
+| `America/Denver`          | El Paso                 | Missoula             | 1798 | 53   | 77      | 30    | 63  | 79      | 65   | 79        |
+| `Asia/Tokyo`              | Sapporo                 | Kagoshima            | 1593 | 68   | 77      | 44    | 75  | 76      | 61   | 77        |
+| `Australia/Brisbane`      | Gold Coast              | Mount Isa            | 1625 | 76   | 71      | 56    | 69  | 71      | 66   | 76        |
+| `America/Lima`            | Tacna                   | Talara               | 1915 | 75   | 69      | 45    | 58  | 68      | 65   | 75        |
+| `Africa/Khartoum`         | Port Sudan              | Al-Junaynah          | 1716 | 75   | 71      | 59    | 67  | 71      | 68   | 75        |
+| `America/Sao_Paulo`       | Porto Alegre            | Serra                | 1555 | 58   | 65      | 44    | 66  | 65      | 73   | 73        |
+| `America/Toronto`         | Windsor                 | Saguenay             | 1153 | 66   | 73      | 48    | 71  | 70      | 58   | 73        |
+| `Africa/Maputo`           | Matola                  | Mocímboa da Praia    | 1824 | 53   | 60      | 32    | 54  | 61      | 72   | 72        |
+
+| statistic                        | zones     |
+| -------------------------------- | --------- |
+| zones with 3 or more cities      | 277       |
+| worst intra-zone gap over 5 min  | 244 (88%) |
+| worst intra-zone gap over 15 min | 200 (72%) |
+| worst intra-zone gap over 30 min | 126 (45%) |
+
+## 4C. The false alarm: a zone change with no material prayer change
+
+Pairs of cities in DIFFERENT zones that are within 100 km of each other, which is what a
+border crossing or a coastal commute looks like. If the prayer gap is small, a zone-change
+trigger is firing for nothing.
+
+Cross-zone city pairs over 100,000 population within 100 km: 2311.
+
+| city A        | zone A                      | city B                  | zone B               | km | worst prayer min |
+| ------------- | --------------------------- | ----------------------- | -------------------- | -- | ---------------- |
+| Petrolina     | `America/Recife`            | Juazeiro                | `America/Bahia`      | 1  | 0                |
+| Soyo          | `Africa/Luanda`             | Moanda                  | `Africa/Kinshasa`    | 23 | 1                |
+| Concordia     | `America/Argentina/Cordoba` | Salto                   | `America/Montevideo` | 5  | 1                |
+| Sātkhira      | `Asia/Dhaka`                | Basirhat City           | `Asia/Kolkata`       | 23 | 1                |
+| Bujumbura     | `Africa/Bujumbura`          | Uvira                   | `Africa/Lubumbashi`  | 25 | 1                |
+| Foz do Iguaçu | `America/Sao_Paulo`         | Ciudad del Este         | `America/Asuncion`   | 8  | 1                |
+| Windsor       | `America/Toronto`           | Detroit                 | `America/Detroit`    | 4  | 1                |
+| Windsor       | `America/Toronto`           | Warren                  | `America/Detroit`    | 21 | 1                |
+| Windsor       | `America/Toronto`           | Sterling Heights        | `America/Detroit`    | 31 | 1                |
+| Kinshasa      | `Africa/Kinshasa`           | Brazzaville             | `Africa/Brazzaville` | 8  | 1                |
+| Masina        | `Africa/Kinshasa`           | Brazzaville             | `Africa/Brazzaville` | 18 | 1                |
+| Kousséri      | `Africa/Douala`             | N'Djamena               | `Africa/Ndjamena`    | 4  | 1                |
+| Mengmao       | `Asia/Shanghai`             | Mu-se                   | `Asia/Yangon`        | 4  | 1                |
+| Zhuhai        | `Asia/Shanghai`             | Nossa Senhora de Fátima | `Asia/Macau`         | 8  | 1                |
+| Zhuhai        | `Asia/Shanghai`             | Santo António           | `Asia/Macau`         | 9  | 1                |
+| Zhuhai        | `Asia/Shanghai`             | Taipa                   | `Asia/Macau`         | 14 | 1                |
+| Zhuhai        | `Asia/Shanghai`             | Macau                   | `Asia/Macau`         | 9  | 1                |
+| Shenzhen      | `Asia/Shanghai`             | Tsuen Wan               | `Asia/Hong_Kong`     | 20 | 1                |
+| Shenzhen      | `Asia/Shanghai`             | Yuen Long San Hui       | `Asia/Hong_Kong`     | 13 | 1                |
+| Shenzhen      | `Asia/Shanghai`             | Yuen Long Kau Hui       | `Asia/Hong_Kong`     | 11 | 1                |
+
+Of those pairs, 778 (34%) differ by 2 displayed minutes or less, so a zone-change trigger on that journey is a false alarm.
+
+## 4D. The re-fix threshold: how far the user must move before a prayer changes
+
+From part 1E and 1F: the radius at which the worst of the six times first exceeds one
+displayed minute. Repeated here per prayer for a spread of latitudes, because that is the
+number a movement trigger has to encode.
+
+This table is in `part1.txt` section 1F. The design answer is in the report.
+
