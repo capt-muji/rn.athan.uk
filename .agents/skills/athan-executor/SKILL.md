@@ -72,7 +72,7 @@ A **step** is finished only when every acceptance criterion holds: the named tes
 
 ## 5. Stopping part-way through a step
 
-1. Save the work: `git diff > ~/athan-device-sweep/session<N>/step<k>-unfinished.patch` and `git status --porcelain > ~/athan-device-sweep/session<N>/step<k>-unfinished-status.txt`.
+1. Save the work: `git diff > ~/athan-gitree/sessions/<N>/step<k>-unfinished.patch` and `git status --porcelain > ~/athan-gitree/sessions/<N>/step<k>-unfinished-status.txt`.
 2. Run `git checkout -- <file>` for each changed file the step lists, and for `app.json` and `package.json`. Delete each new file it lists that exists.
 3. `git checkout uat`. If `git log --oneline uat..<step branch>` prints nothing, run `git branch -D <step branch>`. The tree must then list only the three plan files.
 
@@ -86,11 +86,11 @@ For NEEDS REPLAN, BLOCKED, EXECUTED or low context: branch `docs/<kind>-<N>-$(da
 - Before any clock change, run the plan's alarm dump (`adb -s 3T_SERIAL shell dumpsys alarm | grep -A2 "com.mugtaba.athan}"`) and compare it with the plan's expected alarms. A clock jump fires every armed alarm it passes, so an alarm the plan did not list means STOP.
 - Never force-stop the app, it has hung the phone. Press HOME, then `am kill com.mugtaba.athan`, then launch. If adb hangs twice, STOP and ask the owner to reboot the phone.
 - `uiautomator dump` fails while the countdown animates, so use the logcat lines and alarm dumps the plan names. Read `e2e/device-atlas-<model>.md` before any screenshot, replay mapped coordinates, write back new ones, and verify after every tap. A coordinate lives in its device atlas, never in a plan.
-- Save evidence under `~/athan-device-sweep/session<N>/`. At the end turn automatic time back on and leave the phone on the build the plan names.
+- Save evidence under `~/athan-gitree/sessions/<N>/`. At the end turn automatic time back on and leave the phone on the build the plan names.
 
 ## 8. Finishing a plan
 
 1. Apply the plan's records text with the values you measured. Set the row in `ai/plans/README.md` to EXECUTED, leaving the row's final wording to the audit session.
 2. Make an `executed` docs commit (section 6). Do not push.
-3. Remove every scratch worktree this session made with `git worktree remove --force <path>` and delete the branch each one carried. The five build worktrees under `~/athan-device-sweep/worktrees/` stay, the build scripts reuse them as caches.
+3. Remove every scratch worktree this session made with `git worktree remove --force <path>` and delete the branch each one carried. The five build worktrees under `~/athan-gitree/worktrees/` stay, the build scripts reuse them as caches.
 4. Report to the owner as the plan's section 12 says. End with the four-line handoff from the `athan-next` skill.

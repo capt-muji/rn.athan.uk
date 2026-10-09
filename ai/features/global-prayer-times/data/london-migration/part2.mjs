@@ -355,5 +355,5 @@ say('== 2.9 Byte cost of the interval table ==');
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2.txt', out + '\n');
 console.log(out);

@@ -199,5 +199,5 @@ say('the gap is HMNAO\'s own rounding, not a modelling error.');
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2c.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2c.txt', out + '\n');
 console.log(out);

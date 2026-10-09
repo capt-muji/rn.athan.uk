@@ -6,12 +6,12 @@ that claims Khalid Shaukat's Moonsighting Committee Worldwide method, other than
 
 Conventions:
 - "Endpoint" means `moonsighting.ahmedbukhamsin.sa/time_json.php` unless stated.
-- Every endpoint response is cached in `~/athan-research/endpoint/`. The metadata for each probe (exact
-  request, status, headers, timings, fetch time) is in `~/athan-research/endpoint/probes/<name>.meta.json`
-  and `.headers.txt`, and all probes are logged in `~/athan-research/impls/probe.log` (122 requests, all on
+- Every endpoint response is cached in `~/athan-gitree/research/endpoint/`. The metadata for each probe (exact
+  request, status, headers, timings, fetch time) is in `~/athan-gitree/research/endpoint/probes/<name>.meta.json`
+  and `.headers.txt`, and all probes are logged in `~/athan-gitree/research/impls/probe.log` (122 requests, all on
   2026-09-14 between 05:15 and 05:35 BST, at least 1.1 s apart).
-- Sources are copied into `~/athan-research/src/<owner>-<repo>`, and npm tarballs are in
-  `~/athan-research/impls/npm/<pkg>/package`.
+- Sources are copied into `~/athan-gitree/research/src/<owner>-<repo>`, and npm tarballs are in
+  `~/athan-gitree/research/impls/npm/<pkg>/package`.
 - Times are local wall-clock `HH:MM`. A "diff" is implementation minus endpoint, in minutes.
 - Nothing here is a prayer time for the app. No time was copied, averaged or invented. Each number comes from
   a cached response or from a script whose path is given.
@@ -124,7 +124,7 @@ Conventions:
 
 ## 1. PrayerTimeResearch/PrayerTimeAPI
 
-Source: `~/athan-research/src/PrayerTimeAPI` (opensrc copy, without `.git`). Metadata comes from the GitHub API,
+Source: `~/athan-gitree/research/src/PrayerTimeAPI` (opensrc copy, without `.git`). Metadata comes from the GitHub API,
 2026-09-14.
 
 | Item | Value |
@@ -622,7 +622,7 @@ kskhan77 repos: `d2faa6c1…5c08b63`.
 - **Where it lives now.** `https://1x.ax/islamic-network/libraries/prayer-times-moonsighting`, a OneDev
   instance (`/~login` redirect, JSESSIONID). It clones anonymously:
   `git clone https://1x.ax/islamic-network/libraries/prayer-times-moonsighting.git`, copied to
-  `~/athan-research/src/islamic-network-prayer-times-moonsighting` with `.git`.
+  `~/athan-gitree/research/src/islamic-network-prayer-times-moonsighting` with `.git`.
   - Packagist `islamic-network/prayer-times-moonsighting` names that URL as its source.
   - The GitHub repo `islamic-network/prayer-times-moonsighting` is deleted; mawaqit's description says so, and
     `opensrc` could not fetch it.
@@ -1128,27 +1128,27 @@ Checked and not implementing MC: `praytime` 3.2.0 (Zarrabi, 95 weekly), `islamic
 
 | Path | What |
 |---|---|
-| `~/athan-research/impls/probe.py`, `probe.log`, `probe.stdout` | all endpoint probes (groups www, ptedge, bk, hilat, wayback, aladhan, extra, dst) |
-| `~/athan-research/endpoint/` | cached bodies (`<host>_<city>_<year>_m<method>[_extra].json/html`) and `probes/*.meta.json`, `*.headers.txt` |
-| `~/athan-research/impls/port_islamic_network.py` | PORT of islamic-network moonsighting and host (self-tests against the repo's tests) |
-| `~/athan-research/impls/compare_port_endpoint.py`, `.txt`, `.json` | port against endpoint, all days |
-| `~/athan-research/impls/rules_model.py`, `.txt`, `.json` | how-we rules hypothesis test (§2.9) |
-| `~/athan-research/impls/praytable_vs_timejson.py`, `.txt` | site tables against endpoint (§3.1) |
-| `~/athan-research/impls/booklet_vs_endpoint.py`, `.txt`, `booklet-fajr-isha.txt` | booklet tables (§3.2) and extracted booklet text |
-| `~/athan-research/impls/dst_transitions.txt` | DST defect evidence (§2.10) |
-| `~/athan-research/impls/highlat_strings.txt` | high-latitude string runs (§2.7) |
-| `~/athan-research/impls/run_js_impls.mjs`, `js_impls.json`, `musallah_prayerCalc.transpiled.mjs` | JS/TS implementation runs |
-| `~/athan-research/impls/run_libmuslim.c`, `run_libmuslim`, `libmuslim.json` | libmuslim run |
-| `~/athan-research/impls/merge_impl_table.py`, `impl_table.txt`, `impl_table.json` | §4.14 table |
-| `~/athan-research/impls/npm/`, `npm_table.txt`, `npmsearch_*.json`, `ghcode_*.json`, `ghrepos_*.json`, `packagist_*.json`, `pubdev_*.json`, `crates_moonsighting.json` | registry searches and tarballs |
-| `~/athan-research/impls/tls_bukhamsin.txt`, `whois_ahmedbukhamsin_sa.txt`, `gh_meta_others.txt` | host and repo metadata |
-| `~/athan-research/src/{PrayerTimeAPI, islamic-network-prayer-times(-moonsighting), kskhan77-…, mawaqit-…, muballighapp-…, adamarnap-…, arahmancsd-PrayerTimesManager, RagibHasin-adhaan, sniper1720-mawaqit, acamarata-pray-calc, muslimtify-org-libmuslim, a-saab-PrayerTimes, salahapi-salahapi-php, wailay-piazan, Sherheryaar-Musallah}` | copied sources |
-| `~/athan-research/impls/global_offsets.py`, `.txt` | global timezone sweep (§2.10b) |
-| `~/athan-research/impls/south_analysis.py`, `.txt` | southern high latitudes and McMurdo DST (§2.7b); endpoint files `moonsighting.ahmedbukhamsin.sa_{capehorn,palmer,rothera,mcmurdo}_2026_m0.json` |
-| `~/athan-research/impls/masaajid_instant_check.mjs` | @masaajid time-of-day dependence proof (§4.12) |
-| `~/athan-research/impls/npm/@masaajid__prayer-times.formatted.js` | esbuild reformat of the minified bundle, used for line references |
-| `~/athan-research/impls/run_fajr.mjs`, `fajr_run.txt` | @tawfeeqmartin/fajr run (§4.13); symlink `npm/@tawfeeqmartin__fajr/package/node_modules/adhan` points at extracted adhan 4.4.6 |
-| `~/athan-research/impls/js_impls.rerun.log` | 2026-09-14 rerun of `run_js_impls.mjs` (masjiduna harness fix, masaajid 00:00 UTC variant) |
+| `~/athan-gitree/research/impls/probe.py`, `probe.log`, `probe.stdout` | all endpoint probes (groups www, ptedge, bk, hilat, wayback, aladhan, extra, dst) |
+| `~/athan-gitree/research/endpoint/` | cached bodies (`<host>_<city>_<year>_m<method>[_extra].json/html`) and `probes/*.meta.json`, `*.headers.txt` |
+| `~/athan-gitree/research/impls/port_islamic_network.py` | PORT of islamic-network moonsighting and host (self-tests against the repo's tests) |
+| `~/athan-gitree/research/impls/compare_port_endpoint.py`, `.txt`, `.json` | port against endpoint, all days |
+| `~/athan-gitree/research/impls/rules_model.py`, `.txt`, `.json` | how-we rules hypothesis test (§2.9) |
+| `~/athan-gitree/research/impls/praytable_vs_timejson.py`, `.txt` | site tables against endpoint (§3.1) |
+| `~/athan-gitree/research/impls/booklet_vs_endpoint.py`, `.txt`, `booklet-fajr-isha.txt` | booklet tables (§3.2) and extracted booklet text |
+| `~/athan-gitree/research/impls/dst_transitions.txt` | DST defect evidence (§2.10) |
+| `~/athan-gitree/research/impls/highlat_strings.txt` | high-latitude string runs (§2.7) |
+| `~/athan-gitree/research/impls/run_js_impls.mjs`, `js_impls.json`, `musallah_prayerCalc.transpiled.mjs` | JS/TS implementation runs |
+| `~/athan-gitree/research/impls/run_libmuslim.c`, `run_libmuslim`, `libmuslim.json` | libmuslim run |
+| `~/athan-gitree/research/impls/merge_impl_table.py`, `impl_table.txt`, `impl_table.json` | §4.14 table |
+| `~/athan-gitree/research/impls/npm/`, `npm_table.txt`, `npmsearch_*.json`, `ghcode_*.json`, `ghrepos_*.json`, `packagist_*.json`, `pubdev_*.json`, `crates_moonsighting.json` | registry searches and tarballs |
+| `~/athan-gitree/research/impls/tls_bukhamsin.txt`, `whois_ahmedbukhamsin_sa.txt`, `gh_meta_others.txt` | host and repo metadata |
+| `~/athan-gitree/research/src/{PrayerTimeAPI, islamic-network-prayer-times(-moonsighting), kskhan77-…, mawaqit-…, muballighapp-…, adamarnap-…, arahmancsd-PrayerTimesManager, RagibHasin-adhaan, sniper1720-mawaqit, acamarata-pray-calc, muslimtify-org-libmuslim, a-saab-PrayerTimes, salahapi-salahapi-php, wailay-piazan, Sherheryaar-Musallah}` | copied sources |
+| `~/athan-gitree/research/impls/global_offsets.py`, `.txt` | global timezone sweep (§2.10b) |
+| `~/athan-gitree/research/impls/south_analysis.py`, `.txt` | southern high latitudes and McMurdo DST (§2.7b); endpoint files `moonsighting.ahmedbukhamsin.sa_{capehorn,palmer,rothera,mcmurdo}_2026_m0.json` |
+| `~/athan-gitree/research/impls/masaajid_instant_check.mjs` | @masaajid time-of-day dependence proof (§4.12) |
+| `~/athan-gitree/research/impls/npm/@masaajid__prayer-times.formatted.js` | esbuild reformat of the minified bundle, used for line references |
+| `~/athan-gitree/research/impls/run_fajr.mjs`, `fajr_run.txt` | @tawfeeqmartin/fajr run (§4.13); symlink `npm/@tawfeeqmartin__fajr/package/node_modules/adhan` points at extracted adhan 4.4.6 |
+| `~/athan-gitree/research/impls/js_impls.rerun.log` | 2026-09-14 rerun of `run_js_impls.mjs` (masjiduna harness fix, masaajid 00:00 UTC variant) |
 
 ---
 

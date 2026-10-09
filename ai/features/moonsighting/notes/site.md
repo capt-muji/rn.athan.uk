@@ -6,7 +6,7 @@ Researcher: site-reading agent, 2026-09-14. This covers moonsighting.com HTML pa
 Not covered: the PDF documents, which are in `notes/documents.md`, and the full prayer.html history, which the lead is diffing under `pdfs/wayback/prayer-html/`.
 All quotes are verbatim, typos included. No prayer time is copied anywhere in this file. The Apple MapKit JWTs in `assets/js/apple_map.js` exist for three hostnames; their values are not reproduced.
 
-Scratch outputs: `~/athan-research/site-reading/`, which holds these:
+Scratch outputs: `~/athan-gitree/research/site-reading/`, which holds these:
 - `reports-sweep.txt`: every monthly report, with its preamble and keyword lines
 - `nonreport-table.tsv`
 - `ok-paths.json`: the union of HTTP 200 paths

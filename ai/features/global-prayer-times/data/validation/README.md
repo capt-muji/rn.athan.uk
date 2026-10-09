@@ -9,7 +9,7 @@ dependency.
 Packages live in the scratch tree, never in this repository:
 
 ```sh
-ln -s $HOME/athan-global-scratch/harness/node_modules node_modules
+ln -s $HOME/athan-gitree/scratch/harness/node_modules node_modules
 ```
 
 That tree holds `adhan@4.4.6`, `adhan@4.4.3` (aliased `adhan-443`),

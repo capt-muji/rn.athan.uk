@@ -15,7 +15,7 @@ of the diff chain.
 import os, re, glob, hashlib, subprocess
 from bs4 import BeautifulSoup, Comment
 
-MV = os.path.expanduser('~/athan-research/site-reading/method-versions')
+MV = os.path.expanduser('~/athan-gitree/research/site-reading/method-versions')
 RAW, TXT, DIFFS = (os.path.join(MV, d) for d in ('raw', 'text', 'diffs'))
 PAGES = ['how-we.html', 'faq_pt.html', 'pray.php']
 

@@ -212,5 +212,5 @@ for (const [label, corpus] of CORPORA) {
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part3d.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part3d.txt', out + '\n');
 console.log(out);

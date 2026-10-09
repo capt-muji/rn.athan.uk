@@ -122,5 +122,5 @@ for (const f of [...FIELDS, 'asr_2']) {
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2e.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2e.txt', out + '\n');
 console.log(out);

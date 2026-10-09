@@ -173,5 +173,5 @@ say('== 2b.4 Rounding-boundary proximity: is every miss a half-minute coin flip?
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2b.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2b.txt', out + '\n');
 console.log(out);

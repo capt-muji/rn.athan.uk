@@ -100,7 +100,7 @@ Nothing. All seven research reports are in.
 ## Where this work lives
 
 Branch `plan/39-localisation`, in a worktree, isolated from the qibla session running in the main
-checkout. Nothing here touches `uat-2`. A mirror sits at `~/athan-localisation-backup/`.
+checkout. Nothing here touches `uat-2`. A mirror sits at `~/athan-gitree/localisation/`.
 
 ## Supporting evidence
 

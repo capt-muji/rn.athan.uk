@@ -159,5 +159,5 @@ say('Reference: adhan 4.4.6\'s own Asr at 51.5,-0.165 reached 60.44% on Mithl 1 
 say('Mithl 2 across the same years (Part 2h), and 37.63% on Mithl 1 for era B2 alone (Part 2e).');
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2i.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2i.txt', out + '\n');
 console.log(out);

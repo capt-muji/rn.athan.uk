@@ -18,7 +18,7 @@ which of three futures London should have, and what happens if the provider disa
 
 **Tool path.** `codegraph_explore` is configured for the main checkout and returns "not indexed" for this worktree,
 so every code fact was read directly from source here and cited by line. `adhan@4.4.6` ran in the scratch tree at
-`$HOME/athan-global-scratch/r13/`, never in the repository. The London Prayer Times API was **not called**:
+`$HOME/athan-gitree/scratch/r13/`, never in the repository. The London Prayer Times API was **not called**:
 wave 1's captured year at `ai/features/moonsighting/data/london/lpt-2026.json` is the reference throughout, and the
 owner's key was neither read nor needed. Web reads went through the `tinyfish` MCP, and fifty published `.xlsx`
 files were fetched with `curl` from a public download page that requires no key. Nobody was contacted.

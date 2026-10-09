@@ -2,7 +2,7 @@
 
 Researcher notes, 2026-09-14. This file supersedes the earlier version of itself.
 - Research only.
-- Every number comes from a named file or URL, or from a script under `~/athan-research/london/`.
+- Every number comes from a named file or URL, or from a script under `~/athan-gitree/research/london/`.
 - Δ = published minus rule, in minutes. "Exact" means the minute is equal.
 - Framing: matching the moonsighting method to London is a **sanity check**, not a claim about accuracy anywhere else.
 
@@ -72,7 +72,7 @@ Other points:
   - 02:43 equals the moonsighting m0 Fajr for that date.
   - 21:21 is the hand-written example in `mocks/timing-system-schema.ts` (lines 160–161 and 204; history back to 8a0f590, 2026-01-18). It also happens to equal the theoretical sunset truncated (21:21:35–47).
   - Finding 43 was added in commit 9ca0b25 (2026-09-12).
-- **Asr labels in the app are reversed.** `~/athan-research-wt/shared/types.ts` lines 25–28 call `asr` Hanafi and `asr_2` Shafi. The data shows `asr` = Mithl 1 (Shafi'i), because it equals ELM's "1 Mithl" column on every day. `asr_2` = Mithl 2 (Hanafi). **The app displays the Shafi'i time.**
+- **Asr labels in the app are reversed.** `~/athan-gitree/research-wt/shared/types.ts` lines 25–28 call `asr` Hanafi and `asr_2` Shafi. The data shows `asr` = Mithl 1 (Shafi'i), because it equals ELM's "1 Mithl" column on every day. `asr_2` = Mithl 2 (Hanafi). **The app displays the Shafi'i time.**
 
 ---
 
@@ -82,7 +82,7 @@ Other points:
 Primary source: Y.A. Miftahi, *Fajar and Isha*, Hizbul Ulama UK.
 - PDF "Fajar&IshainBritain", created 2006-12-07.
 - URL: moonsighting.com/articles/fajr&isha-yam.pdf, Wayback capture 20070410171730.
-- Local copy: `~/athan-research/pdfs/wayback/articles__fajr&isha-yam.pdf`.
+- Local copy: `~/athan-gitree/research/pdfs/wayback/articles__fajr&isha-yam.pdf`.
 
 Tables:
 - **Table 5**, "TIME TABLE OF SUBHA SADIQ IN UK": book p. 117 = pdf page 118.

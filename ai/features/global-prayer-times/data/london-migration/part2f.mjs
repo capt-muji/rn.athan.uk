@@ -152,5 +152,5 @@ say('Reference, from Part 2e: adhan\'s own Asr reached 37.63% exact on Mithl 1 a
 say('both within 1 minute on 95.34% and 99.00% respectively, worst 2 minutes.');
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2f.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2f.txt', out + '\n');
 console.log(out);

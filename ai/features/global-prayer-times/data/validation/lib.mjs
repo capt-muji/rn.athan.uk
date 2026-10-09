@@ -15,7 +15,7 @@
 //      TZ=UTC.
 //
 // Nothing in this file is installed into the repository. Packages live in
-// $HOME/athan-global-scratch/harness/node_modules.
+// $HOME/athan-gitree/scratch/harness/node_modules.
 
 import * as Astronomy from 'astronomy-engine';
 import * as adhan from 'adhan';

@@ -66,7 +66,7 @@ Status: COMPLETE (2026-09-14). Research only. Written by the method-versions age
 
 Scope: how-we.html, faq_pt.html, pray.php. Every digest-distinct Wayback capture, earliest timestamp per digest.
 
-Working folder: `~/athan-research/site-reading/method-versions/`
+Working folder: `~/athan-gitree/research/site-reading/method-versions/`
 - `fetch.py` fetches (or copies from the earlier passes) every digest-distinct capture into `raw/`, writing `ledger.tsv`.
 - `raw/<ts>__<page>`: raw bodies (decompressed if gzip/zstd).
 - `text/<ts>__<page>.txt`: visible text, then FORMS and LINKS sections; `text/<ts>__<page>.comments.txt`: HTML comments.

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
  * Follow-up checks for the adhan MC study.
- * Run: cd ~/athan-research/adhan/harness && TZ=UTC node edges.cjs > ../results/edges.md
+ * Run: cd ~/athan-gitree/research/adhan/harness && TZ=UTC node edges.cjs > ../results/edges.md
  * 1. seasonal coefficient tables, evaluated through adhan's own Astronomical functions
  * 2. Sydney DST boundary rows
  * 3. Tromso polar-edge rows with raw candidates, and polar-night Fajr/Isha vs 18 degrees
@@ -25,7 +25,7 @@ const SolarTime = def(require(LIB + '/SolarTime.js'));
 const TimeComponents = def(require(LIB + '/TimeComponents.js'));
 const { dayOfYear } = require(LIB + '/DateUtils.js');
 const { CalculationMethod, Coordinates, PrayerTimes, Madhab, Shafaq, Rounding } = adhan;
-const EP = path.join(os.homedir(), 'athan-research/endpoint');
+const EP = path.join(os.homedir(), 'athan-gitree/research/endpoint');
 const HOST = 'moonsighting.ahmedbukhamsin.sa';
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const PRAYERS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];

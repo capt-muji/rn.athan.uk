@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /*
  * adhan@4.4.6 CalculationMethod.MoonsightingCommittee() vs the moonsighting endpoint
- * (moonsighting.ahmedbukhamsin.sa/time_json.php, cached under ~/athan-research/endpoint/).
+ * (moonsighting.ahmedbukhamsin.sa/time_json.php, cached under ~/athan-gitree/research/endpoint/).
  *
- * Run:  cd ~/athan-research/adhan/harness && TZ=UTC node compare.cjs
+ * Run:  cd ~/athan-gitree/research/adhan/harness && TZ=UTC node compare.cjs
  * TZ=UTC matters: adhan reads the calendar date from the Date's *local* components,
  * so the process zone must be UTC for new Date(2026, 0, 1+i) to mean that civil date.
  *
@@ -30,7 +30,7 @@ const {
   HighLatitudeRule, PolarCircleResolution,
 } = adhan;
 
-const EP = path.join(os.homedir(), 'athan-research/endpoint');
+const EP = path.join(os.homedir(), 'athan-gitree/research/endpoint');
 const OUT = path.join(__dirname, '..', 'results');
 fs.mkdirSync(OUT, { recursive: true });
 const HOST = 'moonsighting.ahmedbukhamsin.sa';
