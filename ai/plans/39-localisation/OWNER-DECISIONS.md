@@ -394,6 +394,36 @@ name for a slot gets the transliteration written in that language's script. No r
 English fallback. Refines D15: the three translated slots (Sunrise, Midnight, Last Third) are the
 only exceptions.
 
+## D25. The release workflow: main is 1.x, uat is v2 (2026-10-09)
+
+main becomes the 1.29.x release line, advanced by pull request only (the branch protection on main
+requires a PR and forbids merge commits, so every landing is a squash merge; PR #168 carries the
+current 1.29.291 state plus the restored Android submit `serviceAccountKeyPath` that lived only on
+the old main). uat is the integration line where the 2.0.0 work lands and where fleet device
+testing happens; uat reaches main by the same PR flow when 2.0.0 ships. Going global later is
+3.0.0 under the same workflow. The README updates when the v2 work opens.
+
+## D26. The language sheet lists native names (2026-10-09)
+
+The picker rows show each language in its own name ("Bahasa Indonesia", "Türkçe"), alphabetically
+sorted, with English spelled "English". A reader scans for the name they know, not an English
+gloss.
+
+## D27. The five daily prayers transliterate everywhere, without exception (2026-10-09)
+
+Fajr, Dhuhr, Asr, Magrib and Isha appear as transliterations in every language, in each language's
+own orthography, regardless of local habit. İmsak is banned outright: it is the start-of-fasting
+marker (Arabic: holding back), a different moment with different meanings across languages, while
+Fajr is never misunderstood. This cancels the Turkish Diyanet exception and returns the Uzbek,
+Bosnian, Albanian and Chinese authority labels, for the eight transliterated slots, to the rule;
+any future exception needs the owner's explicit sign-off per locale per term.
+
+## D28. The switch's failure face (2026-10-09)
+
+When the language commit fails and rolls back, the sheet reopens on the previous language with one
+line, "Language change failed, try again", and the app is exactly as it was: no toast, no error
+screen. Detection and recovery ride the persisted intent marker (`research/R11-LANGUAGE-COMMIT.md`).
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
