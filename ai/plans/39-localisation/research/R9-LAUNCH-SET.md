@@ -1,5 +1,14 @@
 # R9. Launch language set (research agent report, 2026-10-09)
 
+> **SUPERSEDED IN PART, 2026-10-09 (synthesis findings 2-4):** D27 cancels the Turkish Diyanet
+> wholesale exception and returns every authority label for the eight transliterated slots to the
+> rule (transliterate everywhere, sign-off per exception). D24 cancels row suppression: readiness
+> grades built on suppressed rows (ur, id, fr) re-derive with transliteration filling the nulls.
+> The launch-set size itself returns to the owner (Q20): this report's rows 1-8 (`en ar id ur bn
+> fa fr tr`) and the D15 eight (`en ar id ur bn tr fr de`) differ on `fa` versus `de`; no document
+> records why `fa` dropped. Read sections 1 and 3 as evidence; read section 4's sizes and grades
+> through this note.
+
 Dispatched by the owner's instruction; population sources cited inline. Built on
 `research/prayer-names.json` (28 locales), R6 and R4, with fresh population verification.
 

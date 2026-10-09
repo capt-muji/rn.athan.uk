@@ -95,6 +95,9 @@ implements none of them.
 
 ## D8. The language setting lives in Settings, behind a chevron, opening its own sheet
 
+> **The Google Translate icon paragraph below is superseded by Q6 (2026-10-09):** a globe icon;
+> the brand-guidance objection below is why.
+
 "I want this to be a setting in the settings, and I want the Google Translate icon to be there. I
 think it has like English and Chinese icon. I don't know, or a globe, perhaps a globe with lines. And
 it will be a drop down option, like a selection of which language they want to choose. If they tap
@@ -174,6 +177,11 @@ Two consequences the plan must carry:
 
 ## D15. Transliterate, never translate, the prayer names (2026-09-29)
 
+> **The Turkish paragraph below is superseded by D27 (2026-10-09):** the five daily prayers
+> transliterate in every language, no exceptions; İmsak is banned; the Diyanet label set
+> (İmsak, Öğle, İkindi, Akşam, Yatsı) does not ship. Every future exception needs the owner's
+> explicit sign-off per locale per term.
+
 "I think we should do transliterate, not translate. Transliterate is the best option, especially
 for Friday, the extra prayer that we have. Istijaba, there's no word for it in English or in any
 other language except Arabic. That's why Istijaba is actually a transliteration of the Arabic word.
@@ -247,6 +255,13 @@ The Turkish exception survives unchanged and is not a counter-example: Diyanet p
 the dawn row, which is a different TERM rather than a translation of Fajr, and it stays.
 
 ## D16. The three translated terms stay ONE WORD, or as close as the language allows (2026-09-29)
+
+> **Superseded in part by the pivot (2026-10-09):** the 123pt budget this section adjudicates
+> against was a two-column figure; the single-column row dissolves it, and D16's own 191pt
+> logic (the budget when the second name is hidden) applies to every user now. The term rule
+> itself (translate the term, never the definition; a term that fits is never touched) stands
+> unchanged; the two flagged residuals dissolve with the wider column. The post-pivot width
+> question is no longer a per-term budget but the per-locale measurement machinery (Q10).
 
 "Those are the 3 that scare me the most because I feel like those are the 3 that might be the
 longest. We literally want to translate them. Last third, we don't want to say last third of the

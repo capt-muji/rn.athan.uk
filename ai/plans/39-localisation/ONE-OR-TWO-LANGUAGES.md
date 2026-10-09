@@ -1,5 +1,9 @@
 # One language or two? The owner's open question, answered honestly
 
+> **SUPERSEDED 2026-10-09 by the single-language pivot** (`SINGLE-LANGUAGE-PIVOT.md`, D17): the
+> row shows one name, there is no second setting, and the toggle dies. Kept as evidence for the
+> coupling argument only.
+
 "I'm honestly still not sure how to handle notifications, having two settings, because I want to
 make it as simple as possible for the user. I don't want multiple settings. It's really against my
 workflow, the simplicity. I love customisation. But do people really need 2 languages? Maybe we

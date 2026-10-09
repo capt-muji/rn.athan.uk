@@ -1,5 +1,11 @@
 # How the work splits between row 38 and row 39
 
+> **SUPERSEDED IN PART, 2026-10-09 (the pivot):** items 39.2 (two settings, migration from the
+> toggle), 39.7 (RTL right-alignment and `direction: 'rtl'` on prose, pending owner Q21) and
+> 39.8 (locale-driven Arabic-Indic digits, deferred by D21) no longer stand as written. The
+> structural items (38.1 to 38.8) survive into the reshaped rows. Read through
+> `SINGLE-LANGUAGE-PIVOT.md`.
+
 `ai/plans/README.md` already splits D4 in two on the owner's ruling: row 38 is "the i18n
 scaffolding, no second language yet" and row 39 is "the translation sweep". The research changes
 WHERE the line falls, and this file records the corrected split with its reasoning.

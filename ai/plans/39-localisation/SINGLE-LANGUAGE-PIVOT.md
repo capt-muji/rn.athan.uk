@@ -222,6 +222,74 @@ guards; the test suites are named in the report.
   switch, persisted intent marker so a killed commit completes or rolls back idempotently at next
   launch.
 
+## Synthesis pass (R19, 2026-10-09): findings and repairs
+
+A cold reviewer read the whole record against itself and returned 23 findings. The transaction
+core (R11, R15, R18 on identifier bytes, same-id replace, no wipe, no schema bump) is consistent.
+The repairs and dispositions:
+
+- **Launch set (findings 1, 2):** D1's "at least the top 20" predates the pivot and the adopted
+  verdict is marked adopted, not ruled, so the launch count returns to the owner as Q20 below.
+  The two candidate eights differ on `fa` (R9's ranking) versus `de` (D15's set); R12 and R17
+  both treat `fa` as launch-grade. Q20 puts the final set in the owner's words.
+- **Language atom shape (finding 8):** reconciled to R8's algorithm. The atom is nullable
+  (`preference_language`, null until an explicit choice); null means derive from the device
+  locale on every launch; R18's upgrade stamp writes non-null `'en'`, which is exactly the
+  existing-install pin. R18's "defaulting to `en`" wording described the rendered fallback, not
+  the stored shape; the plan specifies the nullable form.
+- **The commit marker key (finding 9):** named `preference_language_commit_pending`, holding
+  target and previous locale, written before the atom moves, cleared only on full success. It
+  joins `preference_language` on the ask-first sign-off list in the decision block.
+- **R18's migration order (finding 10):** `migrateIndexKeyedAlertPreferences` remains the last
+  EXISTING migration; `migrateToLocaleDefaults` inserts after it. The plan states this once.
+- **String numbers (finding 11):** totals from the pivot's same-day run (205 literals, 123
+  display copy); per-file detail from R13. The catalog corpus figure is reconciled as: 123
+  display strings plus 25 widget strings plus the 16 religious terms; R2's "178 UI strings" and
+  R17's "129 strings" measured subsets (post-widget, prayer-names-only) and are not totals.
+- **Arabic line-height floor (finding 12):** R3's fontTools-measured 1.70em span governs as the
+  floor, superseding R17's 1.4em figure; the plan's per-script constants take the measured
+  numbers and verify on the 3T.
+- **R17's script sentence (finding 13):** corrected: Bengali IS required at launch (`bn` is in
+  the eight), Devanagari is not (`hi` is post-launch), Urdu brings Arabic script only.
+- **R12's premise (finding 14):** D21 governs (Latin everywhere at 2.0.0); R12's fa/ps
+  launch-set framing and its toggle are the deferred post-2.0.0 material.
+- **Q8's premise (finding 18):** the audio ruling is safe as a decision (unchanged regardless);
+  the "no English to translate" premise is owner testimony, now recorded as such.
+- **Q9's coverage gap (finding 19):** month-name localisation verified for `id, en, ar, tr, ms`
+  only; `ur, bn, fr, de` verification joins the plan's pre-flight checks.
+- **R14's assumption (finding 20):** its census assumed `.english` survives; R15 renames it to
+  `id`. Counts remain valid as magnitudes.
+- **JSON posture (finding 21):** R5's "no JSON files" is the design; R16's JSON.parse fallback
+  is the pre-decided contingency if the 3T first-catalog timing fails. Both stand.
+- **Bundle denominator (finding 22):** 4.4MB in the localisation research, 4.9MB in the newer
+  global measurements; conclusions hold under both.
+- **Supersede banners (findings 3, 4, 7, 15, 16, 17):** added to R9, ONE-OR-TWO-LANGUAGES,
+  SPLIT, D8, D15, D16, CONSTRAINTS C6 and C8.
+- **Missing decisions (finding 23), dispositioned:** (a) the post-pivot width question is the
+  per-locale measurement machinery (Q10), with a per-locale max-width sanity guard in the plan;
+  (b) atom shape above; (c) 2.0.0 declares `supportedLocales` / `CFBundleLocalizations` exactly
+  matching the picker set (R8 item 2), with the direction interaction verified against the
+  `supportsRTL: false` pin in the plan's pre-flight; (d) the qibla `placeName` gap closes by
+  formatting the geocoded place through the app locale (`Intl.DisplayName`), a stage-two step
+  that touches no sensor code (D20); (e) every authority-exception label needs per-locale
+  sign-off under D27, extending beyond `ms` Syuruk; (f) a byte-parity test pins catalog `en`
+  output to today's literals, the fact R18's no-op-replace argument rests on; it joins the
+  `prayerIdContract` gate in stage one.
+
+**Q20 (owner): the launch set.** R9's ranked eight are `en ar id ur bn fa fr tr` (Persian is
+READY, sixth by reach, ~110M Muslims, and R12 and R17 treat it as launch-grade); D15's recorded
+eight swap `fa` for `de`. Recommendation: ship R9's eight WITH Persian (`fa`) and hold German
+for the first quarterly add: Persian outreaches Turkish and German combined and the catalog is
+READY; German's sunrise word was the width problem the pivot dissolved. Confirm `en ar id ur bn
+fa fr tr`, or name the set.
+
+**Q21 (owner): RTL text alignment inside the frozen LTR layout.** Your ruling froze the layout:
+names left, time centre, icons right, in every language. The refinement the old research
+proposed (P4) and never built: inside an LTR box, multi-line RTL prose (the help modal, the
+explanation text, in Arabic and Urdu) reads better right-aligned with `direction: 'rtl'` on
+those text nodes only; single-word labels stay left. This is visible behaviour, so it is yours.
+Recommendation: right-align RTL prose only, left-anchor every single-line label; nothing mirrors.
+
 ## Open questions with recommendations (the frontier)
 
 Answers recorded 2026-10-09 are marked RULED. Rows still marked OPEN wait on the owner.
@@ -246,4 +314,6 @@ Answers recorded 2026-10-09 are marked RULED. Rows still marked OPEN wait on the
 | Q16 | The language sheet's list | **RULED: native names** ("Bahasa Indonesia", "Türkçe"), sorted alphabetically, English spelled "English" |
 | Q17 | The Turkish Fajr row and the authority exceptions | **RULED: no İmsak anywhere.** The five daily prayers are transliterated in every language, absolutely no exceptions, regardless of local habit: Fajr, Dhuhr, Asr, Magrib, Isha in each language's own orthography. Verified: İmsak is the Arabic verbal noun of "to hold back", the start of fasting, a different moment that carries different meanings across languages, while Fajr is never misunderstood. This cancels R9's Turkish Diyanet wholesale exception and returns the Uzbek, Bosnian, Albanian and Chinese labels for the eight transliterated slots to the rule |
 | Q18 | Hotfix path for a 1.29.x production defect during v2 | **RULED by recommendation, adopted:** branch off `main`, PR to `main`, cherry-pick to `uat` so v2 carries it forward |
-| Q19 | The 2.0.0 upgrade approach | **VERDICT DELIVERED (R18), adopted: no wipe, no schema bump.** Targeted, key-state-guarded migration: the width seed at module-eval time, `migrateToLocaleDefaults()` stamping the language and deleting the dead toggle key, the existing forced reschedule reconciling copy and records organically, What's New unchanged. The wipe is rejected on three legs (offline suspension, alarm-management loss, the `preference_` whitelist keeping the dead key); D29 later demoted the offline leg from a constraint, and the verdict stands on the other two plus the no-shape-change fact. A schema bump is a category error: no stored family changes shape. One new MMKV key awaits the owner's sign-off with the decision block: `preference_language` |
+| Q19 | The 2.0.0 upgrade approach | **VERDICT DELIVERED (R18), adopted: no wipe, no schema bump.** Targeted, key-state-guarded migration: the width seed at module-eval time, `migrateToLocaleDefaults()` stamping the language and deleting the dead toggle key, the existing forced reschedule reconciling copy and records organically, What's New unchanged. The wipe is rejected on three legs (offline suspension, alarm-management loss, the `preference_` whitelist keeping the dead key); D29 later demoted the offline leg from a constraint, and the verdict stands on the other two plus the no-shape-change fact. A schema bump is a category error: no stored family changes shape |
+| Q20 | The launch set | **OPEN, owner.** R9's ranked eight (`en ar id ur bn fa fr tr`) versus D15's recorded eight (`...de` for `fa`). Recommendation: with Persian, hold German for the first quarterly add. Rides the decision block |
+| Q21 | RTL text alignment inside the frozen LTR layout | **OPEN, owner.** Recommendation: right-align RTL prose only (help modal, explanation text); left-anchor every single-line label; nothing mirrors. Rides the decision block |
