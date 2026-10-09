@@ -324,5 +324,5 @@ say('== 3.7 Control: the 2026 ELM PDF against the 2026 API year, to anchor the c
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part3.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part3.txt', out + '\n');
 console.log(out);

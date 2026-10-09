@@ -13,7 +13,7 @@ run, because this was a research programme.
 | Queue row | **42** in `ai/plans/README.md`, status RESEARCH COMPLETE |
 | Branch | `research/global-prayer-times`, merged into `uat-2` and pushed; the branch is kept, not deleted |
 | Worktree | `$HOME/athan-global-wt`, safe to remove once the branch is no longer needed |
-| Scratch, outside git | `$HOME/athan-global-scratch/` holds `adhan@4.4.6`, `praytime`, `astronomy-engine` for the measurement harnesses |
+| Scratch, outside git | `$HOME/athan-gitree/scratch/` holds `adhan@4.4.6`, `praytime`, `astronomy-engine` for the measurement harnesses |
 
 ## Read these, in this order
 

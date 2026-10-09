@@ -11,8 +11,8 @@ This extends `ai/prompts/moonsighting-research.md`: its sources, deliverable and
 - Notes, data and page source: `ai/features/moonsighting/notes/`, `data/` and `artifact/`.
 - The visual findings page is private and its link lives off-repo, in the owner's keep. Rebuild
   it with `artifact/build_artifact.py`. Chart data: `artifact/chart-data.json`, which the
-  script reads from the `~/athan-research/` copy.
-- Scratch (crawl, PDFs, raw responses, scripts) is in `~/athan-research/`, outside git. The repo
+  script reads from the `~/athan-gitree/research/` copy.
+- Scratch (crawl, PDFs, raw responses, scripts) is in `~/athan-gitree/research/`, outside git. The repo
   holds everything needed to continue.
 
 ## Do, in order

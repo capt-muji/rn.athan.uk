@@ -130,5 +130,5 @@ for (const [name, list, lat, lon] of eras) {
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2d.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2d.txt', out + '\n');
 console.log(out);

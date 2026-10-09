@@ -5,7 +5,7 @@ calculation library this app should depend on for a worldwide, network-off v2.0,
 
 Every number below is marked **measured** (this agent ran it), **cited** (with URL and fetch date) or
 **UNVERIFIED**. Scripts and raw summaries are in `ai/features/global-prayer-times/data/libraries/`. Packages were
-installed into `$HOME/athan-global-scratch/`, never into the repository.
+installed into `$HOME/athan-gitree/scratch/`, never into the repository.
 
 Prior art read in full and not repeated: `ai/features/moonsighting/notes/adhan.md` (the line-by-line
 `MoonsightingCommittee` audit) and `ai/features/moonsighting/notes/implementations.md` (the catalogue of about
@@ -862,7 +862,7 @@ All fetched 2026-09-30 unless stated. Tool named per fact, as the brief requires
 - `https://github.com/arabeyes-org/ITL` blob `prayertime/astro.c` for the VSOP87/Meeus attribution.
 
 **Source code read** (via `opensrc` for `adhan`, and directly from the installed trees in
-`$HOME/athan-global-scratch/harness/node_modules/` for the rest):
+`$HOME/athan-gitree/scratch/harness/node_modules/` for the rest):
 - `adhan@4.4.6`: `src/Astronomical.ts` (L15-330, read in full), `src/SolarCoordinates.ts` (L1-55, in full),
   `src/SolarTime.ts` (L25-105), `src/CalculationMethod.ts` (in full), `METHODS.md` (in full),
   `LICENSE`. `opensrc path npm:adhan@4.4.6` resolved to
@@ -897,7 +897,7 @@ All fetched 2026-09-30 unless stated. Tool named per fact, as the brief requires
 | `fixtures.txt` | its output |
 
 Environment for every measurement: node v24.14.1, darwin arm64 (Apple M1), `TZ=UTC`, Python 3.14.4 with
-`skyfield 1.55` and `astropy 8.0.1` in `$HOME/athan-global-scratch/venv`, `astronomy-engine@2.1.19`,
+`skyfield 1.55` and `astropy 8.0.1` in `$HOME/athan-gitree/scratch/venv`, `astronomy-engine@2.1.19`,
 `esbuild` for bundle sizing. Nothing was installed into the repository.
 
 ---

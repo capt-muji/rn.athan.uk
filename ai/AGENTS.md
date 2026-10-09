@@ -88,7 +88,7 @@ works fully offline after first sync, and notifications fire on time while backg
 
 A session removes every worktree it created, and the branch that came with it, before it ends,
 and always before 00:00 when the nightly job clears build folders. Verify a leftover branch is
-merged before deleting it. The five build worktrees under `$HOME/athan-device-sweep/worktrees/`
+merged before deleting it. The five build worktrees under `$HOME/athan-gitree/worktrees/`
 are Gradle caches, detached and branchless. They stay.
 
 ## Code patterns

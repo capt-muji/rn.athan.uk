@@ -6,17 +6,17 @@ Researcher notes, 2026-09-14. Deltas in minutes, sign = **adhan minus endpoint**
 
 | item | location |
 |---|---|
-| adhan source (4.4.6, identical `src/` to the develop branch: `diff -rq` gave no output) | `~/athan-research/src/adhan-js-4.4.6/src/` |
-| adhan git history (full clones, for `git log -S`) | `~/athan-research/adhan/git/adhan-js`, `~/athan-research/adhan/git/Adhan` (cloned 2026-09-14) |
-| npm `adhan@4.4.6` used by the harness | `~/athan-research/adhan/harness/node_modules/adhan` |
-| endpoint tables (365 days × 12 cities × m0/m1/m2, 2026; London 2024 m0–m2; Sydney 2024 m0) | `~/athan-research/endpoint/moonsighting.ahmedbukhamsin.sa_<city>_<year>_m<n>.json` |
-| fetch script and log (timestamps and URLs of every request) | `~/athan-research/adhan/scripts/fetch_endpoint.py`, `~/athan-research/adhan/fetch_endpoint.log` |
-| main comparison script and output | `~/athan-research/adhan/harness/compare.cjs` writes `~/athan-research/adhan/results/tables.md` and `summary.json` |
-| follow-up script and output | `~/athan-research/adhan/harness/edges.cjs` writes `~/athan-research/adhan/results/edges.md` |
+| adhan source (4.4.6, identical `src/` to the develop branch: `diff -rq` gave no output) | `~/athan-gitree/research/src/adhan-js-4.4.6/src/` |
+| adhan git history (full clones, for `git log -S`) | `~/athan-gitree/research/adhan/git/adhan-js`, `~/athan-gitree/research/adhan/git/Adhan` (cloned 2026-09-14) |
+| npm `adhan@4.4.6` used by the harness | `~/athan-gitree/research/adhan/harness/node_modules/adhan` |
+| endpoint tables (365 days × 12 cities × m0/m1/m2, 2026; London 2024 m0–m2; Sydney 2024 m0) | `~/athan-gitree/research/endpoint/moonsighting.ahmedbukhamsin.sa_<city>_<year>_m<n>.json` |
+| fetch script and log (timestamps and URLs of every request) | `~/athan-gitree/research/adhan/scripts/fetch_endpoint.py`, `~/athan-gitree/research/adhan/fetch_endpoint.log` |
+| main comparison script and output | `~/athan-gitree/research/adhan/harness/compare.cjs` writes `~/athan-gitree/research/adhan/results/tables.md` and `summary.json` |
+| follow-up script and output | `~/athan-gitree/research/adhan/harness/edges.cjs` writes `~/athan-gitree/research/adhan/results/edges.md` |
 
-Run with `cd ~/athan-research/adhan/harness && TZ=UTC node compare.cjs` (and `TZ=UTC node edges.cjs > ../results/edges.md`). `TZ=UTC` is needed because adhan reads the calendar date from the `Date`'s *local* getters (`date.getFullYear()/getMonth()/getDate()`, `PrayerTimes.ts` L52–56; `dayOfYear()` in `DateUtils.ts` L50–61). Adhan's UTC instants are converted to each city's IANA zone with `Intl.DateTimeFormat`. After-midnight endpoint values such as `00:12` are compared by wrapping the delta into (−720, 720].
+Run with `cd ~/athan-gitree/research/adhan/harness && TZ=UTC node compare.cjs` (and `TZ=UTC node edges.cjs > ../results/edges.md`). `TZ=UTC` is needed because adhan reads the calendar date from the `Date`'s *local* getters (`date.getFullYear()/getMonth()/getDate()`, `PrayerTimes.ts` L52–56; `dayOfYear()` in `DateUtils.ts` L50–61). Adhan's UTC instants are converted to each city's IANA zone with `Intl.DateTimeFormat`. After-midnight endpoint values such as `00:12` are compared by wrapping the delta into (−720, 720].
 
-Endpoint: `https://moonsighting.ahmedbukhamsin.sa/time_json.php?year=Y&tz=Z&lat=..&lon=..&method=m&both=false&time=0`. All 2026 tables were fetched between 2026-09-14 05:11:01 and 05:11:49 +0100, all HTTP 200 with 365 entries. Sydney 2024 was fetched at 2026-09-14T04:22:14Z (200, 366 entries). London 2026 was cached by the lead and London 2024 by another researcher. `pray.php` on moonsighting.com says "Calculation method by moonsighting.com, Developed by Ahmed Bu-khamsin, Original code by PrayTimes.org" (crawl copy `~/athan-research/site/www.moonsighting.com/pray.php`). The endpoint is the developer's own host. The primary moonsighting.com `time_json.php` returned HTTP 500 on 2026-09-14.
+Endpoint: `https://moonsighting.ahmedbukhamsin.sa/time_json.php?year=Y&tz=Z&lat=..&lon=..&method=m&both=false&time=0`. All 2026 tables were fetched between 2026-09-14 05:11:01 and 05:11:49 +0100, all HTTP 200 with 365 entries. Sydney 2024 was fetched at 2026-09-14T04:22:14Z (200, 366 entries). London 2026 was cached by the lead and London 2024 by another researcher. `pray.php` on moonsighting.com says "Calculation method by moonsighting.com, Developed by Ahmed Bu-khamsin, Original code by PrayTimes.org" (crawl copy `~/athan-gitree/research/site/www.moonsighting.com/pray.php`). The endpoint is the developer's own host. The primary moonsighting.com `time_json.php` returned HTTP 500 on 2026-09-14.
 
 ---
 
@@ -126,7 +126,7 @@ METHODS.md L39 (4.4.6): "Method developed by Khalid Shaukat … Uses standard 18
 ## 4. Primary sources for Shaukat's method, and the comparison
 
 ### 4.1 What moonsighting.com says today
-`https://www.moonsighting.com/how-we.html` (crawled 2026-09-14, page footer "Updated March 1, 2024"; copy `~/athan-research/site/www.moonsighting.com/how-we.html`):
+`https://www.moonsighting.com/how-we.html` (crawled 2026-09-14, page footer "Updated March 1, 2024"; copy `~/athan-gitree/research/site/www.moonsighting.com/how-we.html`):
 - "Zuhr: … 5 minutes after Zenith." / "For Sunni's, actual sunset is 3 minutes after theoretical sunset; for Shi'aas it is 17 minutes".
 - "From equator to 55degrees, the 18degrees depression angle calculations are compared with the values given by the functions of latitude and seasons and most favorable values are used, which means; For Fajr, the later of the two and for Isha the earlier of the two."
 - "at latitudes between 55degrees and 60degrees, the rule of Sab'u Lail (1/7th of the night), is used … Fajr time is later of the two. Similarly … Isha time is earlier of the two."
@@ -138,11 +138,11 @@ METHODS.md L39 (4.4.6): "Method developed by Khalid Shaukat … Uses standard 18
 - 1.2: "Aqrabul-Bilaad … decreasing the latitude by 0.1 degrees keeping the longitude the same and recalculate Sunset time and repeat this process until a latitude is reached where the sun sets". Zuhr and Asr are "observable for all places on earth and can be easily calculated."
 - 2.10: "for areas at or near equator Shafaq disappearance and Subh-Sadiq occurs at 18° every day of the year, and it translates into 75 minutes in all seasons. … Subh-Sadiq at higher latitudes (like Blackburn) is observed at 94 to 122 minutes (14.6° to 10.6 degrees) … Red Shafaq disappears at 66 to 105 minutes (12° to 9.7°)".
 
-### 4.2 Older moonsighting.com material (Wayback, recovered by another agent; provenance in `~/athan-research/pdfs/manifest.json`)
-- `http://moonsighting.com:80/articles/fajr&isha-yam.pdf`, capture 20070410171730 (also `fajar&isha-a5.pdf` 20061119060551 and `fajarishainbritain1.pdf` 20060111060751, the same book): Y. A. Miftahi, *Fajar and Isha*, Hizbul Ulama UK, Oct 2005. Book p. 63 quotes Shaukat: "for areas at or near equator shafaq disappearance and subh sadiq occurs in 75 minutes or at 18 degrees in all seasons. … Shafaq disappears at 66 to 100 minutes (9 to 13.6 degrees) at higher latitudes (like England) in different seasons. Subh sadiq at higher latitudes is observed at 94 to 122 minutes (14.5 to 10.6 degrees)". Book p. 89 quotes Shaukat: "the Subha or disappearance of Shafaq is a function of latitude and seasons. When this function is checked against round the year observations of Blackburn, UK, the calculations matched observations with amazing accuracy." **No coefficients anywhere in the three files** (grep for every coefficient value, "formula", "equation" and "curve"; text at `~/athan-research/pdfs/wayback/articles__fajr&isha-yam.pdf.txt`, `~/athan-research/adhan/fajar&isha-a5.pdf.txt`, `~/athan-research/adhan/fajarishainbritain1.pdf.txt`).
+### 4.2 Older moonsighting.com material (Wayback, recovered by another agent; provenance in `~/athan-gitree/research/pdfs/manifest.json`)
+- `http://moonsighting.com:80/articles/fajr&isha-yam.pdf`, capture 20070410171730 (also `fajar&isha-a5.pdf` 20061119060551 and `fajarishainbritain1.pdf` 20060111060751, the same book): Y. A. Miftahi, *Fajar and Isha*, Hizbul Ulama UK, Oct 2005. Book p. 63 quotes Shaukat: "for areas at or near equator shafaq disappearance and subh sadiq occurs in 75 minutes or at 18 degrees in all seasons. … Shafaq disappears at 66 to 100 minutes (9 to 13.6 degrees) at higher latitudes (like England) in different seasons. Subh sadiq at higher latitudes is observed at 94 to 122 minutes (14.5 to 10.6 degrees)". Book p. 89 quotes Shaukat: "the Subha or disappearance of Shafaq is a function of latitude and seasons. When this function is checked against round the year observations of Blackburn, UK, the calculations matched observations with amazing accuracy." **No coefficients anywhere in the three files** (grep for every coefficient value, "formula", "equation" and "curve"; text at `~/athan-gitree/research/pdfs/wayback/articles__fajr&isha-yam.pdf.txt`, `~/athan-gitree/research/adhan/fajar&isha-a5.pdf.txt`, `~/athan-gitree/research/adhan/fajarishainbritain1.pdf.txt`).
 - `prayer-french.html`, capture 20100827001844: "Aux latitudes comprises entre 55 et 66 degrés, la règle du soubou` al-layl (1/7e de la nuit) est utilisée". "Le chafaq met entre 66 et 100 minutes (de 9 à 13,6 degrés)". "L'algorithme de moonsighting.com pour la fonction basée sur la latitude et la saison n'est pas encore inclu dans le livret." Beyond the Arctic circle: nearest lower latitude where the sun rises and sets.
 - `articles/uk-prayercharts.pdf`, `uk-prayercharts1.pdf` (Hizbul Ulama timetables "computed by Brother Khalid Shaukat"): Zuhr +5, Maghrib +3, Hanafi Asr, Fajr/Isha "based on Mushahadah … Blackburn during September 1987 – August 1988". No formula.
-- `articles/prayers-uk.pdf`, capture 20081230101850 (my text extraction: `~/athan-research/adhan/prayers-uk.pdf.txt`): timetables only, no formula.
+- `articles/prayers-uk.pdf`, capture 20081230101850 (my text extraction: `~/athan-gitree/research/adhan/prayers-uk.pdf.txt`): timetables only, no formula.
 - `https://www.moonsighting.com/isha_fajr.html` and `/isha_fajr.pdf`: **HTTP 404** on 2026-09-14T04:13Z. acamarata/pray-calc `src/getMSC.ts` cites "moonsighting.com/isha_fajr.html" as its reference. My own Wayback CDX query failed to connect from this shell, so whether that page ever existed is **UNVERIFIED**.
 
 ### 4.3 Coefficients: the only public cross-check
@@ -159,7 +159,7 @@ Fajr min and max, and General-Isha min and max, match the 2005 figures to within
 
 ### 4.4 Coefficient-by-coefficient comparison with other implementations
 Identical a/b/c/d for Fajr, General, Abyad and Ahmer, and identical 91/46/46/46/46/91 spans, in:
-- `islamic-network/prayer-times-moonsighting`, which how-we.html itself lists under "Moonsighting.com method for prayer times is used by the following resources". Its mawaqit fork is at `~/athan-research/src/mawaqit-prayer-times-moonsighting/src/MoonSighting/{Fajr,Isha,PrayerTimes}.php`. The VB-style comments (`// '91 DAYS SPAN`) suggest a transliteration of BASIC source (inference).
+- `islamic-network/prayer-times-moonsighting`, which how-we.html itself lists under "Moonsighting.com method for prayer times is used by the following resources". Its mawaqit fork is at `~/athan-gitree/research/src/mawaqit-prayer-times-moonsighting/src/MoonSighting/{Fajr,Isha,PrayerTimes}.php`. The VB-style comments (`// '91 DAYS SPAN`) suggest a transliteration of BASIC source (inference).
 - RagibHasin/adhaan `src/models/method/moonsighting_com.rs`, arafathusayn/masjiduna-waqt `src/moonsighting.ts`, arahmancsd/PrayerTimesManager `MoonsightingPrayerTimes.cs`, acamarata/pray-calc `src/getMSC.ts` (read via `gh api` 2026-09-14).
 
 Differences between the PHP port (the one moonsighting.com links) and adhan:
@@ -352,10 +352,10 @@ Oslo, Helsinki and Anchorage on 21 Jun agree to ±1 across all 9 combinations (1
 8. How any of this relates to the London Unified Timetable is out of scope here. The claims in batoulapps/Adhan#57 and #79 are the maintainer's, not measured.
 
 ## 9. Sources (fetched 2026-09-14 unless stated)
-- adhan source: `~/athan-research/src/adhan-js-4.4.6` (via `opensrc`, by the lead); npm `adhan@4.4.6`.
+- adhan source: `~/athan-gitree/research/src/adhan-js-4.4.6` (via `opensrc`, by the lead); npm `adhan@4.4.6`.
 - `https://github.com/batoulapps/adhan-js` and `https://github.com/batoulapps/Adhan` (git clones); GitHub threads via `gh api`: batoulapps/Adhan #17, #57, #79, #111; batoulapps/adhan-js #29, #78, #79, #204, #206.
-- `https://www.moonsighting.com/how-we.html` ("Updated March 1, 2024"), `https://www.moonsighting.com/faq_pt.html` ("Updated August 25, 2020"), `https://www.moonsighting.com/pray.php`: site crawl `~/athan-research/site/www.moonsighting.com/`.
-- `https://www.moonsighting.com/isha_fajr.html`, `/isha_fajr.pdf`: 404 at 2026-09-14T04:13Z (copies of the 404 bodies in `~/athan-research/adhan/live_isha_fajr.*`).
-- Wayback: `http://moonsighting.com:80/articles/fajr&isha-yam.pdf` @20070410171730; `/fajar&isha-a5.pdf` @20061119060551; `/fajarishainbritain1.pdf` @20060111060751; `/prayer-french.html` @20100827001844; `/articles/prayers-uk.pdf` @20081230101850; `/articles/uk-prayercharts.pdf`, `uk-prayercharts1.pdf` (manifest `~/athan-research/pdfs/manifest.json`).
-- Endpoint: `https://moonsighting.ahmedbukhamsin.sa/time_json.php` (URLs and timestamps in `~/athan-research/adhan/fetch_endpoint.log`); API parameters and method labels from `~/athan-research/src/PrayerTimeAPI/README.md`.
-- Ports: `~/athan-research/src/mawaqit-prayer-times-moonsighting`; `gh api` contents of acamarata/pray-calc `src/getMSC.ts`, RagibHasin/adhaan `src/models/method/moonsighting_com.rs`, arafathusayn/masjiduna-waqt `src/moonsighting.ts`, arahmancsd/PrayerTimesManager `PrayerTimesManager/MoonsightingPrayerTimes.cs`.
+- `https://www.moonsighting.com/how-we.html` ("Updated March 1, 2024"), `https://www.moonsighting.com/faq_pt.html` ("Updated August 25, 2020"), `https://www.moonsighting.com/pray.php`: site crawl `~/athan-gitree/research/site/www.moonsighting.com/`.
+- `https://www.moonsighting.com/isha_fajr.html`, `/isha_fajr.pdf`: 404 at 2026-09-14T04:13Z (copies of the 404 bodies in `~/athan-gitree/research/adhan/live_isha_fajr.*`).
+- Wayback: `http://moonsighting.com:80/articles/fajr&isha-yam.pdf` @20070410171730; `/fajar&isha-a5.pdf` @20061119060551; `/fajarishainbritain1.pdf` @20060111060751; `/prayer-french.html` @20100827001844; `/articles/prayers-uk.pdf` @20081230101850; `/articles/uk-prayercharts.pdf`, `uk-prayercharts1.pdf` (manifest `~/athan-gitree/research/pdfs/manifest.json`).
+- Endpoint: `https://moonsighting.ahmedbukhamsin.sa/time_json.php` (URLs and timestamps in `~/athan-gitree/research/adhan/fetch_endpoint.log`); API parameters and method labels from `~/athan-gitree/research/src/PrayerTimeAPI/README.md`.
+- Ports: `~/athan-gitree/research/src/mawaqit-prayer-times-moonsighting`; `gh api` contents of acamarata/pray-calc `src/getMSC.ts`, RagibHasin/adhaan `src/models/method/moonsighting_com.rs`, arafathusayn/masjiduna-waqt `src/moonsighting.ts`, arahmancsd/PrayerTimesManager `PrayerTimesManager/MoonsightingPrayerTimes.cs`.

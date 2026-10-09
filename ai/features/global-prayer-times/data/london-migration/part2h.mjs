@@ -233,5 +233,5 @@ say(`Six fields across era B: ${all.six.exact}/${all.six.n} exact, ${all.six.w1}
 say(`Values beyond 1 minute: ${all.six.n - all.six.w1}.`);
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2h.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2h.txt', out + '\n');
 console.log(out);

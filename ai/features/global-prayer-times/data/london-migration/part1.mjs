@@ -205,5 +205,5 @@ for (const madhab of ['Shafi', 'Hanafi']) {
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part1.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part1.txt', out + '\n');
 console.log(out);

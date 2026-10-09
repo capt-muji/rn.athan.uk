@@ -164,5 +164,5 @@ for (const f of FIELDS) {
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part1b.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part1b.txt', out + '\n');
 console.log(out);
