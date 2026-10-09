@@ -337,6 +337,36 @@ short real form exists, the longer one stays and the locale is flagged, rather t
 
 That is a per-locale question for the source, and it is why `R6`'s `shortText` field exists.
 
+## D17. One language at a time; the Arabic column is removed (2026-10-09)
+
+The owner redirected the whole feature: the app renders exactly one language, selected in Settings
+and following the device locale on first run. The Arabic name column is removed everywhere: the
+prayer row, the explanation box, the Settings toggle, the stored data. Every user-visible string
+follows the selected language. Arabic strings remain only as source data for transliterations.
+
+This supersedes D4 and D5 as then read (the two-slot row), the two-setting model, the revised
+one-picker-plus-toggle model, and every conclusion built on the bilingual row. The term typing is
+confirmed: transliterated Fajr, Dhuhr, Asr, Magrib, Isha, Suhoor, Duha, Istijaba and Qibla;
+translated Sunrise, Midnight and Last Third. `SINGLE-LANGUAGE-PIVOT.md` is the record.
+
+## D18. The language switch is an all-or-nothing transaction (2026-10-09)
+
+Changing the language re-renders the UI, re-arms every armed notification, renames channels,
+re-pushes widget timelines and switches the width cache. The owner ruled: a progress UI shows while
+it applies, the user cannot cancel, and a crash or force quit mid-commit must never leave a
+half-applied state. The design follows `commitSoundSelection`'s lock-and-rollback shape with a
+persisted intent marker for recovery.
+
+## D19. The language release is 2.0.0; going global is 3.0.0 (2026-10-09)
+
+The single-language overhaul ships as version 2.0.0. The later global rollout (locations, worldwide
+timetables) ships as 3.0.0. The 1.29.x line continues until the 2.0.0 work opens.
+
+## D20. The qibla sensor code is untouched (2026-10-09)
+
+The compass is critical and language-independent. Only its labels and instructions translate; no
+sensor, settling or heading code changes in this feature.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
