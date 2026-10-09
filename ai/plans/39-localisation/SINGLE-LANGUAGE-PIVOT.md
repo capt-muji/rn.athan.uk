@@ -188,11 +188,16 @@ Pew 2025, World Population Review 2026, UNFPA 2025.
   Turkish row is annotated "Diyanet labels", which D27 supersedes (the language ships; its labels
   transliterate).
 
-### Upgrade path (R18, in flight)
+### Upgrade path (`research/R18-UPGRADE-PATH.md`)
 
-The owner asked what the 2.0.0 upgrade should do (wipe versus targeted migration). An adversarial
-agent is designing it against the offline-first invariant and the freeze; the hypothesis and the
-verdict land in the frontier as Q19.
+The owner asked what the 2.0.0 upgrade should do. Verdict: no wipe, no schema bump, three
+key-state-guarded migrations, the existing forced reschedule, the What's New ritual. The wipe is
+rejected on measurement (offline users lose the timetable for the upgrade session; alarms become
+unmanageable offline; the dead toggle key survives the wipe because it matches the
+`preference_` whitelist). The bump is rejected because no stored family changes shape: the day
+records never held name fields, the bookkeeping records' extra `arabicName` field is ignored by
+parse, and the identifier bytes are frozen. Every crash window converges through key-absence
+guards; the test suites are named in the report.
 
 ## Design direction the findings force
 
@@ -241,4 +246,4 @@ Answers recorded 2026-10-09 are marked RULED. Rows still marked OPEN wait on the
 | Q16 | The language sheet's list | **RULED: native names** ("Bahasa Indonesia", "Türkçe"), sorted alphabetically, English spelled "English" |
 | Q17 | The Turkish Fajr row and the authority exceptions | **RULED: no İmsak anywhere.** The five daily prayers are transliterated in every language, absolutely no exceptions, regardless of local habit: Fajr, Dhuhr, Asr, Magrib, Isha in each language's own orthography. Verified: İmsak is the Arabic verbal noun of "to hold back", the start of fasting, a different moment that carries different meanings across languages, while Fajr is never misunderstood. This cancels R9's Turkish Diyanet wholesale exception and returns the Uzbek, Bosnian, Albanian and Chinese labels for the eight transliterated slots to the rule |
 | Q18 | Hotfix path for a 1.29.x production defect during v2 | **RULED by recommendation, adopted:** branch off `main`, PR to `main`, cherry-pick to `uat` so v2 carries it forward |
-| Q19 | The 2.0.0 upgrade approach | OPEN, adversarial agent running. Working hypothesis from the evidence: NO mass wipe - the day cache stores no name fields (shape-compatible), preferences and OS identifiers are unchanged by the freeze, so a targeted migration (delete the dead toggle key, stamp the language, seed the `en` width keys, tolerate the old bookkeeping field, one reconciliation re-arm) preserves offline users' cached days and armed alarms where a wipe would forfeit both |
+| Q19 | The 2.0.0 upgrade approach | **VERDICT DELIVERED (R18), adopted: no wipe, no schema bump.** Targeted, key-state-guarded migration: the width seed at module-eval time, `migrateToLocaleDefaults()` stamping the language and deleting the dead toggle key, the existing forced reschedule reconciling copy and records organically, What's New unchanged. The wipe option is rejected on measurement: it suspends offline support for the upgrade session, makes alarms unmanageable while offline, and keeps the very dead key it was supposed to remove (the `preference_` whitelist catches it). A schema bump is a category error: no stored family changes shape. One new MMKV key awaits the owner's sign-off with the decision block: `preference_language` |
