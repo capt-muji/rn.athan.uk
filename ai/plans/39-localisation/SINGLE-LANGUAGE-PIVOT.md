@@ -162,15 +162,53 @@ Pew 2025, World Population Review 2026, UNFPA 2025.
 - Confirmed untouched: the qibla sensor and math suites, time arithmetic, the animation and
   overlay-geometry suites, the sound commit suite (which the language commit copies).
 
+### The adversarial round (R15 to R17, dispatched by the owner's instruction)
+
+- **Identifier design (`research/R15-IDENTIFIER-DESIGN.md`).** Space-form slug union on a field
+  renamed `id`, the underscore demoted to a filename slug, the shared name parameter in
+  `genNotificationContent` split in two, and a four-part `prayerIdContract.test.ts` gate (freeze
+  table, disk join, catalog closure, `@ts-expect-error` firewall). The hostile pass caught the
+  plan's own `last_third` spelling as a landmine that would have silently reset every Last Third
+  preference and orphaned its alarms.
+- **Architecture (`research/R16-ARCHITECTURE.md`).** Best practice for this shape, not a
+  band-aid, once six forced changes land: the tested TS-to-i18next-JSON bridge (round-trip parity
+  in CI), flat catalogs, the 3T first-catalog require-timing pre-flight with the JSON.parse
+  fallback decision written down first, the plural guard in the first catalog commit, an explicit
+  OTA ruling, and the PluralRules canary. The counter-proposal (Lingui plus Crowdin, the Bluesky
+  stack) is the right answer at 50 locales with community proofreaders, not at 8 with none.
+- **Scale and fonts (`research/R17-SCALE-AND-FONTS.md`).** Top-20-by-speakers is the wrong list
+  (double-counts, misses fa/ps/ha/so/ku/uz); ship the D15 eight, add quarterly (ms, pt, uz, then
+  sw, ha when speakers close them, then ru, hi); never build ln, ig, ja, ko, vi, Nigerian Pidgin.
+  No font bundles on either platform (Android 9 fonts.xml decoded from AOSP pie-release; iOS 18
+  system list verified); Urdu renders Naskh on the 3T and Nastaliq bundling is rejected (2.5em
+  span versus the fixed 57px row); the real per-locale font work is line-height constants (1.4em
+  Arabic, 1.5em Devanagari/Thai/Bengali) plus 3T checks. Corrections carried into the record:
+  the catalog figure is 5,317 B of raw source, not gzipped; the bundle denominator is 4.4MB in
+  the localisation plan and 4.9MB in the newer global measurements, conclusion unchanged; R17's
+  Turkish row is annotated "Diyanet labels", which D27 supersedes (the language ships; its labels
+  transliterate).
+
+### Upgrade path (R18, in flight)
+
+The owner asked what the 2.0.0 upgrade should do (wipe versus targeted migration). An adversarial
+agent is designing it against the offline-first invariant and the freeze; the hypothesis and the
+verdict land in the frontier as Q19.
+
 ## Design direction the findings force
 
-- **Identifiers.** The prayer identifier becomes a closed slug union (`fajr`, `sunrise`, `dhuhr`,
-  `asr`, `magrib`, `isha`, `midnight`, `last_third`, `suhoor`, `duha`, `istijaba`): language-neutral
-  ASCII, already the de-facto key in preferences, notification ids and audio slugs, so no storage
-  migration. The owner floated numeric ids; slugs carry the same guarantee with zero key churn and
-  stay readable in logs. `PrayerRow.english` and `.arabic` die; a `PrayerId` field replaces them,
-  and display names resolve at render time through the catalog. Open question Q15 puts the final
-  call to the owner.
+- **Identifiers** (`research/R15-IDENTIFIER-DESIGN.md`, adversarial verdict). The prayer identifier
+  is a closed slug union whose values are the byte-exact lowercase forms already on disk:
+  `fajr`, `sunrise`, `dhuhr`, `asr`, `magrib`, `isha`, `midnight`, `last third` (space, not
+  underscore), `suhoor`, `duha`, `istijaba`. The space form is load-bearing: the preference keys
+  and armed OS identifiers carry it byte-for-byte, so it is canonical; the underscore form is a
+  derived filename slug for res/raw surfaces only. The row field renames `english` to
+  `id: PrayerId` (a field named english holding a non-English-forever id is a lie the compiler
+  cannot catch), `arabic` leaves the row, `genNotificationContent`'s shared name parameter splits
+  (sound from the id, title from the label), and a `prayerIdContract.test.ts` gate pins the
+  frozen bytes, joins the 67 audio files, closes every catalog over exactly the 11 ids, and
+  firewalls display strings from key builders with `@ts-expect-error`. Numeric enums lose:
+  unsound in TypeScript (numbers are assignable to numeric enum types), forfeit both natural
+  alignments, and orphan armed alarms unless a map imitates the legacy strings.
 - **Storage.** Stored day rows keep id and time only; names never persist. Local migration, no
   refetch dependency.
 - **The switch.** `commitLanguageSelection` modelled on `commitSoundSelection` under
@@ -196,9 +234,11 @@ Answers recorded 2026-10-09 are marked RULED. Rows still marked OPEN wait on the
 | Q9 | Dates | **RULED: localise month names per language, Gregorian and Hijri; formats and day-month order unchanged.** The Gregorian/Hijri toggle in Settings stays, independent of language; English Hijri months remain today's English transliterations, each language carries its own. Verified 2026-10-09: one `Intl` call per calendar localises both for `id`, `en`, `ar`, `tr`, `ms` (Indonesian renders "Juli" and "Safar"; CLDR carries Hijri month names per locale), so the mechanism is the existing formatter with the locale tag swapped |
 | Q10 | Width cache | **RULED: keep it.** Per-locale keys `prayer_max_english_width_<locale>_<standard/extra>`; today's values seed `en`; one reflow per switch |
 | Q11 | Missing-name policy per locale | **RULED: transliterate, always.** Every language can transliterate the eight Arabic-term slots; a missing sourced name means writing the transliteration in that language's script. No suppression, no English fallback (refines D15) |
-| Q12 | Translation mechanism and launch size | OPEN, under adversarial review by three research agents (architecture on its merits, identifier design, scale and fonts). The owner's challenge stands: the best solution in general, not the best fit for the current code. His top-20-languages lean and the fonts question sit inside this review |
+| Q12 | Translation mechanism and launch size | **VERDICT DELIVERED (R16, R17), adopted.** Architecture: TS catalogs plus a hand-rolled `t()` is best practice for this shape, not a band-aid, PROVIDED the six forced changes land (tested TS-to-i18next-JSON bridge with CI round-trip parity, flat catalogs, 3T first-catalog require-timing pre-flight, plural guard in the first catalog commit, an explicit OTA ruling, the PluralRules canary). Launch size: the D15 eight (`en ar id ur bn tr fr de`) at 2.0.0; quarterly adds `ms`+`pt`+`uz`, then `sw`+`ha` when one speaker each closes them, then `ru`+`hi`; never `ln`, `ig`, `ja`, `ko`, `vi`, Nigerian Pidgin. Top-20-by-speakers is the wrong list: it double-counts and misses fa/ps/ha/so/ku/uz (200M+). No fonts bundle on either platform; the real per-locale font work is line-height constants plus 3T checks. Two sub-rulings await the owner at plan review: the OTA ruling (recommendation: no OTA at 2.0.0, store releases only) and the `ms` Syuruk sign-off (folds into the quarter `ms` ships) |
 | Q13 | Switch failure UX | **RULED: the sheet reopens on the previous language with one line, "Language change failed, try again", and the app is exactly as it was.** No toast, no error screen. Failure detection is the persisted intent marker (`research/R11-LANGUAGE-COMMIT.md`): written before the commit, cleared only on full success, so a surviving marker drives idempotent forward completion at next launch |
 | Q14 | Versioning and branching | **RULED.** main is the 1.29.x release line (PR #168 advances it; the branch protection requires a PR and forbids merge commits, so it lands squash-merged); uat is the v2 integration line where all 2.0.0 work lands and fleet device testing happens; uat reaches main by the same PR flow when 2.0.0 ships; going global later is 3.0.0 with the same workflow. The README updates to 2.0 when the v2 work opens |
-| Q15 | Identifier shape | OPEN, under adversarial review. The owner rejects inertia as a reason ("just because I have something in place does not mean it is good"); slug union versus numeric enum versus branded types goes to the verdict |
+| Q15 | Identifier shape | **VERDICT DELIVERED (R15), adopted:** the closed slug union in the space form, field renamed `id: PrayerId`, the parameter split and the contract-test gate as specified in the design-direction section. Numeric enums rejected (unsound, misaligned, alarm-orphaning) |
 | Q16 | The language sheet's list | **RULED: native names** ("Bahasa Indonesia", "Türkçe"), sorted alphabetically, English spelled "English" |
 | Q17 | The Turkish Fajr row and the authority exceptions | **RULED: no İmsak anywhere.** The five daily prayers are transliterated in every language, absolutely no exceptions, regardless of local habit: Fajr, Dhuhr, Asr, Magrib, Isha in each language's own orthography. Verified: İmsak is the Arabic verbal noun of "to hold back", the start of fasting, a different moment that carries different meanings across languages, while Fajr is never misunderstood. This cancels R9's Turkish Diyanet wholesale exception and returns the Uzbek, Bosnian, Albanian and Chinese labels for the eight transliterated slots to the rule |
+| Q18 | Hotfix path for a 1.29.x production defect during v2 | **RULED by recommendation, adopted:** branch off `main`, PR to `main`, cherry-pick to `uat` so v2 carries it forward |
+| Q19 | The 2.0.0 upgrade approach | OPEN, adversarial agent running. Working hypothesis from the evidence: NO mass wipe - the day cache stores no name fields (shape-compatible), preferences and OS identifiers are unchanged by the freeze, so a targeted migration (delete the dead toggle key, stamp the language, seed the `en` width keys, tolerate the old bookkeeping field, one reconciliation re-arm) preserves offline users' cached days and armed alarms where a wipe would forfeit both |
