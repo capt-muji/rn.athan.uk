@@ -474,9 +474,12 @@ without sign-off):
 | Tier | Languages | State |
 | --- | --- | --- |
 | Ready | en, ar, id, ur, bn, fa, fr, tr, ms, ru, uz, hi | 8 to 11 of 11 sourced; transliteration fills the nulls per D24 |
-| Needs sourcing | sw, ha, pt, es, ps, so, ku, zh | sw (Last Third + explanations), ha (5 names + 5 explanations), pt (build from Brazilian tables), es (review), ps (swap translated phrases for the Arabic loans the same sources print), so (speaker pass), ku (review), zh (the standard printed set is translated; D27 forces transliterations, which need sourcing and the owner's sign-off) |
+| Needs sourcing | sw, ha, pt, es, ps, so, ku | sw (Last Third + explanations), ha (5 names + 5 explanations), pt (build from Brazilian tables), es (review), ps (swap translated phrases for the Arabic loans the same sources print), so (speaker pass), ku (review) |
 
-The union matches the audience-weighted twenty in `WHICH-20.md` on sixteen of twenty entries
+> **Amended 2026-10-09 (owner, same day):** Chinese (`zh`) is removed - China restricts apps on
+> the App Store and the owner will not ship for it - leaving nineteen. The twentieth slot is open
+> with three candidates: Azerbaijani (~10.1M Muslims, catalog 8/11, needs sourcing), German
+> (~5.6M, catalog 9/11, ready), Tamil (~7M reachable, catalog 10/11). The union otherwise matches
 (the formula adds es, pt, zh, ru; WHICH-20 had az, ta, ml). German (`de`), the old D15 eighth,
 moves to the first post-launch add with `pt`'s neighbours. The honest constraint stands per
 R17: the sourcing tier is the long pole, each locale carries a permanent verification and
