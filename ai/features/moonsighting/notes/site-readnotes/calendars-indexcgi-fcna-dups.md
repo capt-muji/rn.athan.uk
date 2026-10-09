@@ -1,6 +1,6 @@
 # Calendars, index.cgi loop, FCNA yearly calendars, praytable.php, query duplicates
 
-Reader notes. Source: $HOME/athan-research/site-text/www.moonsighting.com/ (text copies). No prayer times are copied here.
+Reader notes. Source: $HOME/athan-gitree/research/site-text/www.moonsighting.com/ (text copies). No prayer times are copied here.
 
 ## Progress log
 - started 2026-09-14

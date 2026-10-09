@@ -1,7 +1,7 @@
 import json, os
 
 HOME = os.path.expanduser('~')
-cd = json.load(open(f'{HOME}/athan-research/artifact/chart-data.json'))
+cd = json.load(open(f'{HOME}/athan-gitree/research/artifact/chart-data.json'))
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'moonsighting-findings.html')
 
 MONTH_STARTS = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]

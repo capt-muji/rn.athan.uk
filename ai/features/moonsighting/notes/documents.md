@@ -2,8 +2,8 @@
 
 Reader: document-reading researcher (deep-research session on Khalid Shaukat's moonsighting.com prayer-time method).
 Date read: 2026-09-14.
-Sources: `~/athan-research/pdfs/live/` (live www.moonsighting.com) and `~/athan-research/pdfs/wayback/` (Wayback Machine `id_` raw captures). Metadata comes from `~/athan-research/pdfs/manifest.json` and from each file's embedded PDF/OLE properties.
-Extraction: PDFs with pymupdf `get_text()` (per page, into `~/athan-research/doc-reading/text/`). Tables and any page whose text layer came out jumbled were rendered to PNG (`~/athan-research/doc-reading/png/`) and read as images. `.doc` files went through macOS `textutil -convert txt`.
+Sources: `~/athan-gitree/research/pdfs/live/` (live www.moonsighting.com) and `~/athan-gitree/research/pdfs/wayback/` (Wayback Machine `id_` raw captures). Metadata comes from `~/athan-gitree/research/pdfs/manifest.json` and from each file's embedded PDF/OLE properties.
+Extraction: PDFs with pymupdf `get_text()` (per page, into `~/athan-gitree/research/doc-reading/text/`). Tables and any page whose text layer came out jumbled were rendered to PNG (`~/athan-gitree/research/doc-reading/png/`) and read as images. `.doc` files went through macOS `textutil -convert txt`.
 
 Page references: "PDF p.N" is the Nth page of the file. Where a book prints its own page numbers, they are given as "printed p.M".
 Quotation rule: numbers and wording are quoted exactly as printed, typos included. Anything I could not read or verify is marked **UNVERIFIED** or **UNREADABLE**.

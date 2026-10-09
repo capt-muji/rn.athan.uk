@@ -1,7 +1,7 @@
 # R14: how does the app know WHERE it is, offline?
 
 Research only. No app code, no dependency added to the repository's `package.json`, no build, no
-git. Everything ran in `$HOME/athan-global-scratch/r14/` against `adhan@4.4.6` and
+git. Everything ran in `$HOME/athan-gitree/scratch/r14/` against `adhan@4.4.6` and
 `@photostructure/tz-lookup@11.7.0` installed there alone. Scripts and verbatim outputs are in
 `data/location/`, with a reproduction recipe in `data/location/README.md`.
 

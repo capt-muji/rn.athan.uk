@@ -278,5 +278,5 @@ say('== 3e.4 Byte cost of the offline London, stated once ==');
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part3e.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part3e.txt', out + '\n');
 console.log(out);

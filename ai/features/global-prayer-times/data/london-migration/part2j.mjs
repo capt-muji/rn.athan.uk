@@ -10,7 +10,7 @@ import { readElm, readLpt, toMin, fmt } from './lib.mjs';
 const lines = [];
 const say = (s = '') => lines.push(s);
 
-const rows = JSON.parse(fs.readFileSync('$HOME/athan-global-scratch/r13/sheet2.json', 'utf8'));
+const rows = JSON.parse(fs.readFileSync('$HOME/athan-gitree/scratch/r13/sheet2.json', 'utf8'));
 
 /** Excel serial day 1 is 1900-01-01, with the 1900 leap bug, so 1899-12-30 is the epoch. */
 const excelDate = (serial) => new Date(Date.UTC(1899, 11, 30) + serial * 86_400_000).toISOString().slice(0, 10);
@@ -142,7 +142,7 @@ say('== 2j.4 Byte cost of the interval table, recomputed on 2027 ==');
   say(`  the .xlsx as published: 70171 bytes`);
 }
 
-fs.writeFileSync('$HOME/athan-global-scratch/r13/lupt-2027.json', JSON.stringify(t2027, null, 1));
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/lupt-2027.json', JSON.stringify(t2027, null, 1));
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2j.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2j.txt', out + '\n');
 console.log(out);

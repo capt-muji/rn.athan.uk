@@ -292,5 +292,5 @@ say('== 3c.4 What the three options actually cost in bytes ==');
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part3c.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part3c.txt', out + '\n');
 console.log(out);
