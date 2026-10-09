@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "1.29.286",
+    "version": "1.29.287",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -47,7 +47,7 @@
         "expo-build-properties",
         {
           "android": {
-            "extraProguardRules": "# Glance composes widgets through WorkManager; R8 strips OverwritingInputMerger's constructor without these keeps (verified on the 3T: the widget stays on its loading layout forever and logcat shows WM-InputMerger NoSuchMethodException)\n-keep class androidx.work.** { *; }\n-keep class androidx.glance.** { *; }\n-dontwarn androidx.work.**\n-dontwarn androidx.glance.**"
+            "extraProguardRules": "# Glance composes widgets through WorkManager; R8 strips OverwritingInputMerger's constructor without these keeps (verified on the 3T: the widget stays on its loading layout forever and logcat shows WM-InputMerger NoSuchMethodException)\n-keep class androidx.work.** { *; }\n-keep class androidx.glance.** { *; }\n-dontwarn androidx.work.**\n-dontwarn androidx.glance.**\n# Expo 58 serves haptics and application through Modules v2: the host builds module classes from their no-arg constructors by reflection, the kolibri runtime reads its JNI bridge fields (NativeObject.nativePointer) from C++ alone, and the JSI dispatch reaches each module's @JS functions and argument types without a Java call graph for R8 to follow. io.github.expo ships no consumer rules for any of it, so R8 strips all of it (verified on the 3T: haptics never reach the vibrator; constructors alone crash at launch with NoSuchFieldError nativePointer; without the module packages the dispatch dies silently with VibrationType stripped)\n-keep class io.github.expo.kolibri.** { *; }\n-keep class io.github.expo.modules.v2.** { *; }\n-keep class expo.modules.haptics.** { *; }\n-keep class expo.modules.application.** { *; }\n-keep class expo.modules.ExpoModulesV2ModuleList { *; }"
           },
           "ios": {
             "deploymentTarget": "16.4"
