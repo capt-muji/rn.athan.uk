@@ -54,11 +54,12 @@ the four together when the SDK presets move: `@babel/core`,
 - **A3. Deliberate divergences from Expo's pin set** (installed `expo@58.0.6`, riding the `next`
   tag on the owner's 2026-10-09 ruling):
   `react-native` 0.88.0-rc.3 against the stable pin (the owner takes the latest release
-  candidate), `@expo/ui` and `expo-widgets` exact `58.0.5` against `~58.0.14`, and
-  `expo-location` exact `58.0.12` against `~58.0.12` (patched). A yarn resolution
-  `"**/@expo/ui": "58.0.5"` holds the whole graph at that version: without it a fresh
-  `yarn install --force` nests `@expo/ui@58.0.7` under `expo-widgets`, whose module-scope
-  `React.memo` kills the widget bundle at load (row 26's lesson, re-proven 2026-10-09).
+  candidate). `@expo/ui` and `expo-widgets` sit at `58.0.14`, no longer exact-pinned: the 58.0.5
+  pin that protected the Android widget stub (row 26) broke iOS at dyld launch on this re-pin,
+  because the 58.0.5 ExpoUI binary references a `_uiRuntime` symbol the new ExpoModulesCore no
+  longer exports. Upstream closed the trap: the 58.0.14 stub exports `memo` as a passthrough,
+  and the loaded-bundle suite is green. Durable lesson: `@expo/ui`'s iOS framework tracks
+  ExpoModulesCore's Swift ABI, so the pair moves with the SDK, never against it.
 - **A4. `@expo/log-box` is invisible to Expo checks**: it is not in `bundledNativeModules.json`,
   so no Expo check reports it. It sits at `~58.0.5` (`package.json:34`) on the `^58.0.5` peer
   range that `expo-router` and `@expo/metro-runtime` declare. Move it by that peer range.
