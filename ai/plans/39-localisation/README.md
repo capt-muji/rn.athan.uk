@@ -127,5 +127,6 @@ checkout. Nothing here touches `uat-2`. A mirror sits at `~/athan-gitree/localis
 | `CATALOG-EVIDENCE.md` | Two shipping apps' catalogs, measured |
 | `research/prayer-names.json` | The sourced catalog: 28 locales, with provenance per term |
 | `R1` to `R7` `-FINDINGS.md` | What each research report changed |
-| `research/` | The seven full reports |
+| `research/R8` to `R14` | The 2026-10-09 pivot research: first-run locale, launch set, RTL pinning, the language commit transaction, numerals, blast radius, test census. Digests in `../SINGLE-LANGUAGE-PIVOT.md` |
+| `research/` | The full reports behind the findings files |
 | `scripts/` | Every measurement, reproducible |
