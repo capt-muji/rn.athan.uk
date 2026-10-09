@@ -2,7 +2,7 @@
 
 ## Order
 
-One row at a time: plan it, execute it, audit it, only then plan the next. A fresh session with nothing to continue starts with `/athan-next`. A session carrying a handoff continues with `/go`. A session that is running long closes with `/handoff`. The skill at `.agents/skills/athan-next/SKILL.md` reads the queue below and git, picks the step, runs it in this one session, and stops. A session does every phase itself and spawns no subagent, with one exception: a model that cannot see images delegates one image read to `vision`.
+One row at a time: plan it, execute it, audit it, only then plan the next. A fresh session with nothing to continue starts with `/athan-next`. A session carrying a handoff continues with `/go`. A session that is running long closes with `/handoff`. The skill at `.agents/skills/athan-next/SKILL.md` reads the queue below and git, picks the step, runs it in this one session, and stops. A session does every phase itself and spawns no subagent, with two exceptions: the audit's one cold review, a reviewer that sees the diff but never the plan or the session, and a model that cannot see images delegating one image read to `vision`.
 
 Planning specifies the work completely, down to contracts, names, behaviour, tests and acceptance criteria. A question the executor has to ask is a defect in the plan. Execution builds to those criteria: it chooses HOW, never WHAT, and never pushes. Audit checks the result against the plan, fixes what is wrong itself, then sets DONE and pushes `uat`. Work never returns to the executor.
 

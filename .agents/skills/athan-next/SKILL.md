@@ -1,14 +1,14 @@
 ---
 name: athan-next
 description: Carry one queued session in ai/plans/README.md from planning through execution to audit, all three phases yourself in this one session, and stop when that session is DONE and pushed. Trigger on "what is the next step", "next session", "continue the queue", or any request to plan, execute or audit a session listed in ai/plans/README.md.
-version: 4.0.0
+version: 4.1.0
 ---
 
 # athan-next
 
 The owner resumes with /go and walks away. This skill carries ONE queued session from planning through execution to audit and stops when that session is DONE and pushed, or the moment it needs the owner.
 
-**You do every phase yourself, in this session.** Subagents are banned, with one exception: `vision`, because seeing images is a capability, not a preference. If you can see images, read them yourself. If you cannot, call the `vision` subagent with the file path and one exact question, and rely on its report. Never guess what an image shows, and never claim to have checked one you did not.
+**You do every phase yourself, in this session.** Subagents are banned, with two exceptions. The audit's **cold review**, because a reviewer that never saw the session catches what its author cannot: `athan-auditor` says when and how. And `vision`, because seeing images is a capability, not a preference. If you can see images, read them yourself. If you cannot, call the `vision` subagent with the file path and one exact question, and rely on its report. Never guess what an image shows, and never claim to have checked one you did not.
 
 Sight is also a way to REACH a screen: when the automation tools cannot see a control, an OEM dialog outside the app's hierarchy, a surface `uiautomator dump` will not serve, screenshot the phone, read the one control's coordinates, tap it, and screenshot again to confirm the tap landed.
 
@@ -60,7 +60,7 @@ Carry straight on into the next phase when the row moves: plan it, execute it, a
 
 **An owner decision is asked with the `question` tool, and you wait for the answer.** Never guess a decision the owner owns. Give every option both a `label` and a `description`, or the call fails validation.
 
-**Loop on your own work until it is right.** A skill that says a reviewer checks a commit means YOU review that commit: read the diff back with fresh eyes, attack it from a different angle, and fix what you find before merging. The audit phase is the independent gate, and it is also yours.
+**Loop on your own work until it is right.** A skill that says a reviewer checks a commit means YOU review that commit: read the diff back with fresh eyes, attack it from a different angle, and fix what you find before merging. The audit phase is the gate, and it is also yours, with its one cold review as the only eyes that never saw the work being written.
 
 ## 4. Judge each phase from the repository, never from memory
 

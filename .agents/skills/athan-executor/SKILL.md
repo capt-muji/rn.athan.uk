@@ -1,7 +1,7 @@
 ---
 name: athan-executor
 description: Execute one queued plan step by step to its acceptance criteria. Use when an execution phase runs, a row is READY or IN PROGRESS, or the owner asks to execute, build or resume a session's plan.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # athan-executor
@@ -66,9 +66,16 @@ A **step** is finished only when every acceptance criterion holds: the named tes
 5. **Breaks.** Run the plan's break script with `bash` from the repository root. It must end `ALL AS EXPECTED: 1`, and `git status --porcelain` must then list only this step's files and the three plan files. A break that passes where the plan says it fails: STOP.
 6. **Version.** Fetch `origin` first, because concurrent sessions take the same number twice, and never take a used number. Run the plan's version command and set the printed version in `app.json`, `package.json` and `android/app/build.gradle` (`versionName`), all three matching, bumping `app.json` first when a prebuild follows. `android/app/build.gradle` is gitignored and never added, but a test fails if it differs.
 7. **Commit.** Add by name only the files the step lists, plus `ai/plans/README.md` and the plan folder's `PLAN.md` and `LOG.md` when this session changed them. Never `git add .` or `git add -A`. Write the plan's message to `$TMPDIR/msg-<step>.txt` with `<VERSION>` replaced and commit in the background with `git commit -F $TMPDIR/msg-<step>.txt`. The log's last `Tests:` line must end `passed, <n> total` and four `100%` coverage lines must be present.
-8. **Review.** Read `git show <sha>` back cold, as a stranger, against the step's review checklist. Nothing to fix: go on. A fix the plan's section 10 gives: apply it and amend. A fix the plan does not give may be applied without asking only when all three hold: it touches only code the plan did not give verbatim, it changes no name, signature, log-line text, behaviour or test the plan specified, and every acceptance criterion stays met. Rerun the break script, record the finding and the fix in `LOG.md`, then amend. Any other finding: STOP. Two passes without a clean read: STOP.
+8. **Review.** Read `git show <sha>` back cold, as a stranger, against the step's review checklist, then against the **shipped classes** below. Nothing to fix: go on. A fix the plan's section 10 gives: apply it and amend. A fix the plan does not give may be applied without asking only when all three hold: it touches only code the plan did not give verbatim, it changes no name, signature, log-line text, behaviour or test the plan specified, and every acceptance criterion stays met. Rerun the break script, record the finding and the fix in `LOG.md`, then amend. Any other finding: STOP. Two passes without a clean read: STOP.
 9. **Merge** into `uat` with the plan's command and message. A conflict: `git merge --abort`, then STOP and ask.
 10. Run the step's checks. Tick the checklist as `- [x] Step k: DONE in <sha>`. Append to `LOG.md` the step and branch, the commit sha and version, the hook's `Tests:` and coverage lines, the break script's last line, the review verdict and how many rounds it took, and the merge sha.
+
+**Shipped classes.** Every one of these passed a green suite and a self-review and reached the owner's phone. Hunt each in the diff by name:
+
+- **Lifecycle.** Work that starts on open and must restart on every open, not the first. State a close must clear, or a reopen draws it stale. A subscription or timer that resolves after its owner closed and is never stopped.
+- **Thread.** A function a worklet calls without its own `'worklet'` directive. A worklet handed by reference to `map`, `filter`, `forEach` or `reduce`. The Jest Reanimated mock runs everything on one thread, so only reading the source catches these.
+- **Residue.** A key, field, export or flag the change declares and nothing reads. A comment the change made untrue. A file a test reads that is not committed: check `git status --porcelain` for it.
+- **Rule.** A stale or substituted value standing in for a live one. `ai/AGENTS.md` forbids it for prayer times and qibla headings, and the owner reverted a last-known position kept for the same reason, though it read as kindness to the user.
 
 ## 5. Stopping part-way through a step
 

@@ -1,14 +1,14 @@
 ---
 name: athan-auditor
 description: Audit one executed plan against itself, fix what is wrong, push uat. Use when an audit phase runs, a row is EXECUTED, or unaudited commits sit on uat.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # athan-auditor
 
 You are the auditor. An execution session built a plan and nothing it did has been pushed. Decide from evidence whether the result matches the plan and meets the owner's standards, fix whatever does not, and push once it is right. Work is never handed back to the executor.
 
-Start every response with `Audit session`. Run `date '+%H:%M:%S %d.%m.%Y'` before each response and put its output on the next line as `Time: ...`. Never guess the time. Subagents are banned, except `vision` for an image your model cannot see: give it a path and one exact question. Your `AUDIT.md` and its docs commit get one review: apply what changes what someone would do, note the rest in the commit.
+Start every response with `Audit session`. Run `date '+%H:%M:%S %d.%m.%Y'` before each response and put its output on the next line as `Time: ...`. Never guess the time. Subagents are banned with two exceptions: `vision` for an image your model cannot see (give it a path and one exact question), and the one **cold review** in section 4, item 3. Your `AUDIT.md` and its docs commit get one review: apply what changes what someone would do, note the rest in the commit.
 
 ## 1. Read first, in full
 
@@ -39,12 +39,18 @@ Remove it when done, always before 00:00, when a nightly job clears build folder
 
 1. **The range.** `git log --oneline origin/uat..uat` lists only step commits, their merges, docs commits, planning commits and audit commits of plans in the queue. Reread every planning and audit commit in it. Anything else is a finding.
 2. **Plan against code.** Each step commit does what the plan specified and nothing else. Every named function exists with that name and signature, answers the contract, and writes the log lines the plan gave. Every listed test exists, proves what the plan said, and uses the named inputs. No extra file and no unasked behaviour. Comments explain why, nothing is dead or duplicated. Versions run in sequence. Commit messages match the plan. Where the plan hands over finished files, the diff equals them exactly.
-3. **The tests are real and red-first.** Run each step's break script from the worktree root after `grep -n $HOME/repos/rn.athan.uk <script>` prints nothing. Every break fails its named tests. Rerun the red check for the riskiest step by reverting its change in the worktree.
-4. **Coverage.** `yarn validate` passes with 100% on all four measures.
-5. **Reviews.** `LOG.md` records a review verdict for every step commit. Each fix is either one the plan gives word for word or one the executor applied and recorded in `LOG.md`. An unrecorded fix is a finding.
-6. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-gitree/sessions/<N>/`. Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.
-7. **Owner rules.** No visual change, no substituted prayer time, no hand-edited release file, no work on `uat` outside this audit, no EAS build, no API key, no ignore comment, no skipped hook, no personal identifier in a tracked file. If the identifier hook fires, remove the identifier and commit again. Never bypass it.
-8. **The records.** The findings text and the table rows are accurate against everything above.
+3. **The cold review.** Item 2 checks the code against its plan, and a plan can be wrong. A replay of six shipped defects found that the reviews done by the sessions that wrote them caught none, while a reviewer that never saw those sessions caught about half: a sensor dead on reopen, a missing `'worklet'` directive, a leaked stream, a stale dial on reopen, an unused colour key. So the code also gets one reviewer that never saw the plan or the session.
+   1. Write the range's diff to a file: `git diff origin/uat..uat -- . ':(exclude)ai/plans' > $TMPDIR/cold-<N>.diff`. An empty diff skips this item.
+   2. Launch one `general` subagent in the foreground with exactly the prompt in `COLD-REVIEW.md` beside this skill, the two placeholders filled. Give it the diff path and the worktree path. Give it nothing else: not the plan, not `LOG.md`, not this conversation. The blindness is the point.
+   3. Take its `## FINDINGS` list. Each finding is either confirmed (you reproduce it from the code, by a test where one applies) or rejected with the line that disproves it. Every finding and its outcome goes in `AUDIT.md`.
+   4. Each confirmed finding is fixed under FIX IT (section 5), red test first. A finding that changes visuals, notification scheduling or anything else the owner owns goes to the owner instead.
+   5. One cold review per audit, never a second round on your own fixes.
+4. **The tests are real and red-first.** Run each step's break script from the worktree root after `grep -n $HOME/repos/rn.athan.uk <script>` prints nothing. Every break fails its named tests. Rerun the red check for the riskiest step by reverting its change in the worktree.
+5. **Coverage.** `yarn validate` passes with 100% on all four measures.
+6. **Reviews.** `LOG.md` records a review verdict for every step commit. Each fix is either one the plan gives word for word or one the executor applied and recorded in `LOG.md`. An unrecorded fix is a finding.
+7. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-gitree/sessions/<N>/`. Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.
+8. **Owner rules.** No visual change, no substituted prayer time, no hand-edited release file, no work on `uat` outside this audit, no EAS build, no API key, no ignore comment, no skipped hook, no personal identifier in a tracked file. If the identifier hook fires, remove the identifier and commit again. Never bypass it. Then read every changed line once against `ai/AGENTS.md`, rule by rule: no reviewer in the replay flagged a rule break, including a stale last-known position standing in for a live one, which the owner later reverted.
+9. **The records.** The findings text and the table rows are accurate against everything above.
 
 ## 5. Verdict
 
