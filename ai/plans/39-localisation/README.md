@@ -1,5 +1,11 @@
 # Session 39: localisation research. Start here.
 
+> **PIVOT 2026-10-09: read `SINGLE-LANGUAGE-PIVOT.md` first.** The owner removed the bilingual row:
+> one language at a time, Arabic column gone, everything through one catalog. That file carries the
+> rulings (D17 to D20), the verified code facts, the research digests and the open questions. The
+> table below describes the research as it stood under the two-column model and is kept as
+> evidence; where it disagrees with the pivot file, the pivot file wins.
+
 Research and planning for making the app multilingual. No app code was written and nothing was
 merged, per the owner's instruction:
 
