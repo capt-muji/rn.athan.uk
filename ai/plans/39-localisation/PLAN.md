@@ -182,12 +182,15 @@ four-line handoff.
 
 Step files 01 to 15 are outlined (section 6); none is written out yet. **Before any step file is
 written, the next planning session reconciles the four external branches the owner dispatched on
-2026-10-09**: two verification branches (`verify/39-localisation-<runner>-<date>`, findings plus
-optional proof-of-fix commits) and two architecture branches (`arch/39-localisation-<runner>-<date>`,
-built alternatives: code plus tests on their own branches), one pair per external harness, all off
-`uat`. Every finding and every competing design gets adjudicated against this record, point by
-point; whatever wins on the merits is merged into the plan before the step files are authored.
-Fetch and list `verify/39-localisation-*` and `arch/39-localisation-*` to find them.
+2026-10-09**: two verification branches (`verify/39-localisation-<runner>-<date>`, findings
+documents) and two architecture branches (`arch/39-localisation-<runner>-<date>`,
+design-only alternatives specified completely enough to build from, but NO code: the owner
+rescinded the build mandate the same evening), one pair per external harness, all off `uat`.
+Every finding and every competing design gets adjudicated against this record, point by point;
+whatever wins on the merits is merged into the plan before the step files are authored. If any
+external branch carries code commits despite the rescission, read only its documents and note
+the code as discarded. Fetch and list `verify/39-localisation-*` and `arch/39-localisation-*`
+to find them.
 
 Next: reconcile those branches, then write `steps/01-freeze-test.md` first (it pins the bytes
 everything else depends on), then in order. Everything the step files need is in R13, R14, R15,
