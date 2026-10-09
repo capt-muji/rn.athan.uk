@@ -144,6 +144,11 @@ names in every candidate locale and picks per locale rather than globally.
 
 ## C6. Zero I18nManager usage supports the owner's never-mirror ruling on cost grounds
 
+> **The "Rule" below is superseded by `research/R10-RTL-PINNING.md` (2026-10-09):** pin LTR via
+> the `expo-localization` config plugin (`supportsRTL: false`), applied natively before React
+> loads. A JS `I18nManager.allowRTL(false)` is wrong on SDK 58: next-launch-only, first-launch
+> race, rewritten by the module every launch. The pin goal itself stands (Q3).
+
 63 directional style props, 30 row containers, 32 absolutely-positioned views, 30 coordinate
 measurement call sites, and `I18nManager` appears **zero times** in the entire repository.
 
@@ -178,6 +183,9 @@ the same first-open cost the sound list has.
 mechanism. `ai/AGENTS.md` forbids new patterns where an existing one fits.
 
 ## C8. `showArabicNamesAtom` is misnamed under owner decision D4
+
+> **Superseded by Q2 (2026-10-09):** there is no rename and no migration. The row, the atom and
+> the stored key are wiped entirely; R18 step 5b deletes the key once at upgrade.
 
 `preference_show_arabic_names` governs whether the prayer row's second name is drawn. Under D4
 the second slot stops being Arabic the moment the user changes it, so the atom, its storage key
