@@ -1,0 +1,131 @@
+# R14 part 2: `@photostructure/tz-lookup` verified against 34,152 GeoNames places
+
+Version 11.7.0, licence CC0-1.0 (both read from the installed package).
+GeoNames `cities15000` carries its own IANA zone per place, so this is a two-source check.
+
+## 2N. Agreement on the zone NAME
+
+| outcome             | places | share  |
+| ------------------- | ------ | ------ |
+| identical zone name | 33,581 | 98.33% |
+| different zone name | 571    | 1.67%  |
+| the library threw   | 0      | 0.00%  |
+
+## 2O. What the disagreements actually cost, in UTC offset minutes
+
+A different zone NAME with the SAME offset all year costs a prayer time nothing. Only an
+offset difference is an error, and it is a whole-hour error.
+
+| class                                           | places | population |
+| ----------------------------------------------- | ------ | ---------- |
+| different name, identical offset at both probes | 367    | 20,472,425 |
+| **different offset, a real error**              | 204    | 10,029,623 |
+| offset unreadable on this platform              | 0      | 0          |
+
+Every place where the offset genuinely differs:
+
+| place                 | cc | population | GeoNames zone            | tz-lookup zone          | max offset gap min |
+| --------------------- | -- | ---------- | ------------------------ | ----------------------- | ------------------ |
+| Dandong               | CN | 815,858    | `Asia/Shanghai`          | `Asia/Pyongyang`        | 60                 |
+| Jayapura              | ID | 410,852    | `Asia/Jayapura`          | `Pacific/Port_Moresby`  | 60                 |
+| Chitato               | AO | 246,880    | `Africa/Luanda`          | `Africa/Lubumbashi`     | 60                 |
+| Bole                  | CN | 235,585    | `Asia/Shanghai`          | `Asia/Urumqi`           | 120                |
+| Pasir Mas             | MY | 230,424    | `Asia/Kuala_Lumpur`      | `Asia/Bangkok`          | 60                 |
+| Karnaphuli            | BD | 203,697    | `Asia/Dhaka`             | `Asia/Kolkata`          | 30                 |
+| Nyingchi              | CN | 200,000    | `Asia/Shanghai`          | `Asia/Kolkata`          | 150                |
+| Dundo                 | AO | 177,604    | `Africa/Luanda`          | `Africa/Lubumbashi`     | 60                 |
+| Kēng Tung             | MM | 171,620    | `Asia/Yangon`            | `Asia/Shanghai`         | 90                 |
+| Nepalgunj             | NP | 166,258    | `Asia/Kathmandu`         | `Asia/Kolkata`          | 15                 |
+| Al-Junaynah           | SD | 162,981    | `Africa/Khartoum`        | `Africa/Ndjamena`       | 60                 |
+| Jaigaon               | IN | 158,664    | `Asia/Kolkata`           | `Asia/Thimphu`          | 30                 |
+| Dili                  | TL | 150,000    | `Asia/Dili`              | `Asia/Makassar`         | 60                 |
+| El Geneina Fort       | SD | 134,264    | `Africa/Khartoum`        | `Africa/Ndjamena`       | 60                 |
+| Chaman                | PK | 130,139    | `Asia/Karachi`           | `Asia/Kabul`            | 30                 |
+| Pingxiang             | CN | 129,843    | `Asia/Shanghai`          | `Asia/Bangkok`          | 60                 |
+| Ilebo                 | CD | 117,245    | `Africa/Lubumbashi`      | `Africa/Kinshasa`       | 60                 |
+| Möng Yang             | MM | 117,108    | `Asia/Yangon`            | `Asia/Shanghai`         | 90                 |
+| Manp’o                | KP | 116,760    | `Asia/Pyongyang`         | `Asia/Shanghai`         | 60                 |
+| Móng Cái              | VN | 108,553    | `Asia/Bangkok`           | `Asia/Shanghai`         | 60                 |
+| Rangamati             | BD | 106,069    | `Asia/Dhaka`             | `Asia/Kolkata`          | 30                 |
+| Kara                  | TG | 104,207    | `Africa/Lome`            | `Africa/Porto-Novo`     | 60                 |
+| Ciudad Río Bravo      | MX | 95,647     | `America/Monterrey`      | `America/Matamoros`     | 60                 |
+| Yuma                  | US | 95,548     | `America/Phoenix`        | `America/Los_Angeles`   | 60                 |
+| Puerto Maldonado      | PE | 85,024     | `America/Lima`           | `America/La_Paz`        | 60                 |
+| Kampung Sungai Kajang | MY | 84,031     | `Asia/Kuala_Lumpur`      | `Asia/Jakarta`          | 60                 |
+| La Villa del Rosario  | VE | 82,766     | `America/Caracas`        | `America/Bogota`        | 60                 |
+| Madhubani             | IN | 75,736     | `Asia/Kolkata`           | `Asia/Kathmandu`        | 15                 |
+| Rundu                 | NA | 75,180     | `Africa/Windhoek`        | `Africa/Luanda`         | 60                 |
+| Cao Bằng              | VN | 73,549     | `Asia/Bangkok`           | `Asia/Shanghai`         | 60                 |
+| Arua                  | UG | 72,400     | `Africa/Kampala`         | `Africa/Lubumbashi`     | 60                 |
+| Qarasu                | CN | 71,446     | `Asia/Urumqi`            | `Asia/Almaty`           | 60                 |
+| Mineiros              | BR | 70,081     | `America/Sao_Paulo`      | `America/Campo_Grande`  | 60                 |
+| Ayvalık               | TR | 70,002     | `Europe/Istanbul`        | `Europe/Athens`         | 60                 |
+| Karonga               | MW | 69,486     | `Africa/Blantyre`        | `Africa/Dar_es_Salaam`  | 60                 |
+| Sītāmarhi             | IN | 67,818     | `Asia/Kolkata`           | `Asia/Kathmandu`        | 15                 |
+| Tabatinga             | BR | 67,182     | `America/Manaus`         | `America/Eirunepe`      | 60                 |
+| Sokhumi               | GE | 65,439     | `Europe/Moscow`          | `Asia/Tbilisi`          | 60                 |
+| Villa del Rosario     | CO | 64,951     | `America/Bogota`         | `America/Caracas`       | 60                 |
+| Guasdualito           | VE | 64,608     | `America/Caracas`        | `America/Bogota`        | 60                 |
+| Colón                 | VE | 62,513     | `America/Caracas`        | `America/Bogota`        | 60                 |
+| Abepura               | ID | 62,248     | `Asia/Jayapura`          | `Pacific/Port_Moresby`  | 60                 |
+| La Fría               | VE | 61,568     | `America/Caracas`        | `America/Bogota`        | 60                 |
+| Mpondwe               | UG | 58,600     | `Africa/Kampala`         | `Africa/Lubumbashi`     | 60                 |
+| Kawthoung             | MM | 57,949     | `Asia/Yangon`            | `Asia/Bangkok`          | 30                 |
+| Kuala Selangor        | MY | 55,887     | `Asia/Kuala_Lumpur`      | `Asia/Jakarta`          | 60                 |
+| 'Ārdamatā             | SD | 55,637     | `Africa/Khartoum`        | `Africa/Ndjamena`       | 60                 |
+| Amuntai               | ID | 55,560     | `Asia/Makassar`          | `Asia/Pontianak`        | 60                 |
+| Nuevo Casas Grandes   | MX | 55,553     | `America/Chihuahua`      | `America/Ciudad_Juarez` | 60                 |
+| Thomazeau             | HT | 52,017     | `America/Port-au-Prince` | `America/Santo_Domingo` | 60                 |
+| Tachilek              | MM | 51,553     | `Asia/Yangon`            | `Asia/Bangkok`          | 30                 |
+| Khagrachhari          | BD | 50,364     | `Asia/Dhaka`             | `Asia/Kolkata`          | 30                 |
+| Uiju                  | KP | 50,081     | `Asia/Pyongyang`         | `Asia/Shanghai`         | 60                 |
+| Zaranj                | AF | 49,851     | `Asia/Kabul`             | `Asia/Tehran`           | 60                 |
+| Nageswari             | BD | 49,425     | `Asia/Dhaka`             | `Asia/Kolkata`          | 30                 |
+| Valle Hermoso         | MX | 48,918     | `America/Monterrey`      | `America/Matamoros`     | 60                 |
+| Sri Aman              | MY | 47,313     | `Asia/Kuching`           | `Asia/Pontianak`        | 60                 |
+| Myawaddy              | MM | 45,000     | `Asia/Yangon`            | `Asia/Bangkok`          | 30                 |
+| Möng La               | MM | 43,000     | `Asia/Yangon`            | `Asia/Shanghai`         | 90                 |
+| Bairāgnia             | IN | 42,895     | `Asia/Kolkata`           | `Asia/Kathmandu`        | 15                 |
+
+The name-only disagreements, grouped by the pair, top 25 by count:
+
+| GeoNames zone         | tz-lookup zone              | places | example            |
+| --------------------- | --------------------------- | ------ | ------------------ |
+| `Asia/Ho_Chi_Minh`    | `Asia/Bangkok`              | 30     | Xuân Mai           |
+| `America/Merida`      | `America/Mexico_City`       | 18     | Villahermosa       |
+| `America/Havana`      | `America/Nassau`            | 15     | Santo Domingo      |
+| `Asia/Ho_Chi_Minh`    | `Asia/Phnom_Penh`           | 11     | Tịnh Biên          |
+| `Asia/Hebron`         | `Asia/Jerusalem`            | 10     | Ţūlkarm            |
+| `America/Recife`      | `America/Fortaleza`         | 8      | Vertentes          |
+| `America/Bahia`       | `America/Maceio`            | 7      | Rio Real           |
+| `America/Fortaleza`   | `America/Recife`            | 6      | Princesa Isabel    |
+| `America/Guayaquil`   | `America/Bogota`            | 6      | Tulcán             |
+| `Asia/Samarkand`      | `Asia/Tashkent`             | 6      | Zomin Shaharchasi  |
+| `America/Belem`       | `America/Fortaleza`         | 5      | Viseu              |
+| `America/Bahia`       | `America/Sao_Paulo`         | 5      | Posto da Mata      |
+| `America/Tegucigalpa` | `America/Guatemala`         | 5      | San Luis           |
+| `Asia/Damascus`       | `Europe/Istanbul`           | 5      | Jarābulus          |
+| `Asia/Bangkok`        | `Asia/Ho_Chi_Minh`          | 5      | Phong Điền         |
+| `Africa/Lusaka`       | `Africa/Lubumbashi`         | 5      | Nchelenge          |
+| `America/Recife`      | `America/Bahia`             | 4      | Lagoa Grande       |
+| `Africa/Conakry`      | `Africa/Bissau`             | 4      | Wendou Borou       |
+| `Asia/Phnom_Penh`     | `Asia/Bangkok`              | 4      | Pailin             |
+| `Africa/Nouakchott`   | `Africa/Dakar`              | 4      | Tékane             |
+| `Africa/Mogadishu`    | `Africa/Addis_Ababa`        | 4      | Luuq               |
+| `America/Santarem`    | `America/Belem`             | 3      | Porto de Moz       |
+| `America/Sao_Paulo`   | `America/Argentina/Cordoba` | 3      | São Miguel d'Oeste |
+| `America/Sao_Paulo`   | `America/Bahia`             | 3      | Posse              |
+| `Africa/Douala`       | `Africa/Ndjamena`           | 3      | Touboro            |
+
+## 2P. The measured bundle cost
+
+| file           | bytes  |
+| -------------- | ------ |
+| `tz.js`        | 73,381 |
+| `LICENSE`      | 6,554  |
+| `README.md`    | 6,445  |
+| `package.json` | 1,424  |
+| `index.d.ts`   | 225    |
+
+Installed total on disk: **88,029 bytes** (measured).
+

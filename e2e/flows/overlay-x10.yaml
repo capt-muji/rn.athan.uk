@@ -1,0 +1,20 @@
+appId: com.mugtaba.athan
+name: overlay-x10
+tags:
+  - baseline
+---
+# Overlay open/close cadence suite (OnePlus 3T, 1080x1920 absolute pixels).
+# Pacing >=1.2s per transition — the SD820 drops encoder frames when
+# animations arrive back-to-back (video audits only; marks unaffected).
+- repeat:
+    times: 10
+    commands:
+      - tapOn:
+          point: '540, 974'
+      - waitForAnimationToEnd:
+          timeout: 2500
+      - tapOn:
+          point: '540, 1100'
+      - waitForAnimationToEnd:
+          timeout: 2500
+- assertVisible: 'London, UK'

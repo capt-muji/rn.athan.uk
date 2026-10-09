@@ -1,0 +1,29 @@
+appId: com.mugtaba.athan
+name: sheets-x10
+tags:
+  - baseline
+---
+# Settings + alert sheet open/close cadence suite (OnePlus 3T pixels).
+# Settings button (540,1730); alert bell on the Dhuhr row (979,974).
+# BACK dismisses a sheet; BACK with no sheet open EXITS the app.
+- repeat:
+    times: 10
+    commands:
+      - tapOn:
+          point: '540, 1730'
+      - waitForAnimationToEnd:
+          timeout: 2500
+      - pressKey: back
+      - waitForAnimationToEnd:
+          timeout: 2500
+- repeat:
+    times: 10
+    commands:
+      - tapOn:
+          point: '979, 974'
+      - waitForAnimationToEnd:
+          timeout: 2500
+      - pressKey: back
+      - waitForAnimationToEnd:
+          timeout: 2500
+- assertVisible: 'London, UK'

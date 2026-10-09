@@ -7,16 +7,16 @@ import Animated, {
   useAnimatedStyle,
   useReducedMotion,
   useSharedValue,
-  withRepeat,
-  withSequence,
   withTiming,
 } from 'react-native-reanimated';
 
-import { useCountdownBar } from '@/hooks/useCountdownBar';
+import { TIP_OVAL_WIDTH, tipLeftForProgress } from '@/components/countdown/tipGeometry';
+import { useDerivedOpacity } from '@/hooks/useAnimation';
+import { getBarOpacity, useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/overlay';
-import { countdownBarColorAtom } from '@/stores/ui';
+import { overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { countdownBarColorAtom, resyncAtom } from '@/stores/ui';
 
 /** Fast timing for large progress jumps (>50%) */
 const TIMING_CONFIG_FAST = {
@@ -29,6 +29,9 @@ const TIMING_CONFIG_LINEAR = {
   duration: 1000,
   easing: Easing.linear,
 };
+
+/** Smallest per-tick width change (dp) worth animating; real prayer intervals never reach it */
+const VISIBLE_STEP_DP = 0.3;
 
 interface Props {
   /** Schedule type for countdown calculation (required in normal mode) */
@@ -51,6 +54,7 @@ interface Props {
  * - Pulsing tip indicator at the leading edge
  * - Respects reduced motion preferences
  * - Hides when overlay is active
+ * - Hides, keeping its space, while it cannot be worked out (R14)
  *
  * Preview mode: Pass `previewColor` and/or `previewProgress` to render a static
  * preview that bypasses the countdown hook and color atom.
@@ -58,84 +62,78 @@ interface Props {
 export default function CountdownBar({ type, previewColor, previewProgress, scale = 1 }: Props) {
   const isPreviewMode = previewColor !== undefined || previewProgress !== undefined;
 
-  const { progress: elapsedProgress, isReady } = useCountdownBar(type ?? ScheduleType.Standard);
+  const {
+    progress: elapsedProgress,
+    isReady,
+    isWarning: countdownWarning,
+    isAvailable,
+  } = useCountdownBar(type ?? ScheduleType.Standard);
   const reducedMotion = useReducedMotion();
 
-  const overlay = useAtomValue(overlayAtom);
+  const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const atomColor = useAtomValue(countdownBarColorAtom);
+  const resync = useAtomValue(resyncAtom);
 
   const countdownBarColor = previewColor ?? atomColor;
   const progress = previewProgress ?? (isReady ? 100 - elapsedProgress : 0);
-  const isWarning = !isPreviewMode && progress <= COUNTDOWN_BAR.WARNING_THRESHOLD;
+  const isWarning = !isPreviewMode && countdownWarning;
 
   const widthValue = useSharedValue(progress);
   const colorValue = useSharedValue(0);
-  const opacityValue = useSharedValue(overlay.isOn ? 0 : 1);
-  const tipPulse = useSharedValue(0);
 
   const isFirstRender = useRef(true);
-  const isFirstOpacityRender = useRef(true);
   const prevProgress = useRef(progress);
-
-  // Tip pulse animation (infinite loop)
-  useEffect(() => {
-    if (reducedMotion) return;
-    tipPulse.value = withRepeat(
-      withSequence(
-        withTiming(1, { duration: COUNTDOWN_TIP.PULSE_DURATION, easing: Easing.inOut(Easing.ease) }),
-        withTiming(0, { duration: COUNTDOWN_TIP.PULSE_DURATION, easing: Easing.inOut(Easing.ease) })
-      ),
-      -1
-    );
-  }, [reducedMotion, tipPulse]);
+  const prevWarning = useRef(isWarning);
+  const lastResync = useRef(resync);
 
   // Progress width and warning color animation
   useEffect(() => {
+    const isResume = lastResync.current !== resync;
+    lastResync.current = resync;
+
     if (isFirstRender.current) {
       widthValue.value = progress;
-      colorValue.value = progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1;
+      colorValue.value = isWarning ? 1 : 0;
       isFirstRender.current = false;
+    } else if (isResume || reducedMotion) {
+      // Resume snaps: the bar must be correct instantly, never animate a
+      // catch-up from the width it held before the host was suspended
+      widthValue.value = progress;
+      colorValue.value = isWarning ? 1 : 0;
     } else {
       const progressDiff = Math.abs(progress - prevProgress.current);
 
-      if (reducedMotion) {
-        widthValue.value = progress;
-        colorValue.value = progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1;
+      if (progressDiff > 50) {
+        // Large jumps (prayer transition refill) are visible — animate them
+        widthValue.value = withTiming(progress, TIMING_CONFIG_FAST);
+      } else if ((progressDiff / 100) * COUNTDOWN_BAR.WIDTH >= VISIBLE_STEP_DP) {
+        // A visible per-second step (short intervals) keeps its smooth glide
+        widthValue.value = withTiming(progress, TIMING_CONFIG_LINEAR);
       } else {
-        // Use fast timing for large jumps (e.g., prayer transition)
-        const timingConfig = progressDiff > 50 ? TIMING_CONFIG_FAST : TIMING_CONFIG_LINEAR;
-        widthValue.value = withTiming(progress, timingConfig);
-        colorValue.value = withTiming(progress > COUNTDOWN_BAR.WARNING_THRESHOLD ? 0 : 1, {
+        // Sub-pixel step: still written every tick (a dropped write heals within a
+        // second) but set directly, so an idle bar drives no per-frame layout
+        widthValue.value = progress;
+      }
+
+      if (isWarning !== prevWarning.current) {
+        colorValue.value = withTiming(isWarning ? 1 : 0, {
           duration: ANIMATION.durationMedium,
           easing: Easing.linear,
         });
+      } else {
+        // Re-asserted every tick like the width, without re-running an animation
+        colorValue.value = isWarning ? 1 : 0;
       }
     }
     prevProgress.current = progress;
-  }, [progress, reducedMotion, widthValue, colorValue]);
+    prevWarning.current = isWarning;
+  }, [progress, isWarning, reducedMotion, widthValue, colorValue, resync]);
 
-  // Visibility based on overlay state (skip in preview mode)
-  useEffect(() => {
-    if (isPreviewMode) return;
-
-    const shouldShow = !overlay.isOn;
-
-    if (isFirstOpacityRender.current) {
-      opacityValue.value = shouldShow ? 1 : 0;
-      isFirstOpacityRender.current = false;
-    } else if (reducedMotion) {
-      opacityValue.value = shouldShow ? 1 : 0;
-    } else {
-      opacityValue.value = withTiming(shouldShow ? 1 : 0, {
-        duration: ANIMATION.duration,
-        easing: Easing.linear,
-      });
-    }
-  }, [overlay.isOn, reducedMotion, isPreviewMode, opacityValue]);
-
-  const wrapperOpacityStyle = useAnimatedStyle(() => ({
-    opacity: opacityValue.value,
-  }));
+  // Overlay and availability visibility are derived; reduced motion snaps them
+  const wrapperOpacityStyle = useDerivedOpacity(getBarOpacity(isPreviewMode, overlayIsOn, isAvailable), {
+    duration: reducedMotion ? 0 : ANIMATION.duration,
+    easing: Easing.linear,
+  });
 
   const barWidthStyle = useAnimatedStyle(() => ({
     width: `${widthValue.value}%`,
@@ -145,8 +143,9 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     backgroundColor: interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]),
   }));
 
+  // Clamped so the oval cannot overhang the track at either end (tipGeometry)
   const tipPositionStyle = useAnimatedStyle(() => ({
-    left: (widthValue.value / 100) * COUNTDOWN_BAR.WIDTH - COUNTDOWN_TIP.OFFSET,
+    left: tipLeftForProgress(widthValue.value),
   }));
 
   const tipAppearanceStyle = useAnimatedStyle(() => {
@@ -166,7 +165,10 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       accessibilityRole='progressbar'
       accessibilityLabel={`Prayer countdown: ${Math.round(progress)} percent remaining`}
       accessibilityValue={{ min: 0, max: 100, now: progress }}
-      accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}>
+      accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}
+      // Hidden because it cannot be worked out, so no percentage may be announced for it
+      accessibilityElementsHidden={!isPreviewMode && !isAvailable}
+      importantForAccessibility={!isPreviewMode && !isAvailable ? 'no-hide-descendants' : 'auto'}>
       {/* Track (background trough) */}
       <Animated.View style={styles.track}>
         {/* Progress bar */}
@@ -221,7 +223,7 @@ const styles = StyleSheet.create({
   },
   tipOval: {
     position: 'absolute',
-    width: COUNTDOWN_TIP.WIDTH + 1,
+    width: TIP_OVAL_WIDTH,
     height: COUNTDOWN_BAR.HEIGHT,
     borderRadius: COUNTDOWN_TIP.WIDTH / 2,
   },

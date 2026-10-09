@@ -1,59 +1,15 @@
-import { useCallback } from 'react';
-
-import { useAnimationBounce, useAnimationFill, useAnimationOpacity, useAnimationScale } from '@/hooks/useAnimation';
-import { ANIMATION, COLORS } from '@/shared/constants';
-
-interface UseAlertAnimationsParams {
-  /** Initial position for fill animation (0 = inactive, 1 = active) */
-  initialColorPos: number;
-}
+import { useAlertSwapBounce } from '@/hooks/useAlertSwapBounce';
+import { useAnimationScale } from '@/hooks/useAnimation';
 
 /**
- * Hook managing Alert component animations
+ * Alert component animations
  *
- * Encapsulates scale, opacity, bounce, and fill animations used by the Alert component.
- * Provides animation values and convenience functions for common animation patterns.
- *
- * @param params Animation initialization parameters
- * @returns Animation values and control functions
- *
- * @example
- * const { AnimScale, AnimOpacity, AnimFill, resetPopupAnimations, hidePopup } = useAlertAnimations({
- *   initialColorPos: Prayer.ui.initialColorPos,
- * });
+ * The fill is derived from state in `Alert.tsx`; only press scale and the
+ * change-bounce remain imperative (both are user-driven, foreground events).
  */
-export const useAlertAnimations = ({ initialColorPos }: UseAlertAnimationsParams) => {
+export const useAlertAnimations = () => {
   const AnimScale = useAnimationScale(1);
-  const AnimOpacity = useAnimationOpacity(0);
-  const AnimBounce = useAnimationBounce(0);
-  const AnimFill = useAnimationFill(initialColorPos, {
-    fromColor: COLORS.text.muted,
-    toColor: COLORS.text.primary,
-  });
+  const AnimSwap = useAlertSwapBounce();
 
-  /**
-   * Reset popup animations to their initial show state
-   * Called when showing the alert popup
-   */
-  const resetPopupAnimations = useCallback(() => {
-    AnimBounce.reset(0);
-    AnimOpacity.animate(1, { duration: ANIMATION.durationFast });
-    AnimBounce.animate(1);
-  }, [AnimBounce, AnimOpacity]);
-
-  /**
-   * Hide the popup by animating opacity to 0
-   */
-  const hidePopup = useCallback(() => {
-    AnimOpacity.animate(0, { duration: ANIMATION.durationFast });
-  }, [AnimOpacity]);
-
-  return {
-    AnimScale,
-    AnimOpacity,
-    AnimBounce,
-    AnimFill,
-    resetPopupAnimations,
-    hidePopup,
-  };
+  return { AnimScale, AnimSwap };
 };

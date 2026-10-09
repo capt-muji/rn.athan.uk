@@ -1,16 +1,13 @@
-import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
-import { useAtomValue } from 'jotai';
-import { useEffect } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { perfMark } from '@/shared/perf';
 import { Icon } from '@/shared/types';
-import { soundPreferenceAtom } from '@/stores/notifications';
-import { playingSoundIndexAtom, setPlayingSoundIndex } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -25,39 +22,61 @@ function formatTime(seconds: number): string {
 
 interface Props {
   index: number;
-  audio: AudioSource;
+  isSelected: boolean;
+  isPlaying: boolean;
+  /** Whole seconds left in the playing preview — meaningful only on the playing row */
+  remainingSeconds: number;
   onSelect: (index: number) => void;
-  tempSelection: number | null;
+  onPlayPress: (index: number) => void;
   onLayout?: (e: LayoutChangeEvent) => void;
 }
 
-export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelection, onLayout }: Props) {
-  const selectedSound = useAtomValue(soundPreferenceAtom);
-  const playingIndex = useAtomValue(playingSoundIndexAtom);
-
-  const player = useAudioPlayer(audio);
-  const status = useAudioPlayerStatus(player);
-
-  const isPlaying = playingIndex === index;
-  const isSelected = index === (tempSelection ?? selectedSound);
+/**
+ * Presentational sound row. The single audio player lives at the sheet level
+ * (BottomSheetSound) — one AVPlayer for the whole list instead of one per
+ * row, which exhausted audio resources on older devices (G.4/G.5). All
+ * visuals are unchanged: selection highlight, countdown fade, press scale.
+ *
+ * Memoized with primitive props only: the sheet player's status object
+ * changes identity many times per second during playback, and re-rendering
+ * all 32 rows per tick was the sound-sheet jank (perf campaign #6) — now a
+ * status tick only re-renders the playing row (and only when its whole-second
+ * countdown actually changes).
+ */
+function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelect, onPlayPress, onLayout }: Props) {
   const isActive = isPlaying || isSelected;
 
   const AnimScale = useAnimationScale(1);
 
-  const remainingTime = status.duration > 0 ? status.duration - status.currentTime : 0;
-  const showCountdown = isPlaying && status.playing && remainingTime > 0;
+  // Countdown visibility is edge-synchronized with the row's state flip:
+  // appear the frame the row starts playing (the sheet supplies the clip's
+  // tabulated seconds instantly, live status takes over on load), and hide
+  // the moment isPlaying flips false — the same instant the icon swaps and
+  // the label deactivates.
+  const [countdownVisible, setCountdownVisible] = useState(false);
+  useEffect(() => {
+    if (!isPlaying) {
+      setCountdownVisible(false);
+      return;
+    }
+    if (remainingSeconds > 0) setCountdownVisible(true);
+  }, [isPlaying, remainingSeconds]);
 
-  // Animated values for countdown
-  const countdownOpacity = useDerivedValue(() =>
-    withTiming(showCountdown ? 1 : 0, { duration: ANIMATION.durationFast })
-  );
+  // remainingSeconds drops to 0 while the clip's final fraction of a second
+  // is still playing (and again on stop/switch) — without this latch the
+  // text flashes "0:00". Freeze the last positive value; 0 never displays
+  // (same contract as the main countdown).
+  const lastPositiveRemainingRef = useRef(1);
+  if (remainingSeconds > 0) lastPositiveRemainingRef.current = remainingSeconds;
+  const displaySeconds = remainingSeconds > 0 ? remainingSeconds : lastPositiveRemainingRef.current;
 
+  // Countdown color tweens; opacity snaps with the icon flip (a tween here
+  // ran ~75ms behind the instant play/pause swap and read as desync).
   const countdownColorProgress = useDerivedValue(() =>
     withTiming(isSelected ? 1 : 0, { duration: ANIMATION.durationFast })
   );
 
   const countdownStyle = useAnimatedStyle(() => ({
-    opacity: countdownOpacity.value,
     color: interpolateColor(
       countdownColorProgress.value,
       [0, 1],
@@ -65,53 +84,47 @@ export default function BottomSheetSoundItem({ index, audio, onSelect, tempSelec
     ),
   }));
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: player ref is stable for the sound's lifetime; effect intentionally keyed on playback-state changes
-  useEffect(() => {
-    if (playingIndex !== index && status.playing) {
-      player.pause();
-    }
-  }, [playingIndex, index, status.playing]);
-
-  useEffect(() => {
-    if (isPlaying && !status.playing && status.currentTime > 0 && status.duration > 0) {
-      if (status.currentTime >= status.duration - 0.1) {
-        setPlayingSoundIndex(null);
-      }
-    }
-  }, [isPlaying, status.playing, status.currentTime, status.duration]);
-
   const handlePress = () => {
+    perfMark('sound_select_tap', { index });
     onSelect(index);
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
-  const playSound = () => {
+  const handlePlayPress = () => {
+    perfMark('sound_play_tap', { index });
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    if (isPlaying) {
-      player.pause();
-      setPlayingSoundIndex(null);
-      return;
-    }
-
-    player.seekTo(0);
-    player.play();
-    setPlayingSoundIndex(index);
+    onPlayPress(index);
   };
 
   const activeColor = '#fff';
   const inactiveColor = 'rgba(86, 134, 189, 0.725)';
 
+  const name = `Athan ${index + 1}`;
+
   return (
-    <Pressable style={styles.option} onPress={handlePress} onLayout={onLayout}>
-      <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>Athan {index + 1}</Text>
+    <Pressable
+      style={styles.option}
+      onPress={handlePress}
+      onLayout={onLayout}
+      accessibilityRole='radio'
+      // Which athan is chosen is carried only by the row's text colour, so `selected` is the
+      // one thing a screen reader has to tell the rows apart
+      accessibilityState={{ selected: isSelected }}
+      accessibilityLabel={name}>
+      <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>{name}</Text>
       <View style={styles.rightContainer}>
-        <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(remainingTime)}</Animated.Text>
+        <Animated.Text style={[styles.countdown, { opacity: countdownVisible ? 1 : 0 }, countdownStyle]}>
+          {formatTime(displaySeconds)}
+        </Animated.Text>
         <AnimatedPressable
           style={[styles.icon, AnimScale.style]}
-          onPress={playSound}
+          onPress={handlePlayPress}
           onPressIn={() => AnimScale.animate(0.9)}
-          onPressOut={() => AnimScale.animate(1)}>
+          onPressOut={() => AnimScale.animate(1)}
+          accessibilityRole='button'
+          // The glyph is the only thing that says play or pause, and on iOS the row would
+          // otherwise absorb this button so VoiceOver could never reach it
+          accessibilityLabel={isPlaying ? `Stop previewing ${name}` : `Preview ${name}`}>
           <IconView
             type={isPlaying ? Icon.PAUSE : Icon.PLAY}
             size={18}
@@ -149,3 +162,5 @@ const styles = StyleSheet.create({
     padding: SPACING.md,
   },
 });
+
+export default memo(SoundItemImpl);

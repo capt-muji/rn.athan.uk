@@ -1,0 +1,4 @@
+# The scripts here resolve `adhan` and `astronomy-engine` through a symlink to
+# the scratch tree, which must never be committed and must never become a
+# dependency of this repository. See README.md for how to create it.
+node_modules

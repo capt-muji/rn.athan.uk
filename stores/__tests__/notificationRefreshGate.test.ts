@@ -1,0 +1,282 @@
+/**
+ * The notification refresh gate, and a reschedule that fails part way (stores/notifications.ts)
+ *
+ * Every foreground asks `refreshNotifications`, so the gate is what stops a full reschedule on each resume. When
+ * it is still closed nothing may be scheduled, cancelled or stamped. When a reschedule throws, the caller must
+ * hear it (the background task reports a failed run to the OS), the gate must stay open so the next foreground
+ * tries again, and the scheduling queue must still run what comes after it: a jammed queue would leave every
+ * later refresh, and so every alarm after it, waiting forever.
+ */
+
+import * as Notifications from 'expo-notifications';
+import { getDefaultStore } from 'jotai';
+
+import { prayerNotificationIdentifier } from '@/device/notifications';
+import { NOTIFICATION_REFRESH_HOURS } from '@/shared/constants';
+import logger from '@/shared/logger';
+import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+import * as Database from '@/stores/database';
+import {
+  lastNotificationScheduleAtom,
+  refreshNotifications,
+  rescheduleAllNotificationsFromBackground,
+  shouldRescheduleNotifications,
+  standardPrayerAlertAtoms,
+} from '@/stores/notifications';
+
+jest.mock('@/shared/logger', () => ({
+  __esModule: true,
+  default: { info: jest.fn(), warn: jest.fn(), error: jest.fn(), debug: jest.fn() },
+  isProd: () => false,
+  isPreview: () => false,
+  isTest: () => true,
+}));
+
+jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn(async () => undefined) }));
+
+jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArmedDayChanges: jest.fn(() => 0) }));
+
+// =============================================================================
+// FIXTURES
+// =============================================================================
+
+const store = getDefaultStore();
+
+// 09:00 BST on Saturday 29 August 2026, with every time of today and tomorrow at 12:00 BST, three hours ahead
+const NOW = Date.parse('2026-08-29T08:00:00.000Z');
+const TODAY = '2026-08-29';
+const TOMORROW = '2026-08-30';
+const HOUR = 3_600_000;
+
+const FAJR_TODAY = prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', TODAY);
+const FAJR_TOMORROW = prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', TOMORROW);
+
+const scheduleMock = jest.mocked(Notifications.scheduleNotificationAsync);
+const cancelMock = jest.mocked(Notifications.cancelScheduledNotificationAsync);
+const getAllMock = jest.mocked(Notifications.getAllScheduledNotificationsAsync);
+
+/** What the OS holds, keyed by identifier, with the platforms' replace and cancel semantics */
+const osState = new Set<string>();
+
+const storeDay = (date: string) => {
+  const day: ISingleApiResponseTransformed = {
+    date,
+    fajr: '12:00',
+    sunrise: '12:00',
+    dhuhr: '12:00',
+    asr: '12:00',
+    magrib: '12:00',
+    isha: '12:00',
+    suhoor: '12:00',
+    duha: '12:00',
+    istijaba: '12:00',
+  };
+  Database.database.set(`prayer_${date}`, JSON.stringify(day));
+};
+
+beforeEach(() => {
+  jest.useFakeTimers();
+  jest.setSystemTime(NOW);
+  jest.clearAllMocks();
+  osState.clear();
+  Database.database.clearAll();
+
+  storeDay(TODAY);
+  storeDay(TOMORROW);
+  store.set(standardPrayerAlertAtoms[0], AlertType.Sound);
+
+  scheduleMock.mockImplementation(async (request) => {
+    const identifier = (request as { identifier: string }).identifier;
+    osState.add(identifier);
+    return identifier;
+  });
+  cancelMock.mockImplementation(async (identifier: string) => {
+    osState.delete(identifier);
+  });
+  getAllMock.mockImplementation(
+    async () => [...osState].map((identifier) => ({ identifier })) as Notifications.NotificationRequest[]
+  );
+});
+
+afterEach(() => {
+  jest.useRealTimers();
+});
+
+afterAll(() => {
+  // Back to the shared mock's defaults for any suite that shares this worker
+  scheduleMock.mockImplementation(
+    async (request) => (request as { identifier?: string })?.identifier ?? 'mock-notification-id'
+  );
+  cancelMock.mockResolvedValue(undefined);
+  getAllMock.mockResolvedValue([]);
+});
+
+// =============================================================================
+// THE GATE
+// =============================================================================
+
+// Derived from the constant rather than written out: the cadence is retuned from time to time and
+// these boundaries must follow it, not pin the value it happened to have when they were written
+const GATE = NOTIFICATION_REFRESH_HOURS * HOUR;
+
+describe('refreshNotifications behind the refresh gate', () => {
+  it.each([
+    { since: 'no time at all', ms: 0, runs: false },
+    { since: 'half the gate', ms: GATE / 2, runs: false },
+    { since: '1 millisecond short of the gate', ms: GATE - 1, runs: false },
+    { since: 'exactly the gate', ms: GATE, runs: true },
+    { since: 'an hour past the gate', ms: GATE + HOUR, runs: true },
+  ])('with the last reschedule $since ago, runs: $runs', async ({ ms, runs }) => {
+    const stamped = NOW - ms;
+    store.set(lastNotificationScheduleAtom, stamped);
+
+    await refreshNotifications();
+
+    if (runs) {
+      expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+      expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
+    } else {
+      expect(scheduleMock).not.toHaveBeenCalled();
+      expect(cancelMock).not.toHaveBeenCalled();
+      expect(getAllMock).not.toHaveBeenCalled();
+      expect(store.get(lastNotificationScheduleAtom)).toBe(stamped);
+      expect(logger.info).toHaveBeenCalledWith(
+        `NOTIFICATION: Skipping reschedule, last schedule was within ${NOTIFICATION_REFRESH_HOURS} hours`
+      );
+    }
+  });
+
+  it('leaves what the OS already holds untouched while the gate is closed, even for a prayer turned off since', async () => {
+    // Recorded as the reschedule that armed it left it, so a refresh that did run would cancel it
+    Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, {
+      id: FAJR_TODAY,
+      date: TODAY,
+      time: '12:00',
+      englishName: 'Fajr',
+      arabicName: 'الفجر',
+      alertType: AlertType.Sound,
+    });
+    osState.add(FAJR_TODAY);
+    store.set(standardPrayerAlertAtoms[0], AlertType.Off);
+    store.set(lastNotificationScheduleAtom, NOW - HOUR);
+
+    await refreshNotifications();
+
+    // Turning a prayer off cancels through its own path at once; the gate is only for the periodic refresh
+    expect([...osState]).toEqual([FAJR_TODAY]);
+  });
+});
+
+// =============================================================================
+// A RESCHEDULE THAT THROWS
+// =============================================================================
+
+describe('when the reschedule throws part way', () => {
+  const failure = new Error('OS query failed');
+
+  it('rejects a foreground refresh with that error, leaves the gate open, and lets the next refresh run and stamp', async () => {
+    const stamped = NOW - 13 * HOUR;
+    store.set(lastNotificationScheduleAtom, stamped);
+    getAllMock.mockRejectedValueOnce(failure);
+
+    await expect(refreshNotifications()).rejects.toBe(failure);
+
+    expect(logger.error).toHaveBeenCalledWith('NOTIFICATION: Failed to refresh notifications:', failure);
+    expect(store.get(lastNotificationScheduleAtom)).toBe(stamped);
+    expect(shouldRescheduleNotifications()).toBe(true);
+
+    await expect(refreshNotifications()).resolves.toBeUndefined();
+
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+    expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
+  });
+
+  it('rejects the background reschedule with that error, leaves the gate open, and lets a foreground refresh run and stamp', async () => {
+    store.set(lastNotificationScheduleAtom, 0);
+    getAllMock.mockRejectedValueOnce(failure);
+
+    await expect(rescheduleAllNotificationsFromBackground()).rejects.toBe(failure);
+
+    expect(logger.error).toHaveBeenCalledWith('BACKGROUND_TASK: Failed to reschedule from background:', failure);
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+
+    await expect(refreshNotifications()).resolves.toBeUndefined();
+
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+    expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
+  });
+
+  it('runs a background reschedule already queued behind a refresh that fails', async () => {
+    store.set(lastNotificationScheduleAtom, 0);
+    getAllMock.mockRejectedValueOnce(failure);
+
+    // The refresh takes its place in the queue at once; the background task waits for its sync first
+    const [failing, queued] = await Promise.allSettled([
+      refreshNotifications(),
+      rescheduleAllNotificationsFromBackground(),
+    ]);
+
+    expect(failing).toEqual({ status: 'rejected', reason: failure });
+    expect(queued).toEqual({ status: 'fulfilled', value: undefined });
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+    expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
+  });
+});
+
+// =============================================================================
+// LOSING THE ALARMS WITHOUT LOSING THE STAMP (ISSUES #36)
+// =============================================================================
+
+/**
+ * The shape of the 8T's silence, which no test held before it happened: a reboot or an OEM
+ * kill empties AlarmManager while `lastNotificationScheduleAtom` survives untouched, so the
+ * gate reads "recently done" over a phone that has nothing armed at all.
+ *
+ * `osState` is the OS side and the atom is ours, so clearing one and leaving the other is
+ * exactly the divergence, and the test can then ask the question the user asked: does opening
+ * the app bring the alarms back?
+ */
+describe('alarms lost while the stamp survives', () => {
+  const armEverything = async () => {
+    store.set(lastNotificationScheduleAtom, 0);
+    await refreshNotifications();
+  };
+
+  it('leaves the app silent on its own, because the gate believes the work is recent', async () => {
+    await armEverything();
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    await refreshNotifications();
+
+    // This is the defect, pinned rather than fixed here: nothing re-arms while the stamp stands
+    expect(osState.size).toBe(0);
+    expect(shouldRescheduleNotifications()).toBe(false);
+  });
+
+  it('re-arms the full set once the cold launch reopens the gate', async () => {
+    await armEverything();
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    // What `reopenRefreshGateOnColdLaunch` does on Android, spelled out so this suite stays
+    // platform-free: the cold-launch path itself is covered in coldLaunchRearm.test.ts
+    store.set(lastNotificationScheduleAtom, 0);
+    await refreshNotifications();
+
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+  });
+
+  it('re-arms unattended when the background task runs, with the stamp left alone', async () => {
+    await armEverything();
+    osState.clear();
+    jest.setSystemTime(NOW + 60_000);
+
+    // The background task never consults the gate, which is why it recovers a phone nobody opens
+    await rescheduleAllNotificationsFromBackground();
+
+    expect([...osState].sort()).toEqual([FAJR_TODAY, FAJR_TOMORROW]);
+  });
+});

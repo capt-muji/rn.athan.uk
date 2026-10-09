@@ -110,7 +110,9 @@ describe('widget function closure', () => {
           if (
             parentType === 'TSTypeReference' ||
             parentType === 'TSQualifiedName' ||
-            parentType === 'TSTypeParameterInstantiation'
+            parentType === 'TSTypeParameterInstantiation' ||
+            parentType === 'TSTypeAliasDeclaration' ||
+            parentType === 'TSFunctionType'
           ) {
             return;
           }
@@ -198,14 +200,14 @@ describe('palette literals', () => {
     // Dusk", owner-approved): navy-violet card on every size, pink name,
     // white hero, periwinkle-tinted small texts with blue-grey medium
     // texts, app indigo + muted magenta pills, neutral violet depth
-    // shadow, merged violet/electric-violet/blue orb glows.
+    // shadow. The orb glows are gone (owner ruling 2026-09-20).
     const anchors = [
       // Light palette
       'rgba(252, 252, 254, 0.92)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
-      'rgba(42, 68, 130, 0.34)',
+      'rgba(42, 68, 130, 0.255)',
       '#4f46e5',
       '#fce7f3',
       'rgba(10, 42, 155, 0.4)',
@@ -214,31 +216,21 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.32)',
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
-      // Dark palette — Violet Dusk
-      'rgba(26, 26, 92, 0.88)', // card — every dark size
-      '#ffffff', // hero / passed rows
-      '#e3eaff', // active row text — standard, white + hint of blue
+      // Dark palette — Gradient Deep (owner pick 2026-09-20)
+      'rgba(9, 21, 47, 0.95)', // card — every dark size
+      '#f6f8fc', // hero / passed rows
+      '#cad8ed', // active row text — standard, white + hint of slate blue
       '#ffeaf4', // active row text — extras, white + hint of pink
-      '#ff69b4', // eyebrow + stale mark
-      'rgba(173, 193, 254, 0.54)', // secondary — smalls
-      'rgba(173, 193, 254, 0.6)', // upcoming rows — smalls
-      'rgba(156, 169, 222, 0.38)', // footer — smalls
-      'rgba(160, 182, 228, 0.54)', // secondary — mediums, blue-grey
-      'rgba(160, 182, 228, 0.6)', // upcoming rows — mediums, blue-grey
-      'rgba(146, 164, 212, 0.38)', // footer — mediums, blue-grey
+      '#f774b6', // eyebrow + stale mark
+      'rgba(138, 169, 214, 0.54)', // secondary — the base whisper, both sizes
+      'rgba(138, 169, 214, 0.405)', // upcoming rows — a quarter fainter than the base (owner ruling 2026-09-20)
+      'rgba(138, 169, 214, 0.27)', // footer — half the base
       '#a123aa', // extras pill
-      '#0847e5', // standard pill — app prayer.activeBackground
-      'rgba(10, 30, 140, 0.5)', // pill depth shadow — standard, deep blue
+      '#2743e0', // standard pill — the app gradient's blue, deepened
+      'rgba(21, 37, 123, 0.5)', // pill depth shadow — standard, deep blue
       'rgba(95, 10, 115, 0.5)', // pill depth shadow — extras, deep pinky purple
       'rgba(146, 0, 162, 0.35)', // extras stroke
-      'rgba(8, 71, 229, 0.35)', // standard stroke
-      'rgba(128, 0, 255, 0.25)', // small top glow
-      'rgba(128, 0, 255, 0.45)', // small + medium bottom-left glow
-      'rgba(128, 0, 255, 0.34)', // small bottom-right glow
-      'rgba(165, 180, 252, 0.3)', // small center glow
-      'rgba(155, 30, 255, 0.22)', // medium top glow — electric violet
-      'rgba(130, 145, 240, 0.3)', // medium center glow
-      'rgba(55, 75, 235, 0.17)', // medium bottom-right glow — blue
+      'rgba(39, 67, 224, 0.35)', // standard stroke
     ].map(normalizeColor);
 
     for (const anchor of anchors) {
@@ -257,12 +249,13 @@ describe('palette literals', () => {
       // Lock Screen accessory widgets
       '#ffffff',
       'rgba(255, 255, 255, 0.6)',
+      'rgba(0, 0, 0, 0)',
       // Home widget — light Cotton Candy
       'rgba(252, 252, 254, 0.92)',
       '#db2777',
       '#1e1b2e',
       'rgba(42, 68, 130, 0.42)',
-      'rgba(42, 68, 130, 0.34)',
+      'rgba(42, 68, 130, 0.255)',
       '#4f46e5',
       '#fce7f3',
       'rgba(10, 42, 155, 0.4)',
@@ -271,29 +264,21 @@ describe('palette literals', () => {
       'rgba(219, 39, 119, 0.35)',
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
-      // Home widget — dark Violet Dusk
-      'rgba(26, 26, 92, 0.88)',
-      '#ff69b4',
-      'rgba(173, 193, 254, 0.54)',
-      'rgba(173, 193, 254, 0.6)',
-      'rgba(156, 169, 222, 0.38)',
-      'rgba(160, 182, 228, 0.54)',
-      'rgba(160, 182, 228, 0.6)',
-      'rgba(146, 164, 212, 0.38)',
+      // Home widget — dark Gradient Deep (owner pick 2026-09-20: the app
+      // screen gradient's start, deepened; whispers from the app's muted text)
+      'rgba(9, 21, 47, 0.95)',
+      '#f6f8fc',
+      '#f774b6',
+      'rgba(138, 169, 214, 0.54)',
+      'rgba(138, 169, 214, 0.405)',
+      'rgba(138, 169, 214, 0.27)',
       '#a123aa',
-      '#0847e5',
-      'rgba(10, 30, 140, 0.5)',
+      '#2743e0',
+      'rgba(21, 37, 123, 0.5)',
       'rgba(95, 10, 115, 0.5)',
       'rgba(146, 0, 162, 0.35)',
-      'rgba(8, 71, 229, 0.35)',
-      'rgba(128, 0, 255, 0.25)',
-      'rgba(128, 0, 255, 0.45)',
-      'rgba(128, 0, 255, 0.34)',
-      'rgba(165, 180, 252, 0.3)',
-      'rgba(155, 30, 255, 0.22)',
-      'rgba(130, 145, 240, 0.3)',
-      'rgba(55, 75, 235, 0.17)',
-      '#e3eaff',
+      'rgba(39, 67, 224, 0.35)',
+      '#cad8ed',
       '#ffeaf4',
     ].map(normalizeColor);
 
@@ -314,6 +299,39 @@ describe('palette literals', () => {
 // 3. STATIC IMPORTS ONLY (dynamic import breaks the widget transform)
 // =============================================================================
 
+describe('Android runtime names', () => {
+  it('home widget imports jetpack-compose and detects the platform by its globals', () => {
+    const source = readFileSync(WIDGET_FILES[0].path, 'utf8');
+    expect(source).toContain("from '@expo/ui/jetpack-compose'");
+    expect(source).toContain("from '@expo/ui/jetpack-compose/modifiers'");
+    expect(source).toContain("typeof Column !== 'undefined'");
+  });
+
+  it('never aliases an @expo/ui import: the widget runtimes inject canonical names only', () => {
+    // Two device-caught failures back this rule (AndroidText, android-Height):
+    // an alias compiles app-side but resolves to nothing against the runtime
+    // globals, and the widget renders "Property 'X' doesn't exist".
+    for (const { name, path } of WIDGET_FILES) {
+      const ast = parseFile(path);
+      const aliased: string[] = [];
+      traverse(ast, {
+        ImportDeclaration(importPath: NodePath<ImportDeclaration>) {
+          if (!importPath.node.source.value.startsWith('@expo/ui/')) return;
+          for (const specifier of importPath.node.specifiers) {
+            if (specifier.type !== 'ImportSpecifier') continue;
+            const importedNode = specifier.imported;
+            const imported = importedNode.type === 'Identifier' ? importedNode.name : importedNode.value;
+            if (imported !== specifier.local.name) {
+              aliased.push(`${imported} as ${specifier.local.name}`);
+            }
+          }
+        },
+      });
+      expect(`${name}: ${aliased.join(', ')}`).toBe(`${name}: `);
+    }
+  });
+});
+
 describe('static import discipline', () => {
   it('widget layout files contain no dynamic import()', () => {
     for (const { path } of WIDGET_FILES) {
@@ -322,10 +340,20 @@ describe('static import discipline', () => {
     }
   });
 
-  it('stores/widget.ts statically imports all eight home widget kinds', () => {
+  it('stores/widget.ts requires all eight home widget kinds via the lazy iOS getters', () => {
     const source = readFileSync(join(__dirname, '../../stores/widget.ts'), 'utf8');
-    const homeImport = source.match(/import \{[^}]*\} from '@\/widgets\/PrayerWidget'/s);
-    expect(homeImport).not.toBeNull();
+    // Layout modules load through synchronous requires inside the iOS-only
+    // push paths (Android never evaluates @expo/ui). Async import() chunks
+    // remain banned — the widget transform does not apply to lazy bundles.
+    expect(source).toMatch(/require\('@\/widgets\/PrayerWidget'\)/);
+    expect(source).toMatch(/require\('@\/widgets\/LockPrayerWidget'\)/);
+    // Async import() chunks remain banned — the widget transform does not
+    // apply to lazy bundles. Type-only `typeof import(...)` is allowed.
+    expect(source).not.toMatch(/(?<!typeof )import\s*\(/);
+    for (const getter of ['getHomeWidgets()', 'getLockWidgets()']) {
+      expect(source).toContain(getter);
+    }
+    // Every home kind still reaches updateTimeline through a getter reference
     const homeKinds = [
       'ExtrasWidget',
       'ExtrasWidgetDark',
@@ -337,10 +365,9 @@ describe('static import discipline', () => {
       'PrayerWidgetMedium',
     ];
     for (const kind of homeKinds) {
-      expect(homeImport?.[0]).toContain(kind);
+      const updateCall = new RegExp(`(home|lock)\\.${kind}\\.updateTimeline`);
+      expect(source).toMatch(updateCall);
     }
-    expect(source).toMatch(/import \{ ExtrasLockWidget, PrayerLockWidget \} from '@\/widgets\/LockPrayerWidget'/);
-    expect(source).not.toMatch(/import\s*\(/);
   });
 });
 
@@ -350,7 +377,7 @@ describe('static import discipline', () => {
 
 describe('widget directive', () => {
   for (const { name, path } of WIDGET_FILES) {
-    it(`${name}: has exactly one widget-directive function`, () => {
+    it(`${name}: has exactly one widget-directive function per layout`, () => {
       const ast = parseFile(path);
       let count = 0;
 
@@ -364,7 +391,9 @@ describe('widget directive', () => {
         },
       });
 
-      expect(count).toBe(1);
+      // The home module holds one layout; the lock module holds three (its
+      // layouts differ only in composition and share nothing by reference)
+      expect(count).toBe(name === 'PrayerLockWidget' ? 3 : 1);
     });
   }
 });

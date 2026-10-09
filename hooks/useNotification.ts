@@ -1,7 +1,9 @@
 import * as Notifications from 'expo-notifications';
-import { Alert, Linking, Platform } from 'react-native';
+import { Alert, AppState, Linking } from 'react-native';
 
+import * as Device from '@/device/notifications';
 import logger from '@/shared/logger';
+import { perfMark, perfMeasure } from '@/shared/perf';
 import { type AlertMenuState, AlertType, type ScheduleType } from '@/shared/types';
 import * as NotificationStore from '@/stores/notifications';
 
@@ -16,8 +18,39 @@ Notifications.setNotificationHandler({
 });
 
 /**
+ * Resolves the first time the app is active again after it has left the foreground
+ *
+ * Listening starts before Settings opens, so the move to the background that opening it causes cannot be missed. An
+ * active state with no departure before it is not a return.
+ *
+ * @returns The return, and a way to stop listening when Settings never opened
+ */
+const listenForReturnToApp = () => {
+  let markReturned!: () => void;
+  const returned = new Promise<void>((resolve) => {
+    markReturned = resolve;
+  });
+  let leftApp = false;
+
+  const subscription = AppState.addEventListener('change', (state) => {
+    if (state !== 'active') {
+      leftApp = true;
+      return;
+    }
+    if (!leftApp) return;
+
+    subscription.remove();
+    markReturned();
+  });
+
+  return { returned, stop: () => subscription.remove() };
+};
+
+/**
  * Shows a dialog prompting user to enable notifications in settings
- * @returns Promise resolving to true if user grants permission after visiting settings
+ * @returns Promise resolving to true if the permission is granted once the user is back from settings, and to false
+ *   when the user cancels or dismisses the dialog, Settings cannot open, or the permission cannot be read, so the
+ *   caller never waits forever
  */
 const showSettingsDialog = (): Promise<boolean> => {
   return new Promise((resolve) => {
@@ -33,15 +66,34 @@ const showSettingsDialog = (): Promise<boolean> => {
         {
           text: 'Open Settings',
           onPress: async () => {
-            if (Platform.OS === 'ios') await Linking.openSettings();
-            else await Linking.sendIntent('android.settings.APP_NOTIFICATION_SETTINGS');
+            const returnToApp = listenForReturnToApp();
 
-            // Check if permissions were granted after returning from settings
-            const { status: finalStatus } = await Notifications.getPermissionsAsync();
-            resolve(finalStatus === 'granted');
+            try {
+              // The app's own settings page on both platforms: Android closes its notification settings page at once
+              // when the request names no package
+              await Linking.openSettings();
+            } catch (error) {
+              returnToApp.stop();
+              logger.error('NOTIFICATION: Failed to open notification settings:', error);
+              resolve(false);
+              return;
+            }
+
+            // Opening answers as Settings opens, when the permission cannot have changed yet
+            await returnToApp.returned;
+
+            try {
+              const { status: finalStatus } = await Notifications.getPermissionsAsync();
+              resolve(finalStatus === 'granted');
+            } catch (error) {
+              logger.error('NOTIFICATION: Failed to read notification permissions after settings:', error);
+              resolve(false);
+            }
           },
         },
-      ]
+      ],
+      // Android reports a dialog closed without a button, such as by a second dialog replacing it, only here
+      { onDismiss: () => resolve(false) }
     );
   });
 };
@@ -164,9 +216,11 @@ export const useNotification = () => {
     currentState: AlertMenuState
   ): Promise<boolean> => {
     const atTimeChanged = originalState.atTimeAlert !== currentState.atTimeAlert;
-    const reminderChanged =
-      originalState.reminderAlert !== currentState.reminderAlert ||
-      originalState.reminderInterval !== currentState.reminderInterval;
+    const reminderChanged = currentState.reminders.some(
+      (reminder, slot) =>
+        reminder.alert !== originalState.reminders[slot].alert ||
+        reminder.interval !== originalState.reminders[slot].interval
+    );
 
     // No changes, skip scheduling
     if (!atTimeChanged && !reminderChanged) {
@@ -175,53 +229,70 @@ export const useNotification = () => {
     }
 
     // Check permissions if enabling any notification
-    if (
-      (currentState.atTimeAlert !== AlertType.Off || currentState.reminderAlert !== AlertType.Off) &&
-      !(await ensurePermissions())
-    ) {
+    const enablesAnything =
+      currentState.atTimeAlert !== AlertType.Off ||
+      currentState.reminders.some((reminder) => reminder.alert !== AlertType.Off);
+
+    if (enablesAnything && !(await ensurePermissions())) {
       logger.warn('NOTIFICATION: Permissions not granted');
       return false;
     }
 
-    // Save preferences first (optimistic update)
-    NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, currentState.atTimeAlert);
-    NotificationStore.setReminderAlertType(scheduleType, prayerIndex, currentState.reminderAlert);
-    NotificationStore.setReminderInterval(scheduleType, prayerIndex, currentState.reminderInterval);
+    // The store writes the preferences, does the work and, when the phone refuses any part of it, puts BOTH back
+    // inside the same lock acquisition. Doing that here made the undo a second acquisition, which anything queued
+    // meanwhile ran in front of (measured while planning session 6b). Deliberately no error haptic: an on-device
+    // feel-test (owner, 2026-09-08) found expo-haptics' Heavy single-shot indistinguishable from the normal Light
+    // feedback, so the revert plays visually only — the icon snapping back is the signal.
+    const committed = await NotificationStore.commitPrayerAlertChange(
+      scheduleType,
+      prayerIndex,
+      englishName,
+      arabicName,
+      currentState,
+      originalState
+    );
 
-    try {
-      await NotificationStore.updatePrayerNotifications(
-        scheduleType,
-        prayerIndex,
-        englishName,
-        arabicName,
-        currentState.atTimeAlert,
-        currentState.reminderAlert
-      );
+    logger.info('NOTIFICATION: Alert menu changes settled:', {
+      scheduleType,
+      prayerIndex,
+      englishName,
+      atTimeChanged,
+      reminderChanged,
+      currentState,
+      committed,
+    });
 
-      logger.info('NOTIFICATION: Committed alert menu changes:', {
-        scheduleType,
-        prayerIndex,
-        englishName,
-        atTimeChanged,
-        reminderChanged,
-        currentState,
-      });
+    return committed;
+  };
 
-      return true;
-    } catch (error) {
-      // Rollback preferences on failure
-      NotificationStore.setPrayerAlertType(scheduleType, prayerIndex, originalState.atTimeAlert);
-      NotificationStore.setReminderAlertType(scheduleType, prayerIndex, originalState.reminderAlert);
-      NotificationStore.setReminderInterval(scheduleType, prayerIndex, originalState.reminderInterval);
+  /**
+   * Commits a new Athan sound selection
+   *
+   * The store commits it under the scheduling lock, so the athan Settings shows and the athan the alarms carry can
+   * never disagree. This reads the athan in force first, because that is what the store puts back if any part of
+   * the change fails.
+   *
+   * @param selection Athan sound index to commit
+   * @returns Promise resolving to boolean indicating success
+   */
+  const commitSoundSelection = async (selection: number): Promise<boolean> => {
+    const previousSelection = NotificationStore.getSoundPreference();
 
-      logger.error('NOTIFICATION: Failed to commit alert menu changes, rolled back:', error);
-      return false;
-    }
+    perfMark('sound_commit_start');
+    const committed = await NotificationStore.commitSoundSelection(
+      selection,
+      previousSelection,
+      Device.updateAndroidChannel
+    );
+    perfMeasure('sound_commit', 'sound_commit_start');
+
+    return committed;
   };
 
   return {
     checkInitialPermissions,
     ensurePermissions,
     commitAlertMenuChanges,
+    commitSoundSelection,
   };
 };

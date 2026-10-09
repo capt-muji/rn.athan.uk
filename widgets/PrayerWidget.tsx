@@ -1,6 +1,26 @@
-import { Circle, HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+// Jetpack names enter unaliased on purpose: the Android widget runtime
+// injects @expo/ui/jetpack-compose's exports as globals under their
+// canonical names, and the serialized layout body's identifiers resolve
+// against those globals — an alias like `Text as Text` compiles
+// app-side but is undefined in the widget runtime (caught on the 3T).
+// Text/Image/Spacer are shared spellings: the swift-ui globals answer
+// them on iOS, the jetpack globals on Android, and the body never needs
+// to know which.
+import { Box, Button, Column, Row } from '@expo/ui/jetpack-compose';
+// Canonical modifier names, same rule as the components above: the Android
+// runtime's globals answer these spellings. padding is the one collision
+// with swift-ui's modifier of the same name, so the Android calls go
+// through a local positional cast inside the widget body.
 import {
-  blur,
+  fillMaxHeight,
+  fillMaxSize,
+  fillMaxWidth,
+  height,
+  type ModifierConfig,
+  width,
+} from '@expo/ui/jetpack-compose/modifiers';
+import { HStack, Image, RoundedRectangle, Spacer, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+import {
   containerBackground,
   font,
   foregroundStyle,
@@ -9,16 +29,17 @@ import {
   lineLimit,
   minimumScaleFactor,
   monospacedDigit,
+  multilineTextAlignment,
   offset,
   padding,
-  scaleEffect,
   shadow,
   strokeBorder,
   textCase,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
+import type { ReactElement, ReactNode } from 'react';
 
-import type { PrayerWidgetProps } from '@/shared/widgetTypes';
+import type { PrayerWidgetAndroidProps, PrayerWidgetProps } from '@/shared/widgetTypes';
 
 /**
  * Home screen widget layout (systemSmall + systemMedium), one shared
@@ -35,8 +56,8 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * system appearance; only the props-less gallery placeholder falls back
  * to the system color scheme.
  *
- * systemSmall — a translucent card with soft orb glow, a centered trio
- * (bold prayer name, minute-ceil countdown hero, absolute HH:mm) over the
+ * systemSmall — a translucent card, a centered trio
+ * (bold prayer name, ticking countdown hero, absolute HH:mm) over the
  * day · city footer. Identical for both schedules.
  *
  * systemMedium — the left half repeats the small trio; the right half
@@ -57,8 +78,45 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * widget extension's separate JS runtime, where @expo/ui components and
  * modifiers resolve as globals.
  */
-const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
+const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, environment: WidgetEnvironment) => {
   'widget';
+
+  // The two widget runtimes expose different component globals: iOS injects
+  // @expo/ui/swift-ui (VStack...), Android injects @expo/ui/jetpack-compose
+  // (Column...). The platform pick therefore rides an identifier that exists
+  // on exactly one side, and the two compositions below stay native to their
+  // runtime instead of sharing an abstraction that can drift both ways.
+  const isAndroidRuntime = typeof Column !== 'undefined';
+  const androidProps = props !== null && 'days' in props ? (props as PrayerWidgetAndroidProps) : null;
+
+  // The Android composition spells Text/Image like iOS does (each runtime's
+  // globals answer their own platform), but the app-side types come from
+  // swift-ui alone, so the jetpack prop shapes ride these local casts.
+  // Locals serialize with the body; only free identifiers would not.
+  const ATextEl = Text as unknown as (elementProps: {
+    color?: string;
+    style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600' };
+    fontWeight?: 'normal' | 'bold' | '600';
+    maxLines?: number;
+    children?: string;
+  }) => ReactNode;
+  const AImageEl = Image as unknown as (elementProps: {
+    source?: { uri: string };
+    contentScale?: 'fit' | 'fillBounds';
+    modifiers?: unknown[];
+  }) => ReactNode;
+  const APad = padding as unknown as (start: number, top: number, end: number, bottom: number) => ModifierConfig;
+  // The time column's Text spans the full list width and right-justifies via
+  // textAlign (converter-supported); the cast carries the jetpack-only
+  // textAlign prop past the swift-ui typing, like ATextEl/AImageEl
+  const ATimeEl = Text as unknown as (elementProps: {
+    color?: string;
+    style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600' };
+    maxLines?: number;
+    textAlign?: 'end';
+    modifiers?: ModifierConfig[];
+    children?: string;
+  }) => ReactNode;
 
   // Theme and schedule arrive on the entry — each gallery kind receives
   // its own timeline, so the palette is fixed at placement. The props-less
@@ -68,24 +126,18 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   const fallbackTheme = environment.colorScheme === 'dark' ? 'dark' : 'light';
   const theme = props?.theme ?? fallbackTheme;
   const isDark = theme === 'dark';
-  const isMedium = environment.widgetFamily === 'systemMedium';
+  const isMedium = isAndroidRuntime ? androidProps?.size === 'medium' : environment.widgetFamily === 'systemMedium';
+  // The iOS entries below read `entry`; Android data rides androidProps.
+  const entry = props === null ? null : (props as PrayerWidgetProps);
 
   // Two self-contained palettes: text colors and the active-pill
-  // treatment. The orb lighting is DARK-only — the light cards sit on
-  // their plain translucent background. Fixed-size orbs are capped at
-  // 170pt — anything larger inflates the card ZStack past the system slot
-  // and pushes the standard list's flush footer into the card's bottom
-  // edge (verified at 185pt). The main orb rides high off-center
-  // (ambient light, not a spot); the bottom-left orb anchors near the
-  // left edge; the below-list orb sits centered under the day list to
-  // fill the dark bottom-center. Small cards mirror their bottom-left
-  // orb onto the bottom right at 75% strength to lift the dark corner.
+  // treatment.
   const LIGHT = {
     card: 'rgba(252, 252, 254, 0.92)',
     eyebrow: '#db2777',
     hero: '#1e1b2e',
     secondary: 'rgba(42, 68, 130, 0.42)',
-    footer: 'rgba(42, 68, 130, 0.34)',
+    footer: 'rgba(42, 68, 130, 0.255)',
     staleIcon: '#db2777',
     rowPassed: '#2f3d5c',
     rowUpcoming: 'rgba(42, 68, 130, 0.32)',
@@ -98,64 +150,330 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
   };
 
   const DARK = {
-    card: 'rgba(26, 26, 92, 0.88)',
-    eyebrow: '#ff69b4',
-    hero: '#ffffff',
-    secondary: isMedium ? 'rgba(160, 182, 228, 0.54)' : 'rgba(173, 193, 254, 0.54)',
-    footer: isMedium ? 'rgba(146, 164, 212, 0.38)' : 'rgba(156, 169, 222, 0.38)',
-    staleIcon: '#ff69b4',
-    rowPassed: '#ffffff',
-    rowUpcoming: isMedium ? 'rgba(160, 182, 228, 0.6)' : 'rgba(173, 193, 254, 0.6)',
-    activeRowText: isExtra ? '#ffeaf4' : '#e3eaff',
-    pillFill: isExtra ? '#a123aa' : '#0847e5',
-    pillStroke: isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(8, 71, 229, 0.35)',
+    // A hint of slate lifts the near-black toward graphite (owner 2026-09-24).
+    card: 'rgba(9, 21, 47, 0.95)',
+    // Softened off pure #ff69b4 and #ffffff: both were bright enough to sting
+    // against a near-black card, so the pink takes a little white and the
+    // whites take a little of the slate tint (owner 2026-09-24).
+    eyebrow: '#f774b6',
+    hero: '#f6f8fc',
+    // One slate-blue whisper per slot (owner ruling 2026-09-20): the app's
+    // muted-text tint over a deepened screen-gradient start. The absolute
+    // time is the base, upcoming rows sit a quarter fainter, the footer
+    // half — same tint, three strengths, both sizes
+    secondary: 'rgba(138, 169, 214, 0.54)',
+    footer: 'rgba(138, 169, 214, 0.27)',
+    staleIcon: '#f774b6',
+    rowPassed: '#f6f8fc',
+    rowUpcoming: 'rgba(138, 169, 214, 0.405)',
+    activeRowText: isExtra ? '#ffeaf4' : '#cad8ed',
+    pillFill: isExtra ? '#a123aa' : '#2743e0',
+    pillStroke: isExtra ? 'rgba(146, 0, 162, 0.35)' : 'rgba(39, 67, 224, 0.35)',
     pillShadow: {
-      color: isExtra ? 'rgba(95, 10, 115, 0.5)' : 'rgba(10, 30, 140, 0.5)',
+      color: isExtra ? 'rgba(95, 10, 115, 0.5)' : 'rgba(21, 37, 123, 0.5)',
       radius: 9,
       x: 0,
       y: 2,
     },
-    orbsSmall: {
-      top: 'rgba(128, 0, 255, 0.25)',
-      bottom: 'rgba(128, 0, 255, 0.45)',
-      center: 'rgba(165, 180, 252, 0.3)',
-      topSize: 85,
-      topY: -38,
-      bottomSize: 130,
-      bottomX: -70,
-      centerSize: 34,
-      corner: { color: 'rgba(128, 0, 255, 0.34)', size: 130, x: 70, y: 60, blur: 40 },
-    },
-    orbsMedium: {
-      top: 'rgba(155, 30, 255, 0.22)',
-      bottom: 'rgba(128, 0, 255, 0.45)',
-      center: 'rgba(130, 145, 240, 0.3)',
-      topSize: 165,
-      topY: -75,
-      bottomSize: 195,
-      bottomX: -110,
-      centerSize: 44,
-      corner: { color: 'rgba(55, 75, 235, 0.17)', size: 255, x: 95, y: 58, blur: 75 },
-    },
   };
 
   const palette = isDark ? DARK : LIGHT;
-  const orbs = isDark ? (isMedium ? DARK.orbsMedium : DARK.orbsSmall) : null;
-  // The top orb's x and blur anchor to each family's absolute card coords —
-  // center-relative offsets land it in the small card's corner on medium.
-  const topOrbX = isMedium ? -5 : 30;
-  const topOrbBlur = isMedium ? 60 : 38;
-  const bottomOrbBlur = isMedium ? 82 : 40;
 
   // Fixed row height keeps the floating pill's offset exact and the
-  // spacing static. Six 22pt rows fill the systemMedium inner height
-  // exactly, so the standard list sits flush; the shorter extras lists
-  // center between equal Spacers (see the list column below). The corner
-  // radius keeps the app's pill-to-row proportion.
-  const ROW_HEIGHT = 22;
-  const ROW_TEXT_SIZE = 12;
-  const ROW_CORNER_RADIUS = 4;
-  const LIST_WIDTH = 140;
+  // spacing static. The pill is exactly the row's height (owner ruling
+  // 2026-09-20): uniform slots like Android. Six 23pt rows overrun the
+  // systemMedium inner height by a few points and center between equal
+  // Spacers, spilling evenly into the card padding; the shorter extras
+  // lists center between equal Spacers (see the list column below). The
+  // corner radius keeps the app's pill-to-row proportion.
+  const ROW_HEIGHT = 23;
+  // Android rows sit exactly as tall as the active pill (24dp), so every
+  // slot in the list is uniform, the pill slot EQUALS the row slot (no
+  // overhang, no off-grid stretch: a 1px row-text offset the owner can see)
+  // and the air comes from the row being taller than its 13sp text; iOS
+  // keeps its 22pt rows - the owner's reference look
+  const A_ROW_HEIGHT = 24;
+  const ROW_TEXT_SIZE = 13;
+  const ROW_CORNER_RADIUS = 6;
+  // The iOS medium's list block, squeezed ~10% (owner ruling 2026-09-20):
+  // narrower rows pull the list's left edge in, and the freed width lets
+  // the hero trio center between the card's edge and the list.
+  const MEDIUM_LIST_WIDTH = 146;
+  // Fallback until a native tick stamps the real grant.
+  const ANDROID_MEDIUM_MIN_WIDTH = 310;
+  // Equal, or the two halves are not equal and the trio's centre drifts left of
+  // the card's quarter however the columns are split (owner 2026-09-24).
+  const CARD_PAD_START = 13;
+  const CARD_PAD_END = 13;
+  // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
+  // one bottom offset, both sizes, both themes, both schedules.
+  const FOOTER_BOTTOM_PAD = 16;
+  // The pill matches its row exactly (owner ruling 2026-09-20, replacing
+  // the 2026-09-19 overhang): same height as the row, no overhang —
+  // uniform list slots, both schedules.
+  const PILL_VPAD = 0;
+  // Shares, not dp: minWidth is a floor the launcher may grant exactly, and
+  // fixed columns summing past it overflow the Row, which Glance clips (the
+  // X8's sliced names). Glance's own fractions are unreachable — expo-widgets'
+  // converter drops fillMaxWidth's fraction and ignores weight, which is what
+  // starved the list on the 3T — so the grant rides the snapshot instead.
+  // REFERENCE_* are the owner-approved 3T proportions the row boxes scale from.
+  const REFERENCE_INNER_WIDTH = 347;
+  const REFERENCE_NAME_WIDTH = 82;
+  const REFERENCE_TIME_WIDTH = 54;
+  const ROW_TEXT_MIN_SIZE = 10;
+  // The pill used to span the column, dumping all the slack right of the times;
+  // 12 is the left inset the owner approved, now mirrored (owner 2026-09-24).
+  const ROW_GUTTER = 12;
+
+  // ===== Android composition =====
+  // The Android widget runtime (jetpack globals) computes everything at
+  // render time from the snapshot: the label, the active row and the stale
+  // state are derived from the carried epochs, so every render inside the
+  // window is correct without a new push. iOS keeps its precomputed-entry
+  // path below, byte-identical.
+  const A_CARD_NAME = isDark
+    ? isMedium
+      ? 'athan_widget_card_dark_medium'
+      : 'athan_widget_card_dark_small'
+    : isMedium
+      ? 'athan_widget_card_light_medium'
+      : 'athan_widget_card_light_small';
+  const A_MOON_NAME = isDark ? 'athan_widget_moon_dark' : 'athan_widget_moon_light';
+  const A_PILL_NAME = `athan_widget_pill_${isExtra ? 'extra' : 'standard'}_${theme}`;
+
+  // The runtime has read the weight from either the top level or the style
+  // object across versions, so both carry it: a silently-dropped weight is
+  // invisible in the tree but obvious on glass (owner finding 2026-09-19)
+  const AText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
+    <ATextEl color={color} fontWeight={weight} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
+      {text}
+    </ATextEl>
+  );
+
+  const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
+    <ATimeEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
+      {text}
+    </ATimeEl>
+  );
+
+  const AButtonEl = Button as unknown as (elementProps: {
+    openApp?: boolean;
+    modifiers?: ModifierConfig[];
+    children?: ReactNode;
+  }) => ReactElement;
+
+  const AOpenApp = (content: ReactNode): ReactElement => (
+    <AButtonEl openApp modifiers={[fillMaxSize()]}>
+      {content}
+    </AButtonEl>
+  );
+
+  const ACard = (footer: string | null, content: ReactNode) =>
+    AOpenApp(
+      <Box contentAlignment={footer === null ? 'center' : 'bottomCenter'} modifiers={[fillMaxSize()]}>
+        <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
+        <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(13, 13, 13, FOOTER_BOTTOM_PAD + 18)]}>
+          {content}
+        </Box>
+        {footer === null ? null : (
+          <Row
+            modifiers={[height(FOOTER_BOTTOM_PAD + 18), APad(0, 0, 0, FOOTER_BOTTOM_PAD)]}
+            verticalAlignment='center'>
+            {AText(footer, 12, 'normal', palette.footer)}
+          </Row>
+        )}
+      </Box>
+    );
+
+  // Android's countdown is computed at render time, so it carries the format
+  // itself: hours and minutes only, rounded up, never reading below a minute.
+  // iOS needs no equivalent — SwiftUI ticks its own timer from the segment.
+  const ALabel = (targetEpochMs: number, nowMs: number): string => {
+    const totalMinutes = Math.max(1, Math.ceil((targetEpochMs - nowMs) / 60000));
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (hours === 0) return `${minutes}m`;
+    if (minutes === 0) return `${hours}h`;
+    return `${hours}h ${minutes}m`;
+  };
+
+  // "Mon · Lon" from a Gregorian label, "Raj 1 · Lon" from a Hijri one —
+  // the same token shortening the iOS footer performs.
+  const AFooter = (label: string): string => {
+    const datePrefix = typeof label === 'string' && label.length > 0 ? (label.split(',')[0] as string) : '';
+    const dateTokens = datePrefix.split(' ');
+    if (dateTokens.length === 1) return dateTokens[0];
+    const monthPrefix = dateTokens[0].slice(0, 3);
+    const dayNumber = dateTokens[dateTokens.length - 1];
+    return `${monthPrefix} ${dayNumber}`;
+  };
+
+  const ANeutral = () =>
+    ACard(
+      null,
+      <Column horizontalAlignment='center'>
+        {AText('Athan', 15, '600', palette.hero)}
+        <Spacer modifiers={[height(5)]} />
+        {AText('Prayer times for London', 12, 'normal', palette.secondary)}
+      </Column>
+    );
+
+  const AStale = () =>
+    ACard(
+      null,
+      <Column horizontalAlignment='center'>
+        <AImageEl source={{ uri: A_MOON_NAME }} contentScale='fit' modifiers={[width(26), height(26)]} />
+        <Spacer modifiers={[height(7)]} />
+        {AText('Out of date', 14, 'bold', palette.hero)}
+        <Spacer modifiers={[height(7)]} />
+        {isMedium ? (
+          AText('Open Athan to refresh', 12, 'normal', palette.secondary)
+        ) : (
+          <Column horizontalAlignment='center'>
+            {AText('Open Athan', 12, 'normal', palette.secondary)}
+            <Spacer modifiers={[height(1)]} />
+            {AText('to refresh', 12, 'normal', palette.secondary)}
+          </Column>
+        )}
+      </Column>
+    );
+
+  const androidRender = (input: PrayerWidgetAndroidProps) => {
+    const nowMs = Date.now();
+
+    type ARow = PrayerWidgetAndroidProps['days'][number]['rows'][number];
+    let next: ARow | null = null;
+    let nextEpoch: number | null = null;
+    let nextDayLabel = '';
+    for (const day of input.days) {
+      for (const row of day.rows) {
+        const epoch = row.epochMs;
+        // 0 is the unavailable encoding; snapshots stored by older builds may still hold null
+        if (!(epoch > nowMs)) continue;
+        if (nextEpoch === null || epoch < nextEpoch) {
+          next = row;
+          nextEpoch = epoch;
+          nextDayLabel = day.dateLabel;
+        }
+      }
+    }
+
+    if (nowMs > input.horizonEpochMs || next === null || !(next.epochMs > 0)) {
+      return <AStale />;
+    }
+
+    const footer = AFooter(nextDayLabel);
+    // fillMaxWidth is what makes horizontalAlignment mean anything: a Column
+    // that shrink-wraps its text centres nothing and parks at its parent's
+    // start, which read as the trio sitting left of its half (owner 2026-09-24).
+    const trio = (
+      <Column horizontalAlignment='center' modifiers={[fillMaxWidth()]}>
+        {/* No tracking: iOS sets kerning(0.5), and the converter drops
+            letterSpacing at the Kotlin boundary, so the only lever here is a
+            space character between glyphs. The narrowest one is a hair space
+            at ~1.4sp, nearly 3x iOS's half point, which reads as gaps wide
+            enough to hold another letter (owner 2026-09-25). Plain text is far
+            closer to iOS than the workaround was. */}
+        {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow)}
+        <Spacer modifiers={[height(2)]} />
+        {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
+        <Spacer modifiers={[height(6)]} />
+        {AText(next.time, 13, 'normal', palette.secondary)}
+      </Column>
+    );
+
+    // The on-screen day follows the NEXT prayer's day, not the calendar
+    // day: after today's Isha the list rolls to tomorrow with Fajr active,
+    // exactly when the countdown target rolls (the app's and iOS's rule).
+    type ADay = PrayerWidgetAndroidProps['days'][number];
+    const fallbackDay: ADay = { dateLabel: '', startEpochMs: 0, rows: [] };
+    let onScreenDay = fallbackDay;
+    for (const day of input.days) {
+      if (day.rows.some((row) => row === next)) onScreenDay = day;
+    }
+    const dayRows = onScreenDay.rows;
+    const activeIndex = dayRows.indexOf(next);
+    const listValid = dayRows.length > 0 && activeIndex >= 0 && activeIndex < dayRows.length;
+
+    if (!isMedium || !listValid) {
+      return ACard(footer, trio);
+    }
+
+    const stampedWidth = input.grantedWidthDp;
+    const grantedWidth = typeof stampedWidth === 'number' && stampedWidth > 0 ? stampedWidth : ANDROID_MEDIUM_MIN_WIDTH;
+    const innerWidth = grantedWidth - CARD_PAD_START - CARD_PAD_END;
+    const scale = innerWidth / REFERENCE_INNER_WIDTH;
+    // Half each, so the trio's centre and the card's quarter coincide at every
+    // grant (owner 2026-09-24). The old 170/347 share sat 3dp off that.
+    const HERO_WIDTH = Math.floor(innerWidth / 2);
+    // Remainder, not its own rounded share: two rounded shares can sum a dp
+    // past the inner width, and a dp of overflow clips.
+    const LIST_WIDTH = innerWidth - HERO_WIDTH;
+    const ROW_NAME_WIDTH = Math.round(REFERENCE_NAME_WIDTH * scale);
+    const ROW_TIME_WIDTH = Math.round(REFERENCE_TIME_WIDTH * scale);
+    // A grant too narrow for a full gutter each side halves it instead: a flat
+    // 12 would drive PILL_LEAD negative, spilling the pill out of the column.
+    const rowContentWidth = ROW_NAME_WIDTH + ROW_TIME_WIDTH;
+    const gutter = Math.max(0, Math.min(ROW_GUTTER, Math.floor((LIST_WIDTH - rowContentWidth) / 2)));
+    const PILL_LEAD = LIST_WIDTH - rowContentWidth - 2 * gutter;
+    const ROWS_LEAD = PILL_LEAD + gutter;
+    // Glance has no autoshrink, so text scales with its box or "Last Third"
+    // clips at 13sp in a narrowed name column.
+    const rowTextSize = Math.max(ROW_TEXT_MIN_SIZE, Math.min(ROW_TEXT_SIZE, Math.round(ROW_TEXT_SIZE * scale)));
+
+    // Names and times render as overlayed layers, not one Row: a
+    // fillMaxWidth Spacer between them starves the trailing time to zero
+    // width in Glance (same starvation class as the hero column). Times
+    // right-justify via textAlign on a full-width Text.
+    // One self-contained row: fixed-width name and time boxes with pure
+    // alignment (topStart / topEnd). Every fill-based or overlay-based
+    // two-column attempt mislaid the times in the Glance stack (three
+    // device-caught failures); fixed boxes with small slack render exactly.
+    const ARowLine = (row: ARow, index: number) => {
+      const rowColor =
+        index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
+      return (
+        <Row verticalAlignment='center' modifiers={[height(A_ROW_HEIGHT)]}>
+          <Box contentAlignment='centerStart' modifiers={[height(A_ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
+            {AText(row.name, rowTextSize, 'normal', rowColor)}
+          </Box>
+          <Box contentAlignment='centerEnd' modifiers={[height(A_ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
+            {ATimeText(row.time, rowTextSize, 'bold', rowColor)}
+          </Box>
+        </Row>
+      );
+    };
+
+    return AOpenApp(
+      <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
+        <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
+        <Row modifiers={[fillMaxSize(), APad(CARD_PAD_START, 13, CARD_PAD_END, FOOTER_BOTTOM_PAD)]}>
+          <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
+            <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
+              {trio}
+            </Box>
+            {AText(footer, 12, 'normal', palette.footer)}
+          </Box>
+          <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
+            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
+              <Column modifiers={[APad(PILL_LEAD, 1, 0, 0)]}>
+                <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
+                <AImageEl
+                  source={{ uri: A_PILL_NAME }}
+                  contentScale='fillBounds'
+                  modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
+                />
+              </Column>
+              <Column modifiers={[APad(ROWS_LEAD, 0, 0, 0)]}>
+                {dayRows.map((row, index) => ARowLine(row, index))}
+              </Column>
+            </Box>
+          </Box>
+        </Row>
+      </Box>
+    );
+  };
 
   // Terminal state: every timeline entry has passed and the app has not
   // re-pushed. Tapping the widget opens the app, so the whole card is the
@@ -169,11 +487,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
 
     return (
       <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
-        <Blobs />
         <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Spacer />
           <Image systemName='moon.stars.fill' size={26} color={palette.staleIcon} />
-          <Text modifiers={[font({ size: 14, weight: 'semibold' }), foregroundStyle(palette.hero)]}>Out of date</Text>
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(palette.hero)]}>Out of date</Text>
           {environment.widgetFamily === 'systemMedium' ? (
             refreshLine('Open Athan to refresh')
           ) : (
@@ -200,115 +517,81 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     </ZStack>
   );
 
-  if (props == null) {
+  if (entry == null) {
+    if (isAndroidRuntime) {
+      return <ANeutral />;
+    }
     return <NeutralCard title='Athan' subtitle='Prayer times for London' />;
   }
 
-  // The glow lighting — three blurred orbs: a main orb above the hero, a
-  // bottom-left orb, and a small centered orb rising through the countdown.
-  // An orb larger than the card's layout height inflates the card's content
-  // area and pushes the footer toward the bottom edge — oversized orbs
-  // (the medium 165s–195s) therefore render from a 94pt layout frame scaled up
-  // via scaleEffect, a visual transform that cannot affect layout; the
-  // blur divides by the scale to land the same softness.
-  const OVERSIZE_ORB_LAYOUT = 94;
-  const orbLayoutSize = (size: number): number => (size > 155 ? OVERSIZE_ORB_LAYOUT : size);
-  const orbScale = (size: number): number => size / orbLayoutSize(size);
-
-  // The light theme renders no orbs — only the dark cards carry the blur.
-  const Blobs = () => {
-    if (!orbs) {
-      return null;
+  if (isAndroidRuntime) {
+    if (androidProps === null) {
+      return <ANeutral />;
     }
-    const bottomLayoutSize = orbLayoutSize(orbs.bottomSize);
-    const bottomScale = orbScale(orbs.bottomSize);
-    const topLayoutSize = orbLayoutSize(orbs.topSize);
-    const topScale = orbScale(orbs.topSize);
-    const cornerLayoutSize = orbs.corner ? orbLayoutSize(orbs.corner.size) : 0;
-    const cornerScale = orbs.corner ? orbScale(orbs.corner.size) : 1;
-
-    return (
-      <ZStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
-        <Circle
-          modifiers={[
-            frame({ width: topLayoutSize, height: topLayoutSize }),
-            scaleEffect(topScale),
-            offset({ x: topOrbX, y: orbs.topY }),
-            foregroundStyle(orbs.top),
-            blur(topOrbBlur / topScale),
-          ]}
-        />
-        <Circle
-          modifiers={[
-            frame({ width: bottomLayoutSize, height: bottomLayoutSize }),
-            scaleEffect(bottomScale),
-            offset({ x: orbs.bottomX, y: 60 }),
-            foregroundStyle(orbs.bottom),
-            blur(bottomOrbBlur / bottomScale),
-          ]}
-        />
-        <Circle
-          modifiers={[
-            frame({ width: orbs.centerSize, height: orbs.centerSize }),
-            offset({ x: 0, y: 8 }),
-            foregroundStyle(orbs.center),
-            blur(30),
-          ]}
-        />
-        {orbs.corner ? (
-          <Circle
-            modifiers={[
-              frame({ width: cornerLayoutSize, height: cornerLayoutSize }),
-              scaleEffect(cornerScale),
-              offset({ x: orbs.corner.x, y: orbs.corner.y }),
-              foregroundStyle(orbs.corner.color),
-              blur(orbs.corner.blur / cornerScale),
-            ]}
-          />
-        ) : null}
-      </ZStack>
-    );
-  };
+    return androidRender(androidProps);
+  }
 
   try {
     // Every timeline entry has passed, or an older app version wrote the
     // entry without segment bounds — both degrade to the refresh card.
-    const segmentValid = typeof props.nextEpochMs === 'number' && typeof props.prevEpochMs === 'number';
-    if (props.stale === true || !segmentValid) {
+    const segmentValid = typeof entry.nextEpochMs === 'number' && typeof entry.prevEpochMs === 'number';
+    if (entry.stale === true || !segmentValid) {
       return <StaleCard />;
     }
 
-    // Footer: the next prayer's date marker, then the short city.
-    // Gregorian yields "Mon · Lon"; Hijri yields "Raj 1 · Lon". NOTE: plain
-    // string separator only — the extension's JS runtime does not split on
-    // regex separators (/\s+/ silently returns the whole string).
+    // Footer: the next prayer's day marker alone. NOTE: plain string
+    // separator only — the extension's JS runtime does not split on regex
+    // separators (/\s+/ silently returns the whole string).
     const datePrefix =
-      typeof props.dateLabel === 'string' && props.dateLabel.length > 0 ? props.dateLabel.split(',')[0] : '';
+      typeof entry.dateLabel === 'string' && entry.dateLabel.length > 0 ? entry.dateLabel.split(',')[0] : '';
     const dateTokens = datePrefix.split(' ');
-    let dayPart = '';
+    let footer = '';
     if (dateTokens.length === 1) {
-      dayPart = dateTokens[0];
-    } else if (dateTokens.length > 1) {
+      footer = dateTokens[0];
+    } else {
       const monthPrefix = dateTokens[0].slice(0, 3);
       const dayNumber = dateTokens[dateTokens.length - 1];
-      dayPart = `${monthPrefix} ${dayNumber}`;
+      footer = `${monthPrefix} ${dayNumber}`;
     }
-    const footer = dayPart ? `${dayPart} · Lon` : 'Lon';
 
     // The medium list is only renderable with a complete day snapshot:
     // entries from older app versions or a malformed sequence fall back to
     // the hero-only composition instead of a broken list.
-    const rows = Array.isArray(props.prayers) ? props.prayers : [];
-    const activeIndex = typeof props.activeIndex === 'number' ? props.activeIndex : -1;
+    const rows = Array.isArray(entry.prayers) ? entry.prayers : [];
+    const activeIndex = typeof entry.activeIndex === 'number' ? entry.activeIndex : -1;
     const listValid = rows.length > 0 && activeIndex >= 0 && activeIndex < rows.length;
 
     // minLength 0 on the list column's Spacers removes their default
     // minimum, which inflated the HStack's height and pushed the shared
-    // hero column's footer past the card's 13pt inset. After that the
-    // standard 6-row list still lays the hero column 1pt short of the
-    // smalls' inset, so a half-point lift restores it (the runtime applies
+    // hero column's footer past the card's 13pt inset. The standard 6-row
+    // list at 23pt rows overruns the inner height by ~6pt, dragging the
+    // footer that far below the extras medium's flush inset (owner ruling
+    // 2026-09-20: the standard footer must sit exactly where the extras
+    // footer sits), so the offset pulls it back up (the runtime applies
     // the offset at double strength).
-    const footerLift = isMedium && rows.length >= 6 ? 0.5 : 0;
+    const footerLift = isMedium && rows.length >= 6 ? -3 : 0;
+
+    // iOS renders Text(timerInterval:) in its own process, so the countdown
+    // ticks every second with no timeline entry behind it. The swift-ui types
+    // only describe the string form, so the timer props ride this cast.
+    const TickingTextEl = Text as unknown as (elementProps: {
+      timerInterval?: { lower: Date; upper: Date };
+      countsDown?: boolean;
+      modifiers?: unknown[];
+    }) => ReactNode;
+
+    // Both trailing modifiers are load-bearing for a text that redraws every
+    // second: Text(timerInterval:) reserves a worst-case width and leaves its
+    // glyphs against the leading edge of it, and proportional digits would
+    // shuffle the whole string sideways on every tick.
+    const heroModifiers = [
+      font({ size: 22, weight: 'bold' }),
+      foregroundStyle(palette.hero),
+      lineLimit(1),
+      minimumScaleFactor(0.6),
+      monospacedDigit(),
+      multilineTextAlignment('center'),
+    ];
 
     // The hero column — the small widget's centered trio plus the footer,
     // shared verbatim by both families so the countdown reads identically.
@@ -318,27 +601,22 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
         <VStack spacing={6}>
           <Text
             modifiers={[
-              font({ size: 12, weight: 'bold' }),
+              font({ size: 14, weight: 'bold' }),
               foregroundStyle(palette.eyebrow),
               textCase('uppercase'),
               kerning(0.5),
               lineLimit(1),
               minimumScaleFactor(0.6),
             ]}>
-            {props.nextName}
+            {entry.nextName}
           </Text>
-          {typeof props.countdownLabel === 'string' && props.countdownLabel.length > 0 ? (
-            <Text
-              modifiers={[
-                font({ size: 26, weight: 'bold' }),
-                monospacedDigit(),
-                foregroundStyle(palette.hero),
-                lineLimit(1),
-                minimumScaleFactor(0.6),
-              ]}>
-              {props.countdownLabel}
-            </Text>
-          ) : null}{' '}
+          {/* Bounded by the segment rather than by the render clock, so the
+              archived view is a pure function of its entry. */}
+          <TickingTextEl
+            timerInterval={{ lower: new Date(entry.prevEpochMs), upper: new Date(entry.nextEpochMs) }}
+            countsDown
+            modifiers={heroModifiers}
+          />
           <Text
             modifiers={[
               font({ size: 13, weight: 'regular' }),
@@ -346,13 +624,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
               foregroundStyle(palette.secondary),
               lineLimit(1),
             ]}>
-            {props.nextTime}
+            {entry.nextTime}
           </Text>
         </VStack>
         <Spacer />
         <Text
           modifiers={[
-            font({ size: 9, weight: 'medium' }),
+            font({ size: 12, weight: 'medium' }),
             foregroundStyle(palette.footer),
             kerning(0.4),
             lineLimit(1),
@@ -375,7 +653,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
         return (
           <HStack
             spacing={0}
-            modifiers={[frame({ maxWidth: Infinity, height: ROW_HEIGHT }), padding({ leading: 10, trailing: 10 })]}>
+            modifiers={[
+              frame({ height: ROW_HEIGHT }),
+              frame({ maxWidth: Infinity }),
+              padding({ leading: 10, trailing: 10 }),
+            ]}>
             <Text
               modifiers={[
                 font({ size: ROW_TEXT_SIZE, weight: 'regular' }),
@@ -419,31 +701,36 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
               cornerRadius: ROW_CORNER_RADIUS,
             }),
             shadow({ radius: pillShadow.radius, x: pillShadow.x, y: pillShadow.y, color: pillShadow.color }),
-            frame({ height: ROW_HEIGHT }),
-            offset({ y: pillY }),
+            frame({ height: ROW_HEIGHT + 2 * PILL_VPAD }),
+            offset({ y: pillY - PILL_VPAD }),
           ]}
         />
       );
 
       return (
         <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
-          <Blobs />
           <HStack
             spacing={14}
             modifiers={[
               padding({ leading: 13, trailing: 20, top: 13, bottom: 13 }),
               frame({ maxWidth: Infinity, maxHeight: Infinity }),
             ]}>
+            {/* The hero column takes everything the list leaves, so the
+                trio centers exactly between the card's left edge and the
+                list — equal air both sides (owner ruling 2026-09-20). */}
             <HeroColumn />
-            {/* The list column: the row block (pill + rows) centers
+            {/* The list column: a fixed-width block flush against the
+                card's right inset. The row block (pill + rows) centers
                 vertically between equal Spacers — Infinity frames do not
                 make stacks greedy in the widget runtime, so Spacer-
                 centering is the only reliable vertical centering. The
                 standard 6-row list fills the card's inner height exactly;
                 the extras 4/5-row lists get symmetric insets. */}
-            <VStack spacing={0} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+            <VStack spacing={0} modifiers={[frame({ width: MEDIUM_LIST_WIDTH }), frame({ maxHeight: Infinity })]}>
               <Spacer minLength={0} />
-              <ZStack alignment='top' modifiers={[frame({ width: LIST_WIDTH }), padding({ leading: 4, trailing: 4 })]}>
+              <ZStack
+                alignment='top'
+                modifiers={[frame({ width: MEDIUM_LIST_WIDTH }), padding({ leading: 4, trailing: 4 })]}>
                 <ActivePill />
                 <VStack spacing={0} alignment='leading' modifiers={[frame({ maxWidth: Infinity })]}>
                   {rows.map((row, index) => (
@@ -461,7 +748,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
     // systemSmall (or the medium fallback): the hero alone fills the card.
     return (
       <ZStack modifiers={[containerBackground(palette.card, 'widget')]}>
-        <Blobs />
         <VStack spacing={0} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <HeroColumn />
         </VStack>
@@ -479,7 +765,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps, environment: WidgetEnvironmen
 // gallery lists one row per kind, and size-exclusive kinds are what make
 // the smalls group before the mediums within each theme. stores/widget.ts
 // pushes every kind its own schedule- and theme-stamped timeline; the
-// entry props and environment.widgetFamily do the rest.
+// entry entry and environment.widgetFamily do the rest.
 export const PrayerWidget = createWidget('PrayerWidget', AthanHomeWidget);
 export const ExtrasWidget = createWidget('ExtrasWidget', AthanHomeWidget);
 export const PrayerWidgetMedium = createWidget('PrayerWidgetMedium', AthanHomeWidget);

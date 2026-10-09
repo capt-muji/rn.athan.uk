@@ -1,85 +1,60 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useAnimationColor } from '@/hooks/useAnimation';
-import { usePrayer } from '@/hooks/usePrayer';
-import { useSchedule } from '@/hooks/useSchedule';
-import { ANIMATION, COLORS, SPACING, TEXT } from '@/shared/constants';
+import { useDerivedColor } from '@/hooks/useAnimation';
+import { getShownTime, usePrayer } from '@/hooks/usePrayer';
+import { usePrevious } from '@/hooks/usePrevious';
+import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
+import { ANIMATION, COLORS, SPACING, TEXT, UNAVAILABLE_TIME } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/overlay';
-import { refreshUIAtom } from '@/stores/ui';
+import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 
 interface Props {
   type: ScheduleType;
   index: number;
-  isOverlay?: boolean;
 }
 
 /**
  * Prayer time display component
  *
- * Displays the prayer time with color animation based on prayer state.
- * Supports cascade animations when date changes and highlights when
- * the prayer is selected in the overlay.
+ * Overlay-aware (ADR-014): when this row is overlay-selected AND passed, the
+ * time shows the next occurrence (what the old duplicated row displayed).
  *
  * @param type - Schedule type (Standard or Extra)
  * @param index - Prayer index within the schedule
- * @param isOverlay - Whether this is rendered in the overlay (default: false)
  */
-export default function PrayerTime({ type, index, isOverlay = false }: Props) {
-  const refreshUI = useAtomValue(refreshUIAtom);
-
+export default function PrayerTime({ type, index }: Props) {
   const Schedule = useSchedule(type);
-  const Prayer = usePrayer(type, index, isOverlay);
-  const overlay = useAtomValue(overlayAtom);
+  const Prayer = usePrayer(type, index);
+  const NextOccurrencePrayer = usePrayer(type, index, true);
+  const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
 
-  const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
+  const displayTime = getShownTime(isSelectedForOverlay, Prayer, NextOccurrencePrayer) ?? UNAVAILABLE_TIME;
+
+  const previousDisplayDate = usePrevious(Schedule.displayDate);
+  const isCascadeRoll =
+    previousDisplayDate !== Schedule.displayDate &&
+    !isSelectedForOverlay &&
+    !Schedule.isLastPrayerPassed &&
+    isCascadeRow(Schedule, index);
+  const previousIsSelected = usePrevious(isSelectedForOverlay);
+  const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
+
+  // Timings mirror Prayer.tsx: selection 150ms, next-prayer advance and cascade 1000ms
+  const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
+  const colorStyle = useDerivedColor(colorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
+    duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
+    delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
-
-  // Detect if this prayer is currently selected in the overlay.
-  // Note: Alert.tsx uses Prayer.isOverlay prop because Alert components render separately
-  // inside the overlay. For Prayer.tsx and PrayerTime.tsx in the main schedule, we detect
-  // overlay selection via overlayAtom to animate when tapped (before overlay renders).
-  const isSelectedForOverlay = useMemo(
-    () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
-    [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
-  );
-
-  // Force animation to respect new state immediately when refreshing
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos is read from the fresh render closure at signal time
-  useEffect(() => {
-    AnimColor.animate(Prayer.ui.initialColorPos);
-  }, [refreshUI]);
-
-  // Animate when next prayer changes
-  useEffect(() => {
-    if (Prayer.isNext) AnimColor.animate(1);
-  }, [Prayer.isNext, AnimColor.animate]);
-
-  // Cascade animation when date changes and we're at first prayer
-  // biome-ignore lint/correctness/useExhaustiveDependencies: displayDate is the deliberate cascade trigger; the remaining values are read once per date change by design
-  useEffect(() => {
-    if (!isSelectedForOverlay && !Schedule.isLastPrayerPassed && Schedule.nextPrayerIndex === 0 && index !== 0) {
-      const delay = getCascadeDelay(index, type);
-      AnimColor.animate(0, { delay });
-    }
-  }, [Schedule.displayDate, isSelectedForOverlay]);
-
-  // Overlay-aware animation: bright when selected, return to natural state when closed
-  // biome-ignore lint/correctness/useExhaustiveDependencies: keyed on selection only; initialColorPos changes are handled by the refresh/next/cascade effects
-  useEffect(() => {
-    const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimColor.animate(colorPos, { duration: ANIMATION.durationVeryFast });
-  }, [isSelectedForOverlay]);
 
   return (
     <View style={[styles.container]}>
-      <Animated.Text style={[styles.text, AnimColor.style]}>{Prayer.time}</Animated.Text>
+      <Animated.Text style={[styles.text, colorStyle]}>{displayTime}</Animated.Text>
     </View>
   );
 }

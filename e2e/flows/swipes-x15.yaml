@@ -1,0 +1,24 @@
+appId: com.mugtaba.athan
+name: swipes-x15
+tags:
+  - baseline
+---
+# Pager swipe cadence suite (std <-> extras). Swipes at 21% height avoid the
+# prayer rows and the countdown bar.
+- repeat:
+    times: 15
+    commands:
+      - swipe:
+          start: '80%, 21%'
+          end: '20%, 21%'
+          duration: 250
+      - extendedWaitUntil:
+          visible: 'Midnight'
+          timeout: 4000
+      - swipe:
+          start: '20%, 21%'
+          end: '80%, 21%'
+          duration: 250
+      - extendedWaitUntil:
+          visible: 'Fajr'
+          timeout: 4000

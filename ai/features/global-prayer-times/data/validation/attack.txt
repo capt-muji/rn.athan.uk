@@ -1,0 +1,144 @@
+# R7 Part 5: the case against `adhan@4.4.6`
+
+## Charge 1: `SolarTime.afternoon` carries `// TODO source shadow angle calculation`
+
+The shipped code (`src/SolarTime.ts` L99-105, `adhan@4.4.6`):
+
+```ts
+afternoon(shadowLength: number) {
+  // TODO source shadow angle calculation
+  const tangent = Math.abs(this.observer.latitude - this.solar.declination);
+  const inverse = shadowLength + Math.tan(degreesToRadians(tangent));
+  const angle = radiansToDegrees(Math.atan(1.0 / inverse));
+  return this.hourAngle(angle, true);
+}
+```
+
+Two things are wrong with it on inspection, and both are measurable. It uses
+the NOON declination for an event hours later, and it approximates the noon
+zenith distance as `|latitude - declination|`, which ignores the equation of
+time and the observer's longitude within the timezone.
+
+The exact definition: Asr begins when the sun's altitude `A` satisfies
+`cot(A) = f + cot(a)` where `a` is the sun's altitude at TRUE NOON and `f` is
+the shadow factor. Solved here independently with `astronomy-engine`, taking
+the altitude at the actual transit instant and iterating the declination to
+the Asr time. Delta is adhan minus the exact solve, in minutes.
+
+### Standard Asr (shadow factor 1)
+
+| city | lat | n | adhan exact days | adhan mean (min) | adhan worst | `praytime` exact | `praytime` mean | `praytime` worst |
+|---|---|---|---|---|---|---|---|---|
+| Makkah | 21.4 | 365 | 267 | 0.0 | 1 | 337 | 0.0 | 1 |
+| Cairo | 30.0 | 365 | 237 | 0.1 | 1 | 330 | -0.0 | 1 |
+| Karachi | 24.9 | 365 | 289 | 0.0 | 1 | 343 | 0.0 | 1 |
+| Jakarta | -6.2 | 365 | 328 | 0.0 | 1 | 353 | 0.0 | 1 |
+| NewYork | 40.7 | 365 | 150 | 0.1 | 1 | 296 | 0.1 | 1 |
+| London | 51.5 | 365 | 135 | 0.0 | 2 | 294 | -0.0 | 1 |
+| Oslo | 59.9 | 365 | 92 | 0.0 | 2 | 275 | 0.0 | 1 |
+| Reykjavik | 64.1 | 365 | 55 | 0.1 | 6 | 238 | 0.1 | 1 |
+| Tromso | 69.6 | 308 | 56 | 7.8 | 2279 | 188 | 0.0 | 1 |
+
+### Hanafi Asr (shadow factor 2)
+
+| city | lat | n | adhan exact days | adhan mean (min) | adhan worst | `praytime` exact | `praytime` mean | `praytime` worst |
+|---|---|---|---|---|---|---|---|---|
+| Makkah | 21.4 | 365 | 323 | -0.0 | 1 | 347 | 0.0 | 1 |
+| Cairo | 30.0 | 365 | 322 | 0.0 | 1 | 337 | -0.0 | 1 |
+| Karachi | 24.9 | 365 | 324 | 0.0 | 1 | 337 | 0.0 | 1 |
+| Jakarta | -6.2 | 365 | 352 | 0.0 | 1 | 343 | 0.0 | 1 |
+| NewYork | 40.7 | 365 | 255 | 0.0 | 1 | 300 | 0.0 | 1 |
+| London | 51.5 | 365 | 252 | 0.1 | 1 | 276 | 0.1 | 1 |
+| Oslo | 59.9 | 365 | 172 | 0.0 | 2 | 255 | 0.0 | 1 |
+| Reykjavik | 64.1 | 365 | 124 | 0.0 | 4 | 240 | 0.0 | 1 |
+| Tromso | 69.6 | 308 | 108 | 4.2 | 1197 | 154 | 0.1 | 1 |
+
+## Charge 2: what the `MoonsightingCommittee` rule bypass costs the user
+
+`highlat.mjs` section E showed the setting does nothing on that path. This
+measures the SIZE: how far the MC Fajr sits from what each rule would have
+given at the same place on the same day. Delta is MC minus MWL-under-rule.
+
+| city | lat | rule | days differing | mean (min) | worst (min) |
+|---|---|---|---|---|---|
+| London | 51.5 | `middleofthenight` | 365/365 | 42.2 | 131 |
+| London | 51.5 | `seventhofthenight` | 361/365 | -5.6 | 57 |
+| London | 51.5 | `twilightangle` | 365/365 | 24.4 | 54 |
+| Oslo | 59.9 | `middleofthenight` | 365/365 | 85.4 | 191 |
+| Oslo | 59.9 | `seventhofthenight` | 187/365 | 15.6 | 50 |
+| Oslo | 59.9 | `twilightangle` | 365/365 | 57.1 | 93 |
+| Reykjavik | 64.1 | `middleofthenight` | 365/365 | 97.5 | 206 |
+| Reykjavik | 64.1 | `seventhofthenight` | 184/365 | 18.3 | 63 |
+| Reykjavik | 64.1 | `twilightangle` | 365/365 | 68.0 | 101 |
+| Tromso | 69.6 | `middleofthenight` | 248/248 | 133.3 | 232 |
+| Tromso | 69.6 | `seventhofthenight` | 129/248 | 21.0 | 217 |
+| Tromso | 69.6 | `twilightangle` | 248/248 | 95.7 | 217 |
+
+## Charge 3: `HighLatitudeRule.recommended()` never fires below the equator
+
+`src/HighLatitudeRule.ts`, verbatim:
+
+```ts
+recommended(coordinates: Coordinates) {
+  if (coordinates.latitude > 48) {
+    return HighLatitudeRule.SeventhOfTheNight;
+  } else {
+    return HighLatitudeRule.MiddleOfTheNight;
+  }
+}
+```
+
+The comparison is on the signed latitude, so Ushuaia at 54.8S gets
+`MiddleOfTheNight` while Manchester at 53.5N gets `SeventhOfTheNight`. Both
+are the same distance from the equator. Measured consequence:
+
+| city | lat | `recommended()` returns | Fajr days it differs from the mirrored choice | mean (min) | worst (min) |
+|---|---|---|---|---|---|
+| Manchester | 53.5 | `seventhofthenight` | 0/365 | 0.0 | 0 |
+| Copenhagen | 55.7 | `seventhofthenight` | 0/365 | 0.0 | 0 |
+| Ushuaia | -54.8 | `middleofthenight` | 242/365 | -54.2 | 178 |
+
+## Charge 4: did four years of silence leave a stale library
+
+Registry facts (`npm view adhan time`, fetched 2026-09-30): 4.4.3 published
+2022-05-14, then nothing until 4.4.4 on 2026-06-13, 4.4.5 on 2026-08-30 and
+4.4.6 on 2026-08-31. A three-year, eleven-month gap. The question that
+matters is whether the resumed maintenance changed any OUTPUT, because a gap
+after which nothing needed fixing is a different story from a gap that hid a bug.
+
+Every preset, every prayer, 365 days, 9 cities, `adhan@4.4.3` (2022-05-14)
+against `adhan@4.4.6` (2026-08-31). All **measured**.
+
+| city | comparisons | days differing on any prayer | worst (min) |
+|---|---|---|---|
+| Makkah | 15330 | 0 | 0 |
+| Cairo | 15330 | 0 | 0 |
+| Karachi | 15330 | 0 | 0 |
+| Jakarta | 15330 | 0 | 0 |
+| NewYork | 15330 | 0 | 0 |
+| London | 15330 | 0 | 0 |
+| Oslo | 15330 | 0 | 0 |
+| Reykjavik | 15330 | 0 | 0 |
+| Tromso | 12599 | 0 | 0 |
+
+**0 of 135239 comparisons differ between the last pre-gap release and the current one.**
+
+## Charge 5: is `praytime@3.2.0` actually the better engine
+
+The Asr tables in Charge 1 answer the physics half. The remaining question is
+what switching costs. Measured here: the whole-card delta between the two
+libraries with every preset, rounding rule and high-latitude rule matched, so
+nothing but the engine differs.
+
+| city | lat | fajr | sunrise | dhuhr | asr | maghrib | isha |
+|---|---|---|---|---|---|---|---|
+| Makkah | 21.4 | 362/365 eq, max 1 | 363/365 eq, max 1 | 361/365 eq, max 1 | 239/365 eq, max 1 | 365/365 eq, max 0 | 354/365 eq, max 1 |
+| Cairo | 30.0 | 353/365 eq, max 1 | 357/365 eq, max 1 | 365/365 eq, max 0 | 202/365 eq, max 1 | 359/365 eq, max 1 | 333/365 eq, max 1 |
+| Karachi | 24.9 | 362/365 eq, max 1 | 359/365 eq, max 1 | 363/365 eq, max 1 | 267/365 eq, max 1 | 360/365 eq, max 1 | 346/365 eq, max 1 |
+| Jakarta | -6.2 | 361/365 eq, max 1 | 365/365 eq, max 0 | 362/365 eq, max 1 | 316/365 eq, max 1 | 363/365 eq, max 1 | 357/365 eq, max 1 |
+| NewYork | 40.7 | 335/365 eq, max 1 | 352/365 eq, max 1 | 363/365 eq, max 1 | 98/365 eq, max 2 | 347/365 eq, max 1 | 322/365 eq, max 1 |
+| London | 51.5 | 305/365 eq, max 1 | 344/365 eq, max 1 | 364/365 eq, max 1 | 91/365 eq, max 2 | 339/365 eq, max 1 | 324/365 eq, max 1 |
+| Oslo | 59.9 | 253/365 eq, max 1 | 319/365 eq, max 1 | 360/365 eq, max 1 | 64/365 eq, max 3 | 310/365 eq, max 1 | 268/365 eq, max 1 |
+| Reykjavik | 64.1 | 228/365 eq, max 1 | 288/365 eq, max 1 | 365/365 eq, max 0 | 37/365 eq, max 6 | 270/365 eq, max 1 | 221/365 eq, max 1 |
+| Tromso | 69.6 | 144/296 eq, max 13 | 131/248 eq, max 13 | 362/365 eq, max 1 | 42/365 eq, max 2279 | 111/247 eq, max 19 | 148/296 eq, max 14 |
+

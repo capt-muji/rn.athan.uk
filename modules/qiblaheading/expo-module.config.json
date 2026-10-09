@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["QiblaHeadingModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.qiblaheading.QiblaHeadingModule"]
+  }
+}

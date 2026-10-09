@@ -28,9 +28,10 @@ TaskManager.defineTask(BACKGROUND_TASK_NAME, async () => {
   });
 
   try {
-    // Import dynamically to avoid circular dependencies
-    // The notifications module will be loaded by the time the OS runs this task
-    const { rescheduleAllNotificationsFromBackground } = await import('@/stores/notifications');
+    // Require lazily to avoid circular dependencies at task-definition time
+    // (the notifications module is pulled into the bundle either way; Metro
+    // resolves require synchronously, so this only defers its execution)
+    const { rescheduleAllNotificationsFromBackground } = require('@/stores/notifications');
     await rescheduleAllNotificationsFromBackground();
 
     const taskEndTime = Date.now();

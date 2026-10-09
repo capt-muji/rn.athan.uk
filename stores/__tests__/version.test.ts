@@ -18,6 +18,11 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { mockExpoConfig, resetMockExpoConfig } = require('expo-constants');
 
+// The shared logger mock, reached the same way version.ts reaches it (mapped in
+// jest.config.js). Needed to tell a handled absence from a swallowed throw.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const mockLogger = require('@/shared/logger').default;
+
 // Mock Database
 const mockGetItem = jest.fn();
 const mockSetItem = jest.fn();
@@ -30,6 +35,12 @@ jest.mock('@/stores/database', () => ({
   clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
   database: {
     remove: (key: string) => mockDatabaseRemove(key),
+    // The gate atom is built while this module initialises, which is before the
+    // consts above leave the temporal dead zone, so these two cannot close over
+    // a hoisted jest.fn. Inert persistence is all the atom needs here: the
+    // assertions are on its in-memory value and on the remove call.
+    getString: () => undefined,
+    set: () => undefined,
   },
 }));
 
@@ -51,13 +62,31 @@ jest.mock('@/shared/config', () => ({
 // interactions are covered by stores/__tests__/notifications.test.ts)
 const mockMigrateIndexKeyedAlertPreferences = jest.fn();
 
-jest.mock('@/stores/notifications', () => ({
-  migrateIndexKeyedAlertPreferences: () => mockMigrateIndexKeyedAlertPreferences(),
-}));
+jest.mock('@/stores/notifications', () => {
+  // version.ts reopens the refresh gate through the atom rather than by removing
+  // the key behind it (audit finding 2), so the mock must expose a real
+  // persisted atom for that write to land on. Requiring the storage factory
+  // rather than the whole notifications module keeps expo-notifications,
+  // background tasks and sync out of this suite.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { atomWithStorageNumber } = require('@/stores/storage');
+  return {
+    migrateIndexKeyedAlertPreferences: () => mockMigrateIndexKeyedAlertPreferences(),
+    lastNotificationScheduleAtom: atomWithStorageNumber('preference_last_notification_schedule_check', 0),
+  };
+});
 
 // Import after mocks - version.ts imports come last since they depend on mocks
 // eslint-disable-next-line import/order
+import { getDefaultStore } from 'jotai/vanilla';
+
+// eslint-disable-next-line import/order
+import { lastNotificationScheduleAtom } from '@/stores/notifications';
+
+// eslint-disable-next-line import/order
 import {
+  CACHE_SCHEMA_VERSION,
+  cacheSchemaChanged,
   clearUpgradeCache,
   getInstalledVersion,
   getStoredVersion,
@@ -110,6 +139,24 @@ describe('getInstalledVersion', () => {
     const result = getInstalledVersion();
 
     expect(result).toBe('');
+  });
+
+  // `Constants.expoConfig` is itself nullable, which is the whole reason
+  // version.ts reaches through it with `?.`, and until the mock could produce
+  // null no test could reach this at all.
+  //
+  // The return value alone does not prove the `?.` is doing anything — the
+  // try/catch around it returns '' for a thrown TypeError just the same. What
+  // separates them is the warning: `?.` treats a missing config as the expected
+  // state it is, while the catch path would log a failure on every call in a
+  // runtime where expoConfig is legitimately absent.
+  it('returns empty string quietly when expoConfig itself is null', () => {
+    mockExpoConfig.present = false;
+
+    const result = getInstalledVersion();
+
+    expect(result).toBe('');
+    expect(mockLogger.warn).not.toHaveBeenCalled();
   });
 
   it('handles different version formats', () => {
@@ -321,7 +368,9 @@ describe('clearUpgradeCache', () => {
     expect(mockClearAllExcept).toHaveBeenCalledWith([
       'app_installed_version',
       'whats_new_shown_version',
+      'cache_schema_version',
       'preference_',
+      'prayer_max_english_width_',
     ]);
   });
 
@@ -352,6 +401,20 @@ describe('clearUpgradeCache', () => {
     clearUpgradeCache();
 
     expect(mockDatabaseRemove).toHaveBeenCalledWith('preference_last_notification_schedule_check');
+  });
+
+  // Audit finding 2: removing the MMKV key is not enough. The atom is created
+  // with getOnInit, nothing in the tree subscribes to it, so its snapshot is
+  // what shouldRescheduleNotifications() reads. Before the fix this assertion
+  // saw the stale timestamp and the forced reschedule never happened.
+  it('resets the gate ATOM, not only the key behind it', () => {
+    const store = getDefaultStore();
+    store.set(lastNotificationScheduleAtom, Date.now());
+    expect(store.get(lastNotificationScheduleAtom)).toBeGreaterThan(0);
+
+    clearUpgradeCache();
+
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
   });
 });
 
@@ -430,13 +493,20 @@ describe('edge cases', () => {
 
 describe('full upgrade flow', () => {
   // After jest.resetModules(), we need to get a fresh reference to the mock config
-  const getVersionModuleWithConfig = (version: string) => {
+  const getVersionModuleWithConfig = (version: string, { configPresent = true } = {}) => {
     jest.resetModules();
     // Re-setup mocks after module reset (expo-constants is handled via moduleNameMapper)
     jest.mock('@/stores/database', () => ({
       getItem: (key: string) => mockGetItem(key),
       setItem: (key: string, value: unknown) => mockSetItem(key, value),
       clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
+      // The reset goes through the gate atom now, and re-requiring the module
+      // graph rebuilds that atom, which reads storage at creation
+      database: {
+        remove: (key: string) => mockDatabaseRemove(key),
+        getString: () => undefined,
+        set: () => undefined,
+      },
     }));
     jest.mock('@/shared/versionUtils', () => ({
       compareVersions: (v1: string, v2: string) => mockCompareVersions(v1, v2),
@@ -450,6 +520,7 @@ describe('full upgrade flow', () => {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { mockExpoConfig: freshMockConfig } = require('expo-constants');
     freshMockConfig.version = version;
+    freshMockConfig.present = configPresent;
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     return require('../version');
   };
@@ -483,6 +554,88 @@ describe('full upgrade flow', () => {
     expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.35');
     // Upgrade leaves the What's New tracker untouched (differs from installed)
     expect(mockSetItem).not.toHaveBeenCalledWith('whats_new_shown_version', expect.anything());
+  });
+
+  // -- the wipe is gated on the cache SHAPE, not the app version (#34) --------
+  //
+  // Note the flow above still clears: its mock returns null for every key, so
+  // the schema marker is missing and an unknown shape is treated as changed.
+  // That is the one-off wipe existing users get on their first update after
+  // this shipped. The cases below are the ones that actually changed.
+
+  it('does not clear the cache when the app updated but the cache schema did not', () => {
+    // The case #34 made expensive: an ordinary release wiped the prayer cache
+    // and the scheduled-notification bookkeeping, and the sweep then cancelled
+    // every alert the OS had restored. Nothing about the cached shape changed
+    // here, so nothing should be cleared.
+    mockGetItem.mockImplementation((key: string) => {
+      if (key === 'app_installed_version') return '1.0.34';
+      if (key === 'cache_schema_version') return CACHE_SCHEMA_VERSION;
+      return null;
+    });
+    mockCompareVersions.mockReturnValue(1);
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35');
+
+    handle();
+
+    expect(mockClearAllExcept).not.toHaveBeenCalled();
+    expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.35');
+  });
+
+  it('clears the cache when the cache schema version changed', () => {
+    // The protection must still fire when it is genuinely needed: data written
+    // in an older shape and read by new code produces a wrong prayer time.
+    mockGetItem.mockImplementation((key: string) => {
+      if (key === 'app_installed_version') return '1.0.34';
+      if (key === 'cache_schema_version') return CACHE_SCHEMA_VERSION - 1;
+      return null;
+    });
+    mockCompareVersions.mockReturnValue(1);
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35');
+
+    handle();
+
+    expect(mockClearAllExcept).toHaveBeenCalled();
+  });
+
+  it('stamps the cache schema version so the next update has something to compare', () => {
+    mockGetItem.mockImplementation((key: string) => (key === 'app_installed_version' ? '1.0.34' : null));
+    mockCompareVersions.mockReturnValue(1);
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35');
+
+    handle();
+
+    expect(mockSetItem).toHaveBeenCalledWith('cache_schema_version', CACHE_SCHEMA_VERSION);
+  });
+
+  it('bails without stamping anything when expoConfig is null', () => {
+    // A null expoConfig makes getInstalledVersion() return '', and the guard at
+    // the top of handleAppUpgrade then returns early. The cost is not just a
+    // skipped upgrade check: neither the version nor the cache schema marker is
+    // written, so the next launch that CAN read a version finds no marker, reads
+    // the cache as an unknown shape and wipes it. The race guard has already
+    // been set by then, so this session will not retry.
+    mockGetItem.mockImplementation((key: string) => (key === 'app_installed_version' ? '1.0.34' : null));
+    mockCompareVersions.mockReturnValue(1);
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('1.0.35', { configPresent: false });
+
+    handle();
+
+    expect(mockSetItem).not.toHaveBeenCalledWith('app_installed_version', expect.anything());
+    expect(mockSetItem).not.toHaveBeenCalledWith('cache_schema_version', expect.anything());
+    expect(mockClearAllExcept).not.toHaveBeenCalled();
+    expect(mockMigrateIndexKeyedAlertPreferences).not.toHaveBeenCalled();
+
+    // Positive control, same mocks and the same fixture but for the config being
+    // present. Without it every assertion above would also pass if the flow had
+    // simply never run — which is exactly how a test ends up guarding nothing.
+    const { handleAppUpgrade: handleWithConfig } = getVersionModuleWithConfig('1.0.35');
+
+    handleWithConfig();
+
+    expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.35');
+    expect(mockSetItem).toHaveBeenCalledWith('cache_schema_version', CACHE_SCHEMA_VERSION);
+    expect(mockMigrateIndexKeyedAlertPreferences).toHaveBeenCalled();
   });
 
   it('completes no-change flow', () => {
@@ -525,5 +678,64 @@ describe('full upgrade flow', () => {
 
     // setItem should only be called once (from first run)
     expect(callCount1).toBe(callCount2);
+  });
+});
+
+// =============================================================================
+// cacheSchemaChanged TESTS
+//
+// This is the sole gate on wiping the prayer cache, and its own doc names the
+// stake: "a stale-shaped record read by new code produces a wrong prayer time,
+// the worst bug this app can have". All three branches decide a wipe, and none
+// of them had a test. The comparison is also type-sensitive — it works only
+// because setItem stringifies the number and getItem parses it back — so the
+// round trip is pinned separately in stores/__tests__/database.test.ts.
+// =============================================================================
+
+describe('cacheSchemaChanged', () => {
+  it('reports changed when no marker has ever been written', () => {
+    mockGetItem.mockReturnValue(null);
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('reports changed when the marker reads back undefined', () => {
+    mockGetItem.mockReturnValue(undefined);
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('reports changed when the stored marker is an older schema', () => {
+    mockGetItem.mockReturnValue(CACHE_SCHEMA_VERSION - 1);
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('reports unchanged when the stored marker matches', () => {
+    mockGetItem.mockReturnValue(CACHE_SCHEMA_VERSION);
+
+    expect(cacheSchemaChanged()).toBe(false);
+  });
+
+  it('reports changed when the read throws, so an unreadable marker never keeps a stale cache', () => {
+    mockGetItem.mockImplementation(() => {
+      throw new Error('MMKV unavailable');
+    });
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('is strict about type: a stringified marker counts as changed', () => {
+    mockGetItem.mockReturnValue(String(CACHE_SCHEMA_VERSION));
+
+    expect(cacheSchemaChanged()).toBe(true);
+  });
+
+  it('reads the marker from the cache_schema_version key', () => {
+    mockGetItem.mockReturnValue(CACHE_SCHEMA_VERSION);
+
+    cacheSchemaChanged();
+
+    expect(mockGetItem).toHaveBeenCalledWith('cache_schema_version');
   });
 });
