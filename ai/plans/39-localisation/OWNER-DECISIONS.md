@@ -424,6 +424,16 @@ When the language commit fails and rolls back, the sheet reopens on the previous
 line, "Language change failed, try again", and the app is exactly as it was: no toast, no error
 screen. Detection and recovery ride the persisted intent marker (`research/R11-LANGUAGE-COMMIT.md`).
 
+## D29. The upgrade assumes connectivity; the design stays offline-safe anyway (2026-10-09)
+
+The owner ruled that an upgrading user has an internet connection (the store download proves it),
+so the upgrade design need not treat offline-first-launch as a constraint. Recorded with the
+nuance that background auto-update can still separate download from first open. The no-wipe
+design of `research/R18-UPGRADE-PATH.md` stands on its other legs regardless (the wipe keeps the
+dead key, destroys the bookkeeping records, and buys nothing: no stored shape changed), so
+nothing in the design moves; the offline-upgrade tests remain as free insurance rather than
+load-bearing requirements. The app's standing offline-after-first-sync invariant is untouched.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
