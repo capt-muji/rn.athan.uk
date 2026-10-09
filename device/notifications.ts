@@ -1,26 +1,43 @@
+import { subMinutes } from 'date-fns';
 import * as Notifications from 'expo-notifications';
-import { Platform } from 'react-native';
+import { Linking, Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
-import { AlertType, type ReminderInterval, type ScheduleType } from '@/shared/types';
+import { AlertType, type ReadablePrayer, type ReminderInterval, type ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
+
+/** Android's screen for granting an app Do Not Disturb access */
+const DND_ACCESS_SETTINGS_ACTION = 'android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS';
+
+/**
+ * Opens the system screen where the user grants this app Do Not Disturb access.
+ *
+ * A channel's `bypassDnd` is refused silently while that access is missing, so every alert
+ * stays muted under DND however the channel was declared. expo-notifications exposes no API
+ * for the grant, and it can never be given programmatically: only the user can, in Settings.
+ */
+export const openDndAccessSettings = async (): Promise<boolean> => {
+  if (Platform.OS !== 'android') return false;
+
+  try {
+    await Linking.sendIntent(DND_ACCESS_SETTINGS_ACTION);
+    return true;
+  } catch (error) {
+    logger.error('NOTIFICATION: Failed to open Do Not Disturb access settings:', error);
+    return false;
+  }
+};
 
 export const updateAndroidChannel = async (sound: number) => {
   if (Platform.OS !== 'android') return;
 
-  const channelId = NotificationUtils.athanAndroidChannelId(sound);
+  await Notifications.setNotificationChannelAsync(
+    NotificationUtils.athanAndroidChannelId(sound),
+    NotificationUtils.athanAndroidChannelConfig(sound)
+  );
 
-  await Notifications.setNotificationChannelAsync(channelId, {
-    name: `Athan ${sound + 1}`,
-    sound: `athan${sound + 1}.mp3`,
-    importance: Notifications.AndroidImportance.MAX,
-    enableVibrate: true,
-    vibrationPattern: [0, 250, 250, 250],
-    bypassDnd: true,
-  });
-
-  return channelId;
+  return NotificationUtils.athanAndroidChannelId(sound);
 };
 
 /**
@@ -36,6 +53,10 @@ export const prayerNotificationIdentifier = (scheduleType: ScheduleType, english
  * Builds the deterministic identifier for a pre-prayer reminder notification.
  * Includes the interval so changed intervals get a fresh identity (old one is
  * cancelled via the per-prayer clear before re-scheduling).
+ *
+ * The slot is NOT part of it: the interval already separates a prayer's two reminders, because
+ * the sheet cannot put both on one minute, and leaving the slot out keeps the identifier every
+ * install already holds for its single reminder.
  */
 export const reminderNotificationIdentifier = (
   scheduleType: ScheduleType,
@@ -44,32 +65,67 @@ export const reminderNotificationIdentifier = (
   intervalMinutes: ReminderInterval
 ) => `reminder_${scheduleType}_${englishName.toLowerCase()}_${date}_${intervalMinutes}`;
 
+/**
+ * Schedules the at-time notification for one prayer on one day's list
+ *
+ * Fires at the prayer's own datetime — the exact moment its list row and the
+ * countdown show — never at a date/time pair re-read on the device's clock.
+ *
+ * @param scheduleType Schedule type (Standard or Extra) - part of the deterministic identifier
+ * @param date Day of the list the prayer belongs to (YYYY-MM-DD) - part of the identifier
+ * @param prayer The prayer as its list row has it (PrayerUtils.getPrayerForDate). Readable only: a
+ *   row with no time has no moment to fire at
+ * @param alertType Alert type (Off/Silent/Sound)
+ * @param soundPreference Selected athan index
+ * @returns Scheduled notification data
+ */
 export const addOneScheduledNotificationForPrayer = async (
   scheduleType: ScheduleType,
-  englishName: string,
-  arabicName: string,
   date: string,
-  time: string,
+  prayer: ReadablePrayer,
   alertType: AlertType,
   soundPreference: number
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const triggerDate = NotificationUtils.genTriggerDate(date, time);
+  const { english: englishName, arabic: arabicName, time } = prayer;
+  const triggerDate = prayer.datetime;
   const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, soundPreference);
   const identifier = prayerNotificationIdentifier(scheduleType, englishName, date);
-  // Only include channelId for Android when alert type is Sound
-  const athanChannelId =
-    alertType === AlertType.Sound ? NotificationUtils.athanAndroidChannelId(soundPreference) : undefined;
+  // Only include channelId for Sound alerts; the channel is prayer-aware
+  // (selected athan for the 5 daily prayers, fixed extras channel for
+  // Sunrise + extras — ISSUES.md #23)
+  const atTimeChannelId =
+    alertType === AlertType.Sound ? NotificationUtils.atTimeAndroidChannelId(englishName, soundPreference) : undefined;
+
+  // The at-time channel is created at schedule time too: headless background-task
+  // reschedules run without UI init, and initialization only ever creates the athan
+  // channel for sound index 0 (same reasoning as the reminder channels). Posting to
+  // a channel that does not exist does not drop the notification on expo-notifications
+  // 57 — it substitutes expo_notifications_fallback_notification_channel, which carries
+  // the device's default notification tone, so the alarm rings a generic ding instead
+  // of the athan (device-verified on the 3T, see AUDIT-FINDINGS finding 5)
+  if (alertType === AlertType.Sound && Platform.OS === 'android') {
+    // Each of these bounds its own call into the notification system (shared/notifications.ts)
+    if (NotificationUtils.isDailyPrayer(englishName)) {
+      await NotificationUtils.createAthanAndroidChannel(soundPreference);
+    } else {
+      await NotificationUtils.createExtrasAndroidChannel();
+    }
+  }
 
   try {
-    const id = await Notifications.scheduleNotificationAsync({
-      identifier,
-      content,
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.DATE,
-        date: triggerDate,
-        channelId: athanChannelId,
-      },
-    });
+    const id = await NotificationUtils.withNativeTimeout(
+      Notifications.scheduleNotificationAsync({
+        identifier,
+        content,
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.DATE,
+          date: triggerDate,
+          channelId: atTimeChannelId,
+          delivery: NotificationUtils.ALARM_CLOCK_DELIVERY,
+        },
+      }),
+      `arming ${identifier}`
+    );
 
     const notification = { id, date, time, englishName, arabicName, alertType };
     logger.info('NOTIFICATION SYSTEM: Scheduled:', { ...notification, identifier });
@@ -81,19 +137,58 @@ export const addOneScheduledNotificationForPrayer = async (
 };
 
 export const cancelScheduledNotificationById = async (notificationId: string) => {
-  await Notifications.cancelScheduledNotificationAsync(notificationId);
+  await NotificationUtils.withNativeTimeout(
+    Notifications.cancelScheduledNotificationAsync(notificationId),
+    `cancelling ${notificationId}`
+  );
 
   logger.info('NOTIFICATION SYSTEM: Cancelled:', notificationId);
 };
 
-export const clearAllScheduledNotificationForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+/**
+ * Cancels every recorded at-time alarm for one prayer
+ *
+ * Every cancel is let land before any refusal is reported: the scheduling lock is released on a rejection, and a
+ * cancel still on its way could remove an alarm the next operation has just armed under the same identifier.
+ *
+ * A refusal is reported rather than thrown, so the caller can delete the records of the cancels that landed and keep
+ * the record of the one that did not: that record is the only way back to an alarm the phone still holds.
+ *
+ * @returns The identifiers the phone refused to cancel
+ */
+export const clearAllScheduledNotificationForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number
+): Promise<string[]> => {
   const notifications = Database.getAllScheduledNotificationsForPrayer(scheduleType, prayerIndex);
 
-  // Cancel all notifications
-  const promises = notifications.map((notification) => Notifications.cancelScheduledNotificationAsync(notification.id));
-  await Promise.all(promises);
+  const results = await Promise.allSettled(
+    notifications.map((notification) =>
+      NotificationUtils.withNativeTimeout(
+        Notifications.cancelScheduledNotificationAsync(notification.id),
+        `cancelling ${notification.id}`
+      )
+    )
+  );
 
-  logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', { scheduleType, prayerIndex });
+  const refused: string[] = [];
+  results.forEach((result, position) => {
+    if (result.status !== 'rejected') return;
+    refused.push(notifications[position].id);
+    logger.warn('NOTIFICATION SYSTEM: Failed to cancel notification:', {
+      id: notifications[position].id,
+      error: result.reason,
+    });
+  });
+
+  logger.info('NOTIFICATION SYSTEM: Cancelled all notifications for prayer:', {
+    scheduleType,
+    prayerIndex,
+    cancelled: notifications.length - refused.length,
+    refused: refused.length,
+  });
+
+  return refused;
 };
 
 // =============================================================================
@@ -102,25 +197,27 @@ export const clearAllScheduledNotificationForPrayer = async (scheduleType: Sched
 
 /**
  * Schedules a single reminder notification for a prayer
+ *
+ * Fires `intervalMinutes` before the prayer's own datetime — the moment its list
+ * row and the countdown show.
+ *
  * @param scheduleType Schedule type (Standard or Extra) - part of the deterministic identifier
- * @param englishName English prayer name
- * @param arabicName Arabic prayer name
- * @param date Date string in YYYY-MM-DD format
- * @param time Time string in HH:mm format
+ * @param date Day of the list the prayer belongs to (YYYY-MM-DD) - part of the identifier
+ * @param prayer The prayer as its list row has it (PrayerUtils.getPrayerForDate). Readable only: a
+ *   row with no time has nothing to count back from
  * @param intervalMinutes Minutes before prayer time
  * @param alertType Alert type (Off/Silent/Sound)
  * @returns Scheduled notification data
  */
 export const addOneScheduledReminderForPrayer = async (
   scheduleType: ScheduleType,
-  englishName: string,
-  arabicName: string,
   date: string,
-  time: string,
+  prayer: ReadablePrayer,
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const triggerDate = NotificationUtils.genReminderTriggerDate(date, time, intervalMinutes);
+  const { english: englishName, arabic: arabicName, time } = prayer;
+  const triggerDate = subMinutes(prayer.datetime, intervalMinutes);
   const content = NotificationUtils.genReminderNotificationContent(englishName, arabicName, intervalMinutes, alertType);
   const identifier = reminderNotificationIdentifier(scheduleType, englishName, date, intervalMinutes);
   const isAndroidSound = alertType === AlertType.Sound && Platform.OS === 'android';
@@ -129,19 +226,24 @@ export const addOneScheduledReminderForPrayer = async (
     : undefined;
 
   if (isAndroidSound) {
+    // Bounds its own call into the notification system (shared/notifications.ts)
     await NotificationUtils.createReminderAndroidChannel(englishName, intervalMinutes);
   }
 
   try {
-    const id = await Notifications.scheduleNotificationAsync({
-      identifier,
-      content,
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.DATE,
-        date: triggerDate,
-        channelId: reminderChannelId,
-      },
-    });
+    const id = await NotificationUtils.withNativeTimeout(
+      Notifications.scheduleNotificationAsync({
+        identifier,
+        content,
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.DATE,
+          date: triggerDate,
+          channelId: reminderChannelId,
+          delivery: NotificationUtils.ALARM_CLOCK_DELIVERY,
+        },
+      }),
+      `arming ${identifier}`
+    );
 
     const notification = { id, date, time, englishName, arabicName, alertType };
     logger.info('REMINDER SYSTEM: Scheduled:', { ...notification, identifier });
@@ -153,20 +255,44 @@ export const addOneScheduledReminderForPrayer = async (
 };
 
 /**
- * Cancels all scheduled reminders for a specific prayer
+ * Cancels every recorded reminder for one prayer
+ *
+ * Reports what the phone refused rather than swallowing it. Swallowing was finding 81's other half: the caller then
+ * deleted every reminder record, so a reminder the phone had refused to cancel stayed armed with nothing left to
+ * find it by.
+ *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
+ * @returns The identifiers the phone refused to cancel
  */
-export const clearAllScheduledRemindersForPrayer = async (scheduleType: ScheduleType, prayerIndex: number) => {
+export const clearAllScheduledRemindersForPrayer = async (
+  scheduleType: ScheduleType,
+  prayerIndex: number
+): Promise<string[]> => {
   const reminders = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
 
-  // Cancel all reminders
-  const promises = reminders.map((reminder) =>
-    Notifications.cancelScheduledNotificationAsync(reminder.id).catch((error) =>
-      logger.warn('REMINDER SYSTEM: Failed to cancel reminder:', { id: reminder.id, error })
+  const results = await Promise.allSettled(
+    reminders.map((reminder) =>
+      NotificationUtils.withNativeTimeout(
+        Notifications.cancelScheduledNotificationAsync(reminder.id),
+        `cancelling ${reminder.id}`
+      )
     )
   );
-  await Promise.all(promises);
 
-  logger.info('REMINDER SYSTEM: Cancelled all reminders for prayer:', { scheduleType, prayerIndex });
+  const refused: string[] = [];
+  results.forEach((result, position) => {
+    if (result.status !== 'rejected') return;
+    refused.push(reminders[position].id);
+    logger.warn('REMINDER SYSTEM: Failed to cancel reminder:', { id: reminders[position].id, error: result.reason });
+  });
+
+  logger.info('REMINDER SYSTEM: Cancelled all reminders for prayer:', {
+    scheduleType,
+    prayerIndex,
+    cancelled: reminders.length - refused.length,
+    refused: refused.length,
+  });
+
+  return refused;
 };

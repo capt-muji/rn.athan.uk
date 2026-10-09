@@ -62,29 +62,26 @@ const {
   countdownBarShownAtom,
   englishWidthExtraAtom,
   englishWidthStandardAtom,
-  getAlertSheetState,
-  getMeasurementsDate,
   getMeasurementsList,
   getPopupUpdateLastCheck,
-  hideAlertSheet,
   hideSettingsSheet,
   hijriDateEnabledAtom,
-  measurementsDateAtom,
   measurementsListAtom,
   playingSoundIndexAtom,
+  popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
   popupUpdateLastCheckAtom,
-  refreshUIAtom,
+  resyncAtom,
   setAlertSheetModal,
   setBottomSheetModal,
   setEnglishWidth,
-  setMeasurementsDate,
   setMeasurementsList,
   setPlayingSoundIndex,
+  setPopupHelpEnabled,
   setPopupUpdateEnabled,
   setPopupUpdateLastCheck,
-  setRefreshUI,
   setSettingsSheetModal,
+  bumpResync,
   settingsSheetModalAtom,
   showAlertSheet,
   showArabicNamesAtom,
@@ -120,7 +117,7 @@ describe('settings atoms default values', () => {
 
   it('countdownBarColorAtom has default hex color', () => {
     const store = createStore();
-    expect(store.get(countdownBarColorAtom)).toBe('#ffd000');
+    expect(store.get(countdownBarColorAtom)).toBe('#00ff88');
   });
 });
 
@@ -178,15 +175,6 @@ describe('sheet modal functions', () => {
 
     expect(mockDismiss).toHaveBeenCalled();
   });
-
-  it('hideAlertSheet calls dismiss on modal', () => {
-    const mockModal = createMockModal();
-    mockDefaultStoreGet.mockReturnValue(mockModal);
-
-    hideAlertSheet();
-
-    expect(mockDismiss).toHaveBeenCalled();
-  });
 });
 
 // =============================================================================
@@ -226,6 +214,7 @@ describe('alert sheet state functions', () => {
     index: 0,
     prayerEnglish: 'Fajr',
     prayerArabic: 'الفجر',
+    isUnavailable: false,
   };
 
   it('showAlertSheet sets state and calls present', () => {
@@ -236,14 +225,6 @@ describe('alert sheet state functions', () => {
 
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(alertSheetStateAtom, mockAlertState);
     expect(mockPresent).toHaveBeenCalled();
-  });
-
-  it('getAlertSheetState returns the state', () => {
-    mockDefaultStoreGet.mockReturnValue(mockAlertState);
-
-    const result = getAlertSheetState();
-
-    expect(result).toBe(mockAlertState);
   });
 });
 
@@ -267,10 +248,14 @@ describe('preference setter functions', () => {
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(playingSoundIndexAtom, 0);
   });
 
-  it('setRefreshUI sets timestamp', () => {
-    const timestamp = Date.now();
-    setRefreshUI(timestamp);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(refreshUIAtom, timestamp);
+  it('bumpResync advances the counter', () => {
+    bumpResync();
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(resyncAtom, expect.any(Function));
+  });
+
+  it('setPopupHelpEnabled sets boolean', () => {
+    setPopupHelpEnabled(true);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(popupHelpEnabledAtom, true);
   });
 
   it('setPopupUpdateEnabled sets boolean', () => {
@@ -298,14 +283,56 @@ describe('preference setter functions', () => {
 describe('measurement functions', () => {
   const mockCoordinates = { pageX: 100, pageY: 200, width: 300, height: 400 };
 
+  // Jest auto-resets mock implementations between tests; re-establish the
+  // Map-backed store at the top of each width test so the comparison path
+  // reads and writes real (per-test) state
+  const resetWidthStore = () => {
+    mockStoreValues.clear();
+    mockDefaultStoreGet.mockImplementation((atom) => mockStoreValues.get(atom));
+    mockDefaultStoreSet.mockImplementation((atom, value) => mockStoreValues.set(atom, value));
+    mockDefaultStoreSet.mockClear();
+  };
+
   it('setEnglishWidth sets Standard atom', () => {
+    resetWidthStore();
     setEnglishWidth(ScheduleType.Standard, 150);
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthStandardAtom, 150);
   });
 
   it('setEnglishWidth sets Extra atom', () => {
+    resetWidthStore();
     setEnglishWidth(ScheduleType.Extra, 120);
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthExtraAtom, 120);
+  });
+
+  it('setEnglishWidth ignores zero and negative measurements', () => {
+    resetWidthStore();
+    setEnglishWidth(ScheduleType.Standard, 0);
+    setEnglishWidth(ScheduleType.Standard, -5);
+    expect(mockDefaultStoreSet).not.toHaveBeenCalled();
+  });
+
+  it('setEnglishWidth never narrows the cache (grow-toward-truth, ISSUES #22)', () => {
+    resetWidthStore();
+    setEnglishWidth(ScheduleType.Standard, 150);
+    mockDefaultStoreSet.mockClear();
+
+    // A narrower re-measure (e.g. fallback-font metrics) must not overwrite
+    setEnglishWidth(ScheduleType.Standard, 90);
+    expect(mockDefaultStoreSet).not.toHaveBeenCalled();
+
+    // An equal re-measure is a no-op: correct values never rewrite (no churn)
+    setEnglishWidth(ScheduleType.Standard, 150);
+    expect(mockDefaultStoreSet).not.toHaveBeenCalled();
+  });
+
+  it('setEnglishWidth self-heals a too-narrow cached value on a wider measure', () => {
+    resetWidthStore();
+    setEnglishWidth(ScheduleType.Standard, 90);
+    mockDefaultStoreSet.mockClear();
+
+    setEnglishWidth(ScheduleType.Standard, 150);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthStandardAtom, 150);
   });
 
   it('getMeasurementsList returns value', () => {
@@ -316,15 +343,5 @@ describe('measurement functions', () => {
   it('setMeasurementsList sets value', () => {
     setMeasurementsList(mockCoordinates);
     expect(mockDefaultStoreSet).toHaveBeenCalledWith(measurementsListAtom, mockCoordinates);
-  });
-
-  it('getMeasurementsDate returns value', () => {
-    mockDefaultStoreGet.mockReturnValue(mockCoordinates);
-    expect(getMeasurementsDate()).toBe(mockCoordinates);
-  });
-
-  it('setMeasurementsDate sets value', () => {
-    setMeasurementsDate(mockCoordinates);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(measurementsDateAtom, mockCoordinates);
   });
 });

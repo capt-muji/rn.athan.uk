@@ -1,19 +1,23 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
+import { PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '../constants';
 import {
+  addDaysToDateString,
   adjustTime,
-  createLondonDate,
+  createInstant,
   createPrayerDatetime,
   formatDateLong,
   formatDateShort,
   formatHijriDateLong,
+  formatPrayerTime,
   formatTime,
   formatTimeAgo,
   getCurrentYear,
-  getLastThirdOfNight,
-  getMidnightTime,
-  getSecondsBetween,
+  getDayAnchor,
+  getNightTimes,
+  getPreviousDateString,
   getSecondsRemaining,
+  getTodayDateString,
   getWallSecondDelay,
   isDateYesterdayOrFuture,
   isDecember,
@@ -23,7 +27,12 @@ import {
   isRamadan,
 } from '../time';
 
-const londonDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, 'Europe/London', 'yyyy-MM-dd');
+/**
+ * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
+ * so this stays an independent oracle. Keyed off PRAYER_TIMEZONE so that moving the app off
+ * London fails the app's code rather than this fixture.
+ */
+const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, PRAYER_TIMEZONE, 'yyyy-MM-dd');
 
 // =============================================================================
 // FORMATTING TESTS
@@ -79,6 +88,51 @@ describe('formatTime', () => {
       expect(formatTime(599, true)).toBe('9m 59s');
       expect(formatTime(45, true)).toBe('45s');
     });
+
+    /**
+     * The threshold the JSDoc used to state as 60s. `shared/time.ts:546` uses
+     * `seconds <= 599`, so a minute and a second still shows seconds; only past
+     * 599s do they drop. Pinned so the two cannot disagree again.
+     */
+    it('draws the hideSeconds threshold at 599s, not at 60s', () => {
+      expect(formatTime(61, true)).toBe('1m 1s');
+      expect(formatTime(120, true)).toBe('2m'); // a whole minute drops "0s" regardless
+      expect(formatTime(599, true)).toBe('9m 59s'); // last second that still shows seconds
+      expect(formatTime(600, true)).toBe('10m');
+      expect(formatTime(601, true)).toBe('10m');
+    });
+  });
+
+  /**
+   * Pins every @example in formatTime's JSDoc, verbatim and in order, so the
+   * block cannot drift from the implementation again. Three of these were wrong
+   * before Tier 6 item a: the 599s threshold was documented as 60s,
+   * `formatTime(90000)` was documented as "25h 0s", and `formatTime(45, true,
+   * true)` was documented as "1m". If you change an expectation here, change the
+   * matching line in shared/time.ts.
+   */
+  describe('JSDoc contract', () => {
+    it('pins every example in the JSDoc', () => {
+      expect(formatTime(3665)).toBe('1h 1m 5s');
+      expect(formatTime(3665, true)).toBe('1h 1m');
+      expect(formatTime(45, true)).toBe('45s');
+      expect(formatTime(45, true, true)).toBe('45s');
+      expect(formatTime(0)).toBe('0s');
+      expect(formatTime(-100)).toBe('0s');
+      expect(formatTime(90000)).toBe('25h');
+    });
+
+    /**
+     * forceHideSeconds suppresses seconds only BESIDE another unit. Under a
+     * minute the parts list is empty and `shared/time.ts:552` falls back to
+     * "Ns", so seconds still render. No caller passes it today.
+     */
+    it('lets forceHideSeconds suppress seconds only beside another unit', () => {
+      expect(formatTime(3665, true, true)).toBe('1h 1m');
+      expect(formatTime(599, true, true)).toBe('9m');
+      expect(formatTime(45, false, true)).toBe('45s');
+      expect(formatTime(0, true, true)).toBe('0s');
+    });
   });
 });
 
@@ -111,85 +165,124 @@ describe('formatTimeAgo', () => {
 // NIGHT TIME CALCULATIONS (Islamic)
 // =============================================================================
 
-describe('getLastThirdOfNight', () => {
-  it('calculates last third correctly for winter night', () => {
-    // Magrib 18:45, Fajr 06:15 = 11.5h night
-    // 2/3 of 11.5h = 7h 40m after Magrib = 02:25
-    const result = getLastThirdOfNight('18:45', '06:15');
-    expect(result).toBe('02:25');
+describe('getNightTimes', () => {
+  it('calculates Islamic midnight and the last third of a winter night', () => {
+    // Magrib 18:45 on Jan 19, Fajr 06:15 on Jan 20 = 11.5h night (GMT)
+    // Midpoint = 5h 45m after Magrib = 00:30; last third = 7h 40m after Magrib = 02:25
+    const { midnight, lastThird } = getNightTimes('2026-01-19', '18:45', '2026-01-20', '06:15');
+    expect(midnight.toISOString()).toBe('2026-01-20T00:30:00.000Z');
+    expect(lastThird.toISOString()).toBe('2026-01-20T02:25:00.000Z');
   });
 
-  it('calculates last third for summer night (short)', () => {
-    // Summer: Magrib late, Fajr early (short night)
-    // Magrib 21:00, Fajr 03:30 = 6.5h night
-    // 2/3 of 6.5h = 4h 20m after Magrib = 01:20
-    const result = getLastThirdOfNight('21:00', '03:30');
-    expect(result).toBe('01:20');
+  it('calculates a short summer night (BST)', () => {
+    // Magrib 21:00 on Jun 20, Fajr 03:30 on Jun 21 = 6.5h night
+    // Midpoint 00:15 BST; last third 4h 20m after Magrib = 01:20 BST
+    const { midnight, lastThird } = getNightTimes('2026-06-20', '21:00', '2026-06-21', '03:30');
+    expect(midnight.toISOString()).toBe('2026-06-20T23:15:00.000Z');
+    expect(lastThird.toISOString()).toBe('2026-06-21T00:20:00.000Z');
+    expect(formatPrayerTime(midnight)).toBe('00:15');
+    expect(formatPrayerTime(lastThird)).toBe('01:20');
   });
 
-  it('calculates last third for equinox night (equal)', () => {
-    // Magrib 18:00, Fajr 06:00 = 12h night
-    // 2/3 of 12h = 8h after Magrib = 02:00
-    const result = getLastThirdOfNight('18:00', '06:00');
-    expect(result).toBe('02:00');
+  it('puts the midpoint of a 12-hour night exactly at 00:00', () => {
+    // Magrib 18:00, Fajr 06:00 = 12h night: midpoint 00:00, last third 02:00
+    const { midnight, lastThird } = getNightTimes('2026-01-19', '18:00', '2026-01-20', '06:00');
+    expect(midnight.toISOString()).toBe('2026-01-20T00:00:00.000Z');
+    expect(lastThird.toISOString()).toBe('2026-01-20T02:00:00.000Z');
+  });
+
+  it('drops the seconds: a half-minute midpoint shows and fires at the start of its minute', () => {
+    // 581-minute night: midpoint 290.5 min after Magrib (23:18:30), last third 387.33 min (00:55:20)
+    const { midnight, lastThird } = getNightTimes('2026-03-27', '18:28', '2026-03-28', '04:09');
+    expect(midnight.toISOString()).toBe('2026-03-27T23:18:00.000Z');
+    expect(lastThird.toISOString()).toBe('2026-03-28T00:55:00.000Z');
+  });
+
+  it('measures the spring clock-change night in real time (9h 37m, not the 10h 37m on the clock face)', () => {
+    // Magrib Sat 28 Mar 18:30 GMT, Fajr Sun 29 Mar 05:07 BST (04:07 GMT)
+    const { midnight, lastThird } = getNightTimes('2026-03-28', '18:30', '2026-03-29', '05:07');
+    expect(midnight.toISOString()).toBe('2026-03-28T23:18:00.000Z'); // 23:18 GMT
+    expect(lastThird.toISOString()).toBe('2026-03-29T00:54:00.000Z'); // 00:54 GMT, before the clocks jump
+    expect(formatPrayerTime(midnight)).toBe('23:18');
+    expect(formatPrayerTime(lastThird)).toBe('00:54');
+  });
+
+  it('measures the autumn clock-change night in real time (12h 12m, not the 11h 12m on the clock face)', () => {
+    // Magrib Sat 24 Oct 17:52 BST (16:52 GMT), Fajr Sun 25 Oct 05:04 GMT
+    const { midnight, lastThird } = getNightTimes('2026-10-24', '17:52', '2026-10-25', '05:04');
+    expect(midnight.toISOString()).toBe('2026-10-24T22:58:00.000Z'); // 23:58 BST
+    // The last third starts at the second 01:00 (GMT): an exact instant, not an ambiguous clock reading
+    expect(lastThird.toISOString()).toBe('2026-10-25T01:00:00.000Z');
+    expect(formatPrayerTime(midnight)).toBe('23:58');
+    expect(formatPrayerTime(lastThird)).toBe('01:00');
+  });
+
+  it('keeps Midnight before the last third, and both inside the night', () => {
+    const nights: [string, string, string, string][] = [
+      ['2026-01-19', '15:50', '2026-01-20', '07:15'], // long winter night
+      ['2026-06-20', '21:25', '2026-06-21', '02:40'], // short summer night
+      ['2026-03-28', '18:30', '2026-03-29', '05:07'], // spring clock change
+      ['2026-10-24', '17:52', '2026-10-25', '05:04'], // autumn clock change
+    ];
+
+    for (const [previousDate, magrib, date, fajr] of nights) {
+      const { midnight, lastThird } = getNightTimes(previousDate, magrib, date, fajr);
+      expect(createPrayerDatetime(previousDate, magrib).getTime()).toBeLessThan(midnight.getTime());
+      expect(midnight.getTime()).toBeLessThan(lastThird.getTime());
+      expect(lastThird.getTime()).toBeLessThan(createPrayerDatetime(date, fajr).getTime());
+    }
+  });
+
+  it('matches plain clock-face arithmetic on every night without a clock change (sweep)', () => {
+    const hhmm = (minutes: number) =>
+      `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+    const mismatches: string[] = [];
+
+    // A GMT night (January) and a BST night (July), with local midnight of the first date as a UTC instant
+    const nights = [
+      { previousDate: '2026-01-19', date: '2026-01-20', localMidnight: Date.UTC(2026, 0, 19) },
+      { previousDate: '2026-07-19', date: '2026-07-20', localMidnight: Date.UTC(2026, 6, 18, 23) },
+    ];
+
+    for (const { previousDate, date, localMidnight } of nights) {
+      for (let magrib = 15 * 60 + 30; magrib <= 22 * 60; magrib++) {
+        for (let fajr = 90; fajr <= 7 * 60 + 30; fajr += 13) {
+          const night = fajr + 24 * 60 - magrib;
+          const expectedMidnight = localMidnight + Math.floor(magrib + night / 2) * 60_000;
+          const expectedLastThird =
+            localMidnight + Math.floor(magrib + (night * 2) / 3 + TIME_ADJUSTMENTS.lastThird) * 60_000;
+          const { midnight, lastThird } = getNightTimes(previousDate, hhmm(magrib), date, hhmm(fajr));
+          if (midnight.getTime() !== expectedMidnight || lastThird.getTime() !== expectedLastThird) {
+            mismatches.push(`${previousDate} Magrib ${hhmm(magrib)} → Fajr ${hhmm(fajr)}`);
+          }
+        }
+      }
+    }
+
+    expect(mismatches).toEqual([]);
   });
 });
 
-describe('getMidnightTime', () => {
-  it('calculates Islamic midnight correctly for winter night', () => {
-    // Magrib 18:45, Fajr 06:15 = 11.5h night
-    // Midpoint = 5h 45m after Magrib = 00:30
-    const result = getMidnightTime('18:45', '06:15');
-    expect(result).toBe('00:30');
-  });
+describe('night times do not depend on when they are calculated', () => {
+  afterEach(() => jest.useRealTimers());
 
-  it('calculates Islamic midnight for summer night (short)', () => {
-    // Magrib 21:00, Fajr 03:30 = 6.5h night
-    // Midpoint = 3h 15m after Magrib = 00:15
-    const result = getMidnightTime('21:00', '03:30');
-    expect(result).toBe('00:15');
-  });
+  it.each([
+    '2026-01-20T12:00:00.000Z', // ordinary day, second 0
+    '2026-01-20T12:00:45.000Z', // ordinary day, second 45
+    '2026-06-20T11:59:59.900Z', // summer (BST), second 59.9
+    '2026-10-24T11:00:00.000Z', // Saturday before the clocks go back
+    '2026-03-28T12:00:00.000Z', // Saturday before the clocks go forward
+  ])('gives the same instants when run at %s', (iso) => {
+    jest.useFakeTimers().setSystemTime(new Date(iso));
 
-  it('calculates Islamic midnight for equinox night', () => {
-    // Magrib 18:00, Fajr 06:00 = 12h night
-    // Midpoint = 6h after Magrib = 00:00
-    const result = getMidnightTime('18:00', '06:00');
-    expect(result).toBe('00:00');
-  });
-});
-
-describe('night boundary parsing consistency', () => {
-  it('produces mathematically consistent results', () => {
-    // Both functions should produce consistent results
-    // Islamic midnight should always be before last third
-    const magribTime = '18:00';
-    const fajrTime = '06:00';
-
-    const midnight = getMidnightTime(magribTime, fajrTime);
-    const lastThird = getLastThirdOfNight(magribTime, fajrTime);
-
-    // Parse times to compare
-    const [midH, midM] = midnight.split(':').map(Number);
-    const [lastH, lastM] = lastThird.split(':').map(Number);
-    const midMinutes = midH * 60 + midM;
-    const lastMinutes = lastH * 60 + lastM;
-
-    // Last third should be after midnight
-    expect(lastMinutes).toBeGreaterThan(midMinutes);
-  });
-
-  it('handles summer solstice (short night)', () => {
-    const midnight = getMidnightTime('21:00', '03:30');
-    const lastThird = getLastThirdOfNight('21:00', '03:30');
-    expect(midnight).toBeDefined();
-    expect(lastThird).toBeDefined();
-  });
-
-  it('handles winter solstice (long night)', () => {
-    const midnight = getMidnightTime('16:00', '07:00');
-    const lastThird = getLastThirdOfNight('16:00', '07:00');
-    expect(midnight).toBeDefined();
-    expect(lastThird).toBeDefined();
+    expect(getNightTimes('2026-01-19', '17:50', '2026-01-20', '05:40')).toEqual({
+      midnight: new Date('2026-01-19T23:45:00.000Z'),
+      lastThird: new Date('2026-01-20T01:43:00.000Z'),
+    });
+    expect(getNightTimes('2026-10-24', '17:52', '2026-10-25', '05:04')).toEqual({
+      midnight: new Date('2026-10-24T22:58:00.000Z'),
+      lastThird: new Date('2026-10-25T01:00:00.000Z'),
+    });
   });
 });
 
@@ -221,7 +314,7 @@ describe('isFriday', () => {
 describe('isJanuaryFirst', () => {
   it('correctly identifies January 1st', () => {
     expect(isJanuaryFirst(new Date('2026-01-01'))).toBe(true);
-    expect(isJanuaryFirst(new Date('2026-01-01T23:59:59'))).toBe(true);
+    expect(isJanuaryFirst(new Date('2026-01-01T23:59:59Z'))).toBe(true);
   });
 
   it('correctly identifies non-January 1st', () => {
@@ -241,32 +334,32 @@ describe('isDecember', () => {
   });
 
   it('returns true in December', () => {
-    jest.setSystemTime(new Date('2026-12-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-12-15T12:00:00Z'));
     expect(isDecember()).toBe(true);
   });
 
   it('returns true on December 1st', () => {
-    jest.setSystemTime(new Date('2026-12-01T00:00:00'));
+    jest.setSystemTime(new Date('2026-12-01T00:00:00Z'));
     expect(isDecember()).toBe(true);
   });
 
   it('returns true on December 31st', () => {
-    jest.setSystemTime(new Date('2026-12-31T23:59:59'));
+    jest.setSystemTime(new Date('2026-12-31T23:59:59Z'));
     expect(isDecember()).toBe(true);
   });
 
   it('returns false in January', () => {
-    jest.setSystemTime(new Date('2026-01-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-01-15T12:00:00Z'));
     expect(isDecember()).toBe(false);
   });
 
   it('returns false in November', () => {
-    jest.setSystemTime(new Date('2026-11-30T12:00:00'));
+    jest.setSystemTime(new Date('2026-11-30T12:00:00Z'));
     expect(isDecember()).toBe(false);
   });
 
   it('returns false in June', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
     expect(isDecember()).toBe(false);
   });
 });
@@ -281,28 +374,50 @@ describe('isRamadan', () => {
   });
 
   it('returns true during Ramadan (2026-03-10 falls in Ramadan 1447)', () => {
-    jest.setSystemTime(new Date('2026-03-10T12:00:00'));
+    jest.setSystemTime(new Date('2026-03-10T12:00:00Z'));
     expect(isRamadan()).toBe(true);
   });
 
   it('returns false outside Ramadan', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
     expect(isRamadan()).toBe(false);
   });
 
   it("returns true 15 days before Ramadan (Sha'ban 15, 1447 = 2026-02-03)", () => {
-    jest.setSystemTime(new Date('2026-02-03T12:00:00'));
+    jest.setSystemTime(new Date('2026-02-03T12:00:00Z'));
     expect(isRamadan()).toBe(true);
   });
 
   it("returns true in late Sha'ban (Sha'ban 27, 1447 = 2026-02-15)", () => {
-    jest.setSystemTime(new Date('2026-02-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-02-15T12:00:00Z'));
     expect(isRamadan()).toBe(true);
   });
 
   it("returns false 16+ days before Ramadan (Sha'ban 14, 1447 = 2026-02-02)", () => {
-    jest.setSystemTime(new Date('2026-02-02T12:00:00'));
+    jest.setSystemTime(new Date('2026-02-02T12:00:00Z'));
     expect(isRamadan()).toBe(false);
+  });
+
+  describe('EXPO_PUBLIC_FORCE_RAMADAN preview gate', () => {
+    afterEach(() => {
+      delete process.env.EXPO_PUBLIC_FORCE_RAMADAN;
+      delete process.env.EXPO_PUBLIC_ENV;
+    });
+
+    it('forces the season on outside production (off-season device evaluation)', () => {
+      jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
+      process.env.EXPO_PUBLIC_FORCE_RAMADAN = '1';
+      expect(isRamadan()).toBe(true);
+    });
+
+    // A variable left set in a store build would put the app in Ramadan all
+    // year: icon variant, decorations and the settings toggle all follow this.
+    it('is ignored in a prod build', () => {
+      jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
+      process.env.EXPO_PUBLIC_FORCE_RAMADAN = '1';
+      process.env.EXPO_PUBLIC_ENV = 'prod';
+      expect(isRamadan()).toBe(false);
+    });
   });
 });
 
@@ -316,17 +431,17 @@ describe('isDecorationSeason', () => {
   });
 
   it('returns true during Ramadan', () => {
-    jest.setSystemTime(new Date('2026-03-10T12:00:00'));
+    jest.setSystemTime(new Date('2026-03-10T12:00:00Z'));
     expect(isDecorationSeason()).toBe(true);
   });
 
   it('returns true during pre-Ramadan window', () => {
-    jest.setSystemTime(new Date('2026-02-03T12:00:00'));
+    jest.setSystemTime(new Date('2026-02-03T12:00:00Z'));
     expect(isDecorationSeason()).toBe(true);
   });
 
   it('returns false outside decoration seasons', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00'));
+    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
     expect(isDecorationSeason()).toBe(false);
   });
 });
@@ -335,43 +450,40 @@ describe('isDecorationSeason', () => {
 // DATE CREATION & CONVERSION
 // =============================================================================
 
-describe('createLondonDate', () => {
+describe('createInstant', () => {
   it('creates a Date object', () => {
-    const date = createLondonDate();
+    const date = createInstant();
     expect(date).toBeInstanceOf(Date);
   });
 
   it('accepts date strings', () => {
-    const date = createLondonDate('2026-01-18');
+    const date = createInstant('2026-01-18');
     expect(date).toBeInstanceOf(Date);
   });
 
   it('accepts Date objects', () => {
     const input = new Date('2026-01-18T12:00:00Z');
-    const date = createLondonDate(input);
+    const date = createInstant(input);
     expect(date).toBeInstanceOf(Date);
   });
 
   it('creates valid non-NaN date', () => {
-    const date = createLondonDate('2026-06-15');
+    const date = createInstant('2026-06-15');
     expect(Number.isNaN(date.getTime())).toBe(false);
   });
 
-  it('preserves date components for winter date (GMT)', () => {
-    // Winter: London is GMT (UTC+0)
-    const date = createLondonDate('2026-01-15');
-    // The date should represent January 15, 2026 in London
-    expect(date.getFullYear()).toBe(2026);
-    expect(date.getMonth()).toBe(0); // January
-    expect(date.getDate()).toBe(15);
+  it('keeps the London calendar date for a winter date (GMT)', () => {
+    // Read the day through formatDateShort, never the phone-local getters (ISSUES #30)
+    expect(formatDateShort(createInstant('2026-01-15'))).toBe('2026-01-15');
   });
 
-  it('preserves date components for summer date (BST)', () => {
-    // Summer: London is BST (UTC+1)
-    const date = createLondonDate('2026-07-15');
-    expect(date.getFullYear()).toBe(2026);
-    expect(date.getMonth()).toBe(6); // July
-    expect(date.getDate()).toBe(15);
+  it('keeps the London calendar date for a summer date (BST)', () => {
+    expect(formatDateShort(createInstant('2026-07-15'))).toBe('2026-07-15');
+  });
+
+  it('is the same instant it was given, to the millisecond', () => {
+    const instant = new Date('2026-09-11T19:05:05.123Z');
+    expect(createInstant(instant).toISOString()).toBe('2026-09-11T19:05:05.123Z');
   });
 });
 
@@ -389,6 +501,16 @@ describe('formatDateLong', () => {
   it('formats different months correctly', () => {
     expect(formatDateLong('2026-06-15')).toMatch(/Jun/);
     expect(formatDateLong('2026-12-25')).toMatch(/Dec/);
+  });
+
+  // Audit finding 51: these two throwing is WHY components/day/Day.tsx guards its
+  // date instead of coercing null to ''. Pinned so that a future change making
+  // them return a placeholder is noticed, rather than leaving a guard whose
+  // reason has quietly evaporated. Note the Hijri branch is no safer: it calls
+  // formatDateLong from inside its own catch and throws again, uncaught.
+  it('throws on an empty date rather than returning a placeholder', () => {
+    expect(() => formatDateLong('')).toThrow();
+    expect(() => formatHijriDateLong('')).toThrow();
   });
 });
 
@@ -410,29 +532,6 @@ describe('formatDateShort', () => {
     // 23:30 UTC on Dec 20 is 23:30 London (GMT, UTC+0) — still Dec 20.
     const instant = new Date('2026-12-20T23:30:00Z');
     expect(formatDateShort(instant)).toBe('2026-12-20');
-  });
-});
-
-// =============================================================================
-// COUNTDOWN UTILITIES
-// =============================================================================
-
-describe('getSecondsBetween', () => {
-  it('returns positive seconds for future time', () => {
-    const now = new Date('2026-01-18T06:00:00Z');
-    const future = new Date('2026-01-18T07:00:00Z');
-    expect(getSecondsBetween(now, future)).toBe(3600); // 1 hour
-  });
-
-  it('returns negative seconds for past time', () => {
-    const now = new Date('2026-01-18T07:00:00Z');
-    const past = new Date('2026-01-18T06:00:00Z');
-    expect(getSecondsBetween(now, past)).toBe(-3600); // -1 hour
-  });
-
-  it('returns 0 for same time', () => {
-    const time = new Date('2026-01-18T06:00:00Z');
-    expect(getSecondsBetween(time, time)).toBe(0);
   });
 });
 
@@ -474,6 +573,134 @@ describe('createPrayerDatetime', () => {
   });
 });
 
+describe('formatPrayerTime', () => {
+  it('reads an instant on the London wall clock (GMT in winter, BST in summer)', () => {
+    expect(formatPrayerTime(new Date('2026-01-18T06:12:00Z'))).toBe('06:12');
+    expect(formatPrayerTime(new Date('2026-06-15T05:12:00Z'))).toBe('06:12');
+  });
+
+  it('round-trips createPrayerDatetime', () => {
+    expect(formatPrayerTime(createPrayerDatetime('2026-10-23', '23:58'))).toBe('23:58');
+    expect(formatPrayerTime(createPrayerDatetime('2026-03-30', '01:54'))).toBe('01:54');
+  });
+});
+
+describe('getPreviousDateString', () => {
+  it('steps back one calendar day', () => {
+    expect(getPreviousDateString('2026-09-11')).toBe('2026-09-10');
+  });
+
+  it('crosses month and year boundaries', () => {
+    expect(getPreviousDateString('2026-03-01')).toBe('2026-02-28');
+    expect(getPreviousDateString('2026-01-01')).toBe('2025-12-31');
+  });
+
+  it('knows leap years', () => {
+    expect(getPreviousDateString('2024-03-01')).toBe('2024-02-29');
+  });
+
+  it('is unaffected by the clock-change days', () => {
+    expect(getPreviousDateString('2026-03-30')).toBe('2026-03-29');
+    expect(getPreviousDateString('2026-03-29')).toBe('2026-03-28');
+    expect(getPreviousDateString('2026-10-26')).toBe('2026-10-25');
+  });
+});
+
+describe('prayer-timezone clock (remembered offsets)', () => {
+  // A reference that asks Intl directly every time, with no memory
+  const reference = new Intl.DateTimeFormat('en-GB', {
+    timeZone: PRAYER_TIMEZONE,
+    hourCycle: 'h23',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  const referenceReading = (instant: number): string => {
+    const parts = reference.formatToParts(instant);
+    const field = (type: Intl.DateTimeFormatPartTypes) => parts.find((part) => part.type === type)?.value ?? '';
+    const hour = field('hour') === '24' ? '00' : field('hour');
+    return `${field('year')}-${field('month')}-${field('day')} ${hour}:${field('minute')}`;
+  };
+  const appReading = (instant: number): string =>
+    `${formatDateShort(new Date(instant))} ${formatPrayerTime(new Date(instant))}`;
+
+  it('matches Intl at every quarter hour of 2026', () => {
+    const mismatches: string[] = [];
+    for (let instant = Date.UTC(2026, 0, 1); instant < Date.UTC(2027, 0, 1); instant += 15 * 60_000) {
+      if (appReading(instant) !== referenceReading(instant)) mismatches.push(new Date(instant).toISOString());
+    }
+    expect(mismatches).toEqual([]);
+  });
+
+  it('matches Intl minute by minute across both 2026 clock changes', () => {
+    const mismatches: string[] = [];
+    for (const [from, to] of [
+      [Date.UTC(2026, 2, 28, 22), Date.UTC(2026, 2, 29, 4)],
+      [Date.UTC(2026, 9, 24, 22), Date.UTC(2026, 9, 25, 4)],
+    ]) {
+      for (let instant = from; instant <= to; instant += 60_000) {
+        if (appReading(instant) !== referenceReading(instant)) mismatches.push(new Date(instant).toISOString());
+      }
+    }
+    expect(mismatches).toEqual([]);
+  });
+
+  it('asks Intl at most twice per UTC day touched, then never again for that day', () => {
+    const intlReads = jest.spyOn(Intl.DateTimeFormat.prototype, 'formatToParts');
+    try {
+      // A day no other test reads, so nothing is remembered yet
+      const times = ['04:56', '06:28', '13:02', '16:27', '19:25', '20:39'];
+      const moments = times.map((time) => createPrayerDatetime('2031-05-14', time));
+      // The ±12h probes touch three UTC days: 13, 14 and 15 May
+      expect(intlReads.mock.calls.length).toBeLessThanOrEqual(6);
+
+      intlReads.mockClear();
+      for (const moment of moments) formatPrayerTime(moment);
+      for (const time of times) createPrayerDatetime('2031-05-14', time);
+      expect(intlReads).not.toHaveBeenCalled();
+    } finally {
+      intlReads.mockRestore();
+    }
+  });
+});
+
+describe('calendar helpers (prayer timezone, ISSUES #30)', () => {
+  afterEach(() => jest.useRealTimers());
+
+  it('adds days across month, year and leap-year boundaries', () => {
+    expect(addDaysToDateString('2026-12-31', 1)).toBe('2027-01-01');
+    expect(addDaysToDateString('2024-02-28', 1)).toBe('2024-02-29');
+    expect(addDaysToDateString('2026-03-01', -1)).toBe('2026-02-28');
+    expect(addDaysToDateString('2026-10-25', 2)).toBe('2026-10-27');
+  });
+
+  it("reads today from London's calendar: 23:30 UTC in summer is already tomorrow there", () => {
+    jest.useFakeTimers().setSystemTime(new Date('2026-06-15T23:30:00Z'));
+    expect(getTodayDateString()).toBe('2026-06-16');
+    expect(isFriday()).toBe(false); // Tuesday 16 June in London
+  });
+
+  it('anchors a calendar day at 12:00 London time', () => {
+    expect(getDayAnchor('2026-01-18').toISOString()).toBe('2026-01-18T12:00:00.000Z');
+    expect(getDayAnchor('2026-06-18').toISOString()).toBe('2026-06-18T11:00:00.000Z');
+    expect(formatDateShort(getDayAnchor('2026-03-29'))).toBe('2026-03-29');
+  });
+
+  it('takes the weekday of an instant from its London date', () => {
+    // 23:30 UTC on Thu 11 June 2026 is 00:30 BST on Fri 12 June
+    expect(isFriday(new Date('2026-06-11T23:30:00Z'))).toBe(true);
+    expect(isFriday('2026-06-12')).toBe(true);
+  });
+
+  it('wraps clock arithmetic past midnight in both directions', () => {
+    expect(adjustTime('00:10', -20)).toBe('23:50');
+    expect(adjustTime('23:50', 20)).toBe('00:10');
+    expect(adjustTime('12:00', -24 * 60)).toBe('12:00');
+  });
+});
+
 // =============================================================================
 // ADDITIONAL COVERAGE TESTS
 // =============================================================================
@@ -497,21 +724,21 @@ describe('formatHijriDateLong', () => {
 
 describe('isDateYesterdayOrFuture', () => {
   it('returns true for yesterday', () => {
-    const dateStr = londonDate(-86400000);
+    const dateStr = prayerZoneDate(-86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
   });
 
   it('returns true for today', () => {
-    expect(isDateYesterdayOrFuture(londonDate())).toBe(true);
+    expect(isDateYesterdayOrFuture(prayerZoneDate())).toBe(true);
   });
 
   it('returns true for tomorrow', () => {
-    const dateStr = londonDate(86400000);
+    const dateStr = prayerZoneDate(86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
   });
 
   it('returns false for two days ago', () => {
-    const dateStr = londonDate(-2 * 86400000);
+    const dateStr = prayerZoneDate(-2 * 86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(false);
   });
 });
@@ -554,9 +781,10 @@ describe('DST transitions', () => {
       expect(createPrayerDatetime('2026-03-29', '00:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
     });
 
-    it('maps the nonexistent skipped hour via the pre-transition offset (date-fns-tz 3.2.0 semantics)', () => {
-      // 01:30 wall time never exists on this date; the library resolves it as if
-      // the old GMT offset still applied — once a year, midnight-prayer-only
+    it('maps the nonexistent skipped hour via the post-transition offset', () => {
+      // 01:30 wall time never exists on this date; createPrayerDatetime resolves it
+      // with the BST offset the clocks jump to, the same moment as 00:30 GMT. No prayer
+      // time is read from the clock in this hour: the night rows are exact instants (getNightTimes)
       expect(createPrayerDatetime('2026-03-29', '01:30').toISOString()).toBe('2026-03-29T00:30:00.000Z');
     });
 
@@ -570,51 +798,16 @@ describe('DST transitions', () => {
       expect(createPrayerDatetime('2026-10-25', '00:30').toISOString()).toBe('2026-10-24T23:30:00.000Z');
     });
 
-    it('maps the duplicated hour to the LATER occurrence (date-fns-tz 3.2.0 semantics)', () => {
-      // 01:30 happens twice (01:30 BST then 01:30 GMT); the library picks GMT —
-      // once a year, midnight-prayer-only
+    it('maps the duplicated hour to the LATER occurrence', () => {
+      // 01:30 happens twice (01:30 BST then 01:30 GMT); createPrayerDatetime picks
+      // GMT, the later occurrence. No prayer time is read from the clock in this
+      // hour: the night rows are exact instants (getNightTimes)
       expect(createPrayerDatetime('2026-10-25', '01:30').toISOString()).toBe('2026-10-25T01:30:00.000Z');
     });
 
     it('maps a post-transition time with GMT offset', () => {
       expect(createPrayerDatetime('2026-10-25', '02:30').toISOString()).toBe('2026-10-25T02:30:00.000Z');
     });
-  });
-});
-
-// =============================================================================
-// NIGHT TIME CALCULATION EDGE CASES
-// =============================================================================
-
-describe('getLastThirdOfNight edge cases', () => {
-  it('handles very short summer night', () => {
-    // Summer solstice: Magrib 21:15, Fajr 02:45 = 5.5h night
-    const result = getLastThirdOfNight('21:15', '02:45');
-    expect(result).toBeDefined();
-    expect(result).toMatch(/^\d{2}:\d{2}$/);
-  });
-
-  it('handles very long winter night', () => {
-    // Winter solstice: Magrib 15:50, Fajr 07:15 = 15h 25m night
-    const result = getLastThirdOfNight('15:50', '07:15');
-    expect(result).toBeDefined();
-    expect(result).toMatch(/^\d{2}:\d{2}$/);
-  });
-});
-
-describe('getMidnightTime edge cases', () => {
-  it('handles early Islamic midnight (winter)', () => {
-    // Very early Magrib, late Fajr
-    const result = getMidnightTime('15:50', '07:15');
-    expect(result).toBeDefined();
-    expect(result).toMatch(/^\d{2}:\d{2}$/);
-  });
-
-  it('handles late Islamic midnight (summer)', () => {
-    // Late Magrib, early Fajr
-    const result = getMidnightTime('21:15', '02:45');
-    expect(result).toBeDefined();
-    expect(result).toMatch(/^\d{2}:\d{2}$/);
   });
 });
 

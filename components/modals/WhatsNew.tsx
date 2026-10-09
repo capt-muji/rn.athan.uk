@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
-import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { Icon } from '@/shared/types';
 import { getPlatformBadges, type WhatsNewItem } from '@/shared/whatsNew';
 
@@ -20,12 +20,12 @@ type Props = {
   /** Installed app version rendered under the title (never a hand-typed string) */
   version: string;
   items: WhatsNewItem[];
-  onContinue: () => void;
+  onClose: () => void;
 };
 
-export default function ModalWhatsNew({ visible, version, items, onContinue }: Props) {
+export default function ModalWhatsNew({ visible, version, items, onClose }: Props) {
   return (
-    <Modal visible={visible} title="What's New">
+    <Modal visible={visible} title="What's New" onRequestClose={onClose}>
       <Text style={styles.version}>v{version}</Text>
       <View style={styles.list}>
         {items.map((item) => (
@@ -49,8 +49,8 @@ export default function ModalWhatsNew({ visible, version, items, onContinue }: P
           </View>
         ))}
       </View>
-      <Pressable style={styles.button} onPress={onContinue} accessibilityRole='button' accessibilityLabel='Continue'>
-        <Text style={styles.buttonText}>Continue</Text>
+      <Pressable style={styles.button} onPress={onClose} accessibilityRole='button' accessibilityLabel='Close'>
+        <Text style={styles.buttonText}>Close</Text>
       </Pressable>
     </Modal>
   );
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   list: {
     width: '100%',
     gap: SPACING.lg,
-    marginBottom: SPACING.xxl,
+    marginBottom: 36,
   },
   item: {
     flexDirection: 'row',
@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
     color: FAINT_BLUE,
   },
   button: {
-    width: '100%',
+    width: SIZE.modal.buttonWidth,
+    alignSelf: 'center',
     paddingVertical: SPACING.md,
     borderRadius: RADIUS.lg,
     alignItems: 'center',

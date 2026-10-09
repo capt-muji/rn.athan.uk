@@ -1,16 +1,18 @@
 import { addDays, subDays } from 'date-fns';
 
-import { formatDateShort } from '@/shared/time';
+import { formatDateShort, formatPrayerTime } from '@/shared/time';
 import type { IApiResponse } from '@/shared/types';
 
 /**
  * Mock data for testing prayer times
  *
  * MIDNIGHT PRAYER TESTING:
- * - Midnight is calculated as: (Magrib + Fajr) / 2
+ * - Midnight is the midpoint of the night leading into a day: the previous
+ *   day's Magrib to this day's Fajr
  * - Example: Magrib 16:14 → Fajr 05:35 (next day)
- *   Night duration: 13h 21m → Midnight ≈ 22:52
- * - The midnight field is automatically calculated during transformApiData()
+ *   Night duration: 13h 21m → Midnight ≈ 22:54
+ * - Worked out when the lists are built (shared/prayer.ts getNightTimesForDay),
+ *   from two consecutive days below
  * - Check Page 2 (Extras) to see Midnight as first prayer
  */
 
@@ -20,41 +22,49 @@ import type { IApiResponse } from '@/shared/types';
 // day (calculateBelongsToDate) - correct for a real post-midnight Isha, but a
 // night-time mock triggers both: at the Magrib->Isha handoff the countdown
 // skips to the following day's Fajr and the rollover cascade fires early.
-// Real London Isha never lands 00:00-06:00. To test the Magrib->Isha handoff
-// and day rollover cleanly, simulate during 06:00-23:59.
-const now = new Date();
+// An Isha can fall after 00:00 (high latitudes in summer; the app goes global
+// in v2.0) and is handled by the rules above. To test the Magrib->Isha handoff
+// and day rollover cleanly, simulate during 06:00-23:55: from 23:56 a download
+// puts Isha past 00:00, from 23:57 Magrib, and from 23:58 Asr, which reads as
+// the day before.
 
-// Launch-relative time seeder, kept for future mock cascades (e.g. rapid
-// prayer-to-prayer transition testing) — today's resting data is realistic.
-export const addMinutes = (minutesToAdd: number) => {
-  const date = new Date(now.getTime() + minutesToAdd * 60000);
-  return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-};
+const MINUTE = 60_000;
 
-const dayBeforeYesterday = formatDateShort(subDays(now, 2));
-const yesterday = formatDateShort(subDays(now, 1));
-const today = formatDateShort(now);
-const daysAhead = Array.from({ length: 10 }, (_, i) => i + 1);
-const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.map((d) =>
-  formatDateShort(addDays(now, d))
-);
+/** HH:mm in London, as the API sends it and the app reads it, a whole number of minutes from an instant */
+export const addMinutes = (from: Date, minutesToAdd: number) =>
+  formatPrayerTime(new Date(from.getTime() + minutesToAdd * MINUTE));
 
-// Realistic London times copied verbatim from mocks/full.ts, 13 contiguous
-// days (2024-08-28 through 2024-09-09) carrying the API's real autumn solar
-// drift. TODAY pins Fajr/Sunrise to early-AM clocks (Fajr never before
-// midnight) and seeds the rest launch-relative; DAY 1's Fajr/Sunrise are
-// launch-relative too. Jamat fields are unused placeholders.
-export const MOCK_DATA_SIMPLE: IApiResponse = {
-  city: 'london',
-  times: {
+/**
+ * Every day around the download, with TODAY's six rows seeded from it
+ *
+ * Asr is the first whole minute at least 1 minute after the download. Fajr, Sunrise and Dhuhr sit 3, 2
+ * and 1 minutes before the download's own minute; Asr, Magrib and Isha ride 1, 2 and 3 minutes past the
+ * anchor — a tight runway that rolls a boundary roughly every minute.
+ */
+const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
+  const asrAt = new Date(Math.ceil((downloadedAt.getTime() + MINUTE) / MINUTE) * MINUTE);
+  const minuteFloor = new Date(Math.floor(downloadedAt.getTime() / MINUTE) * MINUTE);
+
+  const dayBeforeYesterday = formatDateShort(subDays(downloadedAt, 2));
+  const yesterday = formatDateShort(subDays(downloadedAt, 1));
+  const today = formatDateShort(downloadedAt);
+  const daysAhead = Array.from({ length: 10 }, (_, i) => i + 1);
+  const [day1, day2, day3, day4, day5, day6, day7, day8, day9, day10] = daysAhead.map((d) =>
+    formatDateShort(addDays(downloadedAt, d))
+  );
+
+  // Realistic London times copied verbatim from mocks/full.ts, EXCEPT TODAY.
+  // The days around it carry the API's real spring solar drift; Jamat fields
+  // are unused placeholders.
+  return {
     [dayBeforeYesterday]: {
       date: dayBeforeYesterday,
-      fajr: '04:42',
-      sunrise: '06:19',
-      dhuhr: '13:08',
-      asr: '17:20',
-      magrib: '20:11',
-      isha: '21:07',
+      fajr: '04:10',
+      sunrise: '05:44',
+      dhuhr: '13:04',
+      asr: '16:56',
+      magrib: '20:14',
+      isha: '21:27',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -64,12 +74,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [yesterday]: {
       date: yesterday,
-      fajr: '04:34',
-      sunrise: '06:06',
-      dhuhr: '13:06',
-      asr: '16:47',
-      magrib: '19:56',
-      isha: '21:06',
+      fajr: '04:07',
+      sunrise: '05:42',
+      dhuhr: '13:04',
+      asr: '16:56',
+      magrib: '20:16',
+      isha: '21:29',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -79,12 +89,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [today]: {
       date: today,
-      fajr: '00:30',
-      sunrise: '06:00',
-      dhuhr: addMinutes(97),
-      asr: addMinutes(180),
-      magrib: addMinutes(240),
-      isha: addMinutes(300),
+      fajr: addMinutes(minuteFloor, -3),
+      sunrise: addMinutes(minuteFloor, -2),
+      dhuhr: addMinutes(minuteFloor, -1),
+      asr: addMinutes(asrAt, 1),
+      magrib: addMinutes(asrAt, 2),
+      isha: addMinutes(asrAt, 3),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -94,12 +104,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day1]: {
       date: day1,
-      fajr: addMinutes(310),
-      sunrise: addMinutes(312),
-      dhuhr: '13:06',
-      asr: '16:44',
-      magrib: '19:51',
-      isha: '21:01',
+      fajr: '04:03',
+      sunrise: '05:38',
+      dhuhr: '13:03',
+      asr: '16:58',
+      magrib: '20:19',
+      isha: '21:31',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -109,12 +119,12 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
     },
     [day2]: {
       date: day2,
-      fajr: '04:39',
-      sunrise: '06:11',
-      dhuhr: '13:06',
-      asr: '16:43',
-      magrib: '19:49',
-      isha: '21:00',
+      fajr: '04:00',
+      sunrise: '05:36',
+      dhuhr: '13:03',
+      asr: '16:58',
+      magrib: '20:21',
+      isha: '21:33',
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',
@@ -242,5 +252,14 @@ export const MOCK_DATA_SIMPLE: IApiResponse = {
       magrib_jamat: '00:00',
       isha_jamat: '00:00',
     },
+  };
+};
+
+export const MOCK_DATA_SIMPLE: IApiResponse = {
+  city: 'london',
+  // A getter, so every download (launch, return from the background, the background task) seeds today afresh, while
+  // nothing re-seeds it as the app stays open and Asr can pass
+  get times() {
+    return buildTimes(new Date());
   },
 };

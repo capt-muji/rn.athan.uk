@@ -1,0 +1,34 @@
+R13 PART 2d: classifying the residual gap of a fully offline London
+Per-year interval table (each year's own edits), each era at its own fitted point.
+
+== 2d.1 Tie-break rules compared ==
+era                rounder                    Fajr exact   Isha exact   combined
+era B1 2015-2021   half-up (Math.round)          2173/2191    2163/2191     4336/4382 (98.95%)
+era B1 2015-2021   half-down                     2159/2191    2157/2191     4316/4382 (98.49%)
+era B1 2015-2021   half-even                     2167/2191    2161/2191     4328/4382 (98.77%)
+era B1 2015-2021   truncate seconds (floor)      1103/2191    1088/2191     2191/4382 (50.00%)
+era B2 2022/25/26  half-up (Math.round)          1085/1095    1082/1095     2167/2190 (98.95%)
+era B2 2022/25/26  half-down                     1069/1095    1071/1095     2140/2190 (97.72%)
+era B2 2022/25/26  half-even                     1075/1095    1074/1095     2149/2190 (98.13%)
+era B2 2022/25/26  truncate seconds (floor)       527/1095     545/1095     1072/2190 (48.95%)
+
+== 2d.2 Miss classification, half-up rounding ==
+era B1 2015-2021: 46 misses of 4382 values (1.05%)
+  exactly on the half-minute tie: 28
+  within 1 second of the half-minute boundary: 44
+  within 3 seconds: 45
+  within 10 seconds: 45
+  beyond 10 seconds: 1 -> 2020-03-31 sunset 19.0s -1
+  every miss is +/-1 minute: true
+
+era B2 2022/25/26: 23 misses of 2190 values (1.05%)
+  exactly on the half-minute tie: 10
+  within 1 second of the half-minute boundary: 21
+  within 3 seconds: 23
+  within 10 seconds: 23
+  beyond 10 seconds: 0
+  every miss is +/-1 minute: true
+
+== 2d.3 The best achievable: per-era point, per-year table, best tie-break ==
+era B1 2015-2021: half-up (Math.round). Exact 4336/4382 (98.95%), 46 values 1 minute out, 0 values 2 or more minutes out: true
+era B2 2022/25/26: half-up (Math.round). Exact 2167/2190 (98.95%), 23 values 1 minute out, 0 values 2 or more minutes out: true

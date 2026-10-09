@@ -1,3 +1,6 @@
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 /**
  * Unit tests for stores/database.ts
  *
@@ -14,10 +17,6 @@ import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/s
 import {
   addOneScheduledNotificationForPrayer,
   addOneScheduledReminderForPrayer,
-  clearAllScheduledNotificationsForPrayer,
-  clearAllScheduledNotificationsForSchedule,
-  clearAllScheduledRemindersForPrayer,
-  clearAllScheduledRemindersForSchedule,
   clearPrefix,
   database,
   getAllScheduledNotificationsForPrayer,
@@ -69,6 +68,26 @@ describe('getItem', () => {
     database.set('nested', JSON.stringify(nested));
     const result = getItem('nested');
     expect(result).toEqual(nested);
+  });
+
+  // cacheSchemaChanged compares the read-back marker with `!==` against the number
+  // CACHE_SCHEMA_VERSION. That only works because this round trip preserves the type:
+  // if a number ever came back as a string, the comparison would be true on every
+  // launch and the prayer cache would be wiped on every single upgrade.
+  it('round-trips a number as a number, which the cache schema marker depends on', () => {
+    setItem('cache_schema_version', 1);
+
+    const readBack = getItem('cache_schema_version');
+
+    expect(readBack).toBe(1);
+    expect(typeof readBack).toBe('number');
+    expect(readBack === 1).toBe(true);
+  });
+
+  it('round-trips zero as a number rather than null', () => {
+    setItem('zero_marker', 0);
+
+    expect(getItem('zero_marker')).toBe(0);
   });
 });
 
@@ -203,8 +222,6 @@ describe('saveAllPrayers', () => {
     asr: '14:30',
     magrib: '16:45',
     isha: '18:15',
-    midnight: '00:30',
-    'last third': '02:30',
     suhoor: '05:40',
     duha: '07:50',
     istijaba: '12:45',
@@ -372,50 +389,6 @@ describe('notification scheduling records', () => {
       expect(result).toHaveLength(1);
     });
   });
-
-  describe('clearAllScheduledNotificationsForPrayer', () => {
-    beforeEach(() => {
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, createMockNotification('fajr-1'));
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, createMockNotification('fajr-2'));
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 1, createMockNotification('sunrise'));
-    });
-
-    it('clears all notifications for specified prayer', () => {
-      clearAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
-
-      const fajrNotifications = getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
-      expect(fajrNotifications).toHaveLength(0);
-    });
-
-    it('does not clear notifications for other prayers', () => {
-      clearAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
-
-      const sunriseNotifications = getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 1);
-      expect(sunriseNotifications).toHaveLength(1);
-    });
-  });
-
-  describe('clearAllScheduledNotificationsForSchedule', () => {
-    beforeEach(() => {
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, createMockNotification('std-1'));
-      addOneScheduledNotificationForPrayer(ScheduleType.Standard, 1, createMockNotification('std-2'));
-      addOneScheduledNotificationForPrayer(ScheduleType.Extra, 0, createMockNotification('ext-1'));
-    });
-
-    it('clears all notifications for Standard schedule', () => {
-      clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
-
-      const standardNotifications = getAllScheduledNotificationsForSchedule(ScheduleType.Standard);
-      expect(standardNotifications).toHaveLength(0);
-    });
-
-    it('does not clear Extra schedule notifications', () => {
-      clearAllScheduledNotificationsForSchedule(ScheduleType.Standard);
-
-      const extraNotifications = getAllScheduledNotificationsForSchedule(ScheduleType.Extra);
-      expect(extraNotifications).toHaveLength(1);
-    });
-  });
 });
 
 // =============================================================================
@@ -507,50 +480,178 @@ describe('reminder scheduling records', () => {
       expect(result).toEqual([]);
     });
   });
+});
 
-  describe('clearAllScheduledRemindersForPrayer', () => {
-    beforeEach(() => {
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('fajr-1'));
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('fajr-2'));
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 1, createMockReminder('sunrise'));
+// =============================================================================
+// clearAllExcept CALL-SITE GUARD (audit finding 6)
+// =============================================================================
+
+/**
+ * `clearAllExcept` is the raw wipe. Two places call it directly: the upgrade path
+ * and the sync path's full refresh. Anything else that needs to clear the cache
+ * goes through `clearUpgradeCache`, which owns the keep-list.
+ *
+ * The error screen's Refresh button does clear the cache — owner ruling,
+ * 2026-09-12: reaching that screen means something has gone wrong, and the
+ * destruction is acceptable because preferences survive. It routes through
+ * `clearUpgradeCache` so it inherits the full keep-list rather than an inline
+ * one, which is what the second test below pins.
+ */
+describe('clearAllExcept call sites', () => {
+  const SANCTIONED = ['stores/sync.ts', 'stores/version.ts'];
+
+  const sourceFiles = (dir: string): string[] => {
+    const entries = readdirSync(join(__dirname, '../..', dir), { withFileTypes: true });
+    return entries.flatMap((entry) => {
+      const relative = `${dir}/${entry.name}`;
+      if (entry.isDirectory()) return entry.name === '__tests__' ? [] : sourceFiles(relative);
+      return /\.tsx?$/.test(entry.name) ? [relative] : [];
     });
+  };
 
-    it('clears all reminders for specified prayer', () => {
-      clearAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
+  it('is called only from the upgrade and sync paths', () => {
+    const searched = ['app', 'components', 'device', 'hooks', 'shared', 'stores', 'widgets'];
+    const callers = searched
+      .flatMap((dir) => sourceFiles(dir))
+      .filter((relative) => {
+        const source = readFileSync(join(__dirname, '../..', relative), 'utf8');
+        // Comments discuss this function by name, so strip them before looking
+        // for calls; the declaration in database.ts is not a call site either
+        const code = source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+        return /\bclearAllExcept\(/.test(code) && relative !== 'stores/database.ts';
+      });
 
-      const fajrReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
-      expect(fajrReminders).toHaveLength(0);
-    });
-
-    it('does not clear reminders for other prayers', () => {
-      clearAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
-
-      const sunriseReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 1);
-      expect(sunriseReminders).toHaveLength(1);
-    });
+    expect(callers.sort()).toEqual(SANCTIONED);
   });
 
-  describe('clearAllScheduledRemindersForSchedule', () => {
-    beforeEach(() => {
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, createMockReminder('std-1'));
-      addOneScheduledReminderForPrayer(ScheduleType.Standard, 1, createMockReminder('std-2'));
-      addOneScheduledReminderForPrayer(ScheduleType.Extra, 0, createMockReminder('ext-1'));
+  /**
+   * The error screen's reset goes through `clearUpgradeCache`, not through the
+   * raw wipe, precisely so it inherits this list. A user reset must never cost
+   * them their alert settings: they came here because prayer times are broken,
+   * not to start over.
+   */
+  it("keeps preferences and measured widths through the error screen's clear", () => {
+    const version = readFileSync(join(__dirname, '../version.ts'), 'utf8');
+    const keepList = version.slice(
+      version.indexOf('const UPGRADE_KEEP_PREFIXES'),
+      version.indexOf('];', version.indexOf('const UPGRADE_KEEP_PREFIXES'))
+    );
+
+    expect(keepList).toContain("'preference_'");
+    expect(keepList).toContain("'app_installed_version'");
+    expect(keepList).toContain("'prayer_max_english_width_'");
+
+    // Routing through clearUpgradeCache is what earns the keep-list above. An
+    // inline list on the call site would drop prayer_max_english_width_, and
+    // losing that reflows the prayer list on the next launch (ISSUES #22, #16)
+    const errorScreen = readFileSync(join(__dirname, '../../components/ui/Error.tsx'), 'utf8');
+    expect(errorScreen).toContain('clearUpgradeCache()');
+  });
+
+  /**
+   * Two independent wipes keep two independently written lists: `clearUpgradeCache`'s
+   * and the full-refresh one inside `updatePrayerData`. They drifted apart once —
+   * sync's dropped `cache_schema_version`, so a full refresh left the cache looking
+   * "unknown shape" and bought an unnecessary wipe on the very next upgrade. Nothing
+   * compared them, so nothing noticed.
+   */
+  it('keeps the two wipe lists in agreement', () => {
+    // Only whole-line quoted entries count; the lists carry trailing comments, and
+    // an apostrophe inside one would otherwise read as a key
+    const extractKeepList = (source: string, anchor: string, close: string): string[] => {
+      const start = source.indexOf(anchor);
+      expect(start).toBeGreaterThan(-1);
+      const body = source.slice(start, source.indexOf(close, start));
+      return [...body.matchAll(/^\s*'([^']+)',/gm)].map((match) => match[1] as string).sort();
+    };
+
+    const version = readFileSync(join(__dirname, '../version.ts'), 'utf8');
+    const sync = readFileSync(join(__dirname, '../sync.ts'), 'utf8');
+
+    const upgradeKeeps = extractKeepList(version, 'const UPGRADE_KEEP_PREFIXES', '];');
+    const refreshKeeps = extractKeepList(sync, 'Database.clearAllExcept([', ']);');
+
+    expect(upgradeKeeps).toHaveLength(5);
+    // A refresh also keeps the alarm records. An upgrade can change the identifier scheme, so records
+    // written under the old one go with it; a refresh cannot, and they describe what the OS holds
+    expect(refreshKeeps).toEqual([...upgradeKeeps, 'scheduled_notifications_', 'scheduled_reminders_'].sort());
+  });
+});
+
+// =============================================================================
+// MMKV INSTANCE ID TESTS (AUDIT #25)
+// =============================================================================
+
+/**
+ * The store is namespaced by the same predicate that decides whether mock
+ * prayer times are served, so a mock-serving build cannot leave fabricated
+ * rows where a real build will read them.
+ *
+ * The shared react-native-mmkv mock discards the id, so these cases install a
+ * local jest.doMock that records it (the pattern shared/__tests__/perf.test.ts
+ * uses) inside jest.isolateModules — scoped so the rest of this file keeps the
+ * shared mock. shared/config.ts reads EXPO_PUBLIC_ENV at module evaluation,
+ * which is why the graph has to be required fresh per environment.
+ */
+describe('MMKV instance id', () => {
+  const originalEnv = process.env.EXPO_PUBLIC_ENV;
+
+  afterEach(() => {
+    if (originalEnv === undefined) delete process.env.EXPO_PUBLIC_ENV;
+    else process.env.EXPO_PUBLIC_ENV = originalEnv;
+
+    jest.dontMock('react-native-mmkv');
+    jest.resetModules();
+  });
+
+  /** Re-evaluates stores/database.ts under the given env and returns the id it asked for */
+  const idForEnv = (env: string | undefined): string | undefined => {
+    if (env === undefined) delete process.env.EXPO_PUBLIC_ENV;
+    else process.env.EXPO_PUBLIC_ENV = env;
+
+    const ids: Array<string | undefined> = [];
+
+    jest.isolateModules(() => {
+      jest.doMock('react-native-mmkv', () => ({
+        __esModule: true,
+        // Only the import-time call matters here; the returned instance is
+        // never touched, since nothing in database.ts reads at module scope
+        createMMKV: (options: { id?: string }) => {
+          ids.push(options?.id);
+          return {};
+        },
+      }));
+
+      require('../database');
     });
 
-    it('clears all reminders for Standard schedule', () => {
-      clearAllScheduledRemindersForSchedule(ScheduleType.Standard);
+    expect(ids).toHaveLength(1);
+    return ids[0];
+  };
 
-      const fajrReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
-      const sunriseReminders = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 1);
-      expect(fajrReminders).toHaveLength(0);
-      expect(sunriseReminders).toHaveLength(0);
-    });
+  it('uses athan-storage in production, the id shipped installs already hold', () => {
+    expect(idForEnv('prod')).toBe('athan-storage');
+  });
 
-    it('does not clear Extra schedule reminders', () => {
-      clearAllScheduledRemindersForSchedule(ScheduleType.Standard);
+  it('uses athan-storage in preview, which serves real data too', () => {
+    expect(idForEnv('preview')).toBe('athan-storage');
+  });
 
-      const extraReminders = getAllScheduledRemindersForPrayer(ScheduleType.Extra, 0);
-      expect(extraReminders).toHaveLength(1);
-    });
+  it('uses a separate store for local builds, which serve MOCK_DATA_SIMPLE', () => {
+    expect(idForEnv('local')).not.toBe('athan-storage');
+  });
+
+  it('uses a separate store when the environment is unset', () => {
+    expect(idForEnv(undefined)).not.toBe('athan-storage');
+  });
+
+  it('agrees with the predicate api/client.ts uses to serve mock data', () => {
+    // The two must move together: the namespace is a guarantee only while the
+    // build that writes fabricated rows is exactly the build denied the real id
+    const client = readFileSync(join(__dirname, '../../api/client.ts'), 'utf8');
+    expect(client).toContain('if (!isProd() && !isPreview()) return MOCK_DATA_SIMPLE;');
+
+    const db = readFileSync(join(__dirname, '../database.ts'), 'utf8');
+    expect(db).toContain("isProd() || isPreview() ? 'athan-storage'");
   });
 });

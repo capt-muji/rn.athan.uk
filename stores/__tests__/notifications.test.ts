@@ -11,13 +11,16 @@
 import * as BackgroundTask from 'expo-background-task';
 import * as Notifications from 'expo-notifications';
 import * as TaskManager from 'expo-task-manager';
-import { createStore } from 'jotai';
+import { createStore, getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
+import { london } from '@/hooks/__tests__/londonDays';
 import {
   BACKGROUND_TASK_INTERVAL_HOURS,
+  BACKGROUND_TASK_INTERVAL_MINUTES,
   BACKGROUND_TASK_NAME,
   DEFAULT_REMINDER_INTERVAL,
+  DEFAULT_REMINDER_SLOT_INTERVALS,
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   NOTIFICATION_REFRESH_HOURS,
@@ -26,16 +29,18 @@ import {
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import type { ScheduledNotification } from '@/shared/notifications';
+import { transformApiData } from '@/shared/prayer';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
+  canonicalPrayerIndex,
+  commitPrayerAlertChange,
   createPrayerAlertAtom,
   createReminderAlertAtom,
   createReminderIntervalAtom,
   extraPrayerAlertAtoms,
   extraReminderAlertAtoms,
   extraReminderIntervalAtoms,
-  getBackgroundTaskStatus,
   getPrayerAlertAtom,
   getPrayerArrays,
   getReminderAlertAtom,
@@ -53,8 +58,6 @@ import {
   standardPrayerAlertAtoms,
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
-  unregisterBackgroundTask,
-  updatePrayerNotifications,
 } from '@/stores/notifications';
 
 // Explicit logger mock: the moduleNameMapper's generic '^@/(.*)$' key resolves
@@ -74,9 +77,23 @@ jest.mock('@/stores/widget', () => ({
   refreshPrayerWidgets: jest.fn(async () => undefined),
 }));
 
+jest.mock('@/stores/sync', () => ({
+  sync: jest.fn(async () => undefined),
+  getArmedDayChanges: jest.fn(() => 0),
+}));
+
 // =============================================================================
 // getPrayerArrays HELPER TESTS
 // =============================================================================
+
+/** The settings an alert sheet closes on */
+const sheetAlerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertType.Off) => ({
+  atTimeAlert,
+  reminders: [
+    { alert: reminderAlert, interval: DEFAULT_REMINDER_SLOT_INTERVALS[0] as ReminderInterval },
+    { alert: AlertType.Off, interval: DEFAULT_REMINDER_SLOT_INTERVALS[1] as ReminderInterval },
+  ] as const,
+});
 
 describe('getPrayerArrays', () => {
   describe('Standard schedule', () => {
@@ -208,7 +225,7 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     Database.database.set('preference_reminder_alert_extra_4', '1'); // Istijaba reminder = Silent
     Database.database.set('preference_reminder_interval_standard_2', '20'); // Dhuhr interval
 
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
 
     expect(Database.database.getString('preference_alert_standard_fajr')).toBe('2');
     expect(Database.database.getString('preference_reminder_alert_extra_istijaba')).toBe('1');
@@ -223,18 +240,196 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     Database.database.set('preference_alert_standard_0', '1');
     Database.database.set('preference_alert_standard_fajr', '2');
 
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
 
     expect(Database.database.getString('preference_alert_standard_fajr')).toBe('2');
     expect(Database.database.contains('preference_alert_standard_0')).toBe(false);
   });
 
   it('is a no-op when no index-keyed keys remain', () => {
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
     const keysAfterFirstRun = Database.database.getAllKeys();
 
-    migrateIndexKeyedAlertPreferences();
+    migrateIndexKeyedAlertPreferences(null);
     expect(Database.database.getAllKeys()).toEqual(keysAfterFirstRun);
+  });
+
+  // Audit finding 4: the atoms are created when this module is evaluated, which
+  // is necessarily before the migration can be called, so each one holds a
+  // pre-migration snapshot. Writing MMKV behind them left every read for the
+  // rest of the launch seeing the default — and the reminder path then actively
+  // CLEARS reminders it believes are Off. These assert the value is visible
+  // through the atom, not just present on disk.
+  it('makes the migrated value visible through the atom in the same session', () => {
+    const store = getDefaultStore();
+    // Earlier cases in this describe leave name keys behind, and migrate() only
+    // writes when the destination is absent
+    Database.database.remove('preference_alert_standard_fajr');
+    Database.database.remove('preference_reminder_alert_extra_istijaba');
+    Database.database.remove('preference_reminder_interval_standard_dhuhr');
+    Database.database.set('preference_alert_standard_0', '2'); // Fajr = Sound
+    Database.database.set('preference_reminder_alert_extra_4', '1'); // Istijaba reminder = Silent
+    Database.database.set('preference_reminder_interval_standard_2', '20'); // Dhuhr interval
+
+    migrateIndexKeyedAlertPreferences(null);
+
+    expect(store.get(standardPrayerAlertAtoms[0]!)).toBe(AlertType.Sound);
+    expect(store.get(extraReminderAlertAtoms[0][4]!)).toBe(AlertType.Silent);
+    expect(store.get(standardReminderIntervalAtoms[0][2]!)).toBe(20);
+  });
+
+  it('copies a non-numeric value verbatim rather than re-encoding it to NaN', () => {
+    Database.database.remove('preference_alert_standard_fajr');
+    Database.database.set('preference_alert_standard_0', 'not-a-number');
+
+    migrateIndexKeyedAlertPreferences(null);
+
+    expect(Database.database.getString('preference_alert_standard_fajr')).toBe('not-a-number');
+  });
+
+  // Audit finding 3 and the owner's ruling of 2026-09-12. Midnight was inserted at
+  // EXTRAS_ENGLISH[0] in 1.0.27, so an install that last ran before then wrote its
+  // extras index keys against ['Last Third', 'Suhoor', 'Duha', 'Istijaba'].
+  // Migrating those with today's array shifts every extra by one: the user gets an
+  // athan at Islamic Midnight they never asked for and silence at Last Third.
+  describe('extras written before 1.0.27', () => {
+    const clearExtras = () => {
+      for (const name of ['midnight', 'last third', 'suhoor', 'duha', 'istijaba']) {
+        Database.database.remove(`preference_alert_extra_${name}`);
+      }
+      for (let i = 0; i < 5; i += 1) Database.database.remove(`preference_alert_extra_${i}`);
+    };
+
+    it('maps index keys against the PRE-1.0.27 array when the stored version is older', () => {
+      clearExtras();
+      Database.database.set('preference_alert_extra_0', '2'); // meant Last Third
+      Database.database.set('preference_alert_extra_3', '1'); // meant Istijaba
+
+      migrateIndexKeyedAlertPreferences('1.0.26');
+
+      expect(Database.database.getString('preference_alert_extra_last third')).toBe('2');
+      expect(Database.database.getString('preference_alert_extra_istijaba')).toBe('1');
+      // the shifted destination must stay untouched
+      expect(Database.database.contains('preference_alert_extra_midnight')).toBe(false);
+    });
+
+    it('maps index keys against the CURRENT array from 1.0.27 onwards', () => {
+      clearExtras();
+      Database.database.set('preference_alert_extra_0', '2'); // meant Midnight
+
+      migrateIndexKeyedAlertPreferences('1.0.27');
+
+      expect(Database.database.getString('preference_alert_extra_midnight')).toBe('2');
+      expect(Database.database.contains('preference_alert_extra_last third')).toBe(false);
+    });
+
+    it('treats an absent stored version as a fresh install and uses the current array', () => {
+      clearExtras();
+      Database.database.set('preference_alert_extra_0', '2');
+
+      migrateIndexKeyedAlertPreferences(null);
+
+      expect(Database.database.getString('preference_alert_extra_midnight')).toBe('2');
+    });
+
+    it('removes every leftover index key, including one with no counterpart', () => {
+      clearExtras();
+      Database.database.set('preference_alert_extra_4', '2'); // no 5th extra pre-1.0.27
+      Database.database.set('preference_reminder_interval_extra_4', '30');
+
+      migrateIndexKeyedAlertPreferences('1.0.26');
+
+      expect(Database.database.contains('preference_alert_extra_4')).toBe(false);
+      expect(Database.database.contains('preference_reminder_interval_extra_4')).toBe(false);
+    });
+  });
+
+  // The migration looks each index key up by the name it was written against and writes through that name's atoms,
+  // with no check that the name is still on today's list. These pin that it always is, so a constants change that
+  // drops or reorders a prayer fails here instead of silently losing a saved alert
+  describe('the lists the index keys were written against', () => {
+    const KINDS = ['alert', 'reminder_alert', 'reminder_interval'] as const;
+
+    const clearKeys = (type: string) => {
+      for (const key of Database.database.getAllKeys()) {
+        if (KINDS.some((kind) => key.startsWith(`preference_${kind}_${type}_`))) Database.database.remove(key);
+      }
+    };
+
+    const savedUnderNames = (type: string, names: readonly string[]) =>
+      KINDS.map((kind) =>
+        names.map((name) => Database.database.getString(`preference_${kind}_${type}_${name.toLowerCase()}`))
+      );
+
+    // A preference atom reads storage once, when it is created, so a key left behind here would become the starting
+    // value of any atom a later test creates
+    afterEach(() => {
+      clearKeys('standard');
+      clearKeys('extra');
+    });
+
+    it.each<{ list: string; type: string; storedVersion: string | null; written: string[] }>([
+      {
+        list: 'the Standard list',
+        type: 'standard',
+        storedVersion: null,
+        written: ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'],
+      },
+      {
+        list: 'the Extras list before 1.0.27',
+        type: 'extra',
+        storedVersion: '1.0.26',
+        written: ['Last Third', 'Suhoor', 'Duha', 'Istijaba'],
+      },
+      {
+        list: 'the Extras list from 1.0.27',
+        type: 'extra',
+        storedVersion: '1.0.27',
+        written: ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'],
+      },
+    ])(
+      'moves every index key written against $list onto the prayer of that name',
+      ({ type, storedVersion, written }) => {
+        clearKeys(type);
+        // Off keeps every prayer silent for the suites below; the intervals tell the positions apart
+        written.forEach((_, index) => {
+          Database.database.set(`preference_alert_${type}_${index}`, '0');
+          Database.database.set(`preference_reminder_alert_${type}_${index}`, '0');
+          Database.database.set(`preference_reminder_interval_${type}_${index}`, String(5 * (index + 1)));
+        });
+
+        migrateIndexKeyedAlertPreferences(storedVersion);
+
+        expect(savedUnderNames(type, written)).toEqual([
+          written.map(() => '0'),
+          written.map(() => '0'),
+          written.map((_, index) => String(5 * (index + 1))),
+        ]);
+      }
+    );
+
+    // the schedule's key segment, today's list, and its alert, reminder and interval atoms
+    it.each([
+      [
+        'standard',
+        PRAYERS_ENGLISH,
+        [standardPrayerAlertAtoms, standardReminderAlertAtoms[0], standardReminderIntervalAtoms[0]],
+      ],
+      ['extra', EXTRAS_ENGLISH, [extraPrayerAlertAtoms, extraReminderAlertAtoms[0], extraReminderIntervalAtoms[0]]],
+    ])(
+      'holds one %s alert, reminder and interval atom per name on the list, each saved under that name',
+      (type, names, atomArrays) => {
+        clearKeys(type);
+        const store = createStore();
+
+        for (const atoms of atomArrays) {
+          for (const [index, atom] of atoms.entries()) store.set(atom, index + 1);
+        }
+
+        expect(atomArrays.map((atoms) => atoms.length)).toEqual(KINDS.map(() => names.length));
+        expect(savedUnderNames(type, names)).toEqual(KINDS.map(() => names.map((_, index) => String(index + 1))));
+      }
+    );
   });
 });
 
@@ -307,6 +502,75 @@ describe('getPrayerAlertAtom', () => {
 });
 
 // =============================================================================
+// canonicalPrayerIndex TESTS
+// =============================================================================
+
+/**
+ * A prayer row carries its CHRONOLOGICAL index; every atom array here is
+ * CANONICAL. They coincide only while the canonical names happen to be in
+ * chronological order, so these pin the mapping under an order where they do
+ * not — the permutation `shared/__tests__/prayer.test.ts` already fixes as
+ * expected behaviour for a Friday whose Istijaba sorts before Midnight.
+ */
+describe('canonicalPrayerIndex', () => {
+  // Chronological list: Duha, then Istijaba, then Midnight. canonicalDisplayOrder
+  // returns [2, 0, 1] for it, so the row labelled Midnight renders with index 2.
+  const permutedChronological = ['Duha', 'Istijaba', 'Midnight'];
+  const midnightRowIndex = permutedChronological.indexOf('Midnight');
+
+  it('resolves the row labelled Midnight to the canonical Midnight atom, not the row-index atom', () => {
+    const resolved = canonicalPrayerIndex(ScheduleType.Extra, 'Midnight', midnightRowIndex);
+
+    expect(resolved).toBe(EXTRAS_ENGLISH.indexOf('Midnight'));
+    expect(getPrayerAlertAtom(ScheduleType.Extra, resolved)).toBe(
+      extraPrayerAlertAtoms[EXTRAS_ENGLISH.indexOf('Midnight')]
+    );
+
+    // The defect this closes: the raw row index lands on a different prayer's atom
+    expect(midnightRowIndex).not.toBe(EXTRAS_ENGLISH.indexOf('Midnight'));
+    expect(getPrayerAlertAtom(ScheduleType.Extra, midnightRowIndex)).not.toBe(
+      getPrayerAlertAtom(ScheduleType.Extra, resolved)
+    );
+  });
+
+  it('maps every row of the permuted list to its own prayer', () => {
+    const canonicalNames = getPrayerArrays(ScheduleType.Extra).english;
+    const resolvedNames = permutedChronological.map(
+      (prayerName, rowIndex) => canonicalNames[canonicalPrayerIndex(ScheduleType.Extra, prayerName, rowIndex)]
+    );
+
+    expect(resolvedNames).toEqual(permutedChronological);
+  });
+
+  it('is the identity for a canonically ordered schedule', () => {
+    EXTRAS_ENGLISH.forEach((prayerName, index) => {
+      expect(canonicalPrayerIndex(ScheduleType.Extra, prayerName, index)).toBe(index);
+    });
+    PRAYERS_ENGLISH.forEach((prayerName, index) => {
+      expect(canonicalPrayerIndex(ScheduleType.Standard, prayerName, index)).toBe(index);
+    });
+  });
+
+  it('resolves against the schedule it is given, not the other one', () => {
+    // Fajr exists only in the standard schedule
+    expect(canonicalPrayerIndex(ScheduleType.Standard, 'Fajr', 99)).toBe(PRAYERS_ENGLISH.indexOf('Fajr'));
+    expect(canonicalPrayerIndex(ScheduleType.Extra, 'Fajr', 99)).toBe(99);
+  });
+
+  it('falls back to the row index for an unknown name, so a loading frame is unchanged', () => {
+    // usePrayer reports english: '' while the sequence loads or the row is out of range
+    expect(canonicalPrayerIndex(ScheduleType.Extra, '', 3)).toBe(3);
+    expect(canonicalPrayerIndex(ScheduleType.Standard, '', 0)).toBe(0);
+    expect(canonicalPrayerIndex(ScheduleType.Extra, 'Not A Prayer', 2)).toBe(2);
+  });
+
+  it('never returns -1, which would hand useAtomValue an undefined atom', () => {
+    expect(canonicalPrayerIndex(ScheduleType.Extra, '', 0)).not.toBe(-1);
+    expect(getPrayerAlertAtom(ScheduleType.Extra, canonicalPrayerIndex(ScheduleType.Extra, '', 0))).toBeDefined();
+  });
+});
+
+// =============================================================================
 // soundPreferenceAtom TESTS
 // =============================================================================
 
@@ -335,7 +599,7 @@ describe('soundPreferenceAtom', () => {
 // =============================================================================
 // shouldRescheduleNotifications TESTS
 // ADR-001: Rolling Window Notification Buffer
-// - Refresh every NOTIFICATION_REFRESH_HOURS (4 hours)
+// - Refresh every NOTIFICATION_REFRESH_HOURS
 // - Returns true when refresh is needed, false otherwise
 // =============================================================================
 
@@ -438,43 +702,43 @@ describe('lastNotificationScheduleAtom', () => {
 
 describe('createReminderAlertAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createReminderAlertAtom(ScheduleType.Extra, 'Duha');
+    const atom = createReminderAlertAtom(ScheduleType.Extra, 'Duha', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of 0 (AlertType.Off)', () => {
     const store = createStore();
-    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
     const value = store.get(atom);
     expect(value).toBe(0); // AlertType.Off
   });
 
   it('creates different atoms for different prayers', () => {
-    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 'Fajr');
-    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 'Asr');
+    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
+    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 'Asr', 0);
     expect(atom1).not.toBe(atom2);
   });
 });
 
 describe('createReminderIntervalAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createReminderIntervalAtom(ScheduleType.Extra, 'Duha');
+    const atom = createReminderIntervalAtom(ScheduleType.Extra, 'Duha', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of DEFAULT_REMINDER_INTERVAL', () => {
     const store = createStore();
-    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr', 0);
     const value = store.get(atom);
     expect(value).toBe(DEFAULT_REMINDER_INTERVAL);
   });
@@ -486,18 +750,18 @@ describe('createReminderIntervalAtom', () => {
 
 describe('standardReminderAlertAtoms', () => {
   it('has 6 atoms (one for each standard prayer)', () => {
-    expect(standardReminderAlertAtoms).toHaveLength(6);
+    expect(standardReminderAlertAtoms[0]).toHaveLength(6);
   });
 
   it('all atoms are defined', () => {
-    standardReminderAlertAtoms.forEach((atom) => {
+    standardReminderAlertAtoms[0].forEach((atom) => {
       expect(atom).toBeDefined();
     });
   });
 
   it('atoms have default value of 0', () => {
     const store = createStore();
-    standardReminderAlertAtoms.forEach((atom) => {
+    standardReminderAlertAtoms[0].forEach((atom) => {
       expect(store.get(atom)).toBe(0);
     });
   });
@@ -505,11 +769,11 @@ describe('standardReminderAlertAtoms', () => {
 
 describe('extraReminderAlertAtoms', () => {
   it('has 5 atoms (one for each extra prayer)', () => {
-    expect(extraReminderAlertAtoms).toHaveLength(5);
+    expect(extraReminderAlertAtoms[0]).toHaveLength(5);
   });
 
   it('all atoms are defined', () => {
-    extraReminderAlertAtoms.forEach((atom) => {
+    extraReminderAlertAtoms[0].forEach((atom) => {
       expect(atom).toBeDefined();
     });
   });
@@ -517,20 +781,20 @@ describe('extraReminderAlertAtoms', () => {
 
 describe('standardReminderIntervalAtoms', () => {
   it('has 6 atoms (one for each standard prayer)', () => {
-    expect(standardReminderIntervalAtoms).toHaveLength(6);
+    expect(standardReminderIntervalAtoms[0]).toHaveLength(6);
   });
 
   it('atoms have default value of DEFAULT_REMINDER_INTERVAL', () => {
     const store = createStore();
-    standardReminderIntervalAtoms.forEach((atom) => {
-      expect(store.get(atom)).toBe(DEFAULT_REMINDER_INTERVAL);
+    standardReminderIntervalAtoms[0].forEach((atom) => {
+      expect(store.get(atom)).toBe(DEFAULT_REMINDER_SLOT_INTERVALS[0]);
     });
   });
 });
 
 describe('extraReminderIntervalAtoms', () => {
   it('has 5 atoms (one for each extra prayer)', () => {
-    expect(extraReminderIntervalAtoms).toHaveLength(5);
+    expect(extraReminderIntervalAtoms[0]).toHaveLength(5);
   });
 });
 
@@ -540,31 +804,31 @@ describe('extraReminderIntervalAtoms', () => {
 
 describe('getReminderAlertAtom', () => {
   it('returns correct atom from standardReminderAlertAtoms', () => {
-    const atom = getReminderAlertAtom(ScheduleType.Standard, 0);
-    expect(atom).toBe(standardReminderAlertAtoms[0]);
+    const atom = getReminderAlertAtom(ScheduleType.Standard, 0, 0);
+    expect(atom).toBe(standardReminderAlertAtoms[0][0]);
   });
 
   it('returns correct atom from extraReminderAlertAtoms', () => {
-    const atom = getReminderAlertAtom(ScheduleType.Extra, 0);
-    expect(atom).toBe(extraReminderAlertAtoms[0]);
+    const atom = getReminderAlertAtom(ScheduleType.Extra, 0, 0);
+    expect(atom).toBe(extraReminderAlertAtoms[0][0]);
   });
 
   it('returns different atoms for different indices', () => {
-    const atom0 = getReminderAlertAtom(ScheduleType.Standard, 0);
-    const atom1 = getReminderAlertAtom(ScheduleType.Standard, 1);
+    const atom0 = getReminderAlertAtom(ScheduleType.Standard, 0, 0);
+    const atom1 = getReminderAlertAtom(ScheduleType.Standard, 1, 0);
     expect(atom0).not.toBe(atom1);
   });
 });
 
 describe('getReminderIntervalAtom', () => {
   it('returns correct atom from standardReminderIntervalAtoms', () => {
-    const atom = getReminderIntervalAtom(ScheduleType.Standard, 0);
-    expect(atom).toBe(standardReminderIntervalAtoms[0]);
+    const atom = getReminderIntervalAtom(ScheduleType.Standard, 0, 0);
+    expect(atom).toBe(standardReminderIntervalAtoms[0][0]);
   });
 
   it('returns correct atom from extraReminderIntervalAtoms', () => {
-    const atom = getReminderIntervalAtom(ScheduleType.Extra, 0);
-    expect(atom).toBe(extraReminderIntervalAtoms[0]);
+    const atom = getReminderIntervalAtom(ScheduleType.Extra, 0, 0);
+    expect(atom).toBe(extraReminderIntervalAtoms[0][0]);
   });
 });
 
@@ -580,40 +844,40 @@ describe('setPrayerAlertType constraint enforcement', () => {
   beforeEach(() => {
     // Reset atoms for testing
     store.set(standardPrayerAlertAtoms[0], AlertType.Sound);
-    store.set(standardReminderAlertAtoms[0], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[0][0], AlertType.Sound);
   });
 
   it('disables reminder when at-time alert is set to Off', () => {
     // First verify reminder is enabled
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
 
     // Disable at-time alert
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Off);
 
     // Reminder should also be disabled
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Off);
   });
 
   it('does not affect reminder when at-time alert is set to Silent', () => {
     // Verify initial state
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
 
     // Set at-time to Silent
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Silent);
 
     // Reminder should remain Sound
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
   });
 
   it('does not affect reminder when at-time alert is set to Sound', () => {
     // Set reminder to Silent first
-    store.set(standardReminderAlertAtoms[0], AlertType.Silent);
+    store.set(standardReminderAlertAtoms[0][0], AlertType.Silent);
 
     // Set at-time to Sound
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Sound);
 
     // Reminder should remain Silent
-    expect(getReminderAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Silent);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Silent);
   });
 });
 
@@ -647,22 +911,28 @@ describe('registerBackgroundTask', () => {
     expect(TaskManager.isTaskRegisteredAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
   });
 
-  it('skips registration when task is already registered', async () => {
+  it('unregisters an already-registered task so re-registration carries fresh options', async () => {
     (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
 
     await registerBackgroundTask();
 
-    expect(BackgroundTask.registerTaskAsync).not.toHaveBeenCalled();
+    expect(BackgroundTask.unregisterTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
+    expect(BackgroundTask.registerTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME, {
+      minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
+      requiresNetworkConnectivity: false,
+    });
   });
 
-  it('registers task with correct name and interval', async () => {
+  it('registers task with correct name and interval in minutes', async () => {
     (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
 
     await registerBackgroundTask();
 
     expect(BackgroundTask.registerTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME, {
-      minimumInterval: BACKGROUND_TASK_INTERVAL_HOURS * 60 * 60,
+      minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
+      requiresNetworkConnectivity: false,
     });
+    expect(BackgroundTask.unregisterTaskAsync).not.toHaveBeenCalled();
   });
 
   it('does not throw when registration fails', async () => {
@@ -673,86 +943,43 @@ describe('registerBackgroundTask', () => {
   });
 });
 
-describe('unregisterBackgroundTask', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('checks if task is registered before unregistering', async () => {
-    await unregisterBackgroundTask();
-
-    expect(TaskManager.isTaskRegisteredAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
-  });
-
-  it('skips unregistration when task is not registered', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
-
-    await unregisterBackgroundTask();
-
-    expect(BackgroundTask.unregisterTaskAsync).not.toHaveBeenCalled();
-  });
-
-  it('unregisters task when it is registered', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
-
-    await unregisterBackgroundTask();
-
-    expect(BackgroundTask.unregisterTaskAsync).toHaveBeenCalledWith(BACKGROUND_TASK_NAME);
-  });
-
-  it('does not throw when unregistration fails', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
-    (BackgroundTask.unregisterTaskAsync as jest.Mock).mockRejectedValueOnce(new Error('Unregistration failed'));
-
-    // Should not throw
-    await expect(unregisterBackgroundTask()).resolves.toBeUndefined();
-  });
-});
-
-describe('getBackgroundTaskStatus', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('returns registration status and system status', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(true);
-    (BackgroundTask.getStatusAsync as jest.Mock).mockResolvedValueOnce(BackgroundTask.BackgroundTaskStatus.Available);
-
-    const status = await getBackgroundTaskStatus();
-
-    expect(status.isRegistered).toBe(true);
-    expect(status.systemStatus).toBe(BackgroundTask.BackgroundTaskStatus.Available);
-    expect(status.systemStatusLabel).toBe('Available');
-  });
-
-  it('returns Restricted label when system status is restricted', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockResolvedValueOnce(false);
-    (BackgroundTask.getStatusAsync as jest.Mock).mockResolvedValueOnce(BackgroundTask.BackgroundTaskStatus.Restricted);
-
-    const status = await getBackgroundTaskStatus();
-
-    expect(status.isRegistered).toBe(false);
-    expect(status.systemStatusLabel).toBe('Restricted');
-  });
-
-  it('returns error status when check fails', async () => {
-    (TaskManager.isTaskRegisteredAsync as jest.Mock).mockRejectedValueOnce(new Error('Check failed'));
-
-    const status = await getBackgroundTaskStatus();
-
-    expect(status.isRegistered).toBe(false);
-    expect(status.systemStatusLabel).toBe('Error');
-  });
-});
-
 describe('rescheduleAllNotificationsFromBackground', () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { getDefaultStore } = require('jotai/vanilla');
   const store = getDefaultStore();
 
+  /** A fixed London day, so the seeded rows below sit at a known distance from the pinned clock */
+  const SEEDED_DAY = '2026-09-11';
+
   beforeEach(() => {
     jest.clearAllMocks();
     store.set(lastNotificationScheduleAtom, 0);
+
+    // The clock is pinned before the seed is built, so the rows below are always ahead of "now". Read off the real
+    // clock these tests passed only before 12:00 London and failed after it, every day (ISSUES #41)
+    jest.useFakeTimers({ now: london(SEEDED_DAY, '09:00') });
+
+    // A reschedule refuses to run against an empty prayer cache — it would
+    // schedule nothing and then sweep away the alarms the OS restored after an
+    // app update. These tests have always meant "a normal device with data", so
+    // seed today; without it they would assert the bail path instead.
+    const seed: ISingleApiResponseTransformed = {
+      date: SEEDED_DAY,
+      fajr: '12:00',
+      sunrise: '12:01',
+      dhuhr: '12:02',
+      asr: '12:03',
+      magrib: '12:04',
+      isha: '12:05',
+      suhoor: '12:06',
+      duha: '12:07',
+      istijaba: '12:08',
+    };
+    Database.database.set(`prayer_${SEEDED_DAY}`, JSON.stringify(seed));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it('updates lastNotificationScheduleAtom on success', async () => {
@@ -776,6 +1003,79 @@ describe('rescheduleAllNotificationsFromBackground', () => {
     const lastSchedule = store.get(lastNotificationScheduleAtom);
     expect(lastSchedule).toBeGreaterThanOrEqual(beforeCall);
   });
+
+  it('refreshes prayer data (sync) before rescheduling — year-boundary guard', async () => {
+    const { sync: mockSync } = require('@/stores/sync');
+    mockSync.mockClear();
+    (logger.info as jest.Mock).mockClear();
+
+    await rescheduleAllNotificationsFromBackground();
+
+    expect(mockSync).toHaveBeenCalledTimes(1);
+    const rescheduleCall = (logger.info as jest.Mock).mock.calls.find(
+      ([msg]) => msg === 'BACKGROUND_TASK: Background reschedule complete'
+    );
+    // Sync ran and the reschedule still completed
+    expect(rescheduleCall).toBeDefined();
+    expect(logger.error).not.toHaveBeenCalledWith(
+      'BACKGROUND_TASK: Data refresh failed, rescheduling from cache',
+      expect.anything()
+    );
+  });
+
+  it('still reschedules from cache when sync fails (best-effort data contract)', async () => {
+    const { sync: mockSync } = require('@/stores/sync');
+    mockSync.mockRejectedValueOnce(new Error('API unreachable'));
+
+    await expect(rescheduleAllNotificationsFromBackground()).resolves.toBeUndefined();
+
+    expect(logger.error).toHaveBeenCalledWith(
+      'BACKGROUND_TASK: Data refresh failed, rescheduling from cache',
+      expect.objectContaining({ error: expect.any(Error) })
+    );
+    const lastSchedule = store.get(lastNotificationScheduleAtom);
+    expect(lastSchedule).toBeGreaterThan(0);
+  });
+
+  describe('when a download changes the days the alarms read', () => {
+    const mockedSync = jest.requireMock('@/stores/sync') as { getArmedDayChanges: jest.Mock; sync: jest.Mock };
+    let armedDayChanges = 0;
+
+    beforeEach(() => {
+      armedDayChanges = 0;
+      mockedSync.getArmedDayChanges.mockImplementation(() => armedDayChanges);
+    });
+
+    afterEach(() => {
+      mockedSync.getArmedDayChanges.mockImplementation(() => 0);
+    });
+
+    it('leaves the gate open when that happens while it reschedules', async () => {
+      // Landing while the reschedule waits on the OS, after it has read the days
+      (Notifications.getAllScheduledNotificationsAsync as jest.Mock).mockImplementationOnce(async () => {
+        armedDayChanges += 1;
+        return [];
+      });
+
+      await rescheduleAllNotificationsFromBackground();
+
+      // A stamp would keep the new days unarmed until the gate reopens
+      expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+      expect(logger.info).toHaveBeenCalledWith(
+        'BACKGROUND_TASK: Days changed during the reschedule, leaving the gate open for the next refresh'
+      );
+    });
+
+    it('stamps the gate when only its own sync changed them, since it reads the days after that sync', async () => {
+      mockedSync.sync.mockImplementationOnce(async () => {
+        armedDayChanges += 1;
+      });
+
+      await rescheduleAllNotificationsFromBackground();
+
+      expect(store.get(lastNotificationScheduleAtom)).toBeGreaterThan(0);
+    });
+  });
 });
 
 // =============================================================================
@@ -791,14 +1091,26 @@ describe('Background task constants', () => {
     expect(BACKGROUND_TASK_INTERVAL_HOURS).toBe(3);
   });
 
-  it('foreground and background intervals are offset (not equal)', () => {
-    // ADR-007: Intervals are offset to reduce collision risk
-    expect(NOTIFICATION_REFRESH_HOURS).not.toBe(BACKGROUND_TASK_INTERVAL_HOURS);
+  it('BACKGROUND_TASK_INTERVAL_MINUTES is a positive number of minutes', () => {
+    // ISSUES #8: minimumInterval is documented in MINUTES (expo-background-task);
+    // production resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 (Jest runs with
+    // NODE_ENV=test, so the development 15-minute fast-iteration branch is not taken)
+    expect(BACKGROUND_TASK_INTERVAL_MINUTES).toBe(BACKGROUND_TASK_INTERVAL_HOURS * 60);
   });
 
-  it('background interval is above Android minimum (15 min)', () => {
-    const backgroundIntervalMinutes = BACKGROUND_TASK_INTERVAL_HOURS * 60;
-    expect(backgroundIntervalMinutes).toBeGreaterThan(15);
+  it('NOTIFICATION_REFRESH_HOURS is 2 hours', () => {
+    expect(NOTIFICATION_REFRESH_HOURS).toBe(2);
+  });
+
+  // An opened app must never be the slower of the two to notice lost alarms: the gate costs
+  // one timestamp comparison and no OS scheduler, so nothing rations it (ADR-007 rev 4)
+  it('the foreground gate reopens sooner than the background task runs', () => {
+    expect(NOTIFICATION_REFRESH_HOURS).toBeLessThan(BACKGROUND_TASK_INTERVAL_HOURS);
+  });
+
+  // Above the sub-hour band where dasd answers "group is full" (RUNBOOK §1, measured at 15 min)
+  it('background interval stays out of the iOS rate-limited band', () => {
+    expect(BACKGROUND_TASK_INTERVAL_HOURS).toBeGreaterThanOrEqual(1);
   });
 });
 
@@ -841,8 +1153,6 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       asr: time,
       magrib: time,
       isha: time,
-      midnight: time,
-      'last third': time,
       suhoor: time,
       duha: time,
       istijaba: time,
@@ -878,7 +1188,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
   const enableFajrAlerts = (atTime: AlertType, reminder: AlertType = AlertType.Off) => {
     store.set(standardPrayerAlertAtoms[0], atTime);
-    store.set(standardReminderAlertAtoms[0], reminder);
+    store.set(standardReminderAlertAtoms[0][0], reminder);
   };
 
   const osIdentifiers = () => Array.from(osState).sort();
@@ -907,18 +1217,18 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     Database.database.clearAll();
     jest.clearAllMocks();
 
-    [standardPrayerAlertAtoms, extraPrayerAlertAtoms, standardReminderAlertAtoms, extraReminderAlertAtoms].forEach(
-      (atoms) => {
-        atoms.forEach((atom) => {
-          store.set(atom, AlertType.Off);
-        });
-      }
-    );
-    [standardReminderIntervalAtoms, extraReminderIntervalAtoms].forEach((atoms) => {
-      atoms.forEach((atom) => {
-        store.set(atom, DEFAULT_REMINDER_INTERVAL);
-      });
-    });
+    // The reminder arrays are indexed by slot THEN prayer, so they flatten one level further
+    for (const atom of [
+      ...standardPrayerAlertAtoms,
+      ...extraPrayerAlertAtoms,
+      ...standardReminderAlertAtoms.flat(),
+      ...extraReminderAlertAtoms.flat(),
+    ]) {
+      store.set(atom, AlertType.Off);
+    }
+    for (const atom of [...standardReminderIntervalAtoms.flat(), ...extraReminderIntervalAtoms.flat()]) {
+      store.set(atom, DEFAULT_REMINDER_INTERVAL);
+    }
     store.set(lastNotificationScheduleAtom, 0);
     store.set(soundPreferenceAtom, 0);
 
@@ -938,7 +1248,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
   });
 
   afterAll(() => {
-    scheduleMock.mockResolvedValue('mock-notification-id');
+    // Back to the shared mock's default, which echoes the identifier the way the SDK does
+    scheduleMock.mockImplementation(({ identifier }: { identifier: string }) => Promise.resolve(identifier));
     cancelMock.mockResolvedValue(undefined);
     getAllMock.mockResolvedValue([]);
   });
@@ -946,8 +1257,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
   // -- global ordering guarantees --------------------------------------------
 
   it('never bulk-cancels or bulk-wipes during a global reschedule', async () => {
-    const scheduleWipe = jest.spyOn(Database, 'clearAllScheduledNotificationsForSchedule');
-    const reminderWipe = jest.spyOn(Database, 'clearAllScheduledRemindersForSchedule');
+    const bulkWipe = jest.spyOn(Database, 'clearPrefix');
 
     enableFajrAlerts(AlertType.Sound);
     seedPrayerWindow();
@@ -955,8 +1265,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     await rescheduleAllNotifications();
 
     expect(cancelAllMock).not.toHaveBeenCalled();
-    expect(scheduleWipe).not.toHaveBeenCalled();
-    expect(reminderWipe).not.toHaveBeenCalled();
+    expect(bulkWipe).not.toHaveBeenCalled();
   });
 
   it('never bulk-cancels via refreshNotifications or the background reschedule', async () => {
@@ -1069,7 +1378,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
   it('schedules the new reminder interval before cancelling the old one', async () => {
     enableFajrAlerts(AlertType.Sound, AlertType.Sound);
-    store.set(standardReminderIntervalAtoms[0], 10);
+    store.set(standardReminderIntervalAtoms[0][0], 10);
     seedPrayerWindow();
 
     const oldTodayId = fajrReminderId(TODAY, 5);
@@ -1167,6 +1476,128 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     expect(logger.error).toHaveBeenCalled();
   });
 
+  // -- deferred widget push ----------------------------------------------------
+
+  it('pushes the widgets only after the next frame on the foreground path', async () => {
+    const { refreshPrayerWidgets } = require('@/stores/widget');
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    await rescheduleAllNotifications();
+    expect(refreshPrayerWidgets).not.toHaveBeenCalled();
+
+    await jest.advanceTimersByTimeAsync(10);
+    expect(refreshPrayerWidgets).toHaveBeenCalledTimes(1);
+  });
+
+  it('logs a failed deferred push rather than rejecting, since nothing awaits it', async () => {
+    const { refreshPrayerWidgets } = require('@/stores/widget');
+    refreshPrayerWidgets.mockRejectedValueOnce(new Error('widget IO failed'));
+    enableFajrAlerts(AlertType.Sound);
+    seedPrayerWindow();
+
+    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await jest.advanceTimersByTimeAsync(10);
+
+    expect(logger.warn).toHaveBeenCalledWith('WIDGET: Deferred push failed', { error: expect.any(Error) });
+  });
+
+  // -- never lose alerts after an app update -----------------------------------
+  //
+  // An app can update itself in the background. On Android the update wipes the
+  // scheduled_* bookkeeping and the prayer cache, while MY_PACKAGE_REPLACED has
+  // expo-notifications restore the real alarms. The reschedule that follows must
+  // not mistake "no bookkeeping" for "nothing should be armed".
+
+  it('does not cancel the OS alarms when the prayer cache is empty (post-upgrade)', async () => {
+    enableFajrAlerts(AlertType.Sound);
+
+    // Deliberately no seedPrayerWindow(): clearUpgradeCache wiped prayer_* too
+    osState.add(fajrId(TODAY));
+    osState.add(fajrId(TOMORROW));
+
+    await refreshNotifications();
+
+    expect(osIdentifiers()).toEqual([fajrId(TODAY), fajrId(TOMORROW)].sort());
+    expect(cancelCalls()).toEqual([]);
+    expect(cancelAllMock).not.toHaveBeenCalled();
+  });
+
+  it('leaves the refresh gate open after bailing, so the next foreground retries', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    osState.add(fajrId(TODAY));
+
+    await refreshNotifications();
+
+    // Stamping here would buy 12 hours of silence on one moment of missing data
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+  });
+
+  describe('when a download changes the days the alarms read during a refresh', () => {
+    const { getArmedDayChanges } = jest.requireMock('@/stores/sync') as { getArmedDayChanges: jest.Mock };
+    let armedDayChanges = 0;
+
+    beforeEach(() => {
+      armedDayChanges = 0;
+      getArmedDayChanges.mockImplementation(() => armedDayChanges);
+      // The download lands while the first reschedule is arming, after it has read the days
+      const schedule = scheduleMock.getMockImplementation();
+      scheduleMock.mockImplementationOnce((request: { identifier: string }) => {
+        armedDayChanges += 1;
+        return schedule?.(request);
+      });
+      enableFajrAlerts(AlertType.Sound);
+      seedPrayerWindow();
+    });
+
+    afterEach(() => {
+      getArmedDayChanges.mockImplementation(() => 0);
+    });
+
+    it('leaves the gate open after that refresh', async () => {
+      await refreshNotifications();
+
+      expect(scheduleMock).toHaveBeenCalled();
+      expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+      expect(logger.info).toHaveBeenCalledWith(
+        'NOTIFICATION: Days changed during the refresh, leaving the gate open for the next one'
+      );
+    });
+
+    it('stamps it from a refresh queued behind that one, which reads the days once the lock is its own', async () => {
+      await Promise.all([refreshNotifications(), refreshNotifications()]);
+
+      expect(store.get(lastNotificationScheduleAtom)).toBeGreaterThan(0);
+    });
+  });
+
+  it('does not stamp the background reschedule when the cache is empty', async () => {
+    enableFajrAlerts(AlertType.Sound);
+    osState.add(fajrId(TODAY));
+
+    await rescheduleAllNotificationsFromBackground();
+
+    expect(osIdentifiers()).toEqual([fajrId(TODAY)]);
+    expect(store.get(lastNotificationScheduleAtom)).toBe(0);
+  });
+
+  it('refuses to sweep when there is no bookkeeping to compare against', async () => {
+    // Prayer data present but every alert off, so nothing is scheduled and no
+    // records exist. The stray is left armed on purpose: an unexpected alert is
+    // a smaller harm than cancelling everything the OS holds after an update.
+    seedPrayerWindow();
+    osState.add('legacy-uuid-1');
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has('legacy-uuid-1')).toBe(true);
+    expect(cancelCalls()).not.toContain('legacy-uuid-1');
+    expect(logger.warn).toHaveBeenCalledWith(
+      'NOTIFICATION: Sweep skipped — no records to compare against, refusing to cancel what the OS holds',
+      expect.anything()
+    );
+  });
+
   it('clears notifications of prayers whose alert is off (heals interrupted settings commit)', async () => {
     enableFajrAlerts(AlertType.Sound);
     seedPrayerWindow();
@@ -1191,7 +1622,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     const reminderId = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
     seedReminderRecords([reminderId]);
     osState.add(reminderId);
-    store.set(standardReminderAlertAtoms[0], AlertType.Off);
+    store.set(standardReminderAlertAtoms[0][0], AlertType.Off);
 
     await rescheduleAllNotifications();
 
@@ -1204,7 +1635,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
   // -- single-prayer toggle path ----------------------------------------------
 
-  it('updatePrayerNotifications replaces in place without cancelling live identifiers', async () => {
+  it('a commit replaces in place without cancelling live identifiers', async () => {
     seedPrayerWindow();
     const todayId = fajrId(TODAY);
     const tomorrowId = fajrId(TOMORROW);
@@ -1212,13 +1643,20 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     osState.add(todayId);
     osState.add(tomorrowId);
 
-    await updatePrayerNotifications(ScheduleType.Standard, 0, 'Fajr', 'الفجر', AlertType.Sound, AlertType.Off);
+    await commitPrayerAlertChange(
+      ScheduleType.Standard,
+      0,
+      'Fajr',
+      'الفجر',
+      sheetAlerts(AlertType.Sound),
+      sheetAlerts(AlertType.Off)
+    );
 
     expect(cancelMock).not.toHaveBeenCalled();
     expect(osIdentifiers()).toEqual([todayId, tomorrowId].sort());
   });
 
-  it('updatePrayerNotifications turning alerts off cancels only that prayer', async () => {
+  it('a commit turning alerts off cancels only that prayer', async () => {
     seedPrayerWindow();
     const todayId = fajrId(TODAY);
     const ishaTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'Isha', TODAY);
@@ -1227,7 +1665,14 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     osState.add(todayId);
     osState.add(ishaTodayId);
 
-    await updatePrayerNotifications(ScheduleType.Standard, 0, 'Fajr', 'الفجر', AlertType.Off, AlertType.Off);
+    await commitPrayerAlertChange(
+      ScheduleType.Standard,
+      0,
+      'Fajr',
+      'الفجر',
+      sheetAlerts(AlertType.Off),
+      sheetAlerts(AlertType.Sound)
+    );
 
     expect(osState.has(todayId)).toBe(false);
     expect(osState.has(ishaTodayId)).toBe(true);
@@ -1246,5 +1691,709 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     expect(osState.has(duhaTodayId)).toBe(true);
     expect(osState.has(duhaTomorrowId)).toBe(true);
     expect(cancelAllMock).not.toHaveBeenCalled();
+  });
+
+  // -- ISSUES #29: every alert fires at its list row's own instant ------------
+
+  it('schedules the Extras night rows at the exact moment their list row shows', async () => {
+    const seedDay = (date: string, fajr: string, magrib: string) => {
+      const prayer: ISingleApiResponseTransformed = {
+        date,
+        fajr,
+        sunrise: '06:10',
+        dhuhr: '13:05',
+        asr: '16:50',
+        magrib,
+        isha: '21:20',
+        suhoor: '04:05',
+        duha: '06:30',
+        istijaba: '18:55',
+      };
+      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+    };
+    seedDay(YESTERDAY, '04:22', '19:58');
+    seedDay(TODAY, '04:23', '19:55');
+    seedDay(TOMORROW, '04:25', '19:53');
+    store.set(standardPrayerAlertAtoms[0], AlertType.Silent); // Fajr
+    store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
+    store.set(extraPrayerAlertAtoms[1], AlertType.Silent); // Last Third
+
+    await rescheduleAllNotifications();
+
+    const triggerOf = (identifier: string): string | undefined =>
+      scheduleMock.mock.calls
+        .map(([request]) => request as { identifier: string; trigger: { date: Date } })
+        .find((request) => request.identifier === identifier)
+        ?.trigger.date.toISOString();
+
+    // Tonight (Sat 29 -> Sun 30 Aug) opens Sunday's list: Magrib Sat 19:55, Fajr Sun 04:25 BST, 8h 30m
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TOMORROW))).toBe(
+      '2026-08-29T23:10:00.000Z'
+    );
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Last Third', TOMORROW))).toBe(
+      '2026-08-30T00:35:00.000Z'
+    );
+    // Saturday's list opened with last night, already over at 09:00: nothing to schedule
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TODAY))).toBeUndefined();
+    // Daily prayers are unchanged: the day's own time on its own date
+    expect(triggerOf(fajrId(TOMORROW))).toBe('2026-08-30T03:25:00.000Z');
+  });
+
+  it('schedules a Midnight that falls before 00:00 on the evening before its list day', async () => {
+    const seedDay = (date: string, fajr: string, magrib: string) => {
+      const prayer: ISingleApiResponseTransformed = {
+        date,
+        fajr,
+        sunrise: '06:10',
+        dhuhr: '13:05',
+        asr: '16:50',
+        magrib,
+        isha: '20:30',
+        suhoor: '04:05',
+        duha: '06:30',
+        istijaba: '18:05',
+      };
+      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+    };
+    // A winter-shaped night on the frozen date: Magrib Sat 19:05, Fajr Sun 04:25 BST, 9h 20m
+    seedDay(TODAY, '04:23', '19:05');
+    seedDay(TOMORROW, '04:25', '19:03');
+    store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
+
+    await rescheduleAllNotifications();
+
+    const midnightId = prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TOMORROW);
+    const request = scheduleMock.mock.calls
+      .map(([call]) => call as { identifier: string; trigger: { date: Date } })
+      .find((call) => call.identifier === midnightId);
+
+    // Sunday's Midnight is Saturday 23:45 BST, this same evening, never Sunday 23:45
+    expect(request?.trigger.date.toISOString()).toBe('2026-08-29T22:45:00.000Z');
+  });
+
+  it('reaches every stored day for a night row and for a daily prayer alike', async () => {
+    // A night row's instant falls on the evening BEFORE its list day, which the day-count window
+    // had to grant an extra day for. The budget needs no such rule: a row is taken on its own
+    // instant, so both kinds reach as far as the stored days and the budget allow.
+    const seedDay = (date: string, fajr: string, magrib: string) => {
+      const prayer: ISingleApiResponseTransformed = {
+        date,
+        fajr,
+        sunrise: '06:10',
+        dhuhr: '13:05',
+        asr: '16:50',
+        magrib,
+        isha: '21:20',
+        suhoor: '04:05',
+        duha: '06:30',
+        istijaba: '18:55',
+      };
+      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+    };
+    const DAY_AFTER_TOMORROW = '2026-08-31';
+    seedDay(YESTERDAY, '04:22', '19:58');
+    seedDay(TODAY, '04:23', '19:55');
+    seedDay(TOMORROW, '04:25', '19:53');
+    seedDay(DAY_AFTER_TOMORROW, '04:27', '19:51');
+    store.set(standardPrayerAlertAtoms[0], AlertType.Silent); // Fajr
+    store.set(standardReminderAlertAtoms[0][0], AlertType.Silent); // Fajr reminder
+    store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
+    store.set(extraPrayerAlertAtoms[1], AlertType.Silent); // Last Third
+    store.set(extraPrayerAlertAtoms[2], AlertType.Silent); // Suhoor
+    store.set(extraReminderAlertAtoms[0][0], AlertType.Silent); // Midnight reminder
+
+    await rescheduleAllNotifications();
+
+    const midnightId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', date);
+    const lastThirdId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Last Third', date);
+    const suhoorId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Suhoor', date);
+
+    // The night rows reach the last stored list day, whose instant is the evening before it
+    expect(osState.has(midnightId(DAY_AFTER_TOMORROW))).toBe(true);
+    expect(osState.has(lastThirdId(DAY_AFTER_TOMORROW))).toBe(true);
+    // The reminder path takes the same window, or the two would drift apart
+    expect(
+      osState.has(
+        reminderNotificationIdentifier(
+          ScheduleType.Extra,
+          'Midnight',
+          DAY_AFTER_TOMORROW,
+          DEFAULT_REMINDER_INTERVAL as ReminderInterval
+        )
+      )
+    ).toBe(true);
+
+    // The daily rows reach it too, which the day count refused them
+    expect(osState.has(fajrId(DAY_AFTER_TOMORROW))).toBe(true);
+    expect(osState.has(fajrReminderId(DAY_AFTER_TOMORROW, DEFAULT_REMINDER_INTERVAL))).toBe(true);
+    expect(osState.has(suhoorId(DAY_AFTER_TOMORROW))).toBe(true);
+    expect(osState.has(fajrId(TOMORROW))).toBe(true);
+    expect(osState.has(suhoorId(TOMORROW))).toBe(true);
+
+    expect(osState.has(midnightId(TOMORROW))).toBe(true);
+    expect(osState.has(midnightId(TODAY))).toBe(false); // already past at 09:00
+  });
+  // ==========================================================================
+  // SCHEDULING FAILURE TESTS
+  //
+  // The real scheduleNotificationAsync rejects on a past trigger date, an absent
+  // Android channel, the iOS pending ceiling and UnavailabilityError, and nothing
+  // in the repository had ever made it reject. The catch block it guards is
+  // correctness-critical: the identifier is deterministic, so whatever OS
+  // notification it already had must survive the failure, and the identifier has
+  // to be re-recorded or the per-prayer stale-cancel and the post-reschedule
+  // sweep would delete a live alert (issue #15).
+  // ==========================================================================
+
+  describe('when the OS rejects a schedule request', () => {
+    /** Rejects only the named identifier; everything else schedules normally */
+    const rejectIdentifier = (target: string) => {
+      scheduleMock.mockImplementation(({ identifier }: { identifier: string }) => {
+        if (identifier === target) return Promise.reject(new Error('Invalid notification channel'));
+        osState.add(identifier);
+        return Promise.resolve(identifier);
+      });
+    };
+
+    it('still records the deterministic identifier, so the failure leaves bookkeeping intact', async () => {
+      const failing = fajrId(TODAY);
+      rejectIdentifier(failing);
+      enableFajrAlerts(AlertType.Sound);
+      seedPrayerWindow();
+
+      await rescheduleAllNotifications();
+
+      const stored = Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
+      expect(stored.map((record) => record.id)).toContain(failing);
+    });
+
+    it('never cancels the OS notification that survived the failed replace', async () => {
+      const failing = fajrId(TODAY);
+      // The OS already holds this identifier from an earlier successful schedule
+      osState.add(failing);
+      rejectIdentifier(failing);
+      enableFajrAlerts(AlertType.Sound);
+      seedPrayerWindow();
+
+      await rescheduleAllNotifications();
+
+      expect(cancelCalls()).not.toContain(failing);
+      expect(osIdentifiers()).toContain(failing);
+    });
+
+    it('does not abort the rest of the batch when one prayer fails', async () => {
+      rejectIdentifier(fajrId(TODAY));
+      enableFajrAlerts(AlertType.Sound);
+      seedPrayerWindow();
+
+      await rescheduleAllNotifications();
+
+      expect(osIdentifiers()).toContain(fajrId(TOMORROW));
+    });
+
+    it('records the reminder identifier too when a reminder request rejects', async () => {
+      const failing = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
+      rejectIdentifier(failing);
+      // A reminder only schedules while its at-time alert is on, which is the same
+      // constraint setPrayerAlertType enforces in the UI
+      enableFajrAlerts(AlertType.Silent, AlertType.Sound);
+      seedPrayerWindow();
+
+      await rescheduleAllNotifications();
+
+      const stored = Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
+      expect(stored.map((record) => record.id)).toContain(failing);
+    });
+  });
+
+  // ==========================================================================
+  // UNREADABLE TIMES (session 3 dashes rules)
+  //
+  // A row the provider gave no readable time for is drawn as --:-- and nothing may
+  // fire for it (R5), while the saved preference survives to arm the next readable
+  // day (R6). A day missing from the store is a day of such rows (R7), and a night
+  // row needs the previous day's own Magrib, never a borrowed one (finding 72), so a
+  // broken field reaches into the next list. Records go through the app's own
+  // transform with null where the provider's value was unreadable. Every expected
+  // instant was worked out separately, by UTC arithmetic and London's clock-change
+  // rule, not by the app's time helpers.
+  // ==========================================================================
+
+  describe('unreadable times', () => {
+    type Times = [string | null, string | null, string | null, string | null, string | null, string | null];
+    type Request = { identifier: string; trigger: { date: Date } };
+
+    const S = ScheduleType.Standard;
+    const E = ScheduleType.Extra;
+    const TIME_NAMES = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'] as const;
+
+    // London-shaped late-August times, every one readable
+    const AUG_28: Times = ['04:22', '06:08', '13:05', '16:51', '19:58', '21:23'];
+    const AUG_29: Times = ['04:23', '06:10', '13:05', '16:50', '19:55', '21:20'];
+    const AUG_30: Times = ['04:25', '06:11', '13:05', '16:49', '19:53', '21:18'];
+    const AUG_31: Times = ['04:27', '06:13', '13:04', '16:47', '19:51', '21:15'];
+    const SEP_01: Times = ['04:28', '06:15', '13:04', '16:45', '19:48', '21:12'];
+    const EVERY_TIME_UNREADABLE: Times = [null, null, null, null, null, null];
+
+    /** The same day with the named times unreadable */
+    const withUnreadable = (times: Times, ...names: (typeof TIME_NAMES)[number][]): Times =>
+      times.map((time, index) => (names.includes(TIME_NAMES[index]) ? null : time)) as Times;
+
+    /** Stores days as sync writes them: Suhoor, Duha and Istijaba derived by the app's own transform */
+    const storeDays = (days: Record<string, Times>) => {
+      for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(days)) {
+        const [stored] = transformApiData({
+          city: 'london',
+          times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
+        });
+        Database.database.set(`prayer_${date}`, JSON.stringify(stored));
+      }
+    };
+
+    /** Switches the named prayers to Silent, each with a Silent reminder */
+    const enable = (scheduleType: ScheduleType, names: readonly string[]) => {
+      const { english } = getPrayerArrays(scheduleType);
+      const isStandard = scheduleType === S;
+      for (const name of names) {
+        const index = english.indexOf(name);
+        if (index === -1) throw new Error(`${name} is not on the ${scheduleType} list`);
+        store.set((isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms)[index], AlertType.Silent);
+        // Slot first, then prayer
+        store.set((isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[0][index], AlertType.Silent);
+      }
+    };
+
+    const athan = (scheduleType: ScheduleType, name: string, date: string) =>
+      prayerNotificationIdentifier(scheduleType, name, date);
+    const reminder = (scheduleType: ScheduleType, name: string, date: string) =>
+      reminderNotificationIdentifier(scheduleType, name, date, DEFAULT_REMINDER_INTERVAL as ReminderInterval);
+
+    /** An occurrence's at-time and reminder identifiers */
+    const ids = (occurrences: [ScheduleType, string, string][]) =>
+      occurrences
+        .flatMap(([scheduleType, name, date]) => [athan(scheduleType, name, date), reminder(scheduleType, name, date)])
+        .sort();
+
+    const minutesBefore = (instant: string, minutes: number) =>
+      new Date(Date.parse(instant) - minutes * 60_000).toISOString();
+
+    /** An occurrence's at-time trigger, and its reminder's DEFAULT_REMINDER_INTERVAL earlier */
+    const armedAt = (scheduleType: ScheduleType, name: string, date: string, instant: string): [string, string][] => [
+      [athan(scheduleType, name, date), instant],
+      [reminder(scheduleType, name, date), minutesBefore(instant, DEFAULT_REMINDER_INTERVAL)],
+    ];
+
+    /** Every identifier ever handed to the OS in this test, with the trigger it was last given */
+    const triggers = (): Record<string, string> =>
+      Object.fromEntries(
+        scheduleMock.mock.calls.map(([call]) => {
+          const request = call as Request;
+          return [request.identifier, request.trigger.date.toISOString()];
+        })
+      );
+
+    /** Every persisted alert and reminder preference, as stored */
+    const savedPreferences = () =>
+      Database.database
+        .getAllKeys()
+        .filter((key) => key.startsWith('preference_alert_') || key.startsWith('preference_reminder_'))
+        .sort()
+        .map((key) => [key, Database.database.getString(key)]);
+
+    it.each<{
+      name: string;
+      now: string;
+      days: Record<string, Times>;
+      firstDay: string;
+      nextDay: string;
+      midnight: string;
+      lastThird: string;
+    }>([
+      {
+        name: '1 January 2026 with no 31 December stored',
+        now: '2026-01-01T00:30:00Z',
+        days: {
+          '2026-01-01': ['06:26', '08:03', '12:09', '13:46', '16:05', '17:42'],
+          '2026-01-02': ['06:26', '08:03', '12:10', '13:47', '16:06', '17:43'],
+        },
+        firstDay: '2026-01-01',
+        nextDay: '2026-01-02',
+        midnight: '2026-01-01T23:15:00.000Z',
+        lastThird: '2026-01-02T01:39:00.000Z',
+      },
+      {
+        // The list the 3T armed from a borrowed Magrib and fired 21 minutes late
+        name: '29 March 2026 with no 28 March stored',
+        now: '2026-03-29T00:30:00Z',
+        days: {
+          '2026-03-29': ['05:07', '06:40', '13:10', '16:35', '19:32', '20:49'],
+          '2026-03-30': ['05:05', '06:38', '13:10', '16:36', '19:34', '20:51'],
+        },
+        firstDay: '2026-03-29',
+        nextDay: '2026-03-30',
+        midnight: '2026-03-29T23:18:00.000Z',
+        lastThird: '2026-03-30T00:54:00.000Z',
+      },
+    ])(
+      'arms no night row from a substituted Magrib on $name, and the next list at its exact instants (gap map item 2)',
+      async ({ now, days, firstDay, nextDay, midnight, lastThird }) => {
+        jest.setSystemTime(new Date(now));
+        storeDays(days);
+        enable(E, ['Midnight', 'Last Third']);
+
+        await rescheduleAllNotifications();
+
+        expect(triggers()).toEqual(
+          Object.fromEntries([
+            ...armedAt(E, 'Midnight', nextDay, midnight),
+            ...armedAt(E, 'Last Third', nextDay, lastThird),
+          ])
+        );
+        expect(osIdentifiers()).not.toContain(athan(E, 'Last Third', firstDay));
+        expect(osIdentifiers()).not.toContain(reminder(E, 'Last Third', firstDay));
+      }
+    );
+
+    it('skips an unreadable Asr today but arms it tomorrow, with Dhuhr and Magrib armed on both days', async () => {
+      storeDays({
+        '2026-08-28': AUG_28,
+        '2026-08-29': withUnreadable(AUG_29, 'asr'),
+        '2026-08-30': AUG_30,
+        '2026-08-31': AUG_31,
+      });
+      enable(S, ['Dhuhr', 'Asr', 'Magrib']);
+      const preferences = savedPreferences();
+
+      await rescheduleAllNotifications();
+
+      const expected = Object.fromEntries([
+        ...armedAt(S, 'Dhuhr', '2026-08-29', '2026-08-29T12:05:00.000Z'),
+        ...armedAt(S, 'Magrib', '2026-08-29', '2026-08-29T18:55:00.000Z'),
+        ...armedAt(S, 'Dhuhr', '2026-08-30', '2026-08-30T12:05:00.000Z'),
+        ...armedAt(S, 'Asr', '2026-08-30', '2026-08-30T15:49:00.000Z'),
+        ...armedAt(S, 'Magrib', '2026-08-30', '2026-08-30T18:53:00.000Z'),
+        ...armedAt(S, 'Dhuhr', '2026-08-31', '2026-08-31T12:04:00.000Z'),
+        ...armedAt(S, 'Asr', '2026-08-31', '2026-08-31T15:47:00.000Z'),
+        ...armedAt(S, 'Magrib', '2026-08-31', '2026-08-31T18:51:00.000Z'),
+      ]);
+      // Exact equality: today's Asr and its reminder were never handed to the OS at all
+      expect(triggers()).toEqual(expected);
+      expect(osIdentifiers()).toEqual(Object.keys(expected).sort());
+      expect(logger.info).toHaveBeenCalledWith('Skipping prayer with no readable time:', {
+        date: '2026-08-29',
+        englishName: 'Asr',
+      });
+
+      expect(savedPreferences()).toEqual(preferences);
+      expect(Database.database.getString('preference_alert_standard_asr')).toBe(String(AlertType.Silent));
+      expect(Database.database.getString('preference_reminder_alert_standard_asr')).toBe(String(AlertType.Silent));
+    });
+
+    it('cancels exactly the occurrence that turned unreadable, and re-arms it when readable data returns', async () => {
+      storeDays({ '2026-08-29': AUG_29, '2026-08-30': AUG_30 });
+      enable(S, ['Dhuhr', 'Asr']);
+      const preferences = savedPreferences();
+      const everyOccurrence = ids([
+        [S, 'Dhuhr', '2026-08-29'],
+        [S, 'Asr', '2026-08-29'],
+        [S, 'Dhuhr', '2026-08-30'],
+        [S, 'Asr', '2026-08-30'],
+      ]);
+
+      await rescheduleAllNotifications();
+      expect(osIdentifiers()).toEqual(everyOccurrence);
+
+      // Newly stored data can no longer read tomorrow's Asr
+      scheduleMock.mockClear();
+      cancelMock.mockClear();
+      storeDays({ '2026-08-30': withUnreadable(AUG_30, 'asr') });
+
+      await rescheduleAllNotifications();
+
+      expect(cancelCalls().sort()).toEqual(ids([[S, 'Asr', '2026-08-30']]));
+      expect(osIdentifiers()).toEqual(
+        ids([
+          [S, 'Dhuhr', '2026-08-29'],
+          [S, 'Asr', '2026-08-29'],
+          [S, 'Dhuhr', '2026-08-30'],
+        ])
+      );
+      expect(savedPreferences()).toEqual(preferences);
+
+      // And readable again
+      scheduleMock.mockClear();
+      cancelMock.mockClear();
+      storeDays({ '2026-08-30': AUG_30 });
+
+      await rescheduleAllNotifications();
+
+      expect(cancelCalls()).toEqual([]);
+      expect(osIdentifiers()).toEqual(everyOccurrence);
+      expect(triggers()).toMatchObject(Object.fromEntries(armedAt(S, 'Asr', '2026-08-30', '2026-08-30T15:49:00.000Z')));
+      expect(savedPreferences()).toEqual(preferences);
+    });
+
+    describe('an unreadable day at each position in the window', () => {
+      // At 09:00 BST on 29 Aug, today's Fajr, Suhoor and night rows are already past
+      beforeEach(() => {
+        enable(S, ['Fajr', 'Isha']);
+        enable(E, ['Midnight', 'Last Third', 'Suhoor']);
+
+        // 1 September is stored so that a window moved one day on would find it
+        storeDays({
+          '2026-08-28': AUG_28,
+          '2026-08-29': AUG_29,
+          '2026-08-30': AUG_30,
+          '2026-08-31': AUG_31,
+          '2026-09-01': SEP_01,
+        });
+      });
+
+      it('arms every readable stored day when every day reads (control for the table below)', async () => {
+        await rescheduleAllNotifications();
+
+        expect(osIdentifiers()).toEqual(
+          ids([
+            [S, 'Fajr', '2026-08-30'],
+            [S, 'Fajr', '2026-08-31'],
+            [S, 'Fajr', '2026-09-01'],
+            [S, 'Isha', '2026-08-29'],
+            [S, 'Isha', '2026-08-30'],
+            [S, 'Isha', '2026-08-31'],
+            [S, 'Isha', '2026-09-01'],
+            [E, 'Suhoor', '2026-08-30'],
+            [E, 'Suhoor', '2026-08-31'],
+            [E, 'Suhoor', '2026-09-01'],
+            [E, 'Midnight', '2026-08-30'],
+            [E, 'Midnight', '2026-08-31'],
+            [E, 'Midnight', '2026-09-01'],
+            [E, 'Last Third', '2026-08-30'],
+            [E, 'Last Third', '2026-08-31'],
+            [E, 'Last Third', '2026-09-01'],
+          ])
+        );
+      });
+
+      const positions: { position: string; day: string; armed: [ScheduleType, string, string][] }[] = [
+        {
+          // A night row needs the day before's Magrib, so breaking today costs 30 August's too
+          position: 'today',
+          day: '2026-08-29',
+          armed: [
+            [S, 'Fajr', '2026-08-30'],
+            [S, 'Fajr', '2026-08-31'],
+            [S, 'Fajr', '2026-09-01'],
+            [S, 'Isha', '2026-08-30'],
+            [S, 'Isha', '2026-08-31'],
+            [S, 'Isha', '2026-09-01'],
+            [E, 'Suhoor', '2026-08-30'],
+            [E, 'Suhoor', '2026-08-31'],
+            [E, 'Suhoor', '2026-09-01'],
+            [E, 'Midnight', '2026-08-31'],
+            [E, 'Midnight', '2026-09-01'],
+            [E, 'Last Third', '2026-08-31'],
+            [E, 'Last Third', '2026-09-01'],
+          ],
+        },
+        {
+          // 30 August's own rows go, and so do the night rows either side that read it
+          position: 'tomorrow',
+          day: '2026-08-30',
+          armed: [
+            [S, 'Fajr', '2026-08-31'],
+            [S, 'Fajr', '2026-09-01'],
+            [S, 'Isha', '2026-08-29'],
+            [S, 'Isha', '2026-08-31'],
+            [S, 'Isha', '2026-09-01'],
+            [E, 'Suhoor', '2026-08-31'],
+            [E, 'Suhoor', '2026-09-01'],
+            [E, 'Midnight', '2026-09-01'],
+            [E, 'Last Third', '2026-09-01'],
+          ],
+        },
+        {
+          position: 'the day after tomorrow',
+          day: '2026-08-31',
+          armed: [
+            [S, 'Fajr', '2026-08-30'],
+            [S, 'Fajr', '2026-09-01'],
+            [S, 'Isha', '2026-08-29'],
+            [S, 'Isha', '2026-08-30'],
+            [S, 'Isha', '2026-09-01'],
+            [E, 'Suhoor', '2026-08-30'],
+            [E, 'Suhoor', '2026-09-01'],
+            [E, 'Midnight', '2026-08-30'],
+            [E, 'Last Third', '2026-08-30'],
+          ],
+        },
+      ];
+      const breakages: { breakage: string; apply: (date: string) => void }[] = [
+        { breakage: 'every time unreadable', apply: (date) => storeDays({ [date]: EVERY_TIME_UNREADABLE }) },
+        { breakage: 'missing from the store', apply: (date) => Database.database.remove(`prayer_${date}`) },
+      ];
+
+      it.each(positions.flatMap((position) => breakages.map((breakage) => ({ ...position, ...breakage }))))(
+        '$position, $breakage: arms every other day of the same window',
+        async ({ day, apply, armed }) => {
+          apply(day);
+          const preferences = savedPreferences();
+
+          await rescheduleAllNotifications();
+
+          expect(osIdentifiers()).toEqual(ids(armed));
+          expect(savedPreferences()).toEqual(preferences);
+        }
+      );
+    });
+
+    it('a broken Friday Magrib arms no Friday Istijaba and no Saturday Midnight or Last Third (gap map item 22)', async () => {
+      jest.setSystemTime(new Date('2026-10-16T00:30:00Z')); // Friday 01:30 BST
+      // The provider sent '-----' for Friday's Magrib, which validation stores as null
+      storeDays({
+        '2026-10-16': ['05:51', '07:23', '12:51', '15:31', null, '19:31'],
+        '2026-10-17': ['05:52', '07:25', '12:51', '15:30', '18:06', '19:29'],
+      });
+      enable(S, PRAYERS_ENGLISH);
+      enable(E, EXTRAS_ENGLISH);
+
+      await rescheduleAllNotifications();
+
+      // Friday's other five, and Saturday's Suhoor and Duha, at their own instants
+      expect(triggers()).toMatchObject(
+        Object.fromEntries([
+          ...armedAt(S, 'Fajr', '2026-10-16', '2026-10-16T04:51:00.000Z'),
+          ...armedAt(S, 'Sunrise', '2026-10-16', '2026-10-16T06:23:00.000Z'),
+          ...armedAt(S, 'Dhuhr', '2026-10-16', '2026-10-16T11:51:00.000Z'),
+          ...armedAt(S, 'Asr', '2026-10-16', '2026-10-16T14:31:00.000Z'),
+          ...armedAt(S, 'Isha', '2026-10-16', '2026-10-16T18:31:00.000Z'),
+          ...armedAt(E, 'Suhoor', '2026-10-17', '2026-10-17T04:32:00.000Z'),
+          ...armedAt(E, 'Duha', '2026-10-17', '2026-10-17T06:45:00.000Z'),
+        ])
+      );
+      for (const id of ids([
+        [S, 'Magrib', '2026-10-16'],
+        [E, 'Istijaba', '2026-10-16'],
+        [E, 'Midnight', '2026-10-17'],
+        [E, 'Last Third', '2026-10-17'],
+      ])) {
+        expect(Object.keys(triggers())).not.toContain(id);
+      }
+      // Nothing else: Friday's night rows have no 15 October, and 18 October is not stored
+      expect(osIdentifiers()).toEqual(
+        ids([
+          [S, 'Fajr', '2026-10-16'],
+          [S, 'Sunrise', '2026-10-16'],
+          [S, 'Dhuhr', '2026-10-16'],
+          [S, 'Asr', '2026-10-16'],
+          [S, 'Isha', '2026-10-16'],
+          [S, 'Fajr', '2026-10-17'],
+          [S, 'Sunrise', '2026-10-17'],
+          [S, 'Dhuhr', '2026-10-17'],
+          [S, 'Asr', '2026-10-17'],
+          [S, 'Magrib', '2026-10-17'],
+          [S, 'Isha', '2026-10-17'],
+          [E, 'Suhoor', '2026-10-16'],
+          [E, 'Duha', '2026-10-16'],
+          [E, 'Suhoor', '2026-10-17'],
+          [E, 'Duha', '2026-10-17'],
+        ])
+      );
+    });
+
+    describe('the empty-cache guard reads every day in the window (gap map items 11 and 21)', () => {
+      // Real London times for 12 and 13 September 2026
+      const SEP_12: Times = ['04:56', '06:28', '13:02', '16:27', '19:25', '20:39'];
+      const SEP_13: Times = ['04:57', '06:29', '13:02', '16:26', '19:23', '20:37'];
+
+      it('arms only the stored day while the days after it are missing, then bails once none in the window is stored', async () => {
+        jest.setSystemTime(new Date('2026-09-13T08:00:00Z')); // 09:00 BST
+        storeDays({ '2026-09-12': SEP_12, '2026-09-13': SEP_13 });
+        enable(S, PRAYERS_ENGLISH);
+        enable(E, EXTRAS_ENGLISH);
+        // Armed before 14 September went missing
+        const fajrTomorrow = athan(S, 'Fajr', '2026-09-14');
+        seedRecords([fajrTomorrow]);
+        osState.add(fajrTomorrow);
+
+        await refreshNotifications();
+
+        // Only 13 September's rows still to come; no night row from a missing 14 September
+        expect(osIdentifiers()).toEqual(
+          ids([
+            [S, 'Dhuhr', '2026-09-13'],
+            [S, 'Asr', '2026-09-13'],
+            [S, 'Magrib', '2026-09-13'],
+            [S, 'Isha', '2026-09-13'],
+          ])
+        );
+        expect(Object.keys(triggers()).every((id) => /_2026-09-13(_\d+)?$/.test(id))).toBe(true);
+        expect(Object.keys(triggers())).not.toContain(athan(E, 'Midnight', '2026-09-14'));
+        expect(cancelCalls()).toEqual([fajrTomorrow]);
+        const stamped = store.get(lastNotificationScheduleAtom);
+        expect(stamped).toBe(Date.parse('2026-09-13T08:00:00Z'));
+
+        // 14 September 08:00 BST: 14, 15 and 16 September are all missing
+        jest.setSystemTime(new Date('2026-09-14T07:00:00Z'));
+        const armedBefore = osIdentifiers();
+        scheduleMock.mockClear();
+        cancelMock.mockClear();
+
+        await refreshNotifications();
+
+        expect(logger.warn).toHaveBeenCalledWith(
+          'NOTIFICATION: Refresh skipped, timestamp not stamped — the next foreground will retry'
+        );
+        expect(scheduleMock).not.toHaveBeenCalled();
+        expect(cancelCalls()).toEqual([]);
+        expect(osIdentifiers()).toEqual(armedBefore);
+        expect(store.get(lastNotificationScheduleAtom)).toBe(stamped);
+      });
+
+      it('still runs when today is missing but tomorrow is stored: arms tomorrow, nothing for today, and stamps the gate', async () => {
+        jest.setSystemTime(new Date('2026-09-12T08:00:00Z')); // 09:00 BST on 12 September, which is not stored
+        storeDays({ '2026-09-13': SEP_13 });
+        enable(S, ['Fajr', 'Isha']);
+        // Armed before today went missing
+        const ishaToday = athan(S, 'Isha', '2026-09-12');
+        Database.addOneScheduledNotificationForPrayer(S, 5, notificationRecord(ishaToday, 'Isha'));
+        osState.add(ishaToday);
+
+        await refreshNotifications();
+
+        expect(triggers()).toEqual(
+          Object.fromEntries([
+            ...armedAt(S, 'Fajr', '2026-09-13', '2026-09-13T03:57:00.000Z'),
+            ...armedAt(S, 'Isha', '2026-09-13', '2026-09-13T19:37:00.000Z'),
+          ])
+        );
+        expect(cancelCalls()).toEqual([ishaToday]);
+        expect(osIdentifiers()).toEqual(
+          ids([
+            [S, 'Fajr', '2026-09-13'],
+            [S, 'Isha', '2026-09-13'],
+          ])
+        );
+        expect(store.get(lastNotificationScheduleAtom)).toBe(Date.parse('2026-09-12T08:00:00Z'));
+      });
+
+      // The guard asks whether any row the windows reach is stored, so a day ahead counts however
+      // far off it is: its Fajr is armable. Only a day wholly behind the windows leaves nothing.
+      it.each([
+        { label: 'today', date: '2026-08-29', outcome: 'runs' },
+        { label: 'tomorrow', date: '2026-08-30', outcome: 'runs' },
+        { label: 'the day after tomorrow', date: '2026-08-31', outcome: 'runs' },
+        { label: 'a day further ahead still', date: '2026-09-01', outcome: 'runs' },
+        { label: 'yesterday', date: '2026-08-28', outcome: 'bails' },
+      ])('with only $label stored, the reschedule $outcome', async ({ date, outcome }) => {
+        storeDays({ [date]: AUG_29 });
+        enable(S, ['Fajr']);
+        osState.add(fajrId(TODAY));
+
+        await refreshNotifications();
+
+        // Only a real reschedule stamps the gate
+        expect(store.get(lastNotificationScheduleAtom)).toBe(outcome === 'runs' ? FROZEN_NOW.getTime() : 0);
+      });
+    });
   });
 });

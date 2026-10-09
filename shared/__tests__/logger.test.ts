@@ -4,7 +4,8 @@
  * Tests the application logger including:
  * - Logging level methods (info, warn, error, debug)
  * - Object vs primitive data formatting
- * - Environment-based logging control
+ * - Environment-based logging control: the `enabled` flag pino is actually
+ *   constructed with, which is the whole of the production guarantee
  */
 
 // =============================================================================
@@ -150,5 +151,59 @@ describe('logger', () => {
 
       expect(mockPinoLogger.debug).toHaveBeenCalledWith({ state: 'active' }, 'Debug message');
     });
+  });
+});
+
+// =============================================================================
+// PRODUCTION GATE
+//
+// `enabled` is baked into the pino instance at module load, so the only way to
+// observe it is to load the module again under a fresh registry. isTest() is
+// forced false here: under the real test value every path is disabled anyway,
+// which would make the assertion pass whether or not the prod branch exists.
+// =============================================================================
+
+/**
+ * Loads shared/logger in an isolated registry and returns the options pino was
+ * constructed with. The pino handle has to be taken INSIDE the callback: a
+ * fresh registry re-runs the jest.mock factory and mints a new jest.fn, so a
+ * reference captured outside would never see this load's constructor call.
+ */
+const pinoOptionsOnFreshLoad = (): { enabled: boolean } => {
+  const holder: { options?: { enabled: boolean } } = {};
+
+  jest.isolateModules(() => {
+    const pinoMock = require('pino') as jest.Mock;
+    require('../logger');
+    holder.options = pinoMock.mock.calls[0][0] as { enabled: boolean };
+  });
+
+  return holder.options as { enabled: boolean };
+};
+
+describe('logging gate at module load', () => {
+  beforeEach(() => {
+    mockIsTest.mockReturnValue(false);
+  });
+
+  it('disables pino entirely in production', () => {
+    mockIsProd.mockReturnValue(true);
+    mockIsPreview.mockReturnValue(false);
+
+    expect(pinoOptionsOnFreshLoad().enabled).toBe(false);
+  });
+
+  it('disables pino entirely in preview', () => {
+    mockIsProd.mockReturnValue(false);
+    mockIsPreview.mockReturnValue(true);
+
+    expect(pinoOptionsOnFreshLoad().enabled).toBe(false);
+  });
+
+  it('leaves pino enabled in a local build', () => {
+    mockIsProd.mockReturnValue(false);
+    mockIsPreview.mockReturnValue(false);
+
+    expect(pinoOptionsOnFreshLoad().enabled).toBe(true);
   });
 });

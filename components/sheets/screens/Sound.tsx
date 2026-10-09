@@ -1,30 +1,90 @@
-import type { AudioSource } from 'expo-audio';
-import * as Haptics from 'expo-haptics';
+import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { ATHAN_AUDIOS } from '@/assets/audio';
+import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
-import * as Device from '@/device/notifications';
+import { useNotification } from '@/hooks/useNotification';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { Icon } from '@/shared/types';
-import { rescheduleAllNotifications, setSoundPreference, soundPreferenceAtom } from '@/stores/notifications';
-import { setBottomSheetModal, setPlayingSoundIndex } from '@/stores/ui';
+import { soundPreferenceAtom } from '@/stores/notifications';
+import {
+  playingSoundIndexAtom,
+  setBottomSheetModal,
+  setPlayingSoundIndex,
+  setSoundListReady,
+  soundListReadyAtom,
+} from '@/stores/ui';
 
 import { Sheet, SoundItem } from '../parts';
+import { displayedSoundSelection, hasSoundDraft, isPreviewFinished, previewRemainingSeconds } from './soundSheet';
 
 const ITEM_GAP = SPACING.xs;
 
 export default function BottomSheetSound() {
+  const { commitSoundSelection } = useNotification();
   const selectedSound = useAtomValue(soundPreferenceAtom);
+  const playingIndex = useAtomValue(playingSoundIndexAtom);
+  // The 32-row list mounts only once the settings sheet has fully opened
+  // (the only path here runs through it) — off the launch path AND complete
+  // by the first present, so the sheet never pops in. The self-trigger
+  // covers any path that skips settings.
+  const soundListReady = useAtomValue(soundListReadyAtom);
   const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
   const [itemHeight, setItemHeight] = useState(0);
   const hasInitialized = useRef(false);
   const translateY = useSharedValue(0);
 
-  const currentSelection = tempSoundSelection ?? selectedSound;
+  const currentSelection = displayedSoundSelection(tempSoundSelection, selectedSound);
+
+  // ONE player for the whole sheet (was one per row — 32 concurrent
+  // AVPlayers exhausted audio resources on older devices, G.4/G.5). The hook
+  // releases and recreates the player when the source changes, so exactly
+  // one instance is ever alive.
+  const playingSource = playingIndex !== null ? (ATHAN_AUDIOS[playingIndex] as AudioSource) : null;
+  const player = useAudioPlayer(playingSource);
+  const status = useAudioPlayerStatus(player);
+  const pendingPlayRef = useRef(false);
+
+  // Playback is armed from an effect: switching rows swaps the player
+  // instance, so play() must run after the new source exists.
+  useEffect(() => {
+    if (playingIndex === null || !pendingPlayRef.current) return;
+    pendingPlayRef.current = false;
+    player.seekTo(0);
+    player.play();
+  }, [playingIndex, player]);
+
+  // Clip finished — clear the playing row (was per-item before the
+  // single-player refactor). The status hook keeps the released player's
+  // last payload until the replacement emits its own; a status from another
+  // instance must never reap a freshly armed one (ISSUES #25).
+  useEffect(() => {
+    const finished = isPreviewFinished({
+      playingIndex,
+      playerId: player.id,
+      statusId: status.id,
+      playing: status.playing,
+      currentTime: status.currentTime,
+      duration: status.duration,
+    });
+    if (finished) setPlayingSoundIndex(null);
+  }, [playingIndex, player.id, status.id, status.playing, status.currentTime, status.duration]);
+
+  const handlePlayPress = useCallback(
+    (index: number) => {
+      if (playingIndex === index) {
+        player.pause();
+        setPlayingSoundIndex(null);
+        return;
+      }
+      pendingPlayRef.current = true;
+      setPlayingSoundIndex(index);
+    },
+    [playingIndex, player]
+  );
 
   // Measure first item to get consistent height
   const handleItemLayout = useCallback(
@@ -61,18 +121,43 @@ export default function BottomSheetSound() {
 
   const clearAudio = useCallback(() => setPlayingSoundIndex(null), []);
 
+  // Primitive-only props feed the memoized rows: the status object changes
+  // identity many times per second during playback — deriving whole seconds
+  // here means a tick only re-renders the playing row, and only when its
+  // displayed countdown second actually changes. Live values come only from
+  // the current player (a stale payload from the released instance would
+  // flash the previous clip's leftover seconds, ISSUES #25), rounded so the
+  // first value stays steady while iOS refines its provisional duration;
+  // until the fresh player reports, the clip's tabulated seconds stand in
+  // so the countdown lands in the same frame as the icon flip.
+  const playingRemainingSeconds = previewRemainingSeconds(
+    {
+      playingIndex,
+      playerId: player.id,
+      statusId: status.id,
+      playing: status.playing,
+      currentTime: status.currentTime,
+      duration: status.duration,
+    },
+    ATHAN_DURATION_SECONDS
+  );
+
   const handleDismiss = useCallback(async () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     clearAudio();
 
-    if (tempSoundSelection === null) return;
+    if (!hasSoundDraft(tempSoundSelection)) return;
 
-    setSoundPreference(tempSoundSelection);
-    await Device.updateAndroidChannel(tempSoundSelection);
-    await rescheduleAllNotifications();
+    // The commit persists before it schedules (the scheduler reads the
+    // preference mid-flight) and rolls the preference back itself if either
+    // scheduling call rejects, so the displayed Athan can no longer disagree
+    // with the one the OS will play. onDismiss is typed `() => void` and is
+    // called un-awaited, so an escaping rejection here would be silent.
+    await commitSoundSelection(tempSoundSelection);
 
+    // Cleared on BOTH outcomes. Leaving the draft behind after a failure meant
+    // the next dismiss re-committed a selection the user had not touched again.
     setTempSoundSelection(null);
-  }, [tempSoundSelection, clearAudio]);
+  }, [tempSoundSelection, clearAudio, commitSoundSelection]);
 
   return (
     <Sheet
@@ -80,31 +165,39 @@ export default function BottomSheetSound() {
       title='Select Athan'
       subtitle='Close to save'
       icon={<IconView type={Icon.SPEAKER} size={16} color='rgba(165, 180, 252, 0.8)' />}
-      snapPoints={['80%']}
+      snapPoints={['85%']}
       onDismiss={handleDismiss}
-      onAnimate={clearAudio}>
-      {/* Sound List Card */}
-      <View style={styles.card}>
-        <Text style={styles.cardHint}>Notification sound</Text>
+      onAnimate={clearAudio}
+      perfName='sheet_sound'
+      onFirstPresent={setSoundListReady}
+      stackBehavior='push'>
+      {/* Card + 32 rows mount once the settings sheet (the only path here)
+          has fully opened — invisible warming, complete before first present */}
+      {soundListReady && (
+        <View style={styles.card}>
+          <Text style={styles.cardHint}>Notification sound</Text>
 
-        <View style={styles.listContainer}>
-          {/* Sliding indicator */}
-          <Animated.View style={[styles.indicator, indicatorStyle]} />
+          <View style={styles.listContainer}>
+            {/* Sliding indicator */}
+            <Animated.View style={[styles.indicator, indicatorStyle]} />
 
-          {/* Sound items */}
-          {ATHAN_AUDIOS.map((audio, index) => (
-            <SoundItem
-              // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_AUDIOS is a static sound list, never reordered or filtered
-              key={index}
-              index={index}
-              audio={audio as AudioSource}
-              onSelect={setTempSoundSelection}
-              tempSelection={tempSoundSelection}
-              onLayout={index === 0 ? handleItemLayout : undefined}
-            />
-          ))}
+            {/* Sound items */}
+            {ATHAN_AUDIOS.map((_, index) => (
+              <SoundItem
+                // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_AUDIOS is a static list, never reordered or filtered
+                key={index}
+                index={index}
+                isSelected={index === currentSelection}
+                isPlaying={playingIndex === index}
+                remainingSeconds={playingIndex === index ? playingRemainingSeconds : 0}
+                onSelect={setTempSoundSelection}
+                onPlayPress={handlePlayPress}
+                onLayout={index === 0 ? handleItemLayout : undefined}
+              />
+            ))}
+          </View>
         </View>
-      </View>
+      )}
     </Sheet>
   );
 }

@@ -18,12 +18,45 @@ export const AndroidImportance = {
   MAX: 5,
 };
 
+export const AndroidAudioUsage = {
+  UNKNOWN: 0,
+  MEDIA: 1,
+  VOICE_COMMUNICATION: 2,
+  VOICE_COMMUNICATION_SIGNALLING: 3,
+  ALARM: 4,
+  NOTIFICATION: 5,
+  NOTIFICATION_RINGTONE: 6,
+  NOTIFICATION_COMMUNICATION_REQUEST: 7,
+  NOTIFICATION_COMMUNICATION_INSTANT: 8,
+  NOTIFICATION_COMMUNICATION_DELAYED: 9,
+  NOTIFICATION_EVENT: 10,
+  ASSISTANCE_ACCESSIBILITY: 11,
+  ASSISTANCE_NAVIGATION_GUIDANCE: 12,
+  ASSISTANCE_SONIFICATION: 13,
+  GAME: 14,
+};
+
 export const setNotificationChannelAsync = jest.fn().mockResolvedValue(undefined);
 export const deleteNotificationChannelAsync = jest.fn().mockResolvedValue(undefined);
-export const scheduleNotificationAsync = jest.fn().mockResolvedValue('mock-notification-id');
+/**
+ * Echoes the identifier it was given, because the real SDK does: scheduleNotificationAsync.js
+ * hands `request.identifier ?? uuid.v4()` to the native scheduler and returns its result.
+ *
+ * That echo is load-bearing, not incidental. Production stores the resolved value as the
+ * record id (device/notifications.ts) and the reconciliation sweep diffs stored ids against
+ * OS identifiers (stores/notifications.ts), so a mock resolving a constant collapses every
+ * record for a prayer onto one MMKV key — the key embeds the id — and hides any drift
+ * between the success path, which records the resolved id, and the failure path, which
+ * records the deterministic identifier. The constant stands in for the SDK's uuid only when
+ * no identifier is supplied, which production never does.
+ */
+export const scheduleNotificationAsync = jest.fn(
+  async (request?: { identifier?: string }) => request?.identifier ?? 'mock-notification-id'
+);
 export const cancelScheduledNotificationAsync = jest.fn().mockResolvedValue(undefined);
 export const cancelAllScheduledNotificationsAsync = jest.fn().mockResolvedValue(undefined);
 export const getAllScheduledNotificationsAsync = jest.fn().mockResolvedValue([]);
+export const setNotificationHandler = jest.fn();
 export const getPermissionsAsync = jest.fn().mockResolvedValue({ status: 'granted' });
 export const requestPermissionsAsync = jest.fn().mockResolvedValue({ status: 'granted' });
 

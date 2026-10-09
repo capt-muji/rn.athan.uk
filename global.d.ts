@@ -1,4 +1,8 @@
 declare module '*.ttf';
+declare module '*.png' {
+  const content: number;
+  export default content;
+}
 declare module '*.svg' {
   import { StyleProp, TextStyle } from 'react-native';
   import { SvgProps } from 'react-native-svg';

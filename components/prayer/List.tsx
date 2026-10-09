@@ -1,9 +1,11 @@
 import { useAtomValue } from 'jotai';
 import { useEffect, useRef } from 'react';
-import { InteractionManager, StyleSheet, View } from 'react-native';
+import { StyleSheet, View, type ViewInstance } from 'react-native';
 
+import { OverlayInfoBox } from '@/components/overlay';
 import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { SCREEN, SPACING } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
@@ -17,12 +19,15 @@ interface Props {
 
 export default function List({ type }: Props) {
   // NEW: Use sequence-based prayers
-  // See: ai/adr/005-timing-system-overhaul.md
+
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
   const isStandard = type === ScheduleType.Standard;
-  const listRef = useRef<View>(null);
+  const listRef = useRef<ViewInstance>(null);
   const isFirstRender = useRef(true);
   const countdownBarShown = useAtomValue(countdownBarShownAtom);
+  // Live window size: a resize (iPad multitasking, Mac window) re-centers
+  // the column and stales the stored pageX/pageY; phones never resize
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
   // Filter prayers to current displayDate
   // This automatically handles Friday Istijaba logic via createPrayerSequence
@@ -48,8 +53,9 @@ export default function List({ type }: Props) {
     measureList();
   };
 
-  // Re-measure when countdown bar visibility changes (affects list position)
-  // biome-ignore lint/correctness/useExhaustiveDependencies: measureList is re-created each render; countdownBarShown/isStandard are the deliberate re-measure triggers
+  // Re-measure when the countdown bar toggles (list position shifts) or the
+  // window resizes (the column re-centers and the stored rect goes stale)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: measureList is re-created each render; countdownBarShown/isStandard and the window dims are the deliberate re-measure triggers
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -58,13 +64,14 @@ export default function List({ type }: Props) {
 
     if (!isStandard) return;
 
-    // Wait for layout to settle after countdown bar is added/removed
-    const handle = InteractionManager.runAfterInteractions(() => {
+    // Wait for layout to settle after countdown bar is added/removed; RN 0.88 removed
+    // InteractionManager.runAfterInteractions, and the idle callback is its replacement
+    const handle = requestIdleCallback(() => {
       measureList();
     });
 
-    return () => handle.cancel();
-  }, [countdownBarShown, isStandard]);
+    return () => cancelIdleCallback(handle);
+  }, [countdownBarShown, isStandard, windowWidth, windowHeight]);
 
   // Show nothing if sequence not ready
   if (!isReady) return null;
@@ -75,6 +82,7 @@ export default function List({ type }: Props) {
       {displayOrder.map((prayerIndex) => (
         <Prayer key={prayerIndex} index={prayerIndex} type={type} />
       ))}
+      <OverlayInfoBox type={type} />
     </View>
   );
 }

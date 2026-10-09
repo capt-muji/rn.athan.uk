@@ -70,38 +70,55 @@ export interface IApiResponse {
   times: Record<string, IApiSingleTime>;
 }
 
+/** The six provider times every list row is built from */
+export type RequiredTimeName = 'fajr' | 'sunrise' | 'dhuhr' | 'asr' | 'magrib' | 'isha';
+
+/**
+ * A payload after api/client.ts has checked it: each of the six times is a readable HH:mm, or null
+ * where the provider's value was not
+ */
+export interface IValidatedApiResponse {
+  city: string;
+  times: Record<string, Record<RequiredTimeName, string | null>>;
+}
+
 /**
  * Transformed and enriched prayer times for a single day
  *
  * This is the processed version of IApiSingleTime with derived extra prayers added.
  * Transformation happens in shared/prayer.ts:transformApiData()
  *
- * Derived prayers calculated from API data:
- * - midnight: Midpoint between Magrib and Fajr (Islamic midnight, not 00:00)
- * - last third: Start of last third of night
+ * Derived prayers calculated from the day's own API times:
  * - suhoor: 20 minutes before Fajr (pre-dawn meal)
  * - duha: 20 minutes after Sunrise (forenoon prayer)
  * - istijaba: 60 minutes before Magrib on Fridays only (supplication time)
  *
+ * Midnight and Last Third are not stored: they belong to the night leading into
+ * the day (the previous day's Magrib to this day's Fajr), so shared/prayer.ts
+ * works them out from two records when the lists are built (getNightTimesForDay)
+ *
  * Stored in MMKV with key format: prayer_YYYY-MM-DD
  * Cache lifetime: Until next app upgrade (see stores/version.ts)
+ *
+ * A time is null when the provider's value was not a readable HH:mm (api/client.ts), and a derived
+ * time is null when the time it comes from is. Null rather than a placeholder string, because a
+ * placeholder type-checks everywhere and reaches arithmetic; `--:--` is how absence is drawn, never
+ * what is stored. Records written before times could be null are all strings, which this still reads.
  */
 export interface ISingleApiResponseTransformed {
   /** Calendar date in YYYY-MM-DD format */
   date: string;
   /** 6 main prayers from API (HH:mm format) */
-  fajr: string;
-  sunrise: string;
-  dhuhr: string;
-  asr: string;
-  magrib: string;
-  isha: string;
-  /** 5 derived extra prayers (HH:mm format) */
-  midnight: string;
-  'last third': string;
-  suhoor: string;
-  duha: string;
-  istijaba: string;
+  fajr: string | null;
+  sunrise: string | null;
+  dhuhr: string | null;
+  asr: string | null;
+  magrib: string | null;
+  isha: string | null;
+  /** 3 derived extra prayers (HH:mm format) */
+  suhoor: string | null;
+  duha: string | null;
+  istijaba: string | null;
 }
 
 /**
@@ -118,9 +135,12 @@ export interface ISingleApiResponseTransformed {
  * Extra Schedule (4-5 prayers):
  * - Midnight: Islamic midnight (midpoint Magrib-Fajr, not 00:00)
  * - Last Third: Last third of night begins (blessed time for prayer)
- * - Suhoor: Pre-dawn meal time (40 min before Fajr)
+ * - Suhoor: Pre-dawn meal time (20 min before Fajr)
  * - Duha: Forenoon prayer (20 min after Sunrise)
- * - Istijaba: Supplication time (59 min before Magrib, Fridays only)
+ * - Istijaba: Supplication time (60 min before Magrib, Fridays only)
+ *
+ * The three offsets above are TIME_ADJUSTMENTS in shared/constants.ts, which is
+ * the only place they are defined; do not restate a number here without it.
  *
  * Users can toggle between schedules via the tab navigation.
  * Each schedule has independent notification preferences and display state.
@@ -164,6 +184,13 @@ export interface PageCoordinates {
  * - preference_alert_extra_{prayer_name}
  *
  * Values are stored as integers (0, 1, 2) to save space.
+ *
+ * Those integers are a STORAGE CONTRACT, not an implementation detail: MMKV holds the
+ * literal "0", "1" or "2", so inserting a member or reordering these three silently
+ * re-reads every existing user's choice as a different one — Sound becomes Silent and
+ * the athan stops playing, with no error. Append new members with explicit values only.
+ * `shared/__tests__/types.test.ts` pins the three numbers; symbol-to-symbol assertions
+ * cannot, because they stay true through a reorder.
  */
 export enum AlertType {
   /** No notification */
@@ -181,16 +208,36 @@ export enum AlertType {
 export type ReminderInterval = 5 | 10 | 15 | 20 | 25 | 30;
 
 /**
+ * Which of a prayer's two reminders a setting belongs to.
+ *
+ * The numbers are a STORAGE CONTRACT in the same way `AlertType`'s are: slot 0 keys are the
+ * single-reminder keys every existing install already wrote, so it can never be renumbered.
+ */
+export type ReminderSlot = 0 | 1;
+
+/** Both reminder slots, in the order the sheet draws them */
+export const REMINDER_SLOTS = [0, 1] as const satisfies readonly ReminderSlot[];
+
+/** One reminder's own settings: each slot carries its own sound, so two can differ */
+export interface ReminderSetting {
+  /** Reminder alert type (Off/Silent/Sound) */
+  alert: AlertType;
+  /** Minutes before prayer time */
+  interval: ReminderInterval;
+}
+
+/** One per slot, in slot order */
+export type PerReminderSlot<T> = readonly [T, T];
+
+/**
  * State for the AlertMenu popup component
- * Tracks both at-time alert and pre-prayer reminder settings
+ * Tracks the at-time alert and both pre-prayer reminders
  */
 export interface AlertMenuState {
   /** At-time alert type (Off/Silent/Sound) */
   atTimeAlert: AlertType;
-  /** Pre-prayer reminder alert type (Off/Silent/Sound) */
-  reminderAlert: AlertType;
-  /** Reminder interval in minutes */
-  reminderInterval: ReminderInterval;
+  /** Both reminders, indexed by slot */
+  reminders: PerReminderSlot<ReminderSetting>;
 }
 
 export enum Icon {
@@ -200,6 +247,9 @@ export enum Icon {
   PLAY = 'PLAY',
   PAUSE = 'PAUSE',
   INFO = 'INFO',
+  QUESTION = 'QUESTION',
+  MUSIC_NOTE = 'MUSIC_NOTE',
+  COMPASS = 'COMPASS',
   CHECK = 'CHECK',
   CLOSE = 'CLOSE',
   WIDGET = 'WIDGET',
@@ -209,8 +259,21 @@ export enum Icon {
 
 // =============================================================================
 // NEW TIMING SYSTEM TYPES (Prayer-Centric Model)
-// See: ai/adr/005-timing-system-overhaul.md
+
 // =============================================================================
+
+/** What every row on a list has, whether or not its time could be read */
+interface PrayerRow {
+  /** Schedule type: 'standard' or 'extra' */
+  type: ScheduleType;
+  /** English name: "Fajr", "Isha", "Midnight", etc. */
+  english: string;
+  /** Arabic name: "الفجر", "العشاء", etc. */
+  arabic: string;
+  /** Which Islamic day this prayer belongs to (per ADR-004)
+   * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day) */
+  belongsToDate: string;
+}
 
 /**
  * Prayer with full datetime object
@@ -220,54 +283,38 @@ export enum Icon {
  * - No midnight-crossing bugs possible
  * - belongsToDate tracks which Islamic day the prayer belongs to (per ADR-004)
  */
-export interface Prayer {
-  /** Schedule type: 'standard' or 'extra' */
-  type: ScheduleType;
-  /** English name: "Fajr", "Isha", "Midnight", etc. */
-  english: string;
-  /** Arabic name: "الفجر", "العشاء", etc. */
-  arabic: string;
+export interface ReadablePrayer extends PrayerRow {
   /** Full datetime - the actual moment in time (Date object) */
   datetime: Date;
   /** Original time string (for display purposes, e.g., "06:12") */
   time: string;
-  /** Which Islamic day this prayer belongs to (per ADR-004)
-   * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day) */
-  belongsToDate: string;
 }
 
 /**
- * Prayer sequence - single sorted array replacing yesterday/today/tomorrow structure
- * Contains 48-72 hours of prayers, sorted by datetime
+ * A row whose time could not be read, or could not be worked out because a time it depends on could
+ * not (see shared/prayer.ts). It is still on its list and is drawn as `--:--`, but it has no moment:
+ * it can never be next, never be counted down to, and never have an alert armed for it.
+ */
+export interface UnreadablePrayer extends PrayerRow {
+  datetime: null;
+  time: null;
+}
+
+/**
+ * One row of a list. A union rather than optional fields, so that anything doing arithmetic on a
+ * moment must first establish that the row has one (`isReadable` in shared/sequence.ts)
+ */
+export type Prayer = ReadablePrayer | UnreadablePrayer;
+
+/**
+ * Prayer sequence - single array replacing yesterday/today/tomorrow structure
+ * Contains 48-72 hours of prayers, in list order (compareListOrder in shared/sequence.ts)
  */
 export interface PrayerSequence {
   /** Schedule type: 'standard' or 'extra' */
   type: ScheduleType;
-  /** Prayers sorted by datetime, next 48-72 hours */
+  /** Prayers by list day, then position on the list; readable rows are therefore in time order */
   prayers: Prayer[];
-}
-
-/**
- * Serialized prayer for MMKV storage
- * JavaScript Date objects cannot be stored directly in MMKV
- * datetime is converted to ISO string (without 'Z' suffix for local time)
- */
-export interface StoredPrayer {
-  type: ScheduleType;
-  english: string;
-  arabic: string;
-  /** ISO string format: "2026-01-18T06:12:00" (local time, no 'Z') */
-  datetime: string;
-  time: string;
-  belongsToDate: string;
-}
-
-/**
- * Serialized prayer sequence for MMKV storage
- */
-export interface StoredPrayerSequence {
-  type: ScheduleType;
-  prayers: StoredPrayer[];
 }
 
 // =============================================================================
@@ -277,11 +324,14 @@ export interface StoredPrayerSequence {
 export enum CountdownKey {
   Standard = 'standard',
   Extra = 'extra',
-  Overlay = 'overlay',
 }
 
 export interface CountdownStore {
-  timeLeft: number;
+  /**
+   * Seconds left, or null when there is nothing to count: the overlay shows an occurrence whose time could not
+   * be read, or the list on screen has no readable time left to come
+   */
+  timeLeft: number | null;
   name: string;
 }
 

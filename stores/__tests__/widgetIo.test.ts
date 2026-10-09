@@ -6,17 +6,26 @@
  *   surface, never a crash path)
  * - Partial cache: builds from whatever days exist, never fails
  * - readWidgetSettings: snapshots both widget-visible preferences
+ *
+ * The suite exercises the ENABLED widget path, which is not the shipped
+ * configuration (jest.setup.js deletes EXPO_PUBLIC_IOS_WIDGETS so every suite runs
+ * the flag off by default), so it opts in explicitly below. The mock is
+ * hoisted above the imports on purpose: flags.ts reads the env once at module
+ * evaluation and ESM imports are hoisted, so setting the variable in the file
+ * body would run after @/stores/widget has already captured FEATURE_FLAGS.
  */
+
+jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: true } }));
 
 import { addDays, format } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
-import { createLondonDate, formatDateShort } from '@/shared/time';
+import { createInstant, formatDateShort } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 import { readWidgetSettings, refreshPrayerWidgets } from '@/stores/widget';
-import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import { ExtrasLockWidget, ExtrasLockWidget2, PrayerLockWidget, PrayerLockWidget2 } from '@/widgets/LockPrayerWidget';
 import {
   ExtrasWidget,
   ExtrasWidgetDark,
@@ -36,15 +45,13 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
   asr: '17:45',
   magrib: '21:15',
   isha: '22:45',
-  midnight: '23:52',
-  'last third': '02:15',
   suhoor: '05:55',
   duha: '08:10',
   istijaba: '16:00',
 });
 
 const seedPrayerCache = (days: number) => {
-  const now = createLondonDate();
+  const now = createInstant();
   const data: ISingleApiResponseTransformed[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(now, offset);
@@ -61,8 +68,10 @@ const mediumPush = () => (PrayerWidgetMedium.updateTimeline as jest.Mock).mock.c
 const resetWidgetMocks = () => {
   (PrayerWidget.updateTimeline as jest.Mock).mockReset();
   (PrayerLockWidget.updateTimeline as jest.Mock).mockReset();
+  (PrayerLockWidget2.updateTimeline as jest.Mock).mockReset();
   (ExtrasWidget.updateTimeline as jest.Mock).mockReset();
   (ExtrasLockWidget.updateTimeline as jest.Mock).mockReset();
+  (ExtrasLockWidget2.updateTimeline as jest.Mock).mockReset();
   (PrayerWidgetDark.updateTimeline as jest.Mock).mockReset();
   (ExtrasWidgetDark.updateTimeline as jest.Mock).mockReset();
   (PrayerWidgetMedium.updateTimeline as jest.Mock).mockReset();
@@ -126,14 +135,14 @@ describe('refreshPrayerWidgets error tolerance', () => {
 
 describe('label-flip re-push scheduler', () => {
   const minutesAhead = (minutes: number): string => {
-    const date = createLondonDate();
+    const date = createInstant();
     date.setMinutes(date.getMinutes() + minutes);
     return format(date, 'HH:mm');
   };
 
   /** Seeds a cache whose Magrib sits `minutes` ahead of now. */
   const seedUpcomingMagrib = (minutes: number) => {
-    const now = createLondonDate();
+    const now = createInstant();
     const dates = [-1, 0, 1].map((offset) => formatDateShort(addDays(now, offset)));
     Database.saveAllPrayers(
       dates.map((date) => ({
@@ -149,7 +158,12 @@ describe('label-flip re-push scheduler', () => {
   };
 
   beforeEach(() => {
-    jest.useFakeTimers();
+    // PINNED, not "now": a re-push lands on a minute boundary, so a fake clock
+    // seeded from the real one starts at an arbitrary point in the minute and
+    // the advances below race that boundary. Unpinned, this suite failed about
+    // one run in sixty — rare enough to look like noise, often enough to block
+    // a commit. On the second of a minute, every advance below is exact.
+    jest.useFakeTimers({ now: new Date('2026-09-12T10:30:00.000Z') });
     resetWidgetMocks();
   });
 
@@ -158,31 +172,57 @@ describe('label-flip re-push scheduler', () => {
     jest.useRealTimers();
   });
 
-  it('re-pushes as each countdown minute flips', async () => {
+  // Every push costs a WidgetKit reload per kind, and a reload re-renders the
+  // whole timeline. A timer that re-pushed twelve kinds a minute exhausted the
+  // extension's CPU budget and iOS killed it mid-render, which WidgetKit shows
+  // as "Please adopt containerBackground API" (ISSUES.md §G.1). These pin the
+  // absence of that chain: pushes are driven by data, never by a clock.
+
+  it('pushes once per refresh and never re-pushes on a timer', async () => {
     seedUpcomingMagrib(11);
 
     await refreshPrayerWidgets();
     expect(widgetPush()).toHaveLength(1);
 
-    // The next label flip (10m remaining) happens 60s after the push: the
-    // scheduler re-pushes right after it, within a minute's window
-    await jest.advanceTimersByTimeAsync(60 * 1000 + 300);
-    expect(widgetPush()).toHaveLength(2);
-
-    await jest.advanceTimersByTimeAsync(60 * 1000);
-    expect(widgetPush()).toHaveLength(3);
+    // Well past every minute flip the old chain would have fired on
+    await jest.advanceTimersByTimeAsync(5 * 60 * 1000);
+    expect(widgetPush()).toHaveLength(1);
   });
 
-  it('re-pushes every minute for far-out prayers too', async () => {
-    seedPrayerCache(2);
+  it('swallows a native throw without arming a retry, and pushes again on the next refresh', async () => {
+    seedUpcomingMagrib(11);
+    (PrayerWidget.updateTimeline as jest.Mock).mockImplementationOnce(() => {
+      throw new Error('native boom');
+    });
 
     await refreshPrayerWidgets();
     expect(widgetPush()).toHaveLength(1);
 
-    // The label minute changes at any distance, so a flip lands within any
-    // 59-second window
-    await jest.advanceTimersByTimeAsync(59 * 1000);
+    await jest.advanceTimersByTimeAsync(5 * 60 * 1000);
+    expect(widgetPush()).toHaveLength(1);
+
+    // The next data-driven refresh (a sync, a reschedule, the background task)
+    // is what recovers it — no clock involved
+    await refreshPrayerWidgets();
     expect(widgetPush()).toHaveLength(2);
+  });
+
+  it('builds nothing on an empty cache and pushes once the next refresh finds data', async () => {
+    Database.clearPrefix('prayer_');
+
+    await refreshPrayerWidgets();
+    expect(widgetPush()).toHaveLength(0);
+
+    await jest.advanceTimersByTimeAsync(5 * 60 * 1000);
+    expect(widgetPush()).toHaveLength(0);
+
+    // A sync lands and calls refreshPrayerWidgets itself: the sequence is
+    // rebuilt every push, so the healed cache is read rather than the empty one
+    seedUpcomingMagrib(11);
+    await refreshPrayerWidgets();
+
+    expect(widgetPush()).toHaveLength(1);
+    expect(widgetPush()[0][0].length).toBeGreaterThan(0);
   });
 });
 

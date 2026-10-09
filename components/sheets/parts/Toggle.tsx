@@ -1,7 +1,6 @@
 import * as Haptics from 'expo-haptics';
-import { useEffect, useRef } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { ANIMATION, COLORS, RADIUS, SIZE } from '@/shared/constants';
 
@@ -9,6 +8,8 @@ interface ToggleProps {
   value: boolean;
   onToggle: () => void;
   disabled?: boolean;
+  /** What the switch announces; the setting's own label, since the track carries no text */
+  accessibilityLabel?: string;
 }
 
 /**
@@ -22,17 +23,24 @@ interface ToggleProps {
  * @example
  * <Toggle value={isOn} onToggle={() => setIsOn(!isOn)} />
  */
-export default function Toggle({ value, onToggle, disabled }: ToggleProps) {
-  const isFirstRender = useRef(true);
-  const translateX = useSharedValue(value ? SIZE.toggle.translateX : 0);
-
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
+export default function Toggle({ value, onToggle, disabled, accessibilityLabel }: ToggleProps) {
+  // Derived, not effect-driven: every value flip re-runs the timing from the
+  // thumb's live position on the UI thread, so the knob always converges on
+  // the current value. The previous effect + JS-side shared-value
+  // assignments raced under fast toggling — the G.3 knob desync and the
+  // suspected rapid-press crash (G.8) both live in that race window.
+  // First evaluation snaps instead of animating: a toggle mounted in the ON
+  // state (persisted preferences) must appear settled, not slide in — the
+  // mount behavior of the previous implementation, preserved exactly.
+  const isFirstEvaluation = useSharedValue(true);
+  const translateX = useDerivedValue(() => {
+    const target = value ? SIZE.toggle.translateX : 0;
+    if (isFirstEvaluation.value) {
+      isFirstEvaluation.value = false;
+      return target;
     }
-    translateX.value = withTiming(value ? SIZE.toggle.translateX : 0, { duration: ANIMATION.duration });
-  }, [value, translateX]);
+    return withTiming(target, { duration: ANIMATION.duration });
+  });
 
   const thumbStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: translateX.value }],
@@ -45,7 +53,14 @@ export default function Toggle({ value, onToggle, disabled }: ToggleProps) {
   };
 
   return (
-    <Pressable onPress={handlePress} style={[styles.track, value && styles.trackOn, disabled && styles.disabled]}>
+    <Pressable
+      accessibilityRole='switch'
+      // `checked` is what a screen reader announces as on/off; without it the state is
+      // carried only by the thumb's position and the track colour
+      accessibilityState={{ checked: value, disabled: disabled === true }}
+      accessibilityLabel={accessibilityLabel}
+      onPress={handlePress}
+      style={[styles.track, value && styles.trackOn, disabled && styles.disabled]}>
       <Animated.View style={[styles.thumb, thumbStyle]} />
     </Pressable>
   );

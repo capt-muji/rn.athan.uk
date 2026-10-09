@@ -1,7 +1,13 @@
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, View } from 'react-native';
-import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  interpolateColor,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
@@ -70,7 +76,15 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
   }));
 
   return (
-    <Pressable style={styles.option} onPress={onPress}>
+    <Pressable
+      accessibilityRole='radio'
+      // Which mode is active is conveyed only by the sliding pill and a colour
+      // interpolation, so without `selected` a screen reader cannot tell Off from Sound —
+      // and this control decides whether a prayer notification fires at all
+      accessibilityState={{ selected: isSelected }}
+      accessibilityLabel={option.label}
+      style={styles.option}
+      onPress={onPress}>
       <View style={styles.iconContainer}>
         <Animated.View style={[styles.iconLayer, unselectedIconOpacity]}>
           <IconView type={option.icon} size={13} color={SEGMENT_COLORS.unselected} />
@@ -102,28 +116,29 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
 export default function SegmentedControl({ options, selected, onSelect, disabled }: SegmentedControlProps) {
   const [containerWidth, setContainerWidth] = useState(0);
   const padding = 3;
-  const hasInitialized = useRef(false);
-  const translateX = useSharedValue(0);
-
   const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
   const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / options.length : 0;
 
-  useEffect(() => {
-    if (optionWidth === 0) return;
-
-    const targetX = selectedIndex * optionWidth;
-
-    if (!hasInitialized.current) {
-      translateX.value = targetX;
-      hasInitialized.current = true;
-    } else {
-      translateX.value = withTiming(targetX, { duration: ANIMATION.duration });
+  // The indicator's position is percent-of-own-width — the pill's width IS one
+  // segment — so the target needs no measured geometry and the first worklet
+  // evaluation, whenever it runs, already yields the settled position. The
+  // static transform on the element covers even the pre-worklet attach paint.
+  // The previous px target (index × measured optionWidth) was only computable
+  // after onLayout, and its post-layout snap lost the race against the sheet
+  // entrance on first opens: the pill painted at the Off slot (translateX 0)
+  // and slid into place. Mount settles; only selection CHANGES animate.
+  const isFirstEvaluation = useSharedValue(true);
+  const translateXPercent = useDerivedValue(() => {
+    const target = selectedIndex * 100;
+    if (isFirstEvaluation.value) {
+      isFirstEvaluation.value = false;
+      return target;
     }
-  }, [selectedIndex, optionWidth, translateX]);
+    return withTiming(target, { duration: ANIMATION.duration });
+  });
 
   const indicatorStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: translateX.value }],
-    width: optionWidth,
+    transform: [{ translateX: `${translateXPercent.value}%` }],
   }));
 
   const handleLayout = useCallback((e: LayoutChangeEvent) => {
@@ -132,7 +147,15 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
 
   return (
     <View style={[styles.container, disabled && styles.disabled]} onLayout={handleLayout}>
-      {containerWidth > 0 && <Animated.View style={[styles.indicator, indicatorStyle]} />}
+      {containerWidth > 0 && (
+        <Animated.View
+          style={[
+            styles.indicator,
+            { width: optionWidth, transform: [{ translateX: `${selectedIndex * 100}%` }] },
+            indicatorStyle,
+          ]}
+        />
+      )}
       {options.map((option) => (
         <AnimatedSegmentOption
           key={option.value}
@@ -176,7 +199,10 @@ const styles = StyleSheet.create({
     borderColor: COLORS.interactive.activeBorder,
   },
   option: {
-    flex: 1,
+    // Equal thirds to match the indicator; an auto basis sized each option to its own label, so
+    // contents sat left of the pill. Not the flex shorthand, whose shrink collapses the option.
+    flexGrow: 1,
+    flexBasis: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

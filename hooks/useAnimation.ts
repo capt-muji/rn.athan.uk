@@ -1,12 +1,11 @@
-import { useCallback } from 'react';
+import { useAtomValue } from 'jotai';
+import { useCallback, useRef } from 'react';
 import {
-  cancelAnimation,
-  Easing,
-  interpolate,
   interpolateColor,
   runOnJS,
   useAnimatedProps,
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   type WithSpringConfig,
   type WithTimingConfig,
@@ -16,6 +15,7 @@ import {
 } from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';
+import { resyncAtom } from '@/stores/ui';
 
 interface AnimationOptions {
   duration?: number;
@@ -28,34 +28,11 @@ interface ColorAnimationInput {
   toColor: string;
 }
 
-const DEFAULT_TIMING: WithTimingConfig = {
-  duration: ANIMATION.durationSlow,
-};
-
 const DEFAULT_SPRING: WithSpringConfig = {
   damping: 12,
   stiffness: 500,
   mass: 0.5,
 };
-
-/**
- * Helper to create a timing-based animation with consistent options handling
- * Reduces duplication across timing-based animation hooks
- */
-function createTimingAnimation(toValue: number, options?: AnimationOptions, customConfig?: Partial<WithTimingConfig>) {
-  'worklet';
-  const timing: WithTimingConfig = {
-    ...DEFAULT_TIMING,
-    ...customConfig,
-    duration: options?.duration ?? customConfig?.duration ?? DEFAULT_TIMING.duration,
-  };
-
-  const animation = withTiming(toValue, timing, (finished) => {
-    if (finished && options?.onFinish) runOnJS(options.onFinish)();
-  });
-
-  return options?.delay ? withDelay(options.delay, animation) : animation;
-}
 
 /**
  * Helper to create a spring-based animation with consistent options handling
@@ -69,143 +46,6 @@ function createSpringAnimation(toValue: number, options?: AnimationOptions) {
 
   return options?.delay ? withDelay(options.delay, animation) : animation;
 }
-
-/**
- * Hook for animating text color between two colors
- *
- * @param initialValue Initial animation position (0 or 1)
- * @param input Color interpolation input with fromColor and toColor
- * @returns Animation value, animated style, and animate function
- *
- * @example
- * const { style, animate } = useAnimationColor(0, { fromColor: '#888', toColor: '#fff' });
- * animate(1); // Transition to toColor
- */
-export const useAnimationColor = (initialValue: number = 0, input: ColorAnimationInput) => {
-  const value = useSharedValue(initialValue);
-
-  const style = useAnimatedStyle(() => ({
-    color: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
-  }));
-
-  const animate = useCallback(
-    (toValue: number, options?: AnimationOptions) => {
-      value.value = createTimingAnimation(toValue, options);
-    },
-    [value]
-  );
-
-  return { value, style, animate };
-};
-
-/**
- * Hook for animating SVG fill color between two colors
- *
- * @param initialValue Initial animation position (0 or 1)
- * @param input Color interpolation input with fromColor and toColor
- * @returns Animation value, animated props for SVG, and animate function
- *
- * @example
- * const { animatedProps, animate } = useAnimationFill(0, { fromColor: '#888', toColor: '#fff' });
- * <AnimatedPath animatedProps={animatedProps} />
- */
-export const useAnimationFill = (initialValue: number = 0, input: ColorAnimationInput) => {
-  const value = useSharedValue(initialValue);
-
-  const animatedProps = useAnimatedProps(() => ({
-    fill: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
-  }));
-
-  const animate = useCallback(
-    (toValue: number, options?: AnimationOptions) => {
-      value.value = createTimingAnimation(toValue, options);
-    },
-    [value]
-  );
-
-  return { value, animatedProps, animate };
-};
-
-/**
- * Hook for animating background color between two colors
- *
- * @param initialValue Initial animation position (0 or 1)
- * @param input Color interpolation input with fromColor and toColor
- * @returns Animation value, animated style, and animate function
- *
- * @example
- * const { style, animate } = useAnimationBackgroundColor(0, { fromColor: '#000', toColor: '#fff' });
- */
-export const useAnimationBackgroundColor = (initialValue: number = 0, input: ColorAnimationInput) => {
-  const value = useSharedValue(initialValue);
-
-  const style = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(value.value, [0, 1], [input.fromColor, input.toColor]),
-  }));
-
-  const animate = useCallback(
-    (toValue: number, options?: AnimationOptions) => {
-      value.value = createTimingAnimation(toValue, options);
-    },
-    [value]
-  );
-
-  return { value, style, animate };
-};
-
-/**
- * Hook for animating opacity
- *
- * @param initialValue Initial opacity value (0-1)
- * @returns Animation value, animated style, and animate function
- *
- * @example
- * const { style, animate } = useAnimationOpacity(0);
- * animate(1); // Fade in
- */
-export const useAnimationOpacity = (initialValue: number = 0) => {
-  const value = useSharedValue(initialValue);
-
-  const style = useAnimatedStyle(() => ({
-    opacity: value.value,
-  }));
-
-  const animate = useCallback(
-    (toValue: number, options?: AnimationOptions) => {
-      value.value = createTimingAnimation(toValue, options);
-    },
-    [value]
-  );
-
-  return { value, style, animate };
-};
-
-/**
- * Hook for animating vertical translation with elastic easing
- *
- * @param initialValue Initial Y translation value
- * @returns Animation value, animated style, and animate function
- *
- * @example
- * const { style, animate } = useAnimationTranslateY(100);
- * animate(0); // Slide up from 100px
- */
-export const useAnimationTranslateY = (initialValue: number) => {
-  const value = useSharedValue(initialValue);
-
-  const style = useAnimatedStyle(() => ({
-    transform: [{ translateY: value.value }],
-  }));
-
-  const animate = useCallback(
-    (toValue: number, options?: AnimationOptions) => {
-      value.value = createTimingAnimation(toValue, options, { easing: Easing.elastic(0.5) });
-    },
-    [value]
-  );
-
-  return { value, style, animate };
-};
 
 /**
  * Hook for animating scale with spring physics
@@ -234,41 +74,82 @@ export const useAnimationScale = (initialValue: number = 1) => {
   return { value, style, animate };
 };
 
+// =============================================================================
+// DERIVED TRANSITIONS (overlay path)
+// =============================================================================
+
+interface DerivedTimingOptions {
+  duration?: number;
+  delay?: number;
+  easing?: WithTimingConfig['easing'];
+  /** Use Reanimated's default timing, matching a bare `withTiming` call */
+  defaultTiming?: boolean;
+}
+
 /**
- * Hook for animating a subtle bounce effect (scale 0.95 to 1)
- *
- * @param initialValue Initial animation position (0 = compressed, 1 = normal)
- * @returns Animation value, animated style, and animate function
- *
- * @example
- * const { style, animate } = useAnimationBounce(0);
- * animate(1); // Bounce to normal size
+ * Derived from state, not effects: the mapper re-runs on target or resume
+ * change and converges, so a suspend-dropped write cannot strand. First
+ * evaluation and resume snap so the settled frame is exact.
  */
-export const useAnimationBounce = (initialValue: number = 0) => {
-  const value = useSharedValue(initialValue);
+export const useDerivedProgress = (target: number, options?: DerivedTimingOptions) => {
+  const resync = useAtomValue(resyncAtom);
 
-  const style = useAnimatedStyle(() => ({
-    transform: [{ scale: interpolate(value.value, [0, 1], [0.95, 1]) }],
+  // Options latch when the target changes, so a re-render mid-transition can't restart it with other timing
+  const latched = useRef({ target, options });
+  if (latched.current.target !== target) latched.current = { target, options };
+  const duration = latched.current.options?.duration ?? ANIMATION.duration;
+  const delay = latched.current.options?.delay ?? 0;
+  const easing = latched.current.options?.easing;
+  const useDefaultTiming = latched.current.options?.defaultTiming ?? false;
+
+  const isFirstEvaluation = useSharedValue(true);
+  const lastResync = useSharedValue(resync);
+
+  return useDerivedValue(() => {
+    if (isFirstEvaluation.value || lastResync.value !== resync) {
+      isFirstEvaluation.value = false;
+      lastResync.value = resync;
+      return target;
+    }
+
+    // Omit an undefined easing: an explicit `easing: undefined` overrides
+    // Reanimated's default and makes withTiming call undefined(t)
+    const config = useDefaultTiming ? undefined : easing !== undefined ? { duration, easing } : { duration };
+    const animation = withTiming(target, config);
+    return delay > 0 ? withDelay(delay, animation) : animation;
+  });
+};
+
+export const useDerivedOpacity = (target: number, options?: DerivedTimingOptions) => {
+  const progress = useDerivedProgress(target, options);
+  return useAnimatedStyle(() => ({ opacity: progress.value }));
+};
+
+export const useDerivedColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
+  const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
+  const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
+  return useAnimatedStyle(() => ({
+    color: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
   }));
+};
 
-  const animate = useCallback(
-    (toValue: number, options?: AnimationOptions) => {
-      value.value = createSpringAnimation(toValue, options);
-    },
-    [value]
-  );
+export const useDerivedBackgroundColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
+  const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
+  const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
+  return useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+  }));
+};
 
-  /**
-   * Reset the animation value immediately (non-animated)
-   * Cancels any running animation before setting the value
-   */
-  const reset = useCallback(
-    (toValue: number) => {
-      cancelAnimation(value);
-      value.value = toValue;
-    },
-    [value]
-  );
+export const useDerivedTranslateY = (target: number, options?: DerivedTimingOptions) => {
+  const progress = useDerivedProgress(target, options);
+  return useAnimatedStyle(() => ({ transform: [{ translateY: progress.value }] }));
+};
 
-  return { value, style, animate, reset };
+export const useDerivedFill = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
+  const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
+  const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
+  return useAnimatedProps(() => ({
+    fill: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+  }));
 };

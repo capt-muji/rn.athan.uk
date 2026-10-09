@@ -1,59 +1,66 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useAnimationColor } from '@/hooks/useAnimation';
+import { getRowPressAction } from '@/components/prayer/rowPress';
+import { useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
-import { useSchedule } from '@/hooks/useSchedule';
+import { usePrevious } from '@/hooks/usePrevious';
+import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
-import { overlayAtom, setSelectedPrayerIndex, toggleOverlay } from '@/stores/overlay';
-import { refreshUIAtom, showArabicNamesAtom } from '@/stores/ui';
+import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
+import { closeOverlay, openOverlay } from '@/stores/overlay';
+import { showArabicNamesAtom } from '@/stores/ui';
 
 import Alert from './Alert';
 import Time from './Time';
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 interface Props {
   type: ScheduleType;
   index: number;
-  isOverlay?: boolean;
 }
 
 /**
  * Prayer row component displaying prayer name, time, and notification controls
  *
- * Renders a pressable row with English name, optional Arabic name, time display,
- * and alert icon. Supports cascade animations when the date changes and
- * highlights when selected in the overlay.
- *
  * @param type - Schedule type (Standard or Extra)
  * @param index - Prayer index within the schedule
- * @param isOverlay - Whether this is rendered in the overlay (default: false)
  */
-export default function Prayer({ type, index, isOverlay = false }: Props) {
-  const refreshUI = useAtomValue(refreshUIAtom);
+export default function Prayer({ type, index }: Props) {
   const showArabicNames = useAtomValue(showArabicNamesAtom);
 
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
-  const overlay = useAtomValue(overlayAtom);
+  const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
+  const isHiddenByOverlay = useAtomValue(useMemo(() => getOverlayHiddenAtom(type, index), [type, index]));
 
-  const AnimColor = useAnimationColor(Prayer.ui.initialColorPos, {
+  // One-shot date-roll stagger: the colour target flips (bright to dim) when
+  // the display date rolls to the next day
+  const previousDisplayDate = usePrevious(Schedule.displayDate);
+  const isCascadeRoll =
+    previousDisplayDate !== Schedule.displayDate &&
+    !isSelectedForOverlay &&
+    !Schedule.isLastPrayerPassed &&
+    isCascadeRow(Schedule, index);
+  const previousIsSelected = usePrevious(isSelectedForOverlay);
+  const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
+
+  // Selected is always fully bright; otherwise the natural passed/next/upcoming position.
+  // Pre-ADR-015 timings: overlay selection 150ms; next-prayer advance and date-roll cascade 1000ms
+  const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
+  const colorStyle = useDerivedColor(colorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
+    duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
+    delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
-
-  // Detect if this prayer is currently selected in the overlay.
-  // Note: Alert.tsx uses Prayer.isOverlay prop because Alert components render separately
-  // inside the overlay. For Prayer.tsx and PrayerTime.tsx in the main schedule, we detect
-  // overlay selection via overlayAtom to animate when tapped (before overlay renders).
-  const isSelectedForOverlay = useMemo(
-    () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
-    [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
-  );
+  const veilStyle = useDerivedOpacity(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
 
   const computedStyleEnglish = {
     width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left,
@@ -62,53 +69,31 @@ export default function Prayer({ type, index, isOverlay = false }: Props) {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    // Name-based check: the row's sequence index shifts with display order, so an
-    // index comparison cannot identify Istijaba (the old ISTIJABA_INDEX check was
-    // dead since the list became chronological)
-    if (!Schedule.isStandard && Prayer.english === 'Istijaba' && Prayer.isPassed) return;
-
-    setSelectedPrayerIndex(type, index);
-    toggleOverlay();
+    const action = getRowPressAction({
+      isStandard: Schedule.isStandard,
+      english: Prayer.english,
+      isPassed: Prayer.isPassed,
+      isSelectedForOverlay,
+    });
+    if (action === 'close') closeOverlay();
+    if (action === 'open') openOverlay(type, index);
   };
 
-  // Force animation to respect new state immediately when refreshing
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos is read from the fresh render closure at signal time
-  useEffect(() => {
-    AnimColor.animate(Prayer.ui.initialColorPos);
-  }, [refreshUI]);
-
-  // Animate when next prayer changes
-  useEffect(() => {
-    if (Prayer.isNext) AnimColor.animate(1);
-  }, [Prayer.isNext, AnimColor.animate]);
-
-  // Cascade animation when date changes and we're at first prayer
-  // biome-ignore lint/correctness/useExhaustiveDependencies: displayDate is the deliberate cascade trigger; the remaining values are read once per date change by design
-  useEffect(() => {
-    if (!isSelectedForOverlay && !Schedule.isLastPrayerPassed && Schedule.nextPrayerIndex === 0 && index !== 0) {
-      const delay = getCascadeDelay(index, type);
-      AnimColor.animate(0, { delay });
-    }
-  }, [Schedule.displayDate, isSelectedForOverlay]);
-
-  // Overlay-aware animation: bright when selected, return to natural state when closed
-  // biome-ignore lint/correctness/useExhaustiveDependencies: keyed on selection only; initialColorPos changes are handled by the refresh/next/cascade effects
-  useEffect(() => {
-    const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimColor.animate(colorPos, { duration: ANIMATION.durationVeryFast });
-  }, [isSelectedForOverlay]);
-
   return (
-    <Pressable style={styles.container} onPress={handlePress}>
-      <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, AnimColor.style]}>
+    <AnimatedPressable
+      style={[styles.container, veilStyle]}
+      onPress={handlePress}
+      accessibilityElementsHidden={isHiddenByOverlay}
+      importantForAccessibility={isHiddenByOverlay ? 'no-hide-descendants' : 'auto'}>
+      <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, colorStyle]}>
         {Prayer.english}
       </Animated.Text>
       {showArabicNames && (
-        <Animated.Text style={[styles.text, styles.arabic, AnimColor.style]}>{Prayer.arabic}</Animated.Text>
+        <Animated.Text style={[styles.text, styles.arabic, colorStyle]}>{Prayer.arabic}</Animated.Text>
       )}
-      <Time index={index} type={type} isOverlay={isOverlay} />
-      <Alert index={index} type={type} isOverlay={isOverlay} />
-    </Pressable>
+      <Time index={index} type={type} />
+      <Alert index={index} type={type} />
+    </AnimatedPressable>
   );
 }
 

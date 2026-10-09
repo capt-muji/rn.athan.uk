@@ -1,0 +1,4 @@
+API days 365 2026-01-01 2026-12-31 fields ['asr', 'asr_2', 'asr_jamat', 'date', 'dhuhr', 'dhuhr_jamat', 'fajr', 'fajr_jamat', 'isha', 'isha_jamat', 'magrib', 'magrib_jamat', 'sunrise']
+API vs ELM 2026 PDF: days 365/365, cells compared 4380, differences 0 []
+API vs ELM website embedded table: days 365/365, cells compared 4380, differences 0 []
+nightTimes.test.ts real rows vs API: 13 days, differences []

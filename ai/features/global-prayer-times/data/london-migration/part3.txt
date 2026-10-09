@@ -1,0 +1,143 @@
+R13 PART 3: the fifty published future years
+Source: londonsalahtimes.com/downloads/LUPT-<year>.xlsx, 2027 to 2076, fetched 2026-09-30.
+East London Mosque's own prayer-times page credits "Prayer times produced by London Salah Times".
+
+year  days  first row                                        last row
+2027   365  2027-01-01 F06:26 I17:42   2027-12-31 F06:26 I17:41
+2028   366  2028-01-01 F06:26 I17:42   2028-12-31 F06:26 I17:41
+2040   366  2040-01-01 F06:26 I17:42   2040-12-31 F06:26 I17:41
+2076   366  2076-01-01 F06:26 I17:42   2076-12-31 F06:26 I17:42
+Total days across all fifty years: 18263. Total published values (7 fields): 127841.
+
+== 3.1 Does the app's OWN 2026 interval table reproduce all fifty future years? ==
+The table is derived from ai/features/moonsighting/data/london/lpt-2026.json, the app's current source.
+Each year is reconstructed as: Fajr = (published sunrise + 3) - interval, Isha = (published Maghrib - 3) + interval.
+
+year   days   Fajr exact        Isha exact        worst   days that differ
+2027    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2028    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2029    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2030    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2031    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2032    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2033    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2034    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2035    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2036    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2037    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2038    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2039    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2040    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2041    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2042    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2043    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2044    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2045    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2046    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2047    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2048    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2049    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2050    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2051    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2052    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2053    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2054    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2055    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2056    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2057    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2058    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2059    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2060    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2061    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2062    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2063    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2064    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2065    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2066    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2067    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2068    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2069    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2070    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2071    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2072    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2073    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2074    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2075    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+2076    365    365/365 (100.0%)    361/365  (98.9%)      1   I06-17+1 I06-18+1 I06-19+1 I11-29-1
+
+ALL FIFTY YEARS: Fajr 18250/18250 exact (100.000%), Isha 18050/18250 exact (98.904%).
+Combined 36300/36500 (99.452%). Worst error anywhere: 1 minute(s).
+
+Every slot that ever differs, with how many of the fifty years it differs in:
+  I06-17: 50 of 50 years
+  I06-18: 50 of 50 years
+  I06-19: 50 of 50 years
+  I11-29: 50 of 50 years
+
+== 3.2 A table built from 2027 instead, to see which year's table is the right one to ship ==
+  2027's table on all fifty years: Fajr 18250/18250 (100.000%), Isha 18250/18250 (100.000%), worst 0
+  Slots that ever differ: none
+
+== 3.3 29 February, the slot no non-leap year can supply ==
+  Leap years in the corpus: 13 (2028, 2032, 2036, 2040, 2044 ... 2072, 2076)
+  29 Feb Fajr interval across every leap year: 100
+  29 Feb Isha interval across every leap year: 89
+  The app's 2026 capture is a non-leap year, so this slot must come from a leap year or be
+  interpolated. The measurement above says which.
+  For comparison, the 2026 table's neighbours: 02-28 Fajr 100 Isha 90; 03-01 Fajr 100 Isha 89
+
+== 3.4 THE OFFLINE QUESTION, tested on fifty years the table was not built from ==
+Computed sun (adhan 4.4.6, rounding None then half-up) at the publisher's own Charing Cross point
+and at the point wave 1 fitted, with the publisher's own documented margins:
+  sunrise = computed sunrise - 3   Zuhr = computed transit + 5   Maghrib = computed sunset + 3
+  Fajr = (that sunrise + 3) - interval   Isha = (that Maghrib - 3) + interval
+
+point                              field      exact                within 1 min         worst  beyond 1
+Charing Cross 51.5073,-0.12755     fajr           11576 (63.43%)     18250 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     sunrise        11576 (63.43%)     18250 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     dhuhr          18025 (98.77%)     18250 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     magrib         11400 (62.47%)     18250 (100.00%)     1  0
+Charing Cross 51.5073,-0.12755     isha           11222 (61.49%)      18228 (99.88%)     2  22
+
+51.5,-0.165 (wave 1 era B2 fit)    fajr           11724 (64.24%)     18250 (100.00%)     1  0
+51.5,-0.165 (wave 1 era B2 fit)    sunrise        11724 (64.24%)     18250 (100.00%)     1  0
+51.5,-0.165 (wave 1 era B2 fit)    dhuhr          15676 (85.90%)     18250 (100.00%)     1  0
+51.5,-0.165 (wave 1 era B2 fit)    magrib         10892 (59.68%)     18250 (100.00%)     1  0
+51.5,-0.165 (wave 1 era B2 fit)    isha           10727 (58.78%)      18219 (99.83%)     2  31
+
+51.5,-0.1275 (wave 1 era B1 fit)   fajr           11581 (63.46%)     18250 (100.00%)     1  0
+51.5,-0.1275 (wave 1 era B1 fit)   sunrise        11581 (63.46%)     18250 (100.00%)     1  0
+51.5,-0.1275 (wave 1 era B1 fit)   dhuhr          18028 (98.78%)     18250 (100.00%)     1  0
+51.5,-0.1275 (wave 1 era B1 fit)   magrib         11389 (62.41%)     18250 (100.00%)     1  0
+51.5,-0.1275 (wave 1 era B1 fit)   isha           11205 (61.40%)      18234 (99.91%)     2  16
+
+== 3.5 Byte cost: the table against the whole fifty-year corpus ==
+  the interval table, two uint8 arrays of 365: 730 raw, 352 gzip, 249 brotli
+  the same, run-length encoded:                 350 raw, 277 gzip, 208 brotli
+  all fifty published years as JSON:            2666849 raw, 347210 gzip, 44222 brotli
+  all fifty years as uint16 minutes:            255682 raw, 22409 gzip, 10290 brotli
+  all fifty years as per-field day deltas:      127841 raw, 13446 gzip, 7448 brotli
+  (the delta encoding is a size measurement only, and clamps at int8; it is not proposed as a format)
+  one year of the app's own API response, for scale: 92372 raw bytes
+
+== 3.6 Do the published future years still carry London's hand edits? ==
+The 21 edited Isha slots wave 1 documented are the signature of London's own timetable rather than
+the Hizbul Ulama book. If a generated future year drops them, the edits are not durable.
+slot    London  book   years of fifty holding London's value
+02-01      99    98   50 of 50
+04-29      74    73   50 of 50
+04-30      74    73   50 of 50
+05-01      74    68   50 of 50
+05-04      74    60   50 of 50
+05-08      74    65   50 of 50
+05-12      74    70   50 of 50
+11-29      99   100   0 of 50
+
+The four June slots that moved between 2022 and 2025, across the fifty future years:
+  06-16: 84 on 50 years  (2026 table says 84)
+  06-17: 83 on 50 years  (2026 table says 84)
+  06-18: 82 on 50 years  (2026 table says 83)
+  06-19: 82 on 50 years  (2026 table says 83)
+
+== 3.7 Control: the 2026 ELM PDF against the 2026 API year, to anchor the corpus ==
+  2555 of 2555 cells identical between the ELM 2026 PDF and the app's captured API year.

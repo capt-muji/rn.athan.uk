@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { StyleSheet, Text, View, type ViewProps } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import InfoIcon from '@/assets/icons/svg/info.svg';
@@ -10,7 +10,7 @@ interface PrayerExplanationProps {
   explanation: string;
   explanationArabic: string;
   arrowPosition?: 'top' | 'bottom';
-  style?: ViewStyle;
+  style?: ViewProps['style'];
 }
 
 /**
@@ -24,7 +24,7 @@ interface PrayerExplanationProps {
  * @param explanation - English explanation text
  * @param explanationArabic - Arabic explanation text (numbers auto-converted to Arabic numerals)
  * @param arrowPosition - Position of the arrow: 'top' (box below row) or 'bottom' (box above row)
- * @param style - Additional ViewStyle for positioning
+ * @param style - Additional style for positioning
  */
 export default function PrayerExplanation({
   prayerName,
@@ -36,7 +36,12 @@ export default function PrayerExplanation({
   const isArrowOnTop = arrowPosition === 'top';
 
   return (
-    <View style={[styles.container, style]}>
+    // Live region: this box is mounted, not navigated to — the overlay reveals
+    // it behind a fade with no focus change, so without this a screen-reader
+    // user gets no indication that anything appeared. Matches the countdown
+    // Bar's treatment (components/countdown/Bar.tsx). Android-only in React
+    // Native; VoiceOver has no equivalent declarative prop.
+    <View style={[styles.container, style]} accessibilityLiveRegion='polite'>
       {/* Triangle arrow pointing up */}
       {isArrowOnTop && (
         <View style={styles.arrowContainerTop}>

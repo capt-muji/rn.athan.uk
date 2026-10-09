@@ -1,16 +1,40 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "experimental": {
+    "subagent_depth": 2
+  },
   "mcp": {
-    "expo": {
-      "type": "remote",
-      "url": "https://mcp.expo.dev/mcp",
+    "codegraph": {
+      "type": "local",
+      "command": ["{env:HOME}/.local/bin/codegraph", "serve", "--mcp"],
       "enabled": true
     },
     "mobile-mcp": {
       "type": "local",
       "command": ["npx", "-y", "@mobilenext/mobile-mcp@latest"],
       "environment": { "MOBILEMCP_DISABLE_TELEMETRY": "1" },
+      "enabled": false
+    },
+    "maestro": {
+      "type": "local",
+      "command": ["{env:HOME}/.maestro/bin/maestro", "mcp"],
+      "environment": { "MAESTRO_CLI_NO_ANALYTICS": "1" },
+      "enabled": false
+    },
+    "agent-device": {
+      "type": "local",
+      "command": ["npx", "-y", "agent-device@latest", "mcp"],
       "enabled": true
+    },
+    "xcodebuildmcp": {
+      "type": "local",
+      "command": ["npx", "-y", "xcodebuildmcp@latest", "mcp"],
+      "enabled": true
+    },
+    "expo": {
+      "type": "remote",
+      "url": "https://mcp.expo.dev/mcp",
+      "enabled": false
     }
   }
 }

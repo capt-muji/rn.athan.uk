@@ -1,36 +1,41 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
 import ALERT_ICONS from '@/assets/icons/svg/alerts';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
+import { useDerivedFill } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
-import { usePrayer } from '@/hooks/usePrayer';
-import { useSchedule } from '@/hooks/useSchedule';
-import { ANIMATION, SIZE, SPACING, STYLES } from '@/shared/constants';
+import { getShownAlert, isShownOccurrenceUnavailable, usePrayer } from '@/hooks/usePrayer';
+import { usePrevious } from '@/hooks/usePrevious';
+import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
+import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
-import { getPrayerAlertAtom } from '@/stores/notifications';
-import { overlayAtom } from '@/stores/overlay';
-import { refreshUIAtom, showAlertSheet } from '@/stores/ui';
+import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
+import { canonicalPrayerIndex, getPrayerAlertAtom } from '@/stores/notifications';
+import { showAlertSheet } from '@/stores/ui';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 type AlertIconType = Icon.BELL_RING | Icon.BELL_SLASH | Icon.SPEAKER;
 
-const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType }[] = [
-  { icon: Icon.BELL_SLASH, type: AlertType.Off },
-  { icon: Icon.BELL_RING, type: AlertType.Silent },
-  { icon: Icon.SPEAKER, type: AlertType.Sound },
+// `spoken` is the state's screen-reader name: visually the state is carried
+// only by the glyph shape and its fill colour, and this is the control that
+// decides whether a prayer alerts at all. Kept on ALERT_CONFIGS so the icon and
+// the wording for a state cannot drift apart — the array index IS the AlertType.
+const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType; spoken: string }[] = [
+  { icon: Icon.BELL_SLASH, type: AlertType.Off, spoken: 'off' },
+  { icon: Icon.BELL_RING, type: AlertType.Silent, spoken: 'silent' },
+  { icon: Icon.SPEAKER, type: AlertType.Sound, spoken: 'sound' },
 ];
 
 interface Props {
   type: ScheduleType;
   index: number;
-  isOverlay?: boolean;
 }
 
 /**
@@ -40,77 +45,97 @@ interface Props {
  * - At-time alert options (Off/Silent/Sound)
  * - Reminder toggle with options when enabled
  * - Reminder interval selection (5-30 min)
+ *
+ * While the occurrence on screen has no readable time, the sheet shows only a message saying why no alert
+ * can go off, and the bell draws Off (R5).
  */
-export default function Alert({ type, index, isOverlay = false }: Props) {
+export default function Alert({ type, index }: Props) {
   // =============================================================================
   // STATE & REFS
   // =============================================================================
 
   const [isPressed, setIsPressed] = useState(false);
 
+  // `index` is the row's position in the day as the sequence holds it, while
+  // the alert atoms and the scheduler are both
+  // CANONICAL, keyed off EXTRAS_ENGLISH/PRAYERS_ENGLISH order. Resolve by name
+  // so the bell, the sheet it opens and the scheduler cannot drift apart if the
+  // two orders ever stop coinciding. usePrayer has to run before the atom read
+  // for that; the hook order stays unconditional, which is all React requires.
+  const Prayer = usePrayer(type, index);
+  const alertIndex = canonicalPrayerIndex(type, Prayer.english, index);
+
   // Atoms
-  const alertAtom = useAtomValue(getPrayerAlertAtom(type, index));
-  const refreshUI = useAtomValue(refreshUIAtom);
-  const overlay = useAtomValue(overlayAtom);
+  const alertAtom = useAtomValue(getPrayerAlertAtom(type, alertIndex));
+
+  // Glyph shown this frame — lags the atom through the change-bounce so the
+  // swap lands inside the animation (trough for exit-style candidates), not
+  // as an instant snap at the atom flip. Initialized to the atom: mount is
+  // settled, first frame shows the correct glyph.
+  const [displayedAlert, setDisplayedAlert] = useState<AlertType>(alertAtom);
+  const prevAlertRef = useRef<AlertType>(alertAtom);
 
   // =============================================================================
   // CUSTOM HOOKS
   // =============================================================================
 
   const Schedule = useSchedule(type);
-  const Prayer = usePrayer(type, index, isOverlay);
   const { ensurePermissions } = useNotification();
-  const { AnimScale, AnimFill } = useAlertAnimations({
-    initialColorPos: Prayer.ui.initialColorPos,
-  });
+  const { AnimScale, AnimSwap } = useAlertAnimations();
+  const playSwapBounce = AnimSwap.play;
 
   // =============================================================================
   // DERIVED STATE
   // =============================================================================
 
-  const iconIndex = alertAtom;
+  const NextOccurrencePrayer = usePrayer(type, index, true);
+  const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
 
-  const isSelectedForOverlay = useMemo(
-    () => overlay.isOn && overlay.selectedPrayerIndex === index && overlay.scheduleType === type,
-    [overlay.isOn, overlay.selectedPrayerIndex, overlay.scheduleType, index, type]
-  );
+  // The same occurrence Time.tsx draws: the bell is unavailable exactly when the time on screen is --:--, since
+  // nothing can ever fire for it (R5), and its press explains that. The saved preference is only read, never changed
+  const isUnavailable = isShownOccurrenceUnavailable(isSelectedForOverlay, Prayer, NextOccurrencePrayer);
+
+  const iconIndex = getShownAlert(isUnavailable, displayedAlert);
+
+  const previousDisplayDate = usePrevious(Schedule.displayDate);
+  const isCascadeRoll =
+    previousDisplayDate !== Schedule.displayDate &&
+    !isSelectedForOverlay &&
+    !isPressed &&
+    !Schedule.isLastPrayerPassed &&
+    isCascadeRow(Schedule, index);
+  const previousIsSelected = usePrevious(isSelectedForOverlay);
+  const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
+
+  // Timings mirror Prayer.tsx: selection 150ms, next-prayer advance and cascade 1000ms
+  const fillPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
+  const fillProps = useDerivedFill(fillPos, {
+    fromColor: COLORS.text.muted,
+    toColor: COLORS.text.primary,
+    duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
+    delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
+  });
 
   // =============================================================================
   // ANIMATION EFFECTS
   // =============================================================================
 
-  // Force animation to respect new state immediately when refreshing
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshUI is a deliberate re-fire signal; initialColorPos is read from the fresh render closure at signal time
+  // Change-bounce: the icon pops ONLY when the alert value itself changes
+  // (sheet-dismiss commit, or a commit rollback flipping it back — the replay
+  // on revert is correct). First evaluation snaps: mount and plain re-renders
+  // stay settled (the Toggle first-evaluation pattern), and a sheet that
+  // closes without changes plays nothing. The glyph swap is handed to the
+  // bounce, which fires it at the dip trough.
   useEffect(() => {
-    AnimFill.animate(Prayer.ui.initialColorPos);
-  }, [refreshUI]);
-
-  // Animate when next prayer changes
-  useEffect(() => {
-    if (Prayer.isNext) AnimFill.animate(1);
-  }, [Prayer.isNext, AnimFill.animate]);
-
-  // Cascade animation when date changes and we're at first prayer
-  // biome-ignore lint/correctness/useExhaustiveDependencies: displayDate is the deliberate cascade trigger; the remaining values are read once per date change by design
-  useEffect(() => {
-    if (
-      !isSelectedForOverlay &&
-      !isPressed &&
-      !Schedule.isLastPrayerPassed &&
-      Schedule.nextPrayerIndex === 0 &&
-      index !== 0
-    ) {
-      const delay = getCascadeDelay(index, type);
-      AnimFill.animate(0, { delay });
+    if (prevAlertRef.current === alertAtom) return;
+    prevAlertRef.current = alertAtom;
+    // A bell that cannot be used draws Off whatever is saved, so a bounce would move a glyph that stays the same
+    if (isUnavailable) {
+      setDisplayedAlert(alertAtom);
+      return;
     }
-  }, [Schedule.displayDate, isSelectedForOverlay]);
-
-  // Update fill color based on selection state
-  // biome-ignore lint/correctness/useExhaustiveDependencies: keyed on selection only; initialColorPos changes are handled by the refresh/next/cascade effects
-  useEffect(() => {
-    const colorPos = isSelectedForOverlay || Prayer.isOverlay ? 1 : Prayer.ui.initialColorPos;
-    AnimFill.animate(colorPos, { duration: ANIMATION.durationVeryFast });
-  }, [isSelectedForOverlay, Prayer.isOverlay]);
+    playSwapBounce(alertAtom, setDisplayedAlert);
+  }, [alertAtom, isUnavailable, playSwapBounce]);
 
   // =============================================================================
   // HANDLERS
@@ -119,19 +144,21 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
   const handlePress = useCallback(async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
-    // Check permissions before opening sheet
-    if (alertAtom === AlertType.Off) {
+    // With no readable time there is nothing to set, so the sheet only says why, and no permission is asked for
+    if (!isUnavailable && alertAtom === AlertType.Off) {
       await ensurePermissions();
     }
 
-    // Open bottom sheet
+    // Open bottom sheet. The sheet seeds and commits through five store calls
+    // keyed off this index, so handing it the canonical one fixes all five here.
     showAlertSheet({
       type,
-      index,
+      index: alertIndex,
       prayerEnglish: Prayer.english,
       prayerArabic: Prayer.arabic,
+      isUnavailable,
     });
-  }, [type, index, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions]);
+  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions, isUnavailable]);
 
   // =============================================================================
   // RENDER
@@ -149,11 +176,25 @@ export default function Alert({ type, index, isOverlay = false }: Props) {
           setIsPressed(false);
           AnimScale.animate(1);
         }}
+        accessibilityRole='button'
+        // Named from the atom, not from `displayedAlert`: the glyph lags the
+        // committed value through the change-bounce, and a screen reader must
+        // hear the setting that is actually stored
+        accessibilityLabel={
+          isUnavailable
+            ? `${Prayer.english} notification: unavailable`
+            : `${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`
+        }
+        accessibilityHint={
+          isUnavailable ? 'Explains why no alert can be set for this prayer' : 'Opens the alert options for this prayer'
+        }
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
-          <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>
-            <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={AnimFill.animatedProps} />
-          </Svg>
+          <Animated.View style={AnimSwap.style}>
+            <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>
+              <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={fillProps} />
+            </Svg>
+          </Animated.View>
         </Animated.View>
       </Pressable>
     </View>

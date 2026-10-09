@@ -34,3 +34,13 @@ export const ATHAN_AUDIOS = [
   require('./athans/athan31.mp3'),
   require('./athans/athan32.mp3'),
 ];
+
+// Whole-second clip lengths (rounded), parallel to ATHAN_AUDIOS. The sound
+// sheet shows these the instant a row is tapped so the countdown appears in
+// the same frame as the icon flip; live player status takes over once the
+// clip loads (same rounding, seamless handover). Regenerate if any athan
+// mp3 is ever replaced.
+export const ATHAN_DURATION_SECONDS = [
+  28, 30, 28, 29, 30, 24, 30, 30, 30, 30, 21, 25, 25, 20, 30, 30, 30, 30, 30, 19, 26, 30, 30, 30, 30, 30, 30, 30, 30,
+  30, 21, 25,
+];

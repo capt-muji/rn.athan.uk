@@ -6,19 +6,23 @@
  */
 
 import {
+  BACKGROUND_TASK_INTERVAL_HOURS,
   DEFAULT_REMINDER_INTERVAL,
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   EXTRAS_EXPLANATIONS,
   EXTRAS_EXPLANATIONS_ARABIC,
-  ISTIJABA_INDEX,
   NIGHT_PRAYER_NAMES,
+  NOTIFICATION_REQUEST_BUDGET,
   PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
   REMINDER_INTERVALS,
+  SCHEDULE_CANDIDATE_DAYS,
+  TIME_CONSTANTS,
   validateReminderInterval,
 } from '../constants';
+import { REMINDER_SLOTS } from '../types';
 
 // =============================================================================
 // NIGHT_PRAYER_NAMES TESTS
@@ -78,20 +82,6 @@ describe('prayer arrays alignment', () => {
 
   it('EXTRAS_ENGLISH contains 5 extra prayers', () => {
     expect(EXTRAS_ENGLISH).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba']);
-  });
-});
-
-// =============================================================================
-// ISTIJABA_INDEX TESTS
-// =============================================================================
-
-describe('ISTIJABA_INDEX', () => {
-  it('points to Istijaba in EXTRAS_ENGLISH', () => {
-    expect(EXTRAS_ENGLISH[ISTIJABA_INDEX]).toBe('Istijaba');
-  });
-
-  it('is the last index in EXTRAS arrays', () => {
-    expect(ISTIJABA_INDEX).toBe(EXTRAS_ENGLISH.length - 1);
   });
 });
 
@@ -187,5 +177,209 @@ describe('validateReminderInterval', () => {
 
   it('returns false for decimal number', () => {
     expect(validateReminderInterval(15.5)).toBe(false);
+  });
+});
+
+// =============================================================================
+// BACKGROUND TASK INTERVAL RESOLUTION TESTS (ISSUES.md #8)
+// minimumInterval is MINUTES — resolution: env override > dev 15 > prod BACKGROUND_TASK_INTERVAL_HOURS * 60
+// =============================================================================
+
+describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
+  /** Derived, never literal: the ship interval changes and these cases must follow it */
+  const PRODUCTION_INTERVAL_MINUTES = BACKGROUND_TASK_INTERVAL_HOURS * 60;
+
+  const requireFreshConstants = () => {
+    let mod: typeof import('../constants');
+    jest.isolateModules(() => {
+      mod = require('../constants');
+    });
+    return mod!;
+  };
+
+  afterEach(() => {
+    delete process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES;
+    delete process.env.EXPO_PUBLIC_ENV;
+    process.env.NODE_ENV = 'test';
+  });
+
+  it('resolves to BACKGROUND_TASK_INTERVAL_HOURS * 60 outside development without env', () => {
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
+  });
+
+  it('resolves to 15 in development builds (fast iteration)', () => {
+    process.env.NODE_ENV = 'development';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(15);
+  });
+
+  it('resolves to the EXPO_PUBLIC_BG_INTERVAL_MINUTES env override when set', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '45';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(45);
+  });
+
+  it('ignores an invalid env override (non-numeric)', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = 'soon';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
+  });
+
+  it('ignores a non-positive env override', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '0';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
+  });
+
+  // ISSUES.md #8 was seconds passed where minutes were expected: 10800 scheduled the
+  // task 7.5 days out. The floor check caught nothing, because 10800 is positive.
+  it('ignores the seconds-for-minutes mistake that was ISSUES #8', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '10800';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
+  });
+
+  it('ignores an override below the Android WorkManager floor of 15 minutes', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '0.001';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
+  });
+
+  it('honours the lowest rung the interval ladder actually uses', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '15';
+    // NODE_ENV matters: the development fallback is also 15, so without pinning this the
+    // case cannot tell an accepted override from a rejected one
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(15);
+  });
+
+  // iOS reads the option with `as? Int`: a fraction fails the cast and silently falls back to
+  // the ship interval, while Android truncates — 20 minutes on one platform, hours on the other
+  it('ignores a fractional override, which the two platforms would read differently', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '20.5';
+    process.env.NODE_ENV = 'test';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
+  });
+
+  it('honours a full day, the highest value that is still a choice', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '1440';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(1440);
+  });
+
+  // This interval is what keeps the rolling buffer alive, so a ladder value
+  // that followed a build to the store would change alarm delivery for users.
+  it('ignores an otherwise valid override in a prod build', () => {
+    process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '45';
+    process.env.EXPO_PUBLIC_ENV = 'prod';
+    const mod = requireFreshConstants();
+    expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
+  });
+});
+
+// =============================================================================
+// iOS PENDING-REQUEST CEILING TESTS
+//
+// iOS keeps only the 64 soonest-firing pending notification requests per app and
+// silently discards the rest. Nothing in the app observes that ceiling at runtime:
+// the mock always resolves and getAllScheduledNotificationsAsync returns an empty
+// array, so without this the constants could be pushed past it by a one-character
+// edit and the whole suite would still pass.
+//
+// The window is NOT uniform: the two Extras night rows take one list day more than
+// everything else, because their instant falls on the evening before the list day
+// they are filed under. So the worst case is counted through `rollingDaysForPrayer`,
+// the same function the schedule paths apply — restating the arithmetic from
+// NOTIFICATION_ROLLING_DAYS alone would keep printing a number the app had left
+// behind, which is exactly how a raise could slip past this file.
+// =============================================================================
+
+/** UNUserNotificationCenter keeps the soonest-firing 64 requests and drops the remainder */
+const IOS_PENDING_REQUEST_CEILING = 64;
+
+/** Every prayer on both lists can carry an at-time alert AND both pre-prayer reminders */
+const ALERTS_PER_PRAYER = 1 + REMINDER_SLOTS.length;
+
+describe('the request budget fits inside the iOS pending-request ceiling', () => {
+  const prayersPerDay = PRAYERS_ENGLISH.length + EXTRAS_ENGLISH.length;
+
+  it('never asks the phone for more requests than it keeps', () => {
+    expect(NOTIFICATION_REQUEST_BUDGET).toBeLessThanOrEqual(IOS_PENDING_REQUEST_CEILING);
+  });
+
+  it('counts one at-time alert and one request per reminder slot', () => {
+    expect(ALERTS_PER_PRAYER).toBe(3);
+  });
+
+  // The budget is spent a whole row at a time, so the last row that fits is the last whole
+  // multiple of its cost. The worst-case user pays the full three for every row.
+  it('leaves under one row of headroom, so the budget is genuinely spent', () => {
+    const rowsAffordable = Math.floor(NOTIFICATION_REQUEST_BUDGET / ALERTS_PER_PRAYER);
+    const spent = rowsAffordable * ALERTS_PER_PRAYER;
+
+    expect(spent).toBe(63);
+    expect(NOTIFICATION_REQUEST_BUDGET - spent).toBeLessThan(ALERTS_PER_PRAYER);
+  });
+
+  // What the old day-count window could not do, and the reason the unit changed: two list days
+  // of every row at three alerts each breaches the ceiling, so the day count had to choose
+  // between the second reminder and the next Fajr
+  it('carries both reminders where a two-day window could not', () => {
+    const twoDayWorstCase = prayersPerDay * 2 * ALERTS_PER_PRAYER;
+
+    expect(twoDayWorstCase).toBeGreaterThan(IOS_PENDING_REQUEST_CEILING);
+    expect(NOTIFICATION_REQUEST_BUDGET).toBeLessThan(twoDayWorstCase);
+  });
+
+  // The walk's guard is not a coverage number: the worst-case user's budget runs out long
+  // before it, so it can never be what limits how far ahead the app arms
+  // The guard has to clear the LIGHTEST user, not the heaviest: one prayer with no reminder
+  // spends one request per day, so it is the budget itself that decides how far they reach
+  it('bounds the candidate walk beyond the furthest the budget itself can reach', () => {
+    const cheapestPossibleRow = 1;
+    const daysTheLightestUserCanAfford = NOTIFICATION_REQUEST_BUDGET / cheapestPossibleRow;
+
+    expect(SCHEDULE_CANDIDATE_DAYS).toBeGreaterThan(daysTheLightestUserCanAfford);
+  });
+
+  it('bounds it beyond the worst-case user too, who runs out of budget far sooner', () => {
+    const daysTheWorstCaseUserCanAfford = NOTIFICATION_REQUEST_BUDGET / (prayersPerDay * ALERTS_PER_PRAYER);
+
+    expect(SCHEDULE_CANDIDATE_DAYS).toBeGreaterThan(daysTheWorstCaseUserCanAfford);
+  });
+});
+
+// =============================================================================
+// ROLLING HORIZON TESTS
+//
+// The horizon is no longer a span the app can state: it is however far the budget
+// reaches for the rows that user armed, which is days for a heavy user and weeks for
+// a light one. What can still be pinned is the relationship the cadence depends on,
+// that the background task runs many times inside even the shortest horizon.
+// =============================================================================
+
+describe('the background task runs many times inside even the shortest horizon', () => {
+  /** The worst-case user arms all 11 rows with both reminders, which the budget covers for two days */
+  const WORST_CASE_HORIZON_HOURS = 47;
+
+  it('gets many attempts to re-arm before the shortest horizon runs out', () => {
+    const attempts = Math.floor(WORST_CASE_HORIZON_HOURS / BACKGROUND_TASK_INTERVAL_HOURS);
+
+    expect(attempts).toBeGreaterThan(4);
+  });
+});
+
+describe('the update check window', () => {
+  it('the update retry is shorter than the update check window', () => {
+    expect(TIME_CONSTANTS.UPDATE_RETRY_MS).toBeGreaterThan(0);
+    expect(TIME_CONSTANTS.UPDATE_RETRY_MS).toBeLessThan(TIME_CONSTANTS.ONE_DAY_MS);
   });
 });

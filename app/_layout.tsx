@@ -1,25 +1,63 @@
 // IMPORTANT: Import background task definition FIRST to ensure it's registered in global scope
 // before any other code runs. This allows the OS to find the task even when waking a killed app.
 import '@/device/tasks';
+// TLS 1.3 provider observability (Android <=9; the install itself runs
+// natively before any HTTP client exists - see modules/tls13)
+import '@/device/tls13';
+// Synchronous cache hydration: populates prayer sequences (and starts the
+// countdown tickers) from MMKV before first render on warm-cache launches —
+// no-op returning false on fresh installs and upgrade launches
+import '@/stores/bootstrap';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { Slot } from 'expo-router';
+import { setAudioModeAsync } from 'expo-audio';
+import { type ErrorBoundaryProps, Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { LogBox } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
-import { BottomSheetAlert, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
-import { InitialWidthMeasurement } from '@/components/ui';
+import { BottomSheetAlert, BottomSheetQibla, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
+import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
+import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
+import logger from '@/shared/logger';
+import { initPerfMonitor } from '@/shared/perf';
 import { triggerSyncLoadable } from '@/stores/sync';
+
+// Performance monitor first (no-op unless EXPO_PUBLIC_PERF_MONITOR=1) so launch
+// marks exist before any other app code reports against them
+initPerfMonitor();
+
+/**
+ * Catches a throw during render anywhere below the root route.
+ *
+ * `app/index.tsx`'s `hasError` branch only covers a rejected `sync()` promise;
+ * it cannot catch a render-time throw, and expo-router exported no boundary on
+ * any route, so one bad value took the whole app down until the data changed.
+ * Expo Router renders this in place of the route when its subtree throws.
+ */
+export function ErrorBoundary({ error }: ErrorBoundaryProps) {
+  logger.error('APP: Render threw, falling back to the error screen', { error: error.message });
+  return <ErrorScreen />;
+}
 
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
 
 // Call API During App Start in background
 setTimeout(triggerSyncLoadable, 0);
+
+// Athan sound previews must be audible regardless of the ring/silent switch:
+// until a mode is set explicitly, the app runs on iOS's default session
+// category (.soloAmbient), which the mute switch silences — expo-audio
+// configures nothing on its own (AudioModule.swift only touches the session
+// inside setAudioModeAsync). mixWithOthers stays the interruption mode, so
+// previews never steal focus from background audio.
+setAudioModeAsync({ playsInSilentMode: true }).catch((error) => {
+  logger.warn('AUDIO: Failed to set audio mode', { error });
+});
 
 // Ignore logs
 LogBox.ignoreLogs(['Require cycle']);
@@ -35,15 +73,24 @@ configureReanimatedLogger({
 // made the previous Text.defaultProps mutation inert on RN 0.86.
 
 export default function Layout() {
+  // Sheets mount past the first content frame (launch chrome defer — see
+  // hooks/useChromeDeferred.ts); their content mounts on present regardless
+  const chromeDeferred = useChromeDeferred();
+
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
       <SystemBars style='light' hidden={{ navigationBar: false }} />
       <InitialWidthMeasurement />
       <BottomSheetModalProvider>
         <Slot />
-        <BottomSheetSound />
-        <BottomSheetSettings />
-        <BottomSheetAlert />
+        {chromeDeferred && (
+          <>
+            <BottomSheetSound />
+            <BottomSheetSettings />
+            <BottomSheetAlert />
+            <BottomSheetQibla />
+          </>
+        )}
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );

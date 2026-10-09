@@ -9,10 +9,6 @@
  *
  * - segment: the entry's prev/next prayers are exactly the prayers
  *   surrounding the instant, so the countdown interval always brackets it
- * - countdown label: matches the minute-ceil formatter
- *   (formatCountdownMinutes) evaluated at the entry's date
- * - staleness: inside the stepped horizon the active entry is never more
- *   than one countdown step old
  * - date label: the next prayer's Islamic day, in the app's date format
  * - staleness guard: never before the stale entry's date, always after it
  * - spacing: every adjacent entry pair keeps the WidgetKit minimum
@@ -22,23 +18,46 @@
  * EXTRAS_ENGLISH ordering, Istijaba's Friday-only presence (5 rows on
  * Fridays, 4 otherwise), and the extras `schedule` stamp on every entry.
  *
+ * Two more groups run the app's own list builder (createPrayerSequence) over
+ * real London times from 2024. Fully readable spans must produce exactly the
+ * bytes the builder produced before rows could be unreadable. Spans with
+ * unreadable rows, one prayer, a whole day stored unreadable or not stored at
+ * all, a last row, a Magrib or Fajr and the night rows it takes with it, run
+ * through a model restating the rules the app's screens follow.
+ *
  * This replaces weeks of physical-device observation with a deterministic
  * replay: if the builder ever emits a missing flip, a wrong label, or a
  * gap, some sampled instant exposes it.
  */
 
-import { addDays } from 'date-fns';
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
 
-import { EXTRAS_ENGLISH } from '@/shared/constants';
-import { createPrayerDatetime, formatCountdownMinutes, formatDateLong, formatDateShort } from '@/shared/time';
-import { type Prayer, type PrayerSequence, ScheduleType } from '@/shared/types';
+import { createHash } from 'node:crypto';
+import { addDays } from 'date-fns';
+import type { WidgetTimelineEntry } from 'expo-widgets';
+
+import { MOCK_DATA_FULL } from '@/mocks/full';
+import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { createPrayerSequence, transformApiData } from '@/shared/prayer';
 import {
-  buildPrayerWidgetTimeline,
-  COUNTDOWN_STEP_MS,
-  MIN_ENTRY_SPACING_MS,
-  STEPPED_COUNTDOWN_HOURS,
-} from '@/shared/widgetTimeline';
-import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
+  addDaysToDateString,
+  createPrayerDatetime,
+  formatDateLong,
+  formatDateShort,
+  getPreviousDateString,
+} from '@/shared/time';
+import {
+  type ISingleApiResponseTransformed,
+  type IValidatedApiResponse,
+  type Prayer,
+  type PrayerSequence,
+  type ReadablePrayer,
+  type RequiredTimeName,
+  ScheduleType,
+} from '@/shared/types';
+import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
+import type { PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
+import * as Database from '@/stores/database';
 
 // =============================================================================
 // FIXTURE: 16 days across the DST fall-back (clocks change 2026-10-25)
@@ -71,7 +90,7 @@ const makeFixturePrayer = (
   english: string,
   arabic: string,
   belongsToDate: string
-): Prayer => ({
+): ReadablePrayer => ({
   type: ScheduleType.Standard,
   english,
   arabic,
@@ -80,8 +99,8 @@ const makeFixturePrayer = (
   belongsToDate,
 });
 
-const makeSequence = (): PrayerSequence => {
-  const prayers: Prayer[] = [];
+const makeSequence = () => {
+  const prayers: ReadablePrayer[] = [];
   const startDay = createPrayerDatetime(SPAN_START, '12:00');
 
   for (let dayIndex = 0; dayIndex < SPAN_DAYS; dayIndex++) {
@@ -133,7 +152,6 @@ describe('virtual week model test', () => {
   // real entry sits within the minimum spacing of it
   const lastRealEntryMs = entries[entries.length - 2].date.getTime();
   const staleDateMs = Math.max(finalPrayer.datetime.getTime(), lastRealEntryMs + MIN_ENTRY_SPACING_MS);
-  const horizonMs = PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
   /** Every interesting instant: entry dates, prayers, stale — all ±1s */
   const sampleInstants = (): number[] => {
@@ -218,19 +236,6 @@ describe('virtual week model test', () => {
         throw new Error(`Countdown interval does not bracket ${new Date(instant).toISOString()}`);
       }
 
-      // The label is the minute-ceil value at the entry's date (the push
-      // instant for a backdated first entry)
-      const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
-      const msLeft = nextMs - labelAnchorMs;
-      const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
-      const expectedLabel = formatCountdownMinutes(secondsRemaining);
-      if (props.countdownLabel !== expectedLabel) {
-        throw new Error(
-          `Countdown label mismatch at ${new Date(instant).toISOString()}: entry says ` +
-            `"${props.countdownLabel}", app formatter says "${expectedLabel}"`
-        );
-      }
-
       // The date label is the next prayer's Islamic day in the app format
       if (props.dateLabel !== formatDateLong(nextPrayer.belongsToDate)) {
         throw new Error(
@@ -257,13 +262,6 @@ describe('virtual week model test', () => {
       }
       if (props.prayers?.[expectedActiveIndex]?.name !== props.nextName) {
         throw new Error(`Active row is not the countdown target at ${new Date(instant).toISOString()}`);
-      }
-
-      // Inside the stepped horizon the label is never more than one step old
-      if (instant <= horizonMs && instant - active.date.getTime() > COUNTDOWN_STEP_MS) {
-        throw new Error(
-          `Label at ${new Date(instant).toISOString()} is ${(instant - active.date.getTime()) / 60000} minutes stale (max one step)`
-        );
       }
     }
   });
@@ -373,7 +371,12 @@ const EXTRAS_TIMES = {
   istijaba: '16:00',
 } as const;
 
-const makeExtrasFixturePrayer = (date: string, time: string, english: string, belongsToDate: string): Prayer => ({
+const makeExtrasFixturePrayer = (
+  date: string,
+  time: string,
+  english: string,
+  belongsToDate: string
+): ReadablePrayer => ({
   type: ScheduleType.Extra,
   english,
   arabic: english,
@@ -382,8 +385,8 @@ const makeExtrasFixturePrayer = (date: string, time: string, english: string, be
   belongsToDate,
 });
 
-const makeExtrasSequence = (): PrayerSequence => {
-  const prayers: Prayer[] = [];
+const makeExtrasSequence = () => {
+  const prayers: ReadablePrayer[] = [];
   const startDay = createPrayerDatetime(SPAN_START, '12:00');
 
   for (let dayIndex = 0; dayIndex < SPAN_DAYS; dayIndex++) {
@@ -420,7 +423,6 @@ describe('extras virtual week model test', () => {
   const finalPrayer = prayers[prayers.length - 1];
   const lastRealEntryMs = entries[entries.length - 2].date.getTime();
   const staleDateMs = Math.max(finalPrayer.datetime.getTime(), lastRealEntryMs + MIN_ENTRY_SPACING_MS);
-  const horizonMs = PUSH_AT.getTime() + STEPPED_COUNTDOWN_HOURS * 60 * 60 * 1000;
 
   const sampleInstants = (): number[] => {
     const instants = new Set<number>();
@@ -497,15 +499,6 @@ describe('extras virtual week model test', () => {
         throw new Error(`Segment mismatch at ${new Date(instant).toISOString()}`);
       }
 
-      // The label is the minute-ceil value at the entry's date
-      const labelAnchorMs = Math.max(active.date.getTime(), PUSH_AT.getTime());
-      const msLeft = nextMs - labelAnchorMs;
-      const secondsRemaining = Math.max(1, Math.ceil(msLeft / 1000));
-      const expectedLabel = formatCountdownMinutes(secondsRemaining);
-      if (props.countdownLabel !== expectedLabel) {
-        throw new Error(`Countdown label mismatch at ${new Date(instant).toISOString()}`);
-      }
-
       // The date label is the next prayer's Islamic day in the app format
       if (props.dateLabel !== formatDateLong(nextPrayer.belongsToDate)) {
         throw new Error(`Date label mismatch at ${new Date(instant).toISOString()}`);
@@ -545,15 +538,6 @@ describe('extras virtual week model test', () => {
 
       // Inside the stepped horizon the label is never more than two steps
       // old. One step is the design cadence, but a segment whose length is
-      // not a multiple of the step (real prayer times rarely are) must
-      // absorb the remainder somewhere: with WidgetKit's 5-minute spacing
-      // floor, a uniform one-step grid cannot hit both the segment start
-      // and the boundary anchor — one gap of up to two steps is
-      // mathematically unavoidable (the builder places it mid-segment and
-      // guarantees the anchor sits exactly one spacing before the flip).
-      if (instant <= horizonMs && instant - active.date.getTime() > 2 * COUNTDOWN_STEP_MS) {
-        throw new Error(`Label at ${new Date(instant).toISOString()} is more than two steps stale`);
-      }
     }
   });
 
@@ -602,3 +586,584 @@ describe('extras virtual week model test', () => {
     expect(activeEntryAt(entries, staleDateMs - 1000)?.props.stale).not.toBe(true);
   });
 });
+
+// =============================================================================
+// REAL SEQUENCES: the app's own list builder over real London times (2024)
+// =============================================================================
+
+const isReadableRow = (prayer: Prayer): prayer is ReadablePrayer => prayer.datetime !== null;
+
+/** Real 2024 times as a download stores them, with the named times unreadable and the named days not stored */
+const storedDays = (
+  unreadable: Record<string, RequiredTimeName[]>,
+  notStored: string[]
+): ISingleApiResponseTransformed[] => {
+  const times: IValidatedApiResponse['times'] = {};
+
+  for (const [date, day] of Object.entries(MOCK_DATA_FULL.times)) {
+    if (notStored.includes(date)) continue;
+
+    const record: Record<RequiredTimeName, string | null> = {
+      fajr: day.fajr,
+      sunrise: day.sunrise,
+      dhuhr: day.dhuhr,
+      asr: day.asr,
+      magrib: day.magrib,
+      isha: day.isha,
+    };
+    for (const name of unreadable[date] ?? []) record[name] = null;
+    times[date] = record;
+  }
+
+  return transformApiData({ city: MOCK_DATA_FULL.city, times });
+};
+
+/** A sequence built as stores/widget.ts builds one, with `records` as the only stored days */
+const buildStoredSequence = (
+  type: ScheduleType,
+  records: ISingleApiResponseTransformed[],
+  firstDate: string,
+  dayCount: number
+): PrayerSequence => {
+  const stored = new Map(records.map((record) => [record.date, record]));
+  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+
+  return createPrayerSequence(type, createPrayerDatetime(firstDate, '12:00'), dayCount);
+};
+
+describe('fully readable real sequences', () => {
+  const records = storedDays({}, []);
+
+  /**
+   * SHA-256 of every timeline each case builds, over a year of real London data. These pin the builder's
+   * exact output: a mismatch means what the widgets SHOW changed, so treat it as a deliberate design
+   * change to re-gold, never as a test to silence.
+   *
+   * Last re-golded when the countdown moved to a SwiftUI timer interval and the five-minute stepped
+   * entries were deleted (session 16a) — the fix for the archive-budget blackout.
+   */
+  const REAL_YEAR_TIMELINES: [string, string][] = [
+    ['2024-01-10', '5049d110f76ea186316fb833984d1f3978c3a27acfea62591f0dc25056075328'],
+    ['2024-02-20', 'eef7b2330b71a09dbd858a53358775288acf2c841a089d39416192797434b806'],
+    // Across the spring clock change (31 March)
+    ['2024-03-24', '27e918bef398be897713f4a06c717553d1876312e84e0e44ffc6770721a9e771'],
+    ['2024-04-15', '2c369132ebb212c9e1ecf669bd07c1d324e3220aef834695071d2b76096ea54e'],
+    ['2024-05-06', 'e39cc602d75e10b64873441264b349d40ecff6454fffaa406b281693242b7780'],
+    ['2024-06-14', '6be1ee27287846b66b9dbcda3e9ecf7b14b4c0e59723b833176d9aa6f1162d66'],
+    ['2024-07-01', '495df1f97098cee939ae8abae52c4bb6ddbaf21835b28e5b611c8adb3da395d2'],
+    ['2024-08-12', 'ee5483cc3889bf1bc28339ca78e93304b6a35c8a1d37f65557438b078827e984'],
+    ['2024-09-02', '229adbd8d9a7a6447f1d834de52e9eef6a8ba51ef03317ebe775160dfd118f29'],
+    // Across the autumn clock change (27 October)
+    ['2024-10-20', 'e09ffc45a502758142ea642f9b3df449d9c0b2beacc74e69f7678f245f14ad20'],
+    ['2024-11-11', '339f5a17afe71dde06aed2c807ac2319f78fbe8b816f44f9e574d3d4cf2c6f61'],
+    ['2024-12-15', 'c8897481277c1ac852c9466028899b787bda891c19e11641d7a167bbd2785195'],
+  ];
+
+  /** Midnight, noon, and two minutes before and exactly on every row of the push day's list */
+  const pushInstants = (sequence: PrayerSequence, pushDate: string): Date[] => [
+    createPrayerDatetime(pushDate, '00:00'),
+    createPrayerDatetime(pushDate, '12:00'),
+    ...sequence.prayers
+      .filter(isReadableRow)
+      .filter((prayer) => prayer.belongsToDate === pushDate)
+      .flatMap((prayer) => [new Date(prayer.datetime.getTime() - 2 * 60 * 1000), prayer.datetime]),
+  ];
+
+  it.each(REAL_YEAR_TIMELINES)('builds byte-identical timelines from the span starting %s', (firstDate, digest) => {
+    const hash = createHash('sha256');
+
+    for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
+      const sequence = buildStoredSequence(type, records, firstDate, SPAN_DAYS);
+      // One unreadable row would take the case outside what this test can claim
+      expect(sequence.prayers.every(isReadableRow)).toBe(true);
+
+      for (const pushAt of pushInstants(sequence, addDaysToDateString(firstDate, 1))) {
+        hash.update(JSON.stringify(buildPrayerWidgetTimeline(pushAt, sequence, SETTINGS, 'light')));
+      }
+    }
+
+    expect(hash.digest('hex')).toBe(digest);
+  });
+});
+
+// =============================================================================
+// UNREADABLE ROWS OVER REAL SEQUENCES
+//
+// The same kind of span the widget pushes (yesterday plus fifteen days), across
+// the clock change of 27 October 2024, with a fault wherever a rule has
+// something to do.
+// =============================================================================
+
+const REAL_PUSH_AT = createPrayerDatetime('2024-10-20', '12:00');
+const REAL_SPAN_START = '2024-10-19';
+
+/** A day with no readable time at all, inside the stepped horizon: either stored that way or not stored */
+const HELD_DAY = '2024-10-21';
+
+/** A day not stored at all, beyond the horizon */
+const NOT_STORED = '2024-10-28';
+
+const REAL_FAULTS: Record<string, RequiredTimeName[]> = {
+  // One prayer, on the push day
+  '2024-10-20': ['asr'],
+  // The last row of a Standard list
+  '2024-10-23': ['isha'],
+  // A Friday's Magrib, which takes its Istijaba and the next night's Midnight and Last Third with it
+  '2024-10-25': ['magrib'],
+  // A Fajr, which takes its Suhoor and the night leading into its day with it
+  '2024-10-31': ['fajr'],
+  // The span ends on unreadable rows on both lists: Isha, and Duha by way of Sunrise
+  '2024-11-03': ['sunrise', 'isha'],
+};
+
+const EXTRAS_WEEKDAY = ['Midnight', 'Last Third', 'Suhoor', 'Duha'];
+
+/** Every unreadable row the faults above must produce, by list day; any other day is fully readable */
+const EXPECTED_UNREADABLE: Record<ScheduleType, Record<string, string[]>> = {
+  [ScheduleType.Standard]: {
+    '2024-10-20': ['Asr'],
+    [HELD_DAY]: PRAYERS_ENGLISH,
+    '2024-10-23': ['Isha'],
+    '2024-10-25': ['Magrib'],
+    [NOT_STORED]: PRAYERS_ENGLISH,
+    '2024-10-31': ['Fajr'],
+    '2024-11-03': ['Sunrise', 'Isha'],
+  },
+  [ScheduleType.Extra]: {
+    [HELD_DAY]: EXTRAS_WEEKDAY,
+    '2024-10-22': ['Midnight', 'Last Third'],
+    '2024-10-25': ['Istijaba'],
+    '2024-10-26': ['Midnight', 'Last Third'],
+    [NOT_STORED]: EXTRAS_WEEKDAY,
+    '2024-10-29': ['Midnight', 'Last Third'],
+    '2024-10-31': ['Midnight', 'Last Third', 'Suhoor'],
+    '2024-11-03': ['Duha'],
+  },
+};
+
+/** Moments where passing over an unreadable row is visible, with what the widget must show then */
+const SPOT_CHECKS: Record<
+  ScheduleType,
+  { at: [string, string]; nextName: string; listDay: string; activeIndex: number; dashed: string[] }[]
+> = {
+  [ScheduleType.Standard]: [
+    // Dhuhr has passed and Asr is unreadable, so the countdown is already on Magrib
+    { at: ['2024-10-20', '14:00'], nextName: 'Magrib', listDay: '2024-10-20', activeIndex: 4, dashed: ['Asr'] },
+    // Isha is unreadable, so the list moved on at Magrib
+    { at: ['2024-10-23', '19:00'], nextName: 'Fajr', listDay: '2024-10-24', activeIndex: 0, dashed: [] },
+    { at: ['2024-10-25', '17:00'], nextName: 'Isha', listDay: '2024-10-25', activeIndex: 5, dashed: ['Magrib'] },
+  ],
+  [ScheduleType.Extra]: [
+    // Friday's Istijaba is unreadable, so after Duha the list is Saturday's, whose night rows went with Magrib
+    {
+      at: ['2024-10-25', '12:00'],
+      nextName: 'Suhoor',
+      listDay: '2024-10-26',
+      activeIndex: 2,
+      dashed: ['Midnight', 'Last Third'],
+    },
+    {
+      at: ['2024-10-30', '12:00'],
+      nextName: 'Duha',
+      listDay: '2024-10-31',
+      activeIndex: 3,
+      dashed: ['Midnight', 'Last Third', 'Suhoor'],
+    },
+  ],
+};
+
+const earliest = (rows: ReadablePrayer[]): ReadablePrayer =>
+  rows.reduce((found, prayer) => (prayer.datetime < found.datetime ? prayer : found));
+
+const latest = (rows: ReadablePrayer[]): ReadablePrayer =>
+  rows.reduce((found, prayer) => (prayer.datetime > found.datetime ? prayer : found));
+
+/** 00:00 London at the end of a list day */
+const endOfListDay = (date: string): number => createPrayerDatetime(addDaysToDateString(date, 1), '00:00').getTime();
+
+/**
+ * What the app's screens show over `prayers`, restated from the rules (session 3 dashes rules §4) rather than
+ * taken from shared/sequence.ts
+ */
+const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
+  const readable = prayers.filter(isReadableRow);
+  const listDays = [...new Set(prayers.map((prayer) => prayer.belongsToDate))].sort();
+  const readableOn = (date: string): ReadablePrayer[] => readable.filter((prayer) => prayer.belongsToDate === date);
+  const listPosition = (prayer: Prayer): number =>
+    (type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH).indexOf(prayer.english);
+
+  const expectedAt = (instant: number) => {
+    const upcoming = readable.filter((prayer) => prayer.datetime.getTime() > instant);
+    if (upcoming.length === 0) {
+      throw new Error(`Nothing left to show at ${new Date(instant).toISOString()}`);
+    }
+    const next = earliest(upcoming);
+
+    // Worked out from moments rather than by walking list days: normally the next prayer's own day is on screen.
+    // A day with no readable time takes the screen for its own 24 hours, once nothing of an earlier day is still
+    // due; and the day of the prayer that passed last keeps it until its own 00:00 when the day after has none.
+    const blankDays = listDays.filter((date) => readableOn(date).length === 0);
+    const startOfListDay = (date: string): number => createPrayerDatetime(date, '00:00').getTime();
+    const blankNow = blankDays.find(
+      (date) => instant >= startOfListDay(date) && instant < endOfListDay(date) && next.belongsToDate > date
+    );
+    const passed = readable.filter((prayer) => prayer.datetime.getTime() <= instant);
+    const lastPassed = passed.length > 0 ? latest(passed) : null;
+    const waiting =
+      lastPassed &&
+      blankDays.includes(addDaysToDateString(lastPassed.belongsToDate, 1)) &&
+      instant < endOfListDay(lastPassed.belongsToDate) &&
+      next.belongsToDate > lastPassed.belongsToDate
+        ? lastPassed.belongsToDate
+        : undefined;
+    const displayDate = blankNow ?? waiting ?? next.belongsToDate;
+    const held = !readableOn(displayDate).some((prayer) => prayer.datetime.getTime() > instant);
+    // The bar measures from one row only: the row just above next on its list, or for a first row the last row of
+    // the list before. When that row has no time, or does not fall before next, there is no previous prayer
+    const position = listPosition(next);
+    const aboveDay = position > 0 ? next.belongsToDate : getPreviousDateString(next.belongsToDate);
+    const above = prayers
+      .filter((prayer) => prayer.belongsToDate === aboveDay && (position === 0 || listPosition(prayer) < position))
+      .sort((a, b) => listPosition(b) - listPosition(a))[0];
+    const previousMs =
+      above && isReadableRow(above) && above.datetime < next.datetime ? above.datetime.getTime() : null;
+    const dayRows = prayers
+      .filter((prayer) => prayer.belongsToDate === displayDate)
+      .sort((a, b) => listPosition(a) - listPosition(b));
+
+    return {
+      next,
+      displayDate,
+      boundaryMs: held ? Math.min(next.datetime.getTime(), endOfListDay(displayDate)) : next.datetime.getTime(),
+      previousMs,
+      rows: dayRows.map((prayer) => ({ name: prayer.english, time: prayer.time ?? '--:--' })),
+      activeIndex: dayRows.indexOf(next),
+    };
+  };
+
+  return { readable, listDays, readableOn, expectedAt };
+};
+
+/** Why `entry`, the one showing at `instant`, is not what the rules call for there, or null when it is */
+const mismatchAt = (
+  entry: WidgetTimelineEntry<PrayerWidgetProps>,
+  instant: number,
+  expected: ReturnType<ReturnType<typeof rulesFor>['expectedAt']>
+): string | null => {
+  const { props } = entry;
+  const at = new Date(instant).toISOString();
+
+  if (
+    props.nextName !== expected.next.english ||
+    props.nextTime !== expected.next.time ||
+    props.nextEpochMs !== expected.next.datetime.getTime()
+  ) {
+    return `Next mismatch at ${at}: entry says ${props.nextName} ${props.nextTime}, expected ${expected.next.english} ${expected.next.time}`;
+  }
+  if (props.prevEpochMs !== (expected.previousMs ?? entry.date.getTime())) {
+    return `Previous mismatch at ${at}: entry says ${props.prevEpochMs}, expected ${expected.previousMs}`;
+  }
+  if (instant < props.prevEpochMs || instant > props.nextEpochMs) {
+    return `Countdown interval does not bracket ${at}`;
+  }
+
+  // The upcoming prayer's own day rather than the day on screen: a held day's list has no active row and
+  // cannot be drawn, so the layouts show that prayer's name and time, and the date under them must be theirs
+  if (props.dateLabel !== formatDateLong(expected.next.belongsToDate)) {
+    return `Date label mismatch at ${at}: entry says "${props.dateLabel}", expected ${expected.next.belongsToDate}`;
+  }
+  if (JSON.stringify(props.prayers) !== JSON.stringify(expected.rows) || props.activeIndex !== expected.activeIndex) {
+    return (
+      `Day list mismatch at ${at}: entry says ${JSON.stringify(props.prayers)} active ${props.activeIndex}, ` +
+      `expected ${JSON.stringify(expected.rows)} active ${expected.activeIndex}`
+    );
+  }
+
+  return null;
+};
+
+describe.each([
+  [ScheduleType.Standard, 'stored with every time unreadable'],
+  [ScheduleType.Standard, 'not stored'],
+  [ScheduleType.Extra, 'stored with every time unreadable'],
+  [ScheduleType.Extra, 'not stored'],
+])('%s virtual fortnight with unreadable rows, the held day %s', (type, heldDay) => {
+  const records =
+    heldDay === 'not stored'
+      ? storedDays(REAL_FAULTS, [HELD_DAY, NOT_STORED])
+      : storedDays({ ...REAL_FAULTS, [HELD_DAY]: ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'] }, [NOT_STORED]);
+  const sequence = buildStoredSequence(type, records, REAL_SPAN_START, SPAN_DAYS);
+  const prayers = sequence.prayers;
+  const entries = buildPrayerWidgetTimeline(REAL_PUSH_AT, sequence, SETTINGS, 'light');
+  const { readable, listDays, readableOn, expectedAt } = rulesFor(type, prayers);
+
+  const lastReadable = latest(readable);
+  const lastRealEntryMs = entries[entries.length - 2].date.getTime();
+  const staleDateMs = Math.max(lastReadable.datetime.getTime(), lastRealEntryMs + MIN_ENTRY_SPACING_MS);
+
+  const sampleInstants = (): number[] => {
+    const instants = new Set<number>();
+    const add = (ms: number) => {
+      instants.add(ms - 1000);
+      instants.add(ms);
+      instants.add(ms + 1000);
+    };
+
+    for (const entry of entries) add(entry.date.getTime());
+    for (const prayer of readable) add(prayer.datetime.getTime());
+    for (const date of listDays) add(endOfListDay(date));
+    add(staleDateMs);
+    for (let ms = REAL_PUSH_AT.getTime(); ms <= staleDateMs; ms += 7 * 60 * 1000) instants.add(ms);
+
+    return [...instants].filter((ms) => ms >= REAL_PUSH_AT.getTime()).sort((a, b) => a - b);
+  };
+
+  it('has exactly the unreadable rows its faults call for', () => {
+    for (const date of listDays) {
+      const unreadableNames = prayers
+        .filter((prayer) => prayer.belongsToDate === date && prayer.datetime === null)
+        .map((prayer) => prayer.english);
+      expect([date, unreadableNames]).toEqual([date, EXPECTED_UNREADABLE[type][date] ?? []]);
+    }
+  });
+
+  it('keeps the timeline start at or before the push, and every adjacent pair at least the minimum spacing apart', () => {
+    expect(entries[0].date.getTime()).toBeLessThanOrEqual(REAL_PUSH_AT.getTime());
+    for (let i = 1; i < entries.length; i++) {
+      expect(entries[i].date.getTime() - entries[i - 1].date.getTime()).toBeGreaterThanOrEqual(MIN_ENTRY_SPACING_MS);
+    }
+  });
+
+  it('shows at every sampled instant the entry the rules call for', () => {
+    for (const instant of sampleInstants()) {
+      const at = new Date(instant).toISOString();
+      const active = activeEntryAt(entries, instant);
+      if (!active) throw new Error(`No active entry at ${at}`);
+
+      if (instant >= staleDateMs) {
+        if (active.props.stale !== true) throw new Error(`Expected the stale card at ${at}`);
+        continue;
+      }
+      if (active.props.stale === true) throw new Error(`Stale card active too early at ${at}`);
+
+      const problem = mismatchAt(active, instant, expectedAt(instant));
+      if (problem) throw new Error(problem);
+    }
+  });
+
+  it('never moves the date back a day', () => {
+    const labels = listDays.map((date) => formatDateLong(date));
+    let previousIndex = -1;
+
+    for (const entry of entries.slice(0, -1)) {
+      const index = labels.indexOf(entry.props.dateLabel);
+      expect(index).toBeGreaterThanOrEqual(previousIndex);
+      previousIndex = index;
+    }
+  });
+
+  it('passes over unreadable rows where the app does', () => {
+    for (const check of SPOT_CHECKS[type]) {
+      const props = activeEntryAt(entries, createPrayerDatetime(...check.at).getTime())?.props;
+
+      expect(props).toMatchObject({
+        nextName: check.nextName,
+        dateLabel: formatDateLong(check.listDay),
+        activeIndex: check.activeIndex,
+      });
+      expect(props?.prayers?.filter((row) => row.time === '--:--').map((row) => row.name)).toEqual(check.dashed);
+    }
+  });
+
+  it('keeps the day before until 00:00, then holds the day with no readable time until its own 00:00 with no active row', () => {
+    const dayBefore = getPreviousDateString(HELD_DAY);
+    const dayAfter = addDaysToDateString(HELD_DAY, 1);
+    const dayStartMs = endOfListDay(dayBefore);
+    const holdEndMs = endOfListDay(HELD_DAY);
+    const firstOfDayAfter = earliest(readableOn(dayAfter));
+    const dashes = (type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_WEEKDAY).map(() => '--:--');
+
+    // Standard keeps the day before's list after its Isha, and Extras after its Duha, which passed before the
+    // push, with no active row until 00:00 (R8)
+    const waitStartMs =
+      type === ScheduleType.Standard ? latest(readableOn(dayBefore)).datetime.getTime() : REAL_PUSH_AT.getTime();
+    const waiting = entries.filter((entry) => entry.date.getTime() >= waitStartMs && entry.date.getTime() < dayStartMs);
+    // The wait is one segment, so one entry carries it to 00:00
+    expect(waiting.length).toBeGreaterThanOrEqual(1);
+    for (const entry of waiting) {
+      expect(entry.props.prayers?.map((row) => row.time)).not.toEqual(dashes);
+      expect(entry.props).toMatchObject({
+        activeIndex: -1,
+        nextEpochMs: firstOfDayAfter.datetime.getTime(),
+        dateLabel: formatDateLong(dayAfter),
+      });
+    }
+
+    const held = entries.filter((entry) => entry.date.getTime() >= dayStartMs && entry.date.getTime() < holdEndMs);
+    // The whole hold is one segment: 00:00 opens it and the day's own 00:00 ends it
+    expect(held.length).toBeGreaterThanOrEqual(1);
+    expect(held[0].date.getTime()).toBe(dayStartMs);
+
+    for (const entry of held) {
+      expect(entry.props.prayers?.map((row) => row.time)).toEqual(dashes);
+      // Dated by the prayer counted down to, whose name and time are what the layouts show on a held day
+      expect(entry.props).toMatchObject({
+        activeIndex: -1,
+        nextEpochMs: firstOfDayAfter.datetime.getTime(),
+        dateLabel: formatDateLong(dayAfter),
+      });
+    }
+
+    const rollover = entries.find((entry) => entry.date.getTime() === holdEndMs);
+    expect(rollover?.props).toMatchObject({
+      nextEpochMs: firstOfDayAfter.datetime.getTime(),
+      dateLabel: formatDateLong(dayAfter),
+      activeIndex: type === ScheduleType.Standard ? 0 : 2,
+    });
+  });
+
+  it('ends with the stale card at the last readable row, however many unreadable rows follow it', () => {
+    const last = entries[entries.length - 1];
+
+    expect(lastReadable).toMatchObject({
+      belongsToDate: '2024-11-03',
+      english: type === ScheduleType.Standard ? 'Magrib' : 'Suhoor',
+    });
+    expect(last.date.getTime()).toBe(lastReadable.datetime.getTime());
+    expect(last.props).toMatchObject({
+      stale: true,
+      nextName: lastReadable.english,
+      nextTime: lastReadable.time,
+      nextEpochMs: lastReadable.datetime.getTime(),
+      dateLabel: formatDateLong('2024-11-03'),
+    });
+  });
+});
+
+// =============================================================================
+// CROWDED BOUNDARIES
+//
+// With Fajr and Sunrise unreadable, a weekday Extras list has no readable row,
+// so it is held until 00:00 London, and from mid-May to late June and in early
+// October the next night's Midnight falls within minutes of that 00:00. Every
+// such day of 2024 in turn, on both lists.
+// =============================================================================
+
+const datesBetween = (first: string, last: string): string[] => {
+  const dates: string[] = [];
+  for (let date = first; date <= last; date = addDaysToDateString(date, 1)) dates.push(date);
+  return dates;
+};
+
+const CROWDED_FAULT_DAYS = [...datesBetween('2024-05-10', '2024-06-30'), ...datesBetween('2024-10-03', '2024-10-14')];
+
+describe.each([ScheduleType.Standard, ScheduleType.Extra])(
+  '%s timelines around a day whose Fajr and Sunrise are unreadable',
+  (type) => {
+    const cases = CROWDED_FAULT_DAYS.flatMap((faultDay) => {
+      const dayBefore = getPreviousDateString(faultDay);
+      const sequence = buildStoredSequence(type, storedDays({ [faultDay]: ['fajr', 'sunrise'] }, []), dayBefore, 4);
+      const rules = rulesFor(type, sequence.prayers);
+
+      // The night after the fault day beyond the stepped horizon, then inside it
+      return [createPrayerDatetime(dayBefore, '12:00'), createPrayerDatetime(faultDay, '22:00')].map((pushAt) => ({
+        label: `${faultDay}, pushed ${pushAt.toISOString()}`,
+        faultDay,
+        sequence,
+        rules,
+        pushAt,
+        entries: buildPrayerWidgetTimeline(pushAt, sequence, SETTINGS, 'light'),
+      }));
+    });
+
+    it('reaches the fault: its rows are unreadable, and on Extras a held 00:00 lands minutes from a Midnight', () => {
+      const crowded = new Set<string>();
+
+      for (const { faultDay, sequence, rules } of cases) {
+        const unreadableNames = sequence.prayers
+          .filter((prayer) => prayer.belongsToDate === faultDay && prayer.datetime === null)
+          .map((prayer) => prayer.english);
+        expect([faultDay, unreadableNames]).toEqual([
+          faultDay,
+          type === ScheduleType.Standard ? ['Fajr', 'Sunrise'] : EXTRAS_WEEKDAY,
+        ]);
+
+        const midnight = rules
+          .readableOn(addDaysToDateString(faultDay, 1))
+          .find((prayer) => prayer.english === 'Midnight');
+        if (midnight && Math.abs(midnight.datetime.getTime() - endOfListDay(faultDay)) < MIN_ENTRY_SPACING_MS) {
+          crowded.add(faultDay);
+        }
+      }
+
+      if (type === ScheduleType.Extra) {
+        expect(crowded).toContain('2024-06-01');
+        expect(crowded).toContain('2024-10-08');
+      } else {
+        expect(crowded.size).toBe(0);
+      }
+    });
+
+    it('keeps every adjacent entry at least the minimum spacing apart', () => {
+      const tooClose: string[] = [];
+
+      for (const { label, entries } of cases) {
+        for (let i = 1; i < entries.length; i++) {
+          if (entries[i].date.getTime() - entries[i - 1].date.getTime() < MIN_ENTRY_SPACING_MS) {
+            tooClose.push(`${label}: ${entries[i - 1].date.toISOString()} then ${entries[i].date.toISOString()}`);
+          }
+        }
+      }
+
+      expect(tooClose).toEqual([]);
+    });
+
+    it('starts at the push, shows at each entry what the rules call for at its own moment, and ends at the last readable row', () => {
+      const wrong: string[] = [];
+
+      for (const { label, entries, rules, pushAt } of cases) {
+        if (entries[0].date.getTime() > pushAt.getTime()) wrong.push(`${label}: starts after the push`);
+
+        for (const entry of entries.slice(0, -1)) {
+          const moment = Math.max(entry.date.getTime(), pushAt.getTime());
+          const problem = mismatchAt(entry, moment, rules.expectedAt(moment));
+          if (problem) wrong.push(`${label}: ${problem}`);
+        }
+
+        const stale = entries[entries.length - 1];
+        const lastReadableMs = latest(rules.readable).datetime.getTime();
+        if (stale.props.stale !== true || stale.props.nextEpochMs !== lastReadableMs) {
+          wrong.push(`${label}: the stale card is not at the last readable row`);
+        }
+      }
+
+      expect(wrong.slice(0, 5)).toEqual([]);
+    });
+
+    it('shows every flip within one spacing of its boundary', () => {
+      const late: string[] = [];
+
+      for (const { label, entries, rules, pushAt } of cases) {
+        const lastReadableMs = latest(rules.readable).datetime.getTime();
+        const boundaries = [
+          ...rules.readable.map((prayer) => prayer.datetime.getTime()),
+          ...rules.listDays.map(endOfListDay),
+        ].filter((ms) => ms > pushAt.getTime() && ms + MIN_ENTRY_SPACING_MS < lastReadableMs);
+
+        for (const boundaryMs of boundaries) {
+          const instant = boundaryMs + MIN_ENTRY_SPACING_MS;
+          const active = activeEntryAt(entries, instant);
+          const expected = rules.expectedAt(instant);
+          if (
+            active?.props.nextEpochMs !== expected.next.datetime.getTime() ||
+            JSON.stringify(active.props.prayers) !== JSON.stringify(expected.rows)
+          ) {
+            late.push(`${label}: still ${active?.props.nextName} at ${new Date(instant).toISOString()}`);
+          }
+        }
+      }
+
+      expect(late.slice(0, 5)).toEqual([]);
+    });
+  }
+);

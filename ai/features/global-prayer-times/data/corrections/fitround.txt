@@ -1,0 +1,188 @@
+| site | authority | fajr | sunrise | dhuhr | asr | maghrib | isha | fractional part left |
+|---|---|---|---|---|---|---|---|---|
+| `MY-WLY01` | JAKIM Malaysia | up | nearest | nearest | nearest | nearest | nearest | 0.236 |
+| `MY-SGR01` | JAKIM Malaysia | down | nearest | nearest | nearest | up | up | 0.205 |
+| `MY-JHR02` | JAKIM Malaysia | nearest | up | down | up | up | up | 0.200 |
+| `MY-PLS01` | JAKIM Malaysia | nearest | nearest | nearest | nearest | nearest | nearest | 0.244 |
+| `MY-SBH01` | JAKIM Malaysia | up | nearest | nearest | nearest | down | down | 0.247 |
+| `MY-KTN01` | JAKIM Malaysia | nearest | down | down | down | down | up | 0.225 |
+| `MY-PNG01` | JAKIM Malaysia | down | up | nearest | nearest | nearest | nearest | 0.181 |
+| `MY-SWK01` | JAKIM Malaysia | down | nearest | nearest | nearest | nearest | nearest | 0.238 |
+| `MY-TRG01` | JAKIM Malaysia | down | nearest | up | nearest | nearest | nearest | 0.230 |
+| `MY-MLK01` | JAKIM Malaysia | nearest | down | down | down | down | down | 0.184 |
+| `SG-2026` | MUIS Singapore | down | down | down | down | down | down | 0.099 |
+| `SG-2025` | MUIS Singapore | down | down | down | down | down | down | 0.104 |
+| `SG-ALL` | MUIS Singapore | down | down | down | down | down | down | 0.103 |
+| `TR-9541` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.047 |
+| `TR-9206` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.090 |
+| `TR-9560` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.082 |
+| `TR-9225` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.219 |
+| `TR-9451` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.041 |
+| `TR-9930` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.148 |
+| `TR-9905` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.175 |
+| `TR-9402` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.090 |
+| `TR-9419` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.099 |
+| `TR-9831` | Diyanet Turkey | nearest | nearest | nearest | nearest | nearest | nearest | 0.074 |
+| `SA-makkah` | Umm al-Qura Saudi Arabia | down | down | down | down | down | down | 0.042 |
+| `SA-riyadh` | Umm al-Qura Saudi Arabia | down | down | down | down | down | down | 0.039 |
+| `SA-jeddah` | Umm al-Qura Saudi Arabia | down | down | down | up | down | down | 0.054 |
+| `SA-dammam` | Umm al-Qura Saudi Arabia | down | down | down | up | down | down | 0.031 |
+| `SA-tabuk` | Umm al-Qura Saudi Arabia | up | down | down | down | down | down | 0.045 |
+| `SA-abha` | Umm al-Qura Saudi Arabia | down | down | down | up | down | down | 0.034 |
+| `SA-makkah-1447` | Umm al-Qura Saudi Arabia | up | down | down | down | down | down | 0.042 |
+| `BN-2026` | MORA Brunei | nearest | nearest | nearest | nearest | nearest | nearest | 0.067 |
+| `BN-2025` | MORA Brunei | nearest | nearest | nearest | nearest | nearest | nearest | 0.070 |
+| `EG-cairo` | Egyptian GAS | nearest | nearest | nearest | nearest | nearest | nearest | 0.227 |
+| `EG-alex` | Egyptian GAS | nearest | nearest | nearest | nearest | nearest | nearest | 0.263 |
+| `EG-aswan` | Egyptian GAS | nearest | nearest | nearest | nearest | nearest | nearest | 0.170 |
+| `EG-luxor` | Egyptian GAS | nearest | nearest | nearest | nearest | nearest | nearest | 0.118 |
+| `OM-muscat` | MARA Oman | nearest | up | up | up | up | up | 0.192 |
+| `OM-salalah` | MARA Oman | nearest | nearest | nearest | nearest | nearest | nearest | 0.178 |
+| `OM-sohar` | MARA Oman | down | nearest | nearest | nearest | nearest | nearest | 0.173 |
+| `OM-thumrait` | MARA Oman | down | nearest | nearest | nearest | nearest | nearest | 0.219 |
+| `OM-samad` | MARA Oman | nearest | nearest | nearest | nearest | nearest | nearest | 0.167 |
+| `OM-muscat-2025` | MARA Oman | nearest | up | up | up | up | up | 0.175 |
+| `ID-jakarta` | Kemenag Indonesia | down | nearest | down | down | up | down | 0.238 |
+| `ID-surabaya` | Kemenag Indonesia | down | nearest | down | down | up | down | 0.159 |
+| `ID-bandaaceh` | Kemenag Indonesia | down | nearest | down | down | up | down | 0.249 |
+| `ID-jayapura` | Kemenag Indonesia | down | nearest | down | down | up | down | 0.208 |
+| `ID-makassar` | Kemenag Indonesia | down | nearest | down | down | up | down | 0.236 |
+| `ID-pontianak` | Kemenag Indonesia | down | nearest | down | down | nearest | down | 0.195 |
+| `AE-dubai` | Awqaf UAE | nearest | down | nearest | nearest | nearest | down | 0.216 |
+| `AE-abudhabi` | Awqaf UAE | nearest | up | up | up | nearest | up | 0.208 |
+| `AE-alain` | Awqaf UAE | down | nearest | nearest | nearest | down | nearest | 0.205 |
+| `AE-sharjah` | Awqaf UAE | nearest | down | up | up | nearest | up | 0.208 |
+| `AE-fujairah` | Awqaf UAE | nearest | nearest | up | down | nearest | up | 0.203 |
+| `AE-rak` | Awqaf UAE | up | down | nearest | up | nearest | nearest | 0.233 |
+| `AE-jebeljais` | Awqaf UAE | nearest | nearest | nearest | nearest | down | nearest | 0.175 |
+| `AE-hatta` | Awqaf UAE | nearest | down | nearest | up | down | nearest | 0.205 |
+| `AE-dubai-2025` | Awqaf UAE | nearest | down | nearest | nearest | nearest | down | 0.238 |
+| `MA-rabat` | Habous Morocco | up | nearest | nearest | nearest | nearest | nearest | 0.267 |
+| `MA-casa` | Habous Morocco | nearest | nearest | up | nearest | up | down | 0.200 |
+| `MA-marrakech` | Habous Morocco | up | up | nearest | nearest | nearest | down | 0.200 |
+| `MA-fes` | Habous Morocco | down | up | nearest | down | up | up | 0.233 |
+| `MA-laayoune` | Habous Morocco | nearest | down | up | nearest | nearest | up | 0.200 |
+| `MA-agadir` | Habous Morocco | down | nearest | nearest | down | up | nearest | 0.133 |
+| `QA-doha` | Qatar Calendar House (digitised) | nearest | nearest | nearest | nearest | nearest | nearest | 0.079 |
+| `UK-london-2026` | London unified timetable | nearest | nearest | nearest | up | nearest | nearest | 0.233 |
+| `UK-london-2025` | London unified timetable | nearest | nearest | nearest | up | nearest | nearest | 0.197 |
+| `UK-london-2022` | London unified timetable | nearest | nearest | nearest | nearest | nearest | nearest | 0.238 |
+| `UK-london-2019` | London unified timetable | nearest | nearest | nearest | nearest | nearest | nearest | 0.156 |
+
+## Majority rounding rule per authority
+
+| authority | cities | fajr | sunrise | dhuhr | asr | maghrib | isha | unanimous |
+|---|---|---|---|---|---|---|---|---|
+| JAKIM Malaysia | 10 | down | nearest | nearest | nearest | nearest | nearest | no |
+| MUIS Singapore | 3 | down | down | down | down | down | down | yes |
+| Diyanet Turkey | 10 | nearest | nearest | nearest | nearest | nearest | nearest | yes |
+| Umm al-Qura Saudi Arabia | 7 | down | down | down | down | down | down | no |
+| MORA Brunei | 2 | nearest | nearest | nearest | nearest | nearest | nearest | yes |
+| Egyptian GAS | 4 | nearest | nearest | nearest | nearest | nearest | nearest | yes |
+| MARA Oman | 6 | nearest | nearest | nearest | nearest | nearest | nearest | no |
+| Kemenag Indonesia | 6 | down | nearest | down | down | up | down | no |
+| Awqaf UAE | 9 | nearest | down | nearest | nearest | nearest | nearest | no |
+| Habous Morocco | 6 | up | nearest | nearest | nearest | nearest | nearest | no |
+| Qatar Calendar House (digitised) | 1 | nearest | nearest | nearest | nearest | nearest | nearest | yes |
+| London unified timetable | 4 | nearest | nearest | nearest | up | nearest | nearest | no |
+
+```json
+{
+ "JAKIM Malaysia": {
+  "fajr": "down",
+  "sunrise": "nearest",
+  "dhuhr": "nearest",
+  "asr": "nearest",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ },
+ "MUIS Singapore": {
+  "fajr": "down",
+  "sunrise": "down",
+  "dhuhr": "down",
+  "asr": "down",
+  "maghrib": "down",
+  "isha": "down"
+ },
+ "Diyanet Turkey": {
+  "fajr": "nearest",
+  "sunrise": "nearest",
+  "dhuhr": "nearest",
+  "asr": "nearest",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ },
+ "Umm al-Qura Saudi Arabia": {
+  "fajr": "down",
+  "sunrise": "down",
+  "dhuhr": "down",
+  "asr": "down",
+  "maghrib": "down",
+  "isha": "down"
+ },
+ "MORA Brunei": {
+  "fajr": "nearest",
+  "sunrise": "nearest",
+  "dhuhr": "nearest",
+  "asr": "nearest",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ },
+ "Egyptian GAS": {
+  "fajr": "nearest",
+  "sunrise": "nearest",
+  "dhuhr": "nearest",
+  "asr": "nearest",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ },
+ "MARA Oman": {
+  "fajr": "nearest",
+  "sunrise": "nearest",
+  "dhuhr": "nearest",
+  "asr": "nearest",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ },
+ "Kemenag Indonesia": {
+  "fajr": "down",
+  "sunrise": "nearest",
+  "dhuhr": "down",
+  "asr": "down",
+  "maghrib": "up",
+  "isha": "down"
+ },
+ "Awqaf UAE": {
+  "fajr": "nearest",
+  "sunrise": "down",
+  "dhuhr": "nearest",
+  "asr": "nearest",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ },
+ "Habous Morocco": {
+  "fajr": "up",
+  "sunrise": "nearest",
+  "dhuhr": "nearest",
+  "asr": "nearest",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ },
+ "Qatar Calendar House (digitised)": {
+  "fajr": "nearest",
+  "sunrise": "nearest",
+  "dhuhr": "nearest",
+  "asr": "nearest",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ },
+ "London unified timetable": {
+  "fajr": "nearest",
+  "sunrise": "nearest",
+  "dhuhr": "nearest",
+  "asr": "up",
+  "maghrib": "nearest",
+  "isha": "nearest"
+ }
+}
+```

@@ -1,64 +1,77 @@
-import { useEffect } from 'react';
-import { StyleSheet, type ViewStyle } from 'react-native';
-import Animated from 'react-native-reanimated';
+import { useAtomValue } from 'jotai';
+import { useEffect, useRef } from 'react';
+import { Platform, StyleSheet, type ViewProps } from 'react-native';
+import Animated, { Easing } from 'react-native-reanimated';
 
-import { useAnimationBackgroundColor, useAnimationTranslateY } from '@/hooks/useAnimation';
+import { getActivePillOpacity, getActivePillRow } from '@/components/prayer/activePill';
+import { useDerivedOpacity, useDerivedTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
-import { COLORS, RADIUS, SHADOW, STYLES } from '@/shared/constants';
+import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
+import { overlayAtom } from '@/stores/atoms/overlay';
 
 interface Props {
   type: ScheduleType;
 }
 
+// Frozen at module scope: a fresh easing function each render would restart
+// the derived mapper on every render
+const PILL_SLIDE_EASING = Easing.elastic(0.5);
+
 export default function ActiveBackground({ type }: Props) {
-  // NEW: Use sequence-based prayer data
-  // See: ai/adr/005-timing-system-overhaul.md
-  const { prayers, displayDate, isReady } = usePrayerSequence(type);
+  const { prayers, displayDate } = usePrayerSequence(type);
 
-  // Filter to today's prayers and find the next prayer index within that list
-  // This gives us 0-5 for standard, 0-6 for extras (same as old schedule.nextIndex)
-  const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
-  const nextPrayerIndex = todayPrayers.findIndex((p) => p.isNext);
+  // Read in render and written after commit, so a list with no row next leaves the pill where it faded
+  const heldPillRow = useRef(0);
+  const pillRow = getActivePillRow(prayers, displayDate, type, heldPillRow.current);
+  useEffect(() => {
+    heldPillRow.current = pillRow;
+  }, [pillRow]);
 
-  // These derived values will recompute on every render when dependencies change
-  // This is fine because they're just JavaScript calculations, not shared value modifications
-  const yPosition = (isReady && nextPrayerIndex >= 0 ? nextPrayerIndex : 0) * STYLES.prayer.height;
+  const yPosition = pillRow * STYLES.prayer.height;
 
-  // Initialize animations with starting values
-  // These shared values are created once and persist between renders
-  const AnimTranslateY = useAnimationTranslateY(yPosition);
+  const translateStyle = useDerivedTranslateY(yPosition, {
+    duration: ANIMATION.durationSlow,
+    easing: PILL_SLIDE_EASING,
+  });
+
   const activeColor =
     type === ScheduleType.Standard ? COLORS.prayer.activeBackground : COLORS.prayer.activeBackgroundExtras;
 
-  const AnimBackgroundColor = useAnimationBackgroundColor(1, {
-    fromColor: 'transparent',
-    toColor: activeColor,
-  });
+  const overlay = useAtomValue(overlayAtom);
+  const pillOpacity = getActivePillOpacity(prayers, displayDate, type, overlay);
 
-  // This effect runs after render and handles all animation logic
-  // Benefits:
-  // 1. Follows Reanimated v4's worklet rules (no shared value modifications during render)
-  // 2. Still reacts to all Jotai state changes via dependencies
-  // 3. Maintains animation sequence integrity
-  // 4. Prevents animation flicker by running after render is complete
-  useEffect(() => {
-    AnimBackgroundColor.animate(1);
-    AnimTranslateY.animate(yPosition);
-  }, [yPosition, AnimBackgroundColor.animate, AnimTranslateY.animate]); // Dependencies ensure animations update when values change
+  const veilStyle = useDerivedOpacity(pillOpacity, {
+    duration: ANIMATION.duration,
+  });
 
   const isStandard = type === ScheduleType.Standard;
   const shadowStyle = isStandard ? SHADOW.prayer : SHADOW.prayerExtras;
   const shadowColor = isStandard ? COLORS.shadow.prayer : COLORS.shadow.prayerExtras;
+  // Android depth shadow rides the pill itself so it travels with the slide —
+  // a row-anchored shadow keyed to isNext lands on the new row a full second
+  // before the pill arrives. API >= 29 only: borderRadius + boxShadow together
+  // are dropped outright on API 28
+  const androidBoxShadow =
+    Platform.OS === 'android' && Platform.Version >= 29
+      ? isStandard
+        ? SHADOW_ANDROID.prayer
+        : SHADOW_ANDROID.prayerExtras
+      : undefined;
 
-  const computedStyles: ViewStyle = {
+  const computedStyles: ViewProps['style'] = {
     ...shadowStyle,
     shadowColor,
     elevation: 0, // Must be 0 to stay below Prayer components on Android
     zIndex: -1, // Ensure it's behind prayer text
+    ...(androidBoxShadow !== undefined ? { boxShadow: androidBoxShadow } : {}),
   };
 
-  return <Animated.View style={[styles.background, computedStyles, AnimBackgroundColor.style, AnimTranslateY.style]} />;
+  return (
+    <Animated.View
+      style={[styles.background, computedStyles, { backgroundColor: activeColor }, translateStyle, veilStyle]}
+    />
+  );
 }
 
 const styles = StyleSheet.create({

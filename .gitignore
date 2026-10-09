@@ -1,6 +1,6 @@
 .expo
 .vscode
-.husky
+.husky/_
 dist
 npm-debug.*
 *.jks
@@ -22,3 +22,26 @@ coverage/
 
 expo-env.d.ts
 # @end expo-cli
+# Local expo module gradle build outputs (source under modules/ is tracked)
+modules/**/build/
+modules/**/.gradle/
+.env
+
+# Python bytecode from the e2e scripts (py_compile, imports)
+__pycache__/
+*.pyc
+
+# idb_companion scratch dirs. Facebook's iOS Development Bridge, reached through
+# xcodebuildmcp / mobile-mcp (see opencode.json), creates these in the working
+# directory on start and leaves them behind empty. Git ignores empty directories,
+# so they never showed in `git status` and simply accumulated.
+idb-applications/
+idb-dsyms/
+idb-dylibs/
+idb-frameworks/
+idb-test-bundles/
+.codegraph/
+
+
+# Claude Code session state (worktrees, scratch reviews, task output)
+.claude/

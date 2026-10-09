@@ -1,21 +1,26 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
-import { useCallback, useMemo } from 'react';
-import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useMemo } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import InfoIcon from '@/assets/icons/svg/info.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
+import { IconView } from '@/components/ui';
+import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { isDecorationSeason } from '@/shared/time';
-import { WHATS_NEW } from '@/shared/whatsNew';
+import { Icon } from '@/shared/types';
+import { VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
   hideSettingsSheet,
   hijriDateEnabledAtom,
+  setPopupHelpEnabled,
   setPopupWhatsNewEnabled,
   setSettingsSheetModal,
+  setSoundListReady,
   showArabicNamesAtom,
+  showQiblaSheet,
   showSecondsAtom,
   showSheet,
   showTimePassedAtom,
@@ -33,14 +38,21 @@ export default function BottomSheetSettings() {
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
 
-  const handleDismiss = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-  }, []);
-
   const handleAthanPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
-    setTimeout(() => showSheet(), 150);
+    showSheet();
+  };
+
+  // The permission is settled BEFORE the sheet opens, which is the owner's order: a compass that opens and then
+  // asks shows the user an empty instrument with the system dialog sitting over it. A refusal opens nothing
+  const handleQiblaPress = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
+    if (!(await requestQiblaPermission())) return showQiblaLocationDialog();
+
+    hideSettingsSheet();
+    showQiblaSheet();
   };
 
   // Re-opens the What's New modal for the installed version - display-only,
@@ -51,17 +63,27 @@ export default function BottomSheetSettings() {
     setTimeout(() => setPopupWhatsNewEnabled(true), 150);
   };
 
+  const handleHelpPress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    hideSettingsSheet();
+    setTimeout(() => setPopupHelpEnabled(true), 150);
+  };
+
   return (
     <Sheet
       setRef={setSettingsSheetModal}
       title='Settings'
       subtitle='Set your preferences'
       icon={<SettingsIcon width={16} height={16} color='rgba(165, 180, 252, 0.8)' />}
-      snapPoints={['70%']}
-      onDismiss={handleDismiss}>
-      {/* Sound Card */}
+      snapPoints={['85%']}
+      perfName='sheet_settings'
+      // The sound sheet is only reachable through this sheet: warming its
+      // 32-row list on our first full open builds it invisibly, one tap
+      // before it is needed (and off the launch path)
+      onFirstPresent={setSoundListReady}>
+      {/* Prayer Card */}
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Sound</Text>
+        <Text style={styles.cardTitle}>Prayer</Text>
         <Pressable
           style={styles.athanButton}
           onPress={handleAthanPress}
@@ -69,9 +91,21 @@ export default function BottomSheetSettings() {
           accessibilityLabel='Change athan'
           accessibilityRole='button'>
           <View style={styles.musicButton}>
-            <Text style={styles.musicIcon}>♪</Text>
+            <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.athanLabel}>Change athan</Text>
+          <Text style={styles.chevron}>›</Text>
+        </Pressable>
+        <Pressable
+          style={styles.athanButton}
+          onPress={handleQiblaPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel='Qibla'
+          accessibilityRole='button'>
+          <View style={styles.musicButton}>
+            <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.athanLabel}>Qibla</Text>
           <Text style={styles.chevron}>›</Text>
         </Pressable>
       </View>
@@ -119,10 +153,10 @@ export default function BottomSheetSettings() {
         </View>
       </View>
 
-      {/* About Card - hidden on silent releases (no What's New content) */}
-      {WHATS_NEW ? (
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>About</Text>
+      {/* Other Card - the What's new row alone is hidden on a silent release, so Help always stays reachable */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Other</Text>
+        {VISIBLE_WHATS_NEW ? (
           <Pressable
             style={styles.whatsNewButton}
             onPress={handleWhatsNewPress}
@@ -130,13 +164,25 @@ export default function BottomSheetSettings() {
             accessibilityLabel="What's new"
             accessibilityRole='button'>
             <View style={styles.infoButton}>
-              <InfoIcon width={12} height={12} color={COLORS.text.primary} />
+              <IconView type={Icon.INFO} size={9} color={COLORS.text.primary} />
             </View>
             <Text style={styles.whatsNewLabel}>What&#8217;s new</Text>
             <Text style={styles.chevron}>›</Text>
           </Pressable>
-        </View>
-      ) : null}
+        ) : null}
+        <Pressable
+          style={styles.whatsNewButton}
+          onPress={handleHelpPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel='Help'
+          accessibilityRole='button'>
+          <View style={styles.infoButton}>
+            <IconView type={Icon.QUESTION} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.whatsNewLabel}>Help</Text>
+          <Text style={styles.chevron}>›</Text>
+        </Pressable>
+      </View>
     </Sheet>
   );
 }
@@ -208,11 +254,6 @@ const styles = StyleSheet.create({
     borderColor: COLORS.interactive.activeBorder,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  musicIcon: {
-    color: COLORS.text.primary,
-    fontSize: Platform.OS === 'android' ? 14 : 10,
-    marginTop: Platform.OS === 'android' ? -2.5 : 0,
   },
   athanLabel: {
     flex: 1,

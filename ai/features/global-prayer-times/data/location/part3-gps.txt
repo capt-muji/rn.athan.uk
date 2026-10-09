@@ -1,0 +1,81 @@
+# R14 part 3C: probing `api.waktusolat.app` `GET /zones/{lat}/{lon}` on a grid
+
+Grid step 0.25 degrees, 1605 points over two bounding boxes covering peninsular
+Malaysia and Malaysian Borneo, including surrounding sea. Fetched on the date in the report.
+
+| outcome                                               | points | share |
+| ----------------------------------------------------- | ------ | ----- |
+| a zone was returned                                   | 425    | 26.5% |
+| `No zone found for the given coordinates.` (HTTP 500) | 1180   | 73.5% |
+| transport failure, retried                            | 0      | 0.0%  |
+
+Most of the no-zone points are open sea inside the two bounding boxes, which is correct
+behaviour. What it establishes is that the service refuses rather than guesses, so a user
+just offshore or in an unmapped district gets nothing.
+
+Distinct zones the service returned anywhere on the grid: **50** of the 60 JAKIM publishes.
+
+| zone    | grid points | district returned | state |
+| ------- | ----------- | ----------------- | ----- |
+| `SWK03` | 56          | Bukit Mabong      | SWK   |
+| `SWK02` | 38          | Telang Usan       | SWK   |
+| `SBH02` | 32          | Tongod            | SBH   |
+| `SWK04` | 23          | Song              | SWK   |
+| `PHG03` | 17          | Bera              | PHG   |
+| `PHG02` | 15          | Rompin            | PHG   |
+| `SWK06` | 14          | Sri Aman          | SWK   |
+| `PHG04` | 12          | Bentong           | PHG   |
+| `KTN02` | 12          | Kecil Lojing      | KTN   |
+| `SBH08` | 12          | Nabawan           | SBH   |
+| `SBH03` | 12          | Semporna          | SBH   |
+| `JHR02` | 10          | Johor Bahru       | JHR   |
+| `JHR04` | 10          | Batu Pahat        | JHR   |
+| `SWK05` | 10          | Pakan             | SWK   |
+| `SWK01` | 10          | Limbang           | SWK   |
+| `SBH09` | 10          | Sipitang          | SBH   |
+| `SBH07` | 10          | Papar             | SBH   |
+| `PRK01` | 8           | Muallim           | PRK   |
+| `SGR01` | 7           | Sepang            | SGR   |
+| `TRG04` | 7           | Kemaman           | TRG   |
+| `KTN01` | 7           | Kuala Krai        | KTN   |
+| `JHR03` | 6           | Pontian           | JHR   |
+| `SWK07` | 6           | Tebedu            | SWK   |
+| `SWK08` | 6           | Bau               | SWK   |
+| `SBH04` | 6           | Kalabakan         | SBH   |
+| `SBH05` | 6           | Kota Marudu       | SBH   |
+| `PRK04` | 5           | Temengor          | PRK   |
+| `NGS02` | 4           | Kuala Pilah       | NSN   |
+| `PRK02` | 4           | Hilir Perak       | PRK   |
+| `PRK06` | 4           | Larut Dan Matang  | PRK   |
+| `TRG03` | 4           | Hulu Terengganu   | TRG   |
+| `TRG02` | 4           | Setiu             | TRG   |
+| `KDH03` | 4           | Sik               | KDH   |
+| `SBH01` | 4           | Sandakan          | SBH   |
+| `PRK03` | 3           | Lenggong          | PRK   |
+| `TRG01` | 3           | Marang            | TRG   |
+| `PNG01` | 3           | Barat Daya        | PNG   |
+| `MLK01` | 2           | Melaka Tengah     | MLK   |
+| `NGS03` | 2           | Port Dickson      | NSN   |
+| `NGS01` | 2           | Tampin            | NSN   |
+| `SGR03` | 2           | Kuala Langat      | SGR   |
+| `SGR02` | 2           | Kuala Selangor    | SGR   |
+| `PRK05` | 2           | Manjung           | PRK   |
+| `KDH02` | 2           | Kuala Muda        | KDH   |
+| `KDH01` | 2           | Kubang Pasu       | KDH   |
+| `PHG06` | 1           | Cameron Highlands | PHG   |
+| `KDH04` | 1           | Baling            | KDH   |
+| `KDH06` | 1           | Langkawi          | KDH   |
+| `PLS01` | 1           | Perlis            | PLS   |
+| `WLY02` | 1           | W.P. Labuan       | LBN   |
+
+Zones the service NEVER returned on this grid (10): `JHR01`, `KDH05`, `KDH07`, `PHG01`, `PHG05`, `PHG07`, `PRK07`, `SBH06`, `SWK09`, `WLY01`.
+
+A zone never returned by a coordinate lookup cannot be reached by GPS at all, so those users
+need a picker no matter what.
+
+## 3D. Could the mapping ship offline as a nearest-point table?
+
+Leave-one-out nearest-neighbour accuracy over the 425 on-land grid points: **64.0%** (272 of 425).
+
+Storing the grid itself as 2 int16 coordinates plus a 1-byte zone index is 2,125 raw bytes for 0.25-degree resolution, which is about 28 km of cell.
+
