@@ -29,6 +29,14 @@ This confirms D15 and D16 as written. Turkish stays a documented authority excep
 prints its own label set, "İmsak" for the Fajr row); `research/prayer-names.json` carries the
 per-locale detail.
 
+**The İmsak/Suhoor distinction, from the owner (2026-10-09):** Suhoor is the night window when
+someone wakes, prepares and eats before Fajr (the beginning of the fast's eating window closing).
+İmsak is the stop-eating marker shortly before Fajr, a safety precaution, usually within the last
+five minutes. They are different moments, so a locale's Fajr-row label must name the prayer, never
+the fast's end marker. Diyanet's table prints İmsak where the English table prints Fajr; that
+convention ships only with the owner's explicit sign-off in the catalog pass, and any locale whose
+sourced "Fajr" is actually an İmsak-style marker gets the same scrutiny.
+
 ## Rulings recorded 2026-10-09
 
 - **D17.** One language at a time; the Arabic column is removed; every user-visible string follows
@@ -56,10 +64,10 @@ per-locale detail.
 
 ## Research agent findings, 2026-10-09
 
-Four research agents were dispatched by the owner's instruction; three had reported when this file
-was written, and their full outputs live in this session's record. Digests:
+Seven research agents were dispatched by the owner's instruction; all reported the same day. Full
+reports live in `research/` as R8 to R14. Digests:
 
-### First-run language (reported)
+### First-run language (`research/R8-FIRST-RUN-LOCALE.md`)
 
 - `expo-localization` at SDK 58 exports `getLocales`/`useLocales`/`getCalendars`/`useCalendars`
   only; no permission; no locale matcher, so RFC 4647 lookup is a small hand-rolled function
@@ -71,7 +79,7 @@ was written, and their full outputs live in this session's record. Digests:
   override on Android 13+ and iOS 13+ for free; the first explicit in-app choice persists and wins
   forever; existing installs stamp `en` once at upgrade rather than re-matching.
 
-### Launch set (reported)
+### Launch set (`research/R9-LAUNCH-SET.md`)
 
 | Tier | Languages | State |
 | --- | --- | --- |
@@ -82,7 +90,7 @@ was written, and their full outputs live in this session's record. Digests:
 Recommended against: Igbo, Lingala. Post-launch order: uz, de, ru, hi, so, zh. Population sources:
 Pew 2025, World Population Review 2026, UNFPA 2025.
 
-### RTL pinning (reported)
+### RTL pinning (`research/R10-RTL-PINNING.md`)
 
 - Pin LTR through the `expo-localization` config plugin with `supportsRTL: false`, which writes
   `android:supportsRtl="false"` and `ExpoLocalization_supportsRTL = false`, applied natively
@@ -94,11 +102,65 @@ Pew 2025, World Population Review 2026, UNFPA 2025.
   `textAlign: 'left'` where natural alignment would anchor a pure-RTL paragraph right).
 - Precedents for an LTR shell rendering RTL content: GitHub Mobile, Notion, Obsidian.
 
-### Pending at write time
+### Language commit transaction (`research/R11-LANGUAGE-COMMIT.md`)
 
-- Numeral systems per locale (Latin vs Arabic-Indic vs Persian variants; authority practice).
-- Blast-radius census (production sites), language-commit transaction design, test-refactor
-  census. Findings land in this folder as they report.
+- `commitLanguageSelection` modelled on `commitSoundSelection`: compute once from arguments, write
+  a persisted intent marker before the atom moves, then under one `withSchedulingLock` acquisition:
+  preference write, width-key switch, channel dedup-cache invalidation, channel re-creation on the
+  same ids, full re-arm through the deterministic identifiers (in-place replace, no cancel pass,
+  no zero-alarm window), widget re-push riding the reschedule. On failure, re-run the whole
+  sequence on the previous selection inside the same acquisition; on double failure, keep the
+  previous preference and leave the marker for the launch, foreground and background repair cycles.
+- Crash windows: every death point analysed. Mid-re-arm death leaves mixed-copy requests, never
+  zero alarms; the marker drives an idempotent forward-completion at next launch. Cancel is unsafe
+  by the same argument: abandonment is already survivable, so a cancel button adds a second
+  interruption path with no new guarantee.
+- Existing suites already cover the commit shape (notificationSoundCommit, notificationAlertCommit,
+  notificationSchedulingLock, the gate suites); new suites needed for the language commit, the
+  crash windows, the locale-keyed width cache and per-locale widget payload runs.
+
+### Numerals (`research/R12-NUMERALS.md`)
+
+- CLDR 46 flipped `ar` to Latin digits (ar-EG and ar-SA stay Arabic-Indic); `fa` and `ps` are
+  Persian-digit; `bn` is Bengali-digit; every other candidate locale is Latin.
+- Authority practice matches: Dar al-Ifta, Diyanet, JAKIM, Jang and the Maghreb print Latin times
+  online. Muslim Pro ships Latin in every sampled language; Mihrab hard-codes Latin with a named
+  rationale; Al-Azan defaults to ICU then grew an explicit setting because Arabic users asked for
+  Western digits.
+- Recommendation: Latin for every launch locale except Persian digits for fa and ps and Bengali
+  digits for bn; one choice applied to times, dates and countdowns; internal storage stays `HH:mm`
+  Latin. The "Numerals: Western / Eastern Arabic" toggle is the one open sub-question (Q4).
+
+### Blast radius (`research/R13-BLAST-RADIUS.md`)
+
+- PrayerRow name fields: 5 write sites, 15 production read sites. Constants consumers across
+  6 arrays. MMKV key builders: 4 families plus the index-to-name migration. OS identifiers and
+  channel ids: 5 builders. Widget pipeline: 8 baking sites, 3 re-push paths, 10 renderer sites.
+  English-pinned formatters: 6 in `shared/time.ts`. The `showArabicNamesAtom`: 3 consumers.
+- **The stored day records already carry no name fields**: `prayer_YYYY-MM-DD` holds `date` plus
+  nine lowercase slug-keyed time fields (`fajr` to `istijaba`, `shared/types.ts:108-122`). The
+  owner's database concern is smaller than feared: the day cache is already language-neutral. The
+  name-bearing storage is the scheduling bookkeeping records (`englishName`/`arabicName`) and the
+  preference keys, both already slug-derived.
+- Qibla copy is new since the inventory: `Qibla.tsx` (8 strings), `device/qibla.ts` (4),
+  cardinal letters N/E/S/W (`shared/qiblaCompass.ts:92-97`), and `shared/qiblaPlace.ts` placeName
+  follows the platform locale, not the app locale (a gap the sweep must close).
+- Five silent seams ranked: storage-key duality, deterministic identifiers, the
+  `canonicalPrayerIndex` fallback, name-keyed ordering and day rules, widget prop contracts across
+  the serialization boundary.
+
+### Test census (`research/R14-TEST-CENSUS.md`)
+
+- 74 of 171 suites affected: 62 on English-name fixtures, 38 on the arabic field or
+  `showArabicNames`, 24 on display copy, 18 on name-built keys and identifiers, 7 on widget
+  props.
+- The five largest refactors: schedule.test.ts (106 marker lines), notificationAlertCommit (~80),
+  notifications.test.ts (63), prayer.test.ts (~55), widgetSimulation (~45).
+- The riskiest single change is the commit-path signature (`(english, arabic)` pairs into
+  `commitPrayerAlertChange`/`commitAlertMenuChanges`, eight suites); the second is the name-keyed
+  MMKV migration tests.
+- Confirmed untouched: the qibla sensor and math suites, time arithmetic, the animation and
+  overlay-geometry suites, the sound commit suite (which the language commit copies).
 
 ## Design direction the findings force
 
@@ -119,20 +181,22 @@ Pew 2025, World Population Review 2026, UNFPA 2025.
 
 ## Open questions with recommendations (the frontier)
 
-| # | Question | Recommendation |
+Answers recorded 2026-10-09 are marked RULED. Rows still marked OPEN wait on the owner.
+
+| # | Question | Status and ruling |
 | --- | --- | --- |
-| Q1 | Confirm the removal's reach: English users lose the Arabic column and the explanation box's Arabic line too | Yes; one language everywhere |
-| Q2 | The "Show arabic names" toggle, atom and MMKV key | Remove; delete the key once at upgrade |
-| Q3 | Pin layout LTR explicitly (Android mirrors today) | Yes, via the config plugin; ruling stands permanently |
-| Q4 | Numerals at launch | Latin digits everywhere at 2.0.0, including Arabic; revisit per-locale after the numerals report |
-| Q5 | First run and upgrade | Device locale matched to the shipped set, English fallback; existing installs stamp `en`; never location |
-| Q6 | Settings surface | One row, globe icon, chevron, sheet like the sound sheet (D8 stands, minus the dead toggle) |
-| Q7 | Staging | Two stages inside one 2.0.0 release: Arabic removal plus pipeline first, languages second; each ships to `uat` and is device-verified before the next |
-| Q8 | Reminder audio language | Audio unchanged in every language at 2.0.0; the title text translates. Owner confirms whether the recordings speak |
-| Q9 | Dates | Localise month names per language; formats unchanged |
-| Q10 | Width cache | Keep; per-locale keys `prayer_max_english_width_<locale>_<standard/extra>`; today's values seed `en`; one reflow per switch |
-| Q11 | Missing-name policy per locale | Transliterate per D15; suppress a row only where the locale's own timetables never publish it |
-| Q12 | Launch size | Eight ready now, `ms` if Syuruk is accepted; hold sw, ha, pt for the first update |
-| Q13 | Switch UX detail | Blocking progress UI, no cancel, auto-rollback on failure, success confirmation |
-| Q14 | Versioning | Language release 2.0.0, global 3.0.0; 1.29.x continues until the 2.0.0 branch opens |
-| Q15 | Identifier shape | Slug union, not numbers; zero key migration, readable in logs |
+| Q1 | The removal's reach: English users lose the Arabic column and the explanation box's Arabic line too | **RULED: yes.** One language absolutely everywhere; the bilingual identity disappears for every user, English included |
+| Q2 | The "Show arabic names" toggle, atom and MMKV key | **RULED: wipe it all.** The Settings row, the atom and the stored key go; nothing relates to it any more |
+| Q3 | Pin layout LTR explicitly (Android mirrors today) | **RULED: never mirror, either platform.** The layout is identical regardless of language: names column left, time centre, alert icons right. Pinned via the `expo-localization` plugin (`supportsRTL: false`), per `research/R10-RTL-PINNING.md`; confirms ruling D7 permanently |
+| Q4 | Numerals at launch | **RULED: Latin digits everywhere at 2.0.0.** Times, countdown (`1H 10M`), dates, every language including Arabic; `toArabicNumbers` is deleted with the Arabic explanation line. Per-locale digits (R12's fa/ps/bn finding) and the numerals toggle are deferred to a later session |
+| Q5 | First run and upgrade | OPEN. Recommendation: device locale matched to the shipped set, English fallback; existing installs stamp `en`; never location |
+| Q6 | Settings surface | OPEN. Recommendation: one row, globe icon, chevron, sheet like the sound sheet (D8 stands, minus the dead toggle) |
+| Q7 | Staging | OPEN. Recommendation: two stages inside one 2.0.0 release: Arabic removal plus pipeline first, languages second; each ships to `uat` and is device-verified before the next |
+| Q8 | Reminder audio language | **RULED: unchanged, 100%.** All athan and reminder files (99) stay exactly as they are for every language; the audio is recorded Arabic, so it carries no English to translate. The notification TEXT translates to the selected language |
+| Q9 | Dates | OPEN. Recommendation: localise month names per language; formats unchanged |
+| Q10 | Width cache | OPEN. Recommendation: keep; per-locale keys `prayer_max_english_width_<locale>_<standard/extra>`; today's values seed `en`; one reflow per switch |
+| Q11 | Missing-name policy per locale | OPEN. Recommendation: transliterate per D15; suppress a row only where the locale's own timetables never publish it |
+| Q12 | Launch size | OPEN. Recommendation: eight ready now, `ms` if Syuruk is accepted; hold sw, ha, pt for the first update |
+| Q13 | Switch UX detail | OPEN. Recommendation: blocking progress UI, no cancel, auto-rollback on failure, success confirmation |
+| Q14 | Versioning | OPEN (owner has stated 2.0.0 for languages, 3.0.0 for global; confirm the 1.29.x line continues until the 2.0.0 work opens) |
+| Q15 | Identifier shape | OPEN. Recommendation: slug union, not numbers; zero key migration, readable in logs |
