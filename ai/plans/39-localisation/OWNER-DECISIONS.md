@@ -479,18 +479,19 @@ without sign-off):
 > **Amended 2026-10-09 (owner, same day):** Chinese (`zh`) is removed - China restricts apps on
 > the App Store and the owner will not ship for it - leaving nineteen. The twentieth slot is open
 > with three candidates: Azerbaijani (~10.1M Muslims, catalog 8/11, needs sourcing), German
-> (~5.6M, catalog 9/11, ready), Tamil (~7M reachable, catalog 10/11). > **Amended again 2026-10-09 (owner, later the same day): the twenty becomes a roadmap, not a
-> launch count.** The first production-ready milestone carries **six languages: English,
-> Arabic, Indonesian, Malay, Hindi, Somali** - a private confidence build, not a public release,
-> for the owner to verify the whole pipeline end to end (Somali added moments after the
-> original five). Once he is satisfied, the set grows: fifteen, then twenty per the union above,
-> then up to fifty ("more than happy to go for 50"), with the architecture uncapped and one
-> flat catalog file per language. The eventual full set guarantees Malay, Indonesian and Somali
-> ("definitely, no exceptions"). The six chosen happen to exercise the hard dimensions: Arabic
-> (RTL script, Naskh metrics, Latin digits), Hindi (Devanagari line heights, transliterations in
-> another script), Indonesian and Malay (two national authorities' naming, Syuruk accepted),
-> Somali (a Latin-script locale sourced from scratch, exercising the sourcing pipeline). The
-> twentieth-slot question dissolves; az, de and ta join the later expansion pool.
+> (~5.6M, catalog 9/11, ready), Tamil (~7M reachable, catalog 10/11). > **Amended again 2026-10-09 (owner, the final word on the milestone): the twenty becomes a
+> roadmap, not a launch count.** The first production-ready milestone carries **six languages:
+> English, Arabic, Malay, Somali, Hindi, Thai** - a private confidence build, not a public
+> release, for the owner to verify the whole pipeline end to end. The set is chosen to exercise
+> the hard rendering and sourcing dimensions, not the audience: Arabic (RTL script, Naskh
+> metrics, Latin digits), Hindi (Devanagari, the script Roboto cannot draw), Thai (the tallest
+> script and the widest names: the line-height and width stress cases), Malay (JAKIM naming,
+> Syuruk accepted), Somali (the from-scratch sourcing pipeline). Indonesian drops out of the
+> milestone to the expansion pool and stays guaranteed for the eventual set. Once the owner is
+> satisfied, the set grows: fifteen, then twenty per the union above, then up to fifty ("more
+> than happy to go for 50"), architecture uncapped, one flat catalog file per language; Malay,
+> Indonesian and Somali guaranteed forever. The twentieth-slot question dissolves; az, de and
+> ta join the later expansion pool.
 
 The union otherwise matches
 (the formula adds es, pt, ru; WHICH-20 had az, ta, ml; zh is removed by the amendment above).
