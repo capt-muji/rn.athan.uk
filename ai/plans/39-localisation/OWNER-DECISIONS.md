@@ -367,6 +367,19 @@ timetables) ships as 3.0.0. The 1.29.x line continues until the 2.0.0 work opens
 The compass is critical and language-independent. Only its labels and instructions translate; no
 sensor, settling or heading code changes in this feature.
 
+## D21. Latin numerals everywhere at 2.0.0 (2026-10-09)
+
+Times, countdown (`1H 10M`), dates and every other digit render in Latin numerals in every
+language, Arabic included. `toArabicNumbers` is deleted with the Arabic explanation line.
+Per-locale numeral systems (Persian and Bengali digits, the Western/Eastern toggle) are deferred
+to a later session; `research/R12-NUMERALS.md` carries the evidence for that pass.
+
+## D22. The audio never changes (2026-10-09)
+
+All athan and reminder audio files (99) stay exactly as recorded, in every language: the audio is
+recorded in Arabic, so it carries no English to translate and no per-language recording work
+exists. The notification TEXT translates to the selected language; the sound does not.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
