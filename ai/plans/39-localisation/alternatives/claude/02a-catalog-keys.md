@@ -22,7 +22,8 @@ written. Evidence for each row is in `evidence/ui-strings.md`, `evidence/widgets
 9. Not keys: strings the OS owns at build time, text a library draws, log lines, thrown errors
    that never reach a user, and symbols that carry no words. Section 7 lists them.
 10. The note column carries a length budget wherever the evidence shows a fixed box or a
-    one-line limit.
+    one-line limit. Every `prayer.<id>` and `prayerHero.<id>` value has a budget of 12 visible
+    characters, set in document 02 ("The notes file"), whether or not its row repeats it.
 
 ## 2. The English catalog
 
@@ -468,9 +469,10 @@ countdown uses `duration.hours` and `duration.minutes` from 2.5. The home widget
 | `widget.lock.inlineStale` | `Athan — open to refresh times` | none | `widgets/LockPrayerWidget.tsx:97`, `:250`, `:399` | Inline lock stale. The dash is U+2014 with a space each side |
 | `widget.lock.staleBody` | `Open app to refresh` | none | `widgets/LockPrayerWidget.tsx:115`, `:268`, `:420` | Rectangular lock stale, line 2 under `widget.staleTitle` |
 
-Four widget strings are not keys. They are drawn only when a widget has no props, and props are
-the only way a string reaches a layout, so they stay English literals inside the layout functions
-(document 04, section 4, decision 3):
+Four widget strings are not keys. They belong to the neutral card, which is drawn when a widget
+has no props, when the Android snapshot is missing, and as the lock layouts' fallback after a
+render error. They stay English literals inside the layout functions (document 04, section 4,
+decision 3):
 
 | Literal | Site |
 | --- | --- |

@@ -3,6 +3,20 @@
 This is one alternative, written without sight of the design on `uat`. It is a specification,
 not code: this branch changes documents and the version number only. Base commit `c3149dfc`.
 
+## One premise to settle first
+
+The brief asks that stored preferences and armed OS identifiers survive the 2.0.0 upgrade byte
+for byte. That is achievable, and this design achieves it, for an install that last ran 1.24.33
+or later. It is not achievable by any design for an install that last ran 1.5.2 or earlier:
+that build armed alarms with no identifier of its own, so the system chose one, and it keyed
+preferences by list index (`05-upgrade.md`, "Which 1.x"). Installs between the two keep their
+preferences and identifiers and lose the offline timetable for one launch. No alarm is missed
+in any class.
+
+The code does not say which version is live in the stores. `main` is at 1.29.291. If the live
+build is older than 1.24.33, the clean route is a 1.29.x release first, so that installs cross
+both boundaries before 2.0.0 reaches them. The owner must name the live version before step S15.
+
 ## How to read it
 
 | Document | Holds |
@@ -15,7 +29,7 @@ not code: this branch changes documents and the version number only. Base commit
 | `04-surfaces.md` | notification titles, channels, widgets, the row, the settings row and sheet |
 | `05-upgrade.md` | the 1.x upgrade, step by step, and what can interrupt it |
 | `06-test-strategy.md` | every new test with the fault it must catch, and the device gates |
-| `07-sequencing.md` | fifteen commits in order, with files, tests, approvals and effort |
+| `07-sequencing.md` | the commits in order, with files, tests, approvals, exports and effort |
 | `evidence/*.md` | five fact sweeps of the code, each claim cited to `path:line` |
 
 ## The design in one page
@@ -42,17 +56,20 @@ value and the screens follow it at once. A second stored value records the langu
 pending notification titles and channel names were last known to be in. Every full scheduling
 pass re-arms every alarm under its unchanged identifier, which replaces its title in place,
 renames any channel whose name differs, and then stamps the second value. While the two values
-differ, the refresh gate is open. A crash, a refusal or a timeout at any point leaves alarms
-that still fire on time in the previous language, and the next pass finishes the job. Nothing
-is rolled back.
+differ, the refresh gate is open. Any operation about to arm in a language other than the
+recorded one clears the record first, so the record can never vouch for titles it did not see
+written. A crash, a refusal or a timeout at any point leaves alarms that still fire on time in
+the previous language, and the next pass finishes the job. Nothing is rolled back.
 
 **4. Baked surfaces get their text from the app, never from themselves.** Titles take a catalog
 at arm time. Channel names are renamed in place under the same ids. Widget layouts cannot
 import anything, so the app bakes every name, the footer and the card text into props, and the
 layouts stop cutting and upper-casing words.
 
-**5. The upgrade migrates nothing.** No stored key is renamed and no value is rewritten. The
-cache shape version stays `1`, so an offline upgrade keeps its timetable. The first 2.0.0 pass
+**5. The upgrade migrates nothing.** For an install that last ran 1.24.33 or later, no stored
+key is renamed and no value is rewritten. The cache shape version stays `1`, so an offline
+upgrade keeps its timetable. Older installs go through the migration and the wipe that 1.x
+already has, unchanged. The first 2.0.0 pass
 is the one a version change already forces, with a title in the detected language.
 
 **6. Adding a language is one data file, one generated lock file and one registry line.**
@@ -170,7 +187,10 @@ per language.
 | An upgrading user whose phone is in a shipped language gets that language unasked | first run follows the device, and an upgrade is a first run of the setting | S3, release |
 | Arabic explanation digits become Latin | digits stay Latin at 2.0.0 | S12 |
 | One new drawing, a globe icon | the language row | S13 |
-| A widget with no props, and widget gallery names, stay English | the widget process cannot know the language before the first push; gallery names follow the device | S11 |
+| The widget's neutral card, and widget gallery names, stay English | the neutral card is drawn before the first push and as the fallback after a render error; gallery names follow the device | S11 |
+| A user in English only because no pack matched moves to their own language when a release adds it | English by fallback is not stored as a choice | each release that adds or promotes a pack |
+| The Hijri month's spelling may change by a letter | the catalog replaces each phone's own spelling | S4 |
+| Text in a script Roboto lacks is drawn in the system's fallback face | no font is added at 2.0.0 | S7 onward |
 | One new dependency, `expo-localization` | reading the device's language list | S3 |
 | Two new stored keys, and one stored width per language | `03-language-state.md`, `04-surfaces.md` section 5 | S3, S8, S10 |
 | One plugin entry in `app.json` | the mirroring flag | S12 |
@@ -193,7 +213,12 @@ touches this work.
 - Read: the code under `shared/`, `stores/`, `device/`, `components/`, `hooks/`, `widgets/`,
   `app/`, `api/`, `modules/`, `plugins/`, the configuration files, the test tooling and the
   parts of `node_modules` the evidence files cite. Each evidence file ends with its own list of
-  what was read in full and what in part.
+  what was read in full and what in part. For the upgrade, `main` and three older commits in
+  the history of `uat` were read for the storage formats they hold.
+- Reviewed once, by an independent session that read the documents against the code. It found
+  no wrong byte in the identifier tables and no path that drops an alarm. Its ten major
+  findings are applied in these documents; the largest are the premise above, the rule that
+  clears the baked-language record before arming, and the stricter conditions on stamping it.
 - Not read: anything under `ai/plans/` other than this folder, anything under `ai/features/`,
   and any `arch/` or `verify/` branch other than this one.
 - One slip, disclosed: a file search by a sub-task printed about eight lines that named files

@@ -26,13 +26,13 @@ returns a string. Digits come from `String(number)` and are therefore ASCII in e
 | `formatHijriDateLong(date)` | `Intl` `en-US` Hijri with a long month, ` AH` stripped (`shared/time.ts:241-254`) | `formatHijriDateLong(date, catalog)`: reads the Hijri day, month and year as numbers through `readHijriParts(date)`, then fills `date.hijri` with `date.hijriMonth.N` |
 | new `readHijriParts(date)` | the three numeric formatters inside `isRamadan` (`shared/time.ts:310-341`) | `{ day: number; month: number; year: number } \| null`. Three `Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', ...)` formatters, one numeric field each, parsed with `parseInt`. `null` when `Intl` throws. `isRamadan` is rewritten on top of it |
 | new `formatWidgetFooter(date, hijri, catalog)` | cut inside the layout from the date label (`widgets/PrayerWidget.tsx:303-310`, `:545-555`) | Gregorian: `date.weekdayShort.N`. Hijri: `date.hijriShort` filled with `date.hijriMonthShort.N` and the day |
-| `formatTime(seconds, showSeconds)` | literal `h`, `m`, `s` (`shared/time.ts:528-549`) | `formatTime(seconds, showSeconds, catalog)`: the same parts, each through `duration.hours`, `duration.minutes`, `duration.seconds`, joined by one space |
+| `formatTime(seconds, hideSeconds, forceHideSeconds)` | literal `h`, `m`, `s` (`shared/time.ts:528-549`) | `formatTime(seconds, catalog, hideSeconds, forceHideSeconds)`: the same parts, each through `duration.hours`, `duration.minutes`, `duration.seconds`, joined by one space. The catalog goes second so the two optional flags stay last |
 | `formatTimeAgo(seconds)` | literal `m`, `h`, `now` (`shared/time.ts:564-574`) | `formatTimeAgo(seconds, catalog)`: the same parts through the `duration.*` keys. Its `now` branch is deleted: its only caller never reaches it (`hooks/usePrayerAgo.ts:36`) |
 | ago text | `` `${english} now` ``, `` `${english} ${timeAgo} ago` `` (`hooks/usePrayerAgo.ts:36`) | `ago.now` and `ago.since` with `{prayer}` and `{duration}` |
 
 `Intl` stays in exactly the role it has in `isRamadan` today: calendar arithmetic under a fixed
 `en-US` locale, producing numbers. It never produces a name. The `en` pack's values reproduce
-today's English output byte for byte (document 06, T-CAT-7), so an English user sees no change.
+today's English output byte for byte (document 06, T-PAR-1), so an English user sees no change.
 
 When `readHijriParts` returns `null`, `formatHijriDateLong` falls back to `formatDateLong`, as
 it does today on a throw (`shared/time.ts:251-253`).
@@ -152,15 +152,22 @@ Every string a layout draws must arrive in props, or be a literal in its body.
    all arrive in props.
 2. **Layouts stop doing string work on words.** No upper-casing, no comma or space splitting,
    no three-character cut (`widgets/PrayerWidget.tsx:303-310`, `:378`, `:545-555`, `:606`).
-3. **One English fallback table stays inside each layout function.** It is used when a prop
-   string is absent. That happens in two cases: no props at all (the neutral card, drawn before
-   the app's first push), and props written by 1.x that are still on disk when the new layout
-   string is registered (`evidence/widgets.md` section 4.6). The widget process cannot know the
-   language in either case. This is the one place outside the `en` pack where English literals
-   remain, and the only widget text that can appear in the wrong language.
+3. **One English fallback table stays inside each layout function.** It serves two purposes.
+   It supplies any prop string that is absent, which is the case for props written by 1.x that
+   are still on disk when the new layout string is registered (`evidence/widgets.md` section
+   4.6). And it holds the neutral card, which stays English: the neutral card is drawn when
+   there are no props at all, when the Android snapshot is missing
+   (`widgets/PrayerWidget.tsx:527-530`), and as the lock layouts' own fallback after a render
+   error (`widgets/LockPrayerWidget.tsx:187-189`, `:330-332`, `:486-489`). In the first two
+   cases the widget process cannot know the language. In the third it could, at the cost of
+   three more strings in every one of about 23 timeline entries for a card that only a defect
+   shows. This is the one place outside the `en` pack where English literals remain.
 4. **The iOS ticking countdown is pinned to Latin digits** with the `environment` modifier's
    `locale` key (`node_modules/@expo/ui/src/swift-ui/modifiers/environment.ts:3-23`), value
-   `en_US_POSIX`. It draws digits and colons only, so no word is affected. This is a device
+   `en_US_POSIX`. It draws digits and colons only, so no word is affected. Every layout
+   function names its second parameter `environment` today (`widgets/PrayerWidget.tsx:81`,
+   `widgets/LockPrayerWidget.tsx:44`, `:197`, `:338`), which hides the modifier inside the
+   function, so that parameter is renamed `widgetEnvironment` in all four. This is a device
    gate (document 06, D-4); if the modifier does not behave on a device, the step is dropped
    and the countdown keeps the device's numbering system, as it does today.
 
@@ -266,15 +273,17 @@ Inside each of the four layout functions (`widgets/PrayerWidget.tsx:81`,
    `text('hours').split('{n}').join(String(hours))` and the same for minutes, joined by one
    space. Plain string `split`, because the iOS runtime does not split on a regular expression
    (`widgets/PrayerWidget.tsx:542-544`) and the same source runs on both.
-7. iOS countdown text nodes (`widgets/PrayerWidget.tsx:615-619`,
-   `widgets/LockPrayerWidget.tsx:171-183`, `:473-483`): add
-   `environment({ key: 'locale', value: 'en_US_POSIX' })` to their modifier lists.
+7. Rename the second parameter of all four layout functions to `widgetEnvironment` and update
+   its reads. Import `environment` from `@expo/ui/swift-ui/modifiers`, unaliased. On the iOS
+   countdown text nodes (`widgets/PrayerWidget.tsx:615-619`,
+   `widgets/LockPrayerWidget.tsx:171-183`, `:473-483`) add
+   `environment({ key: 'locale', value: 'en_US_POSIX' })` to the modifier lists.
 8. `widgets/PrayerWidget.tsx:90`: change `props !== null` to `props != null`. iOS passes
    `undefined` for absent props and `'days' in undefined` throws outside the `try`
    (`evidence/widgets.md` section 1.4). It is an existing defect in the same guard this work
    edits, and the new `text` helper reads `props` on the same path.
-9. The neutral cards (`evidence/widgets.md` section 7, items 7 and 11) keep their literals.
-   They are drawn only with no props.
+9. The neutral cards (`evidence/widgets.md` section 7, items 7 and 11) keep their literals, for
+   the three cases of decision 3.
 
 The inline lock face stays name, a space, time (`widgets/LockPrayerWidget.tsx:140`, `:283`,
 `:450`). The row key stays the name (`widgets/PrayerWidget.tsx:737`): names are unique within a
@@ -375,8 +384,32 @@ export const setNameWidth = (locale: LocaleCode, schedule: ScheduleType, width: 
 - `usePrayer` reads `nameWidthAtoms[language][schedule]` and returns it as `ui.nameWidth`
   (`hooks/usePrayer.ts:81`, `:100`, `:117`).
 
-The first frames after a switch to a language never measured use width 0, then the measured
-width, exactly as a fresh install does today in English.
+While a language's cached width is 0, which is the first frames after the first switch to it
+and the first frames of a fresh install, the wrapper takes no fixed width and each name sits at
+its natural width. The columns line up when the measurement lands. The cache only grows, as it
+does today, so a later correction that shortens a pack's widest name leaves that language's
+column at its old width until a reinstall. That is accepted: it is one column a few points
+wider than it needs to be.
+
+### Fonts and scripts
+
+Only two Roboto files ship (`app.json:74-79`), and they hold no Arabic, Devanagari or Thai
+glyphs (`evidence/ui-strings.md` section 3.1). Those scripts are drawn by each platform's own
+fallback face, exactly as today's Arabic names already are. No font is added at 2.0.0: three
+more scripts would each need a face chosen by the owner, and a bundled face is a visual
+decision. The consequences are stated, not hidden: weight and metrics differ from Roboto, and
+a tall script can clip where a component fixes a line height. D-8 is the gate for that
+(document 06), and a clipped line is fixed in that component before the pack's tier changes.
+
+### Alignment outside the row
+
+"Left-aligned in every language" is specified for the prayer row and is made true there by the
+wrapper. Elsewhere this design changes no alignment style: a text with an explicit `textAlign`
+keeps it, and a text without one keeps the platform's natural alignment, which for a
+right-to-left paragraph is the right edge of its own box. The eleven explicit `textAlign`
+sites are listed in `evidence/ui-strings.md` section 4. D-9 (document 06) reads every sheet and
+modal in Arabic on both platforms, and a paragraph that sits wrongly gets an explicit
+`textAlign` in its component before the Arabic pack's tier changes.
 
 ## 6. Settings row and language sheet
 
@@ -411,11 +444,16 @@ Wiring: `languageSheetModalAtom`, `setLanguageSheetModal`, `showLanguageSheet` i
 beside the three existing sheet refs (`stores/ui.ts:90-97`, `:144-175`). The sheet mounts beside
 the other four in `app/_layout.tsx:88-91` and is exported from `components/sheets/index.ts`.
 
-## 7. Native alert dialogs
+## 7. Native alert dialogs and the error screen
 
 The permission dialog (`hooks/useNotification.ts:57-67`) and the qibla location dialog read
 `getCatalog()` when they open. They are built at the moment of display, so they are live, not
 baked. Their keys are in `02a-catalog-keys.md`.
+
+`ErrorScreen` is also the root error boundary's fallback (`app/_layout.tsx:41-44`), so it must
+not depend on anything that can throw. It does not call `useT`. It reads `getCatalog()` inside
+a `try` at render and falls back to `catalogFor(DEFAULT_LOCALE)`, which is a static import and
+cannot fail. A fault in the language store therefore cannot take the error screen down.
 
 ## 8. Outside the app's reach at 2.0.0
 
@@ -424,7 +462,7 @@ baked. Their keys are in `02a-catalog-keys.md`.
 | Widget gallery names and descriptions, 14 kinds | compiled into the native project at build (`app.json:204-379`, `evidence/widgets.md` section 2.6); the system picks a translation by device language, never by an in-app choice | English |
 | App name, two permission purpose strings | the same (`app.json:3`, `:23-25`) | English |
 | The library's fallback channel name | a string resource inside the library | `Miscellaneous` |
-| Widget neutral card | drawn with no props (decision 3 above) | English |
+| Widget neutral card | drawn with no props, with a missing Android snapshot, and as the lock layouts' fallback after a render error (section 4, decision 3) | English |
 | Widget library error boxes | drawn by the library (`evidence/widgets.md` section 2.7) | English |
 | Digits in the iOS widget countdown, if D-4 fails | drawn by the system | device numbering system |
 

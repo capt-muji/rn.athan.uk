@@ -81,11 +81,11 @@ export interface LocalePack<M> {
 }
 
 /** The English strings, as literal types */
-export type Messages = (typeof import('./en'))['en']['messages'];
+type Messages = (typeof import('./en'))['en']['messages'];
 export type MessageKey = keyof Messages;
 
 /** The placeholder names inside a template */
-export type PlaceholdersIn<S extends string> = S extends `${string}{${infer Name}}${infer Rest}`
+type PlaceholdersIn<S extends string> = S extends `${string}{${infer Name}}${infer Rest}`
   ? Name | PlaceholdersIn<Rest>
   : never;
 
@@ -144,6 +144,7 @@ What the compiler then refuses, with no test involved:
 // shared/locales/index.ts
 import { isProd } from '@/shared/config';
 
+/** Reached by the catalog gate at test time only; see the allow-list note in 07-sequencing.md */
 export const LOCALES = { en, ar, hi, ms, so, th } as const;          // en first, then code order
 export type LocaleCode = keyof typeof LOCALES;
 export const DEFAULT_LOCALE: LocaleCode = 'en';
@@ -157,7 +158,7 @@ export const metaFor = (code: LocaleCode): LocaleMeta => LOCALES[code].meta;
 
 `tier` is how the six-locale confidence build and the public build come from one source. All
 five translated packs start at `preview`. The confidence build is a preview-environment build
-(`shared/config.ts:4`), so it offers all six. A production build offers `en` alone until a
+(`shared/config.ts:3`, `:14-15`), so it offers all six. A production build offers `en` alone until a
 pack's `tier` is changed to `release`, which is a one-word edit in that pack.
 
 ### Adding a locale
@@ -180,16 +181,31 @@ export type Translator = <K extends MessageKey>(key: K, ...args: ParamsOf<K>) =>
 export const format = <K extends MessageKey>(catalog: Catalog, key: K, ...args: ParamsOf<K>): string;
 export const translatorFor = (catalog: Catalog): Translator;
 
-export const PRAYER_NAME_KEYS: Readonly<Record<PrayerId, MessageKey>>;        // 'last_third' maps to 'prayer.lastThird'
-export const PRAYER_HERO_KEYS: Readonly<Record<PrayerId, MessageKey>>;
-export const EXPLANATION_KEYS: Readonly<Record<ExtraPrayerId, MessageKey>>;
-export const prayerNameKey = (id: PrayerId): MessageKey => PRAYER_NAME_KEYS[id];
-export const prayerHeroKey = (id: PrayerId): MessageKey => PRAYER_HERO_KEYS[id];
-export const weekdayShortKey = (weekday: 0 | 1 | 2 | 3 | 4 | 5 | 6): MessageKey;
-export const monthShortKey = (month: number): MessageKey;          // 1 to 12
-export const hijriMonthKey = (month: number): MessageKey;          // 1 to 12
-export const hijriMonthShortKey = (month: number): MessageKey;     // 1 to 12
+// Each helper returns the narrow union of the keys it can produce, never MessageKey itself
+type PrayerNameKey = Extract<MessageKey, `prayer.${string}`>;
+type PrayerHeroKey = Extract<MessageKey, `prayerHero.${string}`>;
+type ExplanationKey = Extract<MessageKey, `explanation.${string}`>;
+type WeekdayShortKey = Extract<MessageKey, `date.weekdayShort.${number}`>;
+type MonthShortKey = Extract<MessageKey, `date.monthShort.${number}`>;
+type HijriMonthKey = Extract<MessageKey, `date.hijriMonth.${number}`>;
+type HijriMonthShortKey = Extract<MessageKey, `date.hijriMonthShort.${number}`>;
+
+const PRAYER_NAME_KEYS: Readonly<Record<PrayerId, PrayerNameKey>>;            // 'last_third' maps to 'prayer.lastThird'
+const PRAYER_HERO_KEYS: Readonly<Record<PrayerId, PrayerHeroKey>>;
+export const EXPLANATION_KEYS: Readonly<Record<ExtraPrayerId, ExplanationKey>>;
+export const prayerNameKey = (id: PrayerId): PrayerNameKey => PRAYER_NAME_KEYS[id];
+export const prayerHeroKey = (id: PrayerId): PrayerHeroKey => PRAYER_HERO_KEYS[id];
+export const weekdayShortKey = (weekday: number): WeekdayShortKey;        // 0 to 6, Sunday is 0
+export const monthShortKey = (month: number): MonthShortKey;              // 1 to 12
+export const hijriMonthKey = (month: number): HijriMonthKey;              // 1 to 12
+export const hijriMonthShortKey = (month: number): HijriMonthShortKey;    // 1 to 12
 ```
+
+The narrow return types are what lets `t(prayerNameKey(id))` compile. `format` infers `K` from
+its key argument. Were a helper to return `MessageKey`, `K` would be the whole union,
+`ParamsOf<K>` would collect every placeholder in the catalog, and the call would demand them
+all. A union of keys that carry no placeholder gives `ParamsOf` an empty tuple. T-CAT-T pins
+both the passing call and the failing one.
 
 `format`, exactly: take `catalog[key]`. With no parameter object, return it. Otherwise, for each
 own entry `[name, value]` of the object, replace every occurrence of `{name}` with
@@ -197,8 +213,8 @@ own entry `[name, value]` of the object, replace every occurrence of `{name}` wi
 through `String`, which is what keeps digits Latin in every language. `format` does no
 escaping, no pluralisation and no bidirectional control insertion.
 
-The month helpers build the key from the number and assert through their type that it is a key.
-A number outside 1 to 12 cannot occur: both callers get the number from a calendar read.
+Each date helper indexes a constant tuple of its keys. A number outside the tuple cannot occur:
+every caller gets the number from a calendar read.
 
 ### No plural rules
 
@@ -241,6 +257,7 @@ pack is covered with no test edit.
 | G10 | Each English value marked `frozen` in `notes.json` equals its literal 1.x bytes, typed into the test | a change to a title or channel name English users already hold |
 | G11 | In `en`, each `prayerHero.*` equals its `prayer.*` upper-cased | the widget hero drifting from the name |
 | G12 | Every key in `notes.json` is a key of `en` | a stale note |
+| G13 | In a Latin-script pack other than `en`, a value that equals its English value byte for byte is listed under `@same` in the pack's lock file | an untranslated value that G7 cannot see |
 
 ### The lock
 
@@ -260,6 +277,31 @@ letter of the pack's script (a brand word, a template that is all placeholder an
 
 `scripts/catalog-lock.js <code>` rewrites the file from `en.ts` and the pack. It keeps `@same`
 as it finds it. It is the only writer.
+
+### The notes file
+
+`shared/locales/notes.json` is a flat map from key to note. A key with nothing to say is absent.
+
+```json
+{
+  "prayer.lastThird": { "where": "Prayer row, widget list, notification title", "budget": 12 },
+  "notification.atTime": { "where": "Notification title", "frozen": true },
+  "widget.staleBodyLine1": { "where": "Small widget, first of two lines", "hint": "Reads on into widget.staleBodyLine2" }
+}
+```
+
+| Field | Type | Use |
+| --- | --- | --- |
+| `where` | string, required | where the string is drawn, for the translator |
+| `budget` | whole number, optional | G6's limit on visible length |
+| `frozen` | `true`, optional | G10 pins the English bytes |
+| `hint` | string, optional | anything else the translator must know |
+
+Budgets at 2.0.0: 12 for every `prayer.*` and `prayerHero.*` key (the widget's fixed name box
+and the narrowest phone's row, document 04); 32 for a What's New title and 96 for a body, the
+limits the code already enforces (`shared/whatsNew.ts:131-137`); and each budget named in the
+note column of `02a-catalog-keys.md`. The `where`, `frozen` and `hint` values come from the same
+column.
 
 The lock turns "a translation exists" into "a translation of this exact English exists". Editing
 one English string fails G9 for every pack until each pack's value is looked at again and the

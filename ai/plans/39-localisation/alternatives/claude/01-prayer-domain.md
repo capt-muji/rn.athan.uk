@@ -97,10 +97,9 @@ Where each column comes from:
 ### Registry API
 
 ```ts
-export const PRAYERS: Readonly<Record<PrayerId, PrayerDefinition>>;
+const PRAYERS: Readonly<Record<PrayerId, PrayerDefinition>>;                  // module-private
 export const definitionOf = (id: PrayerId): PrayerDefinition => PRAYERS[id];
 export const prayerIdsFor = (schedule: ScheduleType): readonly PrayerId[];   // list order
-export const isPrayerId = (value: unknown): value is PrayerId;
 /** The ids on a list day: every id of the schedule, less `fridayOnly` ids when the day is not a Friday */
 export const prayerIdsOnListDay = (schedule: ScheduleType, isFriday: boolean): readonly PrayerId[];
 ```
@@ -108,12 +107,26 @@ export const prayerIdsOnListDay = (schedule: ScheduleType, isFriday: boolean): r
 `prayerIdsFor` returns the same frozen array instance on every call. `PRAYERS` and every
 definition are frozen with `Object.freeze`.
 
+The repository fails any exported symbol, type or value, that no other production file imports
+(`scripts/find-unused-exports.py:29-30`, `shared/__tests__/unusedExports.test.ts:16-54`). So the
+`export` keywords in the blocks of this document show intent, and `07-sequencing.md` has the
+binding list: which symbol is exported, by which step, for which importer. `PrayerDefinition`,
+`PrayerSource`, `StoredTimeField` and `StandardPrayerId` stay module-private, because nothing
+outside the registry needs to name them.
+
 ## The wire format lives in one file
 
 Every frozen template moves into one pure module. It imports the registry and nothing else.
-Nothing outside it may contain the substrings `preference_alert_`, `preference_reminder_`,
+No other file under `stores/`, `device/` or `shared/` may build one of these strings. A
+source-scan test (document 06, T-ID-3) reads the non-comment code of those three folders and
+fails on the substrings `preference_alert_`, `preference_reminder_`,
 `preference_notification_repair_`, `athan_`, `reminder_`, `scheduled_notifications_`,
-`scheduled_reminders_` or `.mp3`. A source-scan test enforces that (document 06, T-ID-3).
+`scheduled_reminders_` and `.mp3`. Its allow-list is the two keep lists, whose entries are
+prefixes that an existing suite pins as source literals (`stores/sync.ts:357-371`,
+`stores/version.ts:144-156`, `stores/__tests__/database.test.ts:558-578`). The scan stops at
+those three folders on purpose: a widget layout names its drawables `athan_widget_...` and
+cannot import anything (`widgets/PrayerWidget.tsx:235-243`), and `assets/audio/index.ts` must
+spell each file in a static `require`.
 
 ```ts
 // shared/identifiers.ts (new)
@@ -128,6 +141,14 @@ export const reminderIntervalPreferenceKey = (id: PrayerId, slot: ReminderSlot):
 //   `preference_reminder_interval_${schedule}_${legacyKeyToken}${slot === 0 ? '' : `_${slot + 1}`}`
 export const repairMarkKey = (id: PrayerId): string;
 //   `preference_notification_repair_${schedule}_${legacyKeyToken}`
+
+// The index-keyed keys older installs hold, read once by the migration (stores/notifications.ts:575-579)
+export const legacyIndexAlertKey = (schedule: ScheduleType, index: number): string;
+//   `preference_alert_${schedule}_${index}`
+export const legacyIndexReminderAlertKey = (schedule: ScheduleType, index: number): string;
+//   `preference_reminder_alert_${schedule}_${index}`
+export const legacyIndexReminderIntervalKey = (schedule: ScheduleType, index: number): string;
+//   `preference_reminder_interval_${schedule}_${index}`
 
 // OS notification identifiers (device/notifications.ts:49-50, :61-66)
 export const atTimeNotificationId = (id: PrayerId, listDay: string): string;
@@ -160,6 +181,15 @@ export const reminderChannelId = (id: PrayerId, minutes: ReminderInterval): stri
 //   `reminder_${audioSlug}_${minutes}_v3`
 export const atTimeChannelId = (id: PrayerId, soundIndex: number): string;
 //   playsAthan ? athanChannelId(soundIndex) : EXTRAS_CHANNEL_ID
+
+/** Reads a channel id back into what it names, or null when the id is not one of this app's */
+export const parseChannelId = (
+  channelId: string
+):
+  | { kind: 'athan'; soundIndex: number }
+  | { kind: 'extras' }
+  | { kind: 'reminder'; prayerId: PrayerId; minutes: ReminderInterval }
+  | null;
 ```
 
 `schedule` in every template is `definitionOf(id).schedule`, whose two values are the strings
@@ -184,6 +214,23 @@ interface PrayerRow {
 `ReadablePrayer` and `UnreadablePrayer` keep their `datetime` and `time` fields unchanged
 (`shared/types.ts:286-301`). No row holds a display string any more, so a language switch never
 rebuilds a sequence.
+
+### The loading frame
+
+`usePrayer` answers with empty strings while the sequence loads or the row index is out of
+range (`hooks/usePrayer.ts:87-102`), and `canonicalPrayerIndex` exists to keep that frame from
+handing `useAtomValue` an undefined atom (`stores/notifications.ts:656-660`,
+`components/prayer/Alert.tsx:66`). With ids the rule is:
+
+- `usePrayer` returns `id: PrayerId | null`. It is `null` exactly where `english` is `''` today.
+- It also returns `alertId: PrayerId`, never null: the row's id when there is one, otherwise
+  `prayerIdsFor(type)[index] ?? prayerIdsFor(type)[0]`. That is today's fallback to the row
+  index, made total.
+- `components/prayer/Prayer.tsx` draws `''` for a null id and the catalog name otherwise.
+  `prayerNameKey` is never called with null.
+- `components/prayer/Alert.tsx` reads the atom of `alertId`, builds its spoken label with `''`
+  for the name on a null id, and ignores a press on a null id.
+- `getRowPressAction` returns `'none'` for a null id.
 
 ### The countdown
 
@@ -234,7 +281,7 @@ A prayer was passed as up to four arguments (`scheduleType`, `prayerIndex`, `eng
 | the two repair-mark arrays | `repairMarks: Readonly<Record<PrayerId, { key: string; atom: StoredNumberAtom }>>` | `stores/notifications.ts:333-361` |
 | `getPrayerAlertAtom(scheduleType, prayerIndex)` | `getPrayerAlertAtom(id)` | `stores/notifications.ts:677-682` |
 | `getPrayerAlertType`, `setPrayerAlertType`, the six reminder getters and setters | the same names taking `(id, ...)` | `stores/notifications.ts:623-808` |
-| `canonicalPrayerIndex(scheduleType, prayerName, fallbackIndex)` | deleted | `stores/notifications.ts:663-666`, `components/prayer/Alert.tsx:66` |
+| `canonicalPrayerIndex(scheduleType, prayerName, fallbackIndex)` | deleted; "The loading frame" above replaces its fallback | `stores/notifications.ts:663-666`, `components/prayer/Alert.tsx:66` |
 | `getPrayerArrays(scheduleType)` | deleted; callers use `prayerIdsFor(schedule)` | `stores/notifications.ts:151-157` |
 | `commitPrayerAlertChange(scheduleType, prayerIndex, englishName, arabicName, next, previous)` | `commitPrayerAlertChange(id, next, previous)` | `stores/notifications.ts:1330-1372` |
 | `commitAlertMenuChanges(scheduleType, prayerIndex, englishName, arabicName, original, current)` | `commitAlertMenuChanges(id, original, current)` | `hooks/useNotification.ts:210-266` |
@@ -258,14 +305,14 @@ A prayer was passed as up to four arguments (`scheduleType`, `prayerIndex`, `eng
 - `getCascadeDelay` returns `(6 - index) * ANIMATION.cascadeDelay` for both schedules today,
   because its Extras branch reads the Standard Arabic array's length
   (`shared/prayer.ts:189-194`). Animation timing is a settled visual. The rewrite uses
-  `STANDARD_PRAYER_IDS.length` for both branches and a test pins the ten values.
+  `STANDARD_PRAYER_IDS.length` for both branches and a test pins the eleven values.
 - `calculateBelongsToDate` and `adjustPrayerDateForMidnightCrossing` are a matched pair
   (`shared/prayer.ts:243-247`). Both read `crossesMidnight` and `wrapsFromEvening`, so they
   still cannot drift apart.
 - `canonicalDisplayOrder` ranks by registry `index` (`shared/prayer.ts:569-579`).
 - The migration of index-keyed preferences keeps its exact behaviour, including the pre-1.0.27
   Extras order (`stores/notifications.ts:525-598`). It resolves destinations by id.
-- `deleteLegacyAndroidAudioChannels` builds the same 420 or so ids from `audioSlug`
+- `deleteLegacyAndroidAudioChannels` builds the same 231 ids from `audioSlug`
   (`shared/notifications.ts:523-552`).
 
 ## What is deleted
