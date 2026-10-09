@@ -380,6 +380,20 @@ All athan and reminder audio files (99) stay exactly as recorded, in every langu
 recorded in Arabic, so it carries no English to translate and no per-language recording work
 exists. The notification TEXT translates to the selected language; the sound does not.
 
+## D23. Month names localise; the calendar choice does not (2026-10-09)
+
+Gregorian and Hijri month names localise per language; the date formats and day-month order stay
+as today; the Gregorian/Hijri toggle in Settings stays, independent of language. English Hijri
+months remain today's English transliterations; each language carries its own transliterations
+(verified: `Intl` localises both calendars per locale, including Indonesian "Juli" and "Safar").
+
+## D24. A missing name is always a transliteration (2026-10-09)
+
+Every language can transliterate the eight Arabic-term prayer names, so a locale with no sourced
+name for a slot gets the transliteration written in that language's script. No row suppression, no
+English fallback. Refines D15: the three translated slots (Sunrise, Midnight, Last Third) are the
+only exceptions.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
