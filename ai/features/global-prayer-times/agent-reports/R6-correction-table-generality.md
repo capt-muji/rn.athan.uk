@@ -840,7 +840,7 @@ Every URL was fetched on 2026-09-30.
 
 **Library**
 
-- `adhan@4.4.6`, installed into `$HOME/athan-global-scratch/r6`, never into the repository.
+- `adhan@4.4.6`, installed into `$HOME/athan-gitree/scratch/r6`, never into the repository.
 
 **Files this report produced**, all under `ai/features/global-prayer-times/data/corrections/`
 

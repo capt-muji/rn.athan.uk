@@ -171,5 +171,5 @@ say('The gap between the two published Asr columns, which no margin or rounding 
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part3b.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part3b.txt', out + '\n');
 console.log(out);

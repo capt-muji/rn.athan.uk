@@ -11,7 +11,7 @@ compression, byte length, and the later timestamps sharing the digest.
 """
 import os, sys, time, gzip, shutil, subprocess, urllib.request, urllib.error
 
-BASE = os.path.expanduser('~/athan-research/site-reading')
+BASE = os.path.expanduser('~/athan-gitree/research/site-reading')
 OUT = os.path.join(BASE, 'method-versions', 'raw')
 os.makedirs(OUT, exist_ok=True)
 UA = 'Mozilla/5.0 (research; reading for prayer-time method study)'

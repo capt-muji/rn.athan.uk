@@ -1,16 +1,16 @@
 # Moonsighting Committee prayer-time method (Khalid Shaukat): research findings
 
 **Status: IN PROGRESS.** Session started 2026-09-14 on branch `research/moonsighting` (worktree
-`~/athan-research-wt`, based on `uat-2` at `466b568`). Research only: no app code changed, nothing
+`~/athan-gitree/research-wt`, based on `uat-2` at `466b568`). Research only: no app code changed, nothing
 built, nothing merged or pushed. Brief: `ai/prompts/moonsighting-research.md`.
 
 Scratch material (crawl, PDFs, endpoint responses, scripts, agent notes) lives under
-`~/athan-research/`, outside both checkouts.
+`~/athan-gitree/research/`, outside both checkouts.
 
 ## 1. What was researched
 
 The four steps of the brief, run by the lead in parallel with five Opus research agents. Each
-agent's full notes are in `~/athan-research/notes/`.
+agent's full notes are in `~/athan-gitree/research/notes/`.
 
 1. **moonsighting.com, every page and every document (step 1)**
    - The live site was link-walked twice, mining links in pages and in the site's JS menus. The
@@ -79,7 +79,7 @@ the PDF was created 2012-08-10).
 ### 2.3 The app's provider, londonprayertimes.com
 
 Raw HTML of `/`, `/api`, `/news` and `/privacy`, fetched with `curl` on 2026-09-14 and read in
-full (saved in `~/athan-research/london/lpt-site/`). The earlier WebFetch summaries were replaced
+full (saved in `~/athan-gitree/research/london/lpt-site/`). The earlier WebFetch summaries were replaced
 by these reads.
 
 - **Every page's footer:** "Times sourced from East London Mosque. We publish the official
@@ -118,7 +118,7 @@ by these reads.
   | method 1 | 02:43 | 04:43 | 13:07 | 18:40 | 17:25 | 18:40 | 21:25 | 23:52 |
   | method 2 | 02:43 | 04:43 | 13:07 | 17:25 | 17:25 | 18:40 | 21:25 | 22:41 |
 
-  Raw responses: `~/athan-research/endpoint/moonsighting.ahmedbukhamsin.sa_london_2026_m{0,1,2}.json`.
+  Raw responses: `~/athan-gitree/research/endpoint/moonsighting.ahmedbukhamsin.sa_london_2026_m{0,1,2}.json`.
 
 ### 2.5 The method as moonsighting.com documents it
 
@@ -326,8 +326,8 @@ or coefficient appears anywhere in the book.**
 
 ### 2.11 `adhan`'s `MoonsightingCommittee`: the source, and deltas in minutes
 
-The full notes, scripts and tables are in `~/athan-research/notes/adhan.md` and
-`~/athan-research/adhan/results/{tables,edges}.md`. The source quotes below were checked line by
+The full notes, scripts and tables are in `~/athan-gitree/research/notes/adhan.md` and
+`~/athan-gitree/research/adhan/results/{tables,edges}.md`. The source quotes below were checked line by
 line against `adhan@4.4.6` (fetched with `opensrc`, MIT, repo `batoulapps/adhan-js`, npm latest,
 modified 2026-08-31).
 
@@ -459,12 +459,12 @@ IANA tzdata 2026c). **[lead-verified]** for all seven faulty zones.
 
 **Source.** `http://www.moonsighting.com/prayer.html` was the site's prayer-times page before
 how-we.html. The Wayback Machine holds 64 distinct captures, by content digest, all downloaded to
-`~/athan-research/pdfs/wayback/prayer-html/`:
+`~/athan-gitree/research/pdfs/wayback/prayer-html/`:
 
 - **60 real pages,** from 1999-02-21 to 2011-08-27.
 - **4 bot-challenge pages** ("One moment, please...", 2021 to 2025) with no prayer content. There
   are no captures at all from 2012 to 2020.
-- **All 60 were read in full by an agent,** in `~/athan-research/notes/prayer-history.md`: the first
+- **All 60 were read in full by an agent,** in `~/athan-gitree/research/notes/prayer-history.md`: the first
   capture whole, every line of all 63 sequential diffs (4,031 lines), and the last real capture
   whole.
 - **Links included.** The reading texts include every link target.
@@ -568,7 +568,7 @@ The lead re-checked each dated phrase by full-text search across all of them **[
 **The reference.** `https://www.londonprayertimes.com/api/times?format=json&year=2026&24hours=true`:
 
 - **Fetched once** on 2026-09-14 with the owner's key, which was never stored and never committed.
-- **Where it is:** saved at `~/athan-research/london/lpt-2026.json`, with the request, without the
+- **Where it is:** saved at `~/athan-gitree/research/london/lpt-2026.json`, with the request, without the
   key, in `lpt-2026.meta.json`.
 - **The check:** the key does not appear in the response.
 - **What it holds:** 365 days, 2026-01-01 to 2026-12-31, with no gaps. Every value is `HH:mm`.
@@ -585,8 +585,8 @@ that date.
   Isha* (2005, section 2.10). A blank "-" carries the last printed value in that month's column
   forward.
 - **Checked by eye.** The transcription was read from the page rendered at 300 dpi
-  (`~/athan-research/london/tables/table5_{top,bottom}.png`), not only from the PDF text layer.
-- **The script** is the inline check recorded in `~/athan-research/london/`. The implied intervals
+  (`~/athan-gitree/research/london/tables/table5_{top,bottom}.png`), not only from the PDF text layer.
+- **The script** is the inline check recorded in `~/athan-gitree/research/london/`. The implied intervals
   for every day are in `lpt-2026-intervals.json`.
 
 **Sunrise: shown 3 minutes early.** API `sunrise` = base sunrise − 3 on 316 days, and base sunrise
@@ -635,7 +635,7 @@ as date, API, rule, API minus rule and interval used:
     and rejoins the chart at 1-22 on the 20th.
   - It steps from January's 1-40 to 1-39 on 1 February, where the chart says 1-38.
   - It reaches November's 1-40 on the 30th, one day after the chart.
-  - The implied intervals for every day are in `~/athan-research/london/lpt-2026-intervals.json`.
+  - The implied intervals for every day are in `~/athan-gitree/research/london/lpt-2026-intervals.json`.
 - **The later UK tables do not explain these days.** The Hizbul Ulama national tables computed by
   Shaukat (section 2.8, parsed page by page by the documents agent) were compared date by date
   with the API's implied intervals, Fajr as sunrise − Fajr and Isha as Isha − (Maghrib − 3):
@@ -693,7 +693,7 @@ Everything else sits on Shaukat's sunrise, noon + 5 and sunset + 3.
 This section completes section 2.14. Sources:
 
 - The London agent's notes: `notes/london.md`, 368 lines, read in full by the lead. Scripts and
-  outputs are under `~/athan-research/london/`.
+  outputs are under `~/athan-gitree/research/london/`.
 - The lead's independent re-checks, marked **[lead-verified]**.
 
 **Source identity: PROVEN for 2026.** The London Prayer Times API year, East London Mosque's
@@ -800,7 +800,7 @@ the charts; it is a possible origin, **UNVERIFIED**.
   **[lead-verified for 2026]**. An earlier version printed sunrise as +2 to +4, with the sign reversed.
 - **What exact replication in London needs:**
   - the interval table, which is year-independent except the June and 2020 edits
-    (`~/athan-research/london/data/london_intervals_final.json`, 366 slots);
+    (`~/athan-gitree/research/london/data/london_intervals_final.json`, 366 slots);
   - a sun calculation at 51°30′N 0°10′W, rounded to the nearest minute;
   - the published sunrise and Maghrib, or HMNAO's values, for the 3 to 12 boundary days per prayer.
   - That is a reconstruction of London's timetable, not the moonsighting.com method. **Using it as
@@ -816,7 +816,7 @@ the charts; it is a possible origin, **UNVERIFIED**.
 Sources:
 
 - The implementations agent's notes: `notes/implementations.md`, 1,214 lines, read in full by the
-  lead. Scripts, probes and cached responses are under `~/athan-research/impls/` and `endpoint/`.
+  lead. Scripts, probes and cached responses are under `~/athan-gitree/research/impls/` and `endpoint/`.
 - Shaukat's booklet, read in full by the lead.
 - The lead's own re-checks, marked **[lead-verified]**.
 
@@ -1437,15 +1437,15 @@ Draft. The London and implementations strands may add to these.
 | Unified Prayer Times for London, general announcement | <http://www.hizbululama.org.uk/articles/english/Unified.pdf> | 2026-09-14 |
 | London Prayer Times home and API docs | <https://www.londonprayertimes.com/>, <https://www.londonprayertimes.com/api> | 2026-09-14 |
 | moonsighting.com JSON endpoint and fallback | <https://www.moonsighting.com/time_json.php>, <https://moonsighting.ahmedbukhamsin.sa/time_json.php> | 2026-09-14 |
-| moonsighting.com, every live page | 1,186 unique HTTP-200 paths, `~/athan-research/crawl.log`, `crawl2.log`; ledger `notes/site.md` §14 | 2026-09-14 |
+| moonsighting.com, every live page | 1,186 unique HTTP-200 paths, `~/athan-gitree/research/crawl.log`, `crawl2.log`; ledger `notes/site.md` §14 | 2026-09-14 |
 | how-we.html, faq_pt.html and pray.php, every archived version | 157 digest-distinct Wayback captures, with digests, in `notes/method-versions/ledger.tsv` | 2026-09-14 |
 | moonsighting.com method pages | <https://www.moonsighting.com/how-we.html> (updated 2024-03-01), <https://www.moonsighting.com/faq_pt.html> (updated 2020-08-25) | 2026-09-14 |
 | moonsighting.com table generator | <https://www.moonsighting.com/pray.php>, `assets/js/apple_map.js`, <https://www.moonsighting.com/praytable.php> | 2026-09-14 |
-| Old prayer-times page, 64 captures | `http://www.moonsighting.com/prayer.html`, Wayback 19990221195144 to 20251016224039 (list in `~/athan-research/pdfs/wayback/prayer-html/captures.txt`) | 2026-09-14 |
+| Old prayer-times page, 64 captures | `http://www.moonsighting.com/prayer.html`, Wayback 19990221195144 to 20251016224039 (list in `~/athan-gitree/research/pdfs/wayback/prayer-html/captures.txt`) | 2026-09-14 |
 | French prayer-times page | `http://www.moonsighting.com/prayer-french.html`, Wayback 20100827001844 | 2026-09-14 |
 | Miftahi, *Fajar and Isha* (2005) | `http://www.moonsighting.com/articles/fajr&isha-yam.pdf`, Wayback 20070410171730 (also `fajarishainbritain1.pdf`, `fajar&isha-a5.pdf`) | 2026-09-14 |
 | Hizbul Ulama UK city timetables, 2006 and 2009 | `http://www.moonsighting.com/articles/uk-prayercharts.pdf` (Wayback 20070810011835), `articles/uk-prayercharts1.pdf` (Wayback 2010) | 2026-09-14 |
-| Every other document the site carried | `~/athan-research/pdfs/manifest.json` (58 of 59 recovered, source URL and capture per file) | 2026-09-14 |
+| Every other document the site carried | `~/athan-gitree/research/pdfs/manifest.json` (58 of 59 recovered, source URL and capture per file) | 2026-09-14 |
 | Hizbul Ulama, "Why our fasting times and timetable are not wrong" (2011) | <http://www.hizbululama.org.uk/articles/english/Why_our_fasting_times_are_not_wrong.pdf> | 2026-09-14 |
 | East London Mosque, prayer times explained, and yearly timetables | <https://www.eastlondonmosque.org.uk/prayer-times-and-calendar-explained>, <https://www.eastlondonmosque.org.uk/prayer-times>; PDFs listed in `notes/london.md` §1 | 2026-09-14 |
 | London Prayer Times API, 2026 year | `https://www.londonprayertimes.com/api/times?format=json&year=2026&24hours=true` (key supplied by the owner, not stored), saved to `data/london/lpt-2026.json` | 2026-09-14 |

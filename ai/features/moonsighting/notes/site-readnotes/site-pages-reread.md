@@ -1,6 +1,6 @@
 # Site pages re-read: misc top-level pages, articles/, dont/
 
-Source text: $HOME/athan-research/site-text/www.moonsighting.com/
+Source text: $HOME/athan-gitree/research/site-text/www.moonsighting.com/
 Reading rule: every line of every file, including "--- FORMS" and "--- LINKS", via consecutive Read calls to the last line (long lines folded into readnotes/tmp-* and read fully).
 
 ## Table
@@ -275,7 +275,7 @@ Row: | https://www.moonsighting.com/hijri-calendar.html | Hijri Calendar | Updat
 - Surprising: "Tafseer Ibn Katheer in Qur'an Surah As-Shams, verses 92:1 & 2" (Surah As-Shams is chapter 91, not 92).
 - FORMS: none. LINKS: meezan.tv video, vimeo, 2 YouTube, fcna-uq-calendar.html, "#".
 
-Byte note (3books and isra-meraj): `xxd` shows that the text file and the raw mirrored HTML ($HOME/athan-research/site/www.moonsighting.com/3books.html) both hold the UTF-8 replacement character EF BF BD in "switched from 102� to 108� and then back to 102�" and in "beyond 50�N". So the site itself serves the broken character, not the text extraction. The digits "102" and "108" are exactly as served. From this page alone it cannot be told whether they stand for 12°/18° or something else, so no substitute value is recorded. isra-meraj.html has the same EF BF BD bytes in place of quotation marks.
+Byte note (3books and isra-meraj): `xxd` shows that the text file and the raw mirrored HTML ($HOME/athan-gitree/research/site/www.moonsighting.com/3books.html) both hold the UTF-8 replacement character EF BF BD in "switched from 102� to 108� and then back to 102�" and in "beyond 50�N". So the site itself serves the broken character, not the text extraction. The digits "102" and "108" are exactly as served. From this page alone it cannot be told whether they stand for 12°/18° or something else, so no substitute value is recorded. isra-meraj.html has the same EF BF BD bytes in place of quotation marks.
 Julian weekday note (eclipses): computed from the Julian day number, all nine weekdays on the page agree: 632-01-27 Mon, 632-01-29 Wed, 632-02-27 Thu, 632-03-06 Fri, 613-07-23 Mon, 616-05-21 Fri, 617-11-04 Fri, 620-09-02 Tue, 627-04-21 Tue.
 
 ### evolution.html.txt

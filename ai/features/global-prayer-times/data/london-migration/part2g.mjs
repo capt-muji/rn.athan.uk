@@ -180,5 +180,5 @@ say('== 2g.3 Charing Cross on 2026 alone, against the app\'s own captured API ye
 }
 
 const out = lines.join('\n');
-fs.writeFileSync('$HOME/athan-global-scratch/r13/part2g.txt', out + '\n');
+fs.writeFileSync('$HOME/athan-gitree/scratch/r13/part2g.txt', out + '\n');
 console.log(out);

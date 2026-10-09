@@ -1,13 +1,13 @@
 # moonsighting.com `prayer.html`: complete dated history, 1999 to 2025
 
-Research note, 2026-09-14. Scope: every archived distinct-digest capture of `http://www.moonsighting.com/prayer.html` (64 captures listed in `~/athan-research/pdfs/wayback/prayer-html/captures.txt`). Every statement below quotes the page's own words and names the capture timestamp(s). Quotes keep the page's own spelling errors ("timimgs", "Prohobitted", "reporetd", "Dewsbuary", "Imama Maalik", "egrees", etc.). No prayer time is copied, averaged or invented. The only clock times quoted are ones the page itself prints (an Islamicfinder example and a reader's observation).
+Research note, 2026-09-14. Scope: every archived distinct-digest capture of `http://www.moonsighting.com/prayer.html` (64 captures listed in `~/athan-gitree/research/pdfs/wayback/prayer-html/captures.txt`). Every statement below quotes the page's own words and names the capture timestamp(s). Quotes keep the page's own spelling errors ("timimgs", "Prohobitted", "reporetd", "Dewsbuary", "Imama Maalik", "egrees", etc.). No prayer time is copied, averaged or invented. The only clock times quoted are ones the page itself prints (an Islamicfinder example and a reader's observation).
 
 ## 0. Method and completeness
 
 - **Source files.** Raw captures `prayer.html.<ts>`. All 64 were already on disk when extraction ran (05:43 on 2026-09-14). After the usage-limit resume I re-checked every raw file's size and mtime against `meta.json`: none changed, none added.
 - **Faithfulness of the existing `.txt` files.** All 64 existing `.txt` files reproduce exactly when regenerated with BeautifulSoup `html.parser`, scripts and styles removed, lines stripped and blank lines dropped. As an independent check, I stripped the raw HTML of tags with a regex and compared word-count multisets against the bs4 text for all 60 real captures: zero words differ, so nothing visible was dropped. Non-ASCII bytes present are 0xB0 (°), 0x85 (…), 0x91/0x92 (curly single quotes) and 0xEE (î). Decoding is strict cp1252 with no undefined bytes.
-- **Reading texts.** `~/athan-research/prayer-history/text/<ts>.txt` holds the bs4 text plus inline markers `⟦tag attr="…"⟧` for every `href`, `src`, `alt`, `name`, form `action`/`input`, `meta` content, HTML comment, and script/style body. These markers cover the link targets that the existing `.txt` files lack. Script: `~/athan-research/prayer-history/extract.py`.
-- **Diffs.** `~/athan-research/prayer-history/diffs/<prev>_to_<ts>.diff` holds the full `difflib.unified_diff` of each capture's reading text against the previous one, written whole to disk: 63 diffs.
+- **Reading texts.** `~/athan-gitree/research/prayer-history/text/<ts>.txt` holds the bs4 text plus inline markers `⟦tag attr="…"⟧` for every `href`, `src`, `alt`, `name`, form `action`/`input`, `meta` content, HTML comment, and script/style body. These markers cover the link targets that the existing `.txt` files lack. Script: `~/athan-gitree/research/prayer-history/extract.py`.
+- **Diffs.** `~/athan-gitree/research/prayer-history/diffs/<prev>_to_<ts>.diff` holds the full `difflib.unified_diff` of each capture's reading text against the previous one, written whole to disk: 63 diffs.
 - **Reading copies.** Lines longer than 1,500 characters are split with a `↩` continuation marker in `diffs-read/`, because the reading tool truncates at 2,000 characters. The longest line is 6,207 characters: a JavaScript clock, 2007–2009. Rejoining the pieces is asserted byte-identical to the canonical diff.
 - **Reading done.**
   - Capture 1 (19990221195144) read in full, all 129 lines.
@@ -15,7 +15,7 @@ Research note, 2026-09-14. Scope: every archived distinct-digest capture of `htt
   - The last real capture (20110827031037) additionally read in full, all 83 lines.
   - The four post-2011 captures read in full as raw HTML and as diffs.
   - how-we.html text read in full, all 88 lines.
-- **Running log.** `~/athan-research/prayer-history/working-notes.md`, saved after each batch.
+- **Running log.** `~/athan-gitree/research/prayer-history/working-notes.md`, saved after each batch.
 - **Counts.**
   - 64 captures in total: 60 real pages plus 4 bot-challenge pages.
   - Full reads: 1 first capture, 1 last real capture and 4 bot pages as raw HTML.
@@ -486,7 +486,7 @@ Third-party:
 
 ## (e) Contradictions between prayer.html and how-we.html
 
-how-we.html is "Updated March 1, 2024", from `~/athan-research/site-text/www.moonsighting.com/how-we.html.txt`, read in full.
+how-we.html is "Updated March 1, 2024", from `~/athan-gitree/research/site-text/www.moonsighting.com/how-we.html.txt`, read in full.
 
 1. **Upper Sab'u Lail band and polar handling.**
    - prayer.html: "At latitudes between 55° and 65°, the rule of Sab'u Lail …" and "At latitudes higher than 65° … a suggestion by Fuqaha' is to calculate for nearest lower latitudes where the sun sets and rises" (20110522060534–20110827031037). Earlier "55 - 66 degrees" (20090922052502–20100128054622) and "55° and 66°" (20100728224828–20110318232426).

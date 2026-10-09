@@ -29,8 +29,8 @@ Start every response with `Audit session`. Run `date '+%H:%M:%S %d.%m.%Y'` befor
 Work in a scratch worktree at `uat`, outside the repo and outside `/tmp`, with `node_modules` symlinked from the main checkout:
 
 ```bash
-git worktree add --detach ~/athan-device-sweep/worktrees/audit-<N> uat
-ln -s $HOME/repos/rn.athan.uk/node_modules ~/athan-device-sweep/worktrees/audit-<N>/node_modules
+git worktree add --detach ~/athan-gitree/worktrees/audit-<N> uat
+ln -s $HOME/repos/rn.athan.uk/node_modules ~/athan-gitree/worktrees/audit-<N>/node_modules
 ```
 
 Remove it when done, always before 00:00, when a nightly job clears build folders.
@@ -42,7 +42,7 @@ Remove it when done, always before 00:00, when a nightly job clears build folder
 3. **The tests are real and red-first.** Run each step's break script from the worktree root after `grep -n $HOME/repos/rn.athan.uk <script>` prints nothing. Every break fails its named tests. Rerun the red check for the riskiest step by reverting its change in the worktree.
 4. **Coverage.** `yarn validate` passes with 100% on all four measures.
 5. **Reviews.** `LOG.md` records a review verdict for every step commit. Each fix is either one the plan gives word for word or one the executor applied and recorded in `LOG.md`. An unrecorded fix is a finding.
-6. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-device-sweep/session<N>/`. Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.
+6. **Device evidence.** Every claim in the records text is backed by a file under `~/athan-gitree/sessions/<N>/`. Open the logcat and alarm files and check the numbers yourself. Screenshots are for your own eyes only. Use read-only adb (`dumpsys`, `settings get`) to confirm the phone was left as the plan says.
 7. **Owner rules.** No visual change, no substituted prayer time, no hand-edited release file, no work on `uat` outside this audit, no EAS build, no API key, no ignore comment, no skipped hook, no personal identifier in a tracked file. If the identifier hook fires, remove the identifier and commit again. Never bypass it.
 8. **The records.** The findings text and the table rows are accurate against everything above.
 

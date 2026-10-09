@@ -6,7 +6,7 @@ R3 was honest about in recommending `adhan@4.4.6`, and decide whether the recomm
 Every number is marked **measured** (this agent computed it), **cited** (a named source asserts it, with a URL and
 a fetch date) or **UNVERIFIED**. Scripts, fixtures and raw output are in
 `ai/features/global-prayer-times/data/validation/`, with a `README.md` covering how to run them. Packages were
-installed into `$HOME/athan-global-scratch/`, never into the repository.
+installed into `$HOME/athan-gitree/scratch/`, never into the repository.
 
 Prior art read in full and not repeated: `R3-offline-libraries.md` and the master table plus sections 1, 2 and 4
 of `R1-authorities-and-conventions.md`. This report starts from R1's sourcing rather than redoing it, and it
@@ -1158,5 +1158,5 @@ latitude-bounded population was found.**
 
 Environment for every measurement: node v24.14.1, darwin arm64 (Apple M1), `TZ=UTC`, `adhan@4.4.6`,
 `adhan@4.4.3` (installed as `adhan-443`), `praytime@3.2.0`, `astronomy-engine@2.1.19`. Every package lives in
-`$HOME/athan-global-scratch/harness/node_modules`, reached through a gitignored symlink. **Nothing was
+`$HOME/athan-gitree/scratch/harness/node_modules`, reached through a gitignored symlink. **Nothing was
 installed into the repository.**

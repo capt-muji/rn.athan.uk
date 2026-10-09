@@ -10,7 +10,7 @@ disagreement between the two oracles in arcseconds.
 If the two oracles agree to well inside the libraries' errors, the oracle is
 adequate and the library numbers stand.
 
-Run:  ../../../../../../athan-global-scratch/venv/bin/python oracle_crosscheck.py
+Run:  ../../../../../../athan-gitree/scratch/venv/bin/python oracle_crosscheck.py
 (any Python with `skyfield` installed works; DE440s is downloaded on first run)
 """
 

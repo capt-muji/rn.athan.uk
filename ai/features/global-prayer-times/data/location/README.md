@@ -6,11 +6,11 @@ repository's `package.json`.
 
 ## Reproducing
 
-Everything ran in `$HOME/athan-global-scratch/r14/` on Node `v24.14.1`, against
+Everything ran in `$HOME/athan-gitree/scratch/r14/` on Node `v24.14.1`, against
 `adhan@4.4.6` and `@photostructure/tz-lookup@11.7.0` installed there alone.
 
 ```bash
-mkdir -p ~/athan-global-scratch/r14 && cd ~/athan-global-scratch/r14
+mkdir -p ~/athan-gitree/scratch/r14 && cd ~/athan-gitree/scratch/r14
 npm i adhan@4.4.6 @photostructure/tz-lookup@11.7.0
 curl -sO https://download.geonames.org/export/dump/cities15000.zip && unzip -o cities15000.zip
 # geoBoundaries gbOpen ADM2 polygons, one per country, into ./bounds/

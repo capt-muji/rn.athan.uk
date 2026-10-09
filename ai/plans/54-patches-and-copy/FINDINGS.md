@@ -83,4 +83,4 @@ the phone proof the same day and confirmed the wording is what he wants.**
 | ~~Merge `fix/qibla-subtitle-copy`, build it, and read the line on a phone~~ Merged 2026-10-08, phone proof waived by the owner | Nothing |
 | The build without the Android hunks, and the decision to remove them | The owner's word to resume app work |
 | Whether comments in the code that name the owner as a role are reworded: 147 lines in 62 files, 69 of them in app source | His answer |
-| The build worktrees under `$HOME/athan-device-sweep/worktrees/` | Nothing. `build-mock.zsh` and `build-prod.zsh` create one on their first run |
+| The build worktrees under `$HOME/athan-gitree/worktrees/` | Nothing. `build-mock.zsh` and `build-prod.zsh` create one on their first run |
