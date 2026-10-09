@@ -480,7 +480,8 @@ without sign-off):
 > the App Store and the owner will not ship for it - leaving nineteen. The twentieth slot is open
 > with three candidates: Azerbaijani (~10.1M Muslims, catalog 8/11, needs sourcing), German
 > (~5.6M, catalog 9/11, ready), Tamil (~7M reachable, catalog 10/11). The union otherwise matches
-(the formula adds es, pt, zh, ru; WHICH-20 had az, ta, ml). German (`de`), the old D15 eighth,
+(the formula adds es, pt, ru; WHICH-20 had az, ta, ml; zh is removed by the amendment above).
+German (`de`), the old D15 eighth,
 moves to the first post-launch add with `pt`'s neighbours. The honest constraint stands per
 R17: the sourcing tier is the long pole, each locale carries a permanent verification and
 support annuity, and adding a language is one flat catalog file plus its tests (the owner's
