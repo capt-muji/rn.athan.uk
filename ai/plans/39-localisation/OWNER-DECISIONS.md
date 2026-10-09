@@ -449,6 +449,12 @@ dead key, destroys the bookkeeping records, and buys nothing: no stored shape ch
 nothing in the design moves; the offline-upgrade tests remain as free insurance rather than
 load-bearing requirements. The app's standing offline-after-first-sync invariant is untouched.
 
+## D30. No OTA, ever for this feature (2026-10-09)
+
+The owner ruled out over-the-air updates: they cost money to run on Expo and add complexity the
+store-release flow already covers. Translation corrections wait for store releases. This closes
+R16's forced change 5 permanently for the 2.x line.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
