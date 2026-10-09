@@ -455,6 +455,43 @@ The owner ruled out over-the-air updates: they cost money to run on Expo and add
 store-release flow already covers. Translation corrections wait for store releases. This closes
 R16's forced change 5 permanently for the 2.x line.
 
+## D31. Left-align absolutely everything at 2.0.0 (2026-10-09)
+
+Every surface renders exactly as English renders today: schedules left-aligned, settings text
+left with toggles right, sheets unchanged, help and What's New left-aligned, in every language
+including Arabic and Urdu. Alignment is CSS and nothing else; no component ever swaps. A later
+release may revisit right alignment for long paragraphs as a CSS-only change; 2.0.0 keeps
+everything as simple as possible.
+
+## D32. Twenty languages at 2.0.0 (2026-10-09)
+
+The launch set is twenty, built as the union of the top ten most spoken languages and the top
+ten by Muslim reach, gated on where the Play Store and App Store operate (mainland China has no
+Play Store; Mandarin still serves App Store China and the diaspora). Derived set, with catalog
+readiness from R9 as amended by D24 (transliteration fills nulls) and D27 (no authority labels
+without sign-off):
+
+| Tier | Languages | State |
+| --- | --- | --- |
+| Ready | en, ar, id, ur, bn, fa, fr, tr, ms, ru, uz, hi | 8 to 11 of 11 sourced; transliteration fills the nulls per D24 |
+| Needs sourcing | sw, ha, pt, es, ps, so, ku, zh | sw (Last Third + explanations), ha (5 names + 5 explanations), pt (build from Brazilian tables), es (review), ps (swap translated phrases for the Arabic loans the same sources print), so (speaker pass), ku (review), zh (the standard printed set is translated; D27 forces transliterations, which need sourcing and the owner's sign-off) |
+
+The union matches the audience-weighted twenty in `WHICH-20.md` on sixteen of twenty entries
+(the formula adds es, pt, zh, ru; WHICH-20 had az, ta, ml). German (`de`), the old D15 eighth,
+moves to the first post-launch add with `pt`'s neighbours. The honest constraint stands per
+R17: the sourcing tier is the long pole, each locale carries a permanent verification and
+support annuity, and adding a language is one flat catalog file plus its tests (the owner's
+"just a JSON file" intuition is right in spirit; the file is TypeScript for the key safety) -
+the difficulty is sourcing and verification, never code.
+
+## D33. The storage keys and Syuruk (2026-10-09)
+
+`preference_language` (nullable; null follows the device locale) and
+`preference_language_commit_pending` (the commit's intent marker, cleared only on success) are
+approved as named. Malay Sunrise ships "Syuruk" (JAKIM's own label), accepted with the
+condition the owner set: every term is one line in one flat per-locale catalog, so accepting or
+declining any term later is a one-line edit.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
