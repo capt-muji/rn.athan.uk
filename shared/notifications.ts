@@ -19,7 +19,6 @@ export interface ScheduledNotification {
   date: string;
   time: string;
   englishName: string;
-  arabicName: string;
   alertType: AlertType;
 }
 
@@ -122,7 +121,6 @@ export const getNotificationSound = (alertType: AlertType, englishName: string, 
  */
 export const genNotificationContent = (
   englishName: string,
-  _arabicName: string,
   alertType: AlertType,
   soundIndex: number
 ): Notifications.NotificationContentInput => {
@@ -166,14 +164,12 @@ export const getReminderNotificationSound = (
  * Creates notification content for pre-prayer reminder
  * English-only, title only (no body)
  * @param englishName English prayer name
- * @param _arabicName Arabic prayer name (unused, kept for API compatibility)
  * @param intervalMinutes Minutes before prayer time
  * @param alertType Alert type (Off/Silent/Sound)
  * @returns Notification content input
  */
 export const genReminderNotificationContent = (
   englishName: string,
-  _arabicName: string,
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Notifications.NotificationContentInput => {

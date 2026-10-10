@@ -10,11 +10,9 @@ import {
   BACKGROUND_TASK_INTERVAL_MINUTES,
   BACKGROUND_TASK_NAME,
   DEFAULT_REMINDER_SLOT_INTERVALS,
-  EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   ISLAMIC_DAY,
   NOTIFICATION_REFRESH_HOURS,
-  PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
 } from '@/shared/constants';
@@ -144,16 +142,12 @@ const SKIPPED_DAY: ScheduleAttempt = { identifier: null, refused: false };
 // =============================================================================
 
 /**
- * Gets the prayer name arrays for a given schedule type
+ * Gets the prayer name array for a given schedule type
  * @param scheduleType Schedule type (Standard or Extra)
- * @returns Object with english and arabic prayer name arrays
+ * @returns The schedule's prayer names, in canonical order
  */
-export const getPrayerArrays = (scheduleType: ScheduleType) => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  return {
-    english: isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH,
-    arabic: isStandard ? PRAYERS_ARABIC : EXTRAS_ARABIC,
-  };
+export const getPrayerArrays = (scheduleType: ScheduleType): readonly string[] => {
+  return scheduleType === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
 };
 
 /**
@@ -430,7 +424,7 @@ const requestCostReader = (armingNow?: {
     }
 
     // The walk reads the same name arrays the atoms are keyed on, so this always resolves
-    const prayerIndex = getPrayerArrays(scheduleType).english.indexOf(englishName);
+    const prayerIndex = getPrayerArrays(scheduleType).indexOf(englishName);
 
     if (getPrayerAlertType(scheduleType, prayerIndex) === AlertType.Off) return 0;
 
@@ -661,7 +655,7 @@ export const setSoundPreference = (selection: number) => store.set(soundPreferen
  * @returns Canonical index into this module's atom arrays
  */
 export const canonicalPrayerIndex = (scheduleType: ScheduleType, prayerName: string, fallbackIndex: number): number => {
-  const canonicalIndex = getPrayerArrays(scheduleType).english.indexOf(prayerName);
+  const canonicalIndex = getPrayerArrays(scheduleType).indexOf(prayerName);
   return canonicalIndex === -1 ? fallbackIndex : canonicalIndex;
 };
 
@@ -816,7 +810,6 @@ export const setReminderInterval = (
  * @param prayerIndex Index of the prayer in its schedule
  * @param date Date string in YYYY-MM-DD format
  * @param englishName English prayer name
- * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
  * @param sound Sound preference index
  * @returns The attempted identifier — scheduled or, on failure, whatever OS notification the identifier already had
@@ -828,7 +821,6 @@ async function scheduleNotificationForDate(
   prayerIndex: number,
   date: string,
   englishName: string,
-  arabicName: string,
   alertType: AlertType,
   sound: number
 ): Promise<ScheduleAttempt> {
@@ -874,7 +866,7 @@ async function scheduleNotificationForDate(
     // The identifier is deterministic, so whatever OS notification it already
     // had must survive this failure — record it so neither the per-prayer
     // stale-cancel nor the post-reschedule sweep removes it (issue #15).
-    const survivedNotification = { id: identifier, date, time: prayer.time, englishName, arabicName, alertType };
+    const survivedNotification = { id: identifier, date, time: prayer.time, englishName, alertType };
     Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, survivedNotification);
 
     return { identifier, refused: true };
@@ -894,7 +886,6 @@ async function scheduleNotificationForDate(
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
  * @param englishName English prayer name
- * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
  * @param requestCost What this prayer costs the budget, when the caller knows it better than
  *   storage does; omitted by a full reschedule, which reads every prayer from storage anyway
@@ -905,7 +896,6 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
-  arabicName: string,
   alertType: AlertType,
   requestCost?: number
 ): Promise<number> => {
@@ -924,9 +914,7 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   // attempted identifier (null only when the day was skipped), so a failed
   // scheduling keeps the existing OS notification alive instead of staling it.
   const attempts = await settleAll(
-    nextXDays.map((date) =>
-      scheduleNotificationForDate(scheduleType, prayerIndex, date, englishName, arabicName, alertType, sound)
-    )
+    nextXDays.map((date) => scheduleNotificationForDate(scheduleType, prayerIndex, date, englishName, alertType, sound))
   );
 
   const attemptedIds = new Set(
@@ -1002,7 +990,6 @@ const clearAllScheduledNotificationForPrayer = async (
  * @param prayerIndex Index of the prayer in its schedule
  * @param date Date string in YYYY-MM-DD format
  * @param englishName English prayer name
- * @param arabicName Arabic prayer name
  * @param alertType Alert type (Off, Silent, Sound)
  * @param intervalMinutes Reminder interval in minutes
  * @returns The attempted identifier — scheduled or, on failure, whatever OS reminder the identifier already had — or
@@ -1014,7 +1001,6 @@ async function scheduleReminderNotificationForDate(
   prayerIndex: number,
   date: string,
   englishName: string,
-  arabicName: string,
   alertType: AlertType,
   intervalMinutes: ReminderInterval
 ): Promise<ScheduleAttempt> {
@@ -1068,7 +1054,7 @@ async function scheduleReminderNotificationForDate(
 
     // Keep whatever OS reminder this deterministic identifier already had
     // alive — record it so the stale-cancel and sweep skip it (issue #15).
-    const survivedReminder = { id: identifier, date, time: prayer.time, englishName, arabicName, alertType };
+    const survivedReminder = { id: identifier, date, time: prayer.time, englishName, alertType };
     Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, survivedReminder);
 
     return { identifier, refused: true };
@@ -1087,7 +1073,6 @@ async function scheduleReminderNotificationForDate(
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule
  * @param englishName English prayer name
- * @param arabicName Arabic prayer name
  * @param reminders The prayer's reminders that are on, each with its own sound and interval
  * @param requestCost What this prayer costs the budget, as the at-time path takes it
  */
@@ -1095,7 +1080,6 @@ const _addMultipleScheduleRemindersForPrayer = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
-  arabicName: string,
   reminders: ReminderSetting[],
   requestCost?: number
 ): Promise<number> => {
@@ -1119,7 +1103,6 @@ const _addMultipleScheduleRemindersForPrayer = async (
           prayerIndex,
           date,
           englishName,
-          arabicName,
           reminder.alert,
           reminder.interval
         )
@@ -1193,7 +1176,6 @@ const clearAllScheduledRemindersForPrayer = async (
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
  * @param englishName English prayer name
- * @param arabicName Arabic prayer name
  * @param atTimeAlert At-time alert type (Off, Silent, Sound)
  * @param reminders Both reminders, in slot order
  * @returns How many parts of the work the phone refused that can still fire
@@ -1202,7 +1184,6 @@ const applyPrayerAlerts = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
-  arabicName: string,
   atTimeAlert: AlertType,
   reminders: readonly [ReminderSetting, ReminderSetting]
 ): Promise<number> => {
@@ -1218,20 +1199,13 @@ const applyPrayerAlerts = async (
 
   work.push(
     atTimeAlert !== AlertType.Off
-      ? _addMultipleScheduleNotificationsForPrayer(
-          scheduleType,
-          prayerIndex,
-          englishName,
-          arabicName,
-          atTimeAlert,
-          requestCost
-        )
+      ? _addMultipleScheduleNotificationsForPrayer(scheduleType, prayerIndex, englishName, atTimeAlert, requestCost)
       : clearAllScheduledNotificationForPrayer(scheduleType, prayerIndex)
   );
 
   work.push(
     armed.length > 0
-      ? _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, arabicName, armed, requestCost)
+      ? _addMultipleScheduleRemindersForPrayer(scheduleType, prayerIndex, englishName, armed, requestCost)
       : clearAllScheduledRemindersForPrayer(scheduleType, prayerIndex)
   );
 
@@ -1272,7 +1246,6 @@ const undoPrayerAlertChange = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
-  arabicName: string,
   previous: AlertMenuState,
   generation: number
 ): Promise<void> => {
@@ -1290,7 +1263,6 @@ const undoPrayerAlertChange = async (
       scheduleType,
       prayerIndex,
       englishName,
-      arabicName,
       previous.atTimeAlert,
       previous.reminders
     );
@@ -1322,7 +1294,6 @@ const undoPrayerAlertChange = async (
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
  * @param englishName English prayer name
- * @param arabicName Arabic prayer name
  * @param next The settings the user closed the sheet on
  * @param previous The settings the sheet was opened with
  * @returns Whether the new settings landed in full
@@ -1331,7 +1302,6 @@ export const commitPrayerAlertChange = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
-  arabicName: string,
   next: AlertMenuState,
   previous: AlertMenuState
 ): Promise<boolean> => {
@@ -1342,17 +1312,10 @@ export const commitPrayerAlertChange = async (
     let refusals: number;
 
     try {
-      refusals = await applyPrayerAlerts(
-        scheduleType,
-        prayerIndex,
-        englishName,
-        arabicName,
-        next.atTimeAlert,
-        next.reminders
-      );
+      refusals = await applyPrayerAlerts(scheduleType, prayerIndex, englishName, next.atTimeAlert, next.reminders);
     } catch (error) {
       logger.error('NOTIFICATION: The alert change failed, putting the prayer back:', error);
-      await undoPrayerAlertChange(scheduleType, prayerIndex, englishName, arabicName, previous, generation);
+      await undoPrayerAlertChange(scheduleType, prayerIndex, englishName, previous, generation);
       return false;
     }
 
@@ -1365,7 +1328,7 @@ export const commitPrayerAlertChange = async (
       englishName,
       refusals,
     });
-    await undoPrayerAlertChange(scheduleType, prayerIndex, englishName, arabicName, previous, generation);
+    await undoPrayerAlertChange(scheduleType, prayerIndex, englishName, previous, generation);
 
     return false;
   }, 'commitPrayerAlertChange');
@@ -1385,7 +1348,7 @@ const _addAllScheduleNotificationsForSchedule = async (
 ): Promise<(number | null)[]> => {
   logger.info('NOTIFICATION: Scheduling all notifications for schedule:', { scheduleType });
 
-  const { english: prayers, arabic: arabicPrayers } = getPrayerArrays(scheduleType);
+  const prayers = getPrayerArrays(scheduleType);
 
   const promises = prayers.map(async (_, index): Promise<number | null> => {
     // null, not 0: a prayer this pass never looked at has not been shown to be right, so its mark must stay
@@ -1396,13 +1359,7 @@ const _addAllScheduleNotificationsForSchedule = async (
       return clearAllScheduledNotificationForPrayer(scheduleType, index);
     }
 
-    return _addMultipleScheduleNotificationsForPrayer(
-      scheduleType,
-      index,
-      prayers[index],
-      arabicPrayers[index],
-      alertType
-    );
+    return _addMultipleScheduleNotificationsForPrayer(scheduleType, index, prayers[index], alertType);
   });
 
   const refusals = await settleAll(promises);
@@ -1424,7 +1381,7 @@ const _addAllScheduleRemindersForSchedule = async (
 ): Promise<(number | null)[]> => {
   logger.info('REMINDER: Scheduling all reminders for schedule:', { scheduleType });
 
-  const { english: prayers, arabic: arabicPrayers } = getPrayerArrays(scheduleType);
+  const prayers = getPrayerArrays(scheduleType);
 
   const promises = prayers.map(async (_, index): Promise<number | null> => {
     // null, not 0; see the at-time path above
@@ -1444,7 +1401,7 @@ const _addAllScheduleRemindersForSchedule = async (
       return clearAllScheduledRemindersForPrayer(scheduleType, index);
     }
 
-    return _addMultipleScheduleRemindersForPrayer(scheduleType, index, prayers[index], arabicPrayers[index], armed);
+    return _addMultipleScheduleRemindersForPrayer(scheduleType, index, prayers[index], armed);
   });
 
   const refusals = await settleAll(promises);

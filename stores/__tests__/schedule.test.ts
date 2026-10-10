@@ -111,7 +111,6 @@ const displayDateOf = (type: ScheduleType): string | null =>
 const createMockPrayer = (overrides: Partial<ReadablePrayer> = {}): ReadablePrayer => ({
   type: ScheduleType.Standard,
   english: 'Fajr',
-  arabic: 'الفجر',
   datetime: new Date('2026-01-20T06:15:00'),
   time: '06:15',
   belongsToDate: '2026-01-20',
@@ -380,7 +379,6 @@ describe('createPrevPrayerAtom', () => {
     const notStored: UnreadablePrayer = {
       type: ScheduleType.Standard,
       english: 'Isha',
-      arabic: 'العشاء',
       datetime: null,
       time: null,
       belongsToDate: '2026-01-19',

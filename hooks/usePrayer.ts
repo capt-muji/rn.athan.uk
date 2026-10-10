@@ -72,7 +72,7 @@ export const getShownAlert = (isUnavailable: boolean, saved: AlertType): AlertTy
  *
  * @example
  * const prayer = usePrayer(ScheduleType.Standard, 2); // Get Dhuhr
- * const { english, arabic, time, isPassed, isNext } = prayer;
+ * const { english, time, isPassed, isNext } = prayer;
  */
 export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   // NEW: Use sequence-based prayer data with derived isPassed and isNext
@@ -88,7 +88,6 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   if (!isReady || !prayer) {
     return {
       english: '',
-      arabic: '',
       time: '',
       date: '',
       index: 0,

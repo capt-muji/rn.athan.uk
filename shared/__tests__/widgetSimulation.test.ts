@@ -72,28 +72,21 @@ const SETTINGS: PrayerWidgetSettings = {
 };
 
 /** Realistic October London times */
-const OCTOBER_TIMES: [string, string, string][] = [
-  ['Fajr', 'الفجر', '05:30'],
-  ['Sunrise', 'الشروق', '07:10'],
-  ['Dhuhr', 'الظهر', '12:45'],
-  ['Asr', 'العصر', '15:20'],
-  ['Magrib', 'المغرب', '18:05'],
-  ['Isha', 'العشاء', '19:40'],
+const OCTOBER_TIMES: [string, string][] = [
+  ['Fajr', '05:30'],
+  ['Sunrise', '07:10'],
+  ['Dhuhr', '12:45'],
+  ['Asr', '15:20'],
+  ['Magrib', '18:05'],
+  ['Isha', '19:40'],
 ];
 
 /** Days whose Isha crosses midnight (01:05 next day, belongs to this day) */
 const EARLY_ISHA_DAYS = new Set(['2026-10-20', '2026-10-21']);
 
-const makeFixturePrayer = (
-  date: string,
-  time: string,
-  english: string,
-  arabic: string,
-  belongsToDate: string
-): ReadablePrayer => ({
+const makeFixturePrayer = (date: string, time: string, english: string, belongsToDate: string): ReadablePrayer => ({
   type: ScheduleType.Standard,
   english,
-  arabic,
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate,
@@ -108,16 +101,16 @@ const makeSequence = () => {
     const dateString = formatDateShort(day);
     const ishaEarly = EARLY_ISHA_DAYS.has(dateString);
 
-    for (const [english, arabic, time] of OCTOBER_TIMES) {
+    for (const [english, time] of OCTOBER_TIMES) {
       if (english === 'Isha' && ishaEarly) {
         // Early-morning Isha: datetime lands the next calendar day but the
         // prayer belongs to this Islamic day (ADR-004)
         const nextDay = addDays(day, 1);
         const nextDayString = formatDateShort(nextDay);
-        prayers.push(makeFixturePrayer(nextDayString, '01:05', english, arabic, dateString));
+        prayers.push(makeFixturePrayer(nextDayString, '01:05', english, dateString));
         continue;
       }
-      prayers.push(makeFixturePrayer(dateString, time, english, arabic, dateString));
+      prayers.push(makeFixturePrayer(dateString, time, english, dateString));
     }
   }
 
@@ -379,7 +372,6 @@ const makeExtrasFixturePrayer = (
 ): ReadablePrayer => ({
   type: ScheduleType.Extra,
   english,
-  arabic: english,
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate,

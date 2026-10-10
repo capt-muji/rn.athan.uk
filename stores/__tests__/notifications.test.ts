@@ -21,10 +21,8 @@ import {
   BACKGROUND_TASK_NAME,
   DEFAULT_REMINDER_INTERVAL,
   DEFAULT_REMINDER_SLOT_INTERVALS,
-  EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   NOTIFICATION_REFRESH_HOURS,
-  PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
 } from '@/shared/constants';
 import logger from '@/shared/logger';
@@ -97,74 +95,41 @@ const sheetAlerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertTyp
 
 describe('getPrayerArrays', () => {
   describe('Standard schedule', () => {
-    it('returns PRAYERS_ENGLISH for english array', () => {
-      const result = getPrayerArrays(ScheduleType.Standard);
-      expect(result.english).toBe(PRAYERS_ENGLISH);
+    it('returns PRAYERS_ENGLISH', () => {
+      expect(getPrayerArrays(ScheduleType.Standard)).toBe(PRAYERS_ENGLISH);
     });
 
-    it('returns PRAYERS_ARABIC for arabic array', () => {
-      const result = getPrayerArrays(ScheduleType.Standard);
-      expect(result.arabic).toBe(PRAYERS_ARABIC);
-    });
-
-    it('returns arrays with 6 prayers', () => {
-      const result = getPrayerArrays(ScheduleType.Standard);
-      expect(result.english).toHaveLength(6);
-      expect(result.arabic).toHaveLength(6);
+    it('returns an array with 6 prayers', () => {
+      expect(getPrayerArrays(ScheduleType.Standard)).toHaveLength(6);
     });
 
     it('first prayer is Fajr', () => {
-      const result = getPrayerArrays(ScheduleType.Standard);
-      expect(result.english[0]).toBe('Fajr');
-      expect(result.arabic[0]).toBe('الفجر');
+      expect(getPrayerArrays(ScheduleType.Standard)[0]).toBe('Fajr');
     });
 
     it('last prayer is Isha', () => {
-      const result = getPrayerArrays(ScheduleType.Standard);
-      expect(result.english[5]).toBe('Isha');
-      expect(result.arabic[5]).toBe('العشاء');
+      expect(getPrayerArrays(ScheduleType.Standard)[5]).toBe('Isha');
     });
   });
 
   describe('Extra schedule', () => {
-    it('returns EXTRAS_ENGLISH for english array', () => {
-      const result = getPrayerArrays(ScheduleType.Extra);
-      expect(result.english).toBe(EXTRAS_ENGLISH);
-    });
-
-    it('returns EXTRAS_ARABIC for arabic array', () => {
-      const result = getPrayerArrays(ScheduleType.Extra);
-      expect(result.arabic).toBe(EXTRAS_ARABIC);
+    it('returns EXTRAS_ENGLISH', () => {
+      expect(getPrayerArrays(ScheduleType.Extra)).toBe(EXTRAS_ENGLISH);
     });
 
     it('returns arrays with 5 prayers', () => {
       const result = getPrayerArrays(ScheduleType.Extra);
-      expect(result.english).toHaveLength(5);
-      expect(result.arabic).toHaveLength(5);
+      expect(result).toHaveLength(5);
     });
 
     it('first prayer is Midnight', () => {
       const result = getPrayerArrays(ScheduleType.Extra);
-      expect(result.english[0]).toBe('Midnight');
-      expect(result.arabic[0]).toBe('نصف الليل');
+      expect(result[0]).toBe('Midnight');
     });
 
     it('last prayer is Istijaba', () => {
       const result = getPrayerArrays(ScheduleType.Extra);
-      expect(result.english[4]).toBe('Istijaba');
-      expect(result.arabic[4]).toBe('استجابة');
-    });
-  });
-
-  describe('array alignment', () => {
-    it('english and arabic arrays have same length for Standard', () => {
-      const result = getPrayerArrays(ScheduleType.Standard);
-      expect(result.english.length).toBe(result.arabic.length);
-    });
-
-    it('english and arabic arrays have same length for Extra', () => {
-      const result = getPrayerArrays(ScheduleType.Extra);
-      expect(result.english.length).toBe(result.arabic.length);
+      expect(result[4]).toBe('Istijaba');
     });
   });
 });
@@ -534,7 +499,7 @@ describe('canonicalPrayerIndex', () => {
   });
 
   it('maps every row of the permuted list to its own prayer', () => {
-    const canonicalNames = getPrayerArrays(ScheduleType.Extra).english;
+    const canonicalNames = getPrayerArrays(ScheduleType.Extra);
     const resolvedNames = permutedChronological.map(
       (prayerName, rowIndex) => canonicalNames[canonicalPrayerIndex(ScheduleType.Extra, prayerName, rowIndex)]
     );
@@ -1170,7 +1135,6 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     date: TODAY,
     time: SEED_TIME,
     englishName,
-    arabicName: 'الفجر',
     alertType: AlertType.Sound,
   });
 
@@ -1647,7 +1611,6 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       ScheduleType.Standard,
       0,
       'Fajr',
-      'الفجر',
       sheetAlerts(AlertType.Sound),
       sheetAlerts(AlertType.Off)
     );
@@ -1669,7 +1632,6 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       ScheduleType.Standard,
       0,
       'Fajr',
-      'الفجر',
       sheetAlerts(AlertType.Off),
       sheetAlerts(AlertType.Sound)
     );
@@ -1952,7 +1914,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     /** Switches the named prayers to Silent, each with a Silent reminder */
     const enable = (scheduleType: ScheduleType, names: readonly string[]) => {
-      const { english } = getPrayerArrays(scheduleType);
+      const english = getPrayerArrays(scheduleType);
       const isStandard = scheduleType === S;
       for (const name of names) {
         const index = english.indexOf(name);

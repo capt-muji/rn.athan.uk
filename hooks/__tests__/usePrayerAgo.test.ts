@@ -62,7 +62,6 @@ import { calculatePrayerAgo, usePrayerAgo } from '../usePrayerAgo';
 const createMockPrayer = (overrides: Partial<ReadablePrayer> = {}): ReadablePrayer => ({
   type: ScheduleType.Standard,
   english: 'Fajr',
-  arabic: 'الفجر',
   datetime: new Date('2026-01-27T06:15:00Z'),
   time: '06:15',
   belongsToDate: '2026-01-27',

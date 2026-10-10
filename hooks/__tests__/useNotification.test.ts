@@ -355,17 +355,9 @@ describe('commitAlertMenuChanges', () => {
     original: AlertMenuState,
     scheduleType: ScheduleType,
     prayerIndex: number,
-    englishName: string,
-    arabicName: string
+    englishName: string
   ) => {
-    expect(mockCommitPrayerAlertChange).toHaveBeenCalledWith(
-      scheduleType,
-      prayerIndex,
-      englishName,
-      arabicName,
-      current,
-      original
-    );
+    expect(mockCommitPrayerAlertChange).toHaveBeenCalledWith(scheduleType, prayerIndex, englishName, current, original);
   };
 
   describe('nothing changed', () => {
@@ -373,7 +365,7 @@ describe('commitAlertMenuChanges', () => {
       const { commitAlertMenuChanges } = getUseNotification()();
       const state = createState(AlertType.Sound, AlertType.Silent, 15);
 
-      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', state, { ...state });
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', state, { ...state });
 
       expect(result).toBe(true);
       expect(mockCommitPrayerAlertChange).not.toHaveBeenCalled();
@@ -397,10 +389,10 @@ describe('commitAlertMenuChanges', () => {
     ])('hands $changed to the store, both states unchanged', async ({ original, current }) => {
       const { commitAlertMenuChanges } = getUseNotification()();
 
-      const result = await commitAlertMenuChanges(ScheduleType.Standard, 4, 'Magrib', 'المغرب', original, current);
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 4, 'Magrib', original, current);
 
       expect(result).toBe(true);
-      expectHandedToTheStore(current, original, ScheduleType.Standard, 4, 'Magrib', 'المغرب');
+      expectHandedToTheStore(current, original, ScheduleType.Standard, 4, 'Magrib');
     });
 
     it('answers no, unchanged, when the store could not make the change stick', async () => {
@@ -409,7 +401,7 @@ describe('commitAlertMenuChanges', () => {
       const original = createState(AlertType.Off);
       const current = createState(AlertType.Sound);
 
-      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', original, current);
 
       expect(result).toBe(false);
     });
@@ -432,7 +424,6 @@ describe('commitAlertMenuChanges', () => {
         ScheduleType.Standard,
         0,
         'Fajr',
-        'الفجر',
         createState(AlertType.Silent, AlertType.Silent),
         current
       );
@@ -446,11 +437,11 @@ describe('commitAlertMenuChanges', () => {
       const original = createState(AlertType.Sound, AlertType.Sound);
       const current = createState(AlertType.Off, AlertType.Off);
 
-      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', original, current);
 
       expect(result).toBe(true);
       expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
-      expectHandedToTheStore(current, original, ScheduleType.Standard, 0, 'Fajr', 'الفجر');
+      expectHandedToTheStore(current, original, ScheduleType.Standard, 0, 'Fajr');
     });
   });
 
@@ -463,15 +454,15 @@ describe('commitAlertMenuChanges', () => {
         it.each([
           { list: 'Standard', scheduleType: ScheduleType.Standard, index: 5, english: 'Isha', arabic: 'العشاء' },
           { list: 'Extra', scheduleType: ScheduleType.Extra, index: 3, english: 'Last Third', arabic: 'الثلث الأخير' },
-        ])(`$list, ${combination}`, async ({ scheduleType, index, english, arabic }) => {
+        ])(`$list, ${combination}`, async ({ scheduleType, index, english }) => {
           const { commitAlertMenuChanges } = getUseNotification()();
           // Sound, Sound and 30 as the opening state, so every combination below is a real change
           const original = createState(AlertType.Sound, AlertType.Sound, 30);
           const current = createState(atTimeAlert, reminderAlert, 20);
 
-          await commitAlertMenuChanges(scheduleType, index, english, arabic, original, current);
+          await commitAlertMenuChanges(scheduleType, index, english, original, current);
 
-          expectHandedToTheStore(current, original, scheduleType, index, english, arabic);
+          expectHandedToTheStore(current, original, scheduleType, index, english);
         });
       });
     });

@@ -50,7 +50,6 @@ const INTERVAL = 15 as ReminderInterval;
 const isha: ReadablePrayer = {
   type: ScheduleType.Standard,
   english: 'Isha',
-  arabic: 'العشاء',
   datetime: createPrayerDatetime('2026-09-17', '20:31'),
   time: '20:31',
   belongsToDate: '2026-09-17',
@@ -61,7 +60,6 @@ const record = (id: string) => ({
   date: '2026-09-17',
   time: '20:31',
   englishName: 'Isha',
-  arabicName: 'العشاء',
   alertType: AlertType.Silent,
 });
 

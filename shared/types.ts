@@ -268,8 +268,6 @@ interface PrayerRow {
   type: ScheduleType;
   /** English name: "Fajr", "Isha", "Midnight", etc. */
   english: string;
-  /** Arabic name: "الفجر", "العشاء", etc. */
-  arabic: string;
   /** Which Islamic day this prayer belongs to (per ADR-004)
    * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day) */
   belongsToDate: string;

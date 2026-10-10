@@ -83,7 +83,6 @@ export default function BottomSheetAlert() {
       sheetState.type,
       sheetState.index,
       sheetState.prayerEnglish,
-      sheetState.prayerArabic,
       originalState,
       currentState
     );

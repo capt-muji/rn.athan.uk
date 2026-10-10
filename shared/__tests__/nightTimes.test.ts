@@ -273,7 +273,6 @@ describe('never builds Midnight or Last Third from a Magrib the payload did not 
       expect(getPrayerForDate(ScheduleType.Extra, english, firstList)).toEqual({
         type: ScheduleType.Extra,
         english,
-        arabic: rowOf(firstNight, english).arabic,
         datetime: null,
         time: null,
         belongsToDate: firstList,
@@ -418,7 +417,6 @@ describe('getPrayerForDate', () => {
     expect(getPrayerForDate(ScheduleType.Extra, 'Midnight', '2026-05-01')).toEqual({
       type: ScheduleType.Extra,
       english: 'Midnight',
-      arabic: rowOf(listFor(ScheduleType.Extra, '2026-05-01'), 'Midnight').arabic,
       datetime: null,
       time: null,
       belongsToDate: '2026-05-01',
