@@ -73,7 +73,15 @@ as corrected by its banner. The identifier design with its test gate is
 amended by its banner. The external adjudication that changed this plan is `RECONCILIATION.md`.
 The executor reads those six in full before step 1, plus `__tests__/README.md`. Anchors:
 `scripts/anchors/` holds the verbatim excerpts each step edits against, extracted at
-`c3149dfc` by `scripts/extract-anchors-38.sh`.
+`c3149dfc` by `scripts/extract-anchors-38.sh`. Replan 2026-10-10: an anchor's pre-flight
+owner is the FIRST step not yet DONE that edits its region. Eleven anchors named by steps
+05 to 09 held text steps 02 to 04 already consumed, and are regenerated from the post-step-04
+tree at `76a40d3f` by `scripts/regenerate-anchors-38.sh` (that script's sha guard makes it a
+record, not a live tool). Seven anchors whose regions step 06's contracts retype ahead of
+their original owners moved to step 06 in the pre-flight map: `ago-text`,
+`channel-reminder`, `content-builders`, `reminder-content`, `timeline-names`,
+`timeline-next`, `overlaycontent-arabic`. Where a step names
+an anchor an earlier step has since rewritten, its Anchors line says so in a parenthetical.
 
 Why the obvious fix is wrong: renaming `Prayer.english` in place, or "translating" the arrays,
 orphans alarms and resets preferences silently (R13 seams 1-2; the `last third` space-form

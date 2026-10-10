@@ -1,6 +1,5 @@
 export const genReminderNotificationContent = (
   englishName: string,
-  _arabicName: string,
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Notifications.NotificationContentInput => {

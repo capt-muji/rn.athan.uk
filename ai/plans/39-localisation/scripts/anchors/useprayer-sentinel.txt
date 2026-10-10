@@ -2,7 +2,6 @@
   if (!isReady || !prayer) {
     return {
       english: '',
-      arabic: '',
       time: '',
       date: '',
       index: 0,

@@ -8,7 +8,9 @@ duration unit labels. After this step the only display literals left in the tree
 widget layouts' (step 13) and the catalog files'.
 
 - Branch: `feat/38-10-wave3`
-- Anchors: `ago-text`, `plan-key`, `content-builders`, `reminder-content`
+- Anchors: `ago-text` (post-step-06: the templates read `prayerLabel(prevPrayer.id)`),
+  `plan-key` (post-step-06: keyed by `id`), `content-builders`, `reminder-content`
+  (post-steps-06/07: the titles come from `t()`; only channel-name literals can remain)
 - Files: `app/index.tsx`, `app/_layout.tsx` (the error-boundary strings), `device/qibla.ts`,
   `hooks/usePrayerAgo.ts`, `shared/time.ts`, `shared/notifications.ts` (if any display literal
   survived step 07 - the channel-name formats `Athan ${n}` and `'Extra Times'` become

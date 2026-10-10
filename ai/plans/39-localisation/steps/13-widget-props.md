@@ -9,7 +9,8 @@ lock layouts.
 - Branch: `feat/38-13-widgets`
 - Anchors: `widget-versions`, `widget-row-name`, `widget-next-name`, `widget-android-row`,
   `widget-guard`, `widget-eyebrow`, `widget-rowkey`, `widget-units`, `widget-dateparse`,
-  `timeline-names`, `timeline-next`
+  `timeline-names`, `timeline-next` (both timeline anchors hold pre-step-06 text; the name
+  sites read `prayerLabel(prayer.id)` by the time this step runs)
 - Files: `shared/widgetTypes.ts`, `shared/widgetTimeline.ts`, `stores/widget.ts`,
   `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx`,
   `shared/__tests__/widgetContract.test.ts`, `widgetTimeline.test.ts`, `widgetSimulation.test.ts`,

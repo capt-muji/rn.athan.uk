@@ -8,6 +8,7 @@ so the re-arm is a no-op replace.
 
 - Branch: `feat/38-12-upgrade`
 - Anchors: `version-captured`, `version-upgrade`, `version-keeplist`, `migration-core`
+  (post-step-06: the migration loop walks ids and the retitled legacy arrays)
 - Files: `stores/version.ts`, and the new suites `stores/__tests__/upgrade2_0_0.test.ts`,
   `stores/__tests__/upgrade2_0_0CrashWindows.test.ts`; extended:
   `stores/__tests__/version.test.ts` (the stamp call joins its existing migration-order pins)
