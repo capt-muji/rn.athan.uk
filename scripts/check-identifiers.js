@@ -40,7 +40,7 @@ const within = (value, [low, high]) => value >= low && value <= high;
 
 /** Third-party documentation and published research data, whose example values are not this project's */
 const SHAPES_NOT_APPLIED = [
-  /^\.agents\/skills\/(?!athan-next\/)/,
+  /^\.agents\/skills\/(?!athan-(lead|planner)\/)/,
   /^ai\/features\/global-prayer-times\/data\//,
   /^ai\/features\/moonsighting\//,
   /^yarn\.lock$/,

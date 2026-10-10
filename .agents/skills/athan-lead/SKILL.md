@@ -104,7 +104,7 @@ its ledger; it cannot reach the owner and it cannot push. When it returns:
 8. PASS: set the row's final text from the plan, set DONE, `git rm -r` the plan folder
    in the same docs commit (the one survivor is a file still cited by shipped code or
    config, which moves beside the queue or into the row first), delete
-   `~/athan-gitree/sessions/<N>/`, branch `docs/audit-<N>-<date>`, version bumped, merge
+   `$HOME/athan-gitree/sessions/<N>/`, branch `docs/audit-<N>-<date>`, version bumped, merge
    `--no-ff`.
 9. Push `origin uat` only when every commit on `uat` that is not yet on `origin/uat` was
    checked by this audit or made by it. Otherwise do not push, and tell the owner which

@@ -17,7 +17,8 @@ each with the exact condition and the exact action.
   owner's rules that apply, quoted with their source.
 - **2. Decisions.** 2.1 Taken: what, who, when, where recorded. 2.2 The executor must not
   decide: each situation that stops work and asks the owner, with the exact question.
-- **3. Pre-flight.** A full bash script saved to `$TMPDIR/preflight-<N>.sh`. It checks the
+- **3. Pre-flight.** A full bash script committed at `scripts/preflight-<N>.sh` in the plan
+  folder (the executor saves a copy to `$TMPDIR` and runs it from there). It checks the
   checkout on `uat`, a clean tree, `origin/uat` merged in, the version not lower than "Planned
   at", every "Needs first" row DONE, every anchor count equal to 1. It ends `PREFLIGHT OK`.
 - **4. Background the executor needs.** The code map: every file read or changed, one line

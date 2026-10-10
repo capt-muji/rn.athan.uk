@@ -1,6 +1,6 @@
 # AGENTS.md - Athan.uk Agent Guide
 
-The root `AGENTS.md` redirects here. This file carries only what is still true. Past sessions live
+The root `AGENTS.md` redirects here. This file carries only what is still true. Past jobs live
 in git history and in `ai/plans/`. Look there before assuming a rule exists.
 
 ## Load at the start of every session
