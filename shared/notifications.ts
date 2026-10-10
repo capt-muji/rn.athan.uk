@@ -127,8 +127,9 @@ export const genNotificationContent = (
   alertType: AlertType,
   soundIndex: number
 ): Notifications.NotificationContentInput => {
+  const name = prayerLabel(id);
   return {
-    title: t('notification.now', { name: prayerLabel(id) }),
+    title: t('notification.now', { name }),
     sound: getNotificationSound(alertType, id, soundIndex),
     color: '#5a3af7',
     autoDismiss: false,
@@ -176,8 +177,9 @@ export const genReminderNotificationContent = (
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Notifications.NotificationContentInput => {
+  const name = prayerLabel(id);
   return {
-    title: t('notification.reminder', { name: prayerLabel(id), n: intervalMinutes }),
+    title: t('notification.reminder', { name, n: intervalMinutes }),
     sound: getReminderNotificationSound(alertType, id, intervalMinutes),
     color: '#5a3af7',
     autoDismiss: true,

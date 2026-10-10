@@ -308,14 +308,10 @@ export const TEXT = {
   sizeHeading: 28,
   /** Detail font size for small text (sizeSmall - 2) */
   sizeDetail: 14,
-  /** Arabic explanation font size */
-  sizeArabic: 15,
   /** Line height presets */
   lineHeight: {
     /** Default line height for body text */
     default: 22,
-    /** Line height for Arabic text */
-    arabic: 24,
   },
   /** Letter spacing presets */
   letterSpacing: {
