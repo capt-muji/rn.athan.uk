@@ -7,7 +7,7 @@
  * in the order List draws, and the explanation by the prayer's name.
  */
 
-import { EXTRAS_ENGLISH, EXTRAS_EXPLANATIONS, EXTRAS_EXPLANATIONS_ARABIC } from '@/shared/constants';
+import { EXTRAS_ENGLISH, EXTRAS_EXPLANATIONS } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { type Prayer, ScheduleType } from '@/shared/types';
 
@@ -16,7 +16,6 @@ export interface OverlayExplanation {
   prayerName: string | null;
   /** Null on Standard, undefined for a name with no explanation (a row still loading) */
   explanation: string | null | undefined;
-  explanationArabic: string | null | undefined;
 }
 
 /**
@@ -55,6 +54,5 @@ export const getOverlayExplanation = (type: ScheduleType, english: string): Over
   return {
     prayerName: isExtra ? english : null,
     explanation: isExtra ? EXTRAS_EXPLANATIONS[explanationIndex] : null,
-    explanationArabic: isExtra ? EXTRAS_EXPLANATIONS_ARABIC[explanationIndex] : null,
   };
 };
