@@ -10,7 +10,7 @@ Plan the first row that needs planning: resume a PLANNING row, refresh a NEEDS R
 
 **Invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED.** BLOCKED, OWNER-LED and research-parked rows hold no merged code, so several may wait at once. A plan anchors on one `uat` commit and quotes its code, its tests' expected numbers and the owner decisions taken against it. A row ahead changes that code, so a plan written early runs stale, and a stale anchor that still matches by text is the worst failure, because nothing catches it.
 
-Every session ends by submitting the /handoff document, four lines: the job completed, the row it moved, the next job, what the owner types next. No gateway address, domain or key is ever written into this repository.
+Every session ends with the handoff block in its final reply, four lines: the job completed, the row it moved, the next job, what the owner types next. That block is a summary, not a `/handoff` document: `/handoff` and `/go` are the oc-handoff plugin's pair, where `/handoff` writes a resumable document and `/go` resumes from one, so `/go` is named to the owner only after he has run `/handoff`. No gateway address, domain or key is ever written into this repository.
 
 ## Status
 
