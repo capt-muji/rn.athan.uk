@@ -37,7 +37,7 @@ where appropriate where needed where applicable as per accordingly etc. and so o
 and/or TBD for example e.g. i.e. various several some appropriate reasonable \
 properly correctly"
 for w in $hedges; do
-  if grep -rw -- "$w" "$folder" --include="*.md" >/dev/null 2>&1; then
+  if grep -rw --include='*.md' -e "$w" "$folder" >/dev/null 2>&1; then
     reason "banned hedge word in plan text: $w (say the exact condition and action)"
   fi
 done

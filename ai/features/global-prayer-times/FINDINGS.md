@@ -350,7 +350,7 @@ times more precision than the problem needs, so every sub-city method is indisti
 of the sampled world population within 2 minutes**. Only 3 of the 68 zones holding a Muslim-majority-country city
 are within 2 minutes. **So the app needs a location signal to go worldwide.**
 
-**Session 37's qibla precedent does not transfer, in either direction.** The two errors have different shapes:
+**Sob 37's qibla precedent does not transfer, in either direction.** The two errors have different shapes:
 8.6% of cities exceed 10 degrees of qibla error while **83.0% exceed 2 minutes of prayer error**. Qibla error is
 catastrophic in a few places and negligible elsewhere; prayer error is moderate everywhere. Jeddah proves it, at
 147.8 degrees of qibla error against the capital and **zero** prayer error against the most populous city, because
@@ -390,7 +390,7 @@ R8 read the app's own source and found the London assumption is not one constant
   one-shadow Shafi time.
 
 **The prayer name is a load-bearing identifier**, building 27 MMKV keys, 2 notification id formats, 11 audio slugs
-and 67 mp3 filenames (session 39's measurement). The Imsak finding adds a second, independent reason to split the
+and 67 mp3 filenames (sob 39's measurement). The Imsak finding adds a second, independent reason to split the
 concept from the identifier from the label: **only the label may vary.**
 
 **Six of the app's eleven rows survive worldwide unchanged.** `Duha` collides with a real published row of the

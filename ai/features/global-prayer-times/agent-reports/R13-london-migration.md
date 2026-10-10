@@ -674,7 +674,7 @@ reschedule that finds nothing to change leaves no gap."**
 and stops at the first it cannot afford. Every identifier is deterministic from schedule, name, date and interval,
 none of which carries a source, so a re-arm after a source change replaces in place with **no cancel pass and no
 budget increase**, provided the identifiers do not change. **That is a third independent reason the prayer name
-must not carry the source**, alongside session 39's localisation reason and R8's finding 3.
+must not carry the source**, alongside sob 39's localisation reason and R8's finding 3.
 
 ### 4.3 The widgets and their timelines
 
@@ -844,7 +844,7 @@ The source abstraction lands, London is its first instance, and a London user's 
 **Option 2, with an explicit pin, and yes I agree with R8.**
 
 R8's finding 14 says an existing install with cached prayer days and no source setting is pinned to
-`london-prayer-times` explicitly, never negotiated, mirroring session 39's ruling on language
+`london-prayer-times` explicitly, never negotiated, mirroring sob 39's ruling on language
 (`ai/plans/39-localisation/ASSUMPTIONS.md` A1b). **I agree, and section 4.2 makes it load-bearing rather than
 merely prudent.**
 

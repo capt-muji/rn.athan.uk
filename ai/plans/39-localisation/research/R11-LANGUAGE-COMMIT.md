@@ -89,7 +89,7 @@ channel renames across the set; the width measurement itself.
 Detection mechanism: the persisted intent marker from step 2. Completion is idempotent because a
 re-run with the same locale replaces every request in place and "a reschedule that finds nothing
 to change leaves no gap" (`stores/version.ts:188-192`). Direction is forward, not backward: the
-stored language is what the user already saw, the same ruling session 33 gave the athan
+stored language is what the user already saw, the same ruling job 33 gave the athan
 (`stores/notifications.ts:1734-1736`, `hooks/__tests__/useNotification.test.ts:485-489`).
 
 | Dies right after | State left | Next launch observes | Healing |

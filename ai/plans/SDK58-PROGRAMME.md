@@ -87,7 +87,7 @@ the four together when the SDK presets move: `@babel/core`,
   (`node_modules/react-native-reanimated/src/featureFlags/staticFlags.json`) and no override
   is set anywhere in the repo. Draw sites that ride it: `components/modals/Modal.tsx:81` and
   `:90`, `components/modals/Help.tsx:75`, `components/sheets/screens/Qibla.tsx:61`.
-- **A10. After the install, diff the pin set and read every peer warning.** Session 23 measured
+- **A10. After the install, diff the pin set and read every peer warning.** Job 23 measured
   26 packages and installed 25. `react-native-screens` surfaced only as an `expo-router` peer
   warning (`package.json:73`). One warning is expected: `jest-expo > jest-watch-typeahead@2.2.1`
   wants Jest 29.

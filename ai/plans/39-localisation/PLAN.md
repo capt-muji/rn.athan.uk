@@ -1,4 +1,4 @@
-# Session 38: the single-language overhaul, stage one (of two, inside release 2.0.0)
+# Job 38: the single-language overhaul, stage one (of two, inside release 2.0.0)
 
 | Field | Value |
 | --- | --- |

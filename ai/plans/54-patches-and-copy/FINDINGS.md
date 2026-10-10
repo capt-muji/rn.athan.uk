@@ -9,8 +9,8 @@ through, so the hygiene check is complete and the other two jobs stop where sect
 | Patch | What it does | Still needed | Tested with and without | Upstream |
 | --- | --- | --- | --- | --- |
 | `expo-background-task+58.0.7` | Adds `requiresNetworkConnectivity` to `BackgroundTaskOptions`, default `true`. The app passes `false` (`stores/notifications.ts`), so the notification refresh runs with no network | **Yes** | Yes, on 2026-09-24: unpatched, the job sat unrun behind `CONNECTIVITY`. Patched, it ran on three phones, one of them with the radio off (`ai/ISSUES.md` #37) | expo/expo#50581, **open** since 2026-09-24, no review yet, checks green |
-| `expo-widgets+58.0.5` | Adds `openApp` to the Android widget `Button`, so a tap on a widget opens the app | **Yes** | Yes, session 15c: before, a tap did nothing. After, the app opened from dead on Android 9 and on Android 15 | **None.** No pull request and no issue exists |
-| `expo-location+58.0.9` | Android: 50Hz sensors, no 2 degree emission gate, the module compiled from source. iOS: `kCLHeadingFilterNone` | **The iOS line: yes. The three Android hunks: no longer reached**, section 2 | Yes, session 50, each change on its own. Not since session 53 changed the Android reader | None. Row 51 |
+| `expo-widgets+58.0.5` | Adds `openApp` to the Android widget `Button`, so a tap on a widget opens the app | **Yes** | Yes, sob 15c: before, a tap did nothing. After, the app opened from dead on Android 9 and on Android 15 | **None.** No pull request and no issue exists |
+| `expo-location+58.0.9` | Android: 50Hz sensors, no 2 degree emission gate, the module compiled from source. iOS: `kCLHeadingFilterNone` | **The iOS line: yes. The three Android hunks: no longer reached**, section 2 | Yes, sob 50, each change on its own. Not since sob 53 changed the Android reader | None. Row 51 |
 
 **How "still needed" was established, for the first two.** The newest published SDK 58 builds were downloaded and
 read, not assumed:
@@ -50,7 +50,7 @@ The guard's last check looks for `android/local-maven-repo`, and the package shi
 
 **The iOS line is still needed, by the code:** the iPhone's heading still arrives through
 `Location.watchHeadingAsync`, where CoreLocation's default 1 degree filter applies. It was last tested with and
-without in session 50 (experiment D, judged not smooth without it). Testing it again needs the owner's eye, and
+without in sob 50 (experiment D, judged not smooth without it). Testing it again needs the owner's eye, and
 the compass is locked.
 
 **Is it specific to a qibla, and would it regress others.** The brief's answer stands: each hunk corrects

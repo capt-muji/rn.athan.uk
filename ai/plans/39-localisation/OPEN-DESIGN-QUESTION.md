@@ -84,7 +84,7 @@ now. So maybe we can only have one and no body description. Think about it."
 The owner is describing a real constraint and reaching the right conclusion. The facts this repo
 already holds:
 
-- `shared/notifications.ts` sets `interruptionLevel: 'timeSensitive'`, and session 27 added the
+- `shared/notifications.ts` sets `interruptionLevel: 'timeSensitive'`, and job 27 added the
   matching iOS entitlement so it is genuinely in force. iOS draws a "Time Sensitive" label in the
   notification's header. That label is drawn by the system and **an app cannot hide it** while
   asking for the interruption level that makes the alert break through Focus. Removing it means

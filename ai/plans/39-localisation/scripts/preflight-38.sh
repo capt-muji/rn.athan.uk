@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Session 38 pre-flight. Run: bash <this script> <first step number not ticked DONE>
+# Sob 38 pre-flight. Run: bash <this script> <first step number not ticked DONE>
 # Ends PREFLIGHT OK, or names the failed check and exits 1.
 set -euo pipefail
 FATAL() { echo "PREFLIGHT FAILED: $1"; exit 1; }

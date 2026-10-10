@@ -1,6 +1,6 @@
 # R3: RTL, scripts, and the never-mirror decision (compressed)
 
-Research report for session 39. Scope: layout direction policy, bidi inside pinned-LTR text,
+Research report for job 39. Scope: layout direction policy, bidi inside pinned-LTR text,
 font coverage for the top 20 languages, and the fixed-width prayer-name column. Written
 2026-09-29 at 480 lines. **Compressed 2026-10-07** to the sections other documents do not
 carry; the conclusions and rules the plan builds on live in `R3-FINDINGS.md` (the LTR-box/RTL-

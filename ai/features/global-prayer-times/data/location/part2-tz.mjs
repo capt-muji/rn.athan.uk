@@ -6,7 +6,7 @@
 // every city in cities15000 we measure the displayed-minute error of computing at the principal
 // city instead of at the city itself, on 24 dates spread over 2026.
 //
-// This is the same construction session 37 used for qibla (error against the zone's principal
+// This is the same construction sob 37 used for qibla (error against the zone's principal
 // city), so the two are directly comparable.
 import fs from 'node:fs';
 import { Coordinates, PrayerTimes, CalculationMethod, HighLatitudeRule, Rounding, Madhab } from './lib.mjs';
@@ -258,10 +258,10 @@ say('');
   say('');
 }
 
-// -------- named comparison with session 37's qibla cities
+// -------- named comparison with sob 37's qibla cities
 {
   const want = ['Manchester', 'Detroit', 'Peshawar', 'Diyarbakır', 'Diyarbakir', 'Jeddah'];
-  say('## 2D. The five cities session 37 measured for qibla, measured here for prayer times');
+  say('## 2D. The five cities sob 37 measured for qibla, measured here for prayer times');
   say('');
   const recs = [];
   for (const w of want) {

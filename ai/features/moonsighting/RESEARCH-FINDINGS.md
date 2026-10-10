@@ -1303,7 +1303,7 @@ What this means for the current code:
   was written for (finding 47) is exactly what this source emits. The guard keeps the rest of the
   year usable, as intended.
 - **Nothing in the app can represent a day with Isha but no Maghrib, or Fajr but no Sunrise.**
-  Session 3's per-prayer `--:--` rendering (`feat/audit-71-dashes`, 1.27.0 to 1.27.3, not merged
+  Sob 3's per-prayer `--:--` rendering (`feat/audit-71-dashes`, 1.27.0 to 1.27.3, not merged
   into `uat-2` at `466b568`) addresses display, but Duha
   (`adjustTime(times.sunrise, 20)`), Istijaba (from Magrib) and the night times (from Magrib and
   Fajr) all derive from fields that can be `-----` while their neighbours are real. The

@@ -169,7 +169,7 @@ really messy real quick."
 The measurements say he was right:
 
 - iOS draws a **"Time Sensitive" label** above the notification that the app cannot hide while
-  keeping the interruption level. Session 27 fought to get that level, so giving it up is not an
+  keeping the interruption level. Job 27 fought to get that level, so giving it up is not an
   option.
 - The app ships **title only, no body**, deliberately, recorded twice in `shared/notifications.ts`.
 - So the whole budget is one short line under a system label. "Fajr / الفجر now" truncates on a
@@ -177,7 +177,7 @@ The measurements say he was right:
 
 **The decisive reason is not display, and I had missed it.** R7 found that arming two notifications
 per prayer, one per language, doubles the request cost of every row against the fixed
-`NOTIFICATION_REQUEST_BUDGET` of 64. Session 28 measured the standard profile at 3 days of coverage
+`NOTIFICATION_REQUEST_BUDGET` of 64. Job 28 measured the standard profile at 3 days of coverage
 with both reminders. Doubling the rows cuts that toward 1.5 days.
 
 So a bilingual notification would **halve how long the app keeps working when the background refresh
