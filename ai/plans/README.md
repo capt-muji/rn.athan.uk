@@ -3,7 +3,8 @@
 ## Words
 
 A session is one context window, opened and closed at will. Rows in this queue are jobs.
-The two never share a word.
+The two never share a word. The board mirrors this queue and says ticket (a queue job)
+and step (a plan step); these files keep job and step.
 
 ## Order
 
@@ -21,7 +22,7 @@ Planning specifies the work completely, down to contracts, names, behaviour, tes
 
 Plan the first row that needs planning: resume a PLANNING row, refresh a NEEDS REPLAN row, before starting a NOT PLANNED row. The execution step resumes a plan left at IN PROGRESS. Pass over a row whose blocker has not moved, as a BLOCKED row is passed over. Row 18 is the live case: re-check `npm view expo dist-tags` each session. The day SDK 58 stable lands on npm, row 18 jumps the queue.
 
-**Invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED.** BLOCKED, OWNER-LED and research-parked rows hold no merged code, so several may wait at once. A plan anchors on one `uat` commit and quotes its code, its tests' expected numbers and the owner decisions taken against it. A row ahead changes that code, so a plan written early runs stale, and a stale anchor that still matches by text is the worst failure, because nothing catches it.
+**Invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED, unless its plan's code files are disjoint from every other in-flight row's** (the three version files are shared by every step and serialize under the version lock, so they never count as overlap). Disjoint rows form separate conflict groups and may run in parallel, one executor each. BLOCKED, OWNER-LED and research-parked rows hold no merged code, so several may wait at once. A plan anchors on one `uat` commit and quotes its code, its tests' expected numbers and the owner decisions taken against it. A row ahead changes that code, so a plan written early runs stale, and a stale anchor that still matches by text is the worst failure, because nothing catches it.
 
 Every session ends with the handoff block in its final reply, four lines: the phase completed, the row it moved, the next job, what the owner types next (`/athan-run` or `/athan-plan`). The block is a summary for the reader, never state: the resume state is the queue row's status plus the `Resume from:` note the workers write into the plan folder, so any new session reconstructs the work from the repository alone. No gateway address, domain or key is ever written into this repository.
 
@@ -37,7 +38,7 @@ A row moves through NOT PLANNED, PLANNING, READY, IN PROGRESS, EXECUTED, DONE. O
 
 ## The queue
 
-The queue is the only tracking file. DONE rows keep order number and short name only, and their record is git history. **A plan's documentation dies with its merge: the session that merges the branch into `uat` deletes the plan folder, the evidence under `~/athan-gitree/sessions/<N>/` and the uncited brief of the job in `ai/prompts/` in the same commit.** Research folders under `ai/features/` keep only files still cited by shipped code or config, named in the row. Code is the documentation, and MD files go stale. The one survivor is an artefact still cited by shipped code or config, named in the row. Open rows keep the pointers, the facts and Needs first (the rows that must be DONE before a plan runs).
+The queue is the only tracking file. DONE rows keep order number and short name only, and their record is git history. **A plan's documentation dies with its merge: the session that merges the branch into `uat` deletes the plan folder, the evidence under `~/athan-gitree/sessions/<N>/` and the uncited brief of the job in `ai/prompts/` in the same commit.** Research folders under `ai/features/` keep only files still cited by shipped code or config, named in the row. Code is the documentation, and MD files go stale. The one survivor is an artefact still cited by shipped code or config, named in the row. Open rows keep the pointers, the facts, Needs first (the rows that must be DONE before a plan runs), Parent (the row this one rolls up into) and Group (the shared code surface, when this row's files overlap another open row's).
 
 | Order | Job | Status |
 | --- | --- | --- |

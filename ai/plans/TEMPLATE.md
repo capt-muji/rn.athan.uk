@@ -11,7 +11,7 @@ each with the exact condition and the exact action.
 
 ## Sections, in order
 
-- **Header table.** Brief, Planned at (`uat` sha, version, date), Planned by, Needs first, Steps
+- **Header table.** Brief, Planned at (`uat` sha, version, date), Planned by, Needs first, Parent, Group, Batch budget, Session budget, Steps
   count, Device, Owner decisions still needed.
 - **1. Goal.** What is wrong today, what is true when DONE, how the owner notices. Then the
   owner's rules that apply, quoted with their source.
@@ -31,7 +31,8 @@ each with the exact condition and the exact action.
   (`IF <precondition>` and `WHILE <state>` variants allowed). "Observable" means a test,
   a command's output or a log line can see it. These IDs are what every step cites.
 - **6. Steps.** A checklist, then one subsection per step: a `Requirements:` line citing the
-  criterion IDs it satisfies (`Requirements: R1.2, R3.1`), anchor check, goal, branch, files,
+  criterion IDs it satisfies (`Requirements: R1.2, R3.1`), a `Weight:` line (device 3,
+  code 2, docs 1), anchor check, goal, branch, files,
   red tests, change contracts, green run, break script, version and commit, review, merge,
   done when.
 - **7. Device proof.** The build, APK and install commands. Each check's adb command and
