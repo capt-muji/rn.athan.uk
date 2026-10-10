@@ -76,7 +76,7 @@ const LOADING_PRAYER_ID: PrayerId = 'fajr';
  *
  * @example
  * const prayer = usePrayer(ScheduleType.Standard, 2); // Get Dhuhr
- * const { english, time, isPassed, isNext } = prayer;
+ * const { id, time, isPassed, isNext } = prayer;
  */
 export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   // NEW: Use sequence-based prayer data with derived isPassed and isNext

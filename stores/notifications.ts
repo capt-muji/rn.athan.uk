@@ -192,7 +192,7 @@ const _cancelStaleNotificationIds = async (ids: string[]): Promise<string[]> => 
  * and can never bind to the wrong prayer.
  *
  * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerName English prayer name (e.g. "Fajr", "Last Third")
+ * @param id Prayer id (e.g. "fajr", "last third")
  * @returns Jotai atom with MMKV persistence for the alert type
  *
  * @example
@@ -242,7 +242,7 @@ const reminderSlotSuffix = (slot: ReminderSlot): string => (slot === 0 ? '' : `_
  * Keys are name-based (not index-based); see createPrayerAlertAtom.
  *
  * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerName English prayer name
+ * @param id Prayer id
  * @param slot Which of the prayer's two reminders
  * @returns Jotai atom with MMKV persistence for the reminder alert type
  */
@@ -259,7 +259,7 @@ export const createReminderAlertAtom = (scheduleType: ScheduleType, id: PrayerId
  * Keys are name-based (not index-based); see createPrayerAlertAtom.
  *
  * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerName English prayer name
+ * @param id Prayer id
  * @param slot Which of the prayer's two reminders
  * @returns Jotai atom with MMKV persistence for the reminder interval
  */
@@ -321,7 +321,7 @@ const NOT_MARKED = 0;
  * survive. The key does not match `INDEX_KEY_PATTERN`, so the preference migration leaves it alone.
  *
  * @param scheduleType Schedule type (Standard or Extra)
- * @param prayerName English prayer name
+ * @param id Prayer id
  */
 const createPrayerRepairMark = (scheduleType: ScheduleType, id: PrayerId) => {
   const type = scheduleType === ScheduleType.Standard ? 'standard' : 'extra';
@@ -644,9 +644,12 @@ export const setSoundPreference = (selection: number) => store.set(soundPreferen
  * @param id Prayer id (e.g. "fajr", "last third")
  * @param fallbackIndex Index to return when the id is not in the schedule.
  *   `usePrayer` reports `id: 'fajr'` while the sequence loads or when the row
- *   index is out of range, and the fallback keeps that frame behaving exactly
- *   as it did before this indirection existed. Returning -1 instead would hand
- *   `useAtomValue` an undefined atom and throw.
+ *   index is out of range. On Standard that id resolves to canonical index 0
+ *   (the fallback never fires); on Extra it misses and the row's own index
+ *   returns. Both frames carry an empty time, which the row components treat
+ *   as nameless and every bell path masks, so the resolved index draws
+ *   nothing either way. Returning -1 instead would hand `useAtomValue` an
+ *   undefined atom and throw.
  * @returns Canonical index into this module's atom arrays
  */
 export const canonicalPrayerIndex = (scheduleType: ScheduleType, id: PrayerId, fallbackIndex: number): number => {

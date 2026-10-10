@@ -51,7 +51,7 @@ export interface PrayerWidgetSettings {
 /**
  * One row of the medium widget's day list — the displayed day's prayers,
  * exactly as the corresponding app page shows them (chronological for the
- * Standard schedule, canonical EXTRAS_ENGLISH order for the Extra schedule).
+ * Standard schedule, canonical EXTRA_PRAYER_IDS order for the Extra schedule).
  * `id` is the closed vocabulary; `name` is the baked label the row draws.
  * Entries written by v5 apps carry `name` alone, so every `id` read guards
  * on presence.
@@ -109,7 +109,7 @@ export interface PrayerWidgetProps {
    * the app shows at the entry's moment (usually the upcoming prayer's day;
    * a day with no readable time stays until 00:00 London at its end, as it
    * does in the app). Standard entries are chronological; extras entries are in
-   * canonical EXTRAS_ENGLISH order with Istijaba present only on Fridays
+   * canonical EXTRA_PRAYER_IDS order with Istijaba present only on Fridays
    * (4 rows normally, 5 on Fridays). Rows before the active one are past,
    * rows after it are upcoming. Absent on entries from older app versions
    * (the medium layout degrades to the single-prayer composition).

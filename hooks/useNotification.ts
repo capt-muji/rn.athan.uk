@@ -55,18 +55,22 @@ const listenForReturnToApp = () => {
  *   caller never waits forever
  */
 const showSettingsDialog = (): Promise<boolean> => {
+  const title = t('notifications.enableTitle');
+  const message = t('notifications.enableMessage');
+  const cancel = t('dialog.cancel');
+  const openSettings = t('dialog.openSettings');
   return new Promise((resolve) => {
     Alert.alert(
-      t('notifications.enableTitle'),
-      t('notifications.enableMessage'),
+      title,
+      message,
       [
         {
-          text: t('dialog.cancel'),
+          text: cancel,
           style: 'cancel',
           onPress: () => resolve(false),
         },
         {
-          text: t('dialog.openSettings'),
+          text: openSettings,
           onPress: async () => {
             const returnToApp = listenForReturnToApp();
 
