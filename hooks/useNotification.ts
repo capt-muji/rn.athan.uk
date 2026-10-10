@@ -202,7 +202,6 @@ export const useNotification = () => {
    * @param scheduleType Schedule type (Standard or Extra)
    * @param prayerIndex Index of the prayer in its schedule (0-based)
    * @param englishName English prayer name
-   * @param arabicName Arabic prayer name
    * @param originalState The original state when the menu was opened
    * @param currentState The current state when the menu is being closed
    * @returns Promise resolving to boolean indicating success

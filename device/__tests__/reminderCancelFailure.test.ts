@@ -30,7 +30,6 @@ const record = (id: string) => ({
   date: id.slice(22, 32),
   time: '05:04',
   englishName: 'Suhoor',
-  arabicName: 'السحور',
   alertType: AlertType.Silent,
 });
 

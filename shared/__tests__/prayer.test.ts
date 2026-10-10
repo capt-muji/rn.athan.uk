@@ -190,7 +190,7 @@ describe('getCascadeDelay', () => {
 
   it('returns correct delay for extra schedule', () => {
     // Extra schedule has 5 prayers
-    expect(getCascadeDelay(0, ScheduleType.Extra)).toBe(6 * 150); // Uses PRAYERS_ARABIC.length = 6
+    expect(getCascadeDelay(0, ScheduleType.Extra)).toBe(6 * 150); // Extras borrow the standard array's length, the quirk R13 documents
     expect(getCascadeDelay(4, ScheduleType.Extra)).toBe(2 * 150);
   });
 
