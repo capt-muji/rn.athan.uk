@@ -35,8 +35,8 @@ describe('the alarm window either side of 00:00 on 18 October 2026', () => {
     jest.useFakeTimers();
     resetAlarms();
     storeDays(londonDays('2026-10-16', '2026-10-17', '2026-10-18', '2026-10-19', '2026-10-20'));
-    enable(ScheduleType.Standard, 'Fajr');
-    enable(ScheduleType.Extra, 'Midnight');
+    enable(ScheduleType.Standard, 'fajr');
+    enable(ScheduleType.Extra, 'midnight');
   });
 
   afterEach(() => {
@@ -84,7 +84,7 @@ describe('the alarm window either side of 00:00 on 18 October 2026', () => {
     setSequence(ScheduleType.Standard, new Date());
     setSequence(ScheduleType.Extra, new Date());
     expect(getNextPrayer(ScheduleType.Extra)).toMatchObject({
-      english: 'Midnight',
+      id: 'midnight',
       belongsToDate: '2026-10-18',
       datetime: new Date('2026-10-17T23:00:00.000Z'),
     });
@@ -96,7 +96,7 @@ describe('the alarm window either side of 00:00 on 18 October 2026', () => {
     // The ticker really crossed that Midnight: the Extras list moved on to its Last Third
     expect(new Date().toISOString()).toBe('2026-10-17T23:00:02.000Z');
     expect(getNextPrayer(ScheduleType.Extra)).toMatchObject({
-      english: 'Last Third',
+      id: 'last third',
       belongsToDate: '2026-10-18',
       datetime: new Date('2026-10-18T00:58:00.000Z'),
     });

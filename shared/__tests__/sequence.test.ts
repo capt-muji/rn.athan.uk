@@ -15,6 +15,7 @@
  * nothing in §4 is allowed to read array position.
  */
 
+import type { PrayerId } from '@/shared/constants';
 import {
   compareListOrder,
   findNextOccurrence,
@@ -34,8 +35,8 @@ import { type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
 // =============================================================================
 
 // Typed out rather than imported, so a reordered constant cannot quietly agree with itself
-const STANDARD_NAMES = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
-const EXTRAS_NAMES = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
+const STANDARD_NAMES: PrayerId[] = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'];
+const EXTRAS_NAMES: PrayerId[] = ['midnight', 'last third', 'suhoor', 'duha', 'istijaba'];
 
 /** A London clock reading on the list day, or on another calendar date for a row either side of 00:00 */
 type Reading = string | { clock: string; on: string } | null;
@@ -80,14 +81,14 @@ const EXTRAS_TIMES: Record<string, Reading[]> = {
   '2026-12-12': [{ clock: '23:03', on: '2026-12-11' }, '01:27', '05:55', '08:17'],
 };
 
-const row = (type: ScheduleType, english: string, listDay: string, reading: Reading): Prayer => {
+const row = (type: ScheduleType, id: PrayerId, listDay: string, reading: Reading): Prayer => {
   if (reading === null) {
-    return { type, english, belongsToDate: listDay, datetime: null, time: null };
+    return { type, id, belongsToDate: listDay, datetime: null, time: null };
   }
   const { clock, on } = typeof reading === 'string' ? { clock: reading, on: listDay } : reading;
   return {
     type,
-    english,
+    id,
     belongsToDate: listDay,
     datetime: createPrayerDatetime(on, clock),
     time: clock,
@@ -95,11 +96,11 @@ const row = (type: ScheduleType, english: string, listDay: string, reading: Read
 };
 
 const listBuilder =
-  (type: ScheduleType, names: string[], times: Record<string, Reading[]>) =>
+  (type: ScheduleType, ids: PrayerId[], times: Record<string, Reading[]>) =>
   (day: string, unreadable: string[] = []): Prayer[] => {
     const readings = times[day];
     if (!readings) throw new Error(`No fixture readings for ${day}`);
-    return readings.map((reading, i) => row(type, names[i], day, unreadable.includes(names[i]) ? null : reading));
+    return readings.map((reading, i) => row(type, ids[i], day, unreadable.includes(ids[i]) ? null : reading));
   };
 
 const standard = listBuilder(ScheduleType.Standard, STANDARD_NAMES, STANDARD_TIMES);
@@ -112,7 +113,7 @@ const blankExtras = (day: string, friday = false): Prayer[] =>
 
 const find = (prayers: Prayer[], key: string): Prayer => {
   const cut = key.lastIndexOf(' ');
-  const found = prayers.find((p) => p.english === key.slice(0, cut) && p.belongsToDate === key.slice(cut + 1));
+  const found = prayers.find((p) => p.id === key.slice(0, cut) && p.belongsToDate === key.slice(cut + 1));
   if (!found) throw new Error(`Fixture has no ${key}`);
   return found;
 };
@@ -123,7 +124,7 @@ const findReadable = (prayers: Prayer[], key: string): ReadablePrayer => {
   return found;
 };
 
-const keyOf = (prayer: Prayer | null): string | null => (prayer ? `${prayer.english} ${prayer.belongsToDate}` : null);
+const keyOf = (prayer: Prayer | null): string | null => (prayer ? `${prayer.id} ${prayer.belongsToDate}` : null);
 
 const at = (iso: string, offsetMs = 0): Date => new Date(Date.parse(iso) + offsetMs);
 
@@ -170,19 +171,19 @@ const isoOrNull = (date: Date | null): string | null => date?.toISOString() ?? n
 
 describe('fixtures', () => {
   it.each([
-    ['Isha 2026-09-14', standard('2026-09-14'), '2026-09-14T19:31:00.000Z'],
-    ['Fajr 2026-09-15', standard('2026-09-15'), '2026-09-15T04:04:00.000Z'],
-    ['Magrib 2026-09-25', standard('2026-09-25'), '2026-09-25T23:40:00.000Z'],
-    ['Isha 2026-10-23', standard('2026-10-23'), '2026-10-23T18:18:00.000Z'],
-    ['Isha 2026-10-24', standard('2026-10-24'), '2026-10-24T18:16:00.000Z'],
-    ['Fajr 2026-10-25', standard('2026-10-25'), '2026-10-25T04:50:00.000Z'],
-    ['Fajr 2026-10-26', standard('2026-10-26'), '2026-10-26T04:52:00.000Z'],
-    ['Isha 2026-03-27', standard('2026-03-27'), '2026-03-27T19:50:00.000Z'],
-    ['Isha 2026-03-28', standard('2026-03-28'), '2026-03-28T19:52:00.000Z'],
-    ['Fajr 2026-03-29', standard('2026-03-29'), '2026-03-29T04:42:00.000Z'],
-    ['Fajr 2026-03-30', standard('2026-03-30'), '2026-03-30T04:40:00.000Z'],
-    ['Midnight 2026-12-12', extras('2026-12-12'), '2026-12-11T23:03:00.000Z'],
-    ['Istijaba 2026-09-18', extras('2026-09-18'), '2026-09-18T17:05:00.000Z'],
+    ['isha 2026-09-14', standard('2026-09-14'), '2026-09-14T19:31:00.000Z'],
+    ['fajr 2026-09-15', standard('2026-09-15'), '2026-09-15T04:04:00.000Z'],
+    ['magrib 2026-09-25', standard('2026-09-25'), '2026-09-25T23:40:00.000Z'],
+    ['isha 2026-10-23', standard('2026-10-23'), '2026-10-23T18:18:00.000Z'],
+    ['isha 2026-10-24', standard('2026-10-24'), '2026-10-24T18:16:00.000Z'],
+    ['fajr 2026-10-25', standard('2026-10-25'), '2026-10-25T04:50:00.000Z'],
+    ['fajr 2026-10-26', standard('2026-10-26'), '2026-10-26T04:52:00.000Z'],
+    ['isha 2026-03-27', standard('2026-03-27'), '2026-03-27T19:50:00.000Z'],
+    ['isha 2026-03-28', standard('2026-03-28'), '2026-03-28T19:52:00.000Z'],
+    ['fajr 2026-03-29', standard('2026-03-29'), '2026-03-29T04:42:00.000Z'],
+    ['fajr 2026-03-30', standard('2026-03-30'), '2026-03-30T04:40:00.000Z'],
+    ['midnight 2026-12-12', extras('2026-12-12'), '2026-12-11T23:03:00.000Z'],
+    ['istijaba 2026-09-18', extras('2026-09-18'), '2026-09-18T17:05:00.000Z'],
   ])('%s is the instant the expectations were worked out from', (key, prayers, iso) => {
     expect(findReadable(prayers, key).datetime.toISOString()).toBe(iso);
   });
@@ -202,17 +203,17 @@ describe('fixtures', () => {
 
 describe('isReadable', () => {
   it.each([
-    ['a row with a moment', row(ScheduleType.Standard, 'Asr', '2026-09-15', '16:21'), true],
-    ['a row without one', row(ScheduleType.Standard, 'Asr', '2026-09-15', null), false],
-    ['an Extras row with a moment', row(ScheduleType.Extra, 'Midnight', '2026-09-18', '00:09'), true],
-    ['an Extras row without one', row(ScheduleType.Extra, 'Midnight', '2026-09-18', null), false],
+    ['a row with a moment', row(ScheduleType.Standard, 'asr', '2026-09-15', '16:21'), true],
+    ['a row without one', row(ScheduleType.Standard, 'asr', '2026-09-15', null), false],
+    ['an Extras row with a moment', row(ScheduleType.Extra, 'midnight', '2026-09-18', '00:09'), true],
+    ['an Extras row without one', row(ScheduleType.Extra, 'midnight', '2026-09-18', null), false],
   ])('%s', (_label, prayer, expected) => {
     expect(isReadable(prayer)).toBe(expected);
   });
 
   it('a row at the epoch still has a moment', () => {
     const epoch: Prayer = {
-      ...row(ScheduleType.Standard, 'Fajr', '1970-01-01', null),
+      ...row(ScheduleType.Standard, 'fajr', '1970-01-01', null),
       datetime: new Date(0),
       time: '01:00',
     };
@@ -220,7 +221,7 @@ describe('isReadable', () => {
   });
 
   it('narrows to a row whose moment can be read', () => {
-    const prayer = row(ScheduleType.Standard, 'Dhuhr', '2026-09-15', '12:58');
+    const prayer = row(ScheduleType.Standard, 'dhuhr', '2026-09-15', '12:58');
     if (!isReadable(prayer)) throw new Error('expected a readable row');
     expect(prayer.datetime.toISOString()).toBe('2026-09-15T11:58:00.000Z');
   });
@@ -231,49 +232,58 @@ describe('isReadable', () => {
 // =============================================================================
 
 describe('compareListOrder', () => {
-  const S = (english: string, day: string, reading: Reading = '12:00') =>
-    row(ScheduleType.Standard, english, day, reading);
-  const E = (english: string, day: string, reading: Reading = '12:00') =>
-    row(ScheduleType.Extra, english, day, reading);
+  const S = (id: PrayerId, day: string, reading: Reading = '12:00') => row(ScheduleType.Standard, id, day, reading);
+  const E = (id: PrayerId, day: string, reading: Reading = '12:00') => row(ScheduleType.Extra, id, day, reading);
 
   it.each([
-    ['an earlier list day first, whatever the position', S('Isha', '2026-09-15'), S('Fajr', '2026-09-16'), -1],
-    ['a later list day last, whatever the position', S('Fajr', '2026-09-16'), S('Isha', '2026-09-15'), 1],
-    ['Fajr before Sunrise on one list', S('Fajr', '2026-09-15'), S('Sunrise', '2026-09-15'), -1],
-    ['Isha after Fajr on one list', S('Isha', '2026-09-15'), S('Fajr', '2026-09-15'), 1],
-    ['Asr before Magrib on one list', S('Asr', '2026-09-15'), S('Magrib', '2026-09-15'), -1],
-    ['a row against itself', S('Dhuhr', '2026-09-15'), S('Dhuhr', '2026-09-15'), 0],
-    ['an unreadable Fajr keeps first place', S('Fajr', '2026-09-15', null), S('Sunrise', '2026-09-15'), -1],
-    ['an unreadable Isha keeps last place', S('Isha', '2026-09-15', null), S('Magrib', '2026-09-15'), 1],
-    ['an unreadable row on an earlier list day', S('Isha', '2026-09-15', null), S('Fajr', '2026-09-16'), -1],
+    ['an earlier list day first, whatever the position', S('isha', '2026-09-15'), S('fajr', '2026-09-16'), -1],
+    ['a later list day last, whatever the position', S('fajr', '2026-09-16'), S('isha', '2026-09-15'), 1],
+    ['Fajr before Sunrise on one list', S('fajr', '2026-09-15'), S('sunrise', '2026-09-15'), -1],
+    ['Isha after Fajr on one list', S('isha', '2026-09-15'), S('fajr', '2026-09-15'), 1],
+    ['Asr before Magrib on one list', S('asr', '2026-09-15'), S('magrib', '2026-09-15'), -1],
+    ['a row against itself', S('dhuhr', '2026-09-15'), S('dhuhr', '2026-09-15'), 0],
+    ['an unreadable Fajr keeps first place', S('fajr', '2026-09-15', null), S('sunrise', '2026-09-15'), -1],
+    ['an unreadable Isha keeps last place', S('isha', '2026-09-15', null), S('magrib', '2026-09-15'), 1],
+    ['an unreadable row on an earlier list day', S('isha', '2026-09-15', null), S('fajr', '2026-09-16'), -1],
     [
       'list day over moment, when a list runs past the next list starting',
-      S('Isha', '2026-09-26', { clock: '00:30', on: '2026-09-27' }),
-      S('Fajr', '2026-09-27', '00:10'),
+      S('isha', '2026-09-26', { clock: '00:30', on: '2026-09-27' }),
+      S('fajr', '2026-09-27', '00:10'),
       -1,
     ],
-    ['across a month', S('Isha', '2026-09-30'), S('Fajr', '2026-10-01'), -1],
-    ['across a year', S('Isha', '2026-12-31'), S('Fajr', '2027-01-01'), -1],
-    ['Istijaba before the next list opens with Midnight', E('Istijaba', '2026-09-18'), E('Midnight', '2026-09-19'), -1],
-    ['Midnight before Last Third', E('Midnight', '2026-09-18'), E('Last Third', '2026-09-18'), -1],
-    ['Suhoor before Duha', E('Suhoor', '2026-09-18'), E('Duha', '2026-09-18'), -1],
-    ['Istijaba after Duha', E('Istijaba', '2026-09-18'), E('Duha', '2026-09-18'), 1],
-    ['an unknown name after Isha', S('Tahajjud', '2026-09-15'), S('Isha', '2026-09-15'), 1],
-    ['Isha before an unknown name', S('Isha', '2026-09-15'), S('Tahajjud', '2026-09-15'), -1],
-    ['an unknown name after Fajr', S('Tahajjud', '2026-09-15'), S('Fajr', '2026-09-15'), 1],
-    ['an unknown Extras name after Istijaba', E('Tahajjud', '2026-09-18'), E('Istijaba', '2026-09-18'), 1],
-    ['an unknown name on an earlier list day still first', S('Tahajjud', '2026-09-15'), S('Fajr', '2026-09-16'), -1],
-    ['two unknown names on one list day tie', S('Tahajjud', '2026-09-15'), S('Witr', '2026-09-15'), 0],
+    ['across a month', S('isha', '2026-09-30'), S('fajr', '2026-10-01'), -1],
+    ['across a year', S('isha', '2026-12-31'), S('fajr', '2027-01-01'), -1],
+    ['Istijaba before the next list opens with Midnight', E('istijaba', '2026-09-18'), E('midnight', '2026-09-19'), -1],
+    ['Midnight before Last Third', E('midnight', '2026-09-18'), E('last third', '2026-09-18'), -1],
+    ['Suhoor before Duha', E('suhoor', '2026-09-18'), E('duha', '2026-09-18'), -1],
+    ['Istijaba after Duha', E('istijaba', '2026-09-18'), E('duha', '2026-09-18'), 1],
+    // Unknown ids keep listPosition's last-place fallback honest; the closed union needs the cast to reach it
+    ['an unknown name after isha', S('Tahajjud' as PrayerId, '2026-09-15'), S('isha', '2026-09-15'), 1],
+    ['isha before an unknown name', S('isha', '2026-09-15'), S('Tahajjud' as PrayerId, '2026-09-15'), -1],
+    ['an unknown name after fajr', S('Tahajjud' as PrayerId, '2026-09-15'), S('fajr', '2026-09-15'), 1],
+    ['an unknown Extras name after istijaba', E('Tahajjud' as PrayerId, '2026-09-18'), E('istijaba', '2026-09-18'), 1],
+    [
+      'an unknown name on an earlier list day still first',
+      S('Tahajjud' as PrayerId, '2026-09-15'),
+      S('fajr', '2026-09-16'),
+      -1,
+    ],
+    [
+      'two unknown names on one list day tie',
+      S('Tahajjud' as PrayerId, '2026-09-15'),
+      S('Witr' as PrayerId, '2026-09-15'),
+      0,
+    ],
   ])('%s', (_label, a, b, sign) => {
     expect(Math.sign(compareListOrder(a, b))).toBe(sign);
   });
 
   const standardSequence = [
-    ...standard('2026-09-14', ['Asr']),
+    ...standard('2026-09-14', ['asr']),
     ...blankStandard('2026-09-15'),
     ...standard('2026-09-16'),
   ];
-  const extrasSequence = [...extras('2026-09-17'), ...extras('2026-09-18', ['Istijaba']), ...extras('2026-09-19')];
+  const extrasSequence = [...extras('2026-09-17'), ...extras('2026-09-18', ['istijaba']), ...extras('2026-09-19')];
 
   describe.each(ORDERS)('sorting rows given %s', (_order, arrange) => {
     it.each([
@@ -296,13 +306,13 @@ describe('findNextReadable', () => {
     const prayers = arrange(sequence);
 
     it.each([
-      ['1 ms before Dhuhr', standardAt('Dhuhr 2026-09-15', -1), 'Dhuhr 2026-09-15'],
-      ['at Dhuhr', standardAt('Dhuhr 2026-09-15'), 'Asr 2026-09-15'],
-      ['1 ms after Dhuhr', standardAt('Dhuhr 2026-09-15', 1), 'Asr 2026-09-15'],
-      ['at Isha, the next list day', standardAt('Isha 2026-09-15'), 'Fajr 2026-09-16'],
-      ['long before the first row', at('2026-09-01T00:00:00.000Z'), 'Fajr 2026-09-14'],
-      ['1 ms before the last row', standardAt('Isha 2026-09-16', -1), 'Isha 2026-09-16'],
-      ['at the last row', standardAt('Isha 2026-09-16'), null],
+      ['1 ms before Dhuhr', standardAt('dhuhr 2026-09-15', -1), 'dhuhr 2026-09-15'],
+      ['at Dhuhr', standardAt('dhuhr 2026-09-15'), 'asr 2026-09-15'],
+      ['1 ms after Dhuhr', standardAt('dhuhr 2026-09-15', 1), 'asr 2026-09-15'],
+      ['at Isha, the next list day', standardAt('isha 2026-09-15'), 'fajr 2026-09-16'],
+      ['long before the first row', at('2026-09-01T00:00:00.000Z'), 'fajr 2026-09-14'],
+      ['1 ms before the last row', standardAt('isha 2026-09-16', -1), 'isha 2026-09-16'],
+      ['at the last row', standardAt('isha 2026-09-16'), null],
     ])('%s', (_label, now, expected) => {
       expect(keyOf(findNextReadable(prayers, now))).toBe(expected);
     });
@@ -310,11 +320,11 @@ describe('findNextReadable', () => {
 
   it('by moment rather than list order, when a list runs past the start of the next', () => {
     const prayers = [
-      row(ScheduleType.Standard, 'Isha', '2026-09-26', { clock: '00:30', on: '2026-09-27' }),
-      row(ScheduleType.Standard, 'Fajr', '2026-09-27', '00:10'),
+      row(ScheduleType.Standard, 'isha', '2026-09-26', { clock: '00:30', on: '2026-09-27' }),
+      row(ScheduleType.Standard, 'fajr', '2026-09-27', '00:10'),
     ];
     for (const [, arrange] of ORDERS) {
-      expect(keyOf(findNextReadable(arrange(prayers), at('2026-09-26T22:00:00.000Z')))).toBe('Fajr 2026-09-27');
+      expect(keyOf(findNextReadable(arrange(prayers), at('2026-09-26T22:00:00.000Z')))).toBe('fajr 2026-09-27');
     }
   });
 
@@ -381,298 +391,298 @@ const walk = (title: string, sequence: Prayer[], moments: Moment[]) => {
 describe('a whole London day', () => {
   walk(
     'one unreadable Asr: dim until Dhuhr passes, the highlight goes Dhuhr to Magrib',
-    [...standard('2026-09-14'), ...standard('2026-09-15', ['Asr']), ...standard('2026-09-16')],
+    [...standard('2026-09-14'), ...standard('2026-09-15', ['asr']), ...standard('2026-09-16')],
     [
       {
         label: '1 ms before the list before hands over',
-        now: standardAt('Isha 2026-09-14', -1),
+        now: standardAt('isha 2026-09-14', -1),
         display: '2026-09-14',
-        next: 'Isha 2026-09-14',
+        next: 'isha 2026-09-14',
         hold: null,
-        boundary: 'Isha 2026-09-14',
-        previous: 'Magrib 2026-09-14',
-        passed: { 'Asr 2026-09-15': false },
+        boundary: 'isha 2026-09-14',
+        previous: 'magrib 2026-09-14',
+        passed: { 'asr 2026-09-15': false },
       },
       {
         label: "at the list before's Isha",
-        now: standardAt('Isha 2026-09-14'),
+        now: standardAt('isha 2026-09-14'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-15',
+        next: 'fajr 2026-09-15',
         hold: null,
-        boundary: 'Fajr 2026-09-15',
-        previous: 'Isha 2026-09-14',
-        passed: { 'Asr 2026-09-15': false },
+        boundary: 'fajr 2026-09-15',
+        previous: 'isha 2026-09-14',
+        passed: { 'asr 2026-09-15': false },
       },
       {
         label: '00:00 London',
         now: at('2026-09-14T23:00:00.000Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-15',
+        next: 'fajr 2026-09-15',
         hold: null,
-        boundary: 'Fajr 2026-09-15',
-        previous: 'Isha 2026-09-14',
-        passed: { 'Asr 2026-09-15': false },
+        boundary: 'fajr 2026-09-15',
+        previous: 'isha 2026-09-14',
+        passed: { 'asr 2026-09-15': false },
       },
       {
         label: '1 ms after Fajr',
-        now: standardAt('Fajr 2026-09-15', 1),
+        now: standardAt('fajr 2026-09-15', 1),
         display: '2026-09-15',
-        next: 'Sunrise 2026-09-15',
+        next: 'sunrise 2026-09-15',
         hold: null,
-        boundary: 'Sunrise 2026-09-15',
-        previous: 'Fajr 2026-09-15',
-        passed: { 'Asr 2026-09-15': false },
+        boundary: 'sunrise 2026-09-15',
+        previous: 'fajr 2026-09-15',
+        passed: { 'asr 2026-09-15': false },
       },
       {
         label: '1 ms before Dhuhr',
-        now: standardAt('Dhuhr 2026-09-15', -1),
+        now: standardAt('dhuhr 2026-09-15', -1),
         display: '2026-09-15',
-        next: 'Dhuhr 2026-09-15',
+        next: 'dhuhr 2026-09-15',
         hold: null,
-        boundary: 'Dhuhr 2026-09-15',
-        previous: 'Sunrise 2026-09-15',
-        passed: { 'Dhuhr 2026-09-15': false, 'Asr 2026-09-15': false },
+        boundary: 'dhuhr 2026-09-15',
+        previous: 'sunrise 2026-09-15',
+        passed: { 'dhuhr 2026-09-15': false, 'asr 2026-09-15': false },
       },
       {
         label: 'at Dhuhr',
-        now: standardAt('Dhuhr 2026-09-15'),
+        now: standardAt('dhuhr 2026-09-15'),
         display: '2026-09-15',
-        next: 'Magrib 2026-09-15',
+        next: 'magrib 2026-09-15',
         hold: null,
-        boundary: 'Magrib 2026-09-15',
+        boundary: 'magrib 2026-09-15',
         previous: null,
-        passed: { 'Dhuhr 2026-09-15': false, 'Asr 2026-09-15': false },
+        passed: { 'dhuhr 2026-09-15': false, 'asr 2026-09-15': false },
       },
       {
         label: '1 ms after Dhuhr',
-        now: standardAt('Dhuhr 2026-09-15', 1),
+        now: standardAt('dhuhr 2026-09-15', 1),
         display: '2026-09-15',
-        next: 'Magrib 2026-09-15',
+        next: 'magrib 2026-09-15',
         hold: null,
-        boundary: 'Magrib 2026-09-15',
+        boundary: 'magrib 2026-09-15',
         previous: null,
-        passed: { 'Dhuhr 2026-09-15': true, 'Asr 2026-09-15': true, 'Magrib 2026-09-15': false },
+        passed: { 'dhuhr 2026-09-15': true, 'asr 2026-09-15': true, 'magrib 2026-09-15': false },
       },
       {
         label: 'the moment Asr would have been',
         now: at('2026-09-15T15:21:00.000Z'),
         display: '2026-09-15',
-        next: 'Magrib 2026-09-15',
+        next: 'magrib 2026-09-15',
         hold: null,
-        boundary: 'Magrib 2026-09-15',
+        boundary: 'magrib 2026-09-15',
         previous: null,
-        passed: { 'Asr 2026-09-15': true },
+        passed: { 'asr 2026-09-15': true },
       },
       {
         label: '1 ms after Magrib',
-        now: standardAt('Magrib 2026-09-15', 1),
+        now: standardAt('magrib 2026-09-15', 1),
         display: '2026-09-15',
-        next: 'Isha 2026-09-15',
+        next: 'isha 2026-09-15',
         hold: null,
-        boundary: 'Isha 2026-09-15',
-        previous: 'Magrib 2026-09-15',
-        passed: { 'Asr 2026-09-15': true },
+        boundary: 'isha 2026-09-15',
+        previous: 'magrib 2026-09-15',
+        passed: { 'asr 2026-09-15': true },
       },
       {
         label: '1 ms before Isha',
-        now: standardAt('Isha 2026-09-15', -1),
+        now: standardAt('isha 2026-09-15', -1),
         display: '2026-09-15',
-        next: 'Isha 2026-09-15',
+        next: 'isha 2026-09-15',
         hold: null,
-        boundary: 'Isha 2026-09-15',
-        previous: 'Magrib 2026-09-15',
-        passed: { 'Asr 2026-09-15': true },
+        boundary: 'isha 2026-09-15',
+        previous: 'magrib 2026-09-15',
+        passed: { 'asr 2026-09-15': true },
       },
       {
         label: 'at Isha the list moves on as it does today',
-        now: standardAt('Isha 2026-09-15'),
+        now: standardAt('isha 2026-09-15'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
-        previous: 'Isha 2026-09-15',
-        passed: { 'Asr 2026-09-15': true },
+        boundary: 'fajr 2026-09-16',
+        previous: 'isha 2026-09-15',
+        passed: { 'asr 2026-09-15': true },
       },
       {
         label: '1 ms after Isha',
-        now: standardAt('Isha 2026-09-15', 1),
+        now: standardAt('isha 2026-09-15', 1),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
-        previous: 'Isha 2026-09-15',
-        passed: { 'Asr 2026-09-15': true },
+        boundary: 'fajr 2026-09-16',
+        previous: 'isha 2026-09-15',
+        passed: { 'asr 2026-09-15': true },
       },
     ]
   );
 
   walk(
     'an unreadable Fajr: passed from the start, Sunrise next',
-    [...standard('2026-09-14'), ...standard('2026-09-15', ['Fajr']), ...standard('2026-09-16')],
+    [...standard('2026-09-14'), ...standard('2026-09-15', ['fajr']), ...standard('2026-09-16')],
     [
       {
         label: 'midday the day before, with the list before still on screen',
         now: at('2026-09-14T11:00:00.000Z'),
         display: '2026-09-14',
-        next: 'Dhuhr 2026-09-14',
+        next: 'dhuhr 2026-09-14',
         hold: null,
-        boundary: 'Dhuhr 2026-09-14',
-        previous: 'Sunrise 2026-09-14',
-        passed: { 'Fajr 2026-09-15': true },
+        boundary: 'dhuhr 2026-09-14',
+        previous: 'sunrise 2026-09-14',
+        passed: { 'fajr 2026-09-15': true },
       },
       {
         label: "1 ms after the list before's Isha",
-        now: standardAt('Isha 2026-09-14', 1),
+        now: standardAt('isha 2026-09-14', 1),
         display: '2026-09-15',
-        next: 'Sunrise 2026-09-15',
+        next: 'sunrise 2026-09-15',
         hold: null,
-        boundary: 'Sunrise 2026-09-15',
+        boundary: 'sunrise 2026-09-15',
         previous: null,
-        passed: { 'Fajr 2026-09-15': true, 'Sunrise 2026-09-15': false },
+        passed: { 'fajr 2026-09-15': true, 'sunrise 2026-09-15': false },
       },
       {
         label: 'the moment Fajr would have been',
         now: at('2026-09-15T04:04:00.000Z'),
         display: '2026-09-15',
-        next: 'Sunrise 2026-09-15',
+        next: 'sunrise 2026-09-15',
         hold: null,
-        boundary: 'Sunrise 2026-09-15',
+        boundary: 'sunrise 2026-09-15',
         previous: null,
-        passed: { 'Fajr 2026-09-15': true },
+        passed: { 'fajr 2026-09-15': true },
       },
       {
         label: 'at Sunrise',
-        now: standardAt('Sunrise 2026-09-15'),
+        now: standardAt('sunrise 2026-09-15'),
         display: '2026-09-15',
-        next: 'Dhuhr 2026-09-15',
+        next: 'dhuhr 2026-09-15',
         hold: null,
-        boundary: 'Dhuhr 2026-09-15',
-        previous: 'Sunrise 2026-09-15',
-        passed: { 'Fajr 2026-09-15': true, 'Sunrise 2026-09-15': false },
+        boundary: 'dhuhr 2026-09-15',
+        previous: 'sunrise 2026-09-15',
+        passed: { 'fajr 2026-09-15': true, 'sunrise 2026-09-15': false },
       },
       {
         label: '1 ms after Sunrise',
-        now: standardAt('Sunrise 2026-09-15', 1),
+        now: standardAt('sunrise 2026-09-15', 1),
         display: '2026-09-15',
-        next: 'Dhuhr 2026-09-15',
+        next: 'dhuhr 2026-09-15',
         hold: null,
-        boundary: 'Dhuhr 2026-09-15',
-        previous: 'Sunrise 2026-09-15',
-        passed: { 'Fajr 2026-09-15': true, 'Sunrise 2026-09-15': true },
+        boundary: 'dhuhr 2026-09-15',
+        previous: 'sunrise 2026-09-15',
+        passed: { 'fajr 2026-09-15': true, 'sunrise 2026-09-15': true },
       },
     ]
   );
 
   walk(
     'an unreadable Isha: the list moves on after Magrib, its last readable row',
-    [...standard('2026-09-14'), ...standard('2026-09-15', ['Isha']), ...standard('2026-09-16')],
+    [...standard('2026-09-14'), ...standard('2026-09-15', ['isha']), ...standard('2026-09-16')],
     [
       {
         label: '1 ms after Asr, with Magrib still to come',
-        now: standardAt('Asr 2026-09-15', 1),
+        now: standardAt('asr 2026-09-15', 1),
         display: '2026-09-15',
-        next: 'Magrib 2026-09-15',
+        next: 'magrib 2026-09-15',
         hold: null,
-        boundary: 'Magrib 2026-09-15',
-        previous: 'Asr 2026-09-15',
-        passed: { 'Isha 2026-09-15': false },
+        boundary: 'magrib 2026-09-15',
+        previous: 'asr 2026-09-15',
+        passed: { 'isha 2026-09-15': false },
       },
       {
         label: '1 ms before Magrib',
-        now: standardAt('Magrib 2026-09-15', -1),
+        now: standardAt('magrib 2026-09-15', -1),
         display: '2026-09-15',
-        next: 'Magrib 2026-09-15',
+        next: 'magrib 2026-09-15',
         hold: null,
-        boundary: 'Magrib 2026-09-15',
-        previous: 'Asr 2026-09-15',
-        passed: { 'Isha 2026-09-15': false },
+        boundary: 'magrib 2026-09-15',
+        previous: 'asr 2026-09-15',
+        passed: { 'isha 2026-09-15': false },
       },
       {
         label: 'at Magrib',
-        now: standardAt('Magrib 2026-09-15'),
+        now: standardAt('magrib 2026-09-15'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
+        boundary: 'fajr 2026-09-16',
         previous: null,
-        passed: { 'Isha 2026-09-15': false },
+        passed: { 'isha 2026-09-15': false },
       },
       {
         label: '1 ms after Magrib',
-        now: standardAt('Magrib 2026-09-15', 1),
+        now: standardAt('magrib 2026-09-15', 1),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
+        boundary: 'fajr 2026-09-16',
         previous: null,
-        passed: { 'Isha 2026-09-15': true },
+        passed: { 'isha 2026-09-15': true },
       },
       {
         label: 'the moment Isha would have been',
         now: at('2026-09-15T19:28:00.000Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
+        boundary: 'fajr 2026-09-16',
         previous: null,
-        passed: { 'Isha 2026-09-15': true },
+        passed: { 'isha 2026-09-15': true },
       },
       {
         label: '00:00 London changes nothing',
         now: at('2026-09-15T23:00:00.000Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
+        boundary: 'fajr 2026-09-16',
         previous: null,
-        passed: { 'Isha 2026-09-15': true },
+        passed: { 'isha 2026-09-15': true },
       },
     ]
   );
 
   walk(
     'R15 scene 3: Fajr and Magrib unreadable, Sunrise next',
-    [...standard('2026-09-14'), ...standard('2026-09-15', ['Fajr', 'Magrib']), ...standard('2026-09-16')],
+    [...standard('2026-09-14'), ...standard('2026-09-15', ['fajr', 'magrib']), ...standard('2026-09-16')],
     [
       {
         label: "1 ms after the list before's Isha",
-        now: standardAt('Isha 2026-09-14', 1),
+        now: standardAt('isha 2026-09-14', 1),
         display: '2026-09-15',
-        next: 'Sunrise 2026-09-15',
+        next: 'sunrise 2026-09-15',
         hold: null,
-        boundary: 'Sunrise 2026-09-15',
+        boundary: 'sunrise 2026-09-15',
         previous: null,
-        passed: { 'Fajr 2026-09-15': true, 'Magrib 2026-09-15': false },
+        passed: { 'fajr 2026-09-15': true, 'magrib 2026-09-15': false },
       },
       {
         label: '1 ms before Asr',
-        now: standardAt('Asr 2026-09-15', -1),
+        now: standardAt('asr 2026-09-15', -1),
         display: '2026-09-15',
-        next: 'Asr 2026-09-15',
+        next: 'asr 2026-09-15',
         hold: null,
-        boundary: 'Asr 2026-09-15',
-        previous: 'Dhuhr 2026-09-15',
-        passed: { 'Fajr 2026-09-15': true, 'Magrib 2026-09-15': false },
+        boundary: 'asr 2026-09-15',
+        previous: 'dhuhr 2026-09-15',
+        passed: { 'fajr 2026-09-15': true, 'magrib 2026-09-15': false },
       },
       {
         label: 'at Asr',
-        now: standardAt('Asr 2026-09-15'),
+        now: standardAt('asr 2026-09-15'),
         display: '2026-09-15',
-        next: 'Isha 2026-09-15',
+        next: 'isha 2026-09-15',
         hold: null,
-        boundary: 'Isha 2026-09-15',
+        boundary: 'isha 2026-09-15',
         previous: null,
-        passed: { 'Magrib 2026-09-15': false },
+        passed: { 'magrib 2026-09-15': false },
       },
       {
         label: '1 ms after Asr, Isha next and Magrib bright',
-        now: standardAt('Asr 2026-09-15', 1),
+        now: standardAt('asr 2026-09-15', 1),
         display: '2026-09-15',
-        next: 'Isha 2026-09-15',
+        next: 'isha 2026-09-15',
         hold: null,
-        boundary: 'Isha 2026-09-15',
+        boundary: 'isha 2026-09-15',
         previous: null,
-        passed: { 'Fajr 2026-09-15': true, 'Magrib 2026-09-15': true },
+        passed: { 'fajr 2026-09-15': true, 'magrib 2026-09-15': true },
       },
     ]
   );
@@ -685,19 +695,19 @@ describe('a whole London day', () => {
     [
       {
         label: "1 ms before the list before's Isha",
-        now: standardAt('Isha 2026-09-14', -1),
+        now: standardAt('isha 2026-09-14', -1),
         display: '2026-09-14',
-        next: 'Isha 2026-09-14',
+        next: 'isha 2026-09-14',
         hold: '2026-09-14T23:00:00.000Z',
-        boundary: 'Isha 2026-09-14',
-        previous: 'Magrib 2026-09-14',
+        boundary: 'isha 2026-09-14',
+        previous: 'magrib 2026-09-14',
         passed: allPassed(blank15),
       },
       {
         label: "at the list before's Isha that list stays on screen, waiting for 00:00",
-        now: standardAt('Isha 2026-09-14'),
+        now: standardAt('isha 2026-09-14'),
         display: '2026-09-14',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: '2026-09-14T23:00:00.000Z',
         boundary: '2026-09-14T23:00:00.000Z',
         previous: null,
@@ -705,9 +715,9 @@ describe('a whole London day', () => {
       },
       {
         label: "1 ms after the list before's Isha",
-        now: standardAt('Isha 2026-09-14', 1),
+        now: standardAt('isha 2026-09-14', 1),
         display: '2026-09-14',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: '2026-09-14T23:00:00.000Z',
         boundary: '2026-09-14T23:00:00.000Z',
         previous: null,
@@ -717,7 +727,7 @@ describe('a whole London day', () => {
         label: '1 ms before 00:00 London at its start',
         now: at('2026-09-14T22:59:59.999Z'),
         display: '2026-09-14',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: '2026-09-14T23:00:00.000Z',
         boundary: '2026-09-14T23:00:00.000Z',
         previous: null,
@@ -727,7 +737,7 @@ describe('a whole London day', () => {
         label: 'at 00:00 London at its start it comes on screen',
         now: at('2026-09-14T23:00:00.000Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -737,7 +747,7 @@ describe('a whole London day', () => {
         label: 'midday on the day',
         now: at('2026-09-15T11:00:00.000Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -747,7 +757,7 @@ describe('a whole London day', () => {
         label: '1 ms before 00:00 London at its end',
         now: at('2026-09-15T22:59:59.999Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -757,9 +767,9 @@ describe('a whole London day', () => {
         label: 'at 00:00 London the next list comes on',
         now: at('2026-09-15T23:00:00.000Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
+        boundary: 'fajr 2026-09-16',
         previous: null,
         passed: allPassed(blank15),
       },
@@ -767,20 +777,20 @@ describe('a whole London day', () => {
         label: '1 ms after 00:00 London',
         now: at('2026-09-15T23:00:00.001Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
+        boundary: 'fajr 2026-09-16',
         previous: null,
         passed: allPassed(blank15),
       },
       {
         label: '1 ms after the following Fajr',
-        now: standardAt('Fajr 2026-09-16', 1),
+        now: standardAt('fajr 2026-09-16', 1),
         display: '2026-09-16',
-        next: 'Sunrise 2026-09-16',
+        next: 'sunrise 2026-09-16',
         hold: null,
-        boundary: 'Sunrise 2026-09-16',
-        previous: 'Fajr 2026-09-16',
+        boundary: 'sunrise 2026-09-16',
+        previous: 'fajr 2026-09-16',
         passed: allPassed(blank15),
       },
     ]
@@ -788,67 +798,67 @@ describe('a whole London day', () => {
 
   walk(
     'session 7: a readable Magrib at 00:40 after an unreadable Isha keeps its list day until 00:40',
-    [...standard('2026-09-24'), ...standard('2026-09-25', ['Isha']), ...standard('2026-09-26')],
+    [...standard('2026-09-24'), ...standard('2026-09-25', ['isha']), ...standard('2026-09-26')],
     [
       {
         label: '1 ms after Asr',
-        now: standardAt('Asr 2026-09-25', 1),
+        now: standardAt('asr 2026-09-25', 1),
         display: '2026-09-25',
-        next: 'Magrib 2026-09-25',
+        next: 'magrib 2026-09-25',
         hold: null,
-        boundary: 'Magrib 2026-09-25',
-        previous: 'Asr 2026-09-25',
-        passed: { 'Isha 2026-09-25': false },
+        boundary: 'magrib 2026-09-25',
+        previous: 'asr 2026-09-25',
+        passed: { 'isha 2026-09-25': false },
       },
       {
         label: '00:00 London',
         now: at('2026-09-25T23:00:00.000Z'),
         display: '2026-09-25',
-        next: 'Magrib 2026-09-25',
+        next: 'magrib 2026-09-25',
         hold: null,
-        boundary: 'Magrib 2026-09-25',
-        previous: 'Asr 2026-09-25',
-        passed: { 'Isha 2026-09-25': false },
+        boundary: 'magrib 2026-09-25',
+        previous: 'asr 2026-09-25',
+        passed: { 'isha 2026-09-25': false },
       },
       {
         label: '00:20 London',
         now: at('2026-09-25T23:20:00.000Z'),
         display: '2026-09-25',
-        next: 'Magrib 2026-09-25',
+        next: 'magrib 2026-09-25',
         hold: null,
-        boundary: 'Magrib 2026-09-25',
-        previous: 'Asr 2026-09-25',
-        passed: { 'Isha 2026-09-25': false },
+        boundary: 'magrib 2026-09-25',
+        previous: 'asr 2026-09-25',
+        passed: { 'isha 2026-09-25': false },
       },
       {
         label: '1 ms before the 00:40 Magrib',
         now: at('2026-09-25T23:39:59.999Z'),
         display: '2026-09-25',
-        next: 'Magrib 2026-09-25',
+        next: 'magrib 2026-09-25',
         hold: null,
-        boundary: 'Magrib 2026-09-25',
-        previous: 'Asr 2026-09-25',
-        passed: { 'Isha 2026-09-25': false },
+        boundary: 'magrib 2026-09-25',
+        previous: 'asr 2026-09-25',
+        passed: { 'isha 2026-09-25': false },
       },
       {
         label: 'at the 00:40 Magrib',
         now: at('2026-09-25T23:40:00.000Z'),
         display: '2026-09-26',
-        next: 'Fajr 2026-09-26',
+        next: 'fajr 2026-09-26',
         hold: null,
-        boundary: 'Fajr 2026-09-26',
+        boundary: 'fajr 2026-09-26',
         previous: null,
-        passed: { 'Isha 2026-09-25': false },
+        passed: { 'isha 2026-09-25': false },
       },
       {
         label: '1 ms after the 00:40 Magrib',
         now: at('2026-09-25T23:40:00.001Z'),
         display: '2026-09-26',
-        next: 'Fajr 2026-09-26',
+        next: 'fajr 2026-09-26',
         hold: null,
-        boundary: 'Fajr 2026-09-26',
+        boundary: 'fajr 2026-09-26',
         previous: null,
-        passed: { 'Isha 2026-09-25': true },
+        passed: { 'isha 2026-09-25': true },
       },
     ]
   );
@@ -863,7 +873,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'the evening before, with nothing earlier in the sequence',
         now: at('2026-09-14T21:00:00.000Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -872,7 +882,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'midday on the day',
         now: at('2026-09-15T11:00:00.000Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -881,9 +891,9 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: '00:00 London at its end',
         now: at('2026-09-15T23:00:00.000Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-16',
+        next: 'fajr 2026-09-16',
         hold: null,
-        boundary: 'Fajr 2026-09-16',
+        boundary: 'fajr 2026-09-16',
         previous: null,
       },
     ]
@@ -895,16 +905,16 @@ describe('where a fully unreadable list day sits in the sequence', () => {
     [
       {
         label: '1 ms before the last readable row',
-        now: standardAt('Isha 2026-09-15', -1),
+        now: standardAt('isha 2026-09-15', -1),
         display: '2026-09-15',
-        next: 'Isha 2026-09-15',
+        next: 'isha 2026-09-15',
         hold: '2026-09-15T23:00:00.000Z',
-        boundary: 'Isha 2026-09-15',
-        previous: 'Magrib 2026-09-15',
+        boundary: 'isha 2026-09-15',
+        previous: 'magrib 2026-09-15',
       },
       {
         label: 'at the last readable row its list waits for 00:00, with nothing readable left to count to',
-        now: standardAt('Isha 2026-09-15'),
+        now: standardAt('isha 2026-09-15'),
         display: '2026-09-15',
         next: null,
         hold: '2026-09-15T23:00:00.000Z',
@@ -952,9 +962,9 @@ describe('where a fully unreadable list day sits in the sequence', () => {
     [
       {
         label: "1 ms after the list before's Isha",
-        now: standardAt('Isha 2026-09-14', 1),
+        now: standardAt('isha 2026-09-14', 1),
         display: '2026-09-14',
-        next: 'Fajr 2026-09-17',
+        next: 'fajr 2026-09-17',
         hold: '2026-09-14T23:00:00.000Z',
         boundary: '2026-09-14T23:00:00.000Z',
         previous: null,
@@ -963,7 +973,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'as the list before ends',
         now: at('2026-09-14T23:00:00.000Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-17',
+        next: 'fajr 2026-09-17',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -972,7 +982,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: '1 ms before the first ends',
         now: at('2026-09-15T22:59:59.999Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-17',
+        next: 'fajr 2026-09-17',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -981,7 +991,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'as the first ends',
         now: at('2026-09-15T23:00:00.000Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-17',
+        next: 'fajr 2026-09-17',
         hold: '2026-09-16T23:00:00.000Z',
         boundary: '2026-09-16T23:00:00.000Z',
         previous: null,
@@ -990,7 +1000,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: '1 ms before the second ends',
         now: at('2026-09-16T22:59:59.999Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-17',
+        next: 'fajr 2026-09-17',
         hold: '2026-09-16T23:00:00.000Z',
         boundary: '2026-09-16T23:00:00.000Z',
         previous: null,
@@ -999,19 +1009,19 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'as the second ends',
         now: at('2026-09-16T23:00:00.000Z'),
         display: '2026-09-17',
-        next: 'Fajr 2026-09-17',
+        next: 'fajr 2026-09-17',
         hold: null,
-        boundary: 'Fajr 2026-09-17',
+        boundary: 'fajr 2026-09-17',
         previous: null,
       },
       {
         label: '1 ms after the following Fajr',
-        now: standardAt('Fajr 2026-09-17', 1),
+        now: standardAt('fajr 2026-09-17', 1),
         display: '2026-09-17',
-        next: 'Sunrise 2026-09-17',
+        next: 'sunrise 2026-09-17',
         hold: null,
-        boundary: 'Sunrise 2026-09-17',
-        previous: 'Fajr 2026-09-17',
+        boundary: 'sunrise 2026-09-17',
+        previous: 'fajr 2026-09-17',
       },
     ]
   );
@@ -1028,9 +1038,9 @@ describe('where a fully unreadable list day sits in the sequence', () => {
     [
       {
         label: "1 ms after the list before's Isha",
-        now: standardAt('Isha 2026-09-14', 1),
+        now: standardAt('isha 2026-09-14', 1),
         display: '2026-09-14',
-        next: 'Fajr 2026-09-18',
+        next: 'fajr 2026-09-18',
         hold: '2026-09-14T23:00:00.000Z',
         boundary: '2026-09-14T23:00:00.000Z',
         previous: null,
@@ -1039,7 +1049,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'as the list before ends',
         now: at('2026-09-14T23:00:00.000Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-18',
+        next: 'fajr 2026-09-18',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -1048,7 +1058,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'as the first ends',
         now: at('2026-09-15T23:00:00.000Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-18',
+        next: 'fajr 2026-09-18',
         hold: '2026-09-16T23:00:00.000Z',
         boundary: '2026-09-16T23:00:00.000Z',
         previous: null,
@@ -1057,7 +1067,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'as the second ends',
         now: at('2026-09-16T23:00:00.000Z'),
         display: '2026-09-17',
-        next: 'Fajr 2026-09-18',
+        next: 'fajr 2026-09-18',
         hold: '2026-09-17T23:00:00.000Z',
         boundary: '2026-09-17T23:00:00.000Z',
         previous: null,
@@ -1066,7 +1076,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: '1 ms before the third ends',
         now: at('2026-09-17T22:59:59.999Z'),
         display: '2026-09-17',
-        next: 'Fajr 2026-09-18',
+        next: 'fajr 2026-09-18',
         hold: '2026-09-17T23:00:00.000Z',
         boundary: '2026-09-17T23:00:00.000Z',
         previous: null,
@@ -1075,9 +1085,9 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'as the third ends',
         now: at('2026-09-17T23:00:00.000Z'),
         display: '2026-09-18',
-        next: 'Fajr 2026-09-18',
+        next: 'fajr 2026-09-18',
         hold: null,
-        boundary: 'Fajr 2026-09-18',
+        boundary: 'fajr 2026-09-18',
         previous: null,
       },
     ]
@@ -1091,7 +1101,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'the evening before',
         now: at('2026-09-14T21:00:00.000Z'),
         display: '2026-09-15',
-        next: 'Fajr 2026-09-17',
+        next: 'fajr 2026-09-17',
         hold: '2026-09-15T23:00:00.000Z',
         boundary: '2026-09-15T23:00:00.000Z',
         previous: null,
@@ -1100,7 +1110,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: 'as the first ends',
         now: at('2026-09-15T23:00:00.000Z'),
         display: '2026-09-16',
-        next: 'Fajr 2026-09-17',
+        next: 'fajr 2026-09-17',
         hold: '2026-09-16T23:00:00.000Z',
         boundary: '2026-09-16T23:00:00.000Z',
         previous: null,
@@ -1114,7 +1124,7 @@ describe('where a fully unreadable list day sits in the sequence', () => {
     [
       {
         label: "1 ms after the list before's Isha",
-        now: standardAt('Isha 2026-09-14', 1),
+        now: standardAt('isha 2026-09-14', 1),
         display: '2026-09-14',
         next: null,
         hold: '2026-09-14T23:00:00.000Z',
@@ -1148,30 +1158,30 @@ describe('where a fully unreadable list day sits in the sequence', () => {
     [
       {
         label: '1 ms after Asr',
-        now: standardAt('Asr 2026-09-25', 1),
+        now: standardAt('asr 2026-09-25', 1),
         display: '2026-09-25',
-        next: 'Magrib 2026-09-25',
+        next: 'magrib 2026-09-25',
         hold: null,
-        boundary: 'Magrib 2026-09-25',
-        previous: 'Asr 2026-09-25',
+        boundary: 'magrib 2026-09-25',
+        previous: 'asr 2026-09-25',
       },
       {
         label: '00:00 London is no boundary while its own rows are still to come',
         now: at('2026-09-25T23:00:00.000Z'),
         display: '2026-09-25',
-        next: 'Magrib 2026-09-25',
+        next: 'magrib 2026-09-25',
         hold: null,
-        boundary: 'Magrib 2026-09-25',
-        previous: 'Asr 2026-09-25',
+        boundary: 'magrib 2026-09-25',
+        previous: 'asr 2026-09-25',
       },
       {
         label: '1 ms before the 01:30 Isha',
         now: at('2026-09-26T00:29:59.999Z'),
         display: '2026-09-25',
-        next: 'Isha 2026-09-25',
+        next: 'isha 2026-09-25',
         hold: null,
-        boundary: 'Isha 2026-09-25',
-        previous: 'Magrib 2026-09-25',
+        boundary: 'isha 2026-09-25',
+        previous: 'magrib 2026-09-25',
       },
       {
         label: 'at the 01:30 Isha the unreadable day comes on',
@@ -1188,8 +1198,8 @@ describe('where a fully unreadable list day sits in the sequence', () => {
   walk(
     'after a list day whose last row falls exactly at its own 00:00',
     [
-      ...standard('2026-09-14').filter((prayer) => prayer.english !== 'Isha'),
-      row(ScheduleType.Standard, 'Isha', '2026-09-14', { clock: '00:00', on: '2026-09-15' }),
+      ...standard('2026-09-14').filter((prayer) => prayer.id !== 'isha'),
+      row(ScheduleType.Standard, 'isha', '2026-09-14', { clock: '00:00', on: '2026-09-15' }),
       ...blankStandard('2026-09-15'),
     ],
     [
@@ -1197,10 +1207,10 @@ describe('where a fully unreadable list day sits in the sequence', () => {
         label: '1 ms before, the row and the end of its day are one boundary',
         now: at('2026-09-14T22:59:59.999Z'),
         display: '2026-09-14',
-        next: 'Isha 2026-09-14',
+        next: 'isha 2026-09-14',
         hold: '2026-09-14T23:00:00.000Z',
         boundary: '2026-09-14T23:00:00.000Z',
-        previous: 'Magrib 2026-09-14',
+        previous: 'magrib 2026-09-14',
       },
       {
         label: 'at that instant the unreadable day comes on',
@@ -1264,16 +1274,16 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
           label: "1 ms before the list before's Isha",
           now: at(isha, -1),
           display: before,
-          next: `Isha ${before}`,
+          next: `isha ${before}`,
           hold: dayStart,
           boundary: isha,
-          previous: `Magrib ${before}`,
+          previous: `magrib ${before}`,
         },
         {
           label: "1 ms after the list before's Isha it waits for 00:00",
           now: at(isha, 1),
           display: before,
-          next: `Fajr ${after}`,
+          next: `fajr ${after}`,
           hold: dayStart,
           boundary: dayStart,
           previous: null,
@@ -1282,7 +1292,7 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
           label: '1 ms before 00:00 London at its start',
           now: at(dayStart, -1),
           display: before,
-          next: `Fajr ${after}`,
+          next: `fajr ${after}`,
           hold: dayStart,
           boundary: dayStart,
           previous: null,
@@ -1291,7 +1301,7 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
           label: 'at 00:00 London at its start',
           now: at(dayStart),
           display: blank,
-          next: `Fajr ${after}`,
+          next: `fajr ${after}`,
           hold: holdEnd,
           boundary: holdEnd,
           previous: null,
@@ -1300,7 +1310,7 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
           label: '1 ms before 00:00 London at its end',
           now: at(holdEnd, -1),
           display: blank,
-          next: `Fajr ${after}`,
+          next: `fajr ${after}`,
           hold: holdEnd,
           boundary: holdEnd,
           previous: null,
@@ -1309,7 +1319,7 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
           label: 'at 00:00 London at its end',
           now: at(holdEnd),
           display: after,
-          next: `Fajr ${after}`,
+          next: `fajr ${after}`,
           hold: null,
           boundary: fajr,
           previous: null,
@@ -1318,7 +1328,7 @@ describe('a fully unreadable list day across the 2026 clock changes', () => {
           label: '1 ms after 00:00 London at its end',
           now: at(holdEnd, 1),
           display: after,
-          next: `Fajr ${after}`,
+          next: `fajr ${after}`,
           hold: null,
           boundary: fajr,
           previous: null,
@@ -1337,19 +1347,19 @@ describe('an Extras list held while the next list opens before 00:00', () => {
     [
       {
         label: '1 ms before Duha, the last row of the list before',
-        now: extrasAt('Duha 2026-12-10', -1),
+        now: extrasAt('duha 2026-12-10', -1),
         display: '2026-12-10',
-        next: 'Duha 2026-12-10',
+        next: 'duha 2026-12-10',
         hold: '2026-12-11T00:00:00.000Z',
-        boundary: 'Duha 2026-12-10',
-        previous: 'Suhoor 2026-12-10',
+        boundary: 'duha 2026-12-10',
+        previous: 'suhoor 2026-12-10',
         passed: allPassed(blank11),
       },
       {
         label: '1 ms after Duha the list before waits for 00:00',
-        now: extrasAt('Duha 2026-12-10', 1),
+        now: extrasAt('duha 2026-12-10', 1),
         display: '2026-12-10',
-        next: 'Midnight 2026-12-12',
+        next: 'midnight 2026-12-12',
         hold: '2026-12-11T00:00:00.000Z',
         boundary: '2026-12-11T00:00:00.000Z',
         previous: null,
@@ -1359,9 +1369,9 @@ describe('an Extras list held while the next list opens before 00:00', () => {
         label: 'at 00:00 London Friday comes on, held, and the next list opens before the hold ends',
         now: at('2026-12-11T00:00:00.000Z'),
         display: '2026-12-11',
-        next: 'Midnight 2026-12-12',
+        next: 'midnight 2026-12-12',
         hold: '2026-12-12T00:00:00.000Z',
-        boundary: 'Midnight 2026-12-12',
+        boundary: 'midnight 2026-12-12',
         previous: null,
         passed: allPassed(blank11),
       },
@@ -1369,41 +1379,41 @@ describe('an Extras list held while the next list opens before 00:00', () => {
         label: '1 ms before that Midnight',
         now: at('2026-12-11T23:02:59.999Z'),
         display: '2026-12-11',
-        next: 'Midnight 2026-12-12',
+        next: 'midnight 2026-12-12',
         hold: '2026-12-12T00:00:00.000Z',
-        boundary: 'Midnight 2026-12-12',
+        boundary: 'midnight 2026-12-12',
         previous: null,
-        passed: { 'Midnight 2026-12-12': false },
+        passed: { 'midnight 2026-12-12': false },
       },
       {
         label: 'at that Midnight the hold end becomes the boundary',
         now: at('2026-12-11T23:03:00.000Z'),
         display: '2026-12-11',
-        next: 'Last Third 2026-12-12',
+        next: 'last third 2026-12-12',
         hold: '2026-12-12T00:00:00.000Z',
         boundary: '2026-12-12T00:00:00.000Z',
-        previous: 'Midnight 2026-12-12',
-        passed: { 'Midnight 2026-12-12': false },
+        previous: 'midnight 2026-12-12',
+        passed: { 'midnight 2026-12-12': false },
       },
       {
         label: '1 ms after that Midnight the held list stays on screen',
         now: at('2026-12-11T23:03:00.001Z'),
         display: '2026-12-11',
-        next: 'Last Third 2026-12-12',
+        next: 'last third 2026-12-12',
         hold: '2026-12-12T00:00:00.000Z',
         boundary: '2026-12-12T00:00:00.000Z',
-        previous: 'Midnight 2026-12-12',
-        passed: { 'Midnight 2026-12-12': true },
+        previous: 'midnight 2026-12-12',
+        passed: { 'midnight 2026-12-12': true },
       },
       {
         label: 'at 00:00 London the next list comes on',
         now: at('2026-12-12T00:00:00.000Z'),
         display: '2026-12-12',
-        next: 'Last Third 2026-12-12',
+        next: 'last third 2026-12-12',
         hold: null,
-        boundary: 'Last Third 2026-12-12',
-        previous: 'Midnight 2026-12-12',
-        passed: { 'Midnight 2026-12-12': true },
+        boundary: 'last third 2026-12-12',
+        previous: 'midnight 2026-12-12',
+        passed: { 'midnight 2026-12-12': true },
       },
     ]
   );
@@ -1414,36 +1424,36 @@ describe('an Extras list held while the next list opens before 00:00', () => {
 // =============================================================================
 
 describe('an unreadable row at each position', () => {
-  const standardCases = STANDARD_NAMES.map((english, i) => ({
+  const standardCases = STANDARD_NAMES.map((id, i) => ({
     list: 'Standard',
-    english,
-    sequence: [...standard('2026-09-14'), ...standard('2026-09-15', [english]), ...standard('2026-09-16')],
+    id,
+    sequence: [...standard('2026-09-14'), ...standard('2026-09-15', [id]), ...standard('2026-09-16')],
     day: '2026-09-15',
     before: '2026-09-14',
     after: '2026-09-16',
-    above: i === 0 ? 'Isha 2026-09-14' : `${STANDARD_NAMES[i - 1]} 2026-09-15`,
-    below: i === STANDARD_NAMES.length - 1 ? 'Fajr 2026-09-16' : `${STANDARD_NAMES[i + 1]} 2026-09-15`,
+    above: i === 0 ? 'isha 2026-09-14' : `${STANDARD_NAMES[i - 1]} 2026-09-15`,
+    below: i === STANDARD_NAMES.length - 1 ? 'fajr 2026-09-16' : `${STANDARD_NAMES[i + 1]} 2026-09-15`,
     first: i === 0,
     last: i === STANDARD_NAMES.length - 1,
   }));
 
-  const extrasCases = EXTRAS_NAMES.map((english, i) => ({
+  const extrasCases = EXTRAS_NAMES.map((id, i) => ({
     list: 'Friday Extras',
-    english,
-    sequence: [...extras('2026-09-17'), ...extras('2026-09-18', [english]), ...extras('2026-09-19')],
+    id,
+    sequence: [...extras('2026-09-17'), ...extras('2026-09-18', [id]), ...extras('2026-09-19')],
     day: '2026-09-18',
     before: '2026-09-17',
     after: '2026-09-19',
-    above: i === 0 ? 'Duha 2026-09-17' : `${EXTRAS_NAMES[i - 1]} 2026-09-18`,
-    below: i === EXTRAS_NAMES.length - 1 ? 'Midnight 2026-09-19' : `${EXTRAS_NAMES[i + 1]} 2026-09-18`,
+    above: i === 0 ? 'duha 2026-09-17' : `${EXTRAS_NAMES[i - 1]} 2026-09-18`,
+    below: i === EXTRAS_NAMES.length - 1 ? 'midnight 2026-09-19' : `${EXTRAS_NAMES[i + 1]} 2026-09-18`,
     first: i === 0,
     last: i === EXTRAS_NAMES.length - 1,
   }));
 
   describe.each(ORDERS)('given %s', (_order, arrange) => {
-    it.each([...standardCases, ...extrasCases])('$list $english', (c) => {
+    it.each([...standardCases, ...extrasCases])('$list $id', (c) => {
       const prayers = arrange(c.sequence);
-      const target = find(prayers, `${c.english} ${c.day}`);
+      const target = find(prayers, `${c.id} ${c.day}`);
       const aboveAt = instantOf(c.sequence, c.above).getTime();
 
       const observed = [-1, 0, 1].map((offset) => {
@@ -1465,7 +1475,7 @@ describe('an unreadable row at each position', () => {
       expect(findPreviousRow(prayers, findReadable(prayers, c.below))).toBeNull();
     });
 
-    it.each([...standardCases, ...extrasCases])('$list $english is never next', (c) => {
+    it.each([...standardCases, ...extrasCases])('$list $id is never next', (c) => {
       const prayers = arrange(c.sequence);
       const nows = c.sequence.flatMap((p) => {
         const instant = p.datetime;
@@ -1473,7 +1483,7 @@ describe('an unreadable row at each position', () => {
       });
       for (const now of nows) {
         const next = findNextReadable(prayers, now);
-        expect(keyOf(next)).not.toBe(`${c.english} ${c.day}`);
+        expect(keyOf(next)).not.toBe(`${c.id} ${c.day}`);
         if (next) expect(next.datetime.getTime()).toBeGreaterThan(now.getTime());
       }
     });
@@ -1509,7 +1519,7 @@ describe('resolveDisplayDate', () => {
       ],
       [
         'a partly unreadable list day whose readable rows have all passed',
-        [...standard('2026-09-14', ['Magrib', 'Isha']), ...standard('2026-09-15')],
+        [...standard('2026-09-14', ['magrib', 'isha']), ...standard('2026-09-15')],
         at('2026-09-14T21:00:00.000Z'),
         '2026-09-15',
       ],
@@ -1521,8 +1531,8 @@ describe('resolveDisplayDate', () => {
       ],
       [
         'Extras: a Friday with an unreadable Istijaba moves on after Duha',
-        [...extras('2026-09-18', ['Istijaba']), ...extras('2026-09-19')],
-        extrasAt('Duha 2026-09-18', 1),
+        [...extras('2026-09-18', ['istijaba']), ...extras('2026-09-19')],
+        extrasAt('duha 2026-09-18', 1),
         '2026-09-19',
       ],
       [
@@ -1675,7 +1685,7 @@ describe('getNextBoundary', () => {
         'the shared instant, when the next prayer falls exactly at the hold end',
         [
           ...blankExtras('2026-12-11', true),
-          row(ScheduleType.Extra, 'Midnight', '2026-12-12', '00:00'),
+          row(ScheduleType.Extra, 'midnight', '2026-12-12', '00:00'),
           ...extras('2026-12-12').slice(1),
         ],
         at('2026-12-11T20:00:00.000Z'),
@@ -1847,7 +1857,7 @@ describe('isRowPassed', () => {
       ['1 ms after its moment', 1, true],
     ])('a readable row, %s', (_label, offset, expected) => {
       const prayers = arrange(day);
-      expect(isRowPassed(prayers, find(prayers, 'Asr 2026-09-15'), standardAt('Asr 2026-09-15', offset))).toBe(
+      expect(isRowPassed(prayers, find(prayers, 'asr 2026-09-15'), standardAt('asr 2026-09-15', offset))).toBe(
         expected
       );
     });
@@ -1864,64 +1874,64 @@ describe('isRowPassed', () => {
     });
 
     it.each([
-      ['1 ms before Sunrise', standardAt('Sunrise 2026-09-15', -1), false],
-      ['at Sunrise', standardAt('Sunrise 2026-09-15'), false],
-      ['1 ms after Sunrise', standardAt('Sunrise 2026-09-15', 1), true],
+      ['1 ms before Sunrise', standardAt('sunrise 2026-09-15', -1), false],
+      ['at Sunrise', standardAt('sunrise 2026-09-15'), false],
+      ['1 ms after Sunrise', standardAt('sunrise 2026-09-15', 1), true],
     ])('two unreadable rows in a row pass together, %s', (_label, now, expected) => {
-      const prayers = arrange(standard('2026-09-15', ['Dhuhr', 'Asr']));
-      expect(isRowPassed(prayers, find(prayers, 'Dhuhr 2026-09-15'), now)).toBe(expected);
-      expect(isRowPassed(prayers, find(prayers, 'Asr 2026-09-15'), now)).toBe(expected);
+      const prayers = arrange(standard('2026-09-15', ['dhuhr', 'asr']));
+      expect(isRowPassed(prayers, find(prayers, 'dhuhr 2026-09-15'), now)).toBe(expected);
+      expect(isRowPassed(prayers, find(prayers, 'asr 2026-09-15'), now)).toBe(expected);
     });
 
     it('an unreadable Isha waits for every readable row above it, not just some', () => {
-      const prayers = arrange(standard('2026-09-15', ['Isha']));
-      expect(isRowPassed(prayers, find(prayers, 'Isha 2026-09-15'), standardAt('Asr 2026-09-15', 1))).toBe(false);
+      const prayers = arrange(standard('2026-09-15', ['isha']));
+      expect(isRowPassed(prayers, find(prayers, 'isha 2026-09-15'), standardAt('asr 2026-09-15', 1))).toBe(false);
     });
 
     it('an unreadable first row has nothing to wait for, even while the list before is on screen', () => {
-      const prayers = arrange([...standard('2026-09-15'), ...standard('2026-09-16', ['Fajr'])]);
-      expect(isRowPassed(prayers, find(prayers, 'Fajr 2026-09-16'), at('2026-09-15T11:00:00.000Z'))).toBe(true);
+      const prayers = arrange([...standard('2026-09-15'), ...standard('2026-09-16', ['fajr'])]);
+      expect(isRowPassed(prayers, find(prayers, 'fajr 2026-09-16'), at('2026-09-15T11:00:00.000Z'))).toBe(true);
     });
 
     it.each([
       ['while the list before still has rows to come', at('2026-09-15T11:00:00.000Z'), false],
-      ["once its own list's Fajr has passed", standardAt('Fajr 2026-09-16', 1), true],
+      ["once its own list's Fajr has passed", standardAt('fajr 2026-09-16', 1), true],
     ])('an unreadable Sunrise counts only its own list, %s', (_label, now, expected) => {
-      const prayers = arrange([...standard('2026-09-15'), ...standard('2026-09-16', ['Sunrise'])]);
-      expect(isRowPassed(prayers, find(prayers, 'Sunrise 2026-09-16'), now)).toBe(expected);
+      const prayers = arrange([...standard('2026-09-15'), ...standard('2026-09-16', ['sunrise'])]);
+      expect(isRowPassed(prayers, find(prayers, 'sunrise 2026-09-16'), now)).toBe(expected);
     });
 
     it('an unreadable Isha does not wait for the next list', () => {
-      const prayers = arrange([...standard('2026-09-15', ['Isha']), ...standard('2026-09-16')]);
-      expect(isRowPassed(prayers, find(prayers, 'Isha 2026-09-15'), standardAt('Magrib 2026-09-15', 1))).toBe(true);
+      const prayers = arrange([...standard('2026-09-15', ['isha']), ...standard('2026-09-16')]);
+      expect(isRowPassed(prayers, find(prayers, 'isha 2026-09-15'), standardAt('magrib 2026-09-15', 1))).toBe(true);
     });
 
     it.each([
-      ['1 ms before Duha', extrasAt('Duha 2026-09-18', -1), false],
-      ['1 ms after Duha', extrasAt('Duha 2026-09-18', 1), true],
+      ['1 ms before Duha', extrasAt('duha 2026-09-18', -1), false],
+      ['1 ms after Duha', extrasAt('duha 2026-09-18', 1), true],
     ])('Extras: Istijaba and the next night rows dashed by one Magrib, %s', (_label, now, expected) => {
       const prayers = arrange([
-        ...extras('2026-09-18', ['Istijaba']),
-        ...extras('2026-09-19', ['Midnight', 'Last Third']),
+        ...extras('2026-09-18', ['istijaba']),
+        ...extras('2026-09-19', ['midnight', 'last third']),
       ]);
-      expect(isRowPassed(prayers, find(prayers, 'Istijaba 2026-09-18'), now)).toBe(expected);
-      expect(isRowPassed(prayers, find(prayers, 'Midnight 2026-09-19'), now)).toBe(true);
-      expect(isRowPassed(prayers, find(prayers, 'Last Third 2026-09-19'), now)).toBe(true);
-      expect(isRowPassed(prayers, find(prayers, 'Suhoor 2026-09-19'), now)).toBe(false);
+      expect(isRowPassed(prayers, find(prayers, 'istijaba 2026-09-18'), now)).toBe(expected);
+      expect(isRowPassed(prayers, find(prayers, 'midnight 2026-09-19'), now)).toBe(true);
+      expect(isRowPassed(prayers, find(prayers, 'last third 2026-09-19'), now)).toBe(true);
+      expect(isRowPassed(prayers, find(prayers, 'suhoor 2026-09-19'), now)).toBe(false);
     });
   });
 
   it.each([
-    ['an unreadable row', row(ScheduleType.Standard, 'Asr', '2026-09-15', null), at('2026-09-15T11:00:00.000Z'), true],
+    ['an unreadable row', row(ScheduleType.Standard, 'asr', '2026-09-15', null), at('2026-09-15T11:00:00.000Z'), true],
     [
       'a readable row still to come',
-      row(ScheduleType.Standard, 'Asr', '2026-09-15', '16:21'),
+      row(ScheduleType.Standard, 'asr', '2026-09-15', '16:21'),
       at('2026-09-15T11:00:00.000Z'),
       false,
     ],
     [
       'a readable row gone',
-      row(ScheduleType.Standard, 'Asr', '2026-09-15', '16:21'),
+      row(ScheduleType.Standard, 'asr', '2026-09-15', '16:21'),
       at('2026-09-15T16:00:00.000Z'),
       true,
     ],
@@ -1940,99 +1950,99 @@ describe('findPreviousRow', () => {
       [
         'the row above next on its own list',
         [...standard('2026-09-14'), ...standard('2026-09-15'), ...standard('2026-09-16')],
-        'Asr 2026-09-15',
-        'Dhuhr 2026-09-15',
+        'asr 2026-09-15',
+        'dhuhr 2026-09-15',
       ],
       [
         'a row missing from its list gives nothing, not the row above it',
-        [...standard('2026-09-15').filter((prayer) => prayer.english !== 'Asr')],
-        'Magrib 2026-09-15',
+        [...standard('2026-09-15').filter((prayer) => prayer.id !== 'asr')],
+        'magrib 2026-09-15',
         null,
       ],
       [
         'rows after next are ignored, on its list and later ones',
         [...standard('2026-09-14'), ...standard('2026-09-15'), ...standard('2026-09-16')],
-        'Sunrise 2026-09-15',
-        'Fajr 2026-09-15',
+        'sunrise 2026-09-15',
+        'fajr 2026-09-15',
       ],
       [
         "the list before's last row, for next's first row",
         [...standard('2026-09-14'), ...standard('2026-09-15'), ...standard('2026-09-16')],
-        'Fajr 2026-09-15',
-        'Isha 2026-09-14',
+        'fajr 2026-09-15',
+        'isha 2026-09-14',
       ],
       [
         'an unreadable Magrib above Isha leaves nothing, not Asr further up',
-        [...standard('2026-09-14'), ...standard('2026-09-15', ['Magrib']), ...standard('2026-09-16')],
-        'Isha 2026-09-15',
+        [...standard('2026-09-14'), ...standard('2026-09-15', ['magrib']), ...standard('2026-09-16')],
+        'isha 2026-09-15',
         null,
       ],
       [
         'two unreadable rows above next leave nothing, though Sunrise has a time',
-        [...standard('2026-09-15', ['Dhuhr', 'Asr'])],
-        'Magrib 2026-09-15',
+        [...standard('2026-09-15', ['dhuhr', 'asr'])],
+        'magrib 2026-09-15',
         null,
       ],
       [
         'an unreadable Fajr above Sunrise leaves nothing, not the list before',
-        [...standard('2026-09-14'), ...standard('2026-09-15', ['Fajr'])],
-        'Sunrise 2026-09-15',
+        [...standard('2026-09-14'), ...standard('2026-09-15', ['fajr'])],
+        'sunrise 2026-09-15',
         null,
       ],
       [
         "an unreadable Isha of the list before leaves nothing for the first row, not that list's Asr",
-        [...standard('2026-09-14', ['Magrib', 'Isha']), ...standard('2026-09-15')],
-        'Fajr 2026-09-15',
+        [...standard('2026-09-14', ['magrib', 'isha']), ...standard('2026-09-15')],
+        'fajr 2026-09-15',
         null,
       ],
-      ['the row above the last row of a list', [...standard('2026-09-14')], 'Isha 2026-09-14', 'Magrib 2026-09-14'],
+      ['the row above the last row of a list', [...standard('2026-09-14')], 'isha 2026-09-14', 'magrib 2026-09-14'],
       [
         "an unreadable list before is not crossed to an older list's row",
         [...standard('2026-09-14'), ...blankStandard('2026-09-15'), ...standard('2026-09-16')],
-        'Fajr 2026-09-16',
+        'fajr 2026-09-16',
         null,
       ],
       [
         "a missing list before is not crossed to an older list's row",
         [...standard('2026-09-14'), ...standard('2026-09-16')],
-        'Fajr 2026-09-16',
+        'fajr 2026-09-16',
         null,
       ],
       [
         'no readable row above next and an unreadable list before',
-        [...standard('2026-09-14'), ...blankStandard('2026-09-15'), ...standard('2026-09-16', ['Fajr'])],
-        'Sunrise 2026-09-16',
+        [...standard('2026-09-14'), ...blankStandard('2026-09-15'), ...standard('2026-09-16', ['fajr'])],
+        'sunrise 2026-09-16',
         null,
       ],
       [
         'session 7: an unreadable Isha of the list before leaves nothing for Fajr, not the 00:40 Magrib',
-        [...standard('2026-09-24'), ...standard('2026-09-25', ['Isha']), ...standard('2026-09-26')],
-        'Fajr 2026-09-26',
+        [...standard('2026-09-24'), ...standard('2026-09-25', ['isha']), ...standard('2026-09-26')],
+        'fajr 2026-09-26',
         null,
       ],
-      ['across a year', [...standard('2026-12-31'), ...standard('2027-01-01')], 'Fajr 2027-01-01', 'Isha 2026-12-31'],
+      ['across a year', [...standard('2026-12-31'), ...standard('2027-01-01')], 'fajr 2027-01-01', 'isha 2026-12-31'],
       [
         'Extras: a dashed Last Third leaves nothing for Suhoor, not the list before',
-        [...extras('2026-09-17'), ...extras('2026-09-18', ['Midnight', 'Last Third'])],
-        'Suhoor 2026-09-18',
+        [...extras('2026-09-17'), ...extras('2026-09-18', ['midnight', 'last third'])],
+        'suhoor 2026-09-18',
         null,
       ],
       [
         "Extras: Duha is a weekday list before's last row, for the next night's Midnight",
         [...extras('2026-09-17'), ...extras('2026-09-18')],
-        'Midnight 2026-09-18',
-        'Duha 2026-09-17',
+        'midnight 2026-09-18',
+        'duha 2026-09-17',
       ],
       [
         "Extras: a Friday's Istijaba is the list before's last row, for Saturday's Midnight",
         [...extras('2026-09-18'), ...extras('2026-09-19')],
-        'Midnight 2026-09-19',
-        'Istijaba 2026-09-18',
+        'midnight 2026-09-19',
+        'istijaba 2026-09-18',
       ],
       [
         "Extras: a dashed Istijaba leaves nothing for Saturday's Midnight, not Friday's Duha",
-        [...extras('2026-09-18', ['Istijaba']), ...extras('2026-09-19')],
-        'Midnight 2026-09-19',
+        [...extras('2026-09-18', ['istijaba']), ...extras('2026-09-19')],
+        'midnight 2026-09-19',
         null,
       ],
     ])('%s', (_label, sequence, nextKey, expected) => {
@@ -2041,34 +2051,34 @@ describe('findPreviousRow', () => {
     });
 
     it('the list before on its own, as the store adds it from storage', () => {
-      const next = findReadable(standard('2026-09-15'), 'Fajr 2026-09-15');
-      expect(keyOf(findPreviousRow(arrange(standard('2026-09-14')), next))).toBe('Isha 2026-09-14');
+      const next = findReadable(standard('2026-09-15'), 'fajr 2026-09-15');
+      expect(keyOf(findPreviousRow(arrange(standard('2026-09-14')), next))).toBe('isha 2026-09-14');
     });
 
     it('the list before on its own gives nothing for a row that is not first on its list', () => {
-      const next = findReadable(standard('2026-09-15'), 'Sunrise 2026-09-15');
+      const next = findReadable(standard('2026-09-15'), 'sunrise 2026-09-15');
       expect(findPreviousRow(arrange(standard('2026-09-14')), next)).toBeNull();
     });
 
     it('a row above next at the same instant is not before it, so there is nothing', () => {
       const prayers = arrange([
-        ...standard('2026-09-15').filter((p) => p.english !== 'Dhuhr'),
-        row(ScheduleType.Standard, 'Dhuhr', '2026-09-15', '16:21'),
+        ...standard('2026-09-15').filter((p) => p.id !== 'dhuhr'),
+        row(ScheduleType.Standard, 'dhuhr', '2026-09-15', '16:21'),
       ]);
-      expect(findPreviousRow(prayers, findReadable(prayers, 'Asr 2026-09-15'))).toBeNull();
+      expect(findPreviousRow(prayers, findReadable(prayers, 'asr 2026-09-15'))).toBeNull();
     });
 
     it('the row above is the one used, even when it shares its instant with the row above it', () => {
       const prayers = arrange([
-        ...standard('2026-09-15').filter((p) => p.english !== 'Asr'),
-        row(ScheduleType.Standard, 'Asr', '2026-09-15', '12:58'),
+        ...standard('2026-09-15').filter((p) => p.id !== 'asr'),
+        row(ScheduleType.Standard, 'asr', '2026-09-15', '12:58'),
       ]);
-      expect(keyOf(findPreviousRow(prayers, findReadable(prayers, 'Magrib 2026-09-15')))).toBe('Asr 2026-09-15');
+      expect(keyOf(findPreviousRow(prayers, findReadable(prayers, 'magrib 2026-09-15')))).toBe('asr 2026-09-15');
     });
   });
 
   it('nothing, for empty input', () => {
-    expect(findPreviousRow([], findReadable(standard('2026-09-15'), 'Asr 2026-09-15'))).toBeNull();
+    expect(findPreviousRow([], findReadable(standard('2026-09-15'), 'asr 2026-09-15'))).toBeNull();
   });
 });
 
@@ -2082,65 +2092,65 @@ describe('findNextOccurrence', () => {
       [
         'the same prayer on the next list day',
         [...standard('2026-09-14'), ...standard('2026-09-15'), ...standard('2026-09-16')],
-        'Asr 2026-09-14',
-        'Asr 2026-09-15',
+        'asr 2026-09-14',
+        'asr 2026-09-15',
         true,
       ],
       [
         'an unreadable occurrence is still the one',
-        [...standard('2026-09-14'), ...standard('2026-09-15', ['Asr']), ...standard('2026-09-16')],
-        'Asr 2026-09-14',
-        'Asr 2026-09-15',
+        [...standard('2026-09-14'), ...standard('2026-09-15', ['asr']), ...standard('2026-09-16')],
+        'asr 2026-09-14',
+        'asr 2026-09-15',
         false,
       ],
       [
         'from an unreadable row',
-        [...standard('2026-09-14'), ...standard('2026-09-15', ['Asr']), ...standard('2026-09-16')],
-        'Asr 2026-09-15',
-        'Asr 2026-09-16',
+        [...standard('2026-09-14'), ...standard('2026-09-15', ['asr']), ...standard('2026-09-16')],
+        'asr 2026-09-15',
+        'asr 2026-09-16',
         true,
       ],
       [
         'into a fully unreadable list day',
         [...standard('2026-09-14'), ...blankStandard('2026-09-15'), ...standard('2026-09-16')],
-        'Isha 2026-09-14',
-        'Isha 2026-09-15',
+        'isha 2026-09-14',
+        'isha 2026-09-15',
         false,
       ],
       [
         'the earliest later list day when the next is missing',
         [...standard('2026-09-14'), ...standard('2026-09-16'), ...standard('2026-09-17')],
-        'Asr 2026-09-14',
-        'Asr 2026-09-16',
+        'asr 2026-09-14',
+        'asr 2026-09-16',
         true,
       ],
       [
         'none on the last list day',
         [...standard('2026-09-14'), ...standard('2026-09-15'), ...standard('2026-09-16')],
-        'Asr 2026-09-16',
+        'asr 2026-09-16',
         null,
         null,
       ],
       [
         'earlier list days are ignored',
         [...standard('2026-09-13'), ...standard('2026-09-14'), ...standard('2026-09-15')],
-        'Asr 2026-09-15',
+        'asr 2026-09-15',
         null,
         null,
       ],
-      ['the row itself on its own list day is ignored', standard('2026-09-15'), 'Asr 2026-09-15', null, null],
+      ['the row itself on its own list day is ignored', standard('2026-09-15'), 'asr 2026-09-15', null, null],
       [
         'other prayers on later list days are ignored',
         [...extras('2026-09-18'), ...extras('2026-09-19')],
-        'Istijaba 2026-09-18',
+        'istijaba 2026-09-18',
         null,
         null,
       ],
       [
         "Friday's Istijaba finds next Friday's",
         [...extras('2026-09-18'), ...extras('2026-09-19'), ...blankExtras('2026-09-25', true)],
-        'Istijaba 2026-09-18',
-        'Istijaba 2026-09-25',
+        'istijaba 2026-09-18',
+        'istijaba 2026-09-25',
         false,
       ],
     ])('%s', (_label, sequence, fromKey, expected, readable) => {
@@ -2152,6 +2162,6 @@ describe('findNextOccurrence', () => {
   });
 
   it('nothing, for empty input', () => {
-    expect(findNextOccurrence([], row(ScheduleType.Standard, 'Asr', '2026-09-15', null))).toBeNull();
+    expect(findNextOccurrence([], row(ScheduleType.Standard, 'asr', '2026-09-15', null))).toBeNull();
   });
 });

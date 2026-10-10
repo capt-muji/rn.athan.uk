@@ -7,7 +7,8 @@
  * in the order List draws, and the explanation by the prayer's name.
  */
 
-import { EXTRAS_ENGLISH, EXTRAS_EXPLANATIONS } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, EXTRAS_EXPLANATIONS, type PrayerId } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { type Prayer, ScheduleType } from '@/shared/types';
 
@@ -41,18 +42,19 @@ export const getOverlayRow = (
 };
 
 /**
- * The explanation box's text for the selected prayer: Extras only, looked up by name because the explanations
- * follow EXTRAS_ENGLISH order
+ * The explanation box's text for the selected prayer: Extras only, looked up by id because
+ * the explanations follow EXTRA_PRAYER_IDS order
  *
  * @param type The overlay's schedule
- * @param english The selected prayer's English name
+ * @param id The selected prayer's id
  */
-export const getOverlayExplanation = (type: ScheduleType, english: string): OverlayExplanation => {
+export const getOverlayExplanation = (type: ScheduleType, id: PrayerId): OverlayExplanation => {
   const isExtra = type === ScheduleType.Extra;
-  const explanationIndex = EXTRAS_ENGLISH.indexOf(english);
+  const extraIds: readonly PrayerId[] = EXTRA_PRAYER_IDS;
+  const explanationIndex = extraIds.indexOf(id);
 
   return {
-    prayerName: isExtra ? english : null,
+    prayerName: isExtra ? prayerLabel(id) : null,
     explanation: isExtra ? EXTRAS_EXPLANATIONS[explanationIndex] : null,
   };
 };

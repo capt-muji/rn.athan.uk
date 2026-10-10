@@ -11,7 +11,9 @@
 import * as Notifications from 'expo-notifications';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import type { PrayerId } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { transformApiData } from '@/shared/prayer';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -75,43 +77,43 @@ const triggers = () =>
   );
 
 /** Asr on Standard, and Duha on Extras, whose instant is Sunrise plus 20 minutes */
-const PRAYERS = [
+const PRAYERS: { type: ScheduleType; id: PrayerId; index: number; armed: Record<string, string> }[] = [
   {
     type: ScheduleType.Standard,
-    name: 'Asr',
-    index: PRAYERS_ENGLISH.indexOf('Asr'),
+    id: 'asr',
+    index: STANDARD_PRAYER_IDS.indexOf('asr'),
     // 16:50 and 16:49 BST, reminders 15 minutes earlier
     armed: {
-      [prayerNotificationIdentifier(ScheduleType.Standard, 'Asr', TODAY)]: '2026-08-29T15:50:00.000Z',
-      [reminderNotificationIdentifier(ScheduleType.Standard, 'Asr', TODAY, INTERVAL)]: '2026-08-29T15:35:00.000Z',
-      [prayerNotificationIdentifier(ScheduleType.Standard, 'Asr', TOMORROW)]: '2026-08-30T15:49:00.000Z',
-      [reminderNotificationIdentifier(ScheduleType.Standard, 'Asr', TOMORROW, INTERVAL)]: '2026-08-30T15:34:00.000Z',
+      [prayerNotificationIdentifier(ScheduleType.Standard, 'asr', TODAY)]: '2026-08-29T15:50:00.000Z',
+      [reminderNotificationIdentifier(ScheduleType.Standard, 'asr', TODAY, INTERVAL)]: '2026-08-29T15:35:00.000Z',
+      [prayerNotificationIdentifier(ScheduleType.Standard, 'asr', TOMORROW)]: '2026-08-30T15:49:00.000Z',
+      [reminderNotificationIdentifier(ScheduleType.Standard, 'asr', TOMORROW, INTERVAL)]: '2026-08-30T15:34:00.000Z',
     },
   },
   {
     type: ScheduleType.Extra,
-    name: 'Duha',
-    index: EXTRAS_ENGLISH.indexOf('Duha'),
+    id: 'duha',
+    index: EXTRA_PRAYER_IDS.indexOf('duha'),
     // Today's 06:30 BST has passed at 09:00; tomorrow's is 06:31 BST, its reminder 06:16 BST
     armed: {
-      [prayerNotificationIdentifier(ScheduleType.Extra, 'Duha', TOMORROW)]: '2026-08-30T05:31:00.000Z',
-      [reminderNotificationIdentifier(ScheduleType.Extra, 'Duha', TOMORROW, INTERVAL)]: '2026-08-30T05:16:00.000Z',
+      [prayerNotificationIdentifier(ScheduleType.Extra, 'duha', TOMORROW)]: '2026-08-30T05:31:00.000Z',
+      [reminderNotificationIdentifier(ScheduleType.Extra, 'duha', TOMORROW, INTERVAL)]: '2026-08-30T05:16:00.000Z',
     },
   },
 ];
 
 /** A reminder the prayer had before this commit, recorded and armed */
-const seedReminder = (type: ScheduleType, name: string, index: number, date: string) => {
-  const id = reminderNotificationIdentifier(type, name, date, INTERVAL);
+const seedReminder = (type: ScheduleType, id: PrayerId, index: number, date: string) => {
+  const identifier = reminderNotificationIdentifier(type, id, date, INTERVAL);
   Database.addOneScheduledReminderForPrayer(type, index, {
-    id,
+    id: identifier,
     date,
     time: '12:00',
-    englishName: name,
+    englishName: prayerLabel(id),
     alertType: AlertType.Silent,
   });
-  osState.add(id);
-  return id;
+  osState.add(identifier);
+  return identifier;
 };
 
 beforeEach(() => {
@@ -154,7 +156,7 @@ afterAll(() => {
 // TESTS
 // =============================================================================
 
-describe.each(PRAYERS)('committing $type $name', ({ type, name, index, armed }) => {
+describe.each(PRAYERS)('committing $type $id', ({ type, id, index, armed }) => {
   const athanIds = Object.keys(armed).filter((id) => id.startsWith('athan_'));
   const reminderIds = Object.keys(armed).filter((id) => id.startsWith('reminder_'));
 
@@ -180,7 +182,7 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, armed }) 
   });
 
   it('arms the prayer at its instant and its reminder the saved interval before, on every day still to come', async () => {
-    await commitPrayerAlertChange(type, index, name, alerts(AlertType.Silent, AlertType.Sound), OFF);
+    await commitPrayerAlertChange(type, index, id, alerts(AlertType.Silent, AlertType.Sound), OFF);
 
     expect(triggers()).toEqual(armed);
     expect([...osState].sort()).toEqual(Object.keys(armed).sort());
@@ -189,9 +191,9 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, armed }) 
   });
 
   it('arms nothing while the at-time alert is off, whatever the reminder says, and cancels the reminders it had', async () => {
-    const earlier = [seedReminder(type, name, index, TODAY), seedReminder(type, name, index, TOMORROW)];
+    const earlier = [seedReminder(type, id, index, TODAY), seedReminder(type, id, index, TOMORROW)];
 
-    await commitPrayerAlertChange(type, index, name, alerts(AlertType.Off, AlertType.Sound), OFF);
+    await commitPrayerAlertChange(type, index, id, alerts(AlertType.Off, AlertType.Sound), OFF);
 
     expect(scheduleMock).not.toHaveBeenCalled();
     expect(cancelMock.mock.calls.map(([id]) => id).sort()).toEqual(earlier.sort());
@@ -200,10 +202,10 @@ describe.each(PRAYERS)('committing $type $name', ({ type, name, index, armed }) 
   });
 
   it('arms the at-time alert alone and cancels the reminders it had when the reminder is off', async () => {
-    seedReminder(type, name, index, TODAY);
-    seedReminder(type, name, index, TOMORROW);
+    seedReminder(type, id, index, TODAY);
+    seedReminder(type, id, index, TOMORROW);
 
-    await commitPrayerAlertChange(type, index, name, alerts(AlertType.Sound, AlertType.Off), OFF);
+    await commitPrayerAlertChange(type, index, id, alerts(AlertType.Sound, AlertType.Off), OFF);
 
     const athansOnly = Object.fromEntries(Object.entries(armed).filter(([id]) => id.startsWith('athan_')));
     expect(triggers()).toEqual(athansOnly);

@@ -25,7 +25,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import getDuration from 'mp3-duration';
 
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, REMINDER_INTERVALS } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, REMINDER_INTERVALS, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { EXTRAS_NOTIFICATION_SOUND, prayerNameSlug } from '@/shared/notifications';
 
 const ROOT = join(__dirname, '..', '..');
@@ -63,7 +63,7 @@ const athanCount = (): number => {
 const expectedSoundFiles = (): string[] => {
   const athans = Array.from({ length: athanCount() }, (_, index) => `athan${index + 1}.mp3`);
 
-  const allPrayers = [...PRAYERS_ENGLISH, ...EXTRAS_ENGLISH];
+  const allPrayers = [...STANDARD_PRAYER_IDS, ...EXTRA_PRAYER_IDS];
   const reminders = allPrayers.flatMap((prayer) =>
     REMINDER_INTERVALS.map((interval) => `reminder_${slug(prayer)}_${interval}.mp3`)
   );
@@ -98,7 +98,7 @@ describe('the audio matrix closes across every surface', () => {
   it('derives 99 files from code: 32 athans, 11 prayers x 6 intervals, one extras sound', () => {
     expect(EXPECTED).toHaveLength(99);
     expect(athanCount()).toBe(32);
-    expect(PRAYERS_ENGLISH.length + EXTRAS_ENGLISH.length).toBe(11);
+    expect(STANDARD_PRAYER_IDS.length + EXTRA_PRAYER_IDS.length).toBe(11);
     expect(REMINDER_INTERVALS).toHaveLength(6);
   });
 
@@ -132,7 +132,7 @@ describe('the audio matrix closes across every surface', () => {
   });
 
   it('gives every reminder channel a legal Android channel ID', () => {
-    const allPrayers = [...PRAYERS_ENGLISH, ...EXTRAS_ENGLISH];
+    const allPrayers = [...STANDARD_PRAYER_IDS, ...EXTRA_PRAYER_IDS];
     const channelIds = allPrayers.flatMap((prayer) =>
       REMINDER_INTERVALS.map((interval) => `reminder_${slug(prayer)}_${interval}`)
     );

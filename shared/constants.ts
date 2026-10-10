@@ -3,10 +3,12 @@
 // =============================================================================
 
 /**
- * English names for the 6 standard daily prayers
+ * Title-case renderings of the standard prayer ids, kept for the migration-era paths that
+ * still walk spellings: the index-to-name migration's source arrays and the width
+ * measurement. Display resolves ids through the catalog, never through these.
  * Order matches UI display sequence (Fajr → Sunrise → Dhuhr → Asr → Magrib → Isha)
  */
-export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
+export const STANDARD_PRAYER_TITLES = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
 
 /**
  * The id vocabulary for the standard prayers: the space-form slugs that build every stored
@@ -19,11 +21,11 @@ export const STANDARD_PRAYER_IDS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib',
 // =============================================================================
 
 /**
- * English names for 5 special/blessed prayer times
+ * Title-case renderings of the extra prayer ids; see STANDARD_PRAYER_TITLES for why they stay.
  * Order: Midnight, Last Third, Suhoor, Duha, Istijaba
  * Note: Istijaba only displays on Fridays
  */
-export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
+export const EXTRA_PRAYER_TITLES = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 
 /**
  * The id vocabulary for the extras. 'last third' keeps its space deliberately: these bytes
@@ -42,11 +44,11 @@ export type StoredPrayerId = Exclude<PrayerId, 'midnight' | 'last third'>;
 export const PRAYER_IDS = [...STANDARD_PRAYER_IDS, ...EXTRA_PRAYER_IDS] as const;
 
 /**
- * Night prayer names that cross midnight boundary
+ * Night prayer ids that cross midnight boundary
  * Used for determining which prayers belong to the previous/next Islamic day
  * These prayers occur after Isha but before Fajr (the nighttime portion)
  */
-export const NIGHT_PRAYER_NAMES = ['Midnight', 'Last Third', 'Suhoor'] as const;
+export const NIGHT_PRAYER_NAMES: readonly PrayerId[] = ['midnight', 'last third', 'suhoor'];
 
 /**
  * Standard prayers whose time can land after midnight, so the row's instant belongs to the
@@ -54,7 +56,7 @@ export const NIGHT_PRAYER_NAMES = ['Midnight', 'Last Third', 'Suhoor'] as const;
  * latitude; Magrib only above roughly 60N, where sunset itself falls after midnight.
  * Both halves of that mapping read this list, so they cannot drift apart.
  */
-export const MIDNIGHT_CROSSING_PRAYERS: string[] = ['Isha', 'Magrib'];
+export const MIDNIGHT_CROSSING_PRAYERS: readonly PrayerId[] = ['isha', 'magrib'];
 
 /**
  * Human-readable explanations for each extra prayer

@@ -2,6 +2,7 @@ import * as Notifications from 'expo-notifications';
 import { Alert, AppState, Linking } from 'react-native';
 
 import * as Device from '@/device/notifications';
+import type { PrayerId } from '@/shared/constants';
 import logger from '@/shared/logger';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { type AlertMenuState, AlertType, type ScheduleType } from '@/shared/types';
@@ -201,7 +202,7 @@ export const useNotification = () => {
    *
    * @param scheduleType Schedule type (Standard or Extra)
    * @param prayerIndex Index of the prayer in its schedule (0-based)
-   * @param englishName English prayer name
+   * @param id Prayer id
    * @param originalState The original state when the menu was opened
    * @param currentState The current state when the menu is being closed
    * @returns Promise resolving to boolean indicating success
@@ -209,7 +210,7 @@ export const useNotification = () => {
   const commitAlertMenuChanges = async (
     scheduleType: ScheduleType,
     prayerIndex: number,
-    englishName: string,
+    id: PrayerId,
     originalState: AlertMenuState,
     currentState: AlertMenuState
   ): Promise<boolean> => {
@@ -244,7 +245,7 @@ export const useNotification = () => {
     const committed = await NotificationStore.commitPrayerAlertChange(
       scheduleType,
       prayerIndex,
-      englishName,
+      id,
       currentState,
       originalState
     );
@@ -252,7 +253,7 @@ export const useNotification = () => {
     logger.info('NOTIFICATION: Alert menu changes settled:', {
       scheduleType,
       prayerIndex,
-      englishName,
+      id,
       atTimeChanged,
       reminderChanged,
       currentState,

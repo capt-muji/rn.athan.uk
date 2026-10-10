@@ -2,6 +2,8 @@ import { subMinutes } from 'date-fns';
 import * as Notifications from 'expo-notifications';
 import { Linking, Platform } from 'react-native';
 
+import type { PrayerId } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { AlertType, type ReadablePrayer, type ReminderInterval, type ScheduleType } from '@/shared/types';
@@ -46,8 +48,8 @@ export const updateAndroidChannel = async (sound: number) => {
  * derived from the identifier; iOS UNUserNotificationCenter replaces by identifier),
  * so re-scheduling can never create a duplicate even if MMKV bookkeeping is lost.
  */
-export const prayerNotificationIdentifier = (scheduleType: ScheduleType, englishName: string, date: string) =>
-  `athan_${scheduleType}_${englishName.toLowerCase()}_${date}`;
+export const prayerNotificationIdentifier = (scheduleType: ScheduleType, id: PrayerId, date: string) =>
+  `athan_${scheduleType}_${id}_${date}`;
 
 /**
  * Builds the deterministic identifier for a pre-prayer reminder notification.
@@ -60,10 +62,10 @@ export const prayerNotificationIdentifier = (scheduleType: ScheduleType, english
  */
 export const reminderNotificationIdentifier = (
   scheduleType: ScheduleType,
-  englishName: string,
+  id: PrayerId,
   date: string,
   intervalMinutes: ReminderInterval
-) => `reminder_${scheduleType}_${englishName.toLowerCase()}_${date}_${intervalMinutes}`;
+) => `reminder_${scheduleType}_${id}_${date}_${intervalMinutes}`;
 
 /**
  * Schedules the at-time notification for one prayer on one day's list
@@ -86,15 +88,15 @@ export const addOneScheduledNotificationForPrayer = async (
   alertType: AlertType,
   soundPreference: number
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const { english: englishName, time } = prayer;
+  const { id: prayerId, time } = prayer;
   const triggerDate = prayer.datetime;
-  const content = NotificationUtils.genNotificationContent(englishName, alertType, soundPreference);
-  const identifier = prayerNotificationIdentifier(scheduleType, englishName, date);
+  const content = NotificationUtils.genNotificationContent(prayerId, alertType, soundPreference);
+  const identifier = prayerNotificationIdentifier(scheduleType, prayerId, date);
   // Only include channelId for Sound alerts; the channel is prayer-aware
   // (selected athan for the 5 daily prayers, fixed extras channel for
   // Sunrise + extras — ISSUES.md #23)
   const atTimeChannelId =
-    alertType === AlertType.Sound ? NotificationUtils.atTimeAndroidChannelId(englishName, soundPreference) : undefined;
+    alertType === AlertType.Sound ? NotificationUtils.atTimeAndroidChannelId(prayerId, soundPreference) : undefined;
 
   // The at-time channel is created at schedule time too: headless background-task
   // reschedules run without UI init, and initialization only ever creates the athan
@@ -105,7 +107,7 @@ export const addOneScheduledNotificationForPrayer = async (
   // of the athan (device-verified on the 3T, see AUDIT-FINDINGS finding 5)
   if (alertType === AlertType.Sound && Platform.OS === 'android') {
     // Each of these bounds its own call into the notification system (shared/notifications.ts)
-    if (NotificationUtils.isDailyPrayer(englishName)) {
+    if (NotificationUtils.isDailyPrayer(prayerId)) {
       await NotificationUtils.createAthanAndroidChannel(soundPreference);
     } else {
       await NotificationUtils.createExtrasAndroidChannel();
@@ -127,7 +129,13 @@ export const addOneScheduledNotificationForPrayer = async (
       `arming ${identifier}`
     );
 
-    const notification: NotificationUtils.ScheduledNotification = { id, date, time, englishName, alertType };
+    const notification: NotificationUtils.ScheduledNotification = {
+      id,
+      date,
+      time,
+      englishName: prayerLabel(prayerId),
+      alertType,
+    };
     logger.info('NOTIFICATION SYSTEM: Scheduled:', { ...notification, identifier });
     return notification;
   } catch (error) {
@@ -216,18 +224,18 @@ export const addOneScheduledReminderForPrayer = async (
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const { english: englishName, time } = prayer;
+  const { id: prayerId, time } = prayer;
   const triggerDate = subMinutes(prayer.datetime, intervalMinutes);
-  const content = NotificationUtils.genReminderNotificationContent(englishName, intervalMinutes, alertType);
-  const identifier = reminderNotificationIdentifier(scheduleType, englishName, date, intervalMinutes);
+  const content = NotificationUtils.genReminderNotificationContent(prayerId, intervalMinutes, alertType);
+  const identifier = reminderNotificationIdentifier(scheduleType, prayerId, date, intervalMinutes);
   const isAndroidSound = alertType === AlertType.Sound && Platform.OS === 'android';
   const reminderChannelId = isAndroidSound
-    ? NotificationUtils.reminderAndroidChannelId(englishName, intervalMinutes)
+    ? NotificationUtils.reminderAndroidChannelId(prayerId, intervalMinutes)
     : undefined;
 
   if (isAndroidSound) {
     // Bounds its own call into the notification system (shared/notifications.ts)
-    await NotificationUtils.createReminderAndroidChannel(englishName, intervalMinutes);
+    await NotificationUtils.createReminderAndroidChannel(prayerId, intervalMinutes);
   }
 
   try {
@@ -245,7 +253,13 @@ export const addOneScheduledReminderForPrayer = async (
       `arming ${identifier}`
     );
 
-    const notification: NotificationUtils.ScheduledNotification = { id, date, time, englishName, alertType };
+    const notification: NotificationUtils.ScheduledNotification = {
+      id,
+      date,
+      time,
+      englishName: prayerLabel(prayerId),
+      alertType,
+    };
     logger.info('REMINDER SYSTEM: Scheduled:', { ...notification, identifier });
     return notification;
   } catch (error) {

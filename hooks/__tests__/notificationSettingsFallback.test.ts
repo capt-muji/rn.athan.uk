@@ -236,7 +236,7 @@ describe('a permission API that throws', () => {
     const committed = await useNotification().commitAlertMenuChanges(
       ScheduleType.Standard,
       0,
-      'Fajr',
+      'fajr',
       { atTimeAlert: AlertType.Off, reminders: OFF_REMINDERS },
       { atTimeAlert: AlertType.Sound, reminders: OFF_REMINDERS }
     );

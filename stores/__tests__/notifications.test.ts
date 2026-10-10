@@ -15,15 +15,16 @@ import { createStore, getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import { london } from '@/hooks/__tests__/londonDays';
+import type { PrayerId } from '@/shared/constants';
 import {
   BACKGROUND_TASK_INTERVAL_HOURS,
   BACKGROUND_TASK_INTERVAL_MINUTES,
   BACKGROUND_TASK_NAME,
   DEFAULT_REMINDER_INTERVAL,
   DEFAULT_REMINDER_SLOT_INTERVALS,
-  EXTRAS_ENGLISH,
+  EXTRA_PRAYER_IDS,
   NOTIFICATION_REFRESH_HOURS,
-  PRAYERS_ENGLISH,
+  STANDARD_PRAYER_IDS,
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import type { ScheduledNotification } from '@/shared/notifications';
@@ -95,8 +96,8 @@ const sheetAlerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertTyp
 
 describe('getPrayerArrays', () => {
   describe('Standard schedule', () => {
-    it('returns PRAYERS_ENGLISH', () => {
-      expect(getPrayerArrays(ScheduleType.Standard)).toBe(PRAYERS_ENGLISH);
+    it('returns STANDARD_PRAYER_IDS', () => {
+      expect(getPrayerArrays(ScheduleType.Standard)).toBe(STANDARD_PRAYER_IDS);
     });
 
     it('returns an array with 6 prayers', () => {
@@ -104,17 +105,17 @@ describe('getPrayerArrays', () => {
     });
 
     it('first prayer is Fajr', () => {
-      expect(getPrayerArrays(ScheduleType.Standard)[0]).toBe('Fajr');
+      expect(getPrayerArrays(ScheduleType.Standard)[0]).toBe('fajr');
     });
 
     it('last prayer is Isha', () => {
-      expect(getPrayerArrays(ScheduleType.Standard)[5]).toBe('Isha');
+      expect(getPrayerArrays(ScheduleType.Standard)[5]).toBe('isha');
     });
   });
 
   describe('Extra schedule', () => {
-    it('returns EXTRAS_ENGLISH', () => {
-      expect(getPrayerArrays(ScheduleType.Extra)).toBe(EXTRAS_ENGLISH);
+    it('returns EXTRA_PRAYER_IDS', () => {
+      expect(getPrayerArrays(ScheduleType.Extra)).toBe(EXTRA_PRAYER_IDS);
     });
 
     it('returns arrays with 5 prayers', () => {
@@ -124,12 +125,12 @@ describe('getPrayerArrays', () => {
 
     it('first prayer is Midnight', () => {
       const result = getPrayerArrays(ScheduleType.Extra);
-      expect(result[0]).toBe('Midnight');
+      expect(result[0]).toBe('midnight');
     });
 
     it('last prayer is Istijaba', () => {
       const result = getPrayerArrays(ScheduleType.Extra);
-      expect(result[4]).toBe('Istijaba');
+      expect(result[4]).toBe('istijaba');
     });
   });
 });
@@ -140,41 +141,41 @@ describe('getPrayerArrays', () => {
 
 describe('createPrayerAlertAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'fajr');
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createPrayerAlertAtom(ScheduleType.Extra, 'Duha');
+    const atom = createPrayerAlertAtom(ScheduleType.Extra, 'duha');
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of 0 (AlertType.Off)', () => {
     const store = createStore();
-    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'fajr');
     const value = store.get(atom);
     expect(value).toBe(0); // AlertType.Off
   });
 
   it('persists under a name-based storage key', () => {
     const store = createStore();
-    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
+    const atom = createPrayerAlertAtom(ScheduleType.Standard, 'fajr');
     store.set(atom, AlertType.Sound);
 
     expect(Database.database.getString('preference_alert_standard_fajr')).toBe('2');
   });
 
   it('creates different atoms for different prayers', () => {
-    const atom1 = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
-    const atom2 = createPrayerAlertAtom(ScheduleType.Standard, 'Asr');
+    const atom1 = createPrayerAlertAtom(ScheduleType.Standard, 'fajr');
+    const atom2 = createPrayerAlertAtom(ScheduleType.Standard, 'asr');
 
     // They should be different atom instances
     expect(atom1).not.toBe(atom2);
   });
 
   it('creates different atoms for different schedule types', () => {
-    const standardAtom = createPrayerAlertAtom(ScheduleType.Standard, 'Fajr');
-    const extraAtom = createPrayerAlertAtom(ScheduleType.Extra, 'Fajr');
+    const standardAtom = createPrayerAlertAtom(ScheduleType.Standard, 'fajr');
+    const extraAtom = createPrayerAlertAtom(ScheduleType.Extra, 'fajr');
 
     expect(standardAtom).not.toBe(extraAtom);
   });
@@ -377,10 +378,10 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     it.each([
       [
         'standard',
-        PRAYERS_ENGLISH,
+        STANDARD_PRAYER_IDS,
         [standardPrayerAlertAtoms, standardReminderAlertAtoms[0], standardReminderIntervalAtoms[0]],
       ],
-      ['extra', EXTRAS_ENGLISH, [extraPrayerAlertAtoms, extraReminderAlertAtoms[0], extraReminderIntervalAtoms[0]]],
+      ['extra', EXTRA_PRAYER_IDS, [extraPrayerAlertAtoms, extraReminderAlertAtoms[0], extraReminderIntervalAtoms[0]]],
     ])(
       'holds one %s alert, reminder and interval atom per name on the list, each saved under that name',
       (type, names, atomArrays) => {
@@ -480,19 +481,19 @@ describe('getPrayerAlertAtom', () => {
 describe('canonicalPrayerIndex', () => {
   // Chronological list: Duha, then Istijaba, then Midnight. canonicalDisplayOrder
   // returns [2, 0, 1] for it, so the row labelled Midnight renders with index 2.
-  const permutedChronological = ['Duha', 'Istijaba', 'Midnight'];
-  const midnightRowIndex = permutedChronological.indexOf('Midnight');
+  const permutedChronological: PrayerId[] = ['duha', 'istijaba', 'midnight'];
+  const midnightRowIndex = permutedChronological.indexOf('midnight');
 
   it('resolves the row labelled Midnight to the canonical Midnight atom, not the row-index atom', () => {
-    const resolved = canonicalPrayerIndex(ScheduleType.Extra, 'Midnight', midnightRowIndex);
+    const resolved = canonicalPrayerIndex(ScheduleType.Extra, 'midnight', midnightRowIndex);
 
-    expect(resolved).toBe(EXTRAS_ENGLISH.indexOf('Midnight'));
+    expect(resolved).toBe(EXTRA_PRAYER_IDS.indexOf('midnight'));
     expect(getPrayerAlertAtom(ScheduleType.Extra, resolved)).toBe(
-      extraPrayerAlertAtoms[EXTRAS_ENGLISH.indexOf('Midnight')]
+      extraPrayerAlertAtoms[EXTRA_PRAYER_IDS.indexOf('midnight')]
     );
 
     // The defect this closes: the raw row index lands on a different prayer's atom
-    expect(midnightRowIndex).not.toBe(EXTRAS_ENGLISH.indexOf('Midnight'));
+    expect(midnightRowIndex).not.toBe(EXTRA_PRAYER_IDS.indexOf('midnight'));
     expect(getPrayerAlertAtom(ScheduleType.Extra, midnightRowIndex)).not.toBe(
       getPrayerAlertAtom(ScheduleType.Extra, resolved)
     );
@@ -508,30 +509,23 @@ describe('canonicalPrayerIndex', () => {
   });
 
   it('is the identity for a canonically ordered schedule', () => {
-    EXTRAS_ENGLISH.forEach((prayerName, index) => {
-      expect(canonicalPrayerIndex(ScheduleType.Extra, prayerName, index)).toBe(index);
+    EXTRA_PRAYER_IDS.forEach((id, index) => {
+      expect(canonicalPrayerIndex(ScheduleType.Extra, id, index)).toBe(index);
     });
-    PRAYERS_ENGLISH.forEach((prayerName, index) => {
-      expect(canonicalPrayerIndex(ScheduleType.Standard, prayerName, index)).toBe(index);
+    STANDARD_PRAYER_IDS.forEach((id, index) => {
+      expect(canonicalPrayerIndex(ScheduleType.Standard, id, index)).toBe(index);
     });
   });
 
   it('resolves against the schedule it is given, not the other one', () => {
-    // Fajr exists only in the standard schedule
-    expect(canonicalPrayerIndex(ScheduleType.Standard, 'Fajr', 99)).toBe(PRAYERS_ENGLISH.indexOf('Fajr'));
-    expect(canonicalPrayerIndex(ScheduleType.Extra, 'Fajr', 99)).toBe(99);
-  });
-
-  it('falls back to the row index for an unknown name, so a loading frame is unchanged', () => {
-    // usePrayer reports english: '' while the sequence loads or the row is out of range
-    expect(canonicalPrayerIndex(ScheduleType.Extra, '', 3)).toBe(3);
-    expect(canonicalPrayerIndex(ScheduleType.Standard, '', 0)).toBe(0);
-    expect(canonicalPrayerIndex(ScheduleType.Extra, 'Not A Prayer', 2)).toBe(2);
+    // fajr exists only in the standard schedule
+    expect(canonicalPrayerIndex(ScheduleType.Standard, 'fajr', 99)).toBe(STANDARD_PRAYER_IDS.indexOf('fajr'));
+    expect(canonicalPrayerIndex(ScheduleType.Extra, 'fajr', 99)).toBe(99);
   });
 
   it('never returns -1, which would hand useAtomValue an undefined atom', () => {
-    expect(canonicalPrayerIndex(ScheduleType.Extra, '', 0)).not.toBe(-1);
-    expect(getPrayerAlertAtom(ScheduleType.Extra, canonicalPrayerIndex(ScheduleType.Extra, '', 0))).toBeDefined();
+    expect(canonicalPrayerIndex(ScheduleType.Extra, 'fajr', 0)).not.toBe(-1);
+    expect(getPrayerAlertAtom(ScheduleType.Extra, canonicalPrayerIndex(ScheduleType.Extra, 'fajr', 0))).toBeDefined();
   });
 });
 
@@ -667,43 +661,43 @@ describe('lastNotificationScheduleAtom', () => {
 
 describe('createReminderAlertAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 'fajr', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createReminderAlertAtom(ScheduleType.Extra, 'Duha', 0);
+    const atom = createReminderAlertAtom(ScheduleType.Extra, 'duha', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of 0 (AlertType.Off)', () => {
     const store = createStore();
-    const atom = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
+    const atom = createReminderAlertAtom(ScheduleType.Standard, 'fajr', 0);
     const value = store.get(atom);
     expect(value).toBe(0); // AlertType.Off
   });
 
   it('creates different atoms for different prayers', () => {
-    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 'Fajr', 0);
-    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 'Asr', 0);
+    const atom1 = createReminderAlertAtom(ScheduleType.Standard, 'fajr', 0);
+    const atom2 = createReminderAlertAtom(ScheduleType.Standard, 'asr', 0);
     expect(atom1).not.toBe(atom2);
   });
 });
 
 describe('createReminderIntervalAtom', () => {
   it('creates atom for Standard schedule prayer', () => {
-    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr', 0);
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'fajr', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atom for Extra schedule prayer', () => {
-    const atom = createReminderIntervalAtom(ScheduleType.Extra, 'Duha', 0);
+    const atom = createReminderIntervalAtom(ScheduleType.Extra, 'duha', 0);
     expect(atom).toBeDefined();
   });
 
   it('creates atoms with default value of DEFAULT_REMINDER_INTERVAL', () => {
     const store = createStore();
-    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'Fajr', 0);
+    const atom = createReminderIntervalAtom(ScheduleType.Standard, 'fajr', 0);
     const value = store.get(atom);
     expect(value).toBe(DEFAULT_REMINDER_INTERVAL);
   });
@@ -1105,9 +1099,9 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
   const getAllMock = Notifications.getAllScheduledNotificationsAsync as jest.Mock;
   const cancelAllMock = Notifications.cancelAllScheduledNotificationsAsync as jest.Mock;
 
-  const fajrId = (date: string) => prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date);
+  const fajrId = (date: string) => prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', date);
   const fajrReminderId = (date: string, interval: number) =>
-    reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', date, interval as ReminderInterval);
+    reminderNotificationIdentifier(ScheduleType.Standard, 'fajr', date, interval as ReminderInterval);
 
   const seedPrayerDay = (date: string, time = SEED_TIME) => {
     const prayer: ISingleApiResponseTransformed = {
@@ -1384,7 +1378,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     enableFajrAlerts(AlertType.Sound);
     seedPrayerWindow();
 
-    const strayDhuhrId = prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', TODAY);
+    const strayDhuhrId = prayerNotificationIdentifier(ScheduleType.Standard, 'dhuhr', TODAY);
     osState.add(strayDhuhrId);
 
     await rescheduleAllNotifications();
@@ -1400,7 +1394,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     // clearUpgradeCache wipes scheduled_* records; the OS keeps its notifications
     osState.add('legacy-uuid-1');
     osState.add('legacy-uuid-2');
-    const staleDhuhrId = prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', TOMORROW);
+    const staleDhuhrId = prayerNotificationIdentifier(ScheduleType.Standard, 'dhuhr', TOMORROW);
     osState.add(staleDhuhrId);
 
     await rescheduleAllNotifications();
@@ -1568,7 +1562,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     // Alert was turned off but the process died before its notifications were
     // cancelled — records and OS notifications both still present
-    const dhuhrTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', TODAY);
+    const dhuhrTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'dhuhr', TODAY);
     Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 2, notificationRecord(dhuhrTodayId, 'Dhuhr'));
     osState.add(dhuhrTodayId);
 
@@ -1610,7 +1604,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     await commitPrayerAlertChange(
       ScheduleType.Standard,
       0,
-      'Fajr',
+      'fajr',
       sheetAlerts(AlertType.Sound),
       sheetAlerts(AlertType.Off)
     );
@@ -1622,7 +1616,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
   it('a commit turning alerts off cancels only that prayer', async () => {
     seedPrayerWindow();
     const todayId = fajrId(TODAY);
-    const ishaTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'Isha', TODAY);
+    const ishaTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'isha', TODAY);
     seedRecords([todayId]);
     Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 5, notificationRecord(ishaTodayId, 'Isha'));
     osState.add(todayId);
@@ -1631,7 +1625,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     await commitPrayerAlertChange(
       ScheduleType.Standard,
       0,
-      'Fajr',
+      'fajr',
       sheetAlerts(AlertType.Off),
       sheetAlerts(AlertType.Sound)
     );
@@ -1648,8 +1642,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     await rescheduleAllNotifications();
 
-    const duhaTodayId = prayerNotificationIdentifier(ScheduleType.Extra, 'Duha', TODAY);
-    const duhaTomorrowId = prayerNotificationIdentifier(ScheduleType.Extra, 'Duha', TOMORROW);
+    const duhaTodayId = prayerNotificationIdentifier(ScheduleType.Extra, 'duha', TODAY);
+    const duhaTomorrowId = prayerNotificationIdentifier(ScheduleType.Extra, 'duha', TOMORROW);
     expect(osState.has(duhaTodayId)).toBe(true);
     expect(osState.has(duhaTomorrowId)).toBe(true);
     expect(cancelAllMock).not.toHaveBeenCalled();
@@ -1689,14 +1683,14 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         ?.trigger.date.toISOString();
 
     // Tonight (Sat 29 -> Sun 30 Aug) opens Sunday's list: Magrib Sat 19:55, Fajr Sun 04:25 BST, 8h 30m
-    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TOMORROW))).toBe(
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'midnight', TOMORROW))).toBe(
       '2026-08-29T23:10:00.000Z'
     );
-    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Last Third', TOMORROW))).toBe(
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'last third', TOMORROW))).toBe(
       '2026-08-30T00:35:00.000Z'
     );
     // Saturday's list opened with last night, already over at 09:00: nothing to schedule
-    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TODAY))).toBeUndefined();
+    expect(triggerOf(prayerNotificationIdentifier(ScheduleType.Extra, 'midnight', TODAY))).toBeUndefined();
     // Daily prayers are unchanged: the day's own time on its own date
     expect(triggerOf(fajrId(TOMORROW))).toBe('2026-08-30T03:25:00.000Z');
   });
@@ -1724,7 +1718,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     await rescheduleAllNotifications();
 
-    const midnightId = prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', TOMORROW);
+    const midnightId = prayerNotificationIdentifier(ScheduleType.Extra, 'midnight', TOMORROW);
     const request = scheduleMock.mock.calls
       .map(([call]) => call as { identifier: string; trigger: { date: Date } })
       .find((call) => call.identifier === midnightId);
@@ -1766,9 +1760,9 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     await rescheduleAllNotifications();
 
-    const midnightId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Midnight', date);
-    const lastThirdId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Last Third', date);
-    const suhoorId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'Suhoor', date);
+    const midnightId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'midnight', date);
+    const lastThirdId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'last third', date);
+    const suhoorId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'suhoor', date);
 
     // The night rows reach the last stored list day, whose instant is the evening before it
     expect(osState.has(midnightId(DAY_AFTER_TOMORROW))).toBe(true);
@@ -1778,7 +1772,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       osState.has(
         reminderNotificationIdentifier(
           ScheduleType.Extra,
-          'Midnight',
+          'midnight',
           DAY_AFTER_TOMORROW,
           DEFAULT_REMINDER_INTERVAL as ReminderInterval
         )
@@ -1913,36 +1907,36 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     };
 
     /** Switches the named prayers to Silent, each with a Silent reminder */
-    const enable = (scheduleType: ScheduleType, names: readonly string[]) => {
-      const english = getPrayerArrays(scheduleType);
+    const enable = (scheduleType: ScheduleType, ids: readonly PrayerId[]) => {
+      const canonical = getPrayerArrays(scheduleType);
       const isStandard = scheduleType === S;
-      for (const name of names) {
-        const index = english.indexOf(name);
-        if (index === -1) throw new Error(`${name} is not on the ${scheduleType} list`);
+      for (const id of ids) {
+        const index = canonical.indexOf(id);
+        if (index === -1) throw new Error(`${id} is not on the ${scheduleType} list`);
         store.set((isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms)[index], AlertType.Silent);
         // Slot first, then prayer
         store.set((isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[0][index], AlertType.Silent);
       }
     };
 
-    const athan = (scheduleType: ScheduleType, name: string, date: string) =>
-      prayerNotificationIdentifier(scheduleType, name, date);
-    const reminder = (scheduleType: ScheduleType, name: string, date: string) =>
-      reminderNotificationIdentifier(scheduleType, name, date, DEFAULT_REMINDER_INTERVAL as ReminderInterval);
+    const athan = (scheduleType: ScheduleType, id: PrayerId, date: string) =>
+      prayerNotificationIdentifier(scheduleType, id, date);
+    const reminder = (scheduleType: ScheduleType, id: PrayerId, date: string) =>
+      reminderNotificationIdentifier(scheduleType, id, date, DEFAULT_REMINDER_INTERVAL as ReminderInterval);
 
     /** An occurrence's at-time and reminder identifiers */
-    const ids = (occurrences: [ScheduleType, string, string][]) =>
+    const ids = (occurrences: [ScheduleType, PrayerId, string][]) =>
       occurrences
-        .flatMap(([scheduleType, name, date]) => [athan(scheduleType, name, date), reminder(scheduleType, name, date)])
+        .flatMap(([scheduleType, id, date]) => [athan(scheduleType, id, date), reminder(scheduleType, id, date)])
         .sort();
 
     const minutesBefore = (instant: string, minutes: number) =>
       new Date(Date.parse(instant) - minutes * 60_000).toISOString();
 
     /** An occurrence's at-time trigger, and its reminder's DEFAULT_REMINDER_INTERVAL earlier */
-    const armedAt = (scheduleType: ScheduleType, name: string, date: string, instant: string): [string, string][] => [
-      [athan(scheduleType, name, date), instant],
-      [reminder(scheduleType, name, date), minutesBefore(instant, DEFAULT_REMINDER_INTERVAL)],
+    const armedAt = (scheduleType: ScheduleType, id: PrayerId, date: string, instant: string): [string, string][] => [
+      [athan(scheduleType, id, date), instant],
+      [reminder(scheduleType, id, date), minutesBefore(instant, DEFAULT_REMINDER_INTERVAL)],
     ];
 
     /** Every identifier ever handed to the OS in this test, with the trigger it was last given */
@@ -2001,18 +1995,18 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       async ({ now, days, firstDay, nextDay, midnight, lastThird }) => {
         jest.setSystemTime(new Date(now));
         storeDays(days);
-        enable(E, ['Midnight', 'Last Third']);
+        enable(E, ['midnight', 'last third']);
 
         await rescheduleAllNotifications();
 
         expect(triggers()).toEqual(
           Object.fromEntries([
-            ...armedAt(E, 'Midnight', nextDay, midnight),
-            ...armedAt(E, 'Last Third', nextDay, lastThird),
+            ...armedAt(E, 'midnight', nextDay, midnight),
+            ...armedAt(E, 'last third', nextDay, lastThird),
           ])
         );
-        expect(osIdentifiers()).not.toContain(athan(E, 'Last Third', firstDay));
-        expect(osIdentifiers()).not.toContain(reminder(E, 'Last Third', firstDay));
+        expect(osIdentifiers()).not.toContain(athan(E, 'last third', firstDay));
+        expect(osIdentifiers()).not.toContain(reminder(E, 'last third', firstDay));
       }
     );
 
@@ -2023,27 +2017,27 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         '2026-08-30': AUG_30,
         '2026-08-31': AUG_31,
       });
-      enable(S, ['Dhuhr', 'Asr', 'Magrib']);
+      enable(S, ['dhuhr', 'asr', 'magrib']);
       const preferences = savedPreferences();
 
       await rescheduleAllNotifications();
 
       const expected = Object.fromEntries([
-        ...armedAt(S, 'Dhuhr', '2026-08-29', '2026-08-29T12:05:00.000Z'),
-        ...armedAt(S, 'Magrib', '2026-08-29', '2026-08-29T18:55:00.000Z'),
-        ...armedAt(S, 'Dhuhr', '2026-08-30', '2026-08-30T12:05:00.000Z'),
-        ...armedAt(S, 'Asr', '2026-08-30', '2026-08-30T15:49:00.000Z'),
-        ...armedAt(S, 'Magrib', '2026-08-30', '2026-08-30T18:53:00.000Z'),
-        ...armedAt(S, 'Dhuhr', '2026-08-31', '2026-08-31T12:04:00.000Z'),
-        ...armedAt(S, 'Asr', '2026-08-31', '2026-08-31T15:47:00.000Z'),
-        ...armedAt(S, 'Magrib', '2026-08-31', '2026-08-31T18:51:00.000Z'),
+        ...armedAt(S, 'dhuhr', '2026-08-29', '2026-08-29T12:05:00.000Z'),
+        ...armedAt(S, 'magrib', '2026-08-29', '2026-08-29T18:55:00.000Z'),
+        ...armedAt(S, 'dhuhr', '2026-08-30', '2026-08-30T12:05:00.000Z'),
+        ...armedAt(S, 'asr', '2026-08-30', '2026-08-30T15:49:00.000Z'),
+        ...armedAt(S, 'magrib', '2026-08-30', '2026-08-30T18:53:00.000Z'),
+        ...armedAt(S, 'dhuhr', '2026-08-31', '2026-08-31T12:04:00.000Z'),
+        ...armedAt(S, 'asr', '2026-08-31', '2026-08-31T15:47:00.000Z'),
+        ...armedAt(S, 'magrib', '2026-08-31', '2026-08-31T18:51:00.000Z'),
       ]);
       // Exact equality: today's Asr and its reminder were never handed to the OS at all
       expect(triggers()).toEqual(expected);
       expect(osIdentifiers()).toEqual(Object.keys(expected).sort());
       expect(logger.info).toHaveBeenCalledWith('Skipping prayer with no readable time:', {
         date: '2026-08-29',
-        englishName: 'Asr',
+        id: 'asr',
       });
 
       expect(savedPreferences()).toEqual(preferences);
@@ -2053,13 +2047,13 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     it('cancels exactly the occurrence that turned unreadable, and re-arms it when readable data returns', async () => {
       storeDays({ '2026-08-29': AUG_29, '2026-08-30': AUG_30 });
-      enable(S, ['Dhuhr', 'Asr']);
+      enable(S, ['dhuhr', 'asr']);
       const preferences = savedPreferences();
       const everyOccurrence = ids([
-        [S, 'Dhuhr', '2026-08-29'],
-        [S, 'Asr', '2026-08-29'],
-        [S, 'Dhuhr', '2026-08-30'],
-        [S, 'Asr', '2026-08-30'],
+        [S, 'dhuhr', '2026-08-29'],
+        [S, 'asr', '2026-08-29'],
+        [S, 'dhuhr', '2026-08-30'],
+        [S, 'asr', '2026-08-30'],
       ]);
 
       await rescheduleAllNotifications();
@@ -2072,12 +2066,12 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
       await rescheduleAllNotifications();
 
-      expect(cancelCalls().sort()).toEqual(ids([[S, 'Asr', '2026-08-30']]));
+      expect(cancelCalls().sort()).toEqual(ids([[S, 'asr', '2026-08-30']]));
       expect(osIdentifiers()).toEqual(
         ids([
-          [S, 'Dhuhr', '2026-08-29'],
-          [S, 'Asr', '2026-08-29'],
-          [S, 'Dhuhr', '2026-08-30'],
+          [S, 'dhuhr', '2026-08-29'],
+          [S, 'asr', '2026-08-29'],
+          [S, 'dhuhr', '2026-08-30'],
         ])
       );
       expect(savedPreferences()).toEqual(preferences);
@@ -2091,15 +2085,15 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
       expect(cancelCalls()).toEqual([]);
       expect(osIdentifiers()).toEqual(everyOccurrence);
-      expect(triggers()).toMatchObject(Object.fromEntries(armedAt(S, 'Asr', '2026-08-30', '2026-08-30T15:49:00.000Z')));
+      expect(triggers()).toMatchObject(Object.fromEntries(armedAt(S, 'asr', '2026-08-30', '2026-08-30T15:49:00.000Z')));
       expect(savedPreferences()).toEqual(preferences);
     });
 
     describe('an unreadable day at each position in the window', () => {
       // At 09:00 BST on 29 Aug, today's Fajr, Suhoor and night rows are already past
       beforeEach(() => {
-        enable(S, ['Fajr', 'Isha']);
-        enable(E, ['Midnight', 'Last Third', 'Suhoor']);
+        enable(S, ['fajr', 'isha']);
+        enable(E, ['midnight', 'last third', 'suhoor']);
 
         // 1 September is stored so that a window moved one day on would find it
         storeDays({
@@ -2116,45 +2110,45 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
         expect(osIdentifiers()).toEqual(
           ids([
-            [S, 'Fajr', '2026-08-30'],
-            [S, 'Fajr', '2026-08-31'],
-            [S, 'Fajr', '2026-09-01'],
-            [S, 'Isha', '2026-08-29'],
-            [S, 'Isha', '2026-08-30'],
-            [S, 'Isha', '2026-08-31'],
-            [S, 'Isha', '2026-09-01'],
-            [E, 'Suhoor', '2026-08-30'],
-            [E, 'Suhoor', '2026-08-31'],
-            [E, 'Suhoor', '2026-09-01'],
-            [E, 'Midnight', '2026-08-30'],
-            [E, 'Midnight', '2026-08-31'],
-            [E, 'Midnight', '2026-09-01'],
-            [E, 'Last Third', '2026-08-30'],
-            [E, 'Last Third', '2026-08-31'],
-            [E, 'Last Third', '2026-09-01'],
+            [S, 'fajr', '2026-08-30'],
+            [S, 'fajr', '2026-08-31'],
+            [S, 'fajr', '2026-09-01'],
+            [S, 'isha', '2026-08-29'],
+            [S, 'isha', '2026-08-30'],
+            [S, 'isha', '2026-08-31'],
+            [S, 'isha', '2026-09-01'],
+            [E, 'suhoor', '2026-08-30'],
+            [E, 'suhoor', '2026-08-31'],
+            [E, 'suhoor', '2026-09-01'],
+            [E, 'midnight', '2026-08-30'],
+            [E, 'midnight', '2026-08-31'],
+            [E, 'midnight', '2026-09-01'],
+            [E, 'last third', '2026-08-30'],
+            [E, 'last third', '2026-08-31'],
+            [E, 'last third', '2026-09-01'],
           ])
         );
       });
 
-      const positions: { position: string; day: string; armed: [ScheduleType, string, string][] }[] = [
+      const positions: { position: string; day: string; armed: [ScheduleType, PrayerId, string][] }[] = [
         {
           // A night row needs the day before's Magrib, so breaking today costs 30 August's too
           position: 'today',
           day: '2026-08-29',
           armed: [
-            [S, 'Fajr', '2026-08-30'],
-            [S, 'Fajr', '2026-08-31'],
-            [S, 'Fajr', '2026-09-01'],
-            [S, 'Isha', '2026-08-30'],
-            [S, 'Isha', '2026-08-31'],
-            [S, 'Isha', '2026-09-01'],
-            [E, 'Suhoor', '2026-08-30'],
-            [E, 'Suhoor', '2026-08-31'],
-            [E, 'Suhoor', '2026-09-01'],
-            [E, 'Midnight', '2026-08-31'],
-            [E, 'Midnight', '2026-09-01'],
-            [E, 'Last Third', '2026-08-31'],
-            [E, 'Last Third', '2026-09-01'],
+            [S, 'fajr', '2026-08-30'],
+            [S, 'fajr', '2026-08-31'],
+            [S, 'fajr', '2026-09-01'],
+            [S, 'isha', '2026-08-30'],
+            [S, 'isha', '2026-08-31'],
+            [S, 'isha', '2026-09-01'],
+            [E, 'suhoor', '2026-08-30'],
+            [E, 'suhoor', '2026-08-31'],
+            [E, 'suhoor', '2026-09-01'],
+            [E, 'midnight', '2026-08-31'],
+            [E, 'midnight', '2026-09-01'],
+            [E, 'last third', '2026-08-31'],
+            [E, 'last third', '2026-09-01'],
           ],
         },
         {
@@ -2162,30 +2156,30 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
           position: 'tomorrow',
           day: '2026-08-30',
           armed: [
-            [S, 'Fajr', '2026-08-31'],
-            [S, 'Fajr', '2026-09-01'],
-            [S, 'Isha', '2026-08-29'],
-            [S, 'Isha', '2026-08-31'],
-            [S, 'Isha', '2026-09-01'],
-            [E, 'Suhoor', '2026-08-31'],
-            [E, 'Suhoor', '2026-09-01'],
-            [E, 'Midnight', '2026-09-01'],
-            [E, 'Last Third', '2026-09-01'],
+            [S, 'fajr', '2026-08-31'],
+            [S, 'fajr', '2026-09-01'],
+            [S, 'isha', '2026-08-29'],
+            [S, 'isha', '2026-08-31'],
+            [S, 'isha', '2026-09-01'],
+            [E, 'suhoor', '2026-08-31'],
+            [E, 'suhoor', '2026-09-01'],
+            [E, 'midnight', '2026-09-01'],
+            [E, 'last third', '2026-09-01'],
           ],
         },
         {
           position: 'the day after tomorrow',
           day: '2026-08-31',
           armed: [
-            [S, 'Fajr', '2026-08-30'],
-            [S, 'Fajr', '2026-09-01'],
-            [S, 'Isha', '2026-08-29'],
-            [S, 'Isha', '2026-08-30'],
-            [S, 'Isha', '2026-09-01'],
-            [E, 'Suhoor', '2026-08-30'],
-            [E, 'Suhoor', '2026-09-01'],
-            [E, 'Midnight', '2026-08-30'],
-            [E, 'Last Third', '2026-08-30'],
+            [S, 'fajr', '2026-08-30'],
+            [S, 'fajr', '2026-09-01'],
+            [S, 'isha', '2026-08-29'],
+            [S, 'isha', '2026-08-30'],
+            [S, 'isha', '2026-09-01'],
+            [E, 'suhoor', '2026-08-30'],
+            [E, 'suhoor', '2026-09-01'],
+            [E, 'midnight', '2026-08-30'],
+            [E, 'last third', '2026-08-30'],
           ],
         },
       ];
@@ -2215,49 +2209,49 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         '2026-10-16': ['05:51', '07:23', '12:51', '15:31', null, '19:31'],
         '2026-10-17': ['05:52', '07:25', '12:51', '15:30', '18:06', '19:29'],
       });
-      enable(S, PRAYERS_ENGLISH);
-      enable(E, EXTRAS_ENGLISH);
+      enable(S, STANDARD_PRAYER_IDS);
+      enable(E, EXTRA_PRAYER_IDS);
 
       await rescheduleAllNotifications();
 
       // Friday's other five, and Saturday's Suhoor and Duha, at their own instants
       expect(triggers()).toMatchObject(
         Object.fromEntries([
-          ...armedAt(S, 'Fajr', '2026-10-16', '2026-10-16T04:51:00.000Z'),
-          ...armedAt(S, 'Sunrise', '2026-10-16', '2026-10-16T06:23:00.000Z'),
-          ...armedAt(S, 'Dhuhr', '2026-10-16', '2026-10-16T11:51:00.000Z'),
-          ...armedAt(S, 'Asr', '2026-10-16', '2026-10-16T14:31:00.000Z'),
-          ...armedAt(S, 'Isha', '2026-10-16', '2026-10-16T18:31:00.000Z'),
-          ...armedAt(E, 'Suhoor', '2026-10-17', '2026-10-17T04:32:00.000Z'),
-          ...armedAt(E, 'Duha', '2026-10-17', '2026-10-17T06:45:00.000Z'),
+          ...armedAt(S, 'fajr', '2026-10-16', '2026-10-16T04:51:00.000Z'),
+          ...armedAt(S, 'sunrise', '2026-10-16', '2026-10-16T06:23:00.000Z'),
+          ...armedAt(S, 'dhuhr', '2026-10-16', '2026-10-16T11:51:00.000Z'),
+          ...armedAt(S, 'asr', '2026-10-16', '2026-10-16T14:31:00.000Z'),
+          ...armedAt(S, 'isha', '2026-10-16', '2026-10-16T18:31:00.000Z'),
+          ...armedAt(E, 'suhoor', '2026-10-17', '2026-10-17T04:32:00.000Z'),
+          ...armedAt(E, 'duha', '2026-10-17', '2026-10-17T06:45:00.000Z'),
         ])
       );
       for (const id of ids([
-        [S, 'Magrib', '2026-10-16'],
-        [E, 'Istijaba', '2026-10-16'],
-        [E, 'Midnight', '2026-10-17'],
-        [E, 'Last Third', '2026-10-17'],
+        [S, 'magrib', '2026-10-16'],
+        [E, 'istijaba', '2026-10-16'],
+        [E, 'midnight', '2026-10-17'],
+        [E, 'last third', '2026-10-17'],
       ])) {
         expect(Object.keys(triggers())).not.toContain(id);
       }
       // Nothing else: Friday's night rows have no 15 October, and 18 October is not stored
       expect(osIdentifiers()).toEqual(
         ids([
-          [S, 'Fajr', '2026-10-16'],
-          [S, 'Sunrise', '2026-10-16'],
-          [S, 'Dhuhr', '2026-10-16'],
-          [S, 'Asr', '2026-10-16'],
-          [S, 'Isha', '2026-10-16'],
-          [S, 'Fajr', '2026-10-17'],
-          [S, 'Sunrise', '2026-10-17'],
-          [S, 'Dhuhr', '2026-10-17'],
-          [S, 'Asr', '2026-10-17'],
-          [S, 'Magrib', '2026-10-17'],
-          [S, 'Isha', '2026-10-17'],
-          [E, 'Suhoor', '2026-10-16'],
-          [E, 'Duha', '2026-10-16'],
-          [E, 'Suhoor', '2026-10-17'],
-          [E, 'Duha', '2026-10-17'],
+          [S, 'fajr', '2026-10-16'],
+          [S, 'sunrise', '2026-10-16'],
+          [S, 'dhuhr', '2026-10-16'],
+          [S, 'asr', '2026-10-16'],
+          [S, 'isha', '2026-10-16'],
+          [S, 'fajr', '2026-10-17'],
+          [S, 'sunrise', '2026-10-17'],
+          [S, 'dhuhr', '2026-10-17'],
+          [S, 'asr', '2026-10-17'],
+          [S, 'magrib', '2026-10-17'],
+          [S, 'isha', '2026-10-17'],
+          [E, 'suhoor', '2026-10-16'],
+          [E, 'duha', '2026-10-16'],
+          [E, 'suhoor', '2026-10-17'],
+          [E, 'duha', '2026-10-17'],
         ])
       );
     });
@@ -2270,10 +2264,10 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       it('arms only the stored day while the days after it are missing, then bails once none in the window is stored', async () => {
         jest.setSystemTime(new Date('2026-09-13T08:00:00Z')); // 09:00 BST
         storeDays({ '2026-09-12': SEP_12, '2026-09-13': SEP_13 });
-        enable(S, PRAYERS_ENGLISH);
-        enable(E, EXTRAS_ENGLISH);
+        enable(S, STANDARD_PRAYER_IDS);
+        enable(E, EXTRA_PRAYER_IDS);
         // Armed before 14 September went missing
-        const fajrTomorrow = athan(S, 'Fajr', '2026-09-14');
+        const fajrTomorrow = athan(S, 'fajr', '2026-09-14');
         seedRecords([fajrTomorrow]);
         osState.add(fajrTomorrow);
 
@@ -2282,14 +2276,14 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         // Only 13 September's rows still to come; no night row from a missing 14 September
         expect(osIdentifiers()).toEqual(
           ids([
-            [S, 'Dhuhr', '2026-09-13'],
-            [S, 'Asr', '2026-09-13'],
-            [S, 'Magrib', '2026-09-13'],
-            [S, 'Isha', '2026-09-13'],
+            [S, 'dhuhr', '2026-09-13'],
+            [S, 'asr', '2026-09-13'],
+            [S, 'magrib', '2026-09-13'],
+            [S, 'isha', '2026-09-13'],
           ])
         );
         expect(Object.keys(triggers()).every((id) => /_2026-09-13(_\d+)?$/.test(id))).toBe(true);
-        expect(Object.keys(triggers())).not.toContain(athan(E, 'Midnight', '2026-09-14'));
+        expect(Object.keys(triggers())).not.toContain(athan(E, 'midnight', '2026-09-14'));
         expect(cancelCalls()).toEqual([fajrTomorrow]);
         const stamped = store.get(lastNotificationScheduleAtom);
         expect(stamped).toBe(Date.parse('2026-09-13T08:00:00Z'));
@@ -2314,9 +2308,9 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       it('still runs when today is missing but tomorrow is stored: arms tomorrow, nothing for today, and stamps the gate', async () => {
         jest.setSystemTime(new Date('2026-09-12T08:00:00Z')); // 09:00 BST on 12 September, which is not stored
         storeDays({ '2026-09-13': SEP_13 });
-        enable(S, ['Fajr', 'Isha']);
+        enable(S, ['fajr', 'isha']);
         // Armed before today went missing
-        const ishaToday = athan(S, 'Isha', '2026-09-12');
+        const ishaToday = athan(S, 'isha', '2026-09-12');
         Database.addOneScheduledNotificationForPrayer(S, 5, notificationRecord(ishaToday, 'Isha'));
         osState.add(ishaToday);
 
@@ -2324,15 +2318,15 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
         expect(triggers()).toEqual(
           Object.fromEntries([
-            ...armedAt(S, 'Fajr', '2026-09-13', '2026-09-13T03:57:00.000Z'),
-            ...armedAt(S, 'Isha', '2026-09-13', '2026-09-13T19:37:00.000Z'),
+            ...armedAt(S, 'fajr', '2026-09-13', '2026-09-13T03:57:00.000Z'),
+            ...armedAt(S, 'isha', '2026-09-13', '2026-09-13T19:37:00.000Z'),
           ])
         );
         expect(cancelCalls()).toEqual([ishaToday]);
         expect(osIdentifiers()).toEqual(
           ids([
-            [S, 'Fajr', '2026-09-13'],
-            [S, 'Isha', '2026-09-13'],
+            [S, 'fajr', '2026-09-13'],
+            [S, 'isha', '2026-09-13'],
           ])
         );
         expect(store.get(lastNotificationScheduleAtom)).toBe(Date.parse('2026-09-12T08:00:00Z'));
@@ -2348,7 +2342,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         { label: 'yesterday', date: '2026-08-28', outcome: 'bails' },
       ])('with only $label stored, the reschedule $outcome', async ({ date, outcome }) => {
         storeDays({ [date]: AUG_29 });
-        enable(S, ['Fajr']);
+        enable(S, ['fajr']);
         osState.add(fajrId(TODAY));
 
         await refreshNotifications();

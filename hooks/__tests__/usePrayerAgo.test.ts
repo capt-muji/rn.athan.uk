@@ -61,7 +61,7 @@ import { calculatePrayerAgo, usePrayerAgo } from '../usePrayerAgo';
 
 const createMockPrayer = (overrides: Partial<ReadablePrayer> = {}): ReadablePrayer => ({
   type: ScheduleType.Standard,
-  english: 'Fajr',
+  id: 'fajr',
   datetime: new Date('2026-01-27T06:15:00Z'),
   time: '06:15',
   belongsToDate: '2026-01-27',
@@ -86,7 +86,7 @@ beforeEach(() => {
 
 describe('now display', () => {
   it('shows "now" when 0 seconds elapsed', () => {
-    const prayer = createMockPrayer({ english: 'Fajr' });
+    const prayer = createMockPrayer({ id: 'fajr' });
     given(prayer, prayer.datetime);
 
     expect(calculatePrayerAgo(ScheduleType.Standard)).toEqual({
@@ -97,7 +97,7 @@ describe('now display', () => {
   });
 
   it('still shows "now" at 59 seconds', () => {
-    const prayer = createMockPrayer({ english: 'Asr', datetime: new Date('2026-01-27T15:00:00Z') });
+    const prayer = createMockPrayer({ id: 'asr', datetime: new Date('2026-01-27T15:00:00Z') });
     given(prayer, new Date('2026-01-27T15:00:59Z'));
 
     const result = calculatePrayerAgo(ScheduleType.Standard);
@@ -113,7 +113,7 @@ describe('now display', () => {
 
 describe('ago display', () => {
   it('flips to "X ago" exactly at 60 seconds', () => {
-    const prayer = createMockPrayer({ english: 'Magrib', datetime: new Date('2026-01-27T17:00:00Z') });
+    const prayer = createMockPrayer({ id: 'magrib', datetime: new Date('2026-01-27T17:00:00Z') });
     given(prayer, new Date('2026-01-27T17:01:00Z'));
 
     const result = calculatePrayerAgo(ScheduleType.Standard);
@@ -123,7 +123,7 @@ describe('ago display', () => {
   });
 
   it('formats hours through formatTimeAgo', () => {
-    const prayer = createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-27T06:00:00Z') });
+    const prayer = createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-27T06:00:00Z') });
     given(prayer, new Date('2026-01-27T08:30:00Z'));
     mockFormatTimeAgo.mockReturnValue('2h 30m');
 
@@ -142,7 +142,7 @@ describe('ago display', () => {
   });
 
   it('handles a long overnight gap', () => {
-    const prayer = createMockPrayer({ english: 'Isha', datetime: new Date('2026-01-26T20:00:00Z') });
+    const prayer = createMockPrayer({ id: 'isha', datetime: new Date('2026-01-26T20:00:00Z') });
     given(prayer, new Date('2026-01-27T08:00:00Z'));
     mockFormatTimeAgo.mockReturnValue('12h');
 
@@ -185,7 +185,7 @@ describe('not ready', () => {
   });
 
   it('reports not ready while the list on screen waits for its day to end, though a previous prayer exists', () => {
-    given(createMockPrayer({ english: 'Suhoor' }), new Date('2026-01-27T06:15:30Z'));
+    given(createMockPrayer({ id: 'suhoor' }), new Date('2026-01-27T06:15:30Z'));
     mockIsDisplayHeld.mockReturnValueOnce(true);
 
     expect(calculatePrayerAgo(ScheduleType.Extra)).toEqual({ prayerAgo: '', minutesElapsed: 0, isReady: false });
@@ -218,7 +218,7 @@ describe('usePrayerAgo', () => {
 
   it('calculates its first state synchronously, before any tick', () => {
     given(
-      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-27T12:00:00Z') }),
+      createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-01-27T12:00:00Z') }),
       new Date('2026-01-27T12:05:00Z')
     );
     mockFormatTimeAgo.mockReturnValue('5m');

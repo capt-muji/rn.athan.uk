@@ -24,6 +24,7 @@ jest.mock('@/stores/database', () => ({
 import type { Atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
+import type { PrayerId } from '@/shared/constants';
 import { transformApiData } from '@/shared/prayer';
 import { type CountdownStore, type Prayer, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
@@ -79,7 +80,7 @@ const storeOctober = () => {
 };
 
 const label = (prayer: Prayer | null): string | null =>
-  prayer && `${prayer.english} of ${prayer.belongsToDate} at ${prayer.datetime?.toISOString() ?? '--:--'}`;
+  prayer && `${prayer.id} of ${prayer.belongsToDate} at ${prayer.datetime?.toISOString() ?? '--:--'}`;
 
 const listDaysHeld = (type: ScheduleType): string[] => [
   ...new Set((store.get(getSequenceAtom(type))?.prayers ?? []).map((prayer) => prayer.belongsToDate)),
@@ -116,7 +117,7 @@ const shiftSeconds = (instant: string, seconds: number) => new Date(Date.parse(i
  * What a countdown shows on each whole second from `from` to `to`: the seconds left to the first target strictly
  * ahead, under that target's name
  */
-const everySecond = (from: string, to: string, targets: [string, string][]): CountdownStore[] => {
+const everySecond = (from: string, to: string, targets: [PrayerId, string][]): CountdownStore[] => {
   const values: CountdownStore[] = [];
   for (let at = Date.parse(from); at <= Date.parse(to); at += 1000) {
     const ahead = targets.find(([, instant]) => Date.parse(instant) > at);
@@ -153,7 +154,7 @@ interface Night {
   listDay: string;
   fajr: string;
   /** The Extras targets in turn: the next list's Midnight, then its Last Third */
-  extras: [string, string][];
+  extras: [PrayerId, string][];
   extraWrites: string[];
   heldBefore: string[];
   heldAfter: string[];
@@ -171,22 +172,22 @@ const NIGHTS: Night[] = [
     listDay: '2026-10-17',
     fajr: '2026-10-17T04:52:00.000Z',
     extras: [
-      ['Midnight', '2026-10-16T23:00:00.000Z'],
-      ['Last Third', '2026-10-17T00:57:00.000Z'],
+      ['midnight', '2026-10-16T23:00:00.000Z'],
+      ['last third', '2026-10-17T00:57:00.000Z'],
     ],
     extraWrites: ['2026-10-16T23:00:00.000Z'],
     heldBefore: ['2026-10-16', '2026-10-17', '2026-10-18'],
     heldAfter: ['2026-10-17', '2026-10-18'],
-    extrasPrevious: 'Midnight of 2026-10-17 at 2026-10-16T23:00:00.000Z',
+    extrasPrevious: 'midnight of 2026-10-17 at 2026-10-16T23:00:00.000Z',
     standardReadings: [
-      ['2026-10-16T22:58:00.000Z', 'Fajr', 21240],
-      ['2026-10-16T23:00:02.000Z', 'Fajr', 21118],
+      ['2026-10-16T22:58:00.000Z', 'fajr', 21240],
+      ['2026-10-16T23:00:02.000Z', 'fajr', 21118],
     ],
     extrasReadings: [
-      ['2026-10-16T22:58:00.000Z', 'Midnight', 120],
-      ['2026-10-16T22:59:59.000Z', 'Midnight', 1],
-      ['2026-10-16T23:00:00.000Z', 'Last Third', 7020],
-      ['2026-10-16T23:00:02.000Z', 'Last Third', 7018],
+      ['2026-10-16T22:58:00.000Z', 'midnight', 120],
+      ['2026-10-16T22:59:59.000Z', 'midnight', 1],
+      ['2026-10-16T23:00:00.000Z', 'last third', 7020],
+      ['2026-10-16T23:00:02.000Z', 'last third', 7018],
     ],
   },
   {
@@ -195,22 +196,22 @@ const NIGHTS: Night[] = [
     listDay: '2026-10-18',
     fajr: '2026-10-18T04:54:00.000Z',
     extras: [
-      ['Midnight', '2026-10-17T23:00:00.000Z'],
-      ['Last Third', '2026-10-18T00:58:00.000Z'],
+      ['midnight', '2026-10-17T23:00:00.000Z'],
+      ['last third', '2026-10-18T00:58:00.000Z'],
     ],
     extraWrites: ['2026-10-17T23:00:00.000Z'],
     heldBefore: ['2026-10-17', '2026-10-18', '2026-10-19'],
     heldAfter: ['2026-10-18', '2026-10-19'],
-    extrasPrevious: 'Midnight of 2026-10-18 at 2026-10-17T23:00:00.000Z',
+    extrasPrevious: 'midnight of 2026-10-18 at 2026-10-17T23:00:00.000Z',
     standardReadings: [
-      ['2026-10-17T22:58:00.000Z', 'Fajr', 21360],
-      ['2026-10-17T23:00:02.000Z', 'Fajr', 21238],
+      ['2026-10-17T22:58:00.000Z', 'fajr', 21360],
+      ['2026-10-17T23:00:02.000Z', 'fajr', 21238],
     ],
     extrasReadings: [
-      ['2026-10-17T22:58:00.000Z', 'Midnight', 120],
-      ['2026-10-17T22:59:59.000Z', 'Midnight', 1],
-      ['2026-10-17T23:00:00.000Z', 'Last Third', 7080],
-      ['2026-10-17T23:00:02.000Z', 'Last Third', 7078],
+      ['2026-10-17T22:58:00.000Z', 'midnight', 120],
+      ['2026-10-17T22:59:59.000Z', 'midnight', 1],
+      ['2026-10-17T23:00:00.000Z', 'last third', 7080],
+      ['2026-10-17T23:00:02.000Z', 'last third', 7078],
     ],
   },
   {
@@ -219,23 +220,23 @@ const NIGHTS: Night[] = [
     listDay: '2026-10-19',
     fajr: '2026-10-19T04:55:00.000Z',
     extras: [
-      ['Midnight', '2026-10-18T22:59:00.000Z'],
-      ['Last Third', '2026-10-19T00:58:00.000Z'],
+      ['midnight', '2026-10-18T22:59:00.000Z'],
+      ['last third', '2026-10-19T00:58:00.000Z'],
     ],
     extraWrites: ['2026-10-18T22:59:00.000Z'],
     heldBefore: ['2026-10-18', '2026-10-19', '2026-10-20'],
     heldAfter: ['2026-10-19', '2026-10-20'],
-    extrasPrevious: 'Midnight of 2026-10-19 at 2026-10-18T22:59:00.000Z',
+    extrasPrevious: 'midnight of 2026-10-19 at 2026-10-18T22:59:00.000Z',
     standardReadings: [
-      ['2026-10-18T22:58:00.000Z', 'Fajr', 21420],
-      ['2026-10-18T23:00:02.000Z', 'Fajr', 21298],
+      ['2026-10-18T22:58:00.000Z', 'fajr', 21420],
+      ['2026-10-18T23:00:02.000Z', 'fajr', 21298],
     ],
     extrasReadings: [
-      ['2026-10-18T22:58:00.000Z', 'Midnight', 60],
-      ['2026-10-18T22:58:59.000Z', 'Midnight', 1],
-      ['2026-10-18T22:59:00.000Z', 'Last Third', 7140],
-      ['2026-10-18T23:00:00.000Z', 'Last Third', 7080],
-      ['2026-10-18T23:00:02.000Z', 'Last Third', 7078],
+      ['2026-10-18T22:58:00.000Z', 'midnight', 60],
+      ['2026-10-18T22:58:59.000Z', 'midnight', 1],
+      ['2026-10-18T22:59:00.000Z', 'last third', 7140],
+      ['2026-10-18T23:00:00.000Z', 'last third', 7080],
+      ['2026-10-18T23:00:02.000Z', 'last third', 7078],
     ],
   },
 ];
@@ -272,7 +273,7 @@ describe('crossing 00:00:00 with the app running advances only the Extras sequen
       expect(extraSequenceWrites).toEqual(extraWrites);
       expect([displayDateOf(STANDARD), displayDateOf(EXTRA)]).toEqual([listDay, listDay]);
 
-      expect(standardCountdown).toEqual(everySecond(launch, end, [['Fajr', fajr]]));
+      expect(standardCountdown).toEqual(everySecond(launch, end, [['fajr', fajr]]));
       expect(extraCountdown).toEqual(everySecond(launch, end, extras));
       const readingAt = (values: CountdownStore[], instant: string) =>
         values[(Date.parse(instant) - Date.parse(launch)) / 1000];
@@ -305,9 +306,9 @@ const MID_SECOND: MidSecond[] = [
     launch: '2026-10-16T22:59:58.400Z',
     standard: [21122, 21121, 21120],
     extras: [
-      ['Midnight', 2],
-      ['Midnight', 1],
-      ['Last Third', 7020],
+      ['midnight', 2],
+      ['midnight', 1],
+      ['last third', 7020],
     ],
   },
   {
@@ -315,9 +316,9 @@ const MID_SECOND: MidSecond[] = [
     launch: '2026-10-17T22:59:58.400Z',
     standard: [21242, 21241, 21240],
     extras: [
-      ['Midnight', 2],
-      ['Midnight', 1],
-      ['Last Third', 7080],
+      ['midnight', 2],
+      ['midnight', 1],
+      ['last third', 7080],
     ],
   },
   {
@@ -325,9 +326,9 @@ const MID_SECOND: MidSecond[] = [
     launch: '2026-10-18T22:58:58.400Z',
     standard: [21362, 21361, 21360],
     extras: [
-      ['Midnight', 2],
-      ['Midnight', 1],
-      ['Last Third', 7140],
+      ['midnight', 2],
+      ['midnight', 1],
+      ['last third', 7140],
     ],
   },
 ];
@@ -345,7 +346,7 @@ describe('opened part way through a second just before the Extras Midnight', () 
       startCountdowns();
       jest.advanceTimersByTime(1600);
 
-      expect(standardCountdown).toEqual(standard.map((timeLeft) => ({ timeLeft, name: 'Fajr' })));
+      expect(standardCountdown).toEqual(standard.map((timeLeft) => ({ timeLeft, name: 'fajr' })));
       expect(extraCountdown).toEqual(extras.map(([name, timeLeft]) => ({ timeLeft, name })));
     }
   );
@@ -388,16 +389,16 @@ const AFTER_MIDNIGHT: AfterMidnight[] = [
     at: '2026-10-16T23:00:30.000Z',
     standard: {
       listDay: '2026-10-17',
-      next: 'Fajr of 2026-10-17 at 2026-10-17T04:52:00.000Z',
-      previous: 'Isha of 2026-10-16 at 2026-10-16T18:31:00.000Z',
-      countdown: { timeLeft: 21090, name: 'Fajr' },
+      next: 'fajr of 2026-10-17 at 2026-10-17T04:52:00.000Z',
+      previous: 'isha of 2026-10-16 at 2026-10-16T18:31:00.000Z',
+      countdown: { timeLeft: 21090, name: 'fajr' },
       barAvailable: true,
     },
     extras: {
       listDay: '2026-10-17',
-      next: 'Last Third of 2026-10-17 at 2026-10-17T00:57:00.000Z',
-      previous: 'Midnight of 2026-10-17 at 2026-10-16T23:00:00.000Z',
-      countdown: { timeLeft: 6990, name: 'Last Third' },
+      next: 'last third of 2026-10-17 at 2026-10-17T00:57:00.000Z',
+      previous: 'midnight of 2026-10-17 at 2026-10-16T23:00:00.000Z',
+      countdown: { timeLeft: 6990, name: 'last third' },
       barAvailable: true,
     },
   },
@@ -407,16 +408,16 @@ const AFTER_MIDNIGHT: AfterMidnight[] = [
     at: '2026-10-17T23:00:30.000Z',
     standard: {
       listDay: '2026-10-18',
-      next: 'Fajr of 2026-10-18 at 2026-10-18T04:54:00.000Z',
-      previous: 'Isha of 2026-10-17 at 2026-10-17T18:29:00.000Z',
-      countdown: { timeLeft: 21210, name: 'Fajr' },
+      next: 'fajr of 2026-10-18 at 2026-10-18T04:54:00.000Z',
+      previous: 'isha of 2026-10-17 at 2026-10-17T18:29:00.000Z',
+      countdown: { timeLeft: 21210, name: 'fajr' },
       barAvailable: true,
     },
     extras: {
       listDay: '2026-10-18',
-      next: 'Last Third of 2026-10-18 at 2026-10-18T00:58:00.000Z',
-      previous: 'Midnight of 2026-10-18 at 2026-10-17T23:00:00.000Z',
-      countdown: { timeLeft: 7050, name: 'Last Third' },
+      next: 'last third of 2026-10-18 at 2026-10-18T00:58:00.000Z',
+      previous: 'midnight of 2026-10-18 at 2026-10-17T23:00:00.000Z',
+      countdown: { timeLeft: 7050, name: 'last third' },
       barAvailable: true,
     },
   },
@@ -426,16 +427,16 @@ const AFTER_MIDNIGHT: AfterMidnight[] = [
     at: '2026-10-18T23:00:30.000Z',
     standard: {
       listDay: '2026-10-19',
-      next: 'Fajr of 2026-10-19 at 2026-10-19T04:55:00.000Z',
-      previous: 'Isha of 2026-10-18 at 2026-10-18T18:27:00.000Z',
-      countdown: { timeLeft: 21270, name: 'Fajr' },
+      next: 'fajr of 2026-10-19 at 2026-10-19T04:55:00.000Z',
+      previous: 'isha of 2026-10-18 at 2026-10-18T18:27:00.000Z',
+      countdown: { timeLeft: 21270, name: 'fajr' },
       barAvailable: true,
     },
     extras: {
       listDay: '2026-10-19',
-      next: 'Last Third of 2026-10-19 at 2026-10-19T00:58:00.000Z',
-      previous: 'Midnight of 2026-10-19 at 2026-10-18T22:59:00.000Z',
-      countdown: { timeLeft: 7050, name: 'Last Third' },
+      next: 'last third of 2026-10-19 at 2026-10-19T00:58:00.000Z',
+      previous: 'midnight of 2026-10-19 at 2026-10-18T22:59:00.000Z',
+      countdown: { timeLeft: 7050, name: 'last third' },
       barAvailable: true,
     },
   },

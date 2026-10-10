@@ -167,7 +167,7 @@ const everythingStored = () => {
 const rowsOf = (type: ScheduleType, listDay: string) =>
   (store.get(getSequenceAtom(type))?.prayers ?? [])
     .filter((prayer) => prayer.belongsToDate === listDay)
-    .map((prayer) => (prayer.datetime ? prayer.english : `[${prayer.english}]`));
+    .map((prayer) => (prayer.datetime ? prayer.id : `[${prayer.id}]`));
 
 const onScreen = (type: ScheduleType) => ({
   listDay: displayDateOf(type),
@@ -278,8 +278,8 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
     expect(extraIntoTheDay).toEqual(['2026-09-13T23:00:00.000Z']);
     expect(onScreen(STANDARD)).toEqual({ listDay: THE_DAY, countdown: WAITING });
     expect(onScreen(EXTRA)).toEqual({ listDay: THE_DAY, countdown: WAITING });
-    expect(rowsOf(STANDARD, THE_DAY)).toEqual(['[Fajr]', '[Sunrise]', '[Dhuhr]', '[Asr]', '[Magrib]', '[Isha]']);
-    expect(rowsOf(EXTRA, THE_DAY)).toEqual(['[Midnight]', '[Last Third]', '[Suhoor]', '[Duha]']);
+    expect(rowsOf(STANDARD, THE_DAY)).toEqual(['[fajr]', '[sunrise]', '[dhuhr]', '[asr]', '[magrib]', '[isha]']);
+    expect(rowsOf(EXTRA, THE_DAY)).toEqual(['[midnight]', '[last third]', '[suhoor]', '[duha]']);
 
     // The first tick after a jump is where a boundary crossed in it would be caught, and none was, so it must leave the
     // day as it is before the sync below rebuilds both lists
@@ -308,20 +308,20 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
     expect(displayDateOf(STANDARD)).toBe('2026-09-15');
     expect(displayDateOf(EXTRA)).toBe('2026-09-15');
     // The 15th's night starts at the 14th's Magrib, which the provider did not give, so nothing may stand in for it
-    expect(rowsOf(STANDARD, '2026-09-15')).toEqual(['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha']);
-    expect(rowsOf(EXTRA, '2026-09-15')).toEqual(['[Midnight]', '[Last Third]', 'Suhoor', 'Duha']);
+    expect(rowsOf(STANDARD, '2026-09-15')).toEqual(['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha']);
+    expect(rowsOf(EXTRA, '2026-09-15')).toEqual(['[midnight]', '[last third]', 'suhoor', 'duha']);
     // --:-- until the 00:00 tick, then Fajr at 05:00 BST and Suhoor at 04:40 BST from that same tick
     expect(standardCountdown).toEqual([
       WAITING,
-      { timeLeft: 18000, name: 'Fajr' },
-      { timeLeft: 17999, name: 'Fajr' },
-      { timeLeft: 17998, name: 'Fajr' },
+      { timeLeft: 18000, name: 'fajr' },
+      { timeLeft: 17999, name: 'fajr' },
+      { timeLeft: 17998, name: 'fajr' },
     ]);
     expect(extraCountdown).toEqual([
       WAITING,
-      { timeLeft: 16800, name: 'Suhoor' },
-      { timeLeft: 16799, name: 'Suhoor' },
-      { timeLeft: 16798, name: 'Suhoor' },
+      { timeLeft: 16800, name: 'suhoor' },
+      { timeLeft: 16799, name: 'suhoor' },
+      { timeLeft: 16798, name: 'suhoor' },
     ]);
 
     expect(requests()).toBe(1);

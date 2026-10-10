@@ -7,7 +7,7 @@ import { getDefaultStore } from 'jotai';
 import { View } from 'react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRA_PRAYER_TITLES, STANDARD_PRAYER_TITLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { countdownBarShownAtom, getMeasurementsList } from '@/stores/ui';
 
@@ -34,7 +34,7 @@ const layOutList = async () => {
   await fireEvent(list, 'layout', { nativeEvent: { layout: { x: 0, y: 0, width: 366, height: 342 } } });
 };
 
-const PRAYER_NAME = new RegExp(`^(${[...PRAYERS_ENGLISH, ...EXTRAS_ENGLISH].join('|')})$`);
+const PRAYER_NAME = new RegExp(`^(${[...STANDARD_PRAYER_TITLES, ...EXTRA_PRAYER_TITLES].join('|')})$`);
 
 /** The English prayer names on screen, top to bottom */
 const namesOnScreen = () => screen.getAllByText(PRAYER_NAME).map((name) => name.children.join(''));

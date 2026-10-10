@@ -210,7 +210,7 @@ describe('alert sheet state functions', () => {
   const mockAlertState = {
     type: ScheduleType.Standard,
     index: 0,
-    prayerEnglish: 'Fajr',
+    prayerId: 'fajr',
     isUnavailable: false,
   };
 

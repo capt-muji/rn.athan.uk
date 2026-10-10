@@ -25,7 +25,7 @@ describe("18 October 2026's two Midnight alarms", () => {
     // Only the days these tests assert on: the budget arms every stored day it can reach, so a
     // day stored beyond them would be armed too and is not what this suite is about
     storeDays(londonDays('2026-10-16', '2026-10-17', '2026-10-18', '2026-10-19'));
-    enable(ScheduleType.Extra, 'Midnight', 5);
+    enable(ScheduleType.Extra, 'midnight', 5);
   });
 
   afterEach(() => {

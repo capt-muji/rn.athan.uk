@@ -175,6 +175,8 @@ const tickingIntervalOf = (tree: unknown): { lower: Date; upper: Date } | undefi
 // FIXTURE: a two-day standard window with mid-window boundaries
 // =============================================================================
 
+import type { PrayerId } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { createPrayerDatetime } from '@/shared/time';
 import { type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot } from '@/shared/widgetTimeline';
@@ -183,18 +185,18 @@ import type { PrayerWidgetAndroidProps, PrayerWidgetSettings } from '@/shared/wi
 const DAY_ONE = '2026-10-17';
 const DAY_TWO = '2026-10-18';
 
-const TIMES: [string, string][] = [
-  ['Fajr', '05:30'],
-  ['Sunrise', '07:10'],
-  ['Dhuhr', '12:45'],
-  ['Asr', '15:20'],
-  ['Magrib', '18:05'],
-  ['Isha', '19:40'],
+const TIMES: [PrayerId, string][] = [
+  ['fajr', '05:30'],
+  ['sunrise', '07:10'],
+  ['dhuhr', '12:45'],
+  ['asr', '15:20'],
+  ['magrib', '18:05'],
+  ['isha', '19:40'],
 ];
 
-const makePrayer = (date: string, time: string, english: string): ReadablePrayer => ({
+const makePrayer = (date: string, time: string, id: PrayerId): ReadablePrayer => ({
   type: ScheduleType.Standard,
-  english,
+  id,
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate: date,
@@ -202,7 +204,7 @@ const makePrayer = (date: string, time: string, english: string): ReadablePrayer
 
 const fixtureSequence = (): PrayerSequence => ({
   type: ScheduleType.Standard,
-  prayers: TIMES.flatMap(([english, time]) => [makePrayer(DAY_ONE, time, english), makePrayer(DAY_TWO, time, english)]),
+  prayers: TIMES.flatMap(([id, time]) => [makePrayer(DAY_ONE, time, id), makePrayer(DAY_TWO, time, id)]),
 });
 
 const SETTINGS: PrayerWidgetSettings = { hijriDate: false };
@@ -237,7 +239,7 @@ describe('home widget renderer', () => {
       nextEpochMs: at(DAY_ONE, '15:20'),
       prevEpochMs: at(DAY_ONE, '12:45'),
       dateLabel: 'Saturday, 17 October',
-      prayers: TIMES.map(([name, time]) => ({ name, time })),
+      prayers: TIMES.map(([id, time]) => ({ name: prayerLabel(id), time })),
       activeIndex: 3,
     });
 
@@ -284,8 +286,8 @@ describe('home widget renderer', () => {
     it('renders the medium day list with the active pill in the standard palette', () => {
       const tree = renderHome(liveProps(), 'systemMedium');
       const all = textsOf(tree);
-      for (const [name, time] of TIMES) {
-        expect(all).toContain(name);
+      for (const [id, time] of TIMES) {
+        expect(all).toContain(prayerLabel(id));
         expect(all).toContain(time);
       }
       const pill = collect(tree).find((node) => node.marker === 'RoundedRectangle');
@@ -479,8 +481,8 @@ describe('home widget renderer', () => {
       // The medium day list carries every row of the on-screen day and the
       // active pill image behind the Asr row
       const mediumTexts = textsOf(mediumTree);
-      for (const [name, time] of TIMES) {
-        expect(mediumTexts).toContain(name);
+      for (const [id, time] of TIMES) {
+        expect(mediumTexts).toContain(prayerLabel(id));
         expect(mediumTexts).toContain(time);
       }
       const pill = medium.find(
@@ -758,7 +760,7 @@ describe('home widget renderer', () => {
       return collect(tree).flatMap((node) => {
         if (node.marker !== 'Text') return [];
         const text = node.props.children;
-        if (typeof text !== 'string' || !['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'].includes(text)) {
+        if (typeof text !== 'string' || !['fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'].includes(text)) {
           return [];
         }
         const size = (node.props.style as { fontSize?: number } | undefined)?.fontSize;

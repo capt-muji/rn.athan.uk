@@ -9,7 +9,7 @@
 import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { DEFAULT_REMINDER_SLOT_INTERVALS } from '@/shared/constants';
+import { DEFAULT_REMINDER_SLOT_INTERVALS, type PrayerId } from '@/shared/constants';
 import { transformApiData } from '@/shared/prayer';
 import { AlertType, REMINDER_SLOTS, type ReminderInterval, type ReminderSlot, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -115,12 +115,12 @@ export const resetAlarms = (): void => {
  */
 export const enable = (
   scheduleType: ScheduleType,
-  name: string,
+  id: PrayerId,
   reminderInterval?: ReminderInterval,
   slot: ReminderSlot = 0
 ): void => {
-  const index = getPrayerArrays(scheduleType).indexOf(name);
-  if (index === -1) throw new Error(`${name} is not on the ${scheduleType} list`);
+  const index = getPrayerArrays(scheduleType).indexOf(id);
+  if (index === -1) throw new Error(`${id} is not on the ${scheduleType} list`);
 
   const isStandard = scheduleType === ScheduleType.Standard;
   store.set((isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms)[index], AlertType.Silent);

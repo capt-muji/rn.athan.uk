@@ -35,7 +35,7 @@ const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): P
   createPrayerSequence(type, new Date(`${firstDate}T12:00:00Z`), dayCount).prayers;
 
 /** A row as the screen and the alarms see it: its list day, name, instant and clock reading */
-const shown = (row: Prayer) => [row.belongsToDate, row.english, row.datetime?.toISOString() ?? null, row.time];
+const shown = (row: Prayer) => [row.belongsToDate, row.id, row.datetime?.toISOString() ?? null, row.time];
 
 describe('places a Last Third before and at 00:00 on its own list', () => {
   /** Only Magrib on 20 June and Fajr on 21 June move, and the night between them is always nine hours */
@@ -55,18 +55,18 @@ describe('places a Last Third before and at 00:00 on its own list', () => {
     (magrib, fajr, midnightAt, midnightTime, lastThirdAt, lastThirdTime) => {
       useRecords(shortNight(magrib, fajr));
       const sequence = sequenceFor(ScheduleType.Extra, '2026-06-20', 2);
-      const nightRows = sequence.filter((row) => row.english === 'Midnight' || row.english === 'Last Third');
+      const nightRows = sequence.filter((row) => row.id === 'midnight' || row.id === 'last third');
 
       // 19 June is not stored, so the 20 June list has no night of its own: a time there can only be the 21st's
       expect(nightRows.map(shown)).toEqual([
-        ['2026-06-20', 'Midnight', null, null],
-        ['2026-06-20', 'Last Third', null, null],
-        ['2026-06-21', 'Midnight', midnightAt, midnightTime],
-        ['2026-06-21', 'Last Third', lastThirdAt, lastThirdTime],
+        ['2026-06-20', 'midnight', null, null],
+        ['2026-06-20', 'last third', null, null],
+        ['2026-06-21', 'midnight', midnightAt, midnightTime],
+        ['2026-06-21', 'last third', lastThirdAt, lastThirdTime],
       ]);
       // The alarms read one row at a time, from the day's own records rather than the sequence
-      expect(getPrayerForDate(ScheduleType.Extra, 'Midnight', '2026-06-21')).toEqual(nightRows[2]);
-      expect(getPrayerForDate(ScheduleType.Extra, 'Last Third', '2026-06-21')).toEqual(nightRows[3]);
+      expect(getPrayerForDate(ScheduleType.Extra, 'midnight', '2026-06-21')).toEqual(nightRows[2]);
+      expect(getPrayerForDate(ScheduleType.Extra, 'last third', '2026-06-21')).toEqual(nightRows[3]);
     }
   );
 });

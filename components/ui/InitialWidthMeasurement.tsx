@@ -1,6 +1,6 @@
 import { StyleSheet, Text } from 'react-native';
 
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, TEXT } from '@/shared/constants';
+import { EXTRA_PRAYER_TITLES, STANDARD_PRAYER_TITLES, TEXT } from '@/shared/constants';
 import { getLongestPrayerNameIndex } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { setEnglishWidth } from '@/stores/ui';
@@ -18,10 +18,10 @@ export default function InitialWidthMeasurement() {
   return (
     <>
       <Text style={styles.hidden} onLayout={(e) => setEnglishWidth(ScheduleType.Standard, e.nativeEvent.layout.width)}>
-        {PRAYERS_ENGLISH[getLongestPrayerNameIndex(ScheduleType.Standard)]}
+        {STANDARD_PRAYER_TITLES[getLongestPrayerNameIndex(ScheduleType.Standard)]}
       </Text>
       <Text style={styles.hidden} onLayout={(e) => setEnglishWidth(ScheduleType.Extra, e.nativeEvent.layout.width)}>
-        {EXTRAS_ENGLISH[getLongestPrayerNameIndex(ScheduleType.Extra)]}
+        {EXTRA_PRAYER_TITLES[getLongestPrayerNameIndex(ScheduleType.Extra)]}
       </Text>
     </>
   );

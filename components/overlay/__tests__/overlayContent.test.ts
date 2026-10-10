@@ -12,7 +12,7 @@
  */
 
 import { type Breakage, london, sequenceFrom, storeLondonDays } from '@/hooks/__tests__/londonDays';
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { resolveDisplayDate } from '@/shared/sequence';
 import { type Prayer, ScheduleType } from '@/shared/types';
@@ -36,17 +36,16 @@ const withListDayOrder = (prayers: Prayer[], date: string, order: ListOrder[1]):
   return [...prayers.slice(0, start), ...order(rows), ...prayers.slice(start + rows.length)];
 };
 
-/** The names of an Extras list's rows top to bottom, from the owner's order in the constants, not from the code under test */
-const drawnNames = (rows: Prayer[]): string[] =>
-  EXTRAS_ENGLISH.filter((name) => rows.some((row) => row.english === name));
+/** The ids of an Extras list's rows top to bottom, from the owner's order in the constants, not from the code under test */
+const drawnIds = (rows: Prayer[]): PrayerId[] => EXTRA_PRAYER_IDS.filter((id) => rows.some((row) => row.id === id));
 
-/** Text each Extras prayer's box must carry */
-const EXPLAINED: [string, string][] = [
-  ['Midnight', 'Halfway between Magrib and Fajr'],
-  ['Last Third', 'Start of the last third of the night'],
-  ['Suhoor', '20 mins before Fajr'],
-  ['Duha', '20 mins after Sunrise'],
-  ['Istijaba', '1 hour before Magrib (Fridays only)'],
+/** Text each Extras prayer's box must carry: id, the label the box shows, the explanation */
+const EXPLAINED: [PrayerId, string, string][] = [
+  ['midnight', 'Midnight', 'Halfway between Magrib and Fajr'],
+  ['last third', 'Last Third', 'Start of the last third of the night'],
+  ['suhoor', 'Suhoor', '20 mins before Fajr'],
+  ['duha', 'Duha', '20 mins after Sunrise'],
+  ['istijaba', 'Istijaba', '1 hour before Magrib (Fridays only)'],
 ];
 
 // [scenario, first sequence day, breakage, now (London date, time), list day on screen]
@@ -84,11 +83,11 @@ describe('getOverlayRow', () => {
       for (const [orderName, order] of LIST_ORDERS) {
         const prayers = withListDayOrder(built, listDay, order);
         const rows = prayers.filter((prayer) => prayer.belongsToDate === listDay);
-        const names = drawnNames(rows);
+        const ids = drawnIds(rows);
 
         const sitsOn = rows.map((_, index) => getOverlayRow(prayers, displayDate, ScheduleType.Extra, index));
 
-        expect([orderName, sitsOn]).toEqual([orderName, rows.map((row) => names.indexOf(row.english))]);
+        expect([orderName, sitsOn]).toEqual([orderName, rows.map((row) => ids.indexOf(row.id))]);
       }
     }
   );
@@ -126,22 +125,22 @@ describe('getOverlayRow', () => {
 // =============================================================================
 
 describe('getOverlayExplanation', () => {
-  it.each(EXPLAINED)('%s: the box names it and explains it', (english, explanation) => {
-    expect(getOverlayExplanation(ScheduleType.Extra, english)).toEqual({
-      prayerName: english,
+  it.each(EXPLAINED)('%s: the box names it and explains it', (id, label, explanation) => {
+    expect(getOverlayExplanation(ScheduleType.Extra, id)).toEqual({
+      prayerName: label,
       explanation,
     });
   });
 
-  it.each(PRAYERS_ENGLISH)('%s on Standard has no box', (english) => {
-    expect(getOverlayExplanation(ScheduleType.Standard, english)).toEqual({
+  it.each(STANDARD_PRAYER_IDS)('%s on Standard has no box', (id) => {
+    expect(getOverlayExplanation(ScheduleType.Standard, id)).toEqual({
       prayerName: null,
       explanation: null,
     });
   });
 
-  it('gives a row still loading, whose name is empty, no explanation text to borrow', () => {
-    const { explanation } = getOverlayExplanation(ScheduleType.Extra, '');
+  it('gives a row of another list, which is what a still-loading Extras row reports, no explanation text to borrow', () => {
+    const { explanation } = getOverlayExplanation(ScheduleType.Extra, 'fajr');
 
     expect(Boolean(explanation)).toBe(false);
   });
@@ -156,19 +155,23 @@ describe('a tap on each Extras row', () => {
     '%s, in every order the list could be gathered in: the box sits on the tapped row and explains the prayer drawn there',
     (_scenario, firstDay, breakage, now, listDay) => {
       const { prayers: built } = onScreen(firstDay, breakage, now);
-      const explanationOf = new Map(EXPLAINED);
+      const labelOf = new Map(EXPLAINED.map(([id, label]) => [id, label] as const));
+      const explanationOf = new Map(EXPLAINED.map(([id, , explanation]) => [id, explanation] as const));
 
       for (const [, order] of LIST_ORDERS) {
         const prayers = withListDayOrder(built, listDay, order);
         const rows = prayers.filter((prayer) => prayer.belongsToDate === listDay);
-        const names = drawnNames(rows);
+        const ids = drawnIds(rows);
 
         // List hands each drawn row its index into the day's rows; a tap opens the overlay with that index
         canonicalDisplayOrder(rows, ScheduleType.Extra).forEach((index, drawnRow) => {
-          const shown = getOverlayExplanation(ScheduleType.Extra, rows[index].english);
+          const shown = getOverlayExplanation(ScheduleType.Extra, rows[index].id);
 
           expect(getOverlayRow(prayers, listDay, ScheduleType.Extra, index)).toBe(drawnRow);
-          expect([shown.prayerName, shown.explanation]).toEqual([names[drawnRow], explanationOf.get(names[drawnRow])]);
+          expect([shown.prayerName, shown.explanation]).toEqual([
+            labelOf.get(ids[drawnRow]),
+            explanationOf.get(ids[drawnRow]),
+          ]);
         });
       }
     }

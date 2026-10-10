@@ -15,7 +15,7 @@
  *
  * A second virtual week runs the SAME span through the Extra schedule
  * (two Fridays inside), additionally asserting the medium list's canonical
- * EXTRAS_ENGLISH ordering, Istijaba's Friday-only presence (5 rows on
+ * EXTRA_PRAYER_IDS ordering, Istijaba's Friday-only presence (5 rows on
  * Fridays, 4 otherwise), and the extras `schedule` stamp on every entry.
  *
  * Two more groups run the app's own list builder (createPrayerSequence) over
@@ -37,7 +37,8 @@ import { addDays } from 'date-fns';
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import { MOCK_DATA_FULL } from '@/mocks/full';
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { createPrayerSequence, transformApiData } from '@/shared/prayer';
 import {
   addDaysToDateString,
@@ -72,21 +73,21 @@ const SETTINGS: PrayerWidgetSettings = {
 };
 
 /** Realistic October London times */
-const OCTOBER_TIMES: [string, string][] = [
-  ['Fajr', '05:30'],
-  ['Sunrise', '07:10'],
-  ['Dhuhr', '12:45'],
-  ['Asr', '15:20'],
-  ['Magrib', '18:05'],
-  ['Isha', '19:40'],
+const OCTOBER_TIMES: [PrayerId, string][] = [
+  ['fajr', '05:30'],
+  ['sunrise', '07:10'],
+  ['dhuhr', '12:45'],
+  ['asr', '15:20'],
+  ['magrib', '18:05'],
+  ['isha', '19:40'],
 ];
 
 /** Days whose Isha crosses midnight (01:05 next day, belongs to this day) */
 const EARLY_ISHA_DAYS = new Set(['2026-10-20', '2026-10-21']);
 
-const makeFixturePrayer = (date: string, time: string, english: string, belongsToDate: string): ReadablePrayer => ({
+const makeFixturePrayer = (date: string, time: string, id: PrayerId, belongsToDate: string): ReadablePrayer => ({
   type: ScheduleType.Standard,
-  english,
+  id,
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate,
@@ -101,16 +102,16 @@ const makeSequence = () => {
     const dateString = formatDateShort(day);
     const ishaEarly = EARLY_ISHA_DAYS.has(dateString);
 
-    for (const [english, time] of OCTOBER_TIMES) {
-      if (english === 'Isha' && ishaEarly) {
+    for (const [id, time] of OCTOBER_TIMES) {
+      if (id === 'isha' && ishaEarly) {
         // Early-morning Isha: datetime lands the next calendar day but the
         // prayer belongs to this Islamic day (ADR-004)
         const nextDay = addDays(day, 1);
         const nextDayString = formatDateShort(nextDay);
-        prayers.push(makeFixturePrayer(nextDayString, '01:05', english, dateString));
+        prayers.push(makeFixturePrayer(nextDayString, '01:05', id, dateString));
         continue;
       }
-      prayers.push(makeFixturePrayer(dateString, time, english, dateString));
+      prayers.push(makeFixturePrayer(dateString, time, id, dateString));
     }
   }
 
@@ -241,7 +242,7 @@ describe('virtual week model test', () => {
       // the next prayer's day (same rows, same order), and the active row is
       // the countdown target itself
       const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === nextPrayer.belongsToDate);
-      const expectedRows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time }));
+      const expectedRows = dayPrayers.map((prayer) => ({ name: prayerLabel(prayer.id), time: prayer.time }));
       const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
 
       if (!Array.isArray(props.prayers) || props.activeIndex !== expectedActiveIndex) {
@@ -364,14 +365,9 @@ const EXTRAS_TIMES = {
   istijaba: '16:00',
 } as const;
 
-const makeExtrasFixturePrayer = (
-  date: string,
-  time: string,
-  english: string,
-  belongsToDate: string
-): ReadablePrayer => ({
+const makeExtrasFixturePrayer = (date: string, time: string, id: PrayerId, belongsToDate: string): ReadablePrayer => ({
   type: ScheduleType.Extra,
-  english,
+  id,
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate,
@@ -387,13 +383,13 @@ const makeExtrasSequence = () => {
     const previousDay = formatDateShort(addDays(day, -1));
     const isFriday = createPrayerDatetime(dateString, '12:00').getUTCDay() === 5;
 
-    prayers.push(makeExtrasFixturePrayer(previousDay, EXTRAS_TIMES.midnight, 'Midnight', dateString));
-    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.lastThird, 'Last Third', dateString));
-    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.suhoor, 'Suhoor', dateString));
-    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.duha, 'Duha', dateString));
+    prayers.push(makeExtrasFixturePrayer(previousDay, EXTRAS_TIMES.midnight, 'midnight', dateString));
+    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.lastThird, 'last third', dateString));
+    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.suhoor, 'suhoor', dateString));
+    prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.duha, 'duha', dateString));
 
     if (isFriday) {
-      prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.istijaba, 'Istijaba', dateString));
+      prayers.push(makeExtrasFixturePrayer(dateString, EXTRAS_TIMES.istijaba, 'istijaba', dateString));
     }
   }
 
@@ -401,10 +397,11 @@ const makeExtrasSequence = () => {
   return { type: ScheduleType.Extra, prayers };
 };
 
-/** Canonical display rank of an extras prayer (EXTRAS_ENGLISH order) */
-const extrasRank = (english: string): number => {
-  const rank = EXTRAS_ENGLISH.indexOf(english);
-  return rank === -1 ? EXTRAS_ENGLISH.length : rank;
+/** Canonical display rank of an extras prayer (EXTRA_PRAYER_IDS order) */
+const extrasRank = (id: PrayerId): number => {
+  const extraIds: readonly PrayerId[] = EXTRA_PRAYER_IDS;
+  const rank = extraIds.indexOf(id);
+  return rank === -1 ? extraIds.length : rank;
 };
 
 describe('extras virtual week model test', () => {
@@ -498,12 +495,12 @@ describe('extras virtual week model test', () => {
 
       // The medium widget's day list is exactly the app's Extras page for
       // the next prayer's day: same rows in CANONICAL order (chronological
-      // filtering, then EXTRAS_ENGLISH ranking), Istijaba present only on
+      // filtering, then EXTRA_PRAYER_IDS ranking), Istijaba present only on
       // Fridays, and the active row is the countdown target itself
       const dayPrayers = prayers
         .filter((prayer) => prayer.belongsToDate === nextPrayer.belongsToDate)
-        .sort((a, b) => extrasRank(a.english) - extrasRank(b.english));
-      const expectedRows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time }));
+        .sort((a, b) => extrasRank(a.id) - extrasRank(b.id));
+      const expectedRows = dayPrayers.map((prayer) => ({ name: prayerLabel(prayer.id), time: prayer.time }));
       const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
 
       if (!Array.isArray(props.prayers) || props.activeIndex !== expectedActiveIndex) {
@@ -708,28 +705,28 @@ const REAL_FAULTS: Record<string, RequiredTimeName[]> = {
   '2024-11-03': ['sunrise', 'isha'],
 };
 
-const EXTRAS_WEEKDAY = ['Midnight', 'Last Third', 'Suhoor', 'Duha'];
+const EXTRAS_WEEKDAY = ['midnight', 'last third', 'suhoor', 'duha'];
 
 /** Every unreadable row the faults above must produce, by list day; any other day is fully readable */
 const EXPECTED_UNREADABLE: Record<ScheduleType, Record<string, string[]>> = {
   [ScheduleType.Standard]: {
-    '2024-10-20': ['Asr'],
-    [HELD_DAY]: PRAYERS_ENGLISH,
-    '2024-10-23': ['Isha'],
-    '2024-10-25': ['Magrib'],
-    [NOT_STORED]: PRAYERS_ENGLISH,
-    '2024-10-31': ['Fajr'],
-    '2024-11-03': ['Sunrise', 'Isha'],
+    '2024-10-20': ['asr'],
+    [HELD_DAY]: [...STANDARD_PRAYER_IDS],
+    '2024-10-23': ['isha'],
+    '2024-10-25': ['magrib'],
+    [NOT_STORED]: [...STANDARD_PRAYER_IDS],
+    '2024-10-31': ['fajr'],
+    '2024-11-03': ['sunrise', 'isha'],
   },
   [ScheduleType.Extra]: {
     [HELD_DAY]: EXTRAS_WEEKDAY,
-    '2024-10-22': ['Midnight', 'Last Third'],
-    '2024-10-25': ['Istijaba'],
-    '2024-10-26': ['Midnight', 'Last Third'],
+    '2024-10-22': ['midnight', 'last third'],
+    '2024-10-25': ['istijaba'],
+    '2024-10-26': ['midnight', 'last third'],
     [NOT_STORED]: EXTRAS_WEEKDAY,
-    '2024-10-29': ['Midnight', 'Last Third'],
-    '2024-10-31': ['Midnight', 'Last Third', 'Suhoor'],
-    '2024-11-03': ['Duha'],
+    '2024-10-29': ['midnight', 'last third'],
+    '2024-10-31': ['midnight', 'last third', 'suhoor'],
+    '2024-11-03': ['duha'],
   },
 };
 
@@ -781,8 +778,10 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
   const readable = prayers.filter(isReadableRow);
   const listDays = [...new Set(prayers.map((prayer) => prayer.belongsToDate))].sort();
   const readableOn = (date: string): ReadablePrayer[] => readable.filter((prayer) => prayer.belongsToDate === date);
-  const listPosition = (prayer: Prayer): number =>
-    (type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH).indexOf(prayer.english);
+  const listPosition = (prayer: Prayer): number => {
+    const ids: readonly PrayerId[] = type === ScheduleType.Standard ? STANDARD_PRAYER_IDS : EXTRA_PRAYER_IDS;
+    return ids.indexOf(prayer.id);
+  };
 
   const expectedAt = (instant: number) => {
     const upcoming = readable.filter((prayer) => prayer.datetime.getTime() > instant);
@@ -828,7 +827,7 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
       displayDate,
       boundaryMs: held ? Math.min(next.datetime.getTime(), endOfListDay(displayDate)) : next.datetime.getTime(),
       previousMs,
-      rows: dayRows.map((prayer) => ({ name: prayer.english, time: prayer.time ?? '--:--' })),
+      rows: dayRows.map((prayer) => ({ name: prayerLabel(prayer.id), time: prayer.time ?? '--:--' })),
       activeIndex: dayRows.indexOf(next),
     };
   };
@@ -846,11 +845,11 @@ const mismatchAt = (
   const at = new Date(instant).toISOString();
 
   if (
-    props.nextName !== expected.next.english ||
+    props.nextName !== prayerLabel(expected.next.id) ||
     props.nextTime !== expected.next.time ||
     props.nextEpochMs !== expected.next.datetime.getTime()
   ) {
-    return `Next mismatch at ${at}: entry says ${props.nextName} ${props.nextTime}, expected ${expected.next.english} ${expected.next.time}`;
+    return `Next mismatch at ${at}: entry says ${props.nextName} ${props.nextTime}, expected ${prayerLabel(expected.next.id)} ${expected.next.time}`;
   }
   if (props.prevEpochMs !== (expected.previousMs ?? entry.date.getTime())) {
     return `Previous mismatch at ${at}: entry says ${props.prevEpochMs}, expected ${expected.previousMs}`;
@@ -914,7 +913,7 @@ describe.each([
     for (const date of listDays) {
       const unreadableNames = prayers
         .filter((prayer) => prayer.belongsToDate === date && prayer.datetime === null)
-        .map((prayer) => prayer.english);
+        .map((prayer) => prayer.id);
       expect([date, unreadableNames]).toEqual([date, EXPECTED_UNREADABLE[type][date] ?? []]);
     }
   });
@@ -973,7 +972,7 @@ describe.each([
     const dayStartMs = endOfListDay(dayBefore);
     const holdEndMs = endOfListDay(HELD_DAY);
     const firstOfDayAfter = earliest(readableOn(dayAfter));
-    const dashes = (type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_WEEKDAY).map(() => '--:--');
+    const dashes = (type === ScheduleType.Standard ? STANDARD_PRAYER_IDS : EXTRAS_WEEKDAY).map(() => '--:--');
 
     // Standard keeps the day before's list after its Isha, and Extras after its Duha, which passed before the
     // push, with no active row until 00:00 (R8)
@@ -1019,12 +1018,12 @@ describe.each([
 
     expect(lastReadable).toMatchObject({
       belongsToDate: '2024-11-03',
-      english: type === ScheduleType.Standard ? 'Magrib' : 'Suhoor',
+      id: type === ScheduleType.Standard ? 'magrib' : 'suhoor',
     });
     expect(last.date.getTime()).toBe(lastReadable.datetime.getTime());
     expect(last.props).toMatchObject({
       stale: true,
-      nextName: lastReadable.english,
+      nextName: prayerLabel(lastReadable.id),
       nextTime: lastReadable.time,
       nextEpochMs: lastReadable.datetime.getTime(),
       dateLabel: formatDateLong('2024-11-03'),
@@ -1074,15 +1073,13 @@ describe.each([ScheduleType.Standard, ScheduleType.Extra])(
       for (const { faultDay, sequence, rules } of cases) {
         const unreadableNames = sequence.prayers
           .filter((prayer) => prayer.belongsToDate === faultDay && prayer.datetime === null)
-          .map((prayer) => prayer.english);
+          .map((prayer) => prayer.id);
         expect([faultDay, unreadableNames]).toEqual([
           faultDay,
-          type === ScheduleType.Standard ? ['Fajr', 'Sunrise'] : EXTRAS_WEEKDAY,
+          type === ScheduleType.Standard ? ['fajr', 'sunrise'] : EXTRAS_WEEKDAY,
         ]);
 
-        const midnight = rules
-          .readableOn(addDaysToDateString(faultDay, 1))
-          .find((prayer) => prayer.english === 'Midnight');
+        const midnight = rules.readableOn(addDaysToDateString(faultDay, 1)).find((prayer) => prayer.id === 'midnight');
         if (midnight && Math.abs(midnight.datetime.getTime() - endOfListDay(faultDay)) < MIN_ENTRY_SPACING_MS) {
           crowded.add(faultDay);
         }

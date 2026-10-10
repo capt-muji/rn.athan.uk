@@ -95,7 +95,7 @@ export const computePrayerStatuses = (rawPrayers: Prayer[], now: Date): PrayerSt
  * const { prayers, displayDate, isReady } = usePrayerSequence(ScheduleType.Standard);
  * if (isReady) {
  *   prayers.forEach((prayer) => {
- *     logger.debug({ prayer: prayer.english, isPassed: prayer.isPassed, isNext: prayer.isNext }, 'Prayer sequence state');
+ *     logger.debug({ prayer: prayer.id, isPassed: prayer.isPassed, isNext: prayer.isNext }, 'Prayer sequence state');
  *   });
  * }
  */

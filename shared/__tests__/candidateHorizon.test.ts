@@ -9,7 +9,7 @@
  */
 
 import { london } from '@/hooks/__tests__/londonDays';
-import { NOTIFICATION_REQUEST_BUDGET, SCHEDULE_CANDIDATE_DAYS } from '@/shared/constants';
+import { NOTIFICATION_REQUEST_BUDGET, type PrayerId, SCHEDULE_CANDIDATE_DAYS } from '@/shared/constants';
 import { buildSchedulePlan, collectCandidateRows, schedulePlanKey } from '@/shared/notifications';
 import { transformApiData } from '@/shared/prayer';
 import type { RequiredTimeName } from '@/shared/types';
@@ -30,10 +30,10 @@ const saveWrappedDays = (count: number) => {
   );
 };
 
-const daysPlannedFor = (type: ScheduleType, name: string): number => {
-  const onlyThisPrayer = (t: ScheduleType, n: string) => (t === type && n === name ? 1 : 0);
+const daysPlannedFor = (type: ScheduleType, id: PrayerId): number => {
+  const onlyThisPrayer = (t: ScheduleType, n: PrayerId) => (t === type && n === id ? 1 : 0);
   const plan = buildSchedulePlan(collectCandidateRows(onlyThisPrayer), NOTIFICATION_REQUEST_BUDGET);
-  return (plan.get(schedulePlanKey(type, name)) ?? []).length;
+  return (plan.get(schedulePlanKey(type, id)) ?? []).length;
 };
 
 describe('the candidate horizon', () => {
@@ -47,20 +47,20 @@ describe('the candidate horizon', () => {
     jest.useFakeTimers({ now: london('2026-09-15', '22:30') });
     saveWrappedDays(130);
 
-    expect(daysPlannedFor(ScheduleType.Extra, 'Midnight')).toBe(NOTIFICATION_REQUEST_BUDGET);
+    expect(daysPlannedFor(ScheduleType.Extra, 'midnight')).toBe(NOTIFICATION_REQUEST_BUDGET);
   });
 
   it('spends the whole budget on Last Third at 23:30, its own two-past-row hour', () => {
     jest.useFakeTimers({ now: london('2026-09-15', '23:30') });
     saveWrappedDays(130);
 
-    expect(daysPlannedFor(ScheduleType.Extra, 'Last Third')).toBe(NOTIFICATION_REQUEST_BUDGET);
+    expect(daysPlannedFor(ScheduleType.Extra, 'last third')).toBe(NOTIFICATION_REQUEST_BUDGET);
   });
 
   it('still spends the whole budget on a row that fires on its own list day', () => {
     jest.useFakeTimers({ now: london('2026-09-15', '22:30') });
     saveWrappedDays(130);
 
-    expect(daysPlannedFor(ScheduleType.Standard, 'Fajr')).toBe(NOTIFICATION_REQUEST_BUDGET);
+    expect(daysPlannedFor(ScheduleType.Standard, 'fajr')).toBe(NOTIFICATION_REQUEST_BUDGET);
   });
 });

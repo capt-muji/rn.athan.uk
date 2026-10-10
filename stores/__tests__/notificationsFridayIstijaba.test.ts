@@ -58,7 +58,7 @@ describe('Friday Istijaba when Magrib falls after 00:00', () => {
           ['01:32', '02:58', '13:31', '17:31', magrib, isha]
         )
       );
-      enable(ScheduleType.Extra, 'Istijaba', 5);
+      enable(ScheduleType.Extra, 'istijaba', 5);
 
       await rescheduleAllNotifications();
 
