@@ -3,12 +3,10 @@ import Svg, { Path } from 'react-native-svg';
 
 import InfoIcon from '@/assets/icons/svg/info.svg';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { toArabicNumbers } from '@/shared/text';
 
 interface PrayerExplanationProps {
   prayerName: string;
   explanation: string;
-  explanationArabic: string;
   arrowPosition?: 'top' | 'bottom';
   style?: ViewProps['style'];
 }
@@ -16,20 +14,17 @@ interface PrayerExplanationProps {
 /**
  * Tooltip component explaining extra prayer times
  *
- * Displays a floating info box with prayer name, English explanation,
- * and Arabic explanation. Includes a triangular arrow pointing to
- * the associated prayer row.
+ * Displays a floating info box with the prayer name and its explanation.
+ * Includes a triangular arrow pointing to the associated prayer row.
  *
  * @param prayerName - Name of the extra prayer (e.g., "Midnight")
- * @param explanation - English explanation text
- * @param explanationArabic - Arabic explanation text (numbers auto-converted to Arabic numerals)
+ * @param explanation - the explanation text
  * @param arrowPosition - Position of the arrow: 'top' (box below row) or 'bottom' (box above row)
  * @param style - Additional style for positioning
  */
 export default function PrayerExplanation({
   prayerName,
   explanation,
-  explanationArabic,
   arrowPosition = 'top',
   style,
 }: PrayerExplanationProps) {
@@ -75,9 +70,6 @@ export default function PrayerExplanation({
 
         {/* English explanation */}
         <Text style={styles.infoExplanation}>{explanation}</Text>
-
-        {/* Arabic explanation */}
-        <Text style={styles.infoExplanationArabic}>{toArabicNumbers(explanationArabic)}</Text>
       </View>
 
       {/* Triangle arrow pointing down */}
@@ -155,12 +147,5 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     lineHeight: TEXT.lineHeight.default,
     marginBottom: SPACING.mid,
-  },
-  infoExplanationArabic: {
-    color: COLORS.icon.primary,
-    fontSize: TEXT.sizeArabic,
-    fontFamily: TEXT.family.regular,
-    textAlign: 'right',
-    lineHeight: TEXT.lineHeight.arabic,
   },
 });

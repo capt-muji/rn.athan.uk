@@ -68,9 +68,9 @@ export default function OverlayInfoBox({ type }: Props) {
     ? { top: rowTop + TIP_OVERLAP, transform: [{ translateY: '-100%' }], left: 0, width: '100%' }
     : { top: rowTop + STYLES.prayer.height - TIP_OVERLAP, left: 0, width: '100%' };
 
-  const { prayerName, explanation, explanationArabic } = getOverlayExplanation(type, selectedPrayer.english);
+  const { prayerName, explanation } = getOverlayExplanation(type, selectedPrayer.english);
 
-  if (!prayerName || !explanation || !explanationArabic) return null;
+  if (!prayerName || !explanation) return null;
 
   return (
     <Reanimated.View
@@ -80,7 +80,6 @@ export default function OverlayInfoBox({ type }: Props) {
       <PrayerExplanation
         prayerName={prayerName}
         explanation={explanation}
-        explanationArabic={explanationArabic}
         arrowPosition={showInfoBoxAbove ? 'bottom' : 'top'}
         style={computedStyleInfoBox}
       />

@@ -18,7 +18,6 @@ import {
   popupWhatsNewEnabledAtom,
   qiblaSheetModalAtom,
   settingsSheetModalAtom,
-  showArabicNamesAtom,
   showSecondsAtom,
   showTimePassedAtom,
 } from '@/stores/ui';
@@ -60,7 +59,6 @@ const DISPLAY_TOGGLES = [
   ['Show hijri date', hijriDateEnabledAtom],
   ['Show seconds', showSecondsAtom],
   ['Show time passed', showTimePassedAtom],
-  ['Show arabic names', showArabicNamesAtom],
   ['Show countdown bar', countdownBarShownAtom],
 ] as const;
 
@@ -251,6 +249,13 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     await render(<SettingsSheet />);
 
     expect(screen.queryByText('Show decorations')).not.toBeOnTheScreen();
+  });
+
+  it('shows no arabic-names toggle', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<SettingsSheet />);
+
+    expect(screen.queryByText('Show arabic names')).not.toBeOnTheScreen();
   });
 
   // row label, the preference it shows and writes
