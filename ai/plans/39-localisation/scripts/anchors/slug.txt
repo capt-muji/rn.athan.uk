@@ -1,0 +1,24 @@
+/**
+ * Converts an English prayer name to a filename-safe slug
+ * Android res/raw resource names allow [a-z0-9_] only
+ *
+ * @example
+ * prayerNameSlug('Last Third') // 'last_third'
+ */
+export const prayerNameSlug = (englishName: string): string => englishName.toLowerCase().replace(/\s+/g, '_');
+
+/**
+ * Gets notification sound for a pre-prayer reminder based on alert type
+ * Every prayer × interval combination has its own audio file
+ * (reminder_fajr_5.mp3 … reminder_istijaba_30.mp3)
+ */
+export const getReminderNotificationSound = (
+  alertType: AlertType,
+  englishName: string,
+  intervalMinutes: ReminderInterval
+): string | false => {
+  if (alertType !== AlertType.Sound) return false;
+
+  const slug = prayerNameSlug(englishName);
+  return `reminder_${slug}_${intervalMinutes}.mp3`;
+};

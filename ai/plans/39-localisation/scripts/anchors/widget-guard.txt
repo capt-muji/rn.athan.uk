@@ -1,0 +1,11 @@
+const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, environment: WidgetEnvironment) => {
+  'widget';
+
+  // The two widget runtimes expose different component globals: iOS injects
+  // @expo/ui/swift-ui (VStack...), Android injects @expo/ui/jetpack-compose
+  // (Column...). The platform pick therefore rides an identifier that exists
+  // on exactly one side, and the two compositions below stay native to their
+  // runtime instead of sharing an abstraction that can drift both ways.
+  const isAndroidRuntime = typeof Column !== 'undefined';
+  const androidProps = props !== null && 'days' in props ? (props as PrayerWidgetAndroidProps) : null;
+

@@ -1,5 +1,22 @@
 # R18. The 2.0.0 upgrade path, adversarially designed (research agent report, 2026-10-09)
 
+> **Correction banner, 2026-10-10 (external verification UPG-2 BLOCKER, UPG-1, UPG-3, UPG-6;
+> owner rulings D34/D35 in `../RECONCILIATION.md`):**
+> 1. Step 5's stamp guard is WRONG as written: `preference_language` absence cannot guard the
+>    stamp, because fresh installs hold that absence too and would be pinned to English,
+>    breaking Q5/D33 device-locale following. The stamp runs only when the `storedVersion`
+>    captured at `stores/version.ts:242` (before `setStoredVersion` at `:269`) is non-null and
+>    below 2.0.0. Crash-table row 4 is rewritten by this.
+> 2. Two upgrade populations exist: marker-carrying installs (1.24.33+) keep everything;
+>    pre-marker store installs (the App Store serves 1.5.1) take the existing
+>    missing-marker wipe. No 2.0.0 code changes that (D35 rejects any keep-list addition), and
+>    the upgrade suites carry a pre-marker fixture.
+> 3. Stage one stamps through a raw `Database.setItem` inside `handleAppUpgrade` (no language
+>    atom exists in stage one, so the atom-snapshot argument does not apply). Row 39 moves
+>    resolution to module evaluation beside the width seed when the atom lands.
+> 4. Text slips: `Database.remove` is `removeItem`; width values are strings on disk; one line
+>    citation and one stale atom default were off.
+
 Dispatched by the owner's instruction after his question: "When the user upgrades to 2.0.0, what
 is the right approach? Should we wipe everything except their preferences and then reschedule
 everything, so the database is as clean as possible?" All machinery verified against the repo.

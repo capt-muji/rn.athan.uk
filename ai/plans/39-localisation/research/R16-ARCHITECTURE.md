@@ -1,5 +1,15 @@
 # R16. i18n architecture, adversarially reviewed (research agent report, 2026-10-09)
 
+> **Correction banner, 2026-10-10 (external verification ARCH-14, C10, C11, ARCH-18; owner
+> ruling D30):** forced change 1's bridge target is NOT i18next JSON; it is flat key-value JSON
+> with `{name}` placeholders, which is the catalog itself (i18next's `{{x}}`, reserved suffixes
+> and nesting constrain keys for nothing this app uses). "No industry-standard library" is
+> overstated: there is no single dominant one. The polyfill cost is conditional (the plural
+> surface measured zero), so the honest library cost at six locales is the runtime alone; the
+> rejection stands on that. R5's claim that Hermes ships `Intl.PluralRules` on Android is wrong;
+> R16's own finding (it does not) governs. Forced change 5 (the OTA ruling) is closed
+> permanently by D30: no OTA, store releases only.
+
 Dispatched by the owner's instruction after his challenge: "is this the best solution in general,
 not the best solution for my broken code?" External claims carry URLs.
 

@@ -1,0 +1,5 @@
+                <VStack spacing={0} alignment='leading' modifiers={[frame({ maxWidth: Infinity })]}>
+                  {rows.map((row, index) => (
+                    <Row key={row.name} name={row.name} time={row.time} index={index} />
+                  ))}
+                </VStack>
