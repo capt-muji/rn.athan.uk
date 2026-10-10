@@ -1,0 +1,6 @@
+  theme?: WidgetTheme;
+  /** English name of the upcoming prayer, e.g. "Asr" */
+  nextName: string;
+  /** Upcoming prayer time in HH:mm, e.g. "15:32" */
+  nextTime: string;
+  /** Upcoming prayer datetime as epoch ms */

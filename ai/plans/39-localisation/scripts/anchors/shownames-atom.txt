@@ -1,0 +1,2 @@
+/** Whether to show Arabic prayer names alongside English */
+export const showArabicNamesAtom = atomWithStorageBoolean('preference_show_arabic_names', true);

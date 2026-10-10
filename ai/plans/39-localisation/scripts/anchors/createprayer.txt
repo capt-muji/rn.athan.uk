@@ -1,0 +1,13 @@
+export const createPrayer = (params: CreatePrayerParams): ReadablePrayer => {
+  const { type, english, arabic, date, time } = params;
+  const datetime = createPrayerDatetime(date, time);
+
+  return {
+    type,
+    english,
+    arabic,
+    datetime,
+    time,
+    belongsToDate: calculateBelongsToDate(type, english, date, datetime),
+  };
+};

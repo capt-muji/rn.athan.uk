@@ -1,0 +1,9 @@
+  return namesEnglish.map((name, index): Prayer => {
+    const unreadable: UnreadablePrayer = {
+      type,
+      english: name,
+      arabic: namesArabic[index],
+      datetime: null,
+      time: null,
+      belongsToDate: date,
+    };

@@ -1,0 +1,11 @@
+  // "Mon · Lon" from a Gregorian label, "Raj 1 · Lon" from a Hijri one —
+  // the same token shortening the iOS footer performs.
+  const AFooter = (label: string): string => {
+    const datePrefix = typeof label === 'string' && label.length > 0 ? (label.split(',')[0] as string) : '';
+    const dateTokens = datePrefix.split(' ');
+    if (dateTokens.length === 1) return dateTokens[0];
+    const monthPrefix = dateTokens[0].slice(0, 3);
+    const dayNumber = dateTokens[dateTokens.length - 1];
+    return `${monthPrefix} ${dayNumber}`;
+  };
+

@@ -6,6 +6,9 @@ and the ruling stands until the owner moves it.
 
 ## D1. Scope: build for unlimited, launch with at least the top 20
 
+> **Amended by D32 (2026-10-09):** the launch count is a six-language private confidence
+> milestone on a roadmap to fifty, not a top-20 launch.
+
 "We're gonna go global and we need to at least include the top 20 most spoken languages in the
 world."
 
@@ -16,6 +19,12 @@ Adding a language is a data decision, never a code change. The launch set is cho
 architecture never caps the count.
 
 ## D2. Nothing is hardcoded
+
+> **Clarified 2026-10-10 (ARCH-16):** the adopted architecture is typed TypeScript catalogs
+> inside the source tree, compiler-checked. "Loaded as data outside the source tree" described
+> the translation pipeline's eventual shape, not the shipped format; the flat-JSON bridge
+> (step 07) is the transfer format. Adding a language remains a data change, never a code
+> change.
 
 "I don't want to hard code every language and then have a translation for every single language."
 
@@ -509,6 +518,24 @@ the difficulty is sourcing and verification, never code.
 approved as named. Malay Sunrise ships "Syuruk" (JAKIM's own label), accepted with the
 condition the owner set: every term is one line in one flat per-locale catalog, so accepting or
 declining any term later is a one-line edit.
+
+## D34. The language switch is forward-only convergence (2026-10-10)
+
+Taken in the reconciliation session, adopting the consensus of all four external adjudication
+branches. The app stores the selected language and a last-armed stamp. A switch writes the
+selection and re-renders the UI immediately; notification re-arms, channel names and widget
+timelines reconcile whenever the two values differ, at launch and on foreground. This displaces
+D18's rollback layer and retires D28's failure face: a switch cannot fail user-visibly, it
+converges. The guarantee, the strongest any design can deliver for 64 separate native calls:
+never fewer alarms (identifiers never change), the UI never half-applied, surfaces converged by
+the next process start. `RECONCILIATION.md` carries the evidence.
+
+## D35. No keep-list additions; a clean database outranks legacy comfort (2026-10-10)
+
+The proposal to keep `scheduled_*` bookkeeping records through the pre-marker upgrade wipe (A13)
+is rejected in the owner's words: "we want a clean db as much as possible... saving junk now means
+continuously saving junk, which will keep growing with future releases." The wipe stays exactly
+as it is. Nothing this feature ships adds a keep prefix.
 
 ## D14. Ordering: this row runs after the qibla compass
 

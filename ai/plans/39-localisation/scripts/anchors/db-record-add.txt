@@ -1,0 +1,11 @@
+export const addOneScheduledNotificationForPrayer = (
+  scheduleType: ScheduleType,
+  prayerIndex: number,
+  notification: NotificationUtils.ScheduledNotification
+) => {
+  const key = `scheduled_notifications_${scheduleType}_${prayerIndex}_${notification.id}`;
+
+  setItem(key, notification);
+
+  logger.info('NOTIFICATION DB: Added:', notification);
+};
