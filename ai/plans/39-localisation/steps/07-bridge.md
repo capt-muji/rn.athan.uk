@@ -5,6 +5,7 @@ round-trip parity test. The transfer format is the catalog itself: flat key-valu
 `{token}` placeholders, no i18next reserved shapes (RECONCILIATION, ARCH-14/A3).
 
 Requirements: R4.1, R4.2
+Weight: 2
 
 - Branch: `feat/38-07-bridge`
 - Anchors: `content-builders`, `reminder-content` (both files hold the post-step-04 text;

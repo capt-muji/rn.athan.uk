@@ -7,6 +7,8 @@
 | Planned by | Planning session (reconciliation of four external branches, owner-present rulings D34/D35) |
 | Needs first | row 37 DONE (verified in the queue) |
 | Steps | 15 (stage one; stage two is row 39, replanned separately) |
+| Batch budget | 6 |
+| Session budget | 12 |
 | Device | OnePlus 3T (`3T_SERIAL`), Android 9; iPhone XS for the iOS-side checks |
 | Owner decisions still needed | None for stage one. Row 39 opens with: the qibla place-name exception, the native-strings ruling, the null-props widget card, the channel-rename device check |
 

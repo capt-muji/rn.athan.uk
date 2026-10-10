@@ -6,6 +6,7 @@ The timing experiment decides the loader's body; because step 05 indirected the 
 repair).
 
 Requirements: R2.1, R9.1
+Weight: 3
 
 - Branch: `feat/38-15-preflights`
 - Files: `shared/i18n/loader.ts` (only if the experiment loses the TS require), LOG.md (the
