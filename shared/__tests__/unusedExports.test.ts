@@ -21,6 +21,8 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
   MAX_WHATS_NEW_BODY_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   StoredPrayerId:
     'The stored-record vocabulary R15 names; the prayer.ts narrowing is structural now, so no production site names the type',
+  PRAYER_LABELS:
+    'Reached at runtime through the loader namespace require whose marks measure the catalog (step 15); a static import would evaluate the catalog before the marks',
 };
 
 const ROOT = join(__dirname, '..', '..');
