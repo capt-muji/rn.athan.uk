@@ -1,5 +1,228 @@
 # Execution log: Job 38
 
+## Step 15: the 3T pre-flights - monitor reads taken, the require stays at <1 ms
+
+- Branch `feat/38-15-preflights` off `uat` (`a7d84645`, step 14's merge).
+  D36 to D38 executed exactly as ruled (OWNER-DECISIONS.md, this commit).
+- The R2.1 base (D38): the owner armed every bell himself;
+  `step15-alarm-armed-base.txt` holds the full armed census -
+  NOTIFICATION_EVENT alarms for every prayer plus both reminders out to
+  2026-10-31 (next wake 23:32 tonight) and the 2036
+  ACTION_FORCE_STOP_RESCHEDULE tombstone (`when 2106885990618`,
+  2036-10-06 06:06:30 UTC). Channels at base: `athan_1_v4`,
+  `extras_at_time_v3`, sound on both.
+- Monitor-build detour, recorded: the e2e README vehicle on the main
+  checkout first produced `com.mugtaba.athan.fleettest` 1.29.342 - the
+  stale `android/` carried the fleettest applicationId, and the vehicle's
+  prebuild is not clean. Fixed inside the vehicle: `expo prebuild
+  --no-install --clean` with a grep guard on the regenerated
+  applicationId, rebuild BUILD SUCCESSFUL in 6m 17s. The fleettest
+  artifact (installed 22:05:59 by that build, never launched, nothing
+  armed) was uninstalled after the reads; the owner's install was never
+  touched by it.
+- Monitor build: 1.29.342, EXPO_PUBLIC_PERF_MONITOR=1, env local (no .env
+  in the main checkout), production id, installed `-r` over the real
+  1.29.287 data. First launch captured in
+  `step15-logcat-monitor-firstlaunch-prod-id.txt`.
+- Read 1, the require timing (D36): the marks ran on the LIVE perf path,
+  not the buffered one - Expo Router lazy-loads route modules, so
+  loader.ts evaluates about 190 ms AFTER `initPerfMonitor` (the ring
+  shows the bootstrap marks replayed with `detail.at` while the catalog
+  marks carry none: they were never pre-init). For live marks the ring
+  `ts` is the true epoch, so the specified offline read survives with a
+  better clock: both marks round to the same epoch millisecond on the
+  first launch (1791666941028) and on the clean relaunch
+  (1791667097376). The catalog require costs under 1 ms of JS-thread
+  time on the 3T, five times under the 5 ms threshold. DECISION per
+  D36: the TS require stays; loader.ts carries only the mark pair
+  (committed and kept).
+- Read 2, the stamp and dead-key lines (D37): the monitor build reads
+  the DEV store (env-namespaced), which was fresh under
+  com.mugtaba.athan - every earlier local build on this phone was
+  fleettest-id with its own data dir. First launch logged `First install
+  detected (no stored version)`, `stored: 'none'` - the stamp and
+  dead-key lines correctly did not fire; the key-absence guard treating
+  a fresh store as a fresh install is R6.2 observed on device. The
+  formal proof of both lines stays with the step-12 suites, exactly
+  D37's ruling; the one-shot is spent as ruled.
+- Read 3, the render checks (monitor, mock data): six rows, one Latin
+  name per row, no Arabic script anywhere on screen (vision-read from
+  two frames, `step15-render-monitor-frame1/2.png`); the mock time
+  signature matches e2e/README's description; the two frames 2 s apart
+  differ only in the countdown digits and the progress-bar tip (1005
+  pixels in two bands, pixel-diffed) - no row moved, so the seeded en
+  width keys held and the first measurement caused no reflow.
+- The monitor launch re-armed the package's bells from the dev store's
+  defaults (all off - crossed-out bell icons in the frames), cancelling
+  the owner's armed set until the prod build re-arms from the real
+  store; the after-dump below proves the restoration.
+- Forced surface update, recorded: the unused-export sweep no longer
+  sees `PRAYER_LABELS` reached (the wrapper's namespace require is
+  invisible to static analysis; a static import would evaluate the
+  catalog before the marks). Added to
+  `REACHED_WITHOUT_AN_IMPORT` in `unusedExports.test.ts` with that
+  reason. No assertion weakened; `yarn validate` green: 194 suites,
+  5291 passed.
+- Prod leg: `build-prod.zsh feat/38-15-preflights` -> `9fc70a66`,
+  BUILD-PROD OK in 335s; aapt2 badging `com.mugtaba.athan` versionCode
+  1000000 versionName 1.29.342; `adb install -r` Success over the real
+  data. First launch ThisTime 6740ms (post-install dexopt, discarded per
+  e2e/README).
+- The R2.1 comparison, base vs after (`step15-alarm-armed-base.txt` vs
+  `step15-alarm-after-prod*.txt`): every notification alarm the new build
+  armed is byte-identical in tag and trigger epoch to the base's nearest
+  alarms - the diff holds NO changed lines, only deletions of the base's
+  far-future window (120 alarms, Oct 13 onward) and one addition. The
+  deletions are accumulation, not identifiers: the fresh install armed
+  one 64-budget pass (time-ordered nearest-first, 63 future + tonight's),
+  while the base's 184 accumulated across the 1.29.287 install's two days
+  of passes; the same code arms the same window as time advances. The
+  addition was `expo.modules.widgetrefresh.WidgetRefreshReceiver`, the
+  launch-time widget-push one-shot (present in 1.29.x, armed only while a
+  push cycle runs - gone by the third dump with the app at rest, and
+  absent from the base whose app was idle). Channels: `athan_1_v4` and
+  `extras_at_time_v3` byte-identical with sound and importance 4, plus
+  the owner's own 20 `reminder_<id>_30_v3`/`_5_v3` channels (legacy v3
+  generation, created by 1.29.287 when he armed both reminders per D38,
+  persisting across install -r and reused; the part-1 census of 2
+  predates his arming). No identifier diff: NOT a STOP.
+  `yarn check:device` PASSES end to end (63 future prayer alerts armed,
+  triggers are prayer times, channels sound on).
+- Render checks on the prod build, real data (vision-read,
+  `step15-render-prod-frame1.png`): six rows, one Latin name each (Fajr
+  05:44, Sunrise 07:15, Dhuhr 12:52, Asr 15:40, Magrib 18:19, Isha
+  19:40), no Arabic anywhere, countdown coherent (7h 8m to Fajr, Isha
+  2h 53m ago), sound icons active, and the owner's preferences visible
+  as survived: hijri date on, reminders armed, London. No What's-New
+  modal (no 2.0.0-stage1 archive entry exists). Times align with the
+  timetable by the epoch identity above.
+- Phone end state: production 1.29.342 (`9fc70a66`) installed, bells
+  armed as the owner set them, `auto_time` 1. The fleettest artifact was
+  uninstalled (installed 22:05:59 by the detour build, never launched).
+  The main checkout's `android/` was regenerated by the clean prebuild
+  and now carries the production id at 1.29.342 (it had carried the
+  stale fleettest suffix).
+- Order note: a relay asked for the merge before the install reads; its
+  own dump-diff-is-STOP gate requires the comparison first, so the merge
+  stayed gated behind it (same commits, gated order).
+
+session: ses_ed8889dc3ffeaTOQtypPTcI25q
+## Resume from: step 15, part 2 (owner rulings D36 to D38 landed; corrected shape below)
+
+The part-1 STOP's decisions were put to the owner and ruled (D36 to D38 in
+OWNER-DECISIONS.md). The corrected step-15 sequence, replacing the step file's
+build and read paths wherever they named the production build or the debug
+screen:
+
+1. Alarm dump on the armed 3T BEFORE any install (the owner armed every
+   notification on both phones himself: sound on, both reminders on; the
+   part-1 as-found dump with zero alerts is superseded as the comparison
+   base for R2.1).
+2. E2e monitor release build (`EXPO_PUBLIC_PERF_MONITOR=1`, the e2e/README
+   vehicle; never two builds at once). Install `-r` over the phone's real
+   1.29.287 data. First-launch logcat carries all four reads: the
+   catalog-require timing (buffered `perfMark` pair inside `loader.ts`, read
+   offline from `detail.at` epochs; the pair commits with the step and
+   stays), `VERSION: Stamped upgrade language to en`, the dead-key removal
+   line, and the render checks (one name per row, times aligned, no
+   first-measurement reflow). The 5 ms rule applies as written: above 5 ms
+   JS-thread time, `loader.ts` switches to `JSON.parse` of an embedded JSON
+   constant (step 07 parity suite covers it); at or under, the TS require
+   stays.
+3. `build-prod.zsh` (the plan's named final build, the step's version). Install
+   `-r`. Alarm dump: identifier bytes identical to step 1's. Leave the phone
+   on this build, `auto_time` on, bells as the owner set them.
+4. Numbers in LOG.md with their build versions, evidence under
+   `~/athan-gitree/sessions/38/`, the step's docs commit (`loader.ts` only if
+   the require loses, else LOG.md alone), merge `--no-ff`, then Finishing and
+   the row to EXECUTED.
+
+## Resume from: step 15, part 1 (STOP returned: the step's named device reads are compiled out of the production build)
+
+Steps 1 to 14 remain merged (`uat` `a7d84645`, 1.29.341); no branch,
+commit, build or clock change happened this session. The 3T is present
+(auto_time=1, BST, holding 1.29.287 as found). Read-only evidence was
+banked and the session stopped BEFORE the build, because the step's
+specified reads cannot exist on the build it names:
+
+1. Experiment 1's vehicle: `build-prod.zsh` sets `EXPO_PUBLIC_ENV=prod`
+   and unsets every other `EXPO_PUBLIC_*`, and `shared/perf.ts:34` gates
+   `PERF_ENABLED` on `EXPO_PUBLIC_PERF_MONITOR === '1' && ENV !== 'prod'`:
+   a production build folds every perfMark/perfMeasure call to a no-op
+   (the perf.ts docblock says so). No PERF line can ever reach the prod
+   build's logcat. The repo's sanctioned measurement vehicle is the e2e
+   monitor release build (`EXPO_PUBLIC_PERF_MONITOR=1 npx expo run:android
+   --variant release`, e2e/README.md:37-51), a mock-data local build - not
+   the production build the step names (R16 forced change 3 said "release
+   build"; the step narrowed it to "production build").
+2. The named wrapper cannot emit in ANY build: `perfMeasure`
+   (shared/perf.ts:241-243) returns while `perfModule` is null, and
+   `perfModule` exists only after `initPerfMonitor()` runs in
+   app/_layout - loader.ts evaluates during bundle evaluation, before
+   that. Only `perfMark` buffers pre-init (pendingMarks, perf.ts:222-232).
+   The working form at that boundary is a mark pair read offline from
+   `detail.at` epochs (perf.ts docblock lines 21-23), a form decision the
+   plan does not give.
+3. Experiment 2's stamp/dead-key reads: "the app's debug screen" does not
+   exist (no such surface in app/ or components/; `preference_language`
+   is read only by its own write-guard, stores/version.ts:243), and pino
+   is `enabled: false` in prod (shared/logger.ts:6-13), so
+   `VERSION: Stamped upgrade language to en` and the dead-key removal
+   line never log in a production build. Empirical proof banked: a cold
+   launch of the installed 1.29.287 prod build logs exactly one
+   ReactNativeJS line (`Running "main"`) - zero app lines, zero PERF,
+   zero VERSION (e2e/README.md:101-104 states this trap verbatim: "the
+   only build that gives both real data and logs is none of them").
+4. One-shot hazard, the reason NOTHING was installed: the stamp fires
+   only while `preference_language` is absent (stores/version.ts:243-245),
+   so installing any step-12+ build over the phone's populated 1.29.287
+   data applies the stamp silently and permanently - a replan could never
+   re-observe it on this install. No install was made; the phone stays on
+   1.29.287 as found, auto_time on.
+5. Phone premise gap: the step expects "(days fetched, bells armed)". As
+   found and again after a cold launch: zero prayer alerts armed (bells
+   off on this phone; channels `athan_1_v4` and `extras_at_time_v3`
+   present with sound, importance 4). The identifier-bytes before/after
+   comparison would carry no armed identifiers beyond the channels and
+   the 2036 ACTION_FORCE_STOP_RESCHEDULE tombstone. The planning-time
+   reference alarm `when 2104803640505` (2036-09-12 03:40:40 UTC) is a
+   tombstone of the same kind; today's reads `when 2106885990618`
+   (2036-10-06 06:06:30 UTC) - the tombstone moved with the Oct 9 07:06
+   reinstall.
+
+Decisions the replan must give: (a) experiment 1's vehicle and the
+wrapper's form - monitor release build plus the buffered mark pair, or
+drop the device timing and let the TS require stand; (b) the
+stamp/dead-key proof source - the step-12 suites already prove both, and
+the step itself accepts the suite as the fresh-install proof; (c) whether
+bells may be switched on for the identifier proof (an owner-state
+change) or the channel ids plus the contract-test freeze carry R2.1's
+device half; (d) only after (b) is ruled may any step-12+ build be
+installed over this phone.
+
+Evidence (outside the repo, `~/athan-gitree/sessions/38/`):
+step15-alarm-dump-before-asfound.txt, step15-alarm-grep-before-asfound.txt,
+step15-check-device-asfound.txt, step15-logcat-coldlaunch-1.29.287-prod.txt,
+step15-check-device-postlaunch.txt. The part-0 note's standing facts
+still hold (allowlist `[]`, 158 catalog keys, widget strings baked by
+shared/widgetTimeline.ts).
+
+session: ses_ed8889dc3ffeaTOQtypPTcI25q
+## Resume from: step 15, part 0 (steps 1 to 14 merged)
+
+Steps 12, 13 and 14 landed in the same executor session as 9 to 11
+(commits `b7ccb335`/`3672a9a6`, `a02e1450`/`5622828f`, `1fe389e6`/`a7d84645`,
+versions 1.29.339 to 1.29.341; every hook green at 100% on all four lines).
+Step 15 (`steps/15-pre-flights.md`) is the 3T first-catalog require-timing
+experiment with the JSON.parse decision behind the loader, the stage-two
+month-keys sourcing note, and the numbers; it needs the 3T and closes stage
+one. The next session's LOG append lands the uncommitted plan-file edits
+(the sha fills and this note). Standing facts: the allowlist is `[]` and
+pinned, the widget-body exemption and the data-modules rule are live, the
+catalog holds 158 keys, and `widget.*` strings are baked by
+`shared/widgetTimeline.ts`.
+
+session: ses_ed8e296afffeZElOViN4KqIzpp
 ## Step 14: the guard closes - zero exclusion list, data-modules rule
 
 - Branch `feat/38-14-guard` off `uat` (`5622828f`, step 13's merge; step 13
@@ -47,8 +270,8 @@
   failing while the body exemption holds. Restores by file backup; guard
   exit 0 restored.
 - Version 1.29.341 (origin fetched under the lock; origin/uat still at
-  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
-  `<merge sha>`.
+  `53eecb99`, nothing raced). Committed `1fe389e6`, merged into `uat` as
+  `a7d84645`.
 
 ## Step 13: widget props v6 - ids, tolerance, baked strings
 
@@ -124,8 +347,8 @@
   guards on presence" is the shape implemented). Restores by file backup;
   renderer suite back to 54 passed.
 - Version 1.29.340 (origin fetched under the lock; origin/uat still at
-  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
-  `<merge sha>`.
+  `53eecb99`, nothing raced). Committed `a02e1450`, merged into `uat` as
+  `5622828f`.
 
 ## Step 12: `migrateToLocaleDefaults`, the version-guarded stamp
 
