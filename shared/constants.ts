@@ -8,6 +8,12 @@
  */
 export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
 
+/**
+ * The id vocabulary for the standard prayers: the space-form slugs that build every stored
+ * preference key and OS identifier. Order mirrors PRAYERS_ENGLISH.
+ */
+export const STANDARD_PRAYER_IDS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'] as const;
+
 // =============================================================================
 // SPECIAL PRAYERS (EXTRAS)
 // =============================================================================
@@ -18,6 +24,22 @@ export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Is
  * Note: Istijaba only displays on Fridays
  */
 export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
+
+/**
+ * The id vocabulary for the extras. 'last third' keeps its space deliberately: these bytes
+ * are the stored preference-key and OS-identifier form, and the underscore variant is only
+ * a filename slug for res/raw.
+ */
+export const EXTRA_PRAYER_IDS = ['midnight', 'last third', 'suhoor', 'duha', 'istijaba'] as const;
+
+/** The closed prayer-id union: display resolves it through the catalog, identifiers consume it raw */
+export type PrayerId = (typeof STANDARD_PRAYER_IDS)[number] | (typeof EXTRA_PRAYER_IDS)[number];
+
+/** The nine ids with a stored time field on the API day record (Midnight and Last Third are computed) */
+export type StoredPrayerId = Exclude<PrayerId, 'midnight' | 'last third'>;
+
+/** The whole vocabulary in canonical display order */
+export const PRAYER_IDS = [...STANDARD_PRAYER_IDS, ...EXTRA_PRAYER_IDS] as const;
 
 /**
  * Night prayer names that cross midnight boundary
