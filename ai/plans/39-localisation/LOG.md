@@ -1,5 +1,21 @@
 # Execution log: Session 38
 
+## Resume from: step 4, part 0
+
+Steps 1 to 3 are committed and merged (freeze test `aa7d2014`, row `719b64c2`, chrome
+`b4ad82d6`). The next session: run the pre-flight with k=4, resume the IN PROGRESS row, and
+execute step 4 (`steps/04-arabic-data-plumbing.md`), the widest step: `PrayerRow.arabic` dies
+end to end, the commit signatures lose their `arabicName` parameter
+(`commitPrayerAlertChange` at `stores/notifications.ts:1330`, `commitAlertMenuChanges` at
+`hooks/useNotification.ts:210`, threading through `applyPrayerAlerts`,
+`undoPrayerAlertChange`, the schedule/reminder twins), and `PRAYERS_ARABIC`/`EXTRAS_ARABIC`
+leave `shared/constants.ts`. Note `EXTRAS_EXPLANATIONS_ARABIC` already went with step 3
+(unused-export gate), so step 4's constants edit covers only the two name arrays. Lessons that
+carry: untracked new files restore from a backup copy (`git checkout --` aborts atomically on
+them); delete constants by exact-text edit, never a regex block match; `git rm`-staged
+deletions are already in the index, do not re-add their paths; write the commit message file
+immediately before `git commit -F`.
+
 ## Step 1: the freeze test
 
 - Branch `feat/38-01-freeze-test` off `uat`.
