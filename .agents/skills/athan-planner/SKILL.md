@@ -196,7 +196,7 @@ the note says, then finish as section 8 says.
   never copy or average or synthesise a prayer time, no pixel changes without approval,
   comments explain why, no hand-edited release file, EAS is read-only, the API key is
   never committed.
-- Job 11 (`moonsighting-research-2.md`): ask the owner whether she has read
+- Job 25 (`moonsighting-research-2.md`): ask the owner whether she has read
   `ai/features/moonsighting/RESEARCH-FINDINGS.md`. If not, mark the row OWNER-LED with a
   short reading guide as the plan. If yes, plan the remaining research as executable
   steps, and ask which of that brief's conflicting rules apply.
