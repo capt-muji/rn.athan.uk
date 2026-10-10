@@ -79,7 +79,7 @@ export default function Layout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
-      <SystemBars style='light' hidden={{ navigationBar: false }} />
+      <SystemBars style={'light'} hidden={{ navigationBar: false }} />
       <InitialWidthMeasurement />
       <BottomSheetModalProvider>
         <Slot />

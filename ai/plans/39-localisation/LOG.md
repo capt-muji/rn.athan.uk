@@ -1,5 +1,92 @@
 # Execution log: Job 38
 
+## Step 10: wave 3, the app tree, the device strings and the duration labels
+
+- Branch `feat/38-10-wave3` off `uat` (`6372aa74`). Step 9's commit was
+  `27cf0014`, merged as `6372aa74` (fills the placeholders in the step 9
+  entry above).
+- Anchor check: all four anchors (`ago-text`, `plan-key`, `content-builders`,
+  `reminder-content`) count 0 in their extracted bytes - step 06/07 consumed
+  them, each with the step file's own parenthetical. The live regions were
+  verified unique before editing: `agoText` in `hooks/usePrayerAgo.ts:37`,
+  the plan lookup in `shared/notifications.ts:356`, the builders at
+  `shared/notifications.ts:131/180` (titles already through `t()`).
+- Red, recorded: (1) the allowlist shed the 3 app files and the guard test
+  failed `1 failed, 2 passed` listing the five app hits (Navigation 2,
+  _layout 1, index 2). (2) `time.test.ts` 'labels durations from the
+  catalog' failed `Expected "1H 2M 5S", Received "1h 2m 5s"` - note two
+  plan-text slips recorded here: the step's call form
+  `formatTime(3725, {...})` puts labels second, but the contract's "optional
+  final parameter" plus the unchanged-JSDoc-pins promise fix it last, so the
+  test calls `formatTime(3725, false, false, labels)`; and the step's
+  expected `'1H 1M 5S'` mis-divides 3725s (1h 2m 5s), corrected to
+  `'1H 2M 5S'`.
+- Scanner grew its default ROOTS by `widgets` (census and guard both scan
+  it; the allowlist carries `widgets/LockPrayerWidget.tsx` and
+  `widgets/PrayerWidget.tsx` until step 13 - the allowlist is the single
+  source of what is left).
+- Executor strengthening, three conditions met (scanner code the plan did
+  not give verbatim this step, no plan-named name/signature/test changed,
+  every acceptance criterion green): the guard's offender filter widened
+  from rule 1/2 to every `display*` kind. The step's own predictions demand
+  it - red 1 says the guard lists "app/, device/, hooks/, shared/ files"
+  (device/qibla.ts and hooks/useNotification.ts hold only display-sink rows)
+  and break 1 says the guard names a hardcoded `'Enable Location'`, a
+  display-sink argument - and R5.1 reads "every display literal outside the
+  catalog that the allowlist does not name". The widened guard stays green
+  on the migrated tree (the only display-sink rows left are the allowlisted
+  widgets file) and break 1 fires exactly as predicted. review-template
+  rows stay out (logger lines are code, not copy).
+- The catalog grew by 15 keys: `duration.h/m/s/now`, `time.now`/`time.ago`
+  (the Files line's key names; the DurationLabels section's `time.since` is
+  a slip - the Files line's precise `t('time.ago', {name, duration})` form
+  wins), `channel.athan {n}`/`channel.extras`, `app.loadingLabel`, the
+  qibla location dialog pair, `dialog.cancel`/`dialog.openSettings` (both
+  device dialogs share them), and the notifications enable-dialog pair.
+  `ParamsOf` gained the three new shapes.
+- `shared/time.ts`: `DurationLabels` + `durationLabels()` (the catalog's
+  single-letter units) and the optional final `labels` parameter on both
+  `formatTime` (4th) and `formatTimeAgo` (2nd); every literal unit now reads
+  through the labels object. Defaults reproduce today's bytes: all 118
+  pre-existing time pins pass unchanged. `usePrayerAgo` templates route
+  through `t('time.now'|'time.ago', ...)` ('Fajr now', 'Fajr 2h 30m ago'
+  pins unchanged).
+- `device/qibla.ts` and `hooks/useNotification.ts` Alert copy through `t()`
+  (byte-identical, no arity change); the qibla suite's dialog pins pass
+  unchanged. `device/updates.ts` holds only logger lines - nothing remained.
+- `shared/notifications.ts`: `athanAndroidChannelConfig`'s name reads
+  `t('channel.athan', {n})` and the extras channel name reads
+  `t('channel.extras')`. `prayerIdContract.test.ts`'s channel-name source
+  pins moved with the source shape (the pin now reads the `t()` call text
+  plus the en.ts value lines, keeping the freeze on the resolved bytes);
+  `notifications.test.ts`'s runtime `name: 'Extra Times'` pin passes
+  unchanged. The reminder channel-name template
+  `` `${prayerLabel(id)} in ${intervalMinutes}m Reminder` `` stays literal:
+  the step enumerates exactly two channel-name formats, and that template is
+  invisible to every census rule (no display literal by the plan's own
+  definition); its source pin is unchanged.
+- app files: Navigation's `pointerEvents`/`importantForAccessibility` and
+  _layout's SystemBars `style` braced; index's loading label through
+  `t('app.loadingLabel')` with the role braced. The error-boundary strings
+  the step names are ErrorScreen's, already catalogued in step 9.
+- Suites changed: `time.test.ts` (+ the labels test), `i18nBridge.test.ts`
+  (token set +3 with two new ParamsOf pins), `i18n.test.ts` (+12 pins),
+  `stringGuard.test.ts` (migrated list + the 3 app files),
+  `prayerIdContract.test.ts` (the moved source pins). The 24 affected
+  suites green in one run; the qibla, usePrayerAgo, notifications and app
+  suites pass unedited (the parity proof).
+- Green: full suite `192 suites, 5266 passed`; tsc clean; Biome clean (after
+  `--write`: import ordering); guard CLI exit 0 with widgets scanned and
+  allowlisted.
+- Breaks, 3 of 3 AS EXPECTED, final `ALL AS EXPECTED: 1`: hardcoded
+  `'Enable Location'` named by the guard at its line (the widened net's
+  first proof); `duration.h` -> 'hour' failed the time pins; the labels
+  default dropped and bare `formatTime(60)` failed the `'1m'` pin. Restores
+  by file backup; tree held only the step's files.
+- Version 1.29.337 (origin fetched under the lock; origin/uat still at
+  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
+  `<merge sha>`.
+
 ## Step 9: wave 2, every remaining component surface
 
 - Branch `feat/38-09-wave2` off `uat` (`5e0031db`). Re-executed cold from the

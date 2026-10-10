@@ -159,6 +159,13 @@ describe('formatTimeAgo', () => {
     expect(formatTimeAgo(7200)).toBe('2h');
     expect(formatTimeAgo(7260)).toBe('2h 1m');
   });
+
+  it('labels durations from the catalog', () => {
+    const labels = { h: 'H', m: 'M', s: 'S', now: 'NOW' };
+    expect(formatTime(3725, false, false, labels)).toBe('1H 2M 5S');
+    expect(formatTimeAgo(5400, labels)).toBe('1H 30M');
+    expect(formatTimeAgo(45, labels)).toBe('NOW');
+  });
 });
 
 // =============================================================================

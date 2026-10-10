@@ -405,7 +405,7 @@ export const atTimeAndroidChannelId = (id: PrayerId, soundIndex: number): string
  * whichever call wins decides the channel for good, so they must ask for the same thing.
  */
 export const athanAndroidChannelConfig = (soundIndex: number) => ({
-  name: `Athan ${soundIndex + 1}`,
+  name: t('channel.athan', { n: soundIndex + 1 }),
   sound: `athan${soundIndex + 1}.mp3`,
   importance: Notifications.AndroidImportance.HIGH,
   enableVibrate: true,
@@ -446,7 +446,7 @@ export const createExtrasAndroidChannel = async () => {
 
   await withNativeTimeout(
     Notifications.setNotificationChannelAsync(extrasAndroidChannelId, {
-      name: 'Extra Times',
+      name: t('channel.extras'),
       sound: EXTRAS_NOTIFICATION_SOUND,
       importance: Notifications.AndroidImportance.HIGH,
       enableVibrate: true,

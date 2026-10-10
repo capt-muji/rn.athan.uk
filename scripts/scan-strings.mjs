@@ -8,12 +8,14 @@
 //   4. Template literal starting with a capital letter and holding a space -> review
 //   5. Anything inside a logger.* / perf* call -> code
 // Everything else -> code. Output: JSON on stdout, or --guard to exit 1 when
-// any rule 1/2 hit sits outside the allowlisted modules.
+// any display hit sits outside the allowlisted modules.
 import fs from 'node:fs';
 import path from 'node:path';
 import { parse } from '@babel/parser';
 
-const ROOTS = process.argv[2] ? [process.argv[2]] : ['components', 'app', 'hooks', 'shared', 'stores', 'device'];
+const ROOTS = process.argv[2]
+  ? [process.argv[2]]
+  : ['components', 'app', 'hooks', 'shared', 'stores', 'device', 'widgets'];
 const DISPLAY_SINKS =
   /(label|title|text|body|message|placeholder|alert|confirm|question|answer|explanation|content|caption|subtitle|description)$/i;
 const NON_DISPLAY_CALLEES = /^(logger|perfMark|perfMeasure|require|import|jest|test|it|describe|expect)$/;
@@ -97,13 +99,12 @@ for (const file of files) {
 }
 
 if (process.argv.includes('--guard')) {
-  // The allowlist of modules still holding rule-1/2 display text. Stage one
-  // ends with this list empty; the data modules (help, whatsNew) are guarded
-  // by rule 3 of the plan instead (they export catalog keys only).
+  // The allowlist of modules still holding display text (all display kinds: JSX
+  // text, JSX attribute literals, display-sink arguments). Stage one ends with
+  // this list empty; the data modules (help, whatsNew) are guarded by rule 3 of
+  // the plan instead (they export catalog keys only).
   const allowlist = JSON.parse(fs.readFileSync(process.argv[process.argv.indexOf('--guard') + 1], 'utf8'));
-  const offenders = rows.filter(
-    (row) => (row.kind === 'display-jsx' || row.kind === 'display-jsx-attr') && !allowlist.includes(row.file)
-  );
+  const offenders = rows.filter((row) => row.kind.startsWith('display') && !allowlist.includes(row.file));
   if (offenders.length > 0) {
     for (const row of offenders) {
       process.stderr.write(`${row.file}:${row.line} ${row.kind} ${JSON.stringify(row.value)}\n`);
