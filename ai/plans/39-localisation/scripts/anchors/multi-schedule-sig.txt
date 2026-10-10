@@ -2,7 +2,6 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   scheduleType: ScheduleType,
   prayerIndex: number,
   englishName: string,
-  arabicName: string,
   alertType: AlertType,
   requestCost?: number
 ): Promise<number> => {

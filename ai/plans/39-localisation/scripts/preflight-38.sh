@@ -26,7 +26,10 @@ git merge-base --is-ancestor c3149dfc HEAD || FATAL "planned-at sha not an ances
 [ -s ai/plans/39-localisation/scripts/string-census.json ] || FATAL "census missing"
 
 # name:step:source - every anchor owned by a step not yet DONE counts exactly 1.
-# Anchors owned by DONE steps are consumed by design and skipped.
+# Anchors owned by DONE steps are consumed by design and skipped. An anchor's owner is
+# the FIRST step not yet DONE that edits its region (replan 2026-10-10: ago-text,
+# channel-reminder, content-builders, reminder-content, timeline-names and timeline-next
+# moved to step 06, whose contracts retype them before steps 07/10/13 run).
 MAP="
 row-conditional:2:components/prayer/Prayer.tsx
 row-styles:2:components/prayer/Prayer.tsx
@@ -53,15 +56,15 @@ reschedule-generations:6:stores/notifications.ts
 useprayer-sentinel:6:hooks/usePrayer.ts
 countdown-seed:6:stores/countdown.ts
 countdown-name:6:stores/countdown.ts
-ago-text:10:hooks/usePrayerAgo.ts
+ago-text:6:hooks/usePrayerAgo.ts
 rowpress-istijaba:6:components/prayer/rowPress.ts
 sequence-listposition:6:shared/sequence.ts
 plan-key:6:shared/notifications.ts
 device-ids:6:device/notifications.ts
 slug:6:shared/notifications.ts
-content-builders:7:shared/notifications.ts
-reminder-content:7:shared/notifications.ts
-channel-reminder:10:shared/notifications.ts
+content-builders:6:shared/notifications.ts
+reminder-content:6:shared/notifications.ts
+channel-reminder:6:shared/notifications.ts
 channel-configs:10:shared/notifications.ts
 extras-channel:10:shared/notifications.ts
 width-atoms:11:stores/ui.ts
@@ -79,8 +82,8 @@ widget-eyebrow:13:widgets/PrayerWidget.tsx
 widget-rowkey:13:widgets/PrayerWidget.tsx
 widget-units:13:widgets/PrayerWidget.tsx
 widget-dateparse:13:widgets/PrayerWidget.tsx
-timeline-names:13:shared/widgetTimeline.ts
-timeline-next:13:shared/widgetTimeline.ts
+timeline-names:6:shared/widgetTimeline.ts
+timeline-next:6:shared/widgetTimeline.ts
 "
 
 ANCHORS=ai/plans/39-localisation/scripts/anchors

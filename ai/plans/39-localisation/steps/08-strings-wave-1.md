@@ -6,7 +6,8 @@ data surfaces migrate: `shared/help.ts` (27 strings), `shared/whatsNew.ts` (14),
 Settings sheet.
 
 - Branch: `feat/38-08-wave1`
-- Anchors: `settings-toggle`
+- Anchors: `settings-toggle` (historical, pre-step-03: the toggle row is gone; it marks
+  the Settings section where the labels this step migrates still live)
 - Files added: `scripts/scan-strings.mjs` (copied verbatim from
   `ai/plans/39-localisation/scripts/scan-strings.mjs`, which stays as the planning-time census
   tool), `scripts/string-census-allowlist.json`, `shared/__tests__/stringGuard.test.ts`

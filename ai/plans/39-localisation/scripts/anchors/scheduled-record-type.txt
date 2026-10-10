@@ -3,6 +3,5 @@ export interface ScheduledNotification {
   date: string;
   time: string;
   englishName: string;
-  arabicName: string;
   alertType: AlertType;
 }
