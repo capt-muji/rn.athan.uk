@@ -18,10 +18,12 @@ jest.mock('@/shared/logger', () => ({ __esModule: true, default: mockLogger }));
 const mockGetItem = jest.fn();
 const mockSetItem = jest.fn();
 const mockClearAllExcept = jest.fn();
+const mockRemoveItem = jest.fn();
 jest.mock('@/stores/database', () => ({
   getItem: (key: string) => mockGetItem(key),
   setItem: (key: string, value: unknown) => mockSetItem(key, value),
   clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
+  removeItem: (key: string) => mockRemoveItem(key),
 }));
 
 const mockMigrate = jest.fn();
@@ -104,7 +106,9 @@ describe('when reading the installed version throws', () => {
     storageHolding(stored);
     launch().handleAppUpgrade();
 
-    expect(stamps()).toEqual(['app_installed_version', 'cache_schema_version']);
+    // 1.27.15 is below 2.0.0, so the locale-defaults stamp joins the healthy
+    // upgrade's writes (a build carrying that migration is itself 2.0.0-era)
+    expect(stamps()).toEqual(['app_installed_version', 'cache_schema_version', 'preference_language']);
     expect(mockResetStoredAtom).toHaveBeenCalledWith('lastNotificationScheduleAtom', GATE_KEY);
     expect(mockMigrate).toHaveBeenCalledWith(PREVIOUS);
   });

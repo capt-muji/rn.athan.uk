@@ -1,5 +1,64 @@
 # Execution log: Job 38
 
+## Step 12: `migrateToLocaleDefaults`, the version-guarded stamp
+
+- Branch `feat/38-12-upgrade` off `uat` (`8a1544df`). All seven anchors
+  resolve: six count 1 in `stores/version.ts`, and `migration-core` counts 0
+  in its extracted bytes because step 06 retitled its arrays - the live
+  region `migrateIndexKeyedAlertPreferences` (notifications.ts:514) is unique
+  in its post-06 shape, per the step's own parenthetical (plan-text slip, no
+  replan; the step does not edit that region).
+- Red, recorded: `upgrade2_0_0.test.ts` 4/4 failing (stamp absent, dead key
+  surviving, no idempotence); `upgrade2_0_0CrashWindows.test.ts` rows 2, 3, 4
+  and 5a failing (rows 5b, the four 7s and 8 pass today as convergence
+  guards, matching the plan's own "lands with the suite and guards" note on
+  test 3); `version.test.ts`'s new order pin failing (no
+  `preference_language` write exists). All named failures were the plan's.
+- The migration, exactly per contract: `migrateToLocaleDefaults(storedVersion)`
+  called after `migrateIndexKeyedAlertPreferences(storedVersion)`, stamping
+  `preference_language` to `'en'` only when the CAPTURED `storedVersion` is
+  non-null and below 2.0.0 AND the key is absent, with the raw
+  `Database.setItem` write; `Database.removeItem('preference_show_arabic_names')`
+  unconditional; the two log lines verbatim (the removal log only when the
+  key existed). `CACHE_SCHEMA_VERSION` stays 1, `UPGRADE_KEEP_PREFIXES`
+  untouched (D35).
+- Suites: the two new ones (the crash suite carries one test per R18
+  crash-table row as corrected, the row-4 rewrite the load-bearing one -
+  mid-state `2.0.0`-on-disk with no language key relaunches to a persisting
+  absence, proving the guard reads the captured value, never the stored key
+  or bare absence); `version.test.ts` gained the order pin (the
+  index-keyed mock's invocationCallOrder precedes the language setItem's)
+  plus `removeItem` in both its database mocks; `versionFailures.test.ts`'s
+  database mock gained `removeItem` and its healthy-upgrade stamp-set pin
+  gained `preference_language` (its 1.27.15 fixture satisfies the guard - a
+  build carrying the migration is itself 2.0.0-era, so any captured 1.x
+  stamps). Both were forced surface updates from the change, no assertion
+  weakened: the pin still enumerates exactly what a healthy upgrade writes.
+- Green: full suite `194 suites, 5283 passed`; tsc clean; Biome clean (one
+  unused-fixture warning fixed by deleting it).
+- Breaks, 4 of 4 AS EXPECTED, final `ALL AS EXPECTED: 1`: key-absence-only
+  guard stamps the fresh install (test 1 fails); order swap fails the order
+  pin; removeItem deleted fails test 2's dead-key assertion;
+  `CACHE_SCHEMA_VERSION` bumped to 2 wipes the days (test 2 fails). Restores
+  by file backup; suite back to 4 passed.
+- Version 1.29.339 (origin fetched under the lock; origin/uat still at
+  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
+  `<merge sha>`.
+
+## Resume from: step 12, part 0 (steps 1 to 11 merged)
+
+Steps 9, 10 and 11 landed in one executor session on 2026-10-10/11
+(commits `27cf0014`/`6372aa74`, `8230a9a9`/`03137ce3`, `78d9d957`/`8a1544df`,
+versions 1.29.336 to 1.29.338; every hook green at 100% on all four lines).
+The next session runs step 12 (`steps/12-upgrade-migrations.md`) and its own
+LOG append lands the uncommitted plan-file edits above (the sha fills and
+this note). Standing facts for step 12: the string guard now fails on every
+display kind (rule 1/2 AND display-sink), the allowlist holds only the two
+widgets files, `CURRENT_LOCALE_ID` is exported from `shared/i18n` and already
+consumed by `stores/ui.ts`'s seed, and the width keys on disk are
+`prayer_max_english_width_en_standard`/`..._en_extra`.
+
+session: ses_ed8e296afffeZElOViN4KqIzpp
 ## Step 11: the width cache goes per-locale
 
 - Branch `feat/38-11-width` off `uat` (`03137ce3`, step 10's merge). All five
@@ -49,8 +108,8 @@
   legacy removal dropped -> named test 1's removal assertion fails. Restores
   by file backup, suite back to 29 passed.
 - Version 1.29.338 (origin fetched under the lock; origin/uat still at
-  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
-  `<merge sha>`.
+  `53eecb99`, nothing raced). Committed `78d9d957`, merged into `uat` as
+  `8a1544df`.
 
 ## Step 10: wave 3, the app tree, the device strings and the duration labels
 
@@ -136,8 +195,8 @@
   default dropped and bare `formatTime(60)` failed the `'1m'` pin. Restores
   by file backup; tree held only the step's files.
 - Version 1.29.337 (origin fetched under the lock; origin/uat still at
-  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
-  `<merge sha>`.
+  `53eecb99`, nothing raced). Committed `8230a9a9`, merged into `uat` as
+  `03137ce3`.
 
 ## Step 9: wave 2, every remaining component surface
 
