@@ -122,11 +122,13 @@ Repair, all inside the plan folder:
   `prayerrow-type`, `namesforDate`, `unreadable-row`, `multi-schedule-sig`,
   `scheduled-record-type`, `explanation-arabic`, `overlaycontent-arabic`. Each counts
   exactly 1 at `76a40d3f`.
-- Six anchors re-owned to step 06 in the pre-flight map (the first step not yet DONE that
+- Seven anchors re-owned to step 06 in the pre-flight map (the first step not yet DONE that
   edits the region is the owner): `ago-text`, `channel-reminder`, `content-builders`,
-  `reminder-content`, `timeline-names`, `timeline-next`.
+  `reminder-content`, `timeline-names`, `timeline-next`, `overlaycontent-arabic` (the last
+  added on the grill's finding: step 06's retitle of `EXTRAS_ENGLISH` rewrites the region's
+  `indexOf` line, which step 09 would otherwise have grepped as stale).
 - Parentheticals added where a step names an anchor an earlier step rewrites: steps 07, 08,
-  10, 12, 13. Step 09's already had them.
+  09, 10, 12, 13.
 - Ownership rule recorded in PLAN.md section 4. No step contract changed; no app code
   touched. The decision (regenerate AND re-own, each where it applies) is mechanical
   planning machinery, taken on the code evidence; nothing here is an owner ruling.

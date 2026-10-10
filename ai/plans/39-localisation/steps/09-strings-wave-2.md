@@ -5,8 +5,10 @@ Every display string under `components/` migrates to the catalog. The census
 landed in step 08) names the files; the guard's allowlist sheds them all in this step.
 
 - Branch: `feat/38-09-wave2`
-- Anchors: `explanation-arabic` (now the single-line explanation), `overlaycontent-arabic` (the
-  English half remains), plus each file's own hits from the census
+- Anchors: `explanation-arabic` (now the single-line explanation), `overlaycontent-arabic`
+  (the English half remains, and step 06 has since retitled `EXTRAS_ENGLISH` to the legacy
+  title-case array in this region's `indexOf` line - edit against the retitled shape), plus
+  each file's own hits from the census
 - Files: from the census byFile table, the component files still holding display hits after
   step 08, including `components/sheets/screens/Alert.tsx` (10: `'Silent'`, `'Sound'`, `'Off'`,
   `'Close to save'`, `'15 min'`, stepper labels), `components/sheets/screens/ColorPicker.tsx`,
