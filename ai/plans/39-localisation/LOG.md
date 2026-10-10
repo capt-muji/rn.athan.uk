@@ -1,6 +1,36 @@
 # Execution log: Session 38
 
-## Resume from: step 4, part 0
+## Step 4: `PrayerRow.arabic` dies end to end
+
+- Branch `feat/38-04-plumbing` off `uat`. Red: "creates prayer with an english name and no
+  arabic field" failed first; the commit-signature red landed as a type-red (the old arity no
+  longer compiles), recorded here per the step's note.
+- The sweep: `PrayerRow.arabic`, `CreatePrayerParams.arabic`, `getPrayerNamesForDate`'s Arabic
+  array, `PRAYERS_ARABIC`/`EXTRAS_ARABIC`, `ScheduledNotification.arabicName`, both
+  `_arabicName` parameters, the `arabicName` threading through twelve store signatures,
+  `AlertSheetState.prayerArabic`, the usePrayer loading row's `arabic: ''`, and the device
+  record writes. `getPrayerArrays` now returns the name array itself; its three `.english`
+  consumers (the plan walk, `canonicalPrayerIndex`, `alarmHarness`) re-keyed. The extras
+  cascade-length quirk (R13) collapses to `PRAYERS_ENGLISH.length`, byte-identical at 6.
+- Executor strengthenings, three conditions met: the two device record writes gained inline
+  `NotificationUtils.ScheduledNotification` annotations, because a variable-carried excess
+  property escapes tsc and nothing else pinned the armed record's field set (the break proved
+  the hole); `notificationOffCancelFailure` asserts the stored records carry `englishName`
+  and no `arabicName`.
+- Fixtures: 25 suites plus `alarmHarness.ts` re-keyed (arabic properties, arabicName call
+  arguments, tuple types, Arabic literals, parity tests). `constants.test.ts`'s two
+  English-Arabic parity pins became one no-shared-member pin; `getPrayerArrays`'s describe
+  re-pinned to the array-returning shape.
+- Green: full suite `189 suites, 5249 passed`. tsc clean. Biome clean.
+- Breaks: 3 of 3 AS EXPECTED (row regains an arabic field; armed record regains arabicName
+  against the annotation; title bytes change), restore green: `ALL AS EXPECTED: 1`.
+- Incident, no damage escaped: a break-script restore ran `git checkout --` on a file whose
+  step edits were uncommitted, reverting `device/notifications.ts` mid-verification; caught by
+  grep before commit, re-applied, and the final break run proved the restored state. Lesson
+  already in the resume note: restores use backups, never `git checkout`, until the step is
+  committed.
+- Version 1.29.314.
+
 
 Steps 1 to 3 are committed and merged (freeze test `aa7d2014`, row `719b64c2`, chrome
 `b4ad82d6`). The next session: run the pre-flight with k=4, resume the IN PROGRESS row, and

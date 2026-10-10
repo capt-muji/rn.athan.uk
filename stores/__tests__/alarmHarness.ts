@@ -119,7 +119,7 @@ export const enable = (
   reminderInterval?: ReminderInterval,
   slot: ReminderSlot = 0
 ): void => {
-  const index = getPrayerArrays(scheduleType).english.indexOf(name);
+  const index = getPrayerArrays(scheduleType).indexOf(name);
   if (index === -1) throw new Error(`${name} is not on the ${scheduleType} list`);
 
   const isStandard = scheduleType === ScheduleType.Standard;

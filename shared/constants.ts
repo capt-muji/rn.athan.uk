@@ -8,12 +8,6 @@
  */
 export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
 
-/**
- * Arabic names for the 6 standard daily prayers
- * Must align 1:1 with PRAYERS_ENGLISH for correct bilingual display
- */
-export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
-
 // =============================================================================
 // SPECIAL PRAYERS (EXTRAS)
 // =============================================================================
@@ -24,12 +18,6 @@ export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'ال
  * Note: Istijaba only displays on Fridays
  */
 export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
-
-/**
- * Arabic names for 5 special prayer times
- * Must align 1:1 with EXTRAS_ENGLISH for correct bilingual display
- */
-export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
 
 /**
  * Night prayer names that cross midnight boundary

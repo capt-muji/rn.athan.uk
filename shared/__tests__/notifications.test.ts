@@ -292,31 +292,31 @@ describe('getNotificationSound', () => {
 
 describe('genNotificationContent', () => {
   it('creates content with correct English-only title', () => {
-    const content = genNotificationContent('Fajr', 'الفجر', AlertType.Sound, 0);
+    const content = genNotificationContent('Fajr', AlertType.Sound, 0);
     expect(content.title).toBe('Fajr now');
     expect(content.body).toBeUndefined();
   });
 
   it('includes sound for Sound alert type', () => {
-    const content = genNotificationContent('Fajr', 'الفجر', AlertType.Sound, 0);
+    const content = genNotificationContent('Fajr', AlertType.Sound, 0);
     expect(content.sound).toBe('athan1.mp3');
   });
 
   it('uses the fixed extras sound for Sunrise + extras at-time content', () => {
-    const sunrise = genNotificationContent('Sunrise', 'الشروق', AlertType.Sound, 4);
-    const lastThird = genNotificationContent('Last Third', 'آخر ثلث', AlertType.Sound, 4);
+    const sunrise = genNotificationContent('Sunrise', AlertType.Sound, 4);
+    const lastThird = genNotificationContent('Last Third', AlertType.Sound, 4);
     expect(sunrise.title).toBe('Sunrise now');
     expect(sunrise.sound).toBe(EXTRAS_NOTIFICATION_SOUND);
     expect(lastThird.sound).toBe(EXTRAS_NOTIFICATION_SOUND);
   });
 
   it('returns false for sound on Silent alert type', () => {
-    const content = genNotificationContent('Fajr', 'الفجر', AlertType.Silent, 0);
+    const content = genNotificationContent('Fajr', AlertType.Silent, 0);
     expect(content.sound).toBe(false);
   });
 
   it('returns false for sound on Off alert type', () => {
-    const content = genNotificationContent('Fajr', 'الفجر', AlertType.Off, 0);
+    const content = genNotificationContent('Fajr', AlertType.Off, 0);
     expect(content.sound).toBe(false);
   });
 });
@@ -661,28 +661,28 @@ describe('getReminderNotificationSound', () => {
 
 describe('genReminderNotificationContent', () => {
   it('creates content with correct title format', () => {
-    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
+    const content = genReminderNotificationContent('Fajr', 15, AlertType.Sound);
     expect(content.title).toBe('Fajr in 15m');
     expect(content.body).toBeUndefined();
   });
 
   it('creates content with different intervals', () => {
-    expect(genReminderNotificationContent('Dhuhr', 'الظهر', 5, AlertType.Sound).title).toBe('Dhuhr in 5m');
-    expect(genReminderNotificationContent('Asr', 'العصر', 30, AlertType.Sound).title).toBe('Asr in 30m');
+    expect(genReminderNotificationContent('Dhuhr', 5, AlertType.Sound).title).toBe('Dhuhr in 5m');
+    expect(genReminderNotificationContent('Asr', 30, AlertType.Sound).title).toBe('Asr in 30m');
   });
 
   it('includes sound for Sound alert type', () => {
-    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
+    const content = genReminderNotificationContent('Fajr', 15, AlertType.Sound);
     expect(content.sound).toBe('reminder_fajr_15.mp3');
   });
 
   it('returns false for sound on Silent alert type', () => {
-    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Silent);
+    const content = genReminderNotificationContent('Fajr', 15, AlertType.Silent);
     expect(content.sound).toBe(false);
   });
 
   it('sets autoDismiss to true', () => {
-    const content = genReminderNotificationContent('Fajr', 'الفجر', 15, AlertType.Sound);
+    const content = genReminderNotificationContent('Fajr', 15, AlertType.Sound);
     expect(content.autoDismiss).toBe(true);
   });
 });
@@ -752,7 +752,6 @@ describe('findStaleScheduledNotificationIds', () => {
     date: '2026-08-29',
     time: '06:00',
     englishName: 'Fajr',
-    arabicName: 'الفجر',
     alertType: AlertType.Silent,
   });
 

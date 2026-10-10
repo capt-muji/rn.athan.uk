@@ -1,11 +1,9 @@
 import {
   ANIMATION,
-  EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   ISLAMIC_DAY,
   MIDNIGHT_CROSSING_PRAYERS,
   NIGHT_PRAYER_NAMES,
-  PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   TIME_ADJUSTMENTS,
 } from '@/shared/constants';
@@ -186,9 +184,8 @@ const getNightRowTime = (nightTimes: TimeUtils.NightTimes | null, prayerName: st
 // Used by components for animations and measurements
 // =============================================================================
 
-export const getCascadeDelay = (index: number, type: ScheduleType): number => {
-  const isStandard = type === ScheduleType.Standard;
-  const length = isStandard ? PRAYERS_ENGLISH.length : PRAYERS_ARABIC.length;
+export const getCascadeDelay = (index: number, _type: ScheduleType): number => {
+  const length = PRAYERS_ENGLISH.length;
 
   return (length - index) * ANIMATION.cascadeDelay;
 };
@@ -269,7 +266,6 @@ export const calculateBelongsToDate = (
 interface CreatePrayerParams {
   type: ScheduleType;
   english: string;
-  arabic: string;
   date: string; // YYYY-MM-DD format
   time: string; // HH:mm format
 }
@@ -286,21 +282,20 @@ interface CreatePrayerParams {
  *
  * @example
  * // Normal case: belongsToDate matches input date
- * createPrayer({ type: ScheduleType.Standard, english: "Fajr", arabic: "الفجر", date: "2026-01-18", time: "06:12" })
+ * createPrayer({ type: ScheduleType.Standard, english: "Fajr", date: "2026-01-18", time: "06:12" })
  * // Returns: { ..., belongsToDate: "2026-01-18" }
  *
  * // Edge case: Summer Isha at 1am - belongsToDate is PREVIOUS day
- * createPrayer({ type: ScheduleType.Standard, english: "Isha", arabic: "العشاء", date: "2026-06-22", time: "01:00" })
+ * createPrayer({ type: ScheduleType.Standard, english: "Isha", date: "2026-06-22", time: "01:00" })
  * // Returns: { ..., belongsToDate: "2026-06-21" }  // Note: June 21, not 22!
  */
 export const createPrayer = (params: CreatePrayerParams): ReadablePrayer => {
-  const { type, english, arabic, date, time } = params;
+  const { type, english, date, time } = params;
   const datetime = createPrayerDatetime(date, time);
 
   return {
     type,
     english,
-    arabic,
     datetime,
     time,
     belongsToDate: calculateBelongsToDate(type, english, date, datetime),
@@ -311,22 +306,19 @@ export const createPrayer = (params: CreatePrayerParams): ReadablePrayer => {
  * Helper: Get prayer names for a given date and schedule type
  * Filters out Istijaba on non-Fridays for Extra schedule
  */
-function getPrayerNamesForDate(type: ScheduleType, date: string): { english: string[]; arabic: string[] } {
+function getPrayerNamesForDate(type: ScheduleType, date: string): string[] {
   const isStandard = type === ScheduleType.Standard;
 
   if (isStandard) {
-    return { english: PRAYERS_ENGLISH, arabic: PRAYERS_ARABIC };
+    return PRAYERS_ENGLISH;
   }
 
   // Extras schedule: filter out Istijaba on non-Fridays
   if (!TimeUtils.isFriday(date)) {
-    return {
-      english: EXTRAS_ENGLISH.filter((name) => name.toLowerCase() !== 'istijaba'),
-      arabic: EXTRAS_ARABIC.filter((name) => name !== 'استجابة'),
-    };
+    return EXTRAS_ENGLISH.filter((name) => name.toLowerCase() !== 'istijaba');
   }
 
-  return { english: EXTRAS_ENGLISH, arabic: EXTRAS_ARABIC };
+  return EXTRAS_ENGLISH;
 }
 
 /**
@@ -379,14 +371,13 @@ function createPrayersForSingleDay(
   rawData: ISingleApiResponseTransformed | null,
   previousDayData: ISingleApiResponseTransformed | null
 ): Prayer[] {
-  const { english: namesEnglish, arabic: namesArabic } = getPrayerNamesForDate(type, date);
+  const namesEnglish = getPrayerNamesForDate(type, date);
   const nightTimes = type === ScheduleType.Extra && rawData ? getNightTimesForDay(rawData, previousDayData) : null;
 
-  return namesEnglish.map((name, index): Prayer => {
+  return namesEnglish.map((name): Prayer => {
     const unreadable: UnreadablePrayer = {
       type,
       english: name,
-      arabic: namesArabic[index],
       datetime: null,
       time: null,
       belongsToDate: date,
@@ -414,7 +405,6 @@ function createPrayersForSingleDay(
     return createPrayer({
       type,
       english: name,
-      arabic: namesArabic[index],
       date: prayerDateString,
       time: prayerTime,
     });

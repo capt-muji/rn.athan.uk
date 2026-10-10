@@ -10,7 +10,6 @@ import type { TestInstance } from 'test-renderer';
 
 import { showLondonDay } from '@/__tests__/harness';
 import ALERT_ICONS from '@/assets/icons/svg/alerts';
-import { PRAYERS_ARABIC } from '@/shared/constants';
 import { AlertType, Icon, ScheduleType } from '@/shared/types';
 import { setPrayerAlertType } from '@/stores/notifications';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
@@ -47,7 +46,6 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
       type: ScheduleType.Standard,
       index: FAJR,
       prayerEnglish: 'Fajr',
-      prayerArabic: PRAYERS_ARABIC[FAJR],
       isUnavailable: false,
     });
   });

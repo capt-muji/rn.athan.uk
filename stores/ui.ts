@@ -17,7 +17,6 @@ export interface AlertSheetState {
   type: ScheduleType;
   index: number;
   prayerEnglish: string;
-  prayerArabic: string;
   /** The occurrence on screen has no readable time, so the sheet explains that instead of offering options */
   isUnavailable: boolean;
 }

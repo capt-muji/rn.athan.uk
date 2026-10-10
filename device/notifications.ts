@@ -86,9 +86,9 @@ export const addOneScheduledNotificationForPrayer = async (
   alertType: AlertType,
   soundPreference: number
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const { english: englishName, arabic: arabicName, time } = prayer;
+  const { english: englishName, time } = prayer;
   const triggerDate = prayer.datetime;
-  const content = NotificationUtils.genNotificationContent(englishName, arabicName, alertType, soundPreference);
+  const content = NotificationUtils.genNotificationContent(englishName, alertType, soundPreference);
   const identifier = prayerNotificationIdentifier(scheduleType, englishName, date);
   // Only include channelId for Sound alerts; the channel is prayer-aware
   // (selected athan for the 5 daily prayers, fixed extras channel for
@@ -127,7 +127,7 @@ export const addOneScheduledNotificationForPrayer = async (
       `arming ${identifier}`
     );
 
-    const notification = { id, date, time, englishName, arabicName, alertType };
+    const notification: NotificationUtils.ScheduledNotification = { id, date, time, englishName, alertType };
     logger.info('NOTIFICATION SYSTEM: Scheduled:', { ...notification, identifier });
     return notification;
   } catch (error) {
@@ -216,9 +216,9 @@ export const addOneScheduledReminderForPrayer = async (
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Promise<NotificationUtils.ScheduledNotification> => {
-  const { english: englishName, arabic: arabicName, time } = prayer;
+  const { english: englishName, time } = prayer;
   const triggerDate = subMinutes(prayer.datetime, intervalMinutes);
-  const content = NotificationUtils.genReminderNotificationContent(englishName, arabicName, intervalMinutes, alertType);
+  const content = NotificationUtils.genReminderNotificationContent(englishName, intervalMinutes, alertType);
   const identifier = reminderNotificationIdentifier(scheduleType, englishName, date, intervalMinutes);
   const isAndroidSound = alertType === AlertType.Sound && Platform.OS === 'android';
   const reminderChannelId = isAndroidSound
@@ -245,7 +245,7 @@ export const addOneScheduledReminderForPrayer = async (
       `arming ${identifier}`
     );
 
-    const notification = { id, date, time, englishName, arabicName, alertType };
+    const notification: NotificationUtils.ScheduledNotification = { id, date, time, englishName, alertType };
     logger.info('REMINDER SYSTEM: Scheduled:', { ...notification, identifier });
     return notification;
   } catch (error) {

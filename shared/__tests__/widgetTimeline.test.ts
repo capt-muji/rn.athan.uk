@@ -46,7 +46,6 @@ const makePrayer = (
   date: string,
   time: string,
   english: string,
-  arabic: string,
   belongsToDate?: string,
   type: ScheduleType = ScheduleType.Standard
 ): ReadablePrayer => {
@@ -54,7 +53,6 @@ const makePrayer = (
   return {
     type,
     english,
-    arabic,
     datetime,
     time,
     belongsToDate: belongsToDate ?? date,
@@ -63,16 +61,16 @@ const makePrayer = (
 
 /** Six canonical prayers per day, matching the standard schedule */
 const makeDay = (date: string, belongsToDate?: string): Prayer[] => {
-  const times: [string, string, string][] = [
-    ['Fajr', 'الفجر', '03:30'],
-    ['Sunrise', 'الشروق', '05:20'],
-    ['Dhuhr', 'الظهر', '13:10'],
-    ['Asr', 'العصر', '17:45'],
-    ['Magrib', 'المغرب', '21:15'],
-    ['Isha', 'العشاء', '22:45'],
+  const times: [string, string][] = [
+    ['Fajr', '03:30'],
+    ['Sunrise', '05:20'],
+    ['Dhuhr', '13:10'],
+    ['Asr', '17:45'],
+    ['Magrib', '21:15'],
+    ['Isha', '22:45'],
   ];
 
-  return times.map(([english, arabic, time]) => makePrayer(date, time, english, arabic, belongsToDate));
+  return times.map(([english, time]) => makePrayer(date, time, english, belongsToDate));
 };
 
 /** Two-day sequence covering NOW (2026-06-15 14:00) */
@@ -109,13 +107,13 @@ const makeExtrasDay = (rawDate: string, isFriday: boolean): ReadablePrayer[] => 
   const prayers: ReadablePrayer[] = [];
   const previousDay = formatDateShort(addDays(createPrayerDatetime(rawDate, '12:00'), -1));
 
-  prayers.push(makePrayer(previousDay, EXTRA_TIMES.midnight, 'Midnight', 'منتصف الليل', rawDate, ScheduleType.Extra));
-  prayers.push(makePrayer(rawDate, EXTRA_TIMES.lastThird, 'Last Third', 'الثلث الأخير', rawDate, ScheduleType.Extra));
-  prayers.push(makePrayer(rawDate, EXTRA_TIMES.suhoor, 'Suhoor', 'السحور', rawDate, ScheduleType.Extra));
-  prayers.push(makePrayer(rawDate, EXTRA_TIMES.duha, 'Duha', 'الضحى', rawDate, ScheduleType.Extra));
+  prayers.push(makePrayer(previousDay, EXTRA_TIMES.midnight, 'Midnight', rawDate, ScheduleType.Extra));
+  prayers.push(makePrayer(rawDate, EXTRA_TIMES.lastThird, 'Last Third', rawDate, ScheduleType.Extra));
+  prayers.push(makePrayer(rawDate, EXTRA_TIMES.suhoor, 'Suhoor', rawDate, ScheduleType.Extra));
+  prayers.push(makePrayer(rawDate, EXTRA_TIMES.duha, 'Duha', rawDate, ScheduleType.Extra));
 
   if (isFriday) {
-    prayers.push(makePrayer(rawDate, EXTRA_TIMES.istijaba, 'Istijaba', 'الاستجابة', rawDate, ScheduleType.Extra));
+    prayers.push(makePrayer(rawDate, EXTRA_TIMES.istijaba, 'Istijaba', rawDate, ScheduleType.Extra));
   }
 
   return prayers;
@@ -191,7 +189,7 @@ describe('buildPrayerWidgetTimeline', () => {
     // June 17's Isha at 01:10 crosses midnight and belongs to June 16's day
     const sequence: PrayerSequence = {
       type: ScheduleType.Standard,
-      prayers: [...makeDay('2026-06-16'), makePrayer('2026-06-17', '01:10', 'Isha', 'العشاء', '2026-06-16')],
+      prayers: [...makeDay('2026-06-16'), makePrayer('2026-06-17', '01:10', 'Isha', '2026-06-16')],
     };
 
     const entries = buildPrayerWidgetTimeline(createPrayerDatetime('2026-06-16', '12:00'), sequence, SETTINGS, 'light');
@@ -425,7 +423,7 @@ describe('boundary edge cases', () => {
   });
 
   it('survives duplicate prayer datetimes without duplicate entries', () => {
-    const duplicated = makePrayer('2026-06-15', '17:45', 'Asr', 'العصر');
+    const duplicated = makePrayer('2026-06-15', '17:45', 'Asr');
     const sequence: PrayerSequence = {
       type: ScheduleType.Standard,
       prayers: [...makeSequence().prayers, duplicated],
@@ -548,9 +546,9 @@ describe('extras schedule timeline', () => {
     const sequence: PrayerSequence = {
       type: ScheduleType.Extra,
       prayers: [
-        makePrayer(date, '09:00', 'Duha', 'الضحى', date, ScheduleType.Extra),
-        makePrayer(date, '15:14', 'Istijaba', 'الاستجابة', date, ScheduleType.Extra),
-        makePrayer(date, '23:17', 'Midnight', 'منتصف الليل', date, ScheduleType.Extra),
+        makePrayer(date, '09:00', 'Duha', date, ScheduleType.Extra),
+        makePrayer(date, '15:14', 'Istijaba', date, ScheduleType.Extra),
+        makePrayer(date, '23:17', 'Midnight', date, ScheduleType.Extra),
       ],
     };
 
@@ -575,13 +573,13 @@ describe('extras schedule timeline', () => {
 describe('countdown honesty', () => {
   /** Realistic October London times. The Isha→Fajr night runs 9h 50m — the
    *  segment the audit caught reading "9h 50m" five minutes before Fajr. */
-  const OCTOBER_TIMES: [string, string, string][] = [
-    ['Fajr', 'الفجر', '05:30'],
-    ['Sunrise', 'الشروق', '07:10'],
-    ['Dhuhr', 'الظهر', '12:40'],
-    ['Asr', 'العصر', '15:20'],
-    ['Magrib', 'المغرب', '17:50'],
-    ['Isha', 'العشاء', '19:40'],
+  const OCTOBER_TIMES: [string, string][] = [
+    ['Fajr', '05:30'],
+    ['Sunrise', '07:10'],
+    ['Dhuhr', '12:40'],
+    ['Asr', '15:20'],
+    ['Magrib', '17:50'],
+    ['Isha', '19:40'],
   ];
 
   // Every OCTOBER_TIMES gap is a whole number of 5-minute steps, so the aligned grid
@@ -589,13 +587,13 @@ describe('countdown honesty', () => {
   // remainder LANDS structurally unobservable. Real prayer intervals are not multiples
   // of five minutes; these are not either. Finding 38 hid behind that for a whole
   // session, so both fixtures now run through the same sweep.
-  const RAGGED_TIMES: [string, string, string][] = [
-    ['Fajr', 'الفجر', '05:31'],
-    ['Sunrise', 'الشروق', '07:13'],
-    ['Dhuhr', 'الظهر', '12:41'],
-    ['Asr', 'العصر', '15:23'],
-    ['Magrib', 'المغرب', '17:52'],
-    ['Isha', 'العشاء', '19:44'],
+  const RAGGED_TIMES: [string, string][] = [
+    ['Fajr', '05:31'],
+    ['Sunrise', '07:13'],
+    ['Dhuhr', '12:41'],
+    ['Asr', '15:23'],
+    ['Magrib', '17:52'],
+    ['Isha', '19:44'],
   ];
 
   const SPAN_START = '2026-10-18';
@@ -603,14 +601,14 @@ describe('countdown honesty', () => {
   const SPAN_DAYS = TIMELINE_DAYS + 1;
   const PUSH_AT = createPrayerDatetime(SPAN_START, '12:00');
 
-  const makeSequence = (times: [string, string, string][]): PrayerSequence => {
+  const makeSequence = (times: [string, string][]): PrayerSequence => {
     const base = createPrayerDatetime(SPAN_START, '12:00');
     const prayers: Prayer[] = [];
 
     for (let dayIndex = 0; dayIndex < SPAN_DAYS; dayIndex++) {
       const date = formatDateShort(addDays(base, dayIndex));
-      for (const [english, arabic, time] of times) {
-        prayers.push(makePrayer(date, time, english, arabic));
+      for (const [english, time] of times) {
+        prayers.push(makePrayer(date, time, english));
       }
     }
 
@@ -971,12 +969,12 @@ describe('unreadable rows', () => {
       // Well-formed times a few minutes apart, which validation accepts (finding 70)
       const date = '2026-06-15';
       const crowded: Prayer[] = [
-        makePrayer(date, '03:30', 'Fajr', 'الفجر'),
-        makePrayer(date, '03:31', 'Sunrise', 'الشروق'),
-        makePrayer(date, dhuhr, 'Dhuhr', 'الظهر'),
-        makePrayer(date, '17:45', 'Asr', 'العصر'),
-        makePrayer(date, '21:15', 'Magrib', 'المغرب'),
-        makePrayer(date, '22:45', 'Isha', 'العشاء'),
+        makePrayer(date, '03:30', 'Fajr'),
+        makePrayer(date, '03:31', 'Sunrise'),
+        makePrayer(date, dhuhr, 'Dhuhr'),
+        makePrayer(date, '17:45', 'Asr'),
+        makePrayer(date, '21:15', 'Magrib'),
+        makePrayer(date, '22:45', 'Isha'),
       ];
       const entries = buildPrayerWidgetTimeline(
         createPrayerDatetime(date, '03:00'),

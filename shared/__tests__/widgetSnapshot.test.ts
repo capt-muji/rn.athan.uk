@@ -26,13 +26,13 @@ import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 const SPAN_START = '2026-10-17';
 const SPAN_DAYS = 4;
 
-const OCTOBER_TIMES: [string, string, string][] = [
-  ['Fajr', 'الفجر', '05:30'],
-  ['Sunrise', 'الشروق', '07:10'],
-  ['Dhuhr', 'الظهر', '12:45'],
-  ['Asr', 'العصر', '15:20'],
-  ['Magrib', 'المغرب', '18:05'],
-  ['Isha', 'العشاء', '19:40'],
+const OCTOBER_TIMES: [string, string][] = [
+  ['Fajr', '05:30'],
+  ['Sunrise', '07:10'],
+  ['Dhuhr', '12:45'],
+  ['Asr', '15:20'],
+  ['Magrib', '18:05'],
+  ['Isha', '19:40'],
 ];
 
 const EARLY_ISHA_DAYS = new Set(['2026-10-19']);
@@ -40,7 +40,6 @@ const EARLY_ISHA_DAYS = new Set(['2026-10-19']);
 const makePrayer = (date: string, time: string, english: string, belongsToDate: string): ReadablePrayer => ({
   type: ScheduleType.Standard,
   english,
-  arabic: '',
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate,
@@ -49,7 +48,6 @@ const makePrayer = (date: string, time: string, english: string, belongsToDate: 
 const makeUnreadable = (english: string, belongsToDate: string): Prayer => ({
   type: ScheduleType.Standard,
   english,
-  arabic: '',
   belongsToDate,
   datetime: null,
   time: null,
@@ -64,7 +62,7 @@ const makeSequence = (): Prayer[] => {
     const dateString = formatDateShort(day);
     const ishaEarly = EARLY_ISHA_DAYS.has(dateString);
 
-    for (const [english, , time] of OCTOBER_TIMES) {
+    for (const [english, time] of OCTOBER_TIMES) {
       if (english === 'Isha' && ishaEarly) {
         const nextDayString = formatDateShort(addDays(day, 1));
         prayers.push(makePrayer(nextDayString, '01:05', english, dateString));

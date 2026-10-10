@@ -258,7 +258,6 @@ describe('usePrayer', () => {
 
     expect(row).toEqual({
       english: '',
-      arabic: '',
       time: '',
       date: '',
       index: 0,

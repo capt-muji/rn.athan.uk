@@ -2,7 +2,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 
 import * as Database from '@/stores/database';
 
-import { EXTRAS_ARABIC, PRAYER_TIMEZONE, PRAYERS_ARABIC } from '../constants';
+import { PRAYER_TIMEZONE } from '../constants';
 import {
   calculateBelongsToDate,
   canonicalDisplayOrder,
@@ -133,17 +133,16 @@ describe('calculateBelongsToDate', () => {
 // =============================================================================
 
 describe('createPrayer', () => {
-  it('creates prayer with correct properties', () => {
+  it('creates prayer with an english name and no arabic field', () => {
     const prayer = createPrayer({
       type: ScheduleType.Standard,
       english: 'Fajr',
-      arabic: 'الفجر',
       date: '2026-01-19',
       time: '06:15',
     });
 
     expect(prayer.english).toBe('Fajr');
-    expect(prayer.arabic).toBe('الفجر');
+    expect('arabic' in prayer).toBe(false);
     expect(prayer.type).toBe(ScheduleType.Standard);
     expect(prayer.time).toBe('06:15');
     expect(prayer.datetime).toBeInstanceOf(Date);
@@ -154,7 +153,6 @@ describe('createPrayer', () => {
     const prayer = createPrayer({
       type: ScheduleType.Extra,
       english: 'Midnight',
-      arabic: 'نصف الليل',
       date: '2026-01-19',
       time: '00:30',
     });
@@ -169,7 +167,6 @@ describe('createPrayer', () => {
     const prayer = createPrayer({
       type: ScheduleType.Standard,
       english: 'Isha',
-      arabic: 'العشاء',
       date: '2026-06-22',
       time: '01:00',
     });
@@ -259,7 +256,6 @@ describe('createPrayer edge cases', () => {
     const prayer = createPrayer({
       type: ScheduleType.Standard,
       english: 'Isha',
-      arabic: 'العشاء',
       date: '2026-01-18',
       time: '18:15',
     });
@@ -270,7 +266,6 @@ describe('createPrayer edge cases', () => {
     const prayer = createPrayer({
       type: ScheduleType.Standard,
       english: 'Isha',
-      arabic: 'العشاء',
       date: '2026-06-22',
       time: '01:30',
     });
@@ -281,7 +276,6 @@ describe('createPrayer edge cases', () => {
     const prayer = createPrayer({
       type: ScheduleType.Extra,
       english: 'Last Third',
-      arabic: 'آخر ثلث',
       date: '2026-01-18',
       time: '02:30',
     });
@@ -765,7 +759,6 @@ const extrasNamesOn = (date: string): string[] => [
 interface RowView {
   type: ScheduleType;
   english: string;
-  arabic: string;
   belongsToDate: string;
   at: string | null;
   time: string | null;
@@ -775,7 +768,6 @@ interface RowView {
 const view = (row: Prayer): RowView => ({
   type: row.type,
   english: row.english,
-  arabic: row.arabic,
   belongsToDate: row.belongsToDate,
   at: row.datetime?.toISOString() ?? null,
   time: row.time,
@@ -1083,7 +1075,6 @@ describe('createPrayersForDate', () => {
       {
         type: ScheduleType.Extra,
         english: 'Midnight',
-        arabic: EXTRAS_ARABIC[0],
         belongsToDate: '2026-10-18',
         at: '2026-10-17T23:00:00.000Z',
         time: '00:00',
@@ -1091,7 +1082,6 @@ describe('createPrayersForDate', () => {
       {
         type: ScheduleType.Extra,
         english: 'Last Third',
-        arabic: EXTRAS_ARABIC[1],
         belongsToDate: '2026-10-18',
         at: '2026-10-18T00:58:00.000Z',
         time: '01:58',
@@ -1099,7 +1089,6 @@ describe('createPrayersForDate', () => {
       {
         type: ScheduleType.Extra,
         english: 'Suhoor',
-        arabic: EXTRAS_ARABIC[2],
         belongsToDate: '2026-10-18',
         at: '2026-10-18T04:34:00.000Z',
         time: '05:34',
@@ -1107,7 +1096,6 @@ describe('createPrayersForDate', () => {
       {
         type: ScheduleType.Extra,
         english: 'Duha',
-        arabic: EXTRAS_ARABIC[3],
         belongsToDate: '2026-10-18',
         at: '2026-10-18T06:47:00.000Z',
         time: '07:47',
@@ -1119,20 +1107,18 @@ describe('createPrayersForDate', () => {
     storeDays(SEPTEMBER.filter((date) => date !== '2026-09-11'));
 
     expect(createPrayersForDate(ScheduleType.Extra, '2026-09-11')).toEqual(
-      ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'].map((english, index) => ({
+      ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'].map((english) => ({
         type: ScheduleType.Extra,
         english,
-        arabic: EXTRAS_ARABIC[index],
         datetime: null,
         time: null,
         belongsToDate: '2026-09-11',
       }))
     );
     expect(createPrayersForDate(ScheduleType.Standard, '2026-09-11')).toEqual(
-      STANDARD_NAMES.map((english, index) => ({
+      STANDARD_NAMES.map((english) => ({
         type: ScheduleType.Standard,
         english,
-        arabic: PRAYERS_ARABIC[index],
         datetime: null,
         time: null,
         belongsToDate: '2026-09-11',
@@ -1174,7 +1160,6 @@ describe('getPrayerForDate with times that could not be read', () => {
     expect(getPrayerForDate(ScheduleType.Standard, 'Asr', '2026-10-18')).toEqual({
       type: ScheduleType.Standard,
       english: 'Asr',
-      arabic: PRAYERS_ARABIC[3],
       datetime: null,
       time: null,
       belongsToDate: '2026-10-18',
@@ -1182,7 +1167,6 @@ describe('getPrayerForDate with times that could not be read', () => {
     expect(getPrayerForDate(ScheduleType.Extra, 'Last Third', '2026-10-18')).toEqual({
       type: ScheduleType.Extra,
       english: 'Last Third',
-      arabic: EXTRAS_ARABIC[1],
       datetime: null,
       time: null,
       belongsToDate: '2026-10-18',
