@@ -88,6 +88,15 @@ if [ "$found_steps" -eq 0 ] && ! grep -q "Requirements:" "$plan"; then
   reason "no steps/ files and no Requirements: lines in PLAN.md section 6"
 fi
 
+# 5b. Plans whose steps stay inline in PLAN.md section 6 carry their weights there.
+if [ "$found_steps" -eq 0 ]; then
+  req_n=$(grep -cE 'Requirements: R' "$plan")
+  wt_n=$(grep -cE '^Weight: [0-9]' "$plan")
+  if [ "$req_n" -gt 0 ] && [ "$wt_n" -ne "$req_n" ]; then
+    reason "PLAN.md section 6 has $req_n inline steps but $wt_n Weight lines: every step needs one"
+  fi
+fi
+
 # A criterion is orphaned when no Requirements line anywhere cites it.
 for id in $(echo "$criteria" | grep -oE 'R[0-9]+\.[0-9]+' | sort -u); do
   if ! grep -hqE "Requirements:.*$id" "$folder"/steps/*.md 2>/dev/null && \
