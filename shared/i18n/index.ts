@@ -8,6 +8,7 @@ import type { PrayerId } from '@/shared/constants';
 import type { TranslationKey } from './en';
 import { currentCatalog, currentPrayerLabels } from './loader';
 
+export type { TranslationKey } from './en';
 export { en, PRAYER_LABELS } from './en';
 
 /** The parameters a key's `{token}`s take; a key with no tokens takes none */

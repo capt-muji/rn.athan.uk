@@ -30,6 +30,13 @@ export const en = {
   'settings.other': 'Other',
   'settings.whatsNew': "What's new",
   'settings.help': 'Help',
+  'settings.subtitle': 'Set your preferences',
+  'settings.prayer': 'Prayer',
+  'settings.changeAthan': 'Change athan',
+  'settings.qibla': 'Qibla',
+  'settings.display': 'Display',
+  'settings.showHijriDate': 'Show hijri date',
+  'settings.whatsNewLabel': 'What’s new',
 
   'help.q.none': "Why don't I get any notifications?",
   'help.a.none': 'Without permission, notifications cannot be shown.',

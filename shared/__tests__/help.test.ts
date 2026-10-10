@@ -4,7 +4,38 @@
 
 import { getHelpTopics, HELP_ACTION_LABELS } from '../help';
 
+/**
+ * A fresh help module whose catalog reads are marked, so every field the getter returns
+ * must carry the mark: a field that skips t() keeps its own bytes and fails the match
+ */
+const helpUnderMarkedCatalog = () => {
+  let help!: typeof import('../help');
+  jest.isolateModules(() => {
+    jest.doMock('@/shared/i18n', () => ({
+      ...jest.requireActual('@/shared/i18n'),
+      t: (key: string) => `catalog:${key}`,
+    }));
+    help = require('../help');
+  });
+  return help;
+};
+
 describe('getHelpTopics', () => {
+  it('sources every entry from the catalog', () => {
+    const help = helpUnderMarkedCatalog();
+
+    for (const os of ['ios', 'android'] as const) {
+      const topics = help.getHelpTopics(os);
+      expect(topics.length).toBeGreaterThan(0);
+      for (const { question, text, steps } of topics) {
+        expect(question).toMatch(/^catalog:help\.q\./);
+        expect(text).toMatch(/^catalog:help\.a\./);
+        for (const step of steps ?? []) expect(step).toMatch(/^catalog:help\.step\./);
+      }
+    }
+    expect(help.HELP_ACTION_LABELS.dndAccess).toBe('catalog:help.action.dndAccess');
+  });
+
   it.each(['ios', 'android'] as const)('answers at least four questions on %s', (os) => {
     expect(getHelpTopics(os).length).toBeGreaterThanOrEqual(4);
   });
