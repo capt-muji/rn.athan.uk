@@ -153,7 +153,6 @@ describe('refreshNotifications behind the refresh gate', () => {
       date: TODAY,
       time: '12:00',
       englishName: 'Fajr',
-      arabicName: 'الفجر',
       alertType: AlertType.Sound,
     });
     osState.add(FAJR_TODAY);

@@ -155,10 +155,9 @@ export default function Alert({ type, index }: Props) {
       type,
       index: alertIndex,
       prayerEnglish: Prayer.english,
-      prayerArabic: Prayer.arabic,
       isUnavailable,
     });
-  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions, isUnavailable]);
+  }, [type, alertIndex, Prayer.english, alertAtom, ensurePermissions, isUnavailable]);
 
   // =============================================================================
   // RENDER

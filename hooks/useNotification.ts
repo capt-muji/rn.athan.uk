@@ -211,7 +211,6 @@ export const useNotification = () => {
     scheduleType: ScheduleType,
     prayerIndex: number,
     englishName: string,
-    arabicName: string,
     originalState: AlertMenuState,
     currentState: AlertMenuState
   ): Promise<boolean> => {
@@ -247,7 +246,6 @@ export const useNotification = () => {
       scheduleType,
       prayerIndex,
       englishName,
-      arabicName,
       currentState,
       originalState
     );

@@ -114,7 +114,6 @@ const armedEarlier = (
       date: WINDOW[position],
       time: '12:00',
       englishName: name,
-      arabicName: '',
       alertType: AlertType.Silent,
     });
     osState.add(id);
@@ -211,7 +210,7 @@ describe('an operation queued behind one that fails part way', () => {
     const refresh = refreshNotifications();
     await flush();
 
-    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', '', OFF, alerts(AlertType.Silent));
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
@@ -234,7 +233,7 @@ describe('an operation queued behind one that fails part way', () => {
     const refresh = refreshNotifications();
     await flush();
 
-    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', '', OFF, alerts(AlertType.Silent));
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
@@ -253,7 +252,7 @@ describe('an operation queued behind one that fails part way', () => {
     const refresh = refreshNotifications();
     await flush();
 
-    const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', '', alerts(AlertType.Silent), OFF);
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', alerts(AlertType.Silent), OFF);
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
@@ -270,14 +269,13 @@ describe('an operation queued behind one that fails part way', () => {
     armedEarlier(FAJR, 'Fajr', reminderIds('Fajr'), Database.addOneScheduledReminderForPrayer);
     refusedCancels.add(athanIds('Fajr')[0]);
     holdsCancel = (id) => id === reminderIds('Fajr')[1];
-    const turnOff = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', '', OFF, alerts(AlertType.Silent));
+    const turnOff = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', OFF, alerts(AlertType.Silent));
     await flush();
 
     const turnOn = commitPrayerAlertChange(
       ScheduleType.Standard,
       FAJR,
       'Fajr',
-      '',
       alerts(AlertType.Silent, AlertType.Silent),
       OFF
     );
@@ -308,7 +306,7 @@ describe('an operation queued behind one that fails part way', () => {
     const refresh = refreshNotifications();
     await flush();
 
-    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', '', OFF, alerts(AlertType.Silent));
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
@@ -338,7 +336,7 @@ describe('an operation queued behind one that fails part way', () => {
       const refresh = refreshNotifications();
       await flush();
 
-      const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', '', OFF, alerts(AlertType.Silent));
+      const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', OFF, alerts(AlertType.Silent));
       await flush();
       releaseHeld();
       const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
@@ -380,7 +378,7 @@ describe('an operation that fails before its own work begins', () => {
     await flush();
     info.mockImplementation(() => undefined);
 
-    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', '', alerts(AlertType.Silent), OFF);
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', alerts(AlertType.Silent), OFF);
 
     await failed;
     expect(armedFor('Fajr')).toEqual(athanIds('Fajr').sort());

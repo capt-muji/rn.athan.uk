@@ -82,13 +82,12 @@ const EXTRAS_TIMES: Record<string, Reading[]> = {
 
 const row = (type: ScheduleType, english: string, listDay: string, reading: Reading): Prayer => {
   if (reading === null) {
-    return { type, english, arabic: english, belongsToDate: listDay, datetime: null, time: null };
+    return { type, english, belongsToDate: listDay, datetime: null, time: null };
   }
   const { clock, on } = typeof reading === 'string' ? { clock: reading, on: listDay } : reading;
   return {
     type,
     english,
-    arabic: english,
     belongsToDate: listDay,
     datetime: createPrayerDatetime(on, clock),
     time: clock,
