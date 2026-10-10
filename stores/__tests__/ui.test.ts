@@ -211,7 +211,6 @@ describe('alert sheet state functions', () => {
     type: ScheduleType.Standard,
     index: 0,
     prayerEnglish: 'Fajr',
-    prayerArabic: 'الفجر',
     isUnavailable: false,
   };
 
