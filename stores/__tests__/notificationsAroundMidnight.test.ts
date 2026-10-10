@@ -16,6 +16,7 @@ jest.mock('@/stores/sync', () => ({
 
 import * as Notifications from 'expo-notifications';
 
+import type { PrayerId } from '@/shared/constants';
 import { AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { rescheduleAllNotifications, setPrayerAlertType } from '@/stores/notifications';
@@ -43,19 +44,19 @@ afterEach(() => {
 });
 
 /** An occurrence's at-time trigger and its 5-minute reminder, or nothing when it is not expected to be armed */
-const armedWithReminder = (scheduleType: ScheduleType, name: string, date: string, instant: string | null) =>
+const armedWithReminder = (scheduleType: ScheduleType, id: PrayerId, date: string, instant: string | null) =>
   instant === null
     ? {}
     : {
-        [`athan_${scheduleType}_${name.toLowerCase()}_${date}`]: instant,
-        [`reminder_${scheduleType}_${name.toLowerCase()}_${date}_5`]: minutesBefore(instant, 5),
+        [`athan_${scheduleType}_${id}_${date}`]: instant,
+        [`reminder_${scheduleType}_${id}_${date}_5`]: minutesBefore(instant, 5),
       };
 
 describe('a Standard row read either side of 00:00 and of 06:00', () => {
   // The Magrib shape puts sunset itself in the small hours, with Isha after it
-  const SHAPES: Record<'Isha' | 'Magrib', (reading: string) => Times> = {
-    Isha: (reading) => ['02:40', '04:43', '13:02', '17:20', '21:25', reading],
-    Magrib: (reading) => ['01:30', '02:55', '13:30', '17:30', reading, '00:30'],
+  const SHAPES: Record<'isha' | 'magrib', (reading: string) => Times> = {
+    isha: (reading) => ['02:40', '04:43', '13:02', '17:20', '21:25', reading],
+    magrib: (reading) => ['01:30', '02:55', '13:30', '17:30', reading, '00:30'],
   };
 
   const READINGS: { reading: string; list20: string | null; list21: string }[] = [
@@ -67,7 +68,7 @@ describe('a Standard row read either side of 00:00 and of 06:00', () => {
     { reading: '06:00', list20: null, list21: '2026-06-21T05:00:00.000Z' },
   ];
 
-  it.each((['Isha', 'Magrib'] as const).flatMap((name) => READINGS.map((row) => ({ name, ...row }))))(
+  it.each((['isha', 'magrib'] as const).flatMap((name) => READINGS.map((row) => ({ name, ...row }))))(
     'arms $name read as $reading under its own list day, at its real instant, with its reminder',
     async ({ name, reading, list20, list21 }) => {
       jest.setSystemTime(new Date('2026-06-20T12:00:00.000Z'));
@@ -101,11 +102,11 @@ describe('a Last Third before and at 00:00', () => {
     jest.setSystemTime(new Date('2026-06-20T19:00:00.000Z'));
     // List 20's night is already over, so the night row's extra list day reaches 21 June's
     storeShape(magrib, fajr);
-    enable(ScheduleType.Extra, 'Last Third', 5);
+    enable(ScheduleType.Extra, 'last third', 5);
 
     await rescheduleAllNotifications();
 
-    expect(triggers()).toEqual(armedWithReminder(ScheduleType.Extra, 'Last Third', '2026-06-21', lastThird));
+    expect(triggers()).toEqual(armedWithReminder(ScheduleType.Extra, 'last third', '2026-06-21', lastThird));
   });
 
   it.each(SHAPES)(
@@ -115,11 +116,11 @@ describe('a Last Third before and at 00:00', () => {
       // A night borrowed from 20 June's own Magrib would still be ahead here, so only refusing to borrow keeps list 20
       // unarmed
       storeShape(magrib, fajr);
-      enable(ScheduleType.Extra, 'Last Third', 5);
+      enable(ScheduleType.Extra, 'last third', 5);
 
       await rescheduleAllNotifications();
 
-      expect(triggers()).toEqual(armedWithReminder(ScheduleType.Extra, 'Last Third', '2026-06-21', lastThird));
+      expect(triggers()).toEqual(armedWithReminder(ScheduleType.Extra, 'last third', '2026-06-21', lastThird));
     }
   );
 });
@@ -137,11 +138,11 @@ describe('a Fajr just after 00:00', () => {
       '2026-06-20': ['00:30', '02:55', '13:00', '17:30', '23:28', '23:52'],
       '2026-06-21': [fajr, '02:55', '13:00', '17:30', '23:30', '23:54'],
     });
-    enable(ScheduleType.Standard, 'Fajr', 5);
+    enable(ScheduleType.Standard, 'fajr', 5);
 
     await rescheduleAllNotifications();
 
-    expect(triggers()).toEqual(armedWithReminder(ScheduleType.Standard, 'Fajr', '2026-06-21', instant));
+    expect(triggers()).toEqual(armedWithReminder(ScheduleType.Standard, 'fajr', '2026-06-21', instant));
   });
 });
 
@@ -159,7 +160,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
   it("keeps yesterday's list Isha armed, re-attempted under its own identifier", async () => {
     jest.setSystemTime(new Date('2026-06-20T20:00:00.000Z'));
     storeDays(days(ISHA_AT_0001));
-    enable(ScheduleType.Standard, 'Isha', 5);
+    enable(ScheduleType.Standard, 'isha', 5);
 
     await rescheduleAllNotifications();
     expect(osIdentifiers()).toEqual(armedAcross('isha', ['2026-06-20', '2026-06-21', '2026-06-22']));
@@ -181,7 +182,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
   it('keeps a Magrib after midnight armed the same way', async () => {
     jest.setSystemTime(new Date('2026-06-20T20:00:00.000Z'));
     storeDays(days(['01:30', '02:55', '13:30', '17:30', '00:01', '00:25']));
-    enable(ScheduleType.Standard, 'Magrib', 5);
+    enable(ScheduleType.Standard, 'magrib', 5);
 
     await rescheduleAllNotifications();
 
@@ -202,7 +203,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     const shape: Times = ['01:32', '02:58', '13:31', '17:31', '01:20', '01:44'];
     jest.setSystemTime(new Date('2026-06-26T20:00:00.000Z'));
     storeDays(sameTimesOn(['2026-06-25', '2026-06-26', '2026-06-27', '2026-06-28'], shape));
-    enable(ScheduleType.Extra, 'Istijaba', 5);
+    enable(ScheduleType.Extra, 'istijaba', 5);
 
     await rescheduleAllNotifications();
 
@@ -220,7 +221,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
   it('lets the window move on the moment the still-due row has passed, as the scheduler skips past rows', async () => {
     jest.setSystemTime(new Date('2026-06-20T20:00:00.000Z'));
     storeDays(days(ISHA_AT_0001));
-    enable(ScheduleType.Standard, 'Isha', 5);
+    enable(ScheduleType.Standard, 'isha', 5);
 
     await rescheduleAllNotifications();
 
@@ -243,7 +244,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
   it('keeps the record of a refused cancel of a still-due yesterday alarm, so the repair can reach it', async () => {
     jest.setSystemTime(new Date('2026-06-20T20:00:00.000Z'));
     storeDays(days(ISHA_AT_0001));
-    enable(ScheduleType.Standard, 'Isha', 5);
+    enable(ScheduleType.Standard, 'isha', 5);
 
     await rescheduleAllNotifications();
 
@@ -268,7 +269,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
   it('drops the record of a refused cancel of an alarm older than yesterday, spent like any passed moment', async () => {
     jest.setSystemTime(new Date('2026-06-20T20:00:00.000Z'));
     storeDays(days(ISHA_AT_0001));
-    enable(ScheduleType.Standard, 'Isha', 5);
+    enable(ScheduleType.Standard, 'isha', 5);
 
     await rescheduleAllNotifications();
 

@@ -10,7 +10,7 @@
 
 import { type Breakage, london, sequenceFrom, storeLondonDays } from '@/hooks/__tests__/londonDays';
 import { computePrayerStatuses, type PrayerWithStatus } from '@/hooks/usePrayerSequence';
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { isReadable, resolveDisplayDate } from '@/shared/sequence';
 import { type OverlayStore, type Prayer, ScheduleType } from '@/shared/types';
 
@@ -42,9 +42,9 @@ const gatheredIn = (prayers: Prayer[], order: ListOrder[1]): Prayer[] =>
   DAYS.flatMap((date) => order(prayers.filter((prayer) => prayer.belongsToDate === date)));
 
 /** The names of a list's rows top to bottom, from the owner's order in the constants, not from the code under test */
-const drawnNames = (type: ScheduleType, rows: Prayer[]): string[] => {
-  const names = type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  return names.filter((name) => rows.some((row) => row.english === name));
+const drawnIds = (type: ScheduleType, rows: Prayer[]): PrayerId[] => {
+  const ids = type === ScheduleType.Standard ? STANDARD_PRAYER_IDS : EXTRA_PRAYER_IDS;
+  return ids.filter((id) => rows.some((row) => row.id === id));
 };
 
 /** Each readable row's instant and a millisecond either side, and every three hours, in time order */
@@ -129,7 +129,7 @@ describe('the active pill across three real London days', () => {
           const pill = placePill(statuses, displayDate, type, CLOSED, heldRow);
 
           const expected = next
-            ? { row: drawnNames(type, rows).indexOf(next.english), opacity: 1 }
+            ? { row: drawnIds(type, rows).indexOf(next.id), opacity: 1 }
             : { row: expectedHeld, opacity: 0 };
           expect([orderName, now.toISOString(), pill]).toEqual([orderName, now.toISOString(), expected]);
 

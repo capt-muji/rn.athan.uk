@@ -49,7 +49,7 @@ const INTERVAL = 15 as ReminderInterval;
 /** A readable list row as PrayerUtils.getPrayerForDate returns it */
 const isha: ReadablePrayer = {
   type: ScheduleType.Standard,
-  english: 'Isha',
+  id: 'isha',
   datetime: createPrayerDatetime('2026-09-17', '20:31'),
   time: '20:31',
   belongsToDate: '2026-09-17',

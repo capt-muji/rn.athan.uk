@@ -80,7 +80,7 @@ const instantOf = (row: Prayer | null | undefined) => row?.datetime?.toISOString
 /** Last night's Midnight and Last Third on the 1 January Extras list */
 const lastNightRows = () =>
   (store.get(extraSequenceAtom)?.prayers ?? [])
-    .filter((row) => row.belongsToDate === '2027-01-01' && (row.english === 'Midnight' || row.english === 'Last Third'))
+    .filter((row) => row.belongsToDate === '2027-01-01' && (row.id === 'midnight' || row.id === 'last third'))
     .map(instantOf);
 
 /** Microtasks only, so the fake clock does not hold them */
@@ -128,11 +128,11 @@ describe('31 December landing once 1 January is on screen', () => {
     await settle();
 
     const standardPrevious = store.get(standardPrevPrayerAtom);
-    expect(standardPrevious).toMatchObject({ english: 'Isha', belongsToDate: '2026-12-31', time: '17:34' });
+    expect(standardPrevious).toMatchObject({ id: 'isha', belongsToDate: '2026-12-31', time: '17:34' });
     expect(instantOf(standardPrevious)).toBe('2026-12-31T17:34:00.000Z');
 
     const extrasPrevious = store.get(extraPrevPrayerAtom);
-    expect(extrasPrevious).toMatchObject({ english: 'Last Third', belongsToDate: '2027-01-01' });
+    expect(extrasPrevious).toMatchObject({ id: 'last third', belongsToDate: '2027-01-01' });
     expect(lastNightRows()).toEqual([expect.any(String), instantOf(extrasPrevious)]);
 
     expect(store.get(lastNotificationScheduleAtom)).toBe(0);

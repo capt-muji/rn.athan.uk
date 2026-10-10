@@ -8,6 +8,7 @@ import {
 import { Platform } from 'react-native';
 
 import { london, saveLondonDays } from '@/hooks/__tests__/londonDays';
+import type { PrayerId } from '@/shared/constants';
 
 import { PRAYER_TIMEZONE } from '../constants';
 import {
@@ -102,9 +103,9 @@ describe('genNextXDays', () => {
 // =============================================================================
 
 /** One candidate row, named the way buildSchedulePlan takes them */
-const candidate = (englishName: string, date: string, isoInstant: string, requestCost: number): CandidateRow => ({
+const candidate = (id: PrayerId, date: string, isoInstant: string, requestCost: number): CandidateRow => ({
   scheduleType: ScheduleType.Standard,
-  englishName,
+  id,
   date,
   instant: new Date(isoInstant),
   requestCost,
@@ -113,36 +114,36 @@ const candidate = (englishName: string, date: string, isoInstant: string, reques
 describe('buildSchedulePlan', () => {
   it('arms whole rows in time order until the budget is full', () => {
     const rows = [
-      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
-      candidate('Dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
-      candidate('Fajr', '2026-09-12', '2026-09-12T03:56:00.000Z', 3),
+      candidate('fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
+      candidate('dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
+      candidate('fajr', '2026-09-12', '2026-09-12T03:56:00.000Z', 3),
     ];
 
     const plan = buildSchedulePlan(rows, 6);
 
     // The budget holds the first two rows; the third is beyond it
-    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11']);
-    expect(plan.get('standard_Dhuhr')).toEqual(['2026-09-11']);
+    expect(plan.get('standard_fajr')).toEqual(['2026-09-11']);
+    expect(plan.get('standard_dhuhr')).toEqual(['2026-09-11']);
   });
 
   it('never arms a row in part, so a row too big for the remaining budget is left whole', () => {
     const rows = [
-      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
-      candidate('Dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
+      candidate('fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
+      candidate('dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
     ];
 
     // Room for the first row and one request of the second: the second must not be armed at all
     const plan = buildSchedulePlan(rows, 4);
 
-    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11']);
-    expect(plan.has('standard_Dhuhr')).toBe(false);
+    expect(plan.get('standard_fajr')).toEqual(['2026-09-11']);
+    expect(plan.has('standard_dhuhr')).toBe(false);
   });
 
   it('stops at the first row that does not fit rather than skipping it for a cheaper one', () => {
     const rows = [
-      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
-      candidate('Dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
-      candidate('Duha', '2026-09-11', '2026-09-11T13:00:00.000Z', 1),
+      candidate('fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
+      candidate('dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
+      candidate('duha', '2026-09-11', '2026-09-11T13:00:00.000Z', 1),
     ];
 
     // Skipping Dhuhr would leave a gap mid-span, making "covered until X" untrue
@@ -153,43 +154,43 @@ describe('buildSchedulePlan', () => {
 
   it('reads the rows in time order whatever order they arrive in', () => {
     const rows = [
-      candidate('Dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
-      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
+      candidate('dhuhr', '2026-09-11', '2026-09-11T12:02:00.000Z', 3),
+      candidate('fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3),
     ];
 
     const plan = buildSchedulePlan(rows, 3);
 
     // Fajr is earlier, so it is the row the budget buys
-    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11']);
-    expect(plan.has('standard_Dhuhr')).toBe(false);
+    expect(plan.get('standard_fajr')).toEqual(['2026-09-11']);
+    expect(plan.has('standard_dhuhr')).toBe(false);
   });
 
   it('gathers every armed day of one prayer under that prayer', () => {
     const rows = [
-      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1),
-      candidate('Fajr', '2026-09-12', '2026-09-12T03:56:00.000Z', 1),
-      candidate('Fajr', '2026-09-13', '2026-09-13T03:58:00.000Z', 1),
+      candidate('fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1),
+      candidate('fajr', '2026-09-12', '2026-09-12T03:56:00.000Z', 1),
+      candidate('fajr', '2026-09-13', '2026-09-13T03:58:00.000Z', 1),
     ];
 
     const plan = buildSchedulePlan(rows, 64);
 
-    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11', '2026-09-12', '2026-09-13']);
+    expect(plan.get('standard_fajr')).toEqual(['2026-09-11', '2026-09-12', '2026-09-13']);
   });
 
   it('keeps the two schedules apart, so a shared name cannot merge them', () => {
     const rows = [
-      candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1),
-      { ...candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1), scheduleType: ScheduleType.Extra },
+      candidate('fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1),
+      { ...candidate('fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 1), scheduleType: ScheduleType.Extra },
     ];
 
     const plan = buildSchedulePlan(rows, 64);
 
-    expect(plan.get('standard_Fajr')).toEqual(['2026-09-11']);
-    expect(plan.get('extra_Fajr')).toEqual(['2026-09-11']);
+    expect(plan.get('standard_fajr')).toEqual(['2026-09-11']);
+    expect(plan.get('extra_fajr')).toEqual(['2026-09-11']);
   });
 
   it('arms nothing when the budget cannot hold even the first row', () => {
-    const rows = [candidate('Fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3)];
+    const rows = [candidate('fajr', '2026-09-11', '2026-09-11T03:54:00.000Z', 3)];
 
     expect(buildSchedulePlan(rows, 2).size).toBe(0);
   });
@@ -198,7 +199,7 @@ describe('buildSchedulePlan', () => {
 describe('genScheduleDatesForPrayer, on the stored London days from 10 to 12 September 2026', () => {
   /** Every prayer armed at-time with both reminders: the worst case the budget must hold */
   const fullyArmed = () => 3;
-  const onlyFajr = (_scheduleType: ScheduleType, englishName: string) => (englishName === 'Fajr' ? 1 : 0);
+  const onlyFajr = (_scheduleType: ScheduleType, id: PrayerId) => (id === 'fajr' ? 1 : 0);
 
   beforeEach(() => {
     jest.useFakeTimers({ now: london('2026-09-10', '12:00') });
@@ -210,22 +211,22 @@ describe('genScheduleDatesForPrayer, on the stored London days from 10 to 12 Sep
   });
 
   it('starts a prayer on the first list day whose row can still fire', () => {
-    const isha = genScheduleDatesForPrayer(ScheduleType.Standard, 'Isha', fullyArmed);
+    const isha = genScheduleDatesForPrayer(ScheduleType.Standard, 'isha', fullyArmed);
 
     expect(isha[0]).toBe('2026-09-10');
   });
 
   it('gives a prayer nothing while its bell is off, so an unarmed row costs no budget', () => {
-    expect(genScheduleDatesForPrayer(ScheduleType.Standard, 'Isha', onlyFajr)).toEqual([]);
+    expect(genScheduleDatesForPrayer(ScheduleType.Standard, 'isha', onlyFajr)).toEqual([]);
   });
 
   it('arms every stored day of the one prayer a light user switched on', () => {
     // Fajr on the 10th has passed at 12:00, so the 11th and 12th are what remain
-    expect(genScheduleDatesForPrayer(ScheduleType.Standard, 'Fajr', onlyFajr)).toEqual(['2026-09-11', '2026-09-12']);
+    expect(genScheduleDatesForPrayer(ScheduleType.Standard, 'fajr', onlyFajr)).toEqual(['2026-09-11', '2026-09-12']);
   });
 
   it('stops at the end of the stored days rather than inventing more', () => {
-    const fajr = genScheduleDatesForPrayer(ScheduleType.Standard, 'Fajr', onlyFajr);
+    const fajr = genScheduleDatesForPrayer(ScheduleType.Standard, 'fajr', onlyFajr);
 
     expect(fajr.every((date) => date <= '2026-09-12')).toBe(true);
   });
@@ -235,7 +236,7 @@ describe('genScheduleDatesForPrayer, on the stored London days from 10 to 12 Sep
     // a null datetime, so the plan must drop it rather than carry a candidate with no instant.
     saveLondonDays({ '2026-09-11': ['fajr'] });
 
-    const days = genScheduleDatesForPrayer(ScheduleType.Standard, 'Fajr', onlyFajr);
+    const days = genScheduleDatesForPrayer(ScheduleType.Standard, 'fajr', onlyFajr);
 
     expect(days).toEqual(['2026-09-12']);
     expect(days).not.toContain('2026-09-11');
@@ -244,7 +245,7 @@ describe('genScheduleDatesForPrayer, on the stored London days from 10 to 12 Sep
   it('never plans a row whose instant is missing, whatever order the walk reached it in', () => {
     saveLondonDays({ '2026-09-11': ['fajr'] });
 
-    const rows = collectCandidateRows((_scheduleType, englishName) => (englishName === 'Fajr' ? 1 : 0));
+    const rows = collectCandidateRows((_scheduleType, id) => (id === 'fajr' ? 1 : 0));
 
     expect(rows.every((row) => row.instant instanceof Date)).toBe(true);
     expect(rows.map((row) => row.date)).not.toContain('2026-09-11');
@@ -257,27 +258,27 @@ describe('genScheduleDatesForPrayer, on the stored London days from 10 to 12 Sep
 
 describe('getNotificationSound', () => {
   it('returns false for non-Sound alert types', () => {
-    expect(getNotificationSound(AlertType.Off, 'Fajr', 0)).toBe(false);
-    expect(getNotificationSound(AlertType.Silent, 'Fajr', 0)).toBe(false);
-    expect(getNotificationSound(AlertType.Off, 'Sunrise', 0)).toBe(false);
-    expect(getNotificationSound(AlertType.Silent, 'Last Third', 0)).toBe(false);
+    expect(getNotificationSound(AlertType.Off, 'fajr', 0)).toBe(false);
+    expect(getNotificationSound(AlertType.Silent, 'fajr', 0)).toBe(false);
+    expect(getNotificationSound(AlertType.Off, 'sunrise', 0)).toBe(false);
+    expect(getNotificationSound(AlertType.Silent, 'last third', 0)).toBe(false);
   });
 
   it('returns the selected athan for the 5 daily prayers', () => {
-    expect(getNotificationSound(AlertType.Sound, 'Fajr', 0)).toBe('athan1.mp3');
-    expect(getNotificationSound(AlertType.Sound, 'Dhuhr', 1)).toBe('athan2.mp3');
-    expect(getNotificationSound(AlertType.Sound, 'Asr', 2)).toBe('athan3.mp3');
-    expect(getNotificationSound(AlertType.Sound, 'Magrib', 15)).toBe('athan16.mp3');
-    expect(getNotificationSound(AlertType.Sound, 'Isha', 31)).toBe('athan32.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'fajr', 0)).toBe('athan1.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'dhuhr', 1)).toBe('athan2.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'asr', 2)).toBe('athan3.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'magrib', 15)).toBe('athan16.mp3');
+    expect(getNotificationSound(AlertType.Sound, 'isha', 31)).toBe('athan32.mp3');
   });
 
   it('returns the fixed extras sound for Sunrise + all extras regardless of the selected athan (ISSUES #23 boundary)', () => {
-    expect(getNotificationSound(AlertType.Sound, 'Sunrise', 0)).toBe(EXTRAS_NOTIFICATION_SOUND);
-    expect(getNotificationSound(AlertType.Sound, 'Midnight', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
-    expect(getNotificationSound(AlertType.Sound, 'Last Third', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
-    expect(getNotificationSound(AlertType.Sound, 'Suhoor', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
-    expect(getNotificationSound(AlertType.Sound, 'Duha', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
-    expect(getNotificationSound(AlertType.Sound, 'Istijaba', 31)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'sunrise', 0)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'midnight', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'last third', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'suhoor', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'duha', 7)).toBe(EXTRAS_NOTIFICATION_SOUND);
+    expect(getNotificationSound(AlertType.Sound, 'istijaba', 31)).toBe(EXTRAS_NOTIFICATION_SOUND);
   });
 
   it('is case-insensitive on the prayer name', () => {
@@ -292,31 +293,31 @@ describe('getNotificationSound', () => {
 
 describe('genNotificationContent', () => {
   it('creates content with correct English-only title', () => {
-    const content = genNotificationContent('Fajr', AlertType.Sound, 0);
+    const content = genNotificationContent('fajr', AlertType.Sound, 0);
     expect(content.title).toBe('Fajr now');
     expect(content.body).toBeUndefined();
   });
 
   it('includes sound for Sound alert type', () => {
-    const content = genNotificationContent('Fajr', AlertType.Sound, 0);
+    const content = genNotificationContent('fajr', AlertType.Sound, 0);
     expect(content.sound).toBe('athan1.mp3');
   });
 
   it('uses the fixed extras sound for Sunrise + extras at-time content', () => {
-    const sunrise = genNotificationContent('Sunrise', AlertType.Sound, 4);
-    const lastThird = genNotificationContent('Last Third', AlertType.Sound, 4);
+    const sunrise = genNotificationContent('sunrise', AlertType.Sound, 4);
+    const lastThird = genNotificationContent('last third', AlertType.Sound, 4);
     expect(sunrise.title).toBe('Sunrise now');
     expect(sunrise.sound).toBe(EXTRAS_NOTIFICATION_SOUND);
     expect(lastThird.sound).toBe(EXTRAS_NOTIFICATION_SOUND);
   });
 
   it('returns false for sound on Silent alert type', () => {
-    const content = genNotificationContent('Fajr', AlertType.Silent, 0);
+    const content = genNotificationContent('fajr', AlertType.Silent, 0);
     expect(content.sound).toBe(false);
   });
 
   it('returns false for sound on Off alert type', () => {
-    const content = genNotificationContent('Fajr', AlertType.Off, 0);
+    const content = genNotificationContent('fajr', AlertType.Off, 0);
     expect(content.sound).toBe(false);
   });
 });
@@ -403,28 +404,28 @@ describe('athanAndroidChannelId', () => {
 
 describe('reminderAndroidChannelId', () => {
   it('builds _v3-suffixed per-prayer × interval channel IDs', () => {
-    expect(reminderAndroidChannelId('Fajr', 5)).toBe('reminder_fajr_5_v3');
-    expect(reminderAndroidChannelId('Istijaba', 30)).toBe('reminder_istijaba_30_v3');
+    expect(reminderAndroidChannelId('fajr', 5)).toBe('reminder_fajr_5_v3');
+    expect(reminderAndroidChannelId('istijaba', 30)).toBe('reminder_istijaba_30_v3');
   });
 
   it('slugs multi-word prayer names to filename-safe underscores', () => {
-    expect(reminderAndroidChannelId('Last Third', 15)).toBe('reminder_last_third_15_v3');
+    expect(reminderAndroidChannelId('last third', 15)).toBe('reminder_last_third_15_v3');
   });
 });
 
 describe('atTimeAndroidChannelId', () => {
   it('routes the 5 daily prayers to the selected athan channel', () => {
-    expect(atTimeAndroidChannelId('Fajr', 0)).toBe('athan_1_v4');
-    expect(atTimeAndroidChannelId('Isha', 31)).toBe('athan_32_v4');
+    expect(atTimeAndroidChannelId('fajr', 0)).toBe('athan_1_v4');
+    expect(atTimeAndroidChannelId('isha', 31)).toBe('athan_32_v4');
   });
 
   it('routes Sunrise + all extras to the fixed extras channel', () => {
-    expect(atTimeAndroidChannelId('Sunrise', 7)).toBe(extrasAndroidChannelId);
-    expect(atTimeAndroidChannelId('Midnight', 7)).toBe(extrasAndroidChannelId);
-    expect(atTimeAndroidChannelId('Last Third', 7)).toBe(extrasAndroidChannelId);
-    expect(atTimeAndroidChannelId('Suhoor', 7)).toBe(extrasAndroidChannelId);
-    expect(atTimeAndroidChannelId('Duha', 7)).toBe(extrasAndroidChannelId);
-    expect(atTimeAndroidChannelId('Istijaba', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('sunrise', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('midnight', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('last third', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('suhoor', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('duha', 7)).toBe(extrasAndroidChannelId);
+    expect(atTimeAndroidChannelId('istijaba', 7)).toBe(extrasAndroidChannelId);
   });
 });
 
@@ -456,7 +457,7 @@ describe('every channel this app creates plays on the alarm stream', () => {
   it.each([
     ['default athan', () => createDefaultAndroidChannel()],
     ['selected athan', () => createAthanAndroidChannel(11)],
-    ['reminder', () => createReminderAndroidChannel('Isha', 20)],
+    ['reminder', () => createReminderAndroidChannel('isha', 20)],
   ])('%s', async (_label, create) => {
     await create();
 
@@ -596,7 +597,7 @@ describe('deleteLegacyAndroidAudioChannels', () => {
       expect(new Set(deletedIds).size).toBe(deletedIds.length);
       expect(deletedIds).not.toContain(athanAndroidChannelId(0));
       expect(deletedIds).not.toContain(extrasAndroidChannelId);
-      expect(deletedIds).not.toContain(reminderAndroidChannelId('Fajr', 5));
+      expect(deletedIds).not.toContain(reminderAndroidChannelId('fajr', 5));
     });
   });
 });
@@ -642,47 +643,47 @@ describe('initializeNotifications', () => {
 
 describe('getReminderNotificationSound', () => {
   it('returns false for Off alert type', () => {
-    expect(getReminderNotificationSound(AlertType.Off, 'Fajr', 15)).toBe(false);
+    expect(getReminderNotificationSound(AlertType.Off, 'fajr', 15)).toBe(false);
   });
 
   it('returns false for Silent alert type', () => {
-    expect(getReminderNotificationSound(AlertType.Silent, 'Fajr', 15)).toBe(false);
+    expect(getReminderNotificationSound(AlertType.Silent, 'fajr', 15)).toBe(false);
   });
 
   it('returns the prayer × interval audio file for Sound alert type', () => {
-    expect(getReminderNotificationSound(AlertType.Sound, 'Fajr', 5)).toBe('reminder_fajr_5.mp3');
-    expect(getReminderNotificationSound(AlertType.Sound, 'Isha', 30)).toBe('reminder_isha_30.mp3');
+    expect(getReminderNotificationSound(AlertType.Sound, 'fajr', 5)).toBe('reminder_fajr_5.mp3');
+    expect(getReminderNotificationSound(AlertType.Sound, 'isha', 30)).toBe('reminder_isha_30.mp3');
   });
 
   it('slugs multi-word prayer names to filename-safe underscores', () => {
-    expect(getReminderNotificationSound(AlertType.Sound, 'Last Third', 15)).toBe('reminder_last_third_15.mp3');
+    expect(getReminderNotificationSound(AlertType.Sound, 'last third', 15)).toBe('reminder_last_third_15.mp3');
   });
 });
 
 describe('genReminderNotificationContent', () => {
   it('creates content with correct title format', () => {
-    const content = genReminderNotificationContent('Fajr', 15, AlertType.Sound);
+    const content = genReminderNotificationContent('fajr', 15, AlertType.Sound);
     expect(content.title).toBe('Fajr in 15m');
     expect(content.body).toBeUndefined();
   });
 
   it('creates content with different intervals', () => {
-    expect(genReminderNotificationContent('Dhuhr', 5, AlertType.Sound).title).toBe('Dhuhr in 5m');
-    expect(genReminderNotificationContent('Asr', 30, AlertType.Sound).title).toBe('Asr in 30m');
+    expect(genReminderNotificationContent('dhuhr', 5, AlertType.Sound).title).toBe('Dhuhr in 5m');
+    expect(genReminderNotificationContent('asr', 30, AlertType.Sound).title).toBe('Asr in 30m');
   });
 
   it('includes sound for Sound alert type', () => {
-    const content = genReminderNotificationContent('Fajr', 15, AlertType.Sound);
+    const content = genReminderNotificationContent('fajr', 15, AlertType.Sound);
     expect(content.sound).toBe('reminder_fajr_15.mp3');
   });
 
   it('returns false for sound on Silent alert type', () => {
-    const content = genReminderNotificationContent('Fajr', 15, AlertType.Silent);
+    const content = genReminderNotificationContent('fajr', 15, AlertType.Silent);
     expect(content.sound).toBe(false);
   });
 
   it('sets autoDismiss to true', () => {
-    const content = genReminderNotificationContent('Fajr', 15, AlertType.Sound);
+    const content = genReminderNotificationContent('fajr', 15, AlertType.Sound);
     expect(content.autoDismiss).toBe(true);
   });
 });
@@ -690,7 +691,7 @@ describe('genReminderNotificationContent', () => {
 describe('createReminderAndroidChannel', () => {
   it('does not throw on iOS (returns early)', async () => {
     // Default mock has Platform.OS = 'ios'
-    await expect(createReminderAndroidChannel('Fajr', 15)).resolves.toBeUndefined();
+    await expect(createReminderAndroidChannel('fajr', 15)).resolves.toBeUndefined();
   });
 
   describe('on Android', () => {
@@ -704,7 +705,7 @@ describe('createReminderAndroidChannel', () => {
     });
 
     it('creates the per-prayer × interval channel on the alarm stream with the matching mp3 sound', async () => {
-      await createReminderAndroidChannel('Fajr', 15);
+      await createReminderAndroidChannel('fajr', 15);
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
@@ -725,7 +726,7 @@ describe('createReminderAndroidChannel', () => {
     });
 
     it('slugs multi-word prayer names into the channel id and sound file', async () => {
-      await createReminderAndroidChannel('Last Third', 5);
+      await createReminderAndroidChannel('last third', 5);
 
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
         'reminder_last_third_5_v3',
@@ -734,8 +735,8 @@ describe('createReminderAndroidChannel', () => {
     });
 
     it('creates a channel once per prayer × interval across repeated calls (reschedule cycles)', async () => {
-      await createReminderAndroidChannel('Suhoor', 10);
-      await createReminderAndroidChannel('Suhoor', 10);
+      await createReminderAndroidChannel('suhoor', 10);
+      await createReminderAndroidChannel('suhoor', 10);
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
     });

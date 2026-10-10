@@ -1,9 +1,10 @@
+import type { COUNTDOWN_WAITING_NAME, PrayerId } from '@/shared/constants';
+
 /**
  * Raw API response structure for a single day's prayer times
  *
  * This represents the unprocessed data received from the prayer times API.
  * Contains both individual prayer times and congregation (jamat) times.
- *
  * Note: Only the 6 main prayer times (fajr, sunrise, dhuhr, asr, magrib, isha)
  * are used by the app. Jamat times and asr_2 are fetched but not displayed.
  *
@@ -266,8 +267,8 @@ export enum Icon {
 interface PrayerRow {
   /** Schedule type: 'standard' or 'extra' */
   type: ScheduleType;
-  /** English name: "Fajr", "Isha", "Midnight", etc. */
-  english: string;
+  /** The prayer's id: the stored key and identifier form; display resolves it through prayerLabel */
+  id: PrayerId;
   /** Which Islamic day this prayer belongs to (per ADR-004)
    * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day) */
   belongsToDate: string;
@@ -330,7 +331,8 @@ export interface CountdownStore {
    * be read, or the list on screen has no readable time left to come
    */
   timeLeft: number | null;
-  name: string;
+  /** The prayer's id, or the waiting marker; the display atom resolves the label */
+  name: PrayerId | typeof COUNTDOWN_WAITING_NAME;
 }
 
 export interface OverlayStore {

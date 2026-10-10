@@ -11,6 +11,7 @@ import { type Atom, atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { TIME_CONSTANTS } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import {
@@ -86,7 +87,7 @@ const findPreviousPrayer = (
     'SCHEDULE: Row just above next is missing, has no time, is out of order, or is still to come, progress bar unavailable',
     {
       type,
-      next: next.english,
+      next: prayerLabel(next.id),
       listBefore,
     }
   );
@@ -304,7 +305,7 @@ const settleBoundary = (type: ScheduleType): void => {
  * London year (2,928 sequences, 40,692 rows, zero collisions) and over a
  * synthetic >60N block whose Magrib and Isha both fall after midnight.
  */
-const prayerIdentity = (prayer: Prayer): string => `${prayer.english}_${prayer.belongsToDate}`;
+const prayerIdentity = (prayer: Prayer): string => `${prayer.id}_${prayer.belongsToDate}`;
 
 /**
  * Signature identifying a sequence's content, used by setSequence to skip identical writes.

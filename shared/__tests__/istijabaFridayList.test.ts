@@ -44,31 +44,31 @@ describe("Istijaba on Friday's list when Magrib falls after 00:00", () => {
   ])('with Magrib at $magrib, only the 26 June list has Istijaba, at $datetime', ({ magrib, isha, datetime, time }) => {
     storeDays(magrib, isha);
 
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-06-25')).toBeNull();
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-06-27')).toBeNull();
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-06-26')).toEqual({
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-06-25')).toBeNull();
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-06-27')).toBeNull();
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-06-26')).toEqual({
       type: ScheduleType.Extra,
-      english: 'Istijaba',
+      id: 'istijaba',
       datetime: new Date(datetime),
       time,
       belongsToDate: '2026-06-26',
     });
 
     const lists = createPrayerSequence(ScheduleType.Extra, new Date('2026-06-25T11:00:00.000Z'), 3).prayers;
-    expect(lists.map((row) => `${row.belongsToDate} ${row.english}`)).toEqual([
-      '2026-06-25 Midnight',
-      '2026-06-25 Last Third',
-      '2026-06-25 Suhoor',
-      '2026-06-25 Duha',
-      '2026-06-26 Midnight',
-      '2026-06-26 Last Third',
-      '2026-06-26 Suhoor',
-      '2026-06-26 Duha',
-      '2026-06-26 Istijaba',
-      '2026-06-27 Midnight',
-      '2026-06-27 Last Third',
-      '2026-06-27 Suhoor',
-      '2026-06-27 Duha',
+    expect(lists.map((row) => `${row.belongsToDate} ${row.id}`)).toEqual([
+      '2026-06-25 midnight',
+      '2026-06-25 last third',
+      '2026-06-25 suhoor',
+      '2026-06-25 duha',
+      '2026-06-26 midnight',
+      '2026-06-26 last third',
+      '2026-06-26 suhoor',
+      '2026-06-26 duha',
+      '2026-06-26 istijaba',
+      '2026-06-27 midnight',
+      '2026-06-27 last third',
+      '2026-06-27 suhoor',
+      '2026-06-27 duha',
     ]);
   });
 });

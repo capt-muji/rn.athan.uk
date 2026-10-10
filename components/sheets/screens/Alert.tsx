@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import {
   type AlertMenuState,
   AlertType,
@@ -79,19 +80,13 @@ export default function BottomSheetAlert() {
 
     const originalState = body.getOriginalState();
     const currentState = body.getCurrentState();
-    await commitAlertMenuChanges(
-      sheetState.type,
-      sheetState.index,
-      sheetState.prayerEnglish,
-      originalState,
-      currentState
-    );
+    await commitAlertMenuChanges(sheetState.type, sheetState.index, sheetState.prayerId, originalState, currentState);
   }, [sheetState, commitAlertMenuChanges]);
 
   return (
     <Sheet
       setRef={setAlertSheetModal}
-      title={sheetState?.prayerEnglish ?? ''}
+      title={sheetState ? prayerLabel(sheetState.prayerId) : ''}
       subtitle='Close to save'
       icon={<IconView type={Icon.BELL_RING} size={16} color='rgba(165, 180, 252, 0.8)' />}
       enableDynamicSizing

@@ -45,7 +45,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     expect(getDefaultStore().get(alertSheetStateAtom)).toEqual({
       type: ScheduleType.Standard,
       index: FAJR,
-      prayerEnglish: 'Fajr',
+      prayerId: 'fajr',
       isUnavailable: false,
     });
   });
@@ -58,7 +58,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     await fireEvent.press(screen.getByRole('button', { name: 'Fajr notification: sound' }));
 
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
-    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerEnglish: 'Fajr', isUnavailable: false });
+    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerId: 'fajr', isUnavailable: false });
   });
 
   it('opens the explanation, without checking permission, when the time on screen is unreadable', async () => {
@@ -69,7 +69,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     await fireEvent.press(screen.getByRole('button', { name: 'Fajr notification: unavailable' }));
 
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
-    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerEnglish: 'Fajr', isUnavailable: true });
+    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerId: 'fajr', isUnavailable: true });
   });
 
   // [saved alert in words, saved alert, the icon it draws]

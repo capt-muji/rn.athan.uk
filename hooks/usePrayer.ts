@@ -7,6 +7,7 @@
 import { useAtomValue } from 'jotai';
 
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
+import type { PrayerId } from '@/shared/constants';
 import { findNextOccurrence } from '@/shared/sequence';
 import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
 import { englishWidthExtraAtom, englishWidthStandardAtom } from '@/stores/ui';
@@ -59,6 +60,9 @@ export const isShownOccurrenceUnavailable = (
 export const getShownAlert = (isUnavailable: boolean, saved: AlertType): AlertType =>
   isUnavailable ? AlertType.Off : saved;
 
+/** The id the loading frame reports: no row's name slot is drawn while it is on screen */
+const LOADING_PRAYER_ID: PrayerId = 'fajr';
+
 /**
  * Hook for accessing individual prayer data with derived status
  *
@@ -87,7 +91,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   // Loading state or index out of range (schedule refreshed mid-selection)
   if (!isReady || !prayer) {
     return {
-      english: '',
+      id: LOADING_PRAYER_ID,
       time: '',
       date: '',
       index: 0,

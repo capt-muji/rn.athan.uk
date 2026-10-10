@@ -56,13 +56,13 @@ describe('computeScheduleView', () => {
   it('gives the list on screen with its next row and its first readable row', () => {
     const view = viewAt(ScheduleType.Standard, '2026-09-10', { '2026-09-11': ['fajr'] }, '2026-09-10', '21:00');
 
-    expect(view.prayers.map((row) => `${row.english} ${row.belongsToDate}`)).toEqual([
-      'Fajr 2026-09-11',
-      'Sunrise 2026-09-11',
-      'Dhuhr 2026-09-11',
-      'Asr 2026-09-11',
-      'Magrib 2026-09-11',
-      'Isha 2026-09-11',
+    expect(view.prayers.map((row) => `${row.id} ${row.belongsToDate}`)).toEqual([
+      'fajr 2026-09-11',
+      'sunrise 2026-09-11',
+      'dhuhr 2026-09-11',
+      'asr 2026-09-11',
+      'magrib 2026-09-11',
+      'isha 2026-09-11',
     ]);
     expect(view).toMatchObject({ nextPrayerIndex: 1, firstReadableIndex: 1, isLastPrayerPassed: false });
   });
@@ -236,7 +236,7 @@ describe('useSchedule', () => {
 
     const schedule = useSchedule(ScheduleType.Standard);
 
-    expect(schedule.prayers.map((row) => row.english)).toEqual(['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha']);
+    expect(schedule.prayers.map((row) => row.id)).toEqual(['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha']);
     expect(schedule).toMatchObject({
       displayDate: '2026-09-11',
       nextPrayerIndex: 1,

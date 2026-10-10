@@ -68,7 +68,7 @@ export default function OverlayInfoBox({ type }: Props) {
     ? { top: rowTop + TIP_OVERLAP, transform: [{ translateY: '-100%' }], left: 0, width: '100%' }
     : { top: rowTop + STYLES.prayer.height - TIP_OVERLAP, left: 0, width: '100%' };
 
-  const { prayerName, explanation } = getOverlayExplanation(type, selectedPrayer.english);
+  const { prayerName, explanation } = getOverlayExplanation(type, selectedPrayer.id);
 
   if (!prayerName || !explanation) return null;
 

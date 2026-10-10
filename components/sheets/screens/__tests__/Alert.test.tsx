@@ -7,7 +7,7 @@ import * as Notifications from 'expo-notifications';
 import { Alert } from 'react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import {
   getPrayerAlertType,
@@ -70,7 +70,7 @@ const openSheetFor = (index: number, isUnavailable = false) =>
   showAlertSheet({
     type: ScheduleType.Standard,
     index,
-    prayerEnglish: PRAYERS_ENGLISH[index],
+    prayerId: STANDARD_PRAYER_IDS[index],
     isUnavailable,
   });
 
@@ -343,7 +343,7 @@ describe('the alert sheet for Duha on the Extras list, Friday 11 September 2026 
     showAlertSheet({
       type: ScheduleType.Extra,
       index: DUHA,
-      prayerEnglish: EXTRAS_ENGLISH[DUHA],
+      prayerId: EXTRA_PRAYER_IDS[DUHA],
       isUnavailable: false,
     });
     await render(<AlertSheet />);

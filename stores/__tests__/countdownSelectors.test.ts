@@ -79,8 +79,8 @@ describe('getCountdownNameAtom', () => {
 
   it('names what each page counts to, while the two pages count to different prayers', () => {
     const store = createStore();
-    store.set(standardCountdownAtom, { timeLeft: 7200, name: 'Dhuhr' });
-    store.set(extraCountdownAtom, { timeLeft: 1800, name: 'Duha' });
+    store.set(standardCountdownAtom, { timeLeft: 7200, name: 'dhuhr' });
+    store.set(extraCountdownAtom, { timeLeft: 1800, name: 'duha' });
 
     expect(store.get(getCountdownNameAtom(ScheduleType.Standard))).toBe('Dhuhr');
     expect(store.get(getCountdownNameAtom(ScheduleType.Extra))).toBe('Duha');
@@ -92,16 +92,16 @@ describe('getCountdownNameAtom', () => {
       const store = createStore();
       const source = type === ScheduleType.Standard ? standardCountdownAtom : extraCountdownAtom;
       const other = type === ScheduleType.Standard ? extraCountdownAtom : standardCountdownAtom;
-      store.set(source, { timeLeft: 3, name: 'Asr' });
+      store.set(source, { timeLeft: 3, name: 'asr' });
       const names: string[] = [];
       const unsubscribe = store.sub(getCountdownNameAtom(type), () =>
         names.push(store.get(getCountdownNameAtom(type)))
       );
 
-      store.set(source, { timeLeft: 2, name: 'Asr' });
-      store.set(source, { timeLeft: 1, name: 'Asr' });
-      store.set(other, { timeLeft: 50, name: 'Isha' });
-      store.set(source, { timeLeft: 5400, name: 'Magrib' });
+      store.set(source, { timeLeft: 2, name: 'asr' });
+      store.set(source, { timeLeft: 1, name: 'asr' });
+      store.set(other, { timeLeft: 50, name: 'isha' });
+      store.set(source, { timeLeft: 5400, name: 'magrib' });
 
       expect(names).toEqual(['Magrib']);
       unsubscribe();
@@ -175,10 +175,10 @@ describe.each([
 
       // 60 seconds later: Standard 3660 / 7200 = 50.8333%, Extras 7260 / 7800 = 93.0769%
       jest.setSystemTime(new Date(now.getTime() + 60_000));
-      store.set(other, { timeLeft: 1, name: 'Other' });
+      store.set(other, { timeLeft: 1, name: 'fajr' });
       expect(store.get(getBarProgressAtom(type))).toBe(before);
 
-      store.set(own, { timeLeft: 1, name: 'Own' });
+      store.set(own, { timeLeft: 1, name: 'isha' });
       const expected = type === ScheduleType.Standard ? (3660 / 7200) * 100 : (7260 / 7800) * 100;
       expect(store.get(getBarProgressAtom(type))).toBeCloseTo(expected, 6);
     }

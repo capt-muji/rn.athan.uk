@@ -10,6 +10,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
 import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
@@ -68,7 +69,7 @@ export default function Prayer({ type, index }: Props) {
 
     const action = getRowPressAction({
       isStandard: Schedule.isStandard,
-      english: Prayer.english,
+      id: Prayer.id,
       isPassed: Prayer.isPassed,
       isSelectedForOverlay,
     });
@@ -82,8 +83,8 @@ export default function Prayer({ type, index }: Props) {
       onPress={handlePress}
       accessibilityElementsHidden={isHiddenByOverlay}
       importantForAccessibility={isHiddenByOverlay ? 'no-hide-descendants' : 'auto'}>
-      <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, colorStyle]}>
-        {Prayer.english}
+      <Animated.Text style={[styles.text, styles.name, computedStyleEnglish, colorStyle]}>
+        {prayerLabel(Prayer.id)}
       </Animated.Text>
       <Time index={index} type={type} />
       <Alert index={index} type={type} />
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
   },
-  english: {
+  name: {
     paddingLeft: STYLES.prayer.padding.left,
   },
 });
