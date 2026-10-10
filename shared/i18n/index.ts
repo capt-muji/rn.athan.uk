@@ -10,6 +10,22 @@ import { currentCatalog, currentPrayerLabels } from './loader';
 
 export { en, PRAYER_LABELS } from './en';
 
-export const t = (key: TranslationKey): string => currentCatalog()[key];
+/** The parameters a key's `{token}`s take; a key with no tokens takes none */
+export type ParamsOf<K extends TranslationKey> = K extends 'notification.now'
+  ? { name: string | number }
+  : K extends 'notification.reminder'
+    ? { name: string | number; n: number }
+    : undefined;
+
+const TOKEN = /\{(\w+)\}/g;
+
+export const t = <K extends TranslationKey>(key: K, params?: ParamsOf<K>): string =>
+  currentCatalog()[key].replace(TOKEN, (_match, token: string) => {
+    const supplied = (params as Record<string, string | number> | undefined)?.[token];
+    if (supplied === undefined) {
+      throw new Error(`i18n: missing parameter '${token}' for key '${key}'`);
+    }
+    return String(supplied);
+  });
 
 export const prayerLabel = (id: PrayerId): string => currentPrayerLabels()[id];

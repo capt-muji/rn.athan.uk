@@ -87,6 +87,52 @@ Done-when grep `\.english` outside `__tests__` returns nothing. The stylesheet k
 stale `@param`/comment mentions renamed with it. One production `toLowerCase()` survives,
 in the migration loop, exactly as the step mandates.
 
+Version 1.29.326 (origin fetched first; origin/uat sits one merge behind local uat at
+53eecb99, nothing newer to race). Committed `872619f8`, merged into `uat` as `874ec768`.
+Hook: `Tests: 5255 passed, 5255 total`, four 100% lines (Statements 4940/4940, Branches
+2143/2143, Functions 1031/1031, Lines 4423/4423). Review: one pass, cold over
+`git show 872619f8`, nothing to fix - no lifecycle, thread or worklet line in the diff;
+`getPrayerArrays` consumers all id-consistent (two indexOf sites, two positional walks);
+the title arrays live only in their migration-era and width-measurement homes; identifiers
+and keys byte-identical throughout, proven by the contract test green in the commit's own
+hook run (the Rule pin).
+
+## Step 7: the bridge and interpolation
+
+- Branch `feat/38-07-bridge` off `uat`. The step's two anchors (`content-builders`,
+  `reminder-content`) hold the post-step-04 text and step 06 consumed them by design (the
+  step file's own parenthetical: edit against the post-06 shape) - the live regions match
+  that shape, verified before editing.
+- Red, recorded: `i18nBridge.test.ts` written (bare-mode parity plus the runner modes);
+  tsc line `TS2554: Expected 1 arguments, but got 2` at the interpolation test (t took no
+  second argument) plus `TS2305 ... no exported member 'ParamsOf'`; runtime `2 failed`
+  (interpolation, token coverage). The notifications addition 'builds the titles from the
+  catalog templates' failed tsc on the same lines (the template keys did not exist yet).
+  The step's red-2 note "fails before (signature)" predates the replan: step 06 already
+  landed the builder signature, so the red is the missing catalog keys, not the signature.
+  Plan-text slip, recorded.
+- Contracts: `t` gained `{token}` interpolation with the exact missing-parameter throw;
+  `ParamsOf` is the four-line conditional. The plan's prose signature
+  (`params?: Record<string, string | number>`) is looser than A6's "typed per key", so
+  `ParamsOf` is wired into `t`'s own parameter (a production read, no allowlist entry
+  needed) and the two deliberate-violation throw pins carry an explicit
+  `as ParamsOf<...>` cast to get past the typing they exist to police.
+- The bridge: `i18nBridge.test.ts` doubles as the runner (export writes
+  `shared/i18n/dist/en.json` and exits 0; import reads `<I18N_LOCALE or en>.json` and
+  asserts identity). `yarn i18n:export` / `yarn i18n:import` exit 0 (the package.json
+  entries verbatim from contract 5), and `scripts/i18n-export.mjs` / `scripts/i18n-import.mjs`
+  wrap the same command for the pipeline (both verified exit 0). `shared/i18n/dist/` is
+  gitignored (the existing `dist` rule covers it); no artefact staged.
+- The two templates joined `en.ts` (`notification.now: '{name} now'`,
+  `notification.reminder: '{name} in {n}m'`) and the builders read them through `t`;
+  the existing pins `'Fajr now'` and `'Fajr in 15m'` still pass unchanged - the byte-parity
+  proof the review names.
+- The unused-export gate retired `t`'s allowlist entry (step 7 reaches it in production;
+  step 5's log said removal rides whichever step reaches it).
+- Breaks: 3 of 3 AS EXPECTED (template uppercased fails the title pin; throw dropped fails
+  the bridge assertion; one value nested fails the flat-string parity), restore green:
+  `ALL AS EXPECTED: 1`.
+
 
 ## Step 5: the id vocabulary and the catalog
 

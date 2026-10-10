@@ -78,6 +78,9 @@ export const en = {
   'whatsNew.title.qiblaCompass': 'Qibla compass',
   'whatsNew.body.qiblaCompass':
     'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
+
+  'notification.now': '{name} now',
+  'notification.reminder': '{name} in {n}m',
 } as const satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;
