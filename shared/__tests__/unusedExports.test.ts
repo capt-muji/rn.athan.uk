@@ -19,6 +19,10 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
   MAX_WHATS_NEW_ARCHIVE: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_TITLE_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_BODY_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
+  t: 'The catalog read every wave renders through; only i18n.test.ts imports it until step 08',
+  prayerLabel: 'The id-to-label read step 06 wires into every display site',
+  PRAYER_IDS: 'The vocabulary step 06 walks (listPosition, getPrayerNamesForDate); pinned by i18n.test.ts meanwhile',
+  StoredPrayerId: 'The record-lookup narrowing step 06 types shared/prayer.ts with',
 };
 
 const ROOT = join(__dirname, '..', '..');

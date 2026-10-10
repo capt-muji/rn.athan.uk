@@ -1,5 +1,45 @@
 # Execution log: Job 38
 
+## Step 5: the id vocabulary and the catalog
+
+- Branch `feat/38-05-catalog` off `uat`. Red: the suite failed on the absent module
+  (`Could not locate module @/shared/i18n`, jest 30's phrasing of the step's named
+  `Cannot find module`), recorded before any module existed.
+- `shared/constants.ts` gained the five declarations beside the title-case arrays:
+  `STANDARD_PRAYER_IDS` after `PRAYERS_ENGLISH`, `EXTRA_PRAYER_IDS` ('last third' with the
+  space), `PrayerId`, `StoredPrayerId`, `PRAYER_IDS` (spread concatenation, `as const`)
+  after `EXTRAS_ENGLISH`.
+- Catalog membership, recorded because the census number is not a membership: the
+  planning census (`inventory-strings.py`) counts capitalised regex ROWS per file, so its
+  "27 help strings" double-counts platform-repeated rows, glues multi-string lines into one
+  row, and misses every literal over 80 chars or containing `\n`. The distinct user-visible
+  help strings are 30 (7 questions, 9 answers, 13 steps, the dndAccess action label);
+  What's New is exactly 14 (7 titles, 7 bodies - the census reached 14 by a different
+  arithmetic that counted the Android badge twice and dropped two long bodies); Settings is
+  the 9 labels the contract enumerates. The catalog holds all of them, keys in step 08's
+  shapes (`help.q/a/step.x`, `whatsNew.title/body.x`, `settings.*`, plus
+  `help.action.dndAccess` for the action label). Step 08 item 4 remains the completion net.
+- `PRAYER_LABELS` is an inline-annotated `Record<PrayerId, string>` in `en.ts`, every value
+  read out of the catalog's own `prayer.*` members; `prayer.last third` carries the space.
+  `index.ts` re-exports `en` and `PRAYER_LABELS`; the loader is the only path `t` and
+  `prayerLabel` read through.
+- Unused-export gate: fired on exactly the four predicted symbols (`t`, `prayerLabel`,
+  `PRAYER_IDS`, `StoredPrayerId`), added to `REACHED_WITHOUT_AN_IMPORT` with reasons naming
+  the reaching step (06 for prayerLabel/PRAYER_IDS/StoredPrayerId, 08 for `t`). Removal
+  rides those steps.
+- Green: i18n + contract suites 13 passed; full suite `190 suites, 5253 passed`, four 100%
+  coverage lines (4937/2144/1031/4422). tsc clean. Biome clean (formatter reflowed three
+  long strings and organised imports in the new files).
+- Breaks: 3 of 3 AS EXPECTED. Break 2's named compiler line:
+  `shared/i18n/en.ts(92,14): error TS2741: Property 'duha' is missing ... but required in
+  type 'Record<PrayerId, string>'`. Restore green, bytes identical to backup,
+  `ALL AS EXPECTED: 1`.
+- Step-text slips, no plan change needed: break 2 says "in `index.ts`" but contracts 2 and
+  3 place `PRAYER_LABELS` in `en.ts`; the deletion ran where the Record lives. Jest 30's
+  default reporter prints `● describe › test` blocks, never the ✕/✓ glyphs; the break
+  script matches the ● lines and the summary counts.
+- Version 1.29.325.
+
 ## Deep review at close (steps 1 to 4)
 
 Read the whole executed range `5d0ca54c..HEAD` cold (58 files, +416/-680, plus this
