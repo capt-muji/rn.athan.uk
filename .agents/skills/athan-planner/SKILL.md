@@ -98,7 +98,7 @@ The grilling comes before any drafting: all the decisions, taken now, recorded n
    verifies it before anything depends on it. `explore` workers may gather facts; you
    verify every anchor yourself.
 3. Prove the risky parts in a scratch worktree
-   (`git worktree add --detach ~/athan-gitree/worktrees/plan-<N> uat`, `node_modules`
+   (`git worktree add --detach $HOME/athan-gitree/worktrees/plan-<N> uat`, `node_modules`
    symlinked): run a throwaway version of each new test against today's code, record its
    first failing line, build the change, confirm tsc, Biome and the named tests, run the
    breaks you are least sure of, record observed output as the expected output, delete
@@ -181,12 +181,16 @@ the note says, then finish as section 8 says.
   project with `npx jest <path> --watchman=false --selectProjects=<project>`.
 - The device is a OnePlus 3T (`3T_SERIAL`), Android 9, package `com.mugtaba.athan`.
   Build scripts run with `zsh`, end `BUILD-PROD OK` or `BUILD-MOCK OK`, write `.apk`
-  outside `/tmp` and the repo. `~/athan-gitree/BUILD.md` is the mock recipe. Device
-  checks: `python3 ~/athan-gitree/bin/devcheck.py <step>`. Clock changes:
+  outside `/tmp` and the repo. `$HOME/athan-gitree/BUILD.md` is the mock recipe. Device
+  checks: `python3 $HOME/athan-gitree/bin/devcheck.py <step>`. Clock changes:
   `settings put global auto_time 0`, then `service call alarm 2 i64 <epoch ms>`,
   restore with `auto_time 1`. A forward jump fires every armed alarm it passes, so read
   `dumpsys alarm` first. Every expected-alarm list also names the unexplained app alarm
   at `when 2104803640505`.
+- The Ramadan mock is `$HOME/athan-gitree/bin/build-mock-ramadan.zsh <ref> <mocks-file> <out.apk>`,
+  `build-mock.zsh` with `EXPO_PUBLIC_FORCE_RAMADAN=1`.
+- `devcheck.py` writes under `sessions/mockcheck/` whatever the job, so a plan copies each
+  cited file to `sessions/<N>/`.
 - `uiautomator dump` fails silently while the countdown animates. Prove the screen with
   logcat lines, alarm dumps and screenshots read by the reader itself or `vision`.
   Device coordinates live in `e2e/device-atlas-<model>.md`, never in a plan.

@@ -104,7 +104,7 @@ The queue is the only tracking file. DONE rows keep order number and short name 
 - Blast radius decides, not the version number. Measure before queuing: install the candidate in a scratch worktree, run `tsc`, Biome and the full suite, count what fails.
 - A patch, minor or harmless major batches with the others: one commit each, one job.
 - A major that breaks code, tests or tooling gets its own job.
-- Two breaking majors never share a session, even on separate branches: each needs its own device proof, and a failure with two suspects costs more to diagnose than the two sessions save.
+- Two breaking majors never share a job, even on separate branches: each needs its own device proof, and a failure with two suspects costs more to diagnose than the two jobs save.
 - A major blocked upstream is not queued until the blocker moves. The four `@babel` packages belong to row 18.
 - One package per branch and per commit always, because `yarn.lock` is one resolved graph and two packages in a commit cannot be reverted apart.
 
@@ -124,7 +124,7 @@ A planning session may turn one of these into a plan only after the owner approv
 
 - Briefs: the `athan-planner` and `athan-lead` skills in `.agents/skills/`, the `athan-executor`, `athan-reviewer` and `athan-plan-griller` workers in `.opencode/agents/`, started with `/athan-plan` and `/athan-run`. `SDK58-PROGRAMME.md` holds the job 18 and D4 briefs.
 - `TEMPLATE.md` fixes the shape of every plan. A plan folder is scaffolding: it is created at PLANNING and deleted at DONE, in the merge that lands the work.
-- Surviving session folders: `27-silent-mode-bypass/FINDINGS.md` (cited by `shared/help.ts`), `39-localisation/` (rows 38 and 39) and `54-patches-and-copy/FINDINGS.md` (row 54). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other session's record lives in git history.
+- Surviving job folders: `27-silent-mode-bypass/FINDINGS.md` (cited by `shared/help.ts`), `39-localisation/` (rows 38 and 39) and `54-patches-and-copy/FINDINGS.md` (row 54). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other job's record lives in git history.
 
 ## Who changes a status, and who pushes
 
