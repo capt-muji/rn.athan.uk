@@ -1,0 +1,10 @@
+    sourceNames.forEach((prayerName, index) => {
+      // The index says what the key MEANT when it was written; the atom arrays are
+      // built from today's order, so the destination is resolved by name
+      const currentIndex = currentNames.indexOf(prayerName);
+      if (currentIndex === -1) return;
+
+      const name = prayerName.toLowerCase();
+      const alertAtom = alertAtoms[currentIndex];
+      const reminderAtom = reminderAtoms[currentIndex];
+      const intervalAtom = intervalAtoms[currentIndex];

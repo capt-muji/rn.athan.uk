@@ -6,8 +6,10 @@ plural guard and the en byte-parity test. No call site migrates yet: production 
 `Prayer.english` until step 06. This step only adds; the one edit inside existing code is the
 constants file gaining the id arrays beside the title-case arrays.
 
+Requirements: R3.1, R3.2, R4.2
+
 - Branch: `feat/38-05-catalog`
-- Anchors: `constants-arrays`, `night-branch`
+- Anchors: `constants-standard`, `constants-extras`, `night-branch`
 - Files added: `shared/i18n/en.ts`, `shared/i18n/loader.ts`, `shared/i18n/index.ts`,
   `shared/__tests__/i18n.test.ts`
 - Files changed: `shared/constants.ts` (id arrays added beside the name arrays)

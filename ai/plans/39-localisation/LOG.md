@@ -106,6 +106,8 @@ immediately before `git commit -F`.
 
 ## Replan 2026-10-10: the anchor ownership repair
 
+> The gate retrofit below landed later the same session, on the owner's ruling; read both.
+
 The k=5 pre-flight failure was the plan's, not the tree's. Root cause, verified this session:
 the pre-flight map gave each anchor one owning step, but step 04's own contracts mandated
 edits inside regions the map assigned to steps 05, 06 and 07, so their anchor files zeroed.
@@ -132,6 +134,26 @@ Repair, all inside the plan folder:
 - Ownership rule recorded in PLAN.md section 4. No step contract changed; no app code
   touched. The decision (regenerate AND re-own, each where it applies) is mechanical
   planning machinery, taken on the code evidence; nothing here is an owner ruling.
+
+## Gate retrofit 2026-10-10 (owner ruling: retrofit row 38 now)
+
+The plan predates `scripts/check-plan.sh` (planned at 1.29.305, gate born at 1.29.316) and
+failed it on 31 findings, every one pre-existing (the anchor repair itself removed two and
+added none; verified by running the gate before and after on both trees). The owner chose
+retrofit over record-and-continue. What landed, all plan-folder bytes:
+
+- EARS acceptance criteria R1.1 to R9.1 added to PLAN.md section 5; every step file opens
+  with a `Requirements:` line citing its criteria; every criterion resolves to a step.
+- Every anchor over 15 lines split into named pieces (channel-reminder, constants-arrays,
+  countdown-name, device-ids, extras-channel, migration-core, setwidth, slug,
+  version-keeplist, version-upgrade); every anchor under 3 lines widened (explanation-arabic,
+  shownames-atom). The pre-flight map, the step Anchors lines and the in-contract anchor
+  mentions carry the new names; 50 anchors owned by steps 05 to 13 all count exactly 1.
+- The one banned hedge word in step 04 rewritten.
+- `scripts/regenerate-anchors-38.sh` deleted: its output is superseded by the split files,
+  and git history holds it. PLAN.md section 4 names git history as the record.
+
+`scripts/check-plan.sh` prints `PLAN OK`. No step contract changed and no app code touched.
 
 ## Resume from: step 5, part 0 (replan landed)
 

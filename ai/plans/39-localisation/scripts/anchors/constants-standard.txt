@@ -7,10 +7,3 @@ export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Is
 // =============================================================================
 // SPECIAL PRAYERS (EXTRAS)
 // =============================================================================
-
-/**
- * English names for 5 special/blessed prayer times
- * Order: Midnight, Last Third, Suhoor, Duha, Istijaba
- * Note: Istijaba only displays on Fridays
- */
-export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];

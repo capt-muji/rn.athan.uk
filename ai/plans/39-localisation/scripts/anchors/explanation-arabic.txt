@@ -1,2 +1,4 @@
+
         {/* English explanation */}
         <Text style={styles.infoExplanation}>{explanation}</Text>
+      </View>

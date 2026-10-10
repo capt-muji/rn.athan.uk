@@ -5,16 +5,20 @@
 narrows through `StoredPrayerId` and the unsafe cast dies. The migration is rewritten line by
 line. The firewall fixtures join the contract test.
 
+Requirements: R1.1, R2.1, R3.1
+
 - Branch: `feat/38-06-union`
 - Anchors: `prayerrow-type`, `namesforDate`, `unreadable-row`, `night-branch`, `atom-factory`,
-  `reminder-atoms`, `migration-core`, `multi-schedule-sig`, `reschedule-head`,
-  `reschedule-generations`, `useprayer-sentinel`, `countdown-seed`, `countdown-name`,
-  `ago-text`, `rowpress-istijaba`, `sequence-listposition`, `plan-key`, `device-ids`, `slug`,
-  `scheduled-record-type`
+  `reminder-atoms`, `migration-core`, `migration-loop`, `migration-calls`,
+  `multi-schedule-sig`, `reschedule-head`, `reschedule-generations`, `useprayer-sentinel`,
+  `countdown-seed`, `countdown-selected`, `countdown-next`, `ago-text`,
+  `rowpress-istijaba`, `sequence-listposition`, `plan-key`, `athan-identifier`,
+  `reminder-identifier`, `slug`, `reminder-sound`, `scheduled-record-type`
 - Files: every file in R13 sections 1 to 4 (the census is the map); the suites R14's table
   names for categories 1 and 4 (the same fixtures as step 04, now re-keyed to ids)
 
-## The migration rewrite, line by line (`stores/notifications.ts`, `migration-core` anchor)
+## The migration rewrite, line by line (`stores/notifications.ts`, `migration-core`,
+`migration-loop`, `migration-calls` anchors)
 
 - `const extrasSourceNames = usesPreMidnightExtras(storedVersion) ? EXTRAS_ENGLISH_PRE_1_0_27 : EXTRAS_ENGLISH;`
   becomes `... : EXTRAS_TITLES` where `EXTRAS_TITLES` is the title-case rendering derived once:
@@ -46,10 +50,11 @@ line. The firewall fixtures join the contract test.
 3. Display reads become `prayerLabel(row.id)`: `Prayer.tsx` render, `Alert.tsx` labels and
    sheet write (`prayerEnglish` becomes `prayerId: PrayerId` in `AlertSheetState`), the ago
    badge (`ago-text`: `` `${prayerLabel(prevPrayer.id)} now` ``), the countdown name slot and
-   seed (`countdown-name`, `countdown-seed`: `'fajr'`), the widget timeline name props
+   seed (`countdown-selected`, `countdown-next`, `countdown-seed`: `'fajr'`), the widget
+   timeline name props
    (`timeline-names`, `timeline-next`: `prayerLabel(prayer.id)`) - byte-identical output.
 4. Builders retype: `prayerNotificationIdentifier(scheduleType, id: PrayerId, date)` drops
-   `.toLowerCase()` (`device-ids`); `prayerNameSlug(id)` becomes the derived underscore
+   `.toLowerCase()` (`athan-identifier`, `reminder-identifier`); `prayerNameSlug(id)` becomes the derived underscore
    rendering of the space form and keeps its exact output; `DAILY_PRAYERS` becomes a
    `ReadonlySet<PrayerId>`; `isDailyPrayer(id: PrayerId)`; both channel-id builders take
    `PrayerId`; `atTimeAndroidChannelId(id, soundIndex)`; `genNotificationContent` splits its

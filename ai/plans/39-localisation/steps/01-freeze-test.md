@@ -4,6 +4,8 @@ Pin today's identifier bytes before any production byte moves. This step is a pi
 red-first change: the suite lands green against unchanged code, and the break script proves
 each guarded line by mutation.
 
+Requirements: R2.1
+
 - Branch: `feat/38-01-freeze-test`
 - Files added: `shared/__tests__/prayerIdContract.test.ts` (unit project, `*.test.ts`)
 - Files changed: `stores/notifications.ts` (one word: `export` on

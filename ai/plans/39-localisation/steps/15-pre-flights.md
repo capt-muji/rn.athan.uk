@@ -5,6 +5,8 @@ The timing experiment decides the loader's body; because step 05 indirected the 
 `shared/i18n/loader.ts`, the decision rewrites one module, never a call site (the ARCH-17
 repair).
 
+Requirements: R2.1, R9.1
+
 - Branch: `feat/38-15-preflights`
 - Files: `shared/i18n/loader.ts` (only if the experiment loses the TS require), LOG.md (the
   numbers, always), and no other file
