@@ -104,17 +104,68 @@ immediately before `git commit -F`.
 
 - Version 1.29.314. Committed `b8eef85f`, merged into `uat`.
 
-## Resume from: step 5, part 0
+## Replan 2026-10-10: the anchor ownership repair
 
-Steps 1 to 4 are committed, merged and deep-reviewed (see above). The next session: run the
-pre-flight with k=5, resume the IN PROGRESS row, and execute step 5
-(`steps/05-catalog-and-t.md`): the id arrays (`PrayerId`, `StoredPrayerId`), `shared/i18n/`
-with the en catalog behind the loader, `t()` and `prayerLabel`, the plural guard, the closure
-and byte-parity tests. Step 6 then renames the row field to `id` and retypes every builder.
-Standing lessons: restores use file backups, never `git checkout`, before the step commits;
-delete constants by exact-text edits; regenerate the commit-message file right before use;
-the break-2 shape (a variable-carried excess property escapes tsc, so pin writes with inline
-type annotations or runtime assertions).
+The k=5 pre-flight failure was the plan's, not the tree's. Root cause, verified this session:
+the pre-flight map gave each anchor one owning step, but step 04's own contracts mandated
+edits inside regions the map assigned to steps 05, 06 and 07, so their anchor files zeroed.
+The same defect sat further down the chain: step 06's contracts also retype the `ago-text`,
+`channel-reminder`, `content-builders`, `reminder-content`, `timeline-names` and
+`timeline-next` regions ahead of their original owners (steps 07/10/13), which would have
+broken the k=7 and k=10 and k=13 pre-flights the same way after step 06 landed.
+
+Repair, all inside the plan folder:
+
+- Eleven anchor files named by steps 05 to 09 regenerated from the post-step-04 tree at
+  `76a40d3f` by `scripts/regenerate-anchors-38.sh` (sha-guarded, a record not a tool):
+  `constants-arrays`, `useprayer-sentinel`, `content-builders`, `reminder-content`,
+  `prayerrow-type`, `namesforDate`, `unreadable-row`, `multi-schedule-sig`,
+  `scheduled-record-type`, `explanation-arabic`, `overlaycontent-arabic`. Each counts
+  exactly 1 at `76a40d3f`.
+- Six anchors re-owned to step 06 in the pre-flight map (the first step not yet DONE that
+  edits the region is the owner): `ago-text`, `channel-reminder`, `content-builders`,
+  `reminder-content`, `timeline-names`, `timeline-next`.
+- Parentheticals added where a step names an anchor an earlier step rewrites: steps 07, 08,
+  10, 12, 13. Step 09's already had them.
+- Ownership rule recorded in PLAN.md section 4. No step contract changed; no app code
+  touched. The decision (regenerate AND re-own, each where it applies) is mechanical
+  planning machinery, taken on the code evidence; nothing here is an owner ruling.
+
+## Resume from: step 5, part 0 (replan landed)
+
+Steps 1 to 4 are committed, merged and deep-reviewed; the anchor repair above is merged.
+The next session: run the pre-flight with k=5, resume the IN PROGRESS row, and execute step
+5 (`steps/05-catalog-and-t.md`) as written. Step 6 then renames the row field to `id` and
+retypes every builder. Standing lessons: restores use file backups, never `git checkout`,
+before the step commits; delete constants by exact-text edits; regenerate the commit-message
+file right before use; pin writes with inline type annotations or runtime assertions (a
+variable-carried excess property escapes tsc).
+
+## Resume from: replan needed before step 5 (session stopped at pre-flight)
+
+The k=5 pre-flight fails: four anchors count 0, and all four are the direct product of step 4's
+own mandated deletions against text the anchor map assigns to later steps:
+
+- `constants-arrays` (step 5, `shared/constants.ts`): the anchor carries `PRAYERS_ARABIC` and
+  `EXTRAS_ARABIC`, which step 4 item 3 deleted.
+- `useprayer-sentinel` (step 6, `hooks/usePrayer.ts`): the anchor carries the loading row's
+  `arabic: ''`, which step 4 item 8 deleted.
+- `content-builders` and `reminder-content` (step 7, `shared/notifications.ts`): both anchors
+  carry the `_arabicName` parameters, which step 4 item 4 deleted.
+
+Step 4 executed its contracts faithfully (verified against the tree this session: the sentinel
+and both builder signatures match step 4's post-change shape; no Arabic remnants in
+`shared/constants.ts`). The defect is the plan's, not the tree's: the anchors were extracted
+once at `c3149dfc` and the map assigns each a single owning step, so step 4's edits inside
+steps 5/6/7 regions zero their counts. PLAN.md section 10 rules this NEEDS REPLAN and the
+executor may not repair anchors. Steps 5, 6 and 7 each hit this otherwise (k=6 fails on
+`useprayer-sentinel`, k=7 on the two builders), so the replan should regenerate or re-own all
+four in one pass. Nothing was executed for step 5; the tree is clean at `76a40d3f` apart from
+this log and the queue row. After the replan: run the pre-flight with k=5 and execute step 5
+(`steps/05-catalog-and-t.md`) as written. Standing lessons carried: restores use file backups,
+never `git checkout`, before the step commits; delete constants by exact-text edits; regenerate
+the commit-message file right before use; pin writes with inline type annotations or runtime
+assertions (a variable-carried excess property escapes tsc).
 
 ## Step 3: the Arabic chrome dies
 
