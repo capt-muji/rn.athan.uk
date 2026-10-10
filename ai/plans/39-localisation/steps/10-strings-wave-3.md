@@ -8,6 +8,7 @@ duration unit labels. After this step the only display literals left in the tree
 widget layouts' (step 13) and the catalog files'.
 
 Requirements: R3.2, R5.1
+Weight: 2
 
 - Branch: `feat/38-10-wave3`
 - Anchors: `ago-text` (post-step-06: the templates read `prayerLabel(prevPrayer.id)`),

@@ -5,6 +5,7 @@ Every display string under `components/` migrates to the catalog. The census
 landed in step 08) names the files; the guard's allowlist sheds them all in this step.
 
 Requirements: R3.2, R5.1
+Weight: 2
 
 - Branch: `feat/38-09-wave2`
 - Anchors: `explanation-arabic` (now the single-line explanation), `overlaycontent-arabic`

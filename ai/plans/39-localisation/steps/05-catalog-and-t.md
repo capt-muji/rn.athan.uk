@@ -7,6 +7,7 @@ plural guard and the en byte-parity test. No call site migrates yet: production 
 constants file gaining the id arrays beside the title-case arrays.
 
 Requirements: R3.1, R3.2, R4.2
+Weight: 2
 
 - Branch: `feat/38-05-catalog`
 - Anchors: `constants-standard`, `constants-extras`, `night-branch`

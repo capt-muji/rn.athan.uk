@@ -6,6 +6,7 @@ data surfaces migrate: `shared/help.ts` (27 strings), `shared/whatsNew.ts` (14),
 Settings sheet.
 
 Requirements: R3.2, R5.1
+Weight: 2
 
 - Branch: `feat/38-08-wave1`
 - Anchors: `settings-toggle` (historical, pre-step-03: the toggle row is gone; it marks
