@@ -6,19 +6,27 @@
  * rebuilds Dates inside its own JS runtime).
  */
 
+import type { PrayerId } from './constants';
+
 /**
  * Current schema version of the widget props contract. Bump when the props
  * shape changes: it lets layouts detect and tolerate entries written by an
  * older app version still sitting in the shared timeline store.
+ *
+ * v6: every row carries `id` beside the baked `name` (layouts key rows by
+ * `id ?? name` so a future locale's colliding names stay distinct).
  */
-export const WIDGET_PROPS_VERSION = 5;
+export const WIDGET_PROPS_VERSION = 6;
 
 /**
  * Current schema version of the Android widget snapshot contract. Android has
  * no timeline: one snapshot carries the whole window and the layout computes
  * what to show at render time. Bump when the snapshot shape changes.
+ *
+ * v2: rows carry `id`, and every string the layout computed at render time
+ * arrives baked as `strings` (the layout imports nothing).
  */
-export const ANDROID_SNAPSHOT_VERSION = 1;
+export const ANDROID_SNAPSHOT_VERSION = 2;
 
 /**
  * Which palette a home widget renders: 'light' or 'dark'. This is a
@@ -44,9 +52,14 @@ export interface PrayerWidgetSettings {
  * One row of the medium widget's day list — the displayed day's prayers,
  * exactly as the corresponding app page shows them (chronological for the
  * Standard schedule, canonical EXTRAS_ENGLISH order for the Extra schedule).
+ * `id` is the closed vocabulary; `name` is the baked label the row draws.
+ * Entries written by v5 apps carry `name` alone, so every `id` read guards
+ * on presence.
  */
 export interface WidgetPrayerRow {
-  /** English prayer name, e.g. "Fajr" */
+  /** The prayer's id, e.g. "fajr"; absent on entries from v5 app versions */
+  id: PrayerId;
+  /** Baked display label, e.g. "Fajr" (prayerLabel(id)) */
   name: string;
   /** Prayer time in HH:mm, e.g. "05:35", or "--:--" when the source's time could not be read */
   time: string;
@@ -122,15 +135,40 @@ export interface PrayerWidgetProps {
  * whose time could not be read: they render as `--:--` and can never be the
  * next prayer (0 predates every epoch the app deals in). JSON null cannot
  * cross the Kotlin bridge nested inside the snapshot's maps and lists, so
- * 0 is the unavailable encoding.
+ * 0 is the unavailable encoding. `id` is the closed vocabulary; `name` is
+ * the baked label the row draws (snapshots from v1 apps carry `name` alone).
  */
 export interface AndroidWidgetDayRow {
-  /** English prayer name, e.g. "Fajr" */
+  /** The prayer's id, e.g. "fajr"; absent on snapshots from v1 app versions */
+  id: PrayerId;
+  /** Baked display label, e.g. "Fajr" (prayerLabel(id)) */
   name: string;
   /** Prayer time in HH:mm, or "--:--" when unreadable */
   time: string;
   /** The prayer's moment as epoch ms, or 0 when the row is unreadable */
   epochMs: number;
+}
+
+/**
+ * Every string the Android layout would otherwise compute or hold at render
+ * time, baked by the app from the catalog. The widget runtime imports nothing
+ * (the closure law forbids it), so the layout's copy arrives as data. The
+ * unit fields mirror DurationLabels so a future locale reuses its labels
+ * directly; the countdown is minutes-only today, so `s` and `now` ride for
+ * that shape and stay unread until it changes.
+ */
+export interface WidgetStrings {
+  h: string;
+  m: string;
+  s: string;
+  now: string;
+  /** The stale card's title, e.g. "Out of date" */
+  staleTitle: string;
+  /** The stale card's refresh line on the medium composition */
+  refreshLine: string;
+  /** The refresh line's two halves on the small composition */
+  refreshLead: string;
+  refreshTail: string;
 }
 
 /**
@@ -170,4 +208,9 @@ export interface PrayerWidgetAndroidProps {
   days: AndroidWidgetDay[];
   /** The last readable prayer in the window: renders past this go stale */
   horizonEpochMs: number;
+  /**
+   * The layout's copy, baked from the catalog. Absent on snapshots from v1
+   * app versions, which the layout renders with its English fallback.
+   */
+  strings: WidgetStrings;
 }

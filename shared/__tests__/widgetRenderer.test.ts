@@ -180,7 +180,7 @@ import { prayerLabel } from '@/shared/i18n';
 import { createPrayerDatetime } from '@/shared/time';
 import { type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot } from '@/shared/widgetTimeline';
-import type { PrayerWidgetAndroidProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
+import type { PrayerWidgetAndroidProps, PrayerWidgetSettings, WidgetStrings } from '@/shared/widgetTypes';
 
 const DAY_ONE = '2026-10-17';
 const DAY_TWO = '2026-10-18';
@@ -338,6 +338,39 @@ describe('home widget renderer', () => {
       }
     });
 
+    it('distinguishes two same-named rows by their id keys, the future-locale collision shape', () => {
+      // Rendering output cannot show a key: this walks the RAW element tree,
+      // where React keeps keys on the row elements themselves. A locale whose
+      // labels collide would key two rows identically under name-keying and
+      // React would treat them as one slot across renders.
+      const collision = {
+        ...liveProps(),
+        prayers: [
+          { id: 'fajr', name: 'Fajr', time: '05:30' },
+          { id: 'isha', name: 'Fajr', time: '19:40' },
+        ],
+        activeIndex: 0,
+      };
+
+      const keysOf = (node: unknown, keys: string[] = []): string[] => {
+        if (Array.isArray(node)) {
+          for (const child of node) keysOf(child, keys);
+          return keys;
+        }
+        if (node !== null && typeof node === 'object' && 'key' in (node as Record<string, unknown>)) {
+          const key = (node as { key: unknown }).key;
+          if (key !== null && key !== undefined) keys.push(String(key));
+          keysOf((node as { props?: { children?: unknown } }).props?.children, keys);
+        }
+        return keys;
+      };
+
+      const raw = layouts.PrayerWidget(collision, { colorScheme: 'light', widgetFamily: 'systemMedium' });
+      const rowKeys = keysOf(raw);
+
+      expect(rowKeys).toEqual(['fajr', 'isha']);
+    });
+
     it('renders a legacy entry with no list fields as the hero alone and the bare city footer', () => {
       const legacy = {
         v: 4,
@@ -392,6 +425,61 @@ describe('home widget renderer', () => {
 
   describe('Android path (jetpack globals)', () => {
     const layouts = loadLayouts('android');
+
+    it('renders the null-props card when props are undefined, not only null', () => {
+      // The widget bridge may hand the layout undefined props; the null-props
+      // guard must tolerate both without throwing on the `in` check
+      const tree = renderTree(layouts.PrayerWidget(undefined, { colorScheme: 'light' }));
+
+      expect(textsOf(tree)).toContain('Prayer times for London');
+    });
+
+    it('renders unit suffixes from props, never from the layout', () => {
+      const sentinel: WidgetStrings = {
+        h: 'H',
+        m: 'M',
+        s: 'S',
+        now: 'NOW',
+        staleTitle: 'PAST IT',
+        refreshLine: 'REFRESH NOW',
+        refreshLead: 'REFRESH',
+        refreshTail: 'NOW',
+      };
+
+      // Frozen half a minute into a minute: 15:20 minus 14:08:30 is 71.5
+      // minutes, so the label reads "1x 12y" under the sentinels
+      freezeNow(at(DAY_ONE, '14:08') + 30_000);
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ strings: sentinel }), { colorScheme: 'light' }));
+      expect(textsOf(tree)).toContain('1H 12M');
+      expect(textsOf(tree)).not.toContain('1h 12m');
+
+      // The stale card's copy comes from the same props, both sizes
+      freezeNow(at(DAY_TWO, '23:30'));
+      const medium = renderTree(
+        layouts.PrayerWidget(androidProps({ strings: sentinel, size: 'medium' }), { colorScheme: 'light' })
+      );
+      expect(textsOf(medium)).toContain('PAST IT');
+      expect(textsOf(medium)).toContain('REFRESH NOW');
+      expect(textsOf(medium)).not.toContain('Out of date');
+    });
+
+    it('tolerates a v1 snapshot: no strings, no row ids, the English fallback renders', () => {
+      // A snapshot written by a v1 app still sits in the store until the next
+      // push overwrites it; the layout bakes its own English copy in that case
+      const { strings: _strings, ...legacy } = androidProps({});
+      const legacyRows = legacy.days.map((day) => ({
+        ...day,
+        rows: day.rows.map(({ id: _id, ...row }) => row),
+      }));
+      const legacySnapshot = { ...legacy, days: legacyRows };
+
+      freezeNow(at(DAY_ONE, '14:08') + 30_000);
+      const tree = renderTree(layouts.PrayerWidget(legacySnapshot, { colorScheme: 'light' }));
+
+      expect(textsOf(tree)).toContain('1h 12m');
+      expect(textsOf(tree)).toContain('ASR');
+      expect(textsOf(tree)).toContain('15:20');
+    });
 
     it('computes the label at render from the snapshot epochs', () => {
       // Frozen half a minute into a minute: the ceil rounding is observable

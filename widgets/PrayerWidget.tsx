@@ -39,7 +39,7 @@ import {
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 import type { ReactElement, ReactNode } from 'react';
 
-import type { PrayerWidgetAndroidProps, PrayerWidgetProps } from '@/shared/widgetTypes';
+import type { PrayerWidgetAndroidProps, PrayerWidgetProps, WidgetStrings } from '@/shared/widgetTypes';
 
 /**
  * Home screen widget layout (systemSmall + systemMedium), one shared
@@ -87,7 +87,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // on exactly one side, and the two compositions below stay native to their
   // runtime instead of sharing an abstraction that can drift both ways.
   const isAndroidRuntime = typeof Column !== 'undefined';
-  const androidProps = props !== null && 'days' in props ? (props as PrayerWidgetAndroidProps) : null;
+  const androidProps = props != null && 'days' in props ? (props as PrayerWidgetAndroidProps) : null;
 
   // The Android composition spells Text/Image like iOS does (each runtime's
   // globals answer their own platform), but the app-side types come from
@@ -289,13 +289,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // Android's countdown is computed at render time, so it carries the format
   // itself: hours and minutes only, rounded up, never reading below a minute.
   // iOS needs no equivalent — SwiftUI ticks its own timer from the segment.
-  const ALabel = (targetEpochMs: number, nowMs: number): string => {
+  // The unit words arrive as props: the widget runtime imports nothing, so
+  // the app bakes them into the snapshot.
+  const ALabel = (units: { h: string; m: string }, targetEpochMs: number, nowMs: number): string => {
     const totalMinutes = Math.max(1, Math.ceil((targetEpochMs - nowMs) / 60000));
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    if (hours === 0) return `${minutes}m`;
-    if (minutes === 0) return `${hours}h`;
-    return `${hours}h ${minutes}m`;
+    if (hours === 0) return `${minutes}${units.m}`;
+    if (minutes === 0) return `${hours}${units.h}`;
+    return `${hours}${units.h} ${minutes}${units.m}`;
   };
 
   // "Mon · Lon" from a Gregorian label, "Raj 1 · Lon" from a Hijri one —
@@ -319,21 +321,21 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       </Column>
     );
 
-  const AStale = () =>
+  const AStale = (strings: WidgetStrings) =>
     ACard(
       null,
       <Column horizontalAlignment='center'>
         <AImageEl source={{ uri: A_MOON_NAME }} contentScale='fit' modifiers={[width(26), height(26)]} />
         <Spacer modifiers={[height(7)]} />
-        {AText('Out of date', 14, 'bold', palette.hero)}
+        {AText(strings.staleTitle, 14, 'bold', palette.hero)}
         <Spacer modifiers={[height(7)]} />
         {isMedium ? (
-          AText('Open Athan to refresh', 12, 'normal', palette.secondary)
+          AText(strings.refreshLine, 12, 'normal', palette.secondary)
         ) : (
           <Column horizontalAlignment='center'>
-            {AText('Open Athan', 12, 'normal', palette.secondary)}
+            {AText(strings.refreshLead, 12, 'normal', palette.secondary)}
             <Spacer modifiers={[height(1)]} />
-            {AText('to refresh', 12, 'normal', palette.secondary)}
+            {AText(strings.refreshTail, 12, 'normal', palette.secondary)}
           </Column>
         )}
       </Column>
@@ -341,6 +343,19 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
   const androidRender = (input: PrayerWidgetAndroidProps) => {
     const nowMs = Date.now();
+    // A v1 snapshot sits in the store until the next push overwrites it; its
+    // strings are baked here rather than imported, because the widget runtime
+    // resolves no module-scope value (the closure law)
+    const strings: WidgetStrings = input.strings ?? {
+      h: 'h',
+      m: 'm',
+      s: 's',
+      now: 'now',
+      staleTitle: 'Out of date',
+      refreshLine: 'Open Athan to refresh',
+      refreshLead: 'Open Athan',
+      refreshTail: 'to refresh',
+    };
 
     type ARow = PrayerWidgetAndroidProps['days'][number]['rows'][number];
     let next: ARow | null = null;
@@ -360,7 +375,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     }
 
     if (nowMs > input.horizonEpochMs || next === null || !(next.epochMs > 0)) {
-      return <AStale />;
+      return AStale(strings);
     }
 
     const footer = AFooter(nextDayLabel);
@@ -377,7 +392,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             closer to iOS than the workaround was. */}
         {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(2)]} />
-        {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
+        {AText(ALabel(strings, next.epochMs, nowMs), 26, 'bold', palette.hero)}
         <Spacer modifiers={[height(6)]} />
         {AText(next.time, 13, 'normal', palette.secondary)}
       </Column>
@@ -734,7 +749,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
                 <ActivePill />
                 <VStack spacing={0} alignment='leading' modifiers={[frame({ maxWidth: Infinity })]}>
                   {rows.map((row, index) => (
-                    <Row key={row.name} name={row.name} time={row.time} index={index} />
+                    <Row key={row.id ?? row.name} name={row.name} time={row.time} index={index} />
                   ))}
                 </VStack>
               </ZStack>

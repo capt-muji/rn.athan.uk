@@ -31,7 +31,7 @@
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import { UNAVAILABLE_TIME } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
+import { prayerLabel, t } from '@/shared/i18n';
 import {
   compareListOrder,
   findNextReadable,
@@ -48,9 +48,26 @@ import type {
   PrayerWidgetProps,
   PrayerWidgetSettings,
   WidgetPrayerRow,
+  WidgetStrings,
   WidgetTheme,
 } from '@/shared/widgetTypes';
 import { ANDROID_SNAPSHOT_VERSION, WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
+
+/**
+ * The Android layout's copy, baked once per push. Byte-identical English in
+ * stage one; the layout imports nothing (the closure law forbids it), so its
+ * strings cross the bridge as data.
+ */
+const widgetStrings = (): WidgetStrings => ({
+  h: t('duration.h'),
+  m: t('duration.m'),
+  s: t('duration.s'),
+  now: t('duration.now'),
+  staleTitle: t('widget.stale'),
+  refreshLine: t('widget.refresh'),
+  refreshLead: t('widget.refreshLead'),
+  refreshTail: t('widget.refreshTail'),
+});
 
 /**
  * Minimum spacing between adjacent timeline entries. WidgetKit guidance asks
@@ -133,7 +150,11 @@ const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
  */
 const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayerRow[]; activeIndex: number } => {
   const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === segment.displayDate).sort(compareListOrder);
-  const rows = dayPrayers.map((prayer) => ({ name: prayerLabel(prayer.id), time: prayer.time ?? UNAVAILABLE_TIME }));
+  const rows = dayPrayers.map((prayer) => ({
+    id: prayer.id,
+    name: prayerLabel(prayer.id),
+    time: prayer.time ?? UNAVAILABLE_TIME,
+  }));
 
   return { rows, activeIndex: dayPrayers.indexOf(segment.next) };
 };
@@ -301,10 +322,15 @@ export const buildPrayerWidgetSnapshot = (
     }
 
     if (isReadable(prayer)) {
-      day.rows.push({ name: prayerLabel(prayer.id), time: prayer.time, epochMs: prayer.datetime.getTime() });
+      day.rows.push({
+        id: prayer.id,
+        name: prayerLabel(prayer.id),
+        time: prayer.time,
+        epochMs: prayer.datetime.getTime(),
+      });
       horizonEpochMs = Math.max(horizonEpochMs ?? Number.NEGATIVE_INFINITY, prayer.datetime.getTime());
     } else {
-      day.rows.push({ name: prayerLabel(prayer.id), time: UNAVAILABLE_TIME, epochMs: 0 });
+      day.rows.push({ id: prayer.id, name: prayerLabel(prayer.id), time: UNAVAILABLE_TIME, epochMs: 0 });
     }
   }
 
@@ -317,5 +343,6 @@ export const buildPrayerWidgetSnapshot = (
     schedule: sequence.type,
     days,
     horizonEpochMs,
+    strings: widgetStrings(),
   };
 };

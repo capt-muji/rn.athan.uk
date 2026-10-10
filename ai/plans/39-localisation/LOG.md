@@ -1,5 +1,82 @@
 # Execution log: Job 38
 
+## Step 13: widget props v6 - ids, tolerance, baked strings
+
+- Branch `feat/38-13-widgets` off `uat` (`3672a9a6`, step 12's merge; step
+  12 committed `b7ccb335`). Anchors: the nine widget anchors count 1;
+  `timeline-names`/`timeline-next` count 0 in extracted bytes (pre-06 text,
+  the step's own parenthetical) and their live regions (widgetTimeline.ts
+  buildDayList and the nextName sites, all through `prayerLabel`) verified
+  unique.
+- Red, recorded: (1) widgetTimeline 'bakes the id and the label into every
+  row and entry' - `Received: undefined` (rows carry no id); (2)
+  widgetContract 'walks the closure of all three lock layouts' PASSED at red
+  - no lock layout beyond the first holds a free identifier today, so per
+  the step's own note the fix is the walk itself, now pinned (the walker
+  was refactored to `findWidgetFunctions` + a shared `closureViolations`
+  helper; the per-file test keeps its shape); (3) widgetRenderer 'renders
+  unit suffixes from props' - `1h 12m` still rendered from literals; plus
+  the guard-tolerance test 'renders the null-props card when props are
+  undefined' - threw on `'days' in undefined` (contract 4's red; the break
+  script's exact call, added to the renderer suite as the step directs).
+- Types (contract 1/2): `WIDGET_PROPS_VERSION` 6, `ANDROID_SNAPSHOT_VERSION`
+  2 (docblocks state what each bump carries); `WidgetPrayerRow` and
+  `AndroidWidgetDayRow` gain `id: PrayerId` beside `name` (the docblocks
+  note v5/v1 entries carry `name` alone); `PrayerWidgetAndroidProps` gains
+  `strings: WidgetStrings`.
+- `WidgetStrings` interpretation, recorded: the contract names "the same
+  fields as `DurationLabels` plus the neutral-card line" while the same
+  sentence bakes "any stale/neutral card string the Android layout
+  computes" - a five-field type cannot carry both. Resolved as:
+  `{h, m, s, now, staleTitle, refreshLine, refreshLead, refreshTail}` -
+  the DurationLabels parity fields plus every card string AStale renders
+  from valid props. The null-props cards (Android `ANeutral` and the iOS
+  `NeutralCard` at the `widget-units` anchor) keep their literals exactly
+  as the contract exempts. `s`/`now` ride for DurationLabels shape parity
+  and are documented as unread until the countdown changes (the docblock
+  says so; the widget's countdown is minutes-only, frozen).
+- Builder (contract 3): `widgetStrings()` in `shared/widgetTimeline.ts`
+  resolves from `t()` (`duration.*` reuse plus four new keys
+  `widget.stale/refresh/refreshLead/refreshTail`, byte-identical, pinned in
+  `i18n.test.ts`); rows bake `{id: prayer.id, name: prayerLabel(prayer.id)}`
+  in both builders; the snapshot carries `strings`. `stores/widget.ts`
+  needed no change (the version constants flow from the types; the settings
+  sync carries no language).
+- Layout (contract 3/4): the guard `props != null && 'days' in props`;
+  `ALabel` takes its unit words as a parameter; `AStale` takes the strings;
+  `androidRender` builds `input.strings ?? {English fallback}` INSIDE the
+  body (a module-scope fallback would break the closure law; the fallback
+  literals are object properties, invisible to the string guard); the iOS
+  medium list keys `row.id ?? row.name`; the eyebrow keeps `.toUpperCase()`
+  on the baked name. The Android list renders unkeyed as before (only the
+  `widget-rowkey` site keys).
+- Suites: fixtures re-keyed for the new payload shape - widgetSimulation's
+  twelve golden digests re-golded (the digest pins the builder's exact
+  output; rows gaining `id` is the contractual change, computed by the
+  same hash over the new output, never hand-typed), its two `expectedRows`
+  builders and widgetTimeline's row fixtures gain `id`, widgetSnapshot's
+  and widgetAndroid's version pins 1->2. New tests beyond the reds: the
+  v1-snapshot tolerance drive (no strings, no row ids, the English
+  fallback renders) and the id-key collision test - a future-locale shape
+  with two same-named rows whose RAW element keys must stay distinct
+  (`keysOf` walks the raw tree because rendering output cannot show a key;
+  this is break 1's "v6 payload test with two same-named rows", made
+  behavioral since the marker harness ignores keys).
+- Green: full suite `194 suites, 5288 passed`; four 100% coverage lines
+  (the first coverage run sat at 99.95% branches - the tolerance fallback
+  was unexercised; the v1-snapshot test closes it). tsc clean; Biome clean.
+- Breaks, 3 of 3 AS EXPECTED, final `ALL AS EXPECTED: 1`: name-only keys
+  collapse the collision fixture's keys; the guard reverted to `!== null`
+  throws on undefined props; the tolerance guards dropped fail the v1
+  drive (break 3 adapted to the implementation: the plan's "v tolerance
+  branch" is a v-read in its model and a presence-guard here - the
+  contract's own "the `id ?? name` key and every `id`-dependent branch
+  guards on presence" is the shape implemented). Restores by file backup;
+  renderer suite back to 54 passed.
+- Version 1.29.340 (origin fetched under the lock; origin/uat still at
+  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
+  `<merge sha>`.
+
 ## Step 12: `migrateToLocaleDefaults`, the version-guarded stamp
 
 - Branch `feat/38-12-upgrade` off `uat` (`8a1544df`). All seven anchors
