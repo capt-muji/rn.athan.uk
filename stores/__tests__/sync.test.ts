@@ -369,7 +369,7 @@ describe('needsDataUpdate behavior', () => {
       {
         cache: 'marks this year without any of its days',
         marked: { 2025: true, 2026: true },
-        keys: ['prayer_2025-12-31', 'prayer_max_english_width_standard'],
+        keys: ['prayer_2025-12-31', 'prayer_max_english_width_en_standard'],
       },
       {
         cache: 'holds days of this year it never marked',

@@ -102,7 +102,7 @@ const KEPT_KEYS = [
   'whats_new_shown_version',
   'cache_schema_version',
   'preference_athan_sound',
-  'prayer_max_english_width_standard',
+  'prayer_max_english_width_en_standard',
   BOOKKEEPING_KEY,
   REMINDER_KEY,
 ];
@@ -115,7 +115,7 @@ const installHolding = (dates: string[], fetchedYears: Record<number, true>) => 
   Database.setItem('whats_new_shown_version', '1.0.0');
   Database.setItem('cache_schema_version', 1);
   Database.setItem('preference_athan_sound', 7);
-  Database.setItem('prayer_max_english_width_standard', 96);
+  Database.setItem('prayer_max_english_width_en_standard', 96);
   Database.setItem(BOOKKEEPING_KEY, { id: 'athan_standard_fajr_2026-09-15' });
   Database.setItem(REMINDER_KEY, { id: 'reminder_standard_fajr_2026-09-15_10' });
 };
