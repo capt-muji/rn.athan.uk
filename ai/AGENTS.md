@@ -8,9 +8,11 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
 1. This file.
 2. `opencode.json` (repo root): which MCP servers are wired and which are enabled (see the
    routing table below).
-3. `.agents/skills/` (repo root): the official Expo and EAS skills, and this repo's own session
-   skills (`athan-next`, `athan-planner`, `athan-executor`, `athan-auditor`). Load the matching
-   skill (`expo-upgrade`, `eas-app-stores`, `expo-router`) instead of working from memory.
+3. `.agents/skills/` (repo root): the official Expo and EAS skills, and this repo's own workflow
+   skills (`athan-planner`, `athan-lead`). The delivery workers (`athan-executor`,
+   `athan-reviewer`, `athan-plan-griller`) are agent files under `.opencode/agents/`,
+   dispatched by the lead, never loaded into the main session. Load the matching skill
+   (`expo-upgrade`, `eas-app-stores`, `expo-router`) instead of working from memory.
 
 ## Tool routing
 
@@ -28,6 +30,16 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
 
 `opencode.json` enables codegraph, agent-device and xcodebuildmcp. mobile-mcp, the maestro server
 and the expo MCP sit disabled. The CLI rows above cover their work. Flip `enabled` to turn one on.
+
+## Workflow
+
+- The queue is `ai/plans/README.md`; one job is in flight at a time. Entry is `/athan-plan`
+  (interactive planning) or `/athan-run` (the lead carries a job to DONE).
+- A session is one context window. Jobs are queue rows. No workflow file names a context
+  threshold: the owner ends sessions at will, and every step writes its state to the
+  repository as it lands.
+- When a job is DONE, its plan folder, its evidence under `~/athan-gitree/sessions/<N>/`
+  and its uncited brief die in the merge commit.
 
 ## The repository is public to the whole world
 
@@ -56,11 +68,12 @@ works fully offline after first sync, and notifications fire on time while backg
   on the OnePlus 3T and nowhere else.
 - `releases.json` is deleted. Never recreate it and never add any hand-edited release file. Store
   versions come from iTunes Lookup (iOS) and the in-app updates API (Android).
-- A plan's documentation dies with its merge. The session that merges a branch into `uat` deletes
-  the plan folder in the same commit. Code is the documentation: MD files go stale, history lives
-  in git, and only an artefact still cited by shipped code or config survives, named in its row.
-- Never name a model in any file (briefs, plans, logs, audits, records). Write the job: planning
-  session, execution session, audit session.
+- A job's documentation dies with its merge. The session that merges a branch into `uat` deletes
+  the plan folder, the evidence under `~/athan-gitree/sessions/<N>/` and the uncited brief in
+  the same commit. Code is the documentation: MD files go stale, history lives in git, and only
+  an artefact still cited by shipped code or config survives, named in its row.
+- Never name a model in any file (briefs, plans, logs, audits, records). Write the job:
+  planning, execution, audit.
 - Never run `npx expo install --fix`. It would roll back `jest`, `@types/jest` and `typescript`,
   which this project runs ahead of Expo's pins on purpose. Name every package when upgrading.
 - Version bump on every commit: `package.json`, `app.json` and `android/app/build.gradle`
