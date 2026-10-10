@@ -7,6 +7,7 @@ wipe, no keep-list change (D35). The forced reschedule stays as-is: `en` bytes a
 so the re-arm is a no-op replace.
 
 Requirements: R6.1, R6.2
+Weight: 2
 
 - Branch: `feat/38-12-upgrade`
 - Anchors: `version-captured`, `version-cacheclear`, `version-stamp`, `version-migrate-call`,

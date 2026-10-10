@@ -5,6 +5,7 @@ red-first change: the suite lands green against unchanged code, and the break sc
 each guarded line by mutation.
 
 Requirements: R2.1
+Weight: 2
 
 - Branch: `feat/38-01-freeze-test`
 - Files added: `shared/__tests__/prayerIdContract.test.ts` (unit project, `*.test.ts`)

@@ -6,6 +6,7 @@ of the overlay content, and the `showArabicNamesAtom` itself go. The stored key
 every code path that could read or write it.
 
 Requirements: R1.1
+Weight: 2
 
 - Branch: `feat/38-03-chrome`
 - Anchors: `settings-toggle`, `explanation-arabic`, `toarabic`, `overlaycontent-arabic`, `shownames-atom`

@@ -6,6 +6,7 @@ records that already carry `arabicName` keep parsing (the reader is `JSON.parse`
 ignored); the type narrows so no new write carries it.
 
 Requirements: R2.1
+Weight: 2
 
 - Branch: `feat/38-04-plumbing`
 - Anchors: `prayerrow-type`, `createprayer`, `namesforDate`, `unreadable-row`, `constants-arrays`,

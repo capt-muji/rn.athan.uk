@@ -7,6 +7,7 @@ time becomes a prop; the `props != null` guard is fixed; the closure test walks 
 lock layouts.
 
 Requirements: R8.1
+Weight: 2
 
 - Branch: `feat/38-13-widgets`
 - Anchors: `widget-versions`, `widget-row-name`, `widget-next-name`, `widget-android-row`,
