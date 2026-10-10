@@ -1,54 +1,122 @@
 # Execution log: Job 38
 
-## Resume from: step 8, part 1 (guard seeds proven, migrations not started)
+## Resume from: step 9, part 0 (wave 1 merged, wave 2 not started)
 
-Steps 1 to 7 are committed and merged into `uat` (step 6 `872619f8`/merge `874ec768`,
-step 7 `80130edf`/merge `dac75402`; hook lines in their sections below). `uat` is two
-merges ahead of `origin/uat` (origin at `53eecb99`); the executor cannot push. This
-LOG.md's step 6-7 close-out edits are on disk, uncommitted - they ride the step 8 commit.
+Steps 1 to 8 are committed and merged into `uat` (the step 8 section below
+carries the commit sha; its post-merge sha patch rides step 9's commit, the
+established pattern). The string guard is live in the pre-commit chain:
+`scripts/scan-strings.mjs` + `scripts/string-census-allowlist.json` + the Jest
+wrapper `shared/__tests__/stringGuard.test.ts`. The allowlist holds 29 files and
+wave 2 (step 9) sheds every component file on it. Scanner invocation pitfall
+carries: argv[2] is an optional ROOT, pass `''` before `--guard`.
 
-Step 8 (`steps/08-strings-wave-1.md`) was started to its red and stopped on session
-context; no production file was touched and the tree is clean apart from this log. The
-three guard seeds are finished and saved verbatim under `~/athan-gitree/sessions/38/`
-(`scan-strings.mjs`, `string-census-allowlist.json`, `stringGuard.test.ts`,
-`step08-guard-red.log`); copy them back rather than rebuilding. What the next session
-must know:
+What wave 2 (step 9) inherits from step 8's mechanics, proven on Settings.tsx:
 
-- The scanner is copied verbatim from the plan folder, but its `argv[2]` is an optional
-  ROOT: calling `node scripts/scan-strings.mjs --guard <file>` silently scans nothing
-  (ROOTS becomes `['--guard']`). Invoke it with an empty-string second arg:
-  `node scripts/scan-strings.mjs '' --guard scripts/string-census-allowlist.json` - that
-  keeps the default roots and the guard works (verified: exit 1, 29 offender lines, all
-  `components/sheets/screens/Settings.tsx`). The saved guard test already does this.
-- The allowlist is the census's 30 rule-1/2 files minus Settings.tsx (29 entries,
-  sorted). help.ts and whatsNew.ts produce no rule-1/2 hits (data modules, no JSX), so
-  the step's red prose "listing exactly those three files' hits" overstates: the guard
-  red lists Settings.tsx only; the other two fail the guard test's third rule (the
-  source read). Red was recorded exactly so.
-- The guard test's third rule (dataModules) asserts help/whatsNew import from
-  `'@/shared/i18n'`, hold no `get*String` helper, and call `t(` - it is red until the
-  migration lands.
-- help.ts design (surveyed, not written): `HELP_ENTRIES` becomes key arrays over the
-  existing `help.q/a/step.x` catalog keys (all present in `en.ts`, verified); the
-  ios/android split uses the `.ios`/`.android` answer keys the catalog already carries;
-  `HELP_ACTION_LABELS` resolves through `t('help.action.dndAccess')`; `getHelpTopics`
-  maps every field through `t()`. The step's named red test `getHelpEntries()` does not
-  exist - the module exports `getHelpTopics`; write the catalog-sourcing test against
-  the real surface (another plan-text slip to record).
-- whatsNew.ts design (surveyed): the archive items become `titleKey`/`bodyKey`
-  TranslationKeys (`whatsNew.title/body.x`, all in the catalog); `WhatsNewItem`'s public
-  shape stays `title: string`; `getVisibleWhatsNew` resolves through `t()`;
-  `filterWhatsNewItems` takes the archive shape, so `whatsNew.test.ts` fixtures re-key.
-  `getPlatformBadges`'s 'iOS'/'Android' glyphs are not catalog strings and stay.
-- Settings.tsx: 29 rule-1/2 hits include NON-display literals the scanner cannot tell
-  apart (`rgba(...)` colors, `sheet_settings` testID) - the migration must move those
-  off string-literal JSX attributes (expressions/constants) or the guard cannot go
-  green; the display labels go through `t('settings.…')`.
-- Standing lessons carry: restores use file backups never `git checkout` before the step
-  commits; delete constants by exact-text edits; regenerate the commit-message file
-  right before `git commit -F`; pin writes with inline type annotations. One flake
-  pattern seen this session: a jest worker SIGSEGV (watchman recrawl) killed one commit
-  attempt - regenerate the message file and commit again.
+- Display labels go through `t('…')`; NON-display attribute literals (colors,
+  testIDs/perf names, `accessibilityRole`) move off string-literal JSX attributes
+  as constants (`SHEET_ICON_COLOR`, `SETTINGS_PERF_NAME`) or brace expressions
+  (`accessibilityRole={'button'}`, `{'›'}`) - Biome keeps the braces (verified).
+- A visible text and its a11y label that differ by one byte get two keys
+  (`settings.whatsNew` straight `'` for the label pin,
+  `settings.whatsNewLabel` with U+2019 for the rendered text); the suite pins
+  decide which byte each key carries.
+- New catalog keys join their byte-parity pins in `i18n.test.ts`
+  `PINNED_LITERALS` in the same commit (step 8's executor strengthening; the
+  step's files list omitted the file but four strings had no other pin).
+- `TranslationKey` is re-exported from `shared/i18n/index.ts` (the guard's
+  data-modules rule demands the `'@/shared/i18n'` import; `t` alone was not
+  enough for the typed key fields).
+- whatsNew's archive shape is `WhatsNewArchiveItem`/`WhatsNewArchiveRelease`
+  (`titleKey`/`bodyKey`); `WHATS_NEW` itself IS the archive now,
+  `getVisibleWhatsNew` resolves through `t()` at the release boundary, and the
+  unused-export sweep stays clean (a resolved `WHATS_NEW` twin would orphan -
+  intra-module references are what keep it reachable).
+
+Standing lessons carry: restores use file backups never `git checkout` before
+the step commits (step 8's executor lost a file rewrite by stashing instead:
+`git stash` reverts the file BEFORE a following `cp` backup runs); delete
+constants by exact-text edits; regenerate the commit-message file right before
+`git commit -F`; pin writes with inline type annotations; a jest worker SIGSEGV
+(watchman recrawl) once killed a commit attempt - regenerate the message file
+and commit again.
+
+## Step 8: the guard lands, wave 1 migrates
+
+- Branch `feat/38-08-wave1` off `uat`. The three guard artefacts were copied
+  back verbatim from `$HOME/athan-gitree/sessions/38/` (scanner, allowlist,
+  guard test), not rebuilt.
+- Red, recorded before any migration: the guard test failed exactly as the
+  saved seed log predicted (`2 failed, 1 passed`: rule 1 listing Settings.tsx's
+  29 rule-1/2 hits; rule 3 the data-modules source read), and the new
+  help.test.ts test 'sources every entry from the catalog' failed against the
+  literal-holding module (`1 failed, 20 passed`). The step's red prose
+  overstatement (three files' hits) was already adjudicated in the previous
+  resume note: the guard red lists Settings.tsx only.
+- The catalog-sourcing test (plan-text slip recorded: the plan names
+  `getHelpEntries()`, which does not exist; written against the real surface
+  `getHelpTopics`) loads a fresh help module under a marking `t()`
+  (`jest.doMock` + `jest.isolateModules`, the versionFailures house pattern):
+  every question/text/step and `HELP_ACTION_LABELS.dndAccess` must carry the
+  `catalog:<key>` mark. A value-equality test alone cannot fail the plan's
+  break 2 (a hardcoded string equal to the catalog value passes equality), so
+  the marker form is what makes break 2 honest.
+- help.ts: `HELP_ENTRIES` holds `TranslationKey`s over the existing
+  `help.q/a/step.x` members (`.ios`/`.android` answer keys where the platforms
+  differ, shared keys where they do not); `getHelpTopics` resolves every field
+  through `t()`; `HELP_ACTION_LABELS` resolves through
+  `t('help.action.dndAccess')` at module scope. Public shapes and byte output
+  unchanged: all 20 verbatim help pins pass unedited.
+- whatsNew.ts: `WHATS_NEW` is now the key-carrying archive
+  (`WhatsNewArchiveItem`/`WhatsNewArchiveRelease`, `titleKey`/`bodyKey` over
+  the existing `whatsNew.title/body.x` keys); `filterWhatsNewItems` takes the
+  archive shape; `getVisibleWhatsNew` resolves through `t()` at the release
+  boundary (`resolveItem`); `WhatsNewItem`/`WhatsNewRelease` keep the resolved
+  public shape app/index.tsx and the modal already read. A resolved `WHATS_NEW`
+  twin was rejected: the unused-export sweep counts intra-module references,
+  so a twin nothing in production reads would have needed an allowlist entry.
+  `whatsNew.test.ts` fixtures re-keyed (archive factories for
+  filter/getVisible inputs; the getVisible expected side pins real catalog
+  bytes: 'Tablet support', 'Home & Lock widgets'); the parked-wording pin now
+  reads `t(parked.titleKey)` against the literal 'Home & Lock widgets'.
+- Settings.tsx: 21 display hits went through `t('settings.…')`; the 8
+  non-display hits moved off string-literal positions - `SHEET_ICON_COLOR` and
+  `SETTINGS_PERF_NAME` constants (one why-comment: the guard reads
+  attribute-held literals as copy), `accessibilityRole={'button'}` and
+  `{'›'}` brace expressions (Biome keeps braces; verified with a probe before
+  choosing). The visible What's-new text and its a11y label differ by one byte
+  (U+2019 entity vs straight `'`), so they take two keys:
+  `settings.whatsNew` (straight, the suite's `getByRole` pin) and
+  `settings.whatsNewLabel` (U+2019, the rendered bytes). Seven new keys joined
+  en.ts byte-identically (subtitle, prayer, changeAthan, qibla, display,
+  showHijriDate, whatsNewLabel).
+- Executor strengthenings, three conditions met (code the plan did not give
+  verbatim, no plan-named name/signature/log-line/behaviour changed, every
+  acceptance criterion green): (1) byte-parity pins for the seven new keys in
+  `i18n.test.ts` PINNED_LITERALS - the step's files list omitted the file, but
+  four of the seven strings had no other pin (subtitle, prayer, display,
+  whatsNewLabel) and the step's own review checklist claims every migrated
+  string is pinned; (2) `export type { TranslationKey }` from
+  `shared/i18n/index.ts` - the typed key fields need it and the guard's rule 3
+  demands the `'@/shared/i18n'` import; (3) the marker form of the sourcing
+  test (above) - the plan's equality form cannot satisfy its own break 2.
+- Files the step listed that needed no change: the Help, WhatsNew and Settings
+  modal/screen suites pass unedited (the parity proof); only whatsNew.test.ts
+  and help.test.ts changed among suites.
+- Green: full suite `192 suites, 5265 passed`; tsc clean; Biome clean (after
+  `--write`: import ordering in the new-shape files). The unused-export sweep
+  reports exactly its six allowlisted symbols. Guard CLI exits 0 with
+  Settings.tsx off the allowlist.
+- Breaks, 3 of 3 AS EXPECTED, final `ALL AS EXPECTED: 1`: hardcoded
+  `label='Show seconds'` named by the guard at its line; a hardcoded question
+  failed the marker test; `[]` allowlist failed the guard with 152 offender
+  lines. Restore green, tree holding only the step's files.
+- Incident, no repo damage: a `git stash -- <file>` used as an in-place backup
+  reverted the whatsNew.ts rewrite before the intended `cp` backup ran; the
+  stash was dropped before the loss was noticed and the file was rewritten
+  from the session's own record. Lesson added to the resume note: never stash
+  as a backup; copy first.
+- Version 1.29.334 (origin fetched under the lock; origin/uat still at
+  `53eecb99`, nothing raced).
 
 ## Step 6: the identifier union takes the row (reconciliation first)
 
