@@ -1,0 +1,6 @@
+export const createPrayerAlertAtom = (scheduleType: ScheduleType, prayerName: string) => {
+  const isStandard = scheduleType === ScheduleType.Standard;
+  const type = isStandard ? 'standard' : 'extra';
+
+  return atomWithStorageNumber(`preference_alert_${type}_${prayerName.toLowerCase()}`, AlertType.Off);
+};

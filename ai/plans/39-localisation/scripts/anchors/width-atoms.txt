@@ -1,0 +1,5 @@
+/** Measured width of longest English prayer name for Standard schedule */
+export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
+
+/** Measured width of longest English prayer name for Extra schedule */
+export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_width_extra', 0);

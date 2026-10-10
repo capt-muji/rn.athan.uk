@@ -1,0 +1,5 @@
+    const timeAgo = formatTimeAgo(secondsElapsed);
+
+    const agoText = secondsElapsed < 60 ? `${prevPrayer.english} now` : `${prevPrayer.english} ${timeAgo} ago`;
+
+    return { prayerAgo: agoText, minutesElapsed: minutes, isReady: true };

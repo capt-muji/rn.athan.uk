@@ -1,0 +1,32 @@
+  const extrasSourceNames = usesPreMidnightExtras(storedVersion) ? EXTRAS_ENGLISH_PRE_1_0_27 : EXTRAS_ENGLISH;
+
+  (['standard', 'extra'] as const).forEach((type) => {
+    const isStandard = type === 'standard';
+    // PRAYERS_ENGLISH has never changed order, so standard needs no discrimination
+    const sourceNames: readonly string[] = isStandard ? PRAYERS_ENGLISH : extrasSourceNames;
+    const currentNames: readonly string[] = isStandard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+    const alertAtoms = isStandard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms;
+    // Slot 0 only: these index keys predate the second reminder, so there is nothing of slot 1's to migrate
+    const reminderAtoms = (isStandard ? standardReminderAlertAtoms : extraReminderAlertAtoms)[0];
+    const intervalAtoms = (isStandard ? standardReminderIntervalAtoms : extraReminderIntervalAtoms)[0];
+
+    sourceNames.forEach((prayerName, index) => {
+      // The index says what the key MEANT when it was written; the atom arrays are
+      // built from today's order, so the destination is resolved by name
+      const currentIndex = currentNames.indexOf(prayerName);
+      if (currentIndex === -1) return;
+
+      const name = prayerName.toLowerCase();
+      const alertAtom = alertAtoms[currentIndex];
+      const reminderAtom = reminderAtoms[currentIndex];
+      const intervalAtom = intervalAtoms[currentIndex];
+
+      migrate(`preference_alert_${type}_${index}`, `preference_alert_${type}_${name}`, alertAtom);
+      migrate(`preference_reminder_alert_${type}_${index}`, `preference_reminder_alert_${type}_${name}`, reminderAtom);
+      migrate(
+        `preference_reminder_interval_${type}_${index}`,
+        `preference_reminder_interval_${type}_${name}`,
+        intervalAtom
+      );
+    });
+  });

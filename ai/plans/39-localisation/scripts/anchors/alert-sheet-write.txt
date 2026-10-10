@@ -1,0 +1,10 @@
+    // Open bottom sheet. The sheet seeds and commits through five store calls
+    // keyed off this index, so handing it the canonical one fixes all five here.
+    showAlertSheet({
+      type,
+      index: alertIndex,
+      prayerEnglish: Prayer.english,
+      prayerArabic: Prayer.arabic,
+      isUnavailable,
+    });
+  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions, isUnavailable]);

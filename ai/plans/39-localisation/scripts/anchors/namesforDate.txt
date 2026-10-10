@@ -1,0 +1,20 @@
+ * Helper: Get prayer names for a given date and schedule type
+ * Filters out Istijaba on non-Fridays for Extra schedule
+ */
+function getPrayerNamesForDate(type: ScheduleType, date: string): { english: string[]; arabic: string[] } {
+  const isStandard = type === ScheduleType.Standard;
+
+  if (isStandard) {
+    return { english: PRAYERS_ENGLISH, arabic: PRAYERS_ARABIC };
+  }
+
+  // Extras schedule: filter out Istijaba on non-Fridays
+  if (!TimeUtils.isFriday(date)) {
+    return {
+      english: EXTRAS_ENGLISH.filter((name) => name.toLowerCase() !== 'istijaba'),
+      arabic: EXTRAS_ARABIC.filter((name) => name !== 'استجابة'),
+    };
+  }
+
+  return { english: EXTRAS_ENGLISH, arabic: EXTRAS_ARABIC };
+}

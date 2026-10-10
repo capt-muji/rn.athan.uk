@@ -56,10 +56,10 @@ sourced "Fajr" is actually an İmsak-style marker gets the same scrutiny.
 | 3 | Arabic surfaces in production: the row's second column (`components/prayer/Prayer.tsx:91-93`), the Settings toggle (`Settings.tsx:129-131`), the explanation box's Arabic line (`components/prayer/Explanation.tsx:80`), plus plumbing: `PrayerRow.arabic` (`shared/types.ts:272`), `getPrayerNamesForDate` (`shared/prayer.ts:314`), unused `_arabicName` params (`shared/notifications.ts:125,169,176`), `arabicName` in stored alarm records (`stores/notifications.ts:877`), `prayerArabic` in `AlertSheetState`. Widgets and the countdown carry no Arabic | grep sweep 2026-10-09 |
 | 4 | Alignment: hidden Texts measure the longest name per schedule (`components/ui/InitialWidthMeasurement.tsx`), stored widen-only (`stores/ui.ts:216`), keys `prayer_max_english_width_standard/extra` whitelisted in both wipes (`stores/sync.ts:365`, `stores/version.ts:155`). The time cell is `flex: 1` with `textAlign: 'center'` (`components/prayer/Time.tsx:62-72`), so times stay pixel-aligned after the Arabic column dies | read 2026-10-09 |
 | 5 | Android mirrors the app today on RTL-locale devices: `android:supportsRtl="true"` plus `allowRTL` defaulting true, with zero `I18nManager` calls in the tree. iOS does not (knownRegions holds no RTL language) | `I18nUtil.kt:21-40`; `RCTI18nUtil.m:32-41` |
-| 6 | Numerals: `toArabicNumbers` serves only the dying Arabic explanation line; all times are Latin `HH:mm`; Hijri and Gregorian dates format through `Intl` pinned to `en-US` month names | `shared/text.ts`; `shared/time.ts:241-243` |
+| 6 | Numerals: `toArabicNumbers` serves only the dying Arabic explanation line; all times are Latin `HH:mm`; **corrected 2026-10-10: Gregorian dates format through date-fns English tokens (`shared/time.ts:232`), Hijri through `Intl` pinned `en-US` (`:243`)** | `shared/text.ts`; `shared/time.ts:229-254` |
 | 7 | `expo-localization` is not installed; locale reads need no permission | `package.json` |
 | 8 | Reminder audio is recorded in-house, one mp3 per prayer and interval; whether the recordings speak English words is owner knowledge | `README.md`; `assets/audio/reminders/` |
-| 9 | The stored day rows carry `english` and `arabic` name fields; times are `HH:mm` strings; the "database" is MMKV plus stored row objects, not SQL columns | `stores/database.ts` |
+| 9 | **Corrected 2026-10-10 (CNT-14): the stored day rows carry NO name fields**; `prayer_YYYY-MM-DD` holds `date` plus nine lowercase time fields (`shared/types.ts:108-122`). The name-bearing storage is the scheduling bookkeeping records (`englishName`/`arabicName`) and the preference keys, both slug-derived; times are `HH:mm` strings; the "database" is MMKV plus stored row objects, not SQL columns | `stores/database.ts`; `shared/types.ts:108-122` |
 | 10 | Notification copy is frozen at schedule time on both platforms; deterministic identifiers make re-arm an in-place replace with no cancel pass | R4; `device/notifications.ts:44-66` |
 
 ## Research agent findings, 2026-10-09
@@ -216,11 +216,12 @@ guards; the test suites are named in the report.
   alignments, and orphan armed alarms unless a map imitates the legacy strings.
 - **Storage.** Stored day rows keep id and time only; names never persist. Local migration, no
   refetch dependency.
-- **The switch.** `commitLanguageSelection` modelled on `commitSoundSelection` under
-  `withSchedulingLock`: compute once from arguments, in-place notification replaces on
-  deterministic ids, channel re-creation on the same ids, widget timeline re-push, width-key
-  switch, persisted intent marker so a killed commit completes or rolls back idempotently at next
-  launch.
+- **The switch (superseded by D34, 2026-10-10: forward-only convergence replaces this item's
+  rollback shape; see `RECONCILIATION.md`).** `commitLanguageSelection` modelled on
+  `commitSoundSelection` under `withSchedulingLock`: compute once from arguments, in-place
+  notification replaces on deterministic ids, channel re-creation on the same ids, widget
+  timeline re-push, width-key switch, persisted intent marker so a killed commit completes or
+  rolls back idempotently at next launch.
 
 ## Synthesis pass (R19, 2026-10-09): findings and repairs
 
@@ -271,7 +272,10 @@ The repairs and dispositions:
   matching the picker set (R8 item 2), with the direction interaction verified against the
   `supportsRTL: false` pin in the plan's pre-flight; (d) the qibla `placeName` gap closes by
   formatting the geocoded place through the app locale (`Intl.DisplayName`), a stage-two step
-  that touches no sensor code (D20); (e) every authority-exception label needs per-locale
+  that touches no sensor code (D20) — **superseded 2026-10-10 (ARCH-2/C13): Hermes ships no
+  `Intl.DisplayNames` and it names codes, not cities; row 39 re-asks the owner between a named
+  exception to D17 (proper nouns as the geocoder returns them) and hiding the line when the
+  languages differ**; (e) every authority-exception label needs per-locale
   sign-off under D27, extending beyond `ms` Syuruk; (f) a byte-parity test pins catalog `en`
   output to today's literals, the fact R18's no-op-replace argument rests on; it joins the
   `prayerIdContract` gate in stage one.
@@ -304,7 +308,7 @@ Answers recorded 2026-10-09 are marked RULED. Rows still marked OPEN wait on the
 | Q6 | Settings surface | **RULED: yes.** One row, globe icon, chevron, opening a language sheet built like the sound sheet |
 | Q7 | Staging | **RULED: delegated.** The owner handed staging to the planning session's design; two stages inside one 2.0.0 release stands as the working shape |
 | Q8 | Reminder audio language | **RULED: unchanged, 100%.** All athan and reminder files (99) stay exactly as they are for every language; the audio is recorded Arabic, so it carries no English to translate. The notification TEXT translates to the selected language. Re-recording one language would take over six months; the option is closed |
-| Q9 | Dates | **RULED: localise month names per language, Gregorian and Hijri; formats and day-month order unchanged.** The Gregorian/Hijri toggle in Settings stays, independent of language; English Hijri months remain today's English transliterations, each language carries its own. Verified 2026-10-09: one `Intl` call per calendar localises both for `id`, `en`, `ar`, `tr`, `ms` (Indonesian renders "Juli" and "Safar"; CLDR carries Hijri month names per locale), so the mechanism is the existing formatter with the locale tag swapped |
+| Q9 | Dates | **RULED: localise month names per language, Gregorian and Hijri; formats and day-month order unchanged.** The Gregorian/Hijri toggle in Settings stays, independent of language; English Hijri months remain today's English transliterations, each language carries its own. Verified 2026-10-09: one `Intl` call per calendar localises both for `id`, `en`, `ar`, `tr`, `ms` (Indonesian renders "Juli" and "Safar"; CLDR carries Hijri month names per locale), so the mechanism is the existing formatter with the locale tag swapped. **Mechanism superseded 2026-10-10 (ARCH-3/A2, verified: the Gregorian label is date-fns with no Somali locale, and an `Intl` swap changes order, era affixes and Thai's year): month and weekday names become catalog entries, 31 keys per locale. The ruling stands; the mechanism is row 39's to build** |
 | Q10 | Width cache | **RULED: keep it.** Per-locale keys `prayer_max_english_width_<locale>_<standard/extra>`; today's values seed `en`; one reflow per switch |
 | Q11 | Missing-name policy per locale | **RULED: transliterate, always.** Every language can transliterate the eight Arabic-term slots; a missing sourced name means writing the transliteration in that language's script. No suppression, no English fallback (refines D15) |
 | Q12 | Translation mechanism and launch size | **VERDICT DELIVERED (R16, R17), adopted.** Architecture: TS catalogs plus a hand-rolled `t()` is best practice for this shape, not a band-aid, PROVIDED the six forced changes land (tested TS-to-i18next-JSON bridge with CI round-trip parity, flat catalogs, 3T first-catalog require-timing pre-flight, plural guard in the first catalog commit, an explicit OTA ruling, the PluralRules canary). Launch size: the D15 eight (`en ar id ur bn tr fr de`) at 2.0.0; quarterly adds `ms`+`pt`+`uz`, then `sw`+`ha` when one speaker each closes them, then `ru`+`hi`; never `ln`, `ig`, `ja`, `ko`, `vi`, Nigerian Pidgin. Top-20-by-speakers is the wrong list: it double-counts and misses fa/ps/ha/so/ku/uz (200M+). No fonts bundle on either platform; the real per-locale font work is line-height constants plus 3T checks. Two sub-rulings await the owner at plan review: the OTA ruling (recommendation: no OTA at 2.0.0, store releases only) and the `ms` Syuruk sign-off (folds into the quarter `ms` ships) |

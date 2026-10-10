@@ -1,0 +1,13 @@
+/**
+ * Current schema version of the widget props contract. Bump when the props
+ * shape changes: it lets layouts detect and tolerate entries written by an
+ * older app version still sitting in the shared timeline store.
+ */
+export const WIDGET_PROPS_VERSION = 5;
+
+/**
+ * Current schema version of the Android widget snapshot contract. Android has
+ * no timeline: one snapshot carries the whole window and the layout computes
+ * what to show at render time. Bump when the snapshot shape changes.
+ */
+export const ANDROID_SNAPSHOT_VERSION = 1;

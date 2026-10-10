@@ -1,5 +1,13 @@
 # R13. Blast radius census (research agent report, 2026-10-09)
 
+> **Patch, 2026-10-10 (CNT-12, external verification):** four sites where the name travels under
+> another identifier are missing from the map above and join the steps: the countdown name slot
+> and its loading sentinel (`stores/countdown.ts:413-414, 430` with the seed literal at `:45`,
+> `components/countdown/Countdown.tsx:46-47`), the candidate-walk key in
+> `shared/notifications.ts:252-253`, and the Android widget's render-time unit formatter
+> (`widgets/PrayerWidget.tsx:520-525`). With the five seams below these are the sixth: the
+> display slot that is not keyed by the row field.
+
 Dispatched by the owner's instruction; every claim cites file:line at `uat` `5ad6aaba`. Test files
 excluded. Full report; the pivot file carries the digest.
 

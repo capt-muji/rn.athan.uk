@@ -1,0 +1,14 @@
+    // Istijaba joins the night rows on the exact-instant path: it hangs off Magrib, which
+    // can be date-shifted, so a clock string cannot express it (see getIstijabaTime)
+    const isIstijaba = type === ScheduleType.Extra && name === 'Istijaba';
+    const isNightRow = type === ScheduleType.Extra && (name === 'Midnight' || name === 'Last Third');
+    if (isIstijaba || isNightRow) {
+      const rowInstant = isIstijaba ? getIstijabaTime(rawData, date) : getNightRowTime(nightTimes, name);
+      if (!rowInstant) return unreadable;
+
+      return { ...unreadable, datetime: rowInstant, time: TimeUtils.formatPrayerTime(rowInstant) };
+    }
+
+    const prayerTime = rawData[name.toLowerCase() as keyof ISingleApiResponseTransformed];
+    // Not `=== null`: a stored record can lack the key altogether (an edited backup), and `.split` below would throw
+    if (typeof prayerTime !== 'string') return unreadable;
