@@ -158,8 +158,8 @@ Run `bash scripts/check-plan.sh <plan-folder>` from the repository root. It must
    audit runs first.
 5. Remove your worktrees and their branches.
 6. Report in a few plain sentences: which job is planned, how many steps, what the
-   executor will prove, the decisions the owner took. End with the four-line block from
-   the `athan-lead` skill and the progress table.
+   executor will prove, the decisions the owner took, then the progress table. End with
+   the four-line block from the `athan-lead` skill, nothing after it.
 
 ## 9. Resuming a PLANNING job
 
