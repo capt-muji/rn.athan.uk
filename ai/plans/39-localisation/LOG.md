@@ -105,6 +105,12 @@
 - Order note: a relay asked for the merge before the install reads; its
   own dump-diff-is-STOP gate requires the comparison first, so the merge
   stayed gated behind it (same commits, gated order).
+- Finishing: step 15 committed as `790b8f4e` (built and installed as
+  the APK's source `9fc70a66`, one LOG-append amend apart), merged into
+  `uat` as `4d55140e` --no-ff. Evidence under `~/athan-gitree/sessions/38/`
+  (armed base dump, monitor first-launch and relaunch logcats, two monitor
+  render frames, prod render frame, three after-dumps, the device audits,
+  the APK and its build report). Row 38 EXECUTED.
 
 session: ses_ed8889dc3ffeaTOQtypPTcI25q
 ## Resume from: step 15, part 2 (owner rulings D36 to D38 landed; corrected shape below)
