@@ -56,7 +56,6 @@ const record = (id: string, date: string) => ({
   date,
   time: '12:00',
   englishName: 'Fajr',
-  arabicName: 'الفجر',
   alertType: AlertType.Silent,
 });
 

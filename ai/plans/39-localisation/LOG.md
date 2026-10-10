@@ -1,5 +1,24 @@
 # Execution log: Session 38
 
+## Deep review at close (steps 1 to 4)
+
+Read the whole executed range `5d0ca54c..HEAD` cold (58 files, +416/-680, plus this
+cleanup). Verdict by class:
+
+- **Lifecycle / Thread:** zero added lines touch effects, timers, subscriptions or worklets
+  (grep over the diff and read of every production addition).
+- **Residue:** six finds. Four cleaned in the review's commit: two untyped record fixtures
+  still carrying `arabicName` (`notificationStaleCancelFailure`, `reminderCancelFailure`),
+  one mock sheet state still passing `prayerArabic` (`ui.test`), one stale cascade-length
+  comment (`prayer.test`), one stale `@param arabicName` doc (`useNotification`). The sixth
+  is this step's own `'arabicName' in record` guard, which stays.
+- **Rule:** identifiers and keys byte-identical throughout - `prayerIdContract` green in every
+  commit's full run; no substituted values; the only visual deltas are the ruled removals.
+- **Coverage:** 100% on statements, branches, functions and lines at every step commit
+  (hook output recorded per step); final full suite `189 suites, 5249 passed`.
+
+One pass, nothing else to fix.
+
 ## Step 4: `PrayerRow.arabic` dies end to end
 
 - Branch `feat/38-04-plumbing` off `uat`. Red: "creates prayer with an english name and no
@@ -82,6 +101,20 @@ immediately before `git commit -F`.
 - Green: Prayer folder 7 suites, 57 tests. tsc clean. Biome clean.
 - Breaks: 2 of 2 AS EXPECTED (ungated Arabic Text returns; name uppercases), restore green:
   `ALL AS EXPECTED: 1`. Version 1.29.310.
+
+- Version 1.29.314. Committed `b8eef85f`, merged into `uat`.
+
+## Resume from: step 5, part 0
+
+Steps 1 to 4 are committed, merged and deep-reviewed (see above). The next session: run the
+pre-flight with k=5, resume the IN PROGRESS row, and execute step 5
+(`steps/05-catalog-and-t.md`): the id arrays (`PrayerId`, `StoredPrayerId`), `shared/i18n/`
+with the en catalog behind the loader, `t()` and `prayerLabel`, the plural guard, the closure
+and byte-parity tests. Step 6 then renames the row field to `id` and retypes every builder.
+Standing lessons: restores use file backups, never `git checkout`, before the step commits;
+delete constants by exact-text edits; regenerate the commit-message file right before use;
+the break-2 shape (a variable-carried excess property escapes tsc, so pin writes with inline
+type annotations or runtime assertions).
 
 ## Step 3: the Arabic chrome dies
 
