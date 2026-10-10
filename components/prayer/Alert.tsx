@@ -59,7 +59,7 @@ export default function Alert({ type, index }: Props) {
 
   // `index` is the row's position in the day as the sequence holds it, while
   // the alert atoms and the scheduler are both
-  // CANONICAL, keyed off EXTRAS_ENGLISH/PRAYERS_ENGLISH order. Resolve by name
+  // CANONICAL, keyed off the id arrays' order. Resolve by id
   // so the bell, the sheet it opens and the scheduler cannot drift apart if the
   // two orders ever stop coinciding. usePrayer has to run before the atom read
   // for that; the hook order stays unconditional, which is all React requires.
@@ -95,6 +95,9 @@ export default function Alert({ type, index }: Props) {
   // The same occurrence Time.tsx draws: the bell is unavailable exactly when the time on screen is --:--, since
   // nothing can ever fire for it (R5), and its press explains that. The saved preference is only read, never changed
   const isUnavailable = isShownOccurrenceUnavailable(isSelectedForOverlay, Prayer, NextOccurrencePrayer);
+
+  const shownName = Prayer.time === '' ? '' : prayerLabel(Prayer.id);
+  const shownState = isUnavailable ? t('prayerAlert.state.unavailable') : t(ALERT_CONFIGS[alertAtom].spoken);
 
   const iconIndex = getShownAlert(isUnavailable, displayedAlert);
 
@@ -179,11 +182,9 @@ export default function Alert({ type, index }: Props) {
         accessibilityRole={'button'}
         // Named from the atom, not from `displayedAlert`: the glyph lags the
         // committed value through the change-bounce, and a screen reader must
-        // hear the setting that is actually stored
-        accessibilityLabel={t('prayerAlert.notification', {
-          name: prayerLabel(Prayer.id),
-          state: isUnavailable ? t('prayerAlert.state.unavailable') : t(ALERT_CONFIGS[alertAtom].spoken),
-        })}
+        // hear the setting that is actually stored. The loading frame names
+        // nothing (the vanished-row guard, as in Prayer)
+        accessibilityLabel={t('prayerAlert.notification', { name: shownName, state: shownState })}
         accessibilityHint={isUnavailable ? t('prayerAlert.hintUnavailable') : t('prayerAlert.hintOpen')}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>

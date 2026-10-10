@@ -34,9 +34,13 @@ export const requestQiblaPermission = async (): Promise<boolean> => {
  * once the permission is refused the system dialog never appears again, leaving no other route back.
  */
 export const showQiblaLocationDialog = (): void => {
-  Alert.alert(t('qibla.locationTitle'), t('qibla.locationMessage'), [
-    { text: t('dialog.cancel'), style: 'cancel' },
-    { text: t('dialog.openSettings'), onPress: () => Linking.openSettings() },
+  const title = t('qibla.locationTitle');
+  const message = t('qibla.locationMessage');
+  const cancel = t('dialog.cancel');
+  const openSettings = t('dialog.openSettings');
+  Alert.alert(title, message, [
+    { text: cancel, style: 'cancel' },
+    { text: openSettings, onPress: () => Linking.openSettings() },
   ]);
 };
 

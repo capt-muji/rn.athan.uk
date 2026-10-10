@@ -34,6 +34,14 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     expect(screen.getByRole('button', { name: 'Fajr notification: sound' })).toBeOnTheScreen();
   });
 
+  it('names no prayer for a screen reader on the frame a vanished row reports', async () => {
+    showLondonDay('2026-09-10', '12:00');
+
+    await render(<Alert type={ScheduleType.Standard} index={6} />);
+
+    expect(screen.queryByRole('button', { name: 'Fajr notification: off' })).not.toBeOnTheScreen();
+  });
+
   it('checks notification permission before opening the sheet of a prayer saved Off', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Off);

@@ -60,6 +60,11 @@ export default function Prayer({ type, index }: Props) {
   });
   const veilStyle = useDerivedOpacity(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
 
+  // A row whose occurrence left the sequence (refresh mid-selection) reports the
+  // loading frame: empty time, the sentinel id. It draws no name, exactly as the
+  // empty pre-union name did, so no frame ever borrows another prayer's label
+  const shownName = Prayer.time === '' ? '' : prayerLabel(Prayer.id);
+
   const computedStyleEnglish = {
     width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left,
   };
@@ -83,9 +88,7 @@ export default function Prayer({ type, index }: Props) {
       onPress={handlePress}
       accessibilityElementsHidden={isHiddenByOverlay}
       importantForAccessibility={isHiddenByOverlay ? 'no-hide-descendants' : 'auto'}>
-      <Animated.Text style={[styles.text, styles.name, computedStyleEnglish, colorStyle]}>
-        {prayerLabel(Prayer.id)}
-      </Animated.Text>
+      <Animated.Text style={[styles.text, styles.name, computedStyleEnglish, colorStyle]}>{shownName}</Animated.Text>
       <Time index={index} type={type} />
       <Alert index={index} type={type} />
     </AnimatedPressable>

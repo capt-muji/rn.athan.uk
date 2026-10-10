@@ -285,11 +285,11 @@ interface CreatePrayerParams {
  *
  * @example
  * // Normal case: belongsToDate matches input date
- * createPrayer({ type: ScheduleType.Standard, english: "Fajr", date: "2026-01-18", time: "06:12" })
+ * createPrayer({ type: ScheduleType.Standard, id: 'fajr', date: '2026-01-18', time: "06:12" })
  * // Returns: { ..., belongsToDate: "2026-01-18" }
  *
  * // Edge case: Summer Isha at 1am - belongsToDate is PREVIOUS day
- * createPrayer({ type: ScheduleType.Standard, english: "Isha", date: "2026-06-22", time: "01:00" })
+ * createPrayer({ type: ScheduleType.Standard, id: 'isha', date: '2026-06-22', time: "01:00" })
  * // Returns: { ..., belongsToDate: "2026-06-21" }  // Note: June 21, not 22!
  */
 export const createPrayer = (params: CreatePrayerParams): ReadablePrayer => {
@@ -481,14 +481,14 @@ export const createPrayersForDate = (type: ScheduleType, date: string): Prayer[]
  * A row without a readable time comes back without one, and nothing may fire for it.
  *
  * @param type Schedule type (Standard or Extra)
- * @param english English prayer name
+ * @param id Prayer id
  * @param date Day of the list the prayer belongs to (YYYY-MM-DD)
  * @returns The prayer, readable or not, or null when it isn't on its list
  *   (Istijaba outside Fridays)
  *
  * @example
  * // Extras night rows fall on the night before their day
- * getPrayerForDate(ScheduleType.Extra, 'Midnight', '2026-10-24')
+ * getPrayerForDate(ScheduleType.Extra, 'midnight', '2026-10-24')
  * // Returns: { ..., time: '23:58', datetime: Fri 23 Oct 23:58 London, belongsToDate: '2026-10-24' }
  */
 export const getPrayerForDate = (type: ScheduleType, id: PrayerId, date: string): Prayer | null =>
@@ -504,7 +504,7 @@ export const getPrayerForDate = (type: ScheduleType, id: PrayerId, date: string)
  * yesterday row has long passed.
  *
  * @param type Schedule type (Standard or Extra)
- * @param englishName English prayer name
+ * @param id Prayer id
  * @param now The instant the start day is worked out for
  * @returns The YYYY-MM-DD of the earliest list day whose row of this prayer can still fire
  */
@@ -541,7 +541,7 @@ export const firstStillDueListDay = (type: ScheduleType, now: Date): string => {
  * Returns the display order of prayers as a list of sequence indices.
  *
  * createPrayerSequence already builds each list in canonical order, so for its rows this
- * is the identity. It still ranks by EXTRAS_ENGLISH because rows gathered in time order
+ * is the identity. It still ranks by EXTRA_PRAYER_IDS because rows gathered in time order
  * would put Friday's Istijaba (Magrib − 60 min) between Midnight, which falls the evening
  * before, and Last Third, instead of last.
  *

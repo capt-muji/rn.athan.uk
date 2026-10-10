@@ -1,5 +1,18 @@
 # Execution log: Job 38
 
+## Review verdicts for steps 9 to 15 (recorded by the audit)
+
+The step sections below recorded commits and merges but not their cold-review
+verdicts, which lived only in the executor's returns. One line per commit:
+
+- Step 9 `27cf0014`: cold over `git show`, nothing to fix.
+- Step 10 `8230a9a9`: cold over `git show`, nothing to fix.
+- Step 11 `78d9d957`: cold over `git show`, nothing to fix.
+- Step 12 `b7ccb335`: cold over `git show`, nothing to fix.
+- Step 13 `a02e1450`: cold over `git show`, nothing to fix.
+- Step 14 `1fe389e6`: cold over `git show`, nothing to fix.
+- Step 15 `790b8f4e`: cold over `git show`, one comment fix applied and amended.
+
 ## Step 15: the 3T pre-flights - monitor reads taken, the require stays at <1 ms
 
 - Branch `feat/38-15-preflights` off `uat` (`a7d84645`, step 14's merge).

@@ -138,7 +138,7 @@ for (const file of files) {
 }
 
 if (process.argv.includes('--guard')) {
-  // Stage one ends here: no allowlist at all. The display kinds fail outside
+  // Stage one ends with the allowlist pinned empty. The display kinds fail outside
   // the widget bodies (whose strings arrive as props), and the data-module
   // rule fails on copy that is not a catalog key.
   const allowlist = JSON.parse(fs.readFileSync(process.argv[process.argv.indexOf('--guard') + 1], 'utf8'));

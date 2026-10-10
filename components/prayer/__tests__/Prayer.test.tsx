@@ -27,6 +27,14 @@ describe('the Sunrise row before Fajr on Friday 11 September 2026 at 03:00', () 
     expect(screen.getByText('Sunrise')).toBeOnTheScreen();
     expect(screen.queryByText('الشروق')).not.toBeOnTheScreen();
   });
+
+  it('draws no name on the frame a vanished row reports', async () => {
+    showLondonDay('2026-09-11', '12:00');
+
+    await render(<Prayer type={ScheduleType.Standard} index={6} />);
+
+    expect(screen.queryByText('Fajr')).not.toBeOnTheScreen();
+  });
 });
 
 // An Extras row that is not index 0: the overlay starts out holding the Standard list and index 0, so a row that
