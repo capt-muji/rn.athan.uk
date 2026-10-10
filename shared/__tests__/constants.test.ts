@@ -11,7 +11,6 @@ import {
   EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   EXTRAS_EXPLANATIONS,
-  EXTRAS_EXPLANATIONS_ARABIC,
   NIGHT_PRAYER_NAMES,
   NOTIFICATION_REQUEST_BUDGET,
   PRAYERS_ARABIC,
@@ -70,10 +69,6 @@ describe('prayer arrays alignment', () => {
 
   it('EXTRAS_EXPLANATIONS matches EXTRAS_ENGLISH length', () => {
     expect(EXTRAS_EXPLANATIONS.length).toBe(EXTRAS_ENGLISH.length);
-  });
-
-  it('EXTRAS_EXPLANATIONS_ARABIC matches EXTRAS_ENGLISH length', () => {
-    expect(EXTRAS_EXPLANATIONS_ARABIC.length).toBe(EXTRAS_ENGLISH.length);
   });
 
   it('PRAYERS_ENGLISH contains 6 standard prayers', () => {

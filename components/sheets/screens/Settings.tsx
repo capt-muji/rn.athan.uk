@@ -19,7 +19,6 @@ import {
   setPopupWhatsNewEnabled,
   setSettingsSheetModal,
   setSoundListReady,
-  showArabicNamesAtom,
   showQiblaSheet,
   showSecondsAtom,
   showSheet,
@@ -34,7 +33,6 @@ export default function BottomSheetSettings() {
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
-  const [showArabicNames, setShowArabicNames] = useAtom(showArabicNamesAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
 
@@ -124,11 +122,6 @@ export default function BottomSheetSettings() {
             label='Show time passed'
             value={showTimePassed}
             onToggle={() => setShowTimePassed(!showTimePassed)}
-          />
-          <SettingsToggle
-            label='Show arabic names'
-            value={showArabicNames}
-            onToggle={() => setShowArabicNames(!showArabicNames)}
           />
           {showDecorationToggle && (
             <SettingsToggle

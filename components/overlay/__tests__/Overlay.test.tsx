@@ -121,11 +121,11 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     expect(closeTargets()).toHaveLength(4);
   });
 
-  // [selected index, prayer, explanation, Arabic explanation]
+  // [selected index, prayer, explanation]
   it.each([
-    [0, 'Midnight', 'Halfway between Magrib and Fajr', 'نصف الليل بين المغرب والفجر'],
-    [4, 'Istijaba', '1 hour before Magrib (Fridays only)', 'ساعة قبل المغرب (الجمعة فقط)'],
-  ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english, arabic) => {
+    [0, 'Midnight', 'Halfway between Magrib and Fajr'],
+    [4, 'Istijaba', '1 hour before Magrib (Fridays only)'],
+  ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english) => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
     await render(
@@ -139,7 +139,6 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
 
     expect(screen.getByText(name)).toBeVisible();
     expect(screen.getByText(english)).toBeVisible();
-    expect(screen.getByText(arabic)).toBeVisible();
   });
 
   // [action, open before the action, the action, the measure, the mark it measures from]
