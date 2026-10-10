@@ -223,6 +223,36 @@ export const clearUpgradeCache = (): void => {
 };
 
 /**
+ * The 2.0.0 migration: the version-guarded language stamp and the dead
+ * arabic-names toggle's removal.
+ *
+ * The stamp runs ONLY for an install that actually upgraded from below 2.0.0.
+ * Key absence cannot guard it: a fresh install holds the same absence and
+ * would be pinned to English, closing row 39's device-locale following before
+ * it exists (RECONCILIATION, UPG-2). A raw write is correct in stage one - no
+ * atom fronts this key, so the atom-snapshot argument does not apply.
+ *
+ * The toggle delete is unconditional and idempotent: the key has no reader in
+ * 2.0.0, so removal on every launch costs one no-op remove and keeps the
+ * database clean (D35).
+ */
+const migrateToLocaleDefaults = (storedVersion: string | null): void => {
+  if (
+    storedVersion !== null &&
+    compareVersions(storedVersion, '2.0.0') < 0 &&
+    Database.getItem('preference_language') === null
+  ) {
+    Database.setItem('preference_language', 'en');
+    logger.info('VERSION: Stamped upgrade language to en');
+  }
+
+  if (Database.getItem('preference_show_arabic_names') !== null) {
+    logger.info('VERSION: Removed the dead arabic-names toggle key');
+  }
+  Database.removeItem('preference_show_arabic_names');
+};
+
+/**
  * Entry point for handling app upgrades
  * Checks for upgrade, clears cache if needed, and updates stored version
  * Includes race condition guard to prevent multiple executions
@@ -287,6 +317,10 @@ export const handleAppUpgrade = (): void => {
   // EXTRAS_ENGLISH the index keys were written against, and by this line the key
   // itself already holds the new version.
   migrateIndexKeyedAlertPreferences(storedVersion);
+
+  // 2.0.0's locale defaults run after the index-keyed migration, both reading
+  // the same captured version (the R18 synthesis order ruling)
+  migrateToLocaleDefaults(storedVersion);
 
   logger.info('VERSION: Upgrade check completed');
 };
