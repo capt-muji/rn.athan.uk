@@ -3,7 +3,12 @@
 # Ends PREFLIGHT OK, or names the failed check and exits 1.
 set -euo pipefail
 FATAL() { echo "PREFLIGHT FAILED: $1"; exit 1; }
-cd "$(dirname "$0")/../../../.."
+# Works from the plan folder and from $TMPDIR (the executor copies it there)
+REPO="$HOME/repos/rn.athan.uk"
+if [ -d "$(dirname "$0")/../../../.." ] && [ -d "$(dirname "$0")/../../../..//shared" ]; then
+  REPO="$(cd "$(dirname "$0")/../../../.." && pwd)"
+fi
+cd "$REPO" || FATAL "cannot enter $REPO"
 
 K=${1:-1}
 
