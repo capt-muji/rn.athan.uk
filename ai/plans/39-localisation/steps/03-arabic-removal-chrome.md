@@ -5,6 +5,8 @@ of the overlay content, and the `showArabicNamesAtom` itself go. The stored key
 (`preference_show_arabic_names`) is deleted from disk in step 12's migration; this step removes
 every code path that could read or write it.
 
+Requirements: R1.1
+
 - Branch: `feat/38-03-chrome`
 - Anchors: `settings-toggle`, `explanation-arabic`, `toarabic`, `overlaycontent-arabic`, `shownames-atom`
 - Files: `components/sheets/screens/Settings.tsx`, `components/prayer/Explanation.tsx`,

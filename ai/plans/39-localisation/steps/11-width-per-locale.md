@@ -5,8 +5,10 @@
 are then removed. Widen-only semantics stay per key. The keep-prefix
 `prayer_max_english_width_` already covers both shapes in both wipes, unchanged.
 
+Requirements: R7.1
+
 - Branch: `feat/38-11-width`
-- Anchors: `width-atoms`, `setwidth`, `version-keeplist`, `sync-keeplist`
+- Anchors: `width-atoms`, `setwidth`, `setwidth-grow`, `version-keeplist`, `sync-keeplist`
 - Files: `stores/ui.ts`, `components/ui/InitialWidthMeasurement.tsx`,
   `components/day/__tests__/shownDate.test.ts` (mock identity changes, R14's noted
   indirect), `stores/__tests__/ui.test.ts`, `components/ui/__tests__/InitialWidthMeasurement.test.tsx`,
@@ -23,7 +25,8 @@ are then removed. Widen-only semantics stay per key. The keep-prefix
 2. The atoms: `englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_en_standard', 0)`
    and the extra twin. The atom factory takes the locale segment `'en'` as a constant from
    `shared/i18n` (`CURRENT_LOCALE_ID = 'en'` stage one; row 39 makes it dynamic).
-3. `setEnglishWidth(type, width)` keeps per-key widen-only exactly (anchor `setwidth`).
+3. `setEnglishWidth(type, width)` keeps per-key widen-only exactly (anchors `setwidth`,
+   `setwidth-grow`).
 4. `InitialWidthMeasurement` measures the catalog's labels (`prayerLabel(id)`) - already true
    after step 06; its suite's assertions re-key to the locale keys.
 

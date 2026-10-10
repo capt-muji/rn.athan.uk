@@ -6,8 +6,11 @@ below `2.0.0`), and delete the dead `preference_show_arabic_names` key. No schem
 wipe, no keep-list change (D35). The forced reschedule stays as-is: `en` bytes are identical,
 so the re-arm is a no-op replace.
 
+Requirements: R6.1, R6.2
+
 - Branch: `feat/38-12-upgrade`
-- Anchors: `version-captured`, `version-upgrade`, `version-keeplist`, `migration-core`
+- Anchors: `version-captured`, `version-cacheclear`, `version-stamp`, `version-migrate-call`,
+  `version-keeplist`, `version-keeplist-prefs`, `migration-core`
   (post-step-06: the migration loop walks ids and the retitled legacy arrays)
 - Files: `stores/version.ts`, and the new suites `stores/__tests__/upgrade2_0_0.test.ts`,
   `stores/__tests__/upgrade2_0_0CrashWindows.test.ts`; extended:

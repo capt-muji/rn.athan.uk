@@ -6,6 +6,8 @@ versions; React keys off `id ?? name`; every string the Android layout computes 
 time becomes a prop; the `props != null` guard is fixed; the closure test walks all three
 lock layouts.
 
+Requirements: R8.1
+
 - Branch: `feat/38-13-widgets`
 - Anchors: `widget-versions`, `widget-row-name`, `widget-next-name`, `widget-android-row`,
   `widget-guard`, `widget-eyebrow`, `widget-rowkey`, `widget-units`, `widget-dateparse`,
