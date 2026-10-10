@@ -1,5 +1,89 @@
 # Execution log: Job 38
 
+## Step 9: wave 2, every remaining component surface
+
+- Branch `feat/38-09-wave2` off `uat` (`5e0031db`). Re-executed cold from the
+  contracts after the previous session's usage-limit stop; the saved
+  `step09-unfinished.patch` was consulted for key naming only, nothing restored
+  from it. The previous attempt had not migrated the option labels
+  (`ALERT_OPTIONS`/`SOUND_OPTIONS`), `UNAVAILABLE_MESSAGE`, the Stepper `min`
+  default, the `notification:` a11y templates or `spoken`; this execution did
+  (the step's parenthetical names them and its first line covers them).
+- Anchor check: `explanation-arabic` counts 1 (Explanation.tsx).
+  `overlaycontent-arabic` counts 0 in its extracted bytes because step 06
+  rewrote the region (id-keyed `indexOf` over `EXTRA_PRAYER_IDS`, the plan's
+  own parenthetical); the live region `getOverlayExplanation` is unique in
+  production and holds the exact seam this step migrates, so the anchor
+  resolves to it. Plan-text slip (the parenthetical guessed the title-case
+  array would sit in the `indexOf` line; what landed is the id array),
+  recorded, no replan.
+- Red, recorded before any change: the allowlist shed all 26 component files
+  (holding only the 3 `app/` files, step 10's) and the guard test failed
+  `1 failed, 2 passed` listing 147 offender lines across the 26 files
+  (`$TMPDIR/step09-red-offenders.txt` captured; the byFile table in
+  `scripts/string-census.json` order). That list was the worklist.
+- The catalog grew by 67 keys (en.ts +75 lines): sheets (closeToSave), the
+  alert sheet (card athan/hint, reminder `{n}` template + hint, off/silent/
+  sound option labels, the four-line unavailable paragraph as one
+  newline-joined key), reminder row labels + `min` unit, the three stepper
+  a11y templates, sound sheet + soundItem templates, colorPicker, the 13
+  qibla strings (label/text split one byte apart on `Open settings`),
+  modal.close, help.title, whatsNew heading + ` ({platform} only)` note,
+  update modal, overlay close label, day.location, settingsButton,
+  countdown progressA11y `{percent}` + waiting label, the four Error texts
+  (leading/trailing spaces are rendered bytes, kept), prayerAlert
+  notification template + four lowercase state words + the two hints, and
+  `extras.explanation.<id>` (the space key `extras.explanation.last third`
+  included). `ParamsOf` gained the six new param shapes.
+- `EXTRAS_EXPLANATIONS` (shared/constants.ts) now carries the five catalog
+  keys (`as const`, docblock rewritten to say keys); `getOverlayExplanation`
+  resolves through `t()` at the consumer with an early return for Standard
+  and an explicit `TranslationKey | undefined` annotation so the
+  still-loading row (Extra + standard id) keeps passing `undefined`
+  through instead of throwing on `t(undefined)` - the pinned
+  `no explanation text to borrow` case.
+- Non-display attribute literals moved off string-literal positions exactly
+  per step 8's mechanics: `accessibilityRole={'button'}`-style braces on 12
+  files, SVG geometry/colors (`Explanation`, `QiblaCompass`, `QiblaWave`,
+  `Glow`, prayer/Alert viewBox) braced inline, testIDs braced, and the
+  sheet icon colour + perf names as per-file `SHEET_ICON_COLOR`/
+  `SHEET_PERF_NAME` constants carrying the one why-comment. Glyph display
+  text stays in braces per the reviewed step 8 precedent: `{'›'}`,
+  `{'−'}`, `{'v'}` (WhatsNew's version prefix). The WhatsNew platform note
+  became one whole-string key `whatsNew.platformNote` with `{platform}`
+  interpolating the `iOS`/`Android` brand names as data.
+- Suites: only two changed. `Explanation.test.tsx` fixtures now feed
+  `t(EXTRAS_EXPLANATIONS[MIDNIGHT])` so its verbatim
+  `getByText('Halfway between Magrib and Fajr')` pin reads the catalog (the
+  parity proof kept); `i18nBridge.test.ts`'s only-tokened-keys pin grew the
+  nine new token families with per-key token assertions and two new
+  `ParamsOf` compile pins. `stringGuard.test.ts`'s migrated-modules list
+  grew the 26 files. `i18n.test.ts` PINNED_LITERALS gained 56 entries: every
+  new non-tokened key (the tokened keys follow the step 5/7 pattern of
+  suite pins - Alert 'Reminder 1/2', Stepper '15 min'/'Decrease to 10 min',
+  SoundItem 'Athan 3'/'Preview Athan 3', Bar 'Prayer countdown: N percent
+  remaining', WhatsNew '(iOS only)', prayer/Alert 'Fajr notification:
+  sound'). Pin coverage machine-checked: 139 catalog keys, 122 single-line
+  pins + 4 multi-line pins + 12 bridge-tokened, zero uncovered.
+- Green: full suite `192 suites, 5265 passed`; tsc clean; Biome clean (after
+  `--write`: import ordering plus the allowlist collapsing to one line).
+  Guard CLI exits 0 with the 26 component files off the allowlist; the
+  Done-when grep (`'[A-Z][a-z]+'` through components/) reviews to zero; the
+  two remaining components/ census rows are ColorPicker's logger templates
+  (rule 4 review rows on `logger.info` lines, code not copy).
+- Breaks, both AS EXPECTED, final `ALL AS EXPECTED: 1`: (1) one label
+  hardcoded back in each of a sheets, a modal and a ui file - the guard
+  named all three lines (Alert.tsx:214 display-jsx, Update.tsx
+  display-jsx-attr, SettingsButton.tsx display-jsx-attr); first run of the
+  hand-rolled script failed to apply two of the three substitutions (zsh
+  ate the `!` in `Update Available!` through the perl one-liners) - rewritten
+  with python heredocs, both files then broke as predicted; (2)
+  `settings.title` bytes changed to 'Configuration' - the Settings suite
+  pin failed. Restores by file backup; tree held only the step's files.
+- Version 1.29.336 (origin fetched under the lock; origin/uat still at
+  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
+  `<merge sha>`.
+
 ## Resume from: step 9, part 0 (wave 1 merged, wave 2 not started)
 
 The worker session stopped on the account usage limit at 2026-10-10 19:35,

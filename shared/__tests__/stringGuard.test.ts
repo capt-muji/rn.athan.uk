@@ -37,8 +37,37 @@ describe('the string census guard', () => {
   it('keeps the allowlist sorted and free of the migrated modules', () => {
     const allowlist: string[] = JSON.parse(fs.readFileSync(ALLOWLIST, 'utf8'));
     expect([...allowlist].sort()).toEqual(allowlist);
-    for (const migrated of ['components/sheets/screens/Settings.tsx']) {
-      expect(allowlist).not.toContain(migrated);
+    const migrated = [
+      'components/sheets/screens/Settings.tsx',
+      'components/countdown/Bar.tsx',
+      'components/day/Day.tsx',
+      'components/modals/Help.tsx',
+      'components/modals/Modal.tsx',
+      'components/modals/Update.tsx',
+      'components/modals/WhatsNew.tsx',
+      'components/overlay/Overlay.tsx',
+      'components/overlay/OverlayInfoBox.tsx',
+      'components/overlay/VeilBackdrop.tsx',
+      'components/prayer/Alert.tsx',
+      'components/prayer/Explanation.tsx',
+      'components/sheets/parts/SegmentedControl.tsx',
+      'components/sheets/parts/SoundItem.tsx',
+      'components/sheets/parts/Stepper.tsx',
+      'components/sheets/parts/Toggle.tsx',
+      'components/sheets/screens/Alert.tsx',
+      'components/sheets/screens/ColorPicker.tsx',
+      'components/sheets/screens/Qibla.tsx',
+      'components/sheets/screens/QiblaCompass.tsx',
+      'components/sheets/screens/QiblaWave.tsx',
+      'components/sheets/screens/ReminderCard.tsx',
+      'components/sheets/screens/Sound.tsx',
+      'components/ui/Error.tsx',
+      'components/ui/Glow.tsx',
+      'components/ui/RamadanDecorations.tsx',
+      'components/ui/SettingsButton.tsx',
+    ];
+    for (const file of migrated) {
+      expect(allowlist).not.toContain(file);
     }
   });
 

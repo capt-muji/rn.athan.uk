@@ -84,7 +84,7 @@ export default function Modal({
           screen-reader user can operate controls they cannot see are covered */}
       <Animated.View
         accessibilityViewIsModal={true}
-        accessibilityRole='alert'
+        accessibilityRole={'alert'}
         style={[styles.modal, wide && styles.modalWide]}
         layout={MODAL_RESIZE}
         entering={MODAL_ENTERING}

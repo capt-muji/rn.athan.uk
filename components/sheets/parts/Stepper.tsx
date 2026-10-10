@@ -2,6 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import type { ReminderInterval } from '@/shared/types';
 
 import { stepReminderInterval } from './reminderStep';
@@ -40,7 +41,7 @@ export default function Stepper({
   value,
   onDecrement,
   onIncrement,
-  unit = 'min',
+  unit = t('reminder.unitMinutes'),
   disabled,
   taken = null,
 }: StepperProps) {
@@ -52,10 +53,10 @@ export default function Stepper({
   return (
     <View style={[styles.container, disabled && styles.disabled]}>
       <Pressable
-        accessibilityRole='button'
+        accessibilityRole={'button'}
         // The glyph is a minus sign, which reads as nothing useful; name the action and
         // the unit so the control is usable without seeing the value beside it
-        accessibilityLabel={`Decrease to ${nextDown ?? value} ${unit}`}
+        accessibilityLabel={t('stepper.decrease', { value: nextDown ?? value, unit })}
         accessibilityState={{ disabled: !canDecrement }}
         style={[styles.button, !canDecrement && styles.buttonDisabled]}
         onPress={() => {
@@ -64,15 +65,15 @@ export default function Stepper({
             onDecrement();
           }
         }}>
-        <Text style={[styles.buttonText, !canDecrement && styles.buttonTextDisabled]}>−</Text>
+        <Text style={[styles.buttonText, !canDecrement && styles.buttonTextDisabled]}>{'−'}</Text>
       </Pressable>
-      <View accessible={true} accessibilityLabel={`${value} ${unit}`} style={styles.valueContainer}>
+      <View accessible={true} accessibilityLabel={t('stepper.value', { value, unit })} style={styles.valueContainer}>
         <Text style={styles.value}>{value}</Text>
         <Text style={styles.unit}>{unit}</Text>
       </View>
       <Pressable
-        accessibilityRole='button'
-        accessibilityLabel={`Increase to ${nextUp ?? value} ${unit}`}
+        accessibilityRole={'button'}
+        accessibilityLabel={t('stepper.increase', { value: nextUp ?? value, unit })}
         accessibilityState={{ disabled: !canIncrement }}
         style={[styles.button, !canIncrement && styles.buttonDisabled]}
         onPress={() => {

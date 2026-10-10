@@ -54,7 +54,7 @@ export default function Toggle({ value, onToggle, disabled, accessibilityLabel }
 
   return (
     <Pressable
-      accessibilityRole='switch'
+      accessibilityRole={'switch'}
       // `checked` is what a screen reader announces as on/off; without it the state is
       // carried only by the thumb's position and the track colour
       accessibilityState={{ checked: value, disabled: disabled === true }}

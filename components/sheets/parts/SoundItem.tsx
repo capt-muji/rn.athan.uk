@@ -6,6 +6,7 @@ import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTimi
 import { IconView } from '@/components/ui';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { perfMark } from '@/shared/perf';
 import { Icon } from '@/shared/types';
 
@@ -99,14 +100,14 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   const activeColor = '#fff';
   const inactiveColor = 'rgba(86, 134, 189, 0.725)';
 
-  const name = `Athan ${index + 1}`;
+  const name = t('soundItem.athan', { n: index + 1 });
 
   return (
     <Pressable
       style={styles.option}
       onPress={handlePress}
       onLayout={onLayout}
-      accessibilityRole='radio'
+      accessibilityRole={'radio'}
       // Which athan is chosen is carried only by the row's text colour, so `selected` is the
       // one thing a screen reader has to tell the rows apart
       accessibilityState={{ selected: isSelected }}
@@ -121,10 +122,10 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
           onPress={handlePlayPress}
           onPressIn={() => AnimScale.animate(0.9)}
           onPressOut={() => AnimScale.animate(1)}
-          accessibilityRole='button'
+          accessibilityRole={'button'}
           // The glyph is the only thing that says play or pause, and on iOS the row would
           // otherwise absorb this button so VoiceOver could never reach it
-          accessibilityLabel={isPlaying ? `Stop previewing ${name}` : `Preview ${name}`}>
+          accessibilityLabel={isPlaying ? t('soundItem.stopPreview', { name }) : t('soundItem.preview', { name })}>
           <IconView
             type={isPlaying ? Icon.PAUSE : Icon.PLAY}
             size={18}

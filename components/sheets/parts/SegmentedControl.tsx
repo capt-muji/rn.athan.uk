@@ -77,7 +77,7 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
 
   return (
     <Pressable
-      accessibilityRole='radio'
+      accessibilityRole={'radio'}
       // Which mode is active is conveyed only by the sliding pill and a colour
       // interpolation, so without `selected` a screen reader cannot tell Off from Sound —
       // and this control decides whether a prayer notification fires at all

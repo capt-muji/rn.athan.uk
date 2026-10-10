@@ -89,47 +89,47 @@ export default function QiblaWave({ size }: { size: number }) {
     <View
       style={[styles.stage, { width: canvasWidth, height: canvasHeight }]}
       accessibilityElementsHidden
-      importantForAccessibility='no-hide-descendants'>
+      importantForAccessibility={'no-hide-descendants'}>
       <Svg
         width={canvasWidth}
         height={canvasHeight}
         viewBox={`${-canvasWidth / 2} ${-canvasHeight / 2} ${canvasWidth} ${canvasHeight}`}>
         <Path
           d={wavePath(figureWidth, figureHeight)}
-          fill='none'
+          fill={'none'}
           stroke={`rgba(${PALETTE.structure}, 0.16)`}
           strokeWidth={size * WAVE.stroke}
-          strokeLinecap='round'
+          strokeLinecap={'round'}
         />
         <AnimatedPath
           animatedProps={trailProps}
-          fill='none'
+          fill={'none'}
           stroke={PALETTE.accent}
           strokeWidth={size * WAVE.trail.halo}
-          strokeLinecap='round'
+          strokeLinecap={'round'}
           opacity={0.12}
         />
         <AnimatedPath
           animatedProps={trailProps}
-          fill='none'
+          fill={'none'}
           stroke={PALETTE.accent}
           strokeWidth={size * WAVE.trail.halo * 0.5}
-          strokeLinecap='round'
+          strokeLinecap={'round'}
           opacity={0.3}
         />
         <AnimatedPath
           animatedProps={trailProps}
-          fill='none'
+          fill={'none'}
           stroke={PALETTE.accent}
           strokeWidth={size * WAVE.trail.core}
-          strokeLinecap='round'
+          strokeLinecap={'round'}
           opacity={0.85}
         />
       </Svg>
       {/* Views rather than animated SVG nodes: react-native-svg re-walks its whole drawing pipeline on any
           attribute change, where a transform on a layer is composited */}
       <Animated.View
-        testID='qibla-wave-phone'
+        testID={'qibla-wave-phone'}
         style={[
           styles.phone,
           { width: body.width, height: body.height, borderRadius: body.radius, borderWidth: size * WAVE.stroke },

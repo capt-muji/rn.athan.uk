@@ -2,6 +2,7 @@ import * as Updates from 'expo-updates';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import { clearUpgradeCache } from '@/stores/version';
 
@@ -34,12 +35,12 @@ export default function ErrorScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.heading]}> Oh no! </Text>
-      <Text style={[styles.subtext, styles.first]}> Something went wrong. </Text>
-      <Text style={[styles.subtext, styles.last]}> Try refreshing! </Text>
+      <Text style={[styles.heading]}>{t('error.heading')}</Text>
+      <Text style={[styles.subtext, styles.first]}>{t('error.body')}</Text>
+      <Text style={[styles.subtext, styles.last]}>{t('error.hint')}</Text>
       <Masjid height={65} width={60} />
       <Pressable style={styles.button} onPress={handleRefresh}>
-        <Text style={[styles.subtext]}> Refresh </Text>
+        <Text style={[styles.subtext]}>{t('error.refresh')}</Text>
       </Pressable>
     </View>
   );
