@@ -25,24 +25,35 @@ each with the exact condition and the exact action.
   what each proves. Why the obvious fix is wrong.
 - **5. Design.** The approach and its invariant as one sentence a test can check. The
   alternatives rejected, with reasons. The concurrency trace. The design review.
-- **6. Steps.** A checklist, then one subsection per step: anchor check, goal, branch, files,
+  **Acceptance criteria:** every criterion is one EARS sentence tagged with a stable ID, a
+  line of the exact shape `- [Rk.n] WHEN <event> THE SYSTEM SHALL <observable response>`
+  (`IF <precondition>` and `WHILE <state>` variants allowed). "Observable" means a test,
+  a command's output or a log line can see it. These IDs are what every step cites.
+- **6. Steps.** A checklist, then one subsection per step: a `Requirements:` line citing the
+  criterion IDs it satisfies (`Requirements: R1.2, R3.1`), anchor check, goal, branch, files,
   red tests, change contracts, green run, break script, version and commit, review, merge,
   done when.
 - **7. Device proof.** The build, APK and install commands. Each check's adb command and
   expected reading, and where it is saved. Read `dumpsys alarm` before any clock change and
   say which armed alarm it would fire.
 - **8. Records.** The findings text under its exact heading, the queue-row cell text the
-  auditor applies on PASS, the docs commit message.
-- **9. Push.** Always None. The executor never pushes. The audit session pushes after a PASS.
+  lead applies on DONE, the docs commit message.
+- **9. Push.** Always None. The executor worker never pushes. The lead pushes after the
+  reviews pass.
 - **10. When something goes wrong.** A symptom table. Anticipated review fixes, word for
   word. Per-step restore lists.
-- **11. Subagents.** Normally None. The only permitted one is `vision`, for an image the
-  session cannot see.
+- **11. Subagents.** Planning: `explore` workers answer fact questions, `athan-plan-griller`
+  grills the draft. Delivery: the lead dispatches the `athan-executor` and `athan-reviewer`
+  workers. Every worker may call `vision` for an image it cannot see. Nothing else, ever.
 - **12. Report to the owner.** Plain sentences on what changed and what was proven, the
   progress table, decisions waiting on the owner, the four-line handoff.
 
 ## Hard rules
 
+- `bash scripts/check-plan.sh <plan-folder>` must print `PLAN OK` before the row is set
+  READY. The gate checks sections, hedge words, EARS shape, Requirements resolution, anchor
+  shape and the pre-flight script. A plan that fails it is not planned, whatever it reads
+  like.
 - Anchors are verbatim excerpts of 3 to 15 lines, saved under `scripts/anchors/` and verified
   at the "Planned at" sha. Count them with
   `python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' <anchor file> <source file>`,
