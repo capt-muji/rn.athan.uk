@@ -10,7 +10,6 @@ import { showLondonDay } from '@/__tests__/harness';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
 import { openOverlay } from '@/stores/overlay';
-import { showArabicNamesAtom } from '@/stores/ui';
 
 import Prayer from '../Prayer';
 
@@ -20,19 +19,8 @@ const DUHA = 3;
 const ISTIJABA = 4;
 
 describe('the Sunrise row before Fajr on Friday 11 September 2026 at 03:00', () => {
-  it('names the prayer in English and Arabic', async () => {
+  it('names the prayer once, in one language', async () => {
     showLondonDay('2026-09-11', '03:00');
-
-    await render(<Prayer type={ScheduleType.Standard} index={SUNRISE} />);
-
-    expect(screen.getByText('Sunrise')).toBeOnTheScreen();
-    expect(screen.getByText('الشروق')).toBeOnTheScreen();
-  });
-
-  it('leaves the Arabic name out when Arabic names are turned off', async () => {
-    showLondonDay('2026-09-11', '03:00');
-    // Settings writes this preference through the atom itself: the store has no setter for it
-    getDefaultStore().set(showArabicNamesAtom, false);
 
     await render(<Prayer type={ScheduleType.Standard} index={SUNRISE} />);
 
