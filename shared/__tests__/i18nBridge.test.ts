@@ -84,15 +84,42 @@ describe('the catalog as its own transfer format', () => {
     }
 
     // The only tokened keys today; a new token family must extend ParamsOf first
-    expect([...tokensByKey.keys()].sort()).toEqual(['notification.now', 'notification.reminder']);
+    expect([...tokensByKey.keys()].sort()).toEqual([
+      'alert.reminder',
+      'countdown.progressA11y',
+      'notification.now',
+      'notification.reminder',
+      'prayerAlert.notification',
+      'soundItem.athan',
+      'soundItem.preview',
+      'soundItem.stopPreview',
+      'stepper.decrease',
+      'stepper.increase',
+      'stepper.value',
+      'whatsNew.platformNote',
+    ]);
     expect(tokensByKey.get('notification.now')).toEqual(['name']);
     expect(tokensByKey.get('notification.reminder')).toEqual(['name', 'n']);
+    expect(tokensByKey.get('alert.reminder')).toEqual(['n']);
+    expect(tokensByKey.get('countdown.progressA11y')).toEqual(['percent']);
+    expect(tokensByKey.get('prayerAlert.notification')).toEqual(['name', 'state']);
+    expect(tokensByKey.get('soundItem.athan')).toEqual(['n']);
+    expect(tokensByKey.get('soundItem.preview')).toEqual(['name']);
+    expect(tokensByKey.get('soundItem.stopPreview')).toEqual(['name']);
+    expect(tokensByKey.get('stepper.value')).toEqual(['value', 'unit']);
+    expect(tokensByKey.get('stepper.decrease')).toEqual(['value', 'unit']);
+    expect(tokensByKey.get('stepper.increase')).toEqual(['value', 'unit']);
+    expect(tokensByKey.get('whatsNew.platformNote')).toEqual(['platform']);
 
     // ParamsOf matches the same map (compile-time pins: a wrong shape fails tsc here)
     const nowParams: ParamsOf<'notification.now'> = { name: 'Fajr' };
     const reminderParams: ParamsOf<'notification.reminder'> = { name: 'Fajr', n: 15 };
+    const stepperParams: ParamsOf<'stepper.decrease'> = { value: 10, unit: 'min' };
+    const platformParams: ParamsOf<'whatsNew.platformNote'> = { platform: 'iOS' };
     expect(nowParams.name).toBe('Fajr');
     expect(reminderParams.n).toBe(15);
+    expect(stepperParams.value).toBe(10);
+    expect(platformParams.platform).toBe('iOS');
     // @ts-expect-error a key with no tokens takes no params
     const none: ParamsOf<'settings.title'> = { name: 'x' };
     expect(none).toBeDefined();

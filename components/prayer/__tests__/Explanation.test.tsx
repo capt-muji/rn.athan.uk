@@ -6,6 +6,7 @@ import { render, screen, within } from '@testing-library/react-native';
 import type { TestInstance } from 'test-renderer';
 
 import { EXTRA_PRAYER_TITLES, EXTRAS_EXPLANATIONS } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 
 import PrayerExplanation from '../Explanation';
 
@@ -18,7 +19,7 @@ const drawnParts = (): TestInstance[] =>
 describe('the explanation box of an Extras prayer', () => {
   it('names the prayer and explains it in one language', async () => {
     await render(
-      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={EXTRAS_EXPLANATIONS[MIDNIGHT]} />
+      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
     expect(screen.getByText('Midnight')).toBeOnTheScreen();
@@ -28,7 +29,7 @@ describe('the explanation box of an Extras prayer', () => {
 
   it('asks a screen reader to announce it politely, since it appears without taking focus', async () => {
     await render(
-      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={EXTRAS_EXPLANATIONS[MIDNIGHT]} />
+      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
     expect(screen.root).toHaveProp('accessibilityLiveRegion', 'polite');
@@ -43,7 +44,7 @@ describe('the explanation box of an Extras prayer', () => {
     await render(
       <PrayerExplanation
         prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
-        explanation={EXTRAS_EXPLANATIONS[MIDNIGHT]}
+        explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
         arrowPosition={arrowPosition}
       />
     );

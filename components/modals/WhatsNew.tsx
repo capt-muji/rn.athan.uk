@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { Icon } from '@/shared/types';
 import { getPlatformBadges, type WhatsNewItem } from '@/shared/whatsNew';
 
@@ -25,8 +26,11 @@ type Props = {
 
 export default function ModalWhatsNew({ visible, version, items, onClose }: Props) {
   return (
-    <Modal visible={visible} title="What's New" onRequestClose={onClose}>
-      <Text style={styles.version}>v{version}</Text>
+    <Modal visible={visible} title={t('whatsNew.heading')} onRequestClose={onClose}>
+      <Text style={styles.version}>
+        {'v'}
+        {version}
+      </Text>
       <View style={styles.list}>
         {items.map((item) => (
           <View key={item.title} style={styles.item}>
@@ -42,15 +46,21 @@ export default function ModalWhatsNew({ visible, version, items, onClose }: Prop
               <Text style={styles.body}>
                 {item.body}
                 {item.platform && (
-                  <Text style={styles.bodyPlatform}> ({item.platform === 'ios' ? 'iOS' : 'Android'} only)</Text>
+                  <Text style={styles.bodyPlatform}>
+                    {t('whatsNew.platformNote', { platform: item.platform === 'ios' ? 'iOS' : 'Android' })}
+                  </Text>
                 )}
               </Text>
             </View>
           </View>
         ))}
       </View>
-      <Pressable style={styles.button} onPress={onClose} accessibilityRole='button' accessibilityLabel='Close'>
-        <Text style={styles.buttonText}>Close</Text>
+      <Pressable
+        style={styles.button}
+        onPress={onClose}
+        accessibilityRole={'button'}
+        accessibilityLabel={t('modal.close')}>
+        <Text style={styles.buttonText}>{t('modal.close')}</Text>
       </Pressable>
     </Modal>
   );

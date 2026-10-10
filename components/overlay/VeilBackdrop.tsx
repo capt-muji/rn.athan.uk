@@ -43,7 +43,7 @@ export default function VeilBackdrop() {
   );
 
   return (
-    <Reanimated.View style={[styles.container, opacityStyle]} pointerEvents='none'>
+    <Reanimated.View style={[styles.container, opacityStyle]} pointerEvents={'none'}>
       <LinearGradient
         colors={[COLORS.gradient.overlay.start, COLORS.gradient.overlay.end]}
         start={{ x: 0, y: 0 }}

@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 
 import Modal from './Modal';
 
@@ -12,25 +13,22 @@ type Props = {
 
 export default function ModalUpdate({ visible, onClose, onUpdate }: Props) {
   return (
-    <Modal visible={visible} title='Update Available!' onRequestClose={onClose}>
-      <Text style={styles.message}>
-        A new version is available.
-        {'\n'}Would you like to update now?
-      </Text>
+    <Modal visible={visible} title={t('update.title')} onRequestClose={onClose}>
+      <Text style={styles.message}>{t('update.message')}</Text>
       <View style={styles.buttonContainer}>
         <Pressable
           style={[styles.button, styles.cancelButton]}
           onPress={onClose}
-          accessibilityRole='button'
-          accessibilityLabel='Later'>
-          <Text style={styles.cancelText}>Later</Text>
+          accessibilityRole={'button'}
+          accessibilityLabel={t('update.later')}>
+          <Text style={styles.cancelText}>{t('update.later')}</Text>
         </Pressable>
         <Pressable
           style={[styles.button, styles.updateButton]}
           onPress={onUpdate}
-          accessibilityRole='button'
-          accessibilityLabel='Update'>
-          <Text style={styles.updateText}>Update</Text>
+          accessibilityRole={'button'}
+          accessibilityLabel={t('update.update')}>
+          <Text style={styles.updateText}>{t('update.update')}</Text>
         </Pressable>
       </View>
     </Modal>

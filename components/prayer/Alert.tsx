@@ -13,7 +13,7 @@ import { getShownAlert, isShownOccurrenceUnavailable, usePrayer } from '@/hooks/
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
+import { prayerLabel, type TranslationKey, t } from '@/shared/i18n';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
@@ -28,10 +28,10 @@ type AlertIconType = Icon.BELL_RING | Icon.BELL_SLASH | Icon.SPEAKER;
 // only by the glyph shape and its fill colour, and this is the control that
 // decides whether a prayer alerts at all. Kept on ALERT_CONFIGS so the icon and
 // the wording for a state cannot drift apart — the array index IS the AlertType.
-const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType; spoken: string }[] = [
-  { icon: Icon.BELL_SLASH, type: AlertType.Off, spoken: 'off' },
-  { icon: Icon.BELL_RING, type: AlertType.Silent, spoken: 'silent' },
-  { icon: Icon.SPEAKER, type: AlertType.Sound, spoken: 'sound' },
+const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType; spoken: TranslationKey }[] = [
+  { icon: Icon.BELL_SLASH, type: AlertType.Off, spoken: 'prayerAlert.state.off' },
+  { icon: Icon.BELL_RING, type: AlertType.Silent, spoken: 'prayerAlert.state.silent' },
+  { icon: Icon.SPEAKER, type: AlertType.Sound, spoken: 'prayerAlert.state.sound' },
 ];
 
 interface Props {
@@ -176,22 +176,19 @@ export default function Alert({ type, index }: Props) {
           setIsPressed(false);
           AnimScale.animate(1);
         }}
-        accessibilityRole='button'
+        accessibilityRole={'button'}
         // Named from the atom, not from `displayedAlert`: the glyph lags the
         // committed value through the change-bounce, and a screen reader must
         // hear the setting that is actually stored
-        accessibilityLabel={
-          isUnavailable
-            ? `${prayerLabel(Prayer.id)} notification: unavailable`
-            : `${prayerLabel(Prayer.id)} notification: ${ALERT_CONFIGS[alertAtom].spoken}`
-        }
-        accessibilityHint={
-          isUnavailable ? 'Explains why no alert can be set for this prayer' : 'Opens the alert options for this prayer'
-        }
+        accessibilityLabel={t('prayerAlert.notification', {
+          name: prayerLabel(Prayer.id),
+          state: isUnavailable ? t('prayerAlert.state.unavailable') : t(ALERT_CONFIGS[alertAtom].spoken),
+        })}
+        accessibilityHint={isUnavailable ? t('prayerAlert.hintUnavailable') : t('prayerAlert.hintOpen')}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
           <Animated.View style={AnimSwap.style}>
-            <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>
+            <Svg viewBox={'0 0 256 256'} width={SIZE.icon.md} height={SIZE.icon.md}>
               <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={fillProps} />
             </Svg>
           </Animated.View>

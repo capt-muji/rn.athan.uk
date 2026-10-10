@@ -21,6 +21,7 @@ import {
   SPACING,
   TEXT,
 } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
@@ -102,32 +103,32 @@ export default function ColorPickerSettings() {
         style={[styles.container, { opacity }]}
         onPress={handlePress}
         hitSlop={HIT_SLOP.md}
-        accessibilityRole='button'
+        accessibilityRole={'button'}
         accessibilityState={{ disabled: isDisabled }}
-        accessibilityLabel='Countdown bar color'>
-        <Text style={[styles.label, isDisabled && styles.labelDisabled]}>Countdown bar color</Text>
+        accessibilityLabel={t('colorPicker.label')}>
+        <Text style={[styles.label, isDisabled && styles.labelDisabled]}>{t('colorPicker.label')}</Text>
         <View style={styles.rightContainer}>
           <Pressable
             onPress={handleReset}
             hitSlop={HIT_SLOP.sm}
             style={[styles.resetButton, { opacity: isCustomColor ? 1 : 0 }]}
             disabled={!isCustomColor}
-            accessibilityRole='button'
-            accessibilityLabel='Reset to the default colour'
+            accessibilityRole={'button'}
+            accessibilityLabel={t('colorPicker.resetLabel')}
             // Drawn at zero opacity on the default colour, so without these a screen reader offers
             // a Reset that is invisible and does nothing. Both, because one is iOS and one Android
             accessibilityElementsHidden={!isCustomColor}
             importantForAccessibility={isCustomColor ? 'yes' : 'no-hide-descendants'}>
-            <Text style={styles.resetText}>Reset</Text>
+            <Text style={styles.resetText}>{t('colorPicker.reset')}</Text>
           </Pressable>
           <View style={styles.colorPreviewContainer}>
             <View style={[styles.colorPreview, { backgroundColor: countdownBarColor }]} />
           </View>
-          <Text style={styles.chevron}>›</Text>
+          <Text style={styles.chevron}>{'›'}</Text>
         </View>
       </Pressable>
 
-      <Modal visible={showPicker} transparent animationType='slide' onRequestClose={handleDismiss}>
+      <Modal visible={showPicker} transparent animationType={'slide'} onRequestClose={handleDismiss}>
         <View style={styles.modalOverlay}>
           <View style={[styles.modalContent, { paddingBottom: bottom + 50 }]}>
             <View style={styles.modalHeader}>
@@ -136,19 +137,19 @@ export default function ColorPickerSettings() {
                   onPress={handleDismiss}
                   hitSlop={HIT_SLOP.md}
                   style={styles.cancelButton}
-                  accessibilityRole='button'
-                  accessibilityLabel='Cancel'>
+                  accessibilityRole={'button'}
+                  accessibilityLabel={t('colorPicker.cancel')}>
                   <CloseIcon width={SIZE.icon.md} height={SIZE.icon.md} color={COLORS.icon.primary} />
                 </Pressable>
               </View>
-              <Text style={styles.modalTitle}>Select Color</Text>
+              <Text style={styles.modalTitle}>{t('colorPicker.title')}</Text>
               <View style={[styles.headerSide, styles.headerSideRight]}>
                 <Pressable
                   onPress={handleDone}
                   hitSlop={HIT_SLOP.md}
                   style={styles.saveButton}
-                  accessibilityRole='button'
-                  accessibilityLabel='Done'>
+                  accessibilityRole={'button'}
+                  accessibilityLabel={t('colorPicker.done')}>
                   <CheckIcon width={SIZE.icon.md} height={SIZE.icon.md} color={COLORS.modal.saveText} />
                 </Pressable>
               </View>

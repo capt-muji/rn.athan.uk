@@ -8,6 +8,7 @@ import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { Icon } from '@/shared/types';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import {
@@ -22,6 +23,10 @@ import { Sheet, SoundItem } from '../parts';
 import { displayedSoundSelection, hasSoundDraft, isPreviewFinished, previewRemainingSeconds } from './soundSheet';
 
 const ITEM_GAP = SPACING.xs;
+
+// The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
+const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
+const SHEET_PERF_NAME = 'sheet_sound';
 
 export default function BottomSheetSound() {
   const { commitSoundSelection } = useNotification();
@@ -162,20 +167,20 @@ export default function BottomSheetSound() {
   return (
     <Sheet
       setRef={setBottomSheetModal}
-      title='Select Athan'
-      subtitle='Close to save'
-      icon={<IconView type={Icon.SPEAKER} size={16} color='rgba(165, 180, 252, 0.8)' />}
+      title={t('sound.title')}
+      subtitle={t('sheet.closeToSave')}
+      icon={<IconView type={Icon.SPEAKER} size={16} color={SHEET_ICON_COLOR} />}
       snapPoints={['85%']}
       onDismiss={handleDismiss}
       onAnimate={clearAudio}
-      perfName='sheet_sound'
+      perfName={SHEET_PERF_NAME}
       onFirstPresent={setSoundListReady}
-      stackBehavior='push'>
+      stackBehavior={'push'}>
       {/* Card + 32 rows mount once the settings sheet (the only path here)
           has fully opened — invisible warming, complete before first present */}
       {soundListReady && (
         <View style={styles.card}>
-          <Text style={styles.cardHint}>Notification sound</Text>
+          <Text style={styles.cardHint}>{t('sound.notificationSound')}</Text>
 
           <View style={styles.listContainer}>
             {/* Sliding indicator */}

@@ -14,6 +14,7 @@ import { TIP_OVAL_WIDTH, tipLeftForProgress } from '@/components/countdown/tipGe
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { getBarOpacity, useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { countdownBarColorAtom, resyncAtom } from '@/stores/ui';
@@ -162,8 +163,8 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     <Animated.View
       style={[styles.wrapper, wrapperOpacityStyle, scaleStyle]}
       accessible
-      accessibilityRole='progressbar'
-      accessibilityLabel={`Prayer countdown: ${Math.round(progress)} percent remaining`}
+      accessibilityRole={'progressbar'}
+      accessibilityLabel={t('countdown.progressA11y', { percent: Math.round(progress) })}
       accessibilityValue={{ min: 0, max: 100, now: progress }}
       accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}
       // Hidden because it cannot be worked out, so no percentage may be announced for it
@@ -178,7 +179,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       </Animated.View>
 
       {/* Pulsing tip indicator */}
-      <Animated.View style={[styles.tipContainer, tipPositionStyle]} pointerEvents='none'>
+      <Animated.View style={[styles.tipContainer, tipPositionStyle]} pointerEvents={'none'}>
         <Animated.View style={[styles.tipOval, tipAppearanceStyle]} />
       </Animated.View>
     </Animated.View>

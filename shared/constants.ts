@@ -59,16 +59,15 @@ export const NIGHT_PRAYER_NAMES: readonly PrayerId[] = ['midnight', 'last third'
 export const MIDNIGHT_CROSSING_PRAYERS: readonly PrayerId[] = ['isha', 'magrib'];
 
 /**
- * Human-readable explanations for each extra prayer
- * Used in PrayerExplanation overlay to provide context to users
- * Order aligns with EXTRAS arrays
+ * The catalog key for each extra prayer's explanation, resolved through t() by the
+ * overlay's one consumer. Order aligns with EXTRA_PRAYER_IDS.
  */
 export const EXTRAS_EXPLANATIONS = [
-  'Halfway between Magrib and Fajr',
-  'Start of the last third of the night',
-  '20 mins before Fajr',
-  '20 mins after Sunrise',
-  '1 hour before Magrib (Fridays only)',
+  'extras.explanation.midnight',
+  'extras.explanation.last third',
+  'extras.explanation.suhoor',
+  'extras.explanation.duha',
+  'extras.explanation.istijaba',
 ] as const;
 
 // =============================================================================
