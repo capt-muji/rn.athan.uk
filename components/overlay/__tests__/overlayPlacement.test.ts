@@ -116,8 +116,8 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
   // The card hangs from a row EDGE and is never given a height, so it is as tall as its own content.
   // Friday lists 5 Extras rows, so only the last one flips above: that is what keeps the card off the
   // rows it would otherwise cover.
-  // [selected index, its prayer, the row drawn for it, arrow, the top it anchors from, explanation, Arabic]
-  it.each<[number, string, number, string, ViewStyle, string, string]>([
+  // [selected index, its prayer, the row drawn for it, arrow, the top it anchors from, explanation]
+  it.each<[number, string, number, string, ViewStyle, string]>([
     [
       0,
       'Istijaba',
@@ -125,7 +125,6 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       'bottom',
       { top: rowTop(4) + TIP_OVERLAP, transform: [{ translateY: '-100%' }] },
       '1 hour before Magrib (Fridays only)',
-      'ساعة قبل المغرب (الجمعة فقط)',
     ],
     [
       4,
@@ -134,11 +133,10 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       'top',
       { top: rowTop(0) + STYLES.prayer.height - TIP_OVERLAP },
       'Halfway between Magrib and Fajr',
-      'نصف الليل بين المغرب والفجر',
     ],
   ])(
     'index %i is %s, drawn on row %i: the card explains it against that row',
-    (index, english, _row, arrowPosition, anchor, explanation, explanationArabic) => {
+    (index, english, _row, arrowPosition, anchor, explanation) => {
       const names = openOnReversedFriday(index);
 
       const tree = OverlayInfoBox({ type: ScheduleType.Extra });
@@ -148,7 +146,6 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       expect(cards[0].props).toMatchObject({
         prayerName: english,
         explanation,
-        explanationArabic,
         arrowPosition,
         style: { ...anchor, left: 0, width: '100%' },
       });

@@ -37,10 +37,25 @@
 - Breaks: 2 of 2 AS EXPECTED (ungated Arabic Text returns; name uppercases), restore green:
   `ALL AS EXPECTED: 1`. Version 1.29.310.
 
-## Resume from: step 2, part 0
+## Step 3: the Arabic chrome dies
 
-Context ran low after step 1. The next session: run the pre-flight with k=2, resume the
-IN PROGRESS row, and execute step 2 (`steps/02-arabic-removal-row.md`) onward. Everything the
-later steps need is in the plan folder; the break-script lesson above (untracked test files
-restore from a backup copy, `git checkout --` aborts atomically on them) applies to every
-step whose red test is a new file.
+- Branch `feat/38-03-chrome` off `uat`. Red: "shows no arabic-names toggle" and "names the
+  prayer and explains it in one language" both failed before the change.
+- Removed: the Settings wiring, toggle row and import; the explanation box's Arabic line,
+  style, prop and doc; `OverlayInfoBox`'s destructure, guard term and prop pass;
+  `overlayContent`'s type field, assignment and import; `toArabicNumbers` and
+  `ENGLISH_TO_ARABIC` (`shared/text.ts` and its suite deleted with the surface);
+  `showArabicNamesAtom`.
+- Executor fix, three conditions met (recorded per the step-8 rule): the plan kept
+  `EXTRAS_EXPLANATIONS_ARABIC` in `shared/constants.ts` for step 4, but removing its last
+  consumer leaves the export unreachable and fails `unusedExports`. The array and its
+  `constants.test.ts` length pin are deleted in this step instead of step 4.
+- Executor incident, no repo damage: a regex block-deletion in `shared/constants.ts` matched
+  from the file's first doc comment and removed the first 1009 lines. Caught immediately by
+  the suite (`PRAYERS_ENGLISH` undefined), restored from git, redone as an exact-text edit.
+  Diff verified at 15 deleted lines before proceeding.
+- Green: constants 49, overlayContent + overlayPlacement 34, Settings + Explanation + Overlay
+  39, ui 27. tsc clean. Biome clean. `grep` finds zero surviving references to the four
+  removed identifiers outside `ai/plans`.
+- Breaks: 3 of 3 AS EXPECTED (toggle row returns; Arabic explanation returns; dead atom
+  unreachable), restore green: `ALL AS EXPECTED: 1`. Version 1.29.311.

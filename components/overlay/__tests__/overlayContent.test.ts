@@ -41,12 +41,12 @@ const drawnNames = (rows: Prayer[]): string[] =>
   EXTRAS_ENGLISH.filter((name) => rows.some((row) => row.english === name));
 
 /** Text each Extras prayer's box must carry */
-const EXPLAINED: [string, string, string][] = [
-  ['Midnight', 'Halfway between Magrib and Fajr', 'نصف الليل بين المغرب والفجر'],
-  ['Last Third', 'Start of the last third of the night', 'عند بداية الثلث الأخير من الليل'],
-  ['Suhoor', '20 mins before Fajr', '20 دقيقة قبل الفجر'],
-  ['Duha', '20 mins after Sunrise', '20 دقيقة بعد الشروق'],
-  ['Istijaba', '1 hour before Magrib (Fridays only)', 'ساعة قبل المغرب (الجمعة فقط)'],
+const EXPLAINED: [string, string][] = [
+  ['Midnight', 'Halfway between Magrib and Fajr'],
+  ['Last Third', 'Start of the last third of the night'],
+  ['Suhoor', '20 mins before Fajr'],
+  ['Duha', '20 mins after Sunrise'],
+  ['Istijaba', '1 hour before Magrib (Fridays only)'],
 ];
 
 // [scenario, first sequence day, breakage, now (London date, time), list day on screen]
@@ -126,11 +126,10 @@ describe('getOverlayRow', () => {
 // =============================================================================
 
 describe('getOverlayExplanation', () => {
-  it.each(EXPLAINED)('%s: the box names it and explains it', (english, explanation, explanationArabic) => {
+  it.each(EXPLAINED)('%s: the box names it and explains it', (english, explanation) => {
     expect(getOverlayExplanation(ScheduleType.Extra, english)).toEqual({
       prayerName: english,
       explanation,
-      explanationArabic,
     });
   });
 
@@ -138,14 +137,13 @@ describe('getOverlayExplanation', () => {
     expect(getOverlayExplanation(ScheduleType.Standard, english)).toEqual({
       prayerName: null,
       explanation: null,
-      explanationArabic: null,
     });
   });
 
   it('gives a row still loading, whose name is empty, no explanation text to borrow', () => {
-    const { explanation, explanationArabic } = getOverlayExplanation(ScheduleType.Extra, '');
+    const { explanation } = getOverlayExplanation(ScheduleType.Extra, '');
 
-    expect([Boolean(explanation), Boolean(explanationArabic)]).toEqual([false, false]);
+    expect(Boolean(explanation)).toBe(false);
   });
 });
 
@@ -158,7 +156,7 @@ describe('a tap on each Extras row', () => {
     '%s, in every order the list could be gathered in: the box sits on the tapped row and explains the prayer drawn there',
     (_scenario, firstDay, breakage, now, listDay) => {
       const { prayers: built } = onScreen(firstDay, breakage, now);
-      const explanationOf = new Map(EXPLAINED.map(([english, ...texts]) => [english, texts]));
+      const explanationOf = new Map(EXPLAINED);
 
       for (const [, order] of LIST_ORDERS) {
         const prayers = withListDayOrder(built, listDay, order);
@@ -170,10 +168,7 @@ describe('a tap on each Extras row', () => {
           const shown = getOverlayExplanation(ScheduleType.Extra, rows[index].english);
 
           expect(getOverlayRow(prayers, listDay, ScheduleType.Extra, index)).toBe(drawnRow);
-          expect([shown.prayerName, shown.explanation, shown.explanationArabic]).toEqual([
-            names[drawnRow],
-            ...(explanationOf.get(names[drawnRow]) ?? []),
-          ]);
+          expect([shown.prayerName, shown.explanation]).toEqual([names[drawnRow], explanationOf.get(names[drawnRow])]);
         });
       }
     }

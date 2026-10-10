@@ -994,19 +994,3 @@ export const STYLES = {
     },
   },
 };
-
-// =============================================================================
-// ARABIC EXPLANATIONS
-// =============================================================================
-
-/**
- * Arabic translations of extra prayer explanations
- * Used in bilingual UI displays
- */
-export const EXTRAS_EXPLANATIONS_ARABIC = [
-  'نصف الليل بين المغرب والفجر',
-  'عند بداية الثلث الأخير من الليل',
-  '20 دقيقة قبل الفجر',
-  '20 دقيقة بعد الشروق',
-  'ساعة قبل المغرب (الجمعة فقط)',
-] as const;
