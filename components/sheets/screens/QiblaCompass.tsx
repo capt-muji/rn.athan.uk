@@ -47,13 +47,13 @@ const Kaaba = memo(({ box, palette }: { box: number; palette: Palette }) => {
   return (
     <Svg width={canvas} height={canvas} viewBox={`${-canvas / 2} ${-canvas / 2} ${canvas} ${canvas}`}>
       <Polygon points={shapes.flank} fill={palette.kaaba} />
-      <Polygon points={shapes.flank} fill='#000000' fillOpacity={0.28} />
+      <Polygon points={shapes.flank} fill={'#000000'} fillOpacity={0.28} />
       <Polygon points={shapes.front} fill={palette.kaaba} />
       <Polygon points={shapes.roof} fill={palette.kaaba} />
-      <Polygon points={shapes.roof} fill='#ffffff' fillOpacity={0.16} />
+      <Polygon points={shapes.roof} fill={'#ffffff'} fillOpacity={0.16} />
 
       <Polygon points={shapes.belt.flank} fill={palette.accent} />
-      <Polygon points={shapes.belt.flank} fill='#000000' fillOpacity={0.28} />
+      <Polygon points={shapes.belt.flank} fill={'#000000'} fillOpacity={0.28} />
       <Polygon points={shapes.belt.front} fill={palette.accent} />
 
       <Rect
@@ -64,7 +64,13 @@ const Kaaba = memo(({ box, palette }: { box: number; palette: Palette }) => {
         fill={palette.accent}
       />
 
-      <Path d={shapes.silhouette} fill='none' stroke={palette.accent} strokeWidth={outline} strokeLinejoin='round' />
+      <Path
+        d={shapes.silhouette}
+        fill={'none'}
+        stroke={palette.accent}
+        strokeWidth={outline}
+        strokeLinejoin={'round'}
+      />
     </Svg>
   );
 });
@@ -87,7 +93,7 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
   return (
     <Svg width={size} height={size} viewBox={`${-radius} ${-radius} ${size} ${size}`}>
       <Circle r={radius * FACE.rim} fill={palette.face} stroke={structure(palette, 0.92)} strokeWidth={unit * 2.2} />
-      <Circle r={radius * FACE.ring} fill='none' stroke={structure(palette, 0.5)} strokeWidth={unit * 1.1} />
+      <Circle r={radius * FACE.ring} fill={'none'} stroke={structure(palette, 0.5)} strokeWidth={unit * 1.1} />
 
       {TICKS.map(({ angle, weight }) => {
         const outer = facePoint(angle, radius * FACE.tick);
@@ -104,7 +110,7 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
             y2={inner.y}
             stroke={structure(palette, alpha)}
             strokeWidth={unit * width}
-            strokeLinecap='round'
+            strokeLinecap={'round'}
           />
         );
       })}
@@ -112,10 +118,10 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
       {/* Where Makkah lies, inlaid into the rim's own stroke */}
       <Path
         d={arcPath(bearing - FACE.arcSpread, bearing + FACE.arcSpread, radius * FACE.arc)}
-        fill='none'
+        fill={'none'}
         stroke={palette.accent}
         strokeWidth={unit * 2.2}
-        strokeLinecap='round'
+        strokeLinecap={'round'}
       />
 
       <Circle
@@ -136,8 +142,8 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
             fill={palette.ink}
             fontSize={radius * FACE.cardinalSize}
             fontFamily={TEXT.family.medium}
-            textAnchor='middle'
-            alignmentBaseline='central'>
+            textAnchor={'middle'}
+            alignmentBaseline={'central'}>
             {letter}
           </Text>
         );
@@ -162,13 +168,13 @@ const Needle = memo(({ size, palette }: { size: number; palette: Palette }) => {
       {/* An open outline, so the line runs through it unbroken */}
       <Path
         d={rubElHizbPath(radius * FACE.jewel, -22.5)}
-        fill='none'
+        fill={'none'}
         stroke={structure(palette, 1)}
         strokeWidth={unit * 1.5}
       />
       <Path
         d={rubElHizbPath(radius * FACE.jewelInner, 0)}
-        fill='none'
+        fill={'none'}
         stroke={structure(palette, 0.5)}
         strokeWidth={unit * 0.9}
       />
@@ -213,22 +219,22 @@ export default function QiblaCompass({ size, bearing, heading, aligned }: QiblaC
 
   return (
     <View style={[styles.stage, { width: size, height: size }]}>
-      <Animated.View testID='qibla-dial' style={dialStyle}>
+      <Animated.View testID={'qibla-dial'} style={dialStyle}>
         <Dial size={size} bearing={bearing} palette={COLORS.qibla.away} />
-        <Animated.View testID='qibla-dial-gold' style={[StyleSheet.absoluteFill, goldStyle]}>
+        <Animated.View testID={'qibla-dial-gold'} style={[StyleSheet.absoluteFill, goldStyle]}>
           <Dial size={size} bearing={bearing} palette={COLORS.qibla.facing} />
         </Animated.View>
       </Animated.View>
       {/* The marker rides the plate's bearing but stands upright on the card, so it is its own layer */}
-      <View style={[StyleSheet.absoluteFill, styles.stage]} pointerEvents='none'>
-        <Animated.View testID='qibla-kaaba' style={markerStyle}>
+      <View style={[StyleSheet.absoluteFill, styles.stage]} pointerEvents={'none'}>
+        <Animated.View testID={'qibla-kaaba'} style={markerStyle}>
           <Kaaba box={radius * FACE.kaabaSize} palette={COLORS.qibla.away} />
           <Animated.View style={[StyleSheet.absoluteFill, goldStyle]}>
             <Kaaba box={radius * FACE.kaabaSize} palette={COLORS.qibla.facing} />
           </Animated.View>
         </Animated.View>
       </View>
-      <View style={StyleSheet.absoluteFill} pointerEvents='none'>
+      <View style={StyleSheet.absoluteFill} pointerEvents={'none'}>
         <Needle size={size} palette={COLORS.qibla.away} />
         <Animated.View style={[StyleSheet.absoluteFill, goldStyle]}>
           <Needle size={size} palette={COLORS.qibla.facing} />

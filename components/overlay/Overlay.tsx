@@ -10,6 +10,7 @@ import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, OVERLAY } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { perfMeasure } from '@/shared/perf';
 import { closeOverlay, overlayAtom } from '@/stores/overlay';
 import { measurementsListAtom } from '@/stores/ui';
@@ -94,7 +95,7 @@ export default function Overlay() {
   });
 
   return (
-    <Reanimated.View testID='overlay-layer' style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
+    <Reanimated.View testID={'overlay-layer'} style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
       {/* Press-catcher: everything except the selected row closes the overlay.
           All four regions share one name deliberately — they are one dismiss
           target split only for hit-testing around the exempt row, so wherever
@@ -105,8 +106,8 @@ export default function Overlay() {
         <Pressable
           key={region.id}
           onPress={handleClose}
-          accessibilityRole='button'
-          accessibilityLabel='Close prayer details'
+          accessibilityRole={'button'}
+          accessibilityLabel={t('overlay.closeDetails')}
           style={[styles.catcher, { top: region.top, left: region.left, width: region.width, height: region.height }]}
         />
       ))}

@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
+import { prayerLabel, t } from '@/shared/i18n';
 import {
   type AlertMenuState,
   AlertType,
@@ -29,9 +29,9 @@ import {
 import ReminderCard from './ReminderCard';
 
 const ALERT_OPTIONS: SegmentOption[] = [
-  { value: AlertType.Off, label: 'Off', icon: Icon.BELL_SLASH },
-  { value: AlertType.Silent, label: 'Silent', icon: Icon.BELL_RING },
-  { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
+  { value: AlertType.Off, label: t('alert.option.off'), icon: Icon.BELL_SLASH },
+  { value: AlertType.Silent, label: t('alert.option.silent'), icon: Icon.BELL_RING },
+  { value: AlertType.Sound, label: t('alert.option.sound'), icon: Icon.SPEAKER },
 ];
 
 // Nothing the user can do fixes a time the timetable did not give, so this explains and reassures without asking
@@ -39,13 +39,7 @@ const ALERT_OPTIONS: SegmentOption[] = [
 // The hard lines are all within about 12dp of each other, so the centred block reads as an even paragraph, and at
 // the default font size (and up to Android's Large) each fits a 360dp phone inside the padding below without
 // wrapping a second time
-const UNAVAILABLE_MESSAGE = [
-  "This prayer's time isn't available",
-  'right now, so no alert will go off.',
-  '',
-  'Your alert setting is kept and will',
-  'return once a time is available.',
-].join('\n');
+const UNAVAILABLE_MESSAGE: string = t('alert.unavailable');
 
 interface AlertSheetBodyRef {
   /** Values snapshotted at mount — the change-detection baseline for the deferred commit */
@@ -64,6 +58,10 @@ interface AlertSheetBodyProps {
   sheetState: AlertSheetState;
   ensurePermissions: () => Promise<boolean>;
 }
+
+// The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
+const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
+const SHEET_PERF_NAME = 'sheet_alert';
 
 export default function BottomSheetAlert() {
   const sheetState = useAtomValue(alertSheetStateAtom);
@@ -87,12 +85,12 @@ export default function BottomSheetAlert() {
     <Sheet
       setRef={setAlertSheetModal}
       title={sheetState ? prayerLabel(sheetState.prayerId) : ''}
-      subtitle='Close to save'
-      icon={<IconView type={Icon.BELL_RING} size={16} color='rgba(165, 180, 252, 0.8)' />}
+      subtitle={t('sheet.closeToSave')}
+      icon={<IconView type={Icon.BELL_RING} size={16} color={SHEET_ICON_COLOR} />}
       enableDynamicSizing
       contentCap={0.85}
       onDismiss={handleDismiss}
-      perfName='sheet_alert'>
+      perfName={SHEET_PERF_NAME}>
       {sheetState?.isUnavailable && (
         // No body is mounted, so its ref stays empty and the dismiss commits nothing
         <View style={styles.unavailable}>
@@ -213,8 +211,8 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
     <>
       {/* Prayer Alert Card */}
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Athan</Text>
-        <Text style={styles.cardHint}>Notification at prayer time</Text>
+        <Text style={styles.cardTitle}>{t('alert.card.athan')}</Text>
+        <Text style={styles.cardHint}>{t('alert.card.athanHint')}</Text>
         <View style={{ marginTop: SPACING.md }}>
           <SegmentedControl
             key={`athan-${sheetState.type}-${sheetState.index}`}
@@ -226,8 +224,8 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
       </View>
 
       <ReminderCard
-        title='Reminder 1'
-        hint='Notification before prayer time'
+        title={t('alert.reminder', { n: 1 })}
+        hint={t('alert.reminderHint')}
         reminder={reminders[0]}
         sound={sounds[0]}
         taken={takenInterval(reminders[1])}
@@ -238,8 +236,8 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
       />
 
       <ReminderCard
-        title='Reminder 2'
-        hint='Notification before prayer time'
+        title={t('alert.reminder', { n: 2 })}
+        hint={t('alert.reminderHint')}
         reminder={reminders[1]}
         sound={sounds[1]}
         taken={takenInterval(reminders[0])}

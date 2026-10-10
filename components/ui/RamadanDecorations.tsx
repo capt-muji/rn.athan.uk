@@ -412,7 +412,7 @@ export default function RamadanDecorations() {
   if (!visible) return null;
 
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents='none'>
+    <View style={StyleSheet.absoluteFill} pointerEvents={'none'}>
       {/* Wires: thin strips whose scaleY (origin at the top) follows the same
           bob shared values that move the hangings — GPU transform, no SVG */}
       <WireStrip x={moonTipX} baseLen={moonTipY} bobOffset={moonBob} width={0.4} opacity={0.06} />

@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { AlertType, Icon, type ReminderInterval, type ReminderSetting } from '@/shared/types';
 
 import { SegmentedControl, type SegmentOption, Stepper, Toggle } from '../parts';
 import { stepReminderInterval } from '../parts/reminderStep';
 
 const SOUND_OPTIONS: SegmentOption[] = [
-  { value: AlertType.Silent, label: 'Silent', icon: Icon.BELL_RING },
-  { value: AlertType.Sound, label: 'Sound', icon: Icon.SPEAKER },
+  { value: AlertType.Silent, label: t('alert.option.silent'), icon: Icon.BELL_RING },
+  { value: AlertType.Sound, label: t('alert.option.sound'), icon: Icon.SPEAKER },
 ];
 
 interface Props {
@@ -62,17 +63,17 @@ export default function ReminderCard({
 
       <View style={[styles.reminderOptions, !isOn && styles.optionsDisabled]}>
         <View style={styles.optionRow}>
-          <Text style={styles.optionLabel}>Sound</Text>
+          <Text style={styles.optionLabel}>{t('reminder.sound')}</Text>
           <SegmentedControl options={SOUND_OPTIONS} selected={sound} onSelect={onSelectSound} disabled={!isOn} />
         </View>
 
         <View style={styles.optionRow}>
-          <Text style={styles.optionLabel}>Before</Text>
+          <Text style={styles.optionLabel}>{t('reminder.before')}</Text>
           <Stepper
             value={reminder.interval}
             onDecrement={() => step(-1)}
             onIncrement={() => step(1)}
-            unit='min'
+            unit={t('reminder.unitMinutes')}
             disabled={!isOn}
             taken={taken}
           />
