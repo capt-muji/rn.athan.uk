@@ -42,14 +42,15 @@ that note.
 ## STOP and return when
 
 - A command prints something the plan does not predict.
-- A file does not contain the plan's anchor, or contains it more than once. Set
-  NEEDS REPLAN in your report, never repair an anchor yourself.
+- A file does not contain the plan's anchor, or contains it more than once. Return
+  `NEEDS_CONTEXT: NEEDS REPLAN, <the anchor and its count>`, never repair an anchor
+  yourself.
 - A test the plan did not name fails, or a test the plan says must fail passes.
 - You cannot meet the acceptance criteria without deciding something the plan
   does not give.
 - A break prints `BREAK NOT APPLIED` on a step built from contracts: the plan's
-  substitution does not match the code. On a step whose files were copied from
-  the plan: NEEDS REPLAN.
+  substitution does not match the code. On a step whose files were copied from the plan:
+  return `NEEDS_CONTEXT: NEEDS REPLAN, <the break and its output>`.
 
 ## The step loop
 
@@ -57,7 +58,8 @@ that note.
    check first: a count other than 1 is STOP.
 1. `git status --porcelain` may list only `ai/plans/README.md` and this plan
    folder's `PLAN.md` and `LOG.md`, else STOP. Create the branch the plan names
-   off `uat`.
+   off `uat`. With the first step's commit, set the row in `ai/plans/README.md`
+   to IN PROGRESS.
 2. **Red.** Write the tests the step names, verbatim where the plan gives them.
    The named tests must fail with the failure the plan describes. If they pass,
    or other tests fail, STOP.
@@ -164,7 +166,8 @@ that note.
 - Before any clock change, run the plan's alarm dump and compare it with the
   plan's expected alarms. A clock jump fires every armed alarm it passes, so an
   alarm the plan did not list means STOP.
-- Never force-stop the app, it has hung the phone. Press HOME, then
+- Never force-stop the app outside the plan's Maestro flows, it has hung the phone.
+  Inside a flow, force-stop per `e2e/AGENTS.md`. Outside flows, press HOME, then
   `am kill com.mugtaba.athan`, then launch. If adb hangs twice, STOP and report.
 - `uiautomator dump` fails while the countdown animates: use the logcat lines
   and alarm dumps the plan names. Read `e2e/device-atlas-<model>.md` before any
@@ -184,7 +187,8 @@ that note.
 
 ## Finishing
 
-Apply the plan's records text with the values you measured. Set the row in
+Apply the plan's records text into `LOG.md` under its heading, with the values
+you measured. Set the row in
 `ai/plans/README.md` to EXECUTED. Make the `executed` docs commit (branch
 `docs/executed-<N>-<date>`, version bumped, plan files and queue added by name,
 message `<VERSION> - docs(plans): job <N> executed: <one line>`), merge `--no-ff`,
@@ -193,6 +197,7 @@ do not push. Remove every scratch worktree you made with
 under `$HOME/athan-gitree/worktrees/` stay.
 
 Your final message is under 15 lines and starts with one of `DONE`,
-`DONE_WITH_CONCERNS`, `BLOCKED`, `NEEDS_CONTEXT` or `STOP:`. It names the steps
+`DONE_WITH_CONCERNS`, `BLOCKED`, `NEEDS_CONTEXT: NEEDS REPLAN, <reason>` or `STOP:`.
+On `BLOCKED`, write the reason into the queue row before returning. It names the steps
 done, the last commit sha, the hook's `Tests:` line, and the evidence paths. The
 full detail lives in `LOG.md`.

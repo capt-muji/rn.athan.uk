@@ -37,7 +37,7 @@ each with the exact condition and the exact action.
 - **7. Device proof.** The build, APK and install commands. Each check's adb command and
   expected reading, and where it is saved. Read `dumpsys alarm` before any clock change and
   say which armed alarm it would fire.
-- **8. Records.** The findings text under its exact heading, the queue-row cell text the
+- **8. Records.** The findings text written into `LOG.md` under its exact heading, the queue-row cell text the
   lead applies on DONE, the docs commit message.
 - **9. Push.** Always None. The executor worker never pushes. The lead pushes after the
   reviews pass.

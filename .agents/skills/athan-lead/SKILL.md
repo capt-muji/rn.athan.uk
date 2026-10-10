@@ -79,34 +79,41 @@ its ledger; it cannot reach the owner and it cannot push. When it returns:
 - `STOP:` a question for the owner. Ask it with the question tool, write the answer into
   `LOG.md` yourself, and respawn the worker from the first unticked step.
 - `NEEDS_CONTEXT` that the plan cannot give: route to **Plan** (a NEEDS REPLAN).
+- `BLOCKED`: the row cannot move (the owner answered wait, or a device is missing).
+  Write the reason into the row, then stop per section 5.
 - A return that moved neither the row nor `uat` and cannot say why: respawn once. Twice
   running: stop and report.
-- Never dispatch a device-heavy step the worker cannot finish before it starts.
+- Never dispatch a device-heavy step the worker cannot finish in its session.
 
 **Audit.** You are the judge; the reviewers are your eyes.
 
-1. Write the range's diff to a file: `git diff origin/uat..uat -- . ':(exclude)ai/plans' > $TMPDIR/audit-<N>.diff`.
+1. If no row is EXECUTED and the unpushed commits are docs-only (planning or records
+   commits), read each once yourself, leave the row’s status exactly as it is, and
+   return to section 2 for the next phase.
+2. Write the range’s diff to a file: `git diff origin/uat..uat -- . ':(exclude)ai/plans' > $TMPDIR/audit-<N>.diff`.
    An empty diff skips to item 6.
-2. Dispatch one `athan-reviewer` as **plan-conformance**: the diff path, a worktree at
-   `uat`, and the plan folder. It checks the code against the plan.
-3. Dispatch one `athan-reviewer` as **blind**: the diff path and the worktree only. Never
-   the plan, never `LOG.md`, never this conversation. The blindness is the point: it is
+3. Dispatch one `athan-reviewer` as **plan-conformance**: the diff path, a worktree at
+   `uat`, the plan folder, and a findings file at `$TMPDIR/findings-plan-<N>.md`. It checks
+   the code against the plan.
+4. Dispatch one `athan-reviewer` as **blind**: the diff path, the worktree, and a findings
+   file at `$TMPDIR/findings-blind-<N>.md`. Never the plan, never `LOG.md`, never this
+   conversation. The blindness is the point: it is
    how plan-independent defects get caught.
-4. Rows touching notifications, data or the schedule get one more blind pass focused on
+5. Steps touching notifications, data or the schedule get one more blind pass focused on
    threading and lifecycle. These reviewer dispatches may run in parallel.
-5. Adjudicate every finding yourself: confirm it from the code, by a test where one
+6. Adjudicate every finding yourself: confirm it from the code, by a test where one
    applies, or reject it with the line that disproves it. Record each finding and its
    verdict in `AUDIT.md` in the plan folder.
-6. Confirmed fixes are work: dispatch `athan-executor` with a fix brief (red test first,
-   one branch, one version, one commit), then verify, then read the fix diff cold once.
-7. Findings the owner owns (visuals, notification scheduling, anything she ruled on):
+7. Confirmed fixes are yours: red test first, one branch, one version, one commit,
+   then read the fix diff cold once.
+8. Findings the owner owns (visuals, notification scheduling, anything she ruled on):
    ask with the question tool before any fix.
-8. PASS: set the row's final text from the plan, set DONE, `git rm -r` the plan folder
+9. PASS: set the row’s final text from the plan, set DONE, `git rm -r` the plan folder
    in the same docs commit (the one survivor is a file still cited by shipped code or
    config, which moves beside the queue or into the row first), delete
    `$HOME/athan-gitree/sessions/<N>/`, branch `docs/audit-<N>-<date>`, version bumped, merge
    `--no-ff`.
-9. Push `origin uat` only when every commit on `uat` that is not yet on `origin/uat` was
+10. Push `origin uat` only when every commit on `uat` that is not yet on `origin/uat` was
    checked by this audit or made by it. Otherwise do not push, and tell the owner which
    commits still need one.
 
@@ -114,8 +121,9 @@ its ledger; it cannot reach the owner and it cannot push. When it returns:
 
 1. Route from the repository, never memory: the queue and `git log origin/uat..uat`
    pick the phase, before and after every phase.
-2. Delegate every phase to its worker; you name the job, then verify the worker's report
-   against the repository. You write no plan, no code, no audit.
+2. Delegate execution and audit to their workers; you name the job, then verify the worker’s report
+   against the repository. You write no plan and no audit verdict; the one
+   code you ever write is an audit fix, red test first.
 3. Continue to the next phase when the row moved, or the worker's commits landed on
    `uat` and passed review.
 4. Respawn a worker from its ledger when it returned mid-phase; reroute when nothing
@@ -155,5 +163,6 @@ One job per run. Never carry on into the next row: the owner starts that with
 ```
 
 Above those four lines, at most three sentences: what the run delivered, and anything
-the owner must decide or hold. The detail lives in the plan folder's `LOG.md` and
-`AUDIT.md` while it exists, and in git history after. End with the progress table.
+the owner must decide or hold, then the progress table. The four lines close the reply,
+nothing after them. The detail lives in the plan folder’s `LOG.md` and `AUDIT.md`
+while it exists, and in git history after.

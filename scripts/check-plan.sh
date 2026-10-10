@@ -41,7 +41,7 @@ hedges=(
   "appropriate" "reasonable" "properly" "correctly"
 )
 for w in "${hedges[@]}"; do
-  if grep -rwF --include='*.md' -e "$w" "$folder" >/dev/null 2>&1; then
+  if grep -rwF -e "$w" "$plan" "$folder"/steps/*.md >/dev/null 2>&1; then
     reason "banned hedge word in plan text: $w (say the exact condition and action)"
   fi
 done
