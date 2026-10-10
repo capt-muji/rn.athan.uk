@@ -6,6 +6,8 @@
  * `getPrayerByDateString: jest.fn()`; a rendering suite uses saveLondonDays against the real database instead.
  */
 
+import type { PrayerId } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { createPrayerSequence, transformApiData } from '@/shared/prayer';
 import { createPrayerDatetime } from '@/shared/time';
 import type { ISingleApiResponseTransformed, Prayer, RequiredTimeName, ScheduleType } from '@/shared/types';
@@ -61,7 +63,7 @@ export const sequenceFrom = (type: ScheduleType, firstDay: string, dayCount = 3)
   createPrayerSequence(type, london(firstDay, '12:00'), dayCount).prayers;
 
 interface RowWithStatus {
-  english: string;
+  id: PrayerId;
   belongsToDate: string;
   isPassed: boolean;
   isNext: boolean;
@@ -73,4 +75,4 @@ export const statusOf = (row: RowWithStatus): string =>
 
 /** One list day's rows, in sequence order, as "Name: status" */
 export const listStatuses = (rows: RowWithStatus[], date: string): string[] =>
-  rows.filter((row) => row.belongsToDate === date).map((row) => `${row.english}: ${statusOf(row)}`);
+  rows.filter((row) => row.belongsToDate === date).map((row) => `${prayerLabel(row.id)}: ${statusOf(row)}`);

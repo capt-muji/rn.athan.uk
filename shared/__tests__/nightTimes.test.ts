@@ -14,7 +14,7 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
 import { MOCK_DATA_FULL } from '@/mocks/full';
-import { TIME_ADJUSTMENTS } from '@/shared/constants';
+import { type PrayerId, TIME_ADJUSTMENTS } from '@/shared/constants';
 import {
   canonicalDisplayOrder,
   createPrayerSequence,
@@ -102,7 +102,7 @@ const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): P
   createPrayerSequence(type, new Date(`${firstDate}T12:00:00Z`), dayCount).prayers;
 
 const rowOf = (list: Prayer[], english: string): Prayer => {
-  const prayer = list.find((candidate) => candidate.english === english);
+  const prayer = list.find((candidate) => candidate.id === english);
   if (!prayer) throw new Error(`${english} is not on the list`);
   return prayer;
 };
@@ -115,7 +115,7 @@ const readableRowOf = (list: Prayer[], english: string): ReadablePrayer => {
 };
 
 /** A row as the screen and the alarms see it: its instant, or null, and its clock reading, or null */
-const shown = (row: Prayer) => [row.english, row.datetime?.toISOString() ?? null, row.time] as const;
+const shown = (row: Prayer) => [row.id, row.datetime?.toISOString() ?? null, row.time] as const;
 
 /**
  * Readable rows that do not come strictly after the readable row before them in the sequence
@@ -128,7 +128,7 @@ const outOfTimeOrder = (prayers: Prayer[]): string[] => {
   return readable.slice(1).flatMap((row, index) => {
     const before = readable[index];
     if (row.datetime > before.datetime) return [];
-    return [`${row.belongsToDate} ${row.english} ${row.datetime.toISOString()} not after ${before.english}`];
+    return [`${row.belongsToDate} ${row.id} ${row.datetime.toISOString()} not after ${before.id}`];
   });
 };
 
@@ -187,8 +187,8 @@ describe('Extras night rows are the night leading into their day (real London 20
     ['2026-10-26', '2026-10-25T22:57:00.000Z', '22:57', '2026-10-26T01:00:00.000Z', '01:00'],
   ])('list %s: Midnight %s (%s), Last Third %s (%s)', (date, midnightAt, midnightTime, lastThirdAt, lastThirdTime) => {
     const list = listFor(ScheduleType.Extra, date);
-    const midnight = readableRowOf(list, 'Midnight');
-    const lastThird = readableRowOf(list, 'Last Third');
+    const midnight = readableRowOf(list, 'midnight');
+    const lastThird = readableRowOf(list, 'last third');
 
     expect(midnight.datetime.toISOString()).toBe(midnightAt);
     expect(midnight.time).toBe(midnightTime);
@@ -199,10 +199,10 @@ describe('Extras night rows are the night leading into their day (real London 20
   });
 
   it("leaves Suhoor where it was: 20 minutes before the day's own Fajr", () => {
-    expect(readableRowOf(listFor(ScheduleType.Extra, '2026-10-25'), 'Suhoor').datetime.toISOString()).toBe(
+    expect(readableRowOf(listFor(ScheduleType.Extra, '2026-10-25'), 'suhoor').datetime.toISOString()).toBe(
       '2026-10-25T04:44:00.000Z'
     );
-    expect(readableRowOf(listFor(ScheduleType.Extra, '2026-03-29'), 'Suhoor').datetime.toISOString()).toBe(
+    expect(readableRowOf(listFor(ScheduleType.Extra, '2026-03-29'), 'suhoor').datetime.toISOString()).toBe(
       '2026-03-29T03:47:00.000Z'
     );
   });
@@ -212,9 +212,9 @@ describe('Extras night rows are the night leading into their day (real London 20
 
     // Magrib Thu 31 Dec 2026 16:04, Fajr Fri 1 Jan 2027 06:26: a 14h 22m night
     const list = listFor(ScheduleType.Extra, '2027-01-01');
-    expect(readableRowOf(list, 'Midnight').datetime.toISOString()).toBe('2026-12-31T23:15:00.000Z');
-    expect(readableRowOf(list, 'Last Third').datetime.toISOString()).toBe('2027-01-01T01:38:00.000Z');
-    expect(rowOf(list, 'Midnight').belongsToDate).toBe('2027-01-01');
+    expect(readableRowOf(list, 'midnight').datetime.toISOString()).toBe('2026-12-31T23:15:00.000Z');
+    expect(readableRowOf(list, 'last third').datetime.toISOString()).toBe('2027-01-01T01:38:00.000Z');
+    expect(rowOf(list, 'midnight').belongsToDate).toBe('2027-01-01');
   });
 });
 
@@ -264,15 +264,15 @@ describe('never builds Midnight or Last Third from a Magrib the payload did not 
     const sequence = sequenceFor(ScheduleType.Extra, firstList, 2);
     const firstNight = sequence.filter((row) => row.belongsToDate === firstList).slice(0, 2);
     expect(firstNight.map(shown)).toEqual([
-      ['Midnight', null, null],
-      ['Last Third', null, null],
+      ['midnight', null, null],
+      ['last third', null, null],
     ]);
     expect(firstNight.map((row) => row.belongsToDate)).toEqual([firstList, firstList]);
     expect(listFor(ScheduleType.Extra, firstList).slice(0, 2)).toEqual(firstNight);
-    for (const english of ['Midnight', 'Last Third']) {
-      expect(getPrayerForDate(ScheduleType.Extra, english, firstList)).toEqual({
+    for (const id of ['midnight', 'last third'] as PrayerId[]) {
+      expect(getPrayerForDate(ScheduleType.Extra, id, firstList)).toEqual({
         type: ScheduleType.Extra,
-        english,
+        id,
         datetime: null,
         time: null,
         belongsToDate: firstList,
@@ -281,9 +281,9 @@ describe('never builds Midnight or Last Third from a Magrib the payload did not 
 
     // The night that has both ends from the provider keeps its exact instants
     const next = sequence.filter((row) => row.belongsToDate === nextList);
-    expect(shown(rowOf(next, 'Midnight'))).toEqual(['Midnight', midnightAt, midnightTime]);
-    expect(shown(rowOf(next, 'Last Third'))).toEqual(['Last Third', lastThirdAt, lastThirdTime]);
-    expect(getPrayerForDate(ScheduleType.Extra, 'Midnight', nextList)).toEqual(rowOf(next, 'Midnight'));
+    expect(shown(rowOf(next, 'midnight'))).toEqual(['midnight', midnightAt, midnightTime]);
+    expect(shown(rowOf(next, 'last third'))).toEqual(['last third', lastThirdAt, lastThirdTime]);
+    expect(getPrayerForDate(ScheduleType.Extra, 'midnight', nextList)).toEqual(rowOf(next, 'midnight'));
 
     // Only the night has no time: Suhoor and Duha come from the day's own record
     expect(sequence.filter((row) => row.datetime === null)).toHaveLength(2);
@@ -298,10 +298,10 @@ describe('never builds Midnight or Last Third from a Magrib the payload did not 
     ]);
 
     expect(listFor(ScheduleType.Extra, '2026-09-15').map(shown)).toEqual([
-      ['Midnight', null, null],
-      ['Last Third', null, null],
-      ['Suhoor', '2026-09-15T03:40:00.000Z', '04:40'],
-      ['Duha', '2026-09-15T05:52:00.000Z', '06:52'],
+      ['midnight', null, null],
+      ['last third', null, null],
+      ['suhoor', '2026-09-15T03:40:00.000Z', '04:40'],
+      ['duha', '2026-09-15T05:52:00.000Z', '06:52'],
     ]);
   });
 });
@@ -366,45 +366,45 @@ describe("a Friday Magrib the provider sent as '-----'", () => {
       useRecords(october(fridayMagrib));
 
       expect(listFor(ScheduleType.Standard, '2026-10-16').map(shown)).toEqual([
-        ['Fajr', '2026-10-16T04:51:00.000Z', '05:51'],
-        ['Sunrise', '2026-10-16T06:23:00.000Z', '07:23'],
-        ['Dhuhr', '2026-10-16T11:51:00.000Z', '12:51'],
-        ['Asr', '2026-10-16T14:31:00.000Z', '15:31'],
-        ['Magrib', ...magrib],
-        ['Isha', '2026-10-16T18:31:00.000Z', '19:31'],
+        ['fajr', '2026-10-16T04:51:00.000Z', '05:51'],
+        ['sunrise', '2026-10-16T06:23:00.000Z', '07:23'],
+        ['dhuhr', '2026-10-16T11:51:00.000Z', '12:51'],
+        ['asr', '2026-10-16T14:31:00.000Z', '15:31'],
+        ['magrib', ...magrib],
+        ['isha', '2026-10-16T18:31:00.000Z', '19:31'],
       ]);
       // Friday's own night has no time either way: 15 October is not stored
       expect(listFor(ScheduleType.Extra, '2026-10-16').map(shown)).toEqual([
-        ['Midnight', null, null],
-        ['Last Third', null, null],
-        ['Suhoor', '2026-10-16T04:31:00.000Z', '05:31'],
-        ['Duha', '2026-10-16T06:43:00.000Z', '07:43'],
-        ['Istijaba', ...istijaba],
+        ['midnight', null, null],
+        ['last third', null, null],
+        ['suhoor', '2026-10-16T04:31:00.000Z', '05:31'],
+        ['duha', '2026-10-16T06:43:00.000Z', '07:43'],
+        ['istijaba', ...istijaba],
       ]);
       expect(listFor(ScheduleType.Extra, '2026-10-17').map(shown)).toEqual([
-        ['Midnight', ...saturdayMidnight],
-        ['Last Third', ...saturdayLastThird],
-        ['Suhoor', '2026-10-17T04:32:00.000Z', '05:32'],
-        ['Duha', '2026-10-17T06:45:00.000Z', '07:45'],
+        ['midnight', ...saturdayMidnight],
+        ['last third', ...saturdayLastThird],
+        ['suhoor', '2026-10-17T04:32:00.000Z', '05:32'],
+        ['duha', '2026-10-17T06:45:00.000Z', '07:45'],
       ]);
       expect(listFor(ScheduleType.Standard, '2026-10-17').map(shown)).toEqual([
-        ['Fajr', '2026-10-17T04:52:00.000Z', '05:52'],
-        ['Sunrise', '2026-10-17T06:25:00.000Z', '07:25'],
-        ['Dhuhr', '2026-10-17T11:51:00.000Z', '12:51'],
-        ['Asr', '2026-10-17T14:30:00.000Z', '15:30'],
-        ['Magrib', '2026-10-17T17:06:00.000Z', '18:06'],
-        ['Isha', '2026-10-17T18:29:00.000Z', '19:29'],
+        ['fajr', '2026-10-17T04:52:00.000Z', '05:52'],
+        ['sunrise', '2026-10-17T06:25:00.000Z', '07:25'],
+        ['dhuhr', '2026-10-17T11:51:00.000Z', '12:51'],
+        ['asr', '2026-10-17T14:30:00.000Z', '15:30'],
+        ['magrib', '2026-10-17T17:06:00.000Z', '18:06'],
+        ['isha', '2026-10-17T18:29:00.000Z', '19:29'],
       ]);
       // Sunday's night runs from Saturday's Magrib, which the provider gave
       expect(listFor(ScheduleType.Extra, '2026-10-18').slice(0, 2).map(shown)).toEqual([
-        ['Midnight', '2026-10-17T23:00:00.000Z', '00:00'],
-        ['Last Third', '2026-10-18T00:58:00.000Z', '01:58'],
+        ['midnight', '2026-10-17T23:00:00.000Z', '00:00'],
+        ['last third', '2026-10-18T00:58:00.000Z', '01:58'],
       ]);
-      expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-10-16')).toEqual(
-        rowOf(listFor(ScheduleType.Extra, '2026-10-16'), 'Istijaba')
+      expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-10-16')).toEqual(
+        rowOf(listFor(ScheduleType.Extra, '2026-10-16'), 'istijaba')
       );
-      expect(getPrayerForDate(ScheduleType.Extra, 'Last Third', '2026-10-17')).toEqual(
-        rowOf(listFor(ScheduleType.Extra, '2026-10-17'), 'Last Third')
+      expect(getPrayerForDate(ScheduleType.Extra, 'last third', '2026-10-17')).toEqual(
+        rowOf(listFor(ScheduleType.Extra, '2026-10-17'), 'last third')
       );
     }
   );
@@ -414,39 +414,39 @@ describe('getPrayerForDate', () => {
   beforeEach(() => useRecords(LONDON_2026));
 
   it('returns the row without a time, not null, when the day is not stored', () => {
-    expect(getPrayerForDate(ScheduleType.Extra, 'Midnight', '2026-05-01')).toEqual({
+    expect(getPrayerForDate(ScheduleType.Extra, 'midnight', '2026-05-01')).toEqual({
       type: ScheduleType.Extra,
-      english: 'Midnight',
+      id: 'midnight',
       datetime: null,
       time: null,
       belongsToDate: '2026-05-01',
     });
-    expect(getPrayerForDate(ScheduleType.Standard, 'Isha', '2026-05-01')).toMatchObject({ datetime: null, time: null });
+    expect(getPrayerForDate(ScheduleType.Standard, 'isha', '2026-05-01')).toMatchObject({ datetime: null, time: null });
   });
 
   it('keeps Istijaba on a Friday that is not stored, and off the Saturday after it', () => {
     // 1 May 2026 is a Friday
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-05-01')).toMatchObject({
-      english: 'Istijaba',
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-05-01')).toMatchObject({
+      id: 'istijaba',
       datetime: null,
       time: null,
       belongsToDate: '2026-05-01',
     });
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-05-02')).toBeNull();
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-05-02')).toBeNull();
   });
 
   it("returns null for Istijaba outside Fridays (not on that day's list)", () => {
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-09-12')).toBeNull();
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-09-12')).toBeNull();
   });
 
   it('returns Istijaba on Fridays, an hour before Magrib', () => {
-    const istijaba = getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-09-11');
+    const istijaba = getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-09-11');
     expect(istijaba?.time).toBe('18:28');
     expect(istijaba?.datetime?.toISOString()).toBe('2026-09-11T17:28:00.000Z');
   });
 
   it('gives a night row its night-before instant, still keyed to its own list day', () => {
-    const midnight = getPrayerForDate(ScheduleType.Extra, 'Midnight', '2026-10-24');
+    const midnight = getPrayerForDate(ScheduleType.Extra, 'midnight', '2026-10-24');
     expect(midnight?.datetime?.toISOString()).toBe('2026-10-23T22:58:00.000Z');
     expect(midnight?.time).toBe('23:58');
     expect(midnight?.belongsToDate).toBe('2026-10-24');
@@ -457,10 +457,10 @@ describe('an Isha after 00:00 (high latitudes in summer; the app goes global in 
   it("stays on its own day's list at the next calendar day's instant, and getPrayerForDate agrees", () => {
     useRecords([day('2026-06-20', '02:40', '04:43', '13:02', '17:20', '21:25', '00:30')]);
 
-    const isha = readableRowOf(listFor(ScheduleType.Standard, '2026-06-20'), 'Isha');
+    const isha = readableRowOf(listFor(ScheduleType.Standard, '2026-06-20'), 'isha');
     expect(isha.datetime.toISOString()).toBe('2026-06-20T23:30:00.000Z'); // 00:30 BST on 21 June
     expect(isha.belongsToDate).toBe('2026-06-20');
-    expect(getPrayerForDate(ScheduleType.Standard, 'Isha', '2026-06-20')).toEqual(isha);
+    expect(getPrayerForDate(ScheduleType.Standard, 'isha', '2026-06-20')).toEqual(isha);
   });
 });
 
@@ -490,8 +490,8 @@ describe('every day of a real London year (2024)', () => {
       const list = listFor(ScheduleType.Extra, date);
 
       for (const [english, instant] of [
-        ['Midnight', night.midnight],
-        ['Last Third', night.lastThird],
+        ['midnight', night.midnight],
+        ['last third', night.lastThird],
       ] as const) {
         const row = rowOf(list, english);
         if (row.datetime?.getTime() !== instant) {
@@ -518,10 +518,10 @@ describe('every day of a real London year (2024)', () => {
       const record = recordOn(date);
       for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
         for (const row of listFor(type, date)) {
-          if (row.english === 'Midnight' || row.english === 'Last Third') continue;
-          const time = clock(record[row.english.toLowerCase() as keyof ISingleApiResponseTransformed]);
+          if (row.id === 'midnight' || row.id === 'last third') continue;
+          const time = clock(record[row.id as keyof ISingleApiResponseTransformed]);
           const exact = row.time === time && row.datetime?.getTime() === londonInstant(date, time);
-          if (!exact || row.belongsToDate !== date) mismatches.push(`${type} ${date} ${row.english}`);
+          if (!exact || row.belongsToDate !== date) mismatches.push(`${type} ${date} ${row.id}`);
         }
       }
     }
@@ -534,8 +534,8 @@ describe('every day of a real London year (2024)', () => {
 
     for (const date of dates.slice(1)) {
       const list = listFor(ScheduleType.Extra, date);
-      const expected = ['Midnight', 'Last Third', 'Suhoor', 'Duha', ...(isFriday(date) ? ['Istijaba'] : [])];
-      const names = list.map((row) => row.english);
+      const expected = ['midnight', 'last third', 'suhoor', 'duha', ...(isFriday(date) ? ['istijaba'] : [])];
+      const names = list.map((row) => row.id);
       const order = canonicalDisplayOrder(list, ScheduleType.Extra);
       const identity = expected.map((_, index) => index);
       if (names.join() !== expected.join() || order.join() !== identity.join()) {
@@ -555,16 +555,16 @@ describe('every day of a real London year (2024)', () => {
       const prayers = sequenceFor(type, dates[0], dates.length);
       const namesOn = (date: string) =>
         type === ScheduleType.Standard
-          ? ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha']
-          : ['Midnight', 'Last Third', 'Suhoor', 'Duha', ...(isFriday(date) ? ['Istijaba'] : [])];
+          ? ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha']
+          : ['midnight', 'last third', 'suhoor', 'duha', ...(isFriday(date) ? ['istijaba'] : [])];
 
       expect(dates[0]).toBe('2024-01-01');
-      expect(prayers.map((row) => `${row.belongsToDate} ${row.english}`)).toEqual(
+      expect(prayers.map((row) => `${row.belongsToDate} ${row.id}`)).toEqual(
         dates.flatMap((date) => namesOn(date).map((english) => `${date} ${english}`))
       );
-      expect(
-        prayers.filter((row) => row.datetime === null).map((row) => `${row.belongsToDate} ${row.english}`)
-      ).toEqual(type === ScheduleType.Extra ? ['2024-01-01 Midnight', '2024-01-01 Last Third'] : []);
+      expect(prayers.filter((row) => row.datetime === null).map((row) => `${row.belongsToDate} ${row.id}`)).toEqual(
+        type === ScheduleType.Extra ? ['2024-01-01 midnight', '2024-01-01 last third'] : []
+      );
       expect(outOfTimeOrder(prayers)).toEqual([]);
     }
   );
@@ -575,13 +575,13 @@ describe('every day of a real London year (2024)', () => {
     for (const date of dates) {
       for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
         for (const row of listFor(type, date)) {
-          const single = getPrayerForDate(type, row.english, date);
+          const single = getPrayerForDate(type, row.id, date);
           const same =
             single !== null &&
             single.datetime?.getTime() === row.datetime?.getTime() &&
             single.time === row.time &&
             single.belongsToDate === row.belongsToDate;
-          if (!same) mismatches.push(`${type} ${date} ${row.english}`);
+          if (!same) mismatches.push(`${type} ${date} ${row.id}`);
         }
       }
     }
@@ -619,7 +619,7 @@ describe('a Magrib that falls after midnight', () => {
   it('places the Magrib instant on the next calendar day, not 23h56m early', () => {
     useRecords(POLAR);
 
-    const magrib = readableRowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'Magrib');
+    const magrib = readableRowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'magrib');
 
     expect(formatInTimeZone(magrib.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe('2026-06-22 00:04');
   });
@@ -628,8 +628,8 @@ describe('a Magrib that falls after midnight', () => {
     useRecords(POLAR);
 
     const list = listFor(ScheduleType.Extra, '2026-06-22');
-    const midnight = readableRowOf(list, 'Midnight').datetime;
-    const lastThird = readableRowOf(list, 'Last Third').datetime;
+    const midnight = readableRowOf(list, 'midnight').datetime;
+    const lastThird = readableRowOf(list, 'last third').datetime;
 
     // Night runs 22 June 00:04 to 22 June 01:30: 86 minutes, midpoint 00:47
     expect(formatInTimeZone(midnight, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe('2026-06-22 00:47');
@@ -639,7 +639,7 @@ describe('a Magrib that falls after midnight', () => {
   it('keeps the row on its own list day, so 21 June still shows a Magrib', () => {
     useRecords(POLAR);
 
-    const magrib = rowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'Magrib');
+    const magrib = rowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'magrib');
 
     // datetime moves to the 22nd for the alarm; belongsToDate must not, or the row
     // leaves the 21st's list and appears on the 22nd's alongside that day's own Magrib
@@ -649,7 +649,7 @@ describe('a Magrib that falls after midnight', () => {
   it('keeps Islamic Midnight on the correct side of noon', () => {
     useRecords(POLAR);
 
-    const midnight = readableRowOf(listFor(ScheduleType.Extra, '2026-06-22'), 'Midnight');
+    const midnight = readableRowOf(listFor(ScheduleType.Extra, '2026-06-22'), 'midnight');
 
     expect(Number(formatInTimeZone(midnight.datetime, 'Europe/London', 'HH'))).toBeLessThan(12);
   });
@@ -680,8 +680,8 @@ describe('a Magrib that falls after midnight', () => {
         day('2026-06-27', '01:34', '02:59', '13:31', '17:31', magribTime, '00:34'),
       ]);
 
-      const istijaba = readableRowOf(listFor(ScheduleType.Extra, '2026-06-26'), 'Istijaba');
-      const magrib = readableRowOf(listFor(ScheduleType.Standard, '2026-06-26'), 'Magrib');
+      const istijaba = readableRowOf(listFor(ScheduleType.Extra, '2026-06-26'), 'istijaba');
+      const magrib = readableRowOf(listFor(ScheduleType.Standard, '2026-06-26'), 'magrib');
 
       expect(magrib.datetime.getTime() - istijaba.datetime.getTime()).toBe(60 * MINUTE);
       expect(istijaba.belongsToDate).toBe('2026-06-26');
@@ -704,8 +704,8 @@ describe('a Magrib that falls after midnight', () => {
       day('2026-06-27', '01:34', '02:59', '13:31', '17:31', magribTime, ishaTime),
     ]);
 
-    const istijaba = readableRowOf(listFor(ScheduleType.Extra, '2026-06-26'), 'Istijaba');
-    const magrib = readableRowOf(listFor(ScheduleType.Standard, '2026-06-26'), 'Magrib');
+    const istijaba = readableRowOf(listFor(ScheduleType.Extra, '2026-06-26'), 'istijaba');
+    const magrib = readableRowOf(listFor(ScheduleType.Standard, '2026-06-26'), 'magrib');
 
     expect(formatInTimeZone(magrib.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe(magribAt);
     expect(formatInTimeZone(istijaba.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe(istijabaAt);
@@ -718,8 +718,8 @@ describe('a Magrib that falls after midnight', () => {
   it('gives the notification path the same instant the list shows', () => {
     useRecords(POLAR);
 
-    const fromList = readableRowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'Magrib');
-    const fromNotificationPath = getPrayerForDate(ScheduleType.Standard, 'Magrib', '2026-06-21');
+    const fromList = readableRowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'magrib');
+    const fromNotificationPath = getPrayerForDate(ScheduleType.Standard, 'magrib', '2026-06-21');
 
     expect(fromNotificationPath?.datetime?.getTime()).toBe(fromList.datetime.getTime());
   });
@@ -727,8 +727,8 @@ describe('a Magrib that falls after midnight', () => {
   it('crosses into the post-midnight season without a discontinuity', () => {
     useRecords(CROSSING_SEASON);
 
-    const before = readableRowOf(listFor(ScheduleType.Extra, '2026-06-10'), 'Midnight').datetime;
-    const after = readableRowOf(listFor(ScheduleType.Extra, '2026-06-11'), 'Midnight').datetime;
+    const before = readableRowOf(listFor(ScheduleType.Extra, '2026-06-10'), 'midnight').datetime;
+    const after = readableRowOf(listFor(ScheduleType.Extra, '2026-06-11'), 'midnight').datetime;
 
     // One day apart to the minute, not a twelve-hour jump on the crossing day
     const dayApart = after.getTime() - before.getTime();
@@ -767,8 +767,8 @@ describe('a Suhoor that wraps back past midnight', () => {
     (fajr) => {
       useRecords(nightsWithFajr(fajr));
 
-      const suhoor = readableRowOf(listFor(ScheduleType.Extra, '2026-06-21'), 'Suhoor');
-      const fajrRow = readableRowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'Fajr');
+      const suhoor = readableRowOf(listFor(ScheduleType.Extra, '2026-06-21'), 'suhoor');
+      const fajrRow = readableRowOf(listFor(ScheduleType.Standard, '2026-06-21'), 'fajr');
 
       // Without the instant shift this reads about minus 24 hours: Suhoor after its own Fajr
       expect(fajrRow.datetime.getTime() - suhoor.datetime.getTime()).toBe(-TIME_ADJUSTMENTS.suhoor * MINUTE);
@@ -792,8 +792,8 @@ describe('a Suhoor that wraps back past midnight', () => {
   it('gives the notification path the same instant the list shows', () => {
     useRecords(nightsWithFajr('00:10'));
 
-    const fromList = readableRowOf(listFor(ScheduleType.Extra, '2026-06-21'), 'Suhoor');
-    const fromNotificationPath = getPrayerForDate(ScheduleType.Extra, 'Suhoor', '2026-06-21');
+    const fromList = readableRowOf(listFor(ScheduleType.Extra, '2026-06-21'), 'suhoor');
+    const fromNotificationPath = getPrayerForDate(ScheduleType.Extra, 'suhoor', '2026-06-21');
 
     expect(fromNotificationPath?.datetime?.getTime()).toBe(fromList.datetime.getTime());
     expect(formatInTimeZone(fromList.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe('2026-06-20 23:50');
@@ -807,7 +807,7 @@ describe('London is untouched by the Magrib midnight rule', () => {
       day('2026-09-13', '04:57', '06:29', '13:02', '16:26', '19:23', '20:37'),
     ]);
 
-    const magrib = readableRowOf(listFor(ScheduleType.Standard, '2026-09-12'), 'Magrib');
+    const magrib = readableRowOf(listFor(ScheduleType.Standard, '2026-09-12'), 'magrib');
 
     expect(formatInTimeZone(magrib.datetime, 'Europe/London', 'yyyy-MM-dd HH:mm')).toBe('2026-09-12 19:25');
   });

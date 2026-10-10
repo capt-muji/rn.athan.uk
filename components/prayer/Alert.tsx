@@ -13,6 +13,7 @@ import { getShownAlert, isShownOccurrenceUnavailable, usePrayer } from '@/hooks/
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
@@ -63,7 +64,7 @@ export default function Alert({ type, index }: Props) {
   // two orders ever stop coinciding. usePrayer has to run before the atom read
   // for that; the hook order stays unconditional, which is all React requires.
   const Prayer = usePrayer(type, index);
-  const alertIndex = canonicalPrayerIndex(type, Prayer.english, index);
+  const alertIndex = canonicalPrayerIndex(type, Prayer.id, index);
 
   // Atoms
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, alertIndex));
@@ -154,10 +155,10 @@ export default function Alert({ type, index }: Props) {
     showAlertSheet({
       type,
       index: alertIndex,
-      prayerEnglish: Prayer.english,
+      prayerId: Prayer.id,
       isUnavailable,
     });
-  }, [type, alertIndex, Prayer.english, alertAtom, ensurePermissions, isUnavailable]);
+  }, [type, alertIndex, Prayer.id, alertAtom, ensurePermissions, isUnavailable]);
 
   // =============================================================================
   // RENDER
@@ -181,8 +182,8 @@ export default function Alert({ type, index }: Props) {
         // hear the setting that is actually stored
         accessibilityLabel={
           isUnavailable
-            ? `${Prayer.english} notification: unavailable`
-            : `${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`
+            ? `${prayerLabel(Prayer.id)} notification: unavailable`
+            : `${prayerLabel(Prayer.id)} notification: ${ALERT_CONFIGS[alertAtom].spoken}`
         }
         accessibilityHint={
           isUnavailable ? 'Explains why no alert can be set for this prayer' : 'Opens the alert options for this prayer'

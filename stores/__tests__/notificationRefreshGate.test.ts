@@ -48,8 +48,8 @@ const TODAY = '2026-08-29';
 const TOMORROW = '2026-08-30';
 const HOUR = 3_600_000;
 
-const FAJR_TODAY = prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', TODAY);
-const FAJR_TOMORROW = prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', TOMORROW);
+const FAJR_TODAY = prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', TODAY);
+const FAJR_TOMORROW = prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', TOMORROW);
 
 const scheduleMock = jest.mocked(Notifications.scheduleNotificationAsync);
 const cancelMock = jest.mocked(Notifications.cancelScheduledNotificationAsync);

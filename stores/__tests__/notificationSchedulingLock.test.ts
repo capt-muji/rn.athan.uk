@@ -11,6 +11,8 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
+import type { PrayerId } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
@@ -64,10 +66,9 @@ const alerts = (atTimeAlert: AlertType, reminderAlert: AlertType = AlertType.Off
 /** Every alert of a prayer switched off */
 const OFF = alerts(AlertType.Off);
 
-const athanIds = (name: string) =>
-  WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, name, date));
-const reminderIds = (name: string) =>
-  WINDOW.map((date) => reminderNotificationIdentifier(ScheduleType.Standard, name, date, INTERVAL));
+const athanIds = (id: PrayerId) => WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, id, date));
+const reminderIds = (id: PrayerId) =>
+  WINDOW.map((date) => reminderNotificationIdentifier(ScheduleType.Standard, id, date, INTERVAL));
 
 const scheduleMock = jest.mocked(Notifications.scheduleNotificationAsync);
 const cancelMock = jest.mocked(Notifications.cancelScheduledNotificationAsync);
@@ -99,24 +100,24 @@ const flush = async () => {
 };
 
 /** What the OS holds for one prayer, athan and reminders */
-const armedFor = (name: string) => [...osState].filter((id) => id.includes(`_${name.toLowerCase()}_`)).sort();
+const armedFor = (id: PrayerId) => [...osState].filter((entry) => entry.includes(`_${id}_`)).sort();
 
 /** An earlier reschedule's alarms for a prayer, recorded and held by the OS */
 const armedEarlier = (
   index: number,
-  name: string,
+  id: PrayerId,
   ids: string[],
   record: typeof Database.addOneScheduledNotificationForPrayer
 ) => {
-  ids.forEach((id, position) => {
+  ids.forEach((identifier, position) => {
     record(ScheduleType.Standard, index, {
-      id,
+      id: identifier,
       date: WINDOW[position],
       time: '12:00',
-      englishName: name,
+      englishName: prayerLabel(id),
       alertType: AlertType.Silent,
     });
-    osState.add(id);
+    osState.add(identifier);
   });
 };
 
@@ -203,21 +204,21 @@ afterAll(() => {
 
 describe('an operation queued behind one that fails part way', () => {
   it('runs only once every prayer the failing refresh is arming has landed', async () => {
-    armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
-    refusedCancels.add(athanIds('Fajr')[0]);
+    armedEarlier(FAJR, 'fajr', athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
+    refusedCancels.add(athanIds('fajr')[0]);
     store.set(standardPrayerAlertAtoms[DHUHR], AlertType.Silent);
-    holdsSchedule = (id) => athanIds('Dhuhr').includes(id);
+    holdsSchedule = (id) => athanIds('dhuhr').includes(id);
     const refresh = refreshNotifications();
     await flush();
 
-    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', OFF, alerts(AlertType.Silent));
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'dhuhr', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
 
     // A refused cancel no longer rejects the refresh: it marks the prayer. What the lock still guarantees is that the
     // commit ran only after every piece of the refresh had landed, which is what the empty Dhuhr proves
-    expect({ refreshed: refreshed.status, committed, dhuhr: armedFor('Dhuhr') }).toEqual({
+    expect({ refreshed: refreshed.status, committed, dhuhr: armedFor('dhuhr') }).toEqual({
       refreshed: 'fulfilled',
       committed: { status: 'fulfilled', value: true },
       dhuhr: [],
@@ -225,20 +226,20 @@ describe('an operation queued behind one that fails part way', () => {
   });
 
   it('runs only once the reminders the failing refresh is arming, in another part of it, have landed', async () => {
-    armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
-    refusedCancels.add(athanIds('Fajr')[0]);
+    armedEarlier(FAJR, 'fajr', athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
+    refusedCancels.add(athanIds('fajr')[0]);
     store.set(standardPrayerAlertAtoms[DHUHR], AlertType.Silent);
     store.set(standardReminderAlertAtoms[0][DHUHR], AlertType.Silent);
-    holdsSchedule = (id) => reminderIds('Dhuhr').includes(id);
+    holdsSchedule = (id) => reminderIds('dhuhr').includes(id);
     const refresh = refreshNotifications();
     await flush();
 
-    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', OFF, alerts(AlertType.Silent));
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'dhuhr', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
 
-    expect({ refreshed: refreshed.status, committed, dhuhr: armedFor('Dhuhr') }).toEqual({
+    expect({ refreshed: refreshed.status, committed, dhuhr: armedFor('dhuhr') }).toEqual({
       refreshed: 'fulfilled',
       committed: { status: 'fulfilled', value: true },
       dhuhr: [],
@@ -246,36 +247,36 @@ describe('an operation queued behind one that fails part way', () => {
   });
 
   it('runs only once every cancel the failing refresh sent for the same prayer has landed', async () => {
-    armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
-    refusedCancels.add(athanIds('Fajr')[0]);
-    holdsCancel = (id) => id === athanIds('Fajr')[1];
+    armedEarlier(FAJR, 'fajr', athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
+    refusedCancels.add(athanIds('fajr')[0]);
+    holdsCancel = (id) => id === athanIds('fajr')[1];
     const refresh = refreshNotifications();
     await flush();
 
-    const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', alerts(AlertType.Silent), OFF);
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'fajr', alerts(AlertType.Silent), OFF);
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
 
-    expect({ refreshed: refreshed.status, committed, fajr: armedFor('Fajr') }).toEqual({
+    expect({ refreshed: refreshed.status, committed, fajr: armedFor('fajr') }).toEqual({
       refreshed: 'fulfilled',
       committed: { status: 'fulfilled', value: true },
-      fajr: athanIds('Fajr'),
+      fajr: athanIds('fajr'),
     });
   });
 
   it("runs only once the failing commit's reminder cancels have landed", async () => {
-    armedEarlier(FAJR, 'Fajr', athanIds('Fajr'), Database.addOneScheduledNotificationForPrayer);
-    armedEarlier(FAJR, 'Fajr', reminderIds('Fajr'), Database.addOneScheduledReminderForPrayer);
-    refusedCancels.add(athanIds('Fajr')[0]);
-    holdsCancel = (id) => id === reminderIds('Fajr')[1];
-    const turnOff = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', OFF, alerts(AlertType.Silent));
+    armedEarlier(FAJR, 'fajr', athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
+    armedEarlier(FAJR, 'fajr', reminderIds('fajr'), Database.addOneScheduledReminderForPrayer);
+    refusedCancels.add(athanIds('fajr')[0]);
+    holdsCancel = (id) => id === reminderIds('fajr')[1];
+    const turnOff = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'fajr', OFF, alerts(AlertType.Silent));
     await flush();
 
     const turnOn = commitPrayerAlertChange(
       ScheduleType.Standard,
       FAJR,
-      'Fajr',
+      'fajr',
       alerts(AlertType.Silent, AlertType.Silent),
       OFF
     );
@@ -285,10 +286,10 @@ describe('an operation queued behind one that fails part way', () => {
 
     // The phone refused one of the Off commit's cancels, so it answers false. Its undo is skipped because the second
     // commit already owns the prayer, which is what leaves the second commit's own setting standing
-    expect({ off, on, fajr: armedFor('Fajr') }).toEqual({
+    expect({ off, on, fajr: armedFor('fajr') }).toEqual({
       off: { status: 'fulfilled', value: false },
       on: { status: 'fulfilled', value: true },
-      fajr: [...athanIds('Fajr'), ...reminderIds('Fajr')].sort(),
+      fajr: [...athanIds('fajr'), ...reminderIds('fajr')].sort(),
     });
   });
 
@@ -299,19 +300,19 @@ describe('an operation queued behind one that fails part way', () => {
     }
     const readRow = PrayerUtils.getPrayerForDate;
     jest.spyOn(PrayerUtils, 'getPrayerForDate').mockImplementation((type, name, date) => {
-      if (name === 'Fajr' && date === TOMORROW) throw new Error('Stored day could not be read');
+      if (name === 'fajr' && date === TOMORROW) throw new Error('Stored day could not be read');
       return readRow(type, name, date);
     });
-    holdsSchedule = (id) => reminderIds('Dhuhr').includes(id);
+    holdsSchedule = (id) => reminderIds('dhuhr').includes(id);
     const refresh = refreshNotifications();
     await flush();
 
-    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'Dhuhr', OFF, alerts(AlertType.Silent));
+    const commit = commitPrayerAlertChange(ScheduleType.Standard, DHUHR, 'dhuhr', OFF, alerts(AlertType.Silent));
     await flush();
     releaseHeld();
     const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
 
-    expect({ refreshed: refreshed.status, committed: committed.status, dhuhr: armedFor('Dhuhr') }).toEqual({
+    expect({ refreshed: refreshed.status, committed: committed.status, dhuhr: armedFor('dhuhr') }).toEqual({
       refreshed: 'rejected',
       committed: 'fulfilled',
       dhuhr: [],
@@ -320,8 +321,8 @@ describe('an operation queued behind one that fails part way', () => {
 
   // the path whose day fails, the Fajr reminder alert that switches that path on, and the day the refresh is arming
   it.each([
-    { path: 'athan', reminder: AlertType.Off, holding: athanIds('Fajr')[0] },
-    { path: 'reminder', reminder: AlertType.Silent, holding: reminderIds('Fajr')[0] },
+    { path: 'athan', reminder: AlertType.Off, holding: athanIds('fajr')[0] },
+    { path: 'reminder', reminder: AlertType.Silent, holding: reminderIds('fajr')[0] },
   ])(
     'runs only once the other day of a failing refresh has armed, when one $path day throws',
     async ({ reminder, holding }) => {
@@ -329,19 +330,19 @@ describe('an operation queued behind one that fails part way', () => {
       store.set(standardReminderAlertAtoms[0][FAJR], reminder);
       const readRow = PrayerUtils.getPrayerForDate;
       jest.spyOn(PrayerUtils, 'getPrayerForDate').mockImplementation((type, name, date) => {
-        if (name === 'Fajr' && date === TOMORROW) throw new Error('Stored day could not be read');
+        if (name === 'fajr' && date === TOMORROW) throw new Error('Stored day could not be read');
         return readRow(type, name, date);
       });
       holdsSchedule = (id) => id === holding;
       const refresh = refreshNotifications();
       await flush();
 
-      const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', OFF, alerts(AlertType.Silent));
+      const commit = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'fajr', OFF, alerts(AlertType.Silent));
       await flush();
       releaseHeld();
       const [refreshed, committed] = await Promise.allSettled([refresh, commit]);
 
-      expect({ refreshed: refreshed.status, committed: committed.status, fajr: armedFor('Fajr') }).toEqual({
+      expect({ refreshed: refreshed.status, committed: committed.status, fajr: armedFor('fajr') }).toEqual({
         refreshed: 'rejected',
         committed: 'fulfilled',
         fajr: [],
@@ -378,9 +379,9 @@ describe('an operation that fails before its own work begins', () => {
     await flush();
     info.mockImplementation(() => undefined);
 
-    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'Fajr', alerts(AlertType.Silent), OFF);
+    await commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'fajr', alerts(AlertType.Silent), OFF);
 
     await failed;
-    expect(armedFor('Fajr')).toEqual(athanIds('Fajr').sort());
+    expect(armedFor('fajr')).toEqual(athanIds('fajr').sort());
   });
 });

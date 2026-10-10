@@ -228,7 +228,7 @@ describe('computePrayerStatuses: nextPrayerIndex', () => {
     const { prayers: rows, nextPrayerIndex } = computePrayerStatuses(prayers, london('2026-09-10', '21:00'));
 
     expect(nextPrayerIndex).toBe(12);
-    expect([rows[12].english, rows[12].belongsToDate]).toEqual(['Fajr', '2026-09-12']);
+    expect([rows[12].id, rows[12].belongsToDate]).toEqual(['fajr', '2026-09-12']);
   });
 
   it('is -1 when no readable row is still to come', () => {

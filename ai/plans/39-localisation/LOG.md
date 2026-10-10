@@ -1,5 +1,93 @@
 # Execution log: Job 38
 
+## Step 6: the identifier union takes the row (reconciliation first)
+
+A previous executor session started this step and died without writing the ledger. The
+branch `feat/38-06-union` sat off `uat` with 73 uncommitted modified files. This session
+reconciled the found state contract by contract before finishing; nothing was reset.
+
+Found state, verified against `steps/06-identifier-union.md`:
+
+- Production contracts 1 to 6 were complete and faithful: `PrayerRow.id: PrayerId`
+  (`shared/types.ts`, plus `CountdownStore.name` retyped `PrayerId | typeof
+  COUNTDOWN_WAITING_NAME` so the display atom resolves the label), the builders and the
+  night-branch narrowing with the cast deleted by restructure (the bare-id guards the
+  plan's restructure mandates; the `type === Extra` term is subsumed because no standard
+  id can equal an extras id), the constants rename
+  (`STANDARD_PRAYER_TITLES`/`EXTRA_PRAYER_TITLES` documented as migration-era spellings,
+  `NIGHT_PRAYER_NAMES`/`MIDNIGHT_CROSSING_PRAYERS` retyped with their `as` casts gone),
+  every display read through `prayerLabel`, the atom factories retyped with byte-identical
+  keys, the migration rewrite keeping `prayerName.toLowerCase()` in the loop (its sources
+  are the title arrays), and the loading sentinel `id: 'fajr'`.
+- Both red tests were already written: `prayer.test.ts` 'keys the stored-day lookup by
+  the id' and `device/notifications.test.ts` 'builds the space-form identifier from the
+  id'. The step names the second a type-red on the old signature; the red could not be
+  re-run against the pre-change tree without resetting inherited work, so it is recorded
+  here as written-but-unwitnessed rather than restaged.
+- The suite re-keying was part-done: roughly 50 suites were swept, but seven files still
+  failed tsc (prayerIdContract, widgetRenderer untouched, widgetSimulation,
+  widgetSnapshot, widgetTimeline, alarmHarness, syncLateDecember31), five more suites
+  called the alarm harness with title names, and several already-swept expectations
+  compared widget row names against ids where the builders now emit labels.
+
+This session finished the sweep: rekeyed the seven files, retyped the harness `enable`
+to `PrayerId` and re-keyed its callers (23 call sites across notificationsClockChange,
+notificationsOctober18Midnight - one line, outside the R14 table but forced by the
+harness retype - notificationsFridayIstijaba, notificationsAroundMidnight,
+notificationsMidnightWindow), moved the migration-guards mock to `EXTRA_PRAYER_TITLES`
+(the seam the rename left), and fixed the label expectations: widget row names and
+`nextName` props carry `prayerLabel(id)` (en titles, byte-identical), while fixtures,
+lookups and unreadable-name walks carry ids. `prayerIdContract` gained the firewall test
+with the four `@ts-expect-error` display-string calls, the truth table re-keyed to ids,
+and the channel-name source pin moved to the new `` `${prayerLabel(id)} in ...` `` text.
+
+Green, after the sweep above: tsc clean, Biome clean (after `--write` fixes: import-type
+and unused-import cleanups in seven files, one unused `PRAYER_IDS` import the previous
+executor left in `overlayContent.test.ts`), full suite `190 suites, 5255 passed`, four
+100% coverage lines (Statements 4940/4940, Branches 2143/2143, Functions 1031/1031,
+Lines 4423/4423).
+
+Red, recorded: named test 1 re-proven against the pre-change tree in a scratch worktree
+off `uat` (minimal harness around the same assertions: `1 failed` - rows carry no `id`,
+`english` present). Named test 2's type-red is unwitnessable as written: the step says
+the old `string` signature rejects a `PrayerId`-typed fixture, but `PrayerId` is assignable
+to `string`, so the old signature compiles and the byte outputs are identical (the step's
+own parenthetical admits this). The red that is real is the suite-wide retype: the
+title-case fixtures failed tsc all through this session's sweep (witnessed: widgetRenderer
+197, alarmHarness 122, the string-vs-PrayerId lines). Plan-text slip, no plan change.
+
+Breaks, 4 of 4 AS EXPECTED, final `ALL AS EXPECTED: 1`:
+
+1. Night-branch narrowing reverted to `String(name) === 'Midnight'` comparisons: named
+   test 1 fails (night rows unreadable). Restored from backup.
+2. At-time identifier slugified through `prayerNameSlug`: the contract test's space-form
+   pins fail. Restored.
+3. Alert-key factory template suffixed `_x`: contract test 2 fails. This needed test 2
+   strengthened first: as inherited it derived the key set inside the test, so a factory
+   move could not touch it - against the step's own break contract. Test 2 now also pins
+   the three factory template bytes in `stores/notifications.ts` source (the suite's
+   existing read-the-source pin pattern); no existing assertion changed. Restored.
+4. `isDailyPrayer` widened to `(x: string)`: the firewall's directive over
+   `isDailyPrayer(prayerLabel('fajr'))` goes stale, `TS2578` on the tsc gate. This break
+   only works because the firewall covers `isDailyPrayer` too - contract 7 enumerates
+   four builders and break 4 names a fifth; the two lines are consistent only with the
+   fifth call included, so the firewall carries it. Restored.
+
+Executor strengthenings, three conditions met (code the plan did not give verbatim, no
+plan-named name/signature/log-line/behaviour changed, every acceptance criterion still
+green): the factory-template source pins in contract test 2 (break 3 demanded them); the
+`isDailyPrayer` firewall line (break 4 demanded it); `seedReminder` in
+`notificationSinglePrayerUpdate` re-armed the identifier not the id (the previous
+executor's mid-sweep damage, caught by the suite); `armedFor` in `notificationAlertCommit`
+filtered `id.includes('__')`, matching nothing - restored to filter by the id.
+
+Done-when grep `\.english` outside `__tests__` returns nothing. The stylesheet key
+`styles.english` in `Prayer.tsx` was the last field-named survivor and is now
+`styles.name` (a style key, no pixel moved); `usePrayerSequence`'s doc example and two
+stale `@param`/comment mentions renamed with it. One production `toLowerCase()` survives,
+in the migration loop, exactly as the step mandates.
+
+
 ## Step 5: the id vocabulary and the catalog
 
 - Branch `feat/38-05-catalog` off `uat`. Red: the suite failed on the absent module
@@ -38,7 +126,10 @@
   3 place `PRAYER_LABELS` in `en.ts`; the deletion ran where the Record lives. Jest 30's
   default reporter prints `● describe › test` blocks, never the ✕/✓ glyphs; the break
   script matches the ● lines and the summary counts.
-- Version 1.29.325.
+- Version 1.29.325. Committed `adea6784`, merged into `uat` as `abf2fd98`. Hook:
+  `Tests: 5253 passed, 5253 total`, four 100% lines (4937/2144/1031/4422). Review: one
+  pass, nothing to fix (flat keys, `as const satisfies`, byte parity machine-verified 64
+  members to 64 pins with zero mismatches; no lifecycle, thread or rule surface in the diff).
 
 ## Deep review at close (steps 1 to 4)
 

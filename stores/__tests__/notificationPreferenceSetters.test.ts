@@ -11,9 +11,9 @@ import { getDefaultStore } from 'jotai';
 
 import {
   DEFAULT_REMINDER_SLOT_INTERVALS,
-  EXTRAS_ENGLISH,
-  PRAYERS_ENGLISH,
+  EXTRA_PRAYER_IDS,
   REMINDER_INTERVALS,
+  STANDARD_PRAYER_IDS,
 } from '@/shared/constants';
 import { AlertType, REMINDER_SLOTS, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
@@ -53,8 +53,8 @@ jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArm
 const store = getDefaultStore();
 
 const PRAYERS = [
-  ...PRAYERS_ENGLISH.map((name, index) => ({ type: ScheduleType.Standard, name, index })),
-  ...EXTRAS_ENGLISH.map((name, index) => ({ type: ScheduleType.Extra, name, index })),
+  ...STANDARD_PRAYER_IDS.map((id, index) => ({ type: ScheduleType.Standard, id, index })),
+  ...EXTRA_PRAYER_IDS.map((id, index) => ({ type: ScheduleType.Extra, id, index })),
 ];
 
 const label = (type: ScheduleType, name: string) => `${type} ${name}`;
@@ -62,8 +62,8 @@ const label = (type: ScheduleType, name: string) => `${type} ${name}`;
 /** Every reminder alert, reminder interval and at-time alert, read through the getters the scheduler uses */
 const everyPreference = () =>
   Object.fromEntries(
-    PRAYERS.map(({ type, name, index }) => [
-      label(type, name),
+    PRAYERS.map(({ type, id, index }) => [
+      label(type, id),
       {
         atTime: getPrayerAlertType(type, index),
         reminder: getReminderAlertType(type, index, 0),
@@ -96,19 +96,17 @@ beforeEach(() => {
 // =============================================================================
 
 describe('setReminderAlertType', () => {
-  it.each(PRAYERS)('sets only the $type $name reminder, persisted under its own name', ({ type, name, index }) => {
+  it.each(PRAYERS)('sets only the $type $id reminder, persisted under its own id', ({ type, id, index }) => {
     // At-time on first, as the sheet requires before a reminder can be chosen
     const atTimeAtoms = type === ScheduleType.Standard ? standardPrayerAlertAtoms : extraPrayerAlertAtoms;
     store.set(atTimeAtoms[index], AlertType.Sound);
     const expected = everyPreference();
-    expected[label(type, name)].reminder = AlertType.Silent;
+    expected[label(type, id)].reminder = AlertType.Silent;
 
     setReminderAlertType(type, index, 0, AlertType.Silent);
 
     expect(everyPreference()).toEqual(expected);
-    expect(Database.database.getString(`preference_reminder_alert_${type}_${name.toLowerCase()}`)).toBe(
-      String(AlertType.Silent)
-    );
+    expect(Database.database.getString(`preference_reminder_alert_${type}_${id}`)).toBe(String(AlertType.Silent));
   });
 
   it('turns a reminder off without touching its at-time alert, unlike turning the at-time alert off', () => {
@@ -139,22 +137,22 @@ describe('setReminderAlertType', () => {
 // =============================================================================
 
 describe('setReminderInterval', () => {
-  it.each(PRAYERS)('sets only the $type $name interval, persisted under its own name', ({ type, name, index }) => {
+  it.each(PRAYERS)('sets only the $type $id interval, persisted under its own id', ({ type, id, index }) => {
     const expected = everyPreference();
-    expected[label(type, name)].interval = 25;
+    expected[label(type, id)].interval = 25;
 
     setReminderInterval(type, index, 0, 25);
 
     expect(everyPreference()).toEqual(expected);
-    expect(Database.database.getString(`preference_reminder_interval_${type}_${name.toLowerCase()}`)).toBe('25');
+    expect(Database.database.getString(`preference_reminder_interval_${type}_${id}`)).toBe('25');
   });
 
   it.each(REMINDER_INTERVALS.map((interval) => [interval]))('reads back an interval of %i minutes', (interval) => {
-    setReminderInterval(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'), 0, interval as ReminderInterval);
+    setReminderInterval(ScheduleType.Extra, EXTRA_PRAYER_IDS.indexOf('istijaba'), 0, interval as ReminderInterval);
 
-    expect(getReminderInterval(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'), 0)).toBe(interval);
+    expect(getReminderInterval(ScheduleType.Extra, EXTRA_PRAYER_IDS.indexOf('istijaba'), 0)).toBe(interval);
     // The reminder alert beside it is a different preference
-    expect(getReminderAlertType(ScheduleType.Extra, EXTRAS_ENGLISH.indexOf('Istijaba'), 0)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Extra, EXTRA_PRAYER_IDS.indexOf('istijaba'), 0)).toBe(AlertType.Off);
   });
 });
 

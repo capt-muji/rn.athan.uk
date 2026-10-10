@@ -1,6 +1,7 @@
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
+import type { PrayerId } from '@/shared/constants';
 import { perfMark } from '@/shared/perf';
 import { type PageCoordinates, ScheduleType } from '@/shared/types';
 import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '@/stores/storage';
@@ -16,7 +17,7 @@ const emptyCoordinates: PageCoordinates = { pageX: 0, pageY: 0, width: 0, height
 export interface AlertSheetState {
   type: ScheduleType;
   index: number;
-  prayerEnglish: string;
+  prayerId: PrayerId;
   /** The occurrence on screen has no readable time, so the sheet explains that instead of offering options */
   isUnavailable: boolean;
 }

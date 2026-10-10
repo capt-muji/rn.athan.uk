@@ -1,6 +1,7 @@
 import { getDefaultStore } from 'jotai/vanilla';
 import { useCallback, useEffect, useState } from 'react';
 
+import { prayerLabel } from '@/shared/i18n';
 import { createInstant, formatTimeAgo } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { getCountdownAtom } from '@/stores/countdown';
@@ -33,7 +34,8 @@ export const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
     const minutes = Math.floor(secondsElapsed / 60);
     const timeAgo = formatTimeAgo(secondsElapsed);
 
-    const agoText = secondsElapsed < 60 ? `${prevPrayer.english} now` : `${prevPrayer.english} ${timeAgo} ago`;
+    const agoText =
+      secondsElapsed < 60 ? `${prayerLabel(prevPrayer.id)} now` : `${prayerLabel(prevPrayer.id)} ${timeAgo} ago`;
 
     return { prayerAgo: agoText, minutesElapsed: minutes, isReady: true };
   } catch {

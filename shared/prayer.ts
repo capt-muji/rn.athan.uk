@@ -1,10 +1,13 @@
 import {
   ANIMATION,
-  EXTRAS_ENGLISH,
+  EXTRA_PRAYER_IDS,
+  EXTRA_PRAYER_TITLES,
   ISLAMIC_DAY,
   MIDNIGHT_CROSSING_PRAYERS,
   NIGHT_PRAYER_NAMES,
-  PRAYERS_ENGLISH,
+  type PrayerId,
+  STANDARD_PRAYER_IDS,
+  STANDARD_PRAYER_TITLES,
   TIME_ADJUSTMENTS,
 } from '@/shared/constants';
 import { findNextReadable, isReadable } from '@/shared/sequence';
@@ -174,9 +177,9 @@ export const getNightTimesForDay = (
 };
 
 /** The instant of an Extras night row, or null when its night cannot be worked out */
-const getNightRowTime = (nightTimes: TimeUtils.NightTimes | null, prayerName: string): Date | null => {
+const getNightRowTime = (nightTimes: TimeUtils.NightTimes | null, id: PrayerId): Date | null => {
   if (!nightTimes) return null;
-  return prayerName === 'Midnight' ? nightTimes.midnight : nightTimes.lastThird;
+  return id === 'midnight' ? nightTimes.midnight : nightTimes.lastThird;
 };
 
 // =============================================================================
@@ -185,13 +188,13 @@ const getNightRowTime = (nightTimes: TimeUtils.NightTimes | null, prayerName: st
 // =============================================================================
 
 export const getCascadeDelay = (index: number, _type: ScheduleType): number => {
-  const length = PRAYERS_ENGLISH.length;
+  const length = STANDARD_PRAYER_IDS.length;
 
   return (length - index) * ANIMATION.cascadeDelay;
 };
 
 export const getLongestPrayerNameIndex = (type: ScheduleType): number => {
-  const names = type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
+  const names = type === ScheduleType.Standard ? STANDARD_PRAYER_TITLES : EXTRA_PRAYER_TITLES;
   let maxLength = 0;
   let maxIndex = 0;
 
@@ -223,14 +226,14 @@ const getPrayerTimezoneHour = (date: Date): number => {
  * If Isha or Magrib is between 00:00-06:00, it belongs to the previous day.
  *
  * @param type Schedule type (Standard or Extra)
- * @param prayerEnglish English name of the prayer
+ * @param id The prayer's id
  * @param calendarDate Calendar date string (YYYY-MM-DD) the datetime falls on
  * @param prayerDateTime Full datetime (must be created via createPrayerDatetime)
  * @returns The Islamic day this prayer belongs to (YYYY-MM-DD)
  */
 export const calculateBelongsToDate = (
   type: ScheduleType,
-  prayerEnglish: string,
+  id: PrayerId,
   calendarDate: string,
   prayerDateTime: Date
 ): string => {
@@ -242,7 +245,7 @@ export const calculateBelongsToDate = (
   // calendar day, and without undoing that here the row would leave its own day's list
   // and appear on the following one. The two functions are a matched pair — shifting the
   // instant without shifting the grouping back moves the row to the wrong card.
-  if (type === ScheduleType.Standard && MIDNIGHT_CROSSING_PRAYERS.includes(prayerEnglish) && isSmallHours(hours)) {
+  if (type === ScheduleType.Standard && MIDNIGHT_CROSSING_PRAYERS.includes(id) && isSmallHours(hours)) {
     return TimeUtils.getPreviousDateString(calendarDate);
   }
 
@@ -252,7 +255,7 @@ export const calculateBelongsToDate = (
   if (type === ScheduleType.Extra) {
     // Midnight and Last Third never reach this: createPrayersForSingleDay gives them exact instants, so their list
     // day is pinned on the list path instead (extrasListsAtMidnight.test.ts, lastThirdAroundMidnight.test.ts)
-    if (NIGHT_PRAYER_NAMES.includes(prayerEnglish as (typeof NIGHT_PRAYER_NAMES)[number]) && hours >= 12) {
+    if (NIGHT_PRAYER_NAMES.includes(id) && hours >= 12) {
       return TimeUtils.addDaysToDateString(calendarDate, 1);
     }
   }
@@ -265,7 +268,7 @@ export const calculateBelongsToDate = (
  */
 interface CreatePrayerParams {
   type: ScheduleType;
-  english: string;
+  id: PrayerId;
   date: string; // YYYY-MM-DD format
   time: string; // HH:mm format
 }
@@ -290,35 +293,35 @@ interface CreatePrayerParams {
  * // Returns: { ..., belongsToDate: "2026-06-21" }  // Note: June 21, not 22!
  */
 export const createPrayer = (params: CreatePrayerParams): ReadablePrayer => {
-  const { type, english, date, time } = params;
+  const { type, id, date, time } = params;
   const datetime = createPrayerDatetime(date, time);
 
   return {
     type,
-    english,
+    id,
     datetime,
     time,
-    belongsToDate: calculateBelongsToDate(type, english, date, datetime),
+    belongsToDate: calculateBelongsToDate(type, id, date, datetime),
   };
 };
 
 /**
- * Helper: Get prayer names for a given date and schedule type
+ * Helper: Get prayer ids for a given date and schedule type
  * Filters out Istijaba on non-Fridays for Extra schedule
  */
-function getPrayerNamesForDate(type: ScheduleType, date: string): string[] {
+function getPrayerNamesForDate(type: ScheduleType, date: string): PrayerId[] {
   const isStandard = type === ScheduleType.Standard;
 
   if (isStandard) {
-    return PRAYERS_ENGLISH;
+    return [...STANDARD_PRAYER_IDS];
   }
 
   // Extras schedule: filter out Istijaba on non-Fridays
   if (!TimeUtils.isFriday(date)) {
-    return EXTRAS_ENGLISH.filter((name) => name.toLowerCase() !== 'istijaba');
+    return EXTRA_PRAYER_IDS.filter((id) => id !== 'istijaba');
   }
 
-  return EXTRAS_ENGLISH;
+  return [...EXTRA_PRAYER_IDS];
 }
 
 /**
@@ -326,18 +329,13 @@ function getPrayerNamesForDate(type: ScheduleType, date: string): string[] {
  * Handles Isha after midnight (Standard) and night prayers with a stored time (Extras);
  * Midnight and Last Third carry exact instants instead (getNightTimesForDay)
  */
-function adjustPrayerDateForMidnightCrossing(
-  type: ScheduleType,
-  prayerName: string,
-  date: string,
-  hours: number
-): string {
+function adjustPrayerDateForMidnightCrossing(type: ScheduleType, id: PrayerId, date: string, hours: number): string {
   const isStandard = type === ScheduleType.Standard;
 
   // STANDARD: Isha 00:00-06:00 occurs on NEXT calendar day (for countdown).
   // Magrib joins it above ~60N, where sunset itself lands after midnight while the
   // provider still files it under the old date — without this its alarm is 23h56m early.
-  if (isStandard && MIDNIGHT_CROSSING_PRAYERS.includes(prayerName) && isSmallHours(hours)) {
+  if (isStandard && MIDNIGHT_CROSSING_PRAYERS.includes(id) && isSmallHours(hours)) {
     return TimeUtils.addDaysToDateString(date, 1);
   }
 
@@ -347,7 +345,7 @@ function adjustPrayerDateForMidnightCrossing(
   // Reading the PM half as "wrapped from the next day" is safe because nothing legitimate
   // puts Suhoor in an afternoon; the reachable band is only 23:40-23:59.
   if (!isStandard) {
-    if (NIGHT_PRAYER_NAMES.includes(prayerName as (typeof NIGHT_PRAYER_NAMES)[number]) && hours >= 12) {
+    if (NIGHT_PRAYER_NAMES.includes(id) && hours >= 12) {
       return TimeUtils.getPreviousDateString(date);
     }
   }
@@ -371,13 +369,13 @@ function createPrayersForSingleDay(
   rawData: ISingleApiResponseTransformed | null,
   previousDayData: ISingleApiResponseTransformed | null
 ): Prayer[] {
-  const namesEnglish = getPrayerNamesForDate(type, date);
+  const names = getPrayerNamesForDate(type, date);
   const nightTimes = type === ScheduleType.Extra && rawData ? getNightTimesForDay(rawData, previousDayData) : null;
 
-  return namesEnglish.map((name): Prayer => {
+  return names.map((name): Prayer => {
     const unreadable: UnreadablePrayer = {
       type,
-      english: name,
+      id: name,
       datetime: null,
       time: null,
       belongsToDate: date,
@@ -385,9 +383,11 @@ function createPrayersForSingleDay(
     if (!rawData) return unreadable;
 
     // Istijaba joins the night rows on the exact-instant path: it hangs off Magrib, which
-    // can be date-shifted, so a clock string cannot express it (see getIstijabaTime)
-    const isIstijaba = type === ScheduleType.Extra && name === 'Istijaba';
-    const isNightRow = type === ScheduleType.Extra && (name === 'Midnight' || name === 'Last Third');
+    // can be date-shifted, so a clock string cannot express it (see getIstijabaTime).
+    // Unguarded by type on purpose: the closed standard vocabulary can never match here,
+    // and the bare id guards are what narrow the record lookup below to StoredPrayerId
+    const isIstijaba = name === 'istijaba';
+    const isNightRow = name === 'midnight' || name === 'last third';
     if (isIstijaba || isNightRow) {
       const rowInstant = isIstijaba ? getIstijabaTime(rawData, date) : getNightRowTime(nightTimes, name);
       if (!rowInstant) return unreadable;
@@ -395,7 +395,7 @@ function createPrayersForSingleDay(
       return { ...unreadable, datetime: rowInstant, time: TimeUtils.formatPrayerTime(rowInstant) };
     }
 
-    const prayerTime = rawData[name.toLowerCase() as keyof ISingleApiResponseTransformed];
+    const prayerTime = rawData[name];
     // Not `=== null`: a stored record can lack the key altogether (an edited backup), and `.split` below would throw
     if (typeof prayerTime !== 'string') return unreadable;
 
@@ -404,7 +404,7 @@ function createPrayersForSingleDay(
 
     return createPrayer({
       type,
-      english: name,
+      id: name,
       date: prayerDateString,
       time: prayerTime,
     });
@@ -491,8 +491,8 @@ export const createPrayersForDate = (type: ScheduleType, date: string): Prayer[]
  * getPrayerForDate(ScheduleType.Extra, 'Midnight', '2026-10-24')
  * // Returns: { ..., time: '23:58', datetime: Fri 23 Oct 23:58 London, belongsToDate: '2026-10-24' }
  */
-export const getPrayerForDate = (type: ScheduleType, english: string, date: string): Prayer | null =>
-  createPrayersForDate(type, date).find((prayer) => prayer.english === english) ?? null;
+export const getPrayerForDate = (type: ScheduleType, id: PrayerId, date: string): Prayer | null =>
+  createPrayersForDate(type, date).find((prayer) => prayer.id === id) ?? null;
 
 /**
  * The earliest list day one prayer's alarm window must cover: yesterday while yesterday's own row of
@@ -508,11 +508,11 @@ export const getPrayerForDate = (type: ScheduleType, english: string, date: stri
  * @param now The instant the start day is worked out for
  * @returns The YYYY-MM-DD of the earliest list day whose row of this prayer can still fire
  */
-export const firstStillDueListDayForPrayer = (type: ScheduleType, englishName: string, now: Date): string => {
+export const firstStillDueListDayForPrayer = (type: ScheduleType, id: PrayerId, now: Date): string => {
   const today = TimeUtils.formatDateShort(now);
   const yesterday = TimeUtils.getPreviousDateString(today);
 
-  const row = getPrayerForDate(type, englishName, yesterday);
+  const row = getPrayerForDate(type, id, yesterday);
   return row !== null && isReadable(row) && row.datetime > now ? yesterday : today;
 };
 
@@ -560,10 +560,11 @@ export const canonicalDisplayOrder = (prayers: Prayer[], type: ScheduleType): nu
   const identityOrder = prayers.map((_, index) => index);
   if (type !== ScheduleType.Extra) return identityOrder;
 
-  const canonicalRank = (english: string): number => {
-    const rank = EXTRAS_ENGLISH.indexOf(english);
-    return rank === -1 ? EXTRAS_ENGLISH.length : rank;
+  const canonicalRank = (id: PrayerId): number => {
+    const extraIds: readonly PrayerId[] = EXTRA_PRAYER_IDS;
+    const rank = extraIds.indexOf(id);
+    return rank === -1 ? extraIds.length : rank;
   };
 
-  return identityOrder.sort((a, b) => canonicalRank(prayers[a].english) - canonicalRank(prayers[b].english));
+  return identityOrder.sort((a, b) => canonicalRank(prayers[a].id) - canonicalRank(prayers[b].id));
 };

@@ -36,9 +36,9 @@ describe('the 25 October 2026 clock change', () => {
 
   it('arms Fajr and the night rows at their real instants from the evening before', async () => {
     jest.setSystemTime(new Date('2026-10-24T21:00:00.000Z'));
-    enable(ScheduleType.Standard, 'Fajr');
-    enable(ScheduleType.Extra, 'Midnight');
-    enable(ScheduleType.Extra, 'Last Third');
+    enable(ScheduleType.Standard, 'fajr');
+    enable(ScheduleType.Extra, 'midnight');
+    enable(ScheduleType.Extra, 'last third');
 
     await rescheduleAllNotifications();
 
@@ -67,7 +67,7 @@ describe('the 25 October 2026 clock change', () => {
     'arms the %i-minute Last Third reminder at %s, that much real time before the second 01:00',
     async (interval, list25, list26, list27) => {
       jest.setSystemTime(new Date('2026-10-24T21:00:00.000Z'));
-      enable(ScheduleType.Extra, 'Last Third', interval);
+      enable(ScheduleType.Extra, 'last third', interval);
 
       await rescheduleAllNotifications();
 
@@ -113,7 +113,7 @@ describe('the 25 October 2026 clock change', () => {
     'at $clock, arms list 25’s Last Third and its $interval-minute reminder only while still ahead',
     async ({ now, interval, list25 }) => {
       jest.setSystemTime(new Date(now));
-      enable(ScheduleType.Extra, 'Last Third', interval);
+      enable(ScheduleType.Extra, 'last third', interval);
 
       await rescheduleAllNotifications();
 
@@ -133,10 +133,10 @@ describe('the 29 March 2026 clock change', () => {
   it('arms Fajr, Suhoor and the night rows at their real instants from the evening before', async () => {
     jest.setSystemTime(new Date('2026-03-28T21:00:00.000Z'));
     storeDays(londonDays('2026-03-27', '2026-03-28', '2026-03-29', '2026-03-30'));
-    enable(ScheduleType.Standard, 'Fajr');
-    enable(ScheduleType.Extra, 'Suhoor');
-    enable(ScheduleType.Extra, 'Midnight');
-    enable(ScheduleType.Extra, 'Last Third');
+    enable(ScheduleType.Standard, 'fajr');
+    enable(ScheduleType.Extra, 'suhoor');
+    enable(ScheduleType.Extra, 'midnight');
+    enable(ScheduleType.Extra, 'last third');
 
     await rescheduleAllNotifications();
 
