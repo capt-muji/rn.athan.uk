@@ -1,7 +1,3 @@
-/**
- * Creates notification content based on alert type
- * English-only, title only (no body)
- */
 export const genNotificationContent = (
   englishName: string,
   alertType: AlertType,

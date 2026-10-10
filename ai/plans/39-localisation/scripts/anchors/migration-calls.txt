@@ -1,0 +1,10 @@
+
+      migrate(`preference_alert_${type}_${index}`, `preference_alert_${type}_${name}`, alertAtom);
+      migrate(`preference_reminder_alert_${type}_${index}`, `preference_reminder_alert_${type}_${name}`, reminderAtom);
+      migrate(
+        `preference_reminder_interval_${type}_${index}`,
+        `preference_reminder_interval_${type}_${name}`,
+        intervalAtom
+      );
+    });
+  });

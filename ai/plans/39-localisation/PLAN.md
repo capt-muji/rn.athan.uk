@@ -75,12 +75,15 @@ The executor reads those six in full before step 1, plus `__tests__/README.md`. 
 `scripts/anchors/` holds the verbatim excerpts each step edits against, extracted at
 `c3149dfc` by `scripts/extract-anchors-38.sh`. Replan 2026-10-10: an anchor's pre-flight
 owner is the FIRST step not yet DONE that edits its region. Eleven anchors named by steps
-05 to 09 held text steps 02 to 04 already consumed, and are regenerated from the post-step-04
-tree at `76a40d3f` by `scripts/regenerate-anchors-38.sh` (that script's sha guard makes it a
-record, not a live tool). Seven anchors whose regions step 06's contracts retype ahead of
-their original owners moved to step 06 in the pre-flight map: `ago-text`,
-`channel-reminder`, `content-builders`, `reminder-content`, `timeline-names`,
-`timeline-next`, `overlaycontent-arabic`. Where a step names
+05 to 09 held text steps 02 to 04 already consumed, and were regenerated from the
+post-step-04 tree at `76a40d3f` (the sha-guarded script that did it is deleted; git history
+and the anchor files themselves are the record). The same day's gate retrofit split every
+anchor over 15 lines into named pieces, so the anchor files now carry the final names the
+map and the step Anchors lines cite. Seven anchors whose regions step 06's contracts retype
+ahead of their original owners moved to step 06 in the pre-flight map: `ago-text`,
+`content-builders`, `reminder-content`, `timeline-names`, `timeline-next`,
+`overlaycontent-arabic`, and the channel-id pair now named `reminder-channel-id` and
+`attime-channel-id`. Where a step names
 an anchor an earlier step has since rewritten, its Anchors line says so in a parenthetical.
 
 Why the obvious fix is wrong: renaming `Prayer.english` in place, or "translating" the arrays,
@@ -125,6 +128,21 @@ first paint.
 **Design review:** the synthesis pass (`SINGLE-LANGUAGE-PIVOT.md`) and the four external
 branches played hostile reviewer across the whole record; every confirmed finding is adjudicated
 in `RECONCILIATION.md`, and its two owner items became D34 and D35.
+
+### Acceptance criteria (EARS)
+
+- [R1.1] WHEN a prayer list row renders THE SYSTEM SHALL display exactly one name, byte-identical to the 1.29.305 English rendering
+- [R2.1] WHEN a stored key, OS notification identifier, Android channel id or audio slug is built THE SYSTEM SHALL emit the bytes the 1.29.305 freeze table pins
+- [R3.1] WHEN a display read needs a prayer name THE SYSTEM SHALL resolve it through `t()` or `prayerLabel()` typed over `PrayerId`, with no fallback
+- [R3.2] WHILE the en catalog ships THE SYSTEM SHALL hold every user-visible English string as a flat dotted key whose value is byte-identical to the 1.29.305 literal
+- [R4.1] WHEN the catalog is exported to flat JSON and re-imported THE SYSTEM SHALL round-trip to a deep-equal catalog with every token covered
+- [R4.2] WHEN a catalog value carries a plural construct or an interpolation token without a typed parameter THE SYSTEM SHALL fail the guard suite
+- [R5.1] WHEN the string guard scans the source tree THE SYSTEM SHALL fail on every display literal outside the catalog that the allowlist does not name
+- [R6.1] WHEN the app upgrades from a version below 2.0.0 over a populated install THE SYSTEM SHALL keep every preference and armed alarm, delete the dead toggle key, and stamp `preference_language` to `en`
+- [R6.2] WHEN a fresh install first runs THE SYSTEM SHALL leave `preference_language` absent
+- [R7.1] WHILE `stores/ui.ts` evaluates THE SYSTEM SHALL seed the en width keys before any atom reads a per-locale width
+- [R8.1] WHEN widget props are written THE SYSTEM SHALL carry `id`, tolerate version-5 entries, and version the payload at 6
+- [R9.1] WHEN stage one runs on the 3T THE SYSTEM SHALL show the 1.29.x armed identifiers unchanged in `dumpsys alarm` and the catalog require timing in logcat
 
 ## 6. Steps (checklist; each step is a file under `steps/`)
 

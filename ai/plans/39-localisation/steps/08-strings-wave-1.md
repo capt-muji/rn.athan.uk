@@ -5,6 +5,8 @@ starts at every not-yet-migrated file and shrinks to zero at step 14. Then the f
 data surfaces migrate: `shared/help.ts` (27 strings), `shared/whatsNew.ts` (14), and the
 Settings sheet.
 
+Requirements: R3.2, R5.1
+
 - Branch: `feat/38-08-wave1`
 - Anchors: `settings-toggle` (historical, pre-step-03: the toggle row is gone; it marks
   the Settings section where the labels this step migrates still live)

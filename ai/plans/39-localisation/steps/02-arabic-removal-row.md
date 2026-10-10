@@ -3,6 +3,8 @@
 The prayer row renders one name. The second column, its style and the row's
 `showArabicNames` read go. The atom itself dies in step 03 with its Settings writer.
 
+Requirements: R1.1
+
 - Branch: `feat/38-02-row`
 - Anchors: `row-conditional`, `row-styles`, `shownames-atom`
 - Files: `components/prayer/Prayer.tsx`, `components/prayer/__tests__/Prayer.test.tsx`,

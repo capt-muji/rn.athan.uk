@@ -1,7 +1,3 @@
-/**
- * Helper: Get prayer names for a given date and schedule type
- * Filters out Istijaba on non-Fridays for Extra schedule
- */
 function getPrayerNamesForDate(type: ScheduleType, date: string): string[] {
   const isStandard = type === ScheduleType.Standard;
 

@@ -28,9 +28,10 @@ git merge-base --is-ancestor c3149dfc HEAD || FATAL "planned-at sha not an ances
 # name:step:source - every anchor owned by a step not yet DONE counts exactly 1.
 # Anchors owned by DONE steps are consumed by design and skipped. An anchor's owner is
 # the FIRST step not yet DONE that edits its region (replan 2026-10-10: ago-text,
-# channel-reminder, content-builders, reminder-content, timeline-names, timeline-next and
-# overlaycontent-arabic moved to step 06, whose contracts retype them before steps
-# 07/09/10/13 run).
+# content-builders, reminder-content, timeline-names, timeline-next, overlaycontent-arabic,
+# reminder-channel-id and attime-channel-id are owned by step 06, whose contracts retype
+# them before steps 07/09/10/13 run; the gate retrofit of the same day split every anchor
+# over 15 lines into named pieces).
 MAP="
 row-conditional:2:components/prayer/Prayer.tsx
 row-styles:2:components/prayer/Prayer.tsx
@@ -48,31 +49,43 @@ survived-record:4:stores/notifications.ts
 multi-schedule-sig:4:stores/notifications.ts
 alert-sheet-write:4:components/prayer/Alert.tsx
 reschedule-head:4:stores/notifications.ts
-constants-arrays:5:shared/constants.ts
+constants-standard:5:shared/constants.ts
+constants-extras:5:shared/constants.ts
 night-branch:6:shared/prayer.ts
 atom-factory:6:stores/notifications.ts
 reminder-atoms:6:stores/notifications.ts
 migration-core:6:stores/notifications.ts
+migration-loop:6:stores/notifications.ts
+migration-calls:6:stores/notifications.ts
 reschedule-generations:6:stores/notifications.ts
 useprayer-sentinel:6:hooks/usePrayer.ts
 countdown-seed:6:stores/countdown.ts
-countdown-name:6:stores/countdown.ts
+countdown-selected:6:stores/countdown.ts
+countdown-next:6:stores/countdown.ts
 ago-text:6:hooks/usePrayerAgo.ts
 rowpress-istijaba:6:components/prayer/rowPress.ts
 sequence-listposition:6:shared/sequence.ts
 plan-key:6:shared/notifications.ts
-device-ids:6:device/notifications.ts
+athan-identifier:6:device/notifications.ts
+reminder-identifier:6:device/notifications.ts
 slug:6:shared/notifications.ts
+reminder-sound:6:shared/notifications.ts
 content-builders:6:shared/notifications.ts
 reminder-content:6:shared/notifications.ts
-channel-reminder:6:shared/notifications.ts
+reminder-channel-id:6:shared/notifications.ts
+attime-channel-id:6:shared/notifications.ts
 channel-configs:10:shared/notifications.ts
-extras-channel:10:shared/notifications.ts
+extras-channel-guard:10:shared/notifications.ts
+extras-channel-create:10:shared/notifications.ts
 width-atoms:11:stores/ui.ts
 setwidth:11:stores/ui.ts
+setwidth-grow:11:stores/ui.ts
 version-keeplist:12:stores/version.ts
+version-keeplist-prefs:12:stores/version.ts
 version-captured:12:stores/version.ts
-version-upgrade:12:stores/version.ts
+version-cacheclear:12:stores/version.ts
+version-stamp:12:stores/version.ts
+version-migrate-call:12:stores/version.ts
 sync-keeplist:11:stores/sync.ts
 widget-versions:13:shared/widgetTypes.ts
 widget-row-name:13:shared/widgetTypes.ts
