@@ -28,11 +28,13 @@ const mockGetItem = jest.fn();
 const mockSetItem = jest.fn();
 const mockClearAllExcept = jest.fn();
 const mockDatabaseRemove = jest.fn();
+const mockRemoveItem = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   getItem: (key: string) => mockGetItem(key),
   setItem: (key: string, value: unknown) => mockSetItem(key, value),
   clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
+  removeItem: (key: string) => mockRemoveItem(key),
   database: {
     remove: (key: string) => mockDatabaseRemove(key),
     // The gate atom is built while this module initialises, which is before the
@@ -500,6 +502,7 @@ describe('full upgrade flow', () => {
       getItem: (key: string) => mockGetItem(key),
       setItem: (key: string, value: unknown) => mockSetItem(key, value),
       clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
+      removeItem: (key: string) => mockRemoveItem(key),
       // The reset goes through the gate atom now, and re-requiring the module
       // graph rebuilds that atom, which reads storage at creation
       database: {
@@ -636,6 +639,29 @@ describe('full upgrade flow', () => {
     expect(mockSetItem).toHaveBeenCalledWith('app_installed_version', '1.0.35');
     expect(mockSetItem).toHaveBeenCalledWith('cache_schema_version', CACHE_SCHEMA_VERSION);
     expect(mockMigrateIndexKeyedAlertPreferences).toHaveBeenCalled();
+  });
+
+  it('runs the locale-defaults migration after the index-keyed migration', () => {
+    // The R18 synthesis order ruling: the language stamp and the dead-key
+    // removal run after the index-keyed alert migration, with both reading the
+    // same captured pre-overwrite version
+    mockGetItem.mockImplementation((key: string) => {
+      if (key === 'app_installed_version') return '1.29.305';
+      if (key === 'cache_schema_version') return 1;
+      return null;
+    });
+    mockCompareVersions.mockImplementation((a: string, b: string) => (a === b ? 0 : a > b ? 1 : -1));
+    const { handleAppUpgrade: handle } = getVersionModuleWithConfig('2.0.0');
+
+    handle();
+
+    const languageCall = mockSetItem.mock.calls.findIndex(([key]) => key === 'preference_language');
+    expect(languageCall).toBeGreaterThanOrEqual(0);
+    expect(mockSetItem).toHaveBeenCalledWith('preference_language', 'en');
+    expect(mockMigrateIndexKeyedAlertPreferences.mock.invocationCallOrder[0]).toBeLessThan(
+      mockSetItem.mock.invocationCallOrder[languageCall]
+    );
+    expect(mockRemoveItem).toHaveBeenCalledWith('preference_show_arabic_names');
   });
 
   it('completes no-change flow', () => {
