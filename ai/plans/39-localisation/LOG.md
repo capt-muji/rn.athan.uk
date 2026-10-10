@@ -2,6 +2,16 @@
 
 ## Resume from: step 9, part 0 (wave 1 merged, wave 2 not started)
 
+The worker session stopped on the account usage limit at 2026-10-10 19:35,
+after merging step 8 and writing this note but part way into step 9's edits.
+The lead ran the part-way recovery: the partial diff (35 files, no red
+recorded, nothing committed) is saved as evidence at
+`$HOME/athan-gitree/sessions/38/step09-unfinished.patch` (with
+`step09-unfinished-status.txt`) and the tree was restored clean. The next
+session re-executes step 9 from its contracts, cold; the patch is evidence of
+what was attempted, never a restore source. Respawn after the limit resets
+(02:33 2026-10-11).
+
 Steps 1 to 8 are committed and merged into `uat` (the step 8 section below
 carries the commit sha; its post-merge sha patch rides step 9's commit, the
 established pattern). The string guard is live in the pre-commit chain:
@@ -116,7 +126,18 @@ and commit again.
   from the session's own record. Lesson added to the resume note: never stash
   as a backup; copy first.
 - Version 1.29.334 (origin fetched under the lock; origin/uat still at
-  `53eecb99`, nothing raced).
+  `53eecb99`, nothing raced). Committed `633bc8f5`, merged into `uat` as
+  `e67ebcf9`. Hook: `Tests: 5265 passed, 5265 total`, four 100% lines
+  (Statements 4951/4951, Branches 2145/2145, Functions 1034/1034, Lines
+  4433/4433). One watchman recrawl warning beside the commit, but no SIGSEGV
+  this time. Review: one pass, cold over `git show 633bc8f5`, nothing to fix -
+  parity pinned by unchanged assertions in three suites (help.test.ts's
+  verbatim questions, Settings.test.tsx's DISPLAY_TOGGLES labels and the
+  straight-apostrophe `getByRole` name, whatsNew.test.ts's parked
+  'Home & Lock widgets' wording); no lifecycle, thread or rule surface in the
+  diff (module-scope `t()` calls replace literals at the same evaluation
+  moment); the census shows 0 display hits for all three migrated files with
+  the guard exiting 0. Branch `feat/38-08-wave1` deleted after the merge.
 
 ## Step 6: the identifier union takes the row (reconciliation first)
 
