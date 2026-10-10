@@ -16,7 +16,19 @@ export type ParamsOf<K extends TranslationKey> = K extends 'notification.now'
   ? { name: string | number }
   : K extends 'notification.reminder'
     ? { name: string | number; n: number }
-    : undefined;
+    : K extends 'stepper.value' | 'stepper.decrease' | 'stepper.increase'
+      ? { value: number; unit: string }
+      : K extends 'alert.reminder' | 'soundItem.athan'
+        ? { n: number }
+        : K extends 'soundItem.preview' | 'soundItem.stopPreview'
+          ? { name: string }
+          : K extends 'countdown.progressA11y'
+            ? { percent: number }
+            : K extends 'whatsNew.platformNote'
+              ? { platform: string }
+              : K extends 'prayerAlert.notification'
+                ? { name: string; state: string }
+                : undefined;
 
 const TOKEN = /\{(\w+)\}/g;
 

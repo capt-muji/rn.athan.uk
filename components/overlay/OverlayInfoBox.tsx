@@ -74,9 +74,9 @@ export default function OverlayInfoBox({ type }: Props) {
 
   return (
     <Reanimated.View
-      testID='overlay-infobox'
+      testID={'overlay-infobox'}
       style={[styles.placer, { display: visible ? 'flex' : 'none' }, layerOpacityStyle]}
-      pointerEvents='none'>
+      pointerEvents={'none'}>
       <PrayerExplanation
         prayerName={prayerName}
         explanation={explanation}

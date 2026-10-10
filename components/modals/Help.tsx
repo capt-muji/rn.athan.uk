@@ -14,6 +14,7 @@ import { openDndAccessSettings } from '@/device/notifications';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { getHelpTopics, HELP_ACTION_LABELS, type HelpTopic } from '@/shared/help';
+import { t } from '@/shared/i18n';
 
 import Modal from './Modal';
 
@@ -61,7 +62,7 @@ const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onT
 
   return (
     <Pressable
-      accessibilityRole='button'
+      accessibilityRole={'button'}
       accessibilityState={{ expanded: open }}
       accessibilityLabel={question}
       onPress={onToggle}>
@@ -91,7 +92,7 @@ const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onT
                 <Pressable
                   style={styles.action}
                   onPress={() => openDndAccessSettings()}
-                  accessibilityRole='button'
+                  accessibilityRole={'button'}
                   accessibilityLabel={HELP_ACTION_LABELS[action]}>
                   <Text style={styles.actionText}>{HELP_ACTION_LABELS[action]}</Text>
                   <Text style={styles.actionText}>{'\u203a'}</Text>
@@ -123,7 +124,7 @@ export default function ModalHelp({ visible, onClose }: Props) {
   return (
     <Modal
       visible={visible}
-      title='Help'
+      title={t('help.title')}
       wide
       divider
       trailingIcon
@@ -148,8 +149,12 @@ export default function ModalHelp({ visible, onClose }: Props) {
       </ScrollView>
       {/* Animated with the list, or it teleports to its new position while the rows above it slide */}
       <Animated.View layout={GROW} style={styles.buttonRow}>
-        <Pressable style={styles.button} onPress={onClose} accessibilityRole='button' accessibilityLabel='Close'>
-          <Text style={styles.buttonText}>Close</Text>
+        <Pressable
+          style={styles.button}
+          onPress={onClose}
+          accessibilityRole={'button'}
+          accessibilityLabel={t('modal.close')}>
+          <Text style={styles.buttonText}>{t('modal.close')}</Text>
         </Pressable>
       </Animated.View>
     </Modal>

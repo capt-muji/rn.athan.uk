@@ -8,6 +8,7 @@ import { Masjid } from '@/components/ui';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { ANIMATION, COLORS, SCREEN, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { ScheduleType } from '@/shared/types';
 import { getOverlayActiveForTypeAtom, getOverlaySelectedIndexForTypeAtom } from '@/stores/atoms/overlay';
 import { extraDisplayDateAtom, standardDisplayDateAtom } from '@/stores/schedule';
@@ -45,7 +46,7 @@ export default function Day({ type }: Props) {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.location}>London, UK</Text>
+        <Text style={styles.location}>{t('day.location')}</Text>
         <Text style={styles.date}>{formattedDate}</Text>
       </View>
       <Animated.View style={masjidOpacityStyle}>

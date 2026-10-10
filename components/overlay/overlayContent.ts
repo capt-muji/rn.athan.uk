@@ -8,7 +8,7 @@
  */
 
 import { EXTRA_PRAYER_IDS, EXTRAS_EXPLANATIONS, type PrayerId } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
+import { prayerLabel, type TranslationKey, t } from '@/shared/i18n';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { type Prayer, ScheduleType } from '@/shared/types';
 
@@ -49,12 +49,16 @@ export const getOverlayRow = (
  * @param id The selected prayer's id
  */
 export const getOverlayExplanation = (type: ScheduleType, id: PrayerId): OverlayExplanation => {
-  const isExtra = type === ScheduleType.Extra;
+  if (type !== ScheduleType.Extra) return { prayerName: null, explanation: null };
+
   const extraIds: readonly PrayerId[] = EXTRA_PRAYER_IDS;
   const explanationIndex = extraIds.indexOf(id);
+  // A still-loading Extras row reports an id with no explanation key; t() has no
+  // fallback, so the undefined passes through instead of being read
+  const explanationKey: TranslationKey | undefined = EXTRAS_EXPLANATIONS[explanationIndex];
 
   return {
-    prayerName: isExtra ? prayerLabel(id) : null,
-    explanation: isExtra ? EXTRAS_EXPLANATIONS[explanationIndex] : null,
+    prayerName: prayerLabel(id),
+    explanation: explanationKey !== undefined ? t(explanationKey) : undefined,
   };
 };

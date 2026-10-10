@@ -5,6 +5,7 @@ import Animated from 'react-native-reanimated';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { COLORS, ELEVATION, HIT_SLOP, RADIUS, SHADOW, SIZE, SPACING } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { showSettingsSheet } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -30,9 +31,9 @@ export default function SettingsButton() {
       onPress={handlePress}
       onPressIn={() => AnimScale.animate(0.9)}
       onPressOut={() => AnimScale.animate(1)}
-      accessibilityRole='button'
+      accessibilityRole={'button'}
       // An icon-only control, so the glyph is all a sighted user needs and a screen reader gets nothing
-      accessibilityLabel='Settings'>
+      accessibilityLabel={t('settingsButton.label')}>
       <SettingsIcon width={SIZE.icon.md} height={SIZE.icon.md} style={styles.icon} />
     </AnimatedPressable>
   );

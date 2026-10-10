@@ -5,6 +5,7 @@ import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { useDerivedProgress } from '@/hooks/useAnimation';
 import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, COUNTDOWN_WAITING_NAME, SPACING, STYLES, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import type { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { countdownBarShownAtom } from '@/stores/ui';
@@ -43,7 +44,7 @@ export default function Countdown({ type }: Props) {
         <Text
           style={[styles.text]}
           // Read aloud, "..." says nothing, so a screen reader hears what the dots stand for; nothing on screen changes
-          accessibilityLabel={prayerName === COUNTDOWN_WAITING_NAME ? 'No prayer time to count down to' : undefined}>
+          accessibilityLabel={prayerName === COUNTDOWN_WAITING_NAME ? t('countdown.waitingLabel') : undefined}>
           {prayerName}
         </Text>
         <Animated.Text style={[styles.countdown, animatedStyle]}>{displayTime}</Animated.Text>

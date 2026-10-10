@@ -36,20 +36,20 @@ export default function PrayerExplanation({
     // user gets no indication that anything appeared. Matches the countdown
     // Bar's treatment (components/countdown/Bar.tsx). Android-only in React
     // Native; VoiceOver has no equivalent declarative prop.
-    <View style={[styles.container, style]} accessibilityLiveRegion='polite'>
+    <View style={[styles.container, style]} accessibilityLiveRegion={'polite'}>
       {/* Triangle arrow pointing up */}
       {isArrowOnTop && (
         <View style={styles.arrowContainerTop}>
-          <Svg width={30} height={12} viewBox='0 0 30 12'>
+          <Svg width={30} height={12} viewBox={'0 0 30 12'}>
             {/* Fill first */}
-            <Path d='M0 12 L12 3.5 Q15 1 18 3.5 L30 12 Z' fill={COLORS.surface.elevated} />
+            <Path d={'M0 12 L12 3.5 Q15 1 18 3.5 L30 12 Z'} fill={COLORS.surface.elevated} />
             {/* Border stroke - only left and right edges, not bottom */}
             <Path
-              d='M0 12 L12 3.5 Q15 1 18 3.5 L30 12'
-              fill='none'
+              d={'M0 12 L12 3.5 Q15 1 18 3.5 L30 12'}
+              fill={'none'}
               stroke={COLORS.surface.elevatedBorder}
               strokeWidth={1}
-              strokeLinecap='round'
+              strokeLinecap={'round'}
             />
           </Svg>
         </View>
@@ -75,16 +75,16 @@ export default function PrayerExplanation({
       {/* Triangle arrow pointing down */}
       {!isArrowOnTop && (
         <View style={styles.arrowContainerBottom}>
-          <Svg width={30} height={12} viewBox='0 0 30 12'>
+          <Svg width={30} height={12} viewBox={'0 0 30 12'}>
             {/* Fill first */}
-            <Path d='M0 0 L12 8.5 Q15 11 18 8.5 L30 0 Z' fill={COLORS.surface.elevated} />
+            <Path d={'M0 0 L12 8.5 Q15 11 18 8.5 L30 0 Z'} fill={COLORS.surface.elevated} />
             {/* Border stroke - only left and right edges, not top */}
             <Path
-              d='M0 0 L12 8.5 Q15 11 18 8.5 L30 0'
-              fill='none'
+              d={'M0 0 L12 8.5 Q15 11 18 8.5 L30 0'}
+              fill={'none'}
               stroke={COLORS.surface.elevatedBorder}
               strokeWidth={1}
-              strokeLinecap='round'
+              strokeLinecap={'round'}
             />
           </Svg>
         </View>
