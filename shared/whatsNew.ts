@@ -24,15 +24,44 @@
  *   parked (null), or gated behind a disabled feature flag are removed
  *   (VISIBLE_WHATS_NEW), so a dark or future feature is never advertised
  *
+ * The archive holds catalog keys, not copy: every title and body renders
+ * through t(), resolved once at the release boundary (getVisibleWhatsNew).
  */
 
 import { FEATURE_FLAGS, type FeatureFlagId } from '@/shared/flags';
+import { type TranslationKey, t } from '@/shared/i18n';
 import { compareVersions } from '@/shared/versionUtils';
 
 /** Platforms an item can exclusive to */
 export type WhatsNewPlatform = 'ios' | 'android';
 
-/** One entry in the What's New archive */
+/** One archived entry: its copy as catalog keys, resolved for display through t() */
+export interface WhatsNewArchiveItem {
+  /** Catalog key holding the short factual title (max MAX_WHATS_NEW_TITLE_LENGTH chars) */
+  titleKey: TranslationKey;
+  /** Catalog key holding the one-line factual description (max MAX_WHATS_NEW_BODY_LENGTH chars) */
+  bodyKey: TranslationKey;
+  /** Marks the item as exclusive to a platform (badged on the other platform) */
+  platform?: WhatsNewPlatform;
+  /** Feature flags that must be enabled for the item to show - makes it
+   * impossible to advertise a feature that is flagged off in the build */
+  flags?: FeatureFlagId[];
+  /** Release this item shipped in; null parks the item (drafted, never
+   * shown) until stamped with a shipping version */
+  version: string | null;
+}
+
+/** The archive a release's notes are maintained as: keys, not display copy */
+export interface WhatsNewArchiveRelease {
+  /** Store version these notes ship with: never rendered, but it gates the
+   * modal - shouldShowWhatsNew shows nothing unless this is the installed
+   * version, so an un-moved stamp silent-ships the release */
+  version: string;
+  /** Archived items across releases; only the current version's show */
+  items: WhatsNewArchiveItem[];
+}
+
+/** One entry in the What's New modal */
 export interface WhatsNewItem {
   /** Short factual title (max MAX_WHATS_NEW_TITLE_LENGTH chars) */
   title: string;
@@ -48,15 +77,24 @@ export interface WhatsNewItem {
   version: string | null;
 }
 
-/** The release notes for the current version */
+/** The release notes for the current version, as the modal renders them */
 export interface WhatsNewRelease {
   /** Store version these notes ship with: never rendered, but it gates the
    * modal - shouldShowWhatsNew shows nothing unless this is the installed
    * version, so an un-moved stamp silent-ships the release */
   version: string;
-  /** Archived items across releases; only the current version's show */
+  /** The release's items, resolved to the copy the modal renders */
   items: WhatsNewItem[];
 }
+
+/** Resolves one archived entry to the copy the modal renders */
+const resolveItem = (item: WhatsNewArchiveItem): WhatsNewItem => ({
+  title: t(item.titleKey),
+  body: t(item.bodyKey),
+  platform: item.platform,
+  flags: item.flags,
+  version: item.version,
+});
 
 // =============================================================================
 // CONTENT - grow per release; prune past MAX_WHATS_NEW_ARCHIVE
@@ -72,29 +110,29 @@ export interface WhatsNewRelease {
 // that choice is made, which is the fastest way to get the guard deleted.
 // =============================================================================
 
-export const WHATS_NEW: WhatsNewRelease | null = {
+export const WHATS_NEW: WhatsNewArchiveRelease | null = {
   version: '1.26.32',
   items: [
     {
-      title: 'Tablet support',
-      body: 'Athan now supported on tablets',
+      titleKey: 'whatsNew.title.tabletSupport',
+      bodyKey: 'whatsNew.body.tabletSupport',
       version: '1.26.32',
     },
     {
-      title: 'Athan sounds',
-      body: 'New Athan sounds added',
+      titleKey: 'whatsNew.title.athanSounds',
+      bodyKey: 'whatsNew.body.athanSounds',
       version: '1.26.32',
     },
     {
-      title: 'Reminder sounds',
-      body: 'Every reminder now has its own sound',
+      titleKey: 'whatsNew.title.reminderSounds',
+      bodyKey: 'whatsNew.body.reminderSounds',
       version: '1.26.32',
     },
     {
       // PARKED: ships with the release that enables the widgets flag
       // (expo-widgets@57.0.16, ISSUES.md G.1) - stamp its version then
-      title: 'Home & Lock widgets',
-      body: 'Add prayer times to your Home and Lock Screen',
+      titleKey: 'whatsNew.title.widgets',
+      bodyKey: 'whatsNew.body.widgets',
       platform: 'ios',
       flags: ['iosWidgets'],
       version: null,
@@ -102,22 +140,22 @@ export const WHATS_NEW: WhatsNewRelease | null = {
     {
       // PARKED: whether this release gets a modal is the owner's editorial call, so it is
       // stamped at the store release rather than here. No flag: it ships on both platforms
-      title: 'A second reminder',
-      body: 'Each prayer can now carry two reminders, each with its own sound and timing',
+      titleKey: 'whatsNew.title.secondReminder',
+      bodyKey: 'whatsNew.body.secondReminder',
       version: null,
     },
     {
       // PARKED: stamped at the store release, like every item, because whether a release
       // gets a modal is the owner's editorial call
-      title: 'Help page',
-      body: 'Settings now answers why an athan was not heard, and opens the setting that caused it',
+      titleKey: 'whatsNew.title.helpPage',
+      bodyKey: 'whatsNew.body.helpPage',
       version: null,
     },
     {
       // PARKED: stamped at the store release. No platform badge, because the compass ships on both:
       // Android is simply tested after iOS
-      title: 'Qibla compass',
-      body: 'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
+      titleKey: 'whatsNew.title.qiblaCompass',
+      bodyKey: 'whatsNew.body.qiblaCompass',
       version: null,
     },
   ],
@@ -192,10 +230,10 @@ export const shouldShowWhatsNew = (
  * @returns Items safe to show for this release in this build
  */
 export const filterWhatsNewItems = (
-  items: WhatsNewItem[],
+  items: WhatsNewArchiveItem[],
   releaseVersion: string,
   flags: Record<FeatureFlagId, boolean> = FEATURE_FLAGS
-): WhatsNewItem[] =>
+): WhatsNewArchiveItem[] =>
   items.filter((item) => item.version === releaseVersion && !(item.flags ?? []).some((flag) => !flags[flag]));
 
 /**
@@ -203,17 +241,17 @@ export const filterWhatsNewItems = (
  * items, or null when nothing remains (silent-ship semantics apply everywhere
  * downstream). Pure: the parameters keep tests deterministic.
  *
- * @param release - Bundled release content (null = silent release)
+ * @param release - Archived release content (null = silent release)
  * @param flags - Enabled-flag record of the build presenting it
- * @returns The release with only its visible items, or null
+ * @returns The release with only its visible items, resolved to display copy, or null
  */
 export const getVisibleWhatsNew = (
-  release: WhatsNewRelease | null,
+  release: WhatsNewArchiveRelease | null,
   flags: Record<FeatureFlagId, boolean>
 ): WhatsNewRelease | null => {
   if (!release) return null;
   const items = filterWhatsNewItems(release.items, release.version, flags);
-  return items.length > 0 ? { ...release, items } : null;
+  return items.length > 0 ? { version: release.version, items: items.map(resolveItem) } : null;
 };
 
 /** WHATS_NEW as this build may present it */
