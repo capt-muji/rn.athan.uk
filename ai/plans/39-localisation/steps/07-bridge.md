@@ -5,7 +5,9 @@ round-trip parity test. The transfer format is the catalog itself: flat key-valu
 `{token}` placeholders, no i18next reserved shapes (RECONCILIATION, ARCH-14/A3).
 
 - Branch: `feat/38-07-bridge`
-- Anchors: `content-builders`, `reminder-content`
+- Anchors: `content-builders`, `reminder-content` (both files hold the post-step-04 text;
+  step 06 first retypes them to `(id: PrayerId, ...)` with `prayerLabel` titles - edit
+  against that shape)
 - Files added: `scripts/i18n-export.mjs`, `scripts/i18n-import.mjs`,
   `shared/__tests__/i18nBridge.test.ts`
 - Files changed: `shared/i18n/index.ts` (interpolation),

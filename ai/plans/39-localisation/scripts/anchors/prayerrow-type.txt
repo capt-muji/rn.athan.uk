@@ -4,34 +4,8 @@ interface PrayerRow {
   type: ScheduleType;
   /** English name: "Fajr", "Isha", "Midnight", etc. */
   english: string;
-  /** Arabic name: "الفجر", "العشاء", etc. */
-  arabic: string;
   /** Which Islamic day this prayer belongs to (per ADR-004)
    * May differ from datetime's calendar date (e.g., Isha at 1am belongs to previous day) */
   belongsToDate: string;
 }
 
-/**
- * Prayer with full datetime object
- *
- * Key difference from ITransformedPrayer:
- * - datetime is a full Date object, so datetime > now is ALWAYS correct
- * - No midnight-crossing bugs possible
- * - belongsToDate tracks which Islamic day the prayer belongs to (per ADR-004)
- */
-export interface ReadablePrayer extends PrayerRow {
-  /** Full datetime - the actual moment in time (Date object) */
-  datetime: Date;
-  /** Original time string (for display purposes, e.g., "06:12") */
-  time: string;
-}
-
-/**
- * A row whose time could not be read, or could not be worked out because a time it depends on could
- * not (see shared/prayer.ts). It is still on its list and is drawn as `--:--`, but it has no moment:
- * it can never be next, never be counted down to, and never have an alert armed for it.
- */
-export interface UnreadablePrayer extends PrayerRow {
-  datetime: null;
-  time: null;
-}

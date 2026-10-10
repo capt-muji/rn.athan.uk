@@ -4,7 +4,6 @@
  */
 export const genNotificationContent = (
   englishName: string,
-  _arabicName: string,
   alertType: AlertType,
   soundIndex: number
 ): Notifications.NotificationContentInput => {
