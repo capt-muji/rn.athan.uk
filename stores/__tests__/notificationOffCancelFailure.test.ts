@@ -40,8 +40,8 @@ const NOW = Date.parse('2026-08-29T08:00:00.000Z');
 const WINDOW = ['2026-08-29', '2026-08-30'];
 const MINUTE = 60_000;
 
-const FAJR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date));
-const DHUHR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', date));
+const FAJR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', date));
+const DHUHR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'dhuhr', date));
 
 const scheduleMock = jest.mocked(Notifications.scheduleNotificationAsync);
 const cancelMock = jest.mocked(Notifications.cancelScheduledNotificationAsync);

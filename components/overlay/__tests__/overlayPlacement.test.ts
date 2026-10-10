@@ -109,7 +109,7 @@ const openOnReversedFriday = (selectedPrayerIndex: number) => {
   mockStore.current.set(realOverlayAtom, { isOn: true, selectedPrayerIndex, scheduleType: ScheduleType.Extra });
   mockAtomValues.set('overlayAtom', { isOn: true, selectedPrayerIndex, scheduleType: ScheduleType.Extra });
 
-  return reversed.map((prayer) => prayer.english);
+  return reversed.map((prayer) => prayer.id);
 };
 
 describe('the Extras card on a list whose selected index is not its drawn row (real London 2026 days)', () => {
@@ -151,7 +151,8 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       });
       // Never a fixed height: the card sizes itself, or an empty 300pt box pushes its content off the row
       expect((cards[0].props.style as ViewStyle).height).toBeUndefined();
-      expect(names[index]).toBe(english);
+      // The card names the prayer by its label; the walk that picked the row carries ids
+      expect(names[index]).toBe(english.toLowerCase());
     }
   );
 });

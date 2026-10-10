@@ -2,7 +2,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 
 import * as Database from '@/stores/database';
 
-import { PRAYER_TIMEZONE } from '../constants';
+import { PRAYER_TIMEZONE, type PrayerId } from '../constants';
 import {
   calculateBelongsToDate,
   canonicalDisplayOrder,
@@ -46,50 +46,50 @@ describe('calculateBelongsToDate', () => {
     it('assigns Isha at 00:45 to previous day', () => {
       // Isha at 00:45 on Jan 19 calendar date belongs to Jan 18 Islamic day
       const datetime = createPrayerDatetime('2026-01-19', '00:45');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Isha', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-01-19', datetime);
       expect(result).toBe('2026-01-18');
     });
 
     it('assigns Isha at 05:59 to previous day (before 6am cutoff)', () => {
       const datetime = createPrayerDatetime('2026-01-19', '05:59');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Isha', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-01-19', datetime);
       expect(result).toBe('2026-01-18');
     });
 
     it('assigns Isha at 21:00 to current day (normal evening)', () => {
       const datetime = createPrayerDatetime('2026-01-19', '21:00');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Isha', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-01-19', datetime);
       expect(result).toBe('2026-01-19');
     });
 
     it('assigns Fajr at 06:15 to current day', () => {
       const datetime = createPrayerDatetime('2026-01-19', '06:15');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Fajr', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'fajr', '2026-01-19', datetime);
       expect(result).toBe('2026-01-19');
     });
 
     it('assigns Dhuhr to current day', () => {
       const datetime = createPrayerDatetime('2026-01-19', '12:30');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Dhuhr', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'dhuhr', '2026-01-19', datetime);
       expect(result).toBe('2026-01-19');
     });
 
     it('assigns Asr to current day', () => {
       const datetime = createPrayerDatetime('2026-01-19', '14:30');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Asr', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'asr', '2026-01-19', datetime);
       expect(result).toBe('2026-01-19');
     });
 
     it('assigns Magrib to current day', () => {
       const datetime = createPrayerDatetime('2026-01-19', '17:45');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Magrib', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'magrib', '2026-01-19', datetime);
       expect(result).toBe('2026-01-19');
     });
 
     // January 1st edge case
     it('handles January 1st rollover to previous year', () => {
       const datetime = createPrayerDatetime('2026-01-01', '00:45');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Isha', '2026-01-01', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-01-01', datetime);
       expect(result).toBe('2025-12-31');
     });
   });
@@ -97,7 +97,7 @@ describe('calculateBelongsToDate', () => {
   describe('Extra Schedule', () => {
     it('keeps a morning Suhoor (05:30) on its own calendar day', () => {
       const datetime = createPrayerDatetime('2026-01-18', '05:30'); // Early morning
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Suhoor', '2026-01-18', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Extra, 'suhoor', '2026-01-18', datetime);
       expect(result).toBe('2026-01-18'); // Before noon, stays same day
     });
 
@@ -105,24 +105,24 @@ describe('calculateBelongsToDate', () => {
     // Suhoor of 12:xx back a day by its clock string, and this side must bring it forward again, or the
     // row lands on the previous day's list. The minutes either side of noon pin the boundary itself.
     it.each([
-      ['Suhoor', '11:59', '2026-01-18'],
-      ['Suhoor', '12:00', '2026-01-19'],
-      ['Last Third', '11:59', '2026-01-18'],
-      ['Last Third', '12:00', '2026-01-19'],
-    ])('files %s at %s on calendar day 2026-01-18 under %s', (english, time, expected) => {
+      ['suhoor', '11:59', '2026-01-18'],
+      ['suhoor', '12:00', '2026-01-19'],
+      ['last third', '11:59', '2026-01-18'],
+      ['last third', '12:00', '2026-01-19'],
+    ] as [PrayerId, string, string][])('files %s at %s on calendar day 2026-01-18 under %s', (id, time, expected) => {
       const datetime = createPrayerDatetime('2026-01-18', time);
-      expect(calculateBelongsToDate(ScheduleType.Extra, english, '2026-01-18', datetime)).toBe(expected);
+      expect(calculateBelongsToDate(ScheduleType.Extra, id, '2026-01-18', datetime)).toBe(expected);
     });
 
     it('assigns Duha to current day', () => {
       const datetime = createPrayerDatetime('2026-01-19', '08:30');
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Duha', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Extra, 'duha', '2026-01-19', datetime);
       expect(result).toBe('2026-01-19');
     });
 
     it('assigns Istijaba to current day', () => {
       const datetime = createPrayerDatetime('2026-01-19', '16:30');
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Istijaba', '2026-01-19', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Extra, 'istijaba', '2026-01-19', datetime);
       expect(result).toBe('2026-01-19');
     });
   });
@@ -136,12 +136,12 @@ describe('createPrayer', () => {
   it('creates prayer with an english name and no arabic field', () => {
     const prayer = createPrayer({
       type: ScheduleType.Standard,
-      english: 'Fajr',
+      id: 'fajr',
       date: '2026-01-19',
       time: '06:15',
     });
 
-    expect(prayer.english).toBe('Fajr');
+    expect(prayer.id).toBe('fajr');
     expect('arabic' in prayer).toBe(false);
     expect(prayer.type).toBe(ScheduleType.Standard);
     expect(prayer.time).toBe('06:15');
@@ -152,12 +152,12 @@ describe('createPrayer', () => {
   it('creates Extra prayer correctly', () => {
     const prayer = createPrayer({
       type: ScheduleType.Extra,
-      english: 'Midnight',
+      id: 'midnight',
       date: '2026-01-19',
       time: '00:30',
     });
 
-    expect(prayer.english).toBe('Midnight');
+    expect(prayer.id).toBe('midnight');
     expect(prayer.type).toBe(ScheduleType.Extra);
     expect(prayer.datetime).toBeInstanceOf(Date);
   });
@@ -166,12 +166,12 @@ describe('createPrayer', () => {
     // Summer Isha at 1am
     const prayer = createPrayer({
       type: ScheduleType.Standard,
-      english: 'Isha',
+      id: 'isha',
       date: '2026-06-22',
       time: '01:00',
     });
 
-    expect(prayer.english).toBe('Isha');
+    expect(prayer.id).toBe('isha');
     expect(prayer.belongsToDate).toBe('2026-06-21'); // Belongs to previous day
   });
 });
@@ -213,19 +213,19 @@ describe('ADR-004: Prayer-Based Day Boundary Edge Cases', () => {
     it('assigns summer Isha at 00:45 to previous Islamic day', () => {
       // London summer: Isha can be after midnight
       const datetime = createPrayerDatetime('2026-06-22', '00:45');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Isha', '2026-06-22', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-06-22', datetime);
       expect(result).toBe('2026-06-21');
     });
 
     it('assigns summer Isha at 01:15 to previous Islamic day', () => {
       const datetime = createPrayerDatetime('2026-06-22', '01:15');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Isha', '2026-06-22', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-06-22', datetime);
       expect(result).toBe('2026-06-21');
     });
 
     it('does NOT assign Isha at 06:00 to previous day (cutoff boundary)', () => {
       const datetime = createPrayerDatetime('2026-06-22', '06:00');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Isha', '2026-06-22', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-06-22', datetime);
       expect(result).toBe('2026-06-22');
     });
   });
@@ -233,7 +233,7 @@ describe('ADR-004: Prayer-Based Day Boundary Edge Cases', () => {
   describe('Scenario 6: Midnight Prayer After System Midnight', () => {
     it('Extra night prayers before noon stay on calendar date', () => {
       const datetime = createPrayerDatetime('2026-01-18', '00:15');
-      const result = calculateBelongsToDate(ScheduleType.Extra, 'Midnight', '2026-01-18', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Extra, 'midnight', '2026-01-18', datetime);
       expect(result).toBe('2026-01-18');
     });
   });
@@ -241,7 +241,7 @@ describe('ADR-004: Prayer-Based Day Boundary Edge Cases', () => {
   describe('Scenario 8: Year Boundary (Dec 31 to Jan 1)', () => {
     it('handles Isha rollover from Jan 1 to Dec 31', () => {
       const datetime = createPrayerDatetime('2027-01-01', '00:30');
-      const result = calculateBelongsToDate(ScheduleType.Standard, 'Isha', '2027-01-01', datetime);
+      const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2027-01-01', datetime);
       expect(result).toBe('2026-12-31');
     });
   });
@@ -255,7 +255,7 @@ describe('createPrayer edge cases', () => {
   it('handles winter Isha (before midnight)', () => {
     const prayer = createPrayer({
       type: ScheduleType.Standard,
-      english: 'Isha',
+      id: 'isha',
       date: '2026-01-18',
       time: '18:15',
     });
@@ -265,7 +265,7 @@ describe('createPrayer edge cases', () => {
   it('handles summer Isha (after midnight, up to 6am)', () => {
     const prayer = createPrayer({
       type: ScheduleType.Standard,
-      english: 'Isha',
+      id: 'isha',
       date: '2026-06-22',
       time: '01:30',
     });
@@ -275,7 +275,7 @@ describe('createPrayer edge cases', () => {
   it('handles Extra Last Third prayer after system midnight', () => {
     const prayer = createPrayer({
       type: ScheduleType.Extra,
-      english: 'Last Third',
+      id: 'last third',
       date: '2026-01-18',
       time: '02:30',
     });
@@ -639,16 +639,16 @@ describe('transformApiData', () => {
 // =============================================================================
 
 describe('canonicalDisplayOrder', () => {
-  const buildPrayers = (entries: { english: string; time: string }[]): Prayer[] =>
+  const buildPrayers = (entries: { id: string; time: string }[]): Prayer[] =>
     entries.map((entry) => ({
-      english: entry.english,
+      id: entry.id,
       datetime: createPrayerDatetime('2026-08-28', entry.time),
     })) as unknown as Prayer[];
 
   it('passes indices through unchanged for the Standard schedule', () => {
     const prayers = buildPrayers([
-      { english: 'Fajr', time: '05:30' },
-      { english: 'Sunrise', time: '07:00' },
+      { id: 'fajr', time: '05:30' },
+      { id: 'sunrise', time: '07:00' },
     ]);
 
     expect(canonicalDisplayOrder(prayers, ScheduleType.Standard)).toEqual([0, 1]);
@@ -658,9 +658,9 @@ describe('canonicalDisplayOrder', () => {
     // Real Friday shape: Midnight belongs to the displayed day but chronologically
     // falls late evening, pushing Istijaba mid-list under pure chronological order
     const prayers = buildPrayers([
-      { english: 'Duha', time: '09:00' },
-      { english: 'Istijaba', time: '15:14' },
-      { english: 'Midnight', time: '23:17' },
+      { id: 'duha', time: '09:00' },
+      { id: 'istijaba', time: '15:14' },
+      { id: 'midnight', time: '23:17' },
     ]);
 
     expect(canonicalDisplayOrder(prayers, ScheduleType.Extra)).toEqual([2, 0, 1]);
@@ -668,11 +668,11 @@ describe('canonicalDisplayOrder', () => {
 
   it('returns identity order when chronological already equals canonical', () => {
     const prayers = buildPrayers([
-      { english: 'Midnight', time: '00:30' },
-      { english: 'Last Third', time: '03:30' },
-      { english: 'Suhoor', time: '04:30' },
-      { english: 'Duha', time: '09:00' },
-      { english: 'Istijaba', time: '15:14' },
+      { id: 'midnight', time: '00:30' },
+      { id: 'last third', time: '03:30' },
+      { id: 'suhoor', time: '04:30' },
+      { id: 'duha', time: '09:00' },
+      { id: 'istijaba', time: '15:14' },
     ]);
 
     expect(canonicalDisplayOrder(prayers, ScheduleType.Extra)).toEqual([0, 1, 2, 3, 4]);
@@ -680,9 +680,9 @@ describe('canonicalDisplayOrder', () => {
 
   it('keeps unknown prayer names after the canonical ones in stable relative order', () => {
     const prayers = buildPrayers([
-      { english: 'Mystery', time: '10:00' },
-      { english: 'Istijaba', time: '15:14' },
-      { english: 'Midnight', time: '23:17' },
+      { id: 'mystery', time: '10:00' },
+      { id: 'istijaba', time: '15:14' },
+      { id: 'midnight', time: '23:17' },
     ]);
 
     expect(canonicalDisplayOrder(prayers, ScheduleType.Extra)).toEqual([2, 1, 0]);
@@ -700,7 +700,7 @@ describe('canonicalDisplayOrder', () => {
 
 type Field = RequiredTimeName;
 const FIELDS: Field[] = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'];
-const STANDARD_NAMES = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
+const STANDARD_NAMES: PrayerId[] = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'];
 const DAY_MS = 86_400_000;
 
 /** Real London times from londonprayertimes.com for 2026, in FIELDS order */
@@ -748,17 +748,17 @@ const storeDays = (dates: string[], unreadable: string[] = []) => {
 const plusDays = (date: string, days: number): string =>
   new Date(Date.parse(`${date}T12:00:00Z`) + days * DAY_MS).toISOString().slice(0, 10);
 const isFriday = (date: string): boolean => new Date(`${date}T12:00:00Z`).getUTCDay() === 5;
-const extrasNamesOn = (date: string): string[] => [
-  'Midnight',
-  'Last Third',
-  'Suhoor',
-  'Duha',
-  ...(isFriday(date) ? ['Istijaba'] : []),
+const extrasNamesOn = (date: string): PrayerId[] => [
+  'midnight',
+  'last third',
+  'suhoor',
+  'duha',
+  ...(isFriday(date) ? (['istijaba'] as PrayerId[]) : []),
 ];
 
 interface RowView {
   type: ScheduleType;
-  english: string;
+  id: PrayerId;
   belongsToDate: string;
   at: string | null;
   time: string | null;
@@ -767,16 +767,16 @@ interface RowView {
 /** Everything a row shows or an alarm reads, with the instant as an ISO string so any timezone compares alike */
 const view = (row: Prayer): RowView => ({
   type: row.type,
-  english: row.english,
+  id: row.id,
   belongsToDate: row.belongsToDate,
   at: row.datetime?.toISOString() ?? null,
   time: row.time,
 });
 
-const keyOf = (row: { type: ScheduleType; belongsToDate: string; english: string }) =>
-  `${row.type} ${row.belongsToDate} ${row.english}`;
-const standardRow = (date: string, english: string) => `${ScheduleType.Standard} ${date} ${english}`;
-const extrasRow = (date: string, english: string) => `${ScheduleType.Extra} ${date} ${english}`;
+const keyOf = (row: { type: ScheduleType; belongsToDate: string; id: PrayerId }) =>
+  `${row.type} ${row.belongsToDate} ${row.id}`;
+const standardRow = (date: string, id: PrayerId) => `${ScheduleType.Standard} ${date} ${id}`;
+const extrasRow = (date: string, id: PrayerId) => `${ScheduleType.Extra} ${date} ${id}`;
 
 /** Both sequences over these days, Standard then Extras, as the screen builds them */
 const buildBoth = (firstDate: string, dayCount: number): RowView[] =>
@@ -793,7 +793,7 @@ const wholeDay = (build: RowView[], date: string): string[] =>
   build.filter((row) => row.belongsToDate === date).map(keyOf);
 
 /** The night rows of a list day, which run from the day before's Magrib */
-const nightOf = (date: string): string[] => [extrasRow(date, 'Midnight'), extrasRow(date, 'Last Third')];
+const nightOf = (date: string): string[] => [extrasRow(date, 'midnight'), extrasRow(date, 'last third')];
 
 /** Readable rows that do not come strictly after the readable row before them */
 const outOfTimeOrder = (prayers: Prayer[]): string[] => {
@@ -802,7 +802,7 @@ const outOfTimeOrder = (prayers: Prayer[]): string[] => {
   return readable.slice(1).flatMap((row, index) => {
     const before = readable[index];
     if (row.datetime > before.datetime) return [];
-    return [`${row.belongsToDate} ${row.english} not after ${before.belongsToDate} ${before.english}`];
+    return [`${row.belongsToDate} ${row.id} not after ${before.belongsToDate} ${before.id}`];
   });
 };
 
@@ -842,21 +842,19 @@ describe('transformApiData with times api/client.ts could not read', () => {
 
 describe('which rows lose their time when one field on a day cannot be read', () => {
   /** The rows each field on day D is worked out into, beyond nothing else (the brief's dependency graph) */
-  const KNOCK_ON: Record<Field, { extras: string[]; nextExtras: string[] }> = {
-    fajr: { extras: ['Midnight', 'Last Third', 'Suhoor'], nextExtras: [] },
-    sunrise: { extras: ['Duha'], nextExtras: [] },
+  const KNOCK_ON: Record<Field, { extras: PrayerId[]; nextExtras: PrayerId[] }> = {
+    fajr: { extras: ['midnight', 'last third', 'suhoor'], nextExtras: [] },
+    sunrise: { extras: ['duha'], nextExtras: [] },
     dhuhr: { extras: [], nextExtras: [] },
     asr: { extras: [], nextExtras: [] },
-    magrib: { extras: ['Istijaba'], nextExtras: ['Midnight', 'Last Third'] },
+    magrib: { extras: ['istijaba'], nextExtras: ['midnight', 'last third'] },
     isha: { extras: [], nextExtras: [] },
   };
 
   const knockOn = (date: string, field: Field): string[] => [
     standardRow(date, STANDARD_NAMES[FIELDS.indexOf(field)]),
-    ...KNOCK_ON[field].extras
-      .filter((english) => extrasNamesOn(date).includes(english))
-      .map((english) => extrasRow(date, english)),
-    ...KNOCK_ON[field].nextExtras.map((english) => extrasRow(plusDays(date, 1), english)),
+    ...KNOCK_ON[field].extras.filter((id) => extrasNamesOn(date).includes(id)).map((id) => extrasRow(date, id)),
+    ...KNOCK_ON[field].nextExtras.map((id) => extrasRow(plusDays(date, 1), id)),
   ];
 
   // [run, days stored, D−1 (the first list compared, four lists in all), D]
@@ -890,30 +888,30 @@ describe('which rows lose their time when one field on a day cannot be read', ()
     [
       ['fajr', 'magrib'],
       [
-        standardRow('2026-09-11', 'Fajr'),
-        standardRow('2026-09-11', 'Magrib'),
+        standardRow('2026-09-11', 'fajr'),
+        standardRow('2026-09-11', 'magrib'),
         ...nightOf('2026-09-11'),
-        extrasRow('2026-09-11', 'Suhoor'),
-        extrasRow('2026-09-11', 'Istijaba'),
+        extrasRow('2026-09-11', 'suhoor'),
+        extrasRow('2026-09-11', 'istijaba'),
         ...nightOf('2026-09-12'),
       ],
     ],
     [
       ['sunrise', 'asr', 'isha'],
       [
-        standardRow('2026-09-11', 'Sunrise'),
-        standardRow('2026-09-11', 'Asr'),
-        standardRow('2026-09-11', 'Isha'),
-        extrasRow('2026-09-11', 'Duha'),
+        standardRow('2026-09-11', 'sunrise'),
+        standardRow('2026-09-11', 'asr'),
+        standardRow('2026-09-11', 'isha'),
+        extrasRow('2026-09-11', 'duha'),
       ],
     ],
     [
       ['dhuhr', 'magrib', 'isha'],
       [
-        standardRow('2026-09-11', 'Dhuhr'),
-        standardRow('2026-09-11', 'Magrib'),
-        standardRow('2026-09-11', 'Isha'),
-        extrasRow('2026-09-11', 'Istijaba'),
+        standardRow('2026-09-11', 'dhuhr'),
+        standardRow('2026-09-11', 'magrib'),
+        standardRow('2026-09-11', 'isha'),
+        extrasRow('2026-09-11', 'istijaba'),
         ...nightOf('2026-09-12'),
       ],
     ],
@@ -934,9 +932,9 @@ describe('which rows lose their time when one field on a day cannot be read', ()
   // An edited backup can store a day without one of its keys at all, which must read exactly like a null. The
   // day's own stored Suhoor and Duha keys are still there, so only the rows read from the missing key lose a time
   it.each([
-    ['fajr', [standardRow('2026-09-11', 'Fajr'), ...nightOf('2026-09-11')]],
-    ['asr', [standardRow('2026-09-11', 'Asr')]],
-    ['magrib', [standardRow('2026-09-11', 'Magrib'), extrasRow('2026-09-11', 'Istijaba'), ...nightOf('2026-09-12')]],
+    ['fajr', [standardRow('2026-09-11', 'fajr'), ...nightOf('2026-09-11')]],
+    ['asr', [standardRow('2026-09-11', 'asr')]],
+    ['magrib', [standardRow('2026-09-11', 'magrib'), extrasRow('2026-09-11', 'istijaba'), ...nightOf('2026-09-12')]],
   ] as [Field, string[]][])(
     'a stored Friday 11 September without its %s key takes the time from the rows read from it, without throwing',
     (field, expected) => {
@@ -1036,7 +1034,7 @@ describe('createPrayerSequence over a range with a day missing from storage', ()
     const start = new Date('2026-09-11T11:00:00Z');
     const standard = createPrayerSequence(ScheduleType.Standard, start, 5);
     const extras = createPrayerSequence(ScheduleType.Extra, start, 5);
-    const label = (row: Prayer) => `${row.belongsToDate} ${row.english}`;
+    const label = (row: Prayer) => `${row.belongsToDate} ${row.id}`;
 
     expect(standard.type).toBe(ScheduleType.Standard);
     expect(extras.type).toBe(ScheduleType.Extra);
@@ -1052,12 +1050,12 @@ describe('createPrayerSequence over a range with a day missing from storage', ()
     const withoutTime = (prayers: Prayer[]) => prayers.filter((row) => row.datetime === null);
     expect(withoutTime(standard.prayers).map(label)).toEqual(STANDARD_NAMES.map((english) => `2026-09-14 ${english}`));
     expect(withoutTime(extras.prayers).map(label)).toEqual([
-      '2026-09-14 Midnight',
-      '2026-09-14 Last Third',
-      '2026-09-14 Suhoor',
-      '2026-09-14 Duha',
-      '2026-09-15 Midnight',
-      '2026-09-15 Last Third',
+      '2026-09-14 midnight',
+      '2026-09-14 last third',
+      '2026-09-14 suhoor',
+      '2026-09-14 duha',
+      '2026-09-15 midnight',
+      '2026-09-15 last third',
     ]);
     expect([...withoutTime(standard.prayers), ...withoutTime(extras.prayers)].every((row) => row.time === null)).toBe(
       true
@@ -1068,34 +1066,49 @@ describe('createPrayerSequence over a range with a day missing from storage', ()
 });
 
 describe('createPrayersForDate', () => {
+  it('keys the stored-day lookup by the id', () => {
+    storeDays(OCTOBER);
+
+    const rows = createPrayersForDate(ScheduleType.Extra, '2026-10-18');
+
+    expect(rows.map((row) => row.id)).toEqual(['midnight', 'last third', 'suhoor', 'duha']);
+    expect(rows.every((row) => !('english' in row))).toBe(true);
+    expect(rows.filter((row) => row.datetime !== null).map((row) => row.id)).toEqual([
+      'midnight',
+      'last third',
+      'suhoor',
+      'duha',
+    ]);
+  });
+
   it('builds one list with its night from the day before', () => {
     storeDays(OCTOBER);
 
     expect(createPrayersForDate(ScheduleType.Extra, '2026-10-18').map(view)).toEqual([
       {
         type: ScheduleType.Extra,
-        english: 'Midnight',
+        id: 'midnight',
         belongsToDate: '2026-10-18',
         at: '2026-10-17T23:00:00.000Z',
         time: '00:00',
       },
       {
         type: ScheduleType.Extra,
-        english: 'Last Third',
+        id: 'last third',
         belongsToDate: '2026-10-18',
         at: '2026-10-18T00:58:00.000Z',
         time: '01:58',
       },
       {
         type: ScheduleType.Extra,
-        english: 'Suhoor',
+        id: 'suhoor',
         belongsToDate: '2026-10-18',
         at: '2026-10-18T04:34:00.000Z',
         time: '05:34',
       },
       {
         type: ScheduleType.Extra,
-        english: 'Duha',
+        id: 'duha',
         belongsToDate: '2026-10-18',
         at: '2026-10-18T06:47:00.000Z',
         time: '07:47',
@@ -1107,18 +1120,18 @@ describe('createPrayersForDate', () => {
     storeDays(SEPTEMBER.filter((date) => date !== '2026-09-11'));
 
     expect(createPrayersForDate(ScheduleType.Extra, '2026-09-11')).toEqual(
-      ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'].map((english) => ({
+      ['midnight', 'last third', 'suhoor', 'duha', 'istijaba'].map((id) => ({
         type: ScheduleType.Extra,
-        english,
+        id,
         datetime: null,
         time: null,
         belongsToDate: '2026-09-11',
       }))
     );
     expect(createPrayersForDate(ScheduleType.Standard, '2026-09-11')).toEqual(
-      STANDARD_NAMES.map((english) => ({
+      STANDARD_NAMES.map((id) => ({
         type: ScheduleType.Standard,
-        english,
+        id,
         datetime: null,
         time: null,
         belongsToDate: '2026-09-11',
@@ -1157,22 +1170,22 @@ describe('getPrayerForDate with times that could not be read', () => {
   it('returns the row without a time for a field that could not be read, not null', () => {
     storeDays(OCTOBER, ['2026-10-18 asr', '2026-10-17 magrib']);
 
-    expect(getPrayerForDate(ScheduleType.Standard, 'Asr', '2026-10-18')).toEqual({
+    expect(getPrayerForDate(ScheduleType.Standard, 'asr', '2026-10-18')).toEqual({
       type: ScheduleType.Standard,
-      english: 'Asr',
+      id: 'asr',
       datetime: null,
       time: null,
       belongsToDate: '2026-10-18',
     });
-    expect(getPrayerForDate(ScheduleType.Extra, 'Last Third', '2026-10-18')).toEqual({
+    expect(getPrayerForDate(ScheduleType.Extra, 'last third', '2026-10-18')).toEqual({
       type: ScheduleType.Extra,
-      english: 'Last Third',
+      id: 'last third',
       datetime: null,
       time: null,
       belongsToDate: '2026-10-18',
     });
     // The rest of the day still reads
-    expect(getPrayerForDate(ScheduleType.Standard, 'Magrib', '2026-10-18')?.datetime?.toISOString()).toBe(
+    expect(getPrayerForDate(ScheduleType.Standard, 'magrib', '2026-10-18')?.datetime?.toISOString()).toBe(
       '2026-10-18T17:04:00.000Z'
     );
   });
@@ -1180,30 +1193,30 @@ describe('getPrayerForDate with times that could not be read', () => {
   it('returns a row without a time for every prayer of a day missing from storage, and Istijaba only on a Friday', () => {
     storeDays(OCTOBER.filter((date) => date !== '2026-10-16' && date !== '2026-10-19'));
 
-    for (const english of STANDARD_NAMES) {
-      expect(getPrayerForDate(ScheduleType.Standard, english, '2026-10-19')).toMatchObject({
-        english,
+    for (const id of STANDARD_NAMES) {
+      expect(getPrayerForDate(ScheduleType.Standard, id, '2026-10-19')).toMatchObject({
+        id,
         datetime: null,
         time: null,
       });
     }
-    for (const english of extrasNamesOn('2026-10-16')) {
-      expect(getPrayerForDate(ScheduleType.Extra, english, '2026-10-16')).toMatchObject({
-        english,
+    for (const id of extrasNamesOn('2026-10-16')) {
+      expect(getPrayerForDate(ScheduleType.Extra, id, '2026-10-16')).toMatchObject({
+        id,
         datetime: null,
         time: null,
       });
     }
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-10-16')).not.toBeNull();
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-10-19')).toBeNull();
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-10-16')).not.toBeNull();
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-10-19')).toBeNull();
   });
 
   it('returns null only for a prayer that is not on the list', () => {
     storeDays(OCTOBER);
 
-    expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-10-18')).toBeNull();
-    expect(getPrayerForDate(ScheduleType.Standard, 'Istijaba', '2026-10-16')).toBeNull();
-    expect(getPrayerForDate(ScheduleType.Extra, 'Fajr', '2026-10-16')).toBeNull();
+    expect(getPrayerForDate(ScheduleType.Extra, 'istijaba', '2026-10-18')).toBeNull();
+    expect(getPrayerForDate(ScheduleType.Standard, 'istijaba', '2026-10-16')).toBeNull();
+    expect(getPrayerForDate(ScheduleType.Extra, 'fajr', '2026-10-16')).toBeNull();
   });
 });
 
@@ -1226,10 +1239,10 @@ describe('never copies, averages or synthesises a prayer time', () => {
   /** The times each row is worked out from: [list day, field] */
   const dependencies = (row: RowView): [string, Field][] => {
     const date = row.belongsToDate;
-    if (row.type === ScheduleType.Standard) return [[date, FIELDS[STANDARD_NAMES.indexOf(row.english)]]];
-    if (row.english === 'Suhoor') return [[date, 'fajr']];
-    if (row.english === 'Duha') return [[date, 'sunrise']];
-    if (row.english === 'Istijaba') return [[date, 'magrib']];
+    if (row.type === ScheduleType.Standard) return [[date, FIELDS[STANDARD_NAMES.indexOf(row.id)]]];
+    if (row.id === 'suhoor') return [[date, 'fajr']];
+    if (row.id === 'duha') return [[date, 'sunrise']];
+    if (row.id === 'istijaba') return [[date, 'magrib']];
     return [
       [date, 'fajr'],
       [plusDays(date, -1), 'magrib'],
@@ -1313,7 +1326,7 @@ describe('never copies, averages or synthesises a prayer time', () => {
           violations.push(`${label}: ${keyOf(row)} ${row.at} ${row.time}, expected ${expected.at} ${expected.time}`);
         }
 
-        const single = getPrayerForDate(row.type, row.english, row.belongsToDate);
+        const single = getPrayerForDate(row.type, row.id, row.belongsToDate);
         if (!single || JSON.stringify(view(single)) !== JSON.stringify(row)) {
           violations.push(`${label}: getPrayerForDate disagrees with the list on ${keyOf(row)}`);
         }
@@ -1398,21 +1411,21 @@ describe('firstStillDueListDayForPrayer', () => {
 
   it("answers yesterday while yesterday's own row of the prayer is still to come", () => {
     storeTimes(days);
-    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
       '2026-06-20'
     );
   });
 
   it('answers today for a prayer whose yesterday row has passed, while another row is still to come', () => {
     storeTimes(days);
-    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Fajr', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'fajr', new Date('2026-06-20T23:00:30.000Z'))).toBe(
       '2026-06-21'
     );
   });
 
   it('treats a row at exactly the asking instant as passed, as the scheduler does', () => {
     storeTimes(days);
-    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Isha', new Date('2026-06-20T23:01:00.000Z'))).toBe(
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'isha', new Date('2026-06-20T23:01:00.000Z'))).toBe(
       '2026-06-21'
     );
   });
@@ -1420,10 +1433,10 @@ describe('firstStillDueListDayForPrayer', () => {
   it('answers yesterday for a Magrib and an Isha that both fall after midnight', () => {
     const shape = ['01:30', '02:55', '13:30', '17:30', '00:01', '00:25'];
     storeTimes(Object.fromEntries(['2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'].map((d) => [d, shape])));
-    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Magrib', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'magrib', new Date('2026-06-20T23:00:30.000Z'))).toBe(
       '2026-06-20'
     );
-    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
       '2026-06-20'
     );
   });
@@ -1433,7 +1446,7 @@ describe('firstStillDueListDayForPrayer', () => {
       '2026-06-20': ['02:40', '04:43', '13:02', '17:20', '21:25', null],
       '2026-06-21': ISHA_AT_0001,
     });
-    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'Isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'isha', new Date('2026-06-20T23:00:30.000Z'))).toBe(
       '2026-06-21'
     );
   });
@@ -1441,10 +1454,10 @@ describe('firstStillDueListDayForPrayer', () => {
   it('answers yesterday for a Friday Istijaba that falls after midnight, and today beside it', () => {
     const shape = ['01:32', '02:58', '13:31', '17:31', '01:20', '01:44'];
     storeTimes(Object.fromEntries(['2026-06-25', '2026-06-26', '2026-06-27', '2026-06-28'].map((d) => [d, shape])));
-    expect(firstStillDueListDayForPrayer(ScheduleType.Extra, 'Istijaba', new Date('2026-06-26T23:05:00.000Z'))).toBe(
+    expect(firstStillDueListDayForPrayer(ScheduleType.Extra, 'istijaba', new Date('2026-06-26T23:05:00.000Z'))).toBe(
       '2026-06-26'
     );
-    expect(firstStillDueListDayForPrayer(ScheduleType.Extra, 'Duha', new Date('2026-06-26T23:05:00.000Z'))).toBe(
+    expect(firstStillDueListDayForPrayer(ScheduleType.Extra, 'duha', new Date('2026-06-26T23:05:00.000Z'))).toBe(
       '2026-06-27'
     );
   });

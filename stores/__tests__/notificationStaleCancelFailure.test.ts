@@ -65,18 +65,18 @@ const OLD_INTERVAL = 10 as ReminderInterval;
 const PATHS = [
   {
     path: 'at-time',
-    id: (date: string) => prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date),
+    id: (date: string) => prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', date),
     // Days that have rolled out of the window
-    stale: DAYS_BEFORE.map((date) => ({ id: prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date), date })),
+    stale: DAYS_BEFORE.map((date) => ({ id: prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', date), date })),
     save: (id: string, date: string) =>
       Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, record(id, date)),
   },
   {
     path: 'reminder',
-    id: (date: string) => reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', date, INTERVAL),
+    id: (date: string) => reminderNotificationIdentifier(ScheduleType.Standard, 'fajr', date, INTERVAL),
     // The window's own days, still armed at the interval before the change
     stale: WINDOW.map((date) => ({
-      id: reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', date, OLD_INTERVAL),
+      id: reminderNotificationIdentifier(ScheduleType.Standard, 'fajr', date, OLD_INTERVAL),
       date,
     })),
     save: (id: string, date: string) =>

@@ -38,15 +38,15 @@ const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): P
   createPrayerSequence(type, new Date(`${firstDate}T12:00:00Z`), dayCount).prayers;
 
 /** A row as the screen and the alarms see it: its list day, name, instant and clock reading */
-const shown = (row: Prayer) => [row.belongsToDate, row.english, row.datetime?.toISOString() ?? null, row.time];
+const shown = (row: Prayer) => [row.belongsToDate, row.id, row.datetime?.toISOString() ?? null, row.time];
 
-type CrossingRow = 'Isha' | 'Magrib';
+type CrossingRow = 'isha' | 'magrib';
 
 describe('keeps a Standard row on its own list at the midnight and 06:00 boundaries', () => {
   /** The same record on 20 and 21 June, so the 21st shows the rule once more a day later */
-  const twoDays = (english: CrossingRow, time: string) =>
+  const twoDays = (id: CrossingRow, time: string) =>
     ['2026-06-20', '2026-06-21'].map((date) =>
-      english === 'Isha'
+      id === 'isha'
         ? day(date, '02:40', '04:43', '13:02', '17:20', '21:25', time)
         : day(date, '01:30', '02:55', '13:30', '17:30', time, '00:30')
     );
@@ -60,7 +60,7 @@ describe('keeps a Standard row on its own list at the midnight and 06:00 boundar
     ['06:00', '2026-06-20T05:00:00.000Z', '2026-06-20', '2026-06-21T05:00:00.000Z'],
   ];
 
-  const CASES = (['Isha', 'Magrib'] as CrossingRow[]).flatMap((english) =>
+  const CASES = (['isha', 'magrib'] as CrossingRow[]).flatMap((english) =>
     READINGS.map((reading): [CrossingRow, string, string, string, string] => [english, ...reading])
   );
 
@@ -68,7 +68,7 @@ describe('keeps a Standard row on its own list at the midnight and 06:00 boundar
     '%s at %s is at %s, on %s by the clock, and stays on the 20 June list',
     (english, time, at20, fallsOn, at21) => {
       useRecords(twoDays(english, time));
-      const rows = sequenceFor(ScheduleType.Standard, '2026-06-20', 2).filter((row) => row.english === english);
+      const rows = sequenceFor(ScheduleType.Standard, '2026-06-20', 2).filter((row) => row.id === english);
 
       expect(rows.map(shown)).toEqual([
         ['2026-06-20', english, at20, time],

@@ -9,7 +9,7 @@
  * may enter the catalog until a remedy is chosen (R16).
  */
 
-import { EXTRAS_ENGLISH, PRAYER_IDS, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRA_PRAYER_TITLES, PRAYER_IDS, STANDARD_PRAYER_TITLES } from '@/shared/constants';
 import { en, PRAYER_LABELS, prayerLabel, t } from '@/shared/i18n';
 
 /** Every catalog member as a (key, literal) pair, byte-identical to the pre-catalog source */
@@ -114,7 +114,9 @@ describe('PRAYER_LABELS', () => {
   it('joins every catalog prayer label to the frozen vocabulary', () => {
     PRAYER_IDS.forEach((id, index) => {
       const title =
-        index < PRAYERS_ENGLISH.length ? PRAYERS_ENGLISH[index] : EXTRAS_ENGLISH[index - PRAYERS_ENGLISH.length];
+        index < STANDARD_PRAYER_TITLES.length
+          ? STANDARD_PRAYER_TITLES[index]
+          : EXTRA_PRAYER_TITLES[index - STANDARD_PRAYER_TITLES.length];
       expect(prayerLabel(id)).toBe(title);
     });
   });

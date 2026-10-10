@@ -40,7 +40,7 @@ const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): P
   createPrayerSequence(type, new Date(`${firstDate}T12:00:00Z`), dayCount).prayers;
 
 /** A row as the screen and the alarms see it: its list day, name, instant and clock reading */
-const shown = (row: Prayer) => [row.belongsToDate, row.english, row.datetime?.toISOString() ?? null, row.time];
+const shown = (row: Prayer) => [row.belongsToDate, row.id, row.datetime?.toISOString() ?? null, row.time];
 
 // Real London times from londonprayertimes.com for 2026
 const OCTOBER = [
@@ -65,14 +65,14 @@ describe('opens the 17 and 18 October lists at exactly 00:00:00 and the 19 Octob
     (date, midnightAt, midnightTime, lastThirdAt, lastThirdTime) => {
       const list = sequenceFor(ScheduleType.Extra, '2026-10-17', 4).filter((row) => row.belongsToDate === date);
 
-      expect(list.map((row) => row.english)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha']);
+      expect(list.map((row) => row.id)).toEqual(['midnight', 'last third', 'suhoor', 'duha']);
       expect(list.slice(0, 2).map(shown)).toEqual([
-        [date, 'Midnight', midnightAt, midnightTime],
-        [date, 'Last Third', lastThirdAt, lastThirdTime],
+        [date, 'midnight', midnightAt, midnightTime],
+        [date, 'last third', lastThirdAt, lastThirdTime],
       ]);
       // The alarms read one row at a time, from the day's own records rather than the sequence
-      expect(getPrayerForDate(ScheduleType.Extra, 'Midnight', date)).toEqual(list[0]);
-      expect(getPrayerForDate(ScheduleType.Extra, 'Last Third', date)).toEqual(list[1]);
+      expect(getPrayerForDate(ScheduleType.Extra, 'midnight', date)).toEqual(list[0]);
+      expect(getPrayerForDate(ScheduleType.Extra, 'last third', date)).toEqual(list[1]);
     }
   );
 
@@ -82,11 +82,11 @@ describe('opens the 17 and 18 October lists at exactly 00:00:00 and the 19 Octob
     );
 
     expect(onTheEighteenth.map(shown)).toEqual([
-      ['2026-10-18', 'Midnight', '2026-10-17T23:00:00.000Z', '00:00'],
-      ['2026-10-18', 'Last Third', '2026-10-18T00:58:00.000Z', '01:58'],
-      ['2026-10-18', 'Suhoor', '2026-10-18T04:34:00.000Z', '05:34'],
-      ['2026-10-18', 'Duha', '2026-10-18T06:47:00.000Z', '07:47'],
-      ['2026-10-19', 'Midnight', '2026-10-18T22:59:00.000Z', '23:59'],
+      ['2026-10-18', 'midnight', '2026-10-17T23:00:00.000Z', '00:00'],
+      ['2026-10-18', 'last third', '2026-10-18T00:58:00.000Z', '01:58'],
+      ['2026-10-18', 'suhoor', '2026-10-18T04:34:00.000Z', '05:34'],
+      ['2026-10-18', 'duha', '2026-10-18T06:47:00.000Z', '07:47'],
+      ['2026-10-19', 'midnight', '2026-10-18T22:59:00.000Z', '23:59'],
     ]);
   });
 });

@@ -171,22 +171,16 @@ describe('the occurrence a row shows, and its bell (real London 2026 days)', () 
   });
 
   it.each([
-    ['Fajr', FAJR],
-    ['Dhuhr', DHUHR],
-    ['Isha', ISHA],
-  ])('on a list with no readable row, %s opens its readable next occurrence when selected', (english, index) => {
+    ['fajr', FAJR],
+    ['dhuhr', DHUHR],
+    ['isha', ISHA],
+  ])('on a list with no readable row, %s opens its readable next occurrence when selected', (id, index) => {
     show(ScheduleType.Standard, '2026-09-10', { '2026-09-11': 'not stored' }, '2026-09-11', '09:00');
 
     const row = usePrayer(ScheduleType.Standard, index);
     const nextOccurrence = usePrayer(ScheduleType.Standard, index, true);
 
-    expect([row.english, row.date, row.time, row.isPassed, row.isNext]).toEqual([
-      english,
-      '2026-09-11',
-      null,
-      true,
-      false,
-    ]);
+    expect([row.id, row.date, row.time, row.isPassed, row.isNext]).toEqual([id, '2026-09-11', null, true, false]);
     expect(nextOccurrence.date).toBe('2026-09-12');
     expect(isShownOccurrenceUnavailable(false, row, nextOccurrence)).toBe(true);
     expect(isShownOccurrenceUnavailable(true, row, nextOccurrence)).toBe(false);
@@ -222,7 +216,7 @@ describe('resolveOccurrence', () => {
     const prayers = show(ScheduleType.Standard, '2026-09-10', { '2026-09-12': ['dhuhr'] }, '2026-09-11', '14:00');
 
     expect(resolveOccurrence(prayers, prayers[6 + DHUHR], true, true)).toBe(prayers[12 + DHUHR]);
-    expect(prayers[12 + DHUHR]).toMatchObject({ english: 'Dhuhr', belongsToDate: '2026-09-12', time: null });
+    expect(prayers[12 + DHUHR]).toMatchObject({ id: 'dhuhr', belongsToDate: '2026-09-12', time: null });
   });
 });
 
@@ -257,7 +251,7 @@ describe('usePrayer', () => {
     const nextOccurrence = usePrayer(ScheduleType.Standard, FAJR, true);
 
     expect(row).toEqual({
-      english: '',
+      id: 'fajr',
       time: '',
       date: '',
       index: 0,
@@ -276,7 +270,7 @@ describe('usePrayer', () => {
     show(ScheduleType.Standard, '2026-09-10', { '2026-09-11': ['fajr'] }, '2026-09-11', '10:00');
 
     expect(usePrayer(ScheduleType.Standard)).toMatchObject({
-      english: 'Fajr',
+      id: 'fajr',
       date: '2026-09-11',
       time: null,
       isOverlay: false,
@@ -286,14 +280,14 @@ describe('usePrayer', () => {
   it('returns the empty row for an index beyond the list on screen', () => {
     show(ScheduleType.Standard, '2026-09-10', {}, '2026-09-11', '14:00');
 
-    expect(usePrayer(ScheduleType.Standard, 6, true)).toMatchObject({ english: '', time: '', isOverlay: true });
+    expect(usePrayer(ScheduleType.Standard, 6, true)).toMatchObject({ id: 'fajr', time: '', isOverlay: true });
   });
 
   it('reads the Extras width and marks the row as not Standard', () => {
     show(ScheduleType.Extra, '2026-09-11', {}, '2026-09-11', '12:00');
 
     expect(usePrayer(ScheduleType.Extra, 4)).toMatchObject({
-      english: 'Istijaba',
+      id: 'istijaba',
       time: '18:28',
       date: '2026-09-11',
       isStandard: false,

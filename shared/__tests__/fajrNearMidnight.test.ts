@@ -35,7 +35,7 @@ const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): P
   createPrayerSequence(type, new Date(`${firstDate}T12:00:00Z`), dayCount).prayers;
 
 /** A row as the screen and the alarms see it: its list day, name, instant and clock reading */
-const shown = (row: Prayer) => [row.belongsToDate, row.english, row.datetime?.toISOString() ?? null, row.time];
+const shown = (row: Prayer) => [row.belongsToDate, row.id, row.datetime?.toISOString() ?? null, row.time];
 
 describe("states Fajr's own instant and list day when Fajr is near 00:00", () => {
   /** Two short nights in which only the 21 June Fajr moves */
@@ -52,13 +52,13 @@ describe("states Fajr's own instant and list day when Fajr is near 00:00", () =>
     ['00:20', '2026-06-20T23:20:00.000Z'],
   ])('puts a Fajr at %s on the 21 June list at %s', (fajr, at) => {
     useRecords(nightsWithFajr(fajr));
-    const fajrRows = sequenceFor(ScheduleType.Standard, '2026-06-20', 2).filter((row) => row.english === 'Fajr');
+    const fajrRows = sequenceFor(ScheduleType.Standard, '2026-06-20', 2).filter((row) => row.id === 'fajr');
 
     expect(fajrRows.map(shown)).toEqual([
-      ['2026-06-20', 'Fajr', '2026-06-19T23:30:00.000Z', '00:30'],
-      ['2026-06-21', 'Fajr', at, fajr],
+      ['2026-06-20', 'fajr', '2026-06-19T23:30:00.000Z', '00:30'],
+      ['2026-06-21', 'fajr', at, fajr],
     ]);
     // The alarms read one row at a time, from the day's own record rather than the sequence
-    expect(getPrayerForDate(ScheduleType.Standard, 'Fajr', '2026-06-21')).toEqual(fajrRows[1]);
+    expect(getPrayerForDate(ScheduleType.Standard, 'fajr', '2026-06-21')).toEqual(fajrRows[1]);
   });
 });

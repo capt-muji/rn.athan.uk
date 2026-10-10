@@ -12,18 +12,18 @@
  *
  */
 
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
 
 /** Whether the provider gave this row a readable time */
 export const isReadable = (prayer: Prayer): prayer is ReadablePrayer => prayer.datetime !== null;
 
-/** Position on its own list, in PRAYERS_ENGLISH or EXTRAS_ENGLISH order; unknown names last */
+/** Position on its own list, in STANDARD_PRAYER_IDS or EXTRA_PRAYER_IDS order; unknown ids last */
 const listPosition = (prayer: Prayer): number => {
-  const names = prayer.type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  const position = names.indexOf(prayer.english);
-  return position === -1 ? names.length : position;
+  const ids: readonly PrayerId[] = prayer.type === ScheduleType.Standard ? STANDARD_PRAYER_IDS : EXTRA_PRAYER_IDS;
+  const position = ids.indexOf(prayer.id);
+  return position === -1 ? ids.length : position;
 };
 
 const rowsOfListDay = (prayers: Prayer[], date: string): Prayer[] =>
@@ -191,7 +191,7 @@ export const findNextOccurrence = (prayers: Prayer[], row: Prayer): Prayer | nul
   let occurrence: Prayer | null = null;
 
   for (const prayer of prayers) {
-    if (prayer.english !== row.english || prayer.belongsToDate <= row.belongsToDate) continue;
+    if (prayer.id !== row.id || prayer.belongsToDate <= row.belongsToDate) continue;
     if (!occurrence || prayer.belongsToDate < occurrence.belongsToDate) occurrence = prayer;
   }
 

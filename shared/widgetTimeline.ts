@@ -31,6 +31,7 @@
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import { UNAVAILABLE_TIME } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import {
   compareListOrder,
   findNextReadable,
@@ -132,7 +133,7 @@ const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
  */
 const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayerRow[]; activeIndex: number } => {
   const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === segment.displayDate).sort(compareListOrder);
-  const rows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time ?? UNAVAILABLE_TIME }));
+  const rows = dayPrayers.map((prayer) => ({ name: prayerLabel(prayer.id), time: prayer.time ?? UNAVAILABLE_TIME }));
 
   return { rows, activeIndex: dayPrayers.indexOf(segment.next) };
 };
@@ -185,7 +186,7 @@ export const buildPrayerWidgetTimeline = (
         v: WIDGET_PROPS_VERSION,
         schedule: sequence.type,
         theme,
-        nextName: next.english,
+        nextName: prayerLabel(next.id),
         nextTime: next.time,
         nextEpochMs: next.datetime.getTime(),
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
@@ -244,7 +245,7 @@ export const buildPrayerWidgetTimeline = (
       v: WIDGET_PROPS_VERSION,
       schedule: sequence.type,
       theme,
-      nextName: finalPrayer.english,
+      nextName: prayerLabel(finalPrayer.id),
       nextTime: finalPrayer.time,
       nextEpochMs: finalEpochMs,
       prevEpochMs: finalEpochMs,
@@ -300,10 +301,10 @@ export const buildPrayerWidgetSnapshot = (
     }
 
     if (isReadable(prayer)) {
-      day.rows.push({ name: prayer.english, time: prayer.time, epochMs: prayer.datetime.getTime() });
+      day.rows.push({ name: prayerLabel(prayer.id), time: prayer.time, epochMs: prayer.datetime.getTime() });
       horizonEpochMs = Math.max(horizonEpochMs ?? Number.NEGATIVE_INFINITY, prayer.datetime.getTime());
     } else {
-      day.rows.push({ name: prayer.english, time: UNAVAILABLE_TIME, epochMs: 0 });
+      day.rows.push({ name: prayerLabel(prayer.id), time: UNAVAILABLE_TIME, epochMs: 0 });
     }
   }
 

@@ -13,7 +13,8 @@ jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
 
 import { addDays } from 'date-fns';
 
-import { UNAVAILABLE_TIME } from '@/shared/constants';
+import { type PrayerId, UNAVAILABLE_TIME } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { createPrayerDatetime, formatDateLong, formatDateShort, formatHijriDateLong } from '@/shared/time';
 import { type Prayer, type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot } from '@/shared/widgetTimeline';
@@ -26,28 +27,28 @@ import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 const SPAN_START = '2026-10-17';
 const SPAN_DAYS = 4;
 
-const OCTOBER_TIMES: [string, string][] = [
-  ['Fajr', '05:30'],
-  ['Sunrise', '07:10'],
-  ['Dhuhr', '12:45'],
-  ['Asr', '15:20'],
-  ['Magrib', '18:05'],
-  ['Isha', '19:40'],
+const OCTOBER_TIMES: [PrayerId, string][] = [
+  ['fajr', '05:30'],
+  ['sunrise', '07:10'],
+  ['dhuhr', '12:45'],
+  ['asr', '15:20'],
+  ['magrib', '18:05'],
+  ['isha', '19:40'],
 ];
 
 const EARLY_ISHA_DAYS = new Set(['2026-10-19']);
 
-const makePrayer = (date: string, time: string, english: string, belongsToDate: string): ReadablePrayer => ({
+const makePrayer = (date: string, time: string, id: PrayerId, belongsToDate: string): ReadablePrayer => ({
   type: ScheduleType.Standard,
-  english,
+  id,
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate,
 });
 
-const makeUnreadable = (english: string, belongsToDate: string): Prayer => ({
+const makeUnreadable = (id: PrayerId, belongsToDate: string): Prayer => ({
   type: ScheduleType.Standard,
-  english,
+  id,
   belongsToDate,
   datetime: null,
   time: null,
@@ -62,13 +63,13 @@ const makeSequence = (): Prayer[] => {
     const dateString = formatDateShort(day);
     const ishaEarly = EARLY_ISHA_DAYS.has(dateString);
 
-    for (const [english, time] of OCTOBER_TIMES) {
-      if (english === 'Isha' && ishaEarly) {
+    for (const [id, time] of OCTOBER_TIMES) {
+      if (id === 'isha' && ishaEarly) {
         const nextDayString = formatDateShort(addDays(day, 1));
-        prayers.push(makePrayer(nextDayString, '01:05', english, dateString));
+        prayers.push(makePrayer(nextDayString, '01:05', id, dateString));
         continue;
       }
-      prayers.push(makePrayer(dateString, time, english, dateString));
+      prayers.push(makePrayer(dateString, time, id, dateString));
     }
   }
   return prayers;
@@ -93,7 +94,7 @@ describe('buildPrayerWidgetSnapshot', () => {
     const rows = snapshot.days.flatMap((day) => day.rows);
     expect(rows).toHaveLength(sequence.prayers.length);
 
-    const expected = readable.map((prayer) => `${prayer.english}|${prayer.time}|${prayer.datetime.getTime()}`);
+    const expected = readable.map((prayer) => `${prayerLabel(prayer.id)}|${prayer.time}|${prayer.datetime.getTime()}`);
     const carried = rows.map((row) => `${row.name}|${row.time}|${row.epochMs}`);
     expect(carried.sort()).toEqual(expected.sort());
   });
@@ -145,9 +146,9 @@ describe('buildPrayerWidgetSnapshot', () => {
 
   it('unreadable rows carry the unavailable time and a null epoch', () => {
     const prayers = makeSequence();
-    const index = prayers.findIndex((prayer) => prayer.english === 'Asr' && prayer.belongsToDate === '2026-10-18');
+    const index = prayers.findIndex((prayer) => prayer.id === 'asr' && prayer.belongsToDate === '2026-10-18');
     const withUnreadable = [...prayers];
-    withUnreadable.splice(index, 1, makeUnreadable('Asr', '2026-10-18'));
+    withUnreadable.splice(index, 1, makeUnreadable('asr', '2026-10-18'));
     const snapshot = buildPrayerWidgetSnapshot(asSequence(withUnreadable), SETTINGS);
     if (!snapshot) return;
 
@@ -160,7 +161,7 @@ describe('buildPrayerWidgetSnapshot', () => {
   });
 
   it('answers null when the sequence has no readable prayer', () => {
-    const unreadable = [makeUnreadable('Fajr', '2026-10-17'), makeUnreadable('Isha', '2026-10-17')];
+    const unreadable = [makeUnreadable('fajr', '2026-10-17'), makeUnreadable('isha', '2026-10-17')];
     expect(buildPrayerWidgetSnapshot(asSequence(unreadable), SETTINGS)).toBeNull();
   });
 

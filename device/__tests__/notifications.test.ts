@@ -16,14 +16,15 @@ import {
   prayerNotificationIdentifier,
   reminderNotificationIdentifier,
 } from '@/device/notifications';
+import type { PrayerId } from '@/shared/constants';
 import { athanAndroidChannelId, extrasAndroidChannelId, reminderAndroidChannelId } from '@/shared/notifications';
 import { createPrayerDatetime } from '@/shared/time';
 import { AlertType, type ReadablePrayer, ScheduleType } from '@/shared/types';
 
 /** A readable list row as PrayerUtils.getPrayerForDate returns it */
-const row = (english: string, date: string, time: string, type = ScheduleType.Standard): ReadablePrayer => ({
+const row = (id: PrayerId, date: string, time: string, type = ScheduleType.Standard): ReadablePrayer => ({
   type,
-  english,
+  id,
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate: date,
@@ -31,40 +32,46 @@ const row = (english: string, date: string, time: string, type = ScheduleType.St
 
 describe('prayerNotificationIdentifier', () => {
   it('builds a deterministic at-time identifier from schedule type, prayer name and date', () => {
-    expect(prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', '2026-08-28')).toBe(
+    expect(prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', '2026-08-28')).toBe(
       'athan_standard_fajr_2026-08-28'
     );
   });
 
   it('lowercases prayer names so casing never produces a second identity', () => {
-    expect(prayerNotificationIdentifier(ScheduleType.Extra, 'Last Third', '2026-08-28')).toBe(
+    expect(prayerNotificationIdentifier(ScheduleType.Extra, 'last third', '2026-08-28')).toBe(
+      'athan_extra_last third_2026-08-28'
+    );
+  });
+
+  it('builds the space-form identifier from the id', () => {
+    expect(prayerNotificationIdentifier(ScheduleType.Extra, 'last third', '2026-08-28')).toBe(
       'athan_extra_last third_2026-08-28'
     );
   });
 
   it('is stable across repeated calls (idempotent replace key)', () => {
-    const first = prayerNotificationIdentifier(ScheduleType.Standard, 'Magrib', '2026-08-29');
+    const first = prayerNotificationIdentifier(ScheduleType.Standard, 'magrib', '2026-08-29');
     const second = prayerNotificationIdentifier(ScheduleType.Standard, 'magrib', '2026-08-29');
     expect(first).toBe(second);
   });
 
   it('differs per schedule type and date', () => {
-    const base = prayerNotificationIdentifier(ScheduleType.Standard, 'Asr', '2026-08-28');
-    expect(prayerNotificationIdentifier(ScheduleType.Extra, 'Asr', '2026-08-28')).not.toBe(base);
-    expect(prayerNotificationIdentifier(ScheduleType.Standard, 'Asr', '2026-08-29')).not.toBe(base);
+    const base = prayerNotificationIdentifier(ScheduleType.Standard, 'asr', '2026-08-28');
+    expect(prayerNotificationIdentifier(ScheduleType.Extra, 'asr', '2026-08-28')).not.toBe(base);
+    expect(prayerNotificationIdentifier(ScheduleType.Standard, 'asr', '2026-08-29')).not.toBe(base);
   });
 });
 
 describe('reminderNotificationIdentifier', () => {
   it('builds a deterministic reminder identifier including the interval', () => {
-    expect(reminderNotificationIdentifier(ScheduleType.Extra, 'Duha', '2026-08-29', 20)).toBe(
+    expect(reminderNotificationIdentifier(ScheduleType.Extra, 'duha', '2026-08-29', 20)).toBe(
       'reminder_extra_duha_2026-08-29_20'
     );
   });
 
   it('differs when the reminder interval changes (old identity cancelled separately)', () => {
-    const twenty = reminderNotificationIdentifier(ScheduleType.Standard, 'Isha', '2026-08-28', 20);
-    const ten = reminderNotificationIdentifier(ScheduleType.Standard, 'Isha', '2026-08-28', 10);
+    const twenty = reminderNotificationIdentifier(ScheduleType.Standard, 'isha', '2026-08-28', 20);
+    const ten = reminderNotificationIdentifier(ScheduleType.Standard, 'isha', '2026-08-28', 10);
     expect(twenty).not.toBe(ten);
   });
 });
@@ -87,38 +94,38 @@ describe('the scheduled record id echoes the deterministic identifier', () => {
     const notification = await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Fajr', '2026-09-01', '06:15'),
+      row('fajr', '2026-09-01', '06:15'),
       AlertType.Sound,
       0
     );
 
-    expect(notification.id).toBe(prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', '2026-09-01'));
+    expect(notification.id).toBe(prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', '2026-09-01'));
   });
 
   it('returns the reminder identifier as the record id, interval included', async () => {
     const notification = await addOneScheduledReminderForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Fajr', '2026-09-01', '06:15'),
+      row('fajr', '2026-09-01', '06:15'),
       15,
       AlertType.Silent
     );
 
-    expect(notification.id).toBe(reminderNotificationIdentifier(ScheduleType.Standard, 'Fajr', '2026-09-01', 15));
+    expect(notification.id).toBe(reminderNotificationIdentifier(ScheduleType.Standard, 'fajr', '2026-09-01', 15));
   });
 
   it('gives two prayers on the same day two distinct ids, so their records cannot collapse', async () => {
     const fajr = await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Fajr', '2026-09-01', '06:15'),
+      row('fajr', '2026-09-01', '06:15'),
       AlertType.Silent,
       0
     );
     const isha = await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Isha', '2026-09-01', '21:00'),
+      row('isha', '2026-09-01', '21:00'),
       AlertType.Silent,
       0
     );
@@ -145,7 +152,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Fajr', '2026-09-01', '06:15'),
+      row('fajr', '2026-09-01', '06:15'),
       AlertType.Sound,
       4
     );
@@ -158,7 +165,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Sunrise', '2026-09-01', '06:15'),
+      row('sunrise', '2026-09-01', '06:15'),
       AlertType.Sound,
       4
     );
@@ -171,7 +178,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Extra,
       '2026-09-01',
-      row('Last Third', '2026-09-01', '01:30', ScheduleType.Extra),
+      row('last third', '2026-09-01', '01:30', ScheduleType.Extra),
       AlertType.Sound,
       4
     );
@@ -186,7 +193,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Extra,
       '2026-09-01',
-      row('Midnight', '2026-08-31', '23:59', ScheduleType.Extra),
+      row('midnight', '2026-08-31', '23:59', ScheduleType.Extra),
       AlertType.Sound,
       0
     );
@@ -200,7 +207,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Isha', '2026-09-01', '21:00'),
+      row('isha', '2026-09-01', '21:00'),
       AlertType.Sound,
       4
     );
@@ -217,14 +224,14 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-02',
-      row('Fajr', '2026-09-02', '06:15'),
+      row('fajr', '2026-09-02', '06:15'),
       AlertType.Sound,
       6
     );
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-02',
-      row('Dhuhr', '2026-09-02', '13:00'),
+      row('dhuhr', '2026-09-02', '13:00'),
       AlertType.Sound,
       6
     );
@@ -239,7 +246,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Isha', '2026-09-01', '21:00'),
+      row('isha', '2026-09-01', '21:00'),
       AlertType.Sound,
       4
     );
@@ -251,7 +258,7 @@ describe('addOneScheduledNotificationForPrayer channel wiring', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Fajr', '2026-09-01', '06:15'),
+      row('fajr', '2026-09-01', '06:15'),
       AlertType.Silent,
       4
     );
@@ -277,17 +284,17 @@ describe('addOneScheduledReminderForPrayer channel wiring', () => {
     await addOneScheduledReminderForPrayer(
       ScheduleType.Extra,
       '2026-09-01',
-      row('Last Third', '2026-09-01', '01:30', ScheduleType.Extra),
+      row('last third', '2026-09-01', '01:30', ScheduleType.Extra),
       15,
       AlertType.Sound
     );
 
     expect(setNotificationChannelAsync).toHaveBeenCalledWith(
-      reminderAndroidChannelId('Last Third', 15),
+      reminderAndroidChannelId('last third', 15),
       expect.anything()
     );
     const trigger = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0].trigger;
-    expect(trigger.channelId).toBe(reminderAndroidChannelId('Last Third', 15));
+    expect(trigger.channelId).toBe(reminderAndroidChannelId('last third', 15));
   });
 
   it('creates no channel and omits channelId for Silent reminders (Android)', async () => {
@@ -296,7 +303,7 @@ describe('addOneScheduledReminderForPrayer channel wiring', () => {
     await addOneScheduledReminderForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Fajr', '2026-09-01', '06:15'),
+      row('fajr', '2026-09-01', '06:15'),
       15,
       AlertType.Silent
     );
@@ -310,7 +317,7 @@ describe('addOneScheduledReminderForPrayer channel wiring', () => {
     await addOneScheduledReminderForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Fajr', '2026-09-01', '06:15'),
+      row('fajr', '2026-09-01', '06:15'),
       15,
       AlertType.Sound
     );
@@ -332,7 +339,7 @@ describe('trigger instants', () => {
 
   // Midnight of the list for Sat 24 Oct 2026 falls on the night before: Fri 23 Oct 23:58 BST
   const midnightOf24Oct: ReadablePrayer = {
-    ...row('Midnight', '2026-10-23', '23:58', ScheduleType.Extra),
+    ...row('midnight', '2026-10-23', '23:58', ScheduleType.Extra),
     belongsToDate: '2026-10-24',
   };
 
@@ -354,7 +361,7 @@ describe('trigger instants', () => {
   it('fires in the repeated hour of the clock-change night at the exact instant (01:00 GMT, not 01:00 BST)', async () => {
     const lastThird: ReadablePrayer = {
       type: ScheduleType.Extra,
-      english: 'Last Third',
+      id: 'last third',
       datetime: new Date('2026-10-25T01:00:00.000Z'),
       time: '01:00',
       belongsToDate: '2026-10-25',
@@ -395,7 +402,7 @@ describe('trigger delivery class', () => {
     await addOneScheduledNotificationForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Isha', '2026-09-01', '21:00'),
+      row('isha', '2026-09-01', '21:00'),
       AlertType.Silent,
       0
     );
@@ -408,7 +415,7 @@ describe('trigger delivery class', () => {
     await addOneScheduledReminderForPrayer(
       ScheduleType.Standard,
       '2026-09-01',
-      row('Isha', '2026-09-01', '21:00'),
+      row('isha', '2026-09-01', '21:00'),
       15,
       AlertType.Silent
     );
