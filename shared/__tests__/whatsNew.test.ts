@@ -11,6 +11,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { FEATURE_FLAGS } from '@/shared/flags';
+import { t } from '@/shared/i18n';
 
 import {
   filterWhatsNewItems,
@@ -23,6 +24,8 @@ import {
   shouldShowWhatsNew,
   VISIBLE_WHATS_NEW,
   WHATS_NEW,
+  type WhatsNewArchiveItem,
+  type WhatsNewArchiveRelease,
   type WhatsNewItem,
   type WhatsNewRelease,
 } from '../whatsNew';
@@ -44,6 +47,15 @@ const release = (items: WhatsNewItem[], version = '1.13.0'): WhatsNewRelease => 
 const item = (overrides: Partial<WhatsNewItem> = {}): WhatsNewItem => ({
   title: 'Test title',
   body: 'Test body',
+  version: '1.13.0',
+  ...overrides,
+});
+
+/** An archive fixture: the same item shape the archive itself is maintained as */
+const archive = (items: WhatsNewArchiveItem[], version = '1.13.0'): WhatsNewArchiveRelease => ({ version, items });
+const archiveItem = (overrides: Partial<WhatsNewArchiveItem> = {}): WhatsNewArchiveItem => ({
+  titleKey: 'whatsNew.title.tabletSupport',
+  bodyKey: 'whatsNew.body.tabletSupport',
   version: '1.13.0',
   ...overrides,
 });
@@ -148,9 +160,11 @@ describe('getPlatformBadges', () => {
 describe('WHATS_NEW content contract', () => {
   // Silent releases (null) are valid - only shape needs guarding when present.
   // Captured to a local because TS cannot narrow an imported binding across
-  // the it.each closures below.
+  // the it.each closures below. The archive holds keys, so the contract runs
+  // over the copy each entry resolves to.
   const content = WHATS_NEW;
   if (content === null) return;
+  const resolved = content.items.map((entry) => ({ ...entry, title: t(entry.titleKey), body: t(entry.bodyKey) }));
 
   it('has a semver version string', () => {
     expect(content.version).toMatch(/^\d+\.\d+\.\d+$/);
@@ -162,11 +176,11 @@ describe('WHATS_NEW content contract', () => {
   });
 
   it('has unique item titles (stable render keys)', () => {
-    const titles = content.items.map((entry) => entry.title);
+    const titles = resolved.map((entry) => entry.title);
     expect(new Set(titles).size).toBe(titles.length);
   });
 
-  it.each(content.items.map((entry) => [entry.title, entry]))(
+  it.each(resolved.map((entry) => [entry.title, entry]))(
     'item "%s" has a non-empty title within the limit',
     (_title, entry) => {
       expect(entry.title.trim().length).toBeGreaterThan(0);
@@ -174,7 +188,7 @@ describe('WHATS_NEW content contract', () => {
     }
   );
 
-  it.each(content.items.map((entry) => [entry.title, entry]))(
+  it.each(resolved.map((entry) => [entry.title, entry]))(
     'item "%s" has a non-empty body within the limit',
     (_title, entry) => {
       expect(entry.body.trim().length).toBeGreaterThan(0);
@@ -182,14 +196,11 @@ describe('WHATS_NEW content contract', () => {
     }
   );
 
-  it.each(content.items.map((entry) => [entry.title, entry]))(
-    'item "%s" has a valid platform when set',
-    (_title, entry) => {
-      if (entry.platform !== undefined) {
-        expect(['ios', 'android']).toContain(entry.platform);
-      }
+  it.each(resolved.map((entry) => [entry.title, entry]))('item "%s" has a valid platform when set', (_title, entry) => {
+    if (entry.platform !== undefined) {
+      expect(['ios', 'android']).toContain(entry.platform);
     }
-  );
+  });
 });
 
 // =============================================================================
@@ -201,45 +212,45 @@ describe('filterWhatsNewItems', () => {
   const flagsOff = { iosWidgets: false, androidWidgets: false };
 
   it('shows items stamped with the presenting release', () => {
-    const items = [item({ version: '1.13.0' })];
+    const items = [archiveItem({ version: '1.13.0' })];
     expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(1);
   });
 
   it('hides items stamped with a different release', () => {
-    const items = [item({ version: '1.12.0' })];
+    const items = [archiveItem({ version: '1.12.0' })];
     expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(0);
   });
 
   it('hides parked (null version) items until stamped', () => {
-    const items = [item({ version: null })];
+    const items = [archiveItem({ version: null })];
     expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(0);
   });
 
   it('hides a matching item when its flag is disabled', () => {
-    const items = [item({ flags: ['iosWidgets'] })];
+    const items = [archiveItem({ flags: ['iosWidgets'] })];
     expect(filterWhatsNewItems(items, '1.13.0', flagsOff)).toHaveLength(0);
     expect(filterWhatsNewItems(items, '1.13.0', flagsOn)).toHaveLength(1);
   });
 
   it('keeps only the current release among a mixed archive', () => {
     const items = [
-      item({ title: 'Old', version: '1.11.0' }),
-      item({ title: 'Now', version: '1.13.0' }),
-      item({ title: 'Parked', version: null }),
-      item({ title: 'Future', version: '1.14.0' }),
+      archiveItem({ titleKey: 'whatsNew.title.athanSounds', version: '1.11.0' }),
+      archiveItem(),
+      archiveItem({ titleKey: 'whatsNew.title.widgets', version: null }),
+      archiveItem({ titleKey: 'whatsNew.title.helpPage', version: '1.14.0' }),
     ];
     const visible = filterWhatsNewItems(items, '1.13.0', flagsOn);
-    expect(visible.map((entry) => entry.title)).toEqual(['Now']);
+    expect(visible.map((entry) => entry.titleKey)).toEqual(['whatsNew.title.tabletSupport']);
   });
 
   it('hides a flagged item when given no flags, since the build ships with widgets off', () => {
-    const items = [item({ title: 'Now' }), item({ title: 'Flagged', flags: ['iosWidgets'] })];
+    const items = [archiveItem(), archiveItem({ titleKey: 'whatsNew.title.widgets', flags: ['iosWidgets'] })];
     // The premise: jest.setup.js leaves the widgets flag as it ships
     expect(FEATURE_FLAGS.iosWidgets).toBe(false);
 
     const visible = filterWhatsNewItems(items, '1.13.0');
 
-    expect(visible.map((entry) => entry.title)).toEqual(['Now']);
+    expect(visible.map((entry) => entry.titleKey)).toEqual(['whatsNew.title.tabletSupport']);
   });
 });
 
@@ -272,7 +283,8 @@ describe('VISIBLE_WHATS_NEW', () => {
 
   it('keeps the parked widgets item in the archive (wording preserved, never shown)', () => {
     const parked = WHATS_NEW?.items.find((entry) => entry.version === null);
-    expect(parked?.title).toBe('Home & Lock widgets');
+    expect(parked?.titleKey).toBe('whatsNew.title.widgets');
+    expect(parked ? t(parked.titleKey) : '').toBe('Home & Lock widgets');
     expect(parked?.flags).toEqual(['iosWidgets']);
     expect((VISIBLE_WHATS_NEW?.items ?? []).map((entry) => entry.title)).not.toContain('Home & Lock widgets');
   });
@@ -287,24 +299,31 @@ describe('getVisibleWhatsNew', () => {
   });
 
   it('presents nothing when no item of the release is visible in the build', () => {
-    const hidden = release([
-      item({ title: 'Old', version: '1.12.0' }),
-      item({ title: 'Parked', version: null }),
-      item({ title: 'Flagged', flags: ['iosWidgets'] }),
+    const hidden = archive([
+      archiveItem({ version: '1.12.0' }),
+      archiveItem({ version: null }),
+      archiveItem({ flags: ['iosWidgets'] }),
     ]);
 
     expect(getVisibleWhatsNew(hidden, flagsOff)).toBeNull();
   });
 
   it('presents the release with only the items the build may show, judged by the flags it is given', () => {
-    const mixed = release([
-      item({ title: 'Now' }),
-      item({ title: 'Old', version: '1.12.0' }),
-      item({ title: 'Flagged', flags: ['iosWidgets'] }),
+    const mixed = archive([
+      archiveItem(),
+      archiveItem({ titleKey: 'whatsNew.title.athanSounds', version: '1.12.0' }),
+      archiveItem({ titleKey: 'whatsNew.title.widgets', bodyKey: 'whatsNew.body.widgets', flags: ['iosWidgets'] }),
     ]);
 
     expect(getVisibleWhatsNew(mixed, flagsOn)).toEqual(
-      release([item({ title: 'Now' }), item({ title: 'Flagged', flags: ['iosWidgets'] })])
+      release([
+        item({ title: 'Tablet support', body: 'Athan now supported on tablets' }),
+        item({
+          title: 'Home & Lock widgets',
+          body: 'Add prayer times to your Home and Lock Screen',
+          flags: ['iosWidgets'],
+        }),
+      ])
     );
   });
 });
