@@ -69,29 +69,73 @@ const collectExpoUiRuntimeGlobals = (ast: File): Set<string> => {
   return names;
 };
 
-/** Locates the arrow function carrying the 'widget' directive in a parsed file */
-const findWidgetFunction = (ast: File): NodePath<ArrowFunctionExpression> | null => {
-  let found: NodePath<ArrowFunctionExpression> | null = null;
+/** Locates every arrow function carrying the 'widget' directive in a parsed file */
+const findWidgetFunctions = (ast: File): NodePath<ArrowFunctionExpression>[] => {
+  const found: NodePath<ArrowFunctionExpression>[] = [];
 
   traverse(ast, {
     ArrowFunctionExpression(path: NodePath<ArrowFunctionExpression>) {
       const body = path.node.body;
       if (body.type !== 'BlockStatement') return;
       const hasDirective = body.directives.some((directive) => directive.value.value === 'widget');
-      if (hasDirective && !found) {
-        found = path;
-      }
+      if (hasDirective) found.push(path);
     },
   });
 
   return found;
 };
 
+/** Locates the first arrow function carrying the 'widget' directive in a parsed file */
+const findWidgetFunction = (ast: File): NodePath<ArrowFunctionExpression> | null => findWidgetFunctions(ast)[0] ?? null;
+
 // =============================================================================
 // 1. NO MODULE-SCOPE REFERENCES INSIDE THE WIDGET FUNCTION
 // =============================================================================
 
 describe('widget function closure', () => {
+  /** The module-scope or unresolvable identifiers a widget body references */
+  const closureViolations = (widgetPath: NodePath<ArrowFunctionExpression>, runtimeGlobals: Set<string>): string[] => {
+    const violations = new Set<string>();
+
+    widgetPath.traverse({
+      ReferencedIdentifier(identifierPath) {
+        // Type annotations are erased before serialization — only value
+        // references can reach the widget runtime
+        const parentType = identifierPath.parent.type;
+        if (
+          parentType === 'TSTypeReference' ||
+          parentType === 'TSQualifiedName' ||
+          parentType === 'TSTypeParameterInstantiation' ||
+          parentType === 'TSTypeAliasDeclaration' ||
+          parentType === 'TSFunctionType'
+        ) {
+          return;
+        }
+
+        const identifierName = identifierPath.node.name;
+        const binding = identifierPath.scope.getBinding(identifierName);
+
+        if (!binding) {
+          // True global (Date, Infinity, ...) — allowed
+          if (!JS_GLOBALS.has(identifierName)) {
+            violations.add(`unresolvable identifier: ${identifierName}`);
+          }
+          return;
+        }
+
+        // Binding must live inside the widget function (params or body).
+        // The one exception: @expo/ui imports, which the widget extension
+        // provides as globals — that reference is legal by design.
+        const declaredInside = binding.scope.path === widgetPath || widgetPath.isAncestor(binding.scope.path);
+        if (!declaredInside && !runtimeGlobals.has(identifierName)) {
+          violations.add(`module-scope reference: ${identifierName}`);
+        }
+      },
+    });
+
+    return [...violations];
+  };
+
   for (const { name, path } of WIDGET_FILES) {
     it(`${name}: references only its own params, locals, and @expo/ui globals`, () => {
       const ast = parseFile(path);
@@ -99,48 +143,25 @@ describe('widget function closure', () => {
       expect(widgetPath).not.toBeNull();
       if (!widgetPath) return;
 
-      const runtimeGlobals = collectExpoUiRuntimeGlobals(ast);
-      const violations = new Set<string>();
-
-      widgetPath.traverse({
-        ReferencedIdentifier(identifierPath) {
-          // Type annotations are erased before serialization — only value
-          // references can reach the widget runtime
-          const parentType = identifierPath.parent.type;
-          if (
-            parentType === 'TSTypeReference' ||
-            parentType === 'TSQualifiedName' ||
-            parentType === 'TSTypeParameterInstantiation' ||
-            parentType === 'TSTypeAliasDeclaration' ||
-            parentType === 'TSFunctionType'
-          ) {
-            return;
-          }
-
-          const identifierName = identifierPath.node.name;
-          const binding = identifierPath.scope.getBinding(identifierName);
-
-          if (!binding) {
-            // True global (Date, Infinity, ...) — allowed
-            if (!JS_GLOBALS.has(identifierName)) {
-              violations.add(`unresolvable identifier: ${identifierName}`);
-            }
-            return;
-          }
-
-          // Binding must live inside the widget function (params or body).
-          // The one exception: @expo/ui imports, which the widget extension
-          // provides as globals — that reference is legal by design.
-          const declaredInside = binding.scope.path === widgetPath || widgetPath.isAncestor(binding.scope.path);
-          if (!declaredInside && !runtimeGlobals.has(identifierName)) {
-            violations.add(`module-scope reference: ${identifierName}`);
-          }
-        },
-      });
-
-      expect([...violations]).toEqual([]);
+      expect(closureViolations(widgetPath, collectExpoUiRuntimeGlobals(ast))).toEqual([]);
     });
   }
+
+  it('walks the closure of all three lock layouts', () => {
+    // The lock module holds three layouts; a walk that only reaches the first
+    // leaves the other two unguarded (they drift free silently). Layouts gain
+    // no import here: `strings` and `id` arrive as props, and a body importing
+    // from @/shared/i18n still fails the walk as a module-scope reference.
+    const ast = parseFile(WIDGET_FILES[1].path);
+    const layouts = findWidgetFunctions(ast);
+    expect(layouts).toHaveLength(3);
+
+    const runtimeGlobals = collectExpoUiRuntimeGlobals(ast);
+    layouts.forEach((layout, index) => {
+      const violations = closureViolations(layout, runtimeGlobals);
+      expect(`lock layout ${index + 1}: ${violations.join(', ')}`).toBe(`lock layout ${index + 1}: `);
+    });
+  });
 });
 
 // =============================================================================
