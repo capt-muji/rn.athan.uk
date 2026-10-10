@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Extracts the verbatim anchors session 38's steps edit against, from the clean
+# Extracts the verbatim anchors sob 38's steps edit against, from the clean
 # tree at the Planned-at sha. One file per anchor under scripts/anchors/.
 set -euo pipefail
 cd "$(dirname "$0")/../../../.."

@@ -385,7 +385,7 @@ What that costs, against this repo's measured budgets:
 | Entry count | One entry per boundary, by design | Unchanged. Localisation adds bytes, not entries | Zero |
 | Android snapshot | One snapshot per push, layout computes at render from a carried window | Labels sit in the snapshot JSON once, not per entry | Negligible |
 
-The entry-count budget is the binding constraint on iOS (roughly 380 entries blacked out every non-trivial kind, masked as a `containerBackground` message; ai/AGENTS.md session 16a). String fields cost bytes, and bytes are two orders of magnitude from the ceiling at the current horizon, so the bake-it-into-props answer is not close to constrained. The alternative, passing keys and resolving in the layout, is not available: the runtime cannot reach a catalog.
+The entry-count budget is the binding constraint on iOS (roughly 380 entries blacked out every non-trivial kind, masked as a `containerBackground` message; ai/AGENTS.md job 16a). String fields cost bytes, and bytes are two orders of magnitude from the ceiling at the current horizon, so the bake-it-into-props answer is not close to constrained. The alternative, passing keys and resolving in the layout, is not available: the runtime cannot reach a catalog.
 
 One refinement keeps the payload flat: prayer names are already a per-row `name` prop (shared/widgetTypes.ts:49, 128), and static chrome strings like the footer never change per entry, so they belong in a single per-timeline field rather than repeated per entry. The timeline builder already distinguishes per-entry from per-timeline data.
 

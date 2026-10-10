@@ -15,7 +15,7 @@ the same place from the industry side, and its failure-mode description is sharp
 > `null` so nothing arms. Worst of all, it breaks silently: `null <= now` is `true` in a past-row
 > check, so rows drop without an error.
 
-That last clause connects to a lesson already in `ai/AGENTS.md` from session 28. The two failures
+That last clause connects to a lesson already in `ai/AGENTS.md` from job 28. The two failures
 compound: a translated identifier produces a null row, and the null row is silently dropped rather
 than throwing.
 

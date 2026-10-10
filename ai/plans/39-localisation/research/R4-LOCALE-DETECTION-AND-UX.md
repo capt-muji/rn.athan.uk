@@ -1,6 +1,6 @@
 # R4: Locale detection, language selection UX, and the top-20 language set
 
-Research report for session 39 (localisation). Answers three questions: what language the app opens in, how the user changes it, and which languages to ship. Every claim carries a source and a date where the source is a living document. Written 2026-09-29.
+Research report for job 39 (localisation). Answers three questions: what language the app opens in, how the user changes it, and which languages to ship. Every claim carries a source and a date where the source is a living document. Written 2026-09-29.
 
 Method note: research ran through the TinyFish Search and Fetch MCP tools (`tools.tinyfish.search`, `tools.tinyfish.fetch_content`), with `docs-mcp-server` for the indexed Expo SDK 58 documentation. No fetch failures forced a `curl` fallback. One page (npmjs.com package view for `@cospired/i18n-iso-languages`) blocked the fetch bot, and `docs-mcp-server.fetch_url` retrieved it instead.
 

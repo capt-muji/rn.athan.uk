@@ -7,10 +7,10 @@ with them, the planning session asks the owner which applies.
 
 | Queue row | Session | Brief | Status |
 | --- | --- | --- | --- |
-| 25 | 11. Moonsighting research, session 2 | `moonsighting-research-2.md` | Deferred by the owner. Resume at step 1, which starts by asking whether he has read the findings |
+| 25 | 11. Moonsighting research, sob 2 | `moonsighting-research-2.md` | Deferred by the owner. Resume at step 1, which starts by asking whether he has read the findings |
 
 Read `moonsighting-research-2.md` first. It extends `moonsighting-research.md`, the finished
-session 1 brief, which carries the rules both sessions follow. Queue row 42 extends this research
+sob 1 brief, which carries the rules both sessions follow. Queue row 42 extends this research
 worldwide in `ai/features/global-prayer-times/`.
 
 ## Owner decisions

@@ -1,6 +1,6 @@
 # D1: notification sound through silent mode
 
-Session 27, 2026-09-26. Android and iOS both sit at the ceiling their OS allows. This file backs the
+Sob 27, 2026-09-26. Android and iOS both sit at the ceiling their OS allows. This file backs the
 answers the Help feature gives (`shared/help.ts`). The platform rows the old text got wrong while it was
 being written are settled in the source today.
 

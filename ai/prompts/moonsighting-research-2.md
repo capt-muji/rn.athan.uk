@@ -1,4 +1,4 @@
-# Moonsighting research, session 2: read, decide, then finish
+# Moonsighting research, sob 2: read, decide, then finish
 
 Status: deferred by the owner, queue row 25. He has not read the findings or answered section
 5's questions. Whether the research is conclusive, and whether v2.0 can use it, stays open.
@@ -32,7 +32,7 @@ This extends `ai/prompts/moonsighting-research.md`: its sources, deliverable and
    owner's private link.
 4. Section 5's eleven questions stay open until the owner is ready. Bring them only when asked. Do not press.
 
-## Session 1's short answers (step 1 starts from these)
+## Sob 1's short answers (step 1 starts from these)
 
 1. How is London's unified timetable calculated, and who set it? The sun times come from HMNAO
    (sections 2.14 and 2.15): sunrise minus 3, noon plus 5, sunset plus 3, Asr at one and at two
@@ -41,7 +41,7 @@ This extends `ai/prompts/moonsighting-research.md`: its sources, deliverable and
    Adopted 1 August 2011 by the mosques named in Unified.pdf. Unanswered: who made the edits, why.
 2. Is it safe for the worldwide option? No. The intervals were observed at one latitude
    (53.45N), in one hemisphere, and are meant for the UK.
-3. What should the worldwide option use? Session 1 recommends calculating the method on the
+3. What should the worldwide option use? Sob 1 recommends calculating the method on the
    device (adhan's `MoonsightingCommittee`) rather than calling the endpoint. It needs owner
    rulings on polar days, and on whether a calculation counts as a source under the
    never-synthesise rule (section 5, questions 1 and 7).
@@ -49,9 +49,9 @@ This extends `ai/prompts/moonsighting-research.md`: its sources, deliverable and
    researched beyond section 2.16, where mawaqit's PHP copy implements the seasonal function
    only. Candidate research for this session.
 
-## Rules beyond session 1's
+## Rules beyond sob 1's
 
-- Agents: one at a time, two at most. Session 1's four parallel agents hit the session limit
+- Agents: one at a time, two at most. Sob 1's four parallel agents hit the session limit
   twice and the weekly limit once. Agents save notes after every step.
 - Git: the rules on a research worktree and branch, on `--no-verify` (the pre-commit hook runs
   the full jest suite) and on pushing nothing predate the merge of `research/moonsighting`. The

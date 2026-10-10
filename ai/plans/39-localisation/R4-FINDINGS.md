@@ -2,7 +2,7 @@
 
 R4 (`research/R4-LOCALE-DETECTION-AND-UX.md`, 453 lines) answers the first-run locale question, the
 picker's shape and the language set. It is sourced throughout. Two of its findings correct
-positions this session held before it landed.
+positions this job held before it landed.
 
 ## Correction 1: an Android notification channel CAN be renamed in place
 
@@ -16,7 +16,7 @@ question the installed source does not settle. R4 settles it from the platform d
 Microsoft's API documentation for the same call states the intended use outright: "The name and
 description should only be changed if the locale changes."
 
-This is consistent with session 27's lesson rather than contradicting it. Session 27 found that
+This is consistent with job 27's lesson rather than contradicting it. Job 27 found that
 **sound, audio attributes and importance** are frozen, which is why the ids carry a `_v4`
 generation. The NAME was never the frozen part.
 
@@ -44,7 +44,7 @@ requires for four other reasons. The two requirements reinforce each other: beca
 is built from the untranslated name, it is stable across a language change, which is exactly what
 makes the in-place replace work.
 
-## What R4 confirms that this session had already concluded
+## What R4 confirms that this job had already concluded
 
 - **Location for language is rejected**, on three independent grounds: Apple review guideline 5.1.1,
   Play's sensitive-permissions policy (which requires a permission be necessary for a feature
@@ -92,7 +92,7 @@ column breaks worst in exactly the Latin-script languages R4 puts in the launch 
 | Arabic | 0.85x |
 
 So the launch set is not the cheap set. Five of its eight members need the name-width remedy on day
-one. That is an argument for solving the width problem properly in this session rather than
+one. That is an argument for solving the width problem properly in this job rather than
 deferring it, not an argument against R4's set: the set is chosen by audience and the audience is
 right.
 

@@ -1,4 +1,4 @@
-# Session 39: what this repository contains
+# Job 39: what this repository contains
 
 Everything here was measured on `uat-2` at `77eb52fe` on 2026-09-29, by the scripts in
 `scripts/`, which are committed so any later session can reproduce the numbers rather than
@@ -210,10 +210,10 @@ title: `${englishName} now`
 title: `${englishName} in ${intervalMinutes}m`
 ```
 
-Those strings are handed to the OS and frozen. Session 28 arms up to
+Those strings are handed to the OS and frozen. Job 28 arms up to
 `NOTIFICATION_REQUEST_BUDGET = 64` requests, whole rows at a time. A language change must cancel
 and re-arm the full plan, and `ai/AGENTS.md` records that a partial re-arm is exactly the
-failure session 33 was queued to fix. Whether either platform can localise at DELIVERY time
+failure job 33 was queued to fix. Whether either platform can localise at DELIVERY time
 instead is a research question with a real payoff, since it would make the re-arm unnecessary.
 
 > **SUPERSEDED 2026-10-07** by `R4-FINDINGS.md` (:7-30, :32-45): delivery-time localisation is
@@ -222,7 +222,7 @@ instead is a research question with a real payoff, since it would make the re-ar
 > request in place.
 
 Android notification channel names are fixed at creation, and this repo has already learned
-(session 27) that sound, audio attributes and importance are all frozen too, which is why the
+(job 27) that sound, audio attributes and importance are all frozen too, which is why the
 ids carry a `_v4` generation. Whether the NAME alone can be updated in place decides whether a
 language change needs yet another channel generation.
 
