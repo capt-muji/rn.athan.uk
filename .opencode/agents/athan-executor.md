@@ -87,9 +87,10 @@ tree check before your first assigned step, exactly as a fresh session would.
    It must end `ALL AS EXPECTED: 1`, and `git status --porcelain` must then list
    only this step's files and the plan files. A break that passes where the plan
    says it fails: STOP.
-6. **Version.** Fetch `origin` under the version lock: `flock
-   $HOME/athan-gitree/version.lock` held from fetch to merge, because
-   concurrent jobs take the same number. Run
+6. **Version.** Fetch `origin` under the version lock, because concurrent jobs
+   take the same number: `mkdir $HOME/athan-gitree/version.lock` succeeds for
+   one session only, so retry in a short sleep loop while it exists, and
+   `rmdir` it after the merge (a STOP before that must remove it too). Run
    the plan's version command and set the printed version in `app.json`,
    `package.json` and `android/app/build.gradle` (`versionName`), all three
    matching, `app.json` first when a prebuild follows. The gradle file is
