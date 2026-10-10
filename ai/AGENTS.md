@@ -36,10 +36,14 @@ and the expo MCP sit disabled. The CLI rows above cover their work. Flip `enable
 - The queue is `ai/plans/README.md`; one job is in flight at a time. Entry is `/athan-plan`
   (interactive planning) or `/athan-run` (the lead carries a job to DONE).
 - A session is one context window. Jobs are queue rows. No workflow file names a context
-  threshold: the owner ends sessions at will, and every step writes its state to the
-  repository as it lands.
+  threshold for a session: the owner ends sessions at will, and every step writes its
+  state to the repository as it lands. Worker dispatches are different: the plan's step
+  weights and budgets bound every executor batch, and the lead rotates worker sessions
+  mechanically from those numbers.
 - When a job is DONE, its plan folder, its evidence under `~/athan-gitree/sessions/<N>/`
   and its uncited brief die in the merge commit.
+- The board's words: a ticket is a queue job, a step is a plan step. These files keep
+  saying job and step.
 
 ## The repository is public to the whole world
 

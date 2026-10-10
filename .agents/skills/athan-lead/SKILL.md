@@ -68,21 +68,29 @@ ask her. Call the Skill tool for `athan-planner` and run it here, end to end: th
 interview, the draft, the grill, the gate. It ends with the row READY and
 `scripts/check-plan.sh` printing `PLAN OK`.
 
-**Execute.** Dispatch ONE `athan-executor` worker: give it the plan folder path, the job
-number, and the first step not ticked DONE in its checklist. It works cold; `LOG.md` is
-its ledger; it cannot reach the owner and it cannot push. When it returns:
+**Execute.** Batches and rotation, all mechanical from the plan's own weights; judgment
+plays no part, so any model runs the same dispatch.
 
-- Verify from the repository before anything else: the ticked checklist, the commits on
-  `uat`, the hook's `Tests:` and coverage lines recorded in `LOG.md`.
-- `DONE` or `DONE_WITH_CONCERNS`: verify the concerns against the code yourself, decide,
-  carry on.
-- `STOP:` a question for the owner. Ask it with the question tool, write the answer into
-  `LOG.md` yourself, and respawn the worker from the first unticked step.
-- `NEEDS_CONTEXT` that the plan cannot give: route to **Plan** (a NEEDS REPLAN).
-- `BLOCKED`: the row cannot move (the owner answered wait, or a device is missing).
-  Write the reason into the row, then stop per section 5.
-- A return that moved neither the row nor `uat` and cannot say why: respawn once. Twice
-  running: stop and report.
+- Pack each dispatch with consecutive steps up to the plan's batch budget; a device
+  step (weight 3) always dispatches alone. Replace the worker session with a fresh one
+  when its cumulative weight crosses the plan's session budget, and always after a
+  device step.
+- Dispatch in the background, so the session id returns at launch. Before any dispatch,
+  check liveness: the last `session:` line in `LOG.md` must belong to a finished session
+  in the session store. Never dispatch onto a live worker.
+- On every return, the routing table decides, and repository truth (row status, `LOG.md`
+  step headings, commits on `uat`) wins any disagreement with the return word:
+
+| Return | Action |
+| --- | --- |
+| `DONE` / `DONE_WITH_CONCERNS` | Verify from the repository: ticked checklist, commits on `uat`, hook `Tests:` and coverage lines in `LOG.md`. Verify the concerns against the code yourself, decide, carry on |
+| `ROTATE` | Verify by script, not by reading diffs: `git log`, the `LOG.md` step headings, the hook's `Tests:` lines, one line per step. Dispatch the next batch, same session or fresh per the weights |
+| `STOP:` | A question for the owner. Ask it with the question tool, write the answer into `LOG.md` yourself, then continue the same session |
+| `NEEDS_CONTEXT` the plan cannot give | Route to **Plan** (a NEEDS REPLAN) |
+| `BLOCKED` | The row cannot move (the owner answered wait, or a device is missing). Write the reason into the row, then stop per section 5 |
+| Malformed, or moved neither row nor `uat` and cannot say why | Run the executor's "Stopping part-way" recovery, then respawn once. Twice running: stop and report |
+
+- A batch boundary is not a phase: routing stays on Execute.
 - Never dispatch a device-heavy step the worker cannot finish in its session.
 
 **Audit.** You are the judge; the reviewers are your eyes.

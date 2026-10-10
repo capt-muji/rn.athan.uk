@@ -33,6 +33,10 @@ done
 head -15 "$plan" | grep -q "Planned at" || reason "header table has no Planned at"
 head -15 "$plan" | grep -q "Needs first" || reason "header table has no Needs first"
 
+# 2b. Weights and budgets drive the lead's mechanical batching.
+head -15 "$plan" | grep -q "Batch budget" || reason "header table has no Batch budget"
+head -15 "$plan" | grep -q "Session budget" || reason "header table has no Session budget"
+
 # 3. Banned hedge phrases (TEMPLATE.md word list), matched as whole phrases.
 hedges=(
   "as appropriate" "as needed" "as necessary" "if needed" "if applicable" "if relevant"
@@ -63,6 +67,11 @@ found_steps=0
 for f in $step_files; do
   [ -f "$f" ] || continue
   found_steps=1
+  w="$(grep -oE '^Weight: [0-9]+' "$f" | head -1)"
+  case "$w" in
+    "Weight: 1"|"Weight: 2"|"Weight: 3") ;;
+    *) reason "step file $(basename "$f") needs a Weight line of 1, 2 or 3 (docs, code, device)" ;;
+  esac
   if ! grep -qE '^(\*\*)?Requirements(\*\*)?:' "$f"; then
     reason "step file $f has no Requirements: line citing criterion IDs"
   else
