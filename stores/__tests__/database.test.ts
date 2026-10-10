@@ -317,7 +317,6 @@ describe('notification scheduling records', () => {
     date: '2026-01-24',
     time: '06:15',
     englishName,
-    arabicName: 'الفجر',
     alertType: AlertType.Sound,
   });
 
@@ -401,7 +400,6 @@ describe('reminder scheduling records', () => {
     date: '2026-01-24',
     time: '05:55',
     englishName,
-    arabicName: 'الفجر',
     alertType: AlertType.Sound,
   });
 

@@ -237,7 +237,6 @@ describe('a permission API that throws', () => {
       ScheduleType.Standard,
       0,
       'Fajr',
-      'الفجر',
       { atTimeAlert: AlertType.Off, reminders: OFF_REMINDERS },
       { atTimeAlert: AlertType.Sound, reminders: OFF_REMINDERS }
     );

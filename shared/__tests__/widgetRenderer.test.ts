@@ -195,7 +195,6 @@ const TIMES: [string, string][] = [
 const makePrayer = (date: string, time: string, english: string): ReadablePrayer => ({
   type: ScheduleType.Standard,
   english,
-  arabic: '',
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate: date,

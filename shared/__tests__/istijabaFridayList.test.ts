@@ -49,7 +49,6 @@ describe("Istijaba on Friday's list when Magrib falls after 00:00", () => {
     expect(getPrayerForDate(ScheduleType.Extra, 'Istijaba', '2026-06-26')).toEqual({
       type: ScheduleType.Extra,
       english: 'Istijaba',
-      arabic: 'استجابة',
       datetime: new Date(datetime),
       time,
       belongsToDate: '2026-06-26',

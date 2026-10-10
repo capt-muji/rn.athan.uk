@@ -8,12 +8,10 @@
 import {
   BACKGROUND_TASK_INTERVAL_HOURS,
   DEFAULT_REMINDER_INTERVAL,
-  EXTRAS_ARABIC,
   EXTRAS_ENGLISH,
   EXTRAS_EXPLANATIONS,
   NIGHT_PRAYER_NAMES,
   NOTIFICATION_REQUEST_BUDGET,
-  PRAYERS_ARABIC,
   PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
   REMINDER_INTERVALS,
@@ -59,12 +57,8 @@ describe('NIGHT_PRAYER_NAMES', () => {
 // =============================================================================
 
 describe('prayer arrays alignment', () => {
-  it('PRAYERS_ENGLISH and PRAYERS_ARABIC have same length', () => {
-    expect(PRAYERS_ENGLISH.length).toBe(PRAYERS_ARABIC.length);
-  });
-
-  it('EXTRAS_ENGLISH and EXTRAS_ARABIC have same length', () => {
-    expect(EXTRAS_ENGLISH.length).toBe(EXTRAS_ARABIC.length);
+  it('PRAYERS_ENGLISH and EXTRAS_ENGLISH have no shared member', () => {
+    expect(PRAYERS_ENGLISH.filter((name) => EXTRAS_ENGLISH.includes(name))).toEqual([]);
   });
 
   it('EXTRAS_EXPLANATIONS matches EXTRAS_ENGLISH length', () => {
