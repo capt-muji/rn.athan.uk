@@ -242,7 +242,11 @@ describe('virtual week model test', () => {
       // the next prayer's day (same rows, same order), and the active row is
       // the countdown target itself
       const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === nextPrayer.belongsToDate);
-      const expectedRows = dayPrayers.map((prayer) => ({ name: prayerLabel(prayer.id), time: prayer.time }));
+      const expectedRows = dayPrayers.map((prayer) => ({
+        id: prayer.id,
+        name: prayerLabel(prayer.id),
+        time: prayer.time,
+      }));
       const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
 
       if (!Array.isArray(props.prayers) || props.activeIndex !== expectedActiveIndex) {
@@ -500,7 +504,11 @@ describe('extras virtual week model test', () => {
       const dayPrayers = prayers
         .filter((prayer) => prayer.belongsToDate === nextPrayer.belongsToDate)
         .sort((a, b) => extrasRank(a.id) - extrasRank(b.id));
-      const expectedRows = dayPrayers.map((prayer) => ({ name: prayerLabel(prayer.id), time: prayer.time }));
+      const expectedRows = dayPrayers.map((prayer) => ({
+        id: prayer.id,
+        name: prayerLabel(prayer.id),
+        time: prayer.time,
+      }));
       const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
 
       if (!Array.isArray(props.prayers) || props.activeIndex !== expectedActiveIndex) {
@@ -632,20 +640,20 @@ describe('fully readable real sequences', () => {
    * entries were deleted (session 16a) — the fix for the archive-budget blackout.
    */
   const REAL_YEAR_TIMELINES: [string, string][] = [
-    ['2024-01-10', '5049d110f76ea186316fb833984d1f3978c3a27acfea62591f0dc25056075328'],
-    ['2024-02-20', 'eef7b2330b71a09dbd858a53358775288acf2c841a089d39416192797434b806'],
+    ['2024-01-10', '3a1fe8c299bee9ddcb7dee4d4b8476a624e26d6d4dc2c32171cae2792c229a67'],
+    ['2024-02-20', '3f641dbf5953818428bed7de6ecd2e4995caca843d1d6daed60b008252dd57a8'],
     // Across the spring clock change (31 March)
-    ['2024-03-24', '27e918bef398be897713f4a06c717553d1876312e84e0e44ffc6770721a9e771'],
-    ['2024-04-15', '2c369132ebb212c9e1ecf669bd07c1d324e3220aef834695071d2b76096ea54e'],
-    ['2024-05-06', 'e39cc602d75e10b64873441264b349d40ecff6454fffaa406b281693242b7780'],
-    ['2024-06-14', '6be1ee27287846b66b9dbcda3e9ecf7b14b4c0e59723b833176d9aa6f1162d66'],
-    ['2024-07-01', '495df1f97098cee939ae8abae52c4bb6ddbaf21835b28e5b611c8adb3da395d2'],
-    ['2024-08-12', 'ee5483cc3889bf1bc28339ca78e93304b6a35c8a1d37f65557438b078827e984'],
-    ['2024-09-02', '229adbd8d9a7a6447f1d834de52e9eef6a8ba51ef03317ebe775160dfd118f29'],
+    ['2024-03-24', 'f397d3cc95ff194182dd456b956048fb362ef4983df2cdc874de9c0d6b621dd9'],
+    ['2024-04-15', '65ae1af6df07631d5c06b1141161b30e8c15d0547ac3b47086e186627ce91260'],
+    ['2024-05-06', 'aa8f4794a7d80561da443f5be1c39bf628e96c1c86a3a9cf0cc803ceb722afec'],
+    ['2024-06-14', 'b543bff1e0930e63793fb74f4970f7b3b57996557e60843535276865a416cc6a'],
+    ['2024-07-01', '73b3a29c37715314c684daaefe0749557b183a743f6b7ed90e3fe5cdf4742c99'],
+    ['2024-08-12', '77a709e33bacdc6f3444ca24a61de54682e2e38e37bcd6234fe1dad2391549ca'],
+    ['2024-09-02', '757594824d7be65b88a8b1b6897febc725fe1001babaf797c213e8a5f97b829a'],
     // Across the autumn clock change (27 October)
-    ['2024-10-20', 'e09ffc45a502758142ea642f9b3df449d9c0b2beacc74e69f7678f245f14ad20'],
-    ['2024-11-11', '339f5a17afe71dde06aed2c807ac2319f78fbe8b816f44f9e574d3d4cf2c6f61'],
-    ['2024-12-15', 'c8897481277c1ac852c9466028899b787bda891c19e11641d7a167bbd2785195'],
+    ['2024-10-20', '7af61849bf07916285dcae1684fe8fc6eb6751d7d226912968068a647a6d0462'],
+    ['2024-11-11', '3e9274832718c3756366ea298207e64a6b5c69e73d51104eadda36d99f90f510'],
+    ['2024-12-15', 'f787a871e34a75590e82b80b47f43e06c4092d32b6d9b1a8690b39c73c17bd20'],
   ];
 
   /** Midnight, noon, and two minutes before and exactly on every row of the push day's list */
@@ -827,7 +835,7 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
       displayDate,
       boundaryMs: held ? Math.min(next.datetime.getTime(), endOfListDay(displayDate)) : next.datetime.getTime(),
       previousMs,
-      rows: dayRows.map((prayer) => ({ name: prayerLabel(prayer.id), time: prayer.time ?? '--:--' })),
+      rows: dayRows.map((prayer) => ({ id: prayer.id, name: prayerLabel(prayer.id), time: prayer.time ?? '--:--' })),
       activeIndex: dayRows.indexOf(next),
     };
   };
