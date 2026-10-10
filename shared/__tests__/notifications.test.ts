@@ -9,6 +9,7 @@ import { Platform } from 'react-native';
 
 import { london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import type { PrayerId } from '@/shared/constants';
+import { prayerLabel, t } from '@/shared/i18n';
 
 import { PRAYER_TIMEZONE } from '../constants';
 import {
@@ -296,6 +297,17 @@ describe('genNotificationContent', () => {
     const content = genNotificationContent('fajr', AlertType.Sound, 0);
     expect(content.title).toBe('Fajr now');
     expect(content.body).toBeUndefined();
+  });
+
+  it('builds the titles from the catalog templates', () => {
+    expect(genNotificationContent('fajr', AlertType.Silent, 0).title).toBe(
+      t('notification.now', { name: prayerLabel('fajr') })
+    );
+    expect(genReminderNotificationContent('fajr', 15, AlertType.Silent).title).toBe(
+      t('notification.reminder', { name: prayerLabel('fajr'), n: 15 })
+    );
+    expect(genNotificationContent('fajr', AlertType.Silent, 0).title).toBe('Fajr now');
+    expect(genReminderNotificationContent('fajr', 15, AlertType.Silent).title).toBe('Fajr in 15m');
   });
 
   it('includes sound for Sound alert type', () => {

@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "1.29.326",
+  "version": "1.29.327",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -19,6 +19,8 @@
     "test:watch": "DEBUG_TESTS=1 jest --watch",
     "test:tz": "for tz in America/New_York Asia/Tokyo Pacific/Kiritimati Pacific/Pago_Pago; do echo \"TZ=$tz\"; TZ=$tz jest --silent || exit 1; done",
     "check:device": "e2e/scripts/device-checks.sh",
+    "i18n:export": "I18N_BRIDGE=export npx jest shared/__tests__/i18nBridge.test.ts --watchman=false --selectProjects=unit",
+    "i18n:import": "I18N_BRIDGE=import npx jest shared/__tests__/i18nBridge.test.ts --watchman=false --selectProjects=unit",
     "validate": "tsc --noEmit && biome check . --error-on-warnings && jest --silent --coverage",
     "format": "biome check --write .",
     "format:check": "biome check ."

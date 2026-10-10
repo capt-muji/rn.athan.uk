@@ -10,7 +10,7 @@ import {
   SCHEDULE_CANDIDATE_DAYS,
   STANDARD_PRAYER_IDS,
 } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
+import { prayerLabel, t } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import { isReadable } from '@/shared/sequence';
@@ -128,7 +128,7 @@ export const genNotificationContent = (
   soundIndex: number
 ): Notifications.NotificationContentInput => {
   return {
-    title: `${prayerLabel(id)} now`,
+    title: t('notification.now', { name: prayerLabel(id) }),
     sound: getNotificationSound(alertType, id, soundIndex),
     color: '#5a3af7',
     autoDismiss: false,
@@ -177,7 +177,7 @@ export const genReminderNotificationContent = (
   alertType: AlertType
 ): Notifications.NotificationContentInput => {
   return {
-    title: `${prayerLabel(id)} in ${intervalMinutes}m`,
+    title: t('notification.reminder', { name: prayerLabel(id), n: intervalMinutes }),
     sound: getReminderNotificationSound(alertType, id, intervalMinutes),
     color: '#5a3af7',
     autoDismiss: true,
