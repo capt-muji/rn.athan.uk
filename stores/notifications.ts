@@ -484,7 +484,7 @@ type MigratableAtom = (typeof standardPrayerAlertAtoms)[number];
  * lands on Islamic Midnight, Last Third is left with nothing, and Istijaba's
  * setting is dropped because there is no fifth index to migrate.
  */
-const EXTRAS_ENGLISH_PRE_1_0_27 = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'] as const;
+export const EXTRAS_ENGLISH_PRE_1_0_27 = ['Last Third', 'Suhoor', 'Duha', 'Istijaba'] as const;
 
 /** The version that inserted Midnight at the front of `EXTRAS_ENGLISH`. */
 const EXTRAS_MIDNIGHT_VERSION = '1.0.27';
