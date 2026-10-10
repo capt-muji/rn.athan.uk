@@ -19,3 +19,18 @@
 - Breaks: 4 of 4 AS EXPECTED (slug separator, identifier slugify, array reorder, frozen-list
   member removal), final restore green: `ALL AS EXPECTED: 1`.
 - Version 1.29.308. Row set IN PROGRESS with this commit.
+- Committed `aa7d2014`, merged into `uat`. Hook: `Tests: 5263 passed, 5263 total`, four 100%
+  lines (Statements 4938/4938, Branches 2153/2153, Functions 1031/1031, Lines 4427/4427).
+  Review: one pass, nothing to fix (the diff is the suite, the one-word export, the row and
+  this log).
+- One hook iteration: Biome `noTemplateCurlyInString` fires on the four source-text pins;
+  each carries a per-line ignore with its reason (a pin of template-literal source text must
+  not interpolate).
+
+## Resume from: step 2, part 0
+
+Context ran low after step 1. The next session: run the pre-flight with k=2, resume the
+IN PROGRESS row, and execute step 2 (`steps/02-arabic-removal-row.md`) onward. Everything the
+later steps need is in the plan folder; the break-script lesson above (untracked test files
+restore from a backup copy, `git checkout --` aborts atomically on them) applies to every
+step whose red test is a new file.
