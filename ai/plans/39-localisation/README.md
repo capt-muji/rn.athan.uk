@@ -1,4 +1,4 @@
-# Session 39: localisation research. Start here.
+# Job 39: localisation research. Start here.
 
 > **PIVOT 2026-10-09: read `SINGLE-LANGUAGE-PIVOT.md` first.** The owner removed the bilingual row:
 > one language at a time, Arabic column gone, everything through one catalog. That file carries the

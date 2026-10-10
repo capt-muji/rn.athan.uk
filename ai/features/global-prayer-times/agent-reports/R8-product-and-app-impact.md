@@ -37,7 +37,7 @@ was read directly from source in this worktree. Web research went through the `t
    cached reads the old city's times under the new city's name, with no error anywhere in the pipeline. Every
    downstream guard checks shape, never provenance. Measured.
 3. **The English prayer name is a domain identifier, and worldwide makes that constraint harder, not easier.**
-   Session 39 measured 27 MMKV preference keys, 2 notification id formats, 11 audio slugs, 67 mp3 files and the
+   Sob 39 measured 27 MMKV preference keys, 2 notification id formats, 11 audio slugs, 67 mp3 files and the
    canonical display order all built from it (`ai/plans/39-localisation/MEASURED.md` sections 2 and the four-system
    table). R2's Imsak result adds a new demand on the same string: Turkey's Fajr row is named `İmsak` and
    Malaysia's `Imsak` is a different row ten minutes earlier. **The concept, the identifier and the label must
@@ -46,7 +46,7 @@ was read directly from source in this worktree. Web research went through the `t
    `Magrib`, `Isha` map onto every authority's table. `Midnight`, `Last Third`, `Suhoor`, `Duha` and `Istijaba`
    each hit a different problem: Duha collides with a real published row (JAKIM `Duha`, Brunei `Doha`, Kemenag's
    4.5 degrees) that is not the app's `Sunrise + 20`; Suhoor collides conceptually with the official `Imsak` row;
-   Istijaba is published almost nowhere (null in 24 of 28 locales, session 39's catalog). Measured against
+   Istijaba is published almost nowhere (null in 24 of 28 locales, sob 39's catalog). Measured against
    `shared/constants.ts:9,26,54` and `shared/constants.ts:225`.
 5. **Imsak is a labelling problem with two opposite failure modes, and the data model must carry the concept, not
    the row name.** In Malaysia and Indonesia `Imsak` is a real extra row exactly 10 minutes before Subuh (R2,
@@ -99,7 +99,7 @@ was read directly from source in this worktree. Web research went through the `t
     copying, averaging or substituting a time. A user typing "+2 on Fajr" is the user asserting their own mosque's
     time. The conditions that keep it honest are in section 5.4: the offset is explicit, visible on the row, never
     defaulted to non-zero, and never applied silently.
-14. **An existing London user must see zero change, and the mechanism already exists in the codebase.** Session 39
+14. **An existing London user must see zero change, and the mechanism already exists in the codebase.** Sob 39
     established the pattern: existing installs pin explicitly, only fresh installs negotiate
     (`ai/plans/39-localisation/ASSUMPTIONS.md` A1b). Applied here: on upgrade, an install with cached prayer days
     and no source setting is pinned to **London Prayer Times, explicitly**, and keeps the same provider, the same
@@ -263,7 +263,7 @@ Three, all measured:
 
 The widget strings are the awkward pair, because `ai/AGENTS.md` records that a widget layout can never call a
 translation library (the widget runtime's React is a five-name stub). Any authority name in a widget must be
-resolved in the app and baked into the timeline props, exactly as session 39 concluded for localisation. The
+resolved in the app and baked into the timeline props, exactly as sob 39 concluded for localisation. The
 `README.md:157` line "Prayer times data sourced from London Prayer Times" is the public-facing version of the same
 claim and is where the honest-claim wording should also land.
 
@@ -304,7 +304,7 @@ Midnight 1st, Last Third 2nd, Suhoor 3rd, Duha 4th, Istijaba 5th (Friday-only, a
 `canonicalDisplayOrder` + `EXTRAS_ENGLISH`; never re-litigate." `canonicalDisplayOrder` is at
 `shared/prayer.ts:569-579` and ranks by `EXTRAS_ENGLISH.indexOf(english)`.
 
-**The identifier's blast radius, from session 39's own measurement** (`ai/plans/39-localisation/MEASURED.md`
+**The identifier's blast radius, from sob 39's own measurement** (`ai/plans/39-localisation/MEASURED.md`
 sections 2, confirmed against this worktree):
 
 | System | Site | Built from |
@@ -319,10 +319,10 @@ sections 2, confirmed against this worktree):
 | Row lookup from the stored record | `shared/prayer.ts:407` | `rawData[name.toLowerCase()]` |
 
 Measured in this worktree: `assets/audio/reminders/` contains **67 files**, and Android's `res/raw` accepts
-`[a-z0-9_]` only, so those slugs can never carry a non-Latin script. Session 39's conclusion stands and is
+`[a-z0-9_]` only, so those slugs can never carry a non-Latin script. Sob 39's conclusion stands and is
 strengthened by this wave: **the English name is the identifier, permanently.**
 
-What R1 and R2 add is a second, independent reason for the same split. Session 39 needed the identifier stable so
+What R1 and R2 add is a second, independent reason for the same split. Sob 39 needed the identifier stable so
 a language change does not orphan preferences. Worldwide needs it stable so a SOURCE change does not, and it needs
 one more layer: the concept. `shared/prayer.ts:407` reads the stored record by `name.toLowerCase()`, which ties the
 identifier to the storage field name as well. Three things currently collapsed into one string:
@@ -407,7 +407,7 @@ Three rules follow, and each closes a specific failure:
    Deriving it would be inventing a time the authority did not print, which finding 70 forbids, and R4's Model A
    versus Model C analysis independently rules out.
 3. **The LABEL of the `fajr` row is a per-source, per-locale string.** In Turkey it reads `İmsak`. This is the same
-   mechanism session 39 already needs for localisation, with one extra input (the source), and that is the argument
+   mechanism sob 39 already needs for localisation, with one extra input (the source), and that is the argument
    for doing the identifier/label split once for both reasons.
 
 **What this costs the app.** `imsak` is a new nullable field on `ISingleApiResponseTransformed`
@@ -446,7 +446,7 @@ must respect:
 - The row renders both when a jamaah exists, with the start time primary. R2's evidence that mosques print `Begins`
   and `Jamā'ah` side by side is direct evidence for side by side rather than a toggle.
 - **The alarm decision is an owner ruling and should not be defaulted.** Arming the jamaah rather than the start
-  would double the requests against a 64 ceiling that session 28 measured is already tight
+  would double the requests against a 64 ceiling that sob 28 measured is already tight
   (`ai/AGENTS.md`, 2026-09-27: standard 6 prayers with both reminders covers 3 days). The safe default is that the
   jamaah is displayed and never armed, with arming it a later, explicit feature.
 - Extras never have a jamaah. Midnight, Last Third, Suhoor, Duha and Istijaba are not congregational.
@@ -514,7 +514,7 @@ and an astronomical sunrise and sunset distinct from the `Güneş` and `Akşam` 
 | `Last Third` | Two thirds through the same night (`shared/time.ts:412`) | Rarely | None, same reason |
 | `Suhoor` | `Fajr - 20` (`TIME_ADJUSTMENTS.suhoor = -20`) | **Yes, and differently.** The official row is `Imsak` at Fajr **-10** in Malaysia and Indonesia | **Direct conflict.** Section 3.1 |
 | `Duha` | `Sunrise + 20` (`TIME_ADJUSTMENTS.duha = 20`) | **Yes, and differently.** JAKIM prints `Duha`, Brunei `Doha`, Kemenag defines it at the sun 4.5 degrees up | **Direct conflict.** Same name, different number |
-| `Istijaba` | `Magrib - 60` on Fridays (`shared/prayer.ts:130-138`) | **Almost nowhere.** Null in 24 of 28 locales in session 39's sourced catalog | No conflict, but no external support either |
+| `Istijaba` | `Magrib - 60` on Fridays (`shared/prayer.ts:130-138`) | **Almost nowhere.** Null in 24 of 28 locales in sob 39's sourced catalog | No conflict, but no external support either |
 | (absent) | -- | `Syuruk` / `Syuruq` | The app's `Sunrise` covers it |
 | (absent) | -- | `Kıble Saati` (Turkey) | Out of scope; rows 37, 40 and 41 own qibla |
 
@@ -872,7 +872,7 @@ finding exists precisely so that never happens.
 alarms do not change. Nothing about their app is different except that it can now tell them where its times come
 from.**
 
-**The mechanism, copied from session 39's ruling** (`ai/plans/39-localisation/ASSUMPTIONS.md` A1b, and
+**The mechanism, copied from sob 39's ruling** (`ai/plans/39-localisation/ASSUMPTIONS.md` A1b, and
 `PROPOSALS.md`: "existing installs pin to English explicitly, and only fresh installs negotiate from the device
 locale"):
 
@@ -914,7 +914,7 @@ This is a different event from an upgrade and the code must treat it as one. It 
    `stores/sync.ts:358-372` is the template and already handles everything except the source key itself.
 4. **Re-arm the whole notification plan.** Every armed instant belongs to the old source. `forceNotificationReschedule`
    (`stores/version.ts:194-202`) and `reopenNotificationGate` (`stores/sync.ts:83-89`) are the existing mechanisms.
-   Session 39 measured the equivalent cost for a language change: up to 64 requests re-armed, no cancel pass needed
+   Sob 39 measured the equivalent cost for a language change: up to 64 requests re-armed, no cancel pass needed
    because identifiers are deterministic. The same holds here as long as the identifiers do not change, which is
    another reason the identifier must not carry the source.
 5. **Repush the widgets.**
@@ -939,7 +939,7 @@ failure mode goes before anything that depends on it, and everything invisible g
 
 | # | Session | Why here | Acceptance criterion | Visible to users? |
 | --- | --- | --- | --- | --- |
-| **S1** | **Split the prayer identifier from the prayer label** | Session 39 already established this is the prerequisite for localisation; this wave adds a second, independent reason (Turkey's `İmsak` must label the Fajr row). Doing it once serves both. A type-level guard must make passing a label where an identifier is required a compile error | Every one of the 4 systems in section 1.7 takes a typed identifier; `tsc` rejects a display string in an identifier position; every existing MMKV key, notification id and audio slug is byte-identical before and after; suite green | **No** |
+| **S1** | **Split the prayer identifier from the prayer label** | Sob 39 already established this is the prerequisite for localisation; this wave adds a second, independent reason (Turkey's `İmsak` must label the Fajr row). Doing it once serves both. A type-level guard must make passing a label where an identifier is required a compile error | Every one of the 4 systems in section 1.7 takes a typed identifier; `tsc` rejects a display string in an identifier position; every existing MMKV key, notification id and audio slug is byte-identical before and after; suite green | **No** |
 | **S2** | **Make the source explicit, with exactly one source** | The single highest-value refactor and the only one that is genuinely free of behaviour change. Introduces the source identity (Z1), moves the MMKV key to `prayer_${sourceId}_${date}`, bumps `CACHE_SCHEMA_VERSION`, and pins every existing install to `london-prayer-times` explicitly | An existing install upgrades, its source reads `london-prayer-times`, its times are identical day for day against a pre-upgrade capture, its preferences are intact, its alarms are unmoved. A fresh install gets the same source. Nothing on screen changes | **No** |
 | **S3** | **Make the timezone a property of the source** | Must follow S2 because the source is what owns the zone. Must precede any second source. The two module-level offset caches in `shared/time.ts:67-68` are the specific trap and must be keyed by zone | `PRAYER_TIMEZONE` no longer exists as a global; `Europe/London` appears only in the London source's own definition and in test fixtures; the offset caches are zone-keyed and a zone change clears or bypasses them; all 182 suites green with London as the fixture source | **No** |
 | **S4** | **Build the verification fixtures** | R3's strongest recommendation, verbatim: "Build the USNO fixture suite described in Part 3 before writing any feature code... it is the direct answer to 'we can't verify if it's correct or not'." It costs one fetch script and about 400 committed JSON rows and needs no astronomy written by this project. Doing it after a second source ships means shipping unverified | A committed fixture set of USNO sunrise, sunset and transit for a spread of cities and dates; a test that fails when a computed sunrise or transit moves by 2 minutes or more; documented as covering the astronomy only, never the Fajr, Isha or Asr conventions | **No** |
@@ -952,10 +952,10 @@ failure mode goes before anything that depends on it, and everything invisible g
 
 ### What must come first, and why, in one paragraph each
 
-**S1 before everything.** Every later step touches the prayer name. Session 39 measured that changing it while it
+**S1 before everything.** Every later step touches the prayer name. Sob 39 measured that changing it while it
 is still an identifier orphans 27 preference keys and up to 64 armed alarms, silently, because `null <= now` is
 `true` so the dropped rows never throw. The cost is an afternoon now against a storage migration of every user's
-preferences later. This is session 39's own conclusion and this wave only adds a second reason for it.
+preferences later. This is sob 39's own conclusion and this wave only adds a second reason for it.
 
 **S2 before S3 and before any second source.** The MMKV key is the silent one. `prayer_${date}`
 (`stores/database.ts:138`) will happily serve city A's Fajr to a user in city B, and nothing in
@@ -1036,7 +1036,7 @@ Recorded so nothing weak reads as established.
 9. **The second source's TLS requirements are unmeasured** (section 1.6), so `modules/tls13`'s fate is undecided.
 10. **Coordinate-to-zone mapping for JAKIM is unsourced** (section 3.5).
 11. **The jamaah alarm question is deliberately left open** (section 3.2). Arming jamaah times against a 64-request
-    ceiling that session 28 measured is already tight needs its own measurement, not a default.
+    ceiling that sob 28 measured is already tight needs its own measurement, not a default.
 12. **No count of how many of the app's 182 test files would need changes** for S2 or S3 was produced. 6 files
     reference `Europe/London` directly; the real figure is higher because the harness is shared. Wave 1 recorded
     "62 tests still assert London's clock values and DST rule"

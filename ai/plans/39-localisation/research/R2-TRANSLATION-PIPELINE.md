@@ -1,6 +1,6 @@
 # R2: The translation supply chain for a solo developer (compressed)
 
-Research report for session 39 (D4b, the translation sweep). Written 2026-09-29 at 408 lines.
+Research report for job 39 (D4b, the translation sweep). Written 2026-09-29 at 408 lines.
 **Compressed 2026-10-07** to the sections other documents do not carry; the conclusions and
 numbers the plan builds on live in `R2-FINDINGS.md` (the two-track 16+5 split and why the 5
 explanations join the glossary track, the licence resolution on the AGPL catalogs, the
@@ -54,7 +54,7 @@ in the same pipeline as any other change, marked `verifiedBy: user-report`. Stor
 Play's free machine translation plus the same LLM pass.
 
 Produces: 20 locale catalogs and a provenance sidecar in git, guarded by CI, every string
-carrying its engine, verification and date. One-off under $1 plus one glossary session;
+carrying its engine, verification and date. One-off under $1 plus one glossary run;
 recurring under $0.05/month at 20 changed strings. R2's own strongest counter-argument (the
 gate's instruments share the translator's blind spot on religious text, so the 16+5 sourced
 strings never enter the statistical gate) is carried by R2-FINDINGS.

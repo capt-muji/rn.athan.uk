@@ -66,7 +66,7 @@ incoming FCM `RemoteMessage`. Same shape as iOS: an inbound push concern, not a 
 
 ## What this costs, and the one thing that makes it affordable
 
-Under session 28's request budget the app holds up to `NOTIFICATION_REQUEST_BUDGET = 64` armed
+Under job 28's request budget the app holds up to `NOTIFICATION_REQUEST_BUDGET = 64` armed
 requests, armed a whole row at a time. A language change must cancel and re-arm all of them.
 
 The saving grace is that **this repo already does exactly this operation, for exactly this
@@ -77,16 +77,16 @@ A language commit is the same operation with a different payload.
 So the ruling is affordable, but it is not free, and it inherits two known hazards recorded in
 `ai/AGENTS.md`:
 
-1. Session 33 was queued because this operation is not atomic: a partial failure leaves some
+1. Sob 33 was queued because this operation is not atomic: a partial failure leaves some
    prayers re-armed and the rest stale while the rolled-back preference makes Settings disagree
    with both. Row 33 is DONE, so its ruling is the precedent this session follows.
-2. Session 28 found that `commitPrayerAlertChange` wrote its preference BEFORE taking the lock, so
+2. Job 28 found that `commitPrayerAlertChange` wrote its preference BEFORE taking the lock, so
    a second queued commit read the first's values. The language commit must compute once from the
    values it was called with and pass them to both halves.
 
 ## The Android channel name, which is a separate question
 
-`ai/AGENTS.md` records from session 27 that a channel's sound, audio attributes and importance are
+`ai/AGENTS.md` records from job 27 that a channel's sound, audio attributes and importance are
 frozen at creation, which is why the ids carry a `_v4` generation. The NAME is the open question:
 `createNotificationChannel` on an existing id is documented to update the name and description
 while ignoring the rest.
@@ -104,11 +104,11 @@ check on the 3T rather than a desk answer. The plan carries it as a named experi
 by the time sensitive text. If we can hide that, that would be great, but I don't think so."
 
 The owner is right that it cannot be hidden. `shared/notifications.ts` sets
-`interruptionLevel: 'timeSensitive'` and session 27 added the matching iOS entitlement, so the
+`interruptionLevel: 'timeSensitive'` and job 27 added the matching iOS entitlement, so the
 level is genuinely in force. iOS draws the "Time Sensitive" label itself, as part of how it
 presents an alert that is allowed to break through Focus and Do Not Disturb. An app cannot
 suppress it while keeping the interruption level, and dropping the level would give up the
-breakthrough that session 27 existed to win.
+breakthrough that job 27 existed to win.
 
 The app already ships title only and no body, recorded twice in `shared/notifications.ts` as
 "English-only, title only (no body)". So the display budget is one short line beneath a system

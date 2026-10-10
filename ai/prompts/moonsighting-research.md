@@ -1,6 +1,6 @@
-# Moonsighting research, session 1: sources, deliverable, shared rules
+# Moonsighting research, sob 1: sources, deliverable, shared rules
 
-Status: finished 2026-09-14. Findings: `ai/features/moonsighting/RESEARCH-FINDINGS.md`. Session 2
+Status: finished 2026-09-14. Findings: `ai/features/moonsighting/RESEARCH-FINDINGS.md`. Sob 2
 extends this brief. The rules below bind it too.
 
 v2.0 takes the app beyond London. Today's API is a slightly modified version of Khalid Shaukat's

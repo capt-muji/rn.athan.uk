@@ -27,7 +27,7 @@ hand-rolled catalog has none.
    swap, not a rewrite.
 
 **Verdict: the recommendation stands, and the reason is reversibility rather than superiority.**
-The plan must state the crossover conditions explicitly so a later session knows when to switch:
+The plan must state the crossover conditions explicitly so a later job knows when to switch:
 a real plural string, a language count past roughly 40, or a TMS entering the picture.
 
 **What I got wrong and have fixed:** I initially presented this as "the library is unnecessary". It

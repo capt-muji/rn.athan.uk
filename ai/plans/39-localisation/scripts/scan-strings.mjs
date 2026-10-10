@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Session 38's string census and guard. Parses the tree with @babel/parser and
+// Sob 38's string census and guard. Parses the tree with @babel/parser and
 // classifies every JSX text node, string literal and template literal it can
 // see. Deterministic rules, in priority order:
 //   1. JSXText holding a letter -> display

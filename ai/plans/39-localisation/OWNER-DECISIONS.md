@@ -1,4 +1,4 @@
-# Session 39: the owner's rulings, taken 2026-09-28 and 2026-09-29
+# Job 39: the owner's rulings, taken 2026-09-28 and 2026-09-29
 
 Every ruling below is the owner's, quoted from the session that planned this row. A planning session
 never overrides one of these. Where research contradicts a ruling, the research is reported beside it
@@ -165,7 +165,7 @@ This is the most expensive ruling in the session, and the cost depends on a rese
 
 Both halves have a real cost. The native-resource route needs the strings in `InfoPlist.strings`
 or `res/values-<locale>/strings.xml`, which means a second catalog format kept in step with the
-JS one. The re-arm route reuses `commitSoundSelection`'s proven pattern but inherits session 33's
+JS one. The re-arm route reuses `commitSoundSelection`'s proven pattern but inherits job 33's
 partial-failure problem.
 
 The plan picks one on R5's evidence and records why. The prayer NAME inside that copy is a
