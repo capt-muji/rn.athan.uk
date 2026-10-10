@@ -66,7 +66,7 @@ export default function Navigation() {
       <BackgroundGradients />
       {chromeDeferred && (
         <>
-          <Animated.View style={[styles.chromeLayer, chromeOpacityStyle]} pointerEvents='box-none'>
+          <Animated.View style={[styles.chromeLayer, chromeOpacityStyle]} pointerEvents={'box-none'}>
             <RamadanDecorations />
           </Animated.View>
           {/* Veil backdrop (ADR-014): the overlay gradient + glow BEHIND content,
@@ -108,7 +108,7 @@ export default function Navigation() {
         </View>
         {/* Decorative: the pager already announces which page it is on, so naming the dots
             would have a screen reader read the position twice */}
-        <View style={styles.dotsRow} accessibilityElementsHidden importantForAccessibility='no-hide-descendants'>
+        <View style={styles.dotsRow} accessibilityElementsHidden importantForAccessibility={'no-hide-descendants'}>
           <Animated.View style={[styles.dot, dot0OpacityStyle]} />
           <Animated.View style={[styles.dot, dot1OpacityStyle]} />
         </View>

@@ -1,6 +1,7 @@
 import { format, intervalToDuration } from 'date-fns';
 
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 
 // =============================================================================
 // PRAYER-TIMEZONE CLOCK
@@ -439,6 +440,22 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
 // COUNTDOWN & DISPLAY FORMATTING
 // =============================================================================
 
+/** The unit words formatTime and formatTimeAgo render; a locale supplies its own */
+export interface DurationLabels {
+  h: string;
+  m: string;
+  s: string;
+  now: string;
+}
+
+/** The stage-one labels: the catalog's own single-letter units, byte-identical to the literals they replaced */
+export const durationLabels = (): DurationLabels => ({
+  h: t('duration.h'),
+  m: t('duration.m'),
+  s: t('duration.s'),
+  now: t('duration.now'),
+});
+
 /**
  * Whole seconds remaining until a target instant, for live countdown display.
  *
@@ -511,6 +528,7 @@ export const getWallSecondDelay = (): number => {
  *   minutes at any distance — but they still render when they are the only
  *   unit, because an empty parts list always falls back to "Ns" (default:
  *   false).
+ * @param labels The unit words to render with (default: the catalog's)
  * @returns Formatted time string
  *
  * Every example below is pinned by "pins every example in the JSDoc" in
@@ -525,8 +543,13 @@ export const getWallSecondDelay = (): number => {
  * formatTime(-100) // "0s"
  * formatTime(90000) // "25h" (days converted to hours; no trailing "0s")
  */
-export const formatTime = (seconds: number, hideSeconds = false, forceHideSeconds = false): string => {
-  if (seconds < 0) return '0s';
+export const formatTime = (
+  seconds: number,
+  hideSeconds = false,
+  forceHideSeconds = false,
+  labels: DurationLabels = durationLabels()
+): string => {
+  if (seconds < 0) return `0${labels.s}`;
 
   const ms = seconds * 1000;
   const duration = intervalToDuration({ start: 0, end: ms });
@@ -537,12 +560,12 @@ export const formatTime = (seconds: number, hideSeconds = false, forceHideSecond
   // Hide seconds if requested and time is over ~10 minutes (show seconds only in last 10m)
   const shouldShowSeconds = !forceHideSeconds && (!hideSeconds || seconds <= 599);
 
-  const parts = [totalHours && `${totalHours}h`, minutes && `${minutes}m`].filter(Boolean);
+  const parts = [totalHours && `${totalHours}${labels.h}`, minutes && `${minutes}${labels.m}`].filter(Boolean);
 
   // "0s" never appears beside another unit — a whole minute reads "1m", not "1m 0s".
   // Seconds render only when non-zero (and permitted), or when alone (e.g., "45s", "0s")
   if ((shouldShowSeconds && secs) || parts.length === 0) {
-    parts.push(`${secs ?? 0}s`);
+    parts.push(`${secs ?? 0}${labels.s}`);
   }
 
   return parts.join(' ');
@@ -552,6 +575,7 @@ export const formatTime = (seconds: number, hideSeconds = false, forceHideSecond
  * Formats seconds elapsed into "ago" text without seconds display
  *
  * @param seconds - Seconds since prayer occurred (can be 0 or positive)
+ * @param labels - The unit words to render with (default: the catalog's)
  * @returns "now" (<60s), "Xm" (1-59m), "Xh Ym" (1h+)
  *
  * @example
@@ -561,14 +585,14 @@ export const formatTime = (seconds: number, hideSeconds = false, forceHideSecond
  * formatTimeAgo(7200)    // Returns: "2h"
  * formatTimeAgo(0)       // Returns: "now"
  */
-export const formatTimeAgo = (seconds: number): string => {
-  if (seconds < 60) return 'now';
+export const formatTimeAgo = (seconds: number, labels: DurationLabels = durationLabels()): string => {
+  if (seconds < 60) return labels.now;
 
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m`;
+  if (minutes < 60) return `${minutes}${labels.m}`;
 
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
-  if (remainingMinutes === 0) return `${hours}h`;
-  return `${hours}h ${remainingMinutes}m`;
+  if (remainingMinutes === 0) return `${hours}${labels.h}`;
+  return `${hours}${labels.h} ${remainingMinutes}${labels.m}`;
 };

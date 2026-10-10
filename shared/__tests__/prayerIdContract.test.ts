@@ -104,9 +104,11 @@ describe('the prayer identifier contract, frozen 2026', () => {
 
   it('pins the channel-name formats in English', () => {
     const shared = read('shared/notifications.ts');
-    // biome-ignore lint/suspicious/noTemplateCurlyInString: pins the source text of a template literal, it must not interpolate
-    expect(shared).toContain('name: `Athan ${soundIndex + 1}`');
-    expect(shared).toContain("name: 'Extra Times'");
+    const catalog = read('shared/i18n/en.ts');
+    expect(shared).toContain("name: t('channel.athan', { n: soundIndex + 1 })");
+    expect(shared).toContain("name: t('channel.extras')");
+    expect(catalog).toContain("'channel.athan': 'Athan {n}'");
+    expect(catalog).toContain("'channel.extras': 'Extra Times'");
     // biome-ignore lint/suspicious/noTemplateCurlyInString: pins the source text of a template literal, it must not interpolate
     expect(shared).toContain('`${prayerLabel(id)} in ${intervalMinutes}m Reminder`');
   });

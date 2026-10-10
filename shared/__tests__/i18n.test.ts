@@ -163,6 +163,22 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['extras.explanation.suhoor', '20 mins before Fajr'],
   ['extras.explanation.duha', '20 mins after Sunrise'],
   ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only)'],
+
+  ['duration.h', 'h'],
+  ['duration.m', 'm'],
+  ['duration.s', 's'],
+  ['duration.now', 'now'],
+  ['channel.extras', 'Extra Times'],
+  ['app.loadingLabel', 'Loading prayer times'],
+  ['qibla.locationTitle', 'Enable Location'],
+  [
+    'qibla.locationMessage',
+    'The qibla is worked out from where you are, so it needs location access. Would you like to enable it in settings?',
+  ],
+  ['dialog.cancel', 'Cancel'],
+  ['dialog.openSettings', 'Open Settings'],
+  ['notifications.enableTitle', 'Enable Notifications'],
+  ['notifications.enableMessage', 'Prayer time notifications are disabled. Would you like to enable them in settings?'],
 ];
 
 describe('the en catalog', () => {
