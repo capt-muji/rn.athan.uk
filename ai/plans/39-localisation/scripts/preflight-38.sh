@@ -28,15 +28,16 @@ git merge-base --is-ancestor c3149dfc HEAD || FATAL "planned-at sha not an ances
 # name:step:source - every anchor owned by a step not yet DONE counts exactly 1.
 # Anchors owned by DONE steps are consumed by design and skipped. An anchor's owner is
 # the FIRST step not yet DONE that edits its region (replan 2026-10-10: ago-text,
-# channel-reminder, content-builders, reminder-content, timeline-names and timeline-next
-# moved to step 06, whose contracts retype them before steps 07/10/13 run).
+# channel-reminder, content-builders, reminder-content, timeline-names, timeline-next and
+# overlaycontent-arabic moved to step 06, whose contracts retype them before steps
+# 07/09/10/13 run).
 MAP="
 row-conditional:2:components/prayer/Prayer.tsx
 row-styles:2:components/prayer/Prayer.tsx
 settings-toggle:3:components/sheets/screens/Settings.tsx
 explanation-arabic:3:components/prayer/Explanation.tsx
 toarabic:3:shared/text.ts
-overlaycontent-arabic:3:components/overlay/overlayContent.ts
+overlaycontent-arabic:6:components/overlay/overlayContent.ts
 shownames-atom:3:stores/ui.ts
 prayerrow-type:4:shared/types.ts
 createprayer:4:shared/prayer.ts

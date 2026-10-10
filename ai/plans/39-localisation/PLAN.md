@@ -77,9 +77,10 @@ The executor reads those six in full before step 1, plus `__tests__/README.md`. 
 owner is the FIRST step not yet DONE that edits its region. Eleven anchors named by steps
 05 to 09 held text steps 02 to 04 already consumed, and are regenerated from the post-step-04
 tree at `76a40d3f` by `scripts/regenerate-anchors-38.sh` (that script's sha guard makes it a
-record, not a live tool). Six anchors whose regions step 06's contracts retype ahead of their
-original owners moved to step 06 in the pre-flight map: `ago-text`, `channel-reminder`,
-`content-builders`, `reminder-content`, `timeline-names`, `timeline-next`. Where a step names
+record, not a live tool). Seven anchors whose regions step 06's contracts retype ahead of
+their original owners moved to step 06 in the pre-flight map: `ago-text`,
+`channel-reminder`, `content-builders`, `reminder-content`, `timeline-names`,
+`timeline-next`, `overlaycontent-arabic`. Where a step names
 an anchor an earlier step has since rewritten, its Anchors line says so in a parenthetical.
 
 Why the obvious fix is wrong: renaming `Prayer.english` in place, or "translating" the arrays,
