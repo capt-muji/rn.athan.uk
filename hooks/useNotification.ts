@@ -3,6 +3,7 @@ import { Alert, AppState, Linking } from 'react-native';
 
 import * as Device from '@/device/notifications';
 import type { PrayerId } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { type AlertMenuState, AlertType, type ScheduleType } from '@/shared/types';
@@ -56,16 +57,16 @@ const listenForReturnToApp = () => {
 const showSettingsDialog = (): Promise<boolean> => {
   return new Promise((resolve) => {
     Alert.alert(
-      'Enable Notifications',
-      'Prayer time notifications are disabled. Would you like to enable them in settings?',
+      t('notifications.enableTitle'),
+      t('notifications.enableMessage'),
       [
         {
-          text: 'Cancel',
+          text: t('dialog.cancel'),
           style: 'cancel',
           onPress: () => resolve(false),
         },
         {
-          text: 'Open Settings',
+          text: t('dialog.openSettings'),
           onPress: async () => {
             const returnToApp = listenForReturnToApp();
 
