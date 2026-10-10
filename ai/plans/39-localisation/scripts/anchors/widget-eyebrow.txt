@@ -1,0 +1,5 @@
+            enough to hold another letter (owner 2026-09-25). Plain text is far
+            closer to iOS than the workaround was. */}
+        {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow)}
+        <Spacer modifiers={[height(2)]} />
+        {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}

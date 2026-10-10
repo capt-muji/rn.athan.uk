@@ -1,0 +1,6 @@
+        {/* English explanation */}
+        <Text style={styles.infoExplanation}>{explanation}</Text>
+
+        {/* Arabic explanation */}
+        <Text style={styles.infoExplanationArabic}>{toArabicNumbers(explanationArabic)}</Text>
+      </View>

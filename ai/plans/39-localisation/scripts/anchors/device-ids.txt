@@ -1,0 +1,23 @@
+ * Builds the deterministic identifier for an at-time prayer notification.
+ * Same identifier = idempotent replace on both platforms (Android PendingIntent is
+ * derived from the identifier; iOS UNUserNotificationCenter replaces by identifier),
+ * so re-scheduling can never create a duplicate even if MMKV bookkeeping is lost.
+ */
+export const prayerNotificationIdentifier = (scheduleType: ScheduleType, englishName: string, date: string) =>
+  `athan_${scheduleType}_${englishName.toLowerCase()}_${date}`;
+
+/**
+ * Builds the deterministic identifier for a pre-prayer reminder notification.
+ * Includes the interval so changed intervals get a fresh identity (old one is
+ * cancelled via the per-prayer clear before re-scheduling).
+ *
+ * The slot is NOT part of it: the interval already separates a prayer's two reminders, because
+ * the sheet cannot put both on one minute, and leaving the slot out keeps the identifier every
+ * install already holds for its single reminder.
+ */
+export const reminderNotificationIdentifier = (
+  scheduleType: ScheduleType,
+  englishName: string,
+  date: string,
+  intervalMinutes: ReminderInterval
+) => `reminder_${scheduleType}_${englishName.toLowerCase()}_${date}_${intervalMinutes}`;

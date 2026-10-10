@@ -1,5 +1,11 @@
 # R14. Test refactor census (research agent report, 2026-10-09)
 
+> **Correction banner, 2026-10-10 (external verification CNT-7/CNT-8):** the headline counts
+> below are wrong; the table is right. The tree holds 189 test files, not 171; the table lists
+> 85 distinct affected suites, not 74; the true subtotals are 62/38/28/17/8, not 62/38/24/18/7.
+> The per-suite rows and citations were re-verified and stand. The plan cites the table, never
+> the headline.
+
 Dispatched by the owner's instruction. 171 test files scanned; suites with at least one affected
 assertion: 74. Marker lines = grep hits for the category's patterns. The five categories:
 
