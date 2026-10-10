@@ -27,6 +27,16 @@
   each carries a per-line ignore with its reason (a pin of template-literal source text must
   not interpolate).
 
+## Step 2: the row's Arabic column dies
+
+- Branch `feat/38-02-row` off `uat`. Red: "names the prayer once, in one language" failed
+  against the atom-defaulted Arabic Text, then the change removed the conditional block, the
+  `arabic` style, the atom read and its import from `Prayer.tsx`; both Arabic tests deleted
+  with the surface, the mock entry dropped from `Prayer.test.ts`.
+- Green: Prayer folder 7 suites, 57 tests. tsc clean. Biome clean.
+- Breaks: 2 of 2 AS EXPECTED (ungated Arabic Text returns; name uppercases), restore green:
+  `ALL AS EXPECTED: 1`. Version 1.29.310.
+
 ## Resume from: step 2, part 0
 
 Context ran low after step 1. The next session: run the pre-flight with k=2, resume the

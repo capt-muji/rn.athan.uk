@@ -14,7 +14,6 @@ import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
 import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
-import { showArabicNamesAtom } from '@/stores/ui';
 
 import Alert from './Alert';
 import Time from './Time';
@@ -33,8 +32,6 @@ interface Props {
  * @param index - Prayer index within the schedule
  */
 export default function Prayer({ type, index }: Props) {
-  const showArabicNames = useAtomValue(showArabicNamesAtom);
-
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
@@ -88,9 +85,6 @@ export default function Prayer({ type, index }: Props) {
       <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, colorStyle]}>
         {Prayer.english}
       </Animated.Text>
-      {showArabicNames && (
-        <Animated.Text style={[styles.text, styles.arabic, colorStyle]}>{Prayer.arabic}</Animated.Text>
-      )}
       <Time index={index} type={type} />
       <Alert index={index} type={type} />
     </AnimatedPressable>
@@ -109,9 +103,5 @@ const styles = StyleSheet.create({
   },
   english: {
     paddingLeft: STYLES.prayer.padding.left,
-  },
-  arabic: {
-    flex: 1,
-    textAlign: 'right',
   },
 });
