@@ -117,6 +117,9 @@ Write through the template, section by section, committing as sections land:
   throw, exact log-line text, stored keys with type and meaning, each test with what it
   proves and the failure it must show red, the break script in full, the commit message
   starting `<VERSION> - `, anticipated review fixes word for word, restore lists.
+- Every step file carries `Weight: <n>` (device 3, code 2, docs 1), and the header
+  table carries `Batch budget` and `Session budget`, both in weight units. The lead
+  packs batches and replaces worker sessions mechanically from these numbers.
 - Short sentences. One instruction per numbered item. No pronoun whose referent is more
   than one sentence back. Expected output as literal text. A long plan splits: `PLAN.md`
   holds sections 1 to 5 and 7 to 12, each step in `steps/<k>-<name>.md`, scripts in
@@ -147,7 +150,10 @@ Run `bash scripts/check-plan.sh <plan-folder>` from the repository root. It must
 
 1. Set the row in `ai/plans/README.md`: status READY (or OWNER-LED, or BLOCKED with the
    reason), "Planned at" (the `uat` sha your anchors were verified against), "Needs
-   first" (order numbers, or `nothing`).
+   first" (order numbers, or `nothing`), "Parent" (the order number this row rolls up
+   into, when it has one) and "Group" (the shared code surface, named when this plan's
+   files overlap another open row's: same-group rows serialize, disjoint groups may run
+   in parallel).
 2. Branch `docs/plan-<N>-$(date +%Y%m%d-%H%M)` off `uat`. Add the plan folder and the
    queue change, bump the patch version in the three places, commit with a message
    saying which job was planned and what the plan covers.

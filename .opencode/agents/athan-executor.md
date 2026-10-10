@@ -1,5 +1,5 @@
 ---
-description: Executes one planned job step by step to its acceptance criteria. Give it the plan folder path, the job number, and the first step not ticked DONE. It works cold from the plan, never pushes, and returns a status report.
+description: Executes an assigned batch of a planned job's steps to their acceptance criteria. Give it the plan folder path, the job number, and its step range. It works cold from the plan, never pushes, and returns a status report.
 mode: subagent
 permissions:
   - action: shell
@@ -33,11 +33,22 @@ never claim to have checked one you did not.
 
 `LOG.md` in the plan folder is your state. Append to it as each step lands: the
 step and branch, the commit sha and version, the hook's `Tests:` and coverage
-lines, the break script's last line, your review verdict, the merge sha. A step
-is DONE when its checklist box is ticked. Never redo a ticked step. If your
-context fills mid-step, write `Resume from: step k, part m` at the top of
-`LOG.md`, commit and merge what finished, and return: the lead respawns you from
-that note.
+lines, the break script's last line, your review verdict, the merge sha, and a
+final line `session: $OPENCODE_SESSION_ID` (your own session, from your
+environment). A step is DONE when its checklist box is ticked. Never redo a
+ticked step. If your context fills mid-step, write `Resume from: step k, part m`
+at the top of `LOG.md`, commit and merge what finished, and return: the lead
+respawns you from that note.
+
+## Batches
+
+The lead assigns a range of steps per dispatch, packed mechanically from the
+plan's step weights; a device step always dispatches alone. Run only your
+assigned range. When your range ends short of the plan's last step, return
+`ROTATE: steps k to m done, next m+1` instead of running Finishing. `DONE`
+means exactly: every step merged, the row set EXECUTED, Finishing run. A
+session resumed by the lead still opens cold: run the anchor check and the
+tree check before your first assigned step, exactly as a fresh session would.
 
 ## STOP and return when
 
@@ -59,7 +70,8 @@ that note.
 1. `git status --porcelain` may list only `ai/plans/README.md` and this plan
    folder's `PLAN.md` and `LOG.md`, else STOP. Create the branch the plan names
    off `uat`. With the first step's commit, set the row in `ai/plans/README.md`
-   to IN PROGRESS.
+   to `IN PROGRESS, step k`, and move that step number forward inside each
+   later step's own commit.
 2. **Red.** Write the tests the step names, verbatim where the plan gives them.
    The named tests must fail with the failure the plan describes. If they pass,
    or other tests fail, STOP.
@@ -75,7 +87,9 @@ that note.
    It must end `ALL AS EXPECTED: 1`, and `git status --porcelain` must then list
    only this step's files and the plan files. A break that passes where the plan
    says it fails: STOP.
-6. **Version.** Fetch `origin` first: concurrent jobs take the same number. Run
+6. **Version.** Fetch `origin` under the version lock: `flock
+   $HOME/athan-gitree/version.lock` held from fetch to merge, because
+   concurrent jobs take the same number. Run
    the plan's version command and set the printed version in `app.json`,
    `package.json` and `android/app/build.gradle` (`versionName`), all three
    matching, `app.json` first when a prebuild follows. The gradle file is
@@ -197,7 +211,8 @@ do not push. Remove every scratch worktree you made with
 under `$HOME/athan-gitree/worktrees/` stay.
 
 Your final message is under 15 lines and starts with one of `DONE`,
-`DONE_WITH_CONCERNS`, `BLOCKED`, `NEEDS_CONTEXT: NEEDS REPLAN, <reason>` or `STOP:`.
+`DONE_WITH_CONCERNS`, `ROTATE`, `BLOCKED`, `NEEDS_CONTEXT: NEEDS REPLAN,
+<reason>` or `STOP:`.
 On `BLOCKED`, write the reason into the queue row before returning. It names the steps
 done, the last commit sha, the hook's `Tests:` line, and the evidence paths. The
 full detail lives in `LOG.md`.
