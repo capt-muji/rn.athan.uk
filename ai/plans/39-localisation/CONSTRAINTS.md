@@ -1,4 +1,4 @@
-# Session 39: the constraints that decide the design
+# Job 39: the constraints that decide the design
 
 `MEASURED.md` records what the repository contains. This file records what those measurements
 MEAN for the design, and it is where the non-obvious findings live. Each section ends with the
@@ -22,16 +22,16 @@ Both changes have the same three properties: they alter copy baked into up to 64
 requests, they must not interleave with another scheduling pass, and a partial failure leaves the
 phone disagreeing with the settings screen.
 
-Session 33 was queued specifically because this operation is **not atomic**: a failure part way
+Sob 33 was queued specifically because this operation is **not atomic**: a failure part way
 through leaves some prayers re-armed with the new value and the rest on the old, while the
 rolled-back preference makes Settings disagree with both. Row 33 is DONE, so whatever it decided
 is the precedent, and this session inherits it rather than re-litigating it.
 
 **Rule:** the language commit is `commitLanguageSelection`, built on `withSchedulingLock`,
-modelled line for line on `commitSoundSelection`, and it inherits session 33's ruling on partial
+modelled line for line on `commitSoundSelection`, and it inherits job 33's ruling on partial
 failure. It is never a plain atom write.
 
-**Corollary the plan must not miss:** session 28 records that `commitPrayerAlertChange` wrote the
+**Corollary the plan must not miss:** job 28 records that `commitPrayerAlertChange` wrote the
 preference BEFORE taking the lock, so a second queued commit saw the first's values. A language
 commit has the same hazard and must compute what it needs once, from the values it was called
 with, and pass them to both halves.

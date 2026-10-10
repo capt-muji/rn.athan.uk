@@ -11,10 +11,10 @@ needs it (C3):
   SDK 57 line (57.0.2) when this was written, and row 37 hit exactly this trap for
   `expo-location` and `expo-sensors`.
 - **Pin the exact version rather than a range**, matching how `expo-widgets` and `@expo/ui` are
-  pinned to an exact `58.0.5` after the session 23 breakage.
+  pinned to an exact `58.0.5` after the sob 23 breakage.
 - **After ANY `yarn add`, run `shared/__tests__/widgetRuntimeLoads.test.ts`**: a re-resolve can
   reintroduce a nested `@expo/ui` copy under `node_modules/expo-widgets/` that blanks every
-  widget (session 31). Recovery: `rm -rf node_modules/expo-widgets/node_modules && yarn install
+  widget (sob 31). Recovery: `rm -rf node_modules/expo-widgets/node_modules && yarn install
   --frozen-lockfile`.
 - `rtl-detect` (its one runtime dep) maps a language tag to a direction. Under D7 the answer
   chooses TEXT alignment and base direction, never layout direction.

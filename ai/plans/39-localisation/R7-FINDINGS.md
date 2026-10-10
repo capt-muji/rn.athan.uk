@@ -57,7 +57,7 @@ title-only design, truncation, and the bidi hazard of the slash). R7 adds a fift
 worse than all four:
 
 > Arming two notifications per prayer, one per language, doubles the request cost of every row
-> against the fixed `NOTIFICATION_REQUEST_BUDGET` of 64. Session 28 measured the standard profile
+> against the fixed `NOTIFICATION_REQUEST_BUDGET` of 64. Job 28 measured the standard profile
 > at 3 days of horizon with both reminders. Doubling rows cuts it toward 1.5 days.
 
 So a bilingual notification would not merely look cramped. It would **halve how long the app keeps

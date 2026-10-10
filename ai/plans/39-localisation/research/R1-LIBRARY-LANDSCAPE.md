@@ -1,6 +1,6 @@
 # R1: The i18n library landscape, measured (compressed)
 
-Research report for session 39. Written 2026-09-29 at 641 lines. **Compressed 2026-10-07** to
+Research report for job 39. Written 2026-09-29 at 641 lines. **Compressed 2026-10-07** to
 the sections other documents do not carry; the conclusions and measured numbers this plan
 actually builds on live in `R1-FINDINGS.md` (the Hermes-no-`Intl` finding and the canary-test
 rule it forces, the polyfill inventory, the 5,317 B/language catalog cost, the hand-rolled

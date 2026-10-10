@@ -83,7 +83,7 @@ Five verified constraints:
 
 1. **The system takes the first line.** `interruptionLevel: 'timeSensitive'` plus its
    entitlement means iOS draws the "Time Sensitive" label itself; it cannot be suppressed while
-   keeping the level, and dropping it gives up the breakthrough session 27 won.
+   keeping the level, and dropping it gives up the breakthrough job 27 won.
 2. **The app's whole notification design is one title line** (`shared/notifications.ts`, title
    only, no body), so the display budget is one short line beneath a system label.
 3. **Truncation loses the meaningful end.** A truncated title keeps the names and drops the
@@ -92,7 +92,7 @@ Five verified constraints:
    context and reorder at script boundaries. A Latin-then-Arabic-then-Latin title on a
    pinned-LTR layout is the worst case in that section.
 5. **Doubling notifications would halve the buffer.** Two notifications per prayer double the
-   request cost of every row against the fixed `NOTIFICATION_REQUEST_BUDGET` of 64. Session 28
+   request cost of every row against the fixed `NOTIFICATION_REQUEST_BUDGET` of 64. Job 28
    measured the standard profile at 3 days of horizon with both reminders; doubling rows cuts
    it toward 1.5 days and shortens the silence window when the background chain dies.
 
@@ -168,7 +168,7 @@ his notifications. It costs nothing here.
 | --- | --- |
 | Primary language / Secondary language, two pickers, notifications follow the secondary (the D4 framing) | The deadlock itself. Ties interface language to a display choice, so an English speaker who likes Arabic names loses English notifications, and "English in both columns" becomes expressible but useless. The naming also collides with the industry's fallback meaning (section 1) |
 | One App language setting only, no second slot | Muslim Pro's simpler half. Cannot express the bilingual row at all, so the existing default user loses الفجر on upgrade unless a toggle is kept, which lands back where the app is today. The Indonesian-with-Arabic row, the most likely global configuration, is unreachable |
-| Bilingual notification titles | Section 4. One title line under a system label, truncation loses the actionable end, the slash is a bidi hazard, and doubling armed rows halves the notification buffer horizon measured by session 28 |
+| Bilingual notification titles | Section 4. One title line under a system label, truncation loses the actionable end, the slash is a bidi hazard, and doubling armed rows halves the notification buffer horizon measured by job 28 |
 | First name stays English permanently (D5 read literally) | Defensible for a London-only app, incoherent for the global audience of D1: no comparator ships a permanent English primary beside a localised interface, and Muslim Pro markets the opposite. Retained as the graceful degradation if the owner keeps the ruling; everything else in this model survives it |
 
 The strongest argument against putting the first name under the App language (R7 §10): it

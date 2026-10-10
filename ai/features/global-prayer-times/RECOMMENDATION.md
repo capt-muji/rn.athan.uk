@@ -81,7 +81,7 @@ different countries. Malaysia and Indonesia print `Imsak` as a real extra row ex
 Turkey's table has no Fajr row at all: its first row is `İmsak` and that row IS Fajr. Fill an `imsak` field and a
 `fajr` field naively and the app is 10 minutes wrong in one country or the other. The fix is cheap if done early
 and expensive later: **the concept, the identifier and the label become three separate things, and only the label
-varies.** Session 39 already requires this split for localisation, so it is one piece of work serving two needs.
+varies.** Sob 39 already requires this split for localisation, so it is one piece of work serving two needs.
 
 ---
 
