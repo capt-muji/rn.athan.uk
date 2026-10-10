@@ -6,7 +6,7 @@ version: 4.1.0
 
 # athan-next
 
-The owner resumes with /go and walks away. This skill carries ONE queued session from planning through execution to audit and stops when that session is DONE and pushed, or the moment it needs the owner.
+The owner starts a queued session with /athan-next and walks away. This skill carries ONE queued session from planning through execution to audit and stops when that session is DONE and pushed, or the moment it needs the owner.
 
 **You do every phase yourself, in this session.** Subagents are banned, with two exceptions. The audit's **cold review**, because a reviewer that never saw the session catches what its author cannot: `athan-auditor` says when and how. And `vision`, because seeing images is a capability, not a preference. If you can see images, read them yourself. If you cannot, call the `vision` subagent with the file path and one exact question, and rely on its report. Never guess what an image shows, and never claim to have checked one you did not.
 
@@ -83,7 +83,7 @@ Stop as soon as one of these is true, and never start another phase after it:
 - a row is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such as holding a device or tapping a screen. An owner decision is not one of these: ask it with the `question` tool and carry on;
 - section 4 says stop.
 
-One session per run. Never carry on into the next row: the owner starts that with `/go` or `/athan-next`.
+One session per run. Never carry on into the next row: the owner starts that with `/athan-next`.
 
 ## 6. Your final reply: the handoff, four lines, nothing after it
 
@@ -91,7 +91,7 @@ One session per run. Never carry on into the next row: the owner starts that wit
 **Just done:** <Planning, Execution and Audit | the phases that ran>, session <n>. <one clause on what moved>
 **Row:** <status now>, `uat` <pushed | holds N unpushed commits>
 **Up next:** <the phase or session that comes next, or what it is waiting on>
-**You type:** `/go` to continue, or `/athan-next` for the next queued session
+**You type:** `/athan-next` for the next queued session; `/go` only after a real `/handoff`
 ```
 
 Above those four lines, at most three sentences: what the session delivered, and anything the owner must decide or hold. Nothing else. The detail lives in the plan folder's `LOG.md` and `AUDIT.md`.
