@@ -1,5 +1,57 @@
 # Execution log: Job 38
 
+## Step 11: the width cache goes per-locale
+
+- Branch `feat/38-11-width` off `uat` (`03137ce3`, step 10's merge). All five
+  anchors count exactly 1 in their live files (`width-atoms`, `setwidth`,
+  `setwidth-grow` in stores/ui.ts; `version-keeplist` in stores/version.ts;
+  `sync-keeplist` in stores/sync.ts).
+- Red, both named tests written in `stores/__tests__/ui.test.ts` and failing
+  before the change: test 1 `Expected "150", Received undefined` (no en key on
+  disk), test 2 `Expected 150, Received 90` (the atoms still read the legacy
+  keys, so 90 widened from 0). Getting the red honest took test-mock surgery,
+  recorded: the file-wide hoisted mocks for `jotai` and `../storage` cannot be
+  overridden by `jest.doMock` once the outer imports have instantiated them
+  (probed empirically), so both hoisted factories gained a `mockRealImplementations`
+  flag that the isolated load flips, and the delegate captures the sandbox's
+  real default store (`mockCapturedRealStore`) so the assertions read the same
+  store the module under test wrote. `@/stores/database` is file-scope mocked
+  behind a Map both the seed and the real storage factory share.
+- Contracts: `CURRENT_LOCALE_ID = 'en'` exported from `shared/i18n/index.ts`;
+  the seed loop in `stores/ui.ts` at module scope ABOVE the atom definitions
+  (R18 phase 0 step 2's ordering), copying each legacy value raw
+  string-to-string only when the `en` key is absent, then removing the legacy
+  key unconditionally (idempotent, D35); the atoms now carry
+  `prayer_max_english_width_en_standard`/`..._en_extra` through the constant.
+  `setEnglishWidth` untouched (anchors hold; widen-only per key exactly).
+- Contract 4's parenthetical "already true after step 06" is a slip: the
+  component read `STANDARD_PRAYER_TITLES`/`EXTRA_PRAYER_TITLES`. The normative
+  sentence and R3.3 win - `InitialWidthMeasurement` now renders
+  `prayerLabel(STANDARD_PRAYER_IDS[...])`/`prayerLabel(EXTRA_PRAYER_IDS[...])`
+  (same bytes, `getLongestPrayerNameIndex` unchanged as the length oracle); its
+  suite's assertions needed no re-key (they assert atom values, not keys) and
+  pass unedited.
+- Keep-lists untouched in both wipes (`prayer_max_english_width_` covers both
+  shapes - D35 no keep-list changes). Fixture re-keys: `sync.test.ts`'s
+  survivor-keys row and `syncFetchBeforeWipe.test.ts`'s KEPT_KEYS + seeded key
+  now carry `prayer_max_english_width_en_standard` (the only shape the app
+  writes post-change). `version.test.ts`, `shownDate.test.ts` and the
+  InitialWidthMeasurement suite needed no change.
+- Green: the six named suites 252 passed; full suite `192 suites, 5268
+  passed`; tsc clean; Biome clean. Done-when grep: only the seed, the atoms,
+  the two keep-prefixes and Error.tsx's true comment reference the width keys;
+  no legacy key read anywhere after the seed.
+- Breaks, 3 of 3 AS EXPECTED, final `ALL AS EXPECTED: 1` (first run's
+  NOT-APPLIED verdicts were the script's own `tail -5` capture hiding the
+  failing-test names; the rerun with full capture proved each break): seed
+  moved below the atoms -> named test 1 reads 0; unconditional overwrite ->
+  named test 2 fails (with the sibling ISSUES #22 pin, the same defect);
+  legacy removal dropped -> named test 1's removal assertion fails. Restores
+  by file backup, suite back to 29 passed.
+- Version 1.29.338 (origin fetched under the lock; origin/uat still at
+  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
+  `<merge sha>`.
+
 ## Step 10: wave 3, the app tree, the device strings and the duration labels
 
 - Branch `feat/38-10-wave3` off `uat` (`6372aa74`). Step 9's commit was

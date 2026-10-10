@@ -2,8 +2,10 @@ import type { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { atom, getDefaultStore } from 'jotai';
 
 import type { PrayerId } from '@/shared/constants';
+import { CURRENT_LOCALE_ID } from '@/shared/i18n';
 import { perfMark } from '@/shared/perf';
 import { type PageCoordinates, ScheduleType } from '@/shared/types';
+import { database } from '@/stores/database';
 import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '@/stores/storage';
 
 const store = getDefaultStore();
@@ -100,11 +102,29 @@ export const qiblaSheetModalAtom = atom<BottomSheetModal | null>(null);
 // ATOMS - Layout Measurements
 // =============================================================================
 
+// The width cache is keyed per locale (R7.1). This seed runs at module
+// evaluation, BEFORE the atoms below first read storage: on the first launch
+// after the re-key each `en` key copies its legacy key's raw value, and the
+// legacy key is then removed unconditionally so every later launch leaves the
+// database clean (D35) and the copy never repeats.
+for (const side of ['standard', 'extra'] as const) {
+  const legacyKey = `prayer_max_english_width_${side}`;
+  const localeKey = `prayer_max_english_width_${CURRENT_LOCALE_ID}_${side}`;
+  const legacy = database.getString(legacyKey);
+  if (database.getString(localeKey) === undefined && legacy !== undefined) {
+    database.set(localeKey, legacy);
+  }
+  database.remove(legacyKey);
+}
+
 /** Measured width of longest English prayer name for Standard schedule */
-export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
+export const englishWidthStandardAtom = atomWithStorageNumber(
+  `prayer_max_english_width_${CURRENT_LOCALE_ID}_standard`,
+  0
+);
 
 /** Measured width of longest English prayer name for Extra schedule */
-export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_width_extra', 0);
+export const englishWidthExtraAtom = atomWithStorageNumber(`prayer_max_english_width_${CURRENT_LOCALE_ID}_extra`, 0);
 
 /** Page coordinates of the prayer list component (for animations) */
 export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
