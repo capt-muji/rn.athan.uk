@@ -49,3 +49,13 @@ read of the prod render frame and a direct epoch comparison of the alarm dumps.
    params, id examples); reworded the scan-strings allowlist comment.
 6. Deleted the dead `TEXT.sizeArabic` and `TEXT.lineHeight.arabic`.
 7. Recorded the step 9-15 review verdicts in LOG.md.
+
+## PASS
+
+All 14 findings adjudicated; the seven confirmed ones fixed in `a36b9a92` (1.29.344), red before
+green where behaviour was touched, `yarn validate` green at 194 suites and 5292 tests. The row
+is DONE as 2.0.0-stage-1; the version flips to 2.0.0 on this audit-PASS commit (ruled by the
+lead from D19 and Q7: both stages live inside the one 2.0.0 release, and a failed audit must not
+yo-yo the number). The plan folder survives until row 39's merge per its own records rule; the
+device evidence under `~/athan-gitree/sessions/38/` is deleted here, its numbers recorded in
+LOG.md.
