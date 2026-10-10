@@ -6,6 +6,7 @@ baked-prop reads, and the migration's frozen legacy arrays. The data-modules rul
 guard as its second part.
 
 Requirements: R5.1
+Weight: 2
 
 - Branch: `feat/38-14-guard`
 - Anchors: none new (this step reads the whole tree)

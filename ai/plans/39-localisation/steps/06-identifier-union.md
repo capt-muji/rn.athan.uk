@@ -6,6 +6,7 @@ narrows through `StoredPrayerId` and the unsafe cast dies. The migration is rewr
 line. The firewall fixtures join the contract test.
 
 Requirements: R1.1, R2.1, R3.1
+Weight: 2
 
 - Branch: `feat/38-06-union`
 - Anchors: `prayerrow-type`, `namesforDate`, `unreadable-row`, `night-branch`, `atom-factory`,

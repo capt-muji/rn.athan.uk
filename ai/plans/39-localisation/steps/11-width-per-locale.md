@@ -6,6 +6,7 @@ are then removed. Widen-only semantics stay per key. The keep-prefix
 `prayer_max_english_width_` already covers both shapes in both wipes, unchanged.
 
 Requirements: R7.1
+Weight: 2
 
 - Branch: `feat/38-11-width`
 - Anchors: `width-atoms`, `setwidth`, `setwidth-grow`, `version-keeplist`, `sync-keeplist`
