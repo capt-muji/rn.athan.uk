@@ -5,6 +5,8 @@ The allowlist empties. Every scanned tree (`components`, `app`, `hooks`, `shared
 baked-prop reads, and the migration's frozen legacy arrays. The data-modules rule joins the
 guard as its second part.
 
+Requirements: R5.1
+
 - Branch: `feat/38-14-guard`
 - Anchors: none new (this step reads the whole tree)
 - Files: `scripts/string-census-allowlist.json` (becomes `[]`), `scripts/scan-strings.mjs`

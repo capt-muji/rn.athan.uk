@@ -8,11 +8,3 @@ const UPGRADE_KEEP_PREFIXES: string[] = [
   'app_installed_version', // Version tracker itself
   'whats_new_shown_version', // What's New display tracker (see shared/whatsNew.ts)
   'cache_schema_version', // Cache shape marker (also re-stamped after a wipe)
-
-  // User Preferences - must persist across upgrades
-  'preference_', // All user preferences (alerts, sound, countdownbar, hijri, show_*, reminder_*)
-
-  // Cached layout measurements - prayer names and fonts are constants, so the
-  // measured column widths are valid forever (recomputing them reflows the list)
-  'prayer_max_english_width_',
-];

@@ -4,6 +4,8 @@ Every display string under `components/` migrates to the catalog. The census
 (`node ai/plans/39-localisation/scripts/scan-strings.mjs` from the repo root, or the repo copy
 landed in step 08) names the files; the guard's allowlist sheds them all in this step.
 
+Requirements: R3.2, R5.1
+
 - Branch: `feat/38-09-wave2`
 - Anchors: `explanation-arabic` (now the single-line explanation), `overlaycontent-arabic`
   (the English half remains, and step 06 has since retitled `EXTRAS_ENGLISH` to the legacy

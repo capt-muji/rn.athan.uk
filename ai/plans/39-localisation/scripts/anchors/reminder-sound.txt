@@ -1,0 +1,15 @@
+/**
+ * Gets notification sound for a pre-prayer reminder based on alert type
+ * Every prayer × interval combination has its own audio file
+ * (reminder_fajr_5.mp3 … reminder_istijaba_30.mp3)
+ */
+export const getReminderNotificationSound = (
+  alertType: AlertType,
+  englishName: string,
+  intervalMinutes: ReminderInterval
+): string | false => {
+  if (alertType !== AlertType.Sound) return false;
+
+  const slug = prayerNameSlug(englishName);
+  return `reminder_${slug}_${intervalMinutes}.mp3`;
+};

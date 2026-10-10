@@ -5,6 +5,8 @@ signatures' Arabic parameter, and the bookkeeping record's `arabicName` field al
 records that already carry `arabicName` keep parsing (the reader is `JSON.parse`, extra fields
 ignored); the type narrows so no new write carries it.
 
+Requirements: R2.1
+
 - Branch: `feat/38-04-plumbing`
 - Anchors: `prayerrow-type`, `createprayer`, `namesforDate`, `unreadable-row`, `constants-arrays`,
   `scheduled-record-type`, `survived-record`, `multi-schedule-sig`, `alert-sheet-write`, `reschedule-head`
@@ -55,8 +57,9 @@ each suite keeps every behaviour assertion.
    `_arabicName` parameters.
 5. `stores/notifications.ts`: the survived-record write drops `arabicName`
    (`survived-record`); `_addMultipleScheduleNotificationsForPrayer` loses the parameter
-   (`multi-schedule-sig`) and threads the call chain (scheduleNotificationForDate, the
-   reminder twins, `commitPrayerAlertChange`, `commitAlertMenuChanges`) accordingly; the
+   (`multi-schedule-sig`) and threads the same parameter loss through the call chain
+   (scheduleNotificationForDate, the reminder twins, `commitPrayerAlertChange`,
+   `commitAlertMenuChanges`); the
    preference snapshot keeps `prayer` (a display string in a log - it stays English).
 6. `stores/ui.ts`: `AlertSheetState` loses `prayerArabic`.
 7. `components/prayer/Alert.tsx` (`alert-sheet-write`): the sheet write drops `prayerArabic`

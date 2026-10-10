@@ -1,14 +1,4 @@
 /**
- * Android channel ID for a pre-prayer reminder sound (one channel per prayer × interval audio)
- * `_v3` tracks the athan generations for the same reason: neither the audio attributes nor the
- * importance of an existing channel can be changed in place
- */
-export const reminderAndroidChannelId = (englishName: string, intervalMinutes: ReminderInterval): string => {
-  const slug = prayerNameSlug(englishName);
-  return `reminder_${slug}_${intervalMinutes}_v3`;
-};
-
-/**
  * Android channel ID for the fixed at-time Sunrise + extras sound
  * `_v3` tracks the athan and reminder generations, for the same immutability reason
  */

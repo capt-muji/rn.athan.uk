@@ -7,6 +7,8 @@ The last non-widget surfaces: `app/**` screens, `device/qibla.ts`'s `Alert.alert
 duration unit labels. After this step the only display literals left in the tree are the
 widget layouts' (step 13) and the catalog files'.
 
+Requirements: R3.2, R5.1
+
 - Branch: `feat/38-10-wave3`
 - Anchors: `ago-text` (post-step-06: the templates read `prayerLabel(prevPrayer.id)`),
   `plan-key` (post-step-06: keyed by `id`), `content-builders`, `reminder-content`

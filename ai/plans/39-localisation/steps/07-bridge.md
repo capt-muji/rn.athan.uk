@@ -4,6 +4,8 @@
 round-trip parity test. The transfer format is the catalog itself: flat key-value JSON,
 `{token}` placeholders, no i18next reserved shapes (RECONCILIATION, ARCH-14/A3).
 
+Requirements: R4.1, R4.2
+
 - Branch: `feat/38-07-bridge`
 - Anchors: `content-builders`, `reminder-content` (both files hold the post-step-04 text;
   step 06 first retypes them to `(id: PrayerId, ...)` with `prayerLabel` titles - edit
