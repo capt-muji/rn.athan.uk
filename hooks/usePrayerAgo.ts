@@ -33,11 +33,9 @@ export const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
     const secondsElapsed = Math.floor((now.getTime() - prevPrayer.datetime.getTime()) / 1000);
     const minutes = Math.floor(secondsElapsed / 60);
     const timeAgo = formatTimeAgo(secondsElapsed);
+    const name = prayerLabel(prevPrayer.id);
 
-    const agoText =
-      secondsElapsed < 60
-        ? t('time.now', { name: prayerLabel(prevPrayer.id) })
-        : t('time.ago', { name: prayerLabel(prevPrayer.id), duration: timeAgo });
+    const agoText = secondsElapsed < 60 ? t('time.now', { name }) : t('time.ago', { name, duration: timeAgo });
 
     return { prayerAgo: agoText, minutesElapsed: minutes, isReady: true };
   } catch {

@@ -37,11 +37,6 @@ if (mode === 'import') {
       expect(imported).toEqual(exportTo(en));
     });
   });
-
-  afterAll(() => {
-    // Jest has done its work; the script contract is a clean exit
-    process.exit(0);
-  });
 }
 
 describe('the catalog as its own transfer format', () => {

@@ -37,12 +37,6 @@ describe('prayerNotificationIdentifier', () => {
     );
   });
 
-  it('lowercases prayer names so casing never produces a second identity', () => {
-    expect(prayerNotificationIdentifier(ScheduleType.Extra, 'last third', '2026-08-28')).toBe(
-      'athan_extra_last third_2026-08-28'
-    );
-  });
-
   it('builds the space-form identifier from the id', () => {
     expect(prayerNotificationIdentifier(ScheduleType.Extra, 'last third', '2026-08-28')).toBe(
       'athan_extra_last third_2026-08-28'

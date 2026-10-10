@@ -4,7 +4,7 @@
  *
  * `selectedPrayerIndex` is the row's place on its day's list as the sequence holds it, while List draws the
  * rows in canonical order. The two agree only because the sequence is built that way, so the row is looked up
- * in the order List draws, and the explanation by the prayer's name.
+ * in the order List draws, and the explanation by the prayer's id.
  */
 
 import { EXTRA_PRAYER_IDS, EXTRAS_EXPLANATIONS, type PrayerId } from '@/shared/constants';
