@@ -182,6 +182,11 @@ export const en = {
   'dialog.openSettings': 'Open Settings',
   'notifications.enableTitle': 'Enable Notifications',
   'notifications.enableMessage': 'Prayer time notifications are disabled. Would you like to enable them in settings?',
+
+  'widget.stale': 'Out of date',
+  'widget.refresh': 'Open Athan to refresh',
+  'widget.refreshLead': 'Open Athan',
+  'widget.refreshTail': 'to refresh',
 } as const satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

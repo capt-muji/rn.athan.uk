@@ -23,7 +23,12 @@ import {
   ScheduleType,
   type UnreadablePrayer,
 } from '@/shared/types';
-import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS, TIMELINE_DAYS } from '@/shared/widgetTimeline';
+import {
+  buildPrayerWidgetSnapshot,
+  buildPrayerWidgetTimeline,
+  MIN_ENTRY_SPACING_MS,
+  TIMELINE_DAYS,
+} from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 
@@ -140,6 +145,28 @@ const makeExtrasSequence = (): PrayerSequence => {
 // =============================================================================
 
 describe('buildPrayerWidgetTimeline', () => {
+  it('bakes the id and the label into every row and entry', () => {
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
+    const snapshot = buildPrayerWidgetSnapshot(makeSequence(), SETTINGS);
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+
+    // Every row the layouts can draw carries the closed id beside the baked
+    // label, so a future locale's names can collide while ids never do
+    for (const entry of entries) {
+      for (const row of entry.props.prayers ?? []) {
+        expect(row.id).toBeDefined();
+        expect(row.name).toBe(prayerLabel(row.id));
+      }
+    }
+    for (const day of snapshot.days) {
+      for (const row of day.rows) {
+        expect(row.id).toBeDefined();
+        expect(row.name).toBe(prayerLabel(row.id));
+      }
+    }
+  });
+
   it('starts with an entry at now', () => {
     const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
@@ -788,12 +815,12 @@ describe('unreadable rows', () => {
 
     expect(entries[0].props).toMatchObject({ nextName: 'Dhuhr', activeIndex: 2 });
     expect(entries[0].props.prayers).toEqual([
-      { name: 'Fajr', time: '03:30' },
-      { name: 'Sunrise', time: '05:20' },
-      { name: 'Dhuhr', time: '13:10' },
-      { name: 'Asr', time: DASH },
-      { name: 'Magrib', time: '21:15' },
-      { name: 'Isha', time: '22:45' },
+      { id: 'fajr', name: 'Fajr', time: '03:30' },
+      { id: 'sunrise', name: 'Sunrise', time: '05:20' },
+      { id: 'dhuhr', name: 'Dhuhr', time: '13:10' },
+      { id: 'asr', name: 'Asr', time: DASH },
+      { id: 'magrib', name: 'Magrib', time: '21:15' },
+      { id: 'isha', name: 'Isha', time: '22:45' },
     ]);
 
     const afternoon = entries.filter((entry) => entry.date.getTime() >= dhuhrMs && entry.date.getTime() < magribMs);
@@ -869,7 +896,7 @@ describe('unreadable rows', () => {
         // Fajr's own day: a list with no active row cannot be drawn, so the layouts show Fajr's name and
         // time instead, and a real time must not sit under a day that has none
         dateLabel: formatDateLong('2026-06-17'),
-        prayers: STANDARD_PRAYER_IDS.map((id) => ({ name: prayerLabel(id), time: DASH })),
+        prayers: STANDARD_PRAYER_IDS.map((id) => ({ id, name: prayerLabel(id), time: DASH })),
         activeIndex: -1,
       });
       // Neither Fajr's list nor the list before it has a readable row ahead of Fajr, so there is no
@@ -945,7 +972,7 @@ describe('unreadable rows', () => {
       activeIndex: 4,
       dateLabel: formatDateLong('2026-06-15'),
     });
-    expect(before?.props.prayers?.[5]).toEqual({ name: 'Isha', time: DASH });
+    expect(before?.props.prayers?.[5]).toEqual({ id: 'isha', name: 'Isha', time: DASH });
 
     const flip = activeAt(entries, magribMs);
     expect(flip?.date.getTime()).toBe(magribMs);

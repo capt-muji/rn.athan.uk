@@ -168,7 +168,7 @@ describe('buildPrayerWidgetSnapshot', () => {
   it('stamps the version and the schedule', () => {
     const snapshot = buildPrayerWidgetSnapshot(asSequence(makeSequence()), SETTINGS);
     if (!snapshot) return;
-    expect(snapshot.v).toBe(1);
+    expect(snapshot.v).toBe(2);
     expect(snapshot.schedule).toBe('standard');
   });
 });
