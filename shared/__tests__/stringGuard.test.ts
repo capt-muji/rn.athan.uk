@@ -82,4 +82,24 @@ describe('the string census guard', () => {
       expect(source).toContain('t(');
     }
   });
+
+  it('holds zero display literals outside the catalog', () => {
+    const allowlist: string[] = JSON.parse(fs.readFileSync(ALLOWLIST, 'utf8'));
+    expect(allowlist).toEqual([]);
+    // The exit-0 proof is the first test's empty-offenders assertion over the
+    // empty list; this pins the emptiness itself, so a re-added entry fails
+    // here even if its file were somehow clean
+  });
+
+  it('the data modules export keys only', () => {
+    const census = execFileSync('node', ['scripts/scan-strings.mjs', ''], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      maxBuffer: 16 * 1024 * 1024,
+    });
+    const dataModuleRows: Array<{ file: string; kind: string }> = JSON.parse(census).rows.filter(
+      (row: { kind: string }) => row.kind === 'data-module'
+    );
+    expect(dataModuleRows).toEqual([]);
+  });
 });

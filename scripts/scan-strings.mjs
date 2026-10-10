@@ -8,7 +8,9 @@
 //   4. Template literal starting with a capital letter and holding a space -> review
 //   5. Anything inside a logger.* / perf* call -> code
 // Everything else -> code. Output: JSON on stdout, or --guard to exit 1 when
-// any display hit sits outside the allowlisted modules.
+// any display hit sits outside the allowlisted modules (widget layout bodies
+// excepted: their strings arrive as props) or a data module holds copy that is
+// not a catalog key.
 import fs from 'node:fs';
 import path from 'node:path';
 import { parse } from '@babel/parser';
@@ -19,6 +21,22 @@ const ROOTS = process.argv[2]
 const DISPLAY_SINKS =
   /(label|title|text|body|message|placeholder|alert|confirm|question|answer|explanation|content|caption|subtitle|description)$/i;
 const NON_DISPLAY_CALLEES = /^(logger|perfMark|perfMeasure|require|import|jest|test|it|describe|expect)$/;
+// The data modules export catalog keys only: their copy fields must hold
+// help./whatsNew. keys, and no copy-shaped sentence may sit anywhere in them
+// (code ids like 'ios' or 'dndAccess' are single lowercase/digit tokens)
+const DATA_MODULES = new Set(['shared/help.ts', 'shared/whatsNew.ts']);
+const DATA_COPY_FIELDS = new Set([
+  'question',
+  'answer',
+  'text',
+  'steps',
+  'title',
+  'body',
+  'titleKey',
+  'bodyKey',
+  'label',
+  'message',
+]);
 
 const rows = [];
 
@@ -27,6 +45,15 @@ const walk = (node, file, ctx) => {
   const line = node.loc ? node.loc.start.line : 0;
   let kind = null;
   let value = null;
+
+  // A widget layout's serialized body receives its strings as props (the
+  // closure law forbids imports), so its display hits are prop-driven; a
+  // literal outside any widget function in these files is still an offender
+  const widgetBody =
+    ctx.widgetBody ||
+    (node.type === 'ArrowFunctionExpression' &&
+      node.body.type === 'BlockStatement' &&
+      node.body.directives.some((directive) => directive.value.value === 'widget'));
 
   if (node.type === 'JSXText' && /[a-zA-Z\u00C0-\uFFFF]/.test(node.value)) {
     kind = 'display-jsx';
@@ -44,6 +71,17 @@ const walk = (node, file, ctx) => {
         value = node.value;
       }
     }
+    if (DATA_MODULES.has(file) && kind === null) {
+      const inType = parent && parent.type === 'TSLiteralType';
+      const isImport = parent && parent.type === 'ImportDeclaration';
+      const keyOk = node.value.startsWith('help.') || node.value.startsWith('whatsNew.');
+      const fieldOf = (owner) => owner && owner.type === 'ObjectProperty' && !owner.computed && owner.key.name;
+      const copyField = fieldOf(parent) || fieldOf(ctx.grandparent);
+      if (!inType && !isImport && !keyOk && (DATA_COPY_FIELDS.has(copyField) || node.value.includes(' '))) {
+        kind = 'data-module';
+        value = node.value;
+      }
+    }
   } else if (node.type === 'TemplateLiteral') {
     const cooked = node.quasis.map((q) => q.value.cooked).join('#');
     if (/^[A-Z]/.test(cooked) && / /.test(cooked)) {
@@ -52,7 +90,7 @@ const walk = (node, file, ctx) => {
     }
   }
 
-  if (kind) rows.push({ file, line, kind, value });
+  if (kind) rows.push({ file, line, kind, value, widgetBody: widgetBody === true });
 
   for (const key of Object.keys(node)) {
     if (key === 'loc' || key === 'start' || key === 'end' || key === 'leadingComments' || key === 'trailingComments')
@@ -60,10 +98,11 @@ const walk = (node, file, ctx) => {
     const child = node[key];
     if (Array.isArray(child)) {
       for (const item of child) {
-        if (item && typeof item.type === 'string') walk(item, file, { parent: node });
+        if (item && typeof item.type === 'string')
+          walk(item, file, { parent: node, grandparent: ctx.parent, widgetBody });
       }
     } else if (child && typeof child.type === 'string') {
-      walk(child, file, { parent: node });
+      walk(child, file, { parent: node, grandparent: ctx.parent, widgetBody });
     }
   }
 };
@@ -99,12 +138,16 @@ for (const file of files) {
 }
 
 if (process.argv.includes('--guard')) {
-  // The allowlist of modules still holding display text (all display kinds: JSX
-  // text, JSX attribute literals, display-sink arguments). Stage one ends with
-  // this list empty; the data modules (help, whatsNew) are guarded by rule 3 of
-  // the plan instead (they export catalog keys only).
+  // Stage one ends here: no allowlist at all. The display kinds fail outside
+  // the widget bodies (whose strings arrive as props), and the data-module
+  // rule fails on copy that is not a catalog key.
   const allowlist = JSON.parse(fs.readFileSync(process.argv[process.argv.indexOf('--guard') + 1], 'utf8'));
-  const offenders = rows.filter((row) => row.kind.startsWith('display') && !allowlist.includes(row.file));
+  const offenders = rows.filter(
+    (row) =>
+      (row.kind.startsWith('display') || row.kind === 'data-module') &&
+      !allowlist.includes(row.file) &&
+      !(row.widgetBody && row.file.startsWith('widgets/'))
+  );
   if (offenders.length > 0) {
     for (const row of offenders) {
       process.stderr.write(`${row.file}:${row.line} ${row.kind} ${JSON.stringify(row.value)}\n`);

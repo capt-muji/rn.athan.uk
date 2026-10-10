@@ -1,5 +1,55 @@
 # Execution log: Job 38
 
+## Step 14: the guard closes - zero exclusion list, data-modules rule
+
+- Branch `feat/38-14-guard` off `uat` (`5622828f`, step 13's merge; step 13
+  committed `a02e1450`). No new anchors (the step reads the whole tree).
+- Red, recorded: the allowlist set to `[]` in the working tree before the
+  rule work, and the guard failed naming 62 offender lines - every one in
+  `widgets/LockPrayerWidget.tsx` and `widgets/PrayerWidget.tsx`, exactly the
+  census prediction (the two files step 10 allowlisted). No other root held
+  a display hit; no file needed the "migrate here" path.
+- Contract 3, the structural widget exemption: the walker threads a
+  `widgetBody` flag from every arrow function whose block carries the
+  'widget' directive (sticky through helpers defined inside the body - they
+  serialize with it), and the guard skips display rows flagged
+  `widgetBody` in `widgets/` files. Literals outside any widget function in
+  those files still fail - break 3 proves it with a module-scope
+  `alert(...)` probe (module scope holds no JSX, so the probe is a
+  display-sink).
+- Contract 2, the data-modules rule, interpretation recorded: the
+  contract's parenthetical ("a StringLiteral in those files matches only
+  against the catalog-import path and key literals") read strictly would
+  flag the modules' own code ids ('ios', 'dndAccess', the version stamps,
+  the 'iOS'/'Android' badge glyphs) - and the same step says the guard
+  should name no file. The rule as implemented: in `shared/help.ts` and
+  `shared/whatsNew.ts`, a StringLiteral fails when it is a copy-field value
+  (question/answer/text/steps/title/body/titleKey/bodyKey/label/message, or
+  an element under one) that is not `help.`/`whatsNew.`-prefixed, or when it
+  contains a space anywhere in the module without the prefix (a copy
+  sentence is never legal there; single-word ids and glyphs are). Import
+  sources and TS type literals are out of scope. Break 2's free string
+  fires it.
+- Contract 4: `stringGuard.test.ts` gained 'holds zero display literals
+  outside the catalog' (the allowlist is `[]`, pinned structurally) and
+  'the data modules export keys only' (the census holds zero data-module
+  rows); the existing three tests stand unedited, including the
+  migrated-modules list, which now trivially holds against the empty list.
+- The TranslationKey closure over the whole surface was already asserted
+  (`i18nBridge.test.ts` 'keys the file exactly as the TranslationKey
+  union'); i18n.test.ts needed no change.
+- Green: full suite `194 suites, 5291 passed`; four 100% coverage lines;
+  tsc clean; Biome clean; `yarn validate`'s three legs all green
+  (tsc/Biome run directly, jest as above); guard CLI exit 0 with `[]`.
+- Breaks, 3 of 3 AS EXPECTED, final `ALL AS EXPECTED: 1`: a JSX probe in
+  Error.tsx named by the guard; a free sentence in help.ts failing the
+  data-modules rule; a module-scope display sink in PrayerWidget.tsx
+  failing while the body exemption holds. Restores by file backup; guard
+  exit 0 restored.
+- Version 1.29.341 (origin fetched under the lock; origin/uat still at
+  `53eecb99`, nothing raced). Committed `<sha>`, merged into `uat` as
+  `<merge sha>`.
+
 ## Step 13: widget props v6 - ids, tolerance, baked strings
 
 - Branch `feat/38-13-widgets` off `uat` (`3672a9a6`, step 12's merge; step
