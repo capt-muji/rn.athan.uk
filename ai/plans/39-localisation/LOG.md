@@ -1,5 +1,55 @@
 # Execution log: Job 38
 
+## Resume from: step 8, part 1 (guard seeds proven, migrations not started)
+
+Steps 1 to 7 are committed and merged into `uat` (step 6 `872619f8`/merge `874ec768`,
+step 7 `80130edf`/merge `dac75402`; hook lines in their sections below). `uat` is two
+merges ahead of `origin/uat` (origin at `53eecb99`); the executor cannot push. This
+LOG.md's step 6-7 close-out edits are on disk, uncommitted - they ride the step 8 commit.
+
+Step 8 (`steps/08-strings-wave-1.md`) was started to its red and stopped on session
+context; no production file was touched and the tree is clean apart from this log. The
+three guard seeds are finished and saved verbatim under `~/athan-gitree/sessions/38/`
+(`scan-strings.mjs`, `string-census-allowlist.json`, `stringGuard.test.ts`,
+`step08-guard-red.log`); copy them back rather than rebuilding. What the next session
+must know:
+
+- The scanner is copied verbatim from the plan folder, but its `argv[2]` is an optional
+  ROOT: calling `node scripts/scan-strings.mjs --guard <file>` silently scans nothing
+  (ROOTS becomes `['--guard']`). Invoke it with an empty-string second arg:
+  `node scripts/scan-strings.mjs '' --guard scripts/string-census-allowlist.json` - that
+  keeps the default roots and the guard works (verified: exit 1, 29 offender lines, all
+  `components/sheets/screens/Settings.tsx`). The saved guard test already does this.
+- The allowlist is the census's 30 rule-1/2 files minus Settings.tsx (29 entries,
+  sorted). help.ts and whatsNew.ts produce no rule-1/2 hits (data modules, no JSX), so
+  the step's red prose "listing exactly those three files' hits" overstates: the guard
+  red lists Settings.tsx only; the other two fail the guard test's third rule (the
+  source read). Red was recorded exactly so.
+- The guard test's third rule (dataModules) asserts help/whatsNew import from
+  `'@/shared/i18n'`, hold no `get*String` helper, and call `t(` - it is red until the
+  migration lands.
+- help.ts design (surveyed, not written): `HELP_ENTRIES` becomes key arrays over the
+  existing `help.q/a/step.x` catalog keys (all present in `en.ts`, verified); the
+  ios/android split uses the `.ios`/`.android` answer keys the catalog already carries;
+  `HELP_ACTION_LABELS` resolves through `t('help.action.dndAccess')`; `getHelpTopics`
+  maps every field through `t()`. The step's named red test `getHelpEntries()` does not
+  exist - the module exports `getHelpTopics`; write the catalog-sourcing test against
+  the real surface (another plan-text slip to record).
+- whatsNew.ts design (surveyed): the archive items become `titleKey`/`bodyKey`
+  TranslationKeys (`whatsNew.title/body.x`, all in the catalog); `WhatsNewItem`'s public
+  shape stays `title: string`; `getVisibleWhatsNew` resolves through `t()`;
+  `filterWhatsNewItems` takes the archive shape, so `whatsNew.test.ts` fixtures re-key.
+  `getPlatformBadges`'s 'iOS'/'Android' glyphs are not catalog strings and stay.
+- Settings.tsx: 29 rule-1/2 hits include NON-display literals the scanner cannot tell
+  apart (`rgba(...)` colors, `sheet_settings` testID) - the migration must move those
+  off string-literal JSX attributes (expressions/constants) or the guard cannot go
+  green; the display labels go through `t('settings.…')`.
+- Standing lessons carry: restores use file backups never `git checkout` before the step
+  commits; delete constants by exact-text edits; regenerate the commit-message file
+  right before `git commit -F`; pin writes with inline type annotations. One flake
+  pattern seen this session: a jest worker SIGSEGV (watchman recrawl) killed one commit
+  attempt - regenerate the message file and commit again.
+
 ## Step 6: the identifier union takes the row (reconciliation first)
 
 A previous executor session started this step and died without writing the ledger. The
@@ -132,6 +182,15 @@ hook run (the Rule pin).
 - Breaks: 3 of 3 AS EXPECTED (template uppercased fails the title pin; throw dropped fails
   the bridge assertion; one value nested fails the flat-string parity), restore green:
   `ALL AS EXPECTED: 1`.
+- Green: tsc clean, Biome clean (after `--write`: import order in the bridge test, the
+  ParamsOf formatting). One hook rerun: the first commit attempt died on a jest worker
+  SIGSEGV in `List.test.tsx` (watchman recrawl warning beside it) - the same suite passed
+  on both sides of the attempt, infrastructure flake, not a test failure.
+- Version 1.29.327. Committed `80130edf`, merged into `uat` as `dac75402`. Hook:
+  `Tests: 5261 passed, 5261 total`, four 100% lines (4945/2145/1032/4429). Review: one
+  pass, clean - the only `{{`/`$t(` strings in the diff are the bridge test's negative
+  pins; no dist artefact staged; titles byte-identical by the unchanged `'Fajr now'` and
+  `'Fajr in 15m'` pins (the Rule proof); no lifecycle or thread surface added.
 
 
 ## Step 5: the id vocabulary and the catalog
