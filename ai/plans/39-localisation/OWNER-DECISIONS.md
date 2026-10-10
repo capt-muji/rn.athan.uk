@@ -542,3 +542,30 @@ as it is. Nothing this feature ships adds a keep prefix.
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
 while localisation is a sweep over the whole finished surface, so every feature built after a
 translation sweep would otherwise have to be translated twice.
+
+## D36. Step 15's require timing runs on the 3T via the e2e monitor release build (2026-10-10)
+
+Ruled after the step-15 STOP: the production build compiles out every perf and log read the step
+named, so experiment 1 measures on the 3T with the repo's sanctioned vehicle, the e2e monitor
+release build (`EXPO_PUBLIC_PERF_MONITOR=1`, e2e/README.md:37-51), using a buffered `perfMark`
+pair inside `loader.ts` around the catalog require, read offline from `detail.at` epochs. The pair
+commits with the step and stays. The 5 ms decision rule applies as written: above 5 ms of
+JS-thread time on the 3T the loader switches to `JSON.parse` of an embedded JSON constant; at or
+under, the TS require stays.
+
+## D37. The step-12 suites carry the stamp and dead-key proof, plus one deliberate launch read (2026-10-10)
+
+The formal proof of the upgrade stamp and the dead-key removal stays with the step-12 Jest suites;
+one device read of both lines comes from the monitor build's first launch over the phone's real
+1.29.287 data (pino logs outside prod). The one-shot observation is spent there, on purpose.
+
+## D38. Bells armed by the owner on both phones; XS-first device testing (2026-10-10)
+
+The owner switched every notification on himself after the step-15 STOP: sound on, both reminders
+on, both phones in the same state. The identifier proof takes the as-armed alarm dump before any
+install and compares bytes across the upgrade. He also ruled that device testing prefers the iPhone
+XS wherever a choice exists; stage one's R9.1 still names the 3T for the require timing, so this
+binds row 39 and later planning. His architecture questions (file versus MMKV, caching, per-page
+lazy loading) are answered by the current shape: the catalog is bundle-compiled TS required once
+per process, every `t()` after that is an in-memory lookup, so no cache, no MMKV read and no
+per-page fetch exist or are needed.
