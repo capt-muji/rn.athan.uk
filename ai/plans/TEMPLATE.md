@@ -17,7 +17,8 @@ each with the exact condition and the exact action.
   owner's rules that apply, quoted with their source.
 - **2. Decisions.** 2.1 Taken: what, who, when, where recorded. 2.2 The executor must not
   decide: each situation that stops work and asks the owner, with the exact question.
-- **3. Pre-flight.** A full bash script saved to `$TMPDIR/preflight-<N>.sh`. It checks the
+- **3. Pre-flight.** A full bash script committed at `scripts/preflight-<N>.sh` in the plan
+  folder (the executor saves a copy to `$TMPDIR` and runs it from there). It checks the
   checkout on `uat`, a clean tree, `origin/uat` merged in, the version not lower than "Planned
   at", every "Needs first" row DONE, every anchor count equal to 1. It ends `PREFLIGHT OK`.
 - **4. Background the executor needs.** The code map: every file read or changed, one line
@@ -36,7 +37,7 @@ each with the exact condition and the exact action.
 - **7. Device proof.** The build, APK and install commands. Each check's adb command and
   expected reading, and where it is saved. Read `dumpsys alarm` before any clock change and
   say which armed alarm it would fire.
-- **8. Records.** The findings text under its exact heading, the queue-row cell text the
+- **8. Records.** The findings text written into `LOG.md` under its exact heading, the queue-row cell text the
   lead applies on DONE, the docs commit message.
 - **9. Push.** Always None. The executor worker never pushes. The lead pushes after the
   reviews pass.

@@ -96,6 +96,9 @@ the four together when the SDK presets move: `@babel/core`,
   each mixed call became two chained modifiers. Reversed, the greedy frame takes the space
   first and the row changes size (`:657-658`, `:729`).
 
+- expo-notifications 58.1.0 grew `enableRemoteNotifications: false` for local-only
+  apps: a candidate for the next app.json pass, still unclaimed at 1.29.321.
+
 ## D4. Localization for v2.0 (NOT PLANNED, carried by queue rows 38 and 39)
 
 Owner goal: the app goes global in v2.0 with a language switcher. Research lives in

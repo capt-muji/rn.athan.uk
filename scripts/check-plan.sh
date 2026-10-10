@@ -5,10 +5,12 @@
 set -u
 folder="${1:?usage: check-plan.sh <plan-folder>}"
 fail=0
+n=0
 reasons=""
 
 reason() {
-  reasons="${reasons}- $1
+  n=$((n + 1))
+  reasons="${reasons}$n. $1
 "
   fail=1
 }
@@ -28,16 +30,18 @@ for s in "1. Goal" "2. Decisions" "3. Pre-flight" "4. Background" "5. Design" \
 done
 
 # 2. Header table carries the planned-at anchor and the needs-first column.
-grep -q "Planned at" "$plan" || reason "header table has no Planned at"
-grep -q "Needs first" "$plan" || reason "header table has no Needs first"
+head -15 "$plan" | grep -q "Planned at" || reason "header table has no Planned at"
+head -15 "$plan" | grep -q "Needs first" || reason "header table has no Needs first"
 
-# 3. Banned hedge words (TEMPLATE.md word list).
-hedges="as appropriate as needed as necessary if needed if applicable if relevant \
-where appropriate where needed where applicable as per accordingly etc. and so on \
-and/or TBD for example e.g. i.e. various several some appropriate reasonable \
-properly correctly"
-for w in $hedges; do
-  if grep -rw --include='*.md' -e "$w" "$folder" >/dev/null 2>&1; then
+# 3. Banned hedge phrases (TEMPLATE.md word list), matched as whole phrases.
+hedges=(
+  "as appropriate" "as needed" "as necessary" "if needed" "if applicable" "if relevant"
+  "where appropriate" "where needed" "where applicable" "as per" "accordingly" "etc."
+  "and so on" "and/or" "TBD" "for example" "e.g." "i.e." "various" "several" "some"
+  "appropriate" "reasonable" "properly" "correctly"
+)
+for w in "${hedges[@]}"; do
+  if grep -rwF -e "$w" "$plan" "$folder"/steps/*.md >/dev/null 2>&1; then
     reason "banned hedge word in plan text: $w (say the exact condition and action)"
   fi
 done
@@ -47,22 +51,26 @@ criteria="$(grep -hE '^\s*[-*] \[R[0-9]+\.[0-9]+\]' "$folder"/PLAN.md "$folder"/
 if [ -z "$criteria" ]; then
   reason "no tagged acceptance criteria: every criterion is a line like '- [R1.2] WHEN <event> THE SYSTEM SHALL <observable response>'"
 else
-  bad_ears="$(echo "$criteria" | grep -vE '\[R[0-9]+\.[0-9]+\] (WHEN|IF|WHILE|UNTIL) .+ (THE SYSTEM SHALL|MUST|WILL) .+' || true)"
+  bad_ears="$(echo "$criteria" | grep -vE '\[R[0-9]+\.[0-9]+\] (WHEN|IF|WHILE) .+ THE SYSTEM SHALL .+' || true)"
   if [ -n "$bad_ears" ]; then
     reason "criterion not an EARS sentence: $(echo "$bad_ears" | head -1)"
   fi
 fi
 
-# 5. Every step cites Requirements IDs, and every ID resolves.
-step_files="$folder/steps/*.md"
+# 5. Every step cites Requirements IDs, every ID resolves, and orphans fail.
+step_files="$folder"/steps/*.md
 found_steps=0
 for f in $step_files; do
   [ -f "$f" ] || continue
   found_steps=1
-  if ! grep -q "^Requirements:" "$f" && ! grep -q "^\*\*Requirements" "$f"; then
+  if ! grep -qE '^(\*\*)?Requirements(\*\*)?:' "$f"; then
     reason "step file $f has no Requirements: line citing criterion IDs"
   else
-    for id in $(grep -hoE 'R[0-9]+\.[0-9]+' "$f" | sort -u); do
+    ids="$(grep -hoE 'R[0-9]+\.[0-9]+' "$f" | sort -u)"
+    if [ -z "$ids" ]; then
+      reason "step file $f cites no criterion IDs on its Requirements line"
+    fi
+    for id in $ids; do
       echo "$criteria" | grep -q "\[$id\]" || reason "step $f cites $id, no such criterion"
     done
   fi
@@ -71,9 +79,10 @@ if [ "$found_steps" -eq 0 ] && ! grep -q "Requirements:" "$plan"; then
   reason "no steps/ files and no Requirements: lines in PLAN.md section 6"
 fi
 
-# 6. Orphan criteria: every criterion is cited by some step or the device proof.
+# A criterion is orphaned when no Requirements line anywhere cites it.
 for id in $(echo "$criteria" | grep -oE 'R[0-9]+\.[0-9]+' | sort -u); do
-  if ! grep -rq "\[$id\]" "$folder"/steps/*.md 2>/dev/null && ! grep -q "\[$id\]" "$plan"; then
+  if ! grep -hqE "Requirements:.*$id" "$folder"/steps/*.md 2>/dev/null && \
+     ! grep -qE "Requirements:.*$id" "$plan"; then
     reason "criterion $id is cited by no step"
   fi
 done
@@ -83,7 +92,7 @@ anchor_count=0
 for f in "$folder"/scripts/anchors/*; do
   [ -f "$f" ] || continue
   anchor_count=$((anchor_count + 1))
-  lines=$(wc -l < "$f" | tr -d ' ')
+  lines=$(awk 'END{print NR}' "$f")
   if [ "$lines" -lt 3 ] || [ "$lines" -gt 15 ]; then
     reason "anchor $f has $lines lines, must be 3 to 15"
   fi
@@ -101,7 +110,7 @@ elif ! grep -q "PREFLIGHT OK" "$preflight"; then
 fi
 
 # 9. Push section stays None.
-if ! grep -A2 "9. Push" "$plan" | grep -qi "none"; then
+if ! grep -A2 "9. Push" "$plan" | grep -qiw none; then
   reason "section 9 Push must say None: the executor never pushes"
 fi
 
