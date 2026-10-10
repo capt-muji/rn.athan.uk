@@ -38,6 +38,9 @@ describe('the string census guard', () => {
     const allowlist: string[] = JSON.parse(fs.readFileSync(ALLOWLIST, 'utf8'));
     expect([...allowlist].sort()).toEqual(allowlist);
     const migrated = [
+      'app/Navigation.tsx',
+      'app/_layout.tsx',
+      'app/index.tsx',
       'components/sheets/screens/Settings.tsx',
       'components/countdown/Bar.tsx',
       'components/day/Day.tsx',

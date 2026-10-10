@@ -1,6 +1,7 @@
 import * as Location from 'expo-location';
 import { Alert, Linking } from 'react-native';
 
+import { t } from '@/shared/i18n';
 import type { Coordinates } from '@/shared/qiblaGeometry';
 import { type PlaceParts, placeName } from '@/shared/qiblaPlace';
 
@@ -33,14 +34,10 @@ export const requestQiblaPermission = async (): Promise<boolean> => {
  * once the permission is refused the system dialog never appears again, leaving no other route back.
  */
 export const showQiblaLocationDialog = (): void => {
-  Alert.alert(
-    'Enable Location',
-    'The qibla is worked out from where you are, so it needs location access. Would you like to enable it in settings?',
-    [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Open Settings', onPress: () => Linking.openSettings() },
-    ]
-  );
+  Alert.alert(t('qibla.locationTitle'), t('qibla.locationMessage'), [
+    { text: t('dialog.cancel'), style: 'cancel' },
+    { text: t('dialog.openSettings'), onPress: () => Linking.openSettings() },
+  ]);
 };
 
 /**

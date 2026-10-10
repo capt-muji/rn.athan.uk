@@ -15,6 +15,7 @@ import { useNotification } from '@/hooks/useNotification';
 import { APP_CONFIG } from '@/shared/config';
 import { COLORS, SIZE } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
+import { t } from '@/shared/i18n';
 import { isRevealReady, isWaitingForData } from '@/shared/launchGate';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
@@ -208,7 +209,10 @@ export default function Index() {
   // upgrade wipe, year gap) — warm-cache launches render content immediately
   if (waitingForData) {
     return (
-      <View style={styles.loadingContainer} accessibilityRole='progressbar' accessibilityLabel='Loading prayer times'>
+      <View
+        style={styles.loadingContainer}
+        accessibilityRole={'progressbar'}
+        accessibilityLabel={t('app.loadingLabel')}>
         <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
       </View>
     );
