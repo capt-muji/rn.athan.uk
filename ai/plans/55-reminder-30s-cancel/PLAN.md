@@ -146,7 +146,7 @@ cleans the record up under R4. The clock never runs backwards in a pass.
 ## 6. Steps
 
 - [x] 1. `steps/01-keep-alive-branch.md` — the branch, the suite, the break. Weight 2.
-- [ ] 2. `steps/02-device-proof.md` — the 3T clock-driven proof. Weight 3.
+- [x] 2. `steps/02-device-proof.md` — the 3T clock-driven proof. Weight 3.
 
 ## 7. Device proof
 
