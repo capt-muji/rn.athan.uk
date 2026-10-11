@@ -51,6 +51,16 @@ perfMark('index_module');
 // EXPO_PUBLIC_PERF_MONITOR=1, so this costs a boolean check in production.
 let firstRenderMarked = false;
 
+// The remount key on the root re-mounts Index per language switch; the launch
+// init is once per process or every switch re-runs a full reschedule ~1.5s
+// after the convergence pass already armed everything.
+let launchInitRan = false;
+
+// The index suite renders a fresh launch per test from one module instance.
+export const __resetLaunchInitForTests = (): void => {
+  launchInitRan = false;
+};
+
 export default function Index() {
   if (!firstRenderMarked) {
     firstRenderMarked = true;
@@ -103,6 +113,11 @@ export default function Index() {
     // past that window keeps the first swipes on an idle JS thread. The
     // 2-hour refresh gate makes a ~1.5s delay immaterial.
     const initHandle = setTimeout(() => {
+      // The remount key re-mounts Index per language switch, and each remount
+      // re-arms this timeout: the latch keeps one process to one init pass.
+      if (launchInitRan) return;
+      launchInitRan = true;
+
       // This effect runs once per cold launch, and on Android a cold launch may
       // follow a force-stop that cancelled every armed alarm without touching
       // the refresh timestamp. Reopen the gate before the refresh reads it.

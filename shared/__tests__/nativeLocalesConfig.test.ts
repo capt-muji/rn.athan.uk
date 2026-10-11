@@ -11,9 +11,7 @@ import { join } from 'node:path';
 
 const ROOT = join(__dirname, '..', '..');
 const app = (JSON.parse(readFileSync(join(ROOT, 'app.json'), 'utf8')) as { expo: Record<string, unknown> }).expo;
-const NATIVE = JSON.parse(
-  readFileSync(join(ROOT, 'ai', 'plans', '39-localisation', 'catalogs', 'native-strings.json'), 'utf8')
-) as Record<
+const NATIVE = JSON.parse(readFileSync(join(ROOT, 'shared', 'i18n', 'native-strings.json'), 'utf8')) as Record<
   string,
   {
     NSLocationWhenInUseUsageDescription: string;

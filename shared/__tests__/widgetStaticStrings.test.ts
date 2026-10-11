@@ -180,7 +180,7 @@ const textsOf = (tree: unknown): string[] => {
 
 /** The plan's table: the bytes every inline table must carry verbatim */
 const TABLE = JSON.parse(
-  readFileSync(join(__dirname, '..', '..', 'ai', 'plans', '39-localisation', 'catalogs', 'widget-statics.json'), 'utf8')
+  readFileSync(join(__dirname, '..', '..', 'shared', 'i18n', 'widget-statics.json'), 'utf8')
 ) as Record<string, Record<string, string>>;
 
 const LOCALES = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
