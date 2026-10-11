@@ -1,7 +1,7 @@
-import { format, intervalToDuration } from 'date-fns';
+import { intervalToDuration } from 'date-fns';
 
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
-import { t } from '@/shared/i18n';
+import { type TranslationKey, t } from '@/shared/i18n';
 
 // =============================================================================
 // PRAYER-TIMEZONE CLOCK
@@ -222,35 +222,86 @@ export const getDayAnchor = (date: string): Date => createPrayerDatetime(date, '
 // DATE FORMATTING
 // =============================================================================
 
+// Calendar names compose from the active catalog's calendar keys (A2): the key
+// tuples are typed against TranslationKey so a computed lookup stays compile-checked
+const GREGORIAN_WEEKDAY_KEYS = [
+  'calendar.weekdayShort.1',
+  'calendar.weekdayShort.2',
+  'calendar.weekdayShort.3',
+  'calendar.weekdayShort.4',
+  'calendar.weekdayShort.5',
+  'calendar.weekdayShort.6',
+  'calendar.weekdayShort.7',
+] as const satisfies readonly TranslationKey[];
+
+const GREGORIAN_MONTH_KEYS = [
+  'calendar.monthShort.1',
+  'calendar.monthShort.2',
+  'calendar.monthShort.3',
+  'calendar.monthShort.4',
+  'calendar.monthShort.5',
+  'calendar.monthShort.6',
+  'calendar.monthShort.7',
+  'calendar.monthShort.8',
+  'calendar.monthShort.9',
+  'calendar.monthShort.10',
+  'calendar.monthShort.11',
+  'calendar.monthShort.12',
+] as const satisfies readonly TranslationKey[];
+
+const HIJRI_MONTH_KEYS = [
+  'calendar.hijri.1',
+  'calendar.hijri.2',
+  'calendar.hijri.3',
+  'calendar.hijri.4',
+  'calendar.hijri.5',
+  'calendar.hijri.6',
+  'calendar.hijri.7',
+  'calendar.hijri.8',
+  'calendar.hijri.9',
+  'calendar.hijri.10',
+  'calendar.hijri.11',
+  'calendar.hijri.12',
+] as const satisfies readonly TranslationKey[];
+
 /**
- * Formats a date string into a readable format
+ * Formats a date string into the active locale's readable format, in the English
+ * shape and order (weekday, day, month, year)
  * @param date Date string in YYYY-MM-DD format
  * @returns Formatted date string (e.g., "Fri, 20 Nov 2024")
  */
-export const formatDateLong = (date: string): string => {
+export const formatDateLocalized = (date: string): string => {
   const [year, month, day] = date.split('-').map(Number);
   // A calendar date needs no timezone: noon on the phone's own clock always exists
-  return format(new Date(year, month - 1, day, 12), 'EEE, d MMM yyyy');
+  const weekday = new Date(year, month - 1, day, 12).getDay();
+  // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
+  const isoWeekday = weekday === 0 ? 7 : weekday;
+  return `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${day} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${year}`;
 };
 
 /**
- * Formats a date string into Hijri format using Intl.DateTimeFormat
- * Falls back to Gregorian if conversion fails
+ * Formats a date string into the active locale's Hijri format, composed from the
+ * catalog's Hijri month names. The Intl call stays en-US with numeric fields so
+ * the digits stay Latin and no era affix appears in any locale (D21, R6.2);
+ * falls back to the localized Gregorian label if conversion fails.
  * @param date Date string in YYYY-MM-DD format
  * @returns Formatted Hijri date string (e.g., "Rajab 1, 1447")
  */
-export const formatHijriDateLong = (date: string): string => {
+export const formatHijriDateLocalized = (date: string): string => {
   try {
     const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
       day: 'numeric',
-      month: 'long',
+      month: 'numeric',
       year: 'numeric',
       timeZone: PRAYER_TIMEZONE,
     });
-    // Remove "AH" suffix from formatted date
-    return hijriFormatter.format(getDayAnchor(date)).replace(/ AH$/, '');
+    const parts = hijriFormatter.formatToParts(getDayAnchor(date));
+    const hijriMonth = Number(parts.find((part) => part.type === 'month')?.value);
+    const hijriDay = parts.find((part) => part.type === 'day')?.value;
+    const hijriYear = parts.find((part) => part.type === 'year')?.value;
+    return `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${hijriDay}, ${hijriYear}`;
   } catch {
-    return formatDateLong(date);
+    return formatDateLocalized(date);
   }
 };
 
