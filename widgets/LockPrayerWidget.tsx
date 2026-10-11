@@ -47,6 +47,95 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
 
+  // The neutral, stale and catch cards follow the device locale the widget
+  // process itself reads (D44): absent props carry no app language. The
+  // prefix match accepts region tags; anything unknown renders the en row.
+  const STATIC = {
+    en: {
+      subtitle: 'Prayer times for London',
+      inline: 'Athan — prayer times',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Open to load times',
+      staleTitle: 'Out of date',
+      staleBody: 'Open app to refresh',
+      staleInline: 'Athan — open to refresh times',
+      refreshLine: 'Open Athan to refresh',
+      refreshLead: 'Open Athan',
+      refreshTail: 'to refresh',
+      catchBody: 'Open the app to refresh',
+    },
+    ar: {
+      subtitle: 'أوقات الصلاة في لندن',
+      inline: 'Athan - أوقات الصلاة',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'افتح لتحميل الأوقات',
+      staleTitle: 'غير محدّث',
+      staleBody: 'افتح التطبيق للتحديث',
+      staleInline: 'Athan - افتح لتحديث الأوقات',
+      refreshLine: 'افتح Athan للتحديث',
+      refreshLead: 'افتح Athan',
+      refreshTail: 'للتحديث',
+      catchBody: 'افتح التطبيق للتحديث',
+    },
+    ms: {
+      subtitle: 'Waktu solat untuk London',
+      inline: 'Athan - waktu solat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Buka untuk muat waktu',
+      staleTitle: 'Tidak dikemas kini',
+      staleBody: 'Buka apl untuk muat semula',
+      staleInline: 'Athan - buka untuk muat semula waktu',
+      refreshLine: 'Buka Athan untuk muat semula',
+      refreshLead: 'Buka Athan',
+      refreshTail: 'untuk muat semula',
+      catchBody: 'Buka aplikasi untuk muat semula',
+    },
+    so: {
+      subtitle: 'Waqtiyada salaadda London',
+      inline: 'Athan - waqtiyada salaadda',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Fur si aad u soo dejinto waqtiyada',
+      staleTitle: "Cusboonaysi la'aan",
+      staleBody: 'Fur aplka si aad u cusboonaysiiso',
+      staleInline: 'Athan - fur si aad u cusboonaysiiso waqtiyada',
+      refreshLine: 'Fur Athan si aad u cusboonaysiiso',
+      refreshLead: 'Fur Athan',
+      refreshTail: 'si aad u cusboonaysiiso',
+      catchBody: 'Fur app-ka si aad u cusboonaysiiso',
+    },
+    hi: {
+      subtitle: 'लंदन के नमाज़ के समय',
+      inline: 'Athan - नमाज़ के समय',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'समय लोड करने के लिए खोलें',
+      staleTitle: 'पुराना',
+      staleBody: 'रिफ्रेश के लिए ऐप खोलें',
+      staleInline: 'Athan - समय रिफ्रेश करने के लिए खोलें',
+      refreshLine: 'रिफ्रेश के लिए Athan खोलें',
+      refreshLead: 'Athan खोलें',
+      refreshTail: 'रिफ्रेश के लिए',
+      catchBody: 'रिफ्रेश के लिए ऐप खोलें',
+    },
+    th: {
+      subtitle: 'เวลาละหมาดสำหรับลอนดอน',
+      inline: 'Athan - เวลาละหมาด',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'เปิดเพื่อโหลดเวลา',
+      staleTitle: 'ข้อมูลเก่า',
+      staleBody: 'เปิดแอปเพื่อรีเฟรช',
+      staleInline: 'Athan - เปิดเพื่อรีเฟรชเวลา',
+      refreshLine: 'เปิด Athan เพื่อรีเฟรช',
+      refreshLead: 'เปิด Athan',
+      refreshTail: 'เพื่อรีเฟรช',
+      catchBody: 'เปิดแอปเพื่อรีเฟรช',
+    },
+  } as const;
+  const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
+  const localeKey = (['en', 'ar', 'ms', 'so', 'hi', 'th'] as const).find(
+    (code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)
+  );
+  const staticRow = STATIC[localeKey ?? 'en'];
+
   const neutralForFamily = () => {
     if (environment.widgetFamily === 'accessoryInline') {
       return (
@@ -57,7 +146,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
             lineLimit(1),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          Athan — prayer times
+          {staticRow.inline}
         </Text>
       );
     }
@@ -70,9 +159,11 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>ATHAN</Text>
+        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          {staticRow.rectTitle}
+        </Text>
         <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          Open to load times
+          {staticRow.rectSubtitle}
         </Text>
       </VStack>
     );
@@ -94,7 +185,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
               lineLimit(1),
               containerBackground('rgba(0, 0, 0, 0)', 'widget'),
             ]}>
-            Athan — open to refresh times
+            {staticRow.staleInline}
           </Text>
         );
       }
@@ -109,10 +200,10 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
           ]}>
           <Image systemName='moon.stars.fill' size={17} color={WHITE} />
           <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            Out of date
+            {staticRow.staleTitle}
           </Text>
           <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            Open app to refresh
+            {staticRow.staleBody}
           </Text>
         </VStack>
       );
@@ -200,6 +291,95 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
 
+  // The neutral, stale and catch cards follow the device locale the widget
+  // process itself reads (D44): absent props carry no app language. The
+  // prefix match accepts region tags; anything unknown renders the en row.
+  const STATIC = {
+    en: {
+      subtitle: 'Prayer times for London',
+      inline: 'Athan — prayer times',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Open to load times',
+      staleTitle: 'Out of date',
+      staleBody: 'Open app to refresh',
+      staleInline: 'Athan — open to refresh times',
+      refreshLine: 'Open Athan to refresh',
+      refreshLead: 'Open Athan',
+      refreshTail: 'to refresh',
+      catchBody: 'Open the app to refresh',
+    },
+    ar: {
+      subtitle: 'أوقات الصلاة في لندن',
+      inline: 'Athan - أوقات الصلاة',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'افتح لتحميل الأوقات',
+      staleTitle: 'غير محدّث',
+      staleBody: 'افتح التطبيق للتحديث',
+      staleInline: 'Athan - افتح لتحديث الأوقات',
+      refreshLine: 'افتح Athan للتحديث',
+      refreshLead: 'افتح Athan',
+      refreshTail: 'للتحديث',
+      catchBody: 'افتح التطبيق للتحديث',
+    },
+    ms: {
+      subtitle: 'Waktu solat untuk London',
+      inline: 'Athan - waktu solat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Buka untuk muat waktu',
+      staleTitle: 'Tidak dikemas kini',
+      staleBody: 'Buka apl untuk muat semula',
+      staleInline: 'Athan - buka untuk muat semula waktu',
+      refreshLine: 'Buka Athan untuk muat semula',
+      refreshLead: 'Buka Athan',
+      refreshTail: 'untuk muat semula',
+      catchBody: 'Buka aplikasi untuk muat semula',
+    },
+    so: {
+      subtitle: 'Waqtiyada salaadda London',
+      inline: 'Athan - waqtiyada salaadda',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Fur si aad u soo dejinto waqtiyada',
+      staleTitle: "Cusboonaysi la'aan",
+      staleBody: 'Fur aplka si aad u cusboonaysiiso',
+      staleInline: 'Athan - fur si aad u cusboonaysiiso waqtiyada',
+      refreshLine: 'Fur Athan si aad u cusboonaysiiso',
+      refreshLead: 'Fur Athan',
+      refreshTail: 'si aad u cusboonaysiiso',
+      catchBody: 'Fur app-ka si aad u cusboonaysiiso',
+    },
+    hi: {
+      subtitle: 'लंदन के नमाज़ के समय',
+      inline: 'Athan - नमाज़ के समय',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'समय लोड करने के लिए खोलें',
+      staleTitle: 'पुराना',
+      staleBody: 'रिफ्रेश के लिए ऐप खोलें',
+      staleInline: 'Athan - समय रिफ्रेश करने के लिए खोलें',
+      refreshLine: 'रिफ्रेश के लिए Athan खोलें',
+      refreshLead: 'Athan खोलें',
+      refreshTail: 'रिफ्रेश के लिए',
+      catchBody: 'रिफ्रेश के लिए ऐप खोलें',
+    },
+    th: {
+      subtitle: 'เวลาละหมาดสำหรับลอนดอน',
+      inline: 'Athan - เวลาละหมาด',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'เปิดเพื่อโหลดเวลา',
+      staleTitle: 'ข้อมูลเก่า',
+      staleBody: 'เปิดแอปเพื่อรีเฟรช',
+      staleInline: 'Athan - เปิดเพื่อรีเฟรชเวลา',
+      refreshLine: 'เปิด Athan เพื่อรีเฟรช',
+      refreshLead: 'เปิด Athan',
+      refreshTail: 'เพื่อรีเฟรช',
+      catchBody: 'เปิดแอปเพื่อรีเฟรช',
+    },
+  } as const;
+  const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
+  const localeKey = (['en', 'ar', 'ms', 'so', 'hi', 'th'] as const).find(
+    (code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)
+  );
+  const staticRow = STATIC[localeKey ?? 'en'];
+
   const neutralForFamily = () => {
     if (environment.widgetFamily === 'accessoryInline') {
       return (
@@ -210,7 +390,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
             lineLimit(1),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          Athan — prayer times
+          {staticRow.inline}
         </Text>
       );
     }
@@ -223,9 +403,11 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>ATHAN</Text>
+        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          {staticRow.rectTitle}
+        </Text>
         <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          Open to load times
+          {staticRow.rectSubtitle}
         </Text>
       </VStack>
     );
@@ -247,7 +429,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
               lineLimit(1),
               containerBackground('rgba(0, 0, 0, 0)', 'widget'),
             ]}>
-            Athan — open to refresh times
+            {staticRow.staleInline}
           </Text>
         );
       }
@@ -262,10 +444,10 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           ]}>
           <Image systemName='moon.stars.fill' size={17} color={WHITE} />
           <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            Out of date
+            {staticRow.staleTitle}
           </Text>
           <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            Open app to refresh
+            {staticRow.staleBody}
           </Text>
         </VStack>
       );
@@ -342,6 +524,95 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
 
+  // The neutral, stale and catch cards follow the device locale the widget
+  // process itself reads (D44): absent props carry no app language. The
+  // prefix match accepts region tags; anything unknown renders the en row.
+  const STATIC = {
+    en: {
+      subtitle: 'Prayer times for London',
+      inline: 'Athan — prayer times',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Open to load times',
+      staleTitle: 'Out of date',
+      staleBody: 'Open app to refresh',
+      staleInline: 'Athan — open to refresh times',
+      refreshLine: 'Open Athan to refresh',
+      refreshLead: 'Open Athan',
+      refreshTail: 'to refresh',
+      catchBody: 'Open the app to refresh',
+    },
+    ar: {
+      subtitle: 'أوقات الصلاة في لندن',
+      inline: 'Athan - أوقات الصلاة',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'افتح لتحميل الأوقات',
+      staleTitle: 'غير محدّث',
+      staleBody: 'افتح التطبيق للتحديث',
+      staleInline: 'Athan - افتح لتحديث الأوقات',
+      refreshLine: 'افتح Athan للتحديث',
+      refreshLead: 'افتح Athan',
+      refreshTail: 'للتحديث',
+      catchBody: 'افتح التطبيق للتحديث',
+    },
+    ms: {
+      subtitle: 'Waktu solat untuk London',
+      inline: 'Athan - waktu solat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Buka untuk muat waktu',
+      staleTitle: 'Tidak dikemas kini',
+      staleBody: 'Buka apl untuk muat semula',
+      staleInline: 'Athan - buka untuk muat semula waktu',
+      refreshLine: 'Buka Athan untuk muat semula',
+      refreshLead: 'Buka Athan',
+      refreshTail: 'untuk muat semula',
+      catchBody: 'Buka aplikasi untuk muat semula',
+    },
+    so: {
+      subtitle: 'Waqtiyada salaadda London',
+      inline: 'Athan - waqtiyada salaadda',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Fur si aad u soo dejinto waqtiyada',
+      staleTitle: "Cusboonaysi la'aan",
+      staleBody: 'Fur aplka si aad u cusboonaysiiso',
+      staleInline: 'Athan - fur si aad u cusboonaysiiso waqtiyada',
+      refreshLine: 'Fur Athan si aad u cusboonaysiiso',
+      refreshLead: 'Fur Athan',
+      refreshTail: 'si aad u cusboonaysiiso',
+      catchBody: 'Fur app-ka si aad u cusboonaysiiso',
+    },
+    hi: {
+      subtitle: 'लंदन के नमाज़ के समय',
+      inline: 'Athan - नमाज़ के समय',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'समय लोड करने के लिए खोलें',
+      staleTitle: 'पुराना',
+      staleBody: 'रिफ्रेश के लिए ऐप खोलें',
+      staleInline: 'Athan - समय रिफ्रेश करने के लिए खोलें',
+      refreshLine: 'रिफ्रेश के लिए Athan खोलें',
+      refreshLead: 'Athan खोलें',
+      refreshTail: 'रिफ्रेश के लिए',
+      catchBody: 'रिफ्रेश के लिए ऐप खोलें',
+    },
+    th: {
+      subtitle: 'เวลาละหมาดสำหรับลอนดอน',
+      inline: 'Athan - เวลาละหมาด',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'เปิดเพื่อโหลดเวลา',
+      staleTitle: 'ข้อมูลเก่า',
+      staleBody: 'เปิดแอปเพื่อรีเฟรช',
+      staleInline: 'Athan - เปิดเพื่อรีเฟรชเวลา',
+      refreshLine: 'เปิด Athan เพื่อรีเฟรช',
+      refreshLead: 'เปิด Athan',
+      refreshTail: 'เพื่อรีเฟรช',
+      catchBody: 'เปิดแอปเพื่อรีเฟรช',
+    },
+  } as const;
+  const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
+  const localeKey = (['en', 'ar', 'ms', 'so', 'hi', 'th'] as const).find(
+    (code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)
+  );
+  const staticRow = STATIC[localeKey ?? 'en'];
+
   // Neutral fallbacks for states without renderable data: the gallery/jiggle
   // placeholder (iOS invokes the layout with no props) and any unexpected
   // rendering error (caught below). Text-only — no icons anywhere.
@@ -355,7 +626,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
             lineLimit(1),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          Athan — prayer times
+          {staticRow.inline}
         </Text>
       );
     }
@@ -368,9 +639,11 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>ATHAN</Text>
+        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          {staticRow.rectTitle}
+        </Text>
         <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          Open to load times
+          {staticRow.rectSubtitle}
         </Text>
       </VStack>
     );
@@ -396,7 +669,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
               lineLimit(1),
               containerBackground('rgba(0, 0, 0, 0)', 'widget'),
             ]}>
-            Athan — open to refresh times
+            {staticRow.staleInline}
           </Text>
         );
       }
@@ -414,10 +687,10 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
           ]}>
           <Image systemName='moon.stars.fill' size={17} color={WHITE} />
           <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            Out of date
+            {staticRow.staleTitle}
           </Text>
           <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            Open app to refresh
+            {staticRow.staleBody}
           </Text>
         </VStack>
       );
