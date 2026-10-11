@@ -254,6 +254,7 @@ this session's griller pass.
 - [R11.2] WHEN the iPhone XS launches with an Arabic device locale THE SYSTEM SHALL pin LTR on the first frame and keep widget direction correct
 - [R11.3] WHEN an Android 15+ fleet phone renders Arabic, Devanagari and Thai THE SYSTEM SHALL draw the tall font variants without clipping
 - [R12.1] WHEN the language switch flow runs on the 3T THE SYSTEM SHALL switch to Arabic, render the list in Arabic, and switch back to English
+- [R13.1] WHEN every step of the plan has executed THE SYSTEM SHALL carry the finishing records in LOG.md and the EXECUTED queue row
 
 ## 6. Steps (checklist; each step is a file under `steps/`)
 
@@ -263,10 +264,10 @@ this session's griller pass.
    the gates suite, the lock file.
 3. `03-loader-switch.md` — runtime catalog pick, the remount key, the four module-scope
    captures, the catalog-driven width pick.
-4. `04-language-sheet.md` — the D52 Settings row, the language sheet, the native-names
-   table, the D51 progress row, `preference_language`.
-5. `05-convergence.md` — `commitLanguageSelection`, launch/foreground reconciliation,
+4. `04-convergence.md` — `commitLanguagePreference`, launch/foreground reconciliation,
    channel cache resets, `channel.reminder`, the last-armed stamp.
+5. `05-language-sheet.md` — the D52 Settings row, the language sheet, the native-names
+   table, the D51 progress row, `preference_language`.
 6. `06-dates.md` — catalog-composed Gregorian and Hijri labels, list header, widget
    labels, en parity.
 7. `07-widget-props-v7.md` — structured date parts, parser replacement, tolerance.
@@ -352,10 +353,7 @@ verification D41 asks for. Progress table. The four-line handoff.
 
 ## Resume from
 
-PLAN.md sections 1 to 12 are drafted; anchors extracted and verified (42, all count 1);
-catalogs drafted and gated. NEXT: write the 16 step files under `steps/`, then
-`scripts/preflight-39.sh`, then the griller pass, then `bash scripts/check-plan.sh
-ai/plans/39-localisation` until `PLAN OK`, then the finish per section 8 of the planner
-skill (row READY, docs commit, merge, push). The step contracts draw on the worker fact
-packs recorded in this session's conversation; the load-bearing ones are already quoted
-in section 4 with anchors.
+All 16 step files are written. `scripts/preflight-39.sh` is written. NEXT: run
+`bash scripts/check-plan.sh ai/plans/39-localisation` and fix what it names, dispatch the
+`athan-plan-griller` on the folder, adjudicate its findings, re-gate to `PLAN OK`, then
+finish per section 8 of the planner skill (row READY, docs commit, merge, push).
