@@ -1,0 +1,8 @@
+>Out of date</Text>
+          {environment.widgetFamily === 'systemMedium' ? (
+            refreshLine('Open Athan to refresh')
+          ) : (
+            <VStack spacing={1}>
+              {refreshLine('Open Athan')}
+              {refreshLine('to refresh')}
+            </VStack>

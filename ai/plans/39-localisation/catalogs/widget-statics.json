@@ -20,47 +20,47 @@
   },
   "ar": {
     "subtitle": "أوقات الصلاة في لندن",
-    "inline": "Athan — أوقات الصلاة",
+    "inline": "Athan - أوقات الصلاة",
     "rectTitle": "ATHAN",
     "rectSubtitle": "افتح لتحميل الأوقات",
     "staleTitle": "غير محدّث",
     "staleBody": "افتح التطبيق للتحديث",
-    "staleInline": "Athan — افتح لتحديث الأوقات"
+    "staleInline": "Athan - افتح لتحديث الأوقات"
   },
   "ms": {
     "subtitle": "Waktu solat untuk London",
-    "inline": "Athan — waktu solat",
+    "inline": "Athan - waktu solat",
     "rectTitle": "ATHAN",
     "rectSubtitle": "Buka untuk muat waktu",
     "staleTitle": "Tidak dikemas kini",
     "staleBody": "Buka apl untuk muat semula",
-    "staleInline": "Athan — buka untuk muat semula waktu"
+    "staleInline": "Athan - buka untuk muat semula waktu"
   },
   "so": {
     "subtitle": "Waqtiyada salaadda London",
-    "inline": "Athan — waqtiyada salaadda",
+    "inline": "Athan - waqtiyada salaadda",
     "rectTitle": "ATHAN",
     "rectSubtitle": "Fur si aad u soo dejinto waqtiyada",
     "staleTitle": "Cusboonaysi la'aan",
     "staleBody": "Fur aplka si aad u cusboonaysiiso",
-    "staleInline": "Athan — fur si aad u cusboonaysiiso waqtiyada"
+    "staleInline": "Athan - fur si aad u cusboonaysiiso waqtiyada"
   },
   "hi": {
     "subtitle": "लंदन के नमाज़ के समय",
-    "inline": "Athan — नमाज़ के समय",
+    "inline": "Athan - नमाज़ के समय",
     "rectTitle": "ATHAN",
     "rectSubtitle": "समय लोड करने के लिए खोलें",
     "staleTitle": "पुराना",
     "staleBody": "रिफ्रेश के लिए ऐप खोलें",
-    "staleInline": "Athan — समय रिफ्रेश करने के लिए खोलें"
+    "staleInline": "Athan - समय रिफ्रेश करने के लिए खोलें"
   },
   "th": {
     "subtitle": "เวลาละหมาดสำหรับลอนดอน",
-    "inline": "Athan — เวลาละหมาด",
+    "inline": "Athan - เวลาละหมาด",
     "rectTitle": "ATHAN",
     "rectSubtitle": "เปิดเพื่อโหลดเวลา",
     "staleTitle": "ข้อมูลเก่า",
     "staleBody": "เปิดแอปเพื่อรีเฟรช",
-    "staleInline": "Athan — เปิดเพื่อรีเฟรชเวลา"
+    "staleInline": "Athan - เปิดเพื่อรีเฟรชเวลา"
   }
 }

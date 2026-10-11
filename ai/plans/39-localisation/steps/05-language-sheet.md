@@ -19,20 +19,20 @@ six names render in their own scripts, sorted by codepoint (D26).
 
 - `components/sheets/screens/Settings.tsx`, `components/sheets/screens/Language.tsx` (new), `components/sheets/screens/languageSheet.ts` (new), `components/sheets/index.ts`
 - `shared/languageNames.ts` (new), `shared/types.ts` (`Icon.GLOBE`), `assets/icons/svg/index.ts` + the globe asset (new)
-- `scripts/scan-strings.mjs` (`DATA_MODULES` gains `shared/languageNames.ts`), `shared/__tests__/stringGuard.test.ts` (the data-module rule list)
+- `scripts/scan-strings.mjs` (`DATA_MODULES` gains `shared/languageNames.ts`; the `name`-field allowance), `shared/__tests__/stringGuard.test.ts` (the data-module rule list)
 - `stores/language.ts` (the busy atom), `stores/ui.ts` (sheet modal plumbing follows the existing pattern)
 - tests: `components/sheets/__tests__/Language.test.tsx` (new), the Settings suite extension, `stringGuard` suite
 
 ## Red tests
 
-1. `Language.test.tsx`: the sheet renders six rows whose labels are exactly `['العربية', 'Bahasa Melayu', 'English', 'Soomaali', 'ไทย', 'हिन्दी']` (codepoint order) — fails on the absent component.
-2. Same suite: tapping the العربية row calls `commitLanguagePreference` with `'ar'` and, while the commit promise is unsettled, the list rows are disabled and the picked row shows the ActivityIndicator plus `t('language.applying')` — fails on the absent component.
-3. Same suite: resolving the commit dismisses the sheet; rejecting it also dismisses (forward-only: the UI already switched) — fails.
-4. Settings suite extension: the Display card's first row is the Language row with the globe icon, label `t('settings.language')`, a chevron, and it opens the language sheet — fails.
+1. `Language.test.tsx`: the sheet renders six rows whose labels are exactly `['Bahasa Melayu', 'English', 'Soomaali', 'العربية', 'हिन्दी', 'ไทย']` (codepoint order) - fails on the absent component.
+2. Same suite: tapping the العربية row calls `commitLanguagePreference` with `'ar'` and, while the commit promise is unsettled, the list rows are disabled and the picked row shows the ActivityIndicator plus `t('language.applying')` - fails on the absent component.
+3. Same suite: resolving the commit dismisses the sheet; rejecting it also dismisses (forward-only: the UI already switched) - fails.
+4. Settings suite extension: the Display card's first row is the Language row with the globe icon, label `t('settings.language')`, a chevron, and it opens the language sheet - fails.
 
 ## Change contracts
 
-1. `shared/languageNames.ts`: `export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [...]` holding the six native names (`English`, `العربية`, `Bahasa Melayu`, `Soomaali`, `ไทย`, `हिन्दी`) sorted by codepoint. No other export. The module joins `DATA_MODULES` in the scanner (catalog-data rule: literals are data, not copy).
+1. `shared/languageNames.ts`: `export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [...]` holding the six native names sorted by codepoint: `Bahasa Melayu`, `English`, `Soomaali`, `العربية`, `हिन्दी`, `ไทย` (Latin before Arabic before Devanagari before Thai). No other export. The module joins `DATA_MODULES` in the scanner, and the scanner's data-module copy rule gains one allowance: values held in a `name` field of `LANGUAGE_NAMES` entries are names data, not copy (the rule today refuses any data-module string containing a space unless prefixed `help.` or `whatsNew.`, and `Bahasa Melayu` carries one). `shared/__tests__/stringGuard.test.ts` pins the extended rule.
 2. The globe icon: one new SVG in `assets/icons/svg/` drawn in the same stroke style and viewBox as the existing compass icon (read `assets/icons/svg` for the house style; a globe of meridian and parallel lines), `Icon.GLOBE = 'GLOBE'` in `shared/types.ts`, registered in the svg index. Size 9 at the row, `SHEET_ICON_COLOR` for the sheet header icon, exactly like the athan row's construction.
 3. `components/sheets/screens/Language.tsx`: a `Sheet` with `title={t('settings.language')}`, `snapPoints={['60%']}`, `perfName="sheet_language"`, list rows in `LANGUAGE_NAMES` order. Each row: the native name, a check on the active locale, `Pressable` disabled while busy. On tap of the active locale: dismiss (no commit). On tap of another: set `languageCommitBusyAtom`, `await commitLanguagePreference(id)`, then dismiss on settle (both paths). The busy face: the picked row renders the app's `ActivityIndicator` (the splash gate's component, `SIZE.activityIndicator`, `COLORS.navigation.activityIndicator`) and `t('language.applying')`; every row's press is refused while busy. No cancel control exists (D18's no-cancel, kept by D47).
 4. `components/sheets/screens/languageSheet.ts`: the modal ref holder and present function following `soundSheet.ts`'s shape; `stackBehavior` matches the sound sheet.

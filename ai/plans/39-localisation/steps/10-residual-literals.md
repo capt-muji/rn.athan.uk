@@ -16,13 +16,13 @@ catalog across the scanned trees.
 
 ## Files
 
-- `shared/qiblaCompass.ts`, `components/sheets/screens/QiblaCompass.tsx` (the CARDINALS consumer, if the read site is there)
+- `shared/qiblaCompass.ts`, `components/sheets/screens/QiblaCompass.tsx` (the CARDINALS consumer, `QiblaCompass.tsx:134`)
 - tests: `shared/__tests__/qiblaCompass.test.ts` extension, the `stringGuard` suite
 
 ## Red tests
 
-1. `qiblaCompass.test.ts` extension: a `resolveCardinals()` (new export) returns `[{ angle: 0, letter: t('qibla.cardinal.n') }, ...]` and under `ar` the letters are `['ش', 'ق', 'ج', 'غ']` — fails on the absent export.
-2. The `stringGuard` census assertion, extended to flag the `CARDINALS` literals: temporarily name `shared/qiblaCompass.ts` in the scanner's classification expectation and watch it fail — record the failure, then make it pass by the change below (the census re-runs zero after).
+1. `qiblaCompass.test.ts` extension: a `resolveCardinals()` (new export) returns `[{ angle: 0, letter: t('qibla.cardinal.n') }, ...]` and under `ar` the letters are `['ش', 'ق', 'ج', 'غ']` - fails on the absent export.
+2. The `stringGuard` census assertion, extended to flag the `CARDINALS` literals: temporarily name `shared/qiblaCompass.ts` in the scanner's classification expectation and watch it fail - record the failure, then make it pass by the change below (the census re-runs zero after).
 
 ## Change contracts
 
