@@ -394,6 +394,27 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('Raj 1');
     });
 
+    it('renders the footer prop verbatim, preferring it over the parsed label', () => {
+      // v7 entries carry the precomposed localized footer; the label it would
+      // shorten from is deliberately different to prove the preference
+      const tree = renderHome({ ...liveProps(), dateLabel: 'Sunday, 18 October 2026', footer: 'Sun' }, 'systemSmall');
+      const all = textsOf(tree);
+      expect(all).toContain('Sun');
+      expect(all).not.toContain('Sunday');
+    });
+
+    it('renders the footer prop verbatim in the Hijri shape too', () => {
+      const tree = renderHome({ ...liveProps(), dateLabel: 'Rabīʻ II 30, 1448', footer: 'Rab 30' }, 'systemSmall');
+      expect(textsOf(tree)).toContain('Rab 30');
+    });
+
+    it('derives the footer from the date label on a v6 entry (absent footer field)', () => {
+      const legacy = { ...liveProps(), dateLabel: 'Sun, 18 Oct 2026' } as Record<string, unknown>;
+      delete legacy.footer;
+      const tree = renderHome(legacy, 'systemSmall');
+      expect(textsOf(tree)).toContain('Sun');
+    });
+
     it('renders the stale card per family', () => {
       const small = renderHome({ ...liveProps(), stale: true }, 'systemSmall');
       expect(textsOf(small)).toContain('Out of date');
@@ -481,6 +502,28 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('15:20');
     });
 
+    it('renders the day footer prop verbatim, preferring it over the parsed label', () => {
+      const props = androidProps({});
+      const days = props.days.map((day, index) =>
+        index === 0 ? { ...day, dateLabel: 'Saturday, 18 October 2026', footer: 'Sun' } : day
+      );
+
+      freezeNow(at(DAY_ONE, '14:08'));
+      const all = textsOf(renderTree(layouts.PrayerWidget({ ...props, days }, { colorScheme: 'light' })));
+      expect(all).toContain('Sun');
+      expect(all).not.toContain('Saturday');
+    });
+
+    it('derives the footer from the day label on a v6 snapshot (absent footer field)', () => {
+      const props = androidProps({});
+      const legacyDays = props.days.map(({ footer: _footer, ...day }) => day);
+
+      freezeNow(at(DAY_ONE, '14:08'));
+      const all = textsOf(renderTree(layouts.PrayerWidget({ ...props, days: legacyDays }, { colorScheme: 'light' })));
+      // The builder's label for DAY_ONE is "Sat, 17 Oct 2026"; the v6 parse keeps its first token
+      expect(all).toContain('Sat');
+    });
+
     it('computes the label at render from the snapshot epochs', () => {
       // Frozen half a minute into a minute: the ceil rounding is observable
       freezeNow(at(DAY_ONE, '14:08') + 30_000);
@@ -546,6 +589,8 @@ describe('home widget renderer', () => {
       const blank = androidProps({});
       for (const day of blank.days) {
         day.dateLabel = '';
+        // v6 days carry no footer, so the parse owns the empty label
+        delete day.footer;
       }
       expect(textsOf(renderTree(layouts.PrayerWidget(blank, { colorScheme: 'light' })))).toContain('');
     });
@@ -633,10 +678,15 @@ describe('home widget renderer', () => {
       const firstDay = hijri.days[0];
       if (!firstDay) throw new Error('fixture day missing');
       firstDay.dateLabel = 'Rajab 1, 1448';
+      delete firstDay.footer;
       const nextDay = hijri.days.find((day) =>
         day.rows.some((row) => row === day.rows.find((r) => r.epochMs > at(DAY_ONE, '14:08')))
       );
-      if (nextDay) nextDay.dateLabel = 'Rajab 1, 1448';
+      if (nextDay) {
+        nextDay.dateLabel = 'Rajab 1, 1448';
+        // v6 days carry no footer, so the Hijri-style label parses
+        delete nextDay.footer;
+      }
       expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1');
     });
 

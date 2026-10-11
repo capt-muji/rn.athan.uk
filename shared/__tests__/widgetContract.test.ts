@@ -22,6 +22,13 @@ import type { NodePath } from '@babel/traverse';
 import traverse from '@babel/traverse';
 import type { ArrowFunctionExpression, File, ImportDeclaration } from '@babel/types';
 
+import type { PrayerId } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { createPrayerDatetime } from '@/shared/time';
+import { type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
+import { buildPrayerWidgetSnapshot, buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
+import { ANDROID_SNAPSHOT_VERSION, WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
+
 const WIDGET_FILES = [
   { name: 'PrayerWidget', path: join(__dirname, '../../widgets/PrayerWidget.tsx') },
   { name: 'PrayerLockWidget', path: join(__dirname, '../../widgets/LockPrayerWidget.tsx') },
@@ -417,4 +424,87 @@ describe('widget directive', () => {
       expect(count).toBe(name === 'PrayerLockWidget' ? 3 : 1);
     });
   }
+});
+
+// =============================================================================
+// 5. PROPS v7: EVERY PUSH CARRIES A PRECOMPOSED LOCALIZED FOOTER (R7.1)
+// =============================================================================
+
+/** The footer bytes the v6-era layouts derived by parsing the label, kept as the en parity oracle */
+const legacyFooterParse = (label: string): string => {
+  const datePrefix = label.split(',')[0] ?? '';
+  const dateTokens = datePrefix.split(' ');
+  if (dateTokens.length === 1) return dateTokens[0] ?? '';
+  return `${dateTokens[0].slice(0, 3)} ${dateTokens[dateTokens.length - 1]}`;
+};
+
+describe('widget props v7 footers', () => {
+  const DAY_ONE = '2026-10-17'; // Saturday
+  const DAY_TWO = '2026-10-18'; // Sunday
+  const PUSH_AT = createPrayerDatetime(DAY_ONE, '14:00');
+  const TIMES: [PrayerId, string][] = [
+    ['fajr', '05:30'],
+    ['sunrise', '07:10'],
+    ['dhuhr', '12:45'],
+    ['asr', '15:20'],
+    ['magrib', '18:05'],
+    ['isha', '19:40'],
+  ];
+
+  const makePrayer = (date: string, time: string, id: PrayerId): ReadablePrayer => ({
+    type: ScheduleType.Standard,
+    id,
+    datetime: createPrayerDatetime(date, time),
+    time,
+    belongsToDate: date,
+  });
+
+  const sequence: PrayerSequence = {
+    type: ScheduleType.Standard,
+    prayers: TIMES.flatMap(([id, time]) => [makePrayer(DAY_ONE, time, id), makePrayer(DAY_TWO, time, id)]),
+  };
+
+  it('stamps v7 and a footer on every iOS entry, byte-identical to the v6 parse under en', () => {
+    expect(WIDGET_PROPS_VERSION).toBe(7);
+
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: false }, 'light');
+    for (const entry of entries) {
+      expect(typeof entry.props.footer).toBe('string');
+      expect(entry.props.footer).toBe(legacyFooterParse(entry.props.dateLabel));
+    }
+    // The footer is catalog-sourced: DAY_TWO entries carry the short weekday key
+    const sunday = entries.find(
+      (entry) => entry.props.dateLabel === `${t('calendar.weekdayShort.7')}, 18 ${t('calendar.monthShort.10')} 2026`
+    );
+    expect(sunday?.props.footer).toBe(t('calendar.weekdayShort.7'));
+  });
+
+  it('stamps v3 and a footer on every Android snapshot day, same composition', () => {
+    expect(ANDROID_SNAPSHOT_VERSION).toBe(3);
+
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+    expect(snapshot.days.map((day) => day.footer)).toEqual([
+      t('calendar.weekdayShort.6'),
+      t('calendar.weekdayShort.7'),
+    ]);
+    for (const day of snapshot.days) {
+      expect(day.footer).toBe(legacyFooterParse(day.dateLabel));
+    }
+  });
+
+  it('composes the Hijri footer from the month prefix and day under the preference', () => {
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: true }, 'light');
+    for (const entry of entries) {
+      expect(entry.props.footer).toBe(legacyFooterParse(entry.props.dateLabel));
+    }
+
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: true });
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+    for (const day of snapshot.days) {
+      expect(day.footer).toBe(legacyFooterParse(day.dateLabel));
+    }
+  });
 });

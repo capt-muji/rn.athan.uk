@@ -238,6 +238,16 @@ describe('virtual week model test', () => {
         );
       }
 
+      // The footer is the label's short form — exactly what the v6-era layouts
+      // parsed out of it, so the two can never disagree on a Gregorian label
+      const expectedFooter = (formatDateLocalized(nextPrayer.belongsToDate).split(',')[0] ?? '').split(' ')[0];
+      if (props.footer !== expectedFooter) {
+        throw new Error(
+          `Footer mismatch at ${new Date(instant).toISOString()}: entry says ` +
+            `"${props.footer}", expected "${expectedFooter}"`
+        );
+      }
+
       // The medium widget's day list is exactly the app's Standard page for
       // the next prayer's day (same rows, same order), and the active row is
       // the countdown target itself
@@ -497,6 +507,13 @@ describe('extras virtual week model test', () => {
         throw new Error(`Date label mismatch at ${new Date(instant).toISOString()}`);
       }
 
+      // The footer is the label's short form — exactly what the v6-era layouts
+      // parsed out of it, so the two can never disagree on a Gregorian label
+      const expectedFooter = (formatDateLocalized(nextPrayer.belongsToDate).split(',')[0] ?? '').split(' ')[0];
+      if (props.footer !== expectedFooter) {
+        throw new Error(`Footer mismatch at ${new Date(instant).toISOString()}`);
+      }
+
       // The medium widget's day list is exactly the app's Extras page for
       // the next prayer's day: same rows in CANONICAL order (chronological
       // filtering, then EXTRA_PRAYER_IDS ranking), Istijaba present only on
@@ -637,23 +654,24 @@ describe('fully readable real sequences', () => {
    * change to re-gold, never as a test to silence.
    *
    * Last re-golded when the countdown moved to a SwiftUI timer interval and the five-minute stepped
-   * entries were deleted (session 16a) — the fix for the archive-budget blackout.
+   * entries were deleted (session 16a) — the fix for the archive-budget blackout. Re-golded again
+   * when props v7 added the precomposed localized footer to every entry (job 39 step 7).
    */
   const REAL_YEAR_TIMELINES: [string, string][] = [
-    ['2024-01-10', '3a1fe8c299bee9ddcb7dee4d4b8476a624e26d6d4dc2c32171cae2792c229a67'],
-    ['2024-02-20', '3f641dbf5953818428bed7de6ecd2e4995caca843d1d6daed60b008252dd57a8'],
+    ['2024-01-10', '63e6630d7feb74de6189751106b4dcb3e7d282d66c3cee8146d57a16ed158330'],
+    ['2024-02-20', '5ffa10e92ad5192fb37edb46d0cd12d3cd459b6d517880a4c9760e7578af5421'],
     // Across the spring clock change (31 March)
-    ['2024-03-24', 'f397d3cc95ff194182dd456b956048fb362ef4983df2cdc874de9c0d6b621dd9'],
-    ['2024-04-15', '65ae1af6df07631d5c06b1141161b30e8c15d0547ac3b47086e186627ce91260'],
-    ['2024-05-06', 'aa8f4794a7d80561da443f5be1c39bf628e96c1c86a3a9cf0cc803ceb722afec'],
-    ['2024-06-14', 'b543bff1e0930e63793fb74f4970f7b3b57996557e60843535276865a416cc6a'],
-    ['2024-07-01', '73b3a29c37715314c684daaefe0749557b183a743f6b7ed90e3fe5cdf4742c99'],
-    ['2024-08-12', '77a709e33bacdc6f3444ca24a61de54682e2e38e37bcd6234fe1dad2391549ca'],
-    ['2024-09-02', '757594824d7be65b88a8b1b6897febc725fe1001babaf797c213e8a5f97b829a'],
+    ['2024-03-24', '6481443693995d19e997b3213dc8eee537521c3a8f9d7120cc00c2d37d9e9e0c'],
+    ['2024-04-15', '529d1ea033e0757df949feae9b073f5bcf1597553ef01c08e50b29a0c01cb661'],
+    ['2024-05-06', '30bbb7233e4ce7bce7d7a8ceccb7d882c3603a03a125d466d850509735e84642'],
+    ['2024-06-14', 'c6f601067d78c11d7caba1f4ae1e4ef69d533972bca160818724caadede0a3db'],
+    ['2024-07-01', 'e63ead5d3137a5e12df345311978120891b6c79d6fd1ce0ae7e754eb182e252e'],
+    ['2024-08-12', 'fb2ca159a70f7a002028ed10b81535f1ecaa97728700671b39504de49a6ae593'],
+    ['2024-09-02', 'e6b2ba16c7c68f063a86d2680d6c731d10377a05190bfcb01f2016194bad6195'],
     // Across the autumn clock change (27 October)
-    ['2024-10-20', '7af61849bf07916285dcae1684fe8fc6eb6751d7d226912968068a647a6d0462'],
-    ['2024-11-11', '3e9274832718c3756366ea298207e64a6b5c69e73d51104eadda36d99f90f510'],
-    ['2024-12-15', 'f787a871e34a75590e82b80b47f43e06c4092d32b6d9b1a8690b39c73c17bd20'],
+    ['2024-10-20', 'e89338f04f305a4a930ad0fd9e71aa43c79d4d385dbc39a0b1cb4cec5aa3c3f5'],
+    ['2024-11-11', '7b02c93fee25b301aef575604f9706d173bcfc83187c77772f112b20a54cec31'],
+    ['2024-12-15', '0259fe5eca60123a85481b38cf11631dd4332ea07aa3ce7c09c4a2f4548cc4ef'],
   ];
 
   /** Midnight, noon, and two minutes before and exactly on every row of the push day's list */

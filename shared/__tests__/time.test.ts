@@ -6,6 +6,7 @@ import {
   adjustTime,
   createInstant,
   createPrayerDatetime,
+  footerFor,
   formatDateLocalized,
   formatDateShort,
   formatHijriDateLocalized,
@@ -726,6 +727,25 @@ describe('formatHijriDateLocalized', () => {
     const result2 = formatHijriDateLocalized('2025-12-31');
     expect(typeof result1).toBe('string');
     expect(typeof result2).toBe('string');
+  });
+});
+
+describe('footerFor', () => {
+  it('draws the short weekday alone under the Gregorian preference', () => {
+    // 2026-10-18 is a Sunday; the footer is the weekday key's own bytes
+    expect(footerFor('2026-10-18', false)).toBe('Sun');
+    expect(footerFor('2026-10-17', false)).toBe('Sat');
+  });
+
+  it('shortens the Hijri month to its first three graphemes plus the day', () => {
+    // 2026-10-11 is Rabiʻ II 30, 1448 under the en catalog
+    expect(footerFor('2026-10-11', true)).toBe('Rab 30');
+  });
+
+  it('throws on an empty date under the Hijri preference rather than guessing', () => {
+    // The Hijri branch fails and the Gregorian fallback rejects the date too,
+    // matching how the label formatters behave on unparseable input
+    expect(() => footerFor('', true)).toThrow();
   });
 });
 

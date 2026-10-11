@@ -212,6 +212,7 @@ export const buildPrayerWidgetTimeline = (
         nextEpochMs: next.datetime.getTime(),
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
         dateLabel,
+        footer: TimeUtils.footerFor(next.belongsToDate, settings.hijriDate),
         prayers: dayList.rows,
         activeIndex: dayList.activeIndex,
       },
@@ -271,6 +272,7 @@ export const buildPrayerWidgetTimeline = (
       nextEpochMs: finalEpochMs,
       prevEpochMs: finalEpochMs,
       dateLabel: formatDateLabel(finalPrayer.belongsToDate, settings.hijriDate),
+      footer: TimeUtils.footerFor(finalPrayer.belongsToDate, settings.hijriDate),
       stale: true,
     },
   });
@@ -310,6 +312,7 @@ export const buildPrayerWidgetSnapshot = (
     if (day === undefined) {
       day = {
         dateLabel: formatDateLabel(prayer.belongsToDate, settings.hijriDate),
+        footer: TimeUtils.footerFor(prayer.belongsToDate, settings.hijriDate),
         // London midnight STARTING the date (createPrayerDatetime resolves
         // the offset at the instant, DST-safe) — the render-time day picker
         // compares wall-clock days, and getDayAnchor's noon anchor would
