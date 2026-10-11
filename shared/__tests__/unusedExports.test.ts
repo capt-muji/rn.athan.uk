@@ -23,8 +23,6 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
     'The stored-record vocabulary R15 names; the prayer.ts narrowing is structural now, so no production site names the type',
   PRAYER_LABELS:
     'Reached at runtime through the loader namespace require whose marks measure the catalog (step 15); a static import would evaluate the catalog before the marks',
-  commitLanguagePreference:
-    'The Settings pick runs it; the language sheet (step 05) reaches it, until then only its suite does',
 };
 
 const ROOT = join(__dirname, '..', '..');

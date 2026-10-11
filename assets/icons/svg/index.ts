@@ -7,6 +7,7 @@ import BellSlashIcon from './bell-slash.svg';
 import CheckIcon from './check.svg';
 import CloseIcon from './close.svg';
 import CompassIcon from './compass.svg';
+import GlobeIcon from './globe.svg';
 import InfoIcon from './info.svg';
 import MusicNoteIcon from './music-note.svg';
 import PauseIcon from './pause.svg';
@@ -30,6 +31,7 @@ const ICONS: Record<Icon, typeof BellRingIcon> = {
   [Icon.WIDGET]: WidgetIcon,
   [Icon.APPLE]: AppleIcon,
   [Icon.ANDROID]: AndroidIcon,
+  [Icon.GLOBE]: GlobeIcon,
 };
 
 export default ICONS;
