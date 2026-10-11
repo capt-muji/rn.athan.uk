@@ -112,6 +112,18 @@ STOP: the sed now mutates `SheetHost.tsx` itself (the suite never loads `_layout
 and the `.tsx` suite runs under the `components` jest project, not `unit`), matching the
 mutation the executor verified failing with `Received: 2`.
 
+**Refresh 4, 2026-10-11** (steps 5b and 7 landed, `uat` `b3a63ed8`, 2.0.32): step 08
+STOPped on a genuine table gap - the pinned `widget-statics.json` had no fields whose
+en bytes equal the home stale card's refresh trio or the catch fallback's
+`Open the app to refresh`. Ruled by assumption per the owner's standing instruction
+(option a, the only one holding both the en-byte invariant and the contract): the table
+gains four fields. `refreshLine`/`refreshLead`/`refreshTail` copy the landed catalogs'
+`widget.refresh*` values per locale; `catchBody`'s en column freezes today's fallback
+bytes exactly and its five translations are drafted in the catalogs' refresh phrasing,
+flagged in `catalogs/provenance.json` for the owner's D42 verification. Gates green
+after the edit. Step 08's contracts 2 and 3 name the field mapping and the
+byte-freeze rule.
+
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
 `preference_language_last_armed` stamp writes only the active locale after a full
