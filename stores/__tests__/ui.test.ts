@@ -79,6 +79,7 @@ jest.mock('@/stores/database', () => ({
     const value = mockDatabaseValues.get(key);
     return typeof value === 'string' && value !== '' ? value : null;
   },
+  getRawItem: () => undefined,
 }));
 
 import { ScheduleType } from '@/shared/types';

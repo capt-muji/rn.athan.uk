@@ -54,6 +54,7 @@ jest.mock('@/stores/database', () => ({
   markYearAsFetched: (year: number) => mockMarkYearAsFetched(year),
   clearAllExcept: (keys: string[]) => mockClearAllExcept(keys),
   getItem: (key: string) => mockGetItem(key),
+  getRawItem: () => undefined,
   getAllWithPrefix: () => [],
   clearPrefix: (prefix: string) => mockClearPrefix(prefix),
 }));

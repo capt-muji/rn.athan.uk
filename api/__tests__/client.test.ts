@@ -22,6 +22,7 @@ jest.mock('@/stores/database', () => ({
   markYearAsFetched: jest.fn(),
   clearAllExcept: jest.fn(),
   getItem: jest.fn(),
+  getRawItem: jest.fn(),
 }));
 
 // Mock logger (env helpers control the real-fetch vs mock-data path)

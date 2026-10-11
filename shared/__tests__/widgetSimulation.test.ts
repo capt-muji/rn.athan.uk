@@ -30,7 +30,11 @@
  * gap, some sampled instant exposes it.
  */
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 
 import { createHash } from 'node:crypto';
 import { addDays } from 'date-fns';

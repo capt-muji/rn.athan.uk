@@ -3,8 +3,11 @@
  * else the device's ordered locale list resolves against the shipped set, else en.
  */
 
+import { getDefaultStore } from 'jotai/vanilla';
+
 import { type DeviceLocaleInfo, readStoredLanguagePreference, resolveInitialLocale } from '@/shared/i18n/locale';
 import * as Database from '@/stores/database';
+import { languagePreferenceAtom } from '@/stores/language';
 
 const LANGUAGE_KEY = 'preference_language';
 
@@ -76,6 +79,39 @@ describe('readStoredLanguagePreference', () => {
 
   it('treats an empty string as no choice', () => {
     Database.setItem(LANGUAGE_KEY, '');
+    expect(readStoredLanguagePreference()).toBeNull();
+  });
+});
+
+describe('the stored-preference round trip', () => {
+  beforeEach(() => {
+    Database.removeItem(LANGUAGE_KEY);
+  });
+
+  // The regression the 3T caught: the preference atom writes the bare locale,
+  // and a cold start reads it back through this resolver
+  it('a bare locale written through the storage atom reads back as itself', () => {
+    getDefaultStore().set(languagePreferenceAtom, 'ar');
+    expect(readStoredLanguagePreference()).toBe('ar');
+  });
+
+  it('a JSON-quoted locale written through setItem still reads back', () => {
+    Database.setItem(LANGUAGE_KEY, 'ar');
+    expect(readStoredLanguagePreference()).toBe('ar');
+  });
+
+  it('a bare empty string reads as no choice', () => {
+    Database.database.set(LANGUAGE_KEY, '');
+    expect(readStoredLanguagePreference()).toBeNull();
+  });
+
+  it('an unparseable stored value reads as no choice, never a throw', () => {
+    Database.database.set(LANGUAGE_KEY, 'hello');
+    expect(readStoredLanguagePreference()).toBeNull();
+  });
+
+  it('a stored non-string value reads as no choice', () => {
+    Database.database.set(LANGUAGE_KEY, '5');
     expect(readStoredLanguagePreference()).toBeNull();
   });
 });

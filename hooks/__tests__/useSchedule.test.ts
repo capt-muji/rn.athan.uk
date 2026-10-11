@@ -18,7 +18,11 @@ import { type Breakage, london, sequenceFrom, storeLondonDays } from './londonDa
 const mockClock = { now: new Date(0) };
 const mockAtomValues = new Map<string, unknown>();
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),
