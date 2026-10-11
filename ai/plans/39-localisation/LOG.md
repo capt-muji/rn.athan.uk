@@ -143,6 +143,27 @@ Steps land here as they execute. Nothing has executed.
 - Per the executor contract (a break that passes where the plan says it fails is a STOP), nothing committed. Work saved to `$HOME/athan-gitree/sessions/39/step5b-unfinished.patch` (226 lines, includes both new files via intent-to-add) and `step5b-unfinished-status.txt`. Tree restored to clean; branch `feat/39-05b-sheet-host` deleted (no commits).
 - The one-line repair a replan needs: step 05b's break sed moves from `app/_layout.tsx` to `components/sheets/SheetHost.tsx`, keying the five screens (or the fragment) by the subscribed version inside the host, with the jest project flag `components`. Everything else in the step executed exactly as written and is in the saved patch.
 
+## Step 05b: the sheet layer survives the locale remount
+
+- Branch `feat/39-05b-sheet-host` off `uat` (`e9d29eb6`, after the break ruling). Anchor `layout-remount-key` counted 1 before work began.
+- This session resumed the STOPped step: the saved work from `$HOME/athan-gitree/sessions/39/step5b-unfinished.patch` re-applied byte-identical, red re-derived first (the suite failing `Cannot find module '../SheetHost'` with the host moved aside).
+- Change: `components/sheets/SheetHost.tsx` created per contract 1 (unbound `useAtomValue(localeVersionAtom)` subscription, `null` when `!deferred`, the five screens imported as defaults from their screen modules in the contract's order, never through the index); `components/sheets/index.ts` gained `export { SheetHost } from './SheetHost';`; `app/_layout.tsx` collapsed the five imports to `import { SheetHost } from '@/components/sheets';`, dropped the root key, keyed `<InitialWidthMeasurement key={localeVersion} />` and `<Slot key={localeVersion} />`, rendered `<SheetHost deferred={chromeDeferred} />` inside the modal provider, and rewrote the locale comment to say why the key sits on the screen tree and measurement, not the root.
+- Green: `SheetHost.test.tsx` 2 passed (each of the five mount-counting mocks mounts once; the locale bump grows every render count while every mount count stays 1); the `_layout`, Language, Settings and sheets suites 418 passed; `npx tsc --noEmit` exit 0; `npx biome check` exit 0; full `yarn validate` 203 suites, 5393 passed, 5393 total, coverage 100% x4, exit 0.
+- Break (the repaired script): the sed binding the version and keying `<BottomSheetSound />` inside `SheetHost.tsx` mutated `1 failed, 1 passed` with `Received: 2` (the first screen remounting); restored `2 passed`; `ALL AS EXPECTED: 1`. Tree listed only this step's files after.
+- Version 2.0.31 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added; version lock held through the merge, released after).
+- Commit: `7483d955` (2.0.31). Hook `Tests: 5393 passed, 5393 total`, coverage 100% on statements (5124), branches (2202), functions (1068), lines (4586).
+- Review: cold read of `git show 7483d955` against the checklist - the five sheets mount at the same defer point through the same `chromeDeferred` value with SheetHost rendering no UI of its own; the subscription is the only new one (the layout's own subscription feeds the keys, as before); the comment states why the key moved. No findings.
+- Merge: `44d35867` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 5b`.
+
+## Step 05b checklist
+
+- [x] Red: the suite failed on the absent component (re-derived after the resume)
+- [x] Contracts 1-3 built; the key off the root, on the screen tree and measurement; SheetHost subscribes unbound
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5393 passed, 100% x4)
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.31 set in all three files
+- [x] Commit `7483d955` and `--no-ff` merge `44d35867` landed
+
 session: ses_ed68ed1ebffeum3GKU1fk2P6zu (steps 1 to 3 and the step 4 stop)
 session: ses_ed66ae6c9ffe9YyDq9SegY4zcs (steps 4 to 6)
 
@@ -150,3 +171,4 @@ session: ses_ed66ae6c9ffe9YyDq9SegY4zcs (steps 4 to 6)
 - Commit: `098ec7cd` (2.0.28), merged into `uat` with `--no-ff` as `d36923cc`. The completing session ended before these lines: the hook log died with its temp folder, and the checklist's own measured line stands - `yarn validate` 201 suites, 5391 passed, 5391 total, coverage 100% x4, `yarn test:tz` green in four zones. Branch deleted; row read `IN PROGRESS, step 6`. The lead verified the landing from the repository and appended this entry.
 
 session: ses_ed66ae6c9ffe9YyDq9SegY4zcs
+session: ses_ed5ac8bd1ffeqp4ybB25dDVnL1
