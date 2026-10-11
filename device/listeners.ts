@@ -68,9 +68,8 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
         })
         .catch((error) => logger.error('LISTENERS: Foreground sync failed', { error }));
 
-      // A switch that died mid-apply, or a device-language change while the host
-      // was suspended, left the stamp behind the locale: converge now. Fire and
-      // forget — the catch lives inside the pass itself.
+      // A switch that died mid-apply left the stamp behind the locale: converge
+      // now. Fire and forget — the catch lives inside the pass itself.
       reconcileLanguageSurfaces();
     }
 

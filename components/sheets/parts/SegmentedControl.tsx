@@ -108,7 +108,7 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
  *
  * @example
  * <SegmentedControl
- *   options={ALERT_OPTIONS}
+ *   options={alertOptions()}
  *   selected={currentAlert}
  *   onSelect={setAlert}
  * />
