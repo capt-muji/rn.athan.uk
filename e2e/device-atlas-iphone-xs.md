@@ -18,5 +18,9 @@
 | App Location | Settings > Apps > Athan > Location | cell by label |
 | Home screen grid | home | icons 180 px, pitch 261 px (60/87 pt), first row starts y 183 px; 4 columns measured |
 | Device build | repo checkout -> prebuild -> Release run:ios | `EXPO_PUBLIC_IOS_WIDGETS=1 prebuild`, plist check, `DEVELOPMENT_TEAM=<paid team> run:ios --configuration Release --device $IPHONE_UDID`; job 39 step 14's stop notes carry the full sequence |
+| Device build-only | xcodebuild direct | `expo run:ios --device generic --output` yields a SIMULATOR binary; for a device artifact run `xcodebuild -workspace ios/Athan.xcworkspace -scheme Athan -configuration Release -destination 'generic/platform=iOS' -allowProvisioningUpdates CODE_SIGN_STYLE=Automatic DEVELOPMENT_TEAM=<paid team> build`, then `devicectl device install app` |
+| Language change | Settings > عام > اللغة والمنطقة | iOS 18.7: no iPhone-Language row; tap the current language row or إضافة لغة… > search > pick > confirm primary; the picker's Cancel and search field sit mirrored in RTL |
+| Leave an app | terminate or app-switcher | `home` and bottom-edge swapes do not reliably work; terminate the app via devicectl, or `app-switcher` then tap clear wallpaper beside the cards |
+| Traps | system alerts swallow every tap; the XS never auto-locks while tethered; synthesized long-presses on wallpaper never opened edit mode before the alert trap closed; snapshots wedge on any animated screen (the countdown, a live map) - screenshots are the reliable read |
 
 Measured during job 39 step 14 (2026-10-11). Update this table when a route moves.
