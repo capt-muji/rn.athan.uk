@@ -46,7 +46,7 @@ Steps land here as they execute. Nothing has executed.
 - Green: all named suites pass; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0; full `yarn validate` 199 suites, 5373 passed, 5373 total, coverage 100% x4, exit 0.
 - Break: `sed "s/MODULES\[currentLocaleId()\]/MODULES.en/"` made `2 failed, 2 passed` with the ar case showing `Received: "Fajr"` (the th `prayerLabel` case fails alongside: the sed pins both lookups); restored `4 passed, 4 total`; `ALL AS EXPECTED: 1`. Tree listed only step files after.
 - Version 2.0.24 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added).
-- Commit: (sha recorded below), merged into `uat` with `--no-ff`.
+- Commit: `3ee03cb9` (2.0.24), merged into `uat` with `--no-ff` as `c8c8b3cb`. Hook and review lines in the step 04 stop note below.
 
 ## Step 03 checklist
 
@@ -58,5 +58,11 @@ Steps land here as they execute. Nothing has executed.
 - [x] Commit and `--no-ff` merge landed
 
 <!-- hook and merge lines appended after commit -->
+
+## Step 04: forward-only convergence - EXECUTION STOPPED AT THE ANCHOR CHECK
+
+- Step 4's anchor check before any work: `app-init-timeout` counts **0** on `app/index.tsx`; the other six step anchors count 1. The failing anchor line is `import { shouldShowWhatsNew, VISIBLE_WHATS_NEW } from '@/shared/whatsNew';`, which step 03's contract 5 itself renamed to `currentVisibleWhatsNew` (commit `3ee03cb9`). The anchor file was not refreshed for step 03's output: the D53 refresh proved its worktree fixes against step 2 only. Per the plan's rule (any anchor count other than 1 is NEEDS REPLAN) and the executor's law (never repair an anchor in flight), the step stopped before its red tests. Nothing was built for step 4; branch `feat/39-04-convergence` deleted (no commits).
+- Step 03 completion lines: commit `3ee03cb9` (2.0.24). Hook `Tests: 5373 passed, 5373 total`, coverage 100% on statements (5052), branches (2188), functions (1049), lines (4523). Merge: `c8c8b3cb` into `uat` (`--no-ff`). Branch deleted. Review: cold read against the checklist (only `_layout.tsx` subscribes to the locale; the removed test lines were accessor plumbing with values carried verbatim; the lazy resolution makes no module-eval native call); no findings.
+- The one-line repair a replan needs: `app-init-timeout.txt`'s whatsNew import line updated to `import { currentVisibleWhatsNew, shouldShowWhatsNew } from '@/shared/whatsNew';` (verified present exactly once at `app/index.tsx:24` on uat `c8c8b3cb`).
 
 session: ses_ed68ed1ebffeum3GKU1fk2P6zu

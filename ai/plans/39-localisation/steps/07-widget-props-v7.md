@@ -2,7 +2,7 @@
 
 **Requirements:** R7.1
 Weight: 2
-**Anchors:** `widget-versions`, `widget-android-footer`, `widget-ios-footer`, `widget-date-label`.
+**Anchors:** `widget-versions`, `widget-android-footer`, `widget-ios-footer`, `widget-date-label-v2` (the post-step-06 bytes: step 06's contract 2 switches this body's calls to the localized pair, so the original `widget-date-label` anchor is step 06's own).
 
 ## Goal
 
