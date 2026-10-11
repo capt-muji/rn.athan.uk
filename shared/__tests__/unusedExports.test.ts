@@ -55,7 +55,9 @@ describe('exported symbols reachable from production code', () => {
   });
 
   it('keeps every allow-list entry earning its place, so a stale reason cannot hide a live symbol', () => {
-    const reported = sweepUnreachable().map((entry) => entry.slice(entry.lastIndexOf(': ') + 2));
+    // Deduped: every locale module exports its own PRAYER_LABELS, so one symbol legitimately
+    // reports once per file. The guarded property is per symbol, not per report.
+    const reported = [...new Set(sweepUnreachable().map((entry) => entry.slice(entry.lastIndexOf(': ') + 2)))];
 
     expect(reported.sort()).toEqual(Object.keys(REACHED_WITHOUT_AN_IMPORT).sort());
   });
