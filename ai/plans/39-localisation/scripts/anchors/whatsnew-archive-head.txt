@@ -1,0 +1,6 @@
+export const WHATS_NEW: WhatsNewArchiveRelease | null = {
+  version: '1.26.32',
+  items: [
+    {
+      titleKey: 'whatsNew.title.tabletSupport',
+      bodyKey: 'whatsNew.body.tabletSupport',

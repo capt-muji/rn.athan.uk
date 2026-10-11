@@ -1,0 +1,4 @@
+__expoWidgetLayout", jsi::Value(rt, *layoutCache.at(layout)));
+
+      auto props = readableMapToValue(rt, propsMap);
+      auto environment = readableMapToValue(rt, environmentMap);

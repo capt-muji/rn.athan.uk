@@ -1,0 +1,6 @@
+export const en = {
+  'prayer.fajr': 'Fajr',
+  'prayer.sunrise': 'Sunrise',
+  'prayer.dhuhr': 'Dhuhr',
+  'prayer.asr': 'Asr',
+  'prayer.magrib': 'Magrib',

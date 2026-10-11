@@ -1,0 +1,5 @@
+const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
+  return hijriDate ? TimeUtils.formatHijriDateLong(belongsToDate) : TimeUtils.formatDateLong(belongsToDate);
+};
+
+/**

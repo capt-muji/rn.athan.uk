@@ -1,0 +1,4 @@
+const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
+  'widget';
+
+  const WHITE = '#ffffff';

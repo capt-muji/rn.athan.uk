@@ -1,0 +1,4 @@
+appId: com.mugtaba.athan
+name: sheets-x10
+tags:
+  - baseline

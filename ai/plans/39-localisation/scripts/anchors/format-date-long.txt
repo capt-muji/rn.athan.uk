@@ -1,0 +1,6 @@
+export const formatDateLong = (date: string): string => {
+  const [year, month, day] = date.split('-').map(Number);
+  // A calendar date needs no timezone: noon on the phone's own clock always exists
+  return format(new Date(year, month - 1, day, 12), 'EEE, d MMM yyyy');
+};
+

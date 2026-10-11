@@ -1,0 +1,8 @@
+export const englishWidthStandardAtom = atomWithStorageNumber(
+  `prayer_max_english_width_${CURRENT_LOCALE_ID}_standard`,
+  0
+);
+
+/** Measured width of longest English prayer name for Extra schedule */
+export const englishWidthExtraAtom = atomWithStorageNumber(`prayer_max_english_width_${CURRENT_LOCALE_ID}_extra`, 0);
+
