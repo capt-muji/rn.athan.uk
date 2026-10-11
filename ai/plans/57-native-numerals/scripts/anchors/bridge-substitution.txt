@@ -1,0 +1,8 @@
+export const t = <K extends TranslationKey>(key: K, params?: ParamsOf<K>): string =>
+  currentCatalog()[key].replace(TOKEN, (_match, token: string) => {
+    const supplied = (params as Record<string, string | number> | undefined)?.[token];
+    if (supplied === undefined) {
+      throw new Error(`i18n: missing parameter '${token}' for key '${key}'`);
+    }
+    return String(supplied);
+  });
