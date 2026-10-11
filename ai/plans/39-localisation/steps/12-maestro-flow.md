@@ -21,7 +21,7 @@ pick العربية, wait out the progress row, see the Arabic list, switch back
 
 The flow does not exist. Writing it is the step; "red" here is the run against the
 pre-step build: `maestro test e2e/flows/language-switch-x1.yaml` fails at the first
-Arabic assertion because the sheet does not exist yet on the base build — record the
+Arabic assertion because the sheet does not exist yet on the base build - record the
 first failing tap or assertion. Then land step 05's already-merged UI (the branch carries
 no app code) and the flow passes.
 
@@ -37,7 +37,7 @@ no app code) and the flow passes.
 
 ## Green run
 
-`export PATH="$HOME/.maestro/bin:$PATH" && maestro test e2e/flows/language-switch-x1.yaml` passes on the 3T against the current uat build (this step runs on the device; the atlas rules apply; no clock changes; no force-stop outside flows).
+Before any install over the owner's armed bells: `adb -s $3T_SERIAL shell dumpsys alarm | grep -A 2 com.mugtaba.athan > $HOME/athan-gitree/sessions/39/alarms-step12-baseline.txt`. Then build and install the current uat build, and `export PATH="$HOME/.maestro/bin:$PATH" && maestro test e2e/flows/language-switch-x1.yaml` passes on the 3T (the atlas rules apply; no clock changes; no force-stop outside flows). After the run, the alarm dump's identifiers equal the baseline byte for byte.
 
 ## Break script
 

@@ -82,11 +82,12 @@ patch must not grow: one global, both platforms, nothing else.
 ## 3. Pre-flight
 
 `scripts/preflight-39.sh` in this folder. The executor saves a copy to `$TMPDIR`, runs
-it from there. It checks: the checkout is on `uat`, a clean tree, `origin/uat` fetched
+it from there, and it runs the gate script in place (the gates resolve paths relative to
+the repository). It checks: the checkout is on `uat`, a clean tree, `origin/uat` fetched
 and merged, the version not lower than 2.0.16, rows 38 and 55 DONE in the queue, every
 anchor under `scripts/anchors/` counts exactly 1 (python count, never `grep -c`), the
-catalog files exist and `node scripts/gate-catalogs.mjs` (copied beside the preflight)
-prints `CATALOG GATES OK`. It ends `PREFLIGHT OK`.
+catalog files exist and `node ai/plans/39-localisation/scripts/gate-catalogs.mjs` prints
+`CATALOG GATES OK`. It ends `PREFLIGHT OK`.
 
 ## 4. Background the executor needs
 
@@ -100,78 +101,78 @@ D34: its rollback layers are dead, its lock-and-arm sequencing is not),
 The code map, one line per file (anchors under `scripts/anchors/` carry the verbatim
 regions):
 
-- `shared/i18n/index.ts` — `t()`, `prayerLabel`, `CURRENT_LOCALE_ID = 'en'` (the pin this
+- `shared/i18n/index.ts` - `t()`, `prayerLabel`, `CURRENT_LOCALE_ID = 'en'` (the pin this
   job removes). `t()` throws on a missing parameter; parameters are typed per key.
-- `shared/i18n/loader.ts` — the one-module indirection (ARCH-17): `require('./en')`
+- `shared/i18n/loader.ts` - the one-module indirection (ARCH-17): `require('./en')`
   captured once. This job rewrites its body; no call site moves.
-- `shared/i18n/en.ts` — 157 keys, `as const satisfies Record<string, string>`,
+- `shared/i18n/en.ts` - 157 keys, `as const satisfies Record<string, string>`,
   `TranslationKey`, `Catalog`, `PRAYER_LABELS` resolved from the catalog's own members.
-- `shared/i18n/dist/en.json` — the bridge export (`yarn i18n:export`), key truth.
-- `shared/__tests__/i18nBridge.test.ts` — export/import modes via `I18N_BRIDGE`; the
+- `shared/i18n/dist/en.json` - the bridge export (`yarn i18n:export`), key truth.
+- `shared/__tests__/i18nBridge.test.ts` - export/import modes via `I18N_BRIDGE`; the
   import mode asserts round-trip identity against `en` only (step 02 extends it per
   locale).
-- `stores/ui.ts` — width atoms keyed `prayer_max_english_width_${CURRENT_LOCALE_ID}_...`,
+- `stores/ui.ts` - width atoms keyed `prayer_max_english_width_${CURRENT_LOCALE_ID}_...`,
   legacy-key seed at module evaluation, widen-only writes.
-- `components/ui/InitialWidthMeasurement.tsx` — hidden Texts measure the longest name per
+- `components/ui/InitialWidthMeasurement.tsx` - hidden Texts measure the longest name per
   schedule; the pick reads `getLongestPrayerNameIndex` (English lengths; step 03 makes it
   catalog-driven).
-- `components/sheets/screens/Settings.tsx` — the Display card (D52 placement), the
+- `components/sheets/screens/Settings.tsx` - the Display card (D52 placement), the
   athan-row construction the Language row copies.
-- `components/sheets/parts/Sheet.tsx` — sheet machinery (setRef, title, subtitle, icon,
+- `components/sheets/parts/Sheet.tsx` - sheet machinery (setRef, title, subtitle, icon,
   snapPoints, perfName, onFirstPresent).
-- `components/sheets/screens/Sound.tsx` — the draft/commit-on-dismiss pattern and the
+- `components/sheets/screens/Sound.tsx` - the draft/commit-on-dismiss pattern and the
   `sheet.closeToSave` subtitle; the language sheet commits on pick instead (D47).
-- `stores/notifications.ts` — the scheduling queue (`withSchedulingLock`, sequential,
+- `stores/notifications.ts` - the scheduling queue (`withSchedulingLock`, sequential,
   never dropped), `_rescheduleAllNotifications({deferWidgetRefresh})` (arms at-time +
   reminders for both schedules, budget 64), the refresh gate atom (2 h), row 55's
   keep-alive (`scheduleReminderNotificationForDate`, `REMINDER_BUFFER_SECONDS` 30: a
   reminder inside its final 30 seconds stays armed, its identifier lands in
   `attemptedIds`, its record survives the stale-cancel), `commitSoundSelection` (the
   lock-and-arm shape the language commit copies, minus its rollback layer: D34).
-- `shared/notifications.ts` — channel ids (frozen: `athan_${n}_v4`,
+- `shared/notifications.ts` - channel ids (frozen: `athan_${n}_v4`,
   `reminder_${slug}_${n}_v3`, `extras_at_time_v3`), channel names via `t()` except the
   reminder channel's template literal (step 05 moves it to `channel.reminder`), the
   module-level dedup caches (`createdReminderChannels`, `createdAthanChannels`,
   `extrasChannelCreated`) a locale switch must reset, `genNotificationContent` (already
   `t()`-driven: copy freezes at schedule time, which is why a switch re-arms).
-- `device/notifications.ts` — `updateAndroidChannel` (same-id re-creation, the rename
+- `device/notifications.ts` - `updateAndroidChannel` (same-id re-creation, the rename
   path), arming calls.
-- `device/listeners.ts` — the AppState foreground branch that hosts the convergence
+- `device/listeners.ts` - the AppState foreground branch that hosts the convergence
   check.
-- `app/index.tsx` — launch sequence, the 1.5 s init timeout, the What's New gate, the
+- `app/index.tsx` - launch sequence, the 1.5 s init timeout, the What's New gate, the
   root the remount key lands on.
-- `app/_layout.tsx` — `stores/bootstrap` hydrates before first render (the locale
+- `app/_layout.tsx` - `stores/bootstrap` hydrates before first render (the locale
   resolution point), `preventAutoHideAsync`.
-- `shared/time.ts` — `formatDateLong` (date-fns `'EEE, d MMM yyyy'`, en-US),
+- `shared/time.ts` - `formatDateLong` (date-fns `'EEE, d MMM yyyy'`, en-US),
   `formatHijriDateLong` (Intl en-US islamic, strips `' AH'`), `durationLabels()`
   (already call-time `t()`).
-- `components/day/shownDate.ts`, `components/day/Day.tsx` — the list date header.
-- `shared/widgetTimeline.ts` — `formatDateLabel`, `widgetStrings()` (snapshot v2 bakes
+- `components/day/shownDate.ts`, `components/day/Day.tsx` - the list date header.
+- `shared/widgetTimeline.ts` - `formatDateLabel`, `widgetStrings()` (snapshot v2 bakes
   `duration.*` and `widget.*`), rows carry `prayerLabel`.
-- `shared/widgetTypes.ts` — `WIDGET_PROPS_VERSION = 6`, `ANDROID_SNAPSHOT_VERSION = 2`,
+- `shared/widgetTypes.ts` - `WIDGET_PROPS_VERSION = 6`, `ANDROID_SNAPSHOT_VERSION = 2`,
   old-entry tolerance patterns to copy for v7.
-- `widgets/PrayerWidget.tsx` — the two English-shape date parsers (Android footer, iOS
+- `widgets/PrayerWidget.tsx` - the two English-shape date parsers (Android footer, iOS
   footer), the null-props neutral literals, the Android v1 strings fallback.
-- `widgets/LockPrayerWidget.tsx` — three layout functions, each with a neutral block
+- `widgets/LockPrayerWidget.tsx` - three layout functions, each with a neutral block
   (identical triples; step 08 extracts one shared helper).
 - `node_modules/expo-widgets` (58.0.14, patched at `patches/expo-widgets+58.0.14.patch`)
-  — the plugin writes `ios/ExpoWidgetsTarget/*.swift` on every prebuild (hand edits do
+  - the plugin writes `ios/ExpoWidgetsTarget/*.swift` on every prebuild (hand edits do
   not survive); `withTargetXcodeProject.js:138` reads `config.locales`;
   `WidgetsJSRuntime.swift` (iOS, JSContext) and `WidgetsHermesRuntime.cpp` (Android,
   `rt.global().setProperty`) are the two `__expoWidgetDeviceLocale` injection points.
-- `app.json` — `ios.infoPlist` (the two permission strings), the plugins array
+- `app.json` - `ios.infoPlist` (the two permission strings), the plugins array
   (expo-localization joins it), the expo-widgets block (gallery displayName/description
   sources), `expo.locales` (new).
-- `app.config.ts` — widget env gates (`EXPO_PUBLIC_ANDROID_WIDGETS`,
+- `app.config.ts` - widget env gates (`EXPO_PUBLIC_ANDROID_WIDGETS`,
   `EXPO_PUBLIC_IOS_WIDGETS`); build scripts set them.
-- `shared/qiblaCompass.ts` — `CARDINALS` literals (step 10 catalogises them). Qibla
+- `shared/qiblaCompass.ts` - `CARDINALS` literals (step 10 catalogises them). Qibla
   sensors and math untouched (D20); the place line untouched (D50).
-- `shared/whatsNew.ts` — the archive, `VISIBLE_WHATS_NEW` (module-scope `t()` capture,
+- `shared/whatsNew.ts` - the archive, `VISIBLE_WHATS_NEW` (module-scope `t()` capture,
   step 03 converts), the version-equality gate.
-- `scripts/scan-strings.mjs` + `shared/__tests__/stringGuard.test.ts` — the guard with a
+- `scripts/scan-strings.mjs` + `shared/__tests__/stringGuard.test.ts` - the guard with a
   zero-length allowlist; the data-modules rule (step 04 adds the language-names table's
   module to `DATA_MODULES`).
-- `e2e/flows/*.yaml` — the six flows assert English on an English device (unchanged);
+- `e2e/flows/*.yaml` - the six flows assert English on an English device (unchanged);
   step 12 adds the switch flow.
 
 Why the obvious fix is wrong: swapping `CURRENT_LOCALE_ID` for a variable alone leaves
@@ -213,10 +214,11 @@ time on both platforms, R4/repo law; the re-arm is the mechanism).
 **Concurrency trace:** the language commit runs inside `withSchedulingLock` like
 `commitSoundSelection`, so it serialises with every scheduling operation and no
 convergence pass races an in-flight reschedule; the keep-alive guard runs inside the
-re-arm pass (row 55's suites prove an imminent reminder survives); the width seed reads
-the locale synchronously at module evaluation before any atom exists over the new keys
-(the row 38 ordering hazard, now locale-aware); the catalog require happens once per
-process at loader evaluation, before first paint, beside the bootstrap hydration.
+re-arm pass (row 55's suites prove an imminent reminder survives); the module-eval legacy
+width seed stays en-only exactly as stage one shipped it (per-locale keys seed lazily on
+first access, default 0, and widen on the first measure); the catalog require happens
+once per process at loader evaluation, before first paint, beside the bootstrap
+hydration.
 
 **Design review:** the pivot synthesis, the four external branches (RECONCILIATION.md),
 row 38's three-reviewer audit (its five carried inputs are steps 03 and 04 here), and
@@ -242,7 +244,7 @@ this session's griller pass.
 - [R5.3] WHEN any screen renders in any of the six locales THE SYSTEM SHALL keep layout LTR and left-aligned exactly as English, with `supportsRTL: false` pinned natively
 - [R6.1] WHEN a date label renders THE SYSTEM SHALL compose it from the active catalog's calendar keys in the English shape and order, byte-identical for `en`
 - [R6.2] WHEN the Hijri date renders THE SYSTEM SHALL compose its month name from the catalog with Latin digits and no era affix
-- [R7.1] WHEN widget props are written THE SYSTEM SHALL version the payload at 7 and carry structured localized date parts, tolerating v6 entries
+- [R7.1] WHEN widget props are written THE SYSTEM SHALL version the payload at 7 and carry a precomposed localized footer plus its date parts, tolerating v6 entries
 - [R7.2] WHEN a widget renders with absent props THE SYSTEM SHALL draw its neutral card from the static six-language table keyed by the widget process's device locale
 - [R7.3] WHEN the widget gallery lists a widget THE SYSTEM SHALL show its displayName and description in the device language on both platforms
 - [R8.1] WHEN the OS prompts for a permission THE SYSTEM SHALL show the purpose string in the device language
@@ -258,31 +260,31 @@ this session's griller pass.
 
 ## 6. Steps (checklist; each step is a file under `steps/`)
 
-1. `01-locale-core.md` — expo-localization install, RTL pin, `shared/i18n/locale.ts`,
+1. `01-locale-core.md` - expo-localization install, RTL pin, `shared/i18n/locale.ts`,
    resolution tests. No behavior change on an English device.
-2. `02-catalogs-land.md` — the five catalogs from `catalogs/*.json`, the 40 new en keys,
+2. `02-catalogs-land.md` - the five catalogs from `catalogs/*.json`, the 40 new en keys,
    the gates suite, the lock file.
-3. `03-loader-switch.md` — runtime catalog pick, the remount key, the four module-scope
+3. `03-loader-switch.md` - runtime catalog pick, the remount key, the four module-scope
    captures, the catalog-driven width pick.
-4. `04-convergence.md` — `commitLanguagePreference`, launch/foreground reconciliation,
+4. `04-convergence.md` - `commitLanguagePreference`, launch/foreground reconciliation,
    channel cache resets, `channel.reminder`, the last-armed stamp.
-5. `05-language-sheet.md` — the D52 Settings row, the language sheet, the native-names
+5. `05-language-sheet.md` - the D52 Settings row, the language sheet, the native-names
    table, the D51 progress row, `preference_language`.
-6. `06-dates.md` — catalog-composed Gregorian and Hijri labels, list header, widget
+6. `06-dates.md` - catalog-composed Gregorian and Hijri labels, list header, widget
    labels, en parity.
-7. `07-widget-props-v7.md` — structured date parts, parser replacement, tolerance.
-8. `08-widget-statics.md` — the `__expoWidgetDeviceLocale` patch, the static tables, the
+7. `07-widget-props-v7.md` - precomposed localized footers, parser replacement, tolerance.
+8. `08-widget-statics.md` - the `__expoWidgetDeviceLocale` patch, the static tables, the
    three lock layouts plus the home neutral.
-9. `09-native-strings.md` — `expo.locales`, plugin entries, locale filters, prebuild
+9. `09-native-strings.md` - `expo.locales`, plugin entries, locale filters, prebuild
    verification.
-10. `10-residual-literals.md` — the qibla cardinals, the census re-run at zero.
-11. `11-whatsnew.md` — the translated entry at the landing version.
-12. `12-maestro-flow.md` — `e2e/flows/language-switch-x1.yaml`.
-13. `13-device-3t.md` — production build: identifiers, channel rename, Arabic re-arm,
+10. `10-residual-literals.md` - the qibla cardinals, the census re-run at zero.
+11. `11-whatsnew.md` - the translated entry at the landing version.
+12. `12-maestro-flow.md` - `e2e/flows/language-switch-x1.yaml`.
+13. `13-device-3t.md` - production build: identifiers, channel rename, Arabic re-arm,
     the D36 require-timing re-run over six catalogs.
-14. `14-device-xs.md` — Arabic launcher: first-frame LTR, widget direction, six scripts.
-15. `15-device-android15.md` — tall-font variants on the Android 15+ fleet phone.
-16. `16-records.md` — LOG and queue records, scratch cleanup.
+14. `14-device-xs.md` - Arabic launcher: first-frame LTR, widget direction, six scripts.
+15. `15-device-android15.md` - tall-font variants on the Android 15+ fleet phone.
+16. `16-records.md` - LOG and queue records, scratch cleanup.
 
 Step contracts, red tests, break scripts, commit messages and review checklists:
 `steps/*.md`. Anchors: `scripts/anchors/`. Catalogs: `catalogs/*.json` with
@@ -310,7 +312,7 @@ the lead applies on PASS: "DONE 2026-<date>, audited: the six-language confidenc
 landed on uat (en ar ms so hi th); runtime locale resolution with the device-locale
 default, the Settings language row and sheet with the in-sheet progress face,
 forward-only convergence over notifications, channels and widgets with the last-armed
-stamp, catalog-composed dates, widget props v7 with structured date parts, the
+stamp, catalog-composed dates, widget props v7 with precomposed localized footers, the
 widget-runtime locale patch, per-locale native strings from committed config, the
 catalog gates and lock file; English bytes and every frozen identifier unchanged;
 device-proven on the 3T, the XS and an Android 15+ phone; the owner's string
@@ -353,7 +355,5 @@ verification D41 asks for. Progress table. The four-line handoff.
 
 ## Resume from
 
-All 16 step files are written. `scripts/preflight-39.sh` is written. NEXT: run
-`bash scripts/check-plan.sh ai/plans/39-localisation` and fix what it names, dispatch the
-`athan-plan-griller` on the folder, adjudicate its findings, re-gate to `PLAN OK`, then
-finish per section 8 of the planner skill (row READY, docs commit, merge, push).
+The plan is complete and gated. The next session runs the pre-flight and executes step 1
+(`steps/01-locale-core.md`).

@@ -20,15 +20,15 @@ English-shape parsers stop being the primary path, and v6 entries keep rendering
 
 ## Red tests
 
-1. The widget contract suite: a v7 iOS entry and a v7 Android snapshot carry `dateParts: { weekday: string; day: string }` populated from the active catalog at push time — fails today (no v7, no field).
-2. The renderer suite: the Android footer and the iOS footer render `dateParts.weekday + ' ' + dateParts.day` when present — fails today.
-3. The tolerance suite: a v6 entry (absent `dateParts`) still renders through the legacy parse — passes today and must keep passing (regression guard, written now).
+1. The widget contract suite: a v7 iOS entry and a v7 Android snapshot day carry `footer: string` populated from the active catalog at push time - fails today (no v7, no field).
+2. The renderer suite: the Android footer and the iOS footer render the `footer` prop verbatim when present, byte-identical to today's parsed output under en (`Sun`, `Rab 30` shapes) - fails today.
+3. The tolerance suite: a v6 entry (absent `footer`) still renders through the legacy parse - passes today and must keep passing (regression guard, written now).
 
 ## Change contracts
 
-1. `shared/widgetTypes.ts`: `WIDGET_PROPS_VERSION` 6 to 7. The iOS entry type and the Android snapshot type gain `dateParts: { weekday: string; day: string }` as OPTIONAL (absent on v6/v2-era entries, present on v7 writes); `ANDROID_SNAPSHOT_VERSION` 2 to 3 with the same optionality rule. The tolerance helpers (`schedule`/`theme`/`prayers` optional) are the pattern; `dateParts` joins them.
-2. `shared/widgetTimeline.ts`: every push site that writes `dateLabel` (iOS entries, the stale entry, the Android snapshot days) also writes `dateParts` with the localized short weekday and the day number — derived in `formatDateLocalized`'s composition (export a `datePartsFor(date: string): { weekday: string; day: string }` from `shared/time.ts` in this step so widget and app cannot drift).
-3. `widgets/PrayerWidget.tsx`: both footers prefer `dateParts` and fall back to the existing parse when it is absent. The parse code is not deleted (it serves old entries); a one-line comment on each states why it stays (v6 tolerance).
+1. `shared/widgetTypes.ts`: `WIDGET_PROPS_VERSION` 6 to 7. The iOS entry type gains `footer: string` (precomposed, localized) and the Android day type `AndroidWidgetDay` gains `footer: string`, both OPTIONAL (absent on v6/v2-era entries, present on v7 writes); `ANDROID_SNAPSHOT_VERSION` 2 to 3 with the same optionality rule. The tolerance helpers (`schedule`/`theme`/`prayers` optional) are the pattern; `footer` joins them.
+2. `shared/widgetTimeline.ts`: every push site that writes `dateLabel` (iOS entries, the stale entry, the Android snapshot days) also writes `footer`, composed by a `footerFor` helper in `shared/time.ts` so widget and app cannot drift: for the Gregorian label the footer is the short weekday alone (`Sun`), for the Hijri label the month's first three graphemes plus the day (`Rab 30`), reproducing today's parsed English bytes exactly in en and localizing cleanly elsewhere.
+3. `widgets/PrayerWidget.tsx`: both footers prefer `footer` and fall back to the existing parse when it is absent. The parse code is not deleted (it serves old entries); a one-line comment on each states why it stays (v6 tolerance).
 
 ## Green run
 
@@ -36,7 +36,7 @@ The three suites pass; the closure walk covers all layouts; `yarn validate` pass
 
 ## Break script
 
-Copy `shared/widgetTimeline.ts` to `$TMPDIR`; `sed -i '' "s/dateParts: datePartsFor(/dateParts: { weekday: 'XX', day: '00' } as never, \/\/ x/" shared/widgetTimeline.ts` or the nearest exact-text equivalent that corrupts one push site; run the contract suite, expect the v7 population failure; restore; rerun, expect pass. Ends `ALL AS EXPECTED: 1`.
+Copy `shared/time.ts` to `$TMPDIR`; `sed -i '' "s/return \\`${t('calendar.weekdayShort/return \\`${'XX'}/" shared/time.ts` or the nearest exact-text equivalent that corrupts the footer composition; run the contract suite, expect the v7 population failure; restore; rerun, expect pass. Ends `ALL AS EXPECTED: 1`.
 
 ## Version and commit
 
@@ -45,8 +45,8 @@ Message: `<VERSION> - feat(language): widget props v7 with structured localized 
 ## Review checklist
 
 - Old entries render (the v6 guard passes without edits to its fixtures).
-- `datePartsFor` is the single source; no widget composes its own weekday.
-- Version constants moved exactly 6→7 and 2→3.
+- `footerFor` in `shared/time.ts` is the single source; no widget composes its own footer.
+- Version constants moved exactly 6 to 7 and 2 to 3.
 
 ## Merge
 
