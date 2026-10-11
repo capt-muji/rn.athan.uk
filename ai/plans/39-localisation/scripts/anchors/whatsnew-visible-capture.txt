@@ -1,3 +1,0 @@
-export const VISIBLE_WHATS_NEW: WhatsNewRelease | null = getVisibleWhatsNew(WHATS_NEW, FEATURE_FLAGS);
-
-/**

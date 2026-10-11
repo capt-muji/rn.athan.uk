@@ -1,4 +1,0 @@
-"plugins": [
-      [
-        "expo-build-properties",
-        {
