@@ -1,6 +1,0 @@
-/** Position on its own list, in PRAYERS_ENGLISH or EXTRAS_ENGLISH order; unknown names last */
-const listPosition = (prayer: Prayer): number => {
-  const names = prayer.type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  const position = names.indexOf(prayer.english);
-  return position === -1 ? names.length : position;
-};

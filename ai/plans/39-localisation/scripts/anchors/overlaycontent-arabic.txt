@@ -1,9 +1,0 @@
-export const getOverlayExplanation = (type: ScheduleType, english: string): OverlayExplanation => {
-  const isExtra = type === ScheduleType.Extra;
-  const explanationIndex = EXTRAS_ENGLISH.indexOf(english);
-
-  return {
-    prayerName: isExtra ? english : null,
-    explanation: isExtra ? EXTRAS_EXPLANATIONS[explanationIndex] : null,
-  };
-};

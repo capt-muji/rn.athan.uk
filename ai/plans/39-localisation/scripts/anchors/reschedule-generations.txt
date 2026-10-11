@@ -1,6 +1,0 @@
-  const generationsBefore = {
-    [ScheduleType.Standard]: PRAYERS_ENGLISH.map((_prayer, index) =>
-      prayerRepairGeneration(ScheduleType.Standard, index)
-    ),
-    [ScheduleType.Extra]: EXTRAS_ENGLISH.map((_prayer, index) => prayerRepairGeneration(ScheduleType.Extra, index)),
-  };
