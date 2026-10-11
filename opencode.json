@@ -4,11 +4,6 @@
     "subagent_depth": 2
   },
   "mcp": {
-    "codegraph": {
-      "type": "local",
-      "command": ["{env:HOME}/.local/bin/codegraph", "serve", "--mcp"],
-      "enabled": true
-    },
     "mobile-mcp": {
       "type": "local",
       "command": ["npx", "-y", "@mobilenext/mobile-mcp@latest"],
@@ -35,6 +30,14 @@
       "type": "remote",
       "url": "https://mcp.expo.dev/mcp",
       "enabled": false
+    },
+    "servers": {
+      "codegraph": {
+        "type": "local",
+        "command": ["codegraph", "serve", "--mcp"],
+        "disabled": false,
+        "codemode": false
+      }
     }
   }
 }
