@@ -7,7 +7,11 @@
     "rectSubtitle": "the rectangular neutral's second line (en: Open to load times)",
     "staleTitle": "the stale card's title (en: Out of date)",
     "staleBody": "the stale card's body (en: Open app to refresh)",
-    "staleInline": "the inline stale line (en: Athan — open to refresh times)"
+    "staleInline": "the inline stale line (en: Athan — open to refresh times)",
+    "refreshLine": "the stale home card systemMedium line (en: Open Athan to refresh)",
+    "refreshLead": "the stale home card lead line, small families (en: Open Athan)",
+    "refreshTail": "the stale home card tail line, small families (en: to refresh)",
+    "catchBody": "the render-catch fallback card's subtitle (en: Open the app to refresh)"
   },
   "en": {
     "subtitle": "Prayer times for London",
@@ -16,7 +20,11 @@
     "rectSubtitle": "Open to load times",
     "staleTitle": "Out of date",
     "staleBody": "Open app to refresh",
-    "staleInline": "Athan — open to refresh times"
+    "staleInline": "Athan — open to refresh times",
+    "refreshLine": "Open Athan to refresh",
+    "refreshLead": "Open Athan",
+    "refreshTail": "to refresh",
+    "catchBody": "Open the app to refresh"
   },
   "ar": {
     "subtitle": "أوقات الصلاة في لندن",
@@ -25,7 +33,11 @@
     "rectSubtitle": "افتح لتحميل الأوقات",
     "staleTitle": "غير محدّث",
     "staleBody": "افتح التطبيق للتحديث",
-    "staleInline": "Athan - افتح لتحديث الأوقات"
+    "staleInline": "Athan - افتح لتحديث الأوقات",
+    "refreshLine": "افتح Athan للتحديث",
+    "refreshLead": "افتح Athan",
+    "refreshTail": "للتحديث",
+    "catchBody": "افتح التطبيق للتحديث"
   },
   "ms": {
     "subtitle": "Waktu solat untuk London",
@@ -34,7 +46,11 @@
     "rectSubtitle": "Buka untuk muat waktu",
     "staleTitle": "Tidak dikemas kini",
     "staleBody": "Buka apl untuk muat semula",
-    "staleInline": "Athan - buka untuk muat semula waktu"
+    "staleInline": "Athan - buka untuk muat semula waktu",
+    "refreshLine": "Buka Athan untuk muat semula",
+    "refreshLead": "Buka Athan",
+    "refreshTail": "untuk muat semula",
+    "catchBody": "Buka aplikasi untuk muat semula"
   },
   "so": {
     "subtitle": "Waqtiyada salaadda London",
@@ -43,7 +59,11 @@
     "rectSubtitle": "Fur si aad u soo dejinto waqtiyada",
     "staleTitle": "Cusboonaysi la'aan",
     "staleBody": "Fur aplka si aad u cusboonaysiiso",
-    "staleInline": "Athan - fur si aad u cusboonaysiiso waqtiyada"
+    "staleInline": "Athan - fur si aad u cusboonaysiiso waqtiyada",
+    "refreshLine": "Fur Athan si aad u cusboonaysiiso",
+    "refreshLead": "Fur Athan",
+    "refreshTail": "si aad u cusboonaysiiso",
+    "catchBody": "Fur app-ka si aad u cusboonaysiiso"
   },
   "hi": {
     "subtitle": "लंदन के नमाज़ के समय",
@@ -52,7 +72,11 @@
     "rectSubtitle": "समय लोड करने के लिए खोलें",
     "staleTitle": "पुराना",
     "staleBody": "रिफ्रेश के लिए ऐप खोलें",
-    "staleInline": "Athan - समय रिफ्रेश करने के लिए खोलें"
+    "staleInline": "Athan - समय रिफ्रेश करने के लिए खोलें",
+    "refreshLine": "रिफ्रेश के लिए Athan खोलें",
+    "refreshLead": "Athan खोलें",
+    "refreshTail": "रिफ्रेश के लिए",
+    "catchBody": "रिफ्रेश के लिए ऐप खोलें"
   },
   "th": {
     "subtitle": "เวลาละหมาดสำหรับลอนดอน",
@@ -61,6 +85,10 @@
     "rectSubtitle": "เปิดเพื่อโหลดเวลา",
     "staleTitle": "ข้อมูลเก่า",
     "staleBody": "เปิดแอปเพื่อรีเฟรช",
-    "staleInline": "Athan - เปิดเพื่อรีเฟรชเวลา"
+    "staleInline": "Athan - เปิดเพื่อรีเฟรชเวลา",
+    "refreshLine": "เปิด Athan เพื่อรีเฟรช",
+    "refreshLead": "เปิด Athan",
+    "refreshTail": "เพื่อรีเฟรช",
+    "catchBody": "เปิดแอปเพื่อรีเฟรช"
   }
 }
