@@ -148,14 +148,14 @@ index 7d37111..bc06d1d 100644
  
    companion object {
 diff --git a/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift b/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift
-index 0df3263..0f31075 100644
+index 0df3263..d792155 100644
 --- a/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift
 +++ b/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift
 @@ -83,6 +83,8 @@ private final class WidgetsJSRuntime {
        return nil
      }
  
-+    context.setObject(Locale.current.language.languageCode ?? "en", forKey: "__expoWidgetDeviceLocale")
++    context.setObject((Locale.current.language.languageCode?.identifier ?? "en") as NSString, forKeyedSubscript: "__expoWidgetDeviceLocale" as NSString)
 +
      self.context = context
      return context
