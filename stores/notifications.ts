@@ -996,9 +996,9 @@ const clearAllScheduledNotificationForPrayer = async (
  * @param id Prayer id
  * @param alertType Alert type (Off, Silent, Sound)
  * @param intervalMinutes Reminder interval in minutes
- * @returns The attempted identifier — scheduled or, on failure, whatever OS reminder the identifier already had — or
- *   null when the day was skipped (no readable time, past or imminent, non-Friday Istijaba), and whether the phone
- *   refused it
+ * @returns The attempted identifier — scheduled or, on failure, whatever OS reminder the identifier already had — the
+ *   kept identifier of an imminent reminder that was already armed, or null when the day was skipped (no readable
+ *   time, past reminder, non-Friday Istijaba), and whether the phone refused it
  */
 async function scheduleReminderNotificationForDate(
   scheduleType: ScheduleType,
@@ -1026,10 +1026,24 @@ async function scheduleReminderNotificationForDate(
   // Calculate reminder trigger time
   const reminderDateTime = subMinutes(prayer.datetime, intervalMinutes);
   const now = TimeUtils.createInstant();
+  const identifier = Device.reminderNotificationIdentifier(scheduleType, id, date, intervalMinutes);
 
   // Skip if reminder time is already past or within buffer
   const secondsUntilReminder = (reminderDateTime.getTime() - now.getTime()) / 1000;
   if (secondsUntilReminder < REMINDER_BUFFER_SECONDS) {
+    // Returning an already-armed imminent reminder unattempted stales its record, and the
+    // per-prayer sweep then cancels a request about to fire, so it counts as kept instead
+    const records = Database.getAllScheduledRemindersForPrayer(scheduleType, prayerIndex);
+    if (reminderDateTime > now && records.map((each) => each.id).includes(identifier)) {
+      logger.info('REMINDER: Keeping imminent reminder armed:', {
+        date,
+        prayerTime: prayer.time,
+        id,
+        intervalMinutes,
+        secondsUntilReminder,
+      });
+      return { identifier, refused: false };
+    }
     logger.info('REMINDER: Skipping past or imminent reminder:', {
       date,
       prayerTime: prayer.time,
@@ -1039,8 +1053,6 @@ async function scheduleReminderNotificationForDate(
     });
     return SKIPPED_DAY;
   }
-
-  const identifier = Device.reminderNotificationIdentifier(scheduleType, id, date, intervalMinutes);
 
   try {
     const notification = await Device.addOneScheduledReminderForPrayer(
