@@ -264,6 +264,31 @@ cleans it) is accepted as a non-defect. Both fix commits merged as `504452d6`; v
 on the owner's proof-vehicle ruling and step 02's completion. `uat` holds the unpushed set;
 every commit in it was made or checked by this session's audit.
 
+### Owner ruling and lead amendment: the proof runs on a production build (2026-10-11)
+
+The owner ruled option (e): a production build on the 3T, consent recorded here, so the
+fleettest stop-rule yields by her explicit word. Deltas from `steps/02-device-proof.md`,
+everything else unchanged:
+
+- Build: `zsh $HOME/athan-gitree/bin/build-prod.zsh uat $HOME/athan-gitree/sessions/55/prod.apk`
+  (`<commit-or-branch> <out.apk>`; `EXPO_PUBLIC_ENV=prod`, real London timetable, the owner's
+  `athan-storage`, versionCode 1000000, debug keystore, install `-r` keeps app data). Success
+  ends `BUILD-PROD OK`; never two builds at once. The badging check expects
+  `package: name='com.mugtaba.athan'` with `versionCode='1000000'` and the built versionName.
+- Storage is `athan-storage`, the owner's: his real bells re-arm on first launch, and the
+  before-dump's expected-fire list rule applies to whatever is armed, as written.
+- Arming through the sheet: set one prayer's at-time bell and its 5-minute Sound reminder on
+  tomorrow's row. Transcribe that prayer's bell state from the sheet before changing it and
+  restore it after the proof unless the owner said otherwise.
+- No network cut, no mock notes apply, and the airplane amendment above is void: the real
+  timetable is date-stable (the API is the source of truth), so the inside-window pass reads
+  the same row the reminder was armed from.
+- The clock jump passes the owner's real armed alarms and they fire on the test phone; the
+  step's expected-fire list rule covers them, as written.
+- Ending: automatic time on, the 3T left on the production build.
+- Evidence under `$HOME/athan-gitree/sessions/55/`, new files prefixed `prod-` where a mock
+  namesake exists.
+
 
 ### Step 02 re-run — STOPPED at the inside-window dump with the network cut verified (2026-10-11, executor session)
 
