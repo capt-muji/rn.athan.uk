@@ -1,3 +1,0 @@
-export const CURRENT_LOCALE_ID = 'en';
-
-/** The parameters a key's `{token}`s take; a key with no tokens takes none */
