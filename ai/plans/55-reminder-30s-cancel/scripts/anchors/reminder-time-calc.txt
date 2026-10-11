@@ -1,3 +1,0 @@
-  // Calculate reminder trigger time
-  const reminderDateTime = subMinutes(prayer.datetime, intervalMinutes);
-  const now = TimeUtils.createInstant();

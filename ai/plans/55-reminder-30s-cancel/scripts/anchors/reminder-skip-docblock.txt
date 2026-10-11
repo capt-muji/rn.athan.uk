@@ -1,3 +1,0 @@
- * @returns The attempted identifier — scheduled or, on failure, whatever OS reminder the identifier already had — or
- *   null when the day was skipped (no readable time, past or imminent, non-Friday Istijaba), and whether the phone
- *   refused it
