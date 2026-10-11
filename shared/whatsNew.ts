@@ -111,8 +111,13 @@ const resolveItem = (item: WhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '1.26.32',
+  version: '2.0.37',
   items: [
+    {
+      titleKey: 'whatsNew.title.language',
+      bodyKey: 'whatsNew.body.language',
+      version: '2.0.37',
+    },
     {
       titleKey: 'whatsNew.title.tabletSupport',
       bodyKey: 'whatsNew.body.tabletSupport',
