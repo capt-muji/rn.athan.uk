@@ -10,7 +10,7 @@ import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import type { PrayerId } from '@/shared/constants';
 import { findNextOccurrence } from '@/shared/sequence';
 import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
-import { englishWidthExtraAtom, englishWidthStandardAtom } from '@/stores/ui';
+import { englishWidthAtomFor } from '@/stores/ui';
 
 /** What a row needs to decide which occurrence it shows */
 interface ShownRow {
@@ -82,7 +82,8 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   // NEW: Use sequence-based prayer data with derived isPassed and isNext
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
   const isStandard = type === ScheduleType.Standard;
-  const maxEnglishWidth = useAtomValue(isStandard ? englishWidthStandardAtom : englishWidthExtraAtom);
+  // Read inside the hook so the remount after a switch re-subscribes under the new locale's key
+  const maxEnglishWidth = useAtomValue(englishWidthAtomFor(type));
 
   // Filter prayers to current displayDate
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);

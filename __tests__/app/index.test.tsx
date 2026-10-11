@@ -21,7 +21,7 @@ import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
-import * as WhatsNew from '@/shared/whatsNew';
+import type * as WhatsNew from '@/shared/whatsNew';
 import * as Database from '@/stores/database';
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
@@ -71,15 +71,25 @@ jest.mock('expo-splash-screen', () => ({
 }));
 
 // What a release announces is the owner's editorial choice, made again every release, so the suite announces a
-// release of its own
+// release of its own (read through the mock so a test can also announce nothing)
+let mockVisibleWhatsNew: WhatsNew.WhatsNewRelease | null = {
+  version: '2.0.0',
+  items: [{ title: 'Tablet support', body: 'Athan now supported on tablets', version: '2.0.0' }],
+};
 jest.mock('@/shared/whatsNew', () => ({
   ...jest.requireActual('@/shared/whatsNew'),
   __esModule: true,
-  VISIBLE_WHATS_NEW: {
+  currentVisibleWhatsNew: () => mockVisibleWhatsNew,
+}));
+
+// A test that announces nothing overwrites the variable for the rest of its run,
+// and nothing else restores it the way replaceProperty used to
+beforeEach(() => {
+  mockVisibleWhatsNew = {
     version: '2.0.0',
     items: [{ title: 'Tablet support', body: 'Athan now supported on tablets', version: '2.0.0' }],
-  },
-}));
+  };
+});
 
 const RELEASE = '2.0.0';
 const PREVIOUS_RELEASE = '1.27.0';
@@ -224,7 +234,7 @@ describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 inst
   it('announces nothing on a release that has nothing to announce', async () => {
     showLondonDay('2026-09-11', '14:00');
     installUpdate();
-    jest.replaceProperty(WhatsNew, 'VISIBLE_WHATS_NEW', null);
+    mockVisibleWhatsNew = null;
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));

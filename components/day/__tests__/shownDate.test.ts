@@ -18,7 +18,7 @@ import { formatShownDate, getShownDateSource } from '../shownDate';
 const mockClock = { now: new Date(0) };
 const mockAtomValues = new Map<string, unknown>();
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),
@@ -35,8 +35,7 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthStandardAtom: 'englishWidthStandardAtom',
-  englishWidthExtraAtom: 'englishWidthExtraAtom',
+  englishWidthAtomFor: (type: string) => (type === 'standard' ? 'englishWidthStandardAtom' : 'englishWidthExtraAtom'),
 }));
 
 beforeEach(() => mockAtomValues.clear());

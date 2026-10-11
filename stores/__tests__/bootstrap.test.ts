@@ -26,6 +26,7 @@ const mockGetPrayerByDateString = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   getPrayerByDateString: (date: string) => mockGetPrayerByDateString(date),
+  getItem: () => null,
 }));
 
 const mockSetSequence = jest.fn();

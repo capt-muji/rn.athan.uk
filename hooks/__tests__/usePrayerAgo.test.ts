@@ -50,6 +50,8 @@ jest.mock('react', () => ({
 }));
 
 jest.mock('jotai/vanilla', () => ({
+  // atom stays real: shared/i18n/locale builds the remount version atom from it
+  ...jest.requireActual('jotai/vanilla'),
   getDefaultStore: () => ({ sub: (atom: unknown, listener: unknown) => mockSubscribe(atom, listener) }),
 }));
 

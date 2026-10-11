@@ -29,6 +29,7 @@ const appModuleMocks = {
   '^@/shared/logger$': '<rootDir>/shared/__mocks__/logger.ts',
   '^@/(.*)$': '<rootDir>/$1',
   '^expo-constants$': '<rootDir>/shared/__mocks__/expo-constants.ts',
+  '^expo-localization$': '<rootDir>/shared/__mocks__/expo-localization.ts',
   '^react-native-mmkv$': '<rootDir>/shared/__mocks__/react-native-mmkv.ts',
   '^expo-notifications$': '<rootDir>/shared/__mocks__/expo-notifications.ts',
   '^expo-background-task$': '<rootDir>/shared/__mocks__/expo-background-task.ts',

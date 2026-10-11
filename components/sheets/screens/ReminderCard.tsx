@@ -7,7 +7,8 @@ import { AlertType, Icon, type ReminderInterval, type ReminderSetting } from '@/
 import { SegmentedControl, type SegmentOption, Stepper, Toggle } from '../parts';
 import { stepReminderInterval } from '../parts/reminderStep';
 
-const SOUND_OPTIONS: SegmentOption[] = [
+// Resolved at call time so a locale switch reaches the labels on the next render
+const soundOptions = (): SegmentOption[] => [
   { value: AlertType.Silent, label: t('alert.option.silent'), icon: Icon.BELL_RING },
   { value: AlertType.Sound, label: t('alert.option.sound'), icon: Icon.SPEAKER },
 ];
@@ -64,7 +65,7 @@ export default function ReminderCard({
       <View style={[styles.reminderOptions, !isOn && styles.optionsDisabled]}>
         <View style={styles.optionRow}>
           <Text style={styles.optionLabel}>{t('reminder.sound')}</Text>
-          <SegmentedControl options={SOUND_OPTIONS} selected={sound} onSelect={onSelectSound} disabled={!isOn} />
+          <SegmentedControl options={soundOptions()} selected={sound} onSelect={onSelectSound} disabled={!isOn} />
         </View>
 
         <View style={styles.optionRow}>

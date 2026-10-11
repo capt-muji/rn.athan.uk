@@ -25,7 +25,7 @@ import {
 import { type ISingleApiResponseTransformed, type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
 
 // =============================================================================
 // INDEPENDENT REFERENCE: UTC arithmetic and London's clock-change rule

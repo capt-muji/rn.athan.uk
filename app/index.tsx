@@ -21,7 +21,7 @@ import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { isRamadan } from '@/shared/time';
-import { shouldShowWhatsNew, VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
+import { currentVisibleWhatsNew, shouldShowWhatsNew } from '@/shared/whatsNew';
 import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLaunch } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
@@ -78,6 +78,7 @@ export default function Index() {
   const decorationsExpected = isRamadan() && decorationsEnabled && state !== 'hasError';
   const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
   const installedVersion = getInstalledVersion();
+  const visibleWhatsNew = currentVisibleWhatsNew();
   // Overlay + modals mount past the first content frame (launch chrome defer)
   const chromeDeferred = useChromeDeferred();
   const contentCommittedRef = useRef(false);
@@ -121,7 +122,7 @@ export default function Index() {
     // Show the What's New modal once after an update (never on fresh installs -
     // stores/version.ts seeds the shown-version for new users). Marking shown
     // on display (not dismiss) makes a mid-display crash unable to re-loop it
-    if (shouldShowWhatsNew(installedVersion, getWhatsNewShownVersion(), VISIBLE_WHATS_NEW)) {
+    if (shouldShowWhatsNew(installedVersion, getWhatsNewShownVersion(), currentVisibleWhatsNew())) {
       setWhatsNewShownVersion(installedVersion);
       setPopupWhatsNewEnabled(true);
     } else if (__DEV__ && APP_CONFIG.whatsNewPreview) {
@@ -221,11 +222,11 @@ export default function Index() {
 
   return (
     <>
-      {chromeDeferred && VISIBLE_WHATS_NEW ? (
+      {chromeDeferred && visibleWhatsNew ? (
         <ModalWhatsNew
           visible={whatsNewVisible}
           version={installedVersion}
-          items={VISIBLE_WHATS_NEW.items}
+          items={visibleWhatsNew.items}
           onClose={handleCloseWhatsNew}
         />
       ) : null}

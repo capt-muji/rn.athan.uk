@@ -48,7 +48,7 @@ jest.mock('expo-haptics', () => ({ impactAsync: jest.fn(), ImpactFeedbackStyle: 
 jest.mock('@/components/prayer/Alert', () => ({ __esModule: true, default: 'Alert' }));
 jest.mock('@/components/prayer/Time', () => ({ __esModule: true, default: 'Time' }));
 jest.mock('@/hooks/useAnimation', () => ({ useDerivedColor: () => ({}), useDerivedOpacity: () => ({}) }));
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
 jest.mock('@/stores/overlay', () => ({ closeOverlay: jest.fn(), openOverlay: jest.fn() }));
 
 jest.mock('@/shared/time', () => ({
@@ -64,8 +64,7 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthStandardAtom: 'englishWidthStandardAtom',
-  englishWidthExtraAtom: 'englishWidthExtraAtom',
+  englishWidthAtomFor: (type: string) => (type === 'standard' ? 'englishWidthStandardAtom' : 'englishWidthExtraAtom'),
 }));
 
 type Element = ReactElement<{ children?: ReactNode }>;
