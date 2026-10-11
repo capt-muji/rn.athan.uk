@@ -14,6 +14,7 @@ import { reminderNotificationIdentifier } from '@/device/notifications';
 import logger from '@/shared/logger';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
+import { lastArmedLanguageAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import {
   rescheduleAllNotifications,
   standardPrayerAlertAtoms,
@@ -195,5 +196,31 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     expect(cancelsOf(imminentId)).toBe(1);
     expect(osState.has(imminentId)).toBe(false);
     expect(reminderRecords()).not.toContain(imminentId);
+  });
+});
+
+describe('a language convergence pass inside the final 30 seconds before a reminder fires', () => {
+  it('keeps the armed reminder: no cancel, no re-arm, record intact, stamp written', async () => {
+    // 20 seconds before the 10:55:00Z reminder, still inside the buffer
+    jest.setSystemTime(new Date('2026-08-29T10:54:40.000Z'));
+    Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
+    osState.add(imminentId);
+    // The stamp lags the resolved en locale, so the convergence pass runs for real
+    store.set(lastArmedLanguageAtom, 'ar');
+
+    await reconcileLanguageSurfaces();
+
+    expect(cancelsOf(imminentId)).toBe(0);
+    expect(schedulesOf(imminentId)).toBe(0);
+    expect(osState.has(imminentId)).toBe(true);
+    expect(reminderRecords()).toContain(imminentId);
+    expect(store.get(lastArmedLanguageAtom)).toBe('en');
+    expect(logger.info).toHaveBeenCalledWith('REMINDER: Keeping imminent reminder armed:', {
+      date: WINDOW[0],
+      prayerTime: '12:00',
+      id: 'fajr',
+      intervalMinutes: INTERVAL,
+      secondsUntilReminder: 20,
+    });
   });
 });
