@@ -1,0 +1,3 @@
+  const identifier = Device.reminderNotificationIdentifier(scheduleType, id, date, intervalMinutes);
+
+  try {
