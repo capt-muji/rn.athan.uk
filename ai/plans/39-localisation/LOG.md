@@ -195,6 +195,94 @@ Steps land here as they execute. Nothing has executed.
   Every available substitution (`staleBody` 'Open app to refresh' is the nearest) changes the English bytes of a user-visible card, against the plan's own invariant ("an English-locale device renders byte-identical output to 2.0.16") and the repo's visuals rule; leaving the lines as literals contravenes contract 3's "replacing their English literals" and would surface again at step 10's zero census. The lock widget and the home neutral/title sites map exactly; only these four home strings are orphaned.
 - The one ruling a replan needs, one of: (a) extend `catalogs/widget-statics.json` with the three refresh fields (and the catch line's disposition), drafted mechanically from the step-02 catalogs' `widget.refresh` / `widget.refreshLead` / `widget.refreshTail` values which already exist in all six locales; (b) rule those home lines English-stay (and allow-list them at step 10's census); (c) the owner accepts the en byte change. (a) is the only option that keeps both the invariant and contract 3's wording.
 
+## Step 08: the widget neutral card reads the device locale
+
+- Branch `feat/39-08-widget-statics` off `uat` (`74e46365`, the refresh-4 repair). All seven step anchors counted 1 before work began (python count).
+- Red (all seven new tests, recorded): `widgetStaticStrings.test.ts` failed all four tests (neutral sites, stale and catch sites, the v1 strings fallback, the unknown-locale en row) against the inline English literals; the contract suite's new `the statics table resolves every neutral and stale site` describe failed its three ar-render tests. The pre-existing suites stayed green at red (14 passed).
+- Change: `widgets/PrayerWidget.tsx` and each of `widgets/LockPrayerWidget.tsx`'s three layout bodies carry their own inline `const STATIC = { en: {...}, ar: {...}, ms, so, hi, th } as const` (eleven fields per locale, bytes generated verbatim from `catalogs/widget-statics.json`) plus the local resolver (`(globalThis as { __expoWidgetDeviceLocale?: string })` read, prefix match over the six codes, `STATIC[localeKey ?? 'en']` fallback); the home sites read `staticRow.subtitle` (Android and iOS neutrals), the v1 strings default map's `staleTitle`/`refreshLine`/`refreshLead`/`refreshTail`, the iOS stale card's title and refresh lines, and the catch fallback reads `staticRow.catchBody`; the lock layouts read `inline`/`rectTitle`/`rectSubtitle` (neutrals) and `staleInline`/`staleTitle`/`staleBody` (stale). The brand title `Athan` stays the constant everywhere. The runtime patch: iOS `WidgetsJSRuntime.swift` sets the global from `Locale.current.language.languageCode ?? "en"` inside `getContext()` after the bundle evaluation succeeds; Android threads `LocaleList.getDefault().get(0).language` from `WidgetsJSRuntime.render` through `WidgetsHermesRuntime.render`/`nativeRender` into `callRender`, which installs it beside `__expoWidgetLayout` (guarded so the press path, which passes no locale, keeps the last-installed value); `npx patch-package expo-widgets` extended the existing patch to five files (the openApp converter plus the four locale files).
+- Extras beyond the step's file list, forced by the green run and recorded for the audit: the contract closure walk's `JS_GLOBALS` gains `globalThis` (a JS stdlib global the resolvers read, in the set's own spirit); `widgetOpenAppPatch.test.ts`'s one-file pin became the five-known-files pin (the patch legitimately grew); Biome's double-quote preference rewrapped the Somali `la'aan` string (value bytes unchanged).
+- Green: `widgetStaticStrings` + `widgetContract` 21 passed; `widgetRuntimeLoads` (the patch touched the package) and the openApp patch suite green; the widget renderer suites 118 passed across six suites; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0; full `yarn validate` 204 suites, 5411 passed, 5411 total, coverage 100% x4, exit 0.
+- Break: the sed flipping one resolver's fallback (`STATIC[localeKey ?? 'en']` to `'ar'` in `widgets/PrayerWidget.tsx`) failed the unknown-locale case (1 failed / 3 skipped); restored (1 passed / 3 skipped); `ALL AS EXPECTED: 1`. Tree listed only this step's files after.
+- Version 2.0.34 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added; lock held through the merge, released after).
+- Commit: `203fabf0` (2.0.34). Hook `Tests: 5411 passed, 5411 total`, coverage 100% on statements (5162), branches (2234), functions (1075), lines (4622).
+- Review: cold read of `git show 203fabf0` against the checklist - the patch carries exactly the locale global on both platforms with the openApp hunk untouched and no other drift; every table lives inside a widget body (the closure walk passes with the globalThis allowance) and no import changed in either widget module; the tables' bytes are pinned to the JSON per locale by the new suite, and the pre-existing renderer suites' English-literal assertions passed unedited, holding the en byte parity. No findings beyond the recorded extras.
+- Merge: `7b06c359` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 8`.
+
+## Step 08 checklist
+
+- [x] Red: all four statics tests and the three contract ar-render tests failed on the inline literals
+- [x] Contracts 1-4 built; the patch extended in place; every table inline per body; all eleven fields mapped
+- [x] Named tests pass; `widgetRuntimeLoads` green; tsc and biome exit 0; `yarn validate` green (5411 passed, 100% x4)
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.34 set in all three files
+- [x] Commit `203fabf0` and `--no-ff` merge `7b06c359` landed
+
+## Step 09: native strings from committed config
+
+- Branch `feat/39-09-native` off `uat` (`7b06c359`). Both step anchors (`appjson-infoplist`, `appjson-plugins-head`) counted 1 before work began.
+- Red (all three, recorded): the config suite failed on the absent `expo.locales` (entry undefined for every non-en locale), the absent `CFBundleLocalizations`, and the absent plugin file.
+- Change: `app.json` gained `expo.locales` with an entry per non-en locale (both permission strings, the iOS `Localizable.strings` gallery map keyed by the English literals, and the Android map keyed by the plugin-derived resource names with `_description` twins - 28 keys per locale), generated verbatim from `catalogs/native-strings.json` with the android keys derived from the widget config itself; `ios.infoPlist` gained `CFBundleLocalizations` with the six ids (`CFBundleDisplayName` untouched at `Athan`); `plugins/androidLocaleConfig.js` created (the `androidWidgetGrid.js` dangerous-mod pattern: `withAndroidManifest` adds `android:localeConfig="@xml/locales_config"` to the application tag, the mod writes `res/xml/locales_config.xml` with en plus the `expo.locales` keys, and the pure `buildLocalesConfigXml` is exported for the test); `app.config.ts` registers the plugin beside `androidWidgetAssets` on the Android widgets path.
+- Prebuild verification (contract 4) in the scratch worktree `$HOME/athan-gitree/worktrees/plan-39-09` (node_modules symlinked, the three changed files copied in ahead of the commit): Android (`EXPO_PUBLIC_ANDROID_WIDGETS=1 npx expo prebuild -p android --no-install`) produced `res/values-b+{ar,ms,so,hi,th}/strings.xml` holding `prayer_widget_display_name`, `res/xml/locales_config.xml` with six locales, the manifest's `android:localeConfig="@xml/locales_config"` reference, and `android:supportsRtl="false"`; iOS (`EXPO_PUBLIC_IOS_WIDGETS=1 ... -p ios`) produced `ios/Athan/Supporting/ar.lproj/InfoPlist.strings` with both permission strings and the ExpoWidgetsTarget's Resources build phase carrying the five locale `Localizable.strings` refs (the target lives in `ios/Athan.xcodeproj`, found by phase UUID, not in an ExpoWidgetsTarget.xcodeproj). Worktree removed.
+- Review finding, fixed before merge: the generator's snake-case split left the digit kinds as `prayer_lock_widget2_*` where the contract's byte list rules `prayer_lock_widget_2_*` (six keys x their twins, iOS-only kinds, inert on Android; the plugin's own derivation would also drop the digit split but the contract governs). Renamed in app.json, the test's derivation gained the `([a-z])([0-9])` split, the commit amended pre-merge, and the break re-ran green after the fix.
+- Green: the config suite 3 passed; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0 (after formatting the two new files); full `yarn validate` 205 suites, 5414 passed, 5414 total, coverage 100% x4, exit 0.
+- Break: deleting the `ar` entry from `expo.locales` failed the ar row (1 failed / 2 passed); restored (3 passed); `ALL AS EXPECTED: 1`, re-confirmed after the review fix. Tree listed only step files after.
+- Version 2.0.35 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added; lock held through the merge, released after).
+- Commit: `cf8895e7` (2.0.35, amending the pre-fix `0f3b1219` before any merge). Hook `Tests: 5414 passed, 5414 total`, coverage 100% on statements (5162), branches (2234), functions (1075), lines (4622).
+- Review: cold read of `git show cf8895e7` against the checklist - every native value byte-traces to `catalogs/native-strings.json` (python re-derivation over all five locales, 28 android keys each, four spot-checked derived names); the diff touches no `ios/` or `android/` file; the worktree removed. One finding, the digit-kind key names above, fixed and amended.
+- Merge: `57507f12` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 9`.
+
+## Step 09 checklist
+
+- [x] Red: all three config tests failed on the absent locales config, plist key and plugin
+- [x] Contracts 1-4 built; values byte-identical to the native table; prebuild greps all hit on both platforms
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5414 passed, 100% x4)
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.35 set in all three files
+- [x] Commit `cf8895e7` and `--no-ff` merge `57507f12` landed
+
+## Step 10: residual literals to zero
+
+- Branch `feat/39-10-cardinals` off `uat` (`57507f12`). Both step anchors (`qibla-cardinals`, `scan-guard-suite`) counted 1 before work began.
+- Red (recorded): the compass suite's converted cardinal tests failed on the absent `resolveCardinals` export (the bearings test and the new ar test); the stringGuard suite's new `holds the compass cardinals in the catalog, not the module` test failed on the missing `t('qibla.cardinal.n')` source byte. The census-rule derivation ran as the plan prescribes, temporarily and never committed: with `shared/qiblaCompass.ts` named in the scanner's DATA_MODULES and `letter` a copy field, the census flagged the four literals as `data-module` rows (`qiblaCompass.ts:93-96` N/E/S/W); the scanner was restored byte-identical after.
+- Change: `shared/qiblaCompass.ts` exports `resolveCardinals(): DialCardinal[]` with the four literal `t('qibla.cardinal.*')` calls at their own bearings and deletes the `CARDINALS` array (the break bytes `t('qibla.cardinal.n')` exact); `QiblaCompass.tsx` renders `resolveCardinals()` at render time; the compass suite's import and bearings test converted to the resolver and gained the ar case (`['ش', 'ق', 'ج', 'غ']`, restored to en in a finally); the stringGuard suite gained the cardinals test (the `t()` byte present, no `letter: '` literal, no display/data census rows for the module - the path builders' `M...A...` templates are review-kind and stay out of the filter).
+- Census at zero: `node scripts/scan-strings.mjs ''` reports 0 `data-module` rows and 0 non-widget display rows; the guard suite stays green with the allowlist still `[]`.
+- Green: the extended suites and the Qibla sheet suite 193 passed; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0; full `yarn validate` 205 suites, 5416 passed, 5416 total, coverage 100% x4, exit 0.
+- Break: the sed on `t('qibla.cardinal.n')` made the ar cardinals test fail `N` versus `ش`; restored, pass; `ALL AS EXPECTED: 1`. Tree listed only step files after.
+- Version 2.0.36 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added; lock held through the merge, released after).
+- Commit: `60401197` (2.0.36). Hook `Tests: 5416 passed, 5416 total`, coverage 100% on statements (5163), branches (2234), functions (1076), lines (4622).
+- Review: cold read of `git show 60401197` against the checklist - the production diff touches the letters only (no geometry, angle or sensor byte; the angles 0/90/180/270 ride unchanged inside the resolver); the census shows zero display rows. No findings.
+- Merge: `f4e2280d` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 10`.
+
+## Step 10 checklist
+
+- [x] Red: the cardinal tests failed on the absent export; the guard's new test failed on the missing t() byte; the census-rule scratch failure recorded
+- [x] Contracts 1-3 built; four literal calls, never a keyed loop; CARDINALS deleted; census zero with the allowlist []
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5416 passed, 100% x4)
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.36 set in all three files
+- [x] Commit `60401197` and `--no-ff` merge `f4e2280d` landed
+
+## Step 11: the What's New entry
+
+- Branch `feat/39-11-whatsnew` off `uat` (`f4e2280d`). The step anchor `whatsnew-archive-head` counted 1 before work began.
+- Red (both, recorded): the new `the language release entry` tests failed - the stamp test on `WHATS_NEW.version` ('1.26.32' versus '2.0.37') and the ms title test on the absent entry (2 failed / 53 passed).
+- Change: `WHATS_NEW.version` moved to `2.0.37` and the archive gained `{ titleKey: 'whatsNew.title.language', bodyKey: 'whatsNew.body.language', version: '2.0.37' }` as its first entry; no flags, and no historical item changed (the parked items and their stamps untouched). No other file changed - the strings have lived in every catalog since step 02.
+- Green: the whatsNew suite 58 passed (the content contract's it.each rows grew with the new item; the parked-widgets test still finds the first null-stamped item unchanged); `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0; full `yarn validate` 205 suites, 5421 passed, 5421 total, coverage 100% x4, exit 0.
+- Break: the sed on `'whatsNew.title.language'` repointed the new item's titleKey at the parked widgets key and failed the suite (4 failed / 54 passed, both language-entry tests among them); restored (58 passed); `ALL AS EXPECTED: 1`. Tree listed only step files after.
+- Version 2.0.37 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added; lock held through the merge, released after).
+- Commit: `405080bd` (2.0.37). Hook `Tests: 5421 passed, 5421 total`, coverage 100% on statements (5163), branches (2234), functions (1076), lines (4622).
+- Review: cold read of `git show 405080bd` against the checklist - the entry's stamp equals the commit's version on both sides (the suite's independent app.json oracle pins it too); the diff is the stamp move plus the one new item, no parked item moved and no flag added. No findings.
+- Merge: `2eff4958` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 11`.
+
+## Step 11 checklist
+
+- [x] Red: both language-entry tests failed (the stamp and the absent entry)
+- [x] Contracts 1-2 built; the entry first, no flags, nothing historical touched
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5421 passed, 100% x4)
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.37 set in all three files
+- [x] Commit `405080bd` and `--no-ff` merge `2eff4958` landed
+
 session: ses_ed68ed1ebffeum3GKU1fk2P6zu (steps 1 to 3 and the step 4 stop)
 session: ses_ed66ae6c9ffe9YyDq9SegY4zcs (steps 4 to 6)
 
@@ -204,3 +292,45 @@ session: ses_ed66ae6c9ffe9YyDq9SegY4zcs (steps 4 to 6)
 session: ses_ed66ae6c9ffe9YyDq9SegY4zcs
 session: ses_ed5ac8bd1ffeqp4ybB25dDVnL1
 session: ses_ed5ac8bd1ffeqp4ybB25dDVnL1
+session: ses_ed5ac8bd1ffeqp4ybB25dDVnL1
+session: ses_ed5ac8bd1ffeqp4ybB25dDVnL1
+
+## Step 12: the Maestro language-switch flow
+
+- Branch `feat/39-12-flow` off `uat` (`2eff4958`). The step anchor `flows-sheets-head` counted 1 before work began (python count, `e2e/flows/sheets-x10.yaml`).
+- Scope per the lead's dispatch: this step authors the flow only. The step file's red and green are Maestro runs against a phone build, and the device proofs are steps 13 to 15 (each its own later dispatch), so no device was touched: no build, no install, no clock or alarm dump, nothing ran over the owner's armed bells. The flow's first device run, the pre-install alarm baseline and the post-run byte-compare all land in the step 13 dispatch, which inherits the step file's Green run section verbatim.
+- Change: `e2e/flows/language-switch-x1.yaml` created per contract 1 in the sheets-x10 house shape (appId/name/tags header, then launchApp, taps by id or label, assertVisible): launch, settle on 'London, UK' (smoke.yaml's 15 s idiom; the settings chrome mounts past first paint, so a bare tap could land before the button exists), open Settings at the atlas coordinate (540,1830) twice (the Settings sheet dismisses when the language sheet opens, so the return trip needs the button again; the row is unreachable without it), tap the Language row by its label, assert the sheet title 'Language', assert the six native names (Bahasa Melayu, English, Soomaali, العربية, हिन्दी, ไथย - bytes from LANGUAGE_NAMES in codepoint order), tap العربية, wait the progress line out with extendedWaitUntil notVisible 'جارٍ التطبيق…' timeout 60000 (the applying label already reads the picked locale; the command polls and the flow contains no sleep), assert الفجر, tap 'اللغة' (the row's ar label), tap 'English', assert 'Fajr' again. waitForAnimationToEnd (timeout 2500, the sheets-x10 cadence) follows every sheet-presenting tap and the convergence wait; none sits inside the busy window, where the ActivityIndicator animates forever.
+- `e2e/README.md` gained the flow in the flows list with its one-line description (Settings > Language > العربية, then back to English). No other flow changed.
+- Selector verification (python, against the landed code): the Language row and the language sheet title share `t('settings.language')` ('Language' en, 'اللغة' ar); the What's New row's visible label is "What's new" in both locales, so `tapOn: 'Language'` stays unique in the sheet; the six names, 'جارٍ التطبيق…' and 'الفجر' byte-match `shared/languageNames.ts` and `shared/i18n/ar.ts`; the atlas's (540,1830) sits inside the Settings button's computed bounds (25 dp offset, 43 dp wide, ~40 dp tall at 3x = y 1725..1845; the older sheets-x10 1730 also lands inside, but the atlas row is canonical per the contract).
+- Green (authoring checks): `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0 (445 files); the flow YAML parses clean (2 documents, 23 commands). No Jest suite is named by this step; the hook ran the full suite green on commit.
+- Break: not applicable per the step file (flow-only step); the check is the device green run, deferred to step 13 as above.
+- Version 2.0.38 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added; lock held through the merge, released after). Origin/uat lagged at 2.0.19, so local uat's 2.0.37 decided the patch.
+- Commit: `f3c6f099` (2.0.38). Hook `Tests: 5421 passed, 5421 total`, coverage 100% on statements (5163), branches (2234), functions (1076), lines (4622).
+- Review: cold read of `git show f3c6f099` against the checklist - the only coordinate is the atlas's own Settings row (cited in the flow comment, inside the button's bounds), every other selector is a catalog byte, and the 60 s wait is a polling extendedWaitUntil with no sleep command in the file. No findings.
+- Merge: `b2bca821` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 12`.
+
+## Step 12 checklist
+
+- [x] Contract 1 built: the flow follows the sheets-x10 house shape and walks the five contract bullets end to end
+- [x] Contract 2 built: `e2e/README.md` carries the flow with a one-line description; no other flow changed
+- [x] Review checklist: atlas coordinate only, labels elsewhere; the 60 s wait polls, never sleeps
+- [x] tsc and biome exit 0; the hook's full suite green (5421 passed, 100% x4)
+- [x] Version 2.0.38 set in all three files
+- [x] Commit `f3c6f099` and `--no-ff` merge `b2bca821` landed
+- [ ] Device proof (the step file's red run, green run and the alarm-dump byte-compare) deferred to the step 13 dispatch per the lead's instruction; the flow has never run on a phone
+
+session: ses_ed5ac8bd1ffeqp4ybB25dDVnL1
+
+## Step 13: the 3T production proof - EXECUTION STOPPED (two blockers, no commit)
+
+- Branch `docs/device-39-3t` off `uat` (`b2bca821`), deleted with no commits after the stops below. The step file names no anchors; the version lock was never taken; no repo file changed on the branch. The queue row stays `IN PROGRESS, step 12`: step 12's deferred device box stays unticked because the green run never happened (blocker B) and the alarm byte-compare is vacuous (blocker A).
+- **Blocker A - the owner's bells are OFF on the 3T, so checks 1 to 5 cannot prove anything.** The phone (`3T_SERIAL` = ONEPLUS_A3003, Android 9, `versionName=2.0.11`, automatic time on, untouched by any install this session) holds all 22 channels under the frozen ids with English names (`athan_1_v4` = `Athan 1`, `extras_at_time_v3` = `Extra Times`, the `reminder_*_v3` family English), but the live tree (maestro `hierarchy`, labels transcribed, no screenshot) reads every bell off: `Fajr notification: off`, `Dhuhr notification: off`, `Asr notification: off`, `Magrib notification: off`, `Isha notification: off`, `Sunrise notification: off`. `dumpsys alarm` at 12:19 and again after the red run's cold launch shows zero armed `expo.modules.notifications` alarms (the last NOTIFICATION_EVENT fired ~04:21 today, the row 55 clock-proof window; only the system FORCE_STOP_RESCHEDULE and widget-refresh alarms exist; `AppSettings` shows no OS-level ban). With bells off: the identifier byte-compare compares two empty sets, the switch's convergence pass schedules nothing so no channel is ever re-created in-process (check 2 would read "no rename" and falsely trigger the plan's section 10 fallback row), nothing carries Arabic titles, and nothing will fire. Arming the bells is a change to the owner's notification settings the plan does not authorise (ask-first law; D38's premise exists so the proofs run against the owner's own configuration).
+- **Blocker B - the uat production build fails gradle `lintVitalRelease`; no APK exists.** `zsh $HOME/athan-gitree/bin/build-prod.zsh uat .../uat-2.0.38-prod.apk` ran 6m22s and failed with 70 `ExtraTranslation` lint errors: step 09's `expo.locales` writes 14 keys per locale into `res/values-b+{ar,ms,so,hi,th}/strings.xml` that have no default-locale counterpart - `NSLocationWhenInUseUsageDescription`, `NSUserNotificationsUsageDescription` (the iOS permission strings) and the twelve iOS-only lock-widget gallery keys (`prayer_lock_widget{,_2,_3}` and `extras_lock_widget{,_2,_3}` `_display_name`/`_description`). The home-widget keys pass because expo-widgets writes their defaults into `values/`. Step 09's verification ran `expo prebuild` only; this is the first gradle release build since step 09 landed, and every release build (the step's prod build and check 6's `EXPO_PUBLIC_PERF_MONITOR=1` monitor build, same lint gate) is blocked. The repair (drop the 14 keys from the android maps, or add default-locale entries, or a lint config) edits planned artefacts in `app.json` - ask-first, not an in-flight executor decision.
+- Recorded before the stops, all under `$HOME/athan-gitree/sessions/39/`: the step 12 inherited **red run** (`flow-red-run.txt`: `maestro test e2e/flows/language-switch-x1.yaml` on the pre-step 2.0.11 build fails exactly at `Tap on "Language"... FAILED - Element not found`, 12:23, exit 1 - the sheet does not exist on the base build, as the step file predicts); the baselines `alarms-before.txt` (12:19, empty of notification alarms, as found), `alarms-step12-baseline.txt` and `alarms-before-armed.txt` (post-red-run, still empty: the cold launch arms nothing with bells off), full dumps `alarms-before-full.txt` / `alarms-armed-baseline-full.txt`, and `channels-2.0.11-preinstall.txt` (22 frozen-id channels, English names, the channel-rename baseline the resumed step will diff from).
+- Phone left as found: 2.0.11 installed (no install ever ran), bells off exactly as found, no clock change at any point, automatic time on (`auto_time=1`), app foregrounded after HOME + `am kill` + relaunch. The build logs stay under `$HOME/athan-gitree/builds/39-step13/logs/` (`uat-2.0.38-prod.gradle.log` holds the lint report; `...prebuild.log` and `...worktree.log` complete it); the standing `prod-build` worktree stays per the repo rule.
+- The two rulings a replan needs: (1) who re-arms the bells on the 3T (the owner from his own UI, or an explicit order for the executor to set them through the app), after which checks 1 to 5 rerun as written against the owner's configuration; (2) the lint repair for step 09's android locale keys, one of: remove the 14 android-map keys that have no default-locale resource (the NS* pair and the iOS-only lock-widget gallery strings stay in the iOS map), add the 14 default-locale entries, or a committed lint override - each is an `app.json`/plugin edit the owner must choose.
+
+### Rulings on the step 13 STOP (the lead, 2026-10-11, per the owner's standing no-questions instruction)
+
+1. Bells: arm all six through the app's own Settings sheet for the proof (atlas coordinates, agent-device taps), run checks 1 to 5 against the armed configuration, then restore every bell to the found state - all six off, zero armed notification alarms, the 22 frozen-id English channels as read in `channels-2.0.11-preinstall.txt` - and record the restoration here. The phone ends on the build the plan names with automatic time on. The found state is evidence, not a constraint: the proof needs armed bells (D38's premise), and the restore returns her phone exactly as found.
+2. Build: the repair is default-locale entries on the Android side for the fourteen keys (the two permission strings and the twelve iOS-only gallery keys), so every key in `values-b+*/strings.xml` has a default counterpart in `values/strings.xml` and `lintVitalRelease` passes. No lint override (it masks the resource-shape defect), no dropped keys (the iOS side reads the same map). The six locale maps' bytes never change. The mechanism is the executor's to find in committed config (the Locales plugin's default handling or a prebuild mod); if no committed-config path exists, STOP returns to the lead.
