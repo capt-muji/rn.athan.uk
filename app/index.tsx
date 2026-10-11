@@ -22,6 +22,7 @@ import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { isRamadan } from '@/shared/time';
 import { currentVisibleWhatsNew, shouldShowWhatsNew } from '@/shared/whatsNew';
+import { reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLaunch } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
@@ -107,10 +108,12 @@ export default function Index() {
       // the refresh timestamp. Reopen the gate before the refresh reads it.
       reopenRefreshGateOnColdLaunch();
 
-      // Initialize notifications, register background task, and create channel on first load
-      initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
-        logger.error('Failed to initialize notifications:', error)
-      );
+      // Initialize notifications, register background task, and create channel on first load.
+      // The convergence pass runs after init resolves: the scheduling lock serialises it
+      // behind the init reschedule, and it catches its own failures.
+      initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask)
+        .then(() => reconcileLanguageSurfaces())
+        .catch((error) => logger.error('Failed to initialize notifications:', error));
 
       // Debug instrumentation for the notification-refresh background task (ISSUES.md #8)
       runBackgroundTaskDebugSequence();

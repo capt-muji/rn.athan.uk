@@ -109,8 +109,8 @@ describe('the prayer identifier contract, frozen 2026', () => {
     expect(shared).toContain("name: t('channel.extras')");
     expect(catalog).toContain("'channel.athan': 'Athan {n}'");
     expect(catalog).toContain("'channel.extras': 'Extra Times'");
-    // biome-ignore lint/suspicious/noTemplateCurlyInString: pins the source text of a template literal, it must not interpolate
-    expect(shared).toContain('`${prayerLabel(id)} in ${intervalMinutes}m Reminder`');
+    expect(shared).toContain("name: t('channel.reminder', { name: prayerLabel(id), n: intervalMinutes })");
+    expect(catalog).toContain("'channel.reminder': '{name} in {n}m Reminder'");
   });
 
   it('pins the daily-prayer truth table', () => {
