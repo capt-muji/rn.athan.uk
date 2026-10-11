@@ -107,7 +107,10 @@ switch (R3.2, R3.3). No ruled pixel changes; the applying label's byte language 
 stays whatever `t()` resolves, which D51 left open. Inserted step
 `steps/05b-sheet-survives-switch.md` (weight 2, anchor `layout-remount-key`), executed
 before step 7; the header's step count is now 17 and batch packing shifts by one step's
-weight from here on.
+weight from here on. Its break script was repaired the same day after the executor's
+STOP: the sed now mutates `SheetHost.tsx` itself (the suite never loads `_layout.tsx`,
+and the `.tsx` suite runs under the `components` jest project, not `unit`), matching the
+mutation the executor verified failing with `Received: 2`.
 
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
