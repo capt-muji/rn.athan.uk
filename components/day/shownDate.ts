@@ -3,7 +3,7 @@
  * components/overlay/catcherGeometry.ts).
  */
 
-import { formatDateLong, formatHijriDateLong } from '@/shared/time';
+import { formatDateLocalized, formatHijriDateLocalized } from '@/shared/time';
 
 /**
  * The list day the date is taken from: the highlighted occurrence's while the overlay highlights a prayer on
@@ -31,5 +31,5 @@ export const getShownDateSource = (
  */
 export const formatShownDate = (dateSource: string | null, hijriEnabled: boolean): string => {
   if (!dateSource) return '';
-  return hijriEnabled ? formatHijriDateLong(dateSource) : formatDateLong(dateSource);
+  return hijriEnabled ? formatHijriDateLocalized(dateSource) : formatDateLocalized(dateSource);
 };

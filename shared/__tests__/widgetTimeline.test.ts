@@ -15,7 +15,7 @@ import { addDays } from 'date-fns';
 import { type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { isReadable } from '@/shared/sequence';
-import { createPrayerDatetime, formatDateLong, formatDateShort, formatHijriDateLong } from '@/shared/time';
+import { createPrayerDatetime, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
 import {
   type Prayer,
   type PrayerSequence,
@@ -183,7 +183,7 @@ describe('buildPrayerWidgetTimeline', () => {
     // Segment starts at the previous prayer (Dhuhr at 13:10), not at now.
     // With nextEpochMs this is the interval the layouts tick against.
     expect(first.prevEpochMs).toBe(createPrayerDatetime('2026-06-15', '13:10').getTime());
-    expect(first.dateLabel).toBe(formatDateLong('2026-06-15'));
+    expect(first.dateLabel).toBe(formatDateLocalized('2026-06-15'));
   });
 
   it('emits nothing between boundaries, since the countdown ticks itself', () => {
@@ -210,7 +210,7 @@ describe('buildPrayerWidgetTimeline', () => {
 
     expect(ishaEntry.props.nextName).toBe('Fajr');
     expect(ishaEntry.props.nextTime).toBe('03:30');
-    expect(ishaEntry.props.dateLabel).toBe(formatDateLong('2026-06-16'));
+    expect(ishaEntry.props.dateLabel).toBe(formatDateLocalized('2026-06-16'));
   });
 
   it('dates an early-morning Isha by its Islamic day, not its calendar day', () => {
@@ -227,7 +227,7 @@ describe('buildPrayerWidgetTimeline', () => {
     expect(ishaLabel).toBeDefined();
     if (!ishaLabel) return;
     expect(ishaLabel.props.nextName).toBe('Isha');
-    expect(ishaLabel.props.dateLabel).toBe(formatDateLong('2026-06-16'));
+    expect(ishaLabel.props.dateLabel).toBe(formatDateLocalized('2026-06-16'));
   });
 
   it('ends with a stale guard entry at the final prayer boundary', () => {
@@ -321,7 +321,7 @@ describe('buildPrayerWidgetTimeline', () => {
   it('formats date labels in Hijri when the preference is on', () => {
     const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS_HIJRI, 'light');
 
-    expect(entries[0].props.dateLabel).toBe(formatHijriDateLong('2026-06-15'));
+    expect(entries[0].props.dateLabel).toBe(formatHijriDateLocalized('2026-06-15'));
     expect(entries.every((entry) => entry.props.dateLabel.length > 0)).toBe(true);
   });
 
@@ -873,7 +873,7 @@ describe('unreadable rows', () => {
       expect(entry.props).toMatchObject({
         nextName: 'Fajr',
         nextEpochMs: fajrMs,
-        dateLabel: formatDateLong('2026-06-17'),
+        dateLabel: formatDateLocalized('2026-06-17'),
         activeIndex: -1,
       });
       expect(entry.props.prayers?.map((row) => row.time)).toEqual([
@@ -895,7 +895,7 @@ describe('unreadable rows', () => {
         nextEpochMs: fajrMs,
         // Fajr's own day: a list with no active row cannot be drawn, so the layouts show Fajr's name and
         // time instead, and a real time must not sit under a day that has none
-        dateLabel: formatDateLong('2026-06-17'),
+        dateLabel: formatDateLocalized('2026-06-17'),
         prayers: STANDARD_PRAYER_IDS.map((id) => ({ id, name: prayerLabel(id), time: DASH })),
         activeIndex: -1,
       });
@@ -909,7 +909,7 @@ describe('unreadable rows', () => {
     expect(rollover?.props).toMatchObject({
       nextName: 'Fajr',
       nextEpochMs: fajrMs,
-      dateLabel: formatDateLong('2026-06-17'),
+      dateLabel: formatDateLocalized('2026-06-17'),
       activeIndex: 0,
     });
     expect(rollover?.props.prayers?.map((row) => row.time)).toEqual([
@@ -942,7 +942,7 @@ describe('unreadable rows', () => {
       nextName: 'Fajr',
       nextEpochMs: fajrMs,
       prevEpochMs: at('2026-06-16', '14:00'),
-      dateLabel: formatDateLong('2026-06-17'),
+      dateLabel: formatDateLocalized('2026-06-17'),
       activeIndex: -1,
     });
 
@@ -950,11 +950,11 @@ describe('unreadable rows', () => {
     const lastMinutes = buildPrayerWidgetTimeline(new Date(pushMs), sequence, SETTINGS, 'light');
     expect(lastMinutes[0].date.getTime()).toBe(holdEndMs - MIN_ENTRY_SPACING_MS);
     expect(lastMinutes[0].props).toMatchObject({
-      dateLabel: formatDateLong('2026-06-17'),
+      dateLabel: formatDateLocalized('2026-06-17'),
       activeIndex: -1,
     });
     expect(lastMinutes[1].date.getTime()).toBe(holdEndMs);
-    expect(lastMinutes[1].props).toMatchObject({ dateLabel: formatDateLong('2026-06-17'), activeIndex: 0 });
+    expect(lastMinutes[1].props).toMatchObject({ dateLabel: formatDateLocalized('2026-06-17'), activeIndex: 0 });
   });
 
   it('rolls the list to the next day at Magrib when Isha is unreadable', () => {
@@ -970,7 +970,7 @@ describe('unreadable rows', () => {
     expect(before?.props).toMatchObject({
       nextName: 'Magrib',
       activeIndex: 4,
-      dateLabel: formatDateLong('2026-06-15'),
+      dateLabel: formatDateLocalized('2026-06-15'),
     });
     expect(before?.props.prayers?.[5]).toEqual({ id: 'isha', name: 'Isha', time: DASH });
 
@@ -980,12 +980,12 @@ describe('unreadable rows', () => {
       nextName: 'Fajr',
       nextEpochMs: at('2026-06-16', '03:30'),
       prevEpochMs: magribMs,
-      dateLabel: formatDateLong('2026-06-16'),
+      dateLabel: formatDateLocalized('2026-06-16'),
       activeIndex: 0,
     });
 
     // The 16th's Isha is readable and counted down to in its turn; the 15th's list never targets its own
-    const fifteenth = entries.filter((entry) => entry.props.dateLabel === formatDateLong('2026-06-15'));
+    const fifteenth = entries.filter((entry) => entry.props.dateLabel === formatDateLocalized('2026-06-15'));
     expect(fifteenth.length).toBeGreaterThan(0);
     expect(fifteenth.map((entry) => entry.props.nextName)).not.toContain('Isha');
   });
@@ -1051,7 +1051,7 @@ describe('unreadable rows', () => {
     expect(entries[0].props).toMatchObject({
       nextName: 'Duha',
       activeIndex: 3,
-      dateLabel: formatDateLong('2026-06-16'),
+      dateLabel: formatDateLocalized('2026-06-16'),
     });
 
     const night = entries.filter((entry) => entry.date.getTime() >= duhaMs && entry.date.getTime() < suhoorMs);
@@ -1060,7 +1060,7 @@ describe('unreadable rows', () => {
       expect(entry.props).toMatchObject({
         nextName: 'Suhoor',
         nextEpochMs: suhoorMs,
-        dateLabel: formatDateLong('2026-06-17'),
+        dateLabel: formatDateLocalized('2026-06-17'),
         activeIndex: 2,
         prayers: [
           { name: 'Midnight', time: DASH },
@@ -1108,7 +1108,7 @@ describe('unreadable rows', () => {
         nextTime: '21:15',
         nextEpochMs: magribMs,
         prevEpochMs: magribMs,
-        dateLabel: formatDateLong('2026-06-16'),
+        dateLabel: formatDateLocalized('2026-06-16'),
         stale: true,
       },
     });
