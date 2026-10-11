@@ -10,7 +10,7 @@
 | Group | notifications scheduling (`stores/notifications.ts`), shared with no other open row |
 | Batch budget | 6 |
 | Session budget | 12 |
-| Steps | 16 (device steps 13, 14, 15 each dispatch alone) |
+| Steps | 17 (device steps 13, 14, 15 each dispatch alone) |
 | Device | OnePlus 3T (`3T_SERIAL`), Android 9; iPhone XS (`IPHONE_UDID`) preferred wherever a choice exists (D38); one Android 15+ fleet phone (`S23_SERIAL`) for the tall-font checks (FONT-6) |
 | Owner decisions still needed | None. The frontier closed 2026-10-11: D50, D51, D52 were the last three |
 
@@ -95,6 +95,19 @@ is spent and each respawn runs its own steps' anchor checks per the executor con
 Two forward repairs ride along: step 07 anchors `widget-date-label-v2` (the post-step-06
 bytes, because step 06's contract 2 rewrites the body the original anchor pins), and
 step 16's anchor name is corrected to the existing `gradle-default-config`.
+
+**Refresh 3, 2026-10-11** (steps 4 to 6 landed, `uat` `d36923cc`, 2.0.28): the step 05
+session flagged a design defect for a ruling - the root remount key unmounts the
+presented language sheet mid-apply, so the D51 face cannot show on device. The owner
+ruled herself unavailable; the lead took the recommended option as the decision: the key
+moves from the gesture root down to `Slot` and `InitialWidthMeasurement` (screens and
+measurement remount cold, R3.1 and R5.2), and the five sheets render through a new
+subscribing `SheetHost` so they re-render in place and a presented sheet survives the
+switch (R3.2, R3.3). No ruled pixel changes; the applying label's byte language mid-face
+stays whatever `t()` resolves, which D51 left open. Inserted step
+`steps/05b-sheet-survives-switch.md` (weight 2, anchor `layout-remount-key`), executed
+before step 7; the header's step count is now 17 and batch packing shifts by one step's
+weight from here on.
 
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
@@ -296,6 +309,8 @@ this session's griller pass.
    channel cache resets, `channel.reminder`, the last-armed stamp.
 5. `05-language-sheet.md` - the D52 Settings row, the language sheet, the native-names
    table, the D51 progress row, `preference_language`.
+5b. `05b-sheet-survives-switch.md` - the sheet layer survives the locale remount
+   (inserted by refresh 3; runs before step 6's successors).
 6. `06-dates.md` - catalog-composed Gregorian and Hijri labels, list header, widget
    labels, en parity.
 7. `07-widget-props-v7.md` - precomposed localized footers, parser replacement, tolerance.
