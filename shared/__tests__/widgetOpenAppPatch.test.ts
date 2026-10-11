@@ -46,6 +46,19 @@ describe('the open-the-app patch', () => {
     expect(patch).not.toContain('/Users/');
   });
 
+  it('installs the device-locale global through JSContext\u2019s Swift selector', () => {
+    const runtime = read('node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift');
+
+    // `forKey:` is not a selector JSContext exposes to Swift, and
+    // `Locale.LanguageCode` is a struct that will not bridge to NSString;
+    // `.identifier` is the language-code string. The whole line, because the
+    // layout line above it would satisfy a bare substring check
+    expect(runtime).toContain(
+      'context.setObject((Locale.current.language.languageCode?.identifier ?? "en") as NSString, forKeyedSubscript: "__expoWidgetDeviceLocale" as NSString)'
+    );
+    expect(runtime).not.toContain('forKey: "__expoWidgetDeviceLocale"');
+  });
+
   it('keeps the library\u2019s own interaction path for a button that does not open the app', () => {
     expect(read(CONVERTER)).toContain('WidgetInteraction(source, target).toGlanceAction(context)');
   });
