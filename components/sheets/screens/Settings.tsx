@@ -20,6 +20,7 @@ import {
   setPopupWhatsNewEnabled,
   setSettingsSheetModal,
   setSoundListReady,
+  showLanguageSheet,
   showQiblaSheet,
   showSecondsAtom,
   showSheet,
@@ -45,6 +46,12 @@ export default function BottomSheetSettings() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
     showSheet();
+  };
+
+  const handleLanguagePress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    hideSettingsSheet();
+    showLanguageSheet();
   };
 
   // The permission is settled BEFORE the sheet opens, which is the owner's order: a compass that opens and then
@@ -113,9 +120,21 @@ export default function BottomSheetSettings() {
         </Pressable>
       </View>
 
-      {/* Display Card */}
+      {/* Display Card - the Language row leads it (D52): language reads as a display concern */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>{t('settings.display')}</Text>
+        <Pressable
+          style={styles.athanButton}
+          onPress={handleLanguagePress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel={t('settings.language')}
+          accessibilityRole={'button'}>
+          <View style={styles.musicButton}>
+            <IconView type={Icon.GLOBE} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.athanLabel}>{t('settings.language')}</Text>
+          <Text style={styles.chevron}>{'›'}</Text>
+        </Pressable>
         <View style={styles.toggleList}>
           <SettingsToggle
             label={t('settings.showHijriDate')}

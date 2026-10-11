@@ -256,6 +256,7 @@ export enum Icon {
   WIDGET = 'WIDGET',
   APPLE = 'APPLE',
   ANDROID = 'ANDROID',
+  GLOBE = 'GLOBE',
 }
 
 // =============================================================================
