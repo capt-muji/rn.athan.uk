@@ -23,6 +23,8 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
     'The stored-record vocabulary R15 names; the prayer.ts narrowing is structural now, so no production site names the type',
   PRAYER_LABELS:
     'Reached at runtime through the loader namespace require whose marks measure the catalog (step 15); a static import would evaluate the catalog before the marks',
+  __resetLaunchInitForTests:
+    'The index suite renders a fresh launch per test from one module instance, so only its tests import the reset',
 };
 
 const ROOT = join(__dirname, '..', '..');

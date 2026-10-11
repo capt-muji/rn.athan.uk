@@ -35,7 +35,7 @@ import {
   setWhatsNewShownVersion,
 } from '@/stores/version';
 
-import Index from '../../app/index';
+import Index, { __resetLaunchInitForTests } from '../../app/index';
 
 // Sync downloads the year over the network, so each test decides what the download answers. Unless told, it is still
 // on its way
@@ -162,6 +162,7 @@ const relaunchRelease = () => {
 beforeEach(() => {
   setStoredVersion(getInstalledVersion());
   Database.setItem('cache_schema_version', CACHE_SCHEMA_VERSION);
+  __resetLaunchInitForTests();
 });
 
 afterEach(() => {
@@ -629,5 +630,24 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
     await fireEvent.press(screen.getByRole('button', { name: 'Close' }));
 
     expect(await screen.findByText(UPDATE_PROMPT_TITLE)).toBeOnTheScreen();
+  });
+});
+
+describe('the launch init latch', () => {
+  it('runs one init pass per process across a language-switch remount', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const mockInit = initializeNotifications as jest.Mock;
+    mockInit.mockClear();
+
+    const first = await render(<Index />);
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+    expect(mockInit).toHaveBeenCalledTimes(1);
+    first.unmount();
+
+    const second = await render(<Index />);
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+    expect(mockInit).toHaveBeenCalledTimes(1);
+
+    second.unmount();
   });
 });

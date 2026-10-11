@@ -258,10 +258,10 @@ describe('filterWhatsNewItems', () => {
 });
 
 describe('the language release entry', () => {
-  it('announces the language feature at the version this step lands', () => {
-    expect(WHATS_NEW?.version).toBe('2.0.37');
+  it('announces the language feature at the version this build ships', () => {
+    expect(WHATS_NEW?.version).toBe(INSTALLED_VERSION);
     const items = currentVisibleWhatsNew()?.items ?? [];
-    const entry = items.find((item) => item.version === '2.0.37');
+    const entry = items.find((item) => item.version === INSTALLED_VERSION);
     expect(entry?.title).toBe(t('whatsNew.title.language'));
     expect(entry?.body).toBe(t('whatsNew.body.language'));
   });
@@ -270,7 +270,7 @@ describe('the language release entry', () => {
     setActiveLocale('ms');
     try {
       const items = currentVisibleWhatsNew()?.items ?? [];
-      expect(items.find((item) => item.version === '2.0.37')?.title).toBe('Bahasa');
+      expect(items.find((item) => item.version === INSTALLED_VERSION)?.title).toBe('Bahasa');
     } finally {
       setActiveLocale('en');
     }
@@ -285,6 +285,14 @@ describe('currentVisibleWhatsNew', () => {
     if (!anyCurrentReleaseItems) {
       expect(currentVisibleWhatsNew()).toBeNull();
     }
+  });
+
+  it('ships its banner on the exact version this build carries', () => {
+    // The exact-equality gate means a stamp that misses the installed version
+    // hides the entry from every build that exists; the stamp and the binary
+    // must move together.
+    expect(WHATS_NEW?.version).toBe(INSTALLED_VERSION);
+    expect(WHATS_NEW?.items[0]?.version).toBe(INSTALLED_VERSION);
   });
 
   // `expect(entry.version).toBe(WHATS_NEW?.version)` used to stand here, and it was
