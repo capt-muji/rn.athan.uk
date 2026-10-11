@@ -147,6 +147,16 @@ the owner's 63 real ones), and the bell restore completes only after the heal. T
 fire and the D36 require timing (4 ms, 3 ms - TS-require stays) are proven in the
 ledger.
 
+**Refresh 7, 2026-10-11 (step 14's STOP - the iOS half of the runtime patch does not
+compile):** step 08's contract 1 gave the Swift line with `forKey:`, a selector JSContext
+does not expose to Swift, and a bare String key; the first iOS compile since step 08
+died on it (`WidgetsJSRuntime.swift:86`). The line now mirrors the file's own
+`__expoWidgetLayout` idiom: `forKeyedSubscript:` with both value and key cast to
+`NSString`. Same global, same value, same site. The repair rides step 14's resumed
+session: the node_modules edit, `npx patch-package expo-widgets`, any byte-pinning
+suite extended to the corrected line, then the proven build vehicle rebuilds. The
+Android half compiled and ran green through step 13; the defect is iOS-only.
+
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
 `preference_language_last_armed` stamp writes only the active locale after a full
