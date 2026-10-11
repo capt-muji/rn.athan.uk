@@ -54,7 +54,7 @@ let schedulingQueue: Promise<void> = Promise.resolve();
  * @param operationName Name of the operation for logging
  * @returns Result of the operation
  */
-async function withSchedulingLock<T>(operation: () => Promise<T>, operationName: string): Promise<T> {
+export async function withSchedulingLock<T>(operation: () => Promise<T>, operationName: string): Promise<T> {
   perfMark(`sched_${operationName}_enqueue`, { operation: operationName });
 
   const run = schedulingQueue.then(async () => {
@@ -1660,6 +1660,17 @@ export const rescheduleAllNotifications = async () => {
     }
   }, 'rescheduleAllNotifications');
 };
+
+/**
+ * The language-convergence driver: one full pass with the widget push awaited
+ * rather than deferred past a paint, because the switch's progress face covers
+ * the wait and the sheet must not dismiss onto half-converged surfaces.
+ *
+ * @returns The driver's verdict: false means the empty-cache bail armed nothing,
+ * which must leave the caller's stamp unwritten so the next launch retries
+ */
+export const rescheduleAllForLanguageChange = (): Promise<boolean> =>
+  _rescheduleAllNotifications({ deferWidgetRefresh: false });
 
 /**
  * Makes the phone play one athan everywhere, or leaves it playing the one it already had

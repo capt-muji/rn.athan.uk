@@ -10,6 +10,7 @@ import { Platform } from 'react-native';
 import { london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import type { PrayerId } from '@/shared/constants';
 import { prayerLabel, t } from '@/shared/i18n';
+import { setActiveLocale } from '@/shared/i18n/locale';
 
 import { PRAYER_TIMEZONE } from '../constants';
 import {
@@ -751,6 +752,20 @@ describe('createReminderAndroidChannel', () => {
       await createReminderAndroidChannel('suhoor', 10);
 
       expect(setNotificationChannelAsync).toHaveBeenCalledTimes(1);
+    });
+
+    it('names the channel from the active catalog, not the English template', async () => {
+      try {
+        setActiveLocale('ar');
+        await createReminderAndroidChannel('magrib', 15);
+
+        expect(setNotificationChannelAsync).toHaveBeenCalledWith(
+          'reminder_magrib_15_v3',
+          expect.objectContaining({ name: 'تنبيه المغرب بعد 15 د' })
+        );
+      } finally {
+        setActiveLocale('en');
+      }
     });
   });
 });

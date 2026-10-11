@@ -437,6 +437,17 @@ const createdAthanChannels = new Set<string>();
 let extrasChannelCreated = false;
 
 /**
+ * Empties the session channel-dedup caches. A locale switch renames channels by
+ * re-creating them under their frozen ids, which the guards above would skip for
+ * the rest of the process, so the language convergence pass clears them first.
+ */
+export const resetAndroidChannelCaches = (): void => {
+  createdReminderChannels.clear();
+  createdAthanChannels.clear();
+  extrasChannelCreated = false;
+};
+
+/**
  * Creates the Android notification channel for the fixed at-time Sunrise +
  * extras sound. Called from initializeNotifications and again at schedule time
  * so headless background-task reschedules (which never run UI init) still find
@@ -499,7 +510,7 @@ export const createReminderAndroidChannel = async (id: PrayerId, intervalMinutes
 
   await withNativeTimeout(
     Notifications.setNotificationChannelAsync(channelId, {
-      name: `${prayerLabel(id)} in ${intervalMinutes}m Reminder`,
+      name: t('channel.reminder', { name: prayerLabel(id), n: intervalMinutes }),
       sound: `reminder_${slug}_${intervalMinutes}.mp3`,
       importance: Notifications.AndroidImportance.HIGH,
       enableVibrate: true,
