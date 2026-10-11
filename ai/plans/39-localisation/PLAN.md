@@ -124,6 +124,17 @@ flagged in `catalogs/provenance.json` for the owner's D42 verification. Gates gr
 after the edit. Step 08's contracts 2 and 3 name the field mapping and the
 byte-freeze rule.
 
+**Refresh 5, 2026-10-11** (step 13's device STOP, two blockers): one, the owner's bells
+sat all off on the 3T, voiding checks 1 to 5 - ruled that the proof arms all six through
+the app's Settings sheet and restores the found state afterward (the ruling and the
+found-state evidence sit in LOG.md). Two, the first release build since step 09 failed
+`lintVitalRelease` with 70 `ExtraTranslation` errors (fourteen keys per locale with no
+default-locale counterpart) - ruled default-locale entries in `values/strings.xml` with
+byte-identical en values, no lint override, no dropped keys, locale maps frozen. Step 13
+gained a Build repair section that lands this fix on `uat` before the device work
+resumes. Both rulings were taken by assumption under the owner's standing
+no-questions instruction; the owner's word overrides either.
+
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
 `preference_language_last_armed` stamp writes only the active locale after a full
