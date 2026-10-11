@@ -1,4 +1,0 @@
-const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
-  'widget';
-
-  // Only the absolute time recedes; the system tints both in vibrant mode.

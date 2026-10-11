@@ -1,6 +1,0 @@
-export const commitSoundSelection = async (
-  selection: number,
-  previousSelection: number,
-  updateChannel: (sound: number) => Promise<unknown>
-): Promise<boolean> => {
-  return withSchedulingLock(async () => {

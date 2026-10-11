@@ -1,3 +1,0 @@
-const UNAVAILABLE_MESSAGE: string = t('alert.unavailable');
-
-interface AlertSheetBodyRef {
