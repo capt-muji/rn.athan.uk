@@ -15,7 +15,7 @@ import { addDays } from 'date-fns';
 
 import { type PrayerId, UNAVAILABLE_TIME } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
-import { createPrayerDatetime, formatDateLong, formatDateShort, formatHijriDateLong } from '@/shared/time';
+import { createPrayerDatetime, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
 import { type Prayer, type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot } from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
@@ -140,8 +140,8 @@ describe('buildPrayerWidgetSnapshot', () => {
     const hijri = buildPrayerWidgetSnapshot(sequence, { hijriDate: true });
     if (!gregorian || !hijri) throw new Error('snapshots missing');
 
-    expect(gregorian.days[0]?.dateLabel).toBe(formatDateLong('2026-10-17'));
-    expect(hijri.days[0]?.dateLabel).toBe(formatHijriDateLong('2026-10-17'));
+    expect(gregorian.days[0]?.dateLabel).toBe(formatDateLocalized('2026-10-17'));
+    expect(hijri.days[0]?.dateLabel).toBe(formatHijriDateLocalized('2026-10-17'));
   });
 
   it('unreadable rows carry the unavailable time and a null epoch', () => {
