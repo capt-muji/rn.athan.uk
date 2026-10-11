@@ -1,8 +1,8 @@
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
-import { atom, getDefaultStore } from 'jotai';
+import { atom, getDefaultStore, type PrimitiveAtom } from 'jotai';
 
 import type { PrayerId } from '@/shared/constants';
-import { CURRENT_LOCALE_ID } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
 import { type PageCoordinates, ScheduleType } from '@/shared/types';
 import { database } from '@/stores/database';
@@ -109,7 +109,9 @@ export const qiblaSheetModalAtom = atom<BottomSheetModal | null>(null);
 // database clean (D35) and the copy never repeats.
 for (const side of ['standard', 'extra'] as const) {
   const legacyKey = `prayer_max_english_width_${side}`;
-  const localeKey = `prayer_max_english_width_${CURRENT_LOCALE_ID}_${side}`;
+  // Pinned to en: the legacy value was measured against English glyphs, so seeding
+  // any other locale's key from it would store a wrong width that only widens
+  const localeKey = `prayer_max_english_width_en_${side}`;
   const legacy = database.getString(legacyKey);
   if (database.getString(localeKey) === undefined && legacy !== undefined) {
     database.set(localeKey, legacy);
@@ -117,14 +119,25 @@ for (const side of ['standard', 'extra'] as const) {
   database.remove(legacyKey);
 }
 
-/** Measured width of longest English prayer name for Standard schedule */
-export const englishWidthStandardAtom = atomWithStorageNumber(
-  `prayer_max_english_width_${CURRENT_LOCALE_ID}_standard`,
-  0
-);
+/** One width atom per locale and list, created on first access and cached */
+const widthAtoms = new Map<string, PrimitiveAtom<number>>();
 
-/** Measured width of longest English prayer name for Extra schedule */
-export const englishWidthExtraAtom = atomWithStorageNumber(`prayer_max_english_width_${CURRENT_LOCALE_ID}_extra`, 0);
+/**
+ * The width atom of the active locale's list: per-locale keys default 0 and widen on
+ * the first measure, so a switch reflows once against the new locale's key (R5.1, R5.2)
+ *
+ * @param type Schedule type (Standard or Extra)
+ */
+export const englishWidthAtomFor = (type: ScheduleType): PrimitiveAtom<number> => {
+  const side = type === ScheduleType.Standard ? 'standard' : 'extra';
+  const key = `prayer_max_english_width_${currentLocaleId()}_${side}`;
+  const cached = widthAtoms.get(key);
+  if (cached) return cached;
+
+  const widthAtom = atomWithStorageNumber(key, 0);
+  widthAtoms.set(key, widthAtom);
+  return widthAtom;
+};
 
 /** Page coordinates of the prayer list component (for animations) */
 export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
@@ -239,8 +252,7 @@ export const setEnglishWidth = (type: ScheduleType, width: number) => {
   // while correct values never change (no reflow churn after settle).
   if (width <= 0) return;
 
-  const isStandard = type === ScheduleType.Standard;
-  const atom = isStandard ? englishWidthStandardAtom : englishWidthExtraAtom;
+  const atom = englishWidthAtomFor(type);
   const cached = store.get(atom);
   if (width <= cached) return;
 

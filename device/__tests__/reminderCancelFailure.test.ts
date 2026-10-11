@@ -16,6 +16,7 @@ import { AlertType, ScheduleType } from '@/shared/types';
 const mockGetReminders = jest.fn();
 
 jest.mock('@/stores/database', () => ({
+  getItem: () => null,
   getAllScheduledRemindersForPrayer: (...args: unknown[]) => mockGetReminders(...args),
 }));
 

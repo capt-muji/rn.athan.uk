@@ -254,8 +254,11 @@ export const getVisibleWhatsNew = (
   return items.length > 0 ? { version: release.version, items: items.map(resolveItem) } : null;
 };
 
-/** WHATS_NEW as this build may present it */
-export const VISIBLE_WHATS_NEW: WhatsNewRelease | null = getVisibleWhatsNew(WHATS_NEW, FEATURE_FLAGS);
+/**
+ * WHATS_NEW as this build may present it, resolved against the ACTIVE catalog on
+ * every call: a locale switch re-renders the archive without a reload (R1.3)
+ */
+export const currentVisibleWhatsNew = (): WhatsNewRelease | null => getVisibleWhatsNew(WHATS_NEW, FEATURE_FLAGS);
 
 /**
  * Returns the platform availability badges for an item
