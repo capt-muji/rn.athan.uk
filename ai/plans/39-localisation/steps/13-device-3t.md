@@ -9,6 +9,30 @@ The production build on the 3T proves the frozen identifiers survive a language 
 channels rename in place under their frozen ids with catalog names, notifications carry
 Arabic titles, and the six-catalog require stays under the D36 5 ms rule.
 
+## Build repair (refresh 5; runs first, on `uat`, before any device work)
+
+Step 09's `expo.locales` writes fourteen keys per locale into `values-b+*/strings.xml`
+with no default-locale counterpart, and `lintVitalRelease` fails the production build
+(70 `ExtraTranslation` errors, first release build since step 09). The repair: every key
+present in `values-b+*/strings.xml` gains a default counterpart in `values/strings.xml`
+with byte-identical `en` values - the two permission strings and the twelve iOS-only
+lock-widget gallery keys. No lint override, no dropped keys (the iOS side reads the same
+map), and the six locale maps' bytes never change. The mechanism lives in committed
+config (the Locales plugin's default-locale handling, or a prebuild mod appending the
+defaults); `ios/` and `android/` stay prebuild output. Red is the failing release build;
+green is `BUILD-PROD OK` with the defaults present in the prebuild output. Extend
+whatever suite step 09 landed pinning the locales maps only to cover the defaults; never
+edit the locale maps themselves. This repair commits and merges before the device work
+resumes, with the step's own branch and message shape.
+
+## Bells ruling (refresh 5; recorded in LOG.md)
+
+The proof runs against armed bells (D38's premise). Arm all six through the app's own
+Settings sheet (atlas coordinates, agent-device taps), run the checks, then restore every
+bell to the found state - all six off, zero armed notification alarms - and record the
+restoration in the ledger. The phone ends on the build the plan names with automatic
+time on.
+
 ## Branch
 
 `docs/device-39-3t` off `uat`.
