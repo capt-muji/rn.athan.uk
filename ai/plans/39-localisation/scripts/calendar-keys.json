@@ -1,0 +1,197 @@
+{
+  "ar": {
+    "monthShort": {
+      "calendar.monthShort.1": "يناير",
+      "calendar.monthShort.2": "فبراير",
+      "calendar.monthShort.3": "مارس",
+      "calendar.monthShort.4": "أبريل",
+      "calendar.monthShort.5": "مايو",
+      "calendar.monthShort.6": "يونيو",
+      "calendar.monthShort.7": "يوليو",
+      "calendar.monthShort.8": "أغسطس",
+      "calendar.monthShort.9": "سبتمبر",
+      "calendar.monthShort.10": "أكتوبر",
+      "calendar.monthShort.11": "نوفمبر",
+      "calendar.monthShort.12": "ديسمبر"
+    },
+    "weekdayShort": {
+      "calendar.weekdayShort.1": "الاثنين",
+      "calendar.weekdayShort.2": "الثلاثاء",
+      "calendar.weekdayShort.3": "الأربعاء",
+      "calendar.weekdayShort.4": "الخميس",
+      "calendar.weekdayShort.5": "الجمعة",
+      "calendar.weekdayShort.6": "السبت",
+      "calendar.weekdayShort.7": "الأحد"
+    },
+    "hijri": {
+      "calendar.hijri.1": "محرم",
+      "calendar.hijri.2": "صفر",
+      "calendar.hijri.3": "ربيع الأول",
+      "calendar.hijri.4": "ربيع الآخر",
+      "calendar.hijri.5": "جمادى الأولى",
+      "calendar.hijri.6": "جمادى الآخرة",
+      "calendar.hijri.7": "رجب",
+      "calendar.hijri.8": "شعبان",
+      "calendar.hijri.9": "رمضان",
+      "calendar.hijri.10": "شوال",
+      "calendar.hijri.11": "ذو القعدة",
+      "calendar.hijri.12": "ذو الحجة"
+    }
+  },
+  "ms": {
+    "monthShort": {
+      "calendar.monthShort.1": "Jan",
+      "calendar.monthShort.2": "Feb",
+      "calendar.monthShort.3": "Mac",
+      "calendar.monthShort.4": "Apr",
+      "calendar.monthShort.5": "Mei",
+      "calendar.monthShort.6": "Jun",
+      "calendar.monthShort.7": "Jul",
+      "calendar.monthShort.8": "Ogo",
+      "calendar.monthShort.9": "Sep",
+      "calendar.monthShort.10": "Okt",
+      "calendar.monthShort.11": "Nov",
+      "calendar.monthShort.12": "Dis"
+    },
+    "weekdayShort": {
+      "calendar.weekdayShort.1": "Isn",
+      "calendar.weekdayShort.2": "Sel",
+      "calendar.weekdayShort.3": "Rab",
+      "calendar.weekdayShort.4": "Kha",
+      "calendar.weekdayShort.5": "Jum",
+      "calendar.weekdayShort.6": "Sab",
+      "calendar.weekdayShort.7": "Ahd"
+    },
+    "hijri": {
+      "calendar.hijri.1": "Muharam",
+      "calendar.hijri.2": "Safar",
+      "calendar.hijri.3": "Rabiulawal",
+      "calendar.hijri.4": "Rabiulakhir",
+      "calendar.hijri.5": "Jamadilawal",
+      "calendar.hijri.6": "Jamadilakhir",
+      "calendar.hijri.7": "Rejab",
+      "calendar.hijri.8": "Syaaban",
+      "calendar.hijri.9": "Ramadan",
+      "calendar.hijri.10": "Syawal",
+      "calendar.hijri.11": "Zulkaedah",
+      "calendar.hijri.12": "Zulhijah"
+    }
+  },
+  "so": {
+    "monthShort": {
+      "calendar.monthShort.1": "Jan",
+      "calendar.monthShort.2": "Feb",
+      "calendar.monthShort.3": "Mar",
+      "calendar.monthShort.4": "Abr",
+      "calendar.monthShort.5": "May",
+      "calendar.monthShort.6": "Jun",
+      "calendar.monthShort.7": "Lul",
+      "calendar.monthShort.8": "Ogs",
+      "calendar.monthShort.9": "Seb",
+      "calendar.monthShort.10": "Okt",
+      "calendar.monthShort.11": "Nof",
+      "calendar.monthShort.12": "Dis"
+    },
+    "weekdayShort": {
+      "calendar.weekdayShort.1": "Isn",
+      "calendar.weekdayShort.2": "Tldo",
+      "calendar.weekdayShort.3": "Arbc",
+      "calendar.weekdayShort.4": "Khms",
+      "calendar.weekdayShort.5": "Jmc",
+      "calendar.weekdayShort.6": "Sbti",
+      "calendar.weekdayShort.7": "Axd"
+    },
+    "hijri": {
+      "calendar.hijri.1": "Muxarram",
+      "calendar.hijri.2": "Safar",
+      "calendar.hijri.3": "Rabic al-awwal",
+      "calendar.hijri.4": "Rabic al-thani",
+      "calendar.hijri.5": "Jumada al-awwal",
+      "calendar.hijri.6": "jumada al-thani",
+      "calendar.hijri.7": "Rajab",
+      "calendar.hijri.8": "Shacban",
+      "calendar.hijri.9": "Ramadan",
+      "calendar.hijri.10": "Shawwal",
+      "calendar.hijri.11": "Dul al-qacdah",
+      "calendar.hijri.12": "Dul xijjah"
+    }
+  },
+  "hi": {
+    "monthShort": {
+      "calendar.monthShort.1": "जन॰",
+      "calendar.monthShort.2": "फ़र॰",
+      "calendar.monthShort.3": "मार्च",
+      "calendar.monthShort.4": "अप्रैल",
+      "calendar.monthShort.5": "मई",
+      "calendar.monthShort.6": "जून",
+      "calendar.monthShort.7": "जुल॰",
+      "calendar.monthShort.8": "अग॰",
+      "calendar.monthShort.9": "सित॰",
+      "calendar.monthShort.10": "अक्टू॰",
+      "calendar.monthShort.11": "नव॰",
+      "calendar.monthShort.12": "दिस॰"
+    },
+    "weekdayShort": {
+      "calendar.weekdayShort.1": "सोम",
+      "calendar.weekdayShort.2": "मंगल",
+      "calendar.weekdayShort.3": "बुध",
+      "calendar.weekdayShort.4": "गुरु",
+      "calendar.weekdayShort.5": "शुक्र",
+      "calendar.weekdayShort.6": "शनि",
+      "calendar.weekdayShort.7": "रवि"
+    },
+    "hijri": {
+      "calendar.hijri.1": "मुहर्रम",
+      "calendar.hijri.2": "सफर",
+      "calendar.hijri.3": "राबी प्रथम",
+      "calendar.hijri.4": "राबी द्वितीय",
+      "calendar.hijri.5": "जुम्डा प्रथम",
+      "calendar.hijri.6": "जुम्डा द्वितीय",
+      "calendar.hijri.7": "रजब",
+      "calendar.hijri.8": "शावन",
+      "calendar.hijri.9": "रमजान",
+      "calendar.hijri.10": "शव्व्ल",
+      "calendar.hijri.11": "जिल-क्दाह",
+      "calendar.hijri.12": "जिल्-हिज्जाह"
+    }
+  },
+  "th": {
+    "monthShort": {
+      "calendar.monthShort.1": "ม.ค.",
+      "calendar.monthShort.2": "ก.พ.",
+      "calendar.monthShort.3": "มี.ค.",
+      "calendar.monthShort.4": "เม.ย.",
+      "calendar.monthShort.5": "พ.ค.",
+      "calendar.monthShort.6": "มิ.ย.",
+      "calendar.monthShort.7": "ก.ค.",
+      "calendar.monthShort.8": "ส.ค.",
+      "calendar.monthShort.9": "ก.ย.",
+      "calendar.monthShort.10": "ต.ค.",
+      "calendar.monthShort.11": "พ.ย.",
+      "calendar.monthShort.12": "ธ.ค."
+    },
+    "weekdayShort": {
+      "calendar.weekdayShort.1": "จันทร์",
+      "calendar.weekdayShort.2": "อังคาร",
+      "calendar.weekdayShort.3": "พุธ",
+      "calendar.weekdayShort.4": "พฤหัส",
+      "calendar.weekdayShort.5": "ศุกร์",
+      "calendar.weekdayShort.6": "เสาร์",
+      "calendar.weekdayShort.7": "อาทิตย์"
+    },
+    "hijri": {
+      "calendar.hijri.1": "มุฮะร์รอม",
+      "calendar.hijri.2": "ซอฟาร์",
+      "calendar.hijri.3": "รอบี I",
+      "calendar.hijri.4": "รอบี II",
+      "calendar.hijri.5": "จุมาดา I",
+      "calendar.hijri.6": "จุมาดา II",
+      "calendar.hijri.7": "รอจับ",
+      "calendar.hijri.8": "ชะอะบาน",
+      "calendar.hijri.9": "รอมะดอน",
+      "calendar.hijri.10": "เชาวัล",
+      "calendar.hijri.11": "ซุลกิอฺดะฮฺ",
+      "calendar.hijri.12": "ซุลหิจญะฮฺ"
+    }
+  }
+}
