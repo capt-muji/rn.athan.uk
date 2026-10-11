@@ -1,7 +1,0 @@
-const _addMultipleScheduleNotificationsForPrayer = async (
-  scheduleType: ScheduleType,
-  prayerIndex: number,
-  englishName: string,
-  alertType: AlertType,
-  requestCost?: number
-): Promise<number> => {

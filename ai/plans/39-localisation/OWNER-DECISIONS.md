@@ -618,6 +618,19 @@ destination while the build is private.
 A per-locale hash of the source English, checked in CI, catches a translation that went stale when
 the English changed. The preview tier earns nothing while every shipped catalog is complete.
 
+## D51. The switch's progress face is an in-sheet blocking row (2026-10-11)
+
+Taken in the row 39 planning session. When a language is picked, the language sheet stays
+open, the list disables, the picked row shows the app's spinner with one applying line, and
+the sheet dismisses itself once the surfaces converge. No full-screen overlay, no new modal
+pattern; the sheet itself blocks wandering, which is what D47 demands.
+
+## D52. The Language row sits at the top of the Display card (2026-10-11)
+
+Taken in the same session. A globe icon, the label and a chevron, built exactly like the
+Athan row, placed as the first row of the Settings Display card. Language reads as a display
+concern; no new card.
+
 ## D36. Step 15's require timing runs on the 3T via the e2e monitor release build (2026-10-10)
 
 Ruled after the step-15 STOP: the production build compiles out every perf and log read the step

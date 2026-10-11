@@ -1,7 +1,0 @@
-      countdownAtom,
-      isReadable(selected)
-        ? { timeLeft: TimeUtils.getSecondsRemaining(selected.datetime), name: selected.english }
-        : { timeLeft: null, name: selected.english }
-    );
-    return;
-  }

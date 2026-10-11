@@ -1,7 +1,0 @@
-  englishName: string,
-  requestCostFor: RequestCostReader
-): string[] => {
-  const plan = buildSchedulePlan(collectCandidateRows(requestCostFor), NOTIFICATION_REQUEST_BUDGET);
-
-  return plan.get(schedulePlanKey(scheduleType, englishName)) ?? [];
-};

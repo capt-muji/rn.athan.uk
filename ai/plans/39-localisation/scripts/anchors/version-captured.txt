@@ -1,9 +1,0 @@
-  const installedVersion = getInstalledVersion();
-  const storedVersion = getStoredVersion();
-
-  logger.info('VERSION: Version comparison', { installed: installedVersion, stored: storedVersion || 'none' });
-
-  if (!installedVersion) {
-    logger.warn('VERSION: Could not determine installed version, skipping upgrade check');
-    return;
-  }

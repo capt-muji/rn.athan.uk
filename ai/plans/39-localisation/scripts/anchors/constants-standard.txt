@@ -1,9 +1,0 @@
-/**
- * English names for the 6 standard daily prayers
- * Order matches UI display sequence (Fajr → Sunrise → Dhuhr → Asr → Magrib → Isha)
- */
-export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
-
-// =============================================================================
-// SPECIAL PRAYERS (EXTRAS)
-// =============================================================================
