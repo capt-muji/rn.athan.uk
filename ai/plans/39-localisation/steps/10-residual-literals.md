@@ -26,7 +26,7 @@ catalog across the scanned trees.
 
 ## Change contracts
 
-1. `shared/qiblaCompass.ts`: `export const resolveCardinals = (): DialCardinal[]` reading the four `qibla.cardinal.*` keys through `t()`; the static `CARDINALS` array with its literals is deleted. The tick geometry, the arc math and every sensor rule are untouched (D20).
+1. `shared/qiblaCompass.ts`: `export const resolveCardinals = (): DialCardinal[]` reading the four keys as four literal calls - `t('qibla.cardinal.n')`, `t('qibla.cardinal.e')`, `t('qibla.cardinal.s')`, `t('qibla.cardinal.w')` - never a keyed loop over an array of suffixes (the step's break script targets the `n` call's exact bytes); the static `CARDINALS` array with its literals is deleted. The tick geometry, the arc math and every sensor rule are untouched (D20).
 2. The consumer renders `resolveCardinals()` at render time (call-time resolution, like step 03's captures).
 3. Re-run the census: `node scripts/scan-strings.mjs ''` reports zero `data-module` rows and the guard suite stays green with the allowlist still `[]`.
 
