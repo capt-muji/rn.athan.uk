@@ -175,6 +175,14 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     expect(schedulesOf(imminentId)).toBe(0);
     expect(osState.has(imminentId)).toBe(false);
     expect(reminderRecords()).not.toContain(imminentId);
+    expect(logger.info).toHaveBeenCalledWith(
+      'REMINDER: Skipping past or imminent reminder:',
+      expect.objectContaining({ date: WINDOW[0] })
+    );
+    expect(logger.info).not.toHaveBeenCalledWith(
+      'REMINDER: Keeping imminent reminder armed:',
+      expect.objectContaining({ date: WINDOW[0] })
+    );
   });
 
   it('still cancels the reminder once its moment has passed', async () => {
