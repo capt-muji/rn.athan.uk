@@ -28,9 +28,6 @@ the session, whatever is written is the state. Stopping mid-draft: write `Resume
 <the next section, and anything learned that the plan does not yet hold>` at the top of
 `PLAN.md`, commit and merge what is finished.
 
-Start every response with `Planning job`. Run `date '+%H:%M:%S %d.%m.%Y'` before each
-response and put its output on the next line as `Time: ...`. Never guess the time.
-
 Workers you may dispatch: `explore` for bounded fact questions, `athan-plan-griller` for
 the grill, `vision` for an image you cannot see. Seeing images is a capability, not a
 preference: if you can see images, read them yourself. Nothing else: `athan-executor` and
