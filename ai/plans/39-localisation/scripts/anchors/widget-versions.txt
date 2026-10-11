@@ -1,0 +1,4 @@
+export const WIDGET_PROPS_VERSION = 6;
+
+/**
+ * Current schema version of the Android widget snapshot contract. Android has

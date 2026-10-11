@@ -1,0 +1,4 @@
+execFileSync('node', ['scripts/scan-strings.mjs', '', '--guard', 'scripts/string-census-allowlist.json'], {
+        cwd: ROOT,
+        stdio: 'pipe',
+      });

@@ -1,0 +1,6 @@
+export const CARDINALS: DialCardinal[] = [
+  { angle: 0, letter: 'N' },
+  { angle: 90, letter: 'E' },
+  { angle: 180, letter: 'S' },
+  { angle: 270, letter: 'W' },
+];

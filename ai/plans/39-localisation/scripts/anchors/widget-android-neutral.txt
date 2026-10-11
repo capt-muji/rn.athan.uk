@@ -1,0 +1,6 @@
+Prayer times for London', 12, 'normal', palette.secondary)}
+      </Column>
+    );
+
+  const AStale = (strings: WidgetStrings) =>
+    ACard(

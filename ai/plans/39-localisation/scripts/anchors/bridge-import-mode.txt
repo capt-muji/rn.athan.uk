@@ -1,0 +1,10 @@
+if (mode === 'import') {
+  const file = path.join(DIST, `${locale}.json`);
+  const imported: unknown = JSON.parse(fs.readFileSync(file, 'utf8'));
+
+  describe('the flat-JSON bridge round trip', () => {
+    it('re-imports the exported file to the same catalog', () => {
+      expect(imported).toEqual(exportTo(en));
+    });
+  });
+}

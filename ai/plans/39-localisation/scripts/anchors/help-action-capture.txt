@@ -1,0 +1,4 @@
+export const HELP_ACTION_LABELS: Record<HelpAction, string> = {
+  dndAccess: t('help.action.dndAccess'),
+};
+

@@ -1,0 +1,6 @@
+context.evaluateScript(script)
+    if let exceptionMessage = contextExceptionMessage(context) {
+      print("[ExpoWidgets] Bundle evaluation failed: \(exceptionMessage)")
+      return nil
+    }
+

@@ -1,0 +1,6 @@
+const localeKey = `prayer_max_english_width_${CURRENT_LOCALE_ID}_${side}`;
+  const legacy = database.getString(legacyKey);
+  if (database.getString(localeKey) === undefined && legacy !== undefined) {
+    database.set(localeKey, legacy);
+  }
+  database.remove(legacyKey);

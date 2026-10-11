@@ -1,0 +1,12 @@
+export const formatHijriDateLong = (date: string): string => {
+  try {
+    const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: PRAYER_TIMEZONE,
+    });
+    // Remove "AH" suffix from formatted date
+    return hijriFormatter.format(getDayAnchor(date)).replace(/ AH$/, '');
+  } catch {
+    return formatDateLong(date);
