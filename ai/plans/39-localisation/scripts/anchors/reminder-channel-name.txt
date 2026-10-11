@@ -1,0 +1,12 @@
+export const createReminderAndroidChannel = async (id: PrayerId, intervalMinutes: ReminderInterval) => {
+  if (Platform.OS !== 'android') return;
+
+  const channelId = reminderAndroidChannelId(id, intervalMinutes);
+  if (createdReminderChannels.has(channelId)) return;
+
+  const slug = prayerNameSlug(id);
+
+  await withNativeTimeout(
+    Notifications.setNotificationChannelAsync(channelId, {
+      name: `${prayerLabel(id)} in ${intervalMinutes}m Reminder`,
+      sound: `reminder_${slug}_${intervalMinutes}.mp3`,

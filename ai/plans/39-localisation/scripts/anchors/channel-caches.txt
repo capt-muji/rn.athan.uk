@@ -1,0 +1,6 @@
+const createdReminderChannels = new Set<string>();
+
+/** Athan channel IDs created this session (dedup mirrors createdReminderChannels) */
+const createdAthanChannels = new Set<string>();
+
+/** Whether the extras at-time channel was created this process (dedup mirrors createdReminderChannels) */
