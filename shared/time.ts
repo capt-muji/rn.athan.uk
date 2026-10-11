@@ -306,6 +306,43 @@ export const formatHijriDateLocalized = (date: string): string => {
 };
 
 /**
+ * The footer a widget draws under its date label: the short weekday alone
+ * under the Gregorian preference, the Hijri month's first three graphemes and
+ * the day under Hijri — the exact bytes the v6-era layouts produced by parsing
+ * the English labels, composed per catalog so the footer follows the active
+ * locale instead (R7.1). Lives here so the app and every widget compose it
+ * from one source.
+ * @param date Date string in YYYY-MM-DD format
+ * @param hijriDate Whether the app's Hijri date preference is on
+ * @returns The footer text (e.g., "Sun", "Raj 1")
+ */
+export const footerFor = (date: string, hijriDate: boolean): string => {
+  if (hijriDate) {
+    try {
+      const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+        timeZone: PRAYER_TIMEZONE,
+      });
+      const parts = hijriFormatter.formatToParts(getDayAnchor(date));
+      const hijriMonth = Number(parts.find((part) => part.type === 'month')?.value);
+      const hijriDay = parts.find((part) => part.type === 'day')?.value;
+      const month = t(HIJRI_MONTH_KEYS[hijriMonth - 1]);
+      return `${[...month].slice(0, 3).join('')} ${hijriDay}`;
+    } catch {
+      // Falls through to the Gregorian footer, like formatHijriDateLocalized
+    }
+  }
+  const [year, month, day] = date.split('-').map(Number);
+  // A calendar date needs no timezone: noon on the phone's own clock always exists
+  const weekday = new Date(year, month - 1, day, 12).getDay();
+  // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
+  const isoWeekday = weekday === 0 ? 7 : weekday;
+  return t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1]);
+};
+
+/**
  * Formats an instant as its calendar date in the prayer timezone (YYYY-MM-DD)
  *
  * The same on a phone set to any timezone — required for cache keys and

@@ -15,8 +15,10 @@ import type { PrayerId } from './constants';
  *
  * v6: every row carries `id` beside the baked `name` (layouts key rows by
  * `id ?? name` so a future locale's colliding names stay distinct).
+ * v7: every entry carries a precomposed localized `footer` beside the
+ * `dateLabel` it shortens from.
  */
-export const WIDGET_PROPS_VERSION = 6;
+export const WIDGET_PROPS_VERSION = 7;
 
 /**
  * Current schema version of the Android widget snapshot contract. Android has
@@ -25,8 +27,10 @@ export const WIDGET_PROPS_VERSION = 6;
  *
  * v2: rows carry `id`, and every string the layout computed at render time
  * arrives baked as `strings` (the layout imports nothing).
+ * v3: every day carries a precomposed localized `footer` beside its
+ * `dateLabel`, mirroring the iOS entry field.
  */
-export const ANDROID_SNAPSHOT_VERSION = 2;
+export const ANDROID_SNAPSHOT_VERSION = 3;
 
 /**
  * Which palette a home widget renders: 'light' or 'dark'. This is a
@@ -105,6 +109,14 @@ export interface PrayerWidgetProps {
   /** Date of the upcoming prayer in the app's format (Hijri when enabled) */
   dateLabel: string;
   /**
+   * Precomposed localized footer: the short weekday alone under the Gregorian
+   * preference, the Hijri month's first three graphemes and the day under
+   * Hijri — exactly what the layout draws under the date. Absent on entries
+   * from v6 and older app versions, which the layout derives by parsing
+   * `dateLabel`.
+   */
+  footer?: string;
+  /**
    * The displayed day's prayers for the medium widget's list: the list day
    * the app shows at the entry's moment (usually the upcoming prayer's day;
    * a day with no readable time stays until 00:00 London at its end, as it
@@ -179,6 +191,12 @@ export interface WidgetStrings {
 export interface AndroidWidgetDay {
   /** The day's date in the app's display format (Hijri when enabled) */
   dateLabel: string;
+  /**
+   * Precomposed localized footer for the day, mirroring the iOS entry field.
+   * Absent on snapshots from v2 and older app versions, which the layout
+   * derives by parsing `dateLabel`.
+   */
+  footer?: string;
   /** London midnight starting this day, as epoch ms */
   startEpochMs: number;
   rows: AndroidWidgetDayRow[];
