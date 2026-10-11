@@ -7,14 +7,39 @@ import type { PrayerId } from '@/shared/constants';
 import { perfMark } from '@/shared/perf';
 
 import type { Catalog } from './en';
+import { currentLocaleId, type LocaleId } from './locale';
 
-// Brackets the catalog's one-time evaluation: pre-init the marks replay with
+// Brackets the catalogs' one-time evaluation: pre-init the marks replay with
 // true detail.at epochs, post-init the ring ts already is one - either way the
 // require cost reads offline.
 perfMark('catalog_require_start');
-const catalogModule = require('./en') as typeof import('./en');
+const RAW = {
+  en: require('./en') as typeof import('./en'),
+  ar: require('./ar') as typeof import('./ar'),
+  ms: require('./ms') as typeof import('./ms'),
+  so: require('./so') as typeof import('./so'),
+  hi: require('./hi') as typeof import('./hi'),
+  th: require('./th') as typeof import('./th'),
+} as const;
 perfMark('catalog_require_end');
 
-export const currentCatalog = (): Catalog => catalogModule.en;
+/** Every locale module normalised to one shape, so the lookups stay one-line calls */
+interface CatalogModule {
+  en: Catalog;
+  PRAYER_LABELS: Record<PrayerId, string>;
+}
 
-export const currentPrayerLabels = (): Record<PrayerId, string> => catalogModule.PRAYER_LABELS;
+// Each locale exports its catalog under its own name; the adapter reads that
+// name into the shared `en` slot without copying the catalog
+const MODULES: Record<LocaleId, CatalogModule> = {
+  en: { en: RAW.en.en, PRAYER_LABELS: RAW.en.PRAYER_LABELS },
+  ar: { en: RAW.ar.ar, PRAYER_LABELS: RAW.ar.PRAYER_LABELS },
+  ms: { en: RAW.ms.ms, PRAYER_LABELS: RAW.ms.PRAYER_LABELS },
+  so: { en: RAW.so.so, PRAYER_LABELS: RAW.so.PRAYER_LABELS },
+  hi: { en: RAW.hi.hi, PRAYER_LABELS: RAW.hi.PRAYER_LABELS },
+  th: { en: RAW.th.th, PRAYER_LABELS: RAW.th.PRAYER_LABELS },
+};
+
+export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;
+
+export const currentPrayerLabels = (): Record<PrayerId, string> => MODULES[currentLocaleId()].PRAYER_LABELS;

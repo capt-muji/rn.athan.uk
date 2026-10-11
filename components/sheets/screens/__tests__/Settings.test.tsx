@@ -41,9 +41,7 @@ const qiblaDevice = jest.requireMock('@/device/qibla');
 // than depending on the stamp the current release happens to carry
 let mockVisibleWhatsNew: WhatsNewRelease | null = null;
 jest.mock('@/shared/whatsNew', () => ({
-  get VISIBLE_WHATS_NEW() {
-    return mockVisibleWhatsNew;
-  },
+  currentVisibleWhatsNew: () => mockVisibleWhatsNew,
 }));
 
 const RELEASE_WITH_NOTES: WhatsNewRelease = {

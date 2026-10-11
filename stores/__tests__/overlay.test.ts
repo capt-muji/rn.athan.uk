@@ -23,6 +23,8 @@ const mockStoreSet = jest.fn();
 const mockOverlayAtomSymbol = Symbol('overlayAtom');
 
 jest.mock('jotai/vanilla', () => ({
+  // atom stays real: shared/i18n/locale builds the remount version atom from it
+  ...jest.requireActual('jotai/vanilla'),
   getDefaultStore: () => ({
     get: (atom: symbol) => mockStoreGet(atom),
     set: (atom: symbol, value: unknown) => mockStoreSet(atom, value),

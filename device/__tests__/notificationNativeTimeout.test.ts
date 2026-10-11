@@ -36,6 +36,7 @@ const mockGetNotifications = jest.fn();
 const mockGetReminders = jest.fn();
 
 jest.mock('@/stores/database', () => ({
+  getItem: () => null,
   getAllScheduledNotificationsForPrayer: (...args: unknown[]) => mockGetNotifications(...args),
   getAllScheduledRemindersForPrayer: (...args: unknown[]) => mockGetReminders(...args),
   addOneScheduledNotificationForPrayer: jest.fn(),

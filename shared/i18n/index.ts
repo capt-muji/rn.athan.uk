@@ -1,5 +1,5 @@
 /**
- * The stage-one read surface: no locale, no fallback. A missing key is a compile error
+ * The read surface: no fallback. A missing key is a compile error
  * (the parameter is the closed key union) and the parity test refuses an empty value.
  */
 
@@ -10,10 +10,6 @@ import { currentCatalog, currentPrayerLabels } from './loader';
 
 export type { TranslationKey } from './en';
 export { en, PRAYER_LABELS } from './en';
-
-/** Stage one's only locale: the width keys and every locale-keyed surface carry it.
- * Row 39 makes it dynamic; the seed in stores/ui.ts reads it at module evaluation. */
-export const CURRENT_LOCALE_ID = 'en';
 
 /** The parameters a key's `{token}`s take; a key with no tokens takes none */
 export type ParamsOf<K extends TranslationKey> = K extends 'notification.now'

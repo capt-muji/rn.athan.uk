@@ -28,7 +28,7 @@ import {
   ScheduleType,
 } from '../types';
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
 
 /**
  * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,

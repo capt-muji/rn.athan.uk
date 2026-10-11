@@ -74,6 +74,11 @@ jest.mock('@/stores/database', () => ({
     set: (key: string, value: string | number | boolean) => mockDatabaseValues.set(key, value),
     remove: (key: string) => mockDatabaseValues.delete(key),
   },
+  // The locale resolver's preference read (no stored language exists in a test)
+  getItem: (key: string) => {
+    const value = mockDatabaseValues.get(key);
+    return typeof value === 'string' && value !== '' ? value : null;
+  },
 }));
 
 import { ScheduleType } from '@/shared/types';
@@ -85,8 +90,7 @@ const {
   bottomSheetModalAtom,
   countdownBarColorAtom,
   countdownBarShownAtom,
-  englishWidthExtraAtom,
-  englishWidthStandardAtom,
+  englishWidthAtomFor,
   getMeasurementsList,
   getPopupUpdateLastCheck,
   hideSettingsSheet,
@@ -319,13 +323,13 @@ describe('measurement functions', () => {
   it('setEnglishWidth sets Standard atom', () => {
     resetWidthStore();
     setEnglishWidth(ScheduleType.Standard, 150);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthStandardAtom, 150);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthAtomFor(ScheduleType.Standard), 150);
   });
 
   it('setEnglishWidth sets Extra atom', () => {
     resetWidthStore();
     setEnglishWidth(ScheduleType.Extra, 120);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthExtraAtom, 120);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthAtomFor(ScheduleType.Extra), 120);
   });
 
   it('setEnglishWidth ignores zero and negative measurements', () => {
@@ -355,7 +359,7 @@ describe('measurement functions', () => {
     mockDefaultStoreSet.mockClear();
 
     setEnglishWidth(ScheduleType.Standard, 150);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthStandardAtom, 150);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthAtomFor(ScheduleType.Standard), 150);
   });
 
   it('getMeasurementsList returns value', () => {
@@ -382,6 +386,11 @@ describe('the per-locale width keys', () => {
     let isolated!: typeof import('../ui');
     jest.isolateModules(() => {
       isolated = require('../ui');
+      // The width family builds its atoms lazily, and the storage mock above picks
+      // its branch at call time: the atoms must come to life inside this window,
+      // where the real factory is in effect and the seed has already run
+      isolated.englishWidthAtomFor(ScheduleType.Standard);
+      isolated.englishWidthAtomFor(ScheduleType.Extra);
     });
     mockRealImplementations.jotai = false;
     mockRealImplementations.storage = false;
@@ -396,8 +405,8 @@ describe('the per-locale width keys', () => {
 
     const { isolated, store } = loadUiModule();
 
-    expect(store.get(isolated.englishWidthStandardAtom)).toBe(150);
-    expect(store.get(isolated.englishWidthExtraAtom)).toBe(120);
+    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Standard))).toBe(150);
+    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Extra))).toBe(120);
     expect(mockDatabaseValues.get('prayer_max_english_width_en_standard')).toBe('150');
     expect(mockDatabaseValues.get('prayer_max_english_width_en_extra')).toBe('120');
     expect(mockDatabaseValues.has('prayer_max_english_width_standard')).toBe(false);
@@ -416,9 +425,18 @@ describe('the per-locale width keys', () => {
     isolated.setEnglishWidth(ScheduleType.Extra, 100);
 
     // ...and nothing a Standard measure does ever reaches the Extra key
-    expect(store.get(isolated.englishWidthStandardAtom)).toBe(150);
-    expect(store.get(isolated.englishWidthExtraAtom)).toBe(120);
+    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Standard))).toBe(150);
+    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Extra))).toBe(120);
     expect(mockDatabaseValues.get('prayer_max_english_width_en_standard')).toBe('150');
     expect(mockDatabaseValues.get('prayer_max_english_width_en_extra')).toBe('120');
+  });
+
+  it('resolves the legacy-seeded en value through the family under en', () => {
+    mockDatabaseValues.set('prayer_max_english_width_standard', '150');
+
+    const { isolated, store } = loadUiModule();
+
+    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Standard))).toBe(150);
+    expect(mockDatabaseValues.has('prayer_max_english_width_th_standard')).toBe(false);
   });
 });

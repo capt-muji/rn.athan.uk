@@ -16,7 +16,7 @@ import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shar
 import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
 
 const stored = new Map<string, ISingleApiResponseTransformed>();
 

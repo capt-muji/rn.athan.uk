@@ -13,6 +13,7 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setAudioModeAsync } from 'expo-audio';
 import { type ErrorBoundaryProps, Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
+import { useAtomValue } from 'jotai';
 import { LogBox } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -22,6 +23,7 @@ import { BottomSheetAlert, BottomSheetQibla, BottomSheetSettings, BottomSheetSou
 import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
+import { localeVersionAtom } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import { initPerfMonitor } from '@/shared/perf';
 import { triggerSyncLoadable } from '@/stores/sync';
@@ -76,9 +78,12 @@ export default function Layout() {
   // Sheets mount past the first content frame (launch chrome defer — see
   // hooks/useChromeDeferred.ts); their content mounts on present regardless
   const chromeDeferred = useChromeDeferred();
+  // One bump per language switch: the key remounts everything below (R3.1), so
+  // no component ever subscribes to the locale itself
+  const localeVersion = useAtomValue(localeVersionAtom);
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
+    <GestureHandlerRootView key={localeVersion} style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
       <SystemBars style={'light'} hidden={{ navigationBar: false }} />
       <InitialWidthMeasurement />
       <BottomSheetModalProvider>

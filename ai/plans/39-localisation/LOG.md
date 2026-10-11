@@ -24,7 +24,9 @@ Steps land here as they execute. Nothing has executed.
 - Green: gates+lock suites 52 passed; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0; full `yarn validate` 198 suites, 5365 passed, 5365 total, coverage 100% x4, exit 0.
 - Break (D53 line-anchored sed): mutated `1 failed, 45 passed, 46 total`, the failures array holding the one string `ar: notification.now placeholder set differs`; restored `46 passed, 46 total`; `ALL AS EXPECTED: 1`. Tree listed only this step's files after.
 - Version 2.0.23 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added).
-- Commit: (sha recorded below), merged into `uat` with `--no-ff`.
+- Commit: `40bb5074` (2.0.23). Hook `Tests: 5365 passed, 5365 total`, coverage 100% on statements (5025), branches (2184), functions (1040), lines (4503).
+- Review: cold read of `git show 40bb5074` against the checklist; a python byte-audit re-derived every locale value from the plan JSONs (197 keys per locale, 0 mismatches, en order preserved), en gained keys only (no deletions in the diff), and the lock hash recomputed over the landed en (`482665ab...`) matches. No findings.
+- Merge: `0734b3fb` into `uat` (`--no-ff`). Branch deleted.
 
 ## Step 02 checklist
 
@@ -35,6 +37,26 @@ Steps land here as they execute. Nothing has executed.
 - [x] Version 2.0.23 set in all three files
 - [x] Commit and `--no-ff` merge landed
 
+## Step 03: the loader switches, the captures dissolve
+
+- Branch `feat/39-03-loader` off `uat`. All ten step anchors counted 1 before work began.
+- Red (all five, recorded): `i18nRuntime.test.ts` `setActiveLocale is not a function` (4 tests); the Alert suite's ar render test `setActiveLocale is not a function` (1 failed / 27 passed); the whatsNew suite `currentVisibleWhatsNew is not a function`; the InitialWidthMeasurement suite `englishWidthAtomFor is not a function` / `setActiveLocale is not a function` (3 failed); the ui.test.ts family test `englishWidthAtomFor is not a function`.
+- Change: `locale.ts` gained `localeVersionAtom`, the memoized lazy `currentLocaleId()` (resolves once via `resolveInitialLocale(readStoredLanguagePreference(), getLocales())`), and `setActiveLocale` (sets and bumps); the loader holds the six requires between the unchanged perf marks, normalised through a per-module adapter into `MODULES` keyed by `LocaleId`, with `currentCatalog()`/`currentPrayerLabels()` one-line `MODULES[currentLocaleId()]` calls; `index.ts` deleted `CURRENT_LOCALE_ID`; `stores/ui.ts` became the `englishWidthAtomFor` family (per-locale `prayer_max_english_width_${locale}_${side}` keys, `atomWithStorageNumber(key, 0)` created on first access and cached) with the legacy seed pinned to literal `en` and `setEnglishWidth` reading through the family; `usePrayer` reads `useAtomValue(englishWidthAtomFor(type))`; the four captures became call-time (`alertOptions()`, `unavailableMessage()`, `soundOptions()`, `getHelpActionLabels()`, `currentVisibleWhatsNew()`) with their consumers calling the functions; `getLongestPrayerNameIndex` compares `[...labels[id]].length` over `currentPrayerLabels()`; `_layout.tsx` subscribes `localeVersionAtom` and keys `GestureHandlerRootView` with it.
+- Extras beyond the step's file list, all forced by the green run: `shared/__mocks__/expo-localization.ts` (new) plus one `^expo-localization$` mapper line in `jest.config.js` (the unit project cannot load the package's ESM build; the repo's established mock pattern); `locale.ts` imports `jotai/vanilla`, not the root entry (the root pulls Provider and React into logic suites whose react is a stub); 25 suites' `@/stores/database` mocks gained `getItem: () => null` (the locale resolver's preference read); `usePrayerAgo` and `overlay` widened their `jotai/vanilla` mocks with `requireActual` (locale.ts's `atom` must stay real); the seven width suites migrated their `@/stores/ui` mocks to `englishWidthAtomFor`; the whatsNew consumers' mocks moved from the `VISIBLE_WHATS_NEW` property to `currentVisibleWhatsNew` (app/index's nulling test now resets its mock variable in a `beforeEach`, since nothing auto-restores it); `ui.test.ts`'s isolated loader pre-creates the family's atoms inside the isolation window (its storage-factory mock picks its branch at call time); `help.test.ts`'s marked-catalog doMock dropped its `requireActual` spread (the loader-locale-database-time path now re-enters the mocked module mid-cycle); `unusedExports` swapped the two step-1 entries for `setActiveLocale` (the loader now reaches the former; nothing production reaches the setter before step 04).
+- Green: all named suites pass; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0; full `yarn validate` 199 suites, 5373 passed, 5373 total, coverage 100% x4, exit 0.
+- Break: `sed "s/MODULES\[currentLocaleId()\]/MODULES.en/"` made `2 failed, 2 passed` with the ar case showing `Received: "Fajr"` (the th `prayerLabel` case fails alongside: the sed pins both lookups); restored `4 passed, 4 total`; `ALL AS EXPECTED: 1`. Tree listed only step files after.
+- Version 2.0.24 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added).
+- Commit: (sha recorded below), merged into `uat` with `--no-ff`.
+
+## Step 03 checklist
+
+- [x] Red: the five named tests failed on the absent functions (recorded above)
+- [x] Contracts 1-8 built; `CURRENT_LOCALE_ID`, `englishWidthStandardAtom`/`ExtraAtom` and the four captures deleted
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5373 passed, 100% x4)
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.24 set in all three files
+- [x] Commit and `--no-ff` merge landed
+
 <!-- hook and merge lines appended after commit -->
 
-session: ses_ed6af035fffew0oURclFBpeBoY
+session: ses_ed68ed1ebffeum3GKU1fk2P6zu
