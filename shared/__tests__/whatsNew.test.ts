@@ -257,6 +257,26 @@ describe('filterWhatsNewItems', () => {
   });
 });
 
+describe('the language release entry', () => {
+  it('announces the language feature at the version this step lands', () => {
+    expect(WHATS_NEW?.version).toBe('2.0.37');
+    const items = currentVisibleWhatsNew()?.items ?? [];
+    const entry = items.find((item) => item.version === '2.0.37');
+    expect(entry?.title).toBe(t('whatsNew.title.language'));
+    expect(entry?.body).toBe(t('whatsNew.body.language'));
+  });
+
+  it('reads the ms title under ms', () => {
+    setActiveLocale('ms');
+    try {
+      const items = currentVisibleWhatsNew()?.items ?? [];
+      expect(items.find((item) => item.version === '2.0.37')?.title).toBe('Bahasa');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+});
+
 describe('currentVisibleWhatsNew', () => {
   it('shows only current-release items, or nothing on a silent release', () => {
     const visible = currentVisibleWhatsNew()?.items ?? [];
