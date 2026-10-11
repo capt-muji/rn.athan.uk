@@ -48,6 +48,7 @@ ANCHORS = [
     ('widget-android-footer', 'widgets/PrayerWidget.tsx', 'label.split', 8),
     ('widget-ios-footer', 'widgets/PrayerWidget.tsx', 'entry.dateLabel.split', 8),
     ('widget-android-neutral', 'widgets/PrayerWidget.tsx', 'Prayer times for London', 6),
+    ('widget-stale-card', 'widgets/PrayerWidget.tsx', '>Out of date<', 8),
     ('lock-layout-countdown', 'widgets/LockPrayerWidget.tsx', 'const AthanLockWidgetCountdownPair', 4),
     ('lock-layout-centred', 'widgets/LockPrayerWidget.tsx', 'const AthanLockWidgetCentred', 4),
     ('lock-layout-stacked', 'widgets/LockPrayerWidget.tsx', 'const AthanLockWidgetStacked', 4),
@@ -58,7 +59,7 @@ ANCHORS = [
     ('qibla-cardinals', 'shared/qiblaCompass.ts', 'export const CARDINALS', 6),
     ('flows-sheets-head', 'e2e/flows/sheets-x10.yaml', 'appId', 4),
     ('scan-guard-suite', 'shared/__tests__/stringGuard.test.ts', "execFileSync('node', ['scripts/scan-strings.mjs', '', '--guard'", 4),
-    ('gradle-version-name', 'android/app/build.gradle', 'versionName', 3),
+    ('gradle-default-config', 'android/app/build.gradle', "applicationId 'com.mugtaba.athan'", 4),
 ]
 
 for name, file, marker, length in ANCHORS:

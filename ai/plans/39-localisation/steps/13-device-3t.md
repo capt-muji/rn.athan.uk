@@ -16,7 +16,7 @@ Arabic titles, and the six-catalog require stays under the D36 5 ms rule.
 ## Pre-flight on the device
 
 1. Read the device atlas `e2e/device-atlas-<model>.md` first; replay mapped coordinates only.
-2. `adb -s $3T_SERIAL shell dumpsys alarm | grep -A 2 com.mugtaba.athan` — save to `$HOME/athan-gitree/sessions/39/alarms-before.txt`. This is the identifier baseline. No clock changes in this step, so no alarm-fire risk from the dump itself.
+2. `adb -s $3T_SERIAL shell dumpsys alarm | grep -A 2 com.mugtaba.athan` - save to `$HOME/athan-gitree/sessions/39/alarms-before.txt`. This is the identifier baseline. No clock changes in this step, so no alarm-fire risk from the dump itself.
 
 ## Build and install
 
@@ -29,7 +29,7 @@ Arabic titles, and the six-catalog require stays under the D36 5 ms rule.
 3. **Arabic re-arm.** `dumpsys alarm` after the switch (`alarms-after-ar.txt`): identifiers still equal the baseline (a re-arm replaces in place; never fewer alarms).
 4. **Arabic notification copy.** Drive the clock is NOT needed: the mock vehicle's Asr-after-download property is unavailable on the production build; instead read the armed request titles from `dumpsys notification --noredact | grep -B 2 -A 8 com.mugtaba.athan` (or `dumpsys alarm`'s operation extras where titles surface) and record that an armed athan's title reads `{name} الآن` shaped Arabic. If the dump does not surface titles on this Android version, record that limitation and rely on check 5.
 5. **Live fire (one).** With the owner's bells armed, wait for the next natural athan (never move the clock on the owner's phone without the alarm dump and the owner's rules; if the wait exceeds the session, mark this check deferred to the owner's daily use and record it as such).
-6. **Require timing (D36 re-run).** Build the e2e monitor release build (`EXPO_PUBLIC_PERF_MONITOR=1`, `e2e/README.md`), install, launch cold, and read the `catalog_require_start`/`catalog_require_end` epochs from the buffered detail log. The pair brackets the six-catalog require (all six are in the MODULES map; Hermes evaluates them at loader eval). Above 5 ms of JS-thread time: the loader switches to `JSON.parse` of embedded JSON constants per the D36 rule — that change is a NEW step 13b branch, one commit, same tests re-run; at or under, record and stop.
+6. **Require timing (D36 re-run).** Build the e2e monitor release build (`EXPO_PUBLIC_PERF_MONITOR=1`, `e2e/README.md`), install, launch cold, and read the `catalog_require_start`/`catalog_require_end` epochs from the buffered detail log. The pair brackets the six-catalog require (all six are in the MODULES map; Hermes evaluates them at loader eval). Above 5 ms of JS-thread time: the loader switches to `JSON.parse` of embedded JSON constants per the D36 rule - that change is a NEW step 13b branch, one commit, same tests re-run; at or under, record and stop.
 
 ## Records
 
