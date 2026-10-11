@@ -66,7 +66,7 @@ jest.mock('react-native-reanimated', () => ({
   default: { View: 'Animated.View' },
   Easing: { elastic: () => () => 0 },
 }));
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),

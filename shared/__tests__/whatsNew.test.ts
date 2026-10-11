@@ -12,8 +12,12 @@ import { join } from 'node:path';
 
 import { FEATURE_FLAGS } from '@/shared/flags';
 import { t } from '@/shared/i18n';
+import * as loader from '@/shared/i18n/loader';
+import { setActiveLocale } from '@/shared/i18n/locale';
+import { ms } from '@/shared/i18n/ms';
 
 import {
+  currentVisibleWhatsNew,
   filterWhatsNewItems,
   getPlatformBadges,
   getVisibleWhatsNew,
@@ -22,7 +26,6 @@ import {
   MAX_WHATS_NEW_ITEMS,
   MAX_WHATS_NEW_TITLE_LENGTH,
   shouldShowWhatsNew,
-  VISIBLE_WHATS_NEW,
   WHATS_NEW,
   type WhatsNewArchiveItem,
   type WhatsNewArchiveRelease,
@@ -254,13 +257,13 @@ describe('filterWhatsNewItems', () => {
   });
 });
 
-describe('VISIBLE_WHATS_NEW', () => {
+describe('currentVisibleWhatsNew', () => {
   it('shows only current-release items, or nothing on a silent release', () => {
-    const visible = VISIBLE_WHATS_NEW?.items ?? [];
+    const visible = currentVisibleWhatsNew()?.items ?? [];
     expect(visible.length).toBeLessThanOrEqual(MAX_WHATS_NEW_ITEMS);
     const anyCurrentReleaseItems = (WHATS_NEW?.items ?? []).some((entry) => entry.version === WHATS_NEW?.version);
     if (!anyCurrentReleaseItems) {
-      expect(VISIBLE_WHATS_NEW).toBeNull();
+      expect(currentVisibleWhatsNew()).toBeNull();
     }
   });
 
@@ -272,8 +275,8 @@ describe('VISIBLE_WHATS_NEW', () => {
   it('never lets an item stamped for another release reach a user', () => {
     const installedVersion = INSTALLED_VERSION;
     // Exactly what app/index.tsx does on launch, for a user upgrading from anywhere
-    const presented = shouldShowWhatsNew(installedVersion, null, VISIBLE_WHATS_NEW)
-      ? (VISIBLE_WHATS_NEW?.items ?? [])
+    const presented = shouldShowWhatsNew(installedVersion, null, currentVisibleWhatsNew())
+      ? (currentVisibleWhatsNew()?.items ?? [])
       : [];
 
     for (const entry of presented) {
@@ -286,7 +289,18 @@ describe('VISIBLE_WHATS_NEW', () => {
     expect(parked?.titleKey).toBe('whatsNew.title.widgets');
     expect(parked ? t(parked.titleKey) : '').toBe('Home & Lock widgets');
     expect(parked?.flags).toEqual(['iosWidgets']);
-    expect((VISIBLE_WHATS_NEW?.items ?? []).map((entry) => entry.title)).not.toContain('Home & Lock widgets');
+    expect((currentVisibleWhatsNew()?.items ?? []).map((entry) => entry.title)).not.toContain('Home & Lock widgets');
+  });
+
+  it('resolves the active locale catalog at call time, not at module load', () => {
+    setActiveLocale('ms');
+    // The historical archive is English stand-ins in every locale, so the catalog the
+    // loader hands back is the only witness that can tell ms from en here
+    const catalog = jest.spyOn(loader, 'currentCatalog');
+    currentVisibleWhatsNew();
+    expect(catalog.mock.results[0]?.value).toBe(ms);
+    catalog.mockRestore();
+    setActiveLocale('en');
   });
 });
 

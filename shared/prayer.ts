@@ -1,15 +1,14 @@
 import {
   ANIMATION,
   EXTRA_PRAYER_IDS,
-  EXTRA_PRAYER_TITLES,
   ISLAMIC_DAY,
   MIDNIGHT_CROSSING_PRAYERS,
   NIGHT_PRAYER_NAMES,
   type PrayerId,
   STANDARD_PRAYER_IDS,
-  STANDARD_PRAYER_TITLES,
   TIME_ADJUSTMENTS,
 } from '@/shared/constants';
+import { currentPrayerLabels } from '@/shared/i18n/loader';
 import { findNextReadable, isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { createPrayerDatetime } from '@/shared/time';
@@ -194,13 +193,16 @@ export const getCascadeDelay = (index: number, _type: ScheduleType): number => {
 };
 
 export const getLongestPrayerNameIndex = (type: ScheduleType): number => {
-  const names = type === ScheduleType.Standard ? STANDARD_PRAYER_TITLES : EXTRA_PRAYER_TITLES;
+  const ids = type === ScheduleType.Standard ? STANDARD_PRAYER_IDS : EXTRA_PRAYER_IDS;
+  const labels = currentPrayerLabels();
   let maxLength = 0;
   let maxIndex = 0;
 
-  names.forEach((name, index) => {
-    if (name.length > maxLength) {
-      maxLength = name.length;
+  ids.forEach((id, index) => {
+    // Code points, not UTF-16 units, so surrogate pairs do not count double
+    const length = [...labels[id]].length;
+    if (length > maxLength) {
+      maxLength = length;
       maxIndex = index;
     }
   });

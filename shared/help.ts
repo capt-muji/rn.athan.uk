@@ -45,9 +45,10 @@ export interface HelpTopic {
   action?: HelpAction;
 }
 
-export const HELP_ACTION_LABELS: Record<HelpAction, string> = {
+/** The label of each action a settings screen can offer, resolved at call time (R1.3) */
+export const getHelpActionLabels = (): Record<HelpAction, string> => ({
   dndAccess: t('help.action.dndAccess'),
-};
+});
 
 /** Ordered by how often each one turns out to be the cause */
 const HELP_ENTRIES: readonly HelpEntryKeys[] = [

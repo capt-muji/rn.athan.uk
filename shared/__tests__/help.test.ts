@@ -2,7 +2,7 @@
  * Unit tests for shared/help.ts: which questions each platform answers, and which offer a deep link
  */
 
-import { getHelpTopics, HELP_ACTION_LABELS } from '../help';
+import { getHelpActionLabels, getHelpTopics } from '../help';
 
 /**
  * A fresh help module whose catalog reads are marked, so every field the getter returns
@@ -11,8 +11,10 @@ import { getHelpTopics, HELP_ACTION_LABELS } from '../help';
 const helpUnderMarkedCatalog = () => {
   let help!: typeof import('../help');
   jest.isolateModules(() => {
+    // t() alone, without spreading requireActual: the isolated graph reaches this
+    // module mid-cycle through stores/database and shared/time, and forcing the
+    // real module's getters there reads a half-built registry
     jest.doMock('@/shared/i18n', () => ({
-      ...jest.requireActual('@/shared/i18n'),
       t: (key: string) => `catalog:${key}`,
     }));
     help = require('../help');
@@ -33,7 +35,7 @@ describe('getHelpTopics', () => {
         for (const step of steps ?? []) expect(step).toMatch(/^catalog:help\.step\./);
       }
     }
-    expect(help.HELP_ACTION_LABELS.dndAccess).toBe('catalog:help.action.dndAccess');
+    expect(help.getHelpActionLabels().dndAccess).toBe('catalog:help.action.dndAccess');
   });
 
   it.each(['ios', 'android'] as const)('answers at least four questions on %s', (os) => {
@@ -194,7 +196,7 @@ describe('getHelpTopics', () => {
   it('names a button for every action an answer offers', () => {
     for (const os of ['ios', 'android'] as const) {
       for (const { action } of getHelpTopics(os)) {
-        if (action) expect(HELP_ACTION_LABELS[action].length).toBeGreaterThan(0);
+        if (action) expect(getHelpActionLabels()[action].length).toBeGreaterThan(0);
       }
     }
   });

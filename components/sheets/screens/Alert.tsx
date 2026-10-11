@@ -28,7 +28,8 @@ import {
 } from './alertDraft';
 import ReminderCard from './ReminderCard';
 
-const ALERT_OPTIONS: SegmentOption[] = [
+// Resolved at call time so a locale switch reaches the labels on the next render
+const alertOptions = (): SegmentOption[] => [
   { value: AlertType.Off, label: t('alert.option.off'), icon: Icon.BELL_SLASH },
   { value: AlertType.Silent, label: t('alert.option.silent'), icon: Icon.BELL_RING },
   { value: AlertType.Sound, label: t('alert.option.sound'), icon: Icon.SPEAKER },
@@ -39,7 +40,7 @@ const ALERT_OPTIONS: SegmentOption[] = [
 // The hard lines are all within about 12dp of each other, so the centred block reads as an even paragraph, and at
 // the default font size (and up to Android's Large) each fits a 360dp phone inside the padding below without
 // wrapping a second time
-const UNAVAILABLE_MESSAGE: string = t('alert.unavailable');
+const unavailableMessage = (): string => t('alert.unavailable');
 
 interface AlertSheetBodyRef {
   /** Values snapshotted at mount — the change-detection baseline for the deferred commit */
@@ -94,7 +95,7 @@ export default function BottomSheetAlert() {
       {sheetState?.isUnavailable && (
         // No body is mounted, so its ref stays empty and the dismiss commits nothing
         <View style={styles.unavailable}>
-          <Text style={styles.unavailableText}>{UNAVAILABLE_MESSAGE}</Text>
+          <Text style={styles.unavailableText}>{unavailableMessage()}</Text>
         </View>
       )}
       {sheetState && !sheetState.isUnavailable && (
@@ -216,7 +217,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
         <View style={{ marginTop: SPACING.md }}>
           <SegmentedControl
             key={`athan-${sheetState.type}-${sheetState.index}`}
-            options={ALERT_OPTIONS}
+            options={alertOptions()}
             selected={atTimeAlert}
             onSelect={handleAlertSelect}
           />

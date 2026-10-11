@@ -10,7 +10,7 @@ import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constant
 import { t } from '@/shared/i18n';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
-import { VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
+import { currentVisibleWhatsNew } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
@@ -158,7 +158,7 @@ export default function BottomSheetSettings() {
       {/* Other Card - the What's new row alone is hidden on a silent release, so Help always stays reachable */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>{t('settings.other')}</Text>
-        {VISIBLE_WHATS_NEW ? (
+        {currentVisibleWhatsNew() ? (
           <Pressable
             style={styles.whatsNewButton}
             onPress={handleWhatsNewPress}

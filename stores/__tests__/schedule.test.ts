@@ -51,6 +51,7 @@ const mockGetPrayerByDateString = jest.fn();
 jest.mock('@/stores/database', () => ({
   ...jest.requireActual('@/stores/database'),
   getPrayerByDateString: (date: string) => mockGetPrayerByDateString(date),
+  getItem: () => null,
 }));
 
 import { calculatePrayerAgo } from '@/hooks/usePrayerAgo';

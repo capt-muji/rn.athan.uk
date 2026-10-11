@@ -19,7 +19,7 @@ import { type Prayer, ScheduleType } from '@/shared/types';
 
 import { getOverlayExplanation, getOverlayRow } from '../overlayContent';
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
 
 type ListOrder = [string, (rows: Prayer[]) => Prayer[]];
 

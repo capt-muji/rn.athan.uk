@@ -8,6 +8,7 @@ import { Alert } from 'react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import {
   getPrayerAlertType,
@@ -491,5 +492,19 @@ describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14
     expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Off);
     expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Off);
     expect(getReminderAlertType(ScheduleType.Standard, FAJR, 1)).toBe(AlertType.Off);
+  });
+});
+
+describe('the alert sheet under Arabic, Friday 11 September 2026 at 14:00', () => {
+  it('labels the athan options from the active catalog at render time', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    openSheetFor(FAJR);
+
+    await render(<AlertSheet />);
+
+    expect(screen.getAllByRole('radio', { name: 'إيقاف' }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('radio', { name: 'صامت' }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('radio', { name: 'صوت' }).length).toBeGreaterThan(0);
   });
 });

@@ -13,7 +13,7 @@ import Animated, {
 import { openDndAccessSettings } from '@/device/notifications';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { getHelpTopics, HELP_ACTION_LABELS, type HelpTopic } from '@/shared/help';
+import { getHelpActionLabels, getHelpTopics, type HelpTopic } from '@/shared/help';
 import { t } from '@/shared/i18n';
 
 import Modal from './Modal';
@@ -93,8 +93,8 @@ const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onT
                   style={styles.action}
                   onPress={() => openDndAccessSettings()}
                   accessibilityRole={'button'}
-                  accessibilityLabel={HELP_ACTION_LABELS[action]}>
-                  <Text style={styles.actionText}>{HELP_ACTION_LABELS[action]}</Text>
+                  accessibilityLabel={getHelpActionLabels()[action]}>
+                  <Text style={styles.actionText}>{getHelpActionLabels()[action]}</Text>
                   <Text style={styles.actionText}>{'\u203a'}</Text>
                 </Pressable>
               ) : null}
