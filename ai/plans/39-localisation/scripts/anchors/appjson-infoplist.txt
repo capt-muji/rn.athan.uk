@@ -1,0 +1,6 @@
+"infoPlist": {
+        "CFBundleDisplayName": "Athan",
+        "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
+        "NSUserNotificationsUsageDescription": "Receive prayer time notifications"
+      },
+      "backgroundColor": "#2c1c77"

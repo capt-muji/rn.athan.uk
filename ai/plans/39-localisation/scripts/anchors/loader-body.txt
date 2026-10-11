@@ -1,0 +1,7 @@
+perfMark('catalog_require_start');
+const catalogModule = require('./en') as typeof import('./en');
+perfMark('catalog_require_end');
+
+export const currentCatalog = (): Catalog => catalogModule.en;
+
+export const currentPrayerLabels = (): Record<PrayerId, string> => catalogModule.PRAYER_LABELS;

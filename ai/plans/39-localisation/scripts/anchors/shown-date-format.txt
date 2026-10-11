@@ -1,0 +1,4 @@
+export const formatShownDate = (dateSource: string | null, hijriEnabled: boolean): string => {
+  if (!dateSource) return '';
+  return hijriEnabled ? formatHijriDateLong(dateSource) : formatDateLong(dateSource);
+};

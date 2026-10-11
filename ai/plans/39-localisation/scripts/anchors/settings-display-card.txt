@@ -1,0 +1,8 @@
+{/* Display Card */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>{t('settings.display')}</Text>
+        <View style={styles.toggleList}>
+          <SettingsToggle
+            label={t('settings.showHijriDate')}
+            value={hijriEnabled}
+            onToggle={() => setHijriEnabled(!hijriEnabled)}

@@ -1,0 +1,8 @@
+returningToForeground = newState === 'active' && previousAppState !== 'active';
+
+    if (returningToForeground) {
+      // A boundary that elapsed while the host was suspended closes the
+      // overlay; the countdowns catch up to the wall clock; then every derived
+      // animation re-runs and snaps. The OS freezes JS in the background, so
+      // this instant catch-up is what keeps the first visible frame correct.
+      checkOverlayBoundary();

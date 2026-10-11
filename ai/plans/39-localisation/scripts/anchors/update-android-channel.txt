@@ -1,0 +1,10 @@
+export const updateAndroidChannel = async (sound: number) => {
+  if (Platform.OS !== 'android') return;
+
+  await Notifications.setNotificationChannelAsync(
+    NotificationUtils.athanAndroidChannelId(sound),
+    NotificationUtils.athanAndroidChannelConfig(sound)
+  );
+
+  return NotificationUtils.athanAndroidChannelId(sound);
+};

@@ -1,0 +1,8 @@
+entry.dateLabel.split(',')[0] : '';
+    const dateTokens = datePrefix.split(' ');
+    let footer = '';
+    if (dateTokens.length === 1) {
+      footer = dateTokens[0];
+    } else {
+      const monthPrefix = dateTokens[0].slice(0, 3);
+      const dayNumber = dateTokens[dateTokens.length - 1];

@@ -1,0 +1,6 @@
+const ALERT_OPTIONS: SegmentOption[] = [
+  { value: AlertType.Off, label: t('alert.option.off'), icon: Icon.BELL_SLASH },
+  { value: AlertType.Silent, label: t('alert.option.silent'), icon: Icon.BELL_RING },
+  { value: AlertType.Sound, label: t('alert.option.sound'), icon: Icon.SPEAKER },
+];
+

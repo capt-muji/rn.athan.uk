@@ -1,0 +1,6 @@
+getLongestPrayerNameIndex } from '@/shared/prayer';
+import { ScheduleType } from '@/shared/types';
+import { setEnglishWidth } from '@/stores/ui';
+
+/**
+ * Continuously measures the width of the longest prayer name for both

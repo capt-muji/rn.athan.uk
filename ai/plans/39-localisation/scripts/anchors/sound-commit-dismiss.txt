@@ -1,0 +1,8 @@
+const handleDismiss = useCallback(async () => {
+    clearAudio();
+
+    if (!hasSoundDraft(tempSoundSelection)) return;
+
+    // The commit persists before it schedules (the scheduler reads the
+    // preference mid-flight) and rolls the preference back itself if either
+    // scheduling call rejects, so the displayed Athan can no longer disagree
