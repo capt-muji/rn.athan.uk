@@ -11,7 +11,7 @@ import Svg, { Circle, Line, Path, Polygon, Rect, Text } from 'react-native-svg';
 
 import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
 import { FIGURE_CANVAS, kaabaShapes } from '@/shared/kaabaFigure';
-import { arcPath, CARDINALS, FACE, facePoint, qiblaLinePath, rubElHizbPath, TICKS } from '@/shared/qiblaCompass';
+import { arcPath, FACE, facePoint, qiblaLinePath, resolveCardinals, rubElHizbPath, TICKS } from '@/shared/qiblaCompass';
 
 type Palette = typeof COLORS.qibla.away;
 
@@ -131,7 +131,7 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
         strokeWidth={unit * 1.2}
       />
 
-      {CARDINALS.map(({ angle, letter }) => {
+      {resolveCardinals().map(({ angle, letter }) => {
         const at = facePoint(angle, radius * FACE.cardinal);
 
         return (

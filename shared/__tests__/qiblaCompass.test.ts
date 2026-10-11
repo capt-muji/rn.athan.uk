@@ -2,14 +2,15 @@
  * The compass face's geometry, and the clearances the owner settled by eye on the phone
  */
 
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { FIGURE_CANVAS, FIGURE_SPREAD } from '@/shared/kaabaFigure';
 import {
   arcPath,
-  CARDINALS,
   FACE,
   facePoint,
   qiblaLinePath,
   RUB_EL_HIZB_INNER,
+  resolveCardinals,
   rubElHizbPath,
   TICKS,
   unwrapHeading,
@@ -64,12 +65,21 @@ describe('the dial ticks', () => {
 
 describe('the cardinal letters', () => {
   it('names the four directions at their own bearings', () => {
-    expect(CARDINALS).toEqual([
+    expect(resolveCardinals()).toEqual([
       { angle: 0, letter: 'N' },
       { angle: 90, letter: 'E' },
       { angle: 180, letter: 'S' },
       { angle: 270, letter: 'W' },
     ]);
+  });
+
+  it('reads the Arabic letters under ar', () => {
+    setActiveLocale('ar');
+    try {
+      expect(resolveCardinals().map(({ letter }) => letter)).toEqual(['ش', 'ق', 'ج', 'غ']);
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   // The owner moved them outward toward their notches; past this the Kaaba overlaps one at some bearings
