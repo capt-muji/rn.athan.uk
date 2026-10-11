@@ -1,0 +1,5 @@
+      <View accessible={true} accessibilityLabel={t('stepper.value', { value, unit })} style={styles.valueContainer}>
+        <Text style={styles.value}>{value}</Text>
+        <Text style={styles.unit}>{unit}</Text>
+      </View>
+      <Pressable
