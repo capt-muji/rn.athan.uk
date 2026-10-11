@@ -250,6 +250,20 @@ plan-conformance, blind, and a second blind pass focused on threading and lifecy
 close (PASS, DONE, folder delete, push) still waits for the row's EXECUTED state, so nothing
 irreversible happens before the owner rules.
 
+### Lead note: audit fixes merged (2026-10-11, lead session)
+
+All three reviewers returned. Plan-conformance: clean, mechanical verification of every
+contract and criterion. Blind: two findings, both confirmed by the lead and fixed — the
+record-membership guard had no pinning test (deleting `.includes(identifier)` left the suite
+green; fixed in `bb747947`, red-green proven by mutation: one test failed with the mutation
+applied, five passed after the revert) and the rewritten `@returns` had dropped "or imminent"
+from the null-return list (restored in `097a7bcd`, comment-only). Threading and lifecycle
+blind pass: clean; its one nuance (a blessed ghost record costs no fire and the next pass
+cleans it) is accepted as a non-defect. Both fix commits merged as `504452d6`; versions
+2.0.8 and 2.0.9; the formal audit close (PASS, row DONE, folder deletion, push) still waits
+on the owner's proof-vehicle ruling and step 02's completion. `uat` holds the unpushed set;
+every commit in it was made or checked by this session's audit.
+
 
 ### Step 02 re-run — STOPPED at the inside-window dump with the network cut verified (2026-10-11, executor session)
 
