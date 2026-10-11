@@ -6,6 +6,8 @@
  * earlier attempts drifted from the design the owner approved.
  */
 
+import { t } from '@/shared/i18n';
+
 const DEGREES = Math.PI / 180;
 
 /** Two decimal places, which is what the approved design's own generator rounds its path coordinates to */
@@ -89,11 +91,16 @@ export const TICKS: DialTick[] = Array.from({ length: 24 }, (_, step) => {
   return { angle, weight };
 });
 
-export const CARDINALS: DialCardinal[] = [
-  { angle: 0, letter: 'N' },
-  { angle: 90, letter: 'E' },
-  { angle: 180, letter: 'S' },
-  { angle: 270, letter: 'W' },
+/**
+ * The four cardinal letters, resolved from the active catalog at call time:
+ * the letters are copy, not geometry (the ar dial reads ش/ق/ج/غ), so they
+ * follow the app language while the bearings stay fixed.
+ */
+export const resolveCardinals = (): DialCardinal[] => [
+  { angle: 0, letter: t('qibla.cardinal.n') },
+  { angle: 90, letter: t('qibla.cardinal.e') },
+  { angle: 180, letter: t('qibla.cardinal.s') },
+  { angle: 270, letter: t('qibla.cardinal.w') },
 ];
 
 /**
