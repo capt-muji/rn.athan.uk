@@ -514,3 +514,59 @@ session: ses_ed35dd75dffer7ULyV668mk66R (step 15 dispatch: blocked at the device
 - [x] Check 5: no clipped or truncated label found; no STOP
 - [x] The S23 atlas measured and committed (`e2e/device-atlas-sm-s911b.md`)
 - [x] Row reads `IN PROGRESS, step 15`
+
+## Step 16: records and finishing
+
+- Branch `docs/executed-39-20261012` off `uat` (`72e5be2c`). The step anchor
+  `gradle-default-config` counted 1 (python) before work began; the version triple
+  read 2.0.51 across `app.json`, `package.json` and the gitignored
+  `android/app/build.gradle` at the start and 2.0.52 at the commit.
+- Check 1, ledger complete: every checklist of steps 01 to 12, 05b and 13 to 15 is
+  ticked with its commit sha, hook `Tests:` line, break last line
+  (`ALL AS EXPECTED: 1`; the flow-only and device steps carry no break by their own
+  files' terms) and `--no-ff` merge sha. The unticked boxes in step 14's checklists
+  (the superseded first-dispatch list, then the resumed checks 4 and 5 and the
+  PARTIAL restore) are the refresh-8 owner-deferred tails the plan itself rules
+  complete-as-executable; both are named in the queue row. Step 14's patch fix
+  `2fc2bc4e` (2.0.46) merged `072917c4`; step 15's records commit `29dacf16`
+  (2.0.51) merged `72e5be2c`.
+- Check 3, scratch: branch `docs/plan-39-refresh6-20261011-1648` verified merged
+  (`5aea7d51`) and deleted; the planning-era worktree `verify-39-deepseek` (this
+  job's verification round, clean tree, branch mirrored on `origin` and adjudicated
+  into RECONCILIATION.md) removed, its branch kept for the audit per row 38's
+  keep-until-merge ruling. `git worktree list` now holds the main checkout plus the
+  `mock-build` and `prod-build` Gradle worktrees; `git branch --list 'feat/39-*'
+  'docs/*39*'` prints nothing.
+- Check 4: `yarn validate` green on the finishing tree - tsc exit 0, biome exit 0,
+  205 suites, 5428 passed, 5428 total, coverage 100% x4 (statements 5172, branches
+  2238, functions 1077, lines 4628), exit 0. The commit and this run both waited out
+  the 23:45 to 00:15 window; `node_modules/.bin/jest` verified present before the
+  restart.
+- Version: `origin` fetched under the version lock (origin/uat at 2.0.19, 66 behind
+  local uat, 0 ahead); 2.0.52 set in `app.json` first, then `package.json`, then the
+  gitignored `android/app/build.gradle` (never added).
+- Records: the queue row reads EXECUTED carrying the plan's section-8 text verbatim
+  plus the two owner-deferred tails (step 14's widget and six-script checks under
+  the orphaned-alert wedge, refresh 8; step 15's Arabic widget half owner-verified
+  under Thai only) and the audit-merge disposition for the plan folder and the
+  session evidence. This step's file defines no break script (a records step).
+- Commit: this records commit (2.0.52). Hook `Tests: 5428 passed, 5428 total`,
+  coverage 100% on statements (5172), branches (2238), functions (1077), lines
+  (4628).
+- Review: cold read of `git show` - docs and version lines only; the row text
+  carries the plan's records body verbatim; no code, pixel or identifier change.
+- Merge: `--no-ff` into `uat`. Not pushed.
+
+## Step 16 checklist
+
+- [x] Every step's checklist ticked in LOG.md with sha, hook line, break line and
+  merge sha (the refresh-8 owner-deferred tails ruled by the plan and named in the
+  row)
+- [x] Version triple agrees at 2.0.52 across the three files
+- [x] No scratch worktree or branch from this job remains (the Gradle build
+  worktrees stay; the verify branch is origin-mirrored and row-38-ruled)
+- [x] `yarn validate` green on uat once more (205 suites, 5428 passed, 100% x4)
+- [x] Queue row EXECUTED with the records text; docs commit merged `--no-ff`, not
+  pushed
+
+session: ses_ed2dc41c7ffeMWXiKCVMmaAOow
