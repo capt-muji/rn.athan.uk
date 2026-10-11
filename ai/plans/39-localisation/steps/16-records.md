@@ -2,7 +2,7 @@
 
 **Requirements:** R13.1
 Weight: 1
-**Anchors:** `gradle-version-name` (the version triple sanity).
+**Anchors:** `gradle-default-config` (the version triple sanity).
 
 ## Goal
 
