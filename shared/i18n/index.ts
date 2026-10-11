@@ -18,7 +18,7 @@ export const CURRENT_LOCALE_ID = 'en';
 /** The parameters a key's `{token}`s take; a key with no tokens takes none */
 export type ParamsOf<K extends TranslationKey> = K extends 'notification.now'
   ? { name: string | number }
-  : K extends 'notification.reminder'
+  : K extends 'notification.reminder' | 'channel.reminder'
     ? { name: string | number; n: number }
     : K extends 'stepper.value' | 'stepper.decrease' | 'stepper.increase'
       ? { value: number; unit: string }
