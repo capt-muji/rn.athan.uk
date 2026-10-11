@@ -19,13 +19,7 @@ import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
-import {
-  BottomSheetAlert,
-  BottomSheetLanguage,
-  BottomSheetQibla,
-  BottomSheetSettings,
-  BottomSheetSound,
-} from '@/components/sheets';
+import { SheetHost } from '@/components/sheets';
 import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
@@ -84,25 +78,19 @@ export default function Layout() {
   // Sheets mount past the first content frame (launch chrome defer — see
   // hooks/useChromeDeferred.ts); their content mounts on present regardless
   const chromeDeferred = useChromeDeferred();
-  // One bump per language switch: the key remounts everything below (R3.1), so
-  // no component ever subscribes to the locale itself
+  // One bump per language switch: the screens and the width measurement remount
+  // cold (R3.1, R5.2), while the sheet layer stays mounted through the switch —
+  // a presented sheet must survive the apply to show its progress face (D51),
+  // and SheetHost's subscription re-renders the sheets in place
   const localeVersion = useAtomValue(localeVersionAtom);
 
   return (
-    <GestureHandlerRootView key={localeVersion} style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
       <SystemBars style={'light'} hidden={{ navigationBar: false }} />
-      <InitialWidthMeasurement />
+      <InitialWidthMeasurement key={localeVersion} />
       <BottomSheetModalProvider>
-        <Slot />
-        {chromeDeferred && (
-          <>
-            <BottomSheetSound />
-            <BottomSheetSettings />
-            <BottomSheetLanguage />
-            <BottomSheetAlert />
-            <BottomSheetQibla />
-          </>
-        )}
+        <Slot key={localeVersion} />
+        <SheetHost deferred={chromeDeferred} />
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );

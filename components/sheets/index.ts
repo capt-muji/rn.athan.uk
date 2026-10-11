@@ -13,6 +13,7 @@ export {
   Stepper,
   Toggle,
 } from './parts';
+export { SheetHost } from './SheetHost';
 export { Alert, ColorPicker, Language, Qibla, Settings, Sound } from './screens';
 // Backward compatibility
 export { default as BottomSheetAlert } from './screens/Alert';
