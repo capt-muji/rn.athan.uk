@@ -22,6 +22,7 @@ jest.mock('@/shared/logger', () => ({ __esModule: true, default: mockLogger }));
 const mockStorage = new Map<string, string>();
 jest.mock('@/stores/database', () => ({
   getItem: (key: string) => (mockStorage.has(key) ? JSON.parse(mockStorage.get(key) as string) : null),
+  getRawItem: (key: string) => (mockStorage.has(key) ? mockStorage.get(key) : undefined),
   setItem: (key: string, value: unknown) => void mockStorage.set(key, JSON.stringify(value)),
   removeItem: (key: string) => void mockStorage.delete(key),
   clearAllExcept: (prefixes: string[]) => {
