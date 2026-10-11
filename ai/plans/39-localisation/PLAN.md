@@ -135,6 +135,18 @@ gained a Build repair section that lands this fix on `uat` before the device wor
 resumes. Both rulings were taken by assumption under the owner's standing
 no-questions instruction; the owner's word overrides either.
 
+**Refresh 6, 2026-10-11 (step 13's finish STOP - a shipped cold-start defect and a
+deadline):** the preference writer stores the bare locale while the reader JSON-parses,
+so any stored preference (`en` included) blanks the next cold start; the in-process
+switch path never re-read, which is why every check passed until the monitor build's
+cold launch exposed it. Ruled: a read-tolerance repair (both forms accepted, stored
+keys and writers untouched, red round-trip test first) lands tonight as step 13's
+Cold-start repair section, heals the phone by install before 03:58 (the monitor
+launch's convergence left 21 mock alarms armed, next fire 2026-10-12 03:58, replacing
+the owner's 63 real ones), and the bell restore completes only after the heal. The Asr
+fire and the D36 require timing (4 ms, 3 ms - TS-require stays) are proven in the
+ledger.
+
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
 `preference_language_last_armed` stamp writes only the active locale after a full
