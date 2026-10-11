@@ -631,6 +631,16 @@ Taken in the same session. A globe icon, the label and a chevron, built exactly 
 Athan row, placed as the first row of the Settings Display card. Language reads as a display
 concern; no new card.
 
+## D53. The step 02 break sed is line-anchored to one key (2026-10-11)
+
+Taken in the row 39 refresh session, after the executor's NEEDS REPLAN. The break sed
+becomes `sed -i '' "/notification.now/s/{name} الآن/الآن/"`, mutating only
+`notification.now`; `time.now` shares the ar value and stays untouched. Chosen from two
+worktree-proven options because it keeps the plan's stated expectation verbatim: exactly
+one gate test fails, naming `notification.now` alone. The same session ruled the owner
+unavailable for further questions: the lead takes recommended options as decisions and
+lists them as assumptions in the run report.
+
 ## D36. Step 15's require timing runs on the 3T via the e2e monitor release build (2026-10-10)
 
 Ruled after the step-15 STOP: the production build compiles out every perf and log read the step

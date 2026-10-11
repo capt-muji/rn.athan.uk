@@ -37,7 +37,7 @@ New suite passes; the `Day` and widget suites pass (en values unchanged); `yarn 
 
 ## Break script
 
-Copy `shared/time.ts` to `$TMPDIR`; `sed -i '' "s/', \${day} /', \${day}x/" shared/time.ts` (shape corruption); run test 1 over 2026, expect failures; restore; rerun, expect pass. Ends `ALL AS EXPECTED: 1`.
+Copy `shared/time.ts` to `$TMPDIR`; `sed -i '' "s/}, \${day} /}, \${day}x/" shared/time.ts` (shape corruption: the pattern matches the Gregorian template's `isoWeekday)}, ${day} ` site - the byte before the comma is `}`, never an apostrophe - and the corrupted label renders the `Sun, 30x Mar 2026` shape); run test 1 over 2026, expect failures; restore; rerun, expect pass. Ends `ALL AS EXPECTED: 1`.
 
 ## Version and commit
 

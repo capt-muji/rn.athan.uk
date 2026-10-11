@@ -70,6 +70,21 @@ step 13); `expo.locales` reaches the widget target's resources
 gitignored prebuild output, so native localization must be config-driven (worker
 verification, `.gitignore:13-14`).
 
+**Refresh 2026-10-11** (after the executor's NEEDS REPLAN at step 2, uat `4cd63a10`):
+D53 rules the step 02 break sed line-anchored to `notification.now` alone, proven in a
+scratch worktree against the saved step 2 work (baseline 46/46 green; the mutation fails
+exactly one gate test naming `ar: notification.now placeholder set differs`). Four
+fact-level corrections ride the same refresh, each proven textually or from the green
+saved run: the step 06 break sed now targets the pinned template's `}, ${day} ` bytes
+(the old pattern's leading apostrophe matched nothing); step 05 pins
+`const busy = useAtomValue(languageCommitBusyAtom)` and `disabled={busy}` so its break
+sed has exact bytes; step 10 pins the four literal `t('qibla.cardinal.<k>')` calls for
+the same reason; and step 02's unusedExports contract now prescribes what the green run
+proved (the five locale exports are self-reachable through their own `PRAYER_LABELS`, so
+the suite dedupes per symbol instead of listing them unreachable). The owner ruled
+herself unavailable for further questions this run: recommended options stand as
+decisions and ride the run report's assumptions block.
+
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
 `preference_language_last_armed` stamp writes only the active locale after a full
