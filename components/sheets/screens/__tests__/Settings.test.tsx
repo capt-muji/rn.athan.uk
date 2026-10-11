@@ -14,6 +14,7 @@ import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
   hijriDateEnabledAtom,
+  languageSheetModalAtom,
   popupHelpEnabledAtom,
   popupWhatsNewEnabledAtom,
   qiblaSheetModalAtom,
@@ -22,6 +23,7 @@ import {
   showTimePassedAtom,
 } from '@/stores/ui';
 
+import LanguageSheet from '../Language';
 import QiblaSheet from '../Qibla';
 import SettingsSheet from '../Settings';
 import SoundSheet from '../Sound';
@@ -122,6 +124,32 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
 
     expect(settingsDismiss).toHaveBeenCalledTimes(1);
     expect(qiblaPresent).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  it('shows the Language row first in the Display card and opens the language sheet', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(
+      <>
+        <SettingsSheet />
+        <LanguageSheet />
+      </>
+    );
+    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const languagePresent = jest.spyOn(renderedSheet(languageSheetModalAtom), 'present');
+
+    const languageRow = screen.getByRole('button', { name: 'Language' });
+    // D52: the row is the Display card's own first row, straight after the card's title
+    const displayCard = screen.getByText('Display').parent;
+    expect(displayCard?.children.indexOf(languageRow)).toBe(1);
+    // The sheet's header globe renders in the same tree, so the row's own globe is found inside it
+    expect(within(languageRow).getByTestId('svg:globe', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(within(languageRow).getByText('›')).toBeOnTheScreen();
+
+    await fireEvent.press(languageRow);
+
+    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(languagePresent).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 

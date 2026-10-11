@@ -24,7 +24,7 @@ const NON_DISPLAY_CALLEES = /^(logger|perfMark|perfMeasure|require|import|jest|t
 // The data modules export catalog keys only: their copy fields must hold
 // help./whatsNew. keys, and no copy-shaped sentence may sit anywhere in them
 // (code ids like 'ios' or 'dndAccess' are single lowercase/digit tokens)
-const DATA_MODULES = new Set(['shared/help.ts', 'shared/whatsNew.ts']);
+const DATA_MODULES = new Set(['shared/help.ts', 'shared/whatsNew.ts', 'shared/languageNames.ts']);
 const DATA_COPY_FIELDS = new Set([
   'question',
   'answer',
@@ -77,7 +77,16 @@ const walk = (node, file, ctx) => {
       const keyOk = node.value.startsWith('help.') || node.value.startsWith('whatsNew.');
       const fieldOf = (owner) => owner && owner.type === 'ObjectProperty' && !owner.computed && owner.key.name;
       const copyField = fieldOf(parent) || fieldOf(ctx.grandparent);
-      if (!inType && !isImport && !keyOk && (DATA_COPY_FIELDS.has(copyField) || node.value.includes(' '))) {
+      // The language-names module's `name` field holds native names ('Bahasa
+      // Melayu' carries a space), which are names data, not copy
+      const isNameData = copyField === 'name' && file === 'shared/languageNames.ts';
+      if (
+        !inType &&
+        !isImport &&
+        !keyOk &&
+        !isNameData &&
+        (DATA_COPY_FIELDS.has(copyField) || node.value.includes(' '))
+      ) {
         kind = 'data-module';
         value = node.value;
       }

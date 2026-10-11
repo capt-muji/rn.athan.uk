@@ -102,4 +102,20 @@ describe('the string census guard', () => {
     );
     expect(dataModuleRows).toEqual([]);
   });
+
+  it('holds the native language names as names data, not copy', () => {
+    const source = fs.readFileSync(path.join(ROOT, 'shared/languageNames.ts'), 'utf8');
+    // A spaced name is exactly what the data-module rule would flag without the
+    // name-field allowance
+    expect(source).toContain("'Bahasa Melayu'");
+    const census = execFileSync('node', ['scripts/scan-strings.mjs', ''], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      maxBuffer: 16 * 1024 * 1024,
+    });
+    const namesRows: Array<{ file: string; kind: string }> = JSON.parse(census).rows.filter(
+      (row: { file: string }) => row.file === 'shared/languageNames.ts'
+    );
+    expect(namesRows).toEqual([]);
+  });
 });

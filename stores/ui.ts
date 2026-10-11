@@ -98,6 +98,9 @@ export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
 /** Reference to the qibla bottom sheet modal */
 export const qiblaSheetModalAtom = atom<BottomSheetModal | null>(null);
 
+/** Reference to the language bottom sheet modal */
+export const languageSheetModalAtom = atom<BottomSheetModal | null>(null);
+
 // =============================================================================
 // ATOMS - Layout Measurements
 // =============================================================================
@@ -189,6 +192,15 @@ export const showQiblaSheet = () => {
   store.get(qiblaSheetModalAtom)?.present();
 };
 
+/** Presents the language bottom sheet */
+export const showLanguageSheet = () => {
+  perfMark('sheet_language_present');
+  store.get(languageSheetModalAtom)?.present();
+};
+
+/** Dismisses the language bottom sheet */
+export const hideLanguageSheet = () => store.get(languageSheetModalAtom)?.dismiss();
+
 /** Dismisses the settings bottom sheet */
 export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
 
@@ -200,6 +212,9 @@ export const setSettingsSheetModal = (modal: BottomSheetModal | null) => store.s
 
 /** Sets the qibla bottom sheet modal reference */
 export const setQiblaSheetModal = (modal: BottomSheetModal | null) => store.set(qiblaSheetModalAtom, modal);
+
+/** Sets the language bottom sheet modal reference */
+export const setLanguageSheetModal = (modal: BottomSheetModal | null) => store.set(languageSheetModalAtom, modal);
 
 /** Sets the alert bottom sheet modal reference */
 export const setAlertSheetModal = (modal: BottomSheetModal | null) => store.set(alertSheetModalAtom, modal);
