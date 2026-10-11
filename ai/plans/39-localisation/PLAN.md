@@ -85,6 +85,17 @@ the suite dedupes per symbol instead of listing them unreachable). The owner rul
 herself unavailable for further questions this run: recommended options stand as
 decisions and ride the run report's assumptions block.
 
+**Refresh 2, 2026-10-11** (after the executor's NEEDS REPLAN at step 4's anchor check,
+uat `c8c8b3cb` post steps 2 and 3): `app-init-timeout` now pins the post-step-03 import
+line (`currentVisibleWhatsNew`, counted 1 at `app/index.tsx:24`). A full sweep of all
+43 anchors against that uat found the cross-step staleness class: ten further anchors
+(counts 0) belong only to finished steps 1 to 3 and no remaining step lists them, so
+they stand as spent relics the step-anchor checks never read; the job-start pre-flight
+is spent and each respawn runs its own steps' anchor checks per the executor contract.
+Two forward repairs ride along: step 07 anchors `widget-date-label-v2` (the post-step-06
+bytes, because step 06's contract 2 rewrites the body the original anchor pins), and
+step 16's anchor name is corrected to the existing `gradle-default-config`.
+
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
 `preference_language_last_armed` stamp writes only the active locale after a full
