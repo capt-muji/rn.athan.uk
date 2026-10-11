@@ -23,6 +23,10 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
     'The stored-record vocabulary R15 names; the prayer.ts narrowing is structural now, so no production site names the type',
   PRAYER_LABELS:
     'Reached at runtime through the loader namespace require whose marks measure the catalog (step 15); a static import would evaluate the catalog before the marks',
+  resolveInitialLocale:
+    'The pre-switch locale answer; the loader consumes it when the runtime switch lands, until then only its suite reaches it',
+  readStoredLanguagePreference:
+    'The stored language choice the same switch reads; no production site reaches it before the loader does',
 };
 
 const ROOT = join(__dirname, '..', '..');
