@@ -1,8 +1,0 @@
-const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boolean; only?: PrayerFilter } = {}) => {
-  // Log current preference state for debugging preference-reset reports
-  const preferenceSnapshot = PRAYERS_ENGLISH.map((prayer, i) => ({
-    prayer,
-    alert: getPrayerAlertType(ScheduleType.Standard, i),
-    reminders: REMINDER_SLOTS.map((slot) => getReminderAlertType(ScheduleType.Standard, i, slot)),
-  }));
-  logger.info('NOTIFICATION: Preference snapshot before reschedule:', preferenceSnapshot);

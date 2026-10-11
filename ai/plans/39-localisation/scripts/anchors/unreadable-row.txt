@@ -1,9 +1,0 @@
-  return namesEnglish.map((name): Prayer => {
-    const unreadable: UnreadablePrayer = {
-      type,
-      english: name,
-      datetime: null,
-      time: null,
-      belongsToDate: date,
-    };
-    if (!rawData) return unreadable;

@@ -1,9 +1,0 @@
-  );
-
-  if (entry == null) {
-    if (isAndroidRuntime) {
-      return <ANeutral />;
-    }
-    return <NeutralCard title='Athan' subtitle='Prayer times for London' />;
-  }
-

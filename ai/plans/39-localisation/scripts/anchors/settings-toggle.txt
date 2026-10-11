@@ -1,5 +1,0 @@
-          <SettingsToggle
-            label='Show arabic names'
-            value={showArabicNames}
-            onToggle={() => setShowArabicNames(!showArabicNames)}
-          />

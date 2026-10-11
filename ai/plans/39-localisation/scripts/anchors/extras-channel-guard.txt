@@ -1,3 +1,0 @@
-export const createExtrasAndroidChannel = async () => {
-  if (Platform.OS !== 'android') return;
-  if (extrasChannelCreated) return;
