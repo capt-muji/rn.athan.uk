@@ -1,0 +1,66 @@
+{
+  "_comment": "The null-props widget card's static strings (D44): a six-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
+  "_surfaces": {
+    "subtitle": "the neutral home/lock card's second line (en: Prayer times for London)",
+    "inline": "the accessoryInline neutral (en: Athan — prayer times)",
+    "rectTitle": "the rectangular neutral's uppercase title (en: ATHAN)",
+    "rectSubtitle": "the rectangular neutral's second line (en: Open to load times)",
+    "staleTitle": "the stale card's title (en: Out of date)",
+    "staleBody": "the stale card's body (en: Open app to refresh)",
+    "staleInline": "the inline stale line (en: Athan — open to refresh times)"
+  },
+  "en": {
+    "subtitle": "Prayer times for London",
+    "inline": "Athan — prayer times",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Open to load times",
+    "staleTitle": "Out of date",
+    "staleBody": "Open app to refresh",
+    "staleInline": "Athan — open to refresh times"
+  },
+  "ar": {
+    "subtitle": "أوقات الصلاة في لندن",
+    "inline": "Athan — أوقات الصلاة",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "افتح لتحميل الأوقات",
+    "staleTitle": "غير محدّث",
+    "staleBody": "افتح التطبيق للتحديث",
+    "staleInline": "Athan — افتح لتحديث الأوقات"
+  },
+  "ms": {
+    "subtitle": "Waktu solat untuk London",
+    "inline": "Athan — waktu solat",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Buka untuk muat waktu",
+    "staleTitle": "Tidak dikemas kini",
+    "staleBody": "Buka apl untuk muat semula",
+    "staleInline": "Athan — buka untuk muat semula waktu"
+  },
+  "so": {
+    "subtitle": "Waqtiyada salaadda London",
+    "inline": "Athan — waqtiyada salaadda",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Fur si aad u soo dejinto waqtiyada",
+    "staleTitle": "Cusboonaysi la'aan",
+    "staleBody": "Fur aplka si aad u cusboonaysiiso",
+    "staleInline": "Athan — fur si aad u cusboonaysiiso waqtiyada"
+  },
+  "hi": {
+    "subtitle": "लंदन के नमाज़ के समय",
+    "inline": "Athan — नमाज़ के समय",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "समय लोड करने के लिए खोलें",
+    "staleTitle": "पुराना",
+    "staleBody": "रिफ्रेश के लिए ऐप खोलें",
+    "staleInline": "Athan — समय रिफ्रेश करने के लिए खोलें"
+  },
+  "th": {
+    "subtitle": "เวลาละหมาดสำหรับลอนดอน",
+    "inline": "Athan — เวลาละหมาด",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "เปิดเพื่อโหลดเวลา",
+    "staleTitle": "ข้อมูลเก่า",
+    "staleBody": "เปิดแอปเพื่อรีเฟรช",
+    "staleInline": "Athan — เปิดเพื่อรีเฟรชเวลา"
+  }
+}
