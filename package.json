@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "2.0.22",
+  "version": "2.0.23",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -21,6 +21,7 @@
     "check:device": "e2e/scripts/device-checks.sh",
     "i18n:export": "I18N_BRIDGE=export npx jest shared/__tests__/i18nBridge.test.ts --watchman=false --selectProjects=unit",
     "i18n:import": "I18N_BRIDGE=import npx jest shared/__tests__/i18nBridge.test.ts --watchman=false --selectProjects=unit",
+    "i18n:lock": "node scripts/catalog-lock.mjs",
     "validate": "tsc --noEmit && biome check . --error-on-warnings && jest --silent --coverage",
     "format": "biome check --write .",
     "format:check": "biome check ."
