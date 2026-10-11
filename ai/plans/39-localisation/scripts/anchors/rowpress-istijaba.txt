@@ -1,5 +1,0 @@
-  isSelectedForOverlay,
-}: TappedRow): RowPressAction => {
-  if (!isStandard && english === 'Istijaba' && isPassed) return 'none';
-  return isSelectedForOverlay ? 'close' : 'open';
-};

@@ -1,7 +1,0 @@
- * Builds the deterministic identifier for an at-time prayer notification.
- * Same identifier = idempotent replace on both platforms (Android PendingIntent is
- * derived from the identifier; iOS UNUserNotificationCenter replaces by identifier),
- * so re-scheduling can never create a duplicate even if MMKV bookkeeping is lost.
- */
-export const prayerNotificationIdentifier = (scheduleType: ScheduleType, englishName: string, date: string) =>
-  `athan_${scheduleType}_${englishName.toLowerCase()}_${date}`;

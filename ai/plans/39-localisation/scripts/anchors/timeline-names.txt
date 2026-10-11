@@ -1,6 +1,0 @@
-const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayerRow[]; activeIndex: number } => {
-  const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === segment.displayDate).sort(compareListOrder);
-  const rows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time ?? UNAVAILABLE_TIME }));
-
-  return { rows, activeIndex: dayPrayers.indexOf(segment.next) };
-};

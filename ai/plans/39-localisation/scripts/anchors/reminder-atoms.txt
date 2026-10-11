@@ -1,8 +1,0 @@
-export const createReminderAlertAtom = (scheduleType: ScheduleType, prayerName: string, slot: ReminderSlot) => {
-  const isStandard = scheduleType === ScheduleType.Standard;
-  const type = isStandard ? 'standard' : 'extra';
-
-  return atomWithStorageNumber(
-    `preference_reminder_alert_${type}_${prayerName.toLowerCase()}${reminderSlotSuffix(slot)}`,
-    AlertType.Off
-  );

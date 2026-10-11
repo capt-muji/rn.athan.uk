@@ -1,9 +1,0 @@
-      <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, colorStyle]}>
-        {Prayer.english}
-      </Animated.Text>
-      {showArabicNames && (
-        <Animated.Text style={[styles.text, styles.arabic, colorStyle]}>{Prayer.arabic}</Animated.Text>
-      )}
-      <Time index={index} type={type} />
-      <Alert index={index} type={type} />
-    </AnimatedPressable>
