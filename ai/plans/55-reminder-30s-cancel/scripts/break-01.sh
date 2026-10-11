@@ -23,7 +23,7 @@ EOF
 
 npx jest stores/__tests__/reminderImminentKeepAlive.test.ts --watchman=false --selectProjects=unit --verbose \
   > "$TMPDIR/break-55.log" 2>&1
-FAILS=$(grep -c "✕" "$TMPDIR/break-55.log")
+REDS=$(grep -cE "Tests: +2 failed, 3 passed" "$TMPDIR/break-55.log")
 
 cp "$BACKUP" "$FILE"
 
@@ -31,9 +31,9 @@ npx jest stores/__tests__/reminderImminentKeepAlive.test.ts --watchman=false --s
   > "$TMPDIR/break-55-restore.log" 2>&1
 RESTORED=$(grep -cE "Tests: +5 passed" "$TMPDIR/break-55-restore.log")
 
-if [ "$FAILS" = "2" ] && [ "$RESTORED" = "1" ]; then
+if [ "$REDS" = "1" ] && [ "$RESTORED" = "1" ]; then
   echo "ALL AS EXPECTED: 1"
 else
-  echo "BREAK NOT APPLIED: expected 2 failing tests and a restored 5-pass run, saw $FAILS and $RESTORED"
+  echo "BREAK NOT APPLIED: expected the 2-failed summary and a restored 5-pass run, saw $REDS and $RESTORED"
   exit 1
 fi
