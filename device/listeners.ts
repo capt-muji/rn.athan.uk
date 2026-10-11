@@ -4,6 +4,7 @@ import { SystemBars } from 'react-native-edge-to-edge';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { checkOverlayBoundary, resyncCountdowns } from '@/stores/countdown';
+import { reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, registerBackgroundTask } from '@/stores/notifications';
 import { getArmedDayChanges, sync } from '@/stores/sync';
 import { bumpResync } from '@/stores/ui';
@@ -66,6 +67,11 @@ export const initializeListeners = (checkPermissions: () => Promise<boolean>) =>
           );
         })
         .catch((error) => logger.error('LISTENERS: Foreground sync failed', { error }));
+
+      // A switch that died mid-apply, or a device-language change while the host
+      // was suspended, left the stamp behind the locale: converge now. Fire and
+      // forget — the catch lives inside the pass itself.
+      reconcileLanguageSurfaces();
     }
 
     previousAppState = newState;

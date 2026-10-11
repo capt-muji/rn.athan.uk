@@ -57,6 +57,10 @@ jest.mock('@/device/listeners', () => ({ initializeListeners: jest.fn() }));
 // The development diagnostics simulate a background-task launch eight seconds later, so their start is observed
 jest.mock('@/device/backgroundTaskDebug', () => ({ runBackgroundTaskDebugSequence: jest.fn() }));
 
+// The language convergence pass owns its own suite; here it would re-arm alerts behind the
+// launch under test, so the launch is observed calling it instead of running it
+jest.mock('@/stores/language', () => ({ reconcileLanguageSurfaces: jest.fn() }));
+
 // Notification start-up catches its own failures, so a failure that escapes it is made here, once, to show the launch
 // logs it instead of leaving it unhandled. Every other launch runs the real start-up
 jest.mock('@/shared/notifications', () => {
