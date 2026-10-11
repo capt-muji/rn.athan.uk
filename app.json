@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.0.19",
+    "version": "2.0.20",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -71,6 +71,7 @@
           "resizeMode": "contain"
         }
       ],
+      ["expo-localization", { "supportsRTL": false }],
       [
         "expo-font",
         {
