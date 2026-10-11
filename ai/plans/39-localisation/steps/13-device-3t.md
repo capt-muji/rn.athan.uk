@@ -25,6 +25,24 @@ whatever suite step 09 landed pinning the locales maps only to cover the default
 edit the locale maps themselves. This repair commits and merges before the device work
 resumes, with the step's own branch and message shape.
 
+## Cold-start repair (refresh 6; lands BEFORE the bell restore, tonight)
+
+The shipped switch blanks every cold start with a stored preference: the preference atom
+writes the bare locale (`ar`) while `readStoredLanguagePreference` reads through
+`JSON.parse`, which throws on the bare form, killing the tree at the first `t()`
+(ErrorScreen rethrows). In-process switches never re-read, which is why every suite and
+in-session check passed. The repair, red first: `readStoredLanguagePreference` accepts
+BOTH forms - a JSON-quoted string parses as today, a bare `LOCALE_IDS` member returns as
+itself, everything else returns null exactly as now. The red test writes through the
+real storage atom and reads through the real resolver (the round-trip no suite covered),
+asserting a stored bare `ar` resolves to `'ar'` and a stored quoted form still resolves.
+No stored key changes, no writer changes, full coverage of the touched lines. Version
+per the lock, commit, merge, then a prod build installs on the 3T: the cold start must
+render the Arabic list (the stored preference survives), convergence re-arms the real
+alarms from the prod store (verify by alarm dump: the 21 mock alarms replaced), and only
+then does the bell restore run per the ruling. The phone must be healed before
+2026-10-12 03:58, when the orphaned mock alarms fire.
+
 ## Bells ruling (refresh 5; recorded in LOG.md)
 
 The proof runs against armed bells (D38's premise). Arm all six through the app's own
