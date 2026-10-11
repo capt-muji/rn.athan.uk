@@ -9,7 +9,11 @@ import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shar
 import { type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 
 const DAYS = ['2026-06-25', '2026-06-26', '2026-06-27', '2026-06-28'];
 

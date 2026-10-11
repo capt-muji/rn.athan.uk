@@ -32,6 +32,7 @@ const mockRemoveItem = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   getItem: (key: string) => mockGetItem(key),
+  getRawItem: () => undefined,
   setItem: (key: string, value: unknown) => mockSetItem(key, value),
   clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
   removeItem: (key: string) => mockRemoveItem(key),
@@ -500,6 +501,7 @@ describe('full upgrade flow', () => {
     // Re-setup mocks after module reset (expo-constants is handled via moduleNameMapper)
     jest.mock('@/stores/database', () => ({
       getItem: (key: string) => mockGetItem(key),
+      getRawItem: () => undefined,
       setItem: (key: string, value: unknown) => mockSetItem(key, value),
       clearAllExcept: (prefixes: string[]) => mockClearAllExcept(prefixes),
       removeItem: (key: string) => mockRemoveItem(key),
