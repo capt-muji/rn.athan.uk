@@ -458,3 +458,35 @@ Android 15+ phone.
 - Ruling discrepancy recorded: the ruling's wedged branch says "leave `2fc2bc4e` unmerged", but that commit was already merged into `uat` as `072917c4` under the PREVIOUS dispatch's explicit merge instruction, before this ruling arrived. `uat`'s history is never rewritten; the lead reverts or keeps it as she rules.
 
 session: ses_ed441b0adffel5hqY6jYSGvrLJ (step 14 tail: three ruled presses, all rejected at dispatch; the tail is the owner's)
+
+## Step 15: the Android 15+ tall-font proof - BLOCKED AT THE DEVICE CHECK
+
+- The step's device precondition failed before any work. Step 15 resolves its
+  phone through `$S23_SERIAL`, and its own clause rules: absent from the fleet,
+  STOP and report; the check does not substitute the 3T. The readings, all
+  taken before anything else ran: the variable is empty in this session's
+  shell; it is defined in no env source this machine reads (`~/.zshrc`,
+  `~/.zshenv`, `~/.profile`, and no `*.zsh`/`*.env`/`*.sh` under
+  `$HOME/athan-gitree`); and `adb devices -l` lists exactly one attached
+  device, the OnePlus 3T (`$3T_SERIAL`, ONEPLUS_A3003, Android 9), with no
+  unauthorized or offline entry beside it. No S23 device atlas exists
+  (`e2e/` carries iphone-xs, oneplus3t and oppo-findx8 only). FONT-6's own
+  premise - target SDK 36 draws variants the 3T never draws - makes the 3T
+  structurally unable to stand in even if substitution were allowed.
+- Nothing was built (no build started), nothing installed, nothing changed on
+  any phone: the 3T was read only (`adb devices`, `getprop`); its app, alarms,
+  clocks and state are untouched. Branch `docs/device-39-a15` was created off
+  `uat` (`4d11380d`, 2.0.47) for this records commit alone.
+- Evidence: `$HOME/athan-gitree/sessions/39/step15-blocked-notes.txt` (every
+  reading transcribed, placeholders only).
+- State for the resume: steps 1 to 13 done, step 14 complete-as-executable
+  with its tail on the owner's pass (refresh 8). Last code commit `2fc2bc4e`
+  (2.0.46); last hook line recorded in this ledger `Tests: 5427 passed, 5427
+  total` (commit `1e658aa9`); uat stood at `4d11380d` (2.0.47), origin lagging
+  at 2.0.19.
+- Unblock: attach the S23 over USB, export `S23_SERIAL` in the dispatch
+  environment, re-dispatch step 15 alone (it still dispatches alone). The step
+  file needs no replan - nothing in it failed; the phone was simply not there.
+  The S23 atlas is measured and written back during that dispatch.
+
+session: ses_ed35dd75dffer7ULyV668mk66R (step 15 dispatch: blocked at the device check, records landed)
