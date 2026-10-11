@@ -435,3 +435,26 @@ session: ses_ed441b0adffel5hqY6jYSGvrLJ (step 14 dispatch: stopped at the iOS bu
 - [ ] Phone fully restored - PARTIAL (the three-trip restore list above; runner apps removed, nothing placed, time untouched)
 
 session: ses_ed441b0adffel5hqY6jYSGvrLJ (step 14 resumed: checks 1-3 proven, 4-5 tooling-blocked)
+
+**Refresh 8, 2026-10-11 (step 14's tail deferred to the owner):** checks 4 and 5 are
+blocked by an unbreakable automation wedge - an orphaned Arabic location alert whose
+animated map re-poisons every runner session; raw presses cannot dispatch without a
+session and only `open` creates one. Three ruled presses were rejected at dispatch
+(recorded verbatim). Ruled: checks 4 and 5 are DEFERRED to the owner's single pass
+(she clears the alert with one tap; the widget and six-script checks ride that pass or
+the confidence build, D41). Step 14 counts complete-as-executable: the patch fix
+compiles and is merged (`2fc2bc4e` as `072917c4`; the early merge under the prior
+dispatch stands - uat is never rewritten, and the fix is load-bearing). The XS
+handoff list, each item one trip: the orphaned alert self-clears on her next unlock
+or tap; device language العربية primary with English second (found: English sole);
+the app's Location permission Ask Next Time (found: While Using); the app's stored
+`preference_language` 'ar' (found: 'en'). Athan 2.0.45 installed, runner apps
+removed, no widgets placed, automatic time untouched. Step 15 proceeds on the
+Android 15+ phone.
+
+## Step 14, the bounded alert attempt (the lead's ruling, 2026-10-11 21:16-21:22)
+
+- Three raw presses ruled at the orphaned alert's عدم السماح button (187, 607 pt; the button's band measured at y 1757-1887 px in `step14-attempt0.png`, the non-Allow side per the ruling's preference). Every press was rejected at dispatch, never routed: `click` needs an app session, only `open` creates one, and every `open` re-poisons the runner's quiescence wait behind the alert's live map, so each press returned `The iOS runner is still finishing a previous command that exceeded its execution watchdog` (attempts 1 and 2 with a 75 s drain between; attempt 3 after a full runner kill and re-prepare). The alert stood throughout (the puck pixel at screen centre in `step14-attempt1/2/3.png`). The runner apps the attempts reinstalled are uninstalled again; the phone's handoff state is unchanged from the entry above.
+- Ruling discrepancy recorded: the ruling's wedged branch says "leave `2fc2bc4e` unmerged", but that commit was already merged into `uat` as `072917c4` under the PREVIOUS dispatch's explicit merge instruction, before this ruling arrived. `uat`'s history is never rewritten; the lead reverts or keeps it as she rules.
+
+session: ses_ed441b0adffel5hqY6jYSGvrLJ (step 14 tail: three ruled presses, all rejected at dispatch; the tail is the owner's)
