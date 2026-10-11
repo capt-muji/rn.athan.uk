@@ -157,6 +157,14 @@ session: the node_modules edit, `npx patch-package expo-widgets`, any byte-pinni
 suite extended to the corrected line, then the proven build vehicle rebuilds. The
 Android half compiled and ran green through step 13; the defect is iOS-only.
 
+**Refresh 8, 2026-10-11 (step 14's tail deferred to the owner):** checks 4 and 5 are
+owner-blocked (the orphaned-alert automation wedge; the three ruled presses could not
+dispatch - recorded in LOG.md). Step 14 is complete-as-executable: the patch fix
+merged as `072917c4`, checks 1 to 3 proven, and the widget plus six-script checks ride
+the owner's pass or the D41 confidence build. The XS handoff list (one trip each)
+sits in LOG.md's refresh 8 note and the queue row. Step 15 proceeds on the Android
+15+ phone.
+
 **2.2 The executor must not decide.** Any output the plan does not predict: STOP and
 ask. No stored key, OS identifier, channel id or audio slug changes a byte. The
 `preference_language_last_armed` stamp writes only the active locale after a full
