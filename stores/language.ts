@@ -6,7 +6,7 @@
  * unwritten, and the next launch or foreground completes it (R3.4).
  */
 
-import { getDefaultStore } from 'jotai/vanilla';
+import { atom, getDefaultStore } from 'jotai/vanilla';
 
 import { currentLocaleId, type LocaleId, setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
@@ -21,6 +21,9 @@ export const lastArmedLanguageAtom = atomWithStorageString('preference_language_
 
 /** The D33 preference: '' means no choice yet, so the device locale decides (R1.2) */
 export const languagePreferenceAtom = atomWithStorageString('preference_language', '');
+
+/** The D51 progress face: true from the moment a pick starts converging until it settles */
+export const languageCommitBusyAtom = atom(false);
 
 /**
  * Brings every notification surface to the active locale: reset the channel
@@ -47,9 +50,15 @@ export const reconcileLanguageSurfaces = async (): Promise<void> => {
  * The Settings pick: persist the choice, switch the UI through the remount key
  * before any surface re-arms, then converge. Convergence never rejects to the
  * caller — forward-only means the sheet's dismiss is unconditional (D34, D47).
+ * The busy atom brackets the whole run so the sheet's progress face covers it.
  */
 export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
-  store.set(languagePreferenceAtom, locale);
-  setActiveLocale(locale);
-  await reconcileLanguageSurfaces();
+  store.set(languageCommitBusyAtom, true);
+  try {
+    store.set(languagePreferenceAtom, locale);
+    setActiveLocale(locale);
+    await reconcileLanguageSurfaces();
+  } finally {
+    store.set(languageCommitBusyAtom, false);
+  }
 };
