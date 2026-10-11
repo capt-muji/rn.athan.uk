@@ -1,0 +1,493 @@
+{
+  "_comment": "Glossary track (R2): sourced or transliteration-filled per D24, provenance per key. D42: the owner verifies every string in the confidence build.",
+  "ar": {
+    "prayer.fajr": {
+      "v": "الفجر",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.sunrise": {
+      "v": "الشروق",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.dhuhr": {
+      "v": "الظهر",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.asr": {
+      "v": "العصر",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.magrib": {
+      "v": "المغرب",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.isha": {
+      "v": "العشاء",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.midnight": {
+      "v": "نصف الليل",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.suhoor": {
+      "v": "السحور",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.duha": {
+      "v": "الضحى",
+      "src": "sourced: existing-app-catalog"
+    },
+    "prayer.istijaba": {
+      "v": "استجابة",
+      "src": "sourced: existing-app-catalog"
+    },
+    "extras.explanation.midnight": {
+      "v": "نصف الليل بين المغرب والفجر",
+      "src": "sourced: existing-app-catalog"
+    },
+    "extras.explanation.suhoor": {
+      "v": "20 دقيقة قبل الفجر",
+      "src": "sourced: existing-app-catalog"
+    },
+    "extras.explanation.duha": {
+      "v": "20 دقيقة بعد الشروق",
+      "src": "sourced: existing-app-catalog"
+    },
+    "extras.explanation.istijaba": {
+      "v": "ساعة قبل المغرب (الجمعة فقط)",
+      "src": "sourced: existing-app-catalog"
+    },
+    "qibla.cardinal.n": {
+      "v": "ش",
+      "src": "convention: Arabic compass roses (شمال)"
+    },
+    "qibla.cardinal.e": {
+      "v": "ق",
+      "src": "convention: Arabic compass roses (شرق)"
+    },
+    "qibla.cardinal.s": {
+      "v": "ج",
+      "src": "convention: Arabic compass roses (جنوب)"
+    },
+    "qibla.cardinal.w": {
+      "v": "غ",
+      "src": "convention: Arabic compass roses (غرب)"
+    },
+    "duration.h": {
+      "v": "س",
+      "src": "convention: Arabic hour marker"
+    },
+    "duration.m": {
+      "v": "د",
+      "src": "convention: Arabic minute marker"
+    },
+    "duration.s": {
+      "v": "ث",
+      "src": "convention: Arabic second marker"
+    },
+    "prayer.last third": {
+      "v": "آخر ثلث",
+      "src": "sourced: existing-app-catalog"
+    },
+    "extras.explanation.last third": {
+      "v": "عند بداية الثلث الأخير من الليل",
+      "src": "sourced: existing-app-catalog"
+    },
+    "duration.now": {
+      "v": "الآن",
+      "src": "convention: Arabic now marker"
+    }
+  },
+  "ms": {
+    "prayer.fajr": {
+      "v": "Subuh",
+      "src": "sourced: JAKIM e-Solat"
+    },
+    "prayer.sunrise": {
+      "v": "Syuruk",
+      "src": "sourced: JAKIM e-Solat, D33 approved"
+    },
+    "prayer.dhuhr": {
+      "v": "Zohor",
+      "src": "sourced: JAKIM e-Solat"
+    },
+    "prayer.asr": {
+      "v": "Asar",
+      "src": "sourced: JAKIM e-Solat"
+    },
+    "prayer.magrib": {
+      "v": "Maghrib",
+      "src": "sourced: JAKIM e-Solat"
+    },
+    "prayer.isha": {
+      "v": "Isyak",
+      "src": "sourced: JAKIM e-Solat"
+    },
+    "prayer.midnight": {
+      "v": "Tengah malam",
+      "src": "sourced: derived, medium"
+    },
+    "prayer.suhoor": {
+      "v": "Sahur",
+      "src": "sourced: JAKIM e-Solat"
+    },
+    "prayer.duha": {
+      "v": "Dhuha",
+      "src": "sourced: JAKIM e-Solat lists Duha"
+    },
+    "prayer.istijaba": {
+      "v": "Istijaba",
+      "src": "drafted: D24 transliteration, Malay Latin orthography"
+    },
+    "extras.explanation.midnight": {
+      "v": "Pertengahan antara Maghrib dan Subuh",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.suhoor": {
+      "v": "20 minit sebelum Subuh",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.duha": {
+      "v": "20 minit selepas Syuruk",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.istijaba": {
+      "v": "1 jam sebelum Maghrib (hari Jumaat sahaja)",
+      "src": "sourced: derived, medium"
+    },
+    "qibla.cardinal.n": {
+      "v": "U",
+      "src": "convention: Utara"
+    },
+    "qibla.cardinal.e": {
+      "v": "T",
+      "src": "convention: Timur"
+    },
+    "qibla.cardinal.s": {
+      "v": "S",
+      "src": "convention: Selatan"
+    },
+    "qibla.cardinal.w": {
+      "v": "B",
+      "src": "convention: Barat"
+    },
+    "duration.h": {
+      "v": "j",
+      "src": "convention: Malay jam"
+    },
+    "duration.m": {
+      "v": "m",
+      "src": "convention: Malay minit"
+    },
+    "duration.s": {
+      "v": "s",
+      "src": "convention: Malay saat"
+    },
+    "prayer.last third": {
+      "v": "Sepertiga akhir malam",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.last third": {
+      "v": "Permulaan sepertiga akhir malam",
+      "src": "sourced: derived, low"
+    },
+    "duration.now": {
+      "v": "sekarang",
+      "src": "convention: Malay now"
+    }
+  },
+  "so": {
+    "prayer.fajr": {
+      "v": "Subax",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.sunrise": {
+      "v": "Waaberi",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.dhuhr": {
+      "v": "Duhur",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.asr": {
+      "v": "Casar",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.magrib": {
+      "v": "Maqrib",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.isha": {
+      "v": "Cishaa'i",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.midnight": {
+      "v": "Habeennimo dhexe",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.suhoor": {
+      "v": "Sahri",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.duha": {
+      "v": "Duha",
+      "src": "sourced: speaker pass"
+    },
+    "prayer.istijaba": {
+      "v": "Istijaabo",
+      "src": "drafted: D24 transliteration, Somali orthography"
+    },
+    "extras.explanation.midnight": {
+      "v": "Dhexdhexaadxada Maqrib iyo Subax",
+      "src": "drafted: no sourced term; owner verifies"
+    },
+    "extras.explanation.suhoor": {
+      "v": "20 daqiiqo ka hor Subax",
+      "src": "drafted: pattern from sourced name set"
+    },
+    "extras.explanation.duha": {
+      "v": "20 daqiiqo ka dib Waaberi",
+      "src": "drafted: pattern from sourced name set"
+    },
+    "extras.explanation.istijaba": {
+      "v": "1 saac ka hor Maqrib (Jimcaha oo kaliya)",
+      "src": "drafted: pattern from sourced name set"
+    },
+    "qibla.cardinal.n": {
+      "v": "W",
+      "src": "convention: Waqooyi"
+    },
+    "qibla.cardinal.e": {
+      "v": "B",
+      "src": "convention: Bari"
+    },
+    "qibla.cardinal.s": {
+      "v": "K",
+      "src": "convention: Koonfur"
+    },
+    "qibla.cardinal.w": {
+      "v": "G",
+      "src": "convention: Galbeed"
+    },
+    "duration.h": {
+      "v": "sa",
+      "src": "convention: saac"
+    },
+    "duration.m": {
+      "v": "da",
+      "src": "convention: daqiiqo"
+    },
+    "duration.s": {
+      "v": "il",
+      "src": "convention: ilbiriqsi"
+    },
+    "prayer.last third": {
+      "v": "Seddexaad u dambeeya",
+      "src": "drafted: translated slot, no sourced term; owner verifies"
+    },
+    "extras.explanation.last third": {
+      "v": "Bilowga seddexaadka u dambeeya habeenka",
+      "src": "drafted: no sourced term; owner verifies"
+    },
+    "duration.now": {
+      "v": "hadda",
+      "src": "convention: Somali now"
+    }
+  },
+  "hi": {
+    "prayer.fajr": {
+      "v": "फज्र",
+      "src": "sourced"
+    },
+    "prayer.sunrise": {
+      "v": "सूर्योदय",
+      "src": "sourced"
+    },
+    "prayer.dhuhr": {
+      "v": "ज़ुहर",
+      "src": "sourced"
+    },
+    "prayer.asr": {
+      "v": "असर",
+      "src": "sourced"
+    },
+    "prayer.magrib": {
+      "v": "मग़रिब",
+      "src": "sourced"
+    },
+    "prayer.isha": {
+      "v": "ईशा",
+      "src": "sourced"
+    },
+    "prayer.midnight": {
+      "v": "इस्लामी आधी रात",
+      "src": "sourced: derived, medium"
+    },
+    "prayer.suhoor": {
+      "v": "सहरी",
+      "src": "sourced"
+    },
+    "prayer.duha": {
+      "v": "दुहा",
+      "src": "drafted: D24 transliteration into Devanagari"
+    },
+    "prayer.istijaba": {
+      "v": "इस्तिजाबा",
+      "src": "drafted: D24 transliteration into Devanagari"
+    },
+    "extras.explanation.midnight": {
+      "v": "मग़रिब और फज्र के बीच का मध्य बिंदु",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.suhoor": {
+      "v": "फज्र से 20 मिनट पहले",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.duha": {
+      "v": "सूर्योदय के 20 मिनट बाद",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.istijaba": {
+      "v": "मग़रिब से 1 घंटा पहले (केवल शुक्रवार)",
+      "src": "sourced: derived, medium"
+    },
+    "qibla.cardinal.n": {
+      "v": "उ",
+      "src": "convention: उत्तर"
+    },
+    "qibla.cardinal.e": {
+      "v": "पू",
+      "src": "convention: पूर्व"
+    },
+    "qibla.cardinal.s": {
+      "v": "द",
+      "src": "convention: दक्षिण"
+    },
+    "qibla.cardinal.w": {
+      "v": "प",
+      "src": "convention: पश्चिम"
+    },
+    "duration.h": {
+      "v": "घं",
+      "src": "convention: घंटा"
+    },
+    "duration.m": {
+      "v": "मि",
+      "src": "convention: मिनट"
+    },
+    "duration.s": {
+      "v": "से",
+      "src": "convention: सेकंड"
+    },
+    "prayer.last third": {
+      "v": "अंतिम तिहाई",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.last third": {
+      "v": "रात के अंतिम तिहाई की शुरुआत",
+      "src": "sourced: derived, medium"
+    },
+    "duration.now": {
+      "v": "अब",
+      "src": "convention: Hindi now"
+    }
+  },
+  "th": {
+    "prayer.fajr": {
+      "v": "ซุบฮิ",
+      "src": "sourced: muslimthaipost, high"
+    },
+    "prayer.sunrise": {
+      "v": "ตะวันขึ้น",
+      "src": "sourced: muslimthaipost, high"
+    },
+    "prayer.dhuhr": {
+      "v": "ซุฮฺริ",
+      "src": "sourced: muslimthaipost, high"
+    },
+    "prayer.asr": {
+      "v": "อัศริ",
+      "src": "sourced: muslimthaipost, high"
+    },
+    "prayer.magrib": {
+      "v": "มัฆริบ",
+      "src": "sourced: muslimthaipost, high"
+    },
+    "prayer.isha": {
+      "v": "อิชาอฺ",
+      "src": "sourced: muslimthaipost, high"
+    },
+    "prayer.midnight": {
+      "v": "เที่ยงคืน",
+      "src": "drafted: translated slot, no sourced term; owner verifies"
+    },
+    "prayer.suhoor": {
+      "v": "ซูฮูร",
+      "src": "drafted: D24 transliteration into Thai script"
+    },
+    "prayer.duha": {
+      "v": "ดุฮา",
+      "src": "sourced: muslimthaipost, high"
+    },
+    "prayer.istijaba": {
+      "v": "อิสติญาบา",
+      "src": "drafted: D24 transliteration into Thai script"
+    },
+    "extras.explanation.midnight": {
+      "v": "กึ่งกลางระหว่างมัฆริบและซุบฮิ",
+      "src": "drafted: no sourced term; owner verifies"
+    },
+    "extras.explanation.suhoor": {
+      "v": "ก่อนซุบฮิ 20 นาที",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.duha": {
+      "v": "หลังตะวันขึ้น 20 นาที",
+      "src": "sourced: derived, medium"
+    },
+    "extras.explanation.istijaba": {
+      "v": "ก่อนมัฆริบ 1 ชั่วโมง (เฉพาะวันศุกร์)",
+      "src": "sourced: derived, medium"
+    },
+    "qibla.cardinal.n": {
+      "v": "N",
+      "src": "drafted: Thai compasses print Latin letters; owner verifies"
+    },
+    "qibla.cardinal.e": {
+      "v": "E",
+      "src": "drafted: Thai compasses print Latin letters; owner verifies"
+    },
+    "qibla.cardinal.s": {
+      "v": "S",
+      "src": "drafted: Thai compasses print Latin letters; owner verifies"
+    },
+    "qibla.cardinal.w": {
+      "v": "W",
+      "src": "drafted: Thai compasses print Latin letters; owner verifies"
+    },
+    "duration.h": {
+      "v": "ชม.",
+      "src": "convention: ชั่วโมง"
+    },
+    "duration.m": {
+      "v": "น.",
+      "src": "convention: นาที"
+    },
+    "duration.s": {
+      "v": "วิ",
+      "src": "convention: วินาที"
+    },
+    "prayer.last third": {
+      "v": "ช่วงสุดท้ายของคืน",
+      "src": "drafted: translated slot, no sourced term; owner verifies"
+    },
+    "extras.explanation.last third": {
+      "v": "จุดเริ่มต้นของช่วงสุดท้ายของคืน",
+      "src": "drafted: no sourced term; owner verifies"
+    },
+    "duration.now": {
+      "v": "ตอนนี้",
+      "src": "convention: Thai now"
+    }
+  }
+}
