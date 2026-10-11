@@ -131,6 +131,18 @@ Steps land here as they execute. Nothing has executed.
 - [x] Version 2.0.28 set in all three files
 - [x] Commit `098ec7cd` and `--no-ff` merge `d36923cc` landed
 
+## Step 05b: the sheet layer survives the locale remount - EXECUTION STOPPED AT THE BREAK
+
+- Branch `feat/39-05b-sheet-host` off `uat` (`c699553f`). The step anchor `layout-remount-key` counted 1 before work began (python count).
+- Red (both, recorded): `SheetHost.test.tsx` failed `Cannot find module '../SheetHost'` (the suite failed to load, both tests failing on the absent component, as the plan describes).
+- Change (built, all green, NOT committed): `components/sheets/SheetHost.tsx` created exactly per contract 1 (unbound `useAtomValue(localeVersionAtom)` subscription, `null` when `!deferred`, the five screens imported as defaults from their screen modules in the contract's order); `components/sheets/index.ts` gained `export { SheetHost } from './SheetHost';`; `app/_layout.tsx` collapsed the five imports to `import { SheetHost } from '@/components/sheets';`, dropped the root key, keyed `<InitialWidthMeasurement key={localeVersion} />` and `<Slot key={localeVersion} />`, rendered `<SheetHost deferred={chromeDeferred} />` inside the modal provider, and rewrote the locale comment per contract 3.
+- Green (recorded before the break): `SheetHost.test.tsx` 2 passed (the five mount-counting mocks each mounts=1, renders grows on the locale bump); the `_layout`, Language, Settings and sheets suites 418 passed; `npx tsc --noEmit` exit 0; `npx biome check` exit 0; full `yarn validate` 203 suites, 5393 passed, 5393 total, coverage 100% x4, exit 0. One test-side fix during red-green: the baseline snapshot copies the render counts (the ledgers are live module state; a reference snapshot mutates with the bump).
+- Break STOP (two independent defects in the plan's break script, both verified):
+  1. `--selectProjects=unit` finds 0 tests for a `.tsx` file (the unit project's testMatch is `*.test.ts` only; verified with the existing Language suite: `Pattern: ... - 0 matches`). The file belongs to the components project.
+  2. With the project flag corrected, the sed applies (line 93 becomes `<SheetHost deferred={chromeDeferred} key={localeVersion} />`) and the mutated run STILL passes 2/2: the named suite renders `<SheetHost deferred={true} />` directly from `../SheetHost` and never loads `app/_layout.tsx`, so a mutation there is invisible to it. The plan's expectation ("the no-unmount test to fail with mount counts of 2") is unreachable as scripted. Counter-evidence: keying the five sheets inside `components/sheets/SheetHost.tsx` instead (`const version = useAtomValue(...)` + `key={version}` on the first screen, applied and reverted in a scratch run) fails exactly that test with `Received: 2`. The test guards the invariant; the plan's sed points at a file outside the suite's module graph.
+- Per the executor contract (a break that passes where the plan says it fails is a STOP), nothing committed. Work saved to `$HOME/athan-gitree/sessions/39/step5b-unfinished.patch` (226 lines, includes both new files via intent-to-add) and `step5b-unfinished-status.txt`. Tree restored to clean; branch `feat/39-05b-sheet-host` deleted (no commits).
+- The one-line repair a replan needs: step 05b's break sed moves from `app/_layout.tsx` to `components/sheets/SheetHost.tsx`, keying the five screens (or the fragment) by the subscribed version inside the host, with the jest project flag `components`. Everything else in the step executed exactly as written and is in the saved patch.
+
 session: ses_ed68ed1ebffeum3GKU1fk2P6zu (steps 1 to 3 and the step 4 stop)
 session: ses_ed66ae6c9ffe9YyDq9SegY4zcs (steps 4 to 6)
 
