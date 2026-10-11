@@ -164,6 +164,37 @@ Steps land here as they execute. Nothing has executed.
 - [x] Version 2.0.31 set in all three files
 - [x] Commit `7483d955` and `--no-ff` merge `44d35867` landed
 
+## Step 07: widget props v7 carry structured date parts
+
+- Branch `feat/39-07-widget-v7` off `uat` (`44d35867`). All four step anchors (`widget-versions`, `widget-android-footer`, `widget-ios-footer`, `widget-date-label-v2`) counted 1 before work began.
+- Red (all three suites, recorded): the contract suite's new `widget props v7 footers` describe failed `Expected: 7 / Received: 6`, `Expected: 3 / Received: 2` and `footer` `Received: undefined` (3 failed / 11 passed); the renderer suite's two verbatim tests failed with the parsed bytes rendering instead (`"Sunday"`, `"Saturday"`; 2 failed / 57 passed); the simulation suite's two virtual weeks failed the new footer checks (2 failed). The v6 tolerance tests passed at red exactly as the plan prescribes.
+- Change: `shared/time.ts` gained `footerFor(date, hijriDate)` (Gregorian: the short weekday key alone; Hijri: the month name's first three code points plus the day, falling to the Gregorian footer on an Intl failure exactly as `formatHijriDateLocalized` does); `shared/widgetTypes.ts` moved `WIDGET_PROPS_VERSION` 6 to 7 and `ANDROID_SNAPSHOT_VERSION` 2 to 3 with docblock lines, and `PrayerWidgetProps`/`AndroidWidgetDay` each gained optional `footer?: string` beside `dateLabel` with the optionality rule documented; `shared/widgetTimeline.ts` writes `footer` at all three dateLabel sites (iOS entries, the stale entry, the Android snapshot days), always through `TimeUtils.footerFor`; `widgets/PrayerWidget.tsx` prefers the footer prop on both platforms (`nextDayFooter ?? AFooter(nextDayLabel)` and the `typeof entry.footer === 'string'` branch) with a one-line v6-tolerance comment on each surviving parse.
+- Extras beyond the step's file list, all forced by the green run and recorded for the audit: `shared/__tests__/time.test.ts` gained a `footerFor` describe (weekday bytes, `Rab 30`, and the throws-on-empty Hijri case that exercises the catch, the 100% coverage law); `shared/__tests__/widgetSimulation.test.ts` re-golded its twelve REAL_YEAR_TIMELINES hashes (the golden table's own comment prescribes re-golding on a deliberate design change; the footer field is the only delta, verified by the contract suite's parse-parity oracle); two pre-existing Android renderer parse tests ('renders an empty footer when the day label is empty', 'shortens a two-token Hijri-style footer to the month prefix') strip the footer from their builder-made days so they still exercise the v6 parse; `shared/__tests__/widgetSnapshot.test.ts` and `stores/__tests__/widgetAndroid.test.ts` moved their version pins 2 to 3; `shared/__tests__/widgetTimeline.test.ts`'s stale-entry deep-equal gained `footer: footerFor('2026-06-16', false)`.
+- Green: contract 14 passed, renderer 59 passed, simulation 64 passed, time suite green; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0; full `yarn validate` 203 suites, 5404 passed, 5404 total, coverage 100% x4, exit 0.
+- Break: the plan's literal sed text does not exist (the keys ride the module tuples), so the nearest exact-text equivalent ran (verified unique, count 1): `s/return t(GREGORIAN_WEEKDAY_KEYS\[isoWeekday - 1\]);/return 'XX';/` inside `footerFor` corrupted the Gregorian composition; the contract suite failed the two v7-population blocks; restored, all pass; `ALL AS EXPECTED: 1`. Tree listed only this step's files after.
+- Version 2.0.32 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added; lock held through the merge, released after).
+- Commit: `ed8ce964` (2.0.32). Hook `Tests: 5404 passed, 5404 total`, coverage 100% on statements (5142), branches (2210), functions (1071), lines (4602).
+- Review: cold read of `git show ed8ce964` against the checklist - the v6 guards (written at red with absent-footer fixtures) passed without edits; `footerFor` is the only composer and no widget composes its own footer (the surviving parses serve old entries only); the version constants moved exactly 6 to 7 and 2 to 3. No findings beyond the recorded extras.
+- Merge: `b3a63ed8` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 7`.
+
+## Step 07 checklist
+
+- [x] Red: the contract suite failed on no v7/no field; the renderer verbatim tests failed on the parsed bytes; the tolerance tests passed at red
+- [x] Contracts 1-3 built; footers composed by `footerFor` alone; both parses survive with v6-tolerance comments
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5404 passed, 100% x4)
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.32 set in all three files
+- [x] Commit `ed8ce964` and `--no-ff` merge `b3a63ed8` landed
+
+## Step 08: the widget neutral card reads the device locale - EXECUTION STOPPED BEFORE WORK
+
+- All seven step anchors counted 1 on `uat` (`b3a63ed8`, python count); the runtime-patch side is unambiguous (iOS `getContext()` after the `context.evaluateScript(script)` exception check; Android beside the `__expoWidgetLayout` install at `WidgetsHermesRuntime.cpp:144`). Nothing was built; the branch was deleted with no commits; the version lock was never taken.
+- The stop is a literal-mapping defect in contract 3 against the pinned table. `catalogs/widget-statics.json` (pinned verbatim by contract 2) carries seven fields whose en rows are exactly the LOCK widget's and the home NEUTRAL's bytes: `subtitle` 'Prayer times for London', `inline` 'Athan — prayer times', `rectTitle` 'ATHAN', `rectSubtitle` 'Open to load times', `staleTitle` 'Out of date', `staleBody` 'Open app to refresh', `staleInline` 'Athan — open to refresh times'. The home widget sites contract 3 names have NO fields with equal en bytes:
+  - the iOS stale card's `Open Athan to refresh` (medium) and `Open Athan` / `to refresh` (small) lines;
+  - the catch fallback's `Open the app to refresh` (`widgets/PrayerWidget.tsx:782`).
+  Every available substitution (`staleBody` 'Open app to refresh' is the nearest) changes the English bytes of a user-visible card, against the plan's own invariant ("an English-locale device renders byte-identical output to 2.0.16") and the repo's visuals rule; leaving the lines as literals contravenes contract 3's "replacing their English literals" and would surface again at step 10's zero census. The lock widget and the home neutral/title sites map exactly; only these four home strings are orphaned.
+- The one ruling a replan needs, one of: (a) extend `catalogs/widget-statics.json` with the three refresh fields (and the catch line's disposition), drafted mechanically from the step-02 catalogs' `widget.refresh` / `widget.refreshLead` / `widget.refreshTail` values which already exist in all six locales; (b) rule those home lines English-stay (and allow-list them at step 10's census); (c) the owner accepts the en byte change. (a) is the only option that keeps both the invariant and contract 3's wording.
+
 session: ses_ed68ed1ebffeum3GKU1fk2P6zu (steps 1 to 3 and the step 4 stop)
 session: ses_ed66ae6c9ffe9YyDq9SegY4zcs (steps 4 to 6)
 
@@ -171,4 +202,5 @@ session: ses_ed66ae6c9ffe9YyDq9SegY4zcs (steps 4 to 6)
 - Commit: `098ec7cd` (2.0.28), merged into `uat` with `--no-ff` as `d36923cc`. The completing session ended before these lines: the hook log died with its temp folder, and the checklist's own measured line stands - `yarn validate` 201 suites, 5391 passed, 5391 total, coverage 100% x4, `yarn test:tz` green in four zones. Branch deleted; row read `IN PROGRESS, step 6`. The lead verified the landing from the repository and appended this entry.
 
 session: ses_ed66ae6c9ffe9YyDq9SegY4zcs
+session: ses_ed5ac8bd1ffeqp4ybB25dDVnL1
 session: ses_ed5ac8bd1ffeqp4ybB25dDVnL1
