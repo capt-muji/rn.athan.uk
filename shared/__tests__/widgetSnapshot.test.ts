@@ -9,7 +9,11 @@
  * present), plus the unreadable-row and empty-sequence cases.
  */
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 
 import { addDays } from 'date-fns';
 

@@ -48,6 +48,15 @@ export const getItem = (key: string) => {
 };
 
 /**
+ * Gets one stored value exactly as written, without JSON parsing: the string
+ * atoms (atomWithStorageString) persist bare values, which getItem cannot read
+ * back, so their readers need the raw form to tell a bare value from a quoted one.
+ * @param key Storage key
+ * @returns The stored string, or undefined when the key holds nothing
+ */
+export const getRawItem = (key: string): string | undefined => database.getString(key);
+
+/**
  * Sets a JSON-stringified item in storage
  * @param key Storage key
  * @param value Value to store (will be JSON stringified)

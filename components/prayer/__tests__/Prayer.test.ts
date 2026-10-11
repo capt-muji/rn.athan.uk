@@ -48,7 +48,11 @@ jest.mock('expo-haptics', () => ({ impactAsync: jest.fn(), ImpactFeedbackStyle: 
 jest.mock('@/components/prayer/Alert', () => ({ __esModule: true, default: 'Alert' }));
 jest.mock('@/components/prayer/Time', () => ({ __esModule: true, default: 'Time' }));
 jest.mock('@/hooks/useAnimation', () => ({ useDerivedColor: () => ({}), useDerivedOpacity: () => ({}) }));
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn(), getItem: () => null }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 jest.mock('@/stores/overlay', () => ({ closeOverlay: jest.fn(), openOverlay: jest.fn() }));
 
 jest.mock('@/shared/time', () => ({

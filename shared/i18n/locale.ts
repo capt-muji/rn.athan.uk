@@ -77,8 +77,23 @@ export const resolveInitialLocale = (
  * The nullable preference D33 rules: null means no choice yet, so the device
  * locale decides. Read here rather than through an atom because resolution
  * runs at module-eval-adjacent times where MMKV's synchronous read is safe.
+ *
+ * The preference atom stores the BARE locale id (atomWithStorageString), while
+ * older eyes on the same key wrote JSON-quoted strings, so both forms read: a
+ * bare shipped-locale id returns as itself, a quoted string parses as the
+ * stored choice it always was, and anything else - including bytes JSON.parse
+ * would throw on - reads as no choice rather than taking the tree down at the
+ * first t() call (the 3T cold-start blank, refresh 6).
  */
 export const readStoredLanguagePreference = (): string | null => {
-  const stored = Database.getItem('preference_language');
-  return stored === '' || stored === null ? null : stored;
+  const raw = Database.getRawItem('preference_language');
+  if (raw === undefined) return null;
+  if ((LOCALE_IDS as readonly string[]).includes(raw)) return raw;
+
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    return typeof parsed === 'string' && parsed !== '' ? parsed : null;
+  } catch {
+    return null;
+  }
 };

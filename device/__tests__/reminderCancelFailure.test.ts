@@ -17,6 +17,7 @@ const mockGetReminders = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   getItem: () => null,
+  getRawItem: () => undefined,
   getAllScheduledRemindersForPrayer: (...args: unknown[]) => mockGetReminders(...args),
 }));
 
