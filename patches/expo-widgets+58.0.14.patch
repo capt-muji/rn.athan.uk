@@ -1,3 +1,45 @@
+diff --git a/node_modules/expo-widgets/android/src/main/cpp/WidgetsHermesRuntime.cpp b/node_modules/expo-widgets/android/src/main/cpp/WidgetsHermesRuntime.cpp
+index 697b6ac..2eba68f 100644
+--- a/node_modules/expo-widgets/android/src/main/cpp/WidgetsHermesRuntime.cpp
++++ b/node_modules/expo-widgets/android/src/main/cpp/WidgetsHermesRuntime.cpp
+@@ -75,7 +75,8 @@ namespace expo::widgets {
+     jni::local_ref<react::ReadableNativeMap::jhybridobject> nativeRender(
+       const jni::alias_ref<jstring> &layout,
+       const jni::alias_ref<react::ReadableNativeMap::javaobject> &props,
+-      const jni::alias_ref<react::ReadableNativeMap::javaobject> &environment
++      const jni::alias_ref<react::ReadableNativeMap::javaobject> &environment,
++      const jni::alias_ref<jstring> &locale
+     ) {
+       try {
+         std::scoped_lock lock(mutex);
+@@ -83,7 +84,8 @@ namespace expo::widgets {
+           "__expoWidgetRender",
+           layout->toStdString(),
+           props,
+-          environment
++          environment,
++          locale->toStdString()
+         );
+       } catch (const jsi::JSError &error) {
+         throwRuntimeException(error.getMessage());
+@@ -136,12 +138,16 @@ namespace expo::widgets {
+       const char *functionName,
+       const std::string &layout,
+       const jni::alias_ref<react::ReadableNativeMap::javaobject> &propsMap,
+-      const jni::alias_ref<react::ReadableNativeMap::javaobject> &environmentMap
++      const jni::alias_ref<react::ReadableNativeMap::javaobject> &environmentMap,
++      const std::string &locale = ""
+     ) {
+       auto &rt = *runtime;
+       ensureLayoutFunction(layout);
+ 
+       rt.global().setProperty(rt, "__expoWidgetLayout", jsi::Value(rt, *layoutCache.at(layout)));
++      if (!locale.empty()) {
++        rt.global().setProperty(rt, "__expoWidgetDeviceLocale", jsi::String::createFromUtf8(rt, locale));
++      }
+ 
+       auto props = readableMapToValue(rt, propsMap);
+       auto environment = readableMapToValue(rt, environmentMap);
 diff --git a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
 index 0cbd5fb..04fc665 100644
 --- a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
@@ -49,3 +91,72 @@ index 0cbd5fb..04fc665 100644
    val target: String? = null
  ) : ComposeProps
  
+diff --git a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/WidgetsJSRuntime.kt b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/WidgetsJSRuntime.kt
+index 1e3ac96..2033a4d 100644
+--- a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/WidgetsJSRuntime.kt
++++ b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/WidgetsJSRuntime.kt
+@@ -1,6 +1,7 @@
+ package expo.modules.widgets
+ 
+ import android.content.Context
++import android.os.LocaleList
+ import com.facebook.react.bridge.Arguments
+ import com.facebook.react.bridge.ReadableMap
+ import expo.modules.widgets.jni.WidgetsHermesRuntime
+@@ -18,7 +19,8 @@ internal object WidgetsJSRuntime {
+     return getRuntime(context).render(
+       layout,
+       Arguments.makeNativeMap(props),
+-      Arguments.makeNativeMap(environment)
++      Arguments.makeNativeMap(environment),
++      LocaleList.getDefault().get(0).language
+     )
+   }
+ 
+diff --git a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/jni/WidgetsHermesRuntime.kt b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/jni/WidgetsHermesRuntime.kt
+index 7d37111..bc06d1d 100644
+--- a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/jni/WidgetsHermesRuntime.kt
++++ b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/jni/WidgetsHermesRuntime.kt
+@@ -14,8 +14,13 @@ internal class WidgetsHermesRuntime : Closeable {
+     nativeEvaluateBundle(script, "ExpoWidgets.bundle")
+   }
+ 
+-  fun render(layout: String, props: ReadableNativeMap?, environment: ReadableNativeMap): ReadableNativeMap {
+-    return nativeRender(layout, props, environment)
++  fun render(
++    layout: String,
++    props: ReadableNativeMap?,
++    environment: ReadableNativeMap,
++    locale: String
++  ): ReadableNativeMap {
++    return nativeRender(layout, props, environment, locale)
+   }
+ 
+   fun handlePress(layout: String, props: ReadableNativeMap?, environment: ReadableNativeMap): ReadableNativeMap? {
+@@ -27,7 +32,12 @@ internal class WidgetsHermesRuntime : Closeable {
+   }
+ 
+   private external fun nativeEvaluateBundle(script: String, sourceUrl: String)
+-  private external fun nativeRender(layout: String, props: ReadableNativeMap?, environment: ReadableNativeMap): ReadableNativeMap
++  private external fun nativeRender(
++    layout: String,
++    props: ReadableNativeMap?,
++    environment: ReadableNativeMap,
++    locale: String
++  ): ReadableNativeMap
+   private external fun nativeHandlePress(layout: String, props: ReadableNativeMap?, environment: ReadableNativeMap): ReadableNativeMap?
+ 
+   companion object {
+diff --git a/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift b/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift
+index 0df3263..0f31075 100644
+--- a/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift
++++ b/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift
+@@ -83,6 +83,8 @@ private final class WidgetsJSRuntime {
+       return nil
+     }
+ 
++    context.setObject(Locale.current.language.languageCode ?? "en", forKey: "__expoWidgetDeviceLocale")
++
+     self.context = context
+     return context
+   }

@@ -33,12 +33,16 @@ describe('the open-the-app patch', () => {
     expect(converter).toContain('actionStartActivity(intent)');
   });
 
-  it('patches one file, under android/src', () => {
+  it('patches exactly the known files, all inside the package', () => {
     const patch = read(`patches/expo-widgets+${installedVersion()}.patch`);
     const headers = patch.split('\n').filter((line) => line.startsWith('diff --git'));
 
-    expect(headers).toHaveLength(1);
-    expect(headers[0]).toContain('node_modules/expo-widgets/android/src/');
+    // The openApp converter, plus the device-locale runtime patch's four
+    // files (iOS JSContext, Android Hermes runtime, its Kotlin plumb)
+    expect(headers).toHaveLength(5);
+    for (const header of headers) {
+      expect(header).toContain('node_modules/expo-widgets/');
+    }
     expect(patch).not.toContain('/Users/');
   });
 
