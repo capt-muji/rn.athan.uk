@@ -82,6 +82,61 @@ describe('native strings from committed config', () => {
     expect(infoPlist.CFBundleDisplayName).toBe('Athan');
   });
 
+  it('derives a default-locale twin for every translated android key, byte-identical to the en table', () => {
+    const { defaultLocaleStringEntries, buildDefaultLocaleStringsXml } = require(
+      join(ROOT, 'plugins', 'androidLocaleConfig.js')
+    ) as {
+      defaultLocaleStringEntries: (projectRoot: string, config: Record<string, unknown>) => Array<[string, string]>;
+      buildDefaultLocaleStringsXml: (entries: ReadonlyArray<[string, string]>) => string;
+    };
+
+    const entries = defaultLocaleStringEntries(ROOT, app);
+    const defaults = new Map(entries);
+
+    // The permission strings' en bytes come from the committed infoPlist, the table's own source
+    const infoPlist = (app.ios as { infoPlist: Record<string, string> }).infoPlist;
+    expect(infoPlist.NSLocationWhenInUseUsageDescription).toBe(NATIVE.en.NSLocationWhenInUseUsageDescription);
+    expect(defaults.get('NSLocationWhenInUseUsageDescription')).toBe(NATIVE.en.NSLocationWhenInUseUsageDescription);
+    expect(defaults.get('NSUserNotificationsUsageDescription')).toBe(NATIVE.en.NSUserNotificationsUsageDescription);
+
+    // The android-null kinds are the iOS-only gallery entries: exactly their keys gain twins
+    const widgets = widgetKinds() as Array<{
+      name: string;
+      displayName: string;
+      description: string;
+      android?: unknown;
+    }>;
+    const iosOnly = widgets.filter((widget) => !widget.android);
+    expect(iosOnly).toHaveLength(6);
+    for (const widget of iosOnly) {
+      expect(defaults.get(`${resourceName(widget.name)}_display_name`)).toBe(NATIVE.en.gallery[widget.displayName]);
+      expect(defaults.get(`${resourceName(widget.name)}_description`)).toBe(NATIVE.en.gallery[widget.description]);
+    }
+    expect(defaults.size).toBe(14);
+
+    // No translated key may lack either a default twin or an android-kind owner in values/
+    const locales = app.locales as Record<string, { android: Record<string, string> }>;
+    const translatedKeys = new Set(Object.values(locales).flatMap((entry) => Object.keys(entry.android)));
+    translatedKeys.add('NSLocationWhenInUseUsageDescription');
+    translatedKeys.add('NSUserNotificationsUsageDescription');
+    const androidOwned = new Set(
+      widgets
+        .filter((widget) => widget.android)
+        .flatMap((widget) => [`${resourceName(widget.name)}_display_name`, `${resourceName(widget.name)}_description`])
+    );
+    for (const key of translatedKeys) {
+      expect(defaults.has(key) || androidOwned.has(key)).toBe(true);
+    }
+
+    // The written resource matches the stock locale writer's quoted-value shape
+    const xml = buildDefaultLocaleStringsXml(entries);
+    expect(xml).toContain('<resources>');
+    expect(xml.match(/<string /g)).toHaveLength(14);
+    expect(xml).toContain(
+      `<string name="NSUserNotificationsUsageDescription">"${NATIVE.en.NSUserNotificationsUsageDescription}"</string>`
+    );
+  });
+
   it('builds the Android locales_config with the six locales', () => {
     const pluginPath = join(ROOT, 'plugins', 'androidLocaleConfig.js');
     expect(existsSync(pluginPath)).toBe(true);

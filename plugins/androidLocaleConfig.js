@@ -17,6 +17,46 @@ const buildLocalesConfigXml = (locales) => {
   );
 };
 
+/** snake_case of a widget kind name, the resource-name derivation (digits split off) */
+const widgetResourceName = (kind) =>
+  kind
+    .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1_$2')
+    .replace(/([a-z])([0-9])/g, '$1_$2')
+    .toLowerCase();
+
+/**
+ * The default-locale twins of the translated strings: the two permission strings and the
+ * two gallery keys of every iOS-only widget kind. A translated key with no counterpart in
+ * values/ fails lintVitalRelease (ExtraTranslation), which gates every release build, and
+ * the android resolution drops config.ios, so the en permission bytes are read from the
+ * committed app.json. Android kinds are skipped: expo-widgets already writes their defaults.
+ */
+const defaultLocaleStringEntries = (projectRoot, config) => {
+  // readFileSync, not require: the mod compiler evaluates this file in a sandbox whose
+  // require does not resolve dynamic absolute paths the way plain node does
+  const infoPlist = JSON.parse(fs.readFileSync(path.join(projectRoot, 'app.json'), 'utf8')).expo.ios.infoPlist;
+  const widgetsEntry = (config.plugins ?? []).find((plugin) => Array.isArray(plugin) && plugin[0] === 'expo-widgets');
+  const widgets = widgetsEntry ? widgetsEntry[1].widgets : [];
+  const entries = [
+    ['NSLocationWhenInUseUsageDescription', infoPlist.NSLocationWhenInUseUsageDescription],
+    ['NSUserNotificationsUsageDescription', infoPlist.NSUserNotificationsUsageDescription],
+  ];
+  for (const widget of widgets) {
+    if (widget.android) continue;
+    entries.push([`${widgetResourceName(widget.name)}_display_name`, widget.displayName]);
+    entries.push([`${widgetResourceName(widget.name)}_description`, widget.description]);
+  }
+  return entries;
+};
+
+/** Same quoted-value shape the stock Locales writer emits, so the folder reads uniformly */
+const buildDefaultLocaleStringsXml = (entries) =>
+  '<?xml version="1.0" encoding="utf-8"?>\n' +
+  '<resources>\n' +
+  entries.map(([name, value]) => `  <string name="${name}">"${value}"</string>`).join('\n') +
+  '\n</resources>\n';
+
 const withAndroidLocaleConfig = (config) => {
   const { withAndroidManifest, withDangerousMod } = require('expo/config-plugins');
 
@@ -32,10 +72,15 @@ const withAndroidLocaleConfig = (config) => {
     'android',
     async (modConfig) => {
       const projectRoot = modConfig.modRequest.projectRoot;
+      const resDir = path.join(projectRoot, 'android', 'app', 'src', 'main', 'res');
       const locales = ['en', ...Object.keys(config.locales ?? {})];
-      const xmlDir = path.join(projectRoot, 'android', 'app', 'src', 'main', 'res', 'xml');
-      fs.mkdirSync(xmlDir, { recursive: true });
-      fs.writeFileSync(path.join(xmlDir, 'locales_config.xml'), buildLocalesConfigXml(locales));
+      fs.mkdirSync(path.join(resDir, 'xml'), { recursive: true });
+      fs.writeFileSync(path.join(resDir, 'xml', 'locales_config.xml'), buildLocalesConfigXml(locales));
+      // A file of our own, not a rewrite of expo-widgets' strings.xml: mods run
+      // last-registered-first, so ours executes before theirs and an append would be lost
+      const defaults = defaultLocaleStringEntries(projectRoot, config);
+      fs.mkdirSync(path.join(resDir, 'values'), { recursive: true });
+      fs.writeFileSync(path.join(resDir, 'values', 'locales_defaults.xml'), buildDefaultLocaleStringsXml(defaults));
       return modConfig;
     },
   ]);
@@ -43,3 +88,5 @@ const withAndroidLocaleConfig = (config) => {
 
 module.exports = withAndroidLocaleConfig;
 module.exports.buildLocalesConfigXml = buildLocalesConfigXml;
+module.exports.defaultLocaleStringEntries = defaultLocaleStringEntries;
+module.exports.buildDefaultLocaleStringsXml = buildDefaultLocaleStringsXml;
