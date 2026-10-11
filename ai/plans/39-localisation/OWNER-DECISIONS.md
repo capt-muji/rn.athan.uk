@@ -543,7 +543,75 @@ Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (on
 while localisation is a sweep over the whole finished surface, so every feature built after a
 translation sweep would otherwise have to be translated twice.
 
-## D36. Step 15's require timing runs on the 3T via the e2e monitor release build (2026-10-10)
+## D39. Row 55 runs before row 39 (2026-10-11)
+
+Row 55 (a reschedule inside 30s of an armed reminder cancels it) fixes a defect in the same
+scheduling driver a language switch triggers. Taken in the row 55 planning session: row 55 first,
+row 39 plans against the clean surface afterwards. Recorded in the queue rows.
+
+## D40. Row 39 is one job, one plan (2026-10-11)
+
+Stage two ships as one plan of roughly 16 to 18 steps, executed and audited as one job, like
+row 38's 15.
+
+## D41. The confidence build precedes any public 2.0.0 sizing (2026-10-11)
+
+Row 39 lands the six-language set on `uat`; the owner verifies end to end; a later row sizes and
+ships the public 2.0.0 set. Row 39's audited output does not go to the stores directly.
+
+## D42. Planning drafts the five catalogs; the owner verifies (2026-10-11)
+
+The planning session drafts each catalog (about 158 UI keys, 31 month and weekday names, 11 prayer
+names, 5 explanations, picker names, duration abbreviations) from the sourced authorities through
+the R2 mechanical gates: placeholder parity, glossary exact-match, length budgets, bidi scan. The
+owner reviews every string in the confidence build before anything public. Null prayer names fill
+by transliteration per D24 (sourced coverage: ar 11/11, ms 10/11, so 8/11, hi 9/11, th 7/11).
+
+## D43. Native strings localise now (2026-10-11)
+
+The app name, the two permission-purpose strings and the 28 widget gallery strings get per-locale
+native resources for the six languages in row 39, following the device language. The app name
+stays the brand "Athan" in every language unless a locale demands otherwise.
+
+## D44. The null-props widget card embeds per-locale statics (2026-10-11)
+
+Taken against the planner's keep-English recommendation. The neutral card carries a static
+six-language string table in the widget binary; the locale key is the device locale the widget
+process itself reads, because absent props carry no app language. Mechanism detail belongs to
+row 39's plan.
+
+## D45. `preference_language_last_armed` approved (2026-10-11)
+
+The D34 dirty-flag key is approved as named. D33's `preference_language_commit_pending` marker is
+dissolved by D34 and never gets created.
+
+## D46. `expo-localization` install and `app.json` edits approved (2026-10-11)
+
+Install expo-localization riding the `next` tag per the standing upgrade policy, the exact version
+resolved by the plan's own command. `app.json` gains the expo-localization plugin with
+`supportsRTL: false` and declares the six locales (iOS `CFBundleLocalizations`, Android locale
+filters).
+
+## D47. The switch keeps a progress UI over forward-only convergence (2026-10-11)
+
+The owner overrode the planner's no-progress reading of D34, in his words: the switch takes a long
+time to process, the user should wait, and wandering mid-switch risks conflicts the design is
+trying to avoid. So: the user picks a language, a progress UI blocks until the surfaces apply,
+and forward-only convergence stays underneath (a death mid-progress still converges at the next
+process start). D18's progress layer survives; its rollback layer does not.
+
+## D48. What's New now, the report row at public release (2026-10-11)
+
+The What's New entry announcing the language feature ships with the feature, itself translated.
+The "report a translation mistake" Settings row waits for the public-release row; it has no
+destination while the build is private.
+
+## D49. Catalog lock file yes, preview tier no (2026-10-11)
+
+A per-locale hash of the source English, checked in CI, catches a translation that went stale when
+the English changed. The preview tier earns nothing while every shipped catalog is complete.
+
+## D14. Ordering: this row runs after the qibla compass
 
 Ruled after the step-15 STOP: the production build compiles out every perf and log read the step
 named, so experiment 1 measures on the 3T with the repo's sanctioned vehicle, the e2e monitor
