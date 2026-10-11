@@ -1,0 +1,12 @@
+  // Skip if reminder time is already past or within buffer
+  const secondsUntilReminder = (reminderDateTime.getTime() - now.getTime()) / 1000;
+  if (secondsUntilReminder < REMINDER_BUFFER_SECONDS) {
+    logger.info('REMINDER: Skipping past or imminent reminder:', {
+      date,
+      prayerTime: prayer.time,
+      id,
+      intervalMinutes,
+      secondsUntilReminder,
+    });
+    return SKIPPED_DAY;
+  }

@@ -537,6 +537,13 @@ is rejected in the owner's words: "we want a clean db as much as possible... sav
 continuously saving junk, which will keep growing with future releases." The wipe stays exactly
 as it is. Nothing this feature ships adds a keep prefix.
 
+## D50. The qibla place line shows the name as the phone gives it (2026-10-11)
+
+Re-asked in plain words after the first framing failed to land, and answered: the town name stays
+exactly as the platform geocoder returns it, in every language, whatever the app language. This
+is the named exception to D17 the record promised to ask about. Hiding the line on a language
+mismatch is rejected.
+
 ## D14. Ordering: this row runs after the qibla compass
 
 Taken 2026-09-28, recorded in `ai/plans/README.md` row 37. Qibla is additive (one screen, one sensor)
@@ -611,7 +618,7 @@ destination while the build is private.
 A per-locale hash of the source English, checked in CI, catches a translation that went stale when
 the English changed. The preview tier earns nothing while every shipped catalog is complete.
 
-## D14. Ordering: this row runs after the qibla compass
+## D36. Step 15's require timing runs on the 3T via the e2e monitor release build (2026-10-10)
 
 Ruled after the step-15 STOP: the production build compiles out every perf and log read the step
 named, so experiment 1 measures on the 3T with the repo's sanctioned vehicle, the e2e monitor
