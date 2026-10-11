@@ -288,8 +288,6 @@ everything else unchanged:
 - Ending: automatic time on, the 3T left on the production build.
 - Evidence under `$HOME/athan-gitree/sessions/55/`, new files prefixed `prod-` where a mock
   namesake exists.
-
-
 ### Step 02 re-run — STOPPED at the inside-window dump with the network cut verified (2026-10-11, executor session)
 
 Branch `docs/device-55-proof` off `09c13e46` (no commits; deleted on stop). Amendment followed
@@ -384,5 +382,72 @@ proof needs (b) a timetable that does not re-seed per download (a pinned-date mo
 preview-tier build against a controlled endpoint), or (c) the Jest proof accepted for R5.1's
 device half, or a new ruling; the owner is away until morning.
 
+### Step 02 — DONE on the owner-ruled production vehicle (2026-10-11, executor session)
 
+Branch `docs/device-55-proof` off `uat` `31b307af` (2.0.11). Build
+`zsh $HOME/athan-gitree/bin/build-prod.zsh uat $HOME/athan-gitree/sessions/55/prod.apk`:
+`BUILD-PROD OK` (312s, arm64-v8a, debug certificate, `EXPO_PUBLIC_ENV=prod`). Badging gate before
+install: `package: name='com.mugtaba.athan' versionCode='1000000' versionName='2.0.11'`. Installed
+`-r` over the mock build (owner consent recorded in the ruling above), data kept; first launch
+re-armed nothing: the owner's stored bells are all Off (every home row carries a slashed bell;
+baseline transcribed from pixels).
 
+Baseline transcription (ruling requirement, read from the sheet before any change): Fajr at-time
+bell Off (pill on Off), Reminder 1 off and dimmed, interval 5 min, dimmed mode pill on Silent
+(low-contrast read), Reminder 2 off. Restore contract: Off with both reminders off.
+
+Arming (one command, three taps, verified on a frozen frame before commit): at-time Silent, Reminder
+1 on, mode Sound, interval 5 min. BACK committed at 04:16; the post-commit frame shows Fajr's row
+bell ringing, all other rows slashed. Tooling note: the agent-device daemon failed its ownership
+check twice ("Daemon registration ownership could not be verified"), so the sheet was driven the
+repo's e2e-sanctioned way instead, pixel-verified coordinates with a frozen frame after every state
+change. An earlier arming attempt had tapped a stale screen (the sheet closed itself during a
+minutes-long image read; one tap opened the Asr sheet unchanged) — closed with BACK, no state
+change, redone with taps batched into one command. A row-center tap does not open the sheet; the
+row's bell glyph does.
+
+Before-dump `prod-alarms-before.md` (1315 lines, unfiltered, 04:18:11, app foreground): 64 pending
+app `RTC_WAKEUP` entries, tag `*walarm*:expo.modules.notifications.NOTIFICATION_EVENT` — 32
+reminder+at-time pairs each exactly 300000 ms apart on Fajr rows 2026-10-11 through 2026-11-11
+(the 64-request budget filled), plus the tombstone (`ACTION_FORCE_STOP_RESCHEDULE`, epoch
+2106885990618, 2036-10-06, after T). No other pending app alarm (the only non-NOTIFICATION_EVENT
+app alarm is the tombstone; no widget receiver pending while foreground). Today's fajr sat 81
+minutes ahead, so the app armed today's row too and the first pending pair is today's: target
+T = 1791693540000 = 2026-10-11 05:39:00.000 BST, exactly 300000 ms before the 05:44:00.000
+at-time. Expected-fire list (`prod-expected-fire.md`, written before any clock change): empty of
+firing entries — the target is the earliest pending app entry; tombstone named present-but-after.
+
+Drive (`prod-clock-drive.md`): `auto_time 0` (reads 0);
+`service call alarm 2 i64 1791693520000` answered `Result: Parcel(00000000 00000000   '........')`
+(the expected prefix); `date` read `Sun Oct 11 05:38:40 BST 2026`, exactly T minus 20 s. HOME,
+`am kill`, `monkey` cold launch; inside-window dump `prod-alarms-inside-window.md` captured
+05:38:46 (T minus 14 s): the target still pending and byte-identical — same alarm token `d64a843`,
+same epoch, `when=2026-10-11 05:39:00.000`, still the next alarm clock and next wake from idle.
+No cancel, no re-arm: the cold-launch pass ran inside the final 30 seconds and kept the armed
+reminder (R1.1's device mirror).
+
+Fire: the six logcat polls (`prod-fire.md`, 10 s apart from 05:39:34 device) matched no lines —
+expected on this vehicle, prod compiles the logger out and the e2e README rules "an empty logcat
+proves nothing either way". The structural evidence (`prod-notification-record.md`,
+`dumpsys notification --noredact`): the app's posted notification `tag=athan-notification` on
+channel `reminder_fajr_5_v3` (`Fajr in 5m Reminder`, sound `raw/reminder_fajr_5`, vibration,
+importance 4), `android.title=String (Fajr in 5m)` — the armed content, the `... in 5m` shape with
+the prayer's name — `isNoisy=true`, `airtimeCount=1` (posted once), and
+`mSoundNotificationKey` names it as the notification the system is sounding. Post time from the
+record's `posttimeElapsedMs=167389155` against the after-dump's
+`nowRTC=1791693682605 nowELAPSED=167531552`: 1791693540208 = T + 208 ms. `prod-alarms-after.md`
+(05:41:22) no longer lists the target epoch in pending: consumed by firing at its moment.
+
+Restore (`prod-alarms-restored.md`): `auto_time 1`, read back `1`, clock resynced to true time
+(04:24:12, matching the host). Bell baseline restored through the sheet (at-time Off, Reminder 1
+off) and committed; the final frame shows Fajr's row bell slashed again, and the final dump holds
+exactly one pending app alarm, the tombstone. One nuance: the dimmed Reminder 1 mode pill now
+reads Sound rather than Silent — an inert preference inside a disabled control while the reminder
+is off (nothing armed either way); recorded rather than poked. The fired notification itself stays
+in the shade for the owner to see. The 3T is left on the production build, automatic time on,
+per the ruling.
+
+Evidence under `$HOME/athan-gitree/sessions/55/`: `prod-alarms-before.md`,
+`prod-alarms-inside-window.md`, `prod-alarms-after.md`, `prod-alarms-restored.md`,
+`prod-expected-fire.md`, `prod-clock-drive.md`, `prod-fire.md`, `prod-notification-record.md`,
+`prod.apk`, `logs/prod.{prebuild,gradle}.log`.
