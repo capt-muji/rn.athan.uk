@@ -1,0 +1,45 @@
+appId: com.mugtaba.athan
+name: language-switch-x1
+tags:
+  - baseline
+---
+# Language-switch round trip (OnePlus 3T pixels).
+# Settings button (540,1830) per e2e/device-atlas-oneplus3t.md; every row and
+# label is reached by its text. The applying line already reads the picked
+# locale, so the Arabic wait is on 'جارٍ التطبيق…'.
+# extendedWaitUntil polls until the progress line is gone (60 s ceiling); it
+# never sleeps the window blind.
+- launchApp
+- extendedWaitUntil:
+    visible: 'London, UK'
+    timeout: 15000
+- tapOn:
+    point: '540, 1830'
+- waitForAnimationToEnd:
+    timeout: 2500
+- tapOn: 'Language'
+- waitForAnimationToEnd:
+    timeout: 2500
+- assertVisible: 'Language'
+- assertVisible: 'Bahasa Melayu'
+- assertVisible: 'English'
+- assertVisible: 'Soomaali'
+- assertVisible: 'العربية'
+- assertVisible: 'हिन्दी'
+- assertVisible: 'ไทย'
+- tapOn: 'العربية'
+- extendedWaitUntil:
+    notVisible: 'جارٍ التطبيق…'
+    timeout: 60000
+- waitForAnimationToEnd:
+    timeout: 2500
+- assertVisible: 'الفجر'
+- tapOn:
+    point: '540, 1830'
+- waitForAnimationToEnd:
+    timeout: 2500
+- tapOn: 'اللغة'
+- waitForAnimationToEnd:
+    timeout: 2500
+- tapOn: 'English'
+- assertVisible: 'Fajr'

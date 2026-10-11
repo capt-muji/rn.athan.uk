@@ -9,7 +9,8 @@ everywhere.
 ## Layout
 
 - `flows/`: Maestro flows (tag `baseline`): smoke, overlay, sheets, swipes,
-  toggles, sounds. Tap points are OnePlus 3T coordinates (1080×1920).
+  toggles, sounds, language-switch (Settings > Language > العربية, then back
+  to English). Tap points are OnePlus 3T coordinates (1080×1920).
 - `scripts/baseline-compare.sh`: run a flow while streaming `ReactNativeJS`
   perf marks. Medians diffed against `baselines/android-3t.json`.
 - `scripts/frame-audit.sh`: FPS + visual-quality audit of one animation.
