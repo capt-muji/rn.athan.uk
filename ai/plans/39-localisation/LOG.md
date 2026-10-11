@@ -92,6 +92,49 @@ Steps land here as they execute. Nothing has executed.
 - Review: cold read of `git show 92804f45` against the checklist: the row matches the athan row line for line (same styles, sizes, chevron, haptic); six rows in codepoint order with no English glosses; no cancel path and both settle paths dismiss. No findings beyond the recorded extras and the known defect above.
 - Merge: `460d0587` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 5`.
 
+## Step 06: catalog-composed dates
+
+- Branch `feat/39-06-dates` off `uat` (`460d0587`). All four step anchors counted 1 before work began.
+- Red (all four, recorded): every test in `dateLocalized.test.ts` failed `TypeError: (0 , _time.formatDateLocalized) is not a function` / `...formatHijriDateLocalized is not a function` (4 failed, 0 passed; the functions did not exist).
+- Change: `shared/time.ts` replaced the deleted `formatDateLong`/`formatHijriDateLong` pair with `formatDateLocalized` (parses exactly as the old function did, ISO weekday Monday 1 to Sunday 7, composing `` `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${day} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${year}` ``) and `formatHijriDateLocalized` (the `en-US-u-ca-islamic-umalqura` Intl call with `{ day: 'numeric', month: 'numeric', year: 'numeric', timeZone: PRAYER_TIMEZONE }` read through `formatToParts`, composing `` `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${hijriDay}, ${hijriYear}` `` - the era part is never read, so no affix in any locale and the digits stay Latin; the catch falls back to `formatDateLocalized` exactly as the old catch fell back). The three key tuples are module-private, typed `as const satisfies readonly TranslationKey[]`, so the computed lookups stay compile-checked with no casts. `components/day/shownDate.ts` and `shared/widgetTimeline.ts` route to the localized pair; the five suites that imported the deleted pair converted by rename (`time.test.ts`, `widgetSimulation.test.ts`, `widgetSnapshot.test.ts`, `widgetTimeline.test.ts`, `widgetSettingsSync.test.ts`). The unused date-fns `format` import left with the old function.
+- Green: `dateLocalized.test.ts` 4 passed (365-day en byte parity against a date-fns oracle, the ar label `الأحد, 11 أكتوبر 2026`, ten Hijri fixtures against an independent Intl long-month oracle with no ` AH` suffix, and the th label `รอบี II 30, 1448` with no Thai digits); the seven converted and neighbouring suites 276 passed; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` clean; full `yarn validate` 202 suites, 5391 passed, 5391 total, coverage 100% x4; `yarn test:tz` 5391 passed in each of the four zones.
+- Break: the sed on the Gregorian template's `}, ${day} ` bytes made `2 failed, 2 passed` (the 365-day parity test and the ar label test both catch the `Sun, 30x Mar 2026` shape); restored `4 passed, 4 total`; `ALL AS EXPECTED: 1`. Tree listed only step files after.
+- Review: `grep -rn "formatDateLong\|formatHijriDateLong"` over every source tree returns nothing; no format decision lives outside the two functions (both call sites only route); Hijri digits Latin with the era part unread. No findings.
+- Version 2.0.28 in `app.json`, `package.json`, `android/app/build.gradle` (gradle gitignored, not added).
+- Commit: `098ec7cd` (2.0.28). Hook `Tests: 5391 passed, 5391 total`, coverage 100% on statements, branches, functions, lines.
+- Merge: `d36923cc` into `uat` (`--no-ff`). Branch deleted. Row reads `IN PROGRESS, step 6`.
+
+## Step 04 checklist
+
+- [x] Red: the convergence suite and keep-alive extension failed on the absent module; the ar channel-name test failed on the template literal
+- [x] Contracts 1-5 built; no id, sound, importance or identifier byte changed; no rollback path
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5380 passed, 100% x4); `yarn test:tz` green in four zones
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.26 set in all three files
+- [x] Commit `cd3a5b18` and `--no-ff` merge `0597c09a` landed
+
+## Step 05 checklist
+
+- [x] Red: the Language suite and Settings extension failed on the absent component; the stringGuard names pin failed on the absent module
+- [x] Contracts 1-6 built; the row matches the athan row line for line; six names in codepoint order; no cancel; both settle paths dismiss
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5387 passed, 100% x4)
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.27 set in all three files
+- [x] Commit `92804f45` and `--no-ff` merge `460d0587` landed
+
+## Step 06 checklist
+
+- [x] Red: all four dateLocalized tests failed on the absent functions
+- [x] Contracts 1-2 built; the old pair deleted; every call site and the five suites converted
+- [x] Named tests pass; tsc and biome exit 0; `yarn validate` green (5391 passed, 100% x4); `yarn test:tz` green in four zones
+- [x] Break script ends `ALL AS EXPECTED: 1`; tree listed only step files after
+- [x] Version 2.0.28 set in all three files
+- [x] Commit `098ec7cd` and `--no-ff` merge `d36923cc` landed
+
+session: ses_ed68ed1ebffeum3GKU1fk2P6zu (steps 1 to 3 and the step 4 stop)
+session: ses_ed66ae6c9ffe9YyDq9SegY4zcs (steps 4 to 6)
 
 
-session: ses_ed68ed1ebffeum3GKU1fk2P6zu
+- Commit: `098ec7cd` (2.0.28), merged into `uat` with `--no-ff` as `d36923cc`. The completing session ended before these lines: the hook log died with its temp folder, and the checklist's own measured line stands - `yarn validate` 201 suites, 5391 passed, 5391 total, coverage 100% x4, `yarn test:tz` green in four zones. Branch deleted; row read `IN PROGRESS, step 6`. The lead verified the landing from the repository and appended this entry.
+
+session: ses_ed66ae6c9ffe9YyDq9SegY4zcs
