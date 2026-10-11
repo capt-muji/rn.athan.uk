@@ -302,6 +302,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
   // "Mon · Lon" from a Gregorian label, "Raj 1 · Lon" from a Hijri one —
   // the same token shortening the iOS footer performs.
+  // Stays for v6 tolerance: snapshots from before v3 carry no footer, so their label still parses.
   const AFooter = (label: string): string => {
     const datePrefix = typeof label === 'string' && label.length > 0 ? (label.split(',')[0] as string) : '';
     const dateTokens = datePrefix.split(' ');
@@ -361,6 +362,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     let next: ARow | null = null;
     let nextEpoch: number | null = null;
     let nextDayLabel = '';
+    let nextDayFooter: string | undefined;
     for (const day of input.days) {
       for (const row of day.rows) {
         const epoch = row.epochMs;
@@ -370,6 +372,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           next = row;
           nextEpoch = epoch;
           nextDayLabel = day.dateLabel;
+          nextDayFooter = day.footer;
         }
       }
     }
@@ -378,7 +381,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       return AStale(strings);
     }
 
-    const footer = AFooter(nextDayLabel);
+    const footer = nextDayFooter ?? AFooter(nextDayLabel);
     // fillMaxWidth is what makes horizontalAlignment mean anything: a Column
     // that shrink-wraps its text centres nothing and parks at its parent's
     // start, which read as the trio sitting left of its half (owner 2026-09-24).
@@ -557,16 +560,21 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // Footer: the next prayer's day marker alone. NOTE: plain string
     // separator only — the extension's JS runtime does not split on regex
     // separators (/\s+/ silently returns the whole string).
-    const datePrefix =
-      typeof entry.dateLabel === 'string' && entry.dateLabel.length > 0 ? entry.dateLabel.split(',')[0] : '';
-    const dateTokens = datePrefix.split(' ');
     let footer = '';
-    if (dateTokens.length === 1) {
-      footer = dateTokens[0];
+    if (typeof entry.footer === 'string') {
+      footer = entry.footer;
     } else {
-      const monthPrefix = dateTokens[0].slice(0, 3);
-      const dayNumber = dateTokens[dateTokens.length - 1];
-      footer = `${monthPrefix} ${dayNumber}`;
+      // Stays for v6 tolerance: entries from before v7 carry no footer, so their label still parses.
+      const datePrefix =
+        typeof entry.dateLabel === 'string' && entry.dateLabel.length > 0 ? entry.dateLabel.split(',')[0] : '';
+      const dateTokens = datePrefix.split(' ');
+      if (dateTokens.length === 1) {
+        footer = dateTokens[0];
+      } else {
+        const monthPrefix = dateTokens[0].slice(0, 3);
+        const dayNumber = dateTokens[dateTokens.length - 1];
+        footer = `${monthPrefix} ${dayNumber}`;
+      }
     }
 
     // The medium list is only renderable with a complete day snapshot:

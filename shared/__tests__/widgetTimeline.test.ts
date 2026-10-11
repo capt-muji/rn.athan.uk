@@ -15,7 +15,13 @@ import { addDays } from 'date-fns';
 import { type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { isReadable } from '@/shared/sequence';
-import { createPrayerDatetime, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
+import {
+  createPrayerDatetime,
+  footerFor,
+  formatDateLocalized,
+  formatDateShort,
+  formatHijriDateLocalized,
+} from '@/shared/time';
 import {
   type Prayer,
   type PrayerSequence,
@@ -1109,6 +1115,7 @@ describe('unreadable rows', () => {
         nextEpochMs: magribMs,
         prevEpochMs: magribMs,
         dateLabel: formatDateLocalized('2026-06-16'),
+        footer: footerFor('2026-06-16', false),
         stale: true,
       },
     });
