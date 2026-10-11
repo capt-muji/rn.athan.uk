@@ -53,6 +53,8 @@ const JS_GLOBALS = new Set([
   'Boolean',
   'Array',
   'Object',
+  // The statics resolver reads the runtime patch's locale global off it
+  'globalThis',
 ]);
 
 /**
@@ -505,6 +507,210 @@ describe('widget props v7 footers', () => {
     if (!snapshot) return;
     for (const day of snapshot.days) {
       expect(day.footer).toBe(legacyFooterParse(day.dateLabel));
+    }
+  });
+});
+
+// =============================================================================
+// 6. THE NEUTRAL AND STALE LITERAL SITES RESOLVE THROUGH THEIR LOCAL TABLE
+// =============================================================================
+
+type MarkerNode = { marker: string; props: Record<string, unknown> };
+type Element = { type: unknown; props: Record<string, unknown> };
+
+const isElement = (node: unknown): node is Element =>
+  node !== null && typeof node === 'object' && 'type' in node && 'props' in node;
+
+const renderTree = (node: unknown): unknown => {
+  if (Array.isArray(node)) return node.flatMap((child) => renderTree(child));
+  if (!isElement(node)) return node;
+
+  if (typeof node.type === 'function') {
+    const rendered = (node.type as (props: Record<string, unknown>) => unknown)(node.props);
+    return renderTree(rendered);
+  }
+
+  const props = { ...node.props };
+  if ('children' in props) props.children = renderTree(props.children);
+  return { marker: (node.type as { marker?: string }).marker ?? String(node.type), props };
+};
+
+const marker = (name: string) => {
+  const component = (props: Record<string, unknown>): MarkerNode => ({
+    marker: name,
+    props: { ...props, children: renderTree(props.children) },
+  });
+  return Object.assign(component, { marker: name });
+};
+
+const textsOf = (tree: unknown): string[] => {
+  const found: string[] = [];
+  const walk = (node: unknown): void => {
+    if (Array.isArray(node)) {
+      for (const child of node) walk(child);
+      return;
+    }
+    if (node !== null && typeof node === 'object' && 'marker' in node) {
+      const markerNode = node as MarkerNode;
+      if (markerNode.marker === 'Text') {
+        const children = markerNode.props.children;
+        const parts = Array.isArray(children) ? children : [children];
+        found.push(parts.map((part) => (part === null || typeof part !== 'object' ? String(part ?? '') : '')).join(''));
+      }
+      walk(markerNode.props.children);
+    }
+  };
+  walk(tree);
+  return found.map((text) => text.replace(/\s+/g, ' ').trim()).filter((text) => text.length > 0);
+};
+
+describe('the statics table resolves every neutral and stale site', () => {
+  const AR = {
+    subtitle: 'أوقات الصلاة في لندن',
+    inline: 'Athan - أوقات الصلاة',
+    rectTitle: 'ATHAN',
+    rectSubtitle: 'افتح لتحميل الأوقات',
+    staleTitle: 'غير محدّث',
+    staleBody: 'افتح التطبيق للتحديث',
+    staleInline: 'Athan - افتح لتحديث الأوقات',
+    refreshLine: 'افتح Athan للتحديث',
+    refreshLead: 'افتح Athan',
+    refreshTail: 'للتحديث',
+    catchBody: 'افتح التطبيق للتحديث',
+  };
+
+  type WidgetModule = Record<string, (props: unknown, environment: unknown) => unknown>;
+
+  const loadWith = (requirePath: string, platform: 'ios' | 'android'): WidgetModule => {
+    const captured: WidgetModule = {};
+    jest.resetModules();
+    jest.isolateModules(() => {
+      jest.doMock('expo-widgets', () => ({
+        createWidget: (name: string, layout: (props: unknown, environment: unknown) => unknown) => {
+          captured[name] = layout;
+          return {};
+        },
+      }));
+      jest.doMock('@expo/ui/swift-ui', () => ({
+        HStack: marker('HStack'),
+        Image: marker('Image'),
+        RoundedRectangle: marker('RoundedRectangle'),
+        Spacer: marker('Spacer'),
+        Text: marker('Text'),
+        VStack: marker('VStack'),
+        ZStack: marker('ZStack'),
+      }));
+      jest.doMock('@expo/ui/swift-ui/modifiers', () => {
+        const modifiers: Record<string, (...args: unknown[]) => { modifier: string; value: unknown }> = {};
+        for (const name of [
+          'containerBackground',
+          'containerRelativeFrame',
+          'font',
+          'foregroundStyle',
+          'frame',
+          'kerning',
+          'lineLimit',
+          'minimumScaleFactor',
+          'monospacedDigit',
+          'multilineTextAlignment',
+          'offset',
+          'padding',
+          'shadow',
+          'strokeBorder',
+          'textCase',
+          'fixedSize',
+        ]) {
+          modifiers[name] = (...args: unknown[]) => ({
+            modifier: name,
+            value: args.length === 0 ? undefined : args.length === 1 ? args[0] : args,
+          });
+        }
+        return modifiers;
+      });
+      jest.doMock('@expo/ui/jetpack-compose', () => ({
+        Box: platform === 'android' ? marker('Box') : undefined,
+        Button: platform === 'android' ? marker('Button') : undefined,
+        Column: platform === 'android' ? marker('Column') : undefined,
+        Image: platform === 'android' ? marker('Image') : undefined,
+        Row: platform === 'android' ? marker('Row') : undefined,
+        Spacer: platform === 'android' ? marker('Spacer') : undefined,
+        Text: platform === 'android' ? marker('Text') : undefined,
+      }));
+      jest.doMock('@expo/ui/jetpack-compose/modifiers', () => {
+        const modifiers: Record<string, (...args: unknown[]) => { modifier: string; value: unknown }> = {};
+        for (const name of ['fillMaxHeight', 'fillMaxSize', 'fillMaxWidth', 'height', 'padding', 'width']) {
+          modifiers[name] = (...args: unknown[]) => ({
+            modifier: name,
+            value: args.length === 0 ? undefined : args.length === 1 ? args[0] : args,
+          });
+        }
+        return modifiers;
+      });
+      require(requirePath);
+    });
+    return captured;
+  };
+
+  beforeAll(() => {
+    (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+  });
+
+  afterAll(() => {
+    delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+  });
+
+  it('renders the home neutral card under ar on both runtimes', () => {
+    const homeIos = loadWith('../../widgets/PrayerWidget', 'ios');
+    const homeAndroid = loadWith('../../widgets/PrayerWidget', 'android');
+
+    const ios = textsOf(renderTree(homeIos.PrayerWidget(null, { colorScheme: 'light', widgetFamily: 'systemSmall' })));
+    expect(ios).toEqual(['Athan', AR.subtitle]);
+    expect(ios).not.toContain('Prayer times for London');
+
+    const android = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
+    expect(android).toEqual(['Athan', AR.subtitle]);
+  });
+
+  it('renders the home stale card under ar in both families', () => {
+    const homeIos = loadWith('../../widgets/PrayerWidget', 'ios');
+    const stale = {
+      v: 7,
+      schedule: 'standard' as const,
+      theme: 'light' as const,
+      nextName: 'Asr',
+      nextTime: '15:20',
+      nextEpochMs: 1,
+      prevEpochMs: 1,
+      dateLabel: 'Sat, 17 Oct 2026',
+      stale: true,
+    };
+
+    const small = textsOf(
+      renderTree(homeIos.PrayerWidget(stale, { colorScheme: 'light', widgetFamily: 'systemSmall' }))
+    );
+    expect(small).toEqual([AR.staleTitle, AR.refreshLead, AR.refreshTail]);
+    expect(small).not.toContain('Out of date');
+
+    const medium = textsOf(
+      renderTree(homeIos.PrayerWidget(stale, { colorScheme: 'light', widgetFamily: 'systemMedium' }))
+    );
+    expect(medium).toEqual([AR.staleTitle, AR.refreshLine]);
+  });
+
+  it('renders every lock layout neutral under ar, inline and rectangular', () => {
+    const lock = loadWith('../../widgets/LockPrayerWidget', 'ios');
+
+    for (const [name, layout] of [
+      ['countdown pair', lock.PrayerLockWidget],
+      ['centred', lock.PrayerLockWidget2],
+      ['stacked', lock.PrayerLockWidget3],
+    ] as const) {
+      const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
+      expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${AR.inline}`);
+      expect(inline).not.toContain('Athan — prayer times');
+
+      const rect = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryRectangular' })));
+      expect(`${name} rect: ${rect.join('/')}`).toBe(`${name} rect: ${AR.rectTitle}/${AR.rectSubtitle}`);
     }
   });
 });
