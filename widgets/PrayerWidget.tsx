@@ -226,6 +226,95 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // 12 is the left inset the owner approved, now mirrored (owner 2026-09-24).
   const ROW_GUTTER = 12;
 
+  // The neutral, stale and catch cards follow the device locale the widget
+  // process itself reads (D44): absent props carry no app language. The
+  // prefix match accepts region tags; anything unknown renders the en row.
+  const STATIC = {
+    en: {
+      subtitle: 'Prayer times for London',
+      inline: 'Athan — prayer times',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Open to load times',
+      staleTitle: 'Out of date',
+      staleBody: 'Open app to refresh',
+      staleInline: 'Athan — open to refresh times',
+      refreshLine: 'Open Athan to refresh',
+      refreshLead: 'Open Athan',
+      refreshTail: 'to refresh',
+      catchBody: 'Open the app to refresh',
+    },
+    ar: {
+      subtitle: 'أوقات الصلاة في لندن',
+      inline: 'Athan - أوقات الصلاة',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'افتح لتحميل الأوقات',
+      staleTitle: 'غير محدّث',
+      staleBody: 'افتح التطبيق للتحديث',
+      staleInline: 'Athan - افتح لتحديث الأوقات',
+      refreshLine: 'افتح Athan للتحديث',
+      refreshLead: 'افتح Athan',
+      refreshTail: 'للتحديث',
+      catchBody: 'افتح التطبيق للتحديث',
+    },
+    ms: {
+      subtitle: 'Waktu solat untuk London',
+      inline: 'Athan - waktu solat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Buka untuk muat waktu',
+      staleTitle: 'Tidak dikemas kini',
+      staleBody: 'Buka apl untuk muat semula',
+      staleInline: 'Athan - buka untuk muat semula waktu',
+      refreshLine: 'Buka Athan untuk muat semula',
+      refreshLead: 'Buka Athan',
+      refreshTail: 'untuk muat semula',
+      catchBody: 'Buka aplikasi untuk muat semula',
+    },
+    so: {
+      subtitle: 'Waqtiyada salaadda London',
+      inline: 'Athan - waqtiyada salaadda',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Fur si aad u soo dejinto waqtiyada',
+      staleTitle: "Cusboonaysi la'aan",
+      staleBody: 'Fur aplka si aad u cusboonaysiiso',
+      staleInline: 'Athan - fur si aad u cusboonaysiiso waqtiyada',
+      refreshLine: 'Fur Athan si aad u cusboonaysiiso',
+      refreshLead: 'Fur Athan',
+      refreshTail: 'si aad u cusboonaysiiso',
+      catchBody: 'Fur app-ka si aad u cusboonaysiiso',
+    },
+    hi: {
+      subtitle: 'लंदन के नमाज़ के समय',
+      inline: 'Athan - नमाज़ के समय',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'समय लोड करने के लिए खोलें',
+      staleTitle: 'पुराना',
+      staleBody: 'रिफ्रेश के लिए ऐप खोलें',
+      staleInline: 'Athan - समय रिफ्रेश करने के लिए खोलें',
+      refreshLine: 'रिफ्रेश के लिए Athan खोलें',
+      refreshLead: 'Athan खोलें',
+      refreshTail: 'रिफ्रेश के लिए',
+      catchBody: 'रिफ्रेश के लिए ऐप खोलें',
+    },
+    th: {
+      subtitle: 'เวลาละหมาดสำหรับลอนดอน',
+      inline: 'Athan - เวลาละหมาด',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'เปิดเพื่อโหลดเวลา',
+      staleTitle: 'ข้อมูลเก่า',
+      staleBody: 'เปิดแอปเพื่อรีเฟรช',
+      staleInline: 'Athan - เปิดเพื่อรีเฟรชเวลา',
+      refreshLine: 'เปิด Athan เพื่อรีเฟรช',
+      refreshLead: 'เปิด Athan',
+      refreshTail: 'เพื่อรีเฟรช',
+      catchBody: 'เปิดแอปเพื่อรีเฟรช',
+    },
+  } as const;
+  const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
+  const localeKey = (['en', 'ar', 'ms', 'so', 'hi', 'th'] as const).find(
+    (code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)
+  );
+  const staticRow = STATIC[localeKey ?? 'en'];
+
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
   // render time from the snapshot: the label, the active row and the stale
@@ -318,7 +407,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       <Column horizontalAlignment='center'>
         {AText('Athan', 15, '600', palette.hero)}
         <Spacer modifiers={[height(5)]} />
-        {AText('Prayer times for London', 12, 'normal', palette.secondary)}
+        {AText(staticRow.subtitle, 12, 'normal', palette.secondary)}
       </Column>
     );
 
@@ -352,10 +441,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       m: 'm',
       s: 's',
       now: 'now',
-      staleTitle: 'Out of date',
-      refreshLine: 'Open Athan to refresh',
-      refreshLead: 'Open Athan',
-      refreshTail: 'to refresh',
+      staleTitle: staticRow.staleTitle,
+      refreshLine: staticRow.refreshLine,
+      refreshLead: staticRow.refreshLead,
+      refreshTail: staticRow.refreshTail,
     };
 
     type ARow = PrayerWidgetAndroidProps['days'][number]['rows'][number];
@@ -508,13 +597,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Spacer />
           <Image systemName='moon.stars.fill' size={26} color={palette.staleIcon} />
-          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(palette.hero)]}>Out of date</Text>
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(palette.hero)]}>
+            {staticRow.staleTitle}
+          </Text>
           {environment.widgetFamily === 'systemMedium' ? (
-            refreshLine('Open Athan to refresh')
+            refreshLine(staticRow.refreshLine)
           ) : (
             <VStack spacing={1}>
-              {refreshLine('Open Athan')}
-              {refreshLine('to refresh')}
+              {refreshLine(staticRow.refreshLead)}
+              {refreshLine(staticRow.refreshTail)}
             </VStack>
           )}
           <Spacer />
@@ -539,7 +630,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     if (isAndroidRuntime) {
       return <ANeutral />;
     }
-    return <NeutralCard title='Athan' subtitle='Prayer times for London' />;
+    return <NeutralCard title='Athan' subtitle={staticRow.subtitle} />;
   }
 
   if (isAndroidRuntime) {
@@ -779,7 +870,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   } catch {
     // Never let a rendering error blank the widget: a minimal card beats a
     // dead surface the user cannot distinguish from a broken widget.
-    return <NeutralCard title='Athan' subtitle='Open the app to refresh' />;
+    return <NeutralCard title='Athan' subtitle={staticRow.catchBody} />;
   }
 };
 
