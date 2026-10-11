@@ -22,7 +22,7 @@
  *   informational on every device, never a filter
  * - `version` and `flags` ARE filters: items stamped with another release,
  *   parked (null), or gated behind a disabled feature flag are removed
- *   (VISIBLE_WHATS_NEW), so a dark or future feature is never advertised
+ *   (currentVisibleWhatsNew()), so a dark or future feature is never advertised
  *
  * The archive holds catalog keys, not copy: every title and body renders
  * through t(), resolved once at the release boundary (getVisibleWhatsNew).
@@ -111,12 +111,12 @@ const resolveItem = (item: WhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.0.37',
+  version: '2.0.54',
   items: [
     {
       titleKey: 'whatsNew.title.language',
       bodyKey: 'whatsNew.body.language',
-      version: '2.0.37',
+      version: '2.0.54',
     },
     {
       titleKey: 'whatsNew.title.tabletSupport',

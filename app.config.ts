@@ -73,10 +73,18 @@ const stripWidgetsPlugin = (expoConfig: ExpoConfig): ExpoConfig => {
   return expoConfig;
 };
 
+const withAndroidLocaleConfig = (expoConfig: ExpoConfig): ExpoConfig => {
+  // The locale config is every-Android: without it a widgets-off build ships no
+  // locales_config.xml (the system per-app language picker goes empty) while
+  // config.locales still writes translated keys with no defaults beside them.
+  expoConfig.plugins = [...(expoConfig.plugins ?? []), './plugins/androidLocaleConfig'];
+  return expoConfig;
+};
+
 const resolveConfig = ({ platform }: { platform?: string }): ExpoConfig => {
   if (platform === 'android' || (platform === undefined && androidOnlyResolution && androidWidgetsEnabled)) {
     if (androidWidgetsEnabled) return enableAndroidWidgets(config);
-    return stripWidgetsPlugin(config);
+    return withAndroidLocaleConfig(stripWidgetsPlugin(config));
   }
   if (!iosWidgetsEnabled) return stripWidgetsPlugin(config);
   return config;
