@@ -36,7 +36,7 @@ for f in "$anchors_dir"/*.txt; do
   [ -f "$f" ] || continue
   count=$((count + 1))
 done
-[ "$count" -ge 40 ] || fail "only $count anchors present (need 42)"
+[ "$count" -eq 43 ] || fail "only $count anchors present (need 43)"
 
 python3 - <<'EOF' || exit 1
 import pathlib, re, sys

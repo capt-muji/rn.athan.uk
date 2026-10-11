@@ -272,7 +272,7 @@ The repairs and dispositions:
   matching the picker set (R8 item 2), with the direction interaction verified against the
   `supportsRTL: false` pin in the plan's pre-flight; (d) the qibla `placeName` gap closes by
   formatting the geocoded place through the app locale (`Intl.DisplayName`), a stage-two step
-  that touches no sensor code (D20) — **superseded 2026-10-10 (ARCH-2/C13): Hermes ships no
+  that touches no sensor code (D20) - **superseded 2026-10-10 (ARCH-2/C13): Hermes ships no
   `Intl.DisplayNames` and it names codes, not cities; row 39 re-asks the owner between a named
   exception to D17 (proper nouns as the geocoder returns them) and hiding the line when the
   languages differ**; (e) every authority-exception label needs per-locale

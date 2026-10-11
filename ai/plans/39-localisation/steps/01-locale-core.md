@@ -25,12 +25,12 @@ English device.
 
 `shared/__tests__/locale.test.ts`, all failing on the absent module:
 
-1. `resolves ar from ar-EG` — `resolveInitialLocale(null, [{ languageTag: 'ar-EG', languageCode: 'ar' }])` returns `'ar'`.
-2. Same shape for `ms-MY` → `'ms'`, `so-SO` → `'so'`, `hi-IN` → `'hi'`, `th-TH` → `'th'`, `en-GB` → `'en'`.
-3. `falls back to en for an unsupported language` — `fr-FR` returns `'en'`; `zh-Hans` (languageCode `zh`) returns `'en'`.
-4. `the stored preference wins` — `resolveInitialLocale('ar', [th-TH locale])` returns `'ar'`.
-5. `an unsupported stored preference falls through to the device` — `resolveInitialLocale('zz', [ms-MY locale])` returns `'ms'`.
-6. `an earlier device locale wins over a later one` — `[fr-FR, ar-EG]` returns `'ar'`.
+1. `resolves ar from ar-EG` - `resolveInitialLocale(null, [{ languageTag: 'ar-EG', languageCode: 'ar' }])` returns `'ar'`.
+2. Same shape for `ms-MY` to `'ms'`, `so-SO` to `'so'`, `hi-IN` to `'hi'`, `th-TH` to `'th'`, `en-GB` to `'en'`.
+3. `falls back to en for an unsupported language` - `fr-FR` returns `'en'`; `zh-Hans` (languageCode `zh`) returns `'en'`.
+4. `the stored preference wins` - `resolveInitialLocale('ar', [th-TH locale])` returns `'ar'`.
+5. `an unsupported stored preference falls through to the device` - `resolveInitialLocale('zz', [ms-MY locale])` returns `'ms'`.
+6. `an earlier device locale wins over a later one` - `[fr-FR, ar-EG]` returns `'ar'`.
 
 Record the failing line of test 1 (`Cannot find module '@/shared/i18n/locale'`).
 
@@ -42,8 +42,8 @@ Record the failing line of test 1 (`Cannot find module '@/shared/i18n/locale'`).
    - `export const LOCALE_IDS = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;`
    - `export type LocaleId = (typeof LOCALE_IDS)[number];`
    - `export interface DeviceLocaleInfo { languageTag: string; languageCode: string | null }`
-   - `export const resolveInitialLocale = (preference: string | null, deviceLocales: readonly DeviceLocaleInfo[]): LocaleId` — pure. If `preference` is non-null and a member of `LOCALE_IDS`, return it. Then for each device locale in order: exact `LOCALE_IDS` member match on `languageTag`, then on `languageCode`. Return `'en'` otherwise. No other rule, no region weighting.
-   - `export const readStoredLanguagePreference = (): string | null` — `Database.getItem('preference_language')`, `''` and `null` both mean "no choice". Reads through `stores/database` directly (module-eval safe; MMKV is synchronous).
+   - `export const resolveInitialLocale = (preference: string | null, deviceLocales: readonly DeviceLocaleInfo[]): LocaleId` - pure. If `preference` is non-null and a member of `LOCALE_IDS`, return it. Then for each device locale in order: exact `LOCALE_IDS` member match on `languageTag`, then on `languageCode`. Return `'en'` otherwise. No other rule, no region weighting.
+   - `export const readStoredLanguagePreference = (): string | null` - `Database.getItem('preference_language')`, `''` and `null` both mean "no choice". Reads through `stores/database` directly (module-eval safe; MMKV is synchronous).
 4. Nothing else imports the new module yet. `CURRENT_LOCALE_ID` stays `'en'` (step 03 removes it).
 
 ## Green run

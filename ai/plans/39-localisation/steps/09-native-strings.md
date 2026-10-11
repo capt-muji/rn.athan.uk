@@ -23,9 +23,9 @@ Arabic-locale phone sees Arabic permission prompts and Arabic gallery names.
 
 ## Red tests
 
-1. `nativeLocalesConfig.test.ts`: `app.json` carries an `expo.locales` entry per non-en locale with both permission strings and the full gallery map, byte-identical to `catalogs/native-strings.json` — fails today (no `expo.locales`).
-2. Same suite: `ios.infoPlist.CFBundleLocalizations` equals the six ids — fails.
-3. Same suite: the plugin file exists and its manifest write function produces a `locales_config.xml` with the six entries (unit-test the pure builder by importing it) — fails on the absent plugin.
+1. `nativeLocalesConfig.test.ts`: `app.json` carries an `expo.locales` entry per non-en locale with both permission strings and the full gallery map, byte-identical to `catalogs/native-strings.json` - fails today (no `expo.locales`).
+2. Same suite: `ios.infoPlist.CFBundleLocalizations` equals the six ids - fails.
+3. Same suite: the plugin file exists and its manifest write function produces a `locales_config.xml` with the six entries (unit-test the pure builder by importing it) - fails on the absent plugin.
 
 ## Change contracts
 

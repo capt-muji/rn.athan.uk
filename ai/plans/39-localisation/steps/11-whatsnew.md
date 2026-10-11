@@ -2,7 +2,7 @@
 
 **Requirements:** R10.1
 Weight: 2
-**Anchors:** `whatsnew-archive-head`, `whatsnew-visible-capture` (already a function after step 03; the anchor region is the archive).
+**Anchors:** `whatsnew-archive-head`.
 
 ## Goal
 
@@ -20,8 +20,8 @@ modal (D48), at the version this step lands.
 
 ## Red tests
 
-1. The whatsNew suite: `WHATS_NEW.version` equals the version this step lands (the executor sets it from the version command), and `getVisibleWhatsNew()` for that installed version resolves `whatsNew.title.language` / `whatsNew.body.language` through the active catalog — fails today (no 2.0.x entry for the feature).
-2. Same suite: under `ms`, the resolved title is `Bahasa` — fails today (the entry does not exist).
+1. The whatsNew suite: `WHATS_NEW.version` equals the version this step lands (the executor sets it from the version command), and `getVisibleWhatsNew()` for that installed version resolves `whatsNew.title.language` / `whatsNew.body.language` through the active catalog - fails today (no 2.0.x entry for the feature).
+2. Same suite: under `ms`, the resolved title is `Bahasa` - fails today (the entry does not exist).
 
 ## Change contracts
 

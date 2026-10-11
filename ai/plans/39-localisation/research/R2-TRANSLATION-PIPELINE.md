@@ -11,7 +11,7 @@ Question answered: how does one person who speaks only English (and some Arabic)
 correct translations, keep them correct as copy changes, and never hand-write a catalog?
 Cost context carried by R2-FINDINGS: 194 strings ≈ 4,500 English characters ≈ 90,000
 characters at 20 languages; Google list price $1.80, Azure F0 free tier covers it 22 times
-over, batched LLM $0.01–$0.20. The money is not the constraint; correctness and process are.
+over, batched LLM $0.01 to $0.20. The money is not the constraint; correctness and process are.
 
 What is kept here, because nothing else carries it:
 

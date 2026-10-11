@@ -15,7 +15,7 @@ variants the 3T never draws).
 
 ## Device
 
-The Android 15+ fleet phone (`S23_SERIAL`; if absent from the fleet, STOP and report —
+The Android 15+ fleet phone (`S23_SERIAL`; if absent from the fleet, STOP and report -
 the check does not substitute the 3T).
 
 ## Build and install
@@ -36,7 +36,7 @@ builds at once). Install on the phone. The owner's fleet rules apply: install ov
 3. **Thai.** ไทย: the tone marks and the tall vowels draw inside the row height; the
    widest Thai name (ช่วงสุดท้ายของคืน) fits after the one reflow, `--` never appears in
    place of a name.
-4. **Widgets.** Place the home widget under Thai and Arabic: names and `dateParts`
+4. **Widgets.** Place the home widget under Thai and Arabic: names and the `footer`
    weekdays draw unclipped at both sizes.
 5. Any clipped or truncated label is a STOP with the transcription (the per-locale
    line-height constants are post-2.0.0 work per R17; the finding goes to the owner, not
