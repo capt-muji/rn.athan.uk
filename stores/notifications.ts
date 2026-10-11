@@ -998,7 +998,7 @@ const clearAllScheduledNotificationForPrayer = async (
  * @param intervalMinutes Reminder interval in minutes
  * @returns The attempted identifier — scheduled or, on failure, whatever OS reminder the identifier already had — the
  *   kept identifier of an imminent reminder that was already armed, or null when the day was skipped (no readable
- *   time, past reminder, non-Friday Istijaba), and whether the phone refused it
+ *   time, past or imminent reminder, non-Friday Istijaba), and whether the phone refused it
  */
 async function scheduleReminderNotificationForDate(
   scheduleType: ScheduleType,
