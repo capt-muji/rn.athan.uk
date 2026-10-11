@@ -118,4 +118,23 @@ describe('the string census guard', () => {
     );
     expect(namesRows).toEqual([]);
   });
+
+  it('holds the compass cardinals in the catalog, not the module', () => {
+    const source = fs.readFileSync(path.join(ROOT, 'shared/qiblaCompass.ts'), 'utf8');
+    // The cardinal letters are copy (the ar dial reads ش/ق/ج/غ), so the module
+    // resolves them through t() and holds no letter literal of its own
+    expect(source).toContain("t('qibla.cardinal.n')");
+    expect(source).not.toMatch(/letter: '/);
+    const census = execFileSync('node', ['scripts/scan-strings.mjs', ''], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      maxBuffer: 16 * 1024 * 1024,
+    });
+    // The path builders' 'M...A...' templates are review-kind rows, not copy
+    const compassRows: Array<{ file: string; kind: string }> = JSON.parse(census).rows.filter(
+      (row: { file: string; kind: string }) =>
+        row.file === 'shared/qiblaCompass.ts' && (row.kind.startsWith('display') || row.kind === 'data-module')
+    );
+    expect(compassRows).toEqual([]);
+  });
 });
