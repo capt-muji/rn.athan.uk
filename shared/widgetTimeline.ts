@@ -130,7 +130,7 @@ const segmentFrom = (prayers: Prayer[], at: Date): Segment | null => {
  * @param hijriDate Whether the app's Hijri date preference is on
  */
 const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
-  return hijriDate ? TimeUtils.formatHijriDateLong(belongsToDate) : TimeUtils.formatDateLong(belongsToDate);
+  return hijriDate ? TimeUtils.formatHijriDateLocalized(belongsToDate) : TimeUtils.formatDateLocalized(belongsToDate);
 };
 
 /**

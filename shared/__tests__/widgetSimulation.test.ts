@@ -43,7 +43,7 @@ import { createPrayerSequence, transformApiData } from '@/shared/prayer';
 import {
   addDaysToDateString,
   createPrayerDatetime,
-  formatDateLong,
+  formatDateLocalized,
   formatDateShort,
   getPreviousDateString,
 } from '@/shared/time';
@@ -231,10 +231,10 @@ describe('virtual week model test', () => {
       }
 
       // The date label is the next prayer's Islamic day in the app format
-      if (props.dateLabel !== formatDateLong(nextPrayer.belongsToDate)) {
+      if (props.dateLabel !== formatDateLocalized(nextPrayer.belongsToDate)) {
         throw new Error(
           `Date label mismatch at ${new Date(instant).toISOString()}: entry says ` +
-            `"${props.dateLabel}", expected "${formatDateLong(nextPrayer.belongsToDate)}"`
+            `"${props.dateLabel}", expected "${formatDateLocalized(nextPrayer.belongsToDate)}"`
         );
       }
 
@@ -307,7 +307,7 @@ describe('virtual week model test', () => {
     if (!active) return;
     expect(active.props.nextName).toBe('Fajr');
     expect(active.props.prevEpochMs).toBe(createPrayerDatetime('2026-10-18', '19:40').getTime());
-    expect(active.props.dateLabel).toBe(formatDateLong('2026-10-19'));
+    expect(active.props.dateLabel).toBe(formatDateLocalized('2026-10-19'));
   });
 
   it('treats an early-morning Isha as the next prayer of its Islamic day', () => {
@@ -320,7 +320,7 @@ describe('virtual week model test', () => {
     if (!active) return;
     expect(active.props.nextName).toBe('Isha');
     expect(active.props.nextTime).toBe('01:05');
-    expect(active.props.dateLabel).toBe(formatDateLong('2026-10-20'));
+    expect(active.props.dateLabel).toBe(formatDateLocalized('2026-10-20'));
   });
 
   it('crosses the DST fall-back night without gaps or double entries', () => {
@@ -493,7 +493,7 @@ describe('extras virtual week model test', () => {
       }
 
       // The date label is the next prayer's Islamic day in the app format
-      if (props.dateLabel !== formatDateLong(nextPrayer.belongsToDate)) {
+      if (props.dateLabel !== formatDateLocalized(nextPrayer.belongsToDate)) {
         throw new Error(`Date label mismatch at ${new Date(instant).toISOString()}`);
       }
 
@@ -868,7 +868,7 @@ const mismatchAt = (
 
   // The upcoming prayer's own day rather than the day on screen: a held day's list has no active row and
   // cannot be drawn, so the layouts show that prayer's name and time, and the date under them must be theirs
-  if (props.dateLabel !== formatDateLong(expected.next.belongsToDate)) {
+  if (props.dateLabel !== formatDateLocalized(expected.next.belongsToDate)) {
     return `Date label mismatch at ${at}: entry says "${props.dateLabel}", expected ${expected.next.belongsToDate}`;
   }
   if (JSON.stringify(props.prayers) !== JSON.stringify(expected.rows) || props.activeIndex !== expected.activeIndex) {
@@ -951,7 +951,7 @@ describe.each([
   });
 
   it('never moves the date back a day', () => {
-    const labels = listDays.map((date) => formatDateLong(date));
+    const labels = listDays.map((date) => formatDateLocalized(date));
     let previousIndex = -1;
 
     for (const entry of entries.slice(0, -1)) {
@@ -967,7 +967,7 @@ describe.each([
 
       expect(props).toMatchObject({
         nextName: check.nextName,
-        dateLabel: formatDateLong(check.listDay),
+        dateLabel: formatDateLocalized(check.listDay),
         activeIndex: check.activeIndex,
       });
       expect(props?.prayers?.filter((row) => row.time === '--:--').map((row) => row.name)).toEqual(check.dashed);
@@ -994,7 +994,7 @@ describe.each([
       expect(entry.props).toMatchObject({
         activeIndex: -1,
         nextEpochMs: firstOfDayAfter.datetime.getTime(),
-        dateLabel: formatDateLong(dayAfter),
+        dateLabel: formatDateLocalized(dayAfter),
       });
     }
 
@@ -1009,14 +1009,14 @@ describe.each([
       expect(entry.props).toMatchObject({
         activeIndex: -1,
         nextEpochMs: firstOfDayAfter.datetime.getTime(),
-        dateLabel: formatDateLong(dayAfter),
+        dateLabel: formatDateLocalized(dayAfter),
       });
     }
 
     const rollover = entries.find((entry) => entry.date.getTime() === holdEndMs);
     expect(rollover?.props).toMatchObject({
       nextEpochMs: firstOfDayAfter.datetime.getTime(),
-      dateLabel: formatDateLong(dayAfter),
+      dateLabel: formatDateLocalized(dayAfter),
       activeIndex: type === ScheduleType.Standard ? 0 : 2,
     });
   });
@@ -1034,7 +1034,7 @@ describe.each([
       nextName: prayerLabel(lastReadable.id),
       nextTime: lastReadable.time,
       nextEpochMs: lastReadable.datetime.getTime(),
-      dateLabel: formatDateLong('2024-11-03'),
+      dateLabel: formatDateLocalized('2024-11-03'),
     });
   });
 });

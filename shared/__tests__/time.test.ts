@@ -6,9 +6,9 @@ import {
   adjustTime,
   createInstant,
   createPrayerDatetime,
-  formatDateLong,
+  formatDateLocalized,
   formatDateShort,
-  formatHijriDateLong,
+  formatHijriDateLocalized,
   formatPrayerTime,
   formatTime,
   formatTimeAgo,
@@ -494,30 +494,30 @@ describe('createInstant', () => {
   });
 });
 
-describe('formatDateLong', () => {
+describe('formatDateLocalized', () => {
   it('formats date correctly', () => {
-    const result = formatDateLong('2026-01-18');
+    const result = formatDateLocalized('2026-01-18');
     expect(result).toMatch(/Sun, 18 Jan 2026/);
   });
 
   it('includes day of week', () => {
-    const result = formatDateLong('2026-01-23'); // Friday
+    const result = formatDateLocalized('2026-01-23'); // Friday
     expect(result).toMatch(/Fri/);
   });
 
   it('formats different months correctly', () => {
-    expect(formatDateLong('2026-06-15')).toMatch(/Jun/);
-    expect(formatDateLong('2026-12-25')).toMatch(/Dec/);
+    expect(formatDateLocalized('2026-06-15')).toMatch(/Jun/);
+    expect(formatDateLocalized('2026-12-25')).toMatch(/Dec/);
   });
 
   // Audit finding 51: these two throwing is WHY components/day/Day.tsx guards its
   // date instead of coercing null to ''. Pinned so that a future change making
   // them return a placeholder is noticed, rather than leaving a guard whose
   // reason has quietly evaporated. Note the Hijri branch is no safer: it calls
-  // formatDateLong from inside its own catch and throws again, uncaught.
+  // formatDateLocalized from inside its own catch and throws again, uncaught.
   it('throws on an empty date rather than returning a placeholder', () => {
-    expect(() => formatDateLong('')).toThrow();
-    expect(() => formatHijriDateLong('')).toThrow();
+    expect(() => formatDateLocalized('')).toThrow();
+    expect(() => formatHijriDateLocalized('')).toThrow();
   });
 });
 
@@ -712,9 +712,9 @@ describe('calendar helpers (prayer timezone, ISSUES #30)', () => {
 // ADDITIONAL COVERAGE TESTS
 // =============================================================================
 
-describe('formatHijriDateLong', () => {
+describe('formatHijriDateLocalized', () => {
   it('formats valid date to Hijri format', () => {
-    const result = formatHijriDateLong('2026-01-18');
+    const result = formatHijriDateLocalized('2026-01-18');
     // Should return something like "Rajab 28, 1447" (without AH)
     expect(result).toMatch(/\w+\s+\d+,\s+\d{4}$/);
     expect(result).not.toContain('AH');
@@ -722,8 +722,8 @@ describe('formatHijriDateLong', () => {
 
   it('returns string for any valid date', () => {
     // Test various valid dates return strings
-    const result1 = formatHijriDateLong('2026-01-01');
-    const result2 = formatHijriDateLong('2025-12-31');
+    const result1 = formatHijriDateLocalized('2026-01-01');
+    const result2 = formatHijriDateLocalized('2025-12-31');
     expect(typeof result1).toBe('string');
     expect(typeof result2).toBe('string');
   });

@@ -19,7 +19,7 @@ jest.mock('@/shared/flags', () => ({ FEATURE_FLAGS: { iosWidgets: true } }));
 import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
-import { createInstant, formatDateLong, formatDateShort, formatHijriDateLong } from '@/shared/time';
+import { createInstant, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 import * as Database from '@/stores/database';
@@ -153,7 +153,7 @@ describe('initWidgetSettingsSync', () => {
     // Date label rendered in Hijri for the next prayer's ISLAMIC day (label
     // parity itself is covered by the widgetTimeline suites)
     const first = widgetPush()[0][0][0];
-    expect(first.props.dateLabel).toBe(formatHijriDateLong(NIGHT_BELONGS_TO));
+    expect(first.props.dateLabel).toBe(formatHijriDateLocalized(NIGHT_BELONGS_TO));
   });
 
   it('collapses a burst of setting changes into a single push', async () => {
@@ -170,7 +170,7 @@ describe('initWidgetSettingsSync', () => {
     expect(lockPush()).toHaveLength(1);
     // The debounced push carries the FINAL state of the changed setting
     const first = widgetPush()[0][0][0];
-    expect(first.props.dateLabel).toBe(formatHijriDateLong(NIGHT_BELONGS_TO));
+    expect(first.props.dateLabel).toBe(formatHijriDateLocalized(NIGHT_BELONGS_TO));
   });
 
   it('ignores changes to settings the widget does not show', async () => {
@@ -262,8 +262,8 @@ describe('widget date label', () => {
     // cannot quietly stop crossing and leave the check below vacuous.
     expect(formatDateShort(new Date(head.props.nextEpochMs))).toBe(NIGHT_TARGET_CALENDAR_DATE);
 
-    expect(head.props.dateLabel).toBe(formatDateLong(NIGHT_BELONGS_TO));
-    expect(head.props.dateLabel).not.toBe(formatDateLong(NIGHT_TARGET_CALENDAR_DATE));
+    expect(head.props.dateLabel).toBe(formatDateLocalized(NIGHT_BELONGS_TO));
+    expect(head.props.dateLabel).not.toBe(formatDateLocalized(NIGHT_TARGET_CALENDAR_DATE));
   });
 
   it('names the same day when the target does not cross midnight', async () => {
@@ -272,7 +272,7 @@ describe('widget date label', () => {
     // Here the two dates agree, which is what stops a blanket day-shift from
     // passing as a fix for the case above.
     expect(formatDateShort(new Date(head.props.nextEpochMs))).toBe(AFTERNOON_BELONGS_TO);
-    expect(head.props.dateLabel).toBe(formatDateLong(AFTERNOON_BELONGS_TO));
+    expect(head.props.dateLabel).toBe(formatDateLocalized(AFTERNOON_BELONGS_TO));
   });
 });
 
