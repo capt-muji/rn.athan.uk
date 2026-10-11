@@ -451,3 +451,19 @@ Evidence under `$HOME/athan-gitree/sessions/55/`: `prod-alarms-before.md`,
 `prod-alarms-inside-window.md`, `prod-alarms-after.md`, `prod-alarms-restored.md`,
 `prod-expected-fire.md`, `prod-clock-drive.md`, `prod-fire.md`, `prod-notification-record.md`,
 `prod.apk`, `logs/prod.{prebuild,gradle}.log`.
+
+### Finishing — records (2026-10-11, executor session)
+
+Step 02 commit `fc568fa7` on `docs/device-55-proof` (version 2.0.12, five files: the queue row,
+LOG.md, PLAN.md with the step-2 box ticked, app.json, package.json), hook green:
+`Tests:       5297 passed, 5297 total`, coverage `Statements 100% (5002/5002)`,
+`Branches 100% (2170/2170)`, `Functions 100% (1038/1038)`, `Lines 100% (4480/4480)`.
+Merged `--no-ff` into `uat` as `eb3c2605`. Review verdict: clean — the diff is docs-only, every
+hunk is the step's own record, no file outside the step's list changed, no shipped class
+(lifecycle, thread, residue, rule) is touched; one prose seam in the queue row was fixed and
+amended before the merge. Row cell the lead applies on DONE: "DONE: a pass inside the final
+30 seconds before an armed reminder now keeps it armed, no re-arm and no cancel, record intact;
+unarmed imminent reminders still skip and past ones still clean up; red-green in
+`stores/__tests__/reminderImminentKeepAlive.test.ts` and clock-proven on the 3T".
+
+session: ses_ed72a103effeWouNTcAWvjqVou
