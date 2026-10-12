@@ -8,7 +8,19 @@
 - Green: `yarn validate` 5443 passed, 5443 total; Statements 100% (5202/5202), Branches 100% (2242/2242), Functions 100% (1080/1080), Lines 100% (4660/4660). `yarn test:tz` exit 0, four zones, 5443 passed each. `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0.
 - Break script: `ALL AS EXPECTED: 1` (locale test substitution fails the ar mapping with `05:44` shown, restore passes 5/5).
 - Version: 2.0.57 (origin/uat fetched under the version lock at 2.0.56).
-- Commit: `a67cc87b` (2.0.57), hook green: `Tests: 5443 passed, 5443 total`; Statements 100% (5202/5202), Branches 100% (2242/2242), Functions 100% (1080/1080), Lines 100% (4660/4660).
-- Review: read `git show a67cc87b` cold. Map covers exactly ten glyphs (pinned by test); en/ms/so/hi/th identity pinned; no output parsing; call-time locale read (loader law); cache-key paths (`formatDateShort`, `pad2`, `adjustTime`) untouched; the one untrue JSDoc updated. No findings.
+- Commit: `47bf4e24` (2.0.57; amended from `a67cc87b` to fold the LOG update in), hook green: `Tests: 5443 passed, 5443 total`; Statements 100% (5202/5202), Branches 100% (2242/2242), Functions 100% (1080/1080), Lines 100% (4660/4660).
+- Review: read `git show` cold. Map covers exactly ten glyphs (pinned by test); en/ms/so/hi/th identity pinned; no output parsing; call-time locale read (loader law); cache-key paths (`formatDateShort`, `pad2`, `adjustTime`) untouched; the one untrue JSDoc updated. No findings.
+- Merge: `6e568825` ("Merge feat/57-01-digit-core into uat: job 57 step 01").
+
+## Step 02: the bridge substitution and the notification sites
+
+- Branch: `feat/57-02-bridge` off `uat`.
+- Red: `i18nBridge` ar substitution test failed showing `أذان 3`; `notifications` reminder-title test failed showing `العصر بعد 15 د`. 2 named failures, no others.
+- Change: `shared/i18n/index.ts` pins `const localized = localiseDigits(String(supplied));` at the substitution site, import from `./digits`. No call-site changes. The pinned channel-name assertion (`notifications.test.ts`, `createReminderAndroidChannel` under ar) flipped from `تنبيه المغرب بعد 15 د` to `تنبيه المغرب بعد ١٥ د`: the step's goal names channel sites, the bridge change makes the name render native digits, and the test's intent (named from the active catalog) is unchanged. Not in the plan's step-04 inventory; recorded here.
+- Green: `yarn validate` 5445 passed, 5445 total; Statements 100% (5203/5203), Branches 100% (2242/2242), Functions 100% (1080/1080), Lines 100% (4661/4661). `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0.
+- Break script: `ALL AS EXPECTED: 1` (substitution pinned line replaced, ar test fails with `أذان 3` shown, restore passes).
+- Version: 2.0.58 (origin/uat re-fetched under the held lock, still 2.0.56).
+- Commit: `345fea40` (2.0.58), hook green: `Tests: 5445 passed, 5445 total`.
+- Review: read `git show` cold. Substitution line matches the contract byte-for-byte; identifier suites green untouched (channel ids and file names build from raw values, never `t()`); only digit glyphs map, names and words pass through; the channel-name pinned flip is the plan's own goal (channel sites render native digits in ar). No findings.
 - Merge: (filled after merge)
 - session: ses_ed2764c96ffe16EVsvp03ReEtF

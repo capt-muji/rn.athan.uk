@@ -16,6 +16,7 @@ import { ar } from '@/shared/i18n/ar';
 import type { TranslationKey } from '@/shared/i18n/en';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { hi } from '@/shared/i18n/hi';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { ms } from '@/shared/i18n/ms';
 import { so } from '@/shared/i18n/so';
 import { th } from '@/shared/i18n/th';
@@ -65,6 +66,16 @@ describe('the catalog as its own transfer format', () => {
     expect(() => t('channel.reminder', { name: 'Fajr' } as ParamsOf<'channel.reminder'>)).toThrow(
       "i18n: missing parameter 'n' for key 'channel.reminder'"
     );
+  });
+
+  it('localises numeric parameter digits at substitution under ar and never under en', () => {
+    try {
+      setActiveLocale('ar');
+      expect(t('channel.athan', { n: 3 })).toBe('أذان ٣');
+    } finally {
+      setActiveLocale('en');
+    }
+    expect(t('channel.athan', { n: 3 })).toBe('Athan 3');
   });
 
   it('exports en to JSON that re-imports to a deep-equal object', () => {
