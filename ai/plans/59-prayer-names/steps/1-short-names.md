@@ -74,12 +74,13 @@ What the contract must never do: touch any other `prayer.*` value, `en.ts`,
 ## Green run
 
 ```
-npx jest shared/__tests__/catalogGates.test.ts shared/__tests__/i18n.test.ts shared/__tests__/catalogLock.test.ts --watchman=false --selectProjects=unit
+npx jest shared/__tests__/catalogGates.test.ts shared/__tests__/i18n.test.ts shared/__tests__/catalogLock.test.ts shared/__tests__/i18nRuntime.test.ts --watchman=false --selectProjects=unit
+npx jest components/ui/__tests__/InitialWidthMeasurement.test.tsx --watchman=false
 npx tsc --noEmit
 npx biome check . --error-on-warnings
 ```
 
-All pass; all three commands exit 0. The lock suite passing unchanged proves en
+All pass; all four commands exit 0. The lock suite passing unchanged proves en
 was not touched.
 
 ## Break script
@@ -109,8 +110,9 @@ sourced entries superseded by ruling; every other name byte-identical. R1.1-R2.1
 
 ## Review checklist
 
-- Exactly three catalog values and two glossary texts changed; `git diff` shows
-  nothing else in the catalogs.
+- Exactly three catalog values and two glossary texts changed:
+  `git diff d6ca9ade -- shared/i18n/ms.ts shared/i18n/hi.ts shared/i18n/th.ts | grep -c '^-.*prayer\.'`
+  prints exactly 3.
 - The D81 test pins all three, th included.
 - `catalog-lock.json` untouched.
 

@@ -26,13 +26,15 @@ the two suites rename with them.
 - `hooks/usePrayer.ts` (change)
 - `components/ui/InitialWidthMeasurement.tsx` (change)
 - `components/ui/Error.tsx` (docblock mention only)
-- `stores/__tests__/ui.test.ts` (change)
+- `stores/__tests__/ui.test.ts` (change: the `'@/stores/database'`
+  mock gains a `clearPrefix` backed by `mockDatabaseValues` — deleting every
+  map key starting with the prefix — because the removal test reads that map)
 - `components/ui/__tests__/InitialWidthMeasurement.test.tsx` (change)
 - `stores/__tests__/version.test.ts` (change: the `clearAllExcept` literal at
   ~376 renames with the family)
 - `stores/__tests__/sync.test.ts` (change: the `clearAllExcept` literal at ~449
   and the fixture literal at ~373)
-- `stores/__tests__/database.test.ts` (change: the source-scan literal at ~540)
+- `stores/__tests__/database.test.ts` (change: both occurrences, the source-scan literal at ~540 and the comment mention at ~543)
 - `stores/__tests__/syncFetchBeforeWipe.test.ts` (change: the `KEPT_KEYS` seed
   renames)
 - `stores/__tests__/upgrade2_0_0CrashWindows.test.ts` (change: the literals at
@@ -44,7 +46,11 @@ the two suites rename with them.
   `components/day/__tests__/Day.test.ts`,
   `components/day/__tests__/shownDate.test.ts`,
   `components/overlay/__tests__/overlayPlacement.test.ts`,
-  `hooks/__tests__/usePrayer.test.ts`
+  `hooks/__tests__/usePrayer.test.ts`. The six factories' sentinel strings
+  `englishWidthStandardAtom` and `englishWidthExtraAtom` (once in five files,
+  three times in `hooks/__tests__/usePrayer.test.ts`: the factory plus two
+  `mockAtomValues` seeds) rename in lockstep to `nameWidthStandardAtom` and
+  `nameWidthExtraAtom`
 
 ## Red tests
 
@@ -59,18 +65,24 @@ legacy-seeded en value through the family under en'`) with:
 
 ```ts
   it('removes every prayer_max_english_width_ key at module evaluation and measures fresh', () => {
-    // P8: the 59 re-key removes the old family outright; no copy, no seed
-    database.set('prayer_max_english_width_standard', '150');
-    database.set('prayer_max_english_width_en_standard', '150');
-    let isolated!: typeof import('@/stores/ui');
-    jest.isolateModules(() => {
-      isolated = require('@/stores/ui');
-    });
-    expect(database.getString('prayer_max_english_width_standard')).toBeUndefined();
-    expect(database.getString('prayer_max_english_width_en_standard')).toBeUndefined();
+    // P8: the 59 re-key removes the old family outright; no copy, no seed.
+    // The old-family literals here are deliberate and survive the blanket
+    // rename: they seed the keys the removal must clear.
+    mockDatabaseValues.set('prayer_max_english_width_standard', '150');
+    mockDatabaseValues.set('prayer_max_english_width_en_standard', '150');
+    mockDatabaseValues.set('prayer_max_english_width_th_standard', '150');
+
+    const { isolated, store } = loadUiModule();
+
+    expect(mockDatabaseValues.get('prayer_max_english_width_standard')).toBeUndefined();
+    expect(mockDatabaseValues.get('prayer_max_english_width_en_standard')).toBeUndefined();
+    expect(mockDatabaseValues.get('prayer_max_english_width_th_standard')).toBeUndefined();
     expect(store.get(isolated.nameWidthAtomFor(ScheduleType.Standard))).toBe(0);
   });
 ```
+
+(written in the describe's own idiom: `mockDatabaseValues` and
+`loadUiModule()` are its existing bindings.)
 
 (`'keeps widen-only per key…'` survives the mechanical rename.) Run:
 
@@ -80,16 +92,18 @@ npx jest stores/__tests__/ui.test.ts components/ui/__tests__/InitialWidthMeasure
 ```
 
 Expected: `tsc` reports `TS2305: Module '"@/stores/ui"' has no exported member
-'englishWidthAtomFor'` (and the setter twin) in exactly the two suites; the
-suites fail on those members. The rest of the repo stays clean. Any other
-failure is a STOP.
+'nameWidthAtomFor'` (and the `setNameWidth` twin, each possibly followed by a
+`Did you mean 'englishWidthAtomFor'?` hint) in exactly the two suites; the
+suites fail on those members. Any other failure is a STOP.
 
 ## Change contracts
 
 1. `stores/ui.ts`: the key prefix `prayer_max_english_width_` becomes
    `prayer_max_name_width_` (the atom factory, line 134 area); the legacy seed
    loop (lines 108-122) becomes an unconditional removal of every
-   `prayer_max_english_width_` prefixed key the database still holds, carrying
+   `prayer_max_english_width_` prefixed key the database still holds, routed
+   through `clearPrefix('prayer_max_english_width_')` imported from
+   `@/stores/database` (the enumeration lives there), carrying
    this comment verbatim in the loop's place:
 
 ```ts
@@ -122,7 +136,7 @@ yarn validate
 ```
 
 `yarn validate` (tsc, Biome, the full Jest suite with coverage) is the green
-run: the rename touches fourteen files across five directories, and the full
+run: the rename touches nineteen files, and the full
 suite is the only run that proves the six mock factories and the four
 key-inventory suites went green with it. Exit 0.
 
