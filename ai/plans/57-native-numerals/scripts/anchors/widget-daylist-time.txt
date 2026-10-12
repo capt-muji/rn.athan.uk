@@ -1,5 +1,0 @@
-  const rows = dayPrayers.map((prayer) => ({
-    id: prayer.id,
-    name: prayerLabel(prayer.id),
-    time: prayer.time ?? UNAVAILABLE_TIME,
-  }));

@@ -1,3 +1,0 @@
-        nextName: prayerLabel(next.id),
-        nextTime: next.time,
-        nextEpochMs: next.datetime.getTime(),
