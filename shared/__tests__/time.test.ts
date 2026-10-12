@@ -1,6 +1,7 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
 import { PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '../constants';
+import { setActiveLocale } from '../i18n/locale';
 import {
   addDaysToDateString,
   adjustTime,
@@ -133,6 +134,21 @@ describe('formatTime', () => {
       expect(formatTime(599, true, true)).toBe('9m');
       expect(formatTime(45, false, true)).toBe('45s');
       expect(formatTime(0, true, true)).toBe('0s');
+    });
+  });
+
+  describe('native digits (D57)', () => {
+    afterEach(() => {
+      setActiveLocale('en');
+    });
+
+    it('draws Eastern Arabic-Indic digits under ar', () => {
+      setActiveLocale('ar');
+      expect(formatTime(10740)).toBe('٢س ٥٩د');
+    });
+
+    it('keeps Latin digits under en', () => {
+      expect(formatTime(10740)).toBe('2h 59m');
     });
   });
 });
@@ -590,6 +606,21 @@ describe('formatPrayerTime', () => {
   it('round-trips createPrayerDatetime', () => {
     expect(formatPrayerTime(createPrayerDatetime('2026-10-23', '23:58'))).toBe('23:58');
     expect(formatPrayerTime(createPrayerDatetime('2026-03-30', '01:54'))).toBe('01:54');
+  });
+
+  describe('native digits (D57)', () => {
+    afterEach(() => {
+      setActiveLocale('en');
+    });
+
+    it('draws Eastern Arabic-Indic digits under ar', () => {
+      setActiveLocale('ar');
+      expect(formatPrayerTime(createPrayerDatetime('2026-10-11', '05:44'))).toBe('٠٥:٤٤');
+    });
+
+    it('keeps Latin digits under en', () => {
+      expect(formatPrayerTime(createPrayerDatetime('2026-10-11', '05:44'))).toBe('05:44');
+    });
   });
 });
 
