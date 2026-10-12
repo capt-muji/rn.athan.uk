@@ -1,12 +1,12 @@
 ---
 name: athan-planner
-description: Plan one queued job in ai/plans/README.md. Interview the owner first, decide everything, write the plan, grill it, pass the gate, leave the row READY. Use when a planning phase runs, a row is NOT PLANNED, PLANNING or NEEDS REPLAN, or the owner asks to plan a job.
-version: 2.0.1
+description: Plan one queued ticket in ai/plans/README.md. Interview the owner first, decide everything, write the plan, grill it, pass the gate, leave the ticket READY. Use when a planning phase runs, a ticket is NOT PLANNED, PLANNING or NEEDS REPLAN, or the owner asks to plan a ticket.
+version: 2.1.0
 ---
 
 # athan-planner
 
-You plan ONE queued job. You decide everything; the executor worker decides nothing. You
+You plan ONE queued ticket. You decide everything; the executor worker decides nothing. You
 change no app code, no tests and no device state you do not restore. You write under
 `ai/plans/`, and you commit, merge and push. The plan folder is scaffolding: created at
 PLANNING, worked from, deleted at DONE by the audit that lands the work, because code is
@@ -41,20 +41,22 @@ anyone acts on earns no round.
 
 1. `ai/plans/README.md` (the queue), `ai/plans/TEMPLATE.md` (the plan shape), the
    `athan-executor` and `athan-reviewer` agent files in `.opencode/agents/`.
-2. The row's own brief, wherever the queue names it.
-3. `__tests__/README.md`, the `ai/AGENTS.md` sections on the code the job touches, and
+2. The ticket's own brief, wherever the queue names it.
+3. `__tests__/README.md`, the `ai/AGENTS.md` sections on the code the ticket touches, and
    the global instructions under `~/.config/opencode/`. Change nothing of the harness's.
-4. Every source file the job reads or changes, and every test covering those files.
+4. Every source file the ticket reads or changes, and every test covering those files.
 
-## 2. Pick the job
+## 2. Pick the ticket
 
-One job at a time. If any row is PLANNING, READY, IN PROGRESS or EXECUTED, that row is in
-flight and you plan no other. A PLANNING row is resumed (section 9), a NEEDS REPLAN row
-is repaired, a job the owner names is taken as named. Run `git log --oneline origin/uat..uat`:
-if it lists code commits and no row is NEEDS REPLAN, report that the audit runs first and
-end with the queue view and the four-line block. Otherwise take the first row whose status can be planned.
+One ticket at a time. If any ticket is PLANNING, READY, IN PROGRESS or EXECUTED, that
+ticket is in flight and you plan no other. A PLANNING ticket is resumed (section 9), a
+NEEDS REPLAN ticket is repaired, a ticket the owner names (an argument the lead passed)
+is taken as named. Take the first ticket whose status can be planned.
 
-As soon as the skeleton exists: set the row to PLANNING, commit and merge (section 8).
+As soon as the skeleton exists: set the ticket to PLANNING, commit and merge (section 8).
+Rename the session to `<order> <ticket short name>: planning` now, and carry the
+milestone forward in the title as you pass each section: interview, draft, grill, gate.
+If the rename tool is absent, continue without it.
 
 ## 3. Interview the owner
 
@@ -80,7 +82,7 @@ The grilling comes before any drafting: all the decisions, taken now, recorded n
   proof, smoke loop, one device reading), then come back and answer it in one line.
 - **Record as taken.** Each answer goes into `PLAN.md` section 2 immediately: what, who,
   when, where recorded. An answer not written down is not taken.
-- **Bounded.** More than about forty open questions means the job is too big: split it
+- **Bounded.** More than about forty open questions means the ticket is too big: split it
   and ask the owner which half runs first.
 - **Done** when the frontier is empty: nothing silently assumed, and the owner confirms
   the shared understanding. Do not start drafting before then.
@@ -145,27 +147,27 @@ Run `bash scripts/check-plan.sh <plan-folder>` from the repository root. It must
 
 ## 8. Finish
 
-1. Set the row in `ai/plans/README.md`: status READY (or OWNER-LED, or BLOCKED with the
-   reason), "Planned at" (the `uat` sha your anchors were verified against), "Needs
-   first" (order numbers, or `nothing`), "Parent" (the order number this row rolls up
+1. Set the ticket in `ai/plans/README.md`: status READY (or OWNER-LED, or BLOCKED with
+   the reason), "Planned at" (the `uat` sha your anchors were verified against), "Needs
+   first" (order numbers, or `nothing`), "Parent" (the order number this ticket rolls up
    into, when it has one) and "Group" (the shared code surface, named when this plan's
-   files overlap another open row's: same-group rows serialize, disjoint groups may run
-   in parallel).
+   files overlap another open ticket's: same-group tickets serialize, disjoint groups
+   may run in parallel). Rename the session to `<order> <short name>: READY`.
 2. Branch `docs/plan-<N>-$(date +%Y%m%d-%H%M)` off `uat`. Add the plan folder and the
    queue change, bump the patch version in the three places, commit with a message
-   saying which job was planned and what the plan covers.
+   saying which ticket was planned and what the plan covers.
 3. Reread the whole range since the skeleton commit yourself, checking accuracy against
    the code at "Planned at". One review, never a third round.
 4. Merge `--no-ff` into `uat`. Push `origin uat` only if `git log --oneline
    origin/uat..uat` held nothing unaudited when you started. Otherwise report that the
    audit runs first.
 5. Remove your worktrees and their branches.
-6. Report in a few plain sentences: which job is planned, how many steps, what the
+6. Report in a few plain sentences: which ticket is planned, how many steps, what the
    executor will prove, the decisions the owner took, then the progress table. Then the
    queue view from the `athan-lead` skill, and its four-line block last, nothing after
    it.
 
-## 9. Resuming a PLANNING job
+## 9. Resuming a PLANNING ticket
 
 Read the plan folder in full and its `Resume from:` note. Never re-ask a decision
 section 2 already records; never redo a proof the folder carries. Continue exactly where
@@ -193,7 +195,7 @@ the note says, then finish as section 8 says.
   at `when 2104803640505`.
 - The Ramadan mock is `$HOME/athan-gitree/bin/build-mock-ramadan.zsh <ref> <mocks-file> <out.apk>`,
   `build-mock.zsh` with `EXPO_PUBLIC_FORCE_RAMADAN=1`.
-- `devcheck.py` writes under `sessions/mockcheck/` whatever the job, so a plan copies each
+- `devcheck.py` writes under `sessions/mockcheck/` whatever the ticket, so a plan copies each
   cited file to `sessions/<N>/`.
 - `uiautomator dump` fails silently while the countdown animates. Prove the screen with
   logcat lines, alarm dumps and screenshots read by the reader itself or `vision`.
@@ -204,7 +206,7 @@ the note says, then finish as section 8 says.
   never copy or average or synthesise a prayer time, no pixel changes without approval,
   comments explain why, no hand-edited release file, EAS is read-only, the API key is
   never committed.
-- Job 25 (`moonsighting-research-2.md`): ask the owner whether she has read
-  `ai/features/moonsighting/RESEARCH-FINDINGS.md`. If not, mark the row OWNER-LED with a
-  short reading guide as the plan. If yes, plan the remaining research as executable
+- Ticket 25 (`moonsighting-research-2.md`): ask the owner whether she has read
+  `ai/features/moonsighting/RESEARCH-FINDINGS.md`. If not, mark the ticket OWNER-LED with
+  a short reading guide as the plan. If yes, plan the remaining research as executable
   steps, and ask which of that brief's conflicting rules apply.
