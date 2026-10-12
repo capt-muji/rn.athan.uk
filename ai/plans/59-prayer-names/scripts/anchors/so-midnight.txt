@@ -1,0 +1,5 @@
+  'prayer.magrib': 'Maqrib',
+  'prayer.isha': "Cishaa'i",
+  'prayer.midnight': 'Habeennimo dhexe',
+  'prayer.last third': 'Seddexaad u dambeeya',
+  'prayer.suhoor': 'Sahri',
