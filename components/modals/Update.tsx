@@ -1,9 +1,13 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 
 import Modal from './Modal';
+
+/** The Help modal's list share (owner, 2026-10-12): bounds the message so the card can never grow past the screen, never reached by today's copy */
+const MESSAGE_HEIGHT_SHARE = 0.62;
 
 type Props = {
   visible: boolean;
@@ -12,9 +16,15 @@ type Props = {
 };
 
 export default function ModalUpdate({ visible, onClose, onUpdate }: Props) {
+  const { height } = useWindowDimensions();
+
   return (
     <Modal visible={visible} title={t('update.title')} onRequestClose={onClose}>
-      <Text style={styles.message}>{t('update.message')}</Text>
+      <ScrollView
+        style={[styles.messageScroll, { maxHeight: height * MESSAGE_HEIGHT_SHARE }]}
+        showsVerticalScrollIndicator={false}>
+        <Text style={styles.message}>{t('update.message')}</Text>
+      </ScrollView>
       <View style={styles.buttonContainer}>
         <Pressable
           style={[styles.button, styles.cancelButton]}
@@ -43,8 +53,12 @@ const styles = StyleSheet.create({
     color: COLORS.light.textSecondary,
     lineHeight: TEXT.lineHeight.default,
     letterSpacing: TEXT.letterSpacing.default,
-    marginBottom: 36,
     marginTop: SPACING.xs,
+  },
+  // Stretched so the centred text keeps the card's full width: unstretched, the scroller hugs the text
+  messageScroll: {
+    alignSelf: 'stretch',
+    marginBottom: 36,
   },
   buttonContainer: {
     flexDirection: 'row',
