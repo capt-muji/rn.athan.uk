@@ -8,7 +8,6 @@ import {
   STANDARD_PRAYER_IDS,
   TIME_ADJUSTMENTS,
 } from '@/shared/constants';
-import { currentPrayerLabels } from '@/shared/i18n/loader';
 import { findNextReadable, isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { createPrayerDatetime } from '@/shared/time';
@@ -190,24 +189,6 @@ export const getCascadeDelay = (index: number, _type: ScheduleType): number => {
   const length = STANDARD_PRAYER_IDS.length;
 
   return (length - index) * ANIMATION.cascadeDelay;
-};
-
-export const getLongestPrayerNameIndex = (type: ScheduleType): number => {
-  const ids = type === ScheduleType.Standard ? STANDARD_PRAYER_IDS : EXTRA_PRAYER_IDS;
-  const labels = currentPrayerLabels();
-  let maxLength = 0;
-  let maxIndex = 0;
-
-  ids.forEach((id, index) => {
-    // Code points, not UTF-16 units, so surrogate pairs do not count double
-    const length = [...labels[id]].length;
-    if (length > maxLength) {
-      maxLength = length;
-      maxIndex = index;
-    }
-  });
-
-  return maxIndex;
 };
 
 /**
