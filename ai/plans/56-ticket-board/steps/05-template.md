@@ -86,18 +86,33 @@ for word in Backlog Planning Ready Audit Done Blocked 'Owner-led' 'Run order' 'T
   grep -Fq "$word" "$TMPDIR/board-page.html" || { echo "missing: $word"; exit 1; }
 done
 echo 'template words present'
+for token in '@media (max-width: 430px)' '88vw' 'scroll-snap-type: x mandatory' 'stale'; do
+  grep -Fq "$token" board/index.html || { echo "missing: $token"; exit 1; }
+done
+echo 'phone page and stale stamp structurally present'
 curl -s --max-time 5 http://127.0.0.1:8788/ -o /dev/null -w '%{http_code}\n'
 agent-browser open http://127.0.0.1:8788 >/dev/null 2>&1 || true
 agent-browser read http://127.0.0.1:8788 2>/dev/null | head -40 > "$TMPDIR/board-read.txt"
 grep -Fq 'Ticket board' "$TMPDIR/board-read.txt" && echo 'page renders in a browser'
 cp "$TMPDIR/board-read.txt" "$HOME/athan-gitree/sessions/56/step05-board-read.txt"
+cp ai/plans/README.md "$TMPDIR/queue-2if-backup.md"
+sed -i '' 's/| NOT PLANNED | nothing |/| IN PROGRESS, step 1 | nothing |/' ai/plans/README.md
+for i in 1 2 3 4 5; do
+  sleep 4
+  curl -s --max-time 3 http://127.0.0.1:8788/board.json | grep -Fq 'IN PROGRESS, step 1' && break
+done
+agent-browser read http://127.0.0.1:8788 2>/dev/null | grep -Fq '2 in flight' && echo 'two in flight renders'
+cp "$TMPDIR/queue-2if-backup.md" ai/plans/README.md
 docker compose --project-directory board down >/dev/null 2>&1
 ```
 
-Expected: `template words present`, `200`, `page renders in a browser`. The read capture lands
-under `sessions/56/`. If `agent-browser` is absent, its line degrades: record the absence in
+Expected: `template words present`, `phone page and stale stamp structurally present`, `200`,
+`page renders in a browser`, `two in flight renders`. The read capture lands under
+`sessions/56/`. If `agent-browser` is absent, its two lines degrade: record the absence in
 LOG.md and prove the render by the word checks plus the step 6 owner read; do not invent
-another tool.
+another tool. The `NOT PLANNED | nothing |` sed target must count 1 before use (the same
+guard as break script B3); a count other than 1 means the queue changed: read the queue and
+adapt only the sed target, recording the adaptation in LOG.md.
 
 ## Break script
 
@@ -116,10 +131,11 @@ sleep 1
 code=$(curl -s --max-time 5 -o /dev/null -w '%{http_code}' http://127.0.0.1:8788/)
 docker compose --project-directory board down >/dev/null 2>&1
 [ "$code" = "200" ] || { echo "page answered $code on corrupt data"; exit 1; }
-echo 'ALL AS EXPECTED: 2'
+echo 'sub-checks passed: 2'
+echo 'ALL AS EXPECTED: 1'
 ```
 
-Expected last line: `ALL AS EXPECTED: 2`: no external reference exists in the committed file,
+Expected last line: `ALL AS EXPECTED: 1` (with `sub-checks passed: 2` on the line before): no external reference exists in the committed file,
 and the page keeps answering 200 while the data is corrupt (the template's error line renders
 client-side; the server serves bytes regardless). `git status --porcelain` then lists only
 this plan folder's files.
