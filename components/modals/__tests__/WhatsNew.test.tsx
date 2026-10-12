@@ -4,7 +4,7 @@
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
-import { BackHandler, DeviceEventEmitter } from 'react-native';
+import { BackHandler, DeviceEventEmitter, StyleSheet } from 'react-native';
 
 import type { WhatsNewItem } from '@/shared/whatsNew';
 
@@ -87,6 +87,18 @@ describe("the What's New modal after an update to 1.27.140", () => {
 
     expect(screen.getByTestId('svg:apple', { includeHiddenElements: true })).toBeOnTheScreen();
     expect(screen.getByTestId('svg:android', { includeHiddenElements: true })).toBeOnTheScreen();
+  });
+
+  // A style is read because it is a rule the app keeps: the release list grows with every stamped
+  // release, and an unbounded list grows the compact card past the screen (owner, 2026-10-12)
+  it('scrolls its items rather than growing past the screen', async () => {
+    await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS, SOUNDS]} onClose={jest.fn()} />);
+
+    // The scroller carries no role, label or text, so it is reached by its host type
+    const scroller = screen.root?.queryAll((node) => node.type === 'RCTScrollView')[0];
+
+    expect(StyleSheet.flatten(scroller?.props.style).maxHeight).toBeGreaterThan(0);
+    expect(scroller?.props.showsVerticalScrollIndicator).toBe(false);
   });
 
   it('reports Close when it is pressed', async () => {

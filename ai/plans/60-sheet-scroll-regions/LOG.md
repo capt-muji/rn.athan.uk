@@ -27,3 +27,30 @@
   731 dp figure marked planning-computed with its derivation). No second
   round: fewer than six problems.
 - Ticket set READY, planned at uat c88f50f5.
+
+### Step 01 — done
+
+- Branch: `code/60-1-whatsnew-bounded-list` off `uat`. Preflight copy run from
+  `$TMPDIR` per PLAN.md section 3: `PREFLIGHT OK`. Anchor check: wn-list-open,
+  wn-list-close, wn-styles-list each count 1.
+- Red: `TypeError: Cannot read properties of undefined (reading 'maxHeight')`
+  at the flatten line, `Tests: 1 failed, 10 skipped, 11 total`, exactly as the
+  step predicts.
+- Change: the five contract edits in `components/modals/WhatsNew.tsx`
+  (ScrollView import, hook import after `@/components/ui`, LIST_HEIGHT_SHARE
+  below FAINT_BLUE, `useWindowDimensions` opening the component, list View to
+  ScrollView with the gap moved to `styles.listContent`) plus the StyleSheet
+  import and the scroller test in `WhatsNew.test.tsx`. The map body is byte
+  identical.
+- Green: `Tests: 11 passed, 11 total`; `npx tsc --noEmit` exit 0;
+  `npx biome check . --error-on-warnings` exit 0.
+- Break: `ALL AS EXPECTED: 1`; after the break `git status --porcelain` listed
+  only the step's two files.
+- Version: 2.0.100 (origin fetched under the version lock at 2.0.99, one patch
+  past the plan's expected 2.0.99; app.json, package.json and
+  android/app/build.gradle versionName all set, app.json first).
+- Commit: (filled after the merge, with the hook line)
+- Review: (filled after the merge)
+- Merge: (filled after the merge)
+
+session: ses_ecffa9787ffePI2dQO5uEO6LPk
