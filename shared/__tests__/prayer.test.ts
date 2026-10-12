@@ -14,7 +14,6 @@ import {
   firstStillDueListDay,
   firstStillDueListDayForPrayer,
   getCascadeDelay,
-  getLongestPrayerNameIndex,
   getPrayerForDate,
   transformApiData,
 } from '../prayer';
@@ -298,39 +297,6 @@ describe('createPrayer edge cases', () => {
       time: '02:30',
     });
     expect(prayer.belongsToDate).toBe('2026-01-18');
-  });
-});
-
-// =============================================================================
-// getLongestPrayerNameIndex TESTS
-// =============================================================================
-
-describe('getLongestPrayerNameIndex', () => {
-  it('returns correct index for Standard schedule', () => {
-    const index = getLongestPrayerNameIndex(ScheduleType.Standard);
-    // Standard prayers: Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha
-    // "Sunrise" is longest (7 chars)
-    expect(typeof index).toBe('number');
-    expect(index).toBeGreaterThanOrEqual(0);
-    expect(index).toBeLessThan(6);
-  });
-
-  it('returns correct index for Extra schedule', () => {
-    const index = getLongestPrayerNameIndex(ScheduleType.Extra);
-    // Extra prayers: Duha, Istijaba, Midnight, Last Third, Suhoor
-    // "Last Third" is longest (10 chars)
-    expect(typeof index).toBe('number');
-    expect(index).toBeGreaterThanOrEqual(0);
-    expect(index).toBeLessThan(5);
-  });
-
-  it('returns valid index that can be used to access prayer arrays', () => {
-    const standardIndex = getLongestPrayerNameIndex(ScheduleType.Standard);
-    const extraIndex = getLongestPrayerNameIndex(ScheduleType.Extra);
-
-    // Both should be valid indices
-    expect(Number.isInteger(standardIndex)).toBe(true);
-    expect(Number.isInteger(extraIndex)).toBe(true);
   });
 });
 
