@@ -37,7 +37,7 @@ describe('the name measurement under Thai, on a fresh install', () => {
     await render(<InitialWidthMeasurement />);
 
     await fireEvent(screen.getByText('ตะวันขึ้น'), 'layout', { nativeEvent: { layout: { width: 120 } } });
-    await fireEvent(screen.getByText('ช่วงสุดท้ายของคืน'), 'layout', { nativeEvent: { layout: { width: 210 } } });
+    await fireEvent(screen.getByText('ช่วงสุดท้าย'), 'layout', { nativeEvent: { layout: { width: 210 } } });
 
     expect(store.get(englishWidthAtomFor(ScheduleType.Standard))).toBe(120);
     expect(store.get(englishWidthAtomFor(ScheduleType.Extra))).toBe(210);

@@ -15,7 +15,7 @@ export const hi = {
   'prayer.asr': 'असर',
   'prayer.magrib': 'मग़रिब',
   'prayer.isha': 'ईशा',
-  'prayer.midnight': 'इस्लामी आधी रात',
+  'prayer.midnight': 'आधी रात',
   'prayer.last third': 'अंतिम तिहाई',
   'prayer.suhoor': 'सहरी',
   'prayer.duha': 'दुहा',

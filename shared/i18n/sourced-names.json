@@ -43,6 +43,7 @@
       "nl-wikipedia": "nl.wikipedia.org Salat (islam) article",
       "ilamebidar": "ilamebidar.ir (Persian religious news, Duha/Chasht)",
       "apple-so": "Qur'aan Af-Soomaali App Store listing (Somali row names)",
+      "opentran-so-dictionary": "opentran.net English-Somali dictionary pair pages (en-so)",
       "youtube-th": "Thai Islamic sermon titles (Duha)",
       "persian-usage": "ordinary Persian religious usage, no single portal",
       "nl-usage": "ordinary Dutch Islamic-site usage, no single portal",
@@ -1022,7 +1023,7 @@
         "note": "Malaysian apps print Tengah malam. No JAKIM row. Ordinary Malay phrase, same as Indonesian."
       },
       "Last Third": {
-        "text": "Sepertiga akhir malam",
+        "text": "Sepertiga malam",
         "source": "derived",
         "confidence": "low",
         "note": "No authority or catalog found for ms specifically. Indonesian Sepertiga akhir (Mihrab) plus malam is the obvious Malay construction; needs a speaker."
@@ -1322,10 +1323,10 @@
         "note": "masjidbox prints Cishaa'i (with the Somali c for ayn). Apostrophe is part of the spelling."
       },
       "Midnight": {
-        "text": "Habeennimo dhexe",
-        "source": null,
-        "confidence": "low",
-        "note": "Ordinary Somali for midnight is hora hose/habeen dhexe. Not attested in an Islamic-time table. Needs a speaker."
+        "text": "Saqda dhexe",
+        "source": "opentran-so-dictionary",
+        "confidence": "medium",
+        "note": "The dictionary's primary midnight pair; carried in Somali religious prose and news; no Islamic-time table attestation found."
       },
       "Last Third": {
         "text": null,
@@ -2036,7 +2037,7 @@
         "note": "Both print ईशा."
       },
       "Midnight": {
-        "text": "इस्लामी आधी रात",
+        "text": "आधी रात",
         "source": "mihrab@77e846d",
         "confidence": "medium",
         "note": "Mihrab. Plain आधी रात also works (al-azan prints मध्यरात्रि). The qualifier इस्लामी disambiguates."
