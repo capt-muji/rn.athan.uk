@@ -1,10 +1,12 @@
 /**
- * The hidden texts that measure each list's longest name, and the list each measured width is stored for
+ * The hidden texts that measure every name, and the list each measured width is stored for
  */
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
+import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { englishWidthAtomFor } from '@/stores/ui';
@@ -60,5 +62,26 @@ describe('the name measurement under Arabic, on a fresh install', () => {
     } finally {
       setActiveLocale('en');
     }
+  });
+});
+
+describe('the hidden measurers', () => {
+  it('mounts one measurer per prayer name on both lists', async () => {
+    await render(<InitialWidthMeasurement />);
+
+    for (const id of [...STANDARD_PRAYER_IDS, ...EXTRA_PRAYER_IDS]) {
+      expect(screen.getByText(prayerLabel(id))).toBeOnTheScreen();
+    }
+  });
+
+  it('widens the reserve from any single name, not only the longest by characters', async () => {
+    await render(<InitialWidthMeasurement />);
+    const before = getDefaultStore().get(englishWidthAtomFor(ScheduleType.Standard));
+
+    // A short name with wide glyphs is the Somali defect's shape: its measure must count
+    const aShorterName = screen.getByText(prayerLabel('fajr'));
+    await fireEvent(aShorterName, 'layout', { nativeEvent: { layout: { width: before + 40 } } });
+
+    expect(getDefaultStore().get(englishWidthAtomFor(ScheduleType.Standard))).toBe(before + 40);
   });
 });

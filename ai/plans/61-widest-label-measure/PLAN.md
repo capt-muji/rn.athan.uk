@@ -98,7 +98,7 @@ subscriptions. The remount per switch re-runs the map under the new locale.
 
 ## 6. Steps
 
-- [ ] Step 1: measure every name (`steps/1-measure-every-name.md`)
+- [x] Step 1: measure every name (`steps/1-measure-every-name.md`)
 
 ## 7. Device proof
 
