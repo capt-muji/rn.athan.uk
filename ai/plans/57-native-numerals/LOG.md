@@ -20,7 +20,7 @@
 - Green: `yarn validate` 5445 passed, 5445 total; Statements 100% (5203/5203), Branches 100% (2242/2242), Functions 100% (1080/1080), Lines 100% (4661/4661). `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0.
 - Break script: `ALL AS EXPECTED: 1` (substitution pinned line replaced, ar test fails with `أذان 3` shown, restore passes).
 - Version: 2.0.58 (origin/uat re-fetched under the held lock, still 2.0.56).
-- Commit: `345fea40` (2.0.58), hook green: `Tests: 5445 passed, 5445 total`.
+- Commit: `4563da13` (2.0.58; amended from `345fea40` to fold this ledger fill in), hook green: `Tests: 5445 passed, 5445 total`.
 - Review: read `git show` cold. Substitution line matches the contract byte-for-byte; identifier suites green untouched (channel ids and file names build from raw values, never `t()`); only digit glyphs map, names and words pass through; the channel-name pinned flip is the plan's own goal (channel sites render native digits in ar). No findings.
 - Merge: `3da75f88` ("Merge feat/57-02-bridge into uat: job 57 step 02").
 
@@ -32,7 +32,19 @@
 - Green: `yarn validate` 5448 passed, 5448 total; Statements 100% (5204/5204), Branches 100% (2242/2242), Functions 100% (1082/1082), Lines 100% (4667/4667). `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0.
 - Break script: `ALL AS EXPECTED: 1` (the pinned localised line replaced by an identity parenthesisation, ar preview fails with `0:03` shown, restore passes 20/20).
 - Version: 2.0.59 (origin/uat re-fetched under the held lock, still 2.0.56).
-- Commit: `5948f842` (2.0.59), hook green: `Tests: 5448 passed, 5448 total`.
+- Commit: `18f3c613` (2.0.59; amended from `5948f842` to fold this ledger fill in), hook green: `Tests: 5448 passed, 5448 total`.
 - Review: read the staged diff cold. No import reaches PrayerWidget.tsx (D61 closure law), the widget map lives inside `AthanHomeWidget` keyed off the existing device-locale resolver, the SoundItem and Stepper lines are byte-exact per contract, `Text(timerInterval:)` absent from the diff (D58), v1 literals untouched, no pixel changes beyond digit glyphs, the widget runtime load suite green inside validate. No findings.
+- Merge: `33defa40` ("Merge feat/57-03-point-fixes into uat: job 57 step 03").
+
+## Step 04: the pinned assertions and the records - STOPPED
+
+- Branch: `feat/57-04-tests-records` off `uat`. The sweep was written (nine suites extended: the census's Time, Countdown, Sound, InitialWidthMeasurement, time, widgetRenderer, widgetSimulation, stores/countdown twins plus the ar width proof) and every twin that does not touch the two defective surfaces passes. Two twins fail against the merged steps 1-3 and the step cannot proceed: the plan's premise that `formatPrayerTime` feeds the list times is false.
+- The finding, both surfaces named by the plan's own acceptance criteria:
+  - R1.1, list rows: `getShownTime` (hooks/usePrayer.ts:41-42) returns `prayer.time`, the raw stored API `HH:mm` string, so `components/prayer/Time.tsx` renders Latin under ar for fajr through isha, suhoor and duha (twin expected `٠٦:٤٦`, received `06:46`). Only the night rows (midnight, last third, istijaba) localise, composed through `formatPrayerTime` at shared/prayer.ts:397 - so under ar the merged list is internally MIXED, six Latin rows beside native night rows.
+  - R4.1, widget props: `shared/widgetTimeline.ts` bakes `time: prayer.time` (156), `nextTime: next.time` (211, 271) and the Android day rows `time: prayer.time` (331) - raw Latin under ar (twin expected `٠١:٠٥`, received `01:05`), while the same widget's countdown label and footers render native.
+- Where the localisation point sits is a decision the plan does not give (the row edge `getShownTime` vs `Time.tsx` vs recomposing every sequence time through `formatPrayerTime` vs the widget builder's bakes), each with different blast radius (overlay next-occurrence path, unread sentinel, alert sheet, stored-vs-rendered separation). Per the executor rules this returns to the lead rather than being filled.
+- Disposition: all nine suites' test edits reverted from the tree and preserved verbatim at `$HOME/athan-gitree/sessions/57/step04-stopped.patch` (with `step04-stopped-status.txt`); the replan re-applies the patch and adds the production fix the plan owes. Steps 1-3 stay merged as landed: their step contracts were followed exactly, and en bytes are frozen throughout (R1.2 holds); the ar list's mixed state is the intermediate the stop leaves.
+- Version: 2.0.60 (origin/uat fetched under the version lock, still 2.0.56).
+- Commit: (this records commit)
 - Merge: (filled after merge)
 - session: ses_ed2764c96ffe16EVsvp03ReEtF
