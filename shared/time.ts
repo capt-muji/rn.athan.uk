@@ -95,11 +95,13 @@ const prayerTimezoneOffset = (instant: number): number => {
 };
 
 /**
- * Reads the prayer timezone's calendar and clock at an instant
+ * Reads the prayer timezone's calendar and clock at an instant. Exported for
+ * data paths (the mock API and the day-grouping rules) that need the clock's
+ * own numbers, never the localised display formatters
  * @param instant An exact instant
  * @returns Year, month (1-12), day, hour (0-23), minute and second there
  */
-const readPrayerClock = (instant: Date): PrayerClock => {
+export const readPrayerClock = (instant: Date): PrayerClock => {
   const ms = instant.getTime();
   const clock = new Date(ms + prayerTimezoneOffset(ms));
 

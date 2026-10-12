@@ -1,6 +1,6 @@
 import { addDays, subDays } from 'date-fns';
 
-import { formatDateShort, formatPrayerTime } from '@/shared/time';
+import { formatDateShort, readPrayerClock } from '@/shared/time';
 import type { IApiResponse } from '@/shared/types';
 
 /**
@@ -30,9 +30,14 @@ import type { IApiResponse } from '@/shared/types';
 
 const MINUTE = 60_000;
 
+/** Two digits, the API's own clock format: data paths never localise digits */
+const pad2 = (value: number): string => String(value).padStart(2, '0');
+
 /** HH:mm in London, as the API sends it and the app reads it, a whole number of minutes from an instant */
-export const addMinutes = (from: Date, minutesToAdd: number) =>
-  formatPrayerTime(new Date(from.getTime() + minutesToAdd * MINUTE));
+export const addMinutes = (from: Date, minutesToAdd: number) => {
+  const clock = readPrayerClock(new Date(from.getTime() + minutesToAdd * MINUTE));
+  return `${pad2(clock.hour)}:${pad2(clock.minute)}`;
+};
 
 /**
  * Every day around the download, with TODAY's six rows seeded from it

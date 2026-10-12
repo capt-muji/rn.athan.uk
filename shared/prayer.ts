@@ -216,10 +216,7 @@ export const getLongestPrayerNameIndex = (type: ScheduleType): number => {
  * @param date Date object (an exact instant)
  * @returns Hour (0-23) in the prayer timezone
  */
-const getPrayerTimezoneHour = (date: Date): number => {
-  const time = TimeUtils.formatPrayerTime(date);
-  return Number(time.slice(0, 2));
-};
+const getPrayerTimezoneHour = (date: Date): number => TimeUtils.readPrayerClock(date).hour;
 
 /**
  * Calculates which Islamic day a prayer belongs to

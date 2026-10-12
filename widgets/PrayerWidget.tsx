@@ -414,10 +414,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const AFooter = (label: string): string => {
     const datePrefix = typeof label === 'string' && label.length > 0 ? (label.split(',')[0] as string) : '';
     const dateTokens = datePrefix.split(' ');
-    if (dateTokens.length === 1) return dateTokens[0];
+    if (dateTokens.length === 1) return localiseDigits(dateTokens[0]);
     const monthPrefix = dateTokens[0].slice(0, 3);
     const dayNumber = dateTokens[dateTokens.length - 1];
-    return `${monthPrefix} ${dayNumber}`;
+    return localiseDigits(`${monthPrefix} ${dayNumber}`);
   };
 
   const ANeutral = () =>
