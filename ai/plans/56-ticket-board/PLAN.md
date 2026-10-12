@@ -334,7 +334,7 @@ Checklist (ticked in each step's own commit):
 - [x] Step 3: the reader (code, weight 2)
 - [x] Step 4: the server and the compose service (code, weight 2)
 - [x] Step 5: the template (code, weight 2)
-- [ ] Step 6: README and records (docs, weight 1)
+- [x] Step 6: README and records (docs, weight 1)
 
 One subsection per step in `steps/<k>-<name>.md`. Every step's commit also stages, by name,
 `app.json`, `package.json` and `ai/plans/README.md` (the row cursor `IN PROGRESS, step k` moves
