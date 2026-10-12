@@ -28,13 +28,51 @@ the two suites rename with them.
 - `components/ui/Error.tsx` (docblock mention only)
 - `stores/__tests__/ui.test.ts` (change)
 - `components/ui/__tests__/InitialWidthMeasurement.test.tsx` (change)
+- `stores/__tests__/version.test.ts` (change: the `clearAllExcept` literal at
+  ~376 renames with the family)
+- `stores/__tests__/sync.test.ts` (change: the `clearAllExcept` literal at ~449
+  and the fixture literal at ~373)
+- `stores/__tests__/database.test.ts` (change: the source-scan literal at ~540)
+- `stores/__tests__/syncFetchBeforeWipe.test.ts` (change: the `KEPT_KEYS` seed
+  renames)
+- `stores/__tests__/upgrade2_0_0CrashWindows.test.ts` (change: the literals at
+  ~91-99)
+- The six `jest.mock('@/stores/ui')` factories that provide only
+  `englishWidthAtomFor` and must provide `nameWidthAtomFor` after the rename:
+  `components/prayer/__tests__/Prayer.test.ts`,
+  `components/prayer/__tests__/rowPress.test.ts`,
+  `components/day/__tests__/Day.test.ts`,
+  `components/day/__tests__/shownDate.test.ts`,
+  `components/overlay/__tests__/overlayPlacement.test.ts`,
+  `hooks/__tests__/usePrayer.test.ts`
 
 ## Red tests
 
 Rewrite the two suites' references first: every `setEnglishWidth` becomes
 `setNameWidth`, every `englishWidthAtomFor` becomes `nameWidthAtomFor`, every
 literal key `prayer_max_english_width_` in them becomes `prayer_max_name_width_`
-including the per-locale keys the ar and th measurement cases assert. Run:
+including the literal keys in `stores/__tests__/ui.test.ts`'s isolated-module
+tests (the th literal sits at ~441). In `stores/__tests__/ui.test.ts`'s
+`the per-locale width keys` describe, replace the two seed-copy tests
+(`'seeds the en width keys from the legacy keys…'` and `'resolves the
+legacy-seeded en value through the family under en'`) with:
+
+```ts
+  it('removes every prayer_max_english_width_ key at module evaluation and measures fresh', () => {
+    // P8: the 59 re-key removes the old family outright; no copy, no seed
+    database.set('prayer_max_english_width_standard', '150');
+    database.set('prayer_max_english_width_en_standard', '150');
+    let isolated!: typeof import('@/stores/ui');
+    jest.isolateModules(() => {
+      isolated = require('@/stores/ui');
+    });
+    expect(database.getString('prayer_max_english_width_standard')).toBeUndefined();
+    expect(database.getString('prayer_max_english_width_en_standard')).toBeUndefined();
+    expect(store.get(isolated.nameWidthAtomFor(ScheduleType.Standard))).toBe(0);
+  });
+```
+
+(`'keeps widen-only per key…'` survives the mechanical rename.) Run:
 
 ```
 npx tsc --noEmit
@@ -49,15 +87,22 @@ failure is a STOP.
 ## Change contracts
 
 1. `stores/ui.ts`: the key prefix `prayer_max_english_width_` becomes
-   `prayer_max_name_width_` (the atom factory, line 130 area); the legacy seed
-   loop (line 108 area) drops its seed-and-copy shape and becomes an
-   unconditional removal of every `prayer_max_english_width_` prefixed key the
-   database still holds (the P8 reset: no copy, no seed), keeping its
-   module-evaluation position; `englishWidthAtomFor` renames to
-   `nameWidthAtomFor`, `setEnglishWidth` to `setNameWidth`, and the setter's
-   docblock reads "Sets the measured width of the widest active-locale prayer
-   name". The grow-toward-truth guard (`if (width <= cached) return;`) is
-   untouched (R3.2).
+   `prayer_max_name_width_` (the atom factory, line 134 area); the legacy seed
+   loop (lines 108-122) becomes an unconditional removal of every
+   `prayer_max_english_width_` prefixed key the database still holds, carrying
+   this comment verbatim in the loop's place:
+
+```ts
+// The 59 re-key: every `prayer_max_english_width_` key is removed
+// unconditionally at module evaluation, before the atoms below first read
+// storage, so the reserve re-measures against the shortened names (P8).
+```
+
+   `englishWidthAtomFor` renames to `nameWidthAtomFor`, `setEnglishWidth`
+   (line 259 area) to `setNameWidth`, and the setter's docblock reads "Sets
+   the measured width of the widest active-locale prayer name". The
+   grow-toward-truth guard (`if (width <= cached) return;`) is untouched
+   (R3.2).
 2. `stores/version.ts:155` and `stores/sync.ts:365`: the inventory prefix
    renames with the family.
 3. `hooks/usePrayer.ts`: the import and the `useAtomValue` call rename with the
@@ -73,12 +118,13 @@ from the old values; touch any measurement style or mounting.
 ## Green run
 
 ```
-npx jest stores/__tests__/ui.test.ts components/ui/__tests__/InitialWidthMeasurement.test.tsx shared/__tests__/versionLockstep.test.ts --watchman=false
-npx tsc --noEmit
-npx biome check . --error-on-warnings
+yarn validate
 ```
 
-All pass; all three commands exit 0.
+`yarn validate` (tsc, Biome, the full Jest suite with coverage) is the green
+run: the rename touches fourteen files across five directories, and the full
+suite is the only run that proves the six mock factories and the four
+key-inventory suites went green with it. Exit 0.
 
 ## Break script
 
@@ -89,8 +135,11 @@ ends `ALL AS EXPECTED: 1`.
 
 ## Version and commit
 
-Version command as step 1. Add the eight files, `app.json`, `package.json` and
-`android/app/build.gradle`, by name plus the queue and plan files. Message:
+Version command as step 1 (`mkdir $HOME/athan-gitree/version.lock`, retry in a
+short sleep loop while it exists, `rmdir` it after the merge). Add the nineteen
+files by name plus the queue and plan files (the gitignored
+`android/app/build.gradle` is never added; set its `versionName` when a prebuild
+is present). Message:
 
 ```
 <VERSION> - feat(ui): name-width cache resets by key rename
