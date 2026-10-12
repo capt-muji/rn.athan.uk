@@ -1,6 +1,7 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { Icon } from '@/shared/types';
@@ -16,6 +17,9 @@ const BADGE_GLYPH: Record<string, Icon> = {
 /** De-emphasized faint blue - version number and platform notes */
 const FAINT_BLUE = 'rgba(42, 68, 130, 0.32)';
 
+/** The Help modal's list share (owner, 2026-10-12): bounds the release list so the card's heading, version and Close always fit beside it */
+const LIST_HEIGHT_SHARE = 0.62;
+
 type Props = {
   visible: boolean;
   /** Installed app version rendered under the title (never a hand-typed string) */
@@ -25,13 +29,18 @@ type Props = {
 };
 
 export default function ModalWhatsNew({ visible, version, items, onClose }: Props) {
+  const { height } = useWindowDimensions();
+
   return (
     <Modal visible={visible} title={t('whatsNew.heading')} onRequestClose={onClose}>
       <Text style={styles.version}>
         {'v'}
         {version}
       </Text>
-      <View style={styles.list}>
+      <ScrollView
+        style={[styles.list, { maxHeight: height * LIST_HEIGHT_SHARE }]}
+        contentContainerStyle={styles.listContent}
+        showsVerticalScrollIndicator={false}>
         {items.map((item) => (
           <View key={item.title} style={styles.item}>
             {/* Platform availability glyphs - filled, stacked, on white.
@@ -54,7 +63,7 @@ export default function ModalWhatsNew({ visible, version, items, onClose }: Prop
             </View>
           </View>
         ))}
-      </View>
+      </ScrollView>
       <Pressable
         style={styles.button}
         onPress={onClose}
@@ -79,8 +88,11 @@ const styles = StyleSheet.create({
   },
   list: {
     width: '100%',
-    gap: SPACING.lg,
     marginBottom: 36,
+  },
+  // The gap lives on the content container: a ScrollView's own style never spaces its children
+  listContent: {
+    gap: SPACING.lg,
   },
   item: {
     flexDirection: 'row',
