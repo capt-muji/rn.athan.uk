@@ -90,7 +90,6 @@
 <div id="error"></div>
 <script>
   const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Audit', 'Done', 'Blocked', 'Owner-led'];
-  const STALE_MS = 30000;
   let board = null;
 
   const el = (tag, className, text) => {
@@ -109,7 +108,7 @@
     meta.append(el('span', null, 'v' + board.repo.version), el('span', null, board.repo.uat));
     if (board.repo.unpushed) meta.append(el('span', 'badge', 'unpushed'));
     meta.append(el('span', 'dot' + (board.activeNow ? ' on' : '')));
-    const stale = ageSeconds() * 1000 > STALE_MS;
+    const stale = ageSeconds() * 1000 > board.reconcileMs * 2;
     const stamp = el('span', null, (stale ? 'stale ' : 'updated ') + ageSeconds() + 's ago');
     stamp.id = 'stamp';
     if (stale) stamp.className = 'stale';
@@ -129,7 +128,6 @@
   function rollupEl(ticket, siblings) {
     if (ticket.parent === null) return null;
     const children = siblings.filter((other) => other.parent === ticket.parent);
-    if (children.length === 0) return el('span', 'rollup', 'parent #' + ticket.parent);
     const done = children.filter((child) => child.column === 'Done').length;
     const line = el('div', 'rollup', done + ' of ' + children.length + ' tickets done');
     const bar = el('div', 'bar');
@@ -226,7 +224,8 @@
     const blockedItems = el('ul');
     for (const ticket of blocked) {
       const unmet = ticket.needs.filter((need, at) => !ticket.needsMet[at]).map((need) => '#' + need).join(', ');
-      blockedItems.append(el('li', null, '#' + ticket.order + ' ' + ticket.name + ' blocked on ' + unmet));
+      const label = '#' + ticket.order + ' ' + ticket.name + (unmet ? ' blocked on ' + unmet : '');
+      blockedItems.append(el('li', null, label));
     }
     blockedList.append(blockedItems);
     foot.append(runOrder, blockedList);

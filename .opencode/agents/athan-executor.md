@@ -40,7 +40,7 @@ ticked step. If your context fills mid-step, write `Resume from: step k, part m`
 at the top of `LOG.md`, commit and merge what finished, and return: the lead
 respawns you from that note. Every step entry opens with the heading
 `### Step <NN> — <state>` and ends with the `session: <ses_id>` line; the ticket
-board parses both.
+board parses the session line.
 
 ## Batches
 

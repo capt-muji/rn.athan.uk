@@ -44,6 +44,7 @@ function parseQueue(markdown) {
   const open = [];
   const doneRows = [];
   const doneOrders = [];
+  const settled = [];
   for (const line of markdown.split('\n')) {
     if (!line.startsWith('|')) continue;
     const fields = line.split('|');
@@ -55,6 +56,8 @@ function parseQueue(markdown) {
       if (status.startsWith('DONE')) {
         doneRows.push({ order, name });
         doneOrders.push(order);
+      } else if (closedStatus(status)) {
+        settled.push(order);
       }
     } else if (fields.length === 7) {
       const name = fields[2].trim();
@@ -69,7 +72,7 @@ function parseQueue(markdown) {
       }
     }
   }
-  return { open, doneRows, doneOrders };
+  return { open, doneRows, doneOrders, settled };
 }
 
 function mapStatus(statusCell) {
@@ -93,8 +96,8 @@ function parseNeeds(needsCell) {
   return [...new Set(orders)].sort((a, b) => a - b);
 }
 
-function isMet(order, tickets, doneOrders) {
-  if (doneOrders.includes(order)) return true;
+function isMet(order, tickets, metOrders) {
+  if (metOrders.includes(order)) return true;
   const row = tickets.find((ticket) => ticket.order === order);
   return Boolean(row) && !row.rendered;
 }
@@ -112,8 +115,9 @@ function findPlanFolder(repo, order) {
 function stepWeight(planPath, n) {
   const stepsDir = path.join(planPath, 'steps');
   if (!existsSync(stepsDir)) return 1;
+  const padded = String(n).padStart(2, '0');
   const file = readdirSync(stepsDir)
-    .filter((name) => name.startsWith(`${n}-`) && name.endsWith('.md'))
+    .filter((name) => (name.startsWith(`${n}-`) || name.startsWith(`${padded}-`)) && name.endsWith('.md'))
     .sort()[0];
   if (!file) return 1;
   const match = readFileSync(path.join(stepsDir, file), 'utf8').match(/Weight:\s*(\d+)/);
@@ -268,7 +272,7 @@ function ensureState(stateDir) {
   if (!existsSync(ignore)) writeFileSync(ignore, '*\n');
 }
 
-function ticketFromOpenRow(row, mapped, lookup, doneOrders, repo, handoffDir) {
+function ticketFromOpenRow(row, mapped, lookup, metOrders, repo, handoffDir) {
   const needs = parseNeeds(row.needsCell);
   const planFolder = findPlanFolder(repo, row.order);
   const plan = planFolder ? parsePlan(planFolder) : { parent: null, group: null, steps: [] };
@@ -287,7 +291,7 @@ function ticketFromOpenRow(row, mapped, lookup, doneOrders, repo, handoffDir) {
     statusText: mapped.statusText,
     column: mapped.column,
     needs,
-    needsMet: needs.map((need) => isMet(need, lookup, doneOrders)),
+    needsMet: needs.map((need) => isMet(need, lookup, metOrders)),
     parent: plan.parent,
     group: plan.group,
     platform,
@@ -324,11 +328,12 @@ function main(argv) {
   const mappedRows = queue.open.map((row) => ({ row, mapped: mapStatus(row.statusCell) }));
   // The needs lookup keeps unrendered rows: a need on a CANCELLED row is met.
   const lookup = mappedRows.map(({ row, mapped }) => ({ order: row.order, rendered: mapped.rendered }));
+  const metOrders = [...queue.doneOrders, ...queue.settled];
 
   const tickets = [];
   for (const { row, mapped } of mappedRows) {
     if (!mapped.rendered) continue;
-    tickets.push(ticketFromOpenRow(row, mapped, lookup, queue.doneOrders, repo, handoffDir));
+    tickets.push(ticketFromOpenRow(row, mapped, lookup, metOrders, repo, handoffDir));
   }
 
   const doneTop = [...queue.doneRows].sort((a, b) => b.order - a.order).slice(0, config.doneColumnCount);
@@ -351,7 +356,7 @@ function main(argv) {
       });
       continue;
     }
-    tickets.push(ticketFromOpenRow(row, mapStatus(row.statusCell), lookup, queue.doneOrders, repo, handoffDir));
+    tickets.push(ticketFromOpenRow(row, mapStatus(row.statusCell), lookup, metOrders, repo, handoffDir));
   }
 
   let version = null;
