@@ -1,3 +1,0 @@
-      nextName: prayerLabel(finalPrayer.id),
-      nextTime: finalPrayer.time,
-      nextEpochMs: finalEpochMs,
