@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Brief | Queue row 61, owner-reported defect 2026-10-12 |
-| Planned at | PENDING (skeleton) |
+| Planned at | uat `2670e596`, version 2.0.105, 2026-10-12 |
 | Planned by | Planning session 2026-10-12 (owner away; her defect report is the ruling) |
 | Needs first | 39 (DONE) |
 | Parent | none |
@@ -14,7 +14,7 @@
 | Device | none (proof is component-level; the confidence build carries the face) |
 | Owner decisions still needed | none: a defect fix, behaviour only |
 
-Resume from: skeleton. Diagnosis complete: the measurer remounts per switch
+Resume from: execution, step 1. The grill's six findings are applied (the suite exists and is extended, the coverage gate, the orphaned import, the grep scope); the plan is READY. Diagnosis complete: the measurer remounts per switch
 (`app/_layout.tsx:90` keys it on `localeVersion`), so recalibration happens;
 the defect is `getLongestPrayerNameIndex` picking the longest label by code
 points while the reserve needs the widest in rendered points.
@@ -69,7 +69,7 @@ or above Planned at, row 39 DONE, the plan's anchors each count 1. Ends
 | `stores/ui.ts:134-143, 261-275` | Per-locale widen-only atoms keyed `prayer_max_english_width_<locale>_<side>`. Untouched. |
 | `shared/prayer.ts:195-211` | `getLongestPrayerNameIndex`: dies (D79). |
 | `shared/__tests__/prayer.test.ts:305-330` | Its describe block and import entry: die with it. |
-| `components/ui/__tests__/InitialWidthMeasurement.test.tsx` | New suite. |
+| `components/ui/__tests__/InitialWidthMeasurement.test.tsx` | The existing suite since 2.0.24 (three per-locale describes firing both lists' layout events), extended with the two new tests. |
 
 ### Why the obvious variants are wrong
 
@@ -130,6 +130,7 @@ None. The executor never pushes. The lead pushes after review.
 | `prayer.test.ts` fails after the deletion | The describe block was left partially | Delete the whole block and the import entry |
 | Row alignment shifts in en screenshots | The en widest label differs from the codepoint-longest | That is the fix landing; verify no test pins pixel widths, then record |
 | The store narrows after a switch | Widen-only broken | `STOP:`; the store was touched against D78 |
+| The commit is refused on coverage | A list's layout event is never fired | Fire one per list in the suite; the existing per-locale describes already do |
 
 Anticipated review fixes, word for word:
 
