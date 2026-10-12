@@ -1,7 +1,0 @@
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingRight: SCREEN.paddingHorizontal + 2,
-    paddingLeft: SCREEN.paddingHorizontal + 4,
-  },
-  location: {

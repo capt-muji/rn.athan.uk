@@ -1,9 +1,0 @@
-      {catcherRegions.map((region) => (
-        <Pressable
-          key={region.id}
-          onPress={handleClose}
-          accessibilityRole={'button'}
-          accessibilityLabel={t('overlay.closeDetails')}
-          style={[styles.catcher, { top: region.top, left: region.left, width: region.width, height: region.height }]}
-        />
-      ))}
