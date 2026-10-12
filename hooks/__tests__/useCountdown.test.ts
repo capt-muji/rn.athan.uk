@@ -56,8 +56,8 @@ beforeEach(() => mockAtomValues.clear());
 
 describe('useCountdown', () => {
   it.each([
-    [ScheduleType.Standard, 'Asr', '2h 5m'],
-    [ScheduleType.Extra, 'Suhoor', '6h 12m'],
+    [ScheduleType.Standard, 'Asr', '2:05'],
+    [ScheduleType.Extra, 'Suhoor', '6:12'],
   ])('reads the %s schedule’s own name and time', (type, name, display) => {
     given(type, { next: { english: name }, displayDate: '2026-10-17', name, display });
 
@@ -71,7 +71,7 @@ describe('useCountdown', () => {
   });
 
   it.each([ScheduleType.Standard, ScheduleType.Extra])('is not ready for %s before any list is on screen', (type) => {
-    given(type, { next: null, displayDate: null, name: 'Fajr', display: '0s' });
+    given(type, { next: null, displayDate: null, name: 'Fajr', display: '0:00' });
 
     expect(useCountdown(type).isReady).toBe(false);
   });
