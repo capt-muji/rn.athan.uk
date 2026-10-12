@@ -1,0 +1,3 @@
+  const localiseDigits = (value: string): string =>
+    localeKey === 'ar' ? value.replace(/[0-9]/g, (digit) => WIDGET_DIGITS[digit]) : value;
+

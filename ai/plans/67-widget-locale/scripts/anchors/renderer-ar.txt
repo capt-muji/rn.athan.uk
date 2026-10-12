@@ -1,0 +1,5 @@
+    it('renders native digits in the countdown label under an ar device locale', () => {
+      // 18.5 minutes to Asr: ceil makes 19, and the inline digit map (D61)
+      // draws it with the ar glyphs beside the push layer's ar unit words
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {

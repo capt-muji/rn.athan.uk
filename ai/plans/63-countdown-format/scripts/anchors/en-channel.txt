@@ -1,0 +1,3 @@
+  'language.applying': 'Applying…',
+  'channel.reminder': '{name} in {n}m Reminder',
+  'qibla.cardinal.n': 'N',
