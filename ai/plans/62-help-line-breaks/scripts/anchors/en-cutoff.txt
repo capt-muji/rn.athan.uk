@@ -1,0 +1,3 @@
+  'help.q.cutoff': 'Why does the athan cut off early?',
+  'help.a.cutoff': 'Notification sounds are limited to 30 seconds.\nEvery athan is trimmed to fit.',
+  'help.action.dndAccess': 'Grant Do Not Disturb access',

@@ -1,0 +1,7 @@
+
+// =============================================================================
+// getLongestPrayerNameIndex TESTS
+// =============================================================================
+
+describe('getLongestPrayerNameIndex', () => {
+  it('returns correct index for Standard schedule', () => {

@@ -1,0 +1,4 @@
+  onPresent,
+  perfName,
+  snapPoints = ['70%'],
+  contentCap,

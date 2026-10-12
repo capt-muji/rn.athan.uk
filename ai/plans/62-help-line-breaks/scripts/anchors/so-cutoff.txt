@@ -1,0 +1,3 @@
+  'help.q.cutoff': 'Maxay aqaanku gooyo goor hore?',
+  'help.a.cutoff': 'Dhawaaqyada ogeysiisu waa xadidan yihiin 30 ilbiriqsi.\nAqan kasta waa la gaabiyay si uu u dhismo.',
+  'help.action.dndAccess': 'Siiso ogolaanshaha Ha-I-Delin',
