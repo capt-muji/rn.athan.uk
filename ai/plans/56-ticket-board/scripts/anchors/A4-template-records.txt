@@ -1,0 +1,4 @@
+- **8. Records.** The findings text written into `LOG.md` under its exact heading, the queue-row cell text the
+  lead applies on DONE, the docs commit message.
+- **9. Push.** Always None. The executor worker never pushes. The lead pushes after the
+  reviews pass.
