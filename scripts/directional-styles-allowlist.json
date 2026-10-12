@@ -1,45 +1,5 @@
 [
   {
-    "file": "components/sheets/screens/Qibla.tsx",
-    "snippet": "left: 0,",
-    "reason": "pending: step 5"
-  },
-  {
-    "file": "components/sheets/screens/Qibla.tsx",
-    "snippet": "right: 0,",
-    "reason": "pending: step 5"
-  },
-  {
-    "file": "components/sheets/screens/Sound.tsx",
-    "snippet": "left: 0,",
-    "reason": "pending: step 5"
-  },
-  {
-    "file": "components/sheets/screens/Sound.tsx",
-    "snippet": "right: 0,",
-    "reason": "pending: step 5"
-  },
-  {
-    "file": "components/sheets/screens/Language.tsx",
-    "snippet": "paddingLeft: SPACING.md,",
-    "reason": "pending: step 5"
-  },
-  {
-    "file": "components/sheets/screens/Language.tsx",
-    "snippet": "paddingRight: SPACING.sm,",
-    "reason": "pending: step 5"
-  },
-  {
-    "file": "components/sheets/screens/Settings.tsx",
-    "snippet": "paddingRight: SPACING.md,",
-    "reason": "pending: step 5"
-  },
-  {
-    "file": "components/sheets/screens/Settings.tsx",
-    "snippet": "marginLeft: SPACING.sm,",
-    "reason": "pending: step 5"
-  },
-  {
     "file": "components/modals/Help.tsx",
     "snippet": "paddingLeft: SPACING.header,",
     "reason": "pending: step 6"

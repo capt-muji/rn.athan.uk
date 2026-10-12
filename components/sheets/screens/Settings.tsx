@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
-    paddingRight: SPACING.md,
+    paddingEnd: SPACING.md,
   },
   whatsNewButton: {
     flexDirection: 'row',
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
-    paddingRight: SPACING.md,
+    paddingEnd: SPACING.md,
   },
   infoButton: {
     width: 20,
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
   },
   whatsNewLabel: {
     flex: 1,
-    marginLeft: SPACING.sm,
+    marginStart: SPACING.sm,
     color: COLORS.text.primary,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeDetail,
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
   },
   athanLabel: {
     flex: 1,
-    marginLeft: SPACING.sm,
+    marginStart: SPACING.sm,
     color: COLORS.text.primary,
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.sizeDetail,

@@ -194,9 +194,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     bottom: 0,
     gap: SPACING.xs,
-    left: 0,
+    start: 0,
     position: 'absolute',
-    right: 0,
+    end: 0,
   },
   message: {
     color: COLORS.text.sheetSubtitle,
