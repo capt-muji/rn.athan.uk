@@ -139,6 +139,6 @@ const styles = StyleSheet.create({
     fontSize: TEXT.sizeDetail,
     fontFamily: TEXT.family.regular,
     color: 'rgb(95, 133, 177)',
-    marginLeft: 3,
+    marginStart: 3,
   },
 });

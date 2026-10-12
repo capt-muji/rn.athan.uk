@@ -1,35 +1,5 @@
 [
   {
-    "file": "components/sheets/parts/Sheet.tsx",
-    "snippet": "marginLeft: sideInset",
-    "reason": "pending: step 4"
-  },
-  {
-    "file": "components/sheets/parts/SoundItem.tsx",
-    "snippet": "paddingLeft: SPACING.md,",
-    "reason": "pending: step 4"
-  },
-  {
-    "file": "components/sheets/parts/SoundItem.tsx",
-    "snippet": "marginRight: SPACING.xs,",
-    "reason": "pending: step 4"
-  },
-  {
-    "file": "components/sheets/parts/Stepper.tsx",
-    "snippet": "marginLeft: 3,",
-    "reason": "pending: step 4"
-  },
-  {
-    "file": "components/sheets/parts/SegmentedControl.tsx",
-    "snippet": "left: 3,",
-    "reason": "pending: step 4"
-  },
-  {
-    "file": "components/sheets/parts/SegmentedControl.tsx",
-    "snippet": "left: 0,",
-    "reason": "pending: step 4"
-  },
-  {
     "file": "components/sheets/screens/Qibla.tsx",
     "snippet": "left: 0,",
     "reason": "pending: step 5"

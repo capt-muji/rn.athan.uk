@@ -222,7 +222,7 @@ export default function Sheet({
       style={bottomSheetStyles.modal}
       containerStyle={[
         { zIndex: OVERLAY.zindexes.popup, elevation: ELEVATION.standard },
-        { width: containerWidth, marginLeft: sideInset, marginRight: sideInset },
+        { width: containerWidth, marginStart: sideInset, marginEnd: sideInset },
       ]}
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
