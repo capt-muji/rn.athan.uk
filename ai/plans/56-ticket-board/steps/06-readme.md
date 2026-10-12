@@ -40,7 +40,7 @@ Expected today: 0. Record it.
 In `README.md`, directly after the "How work happens here" section's last paragraph (anchor
 A5) and before the `## Development` heading, add exactly this section:
 
-```markdown
+````markdown
 ## Ticket board
 
 The queue also renders as a local web board: read-only, live, one URL.
@@ -60,7 +60,7 @@ Reading it: a ticket is a queue job, a step is a plan step. Columns follow the q
 computed from each plan's own file list. The context chip is telemetry from the newest handoff
 document, not a gate. `board/config.json` carries the port, host, refresh interval and Done
 column size; `yarn validate` never sees this folder.
-```
+````
 
 In the Repository layout code block, directly after the `e2e/` line (anchor A6), add exactly
 one line:
@@ -70,7 +70,8 @@ board/       the local ticket board: reader, server, template, compose
 ```
 
 Then apply this plan's section 8 records text into `LOG.md` with the measured values, and tick
-checklist box 6 in PLAN.md.
+checklist box 6 in PLAN.md. This is the Finishing records application for this job: apply it
+once here, and when Finishing runs, do not apply the Planning block again.
 
 ## Green run
 

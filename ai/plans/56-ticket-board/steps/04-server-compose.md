@@ -121,14 +121,17 @@ for i in 1 2 3 4 5; do
   sleep 4
   if grep -q '^data:' "$TMPDIR/sse-capture.txt" 2>/dev/null; then break; fi
 done
+curl -s --max-time 5 http://127.0.0.1:8788/board.json | grep -Fq 'read only local mirror' || echo 'CONTENT CHECK FAILED'
 cp "$TMPDIR/queue-push-backup.md" ai/plans/README.md
 wait $SSE_PID
 grep -c '^data:' "$TMPDIR/sse-capture.txt"
 ```
 
 Expected: 1 or more `data:` lines captured (the timer recomputed, the bytes changed, the event
-fired), and the queue restored byte-identical (`git diff --stat ai/plans/README.md` empty).
-Record the count. Save the capture under `$HOME/athan-gitree/sessions/56/`.
+fired), the content check silent (the served board.json carries the mutated row name, proving
+the propagation and not just a `generatedAt` tick), and the queue restored byte-identical
+(`git diff --stat ai/plans/README.md` empty). Record both. Save the capture under
+`$HOME/athan-gitree/sessions/56/`.
 
 ```bash
 docker compose --project-directory board down
@@ -160,10 +163,11 @@ curl -s --max-time 3 http://127.0.0.1:8788/board.json | head -c 7
 echo
 docker compose --project-directory board down >/dev/null 2>&1
 [ "${ok:-0}" -eq 1 ] || { echo 'BREAK NOT APPLIED'; exit 1 }
-echo 'ALL AS EXPECTED: 3'
+echo 'sub-checks passed: 3'
+echo 'ALL AS EXPECTED: 1'
 ```
 
-Expected last line: `ALL AS EXPECTED: 3`: the line cap holds, the served stack stops answering,
+Expected last line: `ALL AS EXPECTED: 1` (with `sub-checks passed: 3` on the line before): the line cap holds, the served stack stops answering,
 and a corrupted state file is served (or the reader has already replaced it on the next tick;
 either answer passes, record which). `git status --porcelain` then lists only this plan
 folder's files.
