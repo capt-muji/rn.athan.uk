@@ -205,8 +205,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   iconContainer: {
-    paddingRight: STYLES.prayer.padding.right,
-    paddingLeft: SPACING.mid - 1,
+    paddingEnd: STYLES.prayer.padding.end,
+    paddingStart: SPACING.mid - 1,
     justifyContent: 'center',
   },
 });
