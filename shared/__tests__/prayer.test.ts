@@ -3,6 +3,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import * as Database from '@/stores/database';
 
 import { PRAYER_TIMEZONE, type PrayerId } from '../constants';
+import { setActiveLocale } from '../i18n/locale';
 import {
   calculateBelongsToDate,
   canonicalDisplayOrder,
@@ -52,6 +53,19 @@ describe('calculateBelongsToDate', () => {
       const datetime = createPrayerDatetime('2026-01-19', '00:45');
       const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-01-19', datetime);
       expect(result).toBe('2026-01-18');
+    });
+
+    it('keeps that small-hours shift working under an ar locale', () => {
+      // The hour once came from the display formatter, whose digits localise;
+      // day attribution must never follow the locale
+      setActiveLocale('ar');
+      try {
+        const datetime = createPrayerDatetime('2026-01-19', '00:45');
+        const result = calculateBelongsToDate(ScheduleType.Standard, 'isha', '2026-01-19', datetime);
+        expect(result).toBe('2026-01-18');
+      } finally {
+        setActiveLocale('en');
+      }
     });
 
     it('assigns Isha at 05:59 to previous day (before 6am cutoff)', () => {

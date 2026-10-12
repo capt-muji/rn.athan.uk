@@ -3,9 +3,10 @@
  * app finds Asr next on a tight runway that rolls a boundary roughly every minute.
  */
 
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { createPrayerDatetime, formatDateShort } from '@/shared/time';
 
-import { MOCK_DATA_SIMPLE } from '../simple';
+import { addMinutes, MOCK_DATA_SIMPLE } from '../simple';
 
 const MINUTE = 60_000;
 
@@ -41,6 +42,20 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
       expect(instantOf(readAt, today.isha) - instantOf(readAt, today.magrib)).toBe(MINUTE);
     }
   );
+
+  it('speaks Latin HH:mm under an ar locale, the format the validator reads', () => {
+    // The API payload is data, not display: the validator's TIME_PATTERN
+    // rejects localised digits, so a composed Arabic-Indic time would null
+    // the day's schedule
+    setActiveLocale('ar');
+    try {
+      const from = createPrayerDatetime('2026-09-15', '15:30');
+      expect(addMinutes(from, 65)).toBe('16:35');
+      expect(addMinutes(from, 0)).toBe('15:30');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
 
   it('seeds today again on each download, so returning to the app finds the same shape', () => {
     const firstAt = new Date('2026-09-15T14:30:10Z');
