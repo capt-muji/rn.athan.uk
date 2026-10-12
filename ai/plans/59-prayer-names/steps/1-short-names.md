@@ -25,12 +25,12 @@ stays byte-identical, and one new test pins all four.
 - `shared/i18n/th.ts` (change)
 - `shared/i18n/so.ts` (change)
 - `shared/i18n/sourced-names.json` (change)
-- `shared/i18n/dist/ar.json` (regenerate)
-- `shared/i18n/dist/en.json` (regenerate)
-- `shared/i18n/dist/ms.json` (regenerate)
-- `shared/i18n/dist/hi.json` (regenerate)
-- `shared/i18n/dist/th.json` (regenerate)
-- `shared/i18n/dist/so.json` (regenerate)
+- `shared/i18n/dist/ar.json` (regenerate on disk; gitignored, never added)
+- `shared/i18n/dist/en.json` (regenerate on disk; gitignored, never added)
+- `shared/i18n/dist/ms.json` (regenerate on disk; gitignored, never added)
+- `shared/i18n/dist/hi.json` (regenerate on disk; gitignored, never added)
+- `shared/i18n/dist/th.json` (regenerate on disk; gitignored, never added)
+- `shared/i18n/dist/so.json` (regenerate on disk; gitignored, never added)
 - `shared/__tests__/catalogGates.test.ts` (change)
 - `shared/__tests__/i18nRuntime.test.ts` (change: the `prayerLabel('last third')`
   expectation under th at line 23 becomes `ช่วงสุดท้าย`)
@@ -86,7 +86,10 @@ a STOP.
    The th entries stay `null`.
 
 3. Regenerate every dist round-trip file from the landed catalogs, never by
-   hand. The dist files are stale at `Planned at` beyond the prayer lines:
+   hand. The dist files are gitignored local artifacts (`.gitignore:4`,
+   `dist`; never tracked at any sha), like `android/app/build.gradle`: they
+   regenerate on disk and never enter the commit. They are stale at
+   `Planned at` beyond the prayer lines:
    row 63's D76 reminder copy (`notification.reminder` and `channel.reminder`,
    the unit letter dropped) reached the six catalogs but no dist file. After
    the catalog edits above, run for each locale in
@@ -97,10 +100,9 @@ a STOP.
    ```
 
    Each exits 0 and rewrites `shared/i18n/dist/<loc>.json` from the landed
-   catalog. Predicted diff: `git diff <PLANNED_AT_SHA> -- shared/i18n/dist/`
-   touches exactly the six files; ms, hi, th and so each change one
-   `prayer.*` line; all six change the two reminder keys. Any other line
-   moving is a STOP.
+   catalog. R2.2 is proven by the six import runs in the green run below,
+   asserting each on-disk file equals its landed catalog. A `git status`
+   that lists any dist file is a STOP (they must stay ignored).
 
 What the contract must never do: touch any other `prayer.*` value, `en.ts`,
 `catalog-lock.json`, or any dist file by hand (regeneration only).
@@ -139,7 +141,9 @@ Version command: the next patch after `uat`'s `package.json`
 (`mkdir $HOME/athan-gitree/version.lock`, retry in a short sleep loop while it
 exists, `rmdir` it after the merge). Set in `app.json` and `package.json`, and
 in the gitignored `android/app/build.gradle` (`versionName`) when a prebuild
-is present; the gradle file is never added. Add the fourteen files and
+is present; the gradle file is never added. Add the eight files (the four
+catalogs, `sourced-names.json`, `catalogGates.test.ts`,
+`i18nRuntime.test.ts` and `InitialWidthMeasurement.test.tsx`) and
 `app.json`/`package.json` by name plus `ai/plans/README.md` (`IN PROGRESS,
 step 1`) and the plan's `PLAN.md` and `LOG.md`. Message:
 
@@ -159,10 +163,9 @@ every other name byte-identical. R1.1-R2.2.
   changed:
   `git diff <PLANNED_AT_SHA> -- shared/i18n/ms.ts shared/i18n/hi.ts shared/i18n/th.ts shared/i18n/so.ts | grep -c '^-.*prayer\.'`
   prints exactly 4.
-- The dist diff matches the predicted shape: six files touched;
-  `git diff <PLANNED_AT_SHA> -- shared/i18n/dist/ | grep -c '^-  "'`
-  prints exactly 16 (four prayer lines plus the six files' two reminder keys
-  each).
+- The six dist files regenerated on disk and stayed ignored:
+  `git status --porcelain | grep -c dist` prints 0, and the six import runs
+  in the green run are the R2.2 proof.
 - The D81/D83 test pins all four, th and so included.
 - `catalog-lock.json` untouched.
 

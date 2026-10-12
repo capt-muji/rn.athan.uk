@@ -68,3 +68,65 @@ keeping R2.2 true as written. Second: step 2's seed-loop removal orphans the
 `database` named import in `stores/ui.ts`, which fails Biome under
 `--error-on-warnings`; contract 1 now narrows the import to `clearPrefix`.
 Gate after both: `PLAN OK`.
+
+### Step 1 — STOP (dist round-trip files are gitignored, the commit contract cannot land)
+
+Preflight `PREFLIGHT OK` on uat at `61fb7675`; the four step-1 anchors
+(`ms-lastthird`, `hi-midnight`, `th-lastthird`, `so-midnight`) each counted 1.
+Branch `feat/59-short-names` cut from uat. Red: the D81/D83 pin added verbatim
+inside `describe('the landed catalogs against the R2 gates')` failed exactly as
+predicted (`Expected: "Sepertiga malam"`, `Received: "Sepertiga akhir malam"`,
+46 passed). Change contracts 1 and 2 landed (four catalog values, two glossary
+texts, the so Midnight sourced entry, the `opentran-so-dictionary` slug beside
+`apple-so`), plus the two th suite pins; all six bridge exports exited 0 and
+rewrote the on-disk dist files. The green run was NOT started: the stop below
+was found first, and the 23:45 no-build window had passed.
+
+The stop: the six `shared/i18n/dist/*.json` round-trip files are gitignored
+local artifacts, not tracked anywhere in the repository's history, so step 1's
+commit contract and review checklist cannot be executed as written.
+
+- `.gitignore:4` is `dist`; `git check-ignore -v shared/i18n/dist/ms.json`
+  resolves to it.
+- `git ls-files shared/i18n/` lists 14 files, none under `dist/`;
+  `git ls-files | grep -c dist` prints 0.
+- `git log --all --oneline -- 'shared/i18n/dist/*'` prints nothing: never
+  committed on any branch.
+- `git show d7d95b2f:shared/i18n/dist/en.json` fails with "exists on disk, but
+  not in 'd7d95b2f'", so there is no tracked old version to diff against.
+- The contract-3 predicted diff `git diff d7d95b2f -- shared/i18n/dist/`
+  (expected: touches exactly the six files) printed nothing.
+- Consequences: "Add the fourteen files ... by name" is impossible for six of
+  the fourteen (`git add` refuses an ignored path without `-f`, and force-adding
+  would change repo policy the plan does not give); the review item
+  `git diff d7d95b2f -- shared/i18n/dist/ | grep -c '^-  "'` cannot print 16
+  because the files are absent from the base sha (even force-tracked, they
+  would diff as additions, not changes).
+
+The question for the lead: restate step 1 to (a) drop the six dist files from
+the commit set and prove R2.2 by the six on-disk import runs alone (the bridge
+regeneration stays as a working-tree step, evidence in the export logs), or
+(b) decide the dist files become tracked (force-add, a repo-policy change the
+plan must spell out). R2.2 is provable either way; only the commit list and
+the diff-count review item are broken.
+
+State on return: all eight tracked step-1 files reverted, branch
+`feat/59-short-names` deleted (no commits), tree clean. The six on-disk dist
+files hold the regenerated catalogs (the old bytes were never in git and cannot
+be restored; they are ignored artifacts and any replan regenerates them).
+Work saved to `$HOME/athan-gitree/sessions/59-exec/step1-unfinished.patch`
+(141 lines), `step1-unfinished-status.txt`, `export-ms.log`. No version lock
+was taken. Step 2 untouched.
+
+session: ses_ecdaec13dffeSXcjEbzah7hzGt
+
+## Planner ruling on the step-1 STOP (2026-10-12, the lead under the owner's no-questions instruction)
+
+Option (a): the six dist files leave the commit set and R2.2 is proven by
+the six on-disk import runs. The repo's own policy already ruled dist a
+local artifact (`.gitignore:4`, `dist`; never tracked at any sha), the same
+standing as `android/app/build.gradle`; force-tracking six generated JSONs
+would be a policy change nobody asked for. Step 1's files list, contract 3,
+review checklist and commit add list carry the repair; the regeneration
+commands stand unchanged. The executor resumes from its saved work at
+`~/athan-gitree/sessions/59-exec/`.
