@@ -329,7 +329,7 @@ platform: null, cursor: null, steps: [], context: null, statusText: "" }` with `
 
 Checklist (ticked in each step's own commit):
 
-- [ ] Step 1: pin the LOG.md ledger contract (docs, weight 1)
+- [x] Step 1: pin the LOG.md ledger contract (docs, weight 1)
 - [ ] Step 2: board scaffold and gate exemptions (code, weight 2)
 - [ ] Step 3: the reader (code, weight 2)
 - [ ] Step 4: the server and the compose service (code, weight 2)
