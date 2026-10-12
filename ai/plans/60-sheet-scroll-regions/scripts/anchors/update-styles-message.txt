@@ -1,5 +1,0 @@
-  message: {
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
-    textAlign: 'center',
-    color: COLORS.light.textSecondary,
