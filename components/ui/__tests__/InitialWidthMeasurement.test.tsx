@@ -43,3 +43,22 @@ describe('the name measurement under Thai, on a fresh install', () => {
     setActiveLocale('en');
   });
 });
+
+describe('the name measurement under Arabic, on a fresh install', () => {
+  // R7.1: the measure layer reads prayer names only, which carry no digits,
+  // so the digit localisation leaves it and the per-locale width keys as they were
+  it('measures the widest ar label of each list and stores it under the ar width key', async () => {
+    setActiveLocale('ar');
+    try {
+      await render(<InitialWidthMeasurement />);
+
+      await fireEvent(screen.getByText('الشروق'), 'layout', { nativeEvent: { layout: { width: 95 } } });
+      await fireEvent(screen.getByText('نصف الليل'), 'layout', { nativeEvent: { layout: { width: 105 } } });
+
+      expect(store.get(englishWidthAtomFor(ScheduleType.Standard))).toBe(95);
+      expect(store.get(englishWidthAtomFor(ScheduleType.Extra))).toBe(105);
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+});
