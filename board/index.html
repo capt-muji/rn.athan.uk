@@ -118,6 +118,7 @@
     if (ticket.status === 'IN PROGRESS') return 'In progress';
     if (ticket.status === 'READY') return 'Ready';
     if (ticket.status === 'EXECUTED') return 'Audit';
+    if (ticket.status === 'DEFERRED') return 'Deferred';
     return 'Not planned';
   }
 
@@ -195,11 +196,11 @@
     const columns = document.getElementById('columns');
     columns.textContent = '';
     const byColumn = new Map(COLUMNS.map((name) => [name, []]));
-    const unmapped = [];
+    const deferred = [];
     for (const ticket of board.tickets) {
       const placed = displayColumn(ticket);
       if (byColumn.has(placed)) byColumn.get(placed).push(ticket);
-      else if (ticket.column === 'Unmapped' || placed === 'Unmapped') unmapped.push(ticket);
+      else if (ticket.column === 'Deferred' || placed === 'Deferred') deferred.push(ticket);
     }
     const inFlight = byColumn.get('In progress');
     const sharedGroup = inFlight.length === 2 && inFlight[0].group !== null && inFlight[0].group === inFlight[1].group;
@@ -214,7 +215,7 @@
         columns.append(columnEl(name, tickets));
       }
     }
-    if (unmapped.length > 0) columns.append(columnEl('Unmapped', unmapped));
+    if (deferred.length > 0) columns.append(columnEl('Deferred', deferred));
   }
 
   function renderFoot() {
