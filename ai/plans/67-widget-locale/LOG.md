@@ -68,3 +68,41 @@ isolated 14-failure attribution), `contaminated-run.log`,
 3→4 twice; regenerate or restructure the 12 digests), then re-apply the patch.
 
 session: ses_ece6cb14bffeFufEL4OKXBWtEi
+
+## Planning (2026-10-12, repair pass)
+
+The step-1 stop named three test sites the plan never enumerated. Repaired at
+`7011229e`: the preflight run from this tree prints `PREFLIGHT OK` (all
+fifteen anchors recount 1), the saved `step1-sixfiles.patch` applies cleanly,
+and the twelve post-change digests were extracted from the isolated rerun's
+failure log and pinned into change contract 7, so the re-gold is verified
+against measured values, not tautology. The red section gained a resume route:
+apply the patch, save off the three implementation files, revert them, re-run
+the red command, re-apply. Files, change contracts, green run, commit add
+list, review checklist, restore list and PLAN section 10 now carry the three
+sites and the two Biome format wraps. Between `d6ca9ade` and `7011229e`
+ticket 63's execution landed (`shared/time.ts`, the i18n locale files, their
+suites) beside the `widgetTypes.ts` doc reword; none of it touches the
+timeline serialization, proven by the simulation goldens being byte-identical
+at both shas with all 65 cases passing at `7011229e`. The owner's standing
+instruction from the queue-clearing runs governs: no questions, findings
+become rows.
+
+Grill round one of the repair (six findings, all applied): the resume route
+now names the sixth red failure (the patch carries contract 5's
+expected-object edit, so the stale-card case fails against the reverted
+builder), the between-shas sentence states the true drift (ticket 63's
+execution landed beside the doc reword; the unchanged goldens prove no
+hash-relevant byte moved, 65 cases passing at `7011229e`), the section 10 pin
+row carries jest's true direction (`Expected: 3, Received: 4`), the resume
+route says the patch already delivers contracts 1 to 5, the digest table's
+last row sits at `:698`, and contract 8 names the `localiseDigits` keying
+line biome leaves unchanged.
+
+Grill round two of the repair (two findings, both applied): the execution
+paragraph counts fourteen failing cases plus two format errors and drops the
+contract pins from that list (they pass once the implementation lands), and
+the red expected output names `undefined` and `false` for the two locale
+assertions. Planner pass after both rounds: the commit add list drops
+`android/app/build.gradle` (gitignored and untracked: bump it on disk, never
+add it). Gate after all of it: `PLAN OK`.
