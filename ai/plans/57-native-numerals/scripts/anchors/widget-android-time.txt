@@ -1,6 +1,0 @@
-      day.rows.push({
-        id: prayer.id,
-        name: prayerLabel(prayer.id),
-        time: prayer.time,
-        epochMs: prayer.datetime.getTime(),
-      });
