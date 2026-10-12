@@ -39,13 +39,14 @@ STOP.
 
 ## Change contract
 
-In `ai/plans/TEMPLATE.md`, inside section 8 (Records), after the two existing sentences and
-before section 9's heading, add exactly:
+In `ai/plans/TEMPLATE.md`, in the "Sections, in order" bullet list, directly after the bullet
+8 line ending `lead applies on DONE, the docs commit message.` and before the
+`- **9. Push.**` bullet, add exactly one bullet:
 
 ```markdown
-The ledger contract the ticket board parses (job 56): every step entry in `LOG.md` opens with
-the heading `### Step <NN> — <state>` and ends with a line `session: <ses_id>`. Planning
-sections use `## Planning (<date>)` and `## Job <N>`.
+- **LOG.md ledger contract** (job 56): every step entry in `LOG.md` opens with the heading
+  `### Step <NN> — <state>` and ends with a line `session: <ses_id>`. Planning sections use
+  `## Planning (<date>)` and `## Job <N>`.
 ```
 
 In `.opencode/agents/athan-executor.md`, in the Ledger section, append to the end of the

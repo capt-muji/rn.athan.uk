@@ -42,18 +42,21 @@ One file, `board/reader.mjs`, plain Node 24 modules, no imports outside `node:` 
 functions, these names, these answers:
 
 - `main(argv)`: parses `--repo <path>` (default `process.cwd()`), `--state <dir>` (default
-  `<repo>/board/state`), `--config <file>` (default `<repo>/board/config.json`). Orchestrates
+  `<repo>/board/state`), `--config <file>` (default `<repo>/board/config.json`),
+  `--db <path>` (default `$HOME/.local/share/opencode/opencode.db` when that file exists, else
+  null: skipped), `--handoffs <dir>` (default `<repo>/.local-handoffs`). Orchestrates
   the functions below, writes the output, prints one stdout line, exits 0. Exit 1 with stderr
   `board-reader: cannot read <path>` only when `ai/plans/README.md` is unreadable. Every other
   missing input degrades per its function.
 - `readConfig(file)`: JSON parse; missing file or missing keys answer the defaults from step 2
   (`port 8788, host 127.0.0.1, reconcileMs 15000, doneColumnCount 5`). The reader itself uses
   only `doneColumnCount`.
-- `parseQueue(markdown)`: returns `{ open: [...], doneOrders: [...] }`. Table 1 rows split to 5
-  pipe-fields, table 2 rows to 7. A row of either table whose status field starts with `DONE`
-  contributes its integer order to `doneOrders` (table 2 holds five DONE rows today: 18, 38,
-  39, 55, 57). Table 2 rows not DONE yield
-  `{ order, name, brief, statusCell, needsCell }` (integer order, trimmed strings).
+- `parseQueue(markdown)`: returns `{ open: [...], doneRows: [...], doneOrders: [...] }`.
+  Table 1 rows split to 5 pipe-fields, table 2 rows to 7. A row of either table whose status
+  field starts with `DONE` contributes `{ order, name }` to `doneRows` and its integer order
+  to `doneOrders` (table 2 holds five DONE rows today: 18, 38, 39, 55, 57). Table 2 rows not
+  DONE yield `{ order, name, brief, statusCell, needsCell }` (integer order, trimmed
+  strings).
 - `mapStatus(statusCell)`: returns `{ status, column, cursor, statusText, rendered }`.
   `rendered: false` for leading `CANCELLED` and `SUPERSEDED`. `cursor` is the first
   `step (\d+)` capture in the cell, else null. Column mapping in this match order on leading
@@ -72,9 +75,10 @@ functions, these names, these answers:
   `- [x] Step 3:` / `- [ ] Step 1:` (pattern `- \[([ x])\] Step (\d+):`), each
   `{ n, weight, ticked }` where `weight` is the `Weight: <n>` value from
   `steps/<k>-*.md` matched by the same step number (weight 1 when a step file is missing).
-- `platformOf(planPath)`: reads every `steps/*.md`, collects path-like tokens starting with
-  `android/`, `ios/`, `shared/`. Only android: Android. Only ios: iOS. Both, or any shared:
-  Both. None: null.
+- `platformOf(planPath)`: reads every `steps/*.md`, but only the backticked path tokens in
+  each step's `## Files` section (the lines between `## Files` and the next `##` heading),
+  collecting tokens starting with `android/`, `ios/`, `shared/`. Only android: Android. Only
+  ios: iOS. Both, or any shared: Both. None: null.
 - `parseLogSessions(logPath)`: every line matching `^session: (ses_\S+)`, in file order, when
   `LOG.md` exists, else `[]`.
 - `readRefs(repo)`: `{ uat, originUat }`, 12-character short shas. Read
@@ -95,9 +99,13 @@ functions, these names, these answers:
 - `ensureState(stateDir)`: `mkdirSync(recursive)`, then writes `.gitignore` holding exactly `*`
   plus a newline when that file does not exist. The state file write is temp file plus rename,
   so a served read never sees a torn file.
-- Output assembly: the exact schema of PLAN.md section 5, `tickets` in queue table order,
-  `steps` empty when no plan folder, `context` from `readContext` over `parseLogSessions`,
-  `doneCount` from `doneOrders.length`, `generatedAt` a fresh ISO string. JSON with 2-space
+- Output assembly: the exact schema of PLAN.md section 5, `tickets` in queue table order
+  followed by the Done-column tickets, `steps` empty when no plan folder, `context` from
+  `readContext` over `parseLogSessions`, `doneCount` from `doneOrders.length`, `generatedAt` a
+  fresh ISO string. Done emission per PLAN.md section 5: the `doneColumnCount` (config)
+  highest-order DONE orders yield tickets; an open-table DONE row parses like any open row, a
+  first-table DONE row yields the stub with empty `needs`, `steps`, `statusText: ""` and
+  `column: "Done"`. JSON with 2-space
   indent, trailing newline, fixed key order as written in the schema.
 - The stdout summary line, exactly:
   `board.json written: <N> tickets, <M> done, generatedAt <ISO>`.
@@ -119,15 +127,37 @@ if (!Number.isInteger(b.doneCount) || b.doneCount < 40) throw new Error('doneCou
 console.log('reader assertions passed');
 EOF
 node board/reader.mjs --repo . --state board/state >/dev/null
-sed 's/"generatedAt": "[^"]*"/"generatedAt": "X"/' board/state/board.json > "$TMPDIR/b1.json"
+sed 's/"generatedAt": "[^"]*"/"generatedAt": "X"/; s/"ageMs": [0-9]*/"ageMs": 0/' board/state/board.json > "$TMPDIR/b1.json"
 node board/reader.mjs --repo . --state board/state >/dev/null
-sed 's/"generatedAt": "[^"]*"/"generatedAt": "X"/' board/state/board.json > "$TMPDIR/b2.json"
+sed 's/"generatedAt": "[^"]*"/"generatedAt": "X"/; s/"ageMs": [0-9]*/"ageMs": 0/' board/state/board.json > "$TMPDIR/b2.json"
 cmp "$TMPDIR/b1.json" "$TMPDIR/b2.json" && echo 'deterministic: identical bytes'
 git check-ignore board/state/board.json && echo 'state ignored'
 ```
 
 Expected: `reader assertions passed`, `deterministic: identical bytes`, `state ignored`, and
-the reader's own summary line on each run. Record all four.
+the reader's own summary line on each run. Record all four. Then the context fixture, proving
+the positive branch of R4.1 without touching the repository's real handoff cache:
+
+```bash
+mkdir -p "$TMPDIR/fixture-handoffs"
+FIRST_SESSION=$(grep -oE 'session: ses_\S+' ai/plans/56-ticket-board/LOG.md | head -1 | cut -d' ' -f2)
+cat > "$TMPDIR/fixture-handoffs/index.json" <<EOF
+[{"file":"f.md","title":"fixture","sourceSession":"$FIRST_SESSION","createdMs":1,"updatedMs":2,"nextAction":"x","status":"in-progress","branch":"uat","scope":"x","words":10}]
+EOF
+cat > "$TMPDIR/fixture-handoffs/f.md" <<EOF
+---
+context_pct: 55.5
+updated_at: "2026-10-12T10:00:00.000Z"
+---
+EOF
+node board/reader.mjs --repo . --state board/state --handoffs "$TMPDIR/fixture-handoffs" >/dev/null
+node -e "const b=JSON.parse(require('node:fs').readFileSync('board/state/board.json','utf8'));const t=b.tickets.find(x=>x.order===56);if(!t.context||t.context.pct!==55.5){console.error('fixture context not read: '+JSON.stringify(t.context));process.exit(1)}console.log('fixture context read: 55.5')"
+node board/reader.mjs --repo . --state board/state >/dev/null
+```
+
+Expected: `fixture context read: 55.5`. The final run restores the real `board.json`. LOG.md
+holds the step 1 and step 2 session lines when this step runs; if the grep finds no session
+line, STOP: the ledger contract pinned in step 1 is not being written.
 
 ## Break script
 

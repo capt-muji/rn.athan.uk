@@ -46,7 +46,7 @@ Structure and behaviour:
 
 - Loads `board.json` with `fetch('/board.json')`, renders, then opens
   `new EventSource('/events')` and refetches on every message without reloading the page.
-- Header band: repository version, `uat` short sha, an unpushed badge when `repo.unpushed` is
+- Header band: the page heading is `Ticket board`, followed by the repository version, the `uat` short sha, an unpushed badge when `repo.unpushed` is
   true, `activeNow` shown as a live dot, and the staleness stamp: the age of `generatedAt`,
   stamped stale past 30000 ms (twice the reconcile interval).
 - One aurora line: a single gradient horizontal line under the header, nothing else animated.

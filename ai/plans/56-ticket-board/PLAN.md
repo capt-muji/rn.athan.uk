@@ -83,9 +83,13 @@ From the owner, 2026-10-12, planning interview round 1 (this session):
 Planner-taken mechanics, each the settled consequence of a recorded ruling (override at audit
 costs nothing):
 
-- Default config: port 8788, host 127.0.0.1, reconcile every 15000 ms, Done column shows the 5
-  most recent DONE rows. All four sit in `board/config.json` with these values and can be
+- Default config: port 8788, host 127.0.0.1, reconcile every 15000 ms, Done column shows the
+  5 highest-order DONE rows. All four sit in `board/config.json` with these values and can be
   changed per project ("a per-project config file with defaults when absent").
+- The reader takes `--db <path>` (default: `$HOME/.local/share/opencode/opencode.db` when it
+  exists, else skipped) and `--handoffs <dir>` (default `<repo>/.local-handoffs`). The compose
+  command passes `--db /opencode/opencode.db`, which the ruled degradation path answers with
+  `activeNow: false` when the mount is empty.
 - Committed-state reading without a git binary: `node:24-alpine` ships no git (verified
   2026-10-12: `git: not found`, node v24.21.0), so the reader compares
   `.git/refs/heads/uat` against `.git/refs/remotes/origin/uat` as files, falling back to
@@ -122,8 +126,8 @@ costs nothing):
 
 ## 3. Pre-flight
 
-`scripts/preflight-56.sh` in this folder. The executor saves a copy to `$TMPDIR` and runs it
-from there. It checks: checkout on `uat`, clean tree, `origin` fetched and merged in, version at
+`scripts/preflight-56.sh` in this folder. The executor saves a copy to `$TMPDIR` and runs the
+saved copy with the repository as the working directory. It checks: checkout on `uat`, clean tree, `origin` fetched and merged in, version at
 least 2.0.67, every Needs-first row DONE (none), every anchor count exactly 1, `node` 24+, and
 `docker compose version` answering. It ends `PREFLIGHT OK`.
 
@@ -268,7 +272,11 @@ Planning, `READY` to Ready, `EXECUTED` to Audit, `DONE` to Done, `BLOCKED` to Bl
 `OWNER-LED` to Owner-led, `CANCELLED` and `SUPERSEDED` to not rendered, anything else to
 Unmapped. Platform computation per the amended ruling: only `android/` paths is Android, only
 `ios/` is iOS, `android/` plus `ios/`, or any `shared/` path, is Both, none of them is null.
-Done holds the 5 highest-order DONE tickets; `doneCount` carries the total.
+Done emission: the 5 highest-order DONE orders each yield a ticket. A DONE row of the open
+table parses like any open row. A DONE row of the first table, whose row carries only order,
+name and status, yields `{ order, name, needs: [], needsMet: [], parent: null, group: null,
+platform: null, cursor: null, steps: [], context: null, statusText: "" }` with `column: "Done"`.
+`doneCount` carries the total DONE count across both tables.
 
 ### Acceptance criteria
 
@@ -286,8 +294,7 @@ Done holds the 5 highest-order DONE tickets; `doneCount` carries the total.
   platform Android; only `ios/`, iOS; both, or any `shared/` path, Both; none of the three,
   null; and WHEN no plan folder exists THE SYSTEM SHALL set platform null.
 - [R3.1] WHEN `.git/refs/heads/uat` differs from `.git/refs/remotes/origin/uat`, on either side falling back to packed-refs, THE SYSTEM SHALL set `unpushed: true` with the short local sha in `repo.uat`.
-- [R3.2] WHEN the reader runs twice with no input change THE SYSTEM SHALL produce byte-identical
-  `board.json` except `generatedAt`.
+- [R3.2] WHEN the reader runs twice with no input change THE SYSTEM SHALL produce byte-identical `board.json` except `generatedAt` and `context.ageMs`.
 - [R4.1] WHEN a session id in a ticket's LOG.md has a newest handoff document carrying numeric `context_pct` THE SYSTEM SHALL set the ticket's `context` with that value and its age from `updated_at`, and WHEN no document answers or a field is shaped differently THE SYSTEM SHALL set `context: null` and continue.
 - [R4.2] WHEN the opencode database is absent or unreadable THE SYSTEM SHALL set `activeNow:
   false` and exit 0, and WHEN it answers and a session row for this repository directory was
@@ -307,9 +314,7 @@ Done holds the 5 highest-order DONE tickets; `doneCount` carries the total.
   column per swipe at 88vw.
 - [R6.4] WHEN `generatedAt` is older than twice the reconcile interval THE SYSTEM SHALL stamp
   the board stale.
-- [R7.1] WHEN a board `.mjs` file is staged THE SYSTEM SHALL pass
-  `node scripts/check-changed-coverage.js --staged` through the `board/` UNMEASURED entry, and
-  `npx biome check board/` SHALL exit 0 because the folder is excluded.
+- [R7.1] WHEN a board `.mjs` file is staged THE SYSTEM SHALL pass `node scripts/check-changed-coverage.js --staged` through the `board/` UNMEASURED entry, and `npx biome check . --error-on-warnings` SHALL exit 0 with unformatted board files present, their exclusion keeping them unchecked.
 - [R7.2] WHEN `yarn validate` runs with board code present THE SYSTEM SHALL produce the same
   result as before this job (board code invisible to tsc, biome and Jest).
 - [R8.1] WHEN an executor appends a LOG.md entry after step 1 THE SYSTEM SHALL parse its
@@ -350,8 +355,8 @@ bind mount (1531 sessions, directory filter, ExperimentalWarning only); refs rea
 (uat 665c8926 vs origin 3b2ec6cb); SSE answered text/event-stream on 127.0.0.1:8788; queue
 tables split clean on pipes. Interview round 1: D62 board/ at root, D63 fully outside the
 gates, D64 README.md carries the section, D65 the LOG contract is pinned in this job. Grill
-round 1: <count> findings, all applied. `bash scripts/check-plan.sh` prints PLAN OK. Row set
-READY.
+round 1: <count> findings, all applied. `bash scripts/check-plan.sh ai/plans/56-ticket-board`
+prints PLAN OK. Row set READY.
 ```
 
 The queue-row cell text the lead applies on DONE:
@@ -360,7 +365,7 @@ The queue-row cell text the lead applies on DONE:
 DONE <date>, audited and pushed: the ticket board serves at 127.0.0.1:8788 (docker compose up in board/) - reader recomputes board.json from committed state every 15s, SSE pushes without refresh, the A5 design and the 390px phone page render the eight columns, platform pills are computed from plan file lists (D62-D65; board code outside the validate gates per the owner's ruling). LOG.md ledger contract pinned (step 1) so the step rail reads a contract, not a habit. The board is derived and disposable; iterations are queue rows
 ```
 
-The docs commit message: `<VERSION> - docs(board): job 56 ticket board, deploy and vocabulary`.
+The lead's DONE-time docs commit message: `<VERSION> - docs(board): job 56 ticket board, deploy and vocabulary`.
 
 ## 9. Push
 
