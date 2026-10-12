@@ -213,7 +213,7 @@ step adds.
 One sentence a check can verify: **the board is a pure function of committed repository state
 plus two machine-local caches, recomputed idempotently on a timer, pushed over SSE, and rendered
 by one template; change nothing but the inputs and the output bytes are identical except
-`generatedAt`.**
+`generatedAt` and `context.ageMs`.**
 
 ### Alternatives rejected
 
@@ -248,7 +248,7 @@ The example shows the planning-time row for ticket 56; during execution its stat
   "reconcileMs": 15000,
   "repo": { "version": "2.0.67", "uat": "665c8926", "originUat": "3b2ec6cb", "unpushed": true },
   "activeNow": true,
-  "doneCount": 53,
+  "doneCount": 47,
   "tickets": [
     {
       "order": 56,
@@ -399,8 +399,9 @@ Anticipated review fixes, word for word:
   under-60 ruling is a hard cap (R5.3).
 - Reviewer: "the template fetches a font". Fix: system font stack only; self-contained means no
   network.
-- Reviewer: "compose mounts the whole home directory". Fix: only the four named paths
-  (repo, board, state, opencode dir) are mounted, each `:ro` except state.
+- Reviewer: "compose mounts the whole home directory". Fix: only the three mounts exist
+  (`/repo` read-only, which contains `board/`, the opencode dir read-only, and the state
+  volume).
 
 Restore lists per step sit in each step file.
 
