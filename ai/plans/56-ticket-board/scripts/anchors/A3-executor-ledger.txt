@@ -1,4 +1,4 @@
-ticked step. If your context fills mid-step, write `Resume from: step k, part m`
-at the top of `LOG.md`, commit and merge what finished, and return: the lead
-respawns you from that note.
-
+`LOG.md` in the plan folder is your state. Append to it as each step lands: the
+step and branch, the commit sha and version, the hook's `Tests:` and coverage
+lines, the break script's last line, your review verdict, the merge sha, and a
+final line `session: $OPENCODE_SESSION_ID` (your own session, from your

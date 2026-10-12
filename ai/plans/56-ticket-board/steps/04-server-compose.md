@@ -31,28 +31,40 @@ git checkout -b feat/56-04-server-compose uat
 
 ## Red check
 
+Save as `$TMPDIR/red-56-04.sh`, run with `bash` (never inline: the executor's shell is zsh and
+pipe status differs):
+
 ```bash
-node board/server.mjs 2>&1 | head -1; echo "exit: ${PIPESTATUS[0]:-$?}"
-docker compose --project-directory board config >/dev/null 2>&1; echo "compose exit: $?"
+#!/usr/bin/env bash
+set -u
+node board/server.mjs --repo . --state board/state > "$TMPDIR/red-56-04.out" 2>&1
+echo "node exit: $?"
+head -1 "$TMPDIR/red-56-04.out"
+docker compose --project-directory board config >/dev/null 2>&1
+echo "compose exit: $?"
 ```
 
-Expected today: node exits nonzero (`Cannot find module`), compose exits 1 (no compose file).
-Record both. Any other outcome is STOP.
+Expected today: `node exit: 1`, a first line beginning `node:internal/modules/cjs/loader`
+(`Cannot find module` naming server.mjs), `compose exit: 1` (no compose file). Record all
+three. Any other outcome is STOP.
 
 ## Change contract
 
 `board/server.mjs`, at most 60 lines (`wc -l` proves R5.3), plain `node:` imports only:
 
-- Parses the same `--repo`, `--state`, `--config` flags as the reader, same defaults.
+- Parses the same `--repo`, `--state`, `--config`, `--db`, `--handoffs` flags as the reader,
+  same defaults, plus `--host <addr>` (default: the config's host). The compose command passes
+  `--host 0.0.0.0`, because a container loopback bind is unreachable through a published port;
+  the published `ports:` line is what keeps the board host-local.
 - Three routes: `/` serves `<repo>/board/index.html` when it exists (404 before step 5
   lands), `/board.json` serves the state file, `/events` answers
   `content-type: text/event-stream` and stays open.
-- Spawns `node <repo>/board/reader.mjs` with the same flags once at start, then every
-  `reconcileMs` from the config; a spawn still running means the tick is skipped (one
-  in-flight flag).
+- Spawns `node <repo>/board/reader.mjs` with the same `--repo`, `--state`, `--db`,
+  `--handoffs` flags once at start, then every `reconcileMs` from the config; a spawn still
+  running means the tick is skipped (one in-flight flag).
 - On the state file's bytes changing (watch the state directory, compare bytes), writes
   `data: rev\n\n` to every open `/events` socket and drops closed sockets from the set.
-- Listens on the config's `host` and `port`.
+- Listens on the resolved host and the config's `port`.
 - No other route, no request body parsing, no file serving outside the two named files.
 
 `board/docker-compose.yml`, exactly:
@@ -61,9 +73,8 @@ Record both. Any other outcome is STOP.
 services:
   board:
     image: node:24-alpine
-    user: "${DOCKER_UID:-1000}:${DOCKER_GID:-100}"
     working_dir: /repo/board
-    command: node /repo/board/server.mjs --repo /repo --state /state
+    command: node /repo/board/server.mjs --repo /repo --state /state --host 0.0.0.0 --db /opencode/opencode.db
     ports:
       - "127.0.0.1:${BOARD_PORT:-8788}:8788"
     environment:
@@ -76,42 +87,48 @@ volumes:
   board-state:
 ```
 
-The reader resolves the database path itself: `REPO_DIR_IN_DB` non-empty makes it read
-`${OPENCODE_DIR}/opencode.db` when that file exists; the exact wiring is the reader's
-`activeNow` contract from step 3 with the container path `/opencode/opencode.db` passed by
-`server.mjs` as the db path whenever `/opencode/opencode.db` exists. Nothing in this step
-changes `board/reader.mjs`.
+No `user:` line: a fresh named volume is root-owned and a non-root container user cannot write
+it. The service runs as the image default, which is root inside the container only; the
+published address stays 127.0.0.1 on the host. Nothing in this step changes
+`board/reader.mjs`: the reader's `--db` contract from step 3 already answers false when
+`/opencode/opencode.db` is absent.
 
 ## Green run
 
 ```bash
-REPO_DIR_IN_DB=$(cd . && pwd) docker compose --project-directory board up -d
+REPO_DIR_IN_DB=$(pwd) OPENCODE_DIR=$HOME/.local/share/opencode docker compose --project-directory board up -d
 sleep 6
-curl -s --max-time 5 http://127.0.0.1:8788/board.json | head -c 120; echo
+curl -s --max-time 5 http://127.0.0.1:8788/board.json | head -c 40; echo
+curl -s --max-time 5 http://127.0.0.1:8788/board.json | grep -o '"activeNow": true' || echo 'ACTIVE CHECK FAILED'
 curl -s --max-time 5 -D - -o /dev/null http://127.0.0.1:8788/events | grep -i 'text/event-stream'
 curl -s --max-time 5 -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8788/
 wc -l board/server.mjs
 ```
 
-Expected: a `board.json` prefix beginning `{ "schemaVersion": 1`, the SSE content type line,
-`404` (the template is step 5), and `60` or fewer lines. Record all four. Then the push proof:
+Expected: the board.json prefix reads `{
+  "schemaVersion": 1` (2-space indent), the active check prints `"activeNow": true` (the
+database is mounted and `REPO_DIR_IN_DB` names this directory; this is the positive branch of
+R4.2), the SSE content type line, `404` (the template is step 5), and 60 or fewer lines.
+Record all five. Then the push proof:
 
 ```bash
 cp ai/plans/README.md "$TMPDIR/queue-push-backup.md"
 ( curl -sN --max-time 25 http://127.0.0.1:8788/events > "$TMPDIR/sse-capture.txt" ) &
 SSE_PID=$!
 sleep 2
-sed -i '' 's/| PLANNING since 2026-10-12/| PLANNING since 2026-10-13/' ai/plans/README.md
-sleep 20
+sed -i '' 's/| Ticket board: a read-only local mirror/| Ticket board: a read only local mirror/' ai/plans/README.md
+for i in 1 2 3 4 5; do
+  sleep 4
+  if grep -q '^data:' "$TMPDIR/sse-capture.txt" 2>/dev/null; then break; fi
+done
 cp "$TMPDIR/queue-push-backup.md" ai/plans/README.md
 wait $SSE_PID
 grep -c '^data:' "$TMPDIR/sse-capture.txt"
 ```
 
 Expected: 1 or more `data:` lines captured (the timer recomputed, the bytes changed, the event
-fired), and the queue restored byte-identical
-(`git diff --stat ai/plans/README.md` empty). Record the count. Save the capture under
-`$HOME/athan-gitree/sessions/56/`.
+fired), and the queue restored byte-identical (`git diff --stat ai/plans/README.md` empty).
+Record the count. Save the capture under `$HOME/athan-gitree/sessions/56/`.
 
 ```bash
 docker compose --project-directory board down
@@ -166,7 +183,8 @@ files. Commit message:
 - `wc -l board/server.mjs` is 60 or fewer in the committed file.
 - The compose file matches the contract byte for byte; only the three mounts exist, two
   read-only, one named volume.
-- The port publishes on 127.0.0.1 only, never 0.0.0.0.
+- The published address is `127.0.0.1` only (the in-container bind is `0.0.0.0` by
+  necessity; the `ports:` line is what keeps the board host-local).
 - No console logging in the server; failures exit nonzero with a stderr line.
 
 ## Merge
