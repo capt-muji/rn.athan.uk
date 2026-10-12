@@ -1,0 +1,9 @@
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderRadius: RADIUS.md,
+    paddingVertical: SPACING.sm,
+    paddingLeft: SPACING.md,
+    paddingRight: SPACING.sm,
+    gap: SPACING.sm,
+  },
+  optionLabel: {
