@@ -63,7 +63,10 @@ const scanTree = (root = ROOT) => {
 const applyAllowlist = (hits, entries = JSON.parse(fs.readFileSync(ALLOWLIST, 'utf8'))) => {
   const consumed = new Set();
   const remainder = hits.filter((hit) => {
-    const index = entries.findIndex((entry) => entry.file === hit.file && hit.text.includes(entry.snippet));
+    // One entry absorbs one hit: a second copy of an allowlisted line must stay visible
+    const index = entries.findIndex(
+      (entry, i) => !consumed.has(i) && entry.file === hit.file && hit.text.includes(entry.snippet)
+    );
     if (index === -1) return true;
     consumed.add(index);
     return false;
