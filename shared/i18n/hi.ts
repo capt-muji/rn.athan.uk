@@ -82,7 +82,7 @@ export const hi = {
   'whatsNew.body.qiblaCompass':
     'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
   'notification.now': '{name} अब',
-  'notification.reminder': '{name} {n}मि. में',
+  'notification.reminder': '{name} {n} में',
   'sheet.closeToSave': 'सहेजने के लिए बंद करें',
   'alert.card.athan': 'अज़ान',
   'alert.card.athanHint': 'नमाज़ के समय सूचना',
@@ -172,7 +172,7 @@ export const hi = {
   'widget.refreshTail': 'रिफ्रेश के लिए',
   'settings.language': 'भाषा',
   'language.applying': 'लागू हो रहा है…',
-  'channel.reminder': 'रिमाइंडर: {name} {n}मि. में',
+  'channel.reminder': 'रिमाइंडर: {name} {n} में',
   'qibla.cardinal.n': 'उ',
   'qibla.cardinal.e': 'पू',
   'qibla.cardinal.s': 'द',

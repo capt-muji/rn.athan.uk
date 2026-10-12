@@ -82,7 +82,7 @@ export const th = {
   'whatsNew.body.qiblaCompass':
     'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
   'notification.now': '{name} ตอนนี้',
-  'notification.reminder': '{name} อีก {n} นาที',
+  'notification.reminder': '{name} อีก {n}',
   'sheet.closeToSave': 'ปิดเพื่อบันทึก',
   'alert.card.athan': 'อะซาน',
   'alert.card.athanHint': 'แจ้งเตือนเมื่อถึงเวลาละหมาด',
@@ -170,7 +170,7 @@ export const th = {
   'widget.refreshTail': 'เพื่อรีเฟรช',
   'settings.language': 'ภาษา',
   'language.applying': 'กำลังปรับใช้…',
-  'channel.reminder': 'แจ้งเตือนล่วงหน้า {name} อีก {n} นาที',
+  'channel.reminder': 'แจ้งเตือนล่วงหน้า {name} อีก {n}',
   'qibla.cardinal.n': 'N',
   'qibla.cardinal.e': 'E',
   'qibla.cardinal.s': 'S',

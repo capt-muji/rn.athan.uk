@@ -83,7 +83,7 @@ export const ms = {
   'whatsNew.body.qiblaCompass':
     'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
   'notification.now': '{name} sekarang',
-  'notification.reminder': '{name} dalam {n}m',
+  'notification.reminder': '{name} dalam {n}',
   'sheet.closeToSave': 'Tutup untuk simpan',
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Notifikasi pada waktu solat',
@@ -173,7 +173,7 @@ export const ms = {
   'widget.refreshTail': 'untuk muat semula',
   'settings.language': 'Bahasa',
   'language.applying': 'Menerapkan…',
-  'channel.reminder': 'Peringatan {name} dalam {n}m',
+  'channel.reminder': 'Peringatan {name} dalam {n}',
   'qibla.cardinal.n': 'U',
   'qibla.cardinal.e': 'T',
   'qibla.cardinal.s': 'S',

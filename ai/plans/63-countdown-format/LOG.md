@@ -85,3 +85,45 @@ android/app/build.gradle versionName set to 2.0.129 in the main checkout,
 never git-added).
 
 session: ses_ece59c1c9ffess0PpEuF3XrmKe
+
+Step 1 commit: `c720391` on `feat/63-colon-formatters` (2.0.129). The worktree
+lacked the generated `.husky/_` shims, so the first commit attempt ran no hook;
+the shims were copied in, the commit soft-reset and re-committed with the hook
+live: `Tests: 2 skipped, 5468 passed, 5470 total`, coverage `Statements 100%
+(5188/5188)`, `Branches 100% (2221/2221)`, `Functions 100% (1081/1081)`,
+`Lines 100% (4645/4645)`, exit 0. Stale pre-194ed701 copies of app.json and
+package.json were restored to HEAD in the main checkout (index and worktree)
+to unblock the merge; the planner's own staged README edit was left untouched.
+
+### Step 2 — DONE
+
+Branch `feat/63-reminder-copy` off uat `49c58aea` (step 1's merge), same
+scratch worktree. Anchor check: all seven step-2 anchors count 1.
+
+Red: notifications + prayerIdContract + i18nBridge ran 8 failed / 85 passed,
+every failure carrying the old letter strings in Received (the `m`, ` د`,
+`मि.`, `d`, `นาที` tokens); catalogLock still passed against the unchanged
+catalogs.
+
+Change: the twelve catalog values replaced after a `grep -F` count of 1 each
+(en, ar, ms, hi, so, th × notification.reminder + channel.reminder). `yarn
+i18n:lock` printed `catalog lock written for ar, ms, so, hi, th`; the
+catalog-lock diff shows five changed hashes and nothing else. `yarn
+i18n:export` printed the expected jest trace naming
+`Object.exit (shared/__tests__/i18nBridge.test.ts:38:11)`, and
+`grep '"notification.reminder"' shared/i18n/dist/en.json` printed
+`"{name} in {n}"`; nothing from dist is committed.
+
+Green: the five suites (notifications, prayerIdContract, i18nBridge,
+catalogLock, i18n) 103/103; `npx tsc --noEmit` exit 0; `npx biome check .
+--error-on-warnings` exit 0 (430 files).
+
+Break: `bash $TMPDIR/break-step2.sh` printed `break applied: unit token
+restored in en notification.reminder`, `caught: reminder title regains the
+unit token` and ended `ALL AS EXPECTED: 1`; the tree then listed exactly the
+step's ten files plus this LOG.
+
+Version 2.0.130 (next patch after uat's 2.0.129, under the version lock;
+gradle versionName set to 2.0.130 in the main checkout, never git-added).
+
+session: ses_ece59c1c9ffess0PpEuF3XrmKe
