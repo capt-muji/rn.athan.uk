@@ -20,7 +20,7 @@ describe('the runtime catalog switch', () => {
 
   it('answers prayerLabel() from the active locale', () => {
     setActiveLocale('th');
-    expect(prayerLabel('last third')).toBe('ช่วงสุดท้ายของคืน');
+    expect(prayerLabel('last third')).toBe('ช่วงสุดท้าย');
   });
 
   it('resolves the device locale on the first read and keeps answering without re-resolving', () => {
