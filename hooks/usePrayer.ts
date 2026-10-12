@@ -87,7 +87,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
   const isStandard = type === ScheduleType.Standard;
   // Read inside the hook so the remount after a switch re-subscribes under the new locale's key
-  const maxEnglishWidth = useAtomValue(nameWidthAtomFor(type));
+  const maxNameWidth = useAtomValue(nameWidthAtomFor(type));
 
   // Filter prayers to current displayDate
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
@@ -105,7 +105,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
       isPassed: false,
       isNext: false,
       isOverlay,
-      ui: { initialColorPos: 0, maxEnglishWidth },
+      ui: { initialColorPos: 0, maxEnglishWidth: maxNameWidth },
     };
   }
 
@@ -122,7 +122,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
     isOverlay,
     ui: {
       initialColorPos: isPassed || isNext ? 1 : 0,
-      maxEnglishWidth,
+      maxEnglishWidth: maxNameWidth,
     },
   };
 };

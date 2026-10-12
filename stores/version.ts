@@ -150,8 +150,9 @@ const UPGRADE_KEEP_PREFIXES: string[] = [
   // User Preferences - must persist across upgrades
   'preference_', // All user preferences (alerts, sound, countdownbar, hijri, show_*, reminder_*)
 
-  // Cached layout measurements - prayer names and fonts are constants, so the
-  // measured column widths are valid forever (recomputing them reflows the list)
+  // Cached layout measurements - widths stay valid until names or fonts
+  // change, and a name change ships with a re-key of this family so the
+  // reserve re-measures (recomputing reflows the list)
   'prayer_max_name_width_',
 ];
 
