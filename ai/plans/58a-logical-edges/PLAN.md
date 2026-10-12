@@ -276,7 +276,7 @@ Checklist (every step weight 2, one branch, one commit, one version):
 - [x] 2. Prayer rows and the shared constants (`steps/2-prayer-constants.md`)
 - [x] 3. The overlay family (`steps/3-overlay.md`)
 - [x] 4. Sheet parts (`steps/4-sheet-parts.md`)
-- [ ] 5. Sheet screens (`steps/5-sheet-screens.md`)
+- [x] 5. Sheet screens (`steps/5-sheet-screens.md`)
 - [ ] 6. Modals, day, navigation, countdown gloss (`steps/6-modals-day-nav-bar.md`)
 
 The conversion map every step applies, stated once here and cited by each step:

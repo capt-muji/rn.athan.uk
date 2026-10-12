@@ -132,7 +132,7 @@ assertion keys; no value changed; allowlist 46 entries, none `pending: step 3`.
 session: ses_ed08408e4ffeAXuuHvFBvFXsOO
 
 ### Step 4 — merged
-Branch code/58a-4-sheet-parts, commit (sha filled with step 5's plan files), version 2.0.91.
+Branch code/58a-4-sheet-parts, commit f8641183 (merge 27fbc3f3), version 2.0.91.
 Gate red before conversion: remainder test failed naming exactly 6 lines
 (`components/sheets/parts/Sheet.tsx:225`, `SoundItem.tsx:149`, `:162`,
 `Stepper.tsx:142`, `SegmentedControl.tsx:194`, `:220`). Converted the four
@@ -146,5 +146,21 @@ project `8 passed, 8 total` / `94 passed, 94 total`; unit project
 tsc 0, Biome 0.
 Break 4: `ALL ASPECTED: 1`. Review: `translateX` lines byte-identical to uat;
 no value changed; allowlist 40 entries, none `pending: step 4`.
+session: ses_ed06f54aeffeLWAF9t0gAMJFou
+
+### Step 5 — merged
+Branch code/58a-5-sheet-screens, commit (sha filled with step 6's plan files), version 2.0.92.
+Gate red before conversion: remainder test failed naming exactly 10 lines
+(`components/sheets/screens/Qibla.tsx:197`, `:199`, `Sound.tsx:233`, `:234`,
+`Language.tsx:84`, `:85`, `Settings.tsx:241`, `:250`, `:264`, `:281`).
+Converted the four files per the map (Qibla lost-style start/end pair, Sound
+indicator pair, Language paddingStart/paddingEnd, Settings two paddingEnd and
+two marginStart); allowlist now 32 entries (11 pending).
+Suites: gate `Tests: 2 passed, 2 total`; `components/sheets/screens`
+components project `5 passed, 5 total` / `239 passed, 239 total`; unit project
+`2 passed, 2 total` / `47 passed, 47 total`; CLI `DIRECTIONAL STYLES OK`;
+tsc 0, Biome 0.
+Break 5: `ALL ASPECTED: 1`. Review: no value changed, key-name hunks only;
+allowlist 32 entries, none `pending: step 5`.
 session: ses_ed06f54aeffeLWAF9t0gAMJFou
 
