@@ -93,7 +93,10 @@ exactly 1. It ends `PREFLIGHT OK`.
   runs it, which is why both gaps stayed invisible. Step 1 regenerates all
   six dist files through the bridge export (`I18N_BRIDGE=export`) after the
   catalog edits and proves each with its own import run, so no translation
-  round-trip ever meets a mismatched base.
+  round-trip ever meets a mismatched base. The dist files are gitignored
+  local artifacts (`.gitignore:4`, `dist`): they never enter a commit, and
+  R2.2 is proven by the six import runs asserting each on-disk file equals
+  its landed catalog.
 - The width layer: `stores/ui.ts` keys `prayer_max_english_width_<locale>_<side>`
   built in `englishWidthAtomFor` (line 134), a legacy-key seed loop above it
   (lines 108-122), `setEnglishWidth` (line 259) accepting only widening measures
@@ -161,9 +164,9 @@ Checklist:
 
 Scope guard: `en.ts` values, `catalog-lock.json`, every widget file
 and the notification copy are out; `dist/` changes only by step 1's bridge
-regeneration (six files: the four prayer lines plus row 63's two stale
-reminder keys resyncing). The four strings and the width family are
-the whole ticket.
+regeneration on disk (gitignored local artifacts, never committed: the four
+prayer lines plus row 63's two stale reminder keys resyncing). The four
+strings and the width family are the whole ticket.
 
 ## 7. Device proof
 
