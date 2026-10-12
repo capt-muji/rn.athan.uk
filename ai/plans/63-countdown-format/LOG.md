@@ -127,3 +127,56 @@ Version 2.0.130 (next patch after uat's 2.0.129, under the version lock;
 gradle versionName set to 2.0.130 in the main checkout, never git-added).
 
 session: ses_ece59c1c9ffess0PpEuF3XrmKe
+
+Step 2 commit: `750ff795` on `feat/63-reminder-copy` (2.0.130), merged into
+uat as `0c61f331` with the plan's command. Hook (run live in the worktree with
+the copied `.husky/_` shims): `Tests: 2 skipped, 5468 passed, 5470 total`,
+coverage `Statements 100% (5188/5188)`, `Branches 100% (2221/2221)`,
+`Functions 100% (1081/1081)`, `Lines 100% (4645/4645)`, exit 0. Post-merge
+verification in the main checkout: the four reminder suites 99/99, package.json
+2.0.130, row 63 at `IN PROGRESS, step 2`. Both merges used the same maneuver:
+the idle 59 planning session's uncommitted README edit (rows 25/69/70 marker
+removals) was backed up, checked out, merged past, and re-applied byte-exact
+via patch; its stale pre-194ed701 staged index was mixed-reset once (disk
+content untouched, staged snapshot saved to
+`$TMPDIR/59-staged-backup.patch`); the 67 executor's LOG.md edit was never
+touched. The version lock was held across each take-to-merge window and
+released after each merge. Steps 1 and 2 are DONE; step 3 (3T device proof) is
+next.
+
+session: ses_ece59c1c9ffess0PpEuF3XrmKe
+
+### Step 3 — DONE
+
+Device proof on the 3T (`3T_SERIAL`); no repository file changed before the
+docs commits. Pre-flight disposition as in steps 1-2: the shared checkout sits
+on uat `0c61f331` (both steps merged, 2.0.130, origin/uat fully merged in and
+7 behind because the lead pushes), the clean-tree gate cannot hold (the
+concurrent 67 executor's LOG.md and the idle 59 session's README edit), step 3
+adds no anchor, and no anchored source file carries a local modification.
+
+Build: `build-mock.zsh uat mocks/simple.ts` ended `BUILD-MOCK OK` in 650 s
+(source `0c61f331`, versionName 2.0.130, APK sha256
+`ad166ffbd9e69ac6dbde189c3a526d677bfc59abb3b638846c8344553ee53d1b`).
+`aapt2 dump badging | grep "^package"` printed
+`package: name='com.mugtaba.athan' versionCode='1000000' versionName='2.0.130'`,
+the expected production id, so `adb install -r` replaced the phone's 2.0.42.
+`auto_time` stayed 1 and no clock change ran, so no alarm dump was required.
+
+Checks, transcribed from the vision worker's glyph reads of labelled contact
+sheets (evidence `$HOME/athan-gitree/sessions/63/`, index `step3-evidence.md`;
+screenshots never committed): hero en 50 frames `0:39` to `0:03` plus the
+`1:00` whole minute and the post-Isha H:MM `6:04`, exactly one colon, digits
+only, no unit letter; hero ar 28 frames `1:17` to `0:02` in Eastern
+Arabic-Indic glyphs (`٠:٠٩`, `٠:٠٥`, `٠:٠٢`), colon bytes unchanged, plus the
+`٢:٠٨` single shot; ago badge ar `العشاء الآن` then `العشاء قبل ٠:٠١`
+(colon measured as the stacked dot pair), en `Dhuhr 0:03 ago` at the flip,
+`Asr now`, `Magrib now`, `Isha now`, flipping to `Isha 0:01 ago` at +61 s;
+`dumpsys notification` names `reminder_fajr_5_v3` as
+`mName=Fajr in 5 Reminder` beside the pre-2.0.130 channels' `in 5m Reminder`
+labels, so the unit-free label is this build's composition. The app was found
+already in ar (a leftover of an earlier local-build session); the ar leg ran
+through the Settings language switch and returned to English by the same
+sheet. Phone left on the 63-step3-mock build, automatic time on.
+
+session: ses_ece3d27bbffeFbrx9zWgiDJ496
