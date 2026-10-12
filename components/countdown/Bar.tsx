@@ -211,8 +211,8 @@ const styles = StyleSheet.create({
   barHighlight: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     height: COUNTDOWN_BAR.GLOSS_HEIGHT,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },

@@ -149,7 +149,7 @@ no value changed; allowlist 40 entries, none `pending: step 4`.
 session: ses_ed06f54aeffeLWAF9t0gAMJFou
 
 ### Step 5 — merged
-Branch code/58a-5-sheet-screens, commit (sha filled with step 6's plan files), version 2.0.92.
+Branch code/58a-5-sheet-screens, commit b8b65fe1 (merge 810a3b4b), version 2.0.92.
 Gate red before conversion: remainder test failed naming exactly 10 lines
 (`components/sheets/screens/Qibla.tsx:197`, `:199`, `Sound.tsx:233`, `:234`,
 `Language.tsx:84`, `:85`, `Settings.tsx:241`, `:250`, `:264`, `:281`).
@@ -162,5 +162,25 @@ components project `5 passed, 5 total` / `239 passed, 239 total`; unit project
 tsc 0, Biome 0.
 Break 5: `ALL ASPECTED: 1`. Review: no value changed, key-name hunks only;
 allowlist 32 entries, none `pending: step 5`.
+session: ses_ed06f54aeffeLWAF9t0gAMJFou
+
+### Step 6 — merged
+Branch code/58a-6-modals-day-nav-bar, commit (sha filled with the EXECUTED docs commit), version 2.0.93.
+Gate red before conversion: remainder test failed naming exactly 14 lines
+(`components/modals/Help.tsx:204`, `:205`, `:225`, `:227`,
+`components/modals/Modal.tsx:116`, `:117`, `:126`, `:127`,
+`components/day/Day.tsx:65`, `:66`, `app/Navigation.tsx:124`, `:125`,
+`components/countdown/Bar.tsx:214`, `:215`). Converted the five files per
+the map (Help header and panel padding pairs, Modal scrim and backdrop
+pairs, Day paddingEnd +2 / paddingStart +4, Navigation chromeLayer pair,
+Bar gloss pair); `Bar.tsx:149` untouched; allowlist now 21 entries, zero
+pending (R3.1 met).
+Suites: gate `Tests: 2 passed, 2 total`; modals components project
+`45 passed, 45 total`; day unit `21 passed, 21 total`; countdown
+components `23 passed, 23 total`; countdown unit `5 passed, 5 total`;
+`__tests__/app` components `67 passed, 67 total`; CLI
+`DIRECTIONAL STYLES OK`; tsc 0, Biome 0.
+Break 6: `ALL ASPECTED: 1`. Review: `Bar.tsx:149` byte-identical to uat;
+allowlist 21 entries, every reason permanent; no value changed anywhere.
 session: ses_ed06f54aeffeLWAF9t0gAMJFou
 
