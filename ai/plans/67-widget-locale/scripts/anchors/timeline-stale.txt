@@ -1,0 +1,7 @@
+  entries.push({
+    date: new Date(staleMs),
+    props: {
+      v: WIDGET_PROPS_VERSION,
+      schedule: sequence.type,
+      theme,
+      nextName: prayerLabel(finalPrayer.id),

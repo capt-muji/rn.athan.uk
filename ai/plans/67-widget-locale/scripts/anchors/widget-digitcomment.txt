@@ -1,0 +1,5 @@
+  // The digit edge localises here, not through the shared module: the runtime's
+  // closure walk rejects any module-scope reference, so the map lives inside
+  // the widget function (D61). ar draws Eastern Arabic-Indic digits; every
+  // other locale keeps the Latin bytes (D57).
+  const WIDGET_DIGITS: Readonly<Record<string, string>> = {

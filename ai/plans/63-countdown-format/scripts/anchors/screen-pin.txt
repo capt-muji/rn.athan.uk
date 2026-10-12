@@ -1,0 +1,3 @@
+    expect(screen.getByRole('button', { name: 'Midnight notification: off' })).toBeOnTheScreen();
+    expect(screen.getByText('Duha 7h 14m ago')).toBeOnTheScreen();
+  });
