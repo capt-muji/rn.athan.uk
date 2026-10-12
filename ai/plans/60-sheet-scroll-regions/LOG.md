@@ -86,8 +86,17 @@ session: ses_ecffa9787ffePI2dQO5uEO6LPk
 - Version: 2.0.101 (origin fetched under the version lock; local uat 2.0.100,
   origin/uat 2.0.99; app.json, package.json and android/app/build.gradle
   versionName all set, app.json first).
-- Commit: (filled after the merge, with the hook line)
-- Review: (filled after the merge)
-- Merge: (filled after the merge)
+- Commit: `ca67ca8b` (2.0.101), hook green: `Tests: 5470 passed, 5470 total`;
+  Statements 100% (5215/5215), Branches 100% (2246/2246), Functions 100%
+  (1082/1082), Lines 100% (4671/4671).
+- Review: read `git show ca67ca8b` cold. The diff is the five contract edits
+  plus the sanctioned test, version and plan files, nothing else. No sheets
+  file, no Modal.tsx, no Help.tsx (D70). The message's typography is untouched:
+  only `marginBottom: 36` moved to the frame, verbatim. No dead style, no
+  leftover import. No lifecycle, thread, residue or rule finding. No fix
+  applied.
+- Merge: `bb72205f` ("2.0.101 - merge code/60-2-update-bounded-message:
+  Update message bounded (60 step 2)"), no conflict. Step branch deleted after
+  the merge.
 
 session: ses_ecffa9787ffePI2dQO5uEO6LPk
