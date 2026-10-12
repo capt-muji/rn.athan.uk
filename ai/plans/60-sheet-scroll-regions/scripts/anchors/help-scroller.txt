@@ -1,0 +1,3 @@
+      <ScrollView
+        style={[styles.list, { maxHeight: height * ANSWERS_HEIGHT_SHARE }]}
+        showsVerticalScrollIndicator={false}>
