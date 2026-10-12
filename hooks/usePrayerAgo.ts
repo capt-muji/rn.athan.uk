@@ -48,14 +48,14 @@ export const calculatePrayerAgo = (type: ScheduleType): PrayerAgoState => {
  *
  * @param type - Schedule type (Standard or Extra)
  * @returns Object with:
- *   - prayerAgo: Formatted string (e.g., "Fajr now", "Dhuhr 10h 15m ago")
+ *   - prayerAgo: Formatted string (e.g., "Fajr now", "Dhuhr 10:15 ago")
  *   - minutesElapsed: Minutes since previous prayer (for styling)
  *   - isReady: Whether prayer data is loaded
  *
  * @example
  * const { prayerAgo, minutesElapsed, isReady } = usePrayerAgo(ScheduleType.Standard);
  * // prayerAgo: "Fajr now" (if <60s since Fajr)
- * // prayerAgo: "Asr 2h 30m ago" (if 2.5h since Asr)
+ * // prayerAgo: "Asr 2:30 ago" (if 2.5h since Asr)
  * // minutesElapsed: 150 (if 2.5h since Asr)
  */
 export const usePrayerAgo = (type: ScheduleType): PrayerAgoState => {

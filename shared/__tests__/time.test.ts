@@ -41,67 +41,69 @@ const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs,
 // =============================================================================
 
 describe('formatTime', () => {
-  it('returns "0s" for negative seconds', () => {
-    expect(formatTime(-100)).toBe('0s');
-    expect(formatTime(-1)).toBe('0s');
+  it('returns "0:00" for negative seconds', () => {
+    expect(formatTime(-100)).toBe('0:00');
+    expect(formatTime(-1)).toBe('0:00');
   });
 
-  it('formats seconds correctly', () => {
-    expect(formatTime(0)).toBe('0s');
-    expect(formatTime(45)).toBe('45s');
-    expect(formatTime(59)).toBe('59s');
+  it('formats seconds', () => {
+    expect(formatTime(0)).toBe('0:00');
+    expect(formatTime(45)).toBe('0:45');
+    expect(formatTime(59)).toBe('0:59');
+    expect(formatTime(5, true)).toBe('0:05'); // zero-padded seconds group: the break target for the M:SS shape
   });
 
-  it('formats minutes correctly', () => {
-    expect(formatTime(60)).toBe('1m'); // whole minute: never "1m 0s"
-    expect(formatTime(61)).toBe('1m 1s');
-    expect(formatTime(90)).toBe('1m 30s');
-    expect(formatTime(599)).toBe('9m 59s');
+  it('formats minutes', () => {
+    expect(formatTime(60)).toBe('1:00'); // whole minute
+    expect(formatTime(61)).toBe('1:01');
+    expect(formatTime(90)).toBe('1:30');
+    expect(formatTime(599)).toBe('9:59');
   });
 
-  it('formats hours correctly', () => {
-    expect(formatTime(3600)).toBe('1h'); // whole hour: never "1h 0s"
-    expect(formatTime(3665)).toBe('1h 1m 5s');
-    expect(formatTime(7200)).toBe('2h'); // whole 2h: never "2h 0s"
+  it('formats hours', () => {
+    expect(formatTime(3600)).toBe('1:00:00');
+    expect(formatTime(3665)).toBe('1:01:05');
+    expect(formatTime(7200)).toBe('2:00:00');
   });
 
   it('converts days to hours', () => {
-    expect(formatTime(90000)).toBe('25h'); // whole hours: no trailing "0s"
+    expect(formatTime(90000)).toBe('25:00:00');
   });
 
   it('handles the 24h and multi-day boundaries', () => {
-    expect(formatTime(86399)).toBe('23h 59m 59s');
-    expect(formatTime(86400)).toBe('24h'); // exactly one day -> 24h, no "0s"
-    expect(formatTime(90061)).toBe('25h 1m 1s'); // day + hour + minute + second
+    expect(formatTime(86399)).toBe('23:59:59');
+    expect(formatTime(86400)).toBe('24:00:00'); // exactly one day
+    expect(formatTime(90061)).toBe('25:01:01'); // day + hour + minute + second
   });
 
   describe('hideSeconds option', () => {
     it('shows seconds when hideSeconds=false (default)', () => {
-      expect(formatTime(3665)).toBe('1h 1m 5s');
-      expect(formatTime(3665, false)).toBe('1h 1m 5s');
+      expect(formatTime(3665, false)).toBe('1:01:05');
+      expect(formatTime(3665)).toBe('1:01:05');
     });
 
     it('hides seconds when hideSeconds=true and time > 599s', () => {
-      expect(formatTime(3665, true)).toBe('1h 1m');
-      expect(formatTime(600, true)).toBe('10m');
+      expect(formatTime(3665, true)).toBe('1:01');
+      expect(formatTime(600, true)).toBe('0:10');
     });
 
     it('shows seconds in last 10 minutes even with hideSeconds=true', () => {
-      expect(formatTime(599, true)).toBe('9m 59s');
-      expect(formatTime(45, true)).toBe('45s');
+      expect(formatTime(599, true)).toBe('9:59');
+      expect(formatTime(45, true)).toBe('0:45');
     });
 
     /**
-     * The threshold the JSDoc used to state as 60s. `shared/time.ts:546` uses
+     * The threshold the JSDoc used to state as 60s. `shared/time.ts` uses
      * `seconds <= 599`, so a minute and a second still shows seconds; only past
      * 599s do they drop. Pinned so the two cannot disagree again.
      */
     it('draws the hideSeconds threshold at 599s, not at 60s', () => {
-      expect(formatTime(61, true)).toBe('1m 1s');
-      expect(formatTime(120, true)).toBe('2m'); // a whole minute drops "0s" regardless
-      expect(formatTime(599, true)).toBe('9m 59s'); // last second that still shows seconds
-      expect(formatTime(600, true)).toBe('10m');
-      expect(formatTime(601, true)).toBe('10m');
+      expect(formatTime(61, true)).toBe('1:01');
+      expect(formatTime(120, true)).toBe('2:00'); // a whole minute drops the seconds group
+      // the ruled shapes flip at the cutoff: 9:59 at 599 s, 0:10 at 600 s (D75)
+      expect(formatTime(599, true)).toBe('9:59'); // last second that still shows seconds
+      expect(formatTime(600, true)).toBe('0:10');
+      expect(formatTime(601, true)).toBe('0:10');
     });
   });
 
@@ -109,31 +111,19 @@ describe('formatTime', () => {
    * Pins every @example in formatTime's JSDoc, verbatim and in order, so the
    * block cannot drift from the implementation again. Three of these were wrong
    * before Tier 6 item a: the 599s threshold was documented as 60s,
-   * `formatTime(90000)` was documented as "25h 0s", and `formatTime(45, true,
-   * true)` was documented as "1m". If you change an expectation here, change the
+   * `formatTime(90000)` was documented as "25h 0s", and `formatTime(45, true)`
+   * was documented as "1m". If you change an expectation here, change the
    * matching line in shared/time.ts.
    */
   describe('JSDoc contract', () => {
     it('pins every example in the JSDoc', () => {
-      expect(formatTime(3665)).toBe('1h 1m 5s');
-      expect(formatTime(3665, true)).toBe('1h 1m');
-      expect(formatTime(45, true)).toBe('45s');
-      expect(formatTime(45, true, true)).toBe('45s');
-      expect(formatTime(0)).toBe('0s');
-      expect(formatTime(-100)).toBe('0s');
-      expect(formatTime(90000)).toBe('25h');
-    });
-
-    /**
-     * forceHideSeconds suppresses seconds only BESIDE another unit. Under a
-     * minute the parts list is empty and `shared/time.ts:552` falls back to
-     * "Ns", so seconds still render. No caller passes it today.
-     */
-    it('lets forceHideSeconds suppress seconds only beside another unit', () => {
-      expect(formatTime(3665, true, true)).toBe('1h 1m');
-      expect(formatTime(599, true, true)).toBe('9m');
-      expect(formatTime(45, false, true)).toBe('45s');
-      expect(formatTime(0, true, true)).toBe('0s');
+      expect(formatTime(3665)).toBe('1:01:05');
+      expect(formatTime(3665, true)).toBe('1:01');
+      expect(formatTime(45, true)).toBe('0:45');
+      expect(formatTime(5, true)).toBe('0:05');
+      expect(formatTime(0)).toBe('0:00');
+      expect(formatTime(-100)).toBe('0:00');
+      expect(formatTime(90000, true)).toBe('25:00');
     });
   });
 
@@ -144,19 +134,19 @@ describe('formatTime', () => {
 
     it('draws Eastern Arabic-Indic digits under ar', () => {
       setActiveLocale('ar');
-      expect(formatTime(10740)).toBe('٢س ٥٩د');
+      expect(formatTime(10740)).toBe('٢:٥٩:٠٠');
     });
 
     it('draws the negative, seconds-only, whole-minute and whole-hour branches under ar', () => {
       setActiveLocale('ar');
-      expect(formatTime(-100)).toBe('٠ث');
-      expect(formatTime(45)).toBe('٤٥ث');
-      expect(formatTime(60)).toBe('١د');
-      expect(formatTime(7200)).toBe('٢س');
+      expect(formatTime(-100)).toBe('٠:٠٠');
+      expect(formatTime(45)).toBe('٠:٤٥');
+      expect(formatTime(60)).toBe('١:٠٠');
+      expect(formatTime(7200)).toBe('٢:٠٠:٠٠');
     });
 
     it('keeps Latin digits under en', () => {
-      expect(formatTime(10740)).toBe('2h 59m');
+      expect(formatTime(10740)).toBe('2:59:00');
     });
   });
 });
@@ -172,17 +162,17 @@ describe('formatTimeAgo', () => {
     expect(formatTimeAgo(-100)).toBe('now');
   });
 
-  it('formats minutes correctly', () => {
-    expect(formatTimeAgo(60)).toBe('1m');
-    expect(formatTimeAgo(120)).toBe('2m');
-    expect(formatTimeAgo(3599)).toBe('59m');
+  it('formats minutes', () => {
+    expect(formatTimeAgo(60)).toBe('0:01');
+    expect(formatTimeAgo(120)).toBe('0:02');
+    expect(formatTimeAgo(3599)).toBe('0:59');
   });
 
-  it('formats hours and minutes correctly', () => {
-    expect(formatTimeAgo(3600)).toBe('1h');
-    expect(formatTimeAgo(5400)).toBe('1h 30m');
-    expect(formatTimeAgo(7200)).toBe('2h');
-    expect(formatTimeAgo(7260)).toBe('2h 1m');
+  it('formats hours and minutes', () => {
+    expect(formatTimeAgo(3600)).toBe('1:00');
+    expect(formatTimeAgo(5400)).toBe('1:30');
+    expect(formatTimeAgo(7200)).toBe('2:00');
+    expect(formatTimeAgo(7260)).toBe('2:01');
   });
 
   describe('native digits (D57)', () => {
@@ -192,21 +182,24 @@ describe('formatTimeAgo', () => {
 
     it('draws the minute, whole-hour and mixed branches under ar', () => {
       setActiveLocale('ar');
-      expect(formatTimeAgo(120)).toBe('٢د');
-      expect(formatTimeAgo(3600)).toBe('١س');
-      expect(formatTimeAgo(7260)).toBe('٢س ١د');
+      expect(formatTimeAgo(120)).toBe('٠:٠٢');
+      expect(formatTimeAgo(3600)).toBe('١:٠٠');
+      expect(formatTimeAgo(7260)).toBe('٢:٠١');
     });
 
     it('keeps Latin digits under en', () => {
-      expect(formatTimeAgo(7260)).toBe('2h 1m');
+      expect(formatTimeAgo(7260)).toBe('2:01');
     });
   });
 
   it('labels durations from the catalog', () => {
-    const labels = { h: 'H', m: 'M', s: 'S', now: 'NOW' };
-    expect(formatTime(3725, false, false, labels)).toBe('1H 2M 5S');
-    expect(formatTimeAgo(5400, labels)).toBe('1H 30M');
-    expect(formatTimeAgo(45, labels)).toBe('NOW');
+    expect(formatTimeAgo(30)).toBe('now');
+    setActiveLocale('ar');
+    try {
+      expect(formatTimeAgo(30)).toBe('الآن');
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
 
