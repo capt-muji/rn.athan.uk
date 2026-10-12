@@ -1,0 +1,15 @@
+ * The width atom of the active locale's list: per-locale keys default 0 and widen on
+ * the first measure, so a switch reflows once against the new locale's key (R5.1, R5.2)
+ *
+ * @param type Schedule type (Standard or Extra)
+ */
+export const englishWidthAtomFor = (type: ScheduleType): PrimitiveAtom<number> => {
+  const side = type === ScheduleType.Standard ? 'standard' : 'extra';
+  const key = `prayer_max_english_width_${currentLocaleId()}_${side}`;
+  const cached = widthAtoms.get(key);
+  if (cached) return cached;
+
+  const widthAtom = atomWithStorageNumber(key, 0);
+  widthAtoms.set(key, widthAtom);
+  return widthAtom;
+};
