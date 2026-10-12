@@ -23,7 +23,7 @@ EOF
 
 fails=0
 npx jest shared/__tests__/time.test.ts --watchman=false --selectProjects=unit > $TMPDIR/break63-a.log 2>&1
-grep -q "Expected: \"0:05\"" $TMPDIR/break63-a.log && echo "caught: zero-padded seconds group (0:05)" && fails=$((fails+1))
+grep -qF 'Received: "0:0"' $TMPDIR/break63-a.log && echo "caught: unpadded seconds group (0:0)" && fails=$((fails+1))
 npx jest stores/__tests__/countdown.test.ts --watchman=false --selectProjects=unit > $TMPDIR/break63-b.log 2>&1
 grep -q "Expected: \"1:01\"" $TMPDIR/break63-b.log && echo "caught: zero-padded minute group (1:01)" && fails=$((fails+1))
 
