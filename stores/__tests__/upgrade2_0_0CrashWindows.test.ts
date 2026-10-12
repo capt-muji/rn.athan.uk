@@ -77,26 +77,26 @@ beforeEach(() => {
 });
 
 // =============================================================================
-// ROW 2: dies right after the width seed, mid-copy
+// ROW 2: dies right after a width write, mid-copy
 // =============================================================================
 
 describe('crash windows around the 2.0.0 upgrade', () => {
-  it('converges when death lands mid width seed, one en key and one legacy key written', () => {
+  it('converges when death lands mid width write, one current key and one legacy key written', () => {
     seed({
       app_installed_version: '1.29.305',
       cache_schema_version: 1,
-      // The ui seed's own per-key absence guard completes this copy at its next
-      // module evaluation (covered by stores/__tests__/ui.test.ts); the upgrade
-      // path's contribution is to leave both keys alone - no wipe runs
+      // The upgrade path's contribution is to leave both keys alone - no wipe
+      // runs, so a partial width write survives (the old-family key is
+      // removed later at module evaluation, covered by stores/__tests__/ui.test.ts)
       prayer_max_name_width_en_standard: '150',
-      prayer_max_name_width_extra: '87',
+      prayer_max_name_width_en_extra: '87',
     });
 
     expect(() => launch().handleAppUpgrade()).not.toThrow();
 
     expect(read('app_installed_version')).toBe('2.0.0');
     expect(read('prayer_max_name_width_en_standard')).toBe('150');
-    expect(read('prayer_max_name_width_extra')).toBe('87');
+    expect(read('prayer_max_name_width_en_extra')).toBe('87');
     expect(read(LANGUAGE_KEY)).toBe('en');
   });
 

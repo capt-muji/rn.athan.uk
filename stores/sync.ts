@@ -361,7 +361,9 @@ const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: numb
       // buys an unnecessary wipe, the opposite of what a full refresh just achieved
       'cache_schema_version',
       'preference_',
-      // Names and fonts never change, and measuring the widths again visibly reflows the prayer list
+      // Widths stay valid until names or fonts change; a name change ships
+      // with a re-key of this family so the reserve re-measures, and
+      // measuring again visibly reflows the prayer list
       'prayer_max_name_width_',
       // Alarm records describe what the OS has armed, which a new timetable does not change. A
       // reschedule still writing them as the download lands would lose them, and its sweep would
