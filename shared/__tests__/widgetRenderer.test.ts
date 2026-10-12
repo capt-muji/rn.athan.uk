@@ -561,6 +561,28 @@ describe('home widget renderer', () => {
       }
     });
 
+    it('localises the parsed legacy Android day footer under an ar device locale', () => {
+      // Pre-v3 snapshots carry no footer field, so the day label parses at
+      // render time; its digits take the device locale like the iOS twin
+      const props = androidProps({});
+      const stripped = props.days.map((day, index) => {
+        const withoutFooter = { ...day } as Partial<typeof day>;
+        delete withoutFooter.footer;
+        return index === 0 ? { ...withoutFooter, dateLabel: 'Rabīʻ II 30, 1448' } : withoutFooter;
+      });
+
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(at(DAY_ONE, '14:08') + 30_000);
+        const tree = renderTree(layouts.PrayerWidget({ ...props, days: stripped }, { colorScheme: 'light' }));
+
+        expect(textsOf(tree)).toContain('Rab ٣٠');
+        expect(textsOf(tree)).not.toContain('Rab 30');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
     it('renders the day footer prop verbatim, preferring it over the parsed label', () => {
       const props = androidProps({});
       const days = props.days.map((day, index) =>
