@@ -1,5 +1,3 @@
-import { intervalToDuration } from 'date-fns';
-
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
 import { localiseDigits, type TranslationKey, t } from '@/shared/i18n';
 
@@ -543,32 +541,16 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
 // COUNTDOWN & DISPLAY FORMATTING
 // =============================================================================
 
-/** The unit words formatTime and formatTimeAgo render; a locale supplies its own */
-export interface DurationLabels {
-  h: string;
-  m: string;
-  s: string;
-  now: string;
-}
-
-/** The stage-one labels: the catalog's own single-letter units, byte-identical to the literals they replaced */
-export const durationLabels = (): DurationLabels => ({
-  h: t('duration.h'),
-  m: t('duration.m'),
-  s: t('duration.s'),
-  now: t('duration.now'),
-});
-
 /**
  * Whole seconds remaining until a target instant, for live countdown display.
  *
  * Rounding model (countdown display contract):
  * - Rounds UP (ceil): each digit owns exactly the wall second being lived
  *   through, so digits flip on the :000 boundary like the system clock.
- * - The final second displays "1s" — never "0s" — because a countdown reads
+ * - The final second displays "0:01" — never "0:00" — because a countdown reads
  *   "N seconds remaining" and the swap to the next prayer happens at zero.
  * - Once the target has passed, holds at 1 until the caller advances the
- *   target (prevents a frozen "0s" while the sequence refresh runs).
+ *   target (prevents a frozen "0:00" while the sequence refresh runs).
  *
  * Uses Date.now() directly: countdown targets are true UTC instants (built
  * via createPrayerDatetime), so no timezone conversion is needed for a
@@ -578,7 +560,7 @@ export const durationLabels = (): DurationLabels => ({
  * @returns Seconds remaining, always >= 1
  *
  * @example
- * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "42s"
+ * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "0:42"
  */
 export const getSecondsRemaining = (target: Date): number => {
   const msLeft = target.getTime() - Date.now();
@@ -603,114 +585,67 @@ export const getWallSecondDelay = (): number => {
 };
 
 /**
- * Converts seconds into human-readable time format with flexible precision
+ * Converts seconds into the colon countdown format (owner ruling 2026-10-12:
+ * numbers and colons only, every language)
  *
- * Formatting Rules:
- * 1. Negative seconds: Always returns "0s"
- * 2. Days are converted to hours (48 hours, not 2 days)
- * 3. Seconds visibility:
- *    - If hideSeconds=false: Always show seconds (e.g., "1h 30m 45s")
- *    - If hideSeconds=true: Show seconds only at 599s or less — the final
- *      ~10 minutes, NOT the final minute (e.g., "9m 59s", "45s")
- *    - Above 599s with hideSeconds=true: Hide seconds ("10m", "1h 30m")
- * 4. Zero handling:
- *    - Only units with non-zero values are shown
- *    - A zero seconds value never renders beside another unit: a whole
- *      minute reads "1m", a whole 25 hours reads "25h"
- *    - If all units are zero: Returns "0s"
- * 5. Spacing: Units separated by single space
+ * Formatting rules:
+ * 1. Seconds hidden: H:MM — minutes zero-padded, hours not ("0:42", "1:32", "25:00")
+ * 2. Seconds shown: H:MM:SS over an hour, M:SS under ("9:45", "1:01:05")
+ * 3. With hideSeconds, seconds still render inside the final 599s, so the ruled
+ *    shapes flip at the cutoff: "9:59" at 599 s, "0:10" at 600 s
+ * 4. Zero and negative clamp to "0:00"
+ * 5. Days fold into hours ("25:00", never a day unit)
  *
- * Use Cases:
- * - Countdown: Use hideSeconds=true to avoid flicker in UI
- * - Precise display: Use hideSeconds=false for exact timing
- * - Final-stretch urgency: hideSeconds=true shows seconds in the final 599s
- *
- * @param seconds Time in seconds (can be negative, but returns "0s")
- * @param hideSeconds If true, hides seconds when time > 599s (default: false)
- * @param forceHideSeconds If true, seconds are suppressed beside hours and
- *   minutes at any distance — but they still render when they are the only
- *   unit, because an empty parts list always falls back to "Ns" (default:
- *   false).
- * @param labels The unit words to render with (default: the catalog's)
+ * @param seconds Time in seconds (negative clamps to "0:00")
+ * @param hideSeconds If true, hides seconds beyond the final 599s (default: false)
  * @returns Formatted time string
  *
  * Every example below is pinned by "pins every example in the JSDoc" in
  * shared/__tests__/time.test.ts. Change one and change both.
  *
  * @example
- * formatTime(3665) // "1h 1m 5s" (default shows seconds)
- * formatTime(3665, true) // "1h 1m" (hideSeconds in effect)
- * formatTime(45, true) // "45s" (shows seconds inside the final 599s)
- * formatTime(45, true, true) // "45s" (forceHideSeconds: seconds still render alone)
- * formatTime(0) // "0s"
- * formatTime(-100) // "0s"
- * formatTime(90000) // "25h" (days converted to hours; no trailing "0s")
+ * formatTime(3665) // "1:01:05" (default shows seconds)
+ * formatTime(3665, true) // "1:01" (hideSeconds in effect)
+ * formatTime(45, true) // "0:45" (shows seconds inside the final 599s)
+ * formatTime(5, true) // "0:05" (zero-padded seconds group)
+ * formatTime(0) // "0:00"
+ * formatTime(-100) // "0:00"
+ * formatTime(90000, true) // "25:00" (days converted to hours)
  */
-export const formatTime = (
-  seconds: number,
-  hideSeconds = false,
-  forceHideSeconds = false,
-  labels: DurationLabels = durationLabels()
-): string => {
-  if (seconds < 0) {
-    const localised = localiseDigits(`0${labels.s}`);
-    return localised;
-  }
+export const formatTime = (seconds: number, hideSeconds = false): string => {
+  const total = Math.max(0, Math.floor(seconds));
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const secs = total % 60;
+  const shouldShowSeconds = !hideSeconds || seconds <= 599;
 
-  const ms = seconds * 1000;
-  const duration = intervalToDuration({ start: 0, end: ms });
-  const { days, hours, minutes, seconds: secs } = duration;
-
-  const totalHours = (days || 0) * 24 + (hours || 0);
-
-  // Hide seconds if requested and time is over ~10 minutes (show seconds only in last 10m)
-  const shouldShowSeconds = !forceHideSeconds && (!hideSeconds || seconds <= 599);
-
-  const parts = [totalHours && `${totalHours}${labels.h}`, minutes && `${minutes}${labels.m}`].filter(Boolean);
-
-  // "0s" never appears beside another unit — a whole minute reads "1m", not "1m 0s".
-  // Seconds render only when non-zero (and permitted), or when alone (e.g., "45s", "0s")
-  if ((shouldShowSeconds && secs) || parts.length === 0) {
-    parts.push(`${secs ?? 0}${labels.s}`);
-  }
-
-  const joined = parts.join(' ');
-  const localised = localiseDigits(joined);
-  return localised;
+  const composed = shouldShowSeconds
+    ? hours > 0
+      ? `${hours}:${pad2(minutes)}:${pad2(secs)}`
+      : `${minutes}:${pad2(secs)}`
+    : `${hours}:${pad2(minutes)}`;
+  return localiseDigits(composed);
 };
 
 /**
- * Formats seconds elapsed into "ago" text without seconds display
+ * Formats seconds elapsed into the colon "ago" format, minute resolution
  *
- * @param seconds - Seconds since prayer occurred (can be 0 or positive)
- * @param labels - The unit words to render with (default: the catalog's)
- * @returns "now" (<60s), "Xm" (1-59m), "Xh Ym" (1h+)
+ * @param seconds - Seconds since prayer occurred (0 or positive)
+ * @returns "now" (<60s, the catalog word), else H:MM ("0:02", "1:30", "2:00")
  *
  * @example
  * formatTimeAgo(45)      // Returns: "now"
- * formatTimeAgo(120)     // Returns: "2m"
- * formatTimeAgo(5400)    // Returns: "1h 30m"
- * formatTimeAgo(7200)    // Returns: "2h"
+ * formatTimeAgo(120)     // Returns: "0:02"
+ * formatTimeAgo(5400)    // Returns: "1:30"
+ * formatTimeAgo(7200)    // Returns: "2:00"
  * formatTimeAgo(0)       // Returns: "now"
  */
-export const formatTimeAgo = (seconds: number, labels: DurationLabels = durationLabels()): string => {
+export const formatTimeAgo = (seconds: number): string => {
   if (seconds < 60) {
-    const localised = localiseDigits(labels.now);
-    return localised;
+    return localiseDigits(t('duration.now'));
   }
 
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) {
-    const localised = localiseDigits(`${minutes}${labels.m}`);
-    return localised;
-  }
-
   const hours = Math.floor(minutes / 60);
-  const remainingMinutes = minutes % 60;
-  if (remainingMinutes === 0) {
-    const localised = localiseDigits(`${hours}${labels.h}`);
-    return localised;
-  }
-  const localised = localiseDigits(`${hours}${labels.h} ${remainingMinutes}${labels.m}`);
-  return localised;
+  return localiseDigits(`${hours}:${pad2(minutes % 60)}`);
 };
