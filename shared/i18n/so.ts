@@ -84,7 +84,7 @@ export const so = {
   'whatsNew.body.qiblaCompass':
     'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
   'notification.now': '{name} hadda',
-  'notification.reminder': '{name} {n}d gudahood',
+  'notification.reminder': '{name} {n} gudahood',
   'sheet.closeToSave': 'Xidh si aad u kaydiso',
   'alert.card.athan': 'Aqaan',
   'alert.card.athanHint': 'Ogeysiis waqtiga salaadda',
@@ -174,7 +174,7 @@ export const so = {
   'widget.refreshTail': 'si aad u cusboonaysiiso',
   'settings.language': 'Luqadda',
   'language.applying': 'Waxaa lagu dhaqaaqaa…',
-  'channel.reminder': 'Xasuusiye {name} {n}d gudahood',
+  'channel.reminder': 'Xasuusiye {name} {n} gudahood',
   'qibla.cardinal.n': 'W',
   'qibla.cardinal.e': 'B',
   'qibla.cardinal.s': 'K',

@@ -82,7 +82,7 @@ export const ar = {
   'whatsNew.body.qiblaCompass':
     'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
   'notification.now': '{name} الآن',
-  'notification.reminder': '{name} بعد {n} د',
+  'notification.reminder': '{name} بعد {n}',
   'sheet.closeToSave': 'أغلق للحفظ',
   'alert.card.athan': 'الأذان',
   'alert.card.athanHint': 'إشعار وقت الصلاة',
@@ -171,7 +171,7 @@ export const ar = {
   'widget.refreshTail': 'للتحديث',
   'settings.language': 'اللغة',
   'language.applying': 'جارٍ التطبيق…',
-  'channel.reminder': 'تنبيه {name} بعد {n} د',
+  'channel.reminder': 'تنبيه {name} بعد {n}',
   'qibla.cardinal.n': 'ش',
   'qibla.cardinal.e': 'ق',
   'qibla.cardinal.s': 'ج',
