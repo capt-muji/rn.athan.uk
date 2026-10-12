@@ -5,6 +5,7 @@
 import { act, render, screen } from '@testing-library/react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
 
@@ -66,6 +67,24 @@ describe('the Suhoor and Duha rows on Friday 11 September 2026 at 14:00, with Fa
 
     expect(screen.getByText('--:--')).toBeOnTheScreen();
     expect(screen.getByText('06:46')).toBeOnTheScreen();
+  });
+
+  it('renders the row time with native digits under ar, and the unread sentinel stays ASCII', async () => {
+    showLondonDay('2026-09-11', '14:00', { '2026-09-11': ['fajr'] });
+    setActiveLocale('ar');
+    try {
+      await render(
+        <>
+          <PrayerTime type={ScheduleType.Extra} index={SUHOOR} />
+          <PrayerTime type={ScheduleType.Extra} index={DUHA} />
+        </>
+      );
+
+      expect(screen.getByText('٠٦:٤٦')).toBeOnTheScreen();
+      expect(screen.getByText('--:--')).toBeOnTheScreen();
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
 

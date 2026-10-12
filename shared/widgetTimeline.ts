@@ -31,7 +31,7 @@
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import { UNAVAILABLE_TIME } from '@/shared/constants';
-import { prayerLabel, t } from '@/shared/i18n';
+import { localiseDigits, prayerLabel, t } from '@/shared/i18n';
 import {
   compareListOrder,
   findNextReadable,
@@ -153,7 +153,7 @@ const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayer
   const rows = dayPrayers.map((prayer) => ({
     id: prayer.id,
     name: prayerLabel(prayer.id),
-    time: prayer.time ?? UNAVAILABLE_TIME,
+    time: localiseDigits(prayer.time ?? UNAVAILABLE_TIME),
   }));
 
   return { rows, activeIndex: dayPrayers.indexOf(segment.next) };
@@ -208,7 +208,7 @@ export const buildPrayerWidgetTimeline = (
         schedule: sequence.type,
         theme,
         nextName: prayerLabel(next.id),
-        nextTime: next.time,
+        nextTime: localiseDigits(next.time),
         nextEpochMs: next.datetime.getTime(),
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
         dateLabel,
@@ -268,7 +268,7 @@ export const buildPrayerWidgetTimeline = (
       schedule: sequence.type,
       theme,
       nextName: prayerLabel(finalPrayer.id),
-      nextTime: finalPrayer.time,
+      nextTime: localiseDigits(finalPrayer.time),
       nextEpochMs: finalEpochMs,
       prevEpochMs: finalEpochMs,
       dateLabel: formatDateLabel(finalPrayer.belongsToDate, settings.hijriDate),
@@ -328,7 +328,7 @@ export const buildPrayerWidgetSnapshot = (
       day.rows.push({
         id: prayer.id,
         name: prayerLabel(prayer.id),
-        time: prayer.time,
+        time: localiseDigits(prayer.time),
         epochMs: prayer.datetime.getTime(),
       });
       horizonEpochMs = Math.max(horizonEpochMs ?? Number.NEGATIVE_INFINITY, prayer.datetime.getTime());
