@@ -2,6 +2,13 @@
  * Unit tests for shared/help.ts: which questions each platform answers, and which offer a deep link
  */
 
+import { ar } from '@/shared/i18n/ar';
+import { type Catalog, en } from '@/shared/i18n/en';
+import { hi } from '@/shared/i18n/hi';
+import { ms } from '@/shared/i18n/ms';
+import { so } from '@/shared/i18n/so';
+import { th } from '@/shared/i18n/th';
+
 import { getHelpActionLabels, getHelpTopics } from '../help';
 
 /**
@@ -200,4 +207,18 @@ describe('getHelpTopics', () => {
       }
     }
   });
+});
+
+describe('hard line breaks', () => {
+  const CATALOGS: Record<string, Catalog> = { en, ar, ms, so, hi, th };
+
+  // Owner, 2026-10-12: no answer is broken into lines for the English layout; the text wraps at the view width
+  it.each(['help.a.stopAfterRestart', 'help.a.cutoff'] as const)(
+    '%s flows as one paragraph in every catalog',
+    (key) => {
+      for (const catalog of Object.values(CATALOGS)) {
+        expect(catalog[key]).not.toMatch(/\n/);
+      }
+    }
+  );
 });
