@@ -1,4 +1,0 @@
-  'help.q.stopAfterRestart': 'Maxay ogeysiisyadu joojiyeen dib-u-dhig ka dib?',
-  'help.a.stopAfterRestart':
-    'Dib-u-dhig ka dib, barnaamijku waa la joojiyay.\nTani way joojisaa ogeysiis cusub soo diritaanka.',
-  'help.step.openAfterReboot': 'Fur barnaamijkan markaad telefoonka dib-u-dhigto',

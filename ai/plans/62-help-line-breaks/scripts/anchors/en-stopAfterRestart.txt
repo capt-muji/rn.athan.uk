@@ -1,4 +1,0 @@
-  'help.q.stopAfterRestart': 'Why did notifications stop after a restart?',
-  'help.a.stopAfterRestart':
-    'After rebooting the phone, the app is terminated.\nThis stops new notifications being sent.',
-  'help.step.openAfterReboot': 'Open this app after rebooting the phone',
