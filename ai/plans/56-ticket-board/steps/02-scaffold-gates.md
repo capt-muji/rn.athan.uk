@@ -32,6 +32,7 @@ git checkout -b feat/56-02-board-scaffold uat
 ## Red check
 
 ```bash
+yarn validate >/dev/null 2>&1; echo "validate exit: $?"
 mkdir -p board
 printf 'const x=1\n' > board/probe.mjs
 git add board/probe.mjs
@@ -39,11 +40,14 @@ node scripts/check-changed-coverage.js --staged; echo "gate exit: $?"
 npx biome check --error-on-warnings board/probe.mjs >/dev/null 2>&1; echo "biome exit: $?"
 git restore --staged board/probe.mjs
 rm board/probe.mjs
+rmdir board 2>/dev/null || true
 ```
 
-Expected today: the gate exits 1 naming `board/probe.mjs: not measured`, biome exits nonzero on
-the unformatted probe. Record both exits. Then the probe is gone. If either exits 0 today,
-STOP: the exemption would be unprovable.
+Expected today: validate exit 0 (it also refreshes `coverage/coverage-summary.json`, which the
+gate refuses to run without), the gate exits 1 naming `board/probe.mjs: not measured`, biome
+exits nonzero on the unformatted probe. Record all three. Then the probe and the empty
+`board/` are gone. If the gate or biome exits 0 today, STOP: the exemption would be
+unprovable.
 
 ## Change contract
 
@@ -69,7 +73,8 @@ In `scripts/check-changed-coverage.js`, inside the UNMEASURED list, directly aft
   },
 ```
 
-In `biome.json`, in `files.includes`, directly after the `"**"` entry, add exactly:
+In `biome.json`, in `files.includes`, as the last entry of the list, directly after the
+`!**/ai/features/global-prayer-times/data` line, add exactly:
 
 ```json
       "!**/board",
@@ -80,17 +85,20 @@ Nothing else changes in either file.
 ## Green run
 
 ```bash
+yarn validate >/dev/null 2>&1; echo "validate exit: $?"
+git add board/config.json scripts/check-changed-coverage.js biome.json
 printf 'const x=1\n' > board/probe.mjs
 git add board/probe.mjs
 node scripts/check-changed-coverage.js --staged; echo "gate exit: $?"
 npx biome check . --error-on-warnings >/dev/null 2>&1; echo "biome exit: $?"
 git restore --staged board/probe.mjs
 rm board/probe.mjs
-yarn validate >/dev/null 2>&1; echo "validate exit: $?"
 ```
 
-Expected: gate exit 0 (probe sits under the UNMEASURED entry), biome exit 0 (the excluded
-folder cannot fail it even unformatted), validate exit 0. Record all three.
+Expected: validate exit 0 (it also refreshes the coverage summary the gate reads), gate exit 0
+(the probe sits under the UNMEASURED entry and the step's own edits are staged), biome exit 0
+(the excluded folder cannot fail it even with the unformatted probe present). Record all
+three. The three step files stay staged for the commit.
 
 ## Break script
 
@@ -99,14 +107,15 @@ Save as `$TMPDIR/break-56-02.sh`, run with `bash`:
 ```bash
 #!/usr/bin/env bash
 set -u
+yarn validate >/dev/null 2>&1 || { echo 'validate failed'; exit 1; }
 cp scripts/check-changed-coverage.js "$TMPDIR/cc-backup.js"
 python3 - <<'EOF'
-import re
 p='scripts/check-changed-coverage.js'
 s=open(p).read()
 s=s.replace("  {\n    path: 'board/',","  {\n    path: 'board-gone/',",1)
 open(p,'w').write(s)
 EOF
+git add scripts/check-changed-coverage.js
 printf 'const x=1\n' > board/probe.mjs
 git add board/probe.mjs
 node scripts/check-changed-coverage.js --staged >/dev/null 2>&1
@@ -114,6 +123,7 @@ code=$?
 git restore --staged board/probe.mjs
 rm board/probe.mjs
 cp "$TMPDIR/cc-backup.js" scripts/check-changed-coverage.js
+git add scripts/check-changed-coverage.js
 if [ "$code" -eq 0 ]; then echo 'BREAK NOT APPLIED'; exit 1; fi
 if [ "$code" -ne 1 ]; then echo "unexpected gate exit $code"; exit 1; fi
 echo 'ALL AS EXPECTED: 1'
