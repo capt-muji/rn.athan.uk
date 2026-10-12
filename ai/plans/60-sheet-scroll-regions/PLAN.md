@@ -165,7 +165,7 @@ dimension changes, which portrait locking makes a non-event on phones.
 Checklist:
 
 - [x] Step 1: WhatsNew's list scrolls inside a bounded share (`steps/1-whatsnew-bounded-list.md`)
-- [ ] Step 2: Update's message scrolls inside a bounded share (`steps/2-update-bounded-message.md`)
+- [x] Step 2: Update's message scrolls inside a bounded share (`steps/2-update-bounded-message.md`)
 
 ## 7. Device proof
 
