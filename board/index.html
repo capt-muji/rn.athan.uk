@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ticket board</title>
+<style>
+  :root {
+    --bg: #101216;
+    --column: #14171c;
+    --card: #181b21;
+    --text: #e8eaf0;
+    --muted: #9aa3b2;
+    --accent: #35b8a6;
+    --track: #22262e;
+    --red: #e5484d;
+    --live: #3fd47a;
+    --off: #6b7280;
+    --warn: #f0c26b;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); }
+  header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding: 24px 24px 16px; }
+  h1 { font-size: 20px; margin: 0; }
+  #meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 12px; font-family: var(--mono); }
+  #meta .badge { color: #5d2f31; background: #f0cfd0; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 8px; background: var(--off); }
+  .dot.on { background: var(--live); }
+  #stamp.stale { color: var(--warn); }
+  .aurora { height: 2px; background: linear-gradient(90deg, #274156, #35b8a6, #6f8fd8, #35b8a6, #274156); }
+  #columns { display: grid; grid-auto-flow: column; grid-auto-columns: 280px; gap: 16px; overflow-x: auto; padding: 24px; align-items: start; }
+  .column { background: var(--column); border-radius: 8px; padding: 16px; min-height: 96px; }
+  .column-head { display: flex; justify-content: space-between; align-items: center; padding: 0 0 16px; font-size: 13px; color: var(--muted); }
+  .column-head .count { font-family: var(--mono); font-size: 12px; }
+  .column-head.red { color: var(--red); }
+  .card { background: var(--card); border-radius: 8px; padding: 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .card.hero { border: 1px solid var(--accent); }
+  .card.group { border-left: 2px dotted var(--muted); }
+  .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tag, .chip, .badge, .pill { display: inline-block; line-height: 24px; padding: 0 8px; border-radius: 8px; font-size: 12px; white-space: nowrap; }
+  .tag.Backlog { background: #cdd3df; color: #3d4350; }
+  .tag.Planning { background: #e6d9b8; color: #574a26; }
+  .tag.Ready { background: #cfe3d3; color: #2e4a37; }
+  .tag.Inprogress { background: #f3d2c2; color: #5c3524; }
+  .tag.Audit { background: #d9d7ef; color: #3f3c66; }
+  .tag.Done { background: #c8e4dd; color: #2c4d45; }
+  .tag.Blocked { background: #f0cfd0; color: #5d2f31; }
+  .tag.Ownerled { background: #e4d5ea; color: #4b3557; }
+  .tag.Unmapped { background: #d8d8d8; color: #444444; }
+  .order { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .pill { background: #dfe3ea; color: #3c4353; font-family: var(--mono); }
+  .chip { border: 1px solid var(--muted); color: var(--text); font-family: var(--mono); }
+  .chip.met { color: var(--muted); }
+  .chip.met .need { text-decoration: line-through; }
+  .square { display: inline-block; width: 8px; height: 8px; border: 1px solid var(--muted); }
+  .name { font-size: 14px; font-weight: 600; line-height: 24px; }
+  .status-text { font-size: 12px; color: var(--muted); margin: 0; }
+  .group-label { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .rollup { font-size: 12px; color: var(--muted); }
+  .bar { height: 8px; background: var(--track); border-radius: 8px; overflow: hidden; }
+  .bar span { display: block; height: 8px; background: var(--accent); }
+  .steps { display: flex; gap: 8px; align-items: center; }
+  .step { width: 8px; height: 8px; border-radius: 8px; border: 1px solid var(--muted); }
+  .step.merged { background: var(--muted); border: 0; }
+  .step.running { width: 16px; background: var(--accent); border: 0; box-shadow: 0 0 8px 2px rgba(53, 184, 166, 0.75); }
+  .context { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  #foot { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 16px; }
+  #foot h2 { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+  #foot ul { margin: 0; padding: 0 0 0 16px; font-size: 13px; color: var(--muted); }
+  #error { color: var(--warn); font-family: var(--mono); font-size: 13px; padding: 0 24px 24px; }
+  @media (max-width: 430px) {
+    header { flex-wrap: nowrap; align-items: center; padding: 16px; gap: 8px; }
+    h1 { font-size: 16px; white-space: nowrap; }
+    #meta { flex-wrap: nowrap; overflow: hidden; }
+    #columns { grid-auto-columns: 88vw; scroll-snap-type: x mandatory; padding: 16px; gap: 16px; }
+    .column { scroll-snap-align: start; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Ticket board</h1>
+  <div id="meta"></div>
+</header>
+<div class="aurora"></div>
+<main id="columns"></main>
+<footer id="foot"></footer>
+<div id="error"></div>
+<script>
+  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Audit', 'Done', 'Blocked', 'Owner-led'];
+  const STALE_MS = 30000;
+  let board = null;
+
+  const el = (tag, className, text) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  };
+
+  const ageSeconds = () => (board ? Math.max(0, Math.round((Date.now() - Date.parse(board.generatedAt)) / 1000)) : 0);
+
+  function renderHeader() {
+    const meta = document.getElementById('meta');
+    meta.textContent = '';
+    if (!board) return;
+    meta.append(el('span', null, 'v' + board.repo.version), el('span', null, board.repo.uat));
+    if (board.repo.unpushed) meta.append(el('span', 'badge', 'unpushed'));
+    meta.append(el('span', 'dot' + (board.activeNow ? ' on' : '')));
+    const stale = ageSeconds() * 1000 > STALE_MS;
+    const stamp = el('span', null, (stale ? 'stale ' : 'updated ') + ageSeconds() + 's ago');
+    stamp.id = 'stamp';
+    if (stale) stamp.className = 'stale';
+    meta.append(stamp);
+  }
+
+  function chipEls(ticket) {
+    return ticket.needs.map((need, at) => {
+      const met = ticket.needsMet[at];
+      const chip = el('span', 'chip' + (met ? ' met' : ''));
+      chip.append(met ? el('span', null, '\u2713 ') : el('span', 'square'));
+      chip.append(el('span', 'need', '#' + need));
+      return chip;
+    });
+  }
+
+  function rollupEl(ticket, siblings) {
+    if (ticket.parent === null) return null;
+    const children = siblings.filter((other) => other.parent === ticket.parent);
+    if (children.length === 0) return el('span', 'rollup', 'parent #' + ticket.parent);
+    const done = children.filter((child) => child.column === 'Done').length;
+    const line = el('div', 'rollup', done + ' of ' + children.length + ' tickets done');
+    const bar = el('div', 'bar');
+    bar.append(el('span'));
+    bar.firstChild.style.width = Math.round((done / children.length) * 100) + '%';
+    const wrap = el('div');
+    wrap.append(line, bar);
+    return wrap;
+  }
+
+  function stepsEl(ticket) {
+    if (ticket.steps.length === 0) return null;
+    const rail = el('div', 'steps');
+    for (const step of ticket.steps) {
+      rail.append(el('span', 'step ' + step.state.toLowerCase()));
+    }
+    return rail;
+  }
+
+  function cardEl(ticket, hero, siblings) {
+    const card = el('div', 'card' + (hero ? ' hero' : '') + (ticket.group === null ? '' : ' group'));
+    const top = el('div', 'row');
+    top.append(el('span', 'order', '#' + ticket.order));
+    top.append(el('span', 'tag ' + ticket.column.replace(/ /g, ''), ticket.status));
+    if (ticket.platform !== null) top.append(el('span', 'pill', ticket.platform));
+    card.append(top, el('div', 'name', ticket.name), el('p', 'status-text', ticket.statusText));
+    if (ticket.needs.length > 0) {
+      const chips = el('div', 'row');
+      chips.append(...chipEls(ticket));
+      card.append(chips);
+    }
+    if (ticket.group !== null) card.append(el('span', 'group-label', ticket.group));
+    const rollup = rollupEl(ticket, siblings);
+    if (rollup) card.append(rollup);
+    const rail = stepsEl(ticket);
+    if (rail) card.append(rail);
+    if (ticket.context !== null) {
+      card.append(el('span', 'context', ticket.context.pct + '% ' + Math.round(ticket.context.ageMs / 60000) + 'm'));
+    }
+    return card;
+  }
+
+  function columnEl(name, tickets, head) {
+    const column = el('section', 'column');
+    const headEl = el('div', 'column-head' + (head && head.red ? ' red' : ''));
+    headEl.append(el('span', null, name));
+    if (head && head.count) headEl.append(el('span', 'count', head.count));
+    column.append(headEl);
+    for (const ticket of tickets) column.append(cardEl(ticket, head && head.hero, board.tickets));
+    return column;
+  }
+
+  function renderColumns() {
+    const columns = document.getElementById('columns');
+    columns.textContent = '';
+    const byColumn = new Map(COLUMNS.map((name) => [name, []]));
+    const unmapped = [];
+    for (const ticket of board.tickets) {
+      if (byColumn.has(ticket.column)) byColumn.get(ticket.column).push(ticket);
+      else if (ticket.column === 'Unmapped') unmapped.push(ticket);
+    }
+    const inFlight = byColumn.get('In progress');
+    const sharedGroup = inFlight.length === 2 && inFlight[0].group !== null && inFlight[0].group === inFlight[1].group;
+    for (const name of COLUMNS) {
+      const tickets = byColumn.get(name);
+      if (name === 'In progress') {
+        columns.append(columnEl(name, tickets, { hero: true, red: sharedGroup, count: inFlight.length + ' in flight' }));
+      } else if (name === 'Done') {
+        columns.append(columnEl(name, tickets, { count: board.doneCount + ' done' }));
+      } else {
+        columns.append(columnEl(name, tickets));
+      }
+    }
+    if (unmapped.length > 0) columns.append(columnEl('Unmapped', unmapped));
+  }
+
+  function renderFoot() {
+    const foot = document.getElementById('foot');
+    foot.textContent = '';
+    const waiting = board.tickets.filter((ticket) => ticket.needsMet.includes(false));
+    const runOrder = el('section');
+    runOrder.hidden = waiting.length === 0;
+    runOrder.append(el('h2', null, 'Run order'));
+    const runList = el('ul');
+    for (const ticket of waiting) {
+      const unmet = ticket.needs.filter((need, at) => !ticket.needsMet[at]).map((need) => '#' + need).join(', ');
+      runList.append(el('li', null, '#' + ticket.order + ' ' + ticket.name + ' waits on ' + unmet));
+    }
+    runOrder.append(runList);
+    const blocked = board.tickets.filter((ticket) => ticket.column === 'Blocked');
+    const blockedList = el('section');
+    blockedList.hidden = blocked.length === 0;
+    blockedList.append(el('h2', null, 'Blocked'));
+    const blockedItems = el('ul');
+    for (const ticket of blocked) {
+      const unmet = ticket.needs.filter((need, at) => !ticket.needsMet[at]).map((need) => '#' + need).join(', ');
+      blockedItems.append(el('li', null, '#' + ticket.order + ' ' + ticket.name + ' blocked on ' + unmet));
+    }
+    blockedList.append(blockedItems);
+    foot.append(runOrder, blockedList);
+  }
+
+  function render() {
+    renderHeader();
+    renderColumns();
+    renderFoot();
+  }
+
+  async function load() {
+    try {
+      const response = await fetch('/board.json');
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      board = await response.json();
+      document.getElementById('error').textContent = '';
+      render();
+    } catch (failure) {
+      document.getElementById('error').textContent = 'board unavailable: ' + (failure && failure.message ? failure.message : failure);
+    }
+  }
+
+  load().then(() => {
+    const events = new EventSource('/events');
+    events.onmessage = () => load();
+  });
+  setInterval(renderHeader, 8000);
+</script>
+</body>
+</html>

@@ -181,8 +181,62 @@ session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
   `sessions/56/break-04.txt`. Tree after: only the two step files.
 - Version: 2.0.77 (origin fetched under the version lock at 2.0.76; app.json,
   package.json, android/app/build.gradle all set, app.json first).
-- Commit: (filled in the step 5 commit, with the hook line)
-- Review: (filled in the step 5 commit)
-- Merge: (filled in the step 5 commit)
+- Commit: `30a1c87f` (2.0.77), hook green: `Tests: 5463 passed, 5463 total`;
+  Statements 100% (5211/5211), Branches 100% (2246/2246), Functions 100%
+  (1082/1082), Lines 100% (4667/4667).
+- Review: read `git show 30a1c87f` cold. The committed server is exactly 60
+  lines; the compose file is byte-identical to the contract (`cmp`) with only
+  the three mounts; the published address is 127.0.0.1 only; no console use,
+  failures take one stderr line and exit 1. No findings.
+- Merge: `bd6cb0c7` ("Merge feat/56-04-server-compose into uat: job 56 step 4,
+  server and compose service"), no conflict. Step branch deleted after the
+  merge.
+
+session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
+
+### Step 05 — merged (2026-10-12, executor ses_ed1bffd31ffe3iLQJUCpPzdQOU)
+
+- Branch: `feat/56-05-template` off `uat`. Anchors 6/6 at 1.
+- Red: `/` answered `404` with no index.html. Evidence `sessions/56/red-05.txt`.
+- Change: `board/index.html`, one self-contained file, system font stack, no
+  external request. Chosen values realising the elected words (the plan's
+  step 5 exception; the owner approves the face at audit): page `#101216`,
+  column `#14171c`, card `#181b21`, text `#e8eaf0`, muted `#9aa3b2`; the
+  aurora horizon one 2px gradient line `#274156, #35b8a6, #6f8fd8, #35b8a6,
+  #274156`; the single glow `0 0 8px 2px rgba(53,184,166,.75)` on the running
+  step cell (16px pill, accent `#35b8a6`), pending a hollow 8px dot, merged a
+  filled `#9aa3b2` dot; pale pastel tags bg/text per column: Backlog
+  `#cdd3df/#3d4350`, Planning `#e6d9b8/#574a26`, Ready `#cfe3d3/#2e4a37`,
+  In progress `#f3d2c2/#5c3524`, Audit `#d9d7ef/#3f3c66`, Done
+  `#c8e4dd/#2c4d45`, Blocked `#f0cfd0/#5d2f31`, Owner-led `#e4d5ea/#4b3557`,
+  Unmapped `#d8d8d8/#444444`; platform pill `#dfe3ea/#3c4353`; the red for a
+  shared-group In progress column `#e5484d`; live dot `#3fd47a` on, `#6b7280`
+  off; stale stamp `#f0c26b`; rollup bar track `#22262e` fill `#35b8a6`;
+  radius 8; every padding, margin and gap 8, 16 or 24; hero border 1px
+  `#35b8a6`; group a 2px dotted `#9aa3b2` left border plus mono label. Two
+  behavioural readings chosen: the red fires only when both in-flight groups
+  are non-null and equal (two null groups are disjoint, the serialisation
+  rule exists to catch shared groups); the parent rollup computes over the
+  rendered tickets sharing that parent, the data the schema carries. The
+  header stamp re-renders on an 8000 ms text-only interval so a dead reader
+  still goes stale on screen without an SSE event.
+- Green: `template words present`; `phone page and stale stamp structurally
+  present`; `200`; `page renders in a browser`; `two in flight renders` (read
+  line 83: `In progress2 in flight`). Two adaptations, both recorded: the
+  step's wait-loop grep for `IN PROGRESS, step 1` in board.json can never
+  match because the reader writes status and statusText as separate JSON
+  fields, so the loop waited on `"status": "IN PROGRESS"` reaching 2 instead;
+  and `agent-browser read <url>` races the JS render and returns only the
+  static heading, so the render checks read the already-open page after the
+  wait (`read` without the URL). Evidence `sessions/56/green-05.txt`,
+  `green-05-2if.txt`, `step05-board-read.txt`.
+- Break: `sub-checks passed: 2`, `ALL AS EXPECTED: 1` (no external reference
+  in the file; the page answers 200 while the state file holds garbage, the
+  error line rendering client-side). Evidence `sessions/56/break-05.txt`.
+- Version: 2.0.78 (origin fetched under the version lock at 2.0.77; app.json,
+  package.json, android/app/build.gradle all set, app.json first).
+- Commit: (filled in the step 6 commit, with the hook line)
+- Review: (filled in the step 6 commit)
+- Merge: (filled in the step 6 commit)
 
 session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
