@@ -1,6 +1,0 @@
-export const formatPrayerTime = (date: Date): string => {
-  const clock = readPrayerClock(date);
-  return `${pad2(clock.hour)}:${pad2(clock.minute)}`;
-};
-
-/**
