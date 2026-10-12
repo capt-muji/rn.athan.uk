@@ -62,6 +62,7 @@ The owner's rules that apply, quoted with their source:
 | D66 | 58a is proven by tests only: no device build, no simulator smoke in this stage. Device verification lives in 58b and the D41 confidence build | Owner | 2026-10-12 | This section; interview this session |
 | D67 | The sweep is enforced by a permanent structural gate test: physical directional style props fail the suite outside a named allowlist (widgets excluded; physical-correct and 58b-pending sites listed with reasons) | Owner | 2026-10-12 | This section; interview this session |
 | D68 | The D60 split gets its own queue rows now: row 58 becomes 58a's row, a new row (68, "58b: the supportsRTL flip") queues NOT PLANNED with needs-first 58. Row 66's 58b reference updates to name row 68 | Owner | 2026-10-12 | This section; interview this session; queue change lands with this plan |
+| D69 | Step 3's raw-key conflict resolves by amending the plan, not by keeping the site physical: the two assertions in `overlayPlacement.test.ts:153,205` change `left` to `start` with the site they pin, as a named exception to R2.1's zero-test-edits rule. Rendered LTR is unchanged; the census had misfiled the suite as geometry-only | Owner | 2026-10-12 | This section; LOG.md step 3 stop record; repair commit between step 2 and step 3 |
 
 ### 2.2 The executor must not decide
 
@@ -195,7 +196,11 @@ widths and is untouched by 58a except the `.start/.end` constant rename inside t
   suites plus `npx tsc --noEmit` and Biome.
 - 15 test-file lines match the banned patterns (8 files). Test files are outside the
   gate's scan scope: they assert geometry and behaviour, not shipping styles, and
-  Class B/C tests must keep naming physical keys.
+  Class B/C tests must keep naming physical keys. One census correction, D69: two
+  assertions in `overlayPlacement.test.ts` (`:153` in the toMatchObject, `:205` the
+  `style.left` read) pin the raw key of the Class A infobox inline style, so they
+  move with the site (`left` to `start`) inside step 3; every other test line that
+  matches a banned pattern pins Class B geometry or Class C math and stays physical.
 
 ### 4.5 Why the obvious fix is wrong
 
@@ -258,7 +263,7 @@ written.
 
 - [R1.1] WHEN the gate suite runs against a tree holding a physical directional style prop outside the allowlist THE SYSTEM SHALL fail naming that file and line.
 - [R1.2] WHEN the gate suite runs against a tree where an allowlist entry matches no source line THE SYSTEM SHALL fail naming that stale entry.
-- [R2.1] WHEN a conversion step's named suites and `npx tsc --noEmit` and `npx biome check . --error-on-warnings` run after that step's change THE SYSTEM SHALL pass all of them with zero edits to any test file.
+- [R2.1] WHEN a conversion step's named suites and `npx tsc --noEmit` and `npx biome check . --error-on-warnings` run after that step's change THE SYSTEM SHALL pass all of them with zero edits to any test file, except the two raw-key assertions in `overlayPlacement.test.ts:153,205` which change `left` to `start` with the site they pin (D69).
 - [R3.1] WHEN step 6 merges THE SYSTEM SHALL leave `scripts/directional-styles-allowlist.json` holding exactly the 21 permanent entries and no entry whose reason starts with `pending`.
 - [R4.1] WHEN `node scripts/check-directional-styles.js` runs at any step's green state THE SYSTEM SHALL print `DIRECTIONAL STYLES OK` and exit 0.
 - [R5.1] WHEN the gate suite runs against the tree a step commits THE SYSTEM SHALL pass both its tests with an empty remainder and an empty stale list.

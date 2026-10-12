@@ -28,6 +28,7 @@ git checkout -b code/58a-3-overlay uat
 - `components/overlay/Overlay.tsx` (anchors: overlay-catcher-inline, overlay-container-styles)
 - `components/overlay/OverlayInfoBox.tsx` (anchors: infobox-inline, infobox-styles)
 - `components/overlay/VeilBackdrop.tsx` (anchor: veil-styles)
+- `components/overlay/__tests__/overlayPlacement.test.ts` (two assertion keys only, D69)
 - `scripts/directional-styles-allowlist.json`
 - `app.json`, `package.json`, `android/app/build.gradle` (version only)
 
@@ -48,7 +49,10 @@ Apply the conversion map to the stylesheet pairs (`left: 0, right: 0,` become
 inline ternary branches at 68-69 change `left: 0,` to `start: 0,`; the stylesheet pair
 at 94-95 follows) and `VeilBackdrop.tsx` (container and gradient pairs). The inline
 catcher application at `Overlay.tsx:111` and the glow line at `VeilBackdrop.tsx:40`
-change by nothing. The allowlist keeps the same 46 remaining entries, no entry's
+change by nothing. Two assertion keys in `overlayPlacement.test.ts` follow the site
+they pin (D69): line 153's `left: 0` inside the toMatchObject becomes `start: 0`, and
+line 205's `expect(style.left).toBe(0)` becomes `expect(style.start).toBe(0)`; no
+other test line changes. The allowlist keeps the same 46 remaining entries, no entry's
 content changed, formatted by the step's biome format command.
 
 ## Green run
@@ -64,7 +68,8 @@ npx biome check . --error-on-warnings
 
 Expected: gate 2 passed; the overlay suites (`Overlay.test.tsx`, `VeilBackdrop.test.tsx`
 under components; `catcherGeometry.test.ts`, `overlayContent.test.ts`,
-`overlayPlacement.test.ts` under unit) pass with zero edits; CLI prints
+`overlayPlacement.test.ts` under unit) pass, `overlayPlacement.test.ts` with exactly
+the two D69 assertion-key edits and every other suite with zero edits; CLI prints
 `DIRECTIONAL STYLES OK`.
 
 ## Break script
@@ -76,7 +81,8 @@ and expects both tests to pass. It ends `ALL ASPECTED: 1`.
 
 ## Version and commit
 
-Version command under the lock. Expected `2.0.88`. Commit the files above plus plan
+Version command under the lock. Expected `2.0.90` (the D69 plan-repair docs commit
+took `2.0.89`). Commit the files above plus plan
 files and queue (`IN PROGRESS, step 3`):
 
 ```
@@ -87,6 +93,7 @@ files and queue (`IN PROGRESS, step 3`):
 
 - The diff holds no hunk at `Overlay.tsx:111` or `VeilBackdrop.tsx:40`.
 - `catcherGeometry.ts` is absent from the diff.
+- The test diff is exactly the two assertion keys at `overlayPlacement.test.ts:153,205` (D69).
 - No value changed; the allowlist holds 46 entries, none pending step 3.
 
 ## Merge
