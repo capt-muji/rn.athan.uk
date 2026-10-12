@@ -9,7 +9,7 @@
 | Parent | none |
 | Group | none. `board/`, `scripts/check-changed-coverage.js`, `biome.json`, `README.md`, `ai/plans/TEMPLATE.md`, `.opencode/agents/athan-executor.md` are disjoint from every other open row |
 | Batch budget | 4 weight units (a single step of weight 2 plus one of weight 1, or two of weight 2 never with the compose step) |
-| Session budget | 8 weight units (one executor session finishes all six steps with rotation room) |
+| Session budget | 10 weight units (one executor session can finish all six steps; the lead rotates earlier at its discretion) |
 | Steps count | 6 |
 | Device | none. Every proof is local node, docker compose and a browser on this machine. No phone, no `adb`, no build scripts |
 | Owner decisions still needed | none. Round 1 (2026-10-12) closed the frontier; see section 2.1 D62 to D65 |
@@ -111,9 +111,11 @@ costs nothing):
 
 ### 2.2 The executor must not decide
 
-- Anything visual beyond the elected words in section 1. A colour, size or layout question the
-  plan does not answer stops work and asks: "the elected design says `<quote>`; what exact
-  value should `<property>` take?"
+- Anything visual beyond the elected words in section 1. Step 5 is excepted: its contract is
+  the elected words, and the executor realises them with its own exact values (hex colours,
+  the red, the pastels), recording each chosen value in LOG.md; the owner approves the face at
+  audit. Outside step 5, a colour, size or layout question the plan does not answer stops work
+  and asks: "the elected design says `<quote>`; what exact value should `<property>` take?"
 - Any new input source. A field the reader wants that this plan does not name (an API, a
   network call, a second database) stops work and asks.
 - Any change outside the files step lists. In particular: no `app.json` beyond the version bump,
@@ -236,10 +238,14 @@ the set. No locks, no shared mutable state between processes.
 
 ### board.json schema (version 1)
 
+The example shows the planning-time row for ticket 56; during execution its status cell reads
+`IN PROGRESS, step k`, the column becomes `In progress` and `cursor` fills.
+
 ```json
 {
   "schemaVersion": 1,
   "generatedAt": "2026-10-12T12:00:00.000Z",
+  "reconcileMs": 15000,
   "repo": { "version": "2.0.67", "uat": "665c8926", "originUat": "3b2ec6cb", "unpushed": true },
   "activeNow": true,
   "doneCount": 53,
@@ -250,8 +256,8 @@ the set. No locks, no shared mutable state between processes.
       "status": "PLANNING",
       "statusText": "since 2026-10-12, plan folder …",
       "column": "Planning",
-      "needs": [39],
-      "needsMet": [true],
+      "needs": [],
+      "needsMet": [],
       "parent": null,
       "group": null,
       "platform": null,
@@ -301,8 +307,7 @@ platform: null, cursor: null, steps: [], context: null, statusText: "" }` with `
   updated within 5 minutes THE SYSTEM SHALL set `activeNow: true`.
 - [R5.1] WHEN `board.json` changes while `board/server.mjs` runs THE SYSTEM SHALL push one SSE
   event on `/events` and no other route, and an open page shall refetch without reload.
-- [R5.2] WHEN the reconciling timer fires every 15000 ms THE SYSTEM SHALL re-spawn the reader,
-  skipping the tick when a spawn is still running.
+- [R5.2] WHEN the reconciling timer fires every 15000 ms THE SYSTEM SHALL re-spawn the reader (a spawn still running skips its tick, by the design's one in-flight flag).
 - [R5.3] WHEN `board/server.mjs` is measured THE SYSTEM SHALL hold 60 lines or fewer
   (`wc -l board/server.mjs`).
 - [R6.1] WHEN two in-flight tickets share a group THE SYSTEM SHALL render the In progress
@@ -331,7 +336,9 @@ Checklist (ticked in each step's own commit):
 - [ ] Step 5: the template (code, weight 2)
 - [ ] Step 6: README and records (docs, weight 1)
 
-One subsection per step in `steps/<k>-<name>.md`.
+One subsection per step in `steps/<k>-<name>.md`. Every step's commit also stages, by name,
+`app.json`, `package.json` and `ai/plans/README.md` (the row cursor `IN PROGRESS, step k` moves
+inside each step's own commit); `android/app/build.gradle` is gitignored and never added.
 
 ## 7. Device proof
 
@@ -355,7 +362,8 @@ bind mount (1531 sessions, directory filter, ExperimentalWarning only); refs rea
 (uat 665c8926 vs origin 3b2ec6cb); SSE answered text/event-stream on 127.0.0.1:8788; queue
 tables split clean on pipes. Interview round 1: D62 board/ at root, D63 fully outside the
 gates, D64 README.md carries the section, D65 the LOG contract is pinned in this job. Grill
-round 1: <count> findings, all applied. `bash scripts/check-plan.sh ai/plans/56-ticket-board`
+round 1: 21 findings, all applied. Grill round 2: 14 findings, all applied.
+`bash scripts/check-plan.sh ai/plans/56-ticket-board`
 prints PLAN OK. Row set READY.
 ```
 

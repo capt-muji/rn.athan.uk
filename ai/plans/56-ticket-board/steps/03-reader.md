@@ -101,7 +101,8 @@ functions, these names, these answers:
   so a served read never sees a torn file.
 - Output assembly: the exact schema of PLAN.md section 5, `tickets` in queue table order
   followed by the Done-column tickets, `steps` empty when no plan folder, `context` from
-  `readContext` over `parseLogSessions`, `doneCount` from `doneOrders.length`, `generatedAt` a
+  `readContext` over `parseLogSessions`, `doneCount` from `doneOrders.length`, `reconcileMs`
+  echoed from the config, `generatedAt` a
   fresh ISO string. Done emission per PLAN.md section 5: the `doneColumnCount` (config)
   highest-order DONE orders yield tickets; an open-table DONE row parses like any open row, a
   first-table DONE row yields the stub with empty `needs`, `steps`, `statusText: ""` and
@@ -119,20 +120,31 @@ const b = JSON.parse(require('node:fs').readFileSync('board/state/board.json','u
 const orders = b.tickets.map(t => t.order);
 if (!orders.includes(56)) throw new Error('row 56 missing');
 const t56 = b.tickets.find(t => t.order === 56);
-if (t56.column !== 'Planning') throw new Error('56 not Planning: ' + t56.column);
+if (t56.column !== 'In progress') throw new Error('56 not In progress: ' + t56.column);
+if (!Number.isInteger(t56.cursor)) throw new Error('cursor missing');
 if (t56.needs.length !== 0) throw new Error('56 needs not empty');
+const t59 = b.tickets.find(t => t.order === 59);
+if (!t59 || !t59.needsMet.includes(false)) throw new Error('unmet need not marked');
+if (t56.steps.length !== 6) throw new Error('56 steps not 6: ' + t56.steps.length);
+if (t56.steps[0].state !== 'Merged') throw new Error('step 1 not Merged');
+if (t56.steps[2].state !== 'Running') throw new Error('step 3 not Running');
+if (t56.platform !== null) throw new Error('platform not null');
 if (typeof b.repo.unpushed !== 'boolean') throw new Error('unpushed not boolean');
 if (typeof b.activeNow !== 'boolean') throw new Error('activeNow not boolean');
 if (!Number.isInteger(b.doneCount) || b.doneCount < 40) throw new Error('doneCount wrong: ' + b.doneCount);
+if (!Number.isInteger(b.reconcileMs) || b.reconcileMs !== 15000) throw new Error('reconcileMs wrong: ' + b.reconcileMs);
 console.log('reader assertions passed');
 EOF
 node board/reader.mjs --repo . --state board/state >/dev/null
-sed 's/"generatedAt": "[^"]*"/"generatedAt": "X"/; s/"ageMs": [0-9]*/"ageMs": 0/' board/state/board.json > "$TMPDIR/b1.json"
+sed -E 's/"generatedAt": "[^"]*"/"generatedAt": "X"/; s/"ageMs": [0-9]+/"ageMs": 0/; s/"activeNow": (true|false)/"activeNow": "X"/' board/state/board.json > "$TMPDIR/b1.json"
 node board/reader.mjs --repo . --state board/state >/dev/null
-sed 's/"generatedAt": "[^"]*"/"generatedAt": "X"/; s/"ageMs": [0-9]*/"ageMs": 0/' board/state/board.json > "$TMPDIR/b2.json"
+sed -E 's/"generatedAt": "[^"]*"/"generatedAt": "X"/; s/"ageMs": [0-9]+/"ageMs": 0/; s/"activeNow": (true|false)/"activeNow": "X"/' board/state/board.json > "$TMPDIR/b2.json"
 cmp "$TMPDIR/b1.json" "$TMPDIR/b2.json" && echo 'deterministic: identical bytes'
 git check-ignore board/state/board.json && echo 'state ignored'
 ```
+
+`activeNow` is masked too: a session crossing the 5-minute boundary between the two runs
+would flip it on a correct reader.
 
 Expected: `reader assertions passed`, `deterministic: identical bytes`, `state ignored`, and
 the reader's own summary line on each run. Record all four. Then the context fixture, proving
@@ -177,14 +189,16 @@ rm board/state/.gitignore
 node board/reader.mjs --repo . --state board/state >/dev/null
 git check-ignore board/state/board.json || { echo 'gitignore not recreated'; exit 1 }
 REPO_DIR_IN_DB= node board/reader.mjs --repo . --state board/state >/dev/null || { echo 'empty db var must not fail'; exit 1 }
-echo 'ALL AS EXPECTED: 3'
+echo 'sub-checks passed: 3'
+echo 'ALL AS EXPECTED: 1'
 ```
 
 Note: the sed matches the first `| NOT PLANNED | nothing |` row cell, which is row 65's
 (`| NOT PLANNED | nothing |`). Verify with `grep -c '| NOT PLANNED | nothing |' ai/plans/README.md`
 before the break; a count other than 1 means STOP (the queue changed; read the queue and adapt
 only the sed target, recording the adaptation in LOG.md).
-Expected last line: `ALL AS EXPECTED: 3`. `git status --porcelain` then lists only this plan
+Expected last line: `ALL AS EXPECTED: 1` (with `sub-checks passed: 3` on the line before).
+`git status --porcelain` then lists only this plan
 folder's files.
 
 ## Version and commit
