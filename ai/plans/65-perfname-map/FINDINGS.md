@@ -390,3 +390,64 @@ Nothing errors — `baseline-compare.sh` diffs the marks a capture actually
 contains, so keys with no captured mark simply stop matching — but the
 historical baselines for sheet open/close become unreadable data. No hit
 beyond the expected four appeared, so no reader contradicts section 1.
+
+## Section 3: the recommendation
+
+The owner rules on reading (D81); every claim below cites its evidence.
+
+### 1. What removal costs
+
+Three scopes exist, and their costs differ by an order of magnitude.
+
+Dropping the sheet wiring only (the probe's scope, section 2):
+
+- Nine source files touched: `Sheet.tsx`, the five screens, `SoundItem`,
+  `LabeledToggle`, `stores/ui.ts` (section 2's method list).
+- Three suites edited and nine tests deleted or rewritten: `Sheet.test.tsx`
+  loses its "settings sheet in a measurement build" describe (five tests,
+  plus the four `perfName` call sites tsc names), `LabeledToggle.test.tsx`
+  its tap-mark test (two rows), `SoundItem.test.tsx` its two tap-mark tests
+  (section 2, What fails).
+- Six lint findings to clear by hand: four orphaned imports, one orphaned
+  parameter, one JSX reformat (section 2, Biome).
+- Seven `sheet_*` keys in `e2e/baselines/android-3t.json` orphan — nothing
+  errors, the comparison just silently stops covering sheet open/close
+  (section 2, orphaning cost).
+- Given up: sheet open/close and tap timing in a measurement build. The
+  launch, bootstrap, scheduler, widget-push, catalog and overlay timings
+  stay, because their marks live outside the sheets (section 1, call sites).
+
+Removing the machinery too (the full cleanup):
+
+- The 24 non-test files of section 1's surface plus both machinery suites
+  and the mock; every export has a non-sheet caller, so nothing is
+  droppable piecemeal (section 1, machinery and call-site groups).
+- The `EXPO_PUBLIC_PERF_MONITOR` launch-diagnosis capability goes entirely:
+  `js_to_content`, `index_first_render`/`home_content`, the bootstrap
+  timeline, scheduler queue-waits and widget-push timing (section 1, call
+  sites) — the instrument that measured the app's cold start and the
+  notification pipeline, not only the sheets.
+- `baseline-compare.sh`, its README section and the whole baselines file
+  lose their subject (section 1, e2e surface): the harness reads
+  `PERF_MEASURE` lines that would no longer exist.
+
+### 2. What removal risks
+
+The probe names the live dependencies, and they are all tests (section 2):
+the compiler, the linter and nine Jest cases are the entire breakage — no
+e2e flow, no script, no runtime path reads the sheet marks (section 1, e2e
+surface; section 2, e2e after the deletion). The one silent risk is the
+orphaning: nothing fails when the baselines keys stop matching, so a future
+sheet-regression audit would quietly lose its rows (section 2, orphaning
+cost). That silence cuts both ways — removal is safe if wanted, but its
+cost is easy to under-notice.
+
+### 3. Recommendation
+
+**Keep.** Nothing in a production build pays for the wiring — the gate
+folds every mark out of store bundles (section 1, machinery) — and it is
+the only instrument behind the sheet baselines, so a removal ticket would
+spend nine tests and seven baseline keys to buy tidiness the owner cannot
+feel. If she ever wants the cleanup anyway, the probe is the map: a small,
+well-bounded ticket (nine files, three suites, six lint findings, seven
+dead keys), worth its own row only then.
