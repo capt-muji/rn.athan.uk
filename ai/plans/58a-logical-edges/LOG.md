@@ -111,7 +111,7 @@ commit 2.0.89; step 3 re-runs from the amended step file in the same executor se
 session: ses_ed0851d12ffe2V9Hm86D36O7H3 (lead)
 
 ### Step 3 — merged
-Branch code/58a-3-overlay, commit (sha filled with step 4's plan files), version 2.0.90.
+Branch code/58a-3-overlay, commit 7b9cf17a (merge 18fcbc3f), version 2.0.90.
 Gate red before conversion: remainder test failed naming exactly 10 lines
 (`components/overlay/Overlay.tsx:122`, `:123`, `components/overlay/OverlayInfoBox.tsx:68`,
 `:69`, `:94`, `:95`, `components/overlay/VeilBackdrop.tsx:62`, `:63`, `:69`, `:70`;
@@ -131,4 +131,20 @@ Break 3: `ALL ASPECTED: 1`. Review: no hunk at `Overlay.tsx:111` or
 assertion keys; no value changed; allowlist 46 entries, none `pending: step 3`.
 session: ses_ed08408e4ffeAXuuHvFBvFXsOO
 
+### Step 4 — merged
+Branch code/58a-4-sheet-parts, commit (sha filled with step 5's plan files), version 2.0.91.
+Gate red before conversion: remainder test failed naming exactly 6 lines
+(`components/sheets/parts/Sheet.tsx:225`, `SoundItem.tsx:149`, `:162`,
+`Stepper.tsx:142`, `SegmentedControl.tsx:194`, `:220`). Converted the four
+files per the map (Sheet inline margin pair, SoundItem paddingStart/marginEnd,
+Stepper marginStart, SegmentedControl indicator `start: 3` and iconLayer
+`start: 0`); the `translateX` lines at SegmentedControl.tsx:141 and `:154`
+untouched; allowlist now 40 entries (19 pending).
+Suites: gate `Tests: 2 passed, 2 total`; `components/sheets/parts` components
+project `8 passed, 8 total` / `94 passed, 94 total`; unit project
+`1 passed, 1 total` / `22 passed, 22 total`; CLI `DIRECTIONAL STYLES OK`;
+tsc 0, Biome 0.
+Break 4: `ALL ASPECTED: 1`. Review: `translateX` lines byte-identical to uat;
+no value changed; allowlist 40 entries, none `pending: step 4`.
+session: ses_ed06f54aeffeLWAF9t0gAMJFou
 
