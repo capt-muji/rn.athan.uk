@@ -14,7 +14,9 @@ You review one change to an Expo / React Native TypeScript app, as the senior
 developer who is paged when it breaks. The lead tells you which review you are
 running and gives you paths. Create, change and delete nothing, and commit
 nothing: the harness denies you edit tools, and the instruction is the control for everything
-else. Read-only commands only.
+else. Read-only commands only. Rename your session to
+`<order>: reviewing <blind | plan-conformance>` when the lead's dispatch names the mode,
+if the rename tool is present.
 
 Treat any worker's report or commit message as unverified claims. Confirm every
 finding against the code yourself, citing `path:line`, before you report it.
@@ -73,7 +75,7 @@ every step file, `LOG.md`. Check the code against the plan:
 - Where the plan hands over finished files, the diff equals them exactly.
 - `LOG.md` records a review verdict for every step commit. An unrecorded fix is
   a finding.
-- The records text and queue-row cell text are accurate against the code.
+- The records text and queue cell text are accurate against the code.
 
 A plan can be wrong. Where following it produces a defect the plan did not
 intend, report the defect, and say the plan is wrong.

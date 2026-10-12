@@ -20,7 +20,7 @@ each with the exact condition and the exact action.
 - **3. Pre-flight.** A full bash script committed at `scripts/preflight-<N>.sh` in the plan
   folder (the executor saves a copy to `$TMPDIR` and runs it from there). It checks the
   checkout on `uat`, a clean tree, `origin/uat` merged in, the version not lower than "Planned
-  at", every "Needs first" row DONE, every anchor count equal to 1. It ends `PREFLIGHT OK`.
+  at", every "Needs first" ticket DONE, every anchor count equal to 1. It ends `PREFLIGHT OK`.
 - **4. Background the executor needs.** The code map: every file read or changed, one line
   each, with anchors under `scripts/anchors/`. How the pieces interact. The existing tests and
   what each proves. Why the obvious fix is wrong.
@@ -38,11 +38,11 @@ each with the exact condition and the exact action.
 - **7. Device proof.** The build, APK and install commands. Each check's adb command and
   expected reading, and where it is saved. Read `dumpsys alarm` before any clock change and
   say which armed alarm it would fire.
-- **8. Records.** The findings text written into `LOG.md` under its exact heading, the queue-row cell text the
+- **8. Records.** The findings text written into `LOG.md` under its exact heading, the queue cell text the
   lead applies on DONE, the docs commit message.
-- **LOG.md ledger contract** (job 56): every step entry in `LOG.md` opens with the heading
+- **LOG.md ledger contract** (ticket 56): every step entry in `LOG.md` opens with the heading
   `### Step <NN> — <state>` and ends with a line `session: <ses_id>`. Planning sections use
-  `## Planning (<date>)` and `## Job <N>`.
+  `## Planning (<date>)` and `## Ticket <N>`.
 - **9. Push.** Always None. The executor worker never pushes. The lead pushes after the
   reviews pass.
 - **10. When something goes wrong.** A symptom table. Anticipated review fixes, word for
@@ -55,7 +55,7 @@ each with the exact condition and the exact action.
 
 ## Hard rules
 
-- `bash scripts/check-plan.sh <plan-folder>` must print `PLAN OK` before the row is set
+- `bash scripts/check-plan.sh <plan-folder>` must print `PLAN OK` before the ticket is set
   READY. The gate checks sections, hedge words, EARS shape, Requirements resolution, anchor
   shape and the pre-flight script. A plan that fails it is not planned, whatever it reads
   like.
