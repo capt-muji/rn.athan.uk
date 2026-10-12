@@ -30,7 +30,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.getByRole('text', { name: 'Asr' })).toBeOnTheScreen();
-    expect(screen.getByText('2h 29m')).toBeOnTheScreen();
+    expect(screen.getByText('2:29')).toBeOnTheScreen();
   });
 
   it('counts down in native digits under ar', async () => {
@@ -40,23 +40,23 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
       startCountdowns();
       await render(<Countdown type={ScheduleType.Standard} />);
 
-      expect(screen.getByText('٢س ٢٩د')).toBeOnTheScreen();
+      expect(screen.getByText('٢:٢٩')).toBeOnTheScreen();
     } finally {
       setActiveLocale('en');
     }
   });
 
-  it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 1m and not 59s', async () => {
+  it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 1:00 and not 0:59', async () => {
     showLondonDay('2026-09-11', '16:28');
     await act(() => jest.advanceTimersByTime(600));
 
     startCountdowns();
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('1m')).toBeOnTheScreen();
+    expect(screen.getByText('1:00')).toBeOnTheScreen();
   });
 
-  it('holds 1s, never 0s, when the countdown starts half a second after Asr, before the list has moved on', async () => {
+  it('holds 0:01, never 0:00, when the countdown starts half a second after Asr, before the list has moved on', async () => {
     showLondonDay('2026-09-11', '16:28');
     await act(() => jest.advanceTimersByTime(60_500));
 
@@ -64,7 +64,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.getByText('Asr')).toBeOnTheScreen();
-    expect(screen.getByText('1s')).toBeOnTheScreen();
+    expect(screen.getByText('0:01')).toBeOnTheScreen();
   });
 
   it('swaps to Magrib the instant Asr comes, for a countdown started 400 ms into 16:28', async () => {
@@ -76,7 +76,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await act(() => jest.advanceTimersByTime(59_600));
 
     expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('2h 59m')).toBeOnTheScreen();
+    expect(screen.getByText('2:59')).toBeOnTheScreen();
   });
 
   it('counts down to the prayer the overlay opens on', async () => {
@@ -87,7 +87,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
 
     expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('5h 28m')).toBeOnTheScreen();
+    expect(screen.getByText('5:28')).toBeOnTheScreen();
   });
 
   it('shows the bar under the countdown on a fresh install', async () => {
