@@ -165,7 +165,7 @@ allowlist 32 entries, none `pending: step 5`.
 session: ses_ed06f54aeffeLWAF9t0gAMJFou
 
 ### Step 6 — merged
-Branch code/58a-6-modals-day-nav-bar, commit (sha filled with the EXECUTED docs commit), version 2.0.93.
+Branch code/58a-6-modals-day-nav-bar, commit 10f2991d (merge b8a0b3f9), version 2.0.93.
 Gate red before conversion: remainder test failed naming exactly 14 lines
 (`components/modals/Help.tsx:204`, `:205`, `:225`, `:227`,
 `components/modals/Modal.tsx:116`, `:117`, `:126`, `:127`,
