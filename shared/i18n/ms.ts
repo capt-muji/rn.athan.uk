@@ -50,7 +50,7 @@ export const ms = {
   'help.step.batterySaver': 'Matikan Penjimat Bateri',
   'help.q.stopAfterRestart': 'Mengapa notifikasi berhenti selepas dimulakan semula?',
   'help.a.stopAfterRestart':
-    'Selepas telefon dimulakan semula, apl ditamatkan.\nIni menghentikan notifikasi baharu dihantar.',
+    'Selepas telefon dimulakan semula, apl ditamatkan. Ini menghentikan notifikasi baharu dihantar.',
   'help.step.openAfterReboot': 'Buka apl ini selepas memulakan semula telefon',
   'help.q.noSound': 'Mengapa notifikasi muncul tetapi tiada bunyi?',
   'help.a.noSound': 'Telefon senyap mematikan bunyi notifikasi.',
@@ -65,7 +65,7 @@ export const ms = {
   'help.a.quiet': 'Ia dimainkan pada kelantangan penggera, bukan kelantangan deringan.',
   'help.step.alarmVolume': 'Naikkan kelantangan Penggera dalam tetapan bunyi anda',
   'help.q.cutoff': 'Mengapa azan berhenti awal?',
-  'help.a.cutoff': 'Bunyi notifikasi dihadkan kepada 30 saat.\nSetiap azan dipendekkan untuk muat.',
+  'help.a.cutoff': 'Bunyi notifikasi dihadkan kepada 30 saat. Setiap azan dipendekkan untuk muat.',
   'help.action.dndAccess': 'Benarkan akses Jangan Ganggu',
   'whatsNew.title.tabletSupport': 'Tablet support',
   'whatsNew.body.tabletSupport': 'Athan now supported on tablets',
