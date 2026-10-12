@@ -50,7 +50,7 @@ export const so = {
   'help.step.batterySaver': 'Dami Badbaadiyaha Betarida',
   'help.q.stopAfterRestart': 'Maxay ogeysiisyadu joojiyeen dib-u-dhig ka dib?',
   'help.a.stopAfterRestart':
-    'Dib-u-dhig ka dib, barnaamijku waa la joojiyay.\nTani way joojisaa ogeysiis cusub soo diritaanka.',
+    'Dib-u-dhig ka dib, barnaamijku waa la joojiyay. Tani way joojisaa ogeysiis cusub soo diritaanka.',
   'help.step.openAfterReboot': 'Fur barnaamijkan markaad telefoonka dib-u-dhigto',
   'help.q.noSound': 'Maxay ogeysiisu muuqdo laakiin aan dheesi lahayn?',
   'help.a.noSound': 'Telefoon aamusan oo ah ayaa dhawra dhawaaqa ogeysiiska.',
@@ -66,7 +66,7 @@ export const so = {
   'help.a.quiet': 'Waxaa lagu ciyaaraa codka bindiga, ma aha codka dhawaaqa.',
   'help.step.alarmVolume': 'Kor dheelay codka Bindiga habbooshka codkaaga',
   'help.q.cutoff': 'Maxay aqaanku gooyo goor hore?',
-  'help.a.cutoff': 'Dhawaaqyada ogeysiisu waa xadidan yihiin 30 ilbiriqsi.\nAqan kasta waa la gaabiyay si uu u dhismo.',
+  'help.a.cutoff': 'Dhawaaqyada ogeysiisu waa xadidan yihiin 30 ilbiriqsi. Aqan kasta waa la gaabiyay si uu u dhismo.',
   'help.action.dndAccess': 'Siiso ogolaanshaha Ha-I-Delin',
   'whatsNew.title.tabletSupport': 'Tablet support',
   'whatsNew.body.tabletSupport': 'Athan now supported on tablets',

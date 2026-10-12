@@ -58,7 +58,7 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['help.q.stopAfterRestart', 'Why did notifications stop after a restart?'],
   [
     'help.a.stopAfterRestart',
-    'After rebooting the phone, the app is terminated.\nThis stops new notifications being sent.',
+    'After rebooting the phone, the app is terminated. This stops new notifications being sent.',
   ],
   ['help.step.openAfterReboot', 'Open this app after rebooting the phone'],
   ['help.q.noSound', 'Why does a notification show but play no sound?'],
@@ -74,7 +74,7 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['help.a.quiet', 'It plays at alarm volume, not ring volume.'],
   ['help.step.alarmVolume', 'Raise the Alarm volume in your sound settings'],
   ['help.q.cutoff', 'Why does the athan cut off early?'],
-  ['help.a.cutoff', 'Notification sounds are limited to 30 seconds.\nEvery athan is trimmed to fit.'],
+  ['help.a.cutoff', 'Notification sounds are limited to 30 seconds. Every athan is trimmed to fit.'],
   ['help.action.dndAccess', 'Grant Do Not Disturb access'],
 
   ['whatsNew.title.tabletSupport', 'Tablet support'],
