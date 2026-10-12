@@ -113,7 +113,7 @@ The workers are agent files in `.opencode/agents/` (`athan-executor`, `athan-rev
 The queue also renders as a local web board: read-only, live, one URL.
 
 ```bash
-cd board && REPO_DIR_IN_DB=$(cd .. && pwd) docker compose up -d
+cd board && REPO_DIR_IN_DB=$(cd .. && pwd) OPENCODE_DIR="$HOME/.local/share/opencode" docker compose up -d
 ```
 
 Open `http://127.0.0.1:8788`. The board recomputes from committed state every 15 seconds and
@@ -126,7 +126,8 @@ Reading it: a ticket is a queue job, a step is a plan step. Columns follow the q
 (Backlog, Planning, Ready, In progress, Audit, Done, Blocked, Owner-led). The platform pill is
 computed from each plan's own file list. The context chip is telemetry from the newest handoff
 document, not a gate. `board/config.json` carries the port, host, refresh interval and Done
-column size; `yarn validate` never sees this folder.
+column size; `yarn validate` never sees this folder. In docker compose, `BOARD_PORT` moves the
+port and `OPENCODE_DIR` points the read-only mount at the agent session database.
 
 ## Development
 
