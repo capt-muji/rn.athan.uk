@@ -74,9 +74,16 @@ session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
   gate refused the staged probe, restore re-staged, no residue).
 - Version: 2.0.74 (origin fetched under the held version lock at 2.0.73;
   app.json, package.json, android/app/build.gradle all set, app.json first).
-- Commit: (filled in the step 3 commit, with the hook line)
-- Review: (filled in the step 3 commit)
-- Merge: (filled in the step 3 commit)
+- Commit: `b97edf14` (2.0.74), hook green: `Tests: 5463 passed, 5463 total`;
+  Statements 100% (5211/5211), Branches 100% (2246/2246), Functions 100%
+  (1082/1082), Lines 100% (4667/4667).
+- Review: read `git show b97edf14` cold. The UNMEASURED reason is one quoted
+  string laid out like its neighbours, no template literals; `python3 -m
+  json.tool biome.json` exit 0 on the committed tree; `board/config.json`
+  byte-identical to the contract (90 bytes, cmp). No findings.
+- Merge: `3a213c9b` ("Merge feat/56-02-board-scaffold into uat: job 56 step 2,
+  board scaffold and gate exemptions"), no conflict. Step branch deleted after
+  the merge.
 
 session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
 
@@ -92,3 +99,44 @@ unchanged: both edits are insertions outside the pinned bytes (A5 pins the
 paragraph the Board section follows, A6 pins the closing fence and the
 paragraph after the layout block, not the e2e/ line). Step 3 re-dispatched to
 the same executor session.
+
+### Step 03 — merged (2026-10-12, executor ses_ed1bffd31ffe3iLQJUCpPzdQOU)
+
+- Branch: `feat/56-03-reader` off `uat` (re-opened after plan repair 2,
+  `fb8edc5e`; the first opening STOPped on anchor A2 and touched nothing).
+  Anchors 6/6 at 1.
+- Red: `Error: Cannot find module
+  '$HOME/repos/rn.athan.uk/board/reader.mjs'`, exit 1.
+- Change: `board/reader.mjs`, one file, `node:` builtins only
+  (`node:sqlite`, `node:fs`, `node:path`), every contracted function with its
+  contracted answer. Two defects caught before any run: argv parsed as an
+  object from array entries (flags never resolved) and a NaN leak through `??`
+  in the Parent parse. The node:sqlite import alone prints ExperimentalWarning
+  on stderr; stdout stays the single summary line.
+- Green: `board.json written: 20 tickets, 47 done, generatedAt <ISO>`;
+  `reader assertions passed`; `deterministic: identical bytes` (generatedAt,
+  ageMs, activeNow masked); `state ignored` (`git check-ignore` answered).
+  Fixture context: `fixture context read: 55.5` over the first LOG session
+  `ses_ed210257dffeRIqhnEt98ldG4O`; the final run restored the real board.json.
+  Real handoff cache answers nothing for this plan's sessions, so 56 renders
+  context null (the R4.1 negative branch, live).
+- Three literal-contract behaviours, verified against the queue before commit:
+  the Done column is 57, 55, 53, 52, 50 (the five highest DONE orders across
+  both tables: 57 and 55 full open rows, 53, 52, 50 first-table stubs, the two
+  cases PLAN section 5 names; the step file's 18, 38, 39, 55, 57 are the five
+  open-table DONE rows, all in doneOrders); statusText keeps its leading comma
+  on IN PROGRESS cells (", step 3. Planned at ..." is the cell after the
+  matched status, collapsed, 140 chars); ticket 55 carries cursor 2 because its
+  DONE cell contains "step 2 as `fc568fa7`" and the contract takes the first
+  `step (\d+)` capture wherever it sits.
+- Break: `sub-checks passed: 3`, `ALL AS EXPECTED: 1` (WIBBLE rendered one
+  Unmapped ticket; `board/state/.gitignore` recreated after rm; empty
+  REPO_DIR_IN_DB exited 0). The sed target `| NOT PLANNED | nothing |`
+  verified count 1 before the break. Tree after: only the step's files.
+- Version: 2.0.76 (origin fetched under the version lock at 2.0.75; app.json,
+  package.json, android/app/build.gradle all set, app.json first).
+- Commit: (filled in the step 4 commit, with the hook line)
+- Review: (filled in the step 4 commit)
+- Merge: (filled in the step 4 commit)
+
+session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
