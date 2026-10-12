@@ -103,7 +103,10 @@ suites fail on those members. Any other failure is a STOP.
    loop (lines 108-122) becomes an unconditional removal of every
    `prayer_max_english_width_` prefixed key the database still holds, routed
    through `clearPrefix('prayer_max_english_width_')` imported from
-   `@/stores/database` (the enumeration lives there), carrying
+   `@/stores/database` (the enumeration lives there) — the `database` import
+   on line 8 narrows to `clearPrefix`, the seed loop was its only use, and the
+   full-object import left behind fails Biome's unused-imports warning —
+   carrying
    this comment verbatim in the loop's place:
 
 ```ts
