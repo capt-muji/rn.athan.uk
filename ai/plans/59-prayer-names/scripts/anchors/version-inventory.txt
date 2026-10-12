@@ -1,5 +1,0 @@
-  // Cached layout measurements - prayer names and fonts are constants, so the
-  // measured column widths are valid forever (recomputing them reflows the list)
-  'prayer_max_english_width_',
-];
-

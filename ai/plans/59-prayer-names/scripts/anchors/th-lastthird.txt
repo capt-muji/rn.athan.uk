@@ -1,3 +1,0 @@
-  'prayer.midnight': 'เที่ยงคืน',
-  'prayer.last third': 'ช่วงสุดท้ายของคืน',
-  'prayer.suhoor': 'ซูฮูร',
