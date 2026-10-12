@@ -1,0 +1,5 @@
+    path: 'ai/plans/',
+    reason:
+      'session plan scaffolding: census and anchor scripts run by planning sessions against the tree, never by the app; deleted at the plan folder\u2019s merge',
+  },
+  { path: '.agents/', reason: 'Expo and EAS agent skills, documentation for coding agents' },

@@ -1,0 +1,4 @@
+ticked step. If your context fills mid-step, write `Resume from: step k, part m`
+at the top of `LOG.md`, commit and merge what finished, and return: the lead
+respawns you from that note.
+
