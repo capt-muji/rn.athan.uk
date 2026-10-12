@@ -38,13 +38,13 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthAtomFor: (type: string) => (type === 'standard' ? 'englishWidthStandardAtom' : 'englishWidthExtraAtom'),
+  nameWidthAtomFor: (type: string) => (type === 'standard' ? 'nameWidthStandardAtom' : 'nameWidthExtraAtom'),
 }));
 
 beforeEach(() => {
   mockAtomValues.clear();
-  mockAtomValues.set('englishWidthStandardAtom', 88);
-  mockAtomValues.set('englishWidthExtraAtom', 99);
+  mockAtomValues.set('nameWidthStandardAtom', 88);
+  mockAtomValues.set('nameWidthExtraAtom', 99);
 });
 
 /** Puts a sequence on screen at a London moment, as the store would */

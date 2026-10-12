@@ -152,7 +152,7 @@ const UPGRADE_KEEP_PREFIXES: string[] = [
 
   // Cached layout measurements - prayer names and fonts are constants, so the
   // measured column widths are valid forever (recomputing them reflows the list)
-  'prayer_max_english_width_',
+  'prayer_max_name_width_',
 ];
 
 /**

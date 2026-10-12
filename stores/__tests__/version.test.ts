@@ -373,7 +373,7 @@ describe('clearUpgradeCache', () => {
       'whats_new_shown_version',
       'cache_schema_version',
       'preference_',
-      'prayer_max_english_width_',
+      'prayer_max_name_width_',
     ]);
   });
 

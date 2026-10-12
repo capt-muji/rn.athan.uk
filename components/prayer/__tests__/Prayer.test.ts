@@ -68,7 +68,7 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthAtomFor: (type: string) => (type === 'standard' ? 'englishWidthStandardAtom' : 'englishWidthExtraAtom'),
+  nameWidthAtomFor: (type: string) => (type === 'standard' ? 'nameWidthStandardAtom' : 'nameWidthExtraAtom'),
 }));
 
 type Element = ReactElement<{ children?: ReactNode }>;

@@ -57,7 +57,7 @@ jest.mock('../storage', () => {
   };
 });
 
-// The per-locale width seed runs at module evaluation against raw MMKV keys, so
+// The width-key removal runs at module evaluation against raw MMKV keys, so
 // these tests see the same storage the isolated module load will (the real
 // storage factory is borrowed back inside each isolation)
 const mockDatabaseValues = new Map<string, string | number | boolean>();
@@ -73,6 +73,11 @@ jest.mock('@/stores/database', () => ({
     },
     set: (key: string, value: string | number | boolean) => mockDatabaseValues.set(key, value),
     remove: (key: string) => mockDatabaseValues.delete(key),
+  },
+  clearPrefix: (prefix: string) => {
+    for (const key of [...mockDatabaseValues.keys()]) {
+      if (key.startsWith(prefix)) mockDatabaseValues.delete(key);
+    }
   },
   // The locale resolver's preference read (no stored language exists in a test)
   getItem: (key: string) => {
@@ -91,7 +96,7 @@ const {
   bottomSheetModalAtom,
   countdownBarColorAtom,
   countdownBarShownAtom,
-  englishWidthAtomFor,
+  nameWidthAtomFor,
   getMeasurementsList,
   getPopupUpdateLastCheck,
   hideSettingsSheet,
@@ -104,7 +109,7 @@ const {
   resyncAtom,
   setAlertSheetModal,
   setBottomSheetModal,
-  setEnglishWidth,
+  setNameWidth,
   setMeasurementsList,
   setPlayingSoundIndex,
   setPopupHelpEnabled,
@@ -321,46 +326,46 @@ describe('measurement functions', () => {
     mockDefaultStoreSet.mockClear();
   };
 
-  it('setEnglishWidth sets Standard atom', () => {
+  it('setNameWidth sets Standard atom', () => {
     resetWidthStore();
-    setEnglishWidth(ScheduleType.Standard, 150);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthAtomFor(ScheduleType.Standard), 150);
+    setNameWidth(ScheduleType.Standard, 150);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(nameWidthAtomFor(ScheduleType.Standard), 150);
   });
 
-  it('setEnglishWidth sets Extra atom', () => {
+  it('setNameWidth sets Extra atom', () => {
     resetWidthStore();
-    setEnglishWidth(ScheduleType.Extra, 120);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthAtomFor(ScheduleType.Extra), 120);
+    setNameWidth(ScheduleType.Extra, 120);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(nameWidthAtomFor(ScheduleType.Extra), 120);
   });
 
-  it('setEnglishWidth ignores zero and negative measurements', () => {
+  it('setNameWidth ignores zero and negative measurements', () => {
     resetWidthStore();
-    setEnglishWidth(ScheduleType.Standard, 0);
-    setEnglishWidth(ScheduleType.Standard, -5);
+    setNameWidth(ScheduleType.Standard, 0);
+    setNameWidth(ScheduleType.Standard, -5);
     expect(mockDefaultStoreSet).not.toHaveBeenCalled();
   });
 
-  it('setEnglishWidth never narrows the cache (grow-toward-truth, ISSUES #22)', () => {
+  it('setNameWidth never narrows the cache (grow-toward-truth, ISSUES #22)', () => {
     resetWidthStore();
-    setEnglishWidth(ScheduleType.Standard, 150);
+    setNameWidth(ScheduleType.Standard, 150);
     mockDefaultStoreSet.mockClear();
 
     // A narrower re-measure (e.g. fallback-font metrics) must not overwrite
-    setEnglishWidth(ScheduleType.Standard, 90);
+    setNameWidth(ScheduleType.Standard, 90);
     expect(mockDefaultStoreSet).not.toHaveBeenCalled();
 
     // An equal re-measure is a no-op: correct values never rewrite (no churn)
-    setEnglishWidth(ScheduleType.Standard, 150);
+    setNameWidth(ScheduleType.Standard, 150);
     expect(mockDefaultStoreSet).not.toHaveBeenCalled();
   });
 
-  it('setEnglishWidth self-heals a too-narrow cached value on a wider measure', () => {
+  it('setNameWidth self-heals a too-narrow cached value on a wider measure', () => {
     resetWidthStore();
-    setEnglishWidth(ScheduleType.Standard, 90);
+    setNameWidth(ScheduleType.Standard, 90);
     mockDefaultStoreSet.mockClear();
 
-    setEnglishWidth(ScheduleType.Standard, 150);
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(englishWidthAtomFor(ScheduleType.Standard), 150);
+    setNameWidth(ScheduleType.Standard, 150);
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(nameWidthAtomFor(ScheduleType.Standard), 150);
   });
 
   it('getMeasurementsList returns value', () => {
@@ -380,7 +385,7 @@ describe('measurement functions', () => {
 
 describe('the per-locale width keys', () => {
   /** One module evaluation of stores/ui with the REAL storage factory and store,
-   *  so the atoms below it read whatever the seed above them left on disk */
+   *  so the atoms below it read whatever the removal above them left on disk */
   const loadUiModule = () => {
     mockRealImplementations.jotai = true;
     mockRealImplementations.storage = true;
@@ -389,9 +394,9 @@ describe('the per-locale width keys', () => {
       isolated = require('../ui');
       // The width family builds its atoms lazily, and the storage mock above picks
       // its branch at call time: the atoms must come to life inside this window,
-      // where the real factory is in effect and the seed has already run
-      isolated.englishWidthAtomFor(ScheduleType.Standard);
-      isolated.englishWidthAtomFor(ScheduleType.Extra);
+      // where the real factory is in effect and the removal has already run
+      isolated.nameWidthAtomFor(ScheduleType.Standard);
+      isolated.nameWidthAtomFor(ScheduleType.Extra);
     });
     mockRealImplementations.jotai = false;
     mockRealImplementations.storage = false;
@@ -400,44 +405,37 @@ describe('the per-locale width keys', () => {
     return { isolated, store };
   };
 
-  it('seeds the en width keys from the legacy keys and removes the legacy keys at module evaluation', () => {
+  it('removes every prayer_max_english_width_ key at module evaluation and measures fresh', () => {
+    // P8: the 59 re-key removes the old family outright; no copy, no seed.
+    // The old-family literals here are deliberate and survive the blanket
+    // rename: they seed the keys the removal must clear.
     mockDatabaseValues.set('prayer_max_english_width_standard', '150');
-    mockDatabaseValues.set('prayer_max_english_width_extra', '120');
+    mockDatabaseValues.set('prayer_max_english_width_en_standard', '150');
+    mockDatabaseValues.set('prayer_max_english_width_th_standard', '150');
 
     const { isolated, store } = loadUiModule();
 
-    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Standard))).toBe(150);
-    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Extra))).toBe(120);
-    expect(mockDatabaseValues.get('prayer_max_english_width_en_standard')).toBe('150');
-    expect(mockDatabaseValues.get('prayer_max_english_width_en_extra')).toBe('120');
-    expect(mockDatabaseValues.has('prayer_max_english_width_standard')).toBe(false);
-    expect(mockDatabaseValues.has('prayer_max_english_width_extra')).toBe(false);
+    expect(mockDatabaseValues.get('prayer_max_english_width_standard')).toBeUndefined();
+    expect(mockDatabaseValues.get('prayer_max_english_width_en_standard')).toBeUndefined();
+    expect(mockDatabaseValues.get('prayer_max_english_width_th_standard')).toBeUndefined();
+    expect(store.get(isolated.nameWidthAtomFor(ScheduleType.Standard))).toBe(0);
   });
 
   it('keeps widen-only per key and never leaks across keys', () => {
-    mockDatabaseValues.set('prayer_max_english_width_en_standard', '150');
-    mockDatabaseValues.set('prayer_max_english_width_en_extra', '120');
+    mockDatabaseValues.set('prayer_max_name_width_en_standard', '150');
+    mockDatabaseValues.set('prayer_max_name_width_en_extra', '120');
 
     const { isolated, store } = loadUiModule();
 
     // A narrower re-measure and a zero measurement never write...
-    isolated.setEnglishWidth(ScheduleType.Standard, 90);
-    isolated.setEnglishWidth(ScheduleType.Standard, 0);
-    isolated.setEnglishWidth(ScheduleType.Extra, 100);
+    isolated.setNameWidth(ScheduleType.Standard, 90);
+    isolated.setNameWidth(ScheduleType.Standard, 0);
+    isolated.setNameWidth(ScheduleType.Extra, 100);
 
     // ...and nothing a Standard measure does ever reaches the Extra key
-    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Standard))).toBe(150);
-    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Extra))).toBe(120);
-    expect(mockDatabaseValues.get('prayer_max_english_width_en_standard')).toBe('150');
-    expect(mockDatabaseValues.get('prayer_max_english_width_en_extra')).toBe('120');
-  });
-
-  it('resolves the legacy-seeded en value through the family under en', () => {
-    mockDatabaseValues.set('prayer_max_english_width_standard', '150');
-
-    const { isolated, store } = loadUiModule();
-
-    expect(store.get(isolated.englishWidthAtomFor(ScheduleType.Standard))).toBe(150);
-    expect(mockDatabaseValues.has('prayer_max_english_width_th_standard')).toBe(false);
+    expect(store.get(isolated.nameWidthAtomFor(ScheduleType.Standard))).toBe(150);
+    expect(store.get(isolated.nameWidthAtomFor(ScheduleType.Extra))).toBe(120);
+    expect(mockDatabaseValues.get('prayer_max_name_width_en_standard')).toBe('150');
+    expect(mockDatabaseValues.get('prayer_max_name_width_en_extra')).toBe('120');
   });
 });

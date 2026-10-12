@@ -17,7 +17,7 @@ export default function ErrorScreen() {
    * Goes through `clearUpgradeCache` rather than a bare `clearAllExcept`, which
    * keeps strictly more of what the app cannot refetch. The previous inline list
    * kept only `app_installed_version` and `preference_`, so it also dropped
-   * `cache_schema_version` and the `prayer_max_english_width_` measurements that
+   * `cache_schema_version` and the `prayer_max_name_width_` measurements that
    * ISSUES #22 and #16 deliberately preserve — losing those reflows the prayer
    * list on the next launch, which is a visible regression this screen has no
    * reason to cause. Alert settings, the sound choice and every other
