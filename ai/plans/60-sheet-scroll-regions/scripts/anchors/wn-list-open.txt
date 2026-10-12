@@ -1,3 +1,0 @@
-      <View style={styles.list}>
-        {items.map((item) => (
-          <View key={item.title} style={styles.item}>

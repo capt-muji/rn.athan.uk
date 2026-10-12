@@ -1,5 +1,0 @@
-  list: {
-    width: '100%',
-    gap: SPACING.lg,
-    marginBottom: 36,
-  },

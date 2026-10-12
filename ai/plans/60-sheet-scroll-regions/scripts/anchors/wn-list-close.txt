@@ -1,4 +1,0 @@
-          </View>
-        ))}
-      </View>
-      <Pressable
