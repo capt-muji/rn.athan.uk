@@ -5,6 +5,7 @@
 
 import type { PrayerId } from '@/shared/constants';
 
+import { localiseDigits } from './digits';
 import type { TranslationKey } from './en';
 import { currentCatalog, currentPrayerLabels } from './loader';
 
@@ -43,7 +44,8 @@ export const t = <K extends TranslationKey>(key: K, params?: ParamsOf<K>): strin
     if (supplied === undefined) {
       throw new Error(`i18n: missing parameter '${token}' for key '${key}'`);
     }
-    return String(supplied);
+    const localized = localiseDigits(String(supplied));
+    return localized;
   });
 
 export const prayerLabel = (id: PrayerId): string => currentPrayerLabels()[id];
