@@ -40,6 +40,9 @@ each with the exact condition and the exact action.
   say which armed alarm it would fire.
 - **8. Records.** The findings text written into `LOG.md` under its exact heading, the queue-row cell text the
   lead applies on DONE, the docs commit message.
+- **LOG.md ledger contract** (job 56): every step entry in `LOG.md` opens with the heading
+  `### Step <NN> — <state>` and ends with a line `session: <ses_id>`. Planning sections use
+  `## Planning (<date>)` and `## Job <N>`.
 - **9. Push.** Always None. The executor worker never pushes. The lead pushes after the
   reviews pass.
 - **10. When something goes wrong.** A symptom table. Anticipated review fixes, word for
