@@ -1,7 +1,7 @@
 ---
 name: athan-planner
 description: Plan one queued job in ai/plans/README.md. Interview the owner first, decide everything, write the plan, grill it, pass the gate, leave the row READY. Use when a planning phase runs, a row is NOT PLANNED, PLANNING or NEEDS REPLAN, or the owner asks to plan a job.
-version: 2.0.0
+version: 2.0.1
 ---
 
 # athan-planner
@@ -52,7 +52,7 @@ One job at a time. If any row is PLANNING, READY, IN PROGRESS or EXECUTED, that 
 flight and you plan no other. A PLANNING row is resumed (section 9), a NEEDS REPLAN row
 is repaired, a job the owner names is taken as named. Run `git log --oneline origin/uat..uat`:
 if it lists code commits and no row is NEEDS REPLAN, report that the audit runs first and
-end with the four-line block. Otherwise take the first row whose status can be planned.
+end with the queue view and the four-line block. Otherwise take the first row whose status can be planned.
 
 As soon as the skeleton exists: set the row to PLANNING, commit and merge (section 8).
 
@@ -161,8 +161,9 @@ Run `bash scripts/check-plan.sh <plan-folder>` from the repository root. It must
    audit runs first.
 5. Remove your worktrees and their branches.
 6. Report in a few plain sentences: which job is planned, how many steps, what the
-   executor will prove, the decisions the owner took, then the progress table. End with
-   the four-line block from the `athan-lead` skill, nothing after it.
+   executor will prove, the decisions the owner took, then the progress table. Then the
+   queue view from the `athan-lead` skill, and its four-line block last, nothing after
+   it.
 
 ## 9. Resuming a PLANNING job
 
