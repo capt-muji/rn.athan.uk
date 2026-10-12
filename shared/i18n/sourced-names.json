@@ -1026,7 +1026,7 @@
         "text": "Sepertiga malam",
         "source": "derived",
         "confidence": "low",
-        "note": "No authority or catalog found for ms specifically. Indonesian Sepertiga akhir (Mihrab) plus malam is the obvious Malay construction; needs a speaker."
+        "note": "Owner-ruled (D81, 2026-10-12): her example Sepertiga malam verbatim, superseding the derived Sepertiga akhir malam construction."
       },
       "Suhoor": {
         "text": "Sahur",
@@ -2040,7 +2040,7 @@
         "text": "आधी रात",
         "source": "mihrab@77e846d",
         "confidence": "medium",
-        "note": "Mihrab. Plain आधी रात also works (al-azan prints मध्यरात्रि). The qualifier इस्लामी disambiguates."
+        "note": "Mihrab. Plain आधी रात also works (al-azan prints मध्यरात्रि). Owner-ruled (D81, 2026-10-12): the qualifier drops under the shortest-context-correct rule."
       },
       "Last Third": {
         "text": "अंतिम तिहाई",
