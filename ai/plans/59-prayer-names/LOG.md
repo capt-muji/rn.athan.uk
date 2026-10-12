@@ -159,3 +159,60 @@ removed against `d7d95b2f`, lock and en.ts untouched, the pin covers all
 four strings, no findings. Merge `--no-ff` `75b7e07d`; lock released.
 
 session: ses_ecdaec13dffeSXcjEbzah7hzGt
+
+## Ticket 59 (2026-10-12)
+
+Four prayer names shortened per the owner's header rule: ms Last Third
+Sepertiga malam (her example), hi Midnight (adjective drop), th Last Third
+(particle-phrase drop), so Midnight Saqda dhexe (her flag, planner-sourced);
+the glossary's two sourced entries superseded by ruling and so's first sourced
+Midnight entry added; every other name byte-identical. The name-width cache
+renamed to prayer_max_name_width_ with the old keys removed, so the reserve
+re-measures against the shorter names instead of holding the old widest-name
+slack.
+
+### Step 2 — DONE (committed and merged 2026-10-13)
+
+Anchors: all six (`ui-widthatom`, `ui-seedloop`, `ui-setwidth`,
+`version-inventory`, `sync-inventory`, `useprayer-reader`) counted 1 on the
+fresh branch `feat/59-width-reset` off step 1's uat. Red: the two suites
+rewritten first (blanket renames, the two seed-copy tests replaced by the
+plan's verbatim removal test); `npx tsc --noEmit` failed in exactly the two
+suites — the measurement suite with the predicted `TS2305: Module
+'"@/stores/ui"' has no exported member 'nameWidthAtomFor'` plus two TS18046
+cascade lines off the failed import typing, the require-based ui suite with
+the TS2339 twin for both members — and jest ran 12 failed across the two
+suites only. Contracts: `stores/ui.ts` import narrowed to `clearPrefix`, the
+seed loop replaced by the plan's verbatim comment plus unconditional
+`clearPrefix('prayer_max_english_width_')`, factory/setter/key-family
+renamed, setter docblock now "the widest active-locale prayer name", guard
+byte-identical; `version.ts`/`sync.ts` inventories, `usePrayer.ts`,
+`InitialWidthMeasurement.tsx`, `Error.tsx` docblock per contract; the four
+key-inventory suites, the crash-window literals, the KEPT_KEYS seed and the
+six mock factories renamed in lockstep.
+
+Green: first `yarn validate` failed on my own code — the mock's `clearPrefix`
+landed inside the `database` object while the module imports it at top level
+(`TypeError: (0 , _database.clearPrefix) is not a function`, suite failed to
+run) — moved to the mock's module level and validate exited 0: 207 suites,
+`Tests: 5470 passed, 5470 total`, Statements/Branches/Functions/Lines all
+100% (5182/5182, 2217/2217, 1081/1081, 4639/4639). Break:
+`bash $TMPDIR/break-step2.sh` printed `break applied: grow-toward-truth guard
+removed`, `caught: the cache accepts a narrowing measure`,
+`ALL AS EXPECTED: 1`. Version 2.0.144 under the lock (origin/uat still at
+2.0.142 because nothing is pushed; local uat carried step 1's 2.0.143).
+Commit `7982c682` (twenty-four files: the nineteen, app.json, package.json,
+the queue row at IN PROGRESS step 2, PLAN.md and LOG.md carrying step 1's
+ledger entry and tick), hook `Tests: 5470 passed, 5470 total` with the four
+100% lines. Review cold: the guard `if (width <= cached) return;` present and
+unchanged; no `englishWidth`/`prayer_max_english_width_` string survives
+beyond the plan's deliberate removal machinery (`stores/ui.ts:108-111` and
+the removal test's literals); the removal copies nothing; `Error.tsx`
+differs by its docblock line only. Two review notes: the three stale "seed"
+comments in `stores/__tests__/ui.test.ts` were rewritten to say removal
+(comment-only, applied in-step and recorded here), and `usePrayer`'s returned
+`ui.maxEnglishWidth` property stays: it is the hook's public shape consumed
+past the Files list, and the plan bounded this rename to the key family and
+the two functions. Merge `--no-ff` `195c50d0`; lock released.
+
+session: ses_ecdaec13dffeSXcjEbzah7hzGt
