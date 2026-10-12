@@ -57,3 +57,15 @@ was wrong, not the rulings. Amendment A1 (PLAN.md section 13) corrects the
 map, adds step 03b (proven red to green in a scratch worktree at `e827326d`,
 worktree removed), moves this sweep's two defect twins into step 03b, and
 gives step 04 its resume note. Preflight gains five anchors (12 total).
+
+## Step 03b: the shown time and every widget time bake (A1)
+
+- Branch: `feat/57-03b-shown-and-widget-bakes` off `uat` (A1's five anchors each counted 1 at the branch point).
+- Red: the two defect twins applied verbatim from `step04-stopped.patch` (`Time.test.tsx`, `widgetSimulation.test.ts`) failed showing `06:46` and `01:05`; the `widgetTimeline.test.ts` extension written from the step file failed showing `17:45`. 3 named failures, no others.
+- Change: `hooks/usePrayer.ts` imports `localiseDigits` from `@/shared/i18n` and `getShownTime` carries the contract body verbatim (signature and null semantics unchanged); `shared/widgetTimeline.ts` adds `localiseDigits` to the `@/shared/i18n` import and wraps the four bakes (day-list row `prayer.time ?? UNAVAILABLE_TIME`, timeline entry `next.time`, stale entry `finalPrayer.time`, Android readable row `prayer.time`); the Android unreadable row keeps bare `UNAVAILABLE_TIME`; no epoch, schema version, props key or numeric value changed.
+- Green: `yarn validate` 5451 passed, 5451 total; Statements 100% (5212/5212), Branches 100% (2246/2246), Functions 100% (1082/1082), Lines 100% (4669/4669); tsc and Biome exit 0 inside it. `widgetSnapshot`, `widgetContract` and `usePrayer` suites pass unchanged.
+- Break script: `ALL AS EXPECTED: 1` (the wrap substituted back to raw values, widgetTimeline fails `Expected "١٧:٤٥"` / `Received "17:45"`, Time fails with `06:46` shown, restore passes 54/54 and 9/9).
+- Version: 2.0.62 (origin/uat fetched under the version lock, still 2.0.56).
+- Commit: `624bae7a` (2.0.62; ledger fill folded in by amend), hook green: `Tests: 5451 passed, 5451 total`; Statements 100% (5212/5212), Branches 100% (2246/2246), Functions 100% (1082/1082), Lines 100% (4669/4669).
+- Review: (filled after review)
+- Merge: (filled after merge)
