@@ -1,9 +1,0 @@
-  "files": {
-    "includes": [
-      "**",
-      "!**/.agents",
-      "!**/metro.config.js",
-      "!**/jest.config.js",
-      "!**/ai/features/moonsighting",
-      "!**/ai/features/global-prayer-times/data",
-      "!**/board"

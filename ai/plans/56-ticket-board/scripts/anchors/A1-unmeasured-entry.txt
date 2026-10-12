@@ -1,5 +1,0 @@
-  { path: '.agents/', reason: 'Expo and EAS agent skills, documentation for coding agents' },
-  { path: 'jest.config.js', reason: 'test runner configuration' },
-  { path: 'jest.setup.js', reason: 'test runner configuration' },
-  { path: 'jest.components.setup.js', reason: 'test runner configuration' },
-];
