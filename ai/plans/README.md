@@ -2,45 +2,45 @@
 
 ## Words
 
-A session is one context window, opened and closed at will. Rows in this queue are jobs.
-The two never share a word. The board mirrors this queue and says ticket (a queue job)
-and step (a plan step); these files keep job and step.
+A session is one context window, opened and closed at will. A ticket is one queued unit
+of work. The two never share a word. The board and these files say ticket and step.
 
 ## Order
 
-One job at a time: plan it, execute it, audit it, only then plan the next. Every session,
-fresh or resuming, starts with `/athan-run` (or `/athan-plan` to plan only). The lead skill
+One ticket at a time: plan it, execute it, audit it, only then plan the next. Every
+session, fresh or resuming, starts with `/athan-next`; a run that planned ends with the
+ticket READY. The lead skill
 at `.agents/skills/athan-lead/SKILL.md` reads the queue below and git, reconstructs where
 the work stands, runs the one phase that can run, and stops. The lead dispatches cold
 workers for execution and review (`athan-executor`, `athan-reviewer`,
 `athan-plan-griller` in `.opencode/agents/`) and verifies their work from the repository;
 a worker that cannot see images calls `vision`. A session running long simply ends: every
-step writes its state to the repository as it lands, and the next `/athan-run` picks the
+step writes its state to the repository as it lands, and the next `/athan-next` picks the
 work up from the queue, the ticked steps and the `Resume from:` note.
 
 Planning specifies the work completely, down to contracts, names, behaviour, tests and acceptance criteria. A question the executor has to ask is a defect in the plan. Execution builds to those criteria: it chooses HOW, never WHAT, and never pushes. Audit checks the result against the plan and against the code blind, fixes what is wrong itself, then sets DONE and pushes `uat`. Work never returns to the executor.
 
-Plan the first row that needs planning: resume a PLANNING row, refresh a NEEDS REPLAN row, before starting a NOT PLANNED row. The execution step resumes a plan left at IN PROGRESS. Pass over a row whose blocker has not moved, as a BLOCKED row is passed over. Row 18 is the live case: re-check `npm view expo dist-tags` each session. The day SDK 58 stable lands on npm, row 18 jumps the queue.
+Plan the first ticket that needs planning: resume a PLANNING ticket, refresh a NEEDS REPLAN ticket, before starting a NOT PLANNED ticket. The execution step resumes a plan left at IN PROGRESS. Pass over a ticket whose blocker has not moved, as a BLOCKED ticket is passed over. Ticket 18 is the live case: re-check `npm view expo dist-tags` each session. The day SDK 58 stable lands on npm, ticket 18 jumps the queue.
 
-**Invariant: at most one row at a time is PLANNING, READY, IN PROGRESS or EXECUTED, unless its plan's code files are disjoint from every other in-flight row's** (the three version files are shared by every step and serialize under the version lock, so they never count as overlap). Disjoint rows form separate conflict groups and may run in parallel, one executor each. BLOCKED, OWNER-LED and research-parked rows hold no merged code, so several may wait at once. A plan anchors on one `uat` commit and quotes its code, its tests' expected numbers and the owner decisions taken against it. A row ahead changes that code, so a plan written early runs stale, and a stale anchor that still matches by text is the worst failure, because nothing catches it.
+**Invariant: at most one ticket at a time is PLANNING, READY, IN PROGRESS or EXECUTED, unless its plan's code files are disjoint from every other in-flight ticket's** (the three version files are shared by every step and serialize under the version lock, so they never count as overlap). Disjoint tickets form separate conflict groups and may run in parallel, one executor each. BLOCKED, OWNER-LED and research-parked tickets hold no merged code, so several may wait at once. A plan anchors on one `uat` commit and quotes its code, its tests' expected numbers and the owner decisions taken against it. A ticket ahead changes that code, so a plan written early runs stale, and a stale anchor that still matches by text is the worst failure, because nothing catches it.
 
-Every session ends with the handoff block in its final reply: the queue view (the five rows most recently DONE, then every open row in queue order, the row the owner's next command acts on bolded), then four lines: the phase completed, the row it moved, the next job, what the owner types next (`/athan-run` or `/athan-plan`). The block is a summary for the reader, never state: the resume state is the queue row's status plus the `Resume from:` note the workers write into the plan folder, so any new session reconstructs the work from the repository alone. No gateway address, domain or key is ever written into this repository.
+Every session ends with the handoff block in its final reply: the queue view (the five tickets most recently DONE, then every open ticket in queue order, the ticket the owner's next command acts on bolded), then four lines: the phase completed, the ticket it moved, the next ticket, what the owner types next (`/athan-next`). The block is a summary for the reader, never state: the resume state is the queue ticket's status plus the `Resume from:` note the workers write into the plan folder, so any new session reconstructs the work from the repository alone. No gateway address, domain or key is ever written into this repository.
 
 ## Status
 
-A row moves through NOT PLANNED, PLANNING, READY, IN PROGRESS, EXECUTED, DONE. Off that path:
+A ticket moves through NOT PLANNED, PLANNING, READY, IN PROGRESS, EXECUTED, DONE. Off that path:
 
 - **NEEDS REPLAN:** the anchored code or an owner answer changed. The next planning pass refreshes it.
-- **BLOCKED:** waiting on the owner. The reason sits in the row.
+- **BLOCKED:** waiting on the owner. The reason sits in the ticket.
 - **OWNER-LED:** the owner's own reading or decisions. Nothing for an executor to run.
 - **CANCELLED:** closed before planning. Never re-planned or re-queued without the owner.
-- **SUPERSEDED:** other rows took the subject. Never re-queued either.
+- **SUPERSEDED:** other tickets took the subject. Never re-queued either.
 
 ## The queue
 
-The queue is the only tracking file. DONE rows keep order number and short name only, and their record is git history. **A plan's documentation dies with its merge: the session that merges the branch into `uat` deletes the plan folder, the evidence under `~/athan-gitree/sessions/<N>/` and the uncited brief of the job in `ai/prompts/` in the same commit.** Research folders under `ai/features/` keep only files still cited by shipped code or config, named in the row. Code is the documentation, and MD files go stale. The one survivor is an artefact still cited by shipped code or config, named in the row. Open rows keep the pointers, the facts, Needs first (the rows that must be DONE before a plan runs), Parent (the row this one rolls up into) and Group (the shared code surface, when this row's files overlap another open row's).
+The queue is the only tracking file. DONE tickets keep order number and short name only, and their record is git history. **A plan's documentation dies with its merge: the session that merges the branch into `uat` deletes the plan folder, the evidence under `~/athan-gitree/sessions/<N>/` and the uncited brief of the ticket in `ai/prompts/` in the same commit.** Research folders under `ai/features/` keep only files still cited by shipped code or config, named in the ticket. Code is the documentation, and MD files go stale. The one survivor is an artefact still cited by shipped code or config, named in the ticket. Open tickets keep the pointers, the facts, Needs first (the tickets that must be DONE before a plan runs), Parent (the ticket this one rolls up into) and Group (the shared code surface, when this ticket's files overlap another open ticket's).
 
-| Order | Job | Status |
+| Order | Ticket | Status |
 | --- | --- | --- |
 | 1 | An alert does what its bell shows | DONE |
 | 2 | Alert sheet change is all or nothing | DONE |
@@ -89,7 +89,7 @@ The queue is the only tracking file. DONE rows keep order number and short name 
 | 52 | Settling gate: timing and cold-open cost | DONE |
 | 53 | Gate on the phone's own uncertainty | DONE |
 
-| Order | Job | Brief and plan | Status | Needs first |
+| Order | Ticket | Brief and plan | Status | Needs first |
 | --- | --- | --- | --- | --- |
 | 18 | SDK 58 next re-pin + Babel 8 rider | `ai/plans/SDK58-PROGRAMME.md` section 16 (carries facts A1 to A11) | DONE 2026-10-09, audited. Versions, incidents and durable lessons live in section 16. The owner’s ride-`next` policy stays in force: repin to the newest expo at every attempt, release candidates included, and the Babel 8 rider is re-attempted at every re-pin, still blocked upstream | 6 |
 | 25 | Moonsighting research, part 2 | `ai/prompts/moonsighting-research-2.md` | NOT PLANNED, deferred until the owner schedules it. Runs behind rows 37 to 39 | rows 37 to 39 |
@@ -115,33 +115,33 @@ The queue is the only tracking file. DONE rows keep order number and short name 
 ## How a dependency upgrade is queued
 
 - Blast radius decides, not the version number. Measure before queuing: install the candidate in a scratch worktree, run `tsc`, Biome and the full suite, count what fails.
-- A patch, minor or harmless major batches with the others: one commit each, one job.
-- A major that breaks code, tests or tooling gets its own job.
-- Two breaking majors never share a job, even on separate branches: each needs its own device proof, and a failure with two suspects costs more to diagnose than the two jobs save.
-- A major blocked upstream is not queued until the blocker moves. The four `@babel` packages belong to row 18.
+- A patch, minor or harmless major batches with the others: one commit each, one ticket.
+- A major that breaks code, tests or tooling gets its own ticket.
+- Two breaking majors never share a ticket, even on separate branches: each needs its own device proof, and a failure with two suspects costs more to diagnose than the two tickets save.
+- A major blocked upstream is not queued until the blocker moves. The four `@babel` packages belong to ticket 18.
 - One package per branch and per commit always, because `yarn.lock` is one resolved graph and two packages in a commit cannot be reverted apart.
 
 ## Waiting on the owner
 
-A planning session may turn one of these into a plan only after the owner approves it in that session. Row 53 locked the qibla compass, and the four qibla items below wait until the owner unlocks or schedules it:
+A planning session may turn one of these into a plan only after the owner approves it in that session. Ticket 53 locked the qibla compass, and the four qibla items below wait until the owner unlocks or schedules it:
 
 - The dashes approval page's open choices C2, C5 to C10 and C13.
 - Android card PNG backgrounds stay, because `cornerRadius()` is a no-op below API 31. Revisit only if the 3T stops being the floor device.
 - Redesign the hint drawing: Android draws a phone only after it has been waved, so the drawing must show a path through the air, not a twist. The motif ban list binds every future drawing on this sheet, the hint included: no compass rose or radiating rays, no hexagram or filled eight-point star, no pinwheel or square Kufic; a repeated-block motif must have all four mirror axes; colours from `COLORS.qibla` alone.
 - Two heading levers are dead and must never be revived: the field-magnitude and dip check (a 10 uT offset swings the heading 30.8 degrees while passing gates of 10% on magnitude and 5 on dip, because a compass reads only the horizontal field), and hard-iron calibration harvested from a flat turn (geometrically impossible: a circle lies on infinitely many spheres, only a figure of eight determines the offset).
 - Apply a one-line fix in `awaitNorth` for two cases that need the sheet opened twice with no close between. Three smaller findings closed with the lock.
-- A heading watch can be stranded with the magnetometer armed, on every phone that reads `expo-location` and predates row 53.
+- A heading watch can be stranded with the magnetometer armed, on every phone that reads `expo-location` and predates ticket 53.
 - Comments in the qibla files name the owner, against the anonymity rules in `ai/AGENTS.md`.
 
 ## Files here
 
-- Briefs: the `athan-planner` and `athan-lead` skills in `.agents/skills/`, the `athan-executor`, `athan-reviewer` and `athan-plan-griller` workers in `.opencode/agents/`, started with `/athan-plan` and `/athan-run`. `SDK58-PROGRAMME.md` holds the job 18 and D4 briefs.
+- Briefs: the `athan-planner` and `athan-lead` skills in `.agents/skills/`, the `athan-executor`, `athan-reviewer` and `athan-plan-griller` workers in `.opencode/agents/`, started with `/athan-next`. `SDK58-PROGRAMME.md` holds the ticket 18 and D4 briefs.
 - `TEMPLATE.md` fixes the shape of every plan. A plan folder is scaffolding: it is created at PLANNING and deleted at DONE, in the merge that lands the work.
-- Surviving job folders: `27-silent-mode-bypass/FINDINGS.md` (cited by `shared/help.ts`), `39-localisation/` (rows 38 and 39) and `54-patches-and-copy/FINDINGS.md` (row 54). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other job's record lives in git history.
+- Surviving records: `27-silent-mode-bypass/FINDINGS.md` (cited by `shared/help.ts`), `54-patches-and-copy/FINDINGS.md` (ticket 54) and `provenance-39.json` (ticket 39's string-verification list). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other ticket's record lives in git history.
 
 ## Who changes a status, and who pushes
 
 - A planning session sets PLANNING, READY, OWNER-LED, BLOCKED or NOT PLANNED, and fills Needs first.
 - The executor worker sets IN PROGRESS, EXECUTED, NEEDS REPLAN or BLOCKED. It commits and merges into `uat`, and never pushes.
-- The lead's audit sets DONE for an EXECUTED row and never sets a row back to READY: it repairs what the executor got wrong itself. Auditing an unfinished plan leaves the status as it is, so the executor resumes its own plan.
-- `uat` is the integration branch. Only the planner and the lead push it, and only when every commit on `uat` that is not yet on `origin/uat` has been reviewed. A planning session that finds unreviewed commits asks the owner to run the audit step first, unless it is replanning a NEEDS REPLAN row, which it does without pushing.
+- The lead's audit sets DONE for an EXECUTED ticket and never sets a ticket back to READY: it repairs what the executor got wrong itself. Auditing an unfinished plan leaves the status as it is, so the executor resumes its own plan.
+- `uat` is the integration branch. Only the planner and the lead push it, and only when every commit on `uat` that is not yet on `origin/uat` has been reviewed. A planning session that finds unreviewed commits asks the owner to run the audit step first, unless it is replanning a NEEDS REPLAN ticket, which it does without pushing.

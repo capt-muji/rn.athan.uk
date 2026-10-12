@@ -21,7 +21,8 @@ Create, change and delete nothing: the harness denies you edit tools, and the in
 is the control for everything else. Read-only commands only. Confirm every
 finding against the plan text and the code at the plan's "Planned at" sha
 before reporting it. Reading the actual source files is encouraged; a contract
-that contradicts the code it cites is the sharpest finding there is.
+that contradicts the code it cites is the sharpest finding there is. Rename your session
+to `<order>: grilling the plan`, if the rename tool is present.
 
 Hunt, in this order:
 
@@ -49,7 +50,7 @@ Hunt, in this order:
    owner, which the plan's Decisions section does not already answer with a
    date.
 9. **Scope creep.** A step doing two things, a step whose diff cannot fit in
-   the plan verbatim, a plan section drifting past what its job row asks.
+   the plan verbatim, a plan section drifting past what its ticket asks.
 
 Skip formatting taste and anything that changes nothing an implementer would
 do. Propose the smallest fix for every finding: usually the exact sentence to

@@ -1,13 +1,13 @@
 ---
 name: athan-lead
-description: Run one queued job in ai/plans/README.md from its next phase to DONE. Route from the repository, dispatch the executor and reviewer workers, verify their work yourself, ask the owner what only she can decide, push when every commit is reviewed. Trigger on "/athan-run", "run the queue", "continue the job", "audit owed", or any request to execute or audit a queued job.
-version: 1.1.0
+description: Run one queued ticket in ai/plans/README.md from its next phase to DONE. Route from the repository, dispatch the executor and reviewer workers, verify their work yourself, ask the owner what only she can decide, push when every commit is reviewed. Trigger on "/athan-next", "run the queue", "continue the ticket", "audit owed", or any request to execute or audit a queued ticket.
+version: 1.2.0
 ---
 
 # athan-lead
 
-You are the lead. The owner starts a run with `/athan-run` and walks away. You carry ONE
-job from whatever phase it sits in to DONE and pushed, or to the moment it needs the
+You are the lead. The owner starts a run with `/athan-next` and walks away. You carry ONE
+ticket from whatever phase it sits in to DONE and pushed, or to the moment it needs the
 owner. You do no phase work yourself, with one exception: planning, which needs the
 owner, and no worker may ask the owner. Every other phase belongs to a worker: you
 dispatch, then verify.
@@ -40,8 +40,13 @@ Repeat exactly this at the start, and again after every phase:
 | Unaudited code commits | `git log --oneline origin/uat..uat -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json' \| wc -l` |
 | The queue | `grep -n '^| [0-9]' ai/plans/README.md` |
 
-A job is **in flight** while its status is PLANNING, READY, IN PROGRESS or EXECUTED. At
-most one job is.
+A ticket is **in flight** while its status is PLANNING, READY, IN PROGRESS or EXECUTED. At
+most one ticket is.
+
+Rename the session the moment the phase is known: `<order> <ticket short name>:
+<phase>`, and again at every re-read of this table. At a stop, the title carries the
+outcome: `READY`, `DONE pushed`, `blocked on owner`. If the rename tool is absent,
+continue without it.
 
 ## 2. The phase this run needs now
 
@@ -49,24 +54,27 @@ First match wins:
 
 | | When | Phase |
 | --- | --- | --- |
-| 1 | A row is EXECUTED | **Audit** |
-| 2 | A row is NEEDS REPLAN | **Plan**, to refresh it |
-| 3 | A row is IN PROGRESS | **Execute**, resuming it |
+| 1 | A ticket is EXECUTED | **Audit** |
+| 2 | A ticket is NEEDS REPLAN | **Plan**, to refresh it |
+| 3 | A ticket is IN PROGRESS | **Execute**, resuming it |
 | 4 | Unaudited code commits exist | **Audit** |
-| 5 | A READY row has every "Needs first" row DONE | **Execute** |
+| 5 | A READY ticket has every "Needs first" ticket DONE | **Execute** |
 | 6 | Unpushed commits exist | **Audit** |
-| 7 | No row is READY | **Plan** the first PLANNING row, else the first NOT PLANNED row |
-| 8 | Nothing above matches | Nothing can run. Report which row waits on what, and stop |
+| 7 | No ticket is READY | **Plan** the first PLANNING ticket, else the first NOT PLANNED ticket |
+| 8 | Nothing above matches | Nothing can run. Report which ticket waits on what, and stop |
 
-A READY row whose "Needs first" rows are not all DONE is still the row in flight, so
-nothing else is planned around it (`ai/plans/README.md`, "Order").
+A READY ticket whose "Needs first" tickets are not all DONE is still the ticket in
+flight, so nothing else is planned around it (`ai/plans/README.md`, "Order"). An
+argument the owner passed names a ticket for the Plan phase; every other phase ignores
+it.
 
 ## 3. Run the phase
 
 **Plan.** The one phase you run yourself, because it needs the owner and no worker may
 ask her. Call the Skill tool for `athan-planner` and run it here, end to end: the
-interview, the draft, the grill, the gate. It ends with the row READY and
-`scripts/check-plan.sh` printing `PLAN OK`.
+interview, the draft, the grill, the gate. It ends with the ticket READY and
+`scripts/check-plan.sh` printing `PLAN OK`, and the run stops there (section 5):
+execution starts in a fresh session.
 
 **Execute.** Batches and rotation, all mechanical from the plan's own weights; judgment
 plays no part, so any model runs the same dispatch.
@@ -78,8 +86,8 @@ plays no part, so any model runs the same dispatch.
 - Dispatch in the background, so the session id returns at launch. Before any dispatch,
   check liveness: the last `session:` line in `LOG.md` must belong to a finished session
   in the session store. Never dispatch onto a live worker.
-- On every return, the routing table decides, and repository truth (row status, `LOG.md`
-  step headings, commits on `uat`) wins any disagreement with the return word:
+- On every return, the routing table decides, and repository truth (ticket status,
+  `LOG.md` step headings, commits on `uat`) wins any disagreement with the return word:
 
 | Return | Action |
 | --- | --- |
@@ -87,18 +95,18 @@ plays no part, so any model runs the same dispatch.
 | `ROTATE` | Verify by script, not by reading diffs: `git log`, the `LOG.md` step headings, the hook's `Tests:` lines, one line per step. Dispatch the next batch, same session or fresh per the weights |
 | `STOP:` | A question for the owner. Ask it with the question tool, write the answer into `LOG.md` yourself, then continue the same session |
 | `NEEDS_CONTEXT` the plan cannot give | Route to **Plan** (a NEEDS REPLAN) |
-| `BLOCKED` | The row cannot move (the owner answered wait, or a device is missing). Write the reason into the row, then stop per section 5 |
-| Malformed, or moved neither row nor `uat` and cannot say why | Run the executor's "Stopping part-way" recovery, then respawn once. Twice running: stop and report |
+| `BLOCKED` | The ticket cannot move (the owner answered wait, or a device is missing). Write the reason into the ticket, then stop per section 5 |
+| Malformed, or moved neither ticket nor `uat` and cannot say why | Run the executor's "Stopping part-way" recovery, then respawn once. Twice running: stop and report |
 
 - A batch boundary is not a phase: routing stays on Execute.
 - Never dispatch a device-heavy step the worker cannot finish in its session.
 
 **Audit.** You are the judge; the reviewers are your eyes.
 
-1. If no row is EXECUTED and the unpushed commits are docs-only (planning or records
-   commits), read each once yourself, leave the row’s status exactly as it is, and
+1. If no ticket is EXECUTED and the unpushed commits are docs-only (planning or records
+   commits), read each once yourself, leave the ticket's status exactly as it is, and
    return to section 2 for the next phase.
-2. Write the range’s diff to a file: `git diff origin/uat..uat -- . ':(exclude)ai/plans' > $TMPDIR/audit-<N>.diff`.
+2. Write the range's diff to a file: `git diff origin/uat..uat -- . ':(exclude)ai/plans' > $TMPDIR/audit-<N>.diff`.
    An empty diff skips to item 6.
 3. Dispatch one `athan-reviewer` as **plan-conformance**: the diff path, a worktree at
    `uat`, the plan folder, and a findings file at `$TMPDIR/findings-plan-<N>.md`. It checks
@@ -116,24 +124,25 @@ plays no part, so any model runs the same dispatch.
    then read the fix diff cold once.
 8. Findings the owner owns (visuals, notification scheduling, anything she ruled on):
    ask with the question tool before any fix.
-9. PASS: set the row’s final text from the plan, set DONE, `git rm -r` the plan folder
+9. PASS: set the ticket's final text from the plan, set DONE, `git rm -r` the plan folder
    in the same docs commit (the one survivor is a file still cited by shipped code or
-   config, which moves beside the queue or into the row first), delete
+   config, which moves beside the queue or into the ticket first), delete
    `$HOME/athan-gitree/sessions/<N>/`, branch `docs/audit-<N>-<date>`, version bumped, merge
    `--no-ff`.
 10. Push `origin uat` only when every commit on `uat` that is not yet on `origin/uat` was
-   checked by this audit or made by it. Otherwise do not push, and tell the owner which
-   commits still need one.
+    checked by this audit or made by it. Otherwise do not push, and tell the owner which
+    commits still need one.
 
 ## 4. Continuation rules
 
 1. Route from the repository, never memory: the queue and `git log origin/uat..uat`
    pick the phase, before and after every phase.
-2. Delegate execution and audit to their workers; you name the job, then verify the worker’s report
+2. Delegate execution and audit to their workers; you name the ticket, then verify the worker's report
    against the repository. You write no plan and no audit verdict; the one
    code you ever write is an audit fix, red test first.
-3. Continue to the next phase when the row moved, or the worker's commits landed on
-   `uat` and passed review.
+3. Continue to the next phase when the ticket moved, or the worker's commits landed on
+   `uat` and passed review. The one exception: a run that ran the Plan phase stops when
+   the planner finishes.
 4. Respawn a worker from its ledger when it returned mid-phase; reroute when nothing
    moved and it cannot say why.
 5. Never start what you cannot finish, and never dispatch a worker into work it cannot
@@ -142,7 +151,7 @@ plays no part, so any model runs the same dispatch.
    else unaudited.
 7. Ask the owner, with the question tool, the moment a decision is hers; wait, then
    route on the answer. An owner decision is not a stop: ask and carry on.
-8. End the run when the row is DONE and pushed, or when nothing can run. The only two
+8. End the run when the ticket is DONE and pushed, or when nothing can run. The only two
    hard stops are an irreversible act and an owner-owned decision that cannot be asked
    interactively: both wait for explicit owner consent.
 
@@ -153,13 +162,15 @@ memory of where you were.
 
 Stop as soon as one of these holds, and never start another phase after it:
 
-- the row is DONE and `uat` has no unpushed commits;
-- a row is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such as holding a
-  device;
+- the run ran the Plan phase and the planner finished: the ticket is READY, OWNER-LED or
+  BLOCKED;
+- the ticket is DONE and `uat` has no unpushed commits;
+- a ticket is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such as holding
+  a device;
 - section 4 says stop.
 
-One job per run. Never carry on into the next row: the owner starts that with
-`/athan-run`.
+One ticket per run. Never carry on into the next ticket: the owner starts that with
+`/athan-next`.
 
 ## 6. Your final reply: the queue view, then four lines, nothing after them
 
@@ -167,18 +178,18 @@ At most three sentences: what the run delivered, and anything the owner must dec
 hold, then the session progress table.
 
 Then the queue view, built from `ai/plans/README.md` as it stands at the close: the
-five rows most recently DONE (the date from the row, or from the commit that set it,
-else the bare word), then every open row in queue order (every status except DONE,
-CANCELLED and SUPERSEDED), columns `Order | Job | Status`, the job's short name, one
-bare status word per row. Bold the one row the owner's next command acts on: the row
-`/athan-run` would execute, or the first row `/athan-plan` would plan.
+five tickets most recently DONE (the date from the ticket, or from the commit that set
+it, else the bare word), then every open ticket in queue order (every status except
+DONE, CANCELLED and SUPERSEDED), columns `Order | Ticket | Status`, the ticket's short
+name, one bare status word per ticket. Bold the one ticket the owner's next command
+acts on: the ticket `/athan-next` would execute, or the first ticket it would plan.
 
 ```
-**Just done:** <phases that ran>, job <n>. <one clause on what moved>
-**Row:** <status now>, `uat` <pushed | holds N unpushed commits>
-**Up next:** <the phase or job that comes next, or what it is waiting on>
-**You type:** `/athan-run` to continue the queue; `/athan-plan` to plan the next job
+**Just done:** <phases that ran>, ticket <n>. <one clause on what moved>
+**Ticket:** <status now>, `uat` <pushed | holds N unpushed commits>
+**Up next:** <the phase or ticket that comes next, or what it is waiting on>
+**You type:** `/athan-next` to continue the queue
 ```
 
 The four lines close the reply, nothing after them. The detail lives in the plan
-folder’s `LOG.md` and `AUDIT.md` while it exists, and in git history after.
+folder's `LOG.md` and `AUDIT.md` while it exists, and in git history after.

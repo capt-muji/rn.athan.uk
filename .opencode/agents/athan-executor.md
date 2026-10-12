@@ -1,5 +1,5 @@
 ---
-description: Executes an assigned batch of a planned job's steps to their acceptance criteria. Give it the plan folder path, the job number, and its step range. It works cold from the plan, never pushes, and returns a status report.
+description: Executes an assigned batch of a planned ticket's steps to their acceptance criteria. Give it the plan folder path, the ticket number, and its step range. It works cold from the plan, never pushes, and returns a status report.
 mode: subagent
 permissions:
   - action: shell
@@ -46,9 +46,10 @@ board parses the session line.
 
 The lead assigns a range of steps per dispatch, packed mechanically from the
 plan's step weights; a device step always dispatches alone. Run only your
-assigned range. When your range ends short of the plan's last step, return
+assigned range, and rename your session to `<order>: executing steps <k> to <m>`
+if the rename tool is present. When your range ends short of the plan's last step, return
 `ROTATE: steps k to m done, next m+1` instead of running Finishing. `DONE`
-means exactly: every step merged, the row set EXECUTED, Finishing run. A
+means exactly: every step merged, the ticket set EXECUTED, Finishing run. A
 session resumed by the lead still opens cold: run the anchor check and the
 tree check before your first assigned step, exactly as a fresh session would.
 
@@ -71,7 +72,7 @@ tree check before your first assigned step, exactly as a fresh session would.
    check first: a count other than 1 is STOP.
 1. `git status --porcelain` may list only `ai/plans/README.md` and this plan
    folder's `PLAN.md` and `LOG.md`, else STOP. Create the branch the plan names
-   off `uat`. With the first step's commit, set the row in `ai/plans/README.md`
+   off `uat`. With the first step's commit, set the ticket in `ai/plans/README.md`
    to `IN PROGRESS, step k`, and move that step number forward inside each
    later step's own commit.
 2. **Red.** Write the tests the step names, verbatim where the plan gives them.
@@ -89,7 +90,7 @@ tree check before your first assigned step, exactly as a fresh session would.
    It must end `ALL AS EXPECTED: 1`, and `git status --porcelain` must then list
    only this step's files and the plan files. A break that passes where the plan
    says it fails: STOP.
-6. **Version.** Fetch `origin` under the version lock, because concurrent jobs
+6. **Version.** Fetch `origin` under the version lock, because concurrent tickets
    take the same number: `mkdir $HOME/athan-gitree/version.lock` succeeds for
    one session only, so retry in a short sleep loop while it exists, and
    `rmdir` it after the merge (a STOP before that must remove it too). Run
@@ -205,10 +206,10 @@ tree check before your first assigned step, exactly as a fresh session would.
 ## Finishing
 
 Apply the plan's records text into `LOG.md` under its heading, with the values
-you measured. Set the row in
+you measured. Set the ticket in
 `ai/plans/README.md` to EXECUTED. Make the `executed` docs commit (branch
 `docs/executed-<N>-<date>`, version bumped, plan files and queue added by name,
-message `<VERSION> - docs(plans): job <N> executed: <one line>`), merge `--no-ff`,
+message `<VERSION> - docs(plans): ticket <N> executed: <one line>`), merge `--no-ff`,
 do not push. Remove every scratch worktree you made with
 `git worktree remove --force` and delete its branch. The five build worktrees
 under `$HOME/athan-gitree/worktrees/` stay.
@@ -216,6 +217,6 @@ under `$HOME/athan-gitree/worktrees/` stay.
 Your final message is under 15 lines and starts with one of `DONE`,
 `DONE_WITH_CONCERNS`, `ROTATE`, `BLOCKED`, `NEEDS_CONTEXT: NEEDS REPLAN,
 <reason>` or `STOP:`.
-On `BLOCKED`, write the reason into the queue row before returning. It names the steps
+On `BLOCKED`, write the reason into the queue ticket before returning. It names the steps
 done, the last commit sha, the hook's `Tests:` line, and the evidence paths. The
 full detail lives in `LOG.md`.

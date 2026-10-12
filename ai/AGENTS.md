@@ -1,6 +1,6 @@
 # AGENTS.md - Athan.uk Agent Guide
 
-The root `AGENTS.md` redirects here. This file carries only what is still true. Past jobs live
+The root `AGENTS.md` redirects here. This file carries only what is still true. Past tickets live
 in git history and in `ai/plans/`. Look there before assuming a rule exists.
 
 ## Load at the start of every session
@@ -33,17 +33,18 @@ and the expo MCP sit disabled. The CLI rows above cover their work. Flip `enable
 
 ## Workflow
 
-- The queue is `ai/plans/README.md`; one job is in flight at a time. Entry is `/athan-plan`
-  (interactive planning) or `/athan-run` (the lead carries a job to DONE).
-- A session is one context window. Jobs are queue rows. No workflow file names a context
-  threshold for a session: the owner ends sessions at will, and every step writes its
+- The queue is `ai/plans/README.md`; one ticket is in flight at a time. Entry is
+  `/athan-next`: the lead routes to the one phase the repository needs, and a run
+  that planned ends with the ticket READY.
+- A session is one context window. Tickets are the queued units of work. No workflow file names
+  a context threshold for a session: the owner ends sessions at will, and every step writes its
   state to the repository as it lands. Worker dispatches are different: the plan's step
   weights and budgets bound every executor batch, and the lead rotates worker sessions
   mechanically from those numbers.
-- When a job is DONE, its plan folder, its evidence under `~/athan-gitree/sessions/<N>/`
+- When a ticket is DONE, its plan folder, its evidence under `~/athan-gitree/sessions/<N>/`
   and its uncited brief die in the merge commit.
-- The board's words: a ticket is a queue job, a step is a plan step. These files keep
-  saying job and step.
+- The board's words: a ticket is a queued unit of work, a step is a plan step. The board
+  and these files share the words.
 
 ## The repository is public to the whole world
 
@@ -72,11 +73,11 @@ works fully offline after first sync, and notifications fire on time while backg
   on the OnePlus 3T and nowhere else.
 - `releases.json` is deleted. Never recreate it and never add any hand-edited release file. Store
   versions come from iTunes Lookup (iOS) and the in-app updates API (Android).
-- A job's documentation dies with its merge. The session that merges a branch into `uat` deletes
+- A ticket's documentation dies with its merge. The session that merges a branch into `uat` deletes
   the plan folder, the evidence under `~/athan-gitree/sessions/<N>/` and the uncited brief in
   the same commit. Code is the documentation: MD files go stale, history lives in git, and only
-  an artefact still cited by shipped code or config survives, named in its row.
-- Never name a model in any file (briefs, plans, logs, audits, records). Write the job:
+  an artefact still cited by shipped code or config survives, named in its ticket.
+- Never name a model in any file (briefs, plans, logs, audits, records). Write the work:
   planning, execution, audit.
 - Never run `npx expo install --fix`. It would roll back `jest`, `@types/jest` and `typescript`,
   which this project runs ahead of Expo's pins on purpose. Name every package when upgrading.
@@ -104,7 +105,7 @@ works fully offline after first sync, and notifications fire on time while backg
 ## Worktrees
 
 A session removes every worktree it created, and the branch that came with it, before it ends,
-and always before 00:00 when the nightly job clears build folders. Verify a leftover branch is
+and always before 00:00, when the nightly build-folder clear runs. Verify a leftover branch is
 merged before deleting it. The five build worktrees under `$HOME/athan-gitree/worktrees/`
 are Gradle caches, detached and branchless. They stay.
 
