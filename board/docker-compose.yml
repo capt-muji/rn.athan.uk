@@ -2,9 +2,9 @@ services:
   board:
     image: node:24-alpine
     working_dir: /repo/board
-    command: node /repo/board/server.mjs --repo /repo --state /state --host 0.0.0.0 --db /opencode/opencode.db
+    command: node /repo/board/server.mjs --repo /repo --state /state --host 0.0.0.0 --db /opencode/opencode.db --port ${BOARD_PORT:-8788}
     ports:
-      - "127.0.0.1:${BOARD_PORT:-8788}:8788"
+      - "127.0.0.1:${BOARD_PORT:-8788}:${BOARD_PORT:-8788}"
     environment:
       - REPO_DIR_IN_DB=${REPO_DIR_IN_DB:-}
     volumes:
