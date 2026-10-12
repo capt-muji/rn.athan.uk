@@ -899,15 +899,15 @@ describe('getSecondsRemaining (ceil display contract)', () => {
     nowSpy.mockRestore();
   });
 
-  it('rounds up: 2.5s remaining displays as 3s', () => {
+  it('rounds up: 2.5s remaining displays as 0:03', () => {
     expect(getSecondsRemaining(targetFromNow(2500))).toBe(3);
   });
 
-  it('exact second boundaries are exact: 2.0s remaining displays as 2s', () => {
+  it('exact second boundaries are exact: 2.0s remaining displays as 0:02', () => {
     expect(getSecondsRemaining(targetFromNow(2000))).toBe(2);
   });
 
-  it('whole minutes flip on the boundary: 59.9995s remaining displays as 60s', () => {
+  it('whole minutes flip on the boundary: 59.9995s remaining displays as 1:00', () => {
     expect(getSecondsRemaining(targetFromNow(59_999.5))).toBe(60);
   });
 
@@ -915,11 +915,11 @@ describe('getSecondsRemaining (ceil display contract)', () => {
     expect(getSecondsRemaining(targetFromNow(500))).toBe(1);
   });
 
-  it('never displays 0s: 0ms remaining holds at 1s', () => {
+  it('never displays 0:00: 0ms remaining holds at 0:01', () => {
     expect(getSecondsRemaining(targetFromNow(0))).toBe(1);
   });
 
-  it('holds at 1s once the target has passed (latch until caller advances target)', () => {
+  it('holds at 0:01 once the target has passed (latch until caller advances target)', () => {
     expect(getSecondsRemaining(targetFromNow(-5000))).toBe(1);
   });
 
