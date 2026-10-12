@@ -180,8 +180,11 @@ hold, then the session progress table.
 Then the queue view, built from `ai/plans/README.md` as it stands at the close: the
 five tickets most recently DONE (the date from the ticket, or from the commit that set
 it, else the bare word), then every open ticket in queue order (every status except
-DONE, CANCELLED and SUPERSEDED), columns `Order | Ticket | Status`, the ticket's short
-name, one bare status word per ticket. Bold the one ticket the owner's next command
+DONE, CANCELLED and SUPERSEDED), columns `Order | Ticket | Status | Waiting on`, the
+ticket's short name, one bare status word per ticket, and in the last cell the one
+thing a row waits on when something holds it: the live blocker its own text names (an
+owner schedule, an upstream review) or an unmet Needs-first ticket. A row that waits on
+nothing leaves the cell empty. Bold the one ticket the owner's next command
 acts on: the ticket `/athan-next` would execute, or the first ticket it would plan.
 
 ```
