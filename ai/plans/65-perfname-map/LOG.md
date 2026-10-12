@@ -26,7 +26,7 @@
   root over app/ components/ shared/ stores/ hooks/ device/ e2e/ scripts/
   (node_modules, .codegraph, ai/ excluded). Totals: perfName 21, perfMark 77,
   perfMeasure 37, initPerfMonitor 22, EXPO_PUBLIC_PERF_MONITOR 30,
-  PERF_ENABLED 4 — every one matching planning's counts at `2670e596`.
+  PERF_ENABLED 4: every one matching planning's counts at `2670e596`.
   191 hits on 174 distinct lines in 30 files (6 test suites, 24 non-test).
   FINDINGS.md section 1 carries one row per hit, grouped: machinery 13,
   machinery tests and mock 61, sheet wiring 20, call sites 60, UI-suite
@@ -69,7 +69,7 @@ session: ses_ecec909deffeRmqw7Sywass3u5
     noUnusedFunctionParameters on Sheet.tsx:153 (`toIndex`); one format
     error in Alert.tsx (the prop line carried the JSX bracket).
   - `npx jest components/sheets stores/__tests__/ui.test.ts` exit 1:
-    9 failed / 430 passed (439), 3 suites failed / 16 passed — exactly the
+    9 failed / 430 passed (439), 3 suites failed / 16 passed: exactly the
     predicted three suites (Sheet marks/measures, LabeledToggle:60 toggle_tap,
     SoundItem:92,100 select/play taps). `stores/__tests__/ui.test.ts` and the
     five screen suites pass: the present marks break nothing at Jest level.
@@ -102,7 +102,7 @@ session: ses_ecec909deffeRmqw7Sywass3u5
 - Red: FINDINGS.md held sections 1 and 2 only; this commit appends
   section 3.
 - Change: section 3 answers the three contract questions in order, each
-  citing section 1 or 2 — cost per scope (sheet wiring only: nine files,
+  citing section 1 or 2: cost per scope (sheet wiring only: nine files,
   nine tests in three suites, six lint findings, seven orphaned baseline
   keys; full cleanup: the 24-file surface plus the launch-diagnosis
   capability and the e2e harness's subject), risk (the probe's failures
