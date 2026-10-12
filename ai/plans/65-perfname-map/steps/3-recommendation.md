@@ -23,11 +23,17 @@ reading (D81).
 - `ai/plans/README.md` (ticket line: `IN PROGRESS, step 3`)
 - this plan folder's `PLAN.md` and `LOG.md`
 
+## Red
+
+FINDINGS.md holds sections 1 and 2 only. The step's own commit appends
+section 3: the "red" is the section's absence, recorded as such in LOG.md.
+
 ## Change contracts
 
 Section 3 answers, in order, each citing section 1 or 2:
 
 1. What removal costs: files touched, tests deleted or rewritten, the
+   orphaned `sheet_*` entries in `e2e/baselines/android-3t.json`, and the
    `EXPO_PUBLIC_PERF_MONITOR` launch-diagnosis capability given up.
 2. What removal risks: the probe's failures name the live dependencies.
 3. The recommendation: remove, keep, or keep the machinery and drop the prop
@@ -37,9 +43,14 @@ Section 3 answers, in order, each citing section 1 or 2:
 
 Section 3 present; sections 1 to 3 read as one document.
 
+## Break script
+
+None for a docs step.
+
 ## Version and commit
 
-Next patch after uat's `package.json`, the three places, `app.json` first.
+Fetch `origin uat` first. Next patch after uat's `package.json`, the three
+places, `app.json` first.
 
 ```
 <VERSION> - docs(plans): 65 step 3, the recommendation
@@ -54,8 +65,9 @@ Next patch after uat's `package.json`, the three places, `app.json` first.
 
 `git checkout uat && git merge --no-ff docs/65-3-recommendation -m "<VERSION> - merge docs/65-3-recommendation: perfName judged (65 step 3)"`
 
-Then Finishing: records text into LOG.md, ticket set to EXECUTED, executed
-docs commit, merge, no push.
+Then Finishing: records text into LOG.md under `### Finishing — done`,
+ticket set to EXECUTED, executed docs commit at the next patch after step
+3's, merge, no push.
 
 ## Done when
 

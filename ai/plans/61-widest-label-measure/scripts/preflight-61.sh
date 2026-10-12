@@ -16,7 +16,7 @@ PY
 plan='ai/plans/61-widest-label-measure'
 row="$(grep '^| 39 |' ai/plans/README.md)"
 case "$row" in *DONE*) ;; *) note 'needs-first row 39 not DONE' ;; esac
-for a in measurer-body:components/ui/InitialWidthMeasurement.tsx prayer-longest:shared/prayer.ts test-banner:shared/__tests__/prayer.test.ts test-import:shared/__tests__/prayer.test.ts; do
+for a in measurer-body:components/ui/InitialWidthMeasurement.tsx prayer-longest:shared/prayer.ts test-banner:shared/__tests__/prayer.test.ts test-import:shared/__tests__/prayer.test.ts layout-key:app/_layout.tsx row-width:components/prayer/Prayer.tsx; do
   name="${a%%:*}"; src="${a#*:}"
   n="$(python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' "$plan/scripts/anchors/$name.txt" "$src")"
   [ "$n" = "1" ] || note "anchor $name count $n in $src"
