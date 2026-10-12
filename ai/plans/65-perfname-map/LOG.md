@@ -114,8 +114,28 @@ session: ses_ecec909deffeRmqw7Sywass3u5
 - Break: none for a docs step.
 - Version: 2.0.117 (origin fetched under the version lock at 2.0.116;
   app.json, package.json, android/app/build.gradle all set, app.json first).
-- Commit: (filled in the Finishing entry, with the hook line)
-- Review: (filled in the Finishing entry)
-- Merge: (filled in the Finishing entry)
+- Commit: `5ce5d7cf`. Hook: `Tests: 5471 passed, 5471 total`; coverage
+  100% statements (5206/5206), branches (2242/2242), functions (1082/1082),
+  lines (4662/4662).
+- Review: read `git show 5ce5d7cf` cold. Checklist holds: the recommendation
+  cites its evidence sections (1 and 2) throughout; no new question is left
+  open, the row ends at the recommendation. One pass, nothing to fix.
+- Merge: `7373483a` (no-ff into uat).
+
+session: ses_ecec909deffeRmqw7Sywass3u5
+
+### Finishing — done (2026-10-12, executor ses_ecec909deffeRmqw7Sywass3u5)
+
+- Ticket set to EXECUTED in `ai/plans/README.md`.
+- Executed docs commit on `docs/executed-65-2026-10-12` at version 2.0.118,
+  merged no-ff into uat. The `uat` diff for the whole ticket is docs only:
+  `ai/plans/65-perfname-map/` (FINDINGS.md sections 1-3, PLAN.md, LOG.md)
+  and `ai/plans/README.md`, plus the version files. No code file changed
+  (the invariant of section 5); the probe ran in a throwaway worktree
+  deleted before step 2 merged (D80).
+- The three step branches and the executed branch deleted after their
+  merges; no scratch worktree remains (`git worktree list` shows the
+  repository and the build worktrees only). Version lock released.
+- Not pushed (the lead pushes after review).
 
 session: ses_ecec909deffeRmqw7Sywass3u5
