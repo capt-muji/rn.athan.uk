@@ -1,7 +1,0 @@
-    alignItems: 'center',
-    borderRadius: RADIUS.md,
-    paddingVertical: SPACING.sm,
-    paddingLeft: SPACING.md,
-  },
-  text: {
-    fontSize: TEXT.sizeDetail,
