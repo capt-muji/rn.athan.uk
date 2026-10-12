@@ -1,4 +1,0 @@
-    setActiveLocale('ar');
-    try {
-      expect(store.get(standardCountdownDisplayAtom)).toBe('١س ١د');
-    } finally {

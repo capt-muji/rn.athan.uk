@@ -1,6 +1,0 @@
-      title: 'a passed unreadable Fajr opens tomorrow, which is readable, in seconds',
-      unreadable: { '2026-10-17': ['fajr', 'magrib'] },
-      launch: '2026-10-17T05:00:00.000Z',
-      index: 0,
-      countdown: { timeLeft: 86040, name: 'fajr' },
-      display: '23h 54m',

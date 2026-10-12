@@ -1,3 +1,0 @@
-  'notification.now': '{name} الآن',
-  'notification.reminder': '{name} بعد {n} د',
-  'sheet.closeToSave': 'أغلق للحفظ',

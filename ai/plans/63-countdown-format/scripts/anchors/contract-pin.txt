@@ -1,3 +1,0 @@
-    expect(shared).toContain("name: t('channel.reminder', { name: prayerLabel(id), n: intervalMinutes })");
-    expect(catalog).toContain("'channel.reminder': '{name} in {n}m Reminder'");
-  });
