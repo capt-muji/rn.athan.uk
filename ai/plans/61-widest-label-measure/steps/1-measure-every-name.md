@@ -7,17 +7,17 @@ Weight: 2
 
 ```bash
 cd "$(git rev-parse --show-toplevel)"
-python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' \
-  ai/plans/61-widest-label-measure/scripts/anchors/measurer-body.txt components/ui/InitialWidthMeasurement.tsx
-python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' \
-  ai/plans/61-widest-label-measure/scripts/anchors/prayer-longest.txt shared/prayer.ts
-python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' \
-  ai/plans/61-widest-label-measure/scripts/anchors/test-banner.txt shared/__tests__/prayer.test.ts
-python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' \
-  ai/plans/61-widest-label-measure/scripts/anchors/test-import.txt shared/__tests__/prayer.test.ts
+for a in measurer-body:components/ui/InitialWidthMeasurement.tsx prayer-longest:shared/prayer.ts \
+         test-banner:shared/__tests__/prayer.test.ts test-import:shared/__tests__/prayer.test.ts \
+         layout-key:app/_layout.tsx row-width:components/prayer/Prayer.tsx; do
+  n="${a%%:*}"; src="${a#*:}"
+  python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' \
+    "ai/plans/61-widest-label-measure/scripts/anchors/$n.txt" "$src"
+done
 ```
 
-Expected: four lines, each `1`. Any other count: `NEEDS_CONTEXT: NEEDS
+Expected: six lines, each `1`. The last two pin section 4's read-only
+context (the remount key and the row's reserve). Any other count: `NEEDS_CONTEXT: NEEDS
 REPLAN, <the anchor and its count>`.
 
 ## Goal
@@ -32,7 +32,10 @@ widen-only store, so the reserve is the widest label in rendered points.
 ## Files
 
 - `components/ui/InitialWidthMeasurement.tsx` (rewritten body)
-- `components/ui/__tests__/InitialWidthMeasurement.test.tsx` (new suite)
+- `components/ui/__tests__/InitialWidthMeasurement.test.tsx` (the existing
+  suite, extended: its three describes stay, two tests append, its doc
+  comment's second line becomes `the hidden texts that measure every name,
+  and the list each measured width is stored for`)
 - `shared/prayer.ts` (`getLongestPrayerNameIndex` deleted)
 - `shared/__tests__/prayer.test.ts` (its describe block and import entry
   deleted)
@@ -41,24 +44,24 @@ widen-only store, so the reserve is the widest label in rendered points.
 
 ## Red tests
 
-New file `components/ui/__tests__/InitialWidthMeasurement.test.tsx`:
+The existing `components/ui/__tests__/InitialWidthMeasurement.test.tsx`
+keeps its three describes (they still pass once every name mounts: their
+queried labels stay unique among the eleven). Extend its header with the two
+imports it does not already carry, and import nothing the header already has
+(`fireEvent`, `render`, `screen`, `getDefaultStore`, `ScheduleType`,
+`englishWidthAtomFor` and the default import are all present; Biome regroups
+but never merges duplicates, and the jest transform fails the parse on a
+re-declaration):
 
 ```tsx
-/**
- * The hidden measurers: every prayer name is measured, so the reserved width is the widest
- * label in points, whichever locale and glyph widths are in force
- */
-
-import { fireEvent, render, screen } from '@testing-library/react-native';
-import { getDefaultStore } from 'jotai';
-
-import { type PrayerId, STANDARD_PRAYER_IDS, EXTRA_PRAYER_IDS } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
-import { ScheduleType } from '@/shared/types';
-import { englishWidthAtomFor } from '@/stores/ui';
+```
 
-import InitialWidthMeasurement from '../InitialWidthMeasurement';
+Update the suite's doc comment to `the hidden texts that measure every name,
+and the list each measured width is stored for`. Then append:
 
+```tsx
 describe('the hidden measurers', () => {
   it('mounts one measurer per prayer name on both lists', async () => {
     await render(<InitialWidthMeasurement />);
@@ -73,7 +76,7 @@ describe('the hidden measurers', () => {
     const before = getDefaultStore().get(englishWidthAtomFor(ScheduleType.Standard));
 
     // A short name with wide glyphs is the Somali defect's shape: its measure must count
-    const aShorterName = screen.getByText(prayerLabel('fajr' as PrayerId));
+    const aShorterName = screen.getByText(prayerLabel('fajr'));
     await fireEvent(aShorterName, 'layout', { nativeEvent: { layout: { width: before + 40 } } });
 
     expect(getDefaultStore().get(englishWidthAtomFor(ScheduleType.Standard))).toBe(before + 40);
@@ -81,18 +84,16 @@ describe('the hidden measurers', () => {
 });
 ```
 
-Match the import shapes to the repo's `@/shared/constants` exports
-(`PrayerId` is a type import) and let Biome place them.
-
 Run:
 
 ```bash
 npx jest components/ui/__tests__/InitialWidthMeasurement.test.tsx --watchman=false --selectProjects=components
 ```
 
-Expected red: both tests fail - the first on the first unmounted label's
-`getByText` query (only two labels mount today), the second the same way.
-A pass on either: `STOP:`.
+Expected red: the two new tests fail - each on its first unmounted label's
+`getByText` query, printing `Unable to find an element with text:` (only
+`Sunrise` and `Last Third` mount today) - while the three existing
+describes pass. Any other failure, or a new test passing: `STOP:`.
 
 ## Change contracts
 
@@ -116,12 +117,18 @@ export default function InitialWidthMeasurement() {
   return (
     <>
       {STANDARD_PRAYER_IDS.map((id) => (
-        <Text key={id} style={styles.hidden} onLayout={(e) => setEnglishWidth(ScheduleType.Standard, e.nativeEvent.layout.width)}>
+        <Text
+          key={id}
+          style={styles.hidden}
+          onLayout={(e) => setEnglishWidth(ScheduleType.Standard, e.nativeEvent.layout.width)}>
           {prayerLabel(id)}
         </Text>
       ))}
       {EXTRA_PRAYER_IDS.map((id) => (
-        <Text key={id} style={styles.hidden} onLayout={(e) => setEnglishWidth(ScheduleType.Extra, e.nativeEvent.layout.width)}>
+        <Text
+          key={id}
+          style={styles.hidden}
+          onLayout={(e) => setEnglishWidth(ScheduleType.Extra, e.nativeEvent.layout.width)}>
           {prayerLabel(id)}
         </Text>
       ))}
@@ -133,7 +140,9 @@ export default function InitialWidthMeasurement() {
 In `shared/prayer.ts`, delete `getLongestPrayerNameIndex` (anchor
 `prayer-longest.txt`) including its leading comment block if one sits
 directly above it inside the anchor's neighbourhood, leaving the surrounding
-sections intact.
+sections intact. The `currentPrayerLabels` import leaves with it: the
+function was its sole user, and Biome's `noUnusedImports` at
+`--error-on-warnings` fails the build on the orphan.
 
 In `shared/__tests__/prayer.test.ts`, delete the banner and describe block
 (anchors `test-banner.txt` through the block's closing `});`) and the
@@ -148,8 +157,18 @@ npx biome check . --error-on-warnings
 ```
 
 Expected: all pass (both projects selected; the paths route to their own
-projects), tsc exit 0, Biome exit 0. `grep -rn getLongestPrayerNameIndex`
-returns nothing.
+projects), tsc exit 0, Biome exit 0. Then the coverage gate:
+
+```bash
+yarn validate
+```
+
+Expected: exit 0 with the four 100% coverage lines. The existing suite's
+per-locale describes fire one layout event per list, and the new tests fire
+a Standard event, so both lists' `onLayout` arrows stay covered.
+
+`grep -rn getLongestPrayerNameIndex --include='*.ts' --include='*.tsx'
+components/ shared/ app/ hooks/ stores/` returns nothing.
 
 ## Break script
 

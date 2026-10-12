@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Brief | Queue row 62, owner ask 2026-10-12 |
-| Planned at | PENDING (skeleton) |
+| Planned at | uat `2670e596`, version 2.0.105, 2026-10-12 |
 | Planned by | Planning session 2026-10-12 (owner away; her queue text is the ruling) |
 | Needs first | 39 (DONE) |
 | Parent | none |
@@ -14,9 +14,9 @@
 | Device | none |
 | Owner decisions still needed | none: her ask names the exact edit |
 
-Resume from: skeleton. Facts gathered: exactly two keys carry hard breaks in
-all six catalogs (`help.a.stopAfterRestart`, `help.a.cutoff`); the lock pins
-the English hash; dist regenerates through the bridge.
+Resume from: execution, step 1. The grill's eleven findings are applied
+(anchor names, the pinned literals in `i18n.test.ts`, dist is gitignored,
+exact command outputs); the plan is READY.
 
 ## 1. Goal
 
@@ -25,9 +25,10 @@ The two multi-sentence help answers are broken into two lines with a literal
 sits mid-thought in scripts that wrap differently. The owner's ruling
 (2026-10-12): remove the specific breaks and let the width wrap naturally.
 
-DONE when no help value in any catalog carries `\n`, the sentences join with
-one space, the catalog lock is re-taken against the edited English, and the
-committed dist transfer files match the landed catalogs.
+DONE when the two named values in every catalog carry no `\n` and join with
+one space, the pinned literals in `i18n.test.ts` match, the catalog lock is
+re-taken against the edited English, and every dist round trip passes
+(dist is gitignored pipeline output, verified by `i18n:import`).
 
 ## 2. Decisions
 
@@ -48,7 +49,7 @@ committed dist transfer files match the landed catalogs.
 ## 3. Pre-flight
 
 `scripts/preflight-62.sh`: uat checkout, clean tree, origin merged, version at
-or above the Planned at, row 39 DONE, the four catalog anchors each count 1.
+or above the Planned at, row 39 DONE, the twelve catalog anchors each count 1.
 Ends `PREFLIGHT OK`.
 
 ## 4. Background the executor needs
@@ -63,7 +64,7 @@ Ends `PREFLIGHT OK`.
 | `shared/__tests__/catalogLock.test.ts` | D49: hashes the landed English catalog against `shared/i18n/catalog-lock.json` per locale. An English edit without a lock re-take fails here. |
 | `scripts/catalog-lock.mjs` | `yarn i18n:lock` re-writes the lock. |
 | `scripts/i18n-export.mjs` / `shared/__tests__/i18nBridge.test.ts` | `I18N_LOCALE=<id> yarn i18n:export` writes `shared/i18n/dist/<id>.json` from the landed catalog. Bare mode gates parity only, so dist regeneration is hygiene, not a gate. |
-| `components/modals/Help.tsx` | Renders the values. No component change: without `\n` the Text wraps at the view width. `Help.test.tsx:125` matches a substring that survives the join. |
+| `components/modals/Help.tsx` | Renders the values. No component change: without `\n` the Text wraps at the view width. `components/modals/__tests__/Help.test.tsx:125` matches a substring that survives the join. |
 
 ### Why the obvious variant is wrong
 
@@ -73,9 +74,9 @@ break policy is exactly what she retired.
 
 ## 5. Design
 
-One mechanical edit, twelve values, one space join. Invariant: no catalog
-value under `help.*` contains `\n`, asserted by the new test across all six
-catalogs.
+One mechanical edit, twelve values, one space join. Invariant: the two
+named values carry no `\n` in any of the six catalogs, asserted by the new
+test across all of them.
 
 Concurrency trace: none. Catalog edits are static data; no runtime path
 changes.
