@@ -56,4 +56,19 @@
 session: ses_ed0c05b82ffe7FokNEW4Ih9lvf
 
 
+### Step 1 — merged
+Branch code/58a-1-gate, commit (sha filled with step 2's plan files), version 2.0.87.
+Handover trio copied verbatim (scanner, 59-entry allowlist, gate suite). Against
+unchanged uat code: gate `Tests: 2 passed, 2 total`; CLI `DIRECTIONAL STYLES OK`;
+tsc 0; Biome 0.
+Break-1 both directions: deleting the permanent RamadanDecorations `left: cx - r,`
+entry failed the remainder test (`Tests: 1 failed, 1 passed, 2 total`, naming
+`components/ui/RamadanDecorations.tsx`); pushing the `NOTHING_MATCHES_THIS` entry
+failed the stale test (`Tests: 1 failed, 1 passed, 2 total`, naming the snippet);
+restore verified by suite, CLI and `cmp`. Break last line: `ALL ASPECTED: 1`.
+Review: three files equal handover byte for byte (`diff` clean each pair); banned
+patterns match PLAN section 4's nine; allowlist 59 entries, 38 `pending: step`,
+21 permanent; no other file changed.
+session: ses_ed08408e4ffeAXuuHvFBvFXsOO
+
 
