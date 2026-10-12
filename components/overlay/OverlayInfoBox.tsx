@@ -65,8 +65,8 @@ export default function OverlayInfoBox({ type }: Props) {
   // card visibly belongs to its row. Never given a height, so it is as tall as its own content;
   // the above-branch anchors at the row top and lifts itself clear by its own height
   const computedStyleInfoBox: ViewProps['style'] = showInfoBoxAbove
-    ? { top: rowTop + TIP_OVERLAP, transform: [{ translateY: '-100%' }], left: 0, width: '100%' }
-    : { top: rowTop + STYLES.prayer.height - TIP_OVERLAP, left: 0, width: '100%' };
+    ? { top: rowTop + TIP_OVERLAP, transform: [{ translateY: '-100%' }], start: 0, width: '100%' }
+    : { top: rowTop + STYLES.prayer.height - TIP_OVERLAP, start: 0, width: '100%' };
 
   const { prayerName, explanation } = getOverlayExplanation(type, selectedPrayer.id);
 
@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
   placer: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
     zIndex: 1,
   },
