@@ -18,6 +18,7 @@ const STATUS_MAP = [
   ['EXECUTED', 'Audit'],
   ['DONE', 'Done'],
   ['BLOCKED', 'Blocked'],
+  ['UPSTREAM', 'Upstream'],
   ['OWNER-BLOCKED', 'Blocked'],
   ['OWNER-LED', 'Owner-led'],
   ['DEFERRED', 'Deferred'],
