@@ -189,7 +189,7 @@ None. The executor worker never pushes. The lead pushes after the reviews pass.
 | Symptom | Cause | Action |
 | --- | --- | --- |
 | The glossary gate fails on ms or hi | The catalog changed without the glossary (or the reverse) | The two sides of D81 must land in one commit; check `sourced-names.json` holds the same two values |
-| A suite still imports `englishWidthAtomFor` after step 2 | A file the step's list missed | These suites rename with the family: the fourteen in the Files list; a reference beyond that list is a STOP (a later ticket added one) |
+| A suite still imports `englishWidthAtomFor` after step 2 | A file the step's list missed | These suites rename with the family: the nineteen in the Files list; a reference beyond that list is a STOP (a later ticket added one) |
 | The width keys tests fail on literal key names | The tests assert `prayer_max_english_width_` literals | They rename with the family: `prayer_max_name_width_` |
 | The owner rejects a string at audit | D81's table is her veto surface | Revert that one value and its glossary entry in a follow-up commit; the rest of the ticket stands |
 
