@@ -415,6 +415,19 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('Sun');
     });
 
+    it('renders the derived v6 footer digits natively under an ar device locale', () => {
+      // A v6 Hijri label parses Latin unchanged; only the rendered digits localise
+      const legacy = { ...liveProps(), dateLabel: 'Rabīʻ II 30, 1448' } as Record<string, unknown>;
+      delete legacy.footer;
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        const tree = renderHome(legacy, 'systemSmall');
+        expect(textsOf(tree)).toContain('Rab ٣٠');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
     it('renders the stale card per family', () => {
       const small = renderHome({ ...liveProps(), stale: true }, 'systemSmall');
       expect(textsOf(small)).toContain('Out of date');
@@ -525,6 +538,27 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('1h 12m');
       expect(textsOf(tree)).toContain('ASR');
       expect(textsOf(tree)).toContain('15:20');
+    });
+
+    it('renders the v1 English fallback words with native digits under an ar device locale', () => {
+      // v1 snapshots are English-only by shape: the unit words stay the baked
+      // English literals, the digit map still follows the device locale (D57)
+      const { strings: _strings, ...legacy } = androidProps({});
+      const legacyRows = legacy.days.map((day) => ({
+        ...day,
+        rows: day.rows.map(({ id: _id, ...row }) => row),
+      }));
+      const legacySnapshot = { ...legacy, days: legacyRows };
+
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(at(DAY_ONE, '14:08') + 30_000);
+        const tree = renderTree(layouts.PrayerWidget(legacySnapshot, { colorScheme: 'light' }));
+
+        expect(textsOf(tree)).toContain('١h ١٢m');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
     });
 
     it('renders the day footer prop verbatim, preferring it over the parsed label', () => {
