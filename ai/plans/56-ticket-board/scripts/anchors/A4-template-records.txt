@@ -1,4 +1,0 @@
-- **9. Push.** Always None. The executor worker never pushes. The lead pushes after the
-  reviews pass.
-- **10. When something goes wrong.** A symptom table. Anticipated review fixes, word for
-  word. Per-step restore lists.
