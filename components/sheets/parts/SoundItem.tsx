@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: RADIUS.md,
     paddingVertical: SPACING.sm,
-    paddingLeft: SPACING.md,
+    paddingStart: SPACING.md,
   },
   text: {
     fontSize: TEXT.sizeDetail,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   countdown: {
     fontSize: TEXT.sizeSmall,
     fontFamily: TEXT.family.regular,
-    marginRight: SPACING.xs,
+    marginEnd: SPACING.xs,
   },
   icon: {
     padding: SPACING.md,

@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   indicator: {
     position: 'absolute',
     top: 3,
-    left: 3,
+    start: 3,
     bottom: 3,
     backgroundColor: COLORS.interactive.active,
     borderRadius: RADIUS.md - 2,
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   iconLayer: {
     position: 'absolute',
     top: 0,
-    left: 0,
+    start: 0,
   },
   label: {
     fontSize: TEXT.sizeDetail - 1,
