@@ -6,13 +6,16 @@ as their steps merge. Measured at uat `b69befa9`, version 2.0.114.
 ## Section 1: the reader inventory
 
 Method: six `grep -rn` runs from the repository root over `app/ components/
-shared/ stores/ hooks/ device/ e2e/ scripts/` (node_modules, `.codegraph` and
-`ai/` excluded), one per symbol: `perfName`, `perfMark`, `perfMeasure`,
-`initPerfMonitor`, `EXPO_PUBLIC_PERF_MONITOR`, `PERF_ENABLED`. Hit totals:
-`perfName` 21, `perfMark` 77, `perfMeasure` 37, `initPerfMonitor` 22,
-`EXPO_PUBLIC_PERF_MONITOR` 30, `PERF_ENABLED` 4 — 191 hits on 174 distinct
-lines across 30 files, 6 of them test suites, so 24 non-test files. Every
-total matches planning's counts at `2670e596`. `device/` returns zero hits.
+shared/ stores/ hooks/ device/ e2e/ scripts/ __tests__/` (node_modules,
+`.codegraph` and `ai/` excluded), one per symbol: `perfName`, `perfMark`,
+`perfMeasure`, `initPerfMonitor`, `EXPO_PUBLIC_PERF_MONITOR`, `PERF_ENABLED`.
+Hit totals: `perfName` 21, `perfMark` 80, `perfMeasure` 39,
+`initPerfMonitor` 22, `EXPO_PUBLIC_PERF_MONITOR` 30, `PERF_ENABLED` 4, for 196
+hits on 178 distinct lines across 31 files, 7 of them test suites, so 24
+non-test files. The step's contract swept eight directories and drew 191
+hits; the audit's re-sweep added `__tests__/`, the jest-run root test tree
+the contract omitted, and with it the Navigation observer suite (five hits,
+four lines). `device/` returns zero hits.
 
 The e2e surface, which the owner named in the ask:
 
@@ -21,8 +24,8 @@ The e2e surface, which the owner named in the ask:
   drive screens; the harness around them collects the marks.
 - `e2e/scripts/frame-audit.sh` reads nothing from the machinery. It is the
   separate frame-quality harness (screenrecord or SurfaceFlinger cadence);
-  both scripts' headers state the split: marks are the in-app instrument,
-  frame audits are separate.
+  the split is stated in `baseline-compare.sh`'s own header: marks are the
+  in-app instrument, frame audits are separate.
 - `e2e/scripts/baseline-compare.sh` is the one true e2e reader. It streams
   the ReactNativeJS logcat while a flow runs, extracts the `PERF_MEASURE`
   lines (`:36`), computes medians and diffs them against
@@ -212,10 +215,15 @@ code.
 | `stores/ui.ts:197` | `perfMark` | call site: sheet_language_present mark in showLanguageSheet |
 | `stores/ui.ts:224` | `perfMark` | call site: sheet_alert_present mark in showAlertSheet |
 
-### Observers: the four UI suites
+### Observers: the five UI suites
 
 | File:line | Symbol | Role |
 | --- | --- | --- |
+| `__tests__/app/Navigation.test.tsx:9` | `perfMark` | observer: pager mark suite (the audit's `__tests__/` re-sweep) |
+| `__tests__/app/Navigation.test.tsx:9` | `perfMeasure` | observer: pager mark suite (the audit's `__tests__/` re-sweep) |
+| `__tests__/app/Navigation.test.tsx:48` | `perfMark` | observer: pager_swipe_start assertion |
+| `__tests__/app/Navigation.test.tsx:57` | `perfMark` | observer: pager_swipe_start negative assertion |
+| `__tests__/app/Navigation.test.tsx:66` | `perfMeasure` | observer: pager_page measure assertion |
 | `components/overlay/__tests__/Overlay.test.tsx:13` | `perfMeasure` | observer: overlay measure suite |
 | `components/overlay/__tests__/Overlay.test.tsx:22` | `perfMark` | observer: overlay measure suite |
 | `components/overlay/__tests__/Overlay.test.tsx:22` | `perfMeasure` | observer: overlay measure suite |
@@ -260,7 +268,7 @@ code.
 | `scripts/scan-strings.mjs:23` | `perfMeasure` | script: NON_DISPLAY_CALLEES regex lists the symbol names, never calls them |
 
 Counts per group: machinery 13, machinery tests and mock 61, sheet wiring 20,
-call sites 60, UI-suite observers 32, scripts and gate usage 5 — 191 rows.
+call sites 60, UI-suite observers 37, scripts and gate usage 5, for 196 rows.
 
 ## Section 2: the removal probe
 
@@ -306,7 +314,7 @@ error:
 
 - `lint/correctness/noUnusedImports` on `Sheet.tsx:15`
   (`perfMark, perfMeasure`), `SoundItem.tsx:10`, `LabeledToggle.tsx:4` and
-  `stores/ui.ts:6` (each `perfMark`) — the imports the deletions orphan.
+  `stores/ui.ts:6` (each `perfMark`): the imports the deletions orphan.
 - `lint/correctness/noUnusedFunctionParameters` on `Sheet.tsx:153`:
   `handleAnimate`'s `toIndex` parameter served only the deleted marks.
 - A format error in `Alert.tsx`: the prop's line carried the JSX closing
@@ -317,7 +325,7 @@ error:
 3 suites failed, 16 passed; 9 tests failed, 430 passed, 439 total. The
 failures, verbatim:
 
-- `Sheet.test.tsx` — "the settings sheet in a measurement build":
+- `Sheet.test.tsx`, "the settings sheet in a measurement build":
   - "marks a move towards 0 as sheet_settings_animate" (`:212`):
     `expect(perfMark).toHaveBeenCalledTimes(1)` received 0.
   - "marks a move towards -1 as sheet_settings_close_start" (`:212`): same,
@@ -351,8 +359,8 @@ both leaves nothing dangling; the flags name only the orphaned import.
 
 Each claim names its proof from the same run (16 suites passed, 430 tests):
 
-- The five screen suites — `Settings.test.tsx`, `Sound.test.tsx`,
-  `Qibla.test.tsx`, `Alert.test.tsx`, `Language.test.tsx` — pass with the
+- The five screen suites (`Settings.test.tsx`, `Sound.test.tsx`,
+  `Qibla.test.tsx`, `Alert.test.tsx`, `Language.test.tsx`) pass with the
   props and constants gone.
 - `stores/__tests__/ui.test.ts` passes with the present marks gone.
 - The remaining parts suites pass: `Sheet.test.tsx`'s other describes
@@ -371,9 +379,9 @@ Each claim names its proof from the same run (16 suites passed, 430 tests):
 A grep over `e2e/` and `scripts/` for `perfName`, `perfMark`, `perfMeasure`
 and the `sheet_` mark names returns exactly the expected set and no more:
 
-- `scripts/scan-strings.mjs:23` — the `NON_DISPLAY_CALLEES` regex listing
+- `scripts/scan-strings.mjs:23`: the `NON_DISPLAY_CALLEES` regex listing
   the symbol names; a non-caller, so the deletion breaks nothing there.
-- `e2e/scripts/baseline-compare.sh:6,39` and `e2e/README.md:43` — the
+- `e2e/scripts/baseline-compare.sh:6,39` and `e2e/README.md:43`: the
   gate's `EXPO_PUBLIC_PERF_MONITOR` usages (uppercase; they match the
   gate-term grep, not the four patterns above), unaffected by the sheet
   wiring.
@@ -382,12 +390,14 @@ and the `sheet_` mark names returns exactly the expected set and no more:
 
 ### The orphaning cost
 
-`e2e/baselines/android-3t.json` would carry seven dead keys if the measures
+`e2e/baselines/android-3t.json` would carry eight dead keys if the measures
 died: the medians `sheet_alert_open` (456), `sheet_settings_open` (370),
-`sheet_sound_open` (807), `sheet_settings_close` (202), and the notes
-`sheet_alert_entrance`, `sheet_animation_config`, `sound_sheet_mount_cap`.
-Nothing errors — `baseline-compare.sh` diffs the marks a capture actually
-contains, so keys with no captured mark simply stop matching — but the
+`sheet_sound_open` (807), `sheet_settings_close` (202), the notes
+`sheet_alert_entrance`, `sheet_animation_config`, `sound_sheet_mount_cap`,
+and the median `toggle_tap_ms` (`:9`), whose mark the probe's scope also
+deletes and which was already unmatchable through its `_ms` suffix. Nothing
+errors: `baseline-compare.sh` diffs the marks a capture actually
+contains, so keys with no captured mark simply stop matching, and the
 historical baselines for sheet open/close become unreadable data. No hit
 beyond the expected four appeared, so no reader contradicts section 1.
 
@@ -403,29 +413,34 @@ Dropping the sheet wiring only (the probe's scope, section 2):
 
 - Nine source files touched: `Sheet.tsx`, the five screens, `SoundItem`,
   `LabeledToggle`, `stores/ui.ts` (section 2's method list).
-- Three suites edited and nine tests deleted or rewritten: `Sheet.test.tsx`
-  loses its "settings sheet in a measurement build" describe (five tests,
-  plus the four `perfName` call sites tsc names), `LabeledToggle.test.tsx`
-  its tap-mark test (two rows), `SoundItem.test.tsx` its two tap-mark tests
-  (section 2, What fails).
+- Three suites edited and ten tests deleted or rewritten: `Sheet.test.tsx`
+  loses its "settings sheet in a measurement build" describe (six tests:
+  three `it.each` rows, the between-snap-points negative, two measure
+  tests, plus the four `perfName` call sites tsc names),
+  `LabeledToggle.test.tsx` its tap-mark test (two rows),
+  `SoundItem.test.tsx` its two tap-mark tests (section 2, What fails).
 - Six lint findings to clear by hand: four orphaned imports, one orphaned
   parameter, one JSX reformat (section 2, Biome).
-- Seven `sheet_*` keys in `e2e/baselines/android-3t.json` orphan — nothing
+- Eight keys in `e2e/baselines/android-3t.json` orphan: nothing
   errors, the comparison just silently stops covering sheet open/close
-  (section 2, orphaning cost).
+  and toggle taps (section 2, orphaning cost).
 - Given up: sheet open/close and tap timing in a measurement build. The
   launch, bootstrap, scheduler, widget-push, catalog and overlay timings
   stay, because their marks live outside the sheets (section 1, call sites).
 
 Removing the machinery too (the full cleanup):
 
-- The 24 non-test files of section 1's surface plus both machinery suites
-  and the mock; every export has a non-sheet caller, so nothing is
-  droppable piecemeal (section 1, machinery and call-site groups).
+- The 24 non-test files of section 1's surface plus every suite that
+  observes the machinery: the two machinery suites and the mock, the five
+  UI observer suites of section 1's observers group (Overlay, Sheet,
+  LabeledToggle, SoundItem), and the Navigation pager suite the audit's
+  `__tests__/` re-sweep added; every export has a non-sheet caller, so
+  nothing is droppable piecemeal (section 1, machinery and call-site
+  groups).
 - The `EXPO_PUBLIC_PERF_MONITOR` launch-diagnosis capability goes entirely:
   `js_to_content`, `index_first_render`/`home_content`, the bootstrap
   timeline, scheduler queue-waits and widget-push timing (section 1, call
-  sites) — the instrument that measured the app's cold start and the
+  sites), the instrument that measured the app's cold start and the
   notification pipeline, not only the sheets.
 - `baseline-compare.sh`, its README section and the whole baselines file
   lose their subject (section 1, e2e surface): the harness reads
@@ -434,20 +449,20 @@ Removing the machinery too (the full cleanup):
 ### 2. What removal risks
 
 The probe names the live dependencies, and they are all tests (section 2):
-the compiler, the linter and nine Jest cases are the entire breakage — no
+the compiler, the linter and ten Jest cases are the entire breakage: no
 e2e flow, no script, no runtime path reads the sheet marks (section 1, e2e
 surface; section 2, e2e after the deletion). The one silent risk is the
 orphaning: nothing fails when the baselines keys stop matching, so a future
 sheet-regression audit would quietly lose its rows (section 2, orphaning
-cost). That silence cuts both ways — removal is safe if wanted, but its
+cost). That silence cuts both ways: removal is safe if wanted, but its
 cost is easy to under-notice.
 
 ### 3. Recommendation
 
-**Keep.** Nothing in a production build pays for the wiring — the gate
-folds every mark out of store bundles (section 1, machinery) — and it is
+**Keep.** Nothing in a production build pays for the wiring (the gate
+folds every mark out of store bundles, section 1 machinery), and it is
 the only instrument behind the sheet baselines, so a removal ticket would
-spend nine tests and seven baseline keys to buy tidiness the owner cannot
+spend ten tests and eight baseline keys to buy tidiness the owner cannot
 feel. If she ever wants the cleanup anyway, the probe is the map: a small,
-well-bounded ticket (nine files, three suites, six lint findings, seven
+well-bounded ticket (nine files, three suites, six lint findings, eight
 dead keys), worth its own row only then.
