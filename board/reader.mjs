@@ -85,7 +85,7 @@ function mapStatus(statusCell) {
     const firstSpace = cell.indexOf(' ');
     const head = firstSpace === -1 ? cell : cell.slice(0, firstSpace);
     const rest = firstSpace === -1 ? '' : cell.slice(firstSpace);
-    return { status: head, column: 'Unmapped', cursor, statusText: collapse(rest).slice(0, 140), rendered };
+    return { status: head, column: 'Deferred', cursor, statusText: collapse(rest).slice(0, 140), rendered };
   }
   const [phrase, column] = matched;
   return { status: phrase, column, cursor, statusText: collapse(cell.slice(phrase.length)).slice(0, 140), rendered };
