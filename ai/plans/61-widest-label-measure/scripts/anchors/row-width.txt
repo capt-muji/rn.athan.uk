@@ -1,0 +1,4 @@
+
+  const computedStyleEnglish = {
+    width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.start,
+  };

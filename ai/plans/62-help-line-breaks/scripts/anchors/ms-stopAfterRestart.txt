@@ -1,0 +1,4 @@
+  'help.q.stopAfterRestart': 'Mengapa notifikasi berhenti selepas dimulakan semula?',
+  'help.a.stopAfterRestart':
+    'Selepas telefon dimulakan semula, apl ditamatkan.\nIni menghentikan notifikasi baharu dihantar.',
+  'help.step.openAfterReboot': 'Buka apl ini selepas memulakan semula telefon',
