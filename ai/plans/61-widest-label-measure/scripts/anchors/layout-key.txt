@@ -1,0 +1,3 @@
+      <SystemBars style={'light'} hidden={{ navigationBar: false }} />
+      <InitialWidthMeasurement key={localeVersion} />
+      <BottomSheetModalProvider>

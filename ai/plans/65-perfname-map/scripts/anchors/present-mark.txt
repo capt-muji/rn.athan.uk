@@ -1,0 +1,7 @@
+/** Presents the sound selection bottom sheet */
+export const showSheet = () => {
+  perfMark('sheet_sound_present');
+  store.get(bottomSheetModalAtom)?.present();
+};
+
+/** Presents the settings bottom sheet */

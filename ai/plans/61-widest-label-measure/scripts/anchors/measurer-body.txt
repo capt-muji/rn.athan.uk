@@ -1,0 +1,11 @@
+export default function InitialWidthMeasurement() {
+  return (
+    <>
+      <Text style={styles.hidden} onLayout={(e) => setEnglishWidth(ScheduleType.Standard, e.nativeEvent.layout.width)}>
+        {prayerLabel(STANDARD_PRAYER_IDS[getLongestPrayerNameIndex(ScheduleType.Standard)])}
+      </Text>
+      <Text style={styles.hidden} onLayout={(e) => setEnglishWidth(ScheduleType.Extra, e.nativeEvent.layout.width)}>
+        {prayerLabel(EXTRA_PRAYER_IDS[getLongestPrayerNameIndex(ScheduleType.Extra)])}
+      </Text>
+    </>
+  );
