@@ -23,6 +23,10 @@ stays byte-identical, and one new test pins all three.
 - `shared/i18n/th.ts` (change)
 - `shared/i18n/sourced-names.json` (change)
 - `shared/__tests__/catalogGates.test.ts` (change)
+- `shared/__tests__/i18nRuntime.test.ts` (change: the `prayerLabel('last third')`
+  expectation under th at line 23 becomes `ช่วงสุดท้าย`)
+- `components/ui/__tests__/InitialWidthMeasurement.test.tsx` (change: the
+  `getByText('ช่วงสุดท้ายของคืน')` argument at line 40 becomes `ช่วงสุดท้าย`)
 
 ## Red tests
 
@@ -43,9 +47,11 @@ Run:
 npx jest shared/__tests__/catalogGates.test.ts --watchman=false --selectProjects=unit
 ```
 
-Expected: the new case fails three times (`Expected: "Sepertiga malam"`,
-`"आधी रात"`, `"ช่วงสุดท้าย"` against the old phrases); every other case passes
-(the glossary still matches the old catalogs). Any other failure is a STOP.
+Expected: the new case fails on its first assertion (`Expected: "Sepertiga
+malam"`, `Received: "Sepertiga akhir malam"`); the hi and th assertions sit
+behind the failed first one and go green with the change contracts. Every other
+case passes (the glossary still matches the old catalogs). Any other failure is
+a STOP.
 
 ## Change contracts
 
@@ -85,10 +91,12 @@ restores the file, ends `ALL AS EXPECTED: 1`.
 
 ## Version and commit
 
-Version command: the next patch after `uat`'s `package.json` under the version
-lock. Set in `app.json`, `package.json` and `android/app/build.gradle`
-(`versionName`). Add the five files, `app.json`, `package.json` and
-`android/app/build.gradle`, by name plus `ai/plans/README.md` (`IN PROGRESS,
+Version command: the next patch after `uat`'s `package.json`
+(`mkdir $HOME/athan-gitree/version.lock`, retry in a short sleep loop while it
+exists, `rmdir` it after the merge). Set in `app.json` and `package.json`, and
+in the gitignored `android/app/build.gradle` (`versionName`) when a prebuild
+is present; the gradle file is never added. Add the seven files and
+`app.json`/`package.json` by name plus `ai/plans/README.md` (`IN PROGRESS,
 step 1`) and the plan's `PLAN.md` and `LOG.md`. Message:
 
 ```

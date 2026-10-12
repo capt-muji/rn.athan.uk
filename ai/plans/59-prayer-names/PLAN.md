@@ -72,21 +72,24 @@ exactly 1. It ends `PREFLIGHT OK`.
   `null`, so th is unpinned today.
 - Other gates that hold: the 24-char prayer-name budget
   (`catalogGates.test.ts:166`), the en-echo exemption for `PRAYER_NAME_KEYS`
-  (`:137`), the injective `PRAYER_LABELS` closure (`i18n.test.ts:205`).
+  (`:142`), the injective `PRAYER_LABELS` closure (`i18n.test.ts:205`).
 - `en` is untouched, so `catalog-lock.json` stays valid and `dist/en.json`
   stays true; no lock re-take, no export.
 - The width layer: `stores/ui.ts` keys `prayer_max_english_width_<locale>_<side>`
-  built in `englishWidthAtomFor` (line 130), a legacy-key seed loop above it
-  (line 108), `setEnglishWidth` (line 261) accepting only widening measures
+  built in `englishWidthAtomFor` (line 134), a legacy-key seed loop above it
+  (lines 108-122), `setEnglishWidth` (line 259) accepting only widening measures
   (ISSUES #22 self-heal). `components/ui/InitialWidthMeasurement.tsx` writes it
   from hidden mounted Texts; `hooks/usePrayer.ts:90` reads it per row as the
   name-column reserve. The key prefix appears in the inventories
   `stores/version.ts:155` and `stores/sync.ts:365`, and in `components/ui/Error.tsx`'s
   docblock mention. Row 61 made the reserve the widest rendered label per name;
   widen-only means shorter names never tighten it (P8).
+- Two suites besides the glossary gate pin the old th value:
+  `shared/__tests__/i18nRuntime.test.ts:23` (`prayerLabel('last third')` under
+  th) and `components/ui/__tests__/InitialWidthMeasurement.test.tsx:40`
+  (`getByText` on the old label); step 1 lists both.
 - The proof (scratch worktree, deleted): with the three strings applied, every
-  suite passed that does not pin the strings (85 tests: no existing test pins
-  the old values except the glossary gate); with the width renames applied,
+  suite passed that does not pin the strings; with the width renames applied,
   `tsc` flagged the two suites' imports and the failing list ran to: the five
   `setEnglishWidth` describes in `stores/__tests__/ui.test.ts` (rename), the
   isolated-atom references there (`:393-409`), the
@@ -186,7 +189,7 @@ None. The executor worker never pushes. The lead pushes after the reviews pass.
 | Symptom | Cause | Action |
 | --- | --- | --- |
 | The glossary gate fails on ms or hi | The catalog changed without the glossary (or the reverse) | The two sides of D81 must land in one commit; check `sourced-names.json` holds the same two values |
-| A suite still imports `englishWidthAtomFor` after step 2 | A file the proof enumerated was missed | The proof's list is exhaustive at `Planned at`; a NEW reference is a STOP (a later ticket added one) |
+| A suite still imports `englishWidthAtomFor` after step 2 | A file the step's list missed | These suites rename with the family: the fourteen in the Files list; a reference beyond that list is a STOP (a later ticket added one) |
 | The width keys tests fail on literal key names | The tests assert `prayer_max_english_width_` literals | They rename with the family: `prayer_max_name_width_` |
 | The owner rejects a string at audit | D81's table is her veto surface | Revert that one value and its glossary entry in a follow-up commit; the rest of the ticket stands |
 
