@@ -40,3 +40,48 @@ blank-line deletions added for Biome, the file counts corrected, the boundary
 comment scoped to the 599/600 pair, R4.2 made observable, the break scripts
 moved to `$TMPDIR`, and the JSDoc describe comment's wrong-example clause
 rewritten. Gate rerun: `PLAN OK`.
+
+## Ticket 63 (2026-10-12)
+
+### Step 1 — DONE
+
+Branch `feat/63-colon-formatters` off uat. Deviation recorded: the main checkout
+is shared with the concurrent 59 planning and 67 finishing sessions (67's own
+STOP entry names the collision), so the pre-flight's clean-tree gate could not
+hold; all red/green work ran in a scratch worktree
+(`$HOME/athan-gitree/worktrees/exec63`, node_modules symlinked, branch
+fast-forwarded to `194ed701` before the commit), and the merge into uat runs in
+the main directory inside a clean-tree window. The pre-flight's substantive
+gates were verified directly: all 17 anchors count exactly 1, uat's
+package.json at 2.0.126 (then 2.0.128) is at or above 2.0.122; its two
+remaining failures were the sibling sessions' uncommitted files and uat sitting
+commits ahead of origin (the lead pushes; the executor never does).
+
+Red, exactly as planned: time.test.ts 18 failed / 110 passed, every failure a
+colon shape Expected against a letter shape Received; countdown+schedule 5
+failed / 133 passed; Countdown+Screen+Ago 11 failed / 8 passed. Nothing outside
+the rewritten cases failed.
+
+Green: 128/128, 138/138, 19/19; `npx tsc --noEmit` exit 0; `npx biome check .
+--error-on-warnings` exit 0 (430 files); full `yarn validate` exit 0: 5468
+passed, 2 skipped, 5470 total, coverage 100% statements 5188/5188, branches
+2221/2221, functions 1081/1081, lines 4645/4645.
+
+Break: `bash $TMPDIR/break-step1.sh` (the repaired script, grepping the
+deterministic `Received: "0:0"` signature) printed `break applied: pad2 removed
+from three groups`, `caught: unpadded seconds group (0:0)`, `caught:
+zero-padded minute group (1:01)` and ended `ALL AS EXPECTED: 1`; the tree then
+listed exactly the eight step files.
+
+Unnamed-comment fixes applied under the section-10 stale-comment rule, all in
+code the plan did not give verbatim, changing no test: deleted the now-false
+`never "1h 0s"`-class trailing comments on formatTime(3600), formatTime(7200)
+and formatTime(90000) in time.test.ts, and dropped the `:546` line reference
+from the hideSeconds threshold describe's comment (the line moved with the
+rewrite).
+
+Version 2.0.129 (next patch after uat's 2.0.128, taken under the version lock;
+android/app/build.gradle versionName set to 2.0.129 in the main checkout,
+never git-added).
+
+session: ses_ece59c1c9ffess0PpEuF3XrmKe

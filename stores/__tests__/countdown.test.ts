@@ -667,15 +667,15 @@ describe('render-granular selectors', () => {
     store.set(showSecondsAtom, false);
 
     store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1:01');
 
-    // 35s closer — same displayed minute band (1h 1m spans 3660-3719s), string unchanged
+    // 35s closer — same displayed minute band (1:01 spans 3660-3719s), string unchanged
     store.set(standardCountdownAtom, { timeLeft: 3700, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1:01');
 
     // Drops out of the 1-minute band — string flips
     store.set(standardCountdownAtom, { timeLeft: 3600, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1h');
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1:00');
 
     expect(getCountdownDisplayAtom(ScheduleType.Standard)).toBe(standardCountdownDisplayAtom);
   });
@@ -687,7 +687,7 @@ describe('render-granular selectors', () => {
     store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
     setActiveLocale('ar');
     try {
-      expect(store.get(standardCountdownDisplayAtom)).toBe('١س ١د');
+      expect(store.get(standardCountdownDisplayAtom)).toBe('١:٠١');
     } finally {
       setActiveLocale('en');
     }
@@ -698,7 +698,7 @@ describe('render-granular selectors', () => {
     store.set(showSecondsAtom, false);
 
     store.set(standardCountdownAtom, { timeLeft: 45, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('45s');
+    expect(store.get(standardCountdownDisplayAtom)).toBe('0:45');
   });
 
   it('bar progress is raw per-second resolution and warning flips at the exact threshold', () => {
