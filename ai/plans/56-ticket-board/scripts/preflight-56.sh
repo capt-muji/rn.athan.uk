@@ -19,7 +19,7 @@ if tuple(map(int, v[:3])) < need:
     sys.exit(1)
 EOF
 
-row=$(awk -F'|' '/^\| 56 \| Ticket board/ {print $4}' ai/plans/README.md)
+row=$(awk -F'|' '/^\| 56 \| Ticket board/ {print $5}' ai/plans/README.md)
 echo "$row" | grep -Eq 'PLANNING|READY|IN PROGRESS|EXECUTED' || { echo "queue row 56 cannot run: $row"; exit 1; }
 
 node_major=$(node --version | sed 's/v\([0-9]*\).*/\1/')

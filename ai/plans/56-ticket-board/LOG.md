@@ -12,3 +12,11 @@ round 1: 21 findings, all applied. Grill round 2: 14 findings, all applied.
 `bash scripts/check-plan.sh ai/plans/56-ticket-board` prints PLAN OK. Row set READY.
 
 session: ses_ed210257dffeRIqhnEt98ldG4O
+
+## Plan repair (2026-10-12)
+
+Lead, answering an executor STOP. preflight-56.sh read the row status from awk
+field 4, which is the brief cell in the 7-field open queue table; the status
+sits in field 5 (PLAN.md section 4 records the field counts). Index corrected,
+one character. Verified PREFLIGHT OK on the fixed script, steps 1 and 2
+re-dispatched to the same executor session.
