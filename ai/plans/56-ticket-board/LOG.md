@@ -235,8 +235,43 @@ session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
   error line rendering client-side). Evidence `sessions/56/break-05.txt`.
 - Version: 2.0.78 (origin fetched under the version lock at 2.0.77; app.json,
   package.json, android/app/build.gradle all set, app.json first).
-- Commit: (filled in the step 6 commit, with the hook line)
-- Review: (filled in the step 6 commit)
-- Merge: (filled in the step 6 commit)
+- Commit: `679c81c8` (2.0.78), hook green: `Tests: 5463 passed, 5463 total`;
+  Statements 100% (5211/5211), Branches 100% (2246/2246), Functions 100%
+  (1082/1082), Lines 100% (4667/4667).
+- Review: read `git show 679c81c8` cold on the committed blob. Exactly one
+  box-shadow rule (the running step) and one linear-gradient (the aurora);
+  every padding, margin and gap 0, 8, 16 or 24; columns 280px desktop and
+  88vw under 430px; zero external URLs, fonts, images or scripts; `cardEl`
+  defined once and called from the one column builder every column uses. The
+  owner reads the page at audit per the visuals rule. No findings.
+- Merge: `df95e12d` ("Merge feat/56-05-template into uat: job 56 step 5, the
+  template"), no conflict. Step branch deleted after the merge.
+
+session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
+
+### Step 06 — merged (2026-10-12, executor ses_ed1bffd31ffe3iLQJUCpPzdQOU)
+
+- Branch: `docs/56-06-readme` off `uat` (step 5 merged at `df95e12d`). Anchors
+  6/6 at 1.
+- Red: `grep -Fc '## Ticket board' README.md` printed `0`.
+- Change: the Board section inserted verbatim between the "How work happens
+  here" last paragraph and `## Development`; the `board/` layout line inserted
+  verbatim after the `e2e/` line, matching the block's 13-column alignment.
+  The deploy command in the section is the one step 4 proved; its green-run
+  evidence path is `sessions/56/green-04-routes.txt` (compose up, `up -d`
+  exit 0, board.json served). The section 8 records block is present in this
+  LOG under `## Planning (2026-10-12)`; it differs from the plan's fenced
+  text only by one line wrap in its final sentence, applied by the planner at
+  READY. Checklist box 6 ticked; per the step's contract the Planning block is
+  not applied a second time at Finishing.
+- Green: `grep -Fc '## Ticket board' README.md` printed `1`;
+  `python3 -m json.tool board/config.json` exit 0 (`config still valid`).
+- Break: `ALL AS EXPECTED: 1` (heading renamed to `## Board of tickets`,
+  grep failed, restore verified).
+- Version: 2.0.79 (origin fetched under the held version lock at 2.0.78;
+  app.json, package.json, android/app/build.gradle all set, app.json first).
+- Commit: (filled in the Finishing commit, with the hook line)
+- Review: (filled in the Finishing commit)
+- Merge: (filled in the Finishing commit)
 
 session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
