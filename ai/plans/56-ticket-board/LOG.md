@@ -135,8 +135,54 @@ the same executor session.
   verified count 1 before the break. Tree after: only the step's files.
 - Version: 2.0.76 (origin fetched under the version lock at 2.0.75; app.json,
   package.json, android/app/build.gradle all set, app.json first).
-- Commit: (filled in the step 4 commit, with the hook line)
-- Review: (filled in the step 4 commit)
-- Merge: (filled in the step 4 commit)
+- Commit: `aa97b091` (2.0.76; the first attempt was refused by the identifier
+  gate because the recorded red line carried the home path verbatim; the line
+  now reads `$HOME/repos/rn.athan.uk/board/reader.mjs` and the commit passed),
+  hook green: `Tests: 5463 passed, 5463 total`; Statements 100% (5211/5211),
+  Branches 100% (2246/2246), Functions 100% (1082/1082), Lines 100%
+  (4667/4667).
+- Review: read `git show aa97b091` cold. Imports are `node:sqlite`, `node:fs`,
+  `node:path` only; stdout is the single summary write, stderr the single
+  failure line; the db handle closes in a finally on every path including the
+  constructor throw; the only writes sit under `board/state/`; every
+  degradation path (config, plan folder, PLAN.md, steps, LOG, refs, handoffs,
+  db, package.json) answers and continues. No findings.
+- Merge: `db61b95e` ("Merge feat/56-03-reader into uat: job 56 step 3, the
+  reader"), no conflict. Step branch deleted after the merge.
+
+session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
+
+### Step 04 — merged (2026-10-12, executor ses_ed1bffd31ffe3iLQJUCpPzdQOU)
+
+- Branch: `feat/56-04-server-compose` off `uat`. Anchors 6/6 at 1.
+- Red (script in `$TMPDIR/red-56-04.sh`): node exit 1, first line
+  `node:internal/modules/cjs/loader`, `Error: Cannot find module` naming
+  server.mjs; compose exit 1. Evidence `sessions/56/red-04.txt`.
+- Change: `board/server.mjs` at 60 lines (R5.3; a first write of 73 and a
+  second of 59 were reworked to the cap, and the SSE route gained
+  `res.flushHeaders()` because writeHead alone never puts headers on the wire
+  for a stream that has not written a body byte, so the 5-second header probe
+  saw nothing), and `board/docker-compose.yml` byte-identical to the contract.
+  Flags, routes, one in-flight reader spawn every reconcileMs, byte-compare
+  watch on the state directory, `data: rev` to every open socket, failures one
+  stderr line and nonzero exit.
+- Green: `{"schemaVersion": 1` prefix; `"activeNow": true` (the live database
+  mounted, REPO_DIR_IN_DB naming this directory; `time_updated` verified
+  milliseconds, my session row 2.6 s old at the pre-check);
+  `content-type: text/event-stream`; `404` on `/`; `wc -l` 60. Evidence
+  `sessions/56/green-04-routes.txt`.
+- Push proof: 2 `data:` lines captured over 25 s; the served board.json
+  carried the mutated row name (content check silent); the queue restored
+  byte-identical; `docker compose down` exit 0. Evidence
+  `sessions/56/push-04.txt` and `sessions/56/sse-capture.txt`.
+- Break: `sub-checks passed: 3`, `ALL AS EXPECTED: 1` (cap 60; the stopped
+  stack stopped answering; the corrupted state file was already replaced by
+  the reader's next tick, served bytes `{"sc`). Evidence
+  `sessions/56/break-04.txt`. Tree after: only the two step files.
+- Version: 2.0.77 (origin fetched under the version lock at 2.0.76; app.json,
+  package.json, android/app/build.gradle all set, app.json first).
+- Commit: (filled in the step 5 commit, with the hook line)
+- Review: (filled in the step 5 commit)
+- Merge: (filled in the step 5 commit)
 
 session: ses_ed1bffd31ffe3iLQJUCpPzdQOU
