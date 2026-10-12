@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Brief | Queue row 65, owner ask 2026-10-12: investigation only, no code changes in this row |
-| Planned at | PENDING (skeleton) |
+| Planned at | uat `2670e596`, version 2.0.105, 2026-10-12 |
 | Planned by | Planning session 2026-10-12 (owner away; her questions are the brief) |
 | Needs first | nothing |
 | Parent | none |
@@ -14,11 +14,10 @@
 | Device | none |
 | Owner decisions still needed | none: the row ends with options and a recommendation; the owner rules on reading |
 
-Resume from: skeleton. The reader surface is already mapped in outline:
-`shared/perf.ts` (the gate and the marks), `Sheet.tsx` (the wiring), five
-sheet screens and two sheet parts (the prop), `stores/ui.ts` (present marks),
-`components/overlay` (one test hit). `e2e/` and `scripts/` grep clean for
-`perfName`, which already answers half the load-bearing question.
+Resume from: skeleton. The grill's first round (13 findings) rewrote the
+reader map: the machinery spans 24 non-test files (30 grep files minus 6 test suites), and no export of
+`shared/perf.ts` is droppable, so the probe deletes the sheet wiring only.
+Section 4 is authoritative over any earlier outline.
 
 ## 1. Goal
 
@@ -39,6 +38,7 @@ recommendation states its terms.
 | --- | --- | --- | --- | --- |
 | D80 | The probe is a detached worktree deleted before the step merges; `uat` never carries probe code. | planning | 2026-10-12 | this section |
 | D81 | The row ends with a recommendation, not a removal. The owner rules on reading (the queue row's own text). | planning | 2026-10-12 | queue row 65 |
+| D82 | FINDINGS.md is the ticket's only deliverable and dies with the folder: at DONE the lead folds its reader-table summary and its recommendation into the ticket's final queue cell, so any follow-up row carries the findings without the file. | planning | 2026-10-12 | this section |
 
 ### 2.2 The executor must not decide
 
@@ -53,24 +53,38 @@ or above Planned at, the plan's anchors each count 1. Ends `PREFLIGHT OK`.
 
 ## 4. Background the executor needs
 
-| File | Role |
-| --- | --- |
-| `shared/perf.ts` | The machinery: `PERF_ENABLED` gate (`process.env.EXPO_PUBLIC_PERF_MONITOR === '1'` and not prod), `perfMark`, `perfMeasure`, `initPerfMonitor`. |
-| `components/sheets/parts/Sheet.tsx` | The wiring: the `perfName` prop, `handleChange`/`handleAnimate` marks and measures. |
-| `components/sheets/screens/{Settings,Sound,Alert,Language,Qibla}.tsx`, `components/sheets/parts/{SoundItem,LabeledToggle}.tsx` | The prop's call sites. |
-| `stores/ui.ts:177-227` | `perfMark('sheet_*_present')` on each present path. |
-| `e2e/`, `scripts/` | Grep clean for `perfName` (planning fact, 2026-10-12); the probe re-verifies against the marks themselves. |
-| `components/overlay/__tests__/Overlay.test.tsx` | The one test hit outside sheets; the probe checks what it asserts. |
+The machinery spans 24 non-test files (the six greps list 30 files, 6 of
+them test suites; planning's grep at `2670e596`, re-proved by step 1). No export of `shared/perf.ts` is droppable: the app
+root, the countdown, notifications, the overlay, bootstrap and the i18n
+loader all call the marks. The owner's question is the sheet remnant, so the
+probe removes the sheet wiring only.
+
+| Group | Files | Role |
+| --- | --- | --- |
+| Machinery | `shared/perf.ts` | The gate (`PERF_ENABLED`), `perfMark`, `perfMeasure`, `initPerfMonitor`, the background flush. Untouched by the probe: callers exist outside sheets. |
+| Machinery tests | `shared/__tests__/perf.test.ts`, `shared/__tests__/perfBackgroundFlush.test.ts`, `shared/__mocks__/react-native-performance.ts` | The suites and the mock pinning the machinery. |
+| App-root marks | `app/index.tsx`, `app/_layout.tsx` (`initPerfMonitor`), `app/Navigation.tsx` | Launch and navigation marks. |
+| Sheet wiring | `components/sheets/parts/Sheet.tsx` | The `perfName` prop and its `handleChange`/`handleAnimate` marks and measures. |
+| Sheet call sites | `components/sheets/screens/{Settings,Sound,Alert,Language,Qibla}.tsx` | The `perfName={...}` props (`SHEET_PERF_NAME` in four screens, `SETTINGS_PERF_NAME` in Settings). |
+| Sheet-part tap marks | `components/sheets/parts/{SoundItem,LabeledToggle}.tsx` | `perfMark` calls on row taps; neither takes a `perfName` prop. |
+| Non-sheet marks | `components/overlay/Overlay.tsx`, `stores/{countdown,notifications,overlay,ui,bootstrap}.ts`, `hooks/useNotification.ts`, `shared/i18n/loader.ts` | Runtime marks outside the sheets. |
+| The observers | `components/sheets/parts/__tests__/Sheet.test.tsx:208-254`, `LabeledToggle.test.tsx:60`, `SoundItem.test.tsx:92,100`, `components/overlay/__tests__/Overlay.test.tsx:152-156` | The four suites asserting the sheet marks, the tap marks and the overlay measure. |
+| Baseline data | `e2e/baselines/android-3t.json` | Seven `sheet_*` measure keys (medians and notes): mark-name data, orphaned if the measures die. |
+| Scripts and docs | `e2e/scripts/baseline-compare.sh:6,39`, `e2e/README.md:43`, `scripts/scan-strings.mjs:23` | The gate's env usages; scan-strings lists the symbol names in a `NON_DISPLAY_CALLEES` regex and never calls them (a non-caller). |
 
 ## 5. Design
 
 Three investigation steps, each writing its section into FINDINGS.md as it
 lands. Invariant: `uat` diff for the whole ticket is docs only.
 
+Alternatives rejected: deleting the machinery in the probe (no export is
+droppable; the failures would be unrelated noise); probing on `uat` (D80,
+`uat` never carries probe code).
+
 **Acceptance criteria:**
 
-- [R1.1] WHEN the reader inventory lands THE SYSTEM SHALL record every `perfName`, `perfMark` and `perfMeasure` reader with its file, line and role in FINDINGS.md section 1
-- [R2.1] WHEN the removal probe ends THE SYSTEM SHALL record in FINDINGS.md section 2 what fails with the machinery deleted, and what does not, each claim naming the test or script that proved it
+- [R1.1] WHEN the reader inventory lands THE SYSTEM SHALL record every `perfName`, `perfMark`, `perfMeasure`, `initPerfMonitor` and `EXPO_PUBLIC_PERF_MONITOR` reader with its file, line and role in FINDINGS.md section 1, including the e2e flows and the frame and baseline scripts
+- [R2.1] WHEN the removal probe ends THE SYSTEM SHALL record in FINDINGS.md section 2 what fails with the sheet wiring deleted (the `perfName` prop, its marks and measures, the present marks, and the sheet-part tap marks), and what does not, each claim naming the test or script that proved it
 - [R3.1] WHEN the recommendation lands THE SYSTEM SHALL state in FINDINGS.md section 3 whether removal is worth its own ticket, with its cost, its risk and the evidence sections it rests on
 
 ## 6. Steps

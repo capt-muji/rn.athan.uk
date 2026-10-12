@@ -16,7 +16,7 @@ PY
 plan='ai/plans/62-help-line-breaks'
 row="$(grep '^| 39 |' ai/plans/README.md)"
 case "$row" in *DONE*) ;; *) note 'needs-first row 39 not DONE' ;; esac
-for a in en-restart:en en-cutoff:en ar-restart:ar ar-cutoff:ar ms-restart:ms ms-cutoff:ms so-restart:so so-cutoff:so hi-restart:hi hi-cutoff:hi th-restart:th th-cutoff:th; do
+for a in en-stopAfterRestart:en en-cutoff:en ar-stopAfterRestart:ar ar-cutoff:ar ms-stopAfterRestart:ms ms-cutoff:ms so-stopAfterRestart:so so-cutoff:so hi-stopAfterRestart:hi hi-cutoff:hi th-stopAfterRestart:th th-cutoff:th; do
   name="${a%%:*}"; loc="${a#*:}"
   n="$(python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' "$plan/scripts/anchors/$name.txt" "shared/i18n/$loc.ts")"
   [ "$n" = "1" ] || note "anchor $name count $n in shared/i18n/$loc.ts"

@@ -44,7 +44,10 @@ Search terms, each run from the repository root with `grep -rn`:
 `perfName`, `perfMark`, `perfMeasure`, `initPerfMonitor`,
 `EXPO_PUBLIC_PERF_MONITOR`, `PERF_ENABLED`, across `app/ components/ shared/
 stores/ hooks/ device/ e2e/ scripts/` (exclude `node_modules`, `.codegraph`,
-`ai/`). Section 1 of FINDINGS.md is a table with one row per hit: file:line,
+`ai/`). Planning's counts at `2670e596` are the expected row totals:
+perfName 21, perfMark 77, perfMeasure 37, initPerfMonitor 22,
+EXPO_PUBLIC_PERF_MONITOR 30, PERF_ENABLED 4. A count that differs is the
+section 10 contradiction row: re-run the grep before writing. Section 1 of FINDINGS.md is a table with one row per hit: file:line,
 the symbol, and its role in one clause (gate, wiring, call site, test,
 script). Group the rows: the machinery (`shared/perf.ts`), the wiring
 (`Sheet.tsx`), the call sites (screens, parts, stores), the observers
@@ -61,7 +64,8 @@ None for a docs step; the LOG entry records the row count instead.
 
 ## Version and commit
 
-Next patch after uat's `package.json`, the three places, `app.json` first.
+Fetch `origin uat` first. Next patch after uat's `package.json`, the three
+places, `app.json` first.
 
 ```
 <VERSION> - docs(plans): 65 step 1, the perfName reader inventory
