@@ -150,7 +150,7 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
         prayerName: english,
         explanation,
         arrowPosition,
-        style: { ...anchor, left: 0, width: '100%' },
+        style: { ...anchor, start: 0, width: '100%' },
       });
       // Never a fixed height: the card sizes itself, or an empty 300pt box pushes its content off the row
       expect((cards[0].props.style as ViewStyle).height).toBeUndefined();
@@ -202,7 +202,7 @@ describe('the Extras card on a four-row list, where only the last row may flip a
     const style = card.props.style as ViewStyle;
 
     expect(style.top).toBe(STYLES.prayer.height - TIP_OVERLAP);
-    expect(style.left).toBe(0);
+    expect(style.start).toBe(0);
     expect(style.height).toBeUndefined();
   });
 });

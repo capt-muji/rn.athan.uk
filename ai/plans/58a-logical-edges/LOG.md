@@ -72,7 +72,7 @@ patterns match PLAN section 4's nine; allowlist 59 entries, 38 `pending: step`,
 session: ses_ed08408e4ffeAXuuHvFBvFXsOO
 
 ### Step 2 — merged
-Branch code/58a-2-prayer-constants, commit (sha filled with step 3's plan files), version 2.0.88.
+Branch code/58a-2-prayer-constants, commit d143582c (merge d5029c63), version 2.0.88.
 Gate red before conversion: remainder test failed naming exactly 6 lines
 (`shared/constants.ts:994`, `:996`, `components/prayer/Prayer.tsx:109`,
 `components/prayer/Alert.tsx:208`, `:209`, `components/prayer/Time.tsx:71`).
@@ -109,5 +109,26 @@ assertion keys, green-run and review-checklist lines, expected version 2.0.90) i
 commit 2.0.89; step 3 re-runs from the amended step file in the same executor session.
 
 session: ses_ed0851d12ffe2V9Hm86D36O7H3 (lead)
+
+### Step 3 — merged
+Branch code/58a-3-overlay, commit (sha filled with step 4's plan files), version 2.0.90.
+Gate red before conversion: remainder test failed naming exactly 10 lines
+(`components/overlay/Overlay.tsx:122`, `:123`, `components/overlay/OverlayInfoBox.tsx:68`,
+`:69`, `:94`, `:95`, `components/overlay/VeilBackdrop.tsx:62`, `:63`, `:69`, `:70`;
+no `catcherGeometry.ts` line).
+Converted the three files per the map (Overlay container pair, InfoBox inline
+ternary pair plus placer stylesheet pair, Veil container and gradient pairs);
+`Overlay.tsx:111` and `VeilBackdrop.tsx:40` untouched. Two assertion keys in
+`overlayPlacement.test.ts` follow the site per D69 (`:153` toMatchObject
+`left: 0` -> `start: 0`, `:205` `style.left` -> `style.start`), no other test
+line changed; allowlist now 46 entries (25 pending).
+Suites: gate `Tests: 2 passed, 2 total`; `components/overlay` components project
+`2 passed, 2 total` / `19 passed, 19 total`; unit project `3 passed, 3 total` /
+`36 passed, 36 total` (overlayPlacement green with exactly the two D69 edits);
+CLI `DIRECTIONAL STYLES OK`; tsc 0, Biome 0.
+Break 3: `ALL ASPECTED: 1`. Review: no hunk at `Overlay.tsx:111` or
+`VeilBackdrop.tsx:40`; `catcherGeometry.ts` absent; test diff exactly the two
+assertion keys; no value changed; allowlist 46 entries, none `pending: step 3`.
+session: ses_ed08408e4ffeAXuuHvFBvFXsOO
 
 

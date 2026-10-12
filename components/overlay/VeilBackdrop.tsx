@@ -59,15 +59,15 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
   },
   gradient: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
     // Same layer as the glow's own zIndex (-1): tie breaks by document
     // order, so the glow (rendered after) sits ABOVE the gradient — the
