@@ -4,6 +4,20 @@
 Weight: 1
 **Anchors:** none (records step).
 
+## Resume note (A1)
+
+The first run of this step stopped after its records commit `fac3194d`
+(2.0.60): two of its sweep twins exposed the census defect that step 03b now
+fixes. Re-apply the preserved sweep from
+`$HOME/athan-gitree/sessions/57/step04-stopped.patch` minus its
+`Time.test.tsx` and `widgetSimulation.test.ts` hunks (those two twins belong
+to step 03b now); the remaining six files' twins pass as engineered. The
+ledger reconciliations and the stop finding already landed in `fac3194d`; do
+not rewrite them, and fill the stopped entry's `Merge` line with `e827326d`
+(change nothing else in it). `LOG.md` still owes step 03b's entries as they land and
+this step's own final entry; the queue row reads `IN PROGRESS, step 4` when
+this step runs.
+
 ## Goal
 
 Every suite that pinned Latin digits asserts locale-aware expectations with en
@@ -28,6 +42,8 @@ byte-frozen, the width re-measure under native digits is proven, and the records
   `shared/__tests__/prayerIdContract.test.ts`,
   `shared/__tests__/widgetRenderer.test.ts`,
   `shared/__tests__/widgetLockRenderer.test.ts`,
+  `components/ui/__tests__/InitialWidthMeasurement.test.tsx` (the width
+  proof, change contract 2),
   `shared/__tests__/widgetSimulation.test.ts` (each flips to a
   locale-parameterised expectation or gains an ar twin; every en assertion stays
   byte-identical)
