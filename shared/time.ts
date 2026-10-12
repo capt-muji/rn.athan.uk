@@ -1,7 +1,7 @@
 import { intervalToDuration } from 'date-fns';
 
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
-import { type TranslationKey, t } from '@/shared/i18n';
+import { localiseDigits, type TranslationKey, t } from '@/shared/i18n';
 
 // =============================================================================
 // PRAYER-TIMEZONE CLOCK
@@ -175,7 +175,9 @@ export const createPrayerDatetime = (date: string, time: string): Date => {
  */
 export const formatPrayerTime = (date: Date): string => {
   const clock = readPrayerClock(date);
-  return `${pad2(clock.hour)}:${pad2(clock.minute)}`;
+  const composed = `${pad2(clock.hour)}:${pad2(clock.minute)}`;
+  const localised = localiseDigits(composed);
+  return localised;
 };
 
 /**
@@ -276,13 +278,16 @@ export const formatDateLocalized = (date: string): string => {
   const weekday = new Date(year, month - 1, day, 12).getDay();
   // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
   const isoWeekday = weekday === 0 ? 7 : weekday;
-  return `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${day} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${year}`;
+  const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${day} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${year}`;
+  const localised = localiseDigits(composed);
+  return localised;
 };
 
 /**
  * Formats a date string into the active locale's Hijri format, composed from the
  * catalog's Hijri month names. The Intl call stays en-US with numeric fields so
- * the digits stay Latin and no era affix appears in any locale (D21, R6.2);
+ * it yields the Latin digits the return's localiser then maps, with the shape
+ * and order frozen and no era affix appearing in any locale (D57, R3.1);
  * falls back to the localized Gregorian label if conversion fails.
  * @param date Date string in YYYY-MM-DD format
  * @returns Formatted Hijri date string (e.g., "Rajab 1, 1447")
@@ -299,9 +304,13 @@ export const formatHijriDateLocalized = (date: string): string => {
     const hijriMonth = Number(parts.find((part) => part.type === 'month')?.value);
     const hijriDay = parts.find((part) => part.type === 'day')?.value;
     const hijriYear = parts.find((part) => part.type === 'year')?.value;
-    return `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${hijriDay}, ${hijriYear}`;
+    const composed = `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${hijriDay}, ${hijriYear}`;
+    const localised = localiseDigits(composed);
+    return localised;
   } catch {
-    return formatDateLocalized(date);
+    const gregorian = formatDateLocalized(date);
+    const localised = localiseDigits(gregorian);
+    return localised;
   }
 };
 
@@ -329,7 +338,9 @@ export const footerFor = (date: string, hijriDate: boolean): string => {
       const hijriMonth = Number(parts.find((part) => part.type === 'month')?.value);
       const hijriDay = parts.find((part) => part.type === 'day')?.value;
       const month = t(HIJRI_MONTH_KEYS[hijriMonth - 1]);
-      return `${[...month].slice(0, 3).join('')} ${hijriDay}`;
+      const composed = `${[...month].slice(0, 3).join('')} ${hijriDay}`;
+      const localised = localiseDigits(composed);
+      return localised;
     } catch {
       // Falls through to the Gregorian footer, like formatHijriDateLocalized
     }
@@ -339,7 +350,9 @@ export const footerFor = (date: string, hijriDate: boolean): string => {
   const weekday = new Date(year, month - 1, day, 12).getDay();
   // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
   const isoWeekday = weekday === 0 ? 7 : weekday;
-  return t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1]);
+  const weekdayLabel = t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1]);
+  const localised = localiseDigits(weekdayLabel);
+  return localised;
 };
 
 /**
@@ -637,7 +650,10 @@ export const formatTime = (
   forceHideSeconds = false,
   labels: DurationLabels = durationLabels()
 ): string => {
-  if (seconds < 0) return `0${labels.s}`;
+  if (seconds < 0) {
+    const localised = localiseDigits(`0${labels.s}`);
+    return localised;
+  }
 
   const ms = seconds * 1000;
   const duration = intervalToDuration({ start: 0, end: ms });
@@ -656,7 +672,9 @@ export const formatTime = (
     parts.push(`${secs ?? 0}${labels.s}`);
   }
 
-  return parts.join(' ');
+  const joined = parts.join(' ');
+  const localised = localiseDigits(joined);
+  return localised;
 };
 
 /**
@@ -674,13 +692,23 @@ export const formatTime = (
  * formatTimeAgo(0)       // Returns: "now"
  */
 export const formatTimeAgo = (seconds: number, labels: DurationLabels = durationLabels()): string => {
-  if (seconds < 60) return labels.now;
+  if (seconds < 60) {
+    const localised = localiseDigits(labels.now);
+    return localised;
+  }
 
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}${labels.m}`;
+  if (minutes < 60) {
+    const localised = localiseDigits(`${minutes}${labels.m}`);
+    return localised;
+  }
 
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
-  if (remainingMinutes === 0) return `${hours}${labels.h}`;
-  return `${hours}${labels.h} ${remainingMinutes}${labels.m}`;
+  if (remainingMinutes === 0) {
+    const localised = localiseDigits(`${hours}${labels.h}`);
+    return localised;
+  }
+  const localised = localiseDigits(`${hours}${labels.h} ${remainingMinutes}${labels.m}`);
+  return localised;
 };

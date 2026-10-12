@@ -1,7 +1,8 @@
 /**
  * The catalog-composed date labels (R6.1, R6.2): Gregorian and Hijri labels
  * compose from the active catalog's calendar keys in the English shape and
- * order, byte-identical under en, Latin digits and no era in every locale
+ * order, byte-identical under en, native digits under ar (D57), Latin digits
+ * and no era in every other locale
  */
 
 import { format } from 'date-fns';
@@ -58,9 +59,9 @@ describe('formatDateLocalized', () => {
     }
   });
 
-  it('composes the label from the ar calendar keys in the English shape and order', () => {
+  it('composes the label from the ar calendar keys with native digits', () => {
     setActiveLocale('ar');
-    expect(formatDateLocalized('2026-10-11')).toBe('الأحد, 11 أكتوبر 2026');
+    expect(formatDateLocalized('2026-10-11')).toBe('الأحد, ١١ أكتوبر ٢٠٢٦');
   });
 });
 
@@ -76,5 +77,17 @@ describe('formatHijriDateLocalized', () => {
     // 2026-10-11 is Rabiʻ II 30, 1448; the Thai catalog names that month รอบี II
     expect(formatHijriDateLocalized('2026-10-11')).toBe('รอบี II 30, 1448');
     expect(formatHijriDateLocalized('2026-10-11')).not.toMatch(/[๐-๙]/);
+  });
+
+  it('draws the ar catalog month with native digits and no era under ar', () => {
+    setActiveLocale('ar');
+    // 2026-10-11 is Rabiʻ II 30, 1448; the ar catalog names that month ربيع الآخر
+    expect(formatHijriDateLocalized('2026-10-11')).toBe('ربيع الآخر ٣٠, ١٤٤٨');
+  });
+
+  it('falls back to the localized Gregorian label when the Hijri conversion throws', () => {
+    // The trailing space breaks the ISO parse (so getDayAnchor throws) but not
+    // the field split, so the Gregorian fallback still composes
+    expect(formatHijriDateLocalized('2026-03-05 ')).toBe('Thu, 5 Mar 2026');
   });
 });
