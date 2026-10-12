@@ -1,0 +1,7 @@
+  countdown: {
+    fontSize: TEXT.sizeSmall,
+    fontFamily: TEXT.family.regular,
+    marginRight: SPACING.xs,
+  },
+  icon: {
+    padding: SPACING.md,
