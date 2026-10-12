@@ -1,0 +1,5 @@
+    it('tolerates a v1 snapshot: no strings, no row ids, the English fallback renders', () => {
+      // A snapshot written by a v1 app still sits in the store until the next
+      // push overwrites it; the layout bakes its own English copy in that case
+      const { strings: _strings, ...legacy } = androidProps({});
+      const legacyRows = legacy.days.map((day) => ({

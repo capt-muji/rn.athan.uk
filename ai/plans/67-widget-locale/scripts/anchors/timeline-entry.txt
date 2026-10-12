@@ -1,0 +1,7 @@
+    return {
+      date,
+      props: {
+        v: WIDGET_PROPS_VERSION,
+        schedule: sequence.type,
+        theme,
+        nextName: prayerLabel(next.id),
