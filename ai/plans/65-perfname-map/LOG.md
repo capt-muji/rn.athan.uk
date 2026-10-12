@@ -85,8 +85,37 @@ session: ses_ecec909deffeRmqw7Sywass3u5
 - Break: none for a docs step; the probe's failure counts stand in.
 - Version: 2.0.116 (origin fetched under the version lock at 2.0.115;
   app.json, package.json, android/app/build.gradle all set, app.json first).
-- Commit: (filled in the step 3 commit, with the hook line)
-- Review: (filled in the step 3 commit)
-- Merge: (filled in the step 3 commit)
+- Commit: `1677a180`. Hook: `Tests: 5471 passed, 5471 total`; coverage
+  100% statements (5206/5206), branches (2242/2242), functions (1082/1082),
+  lines (4662/4662).
+- Review: read `git show 1677a180` cold. Checklist holds: no code file in
+  the commit; every breaks claim names its failing test or command, every
+  holds claim names its passing suite. One pass, nothing to fix.
+- Merge: `a05ce676` (no-ff into uat).
+
+session: ses_ecec909deffeRmqw7Sywass3u5
+
+### Step 03 — done (2026-10-12, executor ses_ecec909deffeRmqw7Sywass3u5)
+
+- Branch: `docs/65-3-recommendation` off `uat`. Anchor check: three
+  anchors, each count 1.
+- Red: FINDINGS.md held sections 1 and 2 only; this commit appends
+  section 3.
+- Change: section 3 answers the three contract questions in order, each
+  citing section 1 or 2 — cost per scope (sheet wiring only: nine files,
+  nine tests in three suites, six lint findings, seven orphaned baseline
+  keys; full cleanup: the 24-file surface plus the launch-diagnosis
+  capability and the e2e harness's subject), risk (the probe's failures
+  are all tests; the one silent risk is the baselines orphaning), and the
+  recommendation: keep, one sentence, with the probe as the map should the
+  owner ever rule otherwise.
+- Green: sections 1 to 3 read as one document; every claim carries its
+  section citation.
+- Break: none for a docs step.
+- Version: 2.0.117 (origin fetched under the version lock at 2.0.116;
+  app.json, package.json, android/app/build.gradle all set, app.json first).
+- Commit: (filled in the Finishing entry, with the hook line)
+- Review: (filled in the Finishing entry)
+- Merge: (filled in the Finishing entry)
 
 session: ses_ecec909deffeRmqw7Sywass3u5
