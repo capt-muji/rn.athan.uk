@@ -42,8 +42,16 @@
 - Version: 2.0.107 (origin fetched under the version lock, uat and
   origin/uat both at 2.0.106; app.json, package.json and
   android/app/build.gradle versionName all set, app.json first).
-- Commit: (filled after the merge, with the hook line)
-- Review: (filled after the merge)
-- Merge: (filled after the merge)
+- Commit: `cc35c44d` (2.0.107), hook green: `Tests: 5469 passed, 5469 total`;
+  Statements 100% (5206/5206), Branches 100% (2242/2242), Functions 100%
+  (1082/1082), Lines 100% (4662/4662).
+- Review: read `git show cc35c44d` cold. One Text per id on both lists keyed
+  by id; `stores/ui.ts` absent from the diff, so widen-only is untouched;
+  `styles.hidden` byte identical (absent from the diff);
+  `getLongestPrayerNameIndex` gone repo-wide by the plan's grep;
+  `currentPrayerLabels` still live through `prayerLabel`. No lifecycle,
+  thread, residue or rule finding. Clean, no fixes needed.
+- Merge: `24925e0d` into uat (--no-ff), branch `code/61-1-measure-every-name`
+  deleted after the merge.
 
 session: ses_ecef23781ffe19Ux37GD9000la
