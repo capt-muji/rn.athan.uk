@@ -66,7 +66,7 @@ export default function Prayer({ type, index }: Props) {
   const shownName = Prayer.time === '' ? '' : prayerLabel(Prayer.id);
 
   const computedStyleEnglish = {
-    width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left,
+    width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.start,
   };
 
   const handlePress = () => {
@@ -106,6 +106,6 @@ const styles = StyleSheet.create({
     fontSize: TEXT.size,
   },
   name: {
-    paddingLeft: STYLES.prayer.padding.left,
+    paddingStart: STYLES.prayer.padding.start,
   },
 });

@@ -990,10 +990,10 @@ export const STYLES = {
     /** Fixed height of each prayer row component */
     height: 57,
     padding: {
-      /** Left padding for prayer row text */
-      left: 20,
-      /** Right padding for prayer row text */
-      right: 20,
+      /** Start padding for prayer row text */
+      start: 20,
+      /** End padding for prayer row text */
+      end: 20,
     },
     border: {
       /** Border radius for prayer row containers */

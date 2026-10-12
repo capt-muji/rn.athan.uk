@@ -268,7 +268,7 @@ written.
 Checklist (every step weight 2, one branch, one commit, one version):
 
 - [x] 1. The gate suite and its allowlist land (`steps/1-gate.md`)
-- [ ] 2. Prayer rows and the shared constants (`steps/2-prayer-constants.md`)
+- [x] 2. Prayer rows and the shared constants (`steps/2-prayer-constants.md`)
 - [ ] 3. The overlay family (`steps/3-overlay.md`)
 - [ ] 4. Sheet parts (`steps/4-sheet-parts.md`)
 - [ ] 5. Sheet screens (`steps/5-sheet-screens.md`)
