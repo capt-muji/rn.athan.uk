@@ -31,10 +31,14 @@ renderer suites assert the new keying.
 - `shared/__tests__/widgetRenderer.test.ts` (change)
 - `shared/__tests__/widgetContract.test.ts` (change)
 - `shared/__tests__/widgetTimeline.test.ts` (change)
+- `shared/__tests__/widgetSnapshot.test.ts` (change)
+- `stores/__tests__/widgetAndroid.test.ts` (change)
+- `shared/__tests__/widgetSimulation.test.ts` (change: digest re-gold)
 
 ## Red tests
 
-Write these first, against unchanged code:
+Write these first, against unchanged code (the resume route below re-proves
+the same red from the saved patch instead of hand-writing them):
 
 1. In `shared/__tests__/widgetRenderer.test.ts`, inside the Android-path
    describe, add (the Arabic `strings` object is the one the `:500` test
@@ -120,8 +124,28 @@ npx jest shared/__tests__/widgetRenderer.test.ts shared/__tests__/widgetContract
 Expected: the stamped-locale case fails with `Received array` holding `19د`;
 the fallback case passes at red (it pins unchanged behaviour) and must stay
 green after the change; the two version pins fail (`Expected: 8`, `Received:
-7` and the Android pair); the new locale assertions fail with `undefined`. No
+7` and the Android pair); the new locale assertions fail with `undefined`
+(the snapshot read) and `false` (the every-entry check). No
 other case fails. A failure elsewhere is a STOP.
+
+Resume route (the saved patch): the patch at
+`$HOME/athan-gitree/sessions/67-exec/step1-sixfiles.patch` carries the tests
+above plus the implementation and applies cleanly at `7011229e`, so red is
+re-proved in stages:
+
+1. `git apply "$HOME/athan-gitree/sessions/67-exec/step1-sixfiles.patch"`.
+   A reject is a STOP.
+2. `git diff -- shared/widgetTypes.ts shared/widgetTimeline.ts widgets/PrayerWidget.tsx > "$TMPDIR/67-impl.patch"`
+   (the implementation part, saved off).
+3. `git checkout uat -- shared/widgetTypes.ts shared/widgetTimeline.ts widgets/PrayerWidget.tsx`
+   (the tree now holds the patch's tests against unchanged implementation).
+4. Run the red command above: six failures return, the five recorded plus
+   `flips to the stale card at the last readable row when only unreadable
+   rows follow it` failing on `locale: 'en'` (the patch carries contract 5's
+   expected-object edit against the reverted builder); no other case fails.
+   Then `git apply "$TMPDIR/67-impl.patch"`. The patch has already delivered
+   contracts 1 to 5: verify each landed, then apply contracts 6, 7 and 8 by
+   hand.
 
 ## Change contracts
 
@@ -179,6 +203,50 @@ other case fails. A failure elsewhere is a STOP.
    whole-object assertion (line 1132, the only one of its shape) gains
    `locale: 'en'` in its expected object.
 
+6. The two missed version pins:
+   `shared/__tests__/widgetSnapshot.test.ts:175`
+   (`expect(snapshot.v).toBe(3)` inside `it('stamps the version and the
+   schedule')`) and `stores/__tests__/widgetAndroid.test.ts:161`
+   (`expect(props.v).toBe(3)` inside the updateSnapshot mock assertion) each
+   become `toBe(4)`.
+
+7. `shared/__tests__/widgetSimulation.test.ts`: re-gold `REAL_YEAR_TIMELINES`
+   per the table's own protocol. After the version bump, the twelve
+   `builds byte-identical timelines` cases fail, each printing its full
+   `Received:` hex digest. Each received digest must equal the value pinned
+   here, measured by the isolated rerun (a scratch worktree at `d6ca9ade`
+   plus only the six-file diff; no hash-relevant byte moved since). Any
+   difference is a STOP under section 10. The table becomes, in row order:
+
+```ts
+    ['2024-01-10', '4d02e13b4d35db0ba78953e1f9dab06fb7e4ca47b2fc8a9b45809fb519d24723'],
+    ['2024-02-20', 'ec2140a89ea89741c28cb5f6a45452657d25ef79c978d514230c17f54a1d38ee'],
+    ['2024-03-24', 'fa2d3ff4636b950b6b4fb28e82200c50ac51b2668ff76ff6b632bbb1dc7929ca'],
+    ['2024-04-15', '0e5619bd614fefbe5475a576da4e62fde50078ffa6ab64c6030d9e668c043433'],
+    ['2024-05-06', 'af45d685390d4c85a7275920b3bc128ef47316632c4d5be1f018d23995b1a25a'],
+    ['2024-06-14', '90d5225212561f76fdeb85c8230937dea979cb727f480366b291a2520d09ea6b'],
+    ['2024-07-01', '7ae75b9d75635deb41cc3848e2d1b6f3385be332bc1bf7ec1c217ef5e3576192'],
+    ['2024-08-12', '97b2727ff810ff090717960978d41b888e9eef5e55b376a0d9c900b6682dba74'],
+    ['2024-09-02', '6b4c11950f8dc50cb33b2b61a7d7db99fc533e66d3cd1fa6cc21ea5b6abb4a98'],
+    ['2024-10-20', '3e0f3fc90d986b9c83b99ba3c0699b29fc862ad110cfb6a5d830510b08929f72'],
+    ['2024-11-11', 'f1c351dd036c25fe1962725d60145e3a93bab243dc5b4b3d85e2f66882acc77e'],
+    ['2024-12-15', '15afa6b360c381a071646670aca83dd77d5af93a5a131ac8d75bd77b26b45a45'],
+```
+
+   Append the block's history note the two earlier re-golds carry:
+   `Re-golded again when props v8 stamped the app locale on every entry
+   (job 67).` The `locale` value itself stays pinned by
+   `widgetTimeline.test.ts`'s assertions, not by these digests.
+
+8. Format: after the contracts above, run
+   `npx biome format --write widgets/PrayerWidget.tsx shared/__tests__/widgetRenderer.test.ts`.
+   It collapses contract 3's `digitLocaleKey` block to one line and wraps the
+   re-keyed `androidProps({ strings, locale: 'ar' })` render line near
+   `widgetRenderer.test.ts:516`. The `localiseDigits` keying line (109
+   characters, under the 120 line width) is left unchanged — the exact form
+   the break script substitutes against. A diff beyond those two shapes is a
+   STOP.
+
 What the contract must never do: touch `widgets/LockPrayerWidget.tsx`, the
 patch file, `widget-statics.json`, the `STATIC` tables or the null-props path;
 read the locale from a module-scope import inside the widget function (the
@@ -186,13 +254,23 @@ closure law); make the field required; bump only one of the two versions.
 
 ## Green run
 
+Apply contracts 1 to 6 and 8, then:
+
 ```
 npx jest shared/__tests__/widgetRenderer.test.ts shared/__tests__/widgetContract.test.ts shared/__tests__/widgetTimeline.test.ts shared/__tests__/widgetStaticStrings.test.ts shared/__tests__/widgetSnapshot.test.ts shared/__tests__/widgetSimulation.test.ts shared/__tests__/widgetLockRenderer.test.ts shared/__tests__/widgetRuntimeLoads.test.ts stores/__tests__/widgetSettingsSync.test.ts stores/__tests__/widgetIo.test.ts stores/__tests__/widgetAndroid.test.ts --watchman=false --selectProjects=unit
+```
+
+Expected: every case passes except the twelve
+`builds byte-identical timelines` cases, each failing with its `Received:`
+digest equal to the value contract 7 pins. Apply contract 7, rerun the same
+command: all pass. Then:
+
+```
 npx tsc --noEmit
 npx biome check . --error-on-warnings
 ```
 
-All pass; all three commands exit 0. `widgetLockRenderer.test.ts` guards R2.2's
+Both exit 0. `widgetLockRenderer.test.ts` guards R2.2's
 unchanged lock widget, and `widgetRuntimeLoads.test.ts` loads the widget bundle
 in the cut-down runtime, the closure-law guard for the file this step edits.
 
@@ -207,8 +285,9 @@ with `19د` in the received array, restores the file, ends `ALL AS EXPECTED: 1`.
 
 Version command: the next patch after `uat`'s `package.json` under the version
 lock. Set in `app.json`, `package.json` and `android/app/build.gradle`
-(`versionName`). Add the six files, `app.json`, `package.json` and
-`android/app/build.gradle`, by name plus `ai/plans/README.md`
+(`versionName`). Add the nine files, `app.json` and `package.json` by name
+(`android/app/build.gradle` is gitignored and untracked: bump it on disk,
+never add it), plus `ai/plans/README.md`
 (`IN PROGRESS, step 1`) and the plan's `PLAN.md` and `LOG.md`. Message:
 
 ```
@@ -222,11 +301,15 @@ copy stays device-keyed; the lock widget is untouched. R1.1-R2.2.
 
 ## Review checklist
 
-- The diff touches only the six listed files, the three version files, and the
+- The diff touches only the nine listed files, the three version files, and the
   plan and queue files.
 - `LockPrayerWidget.tsx`, the patch and `widget-statics.json` are byte-identical.
 - Both version history blocks carry their new line.
 - The two new renderer cases exist; both v1 fixtures strip the stamp.
+- Both `toBe(4)` pins landed (`widgetSnapshot.test.ts:175`,
+  `widgetAndroid.test.ts:161`).
+- `REAL_YEAR_TIMELINES` carries the twelve pinned values and the block's
+  re-gold line names props v8 and job 67.
 - No `locale` read reaches a module-scope reference inside the widget function.
 
 ## Merge

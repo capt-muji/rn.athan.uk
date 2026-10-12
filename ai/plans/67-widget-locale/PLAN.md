@@ -2,7 +2,7 @@
 
 | Brief | Widget digits follow the app locale, not the device locale |
 | --- | --- |
-| Planned at | `fc1e3b89`, version 2.0.122, 2026-10-12 (anchors verified and proof run at this sha) |
+| Planned at | `7011229e`, version 2.0.136, 2026-10-12 (repaired after the step-1 stop: all fifteen anchors recount 1, the saved patch applies cleanly, and the three missed test sites are verified at this sha) |
 | Planned by | Planning session 2026-10-12 |
 | Needs first | nothing (57 DONE) |
 | Parent | none |
@@ -13,13 +13,16 @@
 | Device | rides the D41 confidence build (the queue row's ruling), no dedicated device step |
 | Owner decisions still needed | none. D78 and D79 taken 2026-10-12, question round in the 63 planning session |
 
-Resume from: the draft is complete through section 12 and step 1, grill rounds
-one and two applied (round one: the red tests now carry Arabic unit words, the
-fallback case is labelled a green-at-red pin, the lying-blob case covers R1.5,
-the green run names the simulation, lock-renderer and runtime-load suites;
-round two: the commit's add list carries the three version files, both v1
-fixtures strip the stamp, the pin list and the proof narrative agree on what
-moves). Remaining: rerun the gate, set READY in the queue.
+Repair (2026-10-12, after the step-1 execution stop): the executor's isolated
+rerun proved the plan's test-site enumeration incomplete — a third and fourth
+version pin (`widgetSnapshot.test.ts:175`, `stores/__tests__/widgetAndroid.test.ts:161`)
+and the twelve golden digests of `widgetSimulation.test.ts` (`REAL_YEAR_TIMELINES`)
+all fail at green, and Biome format collapses two of the plan-verbatim blocks.
+This repair folds those sites into section 4, step 1's files, contracts and
+green run, pins the twelve post-change digests measured by the isolated rerun,
+and adds the saved-patch resume procedure to the red section. The red-verified
+implementation itself is unchanged: `$HOME/athan-gitree/sessions/67-exec/step1-sixfiles.patch`
+applies cleanly at `7011229e`.
 
 ## 1. Goal
 
@@ -100,16 +103,27 @@ The code map (from the fact pack, verified against `fc1e3b89`):
   `buildPrayerWidgetSnapshot` stamps `v: ANDROID_SNAPSHOT_VERSION` (`:345`) and
   bakes `strings: widgetStrings()` (`:349`). Versions declared at
   `shared/widgetTypes.ts:21` (7) and `:33` (3), each with a history doc block.
-- Where the version numbers appear in the suites; the proof shows only the two
-  contract pins and the one timeline shape assertion need edits:
+- Where the version numbers appear in the suites. Four pin sites edit, one
+  digest table re-golds, the rest tolerate or read the constant:
   `shared/__tests__/widgetContract.test.ts:469-470`
   (`WIDGET_PROPS_VERSION` toBe 7) and `:484-485` (`ANDROID_SNAPSHOT_VERSION`
-  toBe 3); `shared/__tests__/widgetTimeline.test.ts:292-295` and `:1135`;
-  `stores/__tests__/widgetSettingsSync.test.ts:351` reads the constant and
-  passed unchanged;
-  `shared/__tests__/widgetStaticStrings.test.ts:215` and `:231` hold legacy
-  `v: 7` fixtures that the new field legitimately tolerates and they passed
-  unchanged.
+  toBe 3); `shared/__tests__/widgetSnapshot.test.ts:175`
+  (`expect(snapshot.v).toBe(3)` inside `it('stamps the version and the
+  schedule')`); `stores/__tests__/widgetAndroid.test.ts:161`
+  (`expect(props.v).toBe(3)` inside the updateSnapshot mock assertion);
+  `shared/__tests__/widgetTimeline.test.ts:292-295`, `:1135` and the stale
+  entry's whole-object assertion at `:1132`. The digest table:
+  `shared/__tests__/widgetSimulation.test.ts` `REAL_YEAR_TIMELINES` (the
+  twelve-row table ending at `:698`) hashes
+  `JSON.stringify(buildPrayerWidgetTimeline(...))` over both schedules at
+  every push instant, and the `locale` field on every entry changes all twelve
+  digests; the block's own protocol governs — "a deliberate design change to
+  re-gold, never as a test to silence" — with the v7 footer re-gold (job 39
+  step 7) as the precedent. Unchanged, named so the executor does not
+  re-derive them: `stores/__tests__/widgetSettingsSync.test.ts:351` reads the
+  constant and passed; `shared/__tests__/widgetStaticStrings.test.ts:215` and
+  `:231` hold legacy `v: 7` fixtures that the new field legitimately
+  tolerates and they passed.
 - The digit suites that re-key: `shared/__tests__/widgetRenderer.test.ts:418`
   (v6 footer digits), `:500` (countdown label digits, expects `١٩د`), `:543`
   (v1 fallback words with native digits, expects `١h ١٢m`), `:564` (legacy
@@ -132,15 +146,35 @@ defect, red). After the change — the `locale` field on both prop shapes,
 the stale terminal entry and `buildPrayerWidgetSnapshot`, and the digit key
 resolved from the stamped locale with the device-locale fallback — the case
 rendered `١٩د` (green). `tsc` clean, Biome clean on the three changed files.
-The full enumeration of what else broke, each a re-key the step names: the two
-Android ar-device renderer tests (their fixtures must stamp `locale: 'ar'`; the
-iOS v6 case's hand-built fixture survives through the fallback and the contract
-stamps it anyway to pin the new path), the two v1 fixtures must strip the
-field to stay true v1 blobs, the two
-`widgetContract` version pins (7 and 3), and one `widgetTimeline` stale-entry
-shape assertion. `widgetStaticStrings` and `widgetSettingsSync` passed
-unchanged: their fixtures are legacy-shaped blobs the new field legitimately
-tolerates, and the settings-sync pin reads the constant.
+The enumeration of what else broke at green, each a re-key the step names: the
+two Android ar-device renderer tests (their fixtures must stamp `locale: 'ar'`;
+the iOS v6 case's hand-built fixture survives through the fallback and the
+contract stamps it anyway to pin the new path), the two v1 fixtures must strip
+the field to stay true v1 blobs, the two `widgetContract` version pins (7 and
+3), and one `widgetTimeline` stale-entry shape assertion. The planning proof
+missed the four sites execution then proved: the `widgetSnapshot` and
+`widgetAndroid` version pins and the twelve simulation digests (section 4),
+plus two Biome format wraps. `widgetStaticStrings` and `widgetSettingsSync`
+passed unchanged: their fixtures are legacy-shaped blobs the new field
+legitimately tolerates, and the settings-sync pin reads the constant.
+
+Execution (2026-10-12, stopped): the red phase verified exactly as planned
+(5 failed, 131 passed, the received arrays quoted in `LOG.md`). The green run
+then failed on fourteen counts, and an isolated rerun (a scratch worktree at
+`d6ca9ade` plus only the six-file diff) attributed every one to this change:
+the third and fourth pins above (both `Expected: 3, Received: 4`), the twelve
+digest mismatches, and the two Biome format wraps (fourteen failing cases and
+two format errors).
+The full implementation, red-verified, is saved at
+`$HOME/athan-gitree/sessions/67-exec/step1-sixfiles.patch` and applies
+cleanly at `7011229e`. Between `d6ca9ade` and `7011229e` ticket 63's
+execution landed (`shared/time.ts`, the i18n locale files, their suites)
+beside the `widgetTypes.ts` doc reword; none of it touches the timeline
+serialization, proven by the simulation goldens being byte-identical at both
+shas with all 65 cases passing at `7011229e`, so no hash-relevant byte moved.
+The twelve post-change digests the
+isolated rerun measured are pinned in step 1's change contract 7; a different
+received digest at re-gold time is a STOP.
 
 ## 5. Design
 
@@ -171,10 +205,13 @@ tolerance histories move).
 - [R2.1] WHEN props are null THE SYSTEM SHALL render the device-keyed static copy rows unchanged (D44)
 - [R2.2] WHEN the lock widget renders THE SYSTEM SHALL render byte-identically to today (no digit map exists there)
 
-Design review: the version pins that move are four constants' worth of tests,
-named by the proof; the renderer re-keys are three fixtures plus the two new
-keying cases; the field is optional on both shapes, so every stored blob from
-every prior release renders through the fallback unchanged.
+Design review: the version pins that move are four sites — the two contract
+pins, the snapshot pin and the Android store pin — named by the proof and the
+stopped execution; the twelve simulation digests re-gold under the table's own
+protocol, with the received values pinned in the step; the renderer re-keys
+are three fixtures plus the two new keying cases; the field is optional on
+both shapes, so every stored blob from every prior release renders through the
+fallback unchanged.
 
 ## 6. Steps
 
@@ -236,6 +273,8 @@ None. The executor worker never pushes. The lead pushes after the reviews pass.
 | The two Android ar-device renderer cases fail after the change | Their fixtures now stamp the test's active locale (`en`) and the device key no longer reaches the digits | Stamp `locale: 'ar'` in those fixtures and strip the field from both v1 fixtures; add the two new keying cases the step names |
 | `widgetOpenAppPatch.test.ts` fails | The patch was edited | Revert: the patch is the fallback's data source and is out of scope |
 | The board or a flow reports a widget crash on old blobs | The stamp validation misses a shape | The resolver accepts only the six exact ids; anything else falls back. `STOP:` with the blob's shape if a third shape exists |
+| A golden-digest case still fails after the re-gold | The received digest differs from the value contract 7 pins | `STOP:` the timeline serialization moved beyond the `locale` field; quote both digests |
+| `widgetSnapshot` or `widgetAndroid` fails `Expected: 3, Received: 4` after the version bump | A pin edit from contract 6 was skipped | Apply the two `toBe(4)` edits; both suites then pass |
 
 Anticipated review fixes, word for word:
 
@@ -247,8 +286,11 @@ Anticipated review fixes, word for word:
 Restore list: step 1 reverts `shared/widgetTypes.ts`,
 `shared/widgetTimeline.ts`, `widgets/PrayerWidget.tsx`,
 `shared/__tests__/widgetRenderer.test.ts`,
-`shared/__tests__/widgetContract.test.ts` and
-`shared/__tests__/widgetTimeline.test.ts`.
+`shared/__tests__/widgetContract.test.ts`,
+`shared/__tests__/widgetTimeline.test.ts`,
+`shared/__tests__/widgetSnapshot.test.ts`,
+`stores/__tests__/widgetAndroid.test.ts` and
+`shared/__tests__/widgetSimulation.test.ts`.
 
 ## 11. Subagents
 
