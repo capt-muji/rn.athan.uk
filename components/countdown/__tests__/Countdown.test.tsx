@@ -6,6 +6,7 @@ import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
 import { openOverlay } from '@/stores/overlay';
@@ -30,6 +31,19 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
 
     expect(screen.getByRole('text', { name: 'Asr' })).toBeOnTheScreen();
     expect(screen.getByText('2h 29m')).toBeOnTheScreen();
+  });
+
+  it('counts down in native digits under ar', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    try {
+      startCountdowns();
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      expect(screen.getByText('٢س ٢٩د')).toBeOnTheScreen();
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 1m and not 59s', async () => {

@@ -147,6 +147,14 @@ describe('formatTime', () => {
       expect(formatTime(10740)).toBe('٢س ٥٩د');
     });
 
+    it('draws the negative, seconds-only, whole-minute and whole-hour branches under ar', () => {
+      setActiveLocale('ar');
+      expect(formatTime(-100)).toBe('٠ث');
+      expect(formatTime(45)).toBe('٤٥ث');
+      expect(formatTime(60)).toBe('١د');
+      expect(formatTime(7200)).toBe('٢س');
+    });
+
     it('keeps Latin digits under en', () => {
       expect(formatTime(10740)).toBe('2h 59m');
     });
@@ -175,6 +183,23 @@ describe('formatTimeAgo', () => {
     expect(formatTimeAgo(5400)).toBe('1h 30m');
     expect(formatTimeAgo(7200)).toBe('2h');
     expect(formatTimeAgo(7260)).toBe('2h 1m');
+  });
+
+  describe('native digits (D57)', () => {
+    afterEach(() => {
+      setActiveLocale('en');
+    });
+
+    it('draws the minute, whole-hour and mixed branches under ar', () => {
+      setActiveLocale('ar');
+      expect(formatTimeAgo(120)).toBe('٢د');
+      expect(formatTimeAgo(3600)).toBe('١س');
+      expect(formatTimeAgo(7260)).toBe('٢س ١د');
+    });
+
+    it('keeps Latin digits under en', () => {
+      expect(formatTimeAgo(7260)).toBe('2h 1m');
+    });
   });
 
   it('labels durations from the catalog', () => {

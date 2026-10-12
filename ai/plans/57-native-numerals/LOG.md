@@ -46,7 +46,7 @@
 - Disposition: all nine suites' test edits reverted from the tree and preserved verbatim at `$HOME/athan-gitree/sessions/57/step04-stopped.patch` (with `step04-stopped-status.txt`); the replan re-applies the patch and adds the production fix the plan owes. Steps 1-3 stay merged as landed: their step contracts were followed exactly, and en bytes are frozen throughout (R1.2 holds); the ar list's mixed state is the intermediate the stop leaves.
 - Version: 2.0.60 (origin/uat fetched under the version lock, still 2.0.56).
 - Commit: (this records commit)
-- Merge: (filled after merge)
+- Merge: `e827326d`
 - session: ses_ed2764c96ffe16EVsvp03ReEtF
 
 ## Plan repair A1 (2026-10-12, planning session)
@@ -66,6 +66,25 @@ gives step 04 its resume note. Preflight gains five anchors (12 total).
 - Green: `yarn validate` 5451 passed, 5451 total; Statements 100% (5212/5212), Branches 100% (2246/2246), Functions 100% (1082/1082), Lines 100% (4669/4669); tsc and Biome exit 0 inside it. `widgetSnapshot`, `widgetContract` and `usePrayer` suites pass unchanged.
 - Break script: `ALL AS EXPECTED: 1` (the wrap substituted back to raw values, widgetTimeline fails `Expected "١٧:٤٥"` / `Received "17:45"`, Time fails with `06:46` shown, restore passes 54/54 and 9/9).
 - Version: 2.0.62 (origin/uat fetched under the version lock, still 2.0.56).
-- Commit: `624bae7a` (2.0.62; ledger fill folded in by amend), hook green: `Tests: 5451 passed, 5451 total`; Statements 100% (5212/5212), Branches 100% (2246/2246), Functions 100% (1082/1082), Lines 100% (4669/4669).
+- Commit: `3354a2ce` (2.0.62; amended from `624bae7a` to fold the ledger fill in), hook green: `Tests: 5451 passed, 5451 total`; Statements 100% (5212/5212), Branches 100% (2246/2246), Functions 100% (1082/1082), Lines 100% (4669/4669).
+- Review: read `git show` cold. Both production hunks match the contracts byte-for-byte; `getShownTime`'s only consumers are the `Time.tsx` render and the `=== null` comparison, so no stored-string comparison exists to break; the Android unreadable row keeps its bare `UNAVAILABLE_TIME`; no epoch, schema version or key changed. No findings.
+- Merge: `2470a272` ("Merge feat/57-03b-shown-and-widget-bakes into uat: job 57 step 03b").
+
+## Step 04: the pinned assertions and the records (resumed after A1)
+
+- Branch: `feat/57-04-tests-records` off `uat` (the merge of step 03b). No anchors (records step).
+- Red: recorded, not engineered, per the step's Red note. The two defect twins that exposed the census defect failed in the stopped run (`06:46`, `01:05` shown, preserved in the stop entry above) and are step 03b's proof now; this run re-applied the remaining six files' twins verbatim from `step04-stopped.patch` and each passed as engineered against the merged steps 01 to 03b (219 + 34 tests green on first run).
+- Change: no production code. The six suites' twins, each named:
+  - `components/countdown/__tests__/Countdown.test.tsx`: `counts down in native digits under ar` pins `٢س ٢٩د`.
+  - `components/sheets/screens/__tests__/Sound.test.tsx`: `builds its rows with native digits under ar` pins `/^أذان [٠-٩]+$/` across every row.
+  - `components/ui/__tests__/InitialWidthMeasurement.test.tsx`: `measures the widest ar label of each list and stores it under the ar width key` - the R7.1 width re-measure proof (the measure layer reads prayer names only; the ar width key is unchanged).
+  - `shared/__tests__/time.test.ts`: `draws the negative, seconds-only, whole-minute and whole-hour branches under ar` (`٠ث`, `٤٥ث`, `١د`, `٢س`) and the `formatTimeAgo` native-digits describe (`٢د`, `١س`, `٢س ١د`, with the en twin `2h 1m`).
+  - `shared/__tests__/widgetRenderer.test.ts`: `renders the derived v6 footer digits natively under an ar device locale` (`Rab ٣٠`) and `renders the v1 English fallback words with native digits under an ar device locale` (`١h ١٢m`).
+  - `stores/__tests__/countdown.test.ts`: `display selector emits native digits under ar` pins `١س ١د`.
+  Every en expectation in the six files stays byte-identical; no assertion loosened. Plus the records: the stopped entry's Merge line filled with `e827326d` (nothing else in it changed), step 03b's entry finalised above, and this entry.
+- Green: `yarn validate` (below at commit; hook line quoted there); `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0.
+- Break script: none (records step, the house pattern for weight-1 records steps).
+- Version: 2.0.63.
+- Commit: (filled at commit)
 - Review: (filled after review)
 - Merge: (filled after merge)
