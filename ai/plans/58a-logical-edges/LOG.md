@@ -88,4 +88,26 @@ comments, the allowlist, the version trio and plan files; no value changed; allo
 53 entries, none `pending: step 2`.
 session: ses_ed08408e4ffeAXuuHvFBvFXsOO
 
+### Step 3 — stopped, owner ruled, plan repaired (2026-10-12)
+
+First attempt returned STOP: converting `OverlayInfoBox.tsx:68-69` (Class A, its own
+comment "never a window measurement") failed 3 of 36 tests in
+`components/overlay/__tests__/overlayPlacement.test.ts`, because `:153` (toMatchObject
+`left: 0`) and `:205` (`expect(style.left).toBe(0)`) assert the raw physical key of the
+inline style the step converts. Rendered LTR unchanged; the plan's census had misfiled
+the suite as geometry-only (PLAN 4.4), and R2.1's zero-test-edits rule left no
+plan-given path. Step 3 fully reverted by the executor: tree clean, gate green, version
+lock released, branches deleted, queue back to `IN PROGRESS, step 2`. Evidence:
+`$HOME/athan-gitree/sessions/58a/` (failure log confirms `Expected: 0 / Received:
+undefined` at `:205`; 3 failed, 33 passed).
+
+Question put to the owner: amend the plan (assertions follow the site, `left` to
+`start`), or keep the pair physical and allowlist. **Ruling: amend the plan (D69).**
+Lead repaired PLAN.md (D69 row, R2.1 named exception, 4.4 census correction) and
+`steps/3-overlay.md` (test file added to the files list, change contract for the two
+assertion keys, green-run and review-checklist lines, expected version 2.0.90) in docs
+commit 2.0.89; step 3 re-runs from the amended step file in the same executor session.
+
+session: ses_ed0851d12ffe2V9Hm86D36O7H3 (lead)
+
 
