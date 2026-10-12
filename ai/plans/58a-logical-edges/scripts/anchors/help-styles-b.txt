@@ -1,0 +1,7 @@
+  panel: {
+    paddingBottom: SPACING.lg2,
+    paddingLeft: SPACING.header,
+    // Ends where the question does, so the text column is identical open or closed, at any width
+    paddingRight: SPACING.header + CHEVRON_SIZE,
+  },
+

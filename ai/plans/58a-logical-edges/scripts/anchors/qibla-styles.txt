@@ -1,0 +1,9 @@
+  lost: {
+    alignItems: 'center',
+    bottom: 0,
+    gap: SPACING.xs,
+    left: 0,
+    position: 'absolute',
+    right: 0,
+  },
+  message: {

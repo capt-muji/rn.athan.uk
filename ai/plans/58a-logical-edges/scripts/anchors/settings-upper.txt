@@ -1,0 +1,15 @@
+    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+    borderRadius: RADIUS.md,
+    padding: SPACING.sm,
+    paddingRight: SPACING.md,
+  },
+  whatsNewButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: SPACING.md,
+    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+    borderRadius: RADIUS.md,
+    padding: SPACING.sm,
+    paddingRight: SPACING.md,
+  },
+  infoButton: {

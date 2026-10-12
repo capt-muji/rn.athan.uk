@@ -1,0 +1,7 @@
+  },
+  indicator: {
+    position: 'absolute',
+    top: 3,
+    left: 3,
+    bottom: 3,
+    backgroundColor: COLORS.interactive.active,

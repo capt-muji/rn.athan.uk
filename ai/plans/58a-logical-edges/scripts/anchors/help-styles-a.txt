@@ -1,0 +1,6 @@
+    gap: SPACING.header + SPACING.xs,
+    paddingVertical: SPACING.mid,
+    paddingLeft: SPACING.header,
+    paddingRight: SPACING.header,
+  },
+  question: {
