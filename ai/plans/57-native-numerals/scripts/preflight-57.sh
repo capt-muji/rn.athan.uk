@@ -23,6 +23,11 @@ pairs = [
     ('sounditem-local-format', 'components/sheets/parts/SoundItem.tsx'),
     ('widget-alabel', 'widgets/PrayerWidget.tsx'),
     ('stepper-raw-value', 'components/sheets/parts/Stepper.tsx'),
+    ('useprayer-getshown', 'hooks/usePrayer.ts'),
+    ('widget-daylist-time', 'shared/widgetTimeline.ts'),
+    ('widget-next-time', 'shared/widgetTimeline.ts'),
+    ('widget-stale-time', 'shared/widgetTimeline.ts'),
+    ('widget-android-time', 'shared/widgetTimeline.ts'),
 ]
 bad = 0
 for name, src in pairs:

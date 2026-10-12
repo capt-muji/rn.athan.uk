@@ -1,0 +1,5 @@
+export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextOccurrence: ShownRow): string | null =>
+  isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
+
+/**
+ * Whether the bell is unavailable

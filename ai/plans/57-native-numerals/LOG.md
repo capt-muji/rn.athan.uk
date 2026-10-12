@@ -48,3 +48,12 @@
 - Commit: (this records commit)
 - Merge: (filled after merge)
 - session: ses_ed2764c96ffe16EVsvp03ReEtF
+
+## Plan repair A1 (2026-10-12, planning session)
+
+The step-4 stop adjudicated from the repository: both defect surfaces sit in
+the plan's own DONE definition, so no owner decision was missing - the census
+was wrong, not the rulings. Amendment A1 (PLAN.md section 13) corrects the
+map, adds step 03b (proven red to green in a scratch worktree at `e827326d`,
+worktree removed), moves this sweep's two defect twins into step 03b, and
+gives step 04 its resume note. Preflight gains five anchors (12 total).
