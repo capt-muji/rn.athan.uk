@@ -88,15 +88,15 @@ describe('crash windows around the 2.0.0 upgrade', () => {
       // The ui seed's own per-key absence guard completes this copy at its next
       // module evaluation (covered by stores/__tests__/ui.test.ts); the upgrade
       // path's contribution is to leave both keys alone - no wipe runs
-      prayer_max_english_width_en_standard: '150',
-      prayer_max_english_width_extra: '87',
+      prayer_max_name_width_en_standard: '150',
+      prayer_max_name_width_extra: '87',
     });
 
     expect(() => launch().handleAppUpgrade()).not.toThrow();
 
     expect(read('app_installed_version')).toBe('2.0.0');
-    expect(read('prayer_max_english_width_en_standard')).toBe('150');
-    expect(read('prayer_max_english_width_extra')).toBe('87');
+    expect(read('prayer_max_name_width_en_standard')).toBe('150');
+    expect(read('prayer_max_name_width_extra')).toBe('87');
     expect(read(LANGUAGE_KEY)).toBe('en');
   });
 

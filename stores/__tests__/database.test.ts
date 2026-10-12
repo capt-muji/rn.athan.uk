@@ -537,10 +537,10 @@ describe('clearAllExcept call sites', () => {
 
     expect(keepList).toContain("'preference_'");
     expect(keepList).toContain("'app_installed_version'");
-    expect(keepList).toContain("'prayer_max_english_width_'");
+    expect(keepList).toContain("'prayer_max_name_width_'");
 
     // Routing through clearUpgradeCache is what earns the keep-list above. An
-    // inline list on the call site would drop prayer_max_english_width_, and
+    // inline list on the call site would drop prayer_max_name_width_, and
     // losing that reflows the prayer list on the next launch (ISSUES #22, #16)
     const errorScreen = readFileSync(join(__dirname, '../../components/ui/Error.tsx'), 'utf8');
     expect(errorScreen).toContain('clearUpgradeCache()');
