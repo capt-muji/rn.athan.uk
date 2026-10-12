@@ -28,6 +28,7 @@ pairs=(
   "ms-lastthird shared/i18n/ms.ts"
   "hi-midnight shared/i18n/hi.ts"
   "th-lastthird shared/i18n/th.ts"
+  "so-midnight shared/i18n/so.ts"
   "ui-widthatom stores/ui.ts"
   "ui-seedloop stores/ui.ts"
   "ui-setwidth stores/ui.ts"
