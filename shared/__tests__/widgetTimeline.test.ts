@@ -14,6 +14,7 @@ import { addDays } from 'date-fns';
 
 import { type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { isReadable } from '@/shared/sequence';
 import {
   createPrayerDatetime,
@@ -190,6 +191,30 @@ describe('buildPrayerWidgetTimeline', () => {
     // With nextEpochMs this is the interval the layouts tick against.
     expect(first.prevEpochMs).toBe(createPrayerDatetime('2026-06-15', '13:10').getTime());
     expect(first.dateLabel).toBe(formatDateLocalized('2026-06-15'));
+  });
+
+  it('bakes native digits into every carried time under ar', () => {
+    // The push layer bakes at push time: under ar every carried time renders
+    // Eastern Arabic-Indic digits, while the epochs and the schema stay numeric
+    setActiveLocale('ar');
+    try {
+      const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
+      expect(entries[0].props.nextTime).toBe('١٧:٤٥');
+      expect(entries[0].props.prayers?.map((row) => row.time)).toContain('٠٣:٣٠');
+
+      const stale = entries[entries.length - 1];
+      expect(stale.props.stale).toBe(true);
+      expect(stale.props.nextTime).toBe('٢٢:٤٥');
+
+      const snapshot = buildPrayerWidgetSnapshot(makeSequence(), SETTINGS);
+      expect(snapshot).not.toBeNull();
+      if (!snapshot) return;
+      const snapshotTimes = snapshot.days.flatMap((day) => day.rows.map((row) => row.time));
+      expect(snapshotTimes).toContain('١٣:١٠');
+      expect(snapshotTimes).not.toContain('13:10');
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('emits nothing between boundaries, since the countdown ticks itself', () => {

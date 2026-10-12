@@ -8,6 +8,7 @@ import { useAtomValue } from 'jotai';
 
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import type { PrayerId } from '@/shared/constants';
+import { localiseDigits } from '@/shared/i18n';
 import { findNextOccurrence } from '@/shared/sequence';
 import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
 import { englishWidthAtomFor } from '@/stores/ui';
@@ -38,8 +39,11 @@ export const resolveOccurrence = (prayers: Prayer[], row: Prayer, isPassed: bool
  * @param row The row as usePrayer returns it
  * @param nextOccurrence The same row from usePrayer with isOverlay
  */
-export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextOccurrence: ShownRow): string | null =>
-  isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
+export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextOccurrence: ShownRow): string | null => {
+  const shown = isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
+  const localised = shown === null ? null : localiseDigits(shown);
+  return localised;
+};
 
 /**
  * Whether the bell is unavailable: the occurrence on screen has no readable time, so nothing could ever

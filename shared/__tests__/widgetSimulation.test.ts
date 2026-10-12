@@ -43,6 +43,7 @@ import type { WidgetTimelineEntry } from 'expo-widgets';
 import { MOCK_DATA_FULL } from '@/mocks/full';
 import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { createPrayerSequence, transformApiData } from '@/shared/prayer';
 import {
   addDaysToDateString,
@@ -335,6 +336,25 @@ describe('virtual week model test', () => {
     expect(active.props.nextName).toBe('Isha');
     expect(active.props.nextTime).toBe('01:05');
     expect(active.props.dateLabel).toBe(formatDateLocalized('2026-10-20'));
+  });
+
+  it('bakes native digits into the pushed times under ar', () => {
+    // The push layer bakes at push time: under ar every carried time renders
+    // Eastern Arabic-Indic digits and the date label composes from the ar catalog
+    setActiveLocale('ar');
+    try {
+      const arEntries = buildPrayerWidgetTimeline(PUSH_AT, sequence, SETTINGS, 'light');
+      const afterMagrib = createPrayerDatetime('2026-10-20', '19:00').getTime();
+      const active = activeEntryAt(arEntries, afterMagrib);
+
+      expect(active).toBeDefined();
+      if (!active) return;
+      expect(active.props.nextName).toBe('العشاء');
+      expect(active.props.nextTime).toBe('٠١:٠٥');
+      expect(active.props.dateLabel).toBe(formatDateLocalized('2026-10-20'));
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('crosses the DST fall-back night without gaps or double entries', () => {
