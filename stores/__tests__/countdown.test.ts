@@ -63,6 +63,7 @@ jest.mock('@/stores/atoms/overlay', () => ({
 }));
 
 import type { PrayerId } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 
 // Require (not import) after mocks - babel hoists ESM imports above the mock declarations
@@ -677,6 +678,19 @@ describe('render-granular selectors', () => {
     expect(store.get(standardCountdownDisplayAtom)).toBe('1h');
 
     expect(getCountdownDisplayAtom(ScheduleType.Standard)).toBe(standardCountdownDisplayAtom);
+  });
+
+  it('display selector emits native digits under ar', () => {
+    const store = createStore();
+    store.set(showSecondsAtom, false);
+
+    store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
+    setActiveLocale('ar');
+    try {
+      expect(store.get(standardCountdownDisplayAtom)).toBe('١س ١د');
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('display selector follows the seconds preference (last-10-minutes rule)', () => {

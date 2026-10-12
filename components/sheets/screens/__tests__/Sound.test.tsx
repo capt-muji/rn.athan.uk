@@ -11,6 +11,7 @@ import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { ATHAN_AUDIOS } from '@/assets/audio';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { getSoundPreference, setSoundPreference } from '@/stores/notifications';
 import { setPlayingSoundIndex, setSoundListReady } from '@/stores/ui';
 
@@ -117,6 +118,20 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(screen.getByText('Select Athan'), 'change', 0);
 
     expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
+  });
+
+  it('builds its rows with native digits under ar', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    try {
+      await render(<SoundSheet />);
+
+      await act(() => setSoundListReady());
+
+      expect(screen.getAllByText(/^أذان [٠-٩]+$/)).toHaveLength(ATHAN_AUDIOS.length);
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('plays the clip of a row from its start when its play button is pressed', async () => {
