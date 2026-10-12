@@ -3,7 +3,7 @@
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
-import { BackHandler, DeviceEventEmitter } from 'react-native';
+import { BackHandler, DeviceEventEmitter, StyleSheet } from 'react-native';
 
 import ModalUpdate from '../Update';
 
@@ -30,6 +30,18 @@ describe('the update prompt', () => {
 
     expect(screen.getByText('Update Available!')).toBeOnTheScreen();
     expect(screen.getByText('A new version is available. Would you like to update now?')).toBeOnTheScreen();
+  });
+
+  // A style is read because it is a rule the app keeps: the message is bounded so the card can
+  // never grow past the screen in a longer language (owner, 2026-10-12)
+  it('bounds its message rather than growing past the screen', async () => {
+    await render(<ModalUpdate visible={true} onClose={jest.fn()} onUpdate={jest.fn()} />);
+
+    // The scroller carries no role, label or text, so it is reached by its host type
+    const scroller = screen.root?.queryAll((node) => node.type === 'RCTScrollView')[0];
+
+    expect(StyleSheet.flatten(scroller?.props.style).maxHeight).toBeGreaterThan(0);
+    expect(scroller?.props.showsVerticalScrollIndicator).toBe(false);
   });
 
   it('reports Later as closing the prompt without updating', async () => {

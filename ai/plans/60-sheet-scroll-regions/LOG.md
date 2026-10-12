@@ -49,6 +49,43 @@
 - Version: 2.0.100 (origin fetched under the version lock at 2.0.99, one patch
   past the plan's expected 2.0.99; app.json, package.json and
   android/app/build.gradle versionName all set, app.json first).
+- Commit: `f6c7a0f4` (2.0.100), hook green: `Tests: 5469 passed, 5469 total`;
+  Statements 100% (5213/5213), Branches 100% (2246/2246), Functions 100%
+  (1082/1082), Lines 100% (4669/4669).
+- Review: read `git show f6c7a0f4` cold. The diff is the five contract edits
+  plus the sanctioned test, version and plan files, nothing else; the map body
+  is byte identical (diff-verified). No sheets file, no Modal.tsx, no Help.tsx
+  (D70). No padding, margin or colour added beyond the moved gap and the
+  unchanged marginBottom. `styles.list` keeps width and marginBottom, both
+  read; `styles.listContent` read. No lifecycle, thread, residue or rule
+  finding. No fix applied.
+- Merge: `42a5cc96` ("2.0.100 - merge code/60-1-whatsnew-bounded-list:
+  WhatsNew list bounded (60 step 1)"), no conflict. Step branch deleted after
+  the merge.
+
+session: ses_ecffa9787ffePI2dQO5uEO6LPk
+
+### Step 02 — done
+
+- Branch: `code/60-2-update-bounded-message` off `uat`. Tree carried only the
+  step 01 LOG fill. Anchor check: update-message, update-styles-message each
+  count 1.
+- Red: `TypeError: Cannot read properties of undefined (reading 'maxHeight')`
+  at the flatten line, `Tests: 1 failed, 7 skipped, 8 total`, exactly as the
+  step predicts.
+- Change: the five contract edits in `components/modals/Update.tsx`
+  (ScrollView import, hook import before `@/shared/constants`,
+  MESSAGE_HEIGHT_SHARE below the Modal import, `useWindowDimensions` opening
+  the component, message Text wrapped with `marginBottom: 36` moved to
+  `styles.messageScroll`) plus the StyleSheet import and the scroller test in
+  `Update.test.tsx`.
+- Green: `Tests: 8 passed, 8 total`; `npx tsc --noEmit` exit 0;
+  `npx biome check . --error-on-warnings` exit 0.
+- Break: `ALL AS EXPECTED: 1`; after the break `git status --porcelain` listed
+  only the step's two files and the plan LOG fill.
+- Version: 2.0.101 (origin fetched under the version lock; local uat 2.0.100,
+  origin/uat 2.0.99; app.json, package.json and android/app/build.gradle
+  versionName all set, app.json first).
 - Commit: (filled after the merge, with the hook line)
 - Review: (filled after the merge)
 - Merge: (filled after the merge)
