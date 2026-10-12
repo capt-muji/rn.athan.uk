@@ -1,4 +1,0 @@
-    expect(t('notification.now', { name: 'Fajr' })).toBe('Fajr now');
-    expect(t('notification.reminder', { name: 'Fajr', n: 15 })).toBe('Fajr in 15m');
-    expect(t('notification.reminder', { name: 'Last Third', n: 30 })).toBe('Last Third in 30m');
-    expect(t('channel.reminder', { name: 'Fajr', n: 15 })).toBe('Fajr in 15m Reminder');

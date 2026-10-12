@@ -1,3 +1,0 @@
-  'language.applying': 'جارٍ التطبيق…',
-  'channel.reminder': 'تنبيه {name} بعد {n} د',
-  'qibla.cardinal.n': 'ش',

@@ -1,4 +1,0 @@
-  it.each([
-    ['13:05', 'Dhuhr 3m ago'],
-    ['14:00', 'Dhuhr 58m ago'],
-  ])('at %s reads "%s"', async (time, words) => {
