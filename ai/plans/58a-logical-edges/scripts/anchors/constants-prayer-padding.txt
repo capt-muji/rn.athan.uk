@@ -1,9 +1,0 @@
-    /** Fixed height of each prayer row component */
-    height: 57,
-    padding: {
-      /** Left padding for prayer row text */
-      left: 20,
-      /** Right padding for prayer row text */
-      right: 20,
-    },
-    border: {
