@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: RADIUS.md,
     paddingVertical: SPACING.sm,
-    paddingLeft: SPACING.md,
-    paddingRight: SPACING.sm,
+    paddingStart: SPACING.md,
+    paddingEnd: SPACING.sm,
     gap: SPACING.sm,
   },
   optionLabel: {
