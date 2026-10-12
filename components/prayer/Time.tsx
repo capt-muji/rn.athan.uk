@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
     fontFamily: TEXT.family.regular,
     fontSize: TEXT.size,
     textAlign: 'center',
-    marginLeft: SPACING.lg - 1,
+    marginStart: SPACING.lg - 1,
   },
 });
