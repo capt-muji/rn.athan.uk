@@ -119,6 +119,13 @@ describe('the landed catalogs against the R2 gates', () => {
     expect(failures).toEqual([]);
   });
 
+  it('carries the owner-ruled re-shortened names (D81 and D83, 2026-10-12)', () => {
+    expect(CATALOGS.ms['prayer.last third']).toBe('Sepertiga malam');
+    expect(CATALOGS.hi['prayer.midnight']).toBe('आधी रात');
+    expect(CATALOGS.th['prayer.last third']).toBe('ช่วงสุดท้าย');
+    expect(CATALOGS.so['prayer.midnight']).toBe('Saqda dhexe');
+  });
+
   it.each(LOCALES)('%s stays inside the length budget', (loc) => {
     const failures: string[] = [];
     for (const [key, value] of Object.entries(CATALOGS[loc])) {

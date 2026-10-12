@@ -16,7 +16,7 @@ export const ms = {
   'prayer.magrib': 'Maghrib',
   'prayer.isha': 'Isyak',
   'prayer.midnight': 'Tengah malam',
-  'prayer.last third': 'Sepertiga akhir malam',
+  'prayer.last third': 'Sepertiga malam',
   'prayer.suhoor': 'Sahur',
   'prayer.duha': 'Dhuha',
   'prayer.istijaba': 'Istijaba',

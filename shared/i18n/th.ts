@@ -16,7 +16,7 @@ export const th = {
   'prayer.magrib': 'มัฆริบ',
   'prayer.isha': 'อิชาอฺ',
   'prayer.midnight': 'เที่ยงคืน',
-  'prayer.last third': 'ช่วงสุดท้ายของคืน',
+  'prayer.last third': 'ช่วงสุดท้าย',
   'prayer.suhoor': 'ซูฮูร',
   'prayer.duha': 'ดุฮา',
   'prayer.istijaba': 'อิสติญาบา',
