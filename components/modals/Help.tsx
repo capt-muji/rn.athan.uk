@@ -201,8 +201,8 @@ const styles = StyleSheet.create({
     // Wide enough that a question wraps before it ever crowds the chevron
     gap: SPACING.header + SPACING.xs,
     paddingVertical: SPACING.mid,
-    paddingLeft: SPACING.header,
-    paddingRight: SPACING.header,
+    paddingStart: SPACING.header,
+    paddingEnd: SPACING.header,
   },
   question: {
     flex: 1,
@@ -222,9 +222,9 @@ const styles = StyleSheet.create({
   },
   panel: {
     paddingBottom: SPACING.lg2,
-    paddingLeft: SPACING.header,
+    paddingStart: SPACING.header,
     // Ends where the question does, so the text column is identical open or closed, at any width
-    paddingRight: SPACING.header + CHEVRON_SIZE,
+    paddingEnd: SPACING.header + CHEVRON_SIZE,
   },
 
   cause: {

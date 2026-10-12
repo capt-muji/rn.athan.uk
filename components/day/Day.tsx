@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingRight: SCREEN.paddingHorizontal + 2,
-    paddingLeft: SCREEN.paddingHorizontal + 4,
+    paddingEnd: SCREEN.paddingHorizontal + 2,
+    paddingStart: SCREEN.paddingHorizontal + 4,
   },
   location: {
     color: COLORS.text.secondary,
