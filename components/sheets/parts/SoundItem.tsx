@@ -6,7 +6,7 @@ import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTimi
 import { IconView } from '@/components/ui';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { t } from '@/shared/i18n';
+import { localiseDigits, t } from '@/shared/i18n';
 import { perfMark } from '@/shared/perf';
 import { Icon } from '@/shared/types';
 
@@ -18,7 +18,9 @@ const COUNTDOWN_COLOR_UNSELECTED = 'rgba(86, 134, 189, 0.725)';
 function formatTime(seconds: number): string {
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, '0')}`;
+  const composed = `${mins}:${secs.toString().padStart(2, '0')}`;
+  const localised = localiseDigits(composed);
+  return localised;
 }
 
 interface Props {

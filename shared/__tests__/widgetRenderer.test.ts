@@ -484,6 +484,31 @@ describe('home widget renderer', () => {
       expect(textsOf(medium)).not.toContain('Out of date');
     });
 
+    it('renders native digits in the countdown label under an ar device locale', () => {
+      // 18.5 minutes to Asr: ceil makes 19, and the inline digit map (D61)
+      // draws it with the ar glyphs beside the push layer's ar unit words
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(at(DAY_ONE, '15:01') + 30_000);
+        const strings: WidgetStrings = {
+          h: 'س',
+          m: 'د',
+          s: 'ث',
+          now: 'الآن',
+          staleTitle: 'غير محدّث',
+          refreshLine: 'افتح Athan للتحديث',
+          refreshLead: 'افتح Athan',
+          refreshTail: 'للتحديث',
+        };
+        const tree = renderTree(layouts.PrayerWidget(androidProps({ strings }), { colorScheme: 'light' }));
+
+        expect(textsOf(tree)).toContain('١٩د');
+        expect(textsOf(tree)).not.toContain('19د');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
     it('tolerates a v1 snapshot: no strings, no row ids, the English fallback renders', () => {
       // A snapshot written by a v1 app still sits in the store until the next
       // push overwrites it; the layout bakes its own English copy in that case
