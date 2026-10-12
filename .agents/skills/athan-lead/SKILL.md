@@ -1,7 +1,7 @@
 ---
 name: athan-lead
 description: Run one queued job in ai/plans/README.md from its next phase to DONE. Route from the repository, dispatch the executor and reviewer workers, verify their work yourself, ask the owner what only she can decide, push when every commit is reviewed. Trigger on "/athan-run", "run the queue", "continue the job", "audit owed", or any request to execute or audit a queued job.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # athan-lead
@@ -161,7 +161,17 @@ Stop as soon as one of these holds, and never start another phase after it:
 One job per run. Never carry on into the next row: the owner starts that with
 `/athan-run`.
 
-## 6. Your final reply: four lines, nothing after them
+## 6. Your final reply: the queue view, then four lines, nothing after them
+
+At most three sentences: what the run delivered, and anything the owner must decide or
+hold, then the session progress table.
+
+Then the queue view, built from `ai/plans/README.md` as it stands at the close: the
+five rows most recently DONE (the date from the row, or from the commit that set it,
+else the bare word), then every open row in queue order (every status except DONE,
+CANCELLED and SUPERSEDED), columns `Order | Job | Status`, the job's short name, one
+bare status word per row. Bold the one row the owner's next command acts on: the row
+`/athan-run` would execute, or the first row `/athan-plan` would plan.
 
 ```
 **Just done:** <phases that ran>, job <n>. <one clause on what moved>
@@ -170,7 +180,5 @@ One job per run. Never carry on into the next row: the owner starts that with
 **You type:** `/athan-run` to continue the queue; `/athan-plan` to plan the next job
 ```
 
-Above those four lines, at most three sentences: what the run delivered, and anything
-the owner must decide or hold, then the progress table. The four lines close the reply,
-nothing after them. The detail lives in the plan folder’s `LOG.md` and `AUDIT.md`
-while it exists, and in git history after.
+The four lines close the reply, nothing after them. The detail lives in the plan
+folder’s `LOG.md` and `AUDIT.md` while it exists, and in git history after.
