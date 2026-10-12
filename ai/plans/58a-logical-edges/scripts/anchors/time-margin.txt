@@ -1,6 +1,0 @@
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
-    textAlign: 'center',
-    marginLeft: SPACING.lg - 1,
-  },
-});

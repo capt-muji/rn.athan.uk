@@ -1,6 +1,0 @@
-  },
-  whatsNewLabel: {
-    flex: 1,
-    marginLeft: SPACING.sm,
-    color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
