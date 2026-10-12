@@ -87,7 +87,7 @@ export const en = {
     'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
 
   'notification.now': '{name} now',
-  'notification.reminder': '{name} in {n}m',
+  'notification.reminder': '{name} in {n}',
 
   'sheet.closeToSave': 'Close to save',
 
@@ -190,7 +190,7 @@ export const en = {
 
   'settings.language': 'Language',
   'language.applying': 'Applying…',
-  'channel.reminder': '{name} in {n}m Reminder',
+  'channel.reminder': '{name} in {n} Reminder',
   'qibla.cardinal.n': 'N',
   'qibla.cardinal.e': 'E',
   'qibla.cardinal.s': 'S',
