@@ -82,9 +82,30 @@ gives step 04 its resume note. Preflight gains five anchors (12 total).
   - `shared/__tests__/widgetRenderer.test.ts`: `renders the derived v6 footer digits natively under an ar device locale` (`Rab ٣٠`) and `renders the v1 English fallback words with native digits under an ar device locale` (`١h ١٢m`).
   - `stores/__tests__/countdown.test.ts`: `display selector emits native digits under ar` pins `١س ١د`.
   Every en expectation in the six files stays byte-identical; no assertion loosened. Plus the records: the stopped entry's Merge line filled with `e827326d` (nothing else in it changed), step 03b's entry finalised above, and this entry.
-- Green: `yarn validate` (below at commit; hook line quoted there); `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0.
+- Green: `yarn validate` 5460 passed, 5460 total; Statements 100% (5212/5212), Branches 100% (2246/2246), Functions 100% (1082/1082), Lines 100% (4669/4669); `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0 inside it.
 - Break script: none (records step, the house pattern for weight-1 records steps).
-- Version: 2.0.63.
-- Commit: (filled at commit)
-- Review: (filled after review)
-- Merge: (filled after merge)
+- Version: 2.0.63 (origin/uat fetched under the version lock, still 2.0.56).
+- Commit: `c19192a2` (2.0.63), hook green: `Tests: 5460 passed, 5460 total`.
+- Review: read `git show` cold. All six test files are pure additions: no en assertion changed bytes, none loosened. Census accounting: flipped or twinned across the steps - SoundItem, Alert and the widget ALabel in 03; notifications channel-name and the bridge in 02; the shared formatters in 01; Time and widgetSimulation in 03b; Countdown, Sound, the width proof, the time branches and formatTimeAgo, the widget v6 footer and v1 fallback, and the display selector here. Two census files need no twin because their pins assert bytes that stay frozen: `prayerIdContract.test.ts` pins the English catalog and source text (R1.2, R6.1), `widgetLockRenderer.test.ts` pins en renders of the baked props and the D58 native-timer sites. No findings.
+- Merge: `4cab74a9` ("Merge feat/57-04-tests-records into uat: job 57 step 04").
+
+## Records
+
+The queue-row cell the lead applies on PASS (the plan's section 8 text, values
+measured): "DONE 2026-10-12, audited: native numerals landed - ar draws Eastern
+Arabic-Indic digits on every user-visible surface (D54, D57), the other five
+locales byte-frozen Latin (D55, D56), the bridge and six point fixes covered,
+the iOS native timers kept (D58); en bytes identical; the confidence build
+carries the visual verification (D41)."
+
+Measured at the final merge: versions 2.0.57 through 2.0.63 (amendment A1
+documented at 2.0.61); last hook line `Tests: 5460 passed, 5460 total` with
+Statements 100% (5212/5212), Branches 100% (2246/2246), Functions 100%
+(1082/1082), Lines 100% (4669/4669); step merges `6e568825`, `3da75f88`,
+`33defa40`, `e827326d` (the stopped records commit), `2470a272`, `4cab74a9`.
+The step-04 stop preserved its sweep at
+`~/athan-gitree/sessions/57/step04-stopped.patch`; its two defect twins landed
+in step 03b, its remaining six in step 04. The evidence folder dies in the
+audit merge with the plan folder.
+
+session: ses_ed2386c07ffeOUx2G4edDf1ldL
