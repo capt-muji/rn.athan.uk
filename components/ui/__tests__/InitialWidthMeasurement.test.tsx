@@ -9,7 +9,7 @@ import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
-import { englishWidthAtomFor } from '@/stores/ui';
+import { nameWidthAtomFor } from '@/stores/ui';
 
 import InitialWidthMeasurement from '../InitialWidthMeasurement';
 
@@ -26,8 +26,8 @@ describe('the name measurement mounted at launch, on a fresh install', () => {
 
     await fireEvent(screen.getByText(name), 'layout', { nativeEvent: { layout: { width: 88.5 } } });
 
-    expect(store.get(englishWidthAtomFor(ownList))).toBe(88.5);
-    expect(store.get(englishWidthAtomFor(otherList))).toBe(0);
+    expect(store.get(nameWidthAtomFor(ownList))).toBe(88.5);
+    expect(store.get(nameWidthAtomFor(otherList))).toBe(0);
   });
 });
 
@@ -39,8 +39,8 @@ describe('the name measurement under Thai, on a fresh install', () => {
     await fireEvent(screen.getByText('ตะวันขึ้น'), 'layout', { nativeEvent: { layout: { width: 120 } } });
     await fireEvent(screen.getByText('ช่วงสุดท้าย'), 'layout', { nativeEvent: { layout: { width: 210 } } });
 
-    expect(store.get(englishWidthAtomFor(ScheduleType.Standard))).toBe(120);
-    expect(store.get(englishWidthAtomFor(ScheduleType.Extra))).toBe(210);
+    expect(store.get(nameWidthAtomFor(ScheduleType.Standard))).toBe(120);
+    expect(store.get(nameWidthAtomFor(ScheduleType.Extra))).toBe(210);
 
     setActiveLocale('en');
   });
@@ -57,8 +57,8 @@ describe('the name measurement under Arabic, on a fresh install', () => {
       await fireEvent(screen.getByText('الشروق'), 'layout', { nativeEvent: { layout: { width: 95 } } });
       await fireEvent(screen.getByText('نصف الليل'), 'layout', { nativeEvent: { layout: { width: 105 } } });
 
-      expect(store.get(englishWidthAtomFor(ScheduleType.Standard))).toBe(95);
-      expect(store.get(englishWidthAtomFor(ScheduleType.Extra))).toBe(105);
+      expect(store.get(nameWidthAtomFor(ScheduleType.Standard))).toBe(95);
+      expect(store.get(nameWidthAtomFor(ScheduleType.Extra))).toBe(105);
     } finally {
       setActiveLocale('en');
     }
@@ -76,12 +76,12 @@ describe('the hidden measurers', () => {
 
   it('widens the reserve from any single name, not only the longest by characters', async () => {
     await render(<InitialWidthMeasurement />);
-    const before = getDefaultStore().get(englishWidthAtomFor(ScheduleType.Standard));
+    const before = getDefaultStore().get(nameWidthAtomFor(ScheduleType.Standard));
 
     // A short name with wide glyphs is the Somali defect's shape: its measure must count
     const aShorterName = screen.getByText(prayerLabel('fajr'));
     await fireEvent(aShorterName, 'layout', { nativeEvent: { layout: { width: before + 40 } } });
 
-    expect(getDefaultStore().get(englishWidthAtomFor(ScheduleType.Standard))).toBe(before + 40);
+    expect(getDefaultStore().get(nameWidthAtomFor(ScheduleType.Standard))).toBe(before + 40);
   });
 });
