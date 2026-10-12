@@ -1,3 +1,0 @@
-  'prayer.midnight': 'Tengah malam',
-  'prayer.last third': 'Sepertiga akhir malam',
-  'prayer.suhoor': 'Sahur',
