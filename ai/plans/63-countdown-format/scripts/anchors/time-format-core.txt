@@ -1,0 +1,15 @@
+  const totalHours = (days || 0) * 24 + (hours || 0);
+
+  // Hide seconds if requested and time is over ~10 minutes (show seconds only in last 10m)
+  const shouldShowSeconds = !forceHideSeconds && (!hideSeconds || seconds <= 599);
+
+  const parts = [totalHours && `${totalHours}${labels.h}`, minutes && `${minutes}${labels.m}`].filter(Boolean);
+
+  // "0s" never appears beside another unit — a whole minute reads "1m", not "1m 0s".
+  // Seconds render only when non-zero (and permitted), or when alone (e.g., "45s", "0s")
+  if ((shouldShowSeconds && secs) || parts.length === 0) {
+    parts.push(`${secs ?? 0}${labels.s}`);
+  }
+
+  const joined = parts.join(' ');
+  const localised = localiseDigits(joined);

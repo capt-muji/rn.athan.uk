@@ -1,0 +1,3 @@
+  it('stamps v3 and a footer on every Android snapshot day, same composition', () => {
+    expect(ANDROID_SNAPSHOT_VERSION).toBe(3);
+

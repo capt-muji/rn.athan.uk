@@ -1,0 +1,6 @@
+  const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
+  const localeKey = (['en', 'ar', 'ms', 'so', 'hi', 'th'] as const).find(
+    (code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)
+  );
+  const staticRow = STATIC[localeKey ?? 'en'];
+
