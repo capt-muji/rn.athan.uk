@@ -82,7 +82,7 @@
 <footer id="foot"></footer>
 <div id="error"></div>
 <script>
-  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Blocked', 'Audit', 'Done', 'Owner-led'];
+  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Blocked', 'Upstream', 'Audit', 'Done', 'Owner-led'];
   let board = null;
 
   const el = (tag, className, text) => {
@@ -118,6 +118,7 @@
     if (ticket.status === 'IN PROGRESS') return 'In progress';
     if (ticket.status === 'READY') return 'Ready';
     if (ticket.status === 'EXECUTED') return 'Audit';
+    if (ticket.status === 'UPSTREAM') return 'Upstream';
     if (ticket.status === 'DEFERRED') return 'Deferred';
     return 'Not planned';
   }
