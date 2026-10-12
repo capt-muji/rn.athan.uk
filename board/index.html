@@ -6,76 +6,70 @@
 <title>Ticket board</title>
 <style>
   :root {
-    --bg: #101216;
-    --column: #14171c;
-    --card: #181b21;
-    --text: #e8eaf0;
-    --muted: #9aa3b2;
-    --accent: #35b8a6;
-    --track: #22262e;
-    --red: #e5484d;
-    --live: #3fd47a;
-    --off: #6b7280;
-    --warn: #f0c26b;
+    --bg: #151a22;
+    --column: #191d27;
+    --card: #1f2430;
+    --line: #262d3a;
+    --text: #e0e4ee;
+    --muted: #8b92a6;
+    --violet: #8b7cf7;
+    --red: #f0718c;
+    --green: #4cc38a;
+    --warn: #f0b26b;
+    --track: #232a38;
     --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); }
-  header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding: 24px 24px 16px; }
-  h1 { font-size: 20px; margin: 0; }
-  #meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 12px; font-family: var(--mono); }
-  #meta .badge { color: #5d2f31; background: #f0cfd0; }
-  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 8px; background: var(--off); }
-  .dot.on { background: var(--live); }
+  header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding: 20px 20px 12px; }
+  h1 { font-size: 17px; font-weight: 650; margin: 0; }
+  #meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 11.5px; font-family: var(--mono); }
+  #meta .badge { color: var(--warn); border: 1px solid rgba(240, 178, 107, 0.4); border-radius: 4px; padding: 0 6px; line-height: 18px; }
+  .dot { display: inline-block; width: 7px; height: 7px; border-radius: 7px; background: #3a4152; }
+  .dot.on { background: var(--green); }
   #stamp.stale { color: var(--warn); }
-  .aurora { height: 2px; background: linear-gradient(90deg, #274156, #35b8a6, #6f8fd8, #35b8a6, #274156); }
-  #columns { display: grid; grid-auto-flow: column; grid-auto-columns: 280px; gap: 16px; overflow-x: auto; padding: 24px; align-items: start; }
-  .column { background: var(--column); border-radius: 8px; padding: 16px; min-height: 96px; }
-  .column-head { display: flex; justify-content: space-between; align-items: center; padding: 0 0 16px; font-size: 13px; color: var(--muted); }
-  .column-head .count { font-family: var(--mono); font-size: 12px; }
-  .column-head.red { color: var(--red); }
-  .card { background: var(--card); border-radius: 8px; padding: 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
-  .card.hero { border: 1px solid var(--accent); }
-  .card.group { border-left: 2px dotted var(--muted); }
-  .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .tag, .chip, .badge, .pill { display: inline-block; line-height: 24px; padding: 0 8px; border-radius: 8px; font-size: 12px; white-space: nowrap; }
-  .tag.Backlog { background: #cdd3df; color: #3d4350; }
-  .tag.Planning { background: #e6d9b8; color: #574a26; }
-  .tag.Ready { background: #cfe3d3; color: #2e4a37; }
-  .tag.Inprogress { background: #f3d2c2; color: #5c3524; }
-  .tag.Audit { background: #d9d7ef; color: #3f3c66; }
-  .tag.Done { background: #c8e4dd; color: #2c4d45; }
-  .tag.Blocked { background: #f0cfd0; color: #5d2f31; }
-  .tag.Ownerled { background: #e4d5ea; color: #4b3557; }
-  .tag.Unmapped { background: #d8d8d8; color: #444444; }
-  .order { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-  .pill { background: #dfe3ea; color: #3c4353; font-family: var(--mono); }
-  .chip { border: 1px solid var(--muted); color: var(--text); font-family: var(--mono); }
-  .chip.met { color: var(--muted); }
-  .chip.met .need { text-decoration: line-through; }
-  .square { display: inline-block; width: 8px; height: 8px; border: 1px solid var(--muted); }
-  .name { font-size: 14px; font-weight: 600; line-height: 24px; }
-  .status-text { font-size: 12px; color: var(--muted); margin: 0; }
-  .group-label { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-  .rollup { font-size: 12px; color: var(--muted); }
-  .bar { height: 8px; background: var(--track); border-radius: 8px; overflow: hidden; }
-  .bar span { display: block; height: 8px; background: var(--accent); }
-  .steps { display: flex; gap: 8px; align-items: center; }
-  .step { width: 8px; height: 8px; border-radius: 8px; border: 1px solid var(--muted); }
-  .step.merged { background: var(--muted); border: 0; }
-  .step.running { width: 16px; background: var(--accent); border: 0; box-shadow: 0 0 8px 2px rgba(53, 184, 166, 0.75); }
-  .context { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-  #foot { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 16px; }
-  #foot h2 { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
-  #foot ul { margin: 0; padding: 0 0 0 16px; font-size: 13px; color: var(--muted); }
-  #error { color: var(--warn); font-family: var(--mono); font-size: 13px; padding: 0 24px 24px; }
+  #columns { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; padding: 8px 20px 20px; align-items: start; }
+  .column { background: var(--column); border-radius: 6px; padding: 12px; min-height: 120px; display: flex; flex-direction: column; gap: 10px; }
+  .column-head { display: flex; justify-content: space-between; align-items: center; padding: 2px 2px 4px; }
+  .column-head .name { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
+  .column-head .count { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .column-head.red .name, .column-head.red .count { color: var(--red); }
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .card.hero { border-color: var(--violet); }
+  .card.blocked { border-color: rgba(240, 113, 140, 0.35); }
+  .empty { border: 1px dashed rgba(224, 228, 238, 0.07); border-radius: 6px; padding: 18px 12px; text-align: center; font-family: var(--mono); font-size: 11px; color: var(--muted); opacity: 0.45; }
+  .top { display: flex; align-items: baseline; gap: 7px; }
+  .order { font-family: var(--mono); font-size: 10.5px; color: var(--violet); flex-shrink: 0; }
+  .order.done { color: var(--muted); }
+  .platform { margin-left: auto; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
+  .name { font-size: 12.5px; font-weight: 600; line-height: 1.4; color: var(--text); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+  .card.done .name { color: var(--muted); font-weight: 550; }
+  .reason { font-size: 12px; line-height: 1.45; color: var(--muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font-family: var(--mono); font-size: 10.5px; line-height: 20px; padding: 0 7px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .chip.unmet { border-color: rgba(240, 113, 140, 0.5); color: var(--red); }
+  .steps { display: flex; gap: 5px; align-items: center; }
+  .step { width: 16px; height: 3px; border-radius: 3px; background: var(--track); }
+  .step.merged { background: var(--violet); }
+  .step.running { background: var(--violet); box-shadow: 0 0 6px rgba(139, 124, 247, 0.7); }
+  .foot-line { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
+  .foot-line .state.done { color: var(--green); }
+  .foot-line .state.blocked { color: var(--red); }
+  .foot-line .state.owner { color: var(--violet); }
+  .context { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+  .column-head.red-shared .name, .column-head.red-shared .count { color: var(--red); }
+  #foot { padding: 0 20px 20px; }
+  #foot h2 { font-size: 11px; font-family: var(--mono); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; font-weight: 500; }
+  #foot ul { margin: 0; padding: 0 0 0 14px; font-size: 12.5px; color: var(--muted); }
+  #error { color: var(--warn); font-family: var(--mono); font-size: 13px; padding: 0 20px 20px; }
   @media (max-width: 430px) {
-    header { flex-wrap: nowrap; align-items: center; padding: 16px; gap: 8px; }
-    h1 { font-size: 16px; white-space: nowrap; }
+    header { flex-wrap: nowrap; align-items: center; padding: 14px 16px 10px; gap: 8px; }
+    h1 { font-size: 15px; white-space: nowrap; }
     #meta { flex-wrap: nowrap; overflow: hidden; }
-    #columns { grid-auto-columns: 88vw; scroll-snap-type: x mandatory; padding: 16px; gap: 16px; }
-    .column { scroll-snap-align: start; }
+    #columns { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 16px 16px; }
+    .column { flex: 0 0 88vw; scroll-snap-align: start; }
   }
 </style>
 </head>
@@ -84,12 +78,11 @@
   <h1>Ticket board</h1>
   <div id="meta"></div>
 </header>
-<div class="aurora"></div>
 <main id="columns"></main>
 <footer id="foot"></footer>
 <div id="error"></div>
 <script>
-  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Audit', 'Done', 'Blocked', 'Owner-led'];
+  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Blocked', 'Audit', 'Done', 'Owner-led'];
   let board = null;
 
   const el = (tag, className, text) => {
@@ -100,83 +93,101 @@
   };
 
   const ageSeconds = () => (board ? Math.max(0, Math.round((Date.now() - Date.parse(board.generatedAt)) / 1000)) : 0);
+  const unmetOf = (ticket) => ticket.needs.filter((need, at) => !ticket.needsMet[at]);
+  const displayColumn = (ticket) => (unmetOf(ticket).length > 0 ? 'Blocked' : ticket.column);
 
   function renderHeader() {
     const meta = document.getElementById('meta');
     meta.textContent = '';
     if (!board) return;
-    meta.append(el('span', null, 'v' + board.repo.version), el('span', null, board.repo.uat));
+    meta.append(el('span', null, 'v' + board.repo.version), el('span', null, 'uat ' + board.repo.uat.slice(0, 8)));
     if (board.repo.unpushed) meta.append(el('span', 'badge', 'unpushed'));
-    meta.append(el('span', 'dot' + (board.activeNow ? ' on' : '')));
+    const live = el('span', null, (board.activeNow ? '\u25cf' : '\u25cb') + ' agent ' + (board.activeNow ? 'live' : 'idle'));
+    meta.append(live);
     const stale = ageSeconds() * 1000 > board.reconcileMs * 2;
-    const stamp = el('span', null, (stale ? 'stale ' : 'updated ') + ageSeconds() + 's ago');
+    const stamp = el('span', null, (stale ? 'stale ' : 'updated ') + (ageSeconds() < 60 ? ageSeconds() + 's' : Math.round(ageSeconds() / 60) + 'm') + ' ago');
     stamp.id = 'stamp';
     if (stale) stamp.className = 'stale';
     meta.append(stamp);
   }
 
+  function stateWord(ticket) {
+    if (displayColumn(ticket) === 'Blocked') return 'Blocked';
+    if (ticket.status === 'DONE') return 'Shipped';
+    if (ticket.status === 'OWNER-LED') return 'Owner steered';
+    if (ticket.status === 'IN PROGRESS') return 'In progress';
+    if (ticket.status === 'READY') return 'Ready';
+    if (ticket.status === 'EXECUTED') return 'Audit';
+    return 'Not planned';
+  }
+
   function chipEls(ticket) {
     return ticket.needs.map((need, at) => {
       const met = ticket.needsMet[at];
-      const chip = el('span', 'chip' + (met ? ' met' : ''));
-      chip.append(met ? el('span', null, '\u2713 ') : el('span', 'square'));
-      chip.append(el('span', 'need', '#' + need));
+      const chip = el('span', 'chip' + (met ? '' : ' unmet'));
+      chip.append(el('span', null, (met ? '\u2713 ' : '') + '#' + need + (met ? '' : ' open')));
       return chip;
     });
-  }
-
-  function rollupEl(ticket, siblings) {
-    if (ticket.parent === null) return null;
-    const children = siblings.filter((other) => other.parent === ticket.parent);
-    const done = children.filter((child) => child.column === 'Done').length;
-    const line = el('div', 'rollup', done + ' of ' + children.length + ' tickets done');
-    const bar = el('div', 'bar');
-    bar.append(el('span'));
-    bar.firstChild.style.width = Math.round((done / children.length) * 100) + '%';
-    const wrap = el('div');
-    wrap.append(line, bar);
-    return wrap;
   }
 
   function stepsEl(ticket) {
     if (ticket.steps.length === 0) return null;
     const rail = el('div', 'steps');
-    for (const step of ticket.steps) {
-      rail.append(el('span', 'step ' + step.state.toLowerCase()));
-    }
+    for (const step of ticket.steps) rail.append(el('span', 'step ' + step.state.toLowerCase()));
     return rail;
   }
 
-  function cardEl(ticket, hero, siblings) {
-    const card = el('div', 'card' + (hero ? ' hero' : '') + (ticket.group === null ? '' : ' group'));
-    const top = el('div', 'row');
-    top.append(el('span', 'order', '#' + ticket.order));
-    top.append(el('span', 'tag ' + ticket.column.replace(/ /g, ''), ticket.status));
-    if (ticket.platform !== null) top.append(el('span', 'pill', ticket.platform));
-    card.append(top, el('div', 'name', ticket.name), el('p', 'status-text', ticket.statusText));
+  function reasonOf(ticket) {
+    let text = (ticket.statusText || '').trim();
+    if (text) {
+      text = text.replace(/^[\s,:;.]+/, '');
+      text = text.charAt(0).toUpperCase() + text.slice(1);
+      if (!/[.!?;…]$/.test(text)) text += ' …';
+      return text;
+    }
+    if (ticket.status === 'DONE') return 'Shipped this cycle.';
+    return 'Not scheduled yet.';
+  }
+
+  function cardEl(ticket, hero) {
+    const blocked = displayColumn(ticket) === 'Blocked';
+    const card = el('div', 'card' + (hero ? ' hero' : '') + (blocked ? ' blocked' : '') + (ticket.status === 'DONE' ? ' done' : ''));
+    const top = el('div', 'top');
+    top.append(el('span', 'order' + (ticket.status === 'DONE' ? ' done' : ''), '#' + ticket.order));
+    top.append(el('span', 'name', ticket.name));
+    if (ticket.platform !== null) top.append(el('span', 'platform', ticket.platform));
+    card.append(top);
+    card.append(el('div', 'reason', reasonOf(ticket)));
     if (ticket.needs.length > 0) {
-      const chips = el('div', 'row');
+      const chips = el('div', 'chips');
       chips.append(...chipEls(ticket));
       card.append(chips);
     }
-    if (ticket.group !== null) card.append(el('span', 'group-label', ticket.group));
-    const rollup = rollupEl(ticket, siblings);
-    if (rollup) card.append(rollup);
     const rail = stepsEl(ticket);
     if (rail) card.append(rail);
-    if (ticket.context !== null) {
-      card.append(el('span', 'context', ticket.context.pct + '% ' + Math.round(ticket.context.ageMs / 60000) + 'm'));
-    }
+    if (ticket.context !== null) card.append(el('span', 'context', ticket.context.pct + '% · ' + Math.round(ticket.context.ageMs / 60000) + 'm'));
+    const foot = el('div', 'foot-line');
+    const state = el('span', 'state' + (ticket.status === 'DONE' ? ' done' : blocked ? ' blocked' : ticket.status === 'OWNER-LED' ? ' owner' : ''), stateWord(ticket));
+    foot.append(state);
+    if (blocked && ticket.column !== 'Blocked') foot.append(el('span', null, 'from ' + ticket.column));
+    card.append(foot);
     return card;
   }
 
   function columnEl(name, tickets, head) {
     const column = el('section', 'column');
-    const headEl = el('div', 'column-head' + (head && head.red ? ' red' : ''));
-    headEl.append(el('span', null, name));
-    if (head && head.count) headEl.append(el('span', 'count', head.count));
+    const headEl = el('div', 'column-head' + (head && head.red ? ' red-shared' : ''));
+    headEl.append(el('span', 'name', name));
+    if (head && head.count !== undefined) headEl.append(el('span', 'count', head.count));
     column.append(headEl);
-    for (const ticket of tickets) column.append(cardEl(ticket, head && head.hero, board.tickets));
+    const wrap = el('div', 'cards');
+    if (tickets.length === 0) {
+      const slot = el('div', 'empty', 'no tickets');
+      wrap.append(slot);
+    } else {
+      for (const ticket of tickets) wrap.append(cardEl(ticket, head && head.hero));
+    }
+    column.append(wrap);
     return column;
   }
 
@@ -186,15 +197,17 @@
     const byColumn = new Map(COLUMNS.map((name) => [name, []]));
     const unmapped = [];
     for (const ticket of board.tickets) {
-      if (byColumn.has(ticket.column)) byColumn.get(ticket.column).push(ticket);
-      else if (ticket.column === 'Unmapped') unmapped.push(ticket);
+      const placed = displayColumn(ticket);
+      if (byColumn.has(placed)) byColumn.get(placed).push(ticket);
+      else if (ticket.column === 'Unmapped' || placed === 'Unmapped') unmapped.push(ticket);
     }
     const inFlight = byColumn.get('In progress');
     const sharedGroup = inFlight.length === 2 && inFlight[0].group !== null && inFlight[0].group === inFlight[1].group;
     for (const name of COLUMNS) {
       const tickets = byColumn.get(name);
       if (name === 'In progress') {
-        columns.append(columnEl(name, tickets, { hero: true, red: sharedGroup, count: inFlight.length + ' in flight' }));
+        const count = inFlight.length === 2 && !sharedGroup ? '2 in flight' : String(inFlight.length);
+        columns.append(columnEl(name, tickets, { hero: true, red: sharedGroup, count }));
       } else if (name === 'Done') {
         columns.append(columnEl(name, tickets, { count: board.doneCount + ' done' }));
       } else {
@@ -207,28 +220,17 @@
   function renderFoot() {
     const foot = document.getElementById('foot');
     foot.textContent = '';
-    const waiting = board.tickets.filter((ticket) => ticket.needsMet.includes(false));
+    const waiting = board.tickets.filter((ticket) => unmetOf(ticket).length > 0);
+    if (waiting.length === 0) return;
     const runOrder = el('section');
-    runOrder.hidden = waiting.length === 0;
     runOrder.append(el('h2', null, 'Run order'));
     const runList = el('ul');
     for (const ticket of waiting) {
-      const unmet = ticket.needs.filter((need, at) => !ticket.needsMet[at]).map((need) => '#' + need).join(', ');
+      const unmet = unmetOf(ticket).map((need) => '#' + need).join(', ');
       runList.append(el('li', null, '#' + ticket.order + ' ' + ticket.name + ' waits on ' + unmet));
     }
     runOrder.append(runList);
-    const blocked = board.tickets.filter((ticket) => ticket.column === 'Blocked');
-    const blockedList = el('section');
-    blockedList.hidden = blocked.length === 0;
-    blockedList.append(el('h2', null, 'Blocked'));
-    const blockedItems = el('ul');
-    for (const ticket of blocked) {
-      const unmet = ticket.needs.filter((need, at) => !ticket.needsMet[at]).map((need) => '#' + need).join(', ');
-      const label = '#' + ticket.order + ' ' + ticket.name + (unmet ? ' blocked on ' + unmet : '');
-      blockedItems.append(el('li', null, label));
-    }
-    blockedList.append(blockedItems);
-    foot.append(runOrder, blockedList);
+    foot.append(runOrder);
   }
 
   function render() {

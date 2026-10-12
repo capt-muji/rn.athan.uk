@@ -57,4 +57,4 @@ http.createServer((req, res) => {
 }).on('error', (error) => {
   process.stderr.write(`board-server: ${error.message}\n`);
   process.exit(1);
-}).listen(config.port, flag('--host', config.host));
+}).listen(flag('--port', config.port), flag('--host', config.host));
