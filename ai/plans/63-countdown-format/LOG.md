@@ -180,3 +180,29 @@ through the Settings language switch and returned to English by the same
 sheet. Phone left on the 63-step3-mock build, automatic time on.
 
 session: ses_ece3d27bbffeFbrx9zWgiDJ496
+
+Step 3 commit: `79447119` on `docs/63-step3-evidence` (2.0.131), merged into
+uat as `abeccc47`. Hook live in the scratch worktree
+(`$HOME/athan-gitree/worktrees/exec63s3`, node_modules symlinked, `.husky/_`
+shims copied in): `Tests: 2 skipped, 5468 passed, 5470 total`, coverage
+`Statements 100% (5188/5188)`, `Branches 100% (2221/2221)`, `Functions 100%
+(1081/1081)`, `Lines 100% (4645/4645)`, exit 0. The merge ran in the main
+checkout through the step-2 maneuver: the idle 59 session's README patch
+backed up, both plan files restored, merged past, patch re-applied byte-exact;
+the 67 executor's LOG.md was never touched. The version lock was held across
+the take-to-merge window.
+
+Records (2026-10-12): Colon formats landed: formatTime renders H:MM, H:MM:SS
+over an hour and M:SS under it while seconds show, clamping zero and negative
+to 0:00; formatTimeAgo renders H:MM and keeps the duration.now word; reminder
+titles and channel labels carry the bare number in all six locales.
+DurationLabels, durationLabels, the forceHideSeconds parameter and the
+date-fns import are deleted from shared/time.ts. Widgets untouched (D77).
+Catalog lock re-taken; dist regenerated.
+
+Finishing: row 63 set EXECUTED in the queue at 2.0.132 on
+`docs/executed-63-2026-10-12`, merged `--no-ff` into uat, not pushed; the
+scratch worktree is removed after the merge and the phone stays on the
+63-step3-mock build.
+
+session: ses_ece3d27bbffeFbrx9zWgiDJ496
