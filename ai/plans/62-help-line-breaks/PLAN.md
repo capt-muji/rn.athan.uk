@@ -87,7 +87,7 @@ changes.
 
 ## 6. Steps
 
-- [ ] Step 1: the twelve joins, the red test, the lock, the dist (`steps/1-join-values.md`)
+- [x] Step 1: the twelve joins, the red test, the lock, the dist (`steps/1-join-values.md`)
 
 ## 7. Device proof
 
