@@ -15,7 +15,7 @@ export const so = {
   'prayer.asr': 'Casar',
   'prayer.magrib': 'Maqrib',
   'prayer.isha': "Cishaa'i",
-  'prayer.midnight': 'Habeennimo dhexe',
+  'prayer.midnight': 'Saqda dhexe',
   'prayer.last third': 'Seddexaad u dambeeya',
   'prayer.suhoor': 'Sahri',
   'prayer.duha': 'Duha',
