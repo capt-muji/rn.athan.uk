@@ -160,7 +160,7 @@ Checklist:
 
 1. [x] Step 1 — the three strings, the glossary supersession, the pins
    (`steps/1-short-names.md`)
-2. Step 2 — the width key-family reset and renames (`steps/2-width-reset.md`)
+2. [x] Step 2 — the width key-family reset and renames (`steps/2-width-reset.md`)
 
 Scope guard: `en.ts` values, `catalog-lock.json`, every widget file
 and the notification copy are out; `dist/` changes only by step 1's bridge
