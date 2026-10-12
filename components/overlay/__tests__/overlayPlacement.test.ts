@@ -71,7 +71,7 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthAtomFor: (type: string) => (type === 'standard' ? 'englishWidthStandardAtom' : 'englishWidthExtraAtom'),
+  nameWidthAtomFor: (type: string) => (type === 'standard' ? 'nameWidthStandardAtom' : 'nameWidthExtraAtom'),
 }));
 
 // The real card needs react-native-svg, which the unit mock tree cannot stand in for

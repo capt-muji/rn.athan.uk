@@ -158,7 +158,7 @@ characters at the widest name).
 
 Checklist:
 
-1. Step 1 — the three strings, the glossary supersession, the pins
+1. [x] Step 1 — the three strings, the glossary supersession, the pins
    (`steps/1-short-names.md`)
 2. Step 2 — the width key-family reset and renames (`steps/2-width-reset.md`)
 

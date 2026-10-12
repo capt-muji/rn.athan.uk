@@ -130,3 +130,32 @@ would be a policy change nobody asked for. Step 1's files list, contract 3,
 review checklist and commit add list carry the repair; the regeneration
 commands stand unchanged. The executor resumes from its saved work at
 `~/athan-gitree/sessions/59-exec/`.
+
+### Step 1 — DONE (resumed after the ruling; committed and merged 2026-10-13)
+
+Resume: the intervening `c354953e` touched only plan/board/version files, so
+the session-1 red proof carries (same test bytes, same catalog bytes); the
+four anchors re-counted 1. The preflight's clean-tree check trips only on the
+dispatch-authorized untracked `ai/plans/68-rtl-flip/` folder (untouchable),
+recorded here in lieu of a PREFLIGHT OK rerun. The saved 141-line patch
+re-applied cleanly onto `feat/59-short-names` cut from `c354953e`. The 23:45
+window held all jest/commit work until 00:15; the jest binary check passed.
+
+Green: all six bridge exports exit 0 (dist rewritten on disk, `git status
+--porcelain | grep -c dist` prints 0); the ten green commands all exit 0 —
+gates 61/61, width 6/6, each import run 7/7 (bare mode runs 6, so the 7th is
+the round-trip case, R2.2), tsc and biome clean. Break:
+`bash $TMPDIR/break-step1.sh` printed `break applied: ms Last Third restored
+to the long phrase`, `caught: the long phrase regains the column`,
+`ALL AS EXPECTED: 1`. Version 2.0.143 under the lock (uat was at 2.0.142;
+app.json and package.json one line each, the gitignored gradle versionName
+set, never added; an app.json whole-file json.dumps rewrite was caught and
+reverted to the surgical one-liner before staging). Commit `34ebdc90`
+(eleven files: the eight step files, app.json, package.json, the queue row
+at IN PROGRESS, step 1), hook `Tests: 5471 passed, 5471 total` with the four
+100% coverage lines (5188/5188 statements, 2221/2221 branches, 1081/1081
+functions, 4645/4645 lines). Review cold: exactly four catalog prayer lines
+removed against `d7d95b2f`, lock and en.ts untouched, the pin covers all
+four strings, no findings. Merge `--no-ff` `75b7e07d`; lock released.
+
+session: ses_ecdaec13dffeSXcjEbzah7hzGt

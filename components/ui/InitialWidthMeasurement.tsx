@@ -3,7 +3,7 @@ import { StyleSheet, Text } from 'react-native';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS, TEXT } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { ScheduleType } from '@/shared/types';
-import { setEnglishWidth } from '@/stores/ui';
+import { setNameWidth } from '@/stores/ui';
 
 /**
  * Continuously measures the width of every prayer name for both schedules:
@@ -23,7 +23,7 @@ export default function InitialWidthMeasurement() {
         <Text
           key={id}
           style={styles.hidden}
-          onLayout={(e) => setEnglishWidth(ScheduleType.Standard, e.nativeEvent.layout.width)}>
+          onLayout={(e) => setNameWidth(ScheduleType.Standard, e.nativeEvent.layout.width)}>
           {prayerLabel(id)}
         </Text>
       ))}
@@ -31,7 +31,7 @@ export default function InitialWidthMeasurement() {
         <Text
           key={id}
           style={styles.hidden}
-          onLayout={(e) => setEnglishWidth(ScheduleType.Extra, e.nativeEvent.layout.width)}>
+          onLayout={(e) => setNameWidth(ScheduleType.Extra, e.nativeEvent.layout.width)}>
           {prayerLabel(id)}
         </Text>
       ))}

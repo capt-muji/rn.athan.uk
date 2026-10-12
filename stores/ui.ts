@@ -5,7 +5,7 @@ import type { PrayerId } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
 import { type PageCoordinates, ScheduleType } from '@/shared/types';
-import { database } from '@/stores/database';
+import { clearPrefix } from '@/stores/database';
 import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '@/stores/storage';
 
 const store = getDefaultStore();
@@ -105,22 +105,10 @@ export const languageSheetModalAtom = atom<BottomSheetModal | null>(null);
 // ATOMS - Layout Measurements
 // =============================================================================
 
-// The width cache is keyed per locale (R7.1). This seed runs at module
-// evaluation, BEFORE the atoms below first read storage: on the first launch
-// after the re-key each `en` key copies its legacy key's raw value, and the
-// legacy key is then removed unconditionally so every later launch leaves the
-// database clean (D35) and the copy never repeats.
-for (const side of ['standard', 'extra'] as const) {
-  const legacyKey = `prayer_max_english_width_${side}`;
-  // Pinned to en: the legacy value was measured against English glyphs, so seeding
-  // any other locale's key from it would store a wrong width that only widens
-  const localeKey = `prayer_max_english_width_en_${side}`;
-  const legacy = database.getString(legacyKey);
-  if (database.getString(localeKey) === undefined && legacy !== undefined) {
-    database.set(localeKey, legacy);
-  }
-  database.remove(legacyKey);
-}
+// The 59 re-key: every `prayer_max_english_width_` key is removed
+// unconditionally at module evaluation, before the atoms below first read
+// storage, so the reserve re-measures against the shortened names (P8).
+clearPrefix('prayer_max_english_width_');
 
 /** One width atom per locale and list, created on first access and cached */
 const widthAtoms = new Map<string, PrimitiveAtom<number>>();
@@ -131,9 +119,9 @@ const widthAtoms = new Map<string, PrimitiveAtom<number>>();
  *
  * @param type Schedule type (Standard or Extra)
  */
-export const englishWidthAtomFor = (type: ScheduleType): PrimitiveAtom<number> => {
+export const nameWidthAtomFor = (type: ScheduleType): PrimitiveAtom<number> => {
   const side = type === ScheduleType.Standard ? 'standard' : 'extra';
-  const key = `prayer_max_english_width_${currentLocaleId()}_${side}`;
+  const key = `prayer_max_name_width_${currentLocaleId()}_${side}`;
   const cached = widthAtoms.get(key);
   if (cached) return cached;
 
@@ -254,11 +242,11 @@ export const setPopupHelpEnabled = (enabled: boolean) => store.set(popupHelpEnab
 export const setPopupUpdateLastCheck = (timestamp: number) => store.set(popupUpdateLastCheckAtom, timestamp);
 
 /**
- * Sets the measured width of the longest English prayer name
+ * Sets the measured width of the widest active-locale prayer name
  * @param type Schedule type (Standard or Extra)
  * @param width Measured width in pixels
  */
-export const setEnglishWidth = (type: ScheduleType, width: number) => {
+export const setNameWidth = (type: ScheduleType, width: number) => {
   // Grow-toward-truth: a first-launch measurement can land before the custom
   // font registers (fallback-font metrics are narrower) and write-once
   // caching would pin that wrong width forever (ISSUES #22 - "Sunrise"
@@ -267,7 +255,7 @@ export const setEnglishWidth = (type: ScheduleType, width: number) => {
   // while correct values never change (no reflow churn after settle).
   if (width <= 0) return;
 
-  const atom = englishWidthAtomFor(type);
+  const atom = nameWidthAtomFor(type);
   const cached = store.get(atom);
   if (width <= cached) return;
 

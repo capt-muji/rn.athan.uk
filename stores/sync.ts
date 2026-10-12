@@ -362,7 +362,7 @@ const replacePrayerCache = (prayers: ISingleApiResponseTransformed[], year: numb
       'cache_schema_version',
       'preference_',
       // Names and fonts never change, and measuring the widths again visibly reflows the prayer list
-      'prayer_max_english_width_',
+      'prayer_max_name_width_',
       // Alarm records describe what the OS has armed, which a new timetable does not change. A
       // reschedule still writing them as the download lands would lose them, and its sweep would
       // then cancel those alarms
