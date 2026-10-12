@@ -18,7 +18,9 @@ const STATUS_MAP = [
   ['EXECUTED', 'Audit'],
   ['DONE', 'Done'],
   ['BLOCKED', 'Blocked'],
+  ['OWNER-BLOCKED', 'Blocked'],
   ['OWNER-LED', 'Owner-led'],
+  ['DEFERRED', 'Deferred'],
 ];
 
 const closedStatus = (cell) => cell.startsWith('CANCELLED') || cell.startsWith('SUPERSEDED');
