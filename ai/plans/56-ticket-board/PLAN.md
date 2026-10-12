@@ -332,7 +332,7 @@ Checklist (ticked in each step's own commit):
 - [x] Step 1: pin the LOG.md ledger contract (docs, weight 1)
 - [x] Step 2: board scaffold and gate exemptions (code, weight 2)
 - [x] Step 3: the reader (code, weight 2)
-- [ ] Step 4: the server and the compose service (code, weight 2)
+- [x] Step 4: the server and the compose service (code, weight 2)
 - [ ] Step 5: the template (code, weight 2)
 - [ ] Step 6: README and records (docs, weight 1)
 
