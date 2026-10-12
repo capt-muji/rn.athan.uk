@@ -1,3 +1,0 @@
-    <Modal visible={visible} title={t('update.title')} onRequestClose={onClose}>
-      <Text style={styles.message}>{t('update.message')}</Text>
-      <View style={styles.buttonContainer}>
