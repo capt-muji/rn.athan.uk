@@ -22,5 +22,17 @@
 - Version: 2.0.58 (origin/uat re-fetched under the held lock, still 2.0.56).
 - Commit: `345fea40` (2.0.58), hook green: `Tests: 5445 passed, 5445 total`.
 - Review: read `git show` cold. Substitution line matches the contract byte-for-byte; identifier suites green untouched (channel ids and file names build from raw values, never `t()`); only digit glyphs map, names and words pass through; the channel-name pinned flip is the plan's own goal (channel sites render native digits in ar). No findings.
+- Merge: `3da75f88` ("Merge feat/57-02-bridge into uat: job 57 step 02").
+
+## Step 03: the six point fixes
+
+- Branch: `feat/57-03-point-fixes` off `uat` (step branches 01 and 02 deleted after their merges).
+- Red: SoundItem ar preview failed showing `0:03`; Alert stepper ar interval failed showing `15`; widget renderer ar label failed showing `19د`. 3 named failures, no others.
+- Change: `SoundItem.tsx` local `m:ss` composes into a const then `const localised = localiseDigits(composed);`; `Stepper.tsx` renders `const visible = localiseDigits(String(value));` as `{visible}` (a11y label already rides the bridge); `widgets/PrayerWidget.tsx` gains the inline ten-glyph `WIDGET_DIGITS` map plus `localiseDigits` INSIDE `AthanHomeWidget` keyed off the existing `__expoWidgetDeviceLocale` resolver (D61, no module-scope reference, no import), `ALabel`'s three returns compose through it, and the legacy footer fallback (654) parses unchanged and renders through it. The `Text(timerInterval:)` sites (729; LockPrayerWidget 263, 747) untouched in the diff (D58); v1 fallback literals untouched.
+- Green: `yarn validate` 5448 passed, 5448 total; Statements 100% (5204/5204), Branches 100% (2242/2242), Functions 100% (1082/1082), Lines 100% (4667/4667). `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0.
+- Break script: `ALL AS EXPECTED: 1` (the pinned localised line replaced by an identity parenthesisation, ar preview fails with `0:03` shown, restore passes 20/20).
+- Version: 2.0.59 (origin/uat re-fetched under the held lock, still 2.0.56).
+- Commit: `5948f842` (2.0.59), hook green: `Tests: 5448 passed, 5448 total`.
+- Review: read the staged diff cold. No import reaches PrayerWidget.tsx (D61 closure law), the widget map lives inside `AthanHomeWidget` keyed off the existing device-locale resolver, the SoundItem and Stepper lines are byte-exact per contract, `Text(timerInterval:)` absent from the diff (D58), v1 literals untouched, no pixel changes beyond digit glyphs, the widget runtime load suite green inside validate. No findings.
 - Merge: (filled after merge)
 - session: ses_ed2764c96ffe16EVsvp03ReEtF
