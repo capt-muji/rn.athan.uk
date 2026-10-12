@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | Brief | Queue row 57 (asked 2026-10-11): every language renders Latin digits today; the owner wants each language's native numerals. Reverses D21 for ar |
-| Planned at | `6195ab1f` |
+| Planned at | `6195ab1f`; amendment A1 verified at `e827326d` |
 | Needs first | row 39 (shared code surfaces; execution behind its DONE) |
 | Parent | none |
 | Group | i18n surfaces (`shared/i18n/*`, `shared/time.ts`), shared with no other open row |
 | Batch budget | 6 |
 | Session budget | 12 |
-| Steps | 4 (no device step; D41's confidence build covers the device) |
+| Steps | 5 (no device step; D41's confidence build covers the device) |
 | Device | none |
 
 ## 1. Goal
@@ -56,13 +56,31 @@ shape and order never change beyond digit glyphs.
 it from there. It checks: the checkout is on `uat`, a clean tree, `origin/uat` fetched
 and merged, the version not lower than the landing version of row 39, row 39 DONE in
 the queue, every anchor under `scripts/anchors/` counts exactly 1. It ends
-`PREFLIGHT OK`.
+`PREFLIGHT OK`. The preflight is the job-start gate: it was satisfied at `6195ab1f`
+before step 01 (LOG records `PREFLIGHT OK`, then 7 anchors). The seven original
+anchors pin pre-step text that steps 01 to 03 have since changed, so they count 0 at
+the resume point: do not re-run the preflight there. A1's five anchors were each
+verified to count 1 at `e827326d` directly, and step 03b's own anchor check uses only
+those five.
 
 ## 4. Background the executor needs
 
 The code map, one line per file (anchors carry the verbatim regions):
 
 - `shared/i18n/digits.ts` (new) - the localiser this job adds.
+- `hooks/usePrayer.ts` - `getShownTime`, the list's display edge: it returns
+  the stored `HH:mm` string itself (`row.time` / `nextOccurrence.time`), so the
+  main rows and the overlay's next occurrence never pass through
+  `formatPrayerTime`. Only the night rows compose through it
+  (`shared/prayer.ts` feeds `formatPrayerTime`). Step 03b wraps this edge.
+  (A1: the original census wrongly counted the list rows among
+  `formatPrayerTime`'s callers.)
+- `shared/widgetTimeline.ts` - the widget props baker: `buildDayList`'s row
+  time, the timeline entry's `nextTime`, the stale entry's `nextTime` and the
+  Android snapshot's readable row time all bake raw `prayer.time`; the epochs
+  stay numeric. Step 03b wraps the four bakes. (A1: the original census
+  missed this file; the design's own words rule it - "widget props bake
+  localised digits at push time".)
 - `shared/i18n/index.ts` - `t()` and the `{token}` substitution (the
   `bridge-substitution` anchor); `ParamsOf`.
 - `shared/time.ts` - the six functions that feed eight of the fifteen digit edges:
@@ -143,7 +161,9 @@ loader and capture lessons, and the griller pass.
    notification and channel sites. Weight 2.
 3. `03-point-fixes.md` - SoundItem's local m:ss, the widget ALabel, the legacy footer
    render, the stepper's raw value, the v1 fallback literals. Weight 2.
-4. `04-tests-and-records.md` - the pinned assertions flip locale-aware (en stays
+4. `03b-shown-time-and-widget-bakes.md` - the list's shown time and the four widget
+   time bakes (A1). Weight 2.
+5. `04-tests-and-records.md` - the pinned assertions flip locale-aware (en stays
    byte-identical), the width re-measure proof, LOG and queue records. Weight 1.
 
 ## 7. Device proof
@@ -187,3 +207,18 @@ ruled. Progress table. The four-line handoff.
 ## Resume from
 
 The frontier is closed and the facts are in. The griller pass runs next.
+
+## 13. Amendment A1 (2026-10-12): two census edges the map missed
+
+Execution stopped inside step 4: the sweep's ar twins proved the list's main
+rows and the widget time bakes still render Latin. Both surfaces sit inside
+section 1's DONE definition ("list times", "widget times"), so the owner's
+rulings already cover them; the defect was the census, which counted the list
+rows among `formatPrayerTime`'s callers and never mapped
+`shared/widgetTimeline.ts`. Section 4 now carries the corrected map and
+section 6 carries step 03b, proven red to green in a scratch worktree at
+`e827326d` (observed: each of the three twins failed alone, the change turned
+the three suites and every pinning suite green, tsc and Biome exit 0, the
+break reproduced `Expected "١٧:٤٥"` / `Received "17:45"` and restore passed).
+The defect twins from the stopped sweep move into step 03b; step 04 re-applies
+the preserved remainder.
