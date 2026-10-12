@@ -1,0 +1,3 @@
+  'prayer.isha': 'ईशा',
+  'prayer.midnight': 'इस्लामी आधी रात',
+  'prayer.last third': 'अंतिम तिहाई',

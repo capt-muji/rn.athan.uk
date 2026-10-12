@@ -1,0 +1,5 @@
+  const isStandard = type === ScheduleType.Standard;
+  // Read inside the hook so the remount after a switch re-subscribes under the new locale's key
+  const maxEnglishWidth = useAtomValue(englishWidthAtomFor(type));
+
+  // Filter prayers to current displayDate
