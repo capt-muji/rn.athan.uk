@@ -90,7 +90,7 @@ droppable; the failures would be unrelated noise); probing on `uat` (D80,
 ## 6. Steps
 
 - [x] Step 1: the reader inventory (`steps/1-inventory.md`)
-- [ ] Step 2: the removal probe (`steps/2-probe.md`)
+- [x] Step 2: the removal probe (`steps/2-probe.md`)
 - [ ] Step 3: the recommendation (`steps/3-recommendation.md`)
 
 ## 7. Device proof

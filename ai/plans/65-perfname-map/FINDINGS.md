@@ -261,3 +261,132 @@ code.
 
 Counts per group: machinery 13, machinery tests and mock 61, sheet wiring 20,
 call sites 60, UI-suite observers 32, scripts and gate usage 5 — 191 rows.
+
+## Section 2: the removal probe
+
+Method (D80): a throwaway detached worktree at uat `85c2142e`
+(`$HOME/athan-gitree/worktrees/probe-65`, node_modules symlinked from the
+repository), nine files edited to the step's list and nothing committed:
+
+- `components/sheets/parts/Sheet.tsx`: the `perfName` prop, its type entry
+  and doc, the marks in `handleAnimate`, the measures in `handleChange`, the
+  prop's dependency-array entries.
+- The five screens: the `perfName={...}` props and the now-unused constants
+  (`SHEET_PERF_NAME` in Sound, Qibla, Alert, Language; `SETTINGS_PERF_NAME`
+  in Settings).
+- `components/sheets/parts/{SoundItem,LabeledToggle}.tsx`: the `perfMark`
+  tap calls.
+- `stores/ui.ts`: the five `perfMark('sheet_*_present')` calls.
+
+The worktree was deleted after the runs (`git worktree list` shows no
+probe-65 entry). `shared/perf.ts` and every non-sheet mark stayed untouched.
+
+One command deviation, recorded for the audit: the plan's
+`--selectProjects=components,unit` matched no projects under this Jest (the
+comma form is not accepted), so the run passed the flag twice
+(`--selectProjects=components --selectProjects=unit`). Same projects, same
+suites, everything else verbatim.
+
+### What fails
+
+`npx tsc --noEmit` exits 1 with four errors, all in
+`components/sheets/parts/__tests__/Sheet.test.tsx` (`:208`, `:217`, `:225`,
+`:236`), each verbatim:
+
+```
+error TS2353: Object literal may only specify known properties, and 'perfName' does not exist in type 'Partial<SheetProps>'.
+```
+
+The observer suite passes the prop by name, so the prop's deletion is a type
+error the compiler names. tsc flags no unused import (`noUnusedLocals` is
+off); that surface belongs to Biome below.
+
+`npx biome check . --error-on-warnings` exits 1 with five warnings and one
+error:
+
+- `lint/correctness/noUnusedImports` on `Sheet.tsx:15`
+  (`perfMark, perfMeasure`), `SoundItem.tsx:10`, `LabeledToggle.tsx:4` and
+  `stores/ui.ts:6` (each `perfMark`) — the imports the deletions orphan.
+- `lint/correctness/noUnusedFunctionParameters` on `Sheet.tsx:153`:
+  `handleAnimate`'s `toIndex` parameter served only the deleted marks.
+- A format error in `Alert.tsx`: the prop's line carried the JSX closing
+  bracket, so its deletion leaves `onDismiss={handleDismiss}` and `>` on
+  lines the formatter would join.
+
+`npx jest components/sheets stores/__tests__/ui.test.ts` (both projects):
+3 suites failed, 16 passed; 9 tests failed, 430 passed, 439 total. The
+failures, verbatim:
+
+- `Sheet.test.tsx` — "the settings sheet in a measurement build":
+  - "marks a move towards 0 as sheet_settings_animate" (`:212`):
+    `expect(perfMark).toHaveBeenCalledTimes(1)` received 0.
+  - "marks a move towards -1 as sheet_settings_close_start" (`:212`): same,
+    0 calls.
+  - "marks a move towards null as sheet_settings_close_start" (`:212`):
+    same, 0 calls.
+  - "measures the open from the present and from the animation start once
+    it settles open" (`:229`): `perfMeasure.mock.calls` was `[]`, expected
+    `[['sheet_settings_open', 'sheet_settings_present'],
+    ['sheet_settings_open_anim', 'sheet_settings_animate']]`.
+  - "measures the close from its start once it settles closed" (`:240`):
+    `[]`, expected `[['sheet_settings_close', 'sheet_settings_close_start']]`.
+- `SoundItem.test.tsx`:
+  - "marks a tap on the row as a selection of its place for a measurement
+    build" (`:92`): `[]`, expected `[['sound_select_tap', { index: 2 }]]`.
+  - "marks a tap on its play button as a play of its place for a
+    measurement build" (`:100`): `[]`, expected
+    `[['sound_play_tap', { index: 2 }]]`.
+- `LabeledToggle.test.tsx`:
+  - "marks one toggle tap with its label for a measurement build when the
+    label is pressed" (`:60`): `[]`, expected
+    `[['toggle_tap', { label: 'Show seconds' }]]`.
+  - the same test's "when the switch is pressed" row (`:60`): same failure.
+
+The five `sheet_*_present` marks in `stores/ui.ts` break no test:
+`stores/__tests__/ui.test.ts` passes, because no suite asserts them. Their
+only consumers were the open measures that started from them, so deleting
+both leaves nothing dangling; the flags name only the orphaned import.
+
+### What holds
+
+Each claim names its proof from the same run (16 suites passed, 430 tests):
+
+- The five screen suites — `Settings.test.tsx`, `Sound.test.tsx`,
+  `Qibla.test.tsx`, `Alert.test.tsx`, `Language.test.tsx` — pass with the
+  props and constants gone.
+- `stores/__tests__/ui.test.ts` passes with the present marks gone.
+- The remaining parts suites pass: `Sheet.test.tsx`'s other describes
+  (back button, snap points, first-present, "a sheet with no perf name",
+  whose not-called assertions hold trivially), `Header`, `SegmentedControl`,
+  `Shared`, `Stepper`, `Toggle`, `SheetHost`, `reminderStep`, `alertDraft`,
+  `ColorPicker`, `soundSheet`.
+- Scope note: the probe ran the plan's command only
+  (`components/sheets` plus `ui.test.ts`). The machinery suites
+  (`perf.test.ts`, `perfBackgroundFlush.test.ts`) were not run in the
+  worktree; nothing in the probe touches `shared/perf.ts`, and the full
+  suite at uat `85c2142e` (step 1's commit hook) passed 5471 tests.
+
+### e2e and scripts after the deletion
+
+A grep over `e2e/` and `scripts/` for `perfName`, `perfMark`, `perfMeasure`
+and the `sheet_` mark names returns exactly the expected set and no more:
+
+- `scripts/scan-strings.mjs:23` — the `NON_DISPLAY_CALLEES` regex listing
+  the symbol names; a non-caller, so the deletion breaks nothing there.
+- `e2e/scripts/baseline-compare.sh:6,39` and `e2e/README.md:43` — the
+  gate's `EXPO_PUBLIC_PERF_MONITOR` usages (uppercase; they match the
+  gate-term grep, not the four patterns above), unaffected by the sheet
+  wiring.
+- Seven `sheet_*` lines in `e2e/baselines/android-3t.json` (`:6, :7, :8,
+  :17, :25, :28, :30`).
+
+### The orphaning cost
+
+`e2e/baselines/android-3t.json` would carry seven dead keys if the measures
+died: the medians `sheet_alert_open` (456), `sheet_settings_open` (370),
+`sheet_sound_open` (807), `sheet_settings_close` (202), and the notes
+`sheet_alert_entrance`, `sheet_animation_config`, `sound_sheet_mount_cap`.
+Nothing errors — `baseline-compare.sh` diffs the marks a capture actually
+contains, so keys with no captured mark simply stop matching — but the
+historical baselines for sheet open/close become unreadable data. No hit
+beyond the expected four appeared, so no reader contradicts section 1.
