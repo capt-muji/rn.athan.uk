@@ -52,9 +52,9 @@ if (mode === 'import') {
 describe('the catalog as its own transfer format', () => {
   it('replaces {name} and {n} and throws on a missing parameter', () => {
     expect(t('notification.now', { name: 'Fajr' })).toBe('Fajr now');
-    expect(t('notification.reminder', { name: 'Fajr', n: 15 })).toBe('Fajr in 15m');
-    expect(t('notification.reminder', { name: 'Last Third', n: 30 })).toBe('Last Third in 30m');
-    expect(t('channel.reminder', { name: 'Fajr', n: 15 })).toBe('Fajr in 15m Reminder');
+    expect(t('notification.reminder', { name: 'Fajr', n: 15 })).toBe('Fajr in 15');
+    expect(t('notification.reminder', { name: 'Last Third', n: 30 })).toBe('Last Third in 30');
+    expect(t('channel.reminder', { name: 'Fajr', n: 15 })).toBe('Fajr in 15 Reminder');
 
     // The runtime guard must hold even when a caller lies its way past the typing
     expect(() => t('notification.now', {} as unknown as ParamsOf<'notification.now'>)).toThrow(

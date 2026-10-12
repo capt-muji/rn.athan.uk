@@ -308,17 +308,17 @@ describe('genNotificationContent', () => {
       t('notification.reminder', { name: prayerLabel('fajr'), n: 15 })
     );
     expect(genNotificationContent('fajr', AlertType.Silent, 0).title).toBe('Fajr now');
-    expect(genReminderNotificationContent('fajr', 15, AlertType.Silent).title).toBe('Fajr in 15m');
+    expect(genReminderNotificationContent('fajr', 15, AlertType.Silent).title).toBe('Fajr in 15');
   });
 
   it('builds the reminder title with native digits under ar', () => {
     try {
       setActiveLocale('ar');
-      expect(genReminderNotificationContent('asr', 15, AlertType.Silent).title).toBe('العصر بعد ١٥ د');
+      expect(genReminderNotificationContent('asr', 15, AlertType.Silent).title).toBe('العصر بعد ١٥');
     } finally {
       setActiveLocale('en');
     }
-    expect(genReminderNotificationContent('asr', 15, AlertType.Silent).title).toBe('Asr in 15m');
+    expect(genReminderNotificationContent('asr', 15, AlertType.Silent).title).toBe('Asr in 15');
   });
 
   it('includes sound for Sound alert type', () => {
@@ -686,13 +686,13 @@ describe('getReminderNotificationSound', () => {
 describe('genReminderNotificationContent', () => {
   it('creates content with correct title format', () => {
     const content = genReminderNotificationContent('fajr', 15, AlertType.Sound);
-    expect(content.title).toBe('Fajr in 15m');
+    expect(content.title).toBe('Fajr in 15');
     expect(content.body).toBeUndefined();
   });
 
   it('creates content with different intervals', () => {
-    expect(genReminderNotificationContent('dhuhr', 5, AlertType.Sound).title).toBe('Dhuhr in 5m');
-    expect(genReminderNotificationContent('asr', 30, AlertType.Sound).title).toBe('Asr in 30m');
+    expect(genReminderNotificationContent('dhuhr', 5, AlertType.Sound).title).toBe('Dhuhr in 5');
+    expect(genReminderNotificationContent('asr', 30, AlertType.Sound).title).toBe('Asr in 30');
   });
 
   it('includes sound for Sound alert type', () => {
@@ -734,7 +734,7 @@ describe('createReminderAndroidChannel', () => {
       expect(setNotificationChannelAsync).toHaveBeenCalledWith(
         'reminder_fajr_15_v3',
         expect.objectContaining({
-          name: 'Fajr in 15m Reminder',
+          name: 'Fajr in 15 Reminder',
           sound: 'reminder_fajr_15.mp3',
           importance: AndroidImportance.HIGH,
           enableVibrate: true,
@@ -771,7 +771,7 @@ describe('createReminderAndroidChannel', () => {
 
         expect(setNotificationChannelAsync).toHaveBeenCalledWith(
           'reminder_magrib_15_v3',
-          expect.objectContaining({ name: 'تنبيه المغرب بعد ١٥ د' })
+          expect.objectContaining({ name: 'تنبيه المغرب بعد ١٥' })
         );
       } finally {
         setActiveLocale('en');

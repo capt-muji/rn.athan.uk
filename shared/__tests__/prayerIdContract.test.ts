@@ -110,7 +110,7 @@ describe('the prayer identifier contract, frozen 2026', () => {
     expect(catalog).toContain("'channel.athan': 'Athan {n}'");
     expect(catalog).toContain("'channel.extras': 'Extra Times'");
     expect(shared).toContain("name: t('channel.reminder', { name: prayerLabel(id), n: intervalMinutes })");
-    expect(catalog).toContain("'channel.reminder': '{name} in {n}m Reminder'");
+    expect(catalog).toContain("'channel.reminder': '{name} in {n} Reminder'");
   });
 
   it('pins the daily-prayer truth table', () => {
