@@ -1,0 +1,14 @@
+  text: {
+    /** Primary text: active prayers, main content */
+    primary: '#ffffff',
+    /** Secondary text: labels, descriptions */
+    secondary: 'rgba(160, 200, 255, 0.54)',
+    /** Muted text: inactive prayers, timestamps */
+    muted: 'rgba(138, 169, 214, 0.38)',
+    /** Disabled/hint text */
+    disabled: 'rgba(146, 211, 255, 0.65)',
+    /** Emphasis text: info box titles */
+    emphasis: 'rgba(224, 231, 255, 1)',
+    /** Every supporting line under a sheet's own title, so they all read as one voice */
+    sheetSubtitle: 'rgba(86, 134, 189, 0.725)',
+  },
