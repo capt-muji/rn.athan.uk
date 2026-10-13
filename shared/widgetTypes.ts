@@ -17,8 +17,10 @@ import type { PrayerId } from './constants';
  * `id ?? name` so a future locale's colliding names stay distinct).
  * v7: every entry carries a precomposed localized `footer` beside the
  * `dateLabel` it shortens from.
+ * v8: every entry carries rtl, the widget direction the runtime will read
+ * when the Host renders (blocked, P16).
  */
-export const WIDGET_PROPS_VERSION = 7;
+export const WIDGET_PROPS_VERSION = 8;
 
 /**
  * Current schema version of the Android widget snapshot contract. Android has
@@ -29,8 +31,9 @@ export const WIDGET_PROPS_VERSION = 7;
  * arrives baked as `strings` (the layout imports nothing).
  * v3: every day carries a precomposed localized `footer` beside its
  * `dateLabel`, mirroring the iOS entry field.
+ * v4: the snapshot carries rtl beside its baked strings (blocked, P16).
  */
-export const ANDROID_SNAPSHOT_VERSION = 3;
+export const ANDROID_SNAPSHOT_VERSION = 4;
 
 /**
  * Which palette a home widget renders: 'light' or 'dark'. This is a
@@ -140,6 +143,12 @@ export interface PrayerWidgetProps {
    * card instead of silently stale times. Absent on normal entries.
    */
   stale?: boolean;
+  /**
+   * Whether the app locale this blob was composed for is RTL. Stamped for the
+   * widget runtime's direction once it renders a Host; blobs from the prior
+   * schema read as false.
+   */
+  rtl?: boolean;
 }
 
 /**
@@ -231,4 +240,10 @@ export interface PrayerWidgetAndroidProps {
    * app versions, which the layout renders with its English fallback.
    */
   strings: WidgetStrings;
+  /**
+   * Whether the app locale this blob was composed for is RTL. Stamped for the
+   * widget runtime's direction once it renders a Host; blobs from the prior
+   * schema read as false.
+   */
+  rtl?: boolean;
 }
