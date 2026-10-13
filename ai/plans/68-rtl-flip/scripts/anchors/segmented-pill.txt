@@ -1,8 +1,0 @@
-  const translateXPercent = useDerivedValue(() => {
-    const target = selectedIndex * 100;
-    if (isFirstEvaluation.value) {
-      isFirstEvaluation.value = false;
-      return target;
-    }
-    return withTiming(target, { duration: ANIMATION.duration });
-  });
