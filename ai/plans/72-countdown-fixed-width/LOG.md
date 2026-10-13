@@ -57,3 +57,12 @@ removed by step 2 (the sweep's `toEqual` fails on stale entries both ways). Find
 two biome format errors on step-verbatim snippets; ruled the repo's format gate wins —
 contract code is semantic, Biome's formatted form is what lands, noted in step 2.
 
+
+Replan round four (2026-10-13): the coverage gate refused the verbatim helpers —
+`hideSeconds = false` and `labels = durationLabels()` default parameters each had one
+side unreachable by construction (the dispatcher always passes hideSeconds, always
+omits labels). Ruled: strip both defaults, the helpers take required parameters, the
+dispatchers pass `durationLabels()` explicitly (behaviour-neutral; `formatTime` own
+`hideSeconds = false` stays, both branches are tested). Step 1 contracts amended;
+execution re-applies the r4 patch over this ruling and re-takes the version at commit
+(replan commit takes 2.0.202, so the step commit takes the next free patch after it).
