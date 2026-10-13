@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useDerivedColor } from '@/hooks/useAnimation';
@@ -10,6 +10,7 @@ import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SPACING, TEXT, UNAVAILABLE_TIME } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
+import { splitSingleColon } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
@@ -54,9 +55,21 @@ export default function PrayerTime({ type, index }: Props) {
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
 
+  const parts = displayTime === UNAVAILABLE_TIME ? null : splitSingleColon(displayTime);
+
   return (
     <View style={[styles.container]}>
-      <Animated.Text style={[styles.text, colorStyle]}>{displayTime}</Animated.Text>
+      <Animated.Text style={[styles.text, colorStyle]} accessibilityLabel={parts === null ? undefined : displayTime}>
+        {parts === null ? (
+          displayTime
+        ) : (
+          <>
+            {parts[0]}
+            <Text style={styles.colon}>{'\u2009\u2009:\u2009\u2009'}</Text>
+            {parts[1]}
+          </>
+        )}
+      </Animated.Text>
     </View>
   );
 }
@@ -73,5 +86,8 @@ const styles = StyleSheet.create({
     fontSize: ty.size(TEXT.size),
     textAlign: 'center',
     marginStart: SPACING.lg - 1,
+  },
+  colon: {
+    opacity: 0.4,
   },
 });
