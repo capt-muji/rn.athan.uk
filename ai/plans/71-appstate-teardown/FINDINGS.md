@@ -90,3 +90,86 @@ The reload site: `stores/language.ts:77-89`, the D59 branch, `await Updates.relo
 > non-fatal log line per RTL boundary crossing is the whole cost; silencing it from inside
 > this repo means patching RN core, which section 5 rejects, so the fix-if-so branch stays
 > untaken.
+
+## 7. The crossing pinned on the 3T
+
+Measured on the mock build (production package id com.mugtaba.athan, versionName 2.0.190,
+floor test device), 2026-10-13: one RTL boundary crossing, en to ar, captured in one
+process. The verbatim block below is transcribed from logcat-drive1-full.txt and
+cross-checked against NOTES.md.
+
+### The exception block, verbatim
+
+```
+10-13 08:45:33.305 21009 21009 W unknown:BridgelessReact: ReactHost{0}.raiseSoftException(callWithExistingReactInstance(callFunctionOnModule("RCTDeviceEventEmitter", "emit"))): Execute: reactInstance is null. Dropping work.
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: Unhandled SoftException
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: com.facebook.react.bridge.ReactNoCrashSoftException: raiseSoftException(callWithExistingReactInstance(callFunctionOnModule("RCTDeviceEventEmitter", "emit"))): Execute: reactInstance is null. Dropping work.
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at com.facebook.react.runtime.ReactHostImpl.i(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:22)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at am6.a(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:59)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at u88.run(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:12)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at oj9.execute(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:45)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at v88.a(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:43)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at r88.a(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:90)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at u88.run(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:29)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at oj9.execute(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:45)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at e64.a(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:9)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at v88.b(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:37)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at v88.g(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:10)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at com.facebook.react.runtime.ReactHostImpl.a(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:56)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at ue0.emitDeviceEvent(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:18)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at com.facebook.react.modules.appstate.AppStateModule.sendEvent(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:15)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at com.facebook.react.modules.appstate.AppStateModule.sendAppStateChangeEvent(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:7)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at com.facebook.react.modules.appstate.AppStateModule.onHostPause(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:5)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at com.facebook.react.bridge.ReactContext.onHostPause(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:28)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at dm6.a(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:254)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at u88.run(r8-map-id-3a8d615f8f5c02eb2bb361a04e0934dee312aae3d1aa905a5d807fa61c21bd15:29)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at android.os.Handler.handleCallback(Handler.java:873)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at android.os.Looper.loop(Looper.java:193)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at android.app.ActivityThread.main(ActivityThread.java:6863)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at java.lang.reflect.Method.invoke(Native Method)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:537)
+10-13 08:45:33.306 21009 21009 E unknown:ReactHost: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:858)
+```
+
+### Counts and readings
+
+- Exception blocks naming AppStateModule.onHostPause in the capture: 1
+- pid before / after: 21009 / 21009 (unchanged)
+- Marker line `APP: feature flags resolved` after the block: 1, at 08:45:34.702
+- Exception-to-marker span: 1.397 s (the row 68 record: about 1.5 s)
+- FATAL EXCEPTION lines: 0
+- Alarm dumps: alarm-after-drive1.txt under sessions/71/; trigger-time movement across the
+  reload is the mock's per-download re-seed (row 55's record) and not a finding
+- Unrelated soft exceptions in the capture: none
+
+One cycle, one drive, one session: this section pins the line and the span; it states no
+rate. The rate is section 8's subject.
+
+## 8. The starvation: the reload is not the modeled constant
+
+The same session's other crossings did not reload. Recorded evidence, one session, one
+build (mock 2.0.190), one device; transcribed from NOTES.md's drive table:
+
+| Drive | Crossing | Face flipped | Exception block | Marker | Reload |
+| --- | --- | --- | --- | --- | --- |
+| 1 (pid 21009) | recovery ar→en (discarded, pre-baseline) | yes | yes | yes | yes |
+| 1 | crossing 1 en→ar | yes | yes | yes | yes |
+| 1 | crossing 2 ar→en | yes | no | no | no |
+| 2 (pid 22599) | crossing 1 en→ar | yes | no | no | no |
+| 3 (pid 23273) | recovery ar→en (discarded, pre-baseline) | yes | yes | yes | yes |
+| 3 | crossing 1 en→ar | yes | no | no | no |
+
+Every starved crossing carries the same silent signature: the UI locale flips within
+about 0.9 s, the preference stores, and then nothing — no convergence dequeue line, no
+`LANGUAGE:` warn, no `Updates state change: Restart`, no exception, no marker, no FATAL;
+the app keeps ticking on the old tree in the new locale (observed past four minutes). The
+drive 3 post-mortem adds the once-per-process deferred launch init (`app/index.tsx`,
+1.5 s timeout, the `launchInitRan` latch) firing over four minutes after process start,
+so mount and timer timing around the language commits is not what the model assumes.
+
+What this section does not claim: a rate, a cause, or a production-build generalisation.
+What it changes: nothing in section 6's verdict — the drop is ordered and log-only
+whenever the reload fires, and the starved crossings log no exception at all. The
+investigation lives in queue row 78 (added from this evidence, 2026-10-13); the owner
+rules on its priority.
