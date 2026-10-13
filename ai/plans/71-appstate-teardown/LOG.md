@@ -40,3 +40,33 @@ the ordered reset-then-pause mechanism the sources carry, with five new anchors 
 task ref's initial value, the guard's instance flag, its delegate and the destroy step (10);
 the stack-walk window widened to 30 lines and the `test -x` gate given its expected silence
 (11, 12).
+
+### Step 1 — executed
+
+- Branch `docs/71-1-verdict` off `uat` at 730a3756 (2.0.189); origin/uat 053ffaab already an
+  ancestor, nothing to merge in.
+- Preflight: `bash "$TMPDIR/preflight-71.sh"` printed `PREFLIGHT OK`.
+- Anchor check: nineteen lines, every count `1`, run before and after the change.
+- Red: FINDINGS.md absent.
+- Read-against-source: every citation opened at its lines and read as claimed —
+  `stores/language.ts:38,77-89,83`; `device/listeners.ts:17,24-25,27,79`; `app/index.tsx:100,108`;
+  `shared/perf.ts:34,205`; `hooks/useNotification.ts:37,44`; `components/ui/Error.tsx:30`;
+  `AppStateModule.kt:46-49,63-72` (guard read at `:68`); `ReactContext.java:321-334`;
+  `ReactHostImpl.kt:129-130,347-348,897-908,916-926,1316-1317,1330-1336,1385-1392` (the `:1387`
+  line carries the `4: Destroying ReactInstance` marker, the field cleared at `:1392`);
+  `BridgelessReactContext.kt:109,159-164`; `ReactSoftExceptionLogger.kt:68-77`;
+  `RestartReactAppExtensions.kt:28-32`; `UpdatesModule.kt:65-68`.
+- Green: `GREEN`; `grep -c "file:line\|file:line citation" FINDINGS.md` printed `1`; anchor
+  check nineteen `1`.
+- Break script: none; the step writes documentation.
+- Version 2.0.190 taken under the lock: local 2.0.189, origin/uat 2.0.187, next patch over the
+  higher; set in `app.json`, then `package.json`, then `android/app/build.gradle` `versionName`.
+- Commit 7cce6f1e: hook printed `Tests: 5500 passed, 5500 total` and 100% on statements,
+  branches, functions and lines. Review (two passes, `git show` read cold): checklist items 1
+  to 5 all pass; section 3, 4 and 6 blockquotes byte-identical to the step file's; section 5
+  copied verbatim from PLAN.md items 1 to 4 as dictated, whose internal PLAN.md section
+  pointers therefore read as FINDINGS pointers inside the doc (the plan's own text, noted, not
+  repaired); no code or test file in the diff; no lifecycle, worklet, residue or rule finding
+  (docs-only change).
+
+session: ses_ecbdc9399ffeRTygBGwGfVM2xy
