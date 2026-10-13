@@ -43,55 +43,55 @@ const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs,
 // =============================================================================
 
 describe('formatTime', () => {
-  it('returns "0s" for negative seconds', () => {
-    expect(formatTime(-100)).toBe('0s');
-    expect(formatTime(-1)).toBe('0s');
+  it('clamps negative seconds to the zero shape', () => {
+    expect(formatTime(-100)).toBe('00:00:00');
+    expect(formatTime(-1)).toBe('00:00:00');
   });
 
   it('formats seconds', () => {
-    expect(formatTime(0)).toBe('0s');
-    expect(formatTime(45)).toBe('45s');
-    expect(formatTime(59)).toBe('59s');
-    expect(formatTime(5, true)).toBe('5s'); // seconds alone: the break target for the lettered shape
+    expect(formatTime(0)).toBe('00:00:00');
+    expect(formatTime(45)).toBe('00:00:45');
+    expect(formatTime(59)).toBe('00:00:59');
+    expect(formatTime(5, true)).toBe('00:00:05');
   });
 
   it('formats minutes', () => {
-    expect(formatTime(60)).toBe('1m'); // whole minute
-    expect(formatTime(61)).toBe('1m 1s');
-    expect(formatTime(90)).toBe('1m 30s');
-    expect(formatTime(599)).toBe('9m 59s');
+    expect(formatTime(60)).toBe('00:01:00'); // whole minute
+    expect(formatTime(61)).toBe('00:01:01');
+    expect(formatTime(90)).toBe('00:01:30');
+    expect(formatTime(599)).toBe('00:09:59');
   });
 
   it('formats hours', () => {
-    expect(formatTime(3600)).toBe('1h');
-    expect(formatTime(3665)).toBe('1h 1m 5s');
-    expect(formatTime(7200)).toBe('2h');
+    expect(formatTime(3600)).toBe('01:00:00');
+    expect(formatTime(3665)).toBe('01:01:05');
+    expect(formatTime(7200)).toBe('02:00:00');
   });
 
   it('converts days to hours', () => {
-    expect(formatTime(90000)).toBe('25h'); // whole hours, no trailing "0s"
+    expect(formatTime(90000)).toBe('25:00:00'); // days fold into hours, never a day unit
   });
 
   it('handles the 24h and multi-day boundaries', () => {
-    expect(formatTime(86399)).toBe('23h 59m 59s');
-    expect(formatTime(86400)).toBe('24h'); // exactly one day, no "0s"
-    expect(formatTime(90061)).toBe('25h 1m 1s'); // day + hour + minute + second
+    expect(formatTime(86399)).toBe('23:59:59');
+    expect(formatTime(86400)).toBe('24:00:00'); // exactly one day folds to 24 hours
+    expect(formatTime(90061)).toBe('25:01:01'); // day + hour + minute + second
   });
 
   describe('hideSeconds option', () => {
     it('shows seconds when hideSeconds=false (default)', () => {
-      expect(formatTime(3665, false)).toBe('1h 1m 5s');
-      expect(formatTime(3665)).toBe('1h 1m 5s');
+      expect(formatTime(3665, false)).toBe('01:01:05');
+      expect(formatTime(3665)).toBe('01:01:05');
     });
 
     it('hides seconds when hideSeconds=true and time > 599s', () => {
-      expect(formatTime(3665, true)).toBe('1h 1m');
-      expect(formatTime(600, true)).toBe('10m');
+      expect(formatTime(3665, true)).toBe('01:01');
+      expect(formatTime(600, true)).toBe('00:10');
     });
 
     it('shows seconds in last 10 minutes even with hideSeconds=true', () => {
-      expect(formatTime(599, true)).toBe('9m 59s');
-      expect(formatTime(45, true)).toBe('45s');
+      expect(formatTime(599, true)).toBe('00:09:59');
+      expect(formatTime(45, true)).toBe('00:00:45');
     });
 
     /**
@@ -100,11 +100,11 @@ describe('formatTime', () => {
      * 599s do they drop. Pinned so the two cannot disagree again.
      */
     it('draws the hideSeconds threshold at 599s, not at 60s', () => {
-      expect(formatTime(61, true)).toBe('1m 1s');
-      expect(formatTime(120, true)).toBe('2m'); // a whole minute drops "0s" regardless
-      expect(formatTime(599, true)).toBe('9m 59s'); // last second that still shows seconds
-      expect(formatTime(600, true)).toBe('10m');
-      expect(formatTime(601, true)).toBe('10m');
+      expect(formatTime(61, true)).toBe('00:01:01');
+      expect(formatTime(120, true)).toBe('00:02:00');
+      expect(formatTime(599, true)).toBe('00:09:59'); // last second that still shows seconds
+      expect(formatTime(600, true)).toBe('00:10');
+      expect(formatTime(601, true)).toBe('00:10');
     });
 
     it('draws the fixed-width shapes under ar', () => {
@@ -131,12 +131,12 @@ describe('formatTime', () => {
    */
   describe('JSDoc contract', () => {
     it('pins every example in the JSDoc', () => {
-      expect(formatTime(3665)).toBe('1h 1m 5s');
-      expect(formatTime(3665, true)).toBe('1h 1m');
-      expect(formatTime(45, true)).toBe('45s');
-      expect(formatTime(0)).toBe('0s');
-      expect(formatTime(-100)).toBe('0s');
-      expect(formatTime(90000)).toBe('25h');
+      expect(formatTime(3665)).toBe('01:01:05');
+      expect(formatTime(3665, true)).toBe('01:01');
+      expect(formatTime(45, true)).toBe('00:00:45');
+      expect(formatTime(0)).toBe('00:00:00');
+      expect(formatTime(-100)).toBe('00:00:00');
+      expect(formatTime(90000)).toBe('25:00:00');
     });
   });
 
@@ -159,7 +159,7 @@ describe('formatTime', () => {
     });
 
     it('keeps Latin digits under en', () => {
-      expect(formatTime(10740)).toBe('2h 59m');
+      expect(formatTime(10740)).toBe('02:59:00');
     });
   });
 });
@@ -176,16 +176,16 @@ describe('formatTimeAgo', () => {
   });
 
   it('formats minutes', () => {
-    expect(formatTimeAgo(60)).toBe('1m');
-    expect(formatTimeAgo(120)).toBe('2m');
-    expect(formatTimeAgo(3599)).toBe('59m');
+    expect(formatTimeAgo(60)).toBe('0:01');
+    expect(formatTimeAgo(120)).toBe('0:02');
+    expect(formatTimeAgo(3599)).toBe('0:59');
   });
 
   it('formats hours and minutes', () => {
-    expect(formatTimeAgo(3600)).toBe('1h');
-    expect(formatTimeAgo(5400)).toBe('1h 30m');
-    expect(formatTimeAgo(7200)).toBe('2h');
-    expect(formatTimeAgo(7260)).toBe('2h 1m');
+    expect(formatTimeAgo(3600)).toBe('1:00');
+    expect(formatTimeAgo(5400)).toBe('1:30');
+    expect(formatTimeAgo(7200)).toBe('2:00');
+    expect(formatTimeAgo(7260)).toBe('2:01');
   });
 
   describe('native digits (D57)', () => {
@@ -201,7 +201,7 @@ describe('formatTimeAgo', () => {
     });
 
     it('keeps Latin digits under en', () => {
-      expect(formatTimeAgo(7260)).toBe('2h 1m');
+      expect(formatTimeAgo(7260)).toBe('2:01');
     });
   });
 
