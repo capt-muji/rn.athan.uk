@@ -1,5 +1,0 @@
-  // Clamped so the oval cannot overhang the track at either end (tipGeometry)
-  const tipPositionStyle = useAnimatedStyle(() => ({
-    left: tipLeftForProgress(widthValue.value),
-  }));
-
