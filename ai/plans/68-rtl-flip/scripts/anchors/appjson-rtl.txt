@@ -1,0 +1,4 @@
+      ],
+      ["expo-localization", { "supportsRTL": false }],
+      [
+        "expo-font",

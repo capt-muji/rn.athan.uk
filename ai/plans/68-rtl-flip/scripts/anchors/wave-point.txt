@@ -1,0 +1,9 @@
+export const wavePoint = (progress: number, width: number, height: number): WavePoint => {
+  'worklet';
+  const angle = progress * TURN;
+
+  return {
+    x: (width / 2) * Math.sin(angle),
+    y: height * Math.sin(angle) * Math.cos(angle),
+  };
+};

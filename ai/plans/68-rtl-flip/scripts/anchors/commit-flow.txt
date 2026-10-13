@@ -1,0 +1,10 @@
+export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
+  store.set(languageCommitBusyAtom, true);
+  try {
+    store.set(languagePreferenceAtom, locale);
+    setActiveLocale(locale);
+    await reconcileLanguageSurfaces();
+  } finally {
+    store.set(languageCommitBusyAtom, false);
+  }
+};
