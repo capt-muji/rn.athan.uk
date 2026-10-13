@@ -105,8 +105,8 @@ kill -0 "$(cut -d' ' -f3 $TMPDIR/79-devbuild.pid)" && echo "metro alive"
 
 ## Version and commit
 
-The version command (same as step 1) prints `2.0.234` (step 1 took it), so the
-step version is `2.0.235`. Set it in `app.json` (first), `package.json` and
+The version command (same as step 1) prints `2.0.235` (the step-1 ledger-truth commit took it), so the
+step version is `2.0.236`. Set it in `app.json` (first), `package.json` and
 `android/app/build.gradle`, all three matching. No prebuild and no native
 change: the dev build's bundle version label may lag one patch behind the
 repository version, which is cosmetic on a dev build and recorded in `LOG.md`
@@ -117,7 +117,7 @@ Commit, adding by name: `ai/plans/README.md`, this plan folder's `PLAN.md`,
 Message:
 
 ```
-2.0.235 - docs(79): the dev build installed for the owner's own iOS read
+2.0.236 - docs(79): the dev build installed for the owner's own iOS read
 ```
 
 ## Review checklist
@@ -131,7 +131,7 @@ Message:
 ## Merge
 
 ```
-git checkout uat && git merge --no-ff docs/79-dev-delivery -m "2.0.235 - merge docs/79-dev-delivery: step 2, ticket 79"
+git checkout uat && git merge --no-ff docs/79-dev-delivery -m "2.0.236 - merge docs/79-dev-delivery: step 2, ticket 79"
 ```
 
 ## Done when
