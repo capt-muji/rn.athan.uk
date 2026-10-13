@@ -108,7 +108,7 @@ docblocks and pins consistent, no lifecycle/thread/residue/rule findings.
 
 session: ses_ecaf448f0ffe67XG4Nv3GHF1dr
 
-### Step 2 — executed, break gate unresolved (STOP returned)
+### Step 2 — executed
 
 Branch `feat/72-render` off `uat` ad6a1c89 (2.0.203). Preflight: the five step anchors
 (display-atom, hero-render, ago-render, cascade-pair, derived-color) each count exactly 1;
@@ -166,6 +166,22 @@ Version re-taken under the lock: origin/uat unmoved, next patch 2.0.204 in app.j
 package.json, android/app/build.gradle. Queue row 72 moved to `IN PROGRESS, step 2`.
 
 session: ses_ecae3ad3effeVEDfDPmT8wLvKC
+
+Replan round five applied (2026-10-13, re-dispatch): the four positive GAP_COLON
+assertions query with the identity normalizer — `getByText(GAP_COLON, { normalizer:
+(s) => s })` in the ar hero pin and the colon-dim test, `getAllByText(GAP_COLON, {
+normalizer: (s) => s })` in the three-sections test, and the same normalizer on the ago
+gap test's `getByText` — because RTL's default normalizer collapses U+2009 and made the
+emptied-gap mutation invisible. The two negative `queryByText` pins keep the default
+normalizer: the ruling names only the positive queries. Green run: 3 suites, 24 passed;
+`npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0. Break script
+on the amended tests: `break applied: bright colon node, empty gap node`, both catches
+fired (`caught: bright colon node`, `caught: emptied gap node`), last line
+`ALL AS EXPECTED: 1`, exit 0, restore clean. Commit amended onto `66e516d3` (same
+message, version 2.0.204); hook lines and the amended and merge shas recorded
+post-merge.
+
+session: ses_ecad34b22ffe73JLSScwFdpXyv
 
 Replan round five (2026-10-13): the break script second catch was invisible to the
 plan-verbatim test because RTL default normalizer collapses U+2009, so the emptied-gap
