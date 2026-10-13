@@ -1,5 +1,0 @@
-const makeCountdownNameAtom = (source: Atom<CountdownStore>) =>
-  atom((get) => {
-    const name = get(source).name;
-    return name === COUNTDOWN_WAITING_NAME ? name : prayerLabel(name);
-  });
