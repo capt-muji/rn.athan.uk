@@ -1,0 +1,4 @@
+  const canDecrement = !disabled && nextDown !== null;
+  const canIncrement = !disabled && nextUp !== null;
+  const visible = localiseDigits(String(value));
+

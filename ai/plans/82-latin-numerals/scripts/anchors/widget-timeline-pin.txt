@@ -1,0 +1,5 @@
+    setActiveLocale('ar');
+    try {
+      const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
+      expect(entries[0].props.nextTime).toBe('١٧:٤٥');
+      expect(entries[0].props.prayers?.map((row) => row.time)).toContain('٠٣:٣٠');
