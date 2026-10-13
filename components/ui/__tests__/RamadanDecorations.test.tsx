@@ -4,6 +4,7 @@
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { london, onPlatform } from '@/__tests__/harness';
@@ -179,5 +180,24 @@ describe('the Ramadan decorations on Monday 15 February 2027 at 20:00, 8 Ramadan
     await act(() => store.set(decorationsEnabledAtom, true));
 
     expect(armed).toHaveBeenCalledTimes(armedWhenShown);
+  });
+
+  // R4.1: the decorations are drawn in window space, so each offset rides a transform under a
+  // left-to-right containing view rather than a swappable inset. The cloud is the site whose own
+  // inset was a constant, so its mirrored value is the one this suite can state outright
+  it('holds the cloud at its physical left edge through a transform, with no left key', async () => {
+    setClock('2027-02-15', '20:00');
+    await render(<RamadanDecorations />);
+
+    const cloud = sprites().find((sprite) => sprite.props.source[0].testUri.includes('cloud-'));
+    if (!cloud?.parent) throw new Error('The cloud sprite has not rendered');
+
+    const style = StyleSheet.flatten(cloud.parent.props.style) as {
+      left?: unknown;
+      transform?: { translateX?: number }[];
+    };
+
+    expect(style.transform?.[0]).toEqual({ translateX: 0 });
+    expect(style.left).toBeUndefined();
   });
 });
