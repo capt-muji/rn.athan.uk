@@ -161,3 +161,25 @@ describe('the Standard list on Friday 11 September 2026 at 14:00', () => {
     expect(cancelIdle).toHaveBeenCalledWith(idle.mock.results[0].value);
   });
 });
+
+describe('the gap below the list', () => {
+  it('renders at 75 percent of the old 30', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<List type={ScheduleType.Standard} />);
+
+    // Row 81: the owner's 25 percent cut of the list-to-ago gap
+    const rows = screen.root?.queryAll((node) => node.props.style !== undefined, { includeSelf: true }) ?? [];
+    const container = rows.find((node) => {
+      const style = Array.isArray(node.props.style) ? Object.assign({}, ...node.props.style) : node.props.style;
+      return style.marginHorizontal !== undefined && style.marginBottom !== undefined;
+    });
+    const style =
+      container === undefined
+        ? {}
+        : Array.isArray(container.props.style)
+          ? Object.assign({}, ...container.props.style)
+          : container.props.style;
+    expect(style.marginBottom).toBe(22.5);
+  });
+});
