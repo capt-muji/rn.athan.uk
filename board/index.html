@@ -29,8 +29,8 @@
   .dot { display: inline-block; width: 7px; height: 7px; border-radius: 7px; background: #3a4152; }
   .dot.on { background: var(--green); }
   #stamp.stale { color: var(--warn); }
-  #columns { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; padding: 8px 20px 20px; align-items: start; }
-  .tail-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(38, 45, 58, 0.6); }
+  #columns { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; padding: 8px 20px 20px; }
+  .tail-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(38, 45, 58, 0.6); }
   .column { background: var(--column); border-radius: 6px; padding: 12px; min-height: 120px; display: flex; flex-direction: column; gap: 10px; }
   .column-head { display: flex; justify-content: space-between; align-items: center; padding: 2px 2px 4px; }
   .column-head .name { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
@@ -74,10 +74,7 @@
   .foot-line { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
   .context { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
   .column-head.red-shared .name, .column-head.red-shared .count { color: var(--red); }
-  #foot { padding: 0 20px 20px; }
-  #foot h2 { font-size: 11px; font-family: var(--mono); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; font-weight: 500; }
-  #foot ul { margin: 0; padding: 0 0 0 14px; font-size: 12.5px; color: var(--muted); }
-  #error { color: var(--warn); font-family: var(--mono); font-size: 13px; padding: 0 20px 20px; }
+    #error { color: var(--warn); font-family: var(--mono); font-size: 13px; padding: 0 20px 20px; }
   @media (max-width: 430px) {
     header { flex-wrap: nowrap; align-items: center; padding: 14px 16px 10px; gap: 8px; }
     h1 { font-size: 15px; white-space: nowrap; }
@@ -265,26 +262,9 @@
     }
   }
 
-  function renderFoot() {
-    const foot = document.getElementById('foot');
-    foot.textContent = '';
-    const waiting = board.tickets.filter((ticket) => ticket.status !== 'DONE' && unmetOf(ticket).length > 0);
-    if (waiting.length === 0) return;
-    const runOrder = el('section');
-    runOrder.append(el('h2', null, 'Run order'));
-    const runList = el('ul');
-    for (const ticket of waiting) {
-      const unmet = unmetOf(ticket).map((need) => '#' + need).join(', ');
-      runList.append(el('li', null, '#' + ticket.order + ' ' + ticket.name + ' waits on ' + unmet));
-    }
-    runOrder.append(runList);
-    foot.append(runOrder);
-  }
-
   function render() {
     renderHeader();
     renderColumns();
-    renderFoot();
   }
 
   async function load() {
