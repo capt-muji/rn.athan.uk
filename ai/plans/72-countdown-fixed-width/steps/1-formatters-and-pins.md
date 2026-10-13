@@ -79,7 +79,7 @@ are the fixed-width table.
       setActiveLocale('ar');
       try {
         expect(formatTime(3665, true)).toBe('٠١:٠١');
-        expect(formatTime(120, true)).toBe('٠٠:٠٢');
+        expect(formatTime(120, true)).toBe('٠٠:٠٢:٠٠');
         expect(formatTime(599, true)).toBe('٠٠:٠٩:٥٩'); // last second that still shows seconds
         expect(formatTime(600, true)).toBe('٠٠:١٠');
         expect(formatTime(601, true)).toBe('٠٠:١٠');
@@ -97,7 +97,7 @@ are the fixed-width table.
   the docblock line it pinned.
 - `describe('native digits (D57)')`, `formatTime` block, values only:
   `formatTime(10740)` → `'٠٢:٥٩:٠٠'`; the branch test: `-100` → `'٠٠:٠٠:٠٠'`,
-  `45` → `'٠٠:٠٠:٤٥'`, `60` → `'٠١:٠٠:٠٠'`, `7200` → `'٠٢:٠٠:٠٠'`;
+  `45` → `'٠٠:٠٠:٤٥'`, `60` → `'٠٠:٠١:٠٠'`, `7200` → `'٠٢:٠٠:٠٠'`;
   `it('keeps Latin digits under en')`: `formatTime(10740)` → `'2h 59m'`.
 
 In `describe('formatTimeAgo')`:
