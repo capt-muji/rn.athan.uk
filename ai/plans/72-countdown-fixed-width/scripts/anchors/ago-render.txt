@@ -1,6 +1,0 @@
-  return (
-    <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>
-      {prayerAgo}
-    </Animated.Text>
-  );
-}

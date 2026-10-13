@@ -1,7 +1,0 @@
-export const useDerivedColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
-  const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
-  const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
-  return useAnimatedStyle(() => ({
-    color: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
-  }));
-};
