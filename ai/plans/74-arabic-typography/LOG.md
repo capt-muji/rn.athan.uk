@@ -25,9 +25,69 @@ sentence, the R1.2-to-digests tie, step 1's drift clause.
 
 Gate `PLAN OK` after both rounds.
 
-### Step 1 — pending
+### Step 1 — executed on lane/74, commit pending merge
 
-session: pending
+Ran in the dedicated lane worktree (dispatch, 2026-10-13): branch `lane/74`, branched from the
+pre-merge uat line at `cfb9b837` (2.0.201) plus this plan's own READY docs commit `7ac7e8ff`
+(2.0.203) — that tip is the red-build sha step 3 builds from. Steps 2 and 3 dispatch separately;
+the lead merges; nothing pushed.
+
+Preflight `bash "$TMPDIR/preflight-74.sh" 09` printed `PREFLIGHT FAILED` with exactly the two
+lane-setup deviations, both consequences of the dispatch's own setup and recorded verbatim:
+
+1. checkout is on 'lane/74', expected uat
+2. queue row 72 status is 'READY 2026-10-13', expected DONE (Needs first)
+
+Row 72 is mid-flight on the main checkout's own lane (`feat/72-reminder-copy`, 2.0.207-2.0.211
+local, unpushed); all ten anchors passed, 09 included (row 72's countdown rewrite has not landed
+on this lane's line, so it still counts 1). Step 1 touches no row-72 file; the drift schedule
+for steps 2 and 3 is unchanged.
+
+Red first: `shared/__tests__/typography.test.ts` written against the not-yet-existing module;
+`npx jest shared/__tests__/typography.test.ts --watchman=false --selectProjects=unit` failed
+with the expected import resolution error, verbatim: `Configuration error: Could not locate
+module @/shared/typography mapped as: $HOME/athan-gitree/lanes/74/$1` (typography.test.ts:9,
+jest-resolve createNoMappedModuleFoundError). No other suite ran.
+
+Fonts: downloaded from the pinned release URL in `$TMPDIR`, digests verified, then copied into
+`assets/fonts/` and re-verified byte-exact in place:
+
+- Regular `bdff3e5659d67e67def05b33f749683b9376ae819d65d3dd62ac4640b3aaef48` (pin matches)
+- Medium `5aaa32f0fe7fdd828342aea06a3c645edb51bcea2620af68b4c385a3b9fb0c42` (pin matches)
+- OFL.txt `a7a5a25eb188bf1cd96982030d53e23c33485c69b1044a562254226857ee13af` (pin matches)
+
+Green: `yarn validate` exit 0; `Tests: 2 skipped, 5502 passed, 5504 total`; coverage
+Statements/Branches/Functions/Lines all `100%`. One executor-side fix between red and green: the
+live-resolution tests first held the required module in an optional typed holder and tsc flagged
+`possibly undefined`; switched to local consts inside the `isolateModules` callback (house style,
+per flags.test.ts). Biome's organizeImports safe fix applied to the test's import line. The
+jotai "multiple instances" console.warn inside `isolateModules` is inherent to the plan's
+live-resolution pattern and not a failure.
+
+Mutation pass (R1.10), each revert verified before the next:
+
+1. `ARABIC_SIZE_FACTOR` to 1.0: first failure `Expected: 12, Received: 10` — the table's first
+   assertion, the 10-to-12 mapping line. Reverted.
+2. ar `familyMedium` to `'NotoSansArabic-Bold'`: first failure `Expected:
+   "NotoSansArabic-Medium", Received: "NotoSansArabic-Bold"` — the family assertion. Reverted.
+3. `typographyFor` returns `ARABIC` for `'ms'`: first failure `Expected: "Roboto-Regular",
+   Received: "NotoSansArabic-Regular"` — the ms identity assertion. Reverted.
+
+Version: next free patch taken from the MAIN checkout's log per the dispatch — its working tree
+sits at 2.0.211 (verified, past the 2.0.210 floor the dispatch named), so this step takes
+2.0.212 in `package.json` and `app.json`. No `android/app/build.gradle` exists in this lane
+(android/ is a prebuild output, gitignored); the lockstep test checks versionName only when a
+prebuild is present, so there was nothing to set on disk.
+
+app.json diff is exactly the version line and the two Noto entries after the two Roboto entries.
+A first python json round-trip reformatted the whole file; reverted and re-applied both edits
+surgically so the diff stays minimal. No component file changed in this step. The
+unused-exports allow-list entry `typographyFor` names step 2 as the consumer that removes it;
+the module docblock cites FONT-MEASUREMENTS.md by path, one line.
+
+commit: this commit, 2.0.212, on `lane/74` (the lead reads the sha at merge)
+
+session: ses_ecab0d857ffebRp3ZUP8kxPA2i
 
 ### Step 2 — pending
 
