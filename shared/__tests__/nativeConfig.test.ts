@@ -58,3 +58,9 @@ describe('the expo-widgets plugin config', () => {
     }
   });
 });
+
+describe('the expo-localization plugin config', () => {
+  it('ships supportsRTL true on the expo-localization plugin', () => {
+    expect(pluginProps('expo-localization')).toEqual({ supportsRTL: true });
+  });
+});

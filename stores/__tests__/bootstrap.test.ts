@@ -23,11 +23,12 @@ jest.mock('@/stores/version', () => ({
 }));
 
 const mockGetPrayerByDateString = jest.fn();
+const mockGetRawItem = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   getPrayerByDateString: (date: string) => mockGetPrayerByDateString(date),
   getItem: () => null,
-  getRawItem: () => undefined,
+  getRawItem: (key: string) => mockGetRawItem(key),
 }));
 
 const mockSetSequence = jest.fn();
@@ -48,14 +49,25 @@ import { ScheduleType } from '@/shared/types';
 // TEST HELPERS
 // =============================================================================
 
+// The isolated registry re-executes the react-native mock, so the direction spies
+// must be read from the same registry the module under test loads in
+let allowRTL!: jest.Mock;
+let forceRTL!: jest.Mock;
+
 /** Re-evaluates stores/bootstrap.ts so its import-time work runs against the current mocks */
 const requireFreshBootstrap = () => {
   let mod: typeof import('../bootstrap');
   jest.isolateModules(() => {
+    const { I18nManager } = require('react-native');
+    allowRTL = I18nManager.allowRTL;
+    forceRTL = I18nManager.forceRTL;
     mod = require('../bootstrap');
   });
   return mod!;
 };
+
+/** Primes the stored preference the launch-time direction read consults */
+const primeRawItem = (value: string | undefined) => mockGetRawItem.mockReturnValue(value);
 
 /** Minimal cached day - bootstrap only checks it is non-null before hydrating */
 const cachedDay = { date: '2026-09-12', fajr: '04:45', isha: '20:30' };
@@ -224,5 +236,30 @@ describe('bootstrapFromCache days it hydrates from', () => {
     requireFreshBootstrap();
 
     expect(askedDates()).toEqual(['2026-12-31', '2027-01-01', '2027-01-02']);
+  });
+});
+
+// =============================================================================
+// LAUNCH-TIME DIRECTION (R1.2)
+// =============================================================================
+
+describe('the launch-time direction', () => {
+  it('applies the stored direction before first render', () => {
+    primeRawItem('ar');
+    requireFreshBootstrap();
+    expect(allowRTL).toHaveBeenCalledWith(true);
+    expect(forceRTL).toHaveBeenCalledWith(true);
+  });
+
+  it('forces LTR when the stored preference is LTR', () => {
+    primeRawItem('en');
+    requireFreshBootstrap();
+    expect(forceRTL).toHaveBeenCalledWith(false);
+  });
+
+  it('leaves the device default when no preference is stored', () => {
+    primeRawItem(undefined);
+    requireFreshBootstrap();
+    expect(forceRTL).not.toHaveBeenCalled();
   });
 });

@@ -10,6 +10,13 @@ export const Platform = {
   select: (options: { ios?: unknown; android?: unknown; default?: unknown }) => options.ios ?? options.default,
 };
 
+// The direction the launch and boundary paths force, and the mirror sites read back
+export const I18nManager = {
+  allowRTL: jest.fn(),
+  forceRTL: jest.fn(),
+  getConstants: jest.fn(() => ({ isRTL: false })),
+};
+
 // Mock AppState (used by shared/perf.ts background flush)
 export const AppState = {
   currentState: 'active',
