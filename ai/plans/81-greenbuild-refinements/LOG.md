@@ -181,4 +181,36 @@ SPACING.xxxl * 0.75`. Green: the three suites 24 passed / 24 total, `npx tsc
 The commit's sha, hook line, review verdict, break line and merge sha are
 recorded by the step-5 commit's LOG update.
 
+Commit `32b6d6e7`: hook lines `Test Suites: 209 passed, 209 total`, `Tests:
+5549 passed, 5549 total`; coverage Statements 100% (5246/5246), Branches 100%
+(2269/2269), Functions 100% (1091/1091), Lines 100% (4700/4700).
+
+Review: read `git show 32b6d6e7` cold against the checklist. The badge's recent
+and normal colour paths byte-identical (only the colon node and the badge's top
+margin changed); the `now` word still renders one unsplit node with no gap
+node; both schedules read the same components, no per-type branch; only the
+listed files touched. No fix needed.
+
+Break script on uat after the merge: `caught: ago gap back to single`,
+`caught: ago colon opacity gone`, `caught: badge lift gone` and `caught: list
+gap back to 30`, all four catches fired, last line `ALL AS EXPECTED: 1`, tree
+clean after. Merge `2aa3076d`.
+
+session: ses_ec86711f7ffeZ93dcv3VZjG3T2
+
+### Step 5 — done
+
+Branch `docs/81-handover` off `uat` (`2aa3076d`, 2.0.245). Preflight
+`PREFLIGHT OK`. No source file changed. Metro verified serving from this Mac:
+`curl http://localhost:8081/status` answered `metro status 200` on the first
+read, the same server serving since ticket 79's delivery; the merged `uat` is
+the tree it watches, so her dev build reads the refinements on its next open.
+The owner's read of that build is the acceptance bar for every pinned default.
+Version 2.0.246 set in `app.json` (first), `package.json` and
+`android/app/build.gradle`, all three matching, under the version lock
+(origin/uat still held at 2.0.239).
+
+The commit's sha, hook line and merge sha are recorded by the executed docs
+commit's LOG update.
+
 session: ses_ec86711f7ffeZ93dcv3VZjG3T2
