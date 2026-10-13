@@ -60,7 +60,11 @@ case and the now-badge ar case are guard pins that pass at red and stay green.
 
 - Extend the `@/stores/ui` import with `showSecondsAtom`, add
   `import { COLORS } from '@/shared/constants';`, and define
-  `const GAP_COLON = '\u2009:\u2009';` beside `MAGRIB`.
+  `const GAP_COLON = '\u2009:\u2009';` beside `MAGRIB`. Every `getByText(GAP_COLON)`
+  assertion queries with an identity normalizer —
+  `getByText(GAP_COLON, { normalizer: (s) => s })` — because RTL's default normalizer
+  collapses U+2009 to nothing, which would make an emptied-gap mutation invisible
+  (replan round five).
 - The step 1 ar hero pin `screen.getByText('٠٢:٢٩')` is replaced by the section assertions
   below: retitle `it('counts down in native digits under ar')` to
   `renders fixed-width sections with gapped colons under ar` and replace that expectation

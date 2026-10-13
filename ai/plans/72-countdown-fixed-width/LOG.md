@@ -133,7 +133,7 @@ style (tsc TS2322), so the section node renders `Animated.Text`, the repo's own 
 `--error-on-warnings`, so each key line carries a per-line biome-ignore with its reason,
 the replan-round-three ruling that the repo's gate wins applied to lint; (3) the colon-dim
 test's ternary took Biome's one-line form. After the fixes: the step suite 24 passed,
-`npx tsc --noEmit` exit 0, `npx biome check . --error-onwarnings` exit 0.
+`npx tsc --noEmit` exit 0, `npx biome check . --error-on-warnings` exit 0.
 
 Break script: run per the step-loop order, before the commit, it printed `caught: bright
 colon node`, then `RESTORE FAILED` (the script's restore check diffs against HEAD, and the
@@ -146,7 +146,30 @@ U+2009 (`'\u2009:\u2009'.replace(/\s+/g, ' ').trim() === ':'` probes true), so
 break. Under the break the Ago suite passed 7/7. This is a plan defect in the break
 script's design; the merge gate is withheld and the question returned to the lead.
 
+Commit `66e516d3` (2.0.204) on `feat/72-render`, not merged. Hook lines: `Tests: 5510
+passed, 5510 total`; coverage `Statements 100% (5263/5263)`, `Branches 100% (2294/2294)`,
+`Functions 100% (1092/1092)`, `Lines 100% (4715/4715)`. Break script re-run against the
+committed step: `break applied: bright colon node, empty gap node`, `caught: bright colon
+node`, last line `BREAK NOT APPLIED (only 1 of 2 catches fired)`, exit 1, restore clean.
+The step's Done-when is not met: the break line is not `ALL AS EXPECTED: 1`. Cold review
+verdict: clean against the review checklist and the shipped classes — the null branches
+byte-identical, only `countdownColon` added, cascade pair with `durationSlow`, hooks only
+in `CountdownSectionText`, no stale comment, no residue (the two allow-list entries left
+in the same commit that lands the importers). The three gate fixes stand as recorded.
+Merge withheld; the version lock released; the question returned: the plan-verbatim ago
+gap test cannot see the emptied gap node because RTL's default normalizer collapses
+U+2009 into `:`, so the planner must rule how catch 2 becomes observable (for example an
+identity-normalizer matcher in that test, or a different break mutation) before the step
+can merge.
+
 Version re-taken under the lock: origin/uat unmoved, next patch 2.0.204 in app.json,
 package.json, android/app/build.gradle. Queue row 72 moved to `IN PROGRESS, step 2`.
 
 session: ses_ecae3ad3effeVEDfDPmT8wLvKC
+
+Replan round five (2026-10-13): the break script second catch was invisible to the
+plan-verbatim test because RTL default normalizer collapses U+2009, so the emptied-gap
+mutation matched `getByText(GAP_COLON)` anyway. Ruled: the GAP_COLON assertions query
+with an identity normalizer and assert the exact thin-space string; the mutation then
+fails the query and both catches fire. Step 2 (committed 66e516d3, unmerged) amends its
+test file, re-runs the break script to ALL AS EXPECTED, and amends its commit.
