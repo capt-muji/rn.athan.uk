@@ -61,7 +61,7 @@ the stack-walk window widened to 30 lines and the `test -x` gate given its expec
 - Break script: none; the step writes documentation.
 - Version 2.0.190 taken under the lock: local 2.0.189, origin/uat 2.0.187, next patch over the
   higher; set in `app.json`, then `package.json`, then `android/app/build.gradle` `versionName`.
-- Commit 7cce6f1e: hook printed `Tests: 5500 passed, 5500 total` and 100% on statements,
+- Commit 2d27c05b: hook printed `Tests: 5500 passed, 5500 total` and 100% on statements,
   branches, functions and lines. Review (two passes, `git show` read cold): checklist items 1
   to 5 all pass; section 3, 4 and 6 blockquotes byte-identical to the step file's; section 5
   copied verbatim from PLAN.md items 1 to 4 as dictated, whose internal PLAN.md section
@@ -155,4 +155,14 @@ all. Evidence: sessions/71/NOTES.md and the per-drive captures.
   over the higher; set in `app.json`, then `package.json`, then
   `android/app/build.gradle` `versionName` (gitignored, never added). Queue row 71 moved
   to `IN PROGRESS, step 2` in this step's commit.
+- Commit a7820211: hook printed `Tests: 5500 passed, 5500 total` and 100% on statements,
+  branches, functions and lines. Review (two passes, `git show` read cold): checklist
+  items 1 to 4 pass — the block complete through the stack's final frame with the
+  `AppStateModule.onHostPause` frame present (the capture carries no blank line; the
+  deviation is recorded above), the drive table row for row with no rate or cause
+  claimed, section 6 untouched and sections 7 and 8 state no repair, and no code file or
+  `sessions/71/` byte copied into the repo (the version files and the queue step-number
+  are the step loop's mechanical shape, step 1's checklist item 5 precedent); no
+  lifecycle, worklet, residue or rule finding (docs-only change).
 
+session: ses_ecba6b37bffeWRZ8bIasRaxiL4
