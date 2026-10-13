@@ -157,6 +157,7 @@ describe('buildPrayerWidgetTimeline', () => {
     const snapshot = buildPrayerWidgetSnapshot(makeSequence(), SETTINGS);
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;
+    expect(snapshot?.rtl).toBe(false);
 
     // Every row the layouts can draw carries the closed id beside the baked
     // label, so a future locale's names can collide while ids never do
@@ -293,6 +294,7 @@ describe('buildPrayerWidgetTimeline', () => {
     const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
 
     expect(entries.every((entry) => entry.props.v === WIDGET_PROPS_VERSION)).toBe(true);
+    expect(entries.every((entry) => entry.props.rtl === false)).toBe(true);
   });
 
   it('stamps standard entries and lists the day chronologically for the medium list', () => {
@@ -1141,6 +1143,7 @@ describe('unreadable rows', () => {
         prevEpochMs: magribMs,
         dateLabel: formatDateLocalized('2026-06-16'),
         footer: footerFor('2026-06-16', false),
+        rtl: false,
         stale: true,
       },
     });

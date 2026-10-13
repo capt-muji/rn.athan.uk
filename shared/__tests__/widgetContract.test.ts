@@ -466,8 +466,8 @@ describe('widget props v7 footers', () => {
     prayers: TIMES.flatMap(([id, time]) => [makePrayer(DAY_ONE, time, id), makePrayer(DAY_TWO, time, id)]),
   };
 
-  it('stamps v7 and a footer on every iOS entry, byte-identical to the v6 parse under en', () => {
-    expect(WIDGET_PROPS_VERSION).toBe(7);
+  it('stamps v8 and a footer on every iOS entry, byte-identical to the v6 parse under en', () => {
+    expect(WIDGET_PROPS_VERSION).toBe(8);
 
     const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: false }, 'light');
     for (const entry of entries) {
@@ -481,8 +481,8 @@ describe('widget props v7 footers', () => {
     expect(sunday?.props.footer).toBe(t('calendar.weekdayShort.7'));
   });
 
-  it('stamps v3 and a footer on every Android snapshot day, same composition', () => {
-    expect(ANDROID_SNAPSHOT_VERSION).toBe(3);
+  it('stamps v4 and a footer on every Android snapshot day, same composition', () => {
+    expect(ANDROID_SNAPSHOT_VERSION).toBe(4);
 
     const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
     expect(snapshot).not.toBeNull();
