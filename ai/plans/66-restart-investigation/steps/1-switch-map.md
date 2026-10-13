@@ -3,6 +3,11 @@
 Requirements: R1.1, R1.2
 Weight: 1
 
+## Pre-flight
+
+Copy `scripts/preflight-66.sh` to `$TMPDIR` and run `bash $TMPDIR/preflight-66.sh` from the
+repository root. Expected `PREFLIGHT OK`, exit 0; anything else is STOP.
+
 ## Anchor check
 
 ```bash
@@ -41,12 +46,13 @@ absence, recorded as such in LOG.md.
 ## Change contracts
 
 Section 1, the switch-path map: one row per hop, in order, each with its file:line and one
-clause of role. The expected hops are the PLAN.md section 4 table's first seven groups: the
+clause of role. The expected hops, in order: the
 pick (`Language.tsx:44`, `languageSheet.ts:18-31`), the commit (`stores/language.ts:65-93`),
 the locale bump (`shared/i18n/locale.ts:48-52`), the remount (`app/_layout.tsx:85-92`), the
 convergence (`stores/language.ts:37-49`, `stores/notifications.ts:1672-1673`), the widget push
-(`stores/widget.ts:237-256`), the dismiss and the D59 restart (`languageSheet.ts:29-31`,
-`stores/language.ts:77-89`). A hop whose line no longer matches is the PLAN.md section 10
+(`stores/widget.ts:237-256`), the D59 restart inside the commit (`stores/language.ts:77-89`),
+then the dismiss in pickLanguage's `.then` (`languageSheet.ts:29-31`). A hop whose line no
+longer matches is the PLAN.md section 10
 contradiction row: re-open the file before writing.
 
 Section 2, the cache inventory: one row per cache or selector, with columns cache, file:line,
@@ -59,7 +65,8 @@ a switch), the baked widget strings (`shared/widgetTimeline.ts:62-71`, `:304-355
 last-armed stamp (`stores/language.ts:22`). End section 2 with the transient's confirmed
 mechanism: planning's working diagnosis is the selectors' derived cache surviving one
 wall-clock tick (`stores/countdown.ts:408-438`); confirm it against the code and the row 57
-audit record, or record the candidate mechanisms and the test that would decide.
+audit record (commit `ca077a32`, plus the carried line in queue row 66), or record the
+candidate mechanisms and the test that would decide.
 
 ## Green run
 
