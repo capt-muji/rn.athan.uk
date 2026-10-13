@@ -5,6 +5,8 @@
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { BackHandler, DeviceEventEmitter, StyleSheet } from 'react-native';
+import { FadeIn, LinearTransition } from 'react-native-reanimated';
+import type { TestInstance } from 'test-renderer';
 
 import { onPlatform } from '@/__tests__/harness';
 import { openDndAccessSettings } from '@/device/notifications';
@@ -242,5 +244,27 @@ describe("the Help modal's chevron", () => {
 
     expect(onClose).toHaveBeenCalledTimes(1);
     expect(exitApp).not.toHaveBeenCalled();
+  });
+});
+
+describe("the Help modal's Close row entrance", () => {
+  // ai/AGENTS.md: animated components first-frame in their settled state. The row once
+  // painted opaque while the card faded in around it (owner report, 2026-10-13), so the
+  // nearest entering ancestor of Close is read: a rule the app keeps. Today that
+  // ancestor is the card's slide, which is the defect; after the fix it is the row's
+  // own fade on the container's builder.
+  const enteringAncestorOf = (node: TestInstance): TestInstance | null => {
+    let current: TestInstance | null = node.parent;
+    while (current && !current.props?.entering) current = current.parent;
+    return current;
+  };
+
+  it('fades in with the card on the modal container entrance fade', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    const row = enteringAncestorOf(screen.getByRole('button', { name: 'Close' }));
+
+    expect(row?.props.entering).toBe(FadeIn);
+    expect(row?.props.layout).toBe(LinearTransition);
   });
 });
