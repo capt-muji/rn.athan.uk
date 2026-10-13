@@ -194,20 +194,20 @@ describe('buildPrayerWidgetTimeline', () => {
     expect(first.dateLabel).toBe(formatDateLocalized('2026-06-15'));
   });
 
-  it('bakes native digits into every carried time under ar', () => {
+  it('bakes Latin digits into every carried time under ar', () => {
     // The push layer bakes at push time: under ar every carried time renders
-    // Eastern Arabic-Indic digits, while the epochs and the schema stay numeric
+    // Latin digits, while the epochs and the schema stay numeric
     setActiveLocale('ar');
     try {
       const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
-      expect(entries[0].props.nextTime).toBe('١٧:٤٥');
-      expect(entries[0].props.prayers?.map((row) => row.time)).toContain('٠٣:٣٠');
+      expect(entries[0].props.nextTime).toBe('17:45');
+      expect(entries[0].props.prayers?.map((row) => row.time)).toContain('03:30');
       // The true path of the rtl stamp: a hardcoded false must fail here
       expect(entries.every((entry) => entry.props.rtl === true)).toBe(true);
 
       const stale = entries[entries.length - 1];
       expect(stale.props.stale).toBe(true);
-      expect(stale.props.nextTime).toBe('٢٢:٤٥');
+      expect(stale.props.nextTime).toBe('22:45');
       expect(stale.props.rtl).toBe(true);
 
       const snapshot = buildPrayerWidgetSnapshot(makeSequence(), SETTINGS);
@@ -215,8 +215,7 @@ describe('buildPrayerWidgetTimeline', () => {
       if (!snapshot) return;
       expect(snapshot.rtl).toBe(true);
       const snapshotTimes = snapshot.days.flatMap((day) => day.rows.map((row) => row.time));
-      expect(snapshotTimes).toContain('١٣:١٠');
-      expect(snapshotTimes).not.toContain('13:10');
+      expect(snapshotTimes).toContain('13:10');
     } finally {
       setActiveLocale('en');
     }

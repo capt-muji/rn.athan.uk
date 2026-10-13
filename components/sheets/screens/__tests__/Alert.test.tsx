@@ -108,7 +108,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     expect(screen.getByLabelText('15 min')).toBeOnTheScreen();
   });
 
-  it('renders the visible reminder interval with native digits under ar', async () => {
+  it('renders the visible reminder interval with Latin digits under ar', async () => {
     showLondonDay('2026-09-11', '14:00');
     setReminderAlertType(ScheduleType.Standard, DHUHR, 0, AlertType.Silent);
     setReminderInterval(ScheduleType.Standard, DHUHR, 0, 15);
@@ -117,7 +117,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     try {
       await render(<AlertSheet />);
 
-      expect(screen.getByText('١٥')).toBeOnTheScreen();
+      expect(screen.getByText('15')).toBeOnTheScreen();
     } finally {
       setActiveLocale('en');
     }

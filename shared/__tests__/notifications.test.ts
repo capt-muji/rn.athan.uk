@@ -311,10 +311,10 @@ describe('genNotificationContent', () => {
     expect(genReminderNotificationContent('fajr', 15, AlertType.Silent).title).toBe('Fajr in 15m');
   });
 
-  it('builds the reminder title with native digits under ar', () => {
+  it('builds the reminder title with Latin digits under ar', () => {
     try {
       setActiveLocale('ar');
-      expect(genReminderNotificationContent('asr', 15, AlertType.Silent).title).toBe('العصر بعد ١٥');
+      expect(genReminderNotificationContent('asr', 15, AlertType.Silent).title).toBe('العصر بعد 15');
     } finally {
       setActiveLocale('en');
     }
@@ -771,7 +771,7 @@ describe('createReminderAndroidChannel', () => {
 
         expect(setNotificationChannelAsync).toHaveBeenCalledWith(
           'reminder_magrib_15_v3',
-          expect.objectContaining({ name: 'تنبيه المغرب بعد ١٥' })
+          expect.objectContaining({ name: 'تنبيه المغرب بعد 15' })
         );
       } finally {
         setActiveLocale('en');
