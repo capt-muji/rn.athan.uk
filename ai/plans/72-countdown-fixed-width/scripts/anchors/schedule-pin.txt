@@ -1,0 +1,9 @@
+      display: '23:54',
+    },
+    {
+      title: 'a passed unreadable Fajr whose next occurrence is unreadable too shows --:--',
+      unreadable: { '2026-10-17': ['fajr', 'magrib'], '2026-10-18': ['fajr'] },
+      launch: '2026-10-17T05:00:00.000Z',
+      index: 0,
+      countdown: { timeLeft: null, name: 'fajr' },
+      display: '--:--',

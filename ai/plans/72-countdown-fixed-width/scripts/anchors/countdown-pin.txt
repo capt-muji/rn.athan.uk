@@ -1,0 +1,12 @@
+  it('display selector emits native digits under ar', () => {
+    const store = createStore();
+    store.set(showSecondsAtom, false);
+
+    store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
+    setActiveLocale('ar');
+    try {
+      expect(store.get(standardCountdownDisplayAtom)).toBe('١:٠١');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
