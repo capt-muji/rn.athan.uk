@@ -225,7 +225,7 @@ Acceptance criteria:
 
 Checklist (the executor ticks as each lands):
 
-- [ ] Step 1: the format flip (steps/1-format-flip.md)
+- [x] Step 1: the format flip (steps/1-format-flip.md)
 - [ ] Step 2: the digit map dies (steps/2-digit-map-dies.md)
 - [ ] Step 3: the simulator proof (steps/3-device-proof.md)
 

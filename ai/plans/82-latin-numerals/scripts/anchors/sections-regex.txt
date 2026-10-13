@@ -4,8 +4,7 @@ const ALL_ZEROS = /^[٠0]+$/;
 /**
  * Splits a colon display string into renderable sections, or returns null when the
  * string is not one: every group must be digits and there must be two or three
- * groups. English's lettered strings and the held `--:--` fail the digit test, so
- * they keep the single-node render.
+ * groups. The held `--:--` fails the digit test, so it keeps the single-node render.
  */
 export const splitColonSections = (value: string): CountdownSection[] | null => {
   const groups = value.split(':');
