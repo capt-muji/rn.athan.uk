@@ -2096,7 +2096,7 @@ describe('on the real builder', () => {
       launch: '2026-10-17T05:00:00.000Z',
       index: 0,
       countdown: { timeLeft: 86040, name: 'fajr' },
-      display: '23:54',
+      display: '23h 54m',
     },
     {
       title: 'a passed unreadable Fajr whose next occurrence is unreadable too shows --:--',
@@ -2120,7 +2120,7 @@ describe('on the real builder', () => {
       launch: '2026-10-18T12:00:00.000Z',
       index: 0,
       countdown: { timeLeft: 60900, name: 'fajr' },
-      display: '16:55',
+      display: '16h 55m',
     },
     {
       title: 'R11: a row of a day with no readable time whose next occurrence has none either shows --:--',

@@ -1,10 +1,12 @@
 import { useAtomValue } from 'jotai';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
 import { useDerivedBackgroundColor, useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { splitSingleColon } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 
@@ -49,9 +51,19 @@ function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minu
   // Fade out when overlay opens (derived, so it cannot strand on resume)
   const prayerAgoOpacityStyle = useDerivedOpacity(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade });
 
+  const parts = currentLocaleId() === 'en' ? null : splitSingleColon(prayerAgo);
+
   return (
     <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>
-      {prayerAgo}
+      {parts === null ? (
+        prayerAgo
+      ) : (
+        <>
+          {parts[0]}
+          <Text>{'\u2009:\u2009'}</Text>
+          {parts[1]}
+        </>
+      )}
     </Animated.Text>
   );
 }

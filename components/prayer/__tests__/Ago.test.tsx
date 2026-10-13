@@ -5,18 +5,20 @@
 import { act, render, screen } from '@testing-library/react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
 
 import PrayerAgo from '../Ago';
 
 const ASR = 3;
+const GAP_COLON = '\u2009:\u2009';
 
 describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
   // [London clock, the badge's words]
   it.each([
-    ['13:05', 'Dhuhr 0:03 ago'],
-    ['14:00', 'Dhuhr 0:58 ago'],
+    ['13:05', 'Dhuhr 3m ago'],
+    ['14:00', 'Dhuhr 58m ago'],
   ])('at %s reads "%s"', async (time, words) => {
     showLondonDay('2026-09-11', time);
 
@@ -25,13 +27,38 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
     expect(screen.getByText(words)).toBeVisible();
   });
 
+  it('splits the duration colon with thin-space gaps under ar', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    try {
+      await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+      expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('renders the now badge as one node under ar, with no gap node', async () => {
+    showLondonDay('2026-09-11', '13:02');
+    setActiveLocale('ar');
+    try {
+      await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+      expect(screen.getByText('الآن', { exact: false })).toBeOnTheScreen();
+      expect(screen.queryByText(GAP_COLON)).toBeNull();
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
   it('fades out while the overlay is open', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
 
-    expect(screen.getByText('Dhuhr 0:58 ago')).not.toBeVisible();
+    expect(screen.getByText('Dhuhr 58m ago')).not.toBeVisible();
   });
 });
 
