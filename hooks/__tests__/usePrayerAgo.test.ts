@@ -79,7 +79,7 @@ const given = (prevPrayer: Prayer | null, now: Date) => {
 beforeEach(() => {
   jest.clearAllMocks();
   mockEffects.length = 0;
-  mockFormatTimeAgo.mockReturnValue('1m');
+  mockFormatTimeAgo.mockReturnValue('0:01');
 });
 
 // =============================================================================
@@ -120,18 +120,18 @@ describe('ago display', () => {
 
     const result = calculatePrayerAgo(ScheduleType.Standard);
 
-    expect(result.prayerAgo).toBe('Magrib 1m ago');
+    expect(result.prayerAgo).toBe('Magrib 0:01 ago');
     expect(result.minutesElapsed).toBe(1);
   });
 
   it('formats hours through formatTimeAgo', () => {
     const prayer = createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-27T06:00:00Z') });
     given(prayer, new Date('2026-01-27T08:30:00Z'));
-    mockFormatTimeAgo.mockReturnValue('2h 30m');
+    mockFormatTimeAgo.mockReturnValue('2:30');
 
     const result = calculatePrayerAgo(ScheduleType.Standard);
 
-    expect(result.prayerAgo).toBe('Fajr 2h 30m ago');
+    expect(result.prayerAgo).toBe('Fajr 2:30 ago');
     expect(result.minutesElapsed).toBe(150);
   });
 
@@ -146,11 +146,11 @@ describe('ago display', () => {
   it('handles a long overnight gap', () => {
     const prayer = createMockPrayer({ id: 'isha', datetime: new Date('2026-01-26T20:00:00Z') });
     given(prayer, new Date('2026-01-27T08:00:00Z'));
-    mockFormatTimeAgo.mockReturnValue('12h');
+    mockFormatTimeAgo.mockReturnValue('12:00');
 
     const result = calculatePrayerAgo(ScheduleType.Standard);
 
-    expect(result.prayerAgo).toBe('Isha 12h ago');
+    expect(result.prayerAgo).toBe('Isha 12:00 ago');
     expect(result.minutesElapsed).toBe(720);
   });
 });
@@ -223,10 +223,10 @@ describe('usePrayerAgo', () => {
       createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-01-27T12:00:00Z') }),
       new Date('2026-01-27T12:05:00Z')
     );
-    mockFormatTimeAgo.mockReturnValue('5m');
+    mockFormatTimeAgo.mockReturnValue('0:05');
 
     expect(usePrayerAgo(ScheduleType.Standard)).toEqual({
-      prayerAgo: 'Dhuhr 5m ago',
+      prayerAgo: 'Dhuhr 0:05 ago',
       minutesElapsed: 5,
       isReady: true,
     });
@@ -260,10 +260,10 @@ describe('usePrayerAgo', () => {
     const initial = usePrayerAgo(ScheduleType.Standard);
 
     mockCreateInstant.mockReturnValue(new Date('2026-01-27T10:06:10Z'));
-    mockFormatTimeAgo.mockReturnValue('6m');
+    mockFormatTimeAgo.mockReturnValue('0:06');
     subscribeListener()();
     const update = mockSetState.mock.calls[0][0] as (previous: unknown) => unknown;
 
-    expect(update(initial)).toEqual({ prayerAgo: 'Fajr 6m ago', minutesElapsed: 6, isReady: true });
+    expect(update(initial)).toEqual({ prayerAgo: 'Fajr 0:06 ago', minutesElapsed: 6, isReady: true });
   });
 });

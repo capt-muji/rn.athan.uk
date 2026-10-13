@@ -48,7 +48,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
       expect(screen.getByText('02')).toBeOnTheScreen();
       expect(screen.getByText('29')).toBeOnTheScreen();
       expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
-      expect(screen.queryByText('2:29')).toBeNull();
+      expect(screen.queryByText('02:29')).toBeNull();
     } finally {
       setActiveLocale('en');
     }
@@ -99,7 +99,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     }
   });
 
-  it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 1m and not 59s', async () => {
+  it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 00:01:00 and not 00:00:59', async () => {
     showLondonDay('2026-09-11', '16:28');
     await act(() => jest.advanceTimersByTime(600));
 
@@ -110,7 +110,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     expect(screen.getByText('01')).toBeOnTheScreen();
   });
 
-  it('holds 1s, never 0s, when the countdown starts half a second after Asr, before the list has moved on', async () => {
+  it('holds 00:00:01, never 00:00:00, when the countdown starts half a second after Asr, before the list has moved on', async () => {
     showLondonDay('2026-09-11', '16:28');
     await act(() => jest.advanceTimersByTime(60_500));
 

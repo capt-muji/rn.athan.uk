@@ -257,7 +257,7 @@ describe('splitColonSections', () => {
 describe('splitSingleColon', () => {
   it('splits on the one colon and returns null otherwise', () => {
     expect(splitSingleColon('Dhuhr 0:58 ago')).toEqual(['Dhuhr 0', '58 ago']);
-    expect(splitSingleColon('الظهر قبل ٠:٥٨')).toEqual(['الظهر قبل ٠', '٥٨']);
+    expect(splitSingleColon('الظهر قبل 0:58')).toEqual(['الظهر قبل 0', '58']);
     expect(splitSingleColon('Asr now')).toBeNull();
     expect(splitSingleColon('a:b:c')).toBeNull();
     expect(splitSingleColon('no colon')).toBeNull();

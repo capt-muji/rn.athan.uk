@@ -285,7 +285,7 @@ export const formatDateLocalized = (date: string): string => {
  * Formats a date string into the active locale's Hijri format, composed from the
  * catalog's Hijri month names. The Intl call stays en-US with numeric fields so
  * it yields Latin digits, with the shape and order frozen and no era affix
- * appearing in any locale (D57, R3.1);
+ * appearing in any locale (R3.1);
  * falls back to the localized Gregorian label if conversion fails.
  * @param date Date string in YYYY-MM-DD format
  * @returns Formatted Hijri date string (e.g., "Rajab 1, 1447")
@@ -539,10 +539,11 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
  * Rounding model (countdown display contract):
  * - Rounds UP (ceil): each digit owns exactly the wall second being lived
  *   through, so digits flip on the :000 boundary like the system clock.
- * - The final second displays "1s" — never "0s" — because a countdown reads
- *   "N seconds remaining" and the swap to the next prayer happens at zero.
+ * - The final second displays "00:00:01" — never "00:00:00" — because a
+ *   countdown reads "N seconds remaining" and the swap to the next prayer
+ *   happens at zero.
  * - Once the target has passed, holds at 1 until the caller advances the
- *   target (prevents a frozen "0s" while the sequence refresh runs).
+ *   target (prevents a frozen "00:00:00" while the sequence refresh runs).
  *
  * Uses Date.now() directly: countdown targets are true UTC instants (built
  * via createPrayerDatetime), so no timezone conversion is needed for a
@@ -552,7 +553,7 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
  * @returns Seconds remaining, always >= 1
  *
  * @example
- * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "42s"
+ * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "00:00:42"
  */
 export const getSecondsRemaining = (target: Date): number => {
   const msLeft = target.getTime() - Date.now();
@@ -599,9 +600,7 @@ export const getWallSecondDelay = (): number => {
  * formatTime(-100) // "00:00:00"
  * formatTime(90000) // "25:00:00" (days converted to hours)
  */
-export const formatTime = (seconds: number, hideSeconds = false): string => formatTimeFixedWidth(seconds, hideSeconds);
-
-const formatTimeFixedWidth = (seconds: number, hideSeconds: boolean): string => {
+export const formatTime = (seconds: number, hideSeconds = false): string => {
   const total = Math.max(0, Math.floor(seconds));
   const hours = Math.floor(total / 3600);
   const minutes = Math.floor((total % 3600) / 60);

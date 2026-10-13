@@ -165,7 +165,7 @@ describe('countdown atom behavior', () => {
 // =============================================================================
 
 describe('sequence countdown transition (clock-based)', () => {
-  it('refreshes the sequence when the wall clock reaches the prayer time, never displaying 0s', () => {
+  it('refreshes the sequence when the wall clock reaches the prayer time, never displaying 00:00:00', () => {
     jest.useFakeTimers();
 
     // Prayer at 06:15:00Z; system clock starts exactly on 06:14:58Z (2s away).
@@ -197,7 +197,7 @@ describe('sequence countdown transition (clock-based)', () => {
     jest.useRealTimers();
   });
 
-  it('holds the final digit at 1s across the boundary tick instead of 0s', () => {
+  it('holds the final digit at 00:00:01 across the boundary tick instead of 00:00:00', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T06:14:59.500Z'));
 
@@ -304,7 +304,7 @@ describe('ticker integrity (wall-second chain)', () => {
     unsub();
   });
 
-  it('never displays 0s across a full countdown and swaps at the boundary', () => {
+  it('never displays 00:00:00 across a full countdown and swaps at the boundary', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
 
@@ -439,7 +439,7 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
     expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 7200, name: 'dhuhr' });
   });
 
-  it('holds the page atom at 1s when the open overlay target passes — never displays 0s', () => {
+  it('holds the page atom at 00:00:01 when the open overlay target passes — never displays 00:00:00', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
