@@ -19,6 +19,11 @@ single-node render under `en` and for every string the splitters reject. The ago
 renders its single colon as a gapped node under non-en and keeps the single-node render
 under `en`. This step adds the section and gap tests on top of step 1's string rewrites.
 
+## The format caveat
+
+Code in this plan's contracts is semantic, not byte law: Biome owns format, so the
+formatted form of a contract's snippet is what lands (replan round three, finding B).
+
 ## The colour caveat
 
 The dim/bright group colour is applied through `useAnimatedStyle`; no repo test reads an
@@ -38,6 +43,10 @@ groups), the dim colon nodes' shape, and the gaps.
 - `components/countdown/__tests__/Countdown.test.tsx` (the ar and section tests only)
 - `components/prayer/__tests__/Ago.test.tsx` (the ar tests only)
 - `__tests__/app/Screen.test.tsx` (no edit this step; it appears here because the step
+- `shared/__tests__/unusedExports.test.ts` (change: remove the
+  `splitColonSections` and `splitSingleColon` allow-list entries replan round three
+  added in step 1 — their importers land in this step, and the sweep's `toEqual` fails
+  on stale entries)
   proves it green with the sources changed)
 
 ## Red tests
