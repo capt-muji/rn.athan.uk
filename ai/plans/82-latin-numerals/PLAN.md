@@ -125,7 +125,8 @@ one surface gives the mixed-script face row 67 chased.
 ### 4.3 The existing tests and what each proves
 
 - `shared/__tests__/time.test.ts` pins every JSDoc example of `formatTime` and
-  `formatTimeAgo` under en and ar, and `splitColonSections`' shape rules.
+  `formatTimeAgo` under en and ar, `formatPrayerTime`'s ar digits, and
+  `splitColonSections`' shape rules.
 - `stores/__tests__/countdown.test.ts` pins the display selector's string output,
   including the identical-string band rule and the ar digits.
 - `components/countdown/__tests__/Countdown.test.tsx` pins the rendered sections, the
@@ -289,7 +290,9 @@ Anticipated review fixes, word for word:
 Per-step restore lists:
 
 - Step 1: `git checkout uat -- shared/time.ts shared/typography.ts components/countdown/Countdown.tsx components/prayer/Ago.tsx` plus the five test files named there. No stored state touched.
-- Step 2: restore the nine source files and eleven test files by name from uat; recreate `shared/i18n/digits.ts` and `shared/__tests__/digits.test.ts` from `git show uat:...`. No stored state touched.
+- Step 2: restore the eight source files and twelve test files by name from uat;
+  recreate `shared/i18n/digits.ts` and `shared/__tests__/digits.test.ts` from
+  `git show uat:...`. No stored state touched.
 - Step 3: uninstall the simulator app, delete `sessions/82/` screenshots. No stored state touched.
 
 ## 11. Subagents
