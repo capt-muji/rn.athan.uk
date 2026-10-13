@@ -1,0 +1,4 @@
+ * which must leave the caller's stamp unwritten so the next launch retries
+ */
+export const rescheduleAllForLanguageChange = (): Promise<boolean> =>
+  _rescheduleAllNotifications({ deferWidgetRefresh: false });
