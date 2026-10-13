@@ -1,0 +1,8 @@
+ * what to show at render time. Bump when the snapshot shape changes.
+ *
+ * v2: rows carry `id`, and every string the layout computed at render time
+ * arrives baked as `strings` (the layout imports nothing).
+ * v3: every day carries a precomposed localized `footer` beside its
+ * `dateLabel`, mirroring the iOS entry field.
+ */
+export const ANDROID_SNAPSHOT_VERSION = 3;
