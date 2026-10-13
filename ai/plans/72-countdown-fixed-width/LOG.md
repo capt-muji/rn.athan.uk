@@ -179,7 +179,8 @@ on the amended tests: `break applied: bright colon node, empty gap node`, both c
 fired (`caught: bright colon node`, `caught: emptied gap node`), last line
 `ALL AS EXPECTED: 1`, exit 0, restore clean. Commit amended onto `66e516d3` (same
 message, version 2.0.204); hook lines and the amended and merge shas recorded
-post-merge.
+post-merge. The amendment landed as commit `7e600074` (2.0.207) on `feat/72-render`;
+the branch merged `--no-ff` into uat as `cc903e99` (2.0.207).
 
 session: ses_ecad34b22ffe73JLSScwFdpXyv
 
@@ -194,3 +195,55 @@ Replan round six (2026-10-13): break-step3 catch 2 grepped the bare path while j
 prints the project-qualified form under --selectProjects=unit; the pattern now reads
 `FAIL unit shared/__tests__/catalogLock.test.ts` (the staleness string stays the
 second signal).
+### Step 3 — executed
+
+Branch `feat/72-reminder-copy` off `uat` f6262805 (2.0.210), the round-six re-dispatch:
+the first run stopped at the break script's catch-2 grep and its verified red, change
+and green ride this patch. Round six's fix rode the step-2 merge commit (f6262805,
+files at 2.0.210): history is slightly tangled, complete and green. Preflight OK: the five step
+anchors (en-reminder, en-channel, notif-pin, contract-pin, bridge-pin) each count
+exactly 1; origin/uat unmoved; tree clean.
+
+Red: the ten expectation rewrites failed in exactly the seven tests that carry them
+(7 failed, 86 passed): builds the titles from the catalog templates, builds the reminder
+title with native digits under ar (the post-finally en line; the ar line `العصر بعد ١٥`
+untouched and passing), creates content with correct title format, creates content with
+different intervals, the per-prayer × interval channel (its `name`), pins the
+channel-name formats in English, and the bridge's replaces-{name}-and-{n}. All diffs
+read `Expected: "Fajr in 15m"`-style against unchanged catalogs.
+
+Change: the two en catalog values restored to the reference bytes — both replacements
+grep-counted 1 before and after, and the working lines compared equal to
+`git show 194ed701:shared/i18n/en.ts` lines 90 and 193. `git status --porcelain
+shared/i18n/` lists only `en.ts` (then `catalog-lock.json` after the lock). Lock
+re-taken: `git diff` shows exactly five changed hash lines (ar, ms, so, hi, th — the
+lock writes one sha256 of the en catalog per translated locale), catalogLock 6 passed.
+`yarn i18n:export` exit 0 with the expected `Object.exit (i18nBridge.test.ts)` trace;
+the pass grep prints `"{name} in {n}m"` (and `"{name} in {n}m Reminder"`).
+
+Green: the three copy suites 93 passed; `npx tsc --noEmit` exit 0;
+`npx biome check . --error-on-warnings` exit 0.
+
+Break: `bash $TMPDIR/break-step3.sh` against the staged step: `break applied: en
+channel label lost its unit word`, both catches fired (`caught: contract pin on the
+channel format`, `caught: en hash drifted from the lock`), last line
+`ALL AS EXPECTED: 1`, exit 0, restore clean — the round-six project-qualified grep
+fires. Final green re-run on the same tree: the three copy suites 93 passed,
+catalogLock 6 passed, `npx tsc --noEmit` exit 0, `npx biome check . --error-on-warnings`
+exit 0.
+
+Version re-taken under the lock: origin/uat unmoved (e58f29a0, 2.0.196; local uat
+f6262805, 2.0.210), next patch 2.0.211 in app.json, package.json,
+android/app/build.gradle (versionName). Queue row 72 moved to `IN PROGRESS, step 3`.
+
+Commit `1af23914` (2.0.211). Hook lines: `Tests: 5510 passed, 5510 total`; coverage
+`Statements 100% (5263/5263)`, `Branches 100% (2294/2294)`, `Functions 100%
+(1092/1092)`, `Lines 100% (4715/4715)`. Cold review verdict: clean — the nine-file
+diff carries exactly the step's seven en rewrites, the two reference-byte catalog
+values, the re-taken lock and the version trio; no non-en catalog value, no ar string,
+no widget file in the diff; lock idempotence re-proven (a second `yarn i18n:lock`
+diffs nothing).
+
+Merge: `--no-ff` into uat (sha recorded post-merge).
+
+session: ses_ecab85520ffeMEzBKuf7VrybVt
