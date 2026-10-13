@@ -1,0 +1,8 @@
+  const columnWidth = Math.min(window.width, SIZE.contentMaxWidth);
+  const glowStyle = useMemo(
+    () => ({
+      top: -columnWidth / 1.25,
+      left: window.width / 2 - columnWidth,
+    }),
+    [window.width, columnWidth]
+  );
