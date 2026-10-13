@@ -119,7 +119,7 @@ describe('the countdown name family', () => {
   // StyleSheet.create resolves the ternary when the module evaluates, so its ar
   // branch runs only under an ar-side evaluation; without one the merged branch
   // coverage drops below the repo gate
-  it('evaluates under ar, taking the Arabic regular family', () => {
+  it('evaluates the countdown module under ar so its ar family branch is exercised', () => {
     jest.resetModules();
     {
       const { setActiveLocale } = require('@/shared/i18n/locale');
@@ -130,11 +130,11 @@ describe('the countdown name family', () => {
 });
 
 describe('the sheet header title', () => {
-  it('renders the Arabic medium face at the scaled size under ar', async () => {
+  it('renders the Arabic medium face at the unchanged size under ar', async () => {
     const title = await headerTitleStyleUnder('ar');
 
     expect(title.fontFamily).toBe('NotoSansArabic-Medium');
-    expect(title.fontSize).toBe(25);
+    expect(title.fontSize).toBe(22);
   });
 
   it('keeps Roboto medium at the pre-change size and tracking under en', async () => {
@@ -147,11 +147,11 @@ describe('the sheet header title', () => {
 });
 
 describe('the help question', () => {
-  it('renders the Arabic medium face at the scaled size under ar', async () => {
+  it('renders the Arabic medium face at the unchanged size under ar', async () => {
     const question = await helpQuestionStyleUnder('ar');
 
     expect(question.fontFamily).toBe('NotoSansArabic-Medium');
-    expect(question.fontSize).toBe(17);
+    expect(question.fontSize).toBe(15);
   });
 
   it('keeps Roboto medium at the pre-change size under en', async () => {

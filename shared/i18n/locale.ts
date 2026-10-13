@@ -35,8 +35,9 @@ let resolved: LocaleId | null = null;
 
 /**
  * The active locale: a stored preference's or the device's answer on the first
- * call, and whatever setActiveLocale last set afterwards. Lazy so nothing runs
- * a native read at module evaluation, before bootstrap has hydrated storage.
+ * call, and whatever setActiveLocale last set afterwards. The first call runs
+ * the synchronous preference and device reads and memoizes the result, which
+ * serves the typography map's module-scope callers and bootstrap alike.
  */
 export const currentLocaleId = (): LocaleId => {
   if (resolved === null) {

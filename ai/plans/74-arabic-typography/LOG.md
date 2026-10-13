@@ -173,6 +173,16 @@ session: ses_ecaa426a0ffeLwFMaBCiNb8Teu
 
 ### Step 3 — pending
 
-session: pending
+The device proof ran as live owner reads on the iPhone XS rather than a separate capture pass; the verdicts below are the acceptance record.
 
 Owner verdict on the device read (2026-10-13, live): the weight fix stands ("definitely heavier, whatever you did for that one worked"), English unchanged, nothing clipped - and the 1.15 size factor is REJECTED as oversize ("everything way too big, ruined the whole design; reduce it back to what it was"). Ruled: the factor returns to 1 (sizes as before; the family and weight carry the improvement); her final parity number is pending the discussion she asked for. The time-ago badge overlap she saw was the factor push-down and goes with it.
+
+session: ses_ecca54b79ffeEOa1A5fYvCMQl0
+
+### Size-factor revert — executed
+
+Red first: the sweep's two ar probes failed against the reverting module (`Expected: 25, Received: 22`; `Expected: 17, Received: 15`); the revert commit carried no version bump.
+
+Green (audit fix): `yarn validate` exit 0, coverage 100%; `package.json` and `app.json` bumped to 2.0.216 together.
+
+session: ses_ec9a31fe8ffei1Mun9HGvtBeAJ
