@@ -2,10 +2,12 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
-import { useDerivedProgress } from '@/hooks/useAnimation';
+import { useDerivedColor, useDerivedProgress } from '@/hooks/useAnimation';
 import { useCountdown } from '@/hooks/useCountdown';
-import { COLORS, COUNTDOWN_WAITING_NAME, SPACING, STYLES, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, COUNTDOWN_WAITING_NAME, SPACING, STYLES, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { splitColonSections } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { countdownBarShownAtom } from '@/stores/ui';
@@ -14,6 +16,16 @@ import Bar from './Bar';
 
 interface Props {
   type: ScheduleType;
+}
+
+/** One digit group of the non-English timer: bright above zero, dim at 00 (row 72 rule 3) */
+function CountdownSectionText({ text, dim }: { text: string; dim: boolean }) {
+  const colorStyle = useDerivedColor(dim ? 0 : 1, {
+    fromColor: COLORS.text.muted,
+    toColor: COLORS.text.primary,
+    duration: ANIMATION.durationSlow,
+  });
+  return <Animated.Text style={colorStyle}>{text}</Animated.Text>;
 }
 
 export default function Countdown({ type }: Props) {
@@ -38,6 +50,8 @@ export default function Countdown({ type }: Props) {
     return null;
   }
 
+  const sections = currentLocaleId() === 'en' ? null : splitColonSections(displayTime);
+
   return (
     <Animated.View style={[styles.container]}>
       <View>
@@ -47,7 +61,29 @@ export default function Countdown({ type }: Props) {
           accessibilityLabel={prayerName === COUNTDOWN_WAITING_NAME ? t('countdown.waitingLabel') : undefined}>
           {prayerName}
         </Text>
-        <Animated.Text style={[styles.countdown, animatedStyle]}>{displayTime}</Animated.Text>
+        {sections === null ? (
+          <Animated.Text style={[styles.countdown, animatedStyle]}>{displayTime}</Animated.Text>
+        ) : (
+          <Animated.Text style={[styles.countdown, animatedStyle]}>
+            {sections.map((section, index) =>
+              section.colon ? (
+                <Text
+                  // biome-ignore lint/suspicious/noArrayIndexKey: the colon's slot is fixed by the string's shape, the list never reorders
+                  key={`colon-${index}`}
+                  style={styles.countdownColon}>
+                  {'\u2009:\u2009'}
+                </Text>
+              ) : (
+                <CountdownSectionText
+                  // biome-ignore lint/suspicious/noArrayIndexKey: the group's slot is fixed by the string's shape, the list never reorders
+                  key={`group-${index}`}
+                  text={section.text}
+                  dim={section.dim}
+                />
+              )
+            )}
+          </Animated.Text>
+        )}
         {countdownBarShown && <Bar type={type} />}
       </View>
     </Animated.View>
@@ -81,5 +117,8 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.15)',
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
+  },
+  countdownColon: {
+    color: COLORS.text.muted,
   },
 });

@@ -307,13 +307,13 @@ export const durationLabels = (): DurationLabels => ({
  */
 export const formatTime = (seconds: number, hideSeconds = false): string =>
   currentLocaleId() === 'en'
-    ? formatTimeLettered(seconds, hideSeconds)
+    ? formatTimeLettered(seconds, hideSeconds, durationLabels())
     : formatTimeFixedWidth(seconds, hideSeconds);
 
 const formatTimeLettered = (
   seconds: number,
-  hideSeconds = false,
-  labels: DurationLabels = durationLabels()
+  hideSeconds: boolean,
+  labels: DurationLabels
 ): string => {
   if (seconds < 0) {
     const localised = localiseDigits(`0${labels.s}`);
@@ -379,7 +379,7 @@ const formatTimeFixedWidth = (seconds: number, hideSeconds = false): string => {
  */
 export const formatTimeAgo = (seconds: number): string => {
   if (currentLocaleId() === 'en') {
-    return formatTimeAgoLettered(seconds);
+    return formatTimeAgoLettered(seconds, durationLabels());
   }
 
   if (seconds < 60) {
@@ -391,7 +391,7 @@ export const formatTimeAgo = (seconds: number): string => {
   return localiseDigits(`${hours}:${pad2(minutes % 60)}`);
 };
 
-const formatTimeAgoLettered = (seconds: number, labels: DurationLabels = durationLabels()): string => {
+const formatTimeAgoLettered = (seconds: number, labels: DurationLabels): string => {
   if (seconds < 60) {
     const localised = localiseDigits(labels.now);
     return localised;

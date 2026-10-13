@@ -6,15 +6,17 @@ import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { COLORS } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
 import { openOverlay } from '@/stores/overlay';
-import { countdownBarShownAtom } from '@/stores/ui';
+import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 
 import Countdown from '../Countdown';
 
 const MAGRIB = 4;
+const GAP_COLON = '\u2009:\u2009';
 
 /**
  * Turns the bar preference on or off. The settings sheet writes it through the atom's own setter, and stores/ui.ts
@@ -30,33 +32,81 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.getByRole('text', { name: 'Asr' })).toBeOnTheScreen();
-    expect(screen.getByText('2:29')).toBeOnTheScreen();
+    expect(screen.getByText('2h 29m')).toBeOnTheScreen();
   });
 
-  it('counts down in native digits under ar', async () => {
+  it('renders fixed-width sections with gapped colons under ar', async () => {
     showLondonDay('2026-09-11', '14:00');
     setActiveLocale('ar');
     try {
       startCountdowns();
       await render(<Countdown type={ScheduleType.Standard} />);
 
-      expect(screen.getByText('٢:٢٩')).toBeOnTheScreen();
+      expect(screen.getByText('٠٢')).toBeOnTheScreen();
+      expect(screen.getByText('٢٩')).toBeOnTheScreen();
+      expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+      expect(screen.queryByText('٢:٢٩')).toBeNull();
     } finally {
       setActiveLocale('en');
     }
   });
 
-  it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 1:00 and not 0:59', async () => {
+  it('renders three sections under ar while the seconds preference is on', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    getDefaultStore().set(showSecondsAtom, true);
+    try {
+      startCountdowns();
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      expect(screen.getByText('٠٢')).toBeOnTheScreen();
+      expect(screen.getAllByText(GAP_COLON, { normalizer: (s) => s })).toHaveLength(2);
+    } finally {
+      setActiveLocale('en');
+      getDefaultStore().set(showSecondsAtom, false);
+    }
+  });
+
+  it('renders the held display as one node under ar, with no sections', async () => {
+    showLondonDay('2026-09-11', '21:00', { '2026-09-12': 'not stored' });
+    setActiveLocale('ar');
+    try {
+      startCountdowns();
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      expect(screen.getByText('--:--')).toBeOnTheScreen();
+      expect(screen.queryByText(GAP_COLON)).toBeNull();
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('renders the colon nodes dim', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    try {
+      startCountdowns();
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
+      const style = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
+      expect(style.color).toBe(COLORS.text.muted);
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 1m and not 59s', async () => {
     showLondonDay('2026-09-11', '16:28');
     await act(() => jest.advanceTimersByTime(600));
 
     startCountdowns();
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('1:00')).toBeOnTheScreen();
+    expect(screen.getByText('1m')).toBeOnTheScreen();
   });
 
-  it('holds 0:01, never 0:00, when the countdown starts half a second after Asr, before the list has moved on', async () => {
+  it('holds 1s, never 0s, when the countdown starts half a second after Asr, before the list has moved on', async () => {
     showLondonDay('2026-09-11', '16:28');
     await act(() => jest.advanceTimersByTime(60_500));
 
@@ -64,7 +114,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.getByText('Asr')).toBeOnTheScreen();
-    expect(screen.getByText('0:01')).toBeOnTheScreen();
+    expect(screen.getByText('1s')).toBeOnTheScreen();
   });
 
   it('swaps to Magrib the instant Asr comes, for a countdown started 400 ms into 16:28', async () => {
@@ -76,7 +126,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await act(() => jest.advanceTimersByTime(59_600));
 
     expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('2:59')).toBeOnTheScreen();
+    expect(screen.getByText('2h 59m')).toBeOnTheScreen();
   });
 
   it('counts down to the prayer the overlay opens on', async () => {
@@ -87,7 +137,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
 
     expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('5:28')).toBeOnTheScreen();
+    expect(screen.getByText('5h 28m')).toBeOnTheScreen();
   });
 
   it('shows the bar under the countdown on a fresh install', async () => {

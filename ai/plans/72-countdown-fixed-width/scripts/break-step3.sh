@@ -20,7 +20,7 @@ fails=0
 npx jest shared/__tests__/prayerIdContract.test.ts --watchman=false --selectProjects=unit > $TMPDIR/break72-e.log 2>&1
 grep -qF 'pins the channel-name formats in English' $TMPDIR/break72-e.log && grep -qF 'FAIL' $TMPDIR/break72-e.log && echo "caught: contract pin on the channel format" && fails=$((fails+1))
 npx jest shared/__tests__/catalogLock.test.ts --watchman=false --selectProjects=unit > $TMPDIR/break72-f.log 2>&1
-grep -qF 'FAIL shared/__tests__/catalogLock.test.ts' $TMPDIR/break72-f.log && echo "caught: en hash drifted from the lock" && fails=$((fails+1))
+grep -qF 'FAIL unit shared/__tests__/catalogLock.test.ts' $TMPDIR/break72-f.log && echo "caught: en hash drifted from the lock" && fails=$((fails+1))
 
 cp $TMPDIR/break72-en.ts.bak shared/i18n/en.ts
 rm $TMPDIR/break72-en.ts.bak
