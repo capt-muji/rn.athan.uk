@@ -1,0 +1,12 @@
+      {/* Prayer Alert Card */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>{t('alert.card.athan')}</Text>
+        <Text style={styles.cardHint}>{t('alert.card.athanHint')}</Text>
+        <View style={{ marginTop: SPACING.md }}>
+          <SegmentedControl
+            key={`athan-${sheetState.type}-${sheetState.index}`}
+            options={alertOptions()}
+            selected={atTimeAlert}
+            onSelect={handleAlertSelect}
+          />
+        </View>
