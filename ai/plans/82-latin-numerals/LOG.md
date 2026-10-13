@@ -359,6 +359,6 @@ quote the characters as read; `git show` on the commit carries the plan files an
 bump only, no source file.
 
 Merged into `uat` with the step-3 merge message (`2.0.227 - merge feat/82-device-proof: step 3,
-the simulator proof`).
+the simulator proof`): commit `1b08195b`, merge `8f1be564`.
 
 session: ses_ec900563cffeYgP6bGi49t5pXq
