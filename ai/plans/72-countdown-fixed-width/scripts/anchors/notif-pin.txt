@@ -1,0 +1,11 @@
+    expect(genReminderNotificationContent('fajr', 15, AlertType.Silent).title).toBe('Fajr in 15');
+  });
+
+  it('builds the reminder title with native digits under ar', () => {
+    try {
+      setActiveLocale('ar');
+      expect(genReminderNotificationContent('asr', 15, AlertType.Silent).title).toBe('العصر بعد ١٥');
+    } finally {
+      setActiveLocale('en');
+    }
+    expect(genReminderNotificationContent('asr', 15, AlertType.Silent).title).toBe('Asr in 15');

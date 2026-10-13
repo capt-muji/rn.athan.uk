@@ -1,0 +1,8 @@
+  it('names Asr for a screen reader and counts down to it in hours and minutes, at 14:00', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    startCountdowns();
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.getByRole('text', { name: 'Asr' })).toBeOnTheScreen();
+    expect(screen.getByText('2:29')).toBeOnTheScreen();
