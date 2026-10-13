@@ -7,7 +7,7 @@
 | Needs first | nothing (63 DONE) |
 | Parent | none |
 | Group | the countdown components and the time formatters, row 63's ground. Disjoint from the widget rows 67 and 69: no widget file is edited |
-| Batch budget | 4 (steps 1 and 2; step 3 and the device step dispatch alone) |
+| Batch budget | 4 (one step per batch; every step dispatches alone) |
 | Session budget | 9 |
 | Steps count | 4 (three code, one device) |
 | Device | OnePlus 3T, mock build (`3T_SERIAL`) |
@@ -65,7 +65,7 @@ first frame; tests never read the real clock.
 | --- | --- | --- | --- |
 | D72.1 | The reference sha for the English revert is `194ed701` (uat at 2.0.128), the parent of row 63's first-step merge `49c58aea` (2.0.129). Byte-identical is proven by pinning the en outputs to the reference commit's own test values, quoted in step 1 | Planner, 2026-10-13, from the row 63 version ladder in git | This table and step 1 |
 | D72.2 | The en revert restores the reference `formatTime` and `formatTimeAgo` bodies verbatim as private en branches (`formatTimeLettered`, `formatTimeAgoLettered`), including `DurationLabels`, `durationLabels()` and the `intervalToDuration` import; the public formatters branch on `currentLocaleId() === 'en'` | Planner, from rule 1 | Step 1 contracts |
-| D72.3 | The non-en timer shapes: seconds hidden `HH:MM`, seconds shown `HH:MM:SS`, every group `pad2`, zero and negative clamp to `00:00:00`. This supersedes row 63's D75 shapes (unpadded hours, `M:SS` under the hour) for the five non-en locales only | Planner, from rules 2 and 3 | Step 1 contracts |
+| D72.3 | The non-en timer shapes: seconds hidden `HH:MM`, seconds shown `HH:MM:SS`, every group `pad2`, zero and negative clamp to `00:00:00`. This supersedes row 63's D75 shapes (unpadded hours, `M:SS` under the hour) for the five non-en locales only. AUDIT-VETO: seconds stay hidden by preference; the owner may rule three sections at all times at audit | Planner, from rules 2 and 3 | Step 1 contracts |
 | D72.4 | The colon gap renders as U+2009 thin spaces around the colon inside its own text node (`\u2009:\u2009`), on the timer and the ago badge. A row-of-siblings layout was rejected: RTL child order flips under ar, the pill loses colour inheritance, and screen readers fragment the utterance | Planner, from rule 2's "little gap, not a wide space" | Step 2 contracts. AUDIT-VETO: the gap width is a thin space; the owner may rule it wider or narrower at audit |
 | D72.5 | The dim colour pair is the row-cascade pair: `COLORS.text.muted` dim, `COLORS.text.primary` bright (`components/prayer/Prayer.tsx:52-60`), animated with `useDerivedColor` over `ANIMATION.durationSlow`, the cascade's own 1000 ms fade. A section mounts settled and animates only on a zero-state change | Planner, from rule 3's "the same bright-to-dim treatment" | Step 2 contracts. AUDIT-VETO: the fade duration; `ANIMATION.durationFade` (150 ms) is the one-line alternative |
 | D72.6 | The ago badge keeps row 63's colon shapes (`0:02`, `1:30`) with no fixed width and no per-section colour: rule 2's three-section rule describes the timer, and rule 2's own verb for the badge is "keeps". The badge gains the colon gap only | Planner, from rules 2 and 4 | Step 1 and step 2. AUDIT-VETO: fixed-width badge hours would be `pad2(hours)` in `formatTimeAgo`'s non-en branch |
@@ -234,9 +234,9 @@ by pre-flight file list.
   Arabic-Indic digits with the ASCII colon bytes unchanged (`٠١:٠١`, `٠٢:٥٩:٠٠`)
 - [R2.5] WHEN `formatTimeAgo` renders 60 s or more under a non-`en` locale THE SYSTEM SHALL keep row
   63's colon shapes (`0:02`, `1:30`, `2:00`, `2:01`)
-- [R3.1] WHEN a timer section's group carries a non-zero digit under a non-`en` locale THE SYSTEM SHALL render it
+- [R3.1] WHEN a timer section's group carries a non-zero digit under a non-`en` locale THE SYSTEM SHALL render it (the colour verified by step 4's transcription; the jest mock cannot read an animated colour)
   in `COLORS.text.primary`
-- [R3.2] WHEN a timer section's group is all zeros under a non-`en` locale THE SYSTEM SHALL keep the
+- [R3.2] WHEN a timer section's group is all zeros under a non-`en` locale THE SYSTEM SHALL keep the (colour likewise step 4's transcription)
   group visible and render it in `COLORS.text.muted`, hours included
 - [R3.3] WHEN the timer renders under a non-`en` locale THE SYSTEM SHALL render every colon
   in `COLORS.text.muted` regardless of remaining time
@@ -308,7 +308,7 @@ fleettest id, and installs on the 3T (`3T_SERIAL`). The checks, each transcribed
 2. Under `ar`, with the clock moved past the final window (next prayer more than 599 s
    away): the hero reads two double-digit groups with white hours (R7.2). Before any clock
    change, read `dumpsys alarm` and name the unexplained app alarm at
-   `when 2104803640505`; restore automatic time afterwards.
+   the app alarm at an epoch years in the future is the known mock fixture (recorded at `when 2104803640505` on 2026-10-12); any other unexplained app alarm is a STOP. Restore automatic time afterwards.
 3. Under `en`: the hero reads `Xh Ym` and the ago badge reads `Xm ago` (R7.3).
 4. Under `ar`, just after a prayer passes: the ago badge colon carries the gaps (R7.4).
 5. After the switch to `en`: `dumpsys notification` names the reminder channel
