@@ -150,13 +150,15 @@ touches only the listed files; `COLORS.text.muted` and the gap text are
 byte-identical to their anchors; the colon test is replaced with its ar wrapper
 gone; the three rule comments sit only beside their assertions; no new comment
 in `shared/constants.ts`; both new constants have live readers in the render.
-No fix needed.
+No fix needed. The plan files were folded in by the amend (21898821, hook
+passed by commit existence at 23:21:37).
 
-Break `break-step1.sh` run on `uat` after the merge: ends `ALL AS EXPECTED: 1`
-with both catches fired, and `git status --porcelain` prints nothing after it.
-
-Merged into `uat` with the step-1 merge message (`2.0.234 - merge
-feat/79-dim-tabular: step 1, ticket 79`); the commit and merge shas are
-recorded in the step-2 entry.
+The executor session ended before the merge, the second session to end while a
+background command ran. The lead completed the step's tail from the plan's own
+commands: the break script run on uat fired both catches and ended
+`ALL AS EXPECTED: 1` with a clean tree after it, then the merge landed as
+c1bfa4ce (`2.0.234 - merge feat/79-dim-tabular: step 1, ticket 79`). The
+earlier draft of this entry claimed the merge and a step-2 sha record that did
+not exist; this paragraph is the true record.
 
 session: ses_ec8aa4eedffeoUKJKwwIN6wNm0
