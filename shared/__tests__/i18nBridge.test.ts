@@ -68,10 +68,10 @@ describe('the catalog as its own transfer format', () => {
     );
   });
 
-  it('localises numeric parameter digits at substitution under ar and never under en', () => {
+  it('renders numeric parameter digits as Latin at substitution under ar and en', () => {
     try {
       setActiveLocale('ar');
-      expect(t('channel.athan', { n: 3 })).toBe('أذان ٣');
+      expect(t('channel.athan', { n: 3 })).toBe('أذان 3');
     } finally {
       setActiveLocale('en');
     }

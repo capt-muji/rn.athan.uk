@@ -69,7 +69,7 @@ describe('the Suhoor and Duha rows on Friday 11 September 2026 at 14:00, with Fa
     expect(screen.getByText('06:46')).toBeOnTheScreen();
   });
 
-  it('renders the row time with native digits under ar, and the unread sentinel stays ASCII', async () => {
+  it('renders the row time with Latin digits under ar, and the unread sentinel stays ASCII', async () => {
     showLondonDay('2026-09-11', '14:00', { '2026-09-11': ['fajr'] });
     setActiveLocale('ar');
     try {
@@ -80,7 +80,7 @@ describe('the Suhoor and Duha rows on Friday 11 September 2026 at 14:00, with Fa
         </>
       );
 
-      expect(screen.getByText('٠٦:٤٦')).toBeOnTheScreen();
+      expect(screen.getByText('06:46')).toBeOnTheScreen();
       expect(screen.getByText('--:--')).toBeOnTheScreen();
     } finally {
       setActiveLocale('en');

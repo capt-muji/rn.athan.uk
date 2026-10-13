@@ -680,14 +680,14 @@ describe('render-granular selectors', () => {
     expect(getCountdownDisplayAtom(ScheduleType.Standard)).toBe(standardCountdownDisplayAtom);
   });
 
-  it('display selector emits native digits under ar', () => {
+  it('display selector emits Latin digits under ar', () => {
     const store = createStore();
     store.set(showSecondsAtom, false);
 
     store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
     setActiveLocale('ar');
     try {
-      expect(store.get(standardCountdownDisplayAtom)).toBe('٠١:٠١');
+      expect(store.get(standardCountdownDisplayAtom)).toBe('01:01');
     } finally {
       setActiveLocale('en');
     }

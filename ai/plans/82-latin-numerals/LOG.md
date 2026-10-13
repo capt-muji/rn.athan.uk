@@ -224,3 +224,76 @@ red-list unit batch and contract 10; the twelve-test arithmetic becomes thirteen
 Everything else in the executor's run matched the plan (red counts verbatim, the named
 suites green, tsc and Biome clean); no commit was made and the tree is clean at
 `bc0468c8`.
+
+### Step 02 — DONE
+
+Branch `feat/82-latin-digits` off `uat` (`122d7b13`, 2.0.226 after the bump). Both anchor
+checks pass (`PREFLIGHT OK`). The tree was applied from the accelerator patch
+`$HOME/athan-gitree/sessions/82/step2-unfinished.patch` (the prior attempt's eight source
+contracts and twelve pin flips), the `i18nBridge.test.ts` flip the patch predates was added on
+top (line 74 `أذان ٣` -> `أذان 3`, test renamed to the Latin truth), and one contract wording was
+aligned (`SoundItem.tsx`'s local `formatTime` keeps its `composed` variable and returns it, per
+contract 7).
+
+Red (the eight source contracts landed, the named suites still pinning uat's Arabic-Indic bytes;
+reproduced this run, not copied):
+
+- `time.test.ts` 6 failed / 127 passed / 133 total: `formatTime › hideSeconds option › draws the
+  fixed-width shapes under ar` `Expected: "٠١:٠١", Received: "01:01"`; `formatTime › native digits
+  (D57) › draws Eastern Arabic-Indic digits under ar` `"٠٢:٥٩:٠٠"` receives `"02:59:00"`;
+  `formatTime › native digits (D57) › draws the negative, seconds-only, whole-minute and
+  whole-hour branches under ar` `"٠٠:٠٠:٠٠"` receives `"00:00:00"`; `formatTimeAgo › native digits
+  (D57) › draws the minute, whole-hour and mixed branches under ar` `"٠:٠٢"` receives `"0:02"`;
+  `splitColonSections › reads Eastern Arabic-Indic groups and dims the zero groups` `Expected:
+  ["٠١", ":", "٣٢", ":", "٠٥"], Received: undefined`; `formatPrayerTime › native digits (D57) ›
+  draws Eastern Arabic-Indic digits under ar` `"٠٥:٤٤"` receives `"05:44"`.
+- unit batch 8 failed / 228 passed / 236 total: `i18nBridge` `Expected: "أذان ٣", Received: "أذان
+  3"`; `countdown` `"٠١:٠١"` receives `"01:01"`; `dateLocalized` 2 (`"الأحد, ١١ أكتوبر ٢٠٢٦"`
+  receives `"الأحد, 11 أكتوبر 2026"`; `"ربيع الآخر ٣٠, ١٤٤٨"` receives `"ربيع الآخر 30, 1448"`);
+  `notifications` 2 (`"العصر بعد ١٥"` receives `"العصر بعد 15"`; the channel name `"تنبيه المغرب
+  بعد ١٥"` receives `"تنبيه المغرب بعد 15"`); `widgetTimeline` `"١٧:٤٥"` receives `"17:45"`;
+  `widgetSimulation` `"٠١:٠٥"` receives `"01:05"`.
+- `widgetRenderer.test.ts` 4 failed / 59 passed / 63 total, all `... under an ar device locale`:
+  `"Rab ٣٠"` receives `["Asr", "", "15:20", "Rab 30"]`; `"١٩د"` receives `["ASR", "19د", "15:20",
+  "Sat"]`; `"١h ١٢m"` receives `["ASR", "1h 12m", "15:20", "Sat"]`; the parsed legacy day footer
+  `"Rab ٣٠"` receives `["ASR", "1h 12m", "15:20", "Rab 30"]`.
+- components batch 6 failed / 89 passed / 95 total: `Time` `Unable to find an element with text:
+  ٠٦:٤٦`; `Countdown` 2 (`٠٢` not found); `SoundItem` `٠:٠٣` not found; `Alert` `١٥` not found;
+  `Sound` `/^أذان [٠-٩]+$/` matched nothing.
+
+`shared/__tests__/digits.test.ts` is deleted with its subject (contract 9), so it is not in the
+red run; the plan's red section lists it as measured against the neutralised map in the planning
+worktree.
+
+Green: the thirteen named suites pass (unit 8 suites / 432 tests; components 5 suites / 95
+tests); `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0. The full unit
+and components run (`npx jest --watchman=false`) is green: 209 suites, 5541 tests, 0 failed.
+`break-step2.sh` ends `ALL AS EXPECTED: 1`. Version 2.0.226 set in `app.json` (first),
+`package.json` and `android/app/build.gradle` (`versionName`). Deletions:
+`shared/i18n/digits.ts` and `shared/__tests__/digits.test.ts`. The commit changes 27 files:
+25 modified and the two deletions; `shared/__tests__/i18nBridge.test.ts` joins the inventory.
+
+Review: read `git show` cold against the step-2 checklist. `grep -r "localiseDigits\|ARABIC_INDIC"
+--include="*.ts" --include="*.tsx" .` outside `node_modules` returns nothing (R2.5); no catalog
+file, `catalog-lock.json`, `dist/` or `native-strings.json` byte changed; no channel id,
+notification scheduling line or alert behaviour changed; the en reminder title and channel label
+pins are byte-identical (`{name} in {n}m`, `Athan {n}`); the `now`/`الآن` word pins survive; the
+widget's `localeKey` still selects `STATIC`, only the digit map died.
+
+Review fix: the cold read found three residues the plan's per-file flips leave behind.
+`shared/__tests__/widgetSimulation.test.ts:341-343` kept the description `bakes native digits
+into the pushed times under ar` and the comment `Eastern Arabic-Indic digits`;
+`components/sheets/screens/__tests__/Sound.test.tsx:142` kept `builds its rows with native
+digits under ar`; `shared/__tests__/dateLocalized.test.ts:1-5` kept `native digits under ar
+(D57)` in its docblock. All three sit in files this step already flips and name behaviour the
+change removed. Fix applied under PLAN.md section 10's three conditions (un-specified code, no
+assertion, signature, log line or behaviour moved, every criterion still met): the two
+descriptions and the comment dropped the digit-localisation wording for the Latin truth, and the
+docblock reads `Latin digits and no era in every locale`. Re-ran the two affected unit suites
+(71 passed), the affected component suite (22 passed), `npx tsc --noEmit` (rc 0) and
+`break-step2.sh` (`ALL AS EXPECTED: 1`); amended into the step commit.
+
+Merged into `uat` with the step-2 merge message (`2.0.226 - merge feat/82-latin-digits: step 2,
+Latin digits everywhere`).
+
+session: ses_ec909af78ffe667y7LBBE0W4Pn
