@@ -1,0 +1,5 @@
+describe('localiseDigits', () => {
+  it('maps every digit under ar and leaves the colon ASCII', () => {
+    setActiveLocale('ar');
+    expect(localiseDigits('05:44')).toBe('٠٥:٤٤');
+  });

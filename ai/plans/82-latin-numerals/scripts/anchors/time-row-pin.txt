@@ -1,0 +1,4 @@
+      );
+
+      expect(screen.getByText('٠٦:٤٦')).toBeOnTheScreen();
+      expect(screen.getByText('--:--')).toBeOnTheScreen();

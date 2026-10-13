@@ -1,0 +1,15 @@
+/** The unit words formatTime and formatTimeAgo render; a locale supplies its own */
+interface DurationLabels {
+  h: string;
+  m: string;
+  s: string;
+  now: string;
+}
+
+/** The catalog's single-letter unit labels */
+const durationLabels = (): DurationLabels => ({
+  h: t('duration.h'),
+  m: t('duration.m'),
+  s: t('duration.s'),
+  now: t('duration.now'),
+});

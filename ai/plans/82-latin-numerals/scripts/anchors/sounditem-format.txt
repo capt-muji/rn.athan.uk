@@ -1,0 +1,6 @@
+function formatTime(seconds: number): string {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  const composed = `${mins}:${secs.toString().padStart(2, '0')}`;
+  const localised = localiseDigits(composed);
+  return localised;
