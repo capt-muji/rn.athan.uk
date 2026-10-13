@@ -1,4 +1,0 @@
-    AsyncFunction("reload") Coroutine { options: ReloadScreenOptions? ->
-      UpdatesController.instance.reloadScreenManager?.setConfiguration(options)
-      UpdatesController.instance.relaunchReactApplicationForModule()
-    }

@@ -1,9 +1,0 @@
-                devSupportManager.onReactInstanceDestroyed(reactContext)
-              }
-              task
-            },
-            uiExecutor,
-        )
-        .continueWithTask(
-            { task: Task<ReactInstance> ->
-              val reactInstance = taskUnwrapper(task, "4: Destroying ReactInstance")

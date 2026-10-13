@@ -1,4 +1,0 @@
-  override fun hasActiveReactInstance(): Boolean = reactHost.isInstanceInitialized
-
-  override fun hasReactInstance(): Boolean = reactHost.isInstanceInitialized
-
