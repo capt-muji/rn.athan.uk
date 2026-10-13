@@ -109,3 +109,15 @@ session: ses_ecc503abeffeGjW9lWw7YwOI31
   `--no-ff` into uat with the plan's message.
 
 session: ses_ecc503abeffeGjW9lWw7YwOI31
+
+### Finishing — done
+
+- All three steps executed and merged: step 1 `7af4674e` (2.0.182), step 2 `e4869125`
+  (2.0.183), step 3 `b0525f99` (2.0.184); step branches deleted after their merges; the
+  whole ticket's diff on uat is docs plus the three version bumps. No code file touched.
+- Ticket set to EXECUTED; executed docs commit at 2.0.185; no push (the lead pushes
+  after review, and applies the D85 fold of FINDINGS.md into the queue cell at DONE:
+  the option set, the recommendation (option 1, the status quo), the ruling list, the
+  inventory's cache classes and each option's priced cost).
+
+session: ses_ecc503abeffeGjW9lWw7YwOI31
