@@ -61,7 +61,7 @@ function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minu
       ) : (
         <>
           {parts[0]}
-          <Text>{'\u2009:\u2009'}</Text>
+          <Text style={styles.colon}>{'\u2009\u2009:\u2009\u2009'}</Text>
           {parts[1]}
         </>
       )}
@@ -81,5 +81,9 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.pill,
     overflow: 'hidden',
     alignSelf: 'center',
+    marginTop: -SPACING.xs,
+  },
+  colon: {
+    opacity: 0.4,
   },
 });
