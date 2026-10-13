@@ -47,3 +47,46 @@ normalizer (`getByText('Dhuhr 0\u2009:\u200903 ago', { normalizer: (s) => s })`)
 the gap node, and the fade test asserts that outer node. No other step-1 item changed;
 the executor's pre-flight and both anchor lists pass, and the tree is clean at
 `3494857e`.
+
+### Step 01 — STOPPED
+
+Branch `feat/82-format-flip` off `uat` (`01b648c5`). Both anchor checks pass
+(`PREFLIGHT OK`). Red recorded against the new test values: `time.test.ts` 15 failed /
+118 passed / 133 total; `Countdown.test.tsx` + `Ago.test.tsx` 8 failed / 12 passed /
+20 total; `countdown.test.ts` 2 failed / 26 passed / 28 total; `typography.test.ts`
+4 failed / 4 total (`Expected: "Roboto-Medium", Received: undefined`). Green on the
+five named suites (133, 20, 28, 4 passed), `npx tsc --noEmit` and
+`npx biome check . --error-on-warnings` both exit 0. Break `break-step1.sh` ends
+`ALL AS EXPECTED: 1`. Version set to 2.0.222 in `app.json`, `package.json` and
+`android/app/build.gradle` (all matching, `app.json` first).
+
+STOP: the pre-commit hook fails on a suite the plan does not name. The full
+unit + components run (`npx jest --watchman=false`) reports 2 failed suites and
+4 failed tests, all pins of the en lettered display this step's flip removes:
+
+- `__tests__/app/Screen.test.tsx:26` expects `Dhuhr 58m ago`, receives `Dhuhr 0\u2009:\u200958 ago`
+- `__tests__/app/Screen.test.tsx:47` expects `Duha 7h 14m ago`, receives `Duha 7\u2009:\u200914 ago`
+- `stores/__tests__/schedule.test.ts:2141` (`R12: a passed unreadable Fajr opens tomorrow, which is readable, in seconds`) expects `23h 54m`, receives `23:54`
+- `stores/__tests__/schedule.test.ts:2141` (`R12: R11: a row of a day with no readable time opens its next occurrence`) expects `16h 55m`, receives `16:55`
+
+Neither suite appears in `PLAN.md` section 4.3 or step 1's `Files`, so the plan's pin
+inventory missed them. PLAN.md section 10 rules this a STOP with the planner
+re-deriving the pin. No commit is made. Work saved at
+`$HOME/athan-gitree/sessions/82/step1-unfinished.patch` (614 lines) and
+`step1-unfinished-status.txt`; the branch is reverted and deleted; the version lock
+is released.
+
+session: ses_ec9243a21ffeY5ffi4kZhuOyEF
+
+
+### Replan round two (2026-10-13, lead)
+
+The step-1 pin inventory was short: the full unit plus components run reddens two suites
+outside the five composer suites, both pinning the en lettered form. `Screen.test.tsx:26`
+expects `Dhuhr 58m ago`, receives `Dhuhr 0\u2009:\u200958 ago`; `:47` expects
+`Duha 7h 14m ago`, receives `Duha 7\u2009:\u200914 ago`; `schedule.test.ts:2099` (`23h 54m`)
+and `:2123` (`16h 55m`) flip to `23:54` and `16:55`. Repaired: both suites join step 1's
+`Files` and red list, `Screen.test.tsx:58`'s negative query flips with them, and PLAN.md
+section 4.3 names both. Everything else in the executor's run passed (red counts matched
+the plan, five suites green, tsc and Biome clean, `break-step1.sh` `ALL AS EXPECTED: 1`,
+version 2.0.222 set); no commit was made and the tree is clean at `01b648c5`.

@@ -143,6 +143,10 @@ one surface gives the mixed-script face row 67 chased.
 - `shared/__tests__/typography.test.ts` pins the per-locale map; step 1 extends it with
   the `familyDigits` pin. `components/__tests__/typographySweep.test.tsx` pins the
   no-raw-`TEXT.family` rule and the countdown name's ar-only expression; both stay true.
+- The en lettered form is pinned beyond the five composer suites by
+  `__tests__/app/Screen.test.tsx` (the ago badge sentence, three queries) and
+  `stores/__tests__/schedule.test.ts` (two display rows); step 1 flips them to the colon
+  shape.
 
 ### 4.4 Why the obvious fix is wrong
 
@@ -289,7 +293,7 @@ Anticipated review fixes, word for word:
 
 Per-step restore lists:
 
-- Step 1: `git checkout uat -- shared/time.ts shared/typography.ts components/countdown/Countdown.tsx components/prayer/Ago.tsx` plus the five test files named there. No stored state touched.
+- Step 1: `git checkout uat -- shared/time.ts shared/typography.ts components/countdown/Countdown.tsx components/prayer/Ago.tsx` plus the seven test files named there. No stored state touched.
 - Step 2: restore the eight source files and twelve test files by name from uat;
   recreate `shared/i18n/digits.ts` and `shared/__tests__/digits.test.ts` from
   `git show uat:...`. No stored state touched.
