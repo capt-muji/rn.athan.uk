@@ -165,7 +165,7 @@ describe('countdown atom behavior', () => {
 // =============================================================================
 
 describe('sequence countdown transition (clock-based)', () => {
-  it('refreshes the sequence when the wall clock reaches the prayer time, never displaying 0:00', () => {
+  it('refreshes the sequence when the wall clock reaches the prayer time, never displaying 0s', () => {
     jest.useFakeTimers();
 
     // Prayer at 06:15:00Z; system clock starts exactly on 06:14:58Z (2s away).
@@ -197,7 +197,7 @@ describe('sequence countdown transition (clock-based)', () => {
     jest.useRealTimers();
   });
 
-  it('holds the final digit at 0:01 across the boundary tick instead of 0:00', () => {
+  it('holds the final digit at 1s across the boundary tick instead of 0s', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T06:14:59.500Z'));
 
@@ -304,7 +304,7 @@ describe('ticker integrity (wall-second chain)', () => {
     unsub();
   });
 
-  it('never displays 0:00 across a full countdown and swaps at the boundary', () => {
+  it('never displays 0s across a full countdown and swaps at the boundary', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
 
@@ -439,7 +439,7 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
     expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 7200, name: 'dhuhr' });
   });
 
-  it('holds the page atom at 0:01 when the open overlay target passes — never displays 0:00', () => {
+  it('holds the page atom at 1s when the open overlay target passes — never displays 0s', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
@@ -667,15 +667,15 @@ describe('render-granular selectors', () => {
     store.set(showSecondsAtom, false);
 
     store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1:01');
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');
 
-    // 35s closer — same displayed minute band (1:01 spans 3660-3719s), string unchanged
+    // 35s closer — same displayed minute band (1h 1m spans 3660-3719s), string unchanged
     store.set(standardCountdownAtom, { timeLeft: 3700, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1:01');
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');
 
     // Drops out of the 1-minute band — string flips
     store.set(standardCountdownAtom, { timeLeft: 3600, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1:00');
+    expect(store.get(standardCountdownDisplayAtom)).toBe('1h');
 
     expect(getCountdownDisplayAtom(ScheduleType.Standard)).toBe(standardCountdownDisplayAtom);
   });
@@ -687,7 +687,7 @@ describe('render-granular selectors', () => {
     store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
     setActiveLocale('ar');
     try {
-      expect(store.get(standardCountdownDisplayAtom)).toBe('١:٠١');
+      expect(store.get(standardCountdownDisplayAtom)).toBe('٠١:٠١');
     } finally {
       setActiveLocale('en');
     }
@@ -698,7 +698,7 @@ describe('render-granular selectors', () => {
     store.set(showSecondsAtom, false);
 
     store.set(standardCountdownAtom, { timeLeft: 45, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('0:45');
+    expect(store.get(standardCountdownDisplayAtom)).toBe('45s');
   });
 
   it('bar progress is raw per-second resolution and warning flips at the exact threshold', () => {
