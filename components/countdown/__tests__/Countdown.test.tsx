@@ -44,7 +44,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
 
       expect(screen.getByText('٠٢')).toBeOnTheScreen();
       expect(screen.getByText('٢٩')).toBeOnTheScreen();
-      expect(screen.getByText(GAP_COLON)).toBeOnTheScreen();
+      expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
       expect(screen.queryByText('٢:٢٩')).toBeNull();
     } finally {
       setActiveLocale('en');
@@ -60,7 +60,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
       await render(<Countdown type={ScheduleType.Standard} />);
 
       expect(screen.getByText('٠٢')).toBeOnTheScreen();
-      expect(screen.getAllByText(GAP_COLON)).toHaveLength(2);
+      expect(screen.getAllByText(GAP_COLON, { normalizer: (s) => s })).toHaveLength(2);
     } finally {
       setActiveLocale('en');
       getDefaultStore().set(showSecondsAtom, false);
@@ -88,7 +88,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
       startCountdowns();
       await render(<Countdown type={ScheduleType.Standard} />);
 
-      const colon = screen.getByText(GAP_COLON);
+      const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
       const style = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
       expect(style.color).toBe(COLORS.text.muted);
     } finally {

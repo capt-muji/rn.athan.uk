@@ -33,7 +33,7 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
     try {
       await render(<PrayerAgo type={ScheduleType.Standard} />);
 
-      expect(screen.getByText(GAP_COLON)).toBeOnTheScreen();
+      expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
     } finally {
       setActiveLocale('en');
     }
