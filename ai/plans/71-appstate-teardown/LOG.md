@@ -127,3 +127,32 @@ the same commit as this replan). The section 6 verdict is untouched: the drop is
 and log-only whenever the reload fires, and the starved crossings log no exception at
 all. Evidence: sessions/71/NOTES.md and the per-drive captures.
 
+### Step 2 — done
+
+- Branch `docs/71-2-crossing-proof` off `uat` at daa30fec (2.0.191); origin/uat 053ffaab
+  already an ancestor, nothing to merge in.
+- Anchor check: nineteen lines, every count `1`, run before and after the change;
+  `STEP1-OK` and `VERDICT-OK` printed.
+- Red: sections 7 and 8 absent (FINDINGS.md ended at section 6); no test runs red, the
+  step is a transcription.
+- Change: sections 7 and 8 appended per the re-planned contracts. The verbatim block:
+  29 lines transcribed byte-for-byte from `logcat-drive1-full.txt` lines 7737-7765, the
+  threadtime W line at 08:45:33.305 through the stack's last frame (26 `at` frames, the
+  `AppStateModule.onHostPause` frame present), fenced as a code block. The capture
+  carries no blank line anywhere, so the block ends at the stack's final frame
+  (ZygoteInit.main); the next capture line is a later, different-tag entry (08:45:33.307,
+  `Stopping all React Native surfaces`). D91 accepts the captured evidence as-is. The
+  drive table copied row for row from NOTES.md (six rows). Unrelated soft exceptions in
+  the capture: none (all four `SoftException` occurrences sit inside the one block,
+  capture lines 7737-7739). The contract's conditional ruling-list line was not added:
+  FINDINGS.md carries no ruling list.
+- Green: drive-table rows 6/6 present in section 8; diff of the fenced block against the
+  capture lines empty; `grep -c 'Dropping work' FINDINGS.md` printed 2, both lines inside
+  section 7's transcription; anchor check nineteen `1`.
+- Break script: none (docs step); the green run's row counts stand in for it (6/6 rows,
+  byte diff empty, count 2 confined to section 7).
+- Version 2.0.192 taken under the lock: local 2.0.191, origin/uat 2.0.187, next patch
+  over the higher; set in `app.json`, then `package.json`, then
+  `android/app/build.gradle` `versionName` (gitignored, never added). Queue row 71 moved
+  to `IN PROGRESS, step 2` in this step's commit.
+
