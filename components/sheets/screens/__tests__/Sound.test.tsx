@@ -9,7 +9,7 @@ import * as Notifications from 'expo-notifications';
 import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { onPlatform, showLondonDay } from '@/__tests__/harness';
 import { ATHAN_AUDIOS } from '@/assets/audio';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { getSoundPreference, setSoundPreference } from '@/stores/notifications';
@@ -118,6 +118,25 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(screen.getByText('Select Athan'), 'change', 0);
 
     expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
+  });
+
+  it('renders the iOS volume note above the sound list', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSoundListReady();
+    await render(<SoundSheet />);
+
+    expect(
+      screen.getByText('Plays at your Ringer & Alerts volume. The Ring/Silent switch and Focus mute it.')
+    ).toBeOnTheScreen();
+  });
+
+  it('renders the Android volume note above the sound list', async () => {
+    onPlatform('android');
+    showLondonDay('2026-09-11', '14:00');
+    setSoundListReady();
+    await render(<SoundSheet />);
+
+    expect(screen.getByText('Plays at alarm volume, not ring volume.')).toBeOnTheScreen();
   });
 
   it('builds its rows with native digits under ar', async () => {

@@ -1,7 +1,7 @@
 import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
+import { type LayoutChangeEvent, Platform, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
@@ -181,6 +181,9 @@ export default function BottomSheetSound() {
       {soundListReady && (
         <View style={styles.card}>
           <Text style={styles.cardHint}>{t('sound.notificationSound')}</Text>
+          <Text style={styles.cardHint}>
+            {t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')}
+          </Text>
 
           <View style={styles.listContainer}>
             {/* Sliding indicator */}

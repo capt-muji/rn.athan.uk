@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
@@ -247,6 +247,8 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
         onSelectSound={(type) => handleReminderSoundSelect(1, type)}
         onSelectInterval={(interval) => updateReminder(1, { interval })}
       />
+
+      <Text style={styles.cardHint}>{t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')}</Text>
     </>
   );
 });
