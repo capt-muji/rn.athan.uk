@@ -15,6 +15,8 @@ export interface LocaleTypography {
   familyMedium: string;
   /** Timer digits are Latin glyphs in every locale (row 82), so this face is the Latin medium everywhere while word styles stay per-locale */
   familyDigits: string;
+  /** The timer's digit size: ar runs two points under the shared token (row 81a) */
+  countdownSize: number;
   size: (n: number) => number;
   lineHeight: (n: number) => number;
   letterSpacing: (n: number) => number;
@@ -25,6 +27,7 @@ const ARABIC: LocaleTypography = {
   familyRegular: 'NotoSansArabic-Regular',
   familyMedium: 'NotoSansArabic-Medium',
   familyDigits: TEXT.family.medium,
+  countdownSize: TEXT.sizeLarge - 2,
   size: (n) => Math.round(n * ARABIC_SIZE_FACTOR),
   lineHeight: (n) => Math.round(n * ARABIC_SIZE_FACTOR),
   letterSpacing: () => 0,
@@ -35,6 +38,7 @@ const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
   familyDigits: TEXT.family.medium,
+  countdownSize: TEXT.sizeLarge,
   size: (n) => n,
   lineHeight: (n) => n,
   letterSpacing: (n) => n,

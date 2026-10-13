@@ -72,7 +72,7 @@ export default function Countdown({ type }: Props) {
                   // biome-ignore lint/suspicious/noArrayIndexKey: the colon's slot is fixed by the string's shape, the list never reorders
                   key={`colon-${index}`}
                   style={styles.countdownColon}>
-                  {'\u2009:\u2009'}
+                  {'\u2009\u2009:\u2009\u2009'}
                 </Text>
               ) : (
                 <CountdownSectionText
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   countdown: {
     color: COLORS.text.primary,
-    fontSize: ty.size(TEXT.sizeLarge),
+    fontSize: ty.countdownSize,
     textAlign: 'center',
     fontFamily: ty.familyDigits,
     fontVariant: ['tabular-nums'],
