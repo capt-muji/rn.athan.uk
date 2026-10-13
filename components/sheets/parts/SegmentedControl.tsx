@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { type LayoutChangeEvent, Pressable, StyleSheet, View } from 'react-native';
+import { I18nManager, type LayoutChangeEvent, Pressable, StyleSheet, View } from 'react-native';
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
@@ -117,6 +117,8 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
   const [containerWidth, setContainerWidth] = useState(0);
   const padding = 3;
   const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
+  // RTL mirrors the pill's slot: the layout swap owns the inset keys, so the index mirrors here
+  const isRTL = I18nManager.getConstants().isRTL;
   const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / options.length : 0;
 
   // The indicator's position is percent-of-own-width — the pill's width IS one
@@ -129,7 +131,7 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
   // and slid into place. Mount settles; only selection CHANGES animate.
   const isFirstEvaluation = useSharedValue(true);
   const translateXPercent = useDerivedValue(() => {
-    const target = selectedIndex * 100;
+    const target = (isRTL ? options.length - 1 - selectedIndex : selectedIndex) * 100;
     if (isFirstEvaluation.value) {
       isFirstEvaluation.value = false;
       return target;
@@ -151,7 +153,10 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
         <Animated.View
           style={[
             styles.indicator,
-            { width: optionWidth, transform: [{ translateX: `${selectedIndex * 100}%` }] },
+            {
+              width: optionWidth,
+              transform: [{ translateX: `${(isRTL ? options.length - 1 - selectedIndex : selectedIndex) * 100}%` }],
+            },
             indicatorStyle,
           ]}
         />

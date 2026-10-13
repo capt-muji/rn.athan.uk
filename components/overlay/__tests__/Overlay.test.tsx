@@ -6,9 +6,10 @@
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai/vanilla';
-import { BackHandler, DeviceEventEmitter } from 'react-native';
+import { BackHandler, DeviceEventEmitter, Dimensions, StyleSheet } from 'react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
 import { ANIMATION } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
@@ -154,6 +155,29 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     await act(() => change());
 
     expect(perfMeasure).toHaveBeenLastCalledWith(measure, startMark);
+  });
+
+  // R4.1: pageX and pageY never mirror, so each catcher keeps its measured left as a transform
+  // under the layer's left-to-right containing view rather than as a swappable inset
+  it('pins every Close catcher at its measured left edge through a transform, with no left key', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    await render(<Overlay />);
+    await act(() => openOverlay(ScheduleType.Standard, DHUHR));
+
+    const { width, height } = Dimensions.get('window');
+    const regions = buildCatcherRegions({ windowWidth: width, windowHeight: height, list: LIST, rowIndex: DHUHR });
+    const catchers = closeTargets();
+
+    expect(catchers).toHaveLength(regions.length);
+    catchers.forEach((catcher, index) => {
+      const style = StyleSheet.flatten(catcher.props.style) as {
+        left?: unknown;
+        transform?: { translateX?: number }[];
+      };
+      expect(style.transform?.[0]).toEqual({ translateX: regions[index].left });
+      expect(style.left).toBeUndefined();
+    });
   });
 });
 

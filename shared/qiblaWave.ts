@@ -38,12 +38,13 @@ export interface WavePoint {
  *
  * A worklet, because the phone is placed by this on the UI thread every frame.
  */
-export const wavePoint = (progress: number, width: number, height: number): WavePoint => {
+export const wavePoint = (progress: number, width: number, height: number, isRTL = false): WavePoint => {
   'worklet';
   const angle = progress * TURN;
+  const x = (width / 2) * Math.sin(angle);
 
   return {
-    x: (width / 2) * Math.sin(angle),
+    x: isRTL ? -x : x,
     y: height * Math.sin(angle) * Math.cos(angle),
   };
 };
@@ -62,14 +63,17 @@ export const wavePoint = (progress: number, width: number, height: number): Wave
  * Taken from the curve's own derivative, so the heading is the tangent rather than a second invented motion.
  * The width and height are needed because the figure is wider than it is tall, which tilts every tangent on it.
  */
-export const waveHeading = (progress: number, width: number, height: number): number => {
+export const waveHeading = (progress: number, width: number, height: number, isRTL = false): number => {
   'worklet';
   const angle = progress * TURN;
   const dx = (width / 2) * Math.cos(angle);
   const dy = height * Math.cos(2 * angle);
 
   // The phone is drawn pointing up, so its top is turned onto the travel direction: atan2(dx, -dy), not (dy, dx)
-  return (Math.atan2(dx, -dy) * 180) / Math.PI;
+  const heading = (Math.atan2(dx, -dy) * 180) / Math.PI;
+
+  // A mirrored figure turns the phone the other way round its own axis
+  return isRTL ? -heading : heading;
 };
 
 /**
@@ -78,8 +82,10 @@ export const waveHeading = (progress: number, width: number, height: number): nu
  * Sampled through `wavePoint` rather than alongside it, so the phone can never run beside the line it is meant
  * to be running along.
  */
-export const wavePath = (width: number, height: number): string => {
-  const vertices = Array.from({ length: WAVE.segments }, (_, index) => wavePoint(index / WAVE.segments, width, height));
+export const wavePath = (width: number, height: number, isRTL = false): string => {
+  const vertices = Array.from({ length: WAVE.segments }, (_, index) =>
+    wavePoint(index / WAVE.segments, width, height, isRTL)
+  );
 
   return `${vertices.map((at, index) => `${index === 0 ? 'M' : 'L'}${round(at.x)},${round(at.y)}`).join('')}Z`;
 };
@@ -91,13 +97,13 @@ export const wavePath = (width: number, height: number): string => {
  * sit still. Sampled through `wavePoint` so it cannot drift off the line, and walked BACKWARDS from the phone so
  * the path's last point is always exactly where the phone stands.
  */
-export const waveTrail = (progress: number, width: number, height: number): string => {
+export const waveTrail = (progress: number, width: number, height: number, isRTL = false): string => {
   'worklet';
   const step = WAVE.trail.span / WAVE.trail.samples;
   let path = '';
 
   for (let index = WAVE.trail.samples; index >= 0; index--) {
-    const at = wavePoint(progress - index * step, width, height);
+    const at = wavePoint(progress - index * step, width, height, isRTL);
     path += `${index === WAVE.trail.samples ? 'M' : 'L'}${at.x.toFixed(2)},${at.y.toFixed(2)}`;
   }
 
