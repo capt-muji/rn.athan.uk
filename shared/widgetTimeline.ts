@@ -31,7 +31,7 @@
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import { UNAVAILABLE_TIME } from '@/shared/constants';
-import { localiseDigits, prayerLabel, t } from '@/shared/i18n';
+import { prayerLabel, t } from '@/shared/i18n';
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import {
   compareListOrder,
@@ -154,7 +154,7 @@ const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayer
   const rows = dayPrayers.map((prayer) => ({
     id: prayer.id,
     name: prayerLabel(prayer.id),
-    time: localiseDigits(prayer.time ?? UNAVAILABLE_TIME),
+    time: prayer.time ?? UNAVAILABLE_TIME,
   }));
 
   return { rows, activeIndex: dayPrayers.indexOf(segment.next) };
@@ -210,7 +210,7 @@ export const buildPrayerWidgetTimeline = (
         rtl: localeDirection(currentLocaleId()) === 'rtl',
         theme,
         nextName: prayerLabel(next.id),
-        nextTime: localiseDigits(next.time),
+        nextTime: next.time,
         nextEpochMs: next.datetime.getTime(),
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
         dateLabel,
@@ -271,7 +271,7 @@ export const buildPrayerWidgetTimeline = (
       rtl: localeDirection(currentLocaleId()) === 'rtl',
       theme,
       nextName: prayerLabel(finalPrayer.id),
-      nextTime: localiseDigits(finalPrayer.time),
+      nextTime: finalPrayer.time,
       nextEpochMs: finalEpochMs,
       prevEpochMs: finalEpochMs,
       dateLabel: formatDateLabel(finalPrayer.belongsToDate, settings.hijriDate),
@@ -331,7 +331,7 @@ export const buildPrayerWidgetSnapshot = (
       day.rows.push({
         id: prayer.id,
         name: prayerLabel(prayer.id),
-        time: localiseDigits(prayer.time),
+        time: prayer.time,
         epochMs: prayer.datetime.getTime(),
       });
       horizonEpochMs = Math.max(horizonEpochMs ?? Number.NEGATIVE_INFINITY, prayer.datetime.getTime());

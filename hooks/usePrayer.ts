@@ -8,7 +8,6 @@ import { useAtomValue } from 'jotai';
 
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import type { PrayerId } from '@/shared/constants';
-import { localiseDigits } from '@/shared/i18n';
 import { findNextOccurrence } from '@/shared/sequence';
 import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
 import { nameWidthAtomFor } from '@/stores/ui';
@@ -41,8 +40,7 @@ export const resolveOccurrence = (prayers: Prayer[], row: Prayer, isPassed: bool
  */
 export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextOccurrence: ShownRow): string | null => {
   const shown = isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
-  const localised = shown === null ? null : localiseDigits(shown);
-  return localised;
+  return shown;
 };
 
 /**

@@ -161,12 +161,12 @@ describe('the Athan 3 row while its preview plays', () => {
     expect(screen.queryByText('0:00')).not.toBeOnTheScreen();
   });
 
-  it('renders the preview countdown with native digits under ar', async () => {
+  it('renders the preview countdown with Latin digits under ar', async () => {
     setActiveLocale('ar');
     try {
       await render(athan3({ isPlaying: true, remainingSeconds: 3 }));
 
-      expect(screen.getByText('٠:٠٣')).toBeVisible();
+      expect(screen.getByText('0:03')).toBeVisible();
     } finally {
       setActiveLocale('en');
     }

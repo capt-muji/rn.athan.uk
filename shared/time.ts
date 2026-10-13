@@ -1,5 +1,5 @@
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
-import { localiseDigits, type TranslationKey, t } from '@/shared/i18n';
+import { type TranslationKey, t } from '@/shared/i18n';
 
 // =============================================================================
 // PRAYER-TIMEZONE CLOCK
@@ -176,8 +176,7 @@ export const createPrayerDatetime = (date: string, time: string): Date => {
 export const formatPrayerTime = (date: Date): string => {
   const clock = readPrayerClock(date);
   const composed = `${pad2(clock.hour)}:${pad2(clock.minute)}`;
-  const localised = localiseDigits(composed);
-  return localised;
+  return composed;
 };
 
 /**
@@ -279,15 +278,14 @@ export const formatDateLocalized = (date: string): string => {
   // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
   const isoWeekday = weekday === 0 ? 7 : weekday;
   const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${day} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${year}`;
-  const localised = localiseDigits(composed);
-  return localised;
+  return composed;
 };
 
 /**
  * Formats a date string into the active locale's Hijri format, composed from the
  * catalog's Hijri month names. The Intl call stays en-US with numeric fields so
- * it yields the Latin digits the return's localiser then maps, with the shape
- * and order frozen and no era affix appearing in any locale (D57, R3.1);
+ * it yields Latin digits, with the shape and order frozen and no era affix
+ * appearing in any locale (D57, R3.1);
  * falls back to the localized Gregorian label if conversion fails.
  * @param date Date string in YYYY-MM-DD format
  * @returns Formatted Hijri date string (e.g., "Rajab 1, 1447")
@@ -305,12 +303,9 @@ export const formatHijriDateLocalized = (date: string): string => {
     const hijriDay = parts.find((part) => part.type === 'day')?.value;
     const hijriYear = parts.find((part) => part.type === 'year')?.value;
     const composed = `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${hijriDay}, ${hijriYear}`;
-    const localised = localiseDigits(composed);
-    return localised;
+    return composed;
   } catch {
-    const gregorian = formatDateLocalized(date);
-    const localised = localiseDigits(gregorian);
-    return localised;
+    return formatDateLocalized(date);
   }
 };
 
@@ -339,8 +334,7 @@ export const footerFor = (date: string, hijriDate: boolean): string => {
       const hijriDay = parts.find((part) => part.type === 'day')?.value;
       const month = t(HIJRI_MONTH_KEYS[hijriMonth - 1]);
       const composed = `${[...month].slice(0, 3).join('')} ${hijriDay}`;
-      const localised = localiseDigits(composed);
-      return localised;
+      return composed;
     } catch {
       // Falls through to the Gregorian footer, like formatHijriDateLocalized
     }
@@ -350,9 +344,7 @@ export const footerFor = (date: string, hijriDate: boolean): string => {
   const weekday = new Date(year, month - 1, day, 12).getDay();
   // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
   const isoWeekday = weekday === 0 ? 7 : weekday;
-  const weekdayLabel = t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1]);
-  const localised = localiseDigits(weekdayLabel);
-  return localised;
+  return t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1]);
 };
 
 /**
@@ -621,7 +613,7 @@ const formatTimeFixedWidth = (seconds: number, hideSeconds: boolean): string => 
   const composed = shouldShowSeconds
     ? `${pad2(hours)}:${pad2(minutes)}:${pad2(secs)}`
     : `${pad2(hours)}:${pad2(minutes)}`;
-  return localiseDigits(composed);
+  return composed;
 };
 
 /**
@@ -641,12 +633,12 @@ const formatTimeFixedWidth = (seconds: number, hideSeconds: boolean): string => 
  */
 export const formatTimeAgo = (seconds: number): string => {
   if (seconds < 60) {
-    return localiseDigits(t('duration.now'));
+    return t('duration.now');
   }
 
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
-  return localiseDigits(`${hours}:${pad2(minutes % 60)}`);
+  return `${hours}:${pad2(minutes % 60)}`;
 };
 
 /** One rendered piece of a colon display string: a digit group or a colon */
@@ -657,8 +649,8 @@ export interface CountdownSection {
   colon: boolean;
 }
 
-const ALL_DIGITS = /^[0-9٠-٩]+$/;
-const ALL_ZEROS = /^[٠0]+$/;
+const ALL_DIGITS = /^[0-9]+$/;
+const ALL_ZEROS = /^0+$/;
 
 /**
  * Splits a colon display string into renderable sections, or returns null when the

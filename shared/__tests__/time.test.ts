@@ -110,11 +110,11 @@ describe('formatTime', () => {
     it('draws the fixed-width shapes under ar', () => {
       setActiveLocale('ar');
       try {
-        expect(formatTime(3665, true)).toBe('٠١:٠١');
-        expect(formatTime(120, true)).toBe('٠٠:٠٢:٠٠');
-        expect(formatTime(599, true)).toBe('٠٠:٠٩:٥٩'); // last second that still shows seconds
-        expect(formatTime(600, true)).toBe('٠٠:١٠');
-        expect(formatTime(601, true)).toBe('٠٠:١٠');
+        expect(formatTime(3665, true)).toBe('01:01');
+        expect(formatTime(120, true)).toBe('00:02:00');
+        expect(formatTime(599, true)).toBe('00:09:59'); // last second that still shows seconds
+        expect(formatTime(600, true)).toBe('00:10');
+        expect(formatTime(601, true)).toBe('00:10');
       } finally {
         setActiveLocale('en');
       }
@@ -140,22 +140,22 @@ describe('formatTime', () => {
     });
   });
 
-  describe('native digits (D57)', () => {
+  describe('one design in every locale', () => {
     afterEach(() => {
       setActiveLocale('en');
     });
 
-    it('draws Eastern Arabic-Indic digits under ar', () => {
+    it('draws the same Latin digits under ar', () => {
       setActiveLocale('ar');
-      expect(formatTime(10740)).toBe('٠٢:٥٩:٠٠');
+      expect(formatTime(10740)).toBe('02:59:00');
     });
 
     it('draws the negative, seconds-only, whole-minute and whole-hour branches under ar', () => {
       setActiveLocale('ar');
-      expect(formatTime(-100)).toBe('٠٠:٠٠:٠٠');
-      expect(formatTime(45)).toBe('٠٠:٠٠:٤٥');
-      expect(formatTime(60)).toBe('٠٠:٠١:٠٠');
-      expect(formatTime(7200)).toBe('٠٢:٠٠:٠٠');
+      expect(formatTime(-100)).toBe('00:00:00');
+      expect(formatTime(45)).toBe('00:00:45');
+      expect(formatTime(60)).toBe('00:01:00');
+      expect(formatTime(7200)).toBe('02:00:00');
     });
 
     it('keeps Latin digits under en', () => {
@@ -188,16 +188,16 @@ describe('formatTimeAgo', () => {
     expect(formatTimeAgo(7260)).toBe('2:01');
   });
 
-  describe('native digits (D57)', () => {
+  describe('one design in every locale', () => {
     afterEach(() => {
       setActiveLocale('en');
     });
 
     it('draws the minute, whole-hour and mixed branches under ar', () => {
       setActiveLocale('ar');
-      expect(formatTimeAgo(120)).toBe('٠:٠٢');
-      expect(formatTimeAgo(3600)).toBe('١:٠٠');
-      expect(formatTimeAgo(7260)).toBe('٢:٠١');
+      expect(formatTimeAgo(120)).toBe('0:02');
+      expect(formatTimeAgo(3600)).toBe('1:00');
+      expect(formatTimeAgo(7260)).toBe('2:01');
     });
 
     it('keeps Latin digits under en', () => {
@@ -237,10 +237,10 @@ describe('splitColonSections', () => {
     ]);
   });
 
-  it('reads Eastern Arabic-Indic groups and dims the zero groups', () => {
-    expect(splitColonSections('٠١:٣٢:٠٥')?.map((section) => section.text)).toEqual(['٠١', ':', '٣٢', ':', '٠٥']);
-    expect(splitColonSections('٠٠:٤٢:٠٥')?.[0].dim).toBe(true);
-    expect(splitColonSections('٠١:٣٢:٠٥')?.[0].dim).toBe(false);
+  it('reads the digit groups and dims the zero groups', () => {
+    expect(splitColonSections('01:32:05')?.map((section) => section.text)).toEqual(['01', ':', '32', ':', '05']);
+    expect(splitColonSections('00:42:05')?.[0].dim).toBe(true);
+    expect(splitColonSections('01:32:05')?.[0].dim).toBe(false);
   });
 
   it('returns null for every string that is not an all-digit colon shape', () => {
@@ -688,14 +688,14 @@ describe('formatPrayerTime', () => {
     expect(formatPrayerTime(createPrayerDatetime('2026-03-30', '01:54'))).toBe('01:54');
   });
 
-  describe('native digits (D57)', () => {
+  describe('one design in every locale', () => {
     afterEach(() => {
       setActiveLocale('en');
     });
 
-    it('draws Eastern Arabic-Indic digits under ar', () => {
+    it('draws the same Latin digits under ar', () => {
       setActiveLocale('ar');
-      expect(formatPrayerTime(createPrayerDatetime('2026-10-11', '05:44'))).toBe('٠٥:٤٤');
+      expect(formatPrayerTime(createPrayerDatetime('2026-10-11', '05:44'))).toBe('05:44');
     });
 
     it('keeps Latin digits under en', () => {

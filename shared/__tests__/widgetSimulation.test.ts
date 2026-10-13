@@ -338,9 +338,9 @@ describe('virtual week model test', () => {
     expect(active.props.dateLabel).toBe(formatDateLocalized('2026-10-20'));
   });
 
-  it('bakes native digits into the pushed times under ar', () => {
+  it('bakes Latin digits into the pushed times under ar', () => {
     // The push layer bakes at push time: under ar every carried time renders
-    // Eastern Arabic-Indic digits and the date label composes from the ar catalog
+    // Latin digits and the date label composes from the ar catalog
     setActiveLocale('ar');
     try {
       const arEntries = buildPrayerWidgetTimeline(PUSH_AT, sequence, SETTINGS, 'light');
@@ -350,7 +350,7 @@ describe('virtual week model test', () => {
       expect(active).toBeDefined();
       if (!active) return;
       expect(active.props.nextName).toBe('العشاء');
-      expect(active.props.nextTime).toBe('٠١:٠٥');
+      expect(active.props.nextTime).toBe('01:05');
       expect(active.props.dateLabel).toBe(formatDateLocalized('2026-10-20'));
     } finally {
       setActiveLocale('en');

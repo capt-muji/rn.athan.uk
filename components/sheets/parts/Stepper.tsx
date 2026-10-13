@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { localiseDigits, t } from '@/shared/i18n';
+import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import type { ReminderInterval } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
@@ -51,7 +51,7 @@ export default function Stepper({
   const nextUp = stepReminderInterval(value, 1, taken);
   const canDecrement = !disabled && nextDown !== null;
   const canIncrement = !disabled && nextUp !== null;
-  const visible = localiseDigits(String(value));
+  const visible = String(value);
 
   return (
     <View style={[styles.container, disabled && styles.disabled]}>

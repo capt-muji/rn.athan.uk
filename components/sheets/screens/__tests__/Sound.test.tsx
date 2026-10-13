@@ -139,7 +139,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByText('Plays at alarm volume, not ring volume.')).toBeOnTheScreen();
   });
 
-  it('builds its rows with native digits under ar', async () => {
+  it('builds its rows with Latin digits under ar', async () => {
     showLondonDay('2026-09-11', '14:00');
     setActiveLocale('ar');
     try {
@@ -147,7 +147,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
       await act(() => setSoundListReady());
 
-      expect(screen.getAllByText(/^أذان [٠-٩]+$/)).toHaveLength(ATHAN_AUDIOS.length);
+      expect(screen.getAllByText(/^أذان \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
     } finally {
       setActiveLocale('en');
     }
