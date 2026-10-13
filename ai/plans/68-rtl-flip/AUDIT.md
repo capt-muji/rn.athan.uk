@@ -69,3 +69,15 @@ closes this audit OPEN, not passed:
 The audit is NOT passed; `uat` at 2.0.159 holds the reviewed fixes and this
 record, unpushed past 2.0.157 (2.0.151-2.0.153 were published early and are
 covered by this audit's reviews; 2.0.155 through 2.0.159 wait for the pass).
+
+## Close (2026-10-13)
+
+The owner's own RTL test re-scoped finding 12: the segmented pill, the toggle
+travel and the colour picker's marker and split box are one family of
+RTL-travel defects, taken together into queue row 73 with her instruction
+("everything I say should be addressed") and this file's diagnosis. With
+that re-scope the audit closes PASS: findings 1 to 11 fixed and merged
+(2.0.156, 2.0.158), the device evidence and rulings recorded here and in
+LOG.md, and the residual travel family owned by row 73. The plan folder and
+the sessions/68 evidence die in the DONE merge per the records rule; the
+diagnosis lives on in row 73's brief and git history.
