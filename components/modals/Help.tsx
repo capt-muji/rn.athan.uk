@@ -15,6 +15,8 @@ import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { getHelpActionLabels, getHelpTopics, type HelpTopic } from '@/shared/help';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 import Modal from './Modal';
 
@@ -161,6 +163,8 @@ export default function ModalHelp({ visible, onClose }: Props) {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   list: {
     alignSelf: 'stretch',
@@ -206,11 +210,11 @@ const styles = StyleSheet.create({
   },
   question: {
     flex: 1,
-    fontSize: 15,
-    lineHeight: 20,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(15),
+    lineHeight: ty.lineHeight(20),
+    fontFamily: ty.familyMedium,
     color: INK,
-    letterSpacing: TEXT.letterSpacing.default,
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
   },
   chevron: {
     width: CHEVRON_SIZE,
@@ -228,10 +232,10 @@ const styles = StyleSheet.create({
   },
 
   cause: {
-    fontSize: TEXT.sizeDetail - 1,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail - 1),
+    fontFamily: ty.familyRegular,
     color: BODY,
-    lineHeight: 20,
+    lineHeight: ty.lineHeight(20),
   },
   fix: {
     marginTop: SPACING.smd,
@@ -248,10 +252,10 @@ const styles = StyleSheet.create({
   },
   stepText: {
     flex: 1,
-    fontSize: TEXT.sizeDetail - 1,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeDetail - 1),
+    fontFamily: ty.familyMedium,
     color: INK,
-    lineHeight: 20,
+    lineHeight: ty.lineHeight(20),
   },
   action: {
     flexDirection: 'row',
@@ -263,8 +267,8 @@ const styles = StyleSheet.create({
   },
   actionText: {
     color: ACCENT,
-    fontSize: 13,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(13),
+    fontFamily: ty.familyMedium,
   },
   buttonRow: {
     alignSelf: 'stretch',
@@ -284,7 +288,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: COLORS.light.background,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyMedium,
   },
 });

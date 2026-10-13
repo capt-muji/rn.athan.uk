@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 interface BottomSheetHeaderProps {
   title: string;
@@ -36,6 +38,8 @@ export default function BottomSheetHeader({ title, subtitle, icon }: BottomSheet
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
@@ -54,15 +58,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 22,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(22),
+    fontFamily: ty.familyMedium,
     color: '#fff',
-    letterSpacing: -0.3,
+    letterSpacing: ty.letterSpacing(-0.3),
     marginBottom: SPACING.xxs,
   },
   subtitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     color: COLORS.text.sheetSubtitle,
     marginTop: SPACING.xs,
   },

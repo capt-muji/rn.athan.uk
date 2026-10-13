@@ -11,8 +11,10 @@ import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
 
@@ -95,6 +97,8 @@ export default function Prayer({ type, index }: Props) {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -102,8 +106,8 @@ const styles = StyleSheet.create({
     height: STYLES.prayer.height,
   },
   text: {
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.size),
   },
   name: {
     paddingStart: STYLES.prayer.padding.start,

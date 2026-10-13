@@ -3,6 +3,8 @@ import Svg, { Path } from 'react-native-svg';
 
 import InfoIcon from '@/assets/icons/svg/info.svg';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 interface PrayerExplanationProps {
   prayerName: string;
@@ -93,6 +95,8 @@ export default function PrayerExplanation({
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
@@ -138,14 +142,14 @@ const styles = StyleSheet.create({
   },
   infoTitle: {
     color: COLORS.text.emphasis,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.size),
+    fontFamily: ty.familyMedium,
   },
   infoExplanation: {
     color: COLORS.icon.primary,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
-    lineHeight: TEXT.lineHeight.default,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
     marginBottom: SPACING.mid,
   },
 });

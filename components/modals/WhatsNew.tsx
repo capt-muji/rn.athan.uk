@@ -4,7 +4,9 @@ import { IconView } from '@/components/ui';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { getPlatformBadges, type WhatsNewItem } from '@/shared/whatsNew';
 
 import Modal from './Modal';
@@ -75,14 +77,16 @@ export default function ModalWhatsNew({ visible, version, items, onClose }: Prop
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   version: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     textAlign: 'center',
     color: FAINT_BLUE,
-    lineHeight: TEXT.lineHeight.default,
-    letterSpacing: TEXT.letterSpacing.default,
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
     marginBottom: SPACING.xl,
     marginTop: -SPACING.sm,
   },
@@ -108,17 +112,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyMedium,
     color: COLORS.light.text,
-    letterSpacing: TEXT.letterSpacing.default,
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
   },
   body: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     color: COLORS.light.textSecondary,
-    lineHeight: TEXT.lineHeight.default,
-    letterSpacing: TEXT.letterSpacing.default,
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
     marginTop: 2,
   },
   bodyPlatform: {
@@ -135,7 +139,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: COLORS.light.background,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyMedium,
   },
 });

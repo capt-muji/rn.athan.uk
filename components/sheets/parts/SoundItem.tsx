@@ -7,8 +7,10 @@ import { IconView } from '@/components/ui';
 import { useAnimationScale } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { localiseDigits, t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -139,6 +141,8 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   option: {
     flexDirection: 'row',
@@ -149,16 +153,16 @@ const styles = StyleSheet.create({
     paddingStart: SPACING.md,
   },
   text: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
   },
   rightContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   countdown: {
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
     marginEnd: SPACING.xs,
   },
   icon: {

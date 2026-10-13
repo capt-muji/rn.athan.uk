@@ -11,7 +11,9 @@ import Animated, {
 
 import { IconView } from '@/components/ui';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import type { AlertType, Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 
 // =============================================================================
 // TYPES
@@ -179,6 +181,8 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 // =============================================================================
 // STYLES
 // =============================================================================
@@ -226,7 +230,7 @@ const styles = StyleSheet.create({
     start: 0,
   },
   label: {
-    fontSize: TEXT.sizeDetail - 1,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail - 1),
+    fontFamily: ty.familyRegular,
   },
 });

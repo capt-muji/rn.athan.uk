@@ -2,7 +2,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { AlertType, Icon, type ReminderInterval, type ReminderSetting } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 
 import { SegmentedControl, type SegmentOption, Stepper, Toggle } from '../parts';
 import { stepReminderInterval } from '../parts/reminderStep';
@@ -84,6 +86,8 @@ export default function ReminderCard({
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   card: {
     backgroundColor: 'rgba(99, 102, 241, 0.06)',
@@ -97,8 +101,8 @@ const styles = StyleSheet.create({
     opacity: 0.25,
   },
   cardTitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyMedium,
     color: '#d8eaf8',
     marginBottom: SPACING.sm - 1,
   },
@@ -108,8 +112,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardHint: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     color: 'rgba(86, 134, 189, 0.725)',
   },
   reminderOptions: {
@@ -128,8 +132,8 @@ const styles = StyleSheet.create({
     gap: SPACING.md,
   },
   optionLabel: {
-    fontSize: 13,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(13),
+    fontFamily: ty.familyRegular,
     color: 'rgb(146, 184, 228)',
     width: 100,
   },
