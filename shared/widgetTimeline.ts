@@ -32,6 +32,7 @@ import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import { UNAVAILABLE_TIME } from '@/shared/constants';
 import { localiseDigits, prayerLabel, t } from '@/shared/i18n';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import {
   compareListOrder,
   findNextReadable,
@@ -206,6 +207,7 @@ export const buildPrayerWidgetTimeline = (
       props: {
         v: WIDGET_PROPS_VERSION,
         schedule: sequence.type,
+        rtl: localeDirection(currentLocaleId()) === 'rtl',
         theme,
         nextName: prayerLabel(next.id),
         nextTime: localiseDigits(next.time),
@@ -266,6 +268,7 @@ export const buildPrayerWidgetTimeline = (
     props: {
       v: WIDGET_PROPS_VERSION,
       schedule: sequence.type,
+      rtl: localeDirection(currentLocaleId()) === 'rtl',
       theme,
       nextName: prayerLabel(finalPrayer.id),
       nextTime: localiseDigits(finalPrayer.time),
@@ -344,6 +347,7 @@ export const buildPrayerWidgetSnapshot = (
   return {
     v: ANDROID_SNAPSHOT_VERSION,
     schedule: sequence.type,
+    rtl: localeDirection(currentLocaleId()) === 'rtl',
     days,
     horizonEpochMs,
     strings: widgetStrings(),

@@ -158,7 +158,7 @@ describe('Android snapshot pushes', () => {
       days: unknown[];
       horizonEpochMs: number;
     };
-    expect(props.v).toBe(3);
+    expect(props.v).toBe(4);
     expect(props.days.length).toBeGreaterThan(1);
     expect(typeof props.horizonEpochMs).toBe('number');
   });
