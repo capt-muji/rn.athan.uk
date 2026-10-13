@@ -33,8 +33,9 @@ git checkout -b feat/82-format-flip uat
 Source: `shared/time.ts`, `shared/typography.ts`, `components/countdown/Countdown.tsx`,
 `components/prayer/Ago.tsx`.
 Tests: `shared/__tests__/time.test.ts`, `stores/__tests__/countdown.test.ts`,
-`components/countdown/__tests__/Countdown.test.tsx`,
-`components/prayer/__tests__/Ago.test.tsx`, `shared/__tests__/typography.test.ts`.
+`stores/__tests__/schedule.test.ts`, `components/countdown/__tests__/Countdown.test.tsx`,
+`components/prayer/__tests__/Ago.test.tsx`, `__tests__/app/Screen.test.tsx`,
+`shared/__tests__/typography.test.ts`.
 
 ## Red tests
 
@@ -77,6 +78,21 @@ selector follows the seconds preference (last-10-minutes rule)`. The ar selector
 
 The new `familyDigits` pins in `shared/__tests__/typography.test.ts` fail red by
 absence: `Expected: "Roboto-Medium", Received: undefined`.
+
+Two suites outside the five composer suites pin the en lettered form too; the full
+run reddens them as well:
+
+```bash
+npx jest __tests__/app/Screen.test.tsx --watchman=false --selectProjects=components
+npx jest stores/__tests__/schedule.test.ts --watchman=false --selectProjects=unit
+```
+
+`Screen.test.tsx` fails its en ago pins (`:26` expects `Dhuhr 58m ago`, receives
+`Dhuhr 0\u2009:\u200958 ago`; `:47` expects `Duha 7h 14m ago`, receives
+`Duha 7\u2009:\u200914 ago`); `schedule.test.ts` fails its two display rows (`:2099`
+`23h 54m` -> `23:54`, `:2123` `16h 55m` -> `16:55`). `Screen.test.tsx:58`'s negative query
+also flips (see contract 5) so it does not become a query for a string that can never
+exist.
 
 ## Change contracts
 
@@ -167,6 +183,12 @@ absence: `Expected: "Roboto-Medium", Received: undefined`.
      `now` test keeps its single-node query (no gap node).
    - `typography.test.ts`: `expectArabicRecord` and the latin record block each gain
      `expect(ty.familyDigits).toBe('Roboto-Medium');`.
+   - `Screen.test.tsx`: the en ago badge query flips to the outer node with the identity
+     normalizer — `:26` `getByText('Dhuhr 0\u2009:\u200958 ago', { normalizer: (s) => s })`,
+     `:47` `getByText('Duha 7\u2009:\u200914 ago', { normalizer: (s) => s })`, and `:58`'s
+     negative query uses that same first sentence.
+   - `schedule.test.ts`: the two display rows flip `23h 54m` -> `23:54` (`:2099`) and
+     `16h 55m` -> `16:55` (`:2123`).
 
 ## Green run
 
@@ -195,7 +217,7 @@ Version command: the next patch after uat's `package.json` at branch time. Set i
 <VERSION> - feat(82): one countdown design for every locale, en joins the fixed-width colon format
 ```
 
-Files added by name: the four source files, the five test files, this plan folder's
+Files added by name: the four source files, the seven test files, this plan folder's
 `PLAN.md` and `LOG.md`, and `ai/plans/README.md` (the IN PROGRESS flip the executor's
 loop step 1 makes).
 
