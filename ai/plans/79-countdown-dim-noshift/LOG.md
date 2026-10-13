@@ -124,3 +124,39 @@ failure verbatim), `step1-unfinished.patch` (174 lines, the full work),
 `step1-unfinished-status.txt`.
 
 session: ses_ec8b25e3cffeDsjiD20cV5tRzP
+
+### Step 01 — done
+
+Branch `feat/79-dim-tabular` off `uat` (`b81d4c31`, the plan-repair merge at
+2.0.233, so the step version under the next-patch rule is `2.0.234`). Preflight
+`PREFLIGHT OK`, all eight anchors count 1. Red matched the plan's three lines
+exactly: the colon test `Expected: "rgba(255, 255, 255, 0.4)" Received:
+"rgba(138, 169, 214, 0.38)"`; the spent-group test `Expected:
+"rgba(255, 255, 255, 0.7)" Received: "rgba(138, 169, 214, 0.38)"`; the tabular
+test `Expected: ["tabular-nums"] Received: undefined`; 3 failed / 12 passed /
+15 total, no other test moved. All four change contracts applied. Green: the
+suite 15 passed / 15 total, `npx tsc --noEmit` exit 0 (`fontVariant`
+typechecks, D79.2 holds), `npx biome check . --error-on-warnings` exit 0 — the
+repaired extraction passes the rule that stopped rounds 1 and 2. Version 2.0.234
+set in `app.json` (first), `package.json` and `android/app/build.gradle`, all
+three matching, under the version lock.
+
+The commit hook runs green: `Test Suites: 209 passed, 209 total`, `Tests: 5543
+passed, 5543 total`; coverage Statements 100% (5244/5244), Branches 100%
+(2259/2259), Functions 100% (1091/1091), Lines 100% (4698/4698).
+
+Review: read `git show 9cf9fed7` cold against the step checklist. The diff
+touches only the listed files; `COLORS.text.muted` and the gap text are
+byte-identical to their anchors; the colon test is replaced with its ar wrapper
+gone; the three rule comments sit only beside their assertions; no new comment
+in `shared/constants.ts`; both new constants have live readers in the render.
+No fix needed.
+
+Break `break-step1.sh` run on `uat` after the merge: ends `ALL AS EXPECTED: 1`
+with both catches fired, and `git status --porcelain` prints nothing after it.
+
+Merged into `uat` with the step-1 merge message (`2.0.234 - merge
+feat/79-dim-tabular: step 1, ticket 79`); the commit and merge shas are
+recorded in the step-2 entry.
+
+session: ses_ec8aa4eedffeoUKJKwwIN6wNm0
