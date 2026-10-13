@@ -1,0 +1,7 @@
+          has fully opened — invisible warming, complete before first present */}
+      {soundListReady && (
+        <View style={styles.card}>
+          <Text style={styles.cardHint}>{t('sound.notificationSound')}</Text>
+
+          <View style={styles.listContainer}>
+            {/* Sliding indicator */}
