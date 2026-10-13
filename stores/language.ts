@@ -6,9 +6,11 @@
  * unwritten, and the next launch or foreground completes it (R3.4).
  */
 
+import * as Updates from 'expo-updates';
 import { atom, getDefaultStore } from 'jotai/vanilla';
+import { I18nManager } from 'react-native';
 
-import { currentLocaleId, type LocaleId, setActiveLocale } from '@/shared/i18n/locale';
+import { currentLocaleId, type LocaleId, localeDirection, setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import { resetAndroidChannelCaches } from '@/shared/notifications';
 import { rescheduleAllForLanguageChange, withSchedulingLock } from '@/stores/notifications';
@@ -53,11 +55,19 @@ export const reconcileLanguageSurfaces = async (): Promise<void> => {
  * The busy atom brackets the whole run so the sheet's progress face covers it.
  */
 export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
+  const directionBefore = localeDirection(currentLocaleId());
   store.set(languageCommitBusyAtom, true);
   try {
     store.set(languagePreferenceAtom, locale);
     setActiveLocale(locale);
     await reconcileLanguageSurfaces();
+    if (localeDirection(locale) !== directionBefore) {
+      // Fabric treats direction as launch-time (D59): converge first, then
+      // force the new direction and relaunch. The busy face ends here.
+      I18nManager.allowRTL(true);
+      I18nManager.forceRTL(localeDirection(locale) === 'rtl');
+      await Updates.reloadAsync();
+    }
   } finally {
     store.set(languageCommitBusyAtom, false);
   }
