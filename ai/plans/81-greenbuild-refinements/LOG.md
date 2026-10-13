@@ -218,4 +218,9 @@ Commit `255fb1dc`: hook lines `Test Suites: 209 passed, 209 total`, `Tests:
 (2269/2269), Functions 100% (1091/1091), Lines 100% (4700/4700). No break
 script: the step changes no source. Merge `bfac6cb4`.
 
+Review (audit, appended per the plan-conformance finding): `git show
+255fb1dc` read cold against the step's checklist - no source file changed, no
+device identifier or screenshot in any committed file, the evidence line names
+the Metro read, the handover record matches the repository. No fix needed.
+
 session: ses_ec86711f7ffeZ93dcv3VZjG3T2
