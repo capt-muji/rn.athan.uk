@@ -9,8 +9,14 @@ import { getDefaultStore } from 'jotai';
 import { I18nManager } from 'react-native';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
+import logger from '@/shared/logger';
 import { commitLanguagePreference, languagePreferenceAtom, lastArmedLanguageAtom } from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
+
+jest.mock('@/shared/logger', () => ({
+  __esModule: true,
+  default: { info: jest.fn(), warn: jest.fn(), error: jest.fn(), debug: jest.fn() },
+}));
 
 // The lock's queueing has its own suite (notificationSchedulingLock); here it must
 // only pass the operation through, so the wrapper spy sees every call
@@ -28,8 +34,9 @@ const forceRTL = jest.mocked(I18nManager.forceRTL);
 reschedule.mockResolvedValue(true);
 
 // The unit project sets no clearMocks, so without this the second and third cases
-// inherit the first's calls
+// inherit the first's calls and the first's forced direction
 beforeEach(() => {
+  forceRTL(false);
   jest.clearAllMocks();
   store.set(lastArmedLanguageAtom, '');
   store.set(languagePreferenceAtom, '');
@@ -49,6 +56,7 @@ it('crossing to ar converges, then forces RTL and relaunches', async () => {
 it('crossing back to en forces LTR and relaunches', async () => {
   store.set(languagePreferenceAtom, 'ar');
   setActiveLocale('ar');
+  forceRTL(true); // the app is currently forced RTL, as the ar crossing left it
   await commitLanguagePreference('en');
   expect(reloadAsync).toHaveBeenCalledTimes(1);
   expect(forceRTL).toHaveBeenLastCalledWith(false);
@@ -58,4 +66,14 @@ it('a same-direction switch never relaunches', async () => {
   await commitLanguagePreference('ms');
   expect(reloadAsync).not.toHaveBeenCalled();
   expect(forceRTL).not.toHaveBeenCalled();
+});
+
+it('a refused relaunch logs and leaves the direction forced for the next launch', async () => {
+  reloadAsync.mockRejectedValueOnce(new Error('reload refused'));
+  await expect(commitLanguagePreference('ar')).resolves.toBeUndefined();
+  expect(forceRTL).toHaveBeenLastCalledWith(true);
+  expect(jest.mocked(logger.warn)).toHaveBeenCalledWith(
+    'LANGUAGE: relaunch failed after the RTL flip',
+    expect.objectContaining({ error: expect.any(Error) })
+  );
 });

@@ -154,8 +154,10 @@ describe('the Athan control under RTL', () => {
 
     await measure(306);
 
-    // Sound is the last of three options, so its slot mirrors to the first
-    expect(drawn()[0]).toHaveStyle({ width: 100, transform: [{ translateX: '0%' }] });
+    // Sound is the last of three options; the pill's anchor is the option
+    // row's start edge (the physical right under RTL), so its slot mirrors
+    // two segments to the left: -200%
+    expect(drawn()[0]).toHaveStyle({ width: 100, transform: [{ translateX: '-200%' }] });
   });
 
   it('slides the pill to the mirrored slot when the saved option changes', async () => {
@@ -165,9 +167,10 @@ describe('the Athan control under RTL', () => {
 
     await screen.rerender(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Sound} onSelect={jest.fn()} />);
 
-    // Sound's slot mirrors to the first, whose target is 0; the LTR target 200 is never asked
-    // for. The option fade also asks for 0, so the absence is what isolates the pill's target
-    expect(withTiming).toHaveBeenCalledWith(0, { duration: ANIMATION.duration });
+    // Sound's slot mirrors two segments left of the anchor: -200. The LTR
+    // target 200 is never asked for (the option fade asks 0, so the signed
+    // negative is what isolates the pill's target)
+    expect(withTiming).toHaveBeenCalledWith(-200, { duration: ANIMATION.duration });
     expect(withTiming).not.toHaveBeenCalledWith(200, { duration: ANIMATION.duration });
   });
 });

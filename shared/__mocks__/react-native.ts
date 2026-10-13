@@ -10,11 +10,16 @@ export const Platform = {
   select: (options: { ios?: unknown; android?: unknown; default?: unknown }) => options.ios ?? options.default,
 };
 
-// The direction the launch and boundary paths force, and the mirror sites read back
+// The direction the launch and boundary paths force, and the mirror sites read back.
+// Stateful: forceRTL moves getConstants().isRTL, because the boundary check reads
+// the direction actually in force.
+let forcedRTL = false;
 export const I18nManager = {
   allowRTL: jest.fn(),
-  forceRTL: jest.fn(),
-  getConstants: jest.fn(() => ({ isRTL: false })),
+  forceRTL: jest.fn((value: boolean) => {
+    forcedRTL = value;
+  }),
+  getConstants: jest.fn(() => ({ isRTL: forcedRTL })),
 };
 
 // Mock AppState (used by shared/perf.ts background flush)

@@ -572,12 +572,7 @@ function FloatingMoon({
   const glowStyle = useAnimatedStyle(() => ({ opacity: glowOpacity.value }));
 
   return (
-    <Animated.View
-      style={[
-        styles.physical,
-        { position: 'absolute', top: cy - glowR, width: boxW, height: boxH, zIndex },
-        moveStyle,
-      ]}>
+    <Animated.View style={[{ position: 'absolute', top: cy - glowR, width: boxW, height: boxH, zIndex }, moveStyle]}>
       <AnimatedImage
         source={SPRITES.moonGlow}
         onLoadEnd={onSpriteLoad}
@@ -658,7 +653,6 @@ function FloatingStar({
   return (
     <Animated.View
       style={[
-        styles.physical,
         {
           position: 'absolute',
           top: baseStarY - glowR,
@@ -756,7 +750,7 @@ function MistyCloud({
   const travel = direction > 0 ? totalDist : -totalDist;
 
   const moveStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: 0 }, { translateX: startX + progress.value * travel }],
+    transform: [{ translateX: startX + progress.value * travel }],
   }));
 
   return (

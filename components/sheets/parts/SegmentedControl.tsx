@@ -131,7 +131,8 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
   // and slid into place. Mount settles; only selection CHANGES animate.
   const isFirstEvaluation = useSharedValue(true);
   const translateXPercent = useDerivedValue(() => {
-    const target = (isRTL ? options.length - 1 - selectedIndex : selectedIndex) * 100;
+    const slot = isRTL ? -selectedIndex : selectedIndex;
+    const target = slot * 100;
     if (isFirstEvaluation.value) {
       isFirstEvaluation.value = false;
       return target;
@@ -155,7 +156,7 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
             styles.indicator,
             {
               width: optionWidth,
-              transform: [{ translateX: `${(isRTL ? options.length - 1 - selectedIndex : selectedIndex) * 100}%` }],
+              transform: [{ translateX: `${(isRTL ? -selectedIndex : selectedIndex) * 100}%` }],
             },
             indicatorStyle,
           ]}

@@ -22,8 +22,8 @@ after the reconcile resolves), P11 (bootstrap owns the launch-time
 direction), P12 (`localeDirection` beside `LOCALE_IDS`), P13 (render-time
 `I18nManager.getConstants().isRTL` reads, constant within a process), P14
 (transforms for the swap-proof sites, allowlist shrinks), P15 (a dedicated
-`rtl` boolean on both widget shapes, v8/v4), P16 (Host wraps every widget
-root).
+`rtl` boolean on both widget shapes, v8/v4), P16 (the Host wrap is blocked:
+the widget runtime renders no HostView).
 
 Four steps drafted: the flip and restart (weight 2), the mirrors and
 transforms (weight 2), the widget direction (weight 2), the 3T device proof
@@ -242,7 +242,7 @@ passed / 208 total, `Tests: 5493 passed, 5493 total`, coverage 100%
 
 session: ses_ecd61365cffe8TKeEwD5BM4On0
 
-### Step 04 — STOPPED (proof captured, two findings awaiting the lead's image read)
+### Step 04 — DONE (proof captured, both findings ruled by the lead)
 
 Build: `zsh $HOME/athan-gitree/bin/build-mock.zsh uat mocks/simple.ts
 $HOME/athan-gitree/sessions/68/athan-68-mock.apk`, ref `uat` ->
