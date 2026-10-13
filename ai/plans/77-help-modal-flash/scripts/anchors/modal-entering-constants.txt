@@ -1,0 +1,12 @@
+const MODAL_ENTERING = Platform.select({
+  android: SlideInDown.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic)),
+  default: SlideInDown.springify().duration(220).dampingRatio(0.9),
+});
+
+/** The card follows its content's height, so a section opening inside it does not snap the whole modal */
+const MODAL_RESIZE = LinearTransition.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic));
+
+const MODAL_EXITING = Platform.select({
+  android: SlideOutDown.duration(ANIMATION.duration).easing(Easing.out(Easing.cubic)),
+  default: SlideOutDown.springify().duration(220).dampingRatio(0.9),
+});

@@ -1,0 +1,6 @@
+  static getDuration() {
+    return 300;
+  }
+  getDuration() {
+    return this.durationV ?? 300;
+  }

@@ -1,0 +1,12 @@
+
+      return {
+        animations: {
+          opacity: delayFunction(delay, animation(targetValues?.opacity ?? 1, config))
+        },
+        initialValues: {
+          opacity: initialValues?.opacity ?? 0
+        },
+        callback
+      };
+    };
+  };
