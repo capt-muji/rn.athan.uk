@@ -101,7 +101,7 @@ The grilling comes before any drafting: all the decisions, taken now, recorded n
    symlinked): run a throwaway version of each new test against today's code, record its
    first failing line, build the change, confirm tsc, Biome and the named tests, run the
    breaks you are least sure of, record observed output as the expected output, delete
-   the code, remove the worktree and its branch before 00:00. Never commit from it.
+   the code, remove the worktree and its branch before the session ends. Never commit from it.
 
 ## 5. Draft
 
