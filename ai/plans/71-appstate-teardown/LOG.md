@@ -70,3 +70,60 @@ the stack-walk window widened to 30 lines and the `test -x` gate given its expec
   (docs-only change).
 
 session: ses_ecbdc9399ffeRTygBGwGfVM2xy
+
+### Step 2 — stopped (NEEDS REPLAN)
+
+- Dispatcher premise stale: step 1 was already merged on uat (63dbb429) before this session
+  began; no merge was needed. Preflight `PREFLIGHT OK`; anchor check nineteen `1`.
+- Device verified: the connected `3T_SERIAL` placeholder device, the floor test device. Version 2.0.191 taken under the
+  lock and later restored (nothing committed); build-mock 2.0.190 (uat 63dbb429)
+  `BUILD-MOCK OK`, aapt2 gate passed, install `Success` 08:43.
+- The agent-device MCP server is broken on this box (`Cannot find module .../agent-device-client.js`);
+  the whole drive ran on the agent-device CLI (same tool, mirror commands).
+- Start state: the app sat on the Arabic face (leftover preference). PLAN section 10's
+  recovery applied: crossed to English before baselining, discarded.
+- Drive 1 (pid 21009): crossing 1 en→ar produced the full textbook cycle —
+  `reactInstance is null. Dropping work.` W+E lines 08:45:33.305/.306, stack frame
+  `AppStateModule.onHostPause`, marker 08:45:34.702, span 1.397 s, pid unchanged, 0 FATAL.
+  Crossing 2 ar→en flipped the face but never reloaded: no exception, no marker, no
+  expo-updates restart, no `LANGUAGE:` warn; a recheck dump two minutes later confirmed
+  the counts. Readings: blocks-per-crossing 1 then 0 (contract: exactly 1 each), markers 1
+  (contract: 2) — D90 contradiction.
+- Drive 2 (fresh process, pid 22599): crossing 1 en→ar starved the same way ~10 s after
+  start with the launch refresh in flight; the refresh later completed, the pass still
+  never dequeued, no reload.
+- Drive 3 (fresh process, pid 23273): recovery ar→en DID reload (block + marker within 5 s,
+  discarded). Baseline with the queue drained (Refresh complete 09:01:42). Crossing 1
+  en→ar: face flipped, 45 s of polls read dropping=0 markers=0; post-mortem dump shows no
+  exception, no marker, zero `dev.expo` lines, and the once-per-process deferred launch
+  init (`launchInitRan` latch, app/index.tsx) firing at 09:03:27.9, four minutes after
+  process start — mount/timer timing around the language commits contradicts the plan's
+  model. Stopped per PLAN section 2.2 item 1 and D90: NEEDS REPLAN, not repaired.
+- Evidence under `~/athan-gitree/sessions/71/`: `NOTES.md` (the drive table and the
+  signature), `logcat-drive1-full.txt` (the textbook block verbatim),
+  `logcat-drive2-window.txt`, `logcat-drive3-en-ar-starved.txt`,
+  `pid/alarm` files per drive, `app-mock.apk` + build report, `step2-unfinished.patch`
+  (the restored 2.0.191 bump), `step2-unfinished-status.txt`.
+- Teardown: HOME then `am kill`, relaunch, crossed back to English (`Fajr` wait passed),
+  agent-device session closed. Automatic time on throughout, no clock change, no
+  screenshots, no force-stop, no `pm clear`. The mock install stays on the phone.
+- No commit: the step's deliverable never met its readings. Version files restored to
+  2.0.190; branch `docs/71-2-crossing-proof` deleted unmerged (was at uat 63dbb429).
+
+session: ses_ecbd3be8fffeAIL7Gj7gStVrpf
+
+## Planning (2026-10-13)
+
+Replan round one, from step 2's D90 stop. The device work ran to completion (build,
+aapt2 gate, install, three drives, six crossings) and the readings came back against the
+record: three crossings produced the textbook cycle, three starved silently (face flips,
+preference stores, no convergence dequeue, no reload, no exception, app ticks on in the
+new locale; the drive 3 post-mortem shows the once-per-process launch init firing over
+four minutes late). Ruled D91: the verdict needs one pinned cycle and drive 1 captured
+it (the verbatim block, span 1.397 s, pid unchanged, 0 FATAL, all preserved under
+sessions/71/); step 2 is re-planned as a recording step over that evidence, and the
+starvation becomes FINDINGS.md section 8 plus queue row 78 (added from this evidence,
+the same commit as this replan). The section 6 verdict is untouched: the drop is ordered
+and log-only whenever the reload fires, and the starved crossings log no exception at
+all. Evidence: sessions/71/NOTES.md and the per-drive captures.
+
