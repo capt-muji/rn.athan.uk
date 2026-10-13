@@ -3,7 +3,9 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
+import { typographyFor } from '@/shared/typography';
 import { clearUpgradeCache } from '@/stores/version';
 
 import Masjid from './Masjid';
@@ -46,6 +48,8 @@ export default function ErrorScreen() {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -54,14 +58,14 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: COLORS.text.primary,
-    fontSize: TEXT.sizeHeading,
+    fontSize: ty.size(TEXT.sizeHeading),
     marginBottom: SPACING.lg2,
-    fontFamily: TEXT.family.medium,
+    fontFamily: ty.familyMedium,
   },
   subtext: {
     color: COLORS.text.primary,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.size),
+    fontFamily: ty.familyRegular,
   },
   first: {
     marginBottom: SPACING.xs,

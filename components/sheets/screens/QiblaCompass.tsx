@@ -9,9 +9,11 @@ import Animated, {
 } from 'react-native-reanimated';
 import Svg, { Circle, Line, Path, Polygon, Rect, Text } from 'react-native-svg';
 
-import { ANIMATION, COLORS, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { FIGURE_CANVAS, kaabaShapes } from '@/shared/kaabaFigure';
 import { arcPath, FACE, facePoint, qiblaLinePath, resolveCardinals, rubElHizbPath, TICKS } from '@/shared/qiblaCompass';
+import { typographyFor } from '@/shared/typography';
 
 type Palette = typeof COLORS.qibla.away;
 
@@ -141,7 +143,7 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
             y={at.y}
             fill={palette.ink}
             fontSize={radius * FACE.cardinalSize}
-            fontFamily={TEXT.family.medium}
+            fontFamily={ty.familyMedium}
             textAnchor={'middle'}
             alignmentBaseline={'central'}>
             {letter}
@@ -243,6 +245,8 @@ export default function QiblaCompass({ size, bearing, heading, aligned }: QiblaC
     </View>
   );
 }
+
+const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   stage: {

@@ -22,7 +22,9 @@ import {
   TEXT,
 } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
+import { typographyFor } from '@/shared/typography';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
 /**
@@ -172,6 +174,8 @@ export default function ColorPickerSettings() {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 // =============================================================================
 // STYLES
 // =============================================================================
@@ -188,8 +192,8 @@ const styles = StyleSheet.create({
   // --- Label Styles ---
   label: {
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
   labelDisabled: {
     color: COLORS.text.disabled,
@@ -207,8 +211,8 @@ const styles = StyleSheet.create({
   },
   resetText: {
     color: COLORS.text.secondary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
   colorPreviewContainer: {
     width: SIZE.iconWrapper.sm,
@@ -266,8 +270,8 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.size,
+    fontFamily: ty.familyMedium,
+    fontSize: ty.size(TEXT.size),
   },
   cancelButton: {
     backgroundColor: COLORS.icon.background,

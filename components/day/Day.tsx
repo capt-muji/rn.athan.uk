@@ -9,7 +9,9 @@ import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { ANIMATION, COLORS, SCREEN, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { getOverlayActiveForTypeAtom, getOverlaySelectedIndexForTypeAtom } from '@/stores/atoms/overlay';
 import { extraDisplayDateAtom, standardDisplayDateAtom } from '@/stores/schedule';
 import { hijriDateEnabledAtom } from '@/stores/ui';
@@ -56,6 +58,8 @@ export default function Day({ type }: Props) {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     marginBottom: SPACING.xl,
@@ -67,13 +71,13 @@ const styles = StyleSheet.create({
   },
   location: {
     color: COLORS.text.secondary,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
     marginBottom: SPACING.quart,
   },
   date: {
-    fontFamily: TEXT.family.regular,
+    fontFamily: ty.familyRegular,
     color: COLORS.text.primary,
-    fontSize: TEXT.size,
+    fontSize: ty.size(TEXT.size),
   },
 });
