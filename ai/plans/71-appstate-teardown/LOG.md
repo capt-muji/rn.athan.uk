@@ -22,7 +22,7 @@
   contradicted reading is NEEDS REPLAN, never an executor repair.
 - Shape: two steps - the verdict doc (weight 1), the 3T crossing proof (weight 3, alone in its
   batch). Batch budget 3, session budget 4.
-- Row 66's D86 no-device ruling is not carried into this row: row 66 priced the restart
+- Row 66's investigation-only pricing (folded in its queue cell) is not carried further: row 66 priced the restart
   question; this row pins a log line whose evidence is gone.
 - Ticket set READY, planned at uat `053ffaab`.
 

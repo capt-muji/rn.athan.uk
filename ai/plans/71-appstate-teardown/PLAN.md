@@ -49,7 +49,7 @@ The owner's rules that apply, quoted with their source:
 | ID | Decision | Who | When | Recorded |
 | --- | --- | --- | --- | --- |
 | D88 | The row's question is answered from the pinned sources; the answer is no. The throw path is native-internal (`ReactHostImpl.reload` pauses the dying context; `AppStateModule.onHostPause` emits into the teardown race; the drop logs and never throws). The repo's three JS listeners sit downstream of the emit, so no pause-before-reload change ships. Source: the trace in section 4, every hop anchor-counted; row 66's option 1 (folded per D85) keeps the D59 relaunch. | Planning (owner away; the brief's "fixes it if so" makes the evidence the ruling) | 2026-10-13 | PLAN.md sections 4 and 5; `steps/1-verdict.md` |
-| D89 | The device proof runs once (row 66's D86 no-device ruling is not carried into this row): row 68's evidence died in its DONE merge, so the record's exception line is otherwise uncited. Step 2 pins the line verbatim into FINDINGS.md section 7 and `sessions/71/`. | Planning | 2026-10-13 | `steps/2-crossing-proof.md` |
+| D89 | The device proof runs once (row 66's investigation-only pricing, folded in its queue cell, is not carried further): row 68's evidence died in its DONE merge, so the record's exception line is otherwise uncited. Step 2 pins the line verbatim into FINDINGS.md section 7 and `sessions/71/`. | Planning | 2026-10-13 | `steps/2-crossing-proof.md` |
 | D90 | The device step observes and transcribes; it judges nothing. An observed line that contradicts the traced chain (wrong message, wrong stack frame, wrong count) is NEEDS REPLAN, never an executor repair. | Planning | 2026-10-13 | `steps/2-crossing-proof.md` STOP list |
 
 ### 2.2 The executor must not decide
@@ -92,7 +92,7 @@ named otherwise. A count other than 1 is NEEDS REPLAN, never an executor repair.
 | `node_modules/.../appstate/AppStateModule.kt` | The native module: `onHostPause` sets background and emits (:46-49); `sendEvent` guards on `hasActiveReactInstance()` and drops silently when the instance is gone (:63-72). Anchors `appstate-onhostpause.txt`, `appstate-sendevent-guard.txt`. |
 | `node_modules/.../bridge/ReactContext.java` | `onHostPause` fans out to lifecycle listeners (:321-334). Anchor `reactcontext-onhostpause.txt`. |
 | `node_modules/.../runtime/BridgelessReactContext.kt` | `hasActiveReactInstance` delegates to the host's instance flag (:109); `emitDeviceEvent` calls `callFunctionOnModule` (:159-164). Anchor `bridgeless-hasactive.txt`. |
-| `node_modules/.../runtime/ReactHostImpl.kt` | The reload chain resets the task ref then pauses the dying context while RESUMED (:1316-1317, :1330-1336); the emit path drops and raises when the task result is null (:916-926); the raise logs a `ReactNoCrashSoftException` (:897-908); the task ref's initial null-result value and the `reactInstance` field (:129-130); the instance flag the guard reads (:346-348); the destroy step that clears the field, fourth in the chain (:1379-1387). Anchors `reacthostimpl-reload-pause.txt`, `reacthostimpl-taskref-reset.txt`, `reacthostimpl-decls.txt`, `reacthostimpl-drop.txt`, `reacthostimpl-isinitialized.txt`, `reacthostimpl-destroy-step.txt`. |
+| `node_modules/.../runtime/ReactHostImpl.kt` | The reload chain resets the task ref then pauses the dying context while RESUMED (:1316-1317, :1330-1336); the emit path drops and raises when the task result is null (:916-926); the raise logs a `ReactNoCrashSoftException` (:897-908); the task ref's initial null-result value and the `reactInstance` field (:129-130); the instance flag the guard reads (:346-348); the destroy step that clears the field, fourth in the chain (:1385-1392). Anchors `reacthostimpl-reload-pause.txt`, `reacthostimpl-taskref-reset.txt`, `reacthostimpl-decls.txt`, `reacthostimpl-drop.txt`, `reacthostimpl-isinitialized.txt`, `reacthostimpl-destroy-step.txt`. |
 | `node_modules/.../bridge/ReactSoftExceptionLogger.kt` | The soft logger prints via `FLog.e` and never throws (:68-77). Anchor `softexception-logger.txt`. |
 | `node_modules/.../procedures/RestartReactAppExtensions.kt` | The expo restart extension calls `reload(reason)` (:28-32). Anchor `expo-restart-extension.txt`. |
 | `node_modules/.../updates/UpdatesModule.kt` | The native entry for `reloadAsync`, `AsyncFunction("reload")` (:65-68). Anchor `updates-module-reload.txt`. |
@@ -140,7 +140,7 @@ a fix must fix; `ai/AGENTS.md` Hard rules).
 
 The dropped emit is the dying tree's background transition. No consumer needs it: the
 relaunched tree re-seeds `previousAppState` from `AppState.currentState`
-(`device/listeners.ts:27`) on its fresh registration (`app/index.tsx:107`), so no stale
+(`device/listeners.ts:27`) on its fresh registration (`app/index.tsx:108`), so no stale
 background-to-active transition is expected or missed; the perf flush (`shared/perf.ts:205`)
 loses one flush into a tree that dies about 1.5 s later, behind a dev gate; the permission
 watcher (`hooks/useNotification.ts:37`) removes itself and is unrelated to reload timing. The
@@ -159,9 +159,10 @@ the plan folder, folded into the queue cell at DONE, the folder dying with the m
 writes the static verdict from the pinned sources. Step 2 pins the exception line on the 3T and
 appends section 7.
 
-**Invariant, one sentence a check can test:** every load-bearing claim in FINDINGS.md carries a
-`file:line` citation whose anchor counts exactly 1 at the Planned at sha, and the verdict
-sentence of section 6 appears verbatim in FINDINGS.md section 6.
+**Invariant, one sentence a check can test:** every section 2 hop carries its anchor whose
+count is exactly 1 at the Planned at sha, every other load-bearing claim carries a
+`file:line` citation checked against source by step 1's read-against-source contract, and
+the verdict sentence of section 6 appears verbatim in FINDINGS.md section 6.
 
 **Alternatives rejected:**
 

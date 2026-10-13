@@ -103,7 +103,7 @@ Section 1, the listener table (one row per site, the file:line citations verbati
 
 | Listener | Where | Behaviour when the reload tears the context down |
 | --- | --- | --- |
-| The launch listener | `device/listeners.ts:79`, registered once per process behind the `listenersInitialized` guard (:17, :24-25), seeded from `AppState.currentState` (:27) | Downstream of the emit. The dying tree never receives the dropped background event (the emit is dropped before dispatch, `ReactHostImpl.kt:916-926`); the relaunched tree re-registers fresh and re-seeds from the live state (`app/index.tsx:107`, `device/listeners.ts:27`) |
+| The launch listener | `device/listeners.ts:79`, registered once per process behind the `listenersInitialized` guard (:17, :24-25), seeded from `AppState.currentState` (:27) | Downstream of the emit. The dying tree never receives the dropped background event (the emit is dropped before dispatch, `ReactHostImpl.kt:916-926`); the relaunched tree re-registers fresh and re-seeds from the live state (`app/index.tsx:108`, `device/listeners.ts:27`) |
 | The perf flush | `shared/perf.ts:205`, live only behind the perf monitor gate | Loses one background flush into a tree that dies about 1.5 s later; dev-gated, no production path |
 | The permission watcher | `hooks/useNotification.ts:37`, removes itself on return (`:44`) | Unrelated to reload timing: it watches the settings round-trip, not language switches |
 
@@ -155,7 +155,7 @@ Section 4, verbatim:
 
 > The dropped emit is the dying tree's background transition. No consumer needs it: the
 > relaunched tree re-seeds `previousAppState` from `AppState.currentState`
-> (`device/listeners.ts:27`) on its fresh registration (`app/index.tsx:107`), so no stale
+> (`device/listeners.ts:27`) on its fresh registration (`app/index.tsx:108`), so no stale
 > background-to-active transition is expected or missed; the perf flush (`shared/perf.ts:205`)
 > loses one flush into a tree that dies about 1.5 s later, behind a dev gate; the permission
 > watcher (`hooks/useNotification.ts:37`) removes itself and is unrelated to reload timing.
@@ -183,7 +183,7 @@ grep -c "file:line\|file:line citation" ai/plans/71-appstate-teardown/FINDINGS.m
 ```
 
 Expected: `GREEN`, and a count of at least 1 (the citation discipline note). Then the anchor
-check of this step file again: fourteen `1` lines.
+check of this step file again: nineteen `1` lines.
 
 ## Break script
 
@@ -235,7 +235,7 @@ Expected: the merge commit lands on `uat`, the lock directory is gone.
 ## Done when
 
 - [ ] FINDINGS.md sections 1 to 6 land with the contracts' content.
-- [ ] The anchor check prints fourteen `1` lines.
+- [ ] The anchor check prints nineteen `1` lines.
 - [ ] The commit and merge land with the version bumped.
 - [ ] LOG.md carries the step entry: branch, shas, version, the red line, the review verdict,
       ending `session: <ses_id>`.
