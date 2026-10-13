@@ -293,3 +293,88 @@ describe('the phone the figure carries', () => {
     expect(phoneScreen(40).radius).toBeGreaterThanOrEqual(0);
   });
 });
+
+// Under RTL the whole figure mirrors horizontally, so the phone travels the same eight back the
+// other way and the trail behind it negates x with it
+describe('the wave under RTL', () => {
+  it('mirrors a point across the centre of the figure, keeping its height', () => {
+    for (const progress of [0.25, 0.75]) {
+      const rightward = wavePoint(progress, WIDTH, HEIGHT, false);
+      const leftward = wavePoint(progress, WIDTH, HEIGHT, true);
+
+      expect(leftward.x).toBeCloseTo(-rightward.x, 6);
+      expect(leftward.y).toBeCloseTo(rightward.y, 6);
+    }
+  });
+
+  it('still crosses its own centre, which the mirror leaves where it is', () => {
+    for (const progress of [0, 0.5, 1]) {
+      expect(wavePoint(progress, WIDTH, HEIGHT, true).x).toBeCloseTo(0, 6);
+    }
+  });
+
+  it('negates the heading, because the phone turns the other way', () => {
+    for (const progress of [0.17, 0.3, 0.62]) {
+      expect(waveHeading(progress, WIDTH, HEIGHT, true)).toBeCloseTo(-waveHeading(progress, WIDTH, HEIGHT, false), 6);
+    }
+  });
+
+  it('draws the path through the mirrored points', () => {
+    const rightward = pointsOf(wavePath(WIDTH, HEIGHT, false));
+    const leftward = pointsOf(wavePath(WIDTH, HEIGHT, true));
+
+    expect(leftward).toHaveLength(rightward.length);
+    leftward.forEach((at, index) => {
+      expect(at.x).toBeCloseTo(-rightward[index].x, 2);
+      expect(at.y).toBeCloseTo(rightward[index].y, 2);
+    });
+  });
+});
+
+describe('waveTrail under RTL', () => {
+  /** The tail and its mirror, sampled at a progress */
+  const tails = (progress: number) => ({
+    rightward: pointsOf(waveTrail(progress, WIDTH, HEIGHT, false)),
+    leftward: pointsOf(waveTrail(progress, WIDTH, HEIGHT, true)),
+  });
+
+  it('ends exactly where the phone stands, on the mirrored side', () => {
+    const { leftward } = tails(0.3);
+    const at = wavePoint(0.3, WIDTH, HEIGHT, true);
+    const last = leftward[leftward.length - 1];
+
+    expect(last.x).toBeCloseTo(at.x, 1);
+    expect(last.y).toBeCloseTo(at.y, 1);
+  });
+
+  it('reaches back along the path the phone came from, on the mirrored side', () => {
+    const { leftward } = tails(0.25);
+    const behind = wavePoint(0.25 - WAVE.trail.span, WIDTH, HEIGHT, true);
+
+    expect(leftward[0].x).toBeCloseTo(behind.x, 1);
+    expect(leftward[0].y).toBeCloseTo(behind.y, 1);
+  });
+
+  it('mirrors every point of the rightward tail across the centre', () => {
+    const { rightward, leftward } = tails(0.4);
+
+    expect(leftward).toHaveLength(rightward.length);
+    leftward.forEach((at, index) => {
+      expect(at.x).toBeCloseTo(-rightward[index].x, 2);
+      expect(at.y).toBeCloseTo(rightward[index].y, 2);
+    });
+  });
+
+  it('stays on the mirrored figure when the tail reaches back past the start of the loop', () => {
+    const { leftward } = tails(0.05);
+
+    for (const point of leftward) {
+      expect(Math.abs(point.x)).toBeLessThanOrEqual(WIDTH / 2 + 0.01);
+      expect(Math.abs(point.y)).toBeLessThanOrEqual(HEIGHT / 2 + 0.01);
+    }
+  });
+
+  it('is an open path on the mirrored side too', () => {
+    expect(waveTrail(0.5, WIDTH, HEIGHT, true)).not.toContain('Z');
+  });
+});

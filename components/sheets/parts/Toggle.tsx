@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { Pressable, StyleSheet } from 'react-native';
+import { I18nManager, Pressable, StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { ANIMATION, COLORS, RADIUS, SIZE } from '@/shared/constants';
@@ -24,6 +24,9 @@ interface ToggleProps {
  * <Toggle value={isOn} onToggle={() => setIsOn(!isOn)} />
  */
 export default function Toggle({ value, onToggle, disabled, accessibilityLabel }: ToggleProps) {
+  // RTL travels the thumb the other way: the layout swap owns the inset keys, not the travel
+  const isRTL = I18nManager.getConstants().isRTL;
+
   // Derived, not effect-driven: every value flip re-runs the timing from the
   // thumb's live position on the UI thread, so the knob always converges on
   // the current value. The previous effect + JS-side shared-value
@@ -34,7 +37,7 @@ export default function Toggle({ value, onToggle, disabled, accessibilityLabel }
   // mount behavior of the previous implementation, preserved exactly.
   const isFirstEvaluation = useSharedValue(true);
   const translateX = useDerivedValue(() => {
-    const target = value ? SIZE.toggle.translateX : 0;
+    const target = value ? (isRTL ? -SIZE.toggle.translateX : SIZE.toggle.translateX) : 0;
     if (isFirstEvaluation.value) {
       isFirstEvaluation.value = false;
       return target;

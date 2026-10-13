@@ -108,7 +108,10 @@ export default function Overlay() {
           onPress={handleClose}
           accessibilityRole={'button'}
           accessibilityLabel={t('overlay.closeDetails')}
-          style={[styles.catcher, { top: region.top, left: region.left, width: region.width, height: region.height }]}
+          style={[
+            styles.catcher,
+            { top: region.top, transform: [{ translateX: region.left }], width: region.width, height: region.height },
+          ]}
         />
       ))}
     </Reanimated.View>
@@ -122,6 +125,9 @@ const styles = StyleSheet.create({
     start: 0,
     end: 0,
     bottom: 0,
+    // The catchers carry window-space pageX offsets; the pinned Yoga resolves an
+    // inset-less absolute against its containing node's direction, so this one holds them physical
+    direction: 'ltr',
     zIndex: OVERLAY.zindexes.overlay,
   },
   catcher: {

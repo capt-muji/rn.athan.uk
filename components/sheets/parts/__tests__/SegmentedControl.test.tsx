@@ -4,6 +4,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { I18nManager } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';
@@ -132,5 +133,41 @@ describe('the reminder sound control while the reminder is off', () => {
 
     expect(onSelect).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+});
+
+// The components project renders against the real I18nManager, so the direction the pill
+// reads at render is forced here rather than through the shared react-native mock
+describe('the Athan control under RTL', () => {
+  beforeEach(() => {
+    jest
+      .spyOn(I18nManager, 'getConstants')
+      .mockReturnValue({ isRTL: true, doLeftAndRightSwapInRTL: true, localeIdentifier: 'ar' });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('draws the pill under the mirrored slot the moment its width is known', async () => {
+    await render(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Sound} onSelect={jest.fn()} />);
+
+    await measure(306);
+
+    // Sound is the last of three options, so its slot mirrors to the first
+    expect(drawn()[0]).toHaveStyle({ width: 100, transform: [{ translateX: '0%' }] });
+  });
+
+  it('slides the pill to the mirrored slot when the saved option changes', async () => {
+    await render(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} />);
+    await measure(306);
+    const withTiming = jest.spyOn(Reanimated, 'withTiming');
+
+    await screen.rerender(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Sound} onSelect={jest.fn()} />);
+
+    // Sound's slot mirrors to the first, whose target is 0; the LTR target 200 is never asked
+    // for. The option fade also asks for 0, so the absence is what isolates the pill's target
+    expect(withTiming).toHaveBeenCalledWith(0, { duration: ANIMATION.duration });
+    expect(withTiming).not.toHaveBeenCalledWith(200, { duration: ANIMATION.duration });
   });
 });
