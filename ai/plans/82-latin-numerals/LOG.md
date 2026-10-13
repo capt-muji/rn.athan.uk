@@ -90,3 +90,39 @@ and `:2123` (`16h 55m`) flip to `23:54` and `16:55`. Repaired: both suites join 
 section 4.3 names both. Everything else in the executor's run passed (red counts matched
 the plan, five suites green, tsc and Biome clean, `break-step1.sh` `ALL AS EXPECTED: 1`,
 version 2.0.222 set); no commit was made and the tree is clean at `01b648c5`.
+
+### Step 01 — DONE
+
+Branch `feat/82-format-flip` off `uat` (`1ea44102`). The tree was applied from the accelerator
+patch `$HOME/athan-gitree/sessions/82/step1-unfinished.patch` (the prior attempt's four source
+files and five composer suites) and the two suites that patch predates were flipped on top:
+`__tests__/app/Screen.test.tsx` (both en ago pins and the negative query, to the outer node
+with the identity normalizer) and `stores/__tests__/schedule.test.ts` (`23:54`, `16:55`).
+Both pre-flight runs end `PREFLIGHT OK`.
+
+Red (measured in the prior attempt against this same code, recorded verbatim in the stop entry
+above; this run applied that red state as the green tree and verified the contracts, it did not
+re-measure red): `time.test.ts` 15 failed / 118 passed / 133 total; `Countdown.test.tsx` +
+`Ago.test.tsx` 8 failed / 12 passed / 20 total; `countdown.test.ts` 2 failed / 26 passed / 28
+total; `typography.test.ts` 4 failed / 4 total (`Expected: "Roboto-Medium", Received:
+undefined`); `Screen.test.tsx:26` expected `Dhuhr 58m ago` received `Dhuhr 0\u2009:\u200958 ago`
+and `:47` expected `Duha 7h 14m ago` received `Duha 7\u2009:\u200914 ago`; `schedule.test.ts`
+`23h 54m` -> `23:54` and `16h 55m` -> `16:55`.
+
+Green: named unit suites 4 passed / 275 total; named components suites 3 passed / 24 total;
+`npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0; `break-step1.sh`
+ends `ALL AS EXPECTED: 1`. Version 2.0.223 set in `app.json`, `package.json` and
+`android/app/build.gradle` (`app.json` first). The commit hook runs `yarn validate` green:
+`Tests: 5546 passed, 5546 total` (Test Suites: 210 passed, 210 total); coverage Statements
+100% (5265/5265), Branches 100% (2265/2265), Functions 100% (1096/1096), Lines 100%
+(4716/4716).
+
+Review: read `git show` cold against the step-1 checklist. No locale branch survives in
+`formatTime`, `formatTimeAgo`, `Countdown.tsx` or `Ago.tsx`; `currentLocaleId` imports remain
+only at the module-scope `typographyFor` calls; no dim, colour, gap or size token moved; every
+ar pin is byte-identical; the JSDoc examples match the JSDoc-contract test. No fix needed.
+
+Merged into `uat` with the step-1 merge message (`2.0.223 - merge feat/82-format-flip: step 1,
+the countdown format flip`); the commit and merge shas are recorded in the step-2 entry below.
+
+session: ses_ec9179891ffeKC048dtg1baPWV

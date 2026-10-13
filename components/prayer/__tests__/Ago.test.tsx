@@ -15,16 +15,17 @@ const ASR = 3;
 const GAP_COLON = '\u2009:\u2009';
 
 describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
-  // [London clock, the badge's words]
+  // [London clock, the badge's sentence]
   it.each([
-    ['13:05', 'Dhuhr 3m ago'],
-    ['14:00', 'Dhuhr 58m ago'],
-  ])('at %s reads "%s"', async (time, words) => {
+    ['13:05', 'Dhuhr 0\u2009:\u200903 ago'],
+    ['14:00', 'Dhuhr 0\u2009:\u200958 ago'],
+  ])('at %s reads "%s"', async (time, sentence) => {
     showLondonDay('2026-09-11', time);
 
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
-    expect(screen.getByText(words)).toBeVisible();
+    expect(screen.getByText(sentence, { normalizer: (s) => s })).toBeVisible();
+    expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
   });
 
   it('splits the duration colon with thin-space gaps under ar', async () => {
@@ -58,7 +59,7 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
 
-    expect(screen.getByText('Dhuhr 58m ago')).not.toBeVisible();
+    expect(screen.getByText('Dhuhr 0\u2009:\u200958 ago', { normalizer: (s) => s })).not.toBeVisible();
   });
 });
 

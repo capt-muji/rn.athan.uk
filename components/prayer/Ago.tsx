@@ -18,8 +18,8 @@ interface Props {
 /**
  * Displays time elapsed since the previous prayer
  *
- * Shows "now" for the first 60 seconds, then "Xm" or "Xh Ym" format.
- * Animates between normal and "recent" color states (≤5 mins).
+ * Shows "now" for the first 60 seconds, then the colon duration (H:MM) inside
+ * the catalog sentence. Animates between normal and "recent" color states (≤5 mins).
  * Fades out when the overlay is open.
  *
  * @param type - Schedule type (Standard or Extra)
@@ -52,7 +52,7 @@ function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minu
   // Fade out when overlay opens (derived, so it cannot strand on resume)
   const prayerAgoOpacityStyle = useDerivedOpacity(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade });
 
-  const parts = currentLocaleId() === 'en' ? null : splitSingleColon(prayerAgo);
+  const parts = splitSingleColon(prayerAgo);
 
   return (
     <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>

@@ -19,7 +19,7 @@ interface Props {
   type: ScheduleType;
 }
 
-/** One digit group of the non-English timer: bright above zero, dim at 00 (row 72 rule 3) */
+/** One digit group of the timer: bright above zero, dim at 00 (row 72 rule 3) */
 function CountdownSectionText({ text, dim }: { text: string; dim: boolean }) {
   const colorStyle = useDerivedColor(dim ? 0 : 1, {
     fromColor: COLORS.text.muted,
@@ -51,7 +51,7 @@ export default function Countdown({ type }: Props) {
     return null;
   }
 
-  const sections = currentLocaleId() === 'en' ? null : splitColonSections(displayTime);
+  const sections = splitColonSections(displayTime);
 
   return (
     <Animated.View style={[styles.container]}>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     color: COLORS.text.primary,
     fontSize: ty.size(TEXT.sizeLarge),
     textAlign: 'center',
-    fontFamily: ty.familyMedium,
+    fontFamily: ty.familyDigits,
     marginBottom: SPACING.lg,
     // Text shadow for depth
     textShadowColor: 'rgba(0, 0, 0, 0.15)',
