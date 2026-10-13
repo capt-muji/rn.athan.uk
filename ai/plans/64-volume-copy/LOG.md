@@ -62,3 +62,45 @@ machinery and `HelpTopic` stand unchanged. Nothing was committed; `uat`
 stayed clean at `9f27e2dd` (2.0.174), and the executor's verified work
 survives as `~/athan-gitree/sessions/64/step1-unfinished.patch` (red, green
 and break all proven). Execution resumes from the patch plus this amendment.
+
+### Step 01 — done
+
+Resumed on `feat/64-volume-copy` off uat (`8d417e81`, 2.0.175) from the
+verified patch: preflight `PREFLIGHT OK` (all four anchors counting 1), the
+patch applied 3-way with no conflict. The patch's 2.0.175 was already taken
+by the replan commit, so the version re-taken at 2.0.176 in `app.json`,
+`package.json` and the gradle `versionName` under the version lock (origin
+at 2.0.174). Amendment D64.9 applied on top: the `if (!answer) return [];`
+drop and the `ios`/`android` `| null` union deleted from `shared/help.ts`.
+`yarn i18n:lock` re-run produced no diff (the patch's lock already current);
+the six gitignored dist exports refreshed.
+
+Green: unit 5 suites / 84 tests pass, components 4 suites / 78 tests pass,
+`npx tsc --noEmit` exit 0, `npx biome check . --error-on-warnings` exit 0.
+`scripts/break-step1.sh`: `caught: the reworded question assertion fails`,
+`ALL AS EXPECTED: 1`; porcelain after held only this step's files, the
+version files and the plan files.
+
+Review, cold against `git show`: the five keys carry the plan's bytes in all
+six catalogs (en checked against the table, ar and ms spot-checked exact;
+`PINNED_LITERALS`, the gates and the lock prove the rest), the three old
+keys are gone everywhere, no `| null` residue in `help.ts`, both sheets
+choose their key by `Platform.OS` in the existing `cardHint` style with no
+style entry added and no other line moved. No lifecycle, thread or residue
+finding. Clean read; one pre-review fix: the commit message's version prefix
+read the previous executor's stale `$TMPDIR` message file (2.0.175) and was
+amended to 2.0.176, hook re-passing both times.
+
+Committed `7c01e5c6` (2.0.176, 18 files, +130/-47), merged `--no-ff` as
+`10f6d9d9`; the lock released after the merge. Hook: Test Suites 208 passed
+/ 208 total, `Tests: 5500 passed, 5500 total`, and the four coverage lines
+at 100% (statements 5202/5202, branches 2243/2243, functions 1082/1082,
+lines 4660/4660) — the gate that refused the first pass now passes.
+
+This entry carries the shas the merge created. Landed by the follow-up
+session, which re-verified the merged bytes cold: the green run re-run
+(84/84 unit, 78/78 components, `tsc` and `biome` exit 0), the break script
+re-run ending `ALL AS EXPECTED: 1`, and this ledger committed as the step-1
+docs commit at 2.0.177.
+
+session: ses_ecc8ac4a1ffefEkY1lCGr3M77p
