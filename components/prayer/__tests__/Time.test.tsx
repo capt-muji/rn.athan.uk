@@ -11,6 +11,7 @@ import { openOverlay } from '@/stores/overlay';
 
 import PrayerTime from '../Time';
 
+const GAP_COLON = '\u2009\u2009:\u2009\u2009';
 const SUNRISE = 1;
 const DHUHR = 2;
 const ASR = 3;
@@ -28,7 +29,7 @@ describe('a row before Fajr on Friday 11 September 2026 at 03:00', () => {
 
     await render(<PrayerTime type={type} index={index} />);
 
-    expect(screen.getByText(time)).toBeOnTheScreen();
+    expect(screen.getByLabelText(time)).toBeOnTheScreen();
   });
 });
 
@@ -66,7 +67,7 @@ describe('the Suhoor and Duha rows on Friday 11 September 2026 at 14:00, with Fa
     );
 
     expect(screen.getByText('--:--')).toBeOnTheScreen();
-    expect(screen.getByText('06:46')).toBeOnTheScreen();
+    expect(screen.getByLabelText('06:46')).toBeOnTheScreen();
   });
 
   it('renders the row time with Latin digits under ar, and the unread sentinel stays ASCII', async () => {
@@ -80,7 +81,7 @@ describe('the Suhoor and Duha rows on Friday 11 September 2026 at 14:00, with Fa
         </>
       );
 
-      expect(screen.getByText('06:46')).toBeOnTheScreen();
+      expect(screen.getByLabelText('06:46')).toBeOnTheScreen();
       expect(screen.getByText('--:--')).toBeOnTheScreen();
     } finally {
       setActiveLocale('en');
@@ -97,7 +98,7 @@ describe('the passed Sunrise row on Friday 11 September 2026 at 14:00, once the 
 
     await act(() => openOverlay(ScheduleType.Standard, SUNRISE));
 
-    expect(screen.getByText('06:28')).toBeOnTheScreen();
+    expect(screen.getByLabelText('06:28')).toBeOnTheScreen();
   });
 
   it("shows --:-- when Saturday's Sunrise could not be read", async () => {
@@ -107,5 +108,33 @@ describe('the passed Sunrise row on Friday 11 September 2026 at 14:00, once the 
     await act(() => openOverlay(ScheduleType.Standard, SUNRISE));
 
     expect(screen.getByText('--:--')).toBeOnTheScreen();
+  });
+});
+
+describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
+  it('splits its colon into a gap node at two thin spaces per side', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerTime type={ScheduleType.Extra} index={3} />);
+
+    expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+  });
+
+  it('renders the split colon at 40 percent of its digits, and labels the whole time', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerTime type={ScheduleType.Extra} index={3} />);
+
+    // Row 81: the colon sits 60 percent under its own row's digits, whichever state the row is in
+    const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
+    const style = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
+    expect(style.opacity).toBe(0.4);
+    expect(screen.getByLabelText('06:46')).toBeOnTheScreen();
+  });
+
+  it('renders the unread sentinel as one node with no gap node', async () => {
+    showLondonDay('2026-09-11', '14:00', { '2026-09-11': 'not stored' });
+    await render(<PrayerTime type={ScheduleType.Standard} index={2} />);
+
+    expect(screen.getByText('--:--')).toBeOnTheScreen();
+    expect(screen.queryByText(GAP_COLON)).toBeNull();
   });
 });

@@ -91,4 +91,46 @@ The commit's sha, hook line, review verdict, break line and merge sha are
 recorded by the step-3 commit's LOG update (the ticket-82 pattern: a step's
 own commit cannot cite what lands after it).
 
+Commit `5527905e`. Session 1's context closed before its hook output was
+captured, so the step-3 session re-measured the same tree (the merge `5c0212b6`
+checked out clean into a scratch worktree): `Test Suites: 209 passed, 209
+total`, `Tests: 5544 passed, 5544 total`; coverage Statements 100% (5245/5245),
+Branches 100% (2263/2263), Functions 100% (1091/1091), Lines 100% (4699/4699).
+The worktree lacks the gitignored prebuilt audio dirs, so its run printed
+`2 skipped, 5542 passed`; both audioMatrix prebuild tests pass with their dirs
+present, and the hook's own line carries no skip.
+
+Review, read cold at step-3 time (`git show 5527905e` against the step-2
+checklist): only the listed files touched; the gap literal doubled to two thin
+spaces per side; the `fontSize: ty.countdownSize` read; the interface field
+with its doc line and both map entries (`TEXT.sizeLarge - 2` under ar,
+`TEXT.sizeLarge` under Latin) verbatim; row 79's dim colours and the tabular
+pin byte-identical; no lifecycle, thread, residue or rule class. No fix needed.
+
+Break script on uat after the merge: `caught: single gap again` and `caught: ar
+countdown size 26 again`, both catches fired, last line `ALL AS EXPECTED: 1`,
+tree clean after. Merge `5c0212b6`.
+
 session: ses_ec8723c63ffehAF73Q6q2sJym7
+
+### Step 3 — done
+
+Branch `feat/81-time-colon` off `uat` (`5c0212b6`, 2.0.243). Preflight
+`PREFLIGHT OK`, all three anchors count 1. Red matched the plan: the label and
+gap queries failed `Unable to find an element` (the label and the split did not
+exist), the sentinel tests passed before and after, 7 failed / 5 passed / 12
+total, no other suite moved. Change contract applied verbatim: the `Text`
+import, the `splitSingleColon` import in Biome's order, the parts render with
+the whole-string label and the unsplit sentinel, and the `colon` style at
+opacity 0.4 (Biome's formatter put the `Animated.Text` attributes on one line;
+the code is the contract's, the line breaks the formatter's). Green: the suite
+12 passed / 12 total, `npx tsc --noEmit` exit 0, `npx biome check .
+--error-on-warnings` exit 0, and the leak-proof run (Prayer, List, Screen)
+24 passed / 24 total. Version 2.0.244 set in `app.json` (first), `package.json`
+and `android/app/build.gradle`, all three matching, under the version lock
+(origin/uat still held at 2.0.239).
+
+The commit's sha, hook line, review verdict, break line and merge sha are
+recorded by the step-4 commit's LOG update.
+
+session: ses_ec86711f7ffeZ93dcv3VZjG3T2
