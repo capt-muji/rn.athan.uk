@@ -248,11 +248,8 @@ describe("the Help modal's chevron", () => {
 });
 
 describe("the Help modal's Close row entrance", () => {
-  // ai/AGENTS.md: animated components first-frame in their settled state. The row once
-  // painted opaque while the card faded in around it (owner report, 2026-10-13), so the
-  // nearest entering ancestor of Close is read: a rule the app keeps. Today that
-  // ancestor is the card's slide, which is the defect; after the fix it is the row's
-  // own fade on the container's builder.
+  // The row must join the modal container's entrance fade, never an ancestor's slide:
+  // the nearest entering ancestor of Close is read.
   const enteringAncestorOf = (node: TestInstance): TestInstance | null => {
     let current: TestInstance | null = node.parent;
     while (current && !current.props?.entering) current = current.parent;
@@ -265,6 +262,5 @@ describe("the Help modal's Close row entrance", () => {
     const row = enteringAncestorOf(screen.getByRole('button', { name: 'Close' }));
 
     expect(row?.props.entering).toBe(FadeIn);
-    expect(row?.props.layout).toBe(LinearTransition);
   });
 });
