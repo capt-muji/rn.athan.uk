@@ -1,7 +1,0 @@
-const makeCountdownDisplayAtom = (source: Atom<CountdownStore>) =>
-  atom((get) => {
-    const { timeLeft } = get(source);
-    return timeLeft === null ? UNAVAILABLE_TIME : formatTimeSecondsAware(timeLeft, get(showSecondsAtom));
-  });
-
-const formatTimeSecondsAware = (seconds: number, showSeconds: boolean) => TimeUtils.formatTime(seconds, !showSeconds);

@@ -1,9 +1,0 @@
-  // Selected is always fully bright; otherwise the natural passed/next/upcoming position.
-  // Pre-ADR-015 timings: overlay selection 150ms; next-prayer advance and date-roll cascade 1000ms
-  const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-  const colorStyle = useDerivedColor(colorPos, {
-    fromColor: COLORS.text.muted,
-    toColor: COLORS.text.primary,
-    duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
-    delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
-  });
