@@ -15,8 +15,8 @@ const ASR = 3;
 describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
   // [London clock, the badge's words]
   it.each([
-    ['13:05', 'Dhuhr 0:03 ago'],
-    ['14:00', 'Dhuhr 0:58 ago'],
+    ['13:05', 'Dhuhr 3m ago'],
+    ['14:00', 'Dhuhr 58m ago'],
   ])('at %s reads "%s"', async (time, words) => {
     showLondonDay('2026-09-11', time);
 
@@ -31,7 +31,7 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
 
-    expect(screen.getByText('Dhuhr 0:58 ago')).not.toBeVisible();
+    expect(screen.getByText('Dhuhr 58m ago')).not.toBeVisible();
   });
 });
 

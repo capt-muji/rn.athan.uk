@@ -66,3 +66,39 @@ dispatchers pass `durationLabels()` explicitly (behaviour-neutral; `formatTime` 
 `hideSeconds = false` stays, both branches are tested). Step 1 contracts amended;
 execution re-applies the r4 patch over this ruling and re-takes the version at commit
 (replan commit takes 2.0.202, so the step commit takes the next free patch after it).
+
+### Step 1 — executed
+
+Branch `feat/72-formatters` off `uat` eb4582b1 (2.0.202). The full r4 patch
+(`sessions/72/step1-full-r4.patch`) applied with `git apply --3way`, then the four
+signature sites amended to the round-four ruled text: `formatTimeLettered(seconds,
+hideSeconds: boolean, labels: DurationLabels)` and `formatTimeAgoLettered(seconds,
+labels: DurationLabels)`, defaults stripped, both dispatchers passing
+`durationLabels()` explicitly. The two dead default-param branches are gone, which is
+what clears the coverage gate that stopped round four. Ruling A's two transitional
+allow-list entries kept in `shared/__tests__/unusedExports.test.ts`; ruling B applied
+once more (biome collapsed the multi-line helper signature; `biome check --write` on
+the touched file, repo-wide check exit 0 after).
+
+Gates: suite 1 `133 passed`, suite 2 `143 passed`, suite 3 `19 passed` (295 total,
+the round-three record), `yarn test:tz` 208 suites / 5505 tests, `tsc --noEmit` exit 0,
+`biome check . --error-on-warnings` exit 0. Break script `ALL AS EXPECTED: 1` (both
+catches fired, restore clean; step files staged first per the r4 findings note).
+Version re-taken under the lock: origin/uat unmoved (e58f29a0), next patch 2.0.203 in
+app.json, package.json, android/app/build.gradle.
+
+Round-four ruling applied to the third helper: the first commit attempt failed the
+coverage gate at branches 2282/2283 — the one dead branch was `formatTimeFixedWidth`'s
+`hideSeconds = false` (fresh lcov: the only zero-hit BRDA in `shared/time.ts`, line 669).
+The dispatcher always passes hideSeconds and the module is private, so the not-passed
+side is dead by the same architecture round four ruled on; its findings misattributed
+that branch to formatTimeAgoLettered's labels param through a stale lcov line, and the
+planner's amendment covered the two sites the misread named. Ruling applied as
+recorded ("the helpers take required parameters", formatTime excepted because both its
+branches are tested): the default stripped to `hideSeconds: boolean`, behaviour-neutral,
+the sole call site already passing the argument. After the strip: tsc exit 0, 133
+passed, zero zero-hit branches in the file.
+
+Commit: (recorded post-merge) — hook lines: (pending first run)
+
+session: (final line post-merge)
