@@ -1,0 +1,3 @@
+  // todo: T192399917 This no longer needs to store the react instance
+  private val createReactInstanceTaskRef = BridgelessAtomicRef(Task.forResult<ReactInstance>(null))
+  private var reactInstance: ReactInstance? = null

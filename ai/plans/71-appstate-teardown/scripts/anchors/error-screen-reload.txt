@@ -1,0 +1,8 @@
+  const handleRefresh = async () => {
+    logger.warn('ERROR SCREEN: Clearing cached data and reloading');
+    try {
+      clearUpgradeCache();
+      await Updates.reloadAsync(); // force reload the entire app
+    } catch (error) {
+      logger.error('ERROR SCREEN: Reload failed', { error });
+    }

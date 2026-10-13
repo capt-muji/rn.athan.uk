@@ -1,0 +1,9 @@
+  override fun onHostPause() {
+    appState = APP_STATE_BACKGROUND
+    sendAppStateChangeEvent()
+  }
+
+  override fun onHostDestroy() {
+    // do not set state to destroyed, do not send an event. By the current implementation, the
+    // catalyst instance is going to be immediately dropped, and all JS calls with it.
+  }
