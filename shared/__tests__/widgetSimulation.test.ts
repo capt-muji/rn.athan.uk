@@ -679,23 +679,24 @@ describe('fully readable real sequences', () => {
    *
    * Last re-golded when the countdown moved to a SwiftUI timer interval and the five-minute stepped
    * entries were deleted (session 16a) — the fix for the archive-budget blackout. Re-golded again
-   * when props v7 added the precomposed localized footer to every entry (job 39 step 7).
+   * when props v7 added the precomposed localized footer to every entry (job 39 step 7). Re-golded
+   * again when props v8 stamped rtl on every entry (job 68).
    */
   const REAL_YEAR_TIMELINES: [string, string][] = [
-    ['2024-01-10', '63e6630d7feb74de6189751106b4dcb3e7d282d66c3cee8146d57a16ed158330'],
-    ['2024-02-20', '5ffa10e92ad5192fb37edb46d0cd12d3cd459b6d517880a4c9760e7578af5421'],
+    ['2024-01-10', '16f1f114c14e096ebb67034d0310abbbd16c20e9554f60415c48298df87ec366'],
+    ['2024-02-20', '3e9d3a76f561f4d1d43afb7050d83947a36dea12b747f3cc25c60f36e4ae3249'],
     // Across the spring clock change (31 March)
-    ['2024-03-24', '6481443693995d19e997b3213dc8eee537521c3a8f9d7120cc00c2d37d9e9e0c'],
-    ['2024-04-15', '529d1ea033e0757df949feae9b073f5bcf1597553ef01c08e50b29a0c01cb661'],
-    ['2024-05-06', '30bbb7233e4ce7bce7d7a8ceccb7d882c3603a03a125d466d850509735e84642'],
-    ['2024-06-14', 'c6f601067d78c11d7caba1f4ae1e4ef69d533972bca160818724caadede0a3db'],
-    ['2024-07-01', 'e63ead5d3137a5e12df345311978120891b6c79d6fd1ce0ae7e754eb182e252e'],
-    ['2024-08-12', 'fb2ca159a70f7a002028ed10b81535f1ecaa97728700671b39504de49a6ae593'],
-    ['2024-09-02', 'e6b2ba16c7c68f063a86d2680d6c731d10377a05190bfcb01f2016194bad6195'],
+    ['2024-03-24', 'faf2f0b64fe3da023b203c79fe9bd26c0a2ba5aaa7391a9b14913502fc3d23ac'],
+    ['2024-04-15', 'b37855e3893fffcbd3af3c2398e8ea8c975d0973d23628ec7d972ebfdb38fbb8'],
+    ['2024-05-06', '28d0ef5e392a1b54c30d238ec30f22752e5af8e239f77ebe331764bc9eb9e247'],
+    ['2024-06-14', '736b4cfc9f211cbf81f12eedc6595260e5614dd887f13ef1e6121267de285152'],
+    ['2024-07-01', '50f7d8f8b28fc03febf296d95fe1c3beec7f14c3894a76e995fdc5b8f50e7b3c'],
+    ['2024-08-12', '05d088b2c8046f9ea4d34025ecd3fe31dbb19d1c672226c4066f00cf26bd5815'],
+    ['2024-09-02', '4708cc5c8f380a6f9ea3e0a7b2db3be19e6d3e4724bebd4fffdfb535c386d37e'],
     // Across the autumn clock change (27 October)
-    ['2024-10-20', 'e89338f04f305a4a930ad0fd9e71aa43c79d4d385dbc39a0b1cb4cec5aa3c3f5'],
-    ['2024-11-11', '7b02c93fee25b301aef575604f9706d173bcfc83187c77772f112b20a54cec31'],
-    ['2024-12-15', '0259fe5eca60123a85481b38cf11631dd4332ea07aa3ce7c09c4a2f4548cc4ef'],
+    ['2024-10-20', '459957764c2fdcf7bf2c5734b8533d9e417b8ff2392a7aff94ec0ce6acb89491'],
+    ['2024-11-11', '60a099cdd8d81531db560f18a330f3915bdffc6da14f4f900c13c7352c3008f8'],
+    ['2024-12-15', '89d587c064ebb3feb84ba9cd9aa401bd876aa1ba67b675cf1bd4ba5aef8855f9'],
   ];
 
   /** Midnight, noon, and two minutes before and exactly on every row of the push day's list */

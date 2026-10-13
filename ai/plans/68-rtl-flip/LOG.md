@@ -120,3 +120,67 @@ This entry is uncommitted on uat: the ledger carries the shas the commit
 creates, so it rides into step 2's commit (the ticket 59 precedent).
 
 session: ses_ecd61365cffe8TKeEwD5BM4On0
+
+### Step 02 — DONE
+
+Branch `feat/68-mirror-sites` off uat (`6a714f2f`), version 2.0.153. Anchor
+check: all six anchors this step edits (`bar-leftstyle`, `segmented-pill`,
+`toggle-travel`, `wave-point`, `overlay-left`, `veil-left`) count 1.
+
+Red: 10 new cases failed across the six suites, all existing cases passing
+(290 passed). The two crossings of the segmented pill state the mirrored
+slot, the toggle's first-frame and animated travel negate, the wave point,
+heading, path and trail twins mirror, the catcher and veil-glow and cloud
+flattened styles carry a translateX first entry where they carried `left:`.
+
+Deviations, all recorded rather than guessed:
+- The plan's green command writes `--selectProjects=unit,components`, which
+  jest 30 rejects ("no projects were found matching the selection", a
+  comma-joined name is not a project). The same six paths ran as
+  `--selectProjects unit components`.
+- `components/overlay/__tests__/VeilBackdrop.test.tsx` is not in the plan's
+  Files list, but it is the veil's own suite and the home red item 5's veil
+  assertion needs; it is the fourteenth changed file.
+- The RTL assertions sit in suites named `... under RTL`, so the break
+  script's `-t 'RTL'` filter selects exactly them.
+- The SegmentedControl animated-target case: `withTiming(0)` is also emitted
+  by the option fade, so that assertion alone passed at red. The case gained
+  `expect(withTiming).not.toHaveBeenCalledWith(200, ...)` to isolate the
+  pill's own target, which is the assertion the plan asks for.
+- The wave functions' trailing `isRTL` parameter carries a `false` default:
+  the plan's review checklist requires the pre-existing cases unedited, and
+  a required parameter fails tsc on every existing three-argument call.
+- The direction pin went on the three containing views of the converted
+  decorations (the decorations root, FloatingMoon's root, FloatingStar's
+  root). Those are the real containing blocks; the plan names the root alone.
+- The Ramadan R4.1 assertion is made on the cloud, the one converted site
+  whose old `left` was the constant 0 and therefore the one value the suite
+  can state outright; the other nine offsets are internal geometry.
+
+Green: 27 suites / 300 tests pass across both projects, `node
+scripts/check-directional-styles.js` prints `DIRECTIONAL STYLES OK` and exits
+0, `npx tsc --noEmit` exit 0, `npx biome check . --error-on-warnings` exit 0.
+No `left:`/`right:` key remains in the three converted files;
+`tipGeometry.ts` and `Bar.tsx` are untouched, so the tip rides the layout
+swap byte-identically. `scripts/break-step2.sh`: `caught: the pill no longer
+mirrors`, `ALL AS EXPECTED: 1`.
+
+Review, cold: the allowlist keeps nine entries (Bar with the rewritten
+reason, six catcherGeometry entries, the two prose entries) and the twelve
+converted entries left; every converted node's inset became a transform; the
+LTR cases in all six suites are unedited and pass.
+
+Sequence note: the step commit first landed on uat because the branch was not
+made first. uat was one unpushed commit ahead of origin/uat, so the commit
+was moved onto `feat/68-mirror-sites` at `db50f9db`, uat reset to `6a714f2f`,
+and the merge taken `--no-ff` as this step prescribes; no published history
+was touched.
+
+Committed `db50f9db` (2.0.153, 18 files, +335/-103) under the version lock,
+merged `--no-ff` as `4bd52292`; the lock released after the merge. The commit
+carried step 1's ledger entry, closing its reference. Hook: Test Suites 208
+passed / 208 total, `Tests: 5493 passed, 5493 total`, coverage 100%
+(statements 5198/5198, branches 2239/2239, functions 1082/1082, lines
+4655/4655).
+
+session: ses_ecd61365cffe8TKeEwD5BM4On0
