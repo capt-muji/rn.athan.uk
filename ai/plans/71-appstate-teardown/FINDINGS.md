@@ -8,7 +8,7 @@ at 2.0.187; RN 0.88.0-rc.3 and expo-updates as pinned in node_modules).
 | Listener | Where | Behaviour when the reload tears the context down |
 | --- | --- | --- |
 | The launch listener | `device/listeners.ts:79`, registered once per process behind the `listenersInitialized` guard (:17, :24-25), seeded from `AppState.currentState` (:27) | Downstream of the emit. The dying tree never receives the dropped background event (the emit is dropped before dispatch, `ReactHostImpl.kt:916-926`); the relaunched tree re-registers fresh and re-seeds from the live state (`app/index.tsx:108`, `device/listeners.ts:27`) |
-| The perf flush | `shared/perf.ts:205`, live only behind the perf monitor gate | Loses one background flush into a tree that dies about 1.5 s later; dev-gated, no production path |
+| The perf flush | `shared/perf.ts:205`, live only behind the perf monitor gate | Loses one background flush into a tree the reload tears down; dev-gated, no production path |
 | The permission watcher | `hooks/useNotification.ts:37`, removes itself on return (`:44`) | Unrelated to reload timing: it watches the settings round-trip, not language switches |
 
 The reload site: `stores/language.ts:77-89`, the D59 branch, `await Updates.reloadAsync()` at
@@ -44,7 +44,7 @@ The reload site: `stores/language.ts:77-89`, the D59 branch, `await Updates.relo
    `FLog.e`, never thrown
    (`.../bridge/ReactSoftExceptionLogger.kt:68-77`). The exception object is constructed at
    the raise site, so its captured stack carries the `AppStateModule.onHostPause` frames the
-   row 68 record read.
+   row 71 record read.
 
 ## 3. Why the JS listeners cannot suppress the exception
 
@@ -61,7 +61,7 @@ The reload site: `stores/language.ts:77-89`, the D59 branch, `await Updates.relo
 > relaunched tree re-seeds `previousAppState` from `AppState.currentState`
 > (`device/listeners.ts:27`) on its fresh registration (`app/index.tsx:108`), so no stale
 > background-to-active transition is expected or missed; the perf flush (`shared/perf.ts:205`)
-> loses one flush into a tree that dies about 1.5 s later, behind a dev gate; the permission
+> loses one flush into a tree the reload tears down, behind a dev gate; the permission
 > watcher (`hooks/useNotification.ts:37`) removes itself and is unrelated to reload timing.
 > The post-reload convergence stamp-bails (`stores/language.ts:38`), so no re-arm work is
 > lost.
@@ -69,13 +69,13 @@ The reload site: `stores/language.ts:77-89`, the D59 branch, `await Updates.relo
 ## 5. The alternatives, rejected
 
 1. Unsubscribe the app's AppState listener(s) before `reloadAsync`. Rejected: downstream of the
-   emit, no effect on the raise (section 4, "Why the obvious fix is wrong").
+   emit, no effect on the raise (section 3).
 2. Patch React Native core to guard or silence the raise (patch-package shape). Rejected:
    `patches/` today carries only expo-background-task, expo-location and expo-widgets; an RN
    core patch is a new surface carried on every re-pin, for zero behaviour change. The row 51
    discipline is the repo's settled answer for RN and expo corrections: file them upstream; a
    local patch dies at the next re-pin. If the owner ever wants the line gone, the lever is an
-   upstream report carrying the traced chain of section 4.
+   upstream report carrying the traced chain of section 2.
 3. Suppress at the logger by wiring a `ReactSoftExceptionListener`. Rejected: a native listener
    needs a native module or a patch, the same rejection as alternative 2 with more machinery.
 4. Stop reloading (drop the D59 relaunch). Rejected: D59 is the owner's landed ruling and row
@@ -87,7 +87,7 @@ The reload site: `stores/language.ts:77-89`, the D59 branch, `await Updates.relo
 > exception is raised inside React's own reload sequence, every hop after the `reloadAsync`
 > call is native, the repo's listeners sit downstream of the emitting module and cannot
 > suppress it, and the dropped event has no consumer that needs it (sections 1 to 4). One
-> non-fatal log line per RTL boundary crossing is the whole cost; silencing it from inside
+> logged exception block whenever the reload fires is the whole cost; silencing it from inside
 > this repo means patching RN core, which section 5 rejects, so the fix-if-so branch stays
 > untaken.
 
@@ -137,7 +137,7 @@ cross-checked against NOTES.md.
 - Exception blocks naming AppStateModule.onHostPause in the capture: 1
 - pid before / after: 21009 / 21009 (unchanged)
 - Marker line `APP: feature flags resolved` after the block: 1, at 08:45:34.702
-- Exception-to-marker span: 1.397 s (the row 68 record: about 1.5 s)
+- Exception-to-marker span: 1.397 s (the row 71 record: about 1.5 s)
 - FATAL EXCEPTION lines: 0
 - Alarm dumps: alarm-after-drive1.txt under sessions/71/; trigger-time movement across the
   reload is the mock's per-download re-seed (row 55's record) and not a finding
