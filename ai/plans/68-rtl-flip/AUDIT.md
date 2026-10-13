@@ -24,3 +24,18 @@ verified from the pinned `react-native 0.88.0-rc.3` sources.
 No owner-owned finding among them (no visuals beyond the proven RTL face, no
 notification scheduling); the widget stamp's consumer remains the recorded
 blocker on the runtime.
+
+## The recapture (finding 8's evidence, and what it found)
+
+The recapture ran on the fixed build and delivered the demanded faces: the
+Arabic alert sheet's segmented control, a cropped countdown card, and the
+Extras catchers before and after a tap, all read by the lead from the PNGs in
+`$HOME/athan-gitree/sessions/68/`. It also proved the ar bar fills from the
+right edge and the restore frames: the warm ar-to-en crossing stayed MIRRORED
+with English strings (`16-en-restored-audit.png`), while a cold launch
+restored LTR (`18-en-coldlaunch.png`).
+
+| # | Finding | Source | Verdict | Fix |
+| --- | --- | --- | --- | --- |
+| 11 | The audit's own fix to finding 2 introduced a regression: `I18nManager.getConstants().isRTL` is stale within a process after a crossing, so the warm ar-to-en crossing stopped relaunching and the shell stayed mirrored | The recapture's device measurement | Confirmed by the two restore frames and the logcat (no reload task on the warm crossing; a reload on the cold launch) | The direction in force comes from the app's own record: the stored preference (blank means the device's launch direction, captured before any forceRTL); the stale getConstants read is gone. Suite 4/4, coverage 100% |
+| 12 | The segmented pill's Arabic placement: the recapture's sheet frame shows the pill at the control's right edge rather than over the selected (leftmost) segment, so the fixed geometry's device face is not yet proven | The lead's read of `11-ar-segmented.png` against the en reference `17b-en-segmented-reference.png` | Open: the frame is ambiguous (a stale measure, a mid-snap capture and a real misplacement all fit it) | One device measurement: install the fixed build, open the sheet under ar, `uiautomator dump` the pill's bounds beside the selected option's name, plus the en twin; the lead reads the pair |

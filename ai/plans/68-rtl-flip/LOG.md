@@ -341,3 +341,63 @@ before first render, crossing the RTL boundary converges then relaunches
 four no-logical-form sites mirror, the window-space sites hold their
 coordinates through transforms, and every widget blob carries rtl (v8/v4) as
 the schema groundwork the blocked Host application will read (P16).
+
+### Step 04 — DONE (audit recapture, two device findings)
+
+Rebuilt from `uat` `56a82826` (2.0.156): `BUILD-MOCK OK` in 312s,
+`aapt2 dump badging` prints `package: name='com.mugtaba.athan'
+versionCode='1000000' versionName='2.0.156'`, installed with `adb install -r`.
+
+Captures in `$HOME/athan-gitree/sessions/68/`, with what each shows:
+
+- `15-en-shell-audit.png` — the en shell on the fixed build, unchanged: Asr,
+  names left, bells right, bar filling from the left.
+- `11-ar-segmented.png` — the Fajr alert sheet under ar, opened by tapping the
+  row's bell at (110, 668) (the bell sits left under ar). Labels read right to
+  left: `إيقاف` x~820, `صامت` x~530, `صوت` x~230. The pill is CLIPPED at the
+  screen's right edge: measured bbox x 984-1079 (the mask's own limit is 1080),
+  y 880-978.
+- `11b-ar-segmented-mid.png` — after tapping `صامت` at (530, 929): the pill
+  measured identically, x 984-1079.
+- `11c-ar-segmented-left.png` — after tapping `صوت` at (230, 929): no pill
+  anywhere in the frame (a whole-image scan of y 300-1900 finds none).
+- `17b-en-segmented-reference.png` — the same sheet under en after the cold
+  launch: Off / Silent / Sound, the pill fully inside the control on Sound,
+  measured bbox x 692-965, y 882-978. So for the SAME value (Sound) the LTR
+  pill sits on its segment and the ar pill sits one segment further right,
+  overhanging the control and clipped by the screen edge.
+- `12-ar-tip.png` — the countdown card cropped from the full ar frame
+  (`12-ar-list-full.png`) with PIL at (0,70)-(1080,360); the atlas has no crop
+  method, so the crop is mine and the full frame is kept beside it. The card
+  reads `العصر` `٢:١٠` with the green fill running to the RIGHT edge and the
+  unfilled track to its left.
+- `13-ar-extras-catchers.png` — the Extras page (swiped with
+  `input swipe 900 1200 150 1200 300`; the second page dot fills, on the right
+  of the pair under ar), then the Midnight row tapped at (540, 668): the veil
+  darkens the list and the explanation box opens, mirrored, with its `i` token
+  left and `نصف الليل بين المغرب والفجر` right-aligned.
+- `14-ar-extras-after.png` — after tapping (540, 400), a window-space catcher
+  above the exempt row: the veil and the box are gone and the list is back, so
+  the catcher still closes the overlay under ar.
+
+Finding A, the segmented pill does not sit on its segment under ar on the
+fixed build. Measured above; the LTR reference puts the same value's pill on
+its segment.
+
+Finding B, the ar to en restore no longer relaunches. `logcat-en-restore-audit.txt`
+holds `NOTIFICATION: Starting reconcileLanguageSurfaces` once and no
+`getOrCreateReloadTask(): Destroying ReactContext` at all, and the shell
+stayed MIRRORED while its strings turned English (`16-en-restored-audit.png`:
+English names and Latin digits, mosque mark left, bells left, names right).
+The fixed check reads `directionBefore` from `I18nManager.getConstants().isRTL`,
+which on this build still reports the process-start direction, so a crossing
+into a locale whose direction matches that stale reading is treated as
+same-direction: the 2.0.155 build restored LTR here, the fixed one does not.
+A cold launch (HOME, `am kill`, launch) does restore LTR — `18-en-coldlaunch.png`
+shows the en shell with the mosque mark right and the bar filling from the
+left — so the stored direction does apply at bootstrap.
+
+Left on the phone: the mock build 2.0.156, the app in English and LTR after
+that cold launch, automatic time still on (`settings get global auto_time` = 1).
+
+session: ses_ecd61365cffe8TKeEwD5BM4On0
