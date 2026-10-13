@@ -1,8 +1,0 @@
-  {
-    question: 'help.q.quiet',
-    ios: null,
-    android: {
-      text: 'help.a.quiet',
-      steps: ['help.step.alarmVolume'],
-    },
-  },
