@@ -37,7 +37,7 @@ mock alarm pin turned into a rule, the batch-budget wording fixed, and the vacuo
 sentence restored. The third break mutation the colour finding wanted is not added: the
 mapping flip is invisible to the jest mock by the same caveat.
 
-Replan round one (2026-10-13): the preflight inherited row 68\x27s inverted upstream
+Replan round one (2026-10-13): the preflight inherited row 68's inverted upstream
 check (`origin/uat..uat` counted local planning commits as unmerged); corrected to
 `uat..origin/uat`, proven PREFLIGHT OK on the clean tree at 2.0.199.
 
@@ -48,3 +48,12 @@ also broke `599,true → ٠٠:٠٩:٥٩`), and `formatTime(60)` is `٠٠:٠١:٠
 minute; the pinned digits read transposed against the test title own whole-minute
 branch). The executed diff survives at sessions/72/step1-unfinished.patch; execution
 amends the two expectations and resumes from the green run.
+
+Replan round three (2026-10-13), from step 1's second stop, two rulings. Finding A:
+the step's new exports `splitColonSections`/`splitSingleColon` have no importer until
+step 2, so the unreachable-export sweep reports them; ruled transitional allow-list
+entries with reasons in `shared/__tests__/unusedExports.test.ts`, added by step 1 and
+removed by step 2 (the sweep's `toEqual` fails on stale entries both ways). Finding B:
+two biome format errors on step-verbatim snippets; ruled the repo's format gate wins —
+contract code is semantic, Biome's formatted form is what lands, noted in step 2.
+

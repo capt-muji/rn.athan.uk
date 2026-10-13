@@ -35,6 +35,9 @@ step, so the commit leaves the full suite green under the pre-commit hook; the f
   block C)
 - `components/prayer/__tests__/Ago.test.tsx` (en string rewrites only, red-tests block C)
 - `__tests__/app/Screen.test.tsx` (en string rewrites only, red-tests block C)
+- `shared/__tests__/unusedExports.test.ts` (change: the two transitional
+  allow-list entries `splitColonSections` and `splitSingleColon`, reason "step 2's
+  importers land in this ticket"; replan round three)
 
 ## Red tests
 
