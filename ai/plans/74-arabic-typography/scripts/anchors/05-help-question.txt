@@ -1,8 +1,0 @@
-  question: {
-    flex: 1,
-    fontSize: 15,
-    lineHeight: 20,
-    fontFamily: TEXT.family.medium,
-    color: INK,
-    letterSpacing: TEXT.letterSpacing.default,
-  },
