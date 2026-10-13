@@ -1,0 +1,14 @@
+    return values => {
+      'worklet';
+
+      return {
+        animations: {
+          originY: delayFunction(delay, animation(targetValues?.originY ?? values.targetOriginY, config))
+        },
+        initialValues: {
+          originY: values.targetOriginY + values.windowHeight,
+          ...initialValues
+        },
+        callback
+      };
+    };

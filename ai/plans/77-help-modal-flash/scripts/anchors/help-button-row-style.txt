@@ -1,0 +1,8 @@
+  buttonRow: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    // Opaque through the button's air, matching the card: a closing row slides beneath it
+    // instead of flashing through the transparent gap above the button
+    backgroundColor: COLORS.light.background,
+    paddingTop: SPACING.section - SPACING.mid,
+  },
