@@ -830,9 +830,7 @@ export const COLORS = {
     border: 'rgba(116, 80, 207, 0.68)',
   },
 
-  /** Countdown bar */
   countdown: {
-    background: 'rgba(126, 189, 241, 0.19)',
     dimDigit: 'rgba(255, 255, 255, 0.7)',
     colon: 'rgba(255, 255, 255, 0.4)',
   },

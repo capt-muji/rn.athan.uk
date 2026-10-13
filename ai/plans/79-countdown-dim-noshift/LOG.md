@@ -202,4 +202,9 @@ docs/79-dev-delivery: step 2, ticket 79`). Commit `ed9c1089`, hook green: `Tests
 Statements 100% (5244/5244), Branches 100% (2259/2259), Functions 100% (1091/1091),
 Lines 100% (4698/4698).
 
+Review (audit, appended per the plan-conformance finding): the step-2 diff is
+docs-only, commit `ed9c1089` changes no source file, the device identifier and
+screenshots are absent from every committed file, the evidence log lives under
+sessions/79/, and the markers and pid are its own record's citations.
+
 session: ses_ec8a2901affe73JQHFUPkyPfOT
