@@ -184,3 +184,160 @@ passed / 208 total, `Tests: 5493 passed, 5493 total`, coverage 100%
 4655/4655).
 
 session: ses_ecd61365cffe8TKeEwD5BM4On0
+
+### Step 03 — DONE
+
+Branch `feat/68-widget-stamp` off uat (`5ea8e17c`), version 2.0.155. Anchor
+check: `widgettypes-ios`, `widgettypes-android` and `timeline-entry` each
+count 1.
+
+Red: exactly the seven predicted failures across five suites, with the other
+147 cases passing. Two pins failed `Expected: 4, Received: 3`
+(`widgetSnapshot`, `widgetAndroid`), the two version constants failed
+`Expected: 8/4, Received: 7/3` (`widgetContract`), the every-entry direction
+check failed `Expected: true, Received: false`, `snapshot?.rtl` failed
+`Received: undefined`, and the stale terminal entry's whole-object assertion
+failed on the extra field.
+
+Contracts applied verbatim: the v8 and v4 history lines naming the blocked
+Host (P16); `rtl?: boolean` on `PrayerWidgetProps` after `stale?: boolean`
+and on `PrayerWidgetAndroidProps` after `strings`; the stamp
+`rtl: localeDirection(currentLocaleId()) === 'rtl'` as the third property in
+`makeEntry`'s props, in the stale terminal entry's props, and in
+`buildPrayerWidgetSnapshot`'s return. Three stamp sites; no widget module
+touched.
+
+Deviations, recorded:
+- Red item 1 places the snapshot assertion "under the test locale (en)".
+  `widgetTimeline.test.ts` has two `buildPrayerWidgetSnapshot` blocks and the
+  second runs inside `setActiveLocale('ar')`, where the stamp is true, so the
+  assertion went beside the first (en) block; the ar block was left as the
+  plan drew it.
+- The digest delta is verified by construction rather than by
+  re-serialization: the only code that builds the hashed structure gained one
+  property per object literal and the two version constants, so the delta is
+  exactly `v` and `rtl`. All twelve digests moved and every non-digest case
+  is green.
+- `rtl` is read by no production code yet: the Host application is blocked on
+  the widget runtime (P16), so the field is the schema groundwork the plan
+  describes, and the tests are its only readers today.
+
+Green: 11 suites / 271 tests pass, `npx tsc --noEmit` exit 0, `npx biome
+check . --error-on-warnings` exit 0. The renderer, lock-renderer,
+runtime-loads, static-strings and settings-sync suites pass unchanged.
+`scripts/break-step3.sh`: `caught: the entries no longer carry the locale's
+direction`, `ALL AS EXPECTED: 1`.
+
+Review, cold against `git show a3d8d282`: the diff is the two constants, the
+two interfaces, the three stamp sites, the four pins with their two title
+renames, and the digest table; no `widgets/` file changed; the 67 folder and
+its saved patch are untouched; both history blocks carry their new line.
+
+Committed `a3d8d282` (2.0.155, 11 files, +111/-24) under the version lock,
+merged `--no-ff` as `b9a8a284`; the lock released after the merge. The commit
+carried step 2's ledger entry, closing its reference. Hook: Test Suites 208
+passed / 208 total, `Tests: 5493 passed, 5493 total`, coverage 100%
+(statements 5198/5198, branches 2239/2239, functions 1082/1082, lines
+4655/4655).
+
+session: ses_ecd61365cffe8TKeEwD5BM4On0
+
+### Step 04 — STOPPED (proof captured, two findings awaiting the lead's image read)
+
+Build: `zsh $HOME/athan-gitree/bin/build-mock.zsh uat mocks/simple.ts
+$HOME/athan-gitree/sessions/68/athan-68-mock.apk`, ref `uat` ->
+`b9a8a284`, `BUILD-MOCK OK` in 620s. `aapt2 dump badging` prints
+`package: name='com.mugtaba.athan' versionCode='1000000'
+versionName='2.0.155'`; the gradle log carries `BUILD SUCCESSFUL` once; the
+script's "0 mock dates found" is expected because `mocks/simple.ts` holds no
+`YYYY-MM-DD` literal. Installed with `adb -s 3T_SERIAL install -r`; the
+device reports versionCode 1000000 / versionName 2.0.155.
+
+Finding 1, the relaunch is an in-process JS reload, not a process restart.
+`adb shell pidof com.mugtaba.athan` reads 8943 both before and after the
+crossing, and no `ActivityManager` start-proc line appears, so the process
+never restarted. What the logcat does show, once per crossing, is
+`W/unknown:BridgelessReact( 8943): ReactHost{0}.getOrCreateReloadTask():
+Stopping all React Native surfaces`, then `Destroying ReactContext`,
+`Destroying ReactInstance`, and a fresh `APP: feature flags resolved` for the
+new JS instance 1.5s later. The crossing also logs
+`E/unknown:ReactHost: Unhandled SoftException
+com.facebook.react.bridge.ReactNoCrashSoftException:
+raiseSoftException(callWithExistingReactInstance(callFunctionOnModule(` from
+`AppStateModule.onHostPause`, an AppState event racing the teardown: non-fatal
+(the new instance rendered), but it is a soft exception on every crossing.
+Counts: `getOrCreateReloadTask(): Destroying ReactContext` = 1 in each of
+`logcat-ar-switch.txt` and `logcat-en-restore.txt`, and
+`Starting reconcileLanguageSurfaces` = 1 in each. The plan's proof item 2
+predicts "the process restarts and the launch line re-appears"; the launch
+line re-appears, the process restart does not happen on this build.
+
+Finding 2, no launcher widget is placed, so proof item 4 cannot be captured.
+`adb shell dumpsys appwidget` shows `widgets.size=0` on the launcher host and
+the eight Athan providers registered but unbound; the three home pages are
+wallpaper and dock only. Item 4 is mandatory and presupposes a placed widget;
+placing one is the atlas's picker flow and its documented accident risk, so it
+was not attempted without the lead's word.
+
+The mirroring itself reads as real. Under ar (`04-ar-list.png`) the prayer
+names sit on the right with times centre and bells left, the header is
+right-aligned, the mosque mark has moved to the left, the countdown bar fills
+from the right edge, and the digits are Arabic-Indic. The ar Settings sheet
+(`05-ar-settings.png`) puts the title right, the row icons right and the
+chevrons left, with the toggles in the left column. The ar Language sheet
+(`09-ar-language.png`) right-aligns its rows and moves the check mark to the
+left of `العربية`. Restored to English (`10-en-restored.png`) the shell is
+layout-identical to the `01-en-list.png` reference: names left, bells right,
+mosque mark right, bar filling from the left. The pixel contents differ only
+in the mock's rolling times (Fajr 01:53 -> 02:04), so the restore is
+layout-identical rather than byte-identical.
+
+Evidence, `$HOME/athan-gitree/sessions/68/` (nothing committed to the repo):
+`01-en-list.png`, `02-settings-en.png`, `03-language-en.png`, `04-ar-list.png`,
+`05-ar-settings.png`, `06-ar-home.png`, `07-ar-home-p2.png`,
+`08-ar-home-p0.png`, `09-ar-language.png`, `10-en-restored.png`,
+`logcat-ar-switch.txt`, `logcat-en-restore.txt`, `build-68.log`,
+`athan-68-mock.apk` and its `.build.txt`.
+
+Left on the phone: the mock build 2.0.155, the app in English, automatic time
+still on (`settings get global auto_time` = 1). No commit made: the lead reads
+the images and rules before the docs commit.
+
+session: ses_ecd61365cffe8TKeEwD5BM4On0
+
+## Lead rulings on step 4's STOP (2026-10-13)
+
+The lead read the screenshots itself (`01-en-list`, `04-ar-list`,
+`02-settings-en`, `05-ar-settings`, `09-ar-language`, `10-en-restored` in
+`$HOME/athan-gitree/sessions/68/`) and confirms the device face: the ar list
+mirrors every LTR anchor (names right, times centre, bells left, header and
+date right, mosque mark left, Arabic-Indic digits, the countdown filling
+from the right edge); the Settings and Language sheets mirror (titles right,
+token icon left, chevrons left, rows right-aligned); the on-toggle's thumb
+sits at the track's left end under ar against the right end under en (R3.3
+device face); the restored en shell is layout-identical to the reference,
+times differing only by the mock's rolling minutes. The segmented control's
+device face is not captured (the captured sheets carry none); its mirror is
+suite-proven and rides the D41 confidence build.
+
+Finding 1 ruled: the relaunch is an in-process JS reload
+(`Updates.reloadAsync`), not a process restart; the plan's step-4 wording was
+wrong and now reads correctly. D59's outcome (mirrored shell after the
+crossing, one relaunch per crossing) holds as measured. The one
+`ReactNoCrashSoftException` from `AppStateModule.onHostPause` racing the
+teardown, logged on every crossing, is non-fatal and becomes queue row 71.
+
+Finding 2 ruled: with no launcher widget placed, the `dumpsys appwidget`
+structured evidence stands in for the mandatory screenshot (providers
+registered, unbound, `widgets.size=0`); the stamp is data-only by design and
+the picker flow's documented accident risk is not taken for a face the plan
+does not change.
+
+## Ticket 68 (2026-10-12)
+
+The RTL flip landed: supportsRTL true, bootstrap applies the stored direction
+before first render, crossing the RTL boundary converges then relaunches
+(D59; measured on the 3T as an in-process JS reload, one per crossing), the
+four no-logical-form sites mirror, the window-space sites hold their
+coordinates through transforms, and every widget blob carries rtl (v8/v4) as
+the schema groundwork the blocked Host application will read (P16).
