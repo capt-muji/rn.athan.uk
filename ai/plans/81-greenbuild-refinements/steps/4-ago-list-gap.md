@@ -27,6 +27,7 @@ git checkout -b feat/81-ago-list-gap uat
 - `components/prayer/List.tsx`
 - `components/prayer/__tests__/Ago.test.tsx`
 - `components/prayer/__tests__/List.test.tsx`
+- `__tests__/app/Screen.test.tsx`
 - Version files
 
 ## Red tests
@@ -34,13 +35,15 @@ git checkout -b feat/81-ago-list-gap uat
 In `Ago.test.tsx`:
 
 1. The constant becomes `const GAP_COLON = '\u2009\u2009:\u2009\u2009';` and
-   the two sentence literals in the `it.each` anchored by `ago-test-each.txt`
-   are doubled by one mechanical rule: replace every `\u2009` escape in the
-   original literal with `\u2009\u2009`, changing nothing else. The first
-   original `'Dhuhr 0\u2009:\u200903 ago'` therefore becomes
-   `'Dhuhr 0\u2009\u2009:\u2009\u200903 ago'`; apply the same rule to the
-   second original `'Dhuhr 0\u2009:\u200958 ago'` character by character.
-   Both gap-dependent tests fail against today's single-space render.
+   the sentence literals are doubled by one mechanical rule: replace every
+   `\u2009` escape in the original literal with `\u2009\u2009`, changing
+   nothing else - no new spaces, no removed ones. Apply it to Ago.test.tsx
+   lines 20, 21 and 62 (the `it.each` anchored by `ago-test-each.txt` and the
+   `fades out while the overlay is open` test) and to
+   `__tests__/app/Screen.test.tsx` lines 26, 47 and 58 (two `getByText`
+   assertions and one `queryByText`), three literals that query the badge
+   sentence from the screen level. All gap-dependent tests fail against
+   today's single-space render.
 2. Add at the end of the file:
 
 ```tsx
@@ -69,7 +72,7 @@ In `List.test.tsx`, append at the end of the file:
 
 ```tsx
 describe('the gap below the list', () => {
-  it('renders at 75 percent of the old 30, on both schedules', async () => {
+  it('renders at 75 percent of the old 30', async () => {
     showLondonDay('2026-09-11', '14:00');
 
     await render(<List type={ScheduleType.Standard} />);
@@ -89,8 +92,9 @@ describe('the gap below the list', () => {
 ```
 
 Expected red: the sentence and gap queries fail `Unable to find an element`,
-the opacity pin fails `Expected: 0.4`, the badge pin fails
-`Expected: -4`, the list pin fails `Expected: 22.5`. No other suite moves.
+and the list pin fails `Expected: 22.5`; the opacity and badge-lift pins sit
+behind a throwing query and record their red only through the break script's
+phases. No other suite moves.
 
 ## Change contracts
 
@@ -127,7 +131,8 @@ ai/plans/81-greenbuild-refinements/scripts/break-step4.sh`. It must end
 The version command prints `2.0.244`, so the step version is `2.0.245`. Set it
 in the three files. Commit, adding by name: `components/prayer/Ago.tsx`,
 `components/prayer/List.tsx`, `components/prayer/__tests__/Ago.test.tsx`,
-`components/prayer/__tests__/List.test.tsx`, `app.json`, `package.json`,
+`components/prayer/__tests__/List.test.tsx`,
+`__tests__/app/Screen.test.tsx`, `app.json`, `package.json`,
 `ai/plans/README.md` (ticket 81 to `IN PROGRESS, step 4`), and this plan
 folder's `PLAN.md`, `LOG.md` and `steps/4-ago-list-gap.md`. Message:
 
