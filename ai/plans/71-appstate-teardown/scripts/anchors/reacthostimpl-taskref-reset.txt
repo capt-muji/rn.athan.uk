@@ -1,0 +1,8 @@
+    // When using the immediate executor, we want to avoid scheduling any further work immediately
+    // when destruction is kicked off.
+    stateTracker.enterState(method, "Resetting createReactInstance task ref")
+    return createReactInstanceTaskRef.andReset
+        .continueWithTask(
+            { task ->
+              stateTracker.enterState(method, "Starting React Native reload")
+              val reactInstance = taskUnwrapper(task, "1: Starting reload")

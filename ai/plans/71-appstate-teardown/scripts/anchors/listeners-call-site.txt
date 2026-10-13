@@ -1,0 +1,9 @@
+    // Self-describing builds: every log capture names its flag set
+    logger.info('APP: feature flags resolved', FEATURE_FLAGS);
+
+    // Armed at mount, never deferred: the timeout below is cancelled by a
+    // background inside its window, and when it does fire on a LATER resume it
+    // captures `previousAppState` as 'active' — so that resume silently loses
+    // the whole foreground path (overlay boundary, countdown resync, sync).
+    // Cost is one AppState.addEventListener plus initWidgetSettingsSync, which
+    // returns immediately off iOS and behind the widgets flag.

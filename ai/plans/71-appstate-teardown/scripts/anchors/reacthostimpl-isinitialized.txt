@@ -1,0 +1,3 @@
+
+  internal val isInstanceInitialized: Boolean
+    get() = reactInstance != null

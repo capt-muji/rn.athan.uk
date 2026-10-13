@@ -1,0 +1,9 @@
+      // A switch that died mid-apply left the stamp behind the locale: converge
+      // now. Fire and forget — the catch lives inside the pass itself.
+      reconcileLanguageSurfaces();
+    }
+
+    previousAppState = newState;
+  };
+
+  AppState.addEventListener('change', handleAppStateChange);

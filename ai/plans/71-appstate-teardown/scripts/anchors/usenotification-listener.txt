@@ -1,0 +1,13 @@
+  let leftApp = false;
+
+  const subscription = AppState.addEventListener('change', (state) => {
+    if (state !== 'active') {
+      leftApp = true;
+      return;
+    }
+    if (!leftApp) return;
+
+    subscription.remove();
+    markReturned();
+  });
+
