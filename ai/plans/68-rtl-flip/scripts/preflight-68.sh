@@ -12,8 +12,8 @@ branch="$(git rev-parse --abbrev-ref HEAD)"
 [ -z "$(git status --porcelain)" ] || say "tree not clean"
 
 git fetch origin uat >/dev/null 2>&1
-merged=$(git rev-list --count origin/uat..uat)
-[ "$merged" = "0" ] || say "origin/uat not merged in ($merged commits ahead)"
+behind=$(git rev-list --count uat..origin/uat)
+[ "$behind" = "0" ] || say "origin/uat not merged in ($behind commits behind)"
 
 ver="$(python3 -c 'import json;print(json.load(open("package.json"))["version"])')"
 python3 - "$ver" <<'EOF' || say "package.json version $ver is below 2.0.148"
