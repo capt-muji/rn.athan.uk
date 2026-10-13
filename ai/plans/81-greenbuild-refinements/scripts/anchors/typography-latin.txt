@@ -1,9 +1,0 @@
-const LATIN: LocaleTypography = {
-  familyRegular: TEXT.family.regular,
-  familyMedium: TEXT.family.medium,
-  familyDigits: TEXT.family.medium,
-  size: (n) => n,
-  lineHeight: (n) => n,
-  letterSpacing: (n) => n,
-  arabic: false,
-};
