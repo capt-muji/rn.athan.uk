@@ -1,6 +1,0 @@
-  it('formats hours and minutes', () => {
-    expect(formatTimeAgo(3600)).toBe('1h');
-    expect(formatTimeAgo(5400)).toBe('1h 30m');
-    expect(formatTimeAgo(7200)).toBe('2h');
-    expect(formatTimeAgo(7260)).toBe('2h 1m');
-  });

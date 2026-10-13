@@ -1,4 +1,0 @@
-
-  const sections = currentLocaleId() === 'en' ? null : splitColonSections(displayTime);
-
-  return (

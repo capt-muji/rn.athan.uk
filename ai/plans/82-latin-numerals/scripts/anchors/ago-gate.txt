@@ -1,5 +1,0 @@
-
-  const parts = currentLocaleId() === 'en' ? null : splitSingleColon(prayerAgo);
-
-  return (
-    <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>
