@@ -1,0 +1,8 @@
+ * older app version still sitting in the shared timeline store.
+ *
+ * v6: every row carries `id` beside the baked `name` (layouts key rows by
+ * `id ?? name` so a future locale's colliding names stay distinct).
+ * v7: every entry carries a precomposed localized `footer` beside the
+ * `dateLabel` it shortens from.
+ */
+export const WIDGET_PROPS_VERSION = 7;
