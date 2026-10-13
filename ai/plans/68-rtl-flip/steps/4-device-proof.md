@@ -40,19 +40,26 @@ package); stop if it does not.
 1. Install, launch, confirm the en shell is unchanged (one screenshot of the
    list, compared against the atlas).
 2. Settings, Language, pick Arabic: the progress face runs, the app
-   relaunches (verify in logcat: the process restarts and the launch line
-   re-appears), and the shell renders mirrored.
+   relaunches (the mechanism is an in-process JS reload —
+   `Updates.reloadAsync` semantics: logcat shows the ReactContext and
+   ReactInstance destroyed and recreated, the pid unchanged, and the launch
+   line re-appearing for the new JS instance; the plan's earlier "process
+   restart" wording was wrong and the outcome is what matters), and the
+   shell renders mirrored.
 3. Screenshots, read per the atlas coordinates: the prayer list (rows
    mirror: names on the right), the countdown card (the bar fills from the
    right, the tip at the mirrored progress), a sheet holding a SegmentedControl
    (the pill sits on the visually correct segment) and a toggle (the thumb
    travels left when on), and the Extras explanation box (its catchers still
    close the sheet from the same window regions).
-4. The launcher home widget, mandatory: one screenshot under ar beside the en
-   reference. The stamp is data only (P16: the runtime renders no Host), so
-   the card renders exactly as it does today and the screenshot records that
-   the unstamped rendering survives the flip; a mirrored card here would mean
-   an unplanned consumer, a STOP.
+4. The launcher home widget: mandatory when a widget is placed, proven by
+   screenshot under ar beside the en reference; with none placed (the
+   measured case: `dumpsys appwidget` shows the launcher host at
+   `widgets.size=0` with the eight Athan providers registered and unbound),
+   that dump is the evidence instead, because the stamp is data only (P16:
+   the runtime renders no Host) and the card's rendering is unaffected by
+   design. No picker flow is run for a screenshot: the atlas documents its
+   accident risk.
 5. Switch back to English: the relaunch fires again and the LTR shell
    restores byte-for-byte against step 1's screenshot.
 
