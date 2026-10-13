@@ -162,3 +162,40 @@ earlier draft of this entry claimed the merge and a step-2 sha record that did
 not exist; this paragraph is the true record.
 
 session: ses_ec8aa4eedffeoUKJKwwIN6wNm0
+
+### Step 02 — done
+
+Branch `docs/79-dev-delivery` off `uat` (`2d269950`, 2.0.235). Preflight `PREFLIGHT OK`,
+the three surviving anchors each counted 1. Device and signing team resolved in one
+shell: `device resolved: yes`, `team resolved: yes`.
+
+Build-running check: the plan's pgrep matched three lines, none a build or Metro.
+PID 7102 is the device harness's standing simulator runner
+(`xcodebuild test-without-building`, targets a simulator, compiles nothing, already
+1h34m old); the other two are the xcodebuildmcp MCP server pair (4h41m old, a
+name-only substring match the permanently-enabled server always produces, so the
+pattern's healthy output is unreachable in this environment). No expo process
+existed. Proceeded on the check's stated criterion, no build or Metro already
+running, with the matched lines recorded here for the lead.
+
+Dev build started detached at 23:27:30 (`metro pid 32705`), evidence log
+`$HOME/athan-gitree/sessions/79/devbuild.log`. Both markers fired, literal text
+line 964 `› Build Succeeded` and line 971
+`› Installing $HOME/Library/Developer/Xcode/DerivedData/Athan-…/Debug-iphoneos/Athan.app`
+(home path elided here; the log holds the bytes). Marker-text note: the plan greps
+for `BUILD SUCCEEDED` but expo's formatter prints `Build Succeeded`; the success
+the marker detects is line 964 with line 966 `› 0 error(s), and 2 warning(s)`, and
+no failure mode the marker guards (signing, scheme, 30-minute hang) occurred: the
+build took five minutes. Metro check line: `metro alive` (kill -0 on pid 32705),
+and the bundler's status endpoint answered HTTP 200; Metro is left running for the
+owner's own testing, and no tap, screenshot or read of the running app was made.
+The device's app catalog, read through devicectl with the app untouched, lists
+`Athan com.mugtaba.athan` installed; its bundle label reads 2.0.227, the committed
+workspace's baked label, the version-label lag D79.6 records as cosmetic on a dev
+build.
+
+Version command printed `2.0.235`; step version `2.0.236` set in `app.json`
+(first), `package.json` and `android/app/build.gradle`, all three matching, under
+the version lock. No source file changed.
+
+session: ses_ec8a2901affe73JQHFUPkyPfOT
