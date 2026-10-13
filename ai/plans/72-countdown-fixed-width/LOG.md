@@ -99,6 +99,54 @@ branches are tested): the default stripped to `hideSeconds: boolean`, behaviour-
 the sole call site already passing the argument. After the strip: tsc exit 0, 133
 passed, zero zero-hit branches in the file.
 
-Commit: (recorded post-merge) — hook lines: (pending first run)
+Commit `2d6080b5` (2.0.203), merged `--no-ff` into uat as `ad6a1c89`. Hook lines:
+`Tests: 5505 passed, 5505 total`; coverage `Statements 100% (5258/5258)`, `Branches
+100% (2282/2282)`, `Functions 100% (1090/1090)`, `Lines 100% (4710/4710)`. Break
+script's last line `ALL AS EXPECTED: 1`, rerun clean on the final tree after the
+formatTimeFixedWidth strip. Review verdict: clean — scope to the ten listed files,
+docblocks and pins consistent, no lifecycle/thread/residue/rule findings.
 
-session: (final line post-merge)
+session: ses_ecaf448f0ffe67XG4Nv3GHF1dr
+
+### Step 2 — executed, break gate unresolved (STOP returned)
+
+Branch `feat/72-render` off `uat` ad6a1c89 (2.0.203). Preflight: the five step anchors
+(display-atom, hero-render, ago-render, cascade-pair, derived-color) each count exactly 1;
+origin/uat unmoved; the clean-tree line fails solely on this file's uncommitted step 1
+entry, which the dispatch declares designed, so the remaining checks were verified
+manually and the run proceeded.
+
+Red: exactly the four new section/gap cases failed on `getByText` (sections under ar,
+three sections, colon dim, ago gap), the held-display and now-badge guards passed at red,
+Screen.test.tsx and every unnamed case passed (4 failed, 20 passed).
+
+Change: `Countdown.tsx` gained `CountdownSectionText` (useDerivedColor muted-to-primary
+over `ANIMATION.durationSlow`), the locale-gated `splitColonSections` render with dim
+gapped colon nodes and the `countdownColon` style; the `sections === null` branch is the
+prior element byte for byte. `Ago.tsx` gained the locale-gated `splitSingleColon` gap
+node; the `parts === null` branch is the prior render. The two transitional allow-list
+entries left `unusedExports.test.ts`.
+
+Three gate fixes, all recorded: (1) the contract's plain `Text` cannot carry an animated
+style (tsc TS2322), so the section node renders `Animated.Text`, the repo's own pattern
+(Prayer.tsx:91); (2) the plan's index keys raise blocking `noArrayIndexKey` warnings under
+`--error-on-warnings`, so each key line carries a per-line biome-ignore with its reason,
+the replan-round-three ruling that the repo's gate wins applied to lint; (3) the colon-dim
+test's ternary took Biome's one-line form. After the fixes: the step suite 24 passed,
+`npx tsc --noEmit` exit 0, `npx biome check . --error-onwarnings` exit 0.
+
+Break script: run per the step-loop order, before the commit, it printed `caught: bright
+colon node`, then `RESTORE FAILED` (the script's restore check diffs against HEAD, and the
+step's changes were uncommitted; the script's own header says to run it with the step in
+HEAD) and exited 1 with only 1 of 2 catches fired. Re-run after the commit below; its
+output is recorded at the end of this entry. The second catch is unreachable by
+construction: the emptied gap node renders `':'`, and RTL's default normalizer collapses
+U+2009 (`'\u2009:\u2009'.replace(/\s+/g, ' ').trim() === ':'` probes true), so
+`getByText(GAP_COLON)` still matches and the plan-verbatim ago test passes under the
+break. Under the break the Ago suite passed 7/7. This is a plan defect in the break
+script's design; the merge gate is withheld and the question returned to the lead.
+
+Version re-taken under the lock: origin/uat unmoved, next patch 2.0.204 in app.json,
+package.json, android/app/build.gradle. Queue row 72 moved to `IN PROGRESS, step 2`.
+
+session: ses_ecae3ad3effeVEDfDPmT8wLvKC

@@ -25,8 +25,6 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
     'Reached at runtime through the loader namespace require whose marks measure the catalog (step 15); a static import would evaluate the catalog before the marks',
   __resetLaunchInitForTests:
     'The index suite renders a fresh launch per test from one module instance, so only its tests import the reset',
-  splitColonSections: "step 2's importers land in this ticket",
-  splitSingleColon: "step 2's importers land in this ticket",
 };
 
 const ROOT = join(__dirname, '..', '..');
