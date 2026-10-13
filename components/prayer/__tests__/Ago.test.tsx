@@ -12,13 +12,13 @@ import { openOverlay } from '@/stores/overlay';
 import PrayerAgo from '../Ago';
 
 const ASR = 3;
-const GAP_COLON = '\u2009:\u2009';
+const GAP_COLON = '\u2009\u2009:\u2009\u2009';
 
 describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
   // [London clock, the badge's sentence]
   it.each([
-    ['13:05', 'Dhuhr 0\u2009:\u200903 ago'],
-    ['14:00', 'Dhuhr 0\u2009:\u200958 ago'],
+    ['13:05', 'Dhuhr 0\u2009\u2009:\u2009\u200903 ago'],
+    ['14:00', 'Dhuhr 0\u2009\u2009:\u2009\u200958 ago'],
   ])('at %s reads "%s"', async (time, sentence) => {
     showLondonDay('2026-09-11', time);
 
@@ -59,7 +59,7 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
 
-    expect(screen.getByText('Dhuhr 0\u2009:\u200958 ago', { normalizer: (s) => s })).not.toBeVisible();
+    expect(screen.getByText('Dhuhr 0\u2009\u2009:\u2009\u200958 ago', { normalizer: (s) => s })).not.toBeVisible();
   });
 });
 
@@ -76,5 +76,26 @@ describe('the Standard badge with no prayer above next to measure from', () => {
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     expect(screen.toJSON()).toBeNull();
+  });
+});
+
+describe('the badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
+  it('renders its colon at 40 percent of the badge colour and lifts four points', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+    // Row 81: the colon sits 60 percent under the badge's own colour, and the badge
+    // rises four points away from the settings button after the list gap's 25 percent cut
+    const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
+    const colonStyle = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
+    expect(colonStyle.opacity).toBe(0.4);
+    const badge = colon.parent;
+    const badgeStyle =
+      badge === null
+        ? {}
+        : Array.isArray(badge.props.style)
+          ? Object.assign({}, ...badge.props.style)
+          : badge.props.style;
+    expect(badgeStyle.marginTop).toBe(-4);
   });
 });

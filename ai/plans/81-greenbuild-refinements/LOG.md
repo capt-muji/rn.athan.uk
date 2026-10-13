@@ -133,4 +133,52 @@ and `android/app/build.gradle`, all three matching, under the version lock
 The commit's sha, hook line, review verdict, break line and merge sha are
 recorded by the step-4 commit's LOG update.
 
+Commit `bc070dae`. The first `git commit -F` read a stale `msg-3.txt` left by
+ticket 82's session in the shared `$TMPDIR` and committed its message by
+mistake; nothing had merged, so the commit was amended with the step's own
+message before any merge. Hook lines from the amended run: `Test Suites: 209
+passed, 209 total`, `Tests: 5547 passed, 5547 total`; coverage Statements 100%
+(5246/5246), Branches 100% (2269/2269), Functions 100% (1091/1091), Lines 100%
+(4700/4700).
+
+Review: read `git show bc070dae` cold against the checklist. The sentinel path
+renders `displayTime` with the label left undefined; the split path labels the
+whole `HH:MM` string; the colour fade and its timings byte-identical; only the
+listed files touched; no lifecycle, thread, residue or rule class (the strings
+themselves unchanged, only the render split). No fix needed.
+
+Break script on uat after the merge: `caught: gap back to single` and `caught:
+colon opacity gone`, both catches fired, last line `ALL AS EXPECTED: 1`, tree
+clean after. Merge `866b9982`.
+
+session: ses_ec86711f7ffeZ93dcv3VZjG3T2
+
+### Step 4 — done
+
+Branch `feat/81-ago-list-gap` off `uat` (`866b9982`, 2.0.244). Preflight
+`PREFLIGHT OK`, all four anchors count 1. Red matched the plan: the sentence
+and gap queries failed `Unable to find an element` (Ago's two `it.each` rows,
+the ar gap split, the overlay fade, the new badge pin, and Screen's two
+`getByText` badge sentences), the list pin failed `Expected: 22.5` against
+`Received: 30`, 8 failed / 16 passed across the three suites, no other suite
+moved; the opacity and badge-lift pins sat behind a throwing query. The plan's
+List test needed two mechanical substitutions to run on this tree: the
+renderer's traversal is `queryAll` not `findAll` (the repo's own idiom, Help
+and Modal tests), and `screen.root` is the List container itself, so the call
+carries `{ includeSelf: true }` and the repo's `?? []` null guard; with those
+the red is the plan's own `Expected: 22.5` against the old 30. Biome's
+formatter reshaped three lines the plan gave (a wrapped Screen assertion and
+the two ternary style reads); the code is the plan's, the line breaks the
+formatter's. Change contracts applied verbatim: the badge colon `Text` with
+`styles.colon` and the doubled gaps, `marginTop: -SPACING.xs` after
+`alignSelf`, the `colon` style at opacity 0.4, and the List `marginBottom:
+SPACING.xxxl * 0.75`. Green: the three suites 24 passed / 24 total, `npx tsc
+--noEmit` exit 0, `npx biome check . --error-on-warnings` exit 0. Version
+2.0.245 set in `app.json` (first), `package.json` and
+`android/app/build.gradle`, all three matching, under the version lock
+(origin/uat still held at 2.0.239).
+
+The commit's sha, hook line, review verdict, break line and merge sha are
+recorded by the step-5 commit's LOG update.
+
 session: ses_ec86711f7ffeZ93dcv3VZjG3T2
