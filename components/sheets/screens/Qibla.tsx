@@ -8,7 +8,9 @@ import { useQibla } from '@/hooks/useQibla';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { setQiblaSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
@@ -172,17 +174,19 @@ export default function BottomSheetQibla() {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   action: {
     color: COLORS.qibla.away.accent,
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyMedium,
+    fontSize: ty.size(TEXT.sizeDetail),
     textAlign: 'center',
   },
   headline: {
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyMedium,
+    fontSize: ty.size(TEXT.sizeDetail),
     textAlign: 'center',
   },
   instruction: {
@@ -200,15 +204,15 @@ const styles = StyleSheet.create({
   },
   message: {
     color: COLORS.text.sheetSubtitle,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
     textAlign: 'center',
   },
   place: {
     color: COLORS.text.sheetSubtitle,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
-    lineHeight: TEXT.lineHeight.default,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
     textAlign: 'center',
   },
   stage: {
@@ -217,8 +221,8 @@ const styles = StyleSheet.create({
   // Matches the shared header's own subtitle, because this one replaces it for this sheet alone
   subtitle: {
     color: COLORS.text.sheetSubtitle,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
     marginTop: SPACING.xs,
   },
   // Stacked rather than swapped, so the header keeps one height through the fade

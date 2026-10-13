@@ -9,6 +9,7 @@ import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { splitColonSections } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { countdownBarShownAtom } from '@/stores/ui';
 
@@ -90,6 +91,8 @@ export default function Countdown({ type }: Props) {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     height: STYLES.countdown.height,
@@ -99,7 +102,8 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: TEXT.sizeSmall,
+    fontFamily: ty.arabic ? ty.familyRegular : undefined,
+    fontSize: ty.size(TEXT.sizeSmall),
     marginBottom: SPACING.xxs + 1,
     color: COLORS.text.secondary,
     // Text shadow for depth
@@ -109,9 +113,9 @@ const styles = StyleSheet.create({
   },
   countdown: {
     color: COLORS.text.primary,
-    fontSize: TEXT.sizeLarge,
+    fontSize: ty.size(TEXT.sizeLarge),
     textAlign: 'center',
-    fontFamily: TEXT.family.medium,
+    fontFamily: ty.familyMedium,
     marginBottom: SPACING.lg,
     // Text shadow for depth
     textShadowColor: 'rgba(0, 0, 0, 0.15)',

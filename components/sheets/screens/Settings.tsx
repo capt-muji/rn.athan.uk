@@ -8,8 +8,10 @@ import { IconView } from '@/components/ui';
 import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { currentVisibleWhatsNew } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
@@ -208,6 +210,8 @@ export default function BottomSheetSettings() {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   // Cards
   card: {
@@ -219,8 +223,8 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
   },
   cardTitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyMedium,
     color: 'rgba(86, 134, 189, 0.725)',
   },
 
@@ -263,8 +267,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginStart: SPACING.sm,
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
   musicButton: {
     width: 20,
@@ -280,8 +284,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginStart: SPACING.sm,
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
   chevron: {
     color: COLORS.icon.primary,

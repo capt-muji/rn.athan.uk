@@ -2,7 +2,9 @@ import { StyleSheet, Text } from 'react-native';
 
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS, TEXT } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { setNameWidth } from '@/stores/ui';
 
 /**
@@ -39,12 +41,14 @@ export default function InitialWidthMeasurement() {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   hidden: {
     position: 'absolute',
     pointerEvents: 'none',
     opacity: 0,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.size),
   },
 });

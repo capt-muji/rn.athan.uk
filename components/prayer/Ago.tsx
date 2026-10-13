@@ -8,6 +8,7 @@ import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { splitSingleColon } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 
 interface Props {
@@ -68,11 +69,13 @@ function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minu
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   prayerAgo: {
     textAlign: 'center',
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.py,
     borderRadius: RADIUS.pill,

@@ -89,9 +89,87 @@ commit: this commit, 2.0.212, on `lane/74` (the lead reads the sha at merge)
 
 session: ses_ecab0d857ffebRp3ZUP8kxPA2i
 
-### Step 2 — pending
+### Step 2 — executed on lane/74, commit pending merge
 
-session: pending
+Lane continuation (dispatch, 2026-10-13): merged the main checkout's uat (650570b8, 2.0.211) into
+lane/74 before the step — merge commit f23def0d; conflicts confined to the two version lines,
+resolved in favour of the highest (this lane's 2.0.212). Row 72's landed Countdown.tsx and
+Ago.tsx carry every inventory style key unchanged (`text`, `countdown`, and the new
+`countdownColon` untouched; `prayerAgo`), so no inventory row drifted — the sweep base is row
+72's merged code as the dispatch required.
+
+Preflight: the step dictates `preflight-74.sh 04 09`, but the script matches full anchor
+basenames against the argument list, so the invocation that actually expresses the expected-drift
+list is `preflight-74.sh 04-appjson-fonts 09-countdown-styles`. It printed the two
+lane-expectation deviations, recorded verbatim (same class as step 1):
+
+1. checkout is on 'lane/74', expected uat
+2. queue row 72 status is 'IN PROGRESS, step 3, 2026-10-13', expected DONE (Needs first)
+
+(row 72's device step is still pending on the main checkout's lane; its code is final on uat per
+the dispatch.) Anchor 04 drifted as this plan's own schedule expects (note, not a failure);
+anchor 09 counts exactly 1 — the planner re-pinned it against row 72's landed countdown form in
+the READY docs commit 7ac7e8ff, so it is not drifted and naming it costs nothing.
+
+Red first: components/__tests__/typographySweep.test.tsx written before the sweep. First run: 28
+failed, 3 passed. The 25 guard rows fail (first verbatim: `the sweep guard › resolves
+ui/Error.tsx through the locale typography map`, `Expected substring: "import { typographyFor }
+from '@/shared/typography';"`) and the Countdown source assertion fails; both ar probes fail with
+`Expected: "NotoSansArabic-Medium", Received: "Roboto-Medium"`; both en probes and the ar-branch
+coverage evaluation pass — exactly the plan's prediction.
+
+Two probe-harness defects found and fixed while reaching red (test-only; no contract changed):
+
+1. RNTL registers its cleanup jest hooks at import time, so requiring it mid-test is a
+   jest-circus error ("Hooks cannot be defined inside tests"); fixed with
+   `process.env.RNTL_SKIP_AUTO_CLEANUP = 'true'` at file scope — the per-case fresh registries
+   leave the auto cleanup nothing stale to unmount.
+2. RNTL's `render` is async and publishes `screen` only after its act settles; awaiting it inside
+   `jest.isolateModulesAsync`, and reading `rntl.screen` live instead of destructuring the
+   getter's pre-render snapshot, is what makes the probes deterministic. The unawaited render was
+   also the cause of an invalid-hook crash across registries.
+
+Sweep: all 25 inventory files convert their listed styles to the consumer form (`const ty =
+typographyFor(currentLocaleId());` beside StyleSheet.create; families through `ty.familyMedium` /
+`ty.familyRegular`; sizes, line heights and letter spacings through the map with the pre-change
+tokens as arguments). QiblaCompass converts the dial Text's family only (fontSize stays
+`radius * FACE.cardinalSize`); its `TEXT` import dies with the conversion, the dial family being
+its only use. Countdown.text gains the exact `ty.arabic ? ty.familyRegular : undefined`
+expression. Help titleBadgeGlyph, Help chevron and stepMark, Settings chevron, ColorPicker
+chevron stay byte-identical (D74.6). The `typographyFor` allow-list entry is removed from
+shared/__tests__/unusedExports.test.ts; the 25 consumers landed in this same commit.
+
+Green: `npx jest components/__tests__/typographySweep.test.tsx --watchman=false
+--selectProjects=components` 31/31; `yarn validate` exit 0; `Tests: 2 skipped, 5543 passed, 5545
+total`; coverage Statements/Branches/Functions/Lines all `100%`. The Countdown.text ternary's ar
+branch executes only when its module evaluates under ar, so the sweep suite evaluates Countdown
+under ar once (its en branch is covered by every existing import).
+
+Mutation pass (R2.7 with R1.10), each revert verified before the next:
+
+1. Header title family back to raw TEXT.family: the guard names the file — `the sweep guard ›
+   resolves sheets/parts/Header.tsx through the locale typography map`, `Expected: 0` raw
+   references. Reverted.
+2. Countdown ternary flattened to a bare `ty.familyRegular`: the source assertion fails —
+   `Expected substring: "ty.arabic ? ty.familyRegular : undefined"`. Reverted.
+3. Help question `ty.size(15)` back to the raw 15: the ar probe fails on the fontSize —
+   `Expected: 17, Received: 15`. Reverted.
+4. ARABIC_SIZE_FACTOR to 1.0: the step-1 table fails (`Expected: 12`) and the ar probe fails at
+   the same time. Reverted.
+
+(A first break run reverted its mutation targets with `git checkout --`, which on uncommitted
+sweep work destroyed the sweep in the three touched files; repaired by resetting the step's files
+and re-applying the sweep script, then re-running the pass with copy-restore reverts and a
+byte-identity check. The repaired run's outputs are the recorded ones.)
+
+Version: uat's package.json is 2.0.211 (650570b8) and this lane carries 2.0.212 (step 1); the
+highest plus one is 2.0.213, set in package.json and app.json under the version lock. No
+android/app/build.gradle exists in this lane (android/ is a gitignored prebuild output), so there
+was nothing to set on disk; versionLockstep passes.
+
+commit: this commit, 2.0.213, on `lane/74` (the lead reads the sha at merge)
+
+session: ses_ecaa426a0ffeLwFMaBCiNb8Teu
 
 ### Step 3 — pending
 

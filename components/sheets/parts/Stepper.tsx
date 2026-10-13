@@ -3,7 +3,9 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { localiseDigits, t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import type { ReminderInterval } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 
 import { stepReminderInterval } from './reminderStep';
 
@@ -89,6 +91,8 @@ export default function Stepper({
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 // =============================================================================
 // STYLES
 // =============================================================================
@@ -117,8 +121,8 @@ const styles = StyleSheet.create({
     opacity: 0.3,
   },
   buttonText: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyMedium,
     color: 'rgb(234, 242, 250)',
   },
   buttonTextDisabled: {
@@ -131,13 +135,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.sm,
   },
   value: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyMedium,
     color: '#fff',
   },
   unit: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     color: 'rgb(95, 133, 177)',
     marginStart: 3,
   },

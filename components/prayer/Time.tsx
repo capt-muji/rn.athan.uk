@@ -8,8 +8,10 @@ import { getShownTime, usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SPACING, TEXT, UNAVAILABLE_TIME } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 
 interface Props {
@@ -59,14 +61,16 @@ export default function PrayerTime({ type, index }: Props) {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
   },
   text: {
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.size),
     textAlign: 'center',
     marginStart: SPACING.lg - 1,
   },
