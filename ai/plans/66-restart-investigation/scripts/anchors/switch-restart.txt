@@ -1,7 +1,0 @@
-    if (localeDirection(locale) !== directionBefore) {
-      // Fabric treats direction as launch-time (D59): converge first, then
-      // force the new direction and relaunch. The busy face ends here.
-      I18nManager.allowRTL(true);
-      I18nManager.forceRTL(localeDirection(locale) === 'rtl');
-      try {
-        await Updates.reloadAsync();
