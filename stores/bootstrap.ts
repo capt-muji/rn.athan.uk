@@ -25,6 +25,9 @@
  *   launch with a valid timetable sitting on disk.
  */
 
+import { I18nManager } from 'react-native';
+
+import { LOCALE_IDS, type LocaleId, localeDirection, readStoredLanguagePreference } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
@@ -79,3 +82,12 @@ const bootstrapFromCache = (): boolean => {
 
 // Runs at import, before React renders: app/_layout.tsx imports this module for the side effect
 bootstrapFromCache();
+
+// RTL is launch-time under Fabric: the stored preference must set the
+// direction before the first render, and no preference leaves the device
+// default (D33).
+I18nManager.allowRTL(true);
+const storedDirection = readStoredLanguagePreference();
+if (storedDirection !== null && (LOCALE_IDS as readonly string[]).includes(storedDirection)) {
+  I18nManager.forceRTL(localeDirection(storedDirection as LocaleId) === 'rtl');
+}
