@@ -8,8 +8,10 @@
 import { TEXT } from '@/shared/constants';
 import type { LocaleId } from '@/shared/i18n/locale';
 
-/** Measured size-parity factor between Roboto and Noto Sans Arabic (D74.2) */
-export const ARABIC_SIZE_FACTOR = 1.15;
+/** Size factor between Roboto and Noto Sans Arabic: 1.0 after the owner's live
+ * read rejected 1.15 as oversize (the family and weight carry the improvement);
+ * her final parity number is pending the discussion she asked for */
+export const ARABIC_SIZE_FACTOR = 1;
 
 export interface LocaleTypography {
   familyRegular: string;
