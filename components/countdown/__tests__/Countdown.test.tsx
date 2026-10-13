@@ -15,6 +15,18 @@ import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 
 import Countdown from '../Countdown';
 
+// The dim transition's colours are this suite's subject, so the hook answers
+// deterministically at its two anchors instead of through an animation
+jest.mock('@/hooks/useAnimation', () => {
+  const actual = jest.requireActual('@/hooks/useAnimation');
+  return {
+    ...actual,
+    useDerivedColor: (target: number, input: { fromColor: string; toColor: string }) => ({
+      color: target === 0 ? input.fromColor : input.toColor,
+    }),
+  };
+});
+
 const MAGRIB = 4;
 const GAP_COLON = '\u2009:\u2009';
 
@@ -84,19 +96,42 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     }
   });
 
-  it('renders the colon nodes dim', async () => {
+  it('renders the colons at white reduced by 60 percent', async () => {
     showLondonDay('2026-09-11', '14:00');
-    setActiveLocale('ar');
-    try {
-      startCountdowns();
-      await render(<Countdown type={ScheduleType.Standard} />);
+    startCountdowns();
+    await render(<Countdown type={ScheduleType.Standard} />);
 
-      const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
-      const style = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
-      expect(style.color).toBe(COLORS.text.muted);
-    } finally {
-      setActiveLocale('en');
-    }
+    const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
+    const style = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
+    // Row 79: the colon sits 60 percent under the bright digits, the owner's corrected figure
+    expect(style.color).toBe('rgba(255, 255, 255, 0.4)');
+  });
+
+  it('renders a spent 00 group at white reduced by 30 percent, and a live group at full white', async () => {
+    showLondonDay('2026-09-11', '15:30');
+    startCountdowns();
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    // Row 79: a 00 group sits 30 percent under the bright digits; the group still counting stays white
+    const spent = screen.getByText('00');
+    const spentStyle = Array.isArray(spent.props.style) ? Object.assign({}, ...spent.props.style) : spent.props.style;
+    expect(spentStyle.color).toBe('rgba(255, 255, 255, 0.7)');
+    const live = screen.getByText('59');
+    const liveStyle = Array.isArray(live.props.style) ? Object.assign({}, ...live.props.style) : live.props.style;
+    expect(liveStyle.color).toBe(COLORS.text.primary);
+  });
+
+  it('carries tabular figures on the timer text style, so no digit change can shift the layout', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    startCountdowns();
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    // Row 79's no-shift rule: every group renders equal-width digits, pinned on the
+    // style every section inherits; only the changing digit pair may move
+    const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
+    const timerStyle = colon.parent === null ? undefined : colon.parent.props.style;
+    const style = Array.isArray(timerStyle) ? Object.assign({}, ...timerStyle) : (timerStyle ?? {});
+    expect(style.fontVariant).toEqual(['tabular-nums']);
   });
 
   it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 00:01:00 and not 00:00:59', async () => {
