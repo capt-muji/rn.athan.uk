@@ -30,8 +30,8 @@ relaunches; the countdown tip, the SegmentedControl pill, the toggle thumb
 and the qibla wave mirror under RTL; the window-space overlay catchers, the
 veil glow and the Ramadan decorations keep their physical coordinates through
 transforms the auto-swap cannot touch; every pushed widget blob carries an
-`rtl` boolean (schema v8/v4) and every widget tree renders under
-`Host layoutDirection` resolved from it.
+`rtl` boolean (schema v8/v4), its Host consumer recorded blocked on the
+widget runtime (P16).
 
 The owner's rules that apply: no pixel changes under LTR (every conversion is
 position-identical when direction is LTR), the catalog gates hold, widget
@@ -183,8 +183,8 @@ the toggle target negates under RTL; the wave point negates x. The restart
 order (persist, activate, reconcile, allowRTL, forceRTL, reload) was sequenced
 against the existing `languageConvergence.test.ts` mocks with `expo-updates`
 and `react-native`'s I18nManager mocked the Error.test.tsx way. The widget
-Host wrap was proven structurally: the renderer suites return the same texts
-under a `layoutDirection`-carrying Host wrapper.
+Host wrap was rejected by the pinned runtime (P16) before any code was written;
+the renderer suites pass unchanged because no widget module changes.
 
 ## 5. Design
 
@@ -256,7 +256,7 @@ The RTL flip landed: supportsRTL true, bootstrap applies the stored
 direction before first render, crossing the RTL boundary converges then
 relaunches (D59), the four no-logical-form sites mirror, the window-space
 sites hold their coordinates through transforms, and every widget blob
-carries rtl with the tree wrapped in Host layoutDirection (v8/v4).
+carries rtl (v8/v4), the Host consumer blocked on the runtime (P16).
 ```
 
 The queue cell the lead applies on DONE:

@@ -202,14 +202,18 @@ describe('buildPrayerWidgetTimeline', () => {
       const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
       expect(entries[0].props.nextTime).toBe('١٧:٤٥');
       expect(entries[0].props.prayers?.map((row) => row.time)).toContain('٠٣:٣٠');
+      // The true path of the rtl stamp: a hardcoded false must fail here
+      expect(entries.every((entry) => entry.props.rtl === true)).toBe(true);
 
       const stale = entries[entries.length - 1];
       expect(stale.props.stale).toBe(true);
       expect(stale.props.nextTime).toBe('٢٢:٤٥');
+      expect(stale.props.rtl).toBe(true);
 
       const snapshot = buildPrayerWidgetSnapshot(makeSequence(), SETTINGS);
       expect(snapshot).not.toBeNull();
       if (!snapshot) return;
+      expect(snapshot.rtl).toBe(true);
       const snapshotTimes = snapshot.days.flatMap((day) => day.rows.map((row) => row.time));
       expect(snapshotTimes).toContain('١٣:١٠');
       expect(snapshotTimes).not.toContain('13:10');

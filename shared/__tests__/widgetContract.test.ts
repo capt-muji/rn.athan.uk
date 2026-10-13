@@ -440,7 +440,7 @@ const legacyFooterParse = (label: string): string => {
   return `${dateTokens[0].slice(0, 3)} ${dateTokens[dateTokens.length - 1]}`;
 };
 
-describe('widget props v7 footers', () => {
+describe('widget props v8 footers', () => {
   const DAY_ONE = '2026-10-17'; // Saturday
   const DAY_TWO = '2026-10-18'; // Sunday
   const PUSH_AT = createPrayerDatetime(DAY_ONE, '14:00');
