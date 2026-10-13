@@ -150,3 +150,77 @@ step 1's contract 1 rewrote, so it counted 0 and step 2's pre-flight failed befo
 work. Re-pinned the anchor from the post-step-1 tree (the `ALL_DIGITS`/`ALL_ZEROS` pair
 through the first body lines); it counts 1 again. Every other step-2 anchor counted 1.
 No step-2 code changed. Step 1 is DONE and merged at `eae82296` (2.0.223).
+
+### Step 02 — STOPPED (pin inventory)
+
+Second attempt. Branch `feat/82-latin-digits` off `uat` (`bc0468c8`, 2.0.224). Both anchor
+checks pass (`PREFLIGHT OK`). Every source contract and pin flip of step 2 landed and was
+measured; the step stops at the green run on one suite the plan's inventory does not name,
+so no commit was made, no branch survives and the tree is clean at `bc0468c8`.
+
+Red (the eight source files changed, the twelve named suites still pinning the old bytes;
+this reproduces the plan's recorded red verbatim):
+
+- `time.test.ts` 6 failed / 127 passed / 133 total: the `hideSeconds` ar block (`Expected:
+  "٠١:٠١", Received: "01:01"`), the three native-digit describes (`"٠٢:٥٩:٠٠"` / `"٠٠:٠٠:٠٠"` /
+  `"٠:٠٢"` received Latin), `splitColonSections` ar case (`Expected: ["٠١", ":", "٣٢", ":",
+  "٠٥"], Received: undefined`), `formatPrayerTime` ar pin (`Expected: "٠٥:٤٤", Received:
+  "05:44"`).
+- unit batch 7 failed / 223 passed / 230 total: `dateLocalized` 2 (`الأحد, ١١ أكتوبر ٢٠٢٦`
+  receives `الأحد, 11 أكتوبر 2026`; `ربيع الآخر ٣٠, ١٤٤٨` receives `ربيع الآخر 30, 1448`),
+  `notifications` 2 (`العصر بعد ١٥` receives `العصر بعد 15`; the channel name `تنبيه المغرب
+  بعد ١٥` receives `تنبيه المغرب بعد 15`), `countdown` 1 (`٠١:٠١` receives `01:01`),
+  `widgetTimeline` 1 (`١٧:٤٥` receives `17:45`), `widgetSimulation` 1 (`٠١:٠٥` receives
+  `01:05`).
+- `widgetRenderer.test.ts` 4 failed / 59 passed / 63 total: `Rab ٣٠` receives `Rab 30`,
+  `١٩د` receives `19د`, `١h ١٢m` receives `1h 12m`, `Rab ٣٠` receives `Rab 30`.
+- components 6 failed / 89 passed / 95 total: `Time` (`٠٦:٤٦` not found), `Countdown` 2
+  (`٠٢` not found), `SoundItem` (`٠:٠٣` not found), `Alert` (`١٥` not found), `Sound`
+  (`/^أذان [٠-٩]+$/` matched nothing).
+
+Green: the twelve named suites pass (`unit` 7 suites / 426 tests, `components` 5 suites /
+95 tests); `npx tsc --noEmit` and `npx biome check . --error-on-warnings` both exit 0.
+Deletions: `shared/i18n/digits.ts` and `shared/__tests__/digits.test.ts` (with their
+subject). Nineteen files modified, two deleted.
+
+STOP: the full run (`npx jest --watchman=false`) reports 1 failed suite of 209 and 1 failed
+test of 5541, the suite `shared/__tests__/i18nBridge.test.ts` at line 74, which the plan's
+Files list, red list and green run do not name:
+
+    ● the catalog as its own transfer format › localises numeric parameter digits at
+      substitution under ar and never under en
+      Expected: "أذان ٣"
+      Received: "أذان 3"
+
+It is a second `t()` interpolation pin, the same class as the two `notifications.test.ts`
+pins the plan does name: step 1's replan added its un-named composer suites, and this step's
+inventory missed this one. PLAN.md section 10 and the step's green run rule any suite
+outside the named twelve a STOP, with the planner re-deriving the pin. The step's own
+`break-step2.sh` substitution and catch still fire (`caught: the ar reminder title carries
+Arabic-Indic digits again`); under an uncommitted tree its restore check prints
+`RESTORE FAILED` spuriously, because `git diff --quiet` there compares against the index and
+the contract changes are unstaged.
+
+Question for the planner: add `shared/__tests__/i18nBridge.test.ts` to step 2's Files and
+red list, flipping line 74 to `أذان 3` and renaming the test to the Latin-digit truth (the
+same repair shape as replan round two).
+
+Work saved: `$HOME/athan-gitree/sessions/82/step2-unfinished.patch` (829 lines),
+`step2-unfinished-status.txt`, `step2-red.log`, `step2-green.log`, `step2-full.log`.
+
+Left alone, not a STOP: `shared/__tests__/time.test.ts:260` keeps its
+`splitSingleColon('الظهر قبل ٠:٥٨')` input. `splitSingleColon` splits on the colon and is
+digit-agnostic, so the case never reddened and the plan does not name it.
+
+session: ses_ec911c3cfffefIM4E6l4A4FKKT
+
+### Replan round four (2026-10-13, lead)
+
+Step 2's pin inventory was short one suite. `shared/__tests__/i18nBridge.test.ts:74`
+pins the ar `t()` substitution (`أذان ٣`), which the digit map's death flips to
+`أذان 3`; it sits in `yarn validate` but outside the twelve named suites, so step 2's
+Done-when was unreachable. Repaired: `i18nBridge.test.ts` joins step 2's `Files`, its
+red-list unit batch and contract 10; the twelve-test arithmetic becomes thirteen.
+Everything else in the executor's run matched the plan (red counts verbatim, the named
+suites green, tsc and Biome clean); no commit was made and the tree is clean at
+`bc0468c8`.

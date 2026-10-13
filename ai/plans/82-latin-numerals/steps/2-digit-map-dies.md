@@ -34,7 +34,8 @@ Source: `shared/i18n/digits.ts` (deleted), `shared/i18n/index.ts`, `shared/time.
 `components/sheets/parts/SoundItem.tsx`, `widgets/PrayerWidget.tsx`.
 Tests: `shared/__tests__/digits.test.ts` (deleted), `shared/__tests__/time.test.ts`,
 `shared/__tests__/dateLocalized.test.ts`, `shared/__tests__/notifications.test.ts`,
-`stores/__tests__/countdown.test.ts`, `shared/__tests__/widgetTimeline.test.ts`,
+`shared/__tests__/i18nBridge.test.ts`, `stores/__tests__/countdown.test.ts`,
+`shared/__tests__/widgetTimeline.test.ts`,
 `shared/__tests__/widgetSimulation.test.ts`, `shared/__tests__/widgetRenderer.test.ts`,
 `components/prayer/__tests__/Time.test.tsx`,
 `components/sheets/parts/__tests__/SoundItem.test.tsx`,
@@ -59,7 +60,7 @@ the `native digits (D57)` ar pins of `formatTime` and `formatTimeAgo`
 `Expected: "٠٥:٤٤", Received: "05:44"`).
 
 ```bash
-npx jest shared/__tests__/digits.test.ts shared/__tests__/dateLocalized.test.ts shared/__tests__/notifications.test.ts stores/__tests__/countdown.test.ts shared/__tests__/widgetTimeline.test.ts shared/__tests__/widgetSimulation.test.ts --watchman=false --selectProjects=unit
+npx jest shared/__tests__/digits.test.ts shared/__tests__/dateLocalized.test.ts shared/__tests__/notifications.test.ts shared/__tests__/i18nBridge.test.ts stores/__tests__/countdown.test.ts shared/__tests__/widgetTimeline.test.ts shared/__tests__/widgetSimulation.test.ts --watchman=false --selectProjects=unit
 ```
 
 Per-suite failures: `digits.test.ts` `1 failed` (`maps 05:44 to ٠٥:٤٤ under ar`
@@ -69,7 +70,9 @@ ar` receives `العصر بعد 15`, and the reminder-content pin `تنبيه ا
 `countdown.test.ts` `1 failed` beyond step 1 (`display selector emits native digits
 under ar` receives `01:01`); `widgetTimeline.test.ts` `1 failed` (the ar baking pin:
 `Expected: "١٧:٤٥", Received: "17:45"`); `widgetSimulation.test.ts` `1 failed`
-(`Expected: "٠١:٠٥", Received: "01:05"`).
+(`Expected: "٠١:٠٥", Received: "01:05"`); `i18nBridge.test.ts` `1 failed` (the ar
+channel substitution, `localises numeric parameter digits at substitution under ar and
+never under en`: `t('channel.athan', { n: 3 })` expects `أذان ٣`, receives `أذان 3`).
 
 ```bash
 npx jest shared/__tests__/widgetRenderer.test.ts --watchman=false --selectProjects=unit
@@ -145,10 +148,12 @@ Alert's stepper pin (`١٥` receives `15`), Sound's row regex
     - `Sound.test.tsx`: the regex becomes `/^أذان \d+$/`.
     - `Alert.test.tsx`: `15`.
     - `Countdown.test.tsx`: `02` and `29` (and the seconds-preference test's groups).
+    - `i18nBridge.test.ts`: the ar channel substitution flips `أذان ٣` -> `أذان 3`, and
+      its test name drops the digit-localisation wording for the Latin truth.
 
 ## Green run
 
-All twelve suites pass, then `npx tsc --noEmit` and
+All thirteen suites pass, then `npx tsc --noEmit` and
 `npx biome check . --error-on-warnings` exit 0. Then the whole unit and components
 projects pass (`npx jest --watchman=false`), because this step touches shared
 composers: any suite failing outside the named twelve is a STOP.
@@ -169,7 +174,7 @@ Next patch after uat's `package.json`. Same three files, `app.json` first. Messa
 <VERSION> - feat(82): Latin digits in every language, the app and widget digit maps deleted
 ```
 
-Files added by name: the eight source files, the twelve test files, the two deletions,
+Files added by name: the eight source files, the thirteen test files, the two deletions,
 this plan folder's `PLAN.md` and `LOG.md`, and `ai/plans/README.md`.
 
 ## Review checklist

@@ -135,7 +135,7 @@ one surface gives the mixed-script face row 67 chased.
 - `components/prayer/__tests__/Ago.test.tsx` pins the badge's sentence, its gap node
   under ar, and the `now` single node.
 - `shared/__tests__/digits.test.ts` pins the map itself; it dies with its subject.
-- `shared/__tests__/dateLocalized.test.ts`, `notifications.test.ts`, `widgetTimeline.test.ts`,
+- `shared/__tests__/dateLocalized.test.ts`, `notifications.test.ts`, `i18nBridge.test.ts`, `widgetTimeline.test.ts`,
   `widgetRenderer.test.ts`, `widgetSimulation.test.ts`, `components/prayer/__tests__/Time.test.tsx`,
   `components/sheets/parts/__tests__/SoundItem.test.tsx`,
   `components/sheets/screens/__tests__/Sound.test.tsx` and `Alert.test.tsx` pin today's
@@ -294,7 +294,7 @@ Anticipated review fixes, word for word:
 Per-step restore lists:
 
 - Step 1: `git checkout uat -- shared/time.ts shared/typography.ts components/countdown/Countdown.tsx components/prayer/Ago.tsx` plus the seven test files named there. No stored state touched.
-- Step 2: restore the eight source files and twelve test files by name from uat;
+- Step 2: restore the eight source files and thirteen test files by name from uat;
   recreate `shared/i18n/digits.ts` and `shared/__tests__/digits.test.ts` from
   `git show uat:...`. No stored state touched.
 - Step 3: uninstall the simulator app, delete `sessions/82/` screenshots. No stored state touched.
