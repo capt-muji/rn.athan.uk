@@ -40,3 +40,11 @@ mapping flip is invisible to the jest mock by the same caveat.
 Replan round one (2026-10-13): the preflight inherited row 68\x27s inverted upstream
 check (`origin/uat..uat` counted local planning commits as unmerged); corrected to
 `uat..origin/uat`, proven PREFLIGHT OK on the clean tree at 2.0.199.
+
+Replan round two (2026-10-13): two of the step 1 pins contradicted the composer
+contract they test. Ruled the composer wins: `formatTime(120, true)` under ar is
+`٠٠:٠٢:٠٠` (rule 2 fixed three sections and rule 3 never-hide-hours; the two-group pin
+also broke `599,true → ٠٠:٠٩:٥٩`), and `formatTime(60)` is `٠٠:٠١:٠٠` (60 s is one
+minute; the pinned digits read transposed against the test title own whole-minute
+branch). The executed diff survives at sessions/72/step1-unfinished.patch; execution
+amends the two expectations and resumes from the green run.
