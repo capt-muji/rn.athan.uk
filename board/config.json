@@ -2,5 +2,5 @@
   "port": 8788,
   "host": "127.0.0.1",
   "reconcileMs": 15000,
-  "doneColumnCount": 5
+  "doneColumnCount": 9999
 }
