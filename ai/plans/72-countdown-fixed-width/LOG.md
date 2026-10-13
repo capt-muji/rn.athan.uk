@@ -36,3 +36,7 @@ rewrites' red behaviour corrected, the two-group ruling given its audit-veto not
 mock alarm pin turned into a rule, the batch-budget wording fixed, and the vacuous-pass
 sentence restored. The third break mutation the colour finding wanted is not added: the
 mapping flip is invisible to the jest mock by the same caveat.
+
+Replan round one (2026-10-13): the preflight inherited row 68\x27s inverted upstream
+check (`origin/uat..uat` counted local planning commits as unmerged); corrected to
+`uat..origin/uat`, proven PREFLIGHT OK on the clean tree at 2.0.199.
