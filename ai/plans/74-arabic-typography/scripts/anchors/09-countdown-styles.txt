@@ -1,0 +1,11 @@
+  countdown: {
+    color: COLORS.text.primary,
+    fontSize: TEXT.sizeLarge,
+    textAlign: 'center',
+    fontFamily: TEXT.family.medium,
+    marginBottom: SPACING.lg,
+    // Text shadow for depth
+    textShadowColor: 'rgba(0, 0, 0, 0.15)',
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 6,
+  },

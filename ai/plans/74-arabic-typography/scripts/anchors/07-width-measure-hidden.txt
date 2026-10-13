@@ -1,0 +1,9 @@
+const styles = StyleSheet.create({
+  hidden: {
+    position: 'absolute',
+    pointerEvents: 'none',
+    opacity: 0,
+    fontFamily: TEXT.family.regular,
+    fontSize: TEXT.size,
+  },
+});

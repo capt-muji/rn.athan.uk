@@ -1,0 +1,9 @@
+          <Text
+            key={letter}
+            x={at.x}
+            y={at.y}
+            fill={palette.ink}
+            fontSize={radius * FACE.cardinalSize}
+            fontFamily={TEXT.family.medium}
+            textAnchor={'middle'}
+            alignmentBaseline={'central'}>

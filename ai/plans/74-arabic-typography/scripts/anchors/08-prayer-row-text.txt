@@ -1,0 +1,8 @@
+  text: {
+    fontFamily: TEXT.family.regular,
+    fontSize: TEXT.size,
+  },
+  name: {
+    paddingStart: STYLES.prayer.padding.start,
+  },
+});

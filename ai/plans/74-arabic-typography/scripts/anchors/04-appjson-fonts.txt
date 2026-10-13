@@ -1,0 +1,6 @@
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Roboto-Regular.ttf", "./assets/fonts/Roboto-Medium.ttf"]
+        }
+      ],
