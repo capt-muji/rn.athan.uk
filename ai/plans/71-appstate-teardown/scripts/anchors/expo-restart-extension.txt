@@ -1,5 +1,0 @@
-internal fun ReactHost.restart(activity: Activity?, reason: String) {
-  if (lifecycleState != LifecycleState.RESUMED && activity != null) {
-    onHostResume(activity)
-  }
-  reload(reason)

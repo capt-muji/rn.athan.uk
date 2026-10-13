@@ -1,4 +1,0 @@
-  });
-
-  AppState.addEventListener('change', flushOnBackgroundInto(storage));
-
