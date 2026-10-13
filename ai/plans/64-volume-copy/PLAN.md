@@ -52,6 +52,7 @@ changes beyond the ruled copy.
 | D64.6 | The Android contrast names ring volume, the term the landed help answer already uses (the queue row's "notification volume" was its informal shape) | Planner, from the shipped `help.a.quiet` wording | This table |
 | D64.7 | The help answers carry no `steps` member: `[]` fails `help.test.ts:149` and renders an empty fix block | Planner, from the gate and the Help modal | Step 1 |
 | D64.8 | The help answers say "ringer volume" while the sheet notes name `Ringer & Alerts`: the en help gate bans the word "alert", so the full setting name lives in the sheet copy alone | Planner, from the alert-word gate | Step 1 |
+| D64.9 | The null-answer drop goes: the volume entry answers both platforms, the old quiet entry's `ios: null` was the catalog's only null, so `getHelpTopics`'s `if (!answer) return [];` and the `ios`/`android` `HelpAnswerKeys \| null` union become dead code no test can reach (`HELP_ENTRIES` is module-internal) and the pre-commit coverage gate refuses the commit. Step 1 deletes the guard and the union; the split machinery and `HelpTopic` stand | Planner replan, 2026-10-13, from the executor's verified stop | LOG.md replan section |
 
 The drafts take the owner's audit veto (the D42-superseded shape row 59
 used): planner-drafted, she strikes or rewords any string at audit.
