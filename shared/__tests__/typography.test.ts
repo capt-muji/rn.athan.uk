@@ -30,6 +30,7 @@ const AR_LINE_HEIGHTS: ReadonlyArray<readonly [number, number]> = [
 const expectArabicRecord = (ty: LocaleTypography): void => {
   expect(ty.familyRegular).toBe('NotoSansArabic-Regular');
   expect(ty.familyMedium).toBe('NotoSansArabic-Medium');
+  expect(ty.familyDigits).toBe('Roboto-Medium');
   for (const [n, scaled] of AR_SIZES) {
     expect(ty.size(n)).toBe(scaled);
   }
@@ -45,6 +46,7 @@ const expectArabicRecord = (ty: LocaleTypography): void => {
 const expectLatinRecord = (ty: LocaleTypography): void => {
   expect(ty.familyRegular).toBe('Roboto-Regular');
   expect(ty.familyMedium).toBe('Roboto-Medium');
+  expect(ty.familyDigits).toBe('Roboto-Medium');
   expect(ty.size(10)).toBe(10);
   expect(ty.size(18)).toBe(18);
   expect(ty.size(28)).toBe(28);
