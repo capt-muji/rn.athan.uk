@@ -1,5 +1,0 @@
-    expect(screen.getByText('Fri, 11 Sep 2026')).toBeOnTheScreen();
-    expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
-    expect(screen.getByText('Dhuhr 0:58 ago')).toBeOnTheScreen();
-  });
-
