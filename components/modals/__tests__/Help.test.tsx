@@ -5,6 +5,8 @@
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { BackHandler, DeviceEventEmitter, StyleSheet } from 'react-native';
+import { FadeIn } from 'react-native-reanimated';
+import type { TestInstance } from 'test-renderer';
 
 import { onPlatform } from '@/__tests__/harness';
 import { openDndAccessSettings } from '@/device/notifications';
@@ -242,5 +244,23 @@ describe("the Help modal's chevron", () => {
 
     expect(onClose).toHaveBeenCalledTimes(1);
     expect(exitApp).not.toHaveBeenCalled();
+  });
+});
+
+describe("the Help modal's Close row entrance", () => {
+  // The row must join the modal container's entrance fade, never an ancestor's slide:
+  // the nearest entering ancestor of Close is read.
+  const enteringAncestorOf = (node: TestInstance): TestInstance | null => {
+    let current: TestInstance | null = node.parent;
+    while (current && !current.props?.entering) current = current.parent;
+    return current;
+  };
+
+  it('fades in with the card on the modal container entrance fade', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    const row = enteringAncestorOf(screen.getByRole('button', { name: 'Close' }));
+
+    expect(row?.props.entering).toBe(FadeIn);
   });
 });

@@ -148,7 +148,7 @@ export default function ModalHelp({ visible, onClose }: Props) {
         ))}
       </ScrollView>
       {/* Animated with the list, or it teleports to its new position while the rows above it slide */}
-      <Animated.View layout={GROW} style={styles.buttonRow}>
+      <Animated.View layout={GROW} entering={FadeIn} style={styles.buttonRow}>
         <Pressable
           style={styles.button}
           onPress={onClose}
