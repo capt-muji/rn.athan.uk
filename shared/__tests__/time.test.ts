@@ -243,6 +243,14 @@ describe('splitColonSections', () => {
     expect(splitColonSections('01:32:05')?.[0].dim).toBe(false);
   });
 
+  it('keeps the seconds group bright at the minute instant, while hours and minutes still dim', () => {
+    // Row 81: seconds tick on, so 00:01:00 renders its seconds 00 bright
+    expect(splitColonSections('00:01:00')?.[4].dim).toBe(false);
+    expect(splitColonSections('00:01:00')?.[0].dim).toBe(true);
+    expect(splitColonSections('00:00:59')?.[2].dim).toBe(true);
+    expect(splitColonSections('25:00')?.[2].dim).toBe(true);
+  });
+
   it('returns null for every string that is not an all-digit colon shape', () => {
     expect(splitColonSections('--:--')).toBeNull();
     expect(splitColonSections('1h 1m')).toBeNull();
