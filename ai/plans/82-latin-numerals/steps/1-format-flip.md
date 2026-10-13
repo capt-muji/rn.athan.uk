@@ -140,12 +140,31 @@ absence: `Expected: "Roboto-Medium", Received: undefined`.
      seconds, the kept 599 s rule); the 1s hold reads `00:00:01`; the Magrib swap
      reads `02:59`; the overlay test reads `05:28`. Keep the existing ar tests
      untouched.
-   - `Ago.test.tsx`: the badge renders three nodes under en once the gate dies, so
-     the `it.each` words query changes shape. At 13:05 assert `getByText('Dhuhr 0')`,
-     `getByText('3 ago')` and `getByText(GAP_COLON, { normalizer: (s) => s })`; at
-     14:00 the halves are `Dhuhr 0` and `58 ago`. The overlay-fade test asserts
-     `getByText('Dhuhr 0').not.toBeVisible()` (the fade rides the badge's outer
-     node). The `now` test keeps its single-node query.
+   - `Ago.test.tsx`: the en gate dies, so `parts = splitSingleColon(prayerAgo)` and
+     the badge renders one outer `Text` whose children are the two halves around the
+     gap node. React Native Testing Library matches a `Text`'s whole concatenated
+     content, so the halves are not separately queryable; query the outer node with
+     the identity normalizer and the gap node separately:
+
+     ```ts
+     const GAP_COLON = '\u2009:\u2009';
+
+     it.each([
+       ['13:05', 'Dhuhr 0\u2009:\u200903 ago'],
+       ['14:00', 'Dhuhr 0\u2009:\u200958 ago'],
+     ])('at %s reads "%s"', async (time, sentence) => {
+       showLondonDay('2026-09-11', time);
+       await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+       expect(screen.getByText(sentence, { normalizer: (s) => s })).toBeVisible();
+       expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+     });
+     ```
+
+     The overlay-fade test asserts the outer node not visible:
+     `getByText('Dhuhr 0\u2009:\u200958 ago', { normalizer: (s) => s }).not.toBeVisible();`
+     (the fade rides the badge's outer node). The ar gap test stays as it is. The
+     `now` test keeps its single-node query (no gap node).
    - `typography.test.ts`: `expectArabicRecord` and the latin record block each gain
      `expect(ty.familyDigits).toBe('Roboto-Medium');`.
 

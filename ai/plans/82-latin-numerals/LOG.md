@@ -35,3 +35,15 @@ bash 3.2 empty-array guard). No second round: every finding was a numeric or sha
 correction re-verified against the composer here, none structural; the griller's own
 report confirms the structure sound. All twelve are applied, the nice included.
 
+
+### Replan round one (2026-10-13, lead)
+
+Step 1's Ago pin shape was unsatisfiable as the plan wrote it. The executor's STOP:
+React Native Testing Library 14 matches a `Text`'s whole concatenated content, so with
+the en gate dead the badge is one outer `Text` with children `["Dhuhr 0", <gap>, "03 ago"]`; `getByText('Dhuhr 0')` and `getByText('3 ago')` both return null, and the
+duration's minutes half is `03 ago`, not `3 ago` (the plan's own red line already read
+`Dhuhr 0:03 ago`). Repaired contract 5: query the outer node with the identity
+normalizer (`getByText('Dhuhr 0\u2009:\u200903 ago', { normalizer: (s) => s })`) plus
+the gap node, and the fade test asserts that outer node. No other step-1 item changed;
+the executor's pre-flight and both anchor lists pass, and the tree is clean at
+`3494857e`.
