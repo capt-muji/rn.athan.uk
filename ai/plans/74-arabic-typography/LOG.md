@@ -174,3 +174,5 @@ session: ses_ecaa426a0ffeLwFMaBCiNb8Teu
 ### Step 3 — pending
 
 session: pending
+
+Owner verdict on the device read (2026-10-13, live): the weight fix stands ("definitely heavier, whatever you did for that one worked"), English unchanged, nothing clipped - and the 1.15 size factor is REJECTED as oversize ("everything way too big, ruined the whole design; reduce it back to what it was"). Ruled: the factor returns to 1 (sizes as before; the family and weight carry the improvement); her final parity number is pending the discussion she asked for. The time-ago badge overlap she saw was the factor push-down and goes with it.

@@ -1,6 +1,6 @@
 /**
  * The locale typography map (ticket 74 R1.5-R1.10): under ar every size and
- * line height resolves Math.round(n * 1.15) over the bundled Arabic faces and
+ * line height resolves Math.round(n * 1) over the bundled Arabic faces and
  * letter spacing resolves 0; the five other locales resolve the Roboto
  * families with identity mappings, so their rendered bytes stay pre-change.
  */
@@ -10,21 +10,21 @@ import { type LocaleTypography, typographyFor } from '@/shared/typography';
 
 /** The pinned ar size table (D74.2) and the three lineHeight presets */
 const AR_SIZES: ReadonlyArray<readonly [number, number]> = [
-  [10, 12],
-  [13, 15],
-  [14, 16],
-  [15, 17],
-  [16, 18],
-  [18, 21],
-  [20, 23],
-  [22, 25],
-  [26, 30],
-  [28, 32],
+  [10, 10],
+  [13, 13],
+  [14, 14],
+  [15, 15],
+  [16, 16],
+  [18, 18],
+  [20, 20],
+  [22, 22],
+  [26, 26],
+  [28, 28],
 ];
 const AR_LINE_HEIGHTS: ReadonlyArray<readonly [number, number]> = [
-  [16, 18],
-  [20, 23],
-  [22, 25],
+  [16, 16],
+  [20, 20],
+  [22, 22],
 ];
 
 const expectArabicRecord = (ty: LocaleTypography): void => {
