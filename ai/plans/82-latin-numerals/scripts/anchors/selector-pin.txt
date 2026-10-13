@@ -1,6 +1,0 @@
-  it('display selector emits the formatted string — identical displayed strings stay identical', () => {
-    const store = createStore();
-    store.set(showSecondsAtom, false);
-
-    store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');

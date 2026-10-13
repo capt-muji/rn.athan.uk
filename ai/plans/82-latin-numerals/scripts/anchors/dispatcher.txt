@@ -1,4 +1,0 @@
-export const formatTime = (seconds: number, hideSeconds = false): string =>
-  currentLocaleId() === 'en'
-    ? formatTimeLettered(seconds, hideSeconds, durationLabels())
-    : formatTimeFixedWidth(seconds, hideSeconds);

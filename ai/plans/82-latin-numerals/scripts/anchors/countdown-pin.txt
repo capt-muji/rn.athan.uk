@@ -1,3 +1,0 @@
-    expect(screen.getByRole('text', { name: 'Asr' })).toBeOnTheScreen();
-    expect(screen.getByText('2h 29m')).toBeOnTheScreen();
-  });

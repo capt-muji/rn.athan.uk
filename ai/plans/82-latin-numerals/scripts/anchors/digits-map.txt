@@ -1,5 +1,0 @@
-/** Maps a string's Latin digits to Eastern Arabic-Indic glyphs under ar, identity in every other locale */
-export const localiseDigits = (value: string): string => {
-  const mapped = value.replace(/[0-9]/g, (digit) => ARABIC_INDIC[digit]);
-  return currentLocaleId() === 'ar' ? mapped : value;
-};

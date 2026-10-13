@@ -1,5 +1,0 @@
-export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextOccurrence: ShownRow): string | null => {
-  const shown = isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
-  const localised = shown === null ? null : localiseDigits(shown);
-  return localised;
-};

@@ -1,7 +1,0 @@
-      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
-      try {
-        freezeNow(at(DAY_ONE, '14:08') + 30_000);
-        const tree = renderTree(layouts.PrayerWidget(legacySnapshot, { colorScheme: 'light' }));
-
-        expect(textsOf(tree)).toContain('١h ١٢m');
-      } finally {

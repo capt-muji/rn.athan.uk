@@ -1,5 +1,0 @@
-  expect(ty.familyRegular).toBe('NotoSansArabic-Regular');
-  expect(ty.familyMedium).toBe('NotoSansArabic-Medium');
-  for (const [n, scaled] of AR_SIZES) {
-    expect(ty.size(n)).toBe(scaled);
-  }
