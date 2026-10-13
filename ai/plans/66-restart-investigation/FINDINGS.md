@@ -1,15 +1,15 @@
 # Ticket 66 findings: always restart on any language switch
 
 Investigation only (D84). Every load-bearing claim cites `file:line`, re-opened and read on
-this run's tree (uat at 2.0.181, at or above the Planned at 2.0.179), or a queue record
-(D87). A claim neither source carries names its settling test and sits in section 4's
+this run's tree (uat at 2.0.181, at or above the Planned at 2.0.179), or a row-66 plan
+record (D87). A claim neither source carries names its settling test and sits in section 4's
 ruling list.
 
 ## 1. The switch-path map
 
 One row per hop, in code order, from a language-sheet pick to a settled UI. The D59
-restart sits inside the commit (hop 7), before the commit settles and before the dismiss
-(hop 8): the grill-corrected trace, verified against the source below.
+restart sits inside the commit (hop 9), before the commit settles and before the dismiss
+(hop 10): the grill-corrected trace, verified against the source below.
 
 | # | Hop | Where | Role |
 | --- | --- | --- | --- |
@@ -27,8 +27,9 @@ restart sits inside the commit (hop 7), before the commit settles and before the
 ## 2. The cache inventory
 
 One row per per-locale or per-process cache or selector the switch path reads, writes or
-leaves stale (the plan's six expected rows plus the two extra per-process states the path
-writes; state outside the switch path is out of scope). "Always-restart" below means a
+leaves stale: the plan's six expected cache classes (five rows; the width atoms and the
+module Map share the first row) plus five more states the path reads or writes, ten rows
+in all (state outside the switch path is out of scope). "Always-restart" below means a
 restart after convergence, the shape the brief asks about; the two mechanisms themselves
 are section 3's subject.
 
@@ -37,12 +38,12 @@ are section 3's subject.
 | Per-locale width atoms | `stores/ui.ts:114` (the `widthAtoms` Map), `:122-131` (`nameWidthAtomFor`: key `prayer_max_name_width_<locale>_<side>` at :124, seeded 0 at :128), widen guard `:249-263` (`setNameWidth` rejects non-positive :256 and narrower :260, writes :262) | None on a switch. The new locale's atom is created on first access seeded 0, and the remount (section 1 hop 5) re-measures every name into it (`components/ui/InitialWidthMeasurement.tsx:19-40`, hidden Texts at :22-37). Within-locale staleness self-heals through widen-only writes (row 61's heal) | None. The Map is per-process and rebuilds empty; the MMKV keys survive and the measurement re-runs on the post-restart remount. The Somali wrap class row 61 healed stays healed under every option |
 | Legacy width-key sweep | `stores/ui.ts:111` (`clearPrefix('prayer_max_english_width_')`, the 59 re-key) | Once per process, at module evaluation | An in-process reload re-runs it (a no-op today, the keys are gone); a full restart re-runs the same sweep. No behaviour change either way |
 | Android channel dedup caches | `shared/notifications.ts:431`, `:434`, `:437` (`createdReminderChannels`, `createdAthanChannels`, `extrasChannelCreated`) | `resetAndroidChannelCaches` (:444-448), called by every convergence pass (`stores/language.ts:41`) | Becomes implicit: process death empties the Sets. The explicit reset already runs before any restart point, so the always-restart adds nothing and removes nothing |
-| Countdown name and display selectors | `stores/countdown.ts:74-78` (`makeCountdownNameAtom`), `:90-94` (`makeCountdownDisplayAtom`); sources `standardCountdownAtom` :51, `extraCountdownAtom` :54 | Only their source atoms' writes, one per wall-clock second (`startWallClockTicker` :235-257, per-tick `writeDisplayCountdown` at :353; initial write at :340) | A rebuild empties the derived cache mid-reload, so no stale string survives into the relaunched tree; the cost is paid one way or another (see the transient below) |
+| Countdown name and display selectors | `stores/countdown.ts:74-78` (`makeCountdownNameAtom`), `:90-94` (`makeCountdownDisplayAtom`); sources `standardCountdownAtom` :51, `extraCountdownAtom` :54 | Only their source atoms' writes, one per wall-clock second (`startWallClockTicker` :235-257, per-tick `writeDisplayCountdown` at :340; initial write at :353) | A rebuild empties the derived cache mid-reload, so no stale string survives into the relaunched tree; the cost is paid one way or another (see the transient below) |
 | Catalog loader runtime state | `shared/i18n/loader.ts:16-23` (all six catalogs required once per process), `:34-41` (the `MODULES` adapter), per-call reads `:43` and `:45`; `shared/i18n/index.ts:41-49` (`t` resolves per call), `:51` (`prayerLabel` per call) | None needed: the per-call resolution follows the active locale immediately, and the only cached state (the six catalog modules) is locale-independent | None. A reload re-evaluates the module graph (the `catalog_require` marks replay, `loader.ts:15` and `:24`); lookups read the new locale on the first post-restart call with no stale-copy class to clear |
-| Baked widget strings | `shared/widgetTimeline.ts:62-71` (`widgetStrings()` bakes `t()` copy per push), Android snapshot `:304-355` (`prayerLabel` names :333 and :339, `localiseDigits` times :334 and :339, `rtl` stamp :350, `strings` :353), iOS timeline rows :156-157 with `rtl` at :210 and :271 | The convergence pass's awaited push rewrites every snapshot and timeline in the new locale (section 1 hops 7-8) | Nothing, provided the restart stays after convergence. A restart before or racing the push is the section 3 ordering question |
+| Baked widget strings | `shared/widgetTimeline.ts:62-71` (`widgetStrings()` bakes `t()` copy per push), Android snapshot `:304-355` (`prayerLabel` names :333 and :339, `localiseDigits` times :334, `rtl` stamp :350, `strings` :353), iOS timeline rows :156-157 with `rtl` at :210 and :271 | The convergence pass's awaited push rewrites every snapshot and timeline in the new locale (section 1 hops 9-10) | Nothing, provided the restart stays after convergence. A restart before or racing the push is the section 3 ordering question |
 | Last-armed stamp | `stores/language.ts:22` (`lastArmedLanguageAtom`, MMKV-backed) | Written only after a real pass (:45); a bail or failure leaves it dirty so the next launch or foreground retries (`device/listeners.ts:73`) | Survives both mechanisms (MMKV). After a restart the launch path re-runs convergence and the stamp-match bail (:38) makes it a no-op when the pass already completed |
 | Language preference | `stores/language.ts:25` (`languagePreferenceAtom`, MMKV-backed) | Written at commit (:74), never cleared | Survives both mechanisms: the brief's "keep preferences" holds under every option |
-| Commit busy atom | `stores/language.ts:28`, set :72, cleared in `finally` :91 | The commit's own `finally` | On a direction change the reload interrupts the `await` at :83, so the `finally` never runs in the dying tree; the atom dies with it. Harmless today and under always-restart: no reader exists across the reload |
+| Commit busy atom | `stores/language.ts:28`, set :72, cleared in `finally` :91 | The commit's own `finally` | On a direction change the reload interrupts the `await` at :83; whether the `finally` runs before teardown is a runtime timing the source cannot carry, and it does not matter: the atom dies with the module graph, so no reader exists across the reload |
 | Module locale state | `shared/i18n/locale.ts:31` (`active`, written by the switch at :50), `:34` (`resolved`, computed lazily once at :43), launch direction `stores/language.ts:59-60` | None within a process: forward-only by D34 | Rebuilt from the MMKV preference at the first read after a restart, so the relaunched tree resolves the same locale the commit stored |
 
 ### The transient: confirmed mechanism
@@ -58,7 +59,7 @@ no runtime trace is needed and nothing joins the ruling list from this item.
   strings across the bump.
 - The sources write once per wall-clock second: the wall-clock ticker fires `tick` at each
   :000 boundary (`stores/countdown.ts:235-257`), and each tick ends in
-  `writeDisplayCountdown` (:353), which stores a fresh object into the source (:437).
+  `writeDisplayCountdown` (:340), which stores a fresh object into the source (:437).
 - So from the bump until the next tick, the hero reads the cached old-locale label and
   digits: the one-second transient. The next tick rewrites the source, the selectors
   recompute in the new locale, and the transient closes.
@@ -81,8 +82,10 @@ line re-appearing about 1.5 s later, and one non-fatal `ReactNoCrashSoftExceptio
 
 The full process restart. Search terms `exit(`, `killProcess`, `System.exit`,
 `terminateApp`, `restartApp`, `relaunch`, `reloadAsync`, `moveTaskToBack` over
-`app/`, `device/`, `modules/`, `plugins/` for `.ts .tsx .kt .java .swift`: no exit or
-restart-native path exists in any of the four directories. `modules/` holds
+`app/`, `device/`, `modules/`, `plugins/`, `android/` for `.ts .tsx .kt .java .swift`: no
+exit or restart-native path exists in any of the five directories. The android sweep's one
+hit is the back-press handler `moveTaskToBack` (`android/app/src/main/java/com/mugtaba/athan/MainActivity.kt:54`),
+which backgrounds the task and restarts nothing. `modules/` holds
 `qiblaheading`, `tls13` and `widgetrefresh`; `plugins/` holds config plugins; the only
 `reloadAsync` hits in the repo are the two sites above plus their tests. What a restart
 module would have to do: on Android, a native module that re-launches the app's own task
@@ -122,10 +125,11 @@ section 2).
 The face is the busy row (`components/sheets/screens/Language.tsx:52-56`: the spinner and
 the applying label on the picked row), driven by the bracket `stores/language.ts:72-92`
 (set true :72, cleared in `finally` :91). What dies at a restart: on a direction change
-the reload at `:83` interrupts the `await` inside the `try`, the `finally` never runs in
-the dying tree, and the whole sheet layer dies with the module graph; the relaunched app
-returns with no sheet open. The face spans commit to dismiss and dies at the reload, not
-at the dismiss (section 1, hops 9 and 10).
+the reload at `:83` interrupts the `await` inside the `try`, and the whole sheet layer
+dies with the module graph (whether the `finally` runs before teardown is a runtime
+timing the source cannot carry; no reader exists across the reload either way); the
+relaunched app returns with no sheet open. The face spans commit to dismiss and dies at
+the reload, not at the dismiss (section 1, hops 9 and 10).
 
 The brief's "the restart point moves after convergence" already holds for the landed D59
 branch: the await chain orders convergence (`stores/language.ts:76`) before the restart
@@ -200,7 +204,7 @@ rewritten by the awaited push (widget strings).
 
 Preferences survive both mechanisms: `lastArmedLanguageAtom` and `languagePreferenceAtom`
 are MMKV-backed (`stores/language.ts:22`, `:25`, through `atomWithStorageString`,
-`stores/storage.ts:106-114`: `database.getString` and `database.set`), and MMKV is native
+`stores/storage.ts:106-115`: `database.getString` and `database.set`), and MMKV is native
 state neither the JS reload nor a process death touches. The error screen's owner ruling
 already rests on exactly this: "the destruction is acceptable because preferences survive
 it" (`components/ui/Error.tsx:13-15`, the reload at `:30`). The brief's "keep
