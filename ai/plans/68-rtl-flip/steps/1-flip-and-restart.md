@@ -50,9 +50,9 @@ switches never relaunch.
 it('crossing to ar converges, then forces RTL and relaunches', async () => {
   await commitLanguagePreference('ar');
   expect(reloadAsync).toHaveBeenCalledTimes(1);
-  const arm = reschedule.mock.invocationCallOrder.at(-1);
-  const allow = allowRTL.mock.invocationCallOrder.at(-1);
-  const force = forceRTL.mock.invocationCallOrder.at(-1);
+  const arm = reschedule.mock.invocationCallOrder.at(-1)!;
+  const allow = allowRTL.mock.invocationCallOrder.at(-1)!;
+  const force = forceRTL.mock.invocationCallOrder.at(-1)!;
   expect(allow).toBeGreaterThan(arm);
   expect(force).toBeGreaterThan(allow);
   expect(forceRTL).toHaveBeenLastCalledWith(true);
@@ -123,8 +123,10 @@ npx jest stores/__tests__/rtlSwitch.test.ts stores/__tests__/bootstrap.test.ts s
 
 Expected: the first two rtlSwitch cases fail with
 `Expected number of calls: 1, Received number of calls: 0` on `reloadAsync`
-(asserted first so the break is reachable), the third passes; the three new
-bootstrap cases fail (`forceRTL` not called); the nativeConfig case fails
+(asserted first so the break is reachable), the third passes at red (a pure
+negative: nothing calls `reloadAsync` yet); the first two bootstrap cases
+fail (`forceRTL` not called) and the third passes at red (it asserts the
+absence of a call); the nativeConfig case fails
 (`Expected: true, Received: false` on the flag as it ships today). Every
 existing case passes. Any other failure is a STOP.
 

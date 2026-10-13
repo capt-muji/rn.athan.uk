@@ -60,3 +60,20 @@ path; the break scripts' substitution and grep strings match the repaired
 contracts; the RTL .tsx spy mechanism, the waveHeading negated-angle formula,
 the lock/return-site corrections, the four-file counts and the atlas and
 build-script facts all replaced. Gate after both rounds: `PLAN OK`.
+
+## Planner rulings on the step-1 STOPs (2026-10-13, the lead under the owner's no-questions instruction)
+
+First STOP: the preflight tripped on an untracked `ai/plans/59-prayer-names/AUDIT.md`
+stray (the 59 DONE merge's `git rm -r` removed only tracked files). Ruling:
+the stray is deleted (59's record lives in its DONE queue cell and commit
+2.0.147), and untracked paths under `ai/plans/` other than this plan's own
+files are treated as absent for cleanliness — they are the lead's planning
+namespace, never an executor's.
+
+Second STOP: step 1's verbatim test failed `tsc` — `mock.invocationCallOrder.at(-1)`
+widens to `number | undefined` against `toBeGreaterThan`. Ruling: the plan's
+sketch gains the non-null assertions (`at(-1)!` on the three order reads), and
+the red expectation is corrected: the two pure-negative cases (the
+same-direction rtlSwitch case and the no-preference bootstrap case) pass at
+red by construction. The executor's measured red already matches every other
+named failure.
