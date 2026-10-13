@@ -52,7 +52,8 @@ npx jest shared/__tests__/time.test.ts --watchman=false --selectProjects=unit
 `hideSeconds option` > all four its, `JSDoc contract` > `pins every example in the JSDoc`,
 and the en pin of `native digits (D57)` (`time.test.ts:162`); `formatTimeAgo` >
 `formats minutes`, `formats hours and minutes`, and its en pin at `time.test.ts:204`.
-First failing line shape: `Expected: "1m" / Received: "0:01"`.
+First failing line shapes, one per composer: `formatTime(60)` expects `"1m"` and
+receives `"00:01:00"`; `formatTimeAgo(60)` expects `"1m"` and receives `"0:01"`.
 
 ```bash
 npx jest components/countdown/__tests__/Countdown.test.tsx components/prayer/__tests__/Ago.test.tsx --watchman=false --selectProjects=components
@@ -92,7 +93,9 @@ absence: `Expected: "Roboto-Medium", Received: undefined`.
    `formatTime(45, true)` -> `"00:00:45"`, `formatTime(0)` -> `"00:00:00"`,
    `formatTime(-100)` -> `"00:00:00"`, `formatTime(90000)` -> `"25:00:00"`;
    `formatTimeAgo(45)` -> the catalog `now` word, `formatTimeAgo(120)` -> `"0:02"`,
-   `formatTimeAgo(5400)` -> `"1:30"`, `formatTimeAgo(7200)` -> `"2:00"`.
+   `formatTimeAgo(5400)` -> `"1:30"`, `formatTimeAgo(7200)` -> `"2:00"`. The
+   `splitColonSections` docblock drops its "English's lettered strings" mention: only
+   the held `--:--` fails the digit test now.
 2. `shared/typography.ts` — `LocaleTypography` gains `familyDigits: string`;
    both `ARABIC` and `LATIN` set `familyDigits: TEXT.family.medium`. One docblock
    line: the timer's digits are Latin glyphs in every locale (row 82), so the digits
@@ -106,27 +109,43 @@ absence: `Expected: "Roboto-Medium", Received: undefined`.
 4. `components/prayer/Ago.tsx` — the render gate becomes
    `const parts = splitSingleColon(prayerAgo);`. The component docblock drops its
    lettered example and names the colon duration inside the catalog sentence.
-5. Test re-derivations, value by value:
-   - `time.test.ts`: the 15 en pins above flip to the colon values from the JSDoc
-     contract (`formatTime(60)` -> `"00:01"`, `formatTime(90)` -> `"00:01:30"`,
-     `formatTime(599)` -> `"00:09:59"`, `formatTime(3600)` -> `"01:00"`,
-     `formatTime(86399)` -> `"23:59:59"`, `formatTime(86400)` -> `"24:00:00"`,
-     `formatTime(90061)` -> `"25:01:01"`, `formatTime(5, true)` -> `"00:00:05"`;
-     `formatTimeAgo(60)` -> `"0:01"`, `formatTimeAgo(3599)` -> `"0:59"`,
-     `formatTimeAgo(3600)` -> `"1:00"`, `formatTimeAgo(7260)` -> `"2:01"`). The
-     describe and it names drop their lettered wording ("0s" -> the clamp shape). The
-     ar pins (`٠١:٠١` block, `٢:٥٩:٠٠`, the ago `٠:٠٢` set) stay byte-identical.
+5. Test re-derivations, value by value. The rule first, then the values: a default
+   call (seconds shown) renders `HH:MM:SS`; a `hideSeconds=true` call renders
+   `HH:MM:SS` at 599 s and below and `HH:MM` above. The en pins:
+   `formatTime(-100)` and `formatTime(-1)` and `formatTime(0)` -> `"00:00:00"`,
+   `formatTime(45)` -> `"00:00:45"`, `formatTime(59)` -> `"00:00:59"`,
+   `formatTime(60)` -> `"00:01:00"`, `formatTime(61)` -> `"00:01:01"`,
+   `formatTime(90)` -> `"00:01:30"`, `formatTime(599)` -> `"00:09:59"`,
+   `formatTime(3600)` -> `"01:00:00"`, `formatTime(3665)` -> `"01:01:05"`,
+   `formatTime(7200)` -> `"02:00:00"`, `formatTime(86399)` -> `"23:59:59"`,
+   `formatTime(86400)` -> `"24:00:00"`, `formatTime(90000)` -> `"25:00:00"`,
+   `formatTime(90061)` -> `"25:01:01"`, `formatTime(10740)` -> `"02:59:00"`;
+   with `true`: `formatTime(5, true)` -> `"00:00:05"`, `formatTime(45, true)` ->
+   `"00:00:45"`, `formatTime(61, true)` -> `"00:01:01"`, `formatTime(120, true)` ->
+   `"00:02:00"`, `formatTime(599, true)` -> `"00:09:59"`, `formatTime(600, true)` and
+   `formatTime(601, true)` -> `"00:10"`, `formatTime(3665, true)` -> `"01:01"`.
+   The ago pins: `formatTimeAgo(60)` -> `"0:01"`, `formatTimeAgo(120)` -> `"0:02"`,
+   `formatTimeAgo(3599)` -> `"0:59"`, `formatTimeAgo(3600)` -> `"1:00"`,
+   `formatTimeAgo(5400)` -> `"1:30"`, `formatTimeAgo(7200)` -> `"2:00"`,
+   `formatTimeAgo(7260)` -> `"2:01"`. The describe and it names drop their lettered
+   wording ("0s" -> the clamp shape). The ar pins (`٠١:٠١` block, `٢:٥٩:٠٠`, the ago
+   `٠:٠٢` set) stay byte-identical.
    - `stores/__tests__/countdown.test.ts`: the en selector pins flip
      (3665 -> `"01:01"`, 3700 -> `"01:01"`, 3600 -> `"01:00"`; the seconds-preference
      test's en values flip the same way). The ar pin stays.
    - `Countdown.test.tsx`: the five en tests assert the section render: at 14:00 the
      timer draws `02` and `29` group nodes and one gapped colon
      (`'\u2009:\u2009'`), with no single `"02:29"` node; the round-up test at 59.4 s
-     reads `00:01`; the 1s hold reads `00:00:01`; the Magrib swap reads `02:59`; the
-     overlay test reads `05:28`. Keep the existing ar tests untouched.
-   - `Ago.test.tsx`: `at 13:05 reads "Dhuhr 0:03 ago"` and
-     `at 14:00 reads "Dhuhr 0:58 ago"`, both with the gapped-colon node present; the
-     overlay-fade test queries `"Dhuhr 0:58 ago"`.
+     reads `00:01:00` (three groups: 60 s with the seconds preference off still shows
+     seconds, the kept 599 s rule); the 1s hold reads `00:00:01`; the Magrib swap
+     reads `02:59`; the overlay test reads `05:28`. Keep the existing ar tests
+     untouched.
+   - `Ago.test.tsx`: the badge renders three nodes under en once the gate dies, so
+     the `it.each` words query changes shape. At 13:05 assert `getByText('Dhuhr 0')`,
+     `getByText('3 ago')` and `getByText(GAP_COLON, { normalizer: (s) => s })`; at
+     14:00 the halves are `Dhuhr 0` and `58 ago`. The overlay-fade test asserts
+     `getByText('Dhuhr 0').not.toBeVisible()` (the fade rides the badge's outer
+     node). The `now` test keeps its single-node query.
    - `typography.test.ts`: `expectArabicRecord` and the latin record block each gain
      `expect(ty.familyDigits).toBe('Roboto-Medium');`.
 

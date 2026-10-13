@@ -51,11 +51,12 @@ worktree with the map neutralised (proof, 2026-10-13):
 npx jest shared/__tests__/time.test.ts --watchman=false --selectProjects=unit
 ```
 
-`Tests: 5 failed` beyond step 1's landed flips: the `hideSeconds option` >
+`Tests: 6 failed` beyond step 1's landed flips: the `hideSeconds option` >
 `draws the fixed-width shapes under ar` block (`Expected: "٠١:٠١", Received: "01:01"`),
 the `native digits (D57)` ar pins of `formatTime` and `formatTimeAgo`
-(`٢:٥٩:٠٠`, `٠:٠٢`, `١:٠٠`, `٢:٠١`), and `splitColonSections`' Arabic-Indic case
-(`time.test.ts:241-243`).
+(`٢:٥٩:٠٠`, `٠:٠٢`, `١:٠٠`, `٢:٠١`), `splitColonSections`' Arabic-Indic case
+(`time.test.ts:241-243`), and `formatPrayerTime`'s ar pin (`time.test.ts:696-699`,
+`Expected: "٠٥:٤٤", Received: "05:44"`).
 
 ```bash
 npx jest shared/__tests__/digits.test.ts shared/__tests__/dateLocalized.test.ts shared/__tests__/notifications.test.ts stores/__tests__/countdown.test.ts shared/__tests__/widgetTimeline.test.ts shared/__tests__/widgetSimulation.test.ts --watchman=false --selectProjects=unit
@@ -93,7 +94,9 @@ Alert's stepper pin (`١٥` receives `15`), Sound's row regex
 
 1. `shared/i18n/digits.ts` — the file is deleted. Its two exports
    (`ARABIC_INDIC`, `localiseDigits`) have no reader after this step.
-2. `shared/i18n/index.ts` — the interpolation returns `String(supplied)`; the
+2. `shared/i18n/index.ts` — the interpolation callback's body becomes exactly these
+   two lines, which the break script's substitution matches:
+   `const localized = String(supplied);` then `return localized;`. The
    `localiseDigits` import and re-export die.
 3. `shared/time.ts` — `formatPrayerTime`, `formatDateLocalized`,
    `formatHijriDateLocalized` (both returns) and `footerFor` (both returns) return
@@ -110,9 +113,10 @@ Alert's stepper pin (`١٥` receives `15`), Sound's row regex
 7. `components/sheets/parts/SoundItem.tsx` — the local `formatTime` returns
    `composed`; the import dies.
 8. `widgets/PrayerWidget.tsx` — `WIDGET_DIGITS`, its `localiseDigits` and the D57/D61
-   comment block die; the six call sites (the Android label at 406-408, the footers
-   at 417-420 and 682-686) use the strings directly. `localeKey` keeps its `STATIC`
-   role: the device-keyed static copy is untouched (D44/D79). The iOS native timers
+   comment block die; the seven `localiseDigits` call lines (406, 407, 408 in the
+   Android label; 417 and 420 in the iOS footer; 682 and 686 in the legacy Android
+   footer) use the strings directly. `localeKey` keeps its `STATIC` role: the
+   device-keyed static copy is untouched (D44/D79). The iOS native timers
    (`Text(timerInterval:)`) are not touched (D82.7).
 9. `shared/__tests__/digits.test.ts` — deleted with its subject.
 10. Pin flips, value by value:
@@ -120,17 +124,22 @@ Alert's stepper pin (`١٥` receives `15`), Sound's row regex
       (`3665,true` -> `"01:01"`, `120,true` -> `"00:02:00"`, `599,true` ->
       `"00:09:59"`, `600,true` and `601,true` -> `"00:10"`); the `native digits (D57)`
       describes re-derive: under ar the values equal the en values, and their names
-      drop the native-digits wording for the one-design truth; the `splitColonSections`
-      Arabic-Indic case flips to a Latin case and keeps one negative case; the
-      `formatTimeAgo` ar pins flip (`٠:٠٢` -> `"0:02"` alongside the `الآن` word pin,
-      which stays byte-identical).
+      drop the native-digits wording for the one-design truth; `formatPrayerTime`'s
+      ar pin flips to `"05:44"`; the `splitColonSections` Arabic-Indic case flips to
+      a Latin case and keeps one negative case; the `formatTimeAgo` ar pins flip
+      (`٠:٠٢` -> `"0:02"` alongside the `الآن` word pin, which stays byte-identical).
     - `dateLocalized.test.ts`: `الأحد, 11 أكتوبر 2026` and `ربيع الآخر 30, 1448`.
     - `notifications.test.ts`: `العصر بعد 15` and `تنبيه المغرب بعد 15`.
     - `countdown.test.ts`: `01:01`; the test's name drops its native-digits wording.
-    - `widgetTimeline.test.ts`: `17:45`, `03:30`, `22:45`, `13:10`.
+    - `widgetTimeline.test.ts`: `17:45`, `03:30`, `22:45`, `13:10`; the stale-card
+      negative assertion `.not.toContain('13:10')` dies with the map, or it
+      contradicts the flipped `toContain('13:10')` beside it.
     - `widgetSimulation.test.ts`: `01:05`.
     - `widgetRenderer.test.ts`: `Rab 30`, `19د`, `1h 12m`; the four test names drop
-      their native-digits wording for Latin-digits wording.
+      their native-digits wording for Latin-digits wording; the two negative
+      assertions that pinned the map's non-leak die with it (`.not.toContain('19د')`
+      beside the Android label pin, `.not.toContain('Rab 30')` beside the legacy
+      footer pin), or each contradicts its flipped neighbour.
     - `Time.test.tsx`: `06:46` (the `--:--` sentinel assertion stays).
     - `SoundItem.test.tsx`: `0:03`.
     - `Sound.test.tsx`: the regex becomes `/^أذان \d+$/`.
