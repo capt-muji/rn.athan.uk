@@ -247,3 +247,104 @@ diffs nothing).
 Merge: `--no-ff` into uat (sha recorded post-merge).
 
 session: ses_ecab85520ffeMEzBKuf7VrybVt
+
+### Step 4 — done
+
+Branch `docs/72-device-proof-2026-10-13` off `uat`, version 2.0.215 (the next
+patch after the ticket 77 merges that landed on uat mid-proof: 7a681c1e,
+2.0.214). Anchor check run twice, PREFLIGHT OK both times: at the proof's
+start on 650570b8 and again on the moved uat before the commit
+(display-atom, cascade-pair, derived-color, each counting 1). Ticket 77's
+merges touch no countdown surface: `git diff 650570b8..7a681c1e` over
+`shared/time.ts`, `components/countdown/`, `components/prayer/`,
+`stores/countdown.ts`, `stores/schedule.ts`, `hooks/useAnimation.ts`,
+`shared/i18n/en.ts` is empty, so the proof reads the merged code byte for
+byte.
+
+Build: `zsh $HOME/athan-gitree/bin/build-mock.zsh uat mocks/simple.ts
+$HOME/athan-gitree/sessions/72/athan-72-mock.apk`, ref `uat` -> `650570b8`,
+`BUILD-MOCK OK` in 343s (versionName 2.0.211, the owner's debug certificate,
+real API key absent). Gate: `aapt2 dump badging | grep "^package"` prints
+`package: name='com.mugtaba.athan' versionCode='1000000'
+versionName='2.0.211'`, the production package id the mock build always
+carries (row 68's pass shape). `adb -s 3T_SERIAL install -r`: Success; the
+device reports 2.0.211. Pre-change face read before the install on the
+carried 2.0.190 mock: the en hero in row 63's colon design (`2:07`, single
+bright node, bare colon) — the red on device (`pre-change-en-hero.png`).
+
+1. R7.1, ar inside the final window (the language crossed to العربية, the
+   reload re-seeded, Asr 3m20s out): the hero reads three double-digit
+   Eastern groups `٠٠:٠٣:٢٠` (bidi draws seconds leftmost), the hours
+   group `٠٠` dim, minutes `٠٣` and seconds `٢٠` white, both colons dim
+   with the thin-space gaps (`04-ar-final-window-b.png`). R3.1/R3.2
+   colour transcription, this step's own read: at 14:15:33 the timer reads
+   `٠٠:٠٠:٢٨` — the minutes group has reached ٠٠ and is NOW DIM, the
+   seconds `٢٨` still white, hours dim — the zero-dim treatment caught in
+   both states on device (`07-ar-hero-t.png`). The ٠ glyph renders as the
+   font's small diamond on the 3T.
+2. R7.4, the passed-row badge: the single per-page badge tracks the last
+   passed row. Dhuhr 100s passed: `الظهر قبل ٠:٠١`, the colon carrying
+   clear gaps both sides (`04-ar-badge-zoom.png`). Moments after a
+   prayer's own minute the badge reads `الآن` (the ar now-word) for its
+   first 60s — Magrib steals the badge exactly at Asr+60s in the mock's
+   compressed runway — so the colon face is taken on Dhuhr and again on
+   Asr itself at +2min: `العصر قبل ٠:٠١` (`09-ar-badge-magrib-zoom.png`).
+   The badge holds its value between its own updates (a display-cadence
+   nuance outside this ticket's rendering scope, recorded not poked).
+3. R7.2, the clock moved past the window: `dumpsys alarm` saved first
+   (`pre-clockchange-alarms.txt`) and audited — 62 app alarms, all
+   explained: the mock's prayer rows for today plus days 1-10 with their
+   -5m and asr -30m reminder rows (the channels named in check 4), the
+   nightly extras rows (01:2x-01:5x, 23:27, today's 14:25/14:30 computed
+   from the compressed mock day), and exactly one fixture alarm years out
+   at `when 2104803640505`'s post — live-computed, read this day at
+   `when 2107199034081` (2036-10-09), the known mock fixture the plan
+   names. Nothing unexplained. Then `auto_time 0`, `service call alarm 2
+   i64` +13min (job 55's recipe), `date` reads 14:35:06. The hero reads
+   two double-digit groups `١٣:١٨` (visual order flipped), white hours,
+   seconds hidden, one dim gapped colon, target الفجر 04:03 tomorrow —
+   the day rolled to الأربعاء ١٤ أكتوبر and the list shows day1's real
+   table (`12-ar-past-window.png`). Restored: `auto_time 1`, read back 1,
+   the clock resynced to true time (device 14:32:22 = host 14:32:22).
+4. R7.3, the switch to en (Settings, اللغة): the crossing's launch line
+   re-appears 4s after the tap (`feature flags resolved`, pid unchanged —
+   the in-process reload row 68 measured). After the re-seeded window
+   passes the hero reads `13h 23m` under `Fajr` — the lettered `Xh Ym`
+   face, one bright node, no colon, no gap — and the badge reads
+   `Isha 2m ago`, the lettered `Xm ago` face (`15-en-hero-zoom.png`,
+   `16-en-badge-zoom.png`). `dumpsys notification` names the reminder
+   channels in the reverted reference copy: `Fajr in 5m Reminder`,
+   `Magrib in 5m Reminder`, `Asr in 30m Reminder`, `Dhuhr in 30m/5m
+   Reminder`, `Suhoor in 30m/5m Reminder`, `Midnight in 30m Reminder`
+   among them — R6.1's en bytes on device, present, not absent
+   (`dumpsys-notification-en.txt`).
+
+Width reserve (rule 2's "digit changes never shift anything"): the timer
+line's bright+dim pixel bbox across four frames spanning remaining
+3:20 / 0:26 / 0:22 / 0:28 holds x425-653, y37-86 in the hero band — max
+drift 5px at the left edge (the ٦/٢ glyph shapes), zero vertical drift.
+
+Interference, recorded: between 14:20 and 14:27 a duplicate operator ran
+against this phone and has withdrawn — its own streamed install
+(`vmdl57525736`, package still `com.mugtaba.athan` 2.0.211) force-stopped
+the app mid-proof (pid 29408 -> 30254) and left the launcher foregrounded.
+Its window sits between my last check-2 capture (14:18:29) and my clock
+jump (14:35): no evidence capture overlaps it; the jump, the alarm audit
+file and every read after 14:27 are this session's alone. The resumed
+launch at 14:38:40 re-seeded as the mock's per-download contract predicts
+and R7.2 was taken from that seed.
+
+Green run: `git status --porcelain` lists no repository file; all evidence
+lives under `$HOME/athan-gitree/sessions/72/` (captures, zooms, the alarm
+dump, the notification dump, `logcat-72.txt`, the apk and its
+`.build.txt`). End state: the phone on the 2.0.211 mock build, automatic
+time on (read back 1), Show time passed restored to off, the app
+foregrounded in English.
+
+Version: next patch after uat's package.json under the lock — 2.0.215 in
+app.json, package.json, android/app/build.gradle (versionName). Queue row
+72 -> EXECUTED. Commit and merge shas recorded post-merge by the lead (the
+ledger's last entry cannot carry its own commit's sha; step 3's precedent
+lands shas in the following commit and there is none after this).
+
+session: ses_ecaacae69ffe7j5XGL9akv5dMv
