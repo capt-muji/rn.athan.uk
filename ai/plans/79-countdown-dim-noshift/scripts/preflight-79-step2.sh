@@ -13,8 +13,8 @@ git fetch -q origin uat
 git merge-base --is-ancestor origin/uat uat || { say "FAIL: origin/uat not merged into uat"; exit 1; }
 
 ver=$(python3 -c "import json;print(json.load(open('package.json'))['version'])")
-python3 -c "import sys; sys.exit(0 if tuple(int(x) for x in sys.argv[1].split('.')) >= tuple(int(x) for x in sys.argv[2].split('.')) else 1)" "$ver" 2.0.232 \
-  || { say "FAIL: version $ver below step 1's 2.0.232"; exit 1; }
+python3 -c "import sys; sys.exit(0 if tuple(int(x) for x in sys.argv[1].split('.')) >= tuple(int(x) for x in sys.argv[2].split('.')) else 1)" "$ver" 2.0.234 \
+  || { say "FAIL: version $ver below step 1's 2.0.234"; exit 1; }
 say "version $ver"
 
 row72=$(grep -c '^| 72 |.*DONE' ai/plans/README.md)

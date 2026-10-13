@@ -213,12 +213,12 @@ The queue cell text the lead applies on DONE:
 
 The docs commit message for the DONE merge:
 
-> 2.0.234 - docs(plans): ticket 79 DONE: countdown dim levels and the no-shift
+> 2.0.236 - docs(plans): ticket 79 DONE: countdown dim levels and the no-shift
 > rule; the plan folder and evidence die with the merge
 
-The DONE merge bumps `app.json` (first), `package.json` and
-`android/app/build.gradle` to 2.0.234 in the same commit; the gradle file is
-gitignored and is never added, only edited on disk.
+Step 2 preflights against 2.0.234. The DONE merge bumps `app.json` (first),
+`package.json` and `android/app/build.gradle` to 2.0.236 in the same commit; the
+gradle file is gitignored and is never added, only edited on disk.
 
 ## 9. Push
 

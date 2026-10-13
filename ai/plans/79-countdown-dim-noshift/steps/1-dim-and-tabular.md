@@ -97,10 +97,8 @@ jest.mock('@/hooks/useAnimation', () => {
     // Row 79's no-shift rule: every group renders equal-width digits, pinned on the
     // style every section inherits; only the changing digit pair may move
     const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
-    const timer = colon.parent;
-    const style = Array.isArray(timer?.props.style)
-      ? Object.assign({}, ...(timer?.props.style as unknown[]))
-      : ((timer?.props.style as object) ?? {});
+    const timerStyle = colon.parent === null ? undefined : colon.parent.props.style;
+    const style = Array.isArray(timerStyle) ? Object.assign({}, ...timerStyle) : (timerStyle ?? {});
     expect(style.fontVariant).toEqual(['tabular-nums']);
   });
 ```
@@ -167,20 +165,21 @@ patch number:
 python3 -c "import json;print(json.load(open('package.json'))['version'])"
 ```
 
-Prints `2.0.231`, so the step version is `2.0.232`. Set it in `app.json` (first),
-`package.json` and `android/app/build.gradle` `versionName`, all three matching.
+Prints `2.0.233` (the plan-repair commit took it), so the step version is
+`2.0.234`. Set it in `app.json` (first), `package.json` and
+`android/app/build.gradle` `versionName`, all three matching.
 No prebuild in this step: no native file changes.
 
 Commit, adding by name: `shared/constants.ts`,
 `components/countdown/Countdown.tsx`,
 `components/countdown/__tests__/Countdown.test.tsx`, `app.json`,
 `package.json`, `ai/plans/README.md` (set ticket 79 to `IN PROGRESS, step 1`),
-and this plan folder's `PLAN.md` and `LOG.md`.
+and this plan folder's `PLAN.md`, `LOG.md` and `steps/1-dim-and-tabular.md`.
 
 Message:
 
 ```
-2.0.232 - feat(79): the countdown's dim levels on the owner's figures, and tabular digits pinned
+2.0.234 - feat(79): the countdown's dim levels on the owner's figures, and tabular digits pinned
 ```
 
 ## Review checklist
@@ -196,7 +195,7 @@ Message:
 ## Merge
 
 ```
-git checkout uat && git merge --no-ff feat/79-dim-tabular -m "2.0.232 - merge feat/79-dim-tabular: step 1, ticket 79"
+git checkout uat && git merge --no-ff feat/79-dim-tabular -m "2.0.234 - merge feat/79-dim-tabular: step 1, ticket 79"
 ```
 
 ## Break script
