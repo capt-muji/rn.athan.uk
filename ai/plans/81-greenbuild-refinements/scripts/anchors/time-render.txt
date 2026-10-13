@@ -1,5 +1,0 @@
-  return (
-    <View style={[styles.container]}>
-      <Animated.Text style={[styles.text, colorStyle]}>{displayTime}</Animated.Text>
-    </View>
-  );

@@ -1,4 +1,0 @@
-
-// The dim transition's colours are this suite's subject, so the hook answers
-// deterministically at its two anchors instead of through an animation
-jest.mock('@/hooks/useAnimation', () => {

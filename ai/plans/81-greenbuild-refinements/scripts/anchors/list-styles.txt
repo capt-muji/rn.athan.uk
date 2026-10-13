@@ -1,6 +1,0 @@
-const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: SCREEN.paddingHorizontal,
-    marginBottom: SPACING.xxxl,
-  },
-});

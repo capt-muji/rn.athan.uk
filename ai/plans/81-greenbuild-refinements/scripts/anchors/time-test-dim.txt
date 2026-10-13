@@ -1,6 +1,0 @@
-
-  it('reads the digit groups and dims the zero groups', () => {
-    expect(splitColonSections('01:32:05')?.map((section) => section.text)).toEqual(['01', ':', '32', ':', '05']);
-    expect(splitColonSections('00:42:05')?.[0].dim).toBe(true);
-    expect(splitColonSections('01:32:05')?.[0].dim).toBe(false);
-  });
