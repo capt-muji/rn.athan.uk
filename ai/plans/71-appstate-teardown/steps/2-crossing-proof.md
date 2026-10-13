@@ -5,7 +5,7 @@ Requirements: R2.1, R2.2, R2.3
 
 ## Anchor check
 
-Run step 1's anchor check again: sixteen lines, every line `1`. Then confirm step 1 landed:
+Run step 1's anchor check again: nineteen lines, every line `1`. Then confirm step 1 landed:
 
 ```bash
 test -f ai/plans/71-appstate-teardown/FINDINGS.md && echo STEP1-OK
@@ -31,11 +31,13 @@ Expected: `Switched to a new branch 'docs/71-2-crossing-proof'`.
 
 ## Device and build
 
-The device is the OnePlus 3T (`3T_SERIAL`), Android 9, the floor test device. Confirm the
+The device is the OnePlus 3T (`3T_SERIAL`), Android 9, the floor test device. The dispatcher
+replaces the `3T_SERIAL` placeholder with the connected device's real serial, and every
+command below reads it from `$SERIAL`. Confirm the
 serial before anything else:
 
 ```bash
-adb devices | grep -F "$3T_SERIAL"
+adb devices | grep -F "$SERIAL"
 ```
 
 Expected: one line naming the serial with `device` state. A different serial or none: STOP
@@ -77,11 +79,13 @@ item 2).
 Install, then one discarded launch (dexopt-inflated, per `e2e/README.md`):
 
 ```bash
-adb -s "$3T_SERIAL" install -r "$HOME/athan-gitree/sessions/71/app-mock.apk"
+adb -s "$SERIAL" install -r "$HOME/athan-gitree/sessions/71/app-mock.apk"
 ```
 
-Expected: `Success`. Then launch the app and wait for the schedule face (`London, UK`
-visible, ceiling 15 s, the flow's value) before continuing; discard this launch's timings.
+Expected: `Success`. Then launch the app and wait for the schedule face before continuing;
+discard this launch's timings. The launch: open `com.mugtaba.athan` in the foreground with
+agent-device, then wait for the text `London, UK` (ceiling 15 s); readings from this launch
+are discarded (e2e/README.md's dev-env confound).
 
 ## The capture
 
@@ -89,9 +93,9 @@ Baseline readings, before the crossings:
 
 ```bash
 mkdir -p "$HOME/athan-gitree/sessions/71"
-adb -s "$3T_SERIAL" shell pidof com.mugtaba.athan | tee "$HOME/athan-gitree/sessions/71/pid-before.txt"
-adb -s "$3T_SERIAL" shell dumpsys alarm > "$HOME/athan-gitree/sessions/71/alarm-before.txt"
-adb -s "$3T_SERIAL" logcat -c
+adb -s "$SERIAL" shell pidof com.mugtaba.athan | tee "$HOME/athan-gitree/sessions/71/pid-before.txt"
+adb -s "$SERIAL" shell dumpsys alarm > "$HOME/athan-gitree/sessions/71/alarm-before.txt"
+adb -s "$SERIAL" logcat -c
 ```
 
 Expected: `pid-before.txt` holds one number; the dump file is non-empty.
@@ -109,9 +113,9 @@ Drive crossing 2 (ar to en): Settings at `540,1830`; tap `اللغة`; tap `Engl
 Capture:
 
 ```bash
-adb -s "$3T_SERIAL" logcat -d -v threadtime > "$HOME/athan-gitree/sessions/71/logcat-crossing.txt"
-adb -s "$3T_SERIAL" shell pidof com.mugtaba.athan | tee "$HOME/athan-gitree/sessions/71/pid-after.txt"
-adb -s "$3T_SERIAL" shell dumpsys alarm > "$HOME/athan-gitree/sessions/71/alarm-after.txt"
+adb -s "$SERIAL" logcat -d -v threadtime > "$HOME/athan-gitree/sessions/71/logcat-crossing.txt"
+adb -s "$SERIAL" shell pidof com.mugtaba.athan | tee "$HOME/athan-gitree/sessions/71/pid-after.txt"
+adb -s "$SERIAL" shell dumpsys alarm > "$HOME/athan-gitree/sessions/71/alarm-after.txt"
 ```
 
 ## Red
@@ -163,7 +167,6 @@ grep -cF 'reactInstance is null. Dropping work.' "$C"
 
 Expected: `2`. Any other count: NEEDS REPLAN (D90).
 
-```bash
 ```bash
 grep -A30 -F 'Dropping work.' "$C" | grep -cF 'AppStateModule.onHostPause'
 ```
@@ -230,9 +233,9 @@ Expected: the merge lands on `uat`.
 
 ## Device teardown
 
-Press HOME, then `adb -s "$3T_SERIAL" shell am kill com.mugtaba.athan`, then relaunch the app
-from the launcher and confirm the English face. Never force-stop outside a Maestro flow; never
-`pm clear`; never uninstall; automatic time stays on (no clock change happened). The mock
+Press HOME, then `adb -s "$SERIAL" shell am kill com.mugtaba.athan`, then relaunch the app
+from the launcher and confirm the English face. Teardown uses `am kill` after HOME, never `am force-stop` (the frame-audit script's
+practice), never `pm clear`, never uninstall; automatic time stays on (no clock change happened). The mock
 install stays on the phone, the rows 39, 63 and 68 precedent. Report the install in the final
 report.
 
