@@ -22,7 +22,7 @@ interface Props {
 /** One digit group of the timer: bright above zero, dim at 00 (row 72 rule 3) */
 function CountdownSectionText({ text, dim }: { text: string; dim: boolean }) {
   const colorStyle = useDerivedColor(dim ? 0 : 1, {
-    fromColor: COLORS.text.muted,
+    fromColor: COLORS.countdown.dimDigit,
     toColor: COLORS.text.primary,
     duration: ANIMATION.durationSlow,
   });
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     fontSize: ty.size(TEXT.sizeLarge),
     textAlign: 'center',
     fontFamily: ty.familyDigits,
+    fontVariant: ['tabular-nums'],
     marginBottom: SPACING.lg,
     // Text shadow for depth
     textShadowColor: 'rgba(0, 0, 0, 0.15)',
@@ -123,6 +124,6 @@ const styles = StyleSheet.create({
     textShadowRadius: 6,
   },
   countdownColon: {
-    color: COLORS.text.muted,
+    color: COLORS.countdown.colon,
   },
 });
