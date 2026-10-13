@@ -1,3 +1,0 @@
-  const side = type === ScheduleType.Standard ? 'standard' : 'extra';
-  const key = `prayer_max_name_width_${currentLocaleId()}_${side}`;
-  const cached = widthAtoms.get(key);

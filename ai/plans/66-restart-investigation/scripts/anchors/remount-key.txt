@@ -1,3 +1,0 @@
-      <InitialWidthMeasurement key={localeVersion} />
-      <BottomSheetModalProvider>
-        <Slot key={localeVersion} />

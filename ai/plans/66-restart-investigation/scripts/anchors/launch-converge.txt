@@ -1,4 +1,0 @@
-      // The convergence pass runs after init resolves: the scheduling lock serialises it
-      // behind the init reschedule, and it catches its own failures.
-      initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask)
-        .then(() => reconcileLanguageSurfaces())
