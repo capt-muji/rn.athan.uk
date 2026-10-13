@@ -6,15 +6,17 @@ import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { COLORS } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
 import { openOverlay } from '@/stores/overlay';
-import { countdownBarShownAtom } from '@/stores/ui';
+import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 
 import Countdown from '../Countdown';
 
 const MAGRIB = 4;
+const GAP_COLON = '\u2009:\u2009';
 
 /**
  * Turns the bar preference on or off. The settings sheet writes it through the atom's own setter, and stores/ui.ts
@@ -33,14 +35,62 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     expect(screen.getByText('2h 29m')).toBeOnTheScreen();
   });
 
-  it('counts down in native digits under ar', async () => {
+  it('renders fixed-width sections with gapped colons under ar', async () => {
     showLondonDay('2026-09-11', '14:00');
     setActiveLocale('ar');
     try {
       startCountdowns();
       await render(<Countdown type={ScheduleType.Standard} />);
 
-      expect(screen.getByText('٠٢:٢٩')).toBeOnTheScreen();
+      expect(screen.getByText('٠٢')).toBeOnTheScreen();
+      expect(screen.getByText('٢٩')).toBeOnTheScreen();
+      expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+      expect(screen.queryByText('٢:٢٩')).toBeNull();
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('renders three sections under ar while the seconds preference is on', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    getDefaultStore().set(showSecondsAtom, true);
+    try {
+      startCountdowns();
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      expect(screen.getByText('٠٢')).toBeOnTheScreen();
+      expect(screen.getAllByText(GAP_COLON, { normalizer: (s) => s })).toHaveLength(2);
+    } finally {
+      setActiveLocale('en');
+      getDefaultStore().set(showSecondsAtom, false);
+    }
+  });
+
+  it('renders the held display as one node under ar, with no sections', async () => {
+    showLondonDay('2026-09-11', '21:00', { '2026-09-12': 'not stored' });
+    setActiveLocale('ar');
+    try {
+      startCountdowns();
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      expect(screen.getByText('--:--')).toBeOnTheScreen();
+      expect(screen.queryByText(GAP_COLON)).toBeNull();
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('renders the colon nodes dim', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    try {
+      startCountdowns();
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
+      const style = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
+      expect(style.color).toBe(COLORS.text.muted);
     } finally {
       setActiveLocale('en');
     }
