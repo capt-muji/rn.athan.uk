@@ -1,5 +1,8 @@
+import { intervalToDuration } from 'date-fns';
+
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
 import { localiseDigits, type TranslationKey, t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 
 // =============================================================================
 // PRAYER-TIMEZONE CLOCK
@@ -541,16 +544,32 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
 // COUNTDOWN & DISPLAY FORMATTING
 // =============================================================================
 
+/** The unit words formatTime and formatTimeAgo render; a locale supplies its own */
+export interface DurationLabels {
+  h: string;
+  m: string;
+  s: string;
+  now: string;
+}
+
+/** The stage-one labels: the catalog's own single-letter units, byte-identical to the literals they replaced */
+export const durationLabels = (): DurationLabels => ({
+  h: t('duration.h'),
+  m: t('duration.m'),
+  s: t('duration.s'),
+  now: t('duration.now'),
+});
+
 /**
  * Whole seconds remaining until a target instant, for live countdown display.
  *
  * Rounding model (countdown display contract):
  * - Rounds UP (ceil): each digit owns exactly the wall second being lived
  *   through, so digits flip on the :000 boundary like the system clock.
- * - The final second displays "0:01" — never "0:00" — because a countdown reads
+ * - The final second displays "1s" — never "0s" — because a countdown reads
  *   "N seconds remaining" and the swap to the next prayer happens at zero.
  * - Once the target has passed, holds at 1 until the caller advances the
- *   target (prevents a frozen "0:00" while the sequence refresh runs).
+ *   target (prevents a frozen "0s" while the sequence refresh runs).
  *
  * Uses Date.now() directly: countdown targets are true UTC instants (built
  * via createPrayerDatetime), so no timezone conversion is needed for a
@@ -560,7 +579,7 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
  * @returns Seconds remaining, always >= 1
  *
  * @example
- * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "0:42"
+ * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "42s"
  */
 export const getSecondsRemaining = (target: Date): number => {
   const msLeft = target.getTime() - Date.now();
@@ -585,62 +604,104 @@ export const getWallSecondDelay = (): number => {
 };
 
 /**
- * Converts seconds into the colon countdown format (owner ruling 2026-10-12:
- * numbers and colons only, every language)
+ * Converts seconds into the countdown display string. English renders the lettered
+ * design restored byte-for-byte from the pre-row-63 reference (`194ed701`); every
+ * other locale renders the fixed-width colon shapes (owner ruling 2026-10-13, row 72).
  *
- * Formatting rules:
- * 1. Seconds hidden: H:MM — minutes zero-padded, hours not ("0:42", "1:32", "25:00")
- * 2. Seconds shown: H:MM:SS over an hour, M:SS under ("9:45", "1:01:05")
- * 3. With hideSeconds, seconds still render inside the final 599s, so the ruled
- *    shapes flip at the cutoff: "9:59" at 599 s, "0:10" at 600 s
- * 4. Zero and negative clamp to "0:00"
- * 5. Days fold into hours ("25:00", never a day unit)
+ * English (lettered, the reference algorithm):
+ * 1. Negative seconds: "0s"
+ * 2. Zero units drop: a whole minute reads "1m", a whole hour "1h", 90000 s "25h"
+ * 3. hideSeconds hides seconds above 599 s; inside it they show ("45s", "9m 59s")
+ * 4. All-zero renders "0s"
  *
- * @param seconds Time in seconds (negative clamps to "0:00")
- * @param hideSeconds If true, hides seconds beyond the final 599s (default: false)
- * @returns Formatted time string
+ * Other locales (fixed-width colon, every group always double digits):
+ * 1. Seconds hidden: HH:MM ("01:32", "00:42", "25:00") — the hours are never hidden
+ * 2. Seconds shown: HH:MM:SS ("01:32:05", "00:42:05")
+ * 3. hideSeconds still shows seconds inside the final 599 s: "00:09:59" at 599 s,
+ *    "00:10" at 600 s
+ * 4. Zero and negative clamp to "00:00:00"
+ * 5. Days fold into hours ("25:00:00", never a day unit)
  *
- * Every example below is pinned by "pins every example in the JSDoc" in
+ * Every English example below is pinned by "pins every example in the JSDoc" in
  * shared/__tests__/time.test.ts. Change one and change both.
  *
  * @example
- * formatTime(3665) // "1:01:05" (default shows seconds)
- * formatTime(3665, true) // "1:01" (hideSeconds in effect)
- * formatTime(45, true) // "0:45" (shows seconds inside the final 599s)
- * formatTime(5, true) // "0:05" (zero-padded seconds group)
- * formatTime(0) // "0:00"
- * formatTime(-100) // "0:00"
- * formatTime(90000, true) // "25:00" (days converted to hours)
+ * formatTime(3665) // "1h 1m 5s" (en, default shows seconds)
+ * formatTime(3665, true) // "1h 1m" (en, hideSeconds in effect)
+ * formatTime(45, true) // "45s" (en, seconds inside the final 599 s)
+ * formatTime(0) // "0s" (en)
+ * formatTime(-100) // "0s" (en)
+ * formatTime(90000) // "25h" (en, days converted to hours)
  */
-export const formatTime = (seconds: number, hideSeconds = false): string => {
+export const formatTime = (seconds: number, hideSeconds = false): string =>
+  currentLocaleId() === 'en'
+    ? formatTimeLettered(seconds, hideSeconds, durationLabels())
+    : formatTimeFixedWidth(seconds, hideSeconds);
+
+const formatTimeLettered = (seconds: number, hideSeconds: boolean, labels: DurationLabels): string => {
+  if (seconds < 0) {
+    const localised = localiseDigits(`0${labels.s}`);
+    return localised;
+  }
+
+  const ms = seconds * 1000;
+  const duration = intervalToDuration({ start: 0, end: ms });
+  const { days, hours, minutes, seconds: secs } = duration;
+
+  const totalHours = (days || 0) * 24 + (hours || 0);
+
+  // Hide seconds if requested and time is over ~10 minutes (show seconds only in last 10m)
+  const shouldShowSeconds = !hideSeconds || seconds <= 599;
+
+  const parts = [totalHours && `${totalHours}${labels.h}`, minutes && `${minutes}${labels.m}`].filter(Boolean);
+
+  // "0s" never appears beside another unit — a whole minute reads "1m", not "1m 0s".
+  // Seconds render only when non-zero (and permitted), or when alone ("45s", "0s")
+  if ((shouldShowSeconds && secs) || parts.length === 0) {
+    parts.push(`${secs ?? 0}${labels.s}`);
+  }
+
+  const joined = parts.join(' ');
+  const localised = localiseDigits(joined);
+  return localised;
+};
+
+const formatTimeFixedWidth = (seconds: number, hideSeconds: boolean): string => {
   const total = Math.max(0, Math.floor(seconds));
   const hours = Math.floor(total / 3600);
   const minutes = Math.floor((total % 3600) / 60);
   const secs = total % 60;
   const shouldShowSeconds = !hideSeconds || seconds <= 599;
 
+  // Row 72 rule 2: fixed-width sections, every group always double digits, so a digit
+  // change never shifts the screen; rule 3 keeps the hours visible as a dim 00
   const composed = shouldShowSeconds
-    ? hours > 0
-      ? `${hours}:${pad2(minutes)}:${pad2(secs)}`
-      : `${minutes}:${pad2(secs)}`
-    : `${hours}:${pad2(minutes)}`;
+    ? `${pad2(hours)}:${pad2(minutes)}:${pad2(secs)}`
+    : `${pad2(hours)}:${pad2(minutes)}`;
   return localiseDigits(composed);
 };
 
 /**
- * Formats seconds elapsed into the colon "ago" format, minute resolution
+ * Formats seconds elapsed into the "ago" duration. English renders the lettered
+ * design of the pre-row-63 reference (`194ed701`); every other locale keeps row
+ * 63's colon shapes (owner ruling 2026-10-13, row 72).
  *
  * @param seconds - Seconds since prayer occurred (0 or positive)
- * @returns "now" (<60s, the catalog word), else H:MM ("0:02", "1:30", "2:00")
+ * @returns "now" (<60 s, the catalog word); en: "2m", "1h", "1h 30m";
+ *   other locales: "0:02", "1:00", "1:30"
  *
  * @example
  * formatTimeAgo(45)      // Returns: "now"
- * formatTimeAgo(120)     // Returns: "0:02"
- * formatTimeAgo(5400)    // Returns: "1:30"
- * formatTimeAgo(7200)    // Returns: "2:00"
+ * formatTimeAgo(120)     // Returns: "2m" (en) / "0:02" (other locales)
+ * formatTimeAgo(5400)    // Returns: "1h 30m" (en) / "1:30" (other locales)
+ * formatTimeAgo(7200)    // Returns: "2h" (en) / "2:00" (other locales)
  * formatTimeAgo(0)       // Returns: "now"
  */
 export const formatTimeAgo = (seconds: number): string => {
+  if (currentLocaleId() === 'en') {
+    return formatTimeAgoLettered(seconds, durationLabels());
+  }
+
   if (seconds < 60) {
     return localiseDigits(t('duration.now'));
   }
@@ -648,4 +709,68 @@ export const formatTimeAgo = (seconds: number): string => {
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
   return localiseDigits(`${hours}:${pad2(minutes % 60)}`);
+};
+
+const formatTimeAgoLettered = (seconds: number, labels: DurationLabels): string => {
+  if (seconds < 60) {
+    const localised = localiseDigits(labels.now);
+    return localised;
+  }
+
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) {
+    const localised = localiseDigits(`${minutes}${labels.m}`);
+    return localised;
+  }
+
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  if (remainingMinutes === 0) {
+    const localised = localiseDigits(`${hours}${labels.h}`);
+    return localised;
+  }
+  const localised = localiseDigits(`${hours}${labels.h} ${remainingMinutes}${labels.m}`);
+  return localised;
+};
+
+/** One rendered piece of a colon display string: a digit group or a colon */
+export interface CountdownSection {
+  text: string;
+  /** True while the group is the all-zero pair, and always for a colon */
+  dim: boolean;
+  colon: boolean;
+}
+
+const ALL_DIGITS = /^[0-9٠-٩]+$/;
+const ALL_ZEROS = /^[٠0]+$/;
+
+/**
+ * Splits a colon display string into renderable sections, or returns null when the
+ * string is not one: every group must be digits and there must be two or three
+ * groups. English's lettered strings and the held `--:--` fail the digit test, so
+ * they keep the single-node render (row 72's English revert).
+ */
+export const splitColonSections = (value: string): CountdownSection[] | null => {
+  const groups = value.split(':');
+  if (groups.length < 2 || groups.length > 3) return null;
+  if (!groups.every((group) => ALL_DIGITS.test(group))) return null;
+
+  const sections: CountdownSection[] = [];
+  groups.forEach((group, index) => {
+    if (index > 0) sections.push({ text: ':', dim: true, colon: true });
+    sections.push({ text: group, dim: ALL_ZEROS.test(group), colon: false });
+  });
+  return sections;
+};
+
+/**
+ * Splits a display string on its single colon for the ago badge's gap node, or
+ * returns null when the string carries no colon, more than one. The badge's words
+ * may sit either side, so unlike splitColonSections the halves are not
+ * digit-checked.
+ */
+export const splitSingleColon = (value: string): [string, string] | null => {
+  const index = value.indexOf(':');
+  if (index === -1 || value.indexOf(':', index + 1) !== -1) return null;
+  return [value.slice(0, index), value.slice(index + 1)];
 };
