@@ -2,57 +2,7 @@
   {
     "file": "components/countdown/Bar.tsx",
     "snippet": "left: tipLeftForProgress",
-    "reason": "worklet math has no logical key; 58b mirrors in tipGeometry"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: x - width / 2,",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: cx - glowR - padLeft",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: localCx - 2 - glowR,",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: localCx - r,",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: x - glowR,",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: cx - glowR * 0.45,",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: cx - (visualSize * 3.6) / 2,",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: cx - visualSize,",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: 0, top: cloudTop",
-    "reason": "decorative canvas math, direction-sign explicit"
-  },
-  {
-    "file": "components/ui/RamadanDecorations.tsx",
-    "snippet": "left: cx - r,",
-    "reason": "decorative canvas math, direction-sign explicit"
+    "reason": "worklet math has no logical key; the layout swap mirrors it (58b verified)"
   },
   {
     "file": "components/overlay/catcherGeometry.ts",
@@ -83,16 +33,6 @@
     "file": "components/overlay/catcherGeometry.ts",
     "snippet": "id: 'bottom'",
     "reason": "window-space geometry, physical by construction"
-  },
-  {
-    "file": "components/overlay/Overlay.tsx",
-    "snippet": "left: region.left",
-    "reason": "window-space geometry, physical by construction"
-  },
-  {
-    "file": "components/overlay/VeilBackdrop.tsx",
-    "snippet": "left: window.width / 2 - columnWidth",
-    "reason": "computed window-space centering; 58b decides the mirror"
   },
   {
     "file": "stores/countdown.ts",

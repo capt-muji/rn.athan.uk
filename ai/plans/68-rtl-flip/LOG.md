@@ -77,3 +77,46 @@ the red expectation is corrected: the two pure-negative cases (the
 same-direction rtlSwitch case and the no-preference bootstrap case) pass at
 red by construction. The executor's measured red already matches every other
 named failure.
+
+### Step 01 — DONE
+
+Branch `feat/68-rtl-flip` off uat (`e3761f15`), version 2.0.151. Preflight
+passes every check: on `uat`, `origin/uat` merged, version 2.0.150 at entry,
+row 67 DEFERRED, and the three anchors this step edits (`appjson-rtl`,
+`commit-flow`, `locale-ids`) each counting 1. The only porcelain entry is the
+waived untracked `ai/plans/64-volume-copy/`.
+
+Red verified exactly as the repaired plan predicts: 5 failed, 17 passed. The
+two rtlSwitch crossing cases fail on `Expected number of calls: 1, Received
+number of calls: 0` (`reloadAsync`), the first two bootstrap cases on 0
+`allowRTL`/`forceRTL` calls, and nativeConfig on `{"supportsRTL": true}`
+against `{"supportsRTL": false}`; the two pure-negative cases pass at red, as
+the repaired expectation records. All four change contracts applied verbatim.
+
+One implementation note: the bootstrap direction spies are read from inside
+`jest.isolateModules`, because the isolated registry re-executes the
+moduleNameMapper-mapped react-native mock, so a top-level import is a
+different instance (a probe proved this before the red run).
+
+Green: unit 6 suites / 52 tests pass, `components/sheets/__tests__/Language.test.tsx`
+passes 5/5 unchanged (the sheet never learned about the restart), `npx tsc
+--noEmit` exit 0, `npx biome check . --error-on-warnings` exit 0.
+`scripts/break-step1.sh`: `caught: the boundary crossing no longer
+relaunches`, `ALL AS EXPECTED: 1`.
+
+Review, cold against `git show 01542516`: app.json carries the one flag
+beside the version rule's mandated bump; the restart block sits inside the
+`try`, after the reconcile `await`; no new storage key (`preference_language`
+stays the only locale key written); no worklet, timer or subscription added;
+no unread production export. Clean read, no fix applied.
+
+Committed `01542516` (2.0.151, 12 files, +147/-6) under the version lock,
+merged `--no-ff` as `a1716f25`; the lock released after the merge. Hook:
+Test Suites 208 passed / 208 total, `Tests: 5477 passed, 5477 total`, and the
+four coverage lines at 100% (statements 5193/5193, branches 2225/2225,
+functions 1082/1082, lines 4649/4649).
+
+This entry is uncommitted on uat: the ledger carries the shas the commit
+creates, so it rides into step 2's commit (the ticket 59 precedent).
+
+session: ses_ecd61365cffe8TKeEwD5BM4On0

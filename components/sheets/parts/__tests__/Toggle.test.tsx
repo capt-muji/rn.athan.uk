@@ -4,6 +4,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { I18nManager } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION, SIZE } from '@/shared/constants';
@@ -91,5 +92,36 @@ describe('the reminder switch while the Athan is off', () => {
 
     expect(onToggle).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+});
+
+// The components project renders against the real I18nManager, so the direction the thumb
+// reads at render is forced here rather than through the shared react-native mock
+describe('the reminder switch under RTL', () => {
+  beforeEach(() => {
+    jest
+      .spyOn(I18nManager, 'getConstants')
+      .mockReturnValue({ isRTL: true, doLeftAndRightSwapInRTL: true, localeIdentifier: 'ar' });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame
+  it('draws its thumb settled at the leading side when mounted on', async () => {
+    await render(<Toggle value onToggle={jest.fn()} />);
+
+    expect(thumb()).toHaveStyle({ transform: [{ translateX: -SIZE.toggle.translateX }] });
+  });
+
+  // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
+  it('animates its thumb to the leading side when the value changes after mount', async () => {
+    const withTiming = jest.spyOn(Reanimated, 'withTiming');
+    await render(<Toggle value={false} onToggle={jest.fn()} />);
+
+    await screen.rerender(<Toggle value onToggle={jest.fn()} />);
+
+    expect(withTiming).toHaveBeenCalledWith(-SIZE.toggle.translateX, { duration: ANIMATION.duration });
   });
 });

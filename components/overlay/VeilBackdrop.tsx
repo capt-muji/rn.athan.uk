@@ -37,7 +37,7 @@ export default function VeilBackdrop() {
   const glowStyle = useMemo(
     () => ({
       top: -columnWidth / 1.25,
-      left: window.width / 2 - columnWidth,
+      transform: [{ translateX: window.width / 2 - columnWidth }],
     }),
     [window.width, columnWidth]
   );
@@ -62,6 +62,9 @@ const styles = StyleSheet.create({
     start: 0,
     end: 0,
     bottom: 0,
+    // The glow is centred in window space; the pinned Yoga resolves an inset-less
+    // absolute against its containing node's direction, so this one holds it physical
+    direction: 'ltr',
   },
   gradient: {
     position: 'absolute',

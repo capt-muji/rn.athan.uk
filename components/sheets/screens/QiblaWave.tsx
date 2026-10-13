@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { I18nManager, StyleSheet, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   Easing,
@@ -50,6 +50,8 @@ const WAVE_DURATION = 3200;
 export default function QiblaWave({ size }: { size: number }) {
   const figureWidth = size * WAVE.width;
   const figureHeight = size * WAVE.height;
+  // The figure mirrors under RTL; the worklets cannot read react-native, so the direction passes in
+  const isRTL = I18nManager.getConstants().isRTL;
   const body = phoneBody(size);
   const screen = phoneScreen(size);
   const notch = phoneNotch(size);
@@ -67,19 +69,19 @@ export default function QiblaWave({ size }: { size: number }) {
   }, [progress]);
 
   const trailProps = useAnimatedProps(() => ({
-    d: waveTrail(progress.value, figureWidth, figureHeight),
+    d: waveTrail(progress.value, figureWidth, figureHeight, isRTL),
   }));
 
   // Travels and TURNS, never scales: the phone keeps its dimensions the whole way round, and facing along the
   // curve is what keeps the trail leaving its bottom edge
   const phoneStyle = useAnimatedStyle(() => {
-    const at = wavePoint(progress.value, figureWidth, figureHeight);
+    const at = wavePoint(progress.value, figureWidth, figureHeight, isRTL);
 
     return {
       transform: [
         { translateX: at.x },
         { translateY: at.y },
-        { rotate: `${waveHeading(progress.value, figureWidth, figureHeight)}deg` },
+        { rotate: `${waveHeading(progress.value, figureWidth, figureHeight, isRTL)}deg` },
       ],
     };
   });
@@ -95,7 +97,7 @@ export default function QiblaWave({ size }: { size: number }) {
         height={canvasHeight}
         viewBox={`${-canvasWidth / 2} ${-canvasHeight / 2} ${canvasWidth} ${canvasHeight}`}>
         <Path
-          d={wavePath(figureWidth, figureHeight)}
+          d={wavePath(figureWidth, figureHeight, isRTL)}
           fill={'none'}
           stroke={`rgba(${PALETTE.structure}, 0.16)`}
           strokeWidth={size * WAVE.stroke}
