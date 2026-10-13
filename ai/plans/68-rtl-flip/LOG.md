@@ -401,3 +401,61 @@ Left on the phone: the mock build 2.0.156, the app in English and LTR after
 that cold launch, automatic time still on (`settings get global auto_time` = 1).
 
 session: ses_ecd61365cffe8TKeEwD5BM4On0
+
+### Step 04 — DONE (audit verification on 2.0.158: the restore fix holds, the pill does not)
+
+Rebuilt from `uat` `3e35e67f` (2.0.158): `BUILD-MOCK OK` in 322s, `aapt2
+dump badging` prints `package: name='com.mugtaba.athan' versionCode='1000000'
+versionName='2.0.158'`, installed with `adb install -r`.
+
+The warm restore is fixed. Both crossings logged the reload:
+`logcat-ar-cross-verify.txt` holds `ReactHost{0}.getOrCreateReloadTask():
+Stopping all React Native surfaces` and `getOrCreateReloadTask(): Destroying
+ReactContext` once each, and `logcat-en-cross-verify.txt` holds the full
+sequence once: `getOrCreateReloadTask()`, `getOrCreateReloadTask(): Starting
+React Native reload`, `Calling ReactContext.onHostPause()`, `Stopping all
+React Native surfaces`, `Destroying ReactContext`, `Destroying ReactInstance`.
+`19-en-warm-restore.png` is the LTR shell (mosque mark right, names left,
+bells right, bar filling from the left), so the 2.0.155 behaviour is back and
+finding 11 is closed. The non-fatal `ReactNoCrashSoftException` from
+`AppStateModule.onHostPause` still logs on each crossing (queue row 71).
+
+The pill, measured on the same sheet and the same selection (Fajr, Sound):
+
+- `20-ar-pill.png` (ar): `uiautomator dump /sdcard/ar_pill.xml` fails with
+  `ERROR: null root node returned by UiTestAutomationBridge.` and writes no
+  file. `maestro --device 3T_SERIAL hierarchy --compact` gives the control
+  `bounds=[96,872][984,987]` with `إيقاف` RadioButton [686,880][977,979]
+  (label [766,906][840,953]), `صامت` [395,880][685,979] (label
+  [472,906][553,953]) and `صوت` [104,880][395,979] (label [186,906][257,953]),
+  `صوت` carrying `selected=true`. No indicator element appears in the
+  hierarchy, and a purple-pixel scan of the whole frame finds NO pill in y
+  860-1000: the control renders with no visible indicator although `صوت` is
+  selected.
+- `21-en-pill.png` (en, same sheet and selection): `uiautomator dump` fails
+  with `ERROR: could not get idle state.` `maestro hierarchy` gives
+  `Off` [104,880][395,979], `Silent` [395,880][685,979], `Sound`
+  [686,880][977,979] `selected=true`; the purple-pixel scan puts the pill at
+  bbox (684,880)-(973,978), inside the control on `Sound`.
+
+So finding 12 stays open on 2.0.158, and more sharply than before: under ar
+the athan control draws no visible indicator at all, where under en the same
+selection draws it on its segment. The Reminder control's pill is visible
+under ar in the same frame, so the difference is the three-option control.
+
+Neither `uiautomator dump` nor the hierarchy exposes the indicator as an
+element: the depth-15 children of the control are the three RadioButtons and
+their icon and label nodes only, in both languages.
+
+Readings of the frames: `20-ar-pill.png` shows `الفجر` right with its bell
+left, the athan labels right-to-left `إيقاف` / `صامت` / `صوت` all in the
+unselected style with no pill, and the Reminder 1 pill visible below.
+`21-en-pill.png` shows `Fajr` left with its bell right, `Off` / `Silent` /
+`Sound` left-to-right with the pill on `Sound`.
+
+Left on the phone: the mock build 2.0.158, the app in English and LTR
+(`22-final-state.png`: mosque mark right, names left, bells right), automatic
+time still on (`settings get global auto_time` = 1). Earlier captures are
+untouched; nothing committed, nothing pushed.
+
+session: ses_ecd61365cffe8TKeEwD5BM4On0

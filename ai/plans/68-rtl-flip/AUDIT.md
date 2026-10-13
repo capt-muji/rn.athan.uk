@@ -39,3 +39,33 @@ restored LTR (`18-en-coldlaunch.png`).
 | --- | --- | --- | --- | --- |
 | 11 | The audit's own fix to finding 2 introduced a regression: `I18nManager.getConstants().isRTL` is stale within a process after a crossing, so the warm ar-to-en crossing stopped relaunching and the shell stayed mirrored | The recapture's device measurement | Confirmed by the two restore frames and the logcat (no reload task on the warm crossing; a reload on the cold launch) | The direction in force comes from the app's own record: the stored preference (blank means the device's launch direction, captured before any forceRTL); the stale getConstants read is gone. Suite 4/4, coverage 100% |
 | 12 | The segmented pill's Arabic placement: the recapture's sheet frame shows the pill at the control's right edge rather than over the selected (leftmost) segment, so the fixed geometry's device face is not yet proven | The lead's read of `11-ar-segmented.png` against the en reference `17b-en-segmented-reference.png` | Open: the frame is ambiguous (a stale measure, a mid-snap capture and a real misplacement all fit it) | One device measurement: install the fixed build, open the sheet under ar, `uiautomator dump` the pill's bounds beside the selected option's name, plus the en twin; the lead reads the pair |
+
+## Final state (2026-10-13, the run closing)
+
+Findings 1 to 11 are fixed and merged (2.0.156, 2.0.158); the recapture's
+evidence sits in LOG.md and `$HOME/athan-gitree/sessions/68/`. Finding 12
+closes this audit OPEN, not passed:
+
+- Measured on the 2.0.158 device build: under ar, the athan control's
+  three-option SegmentedControl renders NO visible indicator (a full-frame
+  purple scan in the control's band finds none) while `صوت` (Sound) carries
+  `selected=true`; under en the same state draws the pill on `Sound`
+  (bbox 684,880-973,978). The two-option Reminder control's pill IS visible
+  under ar in the same frame. Neither `uiautomator dump` nor the maestro
+  hierarchy exposes the indicator as an element in either language.
+- Working diagnosis (fits both observations): under this RN 0.88.0-rc.3 the
+  absolutely-positioned indicator's `start: 3` appears to anchor at the
+  physical left edge even under RTL, so the corrected negative travel
+  (-selectedIndex segments) moves the pill off-screen left; an index-0 pill
+  (translateX 0) stays visible, which is exactly the Reminder control.
+- The next session's audit continuation: verify the anchor's resolution
+  (a one-off debug border or a bounds log), then either key the anchor to
+  the measured container (`right`-equivalent inset under RTL, allowlisted if
+  the gate needs it) or fold the whole offset into the single transform
+  (containerWidth minus inset minus slot, no anchor edge at all). The suite
+  must keep the en bytes identical and the device capture must show the pill
+  on `صوت`.
+
+The audit is NOT passed; `uat` at 2.0.159 holds the reviewed fixes and this
+record, unpushed past 2.0.157 (2.0.151-2.0.153 were published early and are
+covered by this audit's reviews; 2.0.155 through 2.0.159 wait for the pass).
