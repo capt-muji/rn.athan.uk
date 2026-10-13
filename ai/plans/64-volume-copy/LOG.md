@@ -46,3 +46,19 @@ review fix was repointed accordingly; the Somali `volume.note.ios` typo
 `shared/i18n/index.ts:42`; and the en-length gate's wording tightened to
 "in en". The 68 preflight fix above was applied and pushed as 2.0.152 before
 68's step 2 dispatch.
+
+## Planning (2026-10-13)
+
+Replan round one, from the executor's stop mid-step-1. The step's own
+contracts left `getHelpTopics`'s null-answer drop (`shared/help.ts:144`)
+with no test: the old quiet entry's `ios: null` was the catalog's only null
+and the only exercise that branch had, so the pre-commit coverage gate
+refused the commit at 99.98% statements / 99.95% branches, one statement and
+one branch short. Verified from the code: `HELP_ENTRIES` is module-internal,
+no test can inject a null entry, and deleting the guard lies outside the
+step's contracts as written. Ruled D64.9: step 1 deletes the dead guard and
+the `ios`/`android` `| null` union from `HelpEntryKeys`; the platform split
+machinery and `HelpTopic` stand unchanged. Nothing was committed; `uat`
+stayed clean at `9f27e2dd` (2.0.174), and the executor's verified work
+survives as `~/athan-gitree/sessions/64/step1-unfinished.patch` (red, green
+and break all proven). Execution resumes from the patch plus this amendment.

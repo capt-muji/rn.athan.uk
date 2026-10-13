@@ -111,7 +111,12 @@ failure is a STOP.
    (no `steps` member at all: `[]` fails `help.test.ts:149`'s
    `steps.length > 0` and renders an empty fix block, the `help.q.cutoff`
    shape at `shared/help.ts:124-132` is the model; the answers carry the
-   instruction inline, keeping each under the 160-char gate).
+   instruction inline, keeping each under the 160-char gate). The volume
+   entry removes the catalog's last null answer: delete the
+   `if (!answer) return [];` drop in `getHelpTopics` and the
+   `ios`/`android` `| null` union from `HelpEntryKeys`
+   (`shared/help.ts:36-37`, `:144`), both dead after this change (D64.9);
+   the coverage gate refuses the commit while the uncovered branch stands.
 
 3. `components/sheets/screens/Alert.tsx`: inside `AlertSheetBody`, after the
    second `ReminderCard` (`Alert.tsx:239-249`), render one note line
@@ -170,6 +175,8 @@ R1.1-R4.1.
 
 - The five keys carry the plan's bytes in all six catalogs; the three old
   keys are gone from every catalog.
+- The null-answer drop and the `| null` union are gone from `shared/help.ts`;
+  every entry carries both answers.
 - No value trips the alert-word, length or token gates.
 - Both sheets choose their key by `Platform.OS`; no other line moved.
 - The lock file's five hashes equal the new en hash.
