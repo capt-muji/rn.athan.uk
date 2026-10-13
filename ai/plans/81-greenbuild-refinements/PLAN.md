@@ -183,7 +183,7 @@ and need not (list times are static strings, nothing shifts).
 
 ## 6. Steps
 
-- [ ] Step 1: the seconds group never dims (`steps/1-seconds-never-dim.md`, weight 2)
+- [x] Step 1: the seconds group never dims (`steps/1-seconds-never-dim.md`, weight 2)
 - [ ] Step 2: the timer's doubled colon gaps and the ar countdown size (`steps/2-timer-gaps-ar-size.md`, weight 2)
 - [ ] Step 3: the prayer time column splits its colon (`steps/3-time-column-colon.md`, weight 2)
 - [ ] Step 4: the ago badge colon, the list gap and the badge lift (`steps/4-ago-list-gap.md`, weight 2)
