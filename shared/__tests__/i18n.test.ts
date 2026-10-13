@@ -1,8 +1,9 @@
 /**
  * The en catalog's own gates
  *
- * Byte parity: every member's value is pinned to the literal it replaced, so a catalog edit
- * that drifts one byte fails here before any screen ships it. The closure and join tests keep
+ * Byte parity: every literal member's value is pinned to the literal it replaced, so a catalog edit
+ * that drifts one byte fails here before any screen ships it; parameterized keys ride the token-parity
+ * gate instead. The closure and join tests keep
  * the prayer labels exactly on the frozen id vocabulary: a new id without a label, or a label
  * that stops matching its title-case array slot, cannot join silently. The plural guard is
  * the deliberate-decision record: Hermes ships no Intl.PluralRules, so no plural construct
