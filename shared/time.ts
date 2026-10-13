@@ -643,7 +643,7 @@ export const formatTimeAgo = (seconds: number): string => {
 /** One rendered piece of a colon display string: a digit group or a colon */
 export interface CountdownSection {
   text: string;
-  /** True while the group is the all-zero pair, and always for a colon */
+  /** True while the group is the all-zero pair, except a three-group display's seconds, which never dim (row 81) */
   dim: boolean;
   colon: boolean;
 }
@@ -664,7 +664,9 @@ export const splitColonSections = (value: string): CountdownSection[] | null => 
   const sections: CountdownSection[] = [];
   groups.forEach((group, index) => {
     if (index > 0) sections.push({ text: ':', dim: true, colon: true });
-    sections.push({ text: group, dim: ALL_ZEROS.test(group), colon: false });
+    // Seconds tick on, so they are never a spent category and never dim (row 81)
+    const isSeconds = groups.length === 3 && index === 2;
+    sections.push({ text: group, dim: !isSeconds && ALL_ZEROS.test(group), colon: false });
   });
   return sections;
 };
