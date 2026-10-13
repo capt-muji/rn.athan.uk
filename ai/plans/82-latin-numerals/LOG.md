@@ -123,6 +123,30 @@ only at the module-scope `typographyFor` calls; no dim, colour, gap or size toke
 ar pin is byte-identical; the JSDoc examples match the JSDoc-contract test. No fix needed.
 
 Merged into `uat` with the step-1 merge message (`2.0.223 - merge feat/82-format-flip: step 1,
-the countdown format flip`); the commit and merge shas are recorded in the step-2 entry below.
+the countdown format flip`); commit `02aaff91`, merge `eae82296`.
 
 session: ses_ec9179891ffeKC048dtg1baPWV
+
+### Step 02 — STOPPED
+
+Step 2's pre-flight fails its own anchor list before any work begins: `sections-regex.txt` counts
+0 in `shared/time.ts` (want 1). The anchor quotes the `splitColonSections` docblock as generated
+from `a4d0b8c6`, but step 1's contract 1 rewrote that docblock: the phrase "English's lettered
+strings and the held `--:--` fail the digit test, so they keep the single-node render" became
+"the held `--:--` fails the digit test, so it keeps the single-node render". The anchor's other
+lines (the `ALL_DIGITS`/`ALL_ZEROS` pair, the signature and the first two body lines) still match.
+Every other step-2 anchor counts 1. No branch was created and no code changed; the tree holds
+only the plan folder's step-1 records. NEEDS REPLAN: regenerate `sections-regex.txt` from the
+post-step-1 tree, or cut it to its code-only lines.
+
+Evidence: `$HOME/athan-gitree/sessions/82/step2-preflight-failure.txt`.
+
+session: ses_ec9179891ffeKC048dtg1baPWV
+
+### Replan round three (2026-10-13, lead)
+
+Step 2's `sections-regex` anchor quoted `splitColonSections`'s pre-step-1 docblock, which
+step 1's contract 1 rewrote, so it counted 0 and step 2's pre-flight failed before any
+work. Re-pinned the anchor from the post-step-1 tree (the `ALL_DIGITS`/`ALL_ZEROS` pair
+through the first body lines); it counts 1 again. Every other step-2 anchor counted 1.
+No step-2 code changed. Step 1 is DONE and merged at `eae82296` (2.0.223).
