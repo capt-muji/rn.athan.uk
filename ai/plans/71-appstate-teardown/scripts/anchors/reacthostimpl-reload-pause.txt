@@ -1,7 +1,0 @@
-              if (
-                  reactContext != null &&
-                      reactLifecycleStateManager.lifecycleState == LifecycleState.RESUMED
-              ) {
-                stateTracker.enterState(method, "Calling ReactContext.onHostPause()")
-                reactContext.onHostPause()
-              }
