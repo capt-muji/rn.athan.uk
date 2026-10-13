@@ -28,7 +28,7 @@ jest.mock('@/hooks/useAnimation', () => {
 });
 
 const MAGRIB = 4;
-const GAP_COLON = '\u2009:\u2009';
+const GAP_COLON = '\u2009\u2009:\u2009\u2009';
 
 /**
  * Turns the bar preference on or off. The settings sheet writes it through the atom's own setter, and stores/ui.ts
