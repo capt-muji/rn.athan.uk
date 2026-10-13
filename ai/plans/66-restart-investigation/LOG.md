@@ -86,3 +86,26 @@ and the two nice fixes (the section 4 ambiguity, the stop-and-ask relay).
   uat with the plan's message.
 
 session: ses_ecc503abeffeGjW9lWw7YwOI31
+
+### Step 03 — done
+
+- Branch `docs/66-3-recommendation` off uat `e4869125` (2.0.183). Anchor check: the same
+  seven anchors, each count 1. Red: FINDINGS.md held sections 1 to 3 only; the commit
+  appends section 4.
+- Change: section 4 per the three contract items. Four options (status quo,
+  always-restart through the in-process reload, always-restart as a full process
+  restart, the hybrid), each with heals, costs and its evidence sections; one
+  recommendation (option 1, the status quo) resting on named sections; the ruling list
+  carries the final pick, the D59 revise-or-absorb question, D51's timing, and the four
+  D87-unquantified costs with their settling checks.
+- Green run: sections 1 to 4 read as one document; 31 section-number citations in
+  section 4; no open question left for the executor (the ruling list holds everything
+  for the owner). Style scan clean.
+- Break script: none for a docs step.
+- Version: lock held; origin/uat fetched and confirmed merged; 2.0.183 to 2.0.184 in
+  app.json, package.json, android/app/build.gradle, app.json first. Tests: none run,
+  docs-only step.
+- Commit: `2.0.184 - docs(plans): 66 step 3, the options and the recommendation`; merge
+  `--no-ff` into uat with the plan's message.
+
+session: ses_ecc503abeffeGjW9lWw7YwOI31
