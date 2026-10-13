@@ -1,0 +1,12 @@
+export const splitColonSections = (value: string): CountdownSection[] | null => {
+  const groups = value.split(':');
+  if (groups.length < 2 || groups.length > 3) return null;
+  if (!groups.every((group) => ALL_DIGITS.test(group))) return null;
+
+  const sections: CountdownSection[] = [];
+  groups.forEach((group, index) => {
+    if (index > 0) sections.push({ text: ':', dim: true, colon: true });
+    sections.push({ text: group, dim: ALL_ZEROS.test(group), colon: false });
+  });
+  return sections;
+};

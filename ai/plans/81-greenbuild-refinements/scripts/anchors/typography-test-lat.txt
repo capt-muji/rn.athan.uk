@@ -1,0 +1,10 @@
+  expect(ty.lineHeight(22)).toBe(22);
+  expect(ty.letterSpacing(0)).toBe(0);
+  expect(ty.letterSpacing(0.2)).toBe(0.2);
+  expect(ty.letterSpacing(0.3)).toBe(0.3);
+  expect(ty.arabic).toBe(false);
+};
+
+describe('typographyFor', () => {
+  it('resolves ar to the Arabic faces at the pinned factor table', () => {
+    expectArabicRecord(typographyFor('ar'));

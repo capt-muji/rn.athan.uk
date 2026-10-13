@@ -1,0 +1,15 @@
+import { act, render, screen } from '@testing-library/react-native';
+
+import { showLondonDay } from '@/__tests__/harness';
+import { setActiveLocale } from '@/shared/i18n/locale';
+import { ScheduleType } from '@/shared/types';
+import { openOverlay } from '@/stores/overlay';
+
+import PrayerTime from '../Time';
+
+const SUNRISE = 1;
+const DHUHR = 2;
+const ASR = 3;
+const MIDNIGHT = 0;
+const SUHOOR = 2;
+const DUHA = 3;

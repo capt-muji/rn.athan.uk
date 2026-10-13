@@ -1,0 +1,8 @@
+              section.colon ? (
+                <Text
+                  // biome-ignore lint/suspicious/noArrayIndexKey: the colon's slot is fixed by the string's shape, the list never reorders
+                  key={`colon-${index}`}
+                  style={styles.countdownColon}>
+                  {'\u2009:\u2009'}
+                </Text>
+              ) : (
