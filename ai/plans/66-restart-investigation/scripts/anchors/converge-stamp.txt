@@ -1,3 +1,0 @@
-    const armed = await withSchedulingLock(() => rescheduleAllForLanguageChange(), 'reconcileLanguageSurfaces');
-
-    if (armed) store.set(lastArmedLanguageAtom, currentLocaleId());
