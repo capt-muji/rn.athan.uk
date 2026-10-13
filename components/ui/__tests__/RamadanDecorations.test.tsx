@@ -197,7 +197,10 @@ describe('the Ramadan decorations on Monday 15 February 2027 at 20:00, 8 Ramadan
       transform?: { translateX?: number }[];
     };
 
-    expect(style.transform?.[0]).toEqual({ translateX: 0 });
+    // The cloud's converted inset: the old left constant, now the transform's
+    // live first entry (750 in this rendered geometry)
+    expect(style.transform).toHaveLength(1);
+    expect(style.transform?.[0]).toEqual({ translateX: 750 });
     expect(style.left).toBeUndefined();
   });
 });

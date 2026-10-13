@@ -55,7 +55,9 @@ export const reconcileLanguageSurfaces = async (): Promise<void> => {
  * The busy atom brackets the whole run so the sheet's progress face covers it.
  */
 export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
-  const directionBefore = localeDirection(currentLocaleId());
+  // The direction in force, not the locale's: a system-RTL device running an
+  // LTR app locale stays mirrored until a relaunch forces the new direction.
+  const directionBefore = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
   store.set(languageCommitBusyAtom, true);
   try {
     store.set(languagePreferenceAtom, locale);
@@ -66,7 +68,13 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
       // force the new direction and relaunch. The busy face ends here.
       I18nManager.allowRTL(true);
       I18nManager.forceRTL(localeDirection(locale) === 'rtl');
-      await Updates.reloadAsync();
+      try {
+        await Updates.reloadAsync();
+      } catch (error) {
+        // A refused relaunch leaves the forced direction for the next launch
+        // to apply; the switch itself completed (Error.tsx's guard shape).
+        logger.warn('LANGUAGE: relaunch failed after the RTL flip', { error });
+      }
     }
   } finally {
     store.set(languageCommitBusyAtom, false);
