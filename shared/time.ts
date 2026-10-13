@@ -545,15 +545,15 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
 // =============================================================================
 
 /** The unit words formatTime and formatTimeAgo render; a locale supplies its own */
-export interface DurationLabels {
+interface DurationLabels {
   h: string;
   m: string;
   s: string;
   now: string;
 }
 
-/** The stage-one labels: the catalog's own single-letter units, byte-identical to the literals they replaced */
-export const durationLabels = (): DurationLabels => ({
+/** The catalog's single-letter unit labels */
+const durationLabels = (): DurationLabels => ({
   h: t('duration.h'),
   m: t('duration.m'),
   s: t('duration.s'),
@@ -605,8 +605,8 @@ export const getWallSecondDelay = (): number => {
 
 /**
  * Converts seconds into the countdown display string. English renders the lettered
- * design restored byte-for-byte from the pre-row-63 reference (`194ed701`); every
- * other locale renders the fixed-width colon shapes (owner ruling 2026-10-13, row 72).
+ * design; every other locale renders the fixed-width colon shapes (owner ruling
+ * 2026-10-13, row 72).
  *
  * English (lettered, the reference algorithm):
  * 1. Negative seconds: "0s"
@@ -683,8 +683,8 @@ const formatTimeFixedWidth = (seconds: number, hideSeconds: boolean): string => 
 
 /**
  * Formats seconds elapsed into the "ago" duration. English renders the lettered
- * design of the pre-row-63 reference (`194ed701`); every other locale keeps row
- * 63's colon shapes (owner ruling 2026-10-13, row 72).
+ * design; every other locale keeps row 63's colon shapes (owner ruling 2026-10-13,
+ * row 72).
  *
  * @param seconds - Seconds since prayer occurred (0 or positive)
  * @returns "now" (<60 s, the catalog word); en: "2m", "1h", "1h 30m";
@@ -748,7 +748,7 @@ const ALL_ZEROS = /^[٠0]+$/;
  * Splits a colon display string into renderable sections, or returns null when the
  * string is not one: every group must be digits and there must be two or three
  * groups. English's lettered strings and the held `--:--` fail the digit test, so
- * they keep the single-node render (row 72's English revert).
+ * they keep the single-node render.
  */
 export const splitColonSections = (value: string): CountdownSection[] | null => {
   const groups = value.split(':');

@@ -1,4 +1,0 @@
-    [ScheduleType.Standard, 'Asr', '2:05'],
-    [ScheduleType.Extra, 'Suhoor', '6:12'],
-  ])('reads the %s schedule’s own name and time', (type, name, display) => {
-    given(type, { next: { english: name }, displayDate: '2026-10-17', name, display });
