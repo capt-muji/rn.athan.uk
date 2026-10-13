@@ -82,7 +82,7 @@
 <footer id="foot"></footer>
 <div id="error"></div>
 <script>
-  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Blocked', 'Upstream', 'Audit', 'Done', 'Owner-led'];
+  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Blocked', 'Audit', 'Done', 'Owner-led'];
   let board = null;
 
   const el = (tag, className, text) => {
@@ -198,9 +198,11 @@
     columns.textContent = '';
     const byColumn = new Map(COLUMNS.map((name) => [name, []]));
     const deferred = [];
+    const upstream = [];
     for (const ticket of board.tickets) {
       const placed = displayColumn(ticket);
       if (byColumn.has(placed)) byColumn.get(placed).push(ticket);
+      else if (ticket.column === 'Upstream') upstream.push(ticket);
       else if (ticket.column === 'Deferred' || placed === 'Deferred') deferred.push(ticket);
     }
     const inFlight = byColumn.get('In progress');
@@ -216,6 +218,7 @@
         columns.append(columnEl(name, tickets));
       }
     }
+    if (upstream.length > 0) columns.append(columnEl('Upstream', upstream));
     if (deferred.length > 0) columns.append(columnEl('Deferred', deferred));
   }
 
