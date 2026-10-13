@@ -77,7 +77,12 @@ if [ "${#wanted[@]}" -gt 0 ]; then
       fi
     done
   done
-  pairs=("${filtered[@]}")
+  # bash 3.2 aborts on expanding an empty array under set -u, so check before assigning
+  if [ "${#filtered[@]}" -eq 0 ]; then
+    say "no named anchor matches the step's list (a step asked for an anchor this pre-flight does not carry)"
+  else
+    pairs=("${filtered[@]}")
+  fi
 fi
 
 for entry in "${pairs[@]}"; do

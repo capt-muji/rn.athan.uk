@@ -30,12 +30,24 @@ over the simulator's network and the countdown runs against the real clock. The
 countdown animates, and the device atlas records that interactive snapshots wedge on
 animated screens: screenshots are the read, `vision` the reader.
 
-1. Boot and build through the iOS build MCP. Call `session_show_defaults` first; when
-   project, scheme and simulator are set, `build_run_sim` immediately (it boots the
-   simulator). When defaults are unset, point them at the repo's `ios/` derived
-   workspace, scheme `Athan`, any booted iPhone simulator (placeholder
-   `SIMULATOR_UDID`), configuration Release.
-2. Expected: the build exits clean, the app installs and launches, and the home screen
+Sequence, in order (the repo's ignored `ios/` folder holds a stale derivation at
+2.0.45, so the version commit's bump must flow through a clean prebuild before any
+build):
+
+1. Bump this step's version in the working tree first (`app.json`, `package.json`,
+   `android/app/build.gradle`, all three matching, `app.json` first), so the prebuild
+   and the build carry the step's own version; the commit lands after the proof with
+   the same bump.
+2. `npx expo prebuild -p ios --clean` with the production env inline, sourced from
+   the owner's key staging and never printed or written anywhere:
+   `EXPO_PUBLIC_ENV=prod EXPO_PUBLIC_API_KEY="$(cat ~/.config/athan/.api_key)"`
+   prefixed to the command. Expected: the prebuild rewrites `ios/` and exits 0.
+   Leave `EXPO_PUBLIC_IOS_WIDGETS` unset: this proof reads app surfaces only.
+3. Build and run through the iOS build MCP. Call `session_show_defaults` first; when
+   project (the freshly prebuilt `ios/` workspace), scheme `Athan` and simulator are
+   set, `build_run_sim` immediately with configuration Release (it boots the
+   simulator; any booted iPhone serves, placeholder `SIMULATOR_UDID`).
+4. Expected: the build exits clean, the app installs and launches, and the home screen
    shows the Standard list with its countdown. Anything else is STOP with the log
    tail.
 

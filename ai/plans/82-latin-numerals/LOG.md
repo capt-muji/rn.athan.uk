@@ -19,3 +19,19 @@ recorded in PLAN.md section 2.1 with its evidence.
   beyond that reddens the ar pins measured in step 2's red list, including the four
   widget-renderer pins after the widget map dies. tsc clean after each flip.
 - 30 anchors generated from `a4d0b8c6`, each counted exactly 1.
+
+### Grill round one (2026-10-13)
+
+The griller verified the anchors, the suite totals, the deletion inventory and the
+break substitutions against the code. Twelve findings, all applied: six must (three
+wrong green values where the composer shows seconds by default, `formatTime(60)` is
+`00:01:00` not `00:01`; the missed `formatPrayerTime` ar pin in the step-2 red list,
+now six failed with the `05:44` flip; the break-step2 byte shape pinned in its
+contract; the Ago badge's three-node query shape under en), five should (the complete
+en pin list with its rule, the three negative assertions that die with the map, the
+restore-list arithmetic, the seven widget call lines, the step-3 prebuild sequence
+with the stale `ios/` derivation and the prod env staging), one nice (the preflight's
+bash 3.2 empty-array guard). No second round: every finding was a numeric or shape
+correction re-verified against the composer here, none structural; the griller's own
+report confirms the structure sound. All twelve are applied, the nice included.
+
