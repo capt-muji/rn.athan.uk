@@ -45,6 +45,8 @@
   .card-head { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
   .card-head .order { font-family: var(--mono); font-size: 10.5px; color: var(--violet); flex-shrink: 0; }
   .card-head .order.done { color: var(--muted); }
+  .head-right { display: inline-flex; align-items: center; gap: 5px; }
+  .platform-icons { display: inline-flex; gap: 3px; color: var(--muted); }
   .state.st-backlog { color: #7d8db0; }
   .state.st-planning { color: #62a0ff; }
   .state.st-ready { color: #3fb9c8; }
@@ -93,7 +95,7 @@
 <footer id="foot"></footer>
 <div id="error"></div>
 <script>
-  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Blocked', 'Audit', 'Done', 'Owner-led'];
+  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Blocked', 'Audit', 'Owner-led', 'Deferred'];
   let board = null;
 
   const el = (tag, className, text) => {
@@ -176,6 +178,23 @@
     return 'Not scheduled yet.';
   }
 
+  const APPLE_PATH = 'M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701';
+  const ANDROID_PATH = 'M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4591a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4591C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1023-2.6892-7.5745-6.1185-9.4396';
+
+  function glyphEl(path) {
+    const holder = el('span', 'platform-icons');
+    holder.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="' + path + '" fill="currentColor"/></svg>';
+    return holder;
+  }
+
+  function platformIconsEl(ticket) {
+    if (ticket.platform === null) return null;
+    const wrap = el('span', 'platform-icons');
+    if (ticket.platform === 'iOS' || ticket.platform === 'Both') wrap.append(glyphEl(APPLE_PATH));
+    if (ticket.platform === 'Android' || ticket.platform === 'Both') wrap.append(glyphEl(ANDROID_PATH));
+    return wrap;
+  }
+
   function statusClass(ticket, blocked) {
     if (blocked) return 'st-blocked';
     if (ticket.status === 'DONE') return 'st-done';
@@ -195,7 +214,11 @@
     card.id = 'ticket-' + ticket.order;
     const head = el('div', 'card-head');
     head.append(el('span', 'state ' + statusClass(ticket, blocked), stateWord(ticket)));
-    head.append(el('span', 'order' + (ticket.status === 'DONE' ? ' done' : ''), '#' + ticket.order));
+    const headRight = el('span', 'head-right');
+    const icons = platformIconsEl(ticket);
+    if (icons !== null) headRight.append(icons);
+    headRight.append(el('span', 'order' + (ticket.status === 'DONE' ? ' done' : ''), '#' + ticket.order));
+    head.append(headRight);
     card.append(head);
     const top = el('div', 'top');
     top.append(el('span', 'name', ticket.name));
@@ -232,14 +255,10 @@
   function renderColumns() {
     const columns = document.getElementById('columns');
     columns.textContent = '';
-    const byColumn = new Map(COLUMNS.map((name) => [name, []]));
-    const deferred = [];
-    const upstream = [];
+    const byColumn = new Map([...COLUMNS, 'Done', 'Upstream'].map((name) => [name, []]));
     for (const ticket of board.tickets) {
       const placed = displayColumn(ticket);
       if (byColumn.has(placed)) byColumn.get(placed).push(ticket);
-      else if (ticket.column === 'Upstream') upstream.push(ticket);
-      else if (ticket.column === 'Deferred' || placed === 'Deferred') deferred.push(ticket);
     }
     const inFlight = byColumn.get('In progress');
     const sharedGroup = inFlight.length === 2 && inFlight[0].group !== null && inFlight[0].group === inFlight[1].group;
@@ -248,18 +267,14 @@
       if (name === 'In progress') {
         const count = inFlight.length === 2 && !sharedGroup ? '2 in flight' : String(inFlight.length);
         columns.append(columnEl(name, tickets, { hero: true, red: sharedGroup, count }));
-      } else if (name === 'Done') {
-        columns.append(columnEl(name, tickets, { count: board.doneCount + ' done' }));
       } else {
         columns.append(columnEl(name, tickets));
       }
     }
-    if (upstream.length > 0 || deferred.length > 0) {
-      const tail = el('div', 'tail-row');
-      if (upstream.length > 0) tail.append(columnEl('Upstream', upstream));
-      if (deferred.length > 0) tail.append(columnEl('Deferred', deferred));
-      columns.append(tail);
-    }
+    const tail = el('div', 'tail-row');
+    tail.append(columnEl('Upstream', byColumn.get('Upstream')));
+    tail.append(columnEl('Done', byColumn.get('Done'), { count: board.doneCount + ' done' }));
+    columns.append(tail);
   }
 
   function render() {
