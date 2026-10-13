@@ -45,10 +45,10 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
       startCountdowns();
       await render(<Countdown type={ScheduleType.Standard} />);
 
-      expect(screen.getByText('٠٢')).toBeOnTheScreen();
-      expect(screen.getByText('٢٩')).toBeOnTheScreen();
+      expect(screen.getByText('02')).toBeOnTheScreen();
+      expect(screen.getByText('29')).toBeOnTheScreen();
       expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
-      expect(screen.queryByText('٢:٢٩')).toBeNull();
+      expect(screen.queryByText('2:29')).toBeNull();
     } finally {
       setActiveLocale('en');
     }
@@ -62,7 +62,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
       startCountdowns();
       await render(<Countdown type={ScheduleType.Standard} />);
 
-      expect(screen.getByText('٠٢')).toBeOnTheScreen();
+      expect(screen.getByText('02')).toBeOnTheScreen();
       expect(screen.getAllByText(GAP_COLON, { normalizer: (s) => s })).toHaveLength(2);
     } finally {
       setActiveLocale('en');

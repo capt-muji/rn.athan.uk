@@ -415,14 +415,14 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('Sun');
     });
 
-    it('renders the derived v6 footer digits natively under an ar device locale', () => {
-      // A v6 Hijri label parses Latin unchanged; only the rendered digits localise
+    it('renders the derived v6 footer digits with Latin digits under an ar device locale', () => {
+      // A v6 Hijri label parses Latin unchanged; the rendered digits stay Latin too
       const legacy = { ...liveProps(), dateLabel: 'Rabīʻ II 30, 1448' } as Record<string, unknown>;
       delete legacy.footer;
       (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
       try {
         const tree = renderHome(legacy, 'systemSmall');
-        expect(textsOf(tree)).toContain('Rab ٣٠');
+        expect(textsOf(tree)).toContain('Rab 30');
       } finally {
         delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
       }
@@ -497,9 +497,8 @@ describe('home widget renderer', () => {
       expect(textsOf(medium)).not.toContain('Out of date');
     });
 
-    it('renders native digits in the countdown label under an ar device locale', () => {
-      // 18.5 minutes to Asr: ceil makes 19, and the inline digit map (D61)
-      // draws it with the ar glyphs beside the push layer's ar unit words
+    it('renders Latin digits in the countdown label under an ar device locale', () => {
+      // 18.5 minutes to Asr: ceil makes 19, drawn beside the push layer's ar unit words
       (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
       try {
         freezeNow(at(DAY_ONE, '15:01') + 30_000);
@@ -515,8 +514,7 @@ describe('home widget renderer', () => {
         };
         const tree = renderTree(layouts.PrayerWidget(androidProps({ strings }), { colorScheme: 'light' }));
 
-        expect(textsOf(tree)).toContain('١٩د');
-        expect(textsOf(tree)).not.toContain('19د');
+        expect(textsOf(tree)).toContain('19د');
       } finally {
         delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
       }
@@ -540,9 +538,9 @@ describe('home widget renderer', () => {
       expect(textsOf(tree)).toContain('15:20');
     });
 
-    it('renders the v1 English fallback words with native digits under an ar device locale', () => {
+    it('renders the v1 English fallback words with Latin digits under an ar device locale', () => {
       // v1 snapshots are English-only by shape: the unit words stay the baked
-      // English literals, the digit map still follows the device locale (D57)
+      // English literals, and the digits stay Latin
       const { strings: _strings, ...legacy } = androidProps({});
       const legacyRows = legacy.days.map((day) => ({
         ...day,
@@ -555,15 +553,15 @@ describe('home widget renderer', () => {
         freezeNow(at(DAY_ONE, '14:08') + 30_000);
         const tree = renderTree(layouts.PrayerWidget(legacySnapshot, { colorScheme: 'light' }));
 
-        expect(textsOf(tree)).toContain('١h ١٢m');
+        expect(textsOf(tree)).toContain('1h 12m');
       } finally {
         delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
       }
     });
 
-    it('localises the parsed legacy Android day footer under an ar device locale', () => {
+    it('renders the parsed legacy Android day footer with Latin digits under an ar device locale', () => {
       // Pre-v3 snapshots carry no footer field, so the day label parses at
-      // render time; its digits take the device locale like the iOS twin
+      // render time; its digits stay Latin like the iOS twin
       const props = androidProps({});
       const stripped = props.days.map((day, index) => {
         const withoutFooter = { ...day } as Partial<typeof day>;
@@ -576,8 +574,7 @@ describe('home widget renderer', () => {
         freezeNow(at(DAY_ONE, '14:08') + 30_000);
         const tree = renderTree(layouts.PrayerWidget({ ...props, days: stripped }, { colorScheme: 'light' }));
 
-        expect(textsOf(tree)).toContain('Rab ٣٠');
-        expect(textsOf(tree)).not.toContain('Rab 30');
+        expect(textsOf(tree)).toContain('Rab 30');
       } finally {
         delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
       }

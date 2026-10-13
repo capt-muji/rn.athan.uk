@@ -315,25 +315,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   );
   const staticRow = STATIC[localeKey ?? 'en'];
 
-  // The digit edge localises here, not through the shared module: the runtime's
-  // closure walk rejects any module-scope reference, so the map lives inside
-  // the widget function (D61). ar draws Eastern Arabic-Indic digits; every
-  // other locale keeps the Latin bytes (D57).
-  const WIDGET_DIGITS: Readonly<Record<string, string>> = {
-    '0': '٠',
-    '1': '١',
-    '2': '٢',
-    '3': '٣',
-    '4': '٤',
-    '5': '٥',
-    '6': '٦',
-    '7': '٧',
-    '8': '٨',
-    '9': '٩',
-  };
-  const localiseDigits = (value: string): string =>
-    localeKey === 'ar' ? value.replace(/[0-9]/g, (digit) => WIDGET_DIGITS[digit]) : value;
-
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
   // render time from the snapshot: the label, the active row and the stale
@@ -403,9 +384,9 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const totalMinutes = Math.max(1, Math.ceil((targetEpochMs - nowMs) / 60000));
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    if (hours === 0) return localiseDigits(`${minutes}${units.m}`);
-    if (minutes === 0) return localiseDigits(`${hours}${units.h}`);
-    return localiseDigits(`${hours}${units.h} ${minutes}${units.m}`);
+    if (hours === 0) return `${minutes}${units.m}`;
+    if (minutes === 0) return `${hours}${units.h}`;
+    return `${hours}${units.h} ${minutes}${units.m}`;
   };
 
   // "Mon · Lon" from a Gregorian label, "Raj 1 · Lon" from a Hijri one —
@@ -414,10 +395,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const AFooter = (label: string): string => {
     const datePrefix = typeof label === 'string' && label.length > 0 ? (label.split(',')[0] as string) : '';
     const dateTokens = datePrefix.split(' ');
-    if (dateTokens.length === 1) return localiseDigits(dateTokens[0]);
+    if (dateTokens.length === 1) return dateTokens[0];
     const monthPrefix = dateTokens[0].slice(0, 3);
     const dayNumber = dateTokens[dateTokens.length - 1];
-    return localiseDigits(`${monthPrefix} ${dayNumber}`);
+    return `${monthPrefix} ${dayNumber}`;
   };
 
   const ANeutral = () =>
@@ -679,11 +660,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         typeof entry.dateLabel === 'string' && entry.dateLabel.length > 0 ? entry.dateLabel.split(',')[0] : '';
       const dateTokens = datePrefix.split(' ');
       if (dateTokens.length === 1) {
-        footer = localiseDigits(dateTokens[0]);
+        footer = dateTokens[0];
       } else {
         const monthPrefix = dateTokens[0].slice(0, 3);
         const dayNumber = dateTokens[dateTokens.length - 1];
-        footer = localiseDigits(`${monthPrefix} ${dayNumber}`);
+        footer = `${monthPrefix} ${dayNumber}`;
       }
     }
 
