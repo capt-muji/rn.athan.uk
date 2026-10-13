@@ -130,7 +130,7 @@ D59 branch, and the always-restart question is whether the same point serves eve
 
 - [x] Step 1: the switch map and the cache inventory (`steps/1-switch-map.md`)
 - [x] Step 2: the restart surface (`steps/2-restart-surface.md`)
-- [ ] Step 3: the options and the recommendation (`steps/3-recommendation.md`)
+- [x] Step 3: the options and the recommendation (`steps/3-recommendation.md`)
 
 ## 7. Device proof
 

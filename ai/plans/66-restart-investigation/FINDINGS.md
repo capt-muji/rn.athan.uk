@@ -206,3 +206,87 @@ already rests on exactly this: "the destruction is acceptable because preference
 it" (`components/ui/Error.tsx:13-15`, the reload at `:30`). The brief's "keep
 preferences" holds under every option.
 
+## 4. The options and the recommendation
+
+Investigation only (D84): this section ends the row. The owner rules on reading; nothing
+here revises a record. Each option line cites sections 1 to 3 by number (S1, S2, S3 with
+subsection).
+
+### 4.1 The option set
+
+**Option 1: the status quo.** The in-place remount for every switch, with D59's
+RTL-only relaunch kept as landed (S1 hops 4 to 10; S3.6). Heals: locale, width
+re-measure, notification and channel copy, and the widget push, all inside the awaited
+pass (S1 hops 6 to 8; S2's inventory rows). Keeps the D51 face on every LTR switch
+(S3.3) and preferences by construction (S3.6). Costs: the one-second countdown transient
+stays (S2's closing subsection); no other stale-cache class survives the pass (S3.6).
+
+**Option 2: always-restart after convergence, through the in-process reload.** The D59
+branch's restart point at `stores/language.ts:77-89` made unconditional (S3.3). Heals:
+the transient, and every future derived-cache class the selectors' shape could grow, in
+one stroke (S2's countdown-selector row; S3.2's free re-run of the launch reconciliation,
+whose stamp bail keeps it honest). Keeps preferences (S3.6). Costs: the D51 face dies on
+every switch, not only RTL ones (S3.3); about 1.5 s of dead app once per switch (S3.5,
+row 71's span); one non-fatal teardown soft exception per switch (row 71; S3.1); the
+splash gates re-hold until the icon bitmap re-arrives (S3.5); the init pass, the listener
+registration and the update check re-run (S3.2).
+
+**Option 3: always-restart as a full process restart.** The same ordering as option 2
+with process death replacing the JS teardown (S3.4). Heals: what option 2 heals; the
+only extras are native-state resets the pass already performs (the channel dedup caches,
+S2). Costs: everything option 2 costs, plus native process init on every switch; a new
+Android restart module must be built (S3.1's search found none); iOS offers no
+sanctioned self-restart, so the row's own goal is not implementable on one of the two
+platforms without a user-visible ask (S3.1, the platform facts unverified per D87).
+Dominated by option 2 on every axis the sections carry.
+
+**Option 4: the hybrid.** Restart only when a stale-cache class from section 2 bites
+today, at the D59 in-commit point, through the in-process reload (S1 hop 9; S3.3). Heals:
+the biting class, whatever it is. Today exactly one restart-worthy class exists, the
+direction change, and D59 already restarts for it (S1 hop 9); the transient bites but
+self-heals in one wall-clock second (S2), cheaper than any restart. Costs: the status
+quo's costs (the transient stays unless separately ruled); the trigger needs a written
+definition of "bites" and a home in the queue, or every future cache bug re-litigates
+this row.
+
+### 4.2 The recommendation
+
+Recommend option 1, the status quo. The brief's case for always-restart rests on the
+stale caches, and section 2's inventory finds the switch path already clearing every
+class but one: the width atoms re-key per locale and re-measure on the remount (S2), the
+channel caches reset inside the awaited pass (S2; S1 hop 6), the widget strings rewrite
+in the awaited push before the commit settles (S2; S1 hops 7 and 8), the catalogs resolve
+per call (S2), and the preferences and stamp survive by MMKV (S3.6). The one open class,
+the countdown transient, is a one-second cosmetic staleness that closes on the next
+wall-clock tick (S2), while the restart that would clear it costs a recorded 1.5 s dead
+window, the D51 face, a teardown exception and a splash re-hold on every single switch
+(S3.3 to S3.5, row 71). Option 2 is sound engineering that buys the wrong trade; option 3
+is dominated (S3.1); option 4 collapses into option 1 until a class actually bites, at
+which point the owner can reopen this row with the trigger named (S3.6, S1 hop 9).
+D59's relaunch stays exactly where it is: the one class the remount cannot fix in place,
+already landed, already paid. If the transient ever warrants more than its one second,
+the cheaper fix is an in-place selector change in a follow-up row, not a process-level
+restart on every switch.
+
+### 4.3 The ruling list
+
+1. The final pick among the four options of 4.1. The recommendation is option 1; option 4
+   is option 1 with a trigger rule the owner would have to accept as written.
+2. Whether D59 is revised or absorbed. The row proposes no change (4.2); if the owner
+   adopts option 2 or 4, D59's RTL-only branch is the natural thing to absorb into the
+   general trigger, and the decision is hers alone.
+3. D51's timing, taken only if a restart-per-switch option wins: the face dies at the
+   reload on every switch (S3.3). The owner rules whether that is acceptable, or whether
+   a post-relaunch progress surface must replace it (a design this row did not make).
+4. The costs the records could not quantify (D87's unverified claims, each with its
+   settling check):
+   - The splash gates' share of row 71's 1.5 s span (S3.5): a device timing run with the
+     perf marks would price it; D86 blocks it in this row.
+   - The transient's user impact (S2): recorded as a defect class, never user-tested.
+   - The Android relaunch pattern and the iOS no-sanctioned-self-exit rule (S3.1):
+     platform facts, not repo records; a spike module on the 3T and a store-review
+     reading would settle them.
+   - The status quo's perceived switch latency: no record measures it, so option 1's
+     "feels instant" is unverified and was not relied on above.
+
+
