@@ -39,3 +39,19 @@ the work's concern. Work runs straight through it; at most a commit avoids the
 The 30-minute commit block (23:45 to 00:15) is removed from
 .opencode/agents/athan-executor.md, ai/AGENTS.md and the planner skill in the
 READY commit.
+
+### Step 1 — done
+
+Branch `feat/81-seconds-bright` off `uat` (`c2ea0d48`, 2.0.241). Preflight
+`PREFLIGHT OK`, both anchors count 1. Red matched the plan's line exactly: the
+new test failed `Expected: false Received: true` on its first assertion
+(`splitColonSections('00:01:00')?.[4].dim`), 1 failed / 133 passed / 134
+total, no other test moved. Change contract applied verbatim: the seconds
+carve in `splitColonSections` with its comment, and the `CountdownSection.dim`
+doc line. Green: the suite 134 passed / 134 total, `npx tsc --noEmit` exit 0,
+`npx biome check . --error-on-warnings` exit 0. Version 2.0.242 set in
+`app.json` (first), `package.json` and `android/app/build.gradle`, all three
+matching, under the version lock (origin/uat held at 2.0.239, the number
+free).
+
+session: ses_ec8723c63ffehAF73Q6q2sJym7
