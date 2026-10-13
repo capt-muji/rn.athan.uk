@@ -1,5 +1,0 @@
-
-/** The D32 confidence set. Storage keys and surfaces locale-key off these ids. */
-export const LOCALE_IDS = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
-
-export type LocaleId = (typeof LOCALE_IDS)[number];
