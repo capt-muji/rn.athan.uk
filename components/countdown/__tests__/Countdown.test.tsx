@@ -32,7 +32,10 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.getByRole('text', { name: 'Asr' })).toBeOnTheScreen();
-    expect(screen.getByText('2h 29m')).toBeOnTheScreen();
+    expect(screen.getByText('02')).toBeOnTheScreen();
+    expect(screen.getByText('29')).toBeOnTheScreen();
+    expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+    expect(screen.queryByText('02:29')).toBeNull();
   });
 
   it('renders fixed-width sections with gapped colons under ar', async () => {
@@ -103,7 +106,8 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     startCountdowns();
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('1m')).toBeOnTheScreen();
+    expect(screen.getAllByText('00')).toHaveLength(2);
+    expect(screen.getByText('01')).toBeOnTheScreen();
   });
 
   it('holds 1s, never 0s, when the countdown starts half a second after Asr, before the list has moved on', async () => {
@@ -114,7 +118,8 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.getByText('Asr')).toBeOnTheScreen();
-    expect(screen.getByText('1s')).toBeOnTheScreen();
+    expect(screen.getAllByText('00')).toHaveLength(2);
+    expect(screen.getByText('01')).toBeOnTheScreen();
   });
 
   it('swaps to Magrib the instant Asr comes, for a countdown started 400 ms into 16:28', async () => {
@@ -126,7 +131,8 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await act(() => jest.advanceTimersByTime(59_600));
 
     expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('2h 59m')).toBeOnTheScreen();
+    expect(screen.getByText('02')).toBeOnTheScreen();
+    expect(screen.getByText('59')).toBeOnTheScreen();
   });
 
   it('counts down to the prayer the overlay opens on', async () => {
@@ -137,7 +143,8 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
 
     expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('5h 28m')).toBeOnTheScreen();
+    expect(screen.getByText('05')).toBeOnTheScreen();
+    expect(screen.getByText('28')).toBeOnTheScreen();
   });
 
   it('shows the bar under the countdown on a fresh install', async () => {
