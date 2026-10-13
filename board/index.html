@@ -30,6 +30,7 @@
   .dot.on { background: var(--green); }
   #stamp.stale { color: var(--warn); }
   #columns { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; padding: 8px 20px 20px; align-items: start; }
+  .tail-row { grid-column: 1 / -1; display: flex; gap: 8px; margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(38, 45, 58, 0.6); }
   .column { background: var(--column); border-radius: 6px; padding: 12px; min-height: 120px; display: flex; flex-direction: column; gap: 10px; }
   .column-head { display: flex; justify-content: space-between; align-items: center; padding: 2px 2px 4px; }
   .column-head .name { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
@@ -57,7 +58,7 @@
   .name { font-size: 12.5px; font-weight: 600; line-height: 1.4; color: var(--text); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
   .card.done .name { color: var(--muted); font-weight: 550; }
   .reason { font-size: 12px; line-height: 1.45; color: var(--muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
   .chip { font-family: var(--mono); font-size: 10.5px; line-height: 20px; padding: 0 7px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
   .chip.met { border-color: rgba(76, 195, 138, 0.5); color: var(--green); }
   .chip.unmet { border-color: rgba(240, 113, 140, 0.5); color: var(--red); cursor: pointer; }
@@ -139,16 +140,16 @@
   }
 
   function chipEls(ticket) {
-    return ticket.needs.map((need, at) => {
-      const met = ticket.needsMet[at];
-      const chip = el('span', 'chip ' + (met ? 'met' : 'unmet'));
-      chip.append(el('span', null, '#' + need + (met ? '' : ' open')));
-      if (!met) {
+    return ticket.needs
+      .map((need, at) => ({ need, met: ticket.needsMet[at] }))
+      .filter((chip) => !chip.met)
+      .map(({ need }) => {
+        const chip = el('span', 'chip unmet');
+        chip.append(el('span', null, '#' + need));
         chip.setAttribute('role', 'button');
         chip.addEventListener('click', () => flashCard(need));
-      }
-      return chip;
-    });
+        return chip;
+      });
   }
 
   function flashCard(order) {
@@ -212,11 +213,6 @@
     const rail = stepsEl(ticket);
     if (rail) card.append(rail);
     if (ticket.context !== null) card.append(el('span', 'context', ticket.context.pct + '% · ' + Math.round(ticket.context.ageMs / 60000) + 'm'));
-    if (blocked && ticket.column !== 'Blocked') {
-      const foot = el('div', 'foot-line');
-      foot.append(el('span', null, 'from ' + ticket.column));
-      card.append(foot);
-    }
     return card;
   }
 
@@ -262,8 +258,12 @@
         columns.append(columnEl(name, tickets));
       }
     }
-    if (upstream.length > 0) columns.append(columnEl('Upstream', upstream));
-    if (deferred.length > 0) columns.append(columnEl('Deferred', deferred));
+    if (upstream.length > 0 || deferred.length > 0) {
+      const tail = el('div', 'tail-row');
+      if (upstream.length > 0) tail.append(columnEl('Upstream', upstream));
+      if (deferred.length > 0) tail.append(columnEl('Deferred', deferred));
+      columns.append(tail);
+    }
   }
 
   function renderFoot() {
