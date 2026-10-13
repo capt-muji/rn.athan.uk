@@ -94,7 +94,7 @@
 
   const ageSeconds = () => (board ? Math.max(0, Math.round((Date.now() - Date.parse(board.generatedAt)) / 1000)) : 0);
   const unmetOf = (ticket) => ticket.needs.filter((need, at) => !ticket.needsMet[at]);
-  const displayColumn = (ticket) => (unmetOf(ticket).length > 0 ? 'Blocked' : ticket.column);
+  const displayColumn = (ticket) => (ticket.status !== 'DONE' && unmetOf(ticket).length > 0 ? 'Blocked' : ticket.column);
 
   function renderHeader() {
     const meta = document.getElementById('meta');
@@ -160,7 +160,7 @@
     if (ticket.platform !== null) top.append(el('span', 'platform', ticket.platform));
     card.append(top);
     card.append(el('div', 'reason', reasonOf(ticket)));
-    if (ticket.needs.length > 0) {
+    if (ticket.needs.length > 0 && ticket.status !== 'DONE') {
       const chips = el('div', 'chips');
       chips.append(...chipEls(ticket));
       card.append(chips);
@@ -225,7 +225,7 @@
   function renderFoot() {
     const foot = document.getElementById('foot');
     foot.textContent = '';
-    const waiting = board.tickets.filter((ticket) => unmetOf(ticket).length > 0);
+    const waiting = board.tickets.filter((ticket) => ticket.status !== 'DONE' && unmetOf(ticket).length > 0);
     if (waiting.length === 0) return;
     const runOrder = el('section');
     runOrder.append(el('h2', null, 'Run order'));
