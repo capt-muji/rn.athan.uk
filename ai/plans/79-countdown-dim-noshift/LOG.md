@@ -196,6 +196,10 @@ build.
 
 Version command printed `2.0.235`; step version `2.0.236` set in `app.json`
 (first), `package.json` and `android/app/build.gradle`, all three matching, under
-the version lock. No source file changed.
+the version lock. No source file changed. Merge sha `e2e89627` (`2.0.236 - merge
+docs/79-dev-delivery: step 2, ticket 79`). Commit `ed9c1089`, hook green: `Tests:
+5543 passed, 5543 total`, `Test Suites: 209 passed, 209 total`, coverage
+Statements 100% (5244/5244), Branches 100% (2259/2259), Functions 100% (1091/1091),
+Lines 100% (4698/4698).
 
 session: ses_ec8a2901affe73JQHFUPkyPfOT

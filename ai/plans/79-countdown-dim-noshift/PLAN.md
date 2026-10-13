@@ -171,7 +171,7 @@ next.
 ## 6. Steps
 
 - [x] Step 1: the ruled dim levels and the tabular pin (`steps/1-dim-and-tabular.md`, weight 2)
-- [ ] Step 2: the iOS dev build on the owner's phone (`steps/2-dev-build-delivery.md`, weight 3, dispatches alone)
+- [x] Step 2: the iOS dev build on the owner's phone (`steps/2-dev-build-delivery.md`, weight 3, dispatches alone)
 
 Batches: step 1 is one batch (weight 2). Step 2 is a device step, its own batch,
 and the executor session is replaced after it per the session budget.
