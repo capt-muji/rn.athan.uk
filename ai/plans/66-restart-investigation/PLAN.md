@@ -56,6 +56,8 @@ The owner's rules that apply, quoted with their source:
   to 3 by number.
 - Running device work of any kind (D86).
 - Revising D59 or D51 in any record: the row proposes; the owner rules.
+- Relaying a ruling-list item to the owner mid-run: the stop-and-ask question in every case
+  is the ruling list of `FINDINGS.md` section 4, relayed by the lead.
 
 ## 3. Pre-flight
 
@@ -110,15 +112,17 @@ the lead audit the map before the judgement rests on it).
 
 Concurrency trace (read, never changed): pick, then commit (`stores/language.ts:65`), then the
 `setActiveLocale` bump, the remount, `reconcileLanguageSurfaces` (:76), the lock, the full pass
-with the awaited widget push (`stores/notifications.ts:1672`), the stamp (:45), the dismiss
-(unconditional), and the direction-change restart last (:77-89). The D51 face spans commit to
-dismiss; the brief's "the restart point moves after convergence" already holds for the landed
+with the awaited widget push (`stores/notifications.ts:1672`), the stamp (:45), the
+direction-change restart inside the commit (:77-89), the commit settling, then the dismiss in
+pickLanguage's `.then` (`components/sheets/screens/languageSheet.ts:29-31`). The D51 face
+spans commit to dismiss, and dies at the reload on a direction change, not at the dismiss;
+the brief's "the restart point moves after convergence" already holds for the landed
 D59 branch, and the always-restart question is whether the same point serves every switch.
 
 **Acceptance criteria:**
 
 - [R1.1] WHEN the switch-path map lands in FINDINGS.md section 1 THE SYSTEM SHALL record every hop from a language-sheet pick to a settled UI (the pick, the commit, the locale bump, the remount key, the convergence await chain, the dismiss) with its file and line
-- [R1.2] WHEN the cache inventory lands in FINDINGS.md section 2 THE SYSTEM SHALL record every per-locale or per-process cache and selector the switch touches or skips (the width atoms, the module Map, the channel dedup caches, the countdown display selectors, the catalog loader, the baked widget strings), each with its file and line, its reset trigger today, and what an always-restart changes for it, with the transient's confirmed mechanism named
+- [R1.2] WHEN the cache inventory lands in FINDINGS.md section 2 THE SYSTEM SHALL record every per-locale or per-process cache and selector the switch touches or skips (the width atoms, the module Map, the channel dedup caches, the countdown display selectors, the catalog loader, the baked widget strings), each with its file and line, its reset trigger today, and what an always-restart changes for it, with the transient's confirmed mechanism named. The listed rows are a floor: any per-process or per-locale state the switch path reads, writes or leaves stale joins the inventory; state outside the switch path is out of scope
 - [R2.1] WHEN the restart-surface analysis lands in FINDINGS.md section 3 THE SYSTEM SHALL record both restart mechanisms with their costs from the recorded evidence, the launch path's reconciliation a restart re-runs, the D51 face's fate, the widget re-push ordering against each mechanism, the splash cost, and the row 71 teardown exception, every claim citing its file and line or its queue record
 - [R3.1] WHEN the recommendation lands in FINDINGS.md section 4 THE SYSTEM SHALL state the option set with what each option heals and costs, one recommendation with its reason, and the rulings only the owner can take, every line citing sections 1 to 3
 
@@ -142,7 +146,7 @@ steps (no red tests; the "red" is the section absent before the step), each endi
 
 Queue cell text the lead applies on DONE:
 
-`DONE <date>, audited: the always-restart investigation answers in FINDINGS.md (folded here per D85, its folder closed): <one line: the option set, the recommendation, the ruling list>; no code changed`
+`DONE <date>, audited: the always-restart investigation answers in FINDINGS.md (folded here per D85, its folder closed): <one line: the option set, the recommendation, the ruling list, the inventory's cache classes and each option's priced cost>; no code changed`
 
 Docs commit message: `<VERSION> - docs(plans): ticket 66 executed: 3 steps, the language-restart question answered`
 
@@ -155,7 +159,7 @@ None. The executor never pushes. The lead pushes after the reviews pass.
 | Symptom | Cause | Action |
 | --- | --- | --- |
 | An anchor count is not 1 | The tree moved past the Planned at sha | Stop: `NEEDS_CONTEXT: NEEDS REPLAN, <the anchor and its count>` |
-| A section 4 file:line opens at other content | The map drifted from the tree | Re-open the file, correct the row in the same step, record both readings in the LOG entry |
+| A PLAN.md section 4 file:line opens at other content | The map drifted from the tree | Re-open the file, correct the row in the same step, record both readings in the LOG entry |
 | The transient's mechanism cannot be confirmed from the selectors and the row 57 record | The diagnosis needs a runtime trace | Record the candidate mechanisms and the test that would decide; move the item to the ruling list (D86 blocks a new device run) |
 | One section contradicts another | The inventory missed a cache | Correct the earlier section in the same step, record both |
 

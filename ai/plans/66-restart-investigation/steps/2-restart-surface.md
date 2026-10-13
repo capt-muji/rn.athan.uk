@@ -50,9 +50,14 @@ Section 3 answers, in order, each claim citing its file:line or its queue record
    (`stores/notifications.ts:1652-1662`), the native minute chain (`stores/widget.ts:247`),
    and the race window each restart mechanism opens between the push and the reload.
 5. The splash cost: the gate chain (`app/_layout.tsx:49`, `app/index.tsx:78-90`, `hideAsync`
-   at `:186` and `:206`) priced from the row 68 measurement, paid once per switch.
+   at `:186` and `:206`) priced from row 71's recorded span (the launch line back in about
+   1.5 s, reload-to-launch-line; the splash gates' share of that span unquantified per D87),
+   paid once per switch.
 6. The status quo baseline: what the in-place remount already delivers (the key on
-   `app/_layout.tsx:90-92`), and which defect classes from section 2 it leaves open.
+   `app/_layout.tsx:90-92`), and which defect classes from section 2 it leaves open. State,
+   with citations, that the preference and stamp atoms (`stores/language.ts:22`, `:25`)
+   survive both mechanisms (MMKV-backed): the brief's "keep preferences" must hold under
+   every option.
 
 ## Green run
 
