@@ -58,7 +58,10 @@ In `splitColonSections`, the `groups.forEach` body becomes exactly:
   });
 ```
 
-Nothing else in the file changes.
+Nothing else in the file changes, except one doc line: the `dim` field's
+comment in the `CountdownSection` interface becomes `/** True while the group
+is the all-zero pair, except a three-group display's seconds, which never dim
+(row 81) */`.
 
 ## Green run
 

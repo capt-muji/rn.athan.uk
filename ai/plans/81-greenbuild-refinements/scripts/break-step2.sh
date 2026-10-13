@@ -23,8 +23,8 @@ python3 - <<'EOF'
 import pathlib
 p = pathlib.Path('shared/typography.ts')
 s = p.read_text()
-old = "    countdownSize: TEXT.sizeLarge - 2,"
-new = "    countdownSize: TEXT.sizeLarge,"
+old = "  countdownSize: TEXT.sizeLarge - 2,"
+new = "  countdownSize: TEXT.sizeLarge,"
 assert s.count(old) == 1, "break substitution not found: ar countdown size"
 p.write_text(s.replace(old, new))
 print("break applied: ar countdown back to 26")

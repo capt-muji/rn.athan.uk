@@ -172,8 +172,11 @@ tree check before your first assigned step, exactly as a fresh session would.
   paste a full log into your reply. The detail belongs in `LOG.md`.
 - A command that succeeds silently is acknowledged as such in your notes, never
   assumed.
-- Start no build, commit or full test run after 23:45. After 00:15 check that
-  `ls $HOME/repos/rn.athan.uk/node_modules/.bin/jest` prints that path, else
+- The nightly cleanup around 00:00 is none of the work's concern: keep
+  working straight through it. At most, avoid starting a commit inside the
+  23:59 to 00:02 minute. If the cleanup wipes `node_modules`, restore it with
+  `yarn install` and continue; check `ls
+  $HOME/repos/rn.athan.uk/node_modules/.bin/jest` prints that path first, else
   STOP.
 
 ## Device work
