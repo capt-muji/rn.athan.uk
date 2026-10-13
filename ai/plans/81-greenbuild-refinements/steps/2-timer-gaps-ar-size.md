@@ -30,8 +30,9 @@ git checkout -b feat/81-timer-gaps-ar-size uat
 
 ## Red tests
 
-1. In `Countdown.test.tsx`, the constant anchored by `countdown-test-gap.txt`
-   becomes `const GAP_COLON = '\u2009\u2009:\u2009\u2009';`. Every test using
+1. In `Countdown.test.tsx`, the constant `GAP_COLON` (its only definition in
+   the file, after the `const MAGRIB` line) becomes
+   `const GAP_COLON = '\u2009\u2009:\u2009\u2009';`. Every test using
    it now fails: the component still renders one thin space per side.
 2. In `typography.test.ts`, inside `expectArabicRecord` (anchored by
    `typography-test-ar.txt`), add after the `arabic` assertion:

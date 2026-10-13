@@ -129,10 +129,11 @@ displays have no seconds group, and their minutes keep the dim treatment
 `time.test.ts` pins the section split and the dim flags; `typography.test.ts`
 pins the ar size table and families; `Countdown.test.tsx` pins the gap text,
 the dim colours and the tabular pin from row 79; `Time.test.tsx` pins own
-times, next-day overlay times and the sentinel; `Ago.test.tsx` pins the
-sentence with gaps inside, the `now` word as one node and the overlay fade;
-`List.test.tsx` and `Screen.test.tsx` pin rows and measurement and never query
-a time string, so the split render cannot break them.
+times, next-day overlay times and the sentinel; `Ago.test.tsx` and
+`Screen.test.tsx` pin the badge sentence with its gap literal inside (four
+literal sites across the two files), the `now` word as one node and the
+overlay fade; `List.test.tsx` never queries a time string, so the split
+render cannot break it.
 
 ### Why the obvious fix is wrong
 
@@ -188,9 +189,10 @@ and need not (list times are static strings, nothing shifts).
 - [ ] Step 4: the ago badge colon, the list gap and the badge lift (`steps/4-ago-list-gap.md`, weight 2)
 - [ ] Step 5: records and the handover (`steps/5-handover.md`, weight 1)
 
-Batches by the weights: steps 1 and 2 in one batch, steps 3 and 4 in the next,
-step 5 alone. The session budget 6 admits both code batches in one session; a
-session that crosses 6 weight units is replaced.
+Batches by the weights: steps 1 and 2 in one batch (4 units), steps 3 and 4
+in the next (4 units), step 5 alone. The session budget 6 admits one code
+batch plus the handover: two executor sessions, the first running steps 1 and
+2, the second running steps 3, 4 and 5.
 
 ## 7. Device proof
 

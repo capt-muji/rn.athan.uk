@@ -76,10 +76,10 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
 });
 ```
 
-Expected red: the label queries fail `Unable to find an element` (the label
-does not exist and the split does not exist), the gap query fails `Unable to
-find an element`, and the opacity assertion fails `Expected: 0.4` against
-`undefined`. The sentinel test passes before and after, it is the invariant
+Expected red: the label and gap queries fail `Unable to find an element`
+(the label does not exist and the split does not exist); the opacity pin sits
+behind a throwing query and records its red only through the break script's
+phases. The sentinel test passes before and after, it is the invariant
 guard. No other suite moves.
 
 ## Change contract
