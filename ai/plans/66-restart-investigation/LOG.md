@@ -55,4 +55,34 @@ and the two nice fixes (the section 4 ambiguity, the stop-and-ask relay).
 - Commit: `2.0.182 - docs(plans): 66 step 1, the switch map and the cache inventory`;
   merge `--no-ff` into uat with the plan's message.
 
+### Step 02 — done
+
+- Branch `docs/66-2-restart-surface` off uat `7af4674e` (2.0.182). Anchor check: the same
+  seven anchors, each count 1. Red: FINDINGS.md held sections 1 and 2 only; the commit
+  appends section 3.
+- Change: section 3 written per the six contract items. The full-process-restart search
+  ran `exit(`, `killProcess`, `System.exit`, `terminateApp`, `restartApp`, `relaunch`,
+  `reloadAsync`, `moveTaskToBack` over `app/ device/ modules/ plugins/` for
+  `.ts .tsx .kt .java .swift`: no exit or restart-native path in any of the four; the
+  only repo-wide `reloadAsync` sites are the D59 branch (`stores/language.ts:83`) and the
+  error screen (`components/ui/Error.tsx:30`). The Android relaunch pattern and the iOS
+  no-self-exit rule are marked unverified per D87 (platform facts, not repo records) and
+  join section 4's ruling list with the settling checks named.
+- Green run: scripted check of 43 file:line-to-statement pairs across section 3,
+  `mismatches=0`, `GREEN OK`. One drift fix before the run: the refresh-chain watchdog
+  comment starts at
+  `WidgetRefreshScheduler.kt:167`, not 168 (citation corrected in the doc; source
+  untouched).
+- Break script: none for a docs step. Side-effect verdicts recorded: the D51 face dies
+  at the reload, not the dismiss; the widget race opens only if the restart moves before
+  the awaited push (the in-commit point keeps push first); the splash span is row 71's
+  ~1.5 s with the gates' share unquantified (D87, ruling list); the transient closes in
+  one wall-clock second. Preference and stamp survival cited MMKV-first
+  (`stores/storage.ts:106-114`, `Error.tsx:15` owner ruling).
+- Version: lock held across the merge; origin/uat fetched and confirmed merged;
+  2.0.182 to 2.0.183 in app.json, package.json, android/app/build.gradle, app.json
+  first. Tests: none run, docs-only step.
+- Commit: `2.0.183 - docs(plans): 66 step 2, the restart surface`; merge `--no-ff` into
+  uat with the plan's message.
+
 session: ses_ecc503abeffeGjW9lWw7YwOI31
