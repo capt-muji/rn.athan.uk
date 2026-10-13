@@ -1,0 +1,4 @@
+  /** Countdown bar */
+  countdown: {
+    background: 'rgba(126, 189, 241, 0.19)',
+  },
