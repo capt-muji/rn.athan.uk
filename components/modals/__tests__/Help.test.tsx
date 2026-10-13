@@ -94,6 +94,15 @@ describe('the Help modal', () => {
     expect(screen.getAllByRole('button')).toHaveLength(getHelpTopics('ios').length + 1);
   });
 
+  it('answers the volume question with the ringer answer this platform plays by', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await fireEvent.press(screen.getByRole('button', { name: 'Which volume controls the sound level?' }));
+
+    expect(
+      screen.getByText('The athan plays at your ringer volume, and the Ring/Silent switch and Focus silence it.')
+    ).toBeOnTheScreen();
+  });
+
   it('offers no Do Not Disturb grant on iOS, which has none to give', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
@@ -171,6 +180,16 @@ describe('the Help modal on Android', () => {
     await fireEvent.press(screen.getByRole('button', { name: 'Grant Do Not Disturb access' }));
 
     expect(openDndAccessSettings).toHaveBeenCalledTimes(1);
+  });
+
+  it('answers the volume question with the alarm volume it plays on', async () => {
+    onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await fireEvent.press(screen.getByRole('button', { name: 'Which volume controls the sound level?' }));
+
+    expect(
+      screen.getByText('The athan plays at alarm volume, not ring volume. Raise Alarm in your sound settings.')
+    ).toBeOnTheScreen();
   });
 
   it('answers the restart question, which both platforms ask', async () => {

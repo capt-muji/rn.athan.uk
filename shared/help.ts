@@ -33,8 +33,8 @@ interface HelpAnswerKeys {
 
 interface HelpEntryKeys {
   question: TranslationKey;
-  ios: HelpAnswerKeys | null;
-  android: HelpAnswerKeys | null;
+  ios: HelpAnswerKeys;
+  android: HelpAnswerKeys;
 }
 
 /** One question as one platform sees it */
@@ -112,11 +112,12 @@ const HELP_ENTRIES: readonly HelpEntryKeys[] = [
     },
   },
   {
-    question: 'help.q.quiet',
-    ios: null,
+    question: 'help.q.volume',
+    ios: {
+      text: 'help.a.volume.ios',
+    },
     android: {
-      text: 'help.a.quiet',
-      steps: ['help.step.alarmVolume'],
+      text: 'help.a.volume.android',
     },
   },
 
@@ -141,8 +142,6 @@ const HELP_ENTRIES: readonly HelpEntryKeys[] = [
 export const getHelpTopics = (os: 'ios' | 'android'): HelpTopic[] =>
   HELP_ENTRIES.flatMap((entry) => {
     const answer = os === 'ios' ? entry.ios : entry.android;
-    if (!answer) return [];
-
     const steps = answer.steps?.map((step) => t(step));
     return [{ question: t(entry.question), text: t(answer.text), steps, action: answer.action }];
   });

@@ -60,12 +60,18 @@ describe('getHelpTopics', () => {
     }
   });
 
-  it('keeps the alarm volume question for Android alone, which is the platform that plays on that stream', () => {
-    const iosQuestions = getHelpTopics('ios').map((topic) => topic.question);
-    const androidQuestions = getHelpTopics('android').map((topic) => topic.question);
+  it('answers the volume question on both platforms, each with its platform answer', () => {
+    const iosTopics = getHelpTopics('ios');
+    const androidTopics = getHelpTopics('android');
 
-    expect(androidQuestions).toContain('Why is the athan so quiet?');
-    expect(iosQuestions).not.toContain('Why is the athan so quiet?');
+    expect(iosTopics.map((topic) => topic.question)).toContain('Which volume controls the sound level?');
+    expect(androidTopics.map((topic) => topic.question)).toContain('Which volume controls the sound level?');
+    expect(androidTopics.find((topic) => topic.question === 'Which volume controls the sound level?')?.text).toBe(
+      'The athan plays at alarm volume, not ring volume. Raise Alarm in your sound settings.'
+    );
+    expect(iosTopics.find((topic) => topic.question === 'Which volume controls the sound level?')?.text).toBe(
+      'The athan plays at your ringer volume, and the Ring/Silent switch and Focus silence it.'
+    );
   });
 
   it('offers the Do Not Disturb grant on Android only, which is the one platform that has it', () => {
