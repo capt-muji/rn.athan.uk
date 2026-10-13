@@ -1,0 +1,8 @@
+const ARABIC: LocaleTypography = {
+  familyRegular: 'NotoSansArabic-Regular',
+  familyMedium: 'NotoSansArabic-Medium',
+  size: (n) => Math.round(n * ARABIC_SIZE_FACTOR),
+  lineHeight: (n) => Math.round(n * ARABIC_SIZE_FACTOR),
+  letterSpacing: () => 0,
+  arabic: true,
+};
