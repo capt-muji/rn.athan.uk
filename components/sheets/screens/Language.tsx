@@ -7,6 +7,7 @@ import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { commitLanguagePreference, languageCommitBusyAtom } from '@/stores/language';
 import { hideLanguageSheet, setLanguageSheetModal } from '@/stores/ui';
 
@@ -64,6 +65,8 @@ export default function BottomSheetLanguage() {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   // Card
   card: {
@@ -88,8 +91,8 @@ const styles = StyleSheet.create({
   optionLabel: {
     flex: 1,
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
 
   // The D51 progress face on the row being applied
@@ -99,8 +102,8 @@ const styles = StyleSheet.create({
     gap: SPACING.xs,
   },
   applyingLabel: {
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
     color: COLORS.text.primary,
   },
 });

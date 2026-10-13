@@ -3,6 +3,8 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 import Modal from './Modal';
 
@@ -45,14 +47,16 @@ export default function ModalUpdate({ visible, onClose, onUpdate }: Props) {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   message: {
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
     textAlign: 'center',
     color: COLORS.light.textSecondary,
-    lineHeight: TEXT.lineHeight.default,
-    letterSpacing: TEXT.letterSpacing.default,
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
     marginTop: SPACING.xs,
   },
   // Stretched so the centred text keeps the card's full width: unstretched, the scroller hugs the text
@@ -82,12 +86,12 @@ const styles = StyleSheet.create({
   },
   cancelText: {
     color: COLORS.light.textSecondary,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyMedium,
   },
   updateText: {
     color: COLORS.light.background,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyMedium,
   },
 });

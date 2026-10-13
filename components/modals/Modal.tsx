@@ -10,6 +10,8 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { ANIMATION, COLORS, ELEVATION, LAYOUT, OVERLAY, RADIUS, SHADOW, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 /**
  * Modal motion mirrors the sheets' recipe (SHEET_ANIMATION_CONFIGS in
@@ -109,6 +111,8 @@ export default function Modal({
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
@@ -165,11 +169,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.md,
   },
   title: {
-    fontSize: TEXT.sizeTitle,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeTitle),
+    fontFamily: ty.familyMedium,
     marginBottom: SPACING.md,
     color: COLORS.light.text,
-    letterSpacing: TEXT.letterSpacing.wide,
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.wide),
   },
   titleWithDivider: {
     // Matches the space above the title, so the separator sits centered in its breathing room

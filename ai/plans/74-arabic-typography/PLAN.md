@@ -293,7 +293,7 @@ styles keep their shape.
 ## 6. Steps
 
 - [x] Step 1: Arabic fonts bundled and the locale typography module (`steps/1-arabic-fonts-and-typography-module.md`, Weight: 2)
-- [ ] Step 2: the per-locale sweep of every text style (`steps/2-per-locale-sweep.md`, Weight: 2)
+- [x] Step 2: the per-locale sweep of every text style (`steps/2-per-locale-sweep.md`, Weight: 2)
 - [ ] Step 3: device proof on the iPhone XS (`steps/3-device-proof.md`, Weight: 3)
 
 Each step file carries its own anchor check, goal, branch, files, red tests, change contracts,

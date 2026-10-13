@@ -6,6 +6,7 @@ import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { prayerLabel, t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import {
   type AlertMenuState,
   AlertType,
@@ -14,6 +15,7 @@ import {
   type ReminderSetting,
   type ReminderSlot,
 } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
@@ -253,6 +255,8 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
   );
 });
 
+const ty = typographyFor(currentLocaleId());
+
 // =============================================================================
 // STYLES
 // =============================================================================
@@ -271,8 +275,8 @@ const styles = StyleSheet.create({
     opacity: 0.25,
   },
   cardTitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyMedium,
     color: '#d8eaf8',
     marginBottom: SPACING.sm - 1,
   },
@@ -282,8 +286,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardHint: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     color: 'rgba(86, 134, 189, 0.725)',
   },
   reminderOptions: {
@@ -302,8 +306,8 @@ const styles = StyleSheet.create({
     gap: SPACING.md,
   },
   optionLabel: {
-    fontSize: 13,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(13),
+    fontFamily: ty.familyRegular,
     color: 'rgb(146, 184, 228)',
     width: 100,
   },
@@ -319,10 +323,10 @@ const styles = StyleSheet.create({
   },
   // The header subtitle's own dim colour and size
   unavailableText: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     color: 'rgba(86, 134, 189, 0.725)',
     textAlign: 'center',
-    lineHeight: 22,
+    lineHeight: ty.lineHeight(22),
   },
 });

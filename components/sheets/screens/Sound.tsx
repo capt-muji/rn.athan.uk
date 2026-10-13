@@ -9,7 +9,9 @@ import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import {
   playingSoundIndexAtom,
@@ -210,6 +212,8 @@ export default function BottomSheetSound() {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   // Card
   card: {
@@ -220,8 +224,8 @@ const styles = StyleSheet.create({
     padding: SPACING.lg,
   },
   cardHint: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     color: 'rgba(86, 134, 189, 0.725)',
   },
 
