@@ -16,6 +16,9 @@ export const LOCALE_IDS = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
 
+/** The only RTL id in the shipped six; every surface keys direction off this. */
+export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (id === 'ar' ? 'rtl' : 'ltr');
+
 export interface DeviceLocaleInfo {
   languageTag: string;
   languageCode: string | null;
