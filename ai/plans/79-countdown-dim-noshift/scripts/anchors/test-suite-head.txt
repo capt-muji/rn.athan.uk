@@ -1,0 +1,15 @@
+import { act, render, screen } from '@testing-library/react-native';
+import { getDefaultStore } from 'jotai';
+
+import { showLondonDay } from '@/__tests__/harness';
+import { COLORS } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
+import { ScheduleType } from '@/shared/types';
+import { startCountdowns } from '@/stores/countdown';
+import { openOverlay } from '@/stores/overlay';
+import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
+
+import Countdown from '../Countdown';
+
+const MAGRIB = 4;
+const GAP_COLON = '\u2009:\u2009';
