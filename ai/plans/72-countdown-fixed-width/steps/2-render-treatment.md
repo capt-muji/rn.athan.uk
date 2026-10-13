@@ -7,8 +7,9 @@ Weight: 2
 
 Save `scripts/preflight-72.sh` to `$TMPDIR` and run
 `bash $TMPDIR/preflight-72.sh display-atom hero-render ago-render cascade-pair
-derived-color hero-pin screen-pin` with the repository root as the working directory. These
-are this step's anchors; a count other than 1 is a STOP.
+derived-color` with the repository root as the working directory. These five are this
+step's anchors (hero-pin and screen-pin named step 1's own pins and are destroyed by its
+rewrites); a count other than 1 is a STOP.
 
 ## Goal
 
@@ -17,6 +18,14 @@ non-en locales — bright groups, dim zero groups, dim gapped colons — and kee
 single-node render under `en` and for every string the splitters reject. The ago badge
 renders its single colon as a gapped node under non-en and keeps the single-node render
 under `en`. This step adds the section and gap tests on top of step 1's string rewrites.
+
+## The colour caveat
+
+The dim/bright group colour is applied through `useAnimatedStyle`; no repo test reads an
+animated colour value and the jest mock cannot, so R3.1 and R3.2's colour outcomes are
+verified in step 4's on-device transcriptions, not here. This step's tests pin what the
+mock can read: the group structure (which text nodes exist and which carry the zero
+groups), the dim colon nodes' shape, and the gaps.
 
 ## Branch
 

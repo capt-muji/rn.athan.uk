@@ -6,9 +6,10 @@ Weight: 3
 ## Anchor check
 
 Save `scripts/preflight-72.sh` to `$TMPDIR` and run
-`bash $TMPDIR/preflight-72.sh display-atom hero-render ago-render cascade-pair
-derived-color` with the repository root as the working directory. These five anchors
-survive every earlier step's edits; a count other than 1 is a STOP. This step changes no
+`bash $TMPDIR/preflight-72.sh display-atom cascade-pair derived-color` with the
+repository root as the working directory. These three survive every earlier step's edits
+(hero-render and ago-render quoted element blocks step 2 replaces); a count other than 1
+is a STOP. This step changes no
 repository file; the anchor check still runs, because the proof reads the merged code.
 
 ## Goal
@@ -52,7 +53,8 @@ reader itself or `vision`; the transcription is the record, never the file. Read
    1.5 s per row 71's measurement, and treat 10 s without it as a STOP. The hero shows
    `Xh Ym` letters and the badge shows `Xm ago`. Then read
    `adb shell dumpsys notification` and name the reminder channel
-   `... in 5m Reminder` where a reminder channel exists.
+   `... in 5m Reminder` where a reminder channel exists; its absence is recorded, not
+   treated as failure.
 
 No clock change runs in checks 1, 2 or 4. Every clock change repeats the dump-compare-
 restore cycle of check 3. Never leave automatic time off.

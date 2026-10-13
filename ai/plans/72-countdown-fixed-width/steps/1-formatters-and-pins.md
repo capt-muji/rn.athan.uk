@@ -229,7 +229,7 @@ npx jest stores/__tests__/countdown.test.ts stores/__tests__/schedule.test.ts ho
 npx jest components/countdown/__tests__/Countdown.test.tsx components/prayer/__tests__/Ago.test.tsx __tests__/app/Screen.test.tsx --watchman=false --selectProjects=components
 ```
 
-Expected: every rewritten case fails with `Expected: "…h …m"` or the fixed-width shape
+Expected: every expectation rewrite fails with `Expected: "…h …m"` or the fixed-width shape; the four title-only rewrites (countdown.test.ts:168, 200, 307, 442) pass at red by construction
 against the row-63 colon shape received, and no case outside the rewritten ones fails. If a
 test the plan did not name fails, STOP.
 

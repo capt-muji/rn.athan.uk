@@ -26,3 +26,13 @@ line `session: <ses_id>`. Planning sections use `## Planning (<date>)` and `## T
 - Sections drafted and committed; griller dispatched on the complete draft.
 
 ## Ticket 72
+
+Grill round one (eight findings: three must, three should, two nice), all applied:
+step 2's and step 4's preflight anchor lists pruned against the edits earlier steps make
+(both steps would have STOPped on anchors their predecessors destroyed), the dim/bright
+colour contract's verification moved to step 4's on-device transcription with the
+mock-cannot-read-an-animated-colour caveat written into the step, the four title-only
+rewrites' red behaviour corrected, the two-group ruling given its audit-veto note, the
+mock alarm pin turned into a rule, the batch-budget wording fixed, and the vacuous-pass
+sentence restored. The third break mutation the colour finding wanted is not added: the
+mapping flip is invisible to the jest mock by the same caveat.
