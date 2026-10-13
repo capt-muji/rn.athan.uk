@@ -294,6 +294,71 @@ docblock reads `Latin digits and no era in every locale`. Re-ran the two affecte
 `break-step2.sh` (`ALL AS EXPECTED: 1`); amended into the step commit.
 
 Merged into `uat` with the step-2 merge message (`2.0.226 - merge feat/82-latin-digits: step 2,
-Latin digits everywhere`).
+Latin digits everywhere`): commit `3a9e568b`, merge `63e3262f`.
 
 session: ses_ec909af78ffe667y7LBBE0W4Pn
+
+### Step 03 — DONE
+
+Branch `feat/82-device-proof` off `uat` (`63e3262f`). The step's anchor list is empty, so the
+landed state was verified instead: `ai/plans/README.md` row 82 reads `IN PROGRESS`, and both
+landed steps sit on `uat` (`eae82296` step 1's merge, `63e3262f` step 2's merge). The cursor
+read `step 2`, not `step 3` as the anchor prose expects; the repo's convention is that each
+step's own commit carries its own number (step 1's commit wrote `step 1`, step 2's wrote
+`step 2`), so this step's commit moves it to `step 3`.
+
+Version 2.0.227 set in `app.json` (first), `package.json` and `android/app/build.gradle`
+(`versionName`); uat's `package.json` was 2.0.226. `npx expo prebuild -p ios --clean` with
+`EXPO_PUBLIC_ENV=prod EXPO_PUBLIC_API_KEY="$(cat ~/.config/athan/.api_key)"` inline (never
+printed, never written anywhere) exits 0 and rewrites the stale `ios/` derivation (it read
+2.0.45); `ios/Athan/Info.plist` then reads 2.0.227. `build_run_sim` (workspace
+`ios/Athan.xcworkspace`, scheme `Athan`, configuration Release, simulator Athan-77, iPhone 16,
+iOS 18.5, placeholder `SIMULATOR_UDID`) exits `SUCCEEDED` after 519 s, installs
+`com.mugtaba.athan` and launches it; the home screen shows the Standard list with its
+countdown. Screenshot inventory, all under `$HOME/athan-gitree/sessions/82/` and none committed:
+`step3-en-home.png` (the en read), `step3-ar-home.png` (the ar read), and the two route
+diagnostics `step3-settings-sheet.png` (the Settings sheet with its `Language` row) and
+`step3-language-sheet.png` (the six-row picker, `العربية` the fourth row).
+
+Env note, recorded, not fixed here: the prebuild carried the production env as the step
+dictates, but the Xcode bundle step (`expo export:embed`, run inside `build_run_sim`) had no
+`EXPO_PUBLIC_ENV` in its process environment (the build log carries zero occurrences), so the
+bundle took the local env and the app served mock times: the ar read's rows cluster within a
+few minutes of the 22:01 relaunch, the `mocks/simple.ts` shape. No criterion and no expected
+transcription of this step depends on the data source: R4.1 and the three reads are about the
+countdown design, and both reads show it.
+
+**en read**, `step3-en-home.png` (21:53). Countdown block, top to bottom: `Asr`, then
+`00 : 01 : 49`. Digits and colons only, no `h`, `m` or `s`. Both colons carry space on each
+side (the thin space `\u2009` either side of each colon, `components/countdown/Countdown.tsx:75`)
+and render lighter than the white digit groups: `00` and the two colons measure about a third
+of the white `01` and `49` brightness. Badge: `Dhuhr 0 : 02 ago`. Row time: `21:55`.
+
+**ar read**, `step3-ar-home.png` (22:02, after Settings, then the `Language` row, then
+`العربية`, and the 22:01:36 relaunch in the runtime log). Countdown block: `العصر`, then
+`00 : 01 : 54`, the same Latin digit groups, the same gapped dim colons, no unit letter. No
+Eastern Arabic-Indic glyph anywhere on the screen. The accessibility tree at the same state
+gives the composed strings byte-exact: badge `العشاء قبل 0 : 01`, timer `05 : 55`, rows
+`الفجر, 21:58`, `الشروق, 21:59`, `الظهر, 22:00`, `العصر, 22:04`, `المغرب, 22:05`,
+`العشاء, 22:06`.
+
+**Identity, R4.1**, the two reads side by side:
+
+| locale | prayer name | timer line | badge | row time |
+| --- | --- | --- | --- | --- |
+| en | `Asr` | `00 : 01 : 49` | `Dhuhr 0 : 02 ago` | `21:55` |
+| ar | `العصر` | `00 : 01 : 54` | `العشاء قبل 0 : 01` | `22:04` |
+
+One design in both: three fixed-width sections, Latin double digits, dim gapped colons, the
+`00` group dim and the live groups white, no letters anywhere. Outside the final ten minutes
+both locales take the `HH : MM` shape with the same treatment (en `06 : 05`, ar `05 : 55`).
+Only the prayer name's words differ by locale.
+
+Review: both screenshots exist under `sessions/82/` and are named above; the transcriptions
+quote the characters as read; `git show` on the commit carries the plan files and the version
+bump only, no source file.
+
+Merged into `uat` with the step-3 merge message (`2.0.227 - merge feat/82-device-proof: step 3,
+the simulator proof`).
+
+session: ses_ec900563cffeYgP6bGi49t5pXq

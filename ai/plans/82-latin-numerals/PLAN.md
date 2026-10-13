@@ -227,7 +227,7 @@ Checklist (the executor ticks as each lands):
 
 - [x] Step 1: the format flip (steps/1-format-flip.md)
 - [x] Step 2: the digit map dies (steps/2-digit-map-dies.md)
-- [ ] Step 3: the simulator proof (steps/3-device-proof.md)
+- [x] Step 3: the simulator proof (steps/3-device-proof.md)
 
 Each step file carries its own Requirements line, anchor check, goal, branch, files, red
 tests, contracts, green run, break script, version and commit, review checklist, merge
