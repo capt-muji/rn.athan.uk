@@ -6,7 +6,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Notifications from 'expo-notifications';
 import { Alert } from 'react-native';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { onPlatform, showLondonDay } from '@/__tests__/harness';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
@@ -121,6 +121,25 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     } finally {
       setActiveLocale('en');
     }
+  });
+
+  it('renders the iOS volume note', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    expect(
+      screen.getByText('Plays at your Ringer & Alerts volume. The Ring/Silent switch and Focus mute it.')
+    ).toBeOnTheScreen();
+  });
+
+  it('renders the Android volume note', async () => {
+    onPlatform('android');
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    expect(screen.getByText('Plays at alarm volume, not ring volume.')).toBeOnTheScreen();
   });
 
   it('opens on 5 minutes when the saved interval is not one the stepper offers', async () => {
