@@ -54,10 +54,21 @@ export const reconcileLanguageSurfaces = async (): Promise<void> => {
  * caller — forward-only means the sheet's dismiss is unconditional (D34, D47).
  * The busy atom brackets the whole run so the sheet's progress face covers it.
  */
+// The direction in force at process start, read before any forceRTL: the
+// fallback when no preference is stored (the device decides, then).
+const DIRECTIONS = ['ltr', 'rtl'] as const;
+const launchDirection = DIRECTIONS[Number(I18nManager.getConstants().isRTL)];
+
+/**
+ * The busy atom brackets the whole run so the sheet's progress face covers it.
+ */
 export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
-  // The direction in force, not the locale's: a system-RTL device running an
-  // LTR app locale stays mirrored until a relaunch forces the new direction.
-  const directionBefore = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
+  // The direction in force comes from the app's own record: the stored
+  // preference drives the launch force ('' means the device's launch
+  // direction). I18nManager.getConstants() is deliberately not read here: the
+  // device proved it stale within a process after a crossing.
+  const storedPreference = store.get(languagePreferenceAtom);
+  const directionBefore = storedPreference === '' ? launchDirection : localeDirection(storedPreference as LocaleId);
   store.set(languageCommitBusyAtom, true);
   try {
     store.set(languagePreferenceAtom, locale);
