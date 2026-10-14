@@ -155,29 +155,60 @@ beyond the contract moved (snap points, paddings, lifecycle). No findings.
 session: ses_ec63afda5ffe1E11Y4giDFXKa2
 
 
-### Step 03 — stopped: pre-flight
+### Step 03 — done
 
-Ran the pre-flight from $TMPDIR per the step file. It did not print PREFLIGHT OK:
+Pre-flight: `PREFLIGHT OK` from $TMPDIR against the repaired gate (anchors counted
+against the planned-at sha `1b0d5229`). This entry replaces the same-day
+`Step 03 — stopped: pre-flight` entry: the whole-ticket gate that stopped the step
+was unsatisfiable by design after step 1, and the lead's planning repair (below)
+re-pointed it; this step's own three anchors — `constants-interactive.txt`,
+`toggle-track.txt`, `settings-card.txt` — each counted 1 in the working tree before
+any work started.
 
-- `PREFLIGHT FAIL: anchor masjid-image.txt counts 0 in components/ui/Masjid.tsx (expected 1)`
-- `PREFLIGHT FAIL: anchor sheet-contentwrapper.txt counts 0 in components/sheets/parts/Sheet.tsx (expected 1)`
+Red run: 15 tests, 1 failed as predicted, 14 passed — `borders its off state with the
+cards' edge colour` failed at `Toggle.test.tsx:83` (`Expected: rgba(99, 102, 241,
+0.15)`, `Received: "#3b3977"`); `keeps its on state border unchanged` passed; every
+travel claim passed untouched.
 
-Both anchors pin the pre-change code that this ticket's own steps contracted to
-rewrite: step 1 (d6755e64) reflowed the `Image` element to add `isRTL &&
-styles.mirrored`, step 2 (035fe4df) added `showsVerticalScrollIndicator: false` to
-the scrollable `contentStyle` branch. The anchor files were never refreshed (last
-touched by the planning commit a7763ba9), so the whole-ticket pre-flight can only
-pass before step 1. Not repaired: anchors are not the executor's to edit.
+Change: `shared/constants.ts:745` `inactiveBorder: '#3b3977'` →
+`'rgba(99, 102, 241, 0.15)'`, the doc comment and every other line untouched;
+`Toggle.tsx` carried no diff (its sole reader keeps reading the repointed key).
+Green: the toggle suite 15/15, travel claims included; the constants suite 49/49 —
+it never pinned the old value, so no pin update was needed. `yarn validate`:
+`Tests: 2 skipped, 5576 passed, 5578 total`, coverage 100% (Statements 5284/5284,
+Branches 2303/2303, Functions 1102/1102, Lines 4733/4733).
 
-Everything else on the gate passed: branch ticket/75 descended from 1b0d5229, clean
-tree, app.json and package.json agreeing at 2.0.452, node_modules present, all
-fifteen parallel-invariant files untouched since the anchor. Step 3's own three
-anchor checks (constants-interactive, toggle-track, settings-card) each count 1.
+Formatter note: biome canonicalises the apostrophe-carrying test name to double
+quotes (fewer escapes than the single-quoted escape); the name text is the plan's
+verbatim. The first `yarn validate` failed on that quote style alone; the formatter
+applied it and the rerun went green.
 
-No step work started; tree untouched. Awaiting replan: refresh the two anchors to
-the committed post-step-2 text, or rule the pre-flight a pre-step-1-only gate.
+Version 2.0.454 in `app.json` then `package.json`, `npx biome check --write app.json`
+after the node rewrite; both files one-line diffs, agreeing.
 
-session: ses_ec62cc4daffeZXvxMAfGxMv2ph
+Commit `aee3ec7a` (`aee3ec7aea67caaab270674d53b2f138c913f501`) on `ticket/75`. The
+pre-commit hook fired end to end: `check-identifiers --staged` ✔, lint-staged
+(biome `--write` + `jest --findRelatedTests` on the two touched sources) ✔,
+`yarn validate` ✔ (`Tests: 2 skipped, 5576 passed, 5578 total`; coverage 100% —
+5284/2303/1102/4733), `check-changed-coverage --staged` ✔ (silent on success). This
+ledger entry lands in a docs-only commit at the same version rather than an amend of
+the step commit: amending would rehash the commit away from the sha this entry
+records.
+
+Break script after the commit: the replace hit exactly one line (verified with
+`git diff --stat` before running), `-t "cards"` ran red — last line
+`Tests:       1 failed, 14 skipped, 15 total`, the off-state colour claim receiving
+`#3b3977` — then `git checkout -- shared/constants.ts` restored the committed value
+and the full suite ran green (`Tests: 15 passed, 15 total`).
+
+Review pass (cold, against the checklist): `Toggle.tsx` carries no diff; the travel
+claims were not edited, only added beside (the import line extended with `COLORS`,
+pure additions inside the describe); `LabeledToggle.test.tsx` and the settings sheet
+suites pass inside the hook's full validate run; no lifecycle, thread or residue
+class applies to a one-value constant repoint; no stale value stands anywhere (the
+constants suite never pinned the old literal). No findings.
+
+session: ses_ec6277b8bffedMBK3OqKPyUOQf
 
 ## Planning repair (2026-10-14)
 
