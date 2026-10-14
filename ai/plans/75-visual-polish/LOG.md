@@ -133,15 +133,16 @@ Change: the scrollable branch of `contentStyle` took
 ruling comment; the fixed branch untouched. Green: the file's suite 26/26,
 `tsc --noEmit` clean, biome clean on both touched files.
 
-Version 2.0.452 in `app.json` then `package.json`. Commit `035fe4df`
-(`035fe4df4d9907b5b2839841ff8868d6936fa035`) on `ticket/75`.
+Version 2.0.452 in `app.json` then `package.json`. Commit `5b566475`
+(`5b566475c6d68671ab0853bdd404809760f7bbe5`) on `ticket/75`; it supersedes the
+pre-amend `035fe4df`, the ledger folded into the same commit.
 
 The hook again silently skipped (`.husky/_` still missing in the worktree, the step 01
 deviation stands); the gate commands ran manually against the committed tree:
 `yarn validate` passed (`Tests: 2 skipped, 5574 passed, 5576 total`, one more than
 step 01's run — the new claim; coverage Statements/Branches/Functions/Lines all
-`100%`, 5284/2303/1102/4733); `check-identifiers.js --push 035fe4df...` exit 0;
-`check-changed-coverage.js --push 035fe4df...` exit 0.
+`100%`, 5284/2303/1102/4733); `check-identifiers.js --push 5b566475...` exit 0;
+`check-changed-coverage.js --push 5b566475...` exit 0.
 
 Break script after the commit: the stripped file ran `-t "hides the scroll indicator"`
 red — last line `Tests:       1 failed, 25 skipped, 26 total` — then `git checkout --`
