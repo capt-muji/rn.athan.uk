@@ -80,7 +80,7 @@ The owner's rules that apply:
 | D4 | The Swatches rows, the hue bar's rainbow and every other picker surface stay exactly as they render today: the ticket names the hue marker and the big box, the swatch ring's `left: 0` sits inside a cell the ring exactly fills, so no defect exists there | The lead, from the library source and the vision read | 2026-10-14 | section 4 |
 | D5 | `QiblaWave.tsx` reads the same lagging constant but draws its SVG path and its phone travel from one flag, so the two cannot diverge from each other in any state; it is not one of the four defects and is left alone. `shared/qiblaWave.ts` is outside this run's editable surface | The lead, from `shared/qiblaWave.ts:41-50` | 2026-10-14 | section 12 (reported to the queue owner) |
 | D6 | Device work waived; the owner's own device test is the acceptance bar. Proofs are the red/green tests, the mutation pass and the source citations in this plan | The owner (run order), recorded by the lead | 2026-10-14 | sections 6 and 7 |
-| D7 | Every commit lands on `ticket/73` in `$HOME/athan-gitree/run-73`; no branch-per-step off uat, no merge into uat, no push. The standing executor rules that name uat are overridden by this run order. The lead commits this plan folder and the queue's READY cell as `2.0.257 - docs(plans): ticket 73 READY` before any executor dispatch, so the executor's first pre-flight sees a clean tree. Version ladder: the READY plan commit takes 2.0.257, steps 1 to 4 take 2.0.258 to 2.0.261, audit fixes take 2.0.262 upward, all inside the reserved range | The owner (run order), recorded by the lead | 2026-10-14 | steps 1 to 4 |
+| D7 | Every commit lands on `ticket/73` in `$HOME/athan-gitree/run-73`; no branch-per-step off uat, no merge into uat, no push. The standing executor rules that name uat are overridden by this run order. The lead commits this plan folder and the queue's READY cell as `2.0.257 - docs(plans): ticket 73 READY` before any executor dispatch, so the executor's first pre-flight sees a clean tree. Version ladder: the READY plan commit takes 2.0.257, the amendment and ladder-correction commits take 2.0.258 and 2.0.259, steps 1 to 4 take 2.0.260 to 2.0.263, audit fixes take 2.0.264 upward, all inside the reserved range | The owner (run order), recorded by the lead | 2026-10-14 | steps 1 to 4 |
 | D8 | The version-lock directory protocol is kept (concurrent lanes take numbers); `android/app/build.gradle` is absent in the worktree, which the lockstep test tolerates (`shared/__tests__/versionLockstep.test.ts:69-71`), so versions bump `app.json` and `package.json` together only | The lead, owner-delegated (the owner's run order, 2026-10-14) | 2026-10-14 | steps 1 to 4 |
 
 ### 2.2 The executor must not decide
@@ -387,14 +387,14 @@ static line itself is unchanged by this step.
 Record each mutation and its failing test name in `LOG.md`.
 
 Version and commit. Take the version lock (`mkdir $HOME/athan-gitree/version.lock`, retry in a
-short sleep loop while it exists, `rmdir` after the commit). Set `2.0.258` in `app.json` then
+short sleep loop while it exists, `rmdir` after the commit). Set `2.0.260` in `app.json` then
 `package.json` (the worktree has no `android/`; D8). Add by name:
 `components/sheets/parts/SegmentedControl.tsx`,
 `components/sheets/parts/__tests__/SegmentedControl.test.tsx`,
 `ai/plans/README.md`, `ai/plans/73-rtl-travel-family/PLAN.md`,
 `ai/plans/73-rtl-travel-family/LOG.md`. In `ai/plans/README.md` set the ticket 73 status cell
 from `PLANNING` to `IN PROGRESS, step 1`. Commit on `ticket/73` with
-`2.0.258 - fix(alert): the segmented pill keys its travel on the locale's own direction, not the bridge snapshot`.
+`2.0.260 - fix(alert): the segmented pill keys its travel on the locale's own direction, not the bridge snapshot`.
 The hook's last `Tests:` line must end `passed, <n> total` with the four `100%` coverage
 lines present.
 
@@ -499,12 +499,12 @@ Mutation pass: (a) `const isRTL = false;` (the break), (b) the derived value's
 `value ? (isRTL ? -SIZE.toggle.translateX : SIZE.toggle.translateX) : 0` changed to
 `value ? SIZE.toggle.translateX : 0` must fail both new tests. Record both in `LOG.md`.
 
-Version and commit. Under the lock, set `2.0.259` in `app.json` then `package.json`. Add by
+Version and commit. Under the lock, set `2.0.261` in `app.json` then `package.json`. Add by
 name: `components/sheets/parts/Toggle.tsx`,
 `components/sheets/parts/__tests__/Toggle.test.tsx`, `ai/plans/README.md`,
 `ai/plans/73-rtl-travel-family/PLAN.md`, `ai/plans/73-rtl-travel-family/LOG.md`. Set the
 ticket 73 status cell to `IN PROGRESS, step 2`. Commit on `ticket/73` with
-`2.0.259 - fix(alert): the switch thumb keys its travel on the locale's own direction, not the bridge snapshot`.
+`2.0.261 - fix(alert): the switch thumb keys its travel on the locale's own direction, not the bridge snapshot`.
 
 Review. Read `git show <sha>` cold against: en tests untouched; the production change is the
 direction source, its comment and the import pair; no `I18nManager` residue.
@@ -623,12 +623,12 @@ Mutation pass: (a) the break's hard-wired 'ltr' (proven by the break itself),
 (b) `? 'rtl' : 'ltr'` changed to `? 'ltr' : 'rtl'` must fail both new tests (each receives
 the other direction). Record both in `LOG.md`.
 
-Version and commit. Under the lock, set `2.0.260` in `app.json` then `package.json`. Add by
+Version and commit. Under the lock, set `2.0.262` in `app.json` then `package.json`. Add by
 name: `components/sheets/screens/ColorPicker.tsx`,
 `components/sheets/screens/__tests__/ColorPicker.test.tsx`, `ai/plans/README.md`,
 `ai/plans/73-rtl-travel-family/PLAN.md`, `ai/plans/73-rtl-travel-family/LOG.md`. Set the
 ticket 73 status cell to `IN PROGRESS, step 3`. Commit on `ticket/73` with
-`2.0.260 - fix(settings): the colour picker resolves the direction the library snapshotted`.
+`2.0.262 - fix(settings): the colour picker resolves the direction the library snapshotted`.
 
 Review. Read `git show <sha>` cold against: the only production changes are the keyed
 direction, its comment, the extended import and the two style arrays; the styles objects
@@ -656,12 +656,12 @@ measured values (shas, versions, hook lines). Set the ticket 73 status cell to `
 No code changes.
 
 Checks: `bash $TMPDIR/preflight-73.sh` still ends `PREFLIGHT OK` (the version now reads
-2.0.261 after the bump below).
+2.0.263 after the bump below).
 
-Version and commit. Under the lock, set `2.0.261` in `app.json` then `package.json`. Add by
+Version and commit. Under the lock, set `2.0.263` in `app.json` then `package.json`. Add by
 name: `ai/plans/73-rtl-travel-family/LOG.md`, `ai/plans/73-rtl-travel-family/PLAN.md` (tick
 step 4's box), `ai/plans/README.md`. Commit on `ticket/73` with
-`2.0.261 - docs(plans): ticket 73 executed: the RTL travel family, three behaviour fixes proven by tests`.
+`2.0.263 - docs(plans): ticket 73 executed: the RTL travel family, three behaviour fixes proven by tests`.
 
 Done when: the LOG carries the records, the queue reads EXECUTED, and the `session:` line is
 written. Return `DONE` (the Finishing branch-and-merge steps of the standing instructions do
