@@ -49,7 +49,7 @@ export default function PrayerTime({ type, index }: Props) {
   // Timings mirror Prayer.tsx: selection 150ms, next-prayer advance and cascade 1000ms
   const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
   const colorStyle = useDerivedColor(colorPos, {
-    fromColor: COLORS.text.muted,
+    fromColor: COLORS.text.rowTime,
     toColor: COLORS.text.primary,
     duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
