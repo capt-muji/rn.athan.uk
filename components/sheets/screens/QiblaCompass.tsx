@@ -84,7 +84,7 @@ const Kaaba = memo(({ box, palette }: { box: number; palette: Palette }) => {
  * drawing pipeline on any attribute change, which is several frames for a plate of this many elements. The two
  * palettes are stacked and cross-faded instead, so turning gold costs one opacity and never a redraw.
  *
- * Everything here is drawn in the DIAL's own space, so it all turns together: the letters keep their bearings the
+ * Everything here is drawn in the DIAL's own space, so it all turns together: the numbers keep their bearings the
  * way a real compass card does, rather than pivoting about their own points. The Kaaba is the one exception and
  * rides its own counter-turning layer, because a building has an up and the plate does not.
  */
@@ -143,7 +143,7 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
             y={at.y}
             fill={palette.ink}
             fontSize={radius * FACE.cardinalSize}
-            fontFamily={ty.familyMedium}
+            fontFamily={ty.familyDigits}
             textAnchor={'middle'}
             alignmentBaseline={'central'}>
             {angle}

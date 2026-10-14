@@ -35,7 +35,6 @@ check_anchor qibla-wider-line-test.txt "components/sheets/screens/__tests__/Qibl
 check_anchor explanation-digits.txt "components/prayer/Explanation.tsx"
 check_anchor explanation-ar-test.txt "components/prayer/__tests__/Explanation.test.tsx"
 check_anchor locale-native-digits.txt "shared/i18n/locale.ts"
-check_anchor ar-cardinals.txt "shared/i18n/ar.ts"
 check_anchor ar-subtitles.txt "shared/i18n/ar.ts"
 
 [ "$fail" -eq 0 ] && say "PREFLIGHT OK"

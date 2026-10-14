@@ -320,4 +320,13 @@ closed, queue row at the awaiting-merge state`.
 
 session: the lead (step 4 landed directly)
 
+### Audit — PASS with fixes
+
+One plan-conformance reviewer and one blind reviewer (the second never saw the plan),
+both read-only; the lead adjudicated every finding from the code. Two findings rejected
+with their disproof, thirteen confirmed and fixed. The full verdicts are in `AUDIT.md`.
+The audit-fix commit carries the source fixes (the ring on the language-free digit face,
+the stale comments, the redundant style key, the sharpened guards), the plan and step
+corrections, `AUDIT.md`, the queue row's post-audit text and the version bump.
+
 

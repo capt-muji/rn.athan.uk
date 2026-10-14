@@ -15,8 +15,10 @@ changes in this step.
 
 Branch: `ticket/76`.
 
-Files: `components/prayer/__tests__/Explanation.test.tsx`, `app.json`,
-`package.json`. (`Explanation.tsx` is touched only by the break script and reverted.)
+Files: `components/prayer/__tests__/Explanation.test.tsx`,
+`shared/__tests__/qiblaCompass.test.ts` (the cardinal lock, superseded by step 2b),
+`app.json`, `package.json`. (`Explanation.tsx` is touched only by the break script and
+reverted.)
 
 Tests, added to `Explanation.test.tsx`:
 

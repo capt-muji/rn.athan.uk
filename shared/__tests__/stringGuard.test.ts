@@ -126,7 +126,14 @@ describe('the string census guard', () => {
     // reads no catalog at all
     expect(source).toContain('CARDINAL_ANGLES');
     expect(source).not.toContain('qibla.cardinal');
+    // No catalog read at all: the ring's bearings are module data, so the compass depends on no language
+    expect(source).not.toContain('@/shared/i18n');
     expect(source).not.toMatch(/letter: '/);
+    // The ring also draws on the language-free digit face, so its numbers and degree circle are identical in every
+    // language (the component's per-locale face would otherwise draw ar in the Arabic face, which carries no degree sign)
+    const dialSource = fs.readFileSync(path.join(ROOT, 'components/sheets/screens/QiblaCompass.tsx'), 'utf8');
+    expect(dialSource).toContain('ty.familyDigits');
+    expect(dialSource).not.toContain('ty.familyMedium');
     const census = execFileSync('node', ['scripts/scan-strings.mjs', ''], {
       cwd: ROOT,
       encoding: 'utf8',
