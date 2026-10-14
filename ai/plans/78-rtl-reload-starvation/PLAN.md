@@ -127,7 +127,7 @@ The design review: the race's timer must be cleared when reconciliation wins, or
 Checklist:
 
 - [x] Step 1 — bound the boundary-crossing wait (code, weight 2)
-- [ ] Step 2 — the verdict record (docs, weight 1)
+- [x] Step 2 — the verdict record (docs, weight 1)
 
 The steps live in `steps/1-bound-the-reload.md` and `steps/2-records.md`. Batch budget 2, session budget 3: one executor session may run both steps in one batch.
 
