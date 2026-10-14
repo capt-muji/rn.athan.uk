@@ -4,6 +4,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { I18nManager } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';
@@ -141,6 +142,10 @@ describe('the reminder sound control while the reminder is off', () => {
 // direction, and the pill travelled off-screen exactly there (row 73)
 describe('the Athan control under the Arabic locale while the bridge still reports LTR', () => {
   beforeEach(() => {
+    // The starved state needs the bridge still reporting the launch direction: the real jest
+    // bridge reports LTR, and a preset change that flips it would silently turn these into
+    // completed-crossing tests
+    expect(I18nManager.getConstants().isRTL).toBe(false);
     setActiveLocale('ar');
   });
 
@@ -153,9 +158,9 @@ describe('the Athan control under the Arabic locale while the bridge still repor
 
     await measure(306);
 
-    // Sound is the last of three options; the pill's anchor is the option row's start edge
-    // (the physical right under the RTL layout the locale forces), so its slot mirrors two
-    // segments toward the row's end: -200%
+    // Sound is the last of three options; the locale's own direction mirrors the slot math
+    // two segments toward the row's end: -200%. Jest lays out against the LTR bridge, so
+    // this proves the mirrored target, not the device's RTL frame
     expect(drawn()[0]).toHaveStyle({ width: 100, transform: [{ translateX: '-200%' }] });
   });
 
