@@ -20,9 +20,9 @@ const SUHOOR = 2;
 const DUHA = 3;
 const ISTIJABA = 4;
 
-const COLON_COLOUR = 'rgba(160, 200, 255, 0.3)';
-const NEXT_COLON_COLOUR = 'rgba(160, 200, 255, 0.45)';
-const NEXT_COLON_COLOUR_EXTRAS = 'rgba(218, 152, 240, 0.45)';
+const COLON_COLOUR = 'rgba(174, 208, 255, 0.375)';
+const NEXT_COLON_COLOUR = 'rgba(174, 208, 255, 0.5625)';
+const NEXT_COLON_COLOUR_EXTRAS = 'rgba(224, 167, 242, 0.5625)';
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)
