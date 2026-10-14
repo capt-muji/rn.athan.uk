@@ -24,7 +24,6 @@ export interface LocaleTypography {
   wordFace: boolean;
   /** The record's script needs a taller line box than its size suggests (ar's clamped blocks); absent when the font's own metrics serve */
   scriptLineHeight?: (n: number) => number;
-  arabic: boolean;
 }
 
 const ARABIC: LocaleTypography = {
@@ -37,7 +36,6 @@ const ARABIC: LocaleTypography = {
   letterSpacing: () => 0,
   wordFace: true,
   scriptLineHeight: (n) => Math.round(n * 1.5),
-  arabic: true,
 };
 
 const LATIN: LocaleTypography = {
@@ -49,7 +47,6 @@ const LATIN: LocaleTypography = {
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
   wordFace: false,
-  arabic: false,
 };
 
 /** One record per shipped locale: a new language adds its entry here, its numerals to
