@@ -30,8 +30,8 @@ Green run: none beyond `yarn validate` (docs-only change; the hook still runs).
 
 Break script: none.
 
-Version and commit: 2.0.605 in both files. Commit message:
-`2.0.605 - docs(plans): ticket 76 executed, run records closed, queue row at the awaiting-merge state`.
+Version and commit: 2.0.606 in both files. Commit message:
+`2.0.606 - docs(plans): ticket 76 executed, run records closed, queue row at the awaiting-merge state`.
 
 Merge: none this run.
 

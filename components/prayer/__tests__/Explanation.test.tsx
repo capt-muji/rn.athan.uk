@@ -7,7 +7,7 @@ import type { TestInstance } from 'test-renderer';
 
 import { EXTRA_PRAYER_TITLES, EXTRAS_EXPLANATIONS } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { setActiveLocale } from '@/shared/i18n/locale';
+import { LOCALE_IDS, localizeDigits, setActiveLocale } from '@/shared/i18n/locale';
 
 import PrayerExplanation from '../Explanation';
 
@@ -70,4 +70,28 @@ describe('the explanation box under ar', () => {
       setActiveLocale('en');
     }
   });
+});
+
+describe('the five Extras boxes across the six locale digit laws', () => {
+  // Row 84's law has two halves: every sentence renders its digits in the locale's own numerals, and outside
+  // ar, the one native-numeral locale, that means the catalog bytes reach the screen untouched
+  it.each(EXTRAS_EXPLANATIONS.flatMap((key, prayer) => LOCALE_IDS.map((locale) => ({ key, locale, prayer }))))(
+    'renders $key under $locale with the locale\u2019s own digits',
+    async ({ key, locale, prayer }) => {
+      setActiveLocale(locale);
+      try {
+        await render(<PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[prayer]} explanation={t(key)} />);
+
+        const shown = screen.getByText(localizeDigits(t(key)));
+        expect(shown.props.children).toBe(localizeDigits(t(key)));
+        if (locale === 'ar') {
+          expect(shown.props.children).not.toMatch(/[0-9]/);
+        } else {
+          expect(shown.props.children).toBe(t(key));
+        }
+      } finally {
+        setActiveLocale('en');
+      }
+    }
+  );
 });

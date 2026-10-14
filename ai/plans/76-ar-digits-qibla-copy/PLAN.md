@@ -235,10 +235,11 @@ Checklist (LOG.md carries one `### Step NN` heading per step, each ending with i
 - [ ] Step 4 — records and the queue row (`steps/4-records.md`, weight 1, closes the ticket's run)
 
 Steps live in `steps/`. Every step: one branch off `ticket/76`, one commit, versions
-per D76.5 (step 1 commits as 2.0.602, step 2 as 2.0.603, step 3 as 2.0.604, step 4 as
-2.0.605), red tests before the change where the step changes code, `yarn validate`
-green before the commit (the pre-commit hook runs it and takes 3 to 4 minutes;
-`node_modules` must be symlinked into the worktree before the first commit).
+per D76.5 (step 1 commits as 2.0.602, step 2 as 2.0.604 after its stop record consumed
+2.0.603, step 3 as 2.0.605, step 4 as 2.0.606), red tests before the change where the
+step changes code, `yarn validate` green before the commit (the pre-commit hook runs
+it and takes 3 to 4 minutes; `node_modules` must be symlinked into the worktree before
+the first commit).
 
 ## 7. Device proof
 

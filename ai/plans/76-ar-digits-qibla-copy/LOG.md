@@ -109,18 +109,22 @@ never truncates under ar`. Commit sha: `146a26884b1f066940918156d517ffc6e4c44140
 
 session: ses_ec63996c6ffeqGuyw8XgOwbyVh
 
-### Step 02 — STOPPED (plan defect: the break expectation counts six ar sweep rows; the cross product has five, and only two can fail)
+### Step 02 — done (stopped once on a plan defect; repaired and landed)
 
-Both tests written per the step file and green against the shipped code, as D76.1
-and D76.4 require: the 30-case sweep (five `EXTRAS_EXPLANATIONS` keys crossed with
-`LOCALE_IDS`, render half `localizeDigits(t(key))`, ar rows asserting no ASCII
-digit, every other locale byte-for-byte identity, `en` restored in `finally`) and
-the cardinal lock (both dial languages, letters read through `t()` at 0/90/180/270).
-Green: Explanation + typographySweep `Tests: 70 passed, 70 total`; qiblaCompass
-(unit project) `Tests: 28 passed, 28 total`; `yarn validate` clean, `Tests:
-2 skipped, 5608 passed, 5610 total`, coverage 100/100/100/100. The cardinal lock
-lives in `shared/__tests__/qiblaCompass.test.ts`, named by the step's test spec and
-the plan's declared parallel-invariant list, though the step's Files line omits it.
+Landed at commit `2.0.604` on `ticket/76` — see the resolution below the stop record,
+which is kept as it was written.
+
+**The stop (2026-10-14, before the plan repair).** Both tests written per the step
+file and green against the shipped code, as D76.1 and D76.4 require: the 30-case
+sweep (five `EXTRAS_EXPLANATIONS` keys crossed with `LOCALE_IDS`, render half
+`localizeDigits(t(key))`, ar rows asserting no ASCII digit, every other locale
+byte-for-byte identity, `en` restored in `finally`) and the cardinal lock (both dial
+languages, letters read through `t()` at 0/90/180/270). Green: Explanation +
+typographySweep `Tests: 70 passed, 70 total`; qiblaCompass (unit project) `Tests:
+28 passed, 28 total`; `yarn validate` clean, `Tests: 2 skipped, 5608 passed, 5610
+total`, coverage 100/100/100/100. The cardinal lock lives in
+`shared/__tests__/qiblaCompass.test.ts`, named by the step's test spec and the plan's
+declared parallel-invariant list, though the step's Files line omits it.
 
 Break script, verbatim, prediction written first (only ar suhoor and ar duha carry
 digits in the catalog, `ar.ts:152-153`; midnight, last third and istijaba carry
@@ -135,22 +139,29 @@ Predicted 3 failed. Observed: `Tests: 3 failed, 33 passed, 36 total` —
   ● … › renders extras.explanation.suhoor under ar with the locale’s own digits
   ● … › renders extras.explanation.duha under ar with the locale’s own digits
 
-The plan's expectation line reads "the six ar sweep rows AND the existing ar Suhoor
-test". The observed count differs on two independent grounds. Arithmetic: the sweep
-crosses five keys with six locales, so exactly five ar rows exist, never six.
+The plan's expectation line then read "the six ar sweep rows AND the existing ar
+Suhoor test". The observed count differed on two independent grounds. Arithmetic: the
+sweep crosses five keys with six locales, so exactly five ar rows exist, never six.
 Catalog: the three digit-free ar sentences render identically with or without the
-renderer's `localizeDigits`, so their rows stay green under the break by design.
-The failure mode itself is exactly the plan's: `Unable to find an element with
-text: ٢٠ دقيقة قبل الفجر` — the ٢٠ matcher finding Latin 20.
+renderer's `localizeDigits`, so their rows stay green under the break by design. The
+failure mode itself was exactly the plan's: `Unable to find an element with text:
+٢٠ دقيقة قبل الفجر` — the ٢٠ matcher finding Latin 20. The script's revert ran and
+the suite re-ran green. Nothing was committed for the step; the tests were preserved
+at `$HOME/athan-gitree/sessions/76-steps12/step2-unfinished.patch` and the tree
+reverted to the step-1 commit. The stop record is commit `866c011b` (2.0.603).
 
-The script's revert ran (`git checkout -- components/prayer/Explanation.tsx`) and
-the suite re-ran green: `Tests: 36 passed, 36 total`. Nothing committed for this
-step; no version taken by it. The tests are preserved verbatim at
-`$HOME/athan-gitree/sessions/76-steps12/step2-unfinished.patch` with the five run
-logs beside it; the working tree was reverted to the step-1 commit before this
-record was written. Resume: re-plan the break expectation (five ar sweep rows, of
-which suhoor and duha fail and three stay green by the catalog, plus the existing
-ar Suhoor test), then re-apply the patch; the tests themselves pass and need no
-change.
+**Resolution (same day, plan repaired).** The lead repaired the plan in the working
+tree: the break expectation now reads "3 failed, 33 passed — the existing ar Suhoor
+test, the ar suhoor sweep row and the ar duha sweep row (the only digit-carrying ar
+sentences: ar.ts:152-153)", and this step's version moved to 2.0.604 (steps 3 and 4
+to 2.0.605 and 2.0.606). The preserved patch was re-applied unchanged; the tests
+needed no change. Green re-confirmed: 70 + 28 passed, `yarn validate` clean (`Tests:
+2 skipped, 5608 passed, 5610 total`, coverage 100/100/100/100). Break re-run,
+verbatim: `Tests: 3 failed, 33 passed, 36 total`, the three failures exactly the
+repaired expectation's three; revert applied, `Tests: 36 passed, 36 total`. Versions
+bumped to 2.0.604 in `app.json` then `package.json`. Commit: `2.0.604 - test(i18n):
+the five Extras boxes swept across the six locale digit laws; the ar compass
+cardinals locked to the dial convention`, on `ticket/76`; its sha is in the run
+report, since a commit cannot carry its own sha.
 
 session: ses_ec63996c6ffeqGuyw8XgOwbyVh

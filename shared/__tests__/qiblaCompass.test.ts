@@ -2,6 +2,7 @@
  * The compass face's geometry, and the clearances the owner settled by eye on the phone
  */
 
+import { t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { FIGURE_CANVAS, FIGURE_SPREAD } from '@/shared/kaabaFigure';
 import {
@@ -77,6 +78,29 @@ describe('the cardinal letters', () => {
     setActiveLocale('ar');
     try {
       expect(resolveCardinals().map(({ letter }) => letter)).toEqual(['ش', 'ق', 'ج', 'غ']);
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  // The letters are the active catalog's copy and the bearings are the dial's geometry; reading both through t()
+  // means a catalog edit moves this test with the catalog, and a mapping drift between them fails here
+  it('locks the letters to their bearings through the live catalog in both dial languages', () => {
+    expect(resolveCardinals()).toEqual([
+      { angle: 0, letter: t('qibla.cardinal.n') },
+      { angle: 90, letter: t('qibla.cardinal.e') },
+      { angle: 180, letter: t('qibla.cardinal.s') },
+      { angle: 270, letter: t('qibla.cardinal.w') },
+    ]);
+
+    setActiveLocale('ar');
+    try {
+      expect(resolveCardinals()).toEqual([
+        { angle: 0, letter: t('qibla.cardinal.n') },
+        { angle: 90, letter: t('qibla.cardinal.e') },
+        { angle: 180, letter: t('qibla.cardinal.s') },
+        { angle: 270, letter: t('qibla.cardinal.w') },
+      ]);
     } finally {
       setActiveLocale('en');
     }
