@@ -119,12 +119,21 @@ describe('the string census guard', () => {
     expect(namesRows).toEqual([]);
   });
 
-  it('holds the compass cardinals in the catalog, not the module', () => {
+  it('holds the compass ring’s bearings as module data, not catalog copy', () => {
     const source = fs.readFileSync(path.join(ROOT, 'shared/qiblaCompass.ts'), 'utf8');
-    // The cardinal letters are copy (the ar dial reads ش/ق/ج/غ), so the module
-    // resolves them through t() and holds no letter literal of its own
-    expect(source).toContain("t('qibla.cardinal.n')");
+    // The owner's 2026-10-14 ruling made the ring the four Latin degree numbers,
+    // identical in every language, so the module holds no qibla.cardinal key and
+    // reads no catalog at all
+    expect(source).toContain('CARDINAL_ANGLES');
+    expect(source).not.toContain('qibla.cardinal');
+    // No catalog read at all: the ring's bearings are module data, so the compass depends on no language
+    expect(source).not.toContain('@/shared/i18n');
     expect(source).not.toMatch(/letter: '/);
+    // The ring also draws on the language-free digit face, so its numbers and degree circle are identical in every
+    // language (the component's per-locale face would otherwise draw ar in the Arabic face, which carries no degree sign)
+    const dialSource = fs.readFileSync(path.join(ROOT, 'components/sheets/screens/QiblaCompass.tsx'), 'utf8');
+    expect(dialSource).toContain('ty.familyDigits');
+    expect(dialSource).not.toContain('ty.familyMedium');
     const census = execFileSync('node', ['scripts/scan-strings.mjs', ''], {
       cwd: ROOT,
       encoding: 'utf8',

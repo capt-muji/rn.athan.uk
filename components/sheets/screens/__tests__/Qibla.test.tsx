@@ -9,6 +9,8 @@ import { Dimensions, Linking, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import type { FusedHeading } from '@/modules/qiblaheading';
+import { t } from '@/shared/i18n';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import * as qiblaSettle from '@/shared/qiblaSettle';
 import { WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
@@ -205,8 +207,8 @@ const waved = (turns: number, headingDegrees = 95): FusedHeading[] =>
   Array.from({ length: turns + 1 }, (_, turn) => ({ headingDegrees, attitude: tipped(turn * 31) }));
 
 /** How much of a subtitle line shows: the two are stacked, and only this tells them apart on screen */
-const subtitleOpacity = (text: string) =>
-  (StyleSheet.flatten(screen.getByText(text).props.style) as { opacity?: number }).opacity;
+const subtitleOpacity = (testID: string) =>
+  (StyleSheet.flatten(screen.getByTestId(testID).props.style) as { opacity?: number }).opacity;
 
 beforeEach(() => {
   mockWatchers.length = 0;
@@ -236,7 +238,7 @@ describe('the qibla sheet before it is opened', () => {
   it('tells the user what to do without naming a number to read', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
+    expect(screen.getByTestId('qibla-subtitle-ready')).toBeOnTheScreen();
   });
 
   // Both lines are mounted the whole time and cross-faded, so the header keeps one height: a swap in place
@@ -244,35 +246,60 @@ describe('the qibla sheet before it is opened', () => {
   it('carries both subtitles, so the change costs a fade rather than a resize', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Follow below instructions')).toBeOnTheScreen();
-    expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
+    expect(screen.getByTestId('qibla-subtitle-waiting')).toBeOnTheScreen();
+    expect(screen.getByTestId('qibla-subtitle-ready')).toBeOnTheScreen();
   });
 
   it('caps both subtitles at one line, so the header keeps its height', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Follow below instructions').props.numberOfLines).toBe(1);
-    expect(screen.getByText('Hold flat and turn slowly').props.numberOfLines).toBe(1);
+    expect(screen.getByTestId('qibla-subtitle-waiting').props.numberOfLines).toBe(1);
+    expect(screen.getByTestId('qibla-subtitle-ready').props.numberOfLines).toBe(1);
   });
 
   // An absolutely positioned child contributes NO width, so the line taken out of flow cannot widen the container.
-  // Leaving the NARROWER line in flow shrink-wraps the column to it and cuts the wider one to an ellipsis. Measured
-  // in the bundled font at the subtitle's size: 158.6dp for the line in flow against 150.4dp for the other
-  it('leaves the wider subtitle in flow, so neither line is truncated', async () => {
+  // Measured in the bundled font at the subtitle's size: en 158.6dp waiting in flow against 150.4dp ready absolute.
+  // The wider sentence depends on the language (ar, ms and so carry the wider ready line), which is the donor's job
+  it('keeps the waiting line in flow and the ready line absolute', async () => {
     await render(<QiblaSheet />);
 
-    const position = (text: string) =>
-      (StyleSheet.flatten(screen.getByText(text).props.style) as { position?: string }).position;
+    const position = (testID: string) =>
+      (StyleSheet.flatten(screen.getByTestId(testID).props.style) as { position?: string }).position;
 
-    expect(position('Follow below instructions')).toBeUndefined();
-    expect(position('Hold flat and turn slowly')).toBe('absolute');
+    expect(position('qibla-subtitle-waiting')).toBeUndefined();
+    expect(position('qibla-subtitle-ready')).toBe('absolute');
   });
 
   it('shows the line that asks the user to act while the hint is up', async () => {
     await render(<QiblaSheet />);
 
-    expect(subtitleOpacity('Follow below instructions')).toBe(1);
-    expect(subtitleOpacity('Hold flat and turn slowly')).toBe(0);
+    expect(subtitleOpacity('qibla-subtitle-waiting')).toBe(1);
+    expect(subtitleOpacity('qibla-subtitle-ready')).toBe(0);
+  });
+
+  // The donor is the mechanism that lets the box fit the wider sentence: it sits in flow at zero height carrying the
+  // ready sentence, so the box measures whichever of the two is wider. Only the mechanism is observable in the test
+  // tree; the rendered box width on glass falls to the owner's QA
+  it.each(LOCALE_IDS)('carries a zero-height in-flow donor holding the ready sentence under %s', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      await render(<QiblaSheet />);
+
+      const donor = screen.getByTestId('qibla-subtitle-donor', { includeHiddenElements: true });
+      const style = StyleSheet.flatten(donor.props.style) as {
+        height?: number;
+        marginTop?: number;
+        position?: string;
+      };
+
+      expect(style.height).toBe(0);
+      expect(style.marginTop).toBeUndefined();
+      expect(style.position).toBeUndefined();
+      expect(donor.props.numberOfLines).toBe(1);
+      expect(donor.props.children).toBe(t('qibla.subtitleReady'));
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
 
@@ -336,8 +363,8 @@ describe('the qibla sheet, opened in London', () => {
 
     await reportHeadings(95);
 
-    expect(subtitleOpacity('Hold flat and turn slowly')).toBe(1);
-    expect(subtitleOpacity('Follow below instructions')).toBe(0);
+    expect(subtitleOpacity('qibla-subtitle-ready')).toBe(1);
+    expect(subtitleOpacity('qibla-subtitle-waiting')).toBe(0);
   });
 
   it('asks for the position once, however many headings arrive', async () => {
@@ -2224,5 +2251,66 @@ describe('the readings a warm reopen is judged on', () => {
     expect(judged).toHaveBeenCalledTimes(200);
     expect(judged.mock.calls.at(-1)?.[0]).toHaveLength(8);
     judged.mockRestore();
+  });
+});
+
+describe('the compass ring’s cardinal numbers on the drawn dial', () => {
+  // The ring is SVG, so its labels are read from the rendered tree: RNSVGText holds one child per label and a numeric
+  // child arrives as its own TSpan, so the labels are the TSpan `content` values under the dial. This is the render
+  // half of the owner's 2026-10-14 ruling; the unit suite proves the data is locale-free
+  type DialLabel = { content: string; dy?: number[]; fontSize?: number };
+
+  const dialLabels = (): { labels: DialLabel[]; numberSize: number } => {
+    const labels: DialLabel[] = [];
+    let numberSize = 0;
+    const walk = (node: unknown): void => {
+      if (node == null || typeof node !== 'object') return;
+      const n = node as { type?: unknown; props?: Record<string, unknown>; children?: unknown[] };
+      const font = n.props?.font as { fontSize?: number } | undefined;
+      if (n.type === 'RNSVGText' && typeof font?.fontSize === 'number') numberSize = font.fontSize;
+      if (n.type === 'RNSVGTSpan' && typeof n.props?.content === 'string') {
+        labels.push({
+          content: n.props.content,
+          dy: n.props.dy as number[] | undefined,
+          fontSize: font?.fontSize,
+        });
+      }
+      for (const child of n.children ?? []) walk(child);
+    };
+    walk(screen.getByTestId('qibla-dial').toJSON());
+    return { labels, numberSize };
+  };
+
+  it.each(LOCALE_IDS)('draws the four bearing numbers with their degree circles under %s', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      // The sheet's opener finds its title through the active catalog, since the title is localized
+      jest.useFakeTimers();
+      await render(<QiblaSheet />);
+      await fireEvent(screen.getByText(t('qibla.title')), 'change', 0);
+      await act(async () => {});
+      await reportHeadings(95);
+
+      const { labels, numberSize } = dialLabels();
+      const contents = labels.map((label) => label.content);
+      const numbers = contents.filter((content) => /^\d+$/.test(content));
+      const degrees = labels.filter((label) => label.content === '\u00B0');
+
+      // The two palettes stack the same dial, so each of the four bearings appears twice, in bearing order
+      expect(numbers).toEqual(['0', '90', '180', '270', '0', '90', '180', '270']);
+      expect(degrees).toHaveLength(8);
+      // Each degree circle is smaller than its number and raised above its line, at the number's top right
+      for (const degree of degrees) {
+        expect(degree.fontSize).toBeGreaterThan(0);
+        expect(degree.fontSize as number).toBeLessThan(numberSize);
+        expect(degree.dy?.[0]).toBeLessThan(0);
+      }
+      // No letter of the old ring survives in any language
+      for (const letter of ['N', 'E', 'S', 'W', 'ش', 'ق', 'ج', 'غ']) {
+        expect(contents).not.toContain(letter);
+      }
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });

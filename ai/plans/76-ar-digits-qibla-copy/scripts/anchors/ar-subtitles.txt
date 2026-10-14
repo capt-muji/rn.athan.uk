@@ -1,0 +1,4 @@
+  'qibla.lostMessage': 'جرّب الوقوف في مكان آخر',
+  'qibla.subtitleWaiting': 'اتبع التعليمات أدناه',
+  'qibla.subtitleReady': 'امسكه أفقيًا ودُر ببطء',
+  'qibla.permissionDenied':

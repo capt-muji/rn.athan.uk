@@ -2,15 +2,14 @@
  * The compass face's geometry, and the clearances the owner settled by eye on the phone
  */
 
-import { setActiveLocale } from '@/shared/i18n/locale';
 import { FIGURE_CANVAS, FIGURE_SPREAD } from '@/shared/kaabaFigure';
 import {
   arcPath,
+  CARDINAL_ANGLES,
   FACE,
   facePoint,
   qiblaLinePath,
   RUB_EL_HIZB_INNER,
-  resolveCardinals,
   rubElHizbPath,
   TICKS,
   unwrapHeading,
@@ -63,23 +62,19 @@ describe('the dial ticks', () => {
   });
 });
 
-describe('the cardinal letters', () => {
-  it('names the four directions at their own bearings', () => {
-    expect(resolveCardinals()).toEqual([
-      { angle: 0, letter: 'N' },
-      { angle: 90, letter: 'E' },
-      { angle: 180, letter: 'S' },
-      { angle: 270, letter: 'W' },
-    ]);
+describe('the cardinal numbers', () => {
+  // The owner's 2026-10-14 ruling replaced the per-language letters with the four Latin bearings, identical in every
+  // language; the ring reads no locale at all (the stringGuard suite proves the module names no catalog, and
+  // Qibla.test.tsx draws the same four under all six)
+  it('prints the four bearings as Latin numbers, never letters', () => {
+    expect(CARDINAL_ANGLES).toEqual([0, 90, 180, 270]);
   });
 
-  it('reads the Arabic letters under ar', () => {
-    setActiveLocale('ar');
-    try {
-      expect(resolveCardinals().map(({ letter }) => letter)).toEqual(['ش', 'ق', 'ج', 'غ']);
-    } finally {
-      setActiveLocale('en');
-    }
+  // The degree circle is a FACE ratio, so it scales with the number rather than a size invented at the draw site
+  it('scales the degree circle to the number it marks', () => {
+    expect(FACE.degree).toBeGreaterThan(0);
+    expect(FACE.degree).toBeLessThan(1);
+    expect(FACE.degreeLift).toBeGreaterThan(0);
   });
 
   // The owner moved them outward toward their notches; past this the Kaaba overlaps one at some bearings

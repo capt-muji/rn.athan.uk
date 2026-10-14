@@ -1,0 +1,12 @@
+  // An absolutely positioned child contributes NO width, so the line taken out of flow cannot widen the container.
+  // Leaving the NARROWER line in flow shrink-wraps the column to it and cuts the wider one to an ellipsis. Measured
+  // in the bundled font at the subtitle's size: 158.6dp for the line in flow against 150.4dp for the other
+  it('leaves the wider subtitle in flow, so neither line is truncated', async () => {
+    await render(<QiblaSheet />);
+
+    const position = (text: string) =>
+      (StyleSheet.flatten(screen.getByText(text).props.style) as { position?: string }).position;
+
+    expect(position('Follow below instructions')).toBeUndefined();
+    expect(position('Hold flat and turn slowly')).toBe('absolute');
+  });
