@@ -81,10 +81,10 @@ and record it in `LOG.md` (it is the same ruling restated, not a new decision). 
 
 ## Version and commit
 
-Bump `app.json` then `package.json` to `2.0.453`. Commit:
+Bump `app.json` then `package.json` to `2.0.454`. Commit:
 
 ```
-2.0.453 - every toggle's off-state outline takes the cards' edge colour, the palette
+2.0.454 - every toggle's off-state outline takes the cards' edge colour, the palette
 key repointed, travel and on-state untouched
 ```
 

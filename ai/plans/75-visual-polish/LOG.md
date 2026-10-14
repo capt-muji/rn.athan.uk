@@ -154,3 +154,39 @@ beyond the contract moved (snap points, paddings, lifecycle). No findings.
 
 session: ses_ec63afda5ffe1E11Y4giDFXKa2
 
+
+### Step 03 — stopped: pre-flight
+
+Ran the pre-flight from $TMPDIR per the step file. It did not print PREFLIGHT OK:
+
+- `PREFLIGHT FAIL: anchor masjid-image.txt counts 0 in components/ui/Masjid.tsx (expected 1)`
+- `PREFLIGHT FAIL: anchor sheet-contentwrapper.txt counts 0 in components/sheets/parts/Sheet.tsx (expected 1)`
+
+Both anchors pin the pre-change code that this ticket's own steps contracted to
+rewrite: step 1 (d6755e64) reflowed the `Image` element to add `isRTL &&
+styles.mirrored`, step 2 (035fe4df) added `showsVerticalScrollIndicator: false` to
+the scrollable `contentStyle` branch. The anchor files were never refreshed (last
+touched by the planning commit a7763ba9), so the whole-ticket pre-flight can only
+pass before step 1. Not repaired: anchors are not the executor's to edit.
+
+Everything else on the gate passed: branch ticket/75 descended from 1b0d5229, clean
+tree, app.json and package.json agreeing at 2.0.452, node_modules present, all
+fifteen parallel-invariant files untouched since the anchor. Step 3's own three
+anchor checks (constants-interactive, toggle-track, settings-card) each count 1.
+
+No step work started; tree untouched. Awaiting replan: refresh the two anchors to
+the committed post-step-2 text, or rule the pre-flight a pre-step-1-only gate.
+
+session: ses_ec62cc4daffeZXvxMAfGxMv2ph
+
+## Planning repair (2026-10-14)
+
+Step 3's executor stopped on the pre-flight: the whole-ticket anchor block counted
+steps 1 and 2's anchors against the working tree, where their own commits had already
+rewritten the pinned code, so the gate was unsatisfiable after step 1. A plan defect,
+repaired by the lead: the pre-flight now counts every anchor against the planned-at
+sha `1b0d5229` (the template's own meaning), and each step's anchor check keeps
+guarding that step's files in the working tree at step time. The version ladder
+shifts by the repair commit: step 3 commits at 2.0.454, step 4's record commit at
+2.0.455. Step 3's own three anchors counted 1 in the working tree throughout (the
+executor verified before stopping); no code changed in this repair.
