@@ -78,7 +78,7 @@ describe('the tip under a right-to-left layout', () => {
 });
 
 describe('fillAnchorFor', () => {
-  it('anchors the fill to the track's leading edge in each direction', () => {
+  it('anchors the fill to the track\u2019s leading edge in each direction', () => {
     expect(fillAnchorFor(false)).toEqual({ left: 0 });
     expect(fillAnchorFor(true)).toEqual({ right: 0 });
   });
@@ -107,7 +107,7 @@ const fillStyle = (): Record<string, unknown> => {
 };
 
 describe('the bar direction, Friday 11 September 2026 at 14:00', () => {
-  it('anchors the fill to the track's left edge under English', async () => {
+  it('anchors the fill to the track\u2019s left edge under English', async () => {
     showLondonDay('2026-09-11', '14:00');
 
     await render(<Bar type={ScheduleType.Standard} />);
@@ -116,7 +116,7 @@ describe('the bar direction, Friday 11 September 2026 at 14:00', () => {
     expect(fillStyle().right).toBeUndefined();
   });
 
-  it('anchors the fill to the track's right edge under Arabic', async () => {
+  it('anchors the fill to the track\u2019s right edge under Arabic', async () => {
     setActiveLocale('ar');
     try {
       showLondonDay('2026-09-11', '14:00');
