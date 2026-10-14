@@ -40,7 +40,7 @@ const expectArabicRecord = (ty: LocaleTypography): void => {
   expect(ty.letterSpacing(0)).toBe(0);
   expect(ty.letterSpacing(0.2)).toBe(0);
   expect(ty.letterSpacing(0.3)).toBe(0);
-  expect(ty.arabic).toBe(true);
+  expect(ty.wordFace).toBe(true);
   // Row 81: the ar countdown timer runs two points under the shared token
   expect(ty.countdownSize).toBe(24);
 };
@@ -58,7 +58,7 @@ const expectLatinRecord = (ty: LocaleTypography): void => {
   expect(ty.letterSpacing(0)).toBe(0);
   expect(ty.letterSpacing(0.2)).toBe(0.2);
   expect(ty.letterSpacing(0.3)).toBe(0.3);
-  expect(ty.arabic).toBe(false);
+  expect(ty.wordFace).toBe(false);
   expect(ty.countdownSize).toBe(26);
 };
 

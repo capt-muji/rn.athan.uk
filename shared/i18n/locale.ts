@@ -31,9 +31,12 @@ export const localizeDigits = (value: string): string => {
   return native === undefined ? value : value.replace(/[0-9]/g, (digit) => native[Number(digit)]);
 };
 
-/** The sheet chevron points with the reading direction: right under LTR, mirrored under RTL.
+/** A glyph that points with the reading direction: the LTR form under LTR, the RTL form under RTL.
  * Reads the live locale at call time, so it follows a switch without a reload */
-export const chevronFor = (): string => (localeDirection(currentLocaleId()) === 'rtl' ? '\u2039' : '\u203A');
+export const directionGlyph = (ltr: string, rtl: string): string =>
+  localeDirection(currentLocaleId()) === 'rtl' ? rtl : ltr;
+
+export const chevronFor = (): string => directionGlyph('\u203A', '\u2039');
 
 export interface DeviceLocaleInfo {
   languageTag: string;

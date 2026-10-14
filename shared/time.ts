@@ -285,9 +285,9 @@ export const formatDateLocalized = (date: string): string => {
 /**
  * Formats a date string into the active locale's Hijri format, composed from the
  * catalog's Hijri month names. The Intl call stays en-US with numeric fields so
- * it yields Latin digits, with the shape and order frozen and no era affix
- * appearing in any locale (R3.1);
- * falls back to the localized Gregorian label if conversion fails.
+ * the shape and order stay frozen, then the day and year pass localizeDigits;
+ * no era affix appears in any locale (R3.1), and a failed conversion
+ * falls back to the localized Gregorian label.
  * @param date Date string in YYYY-MM-DD format
  * @returns Formatted Hijri date string (e.g., "Rajab 1, 1447")
  */

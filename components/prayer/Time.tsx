@@ -62,7 +62,7 @@ export default function PrayerTime({ type, index }: Props) {
       {parts === null ? (
         <Animated.Text style={[styles.text, colorStyle]}>{displayTime}</Animated.Text>
       ) : (
-        <View style={styles.timeRow} accessibilityLabel={displayTime}>
+        <View style={styles.timeRow} accessible accessibilityLabel={displayTime}>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[0]}</Animated.Text>
           <Text style={[styles.textPart, styles.colon, Prayer.isNext ? styles.colonNext : undefined]}>{':'}</Text>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[1]}</Animated.Text>
