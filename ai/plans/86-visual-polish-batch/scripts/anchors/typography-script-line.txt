@@ -1,4 +1,0 @@
-  scriptLineHeight?: (n: number) => number;
-}
-
-const ARABIC: LocaleTypography = {
