@@ -9,7 +9,7 @@
 
 import { COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
 
-import { TIP_OVAL_WIDTH, tipLeftForProgress } from '../tipGeometry';
+import { fillAnchorFor, TIP_OVAL_WIDTH, tipLeftForProgress } from '../tipGeometry';
 
 const HALF = TIP_OVAL_WIDTH / 2;
 const leftEdge = (left: number) => left - HALF;
@@ -18,15 +18,15 @@ const unclamped = (progress: number) => (progress / 100) * COUNTDOWN_BAR.WIDTH -
 
 describe('tipLeftForProgress', () => {
   it('keeps the oval inside the track at both ends', () => {
-    expect(leftEdge(tipLeftForProgress(0))).toBeGreaterThanOrEqual(0);
-    expect(rightEdge(tipLeftForProgress(100))).toBeLessThanOrEqual(COUNTDOWN_BAR.WIDTH);
+    expect(leftEdge(tipLeftForProgress(0, false))).toBeGreaterThanOrEqual(0);
+    expect(rightEdge(tipLeftForProgress(100, false))).toBeLessThanOrEqual(COUNTDOWN_BAR.WIDTH);
   });
 
   it('keeps it inside across the whole range', () => {
     const outside: number[] = [];
 
     for (let progress = 0; progress <= 100; progress += 0.5) {
-      const left = tipLeftForProgress(progress);
+      const left = tipLeftForProgress(progress, false);
       if (leftEdge(left) < 0 || rightEdge(left) > COUNTDOWN_BAR.WIDTH) outside.push(progress);
     }
 
@@ -41,17 +41,59 @@ describe('tipLeftForProgress', () => {
   it('leaves ordinary positions exactly where they were', () => {
     // 65 is the colour picker's preview; the clamp must not move it
     for (const progress of [10, 25, 50, 65, 75, 90]) {
-      expect(tipLeftForProgress(progress)).toBeCloseTo(unclamped(progress), 10);
+      expect(tipLeftForProgress(progress, false)).toBeCloseTo(unclamped(progress), 10);
     }
   });
 
   it('never moves backwards as progress grows', () => {
-    let previous = tipLeftForProgress(0);
+    let previous = tipLeftForProgress(0, false);
 
     for (let progress = 0.5; progress <= 100; progress += 0.5) {
-      const left = tipLeftForProgress(progress);
+      const left = tipLeftForProgress(progress, false);
       expect(left).toBeGreaterThanOrEqual(previous);
       previous = left;
     }
+  });
+});
+
+describe('the tip under a right-to-left layout', () => {
+  it('mirrors every ordinary position about the track', () => {
+    // 65 is the colour picker's preview; the mirror must not move it either
+    for (const progress of [10, 25, 50, 65, 75, 90]) {
+      expect(tipLeftForProgress(progress, true)).toBeCloseTo(COUNTDOWN_BAR.WIDTH - unclamped(progress), 10);
+    }
+  });
+
+  it('keeps the oval inside the track at both ends', () => {
+    expect(leftEdge(tipLeftForProgress(0, true))).toBeGreaterThanOrEqual(0);
+    expect(rightEdge(tipLeftForProgress(100, true))).toBeLessThanOrEqual(COUNTDOWN_BAR.WIDTH);
+  });
+
+  it('keeps it inside across the whole range', () => {
+    const outside: number[] = [];
+
+    for (let progress = 0; progress <= 100; progress += 0.5) {
+      const left = tipLeftForProgress(progress, true);
+      if (leftEdge(left) < 0 || rightEdge(left) > COUNTDOWN_BAR.WIDTH) outside.push(progress);
+    }
+
+    expect(outside).toEqual([]);
+  });
+
+  it('never moves forwards as progress grows', () => {
+    let previous = tipLeftForProgress(0, true);
+
+    for (let progress = 0.5; progress <= 100; progress += 0.5) {
+      const left = tipLeftForProgress(progress, true);
+      expect(left).toBeLessThanOrEqual(previous);
+      previous = left;
+    }
+  });
+});
+
+describe('fillAnchorFor', () => {
+  it('anchors the fill to the track\u2019s leading edge in each direction', () => {
+    expect(fillAnchorFor(false)).toEqual({ left: 0 });
+    expect(fillAnchorFor(true)).toEqual({ right: 0 });
   });
 });
