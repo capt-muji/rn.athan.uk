@@ -1,14 +1,15 @@
-    await reconcileLanguageSurfaces();
-    if (localeDirection(locale) !== directionBefore) {
-      // Fabric treats direction as launch-time (D59): converge first, then
-      // force the new direction and relaunch. The busy face ends here.
-      I18nManager.allowRTL(true);
-      I18nManager.forceRTL(localeDirection(locale) === 'rtl');
-      try {
-        await Updates.reloadAsync();
-      } catch (error) {
-        // A refused relaunch leaves the forced direction for the next launch
-        // to apply; the switch itself completed (Error.tsx's guard shape).
-        logger.warn('LANGUAGE: relaunch failed after the RTL flip', { error });
-      }
+    if (crossesBoundary) {
+      // The cap bounds a starved queue; the losing timer never fires into a settled commit.
+      let fireCap!: () => void;
+      const capSettled = new Promise<void>((resolve) => {
+        fireCap = resolve;
+      });
+      const capTimer = setTimeout(() => {
+        logger.warn('LANGUAGE: surface convergence still unsettled after 10000 ms, relaunching for the direction flip');
+        fireCap();
+      }, RELOAD_CONVERGENCE_CAP_MS);
+      await Promise.race([reconcileLanguageSurfaces(), capSettled]);
+      clearTimeout(capTimer);
+    } else {
+      await reconcileLanguageSurfaces();
     }
