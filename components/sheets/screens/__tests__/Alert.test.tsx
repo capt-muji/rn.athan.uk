@@ -8,6 +8,7 @@ import { Alert } from 'react-native';
 
 import { onPlatform, showLondonDay } from '@/__tests__/harness';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import {
@@ -367,6 +368,29 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     expect(screen.queryByRole('radio')).not.toBeOnTheScreen();
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
     expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+  });
+
+  it('carries the volume note under the header, above the Athan card', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+
+    await render(<AlertSheet />);
+
+    const drawn = JSON.stringify(screen.toJSON());
+    // Depth-first serialization is the sheet's visual order: header, note, then the first card
+    expect(drawn.indexOf(t('volume.note.ios'))).toBeGreaterThan(drawn.indexOf(t('sheet.closeToSave')));
+    expect(drawn.indexOf(t('volume.note.ios'))).toBeLessThan(drawn.indexOf(t('alert.card.athan')));
+    expect(screen.getAllByText(t('volume.note.ios'))).toHaveLength(1);
+  });
+
+  it('carries the alarm-volume wording on Android', async () => {
+    onPlatform('android');
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+
+    await render(<AlertSheet />);
+
+    expect(screen.getAllByText(t('volume.note.android'))).toHaveLength(1);
   });
 });
 
