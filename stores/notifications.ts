@@ -1663,8 +1663,7 @@ export const rescheduleAllNotifications = async () => {
 
 /**
  * The language-convergence driver: one full pass with the widget push awaited
- * rather than deferred past a paint, because the switch's progress face covers
- * the wait and the sheet must not dismiss onto half-converged surfaces.
+ * rather than deferred past a paint, because the pick's loader covers the wait.
  *
  * @returns The driver's verdict: false means the empty-cache bail armed nothing,
  * which must leave the caller's stamp unwritten so the next launch retries

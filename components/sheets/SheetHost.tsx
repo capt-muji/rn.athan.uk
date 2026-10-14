@@ -3,7 +3,7 @@
  * sheets mount at all; once they have, this host's locale subscription is what
  * re-renders them on a language switch, because the remount key sits on the
  * screen tree and the width measurement, never on a root that would unmount a
- * presented sheet mid-apply (D51)
+ * presented sheet mid-apply
  */
 
 import { useAtomValue } from 'jotai';
