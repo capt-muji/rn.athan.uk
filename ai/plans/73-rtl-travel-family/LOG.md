@@ -7,6 +7,41 @@
 - 2026-10-14: the first executor dispatch was misread dead from a too-early tree snapshot; a second executor was dispatched onto the live first child, and the lead's cleanup (`git checkout --` on the step-1 test file, then a stash) raced the first child's mutation pass. The executor later logged this as an external `git reset --hard` at 06:33 and suspected the concurrent lane: the actor was the lead, and no run-78 command touched this worktree. The stash was dropped; root cause recorded — liveness reconciles now read the session store, never the tree alone.
 - 2026-10-14: the executor's STOP on step 1's mutation (c) is upheld. The Reanimated Jest mock evaluates `useAnimatedStyle` synchronously, so the animated transform entry shadows the static fallback in `toHaveStyle` and the static sign is unobservable in Jest; the plan's claim that the drawn transform is the static one was unproven theory. Mutation (c) is dropped from step 1 by the plan amendment of this date; (a) covers the step's changed guard and (b) the derived slot. Step 1 restarts cold from the amended plan (the lead, under the owner's run order, 2026-10-14).
 
+### Step 1 — done
+
+Branch `ticket/73`, commit `4c1ae0be`, version 2.0.260 (`2.0.260 - fix(alert):
+the segmented pill keys its travel on the locale's own direction, not the
+bridge snapshot`). Preflight ended `PREFLIGHT OK` (anchors 6 x 1). Red as
+predicted: the mirrored-slot test received `translateX: "200%"` where `-200%`
+was expected, the slide test's `toHaveBeenCalledWith(-200, ...)` unmet (received
+`200`); 2 failed, 10 passed, no other case. Green 12/12; `npx tsc --noEmit` 0;
+`npx biome check . --error-on-warnings` 0. Break `bash $TMPDIR/break-73-1.sh`:
+count 2, `ALL AS EXPECTED: 1`, tree back to the step's two files. Mutations:
+(a) `const isRTL = false;` — fails both new tests (proven by the break run);
+(b) `const slot = selectedIndex;` — fails both new tests
+('draws the pill under the mirrored slot…' and 'slides the pill to the mirrored
+slot…'). Hook: `Tests: 2 skipped, 5563 passed, 5565 total`; coverage
+Statements/Branches/Functions/Lines 100% (5272/2297/1100/4721). Review: en
+tests untouched; the new describe forces the locale through `setActiveLocale`
+(the app's own path); the only production change is the direction source, its
+comment and the import pair; the two remaining `I18nManager` strings are the
+plan's own comment text, no code residue.
+
+Incident, recorded for the relay: the first commit landed as `255ef116` with
+ticket 81's message — the executor convention `$TMPDIR/msg-<step>.txt` collides
+across concurrent sessions in the machine temp dir, and this session read a
+stale `msg-1.txt` from the ticket-81 lane. Content was verified exactly this
+step's six files (README cell `IN PROGRESS, step 1`, versions 2.0.260, the
+SegmentedControl diff); the commit was amended in place (nothing merges this
+run) to the plan's exact message, hook re-ran green on the amend. From here on
+message files are written by shell under ticket-unique names
+(`t73-step<N>-commit-msg.txt`). Second defect, also this session's: the first
+commit attempt failed the hook's biome on `app.json` — a whole-file
+`json.dumps` rewrite re-serialised every line; restored from HEAD and bumped
+the version line surgically instead (1-line diff, biome clean).
+
+session: ses_ec70bc668ffeK0ux7kMx2FbfI1
+
 ## Planning (2026-10-14)
 
 - Worktree `$HOME/athan-gitree/run-73`, branch `ticket/73` off `b1bf6f89` (uat 2.0.255). The main checkout stays read-only; the owner's run order forbids merge, push and DONE this run.
