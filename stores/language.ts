@@ -59,6 +59,11 @@ export const reconcileLanguageSurfaces = async (): Promise<void> => {
 const DIRECTIONS = ['ltr', 'rtl'] as const;
 const launchDirection = DIRECTIONS[Number(I18nManager.getConstants().isRTL)];
 
+/** The bound on a boundary crossing's convergence wait: the healthy cycle answers in ~1.4 s,
+ *  while one silent native call can legally burn 15 s and a starved queue holds the pass for
+ *  minutes. Past this the flip applies and forward-only convergence heals next launch. */
+const RELOAD_CONVERGENCE_CAP_MS = 10_000;
+
 /**
  * The busy atom brackets the whole run so the sheet's progress face covers it.
  */
@@ -69,12 +74,27 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
   // device proved it stale within a process after a crossing.
   const storedPreference = store.get(languagePreferenceAtom);
   const directionBefore = storedPreference === '' ? launchDirection : localeDirection(storedPreference as LocaleId);
+  const crossesBoundary = localeDirection(locale) !== directionBefore;
   store.set(languageCommitBusyAtom, true);
   try {
     store.set(languagePreferenceAtom, locale);
     setActiveLocale(locale);
-    await reconcileLanguageSurfaces();
-    if (localeDirection(locale) !== directionBefore) {
+    if (crossesBoundary) {
+      // The cap bounds a starved queue; the losing timer never fires into a settled commit.
+      let fireCap!: () => void;
+      const capSettled = new Promise<void>((resolve) => {
+        fireCap = resolve;
+      });
+      const capTimer = setTimeout(() => {
+        logger.warn('LANGUAGE: surface convergence still unsettled after 10000 ms, relaunching for the direction flip');
+        fireCap();
+      }, RELOAD_CONVERGENCE_CAP_MS);
+      await Promise.race([reconcileLanguageSurfaces(), capSettled]);
+      clearTimeout(capTimer);
+    } else {
+      await reconcileLanguageSurfaces();
+    }
+    if (crossesBoundary) {
       // Fabric treats direction as launch-time (D59): converge first, then
       // force the new direction and relaunch. The busy face ends here.
       I18nManager.allowRTL(true);

@@ -1,0 +1,10 @@
+    const initHandle = setTimeout(() => {
+      // The remount key re-mounts Index per language switch, and each remount
+      // re-arms this timeout: the latch keeps one process to one init pass.
+      if (launchInitRan) return;
+      launchInitRan = true;
+
+      // This effect runs once per cold launch, and on Android a cold launch may
+      // follow a force-stop that cancelled every armed alarm without touching
+      // the refresh timestamp. Reopen the gate before the refresh reads it.
+      reopenRefreshGateOnColdLaunch();
