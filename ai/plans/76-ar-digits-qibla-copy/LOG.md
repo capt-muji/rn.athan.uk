@@ -237,4 +237,53 @@ four bearings as Latin degree numbers, identical in every language (owner ruling
 
 session: the lead (step 2b landed directly; no worker dispatched for the owner's ruling)
 
+### Step 3 — done, with the device half blocked on environment
+
+Environment: the iOS simulator `Athan-76` (iPhone 16, iOS 18.5, the ticket's own
+scratch simulator), driven through `npx @expo/agent-cli smoke --ios --port 8092` (the
+default 8081 is held by an `expo run:ios` session on the owner's iPhone XS, left
+untouched) and the agent-device MCP. First smoke run: app booted, `errors.count` 0,
+bundle compiled, screenshot written under `.expo/` (gitignored). The sheet's rows are
+absent from the XCTest accessibility tree, so the readings were taken from screenshots
+and driven by points, and every reading below is what the screen showed.
+
+Readings taken:
+
+1. **ar, Qibla subtitle, waiting state (R1.1).** Settings, اللغة, العربية; the app
+   relaunched to the Arabic face. Opening القبلة showed the subtitle `اتبع التعليمات
+   أدناه` at full length with no trailing dots, over the calibration hint
+   (أيقظ البوصلة / حرّك هاتفك هكذا). The ellipsis her 2026-10-13 test saw is gone.
+2. **ar, Extras Suhoor box (R2.1).** The Extras page (second schedule page), the
+   السحور row: the info box read `٢٠ دقيقة قبل الفجر`, the ٢٠ in Eastern Arabic-Indic,
+   no Latin digit.
+3. **ar, Extras Duha box (R2.1).** The الضحى row: `٢٠ دقيقة بعد الشروق`, ٢٠
+   Arabic-Indic, no Latin digit.
+
+Blocked on environment (D76.6 fallback):
+
+- **The compass never draws.** The simulator vouches no heading: the calibration hint
+  stayed and within a minute the sheet added `تعذر العثور على الشمال` /
+  `جرّب الوقوف في مكان آخر` (the lost hint). With no heading the dial is never drawn,
+  so (a) the compass ring's four numbers could not be read on glass under ar or en, and
+  (b) the ready subtitle (`امسكه أفقيًا ودُر ببطء`), which only shows once the dial
+  draws, could not be read either. Both fall to the owner's QA, as the step predicted;
+  their proof weight stands on the structural tests (step 1's six-locale subtitle sweep
+  and step 2b's six-locale ring sweep and unit lock).
+- **The ar to en switch could not be completed.** After the ar switch the language
+  sheet's `جارٍ التطبيق…` applying face wedged: the ar-to-en reload starved (the
+  signature queue row 78 records), because the smoke dev server exits at the end of its
+  run and the dev client then had no server to reload from; a fresh Metro on 8092 served
+  the correct bundle (verified: the bundle holds the routes and the app root is this
+  worktree) but the dev client stayed on expo-router's default screen and no reload
+  cleared it. The en Qibla reading is qualitative in this step (step 1's tests are its
+  proof) and was not taken. The scratch simulator is left on that default screen; the
+  dev server on 8092 was stopped at the end of the step.
+
+No screenshot, recording or device identifier is committed; `.expo/` is gitignored.
+Version 2.0.607. Commit message: `2.0.607 - docs(qibla): the ar subtitle, the ar
+info-box digits, the rebuilt compass ring and the en header read on the iOS simulator,
+dev/mock`.
+
+session: the lead (step 3 landed directly; the device half blocked on environment)
+
 
