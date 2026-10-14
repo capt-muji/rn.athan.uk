@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     color: COLORS.icon.primary,
     fontSize: ty.size(TEXT.sizeSmall),
     fontFamily: ty.familyRegular,
-    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
+    lineHeight: ty.scriptLineHeight?.(TEXT.sizeSmall) ?? ty.lineHeight(TEXT.lineHeight.default),
     marginBottom: SPACING.mid,
   },
 });

@@ -835,6 +835,7 @@ export const COLORS = {
     colon: 'rgba(160, 200, 255, 0.12)',
     timeColon: 'rgba(160, 200, 255, 0.3)',
     nextTimeColon: 'rgba(160, 200, 255, 0.45)',
+    nextTimeColonExtras: 'rgba(218, 152, 240, 0.45)',
   },
 
   /**

@@ -18,9 +18,11 @@ const MAGRIB = 4;
 const MIDNIGHT = 0;
 const SUHOOR = 2;
 const DUHA = 3;
+const ISTIJABA = 4;
 
 const COLON_COLOUR = 'rgba(160, 200, 255, 0.3)';
 const NEXT_COLON_COLOUR = 'rgba(160, 200, 255, 0.45)';
+const NEXT_COLON_COLOUR_EXTRAS = 'rgba(218, 152, 240, 0.45)';
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)
@@ -147,6 +149,15 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
     expect(flattenStyle(upcoming.props.style).color).toBe(COLON_COLOUR);
     expect(screen.getByLabelText('16:29')).toBeOnTheScreen();
     expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
+  });
+
+  it('paints the next colon at the extras colour on the Extra schedule', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerTime type={ScheduleType.Extra} index={ISTIJABA} />);
+
+    // Istijaba is the next Extras row at 14:00 on Friday, so its colon takes the extras tint, not the standard one
+    const colon = screen.getByText(':');
+    expect(flattenStyle(colon.props.style).color).toBe(NEXT_COLON_COLOUR_EXTRAS);
   });
 
   it('renders the unread sentinel as one node with no colon node', async () => {
