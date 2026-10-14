@@ -23,6 +23,7 @@ import { initializeNotifications } from '@/shared/notifications';
 import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import type * as WhatsNew from '@/shared/whatsNew';
 import * as Database from '@/stores/database';
+import { reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
 import { setSequence } from '@/stores/schedule';
@@ -58,8 +59,13 @@ jest.mock('@/device/listeners', () => ({ initializeListeners: jest.fn() }));
 jest.mock('@/device/backgroundTaskDebug', () => ({ runBackgroundTaskDebugSequence: jest.fn() }));
 
 // The language convergence pass owns its own suite; here it would re-arm alerts behind the
-// launch under test, so the launch is observed calling it instead of running it
-jest.mock('@/stores/language', () => ({ reconcileLanguageSurfaces: jest.fn() }));
+// launch under test, so the launch is observed calling it instead of running it. The handoff
+// consumption is driven the same way: the store's own suite owns its semantics
+let mockRelaunchHandoff = false;
+jest.mock('@/stores/language', () => ({
+  reconcileLanguageSurfaces: jest.fn(),
+  consumeRelaunchHandoff: jest.fn(() => mockRelaunchHandoff),
+}));
 
 // Notification start-up catches its own failures, so a failure that escapes it is made here, once, to show the launch
 // logs it instead of leaving it unhandled. Every other launch runs the real start-up
@@ -516,6 +522,48 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
 
     await waitFor(() => expect(BackgroundTask.registerTaskAsync).toHaveBeenCalled());
     expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+  });
+});
+
+describe('the launch init and the relaunch handoff, Friday 11 September 2026 at 14:00', () => {
+  beforeEach(() => {
+    mockRelaunchHandoff = false;
+  });
+
+  afterEach(() => {
+    onPlatform('ios');
+  });
+
+  it('reopens the refresh gate on a context that began as a cold launch', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    onPlatform('android');
+
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+    expect(logger.info).toHaveBeenCalledWith(
+      'NOTIFICATION: Android cold launch, reopening the refresh gate so alarms are re-armed'
+    );
+    expect(jest.mocked(reconcileLanguageSurfaces)).toHaveBeenCalledTimes(1);
+  });
+
+  it('skips the reopen on a context that consumed a language relaunch handoff', async () => {
+    mockRelaunchHandoff = true;
+    showLondonDay('2026-09-11', '14:00');
+    onPlatform('android');
+
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+    expect(logger.info).not.toHaveBeenCalledWith(
+      'NOTIFICATION: Android cold launch, reopening the refresh gate so alarms are re-armed'
+    );
+    expect(logger.info).toHaveBeenCalledWith(
+      'APP: context began as a language relaunch, skipping the cold-launch gate reopen'
+    );
+    expect(jest.mocked(reconcileLanguageSurfaces)).toHaveBeenCalledTimes(1);
   });
 });
 

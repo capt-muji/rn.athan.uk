@@ -1,0 +1,3 @@
+// The language convergence pass owns its own suite; here it would re-arm alerts behind the
+// launch under test, so the launch is observed calling it instead of running it
+jest.mock('@/stores/language', () => ({ reconcileLanguageSurfaces: jest.fn() }));

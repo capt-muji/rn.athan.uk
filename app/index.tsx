@@ -22,7 +22,7 @@ import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { isRamadan } from '@/shared/time';
 import { currentVisibleWhatsNew, shouldShowWhatsNew } from '@/shared/whatsNew';
-import { reconcileLanguageSurfaces } from '@/stores/language';
+import { consumeRelaunchHandoff, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLaunch } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
@@ -121,7 +121,14 @@ export default function Index() {
       // This effect runs once per cold launch, and on Android a cold launch may
       // follow a force-stop that cancelled every armed alarm without touching
       // the refresh timestamp. Reopen the gate before the refresh reads it.
-      reopenRefreshGateOnColdLaunch();
+      // A language relaunch is not that launch: the process lived through it and
+      // the alarms with it, so the handoff marker skips the reopen and the gate
+      // answers within its window.
+      if (consumeRelaunchHandoff()) {
+        logger.info('APP: context began as a language relaunch, skipping the cold-launch gate reopen');
+      } else {
+        reopenRefreshGateOnColdLaunch();
+      }
 
       // Initialize notifications, register background task, and create channel on first load.
       // The convergence pass runs after init resolves: the scheduling lock serialises it

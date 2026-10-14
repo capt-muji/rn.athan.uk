@@ -1,0 +1,9 @@
+it('a refused relaunch logs and leaves the direction forced for the next launch', async () => {
+  reloadAsync.mockRejectedValueOnce(new Error('reload refused'));
+  await expect(commitLanguagePreference('ar')).resolves.toBeUndefined();
+  expect(forceRTL).toHaveBeenLastCalledWith(true);
+  expect(jest.mocked(logger.warn)).toHaveBeenCalledWith(
+    'LANGUAGE: relaunch failed after the RTL flip',
+    expect.objectContaining({ error: expect.any(Error) })
+  );
+});
