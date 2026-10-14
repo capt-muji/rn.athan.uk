@@ -225,7 +225,7 @@ Checklist:
 - [ ] Step 1: the mosque mark mirrors under RTL (`steps/1-masjid-mirror.md`)
 - [ ] Step 2: no scrollbar on any sheet (`steps/2-sheet-indicator.md`)
 - [ ] Step 3: the toggle outline takes the card edge colour (`steps/3-toggle-outline.md`)
-- [ ] Step 4: simulator proof under Arabic (`steps/4-simulator-proof.md`)
+- [x] Step 4: simulator proof under Arabic (`steps/4-simulator-proof.md`)
 
 Steps 1 and 2 pack one batch (weight 4). Step 3 is the next batch (weight 2, the
 session's sixth weight, then rotate). Step 4 dispatches alone (device class), fresh
