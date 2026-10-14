@@ -9,7 +9,7 @@ it.
 ## Anchor checks
 
 None new: the code anchors were consumed by steps 1 to 3. The proof anchor is the
-worktree state: steps 1 to 3 ticked in `LOG.md`, `ticket/75` at 2.0.453, clean tree.
+worktree state: steps 1 to 3 ticked in `LOG.md`, `ticket/75` at 2.0.454, clean tree.
 
 ## Goal
 
@@ -74,17 +74,17 @@ one exact question when the worker cannot see it. Never guess an image.
 ## Transcription
 
 Write into `LOG.md` under `### Step 04 — proof`: what each screenshot showed, the
-simulator model and OS, the app version the build ran (2.0.453; the record commit
-bumps to 2.0.454), and the two rulings' verdicts. Screenshots
+simulator model and OS, the app version the build ran (2.0.454; the record commit
+bumps to 2.0.455), and the two rulings' verdicts. Screenshots
 never enter a commit; they live under `$HOME/athan-gitree/sessions/75/` and die with
 the ticket's merge. Transcribe what was read, in the repo's words.
 
 ## Version and commit
 
-Bump `app.json` then `package.json` to `2.0.454`. Commit:
+Bump `app.json` then `package.json` to `2.0.455`. Commit:
 
 ```
-2.0.454 - simulator proof under ar: the mirrored mark on both pages and a sheet scroll
+2.0.455 - simulator proof under ar: the mirrored mark on both pages and a sheet scroll
 with no indicator, transcribed
 ```
 

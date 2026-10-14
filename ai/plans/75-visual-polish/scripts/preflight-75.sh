@@ -26,11 +26,16 @@ node -e "const p=require('./package.json').version.split('.').map(Number);proces
 # 4. node_modules present (symlinked or installed).
 [ -d node_modules ] || reason "node_modules missing in the worktree"
 
-# 5. Anchors: each excerpt counts exactly 1 in its source file.
-count() { python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' "$1" "$2"; }
+# 5. Anchors: each excerpt counts exactly 1 in its source file AT THE PLANNED-AT SHA.
+# Steps rewrite the code their anchors pin, so counting against the working tree would
+# fail every pre-flight after step 1. Each step's own anchor check covers its files in
+# the working tree at step time.
+count_at_anchor() {
+  git show "1b0d5229:$2" | python3 -c 'import sys;print(sys.stdin.read().count(open(sys.argv[1]).read()))' "$PLAN/scripts/anchors/$1"
+}
 check_anchor() {
-  n=$(count "$PLAN/scripts/anchors/$1" "$WT/$2")
-  [ "$n" = "1" ] || reason "anchor $1 counts $n in $2 (expected 1)"
+  n=$(count_at_anchor "$1" "$2")
+  [ "$n" = "1" ] || reason "anchor $1 counts $n in $2 at 1b0d5229 (expected 1)"
 }
 check_anchor masjid-image.txt components/ui/Masjid.tsx
 check_anchor sheet-contentwrapper.txt components/sheets/parts/Sheet.tsx
