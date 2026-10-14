@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { currentLocaleId } from '@/shared/i18n/locale';
+import { currentLocaleId, localizeDigits } from '@/shared/i18n/locale';
 import type { ReminderInterval } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 
@@ -59,7 +59,7 @@ export default function Stepper({
         accessibilityRole={'button'}
         // The glyph is a minus sign, which reads as nothing useful; name the action and
         // the unit so the control is usable without seeing the value beside it
-        accessibilityLabel={t('stepper.decrease', { value: nextDown ?? value, unit })}
+        accessibilityLabel={localizeDigits(t('stepper.decrease', { value: nextDown ?? value, unit }))}
         accessibilityState={{ disabled: !canDecrement }}
         style={[styles.button, !canDecrement && styles.buttonDisabled]}
         onPress={() => {
@@ -70,13 +70,16 @@ export default function Stepper({
         }}>
         <Text style={[styles.buttonText, !canDecrement && styles.buttonTextDisabled]}>{'−'}</Text>
       </Pressable>
-      <View accessible={true} accessibilityLabel={t('stepper.value', { value, unit })} style={styles.valueContainer}>
-        <Text style={styles.value}>{visible}</Text>
+      <View
+        accessible={true}
+        accessibilityLabel={localizeDigits(t('stepper.value', { value, unit }))}
+        style={styles.valueContainer}>
+        <Text style={styles.value}>{localizeDigits(visible)}</Text>
         <Text style={styles.unit}>{unit}</Text>
       </View>
       <Pressable
         accessibilityRole={'button'}
-        accessibilityLabel={t('stepper.increase', { value: nextUp ?? value, unit })}
+        accessibilityLabel={localizeDigits(t('stepper.increase', { value: nextUp ?? value, unit }))}
         accessibilityState={{ disabled: !canIncrement }}
         style={[styles.button, !canIncrement && styles.buttonDisabled]}
         onPress={() => {

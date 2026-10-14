@@ -644,7 +644,7 @@ export const formatTimeAgo = (seconds: number): string => {
 /** One rendered piece of a colon display string: a digit group or a colon */
 export interface CountdownSection {
   text: string;
-  /** True while the group is the all-zero pair, except a three-group display's seconds, which never dim (row 81) */
+  /** True once the group reads 00 with every larger group spent; a colon always reads true */
   dim: boolean;
   colon: boolean;
 }

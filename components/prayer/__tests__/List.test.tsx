@@ -162,6 +162,17 @@ describe('the Standard list on Friday 11 September 2026 at 14:00', () => {
   });
 });
 
+/** The list container: the one styled node carrying both margins */
+const listContainerStyle = (): Record<string, unknown> => {
+  const rows = screen.root?.queryAll((node) => node.props.style !== undefined, { includeSelf: true }) ?? [];
+  const container = rows.find((node) => {
+    const style = Array.isArray(node.props.style) ? Object.assign({}, ...node.props.style) : node.props.style;
+    return style.marginHorizontal !== undefined && style.marginBottom !== undefined;
+  });
+  if (container === undefined) return {};
+  return Array.isArray(container.props.style) ? Object.assign({}, ...container.props.style) : container.props.style;
+};
+
 describe('the gap below the list', () => {
   it('renders at 75 percent of the old 30', async () => {
     showLondonDay('2026-09-11', '14:00');
@@ -169,18 +180,7 @@ describe('the gap below the list', () => {
     await render(<List type={ScheduleType.Standard} />);
 
     // Row 81: the owner's 25 percent cut of the list-to-ago gap
-    const rows = screen.root?.queryAll((node) => node.props.style !== undefined, { includeSelf: true }) ?? [];
-    const container = rows.find((node) => {
-      const style = Array.isArray(node.props.style) ? Object.assign({}, ...node.props.style) : node.props.style;
-      return style.marginHorizontal !== undefined && style.marginBottom !== undefined;
-    });
-    const style =
-      container === undefined
-        ? {}
-        : Array.isArray(container.props.style)
-          ? Object.assign({}, ...container.props.style)
-          : container.props.style;
-    expect(style.marginBottom).toBe(22.5);
+    expect(listContainerStyle().marginBottom).toBe(22.5);
   });
 
   it('renders a quarter further down on Extras, where the page has room', async () => {
@@ -189,17 +189,6 @@ describe('the gap below the list', () => {
     await render(<List type={ScheduleType.Extra} />);
 
     // The owner's ruling, 2026-10-14: the Extras badge drops away from its list
-    const rows = screen.root?.queryAll((node) => node.props.style !== undefined, { includeSelf: true }) ?? [];
-    const container = rows.find((node) => {
-      const style = Array.isArray(node.props.style) ? Object.assign({}, ...node.props.style) : node.props.style;
-      return style.marginHorizontal !== undefined && style.marginBottom !== undefined;
-    });
-    const style =
-      container === undefined
-        ? {}
-        : Array.isArray(container.props.style)
-          ? Object.assign({}, ...container.props.style)
-          : container.props.style;
-    expect(style.marginBottom).toBe(34);
+    expect(listContainerStyle().marginBottom).toBe(34);
   });
 });
