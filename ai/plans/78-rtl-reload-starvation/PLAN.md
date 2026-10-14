@@ -40,7 +40,7 @@ Owner rules that apply:
 | D78.2 | The fix bounds the commit's convergence wait at 10 s on boundary crossings only, then forces the direction and relaunches anyway; the queued pass is left uncancelled and heals next context (R3.4). Cap value 10 s: the measured healthy cycle is ~1.4 s (71's capture) and the sick queue is minutes, so 10 s sits an order of magnitude above the one and below the other. | owner (delegated) | 2026-10-14 | the owner's run order, 2026-10-14, plus the ticket's "fixes it if a repo-side cause exists" |
 | D78.3 | The launch-init latch, the unconditional Android gate reopen and every scheduling path stay untouched. The latch is recorded as the aggravator in the verdict. Rationale: changing them changes notification scheduling (ask-first ground) and the ticket limits the fix to why the reload fires. | owner (delegated) | 2026-10-14 | the owner's run order, 2026-10-14 |
 | D78.4 | The capped wait applies only when the pick crosses the direction boundary. A same-direction pick keeps today's unbounded await: its convergence exists for the surfaces, not for a relaunch, and the sheet's progress face covers it (D47). | owner (delegated) | 2026-10-14 | the owner's run order, 2026-10-14 |
-| D78.5 | Versions 2.0.300 onward, one bump per commit, reserved range 2.0.300 to 2.0.399; `app.json` and `package.json` together (android/ is gitignored, no build this run). No merge into `uat`, no push, no DONE: this branch stops after the audit passes. | owner (delegated) | 2026-10-14 | the owner's run order, 2026-10-14 |
+| D78.5 | Versions 2.0.300 onward, one bump per commit, reserved range 2.0.300 to 2.0.399; the sequence is 2.0.300 the PLANNING skeleton, 2.0.301 the READY commit, 2.0.302 step 1, 2.0.303 step 2, audit fixes after that; `app.json` and `package.json` together (android/ is gitignored, no build this run). No merge into `uat`, no push, no DONE: this branch stops after the audit passes. | owner (delegated) | 2026-10-14 | the owner's run order, 2026-10-14 |
 | D78.6 | The plan commits live on `ticket/78` in the worktree, not on `docs/…` branches off `uat`: the parallel ticket 73 runs in a sibling worktree and `uat` is read-only for this run. | owner (delegated) | 2026-10-14 | the owner's run order, 2026-10-14 |
 
 ### 2.2 The executor must not decide
@@ -51,7 +51,7 @@ Owner rules that apply:
 
 ## 3. Pre-flight
 
-`scripts/preflight-78.sh` in this folder (the executor copies it to `$TMPDIR`, runs `bash $TMPDIR/preflight-78.sh`). It checks: the worktree path, branch `ticket/78`, a clean tree, head descending from the anchor `b1bf6f89`, `package.json` version at or above 2.0.255, the `node_modules` symlink, and each of the six anchors counting exactly 1 in its source. Expected last line: `PREFLIGHT OK`. Any other output is a `STOP:` return.
+`scripts/preflight-78.sh` in this folder (the executor copies it to `$TMPDIR`, runs `bash $TMPDIR/preflight-78.sh`). It checks: the worktree path, branch `ticket/78`, a tree clean outside this plan folder (the ledger and ticked boxes dirty the folder between steps), head descending from the anchor `b1bf6f89`, `package.json` version inside 2.0.255 to 2.0.399, the `node_modules` symlink, and each of the six anchors counting exactly 1 in its source (the `language-commit-await.txt` anchor is updated by step 1 alongside the code it spans). Expected last line: `PREFLIGHT OK`. Any other output is a `STOP:` return.
 
 ## 4. Background the executor needs
 
@@ -64,7 +64,7 @@ Owner rules that apply:
 | `shared/notifications.ts` | `native-call-timeout.txt` | `NATIVE_CALL_TIMEOUT_MS = 15_000` and `withNativeTimeout`: one silent native call burns 15 s then rejects. Every arming and cancelling call in `device/notifications.ts` is wrapped; the sweep's listing call is wrapped. So passes fail rather than hang, but a sick notification system turns one pass into minutes of queue time. |
 | `app/index.tsx` | `launch-init-latch.txt` | `launchInitRan` is a JS module variable: it resets on every in-process reload, so each reload re-runs the launch init, which unconditionally reopens the refresh gate on Android and enqueues a full notification refresh — the pass most likely to sit ahead of the next crossing's convergence. Verdict: aggravator, untouched (D78.3). |
 | `node_modules/expo-updates/build/Updates.js` | `updates-js-reload.txt` | JS `reloadAsync`: a dev-mode guard, then a bare `ExpoUpdates.reload(null)`. It rejects only in dev mode or when updates are disabled in development; on a production package id it forwards to native. |
-| `node_modules/expo-updates/android/.../RecreateReactContextProcedure.kt` | `updates-recreate-procedure.txt` | The native leg on local mock builds (no updates URL, so `expo-updates` is disabled and `DisabledUpdatesController` routes here): `processStateEvent(UpdatesStateEvent.Restart())` fires before any restart, then `reactHost.restart`. A reload that reached native always leaves the `Restart` state line. |
+| `node_modules/expo-updates/android/.../RecreateReactContextProcedure.kt` | `updates-recreate-procedure.txt` | The native leg on local mock builds (no updates URL, so `expo-updates` is disabled and `DisabledUpdatesController` routes here): `processStateEvent(UpdatesStateEvent.Restart())` fires before any restart, then `reactHost.restart`. The state machine the procedure drives logs the line (`UpdatesStateMachine.kt`: `logger.info("Updates state change: ${event.type}, ...")`), so a reload that reached native always leaves the `Restart` state line. |
 
 ### The evidence being explained (ticket 71 FINDINGS section 8, D91, transcribed before the folder died with 71's merge)
 
@@ -163,7 +163,7 @@ None. The executor never pushes; this run stops on `ticket/78` after the audit p
 
 | Symptom | Action |
 | --- | --- |
-| An anchor counts 0 or 2 | `STOP: NEEDS REPLAN, <anchor and count>`. Never repair an anchor. |
+| An anchor counts 0 or 2 | `STOP: NEEDS REPLAN, <anchor and count>`. Never repair an anchor; the one exception is step 1's own contract item 5, which updates `language-commit-await.txt` in the same commit as the code. |
 | `versionLockstep.test.ts` fails at commit | The bump touched one file of the pair; set the same version in `app.json` and `package.json` and recommit. |
 | Coverage below 100 on `stores/language.ts` | The new branch has an uncovered line; add the test that reaches it (the race's two outcomes and the same-direction skip are the full set). `STOP:` if a line is unreachable by design. |
 | The hook fails on a suite this change did not touch | `STOP:` with the suite name and the failing test; a parallel run shares the version range, so never bump past 2.0.399 and never edit another ticket's files to green it. |

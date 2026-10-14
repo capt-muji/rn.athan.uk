@@ -7,13 +7,13 @@ cd "$HOME/athan-gitree/run-78" || { echo "PREFLIGHT FAILED: no worktree at $HOME
 branch="$(git rev-parse --abbrev-ref HEAD)"
 [ "$branch" = "ticket/78" ] || { echo "PREFLIGHT FAILED: branch is $branch, want ticket/78"; exit 1; }
 
-[ -z "$(git status --porcelain)" ] || { echo "PREFLIGHT FAILED: tree not clean"; git status --short; exit 1; }
+[ -z "$(git status --porcelain -- . ':!ai/plans/78-rtl-reload-starvation')" ] || { echo "PREFLIGHT FAILED: tree not clean outside the plan folder"; git status --short; exit 1; }
 
 git merge-base --is-ancestor b1bf6f89 HEAD || { echo "PREFLIGHT FAILED: head does not descend from the anchor b1bf6f89"; exit 1; }
 
 version="$(python3 -c 'import json;print(json.load(open("package.json"))["version"])')"
-python3 -c 'import sys;raise SystemExit(0 if sys.argv[1] >= "2.0.255" else 1)' "$version" || {
-  echo "PREFLIGHT FAILED: version $version is below the planned-at 2.0.255"; exit 1; }
+python3 -c 'import sys;raise SystemExit(0 if "2.0.255" <= sys.argv[1] < "2.0.400" else 1)' "$version" || {
+  echo "PREFLIGHT FAILED: version $version is outside the planned range 2.0.255 to 2.0.399"; exit 1; }
 
 [ -e node_modules/.bin/jest ] || { echo "PREFLIGHT FAILED: node_modules missing (ln -s $HOME/repos/rn.athan.uk/node_modules node_modules)"; exit 1; }
 
