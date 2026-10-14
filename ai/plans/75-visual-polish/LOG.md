@@ -75,3 +75,82 @@ one applied:
 
 The gate printed `PLAN OK` after the fixes.
 
+### Step 01 — done
+
+Anchor `masjid-image.txt` counted 1 in `components/ui/Masjid.tsx`. Red run: 10 tests,
+2 failed as predicted, 8 passed — `mirrors the mark under the Arabic locale` failed at
+`Masjid.test.tsx:77` and `mirrors the Ramadan variant under the Arabic locale on the
+same rule` failed at `:86`, both on `toHaveStyle({ transform: [{ scaleX: -1 }] })`
+(expected transform, received none); `draws the mark unmirrored under the English
+locale` passed.
+
+Change: `components/ui/Masjid.tsx` took the `isRTL` read on
+`localeDirection(currentLocaleId())`, the one-line row 73/78 comment, the
+`isRTL && styles.mirrored` style entry and the `mirrored` stylesheet key. Green: the
+file's suite 10/10, `tsc --noEmit` clean.
+
+Version 2.0.451 in `app.json` then `package.json`. Commit `d6755e64`
+(`d6755e6469a9d10cd26f1aef312c1934ef13d2c6`) on `ticket/75`.
+
+Deviation, recorded: `.husky/_` does not exist in this worktree, so `core.hooksPath`
+pointed at a missing directory and git ran no hook — the commit landed with the
+gates silently skipped. The gate commands then ran manually against the committed
+tree: `yarn validate` passed (`Tests: 2 skipped, 5573 passed, 5575 total`; coverage
+Statements/Branches/Functions/Lines all `100%`, 5284/2303/1102/4733);
+`node scripts/check-identifiers.js --push d6755e64...` exit 0;
+`node scripts/check-changed-coverage.js --push d6755e64...` exit 0. The lead should
+create `.husky/_` (or run husky) before steps 3-4 so their hooks fire.
+
+Second deviation, recorded: `biome check . --error-on-warnings` failed on a
+pre-existing `app.json` formatting drift introduced by the plan-landing commit
+`a7763ba9` (it split two arrays that `1b0d5229` kept one-line). It would have
+blocked every commit, so the formatter restored its own canonical shape
+(`npx biome check --write app.json`, content otherwise untouched) in this step's
+commit. Biome repo-wide now passes.
+
+Break script after the commit: the stripped file ran `-t "mirrors"` red — last line
+`Tests:       2 failed, 8 skipped, 10 total` — then `git checkout --` restored and
+the full suite ran green (`Tests: 10 passed, 10 total`).
+
+Review pass (cold, against the checklist): the comment links the row 73 precedent
+and the row 78 cause in one line, no copy of the Toggle paragraph; no `Platform`
+check, no `I18nManager` read, no new asset; the LTR path keeps the same style-array
+shape with a trailing `false` RN ignores; nothing beyond the contract moved
+(sources, variants, splash gate, sizing, container). No findings.
+
+session: ses_ec63afda5ffe1E11Y4giDFXKa2
+
+### Step 02 — done
+
+Anchor `sheet-contentwrapper.txt` counted 1 in `components/sheets/parts/Sheet.tsx`.
+Red run: 26 tests, 1 failed as predicted, 25 passed — `hides the scroll indicator on
+its scroll view` failed at `Sheet.test.tsx:108` (`Expected: false, Received:
+undefined`, the library default drawing the indicator); `lays out a sheet that is not
+scrollable with no scroll view` stayed green untouched (R2.2).
+
+Change: the scrollable branch of `contentStyle` took
+`showsVerticalScrollIndicator: false` verbatim per the contract, with the one-line
+ruling comment; the fixed branch untouched. Green: the file's suite 26/26,
+`tsc --noEmit` clean, biome clean on both touched files.
+
+Version 2.0.452 in `app.json` then `package.json`. Commit `035fe4df`
+(`035fe4df4d9907b5b2839841ff8868d6936fa035`) on `ticket/75`.
+
+The hook again silently skipped (`.husky/_` still missing in the worktree, the step 01
+deviation stands); the gate commands ran manually against the committed tree:
+`yarn validate` passed (`Tests: 2 skipped, 5574 passed, 5576 total`, one more than
+step 01's run — the new claim; coverage Statements/Branches/Functions/Lines all
+`100%`, 5284/2303/1102/4733); `check-identifiers.js --push 035fe4df...` exit 0;
+`check-changed-coverage.js --push 035fe4df...` exit 0.
+
+Break script after the commit: the stripped file ran `-t "hides the scroll indicator"`
+red — last line `Tests:       1 failed, 25 skipped, 26 total` — then `git checkout --`
+restored and the full suite ran green (`Tests: 26 passed, 26 total`).
+
+Review pass (cold, against the checklist): the fixed branch was not touched and
+`BottomSheetView` receives no scroll prop; the comment carries the ruling and the
+pinned library default, not the history (the history lives in `LOG.md`); nothing
+beyond the contract moved (snap points, paddings, lifecycle). No findings.
+
+session: ses_ec63afda5ffe1E11Y4giDFXKa2
+
