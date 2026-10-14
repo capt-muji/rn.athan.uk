@@ -106,7 +106,7 @@ worktree, gitignored, so the clean-tree check still passes.
 | `components/ui/Error.tsx` | The error screen, the mark's other mount site. Read-only, and claimed by ticket 80: the mirror lands inside `Masjid.tsx`, so this file never changes |
 | `components/sheets/parts/Sheet.tsx` | The sheet machinery every sheet renders through. `scrollable` picks `BottomSheetScrollView` or `BottomSheetView`. Changed in step 2 |
 | `components/sheets/parts/__tests__/Sheet.test.tsx` | The sheet suite, already holding a `scrollViews()` helper. Extended in step 2 |
-| `components/modals/Help.tsx`, `WhatsNew.tsx`, `Update.tsx` | The three modal scroll views. Already hide their indicators (`showsVerticalScrollIndicator={false}`) with tests pinning each. Read-only, named here to close the sweep |
+| `components/modals/Help.tsx`, `WhatsNew.tsx`, `Update.tsx` | The three modal scroll views. Already hide their indicators (`showsVerticalScrollIndicator={false}`); WhatsNew's and Update's tests pin the prop, Help's pins its height bound. Read-only, named here to close the sweep |
 | `app/Navigation.tsx` | The pager (`react-native-pager-view`). Draws no scroll indicator; read-only, named to close the sweep |
 | `components/prayer/List.tsx` | The prayer list: a plain `View`, no scroll. Read-only, named to close the sweep |
 | `components/sheets/parts/Toggle.tsx` | The one toggle component (every toggle renders through it, `LabeledToggle` included). Read-only in this ticket: the colour it reads changes under it |
@@ -222,9 +222,9 @@ one face.
 
 Checklist:
 
-- [ ] Step 1: the mosque mark mirrors under RTL (`steps/1-masjid-mirror.md`)
-- [ ] Step 2: no scrollbar on any sheet (`steps/2-sheet-indicator.md`)
-- [ ] Step 3: the toggle outline takes the card edge colour (`steps/3-toggle-outline.md`)
+- [x] Step 1: the mosque mark mirrors under RTL (`steps/1-masjid-mirror.md`)
+- [x] Step 2: no scrollbar on any sheet (`steps/2-sheet-indicator.md`)
+- [x] Step 3: the toggle outline takes the card edge colour (`steps/3-toggle-outline.md`)
 - [x] Step 4: simulator proof under Arabic (`steps/4-simulator-proof.md`)
 
 Steps 1 and 2 pack one batch (weight 4). Step 3 is the next batch (weight 2, the
