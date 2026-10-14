@@ -23,7 +23,7 @@ import { SheetHost } from '@/components/sheets';
 import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
-import { localeVersionAtom } from '@/shared/i18n/locale';
+import { currentLocaleId, localeDirection, localeVersionAtom } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import { initPerfMonitor } from '@/shared/perf';
 import { triggerSyncLoadable } from '@/stores/sync';
@@ -84,8 +84,13 @@ export default function Layout() {
   // and SheetHost's subscription re-renders the sheets in place
   const localeVersion = useAtomValue(localeVersionAtom);
 
+  // The layout follows the app's selected language (her ruling): forceRTL cannot force
+  // LTR on a system-RTL device (the bridge answers forced-or-system), so the root sets
+  // the direction itself and the system locale resolves only the initial default
+  const direction = localeDirection(currentLocaleId());
+
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground, direction }}>
       <SystemBars style={'light'} hidden={{ navigationBar: false }} />
       <InitialWidthMeasurement key={localeVersion} />
       <BottomSheetModalProvider>

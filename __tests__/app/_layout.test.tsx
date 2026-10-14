@@ -3,8 +3,10 @@
  */
 
 import { act, render, screen } from '@testing-library/react-native';
+import { I18nManager } from 'react-native';
 
 import { BACKGROUND_TASK_NAME } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 
 import Layout, { ErrorBoundary } from '../../app/_layout';
@@ -162,5 +164,43 @@ describe('the root layout on screen', () => {
     expect(logger.error).toHaveBeenCalledWith('APP: Render threw, falling back to the error screen', {
       error: 'Unreadable value',
     });
+  });
+});
+
+describe('the root layout direction', () => {
+  afterEach(() => {
+    setActiveLocale('en');
+  });
+
+  it("lays the tree out left-to-right under the app's English locale", async () => {
+    const page = await render(<Layout />);
+
+    const root = page.toJSON() as unknown as { props: { style?: { direction?: string } } };
+
+    expect(root.props.style?.direction).toBe('ltr');
+  });
+
+  it("lays the tree out right-to-left under the app's Arabic locale, the bridge snapshot notwithstanding", async () => {
+    setActiveLocale('ar');
+
+    const page = await render(<Layout />);
+
+    const root = page.toJSON() as unknown as { props: { style?: { direction?: string } } };
+
+    // The starved-state premise (row 73's pattern): the bridge snapshot lags the live locale
+    expect(I18nManager.getConstants().isRTL).toBe(false);
+    expect(root.props.style?.direction).toBe('rtl');
+  });
+
+  it('flips the root direction in place when the locale switches while mounted', async () => {
+    const page = await render(<Layout />);
+
+    await act(() => {
+      setActiveLocale('ar');
+    });
+
+    const root = page.toJSON() as unknown as { props: { style?: { direction?: string } } };
+
+    expect(root.props.style?.direction).toBe('rtl');
   });
 });

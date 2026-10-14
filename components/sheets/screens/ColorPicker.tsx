@@ -22,7 +22,7 @@ import {
   TEXT,
 } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { chevronFor, currentLocaleId } from '@/shared/i18n/locale';
+import { chevronFor, currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import { typographyFor } from '@/shared/typography';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
@@ -104,6 +104,7 @@ export default function ColorPickerSettings() {
   // picker's resolved direction on the same snapshot keeps the two in step in every launch
   // state (a starved crossing snapshots false, a completed one true)
   const pickerDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
+  const modalDirection = localeDirection(currentLocaleId());
 
   return (
     <>
@@ -137,7 +138,7 @@ export default function ColorPickerSettings() {
       </Pressable>
 
       <Modal visible={showPicker} transparent animationType={'slide'} onRequestClose={handleDismiss}>
-        <View style={styles.modalOverlay}>
+        <View testID={'picker-modal-root'} style={[styles.modalOverlay, { direction: modalDirection }]}>
           <View style={[styles.modalContent, { paddingBottom: bottom + 50 }]}>
             <View style={styles.modalHeader}>
               <View style={styles.headerSide}>
