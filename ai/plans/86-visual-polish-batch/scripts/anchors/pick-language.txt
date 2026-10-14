@@ -1,0 +1,4 @@
+  commit(id)
+    .catch(() => undefined)
+    .then(dismiss);
+};
