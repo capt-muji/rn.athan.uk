@@ -83,7 +83,8 @@ export const reconcileLanguageSurfaces = async (): Promise<void> => {
  * The Settings pick: persist the choice, switch the UI through the remount key
  * before any surface re-arms, then converge. Convergence never rejects to the
  * caller — forward-only means the sheet's dismiss is unconditional (D34, D47).
- * The busy atom brackets the whole run so the sheet's progress face covers it.
+ * The busy atom brackets the whole run: the loader reads it and a second
+ * commit is refused while it holds.
  */
 // The direction in force at process start, read before any forceRTL: the
 // fallback when no preference is stored (the device decides, then).
@@ -95,10 +96,24 @@ const launchDirection = DIRECTIONS[Number(I18nManager.getConstants().isRTL)];
  *  minutes. Past this the flip applies and forward-only convergence heals next launch. */
 const RELOAD_CONVERGENCE_CAP_MS = 10_000;
 
-/**
- * The busy atom brackets the whole run so the sheet's progress face covers it.
- */
+// The losing timer never fires into a settled pass: the race clears it on both
+// outcomes, and past the cap forward-only convergence heals in the next launch.
+const raceAgainstCap = (pass: Promise<void>, warn: string): Promise<void> => {
+  let fireCap!: () => void;
+  const capped = new Promise<void>((resolve) => {
+    fireCap = resolve;
+  });
+  const timer = setTimeout(() => {
+    logger.warn(warn);
+    fireCap();
+  }, RELOAD_CONVERGENCE_CAP_MS);
+  return Promise.race([pass, capped]).finally(() => clearTimeout(timer));
+};
+
 export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
+  // A second pick while one converges would race it and the first finally would
+  // strand the loader mid-pass; the first commit wins.
+  if (store.get(languageCommitBusyAtom)) return;
   // The direction in force comes from the app's own record: the stored
   // preference drives the launch force ('' means the device's launch
   // direction). I18nManager.getConstants() is deliberately not read here: the
@@ -113,22 +128,18 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
     setActiveLocale(locale);
     let passSettled = false;
     if (crossesBoundary) {
-      // The cap bounds a starved queue; the losing timer never fires into a settled commit.
-      let fireCap!: () => void;
-      const capSettled = new Promise<void>((resolve) => {
-        fireCap = resolve;
-      });
       const settled = reconcileLanguageSurfaces().then(() => {
         passSettled = true;
       });
-      const capTimer = setTimeout(() => {
-        logger.warn('LANGUAGE: surface convergence still unsettled after 10000 ms, relaunching for the direction flip');
-        fireCap();
-      }, RELOAD_CONVERGENCE_CAP_MS);
-      await Promise.race([settled, capSettled]);
-      clearTimeout(capTimer);
+      await raceAgainstCap(
+        settled,
+        'LANGUAGE: surface convergence still unsettled after 10000 ms, relaunching for the direction flip'
+      );
     } else {
-      await reconcileLanguageSurfaces();
+      await raceAgainstCap(
+        reconcileLanguageSurfaces(),
+        'LANGUAGE: surface convergence still unsettled after 10000 ms, revealing the app for forward-only healing'
+      );
     }
     if (crossesBoundary) {
       // Fabric treats direction as launch-time (D59): converge first, then
