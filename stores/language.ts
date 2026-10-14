@@ -27,6 +27,9 @@ export const languagePreferenceAtom = atomWithStorageString('preference_language
 /** The D51 progress face: true from the moment a pick starts converging until it settles */
 export const languageCommitBusyAtom = atom(false);
 
+/** The locale a pick is converging to, while the busy face covers the wait; null when no pick runs */
+export const pendingLanguageAtom = atom<LocaleId | null>(null);
+
 /**
  * The D-relaunch handoff (row 80): written before a crossing's reloadAsync and consumed by
  * the next context's launch init, so an in-process relaunch — where no force-stop cancelled
@@ -104,6 +107,7 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
   const directionBefore = storedPreference === '' ? launchDirection : localeDirection(storedPreference as LocaleId);
   const crossesBoundary = localeDirection(locale) !== directionBefore;
   store.set(languageCommitBusyAtom, true);
+  store.set(pendingLanguageAtom, locale);
   try {
     store.set(languagePreferenceAtom, locale);
     setActiveLocale(locale);
@@ -146,5 +150,6 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
     }
   } finally {
     store.set(languageCommitBusyAtom, false);
+    store.set(pendingLanguageAtom, null);
   }
 };

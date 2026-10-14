@@ -15,3 +15,11 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
   { id: 'hi', name: 'हिन्दी' },
   { id: 'th', name: 'ไทย' },
 ];
+
+const NAMES_BY_ID = Object.fromEntries(LANGUAGE_NAMES.map((entry) => [entry.id, entry.name])) as Record<
+  LocaleId,
+  string
+>;
+
+/** The locale's own name, exactly as its picker row reads it */
+export const nativeLanguageName = (id: LocaleId): string => NAMES_BY_ID[id];

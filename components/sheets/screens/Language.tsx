@@ -1,14 +1,13 @@
-import { useAtomValue } from 'jotai';
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
-import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
-import { commitLanguagePreference, languageCommitBusyAtom } from '@/stores/language';
+import { commitLanguagePreference } from '@/stores/language';
 import { hideLanguageSheet, setLanguageSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
@@ -19,12 +18,11 @@ const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
 const SHEET_PERF_NAME = 'sheet_language';
 
 /**
- * The D8 language sheet. A pick commits immediately and blocks behind the
- * in-sheet progress row (D51); the sheet dismisses itself once the surfaces
- * converge. There is no cancel control (D18's no-cancel, kept by D47).
+ * The D8 language sheet. A pick commits immediately and closes the sheet; the
+ * root's full-screen loader covers the wait. There is no cancel control
+ * (D18's no-cancel, kept by D47).
  */
 export default function BottomSheetLanguage() {
-  const busy = useAtomValue(languageCommitBusyAtom);
   const active = currentLocaleId();
 
   return (
@@ -43,21 +41,13 @@ export default function BottomSheetLanguage() {
             key={entry.id}
             style={styles.option}
             onPress={() => pickLanguage(entry.id, active, commitLanguagePreference, hideLanguageSheet)}
-            disabled={busy}
             accessibilityRole={'radio'}
             // Which language is in force is carried only by this row's check, so
             // `selected` is the one thing a screen reader has to tell the rows apart
             accessibilityState={{ selected: entry.id === active }}
             accessibilityLabel={entry.name}>
             <Text style={styles.optionLabel}>{entry.name}</Text>
-            {busy && entry.id === active ? (
-              <View style={styles.applying}>
-                <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
-                <Text style={styles.applyingLabel}>{t('language.applying')}</Text>
-              </View>
-            ) : entry.id === active ? (
-              <IconView type={Icon.CHECK} size={18} color={COLORS.text.primary} />
-            ) : null}
+            {entry.id === active ? <IconView type={Icon.CHECK} size={18} color={COLORS.text.primary} /> : null}
           </Pressable>
         ))}
       </View>
@@ -93,17 +83,5 @@ const styles = StyleSheet.create({
     color: COLORS.text.primary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
-  },
-
-  // The D51 progress face on the row being applied
-  applying: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: SPACING.xs,
-  },
-  applyingLabel: {
-    fontSize: ty.size(TEXT.sizeSmall),
-    fontFamily: ty.familyRegular,
-    color: COLORS.text.primary,
   },
 });

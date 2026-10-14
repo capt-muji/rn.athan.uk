@@ -1,15 +1,13 @@
 /**
- * The language sheet (D8, D26, D51): six native names in codepoint order, a pick that
- * blocks the sheet behind the in-sheet progress row until the surfaces converge, and a
- * dismiss on both settle paths because convergence is forward-only (D34)
+ * The language sheet (D8, D26): six native names in codepoint order, and a pick that closes
+ * the sheet at once and hands the wait to the full-screen loader (ticket 86, D86.8)
  */
 
-import { act, fireEvent, type RenderResult, render, screen, waitFor } from '@testing-library/react-native';
+import { act, fireEvent, type RenderResult, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 import type { ReactTestRendererJSON } from 'react-test-renderer';
 
 import { london } from '@/__tests__/harness';
-import { t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import * as LanguageStore from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
@@ -69,7 +67,7 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByTestId('svg:check', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
-  it('blocks the sheet behind the progress row while the commit runs', async () => {
+  it('dismisses at once, with no applying row and no in-sheet spinner', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     // The driver hangs exactly while the assertions run; the afterEach releases it
     driverMock.mockImplementation(
@@ -80,31 +78,18 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
     );
     const commitSpy = jest.spyOn(LanguageStore, 'commitLanguagePreference');
     const rendered: RenderResult = await render(<LanguageSheet />);
-
-    await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
-
-    expect(commitSpy).toHaveBeenCalledWith('ar');
-    for (const name of SIX_NAMES) {
-      expect(screen.getByRole('radio', { name })).toBeDisabled();
-    }
-    // The UI switched with the pick (R3.1), so the applying line already reads the new locale
-    expect(screen.getByText(t('language.applying'))).toBeOnTheScreen();
-    const tree = rendered.toJSON();
-    expect(tree ? spinnerCount(tree) : 0).toBe(1);
-  });
-
-  it('dismisses once the commit resolves', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    driverMock.mockResolvedValue(true);
-    await render(<LanguageSheet />);
     const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
 
     await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
 
-    await waitFor(() => expect(dismiss).toHaveBeenCalledTimes(1));
+    expect(commitSpy).toHaveBeenCalledWith('ar');
+    expect(dismiss).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText('Applying…')).not.toBeOnTheScreen();
+    const tree = rendered.toJSON();
+    expect(tree ? spinnerCount(tree) : 0).toBe(0);
   });
 
-  it('dismisses when the commit rejects too: the UI already switched, there is no failure face', async () => {
+  it('swallows a rejected commit: the loader owns the wait, so the sheet has no failure face', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     jest.spyOn(LanguageStore, 'commitLanguagePreference').mockRejectedValueOnce(new Error('refused'));
     await render(<LanguageSheet />);
@@ -112,7 +97,8 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     await fireEvent.press(screen.getByRole('radio', { name: 'ไทย' }));
 
-    await waitFor(() => expect(dismiss).toHaveBeenCalledTimes(1));
+    expect(dismiss).toHaveBeenCalledTimes(1);
+    await act(async () => {});
   });
 
   it('closes without committing when the active locale is tapped', async () => {

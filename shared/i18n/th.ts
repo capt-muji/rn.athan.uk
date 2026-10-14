@@ -171,7 +171,7 @@ export const th = {
   'widget.refreshLead': 'เปิด Athan',
   'widget.refreshTail': 'เพื่อรีเฟรช',
   'settings.language': 'ภาษา',
-  'language.applying': 'กำลังปรับใช้…',
+  'language.changing': 'กำลังตั้งค่าภาษา {language}',
   'channel.reminder': 'แจ้งเตือนล่วงหน้า {name} อีก {n}',
   'whatsNew.title.language': 'ภาษา',
   'whatsNew.body.language': 'แอปพูดภาษาของคุณแล้ว: เลือกได้ในการตั้งค่า',

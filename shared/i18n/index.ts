@@ -32,7 +32,9 @@ export type ParamsOf<K extends TranslationKey> = K extends 'notification.now'
                   ? { name: string }
                   : K extends 'time.ago'
                     ? { name: string; duration: string }
-                    : undefined;
+                    : K extends 'language.changing'
+                      ? { language: string }
+                      : undefined;
 
 const TOKEN = /\{(\w+)\}/g;
 

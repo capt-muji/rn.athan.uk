@@ -109,3 +109,25 @@ escape convention (Alert.test.tsx:520, \u2019), and proved the four repaired lit
 tree with a scratch spec: jest 4 passed, Biome exit 0; scratch deleted. No other block was
 touched; anchors and source untouched.
 session: lead (this session)
+
+### Step 4 — merged (uat, 2.0.722, c92a6ede)
+
+Branch feat/86-tip-mirror; anchors tip-geometry, bar-tip-style, bar-fill-style all 1. Red
+transcribed byte-identical from the replan-2 step file: tip suite printed `Expected: 90.9 /
+Received: 9.1` on the mirror case (the monotonicity and fillAnchorFor cases failing with it),
+Bar suite printed `Expected: 0 / Received: undefined` on both direction cases, 13 existing
+Bar tests green. Change: contracts applied as written, plus two executor repairs on
+contract-derived code, recorded for the lead: (1) fillAnchorFor's return annotation ViewStyle
+became a module alias `type Anchor = Pick<ViewStyle, 'left' | 'right'>` — RN's ViewStyle
+position union fails tsc against Reanimated's animated style array, and every annotated
+spelling long enough to keep the ternary on its allowlisted single line exceeded Biome's 120;
+the name, parameter, one-line ternary body, gate snippet and the dictated ViewStyle import
+are intact; (2) Biome's organizeImports order on the two extended import lines. Green: 10 + 15
+passed; tsc exit 0; biome exit 0; gate DIRECTIONAL STYLES OK. Break script ended `ALL AS
+EXPECTED: 1`; tree then held only step files. Version 2.0.722 taken under the lock
+(origin/uat 2.0.716, local uat 2.0.721; next patch 2.0.722), set surgically in the three
+version files. Commit f11590a5: hook `Tests: 5650 passed, 5650 total`, four coverage lines
+100%. Review: LTR values byte-identical (the pre-change assertions pass unchanged), direction
+read at render beside the atom reads, exactly one anchor inset, numerals/colours/widths/
+timings untouched, no residue. Merged --no-ff into uat as c92a6ede.
+session: ses_ec52319ebffeE39wJK9foOt5ef

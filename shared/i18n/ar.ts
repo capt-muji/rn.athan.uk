@@ -172,7 +172,7 @@ export const ar = {
   'widget.refreshLead': 'افتح Athan',
   'widget.refreshTail': 'للتحديث',
   'settings.language': 'اللغة',
-  'language.applying': 'جارٍ التطبيق…',
+  'language.changing': 'جارٍ ضبط اللغة {language}',
   'channel.reminder': 'تنبيه {name} بعد {n}',
   'whatsNew.title.language': 'اللغة',
   'whatsNew.body.language': 'يتحدث التطبيق لغتك الآن: اخترها من الإعدادات',

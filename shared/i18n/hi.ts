@@ -173,7 +173,7 @@ export const hi = {
   'widget.refreshLead': 'Athan खोलें',
   'widget.refreshTail': 'रिफ्रेश के लिए',
   'settings.language': 'भाषा',
-  'language.applying': 'लागू हो रहा है…',
+  'language.changing': 'भाषा {language} सेट की जा रही है',
   'channel.reminder': 'रिमाइंडर: {name} {n} में',
   'whatsNew.title.language': 'भाषा',
   'whatsNew.body.language': 'ऐप अब आपकी भाषा बोलता है: सेटिंग्स में चुनें',
