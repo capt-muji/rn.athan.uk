@@ -36,10 +36,8 @@ describe('the countdown bar colour row in the settings sheet', () => {
   });
 
   // The library snapshots I18nManager.isRTL at module load and writes its geometry for that
-  // value, while the layout direction follows the live locale, and Android swaps left and
-  // right for RTL-resolved nodes: keying the picker's resolved direction to the same snapshot
-  // keeps the geometry and its layout in step in every launch state (row 73). The picker
-  // hosts carry no testID, so the reach is their accessibility labels
+  // value, so the picker's resolved direction keys on the same snapshot: the geometry and
+  // its layout stay in step in every launch state (row 73)
   it('renders the panel and the hue bar locked to the snapshotted direction, LTR here', async () => {
     await render(<ColorPickerSettings />);
     await openPicker();
