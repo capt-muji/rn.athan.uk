@@ -5,6 +5,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
+import { I18nManager, StyleSheet } from 'react-native';
 
 import { COLOR_PICKER_DEFAULT } from '@/shared/constants';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
@@ -31,6 +32,43 @@ describe('the countdown bar colour row in the settings sheet', () => {
 
     expect(screen.getByText('Select Color')).toBeOnTheScreen();
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  // The library snapshots I18nManager.isRTL at module load and writes its geometry for that
+  // value, while the layout direction follows the live locale, and Android swaps left and
+  // right for RTL-resolved nodes: keying the picker's resolved direction to the same snapshot
+  // keeps the geometry and its layout in step in every launch state (row 73). The picker
+  // hosts carry no testID, so the reach is their accessibility labels
+  it('renders the panel and the hue bar locked to the snapshotted direction, LTR here', async () => {
+    await render(<ColorPickerSettings />);
+    await openPicker();
+
+    const panel = screen.getByLabelText('Saturation and brightness 2D slider');
+    const slider = screen.getByLabelText('Hue Slider');
+
+    expect(StyleSheet.flatten(panel.props.style).direction).toBe('ltr');
+    expect(StyleSheet.flatten(slider.props.style).direction).toBe('ltr');
+  });
+
+  // The components project renders against the real I18nManager, so the snapshot the picker
+  // keys on is forced here rather than through the shared react-native mock
+  it('renders the panel and the hue bar locked to the snapshotted direction, RTL when the snapshot says so', async () => {
+    jest
+      .spyOn(I18nManager, 'getConstants')
+      .mockReturnValue({ isRTL: true, doLeftAndRightSwapInRTL: true, localeIdentifier: 'ar' });
+
+    try {
+      await render(<ColorPickerSettings />);
+      await openPicker();
+
+      const panel = screen.getByLabelText('Saturation and brightness 2D slider');
+      const slider = screen.getByLabelText('Hue Slider');
+
+      expect(StyleSheet.flatten(panel.props.style).direction).toBe('rtl');
+      expect(StyleSheet.flatten(slider.props.style).direction).toBe('rtl');
+    } finally {
+      jest.restoreAllMocks();
+    }
   });
 
   it('opens nothing, and stays still, when pressed while the bar is hidden', async () => {

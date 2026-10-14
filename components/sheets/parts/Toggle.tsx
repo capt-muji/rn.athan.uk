@@ -1,8 +1,9 @@
 import * as Haptics from 'expo-haptics';
-import { I18nManager, Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { ANIMATION, COLORS, RADIUS, SIZE } from '@/shared/constants';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 
 interface ToggleProps {
   value: boolean;
@@ -24,8 +25,11 @@ interface ToggleProps {
  * <Toggle value={isOn} onToggle={() => setIsOn(!isOn)} />
  */
 export default function Toggle({ value, onToggle, disabled, accessibilityLabel }: ToggleProps) {
-  // RTL travels the thumb the other way: the layout swap owns the inset keys, not the travel
-  const isRTL = I18nManager.getConstants().isRTL;
+  // RTL travels the thumb the other way: the layout swap owns the inset keys, not the
+  // travel. The locale's own direction, not the bridge snapshot: a starved crossing (row 78)
+  // renders Arabic while I18nManager still reports the launch direction, and the English
+  // travel then pushes the thumb off the track under the RTL layout (row 73)
+  const isRTL = localeDirection(currentLocaleId()) === 'rtl';
 
   // Derived, not effect-driven: every value flip re-runs the timing from the
   // thumb's live position on the UI thread, so the knob always converges on
