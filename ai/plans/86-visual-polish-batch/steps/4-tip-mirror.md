@@ -90,9 +90,10 @@ Extend the import to `import { TIP_OVAL_WIDTH, fillAnchorFor, tipLeftForProgress
 **`components/countdown/__tests__/Bar.test.tsx`**: add:
 
 ```tsx
-/** The flattened style of one rendered node */
-const styleOf = (node: { props: { style: unknown } }): Record<string, unknown> =>
-  Array.isArray(node.props.style) ? Object.assign({}, ...node.props.style) : (node.props.style as Record<string, unknown>);
+const flattenStyle = (style: unknown): Record<string, unknown> =>
+  Array.isArray(style)
+    ? Object.assign({}, ...style.map((entry) => flattenStyle(entry)))
+    : (style as Record<string, unknown>);
 
 /**
  * The bar's fill. The wrapper is the accessible progressbar, its first child is
@@ -102,7 +103,7 @@ const styleOf = (node: { props: { style: unknown } }): Record<string, unknown> =
 const fillStyle = (): Record<string, unknown> => {
   const wrapper = screen.getByRole('progressbar', { includeHiddenElements: true });
   const track = wrapper.children[0] as unknown as { children: unknown[] };
-  return styleOf(track.children[0] as { props: { style: unknown } });
+  return flattenStyle((track.children[0] as { props: { style: unknown } }).props.style);
 };
 
 describe('the bar direction, Friday 11 September 2026 at 14:00', () => {
