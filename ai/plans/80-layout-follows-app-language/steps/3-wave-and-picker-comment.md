@@ -26,7 +26,6 @@ Weight: 2
  */
 import { render, screen } from '@testing-library/react-native';
 import { I18nManager } from 'react-native';
-import { Path } from 'react-native-svg';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { WAVE, wavePath } from '@/shared/qiblaWave';
@@ -37,8 +36,8 @@ const SIZE = 300;
 const figureWidth = SIZE * WAVE.width;
 const figureHeight = SIZE * WAVE.height;
 
-/** The guide path the figure is drawn from, the one static Path in the stage */
-const guidePath = () => screen.UNSAFE_getByType(Path).props.d;
+/** The guide path the figure is drawn from, reached through the step's own testID */
+const guidePath = () => screen.getByTestId('qibla-wave-guide').props.d;
 
 describe('the calibration wave mirror', () => {
   afterEach(() => {
@@ -62,7 +61,9 @@ describe('the calibration wave mirror', () => {
 });
 ```
 
-Red today: the second case fails with a path-string diff — the received `d` equals `wavePath(figureWidth, figureHeight, false)` (the bridge snapshot reads false in jest) where the mirrored path was expected. The first case passes at 2.0.402 (en reads the snapshot false, which matches), and stays green after the change: it is the no-regression guard.
+(`@testing-library/react-native` is 14.0.1, which removed the `UNSAFE_*` queries, so the guide path is reached through a `testID` the change contract adds; `props.d` is the host prop react-native-svg carries.)
+
+Red today: both cases fail with `Unable to find an element with testID: qibla-wave-guide` — the reach's testID is the change contract's. Once it lands, the en case is the no-regression guard (green, and it stays green); the ar case's failure mode against a bridge-read implementation is the path-string diff: the received `d` equals `wavePath(figureWidth, figureHeight, false)` (the bridge snapshot reads false in jest) where the mirrored path was expected.
 
 **Change contracts.**
 
@@ -77,6 +78,8 @@ Red today: the second case fails with a path-string diff — the received `d` eq
   // same locale — the wave and the layout must not disagree
   const isRTL = localeDirection(currentLocaleId()) === 'rtl';
 ```
+
+   - The static guide Path inside the Svg (the one whose `d` is `wavePath(figureWidth, figureHeight, isRTL)`) gains `testID={'qibla-wave-guide'}` beside its `d` prop; the red suite reaches it that way.
 
 2. `components/sheets/screens/ColorPicker.tsx`: replace the `picker-direction-comment.txt` anchor's comment (the `pickerDirection` line beneath it is untouched) with:
 
@@ -105,6 +108,7 @@ set -u
 cd "$HOME/athan-gitree/run-80" || exit 1
 cp components/sheets/screens/QiblaWave.tsx "$TMPDIR/t80-wave.bak"
 sed -i '' 's/const isRTL = localeDirection(currentLocaleId()) === .rtl.;/const isRTL = I18nManager.getConstants().isRTL;/' components/sheets/screens/QiblaWave.tsx
+sed -i '' "s|import { StyleSheet, View } from 'react-native';|import { I18nManager, StyleSheet, View } from 'react-native';|" components/sheets/screens/QiblaWave.tsx
 failed=0
 npx jest components/sheets/screens/__tests__/QiblaWave.test.tsx --watchman=false --selectProjects=components > "$TMPDIR/t80-break-3.log" 2>&1 || failed=1
 grep -q 'mirrored under the app Arabic locale' "$TMPDIR/t80-break-3.log" || failed=$((failed + 10))
@@ -112,7 +116,7 @@ cp "$TMPDIR/t80-wave.bak" components/sheets/screens/QiblaWave.tsx
 if [ "$failed" -eq 1 ]; then echo "ALL AS EXPECTED: 1"; else echo "BREAK NOT APPLIED ($failed)"; fi
 ```
 
-Expected: `ALL AS EXPECTED: 1` (the reverted read leaves the ar case red). Note the sed needs `I18nManager` still imported at break time; if biome's unused-import handling has already dropped it in the green tree, the break writes the read back and re-adds the import in the same sed pass: the executor adjusts the sed to restore both lines from the backup, keeping the substitution honest.
+Expected: `ALL AS EXPECTED: 1` — the reverted read leaves the ar case red. The second sed re-adds the `I18nManager` import the green tree dropped, so the reverted read resolves rather than ReferenceErroring; the backup restores the green file after.
 
 **Mutation pass.** (a) `const isRTL = false;` — the ar case fails; (b) the guide path's `isRTL` argument swapped to its negation inside `wavePath`'s call in the component — both cases fail. Record both, then restore.
 

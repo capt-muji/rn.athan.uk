@@ -59,7 +59,7 @@ describe('the relaunch handoff', () => {
 });
 ```
 
-Add `consumeRelaunchHandoff, relaunchHandoffAtom` to the file's existing `@/stores/language` import. The suite's `beforeEach` gains `store.set(relaunchHandoffAtom, '');` beside its two existing resets. Red today: the real module exports neither name, so every new case fails on the undefined binding (`TypeError: consumeRelaunchHandoff is not a function`, and `store.set(undefined, ...)` throwing in the two cases that read the atom).
+Add `consumeRelaunchHandoff, relaunchHandoffAtom` to the file's existing `@/stores/language` import. The suite's `beforeEach` gains `store.set(relaunchHandoffAtom, '');` beside its two existing resets. Red today: the real module exports neither name, so the suite's shared `beforeEach` throws on every one of its eight cases (`store.set(undefined, ...)` failing inside `atomWithStorageString`'s write path) until the atom export and the reset land with the change — that whole-suite red is the recorded red state, and the four new cases are the ones that stay red until the contract's code lands.
 
 2. `__tests__/app/index.test.tsx` (components project). Replace the `index-test-language-mock.txt` anchor's mock with:
 
@@ -67,10 +67,10 @@ Add `consumeRelaunchHandoff, relaunchHandoffAtom` to the file's existing `@/stor
 // The language convergence pass owns its own suite; here it would re-arm alerts behind the
 // launch under test, so the launch is observed calling it instead of running it. The handoff
 // consumption is driven the same way: the store's own suite owns its semantics
-let relaunchHandoff = false;
+let mockRelaunchHandoff = false;
 jest.mock('@/stores/language', () => ({
   reconcileLanguageSurfaces: jest.fn(),
-  consumeRelaunchHandoff: jest.fn(() => relaunchHandoff),
+  consumeRelaunchHandoff: jest.fn(() => mockRelaunchHandoff),
 }));
 ```
 
@@ -79,7 +79,7 @@ Then a new describe after the `alerts and the settling window` describe:
 ```tsx
 describe('the launch init and the relaunch handoff, Friday 11 September 2026 at 14:00', () => {
   beforeEach(() => {
-    relaunchHandoff = false;
+    mockRelaunchHandoff = false;
   });
 
   afterEach(() => {
@@ -101,7 +101,7 @@ describe('the launch init and the relaunch handoff, Friday 11 September 2026 at 
   });
 
   it('skips the reopen on a context that consumed a language relaunch handoff', async () => {
-    relaunchHandoff = true;
+    mockRelaunchHandoff = true;
     showLondonDay('2026-09-11', '14:00');
     onPlatform('android');
 
@@ -120,7 +120,7 @@ describe('the launch init and the relaunch handoff, Friday 11 September 2026 at 
 });
 ```
 
-The describe uses the fake timers `showLondonDay` primes. `onPlatform` comes from the harness import the file already carries (line 12); the suite's own restore pattern (jest.restoreAllMocks in its global beforeEach, or the file's existing platform-restore helper if one exists — the executor uses whichever the file already uses for `onPlatform`, and if the file has none, adds `jest.replaceProperty` restoration by calling `onPlatform('ios')` in an `afterEach`). Add `reconcileLanguageSurfaces` to the file's existing `@/stores/language` import line for the spy. Red today: the skip case fails (`Expected ... not to have been called with` the reopen line, and the skip line `Expected ... to have been called with` misses); the cold-launch case passes both assertions at 2.0.402 — it is the no-regression guard, and its reconcile assertion holds there too.
+The describe uses the fake timers `showLondonDay` primes. `onPlatform` comes from the harness import the file already carries (line 12); the describe's `afterEach` restores iOS by calling `onPlatform('ios')`. Add a new import line `import { reconcileLanguageSurfaces } from '@/stores/language';` (the file has no static import of that module today, only the `jest.mock`; the mock factory stands behind the imported binding). Red today: the skip case fails (`Expected ... not to have been called with` the reopen line, and the skip line `Expected ... to have been called with` misses); the cold-launch case passes both assertions at 2.0.402 — it is the no-regression guard, and its reconcile assertion holds there too.
 
 **Change contracts.**
 
@@ -146,7 +146,7 @@ export const consumeRelaunchHandoff = (): boolean => {
 };
 ```
 
-   - Inside the crossing branch (the `language-crossing.txt` anchor), between `I18nManager.forceRTL(...)` and `await Updates.reloadAsync();`, add `store.set(relaunchHandoffAtom, locale);`.
+   - Inside the crossing branch (the `language-crossing.txt` anchor), immediately before `await Updates.reloadAsync();` as the try's first statement, add `store.set(relaunchHandoffAtom, locale);`.
    - Inside the catch, before the `logger.warn`, add `store.set(relaunchHandoffAtom, '');` — a refused relaunch leaves the old context alive, and the next genuine cold launch must reopen the gate.
 2. `app/index.tsx`:
    - Extend the existing `@/stores/language` import with `consumeRelaunchHandoff`.
@@ -187,7 +187,7 @@ if [ "$failed" -eq 1 ]; then echo "ALL AS EXPECTED: 1"; else echo "BREAK NOT APP
 
 Expected: `ALL AS EXPECTED: 1` — with the condition hard-wired false, the skip case fails (the reopen line was logged where it must not be). Then `git status --porcelain` lists only this step's four files plus the plan files.
 
-**Mutation pass.** (a) `if (consumeRelaunchHandoff())` inverted to `if (!consumeRelaunchHandoff())` — both index cases fail; (b) the consume's `store.set(relaunchHandoffAtom, '')` removed — the rtlSwitch `consumes the marker exactly once` case fails on its third assertion; (c) the catch's clear removed — the `clears the marker when the relaunch is refused` case fails. Record all three, then restore.
+**Mutation pass.** (a) `if (consumeRelaunchHandoff())` inverted to `if (!consumeRelaunchHandoff())` — both index cases fail; (b) the consume's `store.set(relaunchHandoffAtom, '')` removed — the rtlSwitch `consumes the marker exactly once` case fails on its second assertion (the atom still reads `ar` after the consume); (c) the catch's clear removed — the `clears the marker when the relaunch is refused` case fails. Record all three, then restore.
 
 **Version and commit.** Version 2.0.406. Commit message:
 
