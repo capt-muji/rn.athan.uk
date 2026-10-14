@@ -10,11 +10,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { TIP_OVAL_WIDTH, tipLeftForProgress } from '@/components/countdown/tipGeometry';
+import { fillAnchorFor, TIP_OVAL_WIDTH, tipLeftForProgress } from '@/components/countdown/tipGeometry';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { getBarOpacity, useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { countdownBarColorAtom, resyncAtom } from '@/stores/ui';
@@ -74,6 +75,9 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const atomColor = useAtomValue(countdownBarColorAtom);
   const resync = useAtomValue(resyncAtom);
+  // Read at render, the directionGlyph pattern: a crossing pick relaunches the context,
+  // so no stale direction can outlive a switch
+  const isRTL = localeDirection(currentLocaleId()) === 'rtl';
 
   const countdownBarColor = previewColor ?? atomColor;
   const progress = previewProgress ?? (isReady ? 100 - elapsedProgress : 0);
@@ -146,8 +150,10 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 
   // Clamped so the oval cannot overhang the track at either end (tipGeometry)
   const tipPositionStyle = useAnimatedStyle(() => ({
-    left: tipLeftForProgress(widthValue.value),
+    left: tipLeftForProgress(widthValue.value, isRTL),
   }));
+
+  const fillAnchorStyle = fillAnchorFor(isRTL);
 
   const tipAppearanceStyle = useAnimatedStyle(() => {
     const baseColor = interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]);
@@ -173,7 +179,7 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       {/* Track (background trough) */}
       <Animated.View style={styles.track}>
         {/* Progress bar */}
-        <Animated.View style={[styles.bar, barWidthStyle, barColorStyle]}>
+        <Animated.View style={[styles.bar, fillAnchorStyle, barWidthStyle, barColorStyle]}>
           <Animated.View style={styles.barHighlight} />
         </Animated.View>
       </Animated.View>

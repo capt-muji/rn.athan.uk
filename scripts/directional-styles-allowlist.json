@@ -12,7 +12,7 @@
   {
     "file": "components/countdown/Bar.tsx",
     "snippet": "left: tipLeftForProgress",
-    "reason": "worklet math has no logical key; the layout swap mirrors it (58b verified)"
+    "reason": "the tip's left is the physical value the direction-keyed geometry returns; a worklet offset has no logical key"
   },
   {
     "file": "components/overlay/catcherGeometry.ts",
@@ -53,5 +53,10 @@
     "file": "stores/notifications.ts",
     "snippet": "to be put right:",
     "reason": "log string, not a style"
+  },
+  {
+    "file": "components/countdown/tipGeometry.ts",
+    "snippet": "isRTL ? { right: 0 } : { left: 0 }",
+    "reason": "the fill's anchor is the physical key the direction argument selects; no logical key can express a per-direction layout"
   }
 ]

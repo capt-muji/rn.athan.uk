@@ -6,6 +6,7 @@ import { act, render, screen } from '@testing-library/react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { type Breakage, london, showLondonDay } from '@/__tests__/harness';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { checkOverlayBoundary, resyncCountdowns, startCountdowns } from '@/stores/countdown';
 import { openOverlay } from '@/stores/overlay';
@@ -141,5 +142,46 @@ describe("the colour picker's preview of the bar, on Friday 11 September 2026", 
 
     expect(barReading(65)).toBeVisible();
     expect(barReading(65)).toHaveProp('accessibilityLiveRegion', 'none');
+  });
+});
+
+const flattenStyle = (style: unknown): Record<string, unknown> =>
+  Array.isArray(style)
+    ? Object.assign({}, ...style.map((entry) => flattenStyle(entry)))
+    : (style as Record<string, unknown>);
+
+/**
+ * The bar's fill. The wrapper is the accessible progressbar, its first child is
+ * the track and the track's first child is the fill, which carries no role,
+ * label or text of its own to find it by.
+ */
+const fillStyle = (): Record<string, unknown> => {
+  const wrapper = screen.getByRole('progressbar', { includeHiddenElements: true });
+  const track = wrapper.children[0] as unknown as { children: unknown[] };
+  return flattenStyle((track.children[0] as { props: { style: unknown } }).props.style);
+};
+
+describe('the bar direction, Friday 11 September 2026 at 14:00', () => {
+  it('anchors the fill to the track\u2019s left edge under English', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<Bar type={ScheduleType.Standard} />);
+
+    expect(fillStyle().left).toBe(0);
+    expect(fillStyle().right).toBeUndefined();
+  });
+
+  it('anchors the fill to the track\u2019s right edge under Arabic', async () => {
+    setActiveLocale('ar');
+    try {
+      showLondonDay('2026-09-11', '14:00');
+
+      await render(<Bar type={ScheduleType.Standard} />);
+
+      expect(fillStyle().right).toBe(0);
+      expect(fillStyle().left).toBeUndefined();
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
