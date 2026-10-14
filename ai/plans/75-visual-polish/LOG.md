@@ -221,3 +221,121 @@ guarding that step's files in the working tree at step time. The version ladder
 shifts by the repair commit: step 3 commits at 2.0.454, step 4's record commit at
 2.0.455. Step 3's own three anchors counted 1 in the working tree throughout (the
 executor verified before stopping); no code changed in this repair.
+
+### Step 04 — stopped: layout swap
+
+Anchor check: steps 01–03 ticked above, `ticket/75` at `547d36e6` / 2.0.454, clean
+tree. Build: `npx expo run:ios` from the worktree root, background log
+`$TMPDIR/t75-build.log`, prebuild + pods + compile ≈ 5.5 min, dev build with Metro on
+its default port. The app launched on the booted simulator and the Standard schedule
+rendered.
+
+Simulator: `Athan-77`, iPhone 16 (com.apple.CoreSimulator.SimDeviceType.iPhone-16),
+iOS 18.5 runtime, UDID SIMULATOR_UDID. App version under the
+build: 2.0.454 (the record commit would have been 2.0.455; no record commit landed —
+the step stopped, version stays 2.0.454).
+
+Booted-state note: the app relaunched already in Arabic — persisted state on this
+simulator from an earlier session, not this run's doing. To run the drive as written
+(from English), the language was set back to English through the app's own Settings
+before the drive began; no data was wiped, no code touched. The build log carries
+three full launch sequences: the Arabic boot, the ar→en crossing, and the en→ar
+crossing — the D59 force + reload fired on both crossings.
+
+Environment drift, not acted on: `xcrun simctl list devices` now also shows a second
+booted simulator, `Athan-76` (iOS 26.5), which the lead's pre-dispatch check did not
+have. All reads below came from the Athan-77 session the build opened.
+
+Data-path note: launches 1 (Arabic boot) and 3 (English relaunch) carried the mock
+path — prayers a minute either side of launch (11:09–11:17, then 11:27–11:34). The
+launch-2 relaunch under `ar` pulled the REAL API instead: Fajr 04:03, Sunrise 05:38,
+Dhuhr 13:03, Asr 16:58, Magrib 20:19, Isha 21:31, date rolled to الخميس ١٥ أكتوبر.
+The step file expects the mock path on the dev build throughout; the reads below do
+not hinge on the data source, but the drift is recorded.
+
+The drive, each read from an image this session read directly (paths under
+`$HOME/athan-gitree/sessions/75/`):
+
+1. Settings → Language → العربية. The app reloads on the crossing; waited for the
+   schedule to render again (لندن visible, ≤20 s).
+2. Standard page under `ar` (`step04-ar-standard.png`, header crop
+   `step04-ar-header-crop.png`): the location/date block sits LEFT (AX rects x=16),
+   the mark RIGHT (~x=335–375). Mark crop `step04-ar-standard-mark.png`: the arched
+   door on the building's RIGHT wall, five orange windows on the LEFT wall.
+3. Extras page under `ar` (`step04-ar-extras.png`): same arrangement, same mark —
+   the crop `step04-ar-extras-mark.png` is byte-identical (`cmp`) to the Standard
+   one. Second pagination dot active.
+4. Settings sheet scroll (`step04-ar-sheet-scrolling.png`,
+   `step04-ar-sheet-scrolling-2.png`): two frames captured immediately after flings,
+   content displaced from the top both times; no scrollbar along either edge of the
+   sheet. The off toggle (إظهار التاريخ الهجري) shows the faint indigo off-state
+   outline on the dark track — indicative only; R3.1's proof stays step 3's jest
+   suite. (A third upward fling dismissed the sheet — recorded, then re-driven.)
+5. English control face (`step04-en-standard.png`): LTR layout, mark beside the date
+   text on the right, as at 2.0.402. Mark crop `step04-en-mark.png`: door on the
+   LEFT wall, windows on the RIGHT wall.
+
+Rulings' verdicts:
+
+- R1.1, the mark mirrored under RTL: the DRAWN MARK is mirrored — the `ar` crop is
+  the `en` crop flipped horizontally (door left→right, windows right→left), on both
+  schedule pages, byte-identical between the pages. The scaleX transform step 1
+  landed demonstrably renders. PASS on the transform.
+- R1.1's positional read in the step file ("the date column on the right, the mosque
+  mark on the left, its face turned inwards toward the text"): NOT MET on this
+  simulator. The layout sides do not swap under `ar` — date column LEFT, mark RIGHT,
+  so the flipped door faces outward, away from the text. This is not transient: the
+  pre-drive boot was a true process launch with `ar` stored and `forceRTL(true)`
+  applied in bootstrap at start (stores/bootstrap.ts:89–92), and it rendered
+  LTR-arranged too (settings rows: icon left, chevron ‹ at the right end). The
+  native layout swap the app's own RTL components assume ("the layout swap owns the
+  inset keys", Toggle.tsx / SegmentedControl.tsx from ticket 73) never engages on
+  this simulator, though the relaunch mechanism itself fires.
+- R2.1, no scrollbar on a moving sheet: no indicator along either edge in both
+  in-flight frames, content displaced. PASS (indicative face read; the ruling's
+  proof is step 2's jest test).
+
+Why stopped: the step's own drive read for the Arabic face is unsatisfiable here —
+the sides the plan predicts are not the sides the simulator renders, and the fix is
+never an inline edit in this step. PLAN.md section 7 names the path for exactly
+this: the lead drives the owner's iPhone XS read-only for the missing read. No
+commit, no version bump: the record commit at 2.0.455 belongs to a landed step.
+Tree left clean; screenshots die with the session under
+`$HOME/athan-gitree/sessions/75/`.
+
+session: ses_ec61d5111ffeihoywlFFVGxY9w
+
+### Step 04 — adjudicated done (the lead, 2026-10-14)
+
+The stop's missing read is the POSITIONAL premise (sides swap under ar), which this
+ticket never owned: the position is the native RTL layout swap rows 58a and 68
+shipped, and the owner herself recorded it working on her device - her ruling opens
+"sits correctly on the left under ar". This ticket owns the FACING, and the
+simulator proved it: the ar mark crop is the en crop mirrored, on both schedule
+pages, byte-identical between the pages. The two mechanisms are independent (the
+row layout flip places the mark; the scaleX transform turns it), so on her device,
+where the swap engages and the mark sits left, the mirrored mark faces inwards.
+Both her rulings therefore carry a read verdict: the mirror PASS from the crops,
+the scrollbar PASS from the two in-flight frames with no indicator on either edge,
+the English control clean.
+
+The iPhone XS fallback is ruled out: the XS cannot render this branch's code without
+an install, which the owner's run order forbids, and the position it could show is
+already her recorded observation. No drive.
+
+The environment finding is referred, not fixed here: this simulator (Athan-77, iOS
+18.5) rendered LTR-arranged through a true process launch with `ar` stored and
+`forceRTL(true)` applied at bootstrap, while the D59 reload fired on every crossing.
+The direction plumbing is ticket 80's claimed ground (stores/bootstrap.ts, the
+layout-direction work); the observation stands recorded here for that lane and goes
+in the run report. Nothing in this ticket's files was changed for it.
+
+The data-path drift (launch 2 pulling the real API under ar) is recorded above by
+the executor; the reads never hinged on the data source, no time was committed, no
+identifier written.
+
+Step 4 closes done: both rulings proven, the control face clean, the transcription
+and screenshots under `$HOME/athan-gitree/sessions/75/` dying with the ticket's
+merge. The record commit lands at 2.0.455.
+
+session: ses_ec65be08affe8jX8HEkUVF1iGJ
