@@ -11,6 +11,7 @@ import * as Reanimated from 'react-native-reanimated';
 
 import { onPlatform, showLondonDay } from '@/__tests__/harness';
 import { ATHAN_AUDIOS } from '@/assets/audio';
+import { t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { getSoundPreference, setSoundPreference } from '@/stores/notifications';
 import { setPlayingSoundIndex, setSoundListReady } from '@/stores/ui';
@@ -367,5 +368,27 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     await rerender(<SoundSheet />);
 
     expect(timing).toHaveBeenCalledWith(highlight().offset, expect.anything());
+  });
+
+  it('carries the volume note under the header, above the sound card', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSoundListReady();
+
+    await render(<SoundSheet />);
+
+    const drawn = JSON.stringify(screen.toJSON());
+    expect(drawn.indexOf(t('volume.note.ios'))).toBeGreaterThan(drawn.indexOf(t('sound.title')));
+    expect(drawn.indexOf(t('volume.note.ios'))).toBeLessThan(drawn.indexOf(t('sound.notificationSound')));
+    expect(screen.getAllByText(t('volume.note.ios'))).toHaveLength(1);
+  });
+
+  it('carries the alarm-volume wording on Android', async () => {
+    onPlatform('android');
+    showLondonDay('2026-09-11', '14:00');
+    setSoundListReady();
+
+    await render(<SoundSheet />);
+
+    expect(screen.getAllByText(t('volume.note.android'))).toHaveLength(1);
   });
 });
