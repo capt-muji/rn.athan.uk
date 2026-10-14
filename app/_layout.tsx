@@ -80,7 +80,7 @@ export default function Layout() {
   const chromeDeferred = useChromeDeferred();
   // One bump per language switch: the screens and the width measurement remount
   // cold (R3.1, R5.2), while the sheet layer stays mounted through the switch —
-  // a presented sheet must survive the apply to show its progress face (D51),
+  // unmounting a root that hosts a presented sheet would tear it down mid-apply,
   // and SheetHost's subscription re-renders the sheets in place
   const localeVersion = useAtomValue(localeVersionAtom);
 
