@@ -233,7 +233,7 @@ Checklist:
 - [x] 2. The volume note moves under each sheet's header — `steps/2-volume-note.md`
 - [x] 3. The Standard list-to-ago gap — `steps/3-list-gap.md`
 - [x] 4. The countdown tip mirrors with the layout — `steps/4-tip-mirror.md`
-- [ ] 5. The language-switch loader — `steps/5-language-loader.md`
+- [x] 5. The language-switch loader — `steps/5-language-loader.md`
 
 Versions: 2.0.717, 2.0.718, 2.0.719, 2.0.720, 2.0.721 in step order, one patch per step,
 each taken under the version lock from `uat`'s `package.json` at the moment of the commit.
