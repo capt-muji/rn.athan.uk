@@ -174,13 +174,13 @@ const listContainerStyle = (): Record<string, unknown> => {
 };
 
 describe('the gap below the list', () => {
-  it('renders at 75 percent of the old 30', async () => {
+  it('renders a quarter more than the pre-change 22.5', async () => {
     showLondonDay('2026-09-11', '14:00');
 
     await render(<List type={ScheduleType.Standard} />);
 
-    // Row 81: the owner's 25 percent cut of the list-to-ago gap
-    expect(listContainerStyle().marginBottom).toBe(22.5);
+    // The owner's ruling, 2026-10-14: 25 percent more room between the Standard list and its ago badge
+    expect(listContainerStyle().marginBottom).toBe(28);
   });
 
   it('renders a quarter further down on Extras, where the page has room', async () => {
