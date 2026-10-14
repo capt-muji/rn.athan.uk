@@ -6,7 +6,7 @@ import { OverlayInfoBox } from '@/components/overlay';
 import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { SCREEN, SPACING } from '@/shared/constants';
+import { SCREEN } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { countdownBarShownAtom, getMeasurementsList, setMeasurementsList } from '@/stores/ui';
@@ -90,7 +90,7 @@ export default function List({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-    marginBottom: SPACING.xxxl * 0.75,
+    marginBottom: 28,
   },
   containerExtrasGap: {
     marginBottom: 34,

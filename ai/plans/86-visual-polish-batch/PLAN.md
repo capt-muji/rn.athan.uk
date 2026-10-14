@@ -230,7 +230,7 @@ relaunches the context, so no stale direction can survive a switch.
 Checklist:
 
 - [x] 1. The locale line box for the sheet header and the day block — `steps/1-locale-line-box.md`
-- [ ] 2. The volume note moves under each sheet's header — `steps/2-volume-note.md`
+- [x] 2. The volume note moves under each sheet's header — `steps/2-volume-note.md`
 - [ ] 3. The Standard list-to-ago gap — `steps/3-list-gap.md`
 - [ ] 4. The countdown tip mirrors with the layout — `steps/4-tip-mirror.md`
 - [ ] 5. The language-switch loader — `steps/5-language-loader.md`
