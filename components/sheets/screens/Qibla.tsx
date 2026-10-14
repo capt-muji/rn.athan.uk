@@ -86,8 +86,7 @@ const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
 
   return (
     <View>
-      {/* The WIDER line is the one left in flow, because an absolutely positioned child contributes no width:
-          the container would otherwise shrink-wrap the narrower line and clip this one inside it */}
+      {/* The waiting line stays in flow; the ready line is absolute and the donor below pays the width */}
       <Animated.Text testID={'qibla-subtitle-waiting'} style={[styles.subtitle, waiting]} numberOfLines={1}>
         {t('qibla.subtitleWaiting')}
       </Animated.Text>
@@ -97,7 +96,7 @@ const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
         accessibilityElementsHidden
         importantForAccessibility={'no-hide-descendants'}
         numberOfLines={1}
-        style={[styles.subtitleText, styles.subtitleDonor]}>
+        style={styles.subtitleDonor}>
         {t('qibla.subtitleReady')}
       </Text>
       <Animated.Text
@@ -252,7 +251,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
   },
-  subtitleText,
   waiting: {
     alignItems: 'center',
     gap: SPACING.xxxl,

@@ -9,8 +9,8 @@
 | Parent | none |
 | Group | the digit map and the qibla sheet copy (declared files disjoint from tickets 75 and 80) |
 | Batch budget | 3 weight units |
-| Session budget | 7 weight units (steps sum to 7; step 3, the device weight, always dispatches alone) |
-| Steps count | 4 (weights 2, 1, 3, 1) |
+| Session budget | 9 weight units (steps sum to 9; step 3, the device weight, always dispatches alone) |
+| Steps count | 5 (weights 2, 1, 2, 3, 1) |
 | Device | none (waived by the owner's run order; one iOS simulator session allowed for visual proofs, dev/mock only; the owner is final QA) |
 | Owner decisions still needed | none open for this ticket; the merge to uat and the DONE cell are the orchestrator's after this run |
 
@@ -30,10 +30,10 @@ locales. The four `qibla.cardinal.*` keys leave the six catalogs, because the ri
 longer reads copy: the four bearings are module data (`CARDINAL_ANGLES`), so the compass
 module imports no catalog and the per-locale provenance for those keys retires with them.
 The catalog lock is re-taken (`node scripts/catalog-lock.mjs`), the key parity gate holds
-because all six catalogs change together, and the `ar-cardinals` pre-flight anchor's
-subject is deleted (the anchor file is the step-0 gate and stays). This is the one
-sanctioned departure from section 2.2's "no catalog change" rule; it is the ruling's own
-consequence.
+because all six catalogs change together, and the `ar-cardinals` pre-flight anchor and
+its check line are deleted with the keys (the anchor's subject no longer exists). This
+is the one sanctioned departure from section 2.2's "no catalog change" rule; it is the
+ruling's own consequence.
 
 The ruler sits above the numeral law (the native digits everywhere except the countdown,
 its bar and the prayer times): the owner's explicit words are LATIN numbers "identical in
@@ -138,7 +138,8 @@ out as owner-owned.
   module data (no catalog read, the `t` import and `resolveCardinals`/`DialCardinal`
   retire); `QiblaCompass.tsx` draws each number as SVG text at its own bearing through
   `facePoint(angle, radius * FACE.cardinal)`, with the degree circle a smaller
-  `TSpan` raised by `baselineShift={'super'}` at the number's top right. The four
+  `TSpan` raised by a negative `dy` (a `TSpan` takes no `baselineShift` in this
+  react-native-svg's types) at the number's top right, both sizes as `FACE` ratios. The four
   `qibla.cardinal.*` keys are deleted from all six catalogs; the catalog lock is
   re-taken; the `ar-cardinals` pre-flight anchor is retired. Evidence: the ring reads
   the same four numbers under every locale because it reads no locale at all (the
@@ -195,8 +196,8 @@ HEAD descends from `1b0d5229`; `app.json` and `package.json` both read 2.0.601;
 its source file in the clean working tree (HEAD-equal, which the clean check
 guarantees). Any other output is a STOP with the printed reason. The pre-flight and its
 anchors are the step-0 gate, evaluated at 2.0.601 before step 1; they are not re-run once
-execution starts, and step 2b deletes the subject of the `ar-cardinals` anchor (the
-anchor file itself is the historical gate and stays).
+execution starts. Step 2b deletes the `ar-cardinals` anchor and its check line with the
+four keys it anchored.
 
 ## 4. Background the executor needs
 
@@ -269,8 +270,10 @@ reader hears each sentence once.
 
 The compass ring (step 2b, section 0): the four cardinals are no longer copy. The module
 holds `CARDINAL_ANGLES = [0, 90, 180, 270]`; the dial draws each as SVG text on its own
-bearing, with the degree circle a smaller `TSpan` raised by a negative `dy`, both sizes
-as `FACE` ratios (`degree`, `degreeLift`) rather than numbers invented at the draw site.
+bearing, on the language-free digit face (`ty.familyDigits`, row 82's pattern, so the ring
+is identical in every language rather than drawing ar in the Arabic face), with the degree
+circle a smaller `TSpan` raised by a negative `dy`, both sizes as `FACE` ratios (`degree`,
+`degreeLift`) rather than numbers invented at the draw site.
 `TSpan` takes no `baselineShift` in this react-native-svg's types, and `dy` is the typed,
 per-platform way to raise it. One sentence a test can check: the dial draws the same four
 numbers, each with its smaller raised degree circle, under every shipped locale, because
@@ -292,7 +295,7 @@ Checklist (LOG.md carries one `### Step NN` heading per step, each ending with i
 `session:` line):
 
 - [ ] Step 1 — the subtitle width donor (`steps/1-subtitle-donor.md`, weight 2, R1.1 R1.2 R1.3)
-- [ ] Step 2 — the five-box digit sweep and the cardinal lock (`steps/2-digit-sweep.md`, weight 1, R2.1 R2.2 R3.1)
+- [ ] Step 2 — the five-box digit sweep (`steps/2-digit-sweep.md`, weight 1, R2.1 R2.2; its cardinal lock moved to step 2b)
 - [ ] Step 2b — the compass ring's cardinal numbers (`steps/2b-cardinal-numbers.md`, weight 2, R3.1 R3.2; the owner's rebuild, section 0)
 - [ ] Step 3 — simulator visual proof, ar and en (`steps/3-simulator-proof.md`, weight 3, R1.1 R1.2 R2.1 R3.1; dispatches alone)
 - [ ] Step 4 — records and the queue row (`steps/4-records.md`, weight 1, closes the ticket's run)
@@ -333,11 +336,16 @@ plan folder dies with the merge):
 > law had healed the surface her 2026-10-13 test saw; the fix landed 2026-10-14 at
 > 2.0.250), the Qibla subtitle's three dots diagnosed as layout truncation (the
 > catalog complete in all six) and fixed with a zero-height width donor so the box
-> fits the wider sentence in every language, en pixels unchanged, and the compass ring
-> rebuilt on the owner's 2026-10-14 ruling: the cardinal letters leave the catalogs for
-> the four Latin bearing numbers 0, 90, 180, 270, each with a small degree circle,
-> identical in every language. Simulator-proven on the iOS mock build under ar
-> and en. Versions 2.0.601-2.0.6xx on ticket/76 off `1b0d5229`.
+> measures the wider sentence in every language (en pixels unchanged; the box-width
+> mechanism is locked by tests and the rendered layout on glass falls to the owner's
+> QA), and the compass ring rebuilt on the owner's 2026-10-14 ruling: the cardinal
+> letters leave the catalogs for the four Latin bearing numbers 0, 90, 180, 270, each
+> with a small degree circle, drawn on the language-free digit face so the ring is
+> identical in every language. Simulator reads under ar on the iOS mock build: the
+> waiting subtitle full and the Suhoor and Duha boxes on Arabic-Indic digits; the
+> compass ring, the ready line and the en header could not be read because the
+> simulator vouches no heading and the ar-to-en reload starved, so those fall to the
+> owner's QA. Versions 2.0.601-2.0.6xx on ticket/76 off `1b0d5229`.
 
 The docs commit message for that merge:
 

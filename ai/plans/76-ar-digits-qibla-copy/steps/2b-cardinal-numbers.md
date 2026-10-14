@@ -19,9 +19,9 @@ Files: `shared/qiblaCompass.ts`, `components/sheets/screens/QiblaCompass.tsx`,
 `shared/__tests__/qiblaCompass.test.ts`, `shared/__tests__/stringGuard.test.ts`,
 `components/sheets/screens/__tests__/Qibla.test.tsx`, `shared/i18n/en.ts`,
 `shared/i18n/ar.ts`, `shared/i18n/ms.ts`, `shared/i18n/so.ts`, `shared/i18n/hi.ts`,
-`shared/i18n/th.ts`, `shared/i18n/catalog-lock.json`, `app.json`, `package.json`.
-(The `ar-cardinals` pre-flight anchor's subject is deleted; the anchor file is the
-step-0 gate and stays.)
+`shared/i18n/th.ts`, `shared/i18n/catalog-lock.json`, and the retired
+`scripts/anchors/ar-cardinals.txt` with its line in `scripts/preflight-76.sh`,
+`app.json`, `package.json`.
 
 Red tests, written first:
 
@@ -60,8 +60,9 @@ Change contract:
 - The six catalogs: delete `qibla.cardinal.n/e/s/w` from each.
 - `shared/i18n/catalog-lock.json`: re-take with `node scripts/catalog-lock.mjs`
   (`yarn i18n:lock`), because the en catalog changed.
-- Retire the `ar-cardinals` pre-flight anchor's subject by deleting the four keys; the
-  anchor file itself is the step-0 gate and stays untouched.
+- Delete `scripts/anchors/ar-cardinals.txt` and its `check_anchor` line from
+  `scripts/preflight-76.sh`: the keys they anchor are gone, so the check can never pass
+  again.
 
 Green run: `npx jest shared/__tests__/qiblaCompass.test.ts --watchman=false
 --selectProjects=unit`, then `npx jest components/sheets/screens/__tests__/Qibla.test.tsx

@@ -2,7 +2,6 @@
  * The compass face's geometry, and the clearances the owner settled by eye on the phone
  */
 
-import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { FIGURE_CANVAS, FIGURE_SPREAD } from '@/shared/kaabaFigure';
 import {
   arcPath,
@@ -65,20 +64,10 @@ describe('the dial ticks', () => {
 
 describe('the cardinal numbers', () => {
   // The owner's 2026-10-14 ruling replaced the per-language letters with the four Latin bearings, identical in every
-  // language, so the compass depends on no language at all (PLAN.md section 0)
+  // language; the ring reads no locale at all (the stringGuard suite proves the module names no catalog, and
+  // Qibla.test.tsx draws the same four under all six)
   it('prints the four bearings as Latin numbers, never letters', () => {
     expect(CARDINAL_ANGLES).toEqual([0, 90, 180, 270]);
-    for (const angle of CARDINAL_ANGLES) expect(typeof angle).toBe('number');
-  });
-
-  // The dial reads no locale, so the four labels stand the same wherever the ring is drawn; the stringGuard suite
-  // proves the module names no qibla.cardinal key and Qibla.test.tsx draws this under all six locales
-  it('keeps the same four numbers under every shipped locale', () => {
-    for (const locale of LOCALE_IDS) {
-      setActiveLocale(locale);
-      expect(CARDINAL_ANGLES).toEqual([0, 90, 180, 270]);
-    }
-    setActiveLocale('en');
   });
 
   // The degree circle is a FACE ratio, so it scales with the number rather than a size invented at the draw site

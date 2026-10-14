@@ -258,8 +258,8 @@ describe('the qibla sheet before it is opened', () => {
   });
 
   // An absolutely positioned child contributes NO width, so the line taken out of flow cannot widen the container.
-  // Measured in the bundled font at the subtitle's size: 158.6dp for the waiting line in flow against 150.4dp for
-  // the ready line absolute. Under ar and so the ready sentence is the wider one, which is what the donor pays for
+  // Measured in the bundled font at the subtitle's size: en 158.6dp waiting in flow against 150.4dp ready absolute.
+  // The wider sentence depends on the language (ar, ms and so carry the wider ready line), which is the donor's job
   it('keeps the waiting line in flow and the ready line absolute', async () => {
     await render(<QiblaSheet />);
 
@@ -277,20 +277,10 @@ describe('the qibla sheet before it is opened', () => {
     expect(subtitleOpacity('qibla-subtitle-ready')).toBe(0);
   });
 
-  it('sizes its box to the wider of its two sentences under en', async () => {
-    await render(<QiblaSheet />);
-
-    const donor = screen.getByTestId('qibla-subtitle-donor', { includeHiddenElements: true });
-    const style = StyleSheet.flatten(donor.props.style) as { height?: number; marginTop?: number; position?: string };
-
-    expect(style.height).toBe(0);
-    expect(style.marginTop).toBeUndefined();
-    expect(style.position).toBeUndefined();
-    expect(donor.props.numberOfLines).toBe(1);
-    expect(donor.props.children).toBe(t('qibla.subtitleReady'));
-  });
-
-  it.each(LOCALE_IDS)('sizes its box to the wider of its two sentences in each shipped locale: %s', async (locale) => {
+  // The donor is the mechanism that lets the box fit the wider sentence: it sits in flow at zero height carrying the
+  // ready sentence, so the box measures whichever of the two is wider. Only the mechanism is observable in the test
+  // tree; the rendered box width on glass falls to the owner's QA
+  it.each(LOCALE_IDS)('carries a zero-height in-flow donor holding the ready sentence under %s', async (locale) => {
     setActiveLocale(locale);
     try {
       await render(<QiblaSheet />);
@@ -2267,7 +2257,7 @@ describe('the readings a warm reopen is judged on', () => {
 describe('the compass ring’s cardinal numbers on the drawn dial', () => {
   // The ring is SVG, so its labels are read from the rendered tree: RNSVGText holds one child per label and a numeric
   // child arrives as its own TSpan, so the labels are the TSpan `content` values under the dial. This is the render
-  // half of the owner's 2026-10-14 ruling (PLAN.md section 0); the unit suite proves the data is locale-free
+  // half of the owner's 2026-10-14 ruling; the unit suite proves the data is locale-free
   type DialLabel = { content: string; dy?: number[]; fontSize?: number };
 
   const dialLabels = (): { labels: DialLabel[]; numberSize: number } => {
