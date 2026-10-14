@@ -23,3 +23,4 @@ flagged as uncoverable.
 `bash scripts/check-plan.sh` prints `PLAN OK`.
 
 ## Ticket 86
+Executor session: ses_ec5444514ffeU8qJOpMB0X1uOO (batch 1: steps 1-3)

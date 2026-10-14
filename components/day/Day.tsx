@@ -73,13 +73,13 @@ const styles = StyleSheet.create({
     color: COLORS.text.secondary,
     fontSize: ty.size(TEXT.sizeSmall),
     fontFamily: ty.familyRegular,
-    lineHeight: ty.scriptLineHeight?.(TEXT.sizeSmall),
+    lineHeight: ty.blockLineHeight(ty.size(TEXT.sizeSmall)),
     marginBottom: SPACING.quart,
   },
   date: {
     fontFamily: ty.familyRegular,
     color: COLORS.text.primary,
     fontSize: ty.size(TEXT.size),
-    lineHeight: ty.scriptLineHeight?.(TEXT.size),
+    lineHeight: ty.blockLineHeight(ty.size(TEXT.size)),
   },
 });
