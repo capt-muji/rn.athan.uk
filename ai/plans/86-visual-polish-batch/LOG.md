@@ -64,3 +64,48 @@ first child of Sheet in both screens, the wording ternary intact, `cardHint` kee
 module-level `ty` matches the shipped Header/Alert/Sound pattern, no residue. Merged --no-ff
 into uat as a285aa32.
 session: ses_ec52eba43ffekjpFHnH0Kgzt5O
+
+
+
+### Step 3 — merged (uat, 2.0.720, ec053e69)
+
+Anchor check: `list-container` 1. Red: the changed case printed `Expected: 28 / Received:
+22.5`, the Extras case stood at 34. Change: container marginBottom 28, import reduced to
+`{ SCREEN }`, SPACING had no other use. Green: 13 passed; tsc exit 0; biome exit 0. Break
+script ended `ALL AS EXPECTED: 1`; tree then held only step and plan files. Version 2.0.720
+taken under the lock (origin/uat still 2.0.716, local uat 2.0.719; next patch 2.0.720), set
+surgically in the three version files. Commit ec053e69: hook `Tests: 5643 passed, 5643
+total`, four coverage lines 100%; carried this run's plan files and the queue cell moved to
+step 3. Review: exactly the contract's diff, Extras 34 untouched, Ago.tsx untouched, no
+unused import, no stale comment. Merged --no-ff into uat as 56d3829a.
+session: ses_ec52eba43ffekjpFHnH0Kgzt5O
+
+### Steps 4 and 5 — STOPPED before any red run (tree untouched, no branch, no version, lock never held)
+
+The dispatch dictates the step-4 and step-5 blocks byte-identical, but four `it()` names
+across their test blocks hold an ASCII apostrophe inside a single-quoted string, which cannot
+parse: step 4 `steps/4-tip-mirror.md` line 81 (`'anchors the fill to the track's leading edge
+in each direction'`, in the tipGeometry block), lines 110 and 119 (`'...the track's left edge
+under English'`, `'...the track's right edge under Arabic'`, in the Bar block), and step 5
+`steps/5-language-loader.md` line 102 (`'caps the line's width so a long sentence breaks onto
+two centred lines'`, in the LanguageLoader block). Biome's parse of the extracted blocks prints
+`expected ',' but instead found 's'` at each apostrophe; jest would die on the SyntaxError
+before any red failure the plan describes. This is the step-2 defect class (plan-verbatim code
+that does not compile), so per the green rule it is a stop and quote, never an executor edit.
+Verified before stopping: all eight anchors for steps 4 and 5 count exactly 1; every other
+complete code block in both step files parses clean; both break scripts pass `bash -n`; the
+JSON/catalog parse failures biome also printed are the plan's insertion fragments, correct as
+written. The repo's own convention exists (Alert.test.tsx:520 escapes the apostrophe as
+`\u2019`), but applying it to plan-verbatim test names is the lead's repair to prove, as the
+2.0.718 replan was. Working tree holds only the two plan files this run found on arrival.
+session: ses_ec52319ebffeE39wJK9foOt5ef
+
+### Replan 2 (2026-10-14, lead)
+
+The steps 4 and 5 stop adjudicated as the step-2 defect class: four plan-verbatim it() names
+carried an ASCII apostrophe inside single-quoted literals (a SyntaxError before any red
+failure). The lead verified all four lines verbatim, repaired them to the repo's landed
+escape convention (Alert.test.tsx:520, \u2019), and proved the four repaired literals in
+tree with a scratch spec: jest 4 passed, Biome exit 0; scratch deleted. No other block was
+touched; anchors and source untouched.
+session: lead (this session)
