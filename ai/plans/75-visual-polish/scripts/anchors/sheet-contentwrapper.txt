@@ -1,4 +1,0 @@
-  const ContentWrapper = scrollable ? BottomSheetScrollView : BottomSheetView;
-  const contentStyle = scrollable
-    ? { contentContainerStyle: { paddingBottom: contentPadding } }
-    : { style: { paddingBottom: contentPadding } };

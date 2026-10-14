@@ -1,5 +1,0 @@
-  // RTL travels the thumb the other way: the layout swap owns the inset keys, not the
-  // travel. The locale's own direction, not the bridge snapshot: a starved crossing (row 78)
-  // renders Arabic while I18nManager still reports the launch direction, and the English
-  // travel then pushes the thumb off the track under the RTL layout (row 73)
-  const isRTL = localeDirection(currentLocaleId()) === 'rtl';
