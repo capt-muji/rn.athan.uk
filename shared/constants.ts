@@ -697,6 +697,8 @@ export const COLORS = {
     secondary: 'rgba(160, 200, 255, 0.54)',
     /** Muted text: inactive prayers, timestamps */
     muted: 'rgba(138, 169, 214, 0.38)',
+    /** The prayer row's time at rest, a quarter above the muted ink: the owner found it too dim on 2026-10-14. The row's own name and bell keep `muted` */
+    rowTime: 'rgba(138, 169, 214, 0.475)',
     /** Disabled/hint text */
     disabled: 'rgba(146, 211, 255, 0.65)',
     /** Emphasis text: info box titles */

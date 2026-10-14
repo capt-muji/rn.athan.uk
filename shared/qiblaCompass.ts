@@ -52,8 +52,8 @@ export const FACE = {
    * Past this the cube overlaps a number for about one user in five, since the clash depends on their qibla.
    */
   cardinal: 0.7,
-  /** The cardinal numbers' size. The owner halved it on 2026-10-14: at the first size they crowded the face */
-  cardinalSize: 0.048,
+  /** The cardinal numbers' size. The owner set it live on 2026-10-14: half of the first size was too tiny, so it stands at a tenth over that */
+  cardinalSize: 0.0624,
   /** The degree circle's size, as a share of the number it sits at the top right of. The owner increased it a quarter on 2026-10-14: the first size read as a speck */
   degree: 0.775,
   /** How far the degree circle is raised above the number's own line, as a share of the number's size */
