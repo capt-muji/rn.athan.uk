@@ -108,6 +108,7 @@ describe('the catalog as its own transfer format', () => {
       'channel.athan',
       'channel.reminder',
       'countdown.progressA11y',
+      'language.changing',
       'notification.now',
       'notification.reminder',
       'prayerAlert.notification',
@@ -127,6 +128,7 @@ describe('the catalog as its own transfer format', () => {
     expect(tokensByKey.get('channel.athan')).toEqual(['n']);
     expect(tokensByKey.get('channel.reminder')).toEqual(['name', 'n']);
     expect(tokensByKey.get('countdown.progressA11y')).toEqual(['percent']);
+    expect(tokensByKey.get('language.changing')).toEqual(['language']);
     expect(tokensByKey.get('prayerAlert.notification')).toEqual(['name', 'state']);
     expect(tokensByKey.get('soundItem.athan')).toEqual(['n']);
     expect(tokensByKey.get('soundItem.preview')).toEqual(['name']);

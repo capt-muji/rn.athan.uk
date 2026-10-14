@@ -191,7 +191,7 @@ export const en = {
   'widget.refreshTail': 'to refresh',
 
   'settings.language': 'Language',
-  'language.applying': 'Applying…',
+  'language.changing': 'Setting {language} language',
   'channel.reminder': '{name} in {n}m Reminder',
   'whatsNew.title.language': 'Language',
   'whatsNew.body.language': 'The app now speaks your language: pick it in Settings',

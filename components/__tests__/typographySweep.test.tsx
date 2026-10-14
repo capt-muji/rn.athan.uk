@@ -30,6 +30,7 @@ jest.mock('react-native/Libraries/Utilities/BackHandler.ios', () =>
 const INVENTORY: readonly string[] = [
   'ui/Error.tsx',
   'ui/InitialWidthMeasurement.tsx',
+  'ui/LanguageLoader.tsx',
   'sheets/screens/Alert.tsx',
   'sheets/screens/ColorPicker.tsx',
   'sheets/screens/Language.tsx',

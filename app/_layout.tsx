@@ -20,7 +20,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
 import { SheetHost } from '@/components/sheets';
-import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
+import { ErrorScreen, InitialWidthMeasurement, LanguageLoader } from '@/components/ui';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
 import { currentLocaleId, localeDirection, localeVersionAtom } from '@/shared/i18n/locale';
@@ -97,6 +97,7 @@ export default function Layout() {
         <Slot key={localeVersion} />
         <SheetHost deferred={chromeDeferred} />
       </BottomSheetModalProvider>
+      <LanguageLoader />
     </GestureHandlerRootView>
   );
 }
