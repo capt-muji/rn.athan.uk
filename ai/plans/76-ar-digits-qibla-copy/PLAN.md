@@ -1,4 +1,4 @@
-# Ticket 76: digit and string gaps under ar (the overlay's Latin numerals, the Qibla instruction's ellipsis, the cardinal letters)
+# Ticket 76: digit and string gaps under ar (the overlay's Latin numerals, the Qibla instruction's ellipsis, the cardinal ring rebuilt as numbers)
 
 | Field | Value |
 | --- | --- |
@@ -13,6 +13,32 @@
 | Steps count | 4 (weights 2, 1, 3, 1) |
 | Device | none (waived by the owner's run order; one iOS simulator session allowed for visual proofs, dev/mock only; the owner is final QA) |
 | Owner decisions still needed | none open for this ticket; the merge to uat and the DONE cell are the orchestrator's after this run |
+
+## 0. Amendment 2026-10-14: the compass ring rebuilt as numbers (owner ruling)
+
+**Source: the owner's instruction of 2026-10-14, carried on queue row 76.** The compass
+ring's cardinal LETTERS (English and Arabic alike) are REPLACED by LATIN NUMBERS, each
+with a small degree circle at its top right: north 0, east 90, south 180, west 270,
+identical in every language, so the compass depends on no language at all.
+
+This supersedes the planning verdict on item (c) (D76.4, "the letters are correct; no
+change ships"). Item (c) is re-scoped from verify-the-Arabic-letters to this rebuild.
+The test the step-2 execution committed at 2.0.604
+(`shared/__tests__/qiblaCompass.test.ts`, "the cardinal letters") asserted the old
+letters and is replaced by number-and-degree-circle assertions that hold under all six
+locales. The four `qibla.cardinal.*` keys leave the six catalogs, because the ring no
+longer reads copy: the four bearings are module data (`CARDINAL_ANGLES`), so the compass
+module imports no catalog and the per-locale provenance for those keys retires with them.
+The catalog lock is re-taken (`node scripts/catalog-lock.mjs`), the key parity gate holds
+because all six catalogs change together, and the `ar-cardinals` pre-flight anchor's
+subject is deleted (the anchor file is the step-0 gate and stays). This is the one
+sanctioned departure from section 2.2's "no catalog change" rule; it is the ruling's own
+consequence.
+
+The ruler sits above the numeral law (the native digits everywhere except the countdown,
+its bar and the prayer times): the owner's explicit words are LATIN numbers "identical in
+every language", so the compass numbers stay Latin under ar too, and the ring joins the
+countdown and the row times as a language-free surface.
 
 ## 1. Goal
 
@@ -29,13 +55,18 @@ her test's build; one is a verification ask. What is true when DONE:
    locale whose ready sentence is wider than its waiting sentence (ar and so qualify),
    because the box shrink-wraps to the in-flow line. The catalog is complete in all six
    languages; the defect is layout, and the fix sizes the box to the wider sentence.
-3. (c) The compass cardinal letters under ar are the correct Arabic dial letters, with
-   the verification verdict and its sources recorded in the plan records. Verdict taken
-   at planning: the letters ش ق ج غ are the convention Arabic compass dials print;
-   no change ships.
+3. (c) The compass ring's cardinals are the four LATIN bearing numbers 0, 90, 180 and
+   270, each with a small degree circle at its top right, identical in every language
+   (the owner's 2026-10-14 ruling, section 0). At the anchor the ring prints catalog
+   letters per language (ش ق ج غ under ar); this ticket rebuilds the ring as numbers and
+   removes the ring's language dependency.
 
 Owner rules that govern, with source:
 
+- "the compass ring's cardinal letters are replaced by Latin numbers with a small degree
+  circle at the top right of each number: north 0, east 90, south 180, west 270,
+  identical in every language, so the compass depends on no language at all" (the
+  owner's instruction, 2026-10-14). This is the ruling recorded in section 0.
 - "the Extras boxes take Arabic-Indic ٢٠ under ar" and "the countdown and prayer-time
   components keep Latin digits always" (the owner's run order, 2026-10-14, restating
   row 84's boundary). The shipped boundary also keeps the list row times Latin
@@ -64,7 +95,10 @@ list row times keep Latin glyphs in every locale, every other sentence and value
 the locale's own digits (`NATIVE_DIGITS` in `shared/i18n/locale.ts:27`, ar =
 `٠١٢٣٤٥٦٧٨٩`). Under that boundary the Extras info boxes are native-digit surfaces, and
 the shipped `localizeDigits` call at `components/prayer/Explanation.tsx:74` (added by
-that same commit) serves them. Her 2026-10-13 test ran a build from before 2.0.250, so
+that same commit) serves them. The owner added one boundary to that law on 2026-10-14
+(section 0): the compass ring's bearings are Latin numbers in every language, so the ring
+joins the countdown, its bar and the row times as a language-free surface. Her 2026-10-13
+test ran a build from before 2.0.250, so
 her Latin 20 was real then and is healed at the anchor. Nothing in the shipped code
 contradicts the boundary on any surface this ticket touches, so no sub-item is scoped
 out as owner-owned.
@@ -92,21 +126,32 @@ out as owner-owned.
   stack (per-locale line heights make the margin unknowable in CSS). The waiting line
   stays in flow, the ready line stays absolute, `numberOfLines` stays 1, the cross-fade
   and the one-line header height are unchanged.
-- **D76.4** Item (c) verdict: the letters are correct. The catalog holds
-  n=ش, e=ق, s=ج, w=غ (`ar.ts:177-180`) and `resolveCardinals` maps them to
-  0/90/180/270 degrees (`shared/qiblaCompass.ts:99-104`). Five independent Arabic
-  qibla services print the live dial in the same letters and order (ش then ق then ج
-  then غ clockwise from north): al-harameen.com/qibla, hijriyan.com,
-  tarikhak.com (three city pages), wmadaat.com ("ش ق ج غ" spaced), manarquraan.co.uk.
-  East takes ق because شرق and شمال share the initial ش; the dial convention
-  disambiguates. No change ships; the verdict and sources are recorded (LOG.md and
-  step 2 adds the mapping lock so the letters cannot drift silently).
+- **D76.4 (SUPERSEDED 2026-10-14 by the owner ruling, section 0)** The planning verdict
+  was "the letters are correct; no change ships": the catalog held n=ش, e=ق, s=ج, w=غ
+  (`ar.ts:177-180`) and `resolveCardinals` mapped them to 0/90/180/270 degrees
+  (`shared/qiblaCompass.ts:99-104`), matching five independent Arabic qibla services
+  (al-harameen.com/qibla, hijriyan.com, tarikhak.com, wmadaat.com, manarquraan.co.uk).
+  The owner rejected the per-language ring outright on 2026-10-14. See D76.8.
+- **D76.8** Item (c) is the rebuild the owner ordered (section 0). The ring prints the
+  four bearings as LATIN numbers with a degree circle, identical in every language.
+  Design: `shared/qiblaCompass.ts` exports `CARDINAL_ANGLES = [0, 90, 180, 270]` as
+  module data (no catalog read, the `t` import and `resolveCardinals`/`DialCardinal`
+  retire); `QiblaCompass.tsx` draws each number as SVG text at its own bearing through
+  `facePoint(angle, radius * FACE.cardinal)`, with the degree circle a smaller
+  `TSpan` raised by `baselineShift={'super'}` at the number's top right. The four
+  `qibla.cardinal.*` keys are deleted from all six catalogs; the catalog lock is
+  re-taken; the `ar-cardinals` pre-flight anchor is retired. Evidence: the ring reads
+  the same four numbers under every locale because it reads no locale at all (the
+  stringGuard test proves the module holds no catalog key), and the render sweep in
+  `Qibla.test.tsx` proves the drawn labels are identical under all six.
 - **D76.5** Version range deviation: the run order reserved 2.0.500 to 2.0.599, but
   `origin/uat` has moved to `f5c608ed` (2.0.600) and consumed 2.0.403 through 2.0.600
   while sibling branches run at 2.0.406 (ticket/80) and 2.0.450 (ticket/75). The repo
   law (ai/AGENTS.md: fetch origin first, never take a taken number) governs over the
-  stale reservation. This ticket versions from 2.0.601 upward (planning commit
-  2.0.601; steps at 2.0.602 to 2.0.605; audit fixes after). `android/` is gitignored
+  stale reservation. This ticket versions from 2.0.601 upward (planning commit 2.0.601;
+  step 1 at 2.0.602; the step-2 stop record at 2.0.603; step 2 at 2.0.604; this owner
+  amendment at 2.0.605; the compass rebuild at 2.0.606; step 3 at 2.0.607; step 4 at
+  2.0.608; audit fixes after). `android/` is gitignored
   and absent in the worktree; `shared/__tests__/versionLockstep.test.ts` accepts the
   absent file and asserts the gitignore instead, so only `app.json` and `package.json`
   are bumped.
@@ -130,7 +175,9 @@ out as owner-owned.
 - Any finding that the ar digits render Latin at the anchor (a red sweep that stays red
   after the break script is reverted is that finding). STOP; that contradicts D76.1 and
   needs a replan.
-- Any catalog value change. The six catalogs do not change in this ticket.
+- Any catalog value change, EXCEPT the one the owner ruling orders: the four
+  `qibla.cardinal.*` keys are deleted from all six catalogs in step 2b (section 0). No
+  other value in the six catalogs changes.
 - Any merge to uat, any push, any production build, any EAS use, any install on the
   owner's iPhone XS (the owner's run order). The iPhone XS may be driven read-only for
   a visual check and nothing is ever installed on it.
@@ -146,7 +193,10 @@ worktree at `$HOME/athan-gitree/run-76` on branch `ticket/76` with a clean statu
 HEAD descends from `1b0d5229`; `app.json` and `package.json` both read 2.0.601;
 `node_modules` is present; every anchor under `scripts/anchors/` counts exactly 1 in
 its source file in the clean working tree (HEAD-equal, which the clean check
-guarantees). Any other output is a STOP with the printed reason.
+guarantees). Any other output is a STOP with the printed reason. The pre-flight and its
+anchors are the step-0 gate, evaluated at 2.0.601 before step 1; they are not re-run once
+execution starts, and step 2b deletes the subject of the `ar-cardinals` anchor (the
+anchor file itself is the historical gate and stays).
 
 ## 4. Background the executor needs
 
@@ -172,10 +222,12 @@ Code map (anchors under `scripts/anchors/`):
   (lines 60-73); step 2 extends it to the five-box, six-locale sweep.
 - `shared/i18n/locale.ts` — `NATIVE_DIGITS` (line 27) and `localizeDigits` (29-32),
   the digit law as data. Read-only here; ticket 80 owns it.
-- `shared/i18n/{en,ar,ms,so,hi,th}.ts` — the six catalogs. Read-only here. The two
-  subtitle keys and the four cardinal keys are quoted in the anchors and LOG.md.
-- `shared/qiblaCompass.ts` — `resolveCardinals` (99-104) maps the catalog letters onto
-  the dial at 0/90/180/270 degrees. Read-only here.
+- `shared/i18n/{en,ar,ms,so,hi,th}.ts` — the six catalogs. Byte-frozen here except the
+  four `qibla.cardinal.*` keys, which step 2b deletes from all six by the owner ruling
+  (section 0). The two subtitle keys are quoted in the anchors and LOG.md.
+- `shared/qiblaCompass.ts` — the ring's bearings. Step 2b replaces `resolveCardinals`
+  (99-104, the catalog letters mapped to 0/90/180/270 degrees) with `CARDINAL_ANGLES`, a
+  locale-free data constant, and drops the module's `t` import.
 - `shared/typography.ts` — the row-time and countdown Latin rules (18-19) that this
   ticket must not disturb.
 - `app.json`, `package.json` — version bumps each commit (D76.5).
@@ -215,6 +267,15 @@ keys, not literals, so no new constant travels outside the catalog. The donor ca
 (the pair the wave figure already uses, `Qibla.test.tsx:1384-1386`), so the screen
 reader hears each sentence once.
 
+The compass ring (step 2b, section 0): the four cardinals are no longer copy. The module
+holds `CARDINAL_ANGLES = [0, 90, 180, 270]`; the dial draws each as SVG text on its own
+bearing, with the degree circle a smaller `TSpan` raised by `baselineShift={'super'}` at
+the number's top right. `baselineShift={'super'}` is a keyword, not a measured offset, so
+no per-font number enters the module; both react-native-svg platforms resolve it from the
+font's own superscript data (`RNSVGTSpan.mm`, `TSpanView.java`). One sentence a test can
+check: the dial draws the same four numbers, each with its degree circle, under every
+shipped locale, because it reads no locale at all.
+
 **Acceptance criteria:**
 
 - [R1.1] WHEN the Qibla sheet renders under any of the six shipped locales THE SYSTEM SHALL lay out both subtitle sentences at full length on one line each, with no ellipsis.
@@ -222,7 +283,8 @@ reader hears each sentence once.
 - [R1.3] WHEN the subtitle box is measured in the test tree THE SYSTEM SHALL carry a zero-height in-flow text holding the ready sentence alongside the waiting line, with the ready line absolute on top.
 - [R2.1] WHEN any of the five Extras explanation boxes renders under ar THE SYSTEM SHALL display every digit in its sentence as Eastern Arabic-Indic glyphs and no ASCII digit.
 - [R2.2] WHEN any of the five Extras explanation boxes renders under en, ms, so, hi or th THE SYSTEM SHALL display the catalog sentence byte-for-byte with its digits unchanged.
-- [R3.1] WHEN the compass dial resolves its cardinal letters under ar THE SYSTEM SHALL return ش at 0 degrees, ق at 90, ج at 180 and غ at 270, and N, E, S, W at the same angles under en.
+- [R3.1] WHEN the compass dial renders under any of the six shipped locales THE SYSTEM SHALL draw the four bearings as the Latin numbers 0, 90, 180 and 270, each with a small degree circle at its top right, the same four labels under every locale.
+- [R3.2] WHEN the compass module is read THE SYSTEM SHALL hold the four bearings as module data and no `qibla.cardinal.*` catalog key, so the ring depends on no language.
 
 ## 6. Steps
 
@@ -231,15 +293,18 @@ Checklist (LOG.md carries one `### Step NN` heading per step, each ending with i
 
 - [ ] Step 1 — the subtitle width donor (`steps/1-subtitle-donor.md`, weight 2, R1.1 R1.2 R1.3)
 - [ ] Step 2 — the five-box digit sweep and the cardinal lock (`steps/2-digit-sweep.md`, weight 1, R2.1 R2.2 R3.1)
-- [ ] Step 3 — simulator visual proof, ar and en (`steps/3-simulator-proof.md`, weight 3, R1.1 R1.2 R2.1; dispatches alone)
+- [ ] Step 2b — the compass ring's cardinal numbers (`steps/2b-cardinal-numbers.md`, weight 2, R3.1 R3.2; the owner's rebuild, section 0)
+- [ ] Step 3 — simulator visual proof, ar and en (`steps/3-simulator-proof.md`, weight 3, R1.1 R1.2 R2.1 R3.1; dispatches alone)
 - [ ] Step 4 — records and the queue row (`steps/4-records.md`, weight 1, closes the ticket's run)
 
 Steps live in `steps/`. Every step: one branch off `ticket/76`, one commit, versions
 per D76.5 (step 1 commits as 2.0.602, step 2 as 2.0.604 after its stop record consumed
-2.0.603, step 3 as 2.0.605, step 4 as 2.0.606), red tests before the change where the
-step changes code, `yarn validate` green before the commit (the pre-commit hook runs
-it and takes 3 to 4 minutes; `node_modules` must be symlinked into the worktree before
-the first commit).
+2.0.603, the owner amendment as 2.0.605, step 2b as 2.0.606, step 3 as 2.0.607, step 4
+as 2.0.608), red tests before the change where the step changes code, `yarn validate`
+green before the commit (the pre-commit hook runs it and takes 3 to 4 minutes;
+`node_modules` must be symlinked into the worktree before the first commit). Step 2b
+supersedes step 2's R3.1 work: the cardinal-lock test step 2 committed is replaced, and
+its record is kept as written (LOG.md) with the supersession noted beside it.
 
 ## 7. Device proof
 
@@ -250,14 +315,15 @@ or recording committed. The e2e gotchas apply (e2e/README.md read at planning): 
 builds serve the mock API, which is fine for reading static strings; a screenshot
 reaches a screen and never proves what is on one, so every visual claim is a
 transcribed read of live text from the accessibility tree or the screen reader of the
-snapshot, and the string assertions of steps 1 and 2 carry the proof weight.
+snapshot, and the string assertions of steps 1, 2 and 2b carry the proof weight.
 
 ## 8. Records
 
 LOG.md holds, under `## Planning (2026-10-14)`: the numeral-law lineage and D76.1's
 evidence; the six-catalog subtitle quotes and the truncation verdict (D76.2); the
-cardinal verdict with its five sources (D76.4); the version-range deviation with the
-measured tips (D76.5). Each step appends its findings under its own heading.
+original item (c) verdict (D76.4, superseded by section 0) and the owner's rebuild
+ruling (D76.8); the version-range deviation with the measured tips (D76.5). Each step
+appends its findings under its own heading.
 
 The queue cell text the orchestrator applies at DONE (recorded here now because the
 plan folder dies with the merge):
@@ -267,14 +333,15 @@ plan folder dies with the merge):
 > law had healed the surface her 2026-10-13 test saw; the fix landed 2026-10-14 at
 > 2.0.250), the Qibla subtitle's three dots diagnosed as layout truncation (the
 > catalog complete in all six) and fixed with a zero-height width donor so the box
-> fits the wider sentence in every language, en pixels unchanged, and the compass
-> cardinals verified as the correct Arabic dial letters (ش ق ج غ) against five
-> independent Arabic qibla services. Simulator-proven on the iOS mock build under ar
+> fits the wider sentence in every language, en pixels unchanged, and the compass ring
+> rebuilt on the owner's 2026-10-14 ruling: the cardinal letters leave the catalogs for
+> the four Latin bearing numbers 0, 90, 180, 270, each with a small degree circle,
+> identical in every language. Simulator-proven on the iOS mock build under ar
 > and en. Versions 2.0.601-2.0.6xx on ticket/76 off `1b0d5229`.
 
 The docs commit message for that merge:
 
-> 2.0.6xx - docs(plans): ticket 76 DONE: the ar digit sweep lock, the Qibla subtitle width donor, the cardinal verdict; folder and evidence die with the merge
+> 2.0.6xx - docs(plans): ticket 76 DONE: the ar digit sweep lock, the Qibla subtitle width donor, the compass rebuilt as degree numbers; folder and evidence die with the merge
 
 ## 9. Push
 
@@ -292,31 +359,39 @@ order, 2026-10-14).
 | `smoke --ios` fails or no simulator exists | Step 3's environment | Record the failure line in LOG.md, mark step 3 BLOCKED-on-environment, continue to step 4; the visual proof falls to the owner's QA (D76.6) |
 | A commit needs a file from section 2.2's forbidden list | Parallel-ticket overlap | STOP with the file name; the orchestrator sequences it |
 | The pre-commit hook fails on coverage | A changed line lacks coverage | Cover the line or revert it; never disable the hook |
+| The compass number sweep stays red after step 2b | The ring still reads a catalog key or draws per locale | Check the module holds `CARDINAL_ANGLES` with no `qibla.cardinal.*` and the dial reads it, not `t()` |
+| The catalog lock fails after the key deletion | The six catalogs changed but the lock was not re-taken | Run `node scripts/catalog-lock.mjs` in the same commit |
 
 Anticipated review fixes, word for word: the donor's style must not inherit
 `styles.subtitle`'s `marginTop` (it would add 4dp to the header); the donor's
 `numberOfLines={1}` must stay (a wrapped donor sizes to its longest fragment and
 understates the sentence); the replaced wider-line test's measured en widths move into
-the new test's comment, not the trash.
+the new test's comment, not the trash; the degree circle's size is a `FACE` ratio, not a
+number invented at the draw site; the ring's four keys leave every catalog, not only ar.
 
 Restore lists: step 1 reverts `Qibla.tsx` and `Qibla.test.tsx` to the previous commit;
 step 2 reverts `Explanation.test.tsx` and, when the break script ran, `Explanation.tsx`
-too; step 4 reverts `ai/plans/README.md` and the plan folder.
+too; step 2b reverts `shared/qiblaCompass.ts`, `components/sheets/screens/QiblaCompass.tsx`,
+`shared/__tests__/qiblaCompass.test.ts`, `shared/__tests__/stringGuard.test.ts`, the six
+catalogs and `shared/i18n/catalog-lock.json`; step 4 reverts `ai/plans/README.md` and the
+plan folder.
 
 ## 11. Subagents
 
 Planning used the lead's own reads plus web verification through the TinyFish MCP
 (announced per the global tool-routing rules). Delivery: the lead dispatches
 `athan-executor` for steps 1, 2 and 4 (steps 1 and 2 may share one batch, weight 3,
-within the batch budget; step 4 after step 3) and one `athan-executor` dispatch for
-step 3 alone; `athan-reviewer` reads the diff blind and against this plan at audit;
+within the batch budget; step 4 after step 3), one `athan-executor` dispatch for step 3
+alone, and (added by the owner's 2026-10-14 ruling) one `athan-executor` dispatch for
+step 2b alone; `athan-reviewer` reads the diff blind and against this plan at audit;
 `vision` reads any image the runners cannot. Nothing else.
 
 ## 12. Report to the owner
 
 Plain sentences: what the run proved (the digits already healed by row 84, locked
 across all five boxes and six locales; the ellipsis was layout, fixed by the width
-donor; the cardinal letters verified correct with sources), the simulator readings,
-the version-range deviation and its evidence, and the branch-and-worktree state
+donor; the compass ring rebuilt on her 2026-10-14 ruling as the four Latin bearing
+numbers 0, 90, 180, 270 with degree circles, identical in every language), the simulator
+readings, the version-range deviation and its evidence, and the branch-and-worktree state
 awaiting the orchestrator's merge. The progress table and the four-line handoff close
 it.
