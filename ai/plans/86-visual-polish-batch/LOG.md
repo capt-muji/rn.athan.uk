@@ -45,3 +45,22 @@ the Note suite 1 passed; tree restored. The repair is the step-1 suite's landed
 `flattenStyle(style: unknown)` helper verbatim, and the same defect sat in steps 4 and 5, so
 all three step blocks now carry the proven form. Steps 1 to 5 anchors and source untouched.
 session: lead (this session)
+
+### Step 2 — merged (uat, 2.0.719, 5389e92a)
+
+Resumed from the saved patch: applied its four test-file hunks, replaced the patch's stale
+`styleOf` helper with the plan's repaired `flattenStyle` block (verified byte-identical to the
+step file), then applied the four component hunks. Anchor check: `alert-note-foot` 1,
+`sound-note-in-card` 1. Red exactly as recorded: Note suite `Cannot find module '../Note'`;
+alert order `Expected: < 1724 / Received: 20196`; sound order `Expected: < 1714 / Received:
+1864`; sweep ENOENT on the missing Note.tsx. Green: 95 passed across the four suites; tsc
+exit 0; biome exit 0. Break script ended `ALL AS EXPECTED: 1`; tree then held only step
+files. Version 2.0.719 taken under the lock (ladder shifted: the replan consumed 2.0.718, so
+the next patch after uat's 2.0.718 is 2.0.719). First commit attempt failed the hook: the
+json.dumps rewrite of app.json expanded arrays Biome wants collapsed; redone as a one-line
+surgical version edit, hook then green. Commit 5389e92a: hook `Tests: 5643 passed, 5643
+total`, four coverage lines 100%. Review: Note.tsx byte-identical to the plan block, the note
+first child of Sheet in both screens, the wording ternary intact, `cardHint` keeps live uses,
+module-level `ty` matches the shipped Header/Alert/Sound pattern, no residue. Merged --no-ff
+into uat as a285aa32.
+session: ses_ec52eba43ffekjpFHnH0Kgzt5O
