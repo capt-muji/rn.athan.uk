@@ -123,7 +123,7 @@ describe('the stored-preference round trip', () => {
   });
 });
 
-describe('localizeDigits', () => {
+describe('chevronFor', () => {
   it('points the sheet chevron with the reading direction, whatever the locale', () => {
     // The owner's ruling, 2026-10-14: LTR locales point right, every RTL locale mirrors
     expect(chevronFor()).toBe('\u203A');
@@ -134,7 +134,9 @@ describe('localizeDigits', () => {
       setActiveLocale('en');
     }
   });
+});
 
+describe('localizeDigits', () => {
   it('maps Latin digits to Arabic-Indic under ar and leaves every other locale Latin', () => {
     setActiveLocale('ar');
     try {

@@ -157,7 +157,7 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     }
   });
 
-  it('dims a spent hours group and keeps a live zero-minutes group bright, at 00:00 left', async () => {
+  it('dims the hours and keeps the live zero-minutes group bright, two hours out', async () => {
     showLondonDay('2026-09-11', '14:29');
     getDefaultStore().set(showSecondsAtom, false);
     startCountdowns();
@@ -185,6 +185,19 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
     expect(shown[2].color).toBe(DIM_DIGIT);
     expect(shown[3].color).toBe(COLORS.text.primary);
     expect(shown[4].color).toBe(COLORS.text.primary);
+    expect(shown[5].color).toBe(COLORS.text.primary);
+  });
+
+  it('dims the seconds padding zero under spent minutes, keeping its digit bright', async () => {
+    showLondonDay('2026-09-11', '16:28');
+    await act(() => jest.advanceTimersByTime(51_400));
+    startCountdowns();
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    // 00:00:09: the seconds never spent, but their padding 0 dims under the spent minute (the owner's ruling)
+    const shown = digits();
+    expect(shown.map((digit) => digit.char).join('')).toBe('000009');
+    expect(shown[4].color).toBe(DIM_DIGIT);
     expect(shown[5].color).toBe(COLORS.text.primary);
   });
 

@@ -67,7 +67,7 @@ export default function Countdown({ type }: Props) {
   const { displayTime, prayerName, isReady } = useCountdown(type);
 
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
-  // Overlay swaps animate on the slow token; the countdown's own digit flips take the fast one
+  // Overlay swaps animate on the overlay layer's own duration; the countdown's digit flips take the fast one
   const previousOverlayIsOn = usePrevious(overlayIsOn);
   const isOverlaySwap = previousOverlayIsOn !== undefined && previousOverlayIsOn !== overlayIsOn;
   const digitFade: FadeTiming = isOverlaySwap
@@ -114,7 +114,7 @@ export default function Countdown({ type }: Props) {
           <Animated.Text style={[styles.countdown, animatedStyle]}>{displayTime}</Animated.Text>
         ) : (
           <Animated.View style={animatedStyle}>
-            <View style={styles.timerRow}>
+            <View style={styles.timerRow} accessible accessibilityLabel={displayTime}>
               {digitSections.map((section, index) =>
                 section.colon ? (
                   <View
