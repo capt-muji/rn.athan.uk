@@ -105,6 +105,52 @@ cases, exactly the plan's seven. Reverted; the donor id re-counted 1 in `Qibla.t
 
 Versions: `app.json` then `package.json` to 2.0.602. Commit: `2.0.602 - fix(qibla):
 the subtitle box sizes to the wider sentence in every language, so the ready line
-never truncates under ar`.
+never truncates under ar`. Commit sha: `146a26884b1f066940918156d517ffc6e4c44140`.
+
+session: ses_ec63996c6ffeqGuyw8XgOwbyVh
+
+### Step 02 — STOPPED (plan defect: the break expectation counts six ar sweep rows; the cross product has five, and only two can fail)
+
+Both tests written per the step file and green against the shipped code, as D76.1
+and D76.4 require: the 30-case sweep (five `EXTRAS_EXPLANATIONS` keys crossed with
+`LOCALE_IDS`, render half `localizeDigits(t(key))`, ar rows asserting no ASCII
+digit, every other locale byte-for-byte identity, `en` restored in `finally`) and
+the cardinal lock (both dial languages, letters read through `t()` at 0/90/180/270).
+Green: Explanation + typographySweep `Tests: 70 passed, 70 total`; qiblaCompass
+(unit project) `Tests: 28 passed, 28 total`; `yarn validate` clean, `Tests:
+2 skipped, 5608 passed, 5610 total`, coverage 100/100/100/100. The cardinal lock
+lives in `shared/__tests__/qiblaCompass.test.ts`, named by the step's test spec and
+the plan's declared parallel-invariant list, though the step's Files line omits it.
+
+Break script, verbatim, prediction written first (only ar suhoor and ar duha carry
+digits in the catalog, `ar.ts:152-153`; midnight, last third and istijaba carry
+none):
+
+    perl -0pi -e 's/\{localizeDigits\(explanation\)\}/\{explanation\}/' components/prayer/Explanation.tsx
+    npx jest components/prayer/__tests__/Explanation.test.tsx --watchman=false --selectProjects=components
+
+Predicted 3 failed. Observed: `Tests: 3 failed, 33 passed, 36 total` —
+
+  ● the explanation box under ar › renders its sentence with the locale’s own digits
+  ● … › renders extras.explanation.suhoor under ar with the locale’s own digits
+  ● … › renders extras.explanation.duha under ar with the locale’s own digits
+
+The plan's expectation line reads "the six ar sweep rows AND the existing ar Suhoor
+test". The observed count differs on two independent grounds. Arithmetic: the sweep
+crosses five keys with six locales, so exactly five ar rows exist, never six.
+Catalog: the three digit-free ar sentences render identically with or without the
+renderer's `localizeDigits`, so their rows stay green under the break by design.
+The failure mode itself is exactly the plan's: `Unable to find an element with
+text: ٢٠ دقيقة قبل الفجر` — the ٢٠ matcher finding Latin 20.
+
+The script's revert ran (`git checkout -- components/prayer/Explanation.tsx`) and
+the suite re-ran green: `Tests: 36 passed, 36 total`. Nothing committed for this
+step; no version taken by it. The tests are preserved verbatim at
+`$HOME/athan-gitree/sessions/76-steps12/step2-unfinished.patch` with the five run
+logs beside it; the working tree was reverted to the step-1 commit before this
+record was written. Resume: re-plan the break expectation (five ar sweep rows, of
+which suhoor and duha fail and three stay green by the catalog, plus the existing
+ar Suhoor test), then re-apply the patch; the tests themselves pass and need no
+change.
 
 session: ses_ec63996c6ffeqGuyw8XgOwbyVh
