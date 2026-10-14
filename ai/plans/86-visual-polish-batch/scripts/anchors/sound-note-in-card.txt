@@ -1,4 +1,0 @@
-          <Text style={styles.cardHint}>{t('sound.notificationSound')}</Text>
-          <Text style={styles.cardHint}>
-            {t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')}
-          </Text>
