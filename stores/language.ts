@@ -28,6 +28,34 @@ export const languagePreferenceAtom = atomWithStorageString('preference_language
 export const languageCommitBusyAtom = atom(false);
 
 /**
+ * The D-relaunch handoff (row 80): written before a crossing's reloadAsync and consumed by
+ * the next context's launch init, so an in-process relaunch — where no force-stop cancelled
+ * any alarm — does not pay the cold-launch refresh-gate reopen (row 78's aggravator).
+ * The value is the write's epoch ms: '' means no handoff is held, and a marker too old to
+ * be the one this context followed is dead, never consumed.
+ */
+export const relaunchHandoffAtom = atomWithStorageString('preference_language_relaunch_handoff', '');
+
+/** How long a handoff stays believable: the reload-to-consume span is seconds, not minutes */
+const RELAUNCH_HANDOFF_FRESH_MS = 60_000;
+
+/**
+ * Reads and clears the marker in one step: the answer is whether this context began as a
+ * language relaunch a moment ago. A process death can strand a written marker past the
+ * reload it announced, and the cold launch that finds it still needs its gate reopen.
+ */
+export const consumeRelaunchHandoff = (): boolean => {
+  const held = store.get(relaunchHandoffAtom);
+  if (held === '') return false;
+
+  store.set(relaunchHandoffAtom, '');
+  const writtenAt = Number.parseInt(held, 10);
+  if (Number.isNaN(writtenAt)) return false;
+
+  return Date.now() - writtenAt <= RELAUNCH_HANDOFF_FRESH_MS;
+};
+
+/**
  * Brings every notification surface to the active locale: reset the channel
  * dedup caches so the frozen ids re-create under the new names, then one locked
  * full pass re-arms copy at schedule time and re-pushes the widgets. The stamp
@@ -79,17 +107,21 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
   try {
     store.set(languagePreferenceAtom, locale);
     setActiveLocale(locale);
+    let passSettled = false;
     if (crossesBoundary) {
       // The cap bounds a starved queue; the losing timer never fires into a settled commit.
       let fireCap!: () => void;
       const capSettled = new Promise<void>((resolve) => {
         fireCap = resolve;
       });
+      const settled = reconcileLanguageSurfaces().then(() => {
+        passSettled = true;
+      });
       const capTimer = setTimeout(() => {
         logger.warn('LANGUAGE: surface convergence still unsettled after 10000 ms, relaunching for the direction flip');
         fireCap();
       }, RELOAD_CONVERGENCE_CAP_MS);
-      await Promise.race([reconcileLanguageSurfaces(), capSettled]);
+      await Promise.race([settled, capSettled]);
       clearTimeout(capTimer);
     } else {
       await reconcileLanguageSurfaces();
@@ -100,8 +132,13 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
       I18nManager.allowRTL(true);
       I18nManager.forceRTL(localeDirection(locale) === 'rtl');
       try {
+        // Only a settled pass earns the handoff: a capped crossing's in-flight work can
+        // land beside the relaunch context, and the cold-launch reopen it then keeps is
+        // what buys the full pass whose sweep finds what landed
+        if (passSettled) store.set(relaunchHandoffAtom, String(Date.now()));
         await Updates.reloadAsync();
       } catch (error) {
+        store.set(relaunchHandoffAtom, '');
         // A refused relaunch leaves the forced direction for the next launch
         // to apply; the switch itself completed (Error.tsx's guard shape).
         logger.warn('LANGUAGE: relaunch failed after the RTL flip', { error });

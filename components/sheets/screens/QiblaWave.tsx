@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { I18nManager, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   Easing,
@@ -12,6 +12,7 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 
 import { COLORS } from '@/shared/constants';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import {
   phoneBody,
   phoneNotch,
@@ -50,8 +51,11 @@ const WAVE_DURATION = 3200;
 export default function QiblaWave({ size }: { size: number }) {
   const figureWidth = size * WAVE.width;
   const figureHeight = size * WAVE.height;
-  // The figure mirrors under RTL; the worklets cannot read react-native, so the direction passes in
-  const isRTL = I18nManager.getConstants().isRTL;
+  // The figure mirrors under RTL; the worklets cannot read react-native, so the direction passes in.
+  // The locale's own direction, not the bridge snapshot: a starved crossing (row 78) renders
+  // Arabic while I18nManager still reports the launch direction, and row 80's layout keys the
+  // same locale — the wave and the layout must not disagree
+  const isRTL = localeDirection(currentLocaleId()) === 'rtl';
   const body = phoneBody(size);
   const screen = phoneScreen(size);
   const notch = phoneNotch(size);
@@ -97,6 +101,7 @@ export default function QiblaWave({ size }: { size: number }) {
         height={canvasHeight}
         viewBox={`${-canvasWidth / 2} ${-canvasHeight / 2} ${canvasWidth} ${canvasHeight}`}>
         <Path
+          testID={'qibla-wave-guide'}
           d={wavePath(figureWidth, figureHeight, isRTL)}
           fill={'none'}
           stroke={`rgba(${PALETTE.structure}, 0.16)`}

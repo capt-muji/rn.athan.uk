@@ -1,0 +1,5 @@
+  // The library snapshots I18nManager.isRTL at module load and writes its geometry for that
+  // value, while the layout direction follows the live locale, and Android swaps left and
+  // right for RTL-resolved nodes: keying the picker's resolved direction to the same snapshot
+  // keeps the geometry and its layout in step in every launch state (row 73). The picker
+  // hosts carry no testID, so the reach is their accessibility labels
