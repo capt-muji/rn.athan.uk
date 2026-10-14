@@ -1,0 +1,4 @@
+  'qibla.cardinal.n': 'ش',
+  'qibla.cardinal.e': 'ق',
+  'qibla.cardinal.s': 'ج',
+  'qibla.cardinal.w': 'غ',

@@ -1,0 +1,11 @@
+  return (
+    <View>
+      {/* The WIDER line is the one left in flow, because an absolutely positioned child contributes no width:
+          the container would otherwise shrink-wrap the narrower line and clip this one inside it */}
+      <Animated.Text style={[styles.subtitle, waiting]} numberOfLines={1}>
+        {t('qibla.subtitleWaiting')}
+      </Animated.Text>
+      <Animated.Text style={[styles.subtitle, styles.subtitleOver, ready]} numberOfLines={1}>
+        {t('qibla.subtitleReady')}
+      </Animated.Text>
+    </View>
