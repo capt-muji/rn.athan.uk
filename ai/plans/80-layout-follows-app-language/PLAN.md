@@ -214,7 +214,7 @@ Checklist:
 - [x] Step 1 — the layout direction at the React roots
 - [x] Step 2 — the relaunch handoff
 - [x] Step 3 — the wave's own direction and the picker's comment
-- [ ] Step 4 — the executed records
+- [x] Step 4 — the executed records
 
 One subsection per step lives in `steps/`. Every step: one branch, one commit, one
 version, `app.json` and `package.json` bumped together, red before green, full coverage
