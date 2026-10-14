@@ -79,3 +79,55 @@ The gate prints `PLAN OK` after the fixes; the preflight prints `PREFLIGHT OK`
 with the plan folder dirty, as its exclusion intends.
 
 session: ses-lead-78-planning
+
+### Step 1 — done
+
+Branch `ticket/78` in `$HOME/athan-gitree/run-78`, version 2.0.302. Pre-flight
+`PREFLIGHT OK` on the clean tree at `e7891fb7`; branch and anchors verified.
+
+Red (`stores/__tests__/rtlReloadBound.test.ts`, 5 tests): tests 2 and 4 passed;
+tests 1, 3 and 5 failed at their reload-count assertions with
+`Expected number of calls: 1 / Received number of calls: 0` —
+1. `relaunches for the direction flip while the scheduling queue never frees`
+   at `rtlReloadBound.test.ts:62`,
+2. `leaves the queued convergence uncancelled after the capped relaunch` at
+   `:94`,
+3. `a refused relaunch under the cap still warns and resolves` at `:118`.
+
+Green: the three suites (`rtlSwitch`, `languageConvergence`, `rtlReloadBound`)
+pass, `Tests: 14 passed, 14 total`; coverage on `stores/language.ts` 100%
+statements (41/41), branches (10/10), functions (5/5), lines (38/38);
+`npx tsc --noEmit` clean; `npx biome check … --error-on-warnings` clean after
+biome's own format of two `stringContaining` lines in the new suite (format
+only; the warn line in `stores/language.ts` sits at exactly the 120-char limit
+and stays one line, as the break script's perl needs).
+
+Break script (second pass; see the process note), each mutation red then
+restored, `git diff --stat` non-empty before each jest run:
+
+- (a) race removed → `Tests: 3 failed` — tests 1, 3 and 5, each at its
+  reload-count assertion (`Received number of calls: 0`). Note: the plan's
+  parenthetical had test 5 failing by timeout at its `.resolves` await; it
+  fails earlier, at the reload-count assertion the grill added before that
+  await. The `Tests:` count matches the plan.
+- (b) cap widened to 60_000 → `Tests: 3 failed` — the same three, test 1 after
+  the 10 s advance (`Received number of calls: 0`).
+- (c) warn deleted → `Tests: 1 failed` — test 1 at the warn assertion.
+
+Process note: the first break-script pass ran against the implementation left
+unstaged, so mutation (a)'s `git checkout -- stores/language.ts` restored the
+index (HEAD) and wiped the uncommitted change; (b) and (c) then correctly
+matched nothing and were never run against the implementation. The
+implementation was re-applied byte-identically, staged (`git add`), and all
+three mutations re-run; the results above are from that clean second pass.
+The break script's checkout semantics require the implemented state in the
+index, which staging provides.
+
+Anchor: `scripts/anchors/language-commit-await.txt` replaced in this commit
+with the new verbatim block — the bounded-await region, 14 lines — and the
+count check prints `1`. Note: the contract's parenthetical end-point
+("through the reload branch's closing brace") cannot fit the 3-to-15-line
+bound together with the pinned race statement and the later `if`, so the
+anchor covers the bounded-await region the change replaces.
+
+session: ses_ec72eba7effeUhXvEF8IwfxLob
