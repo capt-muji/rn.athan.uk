@@ -77,7 +77,7 @@ export default function List({ type }: Props) {
   if (!isReady) return null;
 
   return (
-    <View ref={listRef} onLayout={handleLayout} style={[styles.container]}>
+    <View ref={listRef} onLayout={handleLayout} style={[styles.container, !isStandard && styles.containerExtrasGap]}>
       <ActiveBackground type={type} />
       {displayOrder.map((prayerIndex) => (
         <Prayer key={prayerIndex} index={prayerIndex} type={type} />
@@ -91,5 +91,8 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
     marginBottom: SPACING.xxxl * 0.75,
+  },
+  containerExtrasGap: {
+    marginBottom: 34,
   },
 });

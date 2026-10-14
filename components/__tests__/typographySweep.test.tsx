@@ -111,7 +111,7 @@ describe('the sweep guard', () => {
   it("keeps the countdown name's ar-only family expression at source level", () => {
     const source = readFileSync(join(__dirname, '..', 'countdown/Countdown.tsx'), 'utf8');
 
-    expect(source).toContain('ty.arabic ? ty.familyRegular : undefined');
+    expect(source).toContain('ty.wordFace ? ty.familyRegular : undefined');
   });
 });
 
@@ -133,7 +133,7 @@ describe('the sheet header title', () => {
   it('renders the Arabic medium face at the unchanged size under ar', async () => {
     const title = await headerTitleStyleUnder('ar');
 
-    expect(title.fontFamily).toBe('NotoSansArabic-Medium');
+    expect(title.fontFamily).toBe('ReadexPro-Medium');
     expect(title.fontSize).toBe(22);
   });
 
@@ -150,7 +150,7 @@ describe('the help question', () => {
   it('renders the Arabic medium face at the unchanged size under ar', async () => {
     const question = await helpQuestionStyleUnder('ar');
 
-    expect(question.fontFamily).toBe('NotoSansArabic-Medium');
+    expect(question.fontFamily).toBe('ReadexPro-Medium');
     expect(question.fontSize).toBe(15);
   });
 

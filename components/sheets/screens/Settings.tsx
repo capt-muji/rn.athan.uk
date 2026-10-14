@@ -8,7 +8,7 @@ import { IconView } from '@/components/ui';
 import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { currentLocaleId } from '@/shared/i18n/locale';
+import { chevronFor, currentLocaleId } from '@/shared/i18n/locale';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
@@ -106,7 +106,7 @@ export default function BottomSheetSettings() {
             <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.athanLabel}>{t('settings.changeAthan')}</Text>
-          <Text style={styles.chevron}>{'›'}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
         <Pressable
           style={styles.athanButton}
@@ -118,7 +118,7 @@ export default function BottomSheetSettings() {
             <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.athanLabel}>{t('settings.qibla')}</Text>
-          <Text style={styles.chevron}>{'›'}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
       </View>
 
@@ -135,7 +135,7 @@ export default function BottomSheetSettings() {
             <IconView type={Icon.GLOBE} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.athanLabel}>{t('settings.language')}</Text>
-          <Text style={styles.chevron}>{'›'}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
         <View style={styles.toggleList}>
           <SettingsToggle
@@ -190,7 +190,7 @@ export default function BottomSheetSettings() {
               <IconView type={Icon.INFO} size={9} color={COLORS.text.primary} />
             </View>
             <Text style={styles.whatsNewLabel}>{t('settings.whatsNewLabel')}</Text>
-            <Text style={styles.chevron}>{'›'}</Text>
+            <Text style={styles.chevron}>{chevronFor()}</Text>
           </Pressable>
         ) : null}
         <Pressable
@@ -203,7 +203,7 @@ export default function BottomSheetSettings() {
             <IconView type={Icon.QUESTION} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.whatsNewLabel}>{t('settings.help')}</Text>
-          <Text style={styles.chevron}>{'›'}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
       </View>
     </Sheet>

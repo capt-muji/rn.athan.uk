@@ -182,4 +182,24 @@ describe('the gap below the list', () => {
           : container.props.style;
     expect(style.marginBottom).toBe(22.5);
   });
+
+  it('renders a quarter further down on Extras, where the page has room', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<List type={ScheduleType.Extra} />);
+
+    // The owner's ruling, 2026-10-14: the Extras badge drops away from its list
+    const rows = screen.root?.queryAll((node) => node.props.style !== undefined, { includeSelf: true }) ?? [];
+    const container = rows.find((node) => {
+      const style = Array.isArray(node.props.style) ? Object.assign({}, ...node.props.style) : node.props.style;
+      return style.marginHorizontal !== undefined && style.marginBottom !== undefined;
+    });
+    const style =
+      container === undefined
+        ? {}
+        : Array.isArray(container.props.style)
+          ? Object.assign({}, ...container.props.style)
+          : container.props.style;
+    expect(style.marginBottom).toBe(34);
+  });
 });

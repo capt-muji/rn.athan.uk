@@ -478,7 +478,7 @@ export const COUNTDOWN_BAR = {
   WIDTH: 100,
   HEIGHT: 2.5,
   GLOSS_HEIGHT: 0.5,
-  TRACK_COLOR: '#153569',
+  TRACK_COLOR: 'rgba(160, 200, 255, 0.08)',
   WARNING_THRESHOLD: 10,
 } as const;
 
@@ -486,7 +486,7 @@ export const COUNTDOWN_BAR = {
  * Pulsing tip indicator at the leading edge of countdown bar
  */
 export const COUNTDOWN_TIP = {
-  WIDTH: 2,
+  WIDTH: 1.5,
   OFFSET: 0.9,
   TINT_AMOUNT: 0.15,
   PULSE_DURATION: 2500,
@@ -831,8 +831,10 @@ export const COLORS = {
   },
 
   countdown: {
-    dimDigit: 'rgba(255, 255, 255, 0.7)',
-    colon: 'rgba(255, 255, 255, 0.4)',
+    dimDigit: 'rgba(160, 200, 255, 0.08)',
+    colon: 'rgba(160, 200, 255, 0.12)',
+    timeColon: 'rgba(160, 200, 255, 0.3)',
+    nextTimeColon: 'rgba(160, 200, 255, 0.45)',
   },
 
   /**
@@ -984,7 +986,7 @@ export const OVERLAY = {
 export const STYLES = {
   countdown: {
     /** Fixed height of countdown component in pixels */
-    height: 60,
+    height: 54,
   },
   prayer: {
     /** Fixed height of each prayer row component */
