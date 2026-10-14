@@ -1,6 +1,0 @@
-  it('renders the panel and the hue bar locked to the snapshotted direction, LTR here', async () => {
-    await render(<ColorPickerSettings />);
-    await openPicker();
-
-    const panel = screen.getByLabelText('Saturation and brightness 2D slider');
-    const slider = screen.getByLabelText('Hue Slider');

@@ -1,3 +1,0 @@
-      <Modal visible={showPicker} transparent animationType={'slide'} onRequestClose={handleDismiss}>
-        <View style={styles.modalOverlay}>
-          <View style={[styles.modalContent, { paddingBottom: bottom + 50 }]}>

@@ -1,4 +1,0 @@
-      // This effect runs once per cold launch, and on Android a cold launch may
-      // follow a force-stop that cancelled every armed alarm without touching
-      // the refresh timestamp. Reopen the gate before the refresh reads it.
-      reopenRefreshGateOnColdLaunch();
