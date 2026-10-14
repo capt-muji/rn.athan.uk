@@ -131,3 +131,37 @@ version files. Commit f11590a5: hook `Tests: 5650 passed, 5650 total`, four cove
 read at render beside the atom reads, exactly one anchor inset, numerals/colours/widths/
 timings untouched, no residue. Merged --no-ff into uat as c92a6ede.
 session: ses_ec52319ebffeE39wJK9foOt5ef
+
+### Step 5 — merged (uat, 2.0.723, ce10bd42)
+
+Branch feat/86-language-loader; the five anchors all 1. Red transcribed byte-identical:
+loader suite `Cannot find module '../LanguageLoader'`; language suite printed `Expected
+number of calls: 1 / Received number of calls: 0` on the dismiss (1 failed, 3 passed);
+i18n suite TypeError on the absent `language.changing` in every catalog plus the
+applying-key case failing; bridge printed the tokened-key `toEqual` diff. Change: contracts
+applied as written, plus recorded adaptations: the five non-en catalogs import from their
+own modules (`@/shared/i18n` re-exports only en, and the plan leaves the import choice to
+the executor); the dead `waitFor` and `useAtomValue` imports deleted alongside the plan's
+`t` deletion (both died with the replaced cases and the busy read; Biome bans the residue);
+a per-line `biome-ignore` with reason keeps the plan's deliberate `localeVersion` re-derive
+dep on the loader's useMemo (diagnostic reports at the hook line, house form per
+RamadanDecorations/List); Biome format normalization on the ParamsOf chain and the sheet's
+trailing child. Lock re-taken: `yarn i18n:lock` moved exactly the five non-en hashes (en is
+the source catalog, unhashed); `yarn i18n:export` regenerated dist, gitignored, its jest
+exit-trace is the script's standing shape. Green: 3 + 4 + 38 + 23 passed; tsc exit 0;
+biome exit 0. Break script ended `ALL AS EXPECTED: 1`; tree then held only step and plan
+files. Version 2.0.723 taken under the lock (origin/uat 2.0.716, local uat 2.0.722), set
+surgically in the three version files. Commit 58e7866a: hook `Tests: 5660 passed, 5660
+total`, four coverage lines 100%. Review: dismiss and busy pair in one tick before any
+await, both atoms cleared in the `finally` (the rejection included), loader mounted after
+the sheet layer with `Slot`'s key untouched, `language.applying` gone from all six catalogs
+and the sheet, no orphaned import or style. Merged --no-ff into uat as ce10bd42.
+session: ses_ec52319ebffeE39wJK9foOt5ef
+
+Five steps landed. 1: the locale line box pinned on the Arabic record (blockLineHeight,
+1.172x) and consumed by the sheet header and the day block. 2: the platform volume note moved
+under each sheet's header as a quiet footnote. 3: the Standard list's bottom margin 22.5 to
+28. 4: the countdown tip mirrored with the layout, the fill anchored per direction. 5: the
+full-screen language loader, the in-sheet applying row and its catalog key deleted.
+
+session: ses_ec52319ebffeE39wJK9foOt5ef
