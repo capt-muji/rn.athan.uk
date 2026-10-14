@@ -239,7 +239,7 @@ Checklist:
 
 - [x] Step 1 — SegmentedControl keys its travel on the locale's own direction
 - [x] Step 2 — Toggle keys its travel on the locale's own direction
-- [ ] Step 3 — The picker's panel and hue bar resolve LTR under every locale
+- [x] Step 3 — The picker's panel and hue bar resolve LTR under every locale
 - [ ] Step 4 — Records and the executed state
 
 Every step: work in `$HOME/athan-gitree/run-73`, on `ticket/73`, per D7. Before step 1, save

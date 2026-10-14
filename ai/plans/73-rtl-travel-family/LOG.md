@@ -42,6 +42,26 @@ the version line surgically instead (1-line diff, biome clean).
 
 session: ses_ec70bc668ffeK0ux7kMx2FbfI1
 
+### Step 2 — done
+
+Branch `ticket/73`, commit `d7dec7c5`, version 2.0.261 (`2.0.261 - fix(alert):
+the switch thumb keys its travel on the locale's own direction, not the bridge
+snapshot`). Anchors recounted 1 and 1 at step time. Red as predicted: the
+mounted-on test received `translateX: 18` where `-18` was expected, the change
+test's `toHaveBeenCalledWith(-SIZE.toggle.translateX, ...)` unmet (received
+`18`); 2 failed, 11 passed, no other case. Green 13/13; tsc 0; biome 0. Break
+`bash $TMPDIR/t73-break-2.sh`: count 2, `ALL AS EXPECTED: 1`. Mutations:
+(a) `const isRTL = false;` — fails both new tests (proven by the break);
+(b) `const target = value ? SIZE.toggle.translateX : 0;` — fails both new tests
+('draws its thumb settled at the mirrored on position…' and 'animates its thumb
+to the mirrored on position…'). Hook: `Tests: 2 skipped, 5563 passed, 5565
+total`; coverage 100% (5272/2297/1100/4721). Review: en tests untouched; the
+production change is the direction source, its comment and the import pair; the
+two remaining `I18nManager` strings are the plan's comment text. Message file
+written by shell under the ticket-unique name; no collision this time.
+
+session: ses_ec70bc668ffeK0ux7kMx2FbfI1
+
 ## Planning (2026-10-14)
 
 - Worktree `$HOME/athan-gitree/run-73`, branch `ticket/73` off `b1bf6f89` (uat 2.0.255). The main checkout stays read-only; the owner's run order forbids merge, push and DONE this run.

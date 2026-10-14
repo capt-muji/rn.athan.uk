@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useCallback, useState } from 'react';
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { I18nManager, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ColorPicker, { type ColorFormatsObject, HueSlider, Panel1, Swatches } from 'reanimated-color-picker';
 
@@ -99,6 +99,12 @@ export default function ColorPickerSettings() {
   // RENDER
   // =============================================================================
 
+  // The picker library snapshots I18nManager.isRTL at module load and writes its geometry
+  // for that snapshot, while the layout direction follows the live locale: keying the
+  // picker's resolved direction on the same snapshot keeps the two in step in every launch
+  // state (a starved crossing snapshots false, a completed one true)
+  const pickerDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
+
   return (
     <>
       <Pressable
@@ -162,8 +168,8 @@ export default function ColorPickerSettings() {
             </View>
 
             <ColorPicker value={selectedColor} onChangeJS={handleColorPreview} style={styles.colorPicker}>
-              <Panel1 style={styles.panel} />
-              <HueSlider style={styles.hueSlider} />
+              <Panel1 style={[styles.panel, { direction: pickerDirection }]} />
+              <HueSlider style={[styles.hueSlider, { direction: pickerDirection }]} />
               <Swatches colors={[...COLOR_PICKER_SWATCHES]} style={styles.swatches} />
               <Swatches colors={[...COLOR_PICKER_SWATCHES_2]} style={styles.swatches} />
             </ColorPicker>
