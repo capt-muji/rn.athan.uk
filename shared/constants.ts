@@ -742,7 +742,7 @@ export const COLORS = {
     /** Inactive toggle background */
     inactive: '#303f6c',
     /** Inactive toggle border */
-    inactiveBorder: '#3b3977',
+    inactiveBorder: 'rgba(99, 102, 241, 0.15)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
