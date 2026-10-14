@@ -83,6 +83,7 @@ describe('the mosque icon under the Arabic locale', () => {
 
     await render(<Masjid />);
 
+    expect(drawnImage()).toHaveProp('source', [{ testUri: expect.stringMatching(/\/masjid-ramadan\.png$/) }]);
     expect(drawnImage()).toHaveStyle({ transform: [{ scaleX: -1 }] });
   });
 });
