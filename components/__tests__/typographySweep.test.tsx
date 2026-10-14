@@ -80,6 +80,21 @@ const headerTitleStyleUnder = async (locale: LocaleId): Promise<Record<string, u
   return title;
 };
 
+const headerSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
+  let subtitle: Record<string, unknown> = {};
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const BottomSheetHeader = require('../sheets/parts/Header').default;
+    await rntl.render(<BottomSheetHeader title='Settings' subtitle='Set your preferences' icon={null} />);
+    subtitle = StyleSheet.flatten(rntl.screen.getByText('Set your preferences').props.style) as Record<string, unknown>;
+  });
+  return subtitle;
+};
+
 const helpQuestionStyleUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
   let question: Record<string, unknown> = {};
   jest.resetModules();
@@ -210,5 +225,23 @@ describe('the overlay explanation line box', () => {
 
   it('keeps the Latin preset line height under en', async () => {
     expect(await explanationLineHeightUnder('en')).toBe(22);
+  });
+});
+
+describe('the sheet header line boxes', () => {
+  it('gives the ar title and subtitle the Latin default box, so the gap matches English', async () => {
+    const title = await headerTitleStyleUnder('ar');
+    const subtitle = await headerSubtitleStyleUnder('ar');
+
+    expect(title.lineHeight).toBe(26);
+    expect(subtitle.lineHeight).toBe(16);
+  });
+
+  it('leaves the en title and subtitle to the font own box', async () => {
+    const title = await headerTitleStyleUnder('en');
+    const subtitle = await headerSubtitleStyleUnder('en');
+
+    expect(title.lineHeight).toBeUndefined();
+    expect(subtitle.lineHeight).toBeUndefined();
   });
 });
