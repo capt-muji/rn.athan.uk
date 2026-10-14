@@ -81,6 +81,46 @@ Version 2.0.407, `app.json` first then `package.json`, surgical line edits. Revi
 
 session: ses_ec6683627ffeLg5INxlK8V41Yv
 
+## Audit (2026-10-14)
+
+Three reviewers over the range (plan-conformance, blind, blind with a threading and
+lifecycle focus); every finding adjudicated in AUDIT.md.
+
+### Audit fix A — done
+
+Commit `861af551`, version 2.0.409 (`2.0.409 - fix(language): only a settled convergence
+pass earns the relaunch handoff, so a capped crossing keeps the cold-launch reopen`).
+Red-first: `writes no marker when the cap fired, so the unhealthy relaunch keeps the full
+pass and its sweep` failed `Expected: "" / Received: "ar"` at 2.0.408. Green 19/19 across
+rtlSwitch, rtlReloadBound and languageConvergence; tsc and biome at 0; the red run itself
+is the mutation proof (the pre-fix write is the unguarded one). The threading reviewer's
+finding: the unconditional reopen the ticket removed was what guaranteed a capped
+crossing's relaunch context a full pass and its sweep on Android, so only a settled pass
+earns the skip now.
+
+session: ses_ec6c68938ffe2N16tmQabJ3C99
+
+### Audit fix B — done
+
+Commit `529dae23`, version 2.0.410 (`2.0.410 - fix(language): the relaunch handoff carries
+its write time and dies at 60 s, so a stranded marker cannot silence a cold launch`).
+Red-first: the marker-write case failed on `Number.parseInt('ar')` answering NaN, and the
+stale case failed `Expected: false / Received: true` at 2.0.409. Green 21/21 with
+`stores/language.ts` at 100 percent statements (58/58), branches (16/16), functions (7/7),
+lines (52/52); tsc and biome at 0. All three reviewers had found the stranded-marker
+window; the bound closes it however the strand happened, and the consume keeps its place
+beside the branch it decides.
+
+session: ses_ec6c68938ffe2N16tmQabJ3C99
+
+### The audit records — done
+
+The two-line JSDoc lands in the wave suite (the plan-conformance finding: the adjudicated
+amendment had landed half), AUDIT.md records every finding and verdict, and the verdict is
+PASS. Queue row stays EXECUTED for the orchestrator's DONE.
+
+session: ses_ec6c68938ffe2N16tmQabJ3C99
+
 ## Findings (executed)
 
 - The React tree's root (`GestureHandlerRootView`, app/_layout.tsx) and the picker modal's
