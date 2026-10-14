@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { Fragment, memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, {
   type SharedValue,
@@ -7,7 +7,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import Svg, { Circle, Line, Path, Polygon, Rect, Text, TSpan } from 'react-native-svg';
+import Svg, { Circle, Line, Path, Polygon, Rect, Text } from 'react-native-svg';
 
 import { ANIMATION, COLORS } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
@@ -135,25 +135,38 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
 
       {CARDINAL_ANGLES.map((angle) => {
         const at = facePoint(angle, radius * FACE.cardinal);
+        const size = radius * FACE.cardinalSize;
+        const labelWidth = String(angle).length * size * FACE.digitAdvance;
+        // The circle's x is computed from the number's advance rather than flowed after the digits: flowing put it
+        // further out the longer the number was (the owner's 2026-10-14 read, 0 tight and 270 adrift)
+        const degreeX = at.x + labelWidth / 2 + size * FACE.degreeGap;
 
         return (
-          <Text
-            key={angle}
-            x={at.x}
-            y={at.y}
-            fill={palette.ink}
-            fontSize={radius * FACE.cardinalSize}
-            fontFamily={ty.familyDigits}
-            textAnchor={'middle'}
-            alignmentBaseline={'central'}>
-            {angle}
-            {/* The degree circle, smaller and raised at the number's top right */}
-            <TSpan
-              fontSize={radius * FACE.cardinalSize * FACE.degree}
-              dy={-radius * FACE.cardinalSize * FACE.degreeLift}>
-              °
-            </TSpan>
-          </Text>
+          <Fragment key={angle}>
+            <Text
+              x={at.x}
+              y={at.y}
+              fill={palette.ink}
+              fillOpacity={FACE.cardinalInk}
+              fontSize={size}
+              fontFamily={ty.familyDigits}
+              textAnchor={'middle'}
+              alignmentBaseline={'central'}>
+              {angle}
+            </Text>
+            {/* The degree circle, smaller, raised at the number's top right, in the number's own ink */}
+            <Text
+              x={degreeX}
+              y={at.y - size * FACE.degreeLift}
+              fill={palette.ink}
+              fillOpacity={FACE.cardinalInk}
+              fontSize={size * FACE.degree}
+              fontFamily={ty.familyDigits}
+              textAnchor={'start'}
+              alignmentBaseline={'central'}>
+              {'\u00B0'}
+            </Text>
+          </Fragment>
         );
       })}
     </Svg>
