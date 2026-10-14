@@ -43,7 +43,8 @@ export const addMinutes = (from: Date, minutesToAdd: number) => {
  * Every day around the download, with TODAY's six rows seeded from it
  *
  * Isha is the first whole minute at least 75 seconds after the download (the owner's
- * viewing runway for the cascade); the five before it passed 1 to 5 minutes ago.
+ * viewing runway for the cascade); the five before it passed 1 to 5 minutes ago, so
+ * only Isha crosses midnight, from 23:58:45.
  */
 const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
   const ishaAt = new Date(Math.ceil((downloadedAt.getTime() + 75 * 1000) / MINUTE) * MINUTE);
