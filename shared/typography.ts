@@ -20,17 +20,23 @@ export interface LocaleTypography {
   size: (n: number) => number;
   lineHeight: (n: number) => number;
   letterSpacing: (n: number) => number;
+  /** Word styles must name the record's family explicitly; the Latin records leave the system default */
+  wordFace: boolean;
+  /** The record's script needs a taller line box than its size suggests (ar's clamped blocks); absent when the font's own metrics serve */
+  scriptLineHeight?: (n: number) => number;
   arabic: boolean;
 }
 
 const ARABIC: LocaleTypography = {
-  familyRegular: 'NotoSansArabic-Regular',
-  familyMedium: 'NotoSansArabic-Medium',
+  familyRegular: 'ReadexPro-Regular',
+  familyMedium: 'ReadexPro-Medium',
   familyDigits: TEXT.family.medium,
   countdownSize: TEXT.sizeLarge - 2,
   size: (n) => Math.round(n * ARABIC_SIZE_FACTOR),
   lineHeight: (n) => Math.round(n * ARABIC_SIZE_FACTOR),
   letterSpacing: () => 0,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
   arabic: true,
 };
 
@@ -42,11 +48,23 @@ const LATIN: LocaleTypography = {
   size: (n) => n,
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
+  wordFace: false,
   arabic: false,
+};
+
+/** One record per shipped locale: a new language adds its entry here, its numerals to
+ * NATIVE_DIGITS in the locale module if it has none of Latin's, and its id to RTL_IDS if it reads right to left */
+const RECORDS: Record<LocaleId, LocaleTypography> = {
+  en: LATIN,
+  ar: ARABIC,
+  ms: LATIN,
+  so: LATIN,
+  hi: LATIN,
+  th: LATIN,
 };
 
 /**
  * Consumers resolve this once at their own module scope; the answer changes
  * only when the active locale crosses the ar boundary.
  */
-export const typographyFor = (locale: LocaleId): LocaleTypography => (locale === 'ar' ? ARABIC : LATIN);
+export const typographyFor = (locale: LocaleId): LocaleTypography => RECORDS[locale];

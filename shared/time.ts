@@ -1,5 +1,6 @@
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
 import { type TranslationKey, t } from '@/shared/i18n';
+import { localizeDigits } from '@/shared/i18n/locale';
 
 // =============================================================================
 // PRAYER-TIMEZONE CLOCK
@@ -277,7 +278,7 @@ export const formatDateLocalized = (date: string): string => {
   const weekday = new Date(year, month - 1, day, 12).getDay();
   // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
   const isoWeekday = weekday === 0 ? 7 : weekday;
-  const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${day} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${year}`;
+  const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${localizeDigits(String(day))} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${localizeDigits(String(year))}`;
   return composed;
 };
 
@@ -302,7 +303,7 @@ export const formatHijriDateLocalized = (date: string): string => {
     const hijriMonth = Number(parts.find((part) => part.type === 'month')?.value);
     const hijriDay = parts.find((part) => part.type === 'day')?.value;
     const hijriYear = parts.find((part) => part.type === 'year')?.value;
-    const composed = `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${hijriDay}, ${hijriYear}`;
+    const composed = `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${localizeDigits(String(hijriDay))}, ${localizeDigits(String(hijriYear))}`;
     return composed;
   } catch {
     return formatDateLocalized(date);
@@ -664,9 +665,10 @@ export const splitColonSections = (value: string): CountdownSection[] | null => 
   const sections: CountdownSection[] = [];
   groups.forEach((group, index) => {
     if (index > 0) sections.push({ text: ':', dim: true, colon: true });
-    // Seconds tick on, so they are never a spent category and never dim (row 81)
+    // Seconds never dim; a group dims only once every larger group has also spent to 00
     const isSeconds = groups.length === 3 && index === 2;
-    sections.push({ text: group, dim: !isSeconds && ALL_ZEROS.test(group), colon: false });
+    const largerGroupsSpent = groups.slice(0, index).every((larger) => ALL_ZEROS.test(larger));
+    sections.push({ text: group, dim: !isSeconds && ALL_ZEROS.test(group) && largerGroupsSpent, colon: false });
   });
   return sections;
 };

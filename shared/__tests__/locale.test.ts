@@ -5,7 +5,14 @@
 
 import { getDefaultStore } from 'jotai/vanilla';
 
-import { type DeviceLocaleInfo, readStoredLanguagePreference, resolveInitialLocale } from '@/shared/i18n/locale';
+import {
+  chevronFor,
+  type DeviceLocaleInfo,
+  localizeDigits,
+  readStoredLanguagePreference,
+  resolveInitialLocale,
+  setActiveLocale,
+} from '@/shared/i18n/locale';
 import * as Database from '@/stores/database';
 import { languagePreferenceAtom } from '@/stores/language';
 
@@ -113,5 +120,29 @@ describe('the stored-preference round trip', () => {
   it('a stored non-string value reads as no choice', () => {
     Database.database.set(LANGUAGE_KEY, '5');
     expect(readStoredLanguagePreference()).toBeNull();
+  });
+});
+
+describe('localizeDigits', () => {
+  it('points the sheet chevron with the reading direction, whatever the locale', () => {
+    // The owner's ruling, 2026-10-14: LTR locales point right, every RTL locale mirrors
+    expect(chevronFor()).toBe('\u203A');
+    setActiveLocale('ar');
+    try {
+      expect(chevronFor()).toBe('\u2039');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('maps Latin digits to Arabic-Indic under ar and leaves every other locale Latin', () => {
+    setActiveLocale('ar');
+    try {
+      expect(localizeDigits('1448')).toBe('١٤٤٨');
+      expect(localizeDigits('30, 1448')).toBe('٣٠, ١٤٤٨');
+    } finally {
+      setActiveLocale('en');
+    }
+    expect(localizeDigits('1448')).toBe('1448');
   });
 });

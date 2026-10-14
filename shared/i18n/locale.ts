@@ -16,8 +16,24 @@ export const LOCALE_IDS = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
 
-/** The only RTL id in the shipped six; every surface keys direction off this. */
-export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (id === 'ar' ? 'rtl' : 'ltr');
+/** Every shipped locale that reads right to left; a new RTL language joins this set and every
+ * direction-keyed surface follows without further code */
+const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar']);
+
+export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
+
+/** The locale's own numerals for digits the app draws as data (dates, sentences); Latin where
+ * the locale has none. A new language with native numerals adds one entry here */
+const NATIVE_DIGITS: Partial<Record<LocaleId, string>> = { ar: '٠١٢٣٤٥٦٧٨٩' };
+
+export const localizeDigits = (value: string): string => {
+  const native = NATIVE_DIGITS[currentLocaleId()];
+  return native === undefined ? value : value.replace(/[0-9]/g, (digit) => native[Number(digit)]);
+};
+
+/** The sheet chevron points with the reading direction: right under LTR, mirrored under RTL.
+ * Reads the live locale at call time, so it follows a switch without a reload */
+export const chevronFor = (): string => (localeDirection(currentLocaleId()) === 'rtl' ? '\u2039' : '\u203A');
 
 export interface DeviceLocaleInfo {
   languageTag: string;

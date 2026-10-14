@@ -11,13 +11,21 @@ import { openOverlay } from '@/stores/overlay';
 
 import PrayerTime from '../Time';
 
-const GAP_COLON = '\u2009\u2009:\u2009\u2009';
 const SUNRISE = 1;
 const DHUHR = 2;
 const ASR = 3;
+const MAGRIB = 4;
 const MIDNIGHT = 0;
 const SUHOOR = 2;
 const DUHA = 3;
+
+const COLON_COLOUR = 'rgba(160, 200, 255, 0.3)';
+const NEXT_COLON_COLOUR = 'rgba(160, 200, 255, 0.45)';
+
+const flattenStyle = (style: unknown): Record<string, unknown> =>
+  Array.isArray(style)
+    ? Object.assign({}, ...style.map((entry) => flattenStyle(entry)))
+    : (style as Record<string, unknown>);
 
 describe('a row before Fajr on Friday 11 September 2026 at 03:00', () => {
   // [row, schedule, index, the time it shows]
@@ -112,29 +120,40 @@ describe('the passed Sunrise row on Friday 11 September 2026 at 14:00, once the 
 });
 
 describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
-  it('splits its colon into a gap node at two thin spaces per side', async () => {
+  it('splits its colon into its own node, centred by margins and lifted half a point', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerTime type={ScheduleType.Extra} index={3} />);
 
-    expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+    const colon = screen.getByText(':');
+    const style = flattenStyle(colon.props.style);
+    // The gap is margin-based so no text direction can unbalance it, and the glyph rides half a point high
+    expect(style.marginHorizontal).toBe(3);
+    expect(style.transform).toEqual([{ translateY: -1.5 }]);
   });
 
-  it('renders the split colon at 40 percent of its digits, and labels the whole time', async () => {
+  it('paints the colon at the dim colour, and half as bright again on the next prayer only', async () => {
     showLondonDay('2026-09-11', '14:00');
-    await render(<PrayerTime type={ScheduleType.Extra} index={3} />);
+    await render(
+      <>
+        <PrayerTime type={ScheduleType.Standard} index={ASR} />
+        <PrayerTime type={ScheduleType.Standard} index={MAGRIB} />
+      </>
+    );
 
-    // Row 81: the colon sits 60 percent under its own row's digits, whichever state the row is in
-    const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
-    const style = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
-    expect(style.opacity).toBe(0.4);
-    expect(screen.getByLabelText('06:46')).toBeOnTheScreen();
+    // Asr is next at 14:00, so its colon brightens for the active background; Magrib's stays at the dim colour
+    const colon = screen.getAllByText(':')[0];
+    expect(flattenStyle(colon.props.style).color).toBe(NEXT_COLON_COLOUR);
+    const upcoming = screen.getAllByText(':')[1];
+    expect(flattenStyle(upcoming.props.style).color).toBe(COLON_COLOUR);
+    expect(screen.getByLabelText('16:29')).toBeOnTheScreen();
+    expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
   });
 
-  it('renders the unread sentinel as one node with no gap node', async () => {
+  it('renders the unread sentinel as one node with no colon node', async () => {
     showLondonDay('2026-09-11', '14:00', { '2026-09-11': 'not stored' });
     await render(<PrayerTime type={ScheduleType.Standard} index={2} />);
 
     expect(screen.getByText('--:--')).toBeOnTheScreen();
-    expect(screen.queryByText(GAP_COLON)).toBeNull();
+    expect(screen.queryByText(':')).toBeNull();
   });
 });
