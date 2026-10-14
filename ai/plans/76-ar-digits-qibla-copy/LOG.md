@@ -286,4 +286,38 @@ dev/mock`.
 
 session: the lead (step 3 landed directly; the device half blocked on environment)
 
+### Step 4 — done (records and the queue row)
+
+The three items, closed:
+
+- **(a) the Extras boxes on native digits (R2.1, R2.2).** Verified healed at the anchor
+  (row 84's `localizeDigits` call at `Explanation.tsx:74`, landed 2.0.250 the day after
+  her test) and locked by the five-box, six-locale sweep in `Explanation.test.tsx`; read
+  on glass under ar (Suhoor `٢٠ دقيقة قبل الفجر`, Duha `٢٠ دقيقة بعد الشروق`).
+- **(b) the Qibla subtitle's three dots (R1.1, R1.2, R1.3).** Diagnosed as layout
+  truncation (the catalog complete in all six; the absolute ready line clipped to the
+  waiting line's width) and fixed with a zero-height width donor, so the box sizes to the
+  wider sentence in every language; en pixels unchanged. Locked by step 1's tests; the ar
+  waiting line read full on the simulator.
+- **(c) the cardinal ring (R3.1, R3.2).** Re-scoped by the owner's 2026-10-14 ruling from
+  verify-the-letters to the rebuild: the ring prints the four LATIN bearings 0, 90, 180,
+  270 with degree circles, identical in every language, and reads no catalog. Landed as
+  step 2b; locked by the unit lock and the six-locale render sweep. The visual ring
+  reading is blocked on environment (no simulator heading; D76.6) and falls to the
+  owner's QA.
+
+Version-range deviation (D76.5), measured: `origin/uat` was at 2.0.600 when planned, so
+2.0.403-2.0.600 were taken; this ticket ran 2.0.601 (planned) through 2.0.608 (step 4),
+with the audit fixes after. Sibling branches measured `ticket/80` 2.0.406 and
+`ticket/75` 2.0.450.
+
+The queue cell text the orchestrator applies at DONE, and the docs commit message, are
+reserved in PLAN.md section 8. The row is at the executed-and-audited state awaiting the
+audit and the orchestrator's merge; it is NOT set DONE this run.
+
+Version 2.0.608. Commit message: `2.0.608 - docs(plans): ticket 76 executed, run records
+closed, queue row at the awaiting-merge state`.
+
+session: the lead (step 4 landed directly)
+
 
