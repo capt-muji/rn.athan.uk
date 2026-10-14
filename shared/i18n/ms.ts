@@ -175,7 +175,7 @@ export const ms = {
   'widget.refreshLead': 'Buka Athan',
   'widget.refreshTail': 'untuk muat semula',
   'settings.language': 'Bahasa',
-  'language.applying': 'Menerapkan…',
+  'language.changing': 'Menetapkan bahasa {language}',
   'channel.reminder': 'Peringatan {name} dalam {n}',
   'whatsNew.title.language': 'Bahasa',
   'whatsNew.body.language': 'Apl kini bertutur dalam bahasa anda: pilihnya dalam Tetapan',
