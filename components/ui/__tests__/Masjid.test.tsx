@@ -4,7 +4,9 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import { StyleSheet } from 'react-native';
 
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { createPrayerDatetime } from '@/shared/time';
 import { decorationsEnabledAtom, masjidIconLoadedAtom } from '@/stores/ui';
 
@@ -56,5 +58,41 @@ describe('the mosque icon', () => {
     await render(<Masjid height={65} width={60} />);
 
     expect(drawnImage()).toHaveStyle({ height: 65, width: 60 });
+  });
+});
+
+// The mark faces inwards under RTL: the whole image flips on the locale's own direction, both art variants on one rule
+describe('the mosque icon under the Arabic locale', () => {
+  beforeEach(() => {
+    setActiveLocale('ar');
+  });
+
+  afterEach(() => {
+    setActiveLocale('en');
+  });
+
+  it('mirrors the mark under the Arabic locale', async () => {
+    await render(<Masjid />);
+
+    expect(drawnImage()).toHaveStyle({ transform: [{ scaleX: -1 }] });
+  });
+
+  it('mirrors the Ramadan variant under the Arabic locale on the same rule', async () => {
+    jest.useFakeTimers({ now: createPrayerDatetime('2027-02-20', '12:00') });
+    store.set(decorationsEnabledAtom, true);
+
+    await render(<Masjid />);
+
+    expect(drawnImage()).toHaveStyle({ transform: [{ scaleX: -1 }] });
+  });
+});
+
+describe('the mosque icon under the English locale', () => {
+  it('draws the mark unmirrored under the English locale', async () => {
+    setActiveLocale('en');
+
+    await render(<Masjid />);
+
+    expect(StyleSheet.flatten(drawnImage().props.style).transform).toBeUndefined();
   });
 });
