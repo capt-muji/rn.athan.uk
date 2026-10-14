@@ -62,6 +62,26 @@ written by shell under the ticket-unique name; no collision this time.
 
 session: ses_ec70bc668ffeK0ux7kMx2FbfI1
 
+### Step 3 — done
+
+Branch `ticket/73`, commit `ce1fd50d`, version 2.0.262 (`2.0.262 -
+fix(settings): the colour picker resolves the direction the library
+snapshotted`). Anchor recounted 1 at step time. Red as predicted: both new
+tests failed with `Expected: "ltr"` / `Received: undefined` and
+`Expected: "rtl"` / `Received: undefined`; 2 failed, 12 passed, no other case.
+Green 14/14; tsc 0; biome 0 (no import-order assist needed). Break
+`bash $TMPDIR/t73-break-3.sh`: count 1 (only the RTL test fails against a
+hard-wired 'ltr', as planned), `ALL AS EXPECTED: 1`. Mutations:
+(a) the break's hard-wired `'ltr'` (proven by the break); (b) the swapped
+ternary `? 'ltr' : 'rtl'` — fails both new tests, each receiving the other
+direction. Hook: `Tests: 2 skipped, 5565 passed, 5567 total`; coverage 100%
+(5273/2299/1100/4722). Review: the only production changes are the keyed
+direction, its comment, the extended import and the two style arrays; the
+`styles.panel`/`styles.hueSlider` objects untouched; the RTL test mocks
+`getConstants` inside a try with `restoreAllMocks` in its finally.
+
+session: ses_ec70bc668ffeK0ux7kMx2FbfI1
+
 ## Planning (2026-10-14)
 
 - Worktree `$HOME/athan-gitree/run-73`, branch `ticket/73` off `b1bf6f89` (uat 2.0.255). The main checkout stays read-only; the owner's run order forbids merge, push and DONE this run.
@@ -77,5 +97,34 @@ session: ses_ec70bc668ffeK0ux7kMx2FbfI1
 - Scratch proofs, round one (static containment) in `$HOME/athan-gitree/worktrees/plan-73` (deleted after): steps 1 and 2 red-then-green exactly as the plan predicts; the accessibility-label reach proven (`UNSAFE_getByType` and `screen.root.queryAll` are dead ends in @testing-library/react-native@14.0.1 — the library host tree sits outside the walk root; the labels are `Saturation and brightness 2D slider` and `Hue Slider`); the step-3 break substitution counts 1 and fails the named test.
 - The grill (2026-10-14) returned six findings; all applied. The decisive one: the app consumes the package's `react-native` field (`lib/src`), whose `utils.tsx:6` reads `I18nManager.isRTL` at module load — the compiled builds Jest resolves froze `false`, which is what the first proofs ran against. A static `direction: 'ltr'` would force LTR resolution onto the library's RTL-written geometry in every completed crossing and re-break the picker there; the design became the keyed containment (D3), and one compiled-build citation in the plan was corrected with it. The other findings: the READY-commit/clean-tree gap, the version-bump exception missing from the executor's stop-list, three rotated step numbers, the stale two-line comments above the rewritten describes, and the break scripts' ungated success marker.
 - Scratch proofs, round two (keyed containment, all changes together): both new picker tests red (`Expected: "ltr"` / `Expected: "rtl"`, both `Received: undefined`), green 14/14 after the keyed change; the hard-wired-'ltr' break fails exactly the RTL test (grep count 1); the swapped-ternary mutation fails both; the whole components project passes 350/350 with steps 1 to 3 applied together; `npx tsc --noEmit` exits 0; biome clean after one organize-imports pass. The keyed picker tests need no locale forcing, so the plan's step 3 imports only `I18nManager` and `StyleSheet`.
+
+## Findings (executed)
+
+- The family's mechanism, pinned from the pinned sources and the owner's two test readings:
+  RN 0.88.0-rc.3 flips no transform on any path (BaseViewProps.cpp resolveTransform is
+  direction-blind; Android's BaseViewManager applies the decomposed matrix physically;
+  Reanimated 4.7.0 carries no direction handling), so the travels exited the screen because
+  the controls branched on I18nManager.getConstants().isRTL — a bridge-start snapshot that a
+  starved crossing (row 78's state) leaves at false while the native layout already renders
+  the Arabic locale: the English travel branch ran under RTL layout and pushed the pill and
+  every switch thumb off the control to the right. The picker's half: the library hardcodes
+  isRtl false, so Android's RTL left/right swap re-anchored its left-placed absolute
+  children to the physical right (the reversed hue marker, the displaced rotated overlay of
+  the 2026-10-13 split box), and iOS's swap-off rendering left only the ~1px RTL rounding
+  sliver at the panel's right and bottom edges that the 2026-10-14 read measured.
+- The fixes: the segmented control and the switch derive their travel's direction from the
+  locale's own direction (localeDirection of currentLocaleId, the same source bootstrap keys
+  forceRTL on); the picker's panel and hue bar carry a direction keyed to the bridge snapshot
+  the library branched its geometry on, so each launch state resolves the layout its geometry
+  is written for. English rendering is untouched: under en every changed expression evaluates
+  to the value it held at 2.0.255.
+- Proven by the named tests red before green, the break scripts (each ending
+  `ALL AS EXPECTED: 1`), the mutation passes, and coverage at 100 percent statements,
+  branches, functions and lines on every changed file.
+- Reported, not fixed (outside this run's editable surface and outside the ticket's four
+  defects): QiblaWave reads the same lagging bridge constant, but its SVG path and its phone
+  travel share one flag and cannot diverge from each other; the queue owner may fold the
+  read into the same locale-keyed source when a ticket touches that surface.
+- The owner's device test is the acceptance bar; nothing here was proven on a phone.
 
 
