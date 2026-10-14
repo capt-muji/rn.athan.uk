@@ -1,7 +1,0 @@
-/**
- * How long one call into the notification system may take before it is treated as refused.
- *
- * Owner, 2026-09-16. A healthy phone answers in milliseconds, so this can only be reached by a call that is never
- * coming back.
- */
-const NATIVE_CALL_TIMEOUT_MS = 15_000;
