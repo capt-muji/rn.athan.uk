@@ -165,3 +165,35 @@ cardinals locked to the dial convention`, on `ticket/76`; its sha is in the run
 report, since a commit cannot carry its own sha.
 
 session: ses_ec63996c6ffeqGuyw8XgOwbyVh
+
+## Step 2 stop reconciled, and the owner's cardinal ruling (2026-10-14, lead)
+
+**The stop, re-verified from the code by this lead.** The recorded stop was the break
+run's count against the plan's arithmetic. Re-checked at the branch head: the ar Extras
+catalog carries ASCII digits in exactly two of the five sentences
+(`shared/i18n/ar.ts:152-153`, suhoor and duha); the step-2 sweep crosses the five
+`EXTRAS_EXPLANATIONS` keys with the six `LOCALE_IDS`, so it has five ar rows, and the
+three digit-free ar sentences render identically with or without the renderer's
+`localizeDigits`, so they stay green under the break. The break therefore fails exactly
+three rows: the pre-existing ar Suhoor test, the ar suhoor sweep row and the ar duha
+sweep row. The plan's expectation was repaired to that count before step 2 landed
+(steps/2-digit-sweep.md, "Expected: 3 failed, 33 passed"), the observed run matched it
+(LOG.md, Step 02 resolution), and step 2 committed at 2.0.604 (`05c0c882`). **Decision:
+the repaired expectation stands; no further action on the stop.**
+
+**The owner's ruling (source: the owner's instruction 2026-10-14, carried on queue row
+76), recorded and actioned.** The compass ring's cardinal LETTERS (English and Arabic
+alike) are replaced by LATIN NUMBERS with a small degree circle at the top right of each
+number: north 0, east 90, south 180, west 270, identical in every language, so the
+compass depends on no language at all. Consequence, taken as the ruling's own: the
+planning verdict on item (c) (D76.4, "the letters are correct; no change ships") is
+superseded; item (c) is re-scoped to the rebuild; the step-2 cardinal-lock test
+committed at 2.0.604 (it asserted the letters) is replaced by number-and-degree-circle
+assertions; the four `qibla.cardinal.*` keys leave all six catalogs; the compass module
+holds the bearings as data (`CARDINAL_ANGLES`) with no catalog read; the catalog lock is
+re-taken; the `ar-cardinals` pre-flight anchor retires. The plan was amended in the same
+commit (PLAN.md section 0, item (c), D76.4/D76.8, R3.1/R3.2, section 6, section 8;
+steps/2-digit-sweep.md superseded note; steps/3 and 4 re-versioned). New step 2b
+(`steps/2b-cardinal-numbers.md`) carries the rebuild. Version map from here: 2.0.605
+this amendment, 2.0.606 step 2b, 2.0.607 step 3, 2.0.608 step 4, audit fixes after.
+

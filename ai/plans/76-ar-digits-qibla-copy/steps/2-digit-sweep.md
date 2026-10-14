@@ -1,6 +1,6 @@
 # Step 2: the five-box digit sweep and the cardinal lock
 
-Requirements: R2.1, R2.2, R3.1
+Requirements: R2.1, R2.2 (R3.1 superseded by step 2b, the owner's 2026-10-14 ruling)
 Weight: 1
 
 Anchor check: `scripts/anchors/explanation-digits.txt` counts 1 in
@@ -31,6 +31,10 @@ Tests, added to `Explanation.test.tsx`:
    already imports `resolveCardinals`): under `en`, `resolveCardinals()` returns N at
    0, E at 90, S at 180, W at 270; under `ar` it returns ش, ق, ج, غ at the same
    angles, with the letters read from the live catalog through `t()`.
+
+   **SUPERSEDED 2026-10-14 by the owner ruling (PLAN.md section 0): the ring's letters
+   are replaced by the four Latin numbers. This lock was committed at 2.0.604 and is
+   replaced by step 2b's number-and-degree-circle tests. The record is kept as written.**
 
 Both tests pass against the shipped code; that is the point (D76.1, D76.4). Their
 guard is the break script; their red-first evidence is the break run recorded in
