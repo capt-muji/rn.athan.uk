@@ -102,6 +102,12 @@ describe('a sheet as it mounts', () => {
     expect(scrollViews()).toHaveLength(1);
   });
 
+  it('hides the scroll indicator on its scroll view', async () => {
+    await render(settingsSheet());
+
+    expect(scrollViews()[0]?.props.showsVerticalScrollIndicator).toBe(false);
+  });
+
   it('lays out a sheet that is not scrollable with no scroll view', async () => {
     await render(settingsSheet({ scrollable: false }));
 
