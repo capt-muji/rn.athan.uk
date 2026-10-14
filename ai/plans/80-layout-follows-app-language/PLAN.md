@@ -211,7 +211,7 @@ inventory in step 1 names every one and the same style lands there.
 
 Checklist:
 
-- [ ] Step 1 — the layout direction at the React roots
+- [x] Step 1 — the layout direction at the React roots
 - [ ] Step 2 — the relaunch handoff
 - [ ] Step 3 — the wave's own direction and the picker's comment
 - [ ] Step 4 — the executed records

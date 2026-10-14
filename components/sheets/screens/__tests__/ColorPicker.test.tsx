@@ -8,6 +8,7 @@ import { getDefaultStore } from 'jotai';
 import { I18nManager, StyleSheet } from 'react-native';
 
 import { COLOR_PICKER_DEFAULT } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
 import ColorPickerSettings from '../ColorPicker';
@@ -48,6 +49,28 @@ describe('the countdown bar colour row in the settings sheet', () => {
 
     expect(StyleSheet.flatten(panel.props.style).direction).toBe('ltr');
     expect(StyleSheet.flatten(slider.props.style).direction).toBe('ltr');
+
+    const overlay = screen.getByTestId('picker-modal-root');
+
+    expect(StyleSheet.flatten(overlay.props.style).direction).toBe('ltr');
+  });
+
+  // The modal hosts on the native side, outside the tree root the layout keys: its content
+  // carries the app's own direction so the sheet reads the same way the app does
+  it('hosts the picker modal content in the app locale direction, right-to-left under ar', async () => {
+    setActiveLocale('ar');
+
+    try {
+      await render(<ColorPickerSettings />);
+      await fireEvent.press(screen.getByText('لون شريط العد التنازلي'));
+
+      const overlay = screen.getByTestId('picker-modal-root');
+
+      expect(I18nManager.getConstants().isRTL).toBe(false);
+      expect(StyleSheet.flatten(overlay.props.style).direction).toBe('rtl');
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   // The components project renders against the real I18nManager, so the snapshot the picker

@@ -81,7 +81,7 @@ Imports to add at the top of the file: a new line `import { I18nManager } from '
 
     try {
       await render(<ColorPickerSettings />);
-      fireEvent.press(screen.getByText('لون شريط العد التنازلي'));
+      await fireEvent.press(screen.getByText('لون شريط العد التنازلي'));
 
       const overlay = screen.getByTestId('picker-modal-root');
 
