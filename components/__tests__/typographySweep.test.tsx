@@ -97,6 +97,41 @@ const helpQuestionStyleUnder = async (locale: LocaleId): Promise<Record<string, 
   return question;
 };
 
+/** The row time's resolved family under one locale: only an ar-side evaluation can tell the Latin face from the Arabic word face, and the digits are read, not the unread sentinel */
+const rowTimeFontFamilyUnder = async (locale: LocaleId): Promise<unknown> => {
+  let fontFamily: unknown;
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { showLondonDay } = require('@/__tests__/harness');
+    showLondonDay('2026-09-11', '14:00');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const PrayerTime = require('../prayer/Time').default;
+    const { ScheduleType } = require('@/shared/types');
+    await rntl.render(<PrayerTime type={ScheduleType.Standard} index={1} />);
+    fontFamily = (StyleSheet.flatten(rntl.screen.getByText('06').props.style) as Record<string, unknown>).fontFamily;
+  });
+  return fontFamily;
+};
+
+/** The explanation's resolved line height under one locale, which decides whether the Arabic diacritics clip */
+const explanationLineHeightUnder = async (locale: LocaleId): Promise<unknown> => {
+  let lineHeight: unknown;
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const PrayerExplanation = require('../prayer/Explanation').default;
+    await rntl.render(<PrayerExplanation prayerName='الضحى' explanation='نص' />);
+    lineHeight = (StyleSheet.flatten(rntl.screen.getByText('نص').props.style) as Record<string, unknown>).lineHeight;
+  });
+  return lineHeight;
+};
+
 describe('the sweep guard', () => {
   it.each(INVENTORY)('resolves %s through the locale typography map', (file) => {
     const source = readFileSync(join(__dirname, '..', file), 'utf8');
@@ -133,7 +168,7 @@ describe('the sheet header title', () => {
   it('renders the Arabic medium face at the unchanged size under ar', async () => {
     const title = await headerTitleStyleUnder('ar');
 
-    expect(title.fontFamily).toBe('ReadexPro-Medium');
+    expect(title.fontFamily).toBe('NotoSansArabic-Medium');
     expect(title.fontSize).toBe(22);
   });
 
@@ -150,7 +185,7 @@ describe('the help question', () => {
   it('renders the Arabic medium face at the unchanged size under ar', async () => {
     const question = await helpQuestionStyleUnder('ar');
 
-    expect(question.fontFamily).toBe('ReadexPro-Medium');
+    expect(question.fontFamily).toBe('NotoSansArabic-Medium');
     expect(question.fontSize).toBe(15);
   });
 
@@ -159,5 +194,21 @@ describe('the help question', () => {
 
     expect(question.fontFamily).toBe('Roboto-Medium');
     expect(question.fontSize).toBe(15);
+  });
+});
+
+describe('the row time face', () => {
+  it('is the Latin regular face under ar, so a row time reads like the English row', async () => {
+    expect(await rowTimeFontFamilyUnder('ar')).toBe('Roboto-Regular');
+  });
+});
+
+describe('the overlay explanation line box', () => {
+  it('takes the Arabic script line height under ar, so its diacritics are not clipped', async () => {
+    expect(await explanationLineHeightUnder('ar')).toBe(24);
+  });
+
+  it('keeps the Latin preset line height under en', async () => {
+    expect(await explanationLineHeightUnder('en')).toBe(22);
   });
 });

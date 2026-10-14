@@ -11,7 +11,7 @@ import { ANIMATION, COLORS, SPACING, TEXT, UNAVAILABLE_TIME } from '@/shared/con
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
 import { splitSingleColon } from '@/shared/time';
-import type { ScheduleType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 
@@ -57,6 +57,9 @@ export default function PrayerTime({ type, index }: Props) {
 
   const parts = displayTime === UNAVAILABLE_TIME ? null : splitSingleColon(displayTime);
 
+  const isStandard = type === ScheduleType.Standard;
+  const colonNextStyle = isStandard ? styles.colonNext : styles.colonNextExtras;
+
   return (
     <View style={[styles.container]}>
       {parts === null ? (
@@ -64,7 +67,7 @@ export default function PrayerTime({ type, index }: Props) {
       ) : (
         <View style={styles.timeRow} accessible accessibilityLabel={displayTime}>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[0]}</Animated.Text>
-          <Text style={[styles.textPart, styles.colon, Prayer.isNext ? styles.colonNext : undefined]}>{':'}</Text>
+          <Text style={[styles.textPart, styles.colon, Prayer.isNext ? colonNextStyle : undefined]}>{':'}</Text>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[1]}</Animated.Text>
         </View>
       )}
@@ -80,13 +83,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontFamily: ty.familyRegular,
+    fontFamily: ty.familyRowTime,
     fontSize: ty.size(TEXT.size),
     textAlign: 'center',
     marginStart: SPACING.lg - 1,
   },
   textPart: {
-    fontFamily: ty.familyRegular,
+    fontFamily: ty.familyRowTime,
     fontSize: ty.size(TEXT.size),
   },
   timeRow: {
@@ -103,5 +106,8 @@ const styles = StyleSheet.create({
   },
   colonNext: {
     color: COLORS.countdown.nextTimeColon,
+  },
+  colonNextExtras: {
+    color: COLORS.countdown.nextTimeColonExtras,
   },
 });

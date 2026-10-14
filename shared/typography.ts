@@ -15,6 +15,8 @@ export interface LocaleTypography {
   familyMedium: string;
   /** Timer digits are Latin glyphs in every locale (row 82), so this face is the Latin medium everywhere while word styles stay per-locale */
   familyDigits: string;
+  /** The row time is Latin glyphs in every locale, so it reads exactly like the English row wherever the list is drawn */
+  familyRowTime: string;
   /** The timer's digit size: ar runs two points under the shared token (row 81a) */
   countdownSize: number;
   size: (n: number) => number;
@@ -27,9 +29,10 @@ export interface LocaleTypography {
 }
 
 const ARABIC: LocaleTypography = {
-  familyRegular: 'ReadexPro-Regular',
-  familyMedium: 'ReadexPro-Medium',
+  familyRegular: 'NotoSansArabic-Regular',
+  familyMedium: 'NotoSansArabic-Medium',
   familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
   countdownSize: TEXT.sizeLarge - 2,
   size: (n) => Math.round(n * ARABIC_SIZE_FACTOR),
   lineHeight: (n) => Math.round(n * ARABIC_SIZE_FACTOR),
@@ -42,6 +45,7 @@ const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
   familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
   countdownSize: TEXT.sizeLarge,
   size: (n) => n,
   lineHeight: (n) => n,
