@@ -120,4 +120,24 @@ describe('the relaunch handoff', () => {
 
     expect(store.get(relaunchHandoffAtom)).toBe('');
   });
+
+  it('writes no marker when the cap fired, so the unhealthy relaunch keeps the full pass and its sweep', async () => {
+    try {
+      jest.useFakeTimers({ now: 0 });
+      let release!: (armed: boolean) => void;
+      const held = new Promise<boolean>((resolve) => {
+        release = resolve;
+      });
+      reschedule.mockImplementationOnce(() => held);
+
+      const committed = commitLanguagePreference('ar');
+      await jest.advanceTimersByTimeAsync(10_001);
+      release(true);
+      await committed;
+
+      expect(store.get(relaunchHandoffAtom)).toBe('');
+    } finally {
+      jest.useRealTimers();
+    }
+  });
 });
