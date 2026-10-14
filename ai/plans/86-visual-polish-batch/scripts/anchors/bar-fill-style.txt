@@ -1,6 +1,0 @@
-  bar: {
-    position: 'absolute',
-    height: '100%',
-    borderRadius: COUNTDOWN_BAR.HEIGHT / 2,
-    overflow: 'hidden',
-  },

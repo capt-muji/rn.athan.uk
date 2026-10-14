@@ -1,7 +1,0 @@
-export const tipLeftForProgress = (progressPercent: number): number => {
-  'worklet';
-  const half = TIP_OVAL_WIDTH / 2;
-  const raw = (progressPercent / 100) * COUNTDOWN_BAR.WIDTH - COUNTDOWN_TIP.OFFSET;
-
-  return Math.min(Math.max(raw, half), COUNTDOWN_BAR.WIDTH - half);
-};
