@@ -1,0 +1,3 @@
+  'settings.language': 'Language',
+  'language.applying': 'Applying…',
+  'channel.reminder': '{name} in {n}m Reminder',
