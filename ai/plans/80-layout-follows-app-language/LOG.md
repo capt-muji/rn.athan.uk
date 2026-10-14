@@ -5,6 +5,7 @@
 ## Decisions relayed to executors
 
 - 2026-10-14, step 1: the executor's STOP on the ar modal case is upheld and answered. The plan-verbatim press lacked the `await` the modal's commit needs (the repo's own idiom: the LTR case presses through `await openPicker()`); without it the press runs but the Modal never commits, so the testID lookup fails. Decision (the lead, under the owner's run order 2026-10-14): the ar case's press line gains `await` — the amended text is in the step file now — and nothing else about the case changes; the break script's grep stands, because the awaited press opens the modal and the mutated read then fails with `Received: "ltr"`. The plan files carry this amendment inside step 1's own commit.
+- 2026-10-14, step 3: the executor's STOP on the wave suite is upheld and answered. The stage View hides its subtree from accessibility (`accessibilityElementsHidden` — a drawn gesture says nothing a reader can use), so RNTL excludes the SVG from queries unless `includeHiddenElements: true` (the repo's own reach, Qibla.test's `qibla-wave-phone` query). Decision (the lead, under the owner's run order 2026-10-14): the `guidePath` helper gains the flag, nothing else about the suite changes; the amended text is in the step file. The plan files carry this amendment inside step 3's own commit.
 
 ## Planning (2026-10-14)
 
@@ -55,5 +56,27 @@ Green: `rtlSwitch` + `languageConvergence` 13 passed / 13 total (unit), `index.t
 Break script `$TMPDIR/t80-break-2.sh` last line `ALL AS EXPECTED: 1` (with the condition hard-wired false, the skip case fails on the reopen line; the grep found `skips the reopen`). Mutation pass, all from the restored original: (a) the condition inverted — both index handoff cases die on the reopen line; (b) the consume's clear removed — `consumes the marker exactly once` dies `Expected: "" / Received: "ar"` on its second assertion; (c) the catch's clear removed — `clears the marker when the relaunch is refused` dies `Expected: "" / Received: "ar"`. All restored after.
 
 Version 2.0.406, `app.json` first then `package.json`, surgical line edits. Review verdict: cold pass — the reopen still precedes `initializeNotifications` on a cold launch; the marker touches only whether the gate reopens, never what converges (the `reconcileLanguageSurfaces` chain is untouched and both suites assert its call); the new MMKV key is the plan's D3 name; no log line beyond the two named. The hook now runs in this worktree (`.husky/_` materialized at step 1, see above); its lines are recorded in this commit's log read.
+
+session: ses_ec6683627ffeLg5INxlK8V41Yv
+
+### Step 2 commit record (added at step 3)
+
+Step 2 landed as `36d7b61a`; its hook's evidence: coverage summary Statements 100% (5296/5296), Branches 100% (2305/2305), Functions 100% (1103/1103), Lines 100% (4744/4744); `Tests:       2 skipped, 5580 passed, 5582 total`.
+
+### Step 3 — green (one plan defect found, adjudicated, plan amended)
+
+Branch `ticket/80`, straight to the branch. The three anchors each count 1.
+
+Red, exactly as the amended plan predicts: the new `QiblaWave.test.tsx` suite failed both cases at the testID lookup (`Unable to find an element with testID: qibla-wave-guide`, 2 failed / 2 total).
+
+Plan defect at green, same class as step 1's: the wave's stage View carries `accessibilityElementsHidden` + `importantForAccessibility={'no-hide-descendants'}` (the drawn-gesture rule), so RNTL excludes the whole SVG subtree from queries unless `includeHiddenElements: true` — the repo's own suites reach SVG testIDs exactly that way (`Settings.test.tsx:146`). The plan-verbatim `guidePath` helper could not find the path with the change landed. Probe runs (scratch suite, deleted) proved the fix and that nothing hid behind it: with the flag, the en case's `d` equals the unmirrored path and the ar case's equals the mirrored path against the landed change. Executor STOPped; the lead upheld the diagnosis and amended the step file (the helper now passes the flag). Recorded under "Decisions relayed to executors".
+
+Contracts applied verbatim: the react-native import drops `I18nManager`, the locale import sits sorted between `constants` and `qiblaWave`, the anchor block replaced by the four-line comment and the re-keyed read, the guide Path gains `testID={'qibla-wave-guide'}`, and both picker premise comments restated (the `pickerDirection` line untouched; the test-side comment keeps only the row-73 premise).
+
+Green after the amendment: `QiblaWave` + `ColorPicker` + `Qibla` suites 176 passed / 176 total; `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0.
+
+Break script `$TMPDIR/t80-break-3.sh` last line `ALL AS EXPECTED: 1` — the reverted bridge read leaves the ar case red on the path-string diff the plan names (the received `d` is the unmirrored path where the mirrored one was expected). Mutation pass, both from the restored original: (a) `const isRTL = false;` — the ar case dies on the mirrored expectation (1 failed / 1 passed); (b) the guide path's `isRTL` argument negated — both cases die (2 failed / 2 total). All restored after.
+
+Version 2.0.407, `app.json` first then `package.json`, surgical line edits. Review verdict: cold pass — no drawing constant moved (`shared/qiblaWave.ts` untouched; the component's only new props are the testID and the re-keyed boolean); the picker diff is two comment blocks and nothing else; the new suite asserts the starved-state premise explicitly (`I18nManager.getConstants().isRTL` false while the mirrored path is drawn).
 
 session: ses_ec6683627ffeLg5INxlK8V41Yv

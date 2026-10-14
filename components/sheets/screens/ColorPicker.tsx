@@ -100,9 +100,9 @@ export default function ColorPickerSettings() {
   // =============================================================================
 
   // The picker library snapshots I18nManager.isRTL at module load and writes its geometry
-  // for that snapshot, while the layout direction follows the live locale: keying the
-  // picker's resolved direction on the same snapshot keeps the two in step in every launch
-  // state (a starved crossing snapshots false, a completed one true)
+  // for that snapshot, so the panel resolves the direction the same snapshot took: the
+  // library's geometry and the layout it draws stay in step in every launch state (a
+  // starved crossing snapshots false, a completed one true)
   const pickerDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
   const modalDirection = localeDirection(currentLocaleId());
 

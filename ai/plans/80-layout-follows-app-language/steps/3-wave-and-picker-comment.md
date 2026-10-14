@@ -36,8 +36,9 @@ const SIZE = 300;
 const figureWidth = SIZE * WAVE.width;
 const figureHeight = SIZE * WAVE.height;
 
-/** The guide path the figure is drawn from, reached through the step's own testID */
-const guidePath = () => screen.getByTestId('qibla-wave-guide').props.d;
+/** The guide path the figure is drawn from, reached through the step's own testID; the stage
+ * hides its subtree from accessibility (it is a drawn gesture), so queries include hidden elements */
+const guidePath = () => screen.getByTestId('qibla-wave-guide', { includeHiddenElements: true }).props.d;
 
 describe('the calibration wave mirror', () => {
   afterEach(() => {
@@ -61,7 +62,7 @@ describe('the calibration wave mirror', () => {
 });
 ```
 
-(`@testing-library/react-native` is 14.0.1, which removed the `UNSAFE_*` queries, so the guide path is reached through a `testID` the change contract adds; `props.d` is the host prop react-native-svg carries.)
+(`@testing-library/react-native` is 14.0.1, which removed the `UNSAFE_*` queries, so the guide path is reached through a `testID` the change contract adds; `props.d` is the host prop react-native-svg carries. The stage View hides its subtree from accessibility — `accessibilityElementsHidden`, the drawn-gesture rule — so the query passes `includeHiddenElements: true`, the repo's own reach for SVG testIDs under a hidden stage.)
 
 Red today: both cases fail with `Unable to find an element with testID: qibla-wave-guide` — the reach's testID is the change contract's. Once it lands, the en case is the no-regression guard (green, and it stays green); the ar case's failure mode against a bridge-read implementation is the path-string diff: the received `d` equals `wavePath(figureWidth, figureHeight, false)` (the bridge snapshot reads false in jest) where the mirrored path was expected.
 
