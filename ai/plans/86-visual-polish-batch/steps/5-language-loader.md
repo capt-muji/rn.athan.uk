@@ -68,8 +68,10 @@ import LanguageLoader from '../LanguageLoader';
 
 const store = getDefaultStore();
 
-const styleOf = (node: { props: { style: unknown } }): Record<string, unknown> =>
-  Array.isArray(node.props.style) ? Object.assign({}, ...node.props.style) : (node.props.style as Record<string, unknown>);
+const flattenStyle = (style: unknown): Record<string, unknown> =>
+  Array.isArray(style)
+    ? Object.assign({}, ...style.map((entry) => flattenStyle(entry)))
+    : (style as Record<string, unknown>);
 
 afterEach(() => {
   setActiveLocale('en');
@@ -94,7 +96,7 @@ describe('the language-switch loader', () => {
     expect(screen.getByText('جارٍ ضبط اللغة العربية')).toBeOnTheScreen();
     // The rendered root is the loader's own panel
     const panel = screen.root as unknown as { props: { style: unknown } };
-    expect(styleOf(panel).backgroundColor).toBe(COLORS.navigation.rootBackground);
+    expect(flattenStyle(panel.props.style).backgroundColor).toBe(COLORS.navigation.rootBackground);
   });
 
   it('caps the line's width so a long sentence breaks onto two centred lines', async () => {
@@ -105,8 +107,8 @@ describe('the language-switch loader', () => {
     await render(<LanguageLoader />);
 
     const line = screen.getByText('भाषा हिन्दी सेट की जा रही है');
-    expect(styleOf(line).maxWidth).toBe(260);
-    expect(styleOf(line).textAlign).toBe('center');
+    expect(flattenStyle(line.props.style).maxWidth).toBe(260);
+    expect(flattenStyle(line.props.style).textAlign).toBe('center');
   });
 });
 ```
