@@ -7,7 +7,7 @@ import * as Haptics from 'expo-haptics';
 import { I18nManager } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { ANIMATION, SIZE } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 
 import Toggle from '../Toggle';
@@ -75,6 +75,21 @@ describe('the reminder switch', () => {
     expect(onToggle).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  it("borders its off state with the cards' edge colour", async () => {
+    await render(<Toggle value={false} onToggle={jest.fn()} />);
+
+    expect(screen.getByRole('switch')).toHaveStyle({
+      borderColor: 'rgba(99, 102, 241, 0.15)',
+      borderWidth: 1,
+    });
+  });
+
+  it('keeps its on state border unchanged', async () => {
+    await render(<Toggle value={true} onToggle={jest.fn()} />);
+
+    expect(screen.getByRole('switch')).toHaveStyle({ borderColor: COLORS.interactive.activeBorder });
   });
 });
 
