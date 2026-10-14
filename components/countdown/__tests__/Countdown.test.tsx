@@ -4,9 +4,10 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import { Easing } from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { COLORS } from '@/shared/constants';
+import { ANIMATION, COLORS } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
@@ -15,15 +16,20 @@ import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 
 import Countdown from '../Countdown';
 
-// The dim transition's colours are this suite's subject, so the hook answers
-// deterministically at its two anchors instead of through an animation
+// The dim transition's colours and timings are this suite's subject, so the hook
+// answers deterministically at its two anchors and records every call's options
+const mockDerivedColorCalls: Array<{ target: number; duration?: number; easing?: unknown }> = [];
 jest.mock('@/hooks/useAnimation', () => {
   const actual = jest.requireActual('@/hooks/useAnimation');
   return {
     ...actual,
-    useDerivedColor: (target: number, input: { fromColor: string; toColor: string }) => ({
-      color: target === 0 ? input.fromColor : input.toColor,
-    }),
+    useDerivedColor: (
+      target: number,
+      input: { fromColor: string; toColor: string; duration?: number; easing?: unknown }
+    ) => {
+      mockDerivedColorCalls.push({ target, duration: input.duration, easing: input.easing });
+      return { color: target === 0 ? input.fromColor : input.toColor };
+    },
   };
 });
 
@@ -60,6 +66,20 @@ const colonDots = () =>
  * has no setter function for it, so this is the app's own write path
  */
 const setCountdownBarShown = (shown: boolean) => getDefaultStore().set(countdownBarShownAtom, shown);
+
+/** The colon-dot containers: the stacked-dot views, whose margins carry the ink compensation */
+const colonContainers = () =>
+  screen.root?.queryAll(
+    (node) => {
+      const style = node.props.style === undefined ? {} : flattenStyle(node.props.style);
+      return style.flexDirection === 'column' && style.marginLeft !== undefined;
+    },
+    { includeSelf: true }
+  ) ?? [];
+
+beforeEach(() => {
+  mockDerivedColorCalls.length = 0;
+});
 
 describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and Magrib at 19:28', () => {
   it('names Asr for a screen reader and counts down to it in per-digit nodes, at 14:00', async () => {
@@ -227,6 +247,48 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
 
     expect(screen.getByText('Magrib')).toBeOnTheScreen();
     expect(digitsRead()).toBe('0528');
+  });
+
+  it('fades a tick fast and linear, and an overlay swap on the overlay own timing', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    getDefaultStore().set(showSecondsAtom, false);
+    startCountdowns();
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    // The countdown's own flips: the fast token, linear
+    expect(mockDerivedColorCalls.some((call) => call.duration === ANIMATION.durationFast)).toBe(true);
+    expect(mockDerivedColorCalls.every((call) => call.easing === Easing.linear || call.easing === undefined)).toBe(
+      true
+    );
+
+    mockDerivedColorCalls.length = 0;
+    await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
+
+    // The overlay swap: the overlay layer's own duration and its default ease
+    expect(
+      mockDerivedColorCalls.some((call) => call.duration === ANIMATION.duration && call.easing === undefined)
+    ).toBe(true);
+  });
+
+  it('compensates the colon beside a 1 and holds the row left to right', async () => {
+    showLondonDay('2026-09-11', '16:28');
+    await act(() => jest.advanceTimersByTime(400));
+    startCountdowns();
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    // 00:01:00: the second colon sits beside the minutes' 1, so its left margin tightens
+    const containers = colonContainers();
+    expect(containers).toHaveLength(2);
+    const first = flattenStyle(containers[0].props.style);
+    const second = flattenStyle(containers[1].props.style);
+    expect(first.marginLeft).toBe(4.5);
+    expect(first.marginRight).toBe(4.5);
+    expect(second.marginLeft).toBe(2.5);
+    expect(second.marginRight).toBe(4.5);
+
+    // The row itself never mirrors: the digits read hours first under ar too
+    const row = screen.getAllByText('1')[0].parent;
+    expect(row === null ? undefined : flattenStyle(row.props.style).direction).toBe('ltr');
   });
 
   it('shows the bar under the countdown on a fresh install', async () => {
