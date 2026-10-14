@@ -1,0 +1,1 @@
+  it('renders the panel and the hue bar locked to the snapshotted direction, LTR here', async () => {

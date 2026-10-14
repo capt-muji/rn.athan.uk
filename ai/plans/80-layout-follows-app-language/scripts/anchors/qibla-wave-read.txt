@@ -1,0 +1,2 @@
+  // The figure mirrors under RTL; the worklets cannot read react-native, so the direction passes in
+  const isRTL = I18nManager.getConstants().isRTL;

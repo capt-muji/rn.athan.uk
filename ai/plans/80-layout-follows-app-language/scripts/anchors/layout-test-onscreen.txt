@@ -1,0 +1,5 @@
+describe('the root layout on screen', () => {
+  it('shows the route on the first frame, before the sheets mount', async () => {
+    jest.useFakeTimers();
+
+    await render(<Layout />);
