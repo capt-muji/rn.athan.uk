@@ -21,7 +21,7 @@ import {
   soundListReadyAtom,
 } from '@/stores/ui';
 
-import { Sheet, SoundItem } from '../parts';
+import { Note, Sheet, SoundItem } from '../parts';
 import { displayedSoundSelection, hasSoundDraft, isPreviewFinished, previewRemainingSeconds } from './soundSheet';
 
 const ITEM_GAP = SPACING.xs;
@@ -178,14 +178,12 @@ export default function BottomSheetSound() {
       perfName={SHEET_PERF_NAME}
       onFirstPresent={setSoundListReady}
       stackBehavior={'push'}>
+      <Note text={t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')} />
       {/* Card + 32 rows mount once the settings sheet (the only path here)
           has fully opened — invisible warming, complete before first present */}
       {soundListReady && (
         <View style={styles.card}>
           <Text style={styles.cardHint}>{t('sound.notificationSound')}</Text>
-          <Text style={styles.cardHint}>
-            {t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')}
-          </Text>
 
           <View style={styles.listContainer}>
             {/* Sliding indicator */}

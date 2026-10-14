@@ -19,7 +19,7 @@ import { typographyFor } from '@/shared/typography';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
-import { SegmentedControl, type SegmentOption, Sheet } from '../parts';
+import { Note, SegmentedControl, type SegmentOption, Sheet } from '../parts';
 import { freeReminderInterval } from '../parts/reminderStep';
 import {
   initialReminderInterval,
@@ -94,6 +94,7 @@ export default function BottomSheetAlert() {
       contentCap={0.85}
       onDismiss={handleDismiss}
       perfName={SHEET_PERF_NAME}>
+      <Note text={t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')} />
       {sheetState?.isUnavailable && (
         // No body is mounted, so its ref stays empty and the dismiss commits nothing
         <View style={styles.unavailable}>
@@ -249,8 +250,6 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
         onSelectSound={(type) => handleReminderSoundSelect(1, type)}
         onSelectInterval={(interval) => updateReminder(1, { interval })}
       />
-
-      <Text style={styles.cardHint}>{t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')}</Text>
     </>
   );
 });
