@@ -4,6 +4,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { I18nManager } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION, SIZE } from '@/shared/constants';
@@ -100,6 +101,10 @@ describe('the reminder switch while the Athan is off', () => {
 // direction, and the thumb left the track exactly there (row 73)
 describe('the reminder switch under the Arabic locale while the bridge still reports LTR', () => {
   beforeEach(() => {
+    // The starved state needs the bridge still reporting the launch direction: the real jest
+    // bridge reports LTR, and a preset change that flips it would silently turn these into
+    // completed-crossing tests
+    expect(I18nManager.getConstants().isRTL).toBe(false);
     setActiveLocale('ar');
   });
 
