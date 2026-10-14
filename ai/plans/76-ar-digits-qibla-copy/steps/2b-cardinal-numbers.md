@@ -49,13 +49,14 @@ Change contract:
 - `shared/qiblaCompass.ts`: delete the `import { t }` line, the `DialCardinal` interface
   and `resolveCardinals`. Add
   `export const CARDINAL_ANGLES = [0, 90, 180, 270] as const;` with the section-0 comment
-  (the four bearings, Latin, identical in every language). Add `degree` to `FACE` (the
-  degree circle's size as a share of the cardinal size).
+  (the four bearings, Latin, identical in every language). Add `degree` and `degreeLift`
+  to `FACE` (the degree circle's size and raise, as shares of the cardinal size).
 - `components/sheets/screens/QiblaCompass.tsx`: import `CARDINAL_ANGLES` (not
   `resolveCardinals`) and `TSpan`; map it, drawing the number as the `<Text>` child at
   `facePoint(angle, radius * FACE.cardinal)` and the degree circle as a nested `TSpan`
   with `fontSize={radius * FACE.cardinalSize * FACE.degree}` and
-  `baselineShift={'super'}`.
+  `dy={-radius * FACE.cardinalSize * FACE.degreeLift}` (a negative `dy` raises it; `TSpan`
+  takes no `baselineShift` in these types).
 - The six catalogs: delete `qibla.cardinal.n/e/s/w` from each.
 - `shared/i18n/catalog-lock.json`: re-take with `node scripts/catalog-lock.mjs`
   (`yarn i18n:lock`), because the en catalog changed.

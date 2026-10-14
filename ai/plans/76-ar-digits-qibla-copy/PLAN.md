@@ -269,12 +269,12 @@ reader hears each sentence once.
 
 The compass ring (step 2b, section 0): the four cardinals are no longer copy. The module
 holds `CARDINAL_ANGLES = [0, 90, 180, 270]`; the dial draws each as SVG text on its own
-bearing, with the degree circle a smaller `TSpan` raised by `baselineShift={'super'}` at
-the number's top right. `baselineShift={'super'}` is a keyword, not a measured offset, so
-no per-font number enters the module; both react-native-svg platforms resolve it from the
-font's own superscript data (`RNSVGTSpan.mm`, `TSpanView.java`). One sentence a test can
-check: the dial draws the same four numbers, each with its degree circle, under every
-shipped locale, because it reads no locale at all.
+bearing, with the degree circle a smaller `TSpan` raised by a negative `dy`, both sizes
+as `FACE` ratios (`degree`, `degreeLift`) rather than numbers invented at the draw site.
+`TSpan` takes no `baselineShift` in this react-native-svg's types, and `dy` is the typed,
+per-platform way to raise it. One sentence a test can check: the dial draws the same four
+numbers, each with its smaller raised degree circle, under every shipped locale, because
+it reads no locale at all.
 
 **Acceptance criteria:**
 

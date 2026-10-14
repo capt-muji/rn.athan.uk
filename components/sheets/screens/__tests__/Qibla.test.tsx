@@ -2263,3 +2263,64 @@ describe('the readings a warm reopen is judged on', () => {
     judged.mockRestore();
   });
 });
+
+describe('the compass ring’s cardinal numbers on the drawn dial', () => {
+  // The ring is SVG, so its labels are read from the rendered tree: RNSVGText holds one child per label and a numeric
+  // child arrives as its own TSpan, so the labels are the TSpan `content` values under the dial. This is the render
+  // half of the owner's 2026-10-14 ruling (PLAN.md section 0); the unit suite proves the data is locale-free
+  type DialLabel = { content: string; dy?: number[]; fontSize?: number };
+
+  const dialLabels = (): { labels: DialLabel[]; numberSize: number } => {
+    const labels: DialLabel[] = [];
+    let numberSize = 0;
+    const walk = (node: unknown): void => {
+      if (node == null || typeof node !== 'object') return;
+      const n = node as { type?: unknown; props?: Record<string, unknown>; children?: unknown[] };
+      const font = n.props?.font as { fontSize?: number } | undefined;
+      if (n.type === 'RNSVGText' && typeof font?.fontSize === 'number') numberSize = font.fontSize;
+      if (n.type === 'RNSVGTSpan' && typeof n.props?.content === 'string') {
+        labels.push({
+          content: n.props.content,
+          dy: n.props.dy as number[] | undefined,
+          fontSize: font?.fontSize,
+        });
+      }
+      for (const child of n.children ?? []) walk(child);
+    };
+    walk(screen.getByTestId('qibla-dial').toJSON());
+    return { labels, numberSize };
+  };
+
+  it.each(LOCALE_IDS)('draws the four bearing numbers with their degree circles under %s', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      // The sheet's opener finds its title through the active catalog, since the title is localized
+      jest.useFakeTimers();
+      await render(<QiblaSheet />);
+      await fireEvent(screen.getByText(t('qibla.title')), 'change', 0);
+      await act(async () => {});
+      await reportHeadings(95);
+
+      const { labels, numberSize } = dialLabels();
+      const contents = labels.map((label) => label.content);
+      const numbers = contents.filter((content) => /^\d+$/.test(content));
+      const degrees = labels.filter((label) => label.content === '\u00B0');
+
+      // The two palettes stack the same dial, so each of the four bearings appears twice, in bearing order
+      expect(numbers).toEqual(['0', '90', '180', '270', '0', '90', '180', '270']);
+      expect(degrees).toHaveLength(8);
+      // Each degree circle is smaller than its number and raised above its line, at the number's top right
+      for (const degree of degrees) {
+        expect(degree.fontSize).toBeGreaterThan(0);
+        expect(degree.fontSize as number).toBeLessThan(numberSize);
+        expect(degree.dy?.[0]).toBeLessThan(0);
+      }
+      // No letter of the old ring survives in any language
+      for (const letter of ['N', 'E', 'S', 'W', 'ش', 'ق', 'ج', 'غ']) {
+        expect(contents).not.toContain(letter);
+      }
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+});

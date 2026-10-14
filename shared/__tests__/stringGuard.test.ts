@@ -119,11 +119,13 @@ describe('the string census guard', () => {
     expect(namesRows).toEqual([]);
   });
 
-  it('holds the compass cardinals in the catalog, not the module', () => {
+  it('holds the compass ring’s bearings as module data, not catalog copy', () => {
     const source = fs.readFileSync(path.join(ROOT, 'shared/qiblaCompass.ts'), 'utf8');
-    // The cardinal letters are copy (the ar dial reads ش/ق/ج/غ), so the module
-    // resolves them through t() and holds no letter literal of its own
-    expect(source).toContain("t('qibla.cardinal.n')");
+    // The owner's 2026-10-14 ruling made the ring the four Latin degree numbers,
+    // identical in every language, so the module holds no qibla.cardinal key and
+    // reads no catalog at all
+    expect(source).toContain('CARDINAL_ANGLES');
+    expect(source).not.toContain('qibla.cardinal');
     expect(source).not.toMatch(/letter: '/);
     const census = execFileSync('node', ['scripts/scan-strings.mjs', ''], {
       cwd: ROOT,

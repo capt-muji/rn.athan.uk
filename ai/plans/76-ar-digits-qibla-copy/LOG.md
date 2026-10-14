@@ -197,3 +197,44 @@ steps/2-digit-sweep.md superseded note; steps/3 and 4 re-versioned). New step 2b
 (`steps/2b-cardinal-numbers.md`) carries the rebuild. Version map from here: 2.0.605
 this amendment, 2.0.606 step 2b, 2.0.607 step 3, 2.0.608 step 4, audit fixes after.
 
+### Step 2b — done (the owner's rebuild)
+
+Red first, all three surfaces against the pre-change letters source (the source files
+reverted to the 2.0.605 head, the three test files carrying the new assertions):
+
+- `shared/__tests__/qiblaCompass.test.ts` (unit): `Tests: 3 failed, 25 passed, 28 total`
+  — the three `the cardinal numbers` tests, the import being `undefined` and the
+  deep-equal throwing.
+- `components/sheets/screens/__tests__/Qibla.test.tsx` (components): the six-locale
+  render sweep `Tests: 6 failed, 166 skipped, 172 total`, each case reading the letters
+  (N/E/S/W, ش/ق/ج/غ) the ring drew instead of the numbers.
+- `shared/__tests__/stringGuard.test.ts` (unit): `Tests: 1 failed, 6 passed, 7 total` —
+  the module named no `CARDINAL_ANGLES` and still held `qibla.cardinal`.
+
+Change, landed: `shared/qiblaCompass.ts` lost the `t` import, the `DialCardinal`
+interface and `resolveCardinals`, and gained `CARDINAL_ANGLES = [0, 90, 180, 270]` plus
+the `FACE.degree` (0.62) and `FACE.degreeLift` (0.36) ratios; `QiblaCompass.tsx` draws
+each bearing as SVG text with a smaller `TSpan` degree circle raised by a negative `dy`
+(TSpan takes no `baselineShift` in this library's types, caught by tsc on the first
+validate); the four `qibla.cardinal.*` keys left all six catalogs; the catalog lock was
+re-taken (`node scripts/catalog-lock.mjs`, en hash moved for all five).
+
+Green: the unit suites (qiblaCompass, stringGuard, catalogLock, catalogGates)
+`Tests: 88 passed, 88 total`; the component suites (Qibla, Explanation,
+typographySweep) `Tests: 242 passed, 242 total`; `yarn validate` clean
+(`Tests: 1 skipped, 5615 passed, 5616 total`, coverage 100/100/100/100).
+
+Break script, prediction written first (the two tests that assert the four numbers):
+`perl -0pi -e 's/\[0, 90, 180, 270\]/[0, 90, 180, 271]/' shared/qiblaCompass.ts` then
+the unit suite. Observed `Tests: 2 failed, 26 passed, 28 total`, exactly the two
+predicted (`prints the four bearings as Latin numbers` and `keeps the same four numbers
+under every shipped locale`); reverted, green again. The six-locale render sweep's guard
+is the red run above, where the letters failed it.
+
+Version 2.0.606. Commit message: `2.0.606 - feat(qibla): the compass ring prints the
+four bearings as Latin degree numbers, identical in every language (owner ruling
+2026-10-14)`.
+
+session: the lead (step 2b landed directly; no worker dispatched for the owner's ruling)
+
+
