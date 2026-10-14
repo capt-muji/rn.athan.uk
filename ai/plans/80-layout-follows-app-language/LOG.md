@@ -36,6 +36,24 @@ Break script `$TMPDIR/t80-break-1.sh` last line `ALL AS EXPECTED: 2`; both ar ca
 
 Version 2.0.405, `app.json` first then `package.json`, surgical line edits.
 
+Commit `f4363882`. Hook finding, recorded for the lead: the worktree had no `.husky/_` (husky's prepare never ran here), and git silently skips hooks when `core.hooksPath` is missing — the first commit attempt ran no gate at all. Repair: the shims were materialized with the repo's own husky CLI (`npx husky`, gitignored path, no dependency change), the unpushed commit was soft-reset and re-made so the gate genuinely ran on staged content. The hook's evidence: lint-staged (biome + `jest --bail --findRelatedTests` on the four staged files), then `yarn validate` (tsc, biome, `jest --silent --coverage`), then check-identifiers and check-changed-coverage; coverage summary Statements 100% (5285/5285), Branches 100% (2301/2301), Functions 100% (1102/1102), Lines 100% (4734/4734); `Tests:       2 skipped, 5574 passed, 5576 total`.
+
 Review verdict: cold pass — no visual value changed in states that render right today (the resolved direction equals the native answer under system-RTL+ar and system-LTR+en); the starved-state premise asserted in both suites; imports limited to the named ones plus the lead-adjudicated `await`; no what-comments added.
+
+session: ses_ec6683627ffeLg5INxlK8V41Yv
+
+### Step 2 — green
+
+Branch `ticket/80`, straight to the branch. The four anchors each count 1.
+
+Red, exactly as the plan names: `stores/__tests__/rtlSwitch.test.ts` 8 failed / 8 total — the shared `beforeEach` throws on the missing exports (`TypeError: Cannot read properties of undefined (reading 'write')` inside `atomWithStorageString`'s write path), the recorded whole-suite red; `__tests__/app/index.test.tsx` 1 failed / 43 passed — `the launch init and the relaunch handoff ... › skips the reopen on a context that consumed a language relaunch handoff` fails `Expected: not "NOTIFICATION: Android cold launch, reopening the refresh gate so alarms are re-armed"`, while the cold-launch guard case passes at 2.0.402 as the plan states.
+
+Contracts applied verbatim: `relaunchHandoffAtom` + `consumeRelaunchHandoff` beside `languageCommitBusyAtom` (with the plan's doc comments), the marker write as the try's first statement before `reloadAsync`, the clear in the catch before the warn, the index import extended with `consumeRelaunchHandoff`, the anchor block replaced by the handoff branch with its six-line comment.
+
+Green: `rtlSwitch` + `languageConvergence` 13 passed / 13 total (unit), `index.test` 44 passed / 44 total, and the untouched `rtlReloadBound` 5 passed / 5 total (R2.5's companion). `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0.
+
+Break script `$TMPDIR/t80-break-2.sh` last line `ALL AS EXPECTED: 1` (with the condition hard-wired false, the skip case fails on the reopen line; the grep found `skips the reopen`). Mutation pass, all from the restored original: (a) the condition inverted — both index handoff cases die on the reopen line; (b) the consume's clear removed — `consumes the marker exactly once` dies `Expected: "" / Received: "ar"` on its second assertion; (c) the catch's clear removed — `clears the marker when the relaunch is refused` dies `Expected: "" / Received: "ar"`. All restored after.
+
+Version 2.0.406, `app.json` first then `package.json`, surgical line edits. Review verdict: cold pass — the reopen still precedes `initializeNotifications` on a cold launch; the marker touches only whether the gate reopens, never what converges (the `reconcileLanguageSurfaces` chain is untouched and both suites assert its call); the new MMKV key is the plan's D3 name; no log line beyond the two named. The hook now runs in this worktree (`.husky/_` materialized at step 1, see above); its lines are recorded in this commit's log read.
 
 session: ses_ec6683627ffeLg5INxlK8V41Yv

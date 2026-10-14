@@ -28,6 +28,23 @@ export const languagePreferenceAtom = atomWithStorageString('preference_language
 export const languageCommitBusyAtom = atom(false);
 
 /**
+ * The D-relaunch handoff (row 80): written before a crossing's reloadAsync and consumed by
+ * the next context's launch init, so an in-process relaunch — where no force-stop cancelled
+ * any alarm — does not pay the cold-launch refresh-gate reopen (row 78's aggravator).
+ * '' means no handoff is held.
+ */
+export const relaunchHandoffAtom = atomWithStorageString('preference_language_relaunch_handoff', '');
+
+/** Reads and clears the marker in one step: the answer is whether this context began as a language relaunch */
+export const consumeRelaunchHandoff = (): boolean => {
+  const held = store.get(relaunchHandoffAtom);
+  if (held === '') return false;
+
+  store.set(relaunchHandoffAtom, '');
+  return true;
+};
+
+/**
  * Brings every notification surface to the active locale: reset the channel
  * dedup caches so the frozen ids re-create under the new names, then one locked
  * full pass re-arms copy at schedule time and re-pushes the widgets. The stamp
@@ -100,8 +117,10 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
       I18nManager.allowRTL(true);
       I18nManager.forceRTL(localeDirection(locale) === 'rtl');
       try {
+        store.set(relaunchHandoffAtom, locale);
         await Updates.reloadAsync();
       } catch (error) {
+        store.set(relaunchHandoffAtom, '');
         // A refused relaunch leaves the forced direction for the next launch
         // to apply; the switch itself completed (Error.tsx's guard shape).
         logger.warn('LANGUAGE: relaunch failed after the RTL flip', { error });
