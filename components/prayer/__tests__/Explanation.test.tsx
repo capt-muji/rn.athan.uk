@@ -65,7 +65,7 @@ describe('the explanation box under ar', () => {
 
       // The ar Suhoor sentence carries 20 minutes; the owner\u2019s numeral ruling keeps it Arabic-Indic
       expect(screen.getByText(/\u0662\u0660/)).toBeOnTheScreen();
-      expect(screen.queryByText(/^[0-9]$/)).toBeNull();
+      expect(screen.getByText(/\u0662\u0660/).props.children).not.toMatch(/[0-9]/);
     } finally {
       setActiveLocale('en');
     }
