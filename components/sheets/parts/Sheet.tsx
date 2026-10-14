@@ -203,8 +203,9 @@ export default function Sheet({
   );
 
   const ContentWrapper = scrollable ? BottomSheetScrollView : BottomSheetView;
+  // No scrollable in the app draws an indicator (owner ruling 2026-10-13); the library default is true at the pinned 5.2.14
   const contentStyle = scrollable
-    ? { contentContainerStyle: { paddingBottom: contentPadding } }
+    ? { contentContainerStyle: { paddingBottom: contentPadding }, showsVerticalScrollIndicator: false }
     : { style: { paddingBottom: contentPadding } };
 
   return (

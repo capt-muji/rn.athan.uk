@@ -76,6 +76,21 @@ describe('the reminder switch', () => {
     expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
+
+  it("borders its off state with the cards' edge colour", async () => {
+    await render(<Toggle value={false} onToggle={jest.fn()} />);
+
+    expect(screen.getByRole('switch')).toHaveStyle({
+      borderColor: 'rgba(99, 102, 241, 0.15)',
+      borderWidth: 1,
+    });
+  });
+
+  it('keeps its on state border unchanged', async () => {
+    await render(<Toggle value={true} onToggle={jest.fn()} />);
+
+    expect(screen.getByRole('switch')).toHaveStyle({ borderColor: '#672bcf' });
+  });
 });
 
 describe('the reminder switch while the Athan is off', () => {
