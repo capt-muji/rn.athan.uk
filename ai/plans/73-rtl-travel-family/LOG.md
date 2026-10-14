@@ -2,6 +2,11 @@
 
 ## Ticket 73
 
+## Decisions relayed to executors
+
+- 2026-10-14: the first executor dispatch was misread dead from a too-early tree snapshot; a second executor was dispatched onto the live first child, and the lead's cleanup (`git checkout --` on the step-1 test file, then a stash) raced the first child's mutation pass. The executor later logged this as an external `git reset --hard` at 06:33 and suspected the concurrent lane: the actor was the lead, and no run-78 command touched this worktree. The stash was dropped; root cause recorded — liveness reconciles now read the session store, never the tree alone.
+- 2026-10-14: the executor's STOP on step 1's mutation (c) is upheld. The Reanimated Jest mock evaluates `useAnimatedStyle` synchronously, so the animated transform entry shadows the static fallback in `toHaveStyle` and the static sign is unobservable in Jest; the plan's claim that the drawn transform is the static one was unproven theory. Mutation (c) is dropped from step 1 by the plan amendment of this date; (a) covers the step's changed guard and (b) the derived slot. Step 1 restarts cold from the amended plan (the lead, under the owner's run order, 2026-10-14).
+
 ## Planning (2026-10-14)
 
 - Worktree `$HOME/athan-gitree/run-73`, branch `ticket/73` off `b1bf6f89` (uat 2.0.255). The main checkout stays read-only; the owner's run order forbids merge, push and DONE this run.

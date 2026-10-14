@@ -377,10 +377,13 @@ Mutation pass, after green and before commit: apply each mutation alone, run the
 command, expect the named failure, revert by restoring the backup —
 (a) `const isRTL = false;` must fail both new tests (the break already proved this one),
 (b) in the derived value, `const slot = isRTL ? -selectedIndex : selectedIndex;` changed to
-`const slot = selectedIndex;` must fail both new tests,
-(c) the static fallback's template `` `${(isRTL ? -selectedIndex : selectedIndex) * 100}%` ``
-changed to `` `${selectedIndex * 100}%` `` must fail the first new test (the drawn transform
-is the static one before any worklet evaluation).
+`const slot = selectedIndex;` must fail both new tests.
+No third mutation: the static fallback's own sign was dropped at execution (the executor's
+finding, relayed 2026-10-14, upheld) — the Reanimated Jest mock evaluates `useAnimatedStyle`
+synchronously, so the animated transform entry shadows the static one in `toHaveStyle` and
+the static line's sign is unobservable in Jest; the step's changed line is the `isRTL`
+source, whose guard mutation (a) covers, and (b) additionally pins the derived slot. The
+static line itself is unchanged by this step.
 Record each mutation and its failing test name in `LOG.md`.
 
 Version and commit. Take the version lock (`mkdir $HOME/athan-gitree/version.lock`, retry in a
