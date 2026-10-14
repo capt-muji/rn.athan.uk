@@ -8,6 +8,7 @@ import { I18nManager } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION, SIZE } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 
 import Toggle from '../Toggle';
 
@@ -95,33 +96,37 @@ describe('the reminder switch while the Athan is off', () => {
   });
 });
 
-// The components project renders against the real I18nManager, so the direction the thumb
-// reads at render is forced here rather than through the shared react-native mock
-describe('the reminder switch under RTL', () => {
+// The thumb keys its direction on the active locale, not the bridge snapshot: a starved
+// crossing (row 78) renders the Arabic locale while I18nManager still reports the launch
+// direction, and the thumb left the track exactly there (row 73)
+describe('the reminder switch under the Arabic locale while the bridge still reports LTR', () => {
   beforeEach(() => {
-    jest
-      .spyOn(I18nManager, 'getConstants')
-      .mockReturnValue({ isRTL: true, doLeftAndRightSwapInRTL: true, localeIdentifier: 'ar' });
+    // The starved state needs the bridge still reporting the launch direction: the real jest
+    // bridge reports LTR, and a preset change that flips it would silently turn these into
+    // completed-crossing tests
+    expect(I18nManager.getConstants().isRTL).toBe(false);
+    setActiveLocale('ar');
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    setActiveLocale('en');
   });
 
   // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame
-  it('draws its thumb settled at the leading side when mounted on', async () => {
+  it('draws its thumb settled at the mirrored on position when mounted on', async () => {
     await render(<Toggle value onToggle={jest.fn()} />);
 
     expect(thumb()).toHaveStyle({ transform: [{ translateX: -SIZE.toggle.translateX }] });
   });
 
   // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
-  it('animates its thumb to the leading side when the value changes after mount', async () => {
+  it('animates its thumb to the mirrored on position when the value changes after mount', async () => {
     const withTiming = jest.spyOn(Reanimated, 'withTiming');
     await render(<Toggle value={false} onToggle={jest.fn()} />);
 
     await screen.rerender(<Toggle value onToggle={jest.fn()} />);
 
     expect(withTiming).toHaveBeenCalledWith(-SIZE.toggle.translateX, { duration: ANIMATION.duration });
+    expect(withTiming).not.toHaveBeenCalledWith(SIZE.toggle.translateX, { duration: ANIMATION.duration });
   });
 });

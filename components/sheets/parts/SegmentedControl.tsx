@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { I18nManager, type LayoutChangeEvent, Pressable, StyleSheet, View } from 'react-native';
+import { type LayoutChangeEvent, Pressable, StyleSheet, View } from 'react-native';
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
@@ -11,7 +11,7 @@ import Animated, {
 
 import { IconView } from '@/components/ui';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
-import { currentLocaleId } from '@/shared/i18n/locale';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import type { AlertType, Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 
@@ -119,8 +119,11 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
   const [containerWidth, setContainerWidth] = useState(0);
   const padding = 3;
   const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
-  // RTL mirrors the pill's slot: the layout swap owns the inset keys, so the index mirrors here
-  const isRTL = I18nManager.getConstants().isRTL;
+  // RTL mirrors the pill's slot: the layout swap owns the inset keys, so the index mirrors
+  // here. The locale's own direction, not the bridge snapshot: a starved crossing (row 78)
+  // renders Arabic while I18nManager still reports the launch direction, and the pill's
+  // English travel then exits the screen under the RTL layout (row 73)
+  const isRTL = localeDirection(currentLocaleId()) === 'rtl';
   const optionWidth = containerWidth > 0 ? (containerWidth - padding * 2) / options.length : 0;
 
   // The indicator's position is percent-of-own-width — the pill's width IS one
