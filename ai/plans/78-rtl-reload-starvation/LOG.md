@@ -130,4 +130,38 @@ count check prints `1`. Note: the contract's parenthetical end-point
 bound together with the pinned race statement and the later `if`, so the
 anchor covers the bounded-await region the change replaces.
 
+Commit note: the first commit (`f5c7389f`) ran with no hooks — this worktree
+lacks the generated `.husky/_` that `core.hooksPath` points at (husky's
+install output is gitignored and the worktree never ran `yarn husky`), so the
+gate never executed. The repo's own setup command (`yarn husky`, the
+`prepare` script's command) generated the hooks directory, and the commit was
+amended (`--amend --no-edit`, unpushed tip) so the gate ran on the identical
+tree. Amended sha `00cf7c0f`. The hook chain
+(`check-identifiers` → `lint-staged` → `yarn validate` →
+`check-changed-coverage`) passed: `Tests: 2 skipped, 5568 passed, 5570 total`,
+211 suites, coverage 100% statements (5282/5282), branches (2299/2299),
+functions (1102/1102), lines (4731/4731). Cold review of `git show` against
+the review checklist and the shipped classes: clean (files exactly the step's
+list; `crossesBoundary` computed once and reused; timer cleared on the settle
+path; healthy-path statements untouched; no console, no real clock, no
+residue — the anchor updated in-commit).
+
+session: ses_ec72eba7effeUhXvEF8IwfxLob
+
+### Step 2 — done
+
+Branch `ticket/78`, version 2.0.303. Pre-flight `PREFLIGHT OK` against the
+step 1 commit. No red tests: a records step (R3.1 checked by the audit
+reading the file). `bash scripts/check-plan.sh ai/plans/78-rtl-reload-starvation`
+prints `PLAN OK`. `FINDINGS.md` written per the step's change contract: the
+verdict sentence, the evidence chain (71's D91 table via `PLAN.md` section 4,
+the missing dequeue line as discriminator, the missing `Updates state change:
+Restart` clearing the native leg via `updates-js-reload.txt` and
+`updates-recreate-procedure.txt`, drive 3's late init), the cleared suspects
+(direction branch, native chain, `forceRTL`), the condemned await and the
+launch-init latch left untouched as the aggravator (D78.3), the fix's
+contract, and the residual with the device waiver. Every claim names its
+source; no model, serial, place or person named; the queue cell and docs
+message stay in `PLAN.md` section 8.
+
 session: ses_ec72eba7effeUhXvEF8IwfxLob
