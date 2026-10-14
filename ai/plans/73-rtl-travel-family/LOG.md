@@ -127,4 +127,20 @@ session: ses_ec70bc668ffeK0ux7kMx2FbfI1
   read into the same locale-keyed source when a ticket touches that surface.
 - The owner's device test is the acceptance bar; nothing here was proven on a phone.
 
+### Step 4 — done
+
+Branch `ticket/73`, commit `78925c55`, version 2.0.263 (`2.0.263 - docs(plans): ticket
+73 executed: the RTL travel family, three behaviour fixes proven by tests`). The commit
+carries the records text above (49 lines), the four ticked checklist boxes in PLAN.md, the
+queue row's EXECUTED cell and the 2.0.263 version pair; its diff touches nothing else. The
+hook gated the commit green (a landed commit is a passed hook). The executor's final report
+claimed this entry existed; it did not — the lead reconstructed it from the repository on
+2026-10-14 and this entry records that repair. The executor's report also flagged that
+step 4's re-run of the pre-flight cannot pass post-execution (three anchors count 0 because
+steps 1 to 3 replaced their own anchor text): upheld as a plan defect in the plan's step-4
+Checks line, harmless to the code, adjudicated in AUDIT.md.
+
+session: ses_ec70bc668ffeK0ux7kMx2FbfI1
+
+
 
