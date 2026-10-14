@@ -83,8 +83,8 @@ delegation.
 `scripts/preflight-80.sh` in this folder. The executor saves a copy to `$TMPDIR` and
 runs it from there against the worktree `$HOME/athan-gitree/run-80`. It checks the
 branch is `ticket/80`, the tree is clean, HEAD sits at or past `1b0d5229`, the version is
-at least 2.0.403, no `uat` checkout happened, and every anchor counts 1. It ends
-`PREFLIGHT OK`.
+at least 2.0.403, `app.json` and `package.json` agree, rows 73 and 78 are DONE, and every
+anchor counts 1. It ends `PREFLIGHT OK`.
 
 ## 4. Background the executor needs
 
@@ -103,7 +103,7 @@ Files read, one line each (anchors under `scripts/anchors/`):
 - `shared/qiblaWave.ts` — the wave arithmetic; `isRTL` is a boolean parameter end to end, so the re-key changes one read site.
 - `components/sheets/screens/ColorPicker.tsx` — lines 102-106: the picker's direction keyed on the same bridge snapshot the library snapshotted (row 73's fix, stays by D5); the comment's premise this row changes.
 - `components/ui/Error.tsx` — the app's other `Updates.reloadAsync` caller (the error screen's reload); it keeps today's behavior.
-- Existing tests: `stores/__tests__/bootstrap.test.ts` (the launch direction block), `stores/__tests__/rtlSwitch.test.ts` (crossing order), `stores/__tests__/rtlReloadBound.test.ts` (row 78's cap), `stores/__tests__/languageConvergence.test.ts` (the stamp), `__tests__/app/_layout.test.ts` (renders `Layout`), `__tests__/app/index.test.tsx` (the launch init), `shared/__mocks__/react-native.ts` (the stateful I18nManager mock).
+- Existing tests: `stores/__tests__/bootstrap.test.ts` (the launch direction block), `stores/__tests__/rtlSwitch.test.ts` (crossing order), `stores/__tests__/rtlReloadBound.test.ts` (row 78's cap), `stores/__tests__/languageConvergence.test.ts` (the stamp), `__tests__/app/_layout.test.tsx` (renders `Layout`), `__tests__/app/index.test.tsx` (the launch init), `shared/__mocks__/react-native.ts` (the stateful I18nManager mock).
 
 ### 4.2 How the pieces interact, and why the obvious fix is wrong
 
@@ -198,6 +198,7 @@ inventory in step 1 names every one and the same style lands there.
 - [R1.1] WHEN `Layout` renders THE SYSTEM SHALL set the tree root's `direction` style to `localeDirection(currentLocaleId())`.
 - [R1.2] WHEN no language preference is stored THE SYSTEM SHALL resolve the initial locale from the device and lay out in that locale's direction.
 - [R1.3] WHEN the active locale switches between LTR and RTL THE SYSTEM SHALL re-render the tree root with the new locale's direction in the same render that remounts the content.
+- [R1.4] WHEN the picker modal's overlay renders THE SYSTEM SHALL carry `direction: localeDirection(currentLocaleId())` on the overlay root inside the native Modal host.
 - [R2.1] WHEN a language crossing relaunches the app THE SYSTEM SHALL leave a handoff marker that the next launch init consumes exactly once.
 - [R2.2] WHEN the launch init runs in a context that consumed a handoff marker THE SYSTEM SHALL NOT reopen the notification refresh gate.
 - [R2.3] WHEN the launch init runs in a context that consumed no handoff marker THE SYSTEM SHALL reopen the notification refresh gate exactly as it does at 2.0.402.
@@ -220,7 +221,8 @@ version, `app.json` and `package.json` bumped together, red before green, full c
 of touched lines, a mutation pass on guarded logic, `npx tsc --noEmit` and
 `npx biome check . --error-on-warnings` at 0. Steps run in the worktree
 `$HOME/athan-gitree/run-80` on branch `ticket/80`; nothing merges to `uat`, nothing
-pushes, no step checks out `uat`.
+pushes, no step checks out `uat`. The version ladder: 2.0.403 the planning skeleton,
+2.0.404 the lead's ready-plan commit, then 2.0.405 to 2.0.408 for steps 1 to 4.
 
 ## 7. Device proof
 
@@ -264,7 +266,7 @@ Anticipated review fixes, word for word:
 - Step 3: "the comment still names the live locale" — the step's contract carries the replacement text verbatim.
 
 Restore lists: each step's files restore with `git checkout -- <file>` from the branch
-head before it; the two new suites delete with `rm`.
+head before it; the one new suite (step 3's `QiblaWave.test.tsx`) deletes with `rm`.
 
 ## 11. Subagents
 
