@@ -80,3 +80,51 @@ Break script `$TMPDIR/t80-break-3.sh` last line `ALL AS EXPECTED: 1` — the rev
 Version 2.0.407, `app.json` first then `package.json`, surgical line edits. Review verdict: cold pass — no drawing constant moved (`shared/qiblaWave.ts` untouched; the component's only new props are the testID and the re-keyed boolean); the picker diff is two comment blocks and nothing else; the new suite asserts the starved-state premise explicitly (`I18nManager.getConstants().isRTL` false while the mirrored path is drawn).
 
 session: ses_ec6683627ffeLg5INxlK8V41Yv
+
+## Findings (executed)
+
+- The React tree's root (`GestureHandlerRootView`, app/_layout.tsx) and the picker modal's
+  overlay host (the app's one native-host root, ColorPicker.tsx) carry
+  `direction: localeDirection(currentLocaleId())`: the layout follows the SELECTED app
+  language in every launch state, and the system locale resolves the initial default only
+  (her XS ruling). Proven red-first: the en case failed `Expected: "ltr" / Received:
+  undefined` and both ar cases `Expected: "rtl" / Received: undefined` (the root's style
+  had no `direction` key), and both picker cases `Unable to find an element with testID:
+  picker-modal-root`; green 30/30 cases across the two suites; mutations (a) the root
+  `direction` → `'ltr'` killing both _layout ar cases, (b) the modal's → `'ltr'` killing
+  the modal ar case (`Expected: "rtl" / Received: "ltr"`), (c) the modal's → `'rtl'`
+  killing the LTR case's overlay assertion (`Expected: "ltr" / Received: "rtl"`); break
+  `ALL AS EXPECTED: 2`.
+- The crossing's relaunch context consumes a one-shot handoff marker
+  (`preference_language_relaunch_handoff`, owner-delegated) written before `reloadAsync`
+  and cleared on a refused reload, and the launch init skips the cold-launch
+  refresh-gate reopen on that answer: an in-process reload cancels no alarm, so the reopen
+  stays a cold-launch concern (row 78's aggravator closed). Convergence itself is
+  untouched: `reconcileLanguageSurfaces` still runs in every launch context, the
+  stamp semantics and the languageConvergence suite unchanged (all 5 green). The
+  notification-language diagnosis recorded: an English Maghrib while the app spoke Arabic
+  was convergence not yet landed — copy is baked at arm time — now bounded by row 78's
+  10 s cap, the relaunch, and the relaunch context's own reconcile.
+- The Qibla calibration wave mirrors on the locale's own direction (row 73's reported
+  sibling read folded in), proven by the new suite's ar case red-first against the bridge
+  read; the picker keeps its snapshot keying with both premise comments restated.
+- The en-countdown colon observation needs no fix: row 82 ruled one colon design in every
+  language (row 84 carries it; row 85 would restore the en letters only when she says go).
+- Versions 2.0.405, 2.0.406, 2.0.407 landed on `ticket/80` (2.0.403 planning, 2.0.404 the
+  ready plan, 2.0.408 this commit); `yarn validate` green at the head; the identifier
+  gate clean. Device work waived by the owner's run order 2026-10-14: her device test is
+  the acceptance bar.
+
+### Step 3 commit record (added at step 4)
+
+Step 3 landed as `88caba8d`; its hook's evidence: coverage summary Statements 100% (5296/5296), Branches 100% (2305/2305), Functions 100% (1103/1103), Lines 100% (4744/4744); `Tests:       2 skipped, 5582 passed, 5584 total`.
+
+### Step 4 — executed
+
+Branch `ticket/80`, straight to the branch. No anchor: a docs step, no production file touched.
+
+Contracts applied: the findings text above under `## Findings (executed)` with every placeholder replaced by this run's measured values (step 1 red shapes and 30/30 green; step 2's languageConvergence at 5/5, index 44/44, rtlReloadBound 5/5; step 3's red-first ar case and its records); the queue row 80's status cell became `EXECUTED 2026-10-14, awaiting audit` (one-line row change, the row's six pipes intact, verified by field-splitting the row); all four checklist boxes ticked; versions 2.0.405-2.0.408 recorded.
+
+Version 2.0.408, `app.json` first then `package.json`, surgical line edits. Review verdict: cold pass — the findings carry only values these steps measured; the queue row parses (one line changed, cells intact); no code file in the diff.
+
+session: ses_ec6683627ffeLg5INxlK8V41Yv
