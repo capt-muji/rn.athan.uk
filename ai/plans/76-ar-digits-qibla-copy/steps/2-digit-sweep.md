@@ -43,18 +43,20 @@ ar), then `yarn validate`.
 Break script (run after green, revert immediately):
 
 ```bash
-# Break the digit law in the renderer; the ar rows must fail
+# Break the digit law in the renderer; the digit-carrying ar rows must fail
 perl -0pi -e 's/\{localizeDigits\(explanation\)\}/\{explanation\}/' components/prayer/Explanation.tsx
 npx jest components/prayer/__tests__/Explanation.test.tsx --watchman=false --selectProjects=components
-# Expected: the six ar sweep rows AND the existing ar Suhoor test (its ٢٠ matcher
-# finds Latin 20) fail on ASCII digits; every en and non-ar row stays green. Revert:
+# Expected: 3 failed, 33 passed — the existing ar Suhoor test, the ar suhoor sweep
+# row and the ar duha sweep row (the only digit-carrying ar sentences: ar.ts:152-153;
+# the other three ar rows carry no ASCII digit and stay green by design). Revert:
 git checkout -- components/prayer/Explanation.tsx
 npx jest components/prayer/__tests__/Explanation.test.tsx --watchman=false --selectProjects=components
 # Expected: green again
 ```
 
-Version and commit: 2.0.603 in both files. Commit message:
-`2.0.603 - test(i18n): the five Extras boxes swept across the six locale digit laws; the ar compass cardinals locked to the dial convention`.
+Version and commit: 2.0.604 in both files (2.0.603 was consumed by the step-2 stop
+record, commit `866c011b`). Commit message:
+`2.0.604 - test(i18n): the five Extras boxes swept across the six locale digit laws; the ar compass cardinals locked to the dial convention`.
 
 Review: the sweep must read the catalogs through `t()` at the active locale (never
 hardcode the six strings in the test), and the cardinal test must read its letters
@@ -63,4 +65,4 @@ through `t()` too, so a future catalog change moves the test with the catalog.
 Merge: none this run.
 
 Done when: the break run's failing lines are in LOG.md, both suites and
-`yarn validate` are green, and the commit is on `ticket/76` at 2.0.603.
+`yarn validate` are green, and the commit is on `ticket/76` at 2.0.604.
