@@ -40,9 +40,9 @@ describe('the location and date lines', () => {
       const location = screen.getByText('لندن، المملكة المتحدة');
       const lines = location.parent?.children ?? [];
       const dateStyle = flattenStyle((lines[1] as unknown as { props: { style: unknown } }).props.style);
-      // The owner's ruling, 2026-10-14: tight enough to close the ar gap, tall enough to clear the ascenders
-      expect(flattenStyle(location.props.style).lineHeight).toBe(24);
-      expect(dateStyle.lineHeight).toBe(27);
+      // The owner's ruling, 2026-10-14: the ar block measures what the English block measures
+      expect(flattenStyle(location.props.style).lineHeight).toBe(19);
+      expect(dateStyle.lineHeight).toBe(21);
     } finally {
       setActiveLocale('en');
     }

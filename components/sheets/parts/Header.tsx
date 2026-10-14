@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: ty.size(22),
+    lineHeight: ty.blockLineHeight(ty.size(22)),
     fontFamily: ty.familyMedium,
     color: '#fff',
     letterSpacing: ty.letterSpacing(-0.3),
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: ty.size(TEXT.sizeDetail),
+    lineHeight: ty.blockLineHeight(ty.size(TEXT.sizeDetail)),
     fontFamily: ty.familyRegular,
     color: COLORS.text.sheetSubtitle,
     marginTop: SPACING.xs,

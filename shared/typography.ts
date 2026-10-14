@@ -26,7 +26,12 @@ export interface LocaleTypography {
   wordFace: boolean;
   /** The record's script needs a taller line box than its size suggests (ar's clamped blocks); absent when the font's own metrics serve */
   scriptLineHeight?: (n: number) => number;
+  /** The box the platform's Latin default gives at this size, so an Arabic surface measures what its English twin measures; undefined on the Latin records, where the font's own box is the target */
+  blockLineHeight: (n: number) => number | undefined;
 }
+
+/** Roboto's own ascent plus descent (2400/2048): the box the Latin records already render */
+const LATIN_LINE_RATIO = 1.171875;
 
 const ARABIC: LocaleTypography = {
   familyRegular: 'NotoSansArabic-Regular',
@@ -39,6 +44,7 @@ const ARABIC: LocaleTypography = {
   letterSpacing: () => 0,
   wordFace: true,
   scriptLineHeight: (n) => Math.round(n * 1.5),
+  blockLineHeight: (n) => Math.round(n * LATIN_LINE_RATIO),
 };
 
 const LATIN: LocaleTypography = {
@@ -51,6 +57,7 @@ const LATIN: LocaleTypography = {
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
   wordFace: false,
+  blockLineHeight: () => undefined,
 };
 
 /** One record per shipped locale: a new language adds its entry here, its numerals to
