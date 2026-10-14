@@ -31,17 +31,28 @@ export const languageCommitBusyAtom = atom(false);
  * The D-relaunch handoff (row 80): written before a crossing's reloadAsync and consumed by
  * the next context's launch init, so an in-process relaunch — where no force-stop cancelled
  * any alarm — does not pay the cold-launch refresh-gate reopen (row 78's aggravator).
- * '' means no handoff is held.
+ * The value is the write's epoch ms: '' means no handoff is held, and a marker too old to
+ * be the one this context followed is dead, never consumed.
  */
 export const relaunchHandoffAtom = atomWithStorageString('preference_language_relaunch_handoff', '');
 
-/** Reads and clears the marker in one step: the answer is whether this context began as a language relaunch */
+/** How long a handoff stays believable: the reload-to-consume span is seconds, not minutes */
+const RELAUNCH_HANDOFF_FRESH_MS = 60_000;
+
+/**
+ * Reads and clears the marker in one step: the answer is whether this context began as a
+ * language relaunch a moment ago. A process death can strand a written marker past the
+ * reload it announced, and the cold launch that finds it still needs its gate reopen.
+ */
 export const consumeRelaunchHandoff = (): boolean => {
   const held = store.get(relaunchHandoffAtom);
   if (held === '') return false;
 
   store.set(relaunchHandoffAtom, '');
-  return true;
+  const writtenAt = Number.parseInt(held, 10);
+  if (Number.isNaN(writtenAt)) return false;
+
+  return Date.now() - writtenAt <= RELAUNCH_HANDOFF_FRESH_MS;
 };
 
 /**
@@ -124,7 +135,7 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
         // Only a settled pass earns the handoff: a capped crossing's in-flight work can
         // land beside the relaunch context, and the cold-launch reopen it then keeps is
         // what buys the full pass whose sweep finds what landed
-        if (passSettled) store.set(relaunchHandoffAtom, locale);
+        if (passSettled) store.set(relaunchHandoffAtom, String(Date.now()));
         await Updates.reloadAsync();
       } catch (error) {
         store.set(relaunchHandoffAtom, '');

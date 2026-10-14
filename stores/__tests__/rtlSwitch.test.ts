@@ -95,8 +95,8 @@ describe('the relaunch handoff', () => {
 
     await commitLanguagePreference('ar');
 
-    expect(markerAtReload).toBe('ar');
-    expect(store.get(relaunchHandoffAtom)).toBe('ar');
+    expect(Number.parseInt(markerAtReload, 10)).not.toBeNaN();
+    expect(store.get(relaunchHandoffAtom)).toBe(markerAtReload);
   });
 
   it('clears the marker when the relaunch is refused, so a later cold launch reopens the gate', async () => {
@@ -108,11 +108,37 @@ describe('the relaunch handoff', () => {
   });
 
   it('consumes the marker exactly once: true then cleared, false when none was held', () => {
+    jest.useFakeTimers({ now: 100_000 });
+
+    try {
+      store.set(relaunchHandoffAtom, '99000');
+
+      expect(consumeRelaunchHandoff()).toBe(true);
+      expect(store.get(relaunchHandoffAtom)).toBe('');
+      expect(consumeRelaunchHandoff()).toBe(false);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it('ignores and clears a stale marker, so one stranded by a dead process cannot skip a cold launch reopen', () => {
+    jest.useFakeTimers({ now: 61_000 });
+
+    try {
+      store.set(relaunchHandoffAtom, '0');
+
+      expect(consumeRelaunchHandoff()).toBe(false);
+      expect(store.get(relaunchHandoffAtom)).toBe('');
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it('treats a non-numeric marker as no handoff: cleared and refused', () => {
     store.set(relaunchHandoffAtom, 'ar');
 
-    expect(consumeRelaunchHandoff()).toBe(true);
-    expect(store.get(relaunchHandoffAtom)).toBe('');
     expect(consumeRelaunchHandoff()).toBe(false);
+    expect(store.get(relaunchHandoffAtom)).toBe('');
   });
 
   it('marks nothing on a same-direction switch', async () => {
