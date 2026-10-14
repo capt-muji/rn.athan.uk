@@ -13,9 +13,6 @@ const MINUTE = 60_000;
 /** A time the mock wrote for the London day of `readAt`, as the instant the app reads it as */
 const instantOf = (readAt: Date, time: string) => createPrayerDatetime(formatDateShort(readAt), time).getTime();
 
-/** The first whole minute at least 1 minute after the download — the mock's anchor */
-const anchorAt = (readAt: Date) => new Date(Math.ceil((readAt.getTime() + MINUTE) / MINUTE) * MINUTE);
-
 afterEach(() => {
   jest.useRealTimers();
 });
@@ -23,23 +20,24 @@ afterEach(() => {
 describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in London', () => {
   // On a whole minute, a millisecond past it, and a millisecond before the next: times carry no seconds
   it.each(['2026-09-15T14:30:00.000Z', '2026-09-15T14:30:00.001Z', '2026-09-15T14:30:59.999Z'])(
-    'puts Asr next, 1 to 3 minutes out, after a download at %s, with Fajr, Sunrise and Dhuhr passed',
+    'puts Isha next, 75 to 134 seconds out, after a download at %s, with the five before it passed',
     (iso) => {
       const readAt = new Date(iso);
       jest.useFakeTimers({ now: readAt });
 
       const today = MOCK_DATA_SIMPLE.times[formatDateShort(readAt)];
-      const anchor = anchorAt(readAt);
 
-      const asr = instantOf(readAt, today.asr);
-      expect(asr - anchor.getTime()).toBe(MINUTE);
-      expect(asr - readAt.getTime()).toBeGreaterThan(MINUTE);
-      expect(asr - readAt.getTime()).toBeLessThanOrEqual(3 * MINUTE);
-      for (const before of [today.fajr, today.sunrise, today.dhuhr]) {
+      const isha = instantOf(readAt, today.isha);
+      const magrib = instantOf(readAt, today.magrib);
+      expect(isha - readAt.getTime()).toBeGreaterThanOrEqual(75 * 1000);
+      expect(isha - readAt.getTime()).toBeLessThan(75 * 1000 + MINUTE);
+      for (const before of [today.fajr, today.sunrise, today.dhuhr, today.asr, today.magrib]) {
         expect(instantOf(readAt, before)).toBeLessThan(readAt.getTime());
       }
-      expect(instantOf(readAt, today.magrib) - asr).toBe(MINUTE);
-      expect(instantOf(readAt, today.isha) - instantOf(readAt, today.magrib)).toBe(MINUTE);
+      expect(magrib - instantOf(readAt, today.asr)).toBe(MINUTE);
+      expect(readAt.getTime() - magrib).toBeGreaterThanOrEqual(MINUTE);
+      expect(readAt.getTime() - magrib).toBeLessThanOrEqual(2 * MINUTE);
+      expect(isha - magrib).toBeGreaterThan(2 * MINUTE);
     }
   );
 

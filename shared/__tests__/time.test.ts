@@ -233,8 +233,18 @@ describe('splitColonSections', () => {
     expect(splitColonSections('25:00')).toEqual([
       { text: '25', dim: false, colon: false },
       { text: ':', dim: true, colon: true },
-      { text: '00', dim: true, colon: false },
+      { text: '00', dim: false, colon: false },
     ]);
+  });
+
+  it('dims a zero group only once every larger group has also spent to zero', () => {
+    // 24:00 keeps its minutes bright: the hours are still counting
+    expect(splitColonSections('24:00:50')?.[2].dim).toBe(false);
+    expect(splitColonSections('24:00:50')?.[4].dim).toBe(false);
+    // 00:00 dims both, with the seconds always bright
+    expect(splitColonSections('00:00:45')?.[0].dim).toBe(true);
+    expect(splitColonSections('00:00:45')?.[2].dim).toBe(true);
+    expect(splitColonSections('00:00:45')?.[4].dim).toBe(false);
   });
 
   it('reads the digit groups and dims the zero groups', () => {
@@ -248,7 +258,7 @@ describe('splitColonSections', () => {
     expect(splitColonSections('00:01:00')?.[4].dim).toBe(false);
     expect(splitColonSections('00:01:00')?.[0].dim).toBe(true);
     expect(splitColonSections('00:00:59')?.[2].dim).toBe(true);
-    expect(splitColonSections('25:00')?.[2].dim).toBe(true);
+    expect(splitColonSections('25:00')?.[2].dim).toBe(false);
   });
 
   it('returns null for every string that is not an all-digit colon shape', () => {
