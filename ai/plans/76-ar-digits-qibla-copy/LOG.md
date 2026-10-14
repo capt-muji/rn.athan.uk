@@ -66,3 +66,45 @@ Findings, each written when taken:
 - `android/` is gitignored and absent in the worktree; the lockstep test accepts the
   absent file and asserts the gitignore, so only `app.json` and `package.json` carry
   the bumps.
+
+### Step 01 — done
+
+Branch `ticket/76`, commit directly on it. Preflight: `PREFLIGHT OK` (script copied
+to `$TMPDIR`, run from the worktree root; all seven anchors counted 1).
+
+Red first: the two subtitle testIDs added to `Qibla.tsx` (the donor id stays off,
+which is the change under test), then the test edits of the step file — helper moved
+to testID lookups, the four text-keyed subtitle tests re-keyed to the ids, the
+wider-line test renamed to its post-fix invariant with both measured en widths kept
+in its comment (158.6dp in flow, 150.4dp absolute), the en donor test and the
+six-locale `it.each` sweep over `LOCALE_IDS` added. Red run (`npx jest
+components/sheets/screens/__tests__/Qibla.test.tsx --watchman=false
+--selectProjects=components`): `Tests: 7 failed, 159 passed, 166 total`, every
+failure the plan's line —
+
+    Unable to find an element with testID: qibla-subtitle-donor
+
+— across `sizes its box to the wider of its two sentences under en` and the six
+`in each shipped locale: en|ar|ms|so|hi|th` cases. No other test failed.
+
+Change: the zero-height donor `Text` between the two lines (testID
+`qibla-subtitle-donor`, `accessibilityElementsHidden`,
+`importantForAccessibility={'no-hide-descendants'}`, `numberOfLines={1}`, style
+`[styles.subtitleText, styles.subtitleDonor]`, content `t('qibla.subtitleReady')`,
+one-line why comment); the text metrics hoisted once as `subtitleText` and shared by
+`styles.subtitle` (plus `marginTop`), `styles.subtitleDonor` (plus `height: 0,
+opacity: 0`, no margin, no position), and the `styles.subtitleText` key itself.
+
+Green: same command — `Tests: 166 passed, 166 total`. `yarn validate` clean (tsc,
+Biome, Jest 5577 passed, 2 skipped; one Biome format pass applied to the wrapped
+JSX attribute brackets, `yarn format`, no other file touched).
+
+Break script, run with the change staged so `git checkout --` restores it from the
+index: `Tests: 7 failed, 159 skipped, 166 total` — the en case and the six locale
+cases, exactly the plan's seven. Reverted; the donor id re-counted 1 in `Qibla.tsx`.
+
+Versions: `app.json` then `package.json` to 2.0.602. Commit: `2.0.602 - fix(qibla):
+the subtitle box sizes to the wider sentence in every language, so the ready line
+never truncates under ar`.
+
+session: ses_ec63996c6ffeqGuyw8XgOwbyVh

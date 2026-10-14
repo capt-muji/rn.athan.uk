@@ -9,6 +9,8 @@ import { Dimensions, Linking, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import type { FusedHeading } from '@/modules/qiblaheading';
+import { t } from '@/shared/i18n';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import * as qiblaSettle from '@/shared/qiblaSettle';
 import { WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
@@ -205,8 +207,8 @@ const waved = (turns: number, headingDegrees = 95): FusedHeading[] =>
   Array.from({ length: turns + 1 }, (_, turn) => ({ headingDegrees, attitude: tipped(turn * 31) }));
 
 /** How much of a subtitle line shows: the two are stacked, and only this tells them apart on screen */
-const subtitleOpacity = (text: string) =>
-  (StyleSheet.flatten(screen.getByText(text).props.style) as { opacity?: number }).opacity;
+const subtitleOpacity = (testID: string) =>
+  (StyleSheet.flatten(screen.getByTestId(testID).props.style) as { opacity?: number }).opacity;
 
 beforeEach(() => {
   mockWatchers.length = 0;
@@ -236,7 +238,7 @@ describe('the qibla sheet before it is opened', () => {
   it('tells the user what to do without naming a number to read', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
+    expect(screen.getByTestId('qibla-subtitle-ready')).toBeOnTheScreen();
   });
 
   // Both lines are mounted the whole time and cross-faded, so the header keeps one height: a swap in place
@@ -244,35 +246,70 @@ describe('the qibla sheet before it is opened', () => {
   it('carries both subtitles, so the change costs a fade rather than a resize', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Follow below instructions')).toBeOnTheScreen();
-    expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
+    expect(screen.getByTestId('qibla-subtitle-waiting')).toBeOnTheScreen();
+    expect(screen.getByTestId('qibla-subtitle-ready')).toBeOnTheScreen();
   });
 
   it('caps both subtitles at one line, so the header keeps its height', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Follow below instructions').props.numberOfLines).toBe(1);
-    expect(screen.getByText('Hold flat and turn slowly').props.numberOfLines).toBe(1);
+    expect(screen.getByTestId('qibla-subtitle-waiting').props.numberOfLines).toBe(1);
+    expect(screen.getByTestId('qibla-subtitle-ready').props.numberOfLines).toBe(1);
   });
 
   // An absolutely positioned child contributes NO width, so the line taken out of flow cannot widen the container.
-  // Leaving the NARROWER line in flow shrink-wraps the column to it and cuts the wider one to an ellipsis. Measured
-  // in the bundled font at the subtitle's size: 158.6dp for the line in flow against 150.4dp for the other
-  it('leaves the wider subtitle in flow, so neither line is truncated', async () => {
+  // Measured in the bundled font at the subtitle's size: 158.6dp for the waiting line in flow against 150.4dp for
+  // the ready line absolute. Under ar and so the ready sentence is the wider one, which is what the donor pays for
+  it('keeps the waiting line in flow and the ready line absolute', async () => {
     await render(<QiblaSheet />);
 
-    const position = (text: string) =>
-      (StyleSheet.flatten(screen.getByText(text).props.style) as { position?: string }).position;
+    const position = (testID: string) =>
+      (StyleSheet.flatten(screen.getByTestId(testID).props.style) as { position?: string }).position;
 
-    expect(position('Follow below instructions')).toBeUndefined();
-    expect(position('Hold flat and turn slowly')).toBe('absolute');
+    expect(position('qibla-subtitle-waiting')).toBeUndefined();
+    expect(position('qibla-subtitle-ready')).toBe('absolute');
   });
 
   it('shows the line that asks the user to act while the hint is up', async () => {
     await render(<QiblaSheet />);
 
-    expect(subtitleOpacity('Follow below instructions')).toBe(1);
-    expect(subtitleOpacity('Hold flat and turn slowly')).toBe(0);
+    expect(subtitleOpacity('qibla-subtitle-waiting')).toBe(1);
+    expect(subtitleOpacity('qibla-subtitle-ready')).toBe(0);
+  });
+
+  it('sizes its box to the wider of its two sentences under en', async () => {
+    await render(<QiblaSheet />);
+
+    const donor = screen.getByTestId('qibla-subtitle-donor', { includeHiddenElements: true });
+    const style = StyleSheet.flatten(donor.props.style) as { height?: number; marginTop?: number; position?: string };
+
+    expect(style.height).toBe(0);
+    expect(style.marginTop).toBeUndefined();
+    expect(style.position).toBeUndefined();
+    expect(donor.props.numberOfLines).toBe(1);
+    expect(donor.props.children).toBe(t('qibla.subtitleReady'));
+  });
+
+  it.each(LOCALE_IDS)('sizes its box to the wider of its two sentences in each shipped locale: %s', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      await render(<QiblaSheet />);
+
+      const donor = screen.getByTestId('qibla-subtitle-donor', { includeHiddenElements: true });
+      const style = StyleSheet.flatten(donor.props.style) as {
+        height?: number;
+        marginTop?: number;
+        position?: string;
+      };
+
+      expect(style.height).toBe(0);
+      expect(style.marginTop).toBeUndefined();
+      expect(style.position).toBeUndefined();
+      expect(donor.props.numberOfLines).toBe(1);
+      expect(donor.props.children).toBe(t('qibla.subtitleReady'));
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
 
@@ -336,8 +373,8 @@ describe('the qibla sheet, opened in London', () => {
 
     await reportHeadings(95);
 
-    expect(subtitleOpacity('Hold flat and turn slowly')).toBe(1);
-    expect(subtitleOpacity('Follow below instructions')).toBe(0);
+    expect(subtitleOpacity('qibla-subtitle-ready')).toBe(1);
+    expect(subtitleOpacity('qibla-subtitle-waiting')).toBe(0);
   });
 
   it('asks for the position once, however many headings arrive', async () => {
