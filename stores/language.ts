@@ -96,17 +96,21 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
   try {
     store.set(languagePreferenceAtom, locale);
     setActiveLocale(locale);
+    let passSettled = false;
     if (crossesBoundary) {
       // The cap bounds a starved queue; the losing timer never fires into a settled commit.
       let fireCap!: () => void;
       const capSettled = new Promise<void>((resolve) => {
         fireCap = resolve;
       });
+      const settled = reconcileLanguageSurfaces().then(() => {
+        passSettled = true;
+      });
       const capTimer = setTimeout(() => {
         logger.warn('LANGUAGE: surface convergence still unsettled after 10000 ms, relaunching for the direction flip');
         fireCap();
       }, RELOAD_CONVERGENCE_CAP_MS);
-      await Promise.race([reconcileLanguageSurfaces(), capSettled]);
+      await Promise.race([settled, capSettled]);
       clearTimeout(capTimer);
     } else {
       await reconcileLanguageSurfaces();
@@ -117,7 +121,10 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
       I18nManager.allowRTL(true);
       I18nManager.forceRTL(localeDirection(locale) === 'rtl');
       try {
-        store.set(relaunchHandoffAtom, locale);
+        // Only a settled pass earns the handoff: a capped crossing's in-flight work can
+        // land beside the relaunch context, and the cold-launch reopen it then keeps is
+        // what buys the full pass whose sweep finds what landed
+        if (passSettled) store.set(relaunchHandoffAtom, locale);
         await Updates.reloadAsync();
       } catch (error) {
         store.set(relaunchHandoffAtom, '');
