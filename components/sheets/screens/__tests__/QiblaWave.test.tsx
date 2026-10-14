@@ -15,7 +15,8 @@ const SIZE = 300;
 const figureWidth = SIZE * WAVE.width;
 const figureHeight = SIZE * WAVE.height;
 
-/** The guide path the figure is drawn from, reached through the step's own testID */
+/** The guide path the figure is drawn from, reached through the step's own testID; the stage
+ * hides its subtree from accessibility (it is a drawn gesture), so queries include hidden elements */
 const guidePath = () => screen.getByTestId('qibla-wave-guide', { includeHiddenElements: true }).props.d;
 
 describe('the calibration wave mirror', () => {
