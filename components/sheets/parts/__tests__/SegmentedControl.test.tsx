@@ -4,10 +4,10 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
-import { I18nManager } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { AlertType, Icon } from '@/shared/types';
 
 import SegmentedControl, { type SegmentOption } from '../SegmentedControl';
@@ -136,17 +136,16 @@ describe('the reminder sound control while the reminder is off', () => {
   });
 });
 
-// The components project renders against the real I18nManager, so the direction the pill
-// reads at render is forced here rather than through the shared react-native mock
-describe('the Athan control under RTL', () => {
+// The pill keys its direction on the active locale, not the bridge snapshot: a starved
+// crossing (row 78) renders the Arabic locale while I18nManager still reports the launch
+// direction, and the pill travelled off-screen exactly there (row 73)
+describe('the Athan control under the Arabic locale while the bridge still reports LTR', () => {
   beforeEach(() => {
-    jest
-      .spyOn(I18nManager, 'getConstants')
-      .mockReturnValue({ isRTL: true, doLeftAndRightSwapInRTL: true, localeIdentifier: 'ar' });
+    setActiveLocale('ar');
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    setActiveLocale('en');
   });
 
   it('draws the pill under the mirrored slot the moment its width is known', async () => {
@@ -154,9 +153,9 @@ describe('the Athan control under RTL', () => {
 
     await measure(306);
 
-    // Sound is the last of three options; the pill's anchor is the option
-    // row's start edge (the physical right under RTL), so its slot mirrors
-    // two segments to the left: -200%
+    // Sound is the last of three options; the pill's anchor is the option row's start edge
+    // (the physical right under the RTL layout the locale forces), so its slot mirrors two
+    // segments toward the row's end: -200%
     expect(drawn()[0]).toHaveStyle({ width: 100, transform: [{ translateX: '-200%' }] });
   });
 
@@ -167,9 +166,9 @@ describe('the Athan control under RTL', () => {
 
     await screen.rerender(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Sound} onSelect={jest.fn()} />);
 
-    // Sound's slot mirrors two segments left of the anchor: -200. The LTR
-    // target 200 is never asked for (the option fade asks 0, so the signed
-    // negative is what isolates the pill's target)
+    // Sound's slot mirrors two segments from the anchor: -200. The LTR target 200 is never
+    // asked for (the option fade asks 0, so the signed negative is what isolates the pill's
+    // target)
     expect(withTiming).toHaveBeenCalledWith(-200, { duration: ANIMATION.duration });
     expect(withTiming).not.toHaveBeenCalledWith(200, { duration: ANIMATION.duration });
   });
