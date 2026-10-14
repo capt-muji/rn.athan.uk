@@ -54,10 +54,16 @@ export const FACE = {
   cardinal: 0.7,
   /** The cardinal numbers' size */
   cardinalSize: 0.096,
-  /** The degree circle's size, as a share of the number it sits at the top right of */
-  degree: 0.62,
+  /** The degree circle's size, as a share of the number it sits at the top right of. The owner increased it a quarter on 2026-10-14: the first size read as a speck */
+  degree: 0.775,
   /** How far the degree circle is raised above the number's own line, as a share of the number's size */
   degreeLift: 0.36,
+  /** The gap between a number and its degree circle, as a share of the number's size. Constant at every bearing: the owner ruled it must not grow with the number's length (2026-10-14) */
+  degreeGap: 0.06,
+  /** The cardinals' ink, shared by the numbers and their circles. The owner halved it on 2026-10-14: at full strength they read as loud as the needle */
+  cardinalInk: 0.5,
+  /** One digit's advance, as a share of the number's size, so the circle sits as close to 270 as to 0 */
+  digitAdvance: 0.58,
   /** The inner circle, a quarter smaller than the arrowhead's own reach so the face reads open rather than crowded */
   medallion: 0.462,
   /**

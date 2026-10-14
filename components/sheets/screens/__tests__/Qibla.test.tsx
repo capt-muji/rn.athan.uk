@@ -2255,27 +2255,33 @@ describe('the readings a warm reopen is judged on', () => {
 });
 
 describe('the compass ring’s cardinal numbers on the drawn dial', () => {
-  // The ring is SVG, so its labels are read from the rendered tree: RNSVGText holds one child per label and a numeric
-  // child arrives as its own TSpan, so the labels are the TSpan `content` values under the dial. This is the render
-  // half of the owner's 2026-10-14 ruling; the unit suite proves the data is locale-free
-  type DialLabel = { content: string; dy?: number[]; fontSize?: number };
+  // The ring is SVG, so its labels are read from the rendered tree: RNSVGText holds one child per label and a
+  // numeric child arrives as its own TSpan, so a label's own Text carries its x and ink and its TSpan the content
+  // and size. This is the render half of the owner's 2026-10-14 rulings; the unit suite proves the data is locale-free
+  type DialLabel = { content: string; x?: number; fontSize?: number; ink?: number };
 
   const dialLabels = (): { labels: DialLabel[]; numberSize: number } => {
     const labels: DialLabel[] = [];
     let numberSize = 0;
-    const walk = (node: unknown): void => {
+    const walk = (node: unknown, text?: DialLabel): void => {
       if (node == null || typeof node !== 'object') return;
       const n = node as { type?: unknown; props?: Record<string, unknown>; children?: unknown[] };
       const font = n.props?.font as { fontSize?: number } | undefined;
-      if (n.type === 'RNSVGText' && typeof font?.fontSize === 'number') numberSize = font.fontSize;
+      const next =
+        n.type === 'RNSVGText' && typeof font?.fontSize === 'number'
+          ? {
+              content: '',
+              x: n.props?.x as number | undefined,
+              fontSize: font.fontSize,
+              ink: n.props?.fillOpacity as number | undefined,
+            }
+          : text;
+      if (n.type === 'RNSVGText' && typeof font?.fontSize === 'number')
+        numberSize = Math.max(numberSize, font.fontSize);
       if (n.type === 'RNSVGTSpan' && typeof n.props?.content === 'string') {
-        labels.push({
-          content: n.props.content,
-          dy: n.props.dy as number[] | undefined,
-          fontSize: font?.fontSize,
-        });
+        labels.push({ ...(next ?? {}), content: n.props.content as string });
       }
-      for (const child of n.children ?? []) walk(child);
+      for (const child of n.children ?? []) walk(child, next);
     };
     walk(screen.getByTestId('qibla-dial').toJSON());
     return { labels, numberSize };
@@ -2293,17 +2299,40 @@ describe('the compass ring’s cardinal numbers on the drawn dial', () => {
 
       const { labels, numberSize } = dialLabels();
       const contents = labels.map((label) => label.content);
-      const numbers = contents.filter((content) => /^\d+$/.test(content));
+      const numbers = labels.filter((label) => /^\d+$/.test(label.content));
       const degrees = labels.filter((label) => label.content === '\u00B0');
 
       // The two palettes stack the same dial, so each of the four bearings appears twice, in bearing order
-      expect(numbers).toEqual(['0', '90', '180', '270', '0', '90', '180', '270']);
+      expect(numbers.map((number) => number.content)).toEqual(['0', '90', '180', '270', '0', '90', '180', '270']);
       expect(degrees).toHaveLength(8);
-      // Each degree circle is smaller than its number and raised above its line, at the number's top right
+      // Each degree circle is smaller than its number, raised at its top right and drawn in the number's own ink
       for (const degree of degrees) {
         expect(degree.fontSize).toBeGreaterThan(0);
         expect(degree.fontSize as number).toBeLessThan(numberSize);
-        expect(degree.dy?.[0]).toBeLessThan(0);
+        expect(degree.ink).toBeLessThan(1);
+      }
+      // The owner's 2026-10-14 ruling: the circle sits the same distance past the number whatever its length, so the
+      // per-bearing offset grows by one constant step per extra digit and 180 and 270 land on the same offset
+      for (const half of [0, 1]) {
+        const numberRow = numbers.slice(half * 4, half * 4 + 4);
+        const degreeRow = degrees.slice(half * 4, half * 4 + 4);
+        const offsets = numberRow.map((number, index) => {
+          const offset = (degreeRow[index].x as number) - (number.x as number);
+          return { digits: number.content.length, offset };
+        });
+        const byDigits = new Map(offsets.map(({ digits, offset }) => [digits, offset]));
+        expect(byDigits.get(3)).toBeDefined();
+        expect(byDigits.get(3)).toBeCloseTo(byDigits.get(3) as number, 9);
+        const step = (byDigits.get(2) as number) - (byDigits.get(1) as number);
+        expect(step).toBeGreaterThan(0);
+        expect(byDigits.get(3)).toBeCloseTo((byDigits.get(2) as number) + step, 9);
+        for (const { digits, offset } of offsets) {
+          expect(offset).toBeCloseTo((byDigits.get(1) as number) + (digits - 1) * step, 9);
+        }
+        // And never further than one digit's advance plus the ruled gap past the number
+        for (const { digits, offset } of offsets) {
+          expect(offset).toBeLessThan((numberSize * digits * 0.58) / 2 + numberSize * 0.1);
+        }
       }
       // No letter of the old ring survives in any language
       for (const letter of ['N', 'E', 'S', 'W', 'ش', 'ق', 'ج', 'غ']) {
