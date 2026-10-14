@@ -61,8 +61,6 @@ export const ms = {
   'help.step.focusAllow': 'Benarkan apl ini dalam setiap Fokus yang anda gunakan',
   'help.a.dndTimes.android': 'Mod Jangan Ganggu menyenyapkan notifikasi sehingga apl ini dibenarkan melaluinya.',
   'help.step.dndAccess': 'Benarkan akses Jangan Ganggu',
-  'volume.note.android': 'Dimainkan pada volum penggera, bukan volum deringan.',
-  'volume.note.ios': 'Dimainkan pada volum Dering & Makluman. Suis Senyap dan mod Fokus menyenyapkannya.',
   'help.q.volume': 'Volum yang mana mengawal tahap bunyi?',
   'help.a.volume.android':
     'Bunyi azan dimainkan pada volum penggera, bukan volum deringan. Naikkan volum Penggera dalam tetapan bunyi.',

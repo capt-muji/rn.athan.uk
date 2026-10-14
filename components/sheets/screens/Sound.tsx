@@ -1,7 +1,7 @@
 import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { type LayoutChangeEvent, Platform, StyleSheet, Text, View } from 'react-native';
+import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
@@ -21,7 +21,7 @@ import {
   soundListReadyAtom,
 } from '@/stores/ui';
 
-import { Note, Sheet, SoundItem } from '../parts';
+import { Sheet, SoundItem } from '../parts';
 import { displayedSoundSelection, hasSoundDraft, isPreviewFinished, previewRemainingSeconds } from './soundSheet';
 
 const ITEM_GAP = SPACING.xs;
@@ -178,7 +178,6 @@ export default function BottomSheetSound() {
       perfName={SHEET_PERF_NAME}
       onFirstPresent={setSoundListReady}
       stackBehavior={'push'}>
-      <Note text={t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')} />
       {/* Card + 32 rows mount once the settings sheet (the only path here)
           has fully opened — invisible warming, complete before first present */}
       {soundListReady && (

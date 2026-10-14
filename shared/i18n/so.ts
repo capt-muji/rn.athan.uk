@@ -62,8 +62,6 @@ export const so = {
   'help.step.focusAllow': 'U ogol barnaamijkan Diir kasta oo aad isticmaasho',
   'help.a.dndTimes.android': 'Habka Ha-I-Delin ayaa ogeesiisyada aamusiya ilayn barnaamijkan loo ogolyahay inuu gudbo.',
   'help.step.dndAccess': 'U ogol helitaanka Ha-I-Delin',
-  'volume.note.android': 'Waxaa lagu ciyaaraa codka digniinta, ma aha codka garaaca.',
-  'volume.note.ios': 'Waxaa lagu ciyaaraa codka «Garaaca & Digniinaha». Badhanka aamusan iyo Focus ayaa aamusa.',
   'help.q.volume': 'Codkee ayaa xakameeya heerka codka?',
   'help.a.volume.android':
     'Athaanku wuxuu ku dhacaa codka digniinta, ma aha codka garaaca. Kordhi «Alarm» ee dejinta codka.',
