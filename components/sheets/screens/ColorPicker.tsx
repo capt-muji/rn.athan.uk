@@ -22,7 +22,7 @@ import {
   TEXT,
 } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { currentLocaleId } from '@/shared/i18n/locale';
+import { chevronFor, currentLocaleId } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import { typographyFor } from '@/shared/typography';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
@@ -126,7 +126,7 @@ export default function ColorPickerSettings() {
           <View style={styles.colorPreviewContainer}>
             <View style={[styles.colorPreview, { backgroundColor: countdownBarColor }]} />
           </View>
-          <Text style={styles.chevron}>{'›'}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
         </View>
       </Pressable>
 

@@ -59,17 +59,15 @@ export default function PrayerTime({ type, index }: Props) {
 
   return (
     <View style={[styles.container]}>
-      <Animated.Text style={[styles.text, colorStyle]} accessibilityLabel={parts === null ? undefined : displayTime}>
-        {parts === null ? (
-          displayTime
-        ) : (
-          <>
-            {parts[0]}
-            <Text style={styles.colon}>{'\u2009\u2009:\u2009\u2009'}</Text>
-            {parts[1]}
-          </>
-        )}
-      </Animated.Text>
+      {parts === null ? (
+        <Animated.Text style={[styles.text, colorStyle]}>{displayTime}</Animated.Text>
+      ) : (
+        <View style={styles.timeRow} accessibilityLabel={displayTime}>
+          <Animated.Text style={[styles.textPart, colorStyle]}>{parts[0]}</Animated.Text>
+          <Text style={[styles.textPart, styles.colon, Prayer.isNext ? styles.colonNext : undefined]}>{':'}</Text>
+          <Animated.Text style={[styles.textPart, colorStyle]}>{parts[1]}</Animated.Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -87,7 +85,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginStart: SPACING.lg - 1,
   },
+  textPart: {
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.size),
+  },
+  timeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginStart: SPACING.lg - 1,
+    direction: 'ltr',
+  },
   colon: {
-    opacity: 0.4,
+    color: COLORS.countdown.timeColon,
+    marginHorizontal: 3,
+    transform: [{ translateY: -1.5 }],
+  },
+  colonNext: {
+    color: COLORS.countdown.nextTimeColon,
   },
 });

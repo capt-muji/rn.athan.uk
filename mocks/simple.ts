@@ -42,12 +42,11 @@ export const addMinutes = (from: Date, minutesToAdd: number) => {
 /**
  * Every day around the download, with TODAY's six rows seeded from it
  *
- * Asr is the first whole minute at least 1 minute after the download. Fajr, Sunrise and Dhuhr sit 3, 2
- * and 1 minutes before the download's own minute; Asr, Magrib and Isha ride 1, 2 and 3 minutes past the
- * anchor — a tight runway that rolls a boundary roughly every minute.
+ * Isha is the first whole minute at least 75 seconds after the download (the owner's
+ * viewing runway for the cascade); the five before it passed 1 to 5 minutes ago.
  */
 const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
-  const asrAt = new Date(Math.ceil((downloadedAt.getTime() + MINUTE) / MINUTE) * MINUTE);
+  const ishaAt = new Date(Math.ceil((downloadedAt.getTime() + 75 * 1000) / MINUTE) * MINUTE);
   const minuteFloor = new Date(Math.floor(downloadedAt.getTime() / MINUTE) * MINUTE);
 
   const dayBeforeYesterday = formatDateShort(subDays(downloadedAt, 2));
@@ -94,12 +93,12 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(minuteFloor, -3),
-      sunrise: addMinutes(minuteFloor, -2),
-      dhuhr: addMinutes(minuteFloor, -1),
-      asr: addMinutes(asrAt, 1),
-      magrib: addMinutes(asrAt, 2),
-      isha: addMinutes(asrAt, 3),
+      fajr: addMinutes(minuteFloor, -5),
+      sunrise: addMinutes(minuteFloor, -4),
+      dhuhr: addMinutes(minuteFloor, -3),
+      asr: addMinutes(minuteFloor, -2),
+      magrib: addMinutes(minuteFloor, -1),
+      isha: addMinutes(ishaAt, 0),
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',

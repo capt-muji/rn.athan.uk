@@ -147,7 +147,7 @@ export const countdownBarColorAtom = atomWithStorageString('preference_countdown
 export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_date', false);
 
 /** Whether to show seconds in the countdown display */
-export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds', false);
+export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds', true);
 
 /** Whether to show "time passed" info below countdown */
 export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_passed', true);

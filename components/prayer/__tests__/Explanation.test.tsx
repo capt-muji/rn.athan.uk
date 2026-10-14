@@ -7,6 +7,7 @@ import type { TestInstance } from 'test-renderer';
 
 import { EXTRA_PRAYER_TITLES, EXTRAS_EXPLANATIONS } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { setActiveLocale } from '@/shared/i18n/locale';
 
 import PrayerExplanation from '../Explanation';
 
@@ -53,5 +54,20 @@ describe('the explanation box of an Extras prayer', () => {
     expect(parts).toHaveLength(2);
     expect(within(parts[boxPart]).getByText('Midnight')).toBeOnTheScreen();
     expect(within(parts[1 - boxPart]).queryByText('Midnight')).not.toBeOnTheScreen();
+  });
+});
+
+describe('the explanation box under ar', () => {
+  it('renders its sentence with the locale\u2019s own digits', async () => {
+    setActiveLocale('ar');
+    try {
+      await render(<PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[2]} explanation={t(EXTRAS_EXPLANATIONS[2])} />);
+
+      // The ar Suhoor sentence carries 20 minutes; the owner\u2019s numeral ruling keeps it Arabic-Indic
+      expect(screen.getByText(/\u0662\u0660/)).toBeOnTheScreen();
+      expect(screen.queryByText(/^[0-9]$/)).toBeNull();
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
