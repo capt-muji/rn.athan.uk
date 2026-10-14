@@ -1,0 +1,2 @@
+  // value, while the layout direction follows the live locale, and Android swaps left and
+  // right for RTL-resolved nodes: keying the picker's resolved direction to the same snapshot
