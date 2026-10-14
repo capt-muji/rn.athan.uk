@@ -99,7 +99,7 @@ describe('the language-switch loader', () => {
     expect(flattenStyle(panel.props.style).backgroundColor).toBe(COLORS.navigation.rootBackground);
   });
 
-  it('caps the line's width so a long sentence breaks onto two centred lines', async () => {
+  it('caps the line\u2019s width so a long sentence breaks onto two centred lines', async () => {
     store.set(languageCommitBusyAtom, true);
     store.set(pendingLanguageAtom, 'hi');
     setActiveLocale('hi');
