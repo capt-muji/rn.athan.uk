@@ -24,25 +24,26 @@ export default function LanguageLoader() {
   const busy = useAtomValue(languageCommitBusyAtom);
   const pending = useAtomValue(pendingLanguageAtom);
   // The commit switches the locale before the surfaces converge, so the line re-derives
-  // on the version bump and reads in the language being set
+  // on the version bump and reads in the language being set. The typography resolves per
+  // render for the same reason: a module-scope capture drew the first frames of a switch
+  // in the old locale's face and box, which clipped the line (owner report, 2026-10-14)
   const localeVersion = useAtomValue(localeVersionAtom);
   // biome-ignore lint/correctness/useExhaustiveDependencies: the version bump is the deliberate re-derive trigger, though the callback reads no version value
   const line = useMemo(
     () => (pending === null ? '' : t('language.changing', { language: nativeLanguageName(pending) })),
     [pending, localeVersion]
   );
+  const ty = typographyFor(currentLocaleId());
 
   if (!busy || pending === null) return null;
 
   return (
     <View style={styles.container} accessibilityRole={'progressbar'} accessibilityLabel={t('app.loadingLabel')}>
       <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
-      <Text style={styles.line}>{line}</Text>
+      <Text style={[styles.line, { fontSize: ty.size(TEXT.size), fontFamily: ty.familyRegular }]}>{line}</Text>
     </View>
   );
 }
-
-const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   container: {
@@ -60,9 +61,6 @@ const styles = StyleSheet.create({
   line: {
     maxWidth: LINE_MAX_WIDTH,
     textAlign: 'center',
-    fontSize: ty.size(TEXT.size),
-    fontFamily: ty.familyRegular,
-    lineHeight: ty.blockLineHeight(ty.size(TEXT.size)),
     color: '#fff',
   },
 });

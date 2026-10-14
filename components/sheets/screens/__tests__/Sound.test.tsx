@@ -126,9 +126,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     setSoundListReady();
     await render(<SoundSheet />);
 
-    expect(
-      screen.getByText('Plays at your Ringer & Alerts volume. The Ring/Silent switch and Focus mute it.')
-    ).toBeOnTheScreen();
+    expect(screen.getByText('Follows your Ringer & Alerts volume. Silent and Focus modes mute it.')).toBeOnTheScreen();
   });
 
   it('renders the Android volume note above the sound list', async () => {

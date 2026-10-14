@@ -11,8 +11,8 @@ interface Props {
 /**
  * The quiet footnote a sheet draws under its header, above its first card.
  *
- * The line box is pinned from the locale record, so a taller Arabic box cannot
- * push the sheet's content down.
+ * The horizontal inset matches the header's, so the rule and the line run from
+ * the title's edge to the icon's edge (owner ruling, 2026-10-14).
  */
 export default function SheetNote({ text }: Props) {
   return (
@@ -27,18 +27,18 @@ const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   note: {
-    marginBottom: SPACING.lg,
+    marginBottom: SPACING.smd,
+    paddingHorizontal: SPACING.lg,
   },
   rule: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: COLORS.text.sheetSubtitle,
     opacity: 0.2,
-    marginBottom: SPACING.sm,
+    marginBottom: SPACING.md,
   },
   text: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
     color: COLORS.text.sheetSubtitle,
-    lineHeight: ty.blockLineHeight(ty.size(TEXT.sizeDetail)),
   },
 });

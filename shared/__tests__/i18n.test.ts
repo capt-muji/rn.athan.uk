@@ -78,7 +78,7 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['help.a.dndTimes.android', 'Do Not Disturb mode silences notifications until this app is allowed through.'],
   ['help.step.dndAccess', 'Allow Do Not Disturb access'],
   ['volume.note.android', 'Plays at alarm volume, not ring volume.'],
-  ['volume.note.ios', 'Plays at your Ringer & Alerts volume. The Ring/Silent switch and Focus mute it.'],
+  ['volume.note.ios', 'Follows your Ringer & Alerts volume. Silent and Focus modes mute it.'],
   ['help.q.volume', 'Which volume controls the sound level?'],
   ['help.a.volume.android', 'The athan plays at alarm volume, not ring volume. Raise Alarm in your sound settings.'],
   ['help.a.volume.ios', 'The athan plays at your ringer volume, and the Ring/Silent switch and Focus silence it.'],

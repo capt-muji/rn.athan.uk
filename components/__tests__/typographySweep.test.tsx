@@ -231,12 +231,14 @@ describe('the overlay explanation line box', () => {
 });
 
 describe('the sheet header line boxes', () => {
-  it('gives the ar title and subtitle the Latin default box, so the gap matches English', async () => {
+  it('leaves the ar title and subtitle to the font own box, so no glyph clips', async () => {
     const title = await headerTitleStyleUnder('ar');
     const subtitle = await headerSubtitleStyleUnder('ar');
 
-    expect(title.lineHeight).toBe(26);
-    expect(subtitle.lineHeight).toBe(16);
+    expect(title.lineHeight).toBeUndefined();
+    expect(subtitle.lineHeight).toBeUndefined();
+    expect(title.marginBottom).toBe(0);
+    expect(subtitle.marginTop).toBe(-10);
   });
 
   it('leaves the en title and subtitle to the font own box', async () => {
