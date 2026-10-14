@@ -10,7 +10,13 @@ import { I18nManager } from 'react-native';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
-import { commitLanguagePreference, languagePreferenceAtom, lastArmedLanguageAtom } from '@/stores/language';
+import {
+  commitLanguagePreference,
+  consumeRelaunchHandoff,
+  languagePreferenceAtom,
+  lastArmedLanguageAtom,
+  relaunchHandoffAtom,
+} from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
 
 jest.mock('@/shared/logger', () => ({
@@ -40,6 +46,7 @@ beforeEach(() => {
   jest.clearAllMocks();
   store.set(lastArmedLanguageAtom, '');
   store.set(languagePreferenceAtom, '');
+  store.set(relaunchHandoffAtom, '');
 });
 
 it('crossing to ar converges, then forces RTL and relaunches', async () => {
@@ -76,4 +83,41 @@ it('a refused relaunch logs and leaves the direction forced for the next launch'
     'LANGUAGE: relaunch failed after the RTL flip',
     expect.objectContaining({ error: expect.any(Error) })
   );
+});
+
+describe('the relaunch handoff', () => {
+  it('writes the marker before the reload so the next context can consume it', async () => {
+    let markerAtReload = 'unset';
+    reloadAsync.mockImplementationOnce(() => {
+      markerAtReload = store.get(relaunchHandoffAtom);
+      return Promise.resolve();
+    });
+
+    await commitLanguagePreference('ar');
+
+    expect(markerAtReload).toBe('ar');
+    expect(store.get(relaunchHandoffAtom)).toBe('ar');
+  });
+
+  it('clears the marker when the relaunch is refused, so a later cold launch reopens the gate', async () => {
+    reloadAsync.mockRejectedValueOnce(new Error('reload refused'));
+
+    await expect(commitLanguagePreference('ar')).resolves.toBeUndefined();
+
+    expect(store.get(relaunchHandoffAtom)).toBe('');
+  });
+
+  it('consumes the marker exactly once: true then cleared, false when none was held', () => {
+    store.set(relaunchHandoffAtom, 'ar');
+
+    expect(consumeRelaunchHandoff()).toBe(true);
+    expect(store.get(relaunchHandoffAtom)).toBe('');
+    expect(consumeRelaunchHandoff()).toBe(false);
+  });
+
+  it('marks nothing on a same-direction switch', async () => {
+    await commitLanguagePreference('ms');
+
+    expect(store.get(relaunchHandoffAtom)).toBe('');
+  });
 });
