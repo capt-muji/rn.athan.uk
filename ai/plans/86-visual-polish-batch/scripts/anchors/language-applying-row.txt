@@ -1,0 +1,6 @@
+            {busy && entry.id === active ? (
+              <View style={styles.applying}>
+                <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
+                <Text style={styles.applyingLabel}>{t('language.applying')}</Text>
+              </View>
+            ) : entry.id === active ? (

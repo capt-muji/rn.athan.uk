@@ -1,0 +1,4 @@
+      <BottomSheetModalProvider>
+        <Slot key={localeVersion} />
+        <SheetHost deferred={chromeDeferred} />
+      </BottomSheetModalProvider>

@@ -1,0 +1,5 @@
+/** The D33 preference: '' means no choice yet, so the device locale decides (R1.2) */
+export const languagePreferenceAtom = atomWithStorageString('preference_language', '');
+
+/** The D51 progress face: true from the moment a pick starts converging until it settles */
+export const languageCommitBusyAtom = atom(false);
