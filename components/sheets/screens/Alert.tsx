@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
@@ -19,7 +19,7 @@ import { typographyFor } from '@/shared/typography';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
-import { Note, SegmentedControl, type SegmentOption, Sheet } from '../parts';
+import { SegmentedControl, type SegmentOption, Sheet } from '../parts';
 import { freeReminderInterval } from '../parts/reminderStep';
 import {
   initialReminderInterval,
@@ -94,7 +94,6 @@ export default function BottomSheetAlert() {
       contentCap={0.85}
       onDismiss={handleDismiss}
       perfName={SHEET_PERF_NAME}>
-      <Note text={t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')} />
       {sheetState?.isUnavailable && (
         // No body is mounted, so its ref stays empty and the dismiss commits nothing
         <View style={styles.unavailable}>
