@@ -1,0 +1,8 @@
+  override suspend fun run(procedureContext: ProcedureContext) {
+    val reactHost = resolveReactHostForRestart(context) ?: run inner@{
+      callback.onFailure(Exception("Could not reload application. Ensure you have passed the correct instance of ReactApplication into UpdatesController.initialize()."))
+      return
+    }
+
+    procedureContext.processStateEvent(UpdatesStateEvent.Restart())
+    callback.onSuccess()

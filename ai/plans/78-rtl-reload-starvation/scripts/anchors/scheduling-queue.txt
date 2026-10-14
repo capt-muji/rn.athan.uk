@@ -1,0 +1,12 @@
+  const run = schedulingQueue.then(async () => {
+    logger.info(`NOTIFICATION: Starting ${operationName}`);
+    perfMeasure(`sched_${operationName}_queue_wait`, `sched_${operationName}_enqueue`);
+    perfMark(`sched_${operationName}_start`);
+    try {
+      return await operation();
+    } finally {
+      perfMeasure(`sched_${operationName}`, `sched_${operationName}_start`);
+      // A call given up on can still land and arm an alarm with no record, and only the sweep can find one of those
+      if (NotificationUtils.takeNativeCallTimedOut()) reopenNotificationRefreshGate();
+    }
+  });
