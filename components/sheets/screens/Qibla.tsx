@@ -86,12 +86,23 @@ const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
 
   return (
     <View>
-      {/* The WIDER line is the one left in flow, because an absolutely positioned child contributes no width:
-          the container would otherwise shrink-wrap the narrower line and clip this one inside it */}
-      <Animated.Text style={[styles.subtitle, waiting]} numberOfLines={1}>
+      {/* The waiting line stays in flow; the ready line is absolute and the donor below pays the width */}
+      <Animated.Text testID={'qibla-subtitle-waiting'} style={[styles.subtitle, waiting]} numberOfLines={1}>
         {t('qibla.subtitleWaiting')}
       </Animated.Text>
-      <Animated.Text style={[styles.subtitle, styles.subtitleOver, ready]} numberOfLines={1}>
+      {/* The absolute line cannot widen the box and which sentence is wider depends on the language, so a zero-height donor carries the ready sentence in flow */}
+      <Text
+        testID={'qibla-subtitle-donor'}
+        accessibilityElementsHidden
+        importantForAccessibility={'no-hide-descendants'}
+        numberOfLines={1}
+        style={styles.subtitleDonor}>
+        {t('qibla.subtitleReady')}
+      </Text>
+      <Animated.Text
+        testID={'qibla-subtitle-ready'}
+        style={[styles.subtitle, styles.subtitleOver, ready]}
+        numberOfLines={1}>
         {t('qibla.subtitleReady')}
       </Animated.Text>
     </View>
@@ -176,6 +187,13 @@ export default function BottomSheetQibla() {
 
 const ty = typographyFor(currentLocaleId());
 
+// The subtitle's text metrics, shared so the box's width donor measures exactly what the lines it stands for measure
+const subtitleText = {
+  color: COLORS.text.sheetSubtitle,
+  fontFamily: ty.familyRegular,
+  fontSize: ty.size(TEXT.sizeDetail),
+};
+
 const styles = StyleSheet.create({
   action: {
     color: COLORS.qibla.away.accent,
@@ -220,10 +238,13 @@ const styles = StyleSheet.create({
   },
   // Matches the shared header's own subtitle, because this one replaces it for this sheet alone
   subtitle: {
-    color: COLORS.text.sheetSubtitle,
-    fontFamily: ty.familyRegular,
-    fontSize: ty.size(TEXT.sizeDetail),
+    ...subtitleText,
     marginTop: SPACING.xs,
+  },
+  subtitleDonor: {
+    ...subtitleText,
+    height: 0,
+    opacity: 0,
   },
   // Stacked rather than swapped, so the header keeps one height through the fade
   subtitleOver: {

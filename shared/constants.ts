@@ -852,7 +852,7 @@ export const COLORS = {
       medallion: 'rgba(30, 40, 88, 1)',
       /** Ticks, rings and the jewel, in the alert sheet's own label blue */
       structure: '146, 184, 228',
-      /** The cardinal letters: the structure's own blue, faint enough to sit behind the instrument it labels */
+      /** The cardinal numbers' ink: the structure's own blue, faint enough to sit behind the instrument it labels */
       ink: 'rgba(146, 184, 228, 0.45)',
       /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
       accent: 'rgba(212, 160, 58, 1)',

@@ -7,12 +7,12 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import Svg, { Circle, Line, Path, Polygon, Rect, Text } from 'react-native-svg';
+import Svg, { Circle, Line, Path, Polygon, Rect, Text, TSpan } from 'react-native-svg';
 
 import { ANIMATION, COLORS } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { FIGURE_CANVAS, kaabaShapes } from '@/shared/kaabaFigure';
-import { arcPath, FACE, facePoint, qiblaLinePath, resolveCardinals, rubElHizbPath, TICKS } from '@/shared/qiblaCompass';
+import { arcPath, CARDINAL_ANGLES, FACE, facePoint, qiblaLinePath, rubElHizbPath, TICKS } from '@/shared/qiblaCompass';
 import { typographyFor } from '@/shared/typography';
 
 type Palette = typeof COLORS.qibla.away;
@@ -84,7 +84,7 @@ const Kaaba = memo(({ box, palette }: { box: number; palette: Palette }) => {
  * drawing pipeline on any attribute change, which is several frames for a plate of this many elements. The two
  * palettes are stacked and cross-faded instead, so turning gold costs one opacity and never a redraw.
  *
- * Everything here is drawn in the DIAL's own space, so it all turns together: the letters keep their bearings the
+ * Everything here is drawn in the DIAL's own space, so it all turns together: the numbers keep their bearings the
  * way a real compass card does, rather than pivoting about their own points. The Kaaba is the one exception and
  * rides its own counter-turning layer, because a building has an up and the plate does not.
  */
@@ -133,20 +133,26 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
         strokeWidth={unit * 1.2}
       />
 
-      {resolveCardinals().map(({ angle, letter }) => {
+      {CARDINAL_ANGLES.map((angle) => {
         const at = facePoint(angle, radius * FACE.cardinal);
 
         return (
           <Text
-            key={letter}
+            key={angle}
             x={at.x}
             y={at.y}
             fill={palette.ink}
             fontSize={radius * FACE.cardinalSize}
-            fontFamily={ty.familyMedium}
+            fontFamily={ty.familyDigits}
             textAnchor={'middle'}
             alignmentBaseline={'central'}>
-            {letter}
+            {angle}
+            {/* The degree circle, smaller and raised at the number's top right */}
+            <TSpan
+              fontSize={radius * FACE.cardinalSize * FACE.degree}
+              dy={-radius * FACE.cardinalSize * FACE.degreeLift}>
+              °
+            </TSpan>
           </Text>
         );
       })}
