@@ -1,5 +1,6 @@
 /**
- * The Day block's line heights: the ar clamps that keep the location and date lines from drifting apart
+ * The Day block's line boxes: the font's own metrics serve in every locale, so
+ * no Arabic glyph clips and English reads exactly as it always has
  */
 
 import { render, screen } from '@testing-library/react-native';
@@ -16,7 +17,7 @@ const flattenStyle = (style: unknown): Record<string, unknown> =>
     : (style as Record<string, unknown>);
 
 describe('the location and date lines', () => {
-  it('clamp their line boxes under ar, and leave English to its own metrics', async () => {
+  it('leave the line box to the font own metrics in every locale, so no glyph clips', async () => {
     showLondonDay('2026-09-11', '14:00');
 
     // The styles resolve at module scope, so the ar record needs Day loaded inside the locale,
@@ -40,9 +41,10 @@ describe('the location and date lines', () => {
       const location = screen.getByText('لندن، المملكة المتحدة');
       const lines = location.parent?.children ?? [];
       const dateStyle = flattenStyle((lines[1] as unknown as { props: { style: unknown } }).props.style);
-      // The owner's ruling, 2026-10-14: the ar block measures what the English block measures
-      expect(flattenStyle(location.props.style).lineHeight).toBe(19);
-      expect(dateStyle.lineHeight).toBe(21);
+      // The pin that measured ar against the Latin box clipped the taller face; the font's
+      // own box serves everywhere now (owner ruling, 2026-10-14)
+      expect(flattenStyle(location.props.style).lineHeight).toBeUndefined();
+      expect(dateStyle.lineHeight).toBeUndefined();
     } finally {
       setActiveLocale('en');
     }
