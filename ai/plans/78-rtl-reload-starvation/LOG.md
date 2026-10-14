@@ -124,7 +124,7 @@ The break script's checkout semantics require the implemented state in the
 index, which staging provides.
 
 Anchor: `scripts/anchors/language-commit-await.txt` replaced in this commit
-with the new verbatim block — the bounded-await region, 14 lines — and the
+with the new verbatim block — the bounded-await region, 15 lines — and the
 count check prints `1`. Note: the contract's parenthetical end-point
 ("through the reload branch's closing brace") cannot fit the 3-to-15-line
 bound together with the pinned race statement and the later `if`, so the
