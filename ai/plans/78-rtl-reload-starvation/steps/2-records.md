@@ -19,6 +19,7 @@ Row 78's question ("what the reload's real firing condition is") is answered in 
 
 - `ai/plans/78-rtl-reload-starvation/FINDINGS.md` (new)
 - `ai/plans/78-rtl-reload-starvation/LOG.md` (the step entry)
+- `ai/plans/78-rtl-reload-starvation/PLAN.md` (the step 2 box tick)
 - `app.json`, `package.json` (the version bump, together, 2.0.303)
 
 ## Red tests

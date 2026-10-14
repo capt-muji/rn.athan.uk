@@ -68,7 +68,7 @@ const RELOAD_CONVERGENCE_CAP_MS = 10_000;
 
 3. Every other line of the function and file is untouched: the store writes, `setActiveLocale`, the busy bracket, `allowRTL`, `forceRTL`, the reload catch with its warn.
 4. Two shapes are pinned so the break script's patterns match: the race's first element is the inline call `reconcileLanguageSurfaces()`, and the warn is the string literal, never a template literal or an interpolated constant.
-5. The change replaces the lines `scripts/anchors/language-commit-await.txt` spans. In the same commit, replace that anchor's content with the new verbatim block (from the bounded await through the reload branch's closing brace, 3 to 15 lines), then verify `python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' scripts/anchors/language-commit-await.txt stores/language.ts` prints `1`. Step 2's preflight runs after this update.
+5. The change replaces the lines `scripts/anchors/language-commit-await.txt` spans. In the same commit, replace that anchor's content with the new verbatim block (the bounded-await region the change replaces, 3 to 15 lines), then verify `python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' scripts/anchors/language-commit-await.txt stores/language.ts` prints `1`. Step 2's preflight runs after this update.
 
 The warn string, asserted verbatim by test 1: `LANGUAGE: surface convergence still unsettled after 10000 ms, relaunching for the direction flip`
 

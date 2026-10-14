@@ -59,9 +59,9 @@ export const reconcileLanguageSurfaces = async (): Promise<void> => {
 const DIRECTIONS = ['ltr', 'rtl'] as const;
 const launchDirection = DIRECTIONS[Number(I18nManager.getConstants().isRTL)];
 
-/** The bound on a boundary crossing's convergence wait: the measured healthy cycle is ~1.4 s,
- *  a single silent native call legally burns 15 s, and row 78's starved crossings waited past
- *  four minutes. Past this the flip applies and forward-only convergence heals next launch. */
+/** The bound on a boundary crossing's convergence wait: the healthy cycle answers in ~1.4 s,
+ *  while one silent native call can legally burn 15 s and a starved queue holds the pass for
+ *  minutes. Past this the flip applies and forward-only convergence heals next launch. */
 const RELOAD_CONVERGENCE_CAP_MS = 10_000;
 
 /**
