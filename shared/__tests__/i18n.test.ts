@@ -12,6 +12,12 @@
 
 import { EXTRA_PRAYER_TITLES, PRAYER_IDS, STANDARD_PRAYER_TITLES } from '@/shared/constants';
 import { en, PRAYER_LABELS, prayerLabel, t } from '@/shared/i18n';
+import { ar } from '@/shared/i18n/ar';
+import { hi } from '@/shared/i18n/hi';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
+import { ms } from '@/shared/i18n/ms';
+import { so } from '@/shared/i18n/so';
+import { th } from '@/shared/i18n/th';
 
 /** Every catalog member as a (key, literal) pair, byte-identical to the pre-catalog source */
 const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
@@ -219,5 +225,21 @@ describe('PRAYER_LABELS', () => {
           : EXTRA_PRAYER_TITLES[index - STANDARD_PRAYER_TITLES.length];
       expect(prayerLabel(id)).toBe(title);
     });
+  });
+});
+
+describe('the language loader line', () => {
+  afterEach(() => setActiveLocale('en'));
+
+  it.each(LOCALE_IDS)('carries the picked language name through the %s catalog', (id) => {
+    setActiveLocale(id);
+
+    expect(t('language.changing', { language: 'X' })).toContain('X');
+  });
+
+  it('has no applying key left in any catalog', () => {
+    for (const catalog of [en, ar, hi, ms, so, th]) {
+      expect(Object.keys(catalog)).not.toContain('language.applying');
+    }
   });
 });

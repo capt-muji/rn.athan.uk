@@ -176,7 +176,7 @@ export const so = {
   'widget.refreshLead': 'Fur Athan',
   'widget.refreshTail': 'si aad u cusboonaysiiso',
   'settings.language': 'Luqadda',
-  'language.applying': 'Waxaa lagu dhaqaaqaa…',
+  'language.changing': 'Waxaa lagu dhigayaa luqadda {language}',
   'channel.reminder': 'Xasuusiye {name} {n} gudahood',
   'whatsNew.title.language': 'Luqadda',
   'whatsNew.body.language': 'Barnaamijku hadda wuu ku hadlaa luqaddaada: ka dooro Habbooshka',

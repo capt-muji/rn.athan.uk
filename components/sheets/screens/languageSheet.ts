@@ -3,8 +3,9 @@
  * (the same split as components/sheets/screens/soundSheet.ts).
  *
  * Forward-only convergence (D34) leaves the pick no failure face: the UI has
- * already switched by the time the commit runs, so both settle paths end in the
- * dismiss and the sheet never stays open over a converged app.
+ * already switched by the time the commit runs, so the pick's own tap closes
+ * the sheet before the commit starts and the sheet never stays open over a
+ * converged app.
  */
 
 import type { LocaleId } from '@/shared/i18n/locale';
@@ -26,7 +27,8 @@ export const pickLanguage = (
     return;
   }
 
-  commit(id)
-    .catch(() => undefined)
-    .then(dismiss);
+  // The loader is up from this tick: the sheet has nothing left to show, and the
+  // commit's rejection is forward-only (D34)
+  dismiss();
+  commit(id).catch(() => undefined);
 };
