@@ -211,7 +211,8 @@ const styles = StyleSheet.create({
   question: {
     flex: 1,
     fontSize: ty.size(15),
-    lineHeight: ty.lineHeight(20),
+    // The Arabic script line box, because the pinned 20 point box clipped the question's dots and descenders (owner read, 2026-10-15)
+    lineHeight: ty.scriptLineHeight?.(15) ?? ty.lineHeight(20),
     fontFamily: ty.familyMedium,
     color: INK,
     letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
