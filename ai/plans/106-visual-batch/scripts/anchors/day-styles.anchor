@@ -1,0 +1,14 @@
+  container: {
+    marginBottom: SPACING.xl,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingEnd: SCREEN.paddingHorizontal + 2,
+    paddingStart: SCREEN.paddingHorizontal + 4,
+  },
+  location: {
+    color: COLORS.text.secondary,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
+    marginBottom: compactArabic ? 2 : SPACING.quart,
+  },

@@ -1,0 +1,12 @@
+    marginHorizontal: 6,
+    color: COLORS.text.primary,
+    fontSize: ty.countdownSize,
+    fontFamily: ty.familyDigits,
+    fontVariant: ['tabular-nums'],
+    textShadowColor: 'rgba(0, 0, 0, 0.15)',
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 6,
+  },
+  gap: {
+    fontSize: 8,
+  },
