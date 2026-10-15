@@ -30,6 +30,16 @@ const ITEM_GAP = SPACING.xs;
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
 const SHEET_PERF_NAME = 'sheet_sound';
 
+// The dismiss-time commit's scheduling saturates the JS thread for the close haptic's window, so
+// the sound sheet alone starts its commit past the next paint: the haptic's dispatch has left the
+// thread before any scheduling call begins
+const deferPastNextPaint = () =>
+  new Promise<void>((resolve) => {
+    requestAnimationFrame(() => {
+      setTimeout(resolve, 0);
+    });
+  });
+
 export default function BottomSheetSound() {
   const { commitSoundSelection } = useNotification();
   const selectedSound = useAtomValue(soundPreferenceAtom);
@@ -153,6 +163,8 @@ export default function BottomSheetSound() {
     clearAudio();
 
     if (!hasSoundDraft(tempSoundSelection)) return;
+
+    await deferPastNextPaint();
 
     // The commit persists before it schedules (the scheduler reads the
     // preference mid-flight) and rolls the preference back itself if either
