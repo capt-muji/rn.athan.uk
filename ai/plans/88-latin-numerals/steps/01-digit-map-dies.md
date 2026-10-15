@@ -13,7 +13,7 @@ a09 in `shared/__tests__/dateLocalized.test.ts`, a10 in
 `python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' <anchor> <source>`.
 
 Goal: delete `NATIVE_DIGITS` and `localizeDigits` from
-`shared/i18n/locale.ts`, unwrap the nine `localizeDigits(...)` call
+`shared/i18n/locale.ts`, unwrap the twelve `localizeDigits(...)` call
 expressions across four files, and flip every pinned native-digit test to
 Latin expectations.
 
@@ -25,15 +25,18 @@ Files: `shared/i18n/locale.ts`, `shared/typography.ts`, `shared/time.ts`,
 `shared/__tests__/dateLocalized.test.ts`,
 `components/prayer/__tests__/Explanation.test.tsx`,
 `components/sheets/parts/__tests__/Stepper.test.tsx`,
+`components/modals/__tests__/Help.test.tsx`,
 `shared/__tests__/widgetTimeline.test.ts`.
 
 ## Red tests
 
-Write these before any source change. Run each named file with
-`npx jest <path> --watchman=false --selectProjects=shared` (use
-`--selectProjects=components` for the three component test files; the two
-suites in this list under `shared/__tests__/` use the shared project). Every
-named new or flipped test must fail; a test that passes is `STOP:`.
+Write these before any source change. The jest projects are named `unit`
+and `components` (`jest.config.js` lines 45 and 62). Run the three suites
+under `shared/__tests__/` with
+`npx jest <path> --watchman=false --selectProjects=unit` (the locale suite's
+change is a deletion with no red run), and the three component test files
+with `--selectProjects=components`. Every named new or flipped test must
+fail; a test that passes is `STOP:`.
 
 1. `shared/__tests__/dateLocalized.test.ts`:
    - File header line 4: replace `and each locale's own digits` with
@@ -105,14 +108,16 @@ named new or flipped test must fail; a test that passes is `STOP:`.
    it('bakes no Arabic-Indic digit into any prop string under ar', () => {
      setActiveLocale('ar');
      try {
-       const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS_HIJRI, 'light');
-       const snapshot = buildPrayerWidgetSnapshot(makeSequence(), SETTINGS_HIJRI);
-       expect(snapshot).not.toBeNull();
-       for (const entry of entries) {
-         expect(JSON.stringify(entry.props)).not.toMatch(/[\u0660-\u0669]/);
-       }
-       if (snapshot) {
-         expect(JSON.stringify(snapshot)).not.toMatch(/[\u0660-\u0669]/);
+       for (const settings of [SETTINGS, SETTINGS_HIJRI]) {
+         const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), settings, 'light');
+         const snapshot = buildPrayerWidgetSnapshot(makeSequence(), settings);
+         expect(snapshot).not.toBeNull();
+         for (const entry of entries) {
+           expect(JSON.stringify(entry.props)).not.toMatch(/[\u0660-\u0669]/);
+         }
+         if (snapshot) {
+           expect(JSON.stringify(snapshot)).not.toMatch(/[\u0660-\u0669]/);
+         }
        }
      } finally {
        setActiveLocale('en');
@@ -120,18 +125,51 @@ named new or flipped test must fail; a test that passes is `STOP:`.
    });
    ```
 
-   Red today: every entry's `dateLabel` carries Hijri month digits
-   localized to Arabic-Indic.
+   Red today: the Gregorian `dateLabel` localises its day and year
+   (`formatDateLocalized`) and the Hijri `dateLabel` its day and year too,
+   so both settings legs carry Arabic-Indic digits.
 5. `shared/__tests__/locale.test.ts`: delete the whole `localizeDigits`
    describe (the a13 anchor block) and remove `localizeDigits` from the
-   import list. This file's change is a deletion; it has no red run.
+   import list; one of the two now-adjacent blank lines goes with the block
+   (Biome collapses a doubled blank line). This file's change is a deletion;
+   it has no red run.
+6. `components/modals/__tests__/Help.test.tsx`, new describe at the end:
+
+   ```tsx
+   describe('the Help modal under ar', () => {
+     it('renders every answer with the catalog bytes and Latin digits', async () => {
+       setActiveLocale('ar');
+       try {
+         const topics = getHelpTopics('ios');
+         await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+         for (const topic of topics) {
+           await fireEvent.press(screen.getByRole('button', { name: topic.question }));
+           const shown = screen.getByText(topic.text);
+           expect(shown.props.children).toBe(topic.text);
+           expect(shown.props.children).not.toMatch(/[\u0660-\u0669]/);
+         }
+       } finally {
+         setActiveLocale('en');
+       }
+     });
+   });
+   ```
+
+   Add `setActiveLocale` to the imports
+   (`import { setActiveLocale } from '@/shared/i18n/locale';`). Red today:
+   the cutoff topic's ar answer carries `30` in the catalog, which
+   `localizeDigits` renders as `٣٠`, so `getByText(topic.text)` matches
+   nothing for that topic.
 
 ## Change contracts
 
 1. `shared/i18n/locale.ts`: delete the `NATIVE_DIGITS` declaration with its
    two-line doc comment and the whole `localizeDigits` function (the a01
-   anchor block). Nothing else in the file changes; `RTL_IDS`,
-   `localeDirection`, `directionGlyph`, `chevronFor` stay byte-identical.
+   anchor block); one of the two now-adjacent blank lines goes with the
+   block, because Biome collapses a doubled blank line. Nothing else in the
+   file changes; `RTL_IDS`, `localeDirection`, `directionGlyph`, `chevronFor`
+   stay byte-identical.
 2. `shared/typography.ts` (a08): the `RECORDS` comment becomes
    `/** One record per shipped locale: a new language adds its entry here
     * and its id to RTL_IDS if it reads right to left */` (the numerals
@@ -165,12 +203,16 @@ Nothing beyond these contracts. No other file loses or gains a line.
 
 ## Green run
 
-1. `npx jest shared/__tests__/dateLocalized.test.ts shared/__tests__/locale.test.ts shared/__tests__/widgetTimeline.test.ts --watchman=false --selectProjects=shared` exits 0.
-2. `npx jest components/prayer/__tests__/Explanation.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx --watchman=false --selectProjects=components` exits 0.
+1. `npx jest shared/__tests__/dateLocalized.test.ts shared/__tests__/locale.test.ts shared/__tests__/widgetTimeline.test.ts --watchman=false --selectProjects=unit` exits 0.
+2. `npx jest components/prayer/__tests__/Explanation.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx components/modals/__tests__/Help.test.tsx --watchman=false --selectProjects=components` exits 0.
 3. `npx tsc --noEmit` exits 0.
 4. `npx biome check . --error-on-warnings` exits 0.
 
 ## Break script
+
+Stage every file in the Files list with `git add <name>` before running the
+break script, so each `git checkout -- <file>` restores the staged green
+bytes rather than `uat`'s.
 
 `scripts/break-88-step1.sh` (the executor writes it to the plan folder from
 this text, runs `bash ai/plans/88-latin-numerals/scripts/break-88-step1.sh`
@@ -204,7 +246,7 @@ EOF
 break_one "gregorian-label" "shared/time.ts" \
   'const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${String(day)} ' \
   'const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${String(day).replace(/[0-9]/g, "٥")} ' \
-  "shared/__tests__/dateLocalized.test.ts shared/__tests__/widgetTimeline.test.ts" shared
+  "shared/__tests__/dateLocalized.test.ts shared/__tests__/widgetTimeline.test.ts" unit
 break_one "stepper-value" "components/sheets/parts/Stepper.tsx" \
   '<Text style={styles.value}>{visible}</Text>' \
   '<Text style={styles.value}>{visible.replace(/[0-9]/g, "٥")}</Text>' \
@@ -213,6 +255,10 @@ break_one "info-box" "components/prayer/Explanation.tsx" \
   '<Text style={styles.infoExplanation}>{explanation}</Text>' \
   '<Text style={styles.infoExplanation}>{explanation.replace(/[0-9]/g, "٥")}</Text>' \
   "components/prayer/__tests__/Explanation.test.tsx" components
+break_one "help-answer" "components/modals/Help.tsx" \
+  '<Text style={styles.cause}>{text}</Text>' \
+  '<Text style={styles.cause}>{text.replace(/[0-9]/g, "٥")}</Text>' \
+  "components/modals/__tests__/Help.test.tsx" components
 echo "ALL ASPECTED: 1"
 ```
 
@@ -222,10 +268,13 @@ the plan files. The script's last line must be `ALL ASPECTED: 1`.
 ## Version and commit
 
 Under the version lock: `mkdir $HOME/athan-gitree/version.lock` (retry in a
-`sleep 10` loop while it exists, `rmdir` after the merge). Fetch `origin`.
-The version is the next patch after the lane's `package.json` (expected
-2.0.742; take whatever the command prints). Set it in `app.json` FIRST, then
-`package.json`. The lane has no `android/app/build.gradle`; the lockstep
+`sleep 10` loop at most 30 times, about 5 minutes, then `STOP:`; `rmdir`
+after the merge). Fetch `origin` first (expect no output, exit 0; it
+refreshes `uat` for the pre-flight's containment check). The version is the
+next patch after the lane's `package.json`: it prints `2.0.741`, so the
+version is `2.0.742`. Set it in `app.json` FIRST, then `package.json`, by
+replacing the version string in place (never rewrite the JSON: Biome owns
+its formatting). The lane has no `android/app/build.gradle`; the lockstep
 test skips it.
 
 Commit message: `<VERSION> - feat(digits): the native-digit map dies, every
@@ -239,8 +288,9 @@ coverage lines present.
 
 Read `git show <sha>` cold against this checklist: no file outside the
 list changed; no wrapper survived; no import still names `localizeDigits`;
-`RTL_IDS` untouched; the stepper's styles and words untouched; the flipped
-tests assert Latin, not merely not-native, at least once each. Then the
+`RTL_IDS` untouched; the stepper's styles and words untouched; the Help
+modal's rendered bytes equal the catalog bytes; the flipped tests assert
+Latin, not merely not-native, at least once each. Then the
 shipped classes: lifecycle (none: synchronous composition), thread (none:
 no worklets), residue (the dead table and function are gone; the
 `typography.ts` comment no longer names them), rule (no prayer time, no

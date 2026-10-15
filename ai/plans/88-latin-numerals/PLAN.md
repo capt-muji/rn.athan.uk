@@ -53,6 +53,7 @@ app's reach without row 69's owner-blocked format change).
 | The steppers' digits go Latin with the map's death | planner | 2026-10-15 | this session. The row's headline "every digit on every surface in every language... anywhere a digit renders" is absolute and the stepper renders digits; the carve-out's parenthetical describes the design she preserved against the titles' dropped word, not an exemption from the digit law |
 | Only `en` changes its title: the five translated titles keep their prepositions | planner | 2026-10-15 | verified in all six catalogs: `ar` `{name} بعد {n}`, `hi` `{name} {n} में`, `ms` `{name} dalam {n}`, `so` `{name} {n} gudahood`, `th` `{name} อีก {n}` carry a preposition meaning "in" and no unit word; the locked bytes stay (the `catalog-lock.json` hashes cover all five) |
 | The Android channel labels keep their unit letter | planner | 2026-10-15 | the rider names "the notification titles"; a channel name is not a title, and `ai/AGENTS.md` freezes channel names at creation (a new generation means new ids), so regenerating them is scheduling ground the sleeping owner owns |
+| The catalog lock is consciously re-taken after the en title edit (`yarn i18n:lock`, the D49 process); the five translations stay byte-identical | planner | 2026-10-15 | this session. The lock hashes the English catalog each translation came from (`shared/__tests__/catalogLock.test.ts` line 11), so any en edit stales all five entries until the re-take; the re-take records that the translations were checked against the new English, not re-translated |
 | The iOS SwiftUI ticking countdown stays as it renders | planner | 2026-10-15 | `Text(timerInterval:)` is formatted by SwiftUI per the system locale; the pinned `@expo/ui` exposes no locale parameter (`node_modules/@expo/ui/ios/TextView.swift` builds the Text with no locale argument). Forcing Latin there means replacing the ticking timer with baked labels, which is row 69's owner-blocked widget-format ground |
 | No widget module file changes | planner | 2026-10-15 | the baked `dateLabel` bytes change through the shared formatters; `footerFor` composes `Intl` `en-US` fields (Latin) and every carried time rides `prayer.time` (HH:mm, Latin by construction), both pinned by the existing test `bakes Latin digits into every carried time under ar` |
 | Notification scheduling is untouched: the new title text reaches devices through the existing re-arm paths only | planner | 2026-10-15 | `ai/AGENTS.md` ask-first ground; titles are baked at arm time and the convergence pass re-arms on language change with no code change here |
@@ -169,12 +170,18 @@ Existing tests and what each proves:
   (`'Fajr in 15m'`, `'Last Third in 30m'`, the channel line). Step 2 flips
   the two title lines, keeps the channel line.
 - `shared/__tests__/notifications.test.ts` (a12): pins the reminder title
-  bytes `'Fajr in 15m'`, `'Dhuhr in 5m'`, `'Asr in 30m'`. Step 2 flips them.
+  bytes `'Fajr in 15m'` (lines 311 and 694), `'Dhuhr in 5m'`, `'Asr in 30m'`
+  (lines 320-321), and the ar title `'العصر بعد 15'` (line 315, Latin
+  digits through plain `t` interpolation today and after). Step 2 flips the
+  en pins, keeps the ar pin.
 - `shared/__tests__/prayerIdContract.test.ts` line 113 pins the en channel
   bytes `'{name} in {n}m Reminder'`: unchanged, and the test proves the
   channel boundary holds.
-- `shared/__tests__/catalogLock.test.ts` hashes the five non-en catalogs:
-  step 2 changes no translated byte, and the lock run proves it.
+- `shared/__tests__/catalogLock.test.ts` hashes the English catalog and
+  compares each of the five stored hashes against it: an en edit stales all
+  five until the lock is consciously re-taken with `yarn i18n:lock`. Step 2
+  re-takes it; the re-take plus the review diff (no translated file in it)
+  proves the five titles keep their bytes.
 - `shared/__tests__/versionLockstep.test.ts`: the lane worktree has no
   `android/` folder (prebuild output, gitignored), so the gradle leg is
   skipped and `package.json`/`app.json` agreement is enforced.
@@ -186,8 +193,8 @@ function that does nothing. The map dies and the wrappers go with it.
 
 ## 5. Design
 
-The approach: delete the single native-digit mechanism and unwrap its nine
-call expressions across four files; flip the pinned tests to Latin
+The approach: delete the single native-digit mechanism and unwrap its
+twelve call expressions across four files; flip the pinned tests to Latin
 expectations; drop the `m` from one en catalog value. The invariant, one
 sentence a test can check: after this ticket no code path in the repository
 converts a Latin digit to a native one, and the six-locale renders show
@@ -216,12 +223,12 @@ untouched.
 
 - [R1.1] WHEN `formatDateLocalized('2026-10-11')` runs under locale `ar` THE SYSTEM SHALL return `الأحد, 11 أكتوبر 2026` with no Arabic-Indic digit.
 - [R1.2] WHEN `formatHijriDateLocalized('2026-10-11')` runs under locale `ar` THE SYSTEM SHALL return `ربيع الآخر 30, 1448` with no Arabic-Indic digit.
-- [R1.3] WHEN an Extras info box or the Help modal renders a catalog sentence under any of the six locales THE SYSTEM SHALL render the catalog's own bytes with every digit Latin.
+- [R1.3] WHEN an Extras info box or the Help modal renders a catalog sentence under any of the six locales THE SYSTEM SHALL render the catalog's own bytes with every digit Latin (the Extras six-locale sweep and the ar Help sweep are the observing tests).
 - [R1.4] WHEN the alert sheet's reminder stepper renders under locale `ar` THE SYSTEM SHALL show the Latin interval number followed by the ar catalog's word for minutes.
 - [R1.5] WHEN the module `shared/i18n/locale` is read THE SYSTEM SHALL export no `localizeDigits` and hold no `NATIVE_DIGITS` table.
 - [R1.6] WHEN the widget timeline builder or the snapshot builder bakes props under locale `ar` with the Hijri preference on or off THE SYSTEM SHALL bake no Arabic-Indic digit into any prop string.
 - [R2.1] WHEN `genReminderNotificationContent('fajr', 15, AlertType.Sound)` runs under locale `en` THE SYSTEM SHALL return the title `Fajr in 15`.
-- [R2.2] WHEN `t('notification.reminder', { name, n })` runs under `ar`, `ms`, `so`, `hi` or `th` THE SYSTEM SHALL return that catalog's locked bytes unchanged, each carrying its preposition and no unit word.
+- [R2.2] WHEN `t('notification.reminder', { name, n })` runs under `ar`, `ms`, `so`, `hi` or `th` THE SYSTEM SHALL return that catalog's locked bytes unchanged, each carrying its preposition and no unit word (observed by the ar pin `'العصر بعد 15'` in `shared/__tests__/notifications.test.ts` line 315 and by the step 2 diff carrying no translated file).
 - [R2.3] WHEN `t('channel.reminder', { name: 'Fajr', n: 15 })` runs under locale `en` THE SYSTEM SHALL return `Fajr in 15m Reminder`.
 
 ## 6. Steps
@@ -255,7 +262,7 @@ The findings text the executor writes into `LOG.md` under
 
 ```
 The native-digit map is dead: NATIVE_DIGITS and localizeDigits deleted from
-shared/i18n/locale.ts, the nine wrapper expressions unwrapped across
+shared/i18n/locale.ts, the twelve wrapper expressions unwrapped across
 shared/time.ts, Help.tsx, Explanation.tsx and Stepper.tsx. Under ar the
 Gregorian label reads <Latin fixture>, the Hijri label <Latin fixture>, the
 Suhoor box opens 20 in Latin, the Help sentences carry Latin digits, the
@@ -323,8 +330,10 @@ Restore lists: step 1 touches `shared/i18n/locale.ts`, `shared/typography.ts`,
 `shared/__tests__/locale.test.ts`, `shared/__tests__/dateLocalized.test.ts`,
 `components/prayer/__tests__/Explanation.test.tsx`,
 `components/sheets/parts/__tests__/Stepper.test.tsx`,
+`components/modals/__tests__/Help.test.tsx`,
 `shared/__tests__/widgetTimeline.test.ts`. Step 2 touches
-`shared/i18n/en.ts`, `shared/__tests__/i18nBridge.test.ts`,
+`shared/i18n/en.ts`, `shared/i18n/catalog-lock.json`,
+`shared/__tests__/i18nBridge.test.ts`,
 `shared/__tests__/notifications.test.ts`. A stopped step runs
 `git checkout -- <each file>` and deletes no file; both steps edit only
 existing files.
