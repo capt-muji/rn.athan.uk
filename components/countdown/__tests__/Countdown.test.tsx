@@ -1,6 +1,6 @@
 /**
  * The lettered countdown: the old zero-drop behaviour in every language, the
- * capital unit letters, the held display, and the bar under it
+ * lowercase unit letters, the held display, and the bar under it
  */
 
 import { act, render, screen } from '@testing-library/react-native';
@@ -74,7 +74,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(screen.queryByText('h')).toBeNull();
   });
 
-  it('drops zero minutes beside live hours, so a whole hour with seconds hidden reads 1H alone', async () => {
+  it('drops zero minutes beside live hours, so a whole hour with seconds hidden reads 1h alone', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSecondsPreference(false);
     setCountdown(3600);
@@ -86,7 +86,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(screen.queryByText('s')).toBeNull();
   });
 
-  it('drops zero minutes beside live hours with seconds shown, so the top of an hour reads 1H 5S', async () => {
+  it('drops zero minutes beside live hours with seconds shown, so the top of an hour reads 1h 5s', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSecondsPreference(true);
     setCountdown(3605);
@@ -121,7 +121,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(screen.queryByText('s')).toBeNull();
   });
 
-  it('renders 0S alone at the clamp, never an empty row', async () => {
+  it('renders 0s alone at the clamp, never an empty row', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSecondsPreference(true);
     setCountdown(0);
