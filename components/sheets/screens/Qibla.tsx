@@ -79,7 +79,7 @@ const QiblaLost = () => (
  *
  * It fades on the SAME flag the compass does, so the words and the instrument change together.
  */
-const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
+export const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
   const progress = useDerivedValue(() => withTiming(showsCompass ? 1 : 0, { duration: ANIMATION.durationFade }));
   const waiting = useAnimatedStyle(() => ({ opacity: 1 - progress.value }));
   const ready = useAnimatedStyle(() => ({ opacity: progress.value }));
@@ -186,6 +186,8 @@ export default function BottomSheetQibla() {
 }
 
 const ty = typographyFor(currentLocaleId());
+// The node subtitle bypasses the shared header's style, so it takes the ar pull-up itself to match the confirmed sheets (owner, 2026-10-15)
+const compactArabic = currentLocaleId() === 'ar';
 
 // The subtitle's text metrics, shared so the box's width donor measures exactly what the lines it stands for measure
 const subtitleText = {
@@ -239,7 +241,7 @@ const styles = StyleSheet.create({
   // Matches the shared header's own subtitle, because this one replaces it for this sheet alone
   subtitle: {
     ...subtitleText,
-    marginTop: SPACING.xs,
+    marginTop: compactArabic ? -10 : SPACING.xs,
   },
   subtitleDonor: {
     ...subtitleText,

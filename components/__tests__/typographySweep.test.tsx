@@ -97,6 +97,59 @@ const headerSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string
   return subtitle;
 };
 
+const qiblaSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
+  let subtitle: Record<string, unknown> = {};
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const QiblaSubtitle = require('../sheets/screens/Qibla').QiblaSubtitle;
+    await rntl.render(<QiblaSubtitle showsCompass={false} />);
+    subtitle = StyleSheet.flatten(rntl.screen.getByTestId('qibla-subtitle-waiting').props.style) as Record<
+      string,
+      unknown
+    >;
+  });
+  return subtitle;
+};
+
+const soundListMarginUnder = async (locale: LocaleId): Promise<unknown> => {
+  let marginTop: unknown;
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const { setSoundListReady } = require('@/stores/ui');
+    setSoundListReady();
+    const rntl = require('@testing-library/react-native');
+    const BottomSheetSound = require('../sheets/screens/Sound').default;
+    await rntl.render(<BottomSheetSound />);
+    const list = rntl.screen.getByTestId('sound-list');
+    marginTop = (StyleSheet.flatten(list.props.style) as Record<string, unknown>).marginTop;
+  });
+  return marginTop;
+};
+
+const noteFootMarginUnder = async (locale: LocaleId): Promise<unknown> => {
+  let marginTop: unknown;
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const SheetVolumeNote = require('../sheets/parts/VolumeNote').default;
+    await rntl.render(<SheetVolumeNote />);
+    const copy = rntl.screen.getByText(locale === 'ar' ? /الرنين/ : /Ringer/);
+    const foot = copy.parent;
+    marginTop = (StyleSheet.flatten(foot?.props.style) as Record<string, unknown>).marginTop;
+  });
+  return marginTop;
+};
+
 const helpQuestionStyleUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
   let question: Record<string, unknown> = {};
   jest.resetModules();
@@ -212,6 +265,15 @@ describe('the help question', () => {
     expect(question.fontFamily).toBe('Roboto-Medium');
     expect(question.fontSize).toBe(15);
   });
+
+  it('takes the Arabic script line box under ar, so its dots and descenders render', async () => {
+    const question = await helpQuestionStyleUnder('ar');
+    expect(question.lineHeight).toBe(23);
+  });
+
+  it('keeps the 20 point line box under en', async () => {
+    expect((await helpQuestionStyleUnder('en')).lineHeight).toBe(20);
+  });
 });
 
 describe('the row time face', () => {
@@ -227,6 +289,34 @@ describe('the overlay explanation line box', () => {
 
   it('keeps the Latin preset line height under en', async () => {
     expect(await explanationLineHeightUnder('en')).toBe(22);
+  });
+});
+
+describe('the qibla sheet subtitle', () => {
+  it('pulls up 10 points under ar, matching the shared header', async () => {
+    expect((await qiblaSubtitleStyleUnder('ar')).marginTop).toBe(-10);
+  });
+
+  it('keeps its 4 point gap under en', async () => {
+    expect((await qiblaSubtitleStyleUnder('en')).marginTop).toBe(4);
+  });
+});
+
+describe('the sound sheet spacing under ar', () => {
+  it('tightens the card hint onto the list at 6 points', async () => {
+    expect(await soundListMarginUnder('ar')).toBe(6);
+  });
+
+  it('keeps the hint gap at 12 under en', async () => {
+    expect(await soundListMarginUnder('en')).toBe(12);
+  });
+
+  it('opens the note gap to 32 points under ar', async () => {
+    expect(await noteFootMarginUnder('ar')).toBe(32);
+  });
+
+  it('keeps the note gap at 24 under en', async () => {
+    expect(await noteFootMarginUnder('en')).toBe(24);
   });
 });
 
