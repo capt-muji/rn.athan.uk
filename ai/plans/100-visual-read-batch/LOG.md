@@ -16,3 +16,45 @@ D93 to D98, each flagged for her dev-build read.
 ## Ticket 100
 
 The plan: eight code steps, no device step, her dev-build read the acceptance.
+
+### Pre-flight (2026-10-15, executor steps 1-3) — BLOCKED at the gate, no step run
+
+Fresh executor session (steps 1 to 3) found the tree dirty and the preflight
+failing twice; nothing was built, no branch was created.
+
+- `PREFLIGHT FAIL: lane hooks missing` — `.husky/_/h` was 644. The plan's
+  remedy (`npx husky`) ran and rewrote the file still 644: husky v9
+  `copyFileSync`es `h` from `node_modules/husky/husky`, which is 644 in the
+  shared node_modules (the main checkout's own `.husky/_/h` is 644 too). The
+  hook chain works regardless (the 755 shims source `h`), but the check wants
+  the bit, so `chmod +x .husky/_/h` completed the remedy; gitignored, no
+  tracked state touched.
+- `PREFLIGHT FAIL: tree not clean` — the standing residue, unresolved:
+  `app.json` and `package.json` are modified in the working tree from
+  `2.0.752` (HEAD) to `2.0.754`, uncommitted. The tip commit `978eff4f`'s
+  message claims `2.0.754` but its tree left both files at `2.0.752` (the two
+  earlier planning commits `1534e474` "2.0.753" and `978eff4f` "2.0.754" never
+  committed their version files). The working-tree pair matches each other at
+  2.0.754, so the lockstep test is green either way.
+
+Everything else passed: lane branch, fetch, version at or above 2.0.751,
+planned sha an ancestor, all 14 anchors counting 1.
+
+The stop: the step files say "bump one patch above `lane/100`'s tip", and the
+tip's version is ambiguous (message 2.0.754, tree 2.0.752, working tree
+2.0.754). Restore the files to HEAD and take 2.0.753 for step 1 (two commits
+in history then claim 2.0.753), or absorb the residue as the lane's true
+current version and take 2.0.755 (versions stay unique and monotonic; step
+1's commit carries the files)? The executor's git-status gate forbids either
+choice without a ruling.
+
+session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
+
+### Lead ruling on the step-0 stop (2026-10-15)
+
+The lead's two planning commits claimed 2.0.753 and 2.0.754 in their messages but
+never added the version files; corrective commit 96186624 carries 2.0.754 in the
+tree, matching the tip's message. The lane's versions now run monotonically
+2.0.751, 2.0.752, 2.0.754, 2.0.754(tree). Step 1 bumps to 2.0.755 and every later
+step one patch above the tip it branches from; the version files are added by name
+in every commit from here. The chmod on the gitignored .husky/_/h stands.
