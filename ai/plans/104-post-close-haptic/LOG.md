@@ -185,3 +185,49 @@ build log `build-104-xs-part2.log` under $TMPDIR. The XS keeps the 2.0.794 instr
 build. Nothing committed; the branch stayed empty and was deleted per the step's merge section.
 
 session: ses_ebe8e2154ffeKuWtE6knZ3y0jo
+
+### Step 3 — DONE (branch `fix/close-haptic-on-time` off `fdc542e0`, version 2.0.798)
+
+Preflight: the one adjudicated failure only — `sheet-close-haptic.anchor` counts 0, the benign
+case step 2's entry records (step 1's own contract changed the anchor text; proof unchanged:
+`git diff 1aa9d21f..HEAD -- components/sheets/parts/Sheet.tsx` empty). Every other check green
+(uat, clean tree, origin merged in, 2.0.797 >= floor, the other 5 anchors count 1). Step 3's own
+anchors: `sound-handleDismiss` = 1, `saturation-comment` = 1.
+
+Red: `defers the commit start past the next paint when a draft exists` first failed at
+`components/sheets/screens/__tests__/Sound.test.tsx:317` —
+`expect(commit).not.toHaveBeenCalled()` received 1 call `(6, 5, [Function updateAndroidChannel])`:
+the commit was called synchronously in the dismiss tick. The other 22 tests in the Sound suite
+passed.
+
+Change (`components/sheets/screens/Sound.tsx`, `handleDismiss` only): module-scope
+`deferPastNextPaint` (rAF, then setTimeout, the repo's idiom from the deferred widget push) beside
+`SHEET_PERF_NAME`; `await deferPastNextPaint();` after the no-draft early return, before the
+commit. Nothing else moved. Suite furniture: the store import became the namespace import the
+spy needs (`jest.spyOn(NotificationStore, 'commitSoundSelection').mockResolvedValueOnce(true)`),
+six call sites qualified.
+
+Green: Sound suite 23/23, Sheet suite 27/27 (step 1's marks intact). `yarn validate` exit 0
+after one Biome import-sort fix on the new import: jest 5678 passed, 5678 total.
+
+Break: `bash $TMPDIR/104-scripts/break-104.sh defer` from the repository root — last line
+`BREAK OK` (the await commented out, the new case red with the commit called before the frame,
+file restored; `git status --porcelain` then listed only the step's files). Run a second time
+after the review fix, same `BREAK OK`.
+
+Version: 2.0.798 (next patch after uat's 2.0.797) in `app.json`, `package.json` and
+`android/app/build.gradle`, app.json first.
+
+Commit `ae25187f` (2.0.798), merged into `uat` as `0e5cd839` (no-ff). Hook:
+`Tests: 5678 passed, 5678 total` (suites 215 passed, 215 total); coverage: Statements 100%
+(5356/5356), Branches 100% (2312/2312), Functions 100% (1116/1116), Lines 100% (4797/4797).
+
+Review (cold read of `git show ae25187f`): one finding, fixed and amended — the helper's comment
+carried "(verdict T)", planning-lane provenance the repo bans in comments; trimmed to the why
+(the verdict stays in the commit message, per the plan's own anticipated fix). Checklist clean:
+code diff is the sound sheet and its test only, the deferral sits after the early return, the
+verdict is in the commit message. Shipped classes: no lifecycle leak (the deferred chain is
+one-shot and the commit was already designed to outlive the sheet), no worklet involvement, no
+residue, no rule touched — the one-Light-at-completion rule is asserted by the new guard.
+
+session: ses_ebe5bd031ffere1bI6gDHW4pKs
