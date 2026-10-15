@@ -231,3 +231,21 @@ session: ses_ebe31e37fffeNkB8QPBu6xfXgu
 
 Release dev build 2.0.811 (uat `f3d5015a`) on the XS, per the `e2e/device-atlas-iphone-xs.md` recipe: prebuild `--clean` with `EXPO_PUBLIC_IOS_WIDGETS=1`, plist 2.0.811 with both bundle ids checked, metro cache cleared, Release xcodebuild with `EXPO_PUBLIC_PERF_MONITOR=1` in the build env and the cached team inline (`BUILD SUCCEEDED`, artifact verified 2.0.811 before install, Rubik-Regular and Rubik-Medium in the bundle), installed through devicectl as `com.mugtaba.athan` (the device's app list reads 2.0.811), one throwaway launch so the What's New sheet marks itself shown and her read starts clean. A first 2.0.809 build went stale before install (the 2.0.811 audit fix landed first) and never reached the phone; this 2.0.811 rebuild supersedes it and carries the audit's arrow fix (the tip sinks deeper, TIP_OVERLAP 7, card unmoved) that her read must judge. session: ses_ebe230fc5ffeppyXZJv9k510Uw
 
+
+### Step 4 - the owner's read, batched pass two (2026-10-16, the 2.0.811 build)
+
+Her verdicts, item by item:
+
+- Item 3 (the countdown letters): "perfect. Thank you so much." LOCKED, no dial.
+- Item 1 (the location-date gap): "it's almost touching... absolutely perfect" BUT "maybe
+  let's have a small gap, a little bit of a gap" - the dial lands as the plan's own follow-up
+  commit: the ar location margin rises so the lines read close with a small breath (recorded
+  default 6, her next read dials again on row 108's build).
+- Item 2 (the arrow): no objection named at this read.
+- Her Noto ruling: delete the two dead TTFs and their app.json lines (ask-first answered yes).
+
+Her read also surfaced four Rubik-cascade defects on the Noto-tuned sheets (the -10 pull-ups
+merging subtitles, the notification-sound label gap, the footer note's descender clipping) -
+recorded as row 108, out of this ticket's scope by her own batch ruling.
+
+session: ses_ebe230fc5ffeppyXZJv9k510Uw
