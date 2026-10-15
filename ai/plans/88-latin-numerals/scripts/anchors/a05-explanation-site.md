@@ -1,4 +1,0 @@
-
-        {/* English explanation */}
-        <Text style={styles.infoExplanation}>{localizeDigits(explanation)}</Text>
-      </View>
