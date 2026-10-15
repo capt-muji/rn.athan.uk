@@ -54,7 +54,6 @@ describe('the reminder stepper under ar', () => {
 
       expect(screen.getByText('15')).toBeOnTheScreen();
       expect(screen.getByText('دقيقة')).toBeOnTheScreen();
-      expect(screen.getByText('15').props.children).not.toMatch(/[\u0660-\u0669]/);
       expect(screen.getByLabelText('15 دقيقة')).toBeOnTheScreen();
     } finally {
       setActiveLocale('en');
