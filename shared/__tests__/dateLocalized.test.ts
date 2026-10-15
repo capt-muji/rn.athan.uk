@@ -1,7 +1,7 @@
 /**
  * The catalog-composed date labels (R6.1, R6.2): Gregorian and Hijri labels
  * compose from the active catalog's calendar keys in the English shape and
- * order, no era in any locale, and each locale's own digits
+ * order, no era in any locale, and Latin digits in every locale (row 88)
  */
 
 import { format } from 'date-fns';
@@ -58,9 +58,10 @@ describe('formatDateLocalized', () => {
     }
   });
 
-  it('composes the label from the ar calendar keys with Arabic-Indic digits', () => {
+  it('composes the label from the ar calendar keys with Latin digits', () => {
     setActiveLocale('ar');
-    expect(formatDateLocalized('2026-10-11')).toBe('الأحد, ١١ أكتوبر ٢٠٢٦');
+    expect(formatDateLocalized('2026-10-11')).toBe('الأحد, 11 أكتوبر 2026');
+    expect(formatDateLocalized('2026-10-11')).not.toMatch(/[\u0660-\u0669]/);
   });
 });
 
@@ -78,10 +79,10 @@ describe('formatHijriDateLocalized', () => {
     expect(formatHijriDateLocalized('2026-10-11')).not.toMatch(/[๐-๙]/);
   });
 
-  it('draws the ar catalog month with Arabic-Indic digits and no era under ar', () => {
+  it('draws the ar catalog month with Latin digits and no era under ar', () => {
     setActiveLocale('ar');
     // 2026-10-11 is Rabiʻ II 30, 1448; the ar catalog names that month ربيع الآخر
-    expect(formatHijriDateLocalized('2026-10-11')).toBe('ربيع الآخر ٣٠, ١٤٤٨');
+    expect(formatHijriDateLocalized('2026-10-11')).toBe('ربيع الآخر 30, 1448');
   });
 
   it('falls back to the localized Gregorian label when the Hijri conversion throws', () => {

@@ -140,8 +140,9 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     try {
       await render(<AlertSheet />);
 
-      // The owner's numeral ruling, 2026-10-14: native digits on every value but the timer and its bar
-      expect(screen.getByText('\u0661\u0665')).toBeOnTheScreen();
+      // Row 88, 2026-10-15: Latin digits on every value, the stepper's word kept
+      expect(screen.getByText('15')).toBeOnTheScreen();
+      expect(screen.getByText('15').props.children).not.toMatch(/[\u0660-\u0669]/);
     } finally {
       setActiveLocale('en');
     }

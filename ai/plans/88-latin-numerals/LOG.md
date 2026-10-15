@@ -138,3 +138,49 @@ superseded 2026-10-14 ruling), the green run's components command, the
 restore list, the symptom row for escaped pins, and fresh version
 expectations (repair 2.0.743, step 1 2.0.744, step 2 2.0.745). The gate
 re-runs PLAN OK; step 1 re-dispatches fresh from red.
+
+### Step 01 — redone after the plan repair
+
+Branch `ticket/88-step1` off `lane/88` at `f4485aa2`, fresh from red per the
+repair. Preflight `PREFLIGHT OK` (clean tree, all 13 anchors at 1, row 85
+DONE). package.json printed 2.0.743 at the branch point, so the step version
+is 2.0.744.
+
+Red: unit 3 failed / 80 passed (the two flipped dateLocalized ar pins
+receiving `الأحد, ١١ أكتوبر ٢٠٢٦` and `ربيع الآخر ٣٠, ١٤٤٨`, and the new
+widget prop sweep catching the localized `dateLabel` under both date
+preferences); components 6 failed / 105 passed (the Explanation ar pin and
+the suhoor and duha ar sweep rows, the new Stepper ar case, the new Help ar
+sweep at the cutoff topic's 30, and the flipped Alert pin). locale.test.ts is
+a deletion with no red run. Nothing outside the named tests failed.
+
+Change: the contracts as written. `NATIVE_DIGITS` and `localizeDigits` deleted
+from `shared/i18n/locale.ts` with the doc comment and one blank line; the
+twelve wrapper expressions unwrapped across `shared/time.ts`, `Help.tsx`,
+`Explanation.tsx`, `Stepper.tsx`; the typography RECORDS comment lost its
+numerals clause; the Hijri doc comment reads "with Latin digits in every
+locale (row 88)". Biome reflowed the stepper value container's opening tag
+onto one line after the unwrap (its own formatter fix, same attributes in the
+same order). A post-change grep finds no `localizeDigits` or `NATIVE_DIGITS`
+anywhere in the repository.
+
+Green: unit 83 passed 83 total, components 111 passed 111 total, tsc exit 0,
+biome exit 0 (after the reflow). Break script written verbatim to
+`ai/plans/88-latin-numerals/scripts/break-88-step1.sh`, run staged-green: all
+four breaks red as expected, last line `ALL ASPECTED: 1`, tree back to the
+step's files only.
+
+Version 2.0.744 set in app.json first, then package.json, under the version
+lock (acquired with no retry, fetch origin exit 0). Row 88's status cell
+reads IN PROGRESS, step 1. One plan transcription note: the step file's
+quoted Alert assertion carries a stray closing paren (`toBeOnTheScreen());`);
+the file's real line ends `toBeOnTheScreen();` and the balanced form landed.
+
+Review: cold read of the commit against the step checklist and the shipped
+classes: clean. No file outside the list, no wrapper survived, no import
+names `localizeDigits`, `RTL_IDS` untouched, stepper styles and words
+untouched, every flipped test asserts Latin bytes at least once, no
+lifecycle, thread or rule ground touched.
+
+session: ses_ec193d88affep7AvJ3lo6ptnl9
+
