@@ -60,7 +60,7 @@ describe('formatDateLocalized', () => {
 
   it('composes the label from the ar calendar keys with Latin digits', () => {
     setActiveLocale('ar');
-    expect(formatDateLocalized('2026-10-11')).toBe('الأحد, 11 أكتوبر 2026');
+    expect(formatDateLocalized('2026-10-11')).toBe('الأحد\u060C 11 أكتوبر 2026');
     expect(formatDateLocalized('2026-10-11')).not.toMatch(/[\u0660-\u0669]/);
   });
 });
@@ -82,7 +82,7 @@ describe('formatHijriDateLocalized', () => {
   it('draws the ar catalog month with Latin digits and no era under ar', () => {
     setActiveLocale('ar');
     // 2026-10-11 is Rabiʻ II 30, 1448; the ar catalog names that month ربيع الآخر
-    expect(formatHijriDateLocalized('2026-10-11')).toBe('ربيع الآخر 30, 1448');
+    expect(formatHijriDateLocalized('2026-10-11')).toBe('ربيع الآخر 30\u060C 1448');
   });
 
   it('falls back to the localized Gregorian label when the Hijri conversion throws', () => {

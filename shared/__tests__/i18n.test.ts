@@ -10,6 +10,9 @@
  * may enter the catalog until a remedy is chosen (R16).
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { EXTRA_PRAYER_TITLES, PRAYER_IDS, STANDARD_PRAYER_TITLES } from '@/shared/constants';
 import { en, PRAYER_LABELS, prayerLabel, t } from '@/shared/i18n';
 import { ar } from '@/shared/i18n/ar';
@@ -241,5 +244,30 @@ describe('the language loader line', () => {
     for (const catalog of [en, ar, hi, ms, so, th]) {
       expect(Object.keys(catalog)).not.toContain('language.applying');
     }
+  });
+});
+
+describe('the ar volume note copy', () => {
+  it('carries no guillemet and no forward slash, keeping the row 64 shape', () => {
+    const copy = ar['volume.note.ios'];
+    expect(copy).not.toContain('\u00AB');
+    expect(copy).not.toContain('\u00BB');
+    expect(copy).not.toContain('/');
+    expect(copy).toContain('الرنين والتنبيهات');
+    expect(copy).toContain('تكتمه');
+  });
+});
+
+describe('the information glyph asset', () => {
+  it('draws a circle around the i, in currentColor, inside the square viewBox', () => {
+    const svg = readFileSync(join(__dirname, '..', '..', 'assets', 'icons', 'svg', 'info.svg'), 'utf8');
+    expect(svg).toMatch(/<circle[^>]*stroke="currentColor"/);
+    expect(svg).toMatch(/fill="currentColor"/);
+    expect(svg).toMatch(/viewBox="5\.7605 5\.76 12\.48 12\.48"/);
+    // react-native-svg clips at the view bounds, so the stroke's outer edge must
+    // stay inside the half-box (12.48 / 2 = 6.2405) or the circle grows flat spots
+    const radius = Number(svg.match(/<circle[^>]*\br="([\d.]+)"/)?.[1]);
+    const strokeWidth = Number(svg.match(/<circle[^>]*stroke-width="([\d.]+)"/)?.[1]);
+    expect(radius + strokeWidth / 2).toBeLessThanOrEqual(6.2405);
   });
 });

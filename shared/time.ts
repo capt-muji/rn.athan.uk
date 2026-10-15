@@ -1,5 +1,6 @@
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
 import { type TranslationKey, t } from '@/shared/i18n';
+import { sentenceComma } from '@/shared/i18n/locale';
 
 // =============================================================================
 // PRAYER-TIMEZONE CLOCK
@@ -277,7 +278,7 @@ export const formatDateLocalized = (date: string): string => {
   const weekday = new Date(year, month - 1, day, 12).getDay();
   // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
   const isoWeekday = weekday === 0 ? 7 : weekday;
-  const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}, ${String(day)} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${String(year)}`;
+  const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}${sentenceComma()} ${String(day)} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${String(year)}`;
   return composed;
 };
 
@@ -302,7 +303,7 @@ export const formatHijriDateLocalized = (date: string): string => {
     const hijriMonth = Number(parts.find((part) => part.type === 'month')?.value);
     const hijriDay = parts.find((part) => part.type === 'day')?.value;
     const hijriYear = parts.find((part) => part.type === 'year')?.value;
-    const composed = `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${String(hijriDay)}, ${String(hijriYear)}`;
+    const composed = `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${String(hijriDay)}${sentenceComma()} ${String(hijriYear)}`;
     return composed;
   } catch {
     return formatDateLocalized(date);
@@ -620,17 +621,22 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
  * the final 60 seconds, the lettered shape otherwise, fixed in every locale
  * (owner ruling 2026-10-15, row 83): unpadded Latin digits with lowercase h m
  * letters that never localise, hours and minutes only, a zero-minute group
- * dropping beside live hours.
+ * dropping beside live hours. The lettered duration composes inside Unicode
+ * left-to-right isolates so the run reads left to right inside an RTL sentence
+ * (row 92: under the RTL base direction the space between the groups resolves
+ * RTL and swaps them), the letters lowercase at the sentence's own face, fixed
+ * in every locale.
  *
  * @param seconds - Seconds since prayer occurred (0 or positive)
- * @returns "now" (<60 s, the catalog word); "2m", "1h", "2h 1m" otherwise
+ * @returns "now" (<60 s, the catalog word); "\u20662m\u2069", "\u20661h\u2069",
+ * "\u20662h 1m\u2069" otherwise
  *
  * @example
  * formatTimeAgo(45)      // Returns: "now"
- * formatTimeAgo(120)     // Returns: "2m"
- * formatTimeAgo(3600)    // Returns: "1h"
- * formatTimeAgo(5400)    // Returns: "1h 30m"
- * formatTimeAgo(7200)    // Returns: "2h"
+ * formatTimeAgo(120)     // Returns: "\u20662m\u2069"
+ * formatTimeAgo(3600)    // Returns: "\u20661h\u2069"
+ * formatTimeAgo(5400)    // Returns: "\u20661h 30m\u2069"
+ * formatTimeAgo(7200)    // Returns: "\u20662h\u2069"
  * formatTimeAgo(0)       // Returns: "now"
  */
 export const formatTimeAgo = (seconds: number): string => {
@@ -640,35 +646,15 @@ export const formatTimeAgo = (seconds: number): string => {
 
   const minutes = Math.floor(seconds / 60);
   if (minutes < 60) {
-    return `${minutes}m`;
+    return `\u2066${minutes}m\u2069`;
   }
 
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
   if (remainingMinutes === 0) {
-    return `${hours}h`;
+    return `\u2066${hours}h\u2069`;
   }
-  return `${hours}h ${remainingMinutes}m`;
-};
-
-/** One digit run of the ago duration with its unit letter: 20 and m in 5h 20m */
-interface AgoLetterGroup {
-  digits: string;
-  letter: string;
-}
-
-/**
- * Splits a composed ago sentence around its lettered duration, or returns null
- * when the sentence carries none (the now sentence). Digits appear nowhere else
- * in the sentence, so the pattern cannot match elsewhere.
- */
-export const splitAgoDuration = (value: string): { before: string; groups: AgoLetterGroup[]; after: string } | null => {
-  const match = value.match(/\d+h(?: \d+m)?|\d+m/);
-  if (match === null) return null;
-  const duration = match[0];
-  const index = value.indexOf(duration);
-  const groups = [...duration.matchAll(/(\d+)([hm])/g)].map((entry) => ({ digits: entry[1], letter: entry[2] }));
-  return { before: value.slice(0, index), groups, after: value.slice(index + duration.length) };
+  return `\u2066${hours}h ${remainingMinutes}m\u2069`;
 };
 
 /**

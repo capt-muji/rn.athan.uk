@@ -184,7 +184,7 @@ export default function BottomSheetSound() {
         <View style={styles.card}>
           <Text style={styles.cardHint}>{t('sound.notificationSound')}</Text>
 
-          <View style={styles.listContainer}>
+          <View testID={'sound-list'} style={styles.listContainer}>
             {/* Sliding indicator */}
             <Animated.View style={[styles.indicator, indicatorStyle]} />
 
@@ -211,6 +211,8 @@ export default function BottomSheetSound() {
 }
 
 const ty = typographyFor(currentLocaleId());
+// D94's pair: the ar card hint tightens onto the list (the preview animation) and the note copy clears it below
+const compactArabic = currentLocaleId() === 'ar';
 
 const styles = StyleSheet.create({
   // Card
@@ -229,7 +231,7 @@ const styles = StyleSheet.create({
 
   // List
   listContainer: {
-    marginTop: SPACING.md,
+    marginTop: compactArabic ? 6 : SPACING.md,
     gap: ITEM_GAP,
   },
   indicator: {

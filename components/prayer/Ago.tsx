@@ -1,13 +1,11 @@
 import { useAtomValue } from 'jotai';
-import { Fragment } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
 import { useDerivedBackgroundColor, useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
-import { splitAgoDuration } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
@@ -53,26 +51,9 @@ function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minu
   // Fade out when overlay opens (derived, so it cannot strand on resume)
   const prayerAgoOpacityStyle = useDerivedOpacity(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade });
 
-  const parts = splitAgoDuration(prayerAgo);
-
   return (
     <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>
-      {parts === null ? (
-        prayerAgo
-      ) : (
-        <>
-          {parts.before}
-          {parts.groups.map((group, index) => (
-            <Fragment key={group.letter}>
-              {index > 0 ? ' ' : null}
-              {group.digits}
-              <Text style={styles.gap}> </Text>
-              <Text style={styles.unitLetter}>{group.letter}</Text>
-            </Fragment>
-          ))}
-          {parts.after}
-        </>
-      )}
+      {prayerAgo}
     </Animated.Text>
   );
 }
@@ -90,12 +71,5 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignSelf: 'center',
     marginTop: -SPACING.xs,
-  },
-  gap: {
-    fontSize: 8,
-  },
-  unitLetter: {
-    fontSize: Math.round(ty.size(TEXT.sizeDetail) * 0.55),
-    opacity: 0.4,
   },
 });
