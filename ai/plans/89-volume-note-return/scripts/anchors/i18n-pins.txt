@@ -1,5 +1,0 @@
-  ['help.step.dndAccess', 'Allow Do Not Disturb access'],
-  ['help.q.volume', 'Which volume controls the sound level?'],
-  ['help.a.volume.android', 'The athan plays at alarm volume, not ring volume. Raise Alarm in your sound settings.'],
-  ['help.a.volume.ios', 'The athan plays at your ringer volume, and the Ring/Silent switch and Focus silence it.'],
-  ['help.q.cutoff', 'Why does the athan cut off early?'],
