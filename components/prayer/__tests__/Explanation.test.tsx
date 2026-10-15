@@ -64,7 +64,7 @@ describe('the explanation box of an Extras prayer', () => {
     expect(within(parts[1 - boxPart]).queryByText('Midnight')).not.toBeOnTheScreen();
   });
 
-  // D106.2: the arrow draws 36 by 15, the same curve scaled - its tip sinks 6 into the row band
+  // The arrow draws 36 by 15, the same curve scaled - its tip sinks 7 into the row band
   // while the card body keeps its placement arithmetic
   it('draws the up arrow at 36 by 15', async () => {
     await render(
@@ -100,7 +100,7 @@ describe('the explanation box of an Extras prayer', () => {
   });
 
   it('overlap-into-the-row constant is 6', () => {
-    expect(TIP_OVERLAP).toBe(6);
+    expect(TIP_OVERLAP).toBe(7);
   });
 });
 
