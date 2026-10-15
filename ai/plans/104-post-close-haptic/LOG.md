@@ -231,3 +231,21 @@ one-shot and the commit was already designed to outlive the sheet), no worklet i
 residue, no rule touched — the one-Light-at-completion rule is asserted by the new guard.
 
 session: ses_ebe5bd031ffere1bI6gDHW4pKs
+
+### Step 4 - build ready
+
+Release dev build 2.0.811 (uat `f3d5015a`) on the XS, per the `e2e/device-atlas-iphone-xs.md` recipe: prebuild `--clean` with `EXPO_PUBLIC_IOS_WIDGETS=1`, plist 2.0.811 with both bundle ids checked, metro cache cleared, Release xcodebuild with `EXPO_PUBLIC_PERF_MONITOR=1` in the build env and the cached team inline (`BUILD SUCCEEDED`, artifact verified 2.0.811 before install), installed through devicectl as `com.mugtaba.athan` (the device's app list reads 2.0.811), one throwaway launch so the What's New sheet marks itself shown and her read starts clean. A first 2.0.809 build went stale before install (the 2.0.811 audit fix landed first) and never reached the phone; this 2.0.811 rebuild supersedes it. Marks stay baked on, no syslog capture this pass. session: ses_ebe230fc5ffeppyXZJv9k510Uw
+
+### Step 4 - DONE (the owner's read)
+
+Build: the pass-two Release dev build at 2.0.811 on the XS (the rebuild after the audit fixes;
+the first attempt's 2.0.809 artifact went stale when the arrow's overlap moved to 7).
+
+Her read, batched pass two, 2026-10-16: "At the close, both times" - the unchanged close and the
+changed close both buzz immediately at the close, never twice, never late. R3.1 is met by her own
+words; no defect named.
+
+Ticket 104 moves to EXECUTED-complete; the lead's audit (three reviewers, findings at 2.0.810)
+takes it to DONE.
+
+session: ses_ebe230fc5ffeppyXZJv9k510Uw
