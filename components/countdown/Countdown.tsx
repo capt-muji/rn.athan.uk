@@ -156,6 +156,8 @@ const styles = StyleSheet.create({
   },
   unitLetter: {
     color: UNIT_LETTER_COLOR,
+    // The row-time face: Latin regular in every locale, one weight lighter than the digits' medium
+    fontFamily: ty.familyRowTime,
     fontSize: Math.round(ty.countdownSize * 0.8),
     textShadowColor: 'rgba(0, 0, 0, 0.15)',
     textShadowOffset: { width: 0, height: 3 },
