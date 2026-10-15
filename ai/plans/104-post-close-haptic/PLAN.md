@@ -181,7 +181,7 @@ Checklist:
 - [x] Step 1: the dispatch marks and the simulator diagnosis (`steps/1-instrument-and-diagnose.md`)
 - [x] Step 2: the XS reproduction with the owner, the capture and the verdict
   (`steps/2-xs-reproduction.md`)
-- [ ] Step 3: the fix, gated on verdict T or T2 (`steps/3-fix.md`)
+- [x] Step 3: the fix, gated on verdict T or T2 (`steps/3-fix.md`)
 - [ ] Step 4: the owner's read after the fix (`steps/4-owner-read.md`)
 
 Steps carry their own Requirements, Weight, anchor check, goal, branch, files, red tests, change
