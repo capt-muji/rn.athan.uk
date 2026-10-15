@@ -96,3 +96,15 @@ false under ar once the record names `Rubik-Regular`; the comment now states the
 survives ("the record names its regular face for them"). No name, signature, behaviour or test
 moved; the named suites rerun green (50/50) and the break script rerun ended `BREAK OK`.
 
+Commit `e2307873` (2.0.803) on `feat/ar-rubik-face`. The hook's lines from the commit:
+`Test Suites: 215 passed, 215 total`; `Tests:       5678 passed, 5678 total`; coverage
+`Statements   : 100% ( 5356/5356 )`, `Branches     : 100% ( 2312/2312 )`,
+`Functions    : 100% ( 1116/1116 )`, `Lines        : 100% ( 4797/4797 )`. The amend that
+carried the review fix reran the hook to the same lines.
+
+Merged `5ff173a0` (2.0.803) into `uat` with
+`git merge --no-ff feat/ar-rubik-face -m "2.0.803 - merge feat/ar-rubik-face: the Rubik face"`,
+no conflict, tree clean. Never pushed.
+
+session: ses_ebe4b003fffeAwFNQg1tM3Sj3I
+
