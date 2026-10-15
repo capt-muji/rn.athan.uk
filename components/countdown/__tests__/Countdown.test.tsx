@@ -43,8 +43,8 @@ describe('the lettered countdown on the Standard schedule', () => {
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.getByText('Asr')).toBeOnTheScreen();
-    expect(screen.getByText('2 h')).toBeOnTheScreen();
-    expect(screen.getByText('29 m')).toBeOnTheScreen();
+    expect(screen.getByText('2h')).toBeOnTheScreen();
+    expect(screen.getByText('29m')).toBeOnTheScreen();
     expect(screen.getByLabelText('2h 29m')).toBeOnTheScreen();
     expect(screen.queryByText('02:29')).toBeNull();
   });
@@ -57,8 +57,8 @@ describe('the lettered countdown on the Standard schedule', () => {
     try {
       await render(<Countdown type={ScheduleType.Standard} />);
 
-      expect(screen.getByText('2 h')).toBeOnTheScreen();
-      expect(screen.getByText('29 m')).toBeOnTheScreen();
+      expect(screen.getByText('2h')).toBeOnTheScreen();
+      expect(screen.getByText('29m')).toBeOnTheScreen();
       const row = screen.getByLabelText('2h 29m');
       expect(flattenStyle(row.props.style).direction).toBe('ltr');
     } finally {
@@ -73,7 +73,7 @@ describe('the lettered countdown on the Standard schedule', () => {
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('42 m')).toBeOnTheScreen();
+    expect(screen.getByText('42m')).toBeOnTheScreen();
     expect(screen.queryByText('h')).toBeNull();
   });
 
@@ -84,7 +84,7 @@ describe('the lettered countdown on the Standard schedule', () => {
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('1 h')).toBeOnTheScreen();
+    expect(screen.getByText('1h')).toBeOnTheScreen();
     expect(screen.queryByText('m')).toBeNull();
     expect(screen.queryByText('s')).toBeNull();
   });
@@ -96,8 +96,8 @@ describe('the lettered countdown on the Standard schedule', () => {
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('1 h')).toBeOnTheScreen();
-    expect(screen.getByText('5 s')).toBeOnTheScreen();
+    expect(screen.getByText('1h')).toBeOnTheScreen();
+    expect(screen.getByText('5s')).toBeOnTheScreen();
     expect(screen.queryByText('m')).toBeNull();
   });
 
@@ -108,7 +108,7 @@ describe('the lettered countdown on the Standard schedule', () => {
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('45 s')).toBeOnTheScreen();
+    expect(screen.getByText('45s')).toBeOnTheScreen();
     expect(screen.queryByText('h')).toBeNull();
     expect(screen.queryByText('m')).toBeNull();
   });
@@ -120,7 +120,7 @@ describe('the lettered countdown on the Standard schedule', () => {
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('9 m')).toBeOnTheScreen();
+    expect(screen.getByText('9m')).toBeOnTheScreen();
     expect(screen.queryByText('s')).toBeNull();
   });
 
@@ -131,7 +131,7 @@ describe('the lettered countdown on the Standard schedule', () => {
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByText('0 s')).toBeOnTheScreen();
+    expect(screen.getByText('0s')).toBeOnTheScreen();
   });
 
   it('drops the whole seconds group when the preference is off over ten minutes', async () => {
@@ -145,7 +145,7 @@ describe('the lettered countdown on the Standard schedule', () => {
 
     await act(() => setSecondsPreference(true));
 
-    expect(screen.getByText('5 s')).toBeOnTheScreen();
+    expect(screen.getByText('5s')).toBeOnTheScreen();
   });
 
   it('draws the letters at the digits\u2019 own size and full-strength ink, inside the digit run', async () => {
@@ -155,7 +155,7 @@ describe('the lettered countdown on the Standard schedule', () => {
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    const group = screen.getByText('2 h');
+    const group = screen.getByText('2h');
     const groupStyle = flattenStyle(group.props.style);
     expect(groupStyle.color).toBe(COLORS.text.primary);
     expect(groupStyle.fontVariant).toEqual(['tabular-nums']);
@@ -173,7 +173,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(nameStyle.textShadowRadius).toBe(6);
   });
 
-  it('separates each letter from its digits by the 2 point gap span', async () => {
+  it('renders no gap node between digits and letters', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSecondsPreference(false);
     setCountdown(8940);
@@ -184,7 +184,24 @@ describe('the lettered countdown on the Standard schedule', () => {
       (node) => node.props.children === ' ' && flattenStyle(node.props.style).fontSize === 8,
       { includeSelf: true }
     );
-    expect(gaps).toHaveLength(2);
+    expect(gaps).toHaveLength(0);
+
+    // styles.group's own margin is the selector, so each group's children read
+    // digits then letter with nothing between
+    const groupNodes = screen.root?.queryAll(
+      (node) => {
+        const style = flattenStyle(node.props.style);
+        return style !== undefined && style.marginHorizontal === 6;
+      },
+      { includeSelf: true }
+    );
+    const childText = (child: unknown): string =>
+      typeof child === 'string' ? child : (child as { props: { children: string } }).props.children;
+    const groups = groupNodes?.map((group) => (group.props.children as unknown[]).map(childText));
+    expect(groups).toEqual([
+      ['2', 'h'],
+      ['29', 'm'],
+    ]);
   });
 
   it('holds the unavailable display as one node, and names no prayer a screen reader cannot use', async () => {
@@ -207,8 +224,8 @@ describe('the lettered countdown on the Standard schedule', () => {
     await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
 
     expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('5 h')).toBeOnTheScreen();
-    expect(screen.getByText('28 m')).toBeOnTheScreen();
+    expect(screen.getByText('5h')).toBeOnTheScreen();
+    expect(screen.getByText('28m')).toBeOnTheScreen();
   });
 
   it('renders the current countdown while the overlay holds the page even before a list is on screen', async () => {
@@ -216,7 +233,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     try {
       await render(<Countdown type={ScheduleType.Standard} />);
 
-      expect(screen.getByText('10 s')).toBeOnTheScreen();
+      expect(screen.getByText('10s')).toBeOnTheScreen();
     } finally {
       await act(() => closeOverlay());
     }
