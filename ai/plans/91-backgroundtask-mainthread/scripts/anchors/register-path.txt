@@ -1,4 +1,0 @@
-export const registerBackgroundTask = async () => {
-  try {
-    // Check if background tasks are available on this device
-    const status = await BackgroundTask.getStatusAsync();
