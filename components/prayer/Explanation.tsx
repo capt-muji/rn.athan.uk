@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import InfoIcon from '@/assets/icons/svg/info.svg';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { currentLocaleId, localizeDigits } from '@/shared/i18n/locale';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { typographyFor } from '@/shared/typography';
 
 interface PrayerExplanationProps {
@@ -71,7 +71,7 @@ export default function PrayerExplanation({
         <View style={styles.separator} />
 
         {/* English explanation */}
-        <Text style={styles.infoExplanation}>{localizeDigits(explanation)}</Text>
+        <Text style={styles.infoExplanation}>{explanation}</Text>
       </View>
 
       {/* Triangle arrow pointing down */}

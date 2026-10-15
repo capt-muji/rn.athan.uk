@@ -12,6 +12,7 @@ import { onPlatform } from '@/__tests__/harness';
 import { openDndAccessSettings } from '@/device/notifications';
 import { SIZE } from '@/shared/constants';
 import { getHelpTopics } from '@/shared/help';
+import { setActiveLocale } from '@/shared/i18n/locale';
 
 import ModalHelp from '../Help';
 
@@ -262,5 +263,24 @@ describe("the Help modal's Close row entrance", () => {
     const row = enteringAncestorOf(screen.getByRole('button', { name: 'Close' }));
 
     expect(row?.props.entering).toBe(FadeIn);
+  });
+});
+
+describe('the Help modal under ar', () => {
+  it('renders every answer with the catalog bytes and Latin digits', async () => {
+    setActiveLocale('ar');
+    try {
+      const topics = getHelpTopics('ios');
+      await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+      for (const topic of topics) {
+        await fireEvent.press(screen.getByRole('button', { name: topic.question }));
+        const shown = screen.getByText(topic.text);
+        expect(shown.props.children).toBe(topic.text);
+        expect(shown.props.children).not.toMatch(/[\u0660-\u0669]/);
+      }
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
