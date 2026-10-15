@@ -618,17 +618,20 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
 
 /**
  * Formats seconds elapsed into the "ago" duration: the catalog `now` word inside
- * the final 60 seconds, the H:MM colon shape otherwise, in every locale (owner
- * ruling 2026-10-13, row 82).
+ * the final 60 seconds, the lettered shape otherwise, fixed in every locale
+ * (owner ruling 2026-10-15, row 83): unpadded Latin digits with lowercase h m
+ * letters that never localise, hours and minutes only, a zero-minute group
+ * dropping beside live hours.
  *
  * @param seconds - Seconds since prayer occurred (0 or positive)
- * @returns "now" (<60 s, the catalog word); "0:02", "1:30", "2:00" otherwise
+ * @returns "now" (<60 s, the catalog word); "2m", "1h", "2h 1m" otherwise
  *
  * @example
  * formatTimeAgo(45)      // Returns: "now"
- * formatTimeAgo(120)     // Returns: "0:02"
- * formatTimeAgo(5400)    // Returns: "1:30"
- * formatTimeAgo(7200)    // Returns: "2:00"
+ * formatTimeAgo(120)     // Returns: "2m"
+ * formatTimeAgo(3600)    // Returns: "1h"
+ * formatTimeAgo(5400)    // Returns: "1h 30m"
+ * formatTimeAgo(7200)    // Returns: "2h"
  * formatTimeAgo(0)       // Returns: "now"
  */
 export const formatTimeAgo = (seconds: number): string => {
@@ -637,14 +640,42 @@ export const formatTimeAgo = (seconds: number): string => {
   }
 
   const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) {
+    return `${minutes}m`;
+  }
+
   const hours = Math.floor(minutes / 60);
-  return `${hours}:${pad2(minutes % 60)}`;
+  const remainingMinutes = minutes % 60;
+  if (remainingMinutes === 0) {
+    return `${hours}h`;
+  }
+  return `${hours}h ${remainingMinutes}m`;
+};
+
+/** One digit run of the ago duration with its unit letter: 20 and m in 5h 20m */
+interface AgoLetterGroup {
+  digits: string;
+  letter: string;
+}
+
+/**
+ * Splits a composed ago sentence around its lettered duration, or returns null
+ * when the sentence carries none (the now sentence). Digits appear nowhere else
+ * in the sentence, so the pattern cannot match elsewhere.
+ */
+export const splitAgoDuration = (value: string): { before: string; groups: AgoLetterGroup[]; after: string } | null => {
+  const match = value.match(/\d+h(?: \d+m)?|\d+m/);
+  if (match === null) return null;
+  const duration = match[0];
+  const index = value.indexOf(duration);
+  const groups = [...duration.matchAll(/(\d+)([hm])/g)].map((entry) => ({ digits: entry[1], letter: entry[2] }));
+  return { before: value.slice(0, index), groups, after: value.slice(index + duration.length) };
 };
 
 /**
- * Splits a display string on its single colon for the ago badge's gap node, or
- * returns null when the string carries no colon, more than one. The badge's words
- * may sit either side, so the halves are not digit-checked.
+ * Splits a display string on its single colon for the prayer row time's gap
+ * node, or returns null when the string carries no colon, more than one. The
+ * row's digits sit either side, so the halves are not digit-checked.
  */
 export const splitSingleColon = (value: string): [string, string] | null => {
   const index = value.indexOf(':');
