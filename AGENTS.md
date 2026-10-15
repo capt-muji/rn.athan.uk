@@ -37,12 +37,11 @@ repo: run them, don't reinvent them.
 
 Maestro needs `export PATH="$HOME/.maestro/bin:$PATH"`.
 
-**MCP servers on for the simulator-only stretch** (`opencode.json`, 2026-09-28): `agent-device`
-drives, `xcodebuildmcp` builds, and nothing else covers both (XcodeBuildMCP has no tap, swipe or
-type, and its accessibility snapshot is not the points-accurate one row 36 measures with). Off:
-`mobile-mcp` (the Android/3T path; re-enable when a phone is plugged in), `maestro` MCP (the
-scripts and `e2e/flows/*.yaml` drive the CLI binary, not the server) and `expo` (nothing is shipping
-through EAS). Turning one back on is an `enabled` flip.
+**MCP servers** (`opencode.json`, updated 2026-10-15 by the owner's order): `agent-device`
+drives, `xcodebuildmcp` builds, `mobile-mcp` covers the Android and plugged-phone path, and the
+`maestro` server sits on (the scripts and `e2e/flows/*.yaml` remain the flow drivers; the
+server is the interactive fallback). `expo` stays off: nothing ships through EAS. Flipping one
+is an `enabled` flip.
 
 Scripts measure; the `vision` subagent interprets (global AGENTS.md covers when to
 delegate to it).
