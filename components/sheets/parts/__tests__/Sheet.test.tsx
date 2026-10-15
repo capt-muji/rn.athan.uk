@@ -182,6 +182,9 @@ describe('a sheet as the library opens and closes it', () => {
     await act(async () => {});
 
     expect(calls).toEqual(['sheet_close_haptic', 'onDismiss', 'sheet_close_haptic_settled']);
+
+    jest.mocked(perfMark).mockReset();
+    jest.mocked(Haptics.impactAsync).mockImplementation(() => Promise.resolve());
   });
 
   it('tells the screen when a dismiss completes', async () => {
@@ -267,15 +270,19 @@ describe('the settings sheet in a measurement build', () => {
 });
 
 describe('a sheet with no perf name', () => {
-  it('takes no timings as it opens and closes', async () => {
+  it('records only the close haptic marks, never sheet timings, as it opens and closes', async () => {
     await render(settingsSheet());
 
     await libraryReports('animate', -1, 0);
     await libraryReports('change', 0);
     await libraryReports('animate', 0, -1);
     await libraryReports('change', -1);
+    const dismissed = libraryReports('dismiss');
+    await dismissed;
+    await act(async () => {});
 
-    expect(perfMark).not.toHaveBeenCalled();
+    const names = jest.mocked(perfMark).mock.calls.map(([name]) => name);
+    expect(names).toEqual(['sheet_close_haptic', 'sheet_close_haptic_settled']);
     expect(perfMeasure).not.toHaveBeenCalled();
   });
 });
