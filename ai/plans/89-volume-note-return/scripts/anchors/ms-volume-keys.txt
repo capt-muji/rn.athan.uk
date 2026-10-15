@@ -1,0 +1,4 @@
+  'help.a.dndTimes.android': 'Mod Jangan Ganggu menyenyapkan notifikasi sehingga apl ini dibenarkan melaluinya.',
+  'help.step.dndAccess': 'Benarkan akses Jangan Ganggu',
+  'help.q.volume': 'Volum yang mana mengawal tahap bunyi?',
+  'help.a.volume.android':
