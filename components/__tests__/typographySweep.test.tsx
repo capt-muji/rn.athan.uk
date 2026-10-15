@@ -238,7 +238,7 @@ describe('the sheet header title', () => {
   it('renders the Arabic medium face at the unchanged size under ar', async () => {
     const title = await headerTitleStyleUnder('ar');
 
-    expect(title.fontFamily).toBe('NotoSansArabic-Medium');
+    expect(title.fontFamily).toBe('Rubik-Medium');
     expect(title.fontSize).toBe(22);
   });
 
@@ -255,7 +255,7 @@ describe('the help question', () => {
   it('renders the Arabic medium face at the unchanged size under ar', async () => {
     const question = await helpQuestionStyleUnder('ar');
 
-    expect(question.fontFamily).toBe('NotoSansArabic-Medium');
+    expect(question.fontFamily).toBe('Rubik-Medium');
     expect(question.fontSize).toBe(15);
   });
 
@@ -278,7 +278,7 @@ describe('the help question', () => {
 
 describe('the row time face', () => {
   it('is the Latin regular face under ar, so a row time reads like the English row', async () => {
-    expect(await rowTimeFontFamilyUnder('ar')).toBe('Roboto-Regular');
+    expect(await rowTimeFontFamilyUnder('ar')).toBe('Rubik-Regular');
   });
 });
 
