@@ -10,6 +10,7 @@ import {
   type DeviceLocaleInfo,
   readStoredLanguagePreference,
   resolveInitialLocale,
+  sentenceComma,
   setActiveLocale,
 } from '@/shared/i18n/locale';
 import * as Database from '@/stores/database';
@@ -129,6 +130,26 @@ describe('chevronFor', () => {
     setActiveLocale('ar');
     try {
       expect(chevronFor()).toBe('\u2039');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+});
+
+describe('sentenceComma', () => {
+  it('carries the Arabic comma under ar', () => {
+    setActiveLocale('ar');
+    try {
+      expect(sentenceComma()).toBe('\u060C');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it.each(['en', 'ms', 'so', 'hi', 'th'] as const)('keeps the Latin comma under %s', (locale) => {
+    setActiveLocale(locale);
+    try {
+      expect(sentenceComma()).toBe(',');
     } finally {
       setActiveLocale('en');
     }

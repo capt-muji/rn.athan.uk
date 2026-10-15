@@ -27,6 +27,10 @@ export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id)
 export const directionGlyph = (ltr: string, rtl: string): string =>
   localeDirection(currentLocaleId()) === 'rtl' ? rtl : ltr;
 
+/** The comma a composed sentence carries: the Arabic comma inside the RTL script, the
+ * Latin comma outside it. The separator belongs to the sentence, never the number. */
+export const sentenceComma = (): string => (localeDirection(currentLocaleId()) === 'rtl' ? '\u060C' : ',');
+
 export const chevronFor = (): string => directionGlyph('\u203A', '\u2039');
 
 export interface DeviceLocaleInfo {
