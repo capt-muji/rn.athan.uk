@@ -154,6 +154,28 @@ Log: `$TMPDIR/red3.log`.
 
 session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
 
+### Step 3 — DONE (merged 6f79b0d8 on lane/100)
+
+Change: `info.svg` replaced whole with the circled i (circle
+`stroke="currentColor"` stroke-width 1.4, i path `fill="currentColor"`, viewBox
+unchanged); `ar.ts`'s `volume.note.ios` becomes the D97 plain copy; i18n.test.ts
+gains the two describes verbatim with the `node:fs`/`node:path` imports.
+
+Green: 17/17 across i18n and VolumeNote (the VolumeNote suite untouched and
+green, its `svg:info` testID reads the unchanged file name); `npx tsc
+--noEmit` 0; `npx biome check . --error-on-warnings` 0. Break:
+`bash scripts/breaks/break-03.sh` ended `ALL AS EXPECTED: 1`, first failing
+line the `not.toContain('«')` guillemet assertion.
+
+Version 2.0.758 (lock, fetched, app.json first). Commit 958e1be3, hook gates:
+`Tests: 2 skipped, 5652 passed, 5654 total`, four 100% coverage lines. Queue
+cell `IN PROGRESS, step 3`. Review: circle and i both currentColor, viewBox
+byte-identical, ar diff exactly the one value, no lock file changed; no
+lifecycle, thread, residue or rule findings. Merge `--no-ff` 6f79b0d8; lock
+released.
+
+session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
+
 ### Lead ruling on the step-0 stop (2026-10-15)
 
 The lead's two planning commits claimed 2.0.753 and 2.0.754 in their messages but
@@ -162,3 +184,20 @@ tree, matching the tip's message. The lane's versions now run monotonically
 2.0.751, 2.0.752, 2.0.754, 2.0.754(tree). Step 1 bumps to 2.0.755 and every later
 step one patch above the tip it branches from; the version files are added by name
 in every commit from here. The chmod on the gitignored .husky/_/h stands.
+
+### Step 4 — RED (branch code/100-qibla-gap off lane/100 at 6f79b0d8)
+
+`npx jest components/__tests__/typographySweep.test.tsx
+components/sheets/screens/__tests__/Qibla.test.tsx --watchman=false`: 2 failed,
+209 passed, 211 total. Both cases fail pre-change exactly as the step file
+states, because `QiblaSubtitle` is module-local until the export lands
+(`Element type is invalid ... got: undefined`):
+
+- `the qibla sheet subtitle › pulls up 10 points under ar, matching the shared
+  header`
+- `the qibla sheet subtitle › keeps its 4 point gap under en`
+
+After the export lands alone, only the ar value assertion stays failing (today
+`marginTop` is `SPACING.xs`, 4, in both locales). Log: `$TMPDIR/red4.log`.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
