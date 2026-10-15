@@ -126,6 +126,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: RADIUS.md,
+    // The athan rows carry their height in their controls; these rows carry it here, so the touch room matches
+    minHeight: 48,
     paddingVertical: SPACING.md,
     paddingStart: SPACING.md,
   },
