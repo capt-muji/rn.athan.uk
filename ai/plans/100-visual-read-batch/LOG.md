@@ -78,6 +78,46 @@ the plan states. Log: `$TMPDIR/red1.log`.
 
 session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
 
+### Step 1 — DONE (merged 810af7df on lane/100)
+
+Change: `formatTimeAgo` composes its three lettered returns inside U+2066/U+2069
+literal escapes, docblock rewritten to name the isolates, the plain face and the
+row 92 RTL swap; `splitAgoDuration` and `AgoLetterGroup` deleted whole;
+`PrayerAgoBadge` renders `{prayerAgo}` as `Animated.Text`'s single child, the
+`gap` and `unitLetter` styles, the `Fragment` and `Text` imports gone.
+
+Green: `npx jest shared/__tests__/time.test.ts components/prayer/__tests__/Ago.test.tsx
+--watchman=false` 136/136; Screen and usePrayerAgo suites 20/20; `npx tsc
+--noEmit` 0; `npx biome check . --error-on-warnings` 0. Break:
+`bash scripts/breaks/break-01.sh` ended `ALL AS EXPECTED: 1`, first failing
+line `Expected: "⁦1m⁩"`, tree restored.
+
+Version 2.0.756 (app.json then package.json, under the lock, fetched). Commit
+67021c26 with hook gates: `Tests: 2 skipped, 5650 passed, 5652 total`, four
+100% coverage lines (Statements 5324/5324, Branches 2290/2290, Functions
+1106/1106, Lines 4768/4768). Queue cell `IN PROGRESS, step 1`.
+
+Review (cold read of 67021c26): no nested Text; isolates wrap the whole run
+including the inner space; `grep -rn splitAgoDuration` outside node_modules
+prints nothing; docblock names isolates, plain face and why; en content differs
+only by zero-width marks. No lifecycle, thread, residue or rule findings.
+Merge `--no-ff` 810af7df; lock released.
+
+session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
+
+### Step 2 — RED (branch code/100-capitals off lane/100 at 810af7df)
+
+`npx jest components/countdown/__tests__/Countdown.test.tsx --watchman=false`:
+12 failed, 4 passed, 16 total. Failing names (Countdown.test.tsx): the capital
+retargets at lines 43/44/45 (2 H, 29 M, label 2H 29M), 57-60 (ar, same), 73-74,
+84-86, 96-98, 108-110, 120-121, 131, 145, 155-164 (style case reads H at
+LETTER_SIZE 0.6), 189's sibling seconds cases, 201-202 (5 H, 28 M), 210 (10 S).
+First failure names `getByText('2 H')`. The four passing cases are the
+letter-agnostic ones (gap span, unavailable display, bar, renders nothing).
+Log: `$TMPDIR/red2.log`.
+
+session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
+
 ### Lead ruling on the step-0 stop (2026-10-15)
 
 The lead's two planning commits claimed 2.0.753 and 2.0.754 in their messages but
