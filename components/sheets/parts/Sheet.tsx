@@ -177,7 +177,9 @@ export default function Sheet({
   // bounce). Firing at close start instead buzzed the moment a drag began,
   // detached from the outcome.
   const handleDismiss = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    perfMark('sheet_close_haptic');
+    const impact = Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    void impact.then(() => perfMark('sheet_close_haptic_settled'));
     onDismiss?.();
   }, [onDismiss]);
 
