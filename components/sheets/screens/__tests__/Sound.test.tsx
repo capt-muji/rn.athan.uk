@@ -315,6 +315,10 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     // The dismiss tick belongs to the close haptic: the fake timers have not moved, so the commit has not started
     expect(commit).not.toHaveBeenCalled();
 
+    // The 0ms timer alone does not start the commit: it waits on the 16ms frame callback first
+    await act(() => jest.advanceTimersByTimeAsync(0));
+    expect(commit).not.toHaveBeenCalled();
+
     // The frame callback and the timer it schedules carry the commit start past the next paint
     await act(() => jest.advanceTimersByTimeAsync(20));
     expect(commit).toHaveBeenCalledTimes(1);
