@@ -89,7 +89,7 @@ export const en = {
     'Turn until it vibrates: the compass taps once when you face Makkah, so nothing needs reading',
 
   'notification.now': '{name} now',
-  'notification.reminder': '{name} in {n}m',
+  'notification.reminder': '{name} in {n}',
 
   'sheet.closeToSave': 'Close to save',
 
