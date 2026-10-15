@@ -146,7 +146,7 @@ describe('settings atoms default values', () => {
     expect(store.get(hijriDateEnabledAtom)).toBe(false);
     expect(store.get(showSecondsAtom)).toBe(false);
     expect(store.get(showTimePassedAtom)).toBe(true);
-    expect(store.get(countdownBarShownAtom)).toBe(true);
+    expect(store.get(countdownBarShownAtom)).toBe(false);
   });
 
   it('countdownBarColorAtom has default hex color', () => {

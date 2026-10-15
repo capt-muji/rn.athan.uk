@@ -2,7 +2,7 @@
  * The countdown bar colour row: when its picker opens, and what Done, dismissing and Reset do to the saved colour
  */
 
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
 import { I18nManager, StyleSheet } from 'react-native';
@@ -12,6 +12,11 @@ import { setActiveLocale } from '@/shared/i18n/locale';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
 import ColorPickerSettings from '../ColorPicker';
+
+// The bar's default is off; this suite reads the bar's row as part of the page, so it seeds it on
+beforeEach(async () => {
+  await act(() => getDefaultStore().set(countdownBarShownAtom, true));
+});
 
 const CUSTOM_COLOUR = '#ff3366';
 

@@ -16,6 +16,11 @@ import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 
 import Countdown from '../Countdown';
 
+// The bar's default is off; these suites read the bar as part of the page, so they seed it on
+beforeEach(async () => {
+  await act(() => getDefaultStore().set(countdownBarShownAtom, true));
+});
+
 const MAGRIB = 4;
 const LETTER_INK = COLORS.text.primary;
 const LETTER_SIZE = TEXT.sizeLarge;

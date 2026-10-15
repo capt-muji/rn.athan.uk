@@ -13,6 +13,11 @@ import { countdownBarShownAtom, getMeasurementsList } from '@/stores/ui';
 
 import List from '../List';
 
+// The bar's default is off; these suites read the bar as part of the page, so they seed it on
+beforeEach(async () => {
+  await act(() => getDefaultStore().set(countdownBarShownAtom, true));
+});
+
 type Measured = (pageX: number, pageY: number, width: number, height: number) => void;
 
 // React Native's Jest View never answers measureInWindow, so a test hands back the place a phone would report
