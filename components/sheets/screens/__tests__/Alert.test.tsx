@@ -6,8 +6,9 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Notifications from 'expo-notifications';
 import { Alert } from 'react-native';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { onPlatform, showLondonDay } from '@/__tests__/harness';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import {
@@ -106,6 +107,28 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     expect(reminderSwitch()).toBeChecked();
     expect(reminderOption('Sound')).toBeSelected();
     expect(screen.getByLabelText('15 min')).toBeOnTheScreen();
+  });
+
+  it('carries the volume note below the second reminder', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+
+    await render(<AlertSheet />);
+
+    const drawn = JSON.stringify(screen.toJSON());
+    // Depth-first serialization is the sheet's visual order: the note closes the content
+    expect(drawn.indexOf(t('volume.note.ios'))).toBeGreaterThan(drawn.indexOf(t('alert.reminder', { n: 2 })));
+    expect(screen.getAllByText(t('volume.note.ios'))).toHaveLength(1);
+  });
+
+  it('carries the alarm-volume wording on Android', async () => {
+    onPlatform('android');
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+
+    await render(<AlertSheet />);
+
+    expect(screen.getAllByText(t('volume.note.android'))).toHaveLength(1);
   });
 
   it('renders the visible reminder interval with the locale digits under ar', async () => {
