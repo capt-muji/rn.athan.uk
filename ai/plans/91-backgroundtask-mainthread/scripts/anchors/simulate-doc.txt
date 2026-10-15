@@ -1,0 +1,6 @@
+/**
+ * Simulates the system firing the background task (DEBUG builds only)
+ *
+ * Delegates to BackgroundTask.triggerTaskWorkerForTestingAsync, which calls
+ * the private _simulateLaunchForTaskWithIdentifier: selector on
+ * BGTaskScheduler. If no task request is pending, the Xcode/syslog console
