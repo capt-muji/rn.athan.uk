@@ -23,7 +23,7 @@ describe('a prayer page, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByRole('progressbar', { name: /^Prayer countdown/ })).toBeOnTheScreen();
     expect(screen.getByText('Fri, 11 Sep 2026')).toBeOnTheScreen();
     expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
-    expect(screen.getByText('Dhuhr 0\u2009\u2009:\u2009\u200958 ago', { normalizer: (s) => s })).toBeOnTheScreen();
+    expect(screen.getByText('Dhuhr 58 m ago')).toBeOnTheScreen();
   });
 
   it('shows nothing on the Extras page on the first frame', async () => {
@@ -44,7 +44,7 @@ describe('a prayer page, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByRole('progressbar', { name: /^Prayer countdown/ })).toBeOnTheScreen();
     expect(screen.getByText('Fri, 11 Sep 2026')).toBeOnTheScreen();
     expect(screen.getByRole('button', { name: 'Midnight notification: off' })).toBeOnTheScreen();
-    expect(screen.getByText('Duha 7\u2009\u2009:\u2009\u200914 ago', { normalizer: (s) => s })).toBeOnTheScreen();
+    expect(screen.getByText('Duha 7 h 14 m ago')).toBeOnTheScreen();
   });
 
   it('leaves out the time since the last prayer when Show time passed is off', async () => {
@@ -55,8 +55,6 @@ describe('a prayer page, Friday 11 September 2026 at 14:00', () => {
     await render(<Screen type={ScheduleType.Standard} />);
 
     expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
-    expect(
-      screen.queryByText('Dhuhr 0\u2009\u2009:\u2009\u200958 ago', { normalizer: (s) => s })
-    ).not.toBeOnTheScreen();
+    expect(screen.queryByText('Dhuhr 58 m ago')).not.toBeOnTheScreen();
   });
 });
