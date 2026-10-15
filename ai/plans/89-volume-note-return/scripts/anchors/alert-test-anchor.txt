@@ -1,7 +1,0 @@
-
-    expect(screen.getByText('Fajr')).toBeOnTheScreen();
-    expect(athanOption('Silent')).toBeSelected();
-    expect(reminderSwitch()).toBeChecked();
-    expect(reminderOption('Sound')).toBeSelected();
-    expect(screen.getByLabelText('15 min')).toBeOnTheScreen();
-  });

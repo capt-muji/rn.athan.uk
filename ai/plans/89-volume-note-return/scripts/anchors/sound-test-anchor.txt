@@ -1,9 +1,0 @@
-  it('builds no rows until the settings sheet has fully opened', async () => {
-    showLondonDay('2026-09-11', '14:00');
-    await render(<SoundSheet />);
-    expect(screen.queryByText('Athan 1')).not.toBeOnTheScreen();
-
-    await act(() => setSoundListReady());
-
-    expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
-  });
