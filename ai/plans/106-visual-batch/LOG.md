@@ -227,3 +227,7 @@ no conflict, tree clean. Never pushed.
 
 session: ses_ebe31e37fffeNkB8QPBu6xfXgu
 
+### Step 4 - build ready
+
+Release dev build 2.0.811 (uat `f3d5015a`) on the XS, per the `e2e/device-atlas-iphone-xs.md` recipe: prebuild `--clean` with `EXPO_PUBLIC_IOS_WIDGETS=1`, plist 2.0.811 with both bundle ids checked, metro cache cleared, Release xcodebuild with `EXPO_PUBLIC_PERF_MONITOR=1` in the build env and the cached team inline (`BUILD SUCCEEDED`, artifact verified 2.0.811 before install, Rubik-Regular and Rubik-Medium in the bundle), installed through devicectl as `com.mugtaba.athan` (the device's app list reads 2.0.811), one throwaway launch so the What's New sheet marks itself shown and her read starts clean. A first 2.0.809 build went stale before install (the 2.0.811 audit fix landed first) and never reached the phone; this 2.0.811 rebuild supersedes it and carries the audit's arrow fix (the tip sinks deeper, TIP_OVERLAP 7, card unmoved) that her read must judge. session: ses_ebe230fc5ffeppyXZJv9k510Uw
+
