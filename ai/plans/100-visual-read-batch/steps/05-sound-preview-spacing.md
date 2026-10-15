@@ -46,8 +46,8 @@ const soundListMarginUnder = async (locale: LocaleId): Promise<unknown> => {
     const rntl = require('@testing-library/react-native');
     const BottomSheetSound = require('../sheets/screens/Sound').default;
     await rntl.render(<BottomSheetSound />);
-    const list = rntl.screen.root?.findByProps({ testID: 'sound-list' });
-    marginTop = (StyleSheet.flatten(list?.props.style) as Record<string, unknown>).marginTop;
+    const list = rntl.screen.getByTestId('sound-list');
+    marginTop = (StyleSheet.flatten(list.props.style) as Record<string, unknown>).marginTop;
   });
   return marginTop;
 };
