@@ -1,8 +1,0 @@
-/**
- * Unit tests for device/backgroundTaskDebug.ts (ISSUES.md #8 instrumentation)
- *
- * The debug module must never affect production behavior: the snapshot
- * sequence no-ops unless enabled, and — critically — the simulate call is
- * __DEV__-only because the native module hard-crashes (fatalError) on
- * Release builds.
- */

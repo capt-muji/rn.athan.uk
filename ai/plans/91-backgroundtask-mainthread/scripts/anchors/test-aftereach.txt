@@ -1,6 +1,0 @@
-  afterEach(() => {
-    jest.useRealTimers();
-    delete process.env.EXPO_PUBLIC_BG_DEBUG;
-    delete process.env.EXPO_PUBLIC_ENV;
-    setDev(true);
-  });
