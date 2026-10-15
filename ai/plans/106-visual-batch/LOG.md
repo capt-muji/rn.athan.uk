@@ -111,3 +111,64 @@ it, the 2.0.790 precedent).
 
 session: ses_ebe4b003fffeAwFNQg1tM3Sj3I
 
+### Step 2 - DONE
+
+Branch `feat/info-box-arrow` off `uat` (2.0.805). Preflight (from the `$TMPDIR` copy, repository
+root as working directory): one FAIL - `ar-record.anchor` counts 0 in `shared/typography.ts`;
+the anchor pins the pre-step-1 Noto values that step 1's merged commit replaced with Rubik, the
+expected state after step 1 (the lead's dispatch note pre-adjudicated it). Every other check
+green: branch, clean tree, origin merged in, version floor 2.0.787, the other five anchors
+counting exactly 1, including this step's `explanation-arrow` and `infobox-placement`, both
+re-verified 1 by the preflight's own counting method.
+
+Reds (3 failed, 36 passed, 39 total in Explanation.test.tsx, no other case moved):
+
+- `draws the up arrow at 36 by 15` - first failing line
+  `components/prayer/__tests__/Explanation.test.tsx:79:30`, `Expected: 36 / Received: 30`.
+- `draws the down arrow at 36 by 15 mirrored` - first failing line
+  `components/prayer/__tests__/Explanation.test.tsx:99:30`, `Expected: 36 / Received: 30`.
+- `overlap-into-the-row constant is 6` - first failing line
+  `components/prayer/__tests__/Explanation.test.tsx:109:25`, `Expected: 6 / Received: 4`.
+
+Query note: root-wide `RNSVGSvgView`/`RNSVGPath` queries read the InfoBadge's own 13pt SVG
+first when the arrow renders below the box, so the pins scope through `drawnParts()` to the
+arrow's part - the step's proven `Alert.test.tsx` query pattern, aimed at the arrow subtree.
+
+Change: both arrows `width={36} height={15} viewBox={'0 0 36 15'}`; the four d strings exactly
+as the contract writes them (up `M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15` plus the fill's
+` Z`, down `M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0` mirrored); `export const TIP_OVERLAP = 6;`
+in `components/overlay/OverlayInfoBox.tsx`. The 1pt side-edge stroke, the fills, the placement
+arithmetic and `SPACING.overlap` untouched.
+
+Green: the three named suites 51/51 (the placement arithmetic green through the imported
+constant); `yarn validate` green after one Biome format pass on the new pins (their two-line
+arrays collapse to one) - tsc, Biome, Jest 215 suites / 5681 tests, coverage
+`Statements 100% (5356/5356)`, `Branches 100% (2312/2312)`, `Functions 100% (1116/1116)`,
+`Lines 100% (4797/4797)`.
+
+Break: `bash $TMPDIR/break-106.sh arrow` from the repository root - `TIP_OVERLAP` restored to 4,
+the constant pin red (1 failed, 38 skipped, 39 total), the file restored from the backup copy,
+`BREAK OK`; `git status --porcelain` then listed only this step's files.
+
+Version 2.0.806 (next patch after uat's 2.0.805, taken under the version lock; origin/uat still
+at 2.0.786, an ancestor of the branch): app.json first, then package.json, then the gitignored
+`android/app/build.gradle` `versionName` (never added).
+
+Ticket 106 moved to `IN PROGRESS, step 2` in `ai/plans/README.md` in this commit.
+
+Cold review of the diff (read back as a stranger): the checklist held - four path strings, four
+dimension values, one constant, three pins, nothing else; the placement arithmetic untouched; no
+per-locale value anywhere; the SVG comments still true against the new paths. No finding, no
+amend.
+
+Commit `d249500b` (2.0.806) on `feat/info-box-arrow`. The hook's lines from the commit:
+`Test Suites: 215 passed, 215 total`; `Tests:       5681 passed, 5681 total`; coverage
+`Statements   : 100% ( 5356/5356 )`, `Branches     : 100% ( 2312/2312 )`,
+`Functions    : 100% ( 1116/1116 )`, `Lines        : 100% ( 4797/4797 )`.
+
+Merged `f47c38d5` (2.0.806) into `uat` with
+`git merge --no-ff feat/info-box-arrow -m "2.0.806 - merge feat/info-box-arrow: the bigger arrow"`,
+no conflict, tree clean. Never pushed.
+
+session: ses_ebe3fe569ffetxtEJJuHDPUQZd
+
