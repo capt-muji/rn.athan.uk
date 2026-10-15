@@ -27,6 +27,7 @@ import {
   isFriday,
   isJanuaryFirst,
   isRamadan,
+  splitAgoDuration,
   splitSingleColon,
 } from '../time';
 
@@ -174,17 +175,17 @@ describe('formatTimeAgo', () => {
     expect(formatTimeAgo(-100)).toBe('now');
   });
 
-  it('formats minutes', () => {
-    expect(formatTimeAgo(60)).toBe('0:01');
-    expect(formatTimeAgo(120)).toBe('0:02');
-    expect(formatTimeAgo(3599)).toBe('0:59');
+  it('formats minutes under an hour', () => {
+    expect(formatTimeAgo(60)).toBe('1m');
+    expect(formatTimeAgo(120)).toBe('2m');
+    expect(formatTimeAgo(3599)).toBe('59m');
   });
 
-  it('formats hours and minutes', () => {
-    expect(formatTimeAgo(3600)).toBe('1:00');
-    expect(formatTimeAgo(5400)).toBe('1:30');
-    expect(formatTimeAgo(7200)).toBe('2:00');
-    expect(formatTimeAgo(7260)).toBe('2:01');
+  it('formats hours and minutes, dropping a zero-minute group', () => {
+    expect(formatTimeAgo(3600)).toBe('1h');
+    expect(formatTimeAgo(5400)).toBe('1h 30m');
+    expect(formatTimeAgo(7200)).toBe('2h');
+    expect(formatTimeAgo(7260)).toBe('2h 1m');
   });
 
   describe('one design in every locale', () => {
@@ -192,15 +193,11 @@ describe('formatTimeAgo', () => {
       setActiveLocale('en');
     });
 
-    it('draws the minute, whole-hour and mixed branches under ar', () => {
+    it('draws the minute, whole-hour and mixed branches under ar with the same Latin letters', () => {
       setActiveLocale('ar');
-      expect(formatTimeAgo(120)).toBe('0:02');
-      expect(formatTimeAgo(3600)).toBe('1:00');
-      expect(formatTimeAgo(7260)).toBe('2:01');
-    });
-
-    it('keeps Latin digits under en', () => {
-      expect(formatTimeAgo(7260)).toBe('2:01');
+      expect(formatTimeAgo(120)).toBe('2m');
+      expect(formatTimeAgo(3600)).toBe('1h');
+      expect(formatTimeAgo(7260)).toBe('2h 1m');
     });
   });
 
@@ -223,6 +220,49 @@ describe('splitSingleColon', () => {
     expect(splitSingleColon('a:b:c')).toBeNull();
     expect(splitSingleColon('no colon')).toBeNull();
     expect(splitSingleColon('')).toBeNull();
+  });
+});
+
+describe('splitAgoDuration', () => {
+  it('splits a sentence around its lettered duration and returns null otherwise', () => {
+    expect(splitAgoDuration('Dhuhr 58m ago')).toEqual({
+      before: 'Dhuhr ',
+      groups: [{ digits: '58', letter: 'm' }],
+      after: ' ago',
+    });
+    expect(splitAgoDuration('Duha 7h 14m ago')).toEqual({
+      before: 'Duha ',
+      groups: [
+        { digits: '7', letter: 'h' },
+        { digits: '14', letter: 'm' },
+      ],
+      after: ' ago',
+    });
+    expect(splitAgoDuration('الظهر قبل 2h 1m')).toEqual({
+      before: 'الظهر قبل ',
+      groups: [
+        { digits: '2', letter: 'h' },
+        { digits: '1', letter: 'm' },
+      ],
+      after: '',
+    });
+    expect(splitAgoDuration('ฟัจร์ 2h 30mที่แล้ว')).toEqual({
+      before: 'ฟัจร์ ',
+      groups: [
+        { digits: '2', letter: 'h' },
+        { digits: '30', letter: 'm' },
+      ],
+      after: 'ที่แล้ว',
+    });
+    expect(splitAgoDuration('Dhuhr 3h ago')).toEqual({
+      before: 'Dhuhr ',
+      groups: [{ digits: '3', letter: 'h' }],
+      after: ' ago',
+    });
+    expect(splitAgoDuration('Asr now')).toBeNull();
+    expect(splitAgoDuration('الآن')).toBeNull();
+    expect(splitAgoDuration('Dhuhr 58 ago')).toBeNull();
+    expect(splitAgoDuration('')).toBeNull();
   });
 });
 
