@@ -448,3 +448,47 @@ can never match. Plan repair: the break's old/new wrap the parenthesized
 expression — old `(localeDirection(currentLocaleId()) === 'rtl' ? '\u060C' : ',')`,
 new `(',')` — matching the formatter-mandated rendering the step's own biome gate
 enforces. The step file carries the repaired script verbatim.
+
+### Step 7 — DONE (merged 74c8aba7 on lane/100)
+
+Change: `sentenceComma` beside `directionGlyph` in the formatter's
+parenthesized rendering (the break-anchor ruling), both composers join
+through `${sentenceComma()}` with the literal space kept, the import added;
+the test blocks carry both rulings (`as const`, the parenthesized break
+anchor). Break: `bash scripts/breaks/break-07.sh` ended `ALL AS EXPECTED: 1`,
+first failing line `Expected: "،" Received: ","` on `sentenceComma › carries
+the Arabic comma under ar`; script deleted.
+
+Green: `npx jest shared/__tests__/locale.test.ts
+shared/__tests__/dateLocalized.test.ts --watchman=false` 36/36 (the en
+oracles prove byte-identical en output); `npx tsc --noEmit` 0;
+`npx biome check . --error-on-warnings` 0.
+
+Version 2.0.765 (lock, fetched, app.json first, both version files added by
+name). Commit 408272db, hook gates: `Tests: 2 skipped, 5668 passed, 5670
+total`, four 100% coverage lines (Statements 5329/5329, Branches 2300/2300,
+Functions 1107/1107, Lines 4772/4772). Queue cell `IN PROGRESS, step 7`.
+Review (cold read of 408272db): en output byte-identical through
+`sentenceComma()` returning `','` outside the RTL set, the helper reads the
+live locale at call time, no catalog value changed, the digits stay Latin
+(the `not.toMatch` guards stand); the anticipated "only time.ts calls it"
+finding is the seam's shape (`directionGlyph` matches) and rejected; no
+lifecycle, thread, residue or rule findings. Merge `--no-ff` 74c8aba7;
+branch deleted; lock released.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
+### Step 8 — RED (branch code/100-day-gap off lane/100 at 74c8aba7)
+
+`npx jest components/day/__tests__/DayLines.test.tsx
+components/day/__tests__/Day.test.ts --watchman=false`: 1 failed, 8 passed,
+9 total. Failing:
+
+- `the location and date lines › tightens the location-to-date gap to 2
+  points under ar` — `Expected: 2, Received: 5` at the marginBottom assertion
+
+The en guard case (`keeps the location gap at 5 points under en`) passes
+pre-change as expected (the value is `SPACING.quart`, 5, in every locale
+today). Log: `$TMPDIR/red8.log`.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
