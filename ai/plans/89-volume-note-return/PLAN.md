@@ -162,7 +162,7 @@ coverage gate sees one new source file, covered by its own suite plus both scree
 
 ## 6. Steps
 
-- [ ] Step 1 (weight 2, `steps/1-volume-note-foot.md`): the catalogs, the lock, the
+- [x] Step 1 (weight 2, `steps/1-volume-note-foot.md`): the catalogs, the lock, the
   part, both sheets, the tests, one commit. Requirements R1.1 to R4.2.
 
 Batch and session budgets: one step of weight 2 fills one batch and one executor

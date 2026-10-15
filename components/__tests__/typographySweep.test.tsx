@@ -44,6 +44,7 @@ const INVENTORY: readonly string[] = [
   'sheets/parts/SegmentedControl.tsx',
   'sheets/parts/SoundItem.tsx',
   'sheets/parts/Stepper.tsx',
+  'sheets/parts/VolumeNote.tsx',
   'countdown/Countdown.tsx',
   'prayer/Ago.tsx',
   'prayer/Explanation.tsx',
