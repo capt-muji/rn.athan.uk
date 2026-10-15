@@ -653,7 +653,7 @@ export const formatTimeAgo = (seconds: number): string => {
 };
 
 /** One digit run of the ago duration with its unit letter: 20 and m in 5h 20m */
-export interface AgoLetterGroup {
+interface AgoLetterGroup {
   digits: string;
   letter: string;
 }
@@ -673,9 +673,9 @@ export const splitAgoDuration = (value: string): { before: string; groups: AgoLe
 };
 
 /**
- * Splits a display string on its single colon for the ago badge's gap node, or
- * returns null when the string carries no colon, more than one. The badge's words
- * may sit either side, so the halves are not digit-checked.
+ * Splits a display string on its single colon for the prayer row time's gap
+ * node, or returns null when the string carries no colon, more than one. The
+ * row's digits sit either side, so the halves are not digit-checked.
  */
 export const splitSingleColon = (value: string): [string, string] | null => {
   const index = value.indexOf(':');
