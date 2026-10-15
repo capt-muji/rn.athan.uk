@@ -142,7 +142,7 @@ Acceptance criteria:
 
 Checklist:
 
-- [ ] Step 1: the mirror prop, red tests, suites, simulator probe (`steps/1-pager-mirror.md`)
+- [x] Step 1: the mirror prop, red tests, suites, simulator probe (`steps/1-pager-mirror.md`)
 - [ ] Step 2: the owner's read on the XS dev build (`steps/2-owner-read.md`)
 
 Steps carry their own Requirements, Weight, anchor check, goal, branch, files, red tests, change
