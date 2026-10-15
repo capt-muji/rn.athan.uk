@@ -18,7 +18,7 @@ import Countdown from '../Countdown';
 
 const MAGRIB = 4;
 const LETTER_INK = COLORS.text.primary;
-const LETTER_SIZE = Math.round(TEXT.sizeLarge * 0.8);
+const LETTER_SIZE = TEXT.sizeLarge;
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)
