@@ -409,6 +409,19 @@ Saved: `$HOME/athan-gitree/sessions/100-exec-steps4-6/step7-breakstop.patch`
 
 session: ses_ec0452379ffexyyf0VsrPCreVt
 
+### Step 7 — RED (branch code/100-arabic-comma off lane/100 at dd1051ef, both rulings applied)
+
+Red run with the repaired `as const` block, tests only:
+`npx jest shared/__tests__/locale.test.ts shared/__tests__/dateLocalized.test.ts
+--watchman=false`: 10 failed, 26 passed, 36 total — the four date/Hijri value
+cases fail exactly as the plan states (Latin received vs U+060C expected, the
+two retargeted existing cases first: `composes the label from the ar calendar
+keys with Latin digits` and `draws the ar catalog month with Latin digits and
+no era under ar`), the six `sentenceComma` cases fail on the missing export
+(the step-4/5 mechanism). Log: `$TMPDIR/red7c.log`.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
 ### Lead ruling on the step-5 probe stop (2026-10-15)
 
 The plan's soundListMarginUnder probe called `rntl.screen.root?.findByProps`, an
