@@ -81,7 +81,7 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['help.a.dndTimes.android', 'Do Not Disturb mode silences notifications until this app is allowed through.'],
   ['help.step.dndAccess', 'Allow Do Not Disturb access'],
   ['volume.note.android', 'Plays at alarm volume, not ring volume.'],
-  ['volume.note.ios', 'Follows your Ringer & Alerts volume. Silent and Focus modes mute it.'],
+  ['volume.note.ios', 'Follows your Ringer & Alerts volume.\nSilent and Focus modes mute it.'],
   ['help.q.volume', 'Which volume controls the sound level?'],
   ['help.a.volume.android', 'The athan plays at alarm volume, not ring volume. Raise Alarm in your sound settings.'],
   ['help.a.volume.ios', 'The athan plays at your ringer volume, and the Ring/Silent switch and Focus silence it.'],
@@ -259,15 +259,10 @@ describe('the ar volume note copy', () => {
 });
 
 describe('the information glyph asset', () => {
-  it('draws a circle around the i, in currentColor, inside the square viewBox', () => {
-    const svg = readFileSync(join(__dirname, '..', '..', 'assets', 'icons', 'svg', 'info.svg'), 'utf8');
-    expect(svg).toMatch(/<circle[^>]*stroke="currentColor"/);
+  it('draws the badge glyph bare, in currentColor, on the square viewBox', () => {
+    const svg = readFileSync(join(__dirname, '..', '..', 'assets', 'icons', 'svg', 'info-bare.svg'), 'utf8');
+    expect(svg).not.toMatch(/<circle/);
     expect(svg).toMatch(/fill="currentColor"/);
     expect(svg).toMatch(/viewBox="5\.7605 5\.76 12\.48 12\.48"/);
-    // react-native-svg clips at the view bounds, so the stroke's outer edge must
-    // stay inside the half-box (12.48 / 2 = 6.2405) or the circle grows flat spots
-    const radius = Number(svg.match(/<circle[^>]*\br="([\d.]+)"/)?.[1]);
-    const strokeWidth = Number(svg.match(/<circle[^>]*stroke-width="([\d.]+)"/)?.[1]);
-    expect(radius + strokeWidth / 2).toBeLessThanOrEqual(6.2405);
   });
 });

@@ -59,6 +59,8 @@ export default function PrayerTime({ type, index }: Props) {
 
   const isStandard = type === ScheduleType.Standard;
   const colonNextStyle = isStandard ? styles.colonNext : styles.colonNextExtras;
+  // Only the passed and the next colons were ruled; an upcoming row keeps its own
+  const colonStateStyle = Prayer.isNext ? colonNextStyle : Prayer.isPassed ? styles.colonPast : undefined;
 
   return (
     <View style={[styles.container]}>
@@ -67,7 +69,7 @@ export default function PrayerTime({ type, index }: Props) {
       ) : (
         <View style={styles.timeRow} accessible accessibilityLabel={displayTime}>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[0]}</Animated.Text>
-          <Text style={[styles.textPart, styles.colon, Prayer.isNext ? colonNextStyle : undefined]}>{':'}</Text>
+          <Text style={[styles.textPart, styles.colon, colonStateStyle]}>{':'}</Text>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[1]}</Animated.Text>
         </View>
       )}
@@ -106,6 +108,9 @@ const styles = StyleSheet.create({
   },
   colonNext: {
     color: COLORS.countdown.nextTimeColon,
+  },
+  colonPast: {
+    color: COLORS.countdown.pastTimeColon,
   },
   colonNextExtras: {
     color: COLORS.countdown.nextTimeColonExtras,

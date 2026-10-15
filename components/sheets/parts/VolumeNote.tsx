@@ -1,10 +1,9 @@
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
-import { IconView } from '@/components/ui';
+import { IconBadge } from '@/components/ui';
 import { COLORS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
-import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 
 /**
@@ -14,7 +13,7 @@ import { typographyFor } from '@/shared/typography';
 export default function SheetVolumeNote() {
   return (
     <View style={styles.foot}>
-      <IconView type={Icon.INFO} size={12} color={COLORS.text.sheetSubtitle} />
+      <IconBadge round size={20} glyph={12} color={COLORS.text.sheetSubtitle} />
       <Text style={styles.text}>{t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')}</Text>
     </View>
   );
@@ -39,5 +38,7 @@ const styles = StyleSheet.create({
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
     color: COLORS.text.sheetSubtitle,
+    // The glyph keeps its distance: the start side faces it in either layout direction
+    marginStart: SPACING.md,
   },
 });
