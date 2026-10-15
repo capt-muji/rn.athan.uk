@@ -1,0 +1,3 @@
+describe('splitColonSections', () => {
+  it('splits two and three digit groups with dim flags on the zero groups and the colons', () => {
+    expect(splitColonSections('01:32')).toEqual([
