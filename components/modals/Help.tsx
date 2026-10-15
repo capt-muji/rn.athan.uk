@@ -15,7 +15,7 @@ import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { getHelpActionLabels, getHelpTopics, type HelpTopic } from '@/shared/help';
 import { t } from '@/shared/i18n';
-import { chevronFor, currentLocaleId, directionGlyph, localizeDigits } from '@/shared/i18n/locale';
+import { chevronFor, currentLocaleId, directionGlyph } from '@/shared/i18n/locale';
 import { typographyFor } from '@/shared/typography';
 
 import Modal from './Modal';
@@ -77,14 +77,14 @@ const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onT
         {open ? (
           <Animated.View entering={FadeIn.duration(ANIMATION.duration)} exiting={FadeOut.duration(80)}>
             <View style={styles.panel}>
-              <Text style={styles.cause}>{localizeDigits(text)}</Text>
+              <Text style={styles.cause}>{text}</Text>
 
               {steps ? (
                 <View style={styles.fix}>
                   {steps.map((step) => (
                     <View key={step} style={styles.stepRow}>
                       <Text style={styles.stepMark}>{directionGlyph('\u00bb', '\u00ab')}</Text>
-                      <Text style={styles.stepText}>{localizeDigits(step)}</Text>
+                      <Text style={styles.stepText}>{step}</Text>
                     </View>
                   ))}
                 </View>
@@ -96,7 +96,7 @@ const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onT
                   onPress={() => openDndAccessSettings()}
                   accessibilityRole={'button'}
                   accessibilityLabel={getHelpActionLabels()[action]}>
-                  <Text style={styles.actionText}>{localizeDigits(getHelpActionLabels()[action])}</Text>
+                  <Text style={styles.actionText}>{getHelpActionLabels()[action]}</Text>
                   <Text style={styles.actionText}>{chevronFor()}</Text>
                 </Pressable>
               ) : null}
