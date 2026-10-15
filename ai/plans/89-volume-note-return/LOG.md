@@ -27,3 +27,39 @@ contradiction resolved to `## Ticket 89`; the lock diff prediction now names ten
 lines (five `-`, five `+`); the design invariant names the en pins and the verbatim
 translation lines as their own evidence. The skeleton commit is `ea827817` (2.0.734).
 `scripts/check-plan.sh` prints PLAN OK.
+
+## Ticket 89
+
+### Step 01 — done
+
+Branch `feat/89-volume-note` off `lane/89`, commit `45905aae`, version 2.0.737.
+The pre-flight printed `PREFLIGHT OK`. Red: the VolumeNote suite failed
+`Cannot find module '../VolumeNote'`, the two Alert note tests and the two Sound
+note tests failed `TypeError: Cannot read properties of undefined (reading
+'replace')`, the en pins failed on the missing key, the sweep failed ENOENT on
+the missing part. Green: VolumeNote 4/4, Alert 31/31, Sound 22/22, i18n +
+catalogLock 17/17, sweep 38/38, `tsc --noEmit` exit 0, `biome check .
+--error-on-warnings` exit 0. `yarn i18n:lock` printed `catalog lock written for
+ar, ms, so, hi, th` and the lock diff moved five hashes (five `-`, five `+`).
+Break script last line: `ALL AS EXPECTED: 1` (all six mutations red, tree clean
+after). Hook's final line: `Tests: 2 skipped, 5650 passed, 5652 total`.
+
+Coverage:
+Statements   : 100% ( 5325/5325 )
+Branches     : 100% ( 2290/2290 )
+Functions    : 100% ( 1108/1108 )
+Lines        : 100% ( 4768/4768 )
+
+Review verdict: clean on the cold read of `git show 45905aae`. The part matches
+its contract byte-for-byte, both screens moved exactly one import line and one
+`<VolumeNote />` insert, the six catalogs hold the two keys at the anchored
+position with the 2.0.728 bytes, the note is the unconditional last child
+(D89.1, under the unavailable message too), no divider, no colour outside
+`COLORS.text.sheetSubtitle`, both version files at 2.0.737. No fix needed.
+No lifecycle, thread, residue or prayer-time/qibla-rule exposure: pure render,
+no state, no worklets, every declared key and export read, no time work.
+
+Merged `--no-ff` into `lane/89` as `b540c514`. Executed docs commit
+`docs/executed-89-2026-10-15` at 2.0.738.
+
+session: ses_ec2053012ffe6238FSZyqhj2az
