@@ -1,0 +1,10 @@
+  // One unified close haptic for every sheet (owner rule 2026-09-08: native
+  // consistency): a single Light impact when the sheet finishes closing, on
+  // every close path — swipe, backdrop, back, programmatic — landing on the
+  // same tick as any dismiss-time commit (the alert sheet's save and icon
+  // bounce). Firing at close start instead buzzed the moment a drag began,
+  // detached from the outcome.
+  const handleDismiss = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    onDismiss?.();
+  }, [onDismiss]);

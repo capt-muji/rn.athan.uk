@@ -1,0 +1,13 @@
+  const commitSoundSelection = async (selection: number): Promise<boolean> => {
+    const previousSelection = NotificationStore.getSoundPreference();
+
+    perfMark('sound_commit_start');
+    const committed = await NotificationStore.commitSoundSelection(
+      selection,
+      previousSelection,
+      Device.updateAndroidChannel
+    );
+    perfMeasure('sound_commit', 'sound_commit_start');
+
+    return committed;
+  };
