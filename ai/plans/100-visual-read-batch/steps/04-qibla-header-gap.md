@@ -64,8 +64,10 @@ describe('the qibla sheet subtitle', () => {
 });
 ```
 
-Both ar expectations fail against the planned sha (today `marginTop` is
-`SPACING.xs`, 4, in both locales). Record the failing names and lines in `LOG.md`.
+Both cases fail pre-change because `QiblaSubtitle` is module-local until the export
+lands; after the export, only the ar value assertion stays failing (today
+`marginTop` is `SPACING.xs`, 4, in both locales). Record the failing names and
+lines in `LOG.md`.
 
 ## Change contracts
 
