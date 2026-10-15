@@ -1,0 +1,3 @@
+ * Snapshot at launch → simulated trigger after boot settles → post-run
+ * snapshot. The simulate step is __DEV__-only; EXPO_PUBLIC_BG_DEBUG Release
+ * builds get snapshots alone.
