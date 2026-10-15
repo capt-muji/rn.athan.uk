@@ -1,10 +1,12 @@
 /**
- * The badge saying how long ago the prayer above next was: its words, when it shows nothing, and its fade under the overlay
+ * The badge saying how long ago the prayer above next was: its lettered words, when it shows
+ * nothing, and its fade under the overlay
  */
 
 import { act, render, screen } from '@testing-library/react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { TEXT } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
@@ -12,42 +14,57 @@ import { openOverlay } from '@/stores/overlay';
 import PrayerAgo from '../Ago';
 
 const ASR = 3;
-const GAP_COLON = '\u2009\u2009:\u2009\u2009';
+const LETTER_SIZE = Math.round(TEXT.sizeDetail * 0.55);
+
+const flattenStyle = (style: unknown): Record<string, unknown> =>
+  Array.isArray(style)
+    ? Object.assign({}, ...style.map((entry) => flattenStyle(entry)))
+    : (style as Record<string, unknown>);
 
 describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
-  // [London clock, the badge's sentence]
+  // [London clock, the badge's sentence with the gap spans composed in]
   it.each([
-    ['13:05', 'Dhuhr 0\u2009\u2009:\u2009\u200903 ago'],
-    ['14:00', 'Dhuhr 0\u2009\u2009:\u2009\u200958 ago'],
+    ['13:05', 'Dhuhr 3 m ago'],
+    ['14:00', 'Dhuhr 58 m ago'],
   ])('at %s reads "%s"', async (time, sentence) => {
     showLondonDay('2026-09-11', time);
 
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
-    expect(screen.getByText(sentence, { normalizer: (s) => s })).toBeVisible();
-    expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+    expect(screen.getByText(sentence)).toBeVisible();
   });
 
-  it('splits the duration colon with thin-space gaps under ar', async () => {
+  it('renders the same Latin digits and letters under ar inside the catalog words', async () => {
     showLondonDay('2026-09-11', '14:00');
     setActiveLocale('ar');
     try {
       await render(<PrayerAgo type={ScheduleType.Standard} />);
 
-      expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+      expect(screen.getByText('m')).toBeOnTheScreen();
+      const gaps = screen.root?.queryAll(
+        (node) => node.props.children === ' ' && flattenStyle(node.props.style).fontSize === 8,
+        { includeSelf: true }
+      );
+      expect(gaps).toHaveLength(1);
     } finally {
       setActiveLocale('en');
     }
   });
 
-  it('renders the now badge as one node under ar, with no gap node', async () => {
+  it('renders the now sentence as one node under ar, with no letter and no gap node', async () => {
     showLondonDay('2026-09-11', '13:02');
     setActiveLocale('ar');
     try {
       await render(<PrayerAgo type={ScheduleType.Standard} />);
 
       expect(screen.getByText('الآن', { exact: false })).toBeOnTheScreen();
-      expect(screen.queryByText(GAP_COLON)).toBeNull();
+      expect(screen.queryByText('m')).toBeNull();
+      expect(screen.queryByText('h')).toBeNull();
+      const gaps = screen.root?.queryAll(
+        (node) => node.props.children === ' ' && flattenStyle(node.props.style).fontSize === 8,
+        { includeSelf: true }
+      );
+      expect(gaps).toHaveLength(0);
     } finally {
       setActiveLocale('en');
     }
@@ -59,7 +76,7 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
 
-    expect(screen.getByText('Dhuhr 0\u2009\u2009:\u2009\u200958 ago', { normalizer: (s) => s })).not.toBeVisible();
+    expect(screen.getByText('Dhuhr 58 m ago')).not.toBeVisible();
   });
 });
 
@@ -80,16 +97,17 @@ describe('the Standard badge with no prayer above next to measure from', () => {
 });
 
 describe('the badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
-  it('renders its colon at 40 percent of the badge colour and lifts four points', async () => {
+  it('draws its letters at 55 percent of the badge size and 40 percent of its ink, and lifts four points', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
-    // Row 81: the colon sits 60 percent under the badge's own colour, and the badge
-    // rises four points away from the settings button after the list gap's 25 percent cut
-    const colon = screen.getByText(GAP_COLON, { normalizer: (s) => s });
-    const colonStyle = Array.isArray(colon.props.style) ? Object.assign({}, ...colon.props.style) : colon.props.style;
-    expect(colonStyle.opacity).toBe(0.4);
-    const badge = colon.parent;
+    // Row 83: the letters ride the countdown's ruled typography (row 85), the ink
+    // keeping the badge's own ruled weak-glyph strength (rows 79/81); row 81's lift stands
+    const letter = screen.getByText('m');
+    const letterStyle = flattenStyle(letter.props.style);
+    expect(letterStyle.fontSize).toBe(LETTER_SIZE);
+    expect(letterStyle.opacity).toBe(0.4);
+    const badge = letter.parent;
     const badgeStyle =
       badge === null
         ? {}
@@ -97,5 +115,16 @@ describe('the badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
           ? Object.assign({}, ...badge.props.style)
           : badge.props.style;
     expect(badgeStyle.marginTop).toBe(-4);
+  });
+
+  it('separates the letter from its digits by the 2 point gap span', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+    const gaps = screen.root?.queryAll(
+      (node) => node.props.children === ' ' && flattenStyle(node.props.style).fontSize === 8,
+      { includeSelf: true }
+    );
+    expect(gaps).toHaveLength(1);
   });
 });
