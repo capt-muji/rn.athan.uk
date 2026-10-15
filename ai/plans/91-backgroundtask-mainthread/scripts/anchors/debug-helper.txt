@@ -1,0 +1,5 @@
+  static func triggerBackgroundTaskTest() {
+#if DEBUG
+    let selector = NSSelectorFromString("_simulate".appending("LaunchForTaskWithIdentifier:"))
+
+    if let method = class_getInstanceMethod(BGTaskScheduler.self, selector) {
