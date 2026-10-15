@@ -1,0 +1,14 @@
+  const sections = splitColonSections(displayTime);
+  const digitSections: DigitSection[] | null =
+    sections === null
+      ? null
+      : sections.map((section, index) => {
+          if (section.colon) return { text: ':', colon: true } satisfies DigitSection;
+          const spentBefore = sections.slice(0, index).every((prior) => prior.colon || prior.dim);
+          return {
+            text: section.text,
+            colon: false,
+            dim: section.dim,
+            paddingZero: !section.dim && spentBefore && Number(section.text) < 10,
+          } satisfies DigitSection;
+        });

@@ -1,0 +1,12 @@
+/** One rendered piece of a colon display string: a digit group or a colon */
+export interface CountdownSection {
+  text: string;
+  /** True once the group reads 00 with every larger group spent; a colon always reads true */
+  dim: boolean;
+  colon: boolean;
+}
+
+const ALL_DIGITS = /^[0-9]+$/;
+const ALL_ZEROS = /^0+$/;
+
+/**
