@@ -1,8 +1,0 @@
-  it('arms the full sequence in __DEV__: trigger at 8s, post-run snapshot at +5s', async () => {
-    setDev(true);
-    mockTrigger.mockResolvedValue(undefined);
-
-    runBackgroundTaskDebugSequence();
-
-    await jest.advanceTimersByTimeAsync(8000);
-    expect(mockTrigger).toHaveBeenCalledTimes(1);
