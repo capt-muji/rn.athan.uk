@@ -1,14 +1,12 @@
 import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
-import Animated, { Easing, type EasingFunction, useAnimatedStyle } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
-import { useDerivedColor, useDerivedProgress } from '@/hooks/useAnimation';
+import { useDerivedProgress } from '@/hooks/useAnimation';
 import { useCountdown } from '@/hooks/useCountdown';
-import { usePrevious } from '@/hooks/usePrevious';
-import { ANIMATION, COLORS, COUNTDOWN_WAITING_NAME, SPACING, STYLES, TEXT } from '@/shared/constants';
+import { COLORS, COUNTDOWN_WAITING_NAME, SPACING, STYLES, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
-import { splitColonSections } from '@/shared/time';
 import type { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
@@ -20,43 +18,32 @@ interface Props {
   type: ScheduleType;
 }
 
-interface FadeTiming {
-  duration: number;
-  easing?: EasingFunction;
+interface LetteredGroup {
+  digits: string;
+  letter: string;
+  spent: boolean;
 }
 
-type DigitSection = { text: ':'; colon: true } | { text: string; colon: false; dim: boolean; paddingZero: boolean };
+const UNIT_LETTERS = ['h', 'm', 's'];
+const UNIT_LETTER_COLOR = 'rgba(160, 200, 255, 0.4)';
+const COLON_DISPLAY = /^\d{2}(:\d{2}){1,2}$/;
 
-/** One digit of the timer: bright above zero, dim at 00 or as a padding zero */
-function CountdownDigit({ char, dim, fadeTiming }: { char: string; dim: boolean; fadeTiming: FadeTiming }) {
-  const colorStyle = useDerivedColor(dim ? 0 : 1, {
-    fromColor: COLORS.countdown.dimDigit,
-    toColor: COLORS.text.primary,
-    duration: fadeTiming.duration,
-    easing: fadeTiming.easing,
+// The display string is always hours-first, so a group's index names its unit
+const letteredGroups = (displayTime: string): LetteredGroup[] | null => {
+  if (!COLON_DISPLAY.test(displayTime)) return null;
+
+  const values = displayTime.split(':').map(Number);
+  return values.map((value, index) => {
+    const isSeconds = index === 2;
+    const largerAllZero = values.slice(0, index).every((larger) => larger === 0);
+    return {
+      digits: String(value),
+      letter: UNIT_LETTERS[index],
+      // 0S renders alone, so the row never empties
+      spent: value === 0 && (!isSeconds || !largerAllZero),
+    };
   });
-  return <Animated.Text style={[styles.sectionText, colorStyle]}>{char}</Animated.Text>;
-}
-
-/** One digit group of the timer: a padding zero dims only once every larger group is spent */
-function CountdownSectionText({
-  text,
-  dim,
-  paddingZero,
-  fadeTiming,
-}: {
-  text: string;
-  dim: boolean;
-  paddingZero: boolean;
-  fadeTiming: FadeTiming;
-}) {
-  return (
-    <>
-      <CountdownDigit char={text[0]} dim={dim || paddingZero} fadeTiming={fadeTiming} />
-      <CountdownDigit char={text[1]} dim={dim} fadeTiming={fadeTiming} />
-    </>
-  );
-}
+};
 
 export default function Countdown({ type }: Props) {
   // NEW: Use sequence-based countdown hook
@@ -67,12 +54,6 @@ export default function Countdown({ type }: Props) {
   const { displayTime, prayerName, isReady } = useCountdown(type);
 
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
-  // Overlay swaps animate on the overlay layer's own duration; the countdown's digit flips take the fast one
-  const previousOverlayIsOn = usePrevious(overlayIsOn);
-  const isOverlaySwap = previousOverlayIsOn !== undefined && previousOverlayIsOn !== overlayIsOn;
-  const digitFade: FadeTiming = isOverlaySwap
-    ? { duration: ANIMATION.duration }
-    : { duration: ANIMATION.durationFast, easing: Easing.linear };
   const countdownBarShown = useAtomValue(countdownBarShownAtom);
 
   const overlayProgress = useDerivedProgress(overlayIsOn ? 1 : 0, { defaultTiming: true });
@@ -86,20 +67,9 @@ export default function Countdown({ type }: Props) {
     return null;
   }
 
-  const sections = splitColonSections(displayTime);
-  const digitSections: DigitSection[] | null =
-    sections === null
-      ? null
-      : sections.map((section, index) => {
-          if (section.colon) return { text: ':', colon: true } satisfies DigitSection;
-          const spentBefore = sections.slice(0, index).every((prior) => prior.colon || prior.dim);
-          return {
-            text: section.text,
-            colon: false,
-            dim: section.dim,
-            paddingZero: !section.dim && spentBefore && Number(section.text) < 10,
-          } satisfies DigitSection;
-        });
+  const groups = letteredGroups(displayTime);
+  const liveGroups = groups?.filter((group) => !group.spent);
+  const rowLabel = liveGroups?.map((group) => `${group.digits}${group.letter}`).join(' ');
 
   return (
     <Animated.View style={[styles.container]}>
@@ -110,37 +80,18 @@ export default function Countdown({ type }: Props) {
           accessibilityLabel={prayerName === COUNTDOWN_WAITING_NAME ? t('countdown.waitingLabel') : undefined}>
           {prayerName}
         </Text>
-        {digitSections === null ? (
+        {groups === null ? (
           <Animated.Text style={[styles.countdown, animatedStyle]}>{displayTime}</Animated.Text>
         ) : (
           <Animated.View style={animatedStyle}>
-            <View style={styles.timerRow} accessible accessibilityLabel={displayTime}>
-              {digitSections.map((section, index) =>
-                section.colon ? (
-                  <View
-                    // biome-ignore lint/suspicious/noArrayIndexKey: the colon's slot is fixed by the string's shape, the list never reorders
-                    key={`colon-${index}`}
-                    style={[
-                      styles.colonDots,
-                      {
-                        marginLeft: digitSections[index - 1]?.text[1] === '1' ? 2.5 : 4.5,
-                        marginRight: digitSections[index + 1]?.text[0] === '1' ? 2.5 : 4.5,
-                      },
-                    ]}>
-                    <View style={styles.colonDot} />
-                    <View style={styles.colonDot} />
-                  </View>
-                ) : (
-                  <CountdownSectionText
-                    // biome-ignore lint/suspicious/noArrayIndexKey: the group's slot is fixed by the string's shape, the list never reorders
-                    key={`group-${index}`}
-                    text={section.text}
-                    dim={section.dim}
-                    paddingZero={section.paddingZero}
-                    fadeTiming={digitFade}
-                  />
-                )
-              )}
+            <View style={styles.timerRow} accessible accessibilityLabel={rowLabel}>
+              {liveGroups?.map((group) => (
+                <Text key={group.letter} style={styles.group}>
+                  {group.digits}
+                  <Text style={styles.gap}> </Text>
+                  <Text style={styles.unitLetter}>{group.letter}</Text>
+                </Text>
+              ))}
             </View>
           </Animated.View>
         )}
@@ -183,7 +134,15 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
   },
-  sectionText: {
+  timerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: SPACING.lg,
+    direction: 'ltr',
+  },
+  group: {
+    marginHorizontal: 6,
     color: COLORS.text.primary,
     fontSize: ty.countdownSize,
     fontFamily: ty.familyDigits,
@@ -192,23 +151,11 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
   },
-  timerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: SPACING.lg,
-    direction: 'ltr',
+  gap: {
+    fontSize: 8,
   },
-  colonDots: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: 5,
-    marginHorizontal: 4.5,
-  },
-  colonDot: {
-    width: 2.5,
-    height: 2.5,
-    borderRadius: 1.25,
-    backgroundColor: COLORS.countdown.colon,
+  unitLetter: {
+    color: UNIT_LETTER_COLOR,
+    fontSize: Math.round(ty.countdownSize * 0.55),
   },
 });
