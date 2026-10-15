@@ -86,7 +86,6 @@ export const hi = {
   'notification.now': '{name} अब',
   'notification.reminder': '{name} {n} में',
   'sheet.closeToSave': 'सहेजने के लिए बंद करें',
-  'language.applyHint': 'आपकी पसंद तुरंत लागू होती है',
   'language.chooseHint': 'अपनी भाषा चुनें',
   'alert.card.athan': 'अज़ान',
   'alert.card.athanHint': 'नमाज़ के समय सूचना',

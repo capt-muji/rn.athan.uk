@@ -86,7 +86,6 @@ export const th = {
   'notification.now': '{name} ตอนนี้',
   'notification.reminder': '{name} อีก {n}',
   'sheet.closeToSave': 'ปิดเพื่อบันทึก',
-  'language.applyHint': 'การเลือกของคุณมีผลทันที',
   'language.chooseHint': 'เลือกภาษาของคุณ',
   'alert.card.athan': 'อะซาน',
   'alert.card.athanHint': 'แจ้งเตือนเมื่อถึงเวลาละหมาด',

@@ -92,7 +92,6 @@ export const en = {
   'notification.reminder': '{name} in {n}',
 
   'sheet.closeToSave': 'Close to save',
-  'language.applyHint': 'Your pick applies immediately',
   'language.chooseHint': 'Choose your language',
 
   'alert.card.athan': 'Athan',

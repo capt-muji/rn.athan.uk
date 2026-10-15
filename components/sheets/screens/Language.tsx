@@ -61,7 +61,8 @@ export default function BottomSheetLanguage() {
     <Sheet
       setRef={setLanguageSheetModal}
       title={t('settings.language')}
-      subtitle={t('language.applyHint')}
+      // Her 2026-10-15 ruling: no subheading; the title centres against the icon on its own
+      subtitle={null}
       icon={<IconView type={Icon.GLOBE} size={16} color={SHEET_ICON_COLOR} />}
       snapPoints={['60%']}
       perfName={SHEET_PERF_NAME}
