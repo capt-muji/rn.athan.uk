@@ -1,0 +1,14 @@
+ * @param name Mark name (convention: snake_case action, e.g. 'sheet_settings_present')
+ * @param detail Optional structured payload (JSON-safe)
+ */
+export const perfMark = (name: string, detail?: Record<string, unknown>): void => {
+  if (!PERF_ENABLED) return;
+
+  if (!perfModule) {
+    // Pre-init: keep the real epoch; initPerfMonitor replays these
+    if (pendingMarks.length < PENDING_CAPACITY) pendingMarks.push({ name, at: Date.now(), detail });
+    return;
+  }
+
+  perfModule.default.mark(name, detail ? { detail } : undefined);
+};
