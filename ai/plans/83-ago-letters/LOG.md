@@ -173,4 +173,16 @@ Version: lock acquired (0 waits), origin fetched, lane at 2.0.735, step takes
 both; `android/app/build.gradle` absent in this worktree. Row 83 set to
 `IN PROGRESS, step 1`.
 
+Commit `c0584999` 2.0.736, hook green: `Tests: 2 skipped, 5642 passed, 5644
+total`; Statements 100% (5337/5337), Branches 100% (2296/2296), Functions 100%
+(1110/1110), Lines 100% (4778/4778) — the repaired contract clears the gate the
+first run failed (2298 branches then; the two unreachable `?? 0` paths are
+gone). Review, two passes cold against `git show c0584999`: clean, no finding
+(contracts verbatim, no catalog/widget/notification/sheet file, the badge's own
+style, animations and mount guard byte-identical, default normalizer
+everywhere, no lifecycle/thread/residue/rule defect). Merged `48740307`
+(`2.0.736 - merge 83/lettered-ago-badge`) into lane/83 `--no-ff`; clean merges
+carry no pre-commit gate, the step commit held it. Version lock released after
+the merge.
+
 session: ses_ec1f69d56ffej6DpMMRlrhWhu8
