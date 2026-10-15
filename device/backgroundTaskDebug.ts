@@ -79,11 +79,10 @@ export const logBackgroundTaskDiagnostics = async (label: string) => {
 /**
  * Simulates the system firing the background task (DEBUG Android builds only)
  *
- * Delegates to BackgroundTask.triggerTaskWorkerForTestingAsync, which calls
- * the private _simulateLaunchForTaskWithIdentifier: selector on
- * BGTaskScheduler. If no task request is pending, the Xcode/syslog console
- * shows "No task request with identifier com.expo.modules.backgroundtask.processing
- * has been scheduled" — itself a useful diagnostic.
+ * Delegates to BackgroundTask.triggerTaskWorkerForTestingAsync, which runs the
+ * WorkManager task now on Android. Its iOS side invokes BGTaskScheduler's
+ * private launch-simulation selector, whose XPC reply aborts the process, so
+ * the sequence never calls it there.
  */
 export const simulateBackgroundTaskTrigger = async () => {
   logger.info('BACKGROUND_TASK_DEBUG: Simulating system trigger');
