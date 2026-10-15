@@ -97,6 +97,24 @@ const headerSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string
   return subtitle;
 };
 
+const qiblaSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
+  let subtitle: Record<string, unknown> = {};
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const QiblaSubtitle = require('../sheets/screens/Qibla').QiblaSubtitle;
+    await rntl.render(<QiblaSubtitle showsCompass={false} />);
+    subtitle = StyleSheet.flatten(rntl.screen.getByTestId('qibla-subtitle-waiting').props.style) as Record<
+      string,
+      unknown
+    >;
+  });
+  return subtitle;
+};
+
 const helpQuestionStyleUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
   let question: Record<string, unknown> = {};
   jest.resetModules();
@@ -227,6 +245,16 @@ describe('the overlay explanation line box', () => {
 
   it('keeps the Latin preset line height under en', async () => {
     expect(await explanationLineHeightUnder('en')).toBe(22);
+  });
+});
+
+describe('the qibla sheet subtitle', () => {
+  it('pulls up 10 points under ar, matching the shared header', async () => {
+    expect((await qiblaSubtitleStyleUnder('ar')).marginTop).toBe(-10);
+  });
+
+  it('keeps its 4 point gap under en', async () => {
+    expect((await qiblaSubtitleStyleUnder('en')).marginTop).toBe(4);
   });
 });
 
