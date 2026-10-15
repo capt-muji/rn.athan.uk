@@ -177,6 +177,12 @@ Existing tests and what each proves:
 - `shared/__tests__/prayerIdContract.test.ts` line 113 pins the en channel
   bytes `'{name} in {n}m Reminder'`: unchanged, and the test proves the
   channel boundary holds.
+- `components/sheets/screens/__tests__/Alert.test.tsx`: the alert sheet's
+  own render test pins the stepper's ar value as escaped codepoints
+  (`getByText('\u0661\u0665')`, line 144, `١٥`) with a comment citing the
+  2026-10-14 numeral ruling row 88 supersedes. The literal-byte grep that
+  built this map missed it: escaped codepoints carry no Arabic-Indic byte.
+  Step 1 flips the pin to Latin and rewords the comment.
 - `shared/__tests__/catalogLock.test.ts` hashes the English catalog and
   compares each of the five stored hashes against it: an en edit stales all
   five until the lock is consciously re-taken with `yarn i18n:lock`. Step 2
@@ -309,6 +315,7 @@ reviews pass, and only the audited `uat`.
 | --- | --- | --- |
 | A red test passes before the change | The pinned expectation was already Latin on that surface | Record it in `LOG.md`, continue with the tests that did fail; if every named red test passes, `STOP:` |
 | `tsc` fails on `localizeDigits` after the deletion | A call site the map above does not name | `STOP:` with the file and symbol; the map claimed completeness and the claim broke |
+| A jest run fails on a test pinning Arabic-Indic bytes (literal or escaped) that no plan instruction names | The map missed a pin (the first run caught `Alert.test.tsx` line 144 this way) | `STOP:` with the file, line and pin; the lead repairs the plan and the step re-runs from red |
 | A jest project fails outside the named files | The shared node_modules lost its patch-package patches | The lead runs `npx patch-package` from the main checkout root (touches only node_modules); retry once, then `STOP:` |
 | The hook times out on `shared/__tests__/audioMatrix.test.ts` | Load average | Wait in the background for load below 8 and commit again, up to 3 times |
 | A break prints `BREAK NOT APPLIED` | The substitution text drifted | `STOP:`; never repair an anchor or a break in flight |
@@ -331,6 +338,7 @@ Restore lists: step 1 touches `shared/i18n/locale.ts`, `shared/typography.ts`,
 `components/prayer/__tests__/Explanation.test.tsx`,
 `components/sheets/parts/__tests__/Stepper.test.tsx`,
 `components/modals/__tests__/Help.test.tsx`,
+`components/sheets/screens/__tests__/Alert.test.tsx`,
 `shared/__tests__/widgetTimeline.test.ts`. Step 2 touches
 `shared/i18n/en.ts`, `shared/i18n/catalog-lock.json`,
 `shared/__tests__/i18nBridge.test.ts`,

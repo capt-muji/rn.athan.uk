@@ -98,9 +98,10 @@ the plan files. The last line must be `ALL ASPECTED: 1`.
 
 ## Version and commit
 
-Under the version lock, the next patch after the lane's `package.json`
-(it prints `2.0.742` after step 1, so the version is `2.0.743`), `app.json`
-first, the version string replaced in place.
+Under the version lock, the next patch after whatever the lane's
+`package.json` prints at the branch point (step 1 leaves it at `2.0.744`,
+so the expected step version is `2.0.745`), `app.json` first, the version
+string replaced in place.
 
 Commit message: `<VERSION> - feat(notifications): the en reminder title
 drops its unit letter, Fajr in 5; the catalog lock re-taken (row 88)`. Add

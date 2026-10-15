@@ -26,6 +26,7 @@ Files: `shared/i18n/locale.ts`, `shared/typography.ts`, `shared/time.ts`,
 `components/prayer/__tests__/Explanation.test.tsx`,
 `components/sheets/parts/__tests__/Stepper.test.tsx`,
 `components/modals/__tests__/Help.test.tsx`,
+`components/sheets/screens/__tests__/Alert.test.tsx`,
 `shared/__tests__/widgetTimeline.test.ts`.
 
 ## Red tests
@@ -161,6 +162,15 @@ fail; a test that passes is `STOP:`.
    the cutoff topic's ar answer carries `30` in the catalog, which
    `localizeDigits` renders as `٣٠`, so `getByText(topic.text)` matches
    nothing for that topic.
+7. `components/sheets/screens/__tests__/Alert.test.tsx`, the test
+   `renders the visible reminder interval with the locale digits under ar`:
+   the assertion `expect(screen.getByText('\u0661\u0665')).toBeOnTheScreen());`
+   becomes `expect(screen.getByText('15')).toBeOnTheScreen());` plus
+   `expect(screen.getByText('15').props.children).not.toMatch(/[\u0660-\u0669]/);`,
+   and the comment above it becomes
+   `// Row 88, 2026-10-15: Latin digits on every value, the stepper's word kept`.
+   Red today: the sheet renders the stepper value as `١٥`, so
+   `getByText('15')` matches nothing.
 
 ## Change contracts
 
@@ -204,7 +214,7 @@ Nothing beyond these contracts. No other file loses or gains a line.
 ## Green run
 
 1. `npx jest shared/__tests__/dateLocalized.test.ts shared/__tests__/locale.test.ts shared/__tests__/widgetTimeline.test.ts --watchman=false --selectProjects=unit` exits 0.
-2. `npx jest components/prayer/__tests__/Explanation.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx components/modals/__tests__/Help.test.tsx --watchman=false --selectProjects=components` exits 0.
+2. `npx jest components/prayer/__tests__/Explanation.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx components/modals/__tests__/Help.test.tsx components/sheets/screens/__tests__/Alert.test.tsx --watchman=false --selectProjects=components` exits 0.
 3. `npx tsc --noEmit` exits 0.
 4. `npx biome check . --error-on-warnings` exits 0.
 
@@ -271,11 +281,13 @@ Under the version lock: `mkdir $HOME/athan-gitree/version.lock` (retry in a
 `sleep 10` loop at most 30 times, about 5 minutes, then `STOP:`; `rmdir`
 after the merge). Fetch `origin` first (expect no output, exit 0; it
 refreshes `uat` for the pre-flight's containment check). The version is the
-next patch after the lane's `package.json`: it prints `2.0.741`, so the
-version is `2.0.742`. Set it in `app.json` FIRST, then `package.json`, by
-replacing the version string in place (never rewrite the JSON: Biome owns
-its formatting). The lane has no `android/app/build.gradle`; the lockstep
-test skips it.
+next patch after whatever the lane's `package.json` prints at the branch
+point (the plan-repair commit leaves it at `2.0.743`, so the expected step
+version is `2.0.744`; if a concurrent lane bumped past that, take the next
+patch after the printed value). Set it in `app.json` FIRST, then
+`package.json`, by replacing the version string in place (never rewrite the
+JSON: Biome owns its formatting). The lane has no `android/app/build.gradle`;
+the lockstep test skips it.
 
 Commit message: `<VERSION> - feat(digits): the native-digit map dies, every
 composed surface renders Latin digits in every locale (row 88)`. Add every

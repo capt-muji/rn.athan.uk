@@ -58,3 +58,83 @@ widget sweep covers both date preferences, the ar Help sweep is a new red
 test with its own break, the swapped suite counts fixed, the version-lock
 retry bounded at 30 attempts, the fetch-origin and version wording pinned.
 The gate re-runs PLAN OK after the edits.
+
+### Step 01 — native-digit map dead, every composed surface Latin (2.0.743)
+
+Branch `ticket/88-step1` off `lane/88` (package.json printed 2.0.742 at the
+branch point, so the step version is 2.0.743; lane/88's READY docs commit had
+already consumed 2.0.742). Preflight `PREFLIGHT OK` with all 13 anchors at 1.
+
+Red: the 8 named tests failed exactly as the plan predicts, nothing else:
+the two flipped dateLocalized pins (received Arabic-Indic), the new widget
+label sweep under both date preferences, the Explanation ar pin and the two
+ar sweep sentences carrying digits (suhoor, duha), the new Stepper ar case,
+and the new Help ar sweep (the cutoff answer's 30). locale.test.ts is a
+deletion with no red run.
+
+Change: `NATIVE_DIGITS` and `localizeDigits` deleted with the doc comment and
+one blank line from `shared/i18n/locale.ts`; the twelve wrapper expressions
+unwrapped across `shared/time.ts`, `Help.tsx`, `Explanation.tsx`,
+`Stepper.tsx`; the typography RECORDS comment lost its numerals clause; the
+Hijri doc comment reads "with Latin digits in every locale (row 88)".
+Biome reflowed the stepper value container's opening tag onto one line after
+the unwrap (its own formatter fix, same attributes in the same order). A
+post-change grep finds no `localizeDigits` or `NATIVE_DIGITS` anywhere.
+
+Green: unit 83 passed 83 total, components 80 passed 80 total, tsc exit 0,
+biome exit 0. Break script staged-green run: all four breaks red as expected,
+last line `ALL ASPECTED: 1`, tree back to the step's files only.
+
+Version 2.0.743 set in app.json first, then package.json, under the version
+lock (fetch origin exit 0). Row 88's status cell reads `IN PROGRESS, step 1`.
+
+Review: cold read of the staged diff against the step checklist and the
+shipped classes: clean. No file outside the list, RTL_IDS untouched, stepper
+styles and words untouched, every flipped test asserts Latin bytes at least
+once, no lifecycle, thread or rule ground touched.
+
+session: ses_ec1a59d01ffeT0aP4L8M1z8Ccr
+
+### Step 01 — STOPPED at the commit gate (unreproducible plan defect)
+
+The pre-commit hook rejects the step commit, twice, identically (background
+run and a fresh foreground run): the related-files jest pass fails
+`components/sheets/screens/__tests__/Alert.test.tsx` — `renders the visible
+reminder interval with the locale digits under ar`, line 144,
+`expect(screen.getByText('\u0661\u0665'))` — the alert sheet's consumer pin
+of the stepper's Arabic-Indic value under ar. R1.4 flips exactly that value
+to Latin, so the pin can never pass with the step applied. The file is in
+neither the step's Files list ("No other file loses or gains a line") nor
+the plan's section 4 test map; the map's completeness claim broke, the jest
+form of the plan's own `tsc` STOP row. Hook summary both runs:
+`Tests: 1 failed, 193 passed, 194 total`, then `husky - pre-commit script
+failed (code 1)`. Not the audioMatrix timeout; no retry rule applies.
+
+Question for the lead: amend step 1 to add
+`components/sheets/screens/__tests__/Alert.test.tsx` to the Files list with
+a contract flipping that pin to the Latin `15` and rewording its comment
+(it cites the 2026-10-14 numeral ruling row 88 supersedes), or route
+otherwise.
+
+Work saved, tree restored: patch at
+`$HOME/athan-gitree/sessions/88/step1-unfinished.patch` (551 lines), status
+beside it, hook and red logs copied there. The step branch carried no
+commits and is deleted; the version lock is released; 2.0.743 is unused.
+
+session: ses_ec1a59d01ffeT0aP4L8M1z8Ccr
+
+## Planning repair (2026-10-15)
+
+Step 1's first run STOPped at the hook: Alert.test.tsx line 144 pins the
+alert sheet's stepper value as escaped codepoints (`\u0661\u0665`), a pin
+the section 4 map missed because the map's grep matched Arabic-Indic bytes
+and escapes carry none. The executor restored the tree clean, saved the
+patch and logs under `$HOME/athan-gitree/sessions/88/`, and asked. Ruling
+(lead, planner seat): the plan is repaired, not the step improvised — the
+owner's Latin ruling covers the pin, so the flip is mechanical. The repair
+adds Alert.test.tsx to section 4's map, step 1's Files and red test 7 (the
+pin to Latin `15`, the not-native assertion, the comment reworded off the
+superseded 2026-10-14 ruling), the green run's components command, the
+restore list, the symptom row for escaped pins, and fresh version
+expectations (repair 2.0.743, step 1 2.0.744, step 2 2.0.745). The gate
+re-runs PLAN OK; step 1 re-dispatches fresh from red.
