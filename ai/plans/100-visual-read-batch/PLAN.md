@@ -275,8 +275,8 @@ Checklist (all weight 2, code):
 - [x] Step 5 — the sound sheet's ar spacing pair (`steps/05-sound-preview-spacing.md`)
 - [x] Step 6 — the Help question's ar line box (`steps/06-help-question-centre.md`)
 - [x] Step 7 — the Arabic comma in the date labels (`steps/07-arabic-comma.md`)
-- [ ] Step 8 — the schedule header's ar tighten (`steps/08-schedule-header-tighten.md`)
-- [ ] Finishing — the executed docs commit on the lane (in this file, below)
+- [x] Step 8 — the schedule header's ar tighten (`steps/08-schedule-header-tighten.md`)
+- [x] Finishing — the executed docs commit on the lane (in this file, below)
 
 Each step file carries its own anchor check, goal, branch, files, red tests, change
 contracts, green run, break script, version and commit, review checklist, merge and

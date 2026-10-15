@@ -492,3 +492,44 @@ pre-change as expected (the value is `SPACING.quart`, 5, in every locale
 today). Log: `$TMPDIR/red8.log`.
 
 session: ses_ec0452379ffexyyf0VsrPCreVt
+
+### Step 8 — DONE (merged f4aceed2 on lane/100)
+
+Change: `compactArabic` beside the module-scope `ty` with the one-line comment
+naming the read (owner, 2026-10-15: no clipping remains, only the gap);
+`styles.location.marginBottom` becomes `compactArabic ? 2 : SPACING.quart`.
+The two test cases are the plan's verbatim modulo the formatter's line
+rewrap (both expect calls fit one line; no token changed); `SPACING` imported
+per the step's instruction.
+
+Green: `npx jest components/day/__tests__/DayLines.test.tsx
+components/day/__tests__/Day.test.ts --watchman=false` 9/9; `npx tsc
+--noEmit` 0; `npx biome check . --error-on-warnings` 0. Break:
+`bash scripts/breaks/break-08.sh` ended `ALL AS EXPECTED: 1`, first failing
+line `Expected: 2, Received: 5`; script deleted, tree clean.
+
+Version 2.0.766 (lock, fetched, app.json first, both version files added by
+name). Commit 3e6e81e4, hook gates: `Tests: 2 skipped, 5670 passed, 5672
+total`, four 100% coverage lines (Statements 5330/5330, Branches 2302/2302,
+Functions 1107/1107, Lines 4773/4773). Queue cell `IN PROGRESS, step 8`.
+Review (cold read of 3e6e81e4): en value byte-identical `SPACING.quart`, the
+diff is one style line plus the test, Day renders both schedules through the
+`type` prop so no second site exists; no lifecycle, thread, residue or rule
+findings. Merge `--no-ff` f4aceed2; branch deleted; lock released. All eight
+code steps complete.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
+## Ticket 100 executed (2026-10-15)
+
+Eight items landed on lane/100 through 2.0.767: the ago badge renders 2h 35m
+left to right inside the Arabic sentence with plain full-size lowercase letters
+(isolates in the composer, the splitter deleted); the countdown letters are capitals
+at 60 percent with row 85's ink and gap; the note carries a circled i glyph and plain
+ar iOS copy; the qibla header matches the confirmed sheets under ar; the sound sheet
+tightens its hint-to-list pair to 6 and opens the note's gap to 32 under ar; the Help
+questions take the ar script line box and centre; the date and Hijri labels carry the
+Arabic comma under ar with Latin digits; the schedule header's location-to-date gap
+is 2 under ar. No device step; her dev-build read is the acceptance.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
