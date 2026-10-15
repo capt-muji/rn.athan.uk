@@ -1,0 +1,15 @@
+    clearAudio();
+
+    if (!hasSoundDraft(tempSoundSelection)) return;
+
+    // The commit persists before it schedules (the scheduler reads the
+    // preference mid-flight) and rolls the preference back itself if either
+    // scheduling call rejects, so the displayed Athan can no longer disagree
+    // with the one the OS will play. onDismiss is typed `() => void` and is
+    // called un-awaited, so an escaping rejection here would be silent.
+    await commitSoundSelection(tempSoundSelection);
+
+    // Cleared on BOTH outcomes. Leaving the draft behind after a failure meant
+    // the next dismiss re-committed a selection the user had not touched again.
+    setTempSoundSelection(null);
+  }, [tempSoundSelection, clearAudio, commitSoundSelection]);

@@ -1,0 +1,11 @@
+  // Push fresh data to the iOS widgets — this runs wherever notifications do
+  // (foreground refresh gate + background task), keeping widgets in sync with
+  // the app even when the app is never opened. Measured from the caller: the
+  // widget IO layer itself is measure-only this campaign.
+  //
+  // Foreground paths defer the push past the next paint (the timeline build
+  // saturates the JS thread ~0.5s per schedule on the A12 and used to land
+  // exactly on the sheet-dismiss home reveal — the #2 burst; same pattern as
+  // stores/sync.ts). The background task awaits it so iOS keeps the process
+  // alive until widgets are refreshed. The deferred branch needs the explicit
+  // catch: nothing awaits it anymore.

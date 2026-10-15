@@ -1,0 +1,13 @@
+  // Schedule all enabled notifications and reminders for both schedules
+  const [standardAtTime, extraAtTime, standardReminder, extraReminder] = await settleAll([
+    _addAllScheduleNotificationsForSchedule(ScheduleType.Standard, options.only?.standard),
+    _addAllScheduleNotificationsForSchedule(ScheduleType.Extra, options.only?.extra),
+    _addAllScheduleRemindersForSchedule(ScheduleType.Standard, options.only?.standard),
+    _addAllScheduleRemindersForSchedule(ScheduleType.Extra, options.only?.extra),
+  ]);
+
+  settlePrayerRepairMarks(ScheduleType.Standard, standardAtTime, standardReminder, generationsBefore.standard);
+  settlePrayerRepairMarks(ScheduleType.Extra, extraAtTime, extraReminder, generationsBefore.extra);
+
+  // Heal the OS to match the database: cancel strays, verify counts
+  await _sweepStaleScheduledNotifications();
