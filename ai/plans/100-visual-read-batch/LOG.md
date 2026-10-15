@@ -280,6 +280,50 @@ Log: `$TMPDIR/red5b.log`.
 
 session: ses_ec0452379ffexyyf0VsrPCreVt
 
+### Step 5 — DONE (merged 79728503 on lane/100)
+
+Change: `compactArabic` beside the module-scope `ty` in both files with the
+one-line D94 comments; `styles.listContainer.marginTop` becomes
+`compactArabic ? 6 : SPACING.md`; `styles.foot.marginTop` becomes
+`compactArabic ? 32 : SPACING.xxl`; `testID={'sound-list'}` on the list
+container View. The probes and describe are the plan's repaired blocks
+verbatim (the lead's ruling applied).
+
+Green: `npx jest components/__tests__/typographySweep.test.tsx
+components/sheets/parts/__tests__/VolumeNote.test.tsx
+components/sheets/screens/__tests__/Sound.test.tsx --watchman=false` 70/70;
+`npx tsc --noEmit` 0; `npx biome check . --error-on-warnings` 0. Break:
+`bash scripts/breaks/break-05.sh` ended `ALL AS EXPECTED: 1`, first failing
+line `Expected: 32, Received: 24`; script deleted, tree clean.
+
+Version 2.0.761 (lock, fetched, app.json first, both version files added by
+name). Commit 94203096, hook gates: `Tests: 2 skipped, 5658 passed, 5660
+total`, four 100% coverage lines (Statements 5327/5327, Branches 2296/2296,
+Functions 1106/1106, Lines 4771/4771). Queue cell `IN PROGRESS, step 5`.
+Review (cold read of 94203096): en values byte-identical `SPACING.md` and
+`SPACING.xxl`, testID renders no pixel, no other spacing changed; the
+anticipated "VolumeNote has no locale import" finding is false
+(`currentLocaleId` at line 6) and rejected; no lifecycle, thread, residue or
+rule findings. Merge `--no-ff` 79728503; branch deleted; lock released.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
+### Step 6 — RED (branch code/100-help-box off lane/100 at 79728503)
+
+`npx jest components/__tests__/typographySweep.test.tsx
+components/modals/__tests__/Help.test.tsx --watchman=false`: 1 failed, 70
+passed, 71 total. Failing:
+
+- `the help question › takes the Arabic script line box under ar, so its dots
+  and descenders render` — `Expected: 23, Received: 20` at the test's
+  `lineHeight` assertion
+
+The en guard case (`keeps the 20 point line box under en`) passes pre-change
+as expected (today `ty.lineHeight(20)` resolves to 20 in both locales). Log:
+`$TMPDIR/red6.log`.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
 ### Lead ruling on the step-5 probe stop (2026-10-15)
 
 The plan's soundListMarginUnder probe called `rntl.screen.root?.findByProps`, an

@@ -265,6 +265,15 @@ describe('the help question', () => {
     expect(question.fontFamily).toBe('Roboto-Medium');
     expect(question.fontSize).toBe(15);
   });
+
+  it('takes the Arabic script line box under ar, so its dots and descenders render', async () => {
+    const question = await helpQuestionStyleUnder('ar');
+    expect(question.lineHeight).toBe(23);
+  });
+
+  it('keeps the 20 point line box under en', async () => {
+    expect((await helpQuestionStyleUnder('en')).lineHeight).toBe(20);
+  });
 });
 
 describe('the row time face', () => {
