@@ -37,3 +37,7 @@
 - Grill round 2 (2026-10-15): round 1's nine fixes verified landed and correct;
   two residues (the anchor-check undercount, the red output's destination) applied.
   The plan survived the stranger's read.
+
+## Ticket 91
+
+Executor session: ses_ec0757e9bffe1Rx1fiqaIIcG11 (batch 1: step 1)
