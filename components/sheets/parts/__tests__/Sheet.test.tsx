@@ -165,6 +165,25 @@ describe('a sheet as the library opens and closes it', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
+  it('marks the close haptic dispatch and settle on dismiss', async () => {
+    const calls: string[] = [];
+    jest.mocked(perfMark).mockImplementation((name) => calls.push(name));
+    jest
+      .mocked(Haptics.impactAsync)
+      .mockImplementation(() => new Promise<void>((resolve) => queueMicrotask(() => resolve())));
+    const onDismiss = jest.fn(() => calls.push('onDismiss'));
+    await render(settingsSheet({ onDismiss }));
+
+    const dismissed = libraryReports('dismiss');
+
+    expect(calls).toEqual(['sheet_close_haptic', 'onDismiss']);
+
+    await dismissed;
+    await act(async () => {});
+
+    expect(calls).toEqual(['sheet_close_haptic', 'onDismiss', 'sheet_close_haptic_settled']);
+  });
+
   it('tells the screen when a dismiss completes', async () => {
     const onDismiss = jest.fn();
     await render(settingsSheet({ onDismiss }));
