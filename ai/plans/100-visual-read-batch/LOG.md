@@ -262,6 +262,24 @@ any later step) get replanned?
 
 session: ses_ec0452379ffexyyf0VsrPCreVt
 
+### Step 5 — RED (branch code/100-sound-spacing off lane/100 at 03811213, the repaired probe)
+
+`npx jest components/__tests__/typographySweep.test.tsx
+components/sheets/parts/__tests__/VolumeNote.test.tsx
+components/sheets/screens/__tests__/Sound.test.tsx --watchman=false`: 3 failed,
+67 passed, 70 total, with the lead's repaired probe (`getByTestId`) verbatim:
+
+- `the sound sheet spacing under ar › opens the note gap to 32 points under ar`
+  — the plan's predicted value failure, `Expected: 32, Received: 24`
+- `tightens the card hint onto the list at 6 points` and `keeps the hint gap
+  at 12 under en` — both fail on `Unable to find an element with testID:
+  sound-list`, the testID the change itself adds (the same pre-change
+  mechanism step 4's export had)
+
+Log: `$TMPDIR/red5b.log`.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
 ### Lead ruling on the step-5 probe stop (2026-10-15)
 
 The plan's soundListMarginUnder probe called `rntl.screen.root?.findByProps`, an

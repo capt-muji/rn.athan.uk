@@ -21,6 +21,8 @@ export default function SheetVolumeNote() {
 }
 
 const ty = typographyFor(currentLocaleId());
+// D94's pair: the ar note copy clears the list (the preview animation) above it
+const compactArabic = currentLocaleId() === 'ar';
 
 const styles = StyleSheet.create({
   foot: {
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: SPACING.sm,
-    marginTop: SPACING.xxl,
+    marginTop: compactArabic ? 32 : SPACING.xxl,
     paddingHorizontal: SPACING.lg,
   },
   text: {
