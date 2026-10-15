@@ -50,6 +50,34 @@ choice without a ruling.
 
 session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
 
+### Step 1 — RED (branch code/100-ago-plain off lane/100 at 4193bf6a)
+
+Red tests written first; `npx jest shared/__tests__/time.test.ts
+components/prayer/__tests__/Ago.test.tsx __tests__/app/Screen.test.tsx
+--watchman=false`: 9 failed, 131 passed, 140 total. Failing names and lines:
+
+- `formatTimeAgo › formats minutes under an hour` (time.test.ts:178, Expected
+  "⁦1m⁩" Received "1m")
+- `formatTimeAgo › formats hours and minutes, dropping a zero-minute group`
+  (time.test.ts:184)
+- `formatTimeAgo › one design in every locale › draws the minute, whole-hour
+  and mixed branches under ar with the same Latin letters` (time.test.ts:197)
+- `the Standard badge ... › at 13:05 reads "Dhuhr ⁦3m⁩ ago"` (Ago.test.tsx:27)
+- `the Standard badge ... › at 14:00 reads "Dhuhr ⁦58m⁩ ago"` (Ago.test.tsx:28)
+- `the Standard badge ... › fades out while the overlay is open`
+  (Ago.test.tsx:79)
+- `the Standard badge ... › renders the isolated duration as one plain node
+  under ar, with no styled letter` (Ago.test.tsx:37)
+- `a prayer page ... › shows the Standard countdown, date, list and time since
+  Dhuhr on the first frame` (Screen.test.tsx:26)
+- `a prayer page ... › shows the Extras countdown, date, list and time since
+  Duha once the first frame has passed` (Screen.test.tsx:47)
+
+Screen.test.tsx:58 (the toggle-off hiding query) passes before and after, as
+the plan states. Log: `$TMPDIR/red1.log`.
+
+session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
+
 ### Lead ruling on the step-0 stop (2026-10-15)
 
 The lead's two planning commits claimed 2.0.753 and 2.0.754 in their messages but
