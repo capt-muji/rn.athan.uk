@@ -161,7 +161,7 @@ Checklist:
 
 - [x] Step 1: the Rubik face under ar (`steps/1-rubik-face.md`)
 - [x] Step 2: the arrow geometry (`steps/2-arrow.md`)
-- [ ] Step 3: the letter gap dies (`steps/3-letter-gap.md`)
+- [x] Step 3: the letter gap dies (`steps/3-letter-gap.md`)
 - [ ] Step 4: the owner's read (`steps/4-owner-read.md`)
 
 Steps carry their own Requirements, Weight, anchor check, goal, branch, files, red tests, change
