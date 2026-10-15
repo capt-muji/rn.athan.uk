@@ -141,6 +141,7 @@ describe('runBackgroundTaskDebugSequence gating', () => {
 
   it('logs snapshots but NEVER simulates when env-enabled outside __DEV__ (release-crash guard)', async () => {
     setDev(false);
+    Platform.OS = 'android';
     process.env.EXPO_PUBLIC_BG_DEBUG = '1';
 
     runBackgroundTaskDebugSequence();
