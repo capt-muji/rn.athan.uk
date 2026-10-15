@@ -128,8 +128,8 @@ python3 - <<'EOF'
 from pathlib import Path
 p = Path('shared/i18n/locale.ts')
 s = p.read_text()
-old = "localeDirection(currentLocaleId()) === 'rtl' ? '\\u060C' : ',';"
-new = "','"
+old = "(localeDirection(currentLocaleId()) === 'rtl' ? '\\u060C' : ',')"
+new = "(',')"
 assert old in s, 'anchor for break missing'
 p.write_text(s.replace(old, new))
 EOF

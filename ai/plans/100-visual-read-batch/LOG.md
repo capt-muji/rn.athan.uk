@@ -381,6 +381,34 @@ Question for the lead: does the block take `as const` on the it.each array
 
 session: ses_ec0452379ffexyyf0VsrPCreVt
 
+### Step 7 — STOPPED again (break anchor; branch deleted; nothing landed)
+
+The `as const` ruling applied, the saved patch re-applied clean, and the step
+was fully green: red 10 failed / 26 passed with the repaired block (the six
+sentenceComma TypeErrors on the missing helper, the four date/Hijri value
+failures with the two retargeted existing cases first), jest 36/36, tsc 0,
+biome 0 (the helper carries the formatter's parenthesized rewrap).
+
+The stop: `bash scripts/breaks/break-07.sh` printed
+`AssertionError: anchor for break missing` and `BREAK NOT APPLIED`. The
+script's needle `localeDirection(currentLocaleId()) === 'rtl' ? '\u060C' : ',';`
+counts 0 in the committed-form source because the repo formatter (which the
+biome gate and the hook's lint-staged both enforce) rewraps the helper's
+expression body into parentheses, so the line ends `',');` — the closing paren
+sits between the plan anchor's `','` and `;`. The plan's helper contract, in
+its formatter-mandated rendering, can never contain the plan's break anchor:
+the plan's own two fences are mutually inconsistent under this repo's
+formatter. Verified byte-level: everything matches except the tail paren.
+Nothing to decide here is mine: the anchor repair belongs to the plan.
+
+Saved: `$HOME/athan-gitree/sessions/100-exec-steps4-6/step7-breakstop.patch`
+(fully green state, biome-clean). Question for the lead: the break anchor's
+`old`/`new` extended over the parens (e.g. old
+`(localeDirection(currentLocaleId()) === 'rtl' ? '\u060C' : ',')`, new
+`(',')`), or another repair?
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
 ### Lead ruling on the step-5 probe stop (2026-10-15)
 
 The plan's soundListMarginUnder probe called `rntl.screen.root?.findByProps`, an
@@ -398,3 +426,12 @@ The plan's sentenceComma `it.each` block listed the five locales as a bare array
 which infers `string[]` against `setActiveLocale`'s `LocaleId` parameter and fails
 tsc. Plan repair: the array carries `as const`, the file's own `it.each` pattern.
 The step file now carries it verbatim.
+
+### Lead ruling on the step-7 break-anchor stop (2026-10-15)
+
+Biome's formatter parenthesizes the helper's expression body, so the committed
+line ends `',');` and the break's needle (semicolon straight after the string)
+can never match. Plan repair: the break's old/new wrap the parenthesized
+expression — old `(localeDirection(currentLocaleId()) === 'rtl' ? '\u060C' : ',')`,
+new `(',')` — matching the formatter-mandated rendering the step's own biome gate
+enforces. The step file carries the repaired script verbatim.
