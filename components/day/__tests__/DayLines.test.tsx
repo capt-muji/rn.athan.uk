@@ -56,7 +56,7 @@ describe('the location and date lines', () => {
     expect(flattenStyle(english.props.style).lineHeight).toBeUndefined();
   });
 
-  it('tightens the location-to-date gap to 2 points under ar', async () => {
+  it('sets the location-to-date gap to 6 points under ar', async () => {
     showLondonDay('2026-09-11', '14:00');
 
     const sharedReact = {
@@ -75,7 +75,7 @@ describe('the location and date lines', () => {
     try {
       await render(<ArabicDay type={ScheduleType.Standard} />);
 
-      expect(flattenStyle(screen.getByText('لندن، المملكة المتحدة').props.style).marginBottom).toBe(2);
+      expect(flattenStyle(screen.getByText('لندن، المملكة المتحدة').props.style).marginBottom).toBe(6);
     } finally {
       setActiveLocale('en');
     }
