@@ -6,7 +6,6 @@
 import { act, render, screen } from '@testing-library/react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { TEXT } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
@@ -14,7 +13,6 @@ import { openOverlay } from '@/stores/overlay';
 import PrayerAgo from '../Ago';
 
 const ASR = 3;
-const LETTER_SIZE = Math.round(TEXT.sizeDetail * 0.55);
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)
@@ -22,10 +20,10 @@ const flattenStyle = (style: unknown): Record<string, unknown> =>
     : (style as Record<string, unknown>);
 
 describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
-  // [London clock, the badge's sentence with the gap spans composed in]
+  // [London clock, the badge's plain sentence]
   it.each([
-    ['13:05', 'Dhuhr 3 m ago'],
-    ['14:00', 'Dhuhr 58 m ago'],
+    ['13:05', 'Dhuhr \u20663m\u2069 ago'],
+    ['14:00', 'Dhuhr \u206658m\u2069 ago'],
   ])('at %s reads "%s"', async (time, sentence) => {
     showLondonDay('2026-09-11', time);
 
@@ -34,18 +32,14 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
     expect(screen.getByText(sentence)).toBeVisible();
   });
 
-  it('renders the same Latin digits and letters under ar inside the catalog words', async () => {
+  it('renders the isolated duration as one plain node under ar, with no styled letter', async () => {
     showLondonDay('2026-09-11', '14:00');
     setActiveLocale('ar');
     try {
       await render(<PrayerAgo type={ScheduleType.Standard} />);
 
-      expect(screen.getByText('m')).toBeOnTheScreen();
-      const gaps = screen.root?.queryAll(
-        (node) => node.props.children === ' ' && flattenStyle(node.props.style).fontSize === 8,
-        { includeSelf: true }
-      );
-      expect(gaps).toHaveLength(1);
+      expect(screen.getByText('الظهر قبل \u206658m\u2069')).toBeOnTheScreen();
+      expect(screen.queryByText('m')).toBeNull();
     } finally {
       setActiveLocale('en');
     }
@@ -76,7 +70,7 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
 
-    expect(screen.getByText('Dhuhr 58 m ago')).not.toBeVisible();
+    expect(screen.getByText('Dhuhr \u206658m\u2069 ago')).not.toBeVisible();
   });
 });
 
@@ -93,38 +87,5 @@ describe('the Standard badge with no prayer above next to measure from', () => {
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     expect(screen.toJSON()).toBeNull();
-  });
-});
-
-describe('the badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
-  it('draws its letters at 55 percent of the badge size and 40 percent of its ink, and lifts four points', async () => {
-    showLondonDay('2026-09-11', '14:00');
-    await render(<PrayerAgo type={ScheduleType.Standard} />);
-
-    // Row 83: the letters ride the countdown's ruled typography (row 85), the ink
-    // keeping the badge's own ruled weak-glyph strength (rows 79/81); row 81's lift stands
-    const letter = screen.getByText('m');
-    const letterStyle = flattenStyle(letter.props.style);
-    expect(letterStyle.fontSize).toBe(LETTER_SIZE);
-    expect(letterStyle.opacity).toBe(0.4);
-    const badge = letter.parent;
-    const badgeStyle =
-      badge === null
-        ? {}
-        : Array.isArray(badge.props.style)
-          ? Object.assign({}, ...badge.props.style)
-          : badge.props.style;
-    expect(badgeStyle.marginTop).toBe(-4);
-  });
-
-  it('separates the letter from its digits by the 2 point gap span', async () => {
-    showLondonDay('2026-09-11', '14:00');
-    await render(<PrayerAgo type={ScheduleType.Standard} />);
-
-    const gaps = screen.root?.queryAll(
-      (node) => node.props.children === ' ' && flattenStyle(node.props.style).fontSize === 8,
-      { includeSelf: true }
-    );
-    expect(gaps).toHaveLength(1);
   });
 });

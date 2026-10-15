@@ -27,7 +27,6 @@ import {
   isFriday,
   isJanuaryFirst,
   isRamadan,
-  splitAgoDuration,
   splitSingleColon,
 } from '../time';
 
@@ -176,16 +175,16 @@ describe('formatTimeAgo', () => {
   });
 
   it('formats minutes under an hour', () => {
-    expect(formatTimeAgo(60)).toBe('1m');
-    expect(formatTimeAgo(120)).toBe('2m');
-    expect(formatTimeAgo(3599)).toBe('59m');
+    expect(formatTimeAgo(60)).toBe('\u20661m\u2069');
+    expect(formatTimeAgo(120)).toBe('\u20662m\u2069');
+    expect(formatTimeAgo(3599)).toBe('\u206659m\u2069');
   });
 
   it('formats hours and minutes, dropping a zero-minute group', () => {
-    expect(formatTimeAgo(3600)).toBe('1h');
-    expect(formatTimeAgo(5400)).toBe('1h 30m');
-    expect(formatTimeAgo(7200)).toBe('2h');
-    expect(formatTimeAgo(7260)).toBe('2h 1m');
+    expect(formatTimeAgo(3600)).toBe('\u20661h\u2069');
+    expect(formatTimeAgo(5400)).toBe('\u20661h 30m\u2069');
+    expect(formatTimeAgo(7200)).toBe('\u20662h\u2069');
+    expect(formatTimeAgo(7260)).toBe('\u20662h 1m\u2069');
   });
 
   describe('one design in every locale', () => {
@@ -195,9 +194,9 @@ describe('formatTimeAgo', () => {
 
     it('draws the minute, whole-hour and mixed branches under ar with the same Latin letters', () => {
       setActiveLocale('ar');
-      expect(formatTimeAgo(120)).toBe('2m');
-      expect(formatTimeAgo(3600)).toBe('1h');
-      expect(formatTimeAgo(7260)).toBe('2h 1m');
+      expect(formatTimeAgo(120)).toBe('\u20662m\u2069');
+      expect(formatTimeAgo(3600)).toBe('\u20661h\u2069');
+      expect(formatTimeAgo(7260)).toBe('\u20662h 1m\u2069');
     });
   });
 
@@ -220,49 +219,6 @@ describe('splitSingleColon', () => {
     expect(splitSingleColon('a:b:c')).toBeNull();
     expect(splitSingleColon('no colon')).toBeNull();
     expect(splitSingleColon('')).toBeNull();
-  });
-});
-
-describe('splitAgoDuration', () => {
-  it('splits a sentence around its lettered duration and returns null otherwise', () => {
-    expect(splitAgoDuration('Dhuhr 58m ago')).toEqual({
-      before: 'Dhuhr ',
-      groups: [{ digits: '58', letter: 'm' }],
-      after: ' ago',
-    });
-    expect(splitAgoDuration('Duha 7h 14m ago')).toEqual({
-      before: 'Duha ',
-      groups: [
-        { digits: '7', letter: 'h' },
-        { digits: '14', letter: 'm' },
-      ],
-      after: ' ago',
-    });
-    expect(splitAgoDuration('الظهر قبل 2h 1m')).toEqual({
-      before: 'الظهر قبل ',
-      groups: [
-        { digits: '2', letter: 'h' },
-        { digits: '1', letter: 'm' },
-      ],
-      after: '',
-    });
-    expect(splitAgoDuration('ฟัจร์ 2h 30mที่แล้ว')).toEqual({
-      before: 'ฟัจร์ ',
-      groups: [
-        { digits: '2', letter: 'h' },
-        { digits: '30', letter: 'm' },
-      ],
-      after: 'ที่แล้ว',
-    });
-    expect(splitAgoDuration('Dhuhr 3h ago')).toEqual({
-      before: 'Dhuhr ',
-      groups: [{ digits: '3', letter: 'h' }],
-      after: ' ago',
-    });
-    expect(splitAgoDuration('Asr now')).toBeNull();
-    expect(splitAgoDuration('الآن')).toBeNull();
-    expect(splitAgoDuration('Dhuhr 58 ago')).toBeNull();
-    expect(splitAgoDuration('')).toBeNull();
   });
 });
 
