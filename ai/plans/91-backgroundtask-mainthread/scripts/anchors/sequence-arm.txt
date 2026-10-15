@@ -1,0 +1,10 @@
+export const runBackgroundTaskDebugSequence = () => {
+  if (!isDebugEnabled()) return;
+
+  logger.info('BACKGROUND_TASK_DEBUG: Sequence armed', {
+    triggerDelayMs: TRIGGER_DELAY_MS,
+    canSimulate: __DEV__,
+  });
+  void logBackgroundTaskDiagnostics('launch snapshot');
+
+  if (!__DEV__) return;

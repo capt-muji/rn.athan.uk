@@ -1,0 +1,4 @@
+      // Debug instrumentation for the notification-refresh background task (ISSUES.md #8)
+      runBackgroundTaskDebugSequence();
+
+      // Check for updates in background
