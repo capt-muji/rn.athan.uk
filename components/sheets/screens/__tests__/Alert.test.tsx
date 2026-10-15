@@ -131,7 +131,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     expect(screen.getAllByText(t('volume.note.android'))).toHaveLength(1);
   });
 
-  it('renders the visible reminder interval with the locale digits under ar', async () => {
+  it('renders the visible reminder interval with Latin digits under ar', async () => {
     showLondonDay('2026-09-11', '14:00');
     setReminderAlertType(ScheduleType.Standard, DHUHR, 0, AlertType.Silent);
     setReminderInterval(ScheduleType.Standard, DHUHR, 0, 15);
@@ -140,8 +140,8 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     try {
       await render(<AlertSheet />);
 
-      // The owner's numeral ruling, 2026-10-14: native digits on every value but the timer and its bar
-      expect(screen.getByText('\u0661\u0665')).toBeOnTheScreen();
+      // Row 88, 2026-10-15: Latin digits on every value, the stepper's word kept
+      expect(screen.getByText('15')).toBeOnTheScreen();
     } finally {
       setActiveLocale('en');
     }

@@ -5,6 +5,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 
+import { setActiveLocale } from '@/shared/i18n/locale';
 import type { ReminderInterval } from '@/shared/types';
 
 import Stepper from '../Stepper';
@@ -42,6 +43,21 @@ describe('the reminder stepper at 15 min', () => {
     expect(handlers[untouched]).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Light);
+  });
+});
+
+describe('the reminder stepper under ar', () => {
+  it('shows the Latin number beside the ar word for minutes', async () => {
+    setActiveLocale('ar');
+    try {
+      await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
+
+      expect(screen.getByText('15')).toBeOnTheScreen();
+      expect(screen.getByText('دقيقة')).toBeOnTheScreen();
+      expect(screen.getByLabelText('15 دقيقة')).toBeOnTheScreen();
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
 

@@ -22,15 +22,6 @@ const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar']);
 
 export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
 
-/** The locale's own numerals for digits the app draws as data (dates, sentences); Latin where
- * the locale has none. A new language with native numerals adds one entry here */
-const NATIVE_DIGITS: Partial<Record<LocaleId, string>> = { ar: '٠١٢٣٤٥٦٧٨٩' };
-
-export const localizeDigits = (value: string): string => {
-  const native = NATIVE_DIGITS[currentLocaleId()];
-  return native === undefined ? value : value.replace(/[0-9]/g, (digit) => native[Number(digit)]);
-};
-
 /** A glyph that points with the reading direction: the LTR form under LTR, the RTL form under RTL.
  * Reads the live locale at call time, so it follows a switch without a reload */
 export const directionGlyph = (ltr: string, rtl: string): string =>
