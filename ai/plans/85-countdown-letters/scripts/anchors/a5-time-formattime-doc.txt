@@ -1,0 +1,3 @@
+ * Converts seconds into the countdown display string: the fixed-width colon
+ * shapes in every locale (owner ruling 2026-10-13, row 82). Every group is
+ * always double digits, so a digit change never shifts the screen.
