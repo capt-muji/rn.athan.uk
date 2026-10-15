@@ -57,7 +57,7 @@ anchor counts 1, version floor 2.0.732 above 2.0.730).
 
 session: ses_ec225d674ffepfxk8RRRx8jJKN
 
-### Step 01 — executing (2026-10-15)
+### Step 01 — merged (2026-10-15)
 
 Branch `85/lettered-countdown` off `uat`. Red: the handed suite against uat's colon
 component fails 13 of 16, the three carriers passing (the held `--:--` display, the
@@ -93,5 +93,27 @@ the grep still prints nothing, `ALL ASPECTED: 1`.
 
 Version: lock held (no waits), `origin` fetched, 2.0.733 set in `app.json`,
 `package.json` and `android/app/build.gradle` together.
+
+Commit `5e15fe15` on `85/lettered-countdown`: the pre-commit hook's gates all green,
+`Tests: 5643 passed, 5643 total`, coverage `Statements 100% (5322/5322)`,
+`Branches 100% (2288/2288)`, `Functions 100% (1107/1107)`,
+`Lines 100% (4765/4765)`.
+
+Review (cold, one pass, no fixes): both handed files byte for byte at HEAD; the diff
+deletes only the four symbols with their docs and tests, the two colour keys, the
+import entries and the two allowlist entries; the track pin proves the bar's colour
+from the unchanged literal `rgba(160, 200, 255, 0.08)`; every visual value matches
+PLAN section 1 (letters `Math.round(ty.countdownSize * 0.55)` in
+`rgba(160, 200, 255, 0.4)`, gap span fontSize 8, digits `COLORS.text.primary` with
+`tabular-nums`, row `direction: 'ltr'` in every locale); the prayer name line, the
+held single-node branch, the overlay transform, the bar mount and the null guard are
+carried over unchanged; no lifecycle, thread, residue or rule finding (the six swept
+symbols grep clean across ts, tsx, json, md, sh, zsh outside this plan folder;
+`useDerivedColor` keeps its other readers). The anticipated fixes of PLAN section 10
+needed nothing. One noted leftover, deliberate: the constants test's title and
+comment still name "the dim digit colour" while its pin asserts the literal, because
+the plan's contract for that file moved the pin only and its tests are verbatim.
+
+Merged `--no-ff` into `uat` as `5a3fba84`; version lock released after the merge.
 
 session: ses_ec225d674ffepfxk8RRRx8jJKN
