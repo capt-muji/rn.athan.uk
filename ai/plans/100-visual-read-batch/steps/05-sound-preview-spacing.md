@@ -47,7 +47,7 @@ const soundListMarginUnder = async (locale: LocaleId): Promise<unknown> => {
     const BottomSheetSound = require('../sheets/screens/Sound').default;
     await rntl.render(<BottomSheetSound />);
     const list = rntl.screen.root?.findByProps({ testID: 'sound-list' });
-    marginTop = (StyleSheet.flatten(list.props.style) as Record<string, unknown>).marginTop;
+    marginTop = (StyleSheet.flatten(list?.props.style) as Record<string, unknown>).marginTop;
   });
   return marginTop;
 };

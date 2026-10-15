@@ -27,7 +27,7 @@ colour and face with no gap span and no separate letter style. The splitter
 - `components/prayer/Ago.tsx` (changed)
 - `shared/__tests__/time.test.ts` (changed)
 - `components/prayer/__tests__/Ago.test.tsx` (changed)
-- `__tests__/app/Screen.test.tsx` (changed, two lines)
+- `__tests__/app/Screen.test.tsx` (changed, three lines: 26, 47, 58)
 
 ## Red tests
 
@@ -44,7 +44,9 @@ line is added. Delete the whole `splitAgoDuration` describe and its import.
 
 In `__tests__/app/Screen.test.tsx`: line 26 retargets to
 `'Dhuhr \u206658m\u2069 ago'` and line 47 to `'Duha \u20667h 14m\u2069 ago'` (both
-assert the composed badge sentence today, gap spans included).
+assert the composed badge sentence today, gap spans included), and line 58's hiding
+query retargets to `'Dhuhr \u206658m\u2069 ago'` as well; it passes before and after
+the change and exists to keep the toggle-off net meaningful, not as a red test.
 
 In `components/prayer/__tests__/Ago.test.tsx`:
 
@@ -76,8 +78,9 @@ Record the failing names and lines in `LOG.md` before changing code.
   untouched.
 - Rewrite its docblock to say: the lettered duration composes inside Unicode
   left-to-right isolates so the run reads left to right inside an RTL sentence, the
-  letters lowercase at the sentence's own face, fixed in every locale; the five
-  `@example` returns show the isolated shapes.
+  letters lowercase at the sentence's own face, fixed in every locale; the four
+  lettered `@example` returns show the isolated shapes and the two `now` examples
+  stand.
 - Delete `AgoLetterGroup` and `splitAgoDuration` whole, with their docblocks.
 
 `components/prayer/Ago.tsx`:
