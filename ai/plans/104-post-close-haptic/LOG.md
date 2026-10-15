@@ -92,3 +92,15 @@ Evidence: `~/athan-gitree/sessions/104/metro-104.log` (the PERF lines), `app-con
 The serve Metro on 8082 was stopped and the sim app terminated after the drive; the sim's
 dev-launcher gained a `localhost:8082` recently-opened entry (harmless, it falls back to the
 launcher home when 8082 is down).
+
+Commit `00c63936` (2.0.792), merged into `uat` as `1aa9d21f` (no-ff). Hook:
+`Tests: 5677 passed, 5677 total` (suites 215 passed, 215 total); coverage: Statements 100%
+(5351/5351), Branches 100% (2312/2312), Functions 100% (1113/1113), Lines 100% (4792/4792).
+
+Review (cold read of `git show 00c63936`): clean. The diff is the contract verbatim — two
+marks and the promise variable around an unchanged call order, the comment block untouched;
+the settle `.then` writes only module-level state (no lifecycle, thread, residue or rule
+exposure). The anticipated "name the mark constants" fix deliberately not applied: the step
+reserves it for after the break run, and `break-104.sh marks` matches the literals.
+
+session: ses_ebeae1d28ffeM2fSqV8jHnW0WN
