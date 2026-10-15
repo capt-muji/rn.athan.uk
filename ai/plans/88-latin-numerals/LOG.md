@@ -184,3 +184,40 @@ lifecycle, thread or rule ground touched.
 
 session: ses_ec193d88affep7AvJ3lo6ptnl9
 
+### Step 02 — the en reminder title drops its unit letter
+
+Branch `ticket/88-step2` off `lane/88` at `4d4fa97d`. Anchors a07, a11, a12
+each count 1 on a clean tree. package.json printed 2.0.744 at the branch
+point, so the step version is 2.0.745.
+
+Red: 5 failed / 78 passed across the two suites — the i18nBridge transfer
+test (both title flips inside it), the notifications title-templates test,
+the ar-title test's en line, and both genReminderNotificationContent tests.
+Every received value carried the `m`, as the plan predicts.
+
+Change: one catalog byte in `shared/i18n/en.ts`
+(`'notification.reminder': '{name} in {n}m',` lost the `m`);
+`yarn i18n:lock` re-took the lock (exit 0, "catalog lock written for ar, ms,
+so, hi, th"), and the lock diff shows exactly five identical hash
+replacements and nothing else. No translated catalog file appears in the
+diff: the R2.2 evidence. The channel line, the ar pin `'العصر بعد 15'` and
+the channel-name pins keep their bytes.
+
+Green: the named run 83 passed 83 total; catalogLock + prayerIdContract 16
+passed 16 total; tsc exit 0; biome exit 0. Break script written verbatim to
+`ai/plans/88-latin-numerals/scripts/break-88-step2.sh`, run staged-green:
+the m restored made the title tests red as expected, last line
+`ALL ASPECTED: 1`, tree back to the step's files only.
+
+Version 2.0.745 set in app.json first, then package.json, under the version
+lock (no retry, fetch origin exit 0). Row 88's status cell reads
+IN PROGRESS, step 2.
+
+Review: cold read of the commit: exactly one catalog byte changed, the lock
+file carries five identical hash replacements, the channel line and the five
+translated values byte-identical, no translated catalog file, no scheduling
+file, no identifier, no channel id. The title string is data baked at arm
+time; no lifecycle, thread or rule surface moves. Clean.
+
+session: ses_ec193d88affep7AvJ3lo6ptnl9
+
