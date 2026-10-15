@@ -1,5 +1,0 @@
-    expect(screen.getByRole('progressbar', { name: /^Prayer countdown/ })).toBeOnTheScreen();
-    expect(screen.getByText('Fri, 11 Sep 2026')).toBeOnTheScreen();
-    expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
-    expect(screen.getByText('Dhuhr 0\u2009\u2009:\u2009\u200958 ago', { normalizer: (s) => s })).toBeOnTheScreen();
-  });
