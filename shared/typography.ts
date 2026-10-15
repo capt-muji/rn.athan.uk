@@ -13,7 +13,7 @@ const ARABIC_SIZE_FACTOR = 1;
 export interface LocaleTypography {
   familyRegular: string;
   familyMedium: string;
-  /** Timer digits are Latin glyphs in every locale (row 82), so this face is the Latin medium everywhere while word styles stay per-locale */
+  /** Timer digits are Latin glyphs in every locale (row 82), riding the locale's own medium face beside the word styles */
   familyDigits: string;
   /** The row time is Latin glyphs in every locale, so the record names its regular face for them */
   familyRowTime: string;
