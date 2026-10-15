@@ -167,13 +167,13 @@ Acceptance criteria:
 
 Checklist:
 
-- [ ] Step 0 — Restore the tree (`git checkout uat` after the planning merge;
+- [x] Step 0 — Restore the tree (`git checkout uat` after the planning merge;
       the branch `85-countdown-letters` carries no commits beyond `uat`, so
       `git branch -D 85-countdown-letters`; `git restore
       components/countdown/Countdown.tsx opencode.json` — the lettered
       implementation survives verbatim in `handed/Countdown.tsx.txt`). Then copy
       `scripts/preflight-85.sh` to `$TMPDIR`, run it, expect `PREFLIGHT OK`.
-- [ ] Step 1 — The lettered countdown lands with the sweep, atomically (`steps/1-lettered-countdown.md`)
+- [x] Step 1 — The lettered countdown lands with the sweep, atomically (`steps/1-lettered-countdown.md`)
 
 
 Weights: step 1 code 4 — the hook's gates enforce the atomic landing (the
