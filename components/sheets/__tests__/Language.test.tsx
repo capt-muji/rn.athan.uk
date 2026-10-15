@@ -67,7 +67,6 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
     const labels = screen.getAllByRole('radio').map((row) => row.props.accessibilityLabel);
     expect(labels).toEqual([...SIX_NAMES]);
     expect(screen.getByText('Choose your language')).toBeOnTheScreen();
-    expect(screen.getByText('Your pick applies immediately')).toBeOnTheScreen();
     const active = screen.getByRole('radio', { name: 'English' });
     expect(active.props.accessibilityState).toEqual({ selected: true });
     expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toEqual({ selected: false });

@@ -89,7 +89,6 @@ export const so = {
   'notification.now': '{name} hadda',
   'notification.reminder': '{name} {n} gudahood',
   'sheet.closeToSave': 'Xidh si aad u kaydiso',
-  'language.applyHint': 'Xigashadaada waxay isla markiiba khuseysaa',
   'language.chooseHint': 'Dooro luqaddaada',
   'alert.card.athan': 'Aqaan',
   'alert.card.athanHint': 'Ogeysiis waqtiga salaadda',

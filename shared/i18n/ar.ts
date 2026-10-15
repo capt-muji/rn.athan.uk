@@ -86,7 +86,6 @@ export const ar = {
   'notification.now': '{name} الآن',
   'notification.reminder': '{name} بعد {n}',
   'sheet.closeToSave': 'أغلق للحفظ',
-  'language.applyHint': 'يُطبَّق اختيارك فورًا',
   'language.chooseHint': 'اختر لغتك',
   'alert.card.athan': 'الأذان',
   'alert.card.athanHint': 'إشعار وقت الصلاة',

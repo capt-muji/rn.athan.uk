@@ -88,7 +88,6 @@ export const ms = {
   'notification.now': '{name} sekarang',
   'notification.reminder': '{name} dalam {n}',
   'sheet.closeToSave': 'Tutup untuk simpan',
-  'language.applyHint': 'Pilihan anda berkesan serta-merta',
   'language.chooseHint': 'Pilih bahasa anda',
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Notifikasi pada waktu solat',
