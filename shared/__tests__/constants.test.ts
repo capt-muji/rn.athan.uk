@@ -5,7 +5,7 @@
  * they stay in sync and maintain expected structure.
  */
 
-import { COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP, STYLES } from '@/shared/constants';
+import { COUNTDOWN_BAR, COUNTDOWN_TIP, STYLES } from '@/shared/constants';
 
 import {
   BACKGROUND_TASK_INTERVAL_HOURS,
@@ -379,7 +379,7 @@ describe('the update check window', () => {
 describe('the countdown bar and timer furniture', () => {
   it('keeps the empty track on the dim digit colour, the tip slim, and the block short', () => {
     // The owner's figures, 2026-10-14: the track matches the dim digits exactly, the tip at 1.5, the block at 54
-    expect(COUNTDOWN_BAR.TRACK_COLOR).toBe(COLORS.countdown.dimDigit);
+    expect(COUNTDOWN_BAR.TRACK_COLOR).toBe('rgba(160, 200, 255, 0.08)');
     expect(COUNTDOWN_TIP.WIDTH).toBe(1.5);
     expect(STYLES.countdown.height).toBe(54);
   });

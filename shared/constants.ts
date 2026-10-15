@@ -833,8 +833,6 @@ export const COLORS = {
   },
 
   countdown: {
-    dimDigit: 'rgba(160, 200, 255, 0.08)',
-    colon: 'rgba(160, 200, 255, 0.12)',
     timeColon: 'rgba(174, 208, 255, 0.375)',
     nextTimeColon: 'rgba(174, 208, 255, 0.5625)',
     nextTimeColonExtras: 'rgba(224, 167, 242, 0.5625)',
