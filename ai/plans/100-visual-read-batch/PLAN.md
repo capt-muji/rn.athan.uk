@@ -270,7 +270,7 @@ Checklist (all weight 2, code):
 
 - [x] Step 1 — the ago badge: plain letters, LTR isolates (`steps/01-ago-plain-letters.md`)
 - [x] Step 2 — countdown capitals at 60 percent (`steps/02-countdown-capitals.md`)
-- [ ] Step 3 — the circled i and the plain ar note copy (`steps/03-note-glyph-copy.md`)
+- [x] Step 3 — the circled i and the plain ar note copy (`steps/03-note-glyph-copy.md`)
 - [ ] Step 4 — the qibla header's ar gap (`steps/04-qibla-header-gap.md`)
 - [ ] Step 5 — the sound sheet's ar spacing pair (`steps/05-sound-preview-spacing.md`)
 - [ ] Step 6 — the Help question's ar line box (`steps/06-help-question-centre.md`)
