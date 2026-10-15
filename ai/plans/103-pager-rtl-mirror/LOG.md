@@ -87,7 +87,7 @@ session: ses_ebedfab96ffejYkbvmLkdPV9KH
 
 
 
-### Step 02 — DONE (the owner's read)
+### Step 2 - DONE (the owner's read)
 
 Build: the 104 lane's Release dev build (2.0.794) on the XS, shared by the batched pass one.
 
