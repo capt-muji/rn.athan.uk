@@ -23,8 +23,8 @@ const SHEET_PERF_NAME = 'sheet_language';
 
 /**
  * The language sheet, on the athan sheet's own pattern: the card, its hint and
- * the sliding purple highlight behind the row in force. A pick commits
- * immediately and closes (D47's no-cancel); the loader covers the wait.
+ * the purple highlight behind the row in force. A pick commits immediately
+ * and closes (D47's no-cancel); the loader covers the wait.
  */
 export default function BottomSheetLanguage() {
   const active = currentLocaleId();
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   cardHint: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
-    color: 'rgba(86, 134, 189, 0.725)',
+    color: COLORS.text.sheetSubtitle,
   },
   listContainer: {
     marginTop: SPACING.md,
@@ -122,7 +122,6 @@ const styles = StyleSheet.create({
   },
   option: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: RADIUS.md,
     // The athan rows carry their height in their controls; these rows carry it here, so the touch room matches
@@ -131,7 +130,6 @@ const styles = StyleSheet.create({
     paddingStart: SPACING.md,
   },
   optionLabel: {
-    flex: 1,
     color: COLORS.text.primary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),

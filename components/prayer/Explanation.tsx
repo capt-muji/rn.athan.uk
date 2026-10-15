@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, type ViewProps } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
-import { IconBadge } from '@/components/ui';
+import { InfoBadge } from '@/components/ui';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { typographyFor } from '@/shared/typography';
@@ -62,7 +62,7 @@ export default function PrayerExplanation({
         {/* Header with title and icon */}
         <View style={styles.infoHeader}>
           <Text style={styles.infoTitle}>{prayerName}</Text>
-          <IconBadge size={26} glyph={13} color={COLORS.icon.primary} />
+          <InfoBadge size={26} glyph={13} color={COLORS.icon.primary} />
         </View>
 
         {/* Separator */}

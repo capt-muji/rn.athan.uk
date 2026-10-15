@@ -145,7 +145,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(screen.getByText('5 s')).toBeOnTheScreen();
   });
 
-  it('draws the letters at four fifths size, faint, with the digits own shadow, inside the digit run', async () => {
+  it('draws the letters at the digits\u2019 own size and full-strength ink, inside the digit run', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSecondsPreference(false);
     setCountdown(8940);

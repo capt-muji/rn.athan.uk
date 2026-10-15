@@ -20,11 +20,14 @@ const footStyle = (copy: string): Record<string, unknown> =>
   StyleSheet.flatten(screen.getByText(copy).parent?.props.style) as Record<string, unknown>;
 
 describe('the volume footnote', () => {
-  it('draws the iOS copy beside the information glyph', async () => {
+  it('draws the iOS copy beside the information glyph, the glyph keeping its distance', async () => {
     await render(<SheetVolumeNote />);
 
     expect(screen.getByText(IOS_COPY)).toBeOnTheScreen();
     expect(screen.getByTestId('svg:info-bare', { includeHiddenElements: true })).toBeOnTheScreen();
+    const note = screen.getByText(IOS_COPY);
+    const style = StyleSheet.flatten(note.props.style) as { marginStart?: number };
+    expect(style.marginStart).toBe(SPACING.md);
   });
 
   it('draws the Android copy on Android', async () => {

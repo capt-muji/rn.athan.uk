@@ -128,7 +128,6 @@ const styles = StyleSheet.create({
     fontFamily: ty.familyDigits,
     fontVariant: ['tabular-nums'],
     marginBottom: SPACING.lg,
-    // Text shadow for depth
     textShadowColor: 'rgba(0, 0, 0, 0.15)',
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
