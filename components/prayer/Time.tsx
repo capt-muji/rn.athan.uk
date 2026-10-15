@@ -59,7 +59,7 @@ export default function PrayerTime({ type, index }: Props) {
 
   const isStandard = type === ScheduleType.Standard;
   const colonNextStyle = isStandard ? styles.colonNext : styles.colonNextExtras;
-  // Only the passed and the next colons were ruled; an upcoming row keeps its own
+  // The passed and next colons carry their own inks; an upcoming row keeps the base one
   const colonStateStyle = Prayer.isNext ? colonNextStyle : Prayer.isPassed ? styles.colonPast : undefined;
 
   return (

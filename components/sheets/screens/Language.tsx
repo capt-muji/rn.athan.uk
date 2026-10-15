@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
@@ -36,17 +36,15 @@ export default function BottomSheetLanguage() {
     0
   );
 
-  const handleItemLayout = useCallback((e: LayoutChangeEvent) => {
-    setItemHeight((current) => current || e.nativeEvent.layout.height);
-  }, []);
-
-  // The sheet closes on a pick and the root remounts on a locale change, so the
-  // seat is only ever set once per mount: no animated move can occur
-  useEffect(() => {
-    if (itemHeight === 0) return;
-
-    translateY.value = selectedIndex * (itemHeight + ITEM_GAP);
-  }, [selectedIndex, itemHeight, translateY]);
+  const handleItemLayout = useCallback(
+    (e: LayoutChangeEvent) => {
+      const height = e.nativeEvent.layout.height;
+      setItemHeight((current) => current || height);
+      // Seated on the same tick as the reveal, so the first frame is the settled one
+      translateY.value = selectedIndex * (height + ITEM_GAP);
+    },
+    [selectedIndex, translateY]
+  );
 
   const indicatorStyle = useAnimatedStyle(
     () => ({
@@ -61,7 +59,7 @@ export default function BottomSheetLanguage() {
     <Sheet
       setRef={setLanguageSheetModal}
       title={t('settings.language')}
-      // Her 2026-10-15 ruling: no subheading; the title centres against the icon on its own
+      // No subheading: the title centres against the icon alone
       subtitle={null}
       icon={<IconView type={Icon.GLOBE} size={16} color={SHEET_ICON_COLOR} />}
       snapPoints={['60%']}

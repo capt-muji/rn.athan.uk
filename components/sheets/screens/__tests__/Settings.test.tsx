@@ -139,7 +139,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     const languagePresent = jest.spyOn(renderedSheet(languageSheetModalAtom), 'present');
 
     const languageRow = screen.getByRole('button', { name: 'Language' });
-    // Her 2026-10-15 move: the row tops the Other card, straight after that card's title
+    // Language leads the Other card, straight after its title
     const otherCard = screen.getByText('Other').parent;
     expect(otherCard?.children.indexOf(languageRow)).toBe(1);
     // The sheet's header globe renders in the same tree, so the row's own globe is found inside it

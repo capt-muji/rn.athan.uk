@@ -25,7 +25,7 @@ interface LetteredGroup {
 }
 
 const UNIT_LETTERS = ['h', 'm', 's'];
-const UNIT_LETTER_COLOR = 'rgba(160, 200, 255, 0.4)';
+const UNIT_LETTER_COLOR = COLORS.text.primary;
 const COLON_DISPLAY = /^\d{2}(:\d{2}){1,2}$/;
 
 // The display string is always hours-first, so a group's index names its unit
@@ -115,10 +115,9 @@ const styles = StyleSheet.create({
     fontFamily: ty.wordFace ? ty.familyRegular : undefined,
     fontSize: ty.size(TEXT.sizeSmall) + 1,
     marginBottom: SPACING.xxs + 1,
-    color: UNIT_LETTER_COLOR,
+    color: COLORS.text.secondary,
     transform: [{ translateY: -2 }],
-    // The name shares the letters' exact ink: one shadow, so no hue can drift between them
-    textShadowColor: 'rgba(0, 0, 0, 0.15)',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
   },

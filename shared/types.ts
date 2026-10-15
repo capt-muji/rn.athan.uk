@@ -250,7 +250,6 @@ export enum Icon {
   QUESTION = 'QUESTION',
   MUSIC_NOTE = 'MUSIC_NOTE',
   COMPASS = 'COMPASS',
-  CHECK = 'CHECK',
   CLOSE = 'CLOSE',
   WIDGET = 'WIDGET',
   APPLE = 'APPLE',

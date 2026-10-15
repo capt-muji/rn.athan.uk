@@ -123,7 +123,7 @@ export default function BottomSheetSettings() {
         </Pressable>
       </View>
 
-      {/* Display Card - the Language row moved to the Other card (owner, 2026-10-15, superseding D52's placement) */}
+      {/* Display Card - Language leads the Other card: the pick is app-level, not a display setting */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>{t('settings.display')}</Text>
         <View style={styles.toggleList}>
