@@ -249,3 +249,51 @@ merging subtitles, the notification-sound label gap, the footer note's descender
 recorded as row 108, out of this ticket's scope by her own batch ruling.
 
 session: ses_ebe230fc5ffeppyXZJv9k510Uw
+
+### Step 5 - the dial and the deletion
+
+Branch `feat/day-gap-dial-noto-deleted` off `uat` (2.0.814), the step-4 dial clause's follow-up
+commit, pre-authorized by her pass-two rulings: the ar location margin dials to a recorded
+default 6 (her next read dials again on row 108's build) and the dead Noto faces die
+(ask-first answered yes).
+
+Red (the pin re-pointed first, 1 failed, 2 passed, 3 total in DayLines.test.tsx, no other case
+moved): `the location and date lines › sets the location-to-date gap to 6 points under ar` -
+first failing line `components/day/__tests__/DayLines.test.tsx:78:96`, `Expected: 6 / Received:
+2`. The red against the old value is the dial's own break: the plan's break script carries modes
+for steps 1-3 only, all merged.
+
+Change: the one ternary value in `components/day/Day.tsx` (`compactArabic ? 6 : SPACING.quart`;
+en's `SPACING.quart` 5 and every lineHeight pin untouched); the two Noto TTFs deleted from
+`assets/fonts/`, their two expo-font lines deleted from `app.json` (Rubik pair stays), and the
+Noto copyright line deleted from `assets/fonts/OFL.txt` (only shipped fonts carry their licence;
+the Rubik line stays). The specimen at `$HOME/athan-gitree/sessions/106/arabic-font-specimen.html`
+stays by her instruction, outside the repo.
+
+Green: the three named suites 53/53 (DayLines, typography, typographySweep); `yarn validate`
+green - tsc, Biome, Jest 215 suites / 5681 tests, coverage `Statements 100% (5356/5356)`,
+`Branches 100% (2312/2312)`, `Functions 100% (1116/1116)`, `Lines 100% (4797/4797)`.
+
+Version 2.0.815 (next patch after uat's 2.0.814, taken under the version lock): app.json first,
+then package.json, then the gitignored `android/app/build.gradle` `versionName` (never added).
+
+Ticket 106 set to `EXECUTED 2026-10-16` in `ai/plans/README.md` in this commit.
+
+Commit on `feat/day-gap-dial-noto-deleted`. The hook's lines from the commit:
+`Test Suites: 215 passed, 215 total`; `Tests:       5681 passed, 5681 total`; coverage
+`Statements   : 100% ( 5356/5356 )`, `Branches     : 100% ( 2312/2312 )`,
+`Functions    : 100% ( 1116/1116 )`, `Lines        : 100% ( 4797/4797 )`. The first commit
+picked up a stale `$TMPDIR` message file from an old ticket; the amend carries the dispatch's
+message and this ledger entry, and reran the hook to the same lines.
+
+Cold review of the diff (read back as a stranger): the checklist held - one ternary value, one
+title-and-pin re-point, two app.json lines, one OFL line, two binaries, the version triad, the
+EXECUTED cell; en's margin, every lineHeight pin and every other locale untouched; the residue
+sweep finds nothing naming Noto anywhere in shipped code. One residue finding, applied and
+amended per the review rules (a comment the change made untrue): the `compactArabic` comment
+still said the ar line "tightens onto the date line" under the 2026-10-15 ruling - false at 6,
+a point wider than en's quarter gap, and superseded by her pass-two dial; it now states the
+current why with no history. No name, signature, behaviour or test moved; the named suites
+rerun green inside the amend's hook to the same lines.
+
+session: ses_ebe08adb7ffeTEhFK0Io44bdks
