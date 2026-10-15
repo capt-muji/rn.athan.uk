@@ -6,6 +6,7 @@
 import { render, screen } from '@testing-library/react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 
@@ -53,5 +54,38 @@ describe('the location and date lines', () => {
 
     const english = screen.getByText('London, UK');
     expect(flattenStyle(english.props.style).lineHeight).toBeUndefined();
+  });
+
+  it('tightens the location-to-date gap to 2 points under ar', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    const sharedReact = {
+      react: require('react'),
+      jsx: require('react/jsx-runtime'),
+      jsxDev: require('react/jsx-dev-runtime'),
+    };
+    let ArabicDay!: typeof Day;
+    jest.isolateModules(() => {
+      jest.doMock('react', () => sharedReact.react);
+      jest.doMock('react/jsx-runtime', () => sharedReact.jsx);
+      jest.doMock('react/jsx-dev-runtime', () => sharedReact.jsxDev);
+      require('@/shared/i18n/locale').setActiveLocale('ar');
+      ArabicDay = require('../Day').default;
+    });
+    try {
+      await render(<ArabicDay type={ScheduleType.Standard} />);
+
+      expect(flattenStyle(screen.getByText('لندن، المملكة المتحدة').props.style).marginBottom).toBe(2);
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('keeps the location gap at 5 points under en', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<Day type={ScheduleType.Standard} />);
+
+    expect(flattenStyle(screen.getByText('London, UK').props.style).marginBottom).toBe(SPACING.quart);
   });
 });

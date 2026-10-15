@@ -59,6 +59,8 @@ export default function Day({ type }: Props) {
 }
 
 const ty = typographyFor(currentLocaleId());
+// The ar location line tightens onto the date line (owner, 2026-10-15: no clipping remains, only the gap)
+const compactArabic = currentLocaleId() === 'ar';
 
 const styles = StyleSheet.create({
   container: {
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
     color: COLORS.text.secondary,
     fontSize: ty.size(TEXT.sizeSmall),
     fontFamily: ty.familyRegular,
-    marginBottom: SPACING.quart,
+    marginBottom: compactArabic ? 2 : SPACING.quart,
   },
   date: {
     fontFamily: ty.familyRegular,
