@@ -9,8 +9,18 @@ of work. The two never share a word. The board and these files say ticket and st
 
 One ticket at a time: plan it, execute it, audit it, only then plan the next. Every
 session, fresh or resuming, starts with `/athan-next`; a run that planned ends with the
-ticket READY. The lead skill
-at `.agents/skills/athan-lead/SKILL.md` reads the queue below and git, reconstructs where
+ticket READY.
+
+**Suspension, 2026-10-15, the owner's standing order:** the one-ticket-at-a-time rule
+above is suspended for the multi-lead run she ordered this date. Ticket 85 runs alone
+first; once its step 1 merges, disjoint tickets run in parallel lanes, one lead each:
+89 beside 83, then 88 behind 83 (83 and 88 share `shared/time.ts` and the catalogs).
+Inside each lane the single-ticket routing of the lead skill governs as written, and
+the version lock still serializes every version bump and every `uat` merge. The
+suspension ends when the run's lanes are DONE or stopped; the rule above then holds
+again.
+
+The lead skill at `.agents/skills/athan-lead/SKILL.md` reads the queue below and git, reconstructs where
 the work stands, runs the one phase that can run, and stops. The lead dispatches cold
 workers for execution and review (`athan-executor`, `athan-reviewer`,
 `athan-plan-griller` in `.opencode/agents/`) and verifies their work from the repository;
