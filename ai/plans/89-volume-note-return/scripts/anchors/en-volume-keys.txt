@@ -1,4 +1,0 @@
-  'help.a.dndTimes.android': 'Do Not Disturb mode silences notifications until this app is allowed through.',
-  'help.step.dndAccess': 'Allow Do Not Disturb access',
-  'help.q.volume': 'Which volume controls the sound level?',
-  'help.a.volume.android': 'The athan plays at alarm volume, not ring volume. Raise Alarm in your sound settings.',

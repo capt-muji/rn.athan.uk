@@ -1,5 +1,0 @@
-  'sheets/parts/Header.tsx',
-  'sheets/parts/LabeledToggle.tsx',
-  'sheets/parts/SegmentedControl.tsx',
-  'sheets/parts/SoundItem.tsx',
-  'sheets/parts/Stepper.tsx',
