@@ -88,7 +88,6 @@ export default function Countdown({ type }: Props) {
               {liveGroups?.map((group) => (
                 <Text key={group.letter} style={styles.group}>
                   {group.digits}
-                  <Text style={styles.gap}> </Text>
                   <Text style={styles.unitLetter}>{group.letter}</Text>
                 </Text>
               ))}
@@ -148,9 +147,6 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.15)',
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
-  },
-  gap: {
-    fontSize: 8,
   },
   unitLetter: {
     color: UNIT_LETTER_COLOR,
