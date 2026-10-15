@@ -221,6 +221,25 @@ describe('buildPrayerWidgetTimeline', () => {
     }
   });
 
+  it('bakes no Arabic-Indic digit into any prop string under ar', () => {
+    setActiveLocale('ar');
+    try {
+      for (const settings of [SETTINGS, SETTINGS_HIJRI]) {
+        const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), settings, 'light');
+        const snapshot = buildPrayerWidgetSnapshot(makeSequence(), settings);
+        expect(snapshot).not.toBeNull();
+        for (const entry of entries) {
+          expect(JSON.stringify(entry.props)).not.toMatch(/[\u0660-\u0669]/);
+        }
+        if (snapshot) {
+          expect(JSON.stringify(snapshot)).not.toMatch(/[\u0660-\u0669]/);
+        }
+      }
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
   it('emits nothing between boundaries, since the countdown ticks itself', () => {
     const sequence = makeSequence();
     const entries = buildPrayerWidgetTimeline(NOW, sequence, SETTINGS, 'light');

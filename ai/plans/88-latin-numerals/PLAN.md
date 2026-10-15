@@ -241,7 +241,7 @@ untouched.
 
 Checklist:
 
-- [ ] Step 1 `steps/01-digit-map-dies.md` — the native-digit map dies, every surface renders Latin. Weight 2. Requirements R1.1 to R1.6.
+- [x] Step 1 `steps/01-digit-map-dies.md` — the native-digit map dies, every surface renders Latin. Weight 2. Requirements R1.1 to R1.6.
 - [ ] Step 2 `steps/02-notification-title-rider.md` — the en reminder title drops its unit letter. Weight 2. Requirements R2.1 to R2.3.
 
 The lane discipline, which overrides the branch words in the executor's own
