@@ -61,8 +61,8 @@ export default function OverlayInfoBox({ type }: Props) {
   // Row space: the row's own offset within this list, never a window measurement
   const rowTop = visualRowIndex * STYLES.prayer.height;
 
-  // Hangs overlapping the row edge by 7pt, owner-ruled: the tip sits inside the row band so the
-  // card visibly belongs to its row. Never given a height, so it is as tall as its own content;
+  // The tip sits inside the row band so the card visibly belongs to its row, the card body
+  // keeping its gap below the edge. Never given a height, so it is as tall as its own content;
   // the above-branch anchors at the row top and lifts itself clear by its own height
   const computedStyleInfoBox: ViewProps['style'] = showInfoBoxAbove
     ? { top: rowTop + TIP_OVERLAP, transform: [{ translateY: '-100%' }], start: 0, width: '100%' }

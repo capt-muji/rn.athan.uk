@@ -1,6 +1,6 @@
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
-import { IconBadge } from '@/components/ui';
+import { InfoBadge } from '@/components/ui';
 import { COLORS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
@@ -13,7 +13,7 @@ import { typographyFor } from '@/shared/typography';
 export default function SheetVolumeNote() {
   return (
     <View style={styles.foot}>
-      <IconBadge round size={20} glyph={12} color={COLORS.text.sheetSubtitle} />
+      <InfoBadge round size={20} glyph={12} color={COLORS.text.sheetSubtitle} />
       <Text style={styles.text}>{t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')}</Text>
     </View>
   );
