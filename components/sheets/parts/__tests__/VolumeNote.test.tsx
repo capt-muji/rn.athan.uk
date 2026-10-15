@@ -24,7 +24,7 @@ describe('the volume footnote', () => {
     await render(<SheetVolumeNote />);
 
     expect(screen.getByText(IOS_COPY)).toBeOnTheScreen();
-    expect(screen.getByTestId('svg:info', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(screen.getByTestId('svg:info-bare', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
   it('draws the Android copy on Android', async () => {
@@ -32,7 +32,7 @@ describe('the volume footnote', () => {
     await render(<SheetVolumeNote />);
 
     expect(screen.getByText(ANDROID_COPY)).toBeOnTheScreen();
-    expect(screen.getByTestId('svg:info', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(screen.getByTestId('svg:info-bare', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
   it('centres every line in the sheet-subtitle ink at the detail size', async () => {

@@ -62,7 +62,7 @@ export const ms = {
   'help.a.dndTimes.android': 'Mod Jangan Ganggu menyenyapkan notifikasi sehingga apl ini dibenarkan melaluinya.',
   'help.step.dndAccess': 'Benarkan akses Jangan Ganggu',
   'volume.note.android': 'Dimainkan pada volum penggera, bukan volum deringan.',
-  'volume.note.ios': 'Dimainkan pada volum Dering & Makluman. Suis Senyap dan mod Fokus menyenyapkannya.',
+  'volume.note.ios': 'Dimainkan pada volum Dering & Makluman.\nSuis Senyap dan mod Fokus menyenyapkannya.',
   'help.q.volume': 'Volum yang mana mengawal tahap bunyi?',
   'help.a.volume.android':
     'Bunyi azan dimainkan pada volum penggera, bukan volum deringan. Naikkan volum Penggera dalam tetapan bunyi.',
@@ -88,6 +88,8 @@ export const ms = {
   'notification.now': '{name} sekarang',
   'notification.reminder': '{name} dalam {n}',
   'sheet.closeToSave': 'Tutup untuk simpan',
+  'language.applyHint': 'Pilihan anda berkesan serta-merta',
+  'language.chooseHint': 'Pilih bahasa anda',
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Notifikasi pada waktu solat',
   'alert.reminder': 'Peringatan {n}',

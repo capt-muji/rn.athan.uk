@@ -2,6 +2,7 @@ export { default as BackgroundGradients } from './BackgroundGradients';
 export { default as ErrorScreen } from './Error';
 export { default as Glow } from './Glow';
 export { default as IconView } from './Icon';
+export { default as IconBadge } from './InfoBadge';
 export { default as InitialWidthMeasurement } from './InitialWidthMeasurement';
 export { default as LanguageLoader } from './LanguageLoader';
 export { default as Masjid } from './Masjid';

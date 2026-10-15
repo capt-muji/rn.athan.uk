@@ -63,7 +63,7 @@ export const so = {
   'help.a.dndTimes.android': 'Habka Ha-I-Delin ayaa ogeesiisyada aamusiya ilayn barnaamijkan loo ogolyahay inuu gudbo.',
   'help.step.dndAccess': 'U ogol helitaanka Ha-I-Delin',
   'volume.note.android': 'Waxaa lagu ciyaaraa codka digniinta, ma aha codka garaaca.',
-  'volume.note.ios': 'Waxaa lagu ciyaaraa codka «Garaaca & Digniinaha». Badhanka aamusan iyo Focus ayaa aamusa.',
+  'volume.note.ios': 'Waxaa lagu ciyaaraa codka «Garaaca & Digniinaha».\nBadhanka aamusan iyo Focus ayaa aamusa.',
   'help.q.volume': 'Codkee ayaa xakameeya heerka codka?',
   'help.a.volume.android':
     'Athaanku wuxuu ku dhacaa codka digniinta, ma aha codka garaaca. Kordhi «Alarm» ee dejinta codka.',
@@ -89,6 +89,8 @@ export const so = {
   'notification.now': '{name} hadda',
   'notification.reminder': '{name} {n} gudahood',
   'sheet.closeToSave': 'Xidh si aad u kaydiso',
+  'language.applyHint': 'Xigashadaada waxay isla markiiba khuseysaa',
+  'language.chooseHint': 'Dooro luqaddaada',
   'alert.card.athan': 'Aqaan',
   'alert.card.athanHint': 'Ogeysiis waqtiga salaadda',
   'alert.reminder': 'Xasuusiye {n}',

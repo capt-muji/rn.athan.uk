@@ -17,8 +17,8 @@ interface Props {
   type: ScheduleType;
 }
 
-/** How far the arrow tip overlaps into the row band, so the card reads as part of its row */
-const TIP_OVERLAP = 9;
+/** How far the arrow tip overlaps into the row band; the card body keeps its gap below the row */
+const TIP_OVERLAP = 4;
 
 /**
  * The Extras explanation card, anchored to the rows it explains.

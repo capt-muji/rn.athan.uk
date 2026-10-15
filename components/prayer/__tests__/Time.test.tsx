@@ -15,14 +15,16 @@ const SUNRISE = 1;
 const DHUHR = 2;
 const ASR = 3;
 const MAGRIB = 4;
+const FAJR = 0;
 const MIDNIGHT = 0;
 const SUHOOR = 2;
 const DUHA = 3;
 const ISTIJABA = 4;
 
 const COLON_COLOUR = 'rgba(174, 208, 255, 0.375)';
-const NEXT_COLON_COLOUR = 'rgba(174, 208, 255, 0.5625)';
-const NEXT_COLON_COLOUR_EXTRAS = 'rgba(224, 167, 242, 0.5625)';
+const PAST_COLON_COLOUR = 'rgb(170, 182, 212)';
+const NEXT_COLON_COLOUR = 'rgba(210, 226, 255, 0.75)';
+const NEXT_COLON_COLOUR_EXTRAS = 'rgba(238, 243, 255, 0.88)';
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)
@@ -149,6 +151,22 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
     expect(flattenStyle(upcoming.props.style).color).toBe(COLON_COLOUR);
     expect(screen.getByLabelText('16:29')).toBeOnTheScreen();
     expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
+  });
+
+  it('paints a passed row\u2019s colon at the opaque white, and leaves an upcoming row\u2019s untouched', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(
+      <>
+        <PrayerTime type={ScheduleType.Standard} index={FAJR} />
+        <PrayerTime type={ScheduleType.Standard} index={MAGRIB} />
+      </>
+    );
+
+    // Fajr has passed at 14:00, so its colon carries the ruled white; Magrib is upcoming and keeps its own
+    const passed = screen.getAllByText(':')[0];
+    expect(flattenStyle(passed.props.style).color).toBe(PAST_COLON_COLOUR);
+    const upcoming = screen.getAllByText(':')[1];
+    expect(flattenStyle(upcoming.props.style).color).toBe(COLON_COLOUR);
   });
 
   it('paints the next colon at the extras colour on the Extra schedule', async () => {

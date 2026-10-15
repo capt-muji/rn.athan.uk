@@ -117,7 +117,9 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
 
     const drawn = JSON.stringify(screen.toJSON());
     // Depth-first serialization is the sheet's visual order: the note closes the content
-    expect(drawn.indexOf(t('volume.note.ios'))).toBeGreaterThan(drawn.indexOf(t('alert.reminder', { n: 2 })));
+    expect(drawn.indexOf(t('volume.note.ios').split('\n')[0])).toBeGreaterThan(
+      drawn.indexOf(t('alert.reminder', { n: 2 }))
+    );
     expect(screen.getAllByText(t('volume.note.ios'))).toHaveLength(1);
   });
 

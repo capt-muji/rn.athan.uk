@@ -834,8 +834,9 @@ export const COLORS = {
 
   countdown: {
     timeColon: 'rgba(174, 208, 255, 0.375)',
-    nextTimeColon: 'rgba(174, 208, 255, 0.5625)',
-    nextTimeColonExtras: 'rgba(224, 167, 242, 0.5625)',
+    pastTimeColon: 'rgb(170, 182, 212)',
+    nextTimeColon: 'rgba(210, 226, 255, 0.75)',
+    nextTimeColonExtras: 'rgba(238, 243, 255, 0.88)',
   },
 
   /**
