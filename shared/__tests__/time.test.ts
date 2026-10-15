@@ -27,7 +27,6 @@ import {
   isFriday,
   isJanuaryFirst,
   isRamadan,
-  splitColonSections,
   splitSingleColon,
 } from '../time';
 
@@ -213,62 +212,6 @@ describe('formatTimeAgo', () => {
     } finally {
       setActiveLocale('en');
     }
-  });
-});
-
-describe('splitColonSections', () => {
-  it('splits two and three digit groups with dim flags on the zero groups and the colons', () => {
-    expect(splitColonSections('01:32')).toEqual([
-      { text: '01', dim: false, colon: false },
-      { text: ':', dim: true, colon: true },
-      { text: '32', dim: false, colon: false },
-    ]);
-    expect(splitColonSections('00:42:05')).toEqual([
-      { text: '00', dim: true, colon: false },
-      { text: ':', dim: true, colon: true },
-      { text: '42', dim: false, colon: false },
-      { text: ':', dim: true, colon: true },
-      { text: '05', dim: false, colon: false },
-    ]);
-    expect(splitColonSections('25:00')).toEqual([
-      { text: '25', dim: false, colon: false },
-      { text: ':', dim: true, colon: true },
-      { text: '00', dim: false, colon: false },
-    ]);
-  });
-
-  it('dims a zero group only once every larger group has also spent to zero', () => {
-    // 24:00 keeps its minutes bright: the hours are still counting
-    expect(splitColonSections('24:00:50')?.[2].dim).toBe(false);
-    expect(splitColonSections('24:00:50')?.[4].dim).toBe(false);
-    // 00:00 dims both, with the seconds always bright
-    expect(splitColonSections('00:00:45')?.[0].dim).toBe(true);
-    expect(splitColonSections('00:00:45')?.[2].dim).toBe(true);
-    expect(splitColonSections('00:00:45')?.[4].dim).toBe(false);
-  });
-
-  it('reads the digit groups and dims the zero groups', () => {
-    expect(splitColonSections('01:32:05')?.map((section) => section.text)).toEqual(['01', ':', '32', ':', '05']);
-    expect(splitColonSections('00:42:05')?.[0].dim).toBe(true);
-    expect(splitColonSections('01:32:05')?.[0].dim).toBe(false);
-  });
-
-  it('keeps the seconds group bright at the minute instant, while hours and minutes still dim', () => {
-    // Row 81: seconds tick on, so 00:01:00 renders its seconds 00 bright
-    expect(splitColonSections('00:01:00')?.[4].dim).toBe(false);
-    expect(splitColonSections('00:01:00')?.[0].dim).toBe(true);
-    expect(splitColonSections('00:00:59')?.[2].dim).toBe(true);
-    expect(splitColonSections('25:00')?.[2].dim).toBe(false);
-  });
-
-  it('returns null for every string that is not an all-digit colon shape', () => {
-    expect(splitColonSections('--:--')).toBeNull();
-    expect(splitColonSections('1h 1m')).toBeNull();
-    expect(splitColonSections('1:2:3:4')).toBeNull();
-    expect(splitColonSections('12')).toBeNull();
-    expect(splitColonSections('1:')).toBeNull();
-    expect(splitColonSections(':12')).toBeNull();
-    expect(splitColonSections('')).toBeNull();
   });
 });
 

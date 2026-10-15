@@ -1,15 +1,5 @@
 [
   {
-    "file": "components/countdown/Countdown.tsx",
-    "snippet": "marginLeft: digitSections[index - 1]?.text[1] === '1' ? 2.5 : 4.5,",
-    "reason": "optical compensation for the narrow 1 glyph; the row renders LTR in every locale, so the side facing the digits' reading order is fixed"
-  },
-  {
-    "file": "components/countdown/Countdown.tsx",
-    "snippet": "marginRight: digitSections[index + 1]?.text[0] === '1' ? 2.5 : 4.5,",
-    "reason": "optical compensation for the narrow 1 glyph; the row renders LTR in every locale, so the side facing the digits' reading order is fixed"
-  },
-  {
     "file": "components/countdown/Bar.tsx",
     "snippet": "left: tipLeftForProgress",
     "reason": "the tip's left is the physical value the direction-keyed geometry returns; a worklet offset has no logical key"

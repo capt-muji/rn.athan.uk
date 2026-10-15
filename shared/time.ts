@@ -641,43 +641,10 @@ export const formatTimeAgo = (seconds: number): string => {
   return `${hours}:${pad2(minutes % 60)}`;
 };
 
-/** One rendered piece of a colon display string: a digit group or a colon */
-export interface CountdownSection {
-  text: string;
-  /** True once the group reads 00 with every larger group spent; a colon always reads true */
-  dim: boolean;
-  colon: boolean;
-}
-
-const ALL_DIGITS = /^[0-9]+$/;
-const ALL_ZEROS = /^0+$/;
-
-/**
- * Splits a colon display string into renderable sections, or returns null when the
- * string is not one: every group must be digits and there must be two or three
- * groups. The held `--:--` fails the digit test, so it keeps the single-node render.
- */
-export const splitColonSections = (value: string): CountdownSection[] | null => {
-  const groups = value.split(':');
-  if (groups.length < 2 || groups.length > 3) return null;
-  if (!groups.every((group) => ALL_DIGITS.test(group))) return null;
-
-  const sections: CountdownSection[] = [];
-  groups.forEach((group, index) => {
-    if (index > 0) sections.push({ text: ':', dim: true, colon: true });
-    // Seconds never dim; a group dims only once every larger group has also spent to 00
-    const isSeconds = groups.length === 3 && index === 2;
-    const largerGroupsSpent = groups.slice(0, index).every((larger) => ALL_ZEROS.test(larger));
-    sections.push({ text: group, dim: !isSeconds && ALL_ZEROS.test(group) && largerGroupsSpent, colon: false });
-  });
-  return sections;
-};
-
 /**
  * Splits a display string on its single colon for the ago badge's gap node, or
  * returns null when the string carries no colon, more than one. The badge's words
- * may sit either side, so unlike splitColonSections the halves are not
- * digit-checked.
+ * may sit either side, so the halves are not digit-checked.
  */
 export const splitSingleColon = (value: string): [string, string] | null => {
   const index = value.indexOf(':');
