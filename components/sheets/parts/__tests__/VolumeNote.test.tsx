@@ -10,7 +10,7 @@ import { COLORS, SPACING, TEXT } from '@/shared/constants';
 
 import SheetVolumeNote from '../VolumeNote';
 
-const IOS_COPY = 'Follows your Ringer & Alerts volume. Silent and Focus modes mute it.';
+const IOS_COPY = 'Follows your Ringer & Alerts volume.\nSilent and Focus modes mute it.';
 const ANDROID_COPY = 'Plays at alarm volume, not ring volume.';
 
 const noteStyle = (copy: string): Record<string, unknown> =>

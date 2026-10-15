@@ -10,6 +10,7 @@ import { StyleSheet } from 'react-native';
 import type { ReactTestRendererJSON } from 'react-test-renderer';
 
 import { london } from '@/__tests__/harness';
+import { SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import * as LanguageStore from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
@@ -128,8 +129,9 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
       const style = StyleSheet.flatten(indicator.props.style) as {
         opacity?: number;
         height?: number;
+        transform?: { translateY: number }[];
       };
-      return { isShown: style.opacity === 1, height: style.height };
+      return { isShown: style.opacity === 1, height: style.height, seat: style.transform?.[0]?.translateY ?? 0 };
     };
 
     expect(highlight().isShown).toBe(false);
@@ -140,6 +142,8 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(highlight().isShown).toBe(true);
     expect(highlight().height).toBe(44);
+    // English sits second: the seat is one row and one gap below the list's top
+    expect(highlight().seat).toBe(44 + SPACING.xs);
   });
 
   it('marks the persisted pick as the selected row when the sheet opens again', async () => {

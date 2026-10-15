@@ -547,8 +547,6 @@ export const SIZE = {
   iconWrapper: {
     /** Small icon wrapper (24px) */
     sm: 24,
-    /** Medium icon wrapper (26px) */
-    md: 26,
   },
   /** Toggle switch dimensions */
   toggle: {

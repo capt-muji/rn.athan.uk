@@ -17,7 +17,7 @@ import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 import Countdown from '../Countdown';
 
 const MAGRIB = 4;
-const LETTER_INK = 'rgba(160, 200, 255, 0.4)';
+const LETTER_INK = COLORS.text.primary;
 const LETTER_SIZE = Math.round(TEXT.sizeLarge * 0.8);
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
@@ -162,6 +162,12 @@ describe('the lettered countdown on the Standard schedule', () => {
     const letterStyle = flattenStyle(letter.props.style);
     expect(letterStyle.color).toBe(LETTER_INK);
     expect(letterStyle.fontSize).toBe(LETTER_SIZE);
+
+    const name = screen.getByText('Asr');
+    const nameStyle = flattenStyle(name.props.style);
+    expect(nameStyle.color).toBe(COLORS.text.secondary);
+    expect(nameStyle.textShadowColor).toBe('rgba(0, 0, 0, 0.3)');
+    expect(nameStyle.textShadowRadius).toBe(6);
   });
 
   it('separates each letter from its digits by the 2 point gap span', async () => {

@@ -20,7 +20,7 @@ import { STYLES } from '@/shared/constants';
 import { resolveDisplayDate } from '@/shared/sequence';
 import { ScheduleType } from '@/shared/types';
 
-import OverlayInfoBox from '../OverlayInfoBox';
+import OverlayInfoBox, { TIP_OVERLAP } from '../OverlayInfoBox';
 
 // Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 const mockClock = { now: new Date(0) };
@@ -91,9 +91,6 @@ const findAll = (node: ReactNode): Element[] => {
 
 /** Where a drawn row's top edge sits, in the list's own row space */
 const rowTop = (row: number) => row * STYLES.prayer.height;
-
-/** How far the arrow tip overlaps into the row band */
-const TIP_OVERLAP = 4;
 
 /** Friday 11 September's Extras list gathered in reverse, on screen at noon, with the overlay open on it */
 const openOnReversedFriday = (selectedPrayerIndex: number) => {
