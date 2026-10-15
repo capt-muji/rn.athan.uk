@@ -12,6 +12,7 @@ import { BackgroundGradients, RamadanDecorations, SettingsButton } from '@/compo
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
@@ -36,6 +37,8 @@ export default function Navigation() {
   // Veil + decorations mount past the first content frame (launch chrome
   // defer); the veil pairs with the overlay, which defers on the same cadence
   const chromeDeferred = useChromeDeferred();
+
+  const direction = localeDirection(currentLocaleId());
 
   const handlePageScrollState = (e: { nativeEvent: { pageScrollState: string } }) => {
     const state = e.nativeEvent.pageScrollState;
@@ -81,6 +84,7 @@ export default function Navigation() {
       <PagerView
         style={{ flex: 1 }}
         initialPage={0}
+        layoutDirection={direction}
         // Pre-materialize the adjacent page's native view at layout time.
         // ViewPager2's default (OFFSCREEN_PAGE_LIMIT_DEFAULT) creates pages
         // lazily on first swipe, which showed a ~300ms empty page + frame
