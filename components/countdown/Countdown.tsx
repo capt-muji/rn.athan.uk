@@ -24,7 +24,7 @@ interface LetteredGroup {
   spent: boolean;
 }
 
-const UNIT_LETTERS = ['H', 'M', 'S'];
+const UNIT_LETTERS = ['h', 'm', 's'];
 const UNIT_LETTER_COLOR = 'rgba(160, 200, 255, 0.4)';
 const COLON_DISPLAY = /^\d{2}(:\d{2}){1,2}$/;
 
@@ -115,10 +115,10 @@ const styles = StyleSheet.create({
     fontFamily: ty.wordFace ? ty.familyRegular : undefined,
     fontSize: ty.size(TEXT.sizeSmall) + 1,
     marginBottom: SPACING.xxs + 1,
-    color: COLORS.text.secondary,
+    color: UNIT_LETTER_COLOR,
     transform: [{ translateY: -2 }],
-    // Text shadow for depth
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    // The name shares the letters' exact ink: one shadow, so no hue can drift between them
+    textShadowColor: 'rgba(0, 0, 0, 0.15)',
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
   },
@@ -156,6 +156,9 @@ const styles = StyleSheet.create({
   },
   unitLetter: {
     color: UNIT_LETTER_COLOR,
-    fontSize: Math.round(ty.countdownSize * 0.6),
+    fontSize: Math.round(ty.countdownSize * 0.8),
+    textShadowColor: 'rgba(0, 0, 0, 0.15)',
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 6,
   },
 });

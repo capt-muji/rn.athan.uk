@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, type ViewProps } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
-import InfoIcon from '@/assets/icons/svg/info.svg';
+import { IconBadge } from '@/components/ui';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { typographyFor } from '@/shared/typography';
@@ -62,9 +62,7 @@ export default function PrayerExplanation({
         {/* Header with title and icon */}
         <View style={styles.infoHeader}>
           <Text style={styles.infoTitle}>{prayerName}</Text>
-          <View style={styles.iconWrapper}>
-            <InfoIcon width={13} height={13} style={{ color: COLORS.icon.primary }} />
-          </View>
+          <IconBadge size={26} glyph={13} color={COLORS.icon.primary} />
         </View>
 
         {/* Separator */}
@@ -132,14 +130,6 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     marginBottom: SPACING.lg,
   },
-  iconWrapper: {
-    width: SIZE.iconWrapper.md,
-    height: SIZE.iconWrapper.md,
-    borderRadius: RADIUS.md,
-    backgroundColor: COLORS.icon.background,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   infoTitle: {
     color: COLORS.text.emphasis,
     fontSize: ty.size(TEXT.size),
@@ -150,6 +140,5 @@ const styles = StyleSheet.create({
     fontSize: ty.size(TEXT.sizeSmall),
     fontFamily: ty.familyRegular,
     lineHeight: ty.scriptLineHeight?.(TEXT.sizeSmall) ?? ty.lineHeight(TEXT.lineHeight.default),
-    marginBottom: SPACING.mid,
   },
 });
