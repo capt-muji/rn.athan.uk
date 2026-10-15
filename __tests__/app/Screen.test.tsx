@@ -7,9 +7,14 @@ import { getDefaultStore } from 'jotai';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { ScheduleType } from '@/shared/types';
-import { showTimePassedAtom } from '@/stores/ui';
+import { countdownBarShownAtom, showTimePassedAtom } from '@/stores/ui';
 
 import Screen from '../../app/Screen';
+
+// The bar's default is off; these suites read the bar as part of the page, so they seed it on
+beforeEach(async () => {
+  await act(() => getDefaultStore().set(countdownBarShownAtom, true));
+});
 
 /** A frame and the macrotask after it, which is when launch chrome and the Extras content mount */
 const FIRST_FRAME_MS = 50;

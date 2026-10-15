@@ -138,7 +138,7 @@ export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
 // =============================================================================
 
 /** Whether the countdown bar is visible */
-export const countdownBarShownAtom = atomWithStorageBoolean('preference_countdownbar_shown', true);
+export const countdownBarShownAtom = atomWithStorageBoolean('preference_countdownbar_shown', false);
 
 /** Color of the countdown bar (hex string) */
 export const countdownBarColorAtom = atomWithStorageString('preference_countdownbar_color', '#00ff88');
