@@ -26,7 +26,6 @@ note's Arabic copy is the text below it.
 - `components/sheets/screens/Sound.tsx` (changed)
 - `components/sheets/parts/VolumeNote.tsx` (changed)
 - `components/__tests__/typographySweep.test.tsx` (changed, new probes)
-- `components/sheets/parts/__tests__/VolumeNote.test.tsx` (changed, new case)
 
 ## Red tests
 
@@ -54,8 +53,30 @@ const soundListMarginUnder = async (locale: LocaleId): Promise<unknown> => {
 };
 ```
 
-`VolumeNote`'s foot margin probes through the rendered note (the file's own test
-shows the flatten path). Then the describe:
+The note's foot margin resolves at module scope, so it takes the same isolated
+probe (the styles cannot be reached through `VolumeNote.test.tsx`'s top-level
+import):
+
+```ts
+const noteFootMarginUnder = async (locale: LocaleId): Promise<unknown> => {
+  let marginTop: unknown;
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const SheetVolumeNote = require('../sheets/parts/VolumeNote').default;
+    await rntl.render(<SheetVolumeNote />);
+    const copy = rntl.screen.getByText(locale === 'ar' ? /الرنين/ : /Ringer/);
+    const foot = copy.parent;
+    marginTop = (StyleSheet.flatten(foot?.props.style) as Record<string, unknown>).marginTop;
+  });
+  return marginTop;
+};
+```
+
+Then the describe:
 
 ```ts
 describe('the sound sheet spacing under ar', () => {
@@ -66,27 +87,19 @@ describe('the sound sheet spacing under ar', () => {
   it('keeps the hint gap at 12 under en', async () => {
     expect(await soundListMarginUnder('en')).toBe(12);
   });
+
+  it('opens the note gap to 32 points under ar', async () => {
+    expect(await noteFootMarginUnder('ar')).toBe(32);
+  });
+
+  it('keeps the note gap at 24 under en', async () => {
+    expect(await noteFootMarginUnder('en')).toBe(24);
+  });
 });
 ```
 
-In `components/sheets/parts/__tests__/VolumeNote.test.tsx`, add inside the existing
-describe, following the file's own `footStyle` helper and the `SoundItem.test.tsx`
-locale pattern (set, try, finally restore):
-
-```ts
-it('opens its gap to 32 points under ar', async () => {
-  setActiveLocale('ar');
-  try {
-    await render(<SheetVolumeNote />);
-    expect(footStyle(IOS_COPY).marginTop).toBe(32);
-  } finally {
-    setActiveLocale('en');
-  }
-});
-```
-
-Import `setActiveLocale` from `@/shared/i18n/locale`. The ar cases fail against the
-planned sha. Record the failing names and lines in `LOG.md`.
+The ar cases fail against the planned sha (both margins hold their en values in
+every locale today). Record the failing names and lines in `LOG.md`.
 
 ## Change contracts
 
@@ -126,7 +139,7 @@ new = "marginTop: SPACING.xxl,"
 assert old in s, 'anchor for break missing'
 p.write_text(s.replace(old, new))
 EOF
-npx jest components/sheets/parts/__tests__/VolumeNote.test.tsx --watchman=false -t '32 points under ar' >"$TMPDIR/break05.log" 2>&1
+npx jest components/__tests__/typographySweep.test.tsx --watchman=false -t 'note gap' >"$TMPDIR/break05.log" 2>&1
 status=$?
 mv "$TMPDIR/break05-note.tsx" components/sheets/parts/VolumeNote.tsx
 if [ $status -ne 0 ]; then
@@ -157,7 +170,7 @@ Fetch under the version lock, bump `app.json` then `package.json` one patch abov
 
 ## Restore list
 
-`git checkout -- components/sheets/screens/Sound.tsx components/sheets/parts/VolumeNote.tsx components/__tests__/typographySweep.test.tsx components/sheets/parts/__tests__/VolumeNote.test.tsx` and delete `scripts/breaks/break-05.sh` if untracked.
+`git checkout -- components/sheets/screens/Sound.tsx components/sheets/parts/VolumeNote.tsx components/__tests__/typographySweep.test.tsx` and delete `scripts/breaks/break-05.sh` if untracked.
 
 ## Done when
 

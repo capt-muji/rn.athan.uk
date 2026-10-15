@@ -32,9 +32,14 @@ In `components/countdown/__tests__/Countdown.test.tsx`, write first:
 - Every composed group assertion changes letter case: `'2 h'` becomes `'2 H'`,
   `'1 h'` becomes `'1 H'`, `'5 h'` becomes `'5 H'`, and every `queryByText('h')`,
   `queryByText('m')`, `queryByText('s')` becomes the capital form.
+- Both `getByLabelText('2h 29m')` assertions (lines 45 and 59) become
+  `getByLabelText('2H 29M')`, because the screen-reader label composes
+  `UNIT_LETTERS`.
 - The style case at line 155 reads the letter through `screen.getByText('H')`
   (or the capital the rendered group holds) and asserts `fontSize` equals the new
   `LETTER_SIZE` and `color` equals `'rgba(160, 200, 255, 0.4)'` unchanged.
+- The test file's header docblock reads "capital unit letters" where it says
+  lowercase today.
 
 Record the failing names and lines in `LOG.md` before changing code.
 

@@ -25,7 +25,7 @@ the Latin comma everywhere else, with the digits Latin in every locale per row 8
 - `shared/i18n/locale.ts` (changed, one helper)
 - `shared/time.ts` (changed, two lines)
 - `shared/__tests__/locale.test.ts` (changed, new describe)
-- `shared/__tests__/dateLocalized.test.ts` (changed, new cases)
+- `shared/__tests__/dateLocalized.test.ts` (changed, new cases and two retargets)
 
 ## Red tests
 
@@ -81,9 +81,10 @@ it('joins day and year with the Arabic comma under ar', () => {
 
 Derive the expected weekday and Hijri values from the catalog keys at run time the
 way the file's existing cases do if it composes expectations from the catalog; if it
-hardcodes expected strings, hardcode these the same way. The ar cases fail against
-the planned sha (the composers emit the Latin comma). Record the failing names and
-lines in `LOG.md`.
+hardcodes expected strings, hardcode these the same way. The two existing ar cases
+at lines 63 and 85 retarget their expected commas to U+060C
+(`'الأحد\u060C 11 أكتوبر 2026'` and `'ربيع الآخر 30\u060C 1448'`); they assert
+today's Latin comma and fail first. Record the failing names and lines in `LOG.md`.
 
 ## Change contracts
 
@@ -128,7 +129,7 @@ from pathlib import Path
 p = Path('shared/i18n/locale.ts')
 s = p.read_text()
 old = "localeDirection(currentLocaleId()) === 'rtl' ? '\\u060C' : ',';"
-new = "return ',';"
+new = "','"
 assert old in s, 'anchor for break missing'
 p.write_text(s.replace(old, new))
 EOF

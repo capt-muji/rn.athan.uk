@@ -24,26 +24,56 @@ Under ar the location line tightens onto the date line below it: the gap goes fr
 
 ## Red tests
 
-In `components/day/__tests__/DayLines.test.tsx`, following the file's own rendering
-and style-flattening shape and the `SoundItem.test.tsx` locale pattern:
+In `components/day/__tests__/DayLines.test.tsx`. The location style resolves at
+module scope, so the ar case re-requires `Day` inside the locale using the file's
+own existing dance (shared React through `doMock`, exactly as its first case does):
 
 ```ts
 it('tightens the location-to-date gap to 2 points under ar', async () => {
-  setActiveLocale('ar');
+  showLondonDay('2026-09-11', '14:00');
+
+  const sharedReact = {
+    react: require('react'),
+    jsx: require('react/jsx-runtime'),
+    jsxDev: require('react/jsx-dev-runtime'),
+  };
+  let ArabicDay!: typeof Day;
+  jest.isolateModules(() => {
+    jest.doMock('react', () => sharedReact.react);
+    jest.doMock('react/jsx-runtime', () => sharedReact.jsx);
+    jest.doMock('react/jsx-dev-runtime', () => sharedReact.jsxDev);
+    require('@/shared/i18n/locale').setActiveLocale('ar');
+    ArabicDay = require('../Day').default;
+  });
   try {
-    await render(<Day type={ScheduleType.Standard} />);
-    const location = screen.getByText('لندن، المملكة المتحدة');
-    expect(StyleSheet.flatten(location.props.style).marginBottom).toBe(2);
+    await render(<ArabicDay type={ScheduleType.Standard} />);
+
+    expect(
+      flattenStyle(screen.getByText('لندن، المملكة المتحدة').props.style).marginBottom
+    ).toBe(2);
   } finally {
     setActiveLocale('en');
   }
 });
 ```
 
-Adjust the finder and imports to the file's existing helpers (if it seeds a London
-day through the harness the way `Ago.test.tsx` does, seed the same way; the location
-line renders from the catalog without data). The ar case fails against the planned
-sha (the value is `SPACING.quart`, 5). Record the failing name and line in `LOG.md`.
+And the en case beside it:
+
+```ts
+it('keeps the location gap at 5 points under en', async () => {
+  showLondonDay('2026-09-11', '14:00');
+
+  await render(<Day type={ScheduleType.Standard} />);
+
+  expect(flattenStyle(screen.getByText('London, UK').props.style).marginBottom).toBe(
+    SPACING.quart
+  );
+});
+```
+
+Import `SPACING` from `@/shared/constants` if the file lacks it. The ar case fails
+against the planned sha (the value is `SPACING.quart`, 5, in every locale today);
+the en case passes and pins R9.1. Record the failing name and line in `LOG.md`.
 
 ## Change contracts
 
@@ -76,7 +106,7 @@ new = "marginBottom: SPACING.quart,"
 assert old in s, 'anchor for break missing'
 p.write_text(s.replace(old, new))
 EOF
-npx jest components/day/__tests__/DayLines.test.tsx --watchman=false -t '2 points under ar' >"$TMPDIR/break08.log" 2>&1
+npx jest components/day/__tests__/DayLines.test.tsx --watchman=false -t 'location' >"$TMPDIR/break08.log" 2>&1
 status=$?
 mv "$TMPDIR/break08-day.tsx" components/day/Day.tsx
 if [ $status -ne 0 ]; then

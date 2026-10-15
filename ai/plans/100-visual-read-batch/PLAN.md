@@ -185,7 +185,9 @@ values (steps 4, 5, 6, 8) resolve at module scope through `typographyFor` and a
 that is safe because every ar switch crosses the RTL boundary and the D59 relaunch
 re-resolves module scope. The jest harness for per-locale style assertions is
 `components/__tests__/typographySweep.test.tsx` (`jest.isolateModulesAsync` with the
-locale set before the component loads); steps 4, 5, 6 and 8 add their probes there.
+locale set before the component loads); steps 4, 5 and 6 add their probes there,
+and step 8 uses `DayLines.test.tsx`'s own shared-React `isolateModules` dance, which
+that file already carries.
 
 The existing tests and what each proves:
 
@@ -351,7 +353,7 @@ Anticipated review fixes, word for word:
   check and would pass on any asset" — keep it, the asset's own test in step 3
   carries the circle assertion.
 - Step 5: "`VolumeNote` reads `compactArabic` but the file has no locale import" —
-  add the `currentLocaleId` import beside `typographyFor` as `Header.tsx` does.
+  it has one (`currentLocaleId` at line 6 for the typography); reject.
 - Step 7: "`sentenceComma` is exported but only `time.ts` calls it" — that is the
   seam's shape (`directionGlyph` has the same), not dead code; reject.
 

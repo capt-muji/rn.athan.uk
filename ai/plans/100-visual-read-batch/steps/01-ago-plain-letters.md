@@ -27,6 +27,7 @@ colour and face with no gap span and no separate letter style. The splitter
 - `components/prayer/Ago.tsx` (changed)
 - `shared/__tests__/time.test.ts` (changed)
 - `components/prayer/__tests__/Ago.test.tsx` (changed)
+- `__tests__/app/Screen.test.tsx` (changed, two lines)
 
 ## Red tests
 
@@ -37,10 +38,13 @@ lettered expectation gains the isolate pair, so the case list reads
 `'\u20661m\u2069'`, `'\u20662m\u2069'`, `'\u206659m\u2069'`, `'\u20661h\u2069'`,
 `'\u20661h 30m\u2069'`, `'\u20662h\u2069'`, `'\u20662h 1m\u2069'`, and the `now`
 cases stay `'now'` and `'الآن'`. The ar-locale cases at the describe's end assert
-the same isolated shapes under `setActiveLocale('ar')`. A new case proves R1.4:
-`expect(formatTimeAgo(7260)).toBe('\u20662h 1m\u2069')` already covers the
-two-group run; add `expect(formatTimeAgo(120)).toBe('\u20662m\u2069')` for the
-single group beside it. Delete the whole `splitAgoDuration` describe and its import.
+the same isolated shapes under `setActiveLocale('ar')`. The rewritten
+`formatTimeAgo(120)` case already proves R1.4 (the single-group isolate); no new
+line is added. Delete the whole `splitAgoDuration` describe and its import.
+
+In `__tests__/app/Screen.test.tsx`: line 26 retargets to
+`'Dhuhr \u206658m\u2069 ago'` and line 47 to `'Duha \u20667h 14m\u2069 ago'` (both
+assert the composed badge sentence today, gap spans included).
 
 In `components/prayer/__tests__/Ago.test.tsx`:
 
@@ -52,8 +56,8 @@ In `components/prayer/__tests__/Ago.test.tsx`:
   node whose content is `الظهر قبل \u206658m\u2069`, and no node anywhere holds a
   styled letter: `expect(screen.getByText('الظهر قبل \u206658m\u2069')).toBeOnTheScreen()`
   plus `expect(screen.queryByText('m')).toBeNull()`.
-- The now-sentence case keeps its assertions (`الآن` present, no `m`, no `h`) and
-  adds `expect(screen.getByText(/الآن/).props.children).not.toContain('\u2066')`.
+- The now-sentence case keeps all four of its assertions (the `الآن` text, no `m`,
+  no `h`, and the gap-node query), so the file's `flattenStyle` helper stays used.
 - Delete the describe at line 99 (`draws its letters at 55 percent...`) and the case
   at line 120 (`separates the letter from its digits...`) together with the file's
   `LETTER_SIZE` constant and the `TEXT` import if nothing else uses it.
@@ -72,14 +76,16 @@ Record the failing names and lines in `LOG.md` before changing code.
   untouched.
 - Rewrite its docblock to say: the lettered duration composes inside Unicode
   left-to-right isolates so the run reads left to right inside an RTL sentence, the
-  letters lowercase at the sentence's own face, fixed in every locale.
+  letters lowercase at the sentence's own face, fixed in every locale; the five
+  `@example` returns show the isolated shapes.
 - Delete `AgoLetterGroup` and `splitAgoDuration` whole, with their docblocks.
 
 `components/prayer/Ago.tsx`:
 
 - Drop the `splitAgoDuration` import, the `Fragment` import, and the `parts` logic.
   `PrayerAgoBadge` renders `{prayerAgo}` as the `Animated.Text`'s single child.
-- Delete the `gap` and `unitLetter` styles.
+- Delete the `gap` and `unitLetter` styles, and the `Text` named import from
+  `react-native` (only the deleted nested nodes used it; `Animated.Text` stands).
 
 ## Green run
 
@@ -115,7 +121,7 @@ else
 fi
 ```
 
-The first failing line names the isolated `2m` expectation. The script restores both
+The first failing line names the isolated `1m` expectation. The script restores both
 files and ends `ALL AS EXPECTED: 1`; `git status --porcelain` then lists only this
 step's files and the plan files.
 
@@ -140,7 +146,7 @@ Fetch under the version lock, bump `app.json` then `package.json` one patch abov
 
 ## Restore list
 
-`git checkout -- shared/time.ts components/prayer/Ago.tsx shared/__tests__/time.test.ts components/prayer/__tests__/Ago.test.tsx` and delete `scripts/breaks/break-01.sh` if untracked.
+`git checkout -- shared/time.ts components/prayer/Ago.tsx shared/__tests__/time.test.ts components/prayer/__tests__/Ago.test.tsx __tests__/app/Screen.test.tsx` and delete `scripts/breaks/break-01.sh` if untracked.
 
 ## Done when
 
