@@ -1,6 +1,0 @@
-beforeEach(() => {
-  jest.clearAllMocks();
-  mockEffects.length = 0;
-  mockFormatTimeAgo.mockReturnValue('0:01');
-});
-
