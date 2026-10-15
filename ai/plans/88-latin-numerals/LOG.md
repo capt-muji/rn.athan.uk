@@ -221,3 +221,17 @@ time; no lifecycle, thread or rule surface moves. Clean.
 
 session: ses_ec193d88affep7AvJ3lo6ptnl9
 
+## Ticket 88 findings
+
+The native-digit map is dead: NATIVE_DIGITS and localizeDigits deleted from
+shared/i18n/locale.ts, the twelve wrapper expressions unwrapped across
+shared/time.ts, Help.tsx, Explanation.tsx and Stepper.tsx. Under ar the
+Gregorian label reads `الأحد, 11 أكتوبر 2026`, the Hijri label `ربيع الآخر
+30, 1448`, the Suhoor box opens 20 in Latin, the Help sentences carry Latin
+digits, the stepper shows 15 with the ar word for minutes, and the widget
+props bake no Arabic-Indic digit under either date preference. The en
+reminder title reads Fajr in 15 (no unit letter); the five translated titles
+and every channel label keep their locked bytes. The iOS SwiftUI ticking
+countdown stays system-formatted (row 69's ground). Versions 2.0.744 and
+2.0.745 on lane/88.
+
