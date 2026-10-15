@@ -18,7 +18,7 @@ interface Props {
 }
 
 /** How far the arrow tip overlaps into the row band; the card body keeps its gap below the row */
-export const TIP_OVERLAP = 4;
+export const TIP_OVERLAP = 6;
 
 /**
  * The Extras explanation card, anchored to the rows it explains.
