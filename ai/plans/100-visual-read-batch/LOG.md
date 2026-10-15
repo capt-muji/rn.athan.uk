@@ -100,7 +100,9 @@ Version 2.0.756 (app.json then package.json, under the lock, fetched). Commit
 Review (cold read of 67021c26): no nested Text; isolates wrap the whole run
 including the inner space; `grep -rn splitAgoDuration` outside node_modules
 prints nothing; docblock names isolates, plain face and why; en content differs
-only by zero-width marks. No lifecycle, thread, residue or rule findings.
+only by the zero-width marks and the ruled loss of the gap-span space between
+digits and letter (audit correction, 2026-10-15). No lifecycle, thread, residue
+or rule findings.
 Merge `--no-ff` 810af7df; lock released.
 
 session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
