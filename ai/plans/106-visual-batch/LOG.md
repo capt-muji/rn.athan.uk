@@ -106,5 +106,8 @@ Merged `5ff173a0` (2.0.803) into `uat` with
 `git merge --no-ff feat/ar-rubik-face -m "2.0.803 - merge feat/ar-rubik-face: the Rubik face"`,
 no conflict, tree clean. Never pushed.
 
+The step 1 checklist box in `PLAN.md` rides its own small docs commit (the ledger commit missed
+it, the 2.0.790 precedent).
+
 session: ses_ebe4b003fffeAwFNQg1tM3Sj3I
 
