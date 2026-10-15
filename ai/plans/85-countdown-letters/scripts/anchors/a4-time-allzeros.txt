@@ -1,4 +1,0 @@
-}
-
-const ALL_DIGITS = /^[0-9]+$/;
-const ALL_ZEROS = /^0+$/;
