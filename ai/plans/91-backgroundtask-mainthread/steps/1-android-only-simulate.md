@@ -6,7 +6,7 @@ Weight: 2
 ## Anchor check
 
 Run the pre-flight first (PLAN.md section 3). It counts every anchor, including the
-three source anchors and the three suite anchors this step edits. Any count other
+four source anchors and the three suite anchors this step edits. Any count other
 than 1 is `NEEDS CONTEXT: NEEDS REPLAN, <the anchor and its count>`.
 
 ## Goal
@@ -116,20 +116,20 @@ import { Platform } from 'react-native';
 ```
 
 Proves R1.1, R2.1 and R2.2 on the iOS side together with the Android test's
-`canSimulate: true` pin. Red now against today's code with three failures inside
-`never simulates on iOS in __DEV__`: `expect(mockTrigger).not.toHaveBeenCalled()`
-fails with `Number of calls: 1`, the `canSimulate: false` pin fails with
-`canSimulate: true` in the received object, and the post-trigger assertion fails
-with the message present. Run and record the exact failing lines:
+`canSimulate: true` pin. Red now against today's code: the iOS test fails at its
+first assertion, `expect(mockTrigger).not.toHaveBeenCalled()`, printing
+`Received number of calls: 1` (Jest stops a test at its first failed assertion, so
+the two later assertions print nothing). The Android test passes against today's
+code by design and pins the flow the gate must keep. Run and record the exact
+failing output in the LOG.md step entry:
 
 ```bash
 npx jest device/__tests__/backgroundTaskDebug.test.ts --watchman=false --selectProjects=unit
 ```
 
-Expected: exit 1, the failures above in
-`runBackgroundTaskDebugSequence gating > never simulates on iOS in __DEV__`, every
-other test in the file passing. The new test passing, or any other test failing, is
-`STOP:`.
+Expected: exit 1, the failure above in `runBackgroundTaskDebugSequence gating >
+never simulates on iOS in __DEV__`, every other test in the file passing. The iOS
+test passing, or any test outside it failing, is `STOP:`.
 
 ## Change contracts
 
@@ -140,8 +140,7 @@ other test in the file passing. The new test passing, or any other test failing,
 import { Platform } from 'react-native';
 ```
 
-2. Replace the doc-block sentence holding `in DEBUG builds only` (inside the
-   `bg-header.txt` excerpt) with exactly:
+2. Replace the `bg-header.txt` excerpt (its five lines) with exactly:
 
 ```ts
  * task (ISSUES.md #8). Runs once per cold launch: snapshots the task state
@@ -151,8 +150,7 @@ import { Platform } from 'react-native';
  * reschedule → native resubmit) is observable without waiting for the OS.
 ```
 
-3. Replace the `simulateBackgroundTaskTrigger` doc opening (inside the
-   `simulate-doc.txt` excerpt) with exactly:
+3. Replace the `simulate-doc.txt` excerpt (its six lines) with exactly:
 
 ```ts
 /**
@@ -163,7 +161,16 @@ import { Platform } from 'react-native';
  * BGTaskScheduler. If no task request is pending, the Xcode/syslog console
 ```
 
-4. Replace the arm body (the `sequence-arm.txt` excerpt) with exactly:
+4. Replace the `arm-doc.txt` excerpt (its three lines) with exactly:
+
+```ts
+ * Snapshot at launch → simulated trigger after boot settles → post-run
+ * snapshot. The simulate step is __DEV__ and Android only; EXPO_PUBLIC_BG_DEBUG
+ * Release builds get snapshots alone.
+```
+
+5. Replace the whole `runBackgroundTaskDebugSequence` function, which opens at
+   the `sequence-arm.txt` excerpt and closes at its final `};`, with exactly:
 
 ```ts
 export const runBackgroundTaskDebugSequence = () => {
@@ -192,7 +199,8 @@ export const runBackgroundTaskDebugSequence = () => {
 The contract: the arm answers the enabled check, then one boolean that is true only
 on a dev Android context; the armed log carries that boolean; the timers arm only
 behind it. It must never read storage, never touch the register path, never guard
-inside `simulateBackgroundTaskTrigger`. It throws nothing.
+inside `simulateBackgroundTaskTrigger`. It throws nothing. After the replacement the
+function body holds exactly the lines above and the old `setTimeout` tail is gone.
 
 ## Green run
 
@@ -256,7 +264,8 @@ step's files and the plan files. A break passing where the plan says it fails is
 
 Take the version lock (`mkdir $HOME/athan-gitree/version.lock`, retry in short
 sleep cycles while it exists, `rmdir` after the merge; a STOP before that removes
-it too; the lane lead of row 100 shares it), then inside the lock:
+it too; the lane lead of row 100 shares it; if the lock still exists after 15
+minutes, `STOP:` with the lock path), then inside the lock:
 
 ```bash
 git fetch -q origin uat
@@ -299,8 +308,10 @@ average below 8 and commit again, up to 3 times.
 
 Read `git show <sha>` cold against this checklist:
 
-- The gate line, the armed log and the early return match contract 4
-  byte-for-byte; the two doc blocks match contracts 2 and 3.
+- The gate line, the armed log and the early return match contract 5
+  byte-for-byte; the three doc blocks match contracts 2, 3 and 4; the function's
+  closing lines are the replacement's own, with no orphaned `setTimeout` tail
+  left at module top level.
 - The `Platform` import sits directly under the `expo-task-manager` import in both
   files.
 - The suite holds the two platform tests verbatim, the `afterEach` restore, and no
@@ -319,7 +330,9 @@ git checkout uat && git merge --no-ff fix/91-android-only-simulate -m "<VERSION>
 git branch -d fix/91-android-only-simulate
 ```
 
-A conflict: `git merge --abort`, then `STOP:`.
+Expected: `Merge made by the 'ort' strategy.` then `Deleted branch
+fix/91-android-only-simulate (was <sha>)`. A conflict: `git merge --abort`, then
+`STOP:`.
 
 ## Done when
 

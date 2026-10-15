@@ -11,7 +11,7 @@
 | Batch budget | 2 |
 | Session budget | 2 |
 | Steps | 1 (weight 2, code) |
-| Device | none: the row bans device work; the reports and the pinned source prove the diagnosis, and the owner's own language-switch read on her phone may be offered to her at DONE through the orchestrator, never run by this ticket |
+| Device | none: the run order bans device work for this ticket; the reports and the pinned source prove the diagnosis, and the owner's own language-switch read on her phone may be offered to her at DONE through the orchestrator, never run by this ticket |
 | Owner decisions still needed | none |
 
 ## 1. Goal
@@ -58,20 +58,26 @@ the dev build without the app dying. What is true on DONE: the debug sequence on
 iOS dev context logs its armed line and its launch snapshot, arms no trigger, and
 the Android validation flow on the 3T is byte-identical to today.
 
-Owner rules that apply, from the row and `ai/AGENTS.md`:
+The rules that apply:
 
-- "notification scheduling logic is ask-first ground: scheduling SEMANTICS must not
-  change - a threading or call-discipline fix only; anything that changes when or
-  what gets scheduled is a STOP." The simulate is a debug affordance, not a
-  scheduling path; the production register path
+- `ai/AGENTS.md`, ask-first list: "Ask first: installing dependencies, deleting
+  non-empty files, MMKV schema keys, notification scheduling logic, `app.json` and
+  `eas.json`." Notification scheduling is ask-first ground: the fix is a
+  threading or call-discipline change only, and anything that changes when or what
+  gets scheduled is a STOP. The simulate is a debug affordance, not a scheduling
+  path; the production register path
   (`stores/notifications.ts:registerBackgroundTask`) is untouched and pinned by a
   read-only anchor.
-- "No device step: the reports and the pinned source prove the diagnosis; a dev-loop
-  verification where the owner switches languages on her phone may be offered to her
-  THROUGH the orchestrator at DONE, never run by you."
-- "Never edit node_modules in place" and "no new dependencies". The fix changes one
-  app file and its test; `patches/expo-background-task+58.0.10.patch` is read for
-  lineage and left alone.
+- The run order (the lead's dispatch, recording the owner's lane rulings for this
+  ticket): no device step, the reports and the pinned source prove the diagnosis,
+  and a dev-loop verification where the owner switches languages on her phone may
+  be offered to her through the orchestrator at DONE, never run by this ticket.
+- Row 91's own words for the decision space: "decides the fix repo-side (a
+  main-queue hop, patch-package precedented by row 73's picker patch) or an
+  upstream report under row 51's discipline, and lands it".
+- `ai/AGENTS.md`: "no edits to `node_modules`", "No new dependencies" is not among
+  this ticket's asks. The fix changes one app file and its test;
+  `patches/expo-background-task+58.0.10.patch` is read for lineage and left alone.
 
 ## 2. Decisions
 
@@ -85,6 +91,7 @@ Owner rules that apply, from the row and `ai/AGENTS.md`:
 | D91.4 | Production scheduling is untouched: no line under `stores/`, no module file, no patch file changes. The register path stays pinned by the `register-path.txt` anchor, read-only. The step's diff touches exactly `device/backgroundTaskDebug.ts` and `device/__tests__/backgroundTaskDebug.test.ts` among source files. | Lead, 2026-10-15, from the ask-first rule | This section |
 | D91.5 | The upstream report (Expo's debug helper aborts iOS 18 processes through a private selector) is offered to the owner at DONE through the orchestrator under row 51's discipline, and is not filed by this run: a public post is publishing, the owner is present but unreachable to workers, and the repo-side gate fixes her build with no dependence on Expo's cadence. | Lead, 2026-10-15, from the row's either-or and the stop rules | This section |
 | D91.6 | No device step, no Metro interference: the Metro dev server serving the owner's phone from this checkout is never killed or restarted; branch checkouts hot-reload her phone, which the run order allows. | Lead, 2026-10-15, from the run order | This section |
+| D91.7 | The no-device ruling and the scheduling freeze come from the run order (the lead's dispatch recording the owner's lane rulings), and the ask-first ground for notification scheduling is `ai/AGENTS.md`'s own list; row 91's cell carries the decision space, not those words. Section 1 cites each to its source. | Lead, 2026-10-15, from the grill's finding 6 | This section |
 
 ### 2.2 The executor must not decide
 
@@ -120,7 +127,7 @@ Code map (anchors under `scripts/anchors/`, each verified to count 1 at `f9af66c
 
 | File | Role |
 | --- | --- |
-| `device/backgroundTaskDebug.ts` | The changed file. `runBackgroundTaskDebugSequence` arms per JS context: snapshots always when enabled, the simulate at 8000 ms when `__DEV__`. Anchors `bg-header.txt` (the doc block sentence that says DEBUG-only), `simulate-doc.txt` (the export's doc block), `sequence-arm.txt` (the arm body this step edits). |
+| `device/backgroundTaskDebug.ts` | The changed file. `runBackgroundTaskDebugSequence` arms per JS context: snapshots always when enabled, the simulate at 8000 ms when `__DEV__`. Anchors `bg-header.txt` (the file doc block), `simulate-doc.txt` (the export's doc block), `arm-doc.txt` (the arm's own doc block, which names the simulate's gate and reads false after the change until contract 4 fixes it), `sequence-arm.txt` (the arm body this step edits). |
 | `device/__tests__/backgroundTaskDebug.test.ts` | The suite. The gating describe covers disabled, env-enabled non-dev, prod, and the full dev sequence. Anchors `test-header.txt` (the suite doc), `test-aftereach.txt` (the restore block that gains the Platform restore), `test-full-sequence.txt` (the dev-sequence test that becomes the Android case). |
 | `app/index.tsx` | Read only. The launch-effect call site, anchor `index-call.txt`: every JS context, cold launch and reload alike, arms the sequence. This is why the 09:53 reload crash and the 05:27 cold-launch crash share one caller. |
 | `stores/notifications.ts` | Read only. `registerBackgroundTask`, anchor `register-path.txt`: the production register path this ticket must not touch. |
@@ -180,7 +187,7 @@ ticket.
 - [R1.2] WHEN `runBackgroundTaskDebugSequence` runs with `__DEV__` true and `Platform.OS` `android` THE SYSTEM SHALL call `triggerTaskWorkerForTestingAsync` once after 8000 ms and log `BACKGROUND_TASK_DEBUG: post-trigger snapshot` after 13000 ms.
 - [R2.1] WHEN the sequence arms with `__DEV__` true and `Platform.OS` `ios` THE SYSTEM SHALL log `BACKGROUND_TASK_DEBUG: Sequence armed` with `canSimulate: false` and still log `BACKGROUND_TASK_DEBUG: launch snapshot`.
 - [R2.2] WHEN the sequence arms with `__DEV__` true and `Platform.OS` `android` THE SYSTEM SHALL log `BACKGROUND_TASK_DEBUG: Sequence armed` with `canSimulate: true`.
-- [R3.1] WHILE `__DEV__` is false THE SYSTEM SHALL keep today's sequence behaviour on both platforms: no simulate call, snapshots only when the env flag enables them outside prod.
+- [R3.1] WHILE `__DEV__` is false THE SYSTEM SHALL keep today's sequence behaviour: no simulate call, snapshots only when the env flag enables them outside prod.
 - [R4.1] WHEN the step commits THE SYSTEM SHALL hold source changes in exactly `device/backgroundTaskDebug.ts` and `device/__tests__/backgroundTaskDebug.test.ts`, leaving every scheduling path byte-identical.
 
 ## 6. Steps
@@ -194,10 +201,10 @@ session. No device step exists.
 
 ## 7. Device proof
 
-None. The row bans device work: the two reports and the pinned source prove the
-diagnosis and the fix's reach. The owner's own language-switch read on the dev
-build may be offered to her at DONE through the orchestrator, never run by this
-ticket.
+None. The run order bans device work for this ticket: the two reports and the
+pinned source prove the diagnosis and the fix's reach. The owner's own
+language-switch read on the dev build may be offered to her at DONE through the
+orchestrator, never run by this ticket.
 
 ## 8. Records
 
@@ -238,6 +245,7 @@ None. The executor worker never pushes. The lead pushes after the reviews pass.
 | The hook's coverage gate names `backgroundTaskDebug.ts` under 100 | A branch of the gate or the log field lost its test | Restore the missing platform side of the two tests verbatim; never an ignore comment |
 | A test outside `device/__tests__/backgroundTaskDebug.test.ts` fails | The change reached past the arm | `STOP:` with the failing test and its output quoted |
 | `git merge` into `uat` conflicts | Another lane moved the same lines | `git merge --abort`, then `STOP:` |
+| The version lock still exists after 15 minutes of retries | The lane lead of row 100 holds it or a session died holding it | `STOP:` with the lock path and the last observed holder |
 | An anchor counts other than 1 | The anchored code changed under the ticket | `NEEDS CONTEXT: NEEDS REPLAN, <anchor and count>` |
 
 Anticipated review fixes, word for word:
