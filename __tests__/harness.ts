@@ -6,11 +6,13 @@
  * How component tests are written here: __tests__/README.md.
  */
 
+import { getDefaultStore } from 'jotai';
 import { Platform } from 'react-native';
 
 import { type Breakage, london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import { ScheduleType } from '@/shared/types';
 import { setSequence } from '@/stores/schedule';
+import { countdownBarShownAtom } from '@/stores/ui';
 
 export { type Breakage, london, saveLondonDays };
 
@@ -53,4 +55,12 @@ export const onPlatform = (os: 'ios' | 'android', version?: number | string): vo
     .spyOn(Platform, 'select')
     .mockImplementation(((spec: Record<string, unknown>) =>
       os in spec ? spec[os] : 'native' in spec ? spec.native : spec.default) as typeof Platform.select);
+};
+
+/**
+ * The countdown bar's default is off; a suite that reads the bar as part of the page seeds it on,
+ * while every bar-off behaviour stays in tests that set the atom false themselves
+ */
+export const seedCountdownBarOn = (): void => {
+  getDefaultStore().set(countdownBarShownAtom, true);
 };

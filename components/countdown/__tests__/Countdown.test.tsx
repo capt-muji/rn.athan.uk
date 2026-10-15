@@ -6,7 +6,7 @@
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { seedCountdownBarOn, showLondonDay } from '@/__tests__/harness';
 import { COLORS, TEXT } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
@@ -16,10 +16,8 @@ import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 
 import Countdown from '../Countdown';
 
-// The bar's default is off; these suites read the bar as part of the page, so they seed it on
-beforeEach(async () => {
-  await act(() => getDefaultStore().set(countdownBarShownAtom, true));
-});
+// The bar's default is off; this suite reads the bar as part of the page, so it seeds it on
+beforeEach(() => seedCountdownBarOn());
 
 const MAGRIB = 4;
 const LETTER_INK = COLORS.text.primary;
