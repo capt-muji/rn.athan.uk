@@ -204,10 +204,10 @@ The existing tests and what each proves:
 - `shared/__tests__/dateLocalized.test.ts` — the date and Hijri compositions (step 7
   adds the ar comma cases).
 - `shared/__tests__/locale.test.ts` — the locale core (step 7 adds `sentenceComma`).
-- `components/sheets/screens/__tests__/Qibla.test.tsx` — the compass sheet (step 4
-  adds the ar subtitle probe).
+- `components/sheets/screens/__tests__/Qibla.test.tsx` — the compass sheet (read
+  only: step 4 leaves its content assertions untouched).
 - `components/__tests__/typographySweep.test.tsx` — the per-locale style sweep
-  (steps 4, 5, 6, 8 add probes).
+  (steps 4, 5 and 6 add probes).
 - `components/day/__tests__/DayLines.test.tsx` — the schedule header lines (step 8
   adds the ar gap probe).
 
