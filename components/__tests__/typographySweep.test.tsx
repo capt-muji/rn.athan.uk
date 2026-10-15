@@ -277,7 +277,7 @@ describe('the help question', () => {
 });
 
 describe('the row time face', () => {
-  it('is the Latin regular face under ar, so a row time reads like the English row', async () => {
+  it('names the locale regular face for the row time under ar, Rubik beside the English row Roboto', async () => {
     expect(await rowTimeFontFamilyUnder('ar')).toBe('Rubik-Regular');
   });
 });
