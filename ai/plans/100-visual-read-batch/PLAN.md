@@ -268,7 +268,7 @@ single number without reopening the others.
 
 Checklist (all weight 2, code):
 
-- [ ] Step 1 — the ago badge: plain letters, LTR isolates (`steps/01-ago-plain-letters.md`)
+- [x] Step 1 — the ago badge: plain letters, LTR isolates (`steps/01-ago-plain-letters.md`)
 - [ ] Step 2 — countdown capitals at 60 percent (`steps/02-countdown-capitals.md`)
 - [ ] Step 3 — the circled i and the plain ar note copy (`steps/03-note-glyph-copy.md`)
 - [ ] Step 4 — the qibla header's ar gap (`steps/04-qibla-header-gap.md`)
