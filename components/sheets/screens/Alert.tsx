@@ -19,7 +19,7 @@ import { typographyFor } from '@/shared/typography';
 import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
-import { SegmentedControl, type SegmentOption, Sheet } from '../parts';
+import { SegmentedControl, type SegmentOption, Sheet, VolumeNote } from '../parts';
 import { freeReminderInterval } from '../parts/reminderStep';
 import {
   initialReminderInterval,
@@ -108,6 +108,7 @@ export default function BottomSheetAlert() {
           ensurePermissions={ensurePermissions}
         />
       )}
+      <VolumeNote />
     </Sheet>
   );
 }
