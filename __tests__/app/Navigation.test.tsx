@@ -6,6 +6,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
 import { onPlatform, showLondonDay } from '@/__tests__/harness';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
@@ -15,6 +16,12 @@ import Navigation from '../../app/Navigation';
 
 // Swipe timings are recorded only in measurement builds, so the marks are observed instead
 jest.mock('@/shared/perf');
+
+jest.mock('react-native-pager-view', () => {
+  const { View } = require('react-native');
+  const MockPager = (props: { children?: React.ReactNode }) => <View {...props} testID='pager' />;
+  return { __esModule: true, default: MockPager };
+});
 
 const MAGRIB = 4;
 
@@ -84,6 +91,22 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 0 } });
 
     expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+  });
+
+  it('passes layoutDirection rtl to the pager under an RTL locale', async () => {
+    setActiveLocale('ar');
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    expect(screen.getByTestId('pager')).toHaveProp('layoutDirection', 'rtl');
+  });
+
+  it('passes layoutDirection ltr to the pager under an LTR locale', async () => {
+    setActiveLocale('en');
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    expect(screen.getByTestId('pager')).toHaveProp('layoutDirection', 'ltr');
   });
 
   it('shows the Standard list on Android', async () => {
