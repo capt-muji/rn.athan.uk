@@ -37,6 +37,7 @@ check() {
 check sequence-arm.txt device/backgroundTaskDebug.ts
 check bg-header.txt device/backgroundTaskDebug.ts
 check simulate-doc.txt device/backgroundTaskDebug.ts
+check arm-doc.txt device/backgroundTaskDebug.ts
 check test-header.txt device/__tests__/backgroundTaskDebug.test.ts
 check test-aftereach.txt device/__tests__/backgroundTaskDebug.test.ts
 check test-full-sequence.txt device/__tests__/backgroundTaskDebug.test.ts
