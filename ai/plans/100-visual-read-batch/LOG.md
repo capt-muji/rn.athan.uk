@@ -118,6 +118,42 @@ Log: `$TMPDIR/red2.log`.
 
 session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
 
+### Step 2 — DONE (merged 6b36e217 on lane/100)
+
+Change: `UNIT_LETTERS = ['H', 'M', 'S']` and `unitLetter.fontSize =
+Math.round(ty.countdownSize * 0.6)` (D93); nothing else — the ink, the gap span
+at 8, the baseline ride and the `direction: 'ltr'` pin stand byte-identical; no
+locale branch.
+
+Green: 16/16 in the countdown suite; `npx tsc --noEmit` 0; `npx biome check .
+--error-on-warnings` 0. Break: `bash scripts/breaks/break-02.sh` ended
+`ALL AS EXPECTED: 1`, first failing line `Unable to find an element with
+text: 2 H`.
+
+Version 2.0.757 (lock, fetched, app.json first). Commit 7bd498e4, hook gates:
+`Tests: 2 skipped, 5650 passed, 5652 total`, four 100% coverage lines. Queue
+cell `IN PROGRESS, step 2`. Review: the source diff is exactly the two ruled
+lines; no lifecycle, thread, residue or rule findings. Merge `--no-ff`
+6b36e217; lock released.
+
+session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
+
+### Step 3 — RED (branch code/100-note-glyph off lane/100 at 6b36e217)
+
+`npx jest shared/__tests__/i18n.test.ts --watchman=false`: 2 failed, 11
+passed, 13 total. Failing:
+
+- `the ar volume note copy › carries no guillemet and no forward slash,
+  keeping the row 64 shape` — first failing assertion `not.toContain('«')`
+  against the guillemet copy (i18n.test.ts new describe)
+- `the information glyph asset › draws a circle around the i, in currentColor,
+  inside the square viewBox` — first failing assertion the
+  `/<circle[^>]*stroke="currentColor"/` match against today's bare-i asset
+
+Log: `$TMPDIR/red3.log`.
+
+session: ses_ec05a5aa7ffe4z2S8I4BJxl0Dx
+
 ### Lead ruling on the step-0 stop (2026-10-15)
 
 The lead's two planning commits claimed 2.0.753 and 2.0.754 in their messages but
