@@ -63,15 +63,6 @@ describe('formatDateLocalized', () => {
     expect(formatDateLocalized('2026-10-11')).toBe('الأحد\u060C 11 أكتوبر 2026');
     expect(formatDateLocalized('2026-10-11')).not.toMatch(/[\u0660-\u0669]/);
   });
-
-  it('joins the weekday with the Arabic comma under ar', () => {
-    setActiveLocale('ar');
-    try {
-      expect(formatDateLocalized('2026-10-15')).toBe('الخميس\u060C 15 أكتوبر 2026');
-    } finally {
-      setActiveLocale('en');
-    }
-  });
 });
 
 describe('formatHijriDateLocalized', () => {
@@ -92,15 +83,6 @@ describe('formatHijriDateLocalized', () => {
     setActiveLocale('ar');
     // 2026-10-11 is Rabiʻ II 30, 1448; the ar catalog names that month ربيع الآخر
     expect(formatHijriDateLocalized('2026-10-11')).toBe('ربيع الآخر 30\u060C 1448');
-  });
-
-  it('joins day and year with the Arabic comma under ar', () => {
-    setActiveLocale('ar');
-    try {
-      expect(formatHijriDateLocalized('2026-10-15')).toBe('جمادى الأولى 4\u060C 1448');
-    } finally {
-      setActiveLocale('en');
-    }
   });
 
   it('falls back to the localized Gregorian label when the Hijri conversion throws', () => {
