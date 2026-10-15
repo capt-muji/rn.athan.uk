@@ -2,13 +2,14 @@
  * Unit tests for device/backgroundTaskDebug.ts (ISSUES.md #8 instrumentation)
  *
  * The debug module must never affect production behavior: the snapshot
- * sequence no-ops unless enabled, and — critically — the simulate call is
- * __DEV__-only because the native module hard-crashes (fatalError) on
- * Release builds.
+ * sequence no-ops unless enabled, and the simulate call arms on Android
+ * only inside __DEV__ (the native module fatalErrors on Release builds,
+ * and its private selector's XPC reply aborts iOS processes).
  */
 import * as BackgroundTask from 'expo-background-task';
 import * as Notifications from 'expo-notifications';
 import * as TaskManager from 'expo-task-manager';
+import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 
@@ -125,6 +126,7 @@ describe('runBackgroundTaskDebugSequence gating', () => {
     delete process.env.EXPO_PUBLIC_BG_DEBUG;
     delete process.env.EXPO_PUBLIC_ENV;
     setDev(true);
+    Platform.OS = 'ios';
   });
 
   it('no-ops entirely when disabled (no __DEV__, no env flag)', () => {
@@ -162,8 +164,9 @@ describe('runBackgroundTaskDebugSequence gating', () => {
     expect(mockTrigger).not.toHaveBeenCalled();
   });
 
-  it('arms the full sequence in __DEV__: trigger at 8s, post-run snapshot at +5s', async () => {
+  it('arms the full sequence on Android in __DEV__: trigger at 8s, post-run snapshot at +5s', async () => {
     setDev(true);
+    Platform.OS = 'android';
     mockTrigger.mockResolvedValue(undefined);
 
     runBackgroundTaskDebugSequence();
@@ -175,5 +178,26 @@ describe('runBackgroundTaskDebugSequence gating', () => {
     const messages = (logger.info as jest.Mock).mock.calls.map((call) => call[0]);
     expect(messages).toContain('BACKGROUND_TASK_DEBUG: launch snapshot');
     expect(messages).toContain('BACKGROUND_TASK_DEBUG: post-trigger snapshot');
+    expect(logger.info).toHaveBeenCalledWith(
+      'BACKGROUND_TASK_DEBUG: Sequence armed',
+      expect.objectContaining({ canSimulate: true })
+    );
+  });
+
+  it('never simulates on iOS in __DEV__: the private selector aborts the process', async () => {
+    setDev(true);
+    Platform.OS = 'ios';
+
+    runBackgroundTaskDebugSequence();
+    await jest.advanceTimersByTimeAsync(60_000);
+
+    expect(mockTrigger).not.toHaveBeenCalled();
+    const messages = (logger.info as jest.Mock).mock.calls.map((call) => call[0]);
+    expect(messages).toContain('BACKGROUND_TASK_DEBUG: launch snapshot');
+    expect(messages).not.toContain('BACKGROUND_TASK_DEBUG: post-trigger snapshot');
+    expect(logger.info).toHaveBeenCalledWith(
+      'BACKGROUND_TASK_DEBUG: Sequence armed',
+      expect.objectContaining({ canSimulate: false })
+    );
   });
 });

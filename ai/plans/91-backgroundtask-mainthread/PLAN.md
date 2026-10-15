@@ -192,7 +192,7 @@ ticket.
 
 ## 6. Steps
 
-- [ ] Step 1 (weight 2, `steps/1-android-only-simulate.md`): the platform gate at
+- [x] Step 1 (weight 2, `steps/1-android-only-simulate.md`): the platform gate at
   the arm point, the suite's platform tests, one commit. Requirements R1.1, R1.2,
   R2.1, R2.2, R3.1, R4.1.
 
