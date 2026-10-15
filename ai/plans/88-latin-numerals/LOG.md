@@ -32,3 +32,29 @@ was drafted:
 
 Anchors a01 to a13 extracted at `718eb060`, each counted 1. The grill and
 the gate notes land below when they run.
+
+## Planning grill (2026-10-15)
+
+The griller returned five musts, six shoulds and nices. Every must was
+confirmed against the repository before applying:
+
+- The jest projects are `unit` and `components` (jest.config.js lines 45,
+  62); every `--selectProjects=shared` in the steps matched no project and
+  would have run zero tests. All commands now say `unit`.
+- The catalog lock hashes the ENGLISH catalog each translation came from
+  (catalogLock.test.ts line 11), not the translated bytes; the en edit
+  stales all five hashes. Step 2 now re-takes the lock with
+  `yarn i18n:lock` (D49) and adds `catalog-lock.json` to its files; the
+  decision is recorded in section 2.1.
+- notifications.test.ts pins the old title at lines 311 and 321 beyond the
+  a12 block; both flips are now named.
+- `git checkout -- <file>` restores from the index, which is empty at break
+  time; both steps now stage their files before the break runs.
+- Deleting the a01 and a13 blocks leaves doubled blank lines Biome refuses;
+  both contracts now take one blank line with the block.
+
+Applied shoulds: twelve call expressions (nine was the site count), the
+widget sweep covers both date preferences, the ar Help sweep is a new red
+test with its own break, the swapped suite counts fixed, the version-lock
+retry bounded at 30 attempts, the fetch-origin and version wording pinned.
+The gate re-runs PLAN OK after the edits.

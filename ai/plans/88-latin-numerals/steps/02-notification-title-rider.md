@@ -14,13 +14,14 @@ scheduling stay untouched.
 
 Branch: `git checkout -b ticket/88-step2 lane/88`.
 
-Files: `shared/i18n/en.ts`, `shared/__tests__/i18nBridge.test.ts`,
+Files: `shared/i18n/en.ts`, `shared/i18n/catalog-lock.json`,
+`shared/__tests__/i18nBridge.test.ts`,
 `shared/__tests__/notifications.test.ts`.
 
 ## Red tests
 
 Write these first. Run with
-`npx jest shared/__tests__/i18nBridge.test.ts shared/__tests__/notifications.test.ts --watchman=false --selectProjects=shared`.
+`npx jest shared/__tests__/i18nBridge.test.ts shared/__tests__/notifications.test.ts --watchman=false --selectProjects=unit`.
 Both must fail on the flipped lines; a flipped test that passes is `STOP:`.
 
 1. `shared/__tests__/i18nBridge.test.ts` (a11):
@@ -33,21 +34,33 @@ Both must fail on the flipped lines; a flipped test that passes is `STOP:`.
    `'Last Third in 30m'`.
 2. `shared/__tests__/notifications.test.ts` (a12): in
    `genReminderNotificationContent`, `'Fajr in 15m'` becomes
-   `'Fajr in 15'`; in the intervals test `'Dhuhr in 5m'` becomes
-   `'Dhuhr in 5'` and `'Asr in 30m'` becomes `'Asr in 30'`.
+   `'Fajr in 15'` (the a12 block, and the second pin at line 311 inside
+   "builds the titles from the catalog templates"); in the intervals test
+   `'Dhuhr in 5m'` becomes `'Dhuhr in 5'` and `'Asr in 30m'` becomes
+   `'Asr in 30'`; the line after the ar block (line 321,
+   `.toBe('Asr in 15m')`) becomes `.toBe('Asr in 15')`. The ar pin
+   `'العصر بعد 15'` (line 315) stays byte-identical.
    Red today: the received values carry the `m`.
 
 ## Change contract
 
-`shared/i18n/en.ts` (a07): `'notification.reminder': '{name} in {n}m',`
-becomes `'notification.reminder': '{name} in {n}',`. Nothing else in any
-catalog changes. The tokens stay `{name}` and `{n}`, so `ParamsOf` and the
-token-parity test hold without edits.
+1. `shared/i18n/en.ts` (a07): `'notification.reminder': '{name} in {n}m',`
+   becomes `'notification.reminder': '{name} in {n}',`. Nothing else in any
+   catalog changes. The tokens stay `{name}` and `{n}`, so `ParamsOf` and
+   the token-parity test hold without edits.
+2. Re-take the catalog lock: `yarn i18n:lock` (expect no output, exit 0).
+   The lock hashes the English catalog each translation came from
+   (`shared/__tests__/catalogLock.test.ts` line 11), so the en edit stales
+   all five stored hashes; the re-take writes the new English hash into
+   `shared/i18n/catalog-lock.json` for `ar`, `ms`, `so`, `hi` and `th`
+   (expect `git diff shared/i18n/catalog-lock.json` to show five identical
+   hash replacements and nothing else). No translated catalog file appears
+   in the diff: that is the R2.2 evidence.
 
 ## Green run
 
 1. The named jest run exits 0.
-2. `npx jest shared/__tests__/catalogLock.test.ts shared/__tests__/prayerIdContract.test.ts --watchman=false --selectProjects=shared` exits 0 (the five translated catalogs and the channel bytes prove unchanged: R2.2, R2.3).
+2. `npx jest shared/__tests__/catalogLock.test.ts shared/__tests__/prayerIdContract.test.ts --watchman=false --selectProjects=unit` exits 0 (the lock reads the re-taken hash; the channel bytes prove unchanged: R2.3).
 3. `npx tsc --noEmit` exits 0.
 4. `npx biome check . --error-on-warnings` exits 0.
 
@@ -70,7 +83,7 @@ if text.count(old) != 1:
 open(path, 'w').write(text.replace(old, new))
 EOF
 [ $? -ne 0 ] && exit 1
-if npx jest shared/__tests__/i18nBridge.test.ts shared/__tests__/notifications.test.ts --watchman=false --selectProjects=shared > $TMPDIR/break-88-2.log 2>&1; then
+if npx jest shared/__tests__/i18nBridge.test.ts shared/__tests__/notifications.test.ts --watchman=false --selectProjects=unit > $TMPDIR/break-88-2.log 2>&1; then
   echo "BREAK NOT CAUGHT: the title tests passed with the m restored"
   git checkout -- shared/i18n/en.ts
   exit 1
@@ -86,19 +99,22 @@ the plan files. The last line must be `ALL ASPECTED: 1`.
 ## Version and commit
 
 Under the version lock, the next patch after the lane's `package.json`
-(expected 2.0.743; take the printed value), `app.json` first.
+(it prints `2.0.742` after step 1, so the version is `2.0.743`), `app.json`
+first, the version string replaced in place.
 
 Commit message: `<VERSION> - feat(notifications): the en reminder title
-drops its unit letter, Fajr in 5 (row 88 rider)`. Add the three files by
-name plus the plan files. The hook's `Tests:` line and the four `100%`
-coverage lines must be in the log.
+drops its unit letter, Fajr in 5; the catalog lock re-taken (row 88)`. Add
+the four files by name plus the plan files. The hook's `Tests:` line and the
+four `100%` coverage lines must be in the log.
 
 ## Review
 
-Read `git show <sha>` cold: exactly one catalog byte changed; the channel
-line and the five translated values byte-identical; no scheduling file, no
-identifier, no channel id in the diff. Shipped classes: the title string is
-data baked at arm time; no lifecycle, thread or rule surface moves.
+Read `git show <sha>` cold: exactly one catalog byte changed, the lock file
+carries five identical hash replacements, the channel line and the five
+translated values byte-identical, no translated catalog file in the diff;
+no scheduling file, no identifier, no channel id. Shipped classes: the
+title string is data baked at arm time; no lifecycle, thread or rule
+surface moves.
 
 ## Merge
 
