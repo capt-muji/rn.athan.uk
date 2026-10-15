@@ -1,0 +1,14 @@
+  const parts = splitSingleColon(prayerAgo);
+
+  return (
+    <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>
+      {parts === null ? (
+        prayerAgo
+      ) : (
+        <>
+          {parts[0]}
+          <Text style={styles.colon}>{'\u2009\u2009:\u2009\u2009'}</Text>
+          {parts[1]}
+        </>
+      )}
+    </Animated.Text>

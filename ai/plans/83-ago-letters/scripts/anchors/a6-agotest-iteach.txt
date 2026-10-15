@@ -1,0 +1,13 @@
+describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02', () => {
+  // [London clock, the badge's sentence]
+  it.each([
+    ['13:05', 'Dhuhr 0\u2009\u2009:\u2009\u200903 ago'],
+    ['14:00', 'Dhuhr 0\u2009\u2009:\u2009\u200958 ago'],
+  ])('at %s reads "%s"', async (time, sentence) => {
+    showLondonDay('2026-09-11', time);
+
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+    expect(screen.getByText(sentence, { normalizer: (s) => s })).toBeVisible();
+    expect(screen.getByText(GAP_COLON, { normalizer: (s) => s })).toBeOnTheScreen();
+  });
