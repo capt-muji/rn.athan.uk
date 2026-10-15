@@ -21,7 +21,7 @@ import {
   soundListReadyAtom,
 } from '@/stores/ui';
 
-import { Sheet, SoundItem } from '../parts';
+import { Sheet, SoundItem, VolumeNote } from '../parts';
 import { displayedSoundSelection, hasSoundDraft, isPreviewFinished, previewRemainingSeconds } from './soundSheet';
 
 const ITEM_GAP = SPACING.xs;
@@ -205,6 +205,7 @@ export default function BottomSheetSound() {
           </View>
         </View>
       )}
+      <VolumeNote />
     </Sheet>
   );
 }

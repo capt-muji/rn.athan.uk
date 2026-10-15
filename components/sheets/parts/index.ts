@@ -7,3 +7,4 @@ export { default as Sheet } from './Sheet';
 export { default as SoundItem } from './SoundItem';
 export { default as Stepper } from './Stepper';
 export { default as Toggle } from './Toggle';
+export { default as VolumeNote } from './VolumeNote';
