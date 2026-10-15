@@ -4,7 +4,7 @@
  * Dev/experiment-only diagnostics for the notification-refresh background
  * task (ISSUES.md #8). Runs once per cold launch: snapshots the task state
  * (registration, persisted options, system status, pending notifications),
- * then — in DEBUG builds only — simulates a system trigger so the full
+ * then, in DEBUG Android builds only, simulates a system trigger so the full
  * execution chain (BGTaskScheduler handler → TaskService → JS task →
  * reschedule → native resubmit) is observable without waiting for the OS.
  *
@@ -15,6 +15,7 @@
 import * as BackgroundTask from 'expo-background-task';
 import * as Notifications from 'expo-notifications';
 import * as TaskManager from 'expo-task-manager';
+import { Platform } from 'react-native';
 
 import { BACKGROUND_TASK_NAME } from '@/shared/constants';
 import logger from '@/shared/logger';
@@ -76,7 +77,7 @@ export const logBackgroundTaskDiagnostics = async (label: string) => {
 };
 
 /**
- * Simulates the system firing the background task (DEBUG builds only)
+ * Simulates the system firing the background task (DEBUG Android builds only)
  *
  * Delegates to BackgroundTask.triggerTaskWorkerForTestingAsync, which calls
  * the private _simulateLaunchForTaskWithIdentifier: selector on
@@ -98,19 +99,22 @@ export const simulateBackgroundTaskTrigger = async () => {
  * Arms the per-launch debug sequence (self-gating)
  *
  * Snapshot at launch → simulated trigger after boot settles → post-run
- * snapshot. The simulate step is __DEV__-only; EXPO_PUBLIC_BG_DEBUG Release
- * builds get snapshots alone.
+ * snapshot. The simulate step is __DEV__ and Android only; EXPO_PUBLIC_BG_DEBUG
+ * Release builds get snapshots alone.
  */
 export const runBackgroundTaskDebugSequence = () => {
   if (!isDebugEnabled()) return;
 
+  // The simulate's pending-request reply throws on a background queue and aborts iOS processes.
+  const canSimulate = __DEV__ && Platform.OS === 'android';
+
   logger.info('BACKGROUND_TASK_DEBUG: Sequence armed', {
     triggerDelayMs: TRIGGER_DELAY_MS,
-    canSimulate: __DEV__,
+    canSimulate,
   });
   void logBackgroundTaskDiagnostics('launch snapshot');
 
-  if (!__DEV__) return;
+  if (!canSimulate) return;
 
   setTimeout(() => {
     void simulateBackgroundTaskTrigger();
