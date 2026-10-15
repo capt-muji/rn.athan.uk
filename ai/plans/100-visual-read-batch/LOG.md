@@ -324,6 +324,63 @@ as expected (today `ty.lineHeight(20)` resolves to 20 in both locales). Log:
 
 session: ses_ec0452379ffexyyf0VsrPCreVt
 
+### Step 6 — DONE (merged 5dabece0 on lane/100)
+
+Change: `styles.question.lineHeight` becomes
+`ty.scriptLineHeight?.(15) ?? ty.lineHeight(20)` with the one-line comment
+naming the clipping it ends (owner read, 2026-10-15), exactly the
+`Explanation.tsx:152` shape; nothing else in Help.tsx changed. The two test
+cases are the plan's verbatim.
+
+Green: `npx jest components/__tests__/typographySweep.test.tsx
+components/modals/__tests__/Help.test.tsx --watchman=false` 71/71; `npx tsc
+--noEmit` 0; `npx biome check . --error-on-warnings` 0. Break:
+`bash scripts/breaks/break-06.sh` ended `ALL AS EXPECTED: 1`, first failing
+line `Expected: 23, Received: 20`; script deleted, tree clean.
+
+Version 2.0.762 (lock, fetched, app.json first, both version files added by
+name). Commit a17e85a8, hook gates: `Tests: 2 skipped, 5660 passed, 5662
+total`, four 100% coverage lines (Statements 5327/5327, Branches 2298/2298,
+Functions 1106/1106, Lines 4771/4771). Queue cell `IN PROGRESS, step 6`.
+Review (cold read of a17e85a8): one style line plus the comment plus the
+tests, the en fallback byte-identical `ty.lineHeight(20)`, the answers' line
+heights untouched (D96 resolves 23 under ar via `Math.round(15 * 1.5)`, 23
+points at the 15 point size); no lifecycle, thread, residue or rule findings.
+Merge `--no-ff` 5dabece0; branch deleted; lock released. Steps 4 to 6 of the
+batch complete; the step-6 ledger writes ride the step-7 commit.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
+### Step 7 — STOPPED (branch code/100-arabic-comma deleted; nothing landed)
+
+Anchor checks passed (11-date-comma, 12-hijri-comma and 13-locale-direction
+each count 1). Red run: 10 failed, 26 passed, 36 total — the four date/Hijri
+value cases fail exactly as the plan states (Latin received vs U+060C
+expected, the two retargeted existing cases first), the six sentenceComma
+cases fail on the missing export (the helper lands with the change, the
+step-4/5 mechanism). The change contracts were applied; both suites green
+36/36; biome clean after the formatter's parenthesized rewrap of the helper
+(the step-4 precedent, no token changed).
+
+The stop: `npx tsc --noEmit` exits 1 on the plan's verbatim red-test block:
+
+    shared/__tests__/locale.test.ts(150,21): error TS2345: Argument of type
+    'string' is not assignable to parameter of type
+    '"ar" | "en" | "hi" | "ms" | "so" | "th"'.
+
+The block's `it.each(['en', 'ms', 'so', 'hi', 'th'])` infers `string[]`, and
+`setActiveLocale(locale)` takes `LocaleId`; the file's own `it.each` pattern
+(resolveInitialLocale, lines 26 to 34) carries `] as const)` for exactly this
+typing, and the plan's fence omits it. An error in plan-given verbatim code is
+a stop, not the executor's to fix. Saved:
+`$HOME/athan-gitree/sessions/100-exec-steps4-6/step7-unfinished.patch`
+(biome-clean; only the `as const` ruling is missing).
+
+Question for the lead: does the block take `as const` on the it.each array
+(matching the file's own pattern), or another repair?
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
 ### Lead ruling on the step-5 probe stop (2026-10-15)
 
 The plan's soundListMarginUnder probe called `rntl.screen.root?.findByProps`, an
@@ -334,3 +391,10 @@ runtime). Plan repair: the probe reads the list through
 uses, and flattens `list.props.style` (getByTestId throws when absent, so the
 value is non-null). The step file now carries the repaired block verbatim; the
 executor writes it as the plan gives it. No other step uses findByProps.
+
+### Lead ruling on the step-7 typing stop (2026-10-15)
+
+The plan's sentenceComma `it.each` block listed the five locales as a bare array,
+which infers `string[]` against `setActiveLocale`'s `LocaleId` parameter and fails
+tsc. Plan repair: the array carries `as const`, the file's own `it.each` pattern.
+The step file now carries it verbatim.

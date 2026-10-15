@@ -43,7 +43,7 @@ describe('sentenceComma', () => {
     }
   });
 
-  it.each(['en', 'ms', 'so', 'hi', 'th'])('keeps the Latin comma under %s', (locale) => {
+  it.each(['en', 'ms', 'so', 'hi', 'th'] as const)('keeps the Latin comma under %s', (locale) => {
     setActiveLocale(locale);
     try {
       expect(sentenceComma()).toBe(',');
