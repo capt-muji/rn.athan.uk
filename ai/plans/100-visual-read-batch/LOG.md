@@ -201,3 +201,74 @@ After the export lands alone, only the ar value assertion stays failing (today
 `marginTop` is `SPACING.xs`, 4, in both locales). Log: `$TMPDIR/red4.log`.
 
 session: ses_ec0452379ffexyyf0VsrPCreVt
+
+### Step 4 — DONE (merged 05e25bd0 on lane/100)
+
+Change: `QiblaSubtitle` exported (body untouched), `compactArabic` beside the
+module-scope `ty` with the one-line comment naming the node-subtitle bypass,
+`styles.subtitle.marginTop` becomes `compactArabic ? -10 : SPACING.xs`. The
+probe's flatten was line-wrapped by biome's formatter (no token changed, the
+biome gate is part of the step's green run); otherwise the test block is the
+plan's verbatim.
+
+Green: `npx jest components/__tests__/typographySweep.test.tsx
+components/sheets/screens/__tests__/Qibla.test.tsx --watchman=false` 211/211;
+`npx tsc --noEmit` 0; `npx biome check . --error-on-warnings` 0. Break:
+`bash scripts/breaks/break-04.sh` ended `ALL AS EXPECTED: 1`, first failing
+line `Expected: -10, Received: 4`; script deleted, tree clean.
+
+Version 2.0.759 (lock, fetched, app.json first, both version files added by
+name). Commit 0d01dd4a, hook gates: `Tests: 2 skipped, 5654 passed, 5656
+total`, four 100% coverage lines (Statements 5325/5325, Branches 2292/2292,
+Functions 1106/1106, Lines 4769/4769). Queue cell `IN PROGRESS, step 4`.
+Review (cold read of 0d01dd4a): en value byte-identical `SPACING.xs`, only the
+export and the margin changed, the comment names the bypass; no lifecycle,
+thread, residue or rule findings. Merge `--no-ff` 05e25bd0; branch deleted;
+lock released.
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
+### Step 5 — STOPPED (branch code/100-sound-spacing deleted; nothing landed)
+
+Anchor checks passed (08-sound-list and 09-note-foot each count 1). Red run
+`npx jest components/__tests__/typographySweep.test.tsx
+components/sheets/parts/__tests__/VolumeNote.test.tsx
+components/sheets/screens/__tests__/Sound.test.tsx --watchman=false`: 3 failed,
+67 passed, 70 total, but the list-probe failures are not the plan's predicted
+value failures:
+
+- `the sound sheet spacing under ar › tightens the card hint onto the list at
+  6 points` and `keeps the hint gap at 12 under en` both fail with
+  `TypeError: rntl.screen.root?.findByProps is not a function` — RNTL 14.0.1
+  (pinned in package.json) renders through `test-renderer`, whose
+  `TestInstance` exposes only `queryAll(predicate)`; `findByProps` does not
+  exist anywhere in the installed package (types and runtime both checked).
+- `opens the note gap to 32 points under ar` fails as the plan predicts
+  (`Expected: 32, Received: 24`); `keeps the note gap at 24 under en` passes.
+
+The plan's step says "The ar cases fail against the planned sha (both margins
+hold their en values in every locale today)" — value failures. The TypeError
+is independent of the change: adding `testID={'sound-list'}` cannot make a
+missing query method exist, so the step's green gate cannot pass with the
+probe verbatim, and a test block the plan gave verbatim is never the
+executor's to edit. No change contracts were applied; Sound.tsx and
+VolumeNote.tsx are untouched. Saved:
+`$HOME/athan-gitree/sessions/100-exec-steps4-6/step5-unfinished.patch`.
+
+Question for the lead: may the probe's query be rewritten to the installed
+API — e.g. `rntl.screen.getByTestId('sound-list')`, the same query every
+other probe in the file uses — or does step 5 (and the same-shaped check in
+any later step) get replanned?
+
+session: ses_ec0452379ffexyyf0VsrPCreVt
+
+### Lead ruling on the step-5 probe stop (2026-10-15)
+
+The plan's soundListMarginUnder probe called `rntl.screen.root?.findByProps`, an
+API the pinned @testing-library/react-native 14.0.1 TestInstance does not carry
+(only queryAll exists there; the executor verified the installed types and the
+runtime). Plan repair: the probe reads the list through
+`rntl.screen.getByTestId('sound-list')`, the query every other probe in the file
+uses, and flattens `list.props.style` (getByTestId throws when absent, so the
+value is non-null). The step file now carries the repaired block verbatim; the
+executor writes it as the plan gives it. No other step uses findByProps.
