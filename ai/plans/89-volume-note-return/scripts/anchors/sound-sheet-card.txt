@@ -1,0 +1,10 @@
+                onSelect={setTempSoundSelection}
+                onPlayPress={handlePlayPress}
+                onLayout={index === 0 ? handleItemLayout : undefined}
+              />
+            ))}
+          </View>
+        </View>
+      )}
+    </Sheet>
+  );

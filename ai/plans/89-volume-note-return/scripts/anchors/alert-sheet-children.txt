@@ -1,0 +1,10 @@
+      {sheetState && !sheetState.isUnavailable && (
+        <AlertSheetBody
+          key={`${sheetState.type}:${sheetState.index}`}
+          ref={bodyRef}
+          sheetState={sheetState}
+          ensurePermissions={ensurePermissions}
+        />
+      )}
+    </Sheet>
+  );
