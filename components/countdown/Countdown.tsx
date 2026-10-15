@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   },
   unitLetter: {
     color: UNIT_LETTER_COLOR,
-    fontSize: Math.round(ty.countdownSize * 0.8),
+    fontSize: ty.countdownSize,
     textShadowColor: 'rgba(0, 0, 0, 0.15)',
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
