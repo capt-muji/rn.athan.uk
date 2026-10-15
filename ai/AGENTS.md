@@ -12,7 +12,9 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
    skills (`athan-planner`, `athan-lead`). The delivery workers (`athan-executor`,
    `athan-reviewer`, `athan-plan-griller`) are agent files under `.opencode/agents/`,
    dispatched by the lead, never loaded into the main session. Load the matching skill
-   (`expo-upgrade`, `eas-app-stores`, `expo-router`) instead of working from memory.
+   (`expo-upgrade`, `eas-app-stores`, `expo-router`, and for React Native code work
+   `react-native-best-practices` with the performance rules in `react-native-skills`) instead
+   of working from memory.
 
 ## Tool routing
 
@@ -28,8 +30,8 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
 | Alarm audit on a phone | `yarn check:device <serial>` |
 | Frame audit, perf baseline | `e2e/scripts/frame-audit.sh`, `baseline-compare.sh` |
 
-`opencode.json` enables codegraph, agent-device and xcodebuildmcp. mobile-mcp, the maestro server
-and the expo MCP sit disabled. The CLI rows above cover their work. Flip `enabled` to turn one on.
+`opencode.json` enables codegraph, agent-device, xcodebuildmcp, mobile-mcp and the maestro
+server. The expo MCP sits disabled: nothing ships through EAS. Flip `enabled` to change one.
 
 ## Workflow
 
