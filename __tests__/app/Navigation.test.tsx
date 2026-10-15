@@ -17,6 +17,10 @@ import Navigation from '../../app/Navigation';
 // Swipe timings are recorded only in measurement builds, so the marks are observed instead
 jest.mock('@/shared/perf');
 
+// The stand-in forwards props to a testID'd View because the pinned testing library has no
+// type query and the real host overwrites the prop with its own deduction: a library upgrade
+// that renames layoutDirection breaks the app while this mock keeps passing, so the mock
+// covers only what Navigation itself passes
 jest.mock('react-native-pager-view', () => {
   const { View } = require('react-native');
   const MockPager = (props: { children?: React.ReactNode }) => <View {...props} testID='pager' />;
@@ -35,6 +39,11 @@ const FIRST_FRAME_MS = 50;
 const standardPage = () => screen.getByText('London, UK');
 
 describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
+  // The locale cases mutate module state; every later assertion reads en
+  afterEach(() => {
+    setActiveLocale('en');
+  });
+
   it('shows the Standard and Extras lists once the first frame has passed', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<Navigation />);
