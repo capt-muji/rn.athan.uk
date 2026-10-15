@@ -139,9 +139,9 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     const languagePresent = jest.spyOn(renderedSheet(languageSheetModalAtom), 'present');
 
     const languageRow = screen.getByRole('button', { name: 'Language' });
-    // D52: the row is the Display card's own first row, straight after the card's title
-    const displayCard = screen.getByText('Display').parent;
-    expect(displayCard?.children.indexOf(languageRow)).toBe(1);
+    // Her 2026-10-15 move: the row tops the Other card, straight after that card's title
+    const otherCard = screen.getByText('Other').parent;
+    expect(otherCard?.children.indexOf(languageRow)).toBe(1);
     // The sheet's header globe renders in the same tree, so the row's own globe is found inside it
     expect(within(languageRow).getByTestId('svg:globe', { includeHiddenElements: true })).toBeOnTheScreen();
     expect(within(languageRow).getByText('›')).toBeOnTheScreen();
@@ -239,7 +239,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
 
     await render(<SettingsSheet />);
 
-    expect(screen.getByTestId('svg:info', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(screen.getByTestId('svg:info-bare', { includeHiddenElements: true })).toBeOnTheScreen();
     expect(screen.getByTestId('svg:question', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
@@ -323,7 +323,7 @@ describe('the icons beside the Settings rows, Friday 11 September 2026 at 14:00'
 
     await render(<SettingsSheet />);
 
-    for (const name of ['svg:music-note', 'svg:info']) {
+    for (const name of ['svg:music-note', 'svg:info-bare']) {
       expect(screen.getByTestId(name, { includeHiddenElements: true })).toBeOnTheScreen();
     }
     expect(screen.queryByText('\u266a')).not.toBeOnTheScreen();

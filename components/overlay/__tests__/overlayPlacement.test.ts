@@ -93,7 +93,7 @@ const findAll = (node: ReactNode): Element[] => {
 const rowTop = (row: number) => row * STYLES.prayer.height;
 
 /** How far the arrow tip overlaps into the row band */
-const TIP_OVERLAP = 9;
+const TIP_OVERLAP = 4;
 
 /** Friday 11 September's Extras list gathered in reverse, on screen at noon, with the overlay open on it */
 const openOnReversedFriday = (selectedPrayerIndex: number) => {

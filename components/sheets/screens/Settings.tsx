@@ -3,6 +3,7 @@ import { useAtom } from 'jotai';
 import { useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import InfoBare from '@/assets/icons/svg/info-bare.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
 import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla';
@@ -122,21 +123,9 @@ export default function BottomSheetSettings() {
         </Pressable>
       </View>
 
-      {/* Display Card - the Language row leads it (D52): language reads as a display concern */}
+      {/* Display Card - the Language row moved to the Other card (owner, 2026-10-15, superseding D52's placement) */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>{t('settings.display')}</Text>
-        <Pressable
-          style={styles.athanButton}
-          onPress={handleLanguagePress}
-          hitSlop={HIT_SLOP.md}
-          accessibilityLabel={t('settings.language')}
-          accessibilityRole={'button'}>
-          <View style={styles.musicButton}>
-            <IconView type={Icon.GLOBE} size={9} color={COLORS.text.primary} />
-          </View>
-          <Text style={styles.athanLabel}>{t('settings.language')}</Text>
-          <Text style={styles.chevron}>{chevronFor()}</Text>
-        </Pressable>
         <View style={styles.toggleList}>
           <SettingsToggle
             label={t('settings.showHijriDate')}
@@ -179,6 +168,18 @@ export default function BottomSheetSettings() {
       {/* Other Card - the What's new row alone is hidden on a silent release, so Help always stays reachable */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>{t('settings.other')}</Text>
+        <Pressable
+          style={styles.whatsNewButton}
+          onPress={handleLanguagePress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel={t('settings.language')}
+          accessibilityRole={'button'}>
+          <View style={styles.infoButton}>
+            <IconView type={Icon.GLOBE} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.whatsNewLabel}>{t('settings.language')}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
+        </Pressable>
         {currentVisibleWhatsNew() ? (
           <Pressable
             style={styles.whatsNewButton}
@@ -187,7 +188,7 @@ export default function BottomSheetSettings() {
             accessibilityLabel={t('settings.whatsNew')}
             accessibilityRole={'button'}>
             <View style={styles.infoButton}>
-              <IconView type={Icon.INFO} size={9} color={COLORS.text.primary} />
+              <InfoBare width={9} height={9} style={{ color: COLORS.text.primary }} />
             </View>
             <Text style={styles.whatsNewLabel}>{t('settings.whatsNewLabel')}</Text>
             <Text style={styles.chevron}>{chevronFor()}</Text>

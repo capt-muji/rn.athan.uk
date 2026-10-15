@@ -120,7 +120,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
     const drawn = JSON.stringify(screen.toJSON());
     const lastRow = `Athan ${ATHAN_AUDIOS.length}`;
-    expect(drawn.indexOf(t('volume.note.ios'))).toBeGreaterThan(drawn.indexOf(lastRow));
+    expect(drawn.indexOf(t('volume.note.ios').split('\n')[0])).toBeGreaterThan(drawn.indexOf(lastRow));
     expect(screen.getAllByText(t('volume.note.ios'))).toHaveLength(1);
   });
 

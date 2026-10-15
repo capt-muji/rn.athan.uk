@@ -3,8 +3,10 @@
  * the sheet at once and hands the wait to the full-screen loader (ticket 86, D86.8)
  */
 
-import { act, fireEvent, type RenderResult, render, screen } from '@testing-library/react-native';
+import { fireEvent, type RenderResult, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import { act } from 'react';
+import { StyleSheet } from 'react-native';
 import type { ReactTestRendererJSON } from 'react-test-renderer';
 
 import { london } from '@/__tests__/harness';
@@ -56,7 +58,7 @@ afterEach(async () => {
 });
 
 describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
-  it('renders the six native names in codepoint order with a check on the active locale', async () => {
+  it('renders the six native names in codepoint order on the athan card pattern', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
@@ -64,7 +66,11 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
     // per-row query can express which came first
     const labels = screen.getAllByRole('radio').map((row) => row.props.accessibilityLabel);
     expect(labels).toEqual([...SIX_NAMES]);
-    expect(screen.getByTestId('svg:check', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(screen.getByText('Choose your language')).toBeOnTheScreen();
+    expect(screen.getByText('Your pick applies immediately')).toBeOnTheScreen();
+    const active = screen.getByRole('radio', { name: 'English' });
+    expect(active.props.accessibilityState).toEqual({ selected: true });
+    expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toEqual({ selected: false });
   });
 
   it('dismisses at once, with no applying row and no in-sheet spinner', async () => {
@@ -111,5 +117,38 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(commitSpy).not.toHaveBeenCalled();
     expect(dismiss).toHaveBeenCalledTimes(1);
+  });
+
+  it('seats the highlight behind the language in force once the first row is measured', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+
+    const highlight = () => {
+      const indicator = screen.getByTestId('language-list').children[0];
+      if (!indicator || typeof indicator === 'string') throw new Error('The list has no highlight');
+      const style = StyleSheet.flatten(indicator.props.style) as {
+        opacity?: number;
+        height?: number;
+      };
+      return { isShown: style.opacity === 1, height: style.height };
+    };
+
+    expect(highlight().isShown).toBe(false);
+
+    await fireEvent(screen.getByRole('radio', { name: 'Bahasa Melayu' }), 'layout', {
+      nativeEvent: { layout: { x: 0, y: 0, width: 300, height: 44 } },
+    });
+
+    expect(highlight().isShown).toBe(true);
+    expect(highlight().height).toBe(44);
+  });
+
+  it('marks the persisted pick as the selected row when the sheet opens again', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    act(() => setActiveLocale('ar'));
+    await render(<LanguageSheet />);
+
+    expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toEqual({ selected: true });
+    expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).toEqual({ selected: false });
   });
 });
