@@ -104,3 +104,84 @@ exposure). The anticipated "name the mark constants" fix deliberately not applie
 reserves it for after the break run, and `break-104.sh marks` matches the literals.
 
 session: ses_ebeae1d28ffeM2fSqV8jHnW0WN
+
+### Step 2 — DONE (branch `build/haptic-xs-capture` off `a5f9995c`, stayed empty and was deleted; no commit)
+
+Preflight: `PREFLIGHT FAILED` on one anchor, adjudicated benign: `sheet-close-haptic.anchor`
+holds the pre-step-1 `handleDismiss` text, and step 1's contract inserted exactly the lines that
+break the verbatim match (`git show 00c63936`: the bare `Haptics.impactAsync` line became
+`perfMark('sheet_close_haptic')` + `const impact =` + the settle `.then`). Proof nothing else
+moved: `git diff 1aa9d21f..HEAD -- components/sheets/parts/Sheet.tsx` empty. The other 5 anchors
+and every state check (uat, clean, origin merged, 2.0.794 >= floor) passed. Step 2's own anchor
+check is "none (no code changes)".
+
+Build (atlas `e2e/device-atlas-iphone-xs.md` recipe): prebuild `--clean` with
+`EXPO_PUBLIC_IOS_WIDGETS=1` (the checkout's `ios/` was 2.0.254-era residue), plist 2.0.794, ids
+`com.mugtaba.athan` + `com.mugtaba.athan.ExpoWidgetsTarget` in the pbxproj (the plist carries
+`$(PRODUCT_BUNDLE_IDENTIFIER)`; an earlier "FAIL: bundle id" was my check reading the plist
+literal, not a prebuild defect), `node_modules/.cache/metro` cleared (env-blind), then Release
+xcodebuild with `EXPO_PUBLIC_PERF_MONITOR=1` + `EXPO_PUBLIC_IOS_WIDGETS=1` in the build env and
+the cached team inline. `BUILD SUCCEEDED`, installed on the XS through devicectl (bundleID
+`com.mugtaba.athan`). Team and UDID resolved at runtime from the cached profile and
+`devicectl list devices`; written nowhere.
+
+Capture: `pymobiledevice3 syslog live` unfiltered, started 22:37:53 (pid in
+`~/athan-gitree/sessions/104/xs-capture.pid`), writing to
+`~/athan-gitree/sessions/104/xs-capture.log`. Unfiltered on purpose: verdict N needs delivery
+lines from system processes (`SpringBoard`, `usernoted`), which any `--process-name`/`--match`
+filter would drop; the full stream is a strict superset of the app's tag, grepped at read time.
+Throwaway launch 22:38:01 (What's New rule); 499 PERF lines verified in the capture within 12s
+(including `perf_monitor_init`) BEFORE any owner moment, so the gate provably reached the device
+bundle. The dev logger runs at `debug` (env unset), so PERF_MARK and PERF_MEASURE both stream.
+
+Owner pass (batched pass one, 23:08:07-23:08:32 local; capture stopped cleanly after it at
+2,266,316 lines). Her answers, verbatim: (1) unchanged close: "Immediate, as always".
+(2) changed close: "Immediately at close" — the buzz landed at the close on this build, not
+one-to-two seconds late. (3) the pager read belongs to row 103, not this ticket.
+
+Unchanged close (23:08:07; a second at 23:08:16 identical in shape):
+
+- `2026-10-15 23:08:07.239377 Athan{React}[91052] <DEBUG>: PERF_MARK {"seq":37,"ts":1792102087224,"name":"sheet_sound_close_start",...}`
+- `2026-10-15 23:08:07.490488 Athan{React}[91052] <DEBUG>: PERF_MARK {"seq":39,"ts":1792102087448,"name":"sheet_close_haptic",...}` (+224 ms, the close animation; second close +240 ms)
+- `2026-10-15 23:08:07.490595 Athan{React}[91052] <DEBUG>: PERF_MARK {"seq":40,"ts":1792102087489,"name":"sheet_close_haptic_settled",...}` (+41 ms after the dispatch; second close +21 ms)
+- no `sound_commit_start`, no `sound_commit` measure — no commit on the unchanged path.
+
+Changed closes (four, 23:08:17 / 23:08:20 / 23:08:24 / 23:08:30; identical shape every time).
+Close #1 in full:
+
+- `2026-10-15 23:08:17.465876 Athan{React}[91052] <DEBUG>: PERF_MARK {"seq":57,"ts":1792102097131,"name":"sheet_close_haptic","type":"mark","duration":0}`
+- `2026-10-15 23:08:17.465930 Athan{React}[91052] <DEBUG>: PERF_MARK {"seq":58,"ts":1792102097131,"name":"sound_commit_start","type":"mark","duration":0}`
+- `2026-10-15 23:08:17.466167 Athan{React}[91052] <DEBUG>: PERF_MARK {"seq":61,"ts":1792102097335,"name":"sheet_close_haptic_settled","type":"mark","duration":0}`
+- `2026-10-15 23:08:18.910644 Athan{React}[91052] <INFO>: PERF_MEASURE {"seq":66,"ts":1792102097131,"name":"sound_commit","type":"measure","duration":1767}`
+- preceding `sheet_sound_close_start` ts 1792102096910 (+221 ms to the dispatch).
+
+Deltas, close #1: the dispatch and `sound_commit_start` share the same millisecond
+(1792102097131); settle +204 ms after both; commit window [1792102097131, 1792102098898]
+(1767 ms), settle 204 ms INTO it. Closes #2-4: dispatch = commit_start at 1792102100922 /
+1792102104190 / 1792102110827, settles +219 / +226 / +211 ms, windows 1870 / 1835 / 1734 ms —
+every settle after `sound_commit_start` and inside its window.
+
+Native corroboration (CoreHaptics, same capture): unchanged close engine chain 23:08:07.4859 →
+engine start 23:08:07.5037 (~56 ms after the dispatch epoch); changed close #1 engine chain
+23:08:17.4625 → engine start 23:08:17.4797 (~349 ms after the dispatch epoch) — the native side
+displaced with the ack.
+
+Delivery check (verdict N): zero `usernoted` lines in 23:08:05-23:08:40; no SpringBoard banner
+presentation lines (the only "banner" hits are trait-participant plumbing); the only "notif"
+lines beside the settles are the app's own CoreHaptics `notifyWhenPlayersFinished`. Nothing
+delivered at any buzz moment; N excluded, consistent with D104.3.
+
+Confirmed verdict: **T (dispatch-side)** — the settle lands after `sound_commit_start`, inside
+the `sound_commit` window, on all four changed closes; the unchanged close settles in +21-41 ms
+with no commit marks. Today's displacement into the window was ~0.2 s (engine start ~0.35 s
+after the close moment), imperceptible on glass — her answer "Immediately at close" — while the
+window itself measured 1734-1870 ms, the same one-to-two-second scale as her original report.
+The mechanism (the commit prefix taking the thread before the impact's native ack returns)
+stands, matching the simulator's provisional T (settle +267 ms inside a 271 ms window). Step 3
+(the sheet-side deferral) proceeds per PLAN D104.6.
+
+Evidence: `~/athan-gitree/sessions/104/xs-capture.log` (2,266,316 lines) and `xs-capture.pid`;
+build log `build-104-xs-part2.log` under $TMPDIR. The XS keeps the 2.0.794 instrumented dev
+build. Nothing committed; the branch stayed empty and was deleted per the step's merge section.
+
+session: ses_ebe8e2154ffeKuWtE6knZ3y0jo
