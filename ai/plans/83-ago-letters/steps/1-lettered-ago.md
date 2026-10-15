@@ -139,8 +139,10 @@ against the unmodified tree. Run with
      test becomes `screen.getByText('Dhuhr 58 m ago')`
    - line with `'Duha 7\u2009\u2009:\u2009\u200914 ago'` becomes
      `screen.getByText('Duha 7 h 14 m ago')`
-   - the `queryByText` in the Show-time-passed-off test becomes
-     `screen.queryByText('Dhuhr 58 m ago')`
+   - the three-line `queryByText` block in the Show-time-passed-off test
+     (lines 58 to 60) becomes the one line
+     `    expect(screen.queryByText('Dhuhr 58 m ago')).not.toBeOnTheScreen();`
+     (four leading spaces, one line, biome-verified)
 
    Proves R1.1 end to end through the page. Red now: the old colon sentence is
    still rendered, the lettered one is not found.
@@ -222,11 +224,17 @@ export interface AgoLetterGroup {
 export const splitAgoDuration = (value: string): { before: string; groups: AgoLetterGroup[]; after: string } | null => {
   const match = value.match(/\d+h(?: \d+m)?|\d+m/);
   if (match === null) return null;
-  const index = match.index ?? 0;
-  const groups = [...match[0].matchAll(/(\d+)([hm])/g)].map((entry) => ({ digits: entry[1], letter: entry[2] }));
-  return { before: value.slice(0, index), groups, after: value.slice(index + match[0].length) };
+  const duration = match[0];
+  const index = value.indexOf(duration);
+  const groups = [...duration.matchAll(/(\d+)([hm])/g)].map((entry) => ({ digits: entry[1], letter: entry[2] }));
+  return { before: value.slice(0, index), groups, after: value.slice(index + duration.length) };
 };
 ```
+
+The `index` comes from `value.indexOf(duration)`, never `match.index`: the
+latter is typed `number | undefined` whose fallback branch no test can take (a
+non-null match always carries its index), and the coverage gate refuses an
+unreachable branch at 100 percent.
 
 What it answers: the words before the duration, the duration's digit-letter
 groups, and the words after. What it must never do: match outside the duration,
@@ -235,9 +243,10 @@ return an empty groups array, or throw on any catalog sentence.
 ### `PrayerAgoBadge` in `components/prayer/Ago.tsx`
 
 Replaces anchor a3's split-and-colon block. The import changes from
-`splitSingleColon` to `splitAgoDuration`; add a new
-`import { Fragment } from 'react';` line (the file has no react import today;
-biome's organize-imports places it). The render becomes:
+`splitSingleColon` to `splitAgoDuration`; a new
+`import { Fragment } from 'react';` line goes directly under the jotai import
+(biome's organize-imports puts react after jotai here; the file has no react
+import today). The render becomes:
 
 ```tsx
   const parts = splitAgoDuration(prayerAgo);

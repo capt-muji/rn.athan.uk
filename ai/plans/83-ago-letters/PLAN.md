@@ -177,7 +177,7 @@ Acceptance criteria:
 
 Checklist:
 
-- [ ] Step 1 — The lettered ago badge lands with its suite, atomically (`steps/1-lettered-ago.md`)
+- [x] Step 1 — The lettered ago badge lands with its suite, atomically (`steps/1-lettered-ago.md`)
 
 Weights: step 1 code 2. Batch budget 2, session budget 2: one executor session,
 one batch, no device step. The step subsection lives in `steps/1-lettered-ago.md`
