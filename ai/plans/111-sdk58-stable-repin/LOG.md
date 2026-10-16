@@ -602,8 +602,54 @@ session: ses_eba0eef02ffezpNmvYPeSHi6rF
   removes, so the criterion now reads "adds no patch line naming the symbol and carries neither
   symbol in the installed sources".
 
-Resume from: step 3, the owner-ordered iPhone XS deep-dive loop, once the owner unlocks her phone —
-that unlock is the one condition. Run the step's own precondition first (`devicectl device info
-lockState` must answer, and `AGENT_DEVICE_IOS_TEAM_ID=$TEAM_ID agent-device prepare ios-runner
---udid $IPHONE_UDID` must prepare the runner); while the phone is locked both fail and the step
-returns to this note. Then step 4's records, then the audit and DONE.
+Resume from: step 3's overnight windows on 2026-10-17 — the midnight rollover read (R4.8, the app
+foreground through 00:00 Europe/London), the 3T punctuality capture at 01:53 (the staged script
+`~/athan-gitree/sessions/111/3t/logs/capture-punctuality-0153.sh` self-locks), the lock-screen
+widget read after midnight, and the Sunrise delivery window 07:15 to 07:30 (R4.2, R4.7). The
+daytime checks are green and merged (see the step 3 entry below). Then step 4's records, then the
+audit and DONE.
+
+### Step 3 — IN PROGRESS (the XS loop, daytime checks green; overnight windows staged)
+
+- Precondition: row 124's fix holds. `xcrun devicectl device info lockState --device IPHONE_UDID`
+  answers (`unlockedSinceBoot: true`), and `AGENT_DEVICE_IOS_TEAM_ID=$TEAM_ID agent-device prepare
+  ios-runner --udid IPHONE_UDID` prepared the runner. XS device lock named by UDID, released
+  between contact phases so sibling lanes interleave.
+- Build (main tree, uat 2.0.924 content, node_modules at the re-pin set): prebuild plus `expo
+  run:ios --configuration Release --device` under build.lock, 20:54 to 21:02, `Build Succeeded`,
+  Athan.app and the ExpoWidgetsTarget appex installed and launched. Generated Info.plist
+  re-verified: UIBackgroundModes fetch+processing, the backgroundtask registration present, no
+  `remote-notification` entry. Captures: `xs/build2-prebuild.log`, `xs/build2-runios.log`.
+- R4.1 GREEN (clean second open after the throwaway first launch): fresh PID alive, the schedule
+  renders "London, UK / Sat, 17 Oct 2026 / Fajr 8h 46m" with rows Fajr 05:52 (off), Sunrise 07:25
+  (silent), Dhuhr 12:51 (silent), Asr 15:30 (sound), Magrib 18:06 (silent), Isha 19:29 (silent);
+  no overlay, no crash; the countdown ticks between reads. Captures: `xs/21-r1-coldstart.png`,
+  `xs/21-r1b-secondopen.png`.
+- R4.3 GREEN (compass stream at the new pin set): qibla sheet opened via taps (Settings, Qibla
+  row at (187,370)pt); a bounded 40 s unified-log window measured 8,346 locationd
+  `kCLConnectionMessageHeading` messages and 4,196 `Athan{CoreLocation}` delegate invocations,
+  about 105 a second, the unfiltered rate the location patch's `kCLHeadingFilterNone` buys and the
+  same rate the first attempt measured. Captures: `xs/21-r3-qibla-sheet.png`,
+  `xs/21-r3-syslog.txt`.
+- R4.4 GREEN both directions: to العربية the relaunched schedule renders Arabic RTL from frame
+  one with the real times unchanged; back to English a screenshot burst on the tap caught the
+  loader: full-screen purple, centred spinner, the target's own words `Setting English language`
+  from its first frame, then the blank relaunch window, then the English schedule. No crash.
+  Captures: `xs/21-r4-languagesheet.png`, `xs/21-r4-arabic.png`, `xs/21-r4-ar-languagesheet.png`,
+  `xs/21-r4-back-burst-0..6.png`.
+- R4.5 GREEN (D111.17's observable): the switch's relaunch window carries the
+  `BGProcessingTaskRequest com.expo.modules.backgroundtask.processing` re-submission beside the
+  live native trace `Got 64 pending notification`; the two Pino lines stay unreachable by design
+  on a prod build.
+- R4.6 home-screen half NOT REACHABLE, the wall the first attempt measured: every switcher
+  dismissal and wallpaper tap lands back in the session app (three routes tried). The lock-screen
+  half follows the midnight read. Captures: `xs/21-r6-home.png`, `xs/21-r6-switcher.png`,
+  `xs/21-r6-home2..4.png`.
+- R4.2 and R4.7 staged: her configuration leaves Fajr OFF, so the next armed delivery is Sunrise
+  07:25 (silent); the window 07:15 to 07:30 captures it, with a reminder before it closing R4.7 if
+  her config arms one (else not-exercised per the step's rule). R4.8 staged: the app foreground
+  through midnight, read at 00:00.
+- Tooling note: the agent-device MCP daemon lacks the team env (the recorded trap); all driving
+  went through the CLI with the team env exported.
+
+session: ses_eb9bcd72effe5IZ6n6qJftXcb6
