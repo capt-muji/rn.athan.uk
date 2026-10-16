@@ -1,0 +1,15 @@
+export const refreshPrayerWidgets = async (): Promise<void> => {
+  if (Platform.OS === 'ios' && !FEATURE_FLAGS.iosWidgets) return;
+  if (Platform.OS === 'android' && !FEATURE_FLAGS.androidWidgets) return;
+
+  if (Platform.OS === 'android') {
+    await pushScheduleAndroid(ScheduleType.Standard);
+    await pushScheduleAndroid(ScheduleType.Extra);
+    // The native minute-refresh chain keeps the widgets ticking after the
+    // host pauses this process's JS timers (owner ruling 2026-09-19)
+    try {
+      armWidgetRefreshChain();
+    } catch (error) {
+      logger.warn('WIDGET: Failed to arm the native refresh chain', { error });
+    }
+    return;
