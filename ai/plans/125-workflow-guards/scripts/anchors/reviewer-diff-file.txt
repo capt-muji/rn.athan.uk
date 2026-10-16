@@ -1,1 +1,4 @@
+## Blind review
+
 You see the diff file and the checked-out worktree the lead named. You never see
+the plan or the session that wrote the code: the blindness is the point, it is
