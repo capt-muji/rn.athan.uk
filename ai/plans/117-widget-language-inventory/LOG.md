@@ -107,6 +107,50 @@ printf "%s", $4}'` against the FINDINGS quote, `diff` exit 0 (recorded).
 Review checklist: the quote is verbatim (diff 0); every landed-state claim carries its
 commit sha or its queue record line; each seam names both sides with file:line.
 
+Version 2.0.873 (next after local uat's 2.0.872; uat moved mid-step again through ticket
+118's DONE merge, so the lane was fast-forwarded to `09f0ee12` and the step branch re-created
+off it before committing, work carried over uncommitted; anchors, citations and the row-69
+diff re-verified clean on the new base), merged, lane fast-forwarded, main-tree gradle
+versionName set. Commit `054d569c`, merge `8bec5ff8`. Hook: `Tests: 2 skipped, 5706 passed,
+5708 total`, coverage Statements/Branches/Functions/Lines all `100%`.
+
+session: ses_eba9c9710ffeSr0kPQdiXDMu60
+
+### Step 03 — done
+
+Branch `docs/117-3-recommendation` off lane/117 (`8bec5ff8`). All eight anchors re-counted 1
+(patch still `patches/expo-widgets+58.0.19.patch`).
+
+Red: FINDINGS.md section 5 did not exist and the ticket row read IN PROGRESS; this commit
+creates the section and sets the row EXECUTED.
+
+Section 5 written per the change contract: 3 options (1 status quo; 2 the lettered
+alignment, the Android `ALabel` on fixed Latin `h`/`m`, the `duration.h`/`duration.m` bake
+retired from the label, the `WidgetStrings` unit-field retirement and the v1-fallback
+re-test riding the same job, the iOS timer staying system-formatted behind the CPU budget
+record at `stores/widget.ts:19-31`; 3 option 2 plus the D79 revisit and the `rtl` field's
+fate), the recommendation = option 2 (D117.8, as row 69's resume shape), row 69's fate =
+stays parked under her ban with the colon half superseded by rows 85/102 (D117.6, recorded
+as the resume-time re-scope), the patch upstreaming recommendation = one PR under row 51's
+discipline beside `expo/expo#51292`, the patch staying until a published release carries it
+(D117.7), and 4 rulings left to the owner. Every option line cites its sections.
+
+Green: the scripted citation check opened 259 file:line citations across all five sections,
+212 needle-verified, 0 mismatches. The committed queue row reads EXECUTED.
+
+R3.2 diff check (fork sha `c7481a20`, recorded at step 1): the raw range stat interleaves
+the uat commits tickets 111/118 and the row-70 addendum merged while this lane ran (named
+in the range log), so the ticket's own diff is the three step commits plus this step's
+staging: `git show --stat ad8c07ba`, `git show --stat 054d569c`, `git diff --cached --stat`
+— together listing only `ai/plans/117-widget-language-inventory/` (FINDINGS.md, LOG.md,
+PLAN.md), the queue row `ai/plans/README.md`, and `app.json`/`package.json`. Docs only,
+R3.2 met.
+
+Review checklist: the recommendation cites sections 1 to 4 and matches D117.8; row 69's
+fate matches D117.6 and names the supersession; the rulings list is complete (option pick,
+ban, upstream PR, live reads) and asks nothing code already answered; no file outside the
+plan folder, the queue and the version files changed across all three steps.
+
 Version <VERSION>, merged, lane fast-forwarded, main-tree gradle versionName set.
 
 session: ses_eba9c9710ffeSr0kPQdiXDMu60
