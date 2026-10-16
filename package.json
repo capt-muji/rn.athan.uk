@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "2.0.865",
+  "version": "2.0.866",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -61,7 +61,7 @@
     "expo-updates": "~58.0.17",
     "expo-widgets": "58.0.19",
     "jotai": "3.0.1",
-    "pino": "10.3.1",
+    "pino": "10.4.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-native": "0.88.0",
