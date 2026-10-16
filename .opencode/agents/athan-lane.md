@@ -41,15 +41,18 @@ credentials, publishing, destroying data), reported, never asked.
   dispatch workers, run each phase yourself from the rules in `.opencode/agents/`,
   and record that in `LOG.md`.
 - Locks, all the version lock's mkdir pattern, retried in `sleep 15` cycles,
-  removed the moment their holder ends:
+  removed the moment their holder ends. The names below are COMPLETE paths:
+  never build one by appending a suffix to a bare name, because a
+  `commit.lock.lock` serializes nothing and hides the interleaving:
   `$HOME/athan-gitree/version.lock` around every version bump (existing rule);
-  `commit.lock` around every commit and every yarn install, so no hook runs
-  against a churning `node_modules`; `uat.lock` around every merge into `uat`
-  (merges happen only in the main tree, `git fetch -q origin uat` first,
-  `--no-ff`); `build.lock` around `build-prod.zsh`, `build-mock.zsh` and any
-  Xcode or toolchain change (the scripts hardcode the main tree and build `uat`
-  content: run a build step only after its code is merged); `device-<SERIAL>.lock`
-  around any contact with one phone.
+  `$HOME/athan-gitree/commit.lock` around every commit and every yarn install,
+  so no hook runs against a churning `node_modules`;
+  `$HOME/athan-gitree/uat.lock` around every merge into `uat` (merges happen
+  only in the main tree, `git fetch -q origin uat` first, `--no-ff`);
+  `$HOME/athan-gitree/build.lock` around `build-prod.zsh`, `build-mock.zsh` and
+  any Xcode or toolchain change (the scripts hardcode the main tree and build
+  `uat` content: run a build step only after its code is merged);
+  `$HOME/athan-gitree/device-<SERIAL>.lock` around any contact with one phone.
 - A merge conflict on `ai/plans/README.md` or the three version files is lane
   weather: abort, rebase your lane branch onto `uat`, resolve keeping both
   lanes' rows and the higher version, retry the merge once, then STOP if it
