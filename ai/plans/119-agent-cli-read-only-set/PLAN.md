@@ -197,7 +197,7 @@ set plus the named bans is the measured minimum the owner ruled.
 
 The invariant, one sentence a script can check: after the step, `ai/AGENTS.md` contains the
 four rows and the twelve ban names at their exact expected line counts and nothing else
-moved - `scripts/break-1.sh` is that script.
+moved - this plan folder's `scripts/break-1.sh` is that script.
 
 Alternatives rejected: A, the status quo (the owner ruled against it); C, the generated
 `AGENTS.md` block (breaks hard rules); naming all 34 commands in the bullet (law bloat, and
@@ -216,7 +216,7 @@ proves.
 - [R1.1] WHEN a session reads the tool routing table in `ai/AGENTS.md` THE SYSTEM SHALL carry four new rows under the status row routing doctor, typecheck, `docs:sync`/`docs:search`, and `npx expo command:ps`/`command:events` at the exact texts the step's contracts give.
 - [R2.1] WHEN a session reads the `@expo/agent-cli` bullet under Device testing in `ai/AGENTS.md` THE SYSTEM SHALL open with the routed-reads allowlist and name every ban in the step's contract: `--eas`, `deploy`, `agents:setup`, `skills:sync`, `skills:clean`, `install`, `new`, `feedback`, `login`, `logout`, `register`, `whoami`, `status --explain`, `--device`, and `smoke --android` while a phone is connected.
 - [R3.1] WHEN the step's commit lands THE SYSTEM SHALL carry the next patch version off `uat` in `app.json` (`expo.version`) and `package.json` (`version`) alike, with the commit message starting `<VERSION> - `.
-- [R4.1] WHEN `scripts/break-1.sh` runs from the worktree root after the change THE SYSTEM SHALL print `ALL AS EXPECTED: 1` with every row, name and table-line count at its expected value.
+- [R4.1] WHEN `ai/plans/119-agent-cli-read-only-set/scripts/break-1.sh` runs from the worktree root after the change THE SYSTEM SHALL print `ALL AS EXPECTED: 1` with every row, name and table-line count at its expected value.
 - [R5.1] WHEN the step's diff is read THE SYSTEM SHALL touch only `ai/AGENTS.md`, the row 119 cell of `ai/plans/README.md`, `app.json`, `package.json` and this plan folder, with `package.json` changed in its `version` field alone and nothing installed.
 
 ## 6. Steps
@@ -259,7 +259,7 @@ green today against 16/20 at the investigation; typecheck 1241 ms against 738 ms
 stay out of the file)
 ```
 
-The docs commit message: `<VERSION> - docs(plans): ticket 119 planned: the option-B landing, four routing rows and the widened ban set`.
+The docs commit messages that landed: `2.0.926 - docs(plans): ticket 119 skeleton: PLANNING, the option-B landing plan` and `2.0.927 - docs(plans): ticket 119 READY: the option-B landing plan, one docs step`.
 
 ## 9. Push
 
