@@ -4,6 +4,7 @@
  * dirty so the next launch or foreground finishes the job (D34, R3.4, R4.1)
  */
 
+import * as Updates from 'expo-updates';
 import { getDefaultStore } from 'jotai';
 
 import { currentLocaleId, setActiveLocale } from '@/shared/i18n/locale';
@@ -35,6 +36,32 @@ beforeEach(() => {
 
 afterEach(() => {
   setActiveLocale('en');
+});
+
+describe('the record-boundary relaunch', () => {
+  it('relaunches when the typography record changes even though the direction does not', async () => {
+    // en -> hi: both ltr, but module-scope styles froze the Latin faces, so the context
+    // must re-evaluate them the only way available - the crossing relaunch
+    const reloadSpy = jest.spyOn(Updates, 'reloadAsync').mockResolvedValue();
+    rescheduleMock.mockResolvedValue(true);
+
+    await commitLanguagePreference('hi');
+
+    expect(reloadSpy).toHaveBeenCalledTimes(1);
+    expect(store.get(languagePreferenceAtom)).toBe('hi');
+    reloadSpy.mockRestore();
+  });
+
+  it('keeps the instant switch between locales that share the Latin record', async () => {
+    const reloadSpy = jest.spyOn(Updates, 'reloadAsync').mockResolvedValue();
+    rescheduleMock.mockResolvedValue(true);
+
+    await commitLanguagePreference('ms');
+
+    expect(reloadSpy).not.toHaveBeenCalled();
+    expect(store.get(languagePreferenceAtom)).toBe('ms');
+    reloadSpy.mockRestore();
+  });
 });
 
 describe('reconcileLanguageSurfaces', () => {

@@ -204,7 +204,11 @@ describe('the colon under the overlay selection', () => {
     expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
 
     await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
-    expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
+    // While selected the static state inks must not feed the colon: the derived entry owns the slot
+    const selectedColour = flattenStyle(screen.getByText(':').props.style).color;
+    expect(selectedColour).not.toBe(NEXT_COLON_COLOUR);
+    expect(selectedColour).not.toBe(NEXT_COLON_COLOUR_EXTRAS);
+    expect(selectedColour).not.toBe(PAST_COLON_COLOUR);
 
     await act(() => closeOverlay());
     expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();

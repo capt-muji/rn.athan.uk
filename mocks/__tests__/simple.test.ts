@@ -20,7 +20,14 @@ afterEach(() => {
 
 describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in London', () => {
   // On a whole minute, a millisecond past it, and a millisecond before the next: times carry no seconds
-  it.each(['2026-09-15T14:30:00.000Z', '2026-09-15T14:30:00.001Z', '2026-09-15T14:30:59.999Z'])(
+  it.each([
+    '2026-09-15T14:30:00.000Z',
+    '2026-09-15T14:30:00.001Z',
+    '2026-09-15T14:30:59.999Z',
+    // The window's two edges: its first minute and its tightest seed
+    '2026-09-15T05:00:00.000Z',
+    '2026-09-15T22:52:59.999Z',
+  ])(
     'puts Maghrib next about one minute out and Isha two, after a download at %s, with Asr the prayer just passed',
     (iso) => {
       const readAt = new Date(iso);
@@ -43,7 +50,7 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
     }
   );
 
-  it.each(['2026-09-16T03:30:00.000Z', '2026-09-16T03:30:59.999Z'])(
+  it.each(['2026-09-16T03:30:00.000Z', '2026-09-16T03:30:59.999Z', '2026-09-15T04:59:59.999Z'])(
     'seeds a realistic pre-dawn day at %s London 04:30, Fajr next about one minute out, no small-hours Standard rows',
     (iso) => {
       const readAt = new Date(iso);

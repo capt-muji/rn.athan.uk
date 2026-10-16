@@ -141,7 +141,10 @@ describe('the relaunch handoff', () => {
     expect(store.get(relaunchHandoffAtom)).toBe('');
   });
 
-  it('marks nothing on a same-direction switch', async () => {
+  it('marks nothing on a switch that neither flips direction nor changes the record', async () => {
+    // An earlier test leaves ar active; ms from ar changes the record, which relaunches
+    setActiveLocale('en');
+
     await commitLanguagePreference('ms');
 
     expect(store.get(relaunchHandoffAtom)).toBe('');
