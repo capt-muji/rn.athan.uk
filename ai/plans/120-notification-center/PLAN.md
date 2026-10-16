@@ -52,7 +52,7 @@ Rules that apply:
 | D120.3 | The platform gate is `Platform.OS !== 'ios'` as the function's first line, mirroring `deleteLegacyAndroidAudioChannels`'s android gate, so the Android `cancelAll` route (expo-notifications 58.1.5, `ExpoPresentationDelegate.kt:275-278`) never fires | Agent-ruled | 2026-10-16 | This section |
 | D120.4 | The clear runs only when `checkPermissions()` granted: iOS purges the delivered set when authorization is revoked, so the permissionless call is a guaranteed no-op on every open of a permissionless install | Agent-ruled | 2026-10-16 | This section |
 | D120.5 | One info log line per clear: `NOTIFICATION: Cleared the delivered notifications`. House pattern (every notification operation logs), and it is the unified-log proof marker for step 2 | Agent-ruled | 2026-10-16 | This section |
-| D120.6 | The XS proof vehicle is a mock-env Release build installed on the XS (deterministic delivery 60 to 119 s after each download, logs on), then a prod-env Release build of merged uat returns the phone to real data as the final act | Agent-ruled | 2026-10-16 | This section |
+| D120.6 | The XS proof vehicle is a mock-env Release build installed on the XS (deterministic imminent deliveries per the seed shape in `mocks/simple.ts` `buildTimes`, logs on), then a prod-env Release build of merged uat returns the phone to real data as the final act | Agent-ruled | 2026-10-16 | This section |
 | D120.7 | The row's named before-read (the center's structure on the current binary) is taken opportunistically under the device lock and is not acceptance: the row already carries the measured multi-athan configuration, and the load-bearing evidence is the entry-before, zero-after pair | Agent-ruled | 2026-10-16 | This section |
 
 D120.1 argued twice. Challenge one: put the clear before `checkPermissions()` unconditionally,
@@ -74,7 +74,10 @@ D120.6 argued twice. Challenge: prove on the prod build only, waiting for a real
 Rejected: her configuration's next delivery can sit hours out, the wait would hold the XS
 device lock far longer than lane 111 contention allows, and the clear's code path is
 env-independent. The mock build delivers the same iOS delivered-set mechanics with logs on;
-the prod install at the end still proves cold launch on real data.
+the prod install at the end still proves cold launch on real data. The mock's seed shape is
+stated from the code in step 2, not from memory: in the evening window Maghrib arms on the
+next minute boundary and Isha the minute after, in the small hours Fajr arms next-minute, and
+the spent late-evening window arms nothing imminent.
 
 ### 2.2 The executor must not decide
 
@@ -102,7 +105,7 @@ Code map (anchors under `scripts/anchors/`, each counting 1 at `d1ce39d9`):
 | `hooks/useNotification.ts` | 12-20 | The foreground presentation handler: what fires while the app is open presents and enters the delivered set after the clear ran (anchor a6) |
 | `shared/__mocks__/expo-notifications.ts` | 56-59 | The jest mock for expo-notifications; `dismissAllNotificationsAsync` is missing and must be added (anchor a3) |
 | `shared/__tests__/notifications.test.ts` | 632-661 | The `initializeNotifications` suite the new tests join (anchor a4) |
-| `__tests__/app/index.test.tsx`, `device/__tests__/listeners.test.ts`, `device/__tests__/tasks.test.ts` | whole | Existing route coverage: both callers route through `initializeNotifications`, the task body never touches the delivered set |
+| `__tests__/app/index.test.tsx`, `device/__tests__/listeners.test.ts`, `device/__tests__/tasks.test.ts` | whole | Existing route coverage: both callers route through `initializeNotifications`; the task-body suite gains one fence test asserting the executor never dismisses delivered notifications |
 
 Library facts, verified from the installed `node_modules/expo-notifications@58.1.5`:
 
@@ -166,8 +169,8 @@ Acceptance criteria:
 - [R1.2] WHEN initializeNotifications runs on Android THE SYSTEM SHALL leave delivered notifications untouched
 - [R1.3] WHEN initializeNotifications runs on iOS with permission denied THE SYSTEM SHALL leave delivered notifications untouched
 - [R1.4] WHEN the dismissal call rejects or never answers within the native call timeout on iOS THE SYSTEM SHALL swallow the failure, log one error line, and still run the injected refresh and resolve initializeNotifications without throwing
-- [R1.5] WHEN the app cold-launches or returns from the background to active THE SYSTEM SHALL reach the clear through initializeNotifications on both routes and WHEN the background task runs THE SYSTEM SHALL leave delivered notifications untouched
-- [R2.1] WHEN the proof build on the iPhone XS delivers a notification while the app is closed THE SYSTEM SHALL show that entry in the Notification Center before the app opens and zero entries after the app opens, with one clear log line per open in the captured log
+- [R1.5] WHEN the app cold-launches or returns from the background to active THE SYSTEM SHALL reach the clear through initializeNotifications on both routes and WHEN the background task runs THE SYSTEM SHALL leave delivered notifications untouched (the background half is pinned by the tasks.test.ts fence test, the route half by the existing caller suites and anchor a5)
+- [R2.1] WHEN the proof build on the iPhone XS delivers notifications while the app is closed THE SYSTEM SHALL show those entries in the Notification Center before the app opens and zero entries after the app opens, with one clear log line per open in the captured log when the Release build emits JS logs
 
 Design review: one function, one call site, three fences (platform, permission, background) all
 structural. The riskiest line is the ordering guarantee before the refresh, pinned by the
@@ -193,30 +196,37 @@ the center shows, never commit a screenshot.
 Build (from the main tree at merged uat, under `$HOME/athan-gitree/build.lock`; the scripts and
 the atlas own the order):
 
-1. Mock-env Release build carrying the change:
+1. Mock-env Release build carrying the change, opening the shell with
+   `unset EXPO_PUBLIC_ENV` so no earlier shell state leaks a prod env into a mock cycle:
    `export EXPO_PUBLIC_IOS_WIDGETS=1 CI=1 EXPO_NO_TELEMETRY=1` (no `EXPO_PUBLIC_ENV`, so the
    mock API serves and logs stay on), `npx expo prebuild -p ios --no-install`, then
    `DEVELOPMENT_TEAM=$TEAM_ID npx expo run:ios --configuration Release --device $IPHONE_UDID`.
    The run's own launch is the throwaway first launch (What's New marks itself).
-2. Delivery cycle one: terminate the app
-   (`xcrun devicectl device process terminate --device $IPHONE_UDID com.mugtaba.athan`), start
-   the log capture (`pymobiledevice3 syslog live --udid $IPHONE_UDID` filtered to the app tag),
-   wait for the mock's Asr to fire (60 to 119 s after the launch download, bounded wait 180 s).
-   Expected: the banner-delivery line the lane-111 loop proved
-   (`Created process assertion for will present notification`) at the armed minute.
-3. Read the center before the open: swipe down from the home screen's top (agent-device; the
-   runner lane 111 prepared may already sit on the phone, else
-   `AGENT_DEVICE_IOS_TEAM_ID=$TEAM_ID agent-device prepare ios-runner --udid $IPHONE_UDID` and
-   uninstall both runner apps afterwards), screenshot
+2. Delivery cycle one: start the log capture (`pymobiledevice3 syslog live --udid
+   $IPHONE_UDID`) before anything else, launch the app, give the init 20 s to arm, terminate
+   the app (`xcrun devicectl device process terminate --device $IPHONE_UDID
+   com.mugtaba.athan`), and wait inside the 180 s deadline for the seed's imminent rows to
+   fire (the evening shape arms Maghrib on the next minute boundary and Isha the minute
+   after; the small hours arm Fajr next-minute; the spent late-evening window arms nothing
+   imminent, so no cycle runs there). Expected: the banner-delivery line the lane-111 loop
+   proved (`Created process assertion for will present notification`) at the armed minute.
+3. Read the center before the open: swipe down from the top centre at the notch (top-left
+   opens the Today view) through agent-device; the runner lane 111 prepared may already sit on
+   the phone, else `AGENT_DEVICE_IOS_TEAM_ID=$TEAM_ID agent-device prepare ios-runner --udid
+   $IPHONE_UDID` and uninstall both runner apps afterwards; screenshot
    (`pymobiledevice3 developer dvt screenshot --udid $IPHONE_UDID`), read the image, transcribe
-   the Athan entries. Expected: at least one.
+   the Athan entries. Expected: the entries this cycle's deliveries produced. Write the swipe
+   route back into the atlas after the first working read.
 4. Open the app neutrally:
    `xcrun devicectl device process launch --device $IPHONE_UDID com.mugtaba.athan`, wait 10 s.
 5. Read the center after the open: swipe, screenshot, transcribe. Expected: zero Athan entries,
-   and one `NOTIFICATION: Cleared the delivered notifications` line in the capture.
-6. Delivery cycle two: repeat 2 and 3. Expected before the second open: exactly ONE entry (the
-   cycle-one open cleared the first, so a surviving entry would be red), then open and read
-   zero again. This cycle is the proof the first clear really emptied the center.
+   and one `NOTIFICATION: Cleared the delivered notifications` line in the capture when the
+   Release build emits JS logs (a missing line is a recorded void read, never a rebuild: the
+   pair is the gate).
+6. Delivery cycle two: repeat 2 and 3. Expected before the second open: exactly the entries
+   delivered since cycle one's open and not one more (cycle one's open emptied the center, so
+   a surviving entry would be red), then open and read zero again. This cycle is the proof the
+   first clear really emptied the center, not that iOS hid entries behind a group.
 7. Return the phone to the shipping state: prod-env Release build of merged uat
    (`export EXPO_PUBLIC_ENV=prod EXPO_PUBLIC_API_KEY=$(cat $HOME/.config/athan/.api_key)
    EXPO_PUBLIC_IOS_WIDGETS=1 CI=1 EXPO_NO_TELEMETRY=1`, the key never printed), prebuild, run
@@ -228,16 +238,18 @@ the atlas own the order):
 
 Void shapes, each recorded with its tool and what absent looked like: a center read showing no
 Athan entry before any open (retry one more delivery cycle; two empties in a row is a STOP with
-the capture), a delivery that never lands inside 180 s (re-launch to re-seed, retry once),
-agent-device wedging (fall back to devicectl launch plus pymobiledevice3 screenshot alone and
-record the missing swipe), lane-111 lock contention past 15 minutes (release, record, retry the
-cycle later in the session).
+the capture), a delivery that never lands inside 180 s (re-launch to re-seed, retry once), the
+clear log line missing from the Release capture (the before-and-after pair stands, the miss
+recorded), agent-device wedging (fall back to devicectl launch plus pymobiledevice3 screenshot
+alone and record the missing swipe), lane-111 lock contention past 15 minutes (release, record,
+retry the cycle later in the session).
 
 ## 8. Records
 
 Findings text for `LOG.md` and the DONE row text are in `steps/2-xs-proof.md` section Records.
 The docs commit at DONE: `<VERSION> - docs(plans): ticket 120 DONE: iOS clears the delivered
-stack on app open, XS-proven`.
+stack on app open, XS-proven`, with `<VERSION>` the next patch after `uat`, taken under
+`$HOME/athan-gitree/version.lock`, `app.json` bumped first then `package.json`.
 
 ## 9. Push
 
@@ -256,9 +268,10 @@ audited.
 | The XS refuses automation (RSD failure) | The row-124 class returned | `xcrun devicectl device info lockState --device $IPHONE_UDID`; if it errors, record and STOP the device step, the code step stands on its own gates |
 | Lane-111 lock contention beyond 15 minutes | Shared phone | Release the device lock, record the gap, retry later in the session; never skip the lock |
 
-Anticipated review fixes, word for word: "the new function's docblock repeats the ticket
-history, keep the why and drop the narrative" and "the timeout test must restore real timers in
-a `finally` or the suite leaks fake timers into the next test".
+Anticipated review fixes, word for word: "the nested describe's `afterEach` restoring
+`Platform.OS = 'ios'` hard-codes the default twice, capture the original once instead" and
+"the break script's perl pattern is the only untested regex in the plan, run it against a
+scratch copy first".
 
 Restore lists: step 1 restores nothing (additive code); every mutation-pass mutant is restored
 by `git checkout -- shared/notifications.ts` before the green rerun; step 2 restores the phone
