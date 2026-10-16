@@ -7,9 +7,9 @@ import { act, render, screen } from '@testing-library/react-native';
 import { showLondonDay } from '@/__tests__/harness';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
-import { openOverlay } from '@/stores/overlay';
+import { closeOverlay, openOverlay } from '@/stores/overlay';
 
-import PrayerTime from '../Time';
+import PrayerTime, { COLON_BRIGHTENING } from '../Time';
 
 const SUNRISE = 1;
 const DHUHR = 2;
@@ -25,11 +25,15 @@ const COLON_COLOUR = 'rgba(174, 208, 255, 0.375)';
 const PAST_COLON_COLOUR = 'rgb(170, 182, 212)';
 const NEXT_COLON_COLOUR = 'rgba(210, 226, 255, 0.75)';
 const NEXT_COLON_COLOUR_EXTRAS = 'rgba(238, 243, 255, 0.88)';
+const PRIMARY_COLOUR = '#ffffff';
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)
     ? Object.assign({}, ...style.map((entry) => flattenStyle(entry)))
     : (style as Record<string, unknown>);
+
+/** The style entries in render order: the static parts, then whatever state style the row hands the colon */
+const styleEntries = (node: unknown): unknown[] => (node as { props: { style: unknown } }).props.style as unknown[];
 
 describe('a row before Fajr on Friday 11 September 2026 at 03:00', () => {
   // [row, schedule, index, the time it shows]
@@ -144,11 +148,13 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
       </>
     );
 
-    // Asr is next at 14:00, so its colon brightens for the active background; Magrib's stays at the dim colour
+    // Asr is next at 14:00, so its colon brightens for the active background; Magrib's carries the base ink
+    // under the derived brightening entry
     const colon = screen.getAllByText(':')[0];
     expect(flattenStyle(colon.props.style).color).toBe(NEXT_COLON_COLOUR);
-    const upcoming = screen.getAllByText(':')[1];
-    expect(flattenStyle(upcoming.props.style).color).toBe(COLON_COLOUR);
+    const upcoming = styleEntries(screen.getAllByText(':')[1]);
+    expect((upcoming[1] as Record<string, unknown>).color).toBe(COLON_COLOUR);
+    expect(upcoming[2]).toBeDefined();
     expect(screen.getByLabelText('16:29')).toBeOnTheScreen();
     expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
   });
@@ -165,8 +171,9 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
     // Fajr has passed at 14:00, so its colon carries the ruled white; Magrib is upcoming and keeps its own
     const passed = screen.getAllByText(':')[0];
     expect(flattenStyle(passed.props.style).color).toBe(PAST_COLON_COLOUR);
-    const upcoming = screen.getAllByText(':')[1];
-    expect(flattenStyle(upcoming.props.style).color).toBe(COLON_COLOUR);
+    const upcoming = styleEntries(screen.getAllByText(':')[1]);
+    expect((upcoming[1] as Record<string, unknown>).color).toBe(COLON_COLOUR);
+    expect(upcoming[2]).toBeDefined();
   });
 
   it('paints the next colon at the extras colour on the Extra schedule', async () => {
@@ -184,5 +191,38 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
 
     expect(screen.getByText('--:--')).toBeOnTheScreen();
     expect(screen.queryByText(':')).toBeNull();
+  });
+});
+
+describe('the colon under the overlay selection', () => {
+  it('rides the brightening pair from the dim ink to the row\u2019s bright ink, at rest and while selected', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
+
+    // The whole row brightens on selection; the upcoming colon's derived entry carries the pair both ways
+    expect(COLON_BRIGHTENING).toEqual({ from: COLON_COLOUR, to: PRIMARY_COLOUR });
+    expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
+
+    await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
+    expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
+
+    await act(() => closeOverlay());
+    expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
+  });
+
+  it('keeps the passed and next colons at their own inks while selected', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(
+      <>
+        <PrayerTime type={ScheduleType.Standard} index={FAJR} />
+        <PrayerTime type={ScheduleType.Standard} index={ASR} />
+      </>
+    );
+
+    await act(() => openOverlay(ScheduleType.Standard, FAJR));
+    expect(flattenStyle(screen.getAllByText(':')[0].props.style).color).toBe(PAST_COLON_COLOUR);
+
+    await act(() => openOverlay(ScheduleType.Standard, ASR));
+    expect(flattenStyle(screen.getAllByText(':')[1].props.style).color).toBe(NEXT_COLON_COLOUR);
   });
 });

@@ -73,7 +73,7 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toEqual({ selected: false });
   });
 
-  it('dismisses at once, with no applying row and no in-sheet spinner', async () => {
+  it('dismisses a paint after the tap, once the loader has been revealed', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     // The driver hangs exactly while the assertions run; the afterEach releases it
     driverMock.mockImplementation(
@@ -83,14 +83,24 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
         })
     );
     const commitSpy = jest.spyOn(LanguageStore, 'commitLanguagePreference');
+    const revealSpy = jest.spyOn(LanguageStore, 'revealLanguageLoader');
     const rendered: RenderResult = await render(<LanguageSheet />);
     const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
 
     await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
 
+    // The reveal is the tap's own tick, so the loader paints before anything heavy can freeze the sheet
+    expect(revealSpy).toHaveBeenCalledWith('ar');
+    expect(commitSpy).not.toHaveBeenCalled();
+    expect(dismiss).not.toHaveBeenCalled();
+    expect(screen.queryByText('Applying…')).not.toBeOnTheScreen();
+
+    await act(async () => {
+      await jest.runAllTimersAsync();
+    });
+
     expect(commitSpy).toHaveBeenCalledWith('ar');
     expect(dismiss).toHaveBeenCalledTimes(1);
-    expect(screen.queryByText('Applying…')).not.toBeOnTheScreen();
     const tree = rendered.toJSON();
     expect(tree ? spinnerCount(tree) : 0).toBe(0);
   });
@@ -102,20 +112,25 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
     const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
 
     await fireEvent.press(screen.getByRole('radio', { name: 'ไทย' }));
+    await act(async () => {
+      await jest.runAllTimersAsync();
+    });
 
     expect(dismiss).toHaveBeenCalledTimes(1);
     await act(async () => {});
   });
 
-  it('closes without committing when the active locale is tapped', async () => {
+  it('closes without committing or revealing when the active locale is tapped', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     const commitSpy = jest.spyOn(LanguageStore, 'commitLanguagePreference');
+    const revealSpy = jest.spyOn(LanguageStore, 'revealLanguageLoader');
     await render(<LanguageSheet />);
     const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
 
     await fireEvent.press(screen.getByRole('radio', { name: 'English' }));
 
     expect(commitSpy).not.toHaveBeenCalled();
+    expect(revealSpy).not.toHaveBeenCalled();
     expect(dismiss).toHaveBeenCalledTimes(1);
   });
 

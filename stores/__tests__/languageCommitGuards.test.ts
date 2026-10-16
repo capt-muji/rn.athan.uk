@@ -13,6 +13,7 @@ import {
   languagePreferenceAtom,
   lastArmedLanguageAtom,
   pendingLanguageAtom,
+  revealLanguageLoader,
 } from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
 
@@ -39,6 +40,46 @@ afterEach(() => {
 });
 
 describe('commitLanguagePreference', () => {
+  it('owns its own reveal and runs: the loader stood on the tap does not refuse the pick it stands for', async () => {
+    store.set(lastArmedLanguageAtom, 'en');
+    rescheduleMock.mockResolvedValue(true);
+
+    revealLanguageLoader('ms');
+    expect(store.get(languageCommitBusyAtom)).toBe(true);
+    expect(store.get(pendingLanguageAtom)).toBe('ms');
+
+    await commitLanguagePreference('ms');
+
+    expect(rescheduleMock).toHaveBeenCalledTimes(1);
+    expect(store.get(languagePreferenceAtom)).toBe('ms');
+    expect(store.get(languageCommitBusyAtom)).toBe(false);
+    expect(store.get(pendingLanguageAtom)).toBe(null);
+  });
+
+  it('refuses a commit for a locale another pick already revealed', async () => {
+    store.set(lastArmedLanguageAtom, 'en');
+    rescheduleMock.mockResolvedValue(true);
+
+    revealLanguageLoader('ar');
+    await commitLanguagePreference('ms');
+
+    expect(rescheduleMock).not.toHaveBeenCalled();
+    expect(store.get(languagePreferenceAtom)).toBe('');
+    // The revealed pick still owns the loader
+    expect(store.get(pendingLanguageAtom)).toBe('ar');
+    store.set(languageCommitBusyAtom, false);
+    store.set(pendingLanguageAtom, null);
+  });
+
+  it('keeps the first reveal when a second tap lands before the first commit starts', () => {
+    revealLanguageLoader('ar');
+    revealLanguageLoader('ms');
+
+    expect(store.get(pendingLanguageAtom)).toBe('ar');
+    store.set(languageCommitBusyAtom, false);
+    store.set(pendingLanguageAtom, null);
+  });
+
   it('refuses a second commit while one is in flight', async () => {
     store.set(lastArmedLanguageAtom, 'en');
     const resolvers: Array<(value: boolean) => void> = [];
