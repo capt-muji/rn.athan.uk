@@ -69,6 +69,44 @@ worktree's `node_modules` still held `expo-widgets` 58.0.14 while the ff'd tree 
 `patches/expo-widgets+58.0.14.patch`. Environmental, no code changed: `yarn install
 --frozen-lockfile` synced the worktree install to the lockfile, then the commit re-ran.
 
-Version 2.0.871, merged, lane fast-forwarded, main-tree gradle versionName set.
+Version 2.0.871, merged, lane fast-forwarded, main-tree gradle versionName set. Commit
+`ad8c07ba`, merge `1fccb570`. Hook: `Tests: 2 skipped, 5706 passed, 5708 total`, coverage
+Statements/Branches/Functions/Lines all `100%` (5392/2324/1129/4830).
+
+session: ses_eba9c9710ffeSr0kPQdiXDMu60
+
+### Step 02 — done
+
+Branch `docs/117-2-landed-state` off lane/117 (`1fccb570`). All eight anchors re-counted 1
+(patch still `patches/expo-widgets+58.0.19.patch`).
+
+Red: FINDINGS.md sections 3 and 4 did not exist; this commit creates them.
+
+Section 3 written per the change contract: 6 landed-state rows (the row 39 halves: the
+precomposed footer `ed8ce964` 2.0.32, the runtime locale patch `203fabf0` 2.0.34 fixed
+`2fc2bc4e` 2.0.46 with the D44/D79 device-keyed STATIC tables, the per-locale native
+strings, the convergence re-push; row 88's Latin half `3c1b620f` 2.0.744 with the pin at
+`shared/__tests__/widgetTimeline.test.ts:224-241`; the patch's two hunk families with PR
+`expo/expo#51292` awaiting review and the locale injection carrying no PR), the versions
+note (`ai/UPSTREAM-PRS.md:12` names `expo-widgets+58.0.5`, the live file is
+`patches/expo-widgets+58.0.19.patch`), and row 69's parked scope quoted verbatim.
+
+Section 4: 6 seams, each with both sides and file:line — the stale-card keying asymmetry,
+the localised Android unit letters against rows 83/85/102's fixed-letter law
+(`shared/time.ts:619-628` the app side), the system-formatted iOS countdown, the stamped
+unread `rtl` field (row 68's P16), the gallery's en fallback outside the six, the
+v1-snapshot fallback words. The three live reads named per PLAN section 7: the SwiftUI
+glyphs per device language and numbering setting, the gallery on a device outside the six,
+the Arabic face in its LTR shell.
+
+Green: the scripted citation check opened 258 file:line citations across all four sections,
+212 needle-verified in the cited window, 0 mismatches. Row 69's quote byte-compared against
+the queue cell: `awk 'NR==150' ai/plans/README.md | awk -F'|' '{gsub(/^ +| +$/, "", $4);
+printf "%s", $4}'` against the FINDINGS quote, `diff` exit 0 (recorded).
+
+Review checklist: the quote is verbatim (diff 0); every landed-state claim carries its
+commit sha or its queue record line; each seam names both sides with file:line.
+
+Version <VERSION>, merged, lane fast-forwarded, main-tree gradle versionName set.
 
 session: ses_eba9c9710ffeSr0kPQdiXDMu60
