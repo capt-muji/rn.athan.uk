@@ -4,12 +4,13 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { london, showLondonDay } from '@/__tests__/harness';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
 
-import PrayerTime, { COLON_BRIGHTENING } from '../Time';
+import { colonInkPair } from '../colonInk';
+import PrayerTime from '../Time';
 
 const SUNRISE = 1;
 const DHUHR = 2;
@@ -32,7 +33,7 @@ const flattenStyle = (style: unknown): Record<string, unknown> =>
     ? Object.assign({}, ...style.map((entry) => flattenStyle(entry)))
     : (style as Record<string, unknown>);
 
-/** The style entries in render order: the static parts, then whatever state style the row hands the colon */
+/** The style entries in render order: the static parts, then the derived colour the colon always carries */
 const styleEntries = (node: unknown): unknown[] => (node as { props: { style: unknown } }).props.style as unknown[];
 
 describe('a row before Fajr on Friday 11 September 2026 at 03:00', () => {
@@ -139,7 +140,7 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
     expect(style.transform).toEqual([{ translateY: -1.5 }]);
   });
 
-  it('paints the colon at the dim colour, and half as bright again on the next prayer only', async () => {
+  it('carries the next pair on the next row and the resting pair on an upcoming one, both as the derived entry', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(
       <>
@@ -148,41 +149,40 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
       </>
     );
 
-    // Asr is next at 14:00, so its colon brightens for the active background; Magrib's carries the base ink
-    // under the derived brightening entry
-    const colon = screen.getAllByText(':')[0];
-    expect(flattenStyle(colon.props.style).color).toBe(NEXT_COLON_COLOUR);
-    const upcoming = styleEntries(screen.getAllByText(':')[1]);
-    expect((upcoming[1] as Record<string, unknown>).color).toBe(COLON_COLOUR);
-    expect(upcoming[2]).toBeDefined();
+    // Asr is next at 14:00; Maghrib is upcoming: the pair names each row's ink, and the
+    // derived entry sits on both, because a static ink swapped in after it never lands on Fabric
+    expect(colonInkPair({ isNext: true, isPassed: false, isSelected: false, isStandard: true }).to).toBe(
+      NEXT_COLON_COLOUR
+    );
+    expect(colonInkPair({ isNext: false, isPassed: false, isSelected: false, isStandard: true })).toEqual({
+      from: COLON_COLOUR,
+      to: COLON_COLOUR,
+    });
+    expect(styleEntries(screen.getAllByText(':')[0])[2]).toBeDefined();
+    expect(styleEntries(screen.getAllByText(':')[1])[2]).toBeDefined();
     expect(screen.getByLabelText('16:29')).toBeOnTheScreen();
     expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
   });
 
-  it('paints a passed row\u2019s colon at the opaque white, and leaves an upcoming row\u2019s untouched', async () => {
+  it('carries the passed pair on a passed row', async () => {
     showLondonDay('2026-09-11', '14:00');
-    await render(
-      <>
-        <PrayerTime type={ScheduleType.Standard} index={FAJR} />
-        <PrayerTime type={ScheduleType.Standard} index={MAGRIB} />
-      </>
-    );
+    await render(<PrayerTime type={ScheduleType.Standard} index={FAJR} />);
 
-    // Fajr has passed at 14:00, so its colon carries the ruled white; Magrib is upcoming and keeps its own
-    const passed = screen.getAllByText(':')[0];
-    expect(flattenStyle(passed.props.style).color).toBe(PAST_COLON_COLOUR);
-    const upcoming = styleEntries(screen.getAllByText(':')[1]);
-    expect((upcoming[1] as Record<string, unknown>).color).toBe(COLON_COLOUR);
-    expect(upcoming[2]).toBeDefined();
+    expect(colonInkPair({ isNext: false, isPassed: true, isSelected: false, isStandard: true }).to).toBe(
+      PAST_COLON_COLOUR
+    );
+    expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
   });
 
-  it('paints the next colon at the extras colour on the Extra schedule', async () => {
+  it('carries the extras next pair on the Extra schedule', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerTime type={ScheduleType.Extra} index={ISTIJABA} />);
 
-    // Istijaba is the next Extras row at 14:00 on Friday, so its colon takes the extras tint, not the standard one
-    const colon = screen.getByText(':');
-    expect(flattenStyle(colon.props.style).color).toBe(NEXT_COLON_COLOUR_EXTRAS);
+    // Istijaba is the next Extras row at 14:00 on Friday, so its pair takes the extras tint
+    expect(colonInkPair({ isNext: true, isPassed: false, isSelected: false, isStandard: false }).to).toBe(
+      NEXT_COLON_COLOUR_EXTRAS
+    );
+    expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
   });
 
   it('renders the unread sentinel as one node with no colon node', async () => {
@@ -199,22 +199,42 @@ describe('the colon under the overlay selection', () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
 
-    // The whole row brightens on selection; the upcoming colon's derived entry carries the pair both ways
-    expect(COLON_BRIGHTENING).toEqual({ from: COLON_COLOUR, to: PRIMARY_COLOUR });
+    // The whole row brightens on selection; the upcoming pair carries it both ways
+    expect(colonInkPair({ isNext: false, isPassed: false, isSelected: true, isStandard: true })).toEqual({
+      from: COLON_COLOUR,
+      to: PRIMARY_COLOUR,
+    });
     expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
 
     await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
-    // While selected the static state inks must not feed the colon: the derived entry owns the slot
-    const selectedColour = flattenStyle(screen.getByText(':').props.style).color;
-    expect(selectedColour).not.toBe(NEXT_COLON_COLOUR);
-    expect(selectedColour).not.toBe(NEXT_COLON_COLOUR_EXTRAS);
-    expect(selectedColour).not.toBe(PAST_COLON_COLOUR);
+    expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
 
     await act(() => closeOverlay());
     expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
   });
 
-  it('keeps the passed and next colons at their own inks while selected', async () => {
+  it('takes the next pair the moment an upcoming row becomes the next prayer', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const view = await render(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
+
+    expect(colonInkPair({ isNext: false, isPassed: false, isSelected: false, isStandard: true })).toEqual({
+      from: COLON_COLOUR,
+      to: COLON_COLOUR,
+    });
+
+    // 19:00: Asr has passed and Maghrib is next - the pair flips on that render and the
+    // derived entry stays put, so no native value is left behind
+    jest.setSystemTime(london('2026-09-11', '19:00'));
+    await view.rerender(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
+
+    expect(colonInkPair({ isNext: true, isPassed: false, isSelected: false, isStandard: true }).to).toBe(
+      NEXT_COLON_COLOUR
+    );
+    expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
+    expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
+  });
+
+  it('keeps the passed and next pairs while selected', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(
       <>
@@ -224,9 +244,13 @@ describe('the colon under the overlay selection', () => {
     );
 
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
-    expect(flattenStyle(screen.getAllByText(':')[0].props.style).color).toBe(PAST_COLON_COLOUR);
+    expect(colonInkPair({ isNext: false, isPassed: true, isSelected: true, isStandard: true }).to).toBe(
+      PAST_COLON_COLOUR
+    );
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
-    expect(flattenStyle(screen.getAllByText(':')[1].props.style).color).toBe(NEXT_COLON_COLOUR);
+    expect(colonInkPair({ isNext: true, isPassed: false, isSelected: true, isStandard: true }).to).toBe(
+      NEXT_COLON_COLOUR
+    );
   });
 });
