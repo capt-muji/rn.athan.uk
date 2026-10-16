@@ -12,7 +12,7 @@ import { Platform } from 'react-native';
 import { type Breakage, london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import { ScheduleType } from '@/shared/types';
 import { setSequence } from '@/stores/schedule';
-import { countdownBarShownAtom } from '@/stores/ui';
+import { countdownBarShownAtom, showTimePassedAtom } from '@/stores/ui';
 
 export { type Breakage, london, saveLondonDays };
 
@@ -63,4 +63,12 @@ export const onPlatform = (os: 'ios' | 'android', version?: number | string): vo
  */
 export const seedCountdownBarOn = (): void => {
   getDefaultStore().set(countdownBarShownAtom, true);
+};
+
+/**
+ * Time passed rides the same law: the default is off, a suite that reads the ago line as part of
+ * the page seeds it on, and off-behaviour stays in the test that sets the atom itself
+ */
+export const seedTimePassedOn = (): void => {
+  getDefaultStore().set(showTimePassedAtom, true);
 };
