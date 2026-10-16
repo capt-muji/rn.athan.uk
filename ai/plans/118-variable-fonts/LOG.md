@@ -81,3 +81,64 @@ Candidates (scripts/measure-fonts.py file, four blocks, $TMPDIR/lane118-fonts/vf
 Break: measure-fonts.py file on a garbage file exited 1. ALL AS EXPECTED.
 
 session: ses_ebab6f35fffedobipiJeJ7Att0
+
+### Step 2 — DONE
+
+Branch docs/118-instances. Eight instanced blocks produced by
+`measure-fonts.py instance` (full text in $TMPDIR/lane118-fonts/instances.txt); the
+instancer renames the instances (Rubik-VF-wght500 reports fullName Rubik Medium weight
+500).
+
+Comparison against the statics, per family and weight (R2.2):
+
+- Line boxes: delta 0 everywhere. Every instanced file at 400 and 500 carries the same
+  hhea trio, usWin pair and typo trio as its family's statics: Rubik 935/-250/0 and
+  1066/466, Roboto 1900/-500/0 and 1946/512, Devanagari 896/-408/0 and 1348/558, Thai
+  1061/-450/0 and 1061/450. No pin from rows 79, 87, 106, 108 or 110 reopens.
+- Advances: Rubik delta 0 on every pinned glyph at both weights (VF@400 equals
+  Rubik-Regular digit for digit, VF@500 equals Rubik-Medium digit for digit). Devanagari
+  delta 0 on every glyph the statics carry (digits, colon, space, period; the statics
+  carry no Latin letters). Thai: the statics carry no digits or letters, so only the
+  space compares, delta 0; the VF's own digits are newly present and tabular (572 each
+  at both weights).
+- Roboto: five Latin glyphs differ by 1 unit per 1000em. At 400: m +1 (877 vs 876),
+  period +1 (264 vs 263). At 500: h +1 (556 vs 555), m +1 (871 vs 870), s -1 (515 vs
+  516), colon -1 (264 vs 265), period -1 (278 vs 279). Digits and the row-relevant
+  glyphs are equal (562/568 tabular).
+
+STOP answered, agent-ruled 2026-10-16: the plan predicted delta 0 for every glyph; the
+Roboto five-glyph +|-1 divergence is quoted above. Verdict: instancer rounding, not a
+metrics divergence. One unit per 1000em is 2 font units at Roboto's 2048 upm, under
+0.03px at the app's largest 26pt size, and it appears only where fontTools' instancer
+rounds a gvar delta against the integer advance Google's own statics cutter rounded the
+other way. A device never draws the fontTools instance: platforms apply the variation
+continuously at render time. The step-2 expectation is amended to "delta 0 on every
+pinned glyph except Roboto m, h, s, colon and period at +|-1 unit per 1000em, instancer
+rounding". The conclusion this step feeds (metrics identical, nothing reopens) stands.
+
+tnum verdicts (R2.3, full text in tnum.txt):
+
+- Rubik at 400: default NOT equal (0:635 1:428 2:587 3:601 4:621 5:594 6:603 7:513
+  8:636 9:593), tnum equal at 619 each. Rubik at 500: default NOT equal, tnum equal at
+  641 each. The no-shift rule keeps riding the fontVariant tabular-nums pin, which the
+  variable files honor identically to the statics.
+- Roboto at 400 and 500: both columns equal (562 at 400, 568 at 500), tabular by
+  default, tnum a no-op.
+
+Byte table (R2.2 record, `measure-fonts.py sizes`, gzip -9 as the deflate proxy):
+
+| set | files | raw bytes | gzip9 bytes |
+| --- | --- | --- | --- |
+| statics today | 8 | 1,250,804 | 579,325 |
+| variable candidates | 4 | 1,708,984 | 905,837 |
+| growth | | +458,180 (36.8 percent) | +326,512 (56.3 percent) |
+
+Per family raw (statics pair vs one VF): Roboto 336,904 vs 488,584; Rubik 350,588 vs
+359,804; Devanagari 487,236 vs 641,944; Thai 76,076 vs 218,652. gzip9: Roboto 176,846
+vs 280,238; Rubik 156,382 vs 146,358 (the one saving, 10,024 bytes); Devanagari
+207,127 vs 347,745; Thai 38,970 vs 131,496. Cause: the statics are Google's subset
+builds (Thai pair 140 glyphs against the VF's 467, Devanagari 845 against 1117).
+
+Break: `measure-fonts.py instance` on a garbage file exits nonzero. ALL AS EXPECTED.
+
+session: ses_ebab6f35fffedobipiJeJ7Att0
