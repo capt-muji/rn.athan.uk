@@ -1,8 +1,0 @@
-  const rowTop = visualRowIndex * STYLES.prayer.height;
-
-  // The tip sits inside the row band so the card visibly belongs to its row, the card body
-  // keeping its gap below the edge. Never given a height, so it is as tall as its own content;
-  // the above-branch anchors at the row top and lifts itself clear by its own height
-  const computedStyleInfoBox: ViewProps['style'] = showInfoBoxAbove
-    ? { top: rowTop + TIP_OVERLAP, transform: [{ translateY: '-100%' }], start: 0, width: '100%' }
-    : { top: rowTop + STYLES.prayer.height - TIP_OVERLAP, start: 0, width: '100%' };
