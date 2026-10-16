@@ -12,6 +12,13 @@ runs from).
 
 ## Section 1 - the command census
 
+Verified live at execution (step 1, 2026-10-16): `npx --yes @expo/agent-cli@1.0.19 --help`
+prints the 35 command names this table covers - the six Develop rows, the four Understand
+rows, the nine Debug rows, Create, Deployment, the five Agent-setup rows, the three Learn
+rows, Feedback, and the four Account commands - with `stop` printed as `dev:stop`'s alias;
+no name the help prints is missing from the table, and the table names nothing the help
+omits. The Expo CLI fallback row covers the eleven commands the help lists in prose.
+
 `--help` prints nine group headings plus an Expo CLI fallback list: 35 command names,
 of which `stop` is printed as an alias of `dev:stop`, so 34 distinct commands. The workflow
 contract (from `help workflow`): exit codes 0 (success), 1 (the tool failed, change the

@@ -30,3 +30,16 @@ target pointed at the FINDINGS census table), one rejected on the code: the pre-
 merge-base ref stays the local `uat` (the integration branch holding the unpushed
 audited commits; origin/uat lags them, so basing the check on origin/uat would fail
 every mid-flight lane) - the section 3 wording now names the local ref instead.
+
+### Step 1 — DONE (census verified)
+
+Branch `docs/119-1-census` off `lane/119`, commit `2.0.880`. Pre-flight `PREFLIGHT OK` run
+cold from `$TMPDIR` before the branch. Live `npx --yes @expo/agent-cli@1.0.19 --help` run
+in the worktree: the 35 printed command names match the FINDINGS section 1 table row for
+row (six Develop, four Understand, nine Debug, one Create, one Deployment, five
+Agent-setup, three Learn, one Feedback, four Account), `stop` printed as `dev:stop`'s
+alias, the fallback prose naming the eleven Expo CLI commands. FINDINGS section 1 opens
+with the verification paragraph. Queue row set IN PROGRESS, step 1. The LOG entry rode the
+amend (sequencing slip: the entry was written after the commit started; the commit was
+still unmerged).
+session: lane-119 in-lane execution (D119.6; no executor worker dispatched)
