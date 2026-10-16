@@ -55,6 +55,28 @@ Owner rules that apply:
   no physical Duo device exists.
 - D111.4 (planner, 2026-10-16): `expo-hinge` and every other new SDK 58 package
   install in row 116's planning, not here. This ticket moves existing pins only.
+- D111.5 (owner, 2026-10-16, interview round 1): the XS deep-dive loop runs on a
+  Release-configuration build with the real API first. A Metro dev build joins
+  only if a defect needs live debugging.
+- D111.6 (owner, 2026-10-16, interview round 1): the widgets patch's
+  device-locale hunk stays local; no upstream PR now. `ai/UPSTREAM-PRS.md` is
+  refreshed to record both hunks, and the upstreaming question moves to row 117's
+  inventory.
+- D111.7 (owner, 2026-10-16, interview round 2): claim
+  `enableRemoteNotifications: false` in the `expo-notifications` app.json plugin
+  entry. Verified from the installed 58.1.4 plugin source: iOS plugin option,
+  default `true`, registers APNs; this app is local-only.
+- D111.8 (owner, 2026-10-16, interview rounds 1 and 2): rows 117 (widgets and
+  languages, inventory first), 118 (variable fonts, investigation first) and 119
+  (@expo/agent-cli adoption) created by her order; all NOT PLANNED.
+- D111.9 (planner, 2026-10-16, policy): the non-SDK freshness drift batches into
+  this ticket after the SDK re-pin, one commit per package: jotai 3.0.1, pino
+  10.4.0, pino-pretty 13.2.0, @biomejs/biome 2.5.15, @testing-library/react-native
+  14.1.0. jest stays on its caret range ahead of Expo's pins on purpose.
+- D111.10 (owner, 2026-10-16, round 3): rows 120 (iOS Notification Center
+  grouping, threadIdentifier; supersedes the programme's no-threadIdentifier
+  ruling) and 121 (expo-location/next evaluation, heavy compass testing) created
+  by her order.
 
 ### 2.2 The executor must not decide
 
