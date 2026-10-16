@@ -50,5 +50,62 @@ The plan is `PLAN.md`; the findings are `FINDINGS.md`; the protocol is `PLAN.md`
 ### Pre-flight and the gate
 
 `scripts/preflight-120.sh` was run from the worktree root: `PREFLIGHT OK` (branch `lane/120`,
-tree clean apart from the plan folder, 7 anchors each counting 1 in its own source, the pin at
-58.1.4, the pinned-source lines present, the app-tree sweep empty).
+tree clean apart from the plan folder, 8 anchors each counting 1 in its own source, the pin at
+58.1.4, all nine installed-package citations present, the app-tree sweep empty). The gate
+`bash scripts/check-plan.sh ai/plans/120-notification-center` prints `PLAN OK`.
+
+### The grill (athan-plan-griller, dispatched cold, 2026-10-16)
+
+The griller read the plan folder at its own md5 and ran both gates itself. It raised sixteen
+findings, 6 must, 7 should, 3 nice. Every one was adjudicated against the code; none was
+rejected. Applied, with the finding number it answers:
+
+- F1, F7 branch choreography: the pre-flight's branch check now names the moment it runs, and
+  every step commits on `lane/120` and merges into `uat`, so no step's base is a branch that
+  predates the previous step's committed findings.
+- F2, F3, F4 counts: ten repository files and nine installed-package files named exactly; eight
+  anchors (the tenth anchor is now counted by the pre-flight too); the pre-flight greps all nine
+  installed-package citations, so its claim is true.
+- F5, F6, F13 acceptance: R4.1 now names each read's tool and bounds the log window; R4.2's event
+  is the not-observed record with row 111's resume record cited; R5.1's event is step 3's EXECUTED
+  write, and the outcome text keeps its audit verdict for the audit that runs.
+- F8 step 2's missing merge line; F14 FINDINGS section 2 moved into step 1, whose subject is the
+  current state.
+- F9 `shared/types.ts` and `stores/notifications.ts:1836-1876` added to the code map, the second
+  being where R1.4's background-task claim is shown.
+- F10 the read-side type range corrected to `Notifications.types.d.ts:450-480`, `summaryArgument`
+  at `:466`.
+- F11 the WWDC18-710 claim now carries the transcription's URL, so a reader can check it.
+- F12 the third delivery event is stated as derived from the armed time, never as something the
+  ledger says.
+- F15 the pre-commit symptom row now names what can actually fail.
+- F16 the empty `steps/` directory deleted.
+
+Two candidates the griller saw as already fixed mid-read (`PresentationModule.swift:12-42` and
+the channel-block ranges) were corrected before its report and are recorded here so the sequence
+is not lost. The plan files changed three times while the griller read; every finding above is
+confirmed against the revision it named.
+
+### The re-pin the rebase surfaced (agent-ruled, 2026-10-16)
+
+The lane's first merge attempt conflicted on the version files, so the lane branch was rebased
+onto `uat` under the lane-weather rule. The rebased lockfile carries sibling lane 111's SDK 58
+re-pin (merged at 2.0.908), and the worktree's reinstall moved `expo-notifications` from 58.1.4
+to 58.1.5: the plan's own section 2.2 STOP fired, and re-measuring is the lead's job under that
+rule, not a replan's.
+
+Re-verified at 58.1.5, every pinned citation the plan rests on: the iOS thread-identifier
+assignment (`NotificationRecords.swift:297,369`), the scheduler's content build
+(`SchedulerModule.swift:135`), the JS input's `threadIdentifier` and the read side's
+`summaryArgument` (`Notifications.types.d.ts:613`, `:450-480`, `:466`), the Android group-key
+mapping (`ArgumentsNotificationContentBuilder.java:51`, `NotificationData.kt:62`), the three
+delivered-set routes (`PresentationModule.swift:12,22,33,36-37`), the Android dismissal route
+(`NotificationsService.kt:175`, `ExpoPresentationDelegate.kt:277`). All hold. Only the changelog
+line numbers moved, with the entries still under the same version headings: the iOS grouping
+entry (58.0.0, expo/expo#49429) from :118 to :125, the Android one (58.1.1, expo/expo#43388) from
+:31 to :38. 58.1.5 itself carries one dependency bump (`expo-application` 58.1.2) and touches
+neither grouping nor dismissal, so no conclusion moves.
+
+Applied: the plan's version references and both changelog citations, FINDINGS section 1.4, and the
+pre-flight's pin constant now read 58.1.5, and the pre-flight's greps for the six citations the
+grill found unchecked were added and pass at the new pin.

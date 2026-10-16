@@ -6,7 +6,7 @@ set -u
 
 PLANNED_SHA="b329d543"
 PLANNED_VERSION="2.0.900"
-PINNED_NOTIFICATIONS="58.1.4"
+PINNED_NOTIFICATIONS="58.1.5"
 ANCHOR_DIR="ai/plans/120-notification-center/scripts/anchors"
 fail=0
 
@@ -56,6 +56,7 @@ count_anchor "$ANCHOR_DIR/a4-armingCall.txt" device/notifications.ts
 count_anchor "$ANCHOR_DIR/a5-foregroundHandler.txt" hooks/useNotification.ts
 count_anchor "$ANCHOR_DIR/a6-androidDelegate.txt" plugins/replacePreviousNotification.js
 count_anchor "$ANCHOR_DIR/a7-mockContentInput.txt" shared/__mocks__/expo-notifications.ts
+count_anchor "$ANCHOR_DIR/a10-initPermissionBranch.txt" shared/notifications.ts
 
 # 6. The pinned package is the pin this plan was written against.
 installed="$(python3 -c "import json;print(json.load(open('node_modules/expo-notifications/package.json'))['version'])" 2>/dev/null || echo missing)"
@@ -69,6 +70,13 @@ grep -q "content.threadIdentifier = threadIdentifier" "$iOS_RECORDS" || reason "
 grep -q "removeAllDeliveredNotifications()" "$iOS_PRESENT" || reason "dismissAllNotificationsAsync no longer routes to removeAllDeliveredNotifications in $iOS_PRESENT"
 grep -q "deliveredNotifications()" "$iOS_PRESENT" || reason "getPresentedNotificationsAsync no longer reads deliveredNotifications() in $iOS_PRESENT"
 grep -q "setGroup(getGroup(payload))" "$ANDROID_BUILDER" || reason "the Android group-key mapping is missing from $ANDROID_BUILDER"
+grep -q 'data\["threadIdentifier"\]' node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/notifications/model/NotificationData.kt || reason "the Android threadIdentifier-to-group binding is missing from NotificationData.kt"
+grep -q "content: content.toUNMutableNotificationContent()" node_modules/expo-notifications/ios/ExpoNotifications/Notifications/Scheduling/SchedulerModule.swift || reason "the iOS scheduler no longer builds content through the thread-identifier record"
+grep -q "removeDeliveredNotifications(withIdentifiers: \[identifier\])" "$iOS_PRESENT" || reason "dismissNotificationAsync no longer routes to removeDeliveredNotifications in $iOS_PRESENT"
+grep -q "notificationManager.cancelAll()" node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/service/delegates/ExpoPresentationDelegate.kt || reason "the Android dismissal route no longer reaches cancelAll()"
+grep -q "fun dismissAll(context: Context" node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/service/NotificationsService.kt || reason "the Android dismissal entry point moved from NotificationsService.kt:175"
+grep -q "\[ios\] Add support for grouping notifications via .threadIdentifier." node_modules/expo-notifications/CHANGELOG.md || reason "the iOS grouping changelog entry (58.0.0) is missing"
+grep -q "\[Android\] Add support for grouping notifications via .threadIdentifier." node_modules/expo-notifications/CHANGELOG.md || reason "the Android grouping changelog entry (58.1.1) is missing"
 grep -q "threadIdentifier?: string" node_modules/expo-notifications/build/Notifications.types.d.ts || reason "the JS content input no longer declares threadIdentifier"
 if grep -q "summaryArgument" node_modules/expo-notifications/build/Notifications.types.d.ts && \
    python3 - <<'PY'
