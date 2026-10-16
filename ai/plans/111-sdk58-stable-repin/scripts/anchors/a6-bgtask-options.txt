@@ -1,0 +1,4 @@
+    // (ISSUES #37). `requiresNetworkConnectivity` comes from patches/expo-background-task.
+    await BackgroundTask.registerTaskAsync(BACKGROUND_TASK_NAME, {
+      minimumInterval: BACKGROUND_TASK_INTERVAL_MINUTES,
+      requiresNetworkConnectivity: false,

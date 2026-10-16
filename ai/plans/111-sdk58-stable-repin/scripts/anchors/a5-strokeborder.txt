@@ -1,0 +1,4 @@
+            strokeBorder({
+              content: palette.pillStroke,
+              style: { lineWidth: 1 },
+              shape: 'roundedRectangle',

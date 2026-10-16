@@ -1,3 +1,0 @@
-    "expo-updates": "~58.0.15",
-    "expo-widgets": "58.0.14",
-    "jotai": "3.0.0",
