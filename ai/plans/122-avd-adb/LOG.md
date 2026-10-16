@@ -85,3 +85,19 @@ prints the twelve command names plus the three agent-command names and no device
 command; `npx expo run:android --help` prints `-d, --device [device]`. The toolchain line in
 the section stands as the step 1 verification recorded it.
 session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
+
+### Step 3 — DONE (the two questions, the experiments, the unverified list)
+
+Branch `docs/122-3-questions` off `lane/122` at `5815a3b0`. Pre-flight `PREFLIGHT OK`, run cold
+from `$TMPDIR` before the branch. FINDINGS sections 4 and 5 refined: every rejected option now
+carries the measured fact that rejects it (question 1: the CLI's absent logcat, dumpsys,
+screenrecord and SurfaceFlinger surfaces, the Metro start and stop per call, the atlas-recorded
+per-device handling; question 2: the doubled API 36 coverage and the absent coverage gap), each
+recommendation carries its challenge and an explicit flip-check on its strongest rival (C for
+question 1, A for question 2), and each unverified claim names the step that settles it - U1 an
+older CLI, U2 `sdkmanager --list` before the install she authorises, U3 E1 and E2, U4 E1 and
+E2 on the fleet's two slowest installs, U5 E2 and E5, U6 `adb -s 8T_SERIAL shell getprop
+ro.build.version.release` at the next device wave. The five named experiments stand with their
+commands and waiting conditions, and two cites were corrected to the ranges that hold the
+quoted lines (`runAndroidAsync.js:127-133`, `:172`).
+session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
