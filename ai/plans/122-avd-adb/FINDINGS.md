@@ -72,16 +72,16 @@ files, measured 2026-10-16):
 
 | File | Lines | What it does |
 | --- | --- | --- |
-| `e2e/scripts/baseline-compare.sh` | 6, 14, 20-21 | Requires adb, defaults the serial to the first attached device (`adb devices \| awk 'NR>1 && $2=="device"{print $1; exit}'`), clears logcat, then streams `logcat -s ReactNativeJS -v threadtime` into the run's log |
+| `e2e/scripts/baseline-compare.sh` | 6, 14, 20, 21 | Requires adb, defaults the serial to the first attached device (`adb devices \| awk 'NR>1 && $2=="device"{print $1; exit}'`), clears logcat, then streams `logcat -s ReactNativeJS -v threadtime` into the run's log |
 | `e2e/scripts/device-checks.sh` | 24, 30, 40, 45, 135 | The same serial default, then `a() { adb -s "$SERIAL" "$@"; }` over the alarm, channel and permission checks, with the unreachable-device failure and the transport-problem comment |
-| `e2e/scripts/frame-audit.sh` | 26, 31-38, 75-81 | The same serial default, `am force-stop`, `am start -W`, `input tap`, `dumpsys SurfaceFlinger --latency`, `screenrecord`, `pull` |
+| `e2e/scripts/frame-audit.sh` | 26, 31, 32, 36, 38, 75, 76, 79, 81 | The same serial default, `am force-stop`, `am start -W`, `input tap`, `dumpsys SurfaceFlinger --latency`, `screenrecord`, `pull` |
 | `e2e/scripts/idle-cpu.sh` | 7, 12, 15 | Requires adb, the same serial default, then per-thread `/proc` deltas |
 | `e2e/scripts/idle_cpu.py` | 11, 73 | Two message strings naming an adb failure; the helper runs no adb command |
 | `e2e/README.md` | 50, 128, 130, 139 | The manual marks stream, the `--device` gotcha, the build-then-install advice, and the zsh word-splitting trap |
 | `e2e/AGENTS.md` | 18 | The `--device` gotcha restated, with the build-then-install advice |
 | `e2e/device-atlas-oneplus3t.md` | 4, 63, 102 | The tap driver, the Play Protect settings that make `adb install` unattended, and the widget diagnostics |
-| `e2e/device-atlas-oppo-findx8.md` | 12-14 | The verifier settings, the 60 to 90 s install window with its `dumpsys package` poll, and the double `monkey` launch |
-| `e2e/device-atlas-sm-s911b.md` | 41-42 | The unattended install and the `monkey` launch |
+| `e2e/device-atlas-oppo-findx8.md` | 12, 13, 14 | The verifier settings, the 60 to 90 s install window with its `dumpsys package` poll, and the double `monkey` launch |
+| `e2e/device-atlas-sm-s911b.md` | 41, 42 | The unattended install and the `monkey` launch |
 
 The seven `e2e/flows/*.yaml` files call adb nowhere: Maestro drives them by device id
 (`maestro --device "$SERIAL" test`). `e2e/device-atlas-iphone-xs.md` names no adb command.
