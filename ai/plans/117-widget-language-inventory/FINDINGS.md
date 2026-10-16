@@ -84,3 +84,74 @@ The 12 surfaces:
 | Footer (under the hero and list, both platforms) | App locale, precomposed | Gregorian preference (weekday alone, Friday shown): `Fri` · `الجمعة` · `Jum` · `Jmc` · `शुक्र` · `ศุกร์`; Hijri preference (Rajab 1 shown): `Raj 1` · `رجب 1` · `Rej 1` · `Raj 1` · `रजब 1` · `รอจ 1` (the month's first three graphemes plus a Latin day) | Composed `shared/time.ts:324-349` (Hijri slice `:337`, weekday `:348`), Latin by `:286-290`; baked `shared/widgetTimeline.ts:217`, `:278`, `:318`; drawn `widgets/PrayerWidget.tsx:754`, `:473`, `:563`; weekday keys `en.ts:215`, `ar.ts:196`, `ms.ts:199`, `so.ts:200`, `hi.ts:197`, `th.ts:195`; Hijri month keys `en.ts:224`, `ar.ts:205`, `ms.ts:208`, `so.ts:209`, `hi.ts:206`, `th.ts:204` |
 | Unit letters (`WidgetStrings` `h`/`m`; `s` and `now` ride unread, the countdown being minutes-only) | App locale | `h`/`m` · `س`/`د` · `j`/`m` · `sa`/`da` · `घं`/`मि` · `ชม.`/`น.` | Shape `shared/widgetTypes.ts:181-193` (the unread-`s`/`now` note `:177-179`); baked `shared/widgetTimeline.ts:63-66`; row 69's retirement question (section 3) |
 | The `rtl` field (v8 props, v4 snapshot) | App locale, stamped at push | `true` under ar, `false` in the other five; read by nothing in either widget module (row 68's P16: the Host application is blocked on the widget runtime), so Arabic content lays out in an LTR shell today | Stamped `shared/widgetTimeline.ts:210`, `:271`, `:350`; shape `shared/widgetTypes.ts:20-23`, `:34-36`, fields `:145-152`, `:243-248` |
+
+## 3. The landed state: rows 39 and 88, D44/D79's ground, row 69's parked scope, the patch's hunks
+
+Six rows carry what the widget surfaces inherited. Queue records cited by their line in
+`ai/plans/README.md`.
+
+| # | What landed | Evidence |
+| --- | --- | --- |
+| 1 | The precomposed localized footer (row 39's widget half, props v7): every iOS entry and every Android day carries a `footer` composed by `footerFor` in the app locale at push, so the footer follows a language switch without a layout change; entries and snapshots from before v7 still parse their old `dateLabel` (the tolerance fallbacks) | Commit `ed8ce964` 2.0.32 (row 39's record, `ai/plans/README.md:132`); composed `shared/time.ts:324-349`; baked `shared/widgetTimeline.ts:217`, `:278`, `:318`; the v7 contract `shared/widgetTypes.ts:17-19`, `:31-33`; the parse fallbacks `widgets/PrayerWidget.tsx:654-669`, `:394-402` |
+| 2 | The widget-runtime locale patch and the D44 device-keyed STATIC tables: the patch installs `__expoWidgetDeviceLocale` in the widget process; both widget modules resolve their props-less copy from six inline STATIC tables, mirrored in `shared/i18n/widget-statics.json` and pinned by `shared/__tests__/widgetStaticStrings.test.ts`. D44: the null-props card's static strings are keyed by the device locale the widget process itself reads; D79: static copy (null-props placeholders, stale cards) stays device-keyed per D44 — the iOS stale faces still follow it (section 2, rows 2-3) | Commits `203fabf0` 2.0.34, compile-fixed `2fc2bc4e` 2.0.46 (row 39's record, `ai/plans/README.md:132`); D44/D79 ruled in row 67's cell (`ai/plans/README.md:148`); resolvers `widgets/PrayerWidget.tsx:312-316`, `widgets/LockPrayerWidget.tsx:133-137`, `:377-381`, `:610-614`; the patch hunks (row 6 below) |
+| 3 | The per-locale native strings (row 39): the gallery names and descriptions for all 14 kinds reproduce from committed config into the `locales` block on every prebuild, iOS `Localizable.strings` keyed by the English literals and Android `values-b+<lang>/strings.xml` under plugin-derived names | `app.json:401-681` written from `shared/i18n/native-strings.json`, byte-pinned by `shared/__tests__/nativeLocalesConfig.test.ts:1-9`; en base at `app.json:224-225` |
+| 4 | The language-switch convergence re-push (row 39): one locked pass re-arms notification copy at schedule time and re-pushes both schedules' timelines and snapshots, so every prop-bearing face re-bakes in the new locale; the props-less faces never move (D44) | `stores/language.ts:85-97` (`reconcileLanguageSurfaces`, the last-armed stamp) through `stores/notifications.ts:1616`, `:1627` to `stores/widget.ts`; row 39's record names the convergence ("forward-only convergence over notifications, channels and widgets") |
+| 5 | Row 88's widget half: the native-digit map deleted, so every byte the app composes into the widget props is Latin by construction — footers and rows bake through the shared formatters; the regression pin refuses an Arabic-Indic digit in any prop string under ar. The iOS SwiftUI ticking countdown stays system-formatted, named in row 88's own record as "row 69's owner-blocked ground" | Commit `3c1b620f` 2.0.744; row 88's record (`ai/plans/README.md:207`); the pin `shared/__tests__/widgetTimeline.test.ts:224-241`; the Latin-by-construction notes `shared/time.ts:286-290` |
+| 6 | The patch's two hunk families (live file `patches/expo-widgets+58.0.19.patch`, rebuilt at ticket 111's re-pin; `ai/UPSTREAM-PRS.md:12` still names the patch `expo-widgets+58.0.5`, its measured-era name — the table's other two rows likewise carry older version strings than the live files `patches/expo-background-task+58.0.11.patch` and `patches/expo-location+58.0.16.patch`). (a) The openApp action, Android only: `openApp` on the Jetpack `Button`, default `false`, a tap launching the app through `actionStartActivity`; PR `expo/expo#51292` opened 2026-10-09, awaiting review. (b) The device-locale injection, no PR today: Android `LocaleList.getDefault().get(0).language` passed through `WidgetsJSRuntime.kt` and the jni `WidgetsHermesRuntime.kt` into `WidgetsHermesRuntime.cpp`'s `setProperty(rt, "__expoWidgetDeviceLocale", ...)`; iOS `Locale.current.language.languageCode` set in `WidgetsJSRuntime.swift`; additive global, every default unchanged | `ai/UPSTREAM-PRS.md:12` (the #51292 row); the patch: the openApp hunks in `ExpoWidgetEmittableTree.kt`, the locale hunks in `WidgetsJSRuntime.kt`, `jni/WidgetsHermesRuntime.kt`, `android/src/main/cpp/WidgetsHermesRuntime.cpp`, `ios/Widgets/WidgetsJSRuntime.swift` (`patches/expo-widgets+58.0.19.patch:38`, `:102`, `:112`, `:158`); row 51's discipline (`ai/plans/README.md:134`) |
+
+Row 69's parked scope, quoted verbatim from its queue cell (`ai/plans/README.md:150`, the
+brief column):
+
+> Split from row 63 by D77 (2026-10-12): the Android widget's ALabel renders `1h 12m` from the snapshot's `strings`; this job moves it to the colon format (`0:42`, `1:12`, `2:00`), decides whether the unit fields retire from `WidgetStrings` (shape and fallback work), and re-tests the v1 fallback words. Group: widget props and modules, serialized with rows 67 and 68. OWNER-BLOCKED 2026-10-12 (her hard ban, until she says go)
+
+Its status column reads "DEFERRED 2026-10-13 by the owner's priority call (not anytime soon;
+the D77 split from row 63)"; its waiting-on column reads "owner says go". Nothing folds into
+this ticket: no code runs before her ruling.
+
+## 4. The seams
+
+Each inconsistency the inventory found, both sides named. Where code cannot settle a seam,
+the exact live read that would is named (D117.3).
+
+1. **The stale-card keying asymmetry.** iOS home stale faces read the device-locale
+   `staticRow` (`widgets/PrayerWidget.tsx:588-615`) and so do all six lock stale faces
+   (`widgets/LockPrayerWidget.tsx:178-210`, `:422-453`, `:662-697`), per D44/D79
+   (`ai/plans/README.md:148`). Android's v2+ stale card reads the app-locale baked
+   `strings` (`shared/widgetTimeline.ts:67-70` baked, drawn `widgets/PrayerWidget.tsx:414-432`).
+   An app locale different from the device locale shows two different languages across
+   platforms for the same stale state: app ar on an en device renders the Android stale card
+   in Arabic and the iOS stale card in English.
+2. **The Android countdown's unit letters localise against the app's fixed-letter law.**
+   The bake reads the catalogs (`shared/widgetTimeline.ts:63-64`), so under ar the widget
+   renders `1س 12د` (section 2, row 7) while every app surface renders fixed Latin letters:
+   row 83's record ("lowercase h m letters FIXED in every language (they never localise)",
+   `ai/plans/README.md:202`), row 85's lettered design in every language
+   (`ai/plans/README.md:206`), row 102's typography (`ai/plans/README.md:221`); the app-side
+   implementation composes literal `h`/`m` (`shared/time.ts:619-628`). The widget is the one
+   surface contradicting the law.
+3. **The iOS countdown is system-formatted.** No format string crosses the `@expo/ui`
+   bridge (`widgets/PrayerWidget.tsx:691-695`; `widgets/LockPrayerWidget.tsx:212-216`,
+   `:702-706`): SwiftUI `Text(timerInterval:)` follows the device's locale and numbering
+   settings, outside both the app locale and row 88's Latin-everywhere ruling (`ai/plans/README.md:207`,
+   which names the surface "row 69's owner-blocked ground"). A device set to a numbering
+   system other than Latin may render non-Latin countdown glyphs. Live read that settles it:
+   a simulator run per device language and numbering setting, reading the widget face;
+   deferred by D117.3 and marked `unverified` in section 2.
+4. **The `rtl` field is stamped and read by nothing.** Stamped on every push
+   (`shared/widgetTimeline.ts:210`, `:271`, `:350`; shape `shared/widgetTypes.ts:20-23`,
+   `:34-36`), read by no line in either widget module: row 68's record names the Host
+   application "blocked on the widget runtime" (P16, `ai/plans/README.md:149`). Arabic
+   content lays out in an LTR shell: the medium list keeps name-left/time-right and the lock
+   faces keep their LTR name-time order. Live read that would show it: a placed widget under
+   app-locale ar, reading the medium list face — the code settles that nothing reads the
+   field; the read confirms the visual.
+5. **The gallery falls back to English outside the six.** The native layer covers exactly
+   ar, ms, so, hi, th over the en base (`app.json:401-681`,
+   `shared/i18n/native-strings.json`); a device set to a seventh language gets the en base
+   strings through the OS's own fallback. Live read that settles the rendered bytes: a
+   device language outside the six, reading the widget gallery.
+6. **The v1-snapshot fallback words.** A snapshot stored by a pre-v2 app carries no
+   `strings`; the Android layout then bakes `h`/`m`/`s`/`now` as Latin literals with
+   device-locale stale words (`widgets/PrayerWidget.tsx:439-448`): unit letters Latin by
+   accident of their era, stale words device-keyed. Tolerated legacy from before v2
+   snapshots; row 69's scope names its re-test ("re-tests the v1 fallback words").
