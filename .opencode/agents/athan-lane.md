@@ -30,6 +30,11 @@ credentials, publishing, destroying data), reported, never asked.
 
 ## Lane mechanics
 
+- BEFORE ANY WRITE, check whether another session is already live on your ticket: read
+  the active-session list and the recent commits on your lane branch. A completed
+  notification does not prove a session stopped, so a resuming lane that finds a live
+  sibling yields to it: read-only verification, no write to the plan folder, the row or
+  the version files, and a report. Two writers on one branch corrupt the artefacts.
 - Every lane authors in its own worktree: `git worktree add
   $HOME/athan-gitree/worktrees/lane-<N> -b lane/<N> uat`. The main tree
   `$HOME/repos/rn.athan.uk` stays checked out on `uat` and clean: it is the merge
@@ -60,7 +65,11 @@ credentials, publishing, destroying data), reported, never asked.
 - A merge conflict on `ai/plans/README.md` or the three version files is lane
   weather: abort, rebase your lane branch onto `uat`, resolve keeping both
   lanes' rows and the higher version, retry the merge once, then STOP if it
-  still conflicts.
+  still conflicts. After every merge into `uat`, sync the gitignored
+  `android/app/build.gradle` `versionName` to the new version under the build
+  lock: a worktree commit cannot touch that file, so the build bay's copy lags
+  every worktree commit and the lockstep test fails in the main tree until it
+  is synced.
 - You never push. The orchestrator pushes `uat` when every unpushed commit is
   audited.
 
