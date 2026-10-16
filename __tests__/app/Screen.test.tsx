@@ -5,14 +5,17 @@
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
-import { seedCountdownBarOn, showLondonDay } from '@/__tests__/harness';
+import { seedCountdownBarOn, seedTimePassedOn, showLondonDay } from '@/__tests__/harness';
 import { ScheduleType } from '@/shared/types';
 import { showTimePassedAtom } from '@/stores/ui';
 
 import Screen from '../../app/Screen';
 
-// The bar's default is off; this suite reads the bar as part of the page, so it seeds it on
-beforeEach(() => seedCountdownBarOn());
+// The bar's and time passed's defaults are off; this suite reads both as part of the page, so it seeds them on
+beforeEach(() => {
+  seedCountdownBarOn();
+  seedTimePassedOn();
+});
 
 /** A frame and the macrotask after it, which is when launch chrome and the Extras content mount */
 const FIRST_FRAME_MS = 50;
