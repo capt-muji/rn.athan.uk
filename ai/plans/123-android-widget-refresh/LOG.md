@@ -107,3 +107,25 @@ session: ses_eba43e587ffevuDs9eWxHmJ2h0
 - Version and commit: 2.0.889 under the version lock; merge `--no-ff` into `uat`.
 
 session: ses_eba43e587ffevuDs9eWxHmJ2h0
+
+### Step 3 — IN PROGRESS
+
+- Anchor check: all ten anchors still count 1 (the pre-flight, run from the worktree root).
+- R4.1: FINDINGS sections 4 to 6 written. Section 4 lists eight residual gaps, each with what
+  measures it. Section 5 states the three options with the recommendation argued twice (for B,
+  challenged on whether it repeats preview-era work, then against the strongest rival A).
+  Section 6 states the design as the plan's section 7 protocol, the drift threshold and the
+  wait condition. The queue row's outcome text is applied with the audit pending.
+- One correction carried in from step 2's own review pass: FINDINGS 2.3's preview pin range
+  corrected to what the shas actually carry (`expo ~58.0.0-preview.3` with `expo-widgets
+  ~58.0.3` from 1.27.384 through 1.28.25; `expo ~58.0.6` with `expo-widgets 58.0.14` at the
+  re-pin baseline `840aa613`), verified with `git show <sha>:package.json` for `f4867d00`,
+  `e4f40f91`, `2014efad` and `840aa613`.
+- Review: the diff read cold against the sources and against section 7's protocol; no defect
+  found, one wording correction applied.
+- No red-green loop: a docs step.
+- Version and commit: 2.0.890 under the version lock.
+- Finishing: ticket set EXECUTED, the executed docs commit made on `docs/123-executed`, merged
+  `--no-ff` into `uat`, not pushed. The audit follows.
+
+session: ses_eba43e587ffevuDs9eWxHmJ2h0
