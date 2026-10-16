@@ -63,7 +63,7 @@ lives in `$TMPDIR`, uncommitted); all 14 kinds present grouped per D117.5; every
 names its locale input and cites file:line; the six-language column carries catalog bytes.
 
 Version 2.0.871 (next after local uat's 2.0.870). First commit attempt: the pre-commit
-validate failed in `shared/__tests__/widgetOpenAppPatch.test.ts` (2 failures) — the lane
+validate failed in `shared/__tests__/widgetOpenAppPatch.test.ts` (2 failures): the lane
 worktree's `node_modules` still held `expo-widgets` 58.0.14 while the ff'd tree pins 58.0.19
 (ticket 111's re-pin), so the patch-pinning test found no
 `patches/expo-widgets+58.0.14.patch`. Environmental, no code changed: `yarn install
@@ -91,9 +91,9 @@ strings, the convergence re-push; row 88's Latin half `3c1b620f` 2.0.744 with th
 note (`ai/UPSTREAM-PRS.md:12` names `expo-widgets+58.0.5`, the live file is
 `patches/expo-widgets+58.0.19.patch`), and row 69's parked scope quoted verbatim.
 
-Section 4: 6 seams, each with both sides and file:line — the stale-card keying asymmetry,
+Section 4: 6 seams, each with both sides and file:line: the stale-card keying asymmetry,
 the localised Android unit letters against rows 83/85/102's fixed-letter law
-(`shared/time.ts:619-628` the app side), the system-formatted iOS countdown, the stamped
+(`shared/time.ts:646-661` the app side), the system-formatted iOS countdown, the stamped
 unread `rtl` field (row 68's P16), the gallery's en fallback outside the six, the
 v1-snapshot fallback words. The three live reads named per PLAN section 7: the SwiftUI
 glyphs per device language and numbering setting, the gallery on a device outside the six,
@@ -141,8 +141,8 @@ Green: the scripted citation check opened 259 file:line citations across all fiv
 R3.2 diff check (fork sha `c7481a20`, recorded at step 1): the raw range stat interleaves
 the uat commits tickets 111/118 and the row-70 addendum merged while this lane ran (named
 in the range log), so the ticket's own diff is the three step commits plus this step's
-staging: `git show --stat ad8c07ba`, `git show --stat 054d569c`, `git diff --cached --stat`
-— together listing only `ai/plans/117-widget-language-inventory/` (FINDINGS.md, LOG.md,
+staging: `git show --stat ad8c07ba`, `git show --stat 054d569c`, `git diff --cached --stat`,
+together listing only `ai/plans/117-widget-language-inventory/` (FINDINGS.md, LOG.md,
 PLAN.md), the queue row `ai/plans/README.md`, and `app.json`/`package.json`. Docs only,
 R3.2 met.
 
