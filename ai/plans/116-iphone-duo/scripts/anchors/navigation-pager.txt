@@ -1,0 +1,9 @@
+        // Swipes are blocked while the overlay is open (hit-test parity: the
+        // old full-screen layer swallowed every gesture; the row hole now
+        // lets drags reach the pager, so the pager itself must refuse them)
+        scrollEnabled={!overlayIsOn}
+        onPageScrollStateChanged={handlePageScrollState}
+        onPageSelected={handlePageSelected}>
+        <MemoScreen type={ScheduleType.Standard} />
+        <MemoScreen type={ScheduleType.Extra} />
+      </PagerView>
