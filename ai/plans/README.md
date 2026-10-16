@@ -1,4 +1,4 @@
-# Plans: one queued job at a time, planned, executed, then audited
+# Plans: up to three lanes at a time, each planned, executed, then audited
 
 ## Words
 
@@ -7,37 +7,39 @@ of work. The two never share a word. The board and these files say ticket and st
 
 ## Order
 
-One ticket at a time: plan it, execute it, audit it, only then plan the next. Every
-session, fresh or resuming, starts with `/athan-next`; a run that planned ends with the
-ticket READY.
+Up to three lanes at a time: plan, execute, audit each ticket to DONE inside its own
+lane, refill a lane the moment it frees, and stop when the board is clear. Every
+session, fresh or resuming, starts with `/athan-next`; a run that planned ends with
+the ticket READY.
 
-**Suspension, 2026-10-15, the owner's standing order:** the one-ticket-at-a-time rule
-above is suspended for the multi-lead run she ordered this date. Ticket 85 runs alone
-first; once its step 1 merges, disjoint tickets run in parallel lanes, one lead each:
-89 beside 83, then 88 behind 83 (83 and 88 share `shared/time.ts` and the catalogs).
-Inside each lane the single-ticket routing of the lead skill governs as written, and
-the version lock still serializes every version bump and every `uat` merge. The
-suspension ends when the run's lanes are DONE or stopped; the rule above then holds
-again.
+**Standing order, 2026-10-16, the owner's clear-the-board run, permanent from here:**
+the one-ticket-at-a-time rule is dead; the parallel lane model is the default whenever
+two or more runnable, mutually file-disjoint tickets sit on the board (fewer, and the
+single-lane flow governs). The lead session orchestrates: one `athan-lane` worker per
+ticket, at most one of them in the main tree, the rest in worktrees under
+`$HOME/athan-gitree/worktrees/lane-<N>/`, capped at three open lanes. Each lane runs
+the whole workflow autonomously - plan, grill, execute, audit, deep clean - to DONE,
+and the orchestrator refills the lane the moment it frees, in queue order, honouring
+Needs first and conflict groups. Machine resources serialize through the lock family
+in the `athan-lane` worker file: version, commit, `uat` merge, build, device by
+serial. Lane workers never push `uat`; the orchestrator pushes when every unpushed
+commit is audited.
 
-**Second order, 2026-10-15, later the same day:** the owner consolidated her visual
-read into row 100 (rows 92 to 99 fold there) and set row 91, the crash, apart; both
-run at once as two lanes with disjoint files - the batch's components and catalogs,
-the crash's background-task ground. The consolidation is hers: one lane works the
-visual set so no little-piece agents spin up.
+**Same order, the owner's hands-off rule:** no question ever reaches her during a run.
+Every question anywhere in a lane - planning frontier, executor STOP, audit finding -
+is answered by the agent holding it, its own recommendation taken as the default after
+being argued twice, recorded `agent-ruled` with a date and one line why, and tabled
+compact (`Question | Answer | Why`) in the run's final reply for her veto. The only
+stops are the irreversible acts the hard rules name, reported, never asked. The
+2026-10-15 multi-lane orders (the 85/83/88 suspension, the row-100 consolidation, the
+103/104/106 lanes) fold into this standing order; their runs are DONE and their detail
+is git history.
 
-**Third order, 2026-10-15, evening:** the owner ordered rows 103, 104 and 106 run in
-parallel lanes, one lane each, taken to DONE: 103 the pager mirror (`app/Navigation.tsx`
-ground), 104 the post-close haptic (`Sheet.tsx` and `Sound.tsx` ground), 106 the visual batch
-(`Day.tsx`, `Explanation.tsx`/`OverlayInfoBox.tsx`, `Countdown.tsx` ground; its first step is an
-Arabic font specimen the owner reads before any code - her ruling replaced the pull-up fix with
-a font survey). The lanes are file-disjoint; the version lock still serializes every version
-bump and every `uat` merge, and the owner's moments run batched by her instruction.
-
-The lead skill at `.agents/skills/athan-lead/SKILL.md` reads the queue below and git, reconstructs where
-the work stands, runs the one phase that can run, and stops. The lead dispatches cold
+The lead skill at `.agents/skills/athan-lead/SKILL.md` reads the queue below and git,
+reconstructs where the work stands, and runs up to three lanes at once, one
+`athan-lane` worker each, refilling every lane as it frees. Lanes dispatch cold
 workers for execution and review (`athan-executor`, `athan-reviewer`,
-`athan-plan-griller` in `.opencode/agents/`) and verifies their work from the repository;
+`athan-plan-griller` in `.opencode/agents/`) and verify their work from the repository;
 a worker that cannot see images calls `vision`. A session running long simply ends: every
 step writes its state to the repository as it lands, and the next `/athan-next` picks the
 work up from the queue, the ticked steps and the `Resume from:` note.
@@ -48,7 +50,9 @@ Plan the first ticket that needs planning: resume a PLANNING ticket, refresh a N
 
 **Invariant: at most one ticket at a time is PLANNING, READY, IN PROGRESS or EXECUTED, unless its plan's code files are disjoint from every other in-flight ticket's** (the three version files are shared by every step and serialize under the version lock, so they never count as overlap). Disjoint tickets form separate conflict groups and may run in parallel, one executor each. BLOCKED, OWNER-LED and research-parked tickets hold no merged code, so several may wait at once. A plan anchors on one `uat` commit and quotes its code, its tests' expected numbers and the owner decisions taken against it. A ticket ahead changes that code, so a plan written early runs stale, and a stale anchor that still matches by text is the worst failure, because nothing catches it.
 
-Every session ends with the handoff block in its final reply: the queue view (the five tickets most recently DONE, then every open ticket in queue order, each row's live blocker named in its own Waiting-on cell, the ticket the owner's next command acts on bolded), then four lines: the phase completed, the ticket it moved, the next ticket, what the owner types next (`/athan-next`). The block is a summary for the reader, never state: the resume state is the queue ticket's status plus the `Resume from:` note the workers write into the plan folder, so any new session reconstructs the work from the repository alone. No gateway address, domain or key is ever written into this repository.
+Every session ends with the handoff block in its final reply: the queue view (the five tickets most recently DONE, then every open ticket in queue order, each row's live blocker named in its own Waiting-on cell, the ticket the owner's next command acts on bolded), then four lines: the phases completed, the tickets they moved, what runs next, what
+the owner types next (`/athan-next`), then the agent-ruled decisions table when the
+run took any. The block is a summary for the reader, never state: the resume state is the queue ticket's status plus the `Resume from:` note the workers write into the plan folder, so any new session reconstructs the work from the repository alone. No gateway address, domain or key is ever written into this repository.
 
 ## Status
 
@@ -174,7 +178,7 @@ A planning session may turn one of these into a plan only after the owner approv
 
 ## Files here
 
-- Briefs: the `athan-planner` and `athan-lead` skills in `.agents/skills/`, the `athan-executor`, `athan-reviewer` and `athan-plan-griller` workers in `.opencode/agents/`, started with `/athan-next`. `SDK58-PROGRAMME.md` holds the ticket 18 and D4 briefs.
+- Briefs: the `athan-planner` and `athan-lead` skills in `.agents/skills/`, the `athan-lane`, `athan-executor`, `athan-reviewer` and `athan-plan-griller` workers in `.opencode/agents/`, started with `/athan-next`. `SDK58-PROGRAMME.md` holds the ticket 18 and D4 briefs.
 - `TEMPLATE.md` fixes the shape of every plan. A plan folder is scaffolding: it is created at PLANNING and deleted at DONE, in the merge that lands the work.
 - Surviving records: `27-silent-mode-bypass/FINDINGS.md` (cited by `shared/help.ts`), `54-patches-and-copy/FINDINGS.md` (ticket 54) and `provenance-39.json` (ticket 39's string-verification list). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other ticket's record lives in git history.
 
@@ -183,7 +187,11 @@ A planning session may turn one of these into a plan only after the owner approv
 - A planning session sets PLANNING, READY, OWNER-LED, BLOCKED or NOT PLANNED, and fills Needs first.
 - The executor worker sets IN PROGRESS, EXECUTED, NEEDS REPLAN or BLOCKED. It commits and merges into `uat`, and never pushes.
 - The lead's audit sets DONE for an EXECUTED ticket and never sets a ticket back to READY: it repairs what the executor got wrong itself. Auditing an unfinished plan leaves the status as it is, so the executor resumes its own plan.
-- `uat` is the integration branch. Only the planner and the lead push it, and only when every commit on `uat` that is not yet on `origin/uat` has been reviewed. A planning session that finds unreviewed commits asks the owner to run the audit step first, unless it is replanning a NEEDS REPLAN ticket, which it does without pushing.
+- `uat` is the integration branch. Lane workers commit and merge into it and never
+  push; the orchestrator pushes it, and only when every commit on `uat` that is not yet
+  on `origin/uat` has been reviewed. A planning session that finds unreviewed commits
+  asks the owner to run the audit step first, unless it is replanning a NEEDS REPLAN
+  ticket, which it does without pushing.
 | 77 | Help modal entrance: a solid white box flashes around the close button | Owner report, 2026-10-13 (English, no language link): opening Settings, scrolling to Help and pressing it, a completely solid white container shows behind/around the close button while the modal opens, then vanishes once the card finishes fading in — a brief flash. Her refined reading: not a dark shadow but the close button's own container painting opaque white before the card's fade completes, so the rest fading in makes the box look like it fades out. Evidence for the job: her 22-second screen recording at `$HOME/Downloads/Screen_Recording_20261013_040636_Athan.mp4` (never committed; the planning session may extract frames from it). Suspect class: the modal entrance breaking the repo's first-frame-settled rule for animated components (the close button's container starting opaque instead of settling). READY plan: `ai/plans/77-help-modal-flash/` (root cause measured from the recording: the Close row carries no entrance fade and paints opaque from frame 1 while the container's FadeIn raises the card around it; the fix joins the row to the container's own bare FadeIn) | DONE 2026-10-13, audited: the close button's container joins the modal container's own entrance fade (bare `entering={FadeIn}` on the Close row), ending the solid white box she recorded - the frame forensics on her recording pinned the row painting opaque from its first frame while the card faded under it, and the iOS proof showed no flash on either side of the fix (the plan's proceed branch), with the jest walk pinning the entering ancestor per the first-frame-settled rule. Two-reviewer audit fixed three findings (the stale D4 version renumbered at merge, a false builder pin the mock's singleton collapse made untestable, a provenance comment); no pixel moved beyond the ruled fix| nothing |
 | 78 | The D59 relaunch starves: the in-process reload silently skips most direction-change crossings | Found by ticket 71's device step (2026-10-13, 3T mock 2.0.190, production package id): of six crossings in three processes, three reloaded with the textbook cycle and three starved silently - face flips, preference stores, then no convergence dequeue line, no `LANGUAGE:` warn, no `Updates state change: Restart`, no exception, no marker, no FATAL; the app ticks on in the new locale (observed past four minutes), and the once-per-process launch init fired over four minutes late in the drive 3 post-mortem. Row 68's record states every crossing reloads; the evidence is preserved under sessions/71/ and summarized in 71's FINDINGS section 8 (D91). This row asks what the reload's real firing condition is (the commit's convergence await, the launch-init latch, the direction branch) and fixes it if a repo-side cause exists; device work on the 3T, mock build | DONE 2026-10-14, audited: the firing condition pinned and fixed - the commit's convergence await blocked unbounded and unlogged on the scheduling queue, so a pass grinding at 15 s per silent native call starved the relaunch silently (3 of 6 crossings, 71's D91 evidence; the missing dequeue line is the discriminator); the direction branch computes true on both crossing directions and the native chain is cleared (no Updates Restart event in the starved logs proves reloadAsync was never reached; on this build the disabled-updates procedure logs Restart before any restart); the launch-init latch is the aggravator (it resets per JS context, so every reload re-runs an unconditionally reopened full notification refresh ahead of the next crossing) and stays untouched with the scheduling paths (ask-first ground). The fix bounds the boundary-crossing wait at 10 s, warns, and relaunches anyway; forward-only convergence heals in the next context (R3.4). Red-first suite stores/__tests__/rtlReloadBound.test.ts with a mutation pass; device work waived by the owner's run order 2026-10-14, the starvation reproduced unit-side | nothing |
 | 79 | Countdown dim levels, the no-shift rule, and prayer-list colon treatment | Owner rulings from her 3T + XS test of 2026-10-13 (~16:30): (1) DIM LEVELS - on the countdown timer, dim digits reduce by 30%, colons reduce by 60% consistently (her corrected figures; the landed dim treatment reads too strong); (2) NO-SHIFT - nothing in the countdown may ever shift horizontally except the digit pair that changes: going 20 to 19 must not shift because the glyph 2 is wider than 1 - the sections need equal-width digit rendering (tabular figures or per-glyph fixed boxes) for the Arabic-Indic digits too; (3) PRAYER LIST - the time-ago badge's colon takes the 60% reduction in ALL languages including English, on the next-prayer and past-prayer rows, and the numerals need breathing space around the colon like the timer (her read: the Arabic numerals look squashed together); (4) recorded en-route defects from the same session, to verify on the current build before scoping: on the XS under system-arabic with app language English, the countdown rendered colon digits instead of the lettered English design (suspect: a device-locale-keyed format read, the row 67 audit's finding class in app surfaces), and the layout stayed RTL after the app language switched to English (suspect: the row 68 direction bootstrap follows the system locale), plus the language-switch splash reads as a flat purple screen with no loading affordance (feeds row 66's splash-cost ground). Owner available for the reads; ask, never guess Her green-build read the same hour moved the prayer-time-colon and ago-gap refinements to row 81 (74's ground); this row keeps the countdown dim levels and the no-shift rule| DONE 2026-10-13, audited: the timer's dim levels land on her corrected figures (a spent 00 group white reduced 30 percent, every colon white reduced 60 percent, one design in every locale) and the no-shift rule is pinned: the timer style carries tabular figures, honored on both platforms at the pinned React Native, over the equal-advance Roboto-Medium verified at planning, so only the changing digit pair can move; muted untouched for every other reader. The dev build is installed on her iPhone XS with Metro serving and her read is the acceptance bar (she tests, per her instruction); her verdict lands here through the lead. Two-reviewer audit: one lean fix (the dead bar-background key deleted at 2.0.238), the records set straight (the step-2 verdict, the DONE version collision); future device steps grep the case expo prints. Row 81 lands next on this baseline| nothing (72 and 74's grounds are its materials) |

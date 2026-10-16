@@ -9,9 +9,9 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
 2. `opencode.json` (repo root): which MCP servers are wired and which are enabled (see the
    routing table below).
 3. `.agents/skills/` (repo root): the official Expo and EAS skills, and this repo's own workflow
-   skills (`athan-planner`, `athan-lead`). The delivery workers (`athan-executor`,
-   `athan-reviewer`, `athan-plan-griller`) are agent files under `.opencode/agents/`,
-   dispatched by the lead, never loaded into the main session. Load the matching skill
+   skills (`athan-planner`, `athan-lead`). The delivery workers (`athan-lane`,
+   `athan-executor`, `athan-reviewer`, `athan-plan-griller`) are agent files under `.opencode/agents/`,
+   dispatched by the lead or a lane, never loaded into the main session. Load the matching skill
    (`expo-upgrade`, `eas-app-stores`, `expo-router`, and for React Native code work
    `react-native-best-practices` with the performance rules in `react-native-skills`) instead
    of working from memory.
@@ -35,9 +35,12 @@ server. The expo MCP sits disabled: nothing ships through EAS. Flip `enabled` to
 
 ## Workflow
 
-- The queue is `ai/plans/README.md`; one ticket is in flight at a time. Entry is
-  `/athan-next`: the lead routes to the one phase the repository needs, and a run
-  that planned ends with the ticket READY.
+- The queue is `ai/plans/README.md`; up to three lanes run at a time under the standing
+  parallel order, one ticket each, file-disjoint, refilled as they free. Entry is
+  `/athan-next`: the lead orchestrates the lanes and routes each to the phase it needs,
+  and a run that planned ends with the ticket READY. The owner is hands-off mid-run:
+  questions are answered agent-ruled (own recommendation, argued twice, recorded with a
+  date and one line why) and tabled in the run's final reply.
 - A session is one context window. Tickets are the queued units of work. No workflow file names
   a context threshold for a session: the owner ends sessions at will, and every step writes its
   state to the repository as it lands. Worker dispatches are different: the plan's step
