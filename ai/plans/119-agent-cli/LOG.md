@@ -68,3 +68,14 @@ into ~/.expo/agent-cli/docs, ranked hits with file and line), expo command:ps 0 
 header and cross-lane session rows), expo command:events --help 0 (the JSONL replay
 line). FINDINGS section 3 carries the table. Queue row set IN PROGRESS, step 3.
 session: lane-119 in-lane execution (D119.6; no executor worker dispatched)
+
+### Step 4 — DONE (the ruling pack)
+
+Branch `docs/119-4-ruling-pack` off `lane/119` at `ae253cea`, commit `2.0.883`. FINDINGS
+section 4 written: the three options with option B recommended, the bans table (every
+census Verdict beginning `stays out` or `banned` plus the banned sub-forms, each with its
+measured one-line ground), the unverified list (the bundled eas-cli version, the
+whole-CLI experimental label), and the four-row routing delta option B amounts to. The
+queue row set EXECUTED with the outcome text. R4.1 holds: the row carries the options,
+the recommendation, the bans with grounds, and the unverified list.
+session: lane-119 in-lane execution (D119.6; no executor worker dispatched)
