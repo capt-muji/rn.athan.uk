@@ -59,7 +59,6 @@ export default function Day({ type }: Props) {
 }
 
 const ty = typographyFor(currentLocaleId());
-// The ar lines carry the owner's dialled small breath (her pass-two read); en keeps the quarter gap
 const compactArabic = currentLocaleId() === 'ar';
 
 const styles = StyleSheet.create({
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
     color: COLORS.text.secondary,
     fontSize: ty.size(TEXT.sizeSmall),
     fontFamily: ty.familyRegular,
-    marginBottom: compactArabic ? 6 : SPACING.quart,
+    marginBottom: compactArabic ? SPACING.py : SPACING.quart,
   },
   date: {
     fontFamily: ty.familyRegular,
