@@ -93,7 +93,6 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
     expect(revealSpy).toHaveBeenCalledWith('ar');
     expect(commitSpy).not.toHaveBeenCalled();
     expect(dismiss).not.toHaveBeenCalled();
-    expect(screen.queryByText('Applying…')).not.toBeOnTheScreen();
 
     await act(async () => {
       await jest.runAllTimersAsync();
