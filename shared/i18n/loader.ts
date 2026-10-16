@@ -42,4 +42,7 @@ const MODULES: Record<LocaleId, CatalogModule> = {
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;
 
+/** A named locale's catalog, so a surface can speak its target's words before the switch lands */
+export const catalogFor = (locale: LocaleId): Catalog => MODULES[locale].en;
+
 export const currentPrayerLabels = (): Record<PrayerId, string> => MODULES[currentLocaleId()].PRAYER_LABELS;
