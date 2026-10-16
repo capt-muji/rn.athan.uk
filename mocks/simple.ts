@@ -24,10 +24,10 @@ import type { IApiResponse } from '@/shared/types';
 // skips to the following day's Fajr and the rollover cascade fires early.
 // An Isha can fall after 00:00 (high latitudes in summer; the app goes global
 // in v2.0) and is handled by the rules above. The seeding below therefore never
-// writes a small-hours Standard row: the evening branch caps Isha before 23:55,
-// the pre-dawn branch composes a realistic day with Fajr next, and the spent
-// late-evening branch serves the day's real static shape (owner ruling,
-// 2026-10-16: any hour, any day, no dashes).
+// writes a small-hours Standard row: the evening branch's latest Isha is exactly
+// 23:55:00.000, the pre-dawn branch composes a realistic day with Fajr next, and
+// the spent late-evening branch serves the day's real static shape (owner
+// ruling, 2026-10-16: any hour, any day, no dashes).
 
 const MINUTE = 60_000;
 
@@ -43,12 +43,12 @@ export const addMinutes = (from: Date, minutesToAdd: number) => {
 /**
  * Every day around the download, with TODAY's six rows seeded from it
  *
- * The evening (06:00-23:54): Asr just passed, Maghrib next about one minute out, Isha a
- * minute behind it, so the day rolls to tomorrow's real schedule inside a couple of minutes
- * (the owner's device-test reseed). The pre-dawn small hours: a realistic day with Fajr
- * next about a minute out, because a relative seed there would write impossible times
- * (an Isha at 04:32) that trip the midnight-crossing rules and dash the countdown. The
- * spent evening (23:55-23:59): the day's real static shape, all six passed.
+ * The evening (06:00-23:52:59.999): Asr just passed, Maghrib next about one minute out, Isha a
+ * minute behind it at 23:55:00.000 at the latest, so the day rolls to tomorrow's real schedule
+ * inside a couple of minutes (the owner's device-test reseed). The pre-dawn small hours: a
+ * realistic day with Fajr next about a minute out, because a relative seed there would write
+ * impossible times (an Isha at 04:32) that trip the midnight-crossing rules and dash the
+ * countdown. The spent evening (23:53-23:59): the day's real static shape, all six passed.
  */
 const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
   const clock = readPrayerClock(downloadedAt);
@@ -71,7 +71,7 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     fajr: addMinutes(minuteFloor, -4),
     sunrise: addMinutes(minuteFloor, -3),
     dhuhr: addMinutes(minuteFloor, -2),
-    asr: addMinutes(new Date(Math.floor((downloadedAt.getTime() - 60 * 1000) / MINUTE) * MINUTE), 0),
+    asr: addMinutes(minuteFloor, -1),
     magrib: addMinutes(ceilMinute(downloadedAt, 1), 0),
     isha: addMinutes(ceilMinute(downloadedAt, 2), 0),
   };
