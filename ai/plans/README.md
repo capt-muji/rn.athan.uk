@@ -16,8 +16,9 @@ the ticket READY.
 the one-ticket-at-a-time rule is dead; the parallel lane model is the default whenever
 two or more runnable, mutually file-disjoint tickets sit on the board (fewer, and the
 single-lane flow governs). The lead session orchestrates: one `athan-lane` worker per
-ticket, at most one of them in the main tree, the rest in worktrees under
-`$HOME/athan-gitree/worktrees/lane-<N>/`, capped at three open lanes. Each lane runs
+ticket, each in its own worktree under
+`$HOME/athan-gitree/worktrees/lane-<N>/`, capped at three open lanes; the main tree
+stays checked out on `uat` as the shared merge station and build bay. Each lane runs
 the whole workflow autonomously - plan, grill, execute, audit, deep clean - to DONE,
 and the orchestrator refills the lane the moment it frees, in queue order, honouring
 Needs first and conflict groups. Machine resources serialize through the lock family
