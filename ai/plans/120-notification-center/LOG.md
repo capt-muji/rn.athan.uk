@@ -1,5 +1,8 @@
 # LOG: ticket 120
 
+Resume from: Step 2, the XS proof, in steps/2-xs-proof.md. Step 1 is DONE and merged (uat b89c0d3f, 2.0.934). The XS runs lane 111's overnight capture scripts until morning: the instrumented Release install stays foregrounded, never killed, relaunched or reinstalled over, and the capture windows (23:57 rollover, 01:53 fire, 07:14-07:28 Sunrise delivery) are waited out in 15-second poll cycles through $HOME/athan-gitree/device-<XS serial>.lock. Step 2 starts when lane 111's captures end and the device lock frees: build the mock-env Release build from the main tree at merged uat (it now carries the step 1 code), run the two proof cycles per the step file, return the phone to the prod build, then the audit (two athan-reviewer passes, blind plus plan-conformance), the DONE row, the plan folder and sessions evidence deleted in the DONE merge, and the worktree and branch removed. Next version after uat's 2.0.934.
+
+
 ## Planning (2026-10-16)
 
 Anchors extracted and verified (each counts 1) at `d1ce39d9` (uat 2.0.924). Library facts
@@ -103,3 +106,19 @@ four 100% coverage lines. The queue row moved to IN PROGRESS, step 1. Not merged
 merges), nothing pushed.
 
 session: ses_eb973afe7ffeO50Yv8UzPlkMpp
+
+### Step 02 — pending (the XS morning window)
+
+Lane 111's overnight capture scripts hold the physical XS until morning, and the Release
+install is instrumented and foregrounded: never kill, relaunch or reinstall over it. The
+capture windows (23:57 rollover, 01:53 fire, 07:14-07:28 Sunrise delivery) are waited out in
+15-second poll cycles through `$HOME/athan-gitree/device-<XS serial>.lock`, never contended.
+Step 2 starts when lane 111's captures end and the lock frees.
+
+The merge weather at step 1's landing: uat moved to 2.0.932 (lane 111's overnight staging)
+mid-step; the merge resolved to the higher 2.0.934 after one aborted attempt (a first hook run
+failed the lockstep while the bay's gradle lagged at 2.0.929, its killed jest workers wedged
+two continuations, and the station was reset); the redo synced gradle first and landed clean
+as `b89c0d3f`.
+
+session: (the lane lead holds step 2 for the morning window)
