@@ -51,8 +51,9 @@ queue's invariant: same conflict group serializes, disjoint groups run parallel,
 three version files never count as overlap. No lane works in the main tree: it stays
 checked out on `uat`, clean, the shared merge station and build bay (the build scripts
 hardcode its path), while every lane authors in its own worktree under the protocol the
-`athan-lane` agent file carries: the lock family (version, commit, uat, build,
-device-by-serial), rebases on merge conflicts, and no pushes.
+`athan-lane` agent file carries: the lock family (`$HOME/athan-gitree/version.lock`,
+`commit.lock`, `uat.lock`, `build.lock`, `device-<SERIAL>.lock`, each an exact path,
+never a bare name with a suffix appended), rebases on merge conflicts, and no pushes.
 
 When two or more runnable, mutually disjoint tickets exist, you are the orchestrator:
 dispatch one `athan-lane` worker per ticket in the background, verify each return
