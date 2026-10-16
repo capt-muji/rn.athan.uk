@@ -150,7 +150,7 @@ export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_dat
 export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds', false);
 
 /** Whether to show "time passed" info below countdown */
-export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_passed', true);
+export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_passed', false);
 
 /** Whether seasonal decorations (Ramadan, Eid, etc.) are shown */
 export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorations_enabled', true);
