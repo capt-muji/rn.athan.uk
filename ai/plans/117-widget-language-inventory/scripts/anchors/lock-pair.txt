@@ -1,5 +1,0 @@
-const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
-  'widget';
-
-  const WHITE = '#ffffff';
-  const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
