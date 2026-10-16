@@ -5,8 +5,9 @@
 
 import type { PrayerId } from '@/shared/constants';
 
-import type { TranslationKey } from './en';
-import { currentCatalog, currentPrayerLabels } from './loader';
+import type { Catalog, TranslationKey } from './en';
+import { catalogFor, currentCatalog, currentPrayerLabels } from './loader';
+import type { LocaleId } from './locale';
 
 export type { TranslationKey } from './en';
 export { en, PRAYER_LABELS } from './en';
@@ -38,8 +39,8 @@ export type ParamsOf<K extends TranslationKey> = K extends 'notification.now'
 
 const TOKEN = /\{(\w+)\}/g;
 
-export const t = <K extends TranslationKey>(key: K, params?: ParamsOf<K>): string =>
-  currentCatalog()[key].replace(TOKEN, (_match, token: string) => {
+const compose = <K extends TranslationKey>(catalog: Catalog, key: K, params?: ParamsOf<K>): string =>
+  catalog[key].replace(TOKEN, (_match, token: string) => {
     const supplied = (params as Record<string, string | number> | undefined)?.[token];
     if (supplied === undefined) {
       throw new Error(`i18n: missing parameter '${token}' for key '${key}'`);
@@ -47,5 +48,12 @@ export const t = <K extends TranslationKey>(key: K, params?: ParamsOf<K>): strin
     const localized = String(supplied);
     return localized;
   });
+
+export const t = <K extends TranslationKey>(key: K, params?: ParamsOf<K>): string =>
+  compose(currentCatalog(), key, params);
+
+/** The same read through a named locale's catalog: a surface about to switch speaks its target's words */
+export const tIn = <K extends TranslationKey>(locale: LocaleId, key: K, params?: ParamsOf<K>): string =>
+  compose(catalogFor(locale), key, params);
 
 export const prayerLabel = (id: PrayerId): string => currentPrayerLabels()[id];

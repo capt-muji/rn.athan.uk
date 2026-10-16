@@ -1,10 +1,9 @@
 import { useAtomValue } from 'jotai';
-import { useMemo } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, OVERLAY, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { t } from '@/shared/i18n';
-import { currentLocaleId, localeVersionAtom } from '@/shared/i18n/locale';
+import { t, tIn } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { nativeLanguageName } from '@/shared/languageNames';
 import { typographyFor } from '@/shared/typography';
 import { languageCommitBusyAtom, pendingLanguageAtom } from '@/stores/language';
@@ -23,17 +22,12 @@ const LINE_MAX_WIDTH = 260;
 export default function LanguageLoader() {
   const busy = useAtomValue(languageCommitBusyAtom);
   const pending = useAtomValue(pendingLanguageAtom);
-  // The commit switches the locale before the surfaces converge, so the line re-derives
-  // on the version bump and reads in the language being set. The typography resolves per
-  // render for the same reason: a module-scope capture drew the first frames of a switch
-  // in the old locale's face and box, which clipped the line (owner report, 2026-10-14)
-  const localeVersion = useAtomValue(localeVersionAtom);
-  // biome-ignore lint/correctness/useExhaustiveDependencies: the version bump is the deliberate re-derive trigger, though the callback reads no version value
-  const line = useMemo(
-    () => (pending === null ? '' : t('language.changing', { language: nativeLanguageName(pending) })),
-    [pending, localeVersion]
-  );
-  const ty = typographyFor(currentLocaleId());
+  // The line speaks the TARGET's words from its first frame: a switch's loader composing through
+  // the active catalog drew one frame in the old language around the target's name, then flipped
+  // (owner report, 2026-10-16). The face keys off the target for the same reason: frame one is
+  // already the target's family and box, never the old locale's.
+  const line = pending === null ? '' : tIn(pending, 'language.changing', { language: nativeLanguageName(pending) });
+  const ty = typographyFor(pending ?? currentLocaleId());
 
   if (!busy || pending === null) return null;
 

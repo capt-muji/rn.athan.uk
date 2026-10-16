@@ -44,6 +44,18 @@ describe('the language-switch loader', () => {
     expect(flattenStyle(panel.props.style).backgroundColor).toBe(COLORS.navigation.rootBackground);
   });
 
+  it('speaks the target\u2019s words and face from its first frame, before the switch lands', async () => {
+    store.set(languageCommitBusyAtom, true);
+    store.set(pendingLanguageAtom, 'ar');
+    setActiveLocale('en');
+
+    await render(<LanguageLoader />);
+
+    // The active locale is still en; the line and its face are the target's already
+    const line = screen.getByText('جارٍ ضبط اللغة العربية');
+    expect(flattenStyle(line.props.style).fontFamily).toBe('Rubik-Regular');
+  });
+
   it('caps the line\u2019s width so a long sentence breaks onto two centred lines', async () => {
     store.set(languageCommitBusyAtom, true);
     store.set(pendingLanguageAtom, 'hi');
