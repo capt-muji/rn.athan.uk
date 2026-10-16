@@ -246,4 +246,7 @@ install), a routing paragraph in `ai/AGENTS.md` naming the lane and its exclusio
 `e2e/device-atlas-avd-*.md` entry for what the automation cannot reach, and a lock name for
 it in the lane protocol (`device-emulator-5554`). No baseline file, no measurement verdict.
 
-Neither option changes a pixel, a prayer time, a notification path or the EAS posture.
+Neither option changes a pixel, a prayer time, a notification path or the EAS posture. If
+she takes both, the work is two small tickets: a documentation correction for question 1, and the
+system-image install plus the lane's routing paragraph and atlas entry for question 2. Each is
+planned after her word, and no part of either is written before it.
