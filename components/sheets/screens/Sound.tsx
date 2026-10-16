@@ -223,8 +223,7 @@ export default function BottomSheetSound() {
 }
 
 const ty = typographyFor(currentLocaleId());
-// D94's pair: the ar card hint tightens onto the list (the preview animation) and the note copy clears it below
-const compactArabic = currentLocaleId() === 'ar';
+// D94: the ar note copy clears the list (the preview animation) above it
 
 const styles = StyleSheet.create({
   // Card
@@ -243,7 +242,7 @@ const styles = StyleSheet.create({
 
   // List
   listContainer: {
-    marginTop: compactArabic ? 6 : SPACING.md,
+    marginTop: SPACING.md,
     gap: ITEM_GAP,
   },
   indicator: {
