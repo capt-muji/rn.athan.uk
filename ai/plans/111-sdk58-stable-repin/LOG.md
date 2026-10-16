@@ -602,12 +602,20 @@ session: ses_eba0eef02ffezpNmvYPeSHi6rF
   removes, so the criterion now reads "adds no patch line naming the symbol and carries neither
   symbol in the installed sources".
 
-Resume from: step 3's overnight windows on 2026-10-17 — the midnight rollover read (R4.8, the app
-foreground through 00:00 Europe/London), the 3T punctuality capture at 01:53 (the staged script
-`~/athan-gitree/sessions/111/3t/logs/capture-punctuality-0153.sh` self-locks), the lock-screen
-widget read after midnight, and the Sunrise delivery window 07:15 to 07:30 (R4.2, R4.7). The
-daytime checks are green and merged (see the step 3 entry below). Then step 4's records, then the
-audit and DONE.
+Resume from: step 3's overnight reads, all staged as autonomous scripts (2026-10-16 22:00, nohup,
+survive sessions) - read the artifacts, adjudicate, then step 4, audit, DONE. (1) The midnight
+rollover `xs/00-rollover.log/.txt/-pre.png/-post.png/-post2.png` (R4.8: the list rolls, the
+countdown moves to Fajr, the app stayed foreground untouched). (2) The 3T punctuality
+`3t/logs/punctuality-{log,logcat.txt,notification-noredact.txt,alarm-post.txt}` (the 01:53 armed
+fire: delivered on time with the armed content). (3) The Sunrise delivery
+`xs/07-sunrise.{log,-syslog.txt,-pre.png,-atfire.png,-post.png}` (R4.2: the delivery line at the
+armed second with its trigger date; R4.7: a reminder before it if her config arms one, else
+not-exercised per the step's rule). Then step 4's records (README stack line, UPSTREAM-PRS patch
+versions, programme section 16, the e2e README Metro-gotcha heal from R3.5/R3.6), the audit per
+the lead skill, DONE, and the deep clean (plan folder and sessions/111 die in the merge; remove
+the lane-111 worktree and branch). The daytime checks are green and merged at 2.0.930; the phone
+keeps the Release install; the runner's two helper apps still need their uninstall at step close
+per the atlas.
 
 ### Step 3 — IN PROGRESS (the XS loop, daytime checks green; overnight windows staged)
 
@@ -651,5 +659,26 @@ audit and DONE.
   through midnight, read at 00:00.
 - Tooling note: the agent-device MCP daemon lacks the team env (the recorded trap); all driving
   went through the CLI with the team env exported.
+
+session: ses_eb9bcd72effe5IZ6n6qJftXcb6
+
+### Step 3 — overnight staging (agent-ruled) and the R4.6 lock-screen ruling
+
+- R4.6 lock-screen ruling (agent-ruled, 2026-10-16): the lock-screen widget read is NOT
+  REACHABLE by this harness, recorded as the step's limit. Why: no tool exposes a lock primitive
+  (devicectl has no lock or suspend, SpringBoard services expose none, the atlas records no
+  route), the display never sleeps while tethered, and the runner's switcher wall keeps the home
+  screen from automation; the e2e README's own campaign directive already says iOS is verified by
+  owner eyeball, so the functional proof rests on the appex compiled into this build (installed,
+  plist verified), the widget runtime suite green (R3.4) and the 3T's live widget render in step
+  2, with her lock screen the final eyeball.
+- Overnight windows staged as autonomous nohup scripts (self-locking, sleep cycles of 15 s or
+  less): `xs/xs-midnight-rollover.sh` (23:57 to 00:05, syslog plus three timed screenshots,
+  R4.8), `3t/logs/capture-punctuality-0153.sh` (01:51:30 to 01:53:20, logcat plus dumpsys
+  notification --noredact plus dumpsys alarm, the 01:53 fire), `xs/xs-sunrise-delivery.sh`
+  (07:14 to 07:28, syslog plus timed screenshots, R4.2/R4.7 at the Sunrise 07:25 silent fire -
+  her Fajr is off). The app stays foreground untouched through all three; the scripts only read.
+- Rotation: this session's context cannot span to the 07:28 window end, so the lane rotates with
+  everything green so far merged at 2.0.930 and the scripts running autonomously on the machine.
 
 session: ses_eb9bcd72effe5IZ6n6qJftXcb6
