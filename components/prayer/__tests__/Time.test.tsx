@@ -151,12 +151,10 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
 
     // Asr is next at 14:00; Maghrib is upcoming: the pair names each row's ink, and the
     // derived entry sits on both, because a static ink swapped in after it never lands on Fabric
-    expect(colonInkPair({ isNext: true, isPassed: false, isSelected: false, isStandard: true }).to).toBe(
-      NEXT_COLON_COLOUR
-    );
-    expect(colonInkPair({ isNext: false, isPassed: false, isSelected: false, isStandard: true })).toEqual({
+    expect(colonInkPair({ isNext: true, isPassed: false, isStandard: true }).to).toBe(NEXT_COLON_COLOUR);
+    expect(colonInkPair({ isNext: false, isPassed: false, isStandard: true })).toEqual({
       from: COLON_COLOUR,
-      to: COLON_COLOUR,
+      to: PRIMARY_COLOUR,
     });
     expect(styleEntries(screen.getAllByText(':')[0])[2]).toBeDefined();
     expect(styleEntries(screen.getAllByText(':')[1])[2]).toBeDefined();
@@ -168,9 +166,7 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerTime type={ScheduleType.Standard} index={FAJR} />);
 
-    expect(colonInkPair({ isNext: false, isPassed: true, isSelected: false, isStandard: true }).to).toBe(
-      PAST_COLON_COLOUR
-    );
+    expect(colonInkPair({ isNext: false, isPassed: true, isStandard: true }).to).toBe(PAST_COLON_COLOUR);
     expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
   });
 
@@ -179,9 +175,7 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
     await render(<PrayerTime type={ScheduleType.Extra} index={ISTIJABA} />);
 
     // Istijaba is the next Extras row at 14:00 on Friday, so its pair takes the extras tint
-    expect(colonInkPair({ isNext: true, isPassed: false, isSelected: false, isStandard: false }).to).toBe(
-      NEXT_COLON_COLOUR_EXTRAS
-    );
+    expect(colonInkPair({ isNext: true, isPassed: false, isStandard: false }).to).toBe(NEXT_COLON_COLOUR_EXTRAS);
     expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
   });
 
@@ -200,7 +194,7 @@ describe('the colon under the overlay selection', () => {
     await render(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
 
     // The whole row brightens on selection; the upcoming pair carries it both ways
-    expect(colonInkPair({ isNext: false, isPassed: false, isSelected: true, isStandard: true })).toEqual({
+    expect(colonInkPair({ isNext: false, isPassed: false, isStandard: true })).toEqual({
       from: COLON_COLOUR,
       to: PRIMARY_COLOUR,
     });
@@ -217,9 +211,9 @@ describe('the colon under the overlay selection', () => {
     showLondonDay('2026-09-11', '14:00');
     const view = await render(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
 
-    expect(colonInkPair({ isNext: false, isPassed: false, isSelected: false, isStandard: true })).toEqual({
+    expect(colonInkPair({ isNext: false, isPassed: false, isStandard: true })).toEqual({
       from: COLON_COLOUR,
-      to: COLON_COLOUR,
+      to: PRIMARY_COLOUR,
     });
 
     // 19:00: Asr has passed and Maghrib is next - the pair flips on that render and the
@@ -227,9 +221,7 @@ describe('the colon under the overlay selection', () => {
     jest.setSystemTime(london('2026-09-11', '19:00'));
     await view.rerender(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
 
-    expect(colonInkPair({ isNext: true, isPassed: false, isSelected: false, isStandard: true }).to).toBe(
-      NEXT_COLON_COLOUR
-    );
+    expect(colonInkPair({ isNext: true, isPassed: false, isStandard: true }).to).toBe(NEXT_COLON_COLOUR);
     expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
     expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
   });
@@ -244,13 +236,9 @@ describe('the colon under the overlay selection', () => {
     );
 
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
-    expect(colonInkPair({ isNext: false, isPassed: true, isSelected: true, isStandard: true }).to).toBe(
-      PAST_COLON_COLOUR
-    );
+    expect(colonInkPair({ isNext: false, isPassed: true, isStandard: true }).to).toBe(PAST_COLON_COLOUR);
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
-    expect(colonInkPair({ isNext: true, isPassed: false, isSelected: true, isStandard: true }).to).toBe(
-      NEXT_COLON_COLOUR
-    );
+    expect(colonInkPair({ isNext: true, isPassed: false, isStandard: true }).to).toBe(NEXT_COLON_COLOUR);
   });
 });
