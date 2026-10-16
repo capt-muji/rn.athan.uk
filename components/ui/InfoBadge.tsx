@@ -1,20 +1,18 @@
 import { StyleSheet, View } from 'react-native';
 
 import InfoBare from '@/assets/icons/svg/info-bare.svg';
-import { COLORS, RADIUS } from '@/shared/constants';
+import { COLORS } from '@/shared/constants';
 
 interface Props {
   /** The chip's side; the glyph renders at its own per-surface size inside */
   size: number;
   glyph: number;
   color: string;
-  /** Round chips serve the sheet footers; the info box keeps its square */
-  round?: boolean;
 }
 
-/** The one information mark: the bare i on its chip, square or round by surface */
-export default function InfoBadge({ size, glyph, color, round }: Props) {
-  const badge = [styles.chip, { width: size, height: size, borderRadius: round ? size / 2 : RADIUS.md }];
+/** The one information mark: the bare i on its round chip, every surface matching the sheet footers */
+export default function InfoBadge({ size, glyph, color }: Props) {
+  const badge = [styles.chip, { width: size, height: size, borderRadius: size / 2 }];
 
   return (
     <View style={badge}>

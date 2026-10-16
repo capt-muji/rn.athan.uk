@@ -15,13 +15,12 @@ import { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 
+import { colonInkPair } from './colonInk';
+
 interface Props {
   type: ScheduleType;
   index: number;
 }
-
-/** The upcoming colon's brightening pair: the dim ink it rests on and the row's bright ink selection takes it to */
-export const COLON_BRIGHTENING = { from: COLORS.countdown.timeColon, to: COLORS.text.primary };
 
 /**
  * Prayer time display component
@@ -61,13 +60,18 @@ export default function PrayerTime({ type, index }: Props) {
   const parts = displayTime === UNAVAILABLE_TIME ? null : splitSingleColon(displayTime);
 
   const isStandard = type === ScheduleType.Standard;
-  const colonNextStyle = isStandard ? styles.colonNext : styles.colonNextExtras;
-  // The passed and next colons carry their own inks; an upcoming row's joins the row's own
-  // brightening, so a selected row reads bright through its whole time
-  const colonStateStyle = Prayer.isNext ? colonNextStyle : Prayer.isPassed ? styles.colonPast : undefined;
+  // The animated style owns the colon in every state, its endpoint pair keyed to the row:
+  // a static ink swapped in after an animated one leaves the array never lands on Fabric,
+  // which keeps the dim colour the UI thread last applied (owner report, 2026-10-16)
+  const colonPair = colonInkPair({
+    isNext: Prayer.isNext,
+    isPassed: Prayer.isPassed,
+    isSelected: isSelectedForOverlay,
+    isStandard,
+  });
   const colonColorStyle = useDerivedColor(colorPos, {
-    fromColor: COLON_BRIGHTENING.from,
-    toColor: COLON_BRIGHTENING.to,
+    fromColor: colonPair.from,
+    toColor: colonPair.to,
     duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
@@ -79,9 +83,7 @@ export default function PrayerTime({ type, index }: Props) {
       ) : (
         <View style={styles.timeRow} accessible accessibilityLabel={displayTime}>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[0]}</Animated.Text>
-          <Animated.Text style={[styles.textPart, styles.colon, colonStateStyle ?? colonColorStyle]}>
-            {':'}
-          </Animated.Text>
+          <Animated.Text style={[styles.textPart, styles.colon, colonColorStyle]}>{':'}</Animated.Text>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[1]}</Animated.Text>
         </View>
       )}
@@ -117,14 +119,5 @@ const styles = StyleSheet.create({
     color: COLORS.countdown.timeColon,
     marginHorizontal: 3,
     transform: [{ translateY: -1.5 }],
-  },
-  colonNext: {
-    color: COLORS.countdown.nextTimeColon,
-  },
-  colonPast: {
-    color: COLORS.countdown.pastTimeColon,
-  },
-  colonNextExtras: {
-    color: COLORS.countdown.nextTimeColonExtras,
   },
 });
