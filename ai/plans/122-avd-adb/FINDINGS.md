@@ -18,7 +18,7 @@ The changelog entry the ticket's order rests on, and its scope:
   `adbProcess.ts`, `adbDeviceList.ts`, `adbEndpoint.ts`, `adbDiagnostics.ts` - and six are
   rewritten - `ADBServer.ts` (+86/-63), `AndroidDeviceManager.ts` (+143/-27), `adb.ts`
   (+298/-117), `adbReverse.ts` (+43/-13), `emulator.ts` (+81/-71), `getDevices.ts`
-  (+35/-25). Twelve test files and fixtures land with them, including `adb-hang.js`,
+  (+35/-25). Ten test files and five fixtures land with them, including `adb-hang.js`,
   `adb-cold-start.js` and `adb-long-command.js`.
 - The stated intent (pull request body, quoted as the author's own record): cancellation
   signals from top to bottom on every adb operation; `start-server` and `kill-server`
@@ -28,8 +28,17 @@ The changelog entry the ticket's order rests on, and its scope:
   actionable; races and loops that ignored a hanging command fixed.
 
 All four added modules and all six rewritten modules are present in the installed build tree
-`node_modules/@expo/cli/build/src/start/platforms/android/`, and the behaviour below is
-quoted from that build, not from the changelog.
+`node_modules/@expo/cli/build/src/start/platforms/android/`, each exported from the build's own
+frozen block:
+
+| Module | Exported names | Cite |
+| --- | --- | --- |
+| `adbProcess` | `AdbProcessError`, `AdbProcessWaitError`, `isAdbTimeoutReason`, `runAdbDeviceMutationAsync`, `runAdbDeviceQueryAsync`, `runAdbHostQueryAsync`, `runBoundedAdbDeviceMutationAsync`, `runBoundedAdbDeviceQueryAsync`, `runBoundedAdbHostQueryAsync` | `adbProcess.js:5-15` |
+| `adbDeviceList` | `parseAdbDeviceList`, `isAdbDeviceStateUsable` | `adbDeviceList.js:5-8` |
+| `adbEndpoint` | `ADB_HOST_PROBE_WAIT_LIMIT_MS`, `formatAdbEndpoint`, `parseAdbHostVersionResponse`, `probeAdbHostVersionAsync`, `resolveAdbEndpoint` | `adbEndpoint.js:5-11` |
+| `adbDiagnostics` | `createAdbOperationError`, `formatAdbDeviceError`, `formatAdbDiscoveryError`, `isAdbDeviceDisconnectedError`, `shouldProbeAdbHost` | `adbDiagnostics.js:5-11` |
+
+The behaviour below is quoted from that build, not from the changelog.
 
 The two external sources, fetched 2026-10-16 and not re-fetched by any step:
 `https://raw.githubusercontent.com/expo/expo/main/packages/%40expo/cli/CHANGELOG.md` for the
@@ -42,14 +51,14 @@ the scope line, and the installed build is the witness for every behaviour.
 
 | Axis | Installed behaviour at 58.1.10 | The file and line |
 | --- | --- | --- |
-| Device discovery | `adb devices -l` is retried inside a 10 s deadline for the transient server messages (`cannot connect`, `connection refused`, `server didn't ACK`, `daemon not running`, `smartsocket`), with a 2 s retry window and a 200 ms delay between attempts. The AVD inventory is merged after the attached devices, deduplicated by name against the attached set. A failed AVD listing is tolerated while an attached device exists, and the failure text is folded into the "no devices" message instead of thrown. | `adb.js:178-180`, `adb.js:277-343`, `adb.js:383-385`, `getDevices.js:26-44`, `getDevices.js:54-57` |
+| Device discovery | `adb devices -l` is retried inside a 10 s deadline for the transient server messages (`cannot connect`, `connection refused`, `server didn't ACK`, `daemon not running`, `smartsocket`), with a 2 s retry window and a 200 ms delay between attempts. The AVD inventory is merged after the attached devices, deduplicated by name against the attached set. A failed AVD listing is swallowed with no text while an attached device exists; with none attached it throws `ANDROID_AVD_DISCOVERY` carrying the listing's own cause. | `adb.js:178-180`, `adb.js:277-343`, `adb.js:383-385`, `getDevices.js:26-44`, `getDevices.js:54-57` |
 | Device naming and selection | A device is matched by `pid` (the adb serial) first and by `name` only as a fallback, and an unmatched query throws `BAD_ARGS` listing every available device with its serial, name and type. | `AndroidDeviceManager.js:87-103` |
 | Device state | Every operation re-checks the device after discovery: a `transport_id` change between discovery and use throws `ADB_DEVICE_STATE` naming both transports, an unauthorized device is refused with the authorization link, and a state other than `device` is refused with the state named. | `AndroidDeviceManager.js:133-172` |
 | Timeouts and cancellation | Query operations are bounded (10 s for a device query, 10 s for a property read, 4 s for the adb host probe) while mutation operations are not: `runDeviceMutationAsync` calls the unbounded form whenever no limit is passed, which is how install and uninstall run. On expiry the adb client is SIGTERMed, then SIGKILLed after a bounded cleanup window, and the failure reads "Expo stopped waiting for the ADB <operation> operation to finish." A cancelled mutation is marked `remoteCompletionUnknown` and the error says "The operation may have completed on the device. Check before trying again." | `ADBServer.js:18-19`, `ADBServer.js:33-58`, `adbProcess.js:81-163` (the wait message at `:155`, the marker at `:158`), `adbDiagnostics.js:43-45`, `adb.js:246-255` |
 | Server lifecycle | No `start-server` and no `kill-server` anywhere in the installed build. The one match for either string is the comment recording their removal. The CLI no longer starts or stops a shared adb server. | `ADBServer.js:33-36` |
 | Diagnostics | A failed discovery probes the configured adb endpoint directly over its socket with a `host:version` request and separates "not responding", "connection refused", "rejected the health check", "not an adb server" and "direct probe unsupported", each with its own advice line. Device-state failures add advice for offline, unauthorized, `no permissions` and not-ready. | `adbEndpoint.js:56-83`, `adbEndpoint.js:135-233`, `adbDiagnostics.js:38-108` |
 | Emulator boot | The AVD list is `emulator -list-avds` filtered to names without spaces, each entry marked launchable. Boot spawns `emulator @<name>` detached, polls `adb devices` every second without overlapping polls, waits for `init.svc.bootanim` to report `stopped`, tolerates a transient boot-property error, and fails at 180 s with the manual command printed. | `emulator.js:111-208` |
-| Install | `adb install -r -d --user 0 <apk>`, unbounded, with `EXPO_ADB_USER` overridable and both a pre-check and a post-check that turn a bad user number into `EXPO_ADB_USER`. An uninstall is skipped when the package is absent. | `adb.js:246-255`, `ADBServer.js:89-111`, `env.js:204-205` |
+| Install | `adb install -r -d --user 0 <apk>`, unbounded, with `EXPO_ADB_USER` overridable and two post-execution checks that turn a bad user number into `EXPO_ADB_USER`. An uninstall is skipped when the package is absent. | `adb.js:246-255`, `ADBServer.js:89-111`, `env.js:204-205` |
 | Logcat | Nothing. `grep -rni logcat node_modules/@expo/cli/build` (source maps excluded) prints zero matches. The rewrite carries no logcat handling of any kind, so no logcat stability changes with it. | measured 2026-10-16 |
 
 Two consequences follow for this repository, both independent of any routing decision:
@@ -110,12 +119,12 @@ testing rules ("A screenshot reaches a screen. It never proves what is on one. A
 claim needs a logcat line or a dump."), and the `@expo/agent-cli` ban with its
 `smoke --android` clause.
 
-The local toolchain, measured 2026-10-16 (`~/Library/Android/sdk`): `platform-tools` adb
+The local toolchain, measured 2026-10-16 (`$HOME/Library/Android/sdk`): `platform-tools` adb
 1.0.41 / 37.0.1-15733141; emulator 37.1.11.0; `emulator -list-avds` prints nothing and exits
 0; `system-images/` is empty; `platforms/` holds android-35, android-36 and android-37.0;
 the host is arm64. The app's floor is API 24
 (`node_modules/react-native/ReactAndroid/src/main/AndroidManifest.xml:11`) against
-`targetSdkVersion 36` (line 12), and both Android build scripts cut arm64-v8a only.
+`targetSdkVersion 36` (line 12), and all four build scripts cut arm64-v8a only.
 
 The fleet today: the 3T on Android 9 (API 28), the Find X8 and the S23 on Android 16
 (API 36), the 8T carried in `ai/AGENTS.md`:57 with no atlas file in the repository. No
@@ -130,7 +139,7 @@ emulator exists anywhere in the harness.
   the re-pin.
 - **Option B, status quo plus two documented corrections and one documented install path
   (recommended).** Keep every script on raw adb. Correct the stale `--device` gotcha
-  (`e2e/README.md:128-131`, restated in `e2e/AGENTS.md:18`): at 58.1.10 the serial resolves
+  (`e2e/README.md:128-131`, restated in `e2e/AGENTS.md:17`): at 58.1.10 the serial resolves
   first, so the failure the line records is cured. Record
   `npx expo run:android --binary <apk> --device <serial> --no-bundler` in the device-testing
   routing as the way to put an already-built APK on a phone and open it, because the CLI
@@ -237,7 +246,7 @@ Unverified at planning, each with the step that would verify it:
 ## 6. What changes if she rules for the options recommended
 
 Question 1, option B: two documentation lines (`e2e/README.md:128-131`,
-`e2e/AGENTS.md:18`) replaced by the serial-first behaviour, and one line added to the
+`e2e/AGENTS.md:17`) replaced by the serial-first behaviour, and one line added to the
 device-testing routing naming the `--binary --device <serial> --no-bundler` install path.
 No script changes, no build script changes, no new dependency.
 
