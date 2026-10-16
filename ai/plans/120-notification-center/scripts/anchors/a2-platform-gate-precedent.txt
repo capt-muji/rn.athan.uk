@@ -1,0 +1,10 @@
+/**
+ * Deletes every superseded channel generation: the pre-mp3 `athan_1`…`athan_16` and `reminder`,
+ * then the notification-stream `_v2` athans, `extras_at_time` and every prayer × interval reminder.
+ * A channel's sound and audio attributes are immutable on Android, so each generation can only be
+ * replaced by a new ID; leaving the old ones would show the user dead duplicates in Settings.
+ * Safe on every init: deleting an absent channel is a system no-op and no live code recreates these IDs.
+ */
+export const deleteLegacyAndroidAudioChannels = async () => {
+  if (Platform.OS !== 'android') return;
+
