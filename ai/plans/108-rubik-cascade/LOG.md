@@ -94,7 +94,7 @@ holds the merge; the sweep re-run on uat: 46 passed, 46 total.
 
 session: ses_ebdd8f1e7ffegri756dWa13K04
 
-### Step 02 — executing
+### Step 02 — done
 
 Branch `feat/108-gap-dials` off `uat` (e4c75ba8, 2.0.827). Anchors `sound-list-gap`, `day-dial`,
 `sweep-sound-hint`, `daylines-gap` each counted 1.
@@ -107,4 +107,49 @@ and nothing else (47 passed, 49 total):
   value with en`: `typographySweep.test.tsx:308:46` - `Expected: 12`, `Received: 6`
 - `the location and date lines > dials the location-to-date gap to 8 points under ar`:
   `DayLines.test.tsx:78:96` - `Expected: 8`, `Received: 6`
+
+Green: both suites 49 passed, 49 total; `yarn validate` all green. Hook (commit `404e2b0c`,
+version 2.0.828; the first hook run died with a turn boundary, the re-run landed the same single
+commit):
+
+- `Tests:       5681 passed, 5681 total` (215/215 suites)
+- Statements 100% (5355/5355), Branches 100% (2310/2310), Functions 100% (1116/1116),
+  Lines 100% (4796/4796)
+
+Breaks, both from the repo root before the commit:
+
+- `bash ai/plans/108-rubik-cascade/scripts/break-108.sh sound` - last line `BREAK OK` (the
+  literal 6 returned, the `one value with en` case red: 1 failed, 45 skipped)
+- `bash ai/plans/108-rubik-cascade/scripts/break-108.sh day` - last line `BREAK OK`
+  (SPACING.py returned, the `8 points under ar` case red: 1 failed, 2 skipped)
+
+Both restored from the backups; `git status --porcelain` then listed only this step's files and
+the plan files.
+
+Review, read cold against the checklist: two style values (`SPACING.py` to `SPACING.sm` in
+Day.tsx; the Sound ternary collapsed to `SPACING.md` plain), two test expectations, one dead
+branch (the `compactArabic` declaration died with its one use, `currentLocaleId` still feeds
+`typographyFor`), one comment halved to the pinned sentence byte-for-byte; en branches
+byte-identical; nothing else moved. No lifecycle, thread, residue or rule exposure. Nothing to
+fix.
+
+Merged: `a36594f7` (`2.0.828 - merge feat/108-gap-dials: the label gap and the date dial`), uat
+holds the merge; both suites re-run on uat: 49 passed, 49 total.
+
+session: ses_ebdd8f1e7ffegri756dWa13K04
+
+### Step 03 — executing
+
+Branch `feat/108-note-box` off `uat` (a36594f7, 2.0.828). Anchors `note-text`,
+`script-line-height`, `volume-note-style` each counted 1.
+
+Red, before any change (`npx jest components/sheets/parts/__tests__/VolumeNote.test.tsx
+--watchman=false`), exactly the one new ar case and nothing else (4 passed, 5 total):
+
+- `the volume footnote > takes the 21 point script line box under ar, so the measured descender
+  ink renders`: `VolumeNote.test.tsx:70:31` - `Expected: 21`, `Received: undefined`
+
+(The first red run failed on a missing outer `setActiveLocale` import in the finally block, a
+defect in my test edit, not the plan's; the import was added and the run repeated before any
+code change.)
 
