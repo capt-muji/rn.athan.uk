@@ -37,7 +37,7 @@ The plan is `PLAN.md`; the findings are `FINDINGS.md`; the protocol is `PLAN.md`
 - The JS content input carries `threadIdentifier` and no `summaryArgument`
   (`Notifications.types.d.ts:538-631`), so a thread's header cannot be named from app code.
 - The iOS delivered-set APIs touch delivered notifications only
-  (`PresentationModule.swift:12-42`); Android's routes to `cancelAll()`
+  (`PresentationModule.swift:12-39`); Android's routes to `cancelAll()`
   (`NotificationsService.kt:175`, `ExpoPresentationDelegate.kt:275-277`).
 - The init path runs at cold launch (`app/index.tsx:115-138`) and on every foreground return
   (`device/listeners.ts:46-69`) and never from the background task (`device/tasks.ts:21-49`).
@@ -109,3 +109,25 @@ neither grouping nor dismissal, so no conclusion moves.
 Applied: the plan's version references and both changelog citations, FINDINGS section 1.4, and the
 pre-flight's pin constant now read 58.1.5, and the pre-flight's greps for the six citations the
 grill found unchecked were added and pass at the new pin.
+
+## Ticket 120, execution
+
+### Step 01 — DONE (the current state, the pinned lever surface and the delivered volume)
+
+- Executed by the lane itself (D120.9), not a dispatched executor: the steps are measurement and
+  writing with no red-green loop, and the audit's two reviewers reproduce every number cold.
+- Anchors: all eight count 1 at the pre-flight's run on `lane/120` (`PREFLIGHT OK`), re-run after
+  the rebase onto `uat` at 58.1.5.
+- Evidence, saved under `$HOME/athan-gitree/sessions/120/`: `step1-evidence.txt` (the four-API
+  sweep, empty; the pinned-source reads at 58.1.5; the Android delegate's shared tag; the three
+  open moments) and `step2-evidence.txt` (row 111's delivery entry and recorded configuration;
+  the reminder and alert contracts; the 111 evidence index, which holds no center capture).
+- FINDINGS sections 1 and 2 refined against that evidence: the entry-point table, the pinned lever
+  table at 58.1.5 (the changelog line numbers re-measured after the re-pin: :125 and :38), the
+  delivered volume (seven for the recorded day: five at-time deliveries plus the two Magrib
+  reminders, the second derived from the armed time), and the rendering still marked `UNMEASURED`.
+- The sweep prints nothing; the volume's inputs are quoted at `shared/types.ts:196-220` and in the
+  111 ledger's configuration line.
+- Commit: one step commit on `lane/120`, merged `--no-ff` into `uat`, no push (the shas are git history).
+
+session: ses_eba1fe750ffeUVW5hmC6nRcLKY
