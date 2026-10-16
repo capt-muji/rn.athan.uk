@@ -79,3 +79,31 @@ claim battery is the step's evidence generator. Commit and merge shas are record
 entry, which is this ledger's convention.
 
 session: ses_eba28a6b2ffe7uxiUDK37TNMie
+
+### Step 2 — DONE (the app mapping and the heading answer)
+
+Branch `docs/121-2-app-mapping` off `lane/121` at `5c48b0d3` (2.0.902). Step 1's commit
+`5c48b0d3` (2.0.902, hook `Tests: 2 skipped, 5706 passed, 5708 total`, coverage 100 percent on all
+four measures) merged `--no-ff` into `uat` as `a0cfb70c`; `lane/121` fast-forwarded to `5c48b0d3`.
+The claim battery re-run, output `$HOME/athan-gitree/sessions/121/claims-step2.out` (exit 0):
+
+- R2.1: `git grep -n "^import .*expo-location" -- '*.ts' '*.tsx'` printed exactly
+  `device/__tests__/qibla.test.ts:5` and `device/qibla.ts:1`; the wider
+  `git grep -n "expo-location" -- '*.ts' '*.tsx'` printed 13 lines, classified in FINDINGS
+  section 3 (two imports, two comment mentions, the suite's mock line, eight guard path strings).
+- R2.2: `device/qibla.ts` is 92 lines and makes exactly six classic calls, at lines 20, 24, 54, 55,
+  69 and 89; the mapping table in FINDINGS section 3 carries each one's `/next` equivalent, and
+  `reverseGeocodeAsync` and `watchHeadingAsync` are the two with none.
+- R2.3: `hooks/useQibla.ts:249-266` read; the fused branch calls `watchFusedHeading` and the else
+  branch calls `watchHeading` beside `watchHeadingAccuracy`; `modules/qiblaheading/index.ts:1-9` and
+  `shared/qiblaSettle.ts:32-39` read as quoted.
+- R3.2: the patch's six hunks re-enumerated by file and patch line, `scripts/verify-expo-location-patch.sh`
+  printed `PATCH AS SHIPPED`, and the upstream record re-read; the pull request's state re-measured
+  the same day through the GitHub API and unchanged (`open`, one bot comment, last updated
+  2026-10-09T11:43:19Z, label `contributor: external`). FINDINGS section 2 now says six hunks in
+  three files with each hunk's patch line, and records the second measurement.
+
+Records wording fixed in this step: the hunk sentence in FINDINGS section 2 named the wrong patch
+lines for the emission gate and the constant; both now read from the patch itself.
+
+session: ses_eba28a6b2ffe7uxiUDK37TNMie
