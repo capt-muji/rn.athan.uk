@@ -279,18 +279,19 @@ published docs and section 1.12 the same in the changelog.
 Consequences, stated plainly:
 
 - **The local patch does not re-file.** `patches/expo-location+58.0.16.patch` carries six hunks in
-  three files and all six stay where they are: four in the classic `LocationModule.kt` (the sensor
-  rates and the emission gate, anchors `patch-android-gate.md`; the import at hunk line 5, the
-  rates at 13 and 28, the gate and its constant at 28 and 42), one in
-  `expo-module.config.json` (the publication-block removal that keeps the package compiled from
-  source), and one in the classic `ios/Providers/DeviceHeadingStreamer.swift` (the
+  three files and all six stay where they are: four in the classic `LocationModule.kt` (the removed
+  `kotlin.math.abs` import at patch line 5, the two sensor rates at 13, the emission gate at 28 and
+  the `DEGREE_DELTA` constant at 42, anchors `patch-android-gate.md`), one in
+  `expo-module.config.json` (at 54, the publication-block removal that keeps the package compiled
+  from source), and one in the classic `ios/Providers/DeviceHeadingStreamer.swift` (at 71, the
   `kCLHeadingFilterNone`, anchor `patch-ios-filter.md`). Nothing in `/next` touches a heading
   reader, so there is no new API for these hunks to move to.
 - **The upstream PR does not re-file.** `expo/expo#51291`, "[location] Add `headingFilter` option and raw
   `headingAccuracy` to `watchHeadingAsync`", patches the classic `watchHeadingAsync` and nothing
-  else. Measured on 2026-10-16 through the GitHub API: state `open`, not a draft, not merged,
+  else. Measured twice on 2026-10-16 through the GitHub API: state `open`, not a draft, not merged,
   created 2026-10-09T04:32:06Z, last updated 2026-10-09T11:43:19Z, one comment, and that comment
-  is an automated CodeMention subscription (`github-actions[bot]`). No human review has landed.
+  is an automated CodeMention subscription (`github-actions[bot]`); the single label is
+  `contributor: external`. No human review has landed since the day it opened.
   `/next` offers no heading surface for this PR to be refiled against. `ai/UPSTREAM-PRS.md:13, 25-28`
   keeps its record unchanged (anchor `upstream-location-pr.md`).
 - **The compass's API stays the classic one**, which is what the settled ground already assumes.
