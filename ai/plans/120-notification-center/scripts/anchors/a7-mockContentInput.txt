@@ -1,0 +1,10 @@
+export interface NotificationContentInput {
+  title?: string;
+  body?: string;
+  sound?: string | boolean;
+  color?: string;
+  autoDismiss?: boolean;
+  sticky?: boolean;
+  priority?: string;
+  interruptionLevel?: string;
+}
