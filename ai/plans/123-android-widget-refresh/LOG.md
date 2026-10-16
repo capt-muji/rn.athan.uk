@@ -35,7 +35,7 @@
 
 ## Ticket 123
 
-### Step 1 — IN PROGRESS
+### Step 1 — DONE (2.0.888, commit `2e1327b2`, merged)
 
 - Anchor check from the worktree root: the pre-flight's python count printed 1 for all ten
   anchors in their sources (`js-refresh-entry`, `js-flip-chain`, `js-android-push`,
@@ -55,6 +55,8 @@
   `WidgetObject.reload` (`:21-23`) to `WidgetsUpdater.reload` (`:20-28`) to
   `ExpoWidgetsPeekWidget.refresh` (`WidgetsUpdater.kt:42-50`), and the native broadcast path
   beside it (`WidgetRefreshScheduler.kt:138-152`, `ExpoWidgetsAppWidgetProvider.kt:13-21`).
+- Post-READY plan edit, recorded here: section 8's ledger-contract line was rewritten from a
+  hyphen to the em dash form the record format uses, in this step's commit.
 - Review: read the diff cold against the sources, one citation at a time; no defect found
   beyond the two stale shipped reasons, which are recorded as findings (FINDINGS 1.5), not
   fixed, because this wave changes no code.
@@ -65,7 +67,7 @@
 
 session: ses_eba43e587ffevuDs9eWxHmJ2h0
 
-### Step 2 — IN PROGRESS
+### Step 2 — DONE (2.0.889, commit `f0359ea1`, merged)
 
 - Anchor check: all ten anchors still count 1 (the pre-flight, run from the worktree root).
 - R2.1: the deleted record recovered file by file with
@@ -99,6 +101,10 @@ session: ses_eba43e587ffevuDs9eWxHmJ2h0
   `android/build.gradle`; compared against `app.json`'s `extraProguardRules`, which keeps
   `androidx.work.**` and `androidx.glance.**` whole plus the Expo Modules v2 reflection keeps.
   Which set is load-bearing today is unmeasured; recorded as gap G6.
+- Process note, recorded by the audit: this step's Files line asks for the queue row set to
+  step 2, and the commit did not touch `ai/plans/README.md`; the row read `IN PROGRESS, step 1`
+  until step 3's commit set it to EXECUTED. No state was lost, and the row carries the final
+  text at DONE.
 - One commit carries both subjects by decision (PLAN section 6, step 2): both are reading-only
   notes about the same build pair, taken in one sitting.
 - Review: the diff read cold against the recovered files and the installed sources, one
@@ -108,7 +114,7 @@ session: ses_eba43e587ffevuDs9eWxHmJ2h0
 
 session: ses_eba43e587ffevuDs9eWxHmJ2h0
 
-### Step 3 — IN PROGRESS
+### Step 3 — DONE (2.0.890, commit `a72eacb6`, merged)
 
 - Anchor check: all ten anchors still count 1 (the pre-flight, run from the worktree root).
 - R4.1: FINDINGS sections 4 to 6 written. Section 4 lists eight residual gaps, each with what
