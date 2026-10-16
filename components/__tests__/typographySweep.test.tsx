@@ -9,7 +9,6 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { SPACING } from '@/shared/constants';
 import type { LocaleId } from '@/shared/i18n/locale';
 
 // The probes require the testing library inside isolateModules, mid-test, where
@@ -338,6 +337,7 @@ describe('the sheet header line boxes', () => {
 
     expect(title.lineHeight).toBeUndefined();
     expect(subtitle.lineHeight).toBeUndefined();
-    expect(title.marginBottom).toBe(SPACING.xxs);
+    expect(title.marginBottom).toBe(2);
+    expect(subtitle.marginTop).toBe(4);
   });
 });
