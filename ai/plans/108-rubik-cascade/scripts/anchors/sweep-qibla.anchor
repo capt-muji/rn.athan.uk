@@ -1,0 +1,9 @@
+describe('the qibla sheet subtitle', () => {
+  it('pulls up 10 points under ar, matching the shared header', async () => {
+    expect((await qiblaSubtitleStyleUnder('ar')).marginTop).toBe(-10);
+  });
+
+  it('keeps its 4 point gap under en', async () => {
+    expect((await qiblaSubtitleStyleUnder('en')).marginTop).toBe(4);
+  });
+});

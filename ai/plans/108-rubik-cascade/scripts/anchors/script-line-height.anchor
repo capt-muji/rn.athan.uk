@@ -1,0 +1,3 @@
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
