@@ -40,7 +40,7 @@ FINDINGS sections 1 and 2 reproduced:
 - versions: `@expo/cli` 58.1.10, `expo` 58.0.12, `npx expo --version` 58.1.10.
 - the four added modules present, with their exports: `adbProcess` (nine exports, including
   `runBoundedAdbDeviceQueryAsync` and `AdbProcessWaitError`), `adbDeviceList`
-  (`parseAdbDeviceList`, `isAdbDeviceStateUsable`), `adbEndpoint` (four), `adbDiagnostics`
+  (`parseAdbDeviceList`, `isAdbDeviceStateUsable`), `adbEndpoint` (four functions and the probe-limit constant), `adbDiagnostics`
   (five). The six rewritten modules present.
 - `grep -rni logcat node_modules/@expo/cli/build` (maps excluded): 0.
 - `kill-server`: 0 matches. `start-server`/`stop-server`: 1 match, `ADBServer.js:35`, the
@@ -64,12 +64,13 @@ FINDINGS sections 1 and 2 reproduced:
   `:172` the stop.
 - the harness sweep: `git grep -nw adb -- e2e` prints 36 hits across 10 files; each of the four
   build scripts prints 1 hit, the `adb install -r` comment.
-- `npx expo --help`: the twelve command names plus the three agent-command names, no device or
+- `npx expo --help`: the thirteen command names plus the three agent-command names, no device or
   emulator command; `run:android --help` prints `-d, --device [device]`.
 - the toolchain: adb 1.0.41 / 37.0.1-15733141, emulator 37.1.11.0, `-list-avds` empty exit 0,
   `system-images/` empty, platforms android-35/36/37.0, host arm64, RN manifest
   `minSdkVersion 24` / `targetSdkVersion 36`, build scripts arm64-v8a.
-session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
+Review: the step's diff read cold against the installed sources and the harness files; no fix required. Merge: `--no-ff` into `uat` at `b18d75aa` (2.0.892).
+session: ses_eba43e588ffesMciSNvZDmZ8ih
 
 ### Step 2 — DONE (the harness inventory verified)
 
@@ -81,10 +82,11 @@ frame-audit.sh 9, idle-cpu.sh 3, idle_cpu.py 2, README.md 4, AGENTS.md 1, atlas-
 atlas-oppo-findx8 3, atlas-sm-s911b 2. The seven `e2e/flows/*.yaml` files call adb nowhere and
 `e2e/device-atlas-iphone-xs.md` names none. Each of the four build scripts prints exactly one
 `grep -n adb` hit, the comment naming `adb install -r`, and no invocation. `npx expo --help`
-prints the twelve command names plus the three agent-command names and no device or emulator
+prints the thirteen command names plus the three agent-command names and no device or emulator
 command; `npx expo run:android --help` prints `-d, --device [device]`. The toolchain line in
 the section stands as the step 1 verification recorded it.
-session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
+Review: the step's diff read cold against the installed sources and the harness files; no fix required. Merge: `--no-ff` into `uat` at `5815a3b0` (2.0.893).
+session: ses_eba43e588ffesMciSNvZDmZ8ih
 
 ### Step 3 — DONE (the two questions, the experiments, the unverified list)
 
@@ -100,7 +102,8 @@ E2 on the fleet's two slowest installs, U5 E2 and E5, U6 `adb -s 8T_SERIAL shell
 ro.build.version.release` at the next device wave. The five named experiments stand with their
 commands and waiting conditions, and two cites were corrected to the ranges that hold the
 quoted lines (`runAndroidAsync.js:127-133`, `:172`).
-session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
+Review: the step's diff read cold against the installed sources and the harness files; no fix required. Merge: `--no-ff` into `uat` at `5d173abf` (2.0.895).
+session: ses_eba43e588ffesMciSNvZDmZ8ih
 
 ### Step 4 — DONE (the ruling pack)
 
@@ -113,4 +116,12 @@ its 36 hits and the build scripts' absent adb calls, the local toolchain, both q
 with their measured rejections, the two recommendations, the five named experiments with their
 waiting conditions and the six unverified claims. R4.1 holds: the row answers the row's three
 clauses standalone.
-session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
+Review: the step's diff read cold against the installed sources and the harness files; no fix required. Merge: `--no-ff` into `uat` at `4d76ecc5` (2.0.896).
+session: ses_eba43e588ffesMciSNvZDmZ8ih
+
+## Lane notes
+
+Version ladder: the READY commit and its merge carry 2.0.890, the same number as the first parent
+`ab2b78cd` (ticket 123 landed it 15 seconds earlier), and the skeleton sits at 2.0.886 beside
+ticket 123's own 2.0.886. The lane weather rule's tie-break cannot see equal versions, so both
+collisions are recorded here; every later step took the next free patch from `uat`.
