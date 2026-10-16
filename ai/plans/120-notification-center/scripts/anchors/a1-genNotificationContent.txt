@@ -1,0 +1,14 @@
+export const genNotificationContent = (
+  id: PrayerId,
+  alertType: AlertType,
+  soundIndex: number
+): Notifications.NotificationContentInput => {
+  const name = prayerLabel(id);
+  return {
+    title: t('notification.now', { name }),
+    sound: getNotificationSound(alertType, id, soundIndex),
+    color: '#5a3af7',
+    autoDismiss: false,
+    sticky: false,
+    priority: Notifications.AndroidNotificationPriority.MAX,
+    interruptionLevel: 'timeSensitive',
