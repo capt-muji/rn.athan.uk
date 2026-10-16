@@ -58,7 +58,7 @@ The grill found seven findings, all sentence-level repairs on confirmed-correct 
 no second round ran (the rule's condition is permission, and nothing a second round could
 change remains).
 
-### Step 01 — executing
+### Step 01 — done
 
 Branch `feat/108-subtitle-pulls` off `uat` (2.0.826). Pre-flight `PREFLIGHT OK` from
 `$TMPDIR/preflight-108.sh`.
@@ -70,4 +70,41 @@ Red, before any change (`npx jest components/__tests__/typographySweep.test.tsx
   `typographySweep.test.tsx:298:61` - `Expected: 6`, `Received: -10`
 - `the sheet header line boxes > leaves the ar title and subtitle to the font own box, so no
   glyph clips`: `typographySweep.test.tsx:332:32` - `Expected: 6`, `Received: -10`
+
+Green: the sweep 46 passed, 46 total; `yarn validate` all suites green. Hook (commit
+`25bf928c`, version 2.0.827):
+
+- `Tests:       5681 passed, 5681 total` (last Tests: line, 215/215 suites)
+- Statements 100% (5356/5356), Branches 100% (2312/2312), Functions 100% (1116/1116),
+  Lines 100% (4797/4797)
+
+Break: `bash ai/plans/108-rubik-cascade/scripts/break-108.sh pulls` from the repo root - last
+line `BREAK OK` (both margins reverted to -10, the whole sweep ran, exactly the two rewritten ar
+cases red at the same two lines, files restored from the backups; `git status --porcelain` then
+listed only this step's files and the plan files).
+
+Review, read cold against the checklist: the only value changes are the two `-10` to
+`SPACING.py` ternary branches and the test pins (the two expectations plus the plan-ordered en
+`SPACING.xxs` pin and its import); both comments rewritten, no stale pull copy survives (grepped);
+no pixel beyond the ruling; en branches byte-identical. No lifecycle, thread, residue or rule
+exposure. Nothing to fix; section 10's anticipated comment fixes were pre-applied.
+
+Merged: `e4c75ba8` (`2.0.827 - merge feat/108-subtitle-pulls: the sheets' subtitle gap`), uat
+holds the merge; the sweep re-run on uat: 46 passed, 46 total.
+
+session: ses_ebdd8f1e7ffegri756dWa13K04
+
+### Step 02 — executing
+
+Branch `feat/108-gap-dials` off `uat` (e4c75ba8, 2.0.827). Anchors `sound-list-gap`, `day-dial`,
+`sweep-sound-hint`, `daylines-gap` each counted 1.
+
+Red, before any change (`npx jest components/__tests__/typographySweep.test.tsx
+components/day/__tests__/DayLines.test.tsx --watchman=false`), exactly the two rewritten cases
+and nothing else (47 passed, 49 total):
+
+- `the sound sheet spacing under ar > seats the list 12 points under the label under ar, one
+  value with en`: `typographySweep.test.tsx:308:46` - `Expected: 12`, `Received: 6`
+- `the location and date lines > dials the location-to-date gap to 8 points under ar`:
+  `DayLines.test.tsx:78:96` - `Expected: 8`, `Received: 6`
 
