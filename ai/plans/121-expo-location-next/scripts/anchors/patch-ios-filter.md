@@ -1,0 +1,13 @@
+diff --git a/node_modules/expo-location/ios/Providers/DeviceHeadingStreamer.swift b/node_modules/expo-location/ios/Providers/DeviceHeadingStreamer.swift
+index 802bf57..313224f 100644
+--- a/node_modules/expo-location/ios/Providers/DeviceHeadingStreamer.swift
++++ b/node_modules/expo-location/ios/Providers/DeviceHeadingStreamer.swift
+@@ -25,6 +25,9 @@ internal class DeviceHeadingStreamer: BaseStreamer {
+     }
+     let stream = DeviceHeadingStream { continuation in
+       self.continuation = continuation
++      // CoreLocation fuses heading at about 50Hz and its default 1-degree filter rejected every reading of a
++      // stationary phone, measured on an iPhone XS, so a compass asking for careful alignment never updates
++      manager.headingFilter = kCLHeadingFilterNone
+       manager.startUpdatingHeading()
+     }
