@@ -131,3 +131,17 @@ grill found unchecked were added and pass at the new pin.
 - Commit: one step commit on `lane/120`, merged `--no-ff` into `uat`, no push (the shas are git history).
 
 session: ses_eba1fe750ffeUVW5hmC6nRcLKY
+
+### Step 02 — DONE (the options, the frozen-rule blast radius and the recommendation)
+
+- FINDINGS section 3 refined: the lever table now carries the status quo as its own row, so every
+  option of section 5 has a mechanism, the files a code step would touch and a line in the
+  frozen-rule table (R3.1); the recommendation names the rival it beat, option B, and its
+  falsifier (R3.2).
+- The seven frozen rules each carry a row, including the user's own grouping and summary settings
+  and the date-scoped identity contract. Android's two levers are recorded as deliberately unused:
+  the group key would change a frozen face, and the dismissal call routes to `cancelAll()`.
+- No new measurement: this step reads the pinned sources already cited in section 1.4 and the code
+  of section 1.2, and no claim here is device-dependent.
+
+session: ses_eba1fe750ffeUVW5hmC6nRcLKY
