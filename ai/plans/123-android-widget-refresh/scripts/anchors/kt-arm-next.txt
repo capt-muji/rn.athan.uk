@@ -1,0 +1,13 @@
+    fun armNext(context: Context) {
+        val appContext = context.applicationContext
+        val alarmManager = appContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        // 500ms past the edge: the countdown label is minute-ceil and the
+        // chain is wall-clock synced (owner ruling 2026-09-19), so the flip
+        // lands within half a second of the system minute change
+        var atMillis = (System.currentTimeMillis() / MINUTE_MS + 1) * MINUTE_MS + 500
+        if (atMillis < System.currentTimeMillis() + 250) atMillis += MINUTE_MS
+        val pending = PendingIntent.getBroadcast(
+            appContext,
+            0,
+            Intent(appContext, WidgetRefreshReceiver::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
