@@ -24,7 +24,7 @@ index c8e51de..780d6af 100644
 +  }
  }
 diff --git a/node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt b/node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt
-index 67097c6..b02a089 100644
+index 3c00eae..772c5bb 100644
 --- a/node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt
 +++ b/node_modules/expo-background-task/android/src/main/java/expo/modules/backgroundtask/BackgroundTaskScheduler.kt
 @@ -28,6 +28,9 @@ object BackgroundTaskScheduler {
