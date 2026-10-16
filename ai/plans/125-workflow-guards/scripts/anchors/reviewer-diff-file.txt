@@ -1,0 +1,1 @@
+You see the diff file and the checked-out worktree the lead named. You never see

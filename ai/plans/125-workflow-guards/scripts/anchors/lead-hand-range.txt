@@ -1,0 +1,2 @@
+   the code against the plan. Hand the range, never only diff files: a temp file can be
+   gone by the time the reviewer runs, and a reviewer that cannot find the diff must
