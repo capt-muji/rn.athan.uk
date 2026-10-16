@@ -23,7 +23,8 @@ correctly. Two drivers then trigger those renders.
   `kind.widget.reload()` on the four home kinds; when the target has passed it re-pushes.
 - The **native driver** runs with no JS at all. `WidgetRefreshScheduler.armNext`
   (`WidgetRefreshScheduler.kt:186`) arms one `setExactAndAllowWhileIdle` alarm 500 ms past the
-  next wall minute on `RTC_WAKEUP`; `WidgetRefreshReceiver.onReceive` (`:12`) redraws and
+  next wall minute on `RTC_WAKEUP`, with `setAndAllowWhileIdle` as the fallback where
+  `canScheduleExactAlarms()` is false (`:200-207`); `WidgetRefreshReceiver.onReceive` (`:13`) redraws and
   re-arms; `WidgetRefreshSystemListener.kt:39-61` redraws on `ACTION_TIME_TICK` and
   `ACTION_SCREEN_ON`; `WidgetRefreshWatchdogWorker.kt:21-26` re-arms every 15 minutes;
   `WidgetRefreshBootReceiver.kt:12-26` re-arms on boot and package replace.
@@ -52,7 +53,8 @@ A widget-visible setting change re-pushes through `initWidgetSettingsSync`
 
 ### 1.4 The Android JS render path
 
-`updateSnapshot` (`node_modules/expo-widgets/src/Widgets.ts:67-73`) is Android-only in effect.
+`updateSnapshot` (`node_modules/expo-widgets/src/Widgets.ts:67-73`) rides the Android arm in this app;
+its non-Android arm maps the same call onto a one-entry `updateTimeline`.
 `WidgetObject.updateSnapshot` stores the props under `__expo_widgets_<name>_props` and calls
 `reload`; `reload` calls `WidgetsUpdater.reload`; `WidgetsUpdater.reload` takes a mutex on
 `Dispatchers.Default` and calls `ExpoWidgetsPeekWidget.refresh` for every placed id
@@ -60,16 +62,17 @@ A widget-visible setting change re-pushes through `initWidgetSettingsSync`
 `reload()` from JS takes the same route with no props write (`WidgetObject.kt:21-23` and `:25-28`).
 
 The native tick instead sends `ACTION_APPWIDGET_UPDATE` per kind
-(`WidgetRefreshScheduler.kt:139-152`); the generated provider passes anything that is not an
+(`WidgetRefreshScheduler.kt:138-152`); the generated provider passes anything that is not an
 interaction to `GlanceAppWidgetReceiver` (`ExpoWidgetsAppWidgetProvider.kt:13-21`).
 
 ### 1.5 Two shipped reasons are already known stale
 
-`updateAll`'s comment (`WidgetRefreshScheduler.kt:118-131`) justifies its second broadcast
-with "Glance's own update path ... when no session is running it starts one and returns WITHOUT
-composing". The repository's own later measurement refutes that reason: see 2.4.
+`updateAll`'s comment (`WidgetRefreshScheduler.kt:118-131`) justifies its second broadcast, 2500 ms behind the first
+(`COMPOSE_PASS_DELAY_MS`, `:64`), with "Glance's own update path ... when no session is running
+it starts one and returns WITHOUT composing". The repository's own later measurement refutes
+that reason: see 2.4.
 
-`WidgetRefreshModule`'s comment (`WidgetRefreshModule.kt:17-20`) says the watchdog "is what
+`WidgetRefreshModule`'s comment (`WidgetRefreshModule.kt:21-24`) says the watchdog "is what
 survives an OEM force-stop". The repository's own later measurement refutes that too: a
 force-stopped app sits in Android's stopped state, which runs none of its jobs and delivers it
 no broadcasts, so the watchdog cannot fire there either (recovered `FINDINGS.md` section 12,
@@ -79,7 +82,7 @@ stopped flag, such as a low-memory kill. The layer table in 1.2 records the true
 ## 2. The out-of-sync record: cited and recollected
 
 Evidence is recovered from the deleted plan folder `ai/plans/25-android-widget-drift/`, removed
-by the deep clean at `eb86b063` (2026-10-08). Recovery command, one file at a time:
+by the deep clean at `eb86b063` (2026-10-07). Recovery command, one file at a time:
 `git show eb86b063^:ai/plans/25-android-widget-drift/MEASURED-DRIFT.md`.
 
 ### 2.1 Cited readings
@@ -88,7 +91,7 @@ by the deep clean at `eb86b063` (2026-10-08). Recovery command, one file at a ti
 | --- | --- | --- | --- |
 | 3T, force-stopped, label watched across three minute edges | `1h 54m` held while the truth walked `1h 53m` to `1h 51m`: one minute of error per suspended minute, always too much time remaining | 1.28.14 era | recovered `FINDINGS.md` section 2; the mechanism shipped as `6909abba` (1.28.17) and `85a837d8` (1.28.18) |
 | Find X8, three widgets on one prayer, read in one dump | `5h 17m`, `5h 14m`, `5h 12m` against a true `5h 11m`: plus 6, plus 3, plus 1, disagreeing with each other | 1.27.384, old build | recovered `FINDINGS.md` section 13 |
-| 3T, force-stop, pre-1.28.21 | the label drifted to plus 8, then to plus 47 while frozen | 1.28.20 | recovered `GLANCE-ROOT-CAUSE.md:128` and `:160` |
+| 3T, label frozen, pre-1.28.21 | the label drifted to plus 8, then to plus 47 while frozen; the recovered record names no cause for the freeze | 1.28.20 | recovered `GLANCE-ROOT-CAUSE.md:128` and `:160` |
 | 3T, backgrounded, 8-minute watch | plus 2, exact, exact, plus 2, exact, plus 2, plus 5: intermittent, accumulating between lucky ticks | 1.28.20 | recovered `GLANCE-ROOT-CAUSE.md` |
 | 3T, controlled broadcast experiment | one tick left the label 8 minutes stale; two broadcasts three seconds apart corrected it to exact | 1.28.20 | recovered `GLANCE-ROOT-CAUSE.md`; shipped as `11d6584e` (1.28.21) |
 | Find X8, ColorOS alarm dump | the exact alarm carries a window and an app-standby push: `window=+32s197ms`, `app_standby=-1m6s187ms`, `exactAllowReason=policy_permission`, a combination AOSP never emits | 1.27.384 | recovered `FINDINGS.md` section 13 |
@@ -119,8 +122,9 @@ X8, always showing too much time remaining.
 is always positive, never early. The mechanism is reproduced three ways: the frozen label after
 a force-stop at one minute of error per suspended minute, the three-widget disagreement at
 plus 6, plus 3, plus 1, and the deferred alarm window at up to 34 seconds. The magnitude is
-reached, and exceeded, only by the artificial force-stop: the 3T label read plus 8 and then
-plus 47 while frozen, pre-1.28.21. No OEM action on a build from 1.28.21 onward reproduces it:
+reached, and exceeded, only by a label that stayed frozen: the pre-1.28.21 3T run read plus 8
+and then plus 47 while frozen, and the artificial force-stop reached plus 3 across three edges.
+No OEM action on a build from 1.28.21 onward reproduces anything near it:
 the worst there is plus 7 on the 3T (a six-sample run) and plus 2 on the Find X8, and from
 1.28.23 the worst is plus 1. The recovered record itself states this (`MEASURED-DRIFT.md:53`): "The owner reported 20
 to 24 minutes late on the old build. Nothing in this window approaches that." Its reading is
@@ -217,16 +221,18 @@ The library now ships `android/proguard-rules.pro` as `consumerProguardFiles`:
 
 `app.json`'s `extraProguardRules` keeps `androidx.work.** { *; }` and `androidx.glance.** { *; }`
 whole, plus the Expo Modules v2 reflection keeps. The library's rules cover the exact two
-classes the preview-era strip broke on the 3T (`e2e/device-atlas-oneplus3t.md:99`, the
+class the preview-era strip broke on the 3T (`e2e/device-atlas-oneplus3t.md:99`, the
 `WM-InputMerger NoSuchMethodException` reading, whose fix was `5d3cc01e` at 1.27.250, before any
-58.0.16 existed). The app's rules remain broader. Which set is load-bearing today is unmeasured:
+58.0.16 existed). The `RoomDatabase` class in the same rule is 58.0.16's own entry and carries
+no 3T record. The app's rules remain broader. Which set is load-bearing today is unmeasured:
 this is the second reserve fix.
 
 ### 3.4 The patched runtime
 
 `patches/expo-widgets+58.0.19.patch` carries two features, no refresh behaviour: the openApp
 button action (`ExpoWidgetEmittableTree.kt`, `WidgetButtonProps.openApp`) and the device-locale
-injection (the C++ render signature and all four runtime files). Row 111 rebuilt both in step
+injection (the C++ render signature plus three runtime files: `WidgetsJSRuntime.kt`,
+`jni/WidgetsHermesRuntime.kt`, `WidgetsJSRuntime.swift`). Row 111 rebuilt both in step
 1. Neither touches the alarm, the receiver, the watchdog or the update path, so the patch
 cannot be a refresh variable. Cited by hunk feature, never by line: row 111 rebuilds the file.
 
