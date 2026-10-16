@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.0.845",
+    "version": "2.0.846",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -88,8 +88,8 @@
             "./assets/fonts/Rubik-Medium.ttf",
             "./assets/fonts/NotoSansDevanagari-Regular.ttf",
             "./assets/fonts/NotoSansDevanagari-Medium.ttf",
-            "./assets/fonts/NotoSansThai-Regular.ttf",
-            "./assets/fonts/NotoSansThai-Medium.ttf"
+            "./assets/fonts/Sarabun-Regular.ttf",
+            "./assets/fonts/Sarabun-Medium.ttf"
           ]
         }
       ],
