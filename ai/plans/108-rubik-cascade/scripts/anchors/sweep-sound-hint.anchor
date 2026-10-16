@@ -1,8 +1,0 @@
-describe('the sound sheet spacing under ar', () => {
-  it('tightens the card hint onto the list at 6 points', async () => {
-    expect(await soundListMarginUnder('ar')).toBe(6);
-  });
-
-  it('keeps the hint gap at 12 under en', async () => {
-    expect(await soundListMarginUnder('en')).toBe(12);
-  });

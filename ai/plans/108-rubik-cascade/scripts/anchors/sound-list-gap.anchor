@@ -1,5 +1,0 @@
-  // List
-  listContainer: {
-    marginTop: compactArabic ? 6 : SPACING.md,
-    gap: ITEM_GAP,
-  },
