@@ -151,6 +151,10 @@ fate matches D117.6 and names the supersession; the rulings list is complete (op
 ban, upstream PR, live reads) and asks nothing code already answered; no file outside the
 plan folder, the queue and the version files changed across all three steps.
 
-Version <VERSION>, merged, lane fast-forwarded, main-tree gradle versionName set.
+Version 2.0.874, merged, lane fast-forwarded, main-tree gradle versionName set. Commit
+`386a939d`, merge `6a622c61`. Hook: `Tests: 2 skipped, 5706 passed, 5708 total`, coverage
+Statements/Branches/Functions/Lines all `100%` (5392/2324/1129/4830). This ledger commit
+(2.0.875) fills the version and sha fields this entry had carried as placeholders; no
+FINDINGS, queue or code change rides it.
 
 session: ses_eba9c9710ffeSr0kPQdiXDMu60
