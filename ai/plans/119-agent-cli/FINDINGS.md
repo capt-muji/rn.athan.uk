@@ -135,4 +135,57 @@ All seven allowlist commands run in the worktree on 2026-10-16, working tree at 
 
 ## Section 4 - options, bans, unverified
 
-Filled by step 4.
+### The options for her ruling
+
+- **Option A, status quo.** Route `status` and `smoke --ios`, nothing else. Cost: nothing.
+  Gain: nothing. The bans keep their release-note grounds instead of the measured ones.
+- **Option B, the read-only set (RECOMMENDED).** Add to the routing table: `doctor`
+  (expo-doctor's normalized report, exit-coded, 16-of-20 green today with the four failures
+  all advisory and one naming the ahead-of-pin class this repo runs on purpose),
+  `typecheck` (the project's own tsc, 738ms today, subordinate to `yarn validate`, which
+  stays the gate before done), `docs:sync` / `docs:search` (SDK-matched Expo docs, 9.9M in
+  the user-home cache, ranked hits with file and line - beside the docs MCP server, whose
+  Expo coverage is scrape-scheduled and version-blind), and `npx expo command:ps` /
+  `command:events` (machine-readable session tables that already showed lane 117's
+  export:embed runs and a live run:server in the main tree - the orchestrator's and the
+  lanes' cross-worktree visibility). All read-only against the repo; all reversible by
+  deleting a routing row.
+- **Option C, the generated AGENTS.md block.** `agents:setup --project --no-plugins
+  --no-agent-skills` writes only the managed block and the docs cache. Rejected: the
+  block's own text (section 2's pins) routes `install --fix` and `deploy` against the hard
+  rules and points every Expo CLI call at the agent CLI in the one file every session
+  loads first. A generated block that contradicts the owner's rules is worse than no
+  block; the harness files stay owner-governed per row 107's precedent.
+
+### The bans table (each with its measured ground)
+
+| Banned | Ground |
+| --- | --- |
+| `deploy` (both forms) | `--web` runs `eas deploy` to EAS Hosting, an EAS write the hard rule forbids; `--native` opens the launch.expo.dev store flow, publishing |
+| every `--eas` flag form (`smoke --eas`, `dev --eas`, `navigate --eas`, `runtime:stop --eas`, `runtime:reload --eas`, `dev:stop --eas` and its `stop` alias) | each drives or ends an EAS Simulator session that "bills until stopped" - a money act, the irreversible class |
+| `agents:setup` | installs `expo/skills` into `.agents/skills` (the governed directory, 157 tracked files in 22 folders) and writes an AGENTS.md managed block whose text routes `install --fix`, `deploy` and `lint` against the hard rules (section 2's pins) |
+| `skills:sync` | same target directory; a no-op today (no installed package ships skills, measured) but writes symlinks and an AGENTS.md index the moment one does |
+| `skills:clean` | the counterpart of sync; same directory |
+| `smoke --android` while a phone is connected | smoke "boots a device when there is none" and binds what it finds; the fleet phones are device-locked surface |
+| `status --explain` | asks the EAS service (network query with credentials) and, with `--device`, launches the app on a phone; the row needs neither |
+| `install` | acts on package.json and yarn.lock (ask-first rule); `install --fix` is a hard ban - it rolls back jest, @types/jest and typescript, which this repo runs ahead of Expo's pins on purpose; doctor's advice line naming `npx expo install --check` is data, never a command to run |
+| `new`, `feedback`, `login` / `logout` / `register` / `whoami` | no use here; feedback is outbound publishing-adjacent; the account commands touch the `~/.expo` session shared with the EAS CLI, and `status` already reports the auth identity read-only |
+
+### The unverified list
+
+- The EAS CLI dependency: `deploy`'s help names the `eas deploy` subprocess and the account
+  commands share the `~/.expo` session, but which eas-cli version the agent CLI bundles or
+  fetches is not visible in its help or bundled source. Nothing in the recommendation
+  depends on it (deploy stays banned either way).
+- "Experimental" as a whole-CLI label: the help marks `inspect:config-plugins`
+  `[experimental]` alone; the broader framing comes from the SDK 58 release notes.
+- Everything else the ticket's fact list named is verified above: `dev` plans then
+  prebuilds, builds or serves (`dev --help`); `smoke`'s nine phases ending in a stop of
+  what it started (`smoke --help`); `command:ps` and `command:events` machine-readable in
+  the installed `@expo/cli` 58.1.10 (source plus live run).
+
+### What changes in this harness when she says go to option B
+
+Four rows in the `ai/AGENTS.md` routing table and one widened ban line; nothing else. No
+package is installed (npx fetches per run), no file outside `ai/AGENTS.md` moves, and the
+existing `status` / `smoke --ios` routing keeps its wording.
