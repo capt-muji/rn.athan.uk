@@ -233,8 +233,9 @@ carrying its path and line or its command and output. Branch: `docs/121-1-next-s
 `lane/121`; before the first edit run `git fetch -q origin uat` and confirm the branch still bases
 on `lane/121`'s tip. Files: `ai/plans/121-expo-location-next/FINDINGS.md` (sections 1.1 to 1.12,
 refined in place from the READY-committed draft), `ai/plans/121-expo-location-next/LOG.md`,
-`ai/plans/README.md` (status IN PROGRESS, step 1), plus the two tracked version files under the
-version lock. Red tests: none, a docs step; the check is the criteria below. Change contract:
+`ai/plans/121-expo-location-next/scripts/verify-claims.sh` (the claim battery committed at this
+step and re-run by steps 2 and 3), `ai/plans/README.md` (status IN PROGRESS, step 1), plus the two
+tracked version files under the version lock. Red tests: none, a docs step; the check is the criteria below. Change contract:
 re-run every command the criteria name and confirm each printed value; re-read each quoted line at
 the installed version; for the two generated native files, re-read them in `$HOME/repos/rn.athan.uk`
 and record the path, because a lane worktree does not carry them. Green run: every criterion's
@@ -251,8 +252,8 @@ Weight: 1
 Anchor check: as step 1. Goal: FINDINGS section 3 carries every classic call with its line and its
 `/next` equivalent, the two calls with none, and the heading path; section 2 states the answer on
 the three independent checks and names what stays filed where. Branch: `docs/121-2-app-mapping` off
-`lane/121`. Files: FINDINGS sections 2 and 3, `LOG.md`, `ai/plans/README.md` (step 2), plus the two
-tracked version files under the lock. Change contract: run the `git grep` and reconcile its list
+`lane/121`. Files: FINDINGS sections 2 and 3, `LOG.md`, `scripts/verify-claims.sh` (re-run, output
+recorded), `ai/plans/README.md` (step 2), plus the two tracked version files under the lock. Change contract: run the `git grep` and reconcile its list
 against the section line by line; re-read `device/qibla.ts` and `hooks/useQibla.ts` and confirm
 each quoted line; re-read the patch and the upstream record and confirm each hunk's file and the
 pull request's state. Green run: every classic call in the app appears in the mapping table with
@@ -267,9 +268,9 @@ Weight: 1
 Anchor check: as step 1. Goal: FINDINGS sections 4 to 8 carry the cost against the locked rules,
 the three options with the recommendation and its two arguments, the C1 to C5 compass matrix, the
 experiments and the unverified list, the re-verification pass, and the queue row's outcome text.
-Branch: `docs/121-3-ruling-pack` off `lane/121`. Files: FINDINGS sections 4 to 8, `LOG.md`,
-`ai/plans/README.md` (EXECUTED, the outcome text), plus the two tracked version files under the
-lock. Change contract: for each rejected option write the measured fact that rejects it, from
+Branch: `docs/121-3-ruling-pack` off `lane/121`. Files: FINDINGS sections 4 to 8, `LOG.md`, `scripts/verify-claims.sh` (re-run, output
+recorded), `ai/plans/README.md` (EXECUTED, the outcome text), plus the two tracked version files
+under the lock. Change contract: for each rejected option write the measured fact that rejects it, from
 sections 1 to 4; for the recommendation write the challenge, the surviving answer and the
 flip-check; for each unverified claim name the experiment that settles it; for the row text name
 the surface's shape, the heading answer, the mapping's two gaps, the recommendation, the matrix and

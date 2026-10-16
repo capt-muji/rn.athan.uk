@@ -161,7 +161,8 @@ already carries
 </dict>
 ```
 
-and `app.json` names no `expo-location` plugin entry, so the plugin ran with its defaults. That
+and `app.json` names no `expo-location` plugin entry, so the plugin ran with its defaults. Re-read
+at `092a98ff` 2.0.901 during this row's step 1 and identical. That
 reading is a property of the plugin's default, written by `plugin/src/withLocation.ts:272-276` at
 any prebuild, and not of the planned sha; the reading above stands as the observation, and the
 mechanism is what the claim rests on. The
