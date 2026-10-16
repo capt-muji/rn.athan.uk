@@ -1,0 +1,10 @@
+ * that also rendered would double every render on a healthy phone.
+ */
+class WidgetRefreshWatchdogWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
+    override fun doWork(): Result {
+        if (WidgetRefreshScheduler.hasPlacedWidgets(applicationContext)) {
+            WidgetRefreshScheduler.ensureArmed(applicationContext)
+        }
+        return Result.success()
+    }
+}
