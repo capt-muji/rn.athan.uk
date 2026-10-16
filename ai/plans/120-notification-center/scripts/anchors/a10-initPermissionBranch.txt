@@ -1,0 +1,11 @@
+    const hasPermission = await checkPermissions();
+    if (hasPermission) {
+      await refreshFn();
+
+      // Register background task for notification refresh when app is closed
+      if (registerBackgroundTaskFn) {
+        await registerBackgroundTaskFn();
+      }
+    } else {
+      logger.info('NOTIFICATION: Notifications disabled, skipping refresh and background task registration');
+    }
