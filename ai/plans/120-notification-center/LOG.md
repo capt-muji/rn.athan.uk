@@ -4,8 +4,9 @@
 
 Queue row 120, "iOS Notification Center: group or clear the delivered stack
 (threadIdentifier)", ordered by the owner at the 111 planning session on 2026-10-16. Lane
-`lane/120`, worktree `$HOME/athan-gitree/worktrees/lane-120`, branched from uat `b329d543`
-(2.0.900). Deliverable: measurement and writing only. No code, no build, no device contact.
+`lane/120`, worktree `$HOME/athan-gitree/worktrees/lane-120`, cut from uat `b329d543` (2.0.900) and
+rebased onto uat `9dd4eb6a` (2.0.908) before the READY merge, the lane-weather rule for the
+version-file conflict the first merge hit (see the re-pin entry below). Deliverable: measurement and writing only. No code, no build, no device contact.
 
 The plan is `PLAN.md`; the findings are `FINDINGS.md`; the protocol is `PLAN.md` section 7.
 
@@ -81,9 +82,11 @@ rejected. Applied, with the finding number it answers:
 - F15 the pre-commit symptom row now names what can actually fail.
 - F16 the empty `steps/` directory deleted.
 
-Two candidates the griller saw as already fixed mid-read (`PresentationModule.swift:12-42` and
-the channel-block ranges) were corrected before its report and are recorded here so the sequence
-is not lost. The plan files changed three times while the griller read; every finding above is
+Two candidates the griller saw as already fixed mid-read (the channel-block range and the at-time
+arm range in section 4, and `PresentationModule.swift:12-42` in section 4's installed-package
+bullet) were corrected before its report and are recorded here so the sequence is not lost. The
+same citation stood uncorrected in FINDINGS section 1.4 and in section 8's draft until the audit,
+which is where the plan-conformance pass caught it. The plan files changed three times while the griller read; every finding above is
 confirmed against the revision it named.
 
 ### The re-pin the rebase surfaced (agent-ruled, 2026-10-16)
@@ -123,9 +126,12 @@ grill found unchecked were added and pass at the new pin.
   open moments) and `step2-evidence.txt` (row 111's delivery entry and recorded configuration;
   the reminder and alert contracts; the 111 evidence index, which holds no center capture).
 - FINDINGS sections 1 and 2 refined against that evidence: the entry-point table, the pinned lever
-  table at 58.1.5 (the changelog line numbers re-measured after the re-pin: :125 and :38), the
-  delivered volume (seven for the recorded day: five at-time deliveries plus the two Magrib
-  reminders, the second derived from the armed time), and the rendering still marked `UNMEASURED`.
+  table at 58.1.5, the delivered volume (seven for the recorded day: five at-time deliveries plus
+  the two Magrib reminders, the second derived from the armed time), and the rendering still marked
+  `UNMEASURED`. The one edit this step's own commit carries in FINDINGS is
+  `PresentationModule.swift:12-42` to `:12-39` (the file is 39 lines); the changelog line numbers
+  (`:125` and `:38`) were re-measured in the READY amendment, not here, and the read-side range
+  correction was still outstanding until the audit (AUDIT.md, pass 2 finding 1).
 - The sweep prints nothing; the volume's inputs are quoted at `shared/types.ts:196-220` and in the
   111 ledger's configuration line.
 - Commit: one step commit on `lane/120`, merged `--no-ff` into `uat`, no push (the shas are git history).

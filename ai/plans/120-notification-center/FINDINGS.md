@@ -1,8 +1,8 @@
 # FINDINGS: ticket 120, the iOS delivered-notification stack
 
 Every claim carries its source as `path:line`. Claims the device alone can settle carry the tag
-`UNMEASURED`, with the experiment that settles them named. The plan is `PLAN.md`; the protocol is
-its section 7 and this file's section 4.
+`UNMEASURED`, with the experiment that settles them named. The plan is `PLAN.md` and the protocol lives in its
+section 7; this file's section 4 names the state the protocol waits on.
 
 ## 1. The current state
 
@@ -33,7 +33,7 @@ count in any state. The Jest stand-in declares none of them either
 | Foreground handler | `hooks/useNotification.ts:12-20` (anchor `a5-foregroundHandler.txt`) | A notification firing while the app is open plays sound and is shown in the banner and the list, so it lands in the delivered set too | No |
 | Android posting | `plugins/replacePreviousNotification.js:29-45` (anchor `a6-androidDelegate.txt`) | Rewrites every request identifier to the one shared tag `athan-notification` before posting, so the newest replaces the one before it | No |
 | Init path | `shared/notifications.ts:572-603`, permission branch at `:589-599` (anchor `a10-initPermissionBranch.txt`) | Channel prep, permission check, refresh, background-task registration | No: it composes nothing and dismisses nothing |
-| Native call bound | `shared/notifications.ts:65-81` | Every call into the notification system is bounded at 15 s and a timeout reopens the refresh gate | Not applicable |
+| Native call bound | `shared/notifications.ts:65-81` | Every call this module's own paths make (arming, cancelling, creating a channel) is bounded at 15 s and a timeout reopens the refresh gate. The permission calls are not bounded: `hooks/useNotification.ts:92,151,154,186,190` and `device/backgroundTaskDebug.ts:59` | Not applicable |
 
 ### 1.3 When the app is open, and when it is not
 
@@ -56,7 +56,7 @@ sits in a pocket.
 | iOS support arrived | 58.0.0, PR expo/expo#49429, 2026-09-10 | `node_modules/expo-notifications/CHANGELOG.md:125` |
 | Android thread identifier | The same input field becomes the notification's group key | `node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/notifications/ArgumentsNotificationContentBuilder.java:51`; `.../notifications/model/NotificationData.kt:62` |
 | Android support arrived | 58.1.1, PR expo/expo#43388 | `node_modules/expo-notifications/CHANGELOG.md:38` |
-| JS input shape | `NotificationContentInput` carries `threadIdentifier`; `summaryArgument` exists on the read-side type `NotificationContentIos` only, so app code cannot name a thread's header | `node_modules/expo-notifications/build/Notifications.types.d.ts:538-631` (input), `:455-530` (read side) |
+| JS input shape | `NotificationContentInput` carries `threadIdentifier`. `summaryArgument` and `summaryArgumentCount` exist on the read-side type `NotificationContentIos` only, so a notification cannot carry a thread summary; the group's own summary is settable through the category options' `categorySummaryFormat`, which names the group and removes nothing | `node_modules/expo-notifications/build/Notifications.types.d.ts:538-631` (input), `:450-480` (read side, `summaryArgument` at `:466`), `:754` (`categorySummaryFormat`), mapped onto `UNNotificationCategory` at `node_modules/expo-notifications/ios/ExpoNotifications/Notifications/TriggerRecords.swift:366,376` |
 | iOS dismissal | `dismissAllNotificationsAsync` to `removeAllDeliveredNotifications()`; `dismissNotificationAsync` to `removeDeliveredNotifications(withIdentifiers:)`; `getPresentedNotificationsAsync` reads `deliveredNotifications()`. Nothing here touches pending requests | `node_modules/expo-notifications/ios/ExpoNotifications/Notifications/Presenting/PresentationModule.swift:12-39` |
 | Android dismissal | Routes to `notificationManager.cancelAll()`, which clears the one visible notification the delegate posts | `.../service/NotificationsService.kt:175`; `.../service/delegates/ExpoPresentationDelegate.kt:275-277` |
 | iOS rendering semantics | Without a thread identifier all of an app's notifications group under the app; with one they group per thread per app; the identifier is never shown; the user's settings can override the grouping | Apple's WWDC18-710 session notes ("What's New in User Notifications"), the grouping section |
@@ -75,8 +75,9 @@ sheet offers: that reading is derived from the armed time, not stated by the led
 prayer's own evening delivered three notifications.
 
 The ledger's recorded configuration for that day: Fajr off, Sunrise, Dhuhr, Asr, Magrib and Isha
-each silent or sound, with Magrib carrying two reminders. Silent rows still deliver a
-notification: silence is `sound: false`, not absence.
+each silent or sound. The ledger records one reminder for Magrib, the five-minute one; the second
+reminder slot is derived from the 17:38 event and the armed time, never stated by the ledger.
+Silent rows still deliver a notification: silence is `sound: false`, not absence.
 
 ### 2.2 The day's derived volume
 
@@ -89,8 +90,10 @@ for the day, and the count rises with every prayer she sets to Sound with remind
 
 Over a week without a clear, that is the accumulation the row describes: nothing in the app
 removes, replaces or groups a delivered notification, and iOS keeps delivered notifications until
-the user or the app removes them (`UNUserNotificationCenter.deliveredNotifications()`, the same
-set `dismissAllNotificationsAsync` empties).
+the user or the app removes them. That retention is the platform's documented behaviour and
+carries the same `UNMEASURED` tag as the rendering: the read that settles one settles both. The
+set the app can empty is exactly what `dismissAllNotificationsAsync` reaches
+(`UNUserNotificationCenter.deliveredNotifications()`, `PresentationModule.swift:36-38`).
 
 ### 2.3 What is not measured
 
@@ -107,7 +110,7 @@ experiment in section 4 settles it, and it is the first thing her unlock buys.
 | --- | --- | --- | --- |
 | Status quo (A) | No change at all | The center keeps every delivered notification until the user clears it | None |
 | Group under a thread (B) | `threadIdentifier` on both composers, iOS-gated | One thread: nothing new, the app-level group already exists; two threads: the app's notifications split into two groups under the app | `shared/notifications.ts`, `shared/__mocks__/expo-notifications.ts`, the content suites |
-| Clear the delivered stack on open (C) | `dismissAllNotificationsAsync`, iOS-gated, inside `initializeNotifications` | The center holds nothing from this app at the moment the app is open; Android is untouched | `shared/notifications.ts`, `device/notifications.ts`, the mock, `notificationsInit` and `notifications` suites |
+| Clear the delivered stack on open (C) | `dismissAllNotificationsAsync`, iOS-gated, inside `initializeNotifications` | The center holds nothing from this app at the moment the app is open; a notification that fires while the app stays open lands in the delivered set after that and waits for the next open (the handler's `shouldShowList`); Android is untouched | `shared/notifications.ts`, `device/notifications.ts`, the mock, `notificationsInit` and `notifications` suites |
 | Both (D) | C plus a thread identifier | As C during the session; grouping inside it | Both rows above |
 | Replace in place | One shared identifier, or re-adding a delivered identifier | Not available: one identifier per at-time notification arms one day only, and a past date is never re-armed | Rejected, no step |
 
@@ -145,8 +148,9 @@ which mirrors Android's one-visible rule more closely at the cost of one read an
 
 ## 4. The experiment, waiting on her unlock
 
-Not observed, and not faked. The phone is attached and locked: row 111's "Lane resume 2026-10-16
-18:22" entry records the refusal signature this row inherits, `agent-device prepare ios-runner`
+Not observed, and not faked. The phone was attached and locked at 18:22 on 2026-10-16, the state
+this lane inherits rather than re-measures: row 111's "Lane resume 2026-10-16 18:22" entry records
+the refusal signature, `agent-device prepare ios-runner`
 answering "iOS device is not ready for automation: Command timeout", the runner's build
 destination failing, and `xcrun devicectl device process launch` failing "Failed to allocate RSD
 device", with the tooling naming the locked device as the cause
