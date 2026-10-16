@@ -1,0 +1,6 @@
+  /**
+   * Content column cap for large screens (iPad/tablet/Mac windows). The
+   * pager itself stays full-width so the whole screen remains swipeable;
+   * phones are narrower than this, so the cap never binds there.
+   */
+  contentMaxWidth: 500,
