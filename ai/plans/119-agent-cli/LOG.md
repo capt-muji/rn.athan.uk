@@ -43,3 +43,16 @@ with the verification paragraph. Queue row set IN PROGRESS, step 1. The LOG entr
 amend (sequencing slip: the entry was written after the commit started; the commit was
 still unmerged).
 session: lane-119 in-lane execution (D119.6; no executor worker dispatched)
+
+### Step 2 — DONE (source pins verified)
+
+Branch `docs/119-2-source-pins` off `lane/119` at `d8fab58e`, commit `2.0.881`. Every pin
+greps back from the npx cache at its cited line, run as a script: 2461.index.js:1352
+(`id: 'opencode'`), :1354 (`skillsDir: '.agents/skills'`); 271.index.js:620 (the managed
+block marker), :632 (the redirect sentence), :643 (`install --fix`), :644 (`lint`), :654
+(`deploy web and native`), :145 (`function buildInstallerPlans`); 5565.index.js:316-321
+(the doctor fallback comment), :322 (`resolveTypeScriptCli`), :307 (`TSC_ARGS`). The
+detector paragraph and the installer list item de-duplicated against the pins. Queue row
+set IN PROGRESS, step 2. The FINDINGS section 2 pins and the section-1 verification
+paragraph both refined in place per the READY-commit rule.
+session: lane-119 in-lane execution (D119.6; no executor worker dispatched)
