@@ -1,0 +1,6 @@
+  subtitle: {
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
+    color: COLORS.text.sheetSubtitle,
+    marginTop: compactArabic ? -10 : SPACING.xs,
+  },

@@ -89,3 +89,164 @@ not pin is a recorded default under her read, the row-106 pattern.
 - The rides from row 104's audit (the backgrounding park window, the second-dismiss race, the
   shared-deferral refactor) stay out: the ticket carries them as "her call pending" and no call
   has come.
+
+## 3. Pre-flight
+
+`scripts/preflight-108.sh` is committed in this folder. The executor saves a copy to `$TMPDIR`
+and runs it with the repository root as the working directory
+(`bash $TMPDIR/preflight-108.sh`). It checks the checkout on `uat`, a clean tree, `origin/uat`
+merged in, the version at or above 2.0.826, "Needs first" being nothing, and every anchor
+counting exactly 1. It ends `PREFLIGHT OK`; any other output is a STOP. Pre-flight runs once,
+in the first executor session before step 1; a resumed session runs only its own steps' anchor
+checks, because the earlier steps' merges zero those anchors by design.
+
+## 4. Background the executor needs
+
+The code map, one line per file (anchors under `scripts/anchors/`):
+
+- `components/sheets/parts/Header.tsx` - the shared sheet header every sheet but qibla renders
+  (`Sheet.tsx:235`); the title's ar marginBottom 0 and the subtitle's ar marginTop -10 are
+  row 87's pull-up pair (anchor: `header-subtitle`).
+- `components/sheets/screens/Qibla.tsx` - the qibla sheet's own subtitle node (a cross-fade
+  pair with a width donor); its style copies the shared header's pull-up (anchor:
+  `qibla-subtitle`).
+- `components/sheets/screens/Sound.tsx` - the sound sheet; the list container's ar marginTop 6
+  is D94's Noto tightening (anchor: `sound-list-gap`).
+- `components/day/Day.tsx` - the location and date lines above both schedules; the location
+  line's ar marginBottom is row 106's dial (anchor: `day-dial`).
+- `components/sheets/parts/VolumeNote.tsx` - the footnote both sheets close on; the text style
+  carries no lineHeight today (anchor: `note-text`).
+- `shared/typography.ts` - the per-locale record; `ARABIC.scriptLineHeight` is the script line
+  box the note joins (anchor: `script-line-height`).
+- `components/__tests__/typographySweep.test.tsx` - the sweep guard; its qibla, sound and
+  header-box describes pin today's values (anchors: `sweep-qibla`, `sweep-sound-hint`,
+  `sweep-header-boxes`).
+- `components/day/__tests__/DayLines.test.tsx` - the Day block's pins (anchor: `daylines-gap`).
+- `components/sheets/parts/__tests__/VolumeNote.test.tsx` - the note's suite; the style
+  describe pins the en face and centring (anchor: `volume-note-style`).
+
+How the pieces interact: every style object resolves once at module scope through
+`typographyFor(currentLocaleId())`. The ar branches run only when the module evaluates under
+ar, so the ar-side tests load each module inside the locale: the sweep's `isolateModulesAsync`
+pattern, and DayLines' shared-React isolate (Day imports reanimated). The language sheet passes
+`subtitle={null}` (`Language.tsx:63`), so nothing reaches it.
+
+The existing tests and what each proves: the sweep's header-box describe proves no lineHeight
+pin sits on the header (row 87's law); its qibla describe pins -10 under ar and 4 under en; its
+sound describe pins 6/12 and the note gap 32/24 (the note gap is untouched); DayLines pins the
+location-date gap 6 under ar and 5 under en; the VolumeNote suite pins the en face, colour,
+size, centring and the foot row.
+
+Why the obvious fix is wrong: a bigger negative pull re-creates row 87's clipping under a
+tighter box; a lineHeight pin on the header lines breaks row 87's own law (the font's own box
+serves the header); paddingBottom on the note moves the box, not the ink room inside each line
+- the script line box is the idiom Help and Explanation already owner-confirmed.
+
+## 5. Design
+
+The approach: four style values and one line-box key. Each sits behind the compactArabic key
+her pattern already carries, except the sound list gap, where one value now serves both
+locales and the branch dies. The invariant as one sentence a test can check: under ar the
+sheet subtitles seat +6 under their titles, the sound list +12 under its label, the location
+line +8 above the date, and the note's copy carries a 21 point line box; under en every one of
+these styles is byte-identical to 2.0.824.
+
+Alternatives rejected: a shared constant for the subtitle gap (the six literal sites are the
+guard the break scripts ride, row 81's audit answer); a lineHeight on the header (row 87's
+law); touching the note's marginTop pair 32/24 (her report names the clip, not the gap).
+
+The concurrency trace: none. Module-scope style constants resolved once per locale; no store,
+no scheduler, no listener.
+
+The design review: every value is her ruling or a recorded default one step from today's; en
+byte-identity is guarded by the en-side pins on every touched style; each ar branch is
+exercised by an ar-side test that exists or lands red first.
+
+**Acceptance criteria:**
+
+- [R1.1] WHEN a sheet header renders under ar THE SYSTEM SHALL seat the subtitle 6 points
+  under the title by a positive margin with no lineHeight key on either line.
+- [R1.2] WHEN the qibla sheet's subtitle renders under ar THE SYSTEM SHALL seat it 6 points
+  under the title, matching the shared header.
+- [R1.3] WHEN a sheet header renders under en THE SYSTEM SHALL keep the title's 2 point bottom
+  margin, the subtitle's 4 point top margin and no lineHeight key, byte-identical to 2.0.824.
+- [R2.1] WHEN the sound sheet renders under ar THE SYSTEM SHALL seat the list 12 points under
+  the notification-sound label, with no locale branch left in the style.
+- [R2.2] WHEN a schedule renders under ar THE SYSTEM SHALL dial the location line's bottom
+  margin to 8 points.
+- [R3.1] WHEN the volume note renders under ar THE SYSTEM SHALL carry a 21 point lineHeight on
+  its copy so the measured 3.0px of win-descent ink renders whole.
+- [R3.2] WHEN the volume note renders under en THE SYSTEM SHALL leave the copy's line box to
+  the font's own metrics with no lineHeight key.
+
+## 6. Steps
+
+Checklist:
+
+1. Step 1 - the subtitle pull-ups revert (`Header.tsx`, `Qibla.tsx`, the sweep) - branch
+   `feat/108-subtitle-pulls` - `steps/1-subtitle-pull-revert.md`.
+2. Step 2 - the sound label gap and the location-date dial (`Sound.tsx`, `Day.tsx`, the sweep,
+   DayLines) - branch `feat/108-gap-dials` - `steps/2-label-gap-and-day-dial.md`.
+3. Step 3 - the footnote's script line box (`VolumeNote.tsx`, its suite) - branch
+   `feat/108-note-box` - `steps/3-note-descender-room.md`.
+
+Each step subsection lives in its own file under `steps/`, opening with its `Requirements:` and
+`Weight:` lines, and carries the anchor check, goal, branch, files, red tests, change
+contracts, green run, break script, version and commit, review checklist, merge and done-when.
+
+## 7. Device proof
+
+None in-plan. The changes are JS styling; the pinned suites are the whole proof this plan
+runs. The owner's XS read under ar (the sheets' headers, the sound label, the schedule header,
+the footnote) is the visual acceptance, batched at delivery; the lead leaves the XS on the
+latest dev build with Metro serving.
+
+## 8. Records
+
+Every step entry in `LOG.md` opens `### Step <NN> — <state>` and ends `session: <ses_id>`. The
+queue cell the lead applies on DONE is written by the audit. The docs commit message for the
+READY commit: `<VERSION> - docs(plans): row 108 READY - the Rubik cascade plan (3 steps: the
+subtitle pull revert, the gap dials, the note's script line box)`.
+
+## 9. Push
+
+None.
+
+## 10. When something goes wrong
+
+| Symptom | Action |
+| --- | --- |
+| A red test stays red after the change | Read the failure line. A value mismatch means the pin and the code disagree; fix the one the decision names, never both. |
+| The sweep fails on a describe this plan does not touch | Run the named suite alone, then `yarn validate`. A failure that is not this plan's value is a STOP with the output. |
+| The coverage gate refuses a step | An ar branch of a touched style lacks an ar-side evaluation. Add the evaluation to the step's test; never delete a gate. |
+| A pre-flight anchor count is not 1 | The source drifted from `1f534a97`. Re-verify the anchor against the file; a code drift is a STOP. |
+
+Anticipated review fixes, word for word:
+
+- "The Header.tsx comment above the styles still explains the pull-up: rewrite it to name the
+  6 point gap under Rubik and row 108."
+- "The Qibla.tsx comment at the subtitle names the pull-up: rewrite it to name the match."
+- "The Sound.tsx D94 comment is not the pinned sentence: make it exactly `// D94: the ar note
+  copy clears the list (the preview animation) above it`."
+- "The VolumeNote.tsx comment still says pair: drop the word, its sibling half is gone."
+
+Restore lists: step 1 `git checkout uat -- components/sheets/parts/Header.tsx
+components/sheets/screens/Qibla.tsx components/__tests__/typographySweep.test.tsx`; step 2
+`git checkout uat -- components/sheets/screens/Sound.tsx components/day/Day.tsx
+components/__tests__/typographySweep.test.tsx components/day/__tests__/DayLines.test.tsx`;
+step 3 `git checkout uat -- components/sheets/parts/VolumeNote.tsx
+components/sheets/parts/__tests__/VolumeNote.test.tsx`.
+
+## 11. Subagents
+
+Planning: `explore` workers answer fact questions, `athan-plan-griller` grills the draft.
+Delivery: the lead dispatches the `athan-executor` and `athan-reviewer` workers. Every worker
+may call `vision` for an image it cannot see. Nothing else, ever.
+
+## 12. Report to the owner
+
+Plain sentences: the pull-ups reverted to a 6 point gap on every sheet including qibla, the
+sound list clear of its label at one value with en, the location-date gap one step wider, the
+footnote's descenders whole on a measured 21 point script box; en byte-identical throughout;
+the values she did not pin are recorded defaults her read dials. Then the progress table and
+the four-line handoff.

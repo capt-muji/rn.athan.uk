@@ -1,0 +1,10 @@
+describe('the sheet header line boxes', () => {
+  it('leaves the ar title and subtitle to the font own box, so no glyph clips', async () => {
+    const title = await headerTitleStyleUnder('ar');
+    const subtitle = await headerSubtitleStyleUnder('ar');
+
+    expect(title.lineHeight).toBeUndefined();
+    expect(subtitle.lineHeight).toBeUndefined();
+    expect(title.marginBottom).toBe(0);
+    expect(subtitle.marginTop).toBe(-10);
+  });

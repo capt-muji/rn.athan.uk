@@ -1,0 +1,9 @@
+  text: {
+    flexShrink: 1,
+    textAlign: 'center',
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
+    color: COLORS.text.sheetSubtitle,
+    // The glyph keeps its distance: the start side faces it in either layout direction
+    marginStart: SPACING.md,
+  },
