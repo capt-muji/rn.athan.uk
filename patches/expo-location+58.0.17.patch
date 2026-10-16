@@ -1,5 +1,5 @@
 diff --git a/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.kt b/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.kt
-index 8088ec6..b043ed7 100644
+index 8088ec6..d9fca69 100644
 --- a/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.kt
 +++ b/node_modules/expo-location/android/src/main/java/expo/modules/location/LocationModule.kt
 @@ -72,7 +72,6 @@ import java.util.Locale
@@ -10,7 +10,15 @@ index 8088ec6..b043ed7 100644
  
  class LocationModule : Module(), SensorEventListener, ActivityEventListener {
    private var mGeofield: GeomagneticField? = null
-@@ -634,12 +633,12 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+@@ -87,7 +86,6 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+   private var mGravity: FloatArray = FloatArray(9)
+   private var mGeomagnetic: FloatArray = FloatArray(9)
+   private var mHeadingId = 0
+-  private var mLastAzimuth = 0f
+   private var mAccuracy = 0
+   private var mLastUpdate: Long = 0
+   private var mGeocoderPaused = false
+@@ -634,12 +632,12 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
      mSensorManager.registerListener(
        this,
        mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
@@ -25,21 +33,30 @@ index 8088ec6..b043ed7 100644
      )
    }
  
-@@ -651,9 +650,10 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+@@ -651,10 +649,10 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
        val orientation = FloatArray(3)
        SensorManager.getOrientation(rotationMatrix, orientation)
  
 -      // Make sure Delta is big enough to warrant an update
 -      // Currently: 50ms and ~2 degrees of change (android has a lot of useless updates block up the sending)
 -      if (abs(orientation[0] - mLastAzimuth) > DEGREE_DELTA && System.currentTimeMillis() - mLastUpdate > TIME_DELTA) {
+-        mLastAzimuth = orientation[0]
 +      // Rate-limited only. The upstream 2-degree gate also starved a compass: measured on a OnePlus 3T it
 +      // emitted 0.83Hz while a user turned at 2 degrees a second, which is exactly the careful alignment a
 +      // qibla compass asks for, and it floored the reported heading's own resolution at 2 degrees.
 +      if (System.currentTimeMillis() - mLastUpdate > TIME_DELTA) {
-         mLastAzimuth = orientation[0]
          mLastUpdate = System.currentTimeMillis()
          val magneticNorth: Float = calcMagNorth(orientation[0])
-@@ -1091,7 +1091,6 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+         val trueNorth: Float = calcTrueNorth(magneticNorth)
+@@ -701,7 +699,6 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
+     mGeomagnetic = FloatArray(9)
+     mGeofield = null
+     mHeadingId = 0
+-    mLastAzimuth = 0f
+     mAccuracy = 0
+   }
+ 
+@@ -1091,7 +1088,6 @@ class LocationModule : Module(), SensorEventListener, ActivityEventListener {
      const val GEOFENCING_EVENT_ENTER = 1
      const val GEOFENCING_EVENT_EXIT = 2
  
