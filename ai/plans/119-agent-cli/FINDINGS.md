@@ -120,7 +120,18 @@ cleanup risk.
 
 ## Section 3 - live read-only runs (recorded at execution)
 
-Filled by step 3.
+All seven allowlist commands run in the worktree on 2026-10-16, working tree at `189a870e`
+(2.0.881); exit codes and load-bearing lines recorded verbatim.
+
+| Command | Exit | Observed |
+| --- | --- | --- |
+| `npx --yes @expo/agent-cli@1.0.19 status` | 0 | `project athan · SDK 58.0.12 · CNG · dev client · no web`; `expo go not compatible (15 reasons)`; `freshness ios local stale · eas unknown / android local stale · eas unknown / no recorded build`; `dev server not running (http://127.0.0.1:8081)`; `device none · iOS: no simulator is bound to this worktree; Android: no emulator instance is bound to this worktree`; `auth mugtaba · per expo whoami`; `next npx @expo/agent-cli dev --ios --detach --wait-ready · No ios device is bound to this worktree.`; `build local · this machine has Xcode — Xcode 27.0` |
+| `npx --yes @expo/agent-cli@1.0.19 doctor --json` | 20 | `parse: full`, 16 passed, 4 failed of 20 checks; expo-doctor v1.21.4 fetched per run (the repo carries no expo-doctor binary). The four failures: package.json common issues; "Remove the static app.json, or use its values in your dynamic app.config.js"; the app config schema; packages matching the installed SDK's required versions (this repo runs jest, @types/jest and typescript ahead of Expo's pins on purpose, the class doctor cannot know). One advice line names `npx expo install --check`; the hard rule banning `npx expo install --fix` overrides any advice doctor prints |
+| `npx --yes @expo/agent-cli@1.0.19 typecheck` | 0 | `Typecheck no type errors`, `Took 738ms` - the project's own tsc, seconds against `yarn validate`'s minutes |
+| `npx --yes @expo/agent-cli@1.0.19 skills:list` | 0 | `No agent skills found in the project dependencies.` |
+| `npx --yes @expo/agent-cli@1.0.19 docs:search widget` | 0 | first run auto-synced two bundles (`docs-shared.jsonl.gz`, `docs-v58.0.0.jsonl.gz`) into `~/.expo/agent-cli/docs` (9.9M, user home, nothing inside the repo); ranked hits with file and line, top: `AccessoryWidgetBackground .../v58.0.0/sdk/ui/swift-ui/accessorywidgetbackground.md:10`, `Widgets .../v58.0.0/sdk/widgets.md:11` |
+| `npx expo command:ps` | 0 | TSV header `PID STATUS STARTED COMMAND PROJECT PORT URL`, then session rows naming other lanes' worktrees and their commands (cross-lane visibility: it lists every Expo CLI session on the machine) |
+| `npx expo command:events --help` | 0 | "Replays retained events from running or stopped sessions as JSONL to stdout, oldest first." |
 
 ## Section 4 - options, bans, unverified
 

@@ -56,3 +56,15 @@ detector paragraph and the installer list item de-duplicated against the pins. Q
 set IN PROGRESS, step 2. The FINDINGS section 2 pins and the section-1 verification
 paragraph both refined in place per the READY-commit rule.
 session: lane-119 in-lane execution (D119.6; no executor worker dispatched)
+
+### Step 3 — DONE (live read-only runs recorded)
+
+Branch `docs/119-3-live-runs` off `lane/119` at `189a870e`, commit `2.0.882`. The seven
+allowlist commands run in the worktree: status 0 (the project/freshness/dev server/auth/
+next lines), doctor --json 20 (parse full, 16 of 20, expo-doctor v1.21.4 fetched per run,
+the four failures recorded with the ahead-of-pin class named), typecheck 0 (no type
+errors, 738ms), skills:list 0 (no package skills), docs:search widget 0 (auto-sync 9.9M
+into ~/.expo/agent-cli/docs, ranked hits with file and line), expo command:ps 0 (the TSV
+header and cross-lane session rows), expo command:events --help 0 (the JSONL replay
+line). FINDINGS section 3 carries the table. Queue row set IN PROGRESS, step 3.
+session: lane-119 in-lane execution (D119.6; no executor worker dispatched)
