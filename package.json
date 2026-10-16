@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "2.0.868",
+  "version": "2.0.869",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -83,7 +83,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.29.0",
     "@babel/plugin-transform-react-jsx": "^7.29.7",
     "@babel/preset-typescript": "^7.29.0",
-    "@biomejs/biome": "2.5.14",
+    "@biomejs/biome": "2.5.15",
     "@jest/create-cache-key-function": "30.5.1",
     "@react-native/jest-preset": "0.88.0",
     "@react-native/metro-config": "0.88.0",
