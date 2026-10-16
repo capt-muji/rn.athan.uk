@@ -145,14 +145,21 @@ which mirrors Android's one-visible rule more closely at the cost of one read an
 
 ## 4. The experiment, waiting on her unlock
 
-The phone is attached and locked. The refusal signature is the one row 111 recorded: the
-automation prepare step times out, the runner's build destination fails, and the launch call
-fails to allocate the device; the tooling names the locked device as the cause. Nothing is faked;
-every rendering claim above stays tagged `UNMEASURED` until this runs.
+Not observed, and not faked. The phone is attached and locked: row 111's "Lane resume 2026-10-16
+18:22" entry records the refusal signature this row inherits, `agent-device prepare ios-runner`
+answering "iOS device is not ready for automation: Command timeout", the runner's build
+destination failing, and `xcrun devicectl device process launch` failing "Failed to allocate RSD
+device", with the tooling naming the locked device as the cause
+(`ai/plans/111-sdk58-stable-repin/LOG.md`; recoverable at
+`git show 2ec145e9:ai/plans/111-sdk58-stable-repin/LOG.md` if sibling lane 111 closes the
+folder). This ticket carries no device contact by design, so the lock is not re-measured here and
+her unlock is the prerequisite: `UNMEASURED` stands on every rendering claim until then.
 
-The protocol is `PLAN.md` section 7 and is not repeated here: vehicle, notification set, the three
-reads (structure, log corroboration, delivered-set dump), the four void shapes with their actions,
-the evidence path, and the two waits.
+The protocol is `PLAN.md` section 7 and is not repeated here: the vehicle, the notification set,
+the three reads with their tools and the bounded log window, the four void shapes with their
+actions, the evidence path, and the two waits. After the plan folder dies with the DONE merge,
+recover it with `git log --all --oneline -- ai/plans/120-notification-center/PLAN.md` and
+`git show <sha>:ai/plans/120-notification-center/PLAN.md`.
 
 ## 5. Residual unknowns and the waits
 
