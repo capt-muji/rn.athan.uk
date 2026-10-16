@@ -223,7 +223,6 @@ export default function BottomSheetSound() {
 }
 
 const ty = typographyFor(currentLocaleId());
-// D94: the ar note copy clears the list (the preview animation) above it
 
 const styles = StyleSheet.create({
   // Card
