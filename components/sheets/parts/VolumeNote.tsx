@@ -20,7 +20,7 @@ export default function SheetVolumeNote() {
 }
 
 const ty = typographyFor(currentLocaleId());
-// D94's pair: the ar note copy clears the list (the preview animation) above it
+// D94: the ar note copy clears the list (the preview animation) above it
 const compactArabic = currentLocaleId() === 'ar';
 
 const styles = StyleSheet.create({
@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     textAlign: 'center',
     fontSize: ty.size(TEXT.sizeDetail),
+    // Rubik's win ink descends past its own line box at this size; the script box gives it room
+    lineHeight: ty.scriptLineHeight?.(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
     color: COLORS.text.sheetSubtitle,
     // The glyph keeps its distance: the start side faces it in either layout direction

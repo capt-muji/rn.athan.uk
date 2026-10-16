@@ -7,8 +7,13 @@ import { StyleSheet } from 'react-native';
 
 import { onPlatform } from '@/__tests__/harness';
 import { COLORS, SPACING, TEXT } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 
 import SheetVolumeNote from '../VolumeNote';
+
+// The ar probe below requires the testing library fresh inside isolateModules, mid-test, where
+// its import-time cleanup-hook registration is a jest-circus error
+process.env.RNTL_SKIP_AUTO_CLEANUP = 'true';
 
 const IOS_COPY = 'Follows your Ringer & Alerts volume.\nSilent and Focus modes mute it.';
 const ANDROID_COPY = 'Plays at alarm volume, not ring volume.';
@@ -46,6 +51,26 @@ describe('the volume footnote', () => {
     expect(text.color).toBe(COLORS.text.sheetSubtitle);
     expect(text.fontSize).toBe(TEXT.sizeDetail);
     expect(text.fontFamily).toBe('Roboto-Regular');
+    expect(text.lineHeight).toBeUndefined();
+  });
+
+  it('takes the 21 point script line box under ar, so the measured descender ink renders', async () => {
+    let text: Record<string, unknown> = {};
+    jest.resetModules();
+    try {
+      await jest.isolateModulesAsync(async () => {
+        const { StyleSheet } = require('react-native');
+        const { setActiveLocale } = require('@/shared/i18n/locale');
+        setActiveLocale('ar');
+        const rntl = require('@testing-library/react-native');
+        const SheetVolumeNoteAr = require('../VolumeNote').default;
+        await rntl.render(<SheetVolumeNoteAr />);
+        text = StyleSheet.flatten(rntl.screen.getByText(/الرنين/).props.style) as Record<string, unknown>;
+      });
+      expect(text.lineHeight).toBe(21);
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('lifts off the body, a centred row with its padding', async () => {
