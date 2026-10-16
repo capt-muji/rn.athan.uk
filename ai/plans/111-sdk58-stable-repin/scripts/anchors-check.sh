@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Anchor check for plan 111. Every anchor must count exactly 1 at the uat tree.
+# Step 1 runs this once, before its first edit: the anchors assert the starting state it moves away
+# from. The pre-flight does not call it (the first attempt's audit finding 1).
 set -u
 ROOT="$(git rev-parse --show-toplevel)"
 DIR="$(cd "$(dirname "$0")/anchors" && pwd)"
@@ -16,13 +18,10 @@ check() {
   fi
 }
 check a1-package-expo.txt package.json
-check a1b-package-location.txt package.json
-check a1c-package-widgets.txt package.json
-check a1d-package-rn.txt package.json
-check a2-bgtask-constant.txt patches/expo-background-task+58.0.10.patch
-check a3-location-headingfilter.txt patches/expo-location+58.0.12.patch
-check a4-widgets-openapp.txt patches/expo-widgets+58.0.14.patch
-check a5-appjson-notifs-plugin.txt app.json
-check a7-strokeborder.txt widgets/PrayerWidget.tsx
-check a10-upstream-table.txt ai/UPSTREAM-PRS.md
+check a2-package-widgets.txt package.json
+check a3-package-ui.txt package.json
+check a4-appjson-notifs-plugin.txt app.json
+check a5-strokeborder.txt widgets/PrayerWidget.tsx
+check a6-bgtask-options.txt stores/notifications.ts
+check a7-widgets-patch-openapp.txt patches/expo-widgets+58.0.19.patch
 if [ "$fail" = "0" ]; then echo "ANCHORS OK"; else exit 1; fi

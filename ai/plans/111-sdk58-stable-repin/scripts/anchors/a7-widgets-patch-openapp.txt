@@ -1,5 +1,3 @@
-@@ -295,8 +297,13 @@ private fun ImageContentScale.toGlanceContentScale(): ContentScale {
- private fun ReadableMap.toPeekButton(converterContext: WidgetConverterContext, source: String): Emittable {
    val props = props<WidgetButtonProps>(converterContext)
    val children = children()
 -  val action =
@@ -11,5 +9,3 @@
 +  } else {
 +    props.target?.let { target -> WidgetInteraction(source, target).toGlanceAction(context) }
 +  }
-   val modifier = props.buttonModifier(converterContext)
-   val contentColor = props.contentColorProvider()
