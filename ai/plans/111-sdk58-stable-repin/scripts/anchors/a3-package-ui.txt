@@ -1,0 +1,3 @@
+    "@expo/ui": "58.0.19",
+    "@gorhom/bottom-sheet": "5.2.14",
+    "date-fns": "4.4.0",

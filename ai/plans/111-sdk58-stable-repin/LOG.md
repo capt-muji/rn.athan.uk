@@ -1,13 +1,14 @@
 # LOG 111
 
-Resume from: ticket 111 is NEEDS REPLAN (row 2026-10-16). The next phase is a plan
-refresh, not a resumed execution: re-pin the whole set to `expo 58.0.13` and
-`expo-widgets 58.0.20` (plus the fifteen other modules expo 58.0.13's
-`bundledNativeModules.json` moves), re-measure the three patches' apply status at the new
-versions, rebuild and re-prove them, then run step 3's 3T gates (the phone is connected),
-step 4's XS loop (the phone must be unlocked first), step 5's records, then the audit and
-DONE. The section "Ticket state at the lane's stop" below carries the measured grounds, and
-`AUDIT.md` carries the three review passes and their verdicts.
+Resume from: ticket 111 is READY after the 2026-10-16 refresh (the lane's Plan phase). The next
+phase is Execute, at step 1: the delta re-pin to `expo 58.0.13` (eight direct pins moved, two
+transitive) with the three patches regenerated and the first attempt's carried audit findings
+fixed in the same commit; then step 2's 3T release build and alarm gates (the phone is
+connected); then step 3's XS loop, which waits on the owner unlocking her phone (measured
+2026-10-16: `xcrun devicectl device info lockState` fails with "Failed to allocate RSD device",
+the lock signature the first attempt recorded); then step 4's records. The section "Refresh
+(2026-10-16)" below carries the measurements and `AUDIT.md` carries the first attempt's three
+review passes.
 
 ## Planning (2026-10-16)
 
@@ -272,3 +273,79 @@ session: ses_eba90557fffegXgpdEF29mZxAH
   hard rules forbid.
 
 
+
+## Refresh (2026-10-16, lane session) — NEEDS REPLAN repaired
+
+- Entry phase: Plan (the refresh). The row's NEEDS REPLAN reason is measured and stands: the first
+  Android build on `expo 58.0.12` failed at `:expo-widgets:compileReleaseKotlin` (16 unresolved
+  `io.github.jakex7.peek.*` references; 58.0.19 is broken upstream, 58.0.20 fixes it), and npm
+  moved to `expo 58.0.13` (2026-10-16T15:43Z) and `expo-widgets 58.0.20` (15:42Z). The plan's own
+  section 2.2 forbids an improvised bump, so the whole set was re-measured.
+- Re-measured in this lane's worktree (`$HOME/athan-gitree/worktrees/lane-111-replan`, uat
+  `fece11d3` 2.0.896) with the raw logs under `$HOME/athan-gitree/sessions/111/replan/`:
+  - `expo@58.0.13`'s `bundledNativeModules.json` (124 entries) moves 17 pins against 58.0.12's.
+    Of the packages this repository declares, eight direct pins move (expo, @expo/ui,
+    expo-haptics, expo-location, expo-notifications, expo-router, expo-splash-screen,
+    expo-widgets) and two transitive pins follow from expo's own dependencies (babel-preset-expo
+    ~58.0.16 to ~58.0.17, expo-modules-core ~58.0.20 to ~58.0.21).
+  - Candidate install at the eight pins: exit 0, zero peer warnings, resolved expo 58.0.13,
+    expo-widgets 58.0.20, expo-location 58.0.17, @expo/ui 58.0.20, expo-notifications 58.1.5,
+    expo-modules-core 58.0.21, expo-router 58.0.22, expo-haptics 58.0.7, expo-splash-screen
+    58.0.10, react-native 0.88.0.
+  - `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0 (444 files);
+    `npx jest --watchman=false` 34.9 s: `Test Suites: 1 failed, 215 passed, 216 total`,
+    `Tests: 2 failed, 2 skipped, 5704 passed, 5708 total`. The single red suite is
+    `shared/__tests__/widgetOpenAppPatch.test.ts` (`names the installed expo-widgets version`,
+    `patches exactly the known files, all inside the package`), red only because the patch file
+    is still named for 58.0.19; regenerating it at 58.0.20 greens both.
+  - Patch apply status at the new packages, measured twice (published tarball file lists and the
+    installed tree): all three patches apply WHOLE, no rejected hunk. `expo-widgets` 58.0.19 to
+    58.0.20 changes CHANGELOG, android/build.gradle, WidgetsModule.kt, the four
+    notifications/CustomNotification*.kt files, package.json and scripts/build-layout-registry.mjs
+    - not one of the five files the patch carries. `expo-location` 58.0.16 to 58.0.17 changes
+    CHANGELOG, android/build.gradle, LocationTaskConsumer.kt, the local-maven-repo version
+    directory and package.json - not one of the three files the patch carries.
+    expo-background-task is unchanged at 58.0.11.
+  - Babel 8 rider re-measured, still blocked: `@babel/core` 8.0.7 is latest;
+    `babel-preset-expo@58.0.17` depends on 36 `@babel/*` 7.x packages (including
+    `@babel/preset-typescript ^7.23.0`) and `@react-native/babel-preset@0.88.0` depends on
+    `@babel/core ^7.25.2`. The four `@babel/*` devDependencies stay at `^7.29.x`; step 4 records
+    it and the row 18 policy carries.
+- Refresh written: `PLAN.md` rewritten (target table, patch table, Babel rider, the landed truth,
+  the carried audit findings, the XS precondition, the acceptance criteria), the step set rebuilt
+  as four steps (the landed freshness step is gone; the step-1 shape is now the delta re-pin plus
+  the audit hygiene), the anchor set rebuilt to assert step 1's starting state, and
+  `scripts/preflight-111.sh` rewritten to check the new target table and to stop counting the
+  anchors (the first attempt's audit finding 1).
+- Landed truths carried rather than redone: steps 1 and 2 of the first attempt are merged
+  (`bc9699d3` 2.0.863, `5966e95b` 2.0.869) and their invariant work stands; R4.5's ruling
+  (D111.17) stands; R4.1, R4.2, R4.3 and R4.4 were greened on the superseded pin set and step 3
+  re-runs them; R4.6 is partial and R4.7 and R4.8 were never observed.
+
+### Grill (2026-10-16) — 14 findings, all adjudicated and applied
+
+- One cold `athan-plan-griller` pass over the refreshed folder. It confirmed the anchors (7 of 7
+  counting 1 at uat `fece11d3`, inside the 3-to-15-line band), `PLAN OK`, the ten npm `latest`
+  values, the eight-plus-two pin delta and the patch file lists from the published tarballs.
+- Applied (four musts): the XS build env gains `EXPO_PUBLIC_IOS_WIDGETS=1` and an inline
+  `DEVELOPMENT_TEAM`, because `app.config.ts` strips the widgets plugin without the first and
+  Xcode holds no live account session for the second (the atlas records both) - otherwise R4.6 is
+  unobservable on that build. The red-capture block moved behind contract 2, because at uat's pins
+  the patches match the installed packages and the named suite passes; the red only exists once the
+  new pins are in. Step 3's precondition now uses the atlas's measured runner command and the
+  `lockState` probe this session ran. R3.4 is restated as the Jest suite it is
+  (`shared/__tests__/widgetRuntimeLoads.test.ts`), with the logcat clause dropped: those lines are
+  Pino and a prod build disables Pino.
+- Applied (five shoulds and two nices): R3.2 now claims only what the bare `check:device` run
+  proves (its prayer-time judgement needs an `expected-times.json` this repository has no generator
+  for); R3.5's md5 clause no longer contradicts the step's "either outcome" text and gains R3.6 for
+  the mock marker; the verify script's docstring rename joins contract 5; step 2's Restore states
+  one outcome; R4.7 records "not exercised" when her configuration arms no reminder rather than
+  touching ask-first scheduling ground; the background-task symbol is nine lines, not eight; and
+  the carried findings are six, not five.
+- Also split R1.10, R1.11 and R3.5 into single-clause IDs (R1.10 to R1.13, R3.5 and R3.6).
+- Post-grill additions by the lane: step 2 opens with the main tree's `node_modules` refresh
+  (`build-prod.zsh` links the build worktree's `node_modules` to the main checkout's), step 3's
+  Restore uninstalls the runner's two helper apps, and the pre-flight stops requiring the checkout
+  to be literally on `uat` so a lane worktree can run it.
+- Gate: `bash scripts/check-plan.sh ai/plans/111-sdk58-stable-repin` -> `PLAN OK`.
