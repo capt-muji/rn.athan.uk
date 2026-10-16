@@ -35,8 +35,12 @@ credentials, publishing, destroying data), reported, never asked.
   `$HOME/repos/rn.athan.uk` stays checked out on `uat` and clean: it is the merge
   station and the build bay, never a lane's desk. Give the worktree its own
   `node_modules` with a plain `yarn install` when your lane runs code or hooks, and
-  reinstall after any rebase that moves `yarn.lock`. Remove the worktree and its
-  branch before you end.
+  reinstall after any rebase that moves `yarn.lock`. A FRESH worktree has no husky
+  shim until that install creates it, so git silently skips the pre-commit hook and
+  an unhooked commit passes green: never commit before the install finishes, and
+  treat any commit whose output carries no `Tests:` line as unhooked (run
+  `yarn validate` and the coverage check by hand, re-verify, and only then continue).
+  Remove the worktree and its branch before you end.
 - Worker dispatches name your worktree and carry these lock rules. If you cannot
   dispatch workers, run each phase yourself from the rules in `.opencode/agents/`,
   and record that in `LOG.md`.

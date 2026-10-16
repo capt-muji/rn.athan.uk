@@ -144,12 +144,15 @@ plays no part, so any model runs the same dispatch.
    return to section 2 for the next phase.
 2. Write the range's diff to a file: `git diff origin/uat..uat -- . ':(exclude)ai/plans' > $TMPDIR/audit-<N>.diff`.
    An empty diff skips to item 6.
-3. Dispatch one `athan-reviewer` as **plan-conformance**: the diff path, a worktree at
+3. Dispatch one `athan-reviewer` as **plan-conformance**: the commit RANGE (for example
+   the lane's branch range or `origin/uat..uat` as it stands), the diff path, a worktree at
    `uat`, the plan folder, and a findings file at `$TMPDIR/findings-plan-<N>.md`. It checks
-   the code against the plan.
-4. Dispatch one `athan-reviewer` as **blind**: the diff path, the worktree, and a findings
-   file at `$TMPDIR/findings-blind-<N>.md`. Never the plan, never `LOG.md`, never this
-   conversation. The blindness is the point: it is
+   the code against the plan. Hand the range, never only diff files: a temp file can be
+   gone by the time the reviewer runs, and a reviewer that cannot find the diff must
+   derive the range from git and say so.
+4. Dispatch one `athan-reviewer` as **blind**: the commit RANGE, the diff path, the worktree,
+   and a findings file at `$TMPDIR/findings-blind-<N>.md`. Never the plan, never `LOG.md`,
+   never this conversation. The blindness is the point: it is
    how plan-independent defects get caught.
 5. Steps touching notifications, data or the schedule get one more blind pass focused on
    threading and lifecycle. These reviewer dispatches may run in parallel.
