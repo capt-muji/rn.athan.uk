@@ -80,4 +80,14 @@ describe('background task definition (device/tasks.ts)', () => {
     expect(second).toBe(BackgroundTask.BackgroundTaskResult.Success);
     expect(mockReschedule).toHaveBeenCalledTimes(2);
   });
+
+  it('never dismisses delivered notifications: the clear is an open-time act', async () => {
+    mockReschedule.mockResolvedValue(undefined);
+    const executor = getRegisteredExecutor();
+
+    await executor();
+
+    const { dismissAllNotificationsAsync } = require('expo-notifications');
+    expect(dismissAllNotificationsAsync).not.toHaveBeenCalled();
+  });
 });

@@ -3,6 +3,7 @@ import {
   AndroidAudioUsage,
   AndroidImportance,
   deleteNotificationChannelAsync,
+  dismissAllNotificationsAsync,
   setNotificationChannelAsync,
 } from 'expo-notifications';
 import { Platform } from 'react-native';
@@ -11,6 +12,7 @@ import { london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import type { PrayerId } from '@/shared/constants';
 import { prayerLabel, t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
+import logger from '@/shared/logger';
 
 import { PRAYER_TIMEZONE } from '../constants';
 import {
@@ -657,6 +659,80 @@ describe('initializeNotifications', () => {
     // Should not throw
     await expect(initializeNotifications(checkPermissions, refreshFn)).resolves.toBeUndefined();
     expect(refreshFn).not.toHaveBeenCalled();
+  });
+
+  describe('the delivered-stack clear', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+      Platform.OS = 'ios';
+    });
+
+    afterEach(() => {
+      Platform.OS = 'ios';
+    });
+
+    it('clears the delivered stack on iOS before the refresh when permission is granted', async () => {
+      const checkPermissions = jest.fn().mockResolvedValue(true);
+      const refreshFn = jest.fn().mockResolvedValue(undefined);
+
+      await initializeNotifications(checkPermissions, refreshFn);
+
+      expect(dismissAllNotificationsAsync).toHaveBeenCalledTimes(1);
+      expect((dismissAllNotificationsAsync as jest.Mock).mock.invocationCallOrder[0]).toBeLessThan(
+        refreshFn.mock.invocationCallOrder[0]
+      );
+      expect(logger.info).toHaveBeenCalledWith('NOTIFICATION: Cleared the delivered notifications');
+    });
+
+    it('does not clear the delivered stack on Android', async () => {
+      Platform.OS = 'android';
+      const checkPermissions = jest.fn().mockResolvedValue(true);
+      const refreshFn = jest.fn().mockResolvedValue(undefined);
+
+      await initializeNotifications(checkPermissions, refreshFn);
+
+      expect(dismissAllNotificationsAsync).not.toHaveBeenCalled();
+    });
+
+    it('does not clear the delivered stack when permissions are denied', async () => {
+      const checkPermissions = jest.fn().mockResolvedValue(false);
+      const refreshFn = jest.fn().mockResolvedValue(undefined);
+
+      await initializeNotifications(checkPermissions, refreshFn);
+
+      expect(dismissAllNotificationsAsync).not.toHaveBeenCalled();
+    });
+
+    it('a failed clear never stops the refresh', async () => {
+      (dismissAllNotificationsAsync as jest.Mock).mockRejectedValueOnce(new Error('dismiss refused'));
+      const checkPermissions = jest.fn().mockResolvedValue(true);
+      const refreshFn = jest.fn().mockResolvedValue(undefined);
+
+      await expect(initializeNotifications(checkPermissions, refreshFn)).resolves.toBeUndefined();
+      expect(dismissAllNotificationsAsync).toHaveBeenCalledTimes(1);
+      expect(refreshFn).toHaveBeenCalledTimes(1);
+      expect(logger.error).toHaveBeenCalledWith(
+        'NOTIFICATION: Failed to clear the delivered notifications, carrying on:',
+        expect.any(Error)
+      );
+    });
+
+    it('a clear that never answers is given up on and the refresh still runs', async () => {
+      jest.useFakeTimers();
+      (dismissAllNotificationsAsync as jest.Mock).mockReturnValue(new Promise(() => {}));
+      const checkPermissions = jest.fn().mockResolvedValue(true);
+      const refreshFn = jest.fn().mockResolvedValue(undefined);
+
+      try {
+        const init = initializeNotifications(checkPermissions, refreshFn);
+        await jest.advanceTimersByTimeAsync(15_000);
+        await expect(init).resolves.toBeUndefined();
+        expect(refreshFn).toHaveBeenCalledTimes(1);
+        expect(dismissAllNotificationsAsync).toHaveBeenCalledTimes(1);
+      } finally {
+        jest.useRealTimers();
+      }
+    });
   });
 });
 
