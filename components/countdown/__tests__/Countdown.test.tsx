@@ -21,7 +21,7 @@ beforeEach(() => seedCountdownBarOn());
 
 const MAGRIB = 4;
 const LETTER_INK = COLORS.text.primary;
-const LETTER_SIZE = TEXT.sizeLarge;
+const LETTER_SIZE_SHARE = 0.9;
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)
@@ -148,7 +148,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(screen.getByText('5s')).toBeOnTheScreen();
   });
 
-  it('draws the letters at the digits\u2019 own size and full-strength ink, inside the digit run', async () => {
+  it('draws the letters 10% under the digit size and full-strength ink, inside the digit run', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSecondsPreference(false);
     setCountdown(8940);
@@ -164,7 +164,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     const letter = screen.getByText('h');
     const letterStyle = flattenStyle(letter.props.style);
     expect(letterStyle.color).toBe(LETTER_INK);
-    expect(letterStyle.fontSize).toBe(LETTER_SIZE);
+    expect(letterStyle.fontSize).toBe(TEXT.sizeLarge * LETTER_SIZE_SHARE);
 
     const name = screen.getByText('Asr');
     const nameStyle = flattenStyle(name.props.style);
