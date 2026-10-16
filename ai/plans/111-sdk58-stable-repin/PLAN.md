@@ -199,8 +199,30 @@ is re-verified blocked and recorded; the four `@babel/*` devDependencies stay at
   border color param): no usage in the repo (widget code uses neither).
 - expo-notifications 58.1.x grew `enableRemoteNotifications` for local-only
   apps: candidate, pending exact-shape verification and an owner question.
-- `expo-location/next` provider API: preview, not adopted; the classic API stays
-  (the patch rides it).
+- @expo/metro-config env vars in the transform cache (owner ruling 2026-10-16:
+  rides this ticket, no standalone row): the 3T build step re-verifies the e2e
+  README's Metro env-blindness gotcha against the new cache behaviour; if the
+  stale-transform class is healed, the README gotcha text updates as this
+  ticket's bookkeeping.
+- @expo/log-box: stays installed as expo-router's peer (A4); the better error
+  stacks are free. expo-updates `maxUpdatesToKeep`: no remote updates ship,
+  `Updates.reloadAsync` stays the only used surface. Neither gets a row (owner
+  ruling 2026-10-16).
+- @expo/ui deprecations (owner question answered 2026-10-16): the repo uses
+  @expo/ui inside widget layouts only (Text, Spacer, Column, Row, Image, Button,
+  one strokeBorder). Exactly ONE deprecated call site exists:
+  `widgets/PrayerWidget.tsx:811` passes `strokeBorder({ color: ... })`, renamed
+  to `content:` in SDK 58. The rename is pixel-identical and rides this re-pin.
+  `backgroundOverlay`, `List.ForEach` and the TimePicker colour names: unused
+  (verified). Recycling lists: no `List` usage anywhere, irrelevant (owner's
+  read confirmed). Native navigation: Expo Router owns navigation.
+- The iOS widget's live ticking timer stays system-formatted (owner question
+  2026-10-16, her read confirmed): WidgetKit's timer style formats itself, and
+  custom formats would need static timeline entries, losing the live tick. Row
+  69's ground; no row.
+- Scratch jest note: one Stepper suite worker died SIGSEGV under two concurrent
+  full jest runs (the worktree suite beside the main repo's pre-commit hook);
+  the isolated rerun passed 19/19. The plan serialises its suite runs.
 - NODE_ENV is now forced by command (development for debug, production
   otherwise): the build scripts carry their own env; verified at the build step.
 
