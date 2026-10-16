@@ -145,3 +145,16 @@ session: ses_eba1fe750ffeUVW5hmC6nRcLKY
   of section 1.2, and no claim here is device-dependent.
 
 session: ses_eba1fe750ffeUVW5hmC6nRcLKY
+
+### Step 03 — DONE (the XS experiment, the not-observed record and the outcome text)
+
+- FINDINGS section 4 refined: the not-observed record now cites row 111's resume record for the
+  locked state and names her unlock as the prerequisite (R4.2), and names the recovery route for
+  the protocol after the plan folder dies.
+- FINDINGS section 5 unchanged in substance: the residual unknowns and the two waits.
+- The queue row set EXECUTED carrying the options, the recommendation, the frozen-rule blast
+  radius, the protocol's reading list and the two waits (R5.1). The audit verdict is deliberately
+  absent from that text: it is written by the audit's merge, not by this step.
+- No device contact: the phone's state is cited, never probed, and nothing is faked.
+
+session: ses_eba1fe750ffeUVW5hmC6nRcLKY
