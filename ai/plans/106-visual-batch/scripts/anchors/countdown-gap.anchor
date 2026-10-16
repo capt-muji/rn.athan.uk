@@ -1,8 +1,0 @@
-            <View style={styles.timerRow} accessible accessibilityLabel={rowLabel}>
-              {liveGroups?.map((group) => (
-                <Text key={group.letter} style={styles.group}>
-                  {group.digits}
-                  <Text style={styles.gap}> </Text>
-                  <Text style={styles.unitLetter}>{group.letter}</Text>
-                </Text>
-              ))}
