@@ -13,19 +13,10 @@ import { COLORS } from '@/shared/constants';
 export interface ColonInkRow {
   isNext: boolean;
   isPassed: boolean;
-  isSelected: boolean;
   isStandard: boolean;
 }
 
-export const colonInkPair = ({
-  isNext,
-  isPassed,
-  isSelected,
-  isStandard,
-}: ColonInkRow): {
-  from: string;
-  to: string;
-} => {
+export const colonInkPair = ({ isNext, isPassed, isStandard }: ColonInkRow): { from: string; to: string } => {
   if (isNext) {
     return {
       from: COLORS.countdown.timeColon,
@@ -35,9 +26,8 @@ export const colonInkPair = ({
   if (isPassed) {
     return { from: COLORS.countdown.timeColon, to: COLORS.countdown.pastTimeColon };
   }
-  // An upcoming row rests on the dim ink; selection is the only path to its bright ink
-  return {
-    from: COLORS.countdown.timeColon,
-    to: isSelected ? COLORS.text.primary : COLORS.countdown.timeColon,
-  };
+  // An upcoming row rests at the dim end and rides these endpoints through selection and the
+  // day-roll cascade alike: collapsing the bright end when the state flips would read the dim
+  // ink on the cascade's first frame, snapping instead of fading with the digits
+  return { from: COLORS.countdown.timeColon, to: COLORS.text.primary };
 };
