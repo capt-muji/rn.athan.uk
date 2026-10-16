@@ -107,3 +107,25 @@ Records wording fixed in this step: the hunk sentence in FINDINGS section 2 name
 lines for the emission gate and the constant; both now read from the patch itself.
 
 session: ses_eba28a6b2ffe7uxiUDK37TNMie
+
+### Step 3 — DONE (the migration cost and the ruling pack)
+
+Branch `docs/121-3-ruling-pack` off `lane/121` at `f0369c60` (2.0.903). Step 2's commit
+`f0369c60` (2.0.903, hook `Tests: 2 skipped, 5706 passed, 5708 total`, coverage 100 percent on all
+four measures) merged `--no-ff` into `uat` as `6e2dde16`; `lane/121` fast-forwarded to `f0369c60`.
+The claim battery's third run stands on the same output as step 2 (no source moved); FINDINGS
+sections 4 to 8 finalised:
+
+- R3.1: FINDINGS section 2 enumerates the patch's six hunks by file and patch line and records the
+  pull request's state, label and both measurement times.
+- R4.1: FINDINGS section 5 carries three options (A partial adoption, B recommended, C wholesale)
+  with one line of measured ground rejecting A and C, and the recommendation's challenge, surviving
+  answer and flip-check.
+- R4.2: the C1 to C5 compass matrix, experiments E1 to E5 with their waiting conditions, and
+  unverified claims U1 to U6 each with the experiment that settles it.
+- R4.3: the queue row is set EXECUTED with the surface's shape, the heading answer, the mapping's
+  two gaps, the migration cost, the recommendation, the matrix and both lists.
+
+Nothing outside `ai/plans/`, the queue row and the two tracked version files changed in this row.
+
+session: ses_eba28a6b2ffe7uxiUDK37TNMie
