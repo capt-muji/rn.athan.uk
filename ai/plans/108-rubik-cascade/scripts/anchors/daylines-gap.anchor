@@ -1,7 +1,0 @@
-      await render(<ArabicDay type={ScheduleType.Standard} />);
-
-      expect(flattenStyle(screen.getByText('لندن، المملكة المتحدة').props.style).marginBottom).toBe(6);
-    } finally {
-      setActiveLocale('en');
-    }
-  });
