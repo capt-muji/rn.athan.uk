@@ -105,6 +105,7 @@ experiment in section 4 settles it, and it is the first thing her unlock buys.
 
 | Lever | Mechanism | What the user sees | Files a code step would touch |
 | --- | --- | --- | --- |
+| Status quo (A) | No change at all | The center keeps every delivered notification until the user clears it | None |
 | Group under a thread (B) | `threadIdentifier` on both composers, iOS-gated | One thread: nothing new, the app-level group already exists; two threads: the app's notifications split into two groups under the app | `shared/notifications.ts`, `shared/__mocks__/expo-notifications.ts`, the content suites |
 | Clear the delivered stack on open (C) | `dismissAllNotificationsAsync`, iOS-gated, inside `initializeNotifications` | The center holds nothing from this app at the moment the app is open; Android is untouched | `shared/notifications.ts`, `device/notifications.ts`, the mock, `notificationsInit` and `notifications` suites |
 | Both (D) | C plus a thread identifier | As C during the session; grouping inside it | Both rows above |
