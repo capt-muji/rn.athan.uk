@@ -25,6 +25,7 @@ interface LetteredGroup {
 }
 
 const UNIT_LETTERS = ['h', 'm', 's'];
+const UNIT_SIZE_SHARE = 0.9;
 const UNIT_LETTER_COLOR = COLORS.text.primary;
 const COLON_DISPLAY = /^\d{2}(:\d{2}){1,2}$/;
 
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
   },
   unitLetter: {
     color: UNIT_LETTER_COLOR,
-    fontSize: ty.countdownSize,
+    fontSize: ty.countdownSize * UNIT_SIZE_SHARE,
     textShadowColor: 'rgba(0, 0, 0, 0.15)',
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 6,
