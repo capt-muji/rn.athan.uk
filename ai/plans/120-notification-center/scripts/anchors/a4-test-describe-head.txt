@@ -1,0 +1,10 @@
+describe('initializeNotifications', () => {
+  it('calls refreshFn when permissions are granted', async () => {
+    const checkPermissions = jest.fn().mockResolvedValue(true);
+    const refreshFn = jest.fn().mockResolvedValue(undefined);
+
+    await initializeNotifications(checkPermissions, refreshFn);
+
+    expect(checkPermissions).toHaveBeenCalledTimes(1);
+    expect(refreshFn).toHaveBeenCalledTimes(1);
+  });
