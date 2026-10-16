@@ -1,6 +1,6 @@
 /**
  * The patch that lets an Android widget tap open the app
- * (patches/expo-widgets+58.0.3.patch)
+ * (patches/expo-widgets+<installed version>.patch)
  *
  * The widget layout wraps every Android card in a Button carrying `openApp`,
  * a prop the patch adds to expo-widgets. Nothing else in the repository
