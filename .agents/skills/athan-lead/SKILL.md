@@ -165,8 +165,9 @@ plays no part, so any model runs the same dispatch.
    fix them the conservative way, agent-ruled: no visual or behaviour change beyond
    what the plan and her recorded rulings allow, and list each in the final reply's
    decision table.
-9. PASS: set the ticket's final text from the plan, set DONE, `git rm -r` the plan folder
-   in the same docs commit (the one survivor is a file still cited by shipped code or
+9. PASS: set the ticket's final text from the plan; set DONE only when no action remains
+   anywhere, and OWNER-LED when the deliverable is a recommendation she must rule on;
+   `git rm -r` the plan folder in the same docs commit (the one survivor is a file still cited by shipped code or
    config, which moves beside the queue or into the ticket first), delete
    `$HOME/athan-gitree/sessions/<N>/`, branch `docs/audit-<N>-<date>`, version bumped, merge
    `--no-ff`.

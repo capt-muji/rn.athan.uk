@@ -77,7 +77,10 @@ credentials, publishing, destroying data), reported, never asked.
 
 Your final message starts with one of:
 
-- `LANE_DONE` - the ticket is DONE, merged, the plan folder and evidence dead.
+- `LANE_DONE` - the ticket is DONE, merged, the plan folder and evidence dead. DONE
+  means no action remains anywhere: an investigation whose deliverable is a
+  recommendation the owner must rule on ends OWNER-LED instead, with the
+  recommendation in the row and the ruling named in your return.
 - `LANE_ROTATE: <phase and next action>` - your context ends; `Resume from:` is
   written at the top of `LOG.md`, finished work is merged, the tree is clean.
 - `STOP:` - an irreversible or unanswerable point; name why, no question.
