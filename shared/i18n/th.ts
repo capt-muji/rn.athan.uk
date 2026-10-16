@@ -56,7 +56,7 @@ export const th = {
   'help.step.silentMode': 'เปลี่ยนโทรศัพท์ออกจากโหมดเงียบ',
   'help.q.dndTimes': 'ทำไมการแจ้งเตือนจึงถูกปิดเสียงในบางเวลา?',
   'help.a.dndTimes.ios': 'โหมดโฟกัสและห้ามรบกวนปิดเสียงการแจ้งเตือนจนกว่าจะอนุญาตแอปนี้',
-  'help.step.timeSensitive': 'อนุญาต Time Sensitive Notifications ในการตั้งค่าแอป',
+  'help.step.timeSensitive': 'อนุญาตการแจ้งเตือนที่สำคัญต่อเวลาในการตั้งค่าแอป',
   'help.step.focusAllow': 'อนุญาตแอปนี้ในทุกโฟกัสที่คุณใช้',
   'help.a.dndTimes.android': 'โหมดห้ามรบกวนปิดเสียงการแจ้งเตือนจนกว่าจะอนุญาตแอปนี้',
   'help.step.dndAccess': 'อนุญาตการเข้าถึงห้ามรบกวน',

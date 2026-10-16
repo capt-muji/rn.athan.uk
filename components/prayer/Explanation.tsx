@@ -62,7 +62,7 @@ export default function PrayerExplanation({
         {/* Header with title and icon */}
         <View style={styles.infoHeader}>
           <Text style={styles.infoTitle}>{prayerName}</Text>
-          <InfoBadge size={26} glyph={13} color={COLORS.icon.primary} />
+          <InfoBadge size={20} glyph={10} color={COLORS.icon.primary} />
         </View>
 
         {/* Separator */}
