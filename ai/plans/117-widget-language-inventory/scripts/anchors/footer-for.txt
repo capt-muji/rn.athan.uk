@@ -1,7 +1,0 @@
-export const footerFor = (date: string, hijriDate: boolean): string => {
-  if (hijriDate) {
-    try {
-      const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric',
