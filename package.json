@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "2.0.867",
+  "version": "2.0.868",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -87,7 +87,7 @@
     "@jest/create-cache-key-function": "30.5.1",
     "@react-native/jest-preset": "0.88.0",
     "@react-native/metro-config": "0.88.0",
-    "@testing-library/react-native": "14.0.1",
+    "@testing-library/react-native": "14.1.0",
     "@types/jest": "^30.0.0",
     "@types/node": "26.6.3",
     "@types/react": "19.3.0",
