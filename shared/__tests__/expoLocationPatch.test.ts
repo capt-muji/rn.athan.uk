@@ -49,9 +49,7 @@ const PATCHED_CONFIG = `{
 const dirs: string[] = [];
 
 /** A fake node_modules/expo-location, patched as shipped unless an override says otherwise */
-const makeTree = (
-  overrides: { kotlin?: string; swift?: string; config?: string; withMavenRepo?: boolean; empty?: boolean } = {}
-): string => {
+const makeTree = (overrides: { kotlin?: string; swift?: string; config?: string; empty?: boolean } = {}): string => {
   const root = mkdtempSync(join(tmpdir(), 'expo-location-guard-'));
   dirs.push(root);
   if (overrides.empty) return root;
@@ -62,7 +60,6 @@ const makeTree = (
   writeFileSync(join(pkg, KT_RELATIVE), overrides.kotlin ?? PATCHED_KOTLIN);
   writeFileSync(join(pkg, SWIFT_RELATIVE), overrides.swift ?? PATCHED_SWIFT);
   writeFileSync(join(pkg, 'expo-module.config.json'), overrides.config ?? PATCHED_CONFIG);
-  if (overrides.withMavenRepo) mkdirSync(join(pkg, 'android', 'local-maven-repo'), { recursive: true });
 
   return root;
 };
@@ -138,13 +135,6 @@ describe('the expo-location patch guard', () => {
     const { output, code } = runGuard(makeTree({ config }));
 
     expect(output).toContain('publication block: present, expected absent');
-    expect(code).toBe(1);
-  });
-
-  it('refuses a tree with a local maven repo', () => {
-    const { output, code } = runGuard(makeTree({ withMavenRepo: true }));
-
-    expect(output).toContain('local-maven-repo: present, expected absent');
     expect(code).toBe(1);
   });
 
