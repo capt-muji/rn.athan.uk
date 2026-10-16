@@ -285,8 +285,9 @@ waiting conditions.
 
 ## 8. Records
 
-- `LOG.md`: every step entry opens `### Step <NN> — <state>` and ends `session: <id>`;
-  planning sections use `## Planning (2026-10-16)` and `## Ticket 122`.
+- `LOG.md`: every step entry opens `### Step <NN> — <state>` and ends `session: <ses_id>`,
+  and records the step's review verdict and its merge (branch, `--no-ff`, sha); planning sections
+  use `## Planning (2026-10-16)` and `## Ticket 122`.
 - The queue cell the lead applies on DONE (draft, refined by what execution measures):
   `DONE 2026-10-16, audited: the AVD/adb evaluation answers at the installed @expo/cli 58.1.10
   (expo 58.0.12; the rewrite landed in 58.0.0, 2026-09-10, expo/expo#49258, 28 files: added
