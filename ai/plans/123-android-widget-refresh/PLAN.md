@@ -251,7 +251,7 @@ the owner's recollection is a symptom report with no reading on the current buil
 
 Checklist (all three inline in this file; the ledger in `LOG.md`):
 
-- [ ] Step 1 the refresh-path inventory (R1.1 to R1.4)
+- [x] Step 1 the refresh-path inventory (R1.1 to R1.4)
 - [ ] Step 2 the out-of-sync evidence and the SDK 58 stable delta (R2.1 to R2.3, R3.1 to R3.3)
 - [ ] Step 3 the recommendation and the experiment design (R4.1)
 
@@ -354,7 +354,7 @@ wave executes, recorded here so her ruling has a cost beside it:
 
 ## 8. Records
 
-- `LOG.md`: every step entry opens `### Step <NN> - <state>` and ends `session: <id>`; planning
+- `LOG.md`: every step entry opens `### Step <NN> — <state>` and ends `session: <id>`; planning
   sections use `## Planning (2026-10-16)` and `## Ticket 123`.
 - The queue cell the lead applies on DONE (draft, refined by what execution measured):
   `DONE 2026-10-16, audited: the widget-refresh investigation answers and folds here, its

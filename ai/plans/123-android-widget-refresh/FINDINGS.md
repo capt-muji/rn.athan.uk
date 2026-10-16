@@ -43,9 +43,11 @@ correctly. Two drivers then trigger those renders.
 ### 1.3 Where the pushes come from
 
 `refreshPrayerWidgets` is reached from `stores/sync.ts:253` and `:259` (launch, foreground and
-the background task, deferred or awaited) and from `stores/notifications.ts:1616` and `:1627`
-(after every notification reschedule, deferred or awaited). `sync` is the loadable launch path
-(`stores/sync.ts:47`). A settings change re-pushes through `initWidgetSettingsSync`
+the background task, deferred or awaited), from `stores/notifications.ts:1616` and `:1627`
+(after every notification reschedule, deferred or awaited), and twice inside its own module:
+`stores/widget.ts:135` (the settings-change debounce) and `:335` (the flip chain re-pushing
+once the countdown target has passed). `sync` is the loadable launch path (`stores/sync.ts:47`).
+A widget-visible setting change re-pushes through `initWidgetSettingsSync`
 (`stores/widget.ts:124-140`), debounced 1000 ms.
 
 ### 1.4 The Android JS render path
@@ -61,11 +63,18 @@ The native tick instead sends `ACTION_APPWIDGET_UPDATE` per kind
 (`WidgetRefreshScheduler.kt:139-152`); the generated provider passes anything that is not an
 interaction to `GlanceAppWidgetReceiver` (`ExpoWidgetsAppWidgetProvider.kt:13-21`).
 
-### 1.5 One shipped reason is already known stale
+### 1.5 Two shipped reasons are already known stale
 
 `updateAll`'s comment (`WidgetRefreshScheduler.kt:118-131`) justifies its second broadcast
 with "Glance's own update path ... when no session is running it starts one and returns WITHOUT
 composing". The repository's own later measurement refutes that reason: see 2.4.
+
+`WidgetRefreshModule`'s comment (`WidgetRefreshModule.kt:17-20`) says the watchdog "is what
+survives an OEM force-stop". The repository's own later measurement refutes that too: a
+force-stopped app sits in Android's stopped state, which runs none of its jobs and delivers it
+no broadcasts, so the watchdog cannot fire there either (recovered `FINDINGS.md` section 12,
+re-measured in `MEASURED-DRIFT.md`). The watchdog's real window is a process killed without the
+stopped flag, such as a low-memory kill. The layer table in 1.2 records the true window.
 
 ## 2. The out-of-sync record: cited and recollected
 
@@ -230,7 +239,7 @@ cannot be a refresh variable. Cited by hunk feature, never by line: row 111 rebu
 | G4 | The 8T and the S23 have no refresh reading | the same protocol on both |
 | G5 | The double broadcast's reason is retracted and its value unmeasured | count compositions per minute with one pass against two, on a release build |
 | G6 | The two R8 rule sets overlap and neither is isolated | a scratch release build with the `app.json` keeps removed, on one phone |
-| G7 | The 15-minute watchdog never renders and cannot beat the platform floor | reading only; no code change is proposed |
+| G7 | The 15-minute watchdog never renders, cannot beat the platform floor, and its comment's claimed force-stop coverage is refuted by the repo's own measurement (1.5): its real window is a low-memory kill | reading only; no code change is proposed |
 | G8 | A force-stopped app cannot be recovered in the background by any mechanism | reading only; the app-open recovery path is the whole cure |
 
 ## 5. The options and the recommendation
