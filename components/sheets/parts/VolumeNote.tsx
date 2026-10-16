@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     textAlign: 'center',
     fontSize: ty.size(TEXT.sizeDetail),
-    // Rubik's win ink descends past its own line box at this size; the script box gives it room
+    // Rubik's usWinDescent ink descends past its own line box at this size; the script box gives it room
     lineHeight: ty.scriptLineHeight?.(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
     color: COLORS.text.sheetSubtitle,
