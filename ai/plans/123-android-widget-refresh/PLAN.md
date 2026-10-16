@@ -252,7 +252,7 @@ the owner's recollection is a symptom report with no reading on the current buil
 Checklist (all three inline in this file; the ledger in `LOG.md`):
 
 - [x] Step 1 the refresh-path inventory (R1.1 to R1.4)
-- [ ] Step 2 the out-of-sync evidence and the SDK 58 stable delta (R2.1 to R2.3, R3.1 to R3.3)
+- [x] Step 2 the out-of-sync evidence and the SDK 58 stable delta (R2.1 to R2.3, R3.1 to R3.3)
 - [ ] Step 3 the recommendation and the experiment design (R4.1)
 
 ### Step 1 - the refresh-path inventory
