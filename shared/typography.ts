@@ -58,18 +58,21 @@ const HINDI: LocaleTypography = {
   scriptLineHeight: (n) => Math.round(n * 1.5),
 };
 
-// Thai's own 1.511em box already clears its ink (descent and win descent both 0.450em), so
-// no script box: the font's own metrics serve, the row-87 law
+// Sarabun, her specimen pick: Thailand's document standard, a tight 1.300em box with its own
+// Latin digits (the Rubik pattern - one family carries a row's words and digits alike). Its
+// win ink runs past its own box on both sides (1.286em ascent, 0.567em descent), so
+// ink-bearing surfaces take the taller script box, the Hindi and Arabic pattern
 const THAI: LocaleTypography = {
-  familyRegular: 'NotoSansThai-Regular',
-  familyMedium: 'NotoSansThai-Medium',
-  familyDigits: TEXT.family.medium,
-  familyRowTime: TEXT.family.regular,
+  familyRegular: 'Sarabun-Regular',
+  familyMedium: 'Sarabun-Medium',
+  familyDigits: 'Sarabun-Medium',
+  familyRowTime: 'Sarabun-Regular',
   countdownSize: TEXT.sizeLarge,
   size: (n) => n,
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
   wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
 };
 
 const LATIN: LocaleTypography = {
