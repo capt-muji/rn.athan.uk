@@ -88,3 +88,168 @@ session: ses_ebab395c9ffevlqjIPhEQfzt5C
 - Checklist: R2.1 holds on uat. The five commits: `8878bd69` 2.0.865 jotai, `8d4973d2` 2.0.866 pino, `59f5f958` 2.0.867 pino-pretty, `f1ea53a3` 2.0.868 @testing-library/react-native, `490ddffa` 2.0.869 @biomejs/biome.
 
 session: ses_ebab395c9ffevlqjIPhEQfzt5C
+
+### Lane ruling 2026-10-16 — step order swap (agent-ruled)
+
+- The OnePlus 3T is absent from adb at steps 1-2 close (checked twice); the XS is
+  connected. Ruling: step 4 (XS loop) runs before step 3, re-checking the 3T at
+  each boundary. Why: her XS deep-dive order is the named priority, the steps are
+  independent proofs of the same merged re-pin (step 4 names no input from step
+  3), and an idle wait with runnable ordered work serves nothing. If the 3T is
+  still absent when step 4 closes, the queue row gets the reason and the lane
+  returns BLOCKED naming it (steps 3 and 5 outstanding).
+
+### Step 4 — R4.1 cold start GREEN
+
+- Build (main tree, uat 2.0.872 content, node_modules at the stable set): `npx expo prebuild -p ios --no-install` then `npx expo run:ios --configuration Release --device` under `EXPO_PUBLIC_ENV=prod EXPO_PUBLIC_API_KEY=<read, never printed> CI=1 EXPO_NO_TELEMETRY=1 DEVELOPMENT_TEAM=<TEAM_ID>` (the inline team is the atlas's standing route; the verbatim `--device` fails selection with two connected devices, so the UDID rode the flag). Release build embedded main.jsbundle (6.2 MB), installed and launched on the XS at 17:07 (PID 98229). This Release install replaced her dev build (her app, development-signed production build); her notification, widget and language config stood.
+- Prebuild ground re-verified: generated Info.plist carries UIBackgroundModes fetch+processing with `com.expo.modules.backgroundtask.processing`, and zero `remote-notification` entries (R1.6's enableRemoteNotifications false regenerated into ios/).
+- run:ios's own launch was the throwaway first launch (What's New marks itself); the check read is the second open. AX dump (agent-device runner, prepared after a daemon restart under the team env; the MCP daemon's env lacked it): schedule renders "London, UK", "Fri, 16 Oct 2026", rows Fajr 05:51 (off), Sunrise 07:23 (silent), Dhuhr 12:51 (silent), Asr 15:31 (sound), Magrib 18:08 (silent), Isha 19:31 (silent), countdown "48m" to Magrib. No crash reports in the system crash-log domain for the bundle; the original PID alive through the read. Captures: sessions/111/xs/01-first-launch.png (OCR transcription in the session notes).
+
+session: ses_eba90557fffegXgpdEF29mZxAH
+
+### Step 4 — R4.3 compass stream GREEN
+
+- Qibla sheet opened via taps (Settings row at (187,376)pt from OCR box 265,1128px). Sheet renders title "Qibla", subtitle "Follow below instructions", calibration hint "Wake up the compass / Move your phone like this"; after ~90s stationary it shows the lost state "Could not find north / Please try standing in a different location" — the designed gate: no heading the phone vouched for, so no dial is drawn (qibla lock held).
+- The stream itself is proven by the unified log: `locationd` `kCLConnectionMessageHeading` and `Athan{CoreLocation}` "#CLLocationManager invoking #delegate" lines. Bounded 30s window (17:24): 6304 locationd heading messages, 3148 Athan CoreLocation delegate invocations (~105/s) — the unfiltered stream the location patch's `kCLHeadingFilterNone` buys; a throttled stream could not produce this rate. Captures: qibla-sheet.png, qibla-2.png, qibla-3.png (TMPDIR, transcriptions in the session notes; syslog at $TMPDIR/xs111/syslog.txt).
+
+session: ses_eba90557fffegXgpdEF29mZxAH
+
+### Step 4 — R4.4 language switch GREEN both directions
+
+- To العربية: Language row reached (Settings > scroll > Language at (187,572)pt), tap on العربية (4th row, canonical order). Loader on the tap (1.2s capture: full-screen line at y~460pt, Arabic script garbled by Latin OCR — the loader speaks the TARGET's words from frame one), blank relaunch window at 3.7s, Arabic schedule at 6.2s: المغرب countdown 42m, لندن، المملكة المتحدة, الجمعة، 16 أكتوبر 2026, rows الفجر 05:51, الشروق 07:23, 12:51, 15:31, 18:08, 19:31 — same real times, RTL layout, Arabic typography from frame one.
+- Back to English: loader reads "Setting English language" (1.2s), English schedule at ~4s (Magrib 40m, London, UK, Fri 16 Oct 2026, LTR). No crash, no AppState exception in the unified log (only benign UIAccessibility posts); the app left in English as ordered. Her bells carried across both switches (العصر صوت = Asr sound seen in the Arabic tree). Captures: lang-loader.png, lang-after.png, back-loader.png, back-after.png.
+
+session: ses_eba90557fffegXgpdEF29mZxAH
+
+### Step 4 — R4.6 widgets PARTIAL (home reachable page; lock screen deferred past midnight)
+
+- Home screen reached via the atlas route (app-switcher, tap clear wallpaper at (30,200)pt). The reachable home page carries NO Athan widget: OCR of two captures reads only the clock, battery, one icon label (the tooling's runner app) and the Search pill — no prayer text anywhere on the page.
+- Home paging is not drivable through this runner: every horizontal swipe (four start bands: icon row y=400pt, top band y=55pt and y=30pt, left gutter x=8pt; both directions) foregrounds the session app instead of paging the home screen — XCTest gesture delivery activates the session's target app. The app's own pager pages fine through scroll left/right (the Extras night-times view paged and paged back; its tonight read captured: Midnight countdown 6h 26m at 17:33, rows Midnight/Last Third/Suhoor for Sat 17 Oct — capture 08-extras-evening.png).
+- Lock-screen widgets need the screen locked, which backgrounds the app; that read is deferred to after the R4.8 midnight read so the app stays foreground through 00:00. Not observed yet, recorded as not observed.
+- Captures: 06-home-a/b/c.png (home page + the two paging attempts), 08-extras-evening.png.
+
+session: ses_eba90557fffegXgpdEF29mZxAH
+
+### Step 4 — R4.5 ground: BGTask registered and re-armed; the named Pino stamp is structurally absent in prod
+
+- Registered task proof: the unified log shows the app cancelling and re-submitting `BGProcessingTaskRequest com.expo.modules.backgroundtask.processing` on every launch and relaunch (17:25:34 Arabic relaunch, 17:27:25 English relaunch, both "submitTaskRequest ... earliestBeginDate ..."), beside the Info.plist registration (`com.expo.modules.backgroundtask.processing` under UIBackgroundModes fetch+processing, verified in the generated plist).
+- The step's named capture targets (`NOTIFICATION: Starting refreshNotifications` at stores/notifications.ts:61, `NOTIFICATION: Refresh complete` at :1813) are Pino lines, and `shared/logger.ts` disables Pino whenever `EXPO_PUBLIC_ENV` is prod or preview (`isLoggingEnabled` returns false; `pino({ enabled: false })`). Measured: 0 `NOTIFICATION:` lines in 16k+ Athan syslog lines this session while `Athan{React}` runtime lines and `Athan{UserNotifications}` native lines DO appear. The named stamp observable cannot exist on this build by the app's own design, not by a defect in the refresh: the native scheduling trace is live (`Got 62 pending notification`, settings checks, on every relaunch).
+- Backgrounding treatment and the overnight BGProcessing run window remain (the app backgrounds for the widget/lock reads and the syslog keeps recording); the stamp itself has no external observable on a prod build. Flagged for the reviewer and the lead: R4.5's requirement holds on the registered-task half; the stamp half needs either a preview-env build (logging on) or a ruling that the native trace plus the BGTask submission satisfies it.
+
+session: ses_eba90557fffegXgpdEF29mZxAH
+
+### Step 4 — R4.2 real athan delivery GREEN on the current build (recovered evidence)
+
+- The interrupted run left a delivery watcher and its output in `$TMPDIR/xs111/`
+  (`deliver-watch.sh`, `delivery-lines.txt`, covering 17:38 to 18:08); this session read them.
+  The unified log records three `[com.mugtaba.athan] Created process assertion for will present
+  notification` events on the Release build: 17:38:00, 18:03:00 and 18:08:00. The 18:08 event
+  is Magrib's armed moment (`UserNotificationsCore`: the notification was requested at
+  17:07:49 with trigger date `2026-10-16 18:08:00.096 +0100`, armed on the build's first
+  launch), and 18:03 is its five-minute reminder. A real athan moment therefore delivers its
+  notification on this build.
+- Caveat recorded rather than glossed: her configuration leaves Magrib and every prayer but Asr
+  silent, so this proves delivery, not sound. The sound path was not exercised here.
+- This proof is a property of the pin set the replan replaces, so the replan re-runs it.
+
+### Lane resume 2026-10-16 18:22 — true position reconciled (agent-ruled)
+
+- The row said `IN PROGRESS, step 2`; the repository disagrees and wins. Step 1
+  merged as `bc9699d3` (commit `addc75bb`, 2.0.861), step 2 as `5966e95b`
+  (commits `8878bd69` to `490ddffa`, 2.0.865 to 2.0.869), and the docs commit
+  `8eb0a48e` (2.0.870, an ancestor of uat) recorded both while leaving the row on
+  step 2: the row is stale by two steps. The interrupted executor then opened
+  step 4 and left the five entries above uncommitted; they are carried forward
+  unchanged, and nothing ticked is redone.
+- Devices measured at resume, 18:22 to 18:30: the OnePlus 3T is absent from adb
+  (`adb devices` empty after `kill-server` then `start-server`; ioreg lists the
+  iPhone as the only phone on USB), so step 3's install, alarm and widget checks
+  cannot run. The iPhone XS answers `devicectl device info` but refuses
+  automation: `agent-device prepare ios-runner` prints "iOS device is not ready
+  for automation: Command timeout", its runner's xcodebuild destination errors
+  "An unknown error occurred", and `devicectl device process launch` fails
+  "Failed to allocate RSD device" on three attempts 30 seconds apart. The
+  tooling names the cause: the device must be unlocked. Her phone locked itself
+  after the interrupted run, and no agent step can unlock it.
+- Ruling (agent-ruled, 2026-10-16): the lane carries every device-free
+  acceptance it can, merges that work and returns BLOCKED on the two
+  instruments instead of idling. Why: both remaining device gates need a phone
+  that is physically absent or locked, and a wait would hold the lane with no
+  runnable work. Steps 3's phone half, 4's remaining checks and step 5 stay
+  outstanding; step 5 is deliberately not run out of order because its content
+  quotes the run's incidents (step 3's Metro verdict, the XS loop's results) and
+  would have to be rewritten after the devices return.
+- R4.5 ruling (agent-ruled, 2026-10-16): the requirement holds on the
+  registered-task half plus the live native scheduling trace, and the plan's two
+  named Pino capture targets are unreachable by design, not by defect. Why:
+  `shared/logger.ts` disables Pino when `EXPO_PUBLIC_ENV` is prod or preview,
+  and the plan's own D111.5 orders the prod build, so no real-API build can emit
+  those lines; a mock/dev build would emit them but proves nothing about the
+  prod refresh path. The observables recorded stand as R4.5's evidence.
+- XS captures re-read by this session (the lane verifies, it does not trust):
+  `01-first-launch.png` shows the rendered schedule (Magrib next, 56m, London,
+  UK, Fri 16 Oct 2026, Fajr 05:51 off, Asr 15:31 sound), `06-home-a.png` shows
+  the reachable home page carrying no Athan widget, and `back-loader.png` shows
+  the English loader from the return switch. R4.1, R4.3 and R4.4 stand as
+  recorded.
+
+### Step 3 — R3.1 the 3T release build: FAILED, and why (upstream defect + npm drift)
+
+- `zsh $HOME/athan-gitree/bin/build-prod.zsh uat .../sessions/111/3t/athan-uat-prod.apk`
+  under `build.lock` at 18:27 against uat `8a44f0ab` (2.0.885): prebuild and Gradle ran
+  11m 9s and **failed** — `BUILD-PROD FAILED: gradle exited 1`, no APK produced. This is
+  the first Android build attempted on the re-pin, so R3.1 is RED.
+- The failure: `> Task :expo-widgets:compileReleaseKotlin FAILED`, 16 `Unresolved reference`
+  errors inside the package's own `notifications/CustomNotification*.kt` files, for example
+  `CustomNotifications.kt:6` `import io.github.jakex7.peek.notification.PeekNotificationViews`.
+  Our patch does not touch those files (`patches/expo-widgets+58.0.19.patch` carries five:
+  the Hermes runtime cpp, `ExpoWidgetEmittableTree.kt`, `WidgetsJSRuntime.kt`, the jni
+  runtime, and the iOS Swift), so the failure is upstream, not ours.
+- Root cause measured from the published packages: `expo-widgets@58.0.19`'s Android source
+  imports `io.github.jakex7.peek.*`, while the dependency it declares at
+  `android/build.gradle:147` is `io.github.expo.peek:peek-emittables:0.3.2`, whose classes
+  are packaged as `io.github.expo.peek.notification.*`. The namespace moved to
+  `io.github.expo.peek` and 58.0.19's source was not moved with it, so the module cannot
+  compile. `expo-widgets@58.0.20` (npm `latest`) carries the corrected
+  `io.github.expo.peek.*` imports; `58.0.19` is a broken release.
+- npm drift measured at this step's start, every one published after the plan was written
+  and after step 1 merged: `expo` `latest` is `58.0.13` (published 2026-10-16T15:43Z; the
+  plan pins `58.0.12`, published 06:23Z) and `expo-widgets` `latest` is `58.0.20`
+  (published 15:42Z; the plan pins `58.0.19`, published 06:22Z). `react-native` `latest` is
+  still `0.88.0`. expo 58.0.13's `bundledNativeModules.json` moves 17 of its 124 pins past
+  the plan's table, among them expo-widgets `~58.0.20`, expo-location `~58.0.17`,
+  expo-modules-core `~58.0.21`, expo-notifications `~58.1.5`, expo-router `~58.0.22` and
+  `@expo/ui` `~58.0.20`.
+- Verdict (agent-ruled, 2026-10-16): the ticket is **NEEDS REPLAN**, on the plan's own
+  section 2.2 — "npm drift ... STOP and report; that is a NEEDS REPLAN, never an improvised
+  re-measure". Why: the plan's pin table, its anchors and R1.1/R1.2 name exact versions that
+  are now behind npm; one pinned package is upstream-broken at the version the plan chose;
+  and the row-18 ride-`next` policy orders the newest at every attempt. The repair is a
+  re-pin of the whole set, with all three patches rebuilt and the device proofs re-run
+  against it, not a one-package bump. The replan must re-measure the patch apply status at
+  the new versions rather than carrying the plan's 58.0.16 / 58.0.19 findings forward.
+- Not run, because the re-pin invalidates them: the Metro env re-verify, the 3T install and
+  alarm gates, and the remainder of the XS loop. Each would prove a property of a pin set
+  that is about to move.
+
+### Ticket state at the lane's stop (2026-10-16) — NEEDS REPLAN
+
+- Steps 1 and 2 are merged and hold R1.1 to R1.7 and R2.1 for the pin set they name. That
+  pin set is no longer the newest, and its expo-widgets cannot build Android.
+- Step 3: R3.1 red on the Android build (above); R3.2 to R3.4 not attempted.
+- Step 4: R4.1, R4.3 and R4.4 green with captures re-read by this session; R4.2 green on
+  recovered evidence (the captured delivery watcher output); R4.6 partial (the reachable home
+  page carries no Athan widget, the lock screen never observed); R4.5 ground only, closed by
+  the ruling above; R4.7 and R4.8 not observed.
+- Step 5: not run; its content quotes the run's incidents and the replan rewrites it.
+- Instruments at the stop: the OnePlus 3T is connected (adb serial `3T_SERIAL`;
+  `settings get global auto_time` reads 1) and its gate is open. The owner's iPhone XS is
+  still locked, and `agent-device prepare ios-runner` still refuses with "the device must
+  be unlocked", so the XS gate is closed until she unlocks it.
+- Resume after the replan: re-execute step 1's shape against the new pin set, then the 3T
+  gates, then the XS loop once the phone is unlocked, then step 5.
+- Audit: the three reviewers (plan-conformance, blind, threading) were dispatched over the
+  landed code range `bc9699d3^1..5966e95b` before the drift was measured, so their findings
+  judge step 1 and step 2 as executed; `AUDIT.md` records them and their verdicts.
+
+
