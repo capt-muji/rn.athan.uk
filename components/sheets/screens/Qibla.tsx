@@ -186,7 +186,7 @@ export default function BottomSheetQibla() {
 }
 
 const ty = typographyFor(currentLocaleId());
-// The node subtitle bypasses the shared header's style, so it takes the ar pull-up itself to match the confirmed sheets (owner, 2026-10-15)
+// The node subtitle bypasses the shared header's style, so it takes the ar gap itself to match it (row 108)
 const compactArabic = currentLocaleId() === 'ar';
 
 // The subtitle's text metrics, shared so the box's width donor measures exactly what the lines it stands for measure
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   // Matches the shared header's own subtitle, because this one replaces it for this sheet alone
   subtitle: {
     ...subtitleText,
-    marginTop: compactArabic ? -10 : SPACING.xs,
+    marginTop: compactArabic ? SPACING.py : SPACING.xs,
   },
   subtitleDonor: {
     ...subtitleText,

@@ -39,8 +39,8 @@ export default function BottomSheetHeader({ title, subtitle, icon }: BottomSheet
 }
 
 const ty = typographyFor(currentLocaleId());
-// The Arabic face's own line box carries tall half-leading (2.11em vs Roboto's 1.17em);
-// the subtitle pulls up into it instead of a pinned box, which clipped the glyphs (owner, 2026-10-14)
+// Rubik's own line box seats both lines; the subtitle rides a 6 point gap under the title,
+// the same shape as the location-date dial (row 108)
 const compactArabic = currentLocaleId() === 'ar';
 
 const styles = StyleSheet.create({
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
     color: COLORS.text.sheetSubtitle,
-    marginTop: compactArabic ? -10 : SPACING.xs,
+    marginTop: compactArabic ? SPACING.py : SPACING.xs,
   },
 });

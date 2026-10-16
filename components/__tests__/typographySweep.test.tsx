@@ -9,6 +9,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { SPACING } from '@/shared/constants';
 import type { LocaleId } from '@/shared/i18n/locale';
 
 // The probes require the testing library inside isolateModules, mid-test, where
@@ -293,8 +294,8 @@ describe('the overlay explanation line box', () => {
 });
 
 describe('the qibla sheet subtitle', () => {
-  it('pulls up 10 points under ar, matching the shared header', async () => {
-    expect((await qiblaSubtitleStyleUnder('ar')).marginTop).toBe(-10);
+  it('carries the 6 point gap under ar, matching the shared header', async () => {
+    expect((await qiblaSubtitleStyleUnder('ar')).marginTop).toBe(6);
   });
 
   it('keeps its 4 point gap under en', async () => {
@@ -328,7 +329,7 @@ describe('the sheet header line boxes', () => {
     expect(title.lineHeight).toBeUndefined();
     expect(subtitle.lineHeight).toBeUndefined();
     expect(title.marginBottom).toBe(0);
-    expect(subtitle.marginTop).toBe(-10);
+    expect(subtitle.marginTop).toBe(6);
   });
 
   it('leaves the en title and subtitle to the font own box', async () => {
@@ -337,5 +338,6 @@ describe('the sheet header line boxes', () => {
 
     expect(title.lineHeight).toBeUndefined();
     expect(subtitle.lineHeight).toBeUndefined();
+    expect(title.marginBottom).toBe(SPACING.xxs);
   });
 });
