@@ -40,10 +40,10 @@ The owner's rules that govern, quoted:
   but on some OEMs some widgets fell out of sync and stopped updating".
 - `ai/AGENTS.md:98`: "Visuals are settled. Fixes change behaviour only." A refresh fix changes
   behaviour, so no pixel moves with it.
-- `ai/AGENTS.md:107`: "Ask first: installing dependencies, deleting non-empty files, MMKV
+- `ai/AGENTS.md:106-107`: "Ask first: installing dependencies, deleting non-empty files, MMKV
   schema keys, notification scheduling logic, `app.json` and `eas.json`." The `app.json` R8
   block is in the ask-first set.
-- `ai/AGENTS.md:144`: "Local device builds go through `build-prod.zsh` and `build-mock.zsh`.
+- `ai/AGENTS.md:143-144`: "Local device builds go through `build-prod.zsh` and `build-mock.zsh`.
   Never run two at once." The device wave builds under `build.lock`.
 - `ai/AGENTS.md:85`: "Never name a model in any file". This plan and its findings name work,
   never a model.
