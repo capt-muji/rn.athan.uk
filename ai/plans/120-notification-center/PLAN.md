@@ -73,7 +73,7 @@ The owner's rules that govern, quoted:
 
 ### 2.2 The executor must not decide
 
-- `require('expo-notifications/package.json').version` answering other than 58.1.4: STOP. A
+- `require('expo-notifications/package.json').version` answering other than 58.1.5: STOP. A
   sibling lane re-pinned the SDK; the lead re-verifies every pinned-source citation before a
   step continues.
 - The app-tree sweep for `dismissAllNotificationsAsync`, `dismissNotificationAsync`,
@@ -95,7 +95,7 @@ The owner's rules that govern, quoted:
 the worktree is on `lane/120` with a tree clean apart from the plan folder, the queue row and
 the two tracked version files, `origin/uat` is fetched, the local `uat` ref is at or past
 `b329d543`, `package.json` is not lower than 2.0.900, every anchor under `scripts/anchors/`
-counts exactly 1 in its source file, the installed `expo-notifications` is 58.1.4, the pinned
+counts exactly 1 in its source file, the installed `expo-notifications` is 58.1.5, the pinned
 iOS thread assignment and the three delivered-set API names are present in the installed
 source, the Android group-key mapping is present, and the app-tree sweep for the four delivered
 APIs is empty. It ends `PREFLIGHT OK`.
@@ -113,17 +113,17 @@ Repository code, with the anchor that holds it:
   `genReminderNotificationContent` (anchor `a2-genReminderNotificationContent.txt`) builds a
   reminder the same way with `autoDismiss: true` and `HIGH`. Neither sets a thread identifier and
   neither sets a badge. `withNativeTimeout` (:65-81) bounds every call into the notification
-  system at 15 s. The channel block (:408-540) owns the frozen Android face: channel sound,
+  system at 15 s. The channel block (:408-561) owns the frozen Android face: channel sound,
   importance, vibration and alarm audio attributes are set at creation, and the legacy-channel
-  sweep (:535-560) exists because Android cannot change a channel's sound after creation.
+  sweep (:530-561) exists because Android cannot change a channel's sound after creation.
   `initializeNotifications` (:572-603) runs the channel prep, the permission check, the refresh
   and the background-task registration; the permission branch is anchor `a10-initPermissionBranch.txt`.
 - `device/notifications.ts` - the platform layer. `prayerNotificationIdentifier` (anchor
   `a3-prayerIdentifier.txt`) and `reminderNotificationIdentifier` (:63-68) build the date-scoped
   identities whose comment states the platform contract: the same identifier replaces in place on
   both platforms. `addOneScheduledReminderForPrayer` (:220-269) arms a reminder; its arming call
-  is anchor `a4-armingCall.txt`. The at-time arm (:100-160) is the same shape with the athan
-  channel and the athan content.
+  is anchor `a4-armingCall.txt`. The at-time arm is the same shape with the athan channel and the
+  athan content (`addOneScheduledNotificationForPrayer`, :84-145).
 - `plugins/replacePreviousNotification.js` - the Android presentation delegate (anchor
   `a6-androidDelegate.txt`): every notification is posted under the companion object's
   `SHARED_NOTIFICATION_TAG`, and the manifest edit removes expo's own receiver so routing is
@@ -131,6 +131,12 @@ Repository code, with the anchor that holds it:
 - `hooks/useNotification.ts` - the foreground handler (anchor `a5-foregroundHandler.txt`): a
   notification that fires while the app is open plays its sound and is shown in the banner and in
   the list, so it also lands in the delivered set.
+- `shared/types.ts` - `AlertType` (:196-203: Off fires nothing, Silent and Sound deliver) and the
+  reminder contract (:205-220: the six intervals, the two slots, `ReminderSlot` as a storage
+  contract). The delivered volume in FINDINGS section 2 rests on these two types.
+- `stores/notifications.ts` - the scheduling owner. `rescheduleAllNotificationsFromBackground`
+  (:1836-1876) is the whole background-task body, and it never calls the init path: this is where
+  R1.4's "the background task is never an open" is shown.
 - `shared/__mocks__/expo-notifications.ts` - the Jest stand-in. Its `NotificationContentInput`
   (anchor `a7-mockContentInput.txt`) declares the fields the app composes; a future code step that
   adds a content field extends this interface beside its production tests, and its
@@ -140,11 +146,11 @@ Repository code, with the anchor that holds it:
   per process behind the 1.5 s post-paint delay; `app/index.tsx:168-172` re-runs
   `refreshNotifications` when data lands; `device/listeners.ts:33-74` calls
   `initializeNotifications` again on every return from background to active;
-  `device/tasks.ts:21-49` is the background task body, and it calls
+  `device/tasks.ts:23-49` is the background task body, and it calls
   `rescheduleAllNotificationsFromBackground`, never the init path. So "the app is open" is
   exactly the two init call sites, and the background task is never one of them.
 
-Installed packages, cited by `path:line` at the pinned version 58.1.4 (never anchored, because
+Installed packages, cited by `path:line` at the pinned version 58.1.5 (never anchored, because
 `node_modules` is not versioned; the pre-flight checks each of these lines):
 
 - `node_modules/expo-notifications/ios/ExpoNotifications/Notifications/NotificationRecords.swift`
@@ -154,28 +160,32 @@ Installed packages, cited by `path:line` at the pinned version 58.1.4 (never anc
   (:135) - the scheduler builds the request's content from that record, so a local notification
   scheduled through the JS API carries the thread identifier.
 - `node_modules/expo-notifications/build/Notifications.types.d.ts` (:538-631) - the JS content
-  input type. `threadIdentifier` is an input field. `NotificationContentIos` (:455-530) carries
+  input type. `threadIdentifier` is an input field. `NotificationContentIos` (:450-480, `summaryArgument` at :466) carries
   `summaryArgument` on the read side only, so app code cannot name a thread's header.
-- `node_modules/expo-notifications/CHANGELOG.md` (:118 and :31) - iOS grouping support landed in
+- `node_modules/expo-notifications/CHANGELOG.md` (:125 and :38) - iOS grouping support landed in
   58.0.0 (PR expo/expo#49429, 2026-09-10); the Android group-key support landed in 58.1.1
   (PR expo/expo#43388). Both are in the installed version, which is the version the row's
   release-note reading refers to.
 - `node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/notifications/ArgumentsNotificationContentBuilder.java`
-  (:51) and `.../notifications/model/NotificationData.kt` (:62) - on Android the same field is the
+  (:51) and
+  `node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/notifications/model/NotificationData.kt` (:62) - on Android the same field is the
   notification's group key.
 - `node_modules/expo-notifications/ios/ExpoNotifications/Notifications/Presenting/PresentationModule.swift`
-  (:12-42) - the delivered-set API on iOS. `dismissAllNotificationsAsync` calls
+  (:12-39) - the delivered-set API on iOS. `dismissAllNotificationsAsync` calls
   `removeAllDeliveredNotifications()`; `dismissNotificationAsync` calls
   `removeDeliveredNotifications(withIdentifiers:)`; `getPresentedNotificationsAsync` reads
   `deliveredNotifications()`. Nothing in this module touches pending requests.
 - `node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/service/NotificationsService.kt`
-  (:175) with `.../service/delegates/ExpoPresentationDelegate.kt` (:275-277) - on Android the same
+  (:175) with
+  `node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/service/delegates/ExpoPresentationDelegate.kt` (:275-277) - on Android the same
   dismissal call routes to `notificationManager.cancelAll()`, which clears the one visible
   notification the delegate posts.
 
 Vendor semantics, cited so section 5 does not rest on a guess:
 
-- Apple's "What's New in User Notifications" session notes (WWDC18-710): without a thread
+- Apple's "What's New in User Notifications" session notes (WWDC18-710, transcribed at
+  `https://wwdcnotes.com/documentation/wwdc18-710-whats-new-in-user-notifications/`, the Grouped
+  Notifications section): without a thread
   identifier all of an app's notifications are grouped in one group named after the app; with a
   thread identifier they group per thread per app; the identifier is never shown to the user; and
   the user's own notification settings can override the app's grouping (Automatic, by app, off).
@@ -222,10 +232,14 @@ The options for her ruling:
   user's own notification settings can override the grouping anyway.
 - **Option C, clear the delivered stack when the app opens (recommended).** One iOS-gated call in
   `initializeNotifications` (`shared/notifications.ts:572-603`, whose permission branch is anchor
-  `a10-initPermissionBranch.txt`) dismisses the app's delivered notifications. That function runs
-  at cold launch and on every return to the foreground, and never from the background task
-  (`device/tasks.ts:21-49`). The delivered set is what it touches, so pending requests, the armed
-  schedule and the 64 budget are untouched.
+  `a10-initPermissionBranch.txt`) dismisses the app's delivered notifications. The removal is
+  app-scoped by the platform call itself (`UNUserNotificationCenter.current()`), it runs before
+  the permission branch's refresh and outside the scheduling lock, so a grinding reschedule
+  cannot queue it behind anything (row 78's starvation class), and it runs where the permission
+  branch proves notifications are granted. That function runs at cold launch and on every return
+  to the foreground, and never from the background task (`device/tasks.ts:23-49`). The delivered
+  set is what it touches, so pending requests, the armed schedule and the 64 budget are
+  untouched.
 - **Option D, C plus B.** The clear keeps the stack short and a thread identifier names what remains
   during the session. The grouping half carries the same unmeasured rendering and the same visible
   surface as B, so it is a rider she can take after the experiment, never the reason to touch the
@@ -252,93 +266,105 @@ grouping leaves every entry inside the group; the app already has the group. C s
 
 - [R1.1] WHEN the executor runs the delivered-API sweep across the app tree THE SYSTEM SHALL record the sweep command and its empty output in FINDINGS.md section 1.
 - [R1.2] WHEN FINDINGS.md section 1 is read THE SYSTEM SHALL name each app-code notification entry point (both content composers, both identifiers, the arming call, the foreground handler, the Android posting delegate, the init path) with a `path:line` citation.
-- [R1.3] WHEN the pinned expo-notifications 58.1.4 sources are read THE SYSTEM SHALL record the iOS thread-identifier assignment, the Android group-key mapping, the three iOS delivered-set APIs and the two changelog entries that landed the support, each with `path:line`.
+- [R1.3] WHEN the pinned expo-notifications 58.1.5 sources are read THE SYSTEM SHALL record the iOS thread-identifier assignment, the Android group-key mapping, the three iOS delivered-set APIs and the two changelog entries that landed the support, each with `path:line`.
 - [R1.4] WHEN the app's open moments are traced THE SYSTEM SHALL name the function that runs at cold launch, on the foreground return and in the background task, each with `path:line`, and record that the background task never runs the init path.
 - [R2.1] WHEN the row 111 XS evidence is read THE SYSTEM SHALL record the three delivery events of the recorded configuration with their times and the reminder or athan each belongs to.
 - [R2.2] WHEN the delivered volume of one day is derived THE SYSTEM SHALL record the count from the composers and the recorded configuration, and mark the iOS retention and grouping rendering unmeasured pending the named experiment.
 - [R3.1] WHEN FINDINGS.md section 3 is read THE SYSTEM SHALL give every option its mechanism, the files a code step would touch, and its line in the frozen-rule table.
 - [R3.2] WHEN the recommendation is read THE SYSTEM SHALL name the rival it beat and the measurement that would falsify it.
-- [R4.1] WHEN the XS protocol is read THE SYSTEM SHALL name the vehicle, the notification set, each read with its command, and what a void read looks like.
-- [R4.2] WHEN the XS is locked THE SYSTEM SHALL record the read as not observed with the unlock named as its prerequisite.
-- [R5.1] WHEN the queue row is updated at DONE THE SYSTEM SHALL carry the options, the recommendation, the frozen-rule blast radius, the protocol's reading list and the waits.
+- [R4.1] WHEN section 7 is read THE SYSTEM SHALL name the vehicle, the notification set, each read with the tool and command it uses, and the four void-read shapes.
+- [R4.2] WHEN the not-observed record is written THE SYSTEM SHALL cite row 111's resume record for the locked state and name her unlock as the prerequisite.
+- [R5.1] WHEN step 3 updates the queue row THE SYSTEM SHALL set EXECUTED carrying the options, the recommendation, the frozen-rule blast radius, the protocol's reading list and the waits.
 
 ## 6. Steps
 
 Checklist (all three inline in this file; the ledger in `LOG.md`):
 
-- [ ] Step 1 the current state and the pinned lever surface (R1.1 to R1.4)
-- [ ] Step 2 the delivered volume and the recommendation (R2.1, R2.2, R3.1, R3.2)
+- [ ] Step 1 the current state, the pinned lever surface and the delivered volume (R1.1 to R1.4, R2.1, R2.2)
+- [ ] Step 2 the options, the frozen-rule blast radius and the recommendation (R3.1, R3.2)
 - [ ] Step 3 the XS experiment, the not-observed record and the outcome text (R4.1, R4.2, R5.1)
 
-### Step 1 - the current state and the pinned lever surface
+Every step commits on `lane/120`, the lane's authoring branch cut from `uat` at `b329d543`, and
+merges `--no-ff` into `uat` from the main tree under the `uat` lock. A step's base is therefore
+the previous step's merge, and no per-step topic branch exists: the lane worker file's model is
+one authoring branch per lane, and a topic branch would add a merge with no reader. The
+pre-flight of section 3 ran on `lane/120` before step 1 and ended `PREFLIGHT OK`.
 
-Requirements: R1.1, R1.2, R1.3, R1.4
+### Step 1 - the current state, the pinned lever surface and the delivered volume
+
+Requirements: R1.1, R1.2, R1.3, R1.4, R2.1, R2.2
 Weight: 1
-Anchor check: all seven anchors count 1 (the pre-flight covers them), and the pre-flight's
+Anchor check: all eight anchors count 1 (the pre-flight covers them), and the pre-flight's
 pinned-source checks pass.
-Goal: FINDINGS.md section 1 written as the entry-point table plus the pinned lever list, every
-line cited.
-Branch: `docs/120-1-state` off `lane/120`. Files: `ai/plans/120-notification-center/FINDINGS.md`
-(section 1 refined in place from the READY-committed draft), `ai/plans/120-notification-center/LOG.md`,
-`ai/plans/README.md` (status IN PROGRESS, step 1), plus the two tracked version files under the lock.
+Goal: FINDINGS.md sections 1 and 2 written, every line cited, the day's volume derived with its
+inputs quoted.
+Files: `ai/plans/120-notification-center/FINDINGS.md` (sections 1 and 2 refined in place from the
+READY-committed draft), `ai/plans/120-notification-center/LOG.md`, `ai/plans/README.md` (status
+IN PROGRESS, step 1), plus the two tracked version files under the lock.
 Red tests: none, a docs step; the check is the criteria above.
 Change contract: run the four-API sweep with
 `grep -rn "dismissAllNotificationsAsync\|dismissNotificationAsync\|getPresentedNotificationsAsync\|setBadgeCountAsync" app device hooks shared stores plugins --include='*.ts' --include='*.tsx' --include='*.js'`
-and record its output verbatim; read the seven repository files and the eight pinned-source
-locations of section 4; write section 1 as a table with one row per entry point: entry point,
-file and line, what it composes or does, and whether it can reach the delivered set.
-Green run: every row carries a `path:line` citation and the sweep output is empty.
+and record its output verbatim; read the ten repository files section 4 names (`shared/notifications.ts`,
+`shared/types.ts`, `device/notifications.ts`, `stores/notifications.ts`, `hooks/useNotification.ts`,
+`plugins/replacePreviousNotification.js`, `shared/__mocks__/expo-notifications.ts`, `app/index.tsx`,
+`device/listeners.ts`, `device/tasks.ts`) and the nine installed-package files its seven
+installed-package bullets cite; write section 1 as a table with one row per entry point (entry
+point, file and line, what it composes or does, whether it can reach the delivered set) and
+section 2 from row 111's ledger plus the two type contracts, with the derived volume's inputs
+quoted and the rendering marked unmeasured.
+Green run: every row carries a `path:line` citation, the sweep output is empty, and the volume's
+inputs are quoted (`shared/types.ts:196-220`, the 111 ledger's configuration line).
 Break script: none, a docs step with no code to break.
 Version and commit: next patch after `uat`'s `package.json` under the version lock, message
 `<VERSION> - docs(plans): ticket 120 step 1, the delivered-stack state and the pinned levers`.
 Review: read the diff cold against the sources, one citation at a time.
-Merge: `--no-ff` into `uat` under the `uat` lock.
-Done when: R1.1 to R1.4 hold.
+Merge: `--no-ff` into `uat` under the `uat` lock, same message.
+Done when: R1.1 to R1.4 and R2.1, R2.2 hold.
 
-### Step 2 - the delivered volume and the recommendation
+### Step 2 - the options, the frozen-rule blast radius and the recommendation
 
-Requirements: R2.1, R2.2, R3.1, R3.2
+Requirements: R3.1, R3.2
 Weight: 1
-Anchor check: all seven anchors count 1.
-Goal: FINDINGS.md sections 2 and 3 written, every claim cited or marked unmeasured, the
-recommendation stated with its rival and its falsifier.
-Branch: `docs/120-2-recommendation` off `lane/120`. Files: FINDINGS.md sections 2 and 3, LOG.md,
-`ai/plans/README.md` (step 2), plus the two tracked version files under the lock.
-Change contract: read the row 111 ledger and its XS evidence index
-(`ai/plans/111-sdk58-stable-repin/LOG.md`, the `Step 4` entries) for the delivery events and the
-recorded configuration, and the session evidence under `$HOME/athan-gitree/sessions/111/` for
-anything the center itself showed; derive the day's volume from the two composers and the
-recorded alert types; write the lever table, the frozen-rule table, the five options of section 5
-with the recommendation argued twice, and the falsifier. One commit carries both subjects because
-both are reading-only notes about the same stack, taken and written in one sitting.
-Green run: every FINDINGS claim in sections 2 and 3 carries a citation or an unmeasured tag, and
-the derived volume's inputs are quoted.
+Anchor check: all eight anchors count 1.
+Goal: FINDINGS.md section 3 written, every claim cited or marked unmeasured, the recommendation
+stated with its rival and its falsifier.
+Files: FINDINGS.md section 3, LOG.md, `ai/plans/README.md` (step 2), plus the two tracked version
+files under the lock.
+Change contract: write the lever table (lever, mechanism, what the user sees, the files a code
+step would touch), the frozen-rule table (each lever against each rule, including the user's own
+grouping and summary settings), the five options of section 5 with the recommendation argued
+twice, and the falsifier with its middle option.
+Green run: every FINDINGS claim in section 3 carries a citation or an unmeasured tag, and each
+frozen rule has a row.
 Break script: none.
 Version and commit: as step 1, message
-`<VERSION> - docs(plans): ticket 120 step 2, the delivered volume and the recommendation`.
-Review: read the diff cold against the 111 ledger and the pinned sources.
-Done when: R2.1, R2.2, R3.1 and R3.2 hold.
+`<VERSION> - docs(plans): ticket 120 step 2, the options and the recommendation`.
+Review: read the diff cold against the pinned sources and against section 5.
+Merge: `--no-ff` into `uat` under the `uat` lock, same message.
+Done when: R3.1 and R3.2 hold.
 
 ### Step 3 - the XS experiment, the not-observed record and the outcome text
 
 Requirements: R4.1, R4.2, R5.1
 Weight: 1
-Anchor check: all seven anchors count 1.
+Anchor check: all eight anchors count 1.
 Goal: FINDINGS.md sections 4 and 5 written with section 7's protocol, the not-observed record
-with its prerequisite, and the queue row set EXECUTED with its outcome text.
-Branch: `docs/120-3-experiment` off `lane/120`. Files: FINDINGS.md sections 4 and 5, LOG.md,
-`ai/plans/README.md` (EXECUTED, the outcome text), plus the two tracked version files under the lock.
+with its cited prerequisite, and the queue row set EXECUTED with its outcome text.
+Files: FINDINGS.md sections 4 and 5, LOG.md, `ai/plans/README.md` (EXECUTED, the outcome text),
+plus the two tracked version files under the lock.
 Change contract: write the protocol as section 7 gives it (the vehicle, the notification set, the
-three reads, the void-read shapes, the evidence path, the waits); record the phone's state as
-attached and locked with the refusal signature row 111 recorded, and mark every rendering claim
-unmeasured; write the queue outcome text of section 8 with the measured values in place.
+three reads with their tools and commands, the void-read shapes, the evidence path, the waits);
+record the phone's state as attached and locked, citing row 111's resume record and naming her
+unlock as the prerequisite, and mark every rendering claim unmeasured; write the queue outcome
+text of section 8 with `EXECUTED 2026-10-16:` in place of the draft's `DONE 2026-10-16, audited:`
+and the measured values in place.
 Green run: the row text carries the options, the recommendation, the protocol's reading list and
-the two waits, and no rendering claim stands unmarked.
+the two waits, no rendering claim stands unmarked, and the status reads EXECUTED.
 Break script: none.
 Version and commit: as step 1, message
 `<VERSION> - docs(plans): ticket 120 executed: the delivered-stack options, the recommendation, the XS experiment`.
 Review: read the diff cold against the sources and against section 7's protocol.
-Finishing: set EXECUTED, the executed docs commit, merge `--no-ff`, no push.
+Finishing: set EXECUTED, the executed docs commit, merge `--no-ff` into `uat`, no push.
 
 ## 7. Device proof
 
@@ -359,25 +385,30 @@ The named experiment, waiting on her unlock:
   property of the delivered notifications the app already posts: the mock build differs only in
   the times. A second read after her ruling's build repeats the same three reads.
 - The notification set: her recorded configuration already delivers a multi-athan day. Five
-  at-time rows deliver (Sunrise, Dhuhr, Asr, Magrib and Isha silent or sound; Fajr off), and
-  Magrib carries two reminders, which is what row 111 measured: three delivered notifications for
-  that one evening, 17:38, 18:03 and 18:08. Before the read, the app's own schedule names which
+  at-time rows deliver (Sunrise, Dhuhr, Asr, Magrib and Isha silent or sound; Fajr off). The
+  ledger records three deliveries for that one evening, 17:38, 18:03 and 18:08, of which it
+  attributes 18:08 to Magrib's armed athan and 18:03 to that athan's five-minute reminder; 17:38
+  sits exactly 30 minutes before Magrib, so the third event is its other reminder, derived rather
+  than stated by the ledger. Before the read, the app's own schedule names which
   rows fire that day.
-- Read 1, the center's structure: on the phone, open the Notification Center from the lock screen
-  (the route is measured then written back into `e2e/device-atlas-iphone-xs.md`, which carries no
-  such route today) and transcribe: the number of this app's entries, each entry's title,
-  whether they sit in one group or several, and the group header's text. Then read
+- Read 1, the center's structure, tool `agent-device`: open the Notification Center from the lock
+  screen (the route is measured then written back into `e2e/device-atlas-iphone-xs.md`, which
+  carries no such route today), take the screenshot, and have the image-capable worker transcribe:
+  the number of this app's entries, each entry's title, whether they sit in one group or several,
+  and the group header's text. Then, traversing with `agent-device` taps, open
   Settings > Notifications > Athan and record the grouping setting it offers (Automatic, by app,
-  off). A screenshot reaches a screen; the image-capable worker's transcription is the record.
-- Read 2, the machine corroboration: capture the unified log over the window and count the
-  delivery lines (`Created process assertion for will present notification` for this bundle id,
-  beside `UserNotificationsCore`'s requested and trigger dates), then compare that count with the
-  center's entry count.
-- Read 3, the delivered set itself: the definitive reading is `getPresentedNotificationsAsync()`
-  from inside the app, which returns the delivered notifications with their identifiers, dates
-  and thread identifiers. If her ruling's build does not carry a diagnostic call for it, reads 1
-  and 2 stand and the entry count is the transcription's; the reading is named as the future
-  ticket's option, never faked now.
+  off). A screenshot reaches a screen; the transcription is the record.
+- Read 2, the machine corroboration, tool `xcrun devicectl`: capture the unified log over one
+  bounded window, written as `<start> to <end>` before the capture begins and never longer than
+  the time since the last app open, and count the delivery lines (`Created process assertion for
+  will present notification` for this bundle id, beside `UserNotificationsCore`'s requested and
+  trigger dates), then compare that count with the center's entry count.
+- Read 3, the delivered set itself, tool the app: the definitive reading is
+  `getPresentedNotificationsAsync()` from inside the app, which returns the delivered
+  notifications with their identifiers, dates and thread identifiers. It needs a build carrying a
+  diagnostic call: if her ruling's build does not carry one, reads 1 and 2 stand and the entry
+  count is the transcription's, and the diagnostic call is named as the future ticket's option,
+  never faked now.
 - What absent looks like, each with its action: (a) the center holds zero entries for this app
   while the log carries delivery lines: the user's grouping is off or the system cleared them;
   record both readings and stop, because there is nothing to shorten. (b) The entries are present
@@ -401,13 +432,13 @@ The named experiment, waiting on her unlock:
   CLEAR, iOS-gated. MEASURED: iOS carries no delivered-notification handling at all (the four-API
   sweep over app code is empty: no dismissal, no presented-set read, no badge); the foreground
   handler puts what fires while the app is open into the banner and the list (hooks/useNotification.ts:12-20);
-  the pinned expo-notifications 58.1.4 does apply threadIdentifier on iOS (NotificationRecords.swift:297/322/368-369
+  the pinned expo-notifications 58.1.5 does apply threadIdentifier on iOS (NotificationRecords.swift:297/322/368-369
   into the content the scheduler builds at SchedulerModule.swift:135; landed 58.0.0, expo/expo#49429)
   and maps it to Android's notification group key (ArgumentsNotificationContentBuilder.java:51;
   landed 58.1.1), while the JS input exposes no summaryArgument (Notifications.types.d.ts:538-631),
   so one thread equals the app-level group iOS already gives every app (WWDC18-710) and grouping
   shortens nothing; the delivered-set APIs touch delivered notifications only
-  (dismissAllNotificationsAsync to removeAllDeliveredNotifications, PresentationModule.swift:12-42).
+  (dismissAllNotificationsAsync to removeAllDeliveredNotifications, PresentationModule.swift:12-39).
   REJECTED: thread grouping as the answer (no shortening; the header is not settable); replacement
   by one shared identifier (it would collapse the date-scoped candidate-row arming against the 64
   budget); every Android-side lever (a group key changes the frozen one-visible face, and Android's
@@ -415,7 +446,7 @@ The named experiment, waiting on her unlock:
   recommendation: no identifier change, no channel change, no pending-request change, the 64-budget
   arming, the reminder-never-outruns rule and the Android delegate all untouched; one iOS-gated call
   in initializeNotifications (shared/notifications.ts:572-603), which runs at cold launch and on
-  every foreground return and never from the background task (device/tasks.ts:21-49). Reminders need
+  every foreground return and never from the background task (device/tasks.ts:23-49). Reminders need
   no thread of their own: they clear with everything else, and they join the athan thread if she
   takes grouping. THE NAMED EXPERIMENT waits on her unlock: her recorded configuration already
   delivers a multi-athan day (five at-time rows plus Magrib's two reminders; row 111 measured the
@@ -434,12 +465,12 @@ None. The lane never pushes; the orchestrator pushes `uat` when every unpushed c
 
 | Symptom | Action |
 | --- | --- |
-| `expo-notifications` resolves to a version other than 58.1.4 | STOP per 2.2; the lead re-verifies every pinned-source citation against the new pin before a step continues |
+| `expo-notifications` resolves to a version other than 58.1.5 | STOP per 2.2; the lead re-verifies every pinned-source citation against the new pin before a step continues |
 | The app-tree sweep prints a line | STOP per 2.2; row 120's verified state is zero call sites |
 | `SHARED_NOTIFICATION_TAG` differs from `athan-notification` | STOP per 2.2; the Android comparison's premise moved |
 | The XS answers automation (unlocked mid-run) | Do not improvise a reading: the experiment is written, not run. Record the state and continue the docs steps |
 | A command prints something FINDINGS.md does not predict | STOP and report the exact divergence; never widen the reading list |
-| The pre-commit hook's `Tests:` line missing or coverage below 100 | Never commit; investigate the hook log first |
+| The pre-commit hook fails (Biome, tsc, coverage, lint-staged or the staged-identifier check) | Never commit; read the hook log and fix the cause. A docs-only step cannot fail the coverage gate, so a coverage failure means a code file slipped into the staged set |
 | Merge conflict on `ai/plans/README.md` or the two tracked version files | Lane weather: abort, rebase onto `uat`, keep both lanes' rows and the higher version, retry once, then STOP if it still conflicts |
 
 Anticipated review fixes, word for word: none expected beyond records wording; any finding lands
