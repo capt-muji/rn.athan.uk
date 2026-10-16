@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Is node_modules/expo-location in the state patches/expo-location+58.0.16.patch produces?
+# Is node_modules/expo-location in the state patches/expo-location+58.0.17.patch produces?
 #
 # Session 50 isolates four heading changes by editing node_modules and rebuilding, three of which
 # live in that patch. A tree left edited silently changes every later build in this repository and
@@ -55,20 +55,14 @@ filter=$(count 'kCLHeadingFilterNone' "$SWIFT")
 echo "kCLHeadingFilterNone: $filter, expected 1"
 [ "$filter" = "1" ] || ok=1
 
-# Either of the next two makes autolinking resolve a prebuilt AAR, so Gradle never compiles the
-# patched Kotlin and a build measures unpatched code while reporting BUILD SUCCESSFUL (session 49)
+# The publication block is what makes autolinking resolve a prebuilt AAR, so Gradle never compiles the
+# patched Kotlin and a build measures unpatched code while reporting BUILD SUCCESSFUL (session 49).
+# Its absence is the guard; a shipped package carries no copy a check could look for.
 if grep -q -F '"publication"' "$CONFIG"; then
   echo "publication block: present, expected absent"
   ok=1
 else
   echo "publication block: absent, expected absent"
-fi
-
-if [ -d "$PKG/android/local-maven-repo" ]; then
-  echo "local-maven-repo: present, expected absent"
-  ok=1
-else
-  echo "local-maven-repo: absent, expected absent"
 fi
 
 [ "$ok" = "0" ] || refuse "one or more checks failed"

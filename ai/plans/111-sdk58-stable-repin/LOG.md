@@ -349,3 +349,96 @@ session: ses_eba90557fffegXgpdEF29mZxAH
   Restore uninstalls the runner's two helper apps, and the pre-flight stops requiring the checkout
   to be literally on `uat` so a lane worktree can run it.
 - Gate: `bash scripts/check-plan.sh ai/plans/111-sdk58-stable-repin` -> `PLAN OK`.
+
+### Step 1 — DONE (the replan run: the delta re-pin, three patches regenerated, the carried hygiene)
+
+- Branch `dep/111-repin-5813` off uat `092a98ff` (2.0.901), created in the lane worktree
+  `$HOME/athan-gitree/worktrees/lane-111-replan`.
+- Pre-flight: `ai/plans/111-sdk58-stable-repin/scripts/preflight-111.sh` copied to `$TMPDIR` and run
+  from the worktree -> `PREFLIGHT OK`. Clean tree, origin/uat merged in, version 2.0.901 >= floor
+  2.0.896, the three starting patch files present, 7 anchor files non-empty, and every npm `latest`
+  at the section 4.1 value (no drift): expo 58.0.13, react-native 0.88.0, expo-background-task
+  58.0.11, expo-location 58.0.17, expo-widgets 58.0.20, @expo/ui 58.0.20, expo-notifications
+  58.1.5, expo-router 58.0.22, expo-haptics 58.0.7, expo-splash-screen 58.0.10.
+- Anchor check: `bash ai/plans/111-sdk58-stable-repin/scripts/anchors-check.sh` -> `ANCHORS OK`,
+  a1 to a7 each counting 1.
+- Contract 1 (the eight pins): moved by `sed` on the exact lines, byte-identical otherwise -
+  `expo ~58.0.12`->`~58.0.13`, `@expo/ui 58.0.19`->`58.0.20`, `expo-haptics ~58.0.6`->`~58.0.7`,
+  `expo-location 58.0.16`->`58.0.17`, `expo-notifications ~58.1.4`->`~58.1.5`,
+  `expo-router ~58.0.21`->`~58.0.22`, `expo-splash-screen ~58.0.9`->`~58.0.10`,
+  `expo-widgets 58.0.19`->`58.0.20`. Nothing else in `package.json` moved.
+- Contract 2 (the red on the new pins): `yarn install --ignore-engines` exit 0; patch-package
+  printed `expo-background-task@58.0.11 ✔`, `expo-location@58.0.16 ✔`, `expo-widgets@58.0.19 ✔`
+  with the two version-mismatch warnings (58.0.16 applied to 58.0.17, 58.0.19 applied to 58.0.20)
+  and no `**ERROR**` line; no peer warning beyond yarn's own two lowercase workspace ones.
+  `shared/__tests__/widgetOpenAppPatch.test.ts` failed exactly the two named tests, `names the
+  installed expo-widgets version` and `patches exactly the known files, all inside the package`
+  (`Tests: 2 failed, 5 passed, 7 total`). Resolved on that install: expo 58.0.13, react-native
+  0.88.0, expo-widgets 58.0.20, expo-location 58.0.17, @expo/ui 58.0.20, expo-notifications 58.1.5,
+  expo-router 58.0.22, expo-haptics 58.0.7, expo-splash-screen 58.0.10, expo-modules-core 58.0.21,
+  babel-preset-expo 58.0.17.
+- Contract 3 (the three patches regenerated; no hunk hand-merged, every one applied whole):
+  background-task - the `didRegisterTaskForTesting` static function and its docblock (10 lines with
+  the blank separator) deleted from the installed `ios/BackgroundTaskScheduler.swift`, then
+  `npx patch-package expo-background-task`; the regenerated `+58.0.11.patch` differs from the old
+  file by that deletion alone plus the `index 906678b..712d728` -> `906678b..e6be88e` line of the
+  file it touched. location - the `mLastAzimuth` declaration, its assignment in the magnetometer
+  branch and its reset deleted from the installed `LocationModule.kt` (0 occurrences left),
+  regenerated as `+58.0.17.patch` (3 file diffs, 8 hunks), old `+58.0.16.patch` deleted; every
+  original marker kept (SENSOR_DELAY_GAME twice, the DEGREE_DELTA removal, kCLHeadingFilterNone,
+  the `publication` block removal, the rate-limit comment). widgets - regenerated as
+  `+58.0.20.patch`, `diff` against the old file exit 0 (byte-identical; 58.0.20 changes none of the
+  five files), 5 file diffs, both features present (`openApp`/`launchAppAction`/
+  `WidgetButtonProps.openApp` and the `__expoWidgetDeviceLocale` injection), old `+58.0.19.patch`
+  deleted.
+- Contract 4 (clean install, R1.3): `rm -rf node_modules/expo-background-task
+  node_modules/expo-location node_modules/expo-widgets && yarn install --ignore-engines --force`
+  printed exactly `expo-background-task@58.0.11 ✔`, `expo-location@58.0.17 ✔`,
+  `expo-widgets@58.0.20 ✔`, no `**ERROR**` line and zero `version mismatch` lines.
+- Contract 5 (the vacuous check, R1.10 first half): the script docstring now names
+  `patches/expo-location+58.0.17.patch`; the `local-maven-repo` block and its else-branch deleted;
+  the comment above the `publication` grep rewritten to say the `publication` block is what makes
+  autolinking resolve the prebuilt AAR and its absence is the guard.
+- Contract 6: `shared/__tests__/expoLocationPatch.test.ts` lost the `withMavenRepo` override field,
+  its `mkdirSync` line and the `refuses a tree with a local maven repo` case; seven cases remain,
+  and biome's formatter collapsed the `makeTree` signature onto one line (the only other hunk).
+- Contract 7 (the new guard suite, R1.11): `shared/__tests__/backgroundTaskPatch.test.ts`, four
+  cases reading the installed package in place - the offline option in `src/BackgroundTask.types.ts`
+  and `build/BackgroundTask.types.d.ts`, the WorkManager constraint line in the Kotlin, the
+  `request.requiresNetworkConnectivity` line in the Swift, and a package-wide grep for
+  `didRegisterTaskForTesting`.
+- Contract 8 (green): `yarn validate` exit 0 - tsc 0 errors, Biome clean, `Test Suites: 217 passed,
+  217 total`, `Tests: 2 skipped, 5709 passed, 5711 total`, coverage `Statements 100% (5392/5392)`,
+  `Branches 100% (2324/2324)`, `Functions 100% (1129/1129)`, `Lines 100% (4830/4830)`. `yarn test:tz`
+  exit 0, four zones, 217/217 and `2 skipped, 5709 passed, 5711 total` in each. The three patch
+  suites: `Test Suites: 3 passed, 3 total`, `Tests: 18 passed, 18 total`. The node line printed
+  `58.0.13 0.88.0`; the seven: @expo/ui 58.0.20, expo-haptics 58.0.7, expo-location 58.0.17,
+  expo-notifications 58.1.5, expo-router 58.0.22, expo-splash-screen 58.0.10, expo-widgets 58.0.20.
+  `bash scripts/verify-expo-location-patch.sh` -> `PATCH AS SHIPPED` (R1.10).
+- Contract 9 (the landed invariants untouched, R1.6, R1.7): `app.json` changed only its version
+  line, so the `expo-notifications` plugin entry still carries `"enableRemoteNotifications": false`;
+  `widgets/PrayerWidget.tsx` is not in this commit at all.
+- Break script (verbatim, under the commit lock, from the worktree root): `0` then `0 ✔ lines` with
+  the widgets patch moved aside; the named test FAILS (`Tests: 1 failed, 6 skipped, 7 total`); `1`
+  after the patch came back; the background-task suite FAILS (`Tests: 1 failed, 3 passed, 4 total`)
+  under the Swift mutation; passes again after the restore (`Tests: 4 passed, 4 total`); last line
+  `ALL AS EXPECTED: 1`, exit 0. `git status --porcelain` afterwards listed only this step's files
+  and the plan files.
+- Mutation pass (the review checklist's fourth item, run on the installed package): every marker
+  broken at once, so all four cases failed with their own message
+  (`expect(received).toContain(expected) // indexOf` on the TS, Kotlin and Swift assertions and
+  `expect(received).toBe(expected)` on the absence grep - `Tests: 4 failed, 4 total`), then the four
+  files restored from byte copies and the suite green again (`Tests: 4 passed, 4 total`) with the
+  before/after md5 lists identical.
+- Version: uat read fresh under version.lock at 2.0.905 (the sibling lanes took 2.0.902 to 2.0.905
+  while step 1 ran); this commit took 2.0.906 - `app.json` first, then `package.json`, then
+  `versionName` in the main tree's gitignored `android/app/build.gradle` (which had lagged at
+  2.0.898). Queue row 111 set `IN PROGRESS, step 1`.
+- Lane weather: the main tree's uat advanced from 2.0.901 to 2.0.905 during step 1 (docs lanes
+  120/121 merging), so this commit sits on the older base and a version-file conflict at the merge
+  is expected and handled by the lane protocol. It fired: the first merge attempt conflicted on
+  `app.json` and `package.json` alone (uat at 2.0.907), the merge was aborted, and the rebase onto
+  uat resolved the two files to 2.0.908 - the next patch past the higher version - with the row-111
+  cell and every other file replayed untouched.
+
+session: ses_eba1b96b6ffe2uZ6oyyedZ7GqS
