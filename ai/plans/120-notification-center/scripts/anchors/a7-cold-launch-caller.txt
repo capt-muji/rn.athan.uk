@@ -1,0 +1,6 @@
+      // Initialize notifications, register background task, and create channel on first load.
+      // The convergence pass runs after init resolves: the scheduling lock serialises it
+      // behind the init reschedule, and it catches its own failures.
+      initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask)
+        .then(() => reconcileLanguageSurfaces())
+        .catch((error) => logger.error('Failed to initialize notifications:', error));
