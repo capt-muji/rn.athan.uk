@@ -84,8 +84,9 @@ const LATIN: LocaleTypography = {
   wordFace: false,
 };
 
-/** One record per shipped locale: a new language adds its entry here
- * and its id to RTL_IDS if it reads right to left */
+/** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
+ * if it reads right to left. A record boundary (a script record against the Latin set) changes
+ * the faces a context froze at module scope, so a switch across one relaunches the context. */
 const RECORDS: Record<LocaleId, LocaleTypography> = {
   en: LATIN,
   ar: ARABIC,
@@ -96,7 +97,7 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
 };
 
 /**
- * Consumers resolve this once at their own module scope; the answer changes
- * only when the active locale crosses the ar boundary.
+ * Consumers resolve this once at their own module scope; the answer changes only when the
+ * active locale crosses a record boundary, which is exactly why such a switch relaunches.
  */
 export const typographyFor = (locale: LocaleId): LocaleTypography => RECORDS[locale];

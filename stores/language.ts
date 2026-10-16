@@ -13,6 +13,7 @@ import { I18nManager } from 'react-native';
 import { currentLocaleId, type LocaleId, localeDirection, setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import { resetAndroidChannelCaches } from '@/shared/notifications';
+import { typographyFor } from '@/shared/typography';
 import { rescheduleAllForLanguageChange, withSchedulingLock } from '@/stores/notifications';
 import { atomWithStorageString } from '@/stores/storage';
 
@@ -41,7 +42,7 @@ let commitInFlight = false;
  * sheet frozen half-closed instead. A no-op while another pick already owns the loader.
  */
 export const revealLanguageLoader = (locale: LocaleId): void => {
-  if (commitInFlight || store.get(languageCommitBusyAtom)) return;
+  if (store.get(languageCommitBusyAtom)) return;
   store.set(languageCommitBusyAtom, true);
   store.set(pendingLanguageAtom, locale);
 };
@@ -143,13 +144,16 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
   const storedPreference = store.get(languagePreferenceAtom);
   const directionBefore = storedPreference === '' ? launchDirection : localeDirection(storedPreference as LocaleId);
   const crossesBoundary = localeDirection(locale) !== directionBefore;
-  store.set(languageCommitBusyAtom, true);
-  store.set(pendingLanguageAtom, locale);
+  // Module-scope styles freeze the faces a context loaded with, so a switch that changes the
+  // typography record (ar, hi, th against the Latin set) must re-evaluate them - which only
+  // the crossing relaunch does. Same-record locales keep the instant switch.
+  const changesScriptFace = typographyFor(locale).familyRegular !== typographyFor(currentLocaleId()).familyRegular;
+  const relaunches = crossesBoundary || changesScriptFace;
   try {
     store.set(languagePreferenceAtom, locale);
     setActiveLocale(locale);
     let passSettled = false;
-    if (crossesBoundary) {
+    if (relaunches) {
       const settled = reconcileLanguageSurfaces().then(() => {
         passSettled = true;
       });
@@ -163,11 +167,13 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
         'LANGUAGE: surface convergence still unsettled after 10000 ms, revealing the app for forward-only healing'
       );
     }
-    if (crossesBoundary) {
+    if (relaunches) {
       // Fabric treats direction as launch-time (D59): converge first, then
       // force the new direction and relaunch. The busy face ends here.
-      I18nManager.allowRTL(true);
-      I18nManager.forceRTL(localeDirection(locale) === 'rtl');
+      if (crossesBoundary) {
+        I18nManager.allowRTL(true);
+        I18nManager.forceRTL(localeDirection(locale) === 'rtl');
+      }
       try {
         // Only a settled pass earns the handoff: a capped crossing's in-flight work can
         // land beside the relaunch context, and the cold-launch reopen it then keeps is

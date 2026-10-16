@@ -2,7 +2,7 @@ import { useAtomValue } from 'jotai';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, OVERLAY, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { t, tIn } from '@/shared/i18n';
+import { tIn } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { nativeLanguageName } from '@/shared/languageNames';
 import { typographyFor } from '@/shared/typography';
@@ -32,7 +32,10 @@ export default function LanguageLoader() {
   if (!busy || pending === null) return null;
 
   return (
-    <View style={styles.container} accessibilityRole={'progressbar'} accessibilityLabel={t('app.loadingLabel')}>
+    <View
+      style={styles.container}
+      accessibilityRole={'progressbar'}
+      accessibilityLabel={tIn(pending, 'app.loadingLabel')}>
       <View style={styles.spinnerBox}>
         <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
       </View>
