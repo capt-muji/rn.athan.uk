@@ -64,7 +64,7 @@ The owner's rules that govern, quoted:
 | D120.1 | The deliverable is investigation only: no code, no build, no device contact. The XS read is written as the named experiment and recorded as not observed, because the phone is attached but locked and no agent step can unlock it | agent-ruled | 2026-10-16 | here, sections 5 and 7; why: row 120's own words are "INVESTIGATION FIRST", her standing order for this run is hands-off, and row 111's resume record already proves the locked-XS refusal signature |
 | D120.2 | Evidence hierarchy: the app's own code and the pinned package's own source first (each cited by `path:line`), the pinned package's changelog second, the vendor's own published notification documentation third, and every rendering claim that only the device can settle marked unmeasured and named to the experiment | agent-ruled | 2026-10-16 | here, section 4 and FINDINGS sections 1 to 2; why: the row's facts are code facts, and the one thing code cannot answer is what the phone draws |
 | D120.3 | The recommendation to her is option C, clear the delivered stack when the app opens, iOS-gated, argued twice in section 5 | agent-ruled | 2026-10-16 | here, section 5 |
-| D120.4 | The thread lever alone is rejected as the primary answer: with one thread the app already gets one group named after itself, and the pinned JS content input exposes no `summaryArgument`, so a named header is not settable from app code | agent-ruled | 2026-10-16 | here, section 5; why: WWDC18-710 notes (no thread identifier groups everything under the app) plus `node_modules/expo-notifications/build/Notifications.types.d.ts:538-631` (input carries `threadIdentifier`, no summary field), so grouping alone shortens nothing |
+| D120.4 | The thread lever alone is rejected as the primary answer: with one thread the app already gets one group named after itself, and the group header is not settable per notification, so grouping alone shortens nothing | agent-ruled | 2026-10-16 | here, section 5; why: WWDC18-710 notes (no thread identifier groups everything under the app), `node_modules/expo-notifications/build/Notifications.types.d.ts:538-631` (the content input carries `threadIdentifier` and no summary field), and the one header lever that does exist, the category's `categorySummaryFormat` (`Notifications.types.d.ts:754`, mapped at `ios/ExpoNotifications/Notifications/TriggerRecords.swift:366,376`), names the group summary rather than removing anything |
 | D120.5 | Replacement by one shared identifier is rejected: collapsing the date-scoped identifiers would fold every armed day into a single pending request and break the candidate-rows arming against the 64 budget | agent-ruled | 2026-10-16 | here, section 5; why: `device/notifications.ts:46-52` states the identifier is the identity that makes re-arming idempotent, and one identifier per prayer rather than per prayer and date arms one day only |
 | D120.6 | Every lever in this row is iOS-gated. Android keeps its delegate, its one visible notification and its frozen channels: the group key would change a visible Android face, and Android's dismissal call clears the one notification the owner currently sees | agent-ruled | 2026-10-16 | here, section 5; why: `ai/AGENTS.md:98` and `:130-133` freeze the Android face, and `node_modules/expo-notifications/android/src/main/java/expo/modules/notifications/service/delegates/ExpoPresentationDelegate.kt:275-277` routes Android dismissal to `cancelAll()` |
 | D120.7 | Reminders need no thread of their own: under the recommended lever they clear with everything else, and if she takes grouping they join the athan thread, because a reminder and the athan it warns about are one event | agent-ruled | 2026-10-16 | here, section 5 |
@@ -161,7 +161,11 @@ Installed packages, cited by `path:line` at the pinned version 58.1.5 (never anc
   scheduled through the JS API carries the thread identifier.
 - `node_modules/expo-notifications/build/Notifications.types.d.ts` (:538-631) - the JS content
   input type. `threadIdentifier` is an input field. `NotificationContentIos` (:450-480, `summaryArgument` at :466) carries
-  `summaryArgument` on the read side only, so app code cannot name a thread's header.
+  `summaryArgument` on the read side only, so a notification cannot carry a thread summary; the
+  group summary itself is settable through the category machinery
+  (`NotificationCategoryOptions.categorySummaryFormat`, :754, mapped onto `UNNotificationCategory`
+  at `ios/ExpoNotifications/Notifications/TriggerRecords.swift:366,376`), which names the group and
+  removes nothing.
 - `node_modules/expo-notifications/CHANGELOG.md` (:125 and :38) - iOS grouping support landed in
   58.0.0 (PR expo/expo#49429, 2026-09-10); the Android group-key support landed in 58.1.1
   (PR expo/expo#43388). Both are in the installed version, which is the version the row's
@@ -280,9 +284,9 @@ grouping leaves every entry inside the group; the app already has the group. C s
 
 Checklist (all three inline in this file; the ledger in `LOG.md`):
 
-- [ ] Step 1 the current state, the pinned lever surface and the delivered volume (R1.1 to R1.4, R2.1, R2.2)
-- [ ] Step 2 the options, the frozen-rule blast radius and the recommendation (R3.1, R3.2)
-- [ ] Step 3 the XS experiment, the not-observed record and the outcome text (R4.1, R4.2, R5.1)
+- [x] Step 1 the current state, the pinned lever surface and the delivered volume (R1.1 to R1.4, R2.1, R2.2)
+- [x] Step 2 the options, the frozen-rule blast radius and the recommendation (R3.1, R3.2)
+- [x] Step 3 the XS experiment, the not-observed record and the outcome text (R4.1, R4.2, R5.1)
 
 Every step commits on `lane/120`, the lane's authoring branch cut from `uat` at `b329d543`, and
 merges `--no-ff` into `uat` from the main tree under the `uat` lock. A step's base is therefore
@@ -439,7 +443,8 @@ The named experiment, waiting on her unlock:
   so one thread equals the app-level group iOS already gives every app (WWDC18-710) and grouping
   shortens nothing; the delivered-set APIs touch delivered notifications only
   (dismissAllNotificationsAsync to removeAllDeliveredNotifications, PresentationModule.swift:12-39).
-  REJECTED: thread grouping as the answer (no shortening; the header is not settable); replacement
+  REJECTED: thread grouping as the answer (no shortening; a category header is settable and is the
+  rider, never the fix); replacement
   by one shared identifier (it would collapse the date-scoped candidate-row arming against the 64
   budget); every Android-side lever (a group key changes the frozen one-visible face, and Android's
   dismissal call routes to cancelAll, ExpoPresentationDelegate.kt:275-277). BLAST RADIUS of the
@@ -496,7 +501,8 @@ in the center until she clears it, while Android shows exactly one at a time. Th
 read is real and the pinned SDK applies it: a thread identifier reaches the system on iOS and works
 as a group key on Android. Grouping is not the answer to her complaint, because the center already
 groups the app's notifications under the app, one thread changes nothing visible, and the pinned
-JS API cannot name a thread's header. The answer is removal: one iOS-gated call when the app opens,
+JS API cannot set a per-notification summary, and the one header lever it does expose names the
+  group without removing an entry. The answer is removal: one iOS-gated call when the app opens,
 which runs at cold launch and on every return to the foreground and never from the background
 task, touches the delivered set alone, and leaves the armed schedule, the 64-request budget, the
 reminder rule, the Android channels and the Android one-visible face exactly as they are. Reminders
