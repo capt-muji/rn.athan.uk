@@ -191,8 +191,13 @@ the lane, not by refusing the lane; the repo's own rule already requires a logca
 dump for a records claim, and an AVD produces both. Second challenge, cost: no system image
 is installed (measured), so B opens with an ask-first install of a system image and an AVD
 definition, and the image's size is unverified (section 5). Against that stand a
-device-free lane and the owner's own standing difficulty reaching the phones. B survives as
-a bounded addition whose first act is hers to authorise.
+device-free lane and the owner's own standing difficulty reaching the phones. Flip-check on
+the strongest rival, A: leaving the matrix alone costs nothing and keeps one interpretation
+of "device proof" in the repository, which is a genuine discipline argument; it fails on the
+measured shortage, because A leaves every flow smoke blocked while the phones are away or
+busy, and B's exclusion paragraph - written at the same time as the lane - keeps the one
+interpretation intact. B survives as a bounded addition whose first act is hers to
+authorise.
 
 ## 5. The named experiments, and what stays unverified
 
@@ -211,19 +216,23 @@ Unverified at planning, each with the step that would verify it:
 - U1: the exact failure the old CLI produced for `--device <serial>`. The repository's own
   line is the witness for the failure, and the pull request body is the witness for
   name-only matching; the old build is not installed, so the mechanical cause was not
-  reproduced. E1 shows only that it works now.
+  reproduced. E1 shows only that it works now; the old behaviour would need an `@expo/cli`
+  below 58.0.0 installed.
 - U2: the system image's download size and the AVD lane's disk cost. `system-images/` is
-  empty, and the size follows from the image chosen.
+  empty, and the size follows from the image chosen. Verify with `sdkmanager --list` before
+  the install she authorises, which prints each package's size.
 - U3: that the binary install path leaves no Metro process behind. The source calls
   `manager.stopAsync()` when the bundler was not requested
-  (`runAndroidAsync.js:166-171`); nothing measured it. E1 and E2 would.
+  (`runAndroidAsync.js:127-133`, `:172`); nothing measured it. E1 and E2 would.
 - U4: whether the 10 s bounded query limit ever trips on the fleet's slowest device. Only
-  the CLI's own queries are bounded; its install and mutation calls are not.
+  the CLI's own queries are bounded and its install and mutation calls are not. E1 and E2
+  would show it on the 3T and the Find X8, the two slowest installs in the atlases.
 - U5: Android emulator support in the automation beyond its own documentation. The
   agent-device command card names Android emulators (fold, shutdown) and the Maestro server
   takes an emulator device id; no emulator exists on this machine to prove either. E2 and E5
   would.
-- U6: the 8T's Android version. No atlas file for it exists in the repository.
+- U6: the 8T's Android version. No atlas file for it exists in the repository. Verify with
+  `adb -s 8T_SERIAL shell getprop ro.build.version.release` at the next device wave.
 
 ## 6. What changes if she rules for the options recommended
 
