@@ -174,9 +174,9 @@ exercised by an ar-side test that exists or lands red first.
   the notification-sound label, with no locale branch left in the style.
 - [x] [R2.2] WHEN a schedule renders under ar THE SYSTEM SHALL dial the location line's bottom
   margin to 8 points.
-- [R3.1] WHEN the volume note renders under ar THE SYSTEM SHALL carry a 21 point lineHeight on
+- [x] [R3.1] WHEN the volume note renders under ar THE SYSTEM SHALL carry a 21 point lineHeight on
   its copy so the measured 3.0px of win-descent ink renders whole.
-- [R3.2] WHEN the volume note renders under en THE SYSTEM SHALL leave the copy's line box to
+- [x] [R3.2] WHEN the volume note renders under en THE SYSTEM SHALL leave the copy's line box to
   the font's own metrics with no lineHeight key.
 
 ## 6. Steps
