@@ -1,0 +1,12 @@
+      const ActivePill = () => (
+        <RoundedRectangle
+          cornerRadius={ROW_CORNER_RADIUS}
+          modifiers={[
+            foregroundStyle(palette.pillFill),
+            strokeBorder({
+              color: palette.pillStroke,
+              style: { lineWidth: 1 },
+              shape: 'roundedRectangle',
+              cornerRadius: ROW_CORNER_RADIUS,
+            }),
+            shadow({ radius: pillShadow.radius, x: pillShadow.x, y: pillShadow.y, color: pillShadow.color }),
