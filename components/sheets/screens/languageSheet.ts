@@ -2,10 +2,9 @@
  * The language sheet's pick flow, pure so it can be tested without a renderer
  * (the same split as components/sheets/screens/soundSheet.ts).
  *
- * Forward-only convergence (D34) leaves the pick no failure face: the UI has
- * already switched by the time the commit runs, so the pick's own tap closes
- * the sheet before the commit starts and the sheet never stays open over a
- * converged app.
+ * The loader is revealed on the tap itself, before the sheet even begins to close:
+ * the commit's first synchronous stretch saturates JS, and a loader that waits for
+ * it paints a sheet frozen half-closed instead (owner report, 2026-10-16).
  */
 
 import type { LocaleId } from '@/shared/i18n/locale';
@@ -15,20 +14,27 @@ import type { LocaleId } from '@/shared/i18n/locale';
  * @param active The locale already in force: its row only closes the sheet
  * @param commit Persists the pick, switches the UI, converges the surfaces
  * @param dismiss Closes the sheet
+ * @param reveal Stands the loader up for the pick, before anything heavy runs
  */
 export const pickLanguage = (
   id: LocaleId,
   active: LocaleId,
   commit: (locale: LocaleId) => Promise<void>,
-  dismiss: () => void
+  dismiss: () => void,
+  reveal: (locale: LocaleId) => void
 ): void => {
   if (id === active) {
     dismiss();
     return;
   }
 
-  // The loader is up from this tick: the sheet has nothing left to show, and the
-  // commit's rejection is forward-only (D34)
-  dismiss();
-  commit(id).catch(() => undefined);
+  // The loader paints this frame; the dismiss and the commit both wait a paint, so
+  // the freeze the commit's first stretch causes lands behind the purple face
+  reveal(id);
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      dismiss();
+      commit(id).catch(() => undefined);
+    }, 0);
+  });
 };

@@ -30,6 +30,22 @@ export const languageCommitBusyAtom = atom(false);
 /** The locale a pick is converging to, while the busy face covers the wait; null when no pick runs */
 export const pendingLanguageAtom = atom<LocaleId | null>(null);
 
+// The commit's in-flight latch, beside the atoms the loader reads: a reveal stands the loader
+// before its commit exists, so the commit must tell its own reveal from another pick's. The
+// atoms stay the single source; first pick wins, exactly as the in-flight guard rules.
+let commitInFlight = false;
+
+/**
+ * Stands the loader up on the tap itself, before the sheet closes or any commit work runs:
+ * the commit's first synchronous stretch saturates JS, and a loader waiting for it paints a
+ * sheet frozen half-closed instead. A no-op while another pick already owns the loader.
+ */
+export const revealLanguageLoader = (locale: LocaleId): void => {
+  if (commitInFlight || store.get(languageCommitBusyAtom)) return;
+  store.set(languageCommitBusyAtom, true);
+  store.set(pendingLanguageAtom, locale);
+};
+
 /**
  * The D-relaunch handoff (row 80): written before a crossing's reloadAsync and consumed by
  * the next context's launch init, so an in-process relaunch — where no force-stop cancelled
@@ -112,8 +128,14 @@ const raceAgainstCap = (pass: Promise<void>, warn: string): Promise<void> => {
 
 export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
   // A second pick while one converges would race it and the first finally would
-  // strand the loader mid-pass; the first commit wins.
-  if (store.get(languageCommitBusyAtom)) return;
+  // strand the loader mid-pass; the first commit wins. A loader another pick
+  // already owns refuses this one; this pick's own reveal lets it through.
+  if (commitInFlight) return;
+  const owningPick = store.get(pendingLanguageAtom);
+  if (owningPick !== null && owningPick !== locale) return;
+  commitInFlight = true;
+  store.set(languageCommitBusyAtom, true);
+  store.set(pendingLanguageAtom, locale);
   // The direction in force comes from the app's own record: the stored
   // preference drives the launch force ('' means the device's launch
   // direction). I18nManager.getConstants() is deliberately not read here: the
@@ -160,6 +182,7 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
       }
     }
   } finally {
+    commitInFlight = false;
     store.set(languageCommitBusyAtom, false);
     store.set(pendingLanguageAtom, null);
   }
