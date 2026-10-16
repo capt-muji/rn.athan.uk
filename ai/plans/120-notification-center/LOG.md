@@ -40,6 +40,15 @@ conflicted on the version files and the queue. Resolved per protocol: merge abor
 rebased onto uat, row 119 kept at its later EXECUTED state, row 120 kept at READY, the version
 kept at the higher 2.0.929. One retry.
 
-### Step 01 — pending
+### Step 01 — REPLANNED 2026-10-16 (resumed)
 
-session:
+Executor STOP at the tsc gate: the plan's verbatim tests failed TS2339 on the
+`.mock`/`mockRejectedValueOnce`/`mockReturnValue` uses of the module-mapped import. D120.8
+rules the use-site `as jest.Mock` cast (this file's own six-site pattern) over a
+`require` restructure. The red phase itself matched the plan exactly (three named reds at
+lines 680, 712, 731, dismiss called 0 times, fences green, tasks suite 7/7); the change had
+gone in verbatim and both suites were 89/89 on jest before the revert. The executor's saved
+patch: `$HOME/athan-gitree/sessions/120/step1-unfinished.patch` (apply, add the three casts,
+continue).
+
+session: ses_eb984c07cffevLsDy2LZkfwyWu
