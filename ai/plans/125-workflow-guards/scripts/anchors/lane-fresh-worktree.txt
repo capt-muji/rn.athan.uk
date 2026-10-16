@@ -1,0 +1,5 @@
+  reinstall after any rebase that moves `yarn.lock`. A FRESH worktree has no husky
+  shim until that install creates it, so git silently skips the pre-commit hook and
+  an unhooked commit passes green: never commit before the install finishes, and
+  treat any commit whose output carries no `Tests:` line as unhooked (run
+  `yarn validate` and the coverage check by hand, re-verify, and only then continue).

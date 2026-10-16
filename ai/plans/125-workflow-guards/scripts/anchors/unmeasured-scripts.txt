@@ -1,1 +1,3 @@
+  },
   { path: 'scripts/', reason: 'repository tooling, including this gate' },
+  {
