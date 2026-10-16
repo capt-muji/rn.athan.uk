@@ -66,7 +66,6 @@ export default function PrayerTime({ type, index }: Props) {
   const colonPair = colonInkPair({
     isNext: Prayer.isNext,
     isPassed: Prayer.isPassed,
-    isSelected: isSelectedForOverlay,
     isStandard,
   });
   const colonColorStyle = useDerivedColor(colorPos, {
