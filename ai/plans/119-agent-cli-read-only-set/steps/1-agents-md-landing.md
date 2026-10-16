@@ -73,7 +73,7 @@ byte-for-byte with:
 The bullet above it (the screenshot bullet) stays byte-identical.
 
 **Queue row.** In `ai/plans/README.md`, row 119's status cell changes its opening words
-`PLANNING 2026-10-16 (option-B ruling taken): the read-only set` to
+`READY 2026-10-16, plan at \`ai/plans/119-agent-cli-read-only-set/\` (option-B ruling taken)` to
 `IN PROGRESS, step 1 (option-B ruling taken 2026-10-16, the read-only set)`. The rest of the
 cell is untouched.
 
