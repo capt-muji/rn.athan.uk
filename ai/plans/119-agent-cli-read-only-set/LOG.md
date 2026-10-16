@@ -53,3 +53,20 @@ section 3 now names the lane's pre-dispatch duty (docs commit merged to uat, lan
 rebased, clean tree); the step's queue-row swap closes its parenthesis. The griller's
 byte-level simulation of both edits against a temp copy passed every needle, and this lane
 re-ran the fixed break script on its own simulation: ALL AS EXPECTED: 1, all 24 checks.
+
+## Planning (2026-10-16), READY
+
+The skeleton (complete plan, grilled, gate PLAN OK) landed as 5d259b2d (2.0.926, hooked:
+Tests: 2 skipped, 5709 passed, 5711 total, 100% on all four measures) and merged as
+fdd43a4f after one lane-weather cycle: lane 120's 2.0.925 skeleton reached uat first, the
+first merge conflicted on package.json, the abort-rebase-resolve cycle kept both lanes'
+rows and the higher version (2.0.926), and the one retry merged clean. The build bay's
+gitignored build.gradle versionName synced to 2.0.926 under build.lock. This commit sets
+READY and aligns the step's queue-row find-string with the READY cell.
+
+Weather note: the skeleton's rebase resolution (lane 120's 2.0.925 versus this lane's
+2.0.926) left a duplicate `version` key in app.json and package.json - rebase replay skips
+the hook, so it reached uat inside fdd43a4f unseen; biome caught it at this commit's hook.
+This commit heals both files to exactly one version key (2.0.927). The lesson matches row
+120's recorded exception: after any rebase, verify the version files hold one key before
+the next commit trusts them.
