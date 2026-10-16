@@ -36,3 +36,24 @@ Facts verified by the planner against `1f534a97`:
 - The sweep's note-gap pair (32/24) is D94's and untouched by this plan.
 - The tests pin every value this plan moves: the sweep (qibla -10/4, sound 6/12, header boxes),
   DayLines (6/5), and the VolumeNote suite pins the en face.
+
+Grill (one round, the hostile reading; all seven findings applied):
+
+1. MUST the preflight floor 2.0.827 was unreachable at dispatch (uat 2.0.825 plus the READY
+   bump is 2.0.826); the floor is now 2.0.826 in the script and section 3.
+2. MUST step 2 left `compactArabic` (Sound.tsx:227) unused, which Biome's warning gates fail;
+   the contract now kills the declaration with the branch and the break perl re-introduces a
+   literal, not an identifier.
+3. SHOULD the pulls break ran one case (`-t "gap under ar"`), never proving the header pin;
+   the filter is gone, the whole sweep runs.
+4. SHOULD step 3's isolate pattern needs `RNTL_SKIP_AUTO_CLEANUP` (the sweep sets it at its
+   line 17); the prerequisite is now in the red-test contract.
+5. SHOULD R1.3 named the en title's 2 point margin with no pin observing it; the header-boxes
+   en case now asserts it.
+6. NICE the "D94's pair:" prefix outlived its sibling; the surviving sentence is pinned
+   verbatim in step 2 and the VolumeNote half is step 3's to fix.
+7. NICE the preflight is once-only by construction; section 3 now says so.
+
+The grill found seven findings, all sentence-level repairs on confirmed-correct structure, so
+no second round ran (the rule's condition is permission, and nothing a second round could
+change remains).
