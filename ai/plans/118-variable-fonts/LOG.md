@@ -208,3 +208,39 @@ is recorded as the open condition (D118.6). The byte refutation from step 2 make
 question moot for this round.
 
 session: ses_ebab6f35fffedobipiJeJ7Att0
+
+### Step 4 — DONE
+
+Branch docs/118-recommendation.
+
+### Records
+
+The options (R4.1), one line each, all four measured or quoted in steps 1 to 3:
+
+1. Keep the eight statics. Zero swap risk; smaller bytes on every family except
+   gzipped Rubik; every weight renders on every fleet device including the 3T.
+2. Swap all four families to the upstream variable files. Refuted: raw bytes grow by
+   458,180 (36.8 percent) and deflated by 326,512 (56.3 percent), because the statics
+   are Google's subset builds; the 3T (API 28) cannot instance at runtime and Rubik's
+   variable default is Light 300, so Arabic renders Light on the build machine; the
+   per-weight family names die (the plugin refuses one file under two family names)
+   and the wiring crosses the settled visual surface with no visual change intended.
+3. Swap one family where bytes win: Rubik alone, saving 10,024 deflated bytes, paying
+   the same runtime gate (its default is the 300 instance), the same wiring change,
+   and a 3T device proof of the XML route. The saving is 1.7 percent of today's
+   deflated font bytes.
+4. Hand-subset the variable files to the app's codepoints and re-default Rubik to 400.
+   A build pipeline shipping non-upstream font bytes, still paying the wiring change
+   and the 3T question, chasing bytes that start 458,180 behind.
+
+Recommendation, agent-ruled (D118.5, 2026-10-16, the standing hands-off order): option
+1, keep the eight statics. The byte hypothesis that motivated the ticket is refuted,
+the metrics are already identical so no pin can improve, and the only fleet device that
+would regress is the build machine itself. Revisit triggers: the 3T retiring as floor
+device, a locale plan needing more than two weights, or upstream shipping a variable
+Rubik whose default instance is 400. Her veto rides the lane's final table.
+
+The queue row moves to EXECUTED with this commit; the audit sets DONE with the cell
+text from PLAN.md section 8.
+
+session: ses_ebab6f35fffedobipiJeJ7Att0
