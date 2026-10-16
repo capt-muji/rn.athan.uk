@@ -5,7 +5,7 @@
 import { render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
-import { COLORS } from '@/shared/constants';
+import { COLORS, SIZE, SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { languageCommitBusyAtom, pendingLanguageAtom } from '@/stores/language';
 
@@ -54,5 +54,30 @@ describe('the language-switch loader', () => {
     const line = screen.getByText('भाषा हिन्दी सेट की जा रही है');
     expect(flattenStyle(line.props.style).maxWidth).toBe(260);
     expect(flattenStyle(line.props.style).textAlign).toBe('center');
+  });
+
+  it('pins the spinner at dead centre, whatever the gap below it grows to', async () => {
+    store.set(languageCommitBusyAtom, true);
+    store.set(pendingLanguageAtom, 'ar');
+    setActiveLocale('ar');
+
+    await render(<LanguageLoader />);
+
+    const root = screen.root as unknown as { children: unknown[] };
+    const spinnerStyle = flattenStyle((root.children[0] as { props: { style: unknown } }).props.style);
+    expect(spinnerStyle.top).toBe('50%');
+    expect(spinnerStyle.transform).toEqual([{ translateY: -SIZE.activityIndicator / 2 }]);
+  });
+
+  it('hangs the line 30 points under the spinner\u2019s foot', async () => {
+    store.set(languageCommitBusyAtom, true);
+    store.set(pendingLanguageAtom, 'ar');
+    setActiveLocale('ar');
+
+    await render(<LanguageLoader />);
+
+    const root = screen.root as unknown as { children: unknown[] };
+    const lineBoxStyle = flattenStyle((root.children[1] as { props: { style: unknown } }).props.style);
+    expect(lineBoxStyle.marginTop).toBe(SIZE.activityIndicator / 2 + SPACING.xxxl);
   });
 });

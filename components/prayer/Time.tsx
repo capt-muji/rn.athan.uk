@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { useDerivedColor } from '@/hooks/useAnimation';
@@ -19,6 +19,9 @@ interface Props {
   type: ScheduleType;
   index: number;
 }
+
+/** The upcoming colon's brightening pair: the dim ink it rests on and the row's bright ink selection takes it to */
+export const COLON_BRIGHTENING = { from: COLORS.countdown.timeColon, to: COLORS.text.primary };
 
 /**
  * Prayer time display component
@@ -59,8 +62,15 @@ export default function PrayerTime({ type, index }: Props) {
 
   const isStandard = type === ScheduleType.Standard;
   const colonNextStyle = isStandard ? styles.colonNext : styles.colonNextExtras;
-  // The passed and next colons carry their own inks; an upcoming row keeps the base one
+  // The passed and next colons carry their own inks; an upcoming row's joins the row's own
+  // brightening, so a selected row reads bright through its whole time
   const colonStateStyle = Prayer.isNext ? colonNextStyle : Prayer.isPassed ? styles.colonPast : undefined;
+  const colonColorStyle = useDerivedColor(colorPos, {
+    fromColor: COLON_BRIGHTENING.from,
+    toColor: COLON_BRIGHTENING.to,
+    duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
+    delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
+  });
 
   return (
     <View style={[styles.container]}>
@@ -69,7 +79,9 @@ export default function PrayerTime({ type, index }: Props) {
       ) : (
         <View style={styles.timeRow} accessible accessibilityLabel={displayTime}>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[0]}</Animated.Text>
-          <Text style={[styles.textPart, styles.colon, colonStateStyle]}>{':'}</Text>
+          <Animated.Text style={[styles.textPart, styles.colon, colonStateStyle ?? colonColorStyle]}>
+            {':'}
+          </Animated.Text>
           <Animated.Text style={[styles.textPart, colorStyle]}>{parts[1]}</Animated.Text>
         </View>
       )}

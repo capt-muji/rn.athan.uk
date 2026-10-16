@@ -13,7 +13,7 @@ import { typographyFor } from '@/shared/typography';
 export default function SheetVolumeNote() {
   return (
     <View style={styles.foot}>
-      <InfoBadge round size={20} glyph={12} color={COLORS.text.sheetSubtitle} />
+      <InfoBadge round size={20} glyph={10} color={COLORS.text.sheetSubtitle} />
       <Text style={styles.text}>{t(Platform.OS === 'android' ? 'volume.note.android' : 'volume.note.ios')}</Text>
     </View>
   );
