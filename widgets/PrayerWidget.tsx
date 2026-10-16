@@ -809,7 +809,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           modifiers={[
             foregroundStyle(palette.pillFill),
             strokeBorder({
-              color: palette.pillStroke,
+              content: palette.pillStroke,
               style: { lineWidth: 1 },
               shape: 'roundedRectangle',
               cornerRadius: ROW_CORNER_RADIUS,

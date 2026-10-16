@@ -41,7 +41,7 @@ index 697b6ac..2eba68f 100644
        auto props = readableMapToValue(rt, propsMap);
        auto environment = readableMapToValue(rt, environmentMap);
 diff --git a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
-index 0cbd5fb..04fc665 100644
+index 3df9e4a..e49233d 100644
 --- a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
 +++ b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetEmittableTree.kt
 @@ -65,8 +65,10 @@ import androidx.glance.EmittableImage
@@ -56,7 +56,7 @@ index 0cbd5fb..04fc665 100644
  import androidx.glance.appwidget.EmittableCheckBox
  import androidx.glance.appwidget.EmittableCircularProgressIndicator
 @@ -295,8 +297,13 @@ private fun ImageContentScale.toGlanceContentScale(): ContentScale {
- private fun ReadableMap.toPeekButton(converterContext: WidgetConverterContext, source: String): Emittable {
+ private fun ReadableMap.toPeekButton(converterContext: WidgetConverterContext, source: InteractionSource): Emittable {
    val props = props<WidgetButtonProps>(converterContext)
    val children = children()
 -  val action =
