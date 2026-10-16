@@ -30,22 +30,26 @@ credentials, publishing, destroying data), reported, never asked.
 
 ## Lane mechanics
 
-- The dispatch names your tree. The main-tree lane works in
-  `$HOME/repos/rn.athan.uk`; every other lane creates its own worktree
-  `git worktree add $HOME/athan-gitree/worktrees/lane-<N> -b lane/<N> uat`
-  with `node_modules` symlinked from the main tree, and removes the worktree
-  and its branch before it ends.
-- Worker dispatches name your tree and carry these lock rules. If you cannot
-  dispatch workers, run each phase yourself from the rules in
-  `.opencode/agents/`, and record that in `LOG.md`.
+- Every lane authors in its own worktree: `git worktree add
+  $HOME/athan-gitree/worktrees/lane-<N> -b lane/<N> uat`. The main tree
+  `$HOME/repos/rn.athan.uk` stays checked out on `uat` and clean: it is the merge
+  station and the build bay, never a lane's desk. Give the worktree its own
+  `node_modules` with a plain `yarn install` when your lane runs code or hooks, and
+  reinstall after any rebase that moves `yarn.lock`. Remove the worktree and its
+  branch before you end.
+- Worker dispatches name your worktree and carry these lock rules. If you cannot
+  dispatch workers, run each phase yourself from the rules in `.opencode/agents/`,
+  and record that in `LOG.md`.
 - Locks, all the version lock's mkdir pattern, retried in `sleep 15` cycles,
   removed the moment their holder ends:
   `$HOME/athan-gitree/version.lock` around every version bump (existing rule);
   `commit.lock` around every commit and every yarn install, so no hook runs
   against a churning `node_modules`; `uat.lock` around every merge into `uat`
-  (main tree only, `git fetch -q origin uat` first, `--no-ff`); `build.lock`
-  around `build-prod.zsh`, `build-mock.zsh` and any Xcode or toolchain change;
-  `device-<SERIAL>.lock` around any contact with one phone.
+  (merges happen only in the main tree, `git fetch -q origin uat` first,
+  `--no-ff`); `build.lock` around `build-prod.zsh`, `build-mock.zsh` and any
+  Xcode or toolchain change (the scripts hardcode the main tree and build `uat`
+  content: run a build step only after its code is merged); `device-<SERIAL>.lock`
+  around any contact with one phone.
 - A merge conflict on `ai/plans/README.md` or the three version files is lane
   weather: abort, rebase your lane branch onto `uat`, resolve keeping both
   lanes' rows and the higher version, retry the merge once, then STOP if it

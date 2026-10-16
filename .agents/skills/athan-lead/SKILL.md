@@ -48,10 +48,11 @@ to DONE, refilled the moment it frees, until the board is clear or nothing can r
 lane takes only a runnable ticket (open, not BLOCKED, DEFERRED, UPSTREAM or OWNER-LED,
 its Needs-first rows DONE) that is file-disjoint from every other open lane, per the
 queue's invariant: same conflict group serializes, disjoint groups run parallel, the
-three version files never count as overlap. At most one lane holds the main tree (its
-plan was written against it); every other lane works in its own worktree under the
-protocol the `athan-lane` agent file carries: the lock family (version, commit, uat,
-build, device-by-serial), rebases on merge conflicts, and no pushes.
+three version files never count as overlap. No lane works in the main tree: it stays
+checked out on `uat`, clean, the shared merge station and build bay (the build scripts
+hardcode its path), while every lane authors in its own worktree under the protocol the
+`athan-lane` agent file carries: the lock family (version, commit, uat, build,
+device-by-serial), rebases on merge conflicts, and no pushes.
 
 When two or more runnable, mutually disjoint tickets exist, you are the orchestrator:
 dispatch one `athan-lane` worker per ticket in the background, verify each return
