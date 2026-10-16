@@ -221,7 +221,7 @@ proves.
 
 ## 6. Steps
 
-- [ ] Step 1 done: the `ai/AGENTS.md` landing (four routing rows, the widened ban paragraph),
+- [x] Step 1 done: the `ai/AGENTS.md` landing (four routing rows, the widened ban paragraph),
       committed, merged to `lane/119` (`steps/1-agents-md-landing.md`, Weight 1; satisfies
       R1.1, R2.1, R3.1, R4.1, R5.1)
 

@@ -25,6 +25,10 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
 | Code structure queries | codegraph MCP |
 | Author or run a UI flow | maestro CLI, flows in `e2e/flows/` |
 | Expo project status and smoke | `npx @expo/agent-cli status` / `smoke --ios` |
+| Expo project health check (advisory) | `npx @expo/agent-cli doctor` |
+| Quick type check (tsc only, not the gate) | `npx @expo/agent-cli typecheck` |
+| Expo docs lookup, SDK-matched | `npx @expo/agent-cli docs:sync` / `docs:search` |
+| Expo dev-server session tables | `npx expo command:ps` / `command:events` |
 | Gate before done | `yarn validate` |
 | Local device build | `build-prod.zsh`, `build-mock.zsh` |
 | Alarm audit on a phone | `yarn check:device <serial>` |
@@ -156,8 +160,11 @@ are Gradle caches, detached and branchless. They stay.
   replay after.
 - A screenshot reaches a screen. It never proves what is on one. A records claim needs a logcat
   line or a dump.
-- `@expo/agent-cli`: `status` and `smoke --ios` only. Never `--eas`, `deploy`, `agents:setup` or
-  `skills:sync`, and never `smoke --android` while a phone is connected.
+- `@expo/agent-cli`: the routed reads only - `status`, `smoke --ios`, `doctor`, `typecheck`,
+  `docs:sync` and `docs:search`. Never `--eas` (it starts a paid EAS Simulator session),
+  `deploy`, `agents:setup`, `skills:sync`, `skills:clean`, `install`, `new`, `feedback`,
+  `login`/`logout`/`register`/`whoami`, `status --explain` (an EAS service query) or `--device`
+  (it launches or binds a phone), and never `smoke --android` while a phone is connected.
 
 ## Writing style
 
