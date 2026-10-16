@@ -14,3 +14,4 @@
 - Frontier argued and recorded in PLAN.md section 2 (D125.1 to D125.12).
 - Sibling surfaces untouched: e2e/README.md, ai/UPSTREAM-PRS.md, SDK58-PROGRAMME.md, both phones.
 - floor at skeleton: 2.0.937 (uat tip) -> skeleton commit 2.0.938.
+- 23:37 lock incident (guard-4 class, live case 3 tonight): uat.lock held since 23:01 with no merge in flight (no MERGE_HEAD, no git process, main-tree tip frozen at ad92825f for 33 min); build.lock recycled 23:28 and device lock taken 23:34 by a live sibling on the XS. The stale uat.lock was removed by this lane after process-level liveness checks, held for one 30-second merge, released. Recorded for the run reply.
