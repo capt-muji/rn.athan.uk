@@ -88,7 +88,7 @@ by the deep clean at `eb86b063` (2026-10-08). Recovery command, one file at a ti
 | --- | --- | --- | --- |
 | 3T, force-stopped, label watched across three minute edges | `1h 54m` held while the truth walked `1h 53m` to `1h 51m`: one minute of error per suspended minute, always too much time remaining | 1.28.14 era | recovered `FINDINGS.md` section 2; the mechanism shipped as `6909abba` (1.28.17) and `85a837d8` (1.28.18) |
 | Find X8, three widgets on one prayer, read in one dump | `5h 17m`, `5h 14m`, `5h 12m` against a true `5h 11m`: plus 6, plus 3, plus 1, disagreeing with each other | 1.27.384, old build | recovered `FINDINGS.md` section 13 |
-| 3T, force-stop, pre-1.28.21 | the label drifted to plus 8, then to plus 47 while frozen | 1.28.20 | recovered `GLANCE-ROOT-CAUSE.md` |
+| 3T, force-stop, pre-1.28.21 | the label drifted to plus 8, then to plus 47 while frozen | 1.28.20 | recovered `GLANCE-ROOT-CAUSE.md:128` and `:160` |
 | 3T, backgrounded, 8-minute watch | plus 2, exact, exact, plus 2, exact, plus 2, plus 5: intermittent, accumulating between lucky ticks | 1.28.20 | recovered `GLANCE-ROOT-CAUSE.md` |
 | 3T, controlled broadcast experiment | one tick left the label 8 minutes stale; two broadcasts three seconds apart corrected it to exact | 1.28.20 | recovered `GLANCE-ROOT-CAUSE.md`; shipped as `11d6584e` (1.28.21) |
 | Find X8, ColorOS alarm dump | the exact alarm carries a window and an app-standby push: `window=+32s197ms`, `app_standby=-1m6s187ms`, `exactAllowReason=policy_permission`, a combination AOSP never emits | 1.27.384 | recovered `FINDINGS.md` section 13 |
@@ -98,7 +98,7 @@ by the deep clean at `eb86b063` (2026-10-08). Recovery command, one file at a ti
 | Find X8, 9 reads across three minute edges | 9 of 9 exact, the label flipping 1 to 4 seconds after the edge | 1.28.23 | recovered `MEASURED-DRIFT.md` |
 | Find X8, screen-off sampling, 4-minute gaps | 6 of 7 exact, worst plus 1 | 1.28.24 | recovered `MEASURED-DRIFT.md` |
 | Find X8, induced deep doze | the app's own alarm fired once where three or four were due while `ACTION_TIME_TICK` arrived six times, and the label was exact on both wakes | 1.28.24 | recovered `MEASURED-DRIFT.md` |
-| Find X8, launch host callbacks while the screen is off | 58 `widget is not ready` deferrals against 3 delivered `updateViews` in one window; `widget.host.callbacks: null` | 1.28.21 | recovered `MEASURED-DRIFT.md` |
+| Find X8, launch host callbacks while the screen is off | 58 `widget is not ready` deferrals against 3 delivered `updateViews` in one window; `widget.host.callbacks: null` | 1.28.21 | recovered `MEASURED-DRIFT.md:73-83` |
 | 3T, force-stop cost, re-tested | `stopped=true` receives no broadcasts and runs no jobs; the label froze at `4h 16m` against `4h 13m` and stayed frozen 90 seconds later; an app open restored exactness by the next edge | 1.28.24 | recovered `MEASURED-DRIFT.md` |
 | Both phones, the chain's own counters | 410 alarms to 410 wakeups on the 3T, 355 to 355 on the Find X8: the alarm is not being dropped | 1.28.21-1.28.24 | recovered `MEASURED-DRIFT.md` |
 | Ruled out, each by measurement | dead alarm chain, OEM force-stop in the sampled windows, doze whitelist and standby bucket, `app_standby` policy floors, broadcast queue backlog, missing `FLAG_RECEIVER_FOREGROUND`, stale snapshot data, and the Glance "never composes" theory | 1.28.21-1.28.24 | recovered `MEASURED-DRIFT.md` |
@@ -122,7 +122,7 @@ plus 6, plus 3, plus 1, and the deferred alarm window at up to 34 seconds. The m
 reached, and exceeded, only by the artificial force-stop: the 3T label read plus 8 and then
 plus 47 while frozen, pre-1.28.21. No OEM action on a build from 1.28.21 onward reproduces it:
 the worst there is plus 7 on the 3T (a six-sample run) and plus 2 on the Find X8, and from
-1.28.23 the worst is plus 1. The recovered record itself states this: "The owner reported 20
+1.28.23 the worst is plus 1. The recovered record itself states this (`MEASURED-DRIFT.md:53`): "The owner reported 20
 to 24 minutes late on the old build. Nothing in this window approaches that." Its reading is
 that the 20 to 24 minute case is the tail of the intermittent distribution on the pre-1.28.21
 build, and that a sampler which wakes the phone every few minutes never lets the deficit build.

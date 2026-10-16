@@ -64,3 +64,46 @@
 - Merge: `--no-ff` into `uat` under the `uat` lock.
 
 session: ses_eba43e587ffevuDs9eWxHmJ2h0
+
+### Step 2 — IN PROGRESS
+
+- Anchor check: all ten anchors still count 1 (the pre-flight, run from the worktree root).
+- R2.1: the deleted record recovered file by file with
+  `git show eb86b063^:ai/plans/25-android-widget-drift/<file>`: `MEASURED-DRIFT.md` 282 lines,
+  `FINDINGS.md` 454, `GLANCE-ROOT-CAUSE.md` 202, `HANDOFF.md` 143, and the sampler
+  `scripts/drift-sampler.sh` 104. The readings transcribed into FINDINGS 2.1 with their
+  direction, magnitude and citation: the 3T frozen label (one minute of error per suspended
+  minute; plus 8 then plus 47 while frozen, `GLANCE-ROOT-CAUSE.md:128` and `:160`), the Find X8
+  three-widget disagreement (plus 6, plus 3, plus 1 on 1.27.384), the 8-minute intermittent
+  watch, the controlled two-broadcast experiment, the ColorOS alarm window
+  (`window=+32s197ms`, `app_standby=-1m6s187ms`, `exactAllowReason=policy_permission`), the
+  deferred tick window (`maxWhenElapsed=+34s440ms`), the on-wake plus 1, the 4-to-8 receiver
+  count, 9 of 9 exact at 1.28.23, 6 of 7 at 1.28.24, the deep-doze run, the 58-against-3
+  deferrals (`MEASURED-DRIFT.md:73-83`), and the 410:410 and 355:355 alarm counters.
+- R2.2: the owner's report marked owner-reported, with its bound named
+  (`MEASURED-DRIFT.md:53`) and the reproduced part separated from the unreproduced one: the
+  direction and the mechanism are reproduced, the 20 to 24 minute magnitude only by the
+  artificial force-stop.
+- R2.3: `git log --oneline 2014efad..uat -- modules/widgetrefresh` printed nothing, quoted in
+  FINDINGS section 2.3: the refresh module is frozen at 1.28.25 through the stable re-pin.
+- R3.1: `node_modules/expo-widgets/CHANGELOG.md` read across 58.0.14 to 58.0.19: only 58.0.16
+  carries Android behaviour (the Windows layout-registry fix, the consumer R8 keeps, the
+  `work-runtime-ktx` 2.9.1 pin), 58.0.17 adds custom notifications, and 58.0.15, 58.0.18 and
+  58.0.19 are dependency bumps. No entry touches the alarm, receiver, watchdog or update path.
+- R3.2: the pin table recorded from `git show 840aa613:package.json` against the worktree's
+  `package.json`: expo 58.0.6 to 58.0.12, expo-widgets 58.0.14 to 58.0.19, @expo/ui 58.0.14 to
+  58.0.19, expo-background-task 58.0.10 to 58.0.11, expo-location 58.0.12 to 58.0.16,
+  react-native 0.88.0-rc.3 to 0.88.0.
+- R3.3: `node_modules/expo-widgets/android/proguard-rules.pro` read whole: two keeps
+  (`RoomDatabase` and `InputMerger` subclasses), shipped as `consumerProguardFiles` from
+  `android/build.gradle`; compared against `app.json`'s `extraProguardRules`, which keeps
+  `androidx.work.**` and `androidx.glance.**` whole plus the Expo Modules v2 reflection keeps.
+  Which set is load-bearing today is unmeasured; recorded as gap G6.
+- One commit carries both subjects by decision (PLAN section 6, step 2): both are reading-only
+  notes about the same build pair, taken in one sitting.
+- Review: the diff read cold against the recovered files and the installed sources, one
+  citation at a time; three citation line numbers added, nothing else changed.
+- No red-green loop: a docs step.
+- Version and commit: 2.0.889 under the version lock; merge `--no-ff` into `uat`.
+
+session: ses_eba43e587ffevuDs9eWxHmJ2h0
