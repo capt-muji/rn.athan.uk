@@ -1,7 +1,7 @@
 ---
 name: athan-planner
-description: Plan one queued ticket in ai/plans/README.md. Interview the owner first, decide everything, write the plan, grill it, pass the gate, leave the ticket READY. Use when a planning phase runs, a ticket is NOT PLANNED, PLANNING or NEEDS REPLAN, or the owner asks to plan a ticket.
-version: 2.1.0
+description: Plan one queued ticket in ai/plans/README.md. Answer the frontier agent-ruled (the owner is hands-off), decide everything, write the plan, grill it, pass the gate, leave the ticket READY. Use when a planning phase runs, a ticket is NOT PLANNED, PLANNING or NEEDS REPLAN, or the owner asks to plan a ticket.
+version: 2.2.0
 ---
 
 # athan-planner
@@ -48,44 +48,55 @@ anyone acts on earns no round.
 
 ## 2. Pick the ticket
 
-One ticket at a time. If any ticket is PLANNING, READY, IN PROGRESS or EXECUTED, that
-ticket is in flight and you plan no other. A PLANNING ticket is resumed (section 9), a
-NEEDS REPLAN ticket is repaired, a ticket the owner names (an argument the lead passed)
-is taken as named. Take the first ticket whose status can be planned.
+One ticket at a time. In a parallel lane, the ticket the lane names is taken as named;
+other lanes' in-flight tickets do not block it while file-disjoint (the queue's
+invariant governs). Otherwise, if any ticket is PLANNING, READY, IN PROGRESS or
+EXECUTED, that ticket is in flight and you plan no other. A PLANNING ticket is resumed
+(section 9), a NEEDS REPLAN ticket is repaired, a ticket the lead names (an argument the
+lead passed) is taken as named. Take the first ticket whose status can be planned.
 
 As soon as the skeleton exists: set the ticket to PLANNING, commit and merge (section 8).
 Rename the session to `<order> <ticket short name>: planning` now, and carry the
-milestone forward in the title as you pass each section: interview, draft, grill, gate.
+milestone forward in the title as you pass each section: frontier, draft, grill, gate.
 If the rename tool is absent, continue without it.
 
-## 3. Interview the owner
+## 3. Work the frontier, agent-ruled
 
 The grilling comes before any drafting: all the decisions, taken now, recorded now.
+The owner is hands-off: you put every question to yourself and answer it, and the two
+roles owe each other rigour.
 
 - **The frontier.** The frontier is every decision whose prerequisites are already
-  settled: the questions you can ask now without guessing at answers you have not heard.
-  Ask a whole frontier per round, one question-tool call per question, and wait for the
-  answers before the next round. A question whose answer depends on another question
+  settled: the questions you can answer now without guessing at answers you have not
+  measured. Work a whole frontier per round, one decision at a time, before the next
+  round. A question whose answer depends on another question
   still open belongs to a later round.
-- **Facts are yours, decisions are the owner's.** A frontier question that needs a fact
-  (what the code does, what a library does at the pinned version, what the phone reports):
-  dispatch an `explore` worker and never ask the owner. Only questions downstream of that
+- **Facts are never questions.** A frontier question that needs a fact (what the code
+  does, what a library does at the pinned version, what the phone reports):
+  dispatch an `explore` worker and measure it, never rule on a guess. Only questions
+  downstream of that
   fact wait for it.
-- **Every question carries options.** Two to four concrete options via the question tool,
+- **Every question carries options.** Two to four concrete options,
   never lazy Yes/No unless truly binary, with your recommendation first and one line why.
-  Word options so the recommended one is easy to accept and easy to override.
-- **Push back.** A round where you agreed with everything is a round nobody needed. Where
-  you see a better answer than the owner's first instinct, say so plainly and let her
-  override you.
+- **Argue twice, then commit.** Take your recommendation as the answer only after
+  challenging it once yourself: a recommendation that survives is committed; one that
+  flips is argued once more and the flipped answer is committed. A recommendation you
+  would abandon when pressed is not your recommendation. Record one line for and one
+  line against with the answer.
+- **Push back on yourself.** A round where you agreed with everything you proposed is
+  a round nobody needed. Where
+  you see a better answer than your first instinct, say so
+  plainly and take that instead.
 - **Ungrillable questions route to measurement.** A question needing a reaction, not an
   answer ("how should this feel?"), stops that thread: measure instead (scratch-worktree
   proof, smoke loop, one device reading), then come back and answer it in one line.
-- **Record as taken.** Each answer goes into `PLAN.md` section 2 immediately: what, who,
+- **Record as taken, agent-ruled.** Each answer goes into `PLAN.md` section 2
+  immediately: what, who (`agent-ruled`),
   when, where recorded. An answer not written down is not taken.
 - **Bounded.** More than about forty open questions means the ticket is too big: split it
-  and ask the owner which half runs first.
-- **Done** when the frontier is empty: nothing silently assumed, and the owner confirms
-  the shared understanding. Do not start drafting before then.
+  and record which half runs first.
+- **Done** when the frontier is empty: nothing silently assumed. Do not start drafting
+  before then.
 
 ## 4. Map and prove
 
@@ -158,9 +169,10 @@ Run `bash scripts/check-plan.sh <plan-folder>` from the repository root. It must
    saying which ticket was planned and what the plan covers.
 3. Reread the whole range since the skeleton commit yourself, checking accuracy against
    the code at "Planned at". One review, never a third round.
-4. Merge `--no-ff` into `uat`. Push `origin uat` only if `git log --oneline
-   origin/uat..uat` held nothing unaudited when you started. Otherwise report that the
-   audit runs first.
+4. Merge `--no-ff` into `uat`. In a parallel lane, never push: the orchestrator pushes.
+   Otherwise push `origin uat` only if `git log --oneline origin/uat..uat` held nothing
+   unaudited when you started. In a lane, report instead that the orchestrator audits
+   and pushes.
 5. Remove your worktrees and their branches.
 6. Report in a few plain sentences: which ticket is planned, how many steps, what the
    executor will prove, the decisions the owner took, then the progress table. Then the
@@ -206,7 +218,8 @@ the note says, then finish as section 8 says.
   never copy or average or synthesise a prayer time, no pixel changes without approval,
   comments explain why, no hand-edited release file, EAS is read-only, the API key is
   never committed.
-- Ticket 25 (`moonsighting-research-2.md`): ask the owner whether she has read
-  `ai/features/moonsighting/RESEARCH-FINDINGS.md`. If not, mark the ticket OWNER-LED with
-  a short reading guide as the plan. If yes, plan the remaining research as executable
-  steps, and ask which of that brief's conflicting rules apply.
+- Ticket 25 (`moonsighting-research-2.md`): agent-ruled default OWNER-LED with a
+  short reading guide as the plan, unless the queue already records her reading of
+  `ai/features/moonsighting/RESEARCH-FINDINGS.md`. If it does, plan the remaining
+  research as executable steps, agent-ruled on which of that brief's conflicting
+  rules apply, recorded in the plan.
