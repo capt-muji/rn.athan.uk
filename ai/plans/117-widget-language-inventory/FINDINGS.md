@@ -155,3 +155,74 @@ the exact live read that would is named (D117.3).
    device-locale stale words (`widgets/PrayerWidget.tsx:439-448`): unit letters Latin by
    accident of their era, stale words device-keyed. Tolerated legacy from before v2
    snapshots; row 69's scope names its re-test ("re-tests the v1 fallback words").
+
+## 5. The option set, the recommendation, row 69's fate, the patch, the rulings
+
+Every line below cites the sections carrying its evidence.
+
+### The option set
+
+**Option 1, status quo.** Heal: none — the seams of section 4 stand, among them the widget
+contradicting the fixed-letter law (seam 2) and the cross-platform stale-card split
+(seam 1). Cost: none — sections 1 and 2 remain the inventory of what ships today.
+
+**Option 2, align the widget countdown's letters with the app's fixed-Latin lettered law
+(rows 83, 85, 102).** Heal: the Android `ALabel` renders `h`/`m` as fixed Latin letters in
+every language, so section 2's countdown row reads `1h 12m` under all six and seam 2 closes;
+the `duration.h`/`duration.m` bake stops feeding the label, taking the app locale off that
+surface entirely (section 2's three-input map); the `WidgetStrings` unit-field retirement
+and the v1-fallback re-test ride the same job, closing seam 6 — row 69's surviving shape
+(section 3's quote). Cost: one small widget job under her say-so, since row 69's ban governs
+timing (section 3); and the iOS timer stays system-formatted, seam 3 standing, because the
+bridge carries no format control (section 2's countdown row) and replacing it costs
+per-second timeline entries, which the CPU budget record at `stores/widget.ts:19-31`
+forbids (measured 5 to 13 CPU-seconds per kind per reload on an A12; ten kinds a minute
+exceeded the extension's budget).
+
+**Option 3, wider convergence.** Heal: option 2 plus one job that revisits D79's
+device-keyed rule for the stale faces — bake them app-locale where props exist, keep
+device-keyed only for the props-less placeholders (section 4, seam 1) — and decides the
+unread `rtl` field's fate: keep stamping until the runtime Host lands (row 68's P16,
+seam 4) or stop stamping. Cost: touches settled visuals and a settled ruling, both hers
+(D79, section 3); the gallery fallback (seam 5) stays regardless, being OS behavior.
+
+### The recommendation (D117.8)
+
+Option 2, as the shape row 69 resumes into, when she says go. Her own later rulings — rows
+83, 85 and 102's fixed Latin letters, row 88's Latin digits — made the lettered law app-wide
+on every other surface (sections 3 and 4), which leaves the widget's localised unit letters
+(section 2's countdown row; seam 2) the one surface contradicting it. The recommendation
+names the shape, not the timing: the row ends at her ruling.
+
+### Row 69's fate (D117.6)
+
+Stays parked under her own ban — its waiting-on cell reads "owner says go" (section 3). Its
+colon-format half (`0:42`, `1:12`, `2:00`) is superseded in substance by rows 85/102's
+lettered-design law: the resume shape is option 2's fixed letters, not colons. That
+supersession is recorded here as the resume-time re-scope, not acted on. Nothing folds into
+this ticket and no code ran before her ruling (D117.1).
+
+### The patch upstreaming recommendation (D117.7)
+
+File the device-locale injection hunks (section 3, row 6b: both platforms, one additive
+global, every default unchanged) as one upstream PR under row 51's discipline, beside the
+openApp PR `expo/expo#51292`; anonymity per `ai/AGENTS.md`. The patch stays until a
+published release carries the change. The hunk spans C++, Kotlin and Swift — the costliest
+to rebuild at every re-pin, and ticket 111 rebuilt it again this week (section 3's versions
+note) — and the global is a general widget-runtime capability no app-side change can
+replace: the props-less faces have no app locale to bake from (D44's ground, sections 2 and
+3).
+
+### The rulings left to the owner
+
+1. Pick an option, or none: 1 the status quo, 2 the lettered alignment (recommended),
+   3 the wider convergence (section 5's option set).
+2. Lift or keep row 69's ban: option 2 is its resume shape, and the ban governs timing
+   (section 3).
+3. Approve or refuse the upstream PR for the device-locale hunks (this section, D117.7).
+4. Decide whether the live-read items run before any option lands: the SwiftUI glyphs per
+   device language and numbering setting, the gallery on a device outside the six, the
+   Arabic face in its LTR shell (section 4's seams 3 to 5; D117.3 deferred them).
+
+The investigation ends here. No code, config or test changed on any surface (D117.1); the
+rulings wait on her.
