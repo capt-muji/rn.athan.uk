@@ -1,14 +1,12 @@
 # LOG 111
 
-Resume from: ticket 111 is READY after the 2026-10-16 refresh (the lane's Plan phase). The next
-phase is Execute, at step 1: the delta re-pin to `expo 58.0.13` (eight direct pins moved, two
-transitive) with the three patches regenerated and the first attempt's carried audit findings
-fixed in the same commit; then step 2's 3T release build and alarm gates (the phone is
-connected); then step 3's XS loop, which waits on the owner unlocking her phone (measured
-2026-10-16: `xcrun devicectl device info lockState` fails with "Failed to allocate RSD device",
-the lock signature the first attempt recorded); then step 4's records. The section "Refresh
-(2026-10-16)" below carries the measurements and `AUDIT.md` carries the first attempt's three
-review passes.
+Resume from: step 3, the owner-ordered iPhone XS deep-dive loop, and its one condition is the
+owner unlocking her phone. Steps 1 and 2 are merged: the `expo 58.0.13` re-pin is on uat and the
+OnePlus 3T's release build is green, so nothing else in the ticket waits on hardware. Run the
+step's precondition first (`xcrun devicectl device info lockState --device IPHONE_UDID` must
+answer, and `AGENT_DEVICE_IOS_TEAM_ID=$TEAM_ID agent-device prepare ios-runner --udid
+$IPHONE_UDID` must prepare); while the phone is locked both fail with the RSD allocation error and
+the step returns to this note. Then step 4's records, then the audit and DONE.
 
 ## Planning (2026-10-16)
 
@@ -442,3 +440,170 @@ session: ses_eba90557fffegXgpdEF29mZxAH
   cell and every other file replayed untouched.
 
 session: ses_eba1b96b6ffe2uZ6oyyedZ7GqS
+
+- Commit: `0118393a` at 2.0.908 - one commit, 11 files, +247/-103 (the rebase re-rolled `eb299ad9`,
+  and its version-prefixed message was amended to match the resolved number). Its own hook
+  (lint-staged, `yarn validate`, `check-changed-coverage`): `Test Suites: 217 passed, 217 total`,
+  `Tests: 2 skipped, 5709 passed, 5711 total`, coverage `Statements 100% (5392/5392)`,
+  `Branches 100% (2324/2324)`, `Functions 100% (1129/1129)`, `Lines 100% (4830/4830)`. A first
+  attempt at the commit was refused by the coverage gate (the two changed/new suites were unstaged,
+  and it measures the working tree), so the whole set was staged and the commit re-run.
+- Break script's last line: `ALL AS EXPECTED: 1`.
+- Review (a cold read of `git show eb299ad9` and the rebased `0118393a`): the eight pins and nothing
+  else in `package.json` beyond the version; `app.json` only its version line; the row-111 cell only
+  its state phrase, the record kept byte-for-byte; the widgets patch byte-identical under its new
+  name; the location patch's three files and every original hunk intact; the background-task patch's
+  single removed hunk; the script's renamed docstring, rewritten comment and deleted block; the seven
+  remaining cases in the location suite; the four new ones. R1.9 reads as the installed tree: the
+  regenerated location patch must carry `mLastAzimuth` on its four removal lines (the declaration,
+  the assignment, the reset, and the upstream gate line that named it), because a removal hunk quotes
+  what it removes, while `didRegisterTaskForTesting` is absent from the patch outright and
+  `mLastAzimuth` is absent from the installed `LocationModule.kt` - the plan's own review item
+  ("the installed `LocationModule.kt` carries no `mLastAzimuth`") is the reading applied. No
+  lifecycle, thread, residue or rule class found in the diff.
+
+- Merged: `9dd4eb6a` `2.0.908 - merge dep/111-repin-5813` into uat in the main tree under uat.lock.
+  The retry merged clean, `ort` auto-merging `package.json` and `app.json` because both sides carried
+  the same 2.0.908; uat was `723a6c32` (2.0.908, lane 121's docs merge) at the retry. Merged content:
+  the eight pins of section 4.1, the version trio at 2.0.908, `"enableRemoteNotifications": false`
+  present once, `strokeBorder({ content: palette.pillStroke, ... })` with no `color` parameter, the
+  background-task patch free of `didRegisterTaskForTesting` and the location patch with no added
+  `mLastAzimuth` line.
+- Step checks on the merged re-pin: R1.1 `58.0.13`, R1.2 `0.88.0`, R1.8 the seven at their targets,
+  R1.3 the three `✔` lines with no error and no mismatch warning, R1.4 `yarn validate` green at 100
+  percent on four measures, R1.5 `yarn test:tz` green in four zones, R1.6 and R1.7 as above, R1.9 as
+  above, R1.10 `PATCH AS SHIPPED`, R1.11 the new suite green, R1.12 and R1.13 the publication case
+  and the mutation pass. The installed-package checks were measured in the lane worktree, whose tree
+  is byte-identical to the merged commit; the main tree's `node_modules` refresh is step 2's opening
+  action, not this step's.
+- Locks: version, commit and uat locks all released; no worktree created by this step (the lane
+  worktree is the lead's).
+
+session: ses_eba1b96b6ffe2uZ6oyyedZ7GqS
+
+### Step 2 — DONE (the 3T release build and its gates: R3.1 to R3.6)
+
+- Main tree (the build bay), under `commit.lock` at 19:20: `git fetch -q origin uat && git checkout uat
+  && git merge --ff-only origin/uat` -> already at `9dd4eb6a` (2.0.908). `yarn install
+  --ignore-engines --force` exit 0 in 8.88 s, printing exactly `expo-background-task@58.0.11 ✔`,
+  `expo-location@58.0.17 ✔`, `expo-widgets@58.0.20 ✔`, no `**ERROR**` line and zero
+  version-mismatch lines; the only two warnings are "Workspaces can only be enabled in private
+  projects" (`logs/install.log`). `node -e` printed `58.0.13 58.0.20`. The gitignored
+  `android/app/build.gradle` already carried `versionName "2.0.908"`, so no edit was needed there
+  and nothing was staged.
+- R3.1: `zsh $HOME/athan-gitree/bin/build-prod.zsh uat .../3t/athan-uat-prod.apk` under
+  `build.lock` 19:20:45 to 19:29:22 - exit 0, `BUILD-PROD OK`, 517 s wall, gradle
+  `BUILD SUCCESSFUL in 8m 32s`, 1499 tasks executed. `> Task :expo-widgets:compileReleaseKotlin`
+  ran clean (gradle log line 2080) - the task that failed in 11 m 9 s at 58.0.19 - and the
+  identity line reads `EXPO_PUBLIC_ENV=prod, real API key present in the bundle (not printed),
+  archs arm64-v8a`. APK 70 029 987 bytes, `com.mugtaba.athan` versionCode 1000000 versionName
+  2.0.908, signer `fac61745…` (the owner's debug certificate), sha256 `029abb44…`
+  (`athan-uat-prod.apk`, `athan-uat-prod.apk.build.txt`).
+- The 58.0.19 failure log lived at `logs/athan-uat-prod.gradle.log`, the same path this successful
+  run writes, so it was overwritten by the build itself; the failure stands quoted in this file's
+  `### Step 3 — R3.1 the 3T release build: FAILED` entry above (12 `Unresolved reference` lines on
+  `io.github.jakex7.peek.*`, `:expo-widgets:compileReleaseKotlin FAILED`, `BUILD FAILED in 11m 9s`).
+- Install and launch: `adb -s 3T_SERIAL install -r` -> `Success`; `am start -W
+  com.mugtaba.athan/.MainActivity` -> `Status: ok`, ThisTime 4845 ms; installed
+  `versionName=2.0.908`, pid 22172. `auto_time` read `1` before the install and `1` after the
+  gates; no clock change was made (`logs/install-apk.log`, `am-start.log`).
+- R3.2: `yarn check:device 3T_SERIAL` exits 1 on one check only, its build-identity guard -
+  `FAIL installed 2.0.908 is BEHIND the tree's 2.0.913` at 19:36 and `...2.0.915` at 19:38. Every
+  other check PASSes in both runs: `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`,
+  `POST_NOTIFICATIONS` declared (SDK 28), 24 notification channels with `extras_at_time_v3`
+  present, an athan channel present, all 3 prayer channels carrying a sound, and `41 future prayer
+  alert(s) armed (0 already fired)`. The guard fires because the sibling lanes carried `uat` past
+  the commit this build proves while the step ran: `git diff --stat 9dd4eb6a..uat` is `app.json`,
+  `package.json`, `ai/plans/README.md`, `.opencode/agents/athan-lane.md` - version lines and
+  documentation, no application source. The script's own documented route for that comparison,
+  `ALLOW_STALE=1 yarn check:device 3T_SERIAL`, exits 0: `installed 2.0.908 differs from the tree's
+  2.0.915 (behind)` then `== all checks passed ==` (`logs/check-device-1.txt`, `-2`,
+  `-3-plain.txt`, `-4-allow-stale.txt`). The far-future app alarm the script names on its `..`
+  line is `2036-10-09 22:03  in 87506h 25m  ACTION_FORCE_STOP_RESCHEDULE` (epoch 2107199034081;
+  8 such blocks in the dump). The epoch this plan names, 2104803640505, does not appear on this
+  install.
+- R3.3: the live `dumpsys alarm` app blocks read the 3T form - `window=0 repeatInterval=0 count=0
+  flags=0x3` with an `Alarm clock:` sub-block carrying `triggerTime=` and a `showIntent`, tag
+  `*walarm*:expo.modules.notifications.NOTIFICATION_EVENT`; 41 future prayer alerts plus one
+  `WidgetRefreshReceiver` alert. Armed times recorded: 2026-10-17 01:53, 04:35, 04:40, 06:27,
+  06:32, 13:05, 16:12, 16:37, 16:42, then 2026-10-18 01:43, 04:37, 04:42 … through 2026-10-21
+  (`logs/alarm-grep-final.txt`, `alarm-final.txt`, `alarm-after-fetch.txt`).
+- The armed table is production data, not the mock's: the alarm set was identical on all 24
+  fifteen-second polls from launch (`logs/alarm-poll.txt`), 41 alerts spread over six days, and
+  nothing armed near the 19:30 launch - a mock table's prayers sit either side of launch.
+- R3.4: `npx jest shared/__tests__/widgetRuntimeLoads.test.ts --watchman=false
+  --selectProjects=unit` under `build.lock` - exit 0, `Test Suites: 1 passed, 1 total`,
+  `Tests: 3 passed, 3 total`, 3.297 s (`logs/widget-runtime.log`).
+- Widget observation (the step's own word: an observation, not a criterion): `dumpsys appwidget`
+  before placement showed the eight Athan providers registered with `Widgets:` empty and
+  `widgets.size=0`, and the home screen carried no widget (`home-screen.png`). The picker's first
+  Athan cell (`Extra Times (Dark) 3×2`, long-pressed at the atlas's (234,460)) placed one:
+  `widgets.size=1`, `id=2`, `provider=ExtrasWidgetDarkProvider / com.mugtaba.athan`. It renders
+  the device locale's extras row with no loading placeholder - title `نصف الليل`, a countdown
+  `4 س 20 د`, the target `00:00`, and the calendar line `6 جم` (`logs/appwidget.txt`,
+  `appwidget-after-place.txt`; `picker-01/02/03*.png`, `widget-01-just-placed.png`,
+  `widget-02-rendered.png`). The picker strip labels its first two cells `3×2` and `5×2` where
+  `e2e/device-atlas-oneplus3t.md` records `2x2`/`4x2`; the strip order and the replay coordinate
+  still hold, and no file was edited for it.
+- R3.5, R3.6 (D111.11): two `npx expo export --platform android` runs under `build.lock` into
+  `$TMPDIR/111-export-prod` and `$TMPDIR/111-export-mock`, both exit 0, differing in
+  `EXPO_PUBLIC_ENV` alone. The plan's recipe sets that variable alone, and `app.config.ts` refuses
+  `EXPO_PUBLIC_ENV=prod` without the key (`EXPO_PUBLIC_API_KEY is missing while
+  EXPO_PUBLIC_ENV=prod`), so the key was read from `$HOME/.config/athan/.api_key` into both
+  processes' environment and never printed. The two entry-chunk md5 lines: prod
+  `entry-e4c4647cfee50da372526d947fb83df9.hbc` `afa8d8377bdb3692bc4bbeb46b928da4`; mock
+  `entry-301ac79233a81a9e492b0be848dca144.hbc` `a3d4e28ff9ce15029b6c994877d7fa6e`. They DIFFER,
+  so the changed `EXPO_PUBLIC_*` invalidated the transform cache instead of shipping stale bytes;
+  on the plan's own reading the Metro env-blindness gotcha does not stand at this pin set, and
+  step 4 owns the e2e README edit. The plan's `*.js` glob matches nothing because this project
+  exports Hermes bytecode (`.hbc`); the mock chunk greps its marker (`grep -rl "mock"` names the
+  mock entry chunk, 5 occurrences; the prod chunk carries `prod` 10 times as the control)
+  (`logs/export-prod.log`, `export-mock.log`).
+- Punctuality: NOT RUN, and not runnable inside this session. The next armed fire is
+  `2026-10-17 01:53`, 6 h 14 m past the gate pass at 19:38, and no clock change is planned on this
+  phone, so there is no fire to wait for here. Nothing fired and nothing failed, so this is not a
+  miss; the armed time is recorded above and the notification capture (`dumpsys notification
+  --noredact` plus logcat at the fire) is owed to whoever holds the phone past 01:53.
+- Nothing in the repository changed: the main tree is clean and the lane worktree lists only this
+  plan folder's `LOG.md` and `PLAN.md`; every lock is released; no screenshot or recording entered
+  the repository. The 3T keeps the `2.0.908` production install - the release build this step
+  exists to prove.
+
+session: ses_eba0eef02ffezpNmvYPeSHi6rF
+
+## Lane rotation 2026-10-16 — steps 1 and 2 done, step 3 waits on the owner's phone
+
+- Plan (the refresh): merged `2dd1fe6a` (commit `e81457d5`, 2.0.901). The whole pin set was
+  re-measured before it was re-pinned, the anchors were rebuilt to assert step 1's starting state,
+  the pre-flight stopped counting them, and the first attempt's six carried audit findings became
+  named contracts. One cold grill pass returned 14 findings; all were adjudicated and applied.
+- Step 1: commit `eb299ad9`, rebased to `0118393a` at 2.0.908 after lane weather, merge `9dd4eb6a`.
+  The eight pins moved to the `expo 58.0.13` set, the three patches were regenerated at
+  58.0.11/58.0.17/58.0.20, `didRegisterTaskForTesting` and `mLastAzimuth` left the patches, the
+  vacuous `local-maven-repo` check and its fixture were deleted, and
+  `shared/__tests__/backgroundTaskPatch.test.ts` was added. Hook: `Tests: 2 skipped, 5709 passed,
+  5711 total`, coverage 100 percent on all four measures. Clean install printed exactly three `✔`
+  lines with no error and no version-mismatch warning.
+- Step 2: the 3T release build and gates (see its own entry above).
+- Step 3 (the owner-ordered XS deep-dive loop): NOT RUN. Measured by this lane 2026-10-16 19:00:
+  `xcrun devicectl device info lockState --device IPHONE_UDID` fails with `Failed to allocate RSD
+  device. ... error -402653181 (0xE8000003)`, the lock signature the first attempt recorded, and
+  the phone cannot be driven by any agent step until the owner unlocks it. Nothing else in the
+  ticket waits on hardware: R4.1, R4.3 and R4.4 were green on the superseded pin set and re-run
+  there, R4.2 was green on recovered evidence, R4.6 was partial, R4.5's ground stands (D111.17) and
+  R4.7 and R4.8 were never observed.
+- Step 4 (records): waits for step 3, because its programme section quotes the run's incidents.
+- Versions: `9dd4eb6a` changes no version, because lane 121's docs merge had taken 2.0.908 before
+  the retry and the lane protocol resolves the version trio to the higher of the two (equal here).
+  The class is the one the first attempt's audit recorded at 2.0.863; the next commit in this lane
+  (this ledger commit) carries 2.0.909 and restores monotonicity. A retroactive bump would rewrite
+  merged history, which the hard rules forbid.
+- Plan repairs made during execution: R1.9 restated, because a removal hunk must name the symbol it
+  removes, so the criterion now reads "adds no patch line naming the symbol and carries neither
+  symbol in the installed sources".
+
+Resume from: step 3, the owner-ordered iPhone XS deep-dive loop, once the owner unlocks her phone —
+that unlock is the one condition. Run the step's own precondition first (`devicectl device info
+lockState` must answer, and `AGENT_DEVICE_IOS_TEAM_ID=$TEAM_ID agent-device prepare ios-runner
+--udid $IPHONE_UDID` must prepare the runner); while the phone is locked both fail and the step
+returns to this note. Then step 4's records, then the audit and DONE.
