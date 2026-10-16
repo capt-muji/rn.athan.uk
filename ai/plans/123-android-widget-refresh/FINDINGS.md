@@ -132,9 +132,10 @@ idled, and whether the widget was placed before or after the app update that cha
 
 ### 2.3 What no reading covers
 
-- The stable pins. Every reading in 2.1 is from the preview line (expo `~58.0.0-preview.3`,
-  `~58.0.3`, `~58.0.6`; `expo-widgets` 58.0.3, 58.0.14). Nothing has been read on the
-  re-pinned build (`expo ~58.0.12`, `expo-widgets 58.0.19`).
+- The stable pins. Every reading in 2.1 is from the preview line (`expo ~58.0.0-preview.3` with
+  `expo-widgets ~58.0.3` from 1.27.384 through 1.28.25, and `expo ~58.0.6` with
+  `expo-widgets 58.0.14` at the re-pin). Nothing has been read on the re-pinned build
+  (`expo ~58.0.12`, `expo-widgets 58.0.19`).
 - The screen-wake fix. `2014efad` (1.28.25) added `ACTION_SCREEN_ON`. The recovered record
   states plainly that the fix's drift reduction "is NOT established": its after-run was taken
   on a mock-data build, so the comparison was void.
