@@ -286,8 +286,10 @@ The main tree `$HOME/repos/rn.athan.uk` is the build bay: `build-prod.zsh` hardc
 builds `uat` content, so step 2 runs only after step 1's merge. The 3T is on adb, Android 9,
 `auto_time` reads 1, and it carries an older production build (2.0.215) that `adb install -r`
 replaces without touching app data. The 3T's alarm-clock proof is a sub-block, never `flags=0x9`
-(A3): an alarm-clock arm reads `window=0 flags=0x3` with an `Alarm clock:` sub-block. The known
-unexplained app alarm at `when 2104803640505` appears in every dump and is named, never counted.
+(A3): an alarm-clock arm reads `window=0 flags=0x3` with an `Alarm clock:` sub-block. The
+programme's known unexplained app alarm at `when 2104803640505` is named, never counted, when it
+appears; on the 2.0.908 install measured 2026-10-16 it did not, and the check named an
+`ACTION_FORCE_STOP_RESCHEDULE` block at epoch 2107199034081 instead.
 
 The first attempt's Android build failed in 11 m 9 s at `:expo-widgets:compileReleaseKotlin`;
 with 58.0.20 that task compiles. Disk headroom on the build volume was 12 GiB at this refresh,
@@ -342,13 +344,13 @@ full jest run (the SIGSEGV lesson, section 10).
 - [R1.6] WHEN the app.json `expo-notifications` plugin entry is read on the merged re-pin commit THE SYSTEM SHALL still carry `"enableRemoteNotifications": false`
 - [R1.7] WHEN `widgets/PrayerWidget.tsx` is read on the merged re-pin commit THE SYSTEM SHALL still pass `strokeBorder` a `content` parameter and no `color` parameter
 - [R1.8] WHEN the seven moved modules are resolved from the merged re-pin commit THE SYSTEM SHALL print `@expo/ui 58.0.20`, `expo-haptics 58.0.7`, `expo-location 58.0.17`, `expo-notifications 58.1.5`, `expo-router 58.0.22`, `expo-splash-screen 58.0.10` and `expo-widgets 58.0.20`
-- [R1.9] WHEN the regenerated patch files are read THE SYSTEM SHALL contain no `didRegisterTaskForTesting` and no `mLastAzimuth`
+- [R1.9] WHEN the regenerated patch files and the installed patched packages are read THE SYSTEM SHALL add no patch line naming `didRegisterTaskForTesting` or `mLastAzimuth` and SHALL carry neither symbol in the installed `expo-background-task` and `expo-location` sources
 - [R1.10] WHEN `bash scripts/verify-expo-location-patch.sh` runs on a patched tree THE SYSTEM SHALL print `PATCH AS SHIPPED`
 - [R1.11] WHEN `npx jest shared/__tests__/backgroundTaskPatch.test.ts --watchman=false --selectProjects=unit` runs on the merged re-pin commit THE SYSTEM SHALL pass
 - [R1.12] WHEN `bash scripts/verify-expo-location-patch.sh` runs against a tree whose `expo-module.config.json` carries the `publication` block THE SYSTEM SHALL print `PATCH NOT AS SHIPPED`
 - [R1.13] WHEN the offline-refresh option is removed from the installed patched package THE SYSTEM SHALL fail `npx jest shared/__tests__/backgroundTaskPatch.test.ts --watchman=false --selectProjects=unit`
 - [R3.1] WHEN `build-prod.zsh` completes on the re-pin commit THE SYSTEM SHALL print `BUILD-PROD OK`
-- [R3.2] WHEN `yarn check:device 3T_SERIAL` reads the 3T after install THE SYSTEM SHALL pass every channel, permission and armed-alert check it runs and SHALL name the known unexplained alarm at `when 2104803640505`
+- [R3.2] WHEN `yarn check:device 3T_SERIAL` reads the 3T after install THE SYSTEM SHALL pass every channel, permission and armed-alert check it runs, comparing against the tree with the script's own `ALLOW_STALE=1` route when sibling lanes have carried `uat` past the built commit
 - [R3.3] WHEN `dumpsys alarm` reads one armed athan on the 3T THE SYSTEM SHALL show `window=0 flags=0x3` with an `Alarm clock:` sub-block
 - [R3.4] WHEN `npx jest shared/__tests__/widgetRuntimeLoads.test.ts --watchman=false --selectProjects=unit` runs on the re-pin commit THE SYSTEM SHALL pass
 - [R3.5] WHEN two `npx expo export --platform android` runs on the re-pin commit differ only in `EXPO_PUBLIC_ENV` THE SYSTEM SHALL print the two entry-chunk md5 lines and the ledger SHALL record whether they differ
