@@ -138,7 +138,7 @@ holds the merge; both suites re-run on uat: 49 passed, 49 total.
 
 session: ses_ebdd8f1e7ffegri756dWa13K04
 
-### Step 03 — executing
+### Step 03 — done
 
 Branch `feat/108-note-box` off `uat` (a36594f7, 2.0.828). Anchors `note-text`,
 `script-line-height`, `volume-note-style` each counted 1.
@@ -152,4 +152,27 @@ Red, before any change (`npx jest components/sheets/parts/__tests__/VolumeNote.t
 (The first red run failed on a missing outer `setActiveLocale` import in the finally block, a
 defect in my test edit, not the plan's; the import was added and the run repeated before any
 code change.)
+
+Green: the suite 5 passed, 5 total; `yarn validate` all green. Hook (commit `36e16535`, version
+2.0.829, run in the foreground and waited out):
+
+- `Tests:       5682 passed, 5682 total`
+- Statements 100% (5355/5355), Branches 100% (2310/2310), Functions 100% (1116/1116),
+  Lines 100% (4796/4796)
+
+Break, from the repo root before the commit: `bash
+ai/plans/108-rubik-cascade/scripts/break-108.sh note` - last line `BREAK OK` (the lineHeight
+line deleted, the `script line box` case red: 1 failed, 4 skipped; the file restored from the
+backup and `git status --porcelain` listed only this step's files and the plan files).
+
+Review, read cold against the checklist: one style key (`lineHeight:
+ty.scriptLineHeight?.(TEXT.sizeDetail)` after `fontSize`) with its one-line why comment, one
+comment losing the word "pair", one new ar test on the sweep's isolate shape with the
+RNTL_SKIP_AUTO_CLEANUP prerequisite, one en guard assertion; nothing else moved. En carries no
+live lineHeight key. No lifecycle, thread, residue or rule exposure. Nothing to fix.
+
+Merged: `2139d79c` (`2.0.829 - merge feat/108-note-box: the note's script line box`), uat holds
+the merge; the suite re-run on uat: 5 passed, 5 total.
+
+session: ses_ebdd8f1e7ffegri756dWa13K04
 
