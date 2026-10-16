@@ -184,7 +184,7 @@ itself reads.
 
 ## 6. Steps
 
-- [ ] Step 1: the inventory (`steps/1-inventory.md`) - R1.1, R1.2
+- [x] Step 1: the inventory (`steps/1-inventory.md`) - R1.1, R1.2
 - [ ] Step 2: the landed state and the seams (`steps/2-landed-state.md`) - R2.1, R2.2
 - [ ] Step 3: the options and the recommendation (`steps/3-recommendation.md`) - R3.1, R3.2
 
