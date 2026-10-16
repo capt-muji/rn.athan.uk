@@ -1,9 +1,0 @@
-    expect(text.fontSize).toBe(TEXT.sizeDetail);
-    expect(text.fontFamily).toBe('Roboto-Regular');
-  });
-
-  it('lifts off the body, a centred row with its padding', async () => {
-    await render(<SheetVolumeNote />);
-
-    const foot = footStyle(IOS_COPY);
-    expect(foot.flexDirection).toBe('row');
