@@ -60,7 +60,7 @@ describe('the delivered-stack clear', () => {
     await initializeNotifications(checkPermissions, refreshFn);
 
     expect(dismissAllNotificationsAsync).toHaveBeenCalledTimes(1);
-    expect(dismissAllNotificationsAsync.mock.invocationCallOrder[0]).toBeLessThan(
+    expect((dismissAllNotificationsAsync as jest.Mock).mock.invocationCallOrder[0]).toBeLessThan(
       refreshFn.mock.invocationCallOrder[0]
     );
     expect(logger.info).toHaveBeenCalledWith('NOTIFICATION: Cleared the delivered notifications');
@@ -86,7 +86,7 @@ describe('the delivered-stack clear', () => {
   });
 
   it('a failed clear never stops the refresh', async () => {
-    dismissAllNotificationsAsync.mockRejectedValueOnce(new Error('dismiss refused'));
+    (dismissAllNotificationsAsync as jest.Mock).mockRejectedValueOnce(new Error('dismiss refused'));
     const checkPermissions = jest.fn().mockResolvedValue(true);
     const refreshFn = jest.fn().mockResolvedValue(undefined);
 
@@ -101,7 +101,7 @@ describe('the delivered-stack clear', () => {
 
   it('a clear that never answers is given up on and the refresh still runs', async () => {
     jest.useFakeTimers();
-    dismissAllNotificationsAsync.mockReturnValue(new Promise(() => {}));
+    (dismissAllNotificationsAsync as jest.Mock).mockReturnValue(new Promise(() => {}));
     const checkPermissions = jest.fn().mockResolvedValue(true);
     const refreshFn = jest.fn().mockResolvedValue(undefined);
 
@@ -117,6 +117,12 @@ describe('the delivered-stack clear', () => {
   });
 });
 ```
+
+The three `as jest.Mock` casts follow this file's own pattern (six use sites on
+`setNotificationChannelAsync` at lines 389, 472, 489, 508, 544, 576): jest's moduleNameMapper
+mocks `expo-notifications` at runtime only, so `tsc` types the import as the real SDK
+function and every `.mock` accessor or `mock*` mutator needs the cast
+(D120.8).
 
 The `beforeEach` clear is load-bearing: the unit project sets no `clearMocks`, the shared
 module mock accumulates calls across the file, and the pre-existing 'calls refreshFn when
