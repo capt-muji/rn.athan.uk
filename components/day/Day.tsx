@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: COLORS.text.secondary,
     fontSize: ty.size(TEXT.sizeSmall),
     fontFamily: ty.familyRegular,
-    marginBottom: compactArabic ? SPACING.py : SPACING.quart,
+    marginBottom: compactArabic ? SPACING.sm : SPACING.quart,
   },
   date: {
     fontFamily: ty.familyRegular,
