@@ -102,11 +102,21 @@ describe('typographyFor', () => {
     expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 
-  it('resolves th to the Thai pair with no script line box', () => {
+  it('resolves th to the Sarabun pair, one family for words and digits, with the script line box', () => {
     const ty = typographyFor('th');
-    expectScriptRecord(ty, 'NotoSansThai-Regular', 'NotoSansThai-Medium');
-    // The Thai face's own 1.511em box clears its ink, so no surface pins a script box
-    expect(ty.scriptLineHeight).toBeUndefined();
+    expect(ty.familyRegular).toBe('Sarabun-Regular');
+    expect(ty.familyMedium).toBe('Sarabun-Medium');
+    // The Rubik pattern: Sarabun's own Latin carries the digits and row times
+    expect(ty.familyDigits).toBe('Sarabun-Medium');
+    expect(ty.familyRowTime).toBe('Sarabun-Regular');
+    expect(ty.size(18)).toBe(18);
+    expect(ty.lineHeight(20)).toBe(20);
+    expect(ty.letterSpacing(0.2)).toBe(0.2);
+    expect(ty.wordFace).toBe(true);
+    expect(ty.countdownSize).toBe(26);
+    // The win ink runs past the tight 1.300em box, so ink-bearing surfaces take the script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 });
 
