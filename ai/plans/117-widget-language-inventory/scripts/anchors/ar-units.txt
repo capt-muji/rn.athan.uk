@@ -1,0 +1,4 @@
+  'duration.h': 'س',
+  'duration.m': 'د',
+  'duration.s': 'ث',
+  'duration.now': 'الآن',
