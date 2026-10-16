@@ -101,3 +101,16 @@ ro.build.version.release` at the next device wave. The five named experiments st
 commands and waiting conditions, and two cites were corrected to the ranges that hold the
 quoted lines (`runAndroidAsync.js:127-133`, `:172`).
 session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
+
+### Step 4 — DONE (the ruling pack)
+
+Branch `docs/122-4-ruling-pack` off `lane/122` at `5d173abf`. Pre-flight `PREFLIGHT OK`, run cold
+from `$TMPDIR` before the branch. FINDINGS section 6 extended with what she takes on: two small
+follow-on tickets (a documentation correction for question 1; the system-image install, the lane's
+routing paragraph and its atlas entry for question 2), each planned after her word. The queue row
+now carries the outcome text: the measurement at 58.1.10 axis by axis, the harness inventory with
+its 36 hits and the build scripts' absent adb calls, the local toolchain, both questions' options
+with their measured rejections, the two recommendations, the five named experiments with their
+waiting conditions and the six unverified claims. R4.1 holds: the row answers the row's three
+clauses standalone.
+session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
