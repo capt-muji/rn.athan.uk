@@ -70,3 +70,12 @@ the hook, so it reached uat inside fdd43a4f unseen; biome caught it at this comm
 This commit heals both files to exactly one version key (2.0.927). The lesson matches row
 120's recorded exception: after any rebase, verify the version files hold one key before
 the next commit trusts them.
+
+### Step 01 — done
+Branch docs/119-agents-md-rows, commit 94ffdaa7, version 2.0.928, merge 55efc70f on lane/119.
+Hook: Tests: 2 skipped, 5709 passed, 5711 total; Statements 100% (5392/5392), Branches 100%
+(2324/2324), Functions 100% (1129/1129), Lines 100% (4830/4830).
+Break: ALL AS EXPECTED: 1 (24 ok checks).
+Review: clean on a cold read - both contracts byte-for-byte, the screenshot bullet and every
+other table row untouched, only the listed files moved, message starts 2.0.928 -.
+session: ses_eb9a40340ffeNBxnYk1MfifEp1
