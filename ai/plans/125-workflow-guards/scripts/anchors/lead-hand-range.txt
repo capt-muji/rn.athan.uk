@@ -1,2 +1,4 @@
+   `uat`, the plan folder, and a findings file at `$TMPDIR/findings-plan-<N>.md`. It checks
    the code against the plan. Hand the range, never only diff files: a temp file can be
    gone by the time the reviewer runs, and a reviewer that cannot find the diff must
+   derive the range from git and say so.
