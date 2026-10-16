@@ -70,3 +70,18 @@ FINDINGS sections 1 and 2 reproduced:
   `system-images/` empty, platforms android-35/36/37.0, host arm64, RN manifest
   `minSdkVersion 24` / `targetSdkVersion 36`, build scripts arm64-v8a.
 session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
+
+### Step 2 — DONE (the harness inventory verified)
+
+Branch `docs/122-2-harness` off `lane/122` at `b18d75aa`. Pre-flight `PREFLIGHT OK`, run cold
+from `$TMPDIR` before the branch. The sweep `git grep -nw adb -- e2e` printed 36 hits across 10
+files (the same numbers as the draft); FINDINGS section 3's table now lists every hit as an
+exact line list per file, and the totals reconcile: baseline-compare.sh 4, device-checks.sh 5,
+frame-audit.sh 9, idle-cpu.sh 3, idle_cpu.py 2, README.md 4, AGENTS.md 1, atlas-oneplus3t 3,
+atlas-oppo-findx8 3, atlas-sm-s911b 2. The seven `e2e/flows/*.yaml` files call adb nowhere and
+`e2e/device-atlas-iphone-xs.md` names none. Each of the four build scripts prints exactly one
+`grep -n adb` hit, the comment naming `adb install -r`, and no invocation. `npx expo --help`
+prints the twelve command names plus the three agent-command names and no device or emulator
+command; `npx expo run:android --help` prints `-d, --device [device]`. The toolchain line in
+the section stands as the step 1 verification recorded it.
+session: lane-122 in-lane execution (D122.8; no executor worker dispatched)
