@@ -1,6 +1,7 @@
 /**
  * The mock feed a local build serves: each download seeds today from its own moment, so opening the
- * app finds Asr next on a tight runway that rolls a boundary roughly every minute.
+ * app finds Asr just passed, Maghrib next about a minute out and Isha a minute behind it - the day
+ * rolls to tomorrow's real schedule while you watch.
  */
 
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -20,7 +21,7 @@ afterEach(() => {
 describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in London', () => {
   // On a whole minute, a millisecond past it, and a millisecond before the next: times carry no seconds
   it.each(['2026-09-15T14:30:00.000Z', '2026-09-15T14:30:00.001Z', '2026-09-15T14:30:59.999Z'])(
-    'puts Isha next, 75 to 134 seconds out, after a download at %s, with the five before it passed',
+    'puts Maghrib next about one minute out and Isha two, after a download at %s, with Asr the prayer just passed',
     (iso) => {
       const readAt = new Date(iso);
       jest.useFakeTimers({ now: readAt });
@@ -29,15 +30,49 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
 
       const isha = instantOf(readAt, today.isha);
       const magrib = instantOf(readAt, today.magrib);
-      expect(isha - readAt.getTime()).toBeGreaterThanOrEqual(75 * 1000);
-      expect(isha - readAt.getTime()).toBeLessThan(75 * 1000 + MINUTE);
-      for (const before of [today.fajr, today.sunrise, today.dhuhr, today.asr, today.magrib]) {
+      const asr = instantOf(readAt, today.asr);
+      expect(magrib - readAt.getTime()).toBeGreaterThanOrEqual(MINUTE);
+      expect(magrib - readAt.getTime()).toBeLessThan(2 * MINUTE);
+      expect(isha - readAt.getTime()).toBeGreaterThanOrEqual(2 * MINUTE);
+      expect(isha - readAt.getTime()).toBeLessThan(3 * MINUTE);
+      expect(isha - magrib).toBe(MINUTE);
+      for (const before of [today.fajr, today.sunrise, today.dhuhr, today.asr]) {
         expect(instantOf(readAt, before)).toBeLessThan(readAt.getTime());
       }
-      expect(magrib - instantOf(readAt, today.asr)).toBe(MINUTE);
-      expect(readAt.getTime() - magrib).toBeGreaterThanOrEqual(MINUTE);
-      expect(readAt.getTime() - magrib).toBeLessThanOrEqual(2 * MINUTE);
-      expect(isha - magrib).toBeGreaterThan(2 * MINUTE);
+      expect(readAt.getTime() - asr).toBeLessThanOrEqual(2 * MINUTE);
+    }
+  );
+
+  it.each(['2026-09-16T03:30:00.000Z', '2026-09-16T03:30:59.999Z'])(
+    'seeds a realistic pre-dawn day at %s London 04:30, Fajr next about one minute out, no small-hours Standard rows',
+    (iso) => {
+      const readAt = new Date(iso);
+      jest.useFakeTimers({ now: readAt });
+
+      const today = MOCK_DATA_SIMPLE.times[formatDateShort(readAt)];
+
+      const fajr = instantOf(readAt, today.fajr);
+      expect(fajr - readAt.getTime()).toBeGreaterThanOrEqual(MINUTE);
+      expect(fajr - readAt.getTime()).toBeLessThan(2 * MINUTE);
+      // The rest of the day is the real static shape, so nothing trips the midnight-crossing rules
+      expect(today.dhuhr).toBe('13:04');
+      expect(today.isha).toBe('21:27');
+      expect(instantOf(readAt, today.sunrise)).toBeGreaterThan(fajr);
+    }
+  );
+
+  it.each(['2026-09-15T22:53:00.000Z', '2026-09-15T22:55:00.000Z'])(
+    'serves the spent day unchanged from a late-evening download at %s London, with tomorrow\u2019s Fajr next',
+    (iso) => {
+      const readAt = new Date(iso);
+      jest.useFakeTimers({ now: readAt });
+
+      const today = MOCK_DATA_SIMPLE.times[formatDateShort(readAt)];
+
+      expect(today.isha).toBe('21:29');
+      for (const time of [today.fajr, today.sunrise, today.dhuhr, today.asr, today.magrib, today.isha]) {
+        expect(instantOf(readAt, time)).toBeLessThan(readAt.getTime());
+      }
     }
   );
 
