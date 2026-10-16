@@ -57,3 +57,17 @@ Grill (one round, the hostile reading; all seven findings applied):
 The grill found seven findings, all sentence-level repairs on confirmed-correct structure, so
 no second round ran (the rule's condition is permission, and nothing a second round could
 change remains).
+
+### Step 01 — executing
+
+Branch `feat/108-subtitle-pulls` off `uat` (2.0.826). Pre-flight `PREFLIGHT OK` from
+`$TMPDIR/preflight-108.sh`.
+
+Red, before any change (`npx jest components/__tests__/typographySweep.test.tsx
+--watchman=false`), exactly the two rewritten ar cases and nothing else (44 passed, 46 total):
+
+- `the qibla sheet subtitle > carries the 6 point gap under ar, matching the shared header`:
+  `typographySweep.test.tsx:298:61` - `Expected: 6`, `Received: -10`
+- `the sheet header line boxes > leaves the ar title and subtitle to the font own box, so no
+  glyph clips`: `typographySweep.test.tsx:332:32` - `Expected: 6`, `Received: -10`
+
