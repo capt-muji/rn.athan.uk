@@ -79,3 +79,13 @@ Break: ALL AS EXPECTED: 1 (24 ok checks).
 Review: clean on a cold read - both contracts byte-for-byte, the screenshot bullet and every
 other table row untouched, only the listed files moved, message starts 2.0.928 -.
 session: ses_eb9a40340ffeNBxnYk1MfifEp1
+
+## Audit (2026-10-16)
+
+Two reviewers (blind, plan-conformance). Blind verified every routed claim live against the
+installed CLI and every parenthetical from the bundled source; one must: the executed docs
+commit 46b93596 carried no version bump (2.0.928 twice, the row-120 precedent class;
+history is merged, so the heal is the next commit's bump). Plan-conformance: three findings
+(the stale docs-message template in PLAN.md section 8, this LOG's missing no-bump record,
+and the break script's root-relative path that does not resolve from the worktree root).
+All four findings confirmed and repaired on branch docs/audit-119-20261016; none rejected.

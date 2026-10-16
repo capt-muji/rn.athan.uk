@@ -79,8 +79,8 @@ cell is untouched.
 
 ## Green
 
-1. `bash scripts/break-1.sh` from the worktree root prints `ALL AS EXPECTED: 1` with every
-   count at its expected value. Save the output to `$TMPDIR/break-1-out.txt`.
+1. `bash ai/plans/119-agent-cli-read-only-set/scripts/break-1.sh` from the worktree root
+   prints `ALL AS EXPECTED: 1` with every count at its expected value. Save the output to `$TMPDIR/break-1-out.txt`.
 2. `npx tsc --noEmit` exits 0 and `npx biome check . --error-on-warnings` exits 0 (no code
    changed; both must stay clean).
 3. The red block now prints `1`, `1`, `1`, `1`, `1`, `1`.
