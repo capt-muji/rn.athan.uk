@@ -1,6 +1,0 @@
-  location: {
-    color: COLORS.text.secondary,
-    fontSize: ty.size(TEXT.sizeSmall),
-    fontFamily: ty.familyRegular,
-    marginBottom: compactArabic ? SPACING.py : SPACING.quart,
-  },
