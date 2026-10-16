@@ -174,7 +174,7 @@ index c434189..02d2971 100644
  
    func didUnregister() {
 diff --git a/node_modules/expo-background-task/ios/BackgroundTaskScheduler.swift b/node_modules/expo-background-task/ios/BackgroundTaskScheduler.swift
-index 906678b..712d728 100644
+index 906678b..e6be88e 100644
 --- a/node_modules/expo-background-task/ios/BackgroundTaskScheduler.swift
 +++ b/node_modules/expo-background-task/ios/BackgroundTaskScheduler.swift
 @@ -62,11 +62,15 @@ public class BackgroundTaskScheduler {
@@ -227,23 +227,6 @@ index 906678b..712d728 100644
          try await tryScheduleWorker()
        }
      }
-@@ -204,6 +213,16 @@ public class BackgroundTaskScheduler {
-     await schedulerState.setSchedulerForTesting(scheduler)
-   }
- 
-+  /**
-+   Awaitable counterpart of `didRegisterTask`, which returns before its detached Task runs.
-+   */
-+  static func didRegisterTaskForTesting(minutes: Int?, requiresNetworkConnectivity: Bool?) async -> Bool {
-+    return await schedulerState.didRegisterTask(
-+      minutes: minutes,
-+      requiresNetworkConnectivity: requiresNetworkConnectivity
-+    )
-+  }
-+
-   static func resetForTesting(registeredTaskCount: Int = 0) async {
-     await schedulerState.resetForTesting(registeredTaskCount: registeredTaskCount)
-   }
 diff --git a/node_modules/expo-background-task/src/BackgroundTask.types.ts b/node_modules/expo-background-task/src/BackgroundTask.types.ts
 index 24ff80b..ac44966 100644
 --- a/node_modules/expo-background-task/src/BackgroundTask.types.ts
