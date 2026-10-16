@@ -41,6 +41,37 @@ const ARABIC: LocaleTypography = {
   scriptLineHeight: (n) => Math.round(n * 1.5),
 };
 
+// Devanagari carries no glyphs in the Latin faces, so its words name their own pair (the
+// row-106 Rubik pattern); digits and row times stay Roboto, the app's Latin digits everywhere
+const HINDI: LocaleTypography = {
+  familyRegular: 'NotoSansDevanagari-Regular',
+  familyMedium: 'NotoSansDevanagari-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  // The face's win ink runs past its own 1.304em box (measured 0.558em descent against the
+  // box's 0.408em), so ink-bearing surfaces take the taller script box, the Arabic pattern
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
+// Thai's own 1.511em box already clears its ink (descent and win descent both 0.450em), so
+// no script box: the font's own metrics serve, the row-87 law
+const THAI: LocaleTypography = {
+  familyRegular: 'NotoSansThai-Regular',
+  familyMedium: 'NotoSansThai-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
@@ -60,8 +91,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ar: ARABIC,
   ms: LATIN,
   so: LATIN,
-  hi: LATIN,
-  th: LATIN,
+  hi: HINDI,
+  th: THAI,
 };
 
 /**

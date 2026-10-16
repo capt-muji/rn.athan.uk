@@ -64,15 +64,49 @@ const expectLatinRecord = (ty: LocaleTypography): void => {
   expect(ty.countdownSize).toBe(26);
 };
 
+/** The script pair carries the words; digits and row times stay on the app's Latin faces */
+const expectScriptRecord = (ty: LocaleTypography, regular: string, medium: string): void => {
+  expect(ty.familyRegular).toBe(regular);
+  expect(ty.familyMedium).toBe(medium);
+  expect(ty.familyDigits).toBe('Roboto-Medium');
+  expect(ty.familyRowTime).toBe('Roboto-Regular');
+  expect(ty.size(10)).toBe(10);
+  expect(ty.size(18)).toBe(18);
+  expect(ty.size(28)).toBe(28);
+  expect(ty.lineHeight(16)).toBe(16);
+  expect(ty.lineHeight(20)).toBe(20);
+  expect(ty.lineHeight(22)).toBe(22);
+  expect(ty.letterSpacing(0)).toBe(0);
+  expect(ty.letterSpacing(0.2)).toBe(0.2);
+  expect(ty.letterSpacing(0.3)).toBe(0.3);
+  expect(ty.wordFace).toBe(true);
+  expect(ty.countdownSize).toBe(26);
+};
+
 describe('typographyFor', () => {
   it('resolves ar to the Arabic faces at the pinned factor table', () => {
     expectArabicRecord(typographyFor('ar'));
   });
 
-  it('resolves every shipped non-ar locale to the Roboto identity record', () => {
-    for (const locale of LOCALE_IDS.filter((id) => id !== 'ar')) {
+  it('resolves en, ms and so to the Roboto identity record', () => {
+    for (const locale of LOCALE_IDS.filter((id) => id !== 'ar' && id !== 'hi' && id !== 'th')) {
       expectLatinRecord(typographyFor(locale));
     }
+  });
+
+  it('resolves hi to the Devanagari pair with the taller script line box', () => {
+    const ty = typographyFor('hi');
+    expectScriptRecord(ty, 'NotoSansDevanagari-Regular', 'NotoSansDevanagari-Medium');
+    // The face's win ink runs past its own box, so ink-bearing surfaces take the script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves th to the Thai pair with no script line box', () => {
+    const ty = typographyFor('th');
+    expectScriptRecord(ty, 'NotoSansThai-Regular', 'NotoSansThai-Medium');
+    // The Thai face's own 1.511em box clears its ink, so no surface pins a script box
+    expect(ty.scriptLineHeight).toBeUndefined();
   });
 });
 
