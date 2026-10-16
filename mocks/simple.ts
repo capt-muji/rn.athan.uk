@@ -43,19 +43,18 @@ export const addMinutes = (from: Date, minutesToAdd: number) => {
 /**
  * Every day around the download, with TODAY's six rows seeded from it
  *
- * The evening (06:00-23:52:59.999): Asr just passed, Maghrib next about one minute out, Isha a
- * minute behind it at 23:55:00.000 at the latest, so the day rolls to tomorrow's real schedule
- * inside a couple of minutes (the owner's device-test reseed). The pre-dawn small hours: a
- * realistic day with Fajr next about a minute out, because a relative seed there would write
- * impossible times (an Isha at 04:32) that trip the midnight-crossing rules and dash the
- * countdown. The spent evening (23:53-23:59): the day's real static shape, all six passed.
+ * The evening (06:00-23:52:59.999): Asr just passed, Maghrib on the next minute boundary (a gap
+ * that always reads 1m on the round-up countdown) and Isha the minute after (always 2m), so the
+ * day rolls to tomorrow's real schedule inside a couple of minutes (the owner's device-test
+ * reseed). The pre-dawn small hours: a realistic day with Fajr on the next minute boundary,
+ * because a relative seed there would write impossible times (an Isha at 04:32) that trip the
+ * midnight-crossing rules and dash the countdown. The spent evening (23:53-23:59): the day's
+ * real static shape, all six passed.
  */
 const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
   const clock = readPrayerClock(downloadedAt);
   const minuteOfDay = clock.hour * 60 + clock.minute;
   const minuteFloor = new Date(Math.floor(downloadedAt.getTime() / MINUTE) * MINUTE);
-  const ceilMinute = (from: Date, minutesToAdd: number) =>
-    new Date(Math.ceil((from.getTime() + minutesToAdd * MINUTE) / MINUTE) * MINUTE);
 
   const dayBeforeYesterday = formatDateShort(subDays(downloadedAt, 2));
   const yesterday = formatDateShort(subDays(downloadedAt, 1));
@@ -72,12 +71,14 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     sunrise: addMinutes(minuteFloor, -3),
     dhuhr: addMinutes(minuteFloor, -2),
     asr: addMinutes(minuteFloor, -1),
-    magrib: addMinutes(ceilMinute(downloadedAt, 1), 0),
-    isha: addMinutes(ceilMinute(downloadedAt, 2), 0),
+    // Boundary-based, not ceil-based: the gaps stay inside the minutes the countdown's round-up
+    // displays, so Maghrib always reads 1m away and Isha 2m (owner report, 2026-10-16)
+    magrib: addMinutes(minuteFloor, 1),
+    isha: addMinutes(minuteFloor, 2),
   };
   const preDawnRow = {
-    fajr: addMinutes(ceilMinute(downloadedAt, 1), 0),
-    sunrise: addMinutes(ceilMinute(downloadedAt, 11), 0),
+    fajr: addMinutes(minuteFloor, 1),
+    sunrise: addMinutes(minuteFloor, 11),
     dhuhr: '13:04',
     asr: '16:56',
     magrib: '20:14',

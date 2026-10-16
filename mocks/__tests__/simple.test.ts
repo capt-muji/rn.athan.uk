@@ -38,10 +38,11 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
       const isha = instantOf(readAt, today.isha);
       const magrib = instantOf(readAt, today.magrib);
       const asr = instantOf(readAt, today.asr);
-      expect(magrib - readAt.getTime()).toBeGreaterThanOrEqual(MINUTE);
-      expect(magrib - readAt.getTime()).toBeLessThan(2 * MINUTE);
-      expect(isha - readAt.getTime()).toBeGreaterThanOrEqual(2 * MINUTE);
-      expect(isha - readAt.getTime()).toBeLessThan(3 * MINUTE);
+      // Boundary gaps: Maghrib inside the minute the countdown rounds up to 1m, Isha inside 2m
+      expect(magrib - readAt.getTime()).toBeGreaterThan(0);
+      expect(magrib - readAt.getTime()).toBeLessThanOrEqual(MINUTE);
+      expect(isha - readAt.getTime()).toBeGreaterThan(MINUTE);
+      expect(isha - readAt.getTime()).toBeLessThanOrEqual(2 * MINUTE);
       expect(isha - magrib).toBe(MINUTE);
       for (const before of [today.fajr, today.sunrise, today.dhuhr, today.asr]) {
         expect(instantOf(readAt, before)).toBeLessThan(readAt.getTime());
@@ -59,8 +60,8 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
       const today = MOCK_DATA_SIMPLE.times[formatDateShort(readAt)];
 
       const fajr = instantOf(readAt, today.fajr);
-      expect(fajr - readAt.getTime()).toBeGreaterThanOrEqual(MINUTE);
-      expect(fajr - readAt.getTime()).toBeLessThan(2 * MINUTE);
+      expect(fajr - readAt.getTime()).toBeGreaterThan(0);
+      expect(fajr - readAt.getTime()).toBeLessThanOrEqual(MINUTE);
       // The rest of the day is the real static shape, so nothing trips the midnight-crossing rules
       expect(today.dhuhr).toBe('13:04');
       expect(today.isha).toBe('21:27');
