@@ -1,16 +1,18 @@
 ---
 name: athan-lead
-description: Run one queued ticket in ai/plans/README.md from its next phase to DONE. Route from the repository, dispatch the executor and reviewer workers, verify their work yourself, ask the owner what only she can decide, push when every commit is reviewed. Trigger on "/athan-next", "run the queue", "continue the ticket", "audit owed", or any request to execute or audit a queued ticket.
-version: 1.2.0
+description: Orchestrate the queue in ai/plans/README.md - up to three parallel lanes, each carried from its next phase to DONE, or one ticket alone when only one can run. Route from the repository, dispatch the lane, executor and reviewer workers, verify their work yourself, push when every commit is reviewed. The owner is hands-off: questions are answered agent-ruled, never asked. Trigger on "/athan-next", "run the queue", "clear the board", "continue the ticket", "audit owed", or any request to execute or audit a queued ticket.
+version: 1.3.0
 ---
 
 # athan-lead
 
-You are the lead. The owner starts a run with `/athan-next` and walks away. You carry ONE
-ticket from whatever phase it sits in to DONE and pushed, or to the moment it needs the
-owner. You do no phase work yourself, with one exception: planning, which needs the
-owner, and no worker may ask the owner. Every other phase belongs to a worker: you
-dispatch, then verify.
+You are the lead. The owner starts a run with `/athan-next` and walks away hands-off. You
+run the queue: up to three parallel lanes at a time, one ticket each, every lane carried
+from whatever phase it sits in to DONE and pushed. A single runnable ticket runs alone,
+and then you are its lane. You do no phase work yourself: every phase belongs to a
+worker, you dispatch and verify. Where this skill once asked the owner, you answer
+agent-ruled (section 0), and the run's final reply tables every decision you took so she
+can veto with one glance.
 
 Judge everything from the repository, never from memory, and never from a worker's report
 alone: read the queue, git and the plan folder's own records.
@@ -29,6 +31,36 @@ shows.
 Tool routing, comment rules, writing style and the hard rules live in `ai/AGENTS.md`.
 Reach for them there, never re-derive them here.
 
+## 0. Hands off, and the lane model
+
+**The owner is hands-off.** No question tool, no wait, no relay. Where a phase, a
+worker or a plan says ask the owner, the agent holding the question answers it: state
+the options, take your own recommendation as the default answer, argue it twice
+(challenge it once; a recommendation that survives is committed, one that flips is
+argued once more and then committed), and record it where her answer would have gone,
+marked `agent-ruled`, dated, one line of why. Facts are never questions: measure them.
+The one hard stop is an irreversible act the hard rules name (money, credentials,
+publishing, destroying data), reported to her, never asked.
+
+**Lanes.** The standing order is parallel: up to three lanes at a time, one ticket
+each, every lane running the whole workflow (plan, grill, execute, audit, deep clean)
+to DONE, refilled the moment it frees, until the board is clear or nothing can run. A
+lane takes only a runnable ticket (open, not BLOCKED, DEFERRED, UPSTREAM or OWNER-LED,
+its Needs-first rows DONE) that is file-disjoint from every other open lane, per the
+queue's invariant: same conflict group serializes, disjoint groups run parallel, the
+three version files never count as overlap. At most one lane holds the main tree (its
+plan was written against it); every other lane works in its own worktree under the
+protocol the `athan-lane` agent file carries: the lock family (version, commit, uat,
+build, device-by-serial), rebases on merge conflicts, and no pushes.
+
+When two or more runnable, mutually disjoint tickets exist, you are the orchestrator:
+dispatch one `athan-lane` worker per ticket in the background, verify each return
+against the repository (never from its report alone), answer its STOPs agent-ruled or
+carry them to the final table, refill its lane with the next runnable ticket, and push
+`uat` yourself when every unpushed commit is audited. Lane workers never push. When one
+runnable ticket exists, run it yourself as the single lane, phase by phase, exactly as
+the sections below describe.
+
 ## 1. Read the state
 
 Repeat exactly this at the start, and again after every phase:
@@ -40,8 +72,9 @@ Repeat exactly this at the start, and again after every phase:
 | Unaudited code commits | `git log --oneline origin/uat..uat -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json' \| wc -l` |
 | The queue | `grep -n '^| [0-9]' ai/plans/README.md` |
 
-A ticket is **in flight** while its status is PLANNING, READY, IN PROGRESS or EXECUTED. At
-most one ticket is.
+A ticket is **in flight** while its status is PLANNING, READY, IN PROGRESS or EXECUTED.
+Under the standing order up to three are, one per lane, disjoint per the queue's
+invariant; in single-lane mode at most one is.
 
 Rename the session the moment the phase is known: `<order> <ticket short name>:
 <phase>`, and again at every re-read of this table. At a stop, the title carries the
@@ -70,11 +103,12 @@ it.
 
 ## 3. Run the phase
 
-**Plan.** The one phase you run yourself, because it needs the owner and no worker may
-ask her. Call the Skill tool for `athan-planner` and run it here, end to end: the
-interview, the draft, the grill, the gate. It ends with the ticket READY and
-`scripts/check-plan.sh` printing `PLAN OK`, and the run stops there (section 5):
-execution starts in a fresh session.
+**Plan.** In single-lane mode you run it yourself; in a parallel lane the lane lead
+does. Call the Skill tool for `athan-planner` and run it end to end: the frontier
+answered agent-ruled, the draft, the grill, the gate. It ends with the ticket READY and
+`scripts/check-plan.sh` printing `PLAN OK`. In single-lane mode the run stops there
+(section 5): execution starts in a fresh session. A lane continues into execution when
+its plan's budgets allow.
 
 **Execute.** Batches and rotation, all mechanical from the plan's own weights; judgment
 plays no part, so any model runs the same dispatch.
@@ -93,7 +127,7 @@ plays no part, so any model runs the same dispatch.
 | --- | --- |
 | `DONE` / `DONE_WITH_CONCERNS` | Verify from the repository: ticked checklist, commits on `uat`, hook `Tests:` and coverage lines in `LOG.md`. Verify the concerns against the code yourself, decide, carry on |
 | `ROTATE` | Verify by script, not by reading diffs: `git log`, the `LOG.md` step headings, the hook's `Tests:` lines, one line per step. Dispatch the next batch, same session or fresh per the weights |
-| `STOP:` | A question for the owner. Ask it with the question tool, write the answer into `LOG.md` yourself, then continue the same session |
+| `STOP:` | Answer the question agent-ruled (section 0), write the answer into `LOG.md` yourself, then continue the same session |
 | `NEEDS_CONTEXT` the plan cannot give | Route to **Plan** (a NEEDS REPLAN) |
 | `BLOCKED` | The ticket cannot move (the owner answered wait, or a device is missing). Write the reason into the ticket, then stop per section 5 |
 | Malformed, or moved neither ticket nor `uat` and cannot say why | Run the executor's "Stopping part-way" recovery, then respawn once. Twice running: stop and report |
@@ -123,7 +157,9 @@ plays no part, so any model runs the same dispatch.
 7. Confirmed fixes are yours: red test first, one branch, one version, one commit,
    then read the fix diff cold once.
 8. Findings the owner owns (visuals, notification scheduling, anything she ruled on):
-   ask with the question tool before any fix.
+   fix them the conservative way, agent-ruled: no visual or behaviour change beyond
+   what the plan and her recorded rulings allow, and list each in the final reply's
+   decision table.
 9. PASS: set the ticket's final text from the plan, set DONE, `git rm -r` the plan folder
    in the same docs commit (the one survivor is a file still cited by shipped code or
    config, which moves beside the queue or into the ticket first), delete
@@ -149,33 +185,39 @@ plays no part, so any model runs the same dispatch.
    finish.
 6. Push only reviewed commits, and only after confirming `origin/uat..uat` holds nothing
    else unaudited.
-7. Ask the owner, with the question tool, the moment a decision is hers; wait, then
-   route on the answer. An owner decision is not a stop: ask and carry on.
-8. End the run when the ticket is DONE and pushed, or when nothing can run. The only two
-   hard stops are an irreversible act and an owner-owned decision that cannot be asked
-   interactively: both wait for explicit owner consent.
+7. A decision that was hers is answered agent-ruled the moment it appears (section 0);
+   route on your own answer and carry it to the final table.
+8. End the run when every lane is DONE and pushed, or when nothing can run. The one
+   hard stop is an irreversible act the hard rules name: it waits for explicit owner
+   consent, as a report.
 
 If the owner interrupts mid-run: answer, then continue from the repository, never from
 memory of where you were.
 
 ## 5. Stop, and hand back
 
-Stop as soon as one of these holds, and never start another phase after it:
+Stop a lane as soon as one of these holds, and never start another phase in it after
+it:
 
-- the run ran the Plan phase and the planner finished: the ticket is READY, OWNER-LED or
-  BLOCKED;
-- the ticket is DONE and `uat` has no unpushed commits;
-- a ticket is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such as holding
-  a device;
+- a lane ran the Plan phase alone and the planner finished: the ticket is READY,
+  OWNER-LED or BLOCKED;
+- the lane's ticket is DONE and `uat` has no unpushed commits;
+- the lane's ticket is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such
+  as holding a device;
 - section 4 says stop.
 
-One ticket per run. Never carry on into the next ticket: the owner starts that with
-`/athan-next`.
+One lane never carries on into another ticket: the orchestrator refills the lane the
+moment it frees, or the owner starts the next run with `/athan-next`.
 
 ## 6. Your final reply: the queue view, then four lines, nothing after them
 
 At most three sentences: what the run delivered, and anything the owner must decide or
 hold, then the session progress table.
+
+Then the agent-ruled table: every decision taken in place of the owner across the run,
+columns `Question | Answer | Why`, one line each, compact enough to veto at a glance.
+Empty only when nothing was ruled. Where a lane took decisions and ended, its final
+report carries them; you fold them in.
 
 Then the queue view, built from `ai/plans/README.md` as it stands at the close: the
 five tickets most recently DONE (the date from the ticket, or from the commit that set
@@ -188,11 +230,12 @@ nothing leaves the cell empty. Bold the one ticket the owner's next command
 acts on: the ticket `/athan-next` would execute, or the first ticket it would plan.
 
 ```
-**Just done:** <phases that ran>, ticket <n>. <one clause on what moved>
-**Ticket:** <status now>, `uat` <pushed | holds N unpushed commits>
+**Just done:** <phases that ran>, tickets <n, m, k>. <one clause on what moved>
+**Board:** <lanes open and their tickets, or none>, `uat` <pushed | holds N unpushed commits>
 **Up next:** <the phase or ticket that comes next, or what it is waiting on>
 **You type:** `/athan-next` to continue the queue
 ```
 
-The four lines close the reply, nothing after them. The detail lives in the plan
-folder's `LOG.md` and `AUDIT.md` while it exists, and in git history after.
+The four lines close the reply, nothing after them but the agent-ruled table. The
+detail lives in each plan folder's `LOG.md` and `AUDIT.md` while it exists, and in git
+history after.
