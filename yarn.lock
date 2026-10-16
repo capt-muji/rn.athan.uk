@@ -5036,10 +5036,10 @@ jimp-compact@0.16.1:
   resolved "https://registry.yarnpkg.com/jimp-compact/-/jimp-compact-0.16.1.tgz#9582aea06548a2c1e04dd148d7c3ab92075aefa3"
   integrity sha512-dZ6Ra7u1G8c4Letq/B5EzAxj4tLFHL+cGtdpR+PVm4yzPDj+lCk+AbivWt1eOM+ikzkowtyV7qSqX6qr3t71Ww==
 
-jotai@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/jotai/-/jotai-3.0.0.tgz#701c411dde5b1e43aeff67f3fe61b9758490c8ea"
-  integrity sha512-KxhbmsJUp/tmrv6aZgO+nzB3H9K8C0xmk5i3aGkwy/EANg73DVBkggv3zVHaAi5PlNlQgTgP4uiVepo+JC+wSA==
+jotai@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-3.0.1.tgz#41dccd9fb2cae4a4a467acf2866194002b38ad10"
+  integrity sha512-6tS7wY9otdiNp26Wqb/1ds3OuVJVoV+tJlN4hpLrYmfFf/t9bauVt+zKBNSpS5qSl5h6GieVQ+OknVraZX+udQ==
 
 joycon@^3.1.1:
   version "3.1.1"
