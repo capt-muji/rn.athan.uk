@@ -142,3 +142,69 @@ builds (Thai pair 140 glyphs against the VF's 467, Devanagari 845 against 1117).
 Break: `measure-fonts.py instance` on a garbage file exits nonzero. ALL AS EXPECTED.
 
 session: ses_ebab6f35fffedobipiJeJ7Att0
+
+### Step 3 — DONE
+
+Branch docs/118-coverage. The four quotes the plan requires, each read from the
+installed source in this worktree (R3.1):
+
+1. The expo-font API 29 gate,
+   `node_modules/expo-font/android/src/main/java/expo/modules/font/FontLoaderModule.kt`
+   lines 58 to 66:
+
+       // Below API 29, `android.graphics.fonts.FontFamily` doesn't exist, so only the default face
+       // loads and Android synthesizes bold/italic from it.
+       private fun familyTypeface(fontFamilyName: String, faces: List<FontFaceRecord>): Typeface {
+         ...
+         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+           val defaultFace = faces[FontFamilyFaces.defaultFaceIndex(faces)]
+
+   The same file gates the single-face variable instancer behind
+   `Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q` in `loadSingleFaceTypeface`, and
+   `VariableTypefaces.kt` is `@RequiresApi(Build.VERSION_CODES.Q)` throughout.
+
+2. The plugin variation-settings writer, `node_modules/expo-font/plugin/build/withFontsAndroid.js`
+   line 308 (inside getXmlSpecs):
+
+       // Instances a variable font at the declared weight and axes, so that one file can
+       // back several definitions. Static fonts declare no axes and ignore this.
+
+   written into each XML entry as `app:fontVariationSettings`; and the
+   duplicate-destination refusal, same file line 357:
+
+       throw new Error(`Font files ${claimed} and ${asset} both become ${...} in the native project, so only one of them can be embedded. Rename one of them so their file names differ.`)
+
+3. The RN Android weight branch,
+   `node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/common/assets/ReactFontManager.kt`
+   lines 146 to 151:
+
+       public fun apply(typeface: Typeface?): Typeface =
+           if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+             Typeface.create(typeface, nearestStyle)
+           } else {
+             Typeface.create(typeface, weight, italic)
+           }
+
+4. The androidx impl selection, androidx core TypefaceCompat.java lines 73 to 88
+   (fetched from googlesource at planning, saved at $TMPDIR/TypefaceCompat*.java):
+   API 31+ -> Api31Impl, 29/30 -> Api29Impl, 28 -> Api28Impl, 26/27 -> Api26Impl.
+   `setFontVariationSettings` appears only in TypefaceCompatApi29Impl (lines 125 and
+   206); Api26Impl and Api28Impl carry zero occurrences. Api26Impl line 210 parses the
+   variation settings into `FontVariationAxis` and forwards them into the hidden
+   platform `FontFamily#addFontFromBuffer`.
+
+Coverage verdict: expo-font 58.0.7's variable support covers the app's needs on every
+fleet device except the one that builds the app. On iOS, the string form embeds the file
+through UIAppFonts and RN resolves family plus fontWeight against the member names,
+which include a variable font's named instances; on Android 10 to 14 the runtime path
+builds one font per 100-step weight from the fvar axis; on Android 15+ the family
+varies continuously. On the 3T (Android 9, API 28) the runtime path loads the default
+instance only, and Rubik's variable default is Light 300 (step 1's fvar reading), so
+the whole Arabic face would render Light and every Medium surface would fall back to
+the default weight. The plugin's XML route can pin a weight per family, and androidx
+forwards the axes even below API 29 through hidden platform APIs, but no desk check can
+prove the 3T's Android 9 runtime applies them; that single leg needs a device proof and
+is recorded as the open condition (D118.6). The byte refutation from step 2 makes the
+question moot for this round.
+
+session: ses_ebab6f35fffedobipiJeJ7Att0
