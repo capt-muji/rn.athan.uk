@@ -43,6 +43,20 @@ describe('the volume footnote', () => {
     expect(screen.getByTestId('svg:info-bare', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
+  it('draws the iOS copy beside a smaller information glyph on the unchanged round chip', async () => {
+    await render(<SheetVolumeNote />);
+
+    expect(screen.getByText(IOS_COPY)).toBeOnTheScreen();
+    const badge = screen.getByTestId('svg:info-bare', { includeHiddenElements: true });
+    // Her footer-only ruling: the letter shrinks, the circle it sits on does not
+    expect(badge.props.width).toBe(10);
+    expect(badge.props.height).toBe(10);
+    const chip = badge.parent;
+    const chipStyle = StyleSheet.flatten(chip?.props.style) as { width?: number; height?: number };
+    expect(chipStyle.width).toBe(20);
+    expect(chipStyle.height).toBe(20);
+  });
+
   it('centres every line in the sheet-subtitle ink at the detail size', async () => {
     await render(<SheetVolumeNote />);
 

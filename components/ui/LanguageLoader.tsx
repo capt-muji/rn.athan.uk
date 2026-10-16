@@ -39,8 +39,12 @@ export default function LanguageLoader() {
 
   return (
     <View style={styles.container} accessibilityRole={'progressbar'} accessibilityLabel={t('app.loadingLabel')}>
-      <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
-      <Text style={[styles.line, { fontSize: ty.size(TEXT.size), fontFamily: ty.familyRegular }]}>{line}</Text>
+      <View style={styles.spinnerBox}>
+        <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
+      </View>
+      <View style={styles.lineBox}>
+        <Text style={[styles.line, { fontSize: ty.size(TEXT.size), fontFamily: ty.familyRegular }]}>{line}</Text>
+      </View>
     </View>
   );
 }
@@ -52,11 +56,26 @@ const styles = StyleSheet.create({
     start: 0,
     end: 0,
     bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: SPACING.md,
     backgroundColor: COLORS.navigation.rootBackground,
     zIndex: OVERLAY.zindexes.popup,
+  },
+  // Dead centre, not the pair's block centre: a growing gap below must not drift the spinner up
+  spinnerBox: {
+    position: 'absolute',
+    top: '50%',
+    start: 0,
+    end: 0,
+    alignItems: 'center',
+    transform: [{ translateY: -SIZE.activityIndicator / 2 }],
+  },
+  // Hung from the spinner's foot, so only the line answers a gap ruling
+  lineBox: {
+    position: 'absolute',
+    top: '50%',
+    start: 0,
+    end: 0,
+    alignItems: 'center',
+    marginTop: SIZE.activityIndicator / 2 + SPACING.xxxl,
   },
   line: {
     maxWidth: LINE_MAX_WIDTH,

@@ -9,7 +9,7 @@ import { currentLocaleId } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
-import { commitLanguagePreference } from '@/stores/language';
+import { commitLanguagePreference, revealLanguageLoader } from '@/stores/language';
 import { hideLanguageSheet, setLanguageSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
@@ -75,7 +75,9 @@ export default function BottomSheetLanguage() {
             <Pressable
               key={entry.id}
               style={styles.option}
-              onPress={() => pickLanguage(entry.id, active, commitLanguagePreference, hideLanguageSheet)}
+              onPress={() =>
+                pickLanguage(entry.id, active, commitLanguagePreference, hideLanguageSheet, revealLanguageLoader)
+              }
               onLayout={index === 0 ? handleItemLayout : undefined}
               accessibilityRole={'radio'}
               // Which language is in force is carried by the highlight and this state,
