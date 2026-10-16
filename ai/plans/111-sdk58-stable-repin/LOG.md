@@ -1,5 +1,14 @@
 # LOG 111
 
+Resume from: ticket 111 is NEEDS REPLAN (row 2026-10-16). The next phase is a plan
+refresh, not a resumed execution: re-pin the whole set to `expo 58.0.13` and
+`expo-widgets 58.0.20` (plus the fifteen other modules expo 58.0.13's
+`bundledNativeModules.json` moves), re-measure the three patches' apply status at the new
+versions, rebuild and re-prove them, then run step 3's 3T gates (the phone is connected),
+step 4's XS loop (the phone must be unlocked first), step 5's records, then the audit and
+DONE. The section "Ticket state at the lane's stop" below carries the measured grounds, and
+`AUDIT.md` carries the three review passes and their verdicts.
+
 ## Planning (2026-10-16)
 
 - Session opened on her go. Queue row 111 set PLANNING; row 116 (iPhone Duo)
@@ -248,8 +257,18 @@ session: ses_eba90557fffegXgpdEF29mZxAH
   be unlocked", so the XS gate is closed until she unlocks it.
 - Resume after the replan: re-execute step 1's shape against the new pin set, then the 3T
   gates, then the XS loop once the phone is unlocked, then step 5.
-- Audit: the three reviewers (plan-conformance, blind, threading) were dispatched over the
-  landed code range `bc9699d3^1..5966e95b` before the drift was measured, so their findings
-  judge step 1 and step 2 as executed; `AUDIT.md` records them and their verdicts.
+- Audit: the three reviewers (plan-conformance, blind, threading) ran over the landed code
+  range `bc9699d3^1..5966e95b`; `AUDIT.md` records every finding with its verdict. Four are
+  fixed here: the patched `expo-location` pin back to exact (it was exact before this change,
+  the plan loosened it to `~58.0.16`, and A7's three-tick contract cannot survive a tilde with
+  58.0.17 already on npm), the stale patch filename in the widget patch suite's docstring, the
+  `biome.json` schema URL, and the three-tick re-proof from a fresh install. Three are carried
+  to the replan with their reasons: the consumed anchors in `preflight-111.sh`, the step file's
+  missing script entry, and the threading pass's three patch and guard items.
+- The re-pin's own version is recorded rather than repaired: `addc75bb`'s subject says 2.0.861
+  while its tree and its parent carry 2.0.863, so that merge changed no version and
+  `wasAppUpgraded()` could not see it. 2.0.863 was never a shipped build and the next commit
+  restored monotonicity at 2.0.865; a retroactive bump would rewrite merged history, which the
+  hard rules forbid.
 
 
