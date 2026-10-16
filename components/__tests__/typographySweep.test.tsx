@@ -304,8 +304,8 @@ describe('the qibla sheet subtitle', () => {
 });
 
 describe('the sound sheet spacing under ar', () => {
-  it('tightens the card hint onto the list at 6 points', async () => {
-    expect(await soundListMarginUnder('ar')).toBe(6);
+  it('seats the list 12 points under the label under ar, one value with en', async () => {
+    expect(await soundListMarginUnder('ar')).toBe(12);
   });
 
   it('keeps the hint gap at 12 under en', async () => {

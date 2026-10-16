@@ -164,15 +164,15 @@ exercised by an ar-side test that exists or lands red first.
 
 **Acceptance criteria:**
 
-- [R1.1] WHEN a sheet header renders under ar THE SYSTEM SHALL seat the subtitle 6 points
+- [x] [R1.1] WHEN a sheet header renders under ar THE SYSTEM SHALL seat the subtitle 6 points
   under the title by a positive margin with no lineHeight key on either line.
-- [R1.2] WHEN the qibla sheet's subtitle renders under ar THE SYSTEM SHALL seat it 6 points
+- [x] [R1.2] WHEN the qibla sheet's subtitle renders under ar THE SYSTEM SHALL seat it 6 points
   under the title, matching the shared header.
-- [R1.3] WHEN a sheet header renders under en THE SYSTEM SHALL keep the title's 2 point bottom
+- [x] [R1.3] WHEN a sheet header renders under en THE SYSTEM SHALL keep the title's 2 point bottom
   margin, the subtitle's 4 point top margin and no lineHeight key, byte-identical to 2.0.824.
-- [R2.1] WHEN the sound sheet renders under ar THE SYSTEM SHALL seat the list 12 points under
+- [x] [R2.1] WHEN the sound sheet renders under ar THE SYSTEM SHALL seat the list 12 points under
   the notification-sound label, with no locale branch left in the style.
-- [R2.2] WHEN a schedule renders under ar THE SYSTEM SHALL dial the location line's bottom
+- [x] [R2.2] WHEN a schedule renders under ar THE SYSTEM SHALL dial the location line's bottom
   margin to 8 points.
 - [R3.1] WHEN the volume note renders under ar THE SYSTEM SHALL carry a 21 point lineHeight on
   its copy so the measured 3.0px of win-descent ink renders whole.
