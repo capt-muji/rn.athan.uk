@@ -34,7 +34,7 @@ for a in "$PLAN"/scripts/anchors/*.anchor; do
   if [ "$count" != "1" ]; then step "FAIL: anchor $name counts $count in $src"; fail=1; fi
 done
 
-if node --test 'board/tests/*.test.mjs' >/dev/null 2>&1; then
+if [ -f board/tests/reader.test.mjs ] && node --test 'board/tests/*.test.mjs' >/dev/null 2>&1; then
   step "FAIL: the suite already passes; the step's red phase cannot run"; fail=1
 else
   step "suite baseline red (absent or failing): the red phase can run"
