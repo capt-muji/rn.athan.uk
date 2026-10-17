@@ -1,0 +1,7 @@
+  return {
+    order: row.order,
+    name: row.name,
+    status: mapped.status,
+    statusText: mapped.statusText,
+    column: mapped.column,
+    needs,
