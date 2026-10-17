@@ -34,3 +34,10 @@ session: lane-125-lead (in-lane execution; worker dispatch returned STOP on the 
 - The versionName sync debt (2.0.937 through 2.0.940) surfaced as the lockstep failure inside the merge's own validate and was synced to 2.0.941. One sync ran without build.lock under a recorded ruling: the lock's live holder was an iOS simulator test session that cannot read android/app/build.gradle, and no Android build can start while it holds the lock.
 session: lane-125-lead
 - 02:38 lane weather, caught by the gate on this lane's own commit: lane 120 landed two dropped-staging commits at 2.0.940 (d349dc39, f3b84e9e) beside this lane's executor docs commit 93c05eb2, forming a three-sha group the census could not see (2.0.940 was unique when the allowlist was generated); lane 120 then took 2.0.943 (775dd96a) while this lane's bump sat uncommitted at the same number. Rulings: the 2.0.940 group joins the allowlist as history (it predates the gate's merge); this lane renumbers to the recomputed floor plus one (2.0.944). Lane 120's conflicted merge into uat sits open in the main tree; this lane waits for its conclusion before merging (their session committed 775dd96a minutes ago, so it is live).
+
+### Step 02 — done
+
+- Red run: 8 of the new tests failed (4 protocolLines on the absent sentences, 4 checkAudit on the absent script), recorded by jest's failing-name output.
+- Green run: 20 passed, 20 total across the four suites. check-audit.sh walked the bash-3.2 path twice: the first draft died on empty-array expansion under set -u, the second on BSD awk's NUL handling; the landed version is a pure-bash line state machine.
+- Break script: printed `AUDIT CHECK FAILED` with the missing-file reason and `break exit: 1`.
+session: lane-125-lead

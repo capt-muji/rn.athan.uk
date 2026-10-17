@@ -73,6 +73,7 @@ Repeat exactly this at the start, and again after every phase:
 | Unpushed commits | `git log --oneline origin/uat..uat \| wc -l` |
 | Unaudited code commits | `git log --oneline origin/uat..uat -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json' \| wc -l` |
 | The queue | `grep -n '^| [0-9]' ai/plans/README.md` |
+| Lane locks held | `ls $HOME/athan-gitree/*.lock 2>/dev/null`; a lock with no live merge or install in a lane that ended its turn is parked: name it in the run reply |
 
 A ticket is **in flight** while its status is PLANNING, READY, IN PROGRESS or EXECUTED.
 Under the standing order up to three are, one per lane, disjoint per the queue's
@@ -158,7 +159,10 @@ plays no part, so any model runs the same dispatch.
    threading and lifecycle. These reviewer dispatches may run in parallel.
 6. Adjudicate every finding yourself: confirm it from the code, by a test where one
    applies, or reject it with the line that disproves it. Record each finding and its
-   verdict in `AUDIT.md` in the plan folder.
+   verdict in `AUDIT.md` in the plan folder. For audits that dispatched reviewers,
+   each pass is recorded in AUDIT.md as a `Range:` line naming the commit range and
+   a `Findings:` line naming the findings file; `bash scripts/check-audit.sh
+   <plan-folder>` must print AUDIT OK before the DONE commit.
 7. Confirmed fixes are yours: red test first, one branch, one version, one commit,
    then read the fix diff cold once.
 8. Findings the owner owns (visuals, notification scheduling, anything she ruled on):
