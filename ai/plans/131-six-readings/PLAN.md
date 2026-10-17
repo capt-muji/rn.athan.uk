@@ -108,7 +108,7 @@ owner's: every grant or services change is restored and the restoration recorded
 
 ## 3. Pre-flight
 
-`scripts/preflight-131.sh`, saved to `$TMPDIR` and run from there. It checks: `uat`
+`scripts/preflight-131.sh`, run from the plan folder or a `$TMPDIR` copy. It checks: `uat`
 checked out in the main tree, clean; `origin/uat` fetched and merged into `uat`; the
 worktree's version not lower than 2.0.984; row 124 DONE in the queue; every anchor
 counts exactly 1; the tools exist (`aapt2`, `adb`, `xcrun devicectl`, `pymobiledevice3`,
@@ -193,7 +193,7 @@ fixtures' London position by distance in metres, never as coordinates.
 **Acceptance criteria:**
 
 - [R0.1] WHEN ticket 131 closes THE SYSTEM SHALL leave `uat` carrying no change outside `ai/plans/131-six-readings/`, the row 131 cell, and the three version files.
-- [R1.1] WHEN the 3T probe holds both location grants with services on and the phone lies stationary indoors THE SYSTEM SHALL log RD1 lines naming the fresh fix's `timestamp`, `horizontalAccuracy`, `heading` and `headingAccuracy` values verbatim, with null kept as null.
+- [R1.1] WHEN the 3T probe holds both location grants with services on and the phone lies stationary indoors THE SYSTEM SHALL log RD1 lines naming the fresh fix's `timestamp`, `horizontalAccuracy`, `heading` and `headingAccuracy` values verbatim with null kept as null, or the `no fresh fix within 30 s indoors` verdict line when the fix is null.
 - [R1.2] WHEN RD1's fresh fix carries no bearing THE SYSTEM SHALL name the absent form in READINGS.md as the RD1 verdict, quoting the logged `heading: null`.
 - [R2.1] WHEN location services are off on the 3T and the probe calls `enableLocationServices` THE SYSTEM SHALL record the `dumpsys window` focused-window line captured between the call and its resolution plus the promise's resolved value as a log line.
 - [R2.2] WHEN RD2 completes THE SYSTEM SHALL carry a services-on read-back, either `settings get secure location_providers_allowed` showing gps and network or the probe's services line reading true, logged after the restore.
@@ -270,8 +270,8 @@ None. The lane never pushes; the orchestrator pushes `uat` after audit.
 
 Restore lists: the 3T (fleettest app uninstalled, location services on, no grant changes
 on the owner's package); the XS (precise location on, While Using grant as found, a
-clean local build of `uat` content installed). The scratch worktree and its branch are
-removed.
+clean local build of `uat` content installed). The scratch worktree (created detached, no branch) is
+removed with `git worktree remove`.
 
 ## 11. Subagents
 

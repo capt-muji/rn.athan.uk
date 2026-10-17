@@ -18,7 +18,7 @@ node -e "const c='$CURRENT'.split('.').map(Number),m=[2,0,984];let ok=c[0]>m[0]|
   || fail "version $CURRENT lower than planned-at 2.0.984"
 
 grep -q "^| 124 |.*DONE" ai/plans/README.md || fail "row 124 not DONE"
-grep -q "^| 131 |.*NOT PLANNED\|^| 131 |.*PLANNING\|^| 131 |.*READY" ai/plans/README.md \
+grep -q "^| 131 |.*NOT PLANNED\|^| 131 |.*PLANNING\|^| 131 |.*READY\|^| 131 |.*IN PROGRESS\|^| 131 |.*EXECUTED" ai/plans/README.md \
   || fail "row 131 not in a plannable or executing state"
 
 for a in "$PLAN"/scripts/anchors/*.txt; do

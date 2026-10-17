@@ -6,20 +6,20 @@
 // Markers: every line logs as [RD0]..[RD5]. The probe never logs a latitude or
 // longitude; fixes are logged as timestamp, accuracies, heading, speed, mocked.
 
-// ---------- LAYOUT: app/_layout.tsx ----------
-// import { Slot } from 'expo-router';
-//
-// export default function Layout() {
-//   return <Slot />;
-// }
+// ---------- LAYOUT: copy verbatim to app/_layout.tsx ----------
+import { Slot } from 'expo-router';
+
+export default function Layout() {
+  return <Slot />;
+}
 // ---------- END LAYOUT ----------
 
-// ---------- PROBE: app/index.tsx ----------
+// ---------- PROBE: copy verbatim to app/index.tsx ----------
 import { useEffect, useRef, useState } from 'react';
 import { Platform, SafeAreaView, StyleSheet, Text } from 'react-native';
 
 import { getLastKnownPositionAsync } from 'expo-location';
-import * as Next from 'expo-location/next';
+import { Location as Next } from 'expo-location/next';
 
 type NextFix = {
   timestamp: number;
@@ -106,7 +106,7 @@ const runRd1 = async () => {
   log('1', 'BEGIN fresh stationary fix, phone flat on desk indoors');
   try {
     const fresh = await Next.getPosition({ maxCachedAge: 0, timeout: 30 });
-    log('1', 'fresh fix', nextFixOf(fresh));
+    log('1', 'fresh fix', fresh === null ? null : { ...nextFixOf(fresh), ageMs: Date.now() - fresh.timestamp });
     log('1', 'END verdict', fresh === null ? 'no fresh fix within 30 s indoors' : `heading ${fresh.heading === null ? 'absent null' : 'present'}`);
   } catch (error) {
     log('1', 'THREW', String(error));
@@ -170,18 +170,16 @@ const runAndroid = async () => {
       await runRd2();
       continue;
     }
-    if (!rd5Done) {
-      const current = await readPermissions('5');
-      const accuracy = String(current?.accuracy ?? 'unknown');
-      if (accuracy !== lastAccuracy) {
-        lastAccuracy = accuracy;
-        log('5', 'perm-watch', current);
-      }
-      if (current?.accuracy === 'reduced') {
-        rd5Done = true;
-        await runRd5(current);
-        continue;
-      }
+    const current = await readPermissions('5');
+    const accuracy = String(current?.accuracy ?? 'unknown');
+    if (accuracy !== lastAccuracy) {
+      lastAccuracy = accuracy;
+      log('5', 'perm-watch', current);
+    }
+    if (!rd5Done && current?.accuracy === 'reduced') {
+      rd5Done = true;
+      await runRd5(current);
+      continue;
     }
     await wait(2000);
   }
