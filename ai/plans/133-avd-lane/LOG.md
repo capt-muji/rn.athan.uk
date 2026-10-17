@@ -107,3 +107,26 @@ no qemu process). Evidence: `sessions/133/e5-smoke.txt`,
 (uncommitted, dies with the evidence rule). R4.1, R4.2 hold.
 
 session: ses_eb7817971ffeXixIUgY3P9mVsC
+
+### Step 04 — done
+
+E1 and E4 proven on the 3T under `device-<SERIAL>.lock`. Baseline:
+transport_id 1, `versionName=2.0.908`, 122 alarm-batch lines, no Metro.
+The logcat stream (pid recorded) ran through the CLI
+`npx expo run:android --binary <2.0.908 apk> --device 3T_SERIAL
+--no-bundler`: exit 0, an install line then an open line, no prebuild or
+gradle line, the main tree clean after. After: the stream process alive at
+16095 lines with lines timestamped past the install's completion, the
+transport id unchanged (no adb server restart), `versionName=2.0.908`
+unchanged, the alarm count 122 unchanged, `mCurrentFocus`
+`com.mugtaba.athan/.MainActivity`, and no Metro process (`pgrep -fl
+"node.*metro"` empty). The stream was stopped politely (`kill <pid>`), the
+phone HOME-pressed (never force-stopped), the lock released. Two
+observations recorded in the evidence: the CLI prints one `Waiting on
+http://localhost:8081` dev-runtime probe line before installing (no bundler
+started, none survived: `--no-bundler` holds), and the launch intent carries
+a dev URL that a production build ignores beyond the deep link. Evidence:
+`sessions/133/e1-baseline.txt`, `e1-after.txt`, `e1-install.txt`,
+`e4-logcat-3t.txt` (16095 lines, uncommitted). R3.1, R5.1, R5.2, R5.3 hold.
+
+session: ses_eb7817971ffeXixIUgY3P9mVsC
