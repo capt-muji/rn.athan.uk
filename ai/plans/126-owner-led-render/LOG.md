@@ -104,5 +104,21 @@ rebased onto the settled uat (row 126's IN PROGRESS cell and the higher
 version kept), merged `--no-ff` in the main tree, gradle synced, Finishing
 run. The amended sha, merge sha and docs values are recorded below.
 
+Amended to 2.0.972: the first amend was refused by the gate in this
+worktree because its pre-rebase checkout carried the pre-allowlist
+`scripts/`, so the order became rebase-then-amend (the rebase replay runs
+no hook; the README conflict resolved to uat's row 125 DONE cell, one row
+126 in uat's position carrying the IN PROGRESS cell, and the duplicate
+NOT PLANNED 126 dropped; the version files resolved to 2.0.972). Amended
+step commit `7df85e3d` `2.0.972 - feat(board): an OWNER-LED row reads as
+awaiting the owner (126)`, hooked: `Tests: 2 skipped, 5737 passed, 5739
+total`; coverage Statements/Branches/Functions/Lines all `100%`. Merged
+into `uat` as `7994faa0` `2.0.972 - merge feat/126-owner-led-render:
+ticket 126 step 1` under uat.lock, gate `VERSIONS OK` first; the main
+tree's gradle versionName synced to 2.0.972 under build.lock (one
+substitution). Finishing: this docs commit at 2.0.974 (uat had moved to
+2.0.973 under lane/122's merge while the version lock was held), queue row
+126 set to the plan's DONE cell, ticket EXECUTED.
+
 session: ses_eb85bcb88ffeFrk5TjzypO9MDF
 
