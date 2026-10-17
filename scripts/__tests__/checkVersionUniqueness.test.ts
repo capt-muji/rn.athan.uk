@@ -135,6 +135,21 @@ describe('check-version-uniqueness', () => {
     expect(out.stdout).toMatch(/VERSIONS OK/);
   });
 
+  it('skips the candidate while the MERGE_HEAD ref exists without the env var', () => {
+    const repo = makeRepo();
+    repo.branch('x');
+    const tip = repo.commit('1.0.1', 'on x');
+    git(repo.dir, 'checkout', '-q', 'main');
+    repo.worktreeVersion('1.0.1');
+    // Git does not export MERGE_HEAD to hooks: the ref file itself must gate.
+    writeFileSync(join(repo.dir, '.git', 'MERGE_HEAD'), `${tip}\n`);
+
+    const out = run(repo);
+    expect(out.status).toBe(0);
+    expect(out.stdout).toMatch(/VERSIONS OK/);
+    require('node:fs').rmSync(join(repo.dir, '.git', 'MERGE_HEAD'));
+  });
+
   it('excludes merge commits', () => {
     const repo = makeRepo();
     repo.branch('x');
