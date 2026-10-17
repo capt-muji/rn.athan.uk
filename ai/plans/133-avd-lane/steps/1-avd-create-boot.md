@@ -27,13 +27,15 @@ Change contracts (host state, not repo):
 2. `sdkmanager --install "system-images;android-28;google_apis;arm64-v8a"`
    - lawful under her ruling recorded in the row; record the downloaded size
    (`du -sh` of the image dir) closing row 122's U2.
-3. `avdmanager create avd -n athan-smoke-28 -k "system-images;android-28;google_apis;arm64-v8a" -d pixel --force`
-   then write into `$HOME/.android/avd/athan-smoke-28.avd/config.ini`:
+3. `echo no | avdmanager create avd -n athan-smoke-28 -k "system-images;android-28;google_apis;arm64-v8a" -d pixel --force`
+   (the piped `no` answers the custom-hardware questionnaire; the config
+   write below supplies the panel), then write into
+   `$HOME/.android/avd/athan-smoke-28.avd/config.ini`:
    `hw.lcd.width=1080`, `hw.lcd.height=1920`, `hw.lcd.density=420`,
    `hw.ramSize=2048`, `hw.heapSize=256`, `disk.dataPartition.size=6G`,
    `hw.keyboard=yes`, `snapshot.present=true`. The `-d pixel` profile is a
-   carrier for required fields only; the four `hw.lcd`/density lines override
-   its panel to the 3T's measured class.
+   carrier for required fields only; the three `hw.lcd` and density lines
+   override its panel to the 3T's measured class.
 4. D11 sibling-build check, then boot headless:
    `emulator -avd athan-smoke-28 -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect`
    in the background, recording the start epoch.

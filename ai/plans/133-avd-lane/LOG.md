@@ -25,3 +25,28 @@ merge); node_modules installed under commit.lock (plain `yarn install`,
 theirs)
 
 session: ses_eb7817971ffeXixIUgY3P9mVsC
+
+## Planning (2026-10-17), continued
+
+PLANNING commit 05dbafad (2.0.983) merged as 66708172. Lane weather: lane
+120's DONE landed 2.0.982 mid-merge, conflicting package.json and app.json;
+resolved keeping 2.0.983 (the higher), merge retried once, hook green
+(Tests: 5739 passed, VERSIONS OK). The main tree's gitignored
+android/app/build.gradle synced 2.0.982 to 2.0.983 under build.lock before
+the merge commit (the lockstep test fails in the main tree otherwise).
+
+## Planning (2026-10-17), grill round 1
+
+One athan-plan-griller dispatch (session ses_eb7724218ffeGUr4JC95unmqpt):
+20 findings (4 must, 10 should, 6 nice). 19 applied: the lane-122 gate
+rewritten to row 122's DONE cell read from uat in the main tree plus a
+uat-into-lane merge before editing (the old --binary grep could never gate:
+122's text landed at b275374f after this branch forked); step-5 grep counts
+corrected (3 and 1); the passage wrapper fence made four backticks; the
+clean-tree note for mid-phase LOG entries; pre-flight hardening (HEAD
+ancestor, emulator version compare, both trees' CLI); the avdmanager piped
+`no`; the lsof command; D6's opportunistic-stream clause deleted; the
+mCurrentFocus foreground check; R1.2's start event; the pkill pattern; and
+the nices (three lines, full path, backtick, Maestro citation, anchors in
+the Files line). Rejected finding 18: the LOG heading's em dash is
+TEMPLATE.md's ledger contract from ticket 56, not agent prose.

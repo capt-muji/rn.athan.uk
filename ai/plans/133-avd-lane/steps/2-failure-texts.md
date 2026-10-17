@@ -21,7 +21,7 @@ device list.
 Change contracts (host state):
 
 1. From the main tree (`$HOME/repos/rn.athan.uk`, clean, on `uat`):
-   `npx expo run:android --binary $HOME/athan-gitree/worktrees/prod-build/android/app/build/outputs/apk/release/app-release.apk --device bogus-serial-1234 --no-bundler > $HOME/athan-gitree/sessions/133/e3a-serial-miss.txt 2>&1; echo "exit: $?" >> ...e3a-serial-miss.txt`.
+   `npx expo run:android --binary $HOME/athan-gitree/worktrees/prod-build/android/app/build/outputs/apk/release/app-release.apk --device bogus-serial-1234 --no-bundler > $HOME/athan-gitree/sessions/133/e3a-serial-miss.txt 2>&1; echo "exit: $?" >> $HOME/athan-gitree/sessions/133/e3a-serial-miss.txt`.
    The command must exit non-zero and the capture must contain the device
    list plus the advice line naming `adb devices` (R2.1).
 2. Isolated server: `ANDROID_ADB_SERVER_PORT=5038 adb start-server`, record
@@ -30,8 +30,9 @@ Change contracts (host state):
    exported, captured to `e3b-zero-devices.txt` with its exit code (R2.2).
    When the capture still names the attached phone, record the variant VOID
    with the observed output and no retry (D5).
-3. Teardown: `ANDROID_ADB_SERVER_PORT=5038 adb kill-server`; confirm port
-   5038 holds no listener. The main server on 5037 is never touched.
+3. Teardown: `ANDROID_ADB_SERVER_PORT=5038 adb kill-server`; confirm
+   `lsof -nP -iTCP:5038 -sTCP:LISTEN` prints nothing. The main server on
+   5037 is never touched.
 4. No emulator and no phone is contacted by this step beyond the reads the
    CLI itself does against the live server (device discovery).
 
@@ -40,8 +41,9 @@ Green run: both captures exist, non-empty, each ending with its exit line;
 is unchanged before and after (the 3T still `device`).
 
 Break script: `grep -c "adb devices" sessions/133/e3a-serial-miss.txt` must
-print at least 1; `grep -c "exit: 0"` on the same file must print 0; the
-port-5038 listener check must print nothing. Any miss fails the step.
+print at least 1; `grep -c "exit: 0"` on the same file must print 0;
+`lsof -nP -iTCP:5038 -sTCP:LISTEN` must print nothing after the teardown. Any
+miss fails the step.
 
 Version and commit: union max plus 1, message
 `<VERSION> - docs(plans): ticket 133 step 2 (E3): the serial-miss and zero-device failure texts captured`.
