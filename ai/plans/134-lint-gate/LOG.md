@@ -131,4 +131,24 @@ Scratch proof worktree `$HOME/athan-gitree/worktrees/plan-134` (detached at
 - Gate: `bash scripts/check-plan.sh ai/plans/134-lint-gate` prints
   `PLAN OK` (run from the lane worktree root, 2026-10-17).
 
+## Execution (2026-10-17, resume 2)
+
+- Step 1 dispatch 1 (executor session ses_eb42290f4ffeWMSDoGu7FWDDmp)
+  died to a server restart before doing anything (session db: interrupted;
+  worktree clean, no branch, no locks). Dispatch 2
+  (ses_eb4218febffemGXU8DUQ9GsMXC) returned a clean STOP before branching:
+  the committed preflight used `declare -A` (bash 4 associative arrays), but
+  this machine's only bash is /bin/bash 3.2.57, so under `set -u` the
+  subscript parsed as an arithmetic name and tripped `resolve: unbound
+  variable`.
+- D134.9 (agent-ruled, 2026-10-17, answering that STOP): rewrite the
+  preflight to bash 3.2 with parallel indexed arrays, no interpreter pin, no
+  install. For - scripts/check-plan.sh's own header fixes the repo
+  convention ("bash 3.2 compatible (macOS): no assoc arrays, no mapfile")
+  and the repair needs nothing new. Against - zsh exists on every mac, but
+  the plan says run with bash and zsh carries its own traps. Survives.
+  Applied and verified: all six anchor counts print 1 under /bin/bash 3.2,
+  the guard and branch checks parse. Step 1's version renumbered to
+  2.0.1006 (this repair commit takes 2.0.1005).
+
 session: self (lane, resume 2)
