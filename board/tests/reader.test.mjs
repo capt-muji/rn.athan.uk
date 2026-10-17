@@ -1,5 +1,5 @@
-// The generator's own suite, born in ticket 126: the fixture rows are the
-// queue's landed shapes, and the spawn test is row 56's running-it proof.
+// The fixture rows mirror the queue's landed shapes; the spawn test proves
+// the server's own spawn path end to end.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';

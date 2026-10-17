@@ -63,5 +63,11 @@ expect_red M6
 expected=$((expected + 1))
 restore board/index.html
 
+echo "M7: displayColumn owner-led exclusion dropped"
+mutate board/index.html 7 "s/\Qticket.status !== 'DONE' && ticket.status !== 'OWNER-LED' && unmetOf(ticket).length > 0\E/ticket.status !== 'DONE' && unmetOf(ticket).length > 0/"
+expect_red M7
+expected=$((expected + 1))
+restore board/index.html
+
 echo "ALL AS EXPECTED: $expected"
-[ "$expected" -eq 6 ]
+[ "$expected" -eq 7 ]
