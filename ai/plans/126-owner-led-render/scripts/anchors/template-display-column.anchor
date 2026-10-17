@@ -1,3 +1,0 @@
-  const ageSeconds = () => (board ? Math.max(0, Math.round((Date.now() - Date.parse(board.generatedAt)) / 1000)) : 0);
-  const unmetOf = (ticket) => ticket.needs.filter((need, at) => !ticket.needsMet[at]);
-  const displayColumn = (ticket) => (ticket.status !== 'DONE' && unmetOf(ticket).length > 0 ? 'Blocked' : ticket.column);

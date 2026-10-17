@@ -1,7 +1,0 @@
-      tickets.push({
-        order: row.order,
-        name: row.name,
-        status: 'DONE',
-        statusText: '',
-        column: 'Done',
-        needs: [],
