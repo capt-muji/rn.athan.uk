@@ -50,3 +50,20 @@ mCurrentFocus foreground check; R1.2's start event; the pkill pattern; and
 the nices (three lines, full path, backtick, Maestro citation, anchors in
 the Files line). Rejected finding 18: the LOG heading's em dash is
 TEMPLATE.md's ledger contract from ticket 56, not agent prose.
+
+### Step 01 — done
+
+E2 proven: image `system-images;android-28;google_apis;arm64-v8a` (2.6G,
+row 122's U2 closed) installed through the SDK's own cmdline-tools with
+`--sdk_root` (the Homebrew shim at `/opt/homebrew/bin/sdkmanager` installs
+into its own root: its first run "succeeded" in 15 s installing nothing,
+caught by the empty-dir check); `athan-smoke-28` created with the piped `no`
+plus a line-based config.ini write (a configparser rewrite silently dropped
+keys and was replaced by delete-and-recreate); boot to
+`sys.boot_completed=1` in 29 s (ceiling 180); `wm size` 1080x1920, `wm
+density` 420, sdk 28, arm64-v8a: the 3T's measured panel class exactly.
+Emulator killed gracefully (`emu kill`, dead in one cycle, no qemu process).
+Evidence: `sessions/133/e2-boot.txt` plus the two install logs and the AVD
+creation log. R1.1, R1.2, R1.3 hold.
+
+session: ses_eb7817971ffeXixIUgY3P9mVsC
