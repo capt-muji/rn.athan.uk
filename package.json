@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "2.0.966",
+  "version": "2.0.969",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
@@ -8,7 +8,7 @@
     "start": "expo start -c",
     "ios": "expo run:ios",
     "android": "expo run:android",
-    "reset": "yarn clean && yarn install && yarn husky && yarn start",
+    "reset": "yarn clean && yarn install && yarn start",
     "clean": "rm -rf ios android node_modules yarn.lock .expo .vscode .husky/_ && yarn cache clean && rm -rf /tmp/metro-*",
     "add": "echo 'Use: `npx expo install <package>` for Expo/RN packages, yarn add <package> for others'",
     "prepare": "husky && node scripts/pin-hooks.js",
