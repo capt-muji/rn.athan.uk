@@ -63,7 +63,8 @@ const shas = new Set(
       .split('\n')
       .map((line) => line.trim())
       .filter((line) => line !== '' && line !== 'main');
-    refCount = branches.length + 1;
+    const currentBranch = git('rev-parse', '--abbrev-ref', 'HEAD').trim();
+    refCount = branches.length + (branches.includes(currentBranch) ? 0 : 1);
     const ranges = branches.map((branch) => `${BASE}..${branch}`);
     ranges.push(`${BASE}..HEAD`);
     return git('rev-list', '--no-merges', ...ranges)
@@ -91,11 +92,18 @@ for (const sha of shas) {
 const mergeInFlight = NO_CANDIDATE || Boolean(process.env.MERGE_HEAD) || mergeHeadRefExists();
 const headVersion = commitVersion('HEAD');
 if (headVersion !== null && !mergeInFlight) {
-  const worktree = JSON.parse(fs.readFileSync(path.join(CWD, 'app.json'), 'utf8')).expo.version;
-  if (worktree !== headVersion) {
-    const held = byVersion.get(worktree) ?? [];
+  // The commit records the index, not the worktree: a staged bump must be
+  // read from the staged blob so a later un-staged edit cannot hide it.
+  let staged = null;
+  try {
+    staged = JSON.parse(git('cat-file', '-p', ':app.json')).expo.version;
+  } catch {
+    staged = JSON.parse(fs.readFileSync(path.join(CWD, 'app.json'), 'utf8')).expo.version;
+  }
+  if (staged !== headVersion) {
+    const held = byVersion.get(staged) ?? [];
     held.push('staged');
-    byVersion.set(worktree, held);
+    byVersion.set(staged, held);
   }
 }
 

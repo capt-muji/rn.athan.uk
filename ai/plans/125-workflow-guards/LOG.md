@@ -47,3 +47,10 @@ session: lane-125-lead
 - Re-verification on the merged tree: 20 script tests green, `VERSIONS OK` on the live tree; queue row set EXECUTED.
 - Landed sequence: 2.0.941 step 1, 2.0.942 the MERGE_HEAD-ref fix, 2.0.944→2.0.945 the --no-candidate merge-hook flag renumbered past lane 120's live take, 2.0.957 and 2.0.960 the merges resolving lane weather, 2.0.959 step 2.
 session: lane-125-lead
+
+### Audit — done
+
+- Two reviewer passes, both with the commit range 0413248c..lane/125 named in the dispatch, diff files at $TMPDIR, findings files written per pass. Plan-conformance: 4 findings (2 should, 2 nice), no must. Blind: 5 findings (3 should, 2 nice), no must.
+- Adjudicated: FIXED the staged-blob bypass (the gate now reads the index, a later worktree edit can no longer hide a staged collision; new test red first), the yarn reset un-pin (reset no longer re-runs husky after prepare's pin; the blind reviewer reproduced the silently-unhooked green commit it caused), the refCount off-by-one, the fixture-dir leaks across all three suites, and this LOG's step ledgers below. REJECTED the shared-helper extraction (two local helpers beat a shared module for two suites) and the PLAN.md contract-drift fix (the folder dies with this commit; LOG carries the repairs).
+- Ledger completion: step 1 = d1229726 2.0.941 (hook Tests: 2 skipped, 5725 passed, 5727 total, coverage 100% all four) plus 59fae61c 2.0.942 and 1c1dcd2c 2.0.945 repairs; step 2 = edbd36fa 2.0.959 (hook Tests: 2 skipped, 5735 passed, 5737 total, coverage 100%); step 3 = b4a6fa2a 2.0.961; merges 5bf6756c, 751c3f41, 3d5b0468 with version-file conflicts resolved keeping the higher number.
+session: lane-125-lead

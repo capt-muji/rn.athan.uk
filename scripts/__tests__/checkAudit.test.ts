@@ -11,20 +11,28 @@ const SCRIPT = join(__dirname, '..', 'check-audit.sh');
 
 const run = (folder: string) => spawnSync('bash', [SCRIPT, folder], { encoding: 'utf8' });
 
+const makeDir = (): string => {
+  const dir = mkdtempSync(join(tmpdir(), 'audit-'));
+  fixtureDirs.push(dir);
+  return dir;
+};
+
+const fixtureDirs: string[] = [];
+
 afterEach(() => {
-  for (const d of [mkdtempSync(join(tmpdir(), 'audit-'))]) rmSync(d, { recursive: true, force: true });
+  for (const dir of fixtureDirs.splice(0)) rmSync(dir, { recursive: true, force: true });
 });
 
 describe('check-audit', () => {
   it('fails without AUDIT.md', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'audit-'));
+    const dir = makeDir();
     const out = run(dir);
     expect(out.status).toBe(1);
     expect(out.stdout).toContain('AUDIT CHECK FAILED');
   });
 
   it('fails when a pass has no Range line', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'audit-'));
+    const dir = makeDir();
     const findings = join(dir, 'f1.md');
     writeFileSync(findings, '## FINDINGS\nNone.\n');
     writeFileSync(
@@ -37,7 +45,7 @@ describe('check-audit', () => {
   });
 
   it('fails when a findings file is missing or empty', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'audit-'));
+    const dir = makeDir();
     const empty = join(dir, 'empty.md');
     writeFileSync(empty, '');
     writeFileSync(
@@ -51,7 +59,7 @@ describe('check-audit', () => {
   });
 
   it('passes a well-formed two-pass audit', () => {
-    const dir = mkdtempSync(join(tmpdir(), 'audit-'));
+    const dir = makeDir();
     const f1 = join(dir, 'f1.md');
     const f2 = join(dir, 'f2.md');
     writeFileSync(f1, '## FINDINGS\nNone.\n');

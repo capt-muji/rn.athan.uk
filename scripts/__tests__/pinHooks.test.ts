@@ -7,7 +7,7 @@
  * and an unhooked commit passes green.
  */
 import { execFileSync, spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -31,8 +31,11 @@ const git = (cwd: string, ...args: string[]): string =>
     env: cleanEnv(),
   });
 
+const fixtureDirs: string[] = [];
+
 const makeRepo = (): string => {
   const dir = mkdtempSync(join(tmpdir(), 'pinhooks-'));
+  fixtureDirs.push(dir);
   git(dir, 'init', '-q');
   return dir;
 };
@@ -41,6 +44,10 @@ const commitAll = (dir: string, message: string): void => {
   git(dir, 'add', '-A');
   git(dir, 'commit', '--no-verify', '-q', '-m', message);
 };
+
+afterEach(() => {
+  for (const dir of fixtureDirs.splice(0)) rmSync(dir, { recursive: true, force: true });
+});
 
 describe('pin-hooks', () => {
   it('sets core.hooksPath to .husky in a git repository', () => {
