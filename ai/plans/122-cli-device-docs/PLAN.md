@@ -96,7 +96,7 @@ Code map, one line per file:
   prints the CLI's own stale help `-d, --device [device]  Device name to run
   the app on`, which the corrected doc names so the reader is not misled.
 - `node_modules/@expo/cli/build/src/run/android/runAndroidAsync.js` - the
-  install-and-launch path: lines 143-149, `--binary` checks the path exists
+  install-and-launch path: lines 143-150, `--binary` checks the path exists
   and installs it through `props.device.installAppAsync(binaryPath)` (no
   gradle), then `openCustomRuntimeAsync` launches; with `--no-bundler` the
   manager stops after launch and no Metro stays up.
@@ -146,7 +146,7 @@ grep commands.
 - [R1.2] WHEN `grep -F "matches an adb serial first" e2e/README.md e2e/AGENTS.md` runs at the step commit THE SYSTEM SHALL print one matched line in each file.
 - [R1.3] WHEN `grep -F "npx expo run:android --binary <apk> --device <serial> --no-bundler" e2e/README.md e2e/AGENTS.md` runs at the step commit THE SYSTEM SHALL print one matched line in each file.
 - [R2.1] WHEN `yarn validate` runs in the step worktree at the step commit THE SYSTEM SHALL exit 0.
-- [R3.1] WHEN the queue row 122 is read at the DONE commit THE SYSTEM SHALL carry the DONE cell text section 8 gives, and neither file contains the string `AVD`.
+- [R3.1] WHEN queue row 122 is read at the step commit THE SYSTEM SHALL carry `IN PROGRESS, step 1` as its leading status, and neither target file contains the string `AVD`.
 
 ## 6. Steps
 
@@ -172,8 +172,10 @@ past `1788e83c`; the lane merges into `uat` in the main tree, never the
 executor).
 
 Files: `e2e/README.md`, `e2e/AGENTS.md`, `app.json`, `package.json`,
-`ai/plans/README.md` (row 122 status to `IN PROGRESS, step 1`), this plan
-folder's `PLAN.md` checklist tick and `LOG.md`.
+`ai/plans/README.md` (row 122: replace only the leading `PLANNING
+2026-10-17` with `IN PROGRESS, step 1`; the `four docs steps` fragment
+behind `::` is dead-plan history and dies when the DONE cell replaces the
+cell), this plan folder's `PLAN.md` checklist tick and `LOG.md`.
 
 Red tests (docs step; the greps are the red): before the change, run and
 record in `LOG.md`:
@@ -199,9 +201,13 @@ Change contracts: replace the anchored passage in `e2e/README.md` with exactly:
   `dumpsys package com.mugtaba.athan | grep versionName` before measuring.
 ```
 
-Replace the anchored passage in `e2e/AGENTS.md` with exactly:
+Replace the anchored passage in `e2e/AGENTS.md` with exactly (the first
+two lines are the Idle bullet the anchor carries; replacing the anchor
+without them would delete a live rule):
 
 ```markdown
+- **Idle is measured past the mock window**: at least 5.5 minutes after cold launch,
+  daytime only. Between 00:00 and 06:00 the mock Isha rolls early.
 - `expo run:android --device` matches an adb serial first, a name only as a
   fallback (@expo/cli 58). Install and launch a built APK with
   `npx expo run:android --binary <apk> --device <serial> --no-bundler`;
@@ -237,14 +243,17 @@ grep -qF "takes a device NAME" e2e/README.md e2e/AGENTS.md && { echo "STALE REMA
 grep -qF "npx expo run:android --binary <apk> --device <serial> --no-bundler" e2e/README.md || { echo "README MISSING NEW LINE"; s=1; }
 grep -qF "npx expo run:android --binary <apk> --device <serial> --no-bundler" e2e/AGENTS.md || { echo "AGENTS MISSING NEW LINE"; s=1; }
 grep -q "AVD" e2e/README.md e2e/AGENTS.md && { echo "AVD RULE LEAKED"; s=1; }
-git status --porcelain | grep -vE '^( M )?(e2e/README.md|e2e/AGENTS.md|app.json|package.json|ai/plans/README.md|ai/plans/122-cli-device-docs/)' && { echo "UNEXPECTED FILE TOUCHED"; s=1; }
+git status --porcelain | grep -vE '^([ MAR?]{2} )?(e2e/README.md|e2e/AGENTS.md|app.json|package.json|ai/plans/README.md|ai/plans/122-cli-device-docs/)' && { echo "UNEXPECTED FILE TOUCHED"; s=1; }
 [ "$s" = 0 ] && echo "ALL AS EXPECTED: 1"
 ```
 
 It must end `ALL AS EXPECTED: 1`; any other line is a STOP.
 
 Version: fetch `origin` under `$HOME/athan-gitree/version.lock` (mkdir
-pattern, retry in `sleep 15` cycles, remove the moment the bump is written).
+pattern, retry in `sleep 15` cycles, at most 40 cycles; a 41st failed cycle
+returns `STOP: BLOCKED, version.lock held ten minutes`, because one bump
+holds the lock across its whole commit-and-merge cycle). Remove the lock the
+moment the bump is written.
 The version is the union max plus 1: the highest `expo.version` in `app.json`
 across `git show uat:app.json`, every local branch's `app.json`, and every
 non-merge commit in `origin/uat..uat`, plus 1. Write the bump as one script,
@@ -324,9 +333,10 @@ syncs the gitignored `android/app/build.gradle` `versionName` under
 files is lane weather: abort, rebase onto `uat`, keep both lanes' rows and
 the higher version, retry once, STOP if it still conflicts.
 
-Done when: the break script ends `ALL AS EXPECTED: 1`, `yarn validate` exits
-0, the commit is merged into `uat`, the checklist box above is ticked and
-`LOG.md` carries the entry.
+Done when (executor): the break script ends `ALL AS EXPECTED: 1`, `yarn
+validate` exits 0, the checklist box above is ticked and `LOG.md` carries
+the entry. The lane then merges per the Merge paragraph; the merge is not
+the executor's to wait on.
 
 ## 7. Device proof
 
@@ -349,7 +359,8 @@ Break: ALL AS EXPECTED: 1. Hook output tail recorded above.
 ```
 
 The queue cell text the lane applies on DONE (Status column, replacing the
-current cell):
+current cell; the lane checks at the DONE commit that the cell equals this
+text with the values filled):
 
 ```
 DONE 2026-10-17, audited: the two stale --device lines are corrected to the
@@ -361,7 +372,7 @@ code at AndroidDeviceManager.resolveFromNameAsync matches `device.pid ===
 query` before `device.name === query`), and both name `npx expo run:android
 --binary <apk> --device <serial> --no-bundler` as the install-and-launch
 path (--binary installs the APK without gradle, --no-bundler leaves no Metro
-up, runAndroidAsync.js:143-149 at 58.1.10). The gradle-plus-adb build route
+up, runAndroidAsync.js:143-150 at 58.1.10). The gradle-plus-adb build route
 and the dumpsys versionName check stay (her keep-raw-adb ruling). No AVD
 rule was written: row 133 owns the adopted lane's rules. One docs step at
 <VERSION>, two-reviewer audit, no code, no device, no build. The AVD half of
