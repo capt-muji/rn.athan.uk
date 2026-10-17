@@ -1,0 +1,66 @@
+[
+  {
+    "version": "2.0.858",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.863",
+    "reason": "2026-10-17 cross-lane collision predating this gate (the dep re-pin commit against ticket 118; classified by entry merge per the sessions/125 evidence)"
+  },
+  {
+    "version": "2.0.872",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.886",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.890",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.896",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.901",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.908",
+    "reason": "2026-10-17 cross-lane collision predating this gate (rows 121 and 111)"
+  },
+  {
+    "version": "2.0.909",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.913",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.928",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.930",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.931",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.934",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.935",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.936",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  }
+]
