@@ -451,7 +451,8 @@ fail for each. It ends `ALL AS EXPECTED: 7`. A `BREAK NOT APPLIED` line is a
 STOP.
 
 Version and commit: the version is the next patch after `uat`'s `package.json`
-(2.0.1005 after the planning commits 2.0.1003 and 2.0.1004). Before setting
+(2.0.1006 after the planning commits 2.0.1003, 2.0.1004 and the preflight
+bash-3.2 repair 2.0.1005). Before setting
 it, hold `$HOME/athan-gitree/version.lock` (the mkdir lock, retrying in
 `sleep 15` cycles; it is a lock, never a data source), run
 `git fetch -q origin uat`, and require `node scripts/check-version-uniqueness.js`
@@ -460,7 +461,7 @@ gitignored `android/app/build.gradle` is synced by the lane after merge.
 Commit message:
 
 ```
-2.0.1005 - fix(config): the locale-config plugin rides every android resolution, defaults cover the stripped-widgets case
+2.0.1006 - fix(config): the locale-config plugin rides every android resolution, defaults cover the stripped-widgets case
 ```
 
 Files added by name: the five step files plus this plan folder's `PLAN.md`,
@@ -476,7 +477,7 @@ Merge: the executor commits `fix/134-locale-plugin-every-android` in the
 lane worktree and stops; the lane performs the merge (the worktree cannot
 check out `uat`, the main tree holds it): under `$HOME/athan-gitree/uat.lock`,
 in the main tree, `git fetch -q origin uat`, `node scripts/check-version-uniqueness.js`
-clean, `git merge --no-ff fix/134-locale-plugin-every-android -m "2.0.1005 - merge fix/134: ticket 134 step 1, the locale plugin on every android resolution"`,
+clean, `git merge --no-ff fix/134-locale-plugin-every-android -m "2.0.1006 - merge fix/134: ticket 134 step 1, the locale plugin on every android resolution"`,
 then sync the main tree's `android/app/build.gradle` `versionName` under
 `build.lock`. A conflict on the queue or version files is lane weather
 (abort, rebase, retry once); any other conflict is a STOP.

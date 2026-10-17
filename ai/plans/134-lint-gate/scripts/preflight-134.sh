@@ -21,17 +21,15 @@ CUR=$(python3 -c 'import json;print(json.load(open("app.json"))["expo"]["version
 # Needs first: nothing (verify the queue holds no open dependency)
 grep -q "^| 134 |" ai/plans/README.md || { echo "ticket row missing"; exit 1; }
 
-# anchors count exactly 1
+# anchors count exactly 1 (bash 3.2: parallel indexed arrays, no assoc)
 A=ai/plans/134-lint-gate/scripts/anchors
-declare -A SRC=(
-  [resolve-config.txt]=app.config.ts
-  [plugin-defaults.txt]=plugins/androidLocaleConfig.js
-  [flags-strip-test.txt]=shared/__tests__/flags.test.ts
-  [native-pin.txt]=shared/__tests__/nativeLocalesConfig.test.ts
-)
-for k in "${!SRC[@]}"; do
-  n=$(python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' "$A/$k" "${SRC[$k]}")
-  [[ $n == 1 ]] || { echo "anchor $k counts $n in ${SRC[$k]}"; exit 1; }
+names=(resolve-config.txt plugin-defaults.txt flags-strip-test.txt native-pin.txt)
+files=(app.config.ts plugins/androidLocaleConfig.js shared/__tests__/flags.test.ts shared/__tests__/nativeLocalesConfig.test.ts)
+i=0
+while [[ $i -lt ${#names[@]} ]]; do
+  n=$(python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' "$A/${names[$i]}" "${files[$i]}")
+  [[ $n == 1 ]] || { echo "anchor ${names[$i]} counts $n in ${files[$i]}"; exit 1; }
+  i=$((i + 1))
 done
 n=$(python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' "$A/cli-no-platform.txt" node_modules/@expo/config/build/Config.js)
 [[ $n == 1 ]] || { echo "anchor cli-no-platform.txt counts $n"; exit 1; }
