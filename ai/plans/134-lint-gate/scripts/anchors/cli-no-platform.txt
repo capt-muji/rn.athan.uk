@@ -1,0 +1,6 @@
+        const { exportedObjectType, config: rawDynamicConfig, mayHaveUnusedStaticConfig } = (0, _getConfig.getDynamicConfig)(paths.dynamicConfigPath, {
+            projectRoot,
+            staticConfigPath: paths.staticConfigPath,
+            packageJsonPath,
+            config: getContextConfig(staticConfig)
+        });
