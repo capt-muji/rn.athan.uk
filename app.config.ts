@@ -45,7 +45,10 @@ const pluginName = (plugin: unknown): string | null => {
 // for non-CLI resolvers) keeps the expo-widgets plugin with its Android
 // code generation on, and drops config.ios with it: the plugin's iOS side
 // would otherwise generate a widget extension whenever ios.bundleIdentifier
-// exists, and an android-only build never reads ios config.
+// exists, and an android-only build never reads ios config. A widgets-off
+// android resolution keeps the locale config and strips the widget code
+// generation, because the translated values-b+ keys otherwise fail
+// lintVitalRelease with no default twins.
 const argvTokens = process.argv.map((token) => token.replace(/^--?platform=?/i, '').toLowerCase());
 const androidOnlyResolution =
   (argvTokens.includes('android') && !argvTokens.includes('ios')) || process.env.EXPO_WIDGETS_ANDROID === '1';
@@ -82,7 +85,7 @@ const withAndroidLocaleConfig = (expoConfig: ExpoConfig): ExpoConfig => {
 };
 
 const resolveConfig = ({ platform }: { platform?: string }): ExpoConfig => {
-  if (platform === 'android' || (platform === undefined && androidOnlyResolution && androidWidgetsEnabled)) {
+  if (platform === 'android' || (platform === undefined && androidOnlyResolution)) {
     if (androidWidgetsEnabled) return enableAndroidWidgets(config);
     return withAndroidLocaleConfig(stripWidgetsPlugin(config));
   }
