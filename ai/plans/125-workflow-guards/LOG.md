@@ -41,3 +41,9 @@ session: lane-125-lead
 - Green run: 20 passed, 20 total across the four suites. check-audit.sh walked the bash-3.2 path twice: the first draft died on empty-array expansion under set -u, the second on BSD awk's NUL handling; the landed version is a pure-bash line state machine.
 - Break script: printed `AUDIT CHECK FAILED` with the missing-file reason and `break exit: 1`.
 session: lane-125-lead
+
+### Step 03 — done
+
+- Re-verification on the merged tree: 20 script tests green, `VERSIONS OK` on the live tree; queue row set EXECUTED.
+- Landed sequence: 2.0.941 step 1, 2.0.942 the MERGE_HEAD-ref fix, 2.0.944→2.0.945 the --no-candidate merge-hook flag renumbered past lane 120's live take, 2.0.957 and 2.0.960 the merges resolving lane weather, 2.0.959 step 2.
+session: lane-125-lead
