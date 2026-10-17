@@ -1,0 +1,4 @@
+source: e2e/device-atlas-iphone-xs.md
+| Device build | repo checkout -> prebuild -> Release run:ios | `EXPO_PUBLIC_IOS_WIDGETS=1 prebuild`, plist check, `DEVELOPMENT_TEAM=<paid team> run:ios --configuration Release --device $IPHONE_UDID`; job 39 step 14's stop notes carry the full sequence |
+| Device build-only | xcodebuild direct | `expo run:ios --device generic --output` yields a SIMULATOR binary; for a device artifact run `xcodebuild -workspace ios/Athan.xcworkspace -scheme Athan -configuration Release -destination 'generic/platform=iOS' -allowProvisioningUpdates CODE_SIGN_STYLE=Automatic DEVELOPMENT_TEAM=<paid team> build`, then `devicectl device install app` |
+| Language change | Settings > عام > اللغة والمنطقة | iOS 18.7: no iPhone-Language row; tap the current language row or إضافة لغة… > search > pick > confirm primary; the picker's Cancel and search field sit mirrored in RTL |
