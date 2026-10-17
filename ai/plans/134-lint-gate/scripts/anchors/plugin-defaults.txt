@@ -1,6 +1,0 @@
-const defaultLocaleStringEntries = (projectRoot, config) => {
-  // readFileSync, not require: the mod compiler evaluates this file in a sandbox whose
-  // require does not resolve dynamic absolute paths the way plain node does
-  const infoPlist = JSON.parse(fs.readFileSync(path.join(projectRoot, 'app.json'), 'utf8')).expo.ios.infoPlist;
-  const widgetsEntry = (config.plugins ?? []).find((plugin) => Array.isArray(plugin) && plugin[0] === 'expo-widgets');
-  const widgets = widgetsEntry ? widgetsEntry[1].widgets : [];
