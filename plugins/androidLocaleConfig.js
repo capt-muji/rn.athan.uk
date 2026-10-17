@@ -49,9 +49,6 @@ const defaultLocaleStringEntries = (projectRoot, config) => {
     ['NSUserNotificationsUsageDescription', infoPlist.NSUserNotificationsUsageDescription],
   ];
   for (const widget of widgets) {
-    // expo-widgets writes the android kinds' defaults itself; a twin here would
-    // be a duplicate resource. With the plugin stripped from the resolution
-    // (widgets off) nobody else writes them, so every kind twins
     if (widget.android && expoWidgetsResolvesWidgetDefaults(config)) continue;
     entries.push([`${widgetResourceName(widget.name)}_display_name`, widget.displayName]);
     entries.push([`${widgetResourceName(widget.name)}_description`, widget.description]);
