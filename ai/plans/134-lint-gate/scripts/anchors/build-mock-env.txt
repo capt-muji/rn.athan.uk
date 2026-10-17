@@ -1,5 +1,0 @@
-if [[ -s $WT/.env.example ]]; then
-  grep -vE '^EXPO_PUBLIC_(ENV|API_KEY)=' $WT/.env.example > $WT/.env || fail "cannot write $WT/.env"
-else
-  : > $WT/.env
-fi

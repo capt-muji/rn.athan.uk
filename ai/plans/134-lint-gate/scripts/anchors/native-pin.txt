@@ -1,4 +1,0 @@
-    const entries = defaultLocaleStringEntries(ROOT, app);
-    const defaults = new Map(entries);
-
-    // The permission strings' en bytes come from the committed infoPlist, the table's own source
