@@ -84,11 +84,13 @@ adb -s emulator-5554 emu kill
   the emulator.
 - Disposable by design: destructive checks that would never touch a fleet
   phone (uninstall storms, clock jumps, day rolls) run here; recreate the
-  AVD with `avdmanager delete avd -n athan-smoke-28` and the create command
-  (image android-28 google_apis arm64-v8a, panel 1080x1920, density 420)
-  when a clean slate is wanted.
+  AVD with `avdmanager delete avd -n athan-smoke-28` then
+  `echo no | avdmanager create avd -n athan-smoke-28 -k "system-images;android-28;google_apis;arm64-v8a" -d pixel --force`
+  and write `hw.lcd.width=1080`, `hw.lcd.height=1920`, `hw.lcd.density=420`
+  into `~/.android/avd/athan-smoke-28.avd/config.ini` (the profile's panel is
+  not the 3T's; those three lines pin it).
 - Further system images (any other API level) are ask-first ground; this one
-  image was ruled in by the owner, 2026-10-17.
+  image was ruled in by the owner, 2026-10-16.
 - The emulator's adb serial is `emulator-5554` on the first instance: pass it
   to adb with `-s` and to Maestro with `maestro --device emulator-5554 test
   <flow>`.
