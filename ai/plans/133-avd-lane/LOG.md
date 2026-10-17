@@ -88,3 +88,22 @@ path this harness does not use (the raw-adb ruling stands). Evidence:
 R2.1, R2.2 hold.
 
 session: ses_eb7817971ffeXixIUgY3P9mVsC
+
+### Step 03 — done
+
+E5 proven on the AVD. Snapshot boot to `sys.boot_completed=1` in 15 s
+(first-ever boot was 29 s in step 1). The 2.0.908 prod APK installed
+(`Success`, pm list 0 to 1). The throwaway launch rendered the full London
+dashboard with NO permission dialog (the screenshot vision-read: `London,
+UK` at (115,446), the date line, the countdown, six prayer rows, the
+settings gear at (540,1642) on the 1080x1920 panel): the app's one measured
+AVD point recorded here is the floating settings gear at (540,1642).
+`maestro --device emulator-5554 test e2e/flows/smoke.yaml` passed both
+assertions (launch, `London, UK` visible), exit 0. The disposability leg:
+uninstall `Success`, reinstall `Success`, throwaway launch, force-stop,
+replay passed again, exit 0. Emulator killed gracefully (dead in one cycle,
+no qemu process). Evidence: `sessions/133/e5-smoke.txt`,
+`sessions/133/e5-disposable.txt`, `sessions/133/e5-first-launch.png`
+(uncommitted, dies with the evidence rule). R4.1, R4.2 hold.
+
+session: ses_eb7817971ffeXixIUgY3P9mVsC
