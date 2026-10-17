@@ -18,6 +18,10 @@ Read `e2e/README.md` in full before measuring anything. The traps that cost real
   fallback (@expo/cli 58). Install and launch a built APK with
   `npx expo run:android --binary <apk> --device <serial> --no-bundler`;
   building stays on `./gradlew assembleRelease` and `adb install -r`.
+- The AVD `athan-smoke-28` is smoke and disposable destructive checks only
+  (boot headless, kill it after): it is never a measurement witness, every
+  perf claim names a physical device, and any further system image is
+  ask-first.
 - Force-stop before every scripted Maestro flow. One BACK per open sheet. Verify toggled
   prefs from pixels. For app work outside flows, the executor rule governs: press HOME, then
   `am kill`, never force-stop (it has hung the phone).
