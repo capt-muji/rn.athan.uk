@@ -48,3 +48,29 @@ correction only.
 - Version note for the executor: the grill's dry run of the union command
   printed 2.0.976 (union grows while siblings land); any number the script
   prints is the free next patch.
+
+### Step 01 — executed
+
+- Branch `docs/122-device-lines` off `lane/122` at `ae7eeb18`; preflight
+  `PREFLIGHT OK`; anchors readme-stale and agents-stale each counted 1.
+- Queue row 122: leading status token replaced with `IN PROGRESS, step 1`,
+  parenthetical and the `::` tail kept intact.
+- Hand-run `yarn validate` before the commit, tail:
+  `Test Suites: 221 passed, 221 total`
+  `Tests:       2 skipped, 5737 passed, 5739 total`
+  `Time:        46.88 s` / `Done in 49.72s.`
+- Version: union-max-plus-1 under `version.lock` printed `2.0.979`; the
+  pre-commit hook then refused it (`VERSION COLLISION 2.0.979:
+  a08ee0ef270cd701e98d1d6d3178322091170bf3 staged`, lane 120's audit commit
+  landed the same number in the interim; D5 predicted the hook re-refuses
+  collisions). Recomputed under `version.lock`: `2.0.980`, written to
+  `app.json` and `package.json`; lock released after each bump.
+
+Step 1 done at 2.0.980: both stale --device passages replaced.
+Red: "takes a device NAME" counted 1 in each file before the change;
+"npx expo run:android --binary" counted 0 in each.
+Green: stale gone (grep exit 1), new line counted 1 in each file,
+serial-first line counted 1 in each file, no AVD string, yarn validate exit 0.
+Break: ALL AS EXPECTED: 1. Hook output tail recorded above.
+
+session: ses_eb7833f73ffekErM0yIZUM4RVl
