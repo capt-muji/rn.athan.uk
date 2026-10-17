@@ -72,7 +72,7 @@ Every selectable athan sound comes from a public recording:
 
 ## Stack
 
-- Expo SDK 58 (preview), React Native 0.88, React 19
+- Expo SDK 58 (stable), React Native 0.88, React 19
 - TypeScript, strict mode
 - Expo Router, Jotai, MMKV, Reanimated 4
 - date-fns and date-fns-tz, with every date in the London timezone
