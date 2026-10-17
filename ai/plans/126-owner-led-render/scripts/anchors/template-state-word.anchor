@@ -1,0 +1,4 @@
+  function stateWord(ticket) {
+    if (displayColumn(ticket) === 'Blocked') return 'Blocked';
+    if (ticket.status === 'DONE') return 'Shipped';
+    if (ticket.status === 'OWNER-LED') return 'Owner steered';
