@@ -134,7 +134,44 @@ Side observations recorded as part of the reading:
 
 ## RD3: the XS temporary-full-accuracy prompt under a reduced grant
 
-Pending step 2.
+BLOCKED mid-reading 2026-10-17 by the XS automation channel dying (row 124's fault
+class). What the session captured before the block:
+
+- The probe app (com.mugtaba.athan, 2.0.939 content, ENV=local so it opens
+  athan-storage-dev and never reads the owner's athan-storage) installed over the
+  found build (found state: 2.0.939, xs-found-apps.txt) and ran. Her grant read
+  When Using plus Precise ON on every poll and was NEVER changed: the reduce drive
+  never ran, so there is no grant restoration owed. Lines (xs-rd.log):
+  `[RD0] permission read {"status":"granted","scope":"whenInUse","canAskAgain":true,"accuracy":"full","expires":"never","granted":true}`
+- The purpose key precondition verified in the generated plist before install:
+  `ExpoLocationFullAccuracy` -> "Allow $(PRODUCT_NAME) to access your precise
+  location" (the prebuild log).
+- RD4's iOS half, partial: the classic line landed once
+  (`[RD4] classic getLastKnownPositionAsync {"timestamp":1792224225850.885,"accuracy":5.638395719850306,"heading":-1,"speed":-1}`),
+  then the /next line and the verdict line never surfaced: Release-build console
+  lines riding os_log drop non-deterministically on this XS (observed twice; the
+  2-second loop lines all arrive; the drops hit lines that follow a location await).
+  RD4's criterion stands on the 3T evidence; the iOS half stays open with the drop
+  recorded.
+- The channel timeline: devicectl install and launch worked 09:01 to 09:05; from
+  09:08 every CoreDevice RSD call fails with row 124's signature
+  (`Failed to allocate RSD device`, `_AMDeviceCreateWithRemoteDeviceUUIDAndTypeWithError`),
+  spreading to device-info calls; agent-device's runner prepare timed out twice
+  (15 s command timeout); a Maestro drive hung after device detection; the
+  pymobiledevice3 lockdown install stalled; its tunnel path needs a sudo tunneld.
+  DVT stayed alive throughout (screenshots, process kill). The taps RD3 needs
+  (the Settings reduce drive and the prompt's answer) have no channel that survives
+  the wedge, and row 124's ladder is owner-hands by nature (reboot, replug, sudo).
+- The phone at close: unlocked, charging, the probe app's process killed via DVT
+  (pid reads 0), the probe BINARY still installed. The probe-free restore build of
+  the found version's content (0413248c, 2.0.939) is built and waiting at
+  `$HOME/athan-gitree/sessions/131/restore-Athan.app`; one install command lands it
+  once any install channel returns. No owner data, notification or preference was
+  touched: the probe shell mounts none of the app's machinery.
+
+Resume: clear the channel (row 124's ladder), install the restore app (or rebuild
+from step 2's recipe), re-run step 2's choreography for RD3 with the probe build,
+restore the grant after the reduce, then step 3.
 
 ## RD6: an adopted prebuild's exact native deltas
 

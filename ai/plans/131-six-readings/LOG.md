@@ -51,3 +51,24 @@ review passes are dispatched workers, named below when they run)
 - Honest-check pass: every quoted [RD line verified present verbatim in
   sessions/131/3t-rd.log (script in the step transcript, 0 missing).
 session: self (lane-run device step per D131.5)
+
+### Step 02 — XS session: RD3 blocked by the channel, RD4 partial (BLOCKED tail)
+
+- Found state recorded: com.mugtaba.athan 2.0.939 on the XS; the found version's
+  commit 0413248c pins expo-location 58.0.17, so the probe AND the restore build
+  both built at 0413248c (the phone ends at its found version, no upgrade).
+- iOS build recipe needed one addition the plan now records: `--no-install`
+  prebuild produces no workspace until `pod install` runs (xcodebuild exit 66 on a
+  missing Athan.xcworkspace).
+- The probe ran: her grant When Using plus Precise ON, never changed. Release
+  console lines drop non-deterministically over os_log (RD4's /next line lost
+  twice). The RD3 reduce drive never started: the CoreDevice RSD channel died at
+  09:08 with row 124's signature and never returned across 25 minutes of 15 s
+  polling; every tap channel (agent-device runner, Maestro, mobile-mcp) is dead
+  with it or absent; the lockdown install stalled; tunneld needs sudo.
+- The restore build (probe-free 0413248c) succeeded and is copied to
+  sessions/131/restore-Athan.app. The probe process was killed via DVT (pid 0
+  verified). The probe binary remains installed pending the one-command restore.
+- Scrub: scratch worktree plan-131 and the lane worktree removed at session end
+  per protocol; everything needed to resume is on uat plus sessions/131/.
+session: self (lane-run device step per D131.5; blocked tail recorded in the row)
