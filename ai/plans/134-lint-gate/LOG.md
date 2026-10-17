@@ -151,4 +151,74 @@ Scratch proof worktree `$HOME/athan-gitree/worktrees/plan-134` (detached at
   the guard and branch checks parse. Step 1's version renumbered to
   2.0.1006 (this repair commit takes 2.0.1005).
 
+- D134.10 (agent-ruled, 2026-10-17, answering that STOP): repair the break
+  script's failure detector from the `✕` mark (which this jest never prints
+  under --silent non-verbose) to the failure block bullet `●` or a
+  `Tests:.*failed` summary line, and fix the plan's break-script invocation
+  path to `ai/plans/134-lint-gate/scripts/break-134.sh`. For - the executor
+  proved all seven mutants die (diagnostic copy, `ALL AS EXPECTED: 7`), so
+  only the detector is wrong, and the two indicators it now greps are the
+  ones the configuration actually prints. Against - relaxing the detector
+  risks a false kill; the exit-code check still runs first and the summary
+  line names counts, so a crash cannot pass as a kill. Survives. The
+  executor's verified diff is preserved at
+  `$HOME/athan-gitree/sessions/134/step1/step1-unfinished.patch` for the
+  re-dispatch; red and green stay as the ledger's recorded evidence. Step
+  1's version renumbered to 2.0.1007 (this repair commit takes 2.0.1006).
+
 session: self (lane, resume 2)
+
+### Step 01 - the config branch and the plugin defaults (STOPPED at the break gate)
+
+Executor session ses_eb41dee53ffexozXqvEmfceAAo, 2026-10-17, worktree
+`$HOME/athan-gitree/worktrees/lane-134`.
+
+- Preflight: copy to `$TMPDIR`, run under /bin/bash 3.2 with the worktree root
+  as cwd, `PREFLIGHT OK` on lane/134 and again on the fix branch after
+  `git checkout -b fix/134-locale-plugin-every-android` (off 8b64cc4d, the
+  uat tip).
+- Red, written verbatim from the plan, all three suites run with
+  `--selectProjects=unit --watchman=false`:
+  - config.test.ts `Tests: 1 failed, 22 passed, 23 total`; failing line 212
+    `expect(resolved.plugins).toContain('./plugins/androidLocaleConfig');`
+    in `registers the locale config on the real CLI route: platform
+    undefined, android argv, widgets off`. The fourth new test passed red as
+    the plan predicts (it pins the guard).
+  - flags.test.ts `Tests: 2 failed, 22 passed, 24 total`; failing lines 236
+    and 258, both `toContain('./plugins/androidLocaleConfig')` mismatches
+    (the new argv-route test and the renamed EXPO_WIDGETS_ANDROID test).
+  - nativeLocalesConfig.test.ts `Tests: 1 failed, 4 passed, 5 total`;
+    `Expected: 30 / Received: 2` at line 148.
+- Change contracts A and B applied verbatim (branch condition, comment
+  sentence, helper + docblock replacements + function body).
+- Green: the three suites `23 passed, 23 total`, `24 passed, 24 total`,
+  `5 passed, 5 total`; `npx tsc --noEmit` exit 0; `npx biome check .
+  --error-on-warnings` exit 0 (452 files); `yarn validate` exit 0 with
+  `Tests: 2 skipped, 5743 passed, 5745 total` and coverage
+  `Statements 100% (5401/5401)`, `Branches 100% (2326/2326)`,
+  `Functions 100% (1130/1130)`, `Lines 100% (4838/4838)`.
+- Break script, run verbatim as
+  `bash ai/plans/134-lint-gate/scripts/break-134.sh` from the worktree root
+  (the plan's `scripts/break-134.sh` path resolves to the plan folder's copy;
+  the repo-root scripts/ holds no such file - first invocation by the bare
+  plan path exited 127 before anything mutated): every one of the seven
+  substitutions matched and every jest run exited 1, but the script printed
+  seven `BREAK NOT APPLIED: ... (no failing test)` lines and ended
+  `BREAKS FAILED: 7`. Cause: expect_fail greps the jest log for `✕`, and
+  this jest (piped, non-verbose, --silent, no custom reporters) prints `●`
+  failure blocks only - no `✕` mark exists in any run, red or green. The
+  plan's `ALL AS EXPECTED: 7` is unreachable with the committed detector.
+- Diagnostic (evidence only, never the gate): a `$TMPDIR` copy of the script
+  with the single grep changed from `✕` to `●` prints `mutant killed` for
+  all seven and `ALL AS EXPECTED: 7`. So the substantive mutation
+  requirement holds: each mutant reddens the three named suites. Only the
+  script's success detector is wrong.
+- STOP returned: the committed break script is plan-given content and its
+  detector needs the lane's repair; the step's break gate cannot be
+  satisfied as written. No version bump, no commit, no merge; version.lock
+  and commit.lock never taken. Work saved to
+  `$HOME/athan-gitree/sessions/134/step1/` (unfinished patch 217 lines,
+  status, red/green/validate/break logs); the worktree restored clean on
+  lane/134 and the child branch deleted.
+
+session: ses_eb41dee53ffexozXqvEmfceAAo

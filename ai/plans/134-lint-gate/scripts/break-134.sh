@@ -19,7 +19,12 @@ expect_fail() {
     echo "BREAK NOT APPLIED: $name (tests still pass)"
     return 1
   fi
-  grep -q "✕" "$TMPDIR/break-134-jest.log" || { echo "BREAK NOT APPLIED: $name (no failing test)"; return 1; }
+  # jest under --silent non-verbose prints no per-test mark: the failure
+  # block bullet and the failed summary line are the real indicators
+  grep -q "●" "$TMPDIR/break-134-jest.log" || grep -Eq "Tests:.*failed" "$TMPDIR/break-134-jest.log" || {
+    echo "BREAK NOT APPLIED: $name (no failing test)"
+    return 1
+  }
   echo "mutant killed: $name"
   return 0
 }
