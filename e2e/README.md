@@ -61,6 +61,40 @@ e2e/scripts/frame-audit.sh overlay-open 540 974 3        # settle 12s, tap, audi
 FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 540 1730 3   # cadence-only
 ```
 
+## The AVD lane: smoke only, never a witness
+
+One emulator serves the harness: `athan-smoke-28` (android-28 google_apis
+arm64-v8a, 1080x1920 at 420 density, the 3T's measured panel class). It
+exists for flow smoke and disposable destructive checks: replaying
+`e2e/flows/*.yaml`, install and uninstall cycles, day-roll and
+language-switch exercises, dialog mechanics. The flows' tap points are 3T
+panel coordinates, so they replay unchanged.
+
+Boot it headless and kill it when done (never leave it resident: it is real
+CPU load beside sibling builds):
+
+```sh
+emulator -avd athan-smoke-28 -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
+adb -s emulator-5554 shell getprop sys.boot_completed   # 1 = ready; the serial increments per instance
+adb -s emulator-5554 emu kill
+```
+
+- Never a measurement witness: `baseline-compare.sh`, `frame-audit.sh` and
+  every perf number name a physical device, and no measurement claim cites
+  the emulator.
+- Disposable by design: destructive checks that would never touch a fleet
+  phone (uninstall storms, clock jumps, day rolls) run here; recreate the
+  AVD with `avdmanager delete avd -n athan-smoke-28` and the create command
+  (image android-28 google_apis arm64-v8a, panel 1080x1920, density 420)
+  when a clean slate is wanted.
+- Further system images (any other API level) are ask-first ground; this one
+  image was ruled in by the owner, 2026-10-17.
+- The emulator's adb serial is `emulator-5554` on the first instance: pass it
+  to adb with `-s` and to Maestro with `maestro --device emulator-5554 test
+  <flow>`.
+- The 3T atlas's app rows transfer only because panel, density and OS class
+  match; its OEM rows (launcher, widget picker) are OxygenOS and never apply.
+
 ## The 30fps floor
 
 Big animations (overlay, sheets, cascade, segmented selection,
