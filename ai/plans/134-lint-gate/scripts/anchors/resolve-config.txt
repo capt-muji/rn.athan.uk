@@ -1,0 +1,5 @@
+const resolveConfig = ({ platform }: { platform?: string }): ExpoConfig => {
+  if (platform === 'android' || (platform === undefined && androidOnlyResolution && androidWidgetsEnabled)) {
+    if (androidWidgetsEnabled) return enableAndroidWidgets(config);
+    return withAndroidLocaleConfig(stripWidgetsPlugin(config));
+  }
