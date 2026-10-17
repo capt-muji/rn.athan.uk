@@ -40,9 +40,10 @@ credentials, publishing, destroying data), reported, never asked.
   `$HOME/repos/rn.athan.uk` stays checked out on `uat` and clean: it is the merge
   station and the build bay, never a lane's desk. Give the worktree its own
   `node_modules` with a plain `yarn install` when your lane runs code or hooks, and
-  reinstall after any rebase that moves `yarn.lock`. A FRESH worktree has no husky
-  shim until that install creates it, so git silently skips the pre-commit hook and
-  an unhooked commit passes green: never commit before the install finishes, and
+  reinstall after any rebase that moves `yarn.lock`. A fresh worktree runs the
+  tracked `.husky/` hooks from its first commit (`core.hooksPath .husky`), but
+  without node_modules the chain fails loudly at npx lint-staged or yarn
+  validate: finish the install before the first commit, and
   treat any commit whose output carries no `Tests:` line as unhooked (run
   `yarn validate` and the coverage check by hand, re-verify, and only then continue).
   Remove the worktree and its branch before you end.
@@ -57,7 +58,9 @@ credentials, publishing, destroying data), reported, never asked.
   `$HOME/athan-gitree/commit.lock` around every commit and every yarn install,
   so no hook runs against a churning `node_modules`;
   `$HOME/athan-gitree/uat.lock` around every merge into `uat` (merges happen
-  only in the main tree, `git fetch -q origin uat` first, `--no-ff`);
+  only in the main tree, `git fetch -q origin uat` first, `--no-ff`, and run
+  `node scripts/check-version-uniqueness.js` after the fetch and before
+  `git merge`, resolving any collision first);
   `$HOME/athan-gitree/build.lock` around `build-prod.zsh`, `build-mock.zsh` and
   any Xcode or toolchain change (the scripts hardcode the main tree and build
   `uat` content: run a build step only after its code is merged);
@@ -74,6 +77,10 @@ credentials, publishing, destroying data), reported, never asked.
   audited.
 
 ## Returns
+
+Never end a turn holding a lock or with a live background shell: carry every
+wait inside the turn in 15-second cycles, and remove a lock the moment the
+work it guards ends.
 
 Your final message starts with one of:
 
