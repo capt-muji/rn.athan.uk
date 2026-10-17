@@ -150,6 +150,22 @@ describe('check-version-uniqueness', () => {
     require('node:fs').rmSync(join(repo.dir, '.git', 'MERGE_HEAD'));
   });
 
+  it('skips the candidate under the merge hook --no-candidate flag', () => {
+    const repo = makeRepo();
+    repo.branch('x');
+    repo.commit('1.0.1', 'on x');
+    git(repo.dir, 'checkout', '-q', 'main');
+    repo.worktreeVersion('1.0.1');
+
+    const out = spawnSync('node', [SCRIPT, '--base', BASE, '--no-candidate'], {
+      cwd: repo.dir,
+      encoding: 'utf8',
+      env: cleanEnv(),
+    });
+    expect(out.status).toBe(0);
+    expect(out.stdout).toMatch(/VERSIONS OK/);
+  });
+
   it('excludes merge commits', () => {
     const repo = makeRepo();
     repo.branch('x');
