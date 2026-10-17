@@ -76,27 +76,27 @@ named below; a missing line is a failed step, not a skipped one.
    must print `package: name='com.mugtaba.athan.fleettest'`; on `com.mugtaba.athan`
    bare, stop (PLAN.md section 10). Release `build.lock`.
 
-2. Under `device-$3T_SERIAL.lock` (one hold for the whole device session):
+2. Under `device-$SERIAL_3T.lock` (one hold for the whole device session):
 
    a. Install:
       ```
-      adb -s $3T_SERIAL install -r android/app/build/outputs/apk/release/app-release.apk
-      adb -s $3T_SERIAL shell pm list packages | grep fleettest
+      adb -s $SERIAL_3T install -r android/app/build/outputs/apk/release/app-release.apk
+      adb -s $SERIAL_3T shell pm list packages | grep fleettest
       ```
       Expect `Success` then the package name.
    b. Grants:
       ```
-      adb -s $3T_SERIAL shell pm grant com.mugtaba.athan.fleettest android.permission.ACCESS_COARSE_LOCATION
-      adb -s $3T_SERIAL shell pm grant com.mugtaba.athan.fleettest android.permission.ACCESS_FINE_LOCATION
+      adb -s $SERIAL_3T shell pm grant com.mugtaba.athan.fleettest android.permission.ACCESS_COARSE_LOCATION
+      adb -s $SERIAL_3T shell pm grant com.mugtaba.athan.fleettest android.permission.ACCESS_FINE_LOCATION
       ```
-      Verify with `adb -s $3T_SERIAL shell dumpsys package com.mugtaba.athan.fleettest | grep "ACCESS_"`:
+      Verify with `adb -s $SERIAL_3T shell dumpsys package com.mugtaba.athan.fleettest | grep "ACCESS_"`:
       both `granted=true`.
    c. Capture:
       ```
-      adb -s $3T_SERIAL logcat -c
-      adb -s $3T_SERIAL logcat -v time ReactNativeJS:V '*:S' | grep --line-buffered '\[RD' > $HOME/athan-gitree/sessions/131/3t-rd.log &
+      adb -s $SERIAL_3T logcat -c
+      adb -s $SERIAL_3T logcat -v time ReactNativeJS:V '*:S' | grep --line-buffered '\[RD' > $HOME/athan-gitree/sessions/131/3t-rd.log &
       ```
-   d. Launch: `adb -s $3T_SERIAL shell am start -n com.mugtaba.athan.fleettest/.MainActivity`.
+   d. Launch: `adb -s $SERIAL_3T shell am start -n com.mugtaba.athan.fleettest/.MainActivity`.
       Wait for `[RD4]` and `[RD1]` END lines in `3t-rd.log`, polling the file every
       15 s. Expected within 60 s (RD1 may take 35 s): the four RD4 lines and the
       three RD1 lines; `ageMs` over 35000 in the RD1 fresh line names the stale
@@ -105,38 +105,38 @@ named below; a missing line is a failed step, not a skipped one.
       grants failed: re-run them, then cold-restart the probe:
       `input keyevent KEYCODE_HOME`, `am kill com.mugtaba.athan.fleettest`, then
       the `am start` line again (a bare `am start` only resumes a live process).
-   e. RD5: `adb -s $3T_SERIAL shell pm revoke com.mugtaba.athan.fleettest android.permission.ACCESS_FINE_LOCATION`.
+   e. RD5: `adb -s $SERIAL_3T shell pm revoke com.mugtaba.athan.fleettest android.permission.ACCESS_FINE_LOCATION`.
       Wait for `[RD5] END` (within 60 s). The lines owed: one `perm-watch` with
       `"accuracy":"reduced"`, the `permission read`, and `getPosition resolved` or
       `getPosition THREW`. If no `[RD5] perm-watch` line with `"accuracy":"reduced"` and no
       `[RD5] END` appear in 60 s, capture the absent form: `dumpsys package com.mugtaba.athan.fleettest | grep ACCESS_` plus the
       tail of `3t-rd.log`.
    f. Restore the grant:
-      `adb -s $3T_SERIAL shell pm grant com.mugtaba.athan.fleettest android.permission.ACCESS_FINE_LOCATION`.
+      `adb -s $SERIAL_3T shell pm grant com.mugtaba.athan.fleettest android.permission.ACCESS_FINE_LOCATION`.
       The probe's waiter loop keeps reading permissions while RD2 is pending, so a
       `[RD5] perm-watch` line with `"accuracy":"full"` lands within 5 s. That line is
       R5.2's evidence.
-   g. RD2: `adb -s $3T_SERIAL shell settings put secure location_providers_allowed -gps,-network`.
+   g. RD2: `adb -s $SERIAL_3T shell settings put secure location_providers_allowed -gps,-network`.
       Within 5 s `[RD2] BEGIN` appears. Capture the evidence twice, once at once and
       once after the screenshot (the dialog can win the race with the first dump):
       ```
-      adb -s $3T_SERIAL shell dumpsys window | grep -E "mCurrentFocus|mFocusedApp" > $HOME/athan-gitree/sessions/131/rd2-focus.txt
-      adb -s $3T_SERIAL exec-out screencap -p > $HOME/athan-gitree/sessions/131/rd2-dialog.png
+      adb -s $SERIAL_3T shell dumpsys window | grep -E "mCurrentFocus|mFocusedApp" > $HOME/athan-gitree/sessions/131/rd2-focus.txt
+      adb -s $SERIAL_3T exec-out screencap -p > $HOME/athan-gitree/sessions/131/rd2-dialog.png
       sleep 2
-      adb -s $3T_SERIAL shell dumpsys window | grep -E "mCurrentFocus|mFocusedApp" >> $HOME/athan-gitree/sessions/131/rd2-focus.txt
+      adb -s $SERIAL_3T shell dumpsys window | grep -E "mCurrentFocus|mFocusedApp" >> $HOME/athan-gitree/sessions/131/rd2-focus.txt
       ```
       Read the dialog from the screenshot (reach evidence only). If the dialog is the
       GMS in-app form, tap its affirmative button by the coordinates measured from
-      that screenshot: `adb -s $3T_SERIAL shell input tap X Y`. If Settings opened
+      that screenshot: `adb -s $SERIAL_3T shell input tap X Y`. If Settings opened
       instead, the focus dump already proves it: restore the providers with
-      `adb -s $3T_SERIAL shell settings put secure location_providers_allowed +gps,+network`,
+      `adb -s $SERIAL_3T shell settings put secure location_providers_allowed +gps,+network`,
       tap nothing, and re-foreground the probe so the promise resolves:
-      `adb -s $3T_SERIAL shell am start -n com.mugtaba.athan.fleettest/.MainActivity`.
+      `adb -s $SERIAL_3T shell am start -n com.mugtaba.athan.fleettest/.MainActivity`.
       Wait for `[RD2] resolved` and `[RD2] services after`.
-   h. Verify services on: `adb -s $3T_SERIAL shell settings get secure location_providers_allowed`
+   h. Verify services on: `adb -s $SERIAL_3T shell settings get secure location_providers_allowed`
       prints `gps,network` (or the probe's `services after true` line already does).
       Restore if the dialog path left them off.
-   i. Leave the phone as found: `adb -s $3T_SERIAL uninstall com.mugtaba.athan.fleettest`,
+   i. Leave the phone as found: `adb -s $SERIAL_3T uninstall com.mugtaba.athan.fleettest`,
       expect `Success`; `pm list packages | grep fleettest` prints nothing. Kill the
       logcat background job. Release the device lock.
 

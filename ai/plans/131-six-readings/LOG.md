@@ -31,3 +31,23 @@ Scratch worktree for the probe builds: `$HOME/athan-gitree/worktrees/plan-131`
 
 session: self (the lane runs every phase itself per D131.5; the grill and the two
 review passes are dispatched workers, named below when they run)
+
+### Step 01 — 3T readings captured (RD4, RD1, RD5, RD2)
+
+- Pre-flight clean (SERIAL_3T/IPHONE_UDID exported; the plan text's `3T_SERIAL`
+  placeholder is prose, the shell variable is `SERIAL_3T`; the preflight and steps
+  were corrected in the READY commit's aftermath and ride the step-3 commit).
+- Scratch build at ca73f5a9: first gradle run failed lintVitalRelease
+  (ExtraTranslation: the per-locale widget strings generate from committed config but
+  the default-locale strings only under EXPO_PUBLIC_ANDROID_WIDGETS=1; grill finding
+  11's strip was wrong for Android and was reverted for the ANDROID flag alone).
+  Second run BUILD SUCCESSFUL in 5m51s; aapt2 gate: com.mugtaba.athan.fleettest.
+- All four readings captured; verbatim lines and verdicts in READINGS.md. Two
+  unplanned-but-recorded behaviours: the pm revoke restarts the app (readings
+  resumed on relaunch), and GMS's own LocationOffWarningActivity freezes the probe's
+  loop while it holds focus (RD2's side observations).
+- Phone as found: services on (gps,network), fleettest uninstalled, the owner's
+  package untouched (grants rode the fleettest package).
+- Honest-check pass: every quoted [RD line verified present verbatim in
+  sessions/131/3t-rd.log (script in the step transcript, 0 missing).
+session: self (lane-run device step per D131.5)
