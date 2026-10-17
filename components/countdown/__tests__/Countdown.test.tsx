@@ -21,7 +21,7 @@ beforeEach(() => seedCountdownBarOn());
 
 const MAGRIB = 4;
 const LETTER_INK = COLORS.text.primary;
-const LETTER_SIZE_SHARE = 0.9;
+const LETTER_SIZE_SHARE = 0.95;
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)
@@ -148,7 +148,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(screen.getByText('5s')).toBeOnTheScreen();
   });
 
-  it('draws the letters 10% under the digit size and full-strength ink, inside the digit run', async () => {
+  it('draws the letters 5% under the digit size and full-strength ink, inside the digit run', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSecondsPreference(false);
     setCountdown(8940);

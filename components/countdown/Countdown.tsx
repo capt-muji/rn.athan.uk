@@ -25,7 +25,7 @@ interface LetteredGroup {
 }
 
 const UNIT_LETTERS = ['h', 'm', 's'];
-const UNIT_SIZE_SHARE = 0.9;
+const UNIT_SIZE_SHARE = 0.95;
 const UNIT_LETTER_COLOR = COLORS.text.primary;
 const COLON_DISPLAY = /^\d{2}(:\d{2}){1,2}$/;
 
