@@ -67,3 +67,24 @@ Evidence: `sessions/133/e2-boot.txt` plus the two install logs and the AVD
 creation log. R1.1, R1.2, R1.3 hold.
 
 session: ses_eb7817971ffeXixIUgY3P9mVsC
+
+### Step 02 — done
+
+E3 proven, both variants genuine. e3a (live server, bogus serial
+`bogus-serial-1234`): exit 1, `No connected Android device or emulator
+matched "bogus-serial-1234" by serial or name.`, the device list (the 3T by
+placeholder in committed text, plus `athan-smoke-28 (not attached,
+emulator)`), and the advice line `Pass a device serial from `adb devices` or
+a name from the list above to --device.` e3b (isolated adb server on port
+5038, zero devices attached): the CLI respected ANDROID_ADB_SERVER_PORT
+(the 3T is absent from its list, proving it read the isolated server),
+exit 1, the same advice line with only the not-attached AVD listed. The
+isolated server was killed and `lsof -nP -iTCP:5038 -sTCP:LISTEN` prints
+nothing; the main server on 5037 was never touched. One operational note
+captured in the evidence: the CLI's device list names a not-attached AVD as
+a launchable candidate, so `--device athan-smoke-28` is a name-based boot
+path this harness does not use (the raw-adb ruling stands). Evidence:
+`sessions/133/e3a-serial-miss.txt`, `sessions/133/e3b-zero-devices.txt`.
+R2.1, R2.2 hold.
+
+session: ses_eb7817971ffeXixIUgY3P9mVsC
