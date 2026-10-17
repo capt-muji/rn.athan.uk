@@ -75,7 +75,8 @@ verification, never infer visuals from pixels alone.
 - **Metro env-blindness (healed at SDK 58, keep the verification)**: before SDK 58, changing
   any `EXPO_PUBLIC_*` variable (including `EXPO_PUBLIC_ENV`) required clearing the Metro cache
   AND deleting the generated Android bundle, or the stale transform shipped. At the SDK 58
-  pin set (metro-config 0.88.0) the env change invalidates the transform cache itself,
+  pin set (`@react-native/metro-config` 0.88.0 beside `@expo/metro-config` 58.0.14) the env
+  change invalidates the transform cache itself,
   measured 2026-10-16 with two `npx expo export --platform android` runs differing only in
   `EXPO_PUBLIC_ENV`: the two entry-chunk md5s DIFFER (`afa8d8377bdb3692bc4bbeb46b928da4` prod
   vs `a3d4e28ff9ce15029b6c994877d7fa6e` mock), so no stale bytes shipped with no manual cache

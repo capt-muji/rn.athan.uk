@@ -1,112 +1,32 @@
-# AUDIT 111
+# AUDIT 111 (the doctrine run's audit)
 
-The plan's audit phase belongs to an EXECUTED ticket; ticket 111 is not EXECUTED (steps 3 to 5
-are outstanding and the row is NEEDS REPLAN). This record covers the one range the ticket has
-landed, steps 1 and 2, `git diff bc9699d3^1..5966e95b -- . ':(exclude)ai/plans'` written to
-`$TMPDIR/audit-111.diff`, because that range is final for the pin set it names: step 3 and step
-4 commit nothing unless they find a fixable defect, and step 5 is docs.
+Range under review: the re-pin commit `0118393a` (merge `9dd4eb6a`, 2.0.908) and the records
+commit `a1b95ef2` (2.0.958, merge `7e029a34`). The step-2 3T gates and the step-3 device proofs
+changed no repository code. The diff derives from those two commits (the convenience file
+provided to the reviewers was a pre-rebase snapshot; all three reviewers derived from git).
 
-Three read-only reviewers ran over it at uat, as the lead skill's section 3 describes: a
-plan-conformance pass (the plan plus the diff), a blind pass (the diff only), and a third blind
-pass focused on threading, lifecycle and the notification plumbing. Every finding below is
-adjudicated from the code, not from the reviewer's word.
+Passes: plan-conformance, blind, threading/lifecycle (the re-pin touches notifications and
+schedules). Verdicts: threading PASS (0 must), blind PASS (0 must), plan-conformance FAIL
+(2 musts, both records-accuracy, no code defect). Every confirmed finding is fixed in the
+audit-fix commit.
 
-## Pass 1: plan-conformance
-
-1. [should] `ai/plans/111-sdk58-stable-repin/scripts/anchors-check.sh:22` read the three patch
-   files step 1 deleted (a2, a3, a4) and the pre-re-pin bytes of the others, so the script now
-   exits 1 with nine `DRIFT` lines, and `scripts/preflight-111.sh:30` calls it, hard-stopping
-   the ticket's own pre-flight.
-   **CONFIRMED** by running it (`DRIFT a4 ... count=`, `DRIFT a5 ... count=0`, `DRIFT a7 ...
-   count=0`, exit 1). **Verdict: carried to the replan.** The anchors were consumed at step 1
-   by design and the replan rewrites both scripts; editing a plan folder that is about to be
-   replanned buys nothing. The replan must drop the anchors call from the pre-flight.
-2. [should] `LOG.md:71` - the re-pin commit `addc75bb` is subject-labelled 2.0.861 while its
-   tree carries 2.0.863, and the merge `bc9699d3` carries the same 2.0.863 as its parent
-   `840aa613`, so the re-pin's merge changes no version and `wasAppUpgraded()` cannot see it.
-   **CONFIRMED** from git: `git show addc75bb:package.json` prints 2.0.863, `bc9699d3^1` prints
-   2.0.863, and the next commit `8878bd69` prints 2.0.865. **Verdict: rejected as a fix.** The
-   lane-weather resolution that produced it is recorded in the ledger, 2.0.863 was never a
-   shipped build, and the very next commit restored monotonicity; the only repair the reviewer
-   proposes is a retroactive bump, and rewriting merged history is forbidden. The silent-upgrade
-   class is already guarded by `shared/__tests__/versionLockstep.test.ts`.
-3. [nice] `shared/__tests__/widgetOpenAppPatch.test.ts:3` - the docstring names
-   `patches/expo-widgets+58.0.3.patch`, stale through two renames.
-   **CONFIRMED** (`grep -n "expo-widgets+"` shows line 3 naming +58.0.3 while the tree carries
-   +58.0.19, and lines 26 and 37 build the name from the installed version). **Verdict: FIXED.**
-   The version leaves the docstring, because the replan rebuilds the patch at yet another
-   version and a version-bearing name goes stale again.
-4. [nice] `steps/1-repin.md:33` - the step's Files list omits
-   `scripts/verify-expo-location-patch.sh`, which its commit changes.
-   **CONFIRMED** (`git show --stat addc75bb` lists the script). **Verdict: carried to the
-   replan**; the step file is rewritten there.
-5. [nice] `biome.json:2` - the `$schema` URL still names 2.5.14 after the 2.5.15 bump, so
-   `biome check . --error-on-warnings` prints the migrate info the ledger records.
-   **CONFIRMED** (`grep -n schema biome.json`). **Verdict: FIXED.** One string, no behaviour,
-   and the replan does not touch this file.
-
-## Pass 2: blind
-
-Its own checks are worth recording: every one of the 68 declared pins has an exact lock key,
-all 1986 dependency references in the lock resolve, each renamed patch reverse-applies and
-re-applies against the installed `node_modules` with every `index <pre>..<post>` blob hash
-matching both images, `scripts/verify-expo-location-patch.sh` prints `PATCH AS SHIPPED`,
-`npx tsc --noEmit` exits 0, the widget runtime load suite and the rest of the install-time
-suites are green, `enableRemoteNotifications: false` is a real option that reaches the
-resolved prebuild config, and `strokeBorder`'s `content` reaches native byte-identically
-through `resolveShapeStyle`, so no pixel moves.
-
-1. [should] `package.json:55` - `expo-location` moved from an exact pin to `~58.0.16` while
-   the patch is named for the installed version, and patch-package applies a mismatched patch
-   anyway, warning only.
-   **CONFIRMED**: the pre-re-pin pin was exact (`git show bc9699d3^1:package.json` prints
-   `"expo-location": "58.0.12"`), the plan's own table loosened it to `~58.0.16`, and the
-   repo's version-name guard covers expo-widgets alone. The plan is wrong here: A7's contract
-   ("three ✔ and nothing else on a clean install") is exactly what a tilde endangers once the
-   lock is regenerated, since expo-location 58.0.17 exists on npm today.
-   **Verdict: FIXED**, conservatively and by ruling. The pin is exact `58.0.16` again, the
-   lock descriptor is `expo-location@58.0.16:`, and a fresh `yarn install` re-proved A7 by
-   printing exactly three ✔ lines and nothing else. `expo-background-task` keeps its
-   pre-existing `~58.0.11`; tightening it is the replan's call, because it rebuilds the patch.
-2. [nice] `shared/__tests__/widgetOpenAppPatch.test.ts:3` - same as pass 1 finding 3.
-   **Verdict: FIXED once**, recorded there.
-3. [nice] `addc75bb`'s subject claims 2.0.861 while its tree carries 2.0.863 - same as pass 1
-   finding 2. **Verdict: rejected as a fix**, recorded there.
-
-## Pass 3: threading and lifecycle
-
-Its checks: all three patches byte-exactly applied (`git apply --check -R` clean on each), the
-background-task option plumbing traced from `registerTaskAsync` to the single constraint site
-with the patched Kotlin proven compiled by `javap`, the location patch's `SENSOR_DELAY_GAME`
-and `kCLHeadingFilterNone` present in the installed source and the release bytecode, the
-widgets `openApp` chain consistent with the `@OptimizedComposeProps` reader, and
-`enableRemoteNotifications: false` gating only the `aps-environment` entitlement with no code
-path anywhere reaching APNs. `stores/__tests__/notifications.test.ts` 148 passed, the widget,
-qibla and patch suites green. No must-fix.
-
-1. [should] `scripts/verify-expo-location-patch.sh:67` - the `local-maven-repo` check tests
-   `$PKG/android/local-maven-repo`, which the shipped package does not have (the repo sits at
-   `node_modules/expo-location/local-maven-repo`), so the check always prints "absent", and
-   `shared/__tests__/expoLocationPatch.test.ts` proves it only against a synthetic tree that
-   puts the repo under `android/`. **CONFIRMED** by both paths above.
-   **Verdict: carried to the replan.** Pre-existing rather than introduced here, and deleting a
-   check together with its test case wants a step with its own red and break discipline; the
-   `publication` grep above it is the switch that actually guards the patched Kotlin.
-2. [nice] `patches/expo-background-task+58.0.11.patch` installs `didRegisterTaskForTesting`,
-   which nothing calls. **Verdict: carried to the replan**, which rebuilds the patch against a
-   new version and can drop it there.
-3. [nice] `patches/expo-location+58.0.16.patch` installs `mLastAzimuth`, write-only since the
-   gate's removal. **Verdict: carried to the replan**, same reason.
-4. [nice] `shared/__tests__/widgetOpenAppPatch.test.ts:3` - same as pass 1 finding 3.
-   **Verdict: FIXED once**, recorded there.
-5. [nice] `stores/notifications.ts:1919` - the offline-refresh option is read by no test, so a
-   patch that stops carrying it is caught at install time only. **Verdict: carried to the
-   replan**, whose patch rebuild is where that guard belongs.
-
-## Close
-
-Seven findings are adjudicated above, four fixed and three carried with their reasons. The
-audit's PASS step (DONE, and the plan folder's deletion) is not due: the ticket is not
-EXECUTED, its row stands at NEEDS REPLAN, and the replan re-measures the pin set, rebuilds all
-three patches and re-runs the device proofs before any of that happens.
+| # | Pass | Finding | Verdict | Action |
+| --- | --- | --- | --- | --- |
+| 1 | threading | `backgroundTaskPatch.test.ts` never guards that Gradle compiles the patched Kotlin rather than resolving the shipped prebuilt AAR (the session-49 silent-unpatched mode; `expo-location` has that guard, `expo-background-task` does not) | CONFIRMED (should) | Fixed: the suite now asserts the installed `expo-module.config.json` carries no `publication` block |
+| 2 | threading | `ai/UPSTREAM-PRS.md` says "Published builds to 58.0.10 still hardcode both constraints" - stale, 58.0.11 is current and still hardcodes (its own pristine source) | CONFIRMED (nice) | Fixed: the row reads "to 58.0.11" |
+| 3 | threading | `scripts/verify-expo-location-patch.sh`'s comment claims "a shipped package carries no copy a check could look for" - false: `expo-location@58.0.17` ships `local-maven-repo` at the package root; the deleted check was vacuous only because it looked under `android/` | CONFIRMED (nice) | Fixed: the comment states the repo's true location |
+| 4 | blind | `SDK58-PROGRAMME.md` "two transitive followed" undercounts: three transitive moved (`babel-preset-expo`, `expo-application` 58.1.1 to 58.1.2, `expo-modules-core`), verified in the re-pin commit's lock hunks | CONFIRMED (should) | Fixed: all three named |
+| 5 | blind | `e2e/README.md` names "(metro-config 0.88.0)", a pin the tree does not carry (`metro-config` resolves 0.87.1; `@expo/metro-config` 58.0.14; `@react-native/metro-config` 0.88.0) | CONFIRMED (should) | Fixed: the sentence names `@react-native/metro-config` 0.88.0 beside `@expo/metro-config` 58.0.14 |
+| 6 | blind | = finding 2 above (58.0.10 bound) | CONFIRMED (should) | Fixed with finding 2 |
+| 7 | blind | `SDK58-PROGRAMME.md` section 16's A3/A4 cite preview-state pins (`expo@58.0.6`, RN 0.88.0-rc.3, `@expo/ui`/`expo-widgets` "no longer exact-pinned" at 58.0.14, log-box `~58.0.5`) under "proof that still stands" | CONFIRMED (should) | Fixed: A3/A4 re-pinned to the current tree (expo 58.0.13, RN 0.88.0 stable, both exact at 58.0.20, log-box `~58.0.12`) |
+| 8 | blind | `ai/ISSUES.md` row 37 names `patches/expo-background-task+58.0.7.patch`, dead since the re-pin | CONFIRMED (should) | Fixed: `+58.0.11.patch` |
+| 9 | blind | doubled blank line after the UPSTREAM-PRS patch table | CONFIRMED (nice) | Fixed |
+| 10 | blind | eight added LOG lines carry em dashes against the style ban | CONFIRMED (nice) | Fixed: prose rewritten; step-heading dashes keep the file's own established convention |
+| 11 | plan | the LOG says the rollover capture "NEVER RAN ... no -pre/-post screenshots exist" while `00-rollover.log` records `lock held 02:25:48` / `done 02:25:53` and the three screenshots plus syslog exist (the unbounded mkdir retry succeeded once the lane's lock dropped; the capture ran 3h25m past midnight, all its gates long passed) | CONFIRMED (must, records accuracy) | Fixed: the LOG's error paragraph and the queue row carry the bounded truth (starved through the window; degenerate five-second run at 02:25; the flip unobserved; the R4.8 close unchanged) |
+| 12 | plan | the R4.8 cascade and R4.2 cover-sheet entries cite screenshots that existed only in the session temp, not the evidence store | CONFIRMED (must, records accuracy) | Fixed: the eight night captures copied into `sessions/111/xs/`, the LOG names their storage; the cover-sheet read recorded as the AX-tree transcription it is |
+| 13 | plan | AUDIT.md named the records commit as the soft-reset-away `1ec23b37` | CONFIRMED (should) | Fixed: `a1b95ef2` / `7e029a34` / 2.0.958 |
+| 14 | plan | the records commit carried no recorded review verdict | CONFIRMED (should) | Fixed: the verdict recorded in LOG (clean in all three passes bar the findings above) |
+| 15 | plan | the 2.2 npm-drift STOP was live at step 3's start (58.0.14 published 19:51Z, step 3 began ~19:54Z) and no step-start check ran | CONFIRMED (should) | Fixed: the omission recorded in LOG's npm note, subsumed by the close-at-58.0.13 ruling |
+| 16 | plan | step 4's session line was a placeholder with no state word | CONFIRMED (nice) | Fixed: the state and the in-session limitation recorded |
+| 17 | plan | PLAN.md R1.9's literal wording is unsatisfiable for a regeneration patch (removal hunks quote the removed symbol) | CONFIRMED (nice) | Fixed: R1.9 aligned to the LOG's restated reading |
 

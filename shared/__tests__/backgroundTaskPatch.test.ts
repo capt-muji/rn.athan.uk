@@ -64,4 +64,8 @@ describe('the background-task offline patch', () => {
   it('carries no test-only registration entry point', () => {
     expect(scan('didRegisterTaskForTesting')).toBe('');
   });
+
+  it('removes the publication block so Gradle compiles the patched Kotlin', () => {
+    expect(read('expo-module.config.json')).not.toContain('"publication"');
+  });
 });
