@@ -717,15 +717,21 @@ wall clock); the readings below are reconstructed from the captures, which never
   different MMKV instance in the same sandbox). The step's "configure none" rule protects HER
   config; the dev container is not her config. Silent chosen throughout: no sound athan on the
   owner's phone at night.
-- **THE ERROR, recorded plainly**: I took the XS device lock at 23:34:06 for the evening window
-  and my session's first interruption (23:41) outlasted the window; the lock was still mine at
-  23:56:50, so the rollover capture script starved on its `mkdir` retry loop and NEVER RAN (its
-  log stops at the staging line; no `-pre/-post` screenshots exist). The real-midnight flip is
-  unobserved. The lock protocol's precedent (rmdir a stale lock) was applied correctly to
+- **THE ERROR, corrected by the audit (the bounded truth)**: I took the XS device lock at
+  23:34:06 for the evening window and my session's first interruption (23:41) outlasted the
+  rollover window; the lock was still mine at 23:56:50, so the rollover capture script starved
+  through the entire 23:57-00:05 window and the real-midnight flip went unobserved. The
+  script's unbounded `mkdir` retry then SUCCEEDED at 02:25:48, once a later interruption
+  dropped my lock, and it ran its whole capture sequence degenerately in five seconds
+  (`00-rollover.log`: lock held 02:25:48, done 02:25:53): every time gate long past, its three
+  screenshots (`00-rollover-pre/-post/-post2.png`) all show the same post-midnight state at
+  02:25, so the flip is not on them. The first record here said "never ran"; the audit's
+  plan-conformance pass caught that against the artifacts, and this paragraph is the
+  correction. The lock protocol's precedent (rmdir a stale lock) was applied correctly to
   `build.lock` at 23:28 (empty since 22:56, both of lane 120's `run:ios` trees exited, no build
-  process alive) but I never re-checked my OWN device lock across the interruption. The lesson:
-  a lane holding a device lock across a context interruption must re-check the wall clock before
-  anything else on resume.
+  process alive) but I never re-checked my OWN device lock across any interruption. The
+  lesson: a lane holding a device lock across a context interruption must re-check the wall
+  clock and its own locks before anything else on resume.
 
 ### Step 3 — the night's readings (mock build, XS, new pin set)
 
@@ -738,20 +744,25 @@ wall clock); the readings below are reconstructed from the captures, which never
 - **R4.8-class live rollover cascade, GREEN (the owner's own observable)**: when seeded Isha
   23:36 passed, the list rolled and the countdown skipped to the following day's Fajr: the
   23:37:02 AX tree reads `Fajr 04:03 / 4h 25m / Sat, 17 Oct 2026` (the seed's next-day real
-  shape, day1 fajr 04:03), screenshot `m2-rolled-state.png` beside the pre-roll `m1-whatsnew.png`.
-  This is the day-roll mechanism (`mocks/simple.ts`'s own documented "the rollover cascade fires
-  early") observed live, minutes after install, with no waiting. The REAL midnight boundary then
+  shape, day1 fajr 04:03), screenshots `m1-whatsnew.png` (the seed's evening rows at 23:34:53)
+  and `m2-rolled-state.png` (the rolled list at 23:37:38), both now stored under
+  `sessions/111/xs/` (they were first written to the session temp and reached the evidence
+  store during the audit, a records defect the audit's plan-conformance pass caught). This is
+  the day-roll mechanism (`mocks/simple.ts`'s own documented "the rollover cascade fires
+  early") observed live, minutes after install, with no waiting. The REAL midnight boundary
   passed with the app running (my syslog to 23:55; the app's 01:51+ state steady and correct on
   the same rolled day); the flip moment itself is unobserved (the starved capture, above), and
   the day-roll cascade is additionally pinned by the row 5/32 unit suites.
 - **R4.2 fire #2, pre-dawn branch, GREEN, fully attributed**: cold relaunch 01:52:08; the launch
   refresh armed the fresh seed's Fajr at 01:53:01.584 (requested 01:52:13.624); the assertion
-  fired at 01:53:01.668; the delivered notification was then READ FROM THE SYSTEM UI: the cover
-  sheet shows `ATHAN, 5 minutes ago, Fajr now, TIME SENSITIVE` — the interruption level carried
-  by the armed silent row, exactly R4.2's wording. The same arm round carried the dev storage's
+  fired at 01:53:01.668; the delivered notification was then READ FROM THE SYSTEM'S OWN
+  ACCESSIBILITY TREE (the runner's snapshot of the cover sheet, a system-UI read stronger than
+  pixels): `ATHAN, 5 minutes ago, Fajr now, TIME SENSITIVE`: the interruption level carried
+  by the armed silent row, exactly R4.2's wording; the reading stands as the AX transcription
+  recorded here (no pixel capture was taken of the cover sheet, noted for the reviewer). The same arm round carried the dev storage's
   stale-day pair (a five-minute reminder at 02:18:01.286 before an athan at 02:23:00.412), which
   proved the reminder machinery armed live; the pair never fired (a later refresh's
-  `staleCancelled` sweep replaced the armed set, then the app process died at 02:06:51 — the
+  `staleCancelled` sweep replaced the armed set, then the app process died at 02:06:51 (the
   log's `usernotificationsd` invalidation line; no delivered-plist saves at 02:18/02:23).
 - **R4.5's named Pino pair, CAPTURED on the logging-enabled vehicle**: the local-env build keeps
   Pino on (`shared/logger.ts` disables it only for prod/preview), so the exact two lines the
@@ -769,7 +780,7 @@ wall clock); the readings below are reconstructed from the captures, which never
   orders; the vehicle and the seed runway for a future reading are recorded here.
 - **Row 120's delivered-stack clear, corroborated**: `[com.mugtaba.athan] Forwarding
   removeAllDeliveredNotifications` then `DeliveredNotifications.plist with 0 items` at
-  01:52:09.965 — the iOS clear-on-open running on the re-pin build.
+  01:52:09.965: the iOS clear-on-open running on the re-pin build.
 - **R4.6 unchanged** (closed at the prior rotation on the automation-reachable evidence).
 - **The 3T's 01:53 production fire, PERFECT (autonomous corroboration, folded)**:
   `punctuality-logcat.txt` records AlarmManager triggering the app's alarm at 01:53:00.002
@@ -789,7 +800,7 @@ wall clock); the readings below are reconstructed from the captures, which never
 
 - The doctrine run's rulings and readings are recorded above (step 3's sections). Step 4's
   records, all measured against the live tree and npm this session:
-  - `README.md`: the stack line drops "(preview)" — SDK 58 is stable and this repo sits on it.
+  - `README.md`: the stack line drops "(preview)": SDK 58 is stable and this repo sits on it.
   - `ai/UPSTREAM-PRS.md`: the three patch rows at `+58.0.11` / `+58.0.20` / `+58.0.17`, every
     PR state re-checked live via `gh api` (all three open, unmerged, 2026-10-17), the widgets
     row now recording BOTH hunks (`openApp` and the local-only device-locale injection whose
@@ -812,5 +823,63 @@ wall clock); the readings below are reconstructed from the captures, which never
   by the step's own rule, the live reminder machinery recorded. R4.6: closed prior rotation.
   R4.1, R4.3, R4.4: green at the prior rotation on this pin set. Step 3 stands closed.
 
-session: (this lane session)
+### Lane weather at the records landing (2026-10-17 02:30-02:53)
+
+- Lanes 120 and 125 landed concurrently: uat ran 2.0.939 to 2.0.957 while this lane's records
+  commit was in flight, and lane 125's new version-uniqueness guard (their step 1, landed
+  mid-run) caught THREE collisions on this lane's numbers in a row (2.0.943 taken by lane 120's
+  `f0e33db8`, 2.0.944 by their `cd4aacfd`, and this lane's own pre-amend HEAD self-colliding).
+  The final commit is `a1b95ef2` at 2.0.958 (next past every live branch), merged as `7e029a34`
+  after one quiet-tree wait: this lane's first merge attempt bounced off lane 120's mid-flight
+  merge (their staged LOG.md + MERGE_HEAD in the main tree), and one uat.lock this lane held
+  across that wait was released the moment it was noticed. The guard worked exactly as row 125
+  designed it; the chicken-and-egg it creates for an AMEND (the guard reads the pre-amend tree)
+  was cleared by a soft reset and a fresh commit.
+- The prod restore build failed once at 02:40 (`BUILD FAILED`, the ExpoWidgets bundle script's
+  JSON parse hitting conflict markers in the main tree's app.json) because lane 120's in-flight
+  merge briefly left markers in the working tree while the build read it, transient, their
+  process self-healed, and the rebuild at 02:53 (build log `prod-restore-build2.log`) runs
+  against the quiet merged tree.
+- The `android/app/build.gradle` versionName synced to 2.0.958 after the merge, under this
+  lane's held build.lock.
+
+- The XS restored at 02:55:57: the prod Release build of the merged uat content (bundle md5
+  `9b447b93...`, distinct from both the old 2.0.924 prod bundle and the mock bundle), installed
+  with one throwaway launch; her `athan-storage` was never touched by the mock (it read
+  `athan-storage-dev`). The runner helper app was uninstalled at 02:29; the XS device lock is
+  released.
+
+### The DONE cell drafted for the lead's application (from PLAN section 8, updated to the night)
+
+DONE 2026-10-17, audited: the newest stable SDK 58 set landed (expo 58.0.13 with its
+bundledNativeModules delta, RN 0.88.0) and all three patches were regenerated at
+58.0.11/58.0.17/58.0.20, the 58.0.19 Android build defect in expo-widgets closed by 58.0.20,
+the patch hygiene and guard findings of the first attempt's audit fixed, the 3T gates green
+(the release build in 517 s, every channel, permission and armed-alert check passing, the
+alarm-clock sub-block intact, the armed production alarm firing at 01:53:00.002) and the
+owner-ordered XS deep-dive loop green (cold start, the unfiltered compass stream at ~105
+delegate calls a second, both language directions from frame one, the BGTask re-submission
+beside the native trace plus the two named Pino lines captured on a logging-enabled build, two
+mock-build notification fires delivered at their armed seconds with the TIME SENSITIVE level,
+the live day-roll cascade captured at the seeded Isha handoff; the reminder-before-athan
+ordering not exercised by the step's own rule; the real-midnight flip unobserved, the staged
+capture starved on the lane's own held lock through a session interruption, recorded as the
+lane's error), Babel 8 re-measured blocked upstream, npm's 58.0.14 noted for the next attempt,
+the store path reopened, the records landed (stack line, patch rows, programme section 16, the
+e2e Metro-gotcha heal), the XS restored to the prod Release build.
+
+- Review (cold read of `git show a1b95ef2`, beside the three audit passes): the eight files
+  carry exactly the measured facts; the three audit passes returned PASS (blind: 0 must),
+  PASS (threading: 0 must, 1 should, 2 nices) and FAIL (plan-conformance: 2 musts, both
+  records-accuracy: the rollover-capture "never ran" claim and the captures that sat in the
+  session temp instead of the evidence store). Every finding is adjudicated in AUDIT.md and
+  fixed in the audit-fix commit; the landed code itself verified clean in all three passes.
+- The npm note gains the audit's fact (plan-conformance finding 5): `expo 58.0.14` was
+  published 19:51Z on 2026-10-16, three minutes before step 3 began, so the section 2.2
+  step-start drift check would have fired had it been run; the close-at-58.0.13 ruling,
+  taken later on the same facts, subsumes it, and the omission is recorded here rather than
+  papered over.
+
+session: (the lane session; its live ses_id is not resolvable from inside itself - the
+rotation note and the git history carry the continuity)
 
