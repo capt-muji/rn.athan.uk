@@ -1,3 +1,0 @@
-  .foot-line { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
-  .context { font-family: var(--mono); font-size: 10.5px; color: var(--dim); }
-  .column-head.red-shared .name, .column-head.red-shared .count { color: var(--red); }
