@@ -130,9 +130,12 @@ verification, never infer visuals from pixels alone.
   are safe since row 113: the pre-dawn branch never writes a small-hours Standard row (the
   midnight-crossing rules are what dashed the old night mock), and the evening branch's
   early roll is the owner's own reseed design, not a defect.
-- **`expo run:android --device` takes a device NAME, not an adb serial**: with
-  a serial it prebuilds, then fails, and a `| tail` pipe reports exit 0.
-  Build with `./gradlew assembleRelease` + `adb install -r`, and check
+- **`expo run:android --device` matches an adb serial first, a device name
+  only as a fallback** (@expo/cli 58; the CLI's own help text still says
+  "Device name", the code matches the serial before the name). Install and
+  launch a built APK with
+  `npx expo run:android --binary <apk> --device <serial> --no-bundler`.
+  Building stays on `./gradlew assembleRelease` + `adb install -r`, and check
   `dumpsys package com.mugtaba.athan | grep versionName` before measuring.
 - **What's New appears on the first launch after any upgrade** (including
   reinstalling a newer build after bisecting an older one) and marks itself
