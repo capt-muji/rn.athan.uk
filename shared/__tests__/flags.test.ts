@@ -108,6 +108,7 @@ describe('app.config widget plugin parity', () => {
     const config = loadAppConfigFresh();
     expect(pluginNames(config)).not.toContain('expo-widgets');
     expect(pluginNames(config)).toContain('expo-notifications');
+    expect(pluginNames(config)).not.toContain('./plugins/androidLocaleConfig');
     expect(loadFlagsFresh().FEATURE_FLAGS.iosWidgets).toBe(false);
   });
 
@@ -222,9 +223,23 @@ describe('app config android widget resolution', () => {
       config = loadAppConfigFresh('android');
     });
     expect(pluginNames(config)).not.toContain('expo-widgets');
+    expect(pluginNames(config)).toContain('./plugins/androidLocaleConfig');
   });
 
-  it('treats EXPO_WIDGETS_ANDROID as a platform signal, gated by the flag', () => {
+  it('registers the locale config on the android argv route with the flag off', () => {
+    setAndroidEnv(undefined);
+    let config!: import('expo/config').ExpoConfig;
+    withCliArgv(['android'], () => {
+      config = loadAppConfigFresh(undefined);
+    });
+    expect(pluginNames(config)).not.toContain('expo-widgets');
+    expect(pluginNames(config)).toContain('./plugins/androidLocaleConfig');
+    expect(pluginNames(config)).not.toContain('./plugins/androidWidgetGrid');
+    expect(pluginNames(config)).not.toContain('./plugins/androidWidgetAssets');
+    expect(config.ios?.bundleIdentifier).toBe('com.mugtaba.athan');
+  });
+
+  it('treats EXPO_WIDGETS_ANDROID as a platform signal, locale config without the flag', () => {
     setAndroidEnv('1');
     process.env.EXPO_WIDGETS_ANDROID = '1';
     let forcedAndroid!: import('expo/config').ExpoConfig;
@@ -240,6 +255,7 @@ describe('app config android widget resolution', () => {
       flagStillGates = loadAppConfigFresh(undefined);
     });
     expect(pluginNames(flagStillGates)).not.toContain('expo-widgets');
+    expect(pluginNames(flagStillGates)).toContain('./plugins/androidLocaleConfig');
   });
 
   it('keeps the ios resolution ruled by the ios flag only', () => {

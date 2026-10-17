@@ -25,25 +25,34 @@ const widgetResourceName = (kind) =>
     .replace(/([a-z])([0-9])/g, '$1_$2')
     .toLowerCase();
 
+const expoWidgetsResolvesWidgetDefaults = (config) =>
+  (config.plugins ?? []).some((plugin) => Array.isArray(plugin) && plugin[0] === 'expo-widgets');
+
 /**
  * The default-locale twins of the translated strings: the two permission strings and the
  * two gallery keys of every iOS-only widget kind. A translated key with no counterpart in
  * values/ fails lintVitalRelease (ExtraTranslation), which gates every release build, and
- * the android resolution drops config.ios, so the en permission bytes are read from the
- * committed app.json. Android kinds are skipped: expo-widgets already writes their defaults.
+ * the android resolution drops config.ios, so the en permission bytes and the widget kinds
+ * are read from the committed app.json. Android kinds are skipped only when expo-widgets is
+ * in the resolved plugins: it writes their defaults, and with it stripped (widgets off)
+ * every kind twins here or the translated keys fail lintVitalRelease.
  */
 const defaultLocaleStringEntries = (projectRoot, config) => {
   // readFileSync, not require: the mod compiler evaluates this file in a sandbox whose
   // require does not resolve dynamic absolute paths the way plain node does
-  const infoPlist = JSON.parse(fs.readFileSync(path.join(projectRoot, 'app.json'), 'utf8')).expo.ios.infoPlist;
-  const widgetsEntry = (config.plugins ?? []).find((plugin) => Array.isArray(plugin) && plugin[0] === 'expo-widgets');
+  const appExpo = JSON.parse(fs.readFileSync(path.join(projectRoot, 'app.json'), 'utf8')).expo;
+  const infoPlist = appExpo.ios.infoPlist;
+  const widgetsEntry = (appExpo.plugins ?? []).find((plugin) => Array.isArray(plugin) && plugin[0] === 'expo-widgets');
   const widgets = widgetsEntry ? widgetsEntry[1].widgets : [];
   const entries = [
     ['NSLocationWhenInUseUsageDescription', infoPlist.NSLocationWhenInUseUsageDescription],
     ['NSUserNotificationsUsageDescription', infoPlist.NSUserNotificationsUsageDescription],
   ];
   for (const widget of widgets) {
-    if (widget.android) continue;
+    // expo-widgets writes the android kinds' defaults itself; a twin here would
+    // be a duplicate resource. With the plugin stripped from the resolution
+    // (widgets off) nobody else writes them, so every kind twins
+    if (widget.android && expoWidgetsResolvesWidgetDefaults(config)) continue;
     entries.push([`${widgetResourceName(widget.name)}_display_name`, widget.displayName]);
     entries.push([`${widgetResourceName(widget.name)}_description`, widget.description]);
   }
