@@ -3,9 +3,11 @@
 Every quoted line is verbatim from the evidence transcripts under
 `$HOME/athan-gitree/sessions/131/` (uncommitted, deleted at DONE). No line contains a
 coordinate, address or place name: the probe never logs one. The 3T sat indoors, one
-room, on the desk, stationary, for every reading. Build: the plan's probe shell at
-`ca73f5a9`, fleettest package id `com.mugtaba.athan.fleettest`, mock/local env,
-aapt2-gated before install.
+room, on the desk, stationary, for every reading. Builds: the 3T probe at `ca73f5a9`
+(fleettest package id `com.mugtaba.athan.fleettest`, mock/local env, aapt2-gated
+before install); the XS probe at `0413248c` (2.0.939, the phone's found version,
+`com.mugtaba.athan`, local env), rebuilt in the resume session after the stalled
+restore install proved to have landed during the channel clear.
 
 ## RD1: whether the GMS provider reports a bearing on a stationary phone (3T)
 
@@ -55,6 +57,22 @@ Lines, services off (cold start):
 Verdict: yes, same fix. Both reads return the identical timestamp under every grant
 state, with the accuracy radius re-blurred to 2000 m under coarse-only. With location
 services off, both return null. Absent form: `null` from both, services off.
+
+iOS half (the XS, her full grant, one relaunch; every line landed this time after
+the previous session's os_log drop):
+
+    [RD4] classic getLastKnownPositionAsync {"timestamp":1792248498302.841,"accuracy":7.981941113981475,"heading":-1,"speed":-1}
+    [RD4] next getPosition timeout 0 {"timestamp":1792248498308.762,"horizontalAccuracy":7.981941113981475,"heading":null,"headingAccuracy":null,"speed":null,"mocked":false}
+    [RD4] END verdict different fixes
+
+iOS verdict: not the same object. The two reads carry timestamps 5.9 ms apart with
+the same accuracy radius, where Android returned the byte-identical timestamp. The
+heading contrast repeats Android's in iOS's idiom: classic reports the invalid
+sentinel `-1` where /next reports `null`. Side observation under the reduced grant
+(16:11:31): the classic fix read
+`{"timestamp":1792249891836.3008,"accuracy":10453.129434975934,"heading":0,"speed":0}`
+- the approximate blur at roughly 10 km radius on the same cached fix class.
+
 
 ## RD5: how a coarse-only Android grant reports on a position request (3T)
 
@@ -134,44 +152,72 @@ Side observations recorded as part of the reading:
 
 ## RD3: the XS temporary-full-accuracy prompt under a reduced grant
 
-BLOCKED mid-reading 2026-10-17 by the XS automation channel dying (row 124's fault
-class). What the session captured before the block:
+Call: /next `requestForegroundPermissions({ accuracy: 'full' })` while the app holds
+`granted` with `accuracy: 'reduced'` (Precise Location off, While Using unchanged).
 
-- The probe app (com.mugtaba.athan, 2.0.939 content, ENV=local so it opens
-  athan-storage-dev and never reads the owner's athan-storage) installed over the
-  found build (found state: 2.0.939, xs-found-apps.txt) and ran. Her grant read
-  When Using plus Precise ON on every poll and was NEVER changed: the reduce drive
-  never ran, so there is no grant restoration owed. Lines (xs-rd.log):
-  `[RD0] permission read {"status":"granted","scope":"whenInUse","canAskAgain":true,"accuracy":"full","expires":"never","granted":true}`
-- The purpose key precondition verified in the generated plist before install:
-  `ExpoLocationFullAccuracy` -> "Allow $(PRODUCT_NAME) to access your precise
-  location" (the prebuild log).
-- RD4's iOS half, partial: the classic line landed once
-  (`[RD4] classic getLastKnownPositionAsync {"timestamp":1792224225850.885,"accuracy":5.638395719850306,"heading":-1,"speed":-1}`),
-  then the /next line and the verdict line never surfaced: Release-build console
-  lines riding os_log drop non-deterministically on this XS (observed twice; the
-  2-second loop lines all arrive; the drops hit lines that follow a location await).
-  RD4's criterion stands on the 3T evidence; the iOS half stays open with the drop
-  recorded.
-- The channel timeline: devicectl install and launch worked 09:01 to 09:05; from
-  09:08 every CoreDevice RSD call fails with row 124's signature
-  (`Failed to allocate RSD device`, `_AMDeviceCreateWithRemoteDeviceUUIDAndTypeWithError`),
-  spreading to device-info calls; agent-device's runner prepare timed out twice
-  (15 s command timeout); a Maestro drive hung after device detection; the
-  pymobiledevice3 lockdown install stalled; its tunnel path needs a sudo tunneld.
-  DVT stayed alive throughout (screenshots, process kill). The taps RD3 needs
-  (the Settings reduce drive and the prompt's answer) have no channel that survives
-  the wedge, and row 124's ladder is owner-hands by nature (reboot, replug, sudo).
-- The phone at close: unlocked, charging, the probe app's process killed via DVT
-  (pid reads 0), the probe BINARY still installed. The probe-free restore build of
-  the found version's content (0413248c, 2.0.939) is built and waiting at
-  `$HOME/athan-gitree/sessions/131/restore-Athan.app`; one install command lands it
-  once any install channel returns. No owner data, notification or preference was
-  touched: the probe shell mounts none of the app's machinery.
+Precondition verified in the generated plist before install (xs2-plist-key.txt, and the
+same key in the restore app's built Info.plist): `ExpoLocationFullAccuracy` -> "Allow
+$(PRODUCT_NAME) to access your precise location" under
+`NSLocationTemporaryAccuracyDescriptionDictionary`.
 
-Resume: clear the channel (row 124's ladder), install the restore app (or rebuild
-from step 2's recipe), re-run step 2's choreography for RD3 with the probe build,
-restore the grant after the reduce, then step 3.
+Her found grant, read cold before any change (xs-rd.log, 15:48:18):
+
+    [RD0] permission read {"status":"granted","scope":"whenInUse","canAskAgain":true,"accuracy":"full","expires":"never","granted":true}
+
+Host reduced the grant in Settings (Apps > Athan > Location, Precise Location off;
+the runner's diff read `[unchecked]`, screenshots rd3-settings-before.png and
+rd3-settings-reduced.png are reach evidence). Relaunch under the reduced grant:
+
+    [RD3] perm-watch {"status":"granted","scope":"whenInUse","canAskAgain":true,"accuracy":"reduced","expires":"never","granted":true}
+    [RD3] BEGIN reduced grant, requesting full accuracy
+
+The prompt appeared over the app (rd3-prompt.png, reach evidence; the runner's
+`alert get` returned the same title). Title and buttons verbatim: `Allow "Athan" to
+use your precise location once?`, body `Allow Athan to access your precise location`
+(the plist purpose string), buttons `Allow Once` and `Don't Allow`. The affirmative is
+the one-time form: a temporary full-accuracy grant, not a flip of the Settings toggle.
+
+The affirmative branch was not exercised: the runner's tap pipeline wedged on the
+alert screen (its pre-dispatch accessibility probe aborts over a system alert, the
+atlas's snapshot-wedge trap), and the alert closed without an affirmative answer. The
+resolution and the read-after, verbatim:
+
+    [RD3] resolved {"status":"granted","scope":"whenInUse","canAskAgain":true,"accuracy":"reduced","expires":"never","granted":true}
+    [RD3] after-get {"status":"granted","scope":"whenInUse","canAskAgain":true,"accuracy":"reduced","expires":"never","granted":true}
+    [RD0] complete {"rd3":true}
+
+A second ask in a fresh process (relaunch, grant still reduced) fired the same BEGIN
+and resolved 44 ms later with no prompt at all (xs-rd.log, 16:11:31.971103 BEGIN,
+16:11:32.015814 resolved, both reduced) - iOS suppresses the accuracy prompt after
+the first ask in a grant state. The orphaned alert from that ask was dismissed
+(`alert dismiss`), not answered.
+
+Verdict: the prompt is the one-time precise-location alert, raised by
+`requestForegroundPermissions({ accuracy: 'full' })` under a reduced grant, carrying
+the plugin's purpose string, with `Allow Once` as the temporary-full affirmative.
+Unanswered, the request resolves with the grant unchanged (`accuracy: 'reduced'`,
+`granted: true`, `canAskAgain: true`); a repeat ask presents no prompt and resolves
+immediately reduced. Absent form: no alert, immediate reduced resolution - observed
+on the second ask.
+
+Restore evidence (R3.2). Precise Location re-enabled in Settings (runner diff
+`[checked]`, rd3-settings-restored.png), then a fresh probe relaunch read back:
+
+    [RD3] permission read {"status":"granted","scope":"whenInUse","canAskAgain":true,"accuracy":"full","expires":"never","granted":true}
+
+(xs-rd.log 16:21:06 onward, the post-restore process.) The probe-free restore build
+of the found version (0413248c, 2.0.939) was installed over the probe and verified:
+`xcrun devicectl device info apps` prints `Athan com.mugtaba.athan 2.0.939 1`, and a
+launch rendered the full app face with no crash (xs-restored-launch.png, reach
+evidence). Her grant config is exactly as found: While Using plus Precise.
+
+Session note: the row's BLOCKED note said the probe stayed installed and the restore
+waited on one command. Ground truth at resume: the stalled lockdown restore install
+had completed during the owner's channel clear, so the installed binary was the
+restore app (full app face, mock one-minute-apart prayer rows, `MMKV READ: prayer_*`
+console lines, no `[RD` markers). The probe was rebuilt at 0413248c from the plan's
+own recipe for this reading.
+
 
 ## RD6: an adopted prebuild's exact native deltas
 

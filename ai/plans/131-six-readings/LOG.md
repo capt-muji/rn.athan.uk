@@ -1,6 +1,7 @@
 # Lane 131 log: expo-location, the six named unverified readings
 
-Resume from: nothing owed at the planning stage; next action is the grill, then READY.
+Resume from: step 2's XS session resumes (the channel is clear): RD3's choreography with
+a rebuilt probe, the grant restore, the restore-app install, then step 3's fold.
 
 ## Ticket 131 (2026-10-17)
 
@@ -52,7 +53,49 @@ review passes are dispatched workers, named below when they run)
   sessions/131/3t-rd.log (script in the step transcript, 0 missing).
 session: self (lane-run device step per D131.5)
 
-### Step 02 — XS session: RD3 blocked by the channel, RD4 partial (BLOCKED tail)
+### Step 02 — resumed 2026-10-17 after the owner cleared the channel (row 124 rung 3)
+
+- Channel verified live at resume: lockState answers (unlocked, no passcode), devicectl
+  lists the XS connected.
+- Ground truth overturned the row's BLOCKED note: the stalled lockdown restore install
+  had COMPLETED during the channel clear. The installed binary renders the full real
+  app with the mock's one-minute-apart prayer rows and logs `MMKV READ: prayer_*`
+  lines (sessions/131/xs-resume-found.txt, /tmp console capture transcribed into
+  READINGS.md), so it is the probe-free restore build, not the probe. The probe
+  vehicle was gone; no probe artefact survived anywhere (searched).
+- agent-ruled 2026-10-17: rebuild the probe at 0413248c per the plan's own resume
+  line ("re-run step 2's choreography for RD3 with the probe build") and step 2's
+  recipe, rather than ruling RD3 unverifiable. Why: the channel is clear and the
+  plan prescribes the rebuild path; recording void would manufacture a gap.
+- Runner prepared (`agent-device prepare ios-runner`, the runner apps noted for the
+  end-of-step uninstall). The tap channel needed the newer CLI copy: the npx-cached
+  0.21.28 honours AGENT_DEVICE_IOS_TEAM_ID through its daemon, while the globally
+  installed 0.21.5 rebuilt the runner with the vendor's team and failed. Recorded
+  because the atlas pins the runner as the XS tap channel.
+- Probe rebuilt clean (prebuild exit 0, pod install exit 0, BUILD SUCCEEDED, plist
+  purpose key verified) and installed over the restore build.
+- RD3 captured: her grant read full cold; the Settings drive flipped Precise off
+  (runner snapshot diffs `[checked]` to `[unchecked]`); the relaunch under reduced
+  fired RD3 and the one-time prompt appeared (rd3-prompt.png plus the runner's
+  `alert get`: `Allow "Athan" to use your precise location once?`, buttons Allow
+  Once and Don't Allow). The affirmative was never tapped: the runner's tap
+  pipeline aborts its pre-dispatch probe over a system alert (the atlas
+  snapshot-wedge trap), so the alert closed unanswered and the request resolved
+  reduced. A second ask in a fresh process resolved in 44 ms with no prompt (ask
+  suppression); the orphaned alert from it was cleared with `alert dismiss`. RD4's
+  iOS half landed complete on the 15:48 relaunch: different fixes (5.9 ms apart),
+  classic -1 vs next null.
+- Restored: Precise back on (runner diff `[checked]`), the post-restore probe run
+  reads accuracy full, the probe-free restore build 2.0.939 installed over the
+  probe, the version line verified, a launch rendered the full app face
+  (vision-read screenshot), the three runner apps uninstalled, the syslog job
+  killed, the device lock released. Phone as found: While Using plus Precise, the
+  restore build installed, her athan-storage never opened by any lane build (the
+  local env namespace).
+
+session: self (lane-run device step per D131.5)
+
+### Step 02, first attempt 2026-10-17 morning — RD3 blocked by the channel, RD4 partial
 
 - Found state recorded: com.mugtaba.athan 2.0.939 on the XS; the found version's
   commit 0413248c pins expo-location 58.0.17, so the probe AND the restore build
@@ -72,3 +115,18 @@ session: self (lane-run device step per D131.5)
 - Scrub: scratch worktree plan-131 and the lane worktree removed at session end
   per protocol; everything needed to resume is on uat plus sessions/131/.
 session: self (lane-run device step per D131.5; blocked tail recorded in the row)
+
+### Step 03 — records fold (2026-10-17)
+
+- READINGS.md: RD3 rewritten from the BLOCKED note to the full capture; RD4 carries
+  its iOS half; the header names both probe builds.
+- Honesty check: every quoted [RD line verified verbatim in sessions/131/xs-rd.log
+  and 3t-rd.log (grep script in the step transcript, 0 missing).
+- Row 131 cell drafted EXECUTED, folded to DONE at audit; the plan folder and the
+  sessions/131 evidence die in the DONE merge per the records rule (the
+  restore-Athan.app artefact dies with the evidence: it is installed).
+- R0.1 verified: the lane diff touches only the plan folder, the queue row and the
+  two tracked version files.
+
+session: self (records step; the two review passes dispatched at audit)
+
