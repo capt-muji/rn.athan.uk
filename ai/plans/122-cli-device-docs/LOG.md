@@ -27,3 +27,24 @@ correction only.
   locks held, lane 120 (shared/notifications.ts, its plan folder) and lane
   126 (board/) disjoint from this lane's files.
 - Skeleton committed; ticket set PLANNING.
+- First commit hit lane weather: the pre-existing 2.0.969 collision (rows
+  111 and 125, commits 3aee9f4d and 1788e83c) failed the version-uniqueness
+  gate repo-wide. Attribution from git history: lane 126 authored the fix
+  (5dc4b93d, allowlist entry) on branch fix/version-gate-969 at 03:37 and
+  merged it into uat as 70684082 at 06:44; this lane fast-forwarded onto it
+  and committed clean. No orchestrator commit involved.
+- Grilled one round (cold griller, read-only): six findings, all adjudicated
+  accepted. 1 must: the AGENTS.md anchor spans the Idle bullet plus the
+  stale bullet, so the replacement contract now carries the Idle bullet
+  verbatim first or replacing the anchor would delete a live rule. 2 should:
+  R3.1 split to the executor's observable (`IN PROGRESS, step 1` at the step
+  commit) and the DONE-cell check moved to section 8; done-when reworded to
+  the executor's scope. 3 nice: runAndroidAsync citation corrected to
+  143-150. 4 nice: the row edit now says to replace only the leading status
+  token. 5 nice: the break script's porcelain filter widened to staged and
+  untracked shapes. 6 nice with an amended bound: 40 sleep-15 cycles before
+  BLOCKED, not 4, because one bump holds version.lock across its whole
+  commit-and-merge cycle (minutes, this lane held it ten).
+- Version note for the executor: the grill's dry run of the union command
+  printed 2.0.976 (union grows while siblings land); any number the script
+  prints is the free next patch.
