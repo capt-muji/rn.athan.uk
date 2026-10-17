@@ -203,8 +203,8 @@ The red-green pair at build level proves the gate itself.
 
 Checklist:
 
-- [ ] Step 1: config branch and plugin defaults, red-first with mutation pass
-- [ ] Step 2: build-bay green proof at the merged fix (lane-run)
+- [x] Step 1: config branch and plugin defaults, red-first with mutation pass
+- [x] Step 2: build-bay green proof at the merged fix (lane-run)
 
 After step 2 merges, the executor's Finishing (athan-executor agent file) applies
 section 8's records text and makes the executed docs commit; no separate records
