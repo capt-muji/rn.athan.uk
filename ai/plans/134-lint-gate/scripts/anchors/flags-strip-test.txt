@@ -1,0 +1,8 @@
+  it('strips expo-widgets on the android resolution when the android flag is off', () => {
+    setAndroidEnv(undefined);
+    let config!: import('expo/config').ExpoConfig;
+    withCliArgv(['android'], () => {
+      config = loadAppConfigFresh('android');
+    });
+    expect(pluginNames(config)).not.toContain('expo-widgets');
+  });
