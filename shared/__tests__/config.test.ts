@@ -175,11 +175,58 @@ describe('app.config android resolution', () => {
     return resolved as unknown as { plugins?: unknown[] };
   };
 
+  const resolveAndroidRoute = (
+    widgetsEnv: string | undefined,
+    argvTokens: readonly string[],
+    platform: string | undefined
+  ): { plugins?: unknown[]; ios?: unknown } => {
+    const previousWidgets = process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
+    if (widgetsEnv === undefined) delete process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
+    else process.env.EXPO_PUBLIC_ANDROID_WIDGETS = widgetsEnv;
+    const previousArgv = process.argv;
+    process.argv = ['/usr/local/bin/node', 'prebuild', ...argvTokens];
+    let resolved: { plugins?: unknown[]; ios?: unknown } | undefined;
+    try {
+      jest.isolateModules(() => {
+        const mod = require('../../app.config');
+        resolved = mod.default({ platform });
+      });
+    } finally {
+      process.argv = previousArgv;
+      if (previousWidgets === undefined) delete process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
+      else process.env.EXPO_PUBLIC_ANDROID_WIDGETS = previousWidgets;
+    }
+    return resolved as unknown as { plugins?: unknown[]; ios?: unknown };
+  };
+
   it('registers the locale config with widgets enabled', () => {
     expect(resolveAndroid('1').plugins).toContain('./plugins/androidLocaleConfig');
   });
 
   it('registers the locale config on a widgets-off build too', () => {
     expect(resolveAndroid(undefined).plugins).toContain('./plugins/androidLocaleConfig');
+  });
+
+  it('registers the locale config on the real CLI route: platform undefined, android argv, widgets off', () => {
+    const resolved = resolveAndroidRoute(undefined, ['android'], undefined);
+    expect(resolved.plugins).toContain('./plugins/androidLocaleConfig');
+    expect(resolved.plugins?.some((p) => Array.isArray(p) && p[0] === 'expo-widgets')).toBe(false);
+  });
+
+  it('keeps the widgets-on argv resolution unchanged', () => {
+    const resolved = resolveAndroidRoute('1', ['android'], undefined);
+    expect(resolved.ios).toBeUndefined();
+    expect(resolved.plugins).toContain('./plugins/androidLocaleConfig');
+    expect(resolved.plugins?.some((p) => Array.isArray(p) && p[0] === 'expo-widgets')).toBe(true);
+  });
+
+  it('stays out of the android branch when argv carries ios', () => {
+    const resolved = resolveAndroidRoute(undefined, ['android', 'ios'], undefined);
+    expect(resolved.plugins).not.toContain('./plugins/androidLocaleConfig');
+  });
+
+  it('stays out of the android branch when a platform is passed', () => {
+    const resolved = resolveAndroidRoute(undefined, ['android'], 'ios');
+    expect(resolved.plugins).not.toContain('./plugins/androidLocaleConfig');
   });
 });
