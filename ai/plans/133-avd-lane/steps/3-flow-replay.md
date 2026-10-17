@@ -35,10 +35,10 @@ Change contracts (host state):
    (`adb -s emulator-5554 shell am force-stop com.mugtaba.athan`; on the
    disposable emulator force-stop is safe).
 4. Replay: `export PATH="$HOME/.maestro/bin:$PATH"; maestro --device
-   emulator-5554 test e2e/flows/smoke.yaml` from the main tree, captured to
-   `sessions/133/e5-smoke.txt` ending in Maestro's pass summary (R4.1). When
-   Maestro's flag differs, read `maestro --help` once, use the device-select
-   flag it names, and record the exact invocation in the capture.
+   emulator-5554 test e2e/flows/smoke.yaml` from the main tree (the
+   `--device` form is the harness's own canonical invocation,
+   `e2e/scripts/baseline-compare.sh:27`), captured to
+   `sessions/133/e5-smoke.txt` ending in Maestro's pass summary (R4.1).
 5. Disposability: `adb -s emulator-5554 uninstall com.mugtaba.athan`
    printing `Success`, reinstall the same APK, throwaway launch once more
    (dialog already granted or re-measured), force-stop, replay `smoke.yaml`
@@ -50,8 +50,8 @@ count 1 and 0 failures.
 
 Break script: `grep -c "smoke" sessions/133/e5-smoke.txt` at least 1 and the
 capture's final summary line names 0 failures (grep the failure count as
-captured); the same for `e5-disposable.txt`; `pgrep -f qemu-system must print
-nothing after the step (the emulator is dead). Any miss fails the step.
+captured); the same for `e5-disposable.txt`; `pgrep -f qemu-system` must
+print nothing after the step (the emulator is dead). Any miss fails the step.
 
 Version and commit: union max plus 1, message
 `<VERSION> - docs(plans): ticket 133 step 3 (E5): smoke.yaml replays on the AVD and the AVD proves disposable`.
