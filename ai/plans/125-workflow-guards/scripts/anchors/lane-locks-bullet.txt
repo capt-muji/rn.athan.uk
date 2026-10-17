@@ -1,4 +1,0 @@
-  so no hook runs against a churning `node_modules`;
-  `$HOME/athan-gitree/uat.lock` around every merge into `uat` (merges happen
-  only in the main tree, `git fetch -q origin uat` first, `--no-ff`);
-  `$HOME/athan-gitree/build.lock` around `build-prod.zsh`, `build-mock.zsh` and
