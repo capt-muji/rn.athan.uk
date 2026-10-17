@@ -66,5 +66,9 @@
   {
     "version": "2.0.940",
     "reason": "2026-10-17 cross-lane collision predating the gate merge (the stopped executor docs commit beside lane 120 dropped-staging commits)"
+  },
+  {
+    "version": "2.0.969",
+    "reason": "2026-10-17 cross-lane collision predating this gate (rows 111 and 125 DONE docs commits; the 2.0.970 row-dedup commit left its tree at 2.0.969); allowlisted by lane 126 to clear the repo-wide commit block"
   }
 ]
