@@ -1,0 +1,12 @@
+    } else if (fields.length === 7) {
+      const name = fields[2].trim();
+      const brief = fields[3].trim();
+      const statusCell = fields[4].trim();
+      const needsCell = fields[5].trim();
+      if (statusCell.startsWith('DONE')) {
+        doneRows.push({ order, name, brief, statusCell, needsCell });
+        doneOrders.push(order);
+      } else {
+        open.push({ order, name, brief, statusCell, needsCell });
+      }
+    }
