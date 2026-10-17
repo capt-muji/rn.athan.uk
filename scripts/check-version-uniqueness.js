@@ -56,7 +56,7 @@ const shas = new Set(
     try {
       git('rev-parse', '--verify', '-q', BASE);
     } catch {
-      process.stdout.write(`VERSIONS FAIL cannot resolve base ${BASE}` + '\n');
+      process.stdout.write(`VERSIONS FAIL cannot resolve base ${BASE}\n`);
       process.exit(2);
     }
     const branches = git('for-each-ref', 'refs/heads', '--format=%(refname:short)')
@@ -118,14 +118,14 @@ let failed = false;
 for (const [version, holders] of [...byVersion.entries()].sort()) {
   if (holders.length < 2) continue;
   if (allowed.includes(version)) {
-    process.stdout.write(`VERSION GRANDFATHERED ${version} (${holders.length} commits)` + '\n');
+    process.stdout.write(`VERSION GRANDFATHERED ${version} (${holders.length} commits)\n`);
     continue;
   }
-  process.stdout.write(`VERSION COLLISION ${version}: ${holders.join(' ')}` + '\n');
+  process.stdout.write(`VERSION COLLISION ${version}: ${holders.join(' ')}\n`);
   failed = true;
 }
 
 if (failed) process.exit(1);
 process.stdout.write(
-  `VERSIONS OK ${shas.size} commits across ${refCount} refs, ${skipped} unreadable, no shared version` + '\n'
+  `VERSIONS OK ${shas.size} commits across ${refCount} refs, ${skipped} unreadable, no shared version\n`
 );

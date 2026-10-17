@@ -39,6 +39,7 @@ import {
   initializeNotifications,
   reminderAndroidChannelId,
   type ScheduledNotification,
+  takeNativeCallTimedOut,
 } from '../notifications';
 import { AlertType, ScheduleType } from '../types';
 
@@ -662,13 +663,15 @@ describe('initializeNotifications', () => {
   });
 
   describe('the delivered-stack clear', () => {
+    const originalOS = Platform.OS;
+
     beforeEach(() => {
       jest.clearAllMocks();
       Platform.OS = 'ios';
     });
 
     afterEach(() => {
-      Platform.OS = 'ios';
+      Platform.OS = originalOS;
     });
 
     it('clears the delivered stack on iOS before the refresh when permission is granted', async () => {
@@ -719,7 +722,7 @@ describe('initializeNotifications', () => {
 
     it('a clear that never answers is given up on and the refresh still runs', async () => {
       jest.useFakeTimers();
-      (dismissAllNotificationsAsync as jest.Mock).mockReturnValue(new Promise(() => {}));
+      (dismissAllNotificationsAsync as jest.Mock).mockReturnValueOnce(new Promise(() => {}));
       const checkPermissions = jest.fn().mockResolvedValue(true);
       const refreshFn = jest.fn().mockResolvedValue(undefined);
 
@@ -729,6 +732,7 @@ describe('initializeNotifications', () => {
         await expect(init).resolves.toBeUndefined();
         expect(refreshFn).toHaveBeenCalledTimes(1);
         expect(dismissAllNotificationsAsync).toHaveBeenCalledTimes(1);
+        expect(takeNativeCallTimedOut()).toBe(false);
       } finally {
         jest.useRealTimers();
       }
