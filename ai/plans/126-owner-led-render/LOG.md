@@ -37,3 +37,72 @@ the heading and cites the contract's home. Gate re-run: PLAN OK.
 
 session: ses_eb8752c07ffe2COk531xvsg1MD
 
+
+### Step 01 — executed
+
+Branch `feat/126-owner-led-render` off `uat` `ad503c60` (2.0.965). Preflight
+`PREFLIGHT OK` (branch, base, clean tree, fetch, version floor, node 24, all
+ten anchors count 1, suite baseline red).
+
+Red: `node --test 'board/tests/*.test.mjs'` reports
+`SyntaxError: The requested module '../reader.mjs' does not provide an export
+named 'main'` and the whole file fails - the recorded red for all ten tests,
+test 8 included per the plan's import-failure note.
+
+Change: the plan's contracts verbatim - exports on the six functions,
+`waitingLine` under `parseNeeds`, the `awaitingOwner` local plus the
+`awaitingOwner`/`waitingOn` pair after `column` in `ticketFromOpenRow`, the
+two fields in `main`'s five-field DONE literal, the realpath guard at the
+foot; template `displayColumn` OWNER-LED exclusion, `Awaiting owner` badge,
+`waitingEl` beside `reasonOf`, the wiring line after the reason append, the
+`.waiting` rule beside `.context`.
+
+Green: `node --test --experimental-test-coverage 'board/tests/*.test.mjs'`
+10 pass, 0 fail. Coverage table `reader.mjs` row: `64.62 | 70.83 | 56.76 |
+64-65 89-93 109-113 125-135 137-141 143-162 164-188 190-198 200-202 210-213
+218-224 229-234 236-260 265-276 294-296 381-382`; every range is
+pre-existing fixture-dead code (unmapped-status branch, plan-folder
+machinery, steps callback, version catch), none inside a touched range.
+`npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings` exit 0.
+
+Break defect and repair: the first run of `break-126.sh` printed
+`run_suite: command not found` six times yet ended `ALL AS EXPECTED: 6` -
+`expect_red` calls `run_suite`, which the planning commit never defined, so
+the suite never ran and the pass was vacuous. Repair: added the missing
+`run_suite()` running the plan's verbatim command
+`node --test 'board/tests/*.test.mjs'` (four lines in this plan folder's
+script; no mutant, output or criterion changed). Second run, genuine:
+M1-M6 each `red as expected`, ends `ALL AS EXPECTED: 6`, restores clean,
+post-break suite green, `git status --porcelain` lists only this step's
+files.
+
+Version 2.0.968 under the version lock (next patch above local uat 2.0.965
+and lane/125 2.0.967; origin/uat still 2.0.857, unpushed), `app.json`
+`expo.version` first then `package.json`. Queue row 126 Status cell set
+verbatim to `IN PROGRESS, step 1 (plan at ai/plans/126-owner-led-render)`.
+
+Commit `754add4d` on `feat/126-owner-led-render`, hooked: `Tests: 2 skipped,
+5735 passed, 5737 total`; coverage summary Statements/Branches/Functions/Lines
+all `100%` (5400/5400, 2326/2326, 1130/1130, 4837/4837). Review: read cold
+against the step checklist and the shipped classes, two passes, no findings;
+the stdout line is byte-identical, no other status's fields moved, the
+waiting line is OWNER-LED-only and truthiness-guarded, no dead code.
+
+Blocked at the merge, then resumed. The first merge attempt (03:22) was
+refused by `check-version-uniqueness`: lane weather in the main tree (an
+uncommitted sibling bump to 2.0.968 that later landed as part of lanes
+111/125 finishing - `83d4dcd8` 2.0.968 merge, `3aee9f4d` 2.0.969 docs,
+`62a4f024`/`bb6efb7c` 2.0.969 merges, `1788e83c` "2.0.970" fix whose tree
+is 2.0.969). Those lanes left two landed non-merge commits sharing
+tree-version 2.0.969, so the pre-commit gate exited 1 repo-wide until the
+lead allowlisted the pair at merge `70684082` (gat then `VERSIONS OK`, uat
+at 2.0.971). Evidence: `$HOME/athan-gitree/sessions/126/` (gate.txt,
+gate2.txt, blocked-main-tree-status.txt, both watch logs,
+commit-126-step1.log). Resumed per the lead's dispatch: the step commit
+amended off the collided 2.0.968 onto the next free patch, the branch
+rebased onto the settled uat (row 126's IN PROGRESS cell and the higher
+version kept), merged `--no-ff` in the main tree, gradle synced, Finishing
+run. The amended sha, merge sha and docs values are recorded below.
+
+session: ses_eb85bcb88ffeFrk5TjzypO9MDF
+

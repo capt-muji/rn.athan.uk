@@ -76,6 +76,7 @@
   .step.running { background: var(--violet); box-shadow: 0 0 6px rgba(139, 124, 247, 0.7); }
   .foot-line { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); }
   .context { font-family: var(--mono); font-size: 10.5px; color: var(--dim); }
+  .waiting { font-family: var(--mono); font-size: 10.5px; line-height: 1.5; color: var(--violet); }
   .column-head.red-shared .name, .column-head.red-shared .count { color: var(--red); }
     #error { color: var(--warn); font-family: var(--mono); font-size: 13px; padding: 0 20px 20px; }
   @media (max-width: 430px) {
@@ -108,7 +109,8 @@
 
   const ageSeconds = () => (board ? Math.max(0, Math.round((Date.now() - Date.parse(board.generatedAt)) / 1000)) : 0);
   const unmetOf = (ticket) => ticket.needs.filter((need, at) => !ticket.needsMet[at]);
-  const displayColumn = (ticket) => (ticket.status !== 'DONE' && unmetOf(ticket).length > 0 ? 'Blocked' : ticket.column);
+  const displayColumn = (ticket) =>
+    ticket.status !== 'DONE' && ticket.status !== 'OWNER-LED' && unmetOf(ticket).length > 0 ? 'Blocked' : ticket.column;
 
   function renderHeader() {
     const meta = document.getElementById('meta');
@@ -128,7 +130,7 @@
   function stateWord(ticket) {
     if (displayColumn(ticket) === 'Blocked') return 'Blocked';
     if (ticket.status === 'DONE') return 'Shipped';
-    if (ticket.status === 'OWNER-LED') return 'Owner steered';
+    if (ticket.status === 'OWNER-LED') return 'Awaiting owner';
     if (ticket.status === 'IN PROGRESS') return 'In progress';
     if (ticket.status === 'READY') return 'Ready';
     if (ticket.status === 'EXECUTED') return 'Audit';
@@ -177,6 +179,11 @@
     }
     if (ticket.status === 'DONE') return 'Shipped this cycle.';
     return 'Not scheduled yet.';
+  }
+
+  function waitingEl(ticket) {
+    const line = ticket.waitingOn === null ? 'her ruling' : ticket.waitingOn;
+    return el('div', 'waiting', 'waiting on ' + line);
   }
 
   const APPLE_PATH = 'M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701';
@@ -230,6 +237,7 @@
     top.append(el('span', 'name', ticket.name));
     card.append(top);
     card.append(el('div', 'reason', reasonOf(ticket)));
+    if (ticket.awaitingOwner) card.append(waitingEl(ticket));
     if (ticket.needs.length > 0 && ticket.status !== 'DONE') {
       const chips = el('div', 'chips');
       chips.append(...chipEls(ticket));
