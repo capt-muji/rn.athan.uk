@@ -57,7 +57,8 @@ echo "kCLHeadingFilterNone: $filter, expected 1"
 
 # The publication block is what makes autolinking resolve a prebuilt AAR, so Gradle never compiles the
 # patched Kotlin and a build measures unpatched code while reporting BUILD SUCCESSFUL (session 49).
-# Its absence is the guard; a shipped package carries no copy a check could look for.
+# Its absence is the guard; expo-location ships its local-maven-repo at the package root (not under
+# android/), which is why the old directory check looked in the wrong place and could never fire.
 if grep -q -F '"publication"' "$CONFIG"; then
   echo "publication block: present, expected absent"
   ok=1
