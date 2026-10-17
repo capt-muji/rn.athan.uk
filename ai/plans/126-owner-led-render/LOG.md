@@ -122,3 +122,23 @@ substitution). Finishing: this docs commit at 2.0.974 (uat had moved to
 
 session: ses_eb85bcb88ffeFrk5TjzypO9MDF
 
+
+## Ticket 126 audit (2026-10-17)
+
+The executed docs commit had set the queue cell to the plan's DONE text ahead
+of the audit; repair 3cd5bfd6 (merged 1ee00b1a) restored the EXECUTED cell so
+the live board never read the ticket as finished before review. The DONE cell
+below is the audit's own act.
+
+Two reviewers (plan-conformance, blind), findings adjudicated by the lane:
+the LOG repair record applied here; the test header's provenance clause
+dropped, the why kept; the four exports nothing imports (parseQueue,
+mapStatus, parseNeeds, ticketFromOpenRow) dropped, the suite importing only
+main and waitingLine; break-126.sh gained M7 (the displayColumn OWNER-LED
+exclusion dropped, test 10 reddens) in place of a behavioral vm eval of the
+template expression, rejected as brittle extraction against a file with no
+DOM harness by design. The biome note (the pass never sees board/) is the
+outside-the-gates ruling standing, not a defect. Suite 10/10 after the fixes;
+break script ALL AS EXPECTED: 7.
+
+session: ses_eb8752c07ffe2COk531xvsg1MD
