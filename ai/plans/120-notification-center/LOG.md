@@ -1,7 +1,6 @@
 # LOG: ticket 120
 
-Resume from: Step 2, the XS proof, in steps/2-xs-proof.md. Step 1 is DONE and merged (uat b89c0d3f, 2.0.934). The XS runs lane 111's overnight capture scripts until morning: the instrumented Release install stays foregrounded, never killed, relaunched or reinstalled over, and the capture windows (23:57 rollover, 01:53 fire, 07:14-07:28 Sunrise delivery) are waited out in 15-second poll cycles through $HOME/athan-gitree/device-<XS serial>.lock. Step 2 starts when lane 111's captures end and the device lock frees: build the mock-env Release build from the main tree at merged uat (it now carries the step 1 code), run the two proof cycles per the step file, return the phone to the prod build, then the audit (two athan-reviewer passes, blind plus plan-conformance), the DONE row, the plan folder and sessions evidence deleted in the DONE merge, and the worktree and branch removed. Next version after uat's 2.0.934.
-
+Resume from: Step 2, the XS glass pair, then the audit. DONE so far: step 1 merged (b89c0d3f, 2.0.934) and the SIMULATOR LEG COMPLETE (sessions/120/SIM-LEG-RECORD.md: four timestamped deliveries 01:57:00/02:04:00/02:13:00/02:14:00, the lock-screen pair one-entry-at-02:02 -> logged open 02:11:28 -> zero-at-02:11:44, the RN-log-line void recorded). REMAINING: (a) the XS glass pair - the mock build is installed on the phone (keyless bundle verified); the phone's agent-device claim was held by a sibling all night, so the read route is EITHER the diagnostic build from a scratch worktree at uat (initializeNotifications logs getPresentedNotificationsAsync().length before and after the clear; never committed to uat; scratch worktree removed after) OR the center read if the claim frees (fling -> screenshot within 2 s, the lock-screen route per SIM-LEG-RECORD.md); one closed-app fire first (devicectl terminate by PID - the name form of terminate is broken on this devicectl; banner race at +2..6 s). (b) Return the phone to the prod build (the plan's final act: EXPO_PUBLIC_ENV=prod + key + widgets flag, metro cache cleared, bundle-key check PRESENT). (c) The three-pass audit (blind + plan-conformance + the threading/lifecycle blind), fixes, DONE row, plan folder and sessions evidence deleted, worktree and branch removed. uat was at 2.0.941 and moving; take the next patch under version.lock. Instruments tonight: bay clean, all locks released, sim left booted with the mock install.
 
 ## Planning (2026-10-16)
 
@@ -107,7 +106,22 @@ merges), nothing pushed.
 
 session: ses_eb973afe7ffeO50Yv8UzPlkMpp
 
-### Step 02 — pending (the XS morning window)
+### Step 02 — IN PROGRESS 2026-10-16 (the doctrine rewrite)
+
+Progress 2026-10-17 02:30: the simulator leg is complete and recorded at
+`$HOME/athan-gitree/sessions/120/SIM-LEG-RECORD.md` (the pair, the delivery
+timestamps, the void, the instrument notes). The XS glass leg landed its build
+(mock Release installed and live on the phone, the bundle verified keyless) and
+one closed-app fire at 02:21:00, but every center/gesture read was blocked: the
+phone's agent-device claim is held by a sibling workspace session (DEVICE_IN_USE
+from three fresh cwds; never forced - two automation stacks on the owner's phone
+is the corruption class the lane rules fear), and no WDA or other gesture route
+exists on this machine. The resume shape (the diagnostic build, or the claim
+freeing) sits in the Resume-from note above. The phone still carries the mock
+build: the resume's prod return is mandatory before DONE.
+
+session: (the lane lead, in-session)
+
 
 Lane 111's overnight capture scripts hold the physical XS until morning, and the Release
 install is instrumented and foregrounded: never kill, relaunch or reinstall over it. The
