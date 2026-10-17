@@ -1,3 +1,0 @@
-    card.append(top);
-    card.append(el('div', 'reason', reasonOf(ticket)));
-    if (ticket.needs.length > 0 && ticket.status !== 'DONE') {
