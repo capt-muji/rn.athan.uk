@@ -4,31 +4,52 @@ The queue table in `ai/plans/README.md` is the authority for order and status. T
 only the briefs open rows still cite: section 16 (queue row 18) and D4 (queue rows 38 and 39).
 DONE records live in git history.
 
-## 16. SDK 58 stable re-pin + full release-notes review (NOT PLANNED, blocked until SDK 58 stable is on npm)
+## 16. SDK 58 stable re-pin + full release-notes review (DONE 2026-10-17, row 111; the ride-`next` policy carries on)
 
 **Trigger.** The owner ruled 2026-10-09: ride the `next` tag and repin to the newest version every
-time, release candidates included. npm that day: `latest` 57.0.27, `next` 58.0.6. The row is
-unblocked and jumps the queue. Its second job is Babel 8.
+time, release candidates included. SDK 58 hit `latest` 2026-10-16 and row 111 ran the re-pin.
+The next attempt takes the newest `expo` at ITS start: `58.0.14` was already on npm at this
+ticket's close (published after this attempt's step 1 pinned `58.0.13`, the newest at that
+moment), so the next re-pin starts from 58.0.14 or newer.
 
-**Babel 8 rider.** `@babel/core` 8.0.6 and its three plugins cannot move while
-`babel-preset-expo@58.0.11` (the preset `expo@58.0.6` pairs with) depends on 36 Babel 7 plugins
-and `@react-native/babel-preset` pins `@babel/core ^7.25.2`. A Babel 7 plugin under Babel 8
-throws `BABEL_VERSION_UNSUPPORTED`. Bump
-the four together when the SDK presets move: `@babel/core`,
-`@babel/plugin-transform-modules-commonjs`, `@babel/plugin-transform-react-jsx` and
-`@babel/preset-typescript`, all at `^7.29.x` in `package.json:79-82`.
+**Landed set (2.0.908, merge `9dd4eb6a`).** `expo ~58.0.13` with its `bundledNativeModules`
+delta (eight direct pins moved, two transitive followed), `react-native` 0.88.0. All three
+patches regenerated whole at `expo-background-task+58.0.11`, `expo-location+58.0.17` and
+`expo-widgets+58.0.20`, no hunk hand-merged; `didRegisterTaskForTesting` and `mLastAzimuth`
+left the patches; the vacuous `local-maven-repo` check died; the guard suite
+`shared/__tests__/backgroundTaskPatch.test.ts` pins the offline option on all three sides.
+`expo-widgets@58.0.19` was broken upstream for Android (its source imports
+`io.github.jakex7.peek.*` while its dependency packages `io.github.expo.peek.*`, 16 unresolved
+references at `:expo-widgets:compileReleaseKotlin`); 58.0.20 fixes it, and that defect is why
+the first attempt became a NEEDS REPLAN. Proven: `yarn validate` and `yarn test:tz` green at
+100 percent, the 3T release build in 517 s with every channel, permission and armed-alert check
+passing and the alarm-clock sub-block intact (41 future alerts), the armed production fire at
+01:53:00.002 on the second (flags 0x3), and the XS loop green per the row 111 record (cold
+start, compass at ~105 delegate calls a second, both language directions, BGTask re-submission,
+two mock-build notification fires at their armed seconds with the TIME SENSITIVE level, the
+live day-roll cascade). The store-release path is open again.
+
+**Babel 8 rider, re-measured 2026-10-16, still blocked upstream.** `@babel/core` 8.0.7 is
+latest; `babel-preset-expo@58.0.17` (the preset `expo@58.0.13` pairs with) depends on 36
+`@babel/*` 7.x plugins (among them `@babel/preset-typescript ^7.23.0`,
+`@babel/plugin-transform-modules-commonjs ^7.24.8`, `@babel/plugin-transform-react-jsx
+^7.28.6`) and `@react-native/babel-preset@0.88.0` depends on `@babel/core ^7.25.2`. A Babel 7
+plugin under Babel 8 throws `BABEL_VERSION_UNSUPPORTED`. The four `@babel/*` devDependencies
+stay at `^7.29.x` and the rider is re-attempted at every re-pin.
 
 **Scope.**
 
 1. `npx expo install --check` against `latest`: name and bump everything it reports, never `--fix`.
-2. Read the full release notes and act on anything new that touches us (owner instruction: the
-   beta changelog is incomplete). Already ruled at past re-pins, do not re-litigate: no SwiftPM
-   (CocoaPods stays), no threadIdentifier grouping, no Live Activities.
+2. Read the full release notes and act on anything new that touches us. Already ruled at past
+   re-pins, do not re-litigate: no SwiftPM (CocoaPods stays), no Live Activities. The "no
+   threadIdentifier" ruling is superseded by row 120's order.
 3. Full regression: `yarn validate`, `yarn test:tz`, e2e, 3T release build, the dumpsys and
    punctuality gates.
-4. Reopen the store-release path: nothing ships to a store or to production before this row is
-   DONE.
-5. Bookkeeping: update `ai/AGENTS.md` (stack table, ahead-pins table).
+4. Reopen the store-release path: nothing ships to a store or to production before the re-pin
+   row is DONE.
+5. Bookkeeping: the stack line in `README.md`, the patch rows in `ai/UPSTREAM-PRS.md`, this
+   section. (The `ai/AGENTS.md` stack tables were deleted by the owner's compaction order at
+   `b2096c4a` and stay gone.)
 
 **Pin-set and build facts.**
 
