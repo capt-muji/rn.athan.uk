@@ -72,20 +72,20 @@ verification, never infer visuals from pixels alone.
 
 ## Gotchas (each cost real time, read twice)
 
-- **Metro env-blindness**: changing ANY `EXPO_PUBLIC_*` variable (including
-  `EXPO_PUBLIC_ENV`) requires clearing the metro cache AND deleting the
-  generated Android bundle or the stale transform ships. Gradle marks the
-  bundle task UP-TO-DATE on env-only changes, because the environment is not a
-  declared input to `createBundleReleaseJsAndAssets`. **Restarting the gradle
-  daemon is NOT enough**: the fresh daemon holds the new env, but the task
-  still sees unchanged file inputs and skips. Remedy:
-  `find android/app/build -name index.android.bundle -delete`, then
-  `assembleRelease`. Always verify before trusting the APK: compare
-  `unzip -p app-release.apk assets/index.android.bundle | md5` against the
-  previous build, and treat an identical hash as a recycled bundle. Note that
-  `assets/app.config` (the version `Constants.expoConfig` reads) IS regenerated
-  on its own, so a correct version in the APK proves nothing about the bundle:
-  a build can report the new version while still running the old JavaScript.
+- **Metro env-blindness (healed at SDK 58, keep the verification)**: before SDK 58, changing
+  any `EXPO_PUBLIC_*` variable (including `EXPO_PUBLIC_ENV`) required clearing the Metro cache
+  AND deleting the generated Android bundle, or the stale transform shipped. At the SDK 58
+  pin set (metro-config 0.88.0) the env change invalidates the transform cache itself,
+  measured 2026-10-16 with two `npx expo export --platform android` runs differing only in
+  `EXPO_PUBLIC_ENV`: the two entry-chunk md5s DIFFER (`afa8d8377bdb3692bc4bbeb46b928da4` prod
+  vs `a3d4e28ff9ce15029b6c994877d7fa6e` mock), so no stale bytes shipped with no manual cache
+  clearing. Keep the habit anyway, because it is cheap and the failure mode is silent: after
+  any env-only change, compare `unzip -p app-release.apk assets/index.android.bundle | md5`
+  against the previous build and treat an identical hash as a recycled bundle
+  (`assets/app.config` still regenerates on its own, so a correct version in the APK proves
+  nothing about the bundle). The gradle `UP-TO-DATE` skip on env-only changes is NOT
+  re-measured at this pin set: `find android/app/build -name index.android.bundle -delete`
+  before `assembleRelease` remains the safe route when the env changed.
 - **Dev-env confound**: local builds run the mock API (`api/client.ts` returns
   `MOCK_DATA_SIMPLE` whenever the env is neither `prod` nor `preview`, so every
   launch does a full mock refresh (~175ms Android). Baseline and iterations
@@ -96,10 +96,13 @@ verification, never infer visuals from pixels alone.
   the mock (`stores/database.ts`, AUDIT #25), the fabricated rows stay in
   `athan-storage-dev` and a prod or preview build installed over the top never
   reads them, but they persist for the next local build, so a stale mock day
-  is still a live confound within dev. The tell is in `mocks/simple.ts`:
-  TODAY's six rows are seeded from each download (every launch and every return
-  to the app), with Asr next a minute or two away and Fajr a few minutes before
-  the clock, so a "Fajr" minutes before the current clock is the mock, not a bug. Logging is disabled
+  is still a live confound within dev. The mock seeds by the download's London clock (row 113,
+  any hour, any day, `mocks/simple.ts`): the evening window (06:00-23:52:59) puts Asr just
+  passed, Maghrib on the next minute boundary and Isha the minute after, so the day rolls to
+  tomorrow's real schedule within a couple of minutes; the pre-dawn window (00:00-05:59)
+  composes a realistic day with Fajr one minute out and Sunrise eleven; the spent late evening
+  (23:53-23:59) serves the day's real static shape with all six passed. A prayer a minute or
+  two off the wall clock is the mock, not a bug. Logging is disabled
   in prod and preview (`shared/logger.ts`), so the only build that gives both
   real data and logs is none of them. On a real-data device run, the alarm
   dump is the evidence and an empty logcat proves nothing either way.
@@ -120,11 +123,12 @@ verification, never infer visuals from pixels alone.
 - **`dumpsys cpuinfo` is lifetime-cumulative, and `top -n 5 -d 5 -b` printed
   five identical snapshots on the 3T**: measure idle with
   `scripts/idle-cpu.sh` (per-thread `/proc` deltas over 60s).
-- **Idle must be measured past the mock's compressed window**: today's six
-  mock prayers sit from 3 min before a download to 4 min after it, and every
-  return to the app downloads again, so sample ≥5.5 min after a cold launch
-  without leaving the app (idle-cpu.sh does). At night (00:00–06:00) the mock's Isha becomes a
-  post-midnight Isha and the day-roll fires early. Test day-rolls in daytime.
+- **Idle must be measured past the mock's compressed window**: the evening seed puts the next
+  prayers one and two minutes out, and every return to the app downloads again, so sample
+  ≥5.5 min after a cold launch without leaving the app (idle-cpu.sh does). The night windows
+  are safe since row 113: the pre-dawn branch never writes a small-hours Standard row (the
+  midnight-crossing rules are what dashed the old night mock), and the evening branch's
+  early roll is the owner's own reseed design, not a defect.
 - **`expo run:android --device` takes a device NAME, not an adb serial**: with
   a serial it prebuilds, then fails, and a `| tail` pipe reports exit 0.
   Build with `./gradlew assembleRelease` + `adb install -r`, and check
