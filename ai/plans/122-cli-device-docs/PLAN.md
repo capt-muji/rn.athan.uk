@@ -152,7 +152,7 @@ grep commands.
 
 Checklist:
 
-- [ ] Step 1 - the two stale `--device` passages replaced (docs)
+- [x] Step 1 - the two stale `--device` passages replaced (docs)
 
 ### Step 1 - the two stale `--device` passages replaced
 
