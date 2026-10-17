@@ -39,7 +39,8 @@ None (docs step).
    its evidence class, plus the restorations. Keep it inside the cell's width; the
    audit folds it into the DONE text.
 4. Check R0.1: `git diff ca73f5a9..lane/131 --stat -- . ':(exclude)ai/plans'`
-   prints only the three version files (package.json, app.json) and nothing else;
+   prints only the two tracked version files (package.json, app.json; the untracked
+   android/app/build.gradle is synced separately) and nothing else;
    `git diff ca73f5a9..lane/131 --stat -- ai/plans` prints only
    `ai/plans/131-six-readings/` and `ai/plans/README.md`.
 5. LOG.md step entry with its `session:` line, commit, merge under `uat.lock`,
