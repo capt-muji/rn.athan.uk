@@ -118,7 +118,7 @@ Design review: the additive fields cannot change any other row's rendering (ever
 
 Checklist:
 
-- [ ] Step 1: the OWNER-LED render through generator, template and suite ( Weight: 2 )
+- [x] Step 1: the OWNER-LED render through generator, template and suite ( Weight: 2 )
 
 ### Step 1: the OWNER-LED render through generator, template and suite
 

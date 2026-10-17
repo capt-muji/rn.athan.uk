@@ -8,6 +8,10 @@ restore() {
 }
 trap 'restore board/reader.mjs; restore board/index.html' EXIT
 
+run_suite() {
+  node --test 'board/tests/*.test.mjs' >/dev/null 2>&1
+}
+
 mutate() {
   # mutate <file> <replacement-number> <perl-program>
   # All of one mutant's substitutions run in one perl pass against one pristine backup.
