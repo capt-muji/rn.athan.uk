@@ -132,7 +132,7 @@ Goal: an OWNER-LED row reads as awaiting her on the board, and the generator's s
 
 Branch: `feat/126-owner-led-render` off `uat`.
 
-Files: `board/reader.mjs`, `board/index.html`, `board/tests/reader.test.mjs` (new), plus this plan folder's `PLAN.md` and `LOG.md`, the queue row's Status cell (`IN PROGRESS, step 1`), and the three version files.
+Files: `board/reader.mjs`, `board/index.html`, `board/tests/reader.test.mjs` (new), plus this plan folder's `PLAN.md` and `LOG.md`, the queue row's Status cell set verbatim to `IN PROGRESS, step 1 (plan at ai/plans/126-owner-led-render)`, and the three version files.
 
 Red: write `board/tests/reader.test.mjs` with the tests below, run `node --test 'board/tests/*.test.mjs'` from the worktree root (quote the glob; a bare directory form misruns on node 24), and record every failing name. The suite does not import cleanly today (the reader exports nothing and `main` runs at import), which is itself the first red: the runner reports the import error and every test in the file fails.
 
@@ -145,26 +145,26 @@ The suite's shape: one fixture builder writes a scratch repository (a temp direc
 | 904 | Fixture waiting silent | The full brief sits in history | OWNER-LED 2026-10-17: the recommendation is keep the current design; nothing further to measure | nothing |
 ```
 
-plus one five-field DONE row `| 905 | Fixture archived || DONE 2026-10-15 ||` in the five-field table shape (empty Brief and Needs cells), so the DONE-table branch of `main` covers the uniform-shape change.
+plus one five-field DONE row `| 905 | Fixture archived | DONE 2026-10-15 |` (three cells, the DONE-archive table's shape; the double-empty-cell form splits into seven fields and never reaches the five-field branch), so the DONE-table branch of `main` covers the uniform-shape change. The fixture's done count is 2: rows 901 and 905.
 
 The tests, each with what it proves and its red failure:
 
 1. `owner-led row carries awaitingOwner, column and waiting text` (R1.1): run `main` in-process on the fixture with `--db <nonexistent>`, stubbed `process.exit` capturing the code; read the emitted `board.json`; assert ticket 902 has `status 'OWNER-LED'`, `column 'Owner-led'`, `awaitingOwner === true`, `statusText` starting `2026-10-17: the investigation answers, the recommendation is adopt option B`, `waitingOn === 'her ruling on option B'`, `needs []`. Red today: the import fails before any assertion.
-2. `owner-led row with silent needs cell answers waitingOn null` (R1.2): ticket 904 asserts `waitingOn === null` and `awaitingOwner === true`. Red today: import failure.
-3. `owner-led row never counts as done though its prose names DONE` (R1.3): assert `doneCount === 1` (row 901), ticket 902 exists in `tickets` with column `Owner-led`, and no ticket with order 902 sits in the Done column. Red today: import failure; the mutant form of this test is the never-counted pin.
-4. `every ticket carries the uniform owner fields` (R1.1, D126.8): each of the emitted tickets, the five-field 905 included, has `awaitingOwner` boolean and `waitingOn` null-or-string, and 901, 903, 905 carry `awaitingOwner === false`, `waitingOn === null`. Red today: import failure.
-5. `recompute is idempotent` (row 56's determinism rule): run `main` twice on the same fixture; the two `tickets` arrays deep-equal and the second run's stdout line matches `board.json written: 5 tickets, 1 done, generatedAt `. Red today: import failure.
-6. `unreadable queue exits 1 with the stderr line` (covers `main`'s failure branch): run `main` in-process with `--repo <empty temp dir>`; assert the stubbed exit code is 1 and stderr carried `board-reader: cannot read`. Red today: import failure.
-7. `spawned reader writes the same board` (D63's running-it proof): spawn `node board/reader.mjs --repo <fixture> --state <tmp> --handoffs <tmp> --db <nonexistent>`, assert exit 0 and the stdout line, then assert the spawned `board.json` deep-equals the in-process run's `tickets`. Red today: passes vacuously or fails on the fields; it must fail because `awaitingOwner` is absent from the spawned output.
+2. `owner-led row with silent needs cell answers waitingOn null` (R1.2): ticket 904 asserts `waitingOn === null` and `awaitingOwner === true`, and the suite imports `waitingLine` and unit-asserts its three null answers: `waitingLine('')`, `waitingLine('nothing')` and `waitingLine('118')` each return null while `waitingLine('her ruling on option B')` returns the text. Red today: import failure.
+3. `owner-led row never counts as done though its prose names DONE` (R1.3): assert `doneCount === 2` (rows 901 and 905, never 902) and ticket 902 exists in `tickets` with column `Owner-led`. Red today: import failure; the mutant form of this test is the never-counted pin.
+4. `every ticket carries the uniform owner fields and no other status moves` (R1.1, R1.6, D126.8): each of the emitted tickets, the five-field 905 included, has `awaitingOwner` boolean and `waitingOn` null-or-string; 901, 903 and 905 carry `awaitingOwner === false` and `waitingOn === null`; and the three keep their today mapping: 901 status `DONE` column `Done`, 903 status `NOT PLANNED` column `Backlog`, 905 status `DONE` column `Done`. Red today: import failure.
+5. `recompute is idempotent` (row 56's determinism rule): run `main` twice on the same fixture; the two `tickets` arrays deep-equal and the second run's stdout line matches `board.json written: 5 tickets, 2 done, generatedAt `. Red today: import failure.
+6. `unreadable queue exits 1 with the stderr line` (covers `main`'s failure branch): run `main` in-process with `--repo <empty temp dir>`; the exit stub records code 1 then throws (`process.exit = (code) => { exitCode = code; throw new Error('exit ' + code); }`, the test catching that throw, because a record-only stub lets `main` continue into `parseQueue(undefined)` and crash elsewhere), and `process.stderr.write` is stubbed to capture the line, restored after; assert the captured line contains `board-reader: cannot read`. Red today: import failure.
+7. `spawned reader writes the same board` (D63's running-it proof): spawn `node board/reader.mjs --repo <fixture> --state <tmp> --handoffs <tmp> --db <nonexistent>`, assert exit 0 and the stdout line, then assert the spawned `board.json` deep-equals the in-process run's `tickets`. Red today: import failure.
 8. `template script parses` (R2.2): read `board/index.html`, slice between the last `<script>` and `</script>`, `new vm.Script(slice)` compiles. Red today: passes; it guards the edit that follows, so record it green-before-edit only when the runner reaches it, and its mutant form reddens in the break script. If the red run cannot reach it (import failure first), record the import failure as its red line.
-9. `template words the badge and the waiting line` (R2.5 wording, R2.3): the template source contains `Awaiting owner`, contains `waiting on `, and no longer contains `Owner steered`. Red today: `Awaiting owner` is absent, `Owner steered` is present.
+9. `template words the badge and the waiting line` (R1.5 wording, R2.3): the template source contains `Awaiting owner`, contains `waiting on `, no longer contains `Owner steered`, and still carries the wiring line verbatim: `if (ticket.awaitingOwner) card.append(waitingEl(ticket));`. Red today: `Awaiting owner` is absent, `Owner steered` is present.
 10. `displayColumn never blocks an owner-led row` (R1.4, proven at the generator boundary because the placement rule lives in template code): the template source's `displayColumn` expression contains an OWNER-LED exclusion beside the DONE exclusion. Red today: the expression excludes DONE only. This is a source assertion because the template has no DOM harness; the running-it proof covers the render.
 
 Change contracts, verbatim:
 
 In `board/reader.mjs`:
 
-- Add `export` to `parseQueue`, `mapStatus`, `parseNeeds`, `ticketFromOpenRow`, and `main` (the function declarations only; no behaviour change).
+- Add `export` to `parseQueue`, `mapStatus`, `parseNeeds`, `ticketFromOpenRow`, `waitingLine`, and `main` (the function declarations only; no behaviour change).
 - Add this helper under `parseNeeds`:
 
 ```js
@@ -231,13 +231,14 @@ In `board/index.html`:
 
 Green: `node --test --experimental-test-coverage 'board/tests/*.test.mjs'` passes every test; the coverage table's `reader.mjs` row lists uncovered line numbers, and none of them falls inside the ranges this step touched (the exported declarations, `waitingLine`'s body, the two ticket fields, the five-field branch's two new lines, and the guard block at the file foot). Record the table in `LOG.md`. Then `npx tsc --noEmit` and `npx biome check . --error-on-warnings` exit 0 (the board sits outside both; the check confirms the step changed nothing they read).
 
-Break script: `scripts/break-126.sh` in this plan folder. It applies five mutants to the working tree one at a time, runs `node --test 'board/tests/*.test.mjs'` after each expecting a failed run, and restores the file before the next. It ends `ALL AS EXPECTED: 5`.
+Break script: `scripts/break-126.sh` in this plan folder. It applies six mutants to the working tree one at a time, runs `node --test 'board/tests/*.test.mjs'` after each expecting a failed run, and restores the file before the next. Each mutant's substitutions run as one perl program against one pristine backup, so a multi-substitution mutant never overwrites its own backup. It ends `ALL AS EXPECTED: 6`.
 
-- M1, `board/reader.mjs`: `if (statusCell.startsWith('DONE')) {` becomes `if (statusCell.includes('DONE')) {` (the seven-field branch) and the five-field branch's `status.startsWith('DONE')` becomes `status.includes('DONE')`. Tests 3 and 5 redden.
+- M1, `board/reader.mjs`: in one perl program, `statusCell.startsWith('DONE')` becomes `statusCell.includes('DONE')` and `status.startsWith('DONE')` becomes `status.includes('DONE')`. Tests 3 and 5 redden.
 - M2, `board/reader.mjs`: the STATUS_MAP line `['OWNER-LED', 'Owner-led'],` becomes `['OWNER-LED', 'Blocked'],`. Tests 1 and 3 redden.
-- M3, `board/reader.mjs`: in `waitingLine`, the final `return text.slice(0, 140);` becomes `return null;`. Tests 1 and 2 redden (902 loses its waiting text).
-- M4, `board/reader.mjs`: `const awaitingOwner = mapped.status === 'OWNER-LED';` becomes `const awaitingOwner = false;`. Tests 1, 4 and 7 redden.
-- M5, `board/index.html`: `Awaiting owner` becomes `Owner steered`. Test 9 reddens (the expected-red set for M5 is test 9 alone; test 10's displayColumn exclusion survives M5 by design).
+- M3, `board/reader.mjs`: in `waitingLine`, the final `return text.slice(0, 140);` becomes `return null;`. Test 1 reddens (902 loses its waiting text; test 2 stays green by construction, its own assertion being null).
+- M4, `board/reader.mjs`: `const awaitingOwner = mapped.status === 'OWNER-LED';` becomes `const awaitingOwner = false;`. Tests 1 and 2 redden (the uniform-shape test 4 and the spawn-parity test 7 stay green under M4 by construction).
+- M5, `board/index.html`: `Awaiting owner` becomes `Owner steered`. Test 9 reddens (test 10's displayColumn exclusion survives M5 by design).
+- M6, `board/index.html`: the wiring line `if (ticket.awaitingOwner) card.append(waitingEl(ticket));` becomes `if (false) card.append(waitingEl(ticket));`. Test 9 reddens on its verbatim wiring assertion.
 
 After the last restore, `git status --porcelain` lists only this step's files and the plan files, and `node --test 'board/tests/*.test.mjs'` passes clean.
 
@@ -255,11 +256,11 @@ None. No device, no build. The running-it proof is the suite's spawn test plus t
 
 ## 8. Records
 
-The `LOG.md` step entry heading and session line per the ledger contract, with the measured values: the red lines recorded per test, the coverage table's `reader.mjs` row, the break script's `ALL AS EXPECTED: 5`, and the merge sha.
+The `LOG.md` step entry per the ledger contract in `ai/plans/TEMPLATE.md` (heading `### Step 01 — executed`, closing `session: <ses_id>` line), with the measured values: the red lines recorded per test, the coverage table's `reader.mjs` row, the break script's `ALL AS EXPECTED: 6`, and the merge sha.
 
 The queue cell the lead applies on DONE, for row 126's Status column:
 
-`DONE 2026-10-17, audited: the board's OWNER-LED rows read as awaiting her - the badge words Awaiting owner, the recommendation stays the reason line, the Needs-first cell's own words render as a distinct violet waiting-on line (her ruling when the cell is silent), the row keeps its Owner-led column whatever its needs say, and the never-counted-as-done rule is pinned red-first in the generator's new node:test suite (board/tests/reader.test.mjs, born here) whose fixture row's prose names DONE so the includes mutant reddens; five mutants in the break script, all red`
+`DONE 2026-10-17, audited: the board's OWNER-LED rows read as awaiting her - the badge words Awaiting owner, the recommendation stays the reason line, the Needs-first cell's own words render as a distinct violet waiting-on line (her ruling when the cell is silent), the row keeps its Owner-led column whatever its needs say, and the never-counted-as-done rule is pinned red-first in the generator's new node:test suite (board/tests/reader.test.mjs, born here) whose fixture row's prose names DONE so the includes mutant reddens; six mutants in the break script, all red`
 
 The docs commit message: `<VERSION> - docs(plans): ticket 126 executed: the OWNER-LED render and its suite`.
 
