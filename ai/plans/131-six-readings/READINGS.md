@@ -172,10 +172,13 @@ rd3-settings-reduced.png are reach evidence). Relaunch under the reduced grant:
     [RD3] BEGIN reduced grant, requesting full accuracy
 
 The prompt appeared over the app (rd3-prompt.png, reach evidence; the runner's
-`alert get` returned the same title). Title and buttons verbatim: `Allow "Athan" to
-use your precise location once?`, body `Allow Athan to access your precise location`
-(the plist purpose string), buttons `Allow Once` and `Don't Allow`. The affirmative is
-the one-time form: a temporary full-accuracy grant, not a flip of the Settings toggle.
+`alert get`, transcribed at rd3-alert-get.txt, returned the same title). Title and
+buttons verbatim, a UI reading read from the image and the runner's alert
+inspection: `Allow "Athan" to use your precise location once?`, body `Allow Athan
+to access your precise location` (the plist purpose string), buttons `Allow Once`
+and `Don't Allow`. The affirmative is the one-time form: a temporary full-accuracy
+grant, not a flip of the Settings toggle. The behavioural claim rides the [RD3]
+lines below, not the screenshot.
 
 The affirmative branch was not exercised: the runner's tap pipeline wedged on the
 alert screen (its pre-dispatch accessibility probe aborts over a system alert, the
@@ -186,19 +189,23 @@ resolution and the read-after, verbatim:
     [RD3] after-get {"status":"granted","scope":"whenInUse","canAskAgain":true,"accuracy":"reduced","expires":"never","granted":true}
     [RD0] complete {"rd3":true}
 
-A second ask in a fresh process (relaunch, grant still reduced) fired the same BEGIN
-and resolved 44 ms later with no prompt at all (xs-rd.log, 16:11:31.971103 BEGIN,
-16:11:32.015814 resolved, both reduced) - iOS suppresses the accuracy prompt after
-the first ask in a grant state. The orphaned alert from that ask was dismissed
-(`alert dismiss`), not answered.
+The first ask's promise stayed pending on the alert for 8.5 minutes (15:59:32 to
+16:08:02), resolving the moment the alert was dismissed unanswered. A second ask in
+a fresh process (relaunch, grant still reduced) fired the same BEGIN and resolved
+44 ms later without waiting on the prompt (xs-rd.log, 16:11:31.971103 BEGIN,
+16:11:32.015814 resolved, both reduced): the alert still appeared - rd3-prompt2.png
+at 16:11:38, six seconds after the resolution, shows it up with the same title and
+buttons - and stayed orphaned until dismissed (`alert dismiss`), never answered. No
+mechanism is claimed for the wait-then-stop-waiting shape; both asks are recorded.
 
 Verdict: the prompt is the one-time precise-location alert, raised by
 `requestForegroundPermissions({ accuracy: 'full' })` under a reduced grant, carrying
 the plugin's purpose string, with `Allow Once` as the temporary-full affirmative.
 Unanswered, the request resolves with the grant unchanged (`accuracy: 'reduced'`,
-`granted: true`, `canAskAgain: true`); a repeat ask presents no prompt and resolves
-immediately reduced. Absent form: no alert, immediate reduced resolution - observed
-on the second ask.
+`granted: true`, `canAskAgain: true`); the first ask blocks until its alert is
+answered or dismissed, a repeat ask resolves immediately reduced while its alert
+still appears, orphaned. Absent form: the promise resolving at once with the grant
+unchanged - observed on the second ask.
 
 Restore evidence (R3.2). Precise Location re-enabled in Settings (runner diff
 `[checked]`, rd3-settings-restored.png), then a fresh probe relaunch read back:
@@ -207,7 +214,9 @@ Restore evidence (R3.2). Precise Location re-enabled in Settings (runner diff
 
 (xs-rd.log 16:21:06 onward, the post-restore process.) The probe-free restore build
 of the found version (0413248c, 2.0.939) was installed over the probe and verified:
-`xcrun devicectl device info apps` prints `Athan com.mugtaba.athan 2.0.939 1`, and a
+`xcrun devicectl device info apps` prints `Athan com.mugtaba.athan 2.0.939 1`
+(captured at xs-final-install.txt after the final install; both builds report
+2.0.939, so the probe-free claim rides the launch face and the [RD silence), and a
 launch rendered the full app face with no crash (xs-restored-launch.png, reach
 evidence). Her grant config is exactly as found: While Using plus Precise.
 
