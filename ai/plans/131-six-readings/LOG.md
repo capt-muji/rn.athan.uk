@@ -81,8 +81,8 @@ session: self (lane-run device step per D131.5)
   Once and Don't Allow). The affirmative was never tapped: the runner's tap
   pipeline aborts its pre-dispatch probe over a system alert (the atlas
   snapshot-wedge trap), so the alert closed unanswered and the request resolved
-  reduced. A second ask in a fresh process resolved in 44 ms with no prompt (ask
-  suppression); the orphaned alert from it was cleared with `alert dismiss`. RD4's
+  reduced. A second ask in a fresh process resolved in 44 ms without waiting on
+  its alert, which still appeared and stayed orphaned until dismissed; RD4's
   iOS half landed complete on the 15:48 relaunch: different fixes (5.9 ms apart),
   classic -1 vs next null.
 - Restored: Precise back on (runner diff `[checked]`), the post-restore probe run
@@ -125,8 +125,26 @@ session: self (lane-run device step per D131.5; blocked tail recorded in the row
 - Row 131 cell drafted EXECUTED, folded to DONE at audit; the plan folder and the
   sessions/131 evidence die in the DONE merge per the records rule (the
   restore-Athan.app artefact dies with the evidence: it is installed).
-- R0.1 verified: the lane diff touches only the plan folder, the queue row and the
-  two tracked version files.
+- R0.1 verified: the lane's own two commits (b6e20993, 393fdcfb) touch only the plan
+  folder, the queue row and the two tracked version files; the wider range
+  65981367..lane/131 additionally carries the orchestrator-side rows 120 and 134,
+  which are not lane output.
 
 session: self (records step; the two review passes dispatched at audit)
+
+### Audit (2026-10-17)
+
+- Two passes dispatched per the plan: plan-conformance and blind, each handed the
+  range 65981367..lane/131, the diff file and a findings path (findings recorded in
+  AUDIT.md).
+- Nine findings returned, all adjudicated in AUDIT.md: four record-text corrections
+  applied (the RD5 scope token, the second-ask wording, the RD6 ruling date, the
+  six-captured head), row 134's byte-identity line corrected true (verified by diff:
+  app.config.ts and yarn.lock identical, app.json differing only in version), the
+  R3.2 version line captured fresh (xs-final-install.txt), the alert-get transcript
+  persisted (rd3-alert-get.txt), the LOG R0.1 sentence scoped.
+
+session: self (audit fixes per the lead skill; the reviewers were dispatched
+workers named above)
+
 
