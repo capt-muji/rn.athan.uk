@@ -208,9 +208,9 @@ fixtures' London position by distance in metres, never as coordinates.
 
 Checklist:
 
-- [ ] Step 1: the 3T session, RD4, RD1, RD5, RD2 (`steps/1-3t-readings.md`)
-- [ ] Step 2: the XS session, RD3 plus the iOS half of RD4 (`steps/2-xs-reading.md`)
-- [ ] Step 3: records, row cell, evidence fold (`steps/3-records.md`)
+- [x] Step 1: the 3T session, RD4, RD1, RD5, RD2 (`steps/1-3t-readings.md`)
+- [x] Step 2: the XS session, RD3 plus the iOS half of RD4 (`steps/2-xs-reading.md`)
+- [x] Step 3: records, row cell, evidence fold (`steps/3-records.md`)
 
 Step details live in `steps/`. Each device step runs alone under the matching
 `device-<SERIAL>.lock`, and the scratch builds run under `build.lock` in the scratch
