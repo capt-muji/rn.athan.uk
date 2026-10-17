@@ -14,3 +14,22 @@
 - Frontier argued and recorded in PLAN.md section 2 (D125.1 to D125.12).
 - Sibling surfaces untouched: e2e/README.md, ai/UPSTREAM-PRS.md, SDK58-PROGRAMME.md, both phones.
 - floor at skeleton: 2.0.937 (uat tip) -> skeleton commit 2.0.938.
+- 23:37 lock incident (guard-4 class, live case 3 tonight): uat.lock held since 23:01 with no merge in flight (no MERGE_HEAD, no git process, main-tree tip frozen at ad92825f for 33 min); build.lock recycled 23:28 and device lock taken 23:34 by a live sibling on the XS. The stale uat.lock was removed by this lane after process-level liveness checks, held for one 30-second merge, released. Recorded for the run reply.
+
+### Step 01 — done
+
+- Red run recorded: `npx jest scripts/__tests__/pinHooks.test.ts scripts/__tests__/checkVersionUniqueness.test.ts --watchman=false --selectProjects=unit` printed `Tests: 9 failed, 1 passed, 10 total`; the nine failed on the missing scripts (spawn ENOENT / exit-code assertions); the passing one pins raw git mechanics (tracked hooks fire with hooksPath .husky, skipped with a missing .husky/_), which hold before the fix by design.
+- Green run: `Tests: 10 passed, 10 total` (one fixture repaired mid-red: the missed-bump fixture's identical tree; the test now writes a second file, as a real missed bump does).
+- Census at execution: 99 non-merge commits in the union, 16 colliding versions (planning saw 13; 2.0.934, 2.0.935, 2.0.936 are new tonight). Classification reconciled with the stopped executor's evidence at `$HOME/athan-gitree/sessions/125/step1-collision-report.md` (entry-merge method): 5 same-lane missed bumps (909, 913, 928, 934, 936), 11 cross-lane collisions (858, 863, 872, 886, 890, 896, 901, 908, 930, 931, 935); 863 corrected from the planner's subject-based same-lane read to cross-lane per the evidence.
+- Break script: the plan's first draft collided on 2.0.935, which the census allowlist grandfathers, so the gate correctly passed it (plan defect repaired in PLAN.md: the break now uses 2.0.929, not allowlisted). Repaired run printed `VERSION COLLISION 2.0.929: 775bf944... a7893f61...` and `break exit: 1`.
+- Script output uses `process.stdout.write` per the repo idiom (check-identifiers.js), after Biome's noConsole refused `console.log`.
+- Executor incident, agent-ruled 2026-10-17 01:52: the dispatched executor (parked mid-turn since ~23:39, guard-4 case 4) woke, found this lane mid-step-1, and STOPped rather than double-execute. Ruling: this lane carries steps 1 to 3; the executor's session is spent; its docs commit 93c05eb2 (2.0.940, the planner's lock-incident LOG line, hook green `Tests: 2 skipped, 5715 passed, 5717 total`, coverage 100%) rides this step's merge unmerged-ahead. Its census evidence accepted into the allowlist classification above. It released commit.lock and version.lock at its stop.
+- Lock note for the record: commit.lock and version.lock sat 23:39 to 01:52 held by that paused-but-live session with no OS process visible; process liveness cannot distinguish parked from dead, which is the guard-4 lesson.
+session: lane-125-lead (in-lane execution; worker dispatch returned STOP on the duplicate)
+
+### Step 01 repair - the merge-time false positive
+
+- The first step-1 merge attempt was refused by the new pre-merge-commit hook itself: git does not export MERGE_HEAD to hooks, so the env-only check never fired, the merge-in-flight worktree counted as a staged candidate, and the gate self-collided the merge with the lane's own tip. The repair reads the MERGE_HEAD ref as well as the env var; a new test ("skips the candidate while the MERGE_HEAD ref exists without the env var", red against the pre-fix script, green after) covers the ref path.
+- A lint-staged failed-run restore had earlier eaten the tracked-file half of the first step-1 commit (recovered from the lint-staged backup stash); the partial commit created a real same-lane missed bump at 2.0.940, which the gate itself refused at the amend - the gate's first two catches were both this ticket's own commits.
+- The versionName sync debt (2.0.937 through 2.0.940) surfaced as the lockstep failure inside the merge's own validate and was synced to 2.0.941. One sync ran without build.lock under a recorded ruling: the lock's live holder was an iOS simulator test session that cannot read android/app/build.gradle, and no Android build can start while it holds the lock.
+session: lane-125-lead

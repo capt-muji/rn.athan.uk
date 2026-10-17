@@ -420,15 +420,17 @@ Break script (run after green, recorded in LOG.md by its last lines):
 ```bash
 cd "$HOME/athan-gitree/worktrees/lane-125"
 git checkout -b docs/break-125 lane/125
-node -e "const f='app.json';const j=require('./'+f);j.expo.version='2.0.935';require('fs').writeFileSync(f,JSON.stringify(j,null,2)+'\n')"
+node -e "const f='app.json';const j=require('./'+f);j.expo.version='2.0.929';require('fs').writeFileSync(f,JSON.stringify(j,null,2)+'\n')"
 git add app.json && git -c user.email=break@t -c user.name=break commit --no-verify -m "break: colliding version" >/dev/null
 node scripts/check-version-uniqueness.js; echo "break exit: $?"
 git checkout lane/125 && git branch -D docs/break-125
 ```
 
-Expected last lines: `VERSION COLLISION 2.0.935: <the shas>` then `break
-exit: 1` (2.0.935 is lane/120's tip). If it prints `VERSIONS OK`, the gate is
-broken.
+Expected last lines: `VERSION COLLISION 2.0.929: <the sha> staged` then `break
+exit: 1` (2.0.929 is ticket 120's READY content commit a7893f61, and it is not
+allowlisted). The first break draft used 2.0.935, which the census allowlist
+grandfathers, so the gate correctly passed it: the break must collide with a
+version outside the allowlist. If it prints `VERSIONS OK`, the gate is broken.
 
 Version and commit: 2.0.939 or the recomputed floor plus one per D125.11,
 message
