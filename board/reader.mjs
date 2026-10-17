@@ -4,8 +4,9 @@
 // fixed key order, no timestamps beyond generatedAt and context age.
 
 import { DatabaseSync } from 'node:sqlite';
-import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, renameSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const CONFIG_DEFAULTS = { port: 8788, host: '127.0.0.1', reconcileMs: 15000, doneColumnCount: 5 };
 
@@ -43,7 +44,7 @@ function readConfig(file) {
   return config;
 }
 
-function parseQueue(markdown) {
+export function parseQueue(markdown) {
   const open = [];
   const doneRows = [];
   const doneOrders = [];
@@ -78,7 +79,7 @@ function parseQueue(markdown) {
   return { open, doneRows, doneOrders, settled };
 }
 
-function mapStatus(statusCell) {
+export function mapStatus(statusCell) {
   const cell = statusCell.trim();
   const matched = STATUS_MAP.find(([phrase]) => cell.startsWith(phrase));
   const rendered = !closedStatus(cell);
@@ -94,9 +95,15 @@ function mapStatus(statusCell) {
   return { status: phrase, column, cursor, statusText: collapse(cell.slice(phrase.length)).slice(0, 140), rendered };
 }
 
-function parseNeeds(needsCell) {
+export function parseNeeds(needsCell) {
   const orders = (needsCell.match(/\d+/g) ?? []).map((digit) => Number.parseInt(digit, 10));
   return [...new Set(orders)].sort((a, b) => a - b);
+}
+
+export function waitingLine(needsCell) {
+  const text = collapse(needsCell);
+  if (text === '' || /^nothing\.?$/i.test(text) || /^\d+(,\s*\d+)*$/.test(text)) return null;
+  return text.slice(0, 140);
 }
 
 function isMet(order, tickets, metOrders) {
@@ -275,8 +282,9 @@ function ensureState(stateDir) {
   if (!existsSync(ignore)) writeFileSync(ignore, '*\n');
 }
 
-function ticketFromOpenRow(row, mapped, lookup, metOrders, repo, handoffDir) {
+export function ticketFromOpenRow(row, mapped, lookup, metOrders, repo, handoffDir) {
   const needs = parseNeeds(row.needsCell);
+  const awaitingOwner = mapped.status === 'OWNER-LED';
   const planFolder = findPlanFolder(repo, row.order);
   const plan = planFolder ? parsePlan(planFolder) : { parent: null, group: null, steps: [] };
   const platform = planFolder ? platformOf(planFolder) : null;
@@ -293,6 +301,8 @@ function ticketFromOpenRow(row, mapped, lookup, metOrders, repo, handoffDir) {
     status: mapped.status,
     statusText: mapped.statusText,
     column: mapped.column,
+    awaitingOwner,
+    waitingOn: awaitingOwner ? waitingLine(row.needsCell) : null,
     needs,
     needsMet: needs.map((need) => isMet(need, lookup, metOrders)),
     parent: plan.parent,
@@ -304,7 +314,7 @@ function ticketFromOpenRow(row, mapped, lookup, metOrders, repo, handoffDir) {
   };
 }
 
-function main(argv) {
+export function main(argv) {
   const flag = (name, fallback) => {
     const at = argv.indexOf(name);
     return at === -1 || at + 1 >= argv.length ? fallback : argv[at + 1];
@@ -348,6 +358,8 @@ function main(argv) {
         status: 'DONE',
         statusText: '',
         column: 'Done',
+        awaitingOwner: false,
+        waitingOn: null,
         needs: [],
         needsMet: [],
         parent: null,
@@ -390,4 +402,6 @@ function main(argv) {
   process.exit(0);
 }
 
-main(process.argv.slice(2));
+const invokedAsScript =
+  process.argv[1] !== undefined && import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href;
+if (invokedAsScript) main(process.argv.slice(2));
