@@ -30,7 +30,9 @@ Change contracts (host and phone state):
    `npx expo run:android --binary <the 2.0.908 apk> --device 3T_SERIAL --no-bundler`,
    captured to `sessions/133/e1-install.txt` with its exit code. Expected:
    exit 0, an install line then a launch line, no prebuild or gradle line,
-   and the app foregrounds on the phone.
+   and the app foregrounded on the phone, verified by
+   `adb -s 3T_SERIAL shell "dumpsys window windows | grep mCurrentFocus"`
+   naming `com.mugtaba.athan`.
 4. Verify the stream survived (R3.1): the pid lives, the file appended lines
    timestamped after the install, and `adb devices -l` shows the same
    `transport_id` (no server restart). Then stop the stream politely

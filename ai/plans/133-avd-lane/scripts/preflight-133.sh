@@ -16,20 +16,23 @@ git merge-base --is-ancestor 39812f50 HEAD || reason "worktree is behind the pla
 # Clean tree.
 [ -z "$(git status --porcelain)" ] || reason "tree is not clean"
 
-# Origin fetched.
+# Origin fetched and contained in the lane branch.
 git fetch -q origin uat || reason "git fetch origin uat failed"
-git merge-base --is-ancestor origin/uat uat 2>/dev/null || reason "lane branch does not contain fetched origin/uat; rebase first"
+git merge-base --is-ancestor origin/uat HEAD || reason "lane branch does not contain fetched origin/uat; merge uat first"
 
 # Version not lower than planned-at.
 v_app="$(python3 -c 'import json;print(json.load(open("app.json"))["expo"]["version"])' 2>/dev/null || echo missing)"
 python3 -c 'import sys;sys.exit(0 if sys.argv[1]!="missing" and tuple(map(int,sys.argv[1].split(".")))>=(2,0,979) else 1)' "$v_app" || reason "app.json version $v_app is lower than 2.0.979"
 
-# CLI version pinned (claims measured at 58.1.10).
+# CLI version pinned in both trees (steps 2 and 4 run npx from the main tree).
 v_cli="$(node -e 'console.log(require("@expo/cli/package.json").version)' 2>/dev/null || echo missing)"
-[ "$v_cli" = "58.1.10" ] || reason "installed @expo/cli is $v_cli, not 58.1.10: STOP per the plan"
+[ "$v_cli" = "58.1.10" ] || reason "worktree @expo/cli is $v_cli, not 58.1.10: STOP per the plan"
+v_cli_main="$(cd "$HOME/repos/rn.athan.uk" && node -e 'console.log(require("@expo/cli/package.json").version)' 2>/dev/null || echo missing)"
+[ "$v_cli_main" = "58.1.10" ] || reason "main tree @expo/cli is $v_cli_main, not 58.1.10: STOP per the plan"
 
-# Emulator binary.
-emulator -version >/dev/null 2>&1 || reason "emulator binary not on PATH"
+# Emulator binary new enough.
+v_emu="$(emulator -version 2>/dev/null | awk 'NR==1{print $4}')"
+python3 -c 'import sys;sys.exit(0 if sys.argv[1] and tuple(sys.argv[1].split("."))>=("37","1","11","0") else 1)' "$v_emu" 2>/dev/null || reason "emulator on PATH is '$v_emu', older than 37.1.11.0 or absent"
 
 # No AVD of this name yet (step 1 creates it).
 emulator -list-avds 2>/dev/null | grep -qx "athan-smoke-28" && reason "AVD athan-smoke-28 already exists"
@@ -45,7 +48,7 @@ done
 
 # Queue row not DONE.
 grep -q "^| 133 |" "$wt/ai/plans/README.md" || reason "queue row 133 missing"
-sed -n '^| 133 |p' "$wt/ai/plans/README.md" | grep -q "| DONE" && reason "queue row 133 is already DONE"
+sed -n '/^| 133 |/p' "$wt/ai/plans/README.md" | grep -q "| DONE" && reason "queue row 133 is already DONE"
 
 [ "$fail" -eq 0 ] && echo "PREFLIGHT OK"
 exit "$fail"

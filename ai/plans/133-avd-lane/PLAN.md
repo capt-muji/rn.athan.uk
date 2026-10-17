@@ -55,10 +55,10 @@ dependencies, which the ruling makes lawful for this one image).
 | D3 | No new atlas file: the atlas holds what the automation cannot reach, and the AVD is driven by the same automation (agent-device, mobile-mcp, Maestro); its identity, boot command and rules live in one `e2e/README.md` section. Challenge: the repo pattern is one atlas file per device. Answer: the pattern serves tap coordinates, and an empty atlas file is stale-file bloat the records rule kills; the 3T atlas's OEM rows (launcher, widget picker) are OxygenOS and never transfer to the emulator anyway. | agent-ruled | 2026-10-17 | this section |
 | D4 | E1's vehicle is the existing prod APK at `$HOME/athan-gitree/worktrees/prod-build/android/app/build/outputs/apk/release/app-release.apk` (measured 2026-10-17: `com.mugtaba.athan`, `versionCode='1000000'`, `versionName='2.0.908'`, native-code arm64-v8a): reinstalling the same versionCode through the CLI's `adb install -r -d --user 0` keeps the owner's data and armed alarms and leaves `versionName=2.0.908` unchanged, honouring the dispatch's "its 2.0.908 install stays". | agent-ruled | 2026-10-17 | this section |
 | D5 | E3 runs with a bogus serial on the live adb server plus an isolated adb server on port 5038 holding zero devices; the 3T is never unplugged (the agent has no hands) and the main server on 5037 is never killed. If the CLI ignores `ANDROID_ADB_SERVER_PORT`, the zero-device variant is recorded VOID with the observed output, not retried against the main server. | agent-ruled | 2026-10-17 | this section |
-| D6 | E4 is proven on the 3T inside step 4 (the harness's real measurement streams are 3T logcat streams): the stream opens before the CLI install and must keep appending after it, with the adb transport id unchanged proving no server restart; an emulator-side variant is recorded opportunistically during step 3 if a stream is open there. | agent-ruled | 2026-10-17 | this section |
+| D6 | E4 is proven on the 3T inside step 4 (the harness's real measurement streams are 3T logcat streams): the stream opens before the CLI install and must keep appending after it, with the adb transport id unchanged proving no server restart. | agent-ruled | 2026-10-17 | this section |
 | D7 | E5's gate is `smoke.yaml` passing on the AVD after one throwaway launch; the disposability demonstration is an `adb uninstall` plus fresh install plus a second `smoke.yaml` pass, all on the emulator. The stale mock APK (2.0.215-era, `$HOME/athan-gitree/builds/63-step3-mock.apk`) is rejected: the 2.0.908 prod APK is current, serves the real London timetable over the emulator's NAT, and `smoke.yaml` waits for `London, UK`, which the first sync renders. | agent-ruled | 2026-10-17 | this section |
 | D8 | The lane executes steps 1 to 4 itself instead of dispatching executors: every step is exclusive machine-state work (locks, the emulator lifecycle, the phone, isolated adb servers) whose waits run in 15-second cycles inside one turn, and a worker session boundary that parks a lock or a live emulator violates the lane return rules. The reviewer dispatch at audit is unaffected. Challenge: the protocol prefers dispatching. Answer: dispatch buys parallelism and fresh context, and this work has neither to buy: the steps serialize on hardware the lock family already serializes. | agent-ruled | 2026-10-17 | this section, LOG.md |
-| D9 | The docs step (5) carries a hard gate: it runs only after lane 122's DONE merge is on `uat`, verified by grepping the landed `--binary` documentation in `e2e/README.md`, and it re-anchors both files at the post-122 `uat` sha before editing (recorded in LOG.md); if 122's landed text contradicts this plan's rules, the step returns `STOP:` for replan. | agent-ruled | 2026-10-17 | this section, step 5 |
+| D9 | The docs step (5) carries a hard gate: it runs only after lane 122's DONE merge is on `uat`, verified by reading row 122's status cell from `uat` in the main tree (`git -C <main tree> show uat:ai/plans/README.md`); once the gate passes, the step merges `uat` into `lane/133` so the worktree carries 122's landed text, then re-anchors both files at the merged sha before editing (recorded in LOG.md); if 122's landed text contradicts this plan's rules, the step returns `STOP:` for replan. | agent-ruled | 2026-10-17 | this section, step 5 |
 | D10 | Every version bump takes union max plus 1 across `origin/uat..uat` non-merge commits and every live lane branch (the lane 125 gate), and `node scripts/check-version-uniqueness.js` runs after the fetch and before every merge. | agent-ruled | 2026-10-17 | this section |
 | D11 | Heavy emulator work (image install, boot, flow replay) checks for a sibling's build first (`pgrep -f "gradle|xcod?ebuild"` plus the lock directory listing) and defers in 15-second cycles while one runs; the emulator is killed the moment its step ends, so the lane never leaves resident CPU load. | agent-ruled | 2026-10-17 | this section |
 
@@ -83,12 +83,14 @@ dependencies, which the ruling makes lawful for this one image).
 Committed at `scripts/preflight-133.sh` in this folder. The executor saves a
 copy to `$TMPDIR` and runs it from there with the worktree path as the only
 argument. It checks the worktree is on `lane/133` at or past `39812f50`, the
-tree is clean, `origin` is fetched, the version in `app.json` is not lower
-than 2.0.979, the installed `@expo/cli` is 58.1.10 (a different version is a
-`STOP:` return: the CLI claims were measured at this version), `emulator`
-37.1.11.0 or newer is on PATH, no AVD named `athan-smoke-28` exists yet, each
-anchor counts exactly 1, and the queue's row 133 is not DONE. It ends
-`PREFLIGHT OK`.
+tree is clean (a LOG.md entry written mid-phase rides its own next commit
+before the pre-flight runs), `origin` is fetched and contained in the lane
+branch, the version in `app.json` is not lower than 2.0.979, the installed
+`@expo/cli` is 58.1.10 in both this worktree and the main tree (a different
+version in either is a `STOP:` return: the CLI claims were measured at this
+version), `emulator` 37.1.11.0 or newer is on PATH, no AVD named
+`athan-smoke-28` exists yet, each anchor counts exactly 1, and the queue's
+row 133 is not DONE. It ends `PREFLIGHT OK`.
 
 ## 4. Background the executor needs
 
@@ -166,8 +168,8 @@ holds `$HOME/athan-gitree/commit.lock`; every version bump holds
 `$HOME/athan-gitree/uat.lock` in the main tree with the uniqueness gate first;
 the isolated adb server lives on port 5038 only and dies before the step ends;
 the emulator process dies before its step ends (`adb -s emulator-5554 emu
-kill`, waited in 15-second cycles, then `pkill -f qemu-system` only if the
-graceful kill fails, never touching anything else).
+kill`, waited in 15-second cycles, then `pkill -f "qemu-system.*athan-smoke-28"`
+only if the graceful kill fails, never touching any other emulator).
 
 The design review: the lane reads the ruling narrowly (smoke plus disposable
 destructive checks, one AVD, one image), the evidence burden is the five named
@@ -177,7 +179,7 @@ deliberate last step so the two e2e files never see two writers.
 **Acceptance criteria:**
 
 - [R1.1] WHEN `emulator -list-avds` runs after step 1 THE SYSTEM SHALL list `athan-smoke-28`.
-- [R1.2] WHEN `athan-smoke-28` boots THE SYSTEM SHALL reach `sys.boot_completed=1` within 180 seconds, with the elapsed seconds recorded in `sessions/133/e2-boot.txt`.
+- [R1.2] WHEN `athan-smoke-28` boots THE SYSTEM SHALL reach `sys.boot_completed=1` within 180 seconds of the emulator process appearing in `adb devices`, with the elapsed seconds recorded in `sessions/133/e2-boot.txt`.
 - [R1.3] WHEN `adb -s emulator-5554 shell wm size` and `adb -s emulator-5554 shell wm density` run on the booted AVD THE SYSTEM SHALL print `Physical size: 1080x1920` and `Physical density: 420`, equal to the 3T's measured panel.
 - [R2.1] WHEN `npx expo run:android --binary <apk> --device bogus-serial-1234 --no-bundler` runs from the main tree THE SYSTEM SHALL exit the command non-zero with output containing the CLI's advice to pass a serial from `adb devices`, captured verbatim in `sessions/133/e3a-serial-miss.txt`.
 - [R2.2] WHEN the same command runs against an isolated adb server on port 5038 holding zero devices THE SYSTEM SHALL name the zero-device state or the unmatched device in the captured output `sessions/133/e3b-zero-devices.txt`; WHEN the CLI ignores `ANDROID_ADB_SERVER_PORT` (the output still names the attached phone) THE SYSTEM SHALL record the variant VOID in the same file with the observed output, and that record satisfies this criterion.
@@ -200,8 +202,9 @@ its LOG.md entry, and its evidence under `$HOME/athan-gitree/sessions/133/`):
 4. `steps/4-serial-install-3t.md` - the logcat stream, the CLI serial install, the unchanged phone (E1, E4). Weight 3.
 5. `steps/5-harness-docs.md` - the lane's rules into the two docs files, gated on lane 122's DONE. Weight 1.
 
-Steps 1 to 4 change no repo file outside the plan folder and the queue row;
-step 5 is the only harness-docs commit. Step files carry the full contracts.
+Steps 1 to 4 change no repo file outside the plan folder, the queue row and
+the version files; step 5 is the only harness-docs commit. Step files carry
+the full contracts.
 
 ## 7. Device proof
 
@@ -238,7 +241,7 @@ None. The executor worker never pushes. The lead pushes after the reviews pass.
 | Symptom | Cause | Action |
 | --- | --- | --- |
 | `sdkmanager` reports licences not accepted | the licences dir predates this image | run `yes | sdkmanager --licenses`, retry once; a second refusal is a `STOP:` return |
-| `avdmanager create` prompts interactively | no `--force` and a profile question | answer the custom-hardware prompt with the exact config of step 1; never accept defaults that change the panel |
+| `avdmanager create` prompts interactively | no piped answer to the custom-hardware question | rerun with the piped `no` of contract 3; the config.ini write supplies the panel |
 | boot passes 180 seconds without `sys.boot_completed=1` | cold first boot of a fresh image | `adb -s emulator-5554 emu kill`, boot once more (cold boots cache); a second overrun is a `STOP:` return with the logcat tail |
 | `adb devices` shows the emulator `offline` | the emulator is still booting | poll in 15-second cycles against `getprop sys.boot_completed`; never restart the adb server |
 | Maestro cannot find the device | two devices attached (phone plus emulator) | name the emulator's adb serial on Maestro's `--device` flag exactly as `adb devices` prints it |
