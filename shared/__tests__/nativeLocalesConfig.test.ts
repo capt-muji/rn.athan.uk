@@ -135,6 +135,35 @@ describe('native strings from committed config', () => {
     );
   });
 
+  it('derives all 30 defaults when the resolution strips expo-widgets', () => {
+    const { defaultLocaleStringEntries } = require(join(ROOT, 'plugins', 'androidLocaleConfig.js')) as {
+      defaultLocaleStringEntries: (projectRoot: string, config: Record<string, unknown>) => Array<[string, string]>;
+    };
+    const stripped = {
+      ...app,
+      plugins: (app.plugins as unknown[]).filter((plugin) => !(Array.isArray(plugin) && plugin[0] === 'expo-widgets')),
+    };
+    const entries = defaultLocaleStringEntries(ROOT, stripped);
+    const defaults = new Map(entries);
+    expect(defaults.size).toBe(30);
+
+    // The ExtraTranslation invariant: every translated key gains a default twin
+    const locales = app.locales as Record<string, { android: Record<string, string> }>;
+    const translatedKeys = new Set(Object.values(locales).flatMap((entry) => Object.keys(entry.android)));
+    translatedKeys.add('NSLocationWhenInUseUsageDescription');
+    translatedKeys.add('NSUserNotificationsUsageDescription');
+    expect(translatedKeys.size).toBe(30);
+    for (const key of translatedKeys) {
+      expect(defaults.has(key)).toBe(true);
+    }
+
+    // The android kinds' twins read the same en gallery bytes as the iOS-only kinds'
+    for (const widget of widgetKinds()) {
+      expect(defaults.get(`${resourceName(widget.name)}_display_name`)).toBe(NATIVE.en.gallery[widget.displayName]);
+      expect(defaults.get(`${resourceName(widget.name)}_description`)).toBe(NATIVE.en.gallery[widget.description]);
+    }
+  });
+
   it('builds the Android locales_config with the six locales', () => {
     const pluginPath = join(ROOT, 'plugins', 'androidLocaleConfig.js');
     expect(existsSync(pluginPath)).toBe(true);
