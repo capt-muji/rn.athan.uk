@@ -13,7 +13,8 @@ ticket's close (published after this attempt's step 1 pinned `58.0.13`, the newe
 moment), so the next re-pin starts from 58.0.14 or newer.
 
 **Landed set (2.0.908, merge `9dd4eb6a`).** `expo ~58.0.13` with its `bundledNativeModules`
-delta (eight direct pins moved, two transitive followed), `react-native` 0.88.0. All three
+delta (eight direct pins moved, three transitive followed: `babel-preset-expo`,
+`expo-application` 58.1.1 to 58.1.2, `expo-modules-core`), `react-native` 0.88.0. All three
 patches regenerated whole at `expo-background-task+58.0.11`, `expo-location+58.0.17` and
 `expo-widgets+58.0.20`, no hunk hand-merged; `didRegisterTaskForTesting` and `mLastAzimuth`
 left the patches; the vacuous `local-maven-repo` check died; the guard suite
@@ -72,17 +73,17 @@ stay at `^7.29.x` and the rider is re-attempted at every re-pin.
   latest rolls back alone, one version at a time, to an exact pin with no local workaround,
   until a newer one ships.
 - **A2. The Babel 8 blocker** is the rider above. It is this row's second job.
-- **A3. Deliberate divergences from Expo's pin set** (installed `expo@58.0.6`, riding the `next`
-  tag on the owner's 2026-10-09 ruling):
-  `react-native` 0.88.0-rc.3 against the stable pin (the owner takes the latest release
-  candidate). `@expo/ui` and `expo-widgets` sit at `58.0.14`, no longer exact-pinned: the 58.0.5
-  pin that protected the Android widget stub (row 26) broke iOS at dyld launch on this re-pin,
-  because the 58.0.5 ExpoUI binary references a `_uiRuntime` symbol the new ExpoModulesCore no
-  longer exports. Upstream closed the trap: the 58.0.14 stub exports `memo` as a passthrough,
-  and the loaded-bundle suite is green. Durable lesson: `@expo/ui`'s iOS framework tracks
-  ExpoModulesCore's Swift ABI, so the pair moves with the SDK, never against it.
+- **A3. Deliberate divergences from Expo's pin set** (at the 2026-10-16 stable re-pin,
+  `expo@58.0.13`): `react-native` 0.88.0 stable now matches the SDK's own pin, so no
+  divergence survives there. `@expo/ui` and `expo-widgets` are back to exact pins (`58.0.20`
+  each, `package.json`): the preview-era 58.0.5 pin that once protected the Android widget
+  stub (row 26) broke iOS at dyld launch because the 58.0.5 ExpoUI binary references a
+  `_uiRuntime` symbol the newer ExpoModulesCore no longer exports. Upstream closed the trap:
+  the stub now exports `memo` as a passthrough, and the loaded-bundle suite is green. Durable
+  lesson: `@expo/ui`'s iOS framework tracks ExpoModulesCore's Swift ABI, so the pair moves
+  with the SDK, never against it.
 - **A4. `@expo/log-box` is invisible to Expo checks**: it is not in `bundledNativeModules.json`,
-  so no Expo check reports it. It sits at `~58.0.5` (`package.json:34`) on the `^58.0.5` peer
+  so no Expo check reports it. It sits at `~58.0.12` (`package.json`) on the `^58.0.12` peer
   range that `expo-router` and `@expo/metro-runtime` declare. Move it by that peer range.
 - **A5. The commit order that kept the tree green.** One commit: the SDK packages, the rebuilt
   patches and the type fixes the bump forces (the pre-commit hook runs `tsc`). Then React,
