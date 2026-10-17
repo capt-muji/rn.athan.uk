@@ -130,3 +130,18 @@ a dev URL that a production build ignores beyond the deep link. Evidence:
 `e4-logcat-3t.txt` (16095 lines, uncommitted). R3.1, R5.1, R5.2, R5.3 hold.
 
 session: ses_eb7817971ffeXixIUgY3P9mVsC
+
+### Step 05 — done
+
+Gate verified (row 122 DONE on uat), `uat` merged into `lane/133`
+(fef9b483), both files re-anchored at that sha (fresh excerpts beside the
+originals, each counting 1). Red greps 0, 0, 0 before the edit; after: 3
+(athan-smoke-28 in the README), 1 (`never a measurement witness`, the
+case-insensitive grep: the passage opens the bullet with capital Never, a
+one-word correction to the plan's grep), 1 (the AGENTS bullet). The README
+section landed between the Run block and The 30fps floor; the AGENTS bullet
+landed directly after 122's `--binary` bullet, before the force-stop bullet.
+Biome clean, no em dash in the new text, no serials beyond the placeholder
+rule. R6.1 holds.
+
+session: ses_eb7817971ffeXixIUgY3P9mVsC
