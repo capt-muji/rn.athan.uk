@@ -160,29 +160,16 @@ describe('config', () => {
 });
 
 describe('app.config android resolution', () => {
-  const resolveAndroid = (widgetsEnv: string | undefined): { plugins?: unknown[] } => {
-    const previous = process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
-    if (widgetsEnv === undefined) delete process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
-    else process.env.EXPO_PUBLIC_ANDROID_WIDGETS = widgetsEnv;
-    let resolved: { plugins?: unknown[] } | undefined;
-    jest.isolateModules(() => {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const mod = require('../../app.config');
-      resolved = mod.default({ platform: 'android' });
-    });
-    if (previous === undefined) delete process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
-    else process.env.EXPO_PUBLIC_ANDROID_WIDGETS = previous;
-    return resolved as unknown as { plugins?: unknown[] };
-  };
-
   const resolveAndroidRoute = (
     widgetsEnv: string | undefined,
     argvTokens: readonly string[],
     platform: string | undefined
   ): { plugins?: unknown[]; ios?: unknown } => {
     const previousWidgets = process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
+    const previousOverride = process.env.EXPO_WIDGETS_ANDROID;
     if (widgetsEnv === undefined) delete process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
     else process.env.EXPO_PUBLIC_ANDROID_WIDGETS = widgetsEnv;
+    delete process.env.EXPO_WIDGETS_ANDROID;
     const previousArgv = process.argv;
     process.argv = ['/usr/local/bin/node', 'prebuild', ...argvTokens];
     let resolved: { plugins?: unknown[]; ios?: unknown } | undefined;
@@ -193,6 +180,8 @@ describe('app.config android resolution', () => {
       });
     } finally {
       process.argv = previousArgv;
+      if (previousOverride === undefined) delete process.env.EXPO_WIDGETS_ANDROID;
+      else process.env.EXPO_WIDGETS_ANDROID = previousOverride;
       if (previousWidgets === undefined) delete process.env.EXPO_PUBLIC_ANDROID_WIDGETS;
       else process.env.EXPO_PUBLIC_ANDROID_WIDGETS = previousWidgets;
     }
@@ -200,11 +189,11 @@ describe('app.config android resolution', () => {
   };
 
   it('registers the locale config with widgets enabled', () => {
-    expect(resolveAndroid('1').plugins).toContain('./plugins/androidLocaleConfig');
+    expect(resolveAndroidRoute('1', [], 'android').plugins).toContain('./plugins/androidLocaleConfig');
   });
 
   it('registers the locale config on a widgets-off build too', () => {
-    expect(resolveAndroid(undefined).plugins).toContain('./plugins/androidLocaleConfig');
+    expect(resolveAndroidRoute(undefined, [], 'android').plugins).toContain('./plugins/androidLocaleConfig');
   });
 
   it('registers the locale config on the real CLI route: platform undefined, android argv, widgets off', () => {

@@ -46,6 +46,12 @@ const setEnv = (value: string | undefined) => {
 
 afterEach(() => {
   setEnv(undefined);
+  delete process.env.EXPO_WIDGETS_ANDROID;
+});
+
+beforeEach(() => {
+  // the ambient shell must never override a suite's own resolution route
+  delete process.env.EXPO_WIDGETS_ANDROID;
 });
 
 // =============================================================================
