@@ -565,9 +565,10 @@ export const deleteLegacyAndroidAudioChannels = async () => {
  * Clears every notification the app has delivered into the iOS Notification Center.
  *
  * Android's presentation delegate replaces in place at post time, so at most one entry is ever
- * visible; iOS has no post-time hook, so every app open empties the center instead and a
- * sleeper never wakes to a stack. Delivered notifications only: pending requests, identifiers
- * and channels are untouched, and the background task never runs it.
+ * visible; iOS has no post-time hook, so every app open empties the center instead (deliveries
+ * that land while nobody opens the app still stack on the lock screen until the first open).
+ * Delivered notifications only: pending requests, identifiers and channels are untouched, and
+ * the background task never runs it.
  */
 export const clearDeliveredNotifications = async () => {
   if (Platform.OS !== 'ios') return;
@@ -576,6 +577,9 @@ export const clearDeliveredNotifications = async () => {
     await withNativeTimeout(Notifications.dismissAllNotificationsAsync(), 'clearing the delivered notifications');
     logger.info('NOTIFICATION: Cleared the delivered notifications');
   } catch (error) {
+    // A refused clear can never leave an orphan alarm behind, so its timeout must not reopen
+    // the refresh gate hours later on an unrelated scheduling pass
+    takeNativeCallTimedOut();
     logger.error('NOTIFICATION: Failed to clear the delivered notifications, carrying on:', error);
   }
 };

@@ -122,6 +122,37 @@ build: the resume's prod return is mandatory before DONE.
 
 session: (the lane lead, in-session)
 
+The glass leg, 2026-10-17 06:45-07:15: the phone freed (lane 111 DONE), the claim gone. The
+cycle per the resume note, devicectl-only (every agent-device interaction treated as a
+potential open): seed launch 06:53:25, terminate 06:53:43, and the DELIVERY ON GLASS captured
+by a wall-clock-synced screenshot at 06:55:03 - the banner "TIME SENSITIVE / Sunrise in 30 /
+now" (the armed Sunrise reminder firing 06:55:00 with the app closed). The neutral open at
+06:55:07 (devicectl launch). The center-zero read is a RECORDED VOID: three gesture routes
+failed on the phone tonight (the sibling-claim era, the fling over home, the fling over the
+app - the last leaves the screen untouched, both screenshots pixel-identical); the mechanism's
+zero half stands on the simulator's complete logged pair, and the owner's eyeball is the
+glass verdict per the repo's own iOS doctrine. The wake-time stack limitation (overnight
+deliveries still stack until the first open) is recorded in the row and the corrected
+docblock.
+
+The audit, 2026-10-17 ~07:00: three passes (plan-conformance, blind, threading/lifecycle).
+Plan-conformance: conforms, two NICE (the Platform.OS double-default, the persistent
+mockReturnValue) - both applied. Threading: one SHOULD (a timed-out clear arms
+nativeCallTimedOut, which the lock consumes hours later on an unrelated pass - a false
+timeout log and a gate reopen that resets a fresh stamp) - CONFIRMED and fixed: the clear's
+catch consumes its own flag via takeNativeCallTimedOut(), pinned red-first by the timeout
+test's new assertion. Blind: one SHOULD (the docblock promised "a sleeper never wakes to a
+stack", which open-time clearing cannot deliver overnight) - CONFIRMED and fixed by scoping
+the docblock to "every app open empties the center"; the threadIdentifier suggestion REJECTED
+(the row's own ground: one thread equals the app-level group iOS already gives); one SHOULD
+on the tasks fence stubbing the whole stores path - CONFIRMED and fixed with a real-path
+fence line in the rescheduleAllNotificationsFromBackground suite plus the task-body title
+narrowed; one NICE (the unused export) REJECTED on sibling consistency
+(deleteLegacyAndroidAudioChannels carries the same shape). The drive-by: lane 125's
+check-version-uniqueness.js failed biome's useTemplate in this tree - four template-literal
+fixes applied to unblock the hook, noted in the commit message.
+
+
 
 Lane 111's overnight capture scripts hold the physical XS until morning, and the Release
 install is instrumented and foregrounded: never kill, relaunch or reinstall over it. The
