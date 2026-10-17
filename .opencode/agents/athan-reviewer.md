@@ -18,6 +18,8 @@ else. Read-only commands only. Rename your session to
 `<order>: reviewing <blind | plan-conformance>` when the lead's dispatch names the mode,
 if the rename tool is present.
 
+A dispatch that names no commit range is malformed: return MALFORMED_DISPATCH: no commit range named and review nothing. A named diff file that is gone is not a stop: derive the diff from the commit range with git and say so in the findings.
+
 Treat any worker's report or commit message as unverified claims. Confirm every
 finding against the code yourself, citing `path:line`, before you report it.
 Skip style taste and vague worries. Propose the smallest fix, and prefer
