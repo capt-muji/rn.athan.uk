@@ -44,7 +44,7 @@ function readConfig(file) {
   return config;
 }
 
-export function parseQueue(markdown) {
+function parseQueue(markdown) {
   const open = [];
   const doneRows = [];
   const doneOrders = [];
@@ -79,7 +79,7 @@ export function parseQueue(markdown) {
   return { open, doneRows, doneOrders, settled };
 }
 
-export function mapStatus(statusCell) {
+function mapStatus(statusCell) {
   const cell = statusCell.trim();
   const matched = STATUS_MAP.find(([phrase]) => cell.startsWith(phrase));
   const rendered = !closedStatus(cell);
@@ -95,7 +95,7 @@ export function mapStatus(statusCell) {
   return { status: phrase, column, cursor, statusText: collapse(cell.slice(phrase.length)).slice(0, 140), rendered };
 }
 
-export function parseNeeds(needsCell) {
+function parseNeeds(needsCell) {
   const orders = (needsCell.match(/\d+/g) ?? []).map((digit) => Number.parseInt(digit, 10));
   return [...new Set(orders)].sort((a, b) => a - b);
 }
@@ -282,7 +282,7 @@ function ensureState(stateDir) {
   if (!existsSync(ignore)) writeFileSync(ignore, '*\n');
 }
 
-export function ticketFromOpenRow(row, mapped, lookup, metOrders, repo, handoffDir) {
+function ticketFromOpenRow(row, mapped, lookup, metOrders, repo, handoffDir) {
   const needs = parseNeeds(row.needsCell);
   const awaitingOwner = mapped.status === 'OWNER-LED';
   const planFolder = findPlanFolder(repo, row.order);
