@@ -65,6 +65,6 @@
   },
   {
     "version": "2.0.940",
-    "reason": "2026-10-17 cross-lane collision predating this gate (rows 111 and 125, both merged by uat a0b84339)"
+    "reason": "2026-10-17 cross-lane collision predating the gate merge (the stopped executor docs commit beside lane 120 dropped-staging commits)"
   }
 ]
