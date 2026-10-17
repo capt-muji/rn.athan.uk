@@ -1,7 +1,0 @@
-appId: com.mugtaba.athan
-name: 131-xs-channel-smoke
----
-- launchApp
-- extendedWaitUntil:
-    visible: "probes running"
-    timeout: 15000
