@@ -26,3 +26,10 @@
 - Executor incident, agent-ruled 2026-10-17 01:52: the dispatched executor (parked mid-turn since ~23:39, guard-4 case 4) woke, found this lane mid-step-1, and STOPped rather than double-execute. Ruling: this lane carries steps 1 to 3; the executor's session is spent; its docs commit 93c05eb2 (2.0.940, the planner's lock-incident LOG line, hook green `Tests: 2 skipped, 5715 passed, 5717 total`, coverage 100%) rides this step's merge unmerged-ahead. Its census evidence accepted into the allowlist classification above. It released commit.lock and version.lock at its stop.
 - Lock note for the record: commit.lock and version.lock sat 23:39 to 01:52 held by that paused-but-live session with no OS process visible; process liveness cannot distinguish parked from dead, which is the guard-4 lesson.
 session: lane-125-lead (in-lane execution; worker dispatch returned STOP on the duplicate)
+
+### Step 01 repair - the merge-time false positive
+
+- The first step-1 merge attempt was refused by the new pre-merge-commit hook itself: git does not export MERGE_HEAD to hooks, so the env-only check never fired, the merge-in-flight worktree counted as a staged candidate, and the gate self-collided the merge with the lane's own tip. The repair reads the MERGE_HEAD ref as well as the env var; a new test ("skips the candidate while the MERGE_HEAD ref exists without the env var", red against the pre-fix script, green after) covers the ref path.
+- A lint-staged failed-run restore had earlier eaten the tracked-file half of the first step-1 commit (recovered from the lint-staged backup stash); the partial commit created a real same-lane missed bump at 2.0.940, which the gate itself refused at the amend - the gate's first two catches were both this ticket's own commits.
+- The versionName sync debt (2.0.937 through 2.0.940) surfaced as the lockstep failure inside the merge's own validate and was synced to 2.0.941. One sync ran without build.lock under a recorded ruling: the lock's live holder was an iOS simulator test session that cannot read android/app/build.gradle, and no Android build can start while it holds the lock.
+session: lane-125-lead

@@ -38,6 +38,15 @@ const commitVersion = (sha) => {
   }
 };
 
+const mergeHeadRefExists = () => {
+  try {
+    git('rev-parse', '-q', '--verify', 'MERGE_HEAD');
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 let refCount = 1;
 const shas = new Set(
   (() => {
@@ -73,8 +82,12 @@ for (const sha of shas) {
   byVersion.set(version, held);
 }
 
+// Git does not export MERGE_HEAD to hooks, so the check reads the ref too:
+// concluding a merge runs the pre-commit hook with the worktree already
+// holding the incoming version while HEAD is still the base side.
+const mergeInFlight = Boolean(process.env.MERGE_HEAD) || mergeHeadRefExists();
 const headVersion = commitVersion('HEAD');
-if (headVersion !== null && !process.env.MERGE_HEAD) {
+if (headVersion !== null && !mergeInFlight) {
   const worktree = JSON.parse(fs.readFileSync(path.join(CWD, 'app.json'), 'utf8')).expo.version;
   if (worktree !== headVersion) {
     const held = byVersion.get(worktree) ?? [];
