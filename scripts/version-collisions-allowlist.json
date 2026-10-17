@@ -66,5 +66,9 @@
   {
     "version": "2.0.940",
     "reason": "2026-10-17 cross-lane collision predating the gate merge (the stopped executor docs commit beside lane 120 dropped-staging commits)"
+  },
+  {
+    "version": "2.0.969",
+    "reason": "2026-10-17 missed bump on uat: the ticket-125 row-dedup commit is titled 2.0.970 but its app.json stayed 2.0.969, colliding with ticket 111's DONE commit"
   }
 ]
