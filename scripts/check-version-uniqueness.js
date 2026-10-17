@@ -27,6 +27,9 @@ const flag = (name, fallback) => {
   return i >= 0 ? args[i + 1] : fallback;
 };
 const BASE = flag('--base', 'origin/uat');
+// The merge hook passes this: at pre-merge-commit time no MERGE_HEAD ref
+// exists on disk yet, and the worktree already holds the incoming version.
+const NO_CANDIDATE = args.includes('--no-candidate');
 const ALLOWLIST = flag('--allowlist', path.join(__dirname, 'version-collisions-allowlist.json'));
 
 const git = (...cmdArgs) => execFileSync('git', cmdArgs, { cwd: CWD, encoding: 'utf8' });
@@ -85,7 +88,7 @@ for (const sha of shas) {
 // Git does not export MERGE_HEAD to hooks, so the check reads the ref too:
 // concluding a merge runs the pre-commit hook with the worktree already
 // holding the incoming version while HEAD is still the base side.
-const mergeInFlight = Boolean(process.env.MERGE_HEAD) || mergeHeadRefExists();
+const mergeInFlight = NO_CANDIDATE || Boolean(process.env.MERGE_HEAD) || mergeHeadRefExists();
 const headVersion = commitVersion('HEAD');
 if (headVersion !== null && !mergeInFlight) {
   const worktree = JSON.parse(fs.readFileSync(path.join(CWD, 'app.json'), 'utf8')).expo.version;

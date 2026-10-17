@@ -62,5 +62,9 @@
   {
     "version": "2.0.936",
     "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.940",
+    "reason": "2026-10-17 cross-lane collision predating the gate merge (the stopped executor docs commit beside lane 120 dropped-staging commits)"
   }
 ]
