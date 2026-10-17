@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Preflight for ticket 131. Save a copy to $TMPDIR and run it from there, with
-# 3T_SERIAL and IPHONE_UDID exported to the real device identifiers.
+# SERIAL_3T and IPHONE_UDID exported to the real device identifiers.
 set -u
 REPO="${REPO:-$HOME/repos/rn.athan.uk}"
 PLAN=ai/plans/131-six-readings
@@ -42,8 +42,8 @@ command -v pymobiledevice3 >/dev/null 2>&1 || fail "pymobiledevice3 missing"
 command -v agent-device >/dev/null 2>&1 || fail "agent-device missing"
 xcrun devicectl list devices >/dev/null 2>&1 || fail "devicectl unavailable"
 
-[ -n "${3T_SERIAL:-}" ] || fail "3T_SERIAL not exported"
-adb devices | grep -qw "$3T_SERIAL" || fail "3T $3T_SERIAL not visible to adb"
+[ -n "${SERIAL_3T:-}" ] || fail "SERIAL_3T not exported"
+adb devices | grep -qw "$SERIAL_3T" || fail "3T $SERIAL_3T not visible to adb"
 [ -n "${IPHONE_UDID:-}" ] || fail "IPHONE_UDID not exported"
 xcrun devicectl list devices 2>/dev/null | grep -q "$IPHONE_UDID" \
   || echo "NOTE: XS not connected yet; step 2 needs it attached"
