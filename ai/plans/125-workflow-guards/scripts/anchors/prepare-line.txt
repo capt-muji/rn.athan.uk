@@ -1,3 +1,0 @@
-    "prepare": "husky",
-    "husky": "husky",
-    "postinstall": "patch-package",
