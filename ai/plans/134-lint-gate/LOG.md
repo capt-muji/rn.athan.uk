@@ -166,9 +166,53 @@ Scratch proof worktree `$HOME/athan-gitree/worktrees/plan-134` (detached at
   re-dispatch; red and green stay as the ledger's recorded evidence. Step
   1's version renumbered to 2.0.1007 (this repair commit takes 2.0.1006).
 
+### Step 02 - build-bay green proof at the merged fix (2026-10-17, lane-run)
+
+Lane-run per D134.5, from merged uat content `087d30ff` (2.0.1007), scratch
+worktree `$HOME/athan-gitree/worktrees/plan-134` detached there,
+`node_modules` symlinked after the yarn.lock sha256 hashes verified equal,
+recipe `bash $HOME/athan-gitree/sessions/134/red-green-134.sh green` under
+`build.lock`, TMPDIR isolated. The worktree and its TMPDIR were removed
+after the run; the APK died with the worktree (badging read recorded below,
+nothing installed anywhere, no adb command run).
+
+- `.env` written by the recipe from `.env.example` minus every
+  `EXPO_PUBLIC_(ENV|API_KEY|IOS_WIDGETS|ANDROID_WIDGETS)` line: the printed
+  bytes show only `EXPO_PUBLIC_IOS_APP_ID`, `EXPO_PUBLIC_ANDROID_PACKAGE`
+  and the local env/key pair.
+- Prebuild log env export line: `env: export EXPO_PUBLIC_ANDROID_PACKAGE
+  EXPO_PUBLIC_IOS_APP_ID` (byte-shape identical to the owner's failing
+  fleettest prebuild.log).
+- `values/locales_defaults.xml` after prebuild: 30 `<string>` entries
+  (planning red at `80f707d5`: ABSENT).
+- `values-b+ar/strings.xml`: 30 `<string>` entries.
+- Gradle `./gradlew assembleRelease --no-daemon
+  -PreactNativeArchitectures=arm64-v8a`: exit 0, `> Task :app:lintVitalRelease`
+  at log line 2202 (executed, no FAILED, no SKIPPED), zero ExtraTranslation
+  lines (planning red: 153 lines, 150 errors, 30 unique keys), `BUILD
+  SUCCESSFUL in 8m 14s`, APK produced.
+- `aapt2 dump badging` (build-tools 37.0.0, existence checked): `package:
+  name='com.mugtaba.athan.fleettest' versionCode='1000000'
+  versionName='2.0.1007' ...`.
+- Logs kept at `$HOME/athan-gitree/sessions/134/logs/green-{prebuild,gradle}.log`
+  (overwriting the planning-era scratch run of the same names; the planning
+  run's numbers are transcribed above and in the Resume 2 section).
+
+R3.1 proven at the merged fix; R3.2 already recorded by the planning red.
+
+- The executor's finishing session truncated twice at commit boundaries
+  (its background hook outlived its turn); the lane carried each wait and
+  verified every artefact by script. The first step-1 commit `1d520426`
+  omitted the staged version files (message 2.0.1007, content 2.0.1006);
+  the executor reset, restaged all eight files and recommitted as
+  `7453d2a9` with both files at 2.0.1007 and the hook green
+  (`Tests: 2 skipped, 5743 passed, 5745 total`). The lane merged it as
+  `087d30ff` and synced the main tree's `android/app/build.gradle`
+  versionName to 2.0.1007.
+
 session: self (lane, resume 2)
 
-### Step 01 - the config branch and the plugin defaults (STOPPED at the break gate)
+### Step 01 - the config branch and the plugin defaults
 
 Executor session ses_eb41dee53ffexozXqvEmfceAAo, 2026-10-17, worktree
 `$HOME/athan-gitree/worktrees/lane-134`.
@@ -222,3 +266,57 @@ Executor session ses_eb41dee53ffexozXqvEmfceAAo, 2026-10-17, worktree
   lane/134 and the child branch deleted.
 
 session: ses_eb41dee53ffexozXqvEmfceAAo
+
+#### Resume (after the D134.10 detector repair)
+
+Executor session ses_eb415b8c6ffenYz7aBaiPXrGEG, 2026-10-17, same worktree.
+Red and green stand as recorded above; nothing was reverted or re-run red.
+
+- Preflight rerun from a `$TMPDIR` copy under /bin/bash: `PREFLIGHT OK` on
+  lane/134 at `57fe44cf`, and again on the fresh branch
+  `fix/134-locale-plugin-every-android` (six anchor counts all 1).
+- The verified diff `$HOME/athan-gitree/sessions/134/step1/step1-unfinished.patch`
+  applied clean; read cold against contracts A and B and the three red-test
+  snippets: every byte matches, only the five step files touched.
+- Green: `23 passed, 23 total`, `24 passed, 24 total`, `5 passed, 5 total`
+  (unit selector, watchman off); `npx tsc --noEmit` exit 0;
+  `npx biome check . --error-on-warnings` exit 0 (452 files).
+- Break gate, repaired script, run verbatim from the worktree root: all seven
+  mutants killed, last line `ALL AS EXPECTED: 7`; `git status --porcelain`
+  afterwards listed only the five step files.
+- Version 2.0.1007 under version.lock: fetch clean,
+  `VERSIONS OK 7 commits across 4 refs, 0 unreadable, no shared version`
+  (2.0.936 grandfathered), app.json then package.json set by value-only sed.
+- Ticket row set to `IN PROGRESS, step 1`.
+- First commit `1d520426` was defective: the add-by-name list omitted app.json
+  and package.json, so the commit's content held 2.0.1006 under a 2.0.1007
+  message (the lead caught it; nothing merged). The lead-ordered
+  `--amend --no-edit` could not run: the uniqueness gate reads the
+  still-reachable defective commit and refused with
+  `VERSION COLLISION 2.0.1006: 1d520426 f9ad3a5a`. Repaired by mechanism only:
+  under commit.lock, `git reset --soft 57fe44cf` (dropping the unmerged
+  defective tip; its staged tree was already the intended final one) and a
+  fresh `git commit -F` with the same message - the amend reproduced exactly,
+  no gate bypassed, no shared ref touched, the dropped sha stays in the reflog.
+- Final commit `7453d2a9`
+  `2.0.1007 - fix(config): the locale-config plugin rides every android resolution, defaults cover the stripped-widgets case`:
+  8 files (five step files, app.json, package.json, queue row), hook green,
+  `Tests: 2 skipped, 5743 passed, 5745 total`, coverage `Statements 100%
+  (5401/5401)`, `Branches 100% (2326/2326)`, `Functions 100% (1130/1130)`,
+  `Lines 100% (4838/4838)`; `git show HEAD:app.json` and `HEAD:package.json`
+  both print 2.0.1007; `git status --porcelain` empty afterwards; commit.lock
+  and version.lock released. No merge: the lane merges in the main tree.
+
+session: ses_eb415b8c6ffenYz7aBaiPXrGEG
+
+### Step 01 - completed (2026-10-17)
+
+- Re-dispatch applied the saved patch; green suites 23/24/5 passed, tsc and
+  biome exit 0, break script `ALL AS EXPECTED: 7`.
+- Commit `7453d2a9` at 2.0.1007 (first attempt `1d520426` omitted the version
+  files; reset and recommitted), hook `Tests: 2 skipped, 5743 passed, 5745
+  total`, coverage `Statements 100% (5401/5401)`, `Branches 100% (2326/2326)`,
+  `Functions 100% (1130/1130)`, `Lines 100% (4838/4838)`.
+- Merged as `087d30ff`.
+
+session: ses_eb408a78cffeTCB1Csr97qXp5S
