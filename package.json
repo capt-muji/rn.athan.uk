@@ -1,6 +1,6 @@
 {
   "name": "athan",
-  "version": "2.0.1002",
+  "version": "2.0.1003",
   "type": "commonjs",
   "private": true,
   "main": "expo-router/entry",
