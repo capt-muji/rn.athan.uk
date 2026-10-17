@@ -8,7 +8,7 @@
  * own history.
  */
 import { execFileSync, spawnSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -40,8 +40,11 @@ type Repo = {
   worktreeVersion: (version: string) => void;
 };
 
+const fixtureDirs: string[] = [];
+
 const makeRepo = (): Repo => {
   const dir = mkdtempSync(join(tmpdir(), 'uniq-'));
+  fixtureDirs.push(dir);
   writeFileSync(join(dir, 'app.json'), '{"expo": {"version": "1.0.0"}}');
   git(dir, 'init', '-q', '-b', 'main');
   git(dir, 'add', '-A');
@@ -69,6 +72,10 @@ const run = (repo: Repo, allowlist?: string, env: Record<string, string> = {}) =
     encoding: 'utf8',
     env: { ...cleanEnv(), ...env },
   });
+
+afterEach(() => {
+  for (const dir of fixtureDirs.splice(0)) rmSync(dir, { recursive: true, force: true });
+});
 
 describe('check-version-uniqueness', () => {
   it('fails when two branches carry one version', () => {
@@ -115,6 +122,22 @@ describe('check-version-uniqueness', () => {
     repo.commit('1.0.1', 'on x');
     git(repo.dir, 'checkout', '-q', 'main');
     repo.worktreeVersion('1.0.1');
+    git(repo.dir, 'add', 'app.json');
+
+    const out = run(repo);
+    expect(out.status).toBe(1);
+    expect(out.stdout).toMatch(/VERSION COLLISION 1\.0\.1: \w+ staged/);
+  });
+
+  it('reads the staged blob, not the worktree, so a staged collision cannot hide behind a later edit', () => {
+    const repo = makeRepo();
+    repo.branch('x');
+    repo.commit('1.0.1', 'on x');
+    git(repo.dir, 'checkout', '-q', 'main');
+    // The colliding bump is staged; the worktree then moves past it.
+    repo.worktreeVersion('1.0.1');
+    git(repo.dir, 'add', 'app.json');
+    repo.worktreeVersion('1.0.2');
 
     const out = run(repo);
     expect(out.status).toBe(1);
