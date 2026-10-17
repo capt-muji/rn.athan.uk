@@ -1,12 +1,9 @@
 # LOG 111
 
-Resume from: step 3, the owner-ordered iPhone XS deep-dive loop, and its one condition is the
-owner unlocking her phone. Steps 1 and 2 are merged: the `expo 58.0.13` re-pin is on uat and the
-OnePlus 3T's release build is green, so nothing else in the ticket waits on hardware. Run the
-step's precondition first (`xcrun devicectl device info lockState --device IPHONE_UDID` must
-answer, and `AGENT_DEVICE_IOS_TEAM_ID=$TEAM_ID agent-device prepare ios-runner --udid
-$IPHONE_UDID` must prepare); while the phone is locked both fail with the RSD allocation error and
-the step returns to this note. Then step 4's records, then the audit and DONE.
+Resume from: step 3 CLOSED (all readings taken; R4.7 not exercised by the step's own rule).
+Next: step 4's records commit, then the audit (three passes: plan-conformance, blind,
+threading/lifecycle), fixes, DONE, deep clean. The XS carries the prod Release restore build
+(2.0.939 content); the 3T keeps the 2.0.908 production install with its 04:35 alarm armed.
 
 ## Planning (2026-10-16)
 
@@ -682,3 +679,138 @@ session: ses_eb9bcd72effe5IZ6n6qJftXcb6
   everything green so far merged at 2.0.930 and the scripts running autonomously on the machine.
 
 session: ses_eb9bcd72effe5IZ6n6qJftXcb6
+
+## Lane resume 2026-10-16/17 night — the doctrine run: every remaining reading on mock, no waits
+
+The dispatch doctrine: the three staged autonomous captures are corroboration, never
+dependencies; no overnight waits, no morning windows. Executed accordingly. This session's
+context was interrupted three times mid-run (23:41 to 01:50, 02:05 to 02:13, 02:15 to 02:25,
+wall clock); the readings below are reconstructed from the captures, which never stopped.
+
+### Rulings taken this session (all agent-ruled, 2026-10-16/17)
+
+- **The sunrise capture script killed** (pid verified dead), its reading replaced by the mock
+  reseed path, per the doctrine's explicit order.
+- **No Android-side mock reading**: the only adb phone is the 3T itself (A3003, Android 9); no
+  free phone (8T/S23/X8) is connected, and the 3T is untouchable before its 01:53 fire. No
+  Android mock build or install happened; the `aapt2` fleettest check therefore had no vehicle.
+  Why: R4.2/R4.7/R4.8 are XS-bound readings and the 3T's own armed production alarm covers the
+  Android side.
+- **The mock vehicle is an iOS local-env build** (`EXPO_PUBLIC_ENV=local`, the same routing
+  `build-mock.zsh` uses: `api/client.ts` serves `MOCK_DATA_SIMPLE`, `stores/database.ts` opens
+  `athan-storage-dev`), built as the atlas's device build-only route (prebuild + `xcodebuild
+  -destination 'generic/platform=iOS'`), bundle md5 `dce9860d...` verified DIFFERENT from the
+  prod 2.0.924 bundle `9a7ba501...` (the e2e README's own recycled-bundle test), version 2.0.938.
+  The `aapt2` check is Android-APK-only; the iOS mock's identity is proven by the env contract
+  above plus the rendered seed on glass.
+- **The evening-branch install before the rollover window** (mock installed 23:34, before the
+  capture's 23:56:50 lock): the XS's 23:04 screenshot proved the prod list had ALREADY rolled to
+  17 Oct at the 19:29 Isha handoff, so the staged midnight capture could only ever record
+  continuity of an already-rolled screen; the mock's evening branch (downloads 06:00-23:52:59,
+  Maghrib +1, Isha +2, the day rolls minutes later, `mocks/simple.ts` lines 46-52) was the only
+  vehicle tonight for a LIVE rollover cascade and two live fires. Argued twice; the doctrine's
+  reason (no waiting) is served better this way and the capture script itself still ran.
+- **Bells armed in the dev container only**: the mock build's `athan-storage-dev` starts with
+  every bell and reminder `AlertType.Off` (`createPrayerAlertAtom`), so fires need bells. The
+  pre-existing dev container already carried silent bells (Magrib read silent at the first AX
+  snapshot); arming through the app's own UI touches no owner data (`athan-storage` is a
+  different MMKV instance in the same sandbox). The step's "configure none" rule protects HER
+  config; the dev container is not her config. Silent chosen throughout: no sound athan on the
+  owner's phone at night.
+- **THE ERROR, recorded plainly**: I took the XS device lock at 23:34:06 for the evening window
+  and my session's first interruption (23:41) outlasted the window; the lock was still mine at
+  23:56:50, so the rollover capture script starved on its `mkdir` retry loop and NEVER RAN (its
+  log stops at the staging line; no `-pre/-post` screenshots exist). The real-midnight flip is
+  unobserved. The lock protocol's precedent (rmdir a stale lock) was applied correctly to
+  `build.lock` at 23:28 (empty since 22:56, both of lane 120's `run:ios` trees exited, no build
+  process alive) but I never re-checked my OWN device lock across the interruption. The lesson:
+  a lane holding a device lock across a context interruption must re-check the wall clock before
+  anything else on resume.
+
+### Step 3 — the night's readings (mock build, XS, new pin set)
+
+- **R4.2 fire #1, evening branch, GREEN**: installed 23:34:13, launched 23:34:18. The launch
+  sync seeded the evening structure (Fajr 23:30 ... Maghrib 23:35, Isha 23:36, verified on
+  glass at 23:34:53). The launch arming armed the seeded moment at 23:36:00.029 (requested
+  23:34:19.281); SpringBoard logged `[com.mugtaba.athan] Created process assertion for will
+  present notification` at 23:36:00.525 and `DeliveredNotifications.plist with 1 items` at
+  23:36:00.644. Delivery at the armed second, on the re-pin's notification stack.
+- **R4.8-class live rollover cascade, GREEN (the owner's own observable)**: when seeded Isha
+  23:36 passed, the list rolled and the countdown skipped to the following day's Fajr: the
+  23:37:02 AX tree reads `Fajr 04:03 / 4h 25m / Sat, 17 Oct 2026` (the seed's next-day real
+  shape, day1 fajr 04:03), screenshot `m2-rolled-state.png` beside the pre-roll `m1-whatsnew.png`.
+  This is the day-roll mechanism (`mocks/simple.ts`'s own documented "the rollover cascade fires
+  early") observed live, minutes after install, with no waiting. The REAL midnight boundary then
+  passed with the app running (my syslog to 23:55; the app's 01:51+ state steady and correct on
+  the same rolled day); the flip moment itself is unobserved (the starved capture, above), and
+  the day-roll cascade is additionally pinned by the row 5/32 unit suites.
+- **R4.2 fire #2, pre-dawn branch, GREEN, fully attributed**: cold relaunch 01:52:08; the launch
+  refresh armed the fresh seed's Fajr at 01:53:01.584 (requested 01:52:13.624); the assertion
+  fired at 01:53:01.668; the delivered notification was then READ FROM THE SYSTEM UI: the cover
+  sheet shows `ATHAN, 5 minutes ago, Fajr now, TIME SENSITIVE` — the interruption level carried
+  by the armed silent row, exactly R4.2's wording. The same arm round carried the dev storage's
+  stale-day pair (a five-minute reminder at 02:18:01.286 before an athan at 02:23:00.412), which
+  proved the reminder machinery armed live; the pair never fired (a later refresh's
+  `staleCancelled` sweep replaced the armed set, then the app process died at 02:06:51 — the
+  log's `usernotificationsd` invalidation line; no delivered-plist saves at 02:18/02:23).
+- **R4.5's named Pino pair, CAPTURED on the logging-enabled vehicle**: the local-env build keeps
+  Pino on (`shared/logger.ts` disables it only for prod/preview), so the exact two lines the
+  plan names are in the capture: `NOTIFICATION: Starting refreshNotifications` and
+  `NOTIFICATION: Refresh complete`, beside `Post-reschedule verification: dbRecords: 63,
+  osPending: 63, staleCancelled: 0` and `NOTIFICATION: Rescheduled all notifications and
+  reminders`. D111.17's alternative observable now exists as evidence; the prod-build half
+  (BGTask re-submission + native trace) was already green.
+- **R4.7 NOT EXERCISED, by the step's own rule**: no reminder delivered before its athan in the
+  observed set. The reminder path was proven live (the armed 02:18:01 request, the
+  `REMINDER: Scheduled multiple reminders` Pino lines, Isha's preference snapshot
+  `alert: 2, reminders: [2, 1]`), but the ordering itself was never observed: the three session
+  interruptions each ate a reminder window (the sheet-commit drive never completed inside a
+  4-minute cutoff). Recording not-exercised rather than arming-by-race is what the step file
+  orders; the vehicle and the seed runway for a future reading are recorded here.
+- **Row 120's delivered-stack clear, corroborated**: `[com.mugtaba.athan] Forwarding
+  removeAllDeliveredNotifications` then `DeliveredNotifications.plist with 0 items` at
+  01:52:09.965 — the iOS clear-on-open running on the re-pin build.
+- **R4.6 unchanged** (closed at the prior rotation on the automation-reachable evidence).
+- **The 3T's 01:53 production fire, PERFECT (autonomous corroboration, folded)**:
+  `punctuality-logcat.txt` records AlarmManager triggering the app's alarm at 01:53:00.002
+  (`*walarm*:expo.modules.notifications.NOTIFICATION_EVENT`, flags 0x3, the alarm-clock form
+  R3.3 pins), and the system's next-alarm clock moved to the next armed 04:35. The noredact
+  dump is beside it. Step 2's owed punctuality reading is closed by this capture.
+- The widget runtime corroborated live throughout: chronod reloaded the lock-screen widget
+  timelines (`PrayerLockWidget`, `ExtrasLockWidget`) on every app data change.
+- Restore: the runner helper app
+  (`com.callstack.agentdevice.runner.uitests.xctrunner`) uninstalled at 02:29; the prod Release
+  build at uat 2.0.939 rebuilt and installed over the mock (bundle verified fresh), one
+  throwaway launch, so the owner's phone wakes on the production build with her `athan-storage`
+  untouched (the mock read `athan-storage-dev` only). The 3T keeps its 2.0.908 production
+  install and its armed 04:35 alarm.
+
+### Step 4 — records (this session)
+
+- The doctrine run's rulings and readings are recorded above (step 3's sections). Step 4's
+  records, all measured against the live tree and npm this session:
+  - `README.md`: the stack line drops "(preview)" — SDK 58 is stable and this repo sits on it.
+  - `ai/UPSTREAM-PRS.md`: the three patch rows at `+58.0.11` / `+58.0.20` / `+58.0.17`, every
+    PR state re-checked live via `gh api` (all three open, unmerged, 2026-10-17), the widgets
+    row now recording BOTH hunks (`openApp` and the local-only device-locale injection whose
+    upstreaming question is row 117's), and the dead-symbol drops named.
+  - `ai/plans/SDK58-PROGRAMME.md` section 16: the landed-set record (the 58.0.19 upstream
+    Android defect and its 58.0.20 fix, the proofs on both phones, the Babel 8 re-measurement
+    at `babel-preset-expo@58.0.17` / `@babel/core` 8.0.7 still blocked), the trigger line
+    moved to the next attempt, and the npm note: `expo 58.0.14` published after this
+    attempt's step 1 took 58.0.13 (the newest at that moment), so the next re-pin starts at
+    58.0.14 or newer. Agent-ruled: this closes at 58.0.13 rather than re-running the attempt —
+    the standing policy takes the newest at each attempt's own start, and re-running would
+    discard a fully-proven pin set to chase a moving npm.
+  - `e2e/README.md`: the Metro env-blindness gotcha rewritten to the healed state (measured by
+    R3.5/R3.6: env-only changes invalidate the transform cache at this pin set, the two export
+    md5s differ), the bundle-md5 verification habit kept, the gradle `UP-TO-DATE` deletion kept
+    where it remains unmeasured, and the two stale mock-seed descriptions rewritten to the
+    row-113 three-window truth (the old "test day-rolls in daytime" warning is obsolete: the
+    pre-dawn branch never writes a small-hours Standard row).
+- R4.2, R4.5 (both halves now), R4.8-class cascade: green with captures. R4.7: not exercised
+  by the step's own rule, the live reminder machinery recorded. R4.6: closed prior rotation.
+  R4.1, R4.3, R4.4: green at the prior rotation on this pin set. Step 3 stands closed.
+
+session: (this lane session)
+
