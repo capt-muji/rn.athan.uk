@@ -4,6 +4,9 @@
  * against the RTL layout direction and mirrors it (ticket 136)
  */
 
+import { readdirSync, readFileSync } from 'node:fs';
+import { join, relative } from 'node:path';
+
 import type { LocaleId } from '@/shared/i18n/locale';
 
 // The probes require the testing library inside isolateModules, mid-test,
@@ -88,4 +91,29 @@ it.each(['en', 'ar'] as const)('pins the help action chevron paragraph under %s'
 
   expect(styles).toHaveLength(1);
   expect((styles[0] as Record<string, unknown>).direction).toBe('ltr');
+});
+
+it('leaves no chevronFor() caller outside the three pinned files', () => {
+  const componentsRoot = join(__dirname, '..');
+  const walkSources = (dir: string): string[] => {
+    const entries = readdirSync(dir, { withFileTypes: true });
+    const files: string[] = [];
+    for (const entry of entries) {
+      const full = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        files.push(...walkSources(full));
+      } else if (entry.name.endsWith('.tsx') && !full.includes('__tests__')) {
+        files.push(full);
+      }
+    }
+    return files;
+  };
+  const sources = walkSources(componentsRoot);
+  const callers = sources
+    .filter((file) => readFileSync(file, 'utf8').includes('chevronFor('))
+    .map((file) => relative(componentsRoot, file))
+    .sort();
+
+  // A new consumer fails here until its paragraph joins the pin
+  expect(callers).toEqual(['modals/Help.tsx', 'sheets/screens/ColorPicker.tsx', 'sheets/screens/Settings.tsx']);
 });
