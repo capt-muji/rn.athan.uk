@@ -181,6 +181,22 @@ script, then version/commit/merge; step 4 after).
 
 session: ses_eb1418e09ffeq7HHXZZKDx98yk
 
+### Step 3 - RESUMED (plan repair, agent-ruled 2026-10-18)
+
+Question: the step 3 break script's perl could not mutate any correct suite
+(`BREAK LOCKSTEP COULD NOT MUTATE`): inside `\Q..\E` the sequence `$/` interpolates
+perl's input record separator instead of matching the literal regex anchor, so the
+pattern never matches. Answer: rewrite the mutation as `quotemeta q{...}` - `q{}`
+never interpolates, quotemeta escapes the literal for the regex - proven on a scratch
+file before re-dispatch (MUTATION-WORKS). Challenge: escaping the dollar (`\$/`)
+inside `\Q..\E` - tested, still no match (the escape is consumed before the
+quotemeta); the `q{}` form is the one that works. The step file's contract (loosen
+the tightened regex, cmp guard) is unchanged; only the script's perl line changed.
+The executor resumes from `sessions/138/step3-unfinished.patch`; versions 1060 then
+1061 unless weather. Row returns to IN PROGRESS at this commit.
+
+session: ses_eb16f7078ffeLzeR40NvnWMrqH
+
 ### Step 3 - DONE (after the plan repair `8446b2b5`)
 
 Branch `step/138-lockstep-shape` off `lane/138` (parent `8446b2b5`,
@@ -257,18 +273,20 @@ step's own merge sha cannot sit inside its own commit).
 
 session: ses_eb1418e09ffeq7HHXZZKDx98yk
 
-### Step 3 - RESUMED (plan repair, agent-ruled 2026-10-18)
 
-Question: the step 3 break script's perl could not mutate any correct suite
-(`BREAK LOCKSTEP COULD NOT MUTATE`): inside `\Q..\E` the sequence `$/` interpolates
-perl's input record separator instead of matching the literal regex anchor, so the
-pattern never matches. Answer: rewrite the mutation as `quotemeta q{...}` - `q{}`
-never interpolates, quotemeta escapes the literal for the regex - proven on a scratch
-file before re-dispatch (MUTATION-WORKS). Challenge: escaping the dollar (`\$/`)
-inside `\Q..\E` - tested, still no match (the escape is consumed before the
-quotemeta); the `q{}` form is the one that works. The step file's contract (loosen
-the tightened regex, cmp guard) is unchanged; only the script's perl line changed.
-The executor resumes from `sessions/138/step3-unfinished.patch`; versions 1060 then
-1061 unless weather. Row returns to IN PROGRESS at this commit.
+## Audit (2026-10-18)
+
+Checklist (from PLAN.md section 6, all ticked):
+
+- [x] Step 1 - the discipline gate and the major allowlist (`22d4ca66`, merged `a4171586` at 2.0.1056)
+- [x] Step 2 - the merge monotonicity gate (`c501c785`, merged `5c44eced` at 2.0.1057)
+- [x] Step 3 - the lockstep shape assertion (`6d66ccce`, merged `2417d64c` at 2.0.1061)
+- [x] Step 4 - the workflow text and the consistency sweep (`f3eebf3f`, merged `4b837193` at 2.0.1062)
+
+Two reviewer passes (plan-conformance and blind, AUDIT.md carries the ranges and
+findings files): nine findings, all confirmed, none rejected, fixed in `b84c81c9`
+(2.0.1065) after the lane-weather merge `a5150649`. Steps 1 and 2's row-marker
+edits (IN PROGRESS at `22d4ca66` and `c501c785`) are recorded in AUDIT.md per the
+plan-conformance pass's third finding. The DONE merge follows.
 
 session: ses_eb16f7078ffeLzeR40NvnWMrqH
