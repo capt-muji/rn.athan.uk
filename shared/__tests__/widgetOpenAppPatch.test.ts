@@ -37,13 +37,25 @@ describe('the open-the-app patch', () => {
     const patch = read(`patches/expo-widgets+${installedVersion()}.patch`);
     const headers = patch.split('\n').filter((line) => line.startsWith('diff --git'));
 
-    // The openApp converter, plus the device-locale runtime patch's four
-    // files (iOS JSContext, Android Hermes runtime, its Kotlin plumb)
-    expect(headers).toHaveLength(5);
+    // The openApp converter, the device-locale runtime patch's four files
+    // (iOS JSContext, Android Hermes runtime, its Kotlin plumb), and the
+    // iOS entry view's layout-direction hunk
+    expect(headers).toHaveLength(6);
     for (const header of headers) {
       expect(header).toContain('node_modules/expo-widgets/');
     }
     expect(patch).not.toContain('/Users/');
+  });
+
+  it("applies the entry's rtl as the native layout direction", () => {
+    const entryView = read('node_modules/expo-widgets/ios/Widgets/EntryView.swift');
+
+    // The whole rtl read pins the LTR default byte-for-byte: a falsy rtl
+    // stays left-to-right even on an RTL device (the app-locale law), so
+    // a flipped default cannot pass as the same patch
+    expect(entryView).toContain('let rtl = (entry.props?["rtl"] as? Bool) ?? false');
+    expect(entryView).toContain('.environment(\\.layoutDirection,');
+    expect(entryView).toContain('rtl ? .rightToLeft : .leftToRight');
   });
 
   it('installs the device-locale global through JSContext\u2019s Swift selector', () => {
