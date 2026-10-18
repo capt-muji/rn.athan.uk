@@ -182,7 +182,7 @@
   }
 
   function waitingEl(ticket) {
-    const line = ticket.waitingOn === null ? 'her ruling' : ticket.waitingOn;
+    const line = ticket.waitingOn === null ? 'the owner' : ticket.waitingOn;
     return el('div', 'waiting', 'waiting on ' + line);
   }
 
