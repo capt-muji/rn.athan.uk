@@ -1,88 +1,87 @@
-# Ticket 116 - iPhone Duo support: one schedule folded, both schedules open
+# Ticket 116 - iPhone Duo support: one schedule on both displays through the existing adaptive layout
 
 ## Header
 
 | | |
 | --- | --- |
 | Brief | `ai/plans/116-iphone-duo/` |
-| Planned at | `uat` `fcc89dc7` (2.0.917), 2026-10-16 |
-| Planned by | lane 116 (athan-lane), from the owner's create-now order at the 111 planning session |
-| Needs first | none |
+| Planned at | `uat` `3407e984` (2.0.1071), 2026-10-18 |
+| Planned by | lane 116 |
+| Needs first | nothing |
 | Parent | none |
-| Group | the app root and its native posture: `app/Navigation.tsx`, `app/Screen.tsx`, `app.json`, `ios/Athan/Info.plist`. Shared with no open ticket. |
+| Group | the app root's layout path: `app/Navigation.tsx`, `app/Screen.tsx`, `shared/constants.ts`, `hooks/useWindowDimensions.ts`, `app.json`. Disjoint from every open ticket: row 117 reads widget surfaces. |
 | Batch budget | 3 |
 | Session budget | 6 |
-| Steps | 3 (step 1 the device-free layout change, step 2 the toolchain, step 3 the Duo proof) |
-| Device | the iPhone Duo simulator, which ships with Xcode 27.1 only. Absent from this machine. |
-| Owner decisions still needed | the Xcode 27.1 install, which needs her Apple ID. Everything else on this ticket is agent-ruled. |
+| Steps | 1 |
+| Device | the iPhone Duo simulator, device type `com.apple.CoreSimulator.SimDeviceType.iPhone-Duo` on the iOS 27.1 runtime. Named `SIMULATOR_UDID` in this plan and resolved by the command in section 7.1. |
+| Owner decisions still needed | none. Every decision is agent-ruled and recorded in section 2.1, the portrait-lock ruling included (D116.6). |
 
-**Status of this plan.** Written 2026-10-16 by lane 116, which executed every device-free
-part and stopped at a hard rule: the ticket's acceptance is a Duo-simulator proof, the Duo
-simulator exists only in Xcode 27.1, and installing Xcode 27.1 needs the owner's Apple ID
-(an App Store or developer-portal credential). Credentials are a named stop, so the lane
-reports instead of asking. No production code was changed: every gate candidate for the
-two-panel layout is either unmeasurable on this machine or changes a shipping platform the
-owner has not ruled, which section 5 records in full. The ticket is BLOCKED on that
-install; the lane's device-free output is this plan.
+**Status of this plan.** Written 2026-10-18, after her evening order superseded the 2026-10-16 two-pane design. The bench branch `bench/116-iphone-duo` stays as history; the row in `ai/plans/README.md` carries its measured display sizes and its supersession. Planning ran the Duo simulator under Xcode 27.1 (27A9275) and took the readings in section 4.4 before this plan was drafted, as her follow-up ordered. The plan changes no production code. The glass readings show the app presents one schedule in both poses through the existing layout, and the open display's centred window is the portrait lock's system behaviour. Section 2.1 rules on that behaviour. One step remains: a cold re-run of the glass matrix by the executor and the record it writes.
 
 ## 1. Goal
 
-Apple opens the iPhone Duo to customers on 2026-10-23 and asks developers to recompile with
-Xcode 27.1 (`developer.apple.com/news/?id=kkphp5qo`, 2026-10-05). The concrete App Store
-requirement is dated: from April 2027 every submitted app must carry iPhone Duo screenshots.
-Every app runs on the Duo either way; only an app built with the iOS 27.1 SDK is optimised
-for it (measured tiers in section 4).
+Apple opens the iPhone Duo to customers on 2026-10-23 and asks developers to recompile with Xcode 27.1 (`developer.apple.com/news/?id=kkphp5qo`). An app built with the iOS 27.1 SDK is in Apple's optimised tier, and the tier's presentation still follows the app's own scene configuration: a portrait-only app receives a portrait window centred in a landscape display.
 
-Today the app renders one schedule at a time on both displays, because it is built with the
-iOS 27.0 SDK and capped to a 500pt content column (`shared/constants.ts:611`). The owner's
-ruling, made at the 111 planning session and recorded in row 116:
+Her order, 2026-10-18 evening, recorded in row 116:
 
-- folded, the app shows ONE schedule on the single page;
-- open, the screen is big enough for BOTH schedules, one on the left panel and one on the
-  right panel.
+- no iPhone Duo-specific layout, because the app lives under 12 seconds per open and a Duo layout is overkill;
+- the Duo rides the app's existing adaptable-width system, the one that adapts to tablets, resizable windows and laptop and desktop windows;
+- treat the open display as an extra-large tablet or a larger phone, with ONE schedule laid out by that system, "one schedule in the middle, or wherever", never one schedule per fold side;
+- the benched two-pane design and `SIZE.twoPaneMinWidth` are superseded, and the bench branch stays as history;
+- nothing about the normal iPhone, Android, tablet and macOS resizable-window sizes may change, and the work lands only inside the existing adaptive classes, never a new device-specific path;
+- `expo-hinge` is optional, only if glass evidence demands hinge state;
+- production-ready with full testing.
 
-When the ticket is DONE her ruling holds on the Duo: closed, the pager she already has, one
-schedule; open, the Standard schedule on the leading panel and the Extras schedule on the
-trailing panel, both live at once; on every other device the app renders exactly what it
-renders today.
+Her follow-up, same day: the ticket reduces to investigation and testing, because the app may already support the Duo through its tablet and resizable-window support. The lane investigates first on glass, plans against the readings, and investigates again after planning if the plan needs it. Few or no changes are expected under the one-schedule approach.
+
+When this ticket is DONE, four things are true:
+
+1. Every acceptance criterion in section 5.4 has a reading from the Duo simulator, recorded in `LOG.md` with its evidence path.
+2. The app shows exactly one schedule in each pose, laid out by the shipped components, with no Duo branch anywhere in the repository.
+3. The range carries no change under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/`, so no other form factor's behaviour moves.
+4. Row 116 states the open display's measured presentation and its cause, so the next reader needs no session memory.
+
+The owner notices this ticket through its row: the app is ready for the Duo launch, and the one presentation fact she may weigh (a portrait window centred in the open display) is written where she reads the queue.
 
 Her standing rules that bind this work, quoted with their source:
 
-- `ai/AGENTS.md`: "Visuals are settled. Fixes change behaviour only. Touch no pixel without
-  the owner's say." Her ruling above is the say for the two-panel face; everything else on
-  this ticket is behaviour.
+- `ai/AGENTS.md`: "Visuals are settled. Fixes change behaviour only. Touch no pixel without the owner's say."
 - `ai/AGENTS.md`: "`@expo/ui` stays inside widget layouts, never app UI."
-- `ai/AGENTS.md`: "Bump `app.json` FIRST, then prebuild, then build: `expo run:*` never
-  re-syncs an existing native folder."
-- `ai/plans/README.md`, row 116: her UX ruling and the toolchain prerequisite.
+- `ai/AGENTS.md`: "A ticket's documentation dies with its merge."
+- `ai/AGENTS.md`: "Full unit coverage of every line a change touches, measured with coverage on, red before green and a mutation pass on guarded logic."
+- `ai/plans/README.md`, row 116: her evening order and her follow-up, quoted above.
 
 ## 2. Decisions
 
 ### 2.1 Taken
 
-Every one of these stood in for an owner answer during this lane, marked agent-ruled and
-dated 2026-10-16.
+Every decision below stood in for an owner answer during this lane, marked agent-ruled and dated 2026-10-18. Each was challenged once before it was committed; the challenge and its answer sit in the Why column.
 
 | ID | Decision | Why |
 | --- | --- | --- |
-| D116.1 | The two-panel branch keys off the window the app has, not the device it is on. | Apple's own Duo guidance names the layout signal: "A compact width layout for the outer display and a regular width layout for the inner display give you the fundamentals for every pose" (`developer.apple.com/design/human-interface-guidelines/designing-for-iphone-duo`). |
-| D116.2 | `@expo/ui`'s `ArrangementView` is rejected for this branch. | Three measured reasons, section 5.1: the `ai/AGENTS.md` ban, its Swift guard compiles to a containerless fallback below the iOS 27.1 SDK, and its split style stacks vertically in a taller-than-wide window. |
-| D116.3 | `expo-hinge` is NOT added for the layout branch. | Apple's prepare page: "Avoid using orientation to make layout decisions" and "compare the width and height of the space you have"; `expo-hinge`'s own shipped docblock says "Use hinge state for interactions and effects, not for layout" (`expo-hinge@58.0.1`, `build/Hinge.js`). A dependency that cannot be exercised on this machine is not added for a decision the window size already answers. |
-| D116.4 | No production code is merged by this lane. | Unverifiable code in the app root, landing on `uat` that every session's device work exercises, costs more than the same code written once the two facts in section 4.4 are measured. |
-| D116.5 | The ticket is BLOCKED, not READY. | The blocker is the owner's credential for the Xcode 27.1 install, which is the "waiting on the owner" case in `ai/plans/README.md` under Status. |
+| D116.1 | The Duo rides the shipped layout: the single `PagerView` with two `Screen` children, and `Screen`'s `maxWidth: SIZE.contentMaxWidth` cap. No Duo branch is added. | Her order names the existing adapted system as the mechanism. The pager already mounts one `Screen` at a time, and the cap's own comment names large windows. Challenge: a wide window could want a second column. Answer: her evening order supersedes the two-pane design by name. |
+| D116.2 | The two-pane design and `SIZE.twoPaneMinWidth` are dead. Nothing from `bench/116-iphone-duo` merges. | Her order supersedes both by name and keeps the bench branch as history. Challenge: the bench code is written and tested. Answer: the owner's later order outranks saved work, and the branch keeps the record. |
+| D116.3 | No orientation or scene-resizability change: `app.json` stays `"orientation": "portrait"`, `requireFullScreen` stays true, and the bundle declares no landscape orientation. | Filling the open display needs landscape support. That unlocks rotation on every iPhone and iPad, changes a form factor her order forbids changing, and the fixed vertical stack would clip at an iPhone's landscape height. Challenge: Apple's preparation page asks for all orientations. Answer: that checklist targets resizable apps, and her order wins over Apple's recommendation where the two meet. |
+| D116.4 | `expo-hinge` is not added. | The glass readings show no clipping at the fold and no layout decision that needs hinge state, and her order makes the package optional. Challenge: hinge state could separate the half-open pose. Answer: half-open presents the same 951 by 669 screen as open, so hinge state would select nothing. |
+| D116.5 | No unit test is added. | No production line changes, and the presentation comes from the OS-granted window, which Jest cannot construct. A test that cannot fail proves nothing, and `ai/AGENTS.md` ties tests to changed lines. Challenge: her order says full testing. Answer: the glass matrix is the test for this ticket, and `yarn validate` runs as the regression gate. |
+| D116.6 | The open display's centred portrait window is accepted as the shipped presentation, not a defect to repair, and the row records it. | The window is the system's answer to a portrait-only scene; the app's content inside it is complete and unclipped. Changing it is D116.3, which her order forbids. Challenge: App Store screenshots from April 2027 will show the centred window. Answer: the presentation is Apple's compatibility answer for a portrait app, it is what every portrait-only app shows on the device, and the alternative she named is excluded. |
+| D116.7 | The proof vehicle is the installed mock build 2.0.1054, built with the iOS 27.1 SDK, because no app-surface file changed between 2.0.1054 (`8efd0b91`) and `uat` (`3407e984`). | `git log --oneline 8efd0b91..3407e984 -- app components hooks shared stores` lists no file under those trees; the range's changes are widget strings, widget tests and docs. The build lock at `$HOME/athan-gitree/build.lock` is parked with no holder and no build process, and the lane does not reap it. Challenge: a fresh build would be cleaner. Answer: a rebuild would produce the same app-shell bytes for this ticket's surfaces, and the lock is another session's to remove. |
 
 ### 2.2 The executor must not decide
 
-None. Everything left is measurement, and section 7 gives each reading with the command that
-takes it, the value it decides, and the branch each value selects.
+None. The step is measurement against fixed expected readings and a record written from them. Section 10 names every observed state that changes the expected reading and the action each selects.
 
 ## 3. Pre-flight
 
-`scripts/preflight-116.sh` in this folder. It checks the checkout on `uat`, a clean tree,
-`origin/uat` merged in, the version not lower than 2.0.917, Xcode 27.1 present with an iOS
-27.1 runtime and an `iPhone Duo` device type, and every anchor count equal to 1. It ends
-`PREFLIGHT OK`. It fails today at the Xcode check, which is the ticket's own blocker written
-as a command.
+`scripts/preflight-116.sh` in this folder runs from the repository root and ends `PREFLIGHT OK`. It checks:
+
+- the checkout contains `origin/uat` and the tree is clean;
+- the version is at least 2.0.1072;
+- `xcodebuild -version` reports Xcode 27.1, `xcodebuild -showsdks` offers `iphoneos27.1`, `xcrun simctl list runtimes` carries iOS 27.1 and `xcrun simctl list devicetypes` carries `iPhone Duo`;
+- an iPhone Duo simulator resolves to one UDID;
+- the installed `com.example.athan` app exists on that simulator and reports a 2.0.x version at or above 2.0.1054;
+- every anchor under `scripts/anchors/` occurs exactly once in its source;
+- no app-surface file differs from `origin/uat`: `git diff --name-only origin/uat -- app components hooks modules shared stores` prints nothing.
 
 ## 4. Background the executor needs
 
@@ -90,380 +89,216 @@ as a command.
 
 | File | What it is |
 | --- | --- |
-| `app/Navigation.tsx:84-102` | The root pager. `PagerView` with `initialPage={0}`, `layoutDirection={direction}` (row 103's mirror), `offscreenPageLimit={1}`, `overdrag`, `scrollEnabled={!overlayIsOn}`, and two `MemoScreen` children, Standard then Extra. This is the whole surface this ticket changes. |
-| `app/Navigation.tsx:43-65` | `handlePageScrollState` and `handlePageSelected`. The latter carries the overlay self-heal: a swipe that settles on a schedule different from the open overlay's closes the overlay. It is reached only from the pager, so it is unreachable while two panels are shown. |
-| `app/Navigation.tsx:104-119` | The chrome layer: the settings button and the two page dots, absolutely positioned at the bottom, both faded by `chromeOpacityStyle` under the overlay. |
-| `app/Screen.tsx:27-36` | The shared schedule screen. `maxWidth: SIZE.contentMaxWidth` (500), `width: '100%'`, `alignSelf: 'center'`. It already self-constrains, so a panel narrower than 500 renders the screen at the panel's width with no change. |
-| `shared/constants.ts:611` | `SIZE.contentMaxWidth: 500`, whose own comment already names large screens: "Content column cap for large screens (iPad/tablet/Mac windows). The pager itself stays full-width so the whole screen remains swipeable; phones are narrower than this, so the cap never binds there." |
-| `shared/constants.ts:333-337` | `SCREEN.paddingHorizontal: 12`, `SCREEN.paddingTop: 17`. |
-| `hooks/useWindowDimensions.ts` | Re-exports React Native's live `useWindowDimensions`. Its comment records that this module was made live precisely for resizable windows: the previous memoized launch-time size "froze every absolute-geometry consumer (overlay catchers, veil glow) on resizable windows". |
-| `stores/atoms/overlay.ts` | The overlay carries `scheduleType`, so panel identity already exists in state and needs no new field when both schedules render at once. |
-| `__tests__/app/Navigation.test.tsx` | The existing suite for this component: nine cases over the pager's props and the overlay self-heal, with `react-native-pager-view` mocked to a `testID='pager'` view. This is where the new cases belong. |
-| `components/ui/__tests__/Glow.test.tsx:14` | The repository's own pattern for driving a window size in Jest: `act(() => Dimensions.set({ window: { width, height, scale: 3, fontScale: 1 } }))`. |
+| `app/Navigation.tsx:82-102` | The whole schedule surface: one `PagerView` with `initialPage={0}`, `layoutDirection={direction}`, `offscreenPageLimit={1}`, `overdrag`, `scrollEnabled={!overlayIsOn}` and two `MemoScreen` children, Standard then Extra. |
+| `app/Navigation.tsx:104-119` | The chrome layer: the settings button and the two page dots, absolutely positioned at the bottom and faded under the overlay. |
+| `app/Screen.tsx:27-33` | The shared schedule screen. `maxWidth: SIZE.contentMaxWidth`, `width: '100%'`, `alignSelf: 'center'`. It caps itself, so a window narrower than the cap renders it at the window width. |
+| `shared/constants.ts:605-613` | `SIZE.contentMaxWidth: 500`, whose comment names iPad, tablet and Mac windows and says phones are narrower than the cap. |
+| `hooks/useWindowDimensions.ts` | Re-exports RN's live hook. Its comment records that the memoized version froze absolute-geometry consumers on resizable windows. |
+| `app.json:6-15` | `"orientation": "portrait"`, `"supportsTablet": true`, `"requireFullScreen": true`. The portrait lock is the cause of the open display's centred window. |
+| `__tests__/app/Navigation.test.tsx` | The existing suite over the pager's prop surface and the overlay self-heal. It is untouched by this ticket and must stay green. |
+| `components/prayer/List.tsx` | Reads the live window width and height for row geometry; it is the widest consumer of a window change. |
 
 ### 4.2 How the pieces interact
 
-`Navigation` renders a full-window pager; each page is a `Screen`, which centres itself at
-500pt. On a phone the page is narrower than 500pt, so the cap never binds and one schedule
-fills the screen. On a window wider than 500pt the page is wide and the single schedule sits
-centred in empty space, which is what the open Duo would show without this ticket.
+`Navigation` renders a full-window pager; each page is a `Screen`, which centres itself at 500 points. On a phone the page is narrower than 500 points, so the cap never binds and one schedule fills the screen. On a window wider than 500 points the page would be wide and the schedule would sit centred, which is the behaviour her order names "one schedule in the middle, or wherever".
 
-Two panels change only the container: a row of two flexed panels, each rendering the same
-`Screen` with a different `ScheduleType`. Nothing inside `Screen` changes, so the settled
-visuals of a schedule are untouched.
+Two facts from the glass fix the scope:
+
+1. The closed display is 466 by 678 points and the app receives all of it, so the cap does not bind.
+2. The open display is 951 by 669 points, but the portrait lock means iOS grants the app a 469 by 669 point portrait window centred in it. The cap does not bind there either, because 469 is below 500.
+
+The adaptive path never receives a window wider than 500 points on this device, so it has no wider layout to select. The app is correct in both poses by construction.
 
 ### 4.3 The existing tests and what they prove
 
-`__tests__/app/Navigation.test.tsx` proves the pager's prop surface (`layoutDirection` per
-locale, the two swipe marks) and the overlay self-heal in both directions, plus one Android
-case. All nine read the narrow path, which this ticket leaves byte-identical, so all nine
-must stay green unchanged.
+`__tests__/app/Navigation.test.tsx` proves the pager's prop surface and the overlay self-heal on the narrow path. This ticket changes no line the suite touches, so all its cases stay green without an edit. `yarn validate` is the regression gate for the step.
 
-### 4.4 The two facts only a Duo session can measure
+### 4.4 The glass readings taken at planning
 
-These decide the branch and cannot be taken on this machine. They are step 3's first two
-readings.
+All readings were taken 2026-10-18 on the booted iPhone Duo simulator (`SIMULATOR_UDID`) running the installed mock build 2.0.1054 under Xcode 27.1. The window rectangles are the accessibility tree's application rect, in points; the screenshots are the simulator's own captures.
 
-1. **The window size of each display, in points.** From Apple's published hardware figures the
-   inner display is 1878 by 2670 pixels at 430 ppi (`apple.com/iphone-duo/specs/`), which at
-   the 3x scale that resolution implies is 626 by 890 points, and the outer display is 1398
-   by 2034 pixels, which is 466 by 678 points at the same scale. Those are derived, not
-   measured: the App Store figure is pixels, and the point scale is an assumption until the
-   simulator prints the window. Apple's HIG calls the inner window regular width and the
-   outer window compact width.
-2. **Whether the portrait lock letterboxes the open display.** `app.json` sets
-   `"orientation": "portrait"`, so `ios/Athan/Info.plist` declares Portrait and
-   PortraitUpsideDown only. Apple lists "Supports all interface orientations" as a
-   precondition for a resizable scene (`TN3192`), and the Duo's inner display is wider than
-   any iPhone. Whether a portrait-locked app is given the full 626pt window or a
-   portrait-shaped window with empty space beside it decides whether D116.1's size branch can
-   fire at all, and it is the one reading that can force an owner decision this ticket does
-   not otherwise need.
+| Reading | Closed pose | Open pose |
+| --- | --- | --- |
+| Display | 466 by 678 points | 951 by 669 points |
+| App window | 466 by 678 points, full display | 469 by 669 points, centred, 241 points of display each side |
+| Schedules on screen | one, the Standard page at launch | one, the Standard page at launch |
+| Page dots | present at the bottom | present at the bottom of the app window |
+| Second schedule | none | none |
+| Fold or unfold | process 98145 before and after, no relaunch; an open overlay stayed open across the fold | same |
+| Cold launch while open | not applicable | 469 by 669 points, Standard page |
+| Overlay | opens on the tapped row, explanation box inside the window | opens on the tapped row, explanation box inside the window |
+| Settings sheet | opens inside the window and scrolls | opens inside the app window and scrolls |
 
-### 4.5 Why the obvious fixes are wrong
+Evidence paths: `$HOME/athan-gitree/sessions/116/inv-closed.png`, `inv-open-1.png`, `inv-open-extras.png`, `inv-open-overlay.png`, `inv-open-settings.png`, `inv-closed-overlay.png`, `inv-open-cold-launch.png`. The screenshots are not committed.
 
-- **Rendering the pager wider.** The page is already full-window and the screen is already
-  capped at 500pt, so a wider pager shows one schedule in a wider empty band. It is the
-  behaviour the ticket exists to replace.
-- **Reordering the pager's children under RTL.** Rows 103 and 68 measured that the pager
-  mirrors natively through `layoutDirection`. Two panels are a logical row, so the leading
-  panel is the start edge in both directions with no mirror decision at all.
-- **A hinge-angle-driven layout.** `expo-hinge`'s own documentation and Apple's guidance both
-  reserve hinge state for interactions, and the angle answers a pose question the owner did
-  not ask. Her ruling has two states, both of which the window size already distinguishes.
+The open display's centred window is the portrait lock's system presentation. Apple's tier table describes the optimised tier for an app that resizes; a portrait-only scene keeps a portrait window at every tier.
+
+### 4.5 Why the obvious changes are wrong
+
+- **A two-pane branch above a width threshold.** It is the superseded bench design. The open window is 469 points wide, so it would never fire, and her order forbids the layout by name.
+- **Unlocking orientation so the open display fills.** It turns rotation on for every iPhone and iPad, which her order forbids, and the schedule's fixed stack clips at an iPhone's landscape height.
+- **A hinge-driven layout.** Apple and `expo-hinge` both reserve hinge state for interactions, the half-open pose presents the same screen as open, and no reading demands it.
+- **A new width test in Jest.** It would assert a constant against a constant the OS decides, and no production line changes.
 
 ## 5. Design
 
-### 5.1 The mechanism, and the rejected alternative
+### 5.1 The approach
 
-**Taken.** `app/Navigation.tsx` branches on the window it is given. Below the threshold it
-renders today's `PagerView` unchanged. At or above the threshold it renders the two
-`MemoScreen` children in a `flexDirection: 'row'` container, one per flexed panel, and it
-omits the pager and the page dots, which name a position that no longer exists.
-
-**Rejected: `@expo/ui`'s `ArrangementView`**, which row 116's fact set names. Three measured
-reasons, each from the installed `@expo/ui` 58.0.20:
-
-1. `ai/AGENTS.md` bans it: "`@expo/ui` stays inside widget layouts, never app UI."
-2. Its Swift body is `#if canImport(SwiftUICore, _version: 8.0.85)` with an `#else` that
-   renders `Children()` alone (`ios/ArrangementViewView.swift`). `8.0.85` is the iOS 27.1
-   SDK, so under this machine's Xcode 27.0 the component compiles to a container that lays
-   out nothing. Its own TypeScript declares `@platform ios 27.1+` and notes "Below iOS 27.1,
-   the children render without a container", and its changelog puts the fix at
-   `@expo/ui` 58.0.19: "`ArrangementView` and `onHingeChange` now work on iOS 27.1 without
-   `buildFromSource` when the app is built with Xcode 27.1 or later."
-3. Apple's split arrangement "presents the primary and secondary views side by side when the
-   containing view is wider than it is tall" and "splits vertically when the arrangement is
-   taller than it is wide"
-   (`developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo`).
-   The Duo's inner window is taller than it is wide (626 by 890 derived), so the component's
-   own rule would stack the two schedules vertically, which is not the owner's ruling.
-
-`ArrangementView` remains the right answer for an app built with the iOS 27.1 SDK. It is not
-the right answer for this repository, which bans `@expo/ui` outside widgets and does not have
-the SDK.
+No production change. The step is a cold re-run of the glass matrix against fixed expected readings, plus the record it produces. The delivered behaviour is the behaviour already shipped: one schedule, laid out by `Screen` inside the pager, in a window the OS grants.
 
 ### 5.2 The invariant
 
-One sentence a test can check: the schedule region mounts exactly one `Screen` below the
-two-panel threshold and exactly two `Screen`s, Standard before Extra, at or above it, and it
-never mounts the `PagerView` while two panels are shown.
+One sentence the audit can check: the app mounts exactly one `Screen` in every Duo pose, its application rect equals the display rect when closed and a centred 469 by 669 point window when open, and the range changes no file under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/`.
 
 ### 5.3 Concurrency trace
 
-None. The branch is a pure function of the window size, read by React Native's live hook,
-which re-renders on a real dimension change. No effect, no subscription, no timer, nothing to
-start, stop or clear. A fold is one dimension change, so one render, in the same commit the
-window resizes.
+None. The ticket starts no subscription, timer or effect. A fold is one OS scene resize, which RN's live hook already re-renders; the process id stays the same across it.
 
-### 5.4 The recorded default
+### 5.4 Acceptance criteria
 
-`twoPaneMinWidth = 600`, added to `SIZE` in `shared/constants.ts`. It is a recorded default,
-pinned by a test, to be confirmed or corrected by reading 1 in section 4.4. The reasons for
-600:
+- [R1.1] WHEN the Duo is closed THE SYSTEM SHALL report a 466 by 678 point app window covering the display, showing the Standard schedule and the pager's two page dots.
+- [R1.2] WHEN the Duo is open THE SYSTEM SHALL report a 951 by 669 point display and a centred portrait app window between 465 and 473 points wide and 665 and 673 points high, showing one schedule and no fold-side split.
+- [R1.3] WHEN the device folds or unfolds while the app is in the foreground THE SYSTEM SHALL keep the same process id and re-lay the content without a relaunch.
+- [R2.1] WHEN the user swipes once in either pose THE SYSTEM SHALL show the other schedule with its own rows filled.
+- [R2.2] WHEN a prayer row is tapped in either pose THE SYSTEM SHALL open the overlay with its explanation box inside the app window.
+- [R2.3] WHEN the Settings button is tapped in either pose THE SYSTEM SHALL open the settings sheet inside the app window and scroll to its last row.
+- [R3.1] WHEN the app is launched cold in the open pose THE SYSTEM SHALL show the Standard schedule in the same centred portrait window.
+- [R4.1] WHEN the range is audited THE SYSTEM SHALL show no changed file under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/` against `origin/uat`.
+- [R4.2] WHEN the ticket closes THE SYSTEM SHALL carry the readings and the portrait-lock finding in row 116 of `ai/plans/README.md`.
 
-- It sits between the two derived window widths: the outer display's 466pt and the inner
-  display's 626pt.
-- It is the width at which two panels hold the app's narrowest supported phone width each:
-  the iPhone SE's 320pt. Below it, two panels are narrower than any phone this app ships to.
-- Every iPhone this app ships to is narrower than 500pt in portrait, so the branch cannot fire
-  on an iPhone.
+### 5.5 What the record states
 
-Two consequences the audit must re-read before the code merges, both recorded rather than
-hidden:
-
-- **An iPad in portrait (744pt or wider) crosses 600 and would show two panels.** That is
-  Apple's own Duo model applied consistently, "the same way it adapts between regular and
-  compact environments on other iPhone devices", but it is a visible change to a shipping
-  platform the owner has not ruled on. It belongs in her read.
-- **A window between 600pt and 640pt gives two panels narrower than the iPhone SE.** The
-  measurement at reading 1 corrects the constant if the Duo's real inner width needs it.
-
-### 5.5 Acceptance criteria
-
-- [R1.1] WHEN the window is narrower than `SIZE.twoPaneMinWidth` THE SYSTEM SHALL mount one `Screen` inside the `PagerView` with the properties `__tests__/app/Navigation.test.tsx` already pins.
-- [R1.2] WHEN the window is at least `SIZE.twoPaneMinWidth` wide THE SYSTEM SHALL mount the Standard panel before the Extra panel in a single horizontal container, and SHALL NOT mount a `PagerView`.
-- [R1.3] WHEN the window is at least `SIZE.twoPaneMinWidth` wide THE SYSTEM SHALL NOT mount the page indicator dots.
-- [R1.4] WHEN the window crosses `SIZE.twoPaneMinWidth` in either direction THE SYSTEM SHALL re-render with the layout the new width selects, without remounting the app root.
-- [R2.1] WHEN the app runs under an RTL locale THE SYSTEM SHALL place the Standard panel at the layout's start edge and the Extra panel at its end edge, through logical styles only.
-- [R3.1] WHEN the window is at least `SIZE.twoPaneMinWidth` wide THE SYSTEM SHALL render both schedules' content, observable as the Standard schedule's rows and the Extras schedule's rows on screen together.
-- [R4.1] WHEN the app renders on a window narrower than `SIZE.twoPaneMinWidth` THE SYSTEM SHALL produce the same component tree as `uat` at `fcc89dc7`, observable as the unchanged nine cases of `__tests__/app/Navigation.test.tsx`.
-- [R5.1] WHEN the Duo simulator reports the open display's window size THE SYSTEM SHALL report a value at or above `SIZE.twoPaneMinWidth`, or the constant SHALL be corrected to that measurement before the code merges.
-
-### 5.6 The exact change
-
-`shared/constants.ts`, inside `SIZE`, beside `contentMaxWidth`:
-
-```ts
-  /**
-   * Width at or above which the two schedules show side by side. Recorded default: the
-   * Duo's inner display is wider than this and its outer display narrower, and it is two
-   * iPhone SE columns wide. Correct it from the open display's measured window size.
-   */
-  twoPaneMinWidth: 600,
-```
-
-`app/Navigation.tsx`, replacing the single `<PagerView>` block:
-
-```tsx
-  const { width } = useWindowDimensions();
-  const twoPane = showsBothSchedules(width);
-```
-
-rendering, in place of lines 84 to 119's pager and dots block:
-
-```tsx
-      {twoPane ? (
-        <View style={styles.panes}>
-          <MemoScreen type={ScheduleType.Standard} />
-          <MemoScreen type={ScheduleType.Extra} />
-        </View>
-      ) : (
-        <PagerView
-          style={{ flex: 1 }}
-          initialPage={0}
-          layoutDirection={direction}
-          offscreenPageLimit={1}
-          overdrag={true}
-          scrollEnabled={!overlayIsOn}
-          onPageScrollStateChanged={handlePageScrollState}
-          onPageSelected={handlePageSelected}>
-          <MemoScreen type={ScheduleType.Standard} />
-          <MemoScreen type={ScheduleType.Extra} />
-        </PagerView>
-      )}
-```
-
-with the dots row wrapped in `{!twoPane && ( ... )}` inside `styles.dotsContainer`, and one
-new style:
-
-```ts
-  panes: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-```
-
-and `showsBothSchedules` as a pure function beside the component, or in
-`shared/schedulePanes.ts` if the audit wants it reviewed on its own:
-
-```ts
-/**
- * Whether the window holds both schedules side by side. Apple's Duo guidance gives the inner
- * display a regular-width window and the outer display a compact-width one, so the window
- * itself decides and no pose is read.
- */
-export const showsBothSchedules = (width: number): boolean => width >= SIZE.twoPaneMinWidth;
-```
+The step writes into `LOG.md` the readings table with the measured values, the process ids across a fold, the evidence paths, and this finding in one paragraph: the open display is a 951 by 669 point landscape panel; the portrait lock makes iOS grant the app a 469 by 669 point portrait window centred in it; inside that window one schedule fills the width because the 500 point cap never binds; no Duo code path exists and none is added; filling the panel would require landscape support, which changes every iPhone and iPad and is excluded by her order.
 
 ## 6. Steps
 
-- [ ] Step 1 - The device-free layout change (code, weight 2)
-- [ ] Step 2 - The toolchain (machine, weight 1)
-- [ ] Step 3 - The Duo proof (device, weight 3)
+- [ ] Step 1 - The Duo glass matrix and the record (device, weight 3)
 
-### Step 1 - The device-free layout change
-
-Requirements: R1.1, R1.2, R1.3, R1.4, R2.1, R3.1, R4.1.
-Branch `feat/116-two-panes` off `uat`. Files: `shared/constants.ts`, `app/Navigation.tsx`,
-`__tests__/app/Navigation.test.tsx`.
-
-Red tests, in the existing suite, using `Glow.test.tsx`'s own window pattern
-(`act(() => Dimensions.set({ window: { width, height, scale: 3, fontScale: 1 } }))` before
-`render`):
-
-1. at 440 by 956 the tree holds `testID='pager'` and no second schedule's rows;
-2. at 626 by 890 the tree holds no `testID='pager'`, holds the page dots' container, and
-   holds both the Standard and the Extras rows;
-3. at 626 by 890 the two panels are siblings of one horizontal container;
-4. resizing from 440 by 956 to 626 by 890 inside one mounted tree swaps the layouts.
-
-The nine existing cases must stay green with no edit. Green run: `npx tsc --noEmit`,
-`npx biome check . --error-on-warnings`, then the suite. Break script: make
-`showsBothSchedules` return `false` unconditionally and confirm cases 2 to 4 fail and 1
-passes. Version: the next patch. Commit message
-`<VERSION> - feat(app): both schedules side by side on a window wide enough for two panels`.
-
-### Step 2 - The toolchain
-
-Requirements: none; it unblocks step 3. Machine work, under `$HOME/athan-gitree/build.lock`.
-Section 7.1 is the procedure. It needs the owner: installing Xcode 27.1 takes an Apple ID.
-
-### Step 3 - The Duo proof
-
-Requirements: R3.1, R5.1. A device step, dispatched alone. Section 7.2 is the procedure. Its
-first two readings feed section 4.4 and may correct `twoPaneMinWidth` before step 1 merges;
-if they do, rerun step 1 with the corrected constant and the corrected test expectations
-before the proof.
+Step 1 is specified in `steps/01-duo-glass-matrix.md`.
 
 ## 7. Device proof
 
-### 7.1 The toolchain upgrade procedure
+### 7.1 The vehicle
 
-Each command's output is saved under `$HOME/athan-gitree/sessions/116/toolchain/`. Hold
-`$HOME/athan-gitree/build.lock` for the whole procedure. Nothing here builds the app.
+Resolve the device once and keep the value in the shell:
 
-1. Read the current state and save it: `xcodebuild -version`, `xcode-select -p`,
-   `xcrun simctl list runtimes`, `xcrun simctl list devicetypes | grep -i duo`,
-   `df -h "$HOME"`. Expected today: Xcode 27.0 (27A266a), iOS 18.5 and iOS 26.5 runtimes
-   only, no Duo device type, 24 GiB free. The free space is the constraint to watch: Xcode
-   plus an iOS 27.1 runtime is a large download.
-2. **Owner step.** Install Xcode 27.1 from the App Store, or from
-   `developer.apple.com/download/all` after signing in. This is the credential stop: it
-   cannot be scripted without her Apple ID, and the lane that took this ticket reported
-   rather than asked.
-3. Install the iOS 27.1 simulator runtime: `xcodebuild -downloadPlatform iOS -buildVersion 27.1`.
-   If the version is refused, `xcodebuild -downloadPlatform iOS` and read the version it
-   installs.
-4. Point the toolchain at it and confirm the SDK: `sudo xcode-select -s
-   /Applications/Xcode.app` (adjust if the install lands elsewhere), then
-   `xcodebuild -showsdks | grep -i "iphoneos27"`. Expected: an `iphoneos27.1` SDK.
-5. Confirm the Duo: `xcrun simctl list devicetypes | grep -i "iPhone Duo"`. Expected:
-   `com.apple.CoreSimulator.SimDeviceType.iPhone-Duo`.
-6. Create the device: `xcrun simctl create Athan-Duo com.apple.CoreSimulator.SimDeviceType.iPhone-Duo <the iOS 27.1 runtime id from step 3>`.
-7. Re-read the repo's own expectation: `xcodebuild -showsdks`, `node -p
-   "require('./node_modules/expo/package.json').version"`. Expected: `58.0.13`. If a newer
-   expo is on `uat` by then, take it, because row 111 re-pins on every attempt.
-8. Prebuild, in the **main tree only** and only after step 1's code is merged, because the
-   build scripts hardcode that path: `app.json` first, then the repo's own
-   `build-mock.zsh`. Never `npx expo prebuild` bare: it drops the env vars and the prebuild
-   order the scripts carry (`ai/AGENTS.md`, Commands).
-9. Write the build log's last line into `LOG.md`. Success ends `BUILD-MOCK OK`.
+```bash
+SIMULATOR_UDID="$(xcrun simctl list devices | grep 'iPhone Duo' | head -1 | sed -E 's/.*\(([0-9A-F-]{36})\).*/\1/')"
+printf '%s\n' "$SIMULATOR_UDID"
+```
 
-### 7.2 The Duo reading procedure
+Expected: one UUID. Empty output is a STOP.
 
-Read `e2e/README.md`'s Gotchas section first. The Duo has no physical device, so this is a
-simulator session and every reading is a `simctl` or log line, never a screenshot claim.
+Confirm the installed app and its version:
 
-1. Boot the device: `xcrun simctl boot Athan-Duo`, then `xcrun simctl list devices | grep Duo`
-   and record the state. Device Hub replaces Simulator.app in Xcode 27 (`DeviceHub.app` is
-   present in this machine's Xcode 27.0 too, at
-   `/Applications/Xcode.app/Contents/Applications/DeviceHub.app`); pose changes are made
-   there, not in `Simulator.app`.
-2. Install and launch the mock build with agent-device (`ai/AGENTS.md`, Tool routing).
-3. Closed reading: with the device closed, record the reported window size and whether one
-   schedule fills the outer display. This is section 4.4's reading 2 for the compact case.
-4. Open reading: unfold in Device Hub, then record the reported window size. Expected from
-   Apple's figures: 626 by 890 points. **This value decides `SIZE.twoPaneMinWidth`.** If it is
-   below 600, correct the constant and rerun step 1 before continuing.
-5. Portrait-lock reading: while open, record whether the app occupies the full inner display
-   or is letterboxed with empty space beside a portrait-shaped window. If it is letterboxed,
-   `app.json`'s `"orientation": "portrait"` is the cause, removing it is an owner decision
-   because it unlocks rotation on every iPhone and iPad, and the ticket stops for her answer.
-6. Partition reading: partially fold the device through Device Hub and record whether content
-   is clipped by the fold. Two panels meeting at the centre avoid the folding region by
-   construction; any clipping here is new information.
-7. Acceptance readings, one per criterion:
-   - R1.2 and R3.1: both schedules' rows are on screen at once, Standard leading.
-   - R1.3: no page dots.
-   - R1.4: closing the device returns to the pager with no relaunch and no flash.
-   - R2.1: under an RTL locale the Standard panel stays at the start edge.
-8. Turn automatic time back on and leave the simulator in the state section 7.1's log names.
+```bash
+xcrun simctl get_app_container "$SIMULATOR_UDID" com.example.athan
+APP_PATH="$(xcrun simctl get_app_container "$SIMULATOR_UDID" com.example.athan)"
+/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP_PATH/Info.plist"
+```
+
+Expected: a path under the simulator's data container, and a version of 2.0.1054 or higher. A missing app is a STOP: the build lock is parked and this lane does not build.
+
+### 7.2 The matrix
+
+Use the `agent-device` MCP with a session named `lane-116`. Open the app once:
+
+```
+open com.example.athan --udid <SIMULATOR_UDID> --session lane-116 --foreground
+```
+
+Then, for each pose, take the reading, the screenshot and the interaction:
+
+| Order | Command | Expected reading |
+| --- | --- | --- |
+| 1 | `fold closed` | the pose applies; the tool may report `no sample to verify it` because the Duo simulator exposes no hinge angle. Confirm from the next snapshot. |
+| 2 | `snapshot -i` | application rect 466 by 678; labels carry one schedule only; a `Settings` label |
+| 3 | `screenshot $HOME/athan-gitree/sessions/116/duo-closed.png` | 466 by 678 |
+| 4 | `swipe` from 350,300 to 250,300 | the Extras schedule's rows replace the Standard rows; no second schedule beside them |
+| 5 | `press` a row ref | the overlay opens; its explanation box sits inside the window |
+| 6 | `press` the close target | the overlay closes |
+| 7 | `press` the Settings ref | the settings sheet opens inside the window; scroll to the last row |
+| 8 | `fold open` | the pose applies; the next snapshot reports the open window |
+
+Repeat rows 2 to 7 in the open pose, expecting a 951 by 669 display and a 469 by 669 app window. Read the application rect from `snapshot -i`; read the display size from `screenshot`.
+
+Fold transitions, in this order:
+
+1. open the overlay in the open pose, record the app's pid from a snapshot's first node;
+2. `fold closed`, snapshot: the pid is unchanged and the overlay is still open;
+3. `fold open`, snapshot: the pid is unchanged and the overlay is still open;
+4. close the overlay.
+
+Cold launch in the open pose:
+
+1. `open com.example.athan --udid <SIMULATOR_UDID> --session lane-116 --foreground --relaunch`;
+2. `snapshot -i`: application rect 469 by 669, Standard schedule.
+
+### 7.3 Evidence
+
+Save every screenshot under `$HOME/athan-gitree/sessions/116/` with the name `duo-<pose>-<screen>.png`. Never commit a screenshot. Record every reading in `LOG.md` as it lands, with its capsule name and the value read.
+
+### 7.4 Restore
+
+Leave the simulator folded closed and the app on the Standard schedule. Leave iOS automatic time alone: this matrix changes no clock. The simulator stays booted.
+
+### 7.5 Why the installed build is the vehicle
+
+The app surface is unchanged since the installed build. The planning session verified:
+
+```bash
+git log --oneline 8efd0b91..3407e984 -- app components hooks shared stores
+```
+
+prints no path under those trees: the range's app-surface changes are widget strings, widget tests and docs. The build lock at `$HOME/athan-gitree/build.lock` is a parked directory with no holder and no build process; the lane does not reap it and takes no build.
 
 ## 8. Records
 
 Findings text for `LOG.md` under `## Findings`:
 
-- The Duo simulator exists only in Xcode 27.1, and this machine has Xcode 27.0 with no Duo
-  device type and no iOS 27.x runtime. The ticket's acceptance cannot be taken here.
-- The installing of Xcode 27.1 needs the owner's Apple ID, so the lane reported instead.
-- `@expo/ui`'s `ArrangementView` is not usable in this repository: it is banned outside
-  widget layouts and its Swift guard needs the iOS 27.1 SDK to lay anything out.
-- Our own native and JavaScript code is already clear of every pattern Apple's Duo checklist
-  names: no `UIScreen.main`, no orientation-driven layout, no idiom or size-class check
-  anywhere under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/`.
-- The app is portrait-locked, so the open display's window width is the one reading that can
-  force an owner decision.
+- The closed display grants the app all 466 by 678 points and one schedule fills it, with the page dots and the Settings button on screen.
+- The open display is a 951 by 669 point landscape panel. The portrait lock makes iOS grant the app a 469 by 669 point portrait window centred in it, with 241 points of display each side.
+- Inside that window the app lays out one schedule at 469 points wide, below the 500 point `SIZE.contentMaxWidth` cap, so the cap never binds and no wider layout is reachable on this device.
+- Folding and unfolding keeps the process alive and re-lays the content in place; an open overlay survives the fold.
+- The code carries no Duo, fold, hinge, idiom or size-class path before this ticket and gains none after it.
+- Filling the open panel needs landscape support. That turns rotation on for every iPhone and iPad, which her order excludes, and the fixed stack clips at an iPhone's landscape height.
+- The range changes no file under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/`; every other form factor renders what it rendered before.
 
-Queue cell text the lead applies on DONE: none, the ticket does not reach DONE in this lane.
-The row's BLOCKED text and its Waiting-on are written by this lane, in section 9.
+Queue cell text the lead applies on DONE: the audit writes it from `LOG.md` in the same commit that deletes this folder.
 
 ## 9. Push
 
-None. The lane never pushes. The row's status and blocker are written by this lane so the
-next session reconstructs the ticket from the repository alone.
+None. The lane never pushes; the orchestrator pushes reviewed commits.
 
 ## 10. When something goes wrong
 
 | Symptom | Action |
 | --- | --- |
-| `xcodebuild -downloadPlatform iOS -buildVersion 27.1` refuses the version | Run it without `-buildVersion` and read the version it installs; if that is not 27.1, stop and report the version it offered. |
-| Free disk space drops below the size of the runtime being downloaded | Stop the download, delete the iOS 18.5 runtime if it is unused by this repo's flow, and report. |
-| The Duo device type is absent after the Xcode 27.1 install | Stop. The Xcode install, not the repository, is wrong. |
-| The open display's measured width is below `SIZE.twoPaneMinWidth` | Correct the constant to the measurement, rerun step 1's red tests with the new expectation, then continue. |
-| The open display letterboxes the app | Stop and report to the owner: the portrait lock must come off, and that decision is hers. |
-| Step 1's merge conflicts on `ai/plans/README.md` or the three version files | Lane weather: abort, rebase onto `uat`, keep both lanes' rows and the higher version, retry once, then stop. |
-| A prebuild or build is already running | Never run two at once. Wait in `sleep 15` cycles for `$HOME/athan-gitree/build.lock`, and if it is still held after 20 minutes, rotate. |
+| The pre-flight reports no iPhone Duo simulator | STOP: the device type ships with Xcode 27.1 and its absence is a toolchain fault, not a repository one. |
+| `fold` reports `no sample to verify it` | Continue: the pose applies and the next snapshot or screenshot proves it. Record the message once. |
+| The open application rect is outside 465 to 473 by 665 to 673 | Record the value, take a screenshot, and STOP: the presentation changed from the planning reading and the plan's criteria need a replan against the new numbers. |
+| The closed application rect is not 466 by 678 | Record the value and STOP for the same reason. |
+| The fold changes the process id | STOP: a relaunch on fold would break the overlay and the countdown continuity, and the plan does not cover it. |
+| The app opens a second schedule, a hinge gap or a fold-side split | STOP: the app carries a Duo path the planning read did not see, and the plan must be rewritten. |
+| The installed app is missing or below 2.0.1054 | STOP: the build lock is parked and this lane does not build. Report the state. |
+| `yarn validate` fails on a file the range does not touch | STOP and quote the failure; the plan expects a green tree. |
+| The merge conflicts on `ai/plans/README.md` or the version files | Lane weather: abort, rebase onto `uat`, keep both lanes' rows and the higher version, retry once, then STOP. |
 
-Per-step restore: step 1 touches `shared/constants.ts`, `app/Navigation.tsx` and one test
-file, and restores each with `git checkout -- <file>`.
+Per-step restore: the step changes no source file. `git checkout -- <file>` restores `ai/plans/README.md`, `app.json`, `package.json` and `LOG.md` if a commit is abandoned.
 
 ## 11. Subagents
 
-Planning and delivery run through the `athan-lane`, `athan-executor` and `athan-reviewer`
-workers named in `.opencode/agents/`, with `explore` for fact questions and `vision` for any
-image a worker cannot see. Nothing else.
+Planning: this lane ran the fact reads itself, because the device session and its claimed simulator belong to it. Delivery: one `athan-executor` batch (the single step, weight 3) or the lane itself when the device session cannot be handed over; audit dispatches the `athan-reviewer` workers named by the lead. Every worker may call `vision` for an image it cannot see.
 
 ## 12. Report to the owner
 
-The Duo ticket is blocked on one thing, and it is not in the repository: the Duo simulator
-ships with Xcode 27.1, and this machine runs Xcode 27.0. Installing 27.1 needs your Apple ID,
-so I did not install it. Everything that could be done without it is done and recorded here:
-the row's fact set is corrected against Apple's own documentation, our code is verified clean
-of every pattern Apple's Duo checklist names, the two-panel change is specified down to the
-code and its tests, and the toolchain and device procedures are written as commands. One
-reading can change the design and one can need your answer: the open display's real window
-width sets the two-panel threshold, and if the current portrait lock letterboxes the open
-display then unlocking rotation is your call, because it turns rotation on for every iPhone
-and iPad.
+The Duo needs no code. On the simulator built with Xcode 27.1 the app already shows one schedule on both displays through its shipped layout: full screen when the device is folded, and a centred portrait window of 469 by 669 points when it is open on a 951 by 669 display. That centred window is iOS's presentation for a portrait-locked app, not a layout fault; filling the open panel would need landscape support, which turns rotation on for every iPhone and iPad and is excluded by your order. Folding and unfolding keeps the app alive with its overlay open, and both schedules, the overlay and the settings sheet work inside the window. Nothing under the app's layout path changed, so no other form factor moves.
 
 Progress:
 
 | Task | Status |
 | --- | --- |
-| Source verification of `expo-hinge`, `@expo/ui` `ArrangementView`, Xcode and the runtimes | done |
-| Our code audited against Apple's Duo resizability checklist | done |
-| The two-panel change and its tests specified | done |
-| The toolchain upgrade procedure | done |
-| Xcode 27.1 install | blocked on your Apple ID |
-| The Duo simulator proof | blocked on the install |
+| Glass readings on both Duo displays | done at planning, re-run in step 1 |
+| The portrait-lock cause | measured and recorded |
+| Production code change | none by decision |
+| The record in row 116 | step 1, then the audit |

@@ -1,0 +1,10 @@
+    "orientation": "portrait",
+    "scheme": "athan",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icons/config/icon-ios.png",
+    "backgroundColor": "#2c1c77",
+    "ios": {
+      "icon": "./assets/icons/config/icon-ios.png",
+      "supportsTablet": true,
+      "requireFullScreen": true,
+      "config": {
