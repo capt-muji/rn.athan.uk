@@ -1,0 +1,3 @@
++    context.setObject((Locale.current.language.languageCode?.identifier ?? "en") as NSString, forKeyedSubscript: "__expoWidgetDeviceLocale" as NSString)
++
+     self.context = context
