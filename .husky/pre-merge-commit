@@ -1,1 +1,1 @@
-node scripts/check-version-uniqueness.js --no-candidate
+node scripts/check-version-uniqueness.js --no-candidate && node scripts/check-version-discipline.js --merge-check

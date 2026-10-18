@@ -27,6 +27,10 @@ import { join } from 'node:path';
 const ROOT = join(__dirname, '..', '..');
 const GRADLE_PATH = join(ROOT, 'android', 'app', 'build.gradle');
 
+// One constant for the live assertion and the shape contract: a weakened
+// pattern must redden both at once.
+const NORMAL_FORM = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
+
 /** Read separately from each file on purpose: a shared reader would agree with itself. */
 const packageJsonVersion = (): unknown => JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version;
 
@@ -52,7 +56,15 @@ describe('version lockstep', () => {
     // Guards the assertions below from passing on two matching undefineds if the
     // key is ever moved or renamed.
     expect(typeof appJsonVersion()).toBe('string');
-    expect(appJsonVersion()).toMatch(/^\d+\.\d+\.\d+/);
+    expect(appJsonVersion()).toMatch(NORMAL_FORM);
+  });
+
+  it('rejects a suffixed or zero-padded version shape', () => {
+    // The same constant the live assertion enforces: weakening the pattern
+    // reddens this case too, not just the live catch.
+    expect(NORMAL_FORM.test('2.0.1053-rc1')).toBe(false);
+    expect(NORMAL_FORM.test('02.0.1')).toBe(false);
+    expect(NORMAL_FORM.test('2.0.1053')).toBe(true);
   });
 
   it('keeps package.json and app.json on the same version', () => {
