@@ -66,4 +66,28 @@ kept every file, the intermediate commits left the branch, and the READY commit 
 2.0.1017, keeping version uniqueness clean for `scripts/check-version-uniqueness.js`.
 Nothing on `uat` was rewritten.
 
+### Step 01 — tables
+
+Worktree lane-137, branch `step-137/tables` off uat b26b5715, re-cut uncommitted
+after ticket 136's planning merge took 2.0.1020 mid-flight (the trunk repair 070fe95f
+was already in the base), preflight `PREFLIGHT OK` with both phones attached,
+all six anchors counting 1. `tables-137.py` exit 0, three font blocks, full output
+verbatim in `EXPECTATIONS.md`. Tail lines:
+
+```
+  size 15 3T scale 2.625: hhea=46.14/46px typo=41.34/41px win=47.26/47px bbox=52.26/52px
+  size 15 XS scale 3.0: hhea=52.73/53px typo=47.24/47px win=54.01/54px bbox=59.72/60px
+  size 22 3T scale 2.625: hhea=67.68/68px typo=60.63/61px win=69.31/69px bbox=76.64/77px
+  size 22 XS scale 3.0: hhea=77.34/77px typo=69.29/69px win=79.21/79px bbox=87.59/88px
+```
+
+RN citation re-checks, all four greps printing: `CustomLineHeightSpan` at 45, 381,
+617; `setIncludePad` at 859; `setIncludeFontPadding(true)` at 136;
+`enumerateLineFragmentsForGlyphRange` at 213, 332, 383, 543. Expectation surfaces:
+sheet title 22 Rubik-Medium unpinned; sheet subtitle 14 Rubik-Regular unpinned;
+settings card title 14 Rubik-Medium unpinned; help question 15 Rubik-Medium pinned 23;
+help answer 13 Rubik-Regular pinned 20.
+
+session: ses_eb3792cc0ffetY7Cu1OPrC5yJ2
+
 
