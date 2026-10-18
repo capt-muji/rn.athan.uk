@@ -14,7 +14,12 @@
  * only with the owner's recorded order, naming the queue row and date in
  * `reason`, and a major without that record is a revertible audit finding.
  *
- *   node scripts/check-version-discipline.js [--message-file <file>] [--allowlist <file>]
+ * The --merge-check arm serves the pre-merge-commit hook: at that moment the
+ * index already holds the merge result, and a merge whose version does not
+ * strictly exceed HEAD's would take the line backward, so it is refused and
+ * the lane rebases and renumbers onto the higher line.
+ *
+ *   node scripts/check-version-discipline.js [--message-file <file>] [--allowlist <file>] [--merge-check]
  */
 const { execFileSync } = require('node:child_process');
 const fs = require('node:fs');
@@ -30,6 +35,7 @@ const flag = (name, fallback) => {
 };
 const MESSAGE_FILE = flag('--message-file', null);
 const ALLOWLIST = flag('--allowlist', path.join(__dirname, 'version-major-allowlist.json'));
+const MERGE_CHECK = args.includes('--merge-check');
 
 const git = (...cmdArgs) => execFileSync('git', cmdArgs, { cwd: CWD, encoding: 'utf8' });
 
@@ -37,6 +43,49 @@ const fail = (reason) => {
   process.stdout.write(`DISCIPLINE FAIL ${reason}\n`);
   process.exit(1);
 };
+
+const mergeFail = (reason) => {
+  process.stdout.write(`MERGE VERSION FAIL ${reason}\n`);
+  process.exit(1);
+};
+
+const readVersion = (spec) => {
+  try {
+    return JSON.parse(git('cat-file', '-p', spec)).expo.version;
+  } catch {
+    return null;
+  }
+};
+
+const parseSegments = (version) => {
+  const [major, minor, patch] = version.split('.').map(Number);
+  return { major, minor, patch };
+};
+
+if (MERGE_CHECK) {
+  const headVersion = readVersion('HEAD:app.json');
+  if (headVersion === null) mergeFail('no app.json at HEAD');
+  // The pre-merge index is the merge result; the worktree may still hold
+  // pre-merge bytes, so the incoming version is the staged blob alone.
+  let incomingVersion = null;
+  try {
+    incomingVersion = JSON.parse(git('cat-file', '-p', ':app.json')).expo.version;
+  } catch {
+    mergeFail('no staged app.json');
+  }
+  const head = parseSegments(headVersion);
+  const incoming = parseSegments(incomingVersion);
+  // Weights rank every legal segment step inside one major line; the patch
+  // tail is already past a thousand.
+  const headTotal = head.major * 1e12 + head.minor * 1e6 + head.patch;
+  const incomingTotal = incoming.major * 1e12 + incoming.minor * 1e6 + incoming.patch;
+  const increasing = incoming.major > head.major || (incoming.major === head.major && incomingTotal > headTotal);
+  if (!increasing) {
+    mergeFail(`${headVersion} -> ${incomingVersion} (rebase and renumber onto the higher line)`);
+  }
+  process.stdout.write(`MERGE VERSION OK ${headVersion} -> ${incomingVersion}\n`);
+  process.exit(0);
+}
 
 const mergeHeadRefExists = () => {
   try {
@@ -65,14 +114,6 @@ const displayType = (text) =>
   ['fix', 'docs', 'build', 'merge'].find((t) => text.startsWith(t) && /^[(:\s]/.test(text.slice(t.length)));
 const type = /^feat(?=[(:\s])/.test(stripped) ? 'feat' : (displayType(stripped) ?? 'untyped');
 
-const readVersion = (spec) => {
-  try {
-    return JSON.parse(git('cat-file', '-p', spec)).expo.version;
-  } catch {
-    return null;
-  }
-};
-
 const parentVersion = readVersion('HEAD:app.json');
 // The commit records the index, not the worktree: the bump being committed is
 // the staged blob, and only its absence falls back to the worktree file.
@@ -88,10 +129,6 @@ if (parentVersion === null || candidateVersion === null) {
   fail(`cannot read a version (parent ${parentVersion}, candidate ${candidateVersion})`);
 }
 
-const parseSegments = (version) => {
-  const [major, minor, patch] = version.split('.').map(Number);
-  return { major, minor, patch };
-};
 const parent = parseSegments(parentVersion);
 const candidate = parseSegments(candidateVersion);
 const sameVersion = (a, b) => a.major === b.major && a.minor === b.minor && a.patch === b.patch;
