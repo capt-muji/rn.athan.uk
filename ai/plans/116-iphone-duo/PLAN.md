@@ -175,7 +175,7 @@ The step writes into `LOG.md` the readings table with the measured values, the p
 
 ## 6. Steps
 
-- [ ] Step 1 - The Duo glass matrix and the record (device, weight 3)
+- [x] Step 1 - The Duo glass matrix and the record (device, weight 3)
 
 Step 1 is specified in `steps/01-duo-glass-matrix.md`.
 
