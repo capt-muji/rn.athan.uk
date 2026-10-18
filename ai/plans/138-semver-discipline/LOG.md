@@ -181,6 +181,28 @@ script, then version/commit/merge; step 4 after).
 
 session: ses_eb1418e09ffeq7HHXZZKDx98yk
 
+### Step 3 - DONE (after the plan repair `8446b2b5`)
+
+Branch `step/138-lockstep-shape` off `lane/138` (parent `8446b2b5`,
+2.0.1060). Anchor `lockstep-shape.md` counts 1. The saved patch applied
+clean (the tightened live assertion plus the shape-contract case, own regex
+copy so the break perl's first-occurrence loosening hits the live half
+only).
+
+Red re-proof: `app.json`/`package.json` temporarily `2.0.1054-rc1`, suite
+`Tests: 1 failed, 3 passed, 4 total`, failing line identical to the one
+recorded in the STOPPED entry (`Expected pattern:
+/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/` / `Received string:
+"2.0.1054-rc1"`), reverted, `Tests: 4 passed, 4 total`. tsc 0, biome 0,
+`yarn validate` 0 (`Tests: 2 skipped, 5779 passed, 5781 total`).
+
+Break (repaired script): `BREAK LOCKSTEP RED (loosened assertion let the
+suffix through)` / `BREAK LOCKSTEP GREEN` / `BREAK OK` / `ALL AS EXPECTED: 1`.
+
+Version: 2.0.1061 (parent 2.0.1060 + one patch), uniqueness green pre-bump
+(`VERSIONS OK 42 commits across 8 refs`), version.lock held and released.
+
+
 ### Step 3 - RESUMED (plan repair, agent-ruled 2026-10-18)
 
 Question: the step 3 break script's perl could not mutate any correct suite

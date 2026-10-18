@@ -190,7 +190,7 @@ Checklist (copied into `LOG.md` and ticked as each step lands):
 
 - [x] Step 1 - the discipline gate and the major allowlist (`steps/01-discipline-script.md`)
 - [x] Step 2 - the merge monotonicity gate (`steps/02-merge-monotonicity.md`)
-- [ ] Step 3 - the lockstep shape assertion (`steps/03-lockstep-shape.md`)
+- [x] Step 3 - the lockstep shape assertion (`steps/03-lockstep-shape.md`)
 - [ ] Step 4 - the workflow text and the row's consistency sweep (`steps/04-workflow-text.md`)
 
 ## 7. Device proof
