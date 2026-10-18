@@ -1,0 +1,3 @@
+    "validate": "tsc --noEmit && biome check . --error-on-warnings && jest --silent --coverage",
+    "format": "biome check --write .",
+    "format:check": "biome check ."

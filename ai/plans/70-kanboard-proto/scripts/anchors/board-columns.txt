@@ -1,0 +1,3 @@
+<script>
+  const COLUMNS = ['Backlog', 'Planning', 'Ready', 'In progress', 'Blocked', 'Audit', 'Owner-led', 'Deferred'];
+  let board = null;
