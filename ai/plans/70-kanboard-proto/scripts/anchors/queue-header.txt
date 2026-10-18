@@ -1,3 +1,0 @@
-| Order | Ticket | Status |
-| --- | --- | --- |
-| 1 | An alert does what its bell shows | DONE |
