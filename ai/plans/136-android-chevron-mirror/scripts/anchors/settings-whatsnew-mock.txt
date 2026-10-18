@@ -1,0 +1,6 @@
+let mockVisibleWhatsNew: WhatsNewRelease | null = null;
+jest.mock('@/shared/whatsNew', () => ({
+  currentVisibleWhatsNew: () => mockVisibleWhatsNew,
+}));
+
+const RELEASE_WITH_NOTES: WhatsNewRelease = {
