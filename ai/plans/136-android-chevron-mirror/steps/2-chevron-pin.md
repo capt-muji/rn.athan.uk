@@ -93,9 +93,7 @@ const helpChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> => {
   return styles;
 };
 
-it.each(['en', 'ar'] as const)(
-  'pins every settings-sheet chevron paragraph under %s',
-  async (locale) => {
+it.each(['en', 'ar'] as const)('pins every settings-sheet chevron paragraph under %s', async (locale) => {
   const styles = await settingsChevronStylesUnder(locale);
 
   // The authored codepoint is the locale's own (the JS half lives in
@@ -109,9 +107,7 @@ it.each(['en', 'ar'] as const)(
   }
 });
 
-it.each(['en', 'ar'] as const)(
-  'pins the help action chevron paragraph under %s',
-  async (locale) => {
+it.each(['en', 'ar'] as const)('pins the help action chevron paragraph under %s', async (locale) => {
   const styles = await helpChevronStylesUnder(locale);
 
   expect(styles).toHaveLength(1);

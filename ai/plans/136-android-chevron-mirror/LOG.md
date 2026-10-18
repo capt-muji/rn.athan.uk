@@ -98,3 +98,14 @@ repaired block was re-verified in the worktree: tsc clean, biome clean, red
 4/4 against the unpinned tree (all direction assertions, Received:
 undefined). The executor's STOP is recorded; its unfinished patch was
 restored away per its own recovery.
+
+### Plan repair two (2026-10-18, agent-ruled by the lane)
+
+The single-column it.each repair left the calls two-line; at 120 columns
+biome's formatter demands them joined, and a verbatim test is never edited.
+Ruled: join both calls to one line each - pure whitespace, every token,
+name and assertion unchanged. The lane verified the exact final form against
+every gate before this commit: biome check clean AND biome --write output
+byte-identical to the plan block, tsc 0 errors, red 4/4 against the unpinned
+tree. The executor's second STOP is recorded; its evidence sits in
+sessions/136/step2-biome.log.
