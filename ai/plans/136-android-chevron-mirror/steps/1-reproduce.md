@@ -63,6 +63,12 @@ Procedure:
        point: '540, 1830'
    - waitForAnimationToEnd:
        timeout: 2500
+   - swipe:
+       start: '540, 1400'
+       end: '540, 700'
+       duration: 400
+   - waitForAnimationToEnd:
+       timeout: 1500
    - tapOn: 'Language'
    - waitForAnimationToEnd:
        timeout: 2500
@@ -75,8 +81,10 @@ Procedure:
    ```
 
    The settings button point is the atlas row; every row tap goes by text.
-   If `London, UK` is absent after 15 s, take one screenshot, read it, and
-   proceed from what it shows; if the Arabic wait times out, STOP.
+   If `London, UK` is absent after 15 s, take one screenshot and read it:
+   the home screen with the location card missing, continue; anything that is
+   not the app's home screen, STOP and transcribe. If the Arabic wait times
+   out, STOP.
 5. Open Settings and capture the defect:
 
    ```bash
@@ -93,8 +101,9 @@ Procedure:
    with `input swipe 540 1400 540 700 400` and capture
    `2.0.996-ar-settings-scrolled.png` to cover the rows below the fold.
    Transcribe each read.
-6. Switch back to English (the same flow's second half: settings tap,
-   `tapOn: 'اللغة'`, `tapOn: 'English'`, wait for `Fajr`), open Settings,
+6. Switch back to English (the same flow's second half: settings tap, the
+   same sheet scroll, `tapOn: 'اللغة'`, `tapOn: 'English'`, wait for `Fajr`),
+   open Settings,
    capture `2.0.996-en-settings.png`. Expected: every chevron points RIGHT
    with the English layout (the before-image for R3.3's identity read).
 7. Press HOME, `am kill`, leave automatic time on (it was never off), remove
@@ -112,8 +121,10 @@ layout en. Shots: sessions/136/2.0.996-ar-settings.png (+scrolled),
 session: <ses_id>
 ```
 
-Version and commit: none on app files; the docs commit bumps the version
-next after the planning commits and carries `PLAN.md` (unchanged), `LOG.md`
+Version and commit: none on app files; the docs commit bumps the next free
+version (`git fetch -q origin uat` first, then
+`node scripts/check-version-uniqueness.js` clean, then the next patch after
+`uat`'s `package.json`) and carries `PLAN.md` (unchanged), `LOG.md`
 and the queue row set to `IN PROGRESS, step 1`, message
 `<VERSION> - docs(plans): ticket 136 step 1, the defect reproduced on the 3T`.
 Merge per the lane protocol under `uat.lock`.

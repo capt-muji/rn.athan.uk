@@ -9,25 +9,26 @@ Anchor check: none (no repo anchors change after step 2).
 Goal: the merged fix proven on the 3T under both switches, and the build left
 installed for the owner's read.
 
+Branch: `docs/136-step3-proof` off `uat` in the lane worktree.
+
 Build, lane-run in the main tree under `$HOME/athan-gitree/build.lock` (never
 two builds at once; `build-mock.zsh` cannot produce a FleetTest id because it
 hard-unsets `EXPO_ANDROID_SUFFIX`, measured in the qibla handoff): the
 row-134 recipe.
 
+0. Create the write targets:
+   `mkdir -p $HOME/athan-gitree/sessions/136/logs
+   $HOME/athan-gitree/builds/fleettest-136
+   $HOME/athan-gitree/worktrees/.tmp-fleettest-136`.
+
 1. Resolve the merged uat sha: `git -C $HOME/repos/rn.athan.uk rev-parse uat`.
 2. Scratch worktree `git -C $HOME/repos/rn.athan.uk worktree add --detach
    $HOME/athan-gitree/worktrees/fleettest-136 <sha>`; symlink `node_modules`
    to the main checkout's after confirming the two `yarn.lock` hashes match.
-3. Write the worktree's `.env` from the committed `.env.example` with the
-   ENV and API_KEY lines removed and these appended:
-
-   ```
-   EXPO_PUBLIC_ENV=local
-   EXPO_PUBLIC_API_KEY=key
-   ```
-
-   (the `.env.example` body already carries the package, app-id and widgets
-   lines the standard mock build relies on; nothing else is added).
+3. Copy the committed `.env.example` to the worktree's `.env` unchanged
+   (it already carries `EXPO_PUBLIC_ENV=local`, the placeholder key, the
+   package and app id, and the widgets flags at 1, the standard mock build's
+   set).
 4. Prebuild with the suffix exported in this shell, never as an argument:
 
    ```bash
