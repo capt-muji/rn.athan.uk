@@ -93,7 +93,7 @@ function unparseableRows(markdown) {
 
 function descriptionOf(row, ticket) {
   const statusText = collapse(row.statusCell ?? ticket.statusPhrase).slice(0, STATUS_TEXT_CAP);
-  const needs = ticket.needs.length > 0 ? ticket.needs.join(', ') + ` (unmet: ${ticket.unmet.join(', ')})` : '-';
+  const needs = ticket.needs.length > 0 ? `${ticket.needs.join(', ')} (unmet: ${ticket.unmet.join(', ')})` : '-';
   const waiting = ticket.awaitingOwner && ticket.waitingOn !== null ? ticket.waitingOn : '-';
   const lines = [
     `Status: ${statusText}`,
