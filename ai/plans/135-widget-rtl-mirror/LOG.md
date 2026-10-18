@@ -106,3 +106,58 @@ touches this lane.
 
 ### Step 00 — planning
 session: pending
+
+### Step 01 — android letters (red recorded 2026-10-18)
+
+Branch `fix/135-android-letters` off `uat` (b5bee6a9, 2.0.1022) in the lane
+worktree. Pre-flight `PREFLIGHT OK` (all eight anchors counted 1). Anchor
+check: `widget-strings-bake.txt` = 1 in `shared/widgetTimeline.ts`,
+`widget-strings-docblock.txt` = 1 in `shared/widgetTypes.ts`.
+
+Red run (`npx jest widgetSnapshot.test.ts widgetRenderer.test.ts
+--selectProjects=unit`): 4 failed, 71 passed, exactly the four named cases:
+
+1. `bakes fixed Latin unit letters under the Arabic app locale` —
+   `Expected: "h" / Received: "س"` at widgetSnapshot.test.ts:187.
+2. `bakes the same fixed unit letters under every locale` — same diff at
+   widgetSnapshot.test.ts:203 (fails on the ar iteration).
+3. `composes the countdown label as digit runs with tight 0.95 letters` —
+   `Expected length: 2 / Received length: 0` at widgetRenderer.test.ts:785
+   (the label is one `AText` string today, so no digit-run Row exists).
+4. `drops zero groups and clamps the final minute in the composed label` —
+   `Expected length: 1 / Received length: 0` at widgetRenderer.test.ts:814.
+
+Resumed 2026-10-18 by a fresh lane session (the predecessor was killed by a
+provider switch mid-step). The interrupted state, measured before any write: the
+lane worktree sat in an aborted-in-place rebase of this branch onto `uat`
+`ae4e84fa` with conflicts in `ai/plans/README.md` and the version files and a
+stray `)` line written into the README by the killed conflict resolution; the
+committed branch tip was intact. The rebase was aborted (the tree returns to
+`f2a1addd` and the half-resolution dies with it), and the branch tip was found
+to carry the step-1 code with NO hook evidence: `f2a1addd` was made unhooked, so
+every gate below was re-measured by hand on that exact tree before anything else
+ran. No sibling session was live on the ticket (session store: the last lane-135
+messages are 04:19 local, the only live sessions are this lane and the
+orchestrator that dispatched it).
+
+Green run (this session, same filter): `Test Suites: 2 passed`, `Tests: 75
+passed, 75 total`. Then `yarn validate` exit 0: tsc and Biome clean, `Test
+Suites: 221 passed, 221 total`, **Tests: 2 skipped, 5747 passed, 5749 total**,
+coverage 100 percent on all four measures (statements 5408/5408, branches
+2328/2328, functions 1131/1131, lines 4844/4844); `shared/widgetTimeline.ts` is
+100 percent in every measure, and `widgets/` rides the gate's own `UNMEASURED`
+list (AST-pinned by `widgetContract.test.ts`).
+
+Mutation pass, four mutants, each restored from `$TMPDIR` (never `git checkout`,
+never `patch-package`; the run's copy of the file is pristine), each predicted
+before it was measured:
+
+| Mutant | Predicted red | Measured |
+| --- | --- | --- |
+| letters relocalised to `t('duration.h'/'m'/'s')` (the committed break script) | `bakes fixed Latin unit letters under the Arabic app locale` | 1 failed, 9 skipped: the ar expectation diff |
+| letter size `size * 0.95` to `size * 1.0` | `composes the countdown label as digit runs with tight 0.95 letters` | 1 failed: `Expected: 24.7, Received: 26` |
+| group gap `width(12)` to `width(0)` | same case | 1 failed: the Spacer modifiers deep equality |
+| group order swapped (minutes run first) | same case | 1 failed: the run order deep equality |
+
+The tree was clean after every mutant (`git status --porcelain` empty).
+

@@ -174,8 +174,10 @@ export interface AndroidWidgetDayRow {
  * Every string the Android layout would otherwise compute or hold at render
  * time, baked by the app from the catalog. The widget runtime imports nothing
  * (the closure law forbids it), so the layout's copy arrives as data. The
- * unit fields mirror the catalog's duration.h/m/s keys so a future locale
- * reuses them directly; the countdown is minutes-only today, so `s` and `now` ride for
+ * unit fields bake fixed lowercase Latin bytes in every locale (rows
+ * 85/102/83 and her 2026-10-18 amendment: the widget countdown is exactly
+ * the app countdown component's face, so its letters never localise); the
+ * countdown is minutes-only today, so `s` and `now` ride for
  * that shape and stay unread until it changes.
  */
 export interface WidgetStrings {

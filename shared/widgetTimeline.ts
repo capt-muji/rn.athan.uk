@@ -60,9 +60,10 @@ import { ANDROID_SNAPSHOT_VERSION, WIDGET_PROPS_VERSION } from '@/shared/widgetT
  * strings cross the bridge as data.
  */
 const widgetStrings = (): WidgetStrings => ({
-  h: t('duration.h'),
-  m: t('duration.m'),
-  s: t('duration.s'),
+  // Fixed lowercase Latin unit bytes in every locale, rows 85/102/83 and her 2026-10-18 amendment: never localise.
+  h: 'h',
+  m: 'm',
+  s: 's',
   now: t('duration.now'),
   staleTitle: t('widget.stale'),
   refreshLine: t('widget.refresh'),
