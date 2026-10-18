@@ -37,3 +37,42 @@ the newline between rows 138 and 137 (the row-70 corruption class) - repaired be
 the squash. The pre-rebase shas named above are reflog-only now.
 
 session: ses_eb16f7078ffeLzeR40NvnWMrqH
+
+### Step 1 - DONE
+
+Branch `step/138-discipline` off `lane/138` (parent `1a7ebffe`, 2.0.1055). Anchor
+`uniqueness-merge-handling.md` in `scripts/check-version-uniqueness.js` counts 1.
+Pre-flight (copy run from `$TMPDIR`): `PREFLIGHT OK`.
+
+Red: `scripts/__tests__/checkVersionDiscipline.test.ts` written first; first run
+`npx jest scripts/__tests__/checkVersionDiscipline.test.ts --watchman=false` =
+`Tests: 14 failed, 14 total`, every case red on the spawn (`node` exit 1, stderr
+`Error: Cannot find module '.../scripts/check-version-discipline.js'`; the jest
+assertion line reads `Expected: 0 / Received: 1` on the status checks, empty
+stdout on the FAIL-line checks). Red log: `$TMPDIR/138-step1-red.log`.
+
+Change: `scripts/check-version-discipline.js` (new, CommonJS, no dependency,
+shaped like the uniqueness script), `scripts/version-major-allowlist.json` (new,
+`[]`, entry contract in the script header), `.husky/commit-msg` now one
+`&&`-chained line: identifiers then discipline `--message-file "$1"`.
+
+Green: suite `Tests: 14 passed, 14 total`; `npx tsc --noEmit` exit 0;
+`npx biome check . --error-on-warnings` exit 0 (456 files); `yarn validate`
+exit 0: `Test Suites: 223 passed, 223 total`, `Tests: 2 skipped, 5774 passed,
+5776 total`. Logs: `$TMPDIR/138-step1-green.log`, `$TMPDIR/138-step1-validate.log`.
+
+Break (`bash ai/plans/138-semver-discipline/scripts/break-138-discipline.sh`
+from the worktree root), pre-commit run: last two lines
+`BREAK OK` / `ALL AS EXPECTED: 1`. Post-commit re-run recorded below.
+
+Version: 2.0.1056 (parent 2.0.1055 + one patch), uniqueness arbitration green
+pre-bump (`VERSIONS OK 37 commits across 6 refs, 0 unreadable, no shared
+version`; 2.0.1056 unheld), `version.lock` held around the bump and released.
+`android/app/build.gradle` absent in this worktree (gitignored prebuild
+output; the lockstep test asserts gitignore in its absence), so no gradle
+sync applies at step scope.
+
+Commit subject: `2.0.1056 - build(scripts): 138 step 1 the version discipline
+gate (feat-requires-minor, majors allowlisted)`. Merged `--no-ff` into
+`lane/138`.
+
