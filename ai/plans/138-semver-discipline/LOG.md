@@ -128,3 +128,15 @@ green pre-bump (`VERSIONS OK 38 commits across 7 refs, 0 unreadable, no
 shared version`; 2.0.1057 unheld), `version.lock` held around the bump and
 released. Gradle file still absent in this worktree (prebuild output).
 
+Commit `c501c785` (2.0.1057), hook chain green, last `Tests:` line
+`Tests: 2 skipped, 5778 passed, 5780 total` with four 100% coverage lines
+and the gate's own live verdict
+`DISCIPLINE OK 2.0.1056 -> 2.0.1057 (patch, build)`. Merge `5c44eced` onto
+`lane/138`: the new pre-merge hook fired live with
+`MERGE VERSION OK 2.0.1056 -> 2.0.1057` (R2.2 proven on a real merge) and
+commit-msg printed `DISCIPLINE SKIP merge in flight`. Commit log:
+`$TMPDIR/138-step2-commit.log`, merge log: `$TMPDIR/138-step2-merge.log`.
+This ledger completion rides its own plan commit so the tree ends clean for
+the step 3 pre-flight.
+
+session: ses_eb1418e09ffeq7HHXZZKDx98yk
