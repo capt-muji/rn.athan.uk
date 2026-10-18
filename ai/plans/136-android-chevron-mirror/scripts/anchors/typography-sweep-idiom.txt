@@ -1,0 +1,15 @@
+  'day/Day.tsx',
+];
+
+/**
+ * The probed surfaces resolve typography at module scope, so the locale must be
+ * set before the component loads: each probe requires the component, the
+ * testing library and React from one fresh module registry inside
+ * isolateModules, sets the locale first, and renders (awaited: the library's
+ * render is async and publishes the screen only after its act settles) inside
+ * it. The library is held as a namespace and its members read live: `screen`
+ * is a getter over the latest render, which a destructured const would
+ * snapshot before any render exists.
+ */
+const headerTitleStyleUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
+  let title: Record<string, unknown> = {};

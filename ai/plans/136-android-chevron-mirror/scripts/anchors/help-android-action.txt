@@ -1,0 +1,10 @@
+describe('the Help modal on Android', () => {
+  it('opens the Do Not Disturb access screen from its own answer', async () => {
+    onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await fireEvent.press(screen.getByRole('button', { name: 'Why are notifications silenced at certain times?' }));
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Grant Do Not Disturb access' }));
+
+    expect(openDndAccessSettings).toHaveBeenCalledTimes(1);
+  });
