@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Pre-flight for ticket 135. Run from $TMPDIR against the lane worktree root:
+# D135.12 (2026-10-18): alabel, widget-strings-bake and widget-strings-docblock
+# re-pinned to the post-step-1 tree (step 1's merged edits consumed the
+# planning-time pins).
 #   bash preflight-135.sh $HOME/athan-gitree/worktrees/lane-135
 set -u
 ROOT="${1:?usage: preflight-135.sh <lane worktree root>}"
