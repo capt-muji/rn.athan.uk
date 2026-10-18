@@ -603,9 +603,13 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // The medium halves mirror under rtl by order, not by realignment: the
     // hero keeps its fixed width and takes the visual right when the list
     // wrapper draws first. Every start/end alignment and lead padding swaps
-    // with it, or the face would half-mirror.
+    // with it, or the face would half-mirror. Under rtl the wrapper also pins
+    // its width: a fill-first child is measured against the whole row and
+    // starves the hero after it (the 3T collapse, D135.13).
     const listWrapper = (
-      <Box contentAlignment={rtl ? 'centerStart' : 'centerEnd'} modifiers={[fillMaxHeight(), fillMaxWidth()]}>
+      <Box
+        contentAlignment={rtl ? 'centerStart' : 'centerEnd'}
+        modifiers={[fillMaxHeight(), rtl ? width(LIST_WIDTH) : fillMaxWidth()]}>
         <Box contentAlignment={rtl ? 'topEnd' : 'topStart'} modifiers={[width(LIST_WIDTH)]}>
           <Column modifiers={[rtl ? APad(0, 1, PILL_LEAD, 0) : APad(PILL_LEAD, 1, 0, 0)]}>
             <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
