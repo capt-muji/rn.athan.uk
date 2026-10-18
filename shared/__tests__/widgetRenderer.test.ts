@@ -1062,6 +1062,51 @@ describe('home widget renderer', () => {
       }
     });
 
+    it('pins the mirrored wrapper to a fixed width under rtl: a fill-first child starves the hero', () => {
+      // D135.13: the Android mapping measures a fill-width child against the
+      // whole row when it draws first, so the mirrored wrapper collapsed the
+      // fixed-width hero after it on the 3T. Under rtl the wrapper carries the
+      // list's own width (exactly the leftover the fill resolved to under
+      // LTR); under rtl falsy the trailing fill stays, byte-identical.
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: true }), { colorScheme: 'light' })
+      );
+      const outerRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      expect(outerRow).toBeDefined();
+      const halves = markerChildrenOf(outerRow);
+      expect(halves).toHaveLength(2);
+
+      const wrapperModifiers = (halves[0]?.props.modifiers as { modifier: string; value?: unknown }[]) ?? [];
+      expect(wrapperModifiers).toContainEqual({ modifier: 'width', value: 177 });
+      expect(wrapperModifiers).not.toContainEqual({ modifier: 'fillMaxWidth', value: undefined });
+      expect(mirrorBoxWidth(halves[1])).toBe(177);
+
+      const falsyTree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: false }), {
+          colorScheme: 'light',
+        })
+      );
+      const falsyRow = collect(falsyTree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      const falsyHalves = markerChildrenOf(falsyRow);
+      expect((falsyHalves[1]?.props.modifiers as { modifier: string; value?: unknown }[]) ?? []).toContainEqual({
+        modifier: 'fillMaxWidth',
+        value: undefined,
+      });
+    });
+
     it('leaves the small composition and the stale card direction-neutral under rtl', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const smallRtl = renderTree(
