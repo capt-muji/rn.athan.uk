@@ -146,8 +146,83 @@ uniqueness clean (17 commits across 11 refs, no shared version).
 
 Commit `196b8b63` (2.0.1030), hook-green: Tests: 2 skipped, 5747 passed,
 5749 total; coverage Statements 100% (5401/5401), Branches 100%
-(2326/2326), Functions 100% (1130/1130), Lines 100% (4838/4838).
+(2326/2326), Functions 100% (1130/1130), Lines 100% (4838/4838). [Sha
+corrected 2026-10-18: `196b8b63` was amended to `62bf9f37` before any
+merge, then rebuilt twice by lane weather into `81aa6694` (2.0.1030) and
+`be3850d2` (2.0.1032), which merged as `9d6964a7`; each rebuild re-ran
+the full hook green, Tests: 2 skipped, 5751 passed, 5753 total, coverage
+100% on all four measures. The step-03 entry carries the record.]
 Killing-mutant pass on the committed pins:
 `bash ai/plans/136-android-chevron-mirror/scripts/break-136.sh` ->
 killed: settings-chevrons, killed: colorpicker-chevron, killed:
 help-chevron, ALL AS EXPECTED: 3.
+
+### Step 03 — done (2026-10-18, lane-run)
+
+Ran lane-run, agent-ruled and argued twice: the plan allocates the drive
+to an executor, but a cold executor re-reads the atlas to drive ten
+minutes of taps while its image reads were depth-blocked in step 1, so
+the read-verify loop split anyway; the lane running build, drive and
+reads as one hand keeps the phone work accountable and the evidence
+chain short. This session reads no images, so every screenshot read went
+through the vision worker, one question each (step 1's precedent).
+
+Build (main tree under build.lock, scratch worktree at the merged
+`9d6964a7`, node_modules symlinked after a yarn.lock byte-match):
+prebuild clean with the suffix exported in its own shell, applicationId
+'com.example.athan.fleettest'; `gradlew assembleRelease --no-daemon
+-PreactNativeArchitectures=arm64-v8a` BUILD SUCCESSFUL; aapt2 badging
+read before install: `package: name='com.example.athan.fleettest'
+versionCode='1000000' versionName='2.0.1032'`. APK kept at
+builds/fleettest-136/athan-fleettest-2.0.1032.apk; scratch worktree and
+TMPDIR removed, build.lock released.
+
+3T (OnePlus A3003, Android 9): `install -r` Success; `dumpsys package`
+versionName=2.0.1032; throwaway launch showed the home screen with no
+What's New modal (the stamp held across the upgrade); HOME, `am kill`,
+relaunch before the reads.
+
+Reads, shots under sessions/136/ (never committed), each through the
+vision worker:
+
+- `2.0.1032-en-settings.png`: Change athan and Qibla chevrons point
+  RIGHT at the rows' right ends, icons left, sheet LTR with the Display
+  and Countdown Bar toggles below - the same visible structure step 1's
+  `2.0.996-en-settings.png` read carried (R3.3 before-image match).
+- `2.0.1032-ar-settings.png`: Change athan and Qibla chevrons point
+  LEFT at the rows' left ends (vision measured the `<` glyphs at
+  x~80-210 on the 1080 panel), icons right, sheet mirrored RTL (R3.2).
+- `2.0.1032-ar-settings-scrolled.png`: the colour-picker row, Language,
+  What's new and Help chevrons all point LEFT at left ends, none cut,
+  the toggle rows between them chevron-free (R3.2).
+- `2.0.1032-en-return-settings.png`: after the full ar round trip
+  (switch, reads, switch back through the language sheet), chevrons
+  point RIGHT at right ends on an LTR sheet again (R3.3; the flip is
+  repeatable in both directions, matching her XS observation).
+
+Six of six chevron sites point LEFT under ar on the fixed build; every
+en read points RIGHT with the step-1 layout. R3.1 (step 1), R3.2 and
+R3.3 are met.
+
+The 3T is left in Arabic on the installed 2.0.1032 fleettest build,
+automatic time on (never touched), `am kill`ed after HOME. Ruled
+agent-ruled: her acceptance is the ar read, so the fleettest app's
+language stays Arabic for her; her daily production package is separate
+and untouched. The return flow needed two repairs mid-drive (an invalid
+literal wait string, then an English-only location wait): both were flow
+text defects, not app behaviour, and the completed run switched through
+the language sheet exactly as step 1's shape prescribes.
+
+Merge weather record (2026-10-18, the lane): uat moved twice under the
+step-2 commit (lane 137's adjudication at 2.0.1029, then lane 135's step
+1 taking 2.0.1031 while the first rebuild was in flight), so the fix
+branch was rebuilt on each new uat under version.lock with the
+uniqueness gate re-run each time before its commit and again before the
+merge; the parked bare `uat.lock` (no holder file, no live merge,
+verified in the main tree) was reaped and retaken for the merge, and
+lane 135's live `commit.lock` was waited out, never reaped. The gradle
+versionName sync refused one stale edit (the file had already moved to
+2.0.1031 under lane 135's merge) and re-ran against the true value:
+read, substitute, write.
+
+session: ses_eb295b710ffeOaqvPwr7WsJ6KM
