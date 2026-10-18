@@ -46,6 +46,13 @@ Read against the v1.5.0 checkout (`6e0dc0b`, 2026-10-13). Every answer is yes.
   and Ready, Planning and Audit to Todo. Backlog, Deferred, Blocked, Upstream and Owner-led map
   to Backlog. Canceled stays unused. The emitted run holds 107 Done and 21 open, so the board
   reads Backlog 21, Todo 0, In Progress 0, Done 107, Canceled 0.
+- **Local cookie flag, added after the first sign-in attempt failed in the owner's browser**:
+  a `docker-compose.override.yml` in the checkout, outside the repository tree, sets
+  `NODE_ENV=development` on the api service only. The product's auth reads
+  `secure: hostPrefixedCookies || NODE_ENV === "production"`, so this is the one lever that
+  stops the session cookie carrying `Secure` over plain HTTP. Every browser then keeps the
+  session on localhost, not only Chrome and Firefox. The web and worker containers are
+  untouched.
 - **Needs as `blocked_by` relations**: each `needs` entry that names an emitted ticket becomes
   one relation between the two issues. Of 69 needs entries, 53 resolve: 14 name a row that is
   cancelled or superseded and is not emitted, one is a self-reference (row 59 names itself), and
@@ -103,7 +110,10 @@ session: ses_eaea5deecffeZq7TThCzVL0d8R
 ### Handover (2026-10-19)
 
 Stack left running, and the board is open in the owner's browser. Board at the documented web
-port on path `/athan-uk.QUEUE`, sign-up at `/register`. Credentials are in
+port on path `/athan-uk.QUEUE`, sign-up at `/register`. The first sign-in attempt failed in the
+owner's browser, so the api was restarted with the cookie override above and the password was
+changed through `/api/auth/change-password` to a typeable value. Both were verified by a fresh
+browser sign-in that landed on the board. Credentials are in
 `$HOME/athan-gitree/sessions/144/credentials.txt`, outside the repository tree. Nothing merges
 to `uat` until the owner rules. The throwaway import script lived in `$TMPDIR` and is deleted.
 

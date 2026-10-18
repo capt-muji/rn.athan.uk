@@ -49,6 +49,7 @@ The owner's rules that bind this work, quoted from `ai/prompts/itsaplan-board.md
 | Ticket import route | the product's own REST API (`/teams`, `/projects`, `/projects/:ref/issues`, `/issues/:id/links`) driven from a throwaway script in `$TMPDIR` | owner, in the brief | `ai/prompts/itsaplan-board.md` |
 | Status mapping | Done to the product's Done column, In progress to In Progress, Ready and Planning and Audit to Todo, and Backlog and Deferred and Blocked and Upstream and Owner-led to Backlog | agent-ruled | LOG.md, 2026-10-19 |
 | Needs mapping | each resolvable `needs` pair becomes one `blocked_by` relation between the two issues | agent-ruled | LOG.md, 2026-10-19 |
+| Local cookie flag | `NODE_ENV=development` on the api service only, through a compose override outside the repository tree, so the session cookie is not `Secure` over plain HTTP | agent-ruled | LOG.md, 2026-10-19 |
 
 ### 2.2 The executor must not decide
 
@@ -153,7 +154,7 @@ None. The executor never pushes. The lead pushes after the reviews pass and the 
 | --- | --- |
 | A required env key is missing | the compose file names the key in its refusal. Add it to the env file outside the tree and re-run `up -d` |
 | Agent containers exit on start | read `docker compose logs <service>`. The api healthcheck line and the migrate exit code come first |
-| The browser stays signed out after sign-in | the session cookie is `Secure` and the browser is WebKit. Use Chrome or Firefox, the documented exception |
+| The browser stays signed out after sign-in | the session cookie is `Secure` and the browser is WebKit. The api runs with `NODE_ENV=development` from the compose override, so the cookie is not `Secure` and every browser keeps it |
 | The import script fails midway | re-run with `--links-only`, which resolves existing issues by their `#<order>` title prefix |
 | A port is taken | 3000 and 3001 carry `API_PORT` and `WEB_PORT`. Change one in the env file only, never in the compose file |
 
