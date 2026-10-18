@@ -1,7 +1,0 @@
-  const computedStyles: ViewProps['style'] = {
-    paddingTop: insets.top + SCREEN.paddingTop,
-    paddingBottom: insets.bottom,
-    maxWidth: SIZE.contentMaxWidth,
-    width: '100%',
-    alignSelf: 'center',
-  };
