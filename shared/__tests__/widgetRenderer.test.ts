@@ -959,6 +959,125 @@ describe('home widget renderer', () => {
       expect(rowsRow).toBeDefined();
     });
 
+    // The mirror suite reads the medium's directional inputs back from the
+    // marker tree. Box widths identify the name/time boxes by size (84 and
+    // 55 at the 380 grant), so the assertions stay keyed to the swap, not
+    // to child indexes.
+    const mirrorBoxWidth = (node: MarkerNode | undefined): number | undefined =>
+      ((node?.props.modifiers as { modifier: string; value: unknown }[] | undefined) ?? []).find(
+        (mod) => mod.modifier === 'width'
+      )?.value as number | undefined;
+
+    it('mirrors the medium row order under rtl: time before name', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: true }), { colorScheme: 'light' })
+      );
+      const fajrRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'height' && mod.value === 24
+          ) &&
+          textsOf(node).includes('Fajr')
+      );
+      expect(fajrRow).toBeDefined();
+
+      const boxes = markerChildrenOf(fajrRow).filter((child) => child.marker === 'Box');
+      expect(boxes).toHaveLength(2);
+      const [timeBox, nameBox] = boxes;
+      // The 55dp time box draws first under rtl, the 84dp name box second
+      expect(mirrorBoxWidth(timeBox)).toBe(55);
+      expect(timeBox?.props.contentAlignment).toBe('centerStart');
+      expect(mirrorBoxWidth(nameBox)).toBe(84);
+      expect(nameBox?.props.contentAlignment).toBe('centerEnd');
+      // The time's Text carries textAlign start, mirroring its box's flip
+      const timeText = markerChildrenOf(timeBox).find((child) => child.marker === 'Text');
+      expect(timeText?.props.textAlign).toBe('start');
+    });
+
+    it('mirrors the medium halves under rtl: list before hero', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: true }), { colorScheme: 'light' })
+      );
+      const outerRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      expect(outerRow).toBeDefined();
+
+      const halves = markerChildrenOf(outerRow);
+      expect(halves).toHaveLength(2);
+      // The list wrapper draws first and aligns centerStart; the hero keeps
+      // its fixed width, its position coming from order alone
+      expect(halves[0]?.props.contentAlignment).toBe('centerStart');
+      expect(halves[1]?.props.contentAlignment).toBe('bottomCenter');
+      expect(mirrorBoxWidth(halves[1])).toBe(177);
+      const innerList = markerChildrenOf(halves[0]).find((child) => child.marker === 'Box');
+      expect(innerList?.props.contentAlignment).toBe('topEnd');
+      expect(mirrorBoxWidth(innerList)).toBe(177);
+    });
+
+    it('mirrors the pill and rows insets to the END edge under rtl', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: true }), { colorScheme: 'light' })
+      );
+      const nodes = collect(tree);
+      const pillColumn = nodes.find(
+        (node) =>
+          node.marker === 'Column' &&
+          collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
+      );
+      expect(pillColumn?.props.modifiers).toEqual(
+        expect.arrayContaining([{ modifier: 'padding', value: [0, 1, 14, 0] }])
+      );
+
+      const rowsColumn = nodes.find((node) => node.marker === 'Column' && textsOf(node).includes('Fajr'));
+      expect(rowsColumn?.props.modifiers).toEqual(
+        expect.arrayContaining([{ modifier: 'padding', value: [0, 0, 26, 0] }])
+      );
+    });
+
+    it('renders the LTR medium byte-identical under rtl falsy', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const snapshot = androidProps({ size: 'medium', grantedWidthDp: 380 });
+      const falsy = { ...snapshot, rtl: false };
+      const absent = { ...snapshot } as Partial<PrayerWidgetAndroidProps>;
+      delete absent.rtl;
+
+      const falsyTree = renderTree(layouts.PrayerWidget(falsy, { colorScheme: 'light' }));
+      const absentTree = renderTree(layouts.PrayerWidget(absent, { colorScheme: 'light' }));
+      expect(falsyTree).toEqual(absentTree);
+
+      // The falsy time Text gains no textAlign prop: the LTR bytes match the
+      // pre-mirror composition exactly
+      for (const node of collect(falsyTree)) {
+        if (node.marker !== 'Text') continue;
+        expect(node.props).not.toHaveProperty('textAlign');
+      }
+    });
+
+    it('leaves the small composition and the stale card direction-neutral under rtl', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const smallRtl = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'small', rtl: true }), { colorScheme: 'light' })
+      );
+      const smallLtr = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'small', rtl: false }), { colorScheme: 'light' })
+      );
+      expect(smallRtl).toEqual(smallLtr);
+
+      freezeNow(androidProps({}).horizonEpochMs + 60_000);
+      const staleRtl = renderTree(layouts.PrayerWidget(androidProps({ rtl: true }), { colorScheme: 'light' }));
+      const staleLtr = renderTree(layouts.PrayerWidget(androidProps({ rtl: false }), { colorScheme: 'light' }));
+      expect(staleRtl).toEqual(staleLtr);
+    });
+
     const pillAndRowsLead = (grantedWidthDp: number): { pill: number; rows: number } => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
