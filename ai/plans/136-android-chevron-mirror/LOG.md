@@ -58,3 +58,28 @@ Anchor counts verified 1 of 1 each at cd171855 (eleven anchors).
 Planned at cd171855 (2.0.1013); lane branch fast-forwarded to 65a88291
 (2.0.1016, the owner's orders commit) before the planning commit; next free
 version 2.0.1017.
+
+### Step 01 — done
+Reproduced on the 3T, 2.0.996 fleettest build (badging re-read before
+install: package: name='com.example.athan.fleettest' versionCode='1000000'
+versionName='2.0.996'). The executor dispatch ran every device action and
+captured the shots; its image read was depth-blocked (subagent-of-subagent),
+so the lane lead read the three shots through the vision worker - the step's
+named read, not a substitute.
+
+Arabic (default snap): Change athan and Qibla chevrons both apex RIGHT,
+sheet mirrored (chevrons at the rows' left ends). Arabic (scrolled one
+screen): colour-picker, Language, What's new, Help chevrons all apex RIGHT.
+Six of six chevrons point RIGHT under ar: the defect, R3.1 met.
+
+English: Change athan and Qibla chevrons apex RIGHT at the rows' right ends,
+LTR layout: the R3.3 before-image.
+
+Shots: sessions/136/2.0.996-ar-settings.png,
+2.0.996-ar-settings-scrolled.png, 2.0.996-en-settings.png (never committed).
+The executor's independent pixel-geometry corroboration (sessions/136/
+136-chevron-px.py, calibrated on the AVD shots) agreed on every count and
+direction. A first commit attempt (6c35b413, discarded, never merged) rode a
+stale parent without its version bump; this commit is its clean redo at
+2.0.1023.
+session: ses_eb3b3e642ffePbPMLCU3q6SEOJ (lead-read closure ses_eb36e5493ffeUzU30BcLjhvnd5)
