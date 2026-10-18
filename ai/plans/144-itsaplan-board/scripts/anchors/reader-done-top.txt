@@ -1,0 +1,3 @@
+  const doneTop = [...queue.doneRows].sort((a, b) => b.order - a.order).slice(0, config.doneColumnCount);
+  for (const row of doneTop) {
+    if (row.statusCell === undefined) {
