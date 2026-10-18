@@ -165,3 +165,52 @@ prints 1. Device lock removed 02:19.
 session: ses_eb36fcec7ffe62FsPtjLYU25hl
 
 
+### Step 03 — iphone-xs
+
+Worktree lane-137, branch `step-137/iphone-xs` cut off uat b1f16011 (2.0.1021),
+pre-flight `PREFLIGHT OK` run from `$TMPDIR` with both phones attached, all six
+anchors counting 1 (the TEMPLATE python count). The cut was re-based onto the uat
+that carries step 2's merge before any record was written, the step-1 precedent,
+because both lanes append to this LOG and edit row 137's cell.
+
+Era check, D137.5: `xcrun devicectl device info apps` prints `com.example.athan`
+`2.0.939` on iOS 18.7.10, past 2.0.811, so the leg proceeds. Launched by the plan's
+`devicectl device process launch` command. A popup sheet presented at launch; its
+backdrop was tapped once to reach the home screen (navigation only, the app's own
+display state, no athan storage and no setting touched).
+
+Arrival language: ar. The home tree read `الإعدادات` (the settings button, ref
+frame 43x42 at 166.3,711), `لندن، المملكة المتحدة`, `الظهر`, `جمادى الأولى 7، 1448`
+and the six prayer rows, all Arabic. No round trip was made: the app was already ar,
+so no switch happened (D137.4's already-ar branch), and the face was verified Arabic
+again from the same tree after the sheet closed, before termination.
+
+The read, and the void (row 120 form, the full shape in FINDINGS-XS.md): the settings
+sheet opened from the settings button and settled, but its accessibility tree ends at
+the chrome (`Bottom sheet backdrop`, `Bottom sheet handle` 375x24 at y 136.8, `Bottom
+Sheet` 375x651.2 at y 160.8) with zero content nodes, at every depth, on both
+presentations, and `wait text اللغة` timed out after 8 s. `pymobiledevice3 developer
+accessibility list-items`, independent of the runner, agrees: 12 items, the 9
+home-screen elements behind the backdrop plus the same 3 chrome elements, no sheet
+content. The app's sheet content publishes no accessibility elements to iOS itself.
+The pixel fallback screenshot was taken (`xs-02-settings.png`) but could not be read:
+this executor's model has no image input and the `vision` subagent refuses to spawn at
+this nesting depth, so no image-capable reader was reachable this session. With no
+label-matched refs inside the sheet, the Help modal was never opened (blind taps on
+her settings were forbidden), so the pinned controls were not read either. The XS half
+of the measurement is a void; the lead adjudicates before the verdict step runs.
+
+The sheet-chrome frames above are the only layout numbers the phone vouchsafed; no
+surface height, em or candidate match was read on the XS, and nothing was extrapolated.
+
+Restore as found: language ar unchanged and verified; the app terminated through
+devicectl (pid resolved, signal sent, `process-id-for-bundle-id` then printed 0); no
+system setting touched; automatic time untouched. One process note: the device lock
+was released once between the failed first terminate (which needs a pid, not a bundle
+id) and the successful one, and retaken within seconds; the app was foreground and
+untouched in that window. Evidence: `sessions/137/xs-01-arrival.png`,
+`xs-02-settings.png` (unread this session, kept for a reader that can),
+`xs-02-sheet-axitems.json`, `xs-02-sheet-runner-tree.json`. No UDID or serial was
+written to any file.
+
+session: ses_eb370a695ffeSIhy7jlHP2aB28
