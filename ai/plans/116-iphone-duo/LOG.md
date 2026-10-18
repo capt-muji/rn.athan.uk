@@ -84,3 +84,75 @@ Recorded in `PLAN.md` section 2.1 as D116.1 to D116.7, each challenged once:
 `scripts/preflight-116.sh`. No production code changed.
 
 session: ses_eb07d2d72ffeZZ06VFfy9ZaQ9A
+
+### Step 01 — the glass matrix, read
+
+Branch `step/116-duo-glass-matrix` off `uat` `d9b70876` (2.0.1074). The pre-flight printed
+`PREFLIGHT OK` (Xcode 27.1 with `iphoneos27.1`, the iOS 27.1 runtime, one booted Duo, the
+installed app at 2.0.1054 with `DTSDKName iphonesimulator27.1`). The matrix ran cold on the
+installed mock build, after a `--relaunch`.
+
+| Reading | Closed pose | Open pose |
+| --- | --- | --- |
+| Screenshot | 466 by 678 | 951 by 669 |
+| App window, measured from the screenshot's card bounds | 466 by 678 | 469 by 669, x 241 to 709, centred |
+| App window, accessibility application rect | 466 by 678 at a cold start | 469 by 669 at a cold start |
+| Schedules visible | one | one |
+| Swipe to the other schedule | Extras rows (Midnight, Last Third, Suhoor, Duha) | same |
+| Overlay on an Extras row | opens, explanation box inside the window | opens, explanation box inside the window |
+| Settings sheet | opens inside the window, scrolled to Help | opens inside the app window, scrolled to Help |
+| Fold with the overlay open | process 41562 before and after; overlay still open | process 41562 before and after; overlay still open |
+| Cold launch | Standard schedule | Standard schedule in the 469 by 669 window |
+
+Evidence under `$HOME/athan-gitree/sessions/116/`: `duo-closed-standard.png`,
+`duo-closed-extras.png`, `duo-closed-overlay.png`, `duo-closed-settings.png`,
+`duo-closed-settings-help.png`, `duo-open-standard.png`, `duo-open-extras.png`,
+`duo-open-overlay.png`, `duo-open-settings.png`, `duo-open-settings-help.png`,
+`duo-fold-closed-overlay.png`, `duo-fold-open-overlay.png`, `duo-open-cold-launch.png`,
+`duo-restored-closed.png`. No screenshot entered the repository.
+
+Negative proof, run before and after: `git diff --name-only origin/uat -- app components
+hooks modules shared/constants.ts` printed nothing. The range changes no layout file.
+
+Green: `yarn validate` printed `Tests: 5785 passed, 5785 total` with four `100%` coverage
+lines.
+
+#### Instrument facts and the deviations they caused
+
+- The accessibility application rect is not a stable instrument. At a cold start it reports
+  the app window in the app's own space (466 by 678 closed, 469 by 669 open); after a fold it
+  reports a scaled space (155.33 by 226 closed, 228 by 669 open, the UI scale's divisor on the
+  width). The window was therefore measured from the screenshot's card bounds, which agree
+  with the visual at 1:1 and with the cold-start rects. The criterion bands are unchanged.
+- Gesture coordinates on the open pose must lie inside the runner's reported app rect: a press
+  at the visually centred Settings button (x 475) did nothing, while the
+  `role=button label="Settings"` selector opened the sheet. Swipes inside x 241 to 469 work.
+- The overlay's close selector `label="Close prayer details"` matches four wrappers; only the
+  12-point-wide element is hittable, and it was pressed by its ref.
+- `back` does not dismiss the settings sheet: the tool reports `in-app back control is not
+  available`. The sheet was dismissed by tapping above it, which works in both poses.
+- `scroll down --until 'label="Help"'` cannot reach the Help row because the sheet's rows are
+  absent from the accessibility tree. The sheet was scrolled by gesture and the Help row was
+  read from the screenshot.
+
+## Findings
+
+- The closed display grants the app all 466 by 678 points and one schedule fills it, with the
+  page dots and the Settings button on screen.
+- The open display is a 951 by 669 point landscape panel. The portrait lock makes iOS grant the
+  app a 469 by 669 point portrait window centred in it, with 241 points of display each side.
+- Inside that window the app lays out one schedule at 469 points wide, below the 500 point
+  `SIZE.contentMaxWidth` cap, so the cap never binds and no wider layout is reachable on this
+  device.
+- Folding and unfolding keeps the process alive (41562 throughout) and re-lays the content in
+  place; an open overlay survives the fold.
+- The shipped code carries no Duo, fold, hinge, idiom or size-class path before this ticket and
+  gains none after it.
+- Filling the open panel needs landscape support. That turns rotation on for every iPhone and
+  iPad, which her order excludes, and the fixed stack clips at an iPhone's landscape height.
+- The range changes no file under `app/`, `components/`, `hooks/`, `modules/` or
+  `shared/constants.ts`; every other form factor renders what it rendered before.
+- The instruments above are runner-side, not app-side: the app renders the same window the
+  cold-start rect and the screenshot report, and the scaled rects appear only after a fold.
+
+session: ses_eb07d2d72ffeZZ06VFfy9ZaQ9A
