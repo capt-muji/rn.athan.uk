@@ -422,3 +422,44 @@ written to any file.
 
 session: ses_eb27f5964ffesqvUuSGSjolr1r
 
+
+### Step 04 — verdict
+
+Worktree lane-137, branch `step-137/verdict` cut off uat 496f41c9 (2.0.1047);
+lane/137 sat level with uat at that sha, so the step-1/2/3 rebase precedent
+had nothing to move. Preflight copied to `$TMPDIR`, run from the worktree
+root: `PREFLIGHT OK`, both phones attached (a docs step, no device contact
+made), all ten anchors counting 1. Tree clean before the write.
+
+A docs step, no red tests. FINDINGS.md written per the contract: both halves
+of her question answered in the opening lines. NO, the boxes DIFFER by the
+step-4 rule: the 3T's readable unpinned surfaces sit nearest the head bbox
+set (Regular 1.554em, Medium 1.581em; measured 1.578 to 1.633em with the
+D137.12 +2 residual, +1 at 14), the XS's sit on hhea/typo 1.185em exactly
+(measured 1.185 to 1.188em), the sets 0.369 to 0.396em apart, and no
+same-surface pair matches the same set. YES, as it should be: row 87's law
+and the section 4 citations make the taller Android box platform behaviour on
+a font whose metric sets diverge, not a repo defect; the Paint/TextKit
+internal table attribution is marked unverified, in measured-match language
+throughout. The D137.11 pairs sit side by side, the sheet's three surfaces
+carry their 3T-only readings, the controls' pin ratios close the two PENDING
+body pins through VISION-137's one-line authority (3T 63/63 exact, XS 73/72
++1), the countdown word is excluded symmetrically as an instrument void, the
+voids sit in the row 120 form, D137.7's options appear verbatim, and the
+R5.1 verdict cell text sits in a fenced quote for the lead's audit close;
+this step never wrote the OWNER-LED state itself. Row 137's status cell moved
+to EXECUTED with the findings pointer, no other cell touched. Every number
+in FINDINGS.md traces to EXPECTATIONS.md, the four FINDINGS files or
+VISION-137.md; the one PLAN-only line number in a citation was struck in
+self-review.
+
+Version 2.0.1048 taken as the next free patch under `version.lock`
+(`check-version-uniqueness.js` printed VERSIONS OK, 30 commits across 11
+refs); `app.json` and `package.json` bumped by sed on the version line only,
+both now 2.0.1048. No gradle file exists in this worktree; the sync stays the
+lead's main-tree action. `yarn validate` run by hand before the commit, the
+docs-commit rule: tsc, Biome and Jest green, `Tests: 2 skipped, 5759 passed,
+5761 total`, rc 0. Commit made under `commit.lock` with the plan's message;
+neither lock was parked (version.lock taken at once, commit.lock free).
+
+session: ses_eb24adaa9ffehGb64SwqOeiHrp
