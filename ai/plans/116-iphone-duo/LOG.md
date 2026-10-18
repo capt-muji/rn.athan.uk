@@ -40,7 +40,7 @@ rect and from the simulator's own screenshots.
 
 Evidence: `$HOME/athan-gitree/sessions/116/inv-closed.png`, `inv-open-1.png`,
 `inv-open-extras.png`, `inv-open-overlay.png`, `inv-open-settings.png`, `inv-closed-overlay.png`,
-`inv-open-cold-launch.png`. No screenshot is committed.
+`inv-open-cold-launch.png`, `inv-half-open.png`. No screenshot is committed.
 
 ### What the readings mean
 
@@ -74,7 +74,8 @@ Recorded in `PLAN.md` section 2.1 as D116.1 to D116.7, each challenged once:
   Store screenshots will show it. Answer: it is Apple's presentation for a portrait-only scene, and
   the repair is excluded by D116.3.
 - **D116.7** the installed 2.0.1054 build is the proof vehicle. Challenge: a fresh build is cleaner.
-  Answer: no app-surface file changed between `8efd0b91` and `3407e984`, and the build lock is
+  Answer: `git diff --name-only 8efd0b91..3407e984 -- app components hooks modules shared/constants.ts`
+  prints nothing, the installed app's `DTSDKName` is `iphonesimulator27.1`, and the build lock is
   parked with no holder and is not this lane's to reap.
 
 ### What this planning session leaves

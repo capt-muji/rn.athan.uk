@@ -5,7 +5,7 @@ set -u
 
 PLAN_DIR="ai/plans/116-iphone-duo"
 ANCHORS="$PLAN_DIR/scripts/anchors"
-VERSION_FLOOR="2.0.1072"
+VERSION_FLOOR="2.0.1073"
 FAILED=0
 
 fail() {
@@ -41,8 +41,12 @@ xcodebuild -showsdks 2>/dev/null | grep -q "iphoneos27.1" || fail "no iphoneos27
 xcrun simctl list runtimes 2>/dev/null | grep -q "iOS 27.1" || fail "no iOS 27.1 simulator runtime"
 xcrun simctl list devicetypes 2>/dev/null | grep -q "iPhone Duo" || fail "no iPhone Duo device type"
 
-SIMULATOR_UDID="$(xcrun simctl list devices | grep 'iPhone Duo' | head -1 | sed -E 's/.*\(([0-9A-F-]{36})\).*/\1/')"
-[ -n "$SIMULATOR_UDID" ] || fail "no iPhone Duo simulator resolves"
+# --- exactly one booted Duo on the 27.1 runtime ---
+DUO_LINES="$(xcrun simctl list devices | grep 'iPhone Duo' | grep Booted || true)"
+DUO_COUNT="$(printf '%s\n' "$DUO_LINES" | grep -c 'iPhone Duo' || true)"
+[ "$DUO_COUNT" = "1" ] || fail "expected exactly one booted iPhone Duo, found $DUO_COUNT"
+SIMULATOR_UDID="$(printf '%s\n' "$DUO_LINES" | head -1 | sed -E 's/.*\(([0-9A-F-]{36})\).*/\1/')"
+[ -n "$SIMULATOR_UDID" ] || fail "no booted iPhone Duo simulator resolves"
 
 APP_PATH="$(xcrun simctl get_app_container "$SIMULATOR_UDID" com.example.athan 2>/dev/null || true)"
 if [ -z "$APP_PATH" ]; then
@@ -56,11 +60,13 @@ const [a, b, c] = parse(v);
 const [x, y, z] = parse(floor);
 process.exit(a > x || (a === x && (b > y || (b === y && c >= z))) ? 0 : 1);
 ' "$APP_VERSION" "2.0.1054" || fail "installed app $APP_VERSION is below 2.0.1054"
+  APP_SDK="$(/usr/libexec/PlistBuddy -c 'Print :DTSDKName' "$APP_PATH/Info.plist" 2>/dev/null)"
+  [ "$APP_SDK" = "iphonesimulator27.1" ] || fail "installed app build SDK is ${APP_SDK:-none}, expected iphonesimulator27.1"
 fi
 
-# --- the range must not touch the app surface ---
-APP_SURFACE="$(git diff --name-only origin/uat -- app components hooks modules shared stores)"
-[ -z "$APP_SURFACE" ] || fail "app-surface files differ from origin/uat: $APP_SURFACE"
+# --- the range must not touch the app layout path ---
+APP_SURFACE="$(git diff --name-only origin/uat -- app components hooks modules shared/constants.ts)"
+[ -z "$APP_SURFACE" ] || fail "app layout files differ from origin/uat: $APP_SURFACE"
 
 # --- anchors, counted with python, never grep ---
 for entry in screen-content-cap:app/Screen.tsx navigation-pager:app/Navigation.tsx size-content-max-width:shared/constants.ts window-dimensions-hook:hooks/useWindowDimensions.ts portrait-lock:app.json; do

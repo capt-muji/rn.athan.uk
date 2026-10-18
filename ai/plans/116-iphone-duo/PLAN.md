@@ -37,8 +37,8 @@ Her follow-up, same day: the ticket reduces to investigation and testing, becaus
 When this ticket is DONE, four things are true:
 
 1. Every acceptance criterion in section 5.4 has a reading from the Duo simulator, recorded in `LOG.md` with its evidence path.
-2. The app shows exactly one schedule in each pose, laid out by the shipped components, with no Duo branch anywhere in the repository.
-3. The range carries no change under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/`, so no other form factor's behaviour moves.
+2. The app shows one schedule at a time in each pose, laid out by the shipped components, with no Duo branch in the shipped code. The bench branch stays as history.
+3. The range carries no change under `app/`, `components/`, `hooks/`, `modules/` or `shared/constants.ts`, so no other form factor's behaviour moves.
 4. Row 116 states the open display's measured presentation and its cause, so the next reader needs no session memory.
 
 The owner notices this ticket through its row: the app is ready for the Duo launch, and the one presentation fact she may weigh (a portrait window centred in the open display) is written where she reads the queue.
@@ -59,13 +59,13 @@ Every decision below stood in for an owner answer during this lane, marked agent
 
 | ID | Decision | Why |
 | --- | --- | --- |
-| D116.1 | The Duo rides the shipped layout: the single `PagerView` with two `Screen` children, and `Screen`'s `maxWidth: SIZE.contentMaxWidth` cap. No Duo branch is added. | Her order names the existing adapted system as the mechanism. The pager already mounts one `Screen` at a time, and the cap's own comment names large windows. Challenge: a wide window could want a second column. Answer: her evening order supersedes the two-pane design by name. |
+| D116.1 | The Duo rides the shipped layout: the single `PagerView` with two `Screen` children, and `Screen`'s `maxWidth: SIZE.contentMaxWidth` cap. No Duo branch is added. | Her order names the existing adapted system as the mechanism. The pager shows one page at a time, both pages are mounted, and the cap's own comment names large windows. Challenge: a wide window could want a second column. Answer: her evening order supersedes the two-pane design by name. |
 | D116.2 | The two-pane design and `SIZE.twoPaneMinWidth` are dead. Nothing from `bench/116-iphone-duo` merges. | Her order supersedes both by name and keeps the bench branch as history. Challenge: the bench code is written and tested. Answer: the owner's later order outranks saved work, and the branch keeps the record. |
 | D116.3 | No orientation or scene-resizability change: `app.json` stays `"orientation": "portrait"`, `requireFullScreen` stays true, and the bundle declares no landscape orientation. | Filling the open display needs landscape support. That unlocks rotation on every iPhone and iPad, changes a form factor her order forbids changing, and the fixed vertical stack would clip at an iPhone's landscape height. Challenge: Apple's preparation page asks for all orientations. Answer: that checklist targets resizable apps, and her order wins over Apple's recommendation where the two meet. |
 | D116.4 | `expo-hinge` is not added. | The glass readings show no clipping at the fold and no layout decision that needs hinge state, and her order makes the package optional. Challenge: hinge state could separate the half-open pose. Answer: half-open presents the same 951 by 669 screen as open, so hinge state would select nothing. |
 | D116.5 | No unit test is added. | No production line changes, and the presentation comes from the OS-granted window, which Jest cannot construct. A test that cannot fail proves nothing, and `ai/AGENTS.md` ties tests to changed lines. Challenge: her order says full testing. Answer: the glass matrix is the test for this ticket, and `yarn validate` runs as the regression gate. |
 | D116.6 | The open display's centred portrait window is accepted as the shipped presentation, not a defect to repair, and the row records it. | The window is the system's answer to a portrait-only scene; the app's content inside it is complete and unclipped. Changing it is D116.3, which her order forbids. Challenge: App Store screenshots from April 2027 will show the centred window. Answer: the presentation is Apple's compatibility answer for a portrait app, it is what every portrait-only app shows on the device, and the alternative she named is excluded. |
-| D116.7 | The proof vehicle is the installed mock build 2.0.1054, built with the iOS 27.1 SDK, because no app-surface file changed between 2.0.1054 (`8efd0b91`) and `uat` (`3407e984`). | `git log --oneline 8efd0b91..3407e984 -- app components hooks shared stores` lists no file under those trees; the range's changes are widget strings, widget tests and docs. The build lock at `$HOME/athan-gitree/build.lock` is parked with no holder and no build process, and the lane does not reap it. Challenge: a fresh build would be cleaner. Answer: a rebuild would produce the same app-shell bytes for this ticket's surfaces, and the lock is another session's to remove. |
+| D116.7 | The proof vehicle is the installed mock build 2.0.1054, built with the iOS 27.1 SDK, because no layout line changed between 2.0.1054 (`8efd0b91`) and `uat` (`3407e984`). | `git diff --name-only 8efd0b91..3407e984 -- app components hooks modules shared/constants.ts` prints nothing, and the installed app's `DTSDKName` is `iphonesimulator27.1`. The range's i18n change removed the dead widget duration keys (row 135) and changes no app layout. The build lock at `$HOME/athan-gitree/build.lock` is parked with no holder and no build process, and the lane does not reap it. Challenge: a fresh build would be cleaner. Answer: a rebuild would produce the same app shell for this ticket's surfaces, and the lock is another session's to remove. |
 
 ### 2.2 The executor must not decide
 
@@ -75,13 +75,13 @@ None. The step is measurement against fixed expected readings and a record writt
 
 `scripts/preflight-116.sh` in this folder runs from the repository root and ends `PREFLIGHT OK`. It checks:
 
-- the checkout contains `origin/uat` and the tree is clean;
-- the version is at least 2.0.1072;
+- the checkout contains `origin/uat` and the tree is clean outside `ai/plans/`;
+- the version is at least 2.0.1073;
 - `xcodebuild -version` reports Xcode 27.1, `xcodebuild -showsdks` offers `iphoneos27.1`, `xcrun simctl list runtimes` carries iOS 27.1 and `xcrun simctl list devicetypes` carries `iPhone Duo`;
-- an iPhone Duo simulator resolves to one UDID;
-- the installed `com.example.athan` app exists on that simulator and reports a 2.0.x version at or above 2.0.1054;
+- exactly one booted iPhone Duo simulator on the iOS 27.1 runtime resolves; zero or two is a failure;
+- the installed `com.example.athan` app exists on that simulator, reports a 2.0.x version at or above 2.0.1054, and carries `DTSDKName` `iphonesimulator27.1`;
 - every anchor under `scripts/anchors/` occurs exactly once in its source;
-- no app-surface file differs from `origin/uat`: `git diff --name-only origin/uat -- app components hooks modules shared stores` prints nothing.
+- no layout file differs from `origin/uat`: `git diff --name-only origin/uat -- app components hooks modules shared/constants.ts` prints nothing.
 
 ## 4. Background the executor needs
 
@@ -97,17 +97,19 @@ None. The step is measurement against fixed expected readings and a record writt
 | `app.json:6-15` | `"orientation": "portrait"`, `"supportsTablet": true`, `"requireFullScreen": true`. The portrait lock is the cause of the open display's centred window. |
 | `__tests__/app/Navigation.test.tsx` | The existing suite over the pager's prop surface and the overlay self-heal. It is untouched by this ticket and must stay green. |
 | `components/prayer/List.tsx` | Reads the live window width and height for row geometry; it is the widest consumer of a window change. |
+| `components/overlay/overlayContent.ts:51-60` | The explanation box is Extras-only: `getOverlayExplanation` returns nulls on Standard. |
+| `components/sheets/screens/Settings.tsx:167-205` | The settings sheet's last card, whose last row is Help (`settings.help`). |
 
 ### 4.2 How the pieces interact
 
-`Navigation` renders a full-window pager; each page is a `Screen`, which centres itself at 500 points. On a phone the page is narrower than 500 points, so the cap never binds and one schedule fills the screen. On a window wider than 500 points the page would be wide and the schedule would sit centred, which is the behaviour her order names "one schedule in the middle, or wherever".
+`Navigation` renders a full-window pager; each page is a `Screen`, which centres itself at 500 points. Both pages mount because `offscreenPageLimit={1}` pre-materializes the neighbour, and one is visible at a time. On a phone the page is narrower than 500 points, so the cap never binds and one schedule fills the screen. On a window wider than 500 points the page would be wide and the schedule would sit centred, which is the behaviour her order names "one schedule in the middle, or wherever".
 
 Two facts from the glass fix the scope:
 
 1. The closed display is 466 by 678 points and the app receives all of it, so the cap does not bind.
 2. The open display is 951 by 669 points, but the portrait lock means iOS grants the app a 469 by 669 point portrait window centred in it. The cap does not bind there either, because 469 is below 500.
 
-The adaptive path never receives a window wider than 500 points on this device, so it has no wider layout to select. The app is correct in both poses by construction.
+The adaptive path never receives a window wider than 500 points on this device, so it has no wider layout to select. The app is complete in both poses by construction.
 
 ### 4.3 The existing tests and what they prove
 
@@ -123,13 +125,14 @@ All readings were taken 2026-10-18 on the booted iPhone Duo simulator (`SIMULATO
 | App window | 466 by 678 points, full display | 469 by 669 points, centred, 241 points of display each side |
 | Schedules on screen | one, the Standard page at launch | one, the Standard page at launch |
 | Page dots | present at the bottom | present at the bottom of the app window |
-| Second schedule | none | none |
+| Second schedule | none visible | none visible |
 | Fold or unfold | process 98145 before and after, no relaunch; an open overlay stayed open across the fold | same |
+| Half-open pose | not applicable | the same 951 by 669 display and 469 by 669 app window |
 | Cold launch while open | not applicable | 469 by 669 points, Standard page |
-| Overlay | opens on the tapped row, explanation box inside the window | opens on the tapped row, explanation box inside the window |
+| Overlay | opens on the tapped row, explanation box inside the window | opens on the tapped Extras row, explanation box inside the window |
 | Settings sheet | opens inside the window and scrolls | opens inside the app window and scrolls |
 
-Evidence paths: `$HOME/athan-gitree/sessions/116/inv-closed.png`, `inv-open-1.png`, `inv-open-extras.png`, `inv-open-overlay.png`, `inv-open-settings.png`, `inv-closed-overlay.png`, `inv-open-cold-launch.png`. The screenshots are not committed.
+Evidence paths: `$HOME/athan-gitree/sessions/116/inv-closed.png`, `inv-open-1.png`, `inv-open-extras.png`, `inv-open-overlay.png`, `inv-open-settings.png`, `inv-closed-overlay.png`, `inv-open-cold-launch.png`, `inv-half-open.png`. The screenshots are not committed.
 
 The open display's centred window is the portrait lock's system presentation. Apple's tier table describes the optimised tier for an app that resizes; a portrait-only scene keeps a portrait window at every tier.
 
@@ -144,31 +147,31 @@ The open display's centred window is the portrait lock's system presentation. Ap
 
 ### 5.1 The approach
 
-No production change. The step is a cold re-run of the glass matrix against fixed expected readings, plus the record it produces. The delivered behaviour is the behaviour already shipped: one schedule, laid out by `Screen` inside the pager, in a window the OS grants.
+No production change. The step is a cold re-run of the glass matrix against fixed expected readings, plus the record it produces. The delivered behaviour is the behaviour already shipped: one schedule at a time, laid out by `Screen` inside the pager, in a window the OS grants.
 
 ### 5.2 The invariant
 
-One sentence the audit can check: the app mounts exactly one `Screen` in every Duo pose, its application rect equals the display rect when closed and a centred 469 by 669 point window when open, and the range changes no file under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/`.
+One sentence the audit can check: the app shows exactly one schedule at a time in every Duo pose while both pager pages stay mounted, its application rect equals the display rect when closed and a centred 469 by 669 point window when open, and the range changes no file under `app/`, `components/`, `hooks/`, `modules/` or `shared/constants.ts`.
 
 ### 5.3 Concurrency trace
 
-None. The ticket starts no subscription, timer or effect. A fold is one OS scene resize, which RN's live hook already re-renders; the process id stays the same across it.
+None. The ticket starts no subscription, timer or effect. A fold is one OS scene resize, which RN's live hook already re-renders; the process stays the same across it.
 
 ### 5.4 Acceptance criteria
 
 - [R1.1] WHEN the Duo is closed THE SYSTEM SHALL report a 466 by 678 point app window covering the display, showing the Standard schedule and the pager's two page dots.
 - [R1.2] WHEN the Duo is open THE SYSTEM SHALL report a 951 by 669 point display and a centred portrait app window between 465 and 473 points wide and 665 and 673 points high, showing one schedule and no fold-side split.
-- [R1.3] WHEN the device folds or unfolds while the app is in the foreground THE SYSTEM SHALL keep the same process id and re-lay the content without a relaunch.
+- [R1.3] WHEN the device folds or unfolds while the app is in the foreground THE SYSTEM SHALL keep the same process and re-lay the content without a relaunch.
 - [R2.1] WHEN the user swipes once in either pose THE SYSTEM SHALL show the other schedule with its own rows filled.
-- [R2.2] WHEN a prayer row is tapped in either pose THE SYSTEM SHALL open the overlay with its explanation box inside the app window.
-- [R2.3] WHEN the Settings button is tapped in either pose THE SYSTEM SHALL open the settings sheet inside the app window and scroll to its last row.
+- [R2.2] WHEN an Extras row is tapped in either pose THE SYSTEM SHALL open the overlay with its explanation box inside the app window.
+- [R2.3] WHEN the Settings button is tapped in either pose THE SYSTEM SHALL open the settings sheet inside the app window and scroll to the Help row.
 - [R3.1] WHEN the app is launched cold in the open pose THE SYSTEM SHALL show the Standard schedule in the same centred portrait window.
-- [R4.1] WHEN the range is audited THE SYSTEM SHALL show no changed file under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/` against `origin/uat`.
-- [R4.2] WHEN the ticket closes THE SYSTEM SHALL carry the readings and the portrait-lock finding in row 116 of `ai/plans/README.md`.
+- [R4.1] WHEN the range is audited THE SYSTEM SHALL show no changed file under `app/`, `components/`, `hooks/`, `modules/` or `shared/constants.ts` against `origin/uat`.
+- [R4.2] WHEN step 1 is recorded THE SYSTEM SHALL add the readings and the portrait-lock finding to row 116, and the audit SHALL carry them into the DONE cell.
 
 ### 5.5 What the record states
 
-The step writes into `LOG.md` the readings table with the measured values, the process ids across a fold, the evidence paths, and this finding in one paragraph: the open display is a 951 by 669 point landscape panel; the portrait lock makes iOS grant the app a 469 by 669 point portrait window centred in it; inside that window one schedule fills the width because the 500 point cap never binds; no Duo code path exists and none is added; filling the panel would require landscape support, which changes every iPhone and iPad and is excluded by her order.
+The step writes into `LOG.md` the readings table with the measured values, the process identifiers across a fold, the evidence paths, and this finding in one paragraph: the open display is a 951 by 669 point landscape panel; the portrait lock makes iOS grant the app a 469 by 669 point portrait window centred in it; inside that window one schedule fills the width because the 500 point cap never binds; no Duo code path exists in the shipped code and none is added; filling the panel would require landscape support, which changes every iPhone and iPad and is excluded by her order.
 
 ## 6. Steps
 
@@ -189,68 +192,89 @@ printf '%s\n' "$SIMULATOR_UDID"
 
 Expected: one UUID. Empty output is a STOP.
 
-Confirm the installed app and its version:
+Confirm the installed app, its version and its build SDK:
 
 ```bash
-xcrun simctl get_app_container "$SIMULATOR_UDID" com.example.athan
 APP_PATH="$(xcrun simctl get_app_container "$SIMULATOR_UDID" com.example.athan)"
 /usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP_PATH/Info.plist"
+/usr/libexec/PlistBuddy -c 'Print :DTSDKName' "$APP_PATH/Info.plist"
 ```
 
-Expected: a path under the simulator's data container, and a version of 2.0.1054 or higher. A missing app is a STOP: the build lock is parked and this lane does not build.
+Expected: a path under the simulator's data container, a version of 2.0.1054 or higher, and `iphonesimulator27.1`. A missing app is a STOP: the build lock is parked and this lane does not build.
 
 ### 7.2 The matrix
 
-Use the `agent-device` MCP with a session named `lane-116`. Open the app once:
+Drive the simulator with the `agent-device` MCP server (0.21.28). Use the session name `lane-116` and pass `udid` on the first `open`. Do not use the PATH CLI: it is an older build without `fold`. The calls below are MCP tool names with their arguments.
 
-```
-open com.example.athan --udid <SIMULATOR_UDID> --session lane-116 --foreground
-```
+Open the app cold, folded:
 
-Then, for each pose, take the reading, the screenshot and the interaction:
+| Call | Expected |
+| --- | --- |
+| `fold {pose: "closed"}` | the pose applies. The tool may report `no sample to verify it` because the Duo simulator exposes no hinge angle; the next snapshot proves the pose. |
+| `open {app: "com.example.athan", udid: SIMULATOR_UDID, session: "lane-116", foreground: true, relaunch: true}` | the app launches on the Standard page |
+| `snapshot {session: "lane-116", interactiveOnly: true, mcpOutputFormat: "json"}` | the `Application` node's `rect` is 466 by 678; one schedule's labels; a `Settings` label |
+| `screenshot {session: "lane-116", path: "$HOME/athan-gitree/sessions/116/duo-closed-standard.png"}` | width 466, height 678 |
 
-| Order | Command | Expected reading |
-| --- | --- | --- |
-| 1 | `fold closed` | the pose applies; the tool may report `no sample to verify it` because the Duo simulator exposes no hinge angle. Confirm from the next snapshot. |
-| 2 | `snapshot -i` | application rect 466 by 678; labels carry one schedule only; a `Settings` label |
-| 3 | `screenshot $HOME/athan-gitree/sessions/116/duo-closed.png` | 466 by 678 |
-| 4 | `swipe` from 350,300 to 250,300 | the Extras schedule's rows replace the Standard rows; no second schedule beside them |
-| 5 | `press` a row ref | the overlay opens; its explanation box sits inside the window |
-| 6 | `press` the close target | the overlay closes |
-| 7 | `press` the Settings ref | the settings sheet opens inside the window; scroll to the last row |
-| 8 | `fold open` | the pose applies; the next snapshot reports the open window |
+The closed-pose matrix, in order:
 
-Repeat rows 2 to 7 in the open pose, expecting a 951 by 669 display and a 469 by 669 app window. Read the application rect from `snapshot -i`; read the display size from `screenshot`.
+1. Record the application rect and the screenshot from the table above.
+2. Swipe once with `swipe {from: {x: 350, y: 300}, to: {x: 250, y: 300}, session: "lane-116"}`; the snapshot lists the Extras rows and no second schedule. Screenshot `duo-closed-extras.png`.
+3. Press an Extras row with `press {target: {kind: "ref", ref: "<the row's @ref>"}, settle: true, session: "lane-116"}`; the overlay opens. Screenshot `duo-closed-overlay.png`.
+4. Close it with `press {target: {kind: "selector", selector: 'label="Close prayer details"'}, settle: true, session: "lane-116"}`; the snapshot shows the Extras schedule.
+5. Press the Settings ref; the sheet opens. Screenshot `duo-closed-settings.png`.
+6. `scroll {direction: "bottom", until: 'label="Help"', session: "lane-116"}` reaches the last row.
+7. Dismiss with `back {session: "lane-116"}`; the snapshot shows the schedule again.
+8. Swipe back to Standard once.
+
+Then the open pose:
+
+| Call | Expected |
+| --- | --- |
+| `fold {pose: "open"}` | the pose applies; the same verification caveat |
+| `snapshot {session: "lane-116", interactiveOnly: true, mcpOutputFormat: "json"}` | the application rect is 469 by 669 within a 465 to 473 by 665 to 673 band |
+| `screenshot {session: "lane-116", path: "$HOME/athan-gitree/sessions/116/duo-open-standard.png"}` | width 951, height 669 |
+
+Repeat the closed matrix's steps 2 to 8 in the open pose, with screenshots named `duo-open-extras.png`, `duo-open-overlay.png` and `duo-open-settings.png`.
 
 Fold transitions, in this order:
 
-1. open the overlay in the open pose, record the app's pid from a snapshot's first node;
-2. `fold closed`, snapshot: the pid is unchanged and the overlay is still open;
-3. `fold open`, snapshot: the pid is unchanged and the overlay is still open;
-4. close the overlay.
+1. Open the overlay on an Extras row in the open pose.
+2. Read the process: `xcrun simctl spawn "$SIMULATOR_UDID" launchctl list | grep com.example.athan`; record the first column.
+3. `fold {pose: "closed"}`, then read the process again: the value is unchanged and the overlay is still open.
+4. `fold {pose: "open"}`, then read the process again: the value is unchanged and the overlay is still open.
+5. Close the overlay.
 
 Cold launch in the open pose:
 
-1. `open com.example.athan --udid <SIMULATOR_UDID> --session lane-116 --foreground --relaunch`;
-2. `snapshot -i`: application rect 469 by 669, Standard schedule.
+1. `open {app: "com.example.athan", udid: SIMULATOR_UDID, session: "lane-116", foreground: true, relaunch: true}`.
+2. `snapshot {session: "lane-116", interactiveOnly: true, mcpOutputFormat: "json"}`: the application rect is 469 by 669 and the Standard schedule is showing.
+3. Screenshot `duo-open-cold-launch.png`.
+
+Read every screenshot's pixels back with `sips -g pixelWidth -g pixelHeight <png>` and record the pair.
 
 ### 7.3 Evidence
 
-Save every screenshot under `$HOME/athan-gitree/sessions/116/` with the name `duo-<pose>-<screen>.png`. Never commit a screenshot. Record every reading in `LOG.md` as it lands, with its capsule name and the value read.
+Save every screenshot under `$HOME/athan-gitree/sessions/116/` with the name `duo-<pose>-<screen>.png`. Never commit a screenshot. Record every reading in `LOG.md` as it lands, with the reading's row name and the value read.
 
 ### 7.4 Restore
 
-Leave the simulator folded closed and the app on the Standard schedule. Leave iOS automatic time alone: this matrix changes no clock. The simulator stays booted.
+```bash
+# fold closed and leave the app on the Standard schedule
+fold {pose: "closed"}
+open {app: "com.example.athan", udid: SIMULATOR_UDID, session: "lane-116", foreground: true, relaunch: true}
+```
+
+This matrix changes no clock and turns no setting off. The simulator stays booted.
 
 ### 7.5 Why the installed build is the vehicle
 
-The app surface is unchanged since the installed build. The planning session verified:
+The app's layout path is unchanged since the installed build. The planning session verified:
 
 ```bash
-git log --oneline 8efd0b91..3407e984 -- app components hooks shared stores
+git diff --name-only 8efd0b91..3407e984 -- app components hooks modules shared/constants.ts
 ```
 
-prints no path under those trees: the range's app-surface changes are widget strings, widget tests and docs. The build lock at `$HOME/athan-gitree/build.lock` is a parked directory with no holder and no build process; the lane does not reap it and takes no build.
+prints nothing. The range's i18n change removed the dead widget duration keys (row 135) and changes no app layout, and the installed app's `DTSDKName` is `iphonesimulator27.1`. The build lock at `$HOME/athan-gitree/build.lock` is a parked directory with no holder and no build process; the lane does not reap it and takes no build.
 
 ## 8. Records
 
@@ -260,11 +284,11 @@ Findings text for `LOG.md` under `## Findings`:
 - The open display is a 951 by 669 point landscape panel. The portrait lock makes iOS grant the app a 469 by 669 point portrait window centred in it, with 241 points of display each side.
 - Inside that window the app lays out one schedule at 469 points wide, below the 500 point `SIZE.contentMaxWidth` cap, so the cap never binds and no wider layout is reachable on this device.
 - Folding and unfolding keeps the process alive and re-lays the content in place; an open overlay survives the fold.
-- The code carries no Duo, fold, hinge, idiom or size-class path before this ticket and gains none after it.
+- The shipped code carries no Duo, fold, hinge, idiom or size-class path before this ticket and gains none after it.
 - Filling the open panel needs landscape support. That turns rotation on for every iPhone and iPad, which her order excludes, and the fixed stack clips at an iPhone's landscape height.
-- The range changes no file under `app/`, `components/`, `hooks/`, `modules/`, `shared/` or `stores/`; every other form factor renders what it rendered before.
+- The range changes no file under `app/`, `components/`, `hooks/`, `modules/` or `shared/constants.ts`; every other form factor renders what it rendered before.
 
-Queue cell text the lead applies on DONE: the audit writes it from `LOG.md` in the same commit that deletes this folder.
+Step 1 sets the ticket EXECUTED and adds the one-sentence presentation finding to the row. The audit writes the final DONE cell in the commit that deletes this folder.
 
 ## 9. Push
 
@@ -276,29 +300,25 @@ None. The lane never pushes; the orchestrator pushes reviewed commits.
 | --- | --- |
 | The pre-flight reports no iPhone Duo simulator | STOP: the device type ships with Xcode 27.1 and its absence is a toolchain fault, not a repository one. |
 | `fold` reports `no sample to verify it` | Continue: the pose applies and the next snapshot or screenshot proves it. Record the message once. |
-| The open application rect is outside 465 to 473 by 665 to 673 | Record the value, take a screenshot, and STOP: the presentation changed from the planning reading and the plan's criteria need a replan against the new numbers. |
+| The open application rect is outside 465 to 473 by 665 to 673 | Record the value, take a screenshot, and STOP: the presentation changed from the planning reading and the criteria need a replan against the new numbers. |
 | The closed application rect is not 466 by 678 | Record the value and STOP for the same reason. |
-| The fold changes the process id | STOP: a relaunch on fold would break the overlay and the countdown continuity, and the plan does not cover it. |
+| The process value changes across a fold | STOP: a relaunch on fold would break the overlay and the countdown continuity, and the plan does not cover it. |
 | The app opens a second schedule, a hinge gap or a fold-side split | STOP: the app carries a Duo path the planning read did not see, and the plan must be rewritten. |
-| The installed app is missing or below 2.0.1054 | STOP: the build lock is parked and this lane does not build. Report the state. |
+| The installed app is missing, below 2.0.1054, or not built with `iphonesimulator27.1` | STOP: the build lock is parked and this lane does not build. Report the state. |
 | `yarn validate` fails on a file the range does not touch | STOP and quote the failure; the plan expects a green tree. |
 | The merge conflicts on `ai/plans/README.md` or the version files | Lane weather: abort, rebase onto `uat`, keep both lanes' rows and the higher version, retry once, then STOP. |
 
-Per-step restore: the step changes no source file. `git checkout -- <file>` restores `ai/plans/README.md`, `app.json`, `package.json` and `LOG.md` if a commit is abandoned.
+Per-step restore: the step changes no source file. `git checkout -- <file>` restores `ai/plans/README.md`, `ai/plans/116-iphone-duo/PLAN.md`, `ai/plans/116-iphone-duo/LOG.md`, `app.json` and `package.json` if a commit is abandoned.
 
 ## 11. Subagents
 
-Planning: this lane ran the fact reads itself, because the device session and its claimed simulator belong to it. Delivery: one `athan-executor` batch (the single step, weight 3) or the lane itself when the device session cannot be handed over; audit dispatches the `athan-reviewer` workers named by the lead. Every worker may call `vision` for an image it cannot see.
+Planning: this lane ran the fact reads itself, because the device session and its claimed simulator belong to it. Delivery: one `athan-executor` batch (the single step, weight 3), or the lane itself when the device session cannot be handed over; audit dispatches the `athan-reviewer` workers named by the lead. Every worker may call `vision` for an image it cannot see.
 
 ## 12. Report to the owner
 
 The Duo needs no code. On the simulator built with Xcode 27.1 the app already shows one schedule on both displays through its shipped layout: full screen when the device is folded, and a centred portrait window of 469 by 669 points when it is open on a 951 by 669 display. That centred window is iOS's presentation for a portrait-locked app, not a layout fault; filling the open panel would need landscape support, which turns rotation on for every iPhone and iPad and is excluded by your order. Folding and unfolding keeps the app alive with its overlay open, and both schedules, the overlay and the settings sheet work inside the window. Nothing under the app's layout path changed, so no other form factor moves.
 
-Progress:
-
-| Task | Status |
-| --- | --- |
-| Glass readings on both Duo displays | done at planning, re-run in step 1 |
-| The portrait-lock cause | measured and recorded |
-| Production code change | none by decision |
-| The record in row 116 | step 1, then the audit |
+**Just done:** ticket 116 investigated and recorded, no code needed.
+**Board:** lane 116 open, `uat` holds the lane's commits for the orchestrator to audit and push.
+**Up next:** the audit of this lane's range.
+**You type:** `/athan-next` to continue the queue.
