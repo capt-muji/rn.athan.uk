@@ -19,6 +19,7 @@ import { addDays } from 'date-fns';
 
 import { type PrayerId, UNAVAILABLE_TIME } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { createPrayerDatetime, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
 import { type Prayer, type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot } from '@/shared/widgetTimeline';
@@ -174,5 +175,37 @@ describe('buildPrayerWidgetSnapshot', () => {
     if (!snapshot) return;
     expect(snapshot.v).toBe(4);
     expect(snapshot.schedule).toBe('standard');
+  });
+
+  it('bakes fixed Latin unit letters under the Arabic app locale', () => {
+    setActiveLocale('ar');
+    try {
+      const snapshot = buildPrayerWidgetSnapshot(asSequence(makeSequence()), SETTINGS);
+      expect(snapshot).not.toBeNull();
+      if (!snapshot) return;
+
+      expect(snapshot.strings.h).toBe('h');
+      expect(snapshot.strings.m).toBe('m');
+      expect(snapshot.strings.s).toBe('s');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('bakes the same fixed unit letters under every locale', () => {
+    for (const locale of LOCALE_IDS) {
+      setActiveLocale(locale);
+      try {
+        const snapshot = buildPrayerWidgetSnapshot(asSequence(makeSequence()), SETTINGS);
+        expect(snapshot).not.toBeNull();
+        if (!snapshot) continue;
+
+        expect(snapshot.strings.h).toBe('h');
+        expect(snapshot.strings.m).toBe('m');
+        expect(snapshot.strings.s).toBe('s');
+      } finally {
+        setActiveLocale('en');
+      }
+    }
   });
 });

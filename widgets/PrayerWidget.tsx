@@ -375,18 +375,50 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       </Box>
     );
 
+  type ALabelGroup = { digits: string; letter: string };
+
   // Android's countdown is computed at render time, so it carries the format
   // itself: hours and minutes only, rounded up, never reading below a minute.
   // iOS needs no equivalent — SwiftUI ticks its own timer from the segment.
   // The unit words arrive as props: the widget runtime imports nothing, so
   // the app bakes them into the snapshot.
-  const ALabel = (units: { h: string; m: string }, targetEpochMs: number, nowMs: number): string => {
+  const ALabel = (units: { h: string; m: string }, targetEpochMs: number, nowMs: number): ALabelGroup[] => {
     const totalMinutes = Math.max(1, Math.ceil((targetEpochMs - nowMs) / 60000));
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    if (hours === 0) return `${minutes}${units.m}`;
-    if (minutes === 0) return `${hours}${units.h}`;
-    return `${hours}${units.h} ${minutes}${units.m}`;
+    if (hours === 0) return [{ digits: `${minutes}`, letter: units.m }];
+    if (minutes === 0) return [{ digits: `${hours}`, letter: units.h }];
+    return [
+      { digits: `${hours}`, letter: units.h },
+      { digits: `${minutes}`, letter: units.m },
+    ];
+  };
+
+  // The app countdown component's face (her 2026-10-18 amendment): each
+  // group a digit run with its letter tight against it at 0.95 x the digit
+  // size, same colour and weight, groups 12 points apart. The converter
+  // maps arrangements to alignments only, so the gap rides a fixed-width
+  // Spacer, never Row spacing. The label is a Latin run and never mirrors
+  // (D135.9: it shares no text node with Arabic content).
+  const ALabelParts = (
+    units: { h: string; m: string },
+    targetEpochMs: number,
+    nowMs: number,
+    size: number,
+    weight: 'normal' | 'bold' | '600',
+    color: string
+  ): ReactElement => {
+    const runs: ReactNode[] = [];
+    for (const group of ALabel(units, targetEpochMs, nowMs)) {
+      if (runs.length > 0) runs.push(<Spacer modifiers={[width(12)]} />);
+      runs.push(
+        <Row>
+          {AText(group.digits, size, weight, color)}
+          {AText(group.letter, size * 0.95, weight, color)}
+        </Row>
+      );
+    }
+    return <Row verticalAlignment='center'>{runs}</Row>;
   };
 
   // "Mon · Lon" from a Gregorian label, "Raj 1 · Lon" from a Hijri one —
@@ -484,7 +516,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             closer to iOS than the workaround was. */}
         {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(2)]} />
-        {AText(ALabel(strings, next.epochMs, nowMs), 26, 'bold', palette.hero)}
+        {ALabelParts(strings, next.epochMs, nowMs, 26, 'bold', palette.hero)}
         <Spacer modifiers={[height(6)]} />
         {AText(next.time, 13, 'normal', palette.secondary)}
       </Column>

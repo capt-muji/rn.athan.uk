@@ -161,6 +161,31 @@ const textsOf = (tree: unknown): string[] =>
       return String(Array.isArray(children) ? children.join('') : (children ?? ''));
     });
 
+/** A node's direct marker children: conditions flattened, non-elements dropped */
+const markerChildrenOf = (node: unknown): MarkerNode[] => {
+  const children = (node as MarkerNode | undefined)?.props?.children;
+  return (Array.isArray(children) ? children : [children]).filter(
+    (child): child is MarkerNode => child !== null && typeof child === 'object' && 'marker' in child
+  );
+};
+
+/** The composed countdown label: the outer Row plus the tight inner Rows holding the 26sp digit runs */
+const labelPartsOf = (tree: unknown): { outer?: MarkerNode; runs: MarkerNode[] } => {
+  const isRun = (node: MarkerNode): boolean =>
+    node.marker === 'Row' &&
+    markerChildrenOf(node).some(
+      (child) => child.marker === 'Text' && (child.props.style as { fontSize?: number } | undefined)?.fontSize === 26
+    );
+  const runs = collect(tree).filter(isRun);
+  const outer = collect(tree).find(
+    (node) => node.marker === 'Row' && markerChildrenOf(node).some((child) => runs.includes(child))
+  );
+  return { outer, runs };
+};
+
+const textChildOf = (run: MarkerNode | undefined, text: string): MarkerNode | undefined =>
+  markerChildrenOf(run).find((child) => child.marker === 'Text' && child.props.children === text);
+
 /**
  * The self-ticking countdown: a Text carrying a timerInterval instead of a
  * string. iOS renders it in its own process, so it holds no text to read and
@@ -484,7 +509,9 @@ describe('home widget renderer', () => {
       // minutes, so the label reads "1x 12y" under the sentinels
       freezeNow(at(DAY_ONE, '14:08') + 30_000);
       const tree = renderTree(layouts.PrayerWidget(androidProps({ strings: sentinel }), { colorScheme: 'light' }));
-      expect(textsOf(tree)).toContain('1H 12M');
+      expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'H', '12', 'M']));
+      expect(textsOf(tree)).not.toContain('h');
+      expect(textsOf(tree)).not.toContain('m');
       expect(textsOf(tree)).not.toContain('1h 12m');
 
       // The stale card's copy comes from the same props, both sizes
@@ -514,7 +541,7 @@ describe('home widget renderer', () => {
         };
         const tree = renderTree(layouts.PrayerWidget(androidProps({ strings }), { colorScheme: 'light' }));
 
-        expect(textsOf(tree)).toContain('19د');
+        expect(textsOf(tree)).toEqual(expect.arrayContaining(['19', 'د']));
       } finally {
         delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
       }
@@ -533,7 +560,7 @@ describe('home widget renderer', () => {
       freezeNow(at(DAY_ONE, '14:08') + 30_000);
       const tree = renderTree(layouts.PrayerWidget(legacySnapshot, { colorScheme: 'light' }));
 
-      expect(textsOf(tree)).toContain('1h 12m');
+      expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
       expect(textsOf(tree)).toContain('ASR');
       expect(textsOf(tree)).toContain('15:20');
     });
@@ -553,7 +580,7 @@ describe('home widget renderer', () => {
         freezeNow(at(DAY_ONE, '14:08') + 30_000);
         const tree = renderTree(layouts.PrayerWidget(legacySnapshot, { colorScheme: 'light' }));
 
-        expect(textsOf(tree)).toContain('1h 12m');
+        expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
       } finally {
         delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
       }
@@ -612,7 +639,7 @@ describe('home widget renderer', () => {
       expect(markers.has('VStack')).toBe(false);
 
       // 15:20 minus 14:08:30 is 71.5 minutes: ceil makes it "1h 12m"
-      expect(textsOf(tree)).toContain('1h 12m');
+      expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
       expect(textsOf(tree)).toContain('ASR');
       expect(textsOf(tree)).toContain('15:20');
     });
@@ -742,12 +769,64 @@ describe('home widget renderer', () => {
 
     it('labels a sub-hour countdown without an hours segment', () => {
       freezeNow(at(DAY_ONE, '15:01'));
-      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toContain('19m');
+      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toEqual(
+        expect.arrayContaining(['19', 'm'])
+      );
     });
 
     it('labels an exact-hour countdown without a minutes segment', () => {
       freezeNow(at(DAY_ONE, '14:20'));
-      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toContain('1h');
+      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toEqual(
+        expect.arrayContaining(['1', 'h'])
+      );
+    });
+
+    it('composes the countdown label as digit runs with tight 0.95 letters', () => {
+      // 08:25 to Dhuhr's 12:45 is exactly 4h20m: two groups
+      freezeNow(at(DAY_ONE, '08:25'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
+      const { outer, runs } = labelPartsOf(tree);
+
+      expect(runs).toHaveLength(2);
+      expect(textsOf(runs[0])).toEqual(['4', 'h']);
+      expect(textsOf(runs[1])).toEqual(['20', 'm']);
+      // Tight: neither inner row carries a modifier, so no gap sits inside a group
+      expect(runs[0]?.props.modifiers).toBeUndefined();
+      expect(runs[1]?.props.modifiers).toBeUndefined();
+
+      // The app component's face at HEAD sizing: the letter rides the same
+      // colour and weight at 0.95 x the digit size, no rounding
+      const digit = textChildOf(runs[0], '4');
+      const letter = textChildOf(runs[0], 'h');
+      expect((digit?.props.style as { fontSize?: number } | undefined)?.fontSize).toBe(26);
+      expect((letter?.props.style as { fontSize?: number } | undefined)?.fontSize).toBe(26 * 0.95);
+      expect(letter?.props.color).toBe(digit?.props.color);
+      expect(letter?.props.fontWeight).toBe(digit?.props.fontWeight);
+
+      // The 12 point group gap is one fixed-width Spacer between the runs
+      const outerChildren = markerChildrenOf(outer);
+      expect(outerChildren).toHaveLength(3);
+      expect(outerChildren[1]?.marker).toBe('Spacer');
+      expect(outerChildren[1]?.props.modifiers).toEqual([{ modifier: 'width', value: 12 }]);
+    });
+
+    it('drops zero groups and clamps the final minute in the composed label', () => {
+      // Whole hour: 08:45 to Dhuhr's 12:45 is exactly 4h, one group, no minutes run
+      freezeNow(at(DAY_ONE, '08:45'));
+      const whole = labelPartsOf(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }))
+      );
+      expect(whole.runs).toHaveLength(1);
+      expect(textsOf(whole.runs[0])).toEqual(['4', 'h']);
+      expect(markerChildrenOf(whole.outer)).toHaveLength(1);
+
+      // 40 seconds out: the clamp holds one minute, never zero
+      freezeNow(at(DAY_ONE, '15:20') - 40_000);
+      const clamped = labelPartsOf(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }))
+      );
+      expect(clamped.runs).toHaveLength(1);
+      expect(textsOf(clamped.runs[0])).toEqual(['1', 'm']);
     });
 
     it('shortens a two-token Hijri-style footer to the month prefix', () => {
