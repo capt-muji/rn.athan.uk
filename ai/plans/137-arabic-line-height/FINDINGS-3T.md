@@ -24,10 +24,10 @@ arrival (no switch made, none restored).
 | Sheet subtitle | اضبط تفضيلاتك | [743,561][986,619] | 58 | 14 | Rubik-Regular | 1.578 | 44/44/56/57 | bbox 57, +1 | matches Regular bbox |
 | Card title | الصلاة | [96,742][986,802] | 60 | 14 | Rubik-Medium | 1.633 | 44/44/56/58 | bbox 58, +2 | no candidate within 1px |
 | Help question | لماذا لا تصلني أي إشعارات؟ | [242,358][975,419] | 61 | 15 | Rubik-Medium | 1.549 | pin 23 = 60.375 unrounded, 60 rounded | pin, +1 after rounding | reads its pin within 1px |
-| Help answer | بدون إذن، لا يمكن إظهار الإشعارات. | [158,457][975,510] | 53 | 13 | Rubik-Regular | 1.554 | pin 20 = 52.5 unrounded, 53 rounded | pin, +0.5 | reads its pin within 1px |
+| Help answer | بدون إذن، لا يمكن إظهار الإشعارات. | [158,457][975,510] | 53 | 13 | Rubik-Regular | 1.553 | pin 20 = 52.5 unrounded, 53 rounded | pin, +0.5 | reads its pin within 1px |
 
 Pin ratios for the controls: question 23/15 = 1.533em, measured 1.549em
-(+0.625px at scale); answer 20/13 = 1.538em, measured 1.554em (+0.5px). Both
+(+0.625px at scale); answer 20/13 = 1.538em, measured 1.553em (+0.5px). Both
 inside the 1px tolerance, so the instrument holds.
 
 Corroboration inside the same captures: second card title العرض

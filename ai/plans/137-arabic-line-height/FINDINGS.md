@@ -76,7 +76,7 @@ card titles read 60px like the first, and the Help answer's other two lines read
 | Control (size, face, pin) | Pin ratio | 3T reading | XS reading |
 | --- | --- | --- | --- |
 | Help question (15 Rubik-Medium, pinned 23) | 23/15 = 1.533em | 61px at pin 60.375 unrounded, +1 after rounding; measured 1.549em | VOID, modal never reached (sheet void) |
-| Help answer (13 Rubik-Regular, pinned 20) | 20/13 = 1.538em | 53px at pin 52.5 unrounded, +0.5; measured 1.554em | VOID, modal never reached (sheet void) |
+| Help answer (13 Rubik-Regular, pinned 20) | 20/13 = 1.538em | 53px at pin 52.5 unrounded, +0.5; measured 1.553em | VOID, modal never reached (sheet void) |
 | Overlay body (16 Rubik-Regular, pinned 24) | 24 x scale per line | 63px against the 63px pin line, exact, one line | 73px against the 72px pin line, +1, one line |
 
 VISION-137.md is the line-count authority: both overlay bodies render ONE line,

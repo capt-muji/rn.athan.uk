@@ -1,7 +1,7 @@
 # VISION 137
 
 The lead's pixel-corroboration record (D137.11, D137.2's corroboration rung). One
-vision dispatch read the nine screenshots under `$HOME/athan-gitree/sessions/137/`;
+vision dispatch read eight of the ten screenshots under `$HOME/athan-gitree/sessions/137/`;
 its transcription is recorded below essentially verbatim, then the lead's reading
 of what it corroborates. No measurement in any FINDINGS file comes from these
 pixels: the engine numbers (hierarchy bounds, snapshot frames) stay the

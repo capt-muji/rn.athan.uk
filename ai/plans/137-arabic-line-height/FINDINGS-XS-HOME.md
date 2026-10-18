@@ -28,7 +28,7 @@ so no backdrop tap was needed (step 3 saw one; this launch did not).
 | Row time | 04:03 (inside the merged row label) | VOID, AX-merged (see below) | VOID | 18 | Rubik-Regular | not computable | 64/64/83/84 | not computable | void on the AX rung, pending the vision pixel read |
 | Countdown word | الفجر | [0, 58, 375, 20.333335876464844] | 61 | 17 | Rubik-Regular | 1.196 | 60/60/78/79 | hhea 60 and typo 60, +1 | within 1px of hhea/typo (61.000007px against the unrounded 60.44) |
 | Overlay explanation title | الضحى | [265.6666660308838, 303.99998474121094, 53, 21.33331298828125] | 64 | 18 | Rubik-Medium | 1.185 | 64/64/83/85 | hhea 64 and typo 64, +0 | matches hhea and typo exactly |
-| Overlay explanation body | 20 دقيقة بعد الشروق | [56.6666660308838, 357.6666488647461, 262, 24.33331298828125] | 73 whole-node | 16 | Rubik-Regular | 1.521 whole-node | pin 24 = 72px per line | pin 72, +1 if one line | PENDING: per-line = 73 / line count, the lead's vision read of xs-overlay.png fixes the count |
+| Overlay explanation body | 20 دقيقة بعد الشروق | [56.6666660308838, 357.6666488647461, 262, 24.33331298828125] | 73 whole-node | 16 | Rubik-Regular | 1.521 whole-node | pin 24 = 72px per line | pin 72, +1 if one line | closed by VISION-137.md: one line, per-line 73px against the 72px pin, +1 |
 
 Unrounded px before scale rounding: location 57.000, date 63.999985, word
 61.000007, title 63.999939, body 72.999939. Every recorded StaticText appears
@@ -37,10 +37,9 @@ recorded.
 
 Pin note for the control: the body carries lineHeight
 `ty.scriptLineHeight(16)` = 24, so 24 x 3 = 72px per line. The whole node
-reads 73px (72.999939), one pixel over a single pin line; the line count stays
-pending until the lead's vision read of `xs-overlay.png` fixes it, per the
-step contract. The 3T read the same body at 63px against its 62.625 pin
-(unrounded 63 after rounding), exact.
+reads 73px (72.999939), one pixel over a single pin line; VISION-137.md's read
+of `xs-overlay.png` fixed the count at one line, closing the pin at 73/72, +1. The 3T read the same body at 63px against its 63 pin
+(24 x 2.625 = 63.0), exact.
 
 Void, the row 120 form, the two row surfaces:
 

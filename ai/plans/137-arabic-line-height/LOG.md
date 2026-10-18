@@ -257,7 +257,7 @@ session: ses_eb2f135bfffe1QvZUjA1rHhHZ1 (the lead's own session for this lane)
 ## Vision corroboration (2026-10-18)
 
 Steps 2b and 3b landed (their own headings below). The lead then dispatched
-the vision reader over all nine screenshots; its transcription and the lead's
+the vision reader over the eight surface screenshots; its transcription and the lead's
 reading are recorded in `VISION-137.md`. The two facts that close pendings:
 both overlay bodies render ONE line (3T pin 63/63 exact, XS 73/72 +1), and
 the countdown word's full-width node is a band artefact on BOTH phones (the

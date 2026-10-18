@@ -37,7 +37,7 @@ Change contracts:
    frames: an agent-device snapshot of the static sheet returns refs with frames for the
    title, the subtitle and the first card title. When the snapshot wedges or returns no
    frames, fall back to `pymobiledevice3 developer dvt screenshot --udid IPHONE_UDID >
-   $HOME/athan-gitree/sessions/137/xs-sheet.png` and read the pixels; the reader
+   $HOME/athan-gitree/sessions/137/xs-02-settings.png` and read the pixels; the reader
    transcribes, and the LOG records the fallback per the symptom table.
 5. Open the Help modal from the settings sheet, open the first question, settle, read the
    question's and the answer's frames (or pixels by the same fallback).

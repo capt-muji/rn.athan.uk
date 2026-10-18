@@ -25,18 +25,17 @@ location label; no switch made, none restored).
 | Row time | 05 (digit node inside the ax 05:54 container [210,644][844,719]) | [453,644][512,719] | 75 | 18 | Rubik-Regular | 1.587 | 56/56/72/73 | bbox 73, +2 | no candidate within 1px |
 | Countdown word | الشروق | [0,123][1080,150] | 27 | 17 | Rubik-Regular | 0.605 | 53/53/68/69 | hhea 53, -26 | no candidate within 1px |
 | Overlay explanation title | الضحى | [743,762][884,839] | 77 | 18 | Rubik-Medium | 1.630 | 56/56/72/75 | bbox 75, +2 | no candidate within 1px |
-| Overlay explanation body | 20 دقيقة بعد الشروق | [196,924][884,987] | 63 | 16 | Rubik-Regular | 1.500 whole-node | pin 24 = 63 unrounded, 63 rounded | pin, +0 if one line | PENDING: whole node 63px, per-line = 63 / line count, the lead's vision read fixes the count |
+| Overlay explanation body | 20 دقيقة بعد الشروق | [196,924][884,987] | 63 | 16 | Rubik-Regular | 1.500 whole-node | pin 24 = 63 unrounded, 63 rounded | pin, +0 if one line | closed by VISION-137.md: one line, per-line 63px against the 63px pin, exact |
 
 Pin note for the control: the body carries lineHeight
 `ty.scriptLineHeight(16)` = 24, so 24 x 2.625 = 63px per line. The whole
-node reads 63px, which equals exactly one pin line; the line count stays
-pending until the lead's vision read of `3t-overlay.png` fixes it, per the
-step contract.
+node reads 63px, which equals exactly one pin line; VISION-137.md's read of
+`3t-overlay.png` fixed the count at one line, closing the pin at 63/63 exact.
 
 Corroboration inside the same captures: the other five Standard row names
 (الشروق، الظهر، العصر، المغرب، العشاء) all read 75px at the same x column;
 every row-time digit node (05, 54, 07, 27, 12, 51, 15, 28, 18, 04, 19, 27)
-reads 75px, while the colon glyphs read 70px (for example `:`
+reads 75px, while the colon glyphs read 71px (for example `:`
 [520,644][533,715]); the Extras page's row names (نصف الليل، آخر ثلث،
 السحور، الضحى) all read 75px. The countdown word node reported
 [0,123][1080,150] in every capture, on both pages and under both words
@@ -52,7 +51,7 @@ per the contract. The overlay closed on the second tap of the same row
 six-row face returned at its original bounds.
 
 Residual pattern, recorded raw per D137.12: the five new unpinned points
-read +2 above their Regular bbox (67 vs 65 at 16; 75 vs 73 at 18, four
+read +2 above their Regular bbox (67 vs 65 at 16; 75 vs 73 at 18, three
 surfaces) and the Medium point +2 above its bbox (77 vs 75 at 18), against
 step 2's Regular +1 at 14 (58 vs 57) and Medium +2 at 22 and 14. The
 countdown word scatters far below every set (27px against hhea/typo 53,
