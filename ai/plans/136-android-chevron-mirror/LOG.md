@@ -83,3 +83,18 @@ direction. A first commit attempt (6c35b413, discarded, never merged) rode a
 stale parent without its version bump; this commit is its clean redo at
 2.0.1023.
 session: ses_eb3b3e642ffePbPMLCU3q6SEOJ (lead-read closure ses_eb36e5493ffeUzU30BcLjhvnd5)
+
+### Plan repair mid-execution (2026-10-18, agent-ruled by the lane)
+
+The step-2 suite's it.each tables were two-column while the grill's unused-
+parameter fix left one-column callbacks; tsc rejected the mismatch
+(TS2345, two errors, plan-given code). Ruled: single-column tables
+(`it.each(['en', 'ar'] as const)`), the repo's own idiom (locale.test.ts:149,
+help.test.ts:48); the locale-to-glyph mapping already lives inside the probes
+and is pinned by locale.test.ts. Argued twice: for - the repo idiom and no
+unused binding; against - the table documented the glyph per locale, but that
+mapping is redundant at the callback level and stays in the probes. The
+repaired block was re-verified in the worktree: tsc clean, biome clean, red
+4/4 against the unpinned tree (all direction assertions, Received:
+undefined). The executor's STOP is recorded; its unfinished patch was
+restored away per its own recovery.
