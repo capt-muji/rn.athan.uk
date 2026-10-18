@@ -52,7 +52,16 @@ describe('version lockstep', () => {
     // Guards the assertions below from passing on two matching undefineds if the
     // key is ever moved or renamed.
     expect(typeof appJsonVersion()).toBe('string');
-    expect(appJsonVersion()).toMatch(/^\d+\.\d+\.\d+/);
+    expect(appJsonVersion()).toMatch(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/);
+  });
+
+  it('rejects a suffixed or zero-padded version shape', () => {
+    // The shape contract the live assertion above enforces, pinned against
+    // literals so the repo's real app.json is never edited to prove it.
+    const normalForm = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
+    expect(normalForm.test('2.0.1053-rc1')).toBe(false);
+    expect(normalForm.test('02.0.1')).toBe(false);
+    expect(normalForm.test('2.0.1053')).toBe(true);
   });
 
   it('keeps package.json and app.json on the same version', () => {
