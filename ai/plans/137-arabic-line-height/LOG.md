@@ -254,6 +254,20 @@ home findings files. Vision dispatched for the pixel corroboration of the step
 
 session: ses_eb2f135bfffe1QvZUjA1rHhHZ1 (the lead's own session for this lane)
 
+## Vision corroboration (2026-10-18)
+
+Steps 2b and 3b landed (their own headings below). The lead then dispatched
+the vision reader over all nine screenshots; its transcription and the lead's
+reading are recorded in `VISION-137.md`. The two facts that close pendings:
+both overlay bodies render ONE line (3T pin 63/63 exact, XS 73/72 +1), and
+the countdown word's full-width node is a band artefact on BOTH phones (the
+pixels show a centered body-scale word), so that surface is excluded from the
+node-bounds set symmetrically. The pixel layer corroborates the void shapes
+(step 3's sheet content visible to pixels, absent from AX) and nothing
+contradicts an engine number.
+
+session: ses_eb295b70fffeBCw475WYrD6tjk (the lead's own session for this lane)
+
 ### Step 02b — oneplus3t home
 
 Worktree lane-137, branch `step-137/3t-home` cut off uat 1d69959c (2.0.1031;
