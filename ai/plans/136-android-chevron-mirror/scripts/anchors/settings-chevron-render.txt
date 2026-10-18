@@ -1,3 +1,0 @@
-          <Text style={styles.athanLabel}>{t('settings.changeAthan')}</Text>
-          <Text style={styles.chevron}>{chevronFor()}</Text>
-        </Pressable>

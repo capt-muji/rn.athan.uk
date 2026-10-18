@@ -1,7 +1,0 @@
-  timerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: SPACING.lg,
-    direction: 'ltr',
-  },
