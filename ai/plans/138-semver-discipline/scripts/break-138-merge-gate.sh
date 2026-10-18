@@ -3,7 +3,7 @@
 set -u
 target=scripts/check-version-discipline.js
 cp "$target" /tmp/138-mergegate.bak
-perl -0pi -e 's/incomingTotal > headTotal/incomingTotal >= headTotal/g; s/incoming\.major > head\.major/incoming.major >= head.major/g' "$target"
+perl -0pi -e 's/total\(t\) > total\(f\)/total(t) >= total(f)/g; s/t\.major > f\.major/t.major >= f.major/g' "$target"
 if cmp -s "$target" /tmp/138-mergegate.bak; then
   echo "BREAK MERGE COULD NOT MUTATE (perl matched nothing - the pinned names are absent)"
   cp /tmp/138-mergegate.bak "$target"

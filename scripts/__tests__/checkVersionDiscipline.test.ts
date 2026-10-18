@@ -183,7 +183,7 @@ describe('check-version-discipline', () => {
     expect(out.stdout).toBe('DISCIPLINE OK 1.9.3 -> 2.0.0 (major, feat)\n');
   });
 
-  it('merge in flight is skipped', () => {
+  it('merge in flight skips the class rules when the resolution increases', () => {
     const repo = makeRepo();
     repo.branch('other');
     writeFileSync(join(repo.dir, 'other.txt'), 'the other side of a merge');
@@ -193,11 +193,65 @@ describe('check-version-discipline', () => {
     git(repo.dir, 'checkout', '-q', 'main');
     // Git does not export MERGE_HEAD to hooks: the ref file itself must gate.
     writeFileSync(join(repo.dir, '.git', 'MERGE_HEAD'), `${other}\n`);
+    stage(repo, '1.0.1');
 
-    const out = run(repo, '1.0.0 - fix(x): y');
+    const out = run(repo, '1.0.1 - merge something: the concluding commit');
     expect(out.status).toBe(0);
-    expect(out.stdout).toBe('DISCIPLINE SKIP merge in flight\n');
+    expect(out.stdout).toBe('DISCIPLINE SKIP merge in flight (class rules)\n');
     rmSync(join(repo.dir, '.git', 'MERGE_HEAD'));
+  });
+
+  it('a merge resolution below HEAD fails even with MERGE_HEAD present', () => {
+    // A conflicted merge never fires pre-merge-commit, so the concluding
+    // commit is the last gate: a resolution keeping the lower version must
+    // die here, not land.
+    const repo = makeRepo();
+    repo.commit('1.2.0', 'parent at the higher line');
+    repo.branch('other');
+    writeFileSync(join(repo.dir, 'other.txt'), 'the other side of a merge');
+    git(repo.dir, 'add', '-A');
+    git(repo.dir, 'commit', '-q', '-m', '1.2.0 - other side');
+    const other = git(repo.dir, 'rev-parse', 'other').trim();
+    writeFileSync(join(repo.dir, '.git', 'MERGE_HEAD'), `${other}\n`);
+    stage(repo, '1.1.4');
+
+    const out = run(repo, '1.1.4 - merge something: resolved onto the lower line');
+    expect(out.status).toBe(1);
+    expect(out.stdout).toMatch(/^DISCIPLINE FAIL .*backward \(1\.2\.0 -> 1\.1\.4\)\n$/);
+    rmSync(join(repo.dir, '.git', 'MERGE_HEAD'));
+  });
+
+  it('an unstaged app.json is refused, never read from the worktree', () => {
+    // The fallback that once read the worktree file blessed bytes no commit
+    // carried and bricked the next commit's read.
+    const repo = makeRepo();
+    repo.commit('1.0.1', 'parent');
+    writeFileSync(join(repo.dir, 'app.json'), '{"expo": {"version": "1.0.2"}}');
+    git(repo.dir, 'rm', '--cached', '-q', 'app.json');
+
+    const out = run(repo, '1.0.2 - fix(x): y');
+    expect(out.status).toBe(1);
+    expect(out.stdout).toMatch(/^DISCIPLINE FAIL no staged app\.json \(parent 1\.0\.1\)/);
+  });
+
+  it('a version with a fourth segment fails', () => {
+    const repo = makeRepo();
+    repo.commit('1.0.1', 'parent');
+    stage(repo, '1.0.2.7');
+
+    const out = run(repo, '1.0.2.7 - fix(x): y');
+    expect(out.status).toBe(1);
+    expect(out.stdout).toMatch(/^DISCIPLINE FAIL .*\(1\.0\.1 -> 1\.0\.2\.7\)\n$/);
+  });
+
+  it('feat over the 10xx line cannot take a patch', () => {
+    const repo = makeRepo();
+    repo.commit('2.0.1053', 'parent');
+    stage(repo, '2.0.1054');
+
+    const out = run(repo, '2.0.1054 - feat(x): y');
+    expect(out.status).toBe(1);
+    expect(out.stdout).toMatch(/^DISCIPLINE FAIL feat requires a minor \(2\.0\.1053 -> 2\.0\.1054\)\n$/);
   });
 
   it('the first minor over the 10xx line', () => {
