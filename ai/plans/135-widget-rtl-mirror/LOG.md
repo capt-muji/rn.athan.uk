@@ -1,5 +1,13 @@
 # LOG — ticket 135
 
+Resume from: step 4 (device proof) stopped on the 3T Arabic read (the
+mirrored hero half collapsed; transcription below). Steps 1 to 3 are merged
+to `uat` (`1d69959c`, `efdee293`, `de55e9d9` through 2.0.1042) and lane/135
+is rebased onto `uat`. The lead repair D135.13 (PLAN.md) pins the mirrored
+wrapper to a fixed width; then: red test, fix, validate, mutation pass,
+merge, rebuild the fleettest APK, re-read the 3T both directions, the XS
+proof, the audit, the deep clean.
+
 ## Ticket 135 (2026-10-18)
 
 Lane opened on the previous lane-135 session's empty ground (no branch, no folder,
@@ -342,9 +350,11 @@ restore, and patch-package never ran inside the break.
 percent on all four measures (statements 5417/5417, branches 2350/2350,
 functions 1131/1131, lines 4853/4853).
 
-Version 2.0.1039 (next free under the version lock; sibling lanes took
-2.0.1037 and 2.0.1038 mid-flight, lane 136's step-3 proof docs commit
-`a8220b8e` now on uat). session: executor-135-s2s3-2
+Version 2.0.1042 (ledger line repaired by the lead 2026-10-18: the commit
+first scanned 2.0.1039 as next free — sibling lanes had taken 2.0.1037 and
+2.0.1038 mid-flight, lane 136's step-3 proof docs commit `a8220b8e` now on
+uat — then the lane-weather rebase below re-took the number twice and the
+amended commit carries 2.0.1042). session: executor-135-s2s3-2
 
 Lane weather on the merge: the direct merge conflicted on app.json,
 package.json and ai/plans/README.md (lane 136 had merged its step 3 and
@@ -359,3 +369,143 @@ and its message still read 2.0.1039, so it was amended with the
 corrected 2.0.1042 message — the amend is hooked, and its gate output
 is the evidence line below. session: executor-135-s2s3-2
 
+
+### Step 04 — device proof
+
+session: executor-135-s4 (STOPPED at the 3T Arabic read; see below)
+
+Build (Android fleettest, the step's scratch-worktree ritual): uat verified
+holding steps 1 to 3 (`de55e9d9` an ancestor; only lane-136 docs commits
+beyond it), worktree `plan-135` detached at `de55e9d9`, yarn.lock hashes
+identical (ac850220...), node_modules symlinked, `.env` from `.env.example`
+(widget flags ON). Prebuild `EXPO_PUBLIC_ENV=local
+EXPO_ANDROID_SUFFIX=fleettest npx expo prebuild -p android --no-install
+--clean` exit 0 (applicationId baked `com.example.athan.fleettest`); gradle
+`EXPO_ANDROID_SUFFIX=fleettest TMPDIR=~/athan-gitree/tmp-135-build
+./gradlew assembleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a`
+exit 0, no other build process alive. Gate: `command -v aapt2` prints nothing
+on the bare PATH (the SDK build-tools path carries it,
+`~/Library/Android/sdk/build-tools/37.0.0/aapt2`, version 2.20-15087165);
+`aapt2 dump badging` prints `package: name='com.example.athan.fleettest'
+versionCode='1000000' versionName='2.0.1042'` — GATE PASSED. APK and logs
+kept at `~/athan-gitree/sessions/135/`; worktree and TMPDIR removed.
+
+Vision note: this session cannot see images AND the harness refused the
+`vision` subagent (nesting depth limit), so every glass read below is the
+structured live read the e2e README sanctions for Android 9 (Maestro
+hierarchy: exact AX text plus bounds), cross-checked by pixel ink counts
+(measurement only, no visual inference). Raw screenshots stay uncommitted
+under `~/athan-gitree/sessions/135/`.
+
+3T (every contact under `device-3T_SERIAL.lock`, ambient `en-US` LTR
+precondition met, released after the last contact):
+
+- Pre-existing state: a PRODUCTION-app medium widget (id=3,
+  `com.example.athan` 2.0.908, Light) was already placed at [33,110][1047,692]
+  and served as the before-record: under its Arabic-era props it rendered the
+  defect face — list RIGHT half, names LEFT of times inside each row (name
+  x607-696, time x870-960), hero trio LEFT, label `22د`/`19د` (Arabic dal,
+  live-ticking). Nothing about it was modified.
+- The fleettest app itself had NO bound widget (134's lane left the app
+  language Arabic, its widget never placed), so the medium NP (Dark) 4x2 was
+  placed per the atlas (picker driven by hierarchy reads: strip scrolled in
+  two steps, the cell verified FULLY visible at [548,1378][908,1417] before
+  the 900 ms long-press). New binding id=4
+  `com.example.athan.fleettest/PrayerWidgetDarkMediumProvider` at
+  [33,983][1047,1565].
+- ARABIC read (app language العربية, pushes proven by logcat
+  `WIDGET: Standard snapshot pushed` at 07:12:24 and 07:20:10, read twice,
+  once after placement plus foreground, once after a full round trip —
+  identical both times): the list half MIRRORS CORRECTLY — time column
+  LEFTMOST (x121-193), Arabic names RIGHTMOST inside each row (x337-411),
+  six rows الفجر..العشاء. THE HERO/COUNTDOWN HALF DOES NOT RENDER: no
+  next-prayer name, no target time, no day, no countdown label anywhere in
+  the AX tree (13 nodes vs 18 under English), zero bright pixels across the
+  whole right half beyond the wallpaper corner bleed (0.0% ink at the
+  predicted hero column x700-830), and Maestro's debug names the collapsed
+  container: `glance_view_id_084` at Rect(993,1038 - 993,1502) — a
+  ZERO-WIDTH RelativeLayout at the right edge (visible:false), plus a second
+  zero-width wrapper `glance_view_id_011` at Rect(88,1083 - 88,1335). The
+  mirrored label law (`Nh Nm` Latin) is unevaluable: the label lives inside
+  the collapsed hero.
+- ENGLISH read (app language English, push at 07:16:56, re-read after the
+  round trip at 07:22:19): the full settled face — hero LEFT (next name
+  `MAGRIB`/`ISHA` uppercase, target time, day `Sun`), list RIGHT with name
+  LEFT (x670-762) and time RIGHT (x888-960) per row, and the composed label
+  rendering as separate texts `1` [227,1188][266,1280] + `m`
+  [266,1192][321,1279]: unpadded Latin digit, lowercase Latin letter tight
+  beside it at 87/92px = 0.95 ratio. R3.1's label law is proven on glass;
+  the English face matches 2.0.1013's shape (hero left, list right,
+  name-left rows) with the owner-amended composed label.
+- Bisect datum for the fix: the LTR path (rtl falsy, byte-identity path)
+  renders the hero; ONLY the rtl path collapses it. The serialized tree is
+  green in every step-2 test (the renderer pinned tree values, not the
+  Android mapping), so the collapse is the platform mapping of the mirrored
+  hero-half directional inputs on Android 9 Glance, not a missed table row.
+- 3T end state: app language English (the step's end state; as-found from
+  134 was Arabic, noted), fleettest 2.0.1042 installed with the widget left
+  placed (the re-proof after a fix needs it), production app and its widget
+  untouched, automatic time never touched.
+
+STOP (PLAN 2.2): the 3T widget face under Arabic disagrees with the plan's
+expected reading — the countdown trio is absent from the RIGHT half instead
+of rendered there (R1.1 unmet on glass). Transcribed above. The XS proof was
+NOT started (no contact with her phone, nothing to restore), the iOS 18.5
+simulator confirmatory read below was still taken (independent of the
+Android defect), and nothing was committed, merged, version-bumped,
+queue-updated or records-repaired: the docs commit, the Step-03 ledger
+version-line repair and the row status cell all ride the commit this stop
+forbids. Locks all released; the lane and main trees are clean.
+
+iOS 18.5 simulator confirmatory read (D135.5/D135.6, never her phone's
+settings): Athan-76 booted on the iOS 18.5 runtime, system language Arabic
+(`AppleLanguages -array "ar"`, `AppleLocale ar_AE`, sim rebooted), probe app
+from `~/athan-gitree/tmp-135-probe/` installed and launched as-is (the 26.5
+binary runs on 18.5). Structured read via the accessibility tree: default
+timer rows render `A-default-1h49: 1:48:44` and `B-default-45m: 45:14` —
+LATIN digits with colons under system Arabic, unpadded, hours group
+auto-dropping (`E-envUS-noHours: 108:44`); the RTL HStack pair carries
+`العصر` with `1:48:44`. CHANGE NOTHING was obeyed: the platform face is
+untouched, transcribed as the confirmatory record. Screenshot at
+`~/athan-gitree/sessions/135/sim185-probe-ar.png`, sim shut down after.
+
+Lock notes: `build.lock` was taken for the build and found already removed by
+a sibling at release time (07:04, after the build had completed — no
+consequence, all sibling locks were free at that moment); the 3T device lock
+was taken and released around each contact batch as ordered; no version,
+commit or uat lock was ever needed (no commit happened).
+
+### Step 04, continued — lead takeover and the STOP answered
+
+session: lane-135-resume (2026-10-18, this commit)
+
+The predecessor executor session ended hours ago; its Step 04 record above
+was found uncommitted in the worktree and is owned by this commit. Liveness
+verified before any write (no live 135 session in the store; the streaming
+siblings are lane 116 and the orchestrator; no locks parked). The STOP is
+answered by the lead, agent-ruled:
+
+**D135.13 (agent-ruled 2026-10-18): the hero-collapse repair pins the
+mirrored wrapper to a fixed width.** The 3T evidence pins the collapse to
+the rtl path alone, and the widget file's own REFERENCE comment names the
+mechanism class from the pre-snapshot era: Glance starves a sibling after a
+fill-width column ("converter drops fillMaxWidth's fraction and ignores
+weight, which is what starved the list on the 3T" — the reason the medium
+Row moved to fixed widths off the granted width in the first place). Under
+rtl the list wrapper draws FIRST still carrying `fillMaxWidth`, so the fill
+(match-parent) is measured against the whole row and the fixed-width hero
+after it collapses to the zero-width trailing container the AX tree named
+(`glance_view_id_084`, zero bright pixels right of the list). Options: (a)
+keep the fill and reorder nothing — rejected, the mirror law requires list
+left, hero right; (b) swap the wrapper to `width(LIST_WIDTH)` under rtl
+alone, both halves then fixed widths summing to the grant exactly; (c) drop
+the fill unconditionally — rejected, R1.2 pins the falsy tree byte-identical
+and the trailing fill is inert under LTR; (d) a transform hack — banned by
+the owner's order. Challenge once: does the fixed width change the mirrored
+geometry? No: LIST_WIDTH is defined as the grant minus HERO_WIDTH, exactly
+the leftover the fill resolved to under LTR; the partition is identical and
+only the measure-order dependence dies. Committed (b): the mirror table's
+order, alignments, insets and textAlign all stand; a red renderer test pins
+the wrapper's fixed width (and the falsy path's fill), with a mutation
+pass; then the fleettest rebuild and the 3T re-proof, the XS proof, the
+audit.
