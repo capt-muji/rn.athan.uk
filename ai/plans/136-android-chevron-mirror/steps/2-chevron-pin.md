@@ -3,7 +3,10 @@
 Requirements: R1.1, R1.2, R2.1
 Weight: 2
 
-Anchor check: rerun the pre-flight's anchor counts on the step branch.
+Anchor check: the pre-flight's anchor counts at branch creation, before the
+edits; the three edit-site anchors (`settings-chevron-style`,
+`colorpicker-chevron-style`, `help-action-chevron`) count 0 after this
+step's change, which is expected.
 
 Goal: every `chevronFor()` render site's Text carries `direction: 'ltr'`,
 pinned by a sweep suite that is red today.
@@ -80,7 +83,7 @@ const helpChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> => {
     const ModalHelp = require('../modals/Help').default;
     await rntl.render(<ModalHelp visible={true} onClose={jest.fn()} />);
     const { getHelpTopics } = require('@/shared/help');
-    const question = getHelpTopics('android').find((topic: { action?: string }) => topic.action).question;
+    const question = getHelpTopics('android').find((topic: { action?: string }) => topic.action)!.question;
     await rntl.fireEvent.press(rntl.screen.getByRole('button', { name: question }));
     const glyph = locale === 'ar' ? '\u2039' : '\u203A';
     styles = rntl.screen
@@ -93,7 +96,7 @@ const helpChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> => {
 it.each([
   ['en', '\u203A'],
   ['ar', '\u2039'],
-] as const)('pins every settings-sheet chevron paragraph under %s', async (locale, glyph) => {
+] as const)('pins every settings-sheet chevron paragraph under %s', async (locale) => {
   const styles = await settingsChevronStylesUnder(locale);
 
   // The authored codepoint is the locale's own (the JS half lives in
@@ -160,17 +163,12 @@ Green run: the four tests pass; `npx tsc --noEmit` exits 0;
 `npx biome check . --error-on-warnings` exits 0; `yarn validate` passes with
 the four coverage lines at 100%.
 
-Break script: `bash scripts/break-136.sh` from the lane worktree root
-(committed in this folder). It rewrites each of the three pins to
-`direction: 'inherit'` one at a time and expects the sweep to fail each time,
-ending `ALL AS EXPECTED: 3`. A surviving mutant or a `BREAK NOT APPLIED` line
-is a STOP.
-
 Version and commit: hold `$HOME/athan-gitree/version.lock` (mkdir, retried in
 `sleep 15` cycles), `git fetch -q origin uat`, require
-`node scripts/check-version-uniqueness.js` clean, set the next patch version
-in `app.json` then `package.json` (the lane syncs the main tree's gitignored
-`android/app/build.gradle` after merge under `build.lock`). Commit message:
+`node scripts/check-version-uniqueness.js` clean, set the next free patch
+version in `app.json` then `package.json` (the lane syncs the main tree's
+gitignored `android/app/build.gradle` after merge under `build.lock`).
+Commit message:
 
 ```
 <VERSION> - fix(i18n): the chevron paragraph pinned ltr so Android draws the authored glyph under ar
@@ -179,10 +177,18 @@ in `app.json` then `package.json` (the lane syncs the main tree's gitignored
 Files added by name: the four files plus this plan folder's `PLAN.md` and
 `LOG.md`. The queue row moves to `IN PROGRESS, step 2`.
 
+Break script: AFTER the fix commit lands on the branch (the pins in HEAD,
+the tree clean), run `bash scripts/break-136.sh` from the lane worktree root
+(committed in this folder). It rewrites each of the three pins to
+`direction: 'inherit'` one at a time and expects the sweep to fail each time
+(`git checkout --` restores the committed pin between mutants), ending
+`ALL AS EXPECTED: 3`. A surviving mutant or a `BREAK NOT APPLIED` line is a
+STOP.
+
 Review checklist: the diff touches only the four files; the three style
 entries are the only production change; the pin's comment lines are identical
 across the three files; no snapshot, no visual value, no glyph change; the
-suite's counts are six and one; the four mutants die.
+suite's counts are six and one; the three mutants die.
 
 Merge: the executor commits the branch in the lane worktree; the lane merges
 under `$HOME/athan-gitree/uat.lock` in the main tree (`git fetch -q origin
