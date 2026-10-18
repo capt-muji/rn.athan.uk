@@ -28,7 +28,7 @@ generator that fails on drift.
 
 Prior art, not repeated: `ai/features/moonsighting/`, the 2026-09-14 study of the Moonsighting Committee method.
 
-**Licensing and permission are CLOSED** (owner, 2026-09-30): he corresponded with the authorities himself and has
+**Licensing and permission are CLOSED** (owner, 2026-09-30): the owner corresponded with the authorities directly and has
 permission to use their data. No session contacts anyone, about anything, without the owner asking first.
 
 ---

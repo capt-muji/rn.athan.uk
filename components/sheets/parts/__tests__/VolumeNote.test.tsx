@@ -48,7 +48,7 @@ describe('the volume footnote', () => {
 
     expect(screen.getByText(IOS_COPY)).toBeOnTheScreen();
     const badge = screen.getByTestId('svg:info-bare', { includeHiddenElements: true });
-    // Her footer-only ruling: the letter shrinks, the circle it sits on does not
+    // The owner's footer-only ruling: the letter shrinks, the circle it sits on does not
     expect(badge.props.width).toBe(10);
     expect(badge.props.height).toBe(10);
     const chip = badge.parent;

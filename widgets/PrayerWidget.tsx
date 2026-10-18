@@ -395,7 +395,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     ];
   };
 
-  // The app countdown component's face (her 2026-10-18 amendment): each
+  // The app countdown component's face (the owner's 2026-10-18 amendment): each
   // group a digit run with its letter tight against it at 0.95 x the digit
   // size, same colour and weight, groups 12 points apart. The converter
   // maps arrangements to alignments only, so the gap rides a fixed-width

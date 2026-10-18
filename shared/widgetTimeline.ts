@@ -60,7 +60,7 @@ import { ANDROID_SNAPSHOT_VERSION, WIDGET_PROPS_VERSION } from '@/shared/widgetT
  * strings cross the bridge as data.
  */
 const widgetStrings = (): WidgetStrings => ({
-  // Fixed lowercase Latin unit bytes in every locale, rows 85/102/83 and her 2026-10-18 amendment: never localise.
+  // Fixed lowercase Latin unit bytes in every locale, rows 85/102/83 and the owner's 2026-10-18 amendment: never localise.
   h: 'h',
   m: 'm',
   s: 's',

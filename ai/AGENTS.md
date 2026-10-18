@@ -63,8 +63,10 @@ server. The expo MCP sits disabled: nothing ships through EAS. Flip `enabled` to
 - Never write a position, an address or a place name a phone or geocoder reported. Use the fixture
   positions the tests carry. Describe a measurement as indoors, outdoors, one room, another room.
 - Never commit a device screenshot or recording. Transcribe what was read.
-- Write what the owner decided, not how he said it. Quote him only where the exact words are the
+- Write what the owner decided, not how the owner said it. Quote the owner only where the exact words are the
   specification.
+- The owner is the owner: never a gendered pronoun for the owner in any record, prose, comment,
+  ticket, plan or log, past or future. Write the owner.
 - A session that finds a file breaking these rules fixes it and tells the owner.
 
 ## Product
@@ -95,7 +97,7 @@ works fully offline after first sync, and notifications fire on time while backg
   subject is typed `feat`, meaning it completes user-visible functionality (semver's
   minor: new backward-compatible capability; a fix is always a patch, however visible).
   Patch resets to 0 at a minor. Majors are the owner's alone: never take one without
-  her recorded order and an entry in `scripts/version-major-allowlist.json`. Fetch `origin`
+  the owner's recorded order and an entry in `scripts/version-major-allowlist.json`. Fetch `origin`
   first, because concurrent sessions have taken the same number twice. Bump `app.json`
   FIRST, then prebuild, then build: `expo run:*` never re-syncs an existing native folder.
 - Qibla is locked. Never draw a heading the phone has not vouched for. Android draws only

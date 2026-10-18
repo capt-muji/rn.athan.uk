@@ -84,7 +84,7 @@ export default function Layout() {
   // and SheetHost's subscription re-renders the sheets in place
   const localeVersion = useAtomValue(localeVersionAtom);
 
-  // The layout follows the app's selected language (her ruling): forceRTL cannot force
+  // The layout follows the app's selected language (the owner's ruling): forceRTL cannot force
   // LTR on a system-RTL device (the bridge answers forced-or-system), so the root sets
   // the direction itself and the system locale resolves only the initial default
   const direction = localeDirection(currentLocaleId());

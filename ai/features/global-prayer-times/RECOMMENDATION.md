@@ -46,7 +46,7 @@ against authorities' own tables: the MWL pair is not the MWL's, the "Gulf Region
 its four members, the "Jafari" institute could not be shown to exist, and `NorthAmerica` is wrong for Canada by up
 to 64 minutes. A library is an excellent calculator and a poor authority.
 
-**Not "hand-written astronomy".** The owner ruled it out and he was right. It is also unnecessary: measured
+**Not "hand-written astronomy".** The owner ruled it out and was right. It is also unnecessary: measured
 against the US Naval Observatory, no candidate library disagreed by 2 minutes or more on any solar quantity.
 
 ---
@@ -151,7 +151,7 @@ disclaimer makes "no representations as to the accuracy". **A claim the app can 
 
 **Licensing was the third, and it is CLOSED.** The research had measured that of eleven authorities one permits
 commercial use, two forbid reproduction and eight are silent, and it flagged that as the highest-value open item.
-**The owner settled it on 2026-09-30: he corresponded with the authorities himself and has permission to use their
+**The owner settled it on 2026-09-30: the owner corresponded with the authorities directly and has permission to use their
 data.** No session contacts anyone about it, or about anything else, without the owner asking first. The two
 remaining risks are both owner decisions rather than unknowns.
 

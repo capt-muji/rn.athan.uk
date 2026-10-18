@@ -633,7 +633,7 @@ And in the same thread, from a different user:
 The answer that thread converged on, repeatedly and from different people, was not a setting. It was **"just look
 up your local masjid and use their timings"** and **"Use MAWAQIT, it automatically connects with a masjid nearby"**.
 
-A second thread ("I broke my fast at 6:58, and my sister broke hers at 7:01") produced the same answer from six
+A second thread ("I broke my fast at 6:58, and my sister broke the owner's at 7:01") produced the same answer from six
 different commenters: follow your local mosque's timetable, apps can be wrong.
 
 **What the products do about it, which is the stronger evidence than what users say.** Every one of the five

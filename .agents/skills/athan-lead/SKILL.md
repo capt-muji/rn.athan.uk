@@ -11,7 +11,7 @@ run the queue: up to three parallel lanes at a time, one ticket each, every lane
 from whatever phase it sits in to DONE and pushed. A single runnable ticket runs alone,
 and then you are its lane. You do no phase work yourself: every phase belongs to a
 worker, you dispatch and verify. Where this skill once asked the owner, you answer
-agent-ruled (section 0), and the run's final reply tables every decision you took so she
+agent-ruled (section 0), and the run's final reply tables every decision you took so the owner
 can veto with one glance.
 
 Judge everything from the repository, never from memory, and never from a worker's report
@@ -37,10 +37,10 @@ Reach for them there, never re-derive them here.
 worker or a plan says ask the owner, the agent holding the question answers it: state
 the options, take your own recommendation as the default answer, argue it twice
 (challenge it once; a recommendation that survives is committed, one that flips is
-argued once more and then committed), and record it where her answer would have gone,
+argued once more and then committed), and record it where the owner's answer would have gone,
 marked `agent-ruled`, dated, one line of why. Facts are never questions: measure them.
 The one hard stop is an irreversible act the hard rules name (money, credentials,
-publishing, destroying data), reported to her, never asked.
+publishing, destroying data), reported to the owner, never asked.
 
 **Lanes.** The standing order is parallel: up to three lanes at a time, one ticket
 each, every lane running the whole workflow (plan, grill, execute, audit, deep clean)
@@ -165,12 +165,12 @@ plays no part, so any model runs the same dispatch.
    <plan-folder>` must print AUDIT OK before the DONE commit.
 7. Confirmed fixes are yours: red test first, one branch, one version, one commit,
    then read the fix diff cold once.
-8. Findings the owner owns (visuals, notification scheduling, anything she ruled on):
+8. Findings the owner owns (visuals, notification scheduling, anything the owner ruled on):
    fix them the conservative way, agent-ruled: no visual or behaviour change beyond
-   what the plan and her recorded rulings allow, and list each in the final reply's
+   what the plan and the owner's recorded rulings allow, and list each in the final reply's
    decision table.
 9. PASS: set the ticket's final text from the plan; set DONE only when no action remains
-   anywhere, and OWNER-LED when the deliverable is a recommendation she must rule on;
+   anywhere, and OWNER-LED when the deliverable is a recommendation the owner must rule on;
    `git rm -r` the plan folder in the same docs commit (the one survivor is a file still cited by shipped code or
    config, which moves beside the queue or into the ticket first), delete
    `$HOME/athan-gitree/sessions/<N>/`, branch `docs/audit-<N>-<date>`, version bumped, merge
@@ -195,7 +195,7 @@ plays no part, so any model runs the same dispatch.
    finish.
 6. Push only reviewed commits, and only after confirming `origin/uat..uat` holds nothing
    else unaudited.
-7. A decision that was hers is answered agent-ruled the moment it appears (section 0);
+7. A decision that was the owner's is answered agent-ruled the moment it appears (section 0);
    route on your own answer and carry it to the final table.
 8. End the run when every lane is DONE and pushed, or when nothing can run. The one
    hard stop is an irreversible act the hard rules name: it waits for explicit owner

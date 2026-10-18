@@ -20,10 +20,10 @@ and audit per the lead skill.
 
 ## Hands off
 
-The owner answers nothing. Where the flow says ask her, you answer: state the
+The owner answers nothing. Where the flow says ask the owner, you answer: state the
 options, take your own recommendation as the default, argue it twice (challenge
 it once; if it survives, commit it; if it flips, argue the flipped answer once
-more and commit that), and record the decision where her answer would have
+more and commit that), and record the decision where the owner's answer would have
 gone, marked `agent-ruled`, dated, one line of why. Facts are never questions:
 measure them. The only stop is an irreversible act the hard rules name (money,
 credentials, publishing, destroying data), reported, never asked.

@@ -219,7 +219,7 @@ the note says, then finish as section 8 says.
   comments explain why, no hand-edited release file, EAS is read-only, the API key is
   never committed.
 - Ticket 25 (`moonsighting-research-2.md`): agent-ruled default OWNER-LED with a
-  short reading guide as the plan, unless the queue already records her reading of
+  short reading guide as the plan, unless the queue already records the owner's reading of
   `ai/features/moonsighting/RESEARCH-FINDINGS.md`. If it does, plan the remaining
   research as executable steps, agent-ruled on which of that brief's conflicting
   rules apply, recorded in the plan.
