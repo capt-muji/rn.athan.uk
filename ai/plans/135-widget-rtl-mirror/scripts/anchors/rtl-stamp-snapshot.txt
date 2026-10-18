@@ -1,0 +1,9 @@
+  return {
+    v: ANDROID_SNAPSHOT_VERSION,
+    schedule: sequence.type,
+    rtl: localeDirection(currentLocaleId()) === 'rtl',
+    days,
+    horizonEpochMs,
+    strings: widgetStrings(),
+  };
+};

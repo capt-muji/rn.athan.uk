@@ -1,0 +1,15 @@
+        <Row modifiers={[fillMaxSize(), APad(CARD_PAD_START, 13, CARD_PAD_END, FOOTER_BOTTOM_PAD)]}>
+          <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
+            <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
+              {trio}
+            </Box>
+            {AText(footer, 12, 'normal', palette.footer)}
+          </Box>
+          <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
+            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
+              <Column modifiers={[APad(PILL_LEAD, 1, 0, 0)]}>
+                <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
+                <AImageEl
+                  source={{ uri: A_PILL_NAME }}
+                  contentScale='fillBounds'
+                  modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
