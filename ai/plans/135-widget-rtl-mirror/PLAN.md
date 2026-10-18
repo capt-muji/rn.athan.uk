@@ -199,6 +199,20 @@ regions beside the step-2 edit site, and a permanently-failing gate in the
 folder misleads any resume; re-pinning keeps the gate truthful and runnable.
 The step files need no change (they name the anchors, not their bytes).
 
+**D135.13 The mirrored medium wrapper pins a fixed width (agent-ruled
+2026-10-18, lead repair of the step-4 3T stop).** Step 4's first Arabic read
+found the hero half collapsed to a zero-width trailing container (the
+transcription lives in LOG.md): under rtl the list wrapper draws first still
+carrying `fillMaxWidth`, and the Android mapping measures a fill child
+against the whole row, starving the fixed-width hero after it — the same
+starvation class the file's own REFERENCE comment records from the
+pre-snapshot era. The repair swaps the wrapper's width mechanism under rtl
+alone: `width(LIST_WIDTH)`, the exact leftover the fill resolved to under
+LTR, so both halves carry fixed widths summing to the grant. The mirror
+table stands untouched (order, alignments, insets, textAlign); the falsy
+tree is byte-identical (R1.2); no pixel constant moves; a red renderer test
+plus a mutation pass pin it.
+
 ### 2.2 The executor must not decide
 
 - Anything that changes a pixel beyond the owner's order: STOP and route to the plan
