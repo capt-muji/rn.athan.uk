@@ -1,8 +1,0 @@
-    const patch = read(`patches/expo-widgets+${installedVersion()}.patch`);
-    const headers = patch.split('\n').filter((line) => line.startsWith('diff --git'));
-
-    // The openApp converter, plus the device-locale runtime patch's four
-    // files (iOS JSContext, Android Hermes runtime, its Kotlin plumb)
-    expect(headers).toHaveLength(5);
-    for (const header of headers) {
-      expect(header).toContain('node_modules/expo-widgets/');
