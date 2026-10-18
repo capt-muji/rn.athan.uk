@@ -178,8 +178,8 @@ test('desiredState maps the queue onto the Kanboard shape, byte-deterministic', 
 test('the status tables cover every mapped column and color slot', () => {
   assert.equal(STATUS_TO_COLUMN['IN PROGRESS'], 'In progress');
   assert.equal(STATUS_TO_COLUMN['OWNER-BLOCKED'], 'Blocked');
-  assert.equal(STATUS_TO_COLOR['UPSTREAM'], 'teal');
+  assert.equal(STATUS_TO_COLOR.UPSTREAM, 'teal');
   assert.equal(STATUS_TO_COLOR['OWNER-LED'], 'purple');
-  assert.equal(STATUS_TO_COLOR['DEFERRED'], 'yellow');
-  assert.equal(STATUS_TO_COLOR['EXECUTED'], 'orange');
+  assert.equal(STATUS_TO_COLOR.DEFERRED, 'yellow');
+  assert.equal(STATUS_TO_COLOR.EXECUTED, 'orange');
 });

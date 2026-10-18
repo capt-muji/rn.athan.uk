@@ -121,4 +121,22 @@ silently broken the board's own suite since 2026-10-13, because no gate runs
 `node --test board/tests/`. The line is escaped now and the suite runs green again.
 Reported to the owner in the run's final reply.
 
+#### Step 2 - DONE 2026-10-18
+
+Red first: `node --test "kanboard/tests/*.test.mjs"` failed with
+`ERR_MODULE_NOT_FOUND: Cannot find module '.../kanboard/client.mjs'` (the client test
+was written before the module, as the plan orders).
+
+Green: 17 pass, 0 fail across mapping, client and MCP suites. A manual pipe
+`echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | node kanboard/mcp-server.mjs`
+returns the twenty tools; `{"bad json"` answers a -32700 parse error on one line.
+
+Plan repair (agent-ruled): the plan claimed `moveTaskPosition` with position 0 appends;
+Kanboard's `TaskPositionModel::movePosition` refuses positions below 1 (verified in
+source). `ticket_move` without a position now reads the board and appends at
+column-count-plus-one; the plan line is corrected.
+
+Break script: flipping the Basic-auth username in client.mjs failed the wire test's
+header assertion; revert restored 2 pass.
+
 session: ses_eaf625a99ffecJEKX3gHmF8r8O
