@@ -413,7 +413,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     for (const group of ALabel(units, targetEpochMs, nowMs)) {
       if (runs.length > 0) runs.push(<Spacer modifiers={[width(12)]} />);
       runs.push(
-        <Row>
+        <Row verticalAlignment='center'>
           {AText(group.digits, size, weight, color)}
           {AText(group.letter, size * 0.95, weight, color)}
         </Row>

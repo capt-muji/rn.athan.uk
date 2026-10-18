@@ -1,8 +1,0 @@
-    return {
-      date,
-      props: {
-        v: WIDGET_PROPS_VERSION,
-        schedule: sequence.type,
-        rtl: localeDirection(currentLocaleId()) === 'rtl',
-        theme,
-        nextName: prayerLabel(next.id),

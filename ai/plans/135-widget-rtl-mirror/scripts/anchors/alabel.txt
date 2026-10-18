@@ -1,8 +1,0 @@
-  type ALabelGroup = { digits: string; letter: string };
-
-  // Android's countdown is computed at render time, so it carries the format
-  // itself: hours and minutes only, rounded up, never reading below a minute.
-  // iOS needs no equivalent — SwiftUI ticks its own timer from the segment.
-  // The unit words arrive as props: the widget runtime imports nothing, so
-  // the app bakes them into the snapshot.
-  const ALabel = (units: { h: string; m: string }, targetEpochMs: number, nowMs: number): ALabelGroup[] => {
