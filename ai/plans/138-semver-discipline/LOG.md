@@ -202,6 +202,49 @@ suffix through)` / `BREAK LOCKSTEP GREEN` / `BREAK OK` / `ALL AS EXPECTED: 1`.
 Version: 2.0.1061 (parent 2.0.1060 + one patch), uniqueness green pre-bump
 (`VERSIONS OK 42 commits across 8 refs`), version.lock held and released.
 
+Commit `6d66ccce` (2.0.1061), hook chain green, last `Tests:` line
+`Tests: 2 skipped, 5779 passed, 5781 total`, live gate verdict
+`DISCIPLINE OK 2.0.1060 -> 2.0.1061 (patch, untyped)` - `test` is no feat
+token, so the patch class is correct and the display word is untyped. Merge
+`2417d64c` onto `lane/138`: pre-merge hook live
+`MERGE VERSION OK 2.0.1060 -> 2.0.1061`, commit-msg
+`DISCIPLINE SKIP merge in flight`. Commit log:
+`$TMPDIR/138-step3-commit2.log`, merge log: `$TMPDIR/138-step3-merge2.log`.
+
+session: ses_eb1418e09ffeq7HHXZZKDx98yk
+
+### Step 4 - DONE
+
+Branch `step/138-workflow-text` off `lane/138` (parent `2417d64c`, 2.0.1061).
+Anchors: `agents-version-rule.md` in `ai/AGENTS.md` counts 1,
+`lane-merge-bullet.md` in `.opencode/agents/athan-lane.md` counts 1.
+
+Sweep before (`grep -rn 'patch per commit\|minor per completed feature'
+ai/AGENTS.md .opencode/ e2e/ --include='*.md'`): exactly one hit -
+`ai/AGENTS.md:94: together, patch per commit and minor per completed
+feature. Fetch `origin` first, because`. Sweep after: empty (exit 1).
+`versionCode|versionName` grep: one hit in the lane file before and after,
+the same gradle-sync line (shifted 72 -> 79 by the insertions above it) -
+no drift into build-bay territory.
+
+Changes: the `ai/AGENTS.md` version hard rule rewritten to the step file's
+verbatim eight-line block (class-step rule, feat-is-minor with the
+reservation, majors through the allowlist); the lane file's `uat.lock`
+bullet gained the merge-check clause after the `git merge` clause; the
+lane-weather bullet gained the standalone renumbering sentence after "still
+conflicts."; the row 138 Status cell reads `EXECUTED 2026-10-18, steps 1-4
+landed (the discipline gate, the merge gate, the lockstep shape, the
+workflow text); the boundary recommendation (grandfather) and the
+store/OTA measurements carried in the audit merge` (the dispatch's EXECUTED
+marker and the step file's clause folded, both row edits in this one
+commit, no duplicated words).
+
+`yarn validate` 0 (`Tests: 2 skipped, 5779 passed, 5781 total`), tsc 0,
+biome 0. No break script (docs step).
+
+Version: 2.0.1062 (parent 2.0.1061 + one patch), uniqueness green pre-bump
+(`VERSIONS OK 43 commits across 9 refs`), version.lock held and released.
+
 
 ### Step 3 - RESUMED (plan repair, agent-ruled 2026-10-18)
 

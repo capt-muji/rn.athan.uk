@@ -91,9 +91,13 @@ works fully offline after first sync, and notifications fire on time while backg
 - Never run `npx expo install --fix`. It would roll back `jest`, `@types/jest` and `typescript`,
   which this project runs ahead of Expo's pins on purpose. Name every package when upgrading.
 - Version bump on every commit: `package.json`, `app.json` and `android/app/build.gradle`
-  together, patch per commit and minor per completed feature. Fetch `origin` first, because
-  concurrent sessions have taken the same number twice. Bump `app.json` FIRST, then prebuild,
-  then build: `expo run:*` never re-syncs an existing native folder.
+  together, one class-step per commit: a patch by default, a minor when the commit's
+  subject is typed `feat`, meaning it completes user-visible functionality (semver's
+  minor: new backward-compatible capability; a fix is always a patch, however visible).
+  Patch resets to 0 at a minor. Majors are the owner's alone: never take one without
+  her recorded order and an entry in `scripts/version-major-allowlist.json`. Fetch `origin`
+  first, because concurrent sessions have taken the same number twice. Bump `app.json`
+  FIRST, then prebuild, then build: `expo run:*` never re-syncs an existing native folder.
 - Qibla is locked. Never draw a heading the phone has not vouched for. Android draws only
   Google's fused sensor behind a forced wave, iPhone inside its reported accuracy cone. No
   invented constant, no tuned offset, no per-location calibration, ever.

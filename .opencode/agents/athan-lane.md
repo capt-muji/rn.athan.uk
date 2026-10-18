@@ -60,7 +60,10 @@ credentials, publishing, destroying data), reported, never asked.
   `$HOME/athan-gitree/uat.lock` around every merge into `uat` (merges happen
   only in the main tree, `git fetch -q origin uat` first, `--no-ff`, and run
   `node scripts/check-version-uniqueness.js` after the fetch and before
-  `git merge`, resolving any collision first);
+  `git merge`, resolving any collision first, and run node
+  scripts/check-version-discipline.js --merge-check the same way: a merge
+  whose incoming version does not exceed uat HEAD's is refused (rebase onto
+  uat and renumber onto the higher line));
   `$HOME/athan-gitree/build.lock` around `build-prod.zsh`, `build-mock.zsh` and
   any Xcode or toolchain change (the scripts hardcode the main tree and build
   `uat` content: run a build step only after its code is merged);
@@ -68,7 +71,11 @@ credentials, publishing, destroying data), reported, never asked.
 - A merge conflict on `ai/plans/README.md` or the three version files is lane
   weather: abort, rebase your lane branch onto `uat`, resolve keeping both
   lanes' rows and the higher version, retry the merge once, then STOP if it
-  still conflicts. After every merge into `uat`, sync the gitignored
+  still conflicts. Renumbering replays every replayed commit as one
+  class-step from its new parent (a rebase onto a minor line re-lines the
+  patches as x.Y.1, x.Y.2), and a rebase run with hooks bypassed re-runs
+  node scripts/check-version-discipline.js by hand over the range. After
+  every merge into `uat`, sync the gitignored
   `android/app/build.gradle` `versionName` to the new version under the build
   lock: a worktree commit cannot touch that file, so the build bay's copy lags
   every worktree commit and the lockstep test fails in the main tree until it
