@@ -1,12 +1,17 @@
 # LOG — ticket 135
 
-Resume from: step 4 (device proof) stopped on the 3T Arabic read (the
-mirrored hero half collapsed; transcription below). Steps 1 to 3 are merged
-to `uat` (`1d69959c`, `efdee293`, `de55e9d9` through 2.0.1042) and lane/135
-is rebased onto `uat`. The lead repair D135.13 (PLAN.md) pins the mirrored
-wrapper to a fixed width; then: red test, fix, validate, mutation pass,
-merge, rebuild the fleettest APK, re-read the 3T both directions, the XS
-proof, the audit, the deep clean.
+Resume from: the ticket is EXECUTED (all four steps plus the D135.13
+repair landed through 2.0.1064 `a1c6347a`; the 3T and XS proofs are
+transcribed in LOG.md). The audit is RUNNING: two reviewers dispatched
+(plan-conformance and blind), findings files expected at
+`$TMPDIR/findings-plan-135.md` and `$TMPDIR/findings-blind-135.md`.
+Next: adjudicate every finding, fix the confirmed ones red-first
+(version bump, merge, versionName sync), write AUDIT.md with the Range
+and Findings lines, `bash scripts/check-audit.sh
+ai/plans/135-widget-rtl-mirror` green, then the DONE merge: the row text
+from records-135.md amended with the repair and the D135.14 waiver, row
+129 closes with this DONE, the plan folder and the sessions/135 evidence
+die in the merge commit, the lane worktree and branch are removed.
 
 ### Step 04, continued — the repair proven on the 3T (2026-10-18)
 
@@ -164,6 +169,30 @@ the last read; the run:ios log-tail process killed once the install was
 verified. The agent-device daemon was stopped once (routing around the
 runner wedge); its state directory is intact for the next session.
 
+### The audit (2026-10-18)
+
+session: lane-135-resume
+
+Two reviewer passes over `b5bee6a9..a1c6347a` (plan-conformance and
+blind), both PASS, findings files beside AUDIT.md; every finding
+adjudicated in AUDIT.md. Confirmed and fixed here, red-first where code:
+the label group's inner Row gains `verticalAlignment='center'` (the blind
+pass pinned the converter's Alignment.Top default lifting the 0.95 letter
+off the digit's ride; red `Expected: "center" / Received: undefined`,
+green 71/71), and the dead `duration.h/m/s` catalog keys are deleted
+from all six locales with their test rows, the catalog lock re-taken and
+the dist regenerated (`duration.now` keeps its two live readers and
+stays). The stale duplicate queue rows (135 "IN PROGRESS, step 3" and
+138 "DEFERRED", born in the lane-weather merge) are deleted; records-135
+carries the waiver-naming DONE cell and loses its stale pre-amendment
+veto section; the Step 00/01 ledger lines are backfilled. One finding
+rejected with its reason in AUDIT.md (the v8/v4 history comments keep
+their provenance words by the plan's own grill scoping, pinned by the
+contract test). The vision corroboration could not run: three dispatches
+sat unstreaming and the first returned a platform stream error; the
+screenshots wait uncommitted under the sessions folder, and the
+structural accessibility read stands as the proof of record.
+
 ## Ticket 135 (2026-10-18)
 
 Lane opened on the previous lane-135 session's empty ground (no branch, no folder,
@@ -269,7 +298,7 @@ only. Rows 117 (unparked, runs after 135) and 116 (still benched) noted; neither
 touches this lane.
 
 ### Step 00 — planning
-session: pending
+session: lane-135-planning (backfilled by the audit; the ledger line was left pending)
 
 
 ### Resume record and plan repair D135.12 (2026-10-18, lead session)
@@ -362,6 +391,8 @@ before it was measured:
 | group order swapped (minutes run first) | same case | 1 failed: the run order deep equality |
 
 The tree was clean after every mutant (`git status --porcelain` empty).
+
+Version 2.0.1031, merged as `1d69959c`. session: executor-135-s1
 
 ### Step 02 — android mirror (red recorded 2026-10-18)
 

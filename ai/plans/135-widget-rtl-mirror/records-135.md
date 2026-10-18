@@ -30,7 +30,11 @@ iOS countdown is untouched by her own 2026-10-18 amendment ("on iOS it is just
 what it is right now"). The rtl field is consumed on both sides and the props
 versions stay 8/4 (row 129 closed). LTR locales byte-identical (direction inputs
 pinned under every locale, en bytes pinned exactly). Device-proven on the 3T
-fleettest build and the XS Release build under app Arabic and English, with the
+fleettest build under app Arabic and English, and on the XS Release build
+under its as-found app Arabic (the mirrored rows and the ticking Latin
+countdown read through the accessibility tree; the XS English re-read
+waived on evidence, D135.14: the patch's falsy branch pins LTR and the iOS
+JS is untouched, so zero language switches touched her phone), with the
 iOS 18.5 simulator's system-Arabic countdown transcribed as the confirmatory
 read; her glass read is the acceptance. Rows 128 (discarded by her order) and 129
 close here; rows 117 (unparked after this row), 123, 127, 130, 132 stay parked.
@@ -46,11 +50,3 @@ close here; rows 117 (unparked after this row), 123, 127, 130, 132 stay parked.
 ## Docs commit message (the audit's closing commit)
 
 `<VERSION> - docs(audit): ticket 135 DONE: widget RTL mirror and countdown face`
-
-## What the owner is asked to veto (carried in the lane's final reply)
-
-- D135.5: the iOS countdown keeps the platform's ticking face (letters impossible
-  on a ticking WidgetKit text; evidence recorded). Her order said letters on both
-  platforms.
-- D135.6: no locale pin hunk unless the iOS 18.5 simulator shows native digits
-  under system Arabic (the 26.x probe shows Latin already).

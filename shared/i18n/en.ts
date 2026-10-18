@@ -167,9 +167,6 @@ export const en = {
   'extras.explanation.duha': '20 mins after Sunrise',
   'extras.explanation.istijaba': '1 hour before Magrib (Fridays only)',
 
-  'duration.h': 'h',
-  'duration.m': 'm',
-  'duration.s': 's',
   'duration.now': 'now',
   'time.now': '{name} now',
   'time.ago': '{name} {duration} ago',
