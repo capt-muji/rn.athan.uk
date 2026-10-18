@@ -228,3 +228,52 @@ describe('check-version-discipline', () => {
     expect(out.stdout).toBe('DISCIPLINE OK 1.0.0 -> 1.1.0 (minor, feat)\n');
   });
 });
+
+describe('check-version-discipline merge check', () => {
+  const runMergeCheck = (repo: Repo) =>
+    spawnSync('node', [SCRIPT, '--merge-check'], {
+      cwd: repo.dir,
+      encoding: 'utf8',
+      env: cleanEnv(),
+    });
+
+  it('increasing incoming version passes', () => {
+    const repo = makeRepo();
+    repo.commit('2.0.1050', 'parent');
+    stage(repo, '2.1.0');
+
+    const out = runMergeCheck(repo);
+    expect(out.status).toBe(0);
+    expect(out.stdout).toBe('MERGE VERSION OK 2.0.1050 -> 2.1.0\n');
+  });
+
+  it('equal incoming version fails', () => {
+    const repo = makeRepo();
+    repo.commit('2.0.1050', 'parent');
+    stage(repo, '2.0.1050');
+
+    const out = runMergeCheck(repo);
+    expect(out.status).toBe(1);
+    expect(out.stdout).toMatch(/^MERGE VERSION FAIL/);
+  });
+
+  it('lower incoming version fails', () => {
+    const repo = makeRepo();
+    repo.commit('2.1.0', 'parent');
+    stage(repo, '2.0.1053');
+
+    const out = runMergeCheck(repo);
+    expect(out.status).toBe(1);
+    expect(out.stdout).toBe('MERGE VERSION FAIL 2.1.0 -> 2.0.1053 (rebase and renumber onto the higher line)\n');
+  });
+
+  it('missing staged app.json fails', () => {
+    const repo = makeRepo();
+    repo.commit('2.0.1050', 'parent');
+    git(repo.dir, 'rm', '--cached', 'app.json');
+
+    const out = runMergeCheck(repo);
+    expect(out.status).toBe(1);
+    expect(out.stdout).toMatch(/^MERGE VERSION FAIL no staged app.json/);
+  });
+});

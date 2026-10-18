@@ -76,3 +76,55 @@ Commit subject: `2.0.1056 - build(scripts): 138 step 1 the version discipline
 gate (feat-requires-minor, majors allowlisted)`. Merged `--no-ff` into
 `lane/138`.
 
+Commit `22d4ca66` (2.0.1056), hook chain green, last `Tests:` line
+`Tests: 2 skipped, 5774 passed, 5776 total` with four 100% coverage lines
+(statements 5417/5417, branches 2352/2352, functions 1131/1131, lines
+4853/4853) and the gate's own live verdict
+`DISCIPLINE OK 2.0.1055 -> 2.0.1056 (patch, build)`. Post-commit break
+re-run: `BREAK OK` / `ALL AS EXPECTED: 1`. Merge `a4171586` onto `lane/138`
+(pre-merge uniqueness `VERSIONS OK 38 commits across 6 refs`, commit-msg
+`DISCIPLINE SKIP merge in flight` - R1.5 proven live). Commit log:
+`$TMPDIR/138-step1-commit.log`, merge log: `$TMPDIR/138-step1-merge.log`.
+
+session: ses_eb1418e09ffeq7HHXZZKDx98yk
+
+### Step 2 - DONE
+
+Branch `step/138-merge-gate` off `lane/138` (parent `a4171586`, 2.0.1056).
+Anchor `lane-merge-bullet.md` in `.opencode/agents/athan-lane.md` counts 1.
+
+Red: `describe('check-version-discipline merge check')` appended (4 cases);
+first run `npx jest scripts/__tests__/checkVersionDiscipline.test.ts
+--watchman=false` = `Tests: 4 failed, 14 passed, 18 total`. Actual first
+failure lines: `increasing incoming version passes` - `Expected: 0 /
+Received: 1`; `equal incoming version fails` - `Expected pattern:
+/^MERGE VERSION FAIL/` against `Received string: "DISCIPLINE FAIL no
+message file"`; `lower incoming version fails` - toBe diff, received
+`DISCIPLINE FAIL no message file`; `missing staged app.json fails` -
+`Expected pattern: /^MERGE VERSION FAIL no staged app.json/` against the
+same `DISCIPLINE FAIL no message file`. All four red exactly per the plan's
+prediction (`--merge-check` ignored, class path with no message file). Red
+log: `$TMPDIR/138-step2-red.log`.
+
+Change: `--merge-check` arm in `scripts/check-version-discipline.js` (reads
+HEAD and the staged merge result, compares with `incomingTotal > headTotal`
+inside one major line and `incoming.major > head.major` across lines - both
+pinned names verified present once each); `.husky/pre-merge-commit` now one
+`&&`-chained line: uniqueness `--no-candidate` then discipline
+`--merge-check`.
+
+Green: suite `Tests: 18 passed, 18 total`; `npx tsc --noEmit` exit 0;
+`npx biome check . --error-on-warnings` exit 0; `yarn validate` exit 0:
+`Test Suites: 223 passed, 223 total`, `Tests: 2 skipped, 5778 passed,
+5780 total`. Logs: `$TMPDIR/138-step2-green.log`,
+`$TMPDIR/138-step2-validate.log`.
+
+Break (`bash ai/plans/138-semver-discipline/scripts/break-138-merge-gate.sh`
+from the worktree root): last two lines `BREAK OK` / `ALL AS EXPECTED: 1`;
+the perl's cmp guard proves the mutation landed.
+
+Version: 2.0.1057 (parent 2.0.1056 + one patch), uniqueness arbitration
+green pre-bump (`VERSIONS OK 38 commits across 7 refs, 0 unreadable, no
+shared version`; 2.0.1057 unheld), `version.lock` held around the bump and
+released. Gradle file still absent in this worktree (prebuild output).
+
