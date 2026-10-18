@@ -106,14 +106,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     modifiers?: unknown[];
   }) => ReactNode;
   const APad = padding as unknown as (start: number, top: number, end: number, bottom: number) => ModifierConfig;
-  // The time column's Text spans the full list width and right-justifies via
-  // textAlign (converter-supported); the cast carries the jetpack-only
-  // textAlign prop past the swift-ui typing, like ATextEl/AImageEl
   const ATimeEl = Text as unknown as (elementProps: {
     color?: string;
     style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600' };
     maxLines?: number;
-    textAlign?: 'end';
+    textAlign?: 'start' | 'end';
     modifiers?: ModifierConfig[];
     children?: string;
   }) => ReactNode;
@@ -340,8 +337,12 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     </ATextEl>
   );
 
-  const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
-    <ATimeEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
+  const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string, rtl: boolean) => (
+    <ATimeEl
+      color={color}
+      style={{ fontSize: size, fontWeight: weight }}
+      maxLines={1}
+      {...(rtl ? { textAlign: 'start' as const } : {})}>
       {text}
     </ATimeEl>
   );
@@ -478,6 +479,10 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshLead: staticRow.refreshLead,
       refreshTail: staticRow.refreshTail,
     };
+    // The app locale's direction rides the snapshot (v4); absent on v1 to
+    // v3 snapshots, which read falsy and render LTR — their composing app
+    // never mirrored.
+    const rtl = input.rtl === true;
 
     type ARow = PrayerWidgetAndroidProps['days'][number]['rows'][number];
     let next: ARow | null = null;
@@ -561,54 +566,77 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // clips at 13sp in a narrowed name column.
     const rowTextSize = Math.max(ROW_TEXT_MIN_SIZE, Math.min(ROW_TEXT_SIZE, Math.round(ROW_TEXT_SIZE * scale)));
 
-    // Names and times render as overlayed layers, not one Row: a
-    // fillMaxWidth Spacer between them starves the trailing time to zero
-    // width in Glance (same starvation class as the hero column). Times
-    // right-justify via textAlign on a full-width Text.
     // One self-contained row: fixed-width name and time boxes with pure
-    // alignment (topStart / topEnd). Every fill-based or overlay-based
-    // two-column attempt mislaid the times in the Glance stack (three
-    // device-caught failures); fixed boxes with small slack render exactly.
+    // alignment. Every fill-based or overlay-based two-column attempt
+    // mislaid the times in the Glance stack (three device-caught failures);
+    // fixed boxes with small slack render exactly.
     const ARowLine = (row: ARow, index: number) => {
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
+      // The mirror swaps every directional input at once or none: order and
+      // both alignments flip together, so the RTL row is the English row
+      // flipped, never a half-mixed face.
+      const nameBox = (
+        <Box
+          contentAlignment={rtl ? 'centerEnd' : 'centerStart'}
+          modifiers={[height(A_ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
+          {AText(row.name, rowTextSize, 'normal', rowColor)}
+        </Box>
+      );
+      const timeBox = (
+        <Box
+          contentAlignment={rtl ? 'centerStart' : 'centerEnd'}
+          modifiers={[height(A_ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
+          {ATimeText(row.time, rowTextSize, 'bold', rowColor, rtl)}
+        </Box>
+      );
+      const rowFirst = rtl ? timeBox : nameBox;
+      const rowSecond = rtl ? nameBox : timeBox;
       return (
         <Row verticalAlignment='center' modifiers={[height(A_ROW_HEIGHT)]}>
-          <Box contentAlignment='centerStart' modifiers={[height(A_ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
-            {AText(row.name, rowTextSize, 'normal', rowColor)}
-          </Box>
-          <Box contentAlignment='centerEnd' modifiers={[height(A_ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
-            {ATimeText(row.time, rowTextSize, 'bold', rowColor)}
-          </Box>
+          {rowFirst}
+          {rowSecond}
         </Row>
       );
     };
 
+    // The medium halves mirror under rtl by order, not by realignment: the
+    // hero keeps its fixed width and takes the visual right when the list
+    // wrapper draws first. Every start/end alignment and lead padding swaps
+    // with it, or the face would half-mirror.
+    const listWrapper = (
+      <Box contentAlignment={rtl ? 'centerStart' : 'centerEnd'} modifiers={[fillMaxHeight(), fillMaxWidth()]}>
+        <Box contentAlignment={rtl ? 'topEnd' : 'topStart'} modifiers={[width(LIST_WIDTH)]}>
+          <Column modifiers={[rtl ? APad(0, 1, PILL_LEAD, 0) : APad(PILL_LEAD, 1, 0, 0)]}>
+            <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
+            <AImageEl
+              source={{ uri: A_PILL_NAME }}
+              contentScale='fillBounds'
+              modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
+            />
+          </Column>
+          <Column modifiers={[rtl ? APad(0, 0, ROWS_LEAD, 0) : APad(ROWS_LEAD, 0, 0, 0)]}>
+            {dayRows.map((row, index) => ARowLine(row, index))}
+          </Column>
+        </Box>
+      </Box>
+    );
+    const heroHalf = (
+      <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
+        <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
+          {trio}
+        </Box>
+        {AText(footer, 12, 'normal', palette.footer)}
+      </Box>
+    );
+    const firstHalf = rtl ? listWrapper : heroHalf;
+    const secondHalf = rtl ? heroHalf : listWrapper;
     return AOpenApp(
       <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
         <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
         <Row modifiers={[fillMaxSize(), APad(CARD_PAD_START, 13, CARD_PAD_END, FOOTER_BOTTOM_PAD)]}>
-          <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
-            <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
-              {trio}
-            </Box>
-            {AText(footer, 12, 'normal', palette.footer)}
-          </Box>
-          <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
-            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
-              <Column modifiers={[APad(PILL_LEAD, 1, 0, 0)]}>
-                <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
-                <AImageEl
-                  source={{ uri: A_PILL_NAME }}
-                  contentScale='fillBounds'
-                  modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
-                />
-              </Column>
-              <Column modifiers={[APad(ROWS_LEAD, 0, 0, 0)]}>
-                {dayRows.map((row, index) => ARowLine(row, index))}
-              </Column>
-            </Box>
-          </Box>
+          {firstHalf}
+          {secondHalf}
         </Row>
       </Box>
     );

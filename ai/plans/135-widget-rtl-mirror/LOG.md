@@ -199,3 +199,81 @@ before it was measured:
 
 The tree was clean after every mutant (`git status --porcelain` empty).
 
+### Step 02 — android mirror (red recorded 2026-10-18)
+
+Branch `fix/135-android-mirror` off `uat` (`516f1408`, 2.0.1033) in the lane
+worktree. Pre-flight re-run from `$TMPDIR`: `PREFLIGHT OK` (all eight anchors
+count 1 post-re-pin). Anchor check: `medium-composition.txt` = 1 and
+`alabel.txt` = 1 in `widgets/PrayerWidget.tsx`.
+
+Red run (`npx jest shared/__tests__/widgetRenderer.test.ts --watchman=false
+--selectProjects=unit`): 3 failed, 67 passed, 70 total, exactly the three
+named cases, with the two guards green at red time:
+
+1. `mirrors the medium row order under rtl: time before name` —
+   `Expected: 55 / Received: 84` at widgetRenderer.test.ts:990 (the name box
+   draws first today).
+2. `mirrors the medium halves under rtl: list before hero` —
+   `Expected: "centerStart" / Received: "bottomCenter"` at
+   widgetRenderer.test.ts:1017 (the hero half draws first today).
+3. `mirrors the pill and rows insets to the END edge under rtl` —
+   `Expected ArrayContaining [{"modifier":"padding","value":[0,1,14,0]}] /
+   Received [{"modifier":"padding","value":[14,1,0,0]}]` at
+   widgetRenderer.test.ts:1036 (the pill pads the START edge today).
+
+Change (widgets/PrayerWidget.tsx, `androidRender` only): `const rtl =
+input.rtl === true;` after the strings fallback; the swap table applied
+through the medium branch's directional inputs with the values chosen once
+(`rowFirst`/`rowSecond`, `firstHalf`/`secondHalf`, `nameBox`/`timeBox`),
+no duplicated composition; `ATimeText` takes the rtl flag and spreads
+`textAlign: 'start'` only under it (the falsy Text carries no textAlign
+key at all, so the LTR bytes match the pre-mirror composition); the
+`ATimeEl` cast widened to `textAlign?: 'start' | 'end'`; the two stale
+textAlign comments deleted (the cast's note above `ATimeEl`, and the
+rows' right-justify paragraph).
+
+Green run (same filter): `Test Suites: 1 passed, Tests: 70 passed, 70
+total`. `npx tsc --noEmit` exit 0; `npx biome check . --error-on-warnings`
+exit 0 after formatting the two touched files.
+
+Break (`bash ai/plans/135-widget-rtl-mirror/scripts/break-135-mirror.sh`):
+`Tests: 3 failed, 65 skipped, 2 passed, 70 total` with `-t "under rtl"`
+(the three mirror cases fail, the two guards hold), last line
+`BREAK 135-MIRROR: expected FAIL above, file restored from TMPDIR`;
+`grep -c "const rtl = input.rtl === true;"` = 1 after the restore.
+
+Mutation pass, eight mutants (the table's swappable rows), each restored
+from `$TMPDIR` (never `git checkout`, never patch-package; the file proved
+byte-identical at the end), each predicted before measured:
+
+| Mutant | Predicted red | Measured |
+| --- | --- | --- |
+| outer Row children never swap (`firstHalf = heroHalf` fixed) | mirrors the medium halves under rtl | 1 failed: the halves case |
+| list wrapper alignment stays `centerEnd` | mirrors the medium halves under rtl | 1 failed: the halves case |
+| inner list alignment stays `topStart` | mirrors the medium halves under rtl | 1 failed: the halves case |
+| pill inset stays `APad(PILL_LEAD, 1, 0, 0)` | mirrors the pill and rows insets | 1 failed: the insets case |
+| rows inset stays `APad(ROWS_LEAD, 0, 0, 0)` | mirrors the pill and rows insets | 1 failed: the insets case |
+| row line stays name-first | mirrors the medium row order under rtl | 1 failed: the row order case |
+| time alignment + textAlign stay LTR | mirrors the medium row order under rtl | 1 failed: the row order case (each half alone also red) |
+| name alignment stays `centerStart` | mirrors the medium row order under rtl | 1 failed: the row order case |
+
+`yarn validate` exit 0: tsc and Biome clean, `Test Suites: 222 passed,
+222 total`, **Tests: 2 skipped, 5756 passed, 5758 total**, coverage 100
+percent on all four measures (statements 5417/5417, branches 2350/2350,
+functions 1131/1131, lines 4853/4853).
+
+Version 2.0.1036 (next free under the version lock; uat had taken
+2.0.1034 and 2.0.1035 mid-flight, lane 137's step 2b and the lead's docs
+reapply). session: executor-135-s2s3-2
+
+Lane weather on the merge: the direct merge conflicted on app.json and
+package.json (both sides had moved the version line); aborted, the branch
+rebased onto uat `6ac3ff85` keeping 2.0.1036 (next free; the README
+auto-merged, rows 116/117/128/129 taken from uat verbatim). The rebased
+commit `3f135b56` was made unhooked (`rebase --continue` runs no
+pre-commit hook), so `yarn validate` was re-run by hand on that exact
+tree: exit 0, `Test Suites: 222 passed, 222 total`, `Tests: 2 skipped,
+5756 passed, 5758 total`, coverage 100 percent on all four measures
+(5417/5417, 2350/2350, 1131/1131, 4853/4853). session:
+executor-135-s2s3-2
+
