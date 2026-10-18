@@ -109,3 +109,45 @@ every gate before this commit: biome check clean AND biome --write output
 byte-identical to the plan block, tsc 0 errors, red 4/4 against the unpinned
 tree. The executor's second STOP is recorded; its evidence sits in
 sessions/136/step2-biome.log.
+
+### Lane weather and a build-bay repair (2026-10-18, the lane)
+
+The formatting-repair merge conflicted on the two version files: lane 137
+merged its 2.0.1025 into uat mid-flight (its 3T readings). Protocol applied:
+abort, recreate the branch, retry once, resolve the version files by taking
+the branch side wholesale (the higher version, 2.0.1026). The first
+resolution attempt left duplicate version keys (biome caught it) and exposed
+a second defect: the lane's one-line gradle versionName sync had truncated
+the main tree's gitignored android/app/build.gradle to zero bytes
+(write-handle opened before the read, the classic truncate-then-read).
+Restored the file the sanctioned way: `CI=1 npx expo prebuild -p android
+--no-install` in the main tree under build.lock regenerated it with
+versionName 2.0.1026 and applicationId 'com.example.athan' (both verified).
+The merge then landed hook-green (Tests: 5745 passed, 5745 total). The
+lesson is folded into every later gradle sync this lane runs: read first,
+substitute, then open for write.
+
+### Step 02 — the paragraph pin (2026-10-18)
+
+Resumed cold after the provider switches: the sweep suite was present but
+unrun, so the red was re-established before any edit. Four tests, four
+failures, every one `Expected: "ltr"` / `Received: undefined` at the
+assertion (the count assertions six and one pass), recorded in
+sessions/136/step2-red-resume.log.
+
+The three pins then applied verbatim from the step file: `direction: 'ltr'`
+last in `styles.chevron` (Settings and ColorPicker) and a new
+`styles.actionChevron` joined to the action Text's style array (Help).
+Green: suite 4 of 4; `npx tsc --noEmit` 0 errors; `npx biome check .
+--error-on-warnings` clean over 453 files.
+
+Version 2.0.1030 (1028 and 1029 were taken on live sibling lanes mid-run);
+uniqueness clean (17 commits across 11 refs, no shared version).
+
+Commit `196b8b63` (2.0.1030), hook-green: Tests: 2 skipped, 5747 passed,
+5749 total; coverage Statements 100% (5401/5401), Branches 100%
+(2326/2326), Functions 100% (1130/1130), Lines 100% (4838/4838).
+Killing-mutant pass on the committed pins:
+`bash ai/plans/136-android-chevron-mirror/scripts/break-136.sh` ->
+killed: settings-chevrons, killed: colorpicker-chevron, killed:
+help-chevron, ALL AS EXPECTED: 3.
