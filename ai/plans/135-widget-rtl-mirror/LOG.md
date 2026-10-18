@@ -277,3 +277,85 @@ tree: exit 0, `Test Suites: 222 passed, 222 total`, `Tests: 2 skipped,
 (5417/5417, 2350/2350, 1131/1131, 4853/4853). session:
 executor-135-s2s3-2
 
+Step 2 merged as `efdee293` (retry after the lane-weather rebase), the
+main tree's `android/app/build.gradle` versionName synced to 2.0.1036
+under the build lock. Branch `fix/135-android-mirror` deleted after the
+merged check. Note for the lead's docs carry (the D135.12 class): the
+preflight's `medium-composition` anchor now counts 0 in
+`widgets/PrayerWidget.tsx` — step 2's swap table rewrote exactly the
+lines it pinned; the step-3 anchor check (entryview-body,
+patch-test-hunk-count) counts 1 and 1.
+
+### Step 03 — ios direction patch (red recorded 2026-10-18)
+
+Branch `fix/135-ios-direction` off `uat` (`efdee293`, 2.0.1036) in the
+lane worktree. Anchor check: `entryview-body.txt` = 1 in
+`node_modules/expo-widgets/ios/Widgets/EntryView.swift`,
+`patch-test-hunk-count.txt` = 1 in
+`shared/__tests__/widgetOpenAppPatch.test.ts`.
+
+Red run (`npx jest shared/__tests__/widgetOpenAppPatch.test.ts
+shared/__tests__/widgetContract.test.ts --watchman=false
+--selectProjects=unit`): 3 failed, 23 passed, 26 total, exactly the
+named cases:
+
+1. `patches exactly the known files, all inside the package` —
+   `Expected length: 6 / Received length: 5` (five diff --git headers
+   today).
+2. `applies the entry's rtl as the native layout direction` —
+   `Expected substring: 'let rtl = (entry.props?["rtl"] as? Bool) ??
+   false'` (the installed EntryView.swift is upstream).
+3. `documents rtl as consumed, not stamped-and-unread` —
+   `Expected substring: "the patched entry view"` (the field docblocks
+   name no consumer; they say "once it renders a Host").
+
+Change: the installed `EntryView.swift` gained the plan's hunk verbatim
+(the rtl read with the explicit falsy `.leftToRight` default, the
+`.environment(\.layoutDirection, ...)` application around
+`WidgetsDynamicView`, NO `return` keyword, one law comment line); the
+whole patch regenerated with `npx patch-package expo-widgets` (six diff
+--git headers; the git diff on the patch file is purely additive, 21
+insertions, the five existing hunks untouched). `shared/widgetTypes.ts`:
+the two `rtl` FIELD docblocks now name their consumers (the patched
+entry view on iOS, the composition mirror on Android); the v8/v4
+version-history comments keep their `(blocked, P16)` provenance words.
+
+Green run: `Test Suites: 2 passed, Tests: 26 passed, 26 total` on the
+two touched suites. The widget runtime load suite
+(`npx jest shared/__tests__/widgetRuntimeLoads.test.ts
+--watchman=false`): `Tests: 3 passed, 3 total` (the ai/AGENTS.md
+install rule after any patch change). `npx tsc --noEmit` exit 0;
+`npx biome check . --error-on-warnings` exit 0 (after rewrapping the
+iOS docblock so the consumer phrase sits on one line, and quantifying
+the test regex's two-space indent for Biome's adjacent-spaces rule).
+
+Break (`bash ai/plans/135-widget-rtl-mirror/scripts/break-135-ios-direction.sh`):
+`Tests: 1 failed, 7 passed, 8 total` — the direction test's
+byte-for-byte `?? false` pin catches the flipped default, so the break
+is red by construction; last line `BREAK 135-IOS-DIRECTION: expected
+FAIL above (the guard pins the false default); file restored from
+TMPDIR`; the installed Swift keeps `?? false` (count 1) after the
+restore, and patch-package never ran inside the break.
+
+`yarn validate` exit 0: tsc and Biome clean, `Test Suites: 222 passed,
+222 total`, **Tests: 2 skipped, 5758 passed, 5760 total**, coverage 100
+percent on all four measures (statements 5417/5417, branches 2350/2350,
+functions 1131/1131, lines 4853/4853).
+
+Version 2.0.1039 (next free under the version lock; sibling lanes took
+2.0.1037 and 2.0.1038 mid-flight, lane 136's step-3 proof docs commit
+`a8220b8e` now on uat). session: executor-135-s2s3-2
+
+Lane weather on the merge: the direct merge conflicted on app.json,
+package.json and ai/plans/README.md (lane 136 had merged its step 3 and
+its executed docs while step 3 ran, uat tip `281e5560` at 2.0.1040);
+aborted, the branch rebased onto it keeping BOTH lanes' rows (row 136
+and row 137 taken from uat verbatim, row 135 mine at step 3). The
+version re-took the next free patch twice under the lock: 2.0.1041 was
+taken by lane 136's `docs/executed-136-20261018` (`db142e1f`) between
+the scan and the write, so the commit carries 2.0.1042. The rebased
+commit was made unhooked (`rebase --continue` runs no pre-commit hook)
+and its message still read 2.0.1039, so it was amended with the
+corrected 2.0.1042 message — the amend is hooked, and its gate output
+is the evidence line below. session: executor-135-s2s3-2
+

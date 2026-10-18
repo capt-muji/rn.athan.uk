@@ -511,6 +511,30 @@ describe('widget props v8 footers', () => {
   });
 });
 
+describe('the rtl field is documented as consumed', () => {
+  it('documents rtl as consumed, not stamped-and-unread', () => {
+    const source = readFileSync(join(__dirname, '../../shared/widgetTypes.ts'), 'utf8');
+
+    // Each rtl field's docblock is the comment block immediately above it;
+    // the interface-level version-history comments are not field docblocks
+    const docblocks = [...source.matchAll(/\/\*\*(?:(?!\*\/)[\s\S])*\*\/\n {2}rtl\?: boolean;/g)].map(
+      (match) => match[0]
+    );
+    expect(docblocks).toHaveLength(2);
+
+    const [ios, android] = docblocks;
+    expect(ios).toContain('the patched entry view');
+    expect(android).toContain('composition mirror');
+    for (const docblock of docblocks) {
+      expect(docblock).not.toContain('blocked');
+      expect(docblock).not.toContain('P16');
+    }
+
+    // The v8/v4 version-history comments keep their provenance words
+    expect(source.split('(blocked, P16)').length - 1).toBe(2);
+  });
+});
+
 // =============================================================================
 // 6. THE NEUTRAL AND STALE LITERAL SITES RESOLVE THROUGH THEIR LOCAL TABLE
 // =============================================================================

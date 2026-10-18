@@ -144,9 +144,9 @@ export interface PrayerWidgetProps {
    */
   stale?: boolean;
   /**
-   * Whether the app locale this blob was composed for is RTL. Stamped for the
-   * widget runtime's direction once it renders a Host; blobs from the prior
-   * schema read as false.
+   * Whether the app locale this blob was composed for is RTL. Consumed by
+   * the patched entry view as the native layout direction; blobs from the
+   * prior schema read as false.
    */
   rtl?: boolean;
 }
@@ -243,9 +243,9 @@ export interface PrayerWidgetAndroidProps {
    */
   strings: WidgetStrings;
   /**
-   * Whether the app locale this blob was composed for is RTL. Stamped for the
-   * widget runtime's direction once it renders a Host; blobs from the prior
-   * schema read as false.
+   * Whether the app locale this blob was composed for is RTL. Consumed by the
+   * Android composition mirror as the medium layout's directional swap; blobs
+   * from the prior schema read as false.
    */
   rtl?: boolean;
 }

@@ -147,6 +147,27 @@ index 7d37111..bc06d1d 100644
    private external fun nativeHandlePress(layout: String, props: ReadableNativeMap?, environment: ReadableNativeMap): ReadableNativeMap?
  
    companion object {
+diff --git a/node_modules/expo-widgets/ios/Widgets/EntryView.swift b/node_modules/expo-widgets/ios/Widgets/EntryView.swift
+index 638ee48..9cc1797 100644
+--- a/node_modules/expo-widgets/ios/Widgets/EntryView.swift
++++ b/node_modules/expo-widgets/ios/Widgets/EntryView.swift
+@@ -27,7 +27,15 @@ public struct WidgetsEntryView: View {
+   public var body: some View {
+     if let layout = WidgetsLayoutRegistry.layout(for: entry.name) {
+       let node = evaluateLayout(layout: layout, props: entry.props, environment: widgetEnvironment)
+-      WidgetsDynamicView(name: entry.name, kind: .widget, node: node, entryIndex: entry.entryIndex, environmentString: widgetEnvironmentString)
++      // The app locale pins the direction: a falsy rtl stays LTR even on an RTL device.
++      let rtl = (entry.props?["rtl"] as? Bool) ?? false
++      WidgetsDynamicView(
++        name: entry.name,
++        kind: .widget,
++        node: node,
++        entryIndex: entry.entryIndex,
++        environmentString: widgetEnvironmentString
++      ).environment(\.layoutDirection, rtl ? .rightToLeft : .leftToRight)
+     } else {
+       // No layout is stored until the app has run once after install or
+       // update. That's an expected state, not an error, so show a neutral,
 diff --git a/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift b/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift
 index 0df3263..d792155 100644
 --- a/node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift
