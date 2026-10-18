@@ -140,3 +140,43 @@ This ledger completion rides its own plan commit so the tree ends clean for
 the step 3 pre-flight.
 
 session: ses_eb1418e09ffeq7HHXZZKDx98yk
+
+### Step 3 - STOPPED (break script defect, needs the lead's repair)
+
+Branch `step/138-lockstep-shape` off `lane/138` (parent `72a99841`, 2.0.1058).
+Anchor `lockstep-shape.md` in `shared/__tests__/versionLockstep.test.ts`
+counts 1.
+
+Code landed and proven, then reverted uncommitted (patch saved):
+tightened live assertion
+`/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/` plus the new case
+`rejects a suffixed or zero-padded version shape` (own copy of the regex,
+three literal assertions). Red proof: `app.json`/`package.json` temporarily
+`2.0.1054-rc1` (the plan's literal string), suite
+`Tests: 1 failed, 3 passed, 4 total`, failing line `Expected pattern:
+/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/ Received string: "2.0.1054-rc1"`,
+reverted, green `Tests: 4 passed, 4 total`. tsc 0, biome 0,
+`yarn validate` 0 (`Tests: 2 skipped, 5779 passed, 5781 total`).
+
+Break: `bash ai/plans/138-semver-discipline/scripts/break-138-lockstep.sh`
+prints `BREAK LOCKSTEP COULD NOT MUTATE (perl matched nothing)` and exits 1
+against the correct implementation. Root cause (verified in isolation, see
+`$HOME/athan-gitree/sessions/138/step3-break-diagnosis.md`): the perl
+pattern's `$/` immediately before `\E` interpolates Perl's input record
+separator (NUL under `-0`) instead of matching the literal `$/`, so the
+substitution cannot match any file content; the pinned literal is present in
+the suite source exactly twice. The step file's prose contract ("loosens the
+tightened regex back to the loose /\d+\.\d+\.\d+/ with perl, cmp guard fails
+loudly when the perl changed nothing") is implementable only after a
+one-character repair to the plan-given script (`\$/` for `$/` in the
+pattern) - a plan artifact, so the executor's call is STOP, not a silent
+edit. Step 4 (docs, no break script) is unaffected but unstarted: the batch
+order is step 3 first.
+
+Work saved: `$HOME/athan-gitree/sessions/138/step3-unfinished.patch` (the
+suite edit), `step3-break-diagnosis.md`, `step3-break-failure.log`,
+`step3-red-proof.log`. Tree restored clean, empty step branch deleted.
+Resume from: step 3, part break (apply the patch, run the repaired break
+script, then version/commit/merge; step 4 after).
+
+session: ses_eb1418e09ffeq7HHXZZKDx98yk
