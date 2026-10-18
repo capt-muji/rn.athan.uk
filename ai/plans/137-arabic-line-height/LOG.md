@@ -254,3 +254,78 @@ home findings files. Vision dispatched for the pixel corroboration of the step
 
 session: ses_eb2f135bfffe1QvZUjA1rHhHZ1 (the lead's own session for this lane)
 
+### Step 02b — oneplus3t home
+
+Worktree lane-137, branch `step-137/3t-home` cut off uat 1d69959c (2.0.1031;
+uat had moved past lane/137's 90855dc6 with ticket 135's merge, so the cut
+followed the step-2/3 precedent). Preflight copied to `$TMPDIR`, run from
+the worktree root on `lane/137`: `PREFLIGHT OK`, 3T attached, XS attached,
+all ten anchors counting 1; all ten re-counted at 1 on the new branch HEAD
+after the cut (app.json had moved between the bases, its fonts anchor held).
+Device lock `device-3T_SERIAL.lock` taken 06:18, before the first adb
+command, removed 06:25 after the last evidence file landed.
+
+Vehicle (contract 2): `pm list packages | grep the owner` prints
+`package:com.example.athan` and `package:com.example.athan.fleettest`;
+`dumpsys package com.example.athan` versionName=2.0.908, at or past 2.0.811,
+matching step 2's vehicle, so no fresh build and no install. `wm size`
+`Physical size: 1080x1920`. `settings get global auto_time` printed 1 before
+and after.
+
+Route (contract 3): WAKEUP, keyguard swipe, HOME (launcher focused), dock
+icon (540, 1747), 2s. The home screen showed the Standard page, six prayer
+rows. Arrival language ar from the face (`الإعدادات` settings button ax
+label, `لندن، المملكة المتحدة` location label): the no-switch path, nothing
+to restore.
+
+Home reads (contract 4): the step-2 instrument, `maestro --udid <serial>
+hierarchy`, two independent captures agreeing byte for byte on every bound;
+`uiautomator dump` not re-attempted (the refused rung, step 2's 7 refusals
+stand). Read: location `لندن، المملكة المتحدة` [602,391][1038,458] 67px;
+date `جمادى الأولى 7، 1448` [602,479][1038,554] 75px; row name `الفجر`
+[844,644][1049,719] 75px; row time digit `05` [453,644][512,719] 75px inside
+the ax `05:54` container [210,644][844,719]; countdown word `الشروق`
+[0,123][1080,150] 27px, the Text above the digits naming the countdown
+target (the digits `1h 7m 2s` counting to الشروق 07:27). Screencap
+`3t-home.png` taken.
+
+The countdown word is the raw outlier: 27px against candidates 53/53/68/69 at
+nominal 17, full node width, identical bounds in every capture on both pages
+under two different words. Recorded raw per the symptom table's last row; no
+adjudication here. The five other new unpinned surfaces all read +2 above
+their Regular or Medium bbox, against step 2's Regular +1 at 14, so the
+D137.12 residual question (consistent or scattered) carries both facts to the
+lead.
+
+Overlay (contract 5): the first pager swipe (rightward drag, `input swipe
+300 974 840 974 300`) reached Extras directly, RTL order confirmed; the tree
+confirmed the page by the extras row labels before any tap: `نصف الليل`
+00:00, `آخر ثلث` 01:58, `السحور` 05:34, `الضحى` 07:47. No Istijaba row
+rendered (Friday-only), so the tapped row `الضحى`, upcoming and the countdown
+target, is not a passed Istijaba. Tap (540, 1130), 1s settle, two captures
+agreeing byte for byte: title `الضحى` [743,762][884,839] 77px; body
+`20 دقيقة بعد الشروق` [196,924][884,987] 63px, the whole node, per-line pin
+line pending the lead's vision line count (63px equals exactly one 24dp pin
+line at 2.625). Screencap `3t-overlay.png` taken. The same row tapped again:
+the closing capture shows zero explanation and zero `إغلاق تفاصيل الصلاة`
+catcher nodes, the overlay closed and verified. Swipe back (leftward, 840 to
+300), the Standard six-row face verified at its original bounds (`الفجر`
+through `العشاء`, location and date unchanged).
+
+Voids: none in the structured reads. The pixel-corroboration void stands as
+in step 2: this model has no image input, so `3t-home.png` and
+`3t-overlay.png` sit unread in `$HOME/athan-gitree/sessions/137/` for the
+lead's dispatched vision reader (D137.11). No measurement in
+FINDINGS-3T-HOME.md comes from pixels.
+
+Restore (contract 7): overlay closed and verified, Standard page shown and
+verified, HOME (launcher focused), screen on, build as found (2.0.908, no
+install ever made), language as found (arrived ar, untouched), `settings get
+global auto_time` prints 1. Evidence: `3t-home-hierarchy-a/b.json`,
+`3t-extras-hierarchy.json`, `3t-overlay-hierarchy-a/b.json`,
+`3t-overlay-closed-hierarchy.json`, `3t-restore-standard-hierarchy.json`,
+`3t-home.png`, `3t-overlay.png`, all under `$HOME/athan-gitree/sessions/137/`.
+No serial was written to any file.
+
+session: ses_eb28fd6b4ffeaebOUPrp39HTL1
+
