@@ -8,6 +8,162 @@ wrapper to a fixed width; then: red test, fix, validate, mutation pass,
 merge, rebuild the fleettest APK, re-read the 3T both directions, the XS
 proof, the audit, the deep clean.
 
+### Step 04, continued — the repair proven on the 3T (2026-10-18)
+
+session: lane-135-resume
+
+Red first (branch `fix/135-hero-collapse` off `uat` at `f91df6a2` 2.0.1053):
+`pins the mirrored wrapper to a fixed width under rtl: a fill-first child
+starves the hero` — `Expected value: {"modifier": "width", "value": 177} /
+Received array: [{"modifier": "fillMaxHeight", "value": undefined},
+{"modifier": "fillMaxWidth", "value": undefined}]` at
+widgetRenderer.test.ts:1087. Change (widgets/PrayerWidget.tsx, the medium
+branch only): the list wrapper's modifiers read
+`[fillMaxHeight(), rtl ? width(LIST_WIDTH) : fillMaxWidth()]`, the why
+comment extended with the starvation line; nothing else moves. Green: the
+whole renderer suite `Tests: 71 passed, 71 total`. Mutation pass, two
+mutants, each predicted before measured, each restored from `$TMPDIR`:
+
+| Mutant | Predicted red | Measured |
+| --- | --- | --- |
+| fill restored unconditionally (the shipped bug) | the new case's rtl assertion | 1 failed, 70 skipped |
+| fixed width unconditionally (the falsy fill lost) | the new case's falsy guard | 1 failed, 70 skipped |
+
+Break scripts re-run: `break-135-mirror.sh` still red on the three mirror
+cases under `-t "under rtl"`, file restored from TMPDIR. `yarn validate`
+exit 0 (hook): `Test Suites: 222 passed, 222 total`, **Tests: 2 skipped,
+5760 passed, 5762 total**, coverage 100 percent on all four measures.
+Version 2.0.1054 (next free: 2.0.1051 lane/116, 2.0.1052 lane/138),
+merged as `45faa440`; the main tree's `android/app/build.gradle` versionName
+synced under the build lock; branch deleted after the merged check.
+
+Fleettest rebuild (the step's scratch-worktree ritual, `plan-135` detached
+at `45faa440`, yarn.lock hashes identical, node_modules symlinked, `.env`
+from `.env.example`, widget flags ON): prebuild exit 0 (applicationId
+`com.example.athan.fleettest`), gradle `assembleRelease --no-daemon
+-PreactNativeArchitectures=arm64-v8a` exit 0 under the build lock (no other
+build alive; lane 116's Duo simulator build had completed and released
+before this one started). Gate: `aapt2` at the SDK build-tools path,
+`aapt2 dump badging` prints `package: name='com.example.athan.fleettest'
+versionCode='1000000' versionName='2.0.1054'` — GATE PASSED. APK and logs
+kept at `~/athan-gitree/sessions/135/`; worktree and TMPDIR removed.
+
+3T re-proof (every contact under the device lock, released after):
+
+- Installed 2.0.1054 over the dead session's 2.0.1042 (widget stayed
+  placed, id unchanged). Vision note unchanged: this session cannot see
+  images, so every read below is the structured live read (Maestro's
+  failure-artifact hierarchy: exact AX text plus bounds), the e2e README's
+  sanctioned Android 9 reader.
+- ARABIC read (app language العربية; the convergence pushes proven by
+  logcat `WIDGET: Standard snapshot pushed` with Arabic names at 12:04:02
+  and twice more): THE HERO RENDERS — the card splits at x460, the list
+  half LEFT with the time column leftmost (12:00 to 12:06 at x121-193) and
+  the Arabic names rightmost inside each row (الفجر to العشاء at
+  x341-411), and the hero half RIGHT carrying المغرب at [600,1134][692,1183],
+  the countdown label as separate texts `1` [599,1188][638,1280] + `m`
+  [638,1192][693,1279] (unpadded Latin digit, lowercase Latin letter tight
+  beside it, never `د`), the target 12:05 at [604,1295][688,1342] and the
+  day الأحد at [617,1459][675,1502]. The collapsed zero-width containers
+  are gone (the band holds the full node set; no `visible:false` zero-width
+  wrapper remains). R1.1 and R3.1 MET ON GLASS; the defect the stop
+  transcribed is healed.
+- ENGLISH read (app language English restored, push at 12:07:05, read after
+  HOME): the settled face, and its bounds are IDENTICAL to the dead
+  session's pre-fix English read at 2.0.1042 — hero LEFT (MAGRIB at
+  [205,1134][343,1183], label `1` [227,1188][266,1280] + `m`
+  [266,1192][321,1279], target 12:08, day Sun), list RIGHT with name LEFT
+  (x670-762) and time RIGHT (x888-960). R1.2 and R5.1 MET ON GLASS: the
+  falsy path renders byte-identically after the repair.
+- 3T end state: app language English, fleettest 2.0.1054 installed with
+  the medium widget placed, production app and its widget untouched,
+  automatic time never touched.
+
+### Step 04, continued — the XS proof (2026-10-18)
+
+session: lane-135-resume
+
+Build (main tree, the build bay, uat `45faa440` content, under
+`build.lock`): `EXPO_PUBLIC_IOS_WIDGETS=1 npx expo prebuild -p ios
+--no-install --clean` exit 0; the workspace check passed (the
+`ExpoWidgetsTarget` extension present, NSExtension keys, 26 pbxproj
+references); `DEVELOPMENT_TEAM=<TEAM_ID> EXPO_PUBLIC_IOS_WIDGETS=1 npx
+expo run:ios --configuration Release --device IPHONE_UDID` built Release
+(products in `Release-iphoneos`), embedded `ExpoWidgetsTarget.appex`, and
+installed: `devicectl device info apps` reads `com.example.athan 2.0.1054`
+— her app upgraded in place, her data and placed widgets kept (the atlas's
+standing route; no signing mismatch).
+
+Her phone's as-found state, read before any change (every contact under
+the XS device lock): the APP LANGUAGE IS ALREADY ARABIC (the accessibility
+tree reads الفجر, لندن، المملكة المتحدة, جمادى الأولى 8، 1448 and the
+app countdown `15h 28m` lettered Latin), the SYSTEM locale is English (the
+system chrome reads Search, Page 1 of 1), and the home page carries the
+placed Athan medium widget with the widget-extension process alive. The
+restore target is therefore ARABIC, the as-found language.
+
+Driving wedge, measured and routed around: the agent-device tap channel is
+dead this session (the runner's `build-for-testing` fails on "No Account
+for Team" / no runner profile; row 131's daemon-inherited runner cache did
+not survive the 0.21.5 client's daemon replacement, and Xcode holds no
+account session to mint one). The reads therefore went through
+`pymobiledevice3 developer accessibility list-items` (no runner needed)
+plus `developer dvt screenshot` — the app was left to the home screen by
+terminating its pid through devicectl (the atlas's leave-an-app route).
+
+XS ARABIC read (the as-found state, the timeline re-pushed on the app's
+launch): the home screen's AX tree carries the widget's full content —
+the six rows reading TIME THEN NAME in AX order (04:03/الفجر,
+05:38/الشروق, 13:03/الظهر, 16:58/العصر, 20:19/المغرب, 21:31/العشاء: the
+time captions lead each row, the AX engine sorting by visual position, so
+the TIME column sits leftmost and the Arabic names rightmost — the
+mirrored row), the rows block leading the widget and the countdown block
+trailing it (the list half left, the hero half right), and the countdown
+itself ticking `15:27:46, Updates Frequently` — LATIN DIGITS AND COLONS
+under the Arabic app locale, the system timer interval her amendment
+keeps, no letters anywhere (R4.1 ON GLASS). The Hijri day `جما 8` renders
+in the hero's footer. The times are her real London day (Fajr 04:03
+through Isha 21:31), the offline store standing after the in-place
+upgrade.
+
+Pixel corroboration, attempted and wedged: three `vision` dispatches (the
+dry run on the dead session's sim screenshot, the home-screen inventory,
+the widget screenshot at `~/athan-gitree/sessions/135/xs/135-xs-widget-ar.png`)
+sat unstreaming past fifteen minutes each (session ids recorded in the
+lane's return); the screenshots exist under the session folder, uncommitted.
+The structural read above stands as the proof of record: the e2e rules
+prefer the structured tree over pixels, and the AX order (time-then-name
+per row, rows-then-countdown per card) is the mirror's own signature.
+
+**D135.14 (agent-ruled 2026-10-18): the XS English re-read is waived on
+evidence; her phone takes zero language switches.** The plan's English
+re-read assumed an English as-found app; her app already sits in Arabic,
+so the round trip would need two driven switches through a dead tap
+channel. The English iOS face is unchanged by construction: the ticket
+touches no iOS JS, and the patch's falsy path applies an explicit
+`.leftToRight` (R2.2) that equals the no-environment default under every
+locale (her system locale is English today; the RTL-system English-app
+case is R2.2's own unit-pinned branch). The 3T already proved the English
+face byte-identical on glass for the Android half. Challenge once: an
+explicit LTR environment could differ from no environment under an RTL
+system locale — true in principle, and it is exactly R2.2's pinned,
+unit-tested branch; on her English-system phone the two are identical.
+Survives. Committed: no switches, the least possible contact with her
+phone; the lock-screen read is likewise not forced (locking needs the
+dead tap channel, and the same patch site carries all 14 kinds).
+
+XS end state: the app language stays Arabic (as found), the installed
+build is the 2.0.1054 Release carrying the fix, her placed home medium
+widget untouched and live, nothing uninstalled (the runner app found
+pre-installed on the phone predates this session and stays), her app
+data never opened, the system settings never touched.
+
+Lock notes: `build.lock` held across the iOS device build and released
+after; the XS device lock held through every contact and released after
+the last read; the run:ios log-tail process killed once the install was
+verified. The agent-device daemon was stopped once (routing around the
+runner wedge); its state directory is intact for the next session.
+
 ## Ticket 135 (2026-10-18)
 
 Lane opened on the previous lane-135 session's empty ground (no branch, no folder,
