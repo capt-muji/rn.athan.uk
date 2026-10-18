@@ -1,6 +1,0 @@
-                  accessibilityLabel={getHelpActionLabels()[action]}>
-                  <Text style={styles.actionText}>{getHelpActionLabels()[action]}</Text>
-                  <Text style={styles.actionText}>{chevronFor()}</Text>
-                </Pressable>
-              ) : null}
-            </View>

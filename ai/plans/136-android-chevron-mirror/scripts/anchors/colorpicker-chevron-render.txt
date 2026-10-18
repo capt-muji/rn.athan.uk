@@ -1,3 +1,0 @@
-          </View>
-          <Text style={styles.chevron}>{chevronFor()}</Text>
-        </View>
