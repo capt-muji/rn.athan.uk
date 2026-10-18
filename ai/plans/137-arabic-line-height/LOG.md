@@ -90,4 +90,78 @@ help answer 13 Rubik-Regular pinned 20.
 
 session: ses_eb3792cc0ffetY7Cu1OPrC5yJ2
 
+### Step 02 — oneplus3t
+
+Worktree lane-137, branch `step-137/oneplus3t` off uat b1f16011 (2.0.1021, the
+step-1 merge; uat had not moved past it). Preflight copied to `$TMPDIR`, run
+from the worktree root on `lane/137`: `PREFLIGHT OK`, 3T attached, XS
+attached, all six anchors counting 1. Device lock
+`device-3T_SERIAL.lock` held 02:12 to 02:19, released after the last evidence
+file landed.
+
+Vehicle (contract 1): `pm list packages | grep the owner` prints
+`package:com.example.athan` and `package:com.example.athan.fleettest`;
+`dumpsys package com.example.athan` versionName=2.0.908, `dumpsys package
+com.example.athan.fleettest` versionName=2.0.996. Both at or past 2.0.811, so
+per the lead's ruling (either package form is the FleetTest vehicle family) no
+fresh build was taken. Driven: the dock icon at (540, 1747) launches
+`com.example.athan` 2.0.908, the production-id mock; the sibling's fleettest
+2.0.996 stayed installed, undriven.
+
+Route and face (contracts 2, 3): WAKEUP, keyguard swipe, HOME, dock icon,
+2s, settings button (540, 1830); `wm size` 1080x1920. The sheet's live text
+read Arabic on arrival (title `الإعدادات`), so the language branch took the
+no-switch path: no `اللغة` round trip, nothing to restore.
+
+Reads (contracts 4, 5): `uiautomator dump` refused both screens (7 tries:
+`could not get idle state` 5, `null root node returned by
+UiTestAutomationBridge` 2; the countdown strip animates each second behind the
+sheet and the modal). Per PLAN.md section 10's symptom table the record came
+from `maestro --udid <serial> hierarchy`, rung two of the ladder: sheet
+captured twice (02:14, 02:16), every bound identical; Help modal captured at
+02:18 after tapping the first question. Help reached by one scroll inside the
+sheet then the `المساعدة` row at [96,1574][984,1674], inside the `أخرى` card;
+first question tapped at (540, 510).
+
+Transcription of the sheet (live structured text, both captures): title
+`الإعدادات` [743,453][986,546]; subtitle `اضبط تفضيلاتك` [743,561][986,619];
+card titles `الصلاة` [96,742][986,802], `العرض` [96,1183][986,1243], `شريط
+العد التنازلي` [96,1760][986,1820] clipped, after scroll `أخرى`
+[96,1219][986,1279]; rows `تغيير الأذان`, `القبلة`, toggles `إظهار التاريخ
+الهجري`, `إظهار الثواني`, `إظهار الوقت المنقضي`, `إظهار شريط العد
+التنازلي`, `لون شريط العد التنازلي`, `اللغة` [96,1311][984,1411], `ما
+الجديد` [96,1442][984,1542], `المساعدة` [96,1574][984,1674]; behind the
+sheet the countdown `3h 39m 28s` ticking, `لندن، المملكة المتحدة`, `جمادى
+الأولى 7، 1448`, prayer rows الفجر 05:54 through العشاء 19:27.
+
+Transcription of the Help modal (live structured text): title `المساعدة`
+with the `?` mark; seven questions, first `لماذا لا تصلني أي إشعارات؟`
+[242,358][975,419] opened, answer three lines `بدون إذن، لا يمكن إظهار
+الإشعارات.` [158,457][975,510], `شغّل الإشعارات في إعدادات التطبيق`
+[158,536][938,589], `اترك فئات الأذان مشغّلة` [158,600][938,653]; `إغلاق`
+button [329,1607][749,1737].
+
+Void, pixel read, the row 120 form: attempted the Read tool on
+`3t-sheet.png` (answer: this model has no image input) and the `vision`
+subagent with one exact question per image (answer: harness refused, subagent
+depth limit 2); the phone itself answered every structured read, so the hole
+removes only pixel-level corroboration of the bounds, not the bounds, which
+two independent live captures serve identically. The pngs
+(`3t-sheet-check.png`, `3t-sheet.png`, `3t-help.png`, `3t-restore-home.png`)
+sit in `$HOME/athan-gitree/sessions/137/` for the audit's image-capable read;
+no measurement in FINDINGS-3T.md comes from pixels.
+
+Numbers are in FINDINGS-3T.md: title 93px, subtitle 58px (matches Regular
+bbox, +1), card title 60px, question 61px at pin 60.375 (+1 after rounding),
+answer 53px at pin 52.5 (+0.5). Title and card title match no candidate
+within 1px (both nearest bbox, +2): recorded raw with every candidate px per
+the symptom table's last row, for the lead's adjudication before step 4.
+
+Restore (contract 7): `إغلاق` tapped, BACK dismissed the sheet, HOME;
+foreground `net.oneplus.launcher`; screen on; build as found (no install was
+ever made); language untouched (arrived ar); `settings get global auto_time`
+prints 1. Device lock removed 02:19.
+
+session: ses_eb36fcec7ffe62FsPtjLYU25hl
+
 
