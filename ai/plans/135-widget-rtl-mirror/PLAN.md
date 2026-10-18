@@ -187,6 +187,18 @@ label delivers it (letters at 0.95 x the digit size, tight, 12 point group gap a
 the 26 point digit size). The per-locale digit SIZE stays the widget's own settled
 26 (the amendment binds the letters' ratio, not the widget's type scale).
 
+**D135.12 Anchors re-pinned to the post-step-1 tree (agent-ruled 2026-10-18,
+lead plan repair).** Step 1's merged edits (the owner-amendment reshaping of
+`ALabel` into its parts form and the fixed-Latin `widgetStrings` bake)
+consumed the planning-time pins of `alabel.txt`, `widget-strings-bake.txt`
+and `widget-strings-docblock.txt`, so step 2's anchor check and any preflight
+re-run could never pass. Options: (a) re-pin the three anchors to the
+post-step-1 text; (b) drop `alabel` from step 2's check and mark the
+preflight planning-time. Committed (a): the anchors guard do-not-touch
+regions beside the step-2 edit site, and a permanently-failing gate in the
+folder misleads any resume; re-pinning keeps the gate truthful and runnable.
+The step files need no change (they name the anchors, not their bytes).
+
 ### 2.2 The executor must not decide
 
 - Anything that changes a pixel beyond the owner's order: STOP and route to the plan

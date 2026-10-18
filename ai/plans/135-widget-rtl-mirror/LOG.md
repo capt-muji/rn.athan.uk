@@ -107,6 +107,44 @@ touches this lane.
 ### Step 00 — planning
 session: pending
 
+
+### Resume record and plan repair D135.12 (2026-10-18, lead session)
+
+The 04:38 turn died on a provider limit mid-flight. Measured before any
+write this resume (06:12): no live sibling on the ticket (session store:
+the last lane-135 sibling messages 04:38; only this lane and its
+orchestrator live), the worktree clean on `fix/135-android-letters` at
+`5c4430c9` with the earlier rebase mess resolved, and two parked locks
+whose holders were that dead turn (`commit.lock` holder "lane-135 step1
+amend", `uat.lock` bare) reaped.
+
+The amend commit carried no hook `Tests:` line, so the unhooked-commit rule
+ran: `yarn validate` by hand on that exact tree — 221 suites, 5747 passed,
+2 skipped, coverage 100 percent on all four measures, matching the ledger.
+
+Merge of step 1 (lane weather, resolved): the direct merge conflicted on
+`ai/plans/README.md` and the two version files; aborted, the branch rebased
+onto `uat` `90855dc6` (row 135 from the branch, rows 136/137 from uat
+verbatim), and the rebased commit hit a live version collision with lane
+136's `2.0.1030` (`fix/136-chevron-paragraph-pin`). The uniqueness hook
+refused the in-place amend while the branch tip itself sat on the colliding
+number, so the branch was soft-reset to the uat tip and re-committed fresh
+as `a3c55999` (`2.0.1031`), fully hooked: the hook's own run printed
+`Tests: 2 skipped, 5747 passed, 5749 total` at 100 percent coverage.
+Merged as `1d69959c`; the build bay's `android/app/build.gradle`
+`versionName` synced to 2.0.1031 under the build lock; the lockstep filter
+green in the main tree. All locks released clean.
+
+Plan repair D135.12 (agent-ruled, recorded in PLAN.md): the executor's
+step-2 anchor check STOPped — `alabel.txt` counted 0 because step 1's
+owner-amended edits consumed the planning-time pin (`alabel`,
+`widget-strings-bake`, `widget-strings-docblock` all pinned pre-step-1
+text). All three anchors re-pinned to the post-step-1 tree (each counts 1
+at `1d69959c`), the preflight header carries the note, and the step files
+need no change. The executor left the ground clean: `lane/135`
+fast-forwarded to `1d69959c`, `fix/135-android-letters` deleted after the
+merged check, no commits of its own.
+
 ### Step 01 — android letters (red recorded 2026-10-18)
 
 Branch `fix/135-android-letters` off `uat` (b5bee6a9, 2.0.1022) in the lane
