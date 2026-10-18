@@ -329,3 +329,82 @@ No serial was written to any file.
 
 session: ses_eb28fd6b4ffeaebOUPrp39HTL1
 
+### Step 03b — iphone-xs home
+
+Worktree lane-137, branch `step-137/xs-home` cut off uat 6ac3ff85 (2.0.1035;
+local uat sits ahead of origin/uat with the board's unpushed records commits,
+the planned sha cd171855 still an ancestor). Preflight copied to `$TMPDIR`,
+run from the worktree root on `lane/137`: `PREFLIGHT OK`, 3T attached, XS
+attached, all ten anchors counting 1; all ten re-counted at 1 on the new
+branch HEAD after the cut. Device lock `device-IPHONE_UDID.lock` taken 06:36,
+before the first device-contact devicectl command (the UDID resolved at
+runtime from `devicectl list devices`), removed 06:55 after the app was
+verified gone.
+
+Era check, D137.5: `devicectl device info apps` prints `com.example.athan`
+2.0.939 on iOS 18.7.10, past 2.0.811 and matching step 3, so the leg
+proceeds; the runner app pair the atlas names was already installed from
+step 3 and the app list at release is byte-identical to the list at arrival
+(only the xctrunner 1.0 beside Athan 2.0.939; nothing installed, nothing
+removed, no setting touched). Launched by the plan's `devicectl device
+process launch` command. No launch popup presented this launch, so no
+backdrop tap happened (step 3 needed one; this launch did not).
+
+Runner note: the first snapshot dispatch failed on signing, the atlas trap
+(the MCP server lacks the team env; the stale team-less daemon also mistook
+the boot iPhone 18 Pro simulator for the target once before the explicit
+UDID pin). Reading the team off the cached runner's code signature and
+re-preparing the runner through the atlas's `prepare ios-runner` route with
+that team in the env reused the team-signed cached build (exit 0, no rebuild,
+no new install). The team value appears in no file; the placeholder stands.
+
+Arrival language: ar, from the home tree (`الإعدادات` button 43x42 pt,
+`لندن، المملكة المتحدة`, Arabic row labels). The no-switch path: nothing
+to restore, and the Arabic face was verified again from the tree after the
+overlay closed, before termination.
+
+Home reads (contract 4): location 19pt = 57px, exact hhea/typo at 16
+Regular; date 21.333328pt = 64px, exact hhea/typo at 18 Regular; countdown
+word 20.333336pt = 61px, +1 over hhea/typo 60 at 17 Regular, inside the 1px
+tolerance. Prayer row name and row time: VOID on the AX rung, the row 120
+form, the full shape in FINDINGS-XS-HOME.md (every row merges to one Other
+container carrying `الفجر, 04:03, إشعار الفجر: إيقاف`, no StaticText
+children at any depth, both pages, every capture healthy). Screenshots taken
+by the atlas route (`pymobiledevice3 developer dvt screenshot`), 1125x2436
+each: `xs-home.png` unread this session for the lead's vision dispatch, per
+D137.11; no measurement comes from pixels.
+
+Overlay (contract 5): the first rightward swipe reached Extras directly (RTL
+order confirmed, the 3T direction; the tree confirmed the page by the Extras
+labels before any tap). No Istijaba row renders today (Sunday, Friday-only),
+so the tapped row الضحى, upcoming and the countdown target, satisfies the
+contract. Frames: title 21.333313pt = 64px, exact hhea/typo at 18 Medium;
+body whole node 24.333313pt = 73px against the 72px pin line, +1 if one
+line, per-line pending the lead's vision line count of `xs-overlay.png`.
+`xs-overlay.png` taken. The SAME row tapped again: the closing capture shows
+zero explanation and zero `إغلاق تفاصيل الصلاة` catcher nodes, the overlay
+closed and verified. Swipe back, the Standard six-row face verified at its
+original frames (الفجر through العشاء).
+
+Face observation, raw, no adjudication: the arrival and restore faces show
+the cached-day schedule (الفجر 04:03 through العشاء 21:31, date 8), the
+mid-contact Extras face showed the live morning schedule (date 7, countdown
+9m 10s to الضحى 06:53), and every recorded frame is identical under both
+labels. The app flapped once between its own display states; nothing but the
+الضحى row and its reverse was tapped, and the restore face equals the
+arrival face. Full shape in FINDINGS-XS-HOME.md.
+
+Restore (contract 7): overlay closed and verified, Standard page shown and
+verified, language ar as arrived and verified from the face, the app
+terminated through devicectl (pid 11195 resolved from `info processes`,
+SIGTERM sent, `pymobiledevice3 developer dvt process-id-for-bundle-id
+com.example.athan` then printed 0), no system setting touched, automatic
+lock untouched (the XS never auto-locks while tethered, the atlas trap, and
+none was needed), the agent-device session closed, the device lock removed
+06:55. Evidence: `xs3b-home-tree.json`, `xs3b-overlay-tree.json`,
+`xs3b-restore-standard-tree.json`, `xs-home.png`, `xs-overlay.png`, all
+under `$HOME/athan-gitree/sessions/137/`. No UDID, serial or team value was
+written to any file.
+
+session: ses_eb27f5964ffesqvUuSGSjolr1r
+
