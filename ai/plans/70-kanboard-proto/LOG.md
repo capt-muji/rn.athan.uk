@@ -99,3 +99,26 @@ come back as strings.
   truth until the owner rules the cutover ticket.
 
 ### Step ledger
+
+#### Step 1 - DONE 2026-10-18
+
+Red first: `node --test "kanboard/tests/*.test.mjs"` failed with
+`ERR_MODULE_NOT_FOUND: Cannot find module '.../kanboard/mapping.mjs'`.
+
+Green: `node --test "kanboard/tests/*.test.mjs"` 2 pass, 0 fail;
+`node --test "board/tests/*.test.mjs"` 10 pass, 0 fail.
+
+Regression R6.1: the old reader (from `uat`) and the new reader run against the same
+tree each wrote 127 tickets; with `generatedAt`, `activeNow` and every context
+`ageMs` zeroed the two board.json files are byte-identical.
+
+Break script: renaming the Blocked column in `mapping.mjs` failed the golden test
+(two assertion failures counted), revert restored 2 pass.
+
+Found and fixed on the way: commit `659a7627` left an unescaped apostrophe inside a
+single-quoted fixture line in `board/tests/reader.test.mjs`, a syntax error that had
+silently broken the board's own suite since 2026-10-13, because no gate runs
+`node --test board/tests/`. The line is escaped now and the suite runs green again.
+Reported to the owner in the run's final reply.
+
+session: ses_eaf625a99ffecJEKX3gHmF8r8O

@@ -18,7 +18,7 @@ const QUEUE = [
   '| Order | Name | Brief | Status | Needs first |',
   '| --- | --- | --- | --- | --- |',
   '| 901 | Fixture investigation | The full brief sits in history | DONE 2026-10-16, audited: the answer landed and shipped | nothing |',
-  '| 902 | Fixture owner ruling | The full brief sits in history | OWNER-LED 2026-10-17: the investigation answers, the recommendation is adopt option B; the work is DONE pending the owner's word | the owner's ruling on option B |',
+  '| 902 | Fixture owner ruling | The full brief sits in history | OWNER-LED 2026-10-17: the investigation answers, the recommendation is adopt option B; the work is DONE pending the owner\'s word | the owner\'s ruling on option B |',
   '| 903 | Fixture plain row | The full brief sits in history | NOT PLANNED 2026-10-17 | nothing |',
   '| 904 | Fixture waiting silent | The full brief sits in history | OWNER-LED 2026-10-17: the recommendation is keep the current design; nothing further to measure | nothing |',
   '| 905 | Fixture archived | DONE 2026-10-15 |',
@@ -73,7 +73,7 @@ test('owner-led row carries awaitingOwner, column and waiting text', () => {
       ticket.statusText.startsWith('2026-10-17: the investigation answers, the recommendation is adopt option B'),
       `statusText was ${ticket.statusText}`,
     );
-    assert.equal(ticket.waitingOn, 'the owner's ruling on option B');
+    assert.equal(ticket.waitingOn, 'the owner\'s ruling on option B');
     assert.deepEqual(ticket.needs, []);
   } finally {
     rmSync(fixture.root, { recursive: true, force: true });
@@ -90,7 +90,7 @@ test('owner-led row with silent needs cell answers waitingOn null', () => {
     assert.equal(waitingLine(''), null);
     assert.equal(waitingLine('nothing'), null);
     assert.equal(waitingLine('118'), null);
-    assert.equal(waitingLine('the owner's ruling on option B'), 'the owner's ruling on option B');
+    assert.equal(waitingLine('the owner\'s ruling on option B'), 'the owner\'s ruling on option B');
   } finally {
     rmSync(fixture.root, { recursive: true, force: true });
   }

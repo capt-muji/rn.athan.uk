@@ -25,7 +25,7 @@ const STATUS_MAP = [
   ['DEFERRED', 'Deferred'],
 ];
 
-const closedStatus = (cell) => cell.startsWith('CANCELLED') || cell.startsWith('SUPERSEDED');
+export const closedStatus = (cell) => cell.startsWith('CANCELLED') || cell.startsWith('SUPERSEDED');
 
 const collapse = (text) => text.replace(/\s+/g, ' ').trim();
 
@@ -44,7 +44,7 @@ function readConfig(file) {
   return config;
 }
 
-function parseQueue(markdown) {
+export function parseQueue(markdown) {
   const open = [];
   const doneRows = [];
   const doneOrders = [];
@@ -79,7 +79,7 @@ function parseQueue(markdown) {
   return { open, doneRows, doneOrders, settled };
 }
 
-function mapStatus(statusCell) {
+export function mapStatus(statusCell) {
   const cell = statusCell.trim();
   const matched = STATUS_MAP.find(([phrase]) => cell.startsWith(phrase));
   const rendered = !closedStatus(cell);
@@ -95,7 +95,7 @@ function mapStatus(statusCell) {
   return { status: phrase, column, cursor, statusText: collapse(cell.slice(phrase.length)).slice(0, 140), rendered };
 }
 
-function parseNeeds(needsCell) {
+export function parseNeeds(needsCell) {
   const orders = (needsCell.match(/\d+/g) ?? []).map((digit) => Number.parseInt(digit, 10));
   return [...new Set(orders)].sort((a, b) => a - b);
 }
@@ -106,13 +106,13 @@ export function waitingLine(needsCell) {
   return text.slice(0, 140);
 }
 
-function isMet(order, tickets, metOrders) {
+export function isMet(order, tickets, metOrders) {
   if (metOrders.includes(order)) return true;
   const row = tickets.find((ticket) => ticket.order === order);
   return Boolean(row) && !row.rendered;
 }
 
-function findPlanFolder(repo, order) {
+export function findPlanFolder(repo, order) {
   const plans = path.join(repo, 'ai', 'plans');
   if (!existsSync(plans)) return null;
   const match = readdirSync(plans, { withFileTypes: true })
@@ -140,7 +140,7 @@ function headerCell(lines, label) {
   return line.split('|')[2].trim();
 }
 
-function parsePlan(planPath) {
+export function parsePlan(planPath) {
   const planFile = path.join(planPath, 'PLAN.md');
   if (!existsSync(planFile)) return { parent: null, group: null, steps: [] };
   const lines = readFileSync(planFile, 'utf8').split('\n');
@@ -156,12 +156,19 @@ function parsePlan(planPath) {
   for (const line of lines) {
     const match = line.match(/- \[([ x])\] Step (\d+):/);
     if (!match) continue;
-    steps.push({ n: Number.parseInt(match[2], 10), weight: stepWeight(planPath, Number.parseInt(match[2], 10)), ticked: match[1] === 'x' });
+    const at = match.index ?? 0;
+    const title = collapse(line.slice(at + match[0].length));
+    steps.push({
+      n: Number.parseInt(match[2], 10),
+      title,
+      weight: stepWeight(planPath, Number.parseInt(match[2], 10)),
+      ticked: match[1] === 'x',
+    });
   }
   return { parent, group, steps };
 }
 
-function platformOf(planPath) {
+export function platformOf(planPath) {
   const stepsDir = path.join(planPath, 'steps');
   if (!existsSync(stepsDir)) return null;
   let android = false;
