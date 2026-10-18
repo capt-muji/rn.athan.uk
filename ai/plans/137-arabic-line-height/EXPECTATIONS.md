@@ -47,6 +47,32 @@ file assets/fonts/Roboto-Regular.ttf (Roboto-Regular)
   size 22 XS scale 3.0: hhea=77.34/77px typo=69.29/69px win=79.21/79px bbox=87.59/88px
 ```
 
+## Extended sizes (D137.11, 2026-10-18)
+
+`tables-137.py` SIZES extended to 13, 14, 15, 16, 17, 18, 22, 24. Verbatim output
+of the new sizes from the rerun at the worktree on `step-137/adjudication`:
+
+```
+file assets/fonts/Rubik-Regular.ttf (Regular)
+  size 16 3T scale 2.625: hhea=49.77/50px typo=49.77/50px win=64.34/64px bbox=65.27/65px
+  size 16 XS scale 3.0: hhea=56.88/57px typo=56.88/57px win=73.54/74px bbox=74.59/75px
+  size 17 3T scale 2.625: hhea=52.88/53px typo=52.88/53px win=68.37/68px bbox=69.35/69px
+  size 17 XS scale 3.0: hhea=60.44/60px typo=60.44/60px win=78.13/78px bbox=79.25/79px
+  size 18 3T scale 2.625: hhea=55.99/56px typo=55.99/56px win=72.39/72px bbox=73.43/73px
+  size 18 XS scale 3.0: hhea=63.99/64px typo=63.99/64px win=82.73/83px bbox=83.92/84px
+  size 24 3T scale 2.625: hhea=74.66/75px typo=74.66/75px win=96.52/97px bbox=97.90/98px
+  size 24 XS scale 3.0: hhea=85.32/85px typo=85.32/85px win=110.30/110px bbox=111.89/112px
+file assets/fonts/Rubik-Medium.ttf (Medium)
+  size 16 3T scale 2.625: hhea=49.77/50px typo=49.77/50px win=64.34/64px bbox=66.40/66px
+  size 16 XS scale 3.0: hhea=56.88/57px typo=56.88/57px win=73.54/74px bbox=75.89/76px
+  size 17 3T scale 2.625: hhea=52.88/53px typo=52.88/53px win=68.37/68px bbox=70.55/71px
+  size 17 XS scale 3.0: hhea=60.44/60px typo=60.44/60px win=78.13/78px bbox=80.63/81px
+  size 18 3T scale 2.625: hhea=55.99/56px typo=55.99/56px win=72.39/72px bbox=74.70/75px
+  size 18 XS scale 3.0: hhea=63.99/64px typo=63.99/64px win=82.73/83px bbox=85.37/85px
+  size 24 3T scale 2.625: hhea=74.66/75px typo=74.66/75px win=96.52/97px bbox=99.60/100px
+  size 24 XS scale 3.0: hhea=85.32/85px typo=85.32/85px win=110.30/110px bbox=113.83/114px
+```
+
 ## Measured surfaces and pinned controls
 
 | Surface | Nominal size | Face | LineHeight pin |
@@ -56,7 +82,16 @@ file assets/fonts/Roboto-Regular.ttf (Roboto-Regular)
 | Settings card title | 14 | Rubik-Medium | unpinned |
 | Help question | 15 | Rubik-Medium | pinned 23 (`ty.scriptLineHeight(15)`) |
 | Help answer | 13 | Rubik-Regular | pinned 20 |
+| Day location label | 16 | Rubik-Regular | unpinned |
+| Day date label | 18 | Rubik-Regular | unpinned |
+| Prayer row name | 18 | Rubik-Regular | unpinned |
+| Row time | 18 | Rubik-Regular | unpinned |
+| Countdown word | 17 | Rubik-Regular | unpinned |
+| Overlay explanation title | 18 | Rubik-Medium | unpinned |
+| Overlay explanation body | 16 | Rubik-Regular | pinned 24 (`ty.scriptLineHeight(16)`) |
 
 The unpinned three are the measured surfaces; their rendered box is the
 platform's own. The two pinned controls prove the instrument: both must read
-their pin ratio on both platforms.
+their pin ratio on both platforms. The home and overlay rows extend the set per
+D137.11: steps 2b and 3b read them on both phones, and the overlay body joins
+the Help pair as a pinned control.

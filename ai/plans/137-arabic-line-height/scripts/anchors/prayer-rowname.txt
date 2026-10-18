@@ -1,0 +1,4 @@
+  text: {
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.size),
+  },

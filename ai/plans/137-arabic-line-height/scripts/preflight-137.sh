@@ -30,6 +30,10 @@ for anchor in "$plan"/scripts/anchors/*; do
     help) src="components/modals/Help.tsx" ;;
     volumenote) src="components/sheets/parts/VolumeNote.tsx" ;;
     appjson) src="app.json" ;;
+    day) src="components/day/Day.tsx" ;;
+    prayer) src="components/prayer/Prayer.tsx" ;;
+    countdown) src="components/countdown/Countdown.tsx" ;;
+    explanation) src="components/prayer/Explanation.tsx" ;;
     *) echo "PREFLIGHT FAIL: unknown anchor $anchor"; exit 1 ;;
   esac
   count="$(python3 -c 'import sys;print(open(sys.argv[2]).read().count(open(sys.argv[1]).read()))' "$anchor" "$src")"

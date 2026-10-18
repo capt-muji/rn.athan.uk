@@ -17,8 +17,10 @@ Red tests: none. A docs step.
 Change contracts:
 
 - Write `FINDINGS.md` with: the expectation table's em candidates restated in one line
-  each; every measured surface from `FINDINGS-3T.md` and `FINDINGS-XS.md` with its em and
-  matched set; the controls' pin ratios; the yes or no on "the same line box"; the
+  each; every measured surface from `FINDINGS-3T.md`, `FINDINGS-XS.md`,
+  `FINDINGS-3T-HOME.md` and `FINDINGS-XS-HOME.md` with its em and matched set, the
+  same-surface pairs of D137.11 side by side; the controls' pin ratios; the yes or no on
+  "the same line box"; the
   judgement on "as it should be", grounded in the citations of PLAN.md section 4 and the
   row 87 law, naming any claim the measurements do not prove as unverified; the options
   of D137.7 verbatim; and a voids section when a reading is missing, per the row 120
