@@ -1,2 +1,0 @@
-    fontFamily: ty.wordFace ? ty.familyRegular : undefined,
-    fontSize: ty.size(TEXT.sizeSmall) + 1,
