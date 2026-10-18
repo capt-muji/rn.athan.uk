@@ -180,3 +180,19 @@ Resume from: step 3, part break (apply the patch, run the repaired break
 script, then version/commit/merge; step 4 after).
 
 session: ses_eb1418e09ffeq7HHXZZKDx98yk
+
+### Step 3 - RESUMED (plan repair, agent-ruled 2026-10-18)
+
+Question: the step 3 break script's perl could not mutate any correct suite
+(`BREAK LOCKSTEP COULD NOT MUTATE`): inside `\Q..\E` the sequence `$/` interpolates
+perl's input record separator instead of matching the literal regex anchor, so the
+pattern never matches. Answer: rewrite the mutation as `quotemeta q{...}` - `q{}`
+never interpolates, quotemeta escapes the literal for the regex - proven on a scratch
+file before re-dispatch (MUTATION-WORKS). Challenge: escaping the dollar (`\$/`)
+inside `\Q..\E` - tested, still no match (the escape is consumed before the
+quotemeta); the `q{}` form is the one that works. The step file's contract (loosen
+the tightened regex, cmp guard) is unchanged; only the script's perl line changed.
+The executor resumes from `sessions/138/step3-unfinished.patch`; versions 1060 then
+1061 unless weather. Row returns to IN PROGRESS at this commit.
+
+session: ses_eb16f7078ffeLzeR40NvnWMrqH

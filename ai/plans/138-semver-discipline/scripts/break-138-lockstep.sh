@@ -9,7 +9,9 @@ cp app.json /tmp/138-appjson.bak
 cp package.json /tmp/138-pkgjson.bak
 
 # Loosen the tightened regex back to the old loose one: the mutation under test.
-perl -0pi -e 's{\Q/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/\E}{/\\d+\\.\\d+\\.\\d+/}' "$suite"
+# quotemeta over q{} holds the literal verbatim: a bare $/ inside \Q..\E
+# interpolates perl's record separator and the pattern can never match.
+perl -0pi -e 'my $p = quotemeta q{/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/}; s{$p}{/\\d+\\.\\d+\\.\\d+/}' "$suite"
 if cmp -s "$suite" /tmp/138-lockstep.bak; then
   echo "BREAK LOCKSTEP COULD NOT MUTATE (perl matched nothing)"
   exit 1
