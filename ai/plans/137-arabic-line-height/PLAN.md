@@ -10,7 +10,7 @@
 | Group | none: no app code file changes; shares only the queue row and the version files, which serialize under their locks |
 | Batch budget | 3 |
 | Session budget | 6 |
-| Steps count | 4 (docs 1, device 3, device 3, docs 1) |
+| Steps count | 6 (docs 1, device 3, device 3, device 3, device 3, docs 1) |
 | Device | OnePlus 3T (`3T_SERIAL`, Android 9) and iPhone XS (`IPHONE_UDID`, iOS 18.7.10) |
 | Owner decisions still needed | Her ruling on the verdict's options, after the row lands OWNER-LED |
 
@@ -106,6 +106,40 @@ Her rules that govern, quoted with source:
   text to the row and sets OWNER-LED; that write is the lead's, never the executor's.
 - **D137.10 Dispatch.** The lead dispatches one `athan-executor` per batch; a device step
   dispatches alone. Steps 1 and 4 are docs weight, steps 2 and 3 device weight 3.
+- **D137.11 The home and overlay surfaces, both phones, agent-ruled 2026-10-18 by the lead
+  after step 3's void.** The XS settings sheet publishes zero accessibility content nodes
+  (step 3, two instruments agreeing), so the D137.1 sheet surfaces are unreachable on the
+  XS. The measurement extends to surfaces the XS tree does publish, on BOTH phones so the
+  verdict carries same-surface pairs: the home page's day location label (16
+  Rubik-Regular, unpinned), day date label (18 Regular, unpinned), one prayer row name (18
+  Regular, unpinned), one row time (18 Regular, unpinned), the countdown word (17 Regular,
+  unpinned), and the Extras overlay's explanation box, reached by one pager swipe and one
+  row tap (both in-memory display state, `Navigation.tsx` `currentPage` useState), read
+  for its title (18 Rubik-Medium, unpinned) and body (16 Regular, pinned 24, the
+  instrument control), closed by the same tap and the swipe back. The unread screenshots of
+  steps 2 and 3, plus one per new screen, go to the `vision` reader as pixel corroboration
+  (D137.2's corroboration rung); the lead dispatches vision and records its transcription
+  in this folder. Argued twice. For: engine frames are D137.2's primary instrument, the
+  home tree publishes frames (step 3 read the settings button 43x42), and these are the
+  same quantity D137.1 measures, single-line unpinned box heights; the contact stays
+  inside D137.4's navigation allowance and is lighter than the language round trip that
+  ruling already permits. Challenge: not the 3T's sheet surfaces, so no size-matched pair.
+  Answer: the verdict quantity is the em ratio and the matched candidate set, steps 2b
+  and 3b make the pairs same-surface on both phones, and the candidate table extends to
+  the new sizes by the same arithmetic (`tables-137.py` SIZES now 13, 14, 15, 16, 17, 18,
+  22, 24). Survives. Second challenge: the sheet's own surfaces stay unread on the XS.
+  Answer: the void stands recorded, the verdict names it, and the home and overlay
+  surfaces share the sheet surfaces' faces and metric sets, so the per-platform set
+  match carries. Survives.
+- **D137.12 The 3T +2px residual, agent-ruled 2026-10-18 by the lead.** Step 2's sheet
+  title (93px, nearest bbox 91, +2) and card title (60px, nearest bbox 58, +2) match no
+  candidate within 1px. The readings stay raw and the verdict language stays
+  measured-match ("nearest candidate, gap"): the residual is consistent per face (Medium
+  +2, Regular +1 at 14) across three surfaces, so it reads as a systematic view-bound
+  residual, not a metric-set miss. Steps 2b and 3b add five more Regular points and one
+  more Medium point on each phone; a residual that stays per-face-consistent keeps the
+  nearest-set call, one that scatters flags the surface in the verdict. No finding names
+  a platform's internal derivation: unverified stays unverified.
 
 ### 2.2 The executor must not decide
 
@@ -151,6 +185,26 @@ Code map, one line a file, anchors under `scripts/anchors/`:
   controls already cover). Anchor `volumenote-style.txt`.
 - `app.json`: the fonts block loads `Rubik-Regular.ttf` and `Rubik-Medium.ttf`. Anchor
   `appjson-fonts.txt`.
+- `components/day/Day.tsx`: the home page's day header. Location label, `ty.size(16)`
+  Rubik-Regular, no lineHeight; date label, `ty.size(18)` Regular, no lineHeight (both
+  confirmed unpinned by `components/day/__tests__/DayLines.test.tsx`). Anchor
+  `day-styles.txt`.
+- `components/prayer/Prayer.tsx`: the row name, `ty.size(18)` Regular, no lineHeight.
+  Anchor `prayer-rowname.txt`.
+- `components/prayer/Time.tsx`: the row time, `ty.size(18)` `familyRowTime` (Rubik-Regular
+  under ar), no lineHeight.
+- `components/countdown/Countdown.tsx`: the countdown word,
+  `ty.size(16) + 1` Regular when `wordFace` (ar), no lineHeight; the countdown digits,
+  `ty.countdownSize` (24) `familyDigits` (Rubik-Medium under ar), no lineHeight. Anchor
+  `countdown-word.txt`.
+- `components/prayer/Explanation.tsx`: the Extras overlay's explanation box. Title,
+  `ty.size(18)` Medium, no lineHeight; body, `ty.size(16)` Regular, lineHeight
+  `ty.scriptLineHeight(16)` = 24, the instrument control. Anchor `explanation-box.txt`.
+- `app/Navigation.tsx`: the two schedule pages ride a `PagerView`; `currentPage` is a
+  `useState(0)`, in-memory display state, so a page swipe and its reverse restore exactly.
+- `components/overlay/overlayContent.ts`: `getOverlayExplanation` returns content only on
+  the Extra schedule, by prayer id; `getRowPressAction` (`components/prayer/rowPress.ts`)
+  closes the overlay on a second tap of the same row.
 
 Pinned dependency sources, read at planning from `node_modules/react-native@0.88.0`,
 re-verified by grep at step 1; node_modules is not git-tracked, so these are citations,
@@ -220,6 +274,15 @@ nothing shared except the plan folder on the lane branch.
   as found.
 - [R3.2] WHEN the XS app's language is not ar on arrival THE SYSTEM SHALL perform one
   in-app round trip to ar and back and record both states' faces in the LOG.
+- [R2.3] WHEN the 3T home page and Extras overlay are read under ar THE SYSTEM SHALL
+  record, into `$HOME/athan-gitree/sessions/137/`, the node bounds of the day location
+  label, the day date label, one prayer row name, one row time, the countdown word, the
+  overlay explanation title and the overlay explanation body, plus one screenshot per
+  screen for the vision corroboration (D137.11).
+- [R3.3] WHEN the XS home page and Extras overlay are read under ar THE SYSTEM SHALL
+  record the same surfaces' frames as on the 3T, leaving the app's state as found: the
+  overlay closed by the same tap, the Standard page shown, the app terminated, no system
+  setting touched.
 - [R4.1] WHEN both platforms' readings exist THE SYSTEM SHALL record each surface's
   measured em and the matched candidate set per platform, each within the stated
   tolerance, and flag any surface that matches none.
@@ -235,10 +298,13 @@ Checklist:
 - [ ] Step 1: expectation table from the shipped TTFs, plus source citation re-checks
 - [ ] Step 2: 3T measurement, unpinned surfaces and pinned controls
 - [ ] Step 3: XS measurement, read-only contact, restore as found
+- [ ] Step 2b: 3T home and overlay measurement, the same-surface pair (D137.11)
+- [ ] Step 3b: XS home and overlay measurement, read-only, the same-surface pair (D137.11)
 - [ ] Step 4: verdict, FINDINGS.md, queue row to EXECUTED
 
 Each step's file carries its own contract: `steps/1-tables.md`, `steps/2-oneplus3t.md`,
-`steps/3-iphone-xs.md`, `steps/4-verdict.md`.
+`steps/3-iphone-xs.md`, `steps/2b-oneplus3t-home.md`, `steps/3b-iphone-xs-home.md`,
+`steps/4-verdict.md`.
 
 ## 7. Device proof
 
@@ -303,7 +369,8 @@ its evidence and its gap; it never fills a hole with a hypothesis.
 ## 8. Records
 
 LOG.md headings: `## Planning (2026-10-18)`, `## Ticket 137`, then `### Step 01 — tables`,
-`### Step 02 — oneplus3t`, `### Step 03 — iphone-xs`, `### Step 04 — verdict`, each
+`### Step 02 — oneplus3t`, `### Step 03 — iphone-xs`, `### Step 02b — oneplus3t home`,
+`### Step 03b — iphone-xs home`, `### Step 04 — verdict`, each
 ending `session: <ses_id>`.
 
 The queue cell text the close applies, placeholders filled from the measurements:
@@ -353,7 +420,9 @@ Planning: `explore` for fact questions when a fact is missing; `athan-plan-grill
 this folder; `vision` only for an image the reader cannot see. Delivery: the lead
 dispatches `athan-executor` for steps 1 to 4 in batches of at most the batch budget, a
 device step always alone, and two `athan-reviewer` passes at audit, plan-conformance and
-blind, per D137.9. Nothing else, ever.
+blind, per D137.9. The lead also dispatches `vision` as the pixel-corroboration reader
+of the screenshots in `sessions/137/` (D137.11): the lead records its transcription in
+this folder and the step-4 findings cite it. Nothing else, ever.
 
 ## 12. Report to the owner
 

@@ -15,7 +15,7 @@ FONTS = [
     ('assets/fonts/Rubik-Medium.ttf', 'Medium'),
     ('assets/fonts/Roboto-Regular.ttf', 'Roboto-Regular'),
 ]
-SIZES = [13, 14, 15, 22]
+SIZES = [13, 14, 15, 16, 17, 18, 22, 24]
 SCALES = [('3T', 2.625), ('XS', 3.0)]
 
 

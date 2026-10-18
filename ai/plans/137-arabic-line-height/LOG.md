@@ -214,3 +214,43 @@ untouched in that window. Evidence: `sessions/137/xs-01-arrival.png`,
 written to any file.
 
 session: ses_eb370a695ffeSIhy7jlHP2aB28
+
+## Lead adjudication (2026-10-18)
+
+Step 3's void reached the lead per the symptom table's last row: the XS
+settings sheet publishes zero accessibility content nodes (two presentations,
+two instruments agreeing), so the D137.1 sheet surfaces are unreachable on the
+XS and the verdict's XS half was empty. The 3T sheet title and card title also
+sat at the raw-record row, +2px past their nearest candidate.
+
+Two decisions, agent-ruled, argued twice, recorded as PLAN.md D137.11 and
+D137.12:
+
+- D137.11: the measurement extends to surfaces the XS tree does publish, on
+  BOTH phones so the verdict carries same-surface pairs: the home page's day
+  location (16 R unpinned), day date (18 R unpinned), one prayer row name
+  (18 R unpinned), one row time (18 R unpinned) and the countdown word
+  (17 R unpinned), plus the Extras overlay's explanation box (title 18 M
+  unpinned, body 16 R pinned 24, the instrument control), reached by one pager
+  swipe and one row tap, both in-memory display state, closed by the same tap
+  and the swipe back. The unread screenshots go to the `vision` reader as
+  pixel corroboration, D137.2's corroboration rung; the lead dispatches vision
+  and records its transcription here. Argued twice in PLAN.md; survives.
+- D137.12: the 3T +2px residual (title 93 vs bbox 91, card 60 vs 58) reads as a
+  systematic per-face view-bound residual (Medium +2, Regular +1 at 14), not a
+  metric-set miss. The readings stay raw, the verdict language stays
+  measured-match, and no finding names a platform's internal derivation. Steps
+  2b and 3b add five Regular points and one Medium point per phone; a residual
+  that stays per-face-consistent keeps the nearest-set call, one that scatters
+  flags the surface.
+
+Amendment commit on `step-137/adjudication` off uat `ae4e84fa`: D137.11 and
+D137.12 in PLAN.md, R2.3 and R3.3 in section 5, the home and overlay code map
+in section 4, the two step contracts, `tables-137.py` SIZES extended to 16,
+17, 18 and 24, four new anchors, the preflight anchor map extended, the
+EXPECTATIONS.md extended table and surface map, the step-4 contract citing the
+home findings files. Vision dispatched for the pixel corroboration of the step
+2 and 3 screenshots plus the new ones as they land.
+
+session: ses_eb2f135bfffe1QvZUjA1rHhHZ1 (the lead's own session for this lane)
+
