@@ -293,5 +293,8 @@ const styles = StyleSheet.create({
     fontSize: SIZE.icon.md,
     fontWeight: '300',
     lineHeight: SIZE.icon.md,
+    // The codepoint carries the direction (chevronFor); Android mirrors a lone neutral
+    // glyph inside an RTL paragraph, so the paragraph itself stays LTR
+    direction: 'ltr',
   },
 });

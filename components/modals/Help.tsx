@@ -97,7 +97,7 @@ const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onT
                   accessibilityRole={'button'}
                   accessibilityLabel={getHelpActionLabels()[action]}>
                   <Text style={styles.actionText}>{getHelpActionLabels()[action]}</Text>
-                  <Text style={styles.actionText}>{chevronFor()}</Text>
+                  <Text style={[styles.actionText, styles.actionChevron]}>{chevronFor()}</Text>
                 </Pressable>
               ) : null}
             </View>
@@ -270,6 +270,11 @@ const styles = StyleSheet.create({
     color: ACCENT,
     fontSize: ty.size(13),
     fontFamily: ty.familyMedium,
+  },
+  actionChevron: {
+    // The codepoint carries the direction (chevronFor); Android mirrors a lone neutral
+    // glyph inside an RTL paragraph, so the paragraph itself stays LTR
+    direction: 'ltr',
   },
   buttonRow: {
     alignSelf: 'stretch',
