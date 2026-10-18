@@ -793,6 +793,11 @@ describe('home widget renderer', () => {
       // Tight: neither inner row carries a modifier, so no gap sits inside a group
       expect(runs[0]?.props.modifiers).toBeUndefined();
       expect(runs[1]?.props.modifiers).toBeUndefined();
+      // The converter defaults a Row's children to Alignment.Top, which
+      // lifts the smaller letter off the digit's baseline: the group
+      // centres instead (the runtime has no baseline alignment)
+      expect(runs[0]?.props.verticalAlignment).toBe('center');
+      expect(runs[1]?.props.verticalAlignment).toBe('center');
 
       // The app component's face at HEAD sizing: the letter rides the same
       // colour and weight at 0.95 x the digit size, no rounding
