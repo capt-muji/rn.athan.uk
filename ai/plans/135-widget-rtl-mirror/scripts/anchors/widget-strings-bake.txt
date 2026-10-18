@@ -1,0 +1,15 @@
+/**
+ * The Android layout's copy, baked once per push. Byte-identical English in
+ * stage one; the layout imports nothing (the closure law forbids it), so its
+ * strings cross the bridge as data.
+ */
+const widgetStrings = (): WidgetStrings => ({
+  h: t('duration.h'),
+  m: t('duration.m'),
+  s: t('duration.s'),
+  now: t('duration.now'),
+  staleTitle: t('widget.stale'),
+  refreshLine: t('widget.refresh'),
+  refreshLead: t('widget.refreshLead'),
+  refreshTail: t('widget.refreshTail'),
+});
