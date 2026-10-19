@@ -496,6 +496,16 @@ describe('widget props v8 footers', () => {
     }
   });
 
+  it('bakes no `now` into the Android strings contract (owner 2026-10-19)', () => {
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+    // The word never renders on any widget (owner, on glass), so the rider
+    // left the contract. `s` stays: only `now` was ordered out.
+    expect(snapshot.strings).not.toHaveProperty('now');
+    expect(snapshot.strings).toHaveProperty('s', 's');
+  });
+
   it('composes the Hijri footer from the month prefix and day under the preference', () => {
     const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: true }, 'light');
     for (const entry of entries) {

@@ -476,7 +476,6 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       h: 'h',
       m: 'm',
       s: 's',
-      now: 'now',
       staleTitle: staticRow.staleTitle,
       refreshLine: staticRow.refreshLine,
       refreshLead: staticRow.refreshLead,

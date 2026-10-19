@@ -64,7 +64,6 @@ const widgetStrings = (): WidgetStrings => ({
   h: 'h',
   m: 'm',
   s: 's',
-  now: t('duration.now'),
   staleTitle: t('widget.stale'),
   refreshLine: t('widget.refresh'),
   refreshLead: t('widget.refreshLead'),

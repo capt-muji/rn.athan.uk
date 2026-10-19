@@ -177,14 +177,13 @@ export interface AndroidWidgetDayRow {
  * unit fields bake fixed lowercase Latin bytes in every locale (rows
  * 85/102/83 and the owner's 2026-10-18 amendment: the widget countdown is exactly
  * the app countdown component's face, so its letters never localise); the
- * countdown is minutes-only today, so `s` and `now` ride for
- * that shape and stay unread until it changes.
+ * countdown is minutes-only today, so `s` rides for that shape and stays
+ * unread until it changes.
  */
 export interface WidgetStrings {
   h: string;
   m: string;
   s: string;
-  now: string;
   /** The stale card's title, e.g. "Out of date" */
   staleTitle: string;
   /** The stale card's refresh line on the medium composition */
