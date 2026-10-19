@@ -497,6 +497,12 @@ describe('home widget renderer', () => {
   describe('Android path (jetpack globals)', () => {
     const layouts = loadLayouts('android');
 
+    // The launcher's granted width rides the widget environment (the
+    // platform's own render input), never the stored props: a JS push
+    // rewrites the props wholesale and cannot wipe what it never carried
+    const mediumEnvironment = (grantedWidthDp?: number): { colorScheme: 'light'; grantedWidthDp?: number } =>
+      grantedWidthDp === undefined ? { colorScheme: 'light' } : { colorScheme: 'light', grantedWidthDp };
+
     it('renders the null-props card when props are undefined, not only null', () => {
       // The widget bridge may hand the layout undefined props; the null-props
       // guard must tolerate both without throwing on the `in` check
@@ -969,9 +975,7 @@ describe('home widget renderer', () => {
 
     it('bounds the active pill to the list column, not the card remainder', () => {
       freezeNow(at(DAY_ONE, '14:08'));
-      const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380 }), { colorScheme: 'light' })
-      );
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(380)));
       const nodes = collect(tree);
       const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
       expect(pill).toBeDefined();
@@ -1033,7 +1037,7 @@ describe('home widget renderer', () => {
     it('mirrors the medium row order under rtl: time before name', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: true }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: true }), mediumEnvironment(380))
       );
       const fajrRow = collect(tree).find(
         (node) =>
@@ -1061,7 +1065,7 @@ describe('home widget renderer', () => {
     it('mirrors the medium halves under rtl: list before hero', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: true }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: true }), mediumEnvironment(380))
       );
       const outerRow = collect(tree).find(
         (node) =>
@@ -1087,7 +1091,7 @@ describe('home widget renderer', () => {
     it('mirrors the pill and rows insets to the END edge under rtl', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: true }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: true }), mediumEnvironment(380))
       );
       const nodes = collect(tree);
       const pillColumn = nodes.find(
@@ -1107,13 +1111,13 @@ describe('home widget renderer', () => {
 
     it('renders the LTR medium byte-identical under rtl falsy', () => {
       freezeNow(at(DAY_ONE, '14:08'));
-      const snapshot = androidProps({ size: 'medium', grantedWidthDp: 380 });
+      const snapshot = androidProps({ size: 'medium' });
       const falsy = { ...snapshot, rtl: false };
       const absent = { ...snapshot } as Partial<PrayerWidgetAndroidProps>;
       delete absent.rtl;
 
-      const falsyTree = renderTree(layouts.PrayerWidget(falsy, { colorScheme: 'light' }));
-      const absentTree = renderTree(layouts.PrayerWidget(absent, { colorScheme: 'light' }));
+      const falsyTree = renderTree(layouts.PrayerWidget(falsy, mediumEnvironment(380)));
+      const absentTree = renderTree(layouts.PrayerWidget(absent, mediumEnvironment(380)));
       expect(falsyTree).toEqual(absentTree);
 
       // The falsy time Text gains no textAlign prop: the LTR bytes match the
@@ -1132,7 +1136,7 @@ describe('home widget renderer', () => {
       // LTR); under rtl falsy the trailing fill stays, byte-identical.
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: true }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: true }), mediumEnvironment(380))
       );
       const outerRow = collect(tree).find(
         (node) =>
@@ -1151,9 +1155,7 @@ describe('home widget renderer', () => {
       expect(mirrorBoxWidth(halves[1])).toBe(177);
 
       const falsyTree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, rtl: false }), {
-          colorScheme: 'light',
-        })
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: false }), mediumEnvironment(380))
       );
       const falsyRow = collect(falsyTree).find(
         (node) =>
@@ -1188,7 +1190,7 @@ describe('home widget renderer', () => {
     const pillAndRowsLead = (grantedWidthDp: number): { pill: number; rows: number } => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(grantedWidthDp))
       );
       const leadOf = (node: unknown): number => {
         const mods = ((node as MarkerNode)?.props?.modifiers as { modifier: string; value: unknown }[]) ?? [];
@@ -1212,9 +1214,7 @@ describe('home widget renderer', () => {
       // only centres what it is wide enough to centre.
       for (const theme of ['light', 'dark'] as const) {
         freezeNow(at(DAY_ONE, '14:08'));
-        const tree = renderTree(
-          layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, theme }), { colorScheme: 'light' })
-        );
+        const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium', theme }), mediumEnvironment(380)));
         const trio = collect(tree).find(
           (node) => node.marker === 'Column' && node.props.horizontalAlignment === 'center'
         );
@@ -1253,9 +1253,8 @@ describe('home widget renderer', () => {
     // the same helpers read them back at any grant
     const mediumBoxWidths = (grantedWidthDp?: number): number[] => {
       freezeNow(at(DAY_ONE, '14:08'));
-      const props = grantedWidthDp === undefined ? { size: 'medium' } : { size: 'medium', grantedWidthDp };
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps(props as Partial<PrayerWidgetAndroidProps>), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(grantedWidthDp))
       );
       return collect(tree).flatMap((node) =>
         node.marker !== 'Box'
@@ -1276,7 +1275,7 @@ describe('home widget renderer', () => {
     const rowNameFontSizes = (grantedWidthDp: number): number[] => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(grantedWidthDp))
       );
       return collect(tree).flatMap((node) => {
         if (node.marker !== 'Text') return [];
@@ -1294,7 +1293,7 @@ describe('home widget renderer', () => {
     const rowBoxWidths = (grantedWidthDp: number): { name: number; time: number } => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(grantedWidthDp))
       );
       const fajrRow = collect(tree).find(
         (node) =>
@@ -1340,9 +1339,75 @@ describe('home widget renderer', () => {
       }
     });
 
-    it('falls back to the declared minimum when the width is not stamped', () => {
-      // A fresh JS push cannot know the grant, so the layout uses the
-      // provider's declared 310dp until the next native tick stamps it
+    it('splits the medium halves from the granted width the environment carries', () => {
+      // The 3T's 370dp grant, delivered the way Glance measured it: the
+      // grant rides the environment, which a JS props push cannot wipe
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(370)));
+      const outerRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      expect(outerRow).toBeDefined();
+      const halves = markerChildrenOf(outerRow);
+      expect(halves).toHaveLength(2);
+      // Inner 344 halves into 172dp each: the hero's own box and the list's
+      // pinned inner box (the outer wrapper fills under LTR)
+      expect(mirrorBoxWidth(halves[0])).toBe(172);
+      const innerList = markerChildrenOf(halves[1]).find((child) => child.marker === 'Box');
+      expect(mirrorBoxWidth(innerList)).toBe(172);
+    });
+
+    it('renders the medium byte-identical to the minimum tree when the environment carries no granted width', () => {
+      // The absent field is the declared 310dp minimum, so a render without
+      // a grant and a 310dp grant produce the same bytes
+      freezeNow(at(DAY_ONE, '14:08'));
+      const props = androidProps({ size: 'medium' });
+      const noGrant = renderTree(layouts.PrayerWidget(props, mediumEnvironment()));
+      expect(noGrant).toEqual(renderTree(layouts.PrayerWidget(props, mediumEnvironment(310))));
+      const { hero, list } = heroAndList(undefined);
+      expect(hero).toBe(142);
+      expect(list).toBe(142);
+    });
+
+    it('ignores a grantedWidthDp key still riding a legacy snapshot', () => {
+      // Released builds stamped the grant into the stored props; the render
+      // follows the environment alone, so the dead key changes no byte
+      freezeNow(at(DAY_ONE, '14:08'));
+      const legacy = { ...androidProps({ size: 'medium' }), grantedWidthDp: 380 } as Record<string, unknown>;
+      expect(renderTree(layouts.PrayerWidget(legacy, mediumEnvironment()))).toEqual(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment()))
+      );
+      expect(renderTree(layouts.PrayerWidget(legacy, mediumEnvironment(370)))).toEqual(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(370)))
+      );
+    });
+
+    it('floors a fractional granted width before splitting the halves', () => {
+      // Glance reports Dp as a Float and the bridge delivers a Double: a
+      // fractional grant must still yield whole-dp boxes (172.9dp is not a
+      // width the converter promises to place)
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(370.9)));
+      const outerRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      const halves = markerChildrenOf(outerRow);
+      expect(mirrorBoxWidth(halves[0])).toBe(172);
+      const innerList = markerChildrenOf(halves[1]).find((child) => child.marker === 'Box');
+      expect(mirrorBoxWidth(innerList)).toBe(172);
+    });
+
+    it('falls back to the declared minimum when the environment carries no width', () => {
+      // The press path renders without a size (D8); a grant-less environment
+      // reads the provider's declared 310dp
       const { hero, list } = heroAndList(undefined);
       expect(hero).toBe(142);
       expect(list).toBe(142);
@@ -1363,10 +1428,9 @@ describe('home widget renderer', () => {
       expect(new Set(rowNameFontSizes(258))).toEqual(new Set([10]));
     });
 
-    it('falls back to the declared minimum when the stamped width is not usable', () => {
-      // The native tick stamps 0 for a kind it cannot measure; treating that
-      // as a real grant would subtract the padding from nothing and drive
-      // every column negative
+    it('falls back to the declared minimum when the granted width is unusable', () => {
+      // A zero width is no grant at all: treating it as real would subtract
+      // the padding from nothing and drive every column negative
       const { hero, list } = heroAndList(0);
       expect(hero).toBe(142);
       expect(list).toBe(142);
@@ -1413,7 +1477,7 @@ describe('home widget renderer', () => {
     it('opens the app from a tap anywhere on the medium card', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380 }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(380))
       ) as MarkerNode;
       expect(tree.marker).toBe('Button');
       expect(tree.props.openApp).toBe(true);
@@ -1442,8 +1506,8 @@ describe('home widget renderer', () => {
 
     it('wraps each Android card in exactly one tap target', () => {
       freezeNow(at(DAY_ONE, '14:08'));
-      for (const props of [androidProps({}), androidProps({ size: 'medium', grantedWidthDp: 380 }), null]) {
-        const tree = renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' }));
+      for (const props of [androidProps({}), androidProps({ size: 'medium' }), null]) {
+        const tree = renderTree(layouts.PrayerWidget(props, mediumEnvironment(380)));
         expect(collect(tree).filter((node) => node.marker === 'Button')).toHaveLength(1);
       }
     });

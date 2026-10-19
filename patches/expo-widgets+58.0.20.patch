@@ -91,6 +91,19 @@ index 3df9e4a..e49233d 100644
    val target: String? = null
  ) : ComposeProps
  
+diff --git a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt
+index edabde8..42c53f8 100644
+--- a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt
++++ b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt
+@@ -25,7 +25,7 @@ internal class ExpoWidgetsPeekWidget(
+     val layout = WidgetsLayoutRegistry.layout(appContext, widgetName)
+       ?: return createErrorRoot("No layout found for $widgetName")
+     val props = WidgetsLayoutRegistry.props(appContext, widgetName)
+-    val environment = getWidgetEnvironment(appContext)
++    val environment = getWidgetEnvironment(appContext) + mapOf("grantedWidthDp" to size.width.value.toDouble())
+     val node = evaluateLayout(appContext, layout, props, environment)
+ 
+     return node.toPeekRoot(appContext, InteractionSource.Widget(widgetName), size)
 diff --git a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/WidgetsJSRuntime.kt b/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/WidgetsJSRuntime.kt
 index 1e3ac96..2033a4d 100644
 --- a/node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/WidgetsJSRuntime.kt

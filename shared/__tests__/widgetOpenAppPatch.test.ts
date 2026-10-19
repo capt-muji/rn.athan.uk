@@ -38,13 +38,25 @@ describe('the open-the-app patch', () => {
     const headers = patch.split('\n').filter((line) => line.startsWith('diff --git'));
 
     // The openApp converter, the device-locale runtime patch's four files
-    // (iOS JSContext, Android Hermes runtime, its Kotlin plumb), and the
-    // iOS entry view's layout-direction hunk
-    expect(headers).toHaveLength(6);
+    // (iOS JSContext, Android Hermes runtime, its Kotlin plumb), the iOS
+    // entry view's layout-direction hunk, and the peek widget's
+    // granted-width environment hunk
+    expect(headers).toHaveLength(7);
     for (const header of headers) {
       expect(header).toContain('node_modules/expo-widgets/');
     }
     expect(patch).not.toContain('/Users/');
+  });
+
+  it('applies the granted-width environment to the peek widget', () => {
+    const peek = read('node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt');
+
+    // The device build links whatever node_modules holds: a patch updated
+    // but never applied leaves the medium computing at the fallback, so
+    // the applied line itself is pinned
+    expect(peek).toContain(
+      'val environment = getWidgetEnvironment(appContext) + mapOf("grantedWidthDp" to size.width.value.toDouble())'
+    );
   });
 
   it("applies the entry's rtl as the native layout direction", () => {
