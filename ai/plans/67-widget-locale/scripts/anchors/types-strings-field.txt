@@ -1,6 +1,0 @@
-  /**
-   * The layout's copy, baked from the catalog. Absent on snapshots from v1
-   * app versions, which the layout renders with its English fallback.
-   */
-  strings: WidgetStrings;
-}

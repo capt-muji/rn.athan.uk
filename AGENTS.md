@@ -34,6 +34,7 @@ repo: run them, don't reinvent them.
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
 | Perf regression vs baseline | `e2e/scripts/baseline-compare.sh e2e/flows/<flow>.yaml` |
 | Before calling anything done | `yarn validate` (tsc + biome + jest) |
+| Read or move a queued ticket on the board | `itsaplan` MCP, the local instance |
 
 Maestro needs `export PATH="$HOME/.maestro/bin:$PATH"`.
 
@@ -42,6 +43,11 @@ drives, `xcodebuildmcp` builds, `mobile-mcp` covers the Android and plugged-phon
 `maestro` server sits on (the scripts and `e2e/flows/*.yaml` remain the flow drivers; the
 server is the interactive fallback). `expo` stays off: nothing ships through EAS. Flipping one
 is an `enabled` flip.
+
+`itsaplan` (added 2026-10-19, ticket 144) is the queue's board, a local It's a Plan instance at
+`http://localhost:3000/mcp`. It takes the personal key from `ITSAPLAN_API_KEY` in the shell
+environment, so the key stays out of git. The board mirrors `ai/plans/README.md` and is never
+its source of truth. `ai/plans/README.md` decides a ticket's column.
 
 Scripts measure; the `vision` subagent interprets (global AGENTS.md covers when to
 delegate to it).

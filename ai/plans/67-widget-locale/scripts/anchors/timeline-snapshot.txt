@@ -1,5 +1,0 @@
-  return {
-    v: ANDROID_SNAPSHOT_VERSION,
-    schedule: sequence.type,
-    days,
-    horizonEpochMs,
