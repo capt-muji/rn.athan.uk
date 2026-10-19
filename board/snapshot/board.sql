@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict qOSHFHPy1usTUQHLoGUhNrdbnmRhwvcp7MeNHrbmH0vgjxTINhVuzT0TGGfPvza
+\restrict 0MeGPWS1KRRYLkCQn2qLOzuYI6e5hNa1FXWB4WwhEWZIYVloNhfD50H07e2skEs
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -24,6 +24,20 @@ SET row_security = off;
 --
 
 CREATE SCHEMA drizzle;
+
+
+--
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
+--
+
+-- *not* creating schema, since initdb creates it
+
+
+--
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON SCHEMA public IS '';
 
 
 --
@@ -627,6 +641,30 @@ CREATE FUNCTION public.rev_project_cleanup() RETURNS trigger
 BEGIN
   DELETE FROM revision WHERE project_id = OLD.id;
   RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: trigger_set_timestamps(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.trigger_set_timestamps() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        NEW."createdAt" = NOW();
+        NEW."updatedAt" = NOW();
+        NEW."createdAtZ" = NOW();
+        NEW."updatedAtZ" = NOW();
+    ELSIF TG_OP = 'UPDATE' THEN
+        NEW."updatedAt" = NOW();
+        NEW."updatedAtZ" = NOW();
+        NEW."createdAt" = OLD."createdAt";
+        NEW."createdAtZ" = OLD."createdAtZ";
+    END IF;
+    RETURN NEW;
 END;
 $$;
 
@@ -2326,6 +2364,885 @@ CREATE SEQUENCE public.label_id_seq
 --
 
 ALTER SEQUENCE public.label_id_seq OWNED BY public.label.id;
+
+
+--
+-- Name: mastra_agent_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_agent_versions (
+    id text NOT NULL,
+    "agentId" text NOT NULL,
+    "versionNumber" integer NOT NULL,
+    name text NOT NULL,
+    description text,
+    instructions text NOT NULL,
+    model jsonb NOT NULL,
+    tools jsonb,
+    "defaultOptions" jsonb,
+    workflows jsonb,
+    agents jsonb,
+    "integrationTools" jsonb,
+    "toolProviders" jsonb,
+    "inputProcessors" jsonb,
+    "outputProcessors" jsonb,
+    memory jsonb,
+    scorers jsonb,
+    "mcpClients" jsonb,
+    "requestContextSchema" jsonb,
+    workspace jsonb,
+    skills jsonb,
+    "skillsFormat" text,
+    browser jsonb,
+    "changedFields" jsonb,
+    "changeMessage" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_agents; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_agents (
+    id text NOT NULL,
+    status text NOT NULL,
+    "activeVersionId" text,
+    "authorId" text,
+    visibility text,
+    metadata jsonb,
+    "favoriteCount" integer,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_ai_spans; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_ai_spans (
+    "traceId" text NOT NULL,
+    "spanId" text NOT NULL,
+    name text NOT NULL,
+    "spanType" text NOT NULL,
+    "isEvent" boolean NOT NULL,
+    "startedAt" timestamp without time zone NOT NULL,
+    "parentSpanId" text,
+    "entityType" text,
+    "entityId" text,
+    "entityName" text,
+    "parentEntityType" text,
+    "parentEntityId" text,
+    "parentEntityName" text,
+    "rootEntityType" text,
+    "rootEntityId" text,
+    "rootEntityName" text,
+    "userId" text,
+    "organizationId" text,
+    "resourceId" text,
+    "runId" text,
+    "sessionId" text,
+    "threadId" text,
+    "requestId" text,
+    environment text,
+    "serviceName" text,
+    scope jsonb,
+    "entityVersionId" text,
+    "parentEntityVersionId" text,
+    "rootEntityVersionId" text,
+    "experimentId" text,
+    source text,
+    metadata jsonb,
+    tags jsonb,
+    attributes jsonb,
+    links jsonb,
+    input jsonb,
+    output jsonb,
+    error jsonb,
+    "endedAt" timestamp without time zone,
+    "requestContext" jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone,
+    "startedAtZ" timestamp with time zone DEFAULT now(),
+    "endedAtZ" timestamp with time zone DEFAULT now(),
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_background_tasks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_background_tasks (
+    id text NOT NULL,
+    tool_call_id text NOT NULL,
+    tool_name text NOT NULL,
+    agent_id text NOT NULL,
+    run_id text NOT NULL,
+    thread_id text,
+    resource_id text,
+    status text NOT NULL,
+    args jsonb NOT NULL,
+    result jsonb,
+    error jsonb,
+    suspend_payload jsonb,
+    retry_count integer NOT NULL,
+    max_retries integer NOT NULL,
+    timeout_ms integer NOT NULL,
+    "createdAt" timestamp without time zone NOT NULL,
+    "startedAt" timestamp without time zone,
+    "suspendedAt" timestamp without time zone,
+    "completedAt" timestamp without time zone,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "startedAtZ" timestamp with time zone DEFAULT now(),
+    "suspendedAtZ" timestamp with time zone DEFAULT now(),
+    "completedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_channel_config; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_channel_config (
+    platform text NOT NULL,
+    data jsonb NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_channel_installations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_channel_installations (
+    id text NOT NULL,
+    platform text NOT NULL,
+    "agentId" text NOT NULL,
+    status text NOT NULL,
+    "webhookId" text,
+    data jsonb NOT NULL,
+    "configHash" text,
+    error text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_dataset_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_dataset_items (
+    id text NOT NULL,
+    "datasetId" text NOT NULL,
+    "datasetVersion" integer NOT NULL,
+    "externalId" text,
+    "organizationId" text,
+    "projectId" text,
+    "validTo" integer,
+    "isDeleted" boolean NOT NULL,
+    input jsonb NOT NULL,
+    "groundTruth" jsonb,
+    "requestContext" jsonb,
+    metadata jsonb,
+    source jsonb,
+    "expectedTrajectory" jsonb,
+    "toolMocks" jsonb,
+    "unmockedToolPolicy" text,
+    "scorerIds" jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_dataset_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_dataset_versions (
+    id text NOT NULL,
+    "datasetId" text NOT NULL,
+    version integer NOT NULL,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_datasets; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_datasets (
+    id text NOT NULL,
+    name text NOT NULL,
+    description text,
+    metadata jsonb,
+    "inputSchema" jsonb,
+    "groundTruthSchema" jsonb,
+    "requestContextSchema" jsonb,
+    tags jsonb,
+    "targetType" text,
+    "targetIds" jsonb,
+    "scorerIds" jsonb,
+    "organizationId" text,
+    "projectId" text,
+    "candidateKey" text,
+    "candidateId" text,
+    version integer NOT NULL,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_experiment_results; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_experiment_results (
+    id text NOT NULL,
+    "experimentId" text NOT NULL,
+    "itemId" text NOT NULL,
+    "itemDatasetVersion" integer,
+    input jsonb NOT NULL,
+    output jsonb,
+    "groundTruth" jsonb,
+    error jsonb,
+    "startedAt" timestamp without time zone NOT NULL,
+    "completedAt" timestamp without time zone NOT NULL,
+    "retryCount" integer NOT NULL,
+    "traceId" text,
+    status text,
+    tags jsonb,
+    comment text,
+    "toolMockReport" jsonb,
+    "organizationId" text,
+    "projectId" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "startedAtZ" timestamp with time zone DEFAULT now(),
+    "completedAtZ" timestamp with time zone DEFAULT now(),
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_experiments; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_experiments (
+    id text NOT NULL,
+    name text,
+    description text,
+    metadata jsonb,
+    provenance jsonb,
+    "runnerAttestation" jsonb,
+    "experimentSetId" text,
+    "comparisonId" text,
+    "variantId" text,
+    "trialIndex" integer,
+    "datasetId" text,
+    "datasetVersion" integer,
+    "targetType" text NOT NULL,
+    "targetId" text NOT NULL,
+    status text NOT NULL,
+    "totalItems" integer NOT NULL,
+    "succeededCount" integer NOT NULL,
+    "failedCount" integer NOT NULL,
+    "skippedCount" integer NOT NULL,
+    "startedAt" timestamp without time zone,
+    "completedAt" timestamp without time zone,
+    "agentVersion" text,
+    "organizationId" text,
+    "projectId" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "startedAtZ" timestamp with time zone DEFAULT now(),
+    "completedAtZ" timestamp with time zone DEFAULT now(),
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_favorites; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_favorites (
+    "userId" text NOT NULL,
+    "entityType" text NOT NULL,
+    "entityId" text NOT NULL,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_mcp_client_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_mcp_client_versions (
+    id text NOT NULL,
+    "mcpClientId" text NOT NULL,
+    "versionNumber" integer NOT NULL,
+    name text NOT NULL,
+    description text,
+    servers jsonb NOT NULL,
+    "changedFields" jsonb,
+    "changeMessage" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_mcp_clients; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_mcp_clients (
+    id text NOT NULL,
+    status text NOT NULL,
+    "activeVersionId" text,
+    "authorId" text,
+    metadata jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_mcp_server_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_mcp_server_versions (
+    id text NOT NULL,
+    "mcpServerId" text NOT NULL,
+    "versionNumber" integer NOT NULL,
+    name text NOT NULL,
+    version text NOT NULL,
+    description text,
+    instructions text,
+    repository jsonb,
+    "releaseDate" text,
+    "isLatest" boolean,
+    "packageCanonical" text,
+    tools jsonb,
+    agents jsonb,
+    workflows jsonb,
+    "changedFields" jsonb,
+    "changeMessage" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_mcp_servers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_mcp_servers (
+    id text NOT NULL,
+    status text NOT NULL,
+    "activeVersionId" text,
+    "authorId" text,
+    metadata jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_messages; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_messages (
+    id text NOT NULL,
+    thread_id text NOT NULL,
+    content text NOT NULL,
+    role text NOT NULL,
+    type text NOT NULL,
+    "createdAt" timestamp without time zone NOT NULL,
+    "resourceId" text,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_notifications; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_notifications (
+    id text NOT NULL,
+    "threadId" text NOT NULL,
+    source text NOT NULL,
+    kind text NOT NULL,
+    priority text NOT NULL,
+    status text NOT NULL,
+    summary text NOT NULL,
+    payload jsonb,
+    "resourceId" text,
+    "agentId" text,
+    "sourceId" text,
+    "dedupeKey" text,
+    "coalesceKey" text,
+    "coalescedCount" integer NOT NULL,
+    attributes jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "deliveredAt" timestamp without time zone,
+    "seenAt" timestamp without time zone,
+    "dismissedAt" timestamp without time zone,
+    "archivedAt" timestamp without time zone,
+    "discardedAt" timestamp without time zone,
+    "deliverAt" timestamp without time zone,
+    "summaryAt" timestamp without time zone,
+    "deliveryReason" text,
+    "deliveryAttempts" integer NOT NULL,
+    "lastDeliveryAttemptAt" timestamp without time zone,
+    "lastDeliveryError" text,
+    "deliveredSignalId" text,
+    "summarySignalId" text,
+    metadata jsonb,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now(),
+    "deliveredAtZ" timestamp with time zone DEFAULT now(),
+    "seenAtZ" timestamp with time zone DEFAULT now(),
+    "dismissedAtZ" timestamp with time zone DEFAULT now(),
+    "archivedAtZ" timestamp with time zone DEFAULT now(),
+    "discardedAtZ" timestamp with time zone DEFAULT now(),
+    "deliverAtZ" timestamp with time zone DEFAULT now(),
+    "summaryAtZ" timestamp with time zone DEFAULT now(),
+    "lastDeliveryAttemptAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_observational_memory; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_observational_memory (
+    id text NOT NULL,
+    "lookupKey" text NOT NULL,
+    scope text NOT NULL,
+    "resourceId" text,
+    "threadId" text,
+    "activeObservations" text NOT NULL,
+    "activeObservationsPendingUpdate" text,
+    "originType" text NOT NULL,
+    config text NOT NULL,
+    "generationCount" integer NOT NULL,
+    "lastObservedAt" timestamp without time zone,
+    "lastReflectionAt" timestamp without time zone,
+    "pendingMessageTokens" integer NOT NULL,
+    "totalTokensObserved" integer NOT NULL,
+    "observationTokenCount" integer NOT NULL,
+    "isObserving" boolean NOT NULL,
+    "isReflecting" boolean NOT NULL,
+    "observedMessageIds" jsonb,
+    "observedTimezone" text,
+    "bufferedObservations" text,
+    "bufferedObservationTokens" integer,
+    "bufferedMessageIds" jsonb,
+    "bufferedReflection" text,
+    "bufferedReflectionTokens" integer,
+    "bufferedReflectionInputTokens" integer,
+    "reflectedObservationLineCount" integer,
+    "bufferedObservationChunks" jsonb,
+    "isBufferingObservation" boolean NOT NULL,
+    "isBufferingReflection" boolean NOT NULL,
+    "lastBufferedAtTokens" integer NOT NULL,
+    "lastBufferedAtTime" timestamp without time zone,
+    metadata jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "lastObservedAtZ" timestamp with time zone DEFAULT now(),
+    "lastReflectionAtZ" timestamp with time zone DEFAULT now(),
+    "lastBufferedAtTimeZ" timestamp with time zone DEFAULT now(),
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_prompt_block_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_prompt_block_versions (
+    id text NOT NULL,
+    "blockId" text NOT NULL,
+    "versionNumber" integer NOT NULL,
+    name text NOT NULL,
+    description text,
+    content text NOT NULL,
+    rules jsonb,
+    "requestContextSchema" jsonb,
+    "changedFields" jsonb,
+    "changeMessage" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_prompt_blocks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_prompt_blocks (
+    id text NOT NULL,
+    status text NOT NULL,
+    "activeVersionId" text,
+    "authorId" text,
+    metadata jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_resources; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_resources (
+    id text NOT NULL,
+    "workingMemory" text,
+    metadata jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_schedule_triggers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_schedule_triggers (
+    id text NOT NULL,
+    schedule_id text NOT NULL,
+    run_id text,
+    scheduled_fire_at bigint NOT NULL,
+    actual_fire_at bigint NOT NULL,
+    outcome text NOT NULL,
+    error text,
+    trigger_kind text NOT NULL,
+    parent_trigger_id text,
+    metadata jsonb
+);
+
+
+--
+-- Name: mastra_schedules; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_schedules (
+    id text NOT NULL,
+    target jsonb NOT NULL,
+    cron text NOT NULL,
+    timezone text,
+    status text NOT NULL,
+    next_fire_at bigint NOT NULL,
+    last_fire_at bigint,
+    last_run_id text,
+    created_at bigint NOT NULL,
+    updated_at bigint NOT NULL,
+    metadata jsonb,
+    owner_type text,
+    owner_id text
+);
+
+
+--
+-- Name: mastra_scorer_definition_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_scorer_definition_versions (
+    id text NOT NULL,
+    "scorerDefinitionId" text NOT NULL,
+    "versionNumber" integer NOT NULL,
+    name text NOT NULL,
+    description text,
+    type text NOT NULL,
+    model jsonb,
+    instructions text,
+    "scoreRange" jsonb,
+    "presetConfig" jsonb,
+    "defaultSampling" jsonb,
+    "changedFields" jsonb,
+    "changeMessage" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_scorer_definitions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_scorer_definitions (
+    id text NOT NULL,
+    status text NOT NULL,
+    "activeVersionId" text,
+    "authorId" text,
+    "organizationId" text,
+    "projectId" text,
+    metadata jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_scorers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_scorers (
+    id text NOT NULL,
+    "scorerId" text NOT NULL,
+    "traceId" text,
+    "spanId" text,
+    "runId" text NOT NULL,
+    scorer jsonb NOT NULL,
+    "preprocessStepResult" jsonb,
+    "extractStepResult" jsonb,
+    "analyzeStepResult" jsonb,
+    score double precision NOT NULL,
+    reason text,
+    metadata jsonb,
+    "preprocessPrompt" text,
+    "extractPrompt" text,
+    "generateScorePrompt" text,
+    "generateReasonPrompt" text,
+    "analyzePrompt" text,
+    "reasonPrompt" text,
+    input jsonb NOT NULL,
+    output jsonb NOT NULL,
+    "additionalContext" jsonb,
+    "requestContext" jsonb,
+    "entityType" text,
+    entity jsonb,
+    "entityId" text,
+    source text NOT NULL,
+    "resourceId" text,
+    "threadId" text,
+    "organizationId" text,
+    "projectId" text,
+    "batchId" text,
+    "datasetId" text,
+    "datasetItemId" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_skill_blobs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_skill_blobs (
+    hash text NOT NULL,
+    content text NOT NULL,
+    size integer NOT NULL,
+    "mimeType" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_skill_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_skill_versions (
+    id text NOT NULL,
+    "skillId" text NOT NULL,
+    "versionNumber" integer NOT NULL,
+    name text NOT NULL,
+    description text NOT NULL,
+    instructions text NOT NULL,
+    license text,
+    compatibility jsonb,
+    source jsonb,
+    "references" jsonb,
+    scripts jsonb,
+    assets jsonb,
+    files jsonb,
+    metadata jsonb,
+    tree jsonb,
+    "changedFields" jsonb,
+    "changeMessage" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_skills; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_skills (
+    id text NOT NULL,
+    status text NOT NULL,
+    "activeVersionId" text,
+    "authorId" text,
+    visibility text,
+    "favoriteCount" integer,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_thread_state; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_thread_state (
+    "threadId" text NOT NULL,
+    type text NOT NULL,
+    value jsonb NOT NULL,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_threads; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_threads (
+    id text NOT NULL,
+    "resourceId" text NOT NULL,
+    title text NOT NULL,
+    metadata jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_tool_provider_connections; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_tool_provider_connections (
+    "authorId" text NOT NULL,
+    "providerId" text NOT NULL,
+    "connectionId" text NOT NULL,
+    toolkit text NOT NULL,
+    label text,
+    scope text NOT NULL,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_workflow_definitions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_workflow_definitions (
+    id text NOT NULL,
+    description text,
+    metadata jsonb,
+    "inputSchema" jsonb NOT NULL,
+    "outputSchema" jsonb NOT NULL,
+    "stateSchema" jsonb,
+    "requestContextSchema" jsonb,
+    graph jsonb NOT NULL,
+    status text NOT NULL,
+    source text NOT NULL,
+    "authorId" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_workflow_snapshot; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_workflow_snapshot (
+    workflow_name text NOT NULL,
+    run_id text NOT NULL,
+    "resourceId" text,
+    snapshot jsonb NOT NULL,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_workspace_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_workspace_versions (
+    id text NOT NULL,
+    "workspaceId" text NOT NULL,
+    "versionNumber" integer NOT NULL,
+    name text NOT NULL,
+    description text,
+    filesystem jsonb,
+    sandbox jsonb,
+    mounts jsonb,
+    search jsonb,
+    skills jsonb,
+    tools jsonb,
+    "autoSync" boolean,
+    "operationTimeout" integer,
+    "changedFields" jsonb,
+    "changeMessage" text,
+    "createdAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- Name: mastra_workspaces; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mastra_workspaces (
+    id text NOT NULL,
+    status text NOT NULL,
+    "activeVersionId" text,
+    "authorId" text,
+    metadata jsonb,
+    "createdAt" timestamp without time zone NOT NULL,
+    "updatedAt" timestamp without time zone NOT NULL,
+    "createdAtZ" timestamp with time zone DEFAULT now(),
+    "updatedAtZ" timestamp with time zone DEFAULT now()
+);
 
 
 --
@@ -4133,8 +5050,6 @@ INSERT INTO public.account (id, account_id, provider_id, user_id, access_token, 
 -- Data for Name: agent_skill; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.agent_skill (id, name, description, source, source_url, s3_prefix, files, created_at, team_id) VALUES (1, 'athan-lead', 'Orchestrate the queue in ai/plans/README.md - up to three parallel lanes, each carried from its next phase to DONE, or one ticket alone when only one can run. Route from the repository, dispatch the lane, executor and reviewer workers, verify their work yourself, push when every commit is reviewed. The owner is hands-off: questions are answered agent-ruled, never asked. Trigger on "/athan-next", "run the queue", "clear the board", "continue the ticket", "audit owed", or any request to execute or audit a queued ticket.', 'inline', NULL, 'skills/team/1/b997bfbb-f1ed-4dde-a1bd-be5f4dd7cb6c', '[]', '2026-10-18 23:58:05.113813+00', 1);
-INSERT INTO public.agent_skill (id, name, description, source, source_url, s3_prefix, files, created_at, team_id) VALUES (2, 'athan-planner', 'Plan one queued ticket in ai/plans/README.md. Answer the frontier agent-ruled (the owner is hands-off), decide everything, write the plan, grill it, pass the gate, leave the ticket READY. Use when a planning phase runs, a ticket is NOT PLANNED, PLANNING or NEEDS REPLAN, or the owner asks to plan a ticket.', 'inline', NULL, 'skills/team/1/7519cfd1-6ef3-48d8-8e6f-a7f0b5982260', '[]', '2026-10-18 23:58:05.126208+00', 1);
 
 
 --
@@ -4159,26 +5074,12 @@ INSERT INTO public.agent_skill (id, name, description, source, source_url, s3_pr
 -- Data for Name: ai_agent; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.ai_agent (id, user_id, username, kind, model, instructions, tools, temperature, max_steps, created_at, memory_enabled, memory_last_messages, trigger_on_mention, trigger_on_assign, model_credential_id, api_key_ciphertext, api_key_iv, api_key_auth_tag, owner_user_id, runner_scope, last_seen_at, delegation_delay_sec, team_id, reasoning_effort) VALUES (1, '729a4f7b-a43d-43d6-8f08-49cc82e40d1b', 'lane-lead', 'external', NULL, 'Runs the queue, dispatches and verifies the workers, pushes only what passed review.', '[]', NULL, NULL, '2026-10-18 23:57:31.044203+00', false, NULL, false, false, NULL, NULL, NULL, NULL, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'team', NULL, 120, 1, NULL);
-INSERT INTO public.ai_agent (id, user_id, username, kind, model, instructions, tools, temperature, max_steps, created_at, memory_enabled, memory_last_messages, trigger_on_mention, trigger_on_assign, model_credential_id, api_key_ciphertext, api_key_iv, api_key_auth_tag, owner_user_id, runner_scope, last_seen_at, delegation_delay_sec, team_id, reasoning_effort) VALUES (2, '59bdd783-659f-4d1d-b1bc-0fe403c7993c', 'planner', 'external', NULL, 'Answers the frontier, writes the plan, grills it and passes the gate.', '[]', NULL, NULL, '2026-10-18 23:57:31.067145+00', false, NULL, false, false, NULL, NULL, NULL, NULL, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'team', NULL, 120, 1, NULL);
-INSERT INTO public.ai_agent (id, user_id, username, kind, model, instructions, tools, temperature, max_steps, created_at, memory_enabled, memory_last_messages, trigger_on_mention, trigger_on_assign, model_credential_id, api_key_ciphertext, api_key_iv, api_key_auth_tag, owner_user_id, runner_scope, last_seen_at, delegation_delay_sec, team_id, reasoning_effort) VALUES (3, '14339d67-67c4-4917-b9a9-7bc6eb955faf', 'executor', 'external', NULL, 'Executes an assigned batch of plan steps to their acceptance criteria.', '[]', NULL, NULL, '2026-10-18 23:57:31.080534+00', false, NULL, false, false, NULL, NULL, NULL, NULL, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'team', NULL, 120, 1, NULL);
-INSERT INTO public.ai_agent (id, user_id, username, kind, model, instructions, tools, temperature, max_steps, created_at, memory_enabled, memory_last_messages, trigger_on_mention, trigger_on_assign, model_credential_id, api_key_ciphertext, api_key_iv, api_key_auth_tag, owner_user_id, runner_scope, last_seen_at, delegation_delay_sec, team_id, reasoning_effort) VALUES (4, '23af07f6-ced9-4f4d-a353-4fce204f252b', 'plan-griller', 'external', NULL, 'Reads a draft plan as the hostile stranger who must build it unanswered.', '[]', NULL, NULL, '2026-10-18 23:57:31.094057+00', false, NULL, false, false, NULL, NULL, NULL, NULL, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'team', NULL, 120, 1, NULL);
-INSERT INTO public.ai_agent (id, user_id, username, kind, model, instructions, tools, temperature, max_steps, created_at, memory_enabled, memory_last_messages, trigger_on_mention, trigger_on_assign, model_credential_id, api_key_ciphertext, api_key_iv, api_key_auth_tag, owner_user_id, runner_scope, last_seen_at, delegation_delay_sec, team_id, reasoning_effort) VALUES (5, '55ced2b9-3f29-4b4c-bca7-d1a473c6a658', 'reviewer', 'external', NULL, 'Read-only review of one change, blind or against the plan.', '[]', NULL, NULL, '2026-10-18 23:57:31.105615+00', false, NULL, false, false, NULL, NULL, NULL, NULL, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'team', NULL, 120, 1, NULL);
-INSERT INTO public.ai_agent (id, user_id, username, kind, model, instructions, tools, temperature, max_steps, created_at, memory_enabled, memory_last_messages, trigger_on_mention, trigger_on_assign, model_credential_id, api_key_ciphertext, api_key_iv, api_key_auth_tag, owner_user_id, runner_scope, last_seen_at, delegation_delay_sec, team_id, reasoning_effort) VALUES (6, '5d19f291-a4bf-4ba8-b517-916ec636146b', 'explorer', 'external', NULL, 'Answers fact questions over the repository at a stated thoroughness.', '[]', NULL, NULL, '2026-10-18 23:57:31.118341+00', false, NULL, false, false, NULL, NULL, NULL, NULL, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'team', NULL, 120, 1, NULL);
-INSERT INTO public.ai_agent (id, user_id, username, kind, model, instructions, tools, temperature, max_steps, created_at, memory_enabled, memory_last_messages, trigger_on_mention, trigger_on_assign, model_credential_id, api_key_ciphertext, api_key_iv, api_key_auth_tag, owner_user_id, runner_scope, last_seen_at, delegation_delay_sec, team_id, reasoning_effort) VALUES (7, '7bfc56a9-7131-4445-bedf-47c7f94aff37', 'vision', 'external', NULL, 'Reads an image and reports what is visible, with measured precision.', '[]', NULL, NULL, '2026-10-18 23:57:31.131248+00', false, NULL, false, false, NULL, NULL, NULL, NULL, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'team', NULL, 120, 1, NULL);
 
 
 --
 -- Data for Name: apikey; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('McUVXm2watUr1Cvf4F90KBDp5muPh4Ip', 'default', 'agent:Lane lead', 'itp_mM', '729a4f7b-a43d-43d6-8f08-49cc82e40d1b', 'itp_', 'amev6XMZeCqmFkOrXdpInpKL1NAd9lD-VBIKQe6VBww', NULL, NULL, NULL, true, true, 1000, 100, 0, NULL, NULL, NULL, '2026-10-18 23:57:31.054', '2026-10-18 23:57:31.054', NULL, 'null');
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('zzLl1qgDr9HmygjdZAflCjJQeZY2hqfk', 'default', 'agent:Planner', 'itp_cZ', '59bdd783-659f-4d1d-b1bc-0fe403c7993c', 'itp_', '97B2KEyGjbVsfz8OEA-_UExNXW6PX5MGYG9jklsjtQo', NULL, NULL, NULL, true, true, 1000, 100, 0, NULL, NULL, NULL, '2026-10-18 23:57:31.07', '2026-10-18 23:57:31.07', NULL, 'null');
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('Z2IFMdOgYI4sHxdwfFpeR4J4Ne8PD2w6', 'default', 'agent:Executor', 'itp_KE', '14339d67-67c4-4917-b9a9-7bc6eb955faf', 'itp_', 'ureJ89UCw0ugwc5KGivIHakAjB9_tZCN2tK6c6hHtcw', NULL, NULL, NULL, true, true, 1000, 100, 0, NULL, NULL, NULL, '2026-10-18 23:57:31.084', '2026-10-18 23:57:31.084', NULL, 'null');
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('WXiXVUbMErT3VgEVoSbdtptpQ0hHrVVh', 'default', 'agent:Plan griller', 'itp_eW', '23af07f6-ced9-4f4d-a353-4fce204f252b', 'itp_', 'r_dvEkLqQ5gY05vyz16Z0FigBIMGivQmir3yqkzFI2I', NULL, NULL, NULL, true, true, 1000, 100, 0, NULL, NULL, NULL, '2026-10-18 23:57:31.096', '2026-10-18 23:57:31.096', NULL, 'null');
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('ZbUG1WdbO92Dv4dm2XMM4DxkxxhGyD3O', 'default', 'agent:Reviewer', 'itp_kX', '55ced2b9-3f29-4b4c-bca7-d1a473c6a658', 'itp_', 'eoyCCAO8ZCCEwPdxSpGDbntbdPLopg3L3bfGBmI3Np8', NULL, NULL, NULL, true, true, 1000, 100, 0, NULL, NULL, NULL, '2026-10-18 23:57:31.108', '2026-10-18 23:57:31.108', NULL, 'null');
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('UJHlf7CQAck22HwWOBznm1octKwwJufJ', 'default', 'agent:Explorer', 'itp_vx', '5d19f291-a4bf-4ba8-b517-916ec636146b', 'itp_', 'ed2rKTn24VmRzuVFL20Zb-8bzRriqDWpKXjD0u2lqQQ', NULL, NULL, NULL, true, true, 1000, 100, 0, NULL, NULL, NULL, '2026-10-18 23:57:31.122', '2026-10-18 23:57:31.122', NULL, 'null');
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('VNrg1OeSN20ttZRJmH3gGvkerPwGwQT0', 'default', 'agent:Vision analyst', 'itp_OH', '7bfc56a9-7131-4445-bedf-47c7f94aff37', 'itp_', 'N6N0WisWLvu_hhs2fQf3JfAwtv2yYp0yrueMn9WyYtQ', NULL, NULL, NULL, true, true, 1000, 100, 0, NULL, NULL, NULL, '2026-10-18 23:57:31.134', '2026-10-18 23:57:31.134', NULL, 'null');
 INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('YeMN1PXRxo76c9QaLbLmPG6rGdSaMIzq', 'default', 'board-mcp', 'itp_Sn', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'itp_', 'GMouqGOW1S7JPviPVI-ChdJ-e1ap3RrtwDjbTTK33Uc', NULL, NULL, NULL, true, true, 1000, 100, 3, NULL, '2026-10-19 00:04:49.063', '2027-01-16 23:58:45.238', '2026-10-18 23:58:45.238', '2026-10-19 00:04:49.068', NULL, 'null');
 
 
@@ -4207,12 +5108,17 @@ INSERT INTO public.app_setting (key, value, updated_at) VALUES ('migration.teams
 --
 
 INSERT INTO public.custom_field (id, issue_type_id, name, field_type, "position", created_at, project_id, show_in_body, member_scope) VALUES (1, NULL, 'Queue order', 'number', 0, '2026-10-18 23:57:29.884072+00', 1, true, NULL);
+INSERT INTO public.custom_field (id, issue_type_id, name, field_type, "position", created_at, project_id, show_in_body, member_scope) VALUES (2, NULL, 'Lane', 'select', 1, '2026-10-19 01:39:09.5539+00', 1, false, NULL);
+INSERT INTO public.custom_field (id, issue_type_id, name, field_type, "position", created_at, project_id, show_in_body, member_scope) VALUES (3, NULL, 'Waiting on', 'text', 2, '2026-10-19 01:39:09.560333+00', 1, false, NULL);
 
 
 --
 -- Data for Name: custom_field_option; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.custom_field_option (id, field_id, value, color, "position") VALUES (1, 2, 'Lane 1', '#6b7280', 0);
+INSERT INTO public.custom_field_option (id, field_id, value, color, "position") VALUES (2, 2, 'Lane 2', '#6b7280', 1);
+INSERT INTO public.custom_field_option (id, field_id, value, color, "position") VALUES (3, 2, 'Lane 3', '#6b7280', 2);
 
 
 --
@@ -5879,10 +6785,246 @@ INSERT INTO public.issue_watcher (issue_id, user_id, subscribed, created_at) VAL
 -- Data for Name: label; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (1, 1, 1, 'iOS', '#3b82f6', '2026-10-19 01:39:09.463712+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (2, 1, 1, 'Android', '#22c55e', '2026-10-19 01:39:09.473375+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (3, 1, 1, 'Both', '#14b8a6', '2026-10-19 01:39:09.479613+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (4, 1, 2, 'widgets', '#8b5cf6', '2026-10-19 01:39:09.485592+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (5, 1, 2, 'notifications', '#f59e0b', '2026-10-19 01:39:09.492552+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (6, 1, 2, 'prayer-times', '#0ea5e9', '2026-10-19 01:39:09.498591+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (7, 1, 2, 'qibla', '#f97316', '2026-10-19 01:39:09.503788+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (8, 1, 2, 'board', '#64748b', '2026-10-19 01:39:09.508968+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (9, 1, 2, 'docs', '#6366f1', '2026-10-19 01:39:09.515162+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (10, 1, 2, 'research', '#ec4899', '2026-10-19 01:39:09.520196+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (11, 1, NULL, 'needs-owner', '#ef4444', '2026-10-19 01:39:09.52511+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (12, 1, NULL, 'upstream', '#06b6d4', '2026-10-19 01:39:09.530574+00');
 
 
 --
 -- Data for Name: label_group; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES (1, 1, 'Surface', '#6366f1', '2026-10-19 01:38:58.971253+00');
+INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES (2, 1, 'Area', '#8b5cf6', '2026-10-19 01:38:58.985431+00');
+
+
+--
+-- Data for Name: mastra_agent_versions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_agents; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_ai_spans; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_background_tasks; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_channel_config; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_channel_installations; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_dataset_items; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_dataset_versions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_datasets; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_experiment_results; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_experiments; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_favorites; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_mcp_client_versions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_mcp_clients; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_mcp_server_versions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_mcp_servers; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_messages; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_notifications; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_observational_memory; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_prompt_block_versions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_prompt_blocks; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_resources; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_schedule_triggers; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_schedules; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_scorer_definition_versions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_scorer_definitions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_scorers; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_skill_blobs; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_skill_versions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_skills; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_thread_state; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_threads; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_tool_provider_connections; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_workflow_definitions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_workflow_snapshot; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_workspace_versions; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: mastra_workspaces; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -6033,23 +7175,6 @@ Nothing writes back to the repository from here.
 A ticket that cannot start before another is finished carries a `blocked_by` relation to it, and
 the queue row lists the same numbers under Needs first. The relation is a warning, never a lock.
 ', NULL, 'book', '{}', false, false, false, NULL, NULL, 1024, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.139721+00', '2026-10-18 23:58:05.139721+00');
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (2, 1, NULL, 'The agents', '# The agents
-
-Seven roles run the queue. Each one is listed under AI Agents with the handle that carries its
-name. They run in the repository session that reads this board, not inside this product.
-
-| Agent | Phase it owns |
-| --- | --- |
-| lane-lead | Reads the queue, picks the ticket, dispatches the workers, verifies their work, pushes. |
-| planner | Answers the frontier, writes the plan, grills it, passes the gate. |
-| executor | Builds the assigned steps against the plan''s acceptance criteria. |
-| plan-griller | Reads the draft plan as a stranger who cannot ask questions. |
-| reviewer | Reads the change twice, blind and against the plan. |
-| explorer | Answers fact questions over the repository. |
-| vision | Reads screenshots and reports what is visible. |
-
-The two skills in the team library carry the lead''s and the planner''s full instructions.
-', NULL, 'book', '{}', false, false, false, NULL, NULL, 2048, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.153227+00', '2026-10-18 23:58:05.153227+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (3, 1, NULL, 'Working the board', '# Working the board
 
 1. A row in the repository queue is the ticket''s home. Its status cell decides its column here.
@@ -6079,31 +7204,6 @@ lets a browser keep a session over plain HTTP on this machine.
 What is configured here and nowhere else: the ten columns above, the Queue order field, the seven
 agent roles, the two skills and these pages.
 ', NULL, 'book', '{}', false, false, false, NULL, NULL, 4096, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.175489+00', '2026-10-18 23:58:05.175489+00');
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (5, 1, NULL, 'Running the agents from the board', '# Running the agents from the board
-
-The board can dispatch an agent by itself. That is the product''s own runner, and it is a stage of its own. It is not switched on here.
-
-## How it works
-
-1. An issue is assigned to one of the agents on the board, or the agent is mentioned in a comment.
-2. The run waits in the product''s run queue.
-3. A runner on this machine claims the run and starts a coding agent in a working directory, with this board''s MCP server in its tool list.
-4. The agent reads the issue, works in the repository, and writes back through MCP.
-
-The runner ships as `@itsaplan/runner` and carries a preset for each coding agent CLI, including the one this repository already uses. The preset supplies the unattended flags, the session resume and the MCP configuration, so nothing bespoke is written for it.
-
-## What is switched on today
-
-The board carries the seven agent roles, the workflow''s two skills, and the MCP server is reachable with a personal key from the shell environment. An agent wired that way can read and move tickets on this board from any session.
-
-## What is deliberately left off
-
-Starting the runner spends model tokens on every run it claims. That spend is the owner''s call, so the runner is documented here and not installed.
-
-## The one rule that does not move
-
-The repository queue at `ai/plans/README.md` stays the source of truth. This board mirrors it. A run that changes a ticket changes the queue row and the board together.
-', NULL, 'terminal', '{}', false, false, false, NULL, NULL, 5120, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:59:39.964359+00', '2026-10-18 23:59:39.964359+00');
 
 
 --
@@ -6156,23 +7256,6 @@ Nothing writes back to the repository from here.
 A ticket that cannot start before another is finished carries a `blocked_by` relation to it, and
 the queue row lists the same numbers under Needs first. The relation is a warning, never a lock.
 ', NULL, 'book', '{}', false, false, false, NULL, 1024, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.139721+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (2, 2, 1, NULL, 'The agents', '# The agents
-
-Seven roles run the queue. Each one is listed under AI Agents with the handle that carries its
-name. They run in the repository session that reads this board, not inside this product.
-
-| Agent | Phase it owns |
-| --- | --- |
-| lane-lead | Reads the queue, picks the ticket, dispatches the workers, verifies their work, pushes. |
-| planner | Answers the frontier, writes the plan, grills it, passes the gate. |
-| executor | Builds the assigned steps against the plan''s acceptance criteria. |
-| plan-griller | Reads the draft plan as a stranger who cannot ask questions. |
-| reviewer | Reads the change twice, blind and against the plan. |
-| explorer | Answers fact questions over the repository. |
-| vision | Reads screenshots and reports what is visible. |
-
-The two skills in the team library carry the lead''s and the planner''s full instructions.
-', NULL, 'book', '{}', false, false, false, NULL, 2048, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.153227+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (3, 3, 1, NULL, 'Working the board', '# Working the board
 
 1. A row in the repository queue is the ticket''s home. Its status cell decides its column here.
@@ -6202,31 +7285,6 @@ lets a browser keep a session over plain HTTP on this machine.
 What is configured here and nowhere else: the ten columns above, the Queue order field, the seven
 agent roles, the two skills and these pages.
 ', NULL, 'book', '{}', false, false, false, NULL, 4096, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.175489+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (5, 5, 1, NULL, 'Running the agents from the board', '# Running the agents from the board
-
-The board can dispatch an agent by itself. That is the product''s own runner, and it is a stage of its own. It is not switched on here.
-
-## How it works
-
-1. An issue is assigned to one of the agents on the board, or the agent is mentioned in a comment.
-2. The run waits in the product''s run queue.
-3. A runner on this machine claims the run and starts a coding agent in a working directory, with this board''s MCP server in its tool list.
-4. The agent reads the issue, works in the repository, and writes back through MCP.
-
-The runner ships as `@itsaplan/runner` and carries a preset for each coding agent CLI, including the one this repository already uses. The preset supplies the unattended flags, the session resume and the MCP configuration, so nothing bespoke is written for it.
-
-## What is switched on today
-
-The board carries the seven agent roles, the workflow''s two skills, and the MCP server is reachable with a personal key from the shell environment. An agent wired that way can read and move tickets on this board from any session.
-
-## What is deliberately left off
-
-Starting the runner spends model tokens on every run it claims. That spend is the owner''s call, so the runner is documented here and not installed.
-
-## The one rule that does not move
-
-The repository queue at `ai/plans/README.md` stays the source of truth. This board mirrors it. A run that changes a ticket changes the queue row and the board together.
-', NULL, 'terminal', '{}', false, false, false, NULL, 5120, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:59:39.964359+00');
 
 
 --
@@ -6234,13 +7292,6 @@ The repository queue at `ai/plans/README.md` stays the source of truth. This boa
 --
 
 INSERT INTO public.project_member (project_id, user_id, role, created_at, role_id, description, source, is_favorite, is_hidden) VALUES (1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'owner', '2026-10-18 23:35:27.31234+00', NULL, '', 'invite', false, false);
-INSERT INTO public.project_member (project_id, user_id, role, created_at, role_id, description, source, is_favorite, is_hidden) VALUES (1, '14339d67-67c4-4917-b9a9-7bc6eb955faf', 'member', '2026-10-18 23:57:47.1499+00', 1, '', 'invite', false, false);
-INSERT INTO public.project_member (project_id, user_id, role, created_at, role_id, description, source, is_favorite, is_hidden) VALUES (1, '5d19f291-a4bf-4ba8-b517-916ec636146b', 'member', '2026-10-18 23:57:47.159323+00', 1, '', 'invite', false, false);
-INSERT INTO public.project_member (project_id, user_id, role, created_at, role_id, description, source, is_favorite, is_hidden) VALUES (1, '729a4f7b-a43d-43d6-8f08-49cc82e40d1b', 'member', '2026-10-18 23:57:47.16828+00', 1, '', 'invite', false, false);
-INSERT INTO public.project_member (project_id, user_id, role, created_at, role_id, description, source, is_favorite, is_hidden) VALUES (1, '23af07f6-ced9-4f4d-a353-4fce204f252b', 'member', '2026-10-18 23:57:47.181223+00', 1, '', 'invite', false, false);
-INSERT INTO public.project_member (project_id, user_id, role, created_at, role_id, description, source, is_favorite, is_hidden) VALUES (1, '59bdd783-659f-4d1d-b1bc-0fe403c7993c', 'member', '2026-10-18 23:57:47.190908+00', 1, '', 'invite', false, false);
-INSERT INTO public.project_member (project_id, user_id, role, created_at, role_id, description, source, is_favorite, is_hidden) VALUES (1, '55ced2b9-3f29-4b4c-bca7-d1a473c6a658', 'member', '2026-10-18 23:57:47.200331+00', 1, '', 'invite', false, false);
-INSERT INTO public.project_member (project_id, user_id, role, created_at, role_id, description, source, is_favorite, is_hidden) VALUES (1, '7bfc56a9-7131-4445-bedf-47c7f94aff37', 'member', '2026-10-18 23:57:47.209934+00', 1, '', 'invite', false, false);
 
 
 --
@@ -6260,6 +7311,7 @@ INSERT INTO public.project_setting (project_id, key, value, updated_at) VALUES (
 -- Data for Name: project_view; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.project_view (id, project_id, name, icon, filters, display, "position", created_at, share_token, share_extended) VALUES (1, 1, 'Queue', 'list', '{}', '{"sort": {"dir": "asc", "field": "manual"}, "group": "status", "subgroup": "none", "showLinks": true, "weekStart": 0, "properties": ["id", "priority", "type", "labels", "cf:1", "cf:2", "statusAge", "updated"], "pinnedGroup": null, "hiddenGroups": [], "showSubtasks": true, "timelineScale": "week", "collapsedGroups": [], "showEmptyGroups": true, "collapseSubtasks": true, "separateSubtasks": false, "calendarDateField": "dueDate", "timelineCollapseAll": false}', 0, '2026-10-19 01:39:09.578104+00', NULL, false);
 
 
 --
@@ -6397,11 +7449,11 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 14);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:75', 1, 16);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 16);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:6', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:119', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 15);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 14);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 9);
 
 
 --
@@ -6462,13 +7514,6 @@ INSERT INTO public.team (id, name, created_at, mcp_enabled, default_agent_ids, s
 --
 
 INSERT INTO public.team_member (team_id, user_id, role, created_at, source) VALUES (1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'owner', '2026-10-18 23:35:27.262113+00', 'invite');
-INSERT INTO public.team_member (team_id, user_id, role, created_at, source) VALUES (1, '729a4f7b-a43d-43d6-8f08-49cc82e40d1b', 'agent', '2026-10-18 23:57:31.044203+00', 'invite');
-INSERT INTO public.team_member (team_id, user_id, role, created_at, source) VALUES (1, '59bdd783-659f-4d1d-b1bc-0fe403c7993c', 'agent', '2026-10-18 23:57:31.067145+00', 'invite');
-INSERT INTO public.team_member (team_id, user_id, role, created_at, source) VALUES (1, '14339d67-67c4-4917-b9a9-7bc6eb955faf', 'agent', '2026-10-18 23:57:31.080534+00', 'invite');
-INSERT INTO public.team_member (team_id, user_id, role, created_at, source) VALUES (1, '23af07f6-ced9-4f4d-a353-4fce204f252b', 'agent', '2026-10-18 23:57:31.094057+00', 'invite');
-INSERT INTO public.team_member (team_id, user_id, role, created_at, source) VALUES (1, '55ced2b9-3f29-4b4c-bca7-d1a473c6a658', 'agent', '2026-10-18 23:57:31.105615+00', 'invite');
-INSERT INTO public.team_member (team_id, user_id, role, created_at, source) VALUES (1, '5d19f291-a4bf-4ba8-b517-916ec636146b', 'agent', '2026-10-18 23:57:31.118341+00', 'invite');
-INSERT INTO public.team_member (team_id, user_id, role, created_at, source) VALUES (1, '7bfc56a9-7131-4445-bedf-47c7f94aff37', 'agent', '2026-10-18 23:57:31.131248+00', 'invite');
 
 
 --
@@ -6489,13 +7534,6 @@ INSERT INTO public.team_role (id, name, is_default, permissions, created_at, tea
 --
 
 INSERT INTO public."user" (id, name, email, email_verified, image, created_at, updated_at, role, username, display_username, active) VALUES ('DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'owner', 'owner@athan.local', false, NULL, '2026-10-18 23:35:13.427', '2026-10-18 23:35:13.427', 'god', 'owner', 'owner', true);
-INSERT INTO public."user" (id, name, email, email_verified, image, created_at, updated_at, role, username, display_username, active) VALUES ('729a4f7b-a43d-43d6-8f08-49cc82e40d1b', 'Lane lead', '729a4f7b-a43d-43d6-8f08-49cc82e40d1b@agents.local', false, NULL, '2026-10-18 23:57:31.044203', '2026-10-18 23:57:31.044203', 'user', NULL, NULL, true);
-INSERT INTO public."user" (id, name, email, email_verified, image, created_at, updated_at, role, username, display_username, active) VALUES ('59bdd783-659f-4d1d-b1bc-0fe403c7993c', 'Planner', '59bdd783-659f-4d1d-b1bc-0fe403c7993c@agents.local', false, NULL, '2026-10-18 23:57:31.067145', '2026-10-18 23:57:31.067145', 'user', NULL, NULL, true);
-INSERT INTO public."user" (id, name, email, email_verified, image, created_at, updated_at, role, username, display_username, active) VALUES ('14339d67-67c4-4917-b9a9-7bc6eb955faf', 'Executor', '14339d67-67c4-4917-b9a9-7bc6eb955faf@agents.local', false, NULL, '2026-10-18 23:57:31.080534', '2026-10-18 23:57:31.080534', 'user', NULL, NULL, true);
-INSERT INTO public."user" (id, name, email, email_verified, image, created_at, updated_at, role, username, display_username, active) VALUES ('23af07f6-ced9-4f4d-a353-4fce204f252b', 'Plan griller', '23af07f6-ced9-4f4d-a353-4fce204f252b@agents.local', false, NULL, '2026-10-18 23:57:31.094057', '2026-10-18 23:57:31.094057', 'user', NULL, NULL, true);
-INSERT INTO public."user" (id, name, email, email_verified, image, created_at, updated_at, role, username, display_username, active) VALUES ('55ced2b9-3f29-4b4c-bca7-d1a473c6a658', 'Reviewer', '55ced2b9-3f29-4b4c-bca7-d1a473c6a658@agents.local', false, NULL, '2026-10-18 23:57:31.105615', '2026-10-18 23:57:31.105615', 'user', NULL, NULL, true);
-INSERT INTO public."user" (id, name, email, email_verified, image, created_at, updated_at, role, username, display_username, active) VALUES ('5d19f291-a4bf-4ba8-b517-916ec636146b', 'Explorer', '5d19f291-a4bf-4ba8-b517-916ec636146b@agents.local', false, NULL, '2026-10-18 23:57:31.118341', '2026-10-18 23:57:31.118341', 'user', NULL, NULL, true);
-INSERT INTO public."user" (id, name, email, email_verified, image, created_at, updated_at, role, username, display_username, active) VALUES ('7bfc56a9-7131-4445-bedf-47c7f94aff37', 'Vision analyst', '7bfc56a9-7131-4445-bedf-47c7f94aff37@agents.local', false, NULL, '2026-10-18 23:57:31.131248', '2026-10-18 23:57:31.131248', 'user', NULL, NULL, true);
 
 
 --
@@ -6616,14 +7654,14 @@ SELECT pg_catalog.setval('public.chat_attachment_id_seq', 1, false);
 -- Name: custom_field_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.custom_field_id_seq', 1, true);
+SELECT pg_catalog.setval('public.custom_field_id_seq', 3, true);
 
 
 --
 -- Name: custom_field_option_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.custom_field_option_id_seq', 1, false);
+SELECT pg_catalog.setval('public.custom_field_option_id_seq', 3, true);
 
 
 --
@@ -6798,14 +7836,14 @@ SELECT pg_catalog.setval('public.issue_worklog_id_seq', 1, false);
 -- Name: label_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_group_id_seq', 1, false);
+SELECT pg_catalog.setval('public.label_group_id_seq', 2, true);
 
 
 --
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 1, false);
+SELECT pg_catalog.setval('public.label_id_seq', 12, true);
 
 
 --
@@ -6868,7 +7906,7 @@ SELECT pg_catalog.setval('public.project_document_id_seq', 5, true);
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 5, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 7, true);
 
 
 --
@@ -6889,7 +7927,7 @@ SELECT pg_catalog.setval('public.project_role_id_seq', 1, true);
 -- Name: project_view_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_view_id_seq', 1, false);
+SELECT pg_catalog.setval('public.project_view_id_seq', 1, true);
 
 
 --
@@ -7558,6 +8596,278 @@ ALTER TABLE ONLY public.label
 
 
 --
+-- Name: mastra_agent_versions mastra_agent_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_agent_versions
+    ADD CONSTRAINT mastra_agent_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_agents mastra_agents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_agents
+    ADD CONSTRAINT mastra_agents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_background_tasks mastra_background_tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_background_tasks
+    ADD CONSTRAINT mastra_background_tasks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_channel_config mastra_channel_config_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_channel_config
+    ADD CONSTRAINT mastra_channel_config_pkey PRIMARY KEY (platform);
+
+
+--
+-- Name: mastra_channel_installations mastra_channel_installations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_channel_installations
+    ADD CONSTRAINT mastra_channel_installations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_dataset_items mastra_dataset_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_dataset_items
+    ADD CONSTRAINT mastra_dataset_items_pkey PRIMARY KEY (id, "datasetVersion");
+
+
+--
+-- Name: mastra_dataset_versions mastra_dataset_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_dataset_versions
+    ADD CONSTRAINT mastra_dataset_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_datasets mastra_datasets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_datasets
+    ADD CONSTRAINT mastra_datasets_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_experiment_results mastra_experiment_results_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_experiment_results
+    ADD CONSTRAINT mastra_experiment_results_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_experiments mastra_experiments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_experiments
+    ADD CONSTRAINT mastra_experiments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_favorites mastra_favorites_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_favorites
+    ADD CONSTRAINT mastra_favorites_pkey PRIMARY KEY ("userId", "entityType", "entityId");
+
+
+--
+-- Name: mastra_mcp_client_versions mastra_mcp_client_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_mcp_client_versions
+    ADD CONSTRAINT mastra_mcp_client_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_mcp_clients mastra_mcp_clients_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_mcp_clients
+    ADD CONSTRAINT mastra_mcp_clients_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_mcp_server_versions mastra_mcp_server_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_mcp_server_versions
+    ADD CONSTRAINT mastra_mcp_server_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_mcp_servers mastra_mcp_servers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_mcp_servers
+    ADD CONSTRAINT mastra_mcp_servers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_messages mastra_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_messages
+    ADD CONSTRAINT mastra_messages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_observational_memory mastra_observational_memory_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_observational_memory
+    ADD CONSTRAINT mastra_observational_memory_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_prompt_block_versions mastra_prompt_block_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_prompt_block_versions
+    ADD CONSTRAINT mastra_prompt_block_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_prompt_blocks mastra_prompt_blocks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_prompt_blocks
+    ADD CONSTRAINT mastra_prompt_blocks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_resources mastra_resources_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_resources
+    ADD CONSTRAINT mastra_resources_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_schedule_triggers mastra_schedule_triggers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_schedule_triggers
+    ADD CONSTRAINT mastra_schedule_triggers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_schedules mastra_schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_schedules
+    ADD CONSTRAINT mastra_schedules_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_scorer_definition_versions mastra_scorer_definition_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_scorer_definition_versions
+    ADD CONSTRAINT mastra_scorer_definition_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_scorer_definitions mastra_scorer_definitions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_scorer_definitions
+    ADD CONSTRAINT mastra_scorer_definitions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_scorers mastra_scorers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_scorers
+    ADD CONSTRAINT mastra_scorers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_skill_blobs mastra_skill_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_skill_blobs
+    ADD CONSTRAINT mastra_skill_blobs_pkey PRIMARY KEY (hash);
+
+
+--
+-- Name: mastra_skill_versions mastra_skill_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_skill_versions
+    ADD CONSTRAINT mastra_skill_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_skills mastra_skills_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_skills
+    ADD CONSTRAINT mastra_skills_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_thread_state mastra_thread_state_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_thread_state
+    ADD CONSTRAINT mastra_thread_state_pkey PRIMARY KEY ("threadId", type);
+
+
+--
+-- Name: mastra_threads mastra_threads_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_threads
+    ADD CONSTRAINT mastra_threads_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_tool_provider_connections mastra_tool_provider_connections_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_tool_provider_connections
+    ADD CONSTRAINT mastra_tool_provider_connections_pkey PRIMARY KEY ("authorId", "providerId", "connectionId");
+
+
+--
+-- Name: mastra_workflow_definitions mastra_workflow_definitions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_workflow_definitions
+    ADD CONSTRAINT mastra_workflow_definitions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_workspace_versions mastra_workspace_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_workspace_versions
+    ADD CONSTRAINT mastra_workspace_versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mastra_workspaces mastra_workspaces_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_workspaces
+    ADD CONSTRAINT mastra_workspaces_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: model_price model_price_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7851,6 +9161,24 @@ ALTER TABLE ONLY public.project_view
 
 ALTER TABLE ONLY public.project_view
     ADD CONSTRAINT project_view_share_token_unique UNIQUE (share_token);
+
+
+--
+-- Name: mastra_ai_spans public_mastra_ai_spans_traceid_spanid_pk; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_ai_spans
+    ADD CONSTRAINT public_mastra_ai_spans_traceid_spanid_pk PRIMARY KEY ("traceId", "spanId");
+
+
+--
+-- Name: mastra_workflow_snapshot public_mastra_workflow_snapshot_workflow_name_run_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mastra_workflow_snapshot
+    ADD CONSTRAINT public_mastra_workflow_snapshot_workflow_name_run_id_key UNIQUE (workflow_name, run_id);
+
+ALTER TABLE ONLY public.mastra_workflow_snapshot REPLICA IDENTITY USING INDEX public_mastra_workflow_snapshot_workflow_name_run_id_key;
 
 
 --
@@ -8295,6 +9623,230 @@ CREATE INDEX git_provider_connection_team_idx ON public.git_provider_connection 
 
 
 --
+-- Name: idx_channel_installations_platform_agent; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_channel_installations_platform_agent ON public.mastra_channel_installations USING btree (platform, "agentId");
+
+
+--
+-- Name: idx_channel_installations_webhook; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_channel_installations_webhook ON public.mastra_channel_installations USING btree ("webhookId");
+
+
+--
+-- Name: idx_dataset_items_dataset_validto; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_dataset_items_dataset_validto ON public.mastra_dataset_items USING btree ("datasetId", "validTo");
+
+
+--
+-- Name: idx_dataset_items_dataset_validto_deleted; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_dataset_items_dataset_validto_deleted ON public.mastra_dataset_items USING btree ("datasetId", "validTo", "isDeleted");
+
+
+--
+-- Name: idx_dataset_items_dataset_version; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_dataset_items_dataset_version ON public.mastra_dataset_items USING btree ("datasetId", "datasetVersion");
+
+
+--
+-- Name: idx_dataset_items_external_id_history; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_dataset_items_external_id_history ON public.mastra_dataset_items USING btree ("datasetId", "externalId", "datasetVersion");
+
+
+--
+-- Name: idx_dataset_items_org_project; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_dataset_items_org_project ON public.mastra_dataset_items USING btree ("organizationId", "projectId");
+
+
+--
+-- Name: idx_dataset_versions_dataset_version; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_dataset_versions_dataset_version ON public.mastra_dataset_versions USING btree ("datasetId", version);
+
+
+--
+-- Name: idx_dataset_versions_dataset_version_unique; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_dataset_versions_dataset_version_unique ON public.mastra_dataset_versions USING btree ("datasetId", version);
+
+
+--
+-- Name: idx_datasets_candidate; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_datasets_candidate ON public.mastra_datasets USING btree ("candidateKey", "candidateId");
+
+
+--
+-- Name: idx_datasets_org_project; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_datasets_org_project ON public.mastra_datasets USING btree ("organizationId", "projectId");
+
+
+--
+-- Name: idx_experiment_results_exp_item; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_experiment_results_exp_item ON public.mastra_experiment_results USING btree ("experimentId", "itemId");
+
+
+--
+-- Name: idx_experiment_results_experimentid; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_experiment_results_experimentid ON public.mastra_experiment_results USING btree ("experimentId");
+
+
+--
+-- Name: idx_experiment_results_org_project; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_experiment_results_org_project ON public.mastra_experiment_results USING btree ("organizationId", "projectId");
+
+
+--
+-- Name: idx_experiments_datasetid; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_experiments_datasetid ON public.mastra_experiments USING btree ("datasetId");
+
+
+--
+-- Name: idx_experiments_grouping; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_experiments_grouping ON public.mastra_experiments USING btree ("experimentSetId", "comparisonId", "variantId", "trialIndex");
+
+
+--
+-- Name: idx_experiments_org_project; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_experiments_org_project ON public.mastra_experiments USING btree ("organizationId", "projectId");
+
+
+--
+-- Name: idx_favorites_entity; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_favorites_entity ON public.mastra_favorites USING btree ("entityType", "entityId");
+
+
+--
+-- Name: idx_mastra_schedule_triggers_schedule_fire; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_mastra_schedule_triggers_schedule_fire ON public.mastra_schedule_triggers USING btree (schedule_id, actual_fire_at DESC);
+
+
+--
+-- Name: idx_mastra_schedules_status_next_fire; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_mastra_schedules_status_next_fire ON public.mastra_schedules USING btree (status, next_fire_at);
+
+
+--
+-- Name: idx_mcp_client_versions_client_version; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_mcp_client_versions_client_version ON public.mastra_mcp_client_versions USING btree ("mcpClientId", "versionNumber");
+
+
+--
+-- Name: idx_mcp_server_versions_server_version; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_mcp_server_versions_server_version ON public.mastra_mcp_server_versions USING btree ("mcpServerId", "versionNumber");
+
+
+--
+-- Name: idx_notifications_coalescing; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_notifications_coalescing ON public.mastra_notifications USING btree ("threadId", source, kind, status, "agentId", "resourceId", "dedupeKey", "coalesceKey");
+
+
+--
+-- Name: idx_notifications_due; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_notifications_due ON public.mastra_notifications USING btree (status, "deliverAt", "summaryAt");
+
+
+--
+-- Name: idx_notifications_thread_status_updated; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_notifications_thread_status_updated ON public.mastra_notifications USING btree ("threadId", status, "updatedAt");
+
+
+--
+-- Name: idx_om_lookup_key; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_om_lookup_key ON public.mastra_observational_memory USING btree ("lookupKey");
+
+
+--
+-- Name: idx_prompt_block_versions_block_version; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_prompt_block_versions_block_version ON public.mastra_prompt_block_versions USING btree ("blockId", "versionNumber");
+
+
+--
+-- Name: idx_scorer_definition_versions_def_version; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_scorer_definition_versions_def_version ON public.mastra_scorer_definition_versions USING btree ("scorerDefinitionId", "versionNumber");
+
+
+--
+-- Name: idx_skill_versions_skill_version; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_skill_versions_skill_version ON public.mastra_skill_versions USING btree ("skillId", "versionNumber");
+
+
+--
+-- Name: idx_tool_provider_connections_author; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_tool_provider_connections_author ON public.mastra_tool_provider_connections USING btree ("authorId", "providerId", toolkit);
+
+
+--
+-- Name: idx_workflow_definitions_status; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_workflow_definitions_status ON public.mastra_workflow_definitions USING btree (status);
+
+
+--
+-- Name: idx_workspace_versions_workspace_version; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_workspace_versions_workspace_version ON public.mastra_workspace_versions USING btree ("workspaceId", "versionNumber");
+
+
+--
 -- Name: import_job_due_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8530,6 +10082,125 @@ CREATE UNIQUE INDEX issue_status_open_idx ON public.issue_status USING btree (is
 --
 
 CREATE INDEX issue_worklog_issue_idx ON public.issue_worklog USING btree (issue_id, spent_on DESC NULLS LAST);
+
+
+--
+-- Name: mastra_ai_spans_entitytype_entityid_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_entitytype_entityid_idx ON public.mastra_ai_spans USING btree ("entityType", "entityId");
+
+
+--
+-- Name: mastra_ai_spans_entitytype_entityname_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_entitytype_entityname_idx ON public.mastra_ai_spans USING btree ("entityType", "entityName");
+
+
+--
+-- Name: mastra_ai_spans_metadata_gin_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_metadata_gin_idx ON public.mastra_ai_spans USING gin (metadata);
+
+
+--
+-- Name: mastra_ai_spans_name_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_name_idx ON public.mastra_ai_spans USING btree (name);
+
+
+--
+-- Name: mastra_ai_spans_orgid_userid_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_orgid_userid_idx ON public.mastra_ai_spans USING btree ("organizationId", "userId");
+
+
+--
+-- Name: mastra_ai_spans_parentspanid_startedat_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_parentspanid_startedat_idx ON public.mastra_ai_spans USING btree ("parentSpanId", "startedAt" DESC);
+
+
+--
+-- Name: mastra_ai_spans_root_spans_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_root_spans_idx ON public.mastra_ai_spans USING btree ("startedAt" DESC) WHERE ("parentSpanId" IS NULL);
+
+
+--
+-- Name: mastra_ai_spans_spantype_startedat_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_spantype_startedat_idx ON public.mastra_ai_spans USING btree ("spanType", "startedAt" DESC);
+
+
+--
+-- Name: mastra_ai_spans_tags_gin_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_tags_gin_idx ON public.mastra_ai_spans USING gin (tags);
+
+
+--
+-- Name: mastra_ai_spans_traceid_startedat_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_ai_spans_traceid_startedat_idx ON public.mastra_ai_spans USING btree ("traceId", "startedAt" DESC);
+
+
+--
+-- Name: mastra_bg_tasks_agent_status_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_bg_tasks_agent_status_idx ON public.mastra_background_tasks USING btree (agent_id, status);
+
+
+--
+-- Name: mastra_bg_tasks_status_created_at_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_bg_tasks_status_created_at_idx ON public.mastra_background_tasks USING btree (status, "createdAt");
+
+
+--
+-- Name: mastra_bg_tasks_thread_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_bg_tasks_thread_idx ON public.mastra_background_tasks USING btree (thread_id, "createdAt");
+
+
+--
+-- Name: mastra_bg_tasks_tool_call_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_bg_tasks_tool_call_idx ON public.mastra_background_tasks USING btree (tool_call_id);
+
+
+--
+-- Name: mastra_messages_thread_id_createdat_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_messages_thread_id_createdat_idx ON public.mastra_messages USING btree (thread_id, "createdAt" DESC);
+
+
+--
+-- Name: mastra_scores_trace_id_span_id_created_at_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_scores_trace_id_span_id_created_at_idx ON public.mastra_scorers USING btree ("traceId", "spanId", "createdAt" DESC);
+
+
+--
+-- Name: mastra_threads_resourceid_createdat_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX mastra_threads_resourceid_createdat_idx ON public.mastra_threads USING btree ("resourceId", "createdAt" DESC);
 
 
 --
@@ -9041,6 +10712,13 @@ CREATE TRIGGER issue_rev AFTER INSERT OR DELETE OR UPDATE ON public.issue FOR EA
 --
 
 CREATE TRIGGER issue_watcher_rev AFTER INSERT OR DELETE OR UPDATE ON public.issue_watcher FOR EACH ROW EXECUTE FUNCTION public.rev_issue_child('issue_id', 'detail');
+
+
+--
+-- Name: mastra_ai_spans mastra_ai_spans_timestamps; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER mastra_ai_spans_timestamps BEFORE INSERT OR UPDATE ON public.mastra_ai_spans FOR EACH ROW EXECUTE FUNCTION public.trigger_set_timestamps();
 
 
 --
@@ -10613,5 +12291,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict qOSHFHPy1usTUQHLoGUhNrdbnmRhwvcp7MeNHrbmH0vgjxTINhVuzT0TGGfPvza
+\unrestrict 0MeGPWS1KRRYLkCQn2qLOzuYI6e5hNa1FXWB4WwhEWZIYVloNhfD50H07e2skEs
 
