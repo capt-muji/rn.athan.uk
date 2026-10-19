@@ -152,6 +152,11 @@ sight and notes the fix in one comment line. A defect is never reported and left
 8. A plan doc exists and is linked before Ready, and a closing comment exists at Done.
 9. Nothing parked reads active, and nothing active reads parked.
 10. The title carries no column word, and an upstream ticket's description carries its PR link.
+11. No relation outlives its blocker. The agent that moves a ticket to Done removes every
+    relation that has it blocking another, and any agent that finds a blocks-relation whose
+    blocking issue sits in a completed column removes it on sight, noting the fix in one
+    comment line. A card renders red off the relation, so one left standing shows a block
+    that no longer exists.
 
 The lead re-runs this list on every ticket the run touches at every phase boundary, and across
 the open board once at the start and once at the close of a run. That loop is the workflow:
@@ -174,6 +179,8 @@ and Ready share one, and every parked state carries `started`.
 - Entering `Blocked`, `Upstream` or `Awaiting Owner`: set `Waiting on` in the same breath,
   naming what it is waiting for. It takes one line.
 - Entering `Done`: the change is merged, the audit passed, and the closing comment is written.
+  The same move removes every relation that has this ticket blocking another: a completed
+  ticket blocks nothing.
 
 Never move a ticket that is not yours to move. One ticket per agent per turn.
 
