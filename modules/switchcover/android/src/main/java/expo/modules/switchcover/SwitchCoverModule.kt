@@ -12,7 +12,9 @@ import android.widget.TextView
 import expo.modules.kotlin.functions.Queues
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
+import expo.modules.kotlin.records.Field
 import expo.modules.kotlin.records.Record
+import expo.modules.kotlin.records.Required
 
 /**
  * The language switch's cover: the loader's own face, held by the activity's content view across
@@ -117,14 +119,18 @@ class SwitchCoverModule : Module() {
     }
 }
 
-/** The cover's face, in the loader's own values; every dp field is scaled by the display density here */
+/**
+ * The cover's face, in the loader's own values; every dp field is scaled by the display density here.
+ * Every property needs @Field (the converter silently drops one without it, and the constructor
+ * defaults painted black) and @Required (a missing key refuses the show instead of painting defaults).
+ */
 data class SwitchCoverFace(
-    val backgroundColor: String = "#000000",
-    val spinnerColor: String = "#ffffff",
-    val spinnerSizeDp: Double = 20.0,
-    val lineText: String = "",
-    val lineColor: String = "#ffffff",
-    val lineSizeDp: Double = 18.0,
-    val lineMarginTopDp: Double = 40.0,
-    val lineMaxWidthDp: Double = 260.0,
+    @Field @Required val backgroundColor: String = "#000000",
+    @Field @Required val spinnerColor: String = "#ffffff",
+    @Field @Required val spinnerSizeDp: Double = 20.0,
+    @Field @Required val lineText: String = "",
+    @Field @Required val lineColor: String = "#ffffff",
+    @Field @Required val lineSizeDp: Double = 18.0,
+    @Field @Required val lineMarginTopDp: Double = 40.0,
+    @Field @Required val lineMaxWidthDp: Double = 260.0,
 ) : Record
