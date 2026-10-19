@@ -60,7 +60,7 @@ parent.
 | Field | When it is filled | Who fills it |
 | --- | --- | --- |
 | Title | At creation | Intake |
-| Type | At planning, one of Ticket, Bug, Feature, Investigation, Chore | The planner |
+| Type | At planning, one of Bug, Feature, Investigation, Research, Chore, Refactor, Docs, Design, Testing, Release | The planner |
 | Description | At creation, sharpened at planning | Intake, then the planner |
 | Column | At every stage | Whoever moves it |
 | Ticket number | At creation | Intake |

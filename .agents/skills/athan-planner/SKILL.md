@@ -55,6 +55,11 @@ various, several, some, appropriate, reasonable, properly, correctly.
   `- [ ]` list. Every criterion observable by a test, a command's output or a log line.
 - **Labels**: the surface and the area, from the vocabulary in `board-workflow`. Only what is
   honestly true.
+- **Type**: exactly one, and it is never left unset. Bug fixes something broken. Feature adds an
+  ability. Investigation answers how something works or why it fails. Research reads sources
+  outside the code. Chore is upkeep. Refactor restructures without changing behaviour. Docs
+  writes prose. Design decides a look. Testing is a test, a suite, or a run on a real device.
+  Release is a build, a version or a ship.
 - **Subtasks**: one per step, titled `Step N: <what it produces>`. Create each with the parent
   set to this ticket, in the Backlog column so they do not count as ready.
 - **Relations**: for each thing this waits on, a `blocked_by` relation to that ticket.
