@@ -38,9 +38,9 @@ describe('the open-the-app patch', () => {
     const headers = patch.split('\n').filter((line) => line.startsWith('diff --git'));
 
     // The openApp converter, the device-locale runtime patch's four files
-    // (iOS JSContext, Android Hermes runtime, its Kotlin plumb), the iOS
-    // entry view's layout-direction hunk, and the peek widget's
-    // granted-width environment hunk
+    // (the iOS JSContext, the C++ Hermes runtime, its JNI plumb, the Kotlin
+    // locale caller), the iOS entry view's layout-direction hunk, and the
+    // peek widget's granted-width environment hunk
     expect(headers).toHaveLength(7);
     for (const header of headers) {
       expect(header).toContain('node_modules/expo-widgets/');
