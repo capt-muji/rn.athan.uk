@@ -12,11 +12,15 @@ import android.widget.TextView
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 <<<<<<< HEAD
+<<<<<<< HEAD
 import expo.modules.kotlin.records.Record
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 =======
 >>>>>>> 79318921 (2.0.1115 - fix(language, android): a crossing switch shows the loader's own face across the native restart, because the reload kills the react context half a second before the new one paints and no js view can span that - a first-party switchcover module holds a cover over the activity's content from before the reload until the new context's first content commit lifts it, its view and showing flag in the companion object so the hide arrives from the new context's module instance, the commit shows it with the loader's purple, spinner, line and offsets on android only and hides it when the reload is refused, and the line composition moves to languageChangingLine so the loader and the cover compose one string (141))
+=======
+import expo.modules.kotlin.records.Record
+>>>>>>> 73a317c2 (2.0.1116 - fix(language, android): the switch cover compiles - the line size reaches setTextSize as the float it takes, hide returns through its branch instead of a bare label the zero-argument form rejects, and the face is a Record so the bridge parses the structured argument (141))
 
 /**
  * The language switch's cover: the loader's own face, held by the activity's content view across
@@ -133,7 +137,7 @@ class SwitchCoverModule : Module() {
 
             val density = activity.resources.displayMetrics.density
             val spinnerPx = (cover.spinnerSizeDp * density).toInt()
-            val lineSizePx = cover.lineSizeDp * density
+            val lineSizePx = (cover.lineSizeDp * density).toFloat()
             val lineMarginPx = (cover.lineMarginTopDp * density).toInt()
             val lineMaxWidthPx = (cover.lineMaxWidthDp * density).toInt()
             // The content view is laid out behind the loader at show time; a call that beats
@@ -192,11 +196,20 @@ class SwitchCoverModule : Module() {
         }
 
         AsyncFunction("hide") {
+<<<<<<< HEAD
             val held = heldCover ?: return@AsyncFunction
             (held.parent as? ViewGroup)?.removeView(held)
             heldCover = null
             showing = false
 >>>>>>> 79318921 (2.0.1115 - fix(language, android): a crossing switch shows the loader's own face across the native restart, because the reload kills the react context half a second before the new one paints and no js view can span that - a first-party switchcover module holds a cover over the activity's content from before the reload until the new context's first content commit lifts it, its view and showing flag in the companion object so the hide arrives from the new context's module instance, the commit shows it with the loader's purple, spinner, line and offsets on android only and hides it when the reload is refused, and the line composition moves to languageChangingLine so the loader and the cover compose one string (141))
+=======
+            val held = heldCover
+            if (held != null) {
+                (held.parent as? ViewGroup)?.removeView(held)
+                heldCover = null
+                showing = false
+            }
+>>>>>>> 73a317c2 (2.0.1116 - fix(language, android): the switch cover compiles - the line size reaches setTextSize as the float it takes, hide returns through its branch instead of a bare label the zero-argument form rejects, and the face is a Record so the bridge parses the structured argument (141))
         }
     }
 
@@ -217,7 +230,11 @@ data class SwitchCoverFace(
     val lineMarginTopDp: Double = 40.0,
     val lineMaxWidthDp: Double = 260.0,
 <<<<<<< HEAD
+<<<<<<< HEAD
 ) : Record
 =======
 )
 >>>>>>> 79318921 (2.0.1115 - fix(language, android): a crossing switch shows the loader's own face across the native restart, because the reload kills the react context half a second before the new one paints and no js view can span that - a first-party switchcover module holds a cover over the activity's content from before the reload until the new context's first content commit lifts it, its view and showing flag in the companion object so the hide arrives from the new context's module instance, the commit shows it with the loader's purple, spinner, line and offsets on android only and hides it when the reload is refused, and the line composition moves to languageChangingLine so the loader and the cover compose one string (141))
+=======
+) : Record
+>>>>>>> 73a317c2 (2.0.1116 - fix(language, android): the switch cover compiles - the line size reaches setTextSize as the float it takes, hide returns through its branch instead of a bare label the zero-argument form rejects, and the face is a Record so the bridge parses the structured argument (141))
