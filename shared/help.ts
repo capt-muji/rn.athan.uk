@@ -137,10 +137,10 @@ const HELP_ENTRIES: readonly HelpEntryKeys[] = [
   {
     question: 'help.q.widgets',
     ios: {
-      text: 'help.a.widgets.ios',
+      text: 'help.a.widgets',
     },
     android: {
-      text: 'help.a.widgets.android',
+      text: 'help.a.widgets',
     },
   },
 ];

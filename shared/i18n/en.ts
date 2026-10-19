@@ -71,8 +71,8 @@ export const en = {
   'help.q.cutoff': 'Why does the athan cut off early?',
   'help.a.cutoff': 'Notification sounds are limited to 30 seconds. Every athan is trimmed to fit.',
   'help.q.widgets': 'Are widgets supported?',
-  'help.a.widgets.ios': 'Yes, on the home screen and the lock screen.',
-  'help.a.widgets.android': 'Yes, on the home screen.',
+  // Two labeled lines, the platforms' labels Latin in every locale (owner, 2026-10-19)
+  'help.a.widgets': 'iOS: Yes, on the home screen and the lock screen.\nAndroid: Yes, on the home screen.',
   'help.action.dndAccess': 'Grant Do Not Disturb access',
 
   'whatsNew.title.tabletSupport': 'Tablet support',
