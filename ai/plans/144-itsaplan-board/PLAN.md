@@ -122,11 +122,17 @@ product's fields, and the default five columns are the most default surface.
 - [R3.1] WHEN the first account registers at `http://localhost:3001/register` THE SYSTEM SHALL give it the `god` role and open a session that reaches the board.
 - [R4.1] IF any research-gate answer is no THE SYSTEM SHALL stop and report before starting the stack.
 - [R5.1] WHEN the work is handed over THE SYSTEM SHALL leave the stack running, the board reachable at `http://localhost:3001/athan-uk.QUEUE`, and no generated file inside the repository tree.
+- [R6.1] WHEN the board is read THE SYSTEM SHALL render the queue's ten columns by their queue names, left to right Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream and Done.
+- [R6.2] WHEN the emitted tickets are placed THE SYSTEM SHALL put each on the column its queue row names, 107 on Done and 21 across the open columns.
+- [R7.1] WHEN the AI Agents page is read THE SYSTEM SHALL list the seven workflow roles, and the Skills library SHALL hold `athan-lead` and `athan-planner`.
+- [R7.2] WHEN an agent connects to the local board over MCP THE SYSTEM SHALL take a personal key from the shell environment and list the board's tools.
+- [R8.1] WHEN the runner is considered THE SYSTEM SHALL leave it uninstalled and record that starting it spends model tokens.
 
 ## 6. Steps
 
 - [ ] Step 01: bring the stack up on the pinned release, defaults only (`steps/01-bring-up.md`)
 - [ ] Step 02: put the queue's tickets on one project through the REST API (`steps/02-import.md`)
+- [ ] Step 03: inject the workflow into the board (`steps/03-inject.md`)
 
 Both steps are operations, not code. The evidence for each is a command's output recorded in
 `LOG.md`.

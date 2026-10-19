@@ -37,6 +37,14 @@
         "command": ["codegraph", "serve", "--mcp"],
         "disabled": false,
         "codemode": false
+      },
+      "itsaplan": {
+        "type": "remote",
+        "url": "http://localhost:3000/mcp",
+        "oauth": false,
+        "headers": { "x-api-key": "{env:ITSAPLAN_API_KEY}" },
+        "disabled": false,
+        "codemode": false
       }
     }
   }

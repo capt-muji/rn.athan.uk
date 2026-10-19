@@ -63,6 +63,69 @@ Read against the v1.5.0 checkout (`6e0dc0b`, 2026-10-13). Every answer is yes.
 `scripts/preflight-144.sh` copied to `$TMPDIR` and run from the repository root printed
 `PREFLIGHT OK`.
 
+## Phase 2, after the owner's approval (2026-10-19)
+
+The owner read the board, approved the prototype, and asked for the queue's workflow to be
+injected into it: the queue's own columns, its agents, its skills and its docs, with the styling
+untouched and the repository queue still the source of truth. The branch was pushed and not
+merged to `uat`.
+
+### Step 03 — done
+
+**Columns.** The product's five defaults became the queue's own ten, in the reader's own words:
+Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream, Done.
+`In progress` carries a soft WIP limit of three, which is the standing parallel order turned
+into the board's own control. The product orders columns by state category and then by position,
+so the rendered order is Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit,
+Owner-led, Upstream, Done. The reader's order could not be reproduced exactly because the
+product groups by state category, and Deferred is a backlog state while Upstream is a started
+one.
+
+**Tickets.** All 128 moved to the column their queue row names: Done 107, Deferred 11,
+Backlog 6, Owner-led 2, Blocked 1, Upstream 1, and Planning, Ready, In progress and Audit empty.
+That is the reader's own distribution.
+
+**Workflow data.** `Queue order` is a number field carrying each ticket's number in the queue,
+so any view can sort the way the queue does.
+
+**Agents.** The seven workflow roles are on the project as external agents: lane-lead, planner,
+executor, plan-griller, reviewer, explorer and vision. Each carries its one-line mandate. The
+AI Agents page lists them with "No runner yet".
+
+**Skills.** `athan-lead` and `athan-planner` are in the team library, read from the repository's
+own skill files.
+
+**Docs.** Five pages: The queue, The agents, Working the board, The board itself, and Running
+the agents from the board.
+
+**MCP.** `itsaplan` is a remote server in `opencode.json` at the API origin's `/mcp`, with
+`oauth` off and the key read from `{env:ITSAPLAN_API_KEY}`. The personal key was created on the
+owner account and written to the shell environment and to
+`$HOME/athan-gitree/sessions/144/mcp-key.txt`, never into the repository. An `initialize` with
+the key answers 200 and `tools/list` returns the board's tools. Without a key the endpoint
+answers 401.
+
+### Decisions taken (agent-ruled, phase 2)
+
+- **The runner is not installed.** `@itsaplan/runner` would claim runs for the agents on this
+  board and start a coding agent CLI on every one. That spends model tokens on each run, so it
+  is written up as a Docs page and left for the owner's order. The agents exist and are inert.
+- **Column state categories keep their real meanings.** Deferred stays a backlog state and
+  Upstream a started state, so the board's analytics stay honest. The cost is that the rendered
+  order is the product's grouping rather than the reader's exact order.
+- **No styling touched.** No theme, no stylesheet, no colour scheme. The only colours set are
+  the new columns' state colours, which the product requires.
+- **The repository queue stays the source of truth.** The board mirrors it. No sync service and
+  no importer is committed, so nothing writes back to the repository from the board.
+
+### Verified after phase 2
+
+The board renders the ten columns with the reader's distribution. `In progress` shows `0 / 3`.
+The AI Agents page lists seven roles. The Skills library lists two. Docs lists five pages. The
+MCP endpoint takes the personal key and refuses a keyless call.
+
+The three throwaway scripts live in `$TMPDIR` and die with the session.
+
 ## Ticket 144
 
 ### Step 01 — done

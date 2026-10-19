@@ -37,6 +37,10 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
 `opencode.json` enables codegraph, agent-device, xcodebuildmcp, mobile-mcp and the maestro
 server. The expo MCP sits disabled: nothing ships through EAS. Flip `enabled` to change one.
 
+`itsaplan` (ticket 144, 2026-10-19) is the queue's own board, a local It's a Plan instance. The
+repo queue at `ai/plans/README.md` stays the source of truth and the board mirrors it. Its key
+comes from `ITSAPLAN_API_KEY` in the shell environment, never from this repository.
+
 ## Workflow
 
 - The queue is `ai/plans/README.md`; up to three lanes run at a time under the standing
