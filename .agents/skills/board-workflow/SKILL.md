@@ -13,9 +13,12 @@ Instance: `itsaplan`, the MCP server wired in `opencode.json`. There is one proj
 
 ## The ticket's number
 
-A ticket is its number, written `#42`. The board, the comments and every conversation use the
-number. The product also gives each ticket an identifier, its project key, a dash, and the
-number. The number is the one a person says, and the identifier is plumbing.
+A ticket is its number, written `#42`. That number is the ticket's own, it is the first thing in
+its title, and it carries a label of the same name so the card shows it as a chip.
+
+The product also builds an identifier for every ticket: the project's key, a dash, and the number.
+The key here is `T`, so ticket `#42` is `T-42` to the tools and in any link. The number is what a
+person says. The key is plumbing, and the two now agree.
 
 ## The ten columns
 
@@ -124,8 +127,8 @@ A comment is for a person reading the board. Keep it to a line or two, in plain 
 
 ## Working an issue
 
-1. Read it with `get_issue_by_number`, passing the project's key and the ticket's number. Both
-   come from `get_project` and the title.
+1. Read it with `get_issue_by_number`, passing `T` and the ticket's number. The number in the
+   title is the number the tool takes.
 2. Move it to `In progress`.
 3. Do the work in the repository.
 4. Move it to `Done`, or to `Deferred` if it is parked.

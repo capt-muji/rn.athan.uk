@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict WaaqIXhfbhFB1kjfCol4bXkyZ10geF7HoUbUvFTlx0xsbDJYRyXjnNadm2K1fZ6
+\restrict kQZBA1LFyqd4vy2YLKTbrLkNCyfHQIS6EtpemMEe43o3aSZmhxgdH0DKOHnO33c
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5203,328 +5203,329 @@ INSERT INTO public.custom_field_option (id, field_id, value, color, "position") 
 -- Data for Name: issue; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (116, 1, 116, 1, 4, '#14 Widget timeline horizon 14 to 30 days', 'Queue status: DONE', NULL, NULL, NULL, 95000, '2026-10-18 23:35:57.475809+00', '2026-10-19 02:20:39.806673+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (114, 1, 114, 1, 4, '#16 iOS widgets flag flip after the G.1 protocol', 'Queue status: DONE', NULL, NULL, NULL, 93000, '2026-10-18 23:35:57.441819+00', '2026-10-19 02:20:39.832607+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (112, 1, 112, 1, 4, '#18 SDK 58 next re-pin + Babel 8 rider', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (127, 1, 2, 1, 4, '#2 Alert sheet change is all or nothing', 'Queue status: DONE', NULL, NULL, NULL, 106000, '2026-10-18 23:35:57.683648+00', '2026-10-19 02:20:39.650307+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (116, 1, 14, 1, 4, '#14 Widget timeline horizon 14 to 30 days', 'Queue status: DONE', NULL, NULL, NULL, 95000, '2026-10-18 23:35:57.475809+00', '2026-10-19 02:20:39.806673+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (114, 1, 16, 1, 4, '#16 iOS widgets flag flip after the G.1 protocol', 'Queue status: DONE', NULL, NULL, NULL, 93000, '2026-10-18 23:35:57.441819+00', '2026-10-19 02:20:39.832607+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (112, 1, 18, 1, 4, '#18 SDK 58 next re-pin + Babel 8 rider', 'Queue status: DONE
 
 2026-10-09, audited. Versions, incidents and durable lessons live in section 16. The owner’s ride-`next` policy stays in force: repin to the
 
 Needs first: #6', NULL, NULL, NULL, 91000, '2026-10-18 23:35:57.406222+00', '2026-10-19 02:20:39.860901+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (110, 1, 110, 1, 4, '#20 Non-SDK packages to absolute latest', 'Queue status: DONE', NULL, NULL, NULL, 89000, '2026-10-18 23:35:57.372738+00', '2026-10-19 02:20:39.888177+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (108, 1, 108, 1, 4, '#22 Lock-screen countdown layout (iOS)', 'Queue status: DONE', NULL, NULL, NULL, 87000, '2026-10-18 23:35:57.338812+00', '2026-10-19 02:20:39.914544+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (25, 1, 25, 1, 4, '#129 Widget props: the stamped-but-unread rtl field', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (110, 1, 20, 1, 4, '#20 Non-SDK packages to absolute latest', 'Queue status: DONE', NULL, NULL, NULL, 89000, '2026-10-18 23:35:57.372738+00', '2026-10-19 02:20:39.888177+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (108, 1, 22, 1, 4, '#22 Lock-screen countdown layout (iOS)', 'Queue status: DONE', NULL, NULL, NULL, 87000, '2026-10-18 23:35:57.338812+00', '2026-10-19 02:20:39.914544+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (25, 1, 129, 1, 4, '#129 Widget props: the stamped-but-unread rtl field', 'Queue status: DONE
 
 with row 135 2026-10-18: the rtl field is CONSUMED - the patched iOS entry view reads it as the native layout direction and the Android comp', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.882566+00', '2026-10-19 02:20:40.967991+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (24, 1, 24, 1, 4, '#131 expo-location: the six named unverified readings', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (124, 1, 5, 1, 4, '#5 Yesterday''s still-due rows survive 00:00', 'Queue status: DONE', NULL, NULL, NULL, 103000, '2026-10-18 23:35:57.617259+00', '2026-10-19 02:20:39.69425+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (24, 1, 131, 1, 4, '#131 expo-location: the six named unverified readings', 'Queue status: DONE
 
 2026-10-17, audited (two reviewer passes, nine findings adjudicated and fixed at 2.0.1001, among them the second-ask wording and row 134''s b', NULL, NULL, NULL, 3000, '2026-10-18 23:35:55.8664+00', '2026-10-19 02:20:40.979939+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (23, 1, 23, 1, 4, '#134 Widgets-off Android release builds fail their own lint gate', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (100, 1, 32, 1, 4, '#32 The day roll (ISSUES #27)', 'Queue status: DONE', NULL, NULL, NULL, 79000, '2026-10-18 23:35:57.198328+00', '2026-10-19 02:20:40.019033+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (23, 1, 134, 1, 4, '#134 Widgets-off Android release builds fail their own lint gate', 'Queue status: DONE
 
 2026-10-17, audited through 2.0.1009', NULL, NULL, NULL, 2000, '2026-10-18 23:35:55.848381+00', '2026-10-19 02:20:40.992709+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (22, 1, 22, 1, 4, '#138 Semver discipline: a thousand patches, never a minor', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (22, 1, 138, 1, 4, '#138 Semver discipline: a thousand patches, never a minor', 'Queue status: DONE
 
 2026-10-18, audited (two reviewer passes, nine findings all confirmed and fixed at 2.0.1065, the conflicted-merge and unstaged-blob holes am', NULL, NULL, NULL, 1000, '2026-10-18 23:35:55.830083+00', '2026-10-19 02:20:41.006218+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (20, 1, 20, 1, 10, '#137 Arabic line height parity: Android against iOS, same TTF', 'Queue status: FOLDED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (20, 1, 137, 1, 10, '#137 Arabic line height parity: Android against iOS, same TTF', 'Queue status: FOLDED
 
 into row 140 2026-10-18 by the owner''s order (the gaps the owner sees on glass are this row''s verdict made visible; the parity verdict, the 
 
 Needs first: #140', NULL, NULL, NULL, 20000, '2026-10-18 23:35:55.799503+00', '2026-10-19 02:20:41.01867+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (19, 1, 19, 1, 1, '#141 Language switch flashes on Android: the spinner unmounts, a target-language flash, then a blank purple page', 'Queue status: NOT PLANNED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (19, 1, 141, 1, 1, '#141 Language switch flashes on Android: the spinner unmounts, a target-language flash, then a blank purple page', 'Queue status: NOT PLANNED
 
 2026-10-18, OWNER REPORT', NULL, NULL, NULL, 19000, '2026-10-18 23:35:55.787303+00', '2026-10-19 02:20:41.031881+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (18, 1, 18, 1, 1, '#140 Arabic line height on Android: the gaps the owner sees on glass', 'Queue status: NOT PLANNED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (18, 1, 140, 1, 1, '#140 Arabic line height on Android: the gaps the owner sees on glass', 'Queue status: NOT PLANNED
 
 2026-10-18, OWNER REPORT NOT PLANNED 2026-10-18, OWNER REPORT; row 137 FOLDED HERE 2026-10-18 by the owner''s order: its parity verdict and n', NULL, NULL, NULL, 18000, '2026-10-18 23:35:55.773377+00', '2026-10-19 02:20:41.044961+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (17, 1, 17, 1, 1, '#143 Upstream: file the device-locale PR properly, and give every open PR its tracking row', 'Queue status: NOT PLANNED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (17, 1, 143, 1, 1, '#143 Upstream: file the device-locale PR properly, and give every open PR its tracking row', 'Queue status: NOT PLANNED
 
 2026-10-18, OWNER ORDER, backlog for a new session', NULL, NULL, NULL, 17000, '2026-10-18 23:35:55.759468+00', '2026-10-19 02:20:41.056792+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (16, 1, 16, 1, 1, '#142 Settings: a Widgets option that opens the OS widget gallery at our section', 'Queue status: NOT PLANNED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (16, 1, 142, 1, 1, '#142 Settings: a Widgets option that opens the OS widget gallery at our section', 'Queue status: NOT PLANNED
 
 2026-10-18, OWNER ORDER, queued late', NULL, NULL, NULL, 16000, '2026-10-18 23:35:55.745504+00', '2026-10-19 02:20:41.071973+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (15, 1, 15, 1, 1, '#139 Alert bottom sheet: one dim level, whole-header taps, reminder state restored', 'Queue status: NOT PLANNED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (15, 1, 139, 1, 1, '#139 Alert bottom sheet: one dim level, whole-header taps, reminder state restored', 'Queue status: NOT PLANNED
 
 2026-10-18, OWNER ORDER', NULL, NULL, NULL, 15000, '2026-10-18 23:35:55.731858+00', '2026-10-19 02:20:41.088074+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (13, 1, 13, 1, 10, '#136 Android chevrons do not mirror under Arabic (settings sheet)', 'Queue status: OWNER
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (13, 1, 136, 1, 10, '#136 Android chevrons do not mirror under Arabic (settings sheet)', 'Queue status: OWNER
 
 REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English dire', NULL, NULL, NULL, 13000, '2026-10-18 23:35:55.699625+00', '2026-10-19 02:20:41.116918+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (12, 1, 12, 1, 10, '#132 Upstream: the expo-widgets device-locale patch hunks as one PR', 'Queue status: DEFERRED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (12, 1, 132, 1, 10, '#132 Upstream: the expo-widgets device-locale patch hunks as one PR', 'Queue status: DEFERRED
 
 2026-10-16 by the owner''s consolidation order: the expo-widgets patch upstreaming parks with the rest of the widget work', NULL, NULL, NULL, 12000, '2026-10-18 23:35:55.68349+00', '2026-10-19 02:20:41.13189+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 11, 1, 10, '#130 Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'Queue status: DEFERRED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (122, 1, 7, 1, 4, '#7 Agent tooling', 'Queue status: DONE', NULL, NULL, NULL, 101000, '2026-10-18 23:35:57.578621+00', '2026-10-19 02:20:39.721844+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 130, 1, 10, '#130 Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'Queue status: DEFERRED
 
 2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 02:20:41.14513+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (10, 1, 10, 1, 10, '#128 iOS widget countdown renders system-formatted, outside the Latin ruling', 'Queue status: DISCARDED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (10, 1, 128, 1, 10, '#128 iOS widget countdown renders system-formatted, outside the Latin ruling', 'Queue status: DISCARDED
 
 BY THE OWNER''S ORDER 2026-10-18: the iOS widget countdown keeps the system timer interval and its current Latin face in every language, no l
 
 Needs first: #10, #18, #2026', NULL, NULL, NULL, 10000, '2026-10-18 23:35:55.654244+00', '2026-10-19 02:20:41.159216+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (9, 1, 9, 1, 10, '#127 Android widgets on OEMs: is the feature worth keeping, and what hardening is left', 'Queue status: DEFERRED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (9, 1, 127, 1, 10, '#127 Android widgets on OEMs: is the feature worth keeping, and what hardening is left', 'Queue status: DEFERRED
 
 2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work', NULL, NULL, NULL, 9000, '2026-10-18 23:35:55.638498+00', '2026-10-19 02:20:41.176952+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (8, 1, 8, 1, 10, '#126 Board mirror: an OWNER-LED row must read as awaiting the owner', 'Queue status: PROBLEM:
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (8, 1, 126, 1, 10, '#126 Board mirror: an OWNER-LED row must read as awaiting the owner', 'Queue status: PROBLEM:
 
 row 56 shipped the read-only board mirror. The owner''s 2026-10-16 ruling changed the status model: an audited investigation whose deliverabl
 
 Needs first: #7, #10, #17, #2026', NULL, NULL, NULL, 8000, '2026-10-18 23:35:55.623293+00', '2026-10-19 02:20:41.189364+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (7, 1, 7, 1, 10, '#123 Android widget refresh on OEMs: re-evaluate against SDK 58 stable', 'Queue status: FOLDED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (7, 1, 123, 1, 10, '#123 Android widget refresh on OEMs: re-evaluate against SDK 58 stable', 'Queue status: FOLDED
 
 into row 127 2026-10-18 by the owner''s order (the owner read them as the same thing; the delivered version-delta verdict carries in as 127''s
 
 Needs first: #127', NULL, NULL, NULL, 7000, '2026-10-18 23:35:55.606979+00', '2026-10-19 02:20:41.201733+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (4, 1, 4, 1, 7, '#54 Patches, one line of qibla copy, repository hygiene', 'Queue status: BLOCKED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (4, 1, 54, 1, 7, '#54 Patches, one line of qibla copy, repository hygiene', 'Queue status: BLOCKED
 
 2026-10-14 by the owner: the owner has no access to the OnePlus 3T, which the one leftover needs. The owner paused app work part way through', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.558039+00', '2026-10-19 02:20:41.226405+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (3, 1, 3, 1, 11, '#51 Upstream `expo-location` compass corrections', 'Queue status: UPSTREAM
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (3, 1, 51, 1, 11, '#51 Upstream `expo-location` compass corrections', 'Queue status: UPSTREAM
 
 2026-10-12: waiting on Expo reviewing and releasing PR `expo/expo#51291` (https://github.com/expo/expo/pull/51291); the corrections land wit
 
 Needs first: #50', NULL, NULL, NULL, 3000, '2026-10-18 23:35:55.539356+00', '2026-10-19 02:20:41.244035+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (2, 1, 2, 1, 10, '#42 Global prayer times', 'Queue status: DEFERRED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (2, 1, 42, 1, 10, '#42 Global prayer times', 'Queue status: DEFERRED
 
 2026-10-14 to v3.0 by the owner''s priority call (pairs with row 25; the owner will say go). Research is complete, no code is written. **Two ', NULL, NULL, NULL, 2000, '2026-10-18 23:35:55.506689+00', '2026-10-19 02:20:41.258328+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (1, 1, 1, 1, 10, '#25 Moonsighting research, part 2', 'Queue status: DEFERRED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (1, 1, 25, 1, 10, '#25 Moonsighting research, part 2', 'Queue status: DEFERRED
 
 2026-10-12 to v3.0 by the owner''s priority call (the owner''s 2026-10-13 ruling: the deferral is literal, not a ban). Runs behind rows 37 to 
 
 Needs first: #37, #39', NULL, NULL, NULL, 1000, '2026-10-18 23:35:55.447181+00', '2026-10-19 02:20:41.271786+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (124, 1, 124, 1, 4, '#5 Yesterday''s still-due rows survive 00:00', 'Queue status: DONE', NULL, NULL, NULL, 103000, '2026-10-18 23:35:57.617259+00', '2026-10-19 02:20:39.69425+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (120, 1, 120, 1, 4, '#10 Android widget polish + self-refresh', 'Queue status: DONE', NULL, NULL, NULL, 99000, '2026-10-18 23:35:57.546282+00', '2026-10-19 02:20:39.752157+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (118, 1, 118, 1, 4, '#12 Android widgets: proportional sizing', 'Queue status: DONE', NULL, NULL, NULL, 97000, '2026-10-18 23:35:57.512173+00', '2026-10-19 02:20:39.778651+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (50, 1, 50, 1, 4, '#91 The language-switch crash: BackgroundTasks queried off the main thread', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (120, 1, 10, 1, 4, '#10 Android widget polish + self-refresh', 'Queue status: DONE', NULL, NULL, NULL, 99000, '2026-10-18 23:35:57.546282+00', '2026-10-19 02:20:39.752157+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (118, 1, 12, 1, 4, '#12 Android widgets: proportional sizing', 'Queue status: DONE', NULL, NULL, NULL, 97000, '2026-10-18 23:35:57.512173+00', '2026-10-19 02:20:39.778651+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (50, 1, 91, 1, 4, '#91 The language-switch crash: BackgroundTasks queried off the main thread', 'Queue status: DONE
 
 2026-10-15, audited: the crash''s caller pinned (the debug sequence''s simulate step invoking BGTaskScheduler''s private launch-simulation sele', NULL, NULL, NULL, 29000, '2026-10-18 23:35:56.329643+00', '2026-10-19 02:20:40.658876+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (49, 1, 49, 1, 4, '#100 The owner''s visual read batch: eight fixes in one ticket', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (49, 1, 100, 1, 4, '#100 The owner''s visual read batch: eight fixes in one ticket', 'Queue status: DONE
 
 2026-10-15, audited: the eight visual fixes landed - the ago badge''s lettered run isolated LTR inside the Arabic sentence with plain full-si', NULL, NULL, NULL, 28000, '2026-10-18 23:35:56.314394+00', '2026-10-19 02:20:40.669781+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (48, 1, 48, 1, 4, '#101 The prayer row times: brighter, whiter on past and next rows', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (48, 1, 101, 1, 4, '#101 The prayer row times: brighter, whiter on past and next rows', 'Queue status: DONE
 
 2026-10-15, landed direct at 2.0.771 by the owner''s order, refined live through 2.0.772 (the upcoming rows reverted untouched, the passed co', NULL, NULL, NULL, 27000, '2026-10-18 23:35:56.294146+00', '2026-10-19 02:20:40.682456+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (47, 1, 47, 1, 4, '#102 The owner''s live evening batch: countdown ink, glyphs, the language sheet, the seconds default', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (47, 1, 102, 1, 4, '#102 The owner''s live evening batch: countdown ink, glyphs, the language sheet, the seconds default', 'Queue status: DONE
 
 2026-10-15, landed direct by the owner''s order through 2.0.777, SUPERSEDED-IN-PART same evening by the owner''s live rulings: the sheet subhe', NULL, NULL, NULL, 26000, '2026-10-18 23:35:56.276867+00', '2026-10-19 02:20:40.696586+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (46, 1, 46, 1, 4, '#103 The schedule pager under RTL: mirrored swipes and page order', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (46, 1, 103, 1, 4, '#103 The schedule pager under RTL: mirrored swipes and page order', 'Queue status: DONE
 
 2026-10-15, audited: the schedule pager mirrors under every RTL locale through the native layoutDirection prop keyed off the app locale (en ', NULL, NULL, NULL, 25000, '2026-10-18 23:35:56.259802+00', '2026-10-19 02:20:40.709249+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (45, 1, 45, 1, 4, '#104 The post-close haptic on the change-athan sheet', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (45, 1, 104, 1, 4, '#104 The post-close haptic on the change-athan sheet', 'Queue status: DONE
 
 2026-10-16, audited: the close haptic lands when the sheet finishes closing on every path - the changed-pick commit defers past the next pai', NULL, NULL, NULL, 24000, '2026-10-18 23:35:56.244426+00', '2026-10-19 02:20:40.721411+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (44, 1, 44, 1, 4, '#105 The countdown bar defaults off; no migration', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (44, 1, 105, 1, 4, '#105 The countdown bar defaults off; no migration', 'Queue status: DONE
 
 2026-10-15, landed direct, both reviews adjudicated, no migration by the owner''s final word', NULL, NULL, NULL, 23000, '2026-10-18 23:35:56.227616+00', '2026-10-19 02:20:40.732927+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (43, 1, 43, 1, 4, '#106 The Arabic location-date gap, the overlay info-box arrow, the countdown letter gap', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (43, 1, 106, 1, 4, '#106 The Arabic location-date gap, the overlay info-box arrow, the countdown letter gap', 'Queue status: DONE
 
 2026-10-16, audited: under Arabic the whole face renders Rubik (words, digits, h m s letters, row times; the bundled Noto pair deleted by th', NULL, NULL, NULL, 22000, '2026-10-18 23:35:56.210782+00', '2026-10-19 02:20:40.743876+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (42, 1, 42, 1, 4, '#107 Agent tooling: the Vercel performance skill, mobile-mcp and the maestro server on', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (42, 1, 107, 1, 4, '#107 Agent tooling: the Vercel performance skill, mobile-mcp and the maestro server on', 'Queue status: DONE
 
 2026-10-15, landed direct at 2.0.792 by the owner''s order', NULL, NULL, NULL, 21000, '2026-10-18 23:35:56.194256+00', '2026-10-19 02:20:40.761035+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (41, 1, 41, 1, 4, '#108 The Rubik cascade: the sheets'' pulls, the label gap, the footer clip', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (41, 1, 108, 1, 4, '#108 The Rubik cascade: the sheets'' pulls, the label gap, the footer clip', 'Queue status: DONE
 
 2026-10-16, audited: the Rubik cascade lands - every sheet subtitle (qibla''s own included) sits a 6 point positive gap under its title with ', NULL, NULL, NULL, 20000, '2026-10-18 23:35:56.178691+00', '2026-10-19 02:20:40.772011+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (40, 1, 40, 1, 4, '#109 The owner''s pass-three read of the 2.0.833 build: four fixes in one ticket', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (40, 1, 109, 1, 4, '#109 The owner''s pass-three read of the 2.0.833 build: four fixes in one ticket', 'Queue status: DONE
 
 2026-10-16, landed direct at 2.0.834 by the owner''s order (all gates green, 5690 tests, 100 percent): the upcoming colon rides the row''s own', NULL, NULL, NULL, 19000, '2026-10-18 23:35:56.161866+00', '2026-10-19 02:20:40.783984+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (39, 1, 39, 1, 4, '#110 Real 500 weights for Hindi and Thai', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (39, 1, 110, 1, 4, '#110 Real 500 weights for Hindi and Thai', 'Queue status: DONE
 
 2026-10-16, landed direct at 2.0.835 by the owner''s order (all gates green, 5692 tests, 100 percent): words under hi and th ride their own N', NULL, NULL, NULL, 18000, '2026-10-18 23:35:56.142823+00', '2026-10-19 02:20:40.799474+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (38, 1, 38, 1, 4, '#111 SDK 58 stable re-pin + the Babel 8 rider', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (38, 1, 111, 1, 4, '#111 SDK 58 stable re-pin + the Babel 8 rider', 'Queue status: DONE
 
 2026-10-17, audited (three passes; plan-conformance''s two records musts fixed in the audit merge): the newest stable SDK 58 set landed (expo', NULL, NULL, NULL, 17000, '2026-10-18 23:35:56.12628+00', '2026-10-19 02:20:40.811535+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (37, 1, 37, 1, 4, '#112 The naked-app defaults: all four display toggles off', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (37, 1, 112, 1, 4, '#112 The naked-app defaults: all four display toggles off', 'Queue status: DONE
 
 2026-10-16, landed direct at 2.0.837 by the owner''s order (all gates green, 5692 tests, 100 percent): the atom''s default pin false, the defa', NULL, NULL, NULL, 16000, '2026-10-18 23:35:56.108525+00', '2026-10-19 02:20:40.823667+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (36, 1, 36, 1, 4, '#113 The loader''s frame-one language; the mock at any hour', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (36, 1, 113, 1, 4, '#113 The loader''s frame-one language; the mock at any hour', 'Queue status: DONE
 
 2026-10-16, landed direct at 2.0.838 by the owner''s order (all gates green, 5697 tests, 100 percent): the loader composes through tIn (a nam', NULL, NULL, NULL, 15000, '2026-10-18 23:35:56.091552+00', '2026-10-19 02:20:40.836318+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (35, 1, 35, 1, 4, '#114 The owner''s pass-four read: the colon''s advance, the round info badge, the Thai step', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (35, 1, 114, 1, 4, '#114 The owner''s pass-four read: the colon''s advance, the round info badge, the Thai step', 'Queue status: DONE
 
 2026-10-16, landed direct at 2.0.842, 2.0.844 and 2.0.845 by the owner''s order (all gates green each time, 100 percent): the colon rides ONE', NULL, NULL, NULL, 14000, '2026-10-18 23:35:56.074831+00', '2026-10-19 02:20:40.848793+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (34, 1, 34, 1, 4, '#115 The Thai face becomes Sarabun, the owner''s specimen pick', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (34, 1, 115, 1, 4, '#115 The Thai face becomes Sarabun, the owner''s specimen pick', 'Queue status: DONE
 
 then REVERSED 2026-10-16: Sarabun landed at 2.0.846, the owner''s read rejected it, and the clean revert at 2.0.848 restores Noto Sans Thai e', NULL, NULL, NULL, 13000, '2026-10-18 23:35:56.051874+00', '2026-10-19 02:20:40.860854+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (32, 1, 32, 1, 4, '#118 Variable fonts: one file per family, the investigation', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (32, 1, 118, 1, 4, '#118 Variable fonts: one file per family, the investigation', 'Queue status: DONE
 
 2026-10-16, the owner''s ruling taken: keep the eight static fonts, the variable-font idea dropped: (one blind reviewer; every number reprodu
 
 Needs first: #10, #16, #2026', NULL, NULL, NULL, 11000, '2026-10-18 23:35:56.012588+00', '2026-10-19 02:20:40.883581+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (31, 1, 31, 1, 4, '#119 The agent CLI: introduce @expo/agent-cli into the repository', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (31, 1, 119, 1, 4, '#119 The agent CLI: introduce @expo/agent-cli into the repository', 'Queue status: DONE
 
 2026-10-16, audited: option B landed at 2.0.928 - ai/AGENTS.md routes the four measured reads (doctor the advisory health check, typecheck t
 
 Needs first: #10, #16, #2026', NULL, NULL, NULL, 10000, '2026-10-18 23:35:55.994766+00', '2026-10-19 02:20:40.894292+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (28, 1, 28, 1, 4, '#122 The rewritten AVD and adb management in Expo CLI 58: evaluate for the Android harness', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (28, 1, 122, 1, 4, '#122 The rewritten AVD and adb management in Expo CLI 58: evaluate for the Android harness', 'Queue status: DONE
 
 2026-10-17, audited: the two stale --device lines are corrected to the measured truth at the installed @expo/cli 58.1.10 and the install-and
 
 Needs first: #10, #16, #2026', NULL, NULL, NULL, 7000, '2026-10-18 23:35:55.933365+00', '2026-10-19 02:20:40.930092+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (26, 1, 26, 1, 4, '#125 Workflow guards: three measured lane defects need guards, not only prose', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (26, 1, 125, 1, 4, '#125 Workflow guards: three measured lane defects need guards, not only prose', 'Queue status: DONE
 
 2026-10-17, audited (two passes, plan-conformance and blind, both with the range named and findings files gated by check-audit.sh; nine find', NULL, NULL, NULL, 5000, '2026-10-18 23:35:55.899784+00', '2026-10-19 02:20:40.955657+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (100, 1, 100, 1, 4, '#32 The day roll (ISSUES #27)', 'Queue status: DONE', NULL, NULL, NULL, 79000, '2026-10-18 23:35:57.198328+00', '2026-10-19 02:20:40.019033+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (98, 1, 98, 1, 4, '#34 Dead-code sweep', 'Queue status: DONE', NULL, NULL, NULL, 77000, '2026-10-18 23:35:57.166776+00', '2026-10-19 02:20:40.043685+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (96, 1, 96, 1, 4, '#37 D2 + D5: qibla finder on a cached location', 'Queue status: DONE', NULL, NULL, NULL, 75000, '2026-10-18 23:35:57.131928+00', '2026-10-19 02:20:40.072252+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (92, 1, 92, 1, 4, '#41 Qibla on an offline map', 'Queue status: DONE', NULL, NULL, NULL, 71000, '2026-10-18 23:35:57.062341+00', '2026-10-19 02:20:40.127676+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (90, 1, 90, 1, 4, '#45 Qibla on a flat world map', 'Queue status: DONE', NULL, NULL, NULL, 69000, '2026-10-18 23:35:57.024337+00', '2026-10-19 02:20:40.159856+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (88, 1, 88, 1, 4, '#48 Heading source research', 'Queue status: DONE', NULL, NULL, NULL, 67000, '2026-10-18 23:35:56.991633+00', '2026-10-19 02:20:40.185532+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (86, 1, 86, 1, 4, '#50 Which patch fixed the compass', 'Queue status: DONE', NULL, NULL, NULL, 65000, '2026-10-18 23:35:56.96177+00', '2026-10-19 02:20:40.211343+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (82, 1, 82, 1, 4, '#56 Ticket board: a read-only local mirror of the queue and its runs', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (98, 1, 34, 1, 4, '#34 Dead-code sweep', 'Queue status: DONE', NULL, NULL, NULL, 77000, '2026-10-18 23:35:57.166776+00', '2026-10-19 02:20:40.043685+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (96, 1, 37, 1, 4, '#37 D2 + D5: qibla finder on a cached location', 'Queue status: DONE', NULL, NULL, NULL, 75000, '2026-10-18 23:35:57.131928+00', '2026-10-19 02:20:40.072252+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (92, 1, 41, 1, 4, '#41 Qibla on an offline map', 'Queue status: DONE', NULL, NULL, NULL, 71000, '2026-10-18 23:35:57.062341+00', '2026-10-19 02:20:40.127676+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (90, 1, 45, 1, 4, '#45 Qibla on a flat world map', 'Queue status: DONE', NULL, NULL, NULL, 69000, '2026-10-18 23:35:57.024337+00', '2026-10-19 02:20:40.159856+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (88, 1, 48, 1, 4, '#48 Heading source research', 'Queue status: DONE', NULL, NULL, NULL, 67000, '2026-10-18 23:35:56.991633+00', '2026-10-19 02:20:40.185532+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (86, 1, 50, 1, 4, '#50 Which patch fixed the compass', 'Queue status: DONE', NULL, NULL, NULL, 65000, '2026-10-18 23:35:56.96177+00', '2026-10-19 02:20:40.211343+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (82, 1, 56, 1, 4, '#56 Ticket board: a read-only local mirror of the queue and its runs', 'Queue status: DONE
 
 2026-10-12, audited and pushed: the ticket board serves at 127.0.0.1:8788 (docker compose up in board/) - reader recomputes board.json from ', NULL, NULL, NULL, 61000, '2026-10-18 23:35:56.894785+00', '2026-10-19 02:20:40.260525+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (80, 1, 80, 1, 4, '#58 Right-to-left layout mirroring', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (80, 1, 58, 1, 4, '#58 Right-to-left layout mirroring', 'Queue status: DONE
 
 2026-10-12, audited: stage 58a landed - every parent-relative directional style in app source uses logical keys (start/end, margin and paddi
 
 Needs first: #39', NULL, NULL, NULL, 59000, '2026-10-18 23:35:56.860815+00', '2026-10-19 02:20:40.284683+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (77, 1, 77, 1, 4, '#61 Somali prayer name wraps to two lines with room to spare', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (77, 1, 61, 1, 4, '#61 Somali prayer name wraps to two lines with room to spare', 'Queue status: DONE
 
 2026-10-12, audited: the prayer-name reserve is now the widest label in rendered points, measured per name on both lists (the Somali Sunrise
 
 Needs first: #39', NULL, NULL, NULL, 56000, '2026-10-18 23:35:56.815064+00', '2026-10-19 02:20:40.320918+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (75, 1, 75, 1, 4, '#63 Countdown format: numbers and colons only, every language', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (75, 1, 63, 1, 4, '#63 Countdown format: numbers and colons only, every language', 'Queue status: DONE
 
 2026-10-12, audited and pushed: the app''s countdowns, ago badge, reminder titles and channel labels render numbers and colons with no unit l
 
 Needs first: #57, #67, #68, #69', NULL, NULL, NULL, 54000, '2026-10-18 23:35:56.781374+00', '2026-10-19 02:20:40.344321+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (73, 1, 73, 1, 4, '#65 perfName remnants: investigation only', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (73, 1, 65, 1, 4, '#65 perfName remnants: investigation only', 'Queue status: DONE
 
 2026-10-12, audited: the perfName investigation answers the owner''s three questions (FINDINGS.md folded here per D82, its folder closed): 19', NULL, NULL, NULL, 52000, '2026-10-18 23:35:56.745383+00', '2026-10-19 02:20:40.368877+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (69, 1, 69, 1, 4, '#72 Countdown timer: fixed-width sections, dim colons and zero-hours, English reverts to letters', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (69, 1, 72, 1, 4, '#72 Countdown timer: fixed-width sections, dim colons and zero-hours, English reverts to letters', 'Queue status: DONE
 
 2026-10-13, audited: the countdown is fixed-width three double-digit groups under the five non-en locales (dim zero groups, always-dim gappe', NULL, NULL, NULL, 48000, '2026-10-18 23:35:56.676365+00', '2026-10-19 02:20:40.424682+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (67, 1, 67, 1, 4, '#74 Arabic typography: text renders too small and carries no bold weight', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (67, 1, 74, 1, 4, '#74 Arabic typography: text renders too small and carries no bold weight', 'Queue status: DONE
 
 2026-10-13, audited: Arabic renders in the bundled Noto Sans Arabic Regular and Medium on every app text style, and weight surfaces render a
 
 Needs first: #38, #39, #72', NULL, NULL, NULL, 46000, '2026-10-18 23:35:56.642264+00', '2026-10-19 02:20:40.450213+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (65, 1, 65, 1, 4, '#76 Digit and string gaps under ar: the overlay''s Latin numerals, the Qibla instruction''s ellipsis, the cardinal letters', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (65, 1, 76, 1, 4, '#76 Digit and string gaps under ar: the overlay''s Latin numerals, the Qibla instruction''s ellipsis, the cardinal letters', 'Queue status: DONE
 
 2026-10-14, audited: the Extras info boxes verified on Arabic-Indic digits across all five sentences with a six-locale sweep lock (row 84''s ', NULL, NULL, NULL, 44000, '2026-10-18 23:35:56.605867+00', '2026-10-19 02:20:40.472601+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (63, 1, 63, 1, 4, '#78 The D59 relaunch starves: the in-process reload silently skips most direction-change crossings', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (63, 1, 78, 1, 4, '#78 The D59 relaunch starves: the in-process reload silently skips most direction-change crossings', 'Queue status: DONE
 
 2026-10-14, audited: the firing condition pinned and fixed - the commit''s convergence await blocked unbounded and unlogged on the scheduling', NULL, NULL, NULL, 42000, '2026-10-18 23:35:56.568203+00', '2026-10-19 02:20:40.495053+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (62, 1, 62, 1, 4, '#79 Countdown dim levels, the no-shift rule, and prayer-list colon treatment', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (62, 1, 79, 1, 4, '#79 Countdown dim levels, the no-shift rule, and prayer-list colon treatment', 'Queue status: DONE
 
 2026-10-13, audited: the timer''s dim levels land on the owner''s corrected figures (a spent 00 group white reduced 30 percent, every colon wh
 
 Needs first: #72, #74', NULL, NULL, NULL, 41000, '2026-10-18 23:35:56.549064+00', '2026-10-19 02:20:40.50786+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (61, 1, 61, 1, 4, '#80 Layout direction follows the app language, not the system language', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (61, 1, 80, 1, 4, '#80 Layout direction follows the app language, not the system language', 'Queue status: DONE
 
 2026-10-14, audited: the layout direction reads the app locale at the React tree''s root and the picker modal''s host (the direction style key', NULL, NULL, NULL, 40000, '2026-10-18 23:35:56.525403+00', '2026-10-19 02:20:40.520323+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (60, 1, 60, 1, 4, '#81 Typography refinements from the owner''s green-build read (ar sizes, colon gaps, ago gap)', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (60, 1, 81, 1, 4, '#81 Typography refinements from the owner''s green-build read (ar sizes, colon gaps, ago gap)', 'Queue status: DONE
 
 2026-10-14, audited: the owner''s green-build refinements land - the timer under ar two points smaller (24), every colon on the timer, the ti
 
 Needs first: #74', NULL, NULL, NULL, 39000, '2026-10-18 23:35:56.507096+00', '2026-10-19 02:20:40.532568+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (59, 1, 59, 1, 4, '#82 Latin numerals everywhere; the countdown identical in every language', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (59, 1, 82, 1, 4, '#82 Latin numerals everywhere; the countdown identical in every language', 'Queue status: DONE
 
 2026-10-13, audited: Latin digits render in every language and the countdown timer is one design everywhere - fixed-width colon sections, di
 
 Needs first: #4, #79, #81, #82', NULL, NULL, NULL, 38000, '2026-10-18 23:35:56.490061+00', '2026-10-19 02:20:40.546298+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (57, 1, 57, 1, 4, '#84 The live-iteration batch: countdown model, colons, Readex Pro, locale-driven rules', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (57, 1, 84, 1, 4, '#84 The live-iteration batch: countdown model, colons, Readex Pro, locale-driven rules', 'Queue status: DONE
 
 2026-10-14, audited: 2.0.250 carries the batch (32 files, 5557 tests, 100 percent on statements, branches, functions and lines), the two-rev', NULL, NULL, NULL, 36000, '2026-10-18 23:35:56.452892+00', '2026-10-19 02:20:40.575006+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (56, 1, 56, 1, 4, '#85 Countdown time display: lowercase h m s letters in every language', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (56, 1, 85, 1, 4, '#85 Countdown time display: lowercase h m s letters in every language', 'Queue status: DONE
 
 2026-10-15, audited: the countdown TIME display is the lettered design in every language - unpadded Latin digit groups with small faint lowe
 
 Needs first: #83', NULL, NULL, NULL, 35000, '2026-10-18 23:35:56.433194+00', '2026-10-19 02:20:40.586887+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (53, 1, 53, 1, 4, '#88 Latin numerals absolutely everywhere; the notification unit word drops', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (53, 1, 88, 1, 4, '#88 Latin numerals absolutely everywhere; the notification unit word drops', 'Queue status: DONE
 
 2026-10-15, audited: every digit the app composes renders Latin in every language - the native-digit map (NATIVE_DIGITS, localizeDigits) is 
 
 Needs first: #85', NULL, NULL, NULL, 32000, '2026-10-18 23:35:56.378106+00', '2026-10-19 02:20:40.626059+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (52, 1, 52, 1, 4, '#89 The volume note returns to both sheets at the foot', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (52, 1, 89, 1, 4, '#89 The volume note returns to both sheets at the foot', 'Queue status: DONE
 
 2026-10-15, audited (both passes clean bar one records nit that died with the plan folder): the note returned at 2.0.737, hook Tests: 2 skip', NULL, NULL, NULL, 31000, '2026-10-18 23:35:56.36085+00', '2026-10-19 02:20:40.638155+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (30, 1, 30, 1, 4, '#120 iOS Notification Center: group or clear the delivered stack (threadIdentifier)', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (30, 1, 120, 1, 4, '#120 iOS Notification Center: group or clear the delivered stack (threadIdentifier)', 'Queue status: DONE
 
 2026-10-17, audited (three passes: plan-conformance conforms, one threading SHOULD fixed - the clear now consumes its own timeout flag so a 
 
 Needs first: #10, #16, #2026', NULL, NULL, NULL, 9000, '2026-10-18 23:35:55.973729+00', '2026-10-19 02:20:40.906804+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (29, 1, 29, 1, 4, '#121 expo-location/next: the provider API evaluation, with heavy compass testing', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (29, 1, 121, 1, 4, '#121 expo-location/next: the provider API evaluation, with heavy compass testing', 'Queue status: DONE
 
 2026-10-16, the owner''s ruling taken: adopt nothing, the classic heading path and the upstream PR stay:: two reviewer passes (blind and plan
 
 Needs first: #10, #16, #2026', NULL, NULL, NULL, 8000, '2026-10-18 23:35:55.952571+00', '2026-10-19 02:20:40.918173+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (127, 1, 127, 1, 4, '#2 Alert sheet change is all or nothing', 'Queue status: DONE', NULL, NULL, NULL, 106000, '2026-10-18 23:35:57.683648+00', '2026-10-19 02:20:39.650307+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (126, 1, 126, 1, 4, '#3 Android: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 105000, '2026-10-18 23:35:57.662782+00', '2026-10-19 02:20:39.663699+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (125, 1, 125, 1, 4, '#4 iOS: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 104000, '2026-10-18 23:35:57.635715+00', '2026-10-19 02:20:39.676665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (111, 1, 111, 1, 4, '#19 Android lock-screen widgets: investigation only', 'Queue status: DONE', NULL, NULL, NULL, 90000, '2026-10-18 23:35:57.388668+00', '2026-10-19 02:20:39.874824+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (109, 1, 109, 1, 4, '#21 Dependency freshness sweep', 'Queue status: DONE', NULL, NULL, NULL, 88000, '2026-10-18 23:35:57.356414+00', '2026-10-19 02:20:39.90175+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (107, 1, 107, 1, 4, '#24 Android widget countdown', 'Queue status: DONE', NULL, NULL, NULL, 86000, '2026-10-18 23:35:57.318856+00', '2026-10-19 02:20:39.927256+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (106, 1, 106, 1, 4, '#26 SDK 58 preview.7 + RN 0.88.0-rc.2', 'Queue status: DONE', NULL, NULL, NULL, 85000, '2026-10-18 23:35:57.297622+00', '2026-10-19 02:20:39.938989+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (105, 1, 105, 1, 4, '#27 D1: sound through silent mode and DND', 'Queue status: DONE', NULL, NULL, NULL, 84000, '2026-10-18 23:35:57.280672+00', '2026-10-19 02:20:39.952287+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (104, 1, 104, 1, 4, '#28 D3: rolling buffer + second reminder', 'Queue status: DONE', NULL, NULL, NULL, 83000, '2026-10-18 23:35:57.263177+00', '2026-10-19 02:20:39.965122+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (93, 1, 93, 1, 4, '#40 Heading re-architecture: the fused sensor', 'Queue status: DONE', NULL, NULL, NULL, 72000, '2026-10-18 23:35:57.08006+00', '2026-10-19 02:20:40.113114+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (89, 1, 89, 1, 4, '#47 Gyro-fused heading', 'Queue status: DONE', NULL, NULL, NULL, 68000, '2026-10-18 23:35:57.007179+00', '2026-10-19 02:20:40.173495+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (84, 1, 84, 1, 4, '#53 Gate on the phone''s own uncertainty', 'Queue status: DONE', NULL, NULL, NULL, 63000, '2026-10-18 23:35:56.928491+00', '2026-10-19 02:20:40.235515+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (83, 1, 83, 1, 4, '#55 A reschedule inside 30s of an armed reminder cancels it', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (126, 1, 3, 1, 4, '#3 Android: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 105000, '2026-10-18 23:35:57.662782+00', '2026-10-19 02:20:39.663699+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (125, 1, 4, 1, 4, '#4 iOS: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 104000, '2026-10-18 23:35:57.635715+00', '2026-10-19 02:20:39.676665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (111, 1, 19, 1, 4, '#19 Android lock-screen widgets: investigation only', 'Queue status: DONE', NULL, NULL, NULL, 90000, '2026-10-18 23:35:57.388668+00', '2026-10-19 02:20:39.874824+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (109, 1, 21, 1, 4, '#21 Dependency freshness sweep', 'Queue status: DONE', NULL, NULL, NULL, 88000, '2026-10-18 23:35:57.356414+00', '2026-10-19 02:20:39.90175+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (107, 1, 24, 1, 4, '#24 Android widget countdown', 'Queue status: DONE', NULL, NULL, NULL, 86000, '2026-10-18 23:35:57.318856+00', '2026-10-19 02:20:39.927256+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (106, 1, 26, 1, 4, '#26 SDK 58 preview.7 + RN 0.88.0-rc.2', 'Queue status: DONE', NULL, NULL, NULL, 85000, '2026-10-18 23:35:57.297622+00', '2026-10-19 02:20:39.938989+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (105, 1, 27, 1, 4, '#27 D1: sound through silent mode and DND', 'Queue status: DONE', NULL, NULL, NULL, 84000, '2026-10-18 23:35:57.280672+00', '2026-10-19 02:20:39.952287+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (104, 1, 28, 1, 4, '#28 D3: rolling buffer + second reminder', 'Queue status: DONE', NULL, NULL, NULL, 83000, '2026-10-18 23:35:57.263177+00', '2026-10-19 02:20:39.965122+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (93, 1, 40, 1, 4, '#40 Heading re-architecture: the fused sensor', 'Queue status: DONE', NULL, NULL, NULL, 72000, '2026-10-18 23:35:57.08006+00', '2026-10-19 02:20:40.113114+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (89, 1, 47, 1, 4, '#47 Gyro-fused heading', 'Queue status: DONE', NULL, NULL, NULL, 68000, '2026-10-18 23:35:57.007179+00', '2026-10-19 02:20:40.173495+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (84, 1, 53, 1, 4, '#53 Gate on the phone''s own uncertainty', 'Queue status: DONE', NULL, NULL, NULL, 63000, '2026-10-18 23:35:56.928491+00', '2026-10-19 02:20:40.235515+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (83, 1, 55, 1, 4, '#55 A reschedule inside 30s of an armed reminder cancels it', 'Queue status: DONE
 
 2026-10-11, audited: a pass inside the final 30 seconds before an armed reminder now keeps it armed, no re-arm and no cancel, record intact;
 
 Needs first: #53', NULL, NULL, NULL, 62000, '2026-10-18 23:35:56.912247+00', '2026-10-19 02:20:40.246682+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (79, 1, 79, 1, 4, '#59 Prayer names: shortest context-sufficient forms in every language', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (79, 1, 59, 1, 4, '#59 Prayer names: shortest context-sufficient forms in every language', 'Queue status: DONE
 
 2026-10-13, audited: four names shortened under the header rule (D81, the owner''s ms example verbatim; hi and th mechanical drops; D83 so Mi
 
 Needs first: #61, #63', NULL, NULL, NULL, 58000, '2026-10-18 23:35:56.846934+00', '2026-10-19 02:20:40.298103+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (78, 1, 78, 1, 4, '#60 Modals bounded: every growing region scrolls inside a capped height', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (78, 1, 60, 1, 4, '#60 Modals bounded: every growing region scrolls inside a capped height', 'Queue status: DONE
 
 2026-10-12, audited and pushed: both growing modal regions bounded - WhatsNew''s release list and Update''s message scroll inside 0.62 of the 
 
 Needs first: #39', NULL, NULL, NULL, 57000, '2026-10-18 23:35:56.830533+00', '2026-10-19 02:20:40.309666+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (76, 1, 76, 1, 4, '#62 Help page: remove the English-era hardcoded line breaks', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (76, 1, 62, 1, 4, '#62 Help page: remove the English-era hardcoded line breaks', 'Queue status: DONE
 
 2026-10-12, audited: the two multi-sentence help answers flow as one paragraph in all six languages (the owner''s 2026-10-12 ruling), catalog
 
 Needs first: #39', NULL, NULL, NULL, 55000, '2026-10-18 23:35:56.798188+00', '2026-10-19 02:20:40.33248+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (74, 1, 74, 1, 4, '#64 Volume-source copy: alert and sound sheets plus a help question', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (74, 1, 64, 1, 4, '#64 Volume-source copy: alert and sound sheets plus a help question', 'Queue status: DONE
 
 2026-10-13, audited and pushed: alert and sound sheets carry the platform-keyed volume note (Android alarm volume per row 27''s proof, iOS th', NULL, NULL, NULL, 53000, '2026-10-18 23:35:56.762749+00', '2026-10-19 02:20:40.356744+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (72, 1, 72, 1, 4, '#66 Language switch: always restart with cleared caches - investigation', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (72, 1, 66, 1, 4, '#66 Language switch: always restart with cleared caches - investigation', 'Queue status: DONE
 
 2026-10-13, audited: the always-restart investigation answers in FINDINGS.md (folded here per D85, its folder closed): four options (1 statu', NULL, NULL, NULL, 51000, '2026-10-18 23:35:56.727959+00', '2026-10-19 02:20:40.380682+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (71, 1, 71, 1, 4, '#68 RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (71, 1, 68, 1, 4, '#68 RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)', 'Queue status: DONE
 
 2026-10-13, audited: supportsRTL flipped, direction forced at bootstrap and at boundary crossings with a post-convergence relaunch (D59; the
 
 Needs first: #58', NULL, NULL, NULL, 50000, '2026-10-18 23:35:56.71074+00', '2026-10-19 02:20:40.393038+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (70, 1, 70, 1, 4, '#71 AppState soft exception on the language relaunch teardown', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (70, 1, 71, 1, 4, '#71 AppState soft exception on the language relaunch teardown', 'Queue status: DONE
 
 2026-10-13, audited: the row''s question answers NO (D88) - the soft exception is raised inside React''s own reload sequence (the six-hop trac', NULL, NULL, NULL, 49000, '2026-10-18 23:35:56.692546+00', '2026-10-19 02:20:40.409648+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (68, 1, 68, 1, 4, '#73 RTL travel family: segmented pill, toggle travel, colour picker marker and split box', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (68, 1, 73, 1, 4, '#73 RTL travel family: segmented pill, toggle travel, colour picker marker and split box', 'Queue status: DONE
 
 2026-10-14, audited: the family''s root was never a transform flip - RN 0.88.0-rc.3 applies every transform physically (verified exhaustively', NULL, NULL, NULL, 47000, '2026-10-18 23:35:56.658381+00', '2026-10-19 02:20:40.437378+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (66, 1, 66, 1, 4, '#75 Visual polish: mosque SVG mirroring, no scrollbars anywhere, toggle outline to the card edge', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (66, 1, 75, 1, 4, '#75 Visual polish: mosque SVG mirroring, no scrollbars anywhere, toggle outline to the card edge', 'Queue status: DONE
 
 2026-10-14, audited: the mosque mark mirrors under RTL on the locale''s own direction (both PNG variants, both schedule pages and the error s', NULL, NULL, NULL, 45000, '2026-10-18 23:35:56.626282+00', '2026-10-19 02:20:40.461876+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (64, 1, 64, 1, 4, '#77 Help modal entrance: a solid white box flashes around the close button', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (64, 1, 77, 1, 4, '#77 Help modal entrance: a solid white box flashes around the close button', 'Queue status: DONE
 
 2026-10-13, audited: the close button''s container joins the modal container''s own entrance fade (bare `entering={FadeIn}` on the Close row),', NULL, NULL, NULL, 43000, '2026-10-18 23:35:56.58758+00', '2026-10-19 02:20:40.484536+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (58, 1, 58, 1, 4, '#83 The time-ago badge: the countdown''s lettered format', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (58, 1, 83, 1, 4, '#83 The time-ago badge: the countdown''s lettered format', 'Queue status: DONE
 
 2026-10-15, audited: the ago badge renders the countdown''s lettered duration in every language - unpadded Latin digits with lowercase h m at
 
 Needs first: #85, #88', NULL, NULL, NULL, 37000, '2026-10-18 23:35:56.472517+00', '2026-10-19 02:20:40.560371+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (55, 1, 55, 1, 4, '#86 Visual polish batch: the sheets'' volume note, the list-to-ago gap, the countdown tip, the language-switch loader', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (55, 1, 86, 1, 4, '#86 Visual polish batch: the sheets'' volume note, the list-to-ago gap, the countdown tip, the language-switch loader', 'Queue status: DONE
 
 2026-10-14, audited: five steps landed - the ar line box pinned to the Latin record and consumed by the sheet header, the day block, the not', NULL, NULL, NULL, 34000, '2026-10-18 23:35:56.415335+00', '2026-10-19 02:20:40.599782+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (54, 1, 54, 1, 4, '#87 The clipping batch: the line-box pin, the note style, the loader face', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (54, 1, 87, 1, 4, '#87 The clipping batch: the line-box pin, the note style, the loader face', 'Queue status: DONE
 
 2026-10-15, the owner''s XS read: no clipping on the language-switch loader, the settings, alert and sound sheets'' title/subtitle blocks perf', NULL, NULL, NULL, 33000, '2026-10-18 23:35:56.396717+00', '2026-10-19 02:20:40.61349+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (27, 1, 27, 1, 4, '#124 iPhone XS automation channel: RSD allocation failure', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (27, 1, 124, 1, 4, '#124 iPhone XS automation channel: RSD allocation failure', 'Queue status: DONE
 
 2026-10-16, cleared by the owner: the ladder''s rung 3 fixed it (`sudo pkill -9 remoted && sudo pkill -9 usbmuxd`, then replug the cable); ve', NULL, NULL, NULL, 6000, '2026-10-18 23:35:55.916366+00', '2026-10-19 02:20:40.941927+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (6, 1, 6, 1, 9, '#117 Expo widgets and different languages: the inventory', 'Queue status: OWNER-LED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (6, 1, 117, 1, 9, '#117 Expo widgets and different languages: the inventory', 'Queue status: OWNER-LED
 
 2026-10-18, investigation and preparation closed, audited (two reviewer passes, 7 findings adjudicated): the closeout landed clean - the 3T 
 
 Waiting on: nothing THE OWNER''S READ TAKEN 2026-10-18: the widget gallery entry, the add, the layouts and the language switching confirmed perfect on BO
 
 Needs first: #3, #10, #18, #2026', NULL, NULL, NULL, 6000, '2026-10-18 23:35:55.593343+00', '2026-10-19 02:20:41.213567+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (5, 1, 5, 1, 4, '#70 The board and workflow as a portable system: Paperclip after Kanboard was tried and rejected', 'Queue status: NOT PLANNED
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (5, 1, 70, 1, 4, '#70 The board and workflow as a portable system: Paperclip after Kanboard was tried and rejected', 'Queue status: NOT PLANNED
 
 2026-10-18, awaiting the owner''s go in a fresh session', NULL, NULL, NULL, 5000, '2026-10-18 23:35:55.576136+00', '2026-10-19 02:20:39.602426+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (21, 1, 21, 1, 9, '#144 The board as a portable product, take three: It''s a Plan (itsaplan.dev)', 'Goal: the queue''s work runs on this board instead of a markdown file.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (21, 1, 144, 1, 9, '#144 The board as a portable product, take three: It''s a Plan (itsaplan.dev)', 'Goal: the queue''s work runs on this board instead of a markdown file.
 
 Where: the board, its schema, and the repository''s workflow skills and agents.
 
@@ -5536,44 +5537,43 @@ Acceptance:
 - [x] the queue file and the old reader are gone, with no reference left
 
 The plan and the log are the Docs page "Plan: #144".', NULL, NULL, NULL, 21000, '2026-10-18 23:35:55.814603+00', '2026-10-19 02:20:39.619214+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (128, 1, 128, 1, 4, '#1 An alert does what its bell shows', 'Queue status: DONE', NULL, NULL, NULL, 107000, '2026-10-18 23:35:57.704991+00', '2026-10-19 02:20:39.635047+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (91, 1, 91, 1, 4, '#44 Delete the qibla', 'Queue status: DONE', NULL, NULL, NULL, 70000, '2026-10-18 23:35:57.042518+00', '2026-10-19 02:20:40.142082+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (123, 1, 123, 1, 4, '#6 SDK 58 beta upgrade + alarmClock', 'Queue status: DONE', NULL, NULL, NULL, 102000, '2026-10-18 23:35:57.597339+00', '2026-10-19 02:20:39.708383+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (122, 1, 122, 1, 4, '#7 Agent tooling', 'Queue status: DONE', NULL, NULL, NULL, 101000, '2026-10-18 23:35:57.578621+00', '2026-10-19 02:20:39.721844+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (121, 1, 121, 1, 4, '#9 Android home-screen widgets', 'Queue status: DONE', NULL, NULL, NULL, 100000, '2026-10-18 23:35:57.562992+00', '2026-10-19 02:20:39.738228+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (119, 1, 119, 1, 4, '#11 iOS widgets: containerBackground fix, first placement', 'Queue status: DONE', NULL, NULL, NULL, 98000, '2026-10-18 23:35:57.528662+00', '2026-10-19 02:20:39.763873+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (117, 1, 117, 1, 4, '#13 Android widgets open the app on tap', 'Queue status: DONE', NULL, NULL, NULL, 96000, '2026-10-18 23:35:57.492302+00', '2026-10-19 02:20:39.793083+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (115, 1, 115, 1, 4, '#15 Widget polish', 'Queue status: DONE', NULL, NULL, NULL, 94000, '2026-10-18 23:35:57.457033+00', '2026-10-19 02:20:39.820119+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (113, 1, 113, 1, 4, '#17 Blank card at placement, horizon to 3 days', 'Queue status: DONE', NULL, NULL, NULL, 92000, '2026-10-18 23:35:57.423827+00', '2026-10-19 02:20:39.845678+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (103, 1, 103, 1, 4, '#29 D6: the help modal for a missed athan', 'Queue status: DONE', NULL, NULL, NULL, 82000, '2026-10-18 23:35:57.245488+00', '2026-10-19 02:20:39.978344+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (102, 1, 102, 1, 4, '#30 Both stores answer for themselves', 'Queue status: DONE', NULL, NULL, NULL, 81000, '2026-10-18 23:35:57.229851+00', '2026-10-19 02:20:39.992988+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (101, 1, 101, 1, 4, '#31 Android updates natively, releases.json deleted', 'Queue status: DONE', NULL, NULL, NULL, 80000, '2026-10-18 23:35:57.213573+00', '2026-10-19 02:20:40.005816+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (99, 1, 99, 1, 4, '#33 Sound bug, ISSUES #42 keep test, help modal design', 'Queue status: DONE', NULL, NULL, NULL, 78000, '2026-10-18 23:35:57.182856+00', '2026-10-19 02:20:40.031624+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (97, 1, 97, 1, 4, '#35 Housekeeping batch', 'Queue status: DONE', NULL, NULL, NULL, 76000, '2026-10-18 23:35:57.150018+00', '2026-10-19 02:20:40.05712+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (95, 1, 95, 1, 4, '#38 D4a. i18n scaffolding', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (128, 1, 1, 1, 4, '#1 An alert does what its bell shows', 'Queue status: DONE', NULL, NULL, NULL, 107000, '2026-10-18 23:35:57.704991+00', '2026-10-19 02:20:39.635047+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (91, 1, 44, 1, 4, '#44 Delete the qibla', 'Queue status: DONE', NULL, NULL, NULL, 70000, '2026-10-18 23:35:57.042518+00', '2026-10-19 02:20:40.142082+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (123, 1, 6, 1, 4, '#6 SDK 58 beta upgrade + alarmClock', 'Queue status: DONE', NULL, NULL, NULL, 102000, '2026-10-18 23:35:57.597339+00', '2026-10-19 02:20:39.708383+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (121, 1, 9, 1, 4, '#9 Android home-screen widgets', 'Queue status: DONE', NULL, NULL, NULL, 100000, '2026-10-18 23:35:57.562992+00', '2026-10-19 02:20:39.738228+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (119, 1, 11, 1, 4, '#11 iOS widgets: containerBackground fix, first placement', 'Queue status: DONE', NULL, NULL, NULL, 98000, '2026-10-18 23:35:57.528662+00', '2026-10-19 02:20:39.763873+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (117, 1, 13, 1, 4, '#13 Android widgets open the app on tap', 'Queue status: DONE', NULL, NULL, NULL, 96000, '2026-10-18 23:35:57.492302+00', '2026-10-19 02:20:39.793083+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (115, 1, 15, 1, 4, '#15 Widget polish', 'Queue status: DONE', NULL, NULL, NULL, 94000, '2026-10-18 23:35:57.457033+00', '2026-10-19 02:20:39.820119+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (113, 1, 17, 1, 4, '#17 Blank card at placement, horizon to 3 days', 'Queue status: DONE', NULL, NULL, NULL, 92000, '2026-10-18 23:35:57.423827+00', '2026-10-19 02:20:39.845678+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (103, 1, 29, 1, 4, '#29 D6: the help modal for a missed athan', 'Queue status: DONE', NULL, NULL, NULL, 82000, '2026-10-18 23:35:57.245488+00', '2026-10-19 02:20:39.978344+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (102, 1, 30, 1, 4, '#30 Both stores answer for themselves', 'Queue status: DONE', NULL, NULL, NULL, 81000, '2026-10-18 23:35:57.229851+00', '2026-10-19 02:20:39.992988+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (101, 1, 31, 1, 4, '#31 Android updates natively, releases.json deleted', 'Queue status: DONE', NULL, NULL, NULL, 80000, '2026-10-18 23:35:57.213573+00', '2026-10-19 02:20:40.005816+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (99, 1, 33, 1, 4, '#33 Sound bug, ISSUES #42 keep test, help modal design', 'Queue status: DONE', NULL, NULL, NULL, 78000, '2026-10-18 23:35:57.182856+00', '2026-10-19 02:20:40.031624+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (97, 1, 35, 1, 4, '#35 Housekeeping batch', 'Queue status: DONE', NULL, NULL, NULL, 76000, '2026-10-18 23:35:57.150018+00', '2026-10-19 02:20:40.05712+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (95, 1, 38, 1, 4, '#38 D4a. i18n scaffolding', 'Queue status: DONE
 
 2026-10-11, audited, landed as 2.0.0-stage-1 on uat: stage one of the single-language overhaul; Arabic surfaces removed, identifier union fr
 
 Needs first: #37', NULL, NULL, NULL, 74000, '2026-10-18 23:35:57.114516+00', '2026-10-19 02:20:40.084573+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (94, 1, 94, 1, 4, '#39 D4b. Translation sweep', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (94, 1, 39, 1, 4, '#39 D4b. Translation sweep', 'Queue status: DONE
 
 2026-10-12, audited and pushed: the six-language confidence build landed end to end (en ar ms so hi th) - runtime locale resolution with the
 
 Needs first: #38', NULL, NULL, NULL, 73000, '2026-10-18 23:35:57.097557+00', '2026-10-19 02:20:40.099735+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (87, 1, 87, 1, 4, '#49 Native heading module: the Fused Orientation Provider', 'Queue status: DONE', NULL, NULL, NULL, 66000, '2026-10-18 23:35:56.977075+00', '2026-10-19 02:20:40.198442+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (85, 1, 85, 1, 4, '#52 Settling gate: timing and cold-open cost', 'Queue status: DONE', NULL, NULL, NULL, 64000, '2026-10-18 23:35:56.944844+00', '2026-10-19 02:20:40.223263+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (81, 1, 81, 1, 4, '#57 Native numerals per language', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (87, 1, 49, 1, 4, '#49 Native heading module: the Fused Orientation Provider', 'Queue status: DONE', NULL, NULL, NULL, 66000, '2026-10-18 23:35:56.977075+00', '2026-10-19 02:20:40.198442+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (85, 1, 52, 1, 4, '#52 Settling gate: timing and cold-open cost', 'Queue status: DONE', NULL, NULL, NULL, 64000, '2026-10-18 23:35:56.944844+00', '2026-10-19 02:20:40.223263+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (81, 1, 57, 1, 4, '#57 Native numerals per language', 'Queue status: DONE
 
 2026-10-12, audited and pushed: native numerals landed - ar draws Eastern Arabic-Indic digits on every user-visible surface (D54, D57), the 
 
 Needs first: #39', NULL, NULL, NULL, 60000, '2026-10-18 23:35:56.876931+00', '2026-10-19 02:20:40.271872+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (51, 1, 51, 1, 4, '#90 Ramadan decorations: the owner''s visual check', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (51, 1, 90, 1, 4, '#90 Ramadan decorations: the owner''s visual check', 'Queue status: DONE
 
 2026-10-15, the owner''s read: the Ramadan face confirmed in English and Arabic on the prod-armed dev build (decorations, mosque variant, set', NULL, NULL, NULL, 30000, '2026-10-18 23:35:56.345032+00', '2026-10-19 02:20:40.648676+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (33, 1, 33, 1, 4, '#116 iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history).', 'Queue status: DONE
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (33, 1, 116, 1, 4, '#116 iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history).', 'Queue status: DONE
 
 2026-10-18, audited (plan-conformance and blind passes): the iPhone Duo runs the app through the existing layout with no Duo code path. Clos', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 02:20:40.872199+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (14, 1, 14, 1, 10, '#135 Widget mirroring under RTL and the widget countdown face', 'Queue status: OWNER
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (14, 1, 135, 1, 10, '#135 Widget mirroring under RTL and the widget countdown face', 'Queue status: OWNER
 
 ORDER 2026-10-17, the owner''s read of the medium widget on the 3T at 2.0.908 with Arabic active - the owner''s order unparks exactly this sli
 
@@ -7066,134 +7066,134 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (10, 1, 2, 'research', '#ec4899', '2026-10-19 01:39:09.520196+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (11, 1, NULL, 'needs-owner', '#ef4444', '2026-10-19 01:39:09.52511+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (12, 1, NULL, 'upstream', '#06b6d4', '2026-10-19 01:39:09.530574+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (13, 1, 3, '#70', '#94a3b8', '2026-10-19 02:20:39.578807+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (14, 1, 3, '#144', '#94a3b8', '2026-10-19 02:20:39.612121+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (15, 1, 3, '#1', '#94a3b8', '2026-10-19 02:20:39.627211+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (16, 1, 3, '#2', '#94a3b8', '2026-10-19 02:20:39.642531+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (17, 1, 3, '#3', '#94a3b8', '2026-10-19 02:20:39.657776+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (18, 1, 3, '#4', '#94a3b8', '2026-10-19 02:20:39.670872+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (19, 1, 3, '#5', '#94a3b8', '2026-10-19 02:20:39.68444+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (20, 1, 3, '#6', '#94a3b8', '2026-10-19 02:20:39.702+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (21, 1, 3, '#7', '#94a3b8', '2026-10-19 02:20:39.715995+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (22, 1, 3, '#9', '#94a3b8', '2026-10-19 02:20:39.731559+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (23, 1, 3, '#10', '#94a3b8', '2026-10-19 02:20:39.746504+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (24, 1, 3, '#11', '#94a3b8', '2026-10-19 02:20:39.75863+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (25, 1, 3, '#12', '#94a3b8', '2026-10-19 02:20:39.7716+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (26, 1, 3, '#13', '#94a3b8', '2026-10-19 02:20:39.786869+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (27, 1, 3, '#14', '#94a3b8', '2026-10-19 02:20:39.800352+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (28, 1, 3, '#15', '#94a3b8', '2026-10-19 02:20:39.813785+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (29, 1, 3, '#16', '#94a3b8', '2026-10-19 02:20:39.827108+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (30, 1, 3, '#17', '#94a3b8', '2026-10-19 02:20:39.839695+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (31, 1, 3, '#18', '#94a3b8', '2026-10-19 02:20:39.85425+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (32, 1, 3, '#19', '#94a3b8', '2026-10-19 02:20:39.868562+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (33, 1, 3, '#20', '#94a3b8', '2026-10-19 02:20:39.88175+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (34, 1, 3, '#21', '#94a3b8', '2026-10-19 02:20:39.894611+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (35, 1, 3, '#22', '#94a3b8', '2026-10-19 02:20:39.908668+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (36, 1, 3, '#24', '#94a3b8', '2026-10-19 02:20:39.921856+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (37, 1, 3, '#26', '#94a3b8', '2026-10-19 02:20:39.933723+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (38, 1, 3, '#27', '#94a3b8', '2026-10-19 02:20:39.946135+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (39, 1, 3, '#28', '#94a3b8', '2026-10-19 02:20:39.959238+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (40, 1, 3, '#29', '#94a3b8', '2026-10-19 02:20:39.972475+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (41, 1, 3, '#30', '#94a3b8', '2026-10-19 02:20:39.986594+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (42, 1, 3, '#31', '#94a3b8', '2026-10-19 02:20:40.000565+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (43, 1, 3, '#32', '#94a3b8', '2026-10-19 02:20:40.013691+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (44, 1, 3, '#33', '#94a3b8', '2026-10-19 02:20:40.026057+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (45, 1, 3, '#34', '#94a3b8', '2026-10-19 02:20:40.037485+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (46, 1, 3, '#35', '#94a3b8', '2026-10-19 02:20:40.05008+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (47, 1, 3, '#37', '#94a3b8', '2026-10-19 02:20:40.066077+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (48, 1, 3, '#38', '#94a3b8', '2026-10-19 02:20:40.078689+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (49, 1, 3, '#39', '#94a3b8', '2026-10-19 02:20:40.091519+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (50, 1, 3, '#40', '#94a3b8', '2026-10-19 02:20:40.106719+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (51, 1, 3, '#41', '#94a3b8', '2026-10-19 02:20:40.121207+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (52, 1, 3, '#44', '#94a3b8', '2026-10-19 02:20:40.135205+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (53, 1, 3, '#45', '#94a3b8', '2026-10-19 02:20:40.153849+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (54, 1, 3, '#47', '#94a3b8', '2026-10-19 02:20:40.167498+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (55, 1, 3, '#48', '#94a3b8', '2026-10-19 02:20:40.17991+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (56, 1, 3, '#49', '#94a3b8', '2026-10-19 02:20:40.192386+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (57, 1, 3, '#50', '#94a3b8', '2026-10-19 02:20:40.205085+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (58, 1, 3, '#52', '#94a3b8', '2026-10-19 02:20:40.217548+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (59, 1, 3, '#53', '#94a3b8', '2026-10-19 02:20:40.229325+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (60, 1, 3, '#55', '#94a3b8', '2026-10-19 02:20:40.24149+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (61, 1, 3, '#56', '#94a3b8', '2026-10-19 02:20:40.254228+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (62, 1, 3, '#57', '#94a3b8', '2026-10-19 02:20:40.266797+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (63, 1, 3, '#58', '#94a3b8', '2026-10-19 02:20:40.2793+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (64, 1, 3, '#59', '#94a3b8', '2026-10-19 02:20:40.291708+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (65, 1, 3, '#60', '#94a3b8', '2026-10-19 02:20:40.303798+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (66, 1, 3, '#61', '#94a3b8', '2026-10-19 02:20:40.315906+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (67, 1, 3, '#62', '#94a3b8', '2026-10-19 02:20:40.327716+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (68, 1, 3, '#63', '#94a3b8', '2026-10-19 02:20:40.338448+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (69, 1, 3, '#64', '#94a3b8', '2026-10-19 02:20:40.351078+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (70, 1, 3, '#65', '#94a3b8', '2026-10-19 02:20:40.362682+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (71, 1, 3, '#66', '#94a3b8', '2026-10-19 02:20:40.375477+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (72, 1, 3, '#68', '#94a3b8', '2026-10-19 02:20:40.386806+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (73, 1, 3, '#71', '#94a3b8', '2026-10-19 02:20:40.403173+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (74, 1, 3, '#72', '#94a3b8', '2026-10-19 02:20:40.418139+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (75, 1, 3, '#73', '#94a3b8', '2026-10-19 02:20:40.431129+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (76, 1, 3, '#74', '#94a3b8', '2026-10-19 02:20:40.444222+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (77, 1, 3, '#75', '#94a3b8', '2026-10-19 02:20:40.456645+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (78, 1, 3, '#76', '#94a3b8', '2026-10-19 02:20:40.46777+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (79, 1, 3, '#77', '#94a3b8', '2026-10-19 02:20:40.479144+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (80, 1, 3, '#78', '#94a3b8', '2026-10-19 02:20:40.490405+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (81, 1, 3, '#79', '#94a3b8', '2026-10-19 02:20:40.502325+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (82, 1, 3, '#80', '#94a3b8', '2026-10-19 02:20:40.513832+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (83, 1, 3, '#81', '#94a3b8', '2026-10-19 02:20:40.526519+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (84, 1, 3, '#82', '#94a3b8', '2026-10-19 02:20:40.539767+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (85, 1, 3, '#83', '#94a3b8', '2026-10-19 02:20:40.553707+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (86, 1, 3, '#84', '#94a3b8', '2026-10-19 02:20:40.569118+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (87, 1, 3, '#85', '#94a3b8', '2026-10-19 02:20:40.581556+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (88, 1, 3, '#86', '#94a3b8', '2026-10-19 02:20:40.593811+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (89, 1, 3, '#87', '#94a3b8', '2026-10-19 02:20:40.607385+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (90, 1, 3, '#88', '#94a3b8', '2026-10-19 02:20:40.620035+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (91, 1, 3, '#89', '#94a3b8', '2026-10-19 02:20:40.632003+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (92, 1, 3, '#90', '#94a3b8', '2026-10-19 02:20:40.643811+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (93, 1, 3, '#91', '#94a3b8', '2026-10-19 02:20:40.654243+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (94, 1, 3, '#100', '#94a3b8', '2026-10-19 02:20:40.664823+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (95, 1, 3, '#101', '#94a3b8', '2026-10-19 02:20:40.677288+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (96, 1, 3, '#102', '#94a3b8', '2026-10-19 02:20:40.688231+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (97, 1, 3, '#103', '#94a3b8', '2026-10-19 02:20:40.703473+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (98, 1, 3, '#104', '#94a3b8', '2026-10-19 02:20:40.715942+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (99, 1, 3, '#105', '#94a3b8', '2026-10-19 02:20:40.728169+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (100, 1, 3, '#106', '#94a3b8', '2026-10-19 02:20:40.738354+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (101, 1, 3, '#107', '#94a3b8', '2026-10-19 02:20:40.750386+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (102, 1, 3, '#108', '#94a3b8', '2026-10-19 02:20:40.767401+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (103, 1, 3, '#109', '#94a3b8', '2026-10-19 02:20:40.778551+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (104, 1, 3, '#110', '#94a3b8', '2026-10-19 02:20:40.790795+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (105, 1, 3, '#111', '#94a3b8', '2026-10-19 02:20:40.806153+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (106, 1, 3, '#112', '#94a3b8', '2026-10-19 02:20:40.818283+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (107, 1, 3, '#113', '#94a3b8', '2026-10-19 02:20:40.829962+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (108, 1, 3, '#114', '#94a3b8', '2026-10-19 02:20:40.843135+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (109, 1, 3, '#115', '#94a3b8', '2026-10-19 02:20:40.854425+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (110, 1, 3, '#116', '#94a3b8', '2026-10-19 02:20:40.867088+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (111, 1, 3, '#118', '#94a3b8', '2026-10-19 02:20:40.878796+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (112, 1, 3, '#119', '#94a3b8', '2026-10-19 02:20:40.889217+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (113, 1, 3, '#120', '#94a3b8', '2026-10-19 02:20:40.90114+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (114, 1, 3, '#121', '#94a3b8', '2026-10-19 02:20:40.913191+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (115, 1, 3, '#122', '#94a3b8', '2026-10-19 02:20:40.924672+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (116, 1, 3, '#124', '#94a3b8', '2026-10-19 02:20:40.937019+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (117, 1, 3, '#125', '#94a3b8', '2026-10-19 02:20:40.950047+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (118, 1, 3, '#129', '#94a3b8', '2026-10-19 02:20:40.962624+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (119, 1, 3, '#131', '#94a3b8', '2026-10-19 02:20:40.974366+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (120, 1, 3, '#134', '#94a3b8', '2026-10-19 02:20:40.986523+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (121, 1, 3, '#138', '#94a3b8', '2026-10-19 02:20:41.000225+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (122, 1, 3, '#137', '#94a3b8', '2026-10-19 02:20:41.012293+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (123, 1, 3, '#141', '#94a3b8', '2026-10-19 02:20:41.02518+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (124, 1, 3, '#140', '#94a3b8', '2026-10-19 02:20:41.038488+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (125, 1, 3, '#143', '#94a3b8', '2026-10-19 02:20:41.051508+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (126, 1, 3, '#142', '#94a3b8', '2026-10-19 02:20:41.063234+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (127, 1, 3, '#139', '#94a3b8', '2026-10-19 02:20:41.080857+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (128, 1, 3, '#135', '#94a3b8', '2026-10-19 02:20:41.095972+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (129, 1, 3, '#136', '#94a3b8', '2026-10-19 02:20:41.110256+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (130, 1, 3, '#132', '#94a3b8', '2026-10-19 02:20:41.124523+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (131, 1, 3, '#130', '#94a3b8', '2026-10-19 02:20:41.139471+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (132, 1, 3, '#128', '#94a3b8', '2026-10-19 02:20:41.152125+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (133, 1, 3, '#127', '#94a3b8', '2026-10-19 02:20:41.16843+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (134, 1, 3, '#126', '#94a3b8', '2026-10-19 02:20:41.183807+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (135, 1, 3, '#123', '#94a3b8', '2026-10-19 02:20:41.195686+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (136, 1, 3, '#117', '#94a3b8', '2026-10-19 02:20:41.207966+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (137, 1, 3, '#54', '#94a3b8', '2026-10-19 02:20:41.219606+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (138, 1, 3, '#51', '#94a3b8', '2026-10-19 02:20:41.236817+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (139, 1, 3, '#42', '#94a3b8', '2026-10-19 02:20:41.251273+00');
-INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (140, 1, 3, '#25', '#94a3b8', '2026-10-19 02:20:41.265123+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (13, 1, 3, '#70', '#ffffff', '2026-10-19 02:20:39.578807+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (14, 1, 3, '#144', '#ffffff', '2026-10-19 02:20:39.612121+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (15, 1, 3, '#1', '#ffffff', '2026-10-19 02:20:39.627211+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (16, 1, 3, '#2', '#ffffff', '2026-10-19 02:20:39.642531+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (17, 1, 3, '#3', '#ffffff', '2026-10-19 02:20:39.657776+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (18, 1, 3, '#4', '#ffffff', '2026-10-19 02:20:39.670872+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (19, 1, 3, '#5', '#ffffff', '2026-10-19 02:20:39.68444+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (20, 1, 3, '#6', '#ffffff', '2026-10-19 02:20:39.702+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (21, 1, 3, '#7', '#ffffff', '2026-10-19 02:20:39.715995+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (22, 1, 3, '#9', '#ffffff', '2026-10-19 02:20:39.731559+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (23, 1, 3, '#10', '#ffffff', '2026-10-19 02:20:39.746504+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (24, 1, 3, '#11', '#ffffff', '2026-10-19 02:20:39.75863+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (25, 1, 3, '#12', '#ffffff', '2026-10-19 02:20:39.7716+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (26, 1, 3, '#13', '#ffffff', '2026-10-19 02:20:39.786869+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (27, 1, 3, '#14', '#ffffff', '2026-10-19 02:20:39.800352+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (28, 1, 3, '#15', '#ffffff', '2026-10-19 02:20:39.813785+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (29, 1, 3, '#16', '#ffffff', '2026-10-19 02:20:39.827108+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (30, 1, 3, '#17', '#ffffff', '2026-10-19 02:20:39.839695+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (31, 1, 3, '#18', '#ffffff', '2026-10-19 02:20:39.85425+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (32, 1, 3, '#19', '#ffffff', '2026-10-19 02:20:39.868562+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (33, 1, 3, '#20', '#ffffff', '2026-10-19 02:20:39.88175+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (34, 1, 3, '#21', '#ffffff', '2026-10-19 02:20:39.894611+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (35, 1, 3, '#22', '#ffffff', '2026-10-19 02:20:39.908668+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (36, 1, 3, '#24', '#ffffff', '2026-10-19 02:20:39.921856+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (37, 1, 3, '#26', '#ffffff', '2026-10-19 02:20:39.933723+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (38, 1, 3, '#27', '#ffffff', '2026-10-19 02:20:39.946135+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (39, 1, 3, '#28', '#ffffff', '2026-10-19 02:20:39.959238+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (40, 1, 3, '#29', '#ffffff', '2026-10-19 02:20:39.972475+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (41, 1, 3, '#30', '#ffffff', '2026-10-19 02:20:39.986594+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (42, 1, 3, '#31', '#ffffff', '2026-10-19 02:20:40.000565+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (43, 1, 3, '#32', '#ffffff', '2026-10-19 02:20:40.013691+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (44, 1, 3, '#33', '#ffffff', '2026-10-19 02:20:40.026057+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (45, 1, 3, '#34', '#ffffff', '2026-10-19 02:20:40.037485+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (46, 1, 3, '#35', '#ffffff', '2026-10-19 02:20:40.05008+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (47, 1, 3, '#37', '#ffffff', '2026-10-19 02:20:40.066077+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (48, 1, 3, '#38', '#ffffff', '2026-10-19 02:20:40.078689+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (49, 1, 3, '#39', '#ffffff', '2026-10-19 02:20:40.091519+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (50, 1, 3, '#40', '#ffffff', '2026-10-19 02:20:40.106719+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (51, 1, 3, '#41', '#ffffff', '2026-10-19 02:20:40.121207+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (52, 1, 3, '#44', '#ffffff', '2026-10-19 02:20:40.135205+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (53, 1, 3, '#45', '#ffffff', '2026-10-19 02:20:40.153849+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (54, 1, 3, '#47', '#ffffff', '2026-10-19 02:20:40.167498+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (55, 1, 3, '#48', '#ffffff', '2026-10-19 02:20:40.17991+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (56, 1, 3, '#49', '#ffffff', '2026-10-19 02:20:40.192386+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (57, 1, 3, '#50', '#ffffff', '2026-10-19 02:20:40.205085+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (58, 1, 3, '#52', '#ffffff', '2026-10-19 02:20:40.217548+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (59, 1, 3, '#53', '#ffffff', '2026-10-19 02:20:40.229325+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (60, 1, 3, '#55', '#ffffff', '2026-10-19 02:20:40.24149+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (61, 1, 3, '#56', '#ffffff', '2026-10-19 02:20:40.254228+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (62, 1, 3, '#57', '#ffffff', '2026-10-19 02:20:40.266797+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (63, 1, 3, '#58', '#ffffff', '2026-10-19 02:20:40.2793+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (64, 1, 3, '#59', '#ffffff', '2026-10-19 02:20:40.291708+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (65, 1, 3, '#60', '#ffffff', '2026-10-19 02:20:40.303798+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (66, 1, 3, '#61', '#ffffff', '2026-10-19 02:20:40.315906+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (67, 1, 3, '#62', '#ffffff', '2026-10-19 02:20:40.327716+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (68, 1, 3, '#63', '#ffffff', '2026-10-19 02:20:40.338448+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (69, 1, 3, '#64', '#ffffff', '2026-10-19 02:20:40.351078+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (70, 1, 3, '#65', '#ffffff', '2026-10-19 02:20:40.362682+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (71, 1, 3, '#66', '#ffffff', '2026-10-19 02:20:40.375477+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (72, 1, 3, '#68', '#ffffff', '2026-10-19 02:20:40.386806+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (73, 1, 3, '#71', '#ffffff', '2026-10-19 02:20:40.403173+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (74, 1, 3, '#72', '#ffffff', '2026-10-19 02:20:40.418139+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (75, 1, 3, '#73', '#ffffff', '2026-10-19 02:20:40.431129+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (76, 1, 3, '#74', '#ffffff', '2026-10-19 02:20:40.444222+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (77, 1, 3, '#75', '#ffffff', '2026-10-19 02:20:40.456645+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (78, 1, 3, '#76', '#ffffff', '2026-10-19 02:20:40.46777+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (79, 1, 3, '#77', '#ffffff', '2026-10-19 02:20:40.479144+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (80, 1, 3, '#78', '#ffffff', '2026-10-19 02:20:40.490405+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (81, 1, 3, '#79', '#ffffff', '2026-10-19 02:20:40.502325+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (82, 1, 3, '#80', '#ffffff', '2026-10-19 02:20:40.513832+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (83, 1, 3, '#81', '#ffffff', '2026-10-19 02:20:40.526519+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (84, 1, 3, '#82', '#ffffff', '2026-10-19 02:20:40.539767+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (85, 1, 3, '#83', '#ffffff', '2026-10-19 02:20:40.553707+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (86, 1, 3, '#84', '#ffffff', '2026-10-19 02:20:40.569118+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (87, 1, 3, '#85', '#ffffff', '2026-10-19 02:20:40.581556+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (88, 1, 3, '#86', '#ffffff', '2026-10-19 02:20:40.593811+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (89, 1, 3, '#87', '#ffffff', '2026-10-19 02:20:40.607385+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (90, 1, 3, '#88', '#ffffff', '2026-10-19 02:20:40.620035+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (91, 1, 3, '#89', '#ffffff', '2026-10-19 02:20:40.632003+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (92, 1, 3, '#90', '#ffffff', '2026-10-19 02:20:40.643811+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (93, 1, 3, '#91', '#ffffff', '2026-10-19 02:20:40.654243+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (94, 1, 3, '#100', '#ffffff', '2026-10-19 02:20:40.664823+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (95, 1, 3, '#101', '#ffffff', '2026-10-19 02:20:40.677288+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (96, 1, 3, '#102', '#ffffff', '2026-10-19 02:20:40.688231+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (97, 1, 3, '#103', '#ffffff', '2026-10-19 02:20:40.703473+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (98, 1, 3, '#104', '#ffffff', '2026-10-19 02:20:40.715942+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (99, 1, 3, '#105', '#ffffff', '2026-10-19 02:20:40.728169+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (100, 1, 3, '#106', '#ffffff', '2026-10-19 02:20:40.738354+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (101, 1, 3, '#107', '#ffffff', '2026-10-19 02:20:40.750386+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (102, 1, 3, '#108', '#ffffff', '2026-10-19 02:20:40.767401+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (103, 1, 3, '#109', '#ffffff', '2026-10-19 02:20:40.778551+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (104, 1, 3, '#110', '#ffffff', '2026-10-19 02:20:40.790795+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (105, 1, 3, '#111', '#ffffff', '2026-10-19 02:20:40.806153+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (106, 1, 3, '#112', '#ffffff', '2026-10-19 02:20:40.818283+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (107, 1, 3, '#113', '#ffffff', '2026-10-19 02:20:40.829962+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (108, 1, 3, '#114', '#ffffff', '2026-10-19 02:20:40.843135+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (109, 1, 3, '#115', '#ffffff', '2026-10-19 02:20:40.854425+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (110, 1, 3, '#116', '#ffffff', '2026-10-19 02:20:40.867088+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (111, 1, 3, '#118', '#ffffff', '2026-10-19 02:20:40.878796+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (112, 1, 3, '#119', '#ffffff', '2026-10-19 02:20:40.889217+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (113, 1, 3, '#120', '#ffffff', '2026-10-19 02:20:40.90114+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (114, 1, 3, '#121', '#ffffff', '2026-10-19 02:20:40.913191+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (115, 1, 3, '#122', '#ffffff', '2026-10-19 02:20:40.924672+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (116, 1, 3, '#124', '#ffffff', '2026-10-19 02:20:40.937019+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (117, 1, 3, '#125', '#ffffff', '2026-10-19 02:20:40.950047+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (118, 1, 3, '#129', '#ffffff', '2026-10-19 02:20:40.962624+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (119, 1, 3, '#131', '#ffffff', '2026-10-19 02:20:40.974366+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (120, 1, 3, '#134', '#ffffff', '2026-10-19 02:20:40.986523+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (121, 1, 3, '#138', '#ffffff', '2026-10-19 02:20:41.000225+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (122, 1, 3, '#137', '#ffffff', '2026-10-19 02:20:41.012293+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (123, 1, 3, '#141', '#ffffff', '2026-10-19 02:20:41.02518+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (124, 1, 3, '#140', '#ffffff', '2026-10-19 02:20:41.038488+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (125, 1, 3, '#143', '#ffffff', '2026-10-19 02:20:41.051508+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (126, 1, 3, '#142', '#ffffff', '2026-10-19 02:20:41.063234+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (127, 1, 3, '#139', '#ffffff', '2026-10-19 02:20:41.080857+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (128, 1, 3, '#135', '#ffffff', '2026-10-19 02:20:41.095972+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (129, 1, 3, '#136', '#ffffff', '2026-10-19 02:20:41.110256+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (130, 1, 3, '#132', '#ffffff', '2026-10-19 02:20:41.124523+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (131, 1, 3, '#130', '#ffffff', '2026-10-19 02:20:41.139471+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (132, 1, 3, '#128', '#ffffff', '2026-10-19 02:20:41.152125+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (133, 1, 3, '#127', '#ffffff', '2026-10-19 02:20:41.16843+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (134, 1, 3, '#126', '#ffffff', '2026-10-19 02:20:41.183807+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (135, 1, 3, '#123', '#ffffff', '2026-10-19 02:20:41.195686+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (136, 1, 3, '#117', '#ffffff', '2026-10-19 02:20:41.207966+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (137, 1, 3, '#54', '#ffffff', '2026-10-19 02:20:41.219606+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (138, 1, 3, '#51', '#ffffff', '2026-10-19 02:20:41.236817+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (139, 1, 3, '#42', '#ffffff', '2026-10-19 02:20:41.251273+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (140, 1, 3, '#25', '#ffffff', '2026-10-19 02:20:41.265123+00');
 
 
 --
@@ -7510,7 +7510,7 @@ INSERT INTO public.oauth_resource (id, identifier, name, access_token_ttl, refre
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'QUEUE', 'Tickets', '', 209, '2026-10-18 23:35:27.31234+00', true, true, true, true, true, true, true, true, false, false, false, true, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 209, '2026-10-18 23:35:27.31234+00', true, true, true, true, true, true, true, true, false, false, false, true, 1, NULL);
 
 
 --
@@ -9712,136 +9712,136 @@ INSERT INTO public.project_view (id, project_id, name, icon, filters, display, "
 -- Data for Name: revision; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:21', 1, 25);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 22);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:127', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:125', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:123', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:121', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:128', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:119', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 1640);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:117', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:124', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:5', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:95', 1, 20);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:126', 1, 19);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:115', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:122', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 33);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:111', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:118', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:109', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:116', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:107', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:105', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:114', 1, 25);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:112', 1, 22);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:103', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:98', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:101', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:106', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:90', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:104', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:93', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:102', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:99', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:75', 1, 19);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 19);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 30);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:88', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:97', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:91', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:82', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:89', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:79', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:92', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:86', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:71', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:76', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:83', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:67', 1, 22);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:80', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:84', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:72', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:77', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:81', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:38', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:74', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:78', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:73', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:68', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:63', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:70', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:69', 1, 19);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:64', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:62', 1, 19);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:66', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:65', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:61', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:60', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:59', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:58', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:57', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:56', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:55', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:54', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:53', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:52', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:36', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:51', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:48', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:49', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:47', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:46', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:45', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:44', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:43', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:42', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:41', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:40', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:39', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:34', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:35', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:37', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:32', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:30', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:31', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:28', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:29', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:12', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:27', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:26', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:10', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:25', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:24', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:23', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:22', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:20', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:19', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:17', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:16', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:15', 1, 15);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:14', 1, 20);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:13', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 18);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 19);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:6', 1, 19);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:116', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:114', 1, 27);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:112', 1, 24);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:25', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:124', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:24', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:23', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:22', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:20', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:19', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:17', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:16', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:15', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:13', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:12', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:122', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:10', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 35);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:118', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:49', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:48', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:47', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:46', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:45', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:44', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:43', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:42', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:41', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:40', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:39', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:38', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:37', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:36', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:35', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:34', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:32', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:31', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:28', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:26', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:98', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:92', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:90', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:88', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:86', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:82', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:80', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:77', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:75', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:73', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:69', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:67', 1, 24);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:65', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:63', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:62', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:61', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:60', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:59', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:57', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:56', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:53', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:52', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:30', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:29', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:127', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:126', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:125', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:111', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:109', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:107', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:106', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:105', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:104', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:93', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:89', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:84', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:83', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:79', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:78', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:76', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:74', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:72', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:71', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:70', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:68', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:66', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:64', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:58', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:55', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:54', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:27', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:6', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:5', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:21', 1, 27);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:128', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:91', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:123', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:121', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:119', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:117', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:115', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:103', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:102', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:101', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:99', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:97', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:95', 1, 22);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 32);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:81', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:51', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 1896);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:14', 1, 22);
 
 
 --
@@ -14682,5 +14682,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict WaaqIXhfbhFB1kjfCol4bXkyZ10geF7HoUbUvFTlx0xsbDJYRyXjnNadm2K1fZ6
+\unrestrict kQZBA1LFyqd4vy2YLKTbrLkNCyfHQIS6EtpemMEe43o3aSZmhxgdH0DKOHnO33c
 
