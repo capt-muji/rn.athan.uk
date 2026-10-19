@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     padding: 3,
   },
   disabled: {
-    opacity: 0.4,
+    opacity: 0.2,
   },
   indicator: {
     position: 'absolute',

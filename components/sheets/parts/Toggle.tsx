@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.interactive.activeBorder,
   },
   disabled: {
-    opacity: 0.4,
+    opacity: 0.2,
   },
   thumb: {
     width: SIZE.toggle.dotSize,

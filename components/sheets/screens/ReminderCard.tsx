@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
@@ -54,15 +54,22 @@ export default function ReminderCard({
     if (next !== null) onSelectInterval(next);
   };
 
+  const handleHeaderPress = () => {
+    if (!locked) onToggle();
+  };
+
   return (
     <View style={[styles.card, locked && styles.cardDisabled]}>
-      <View style={styles.cardRow}>
+      {/* The title and hint name the row's own switch, which carries the role and the checked
+          state. The row stays roleless on purpose: naming it too would have a screen reader
+          offer two controls for one setting, and the switch is the one that reports its state */}
+      <Pressable style={styles.cardRow} onPress={handleHeaderPress}>
         <View>
           <Text style={styles.cardTitle}>{title}</Text>
           <Text style={styles.cardHint}>{hint}</Text>
         </View>
         <Toggle value={isOn} onToggle={onToggle} disabled={locked} />
-      </View>
+      </Pressable>
 
       <View style={[styles.reminderOptions, !isOn && styles.optionsDisabled]}>
         <View style={styles.optionRow}>
@@ -98,7 +105,7 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
   },
   cardDisabled: {
-    opacity: 0.25,
+    opacity: 0.125,
   },
   cardTitle: {
     fontSize: ty.size(TEXT.sizeDetail),
@@ -124,7 +131,7 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
   },
   optionsDisabled: {
-    opacity: 0.25,
+    opacity: 0.125,
   },
   optionRow: {
     flexDirection: 'row',

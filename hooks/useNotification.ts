@@ -232,10 +232,9 @@ export const useNotification = () => {
       return true;
     }
 
-    // Check permissions if enabling any notification
-    const enablesAnything =
-      currentState.atTimeAlert !== AlertType.Off ||
-      currentState.reminders.some((reminder) => reminder.alert !== AlertType.Off);
+    // A reminder fires only beside an on athan, so the athan alone says whether anything fires:
+    // preserved reminder values under an off athan prompt for nothing
+    const enablesAnything = currentState.atTimeAlert !== AlertType.Off;
 
     if (enablesAnything && !(await ensurePermissions())) {
       logger.warn('NOTIFICATION: Permissions not granted');

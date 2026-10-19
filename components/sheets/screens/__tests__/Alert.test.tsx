@@ -3,6 +3,7 @@
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
 import { Alert } from 'react-native';
 
@@ -22,6 +23,7 @@ import {
 import { showAlertSheet } from '@/stores/ui';
 
 import AlertSheet from '../Alert';
+import ReminderCard from '../ReminderCard';
 
 // A locked Toggle or Stepper refuses the press itself, so the sheet's own guards against a locked press never run
 // today. They stay for the day a control stops refusing, and these stand-ins hand the sheet that press: while a test
@@ -85,6 +87,12 @@ const secondReminderOption = (label: string) => screen.getAllByRole('radio', { n
 // One switch per reminder card, in the order the cards are drawn
 const reminderSwitch = () => screen.getAllByRole('switch')[0];
 const secondReminderSwitch = () => screen.getAllByRole('switch')[1];
+
+// A reminder's own card: its title text up through the view that draws and dims the whole card
+const reminderCard = (n: 1 | 2) => screen.getByText(`Reminder ${n}`).parent!.parent!.parent!;
+
+// A reminder's sound and minutes block: its sound radio up through the view that dims the block
+const reminderOptions = () => reminderOption('Silent').parent!.parent!.parent!;
 
 /** Closes the sheet as the bottom sheet library reports it, once the close has finished */
 const closeSheet = () => fireEvent(screen.getByText('Close to save'), 'dismiss');
@@ -518,7 +526,7 @@ describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14
     expect(getReminderInterval(ScheduleType.Standard, FAJR, 0)).toBe(25);
   });
 
-  it('turns both reminders off when the athan goes off', async () => {
+  it('slides both reminders off when the athan goes off, and keeps their choices saved', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
     setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
@@ -527,12 +535,230 @@ describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14
     await render(<AlertSheet />);
 
     await fireEvent.press(athanOption('Off'));
+
+    expect(reminderSwitch()).not.toBeChecked();
+    expect(secondReminderSwitch()).not.toBeChecked();
+
     await closeSheet();
     await settle();
 
     expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Off);
-    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Off);
-    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 1)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 1)).toBe(AlertType.Silent);
+  });
+});
+
+describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:00", () => {
+  it('restores each reminder to its pre-off choice when the athan comes back on in the same session', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(athanOption('Off'));
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    expect(reminderSwitch()).toBeChecked();
+    // The restored pill reads the sound the reminder fires with
+    expect(reminderOption('Sound')).toBeSelected();
+
+    await closeSheet();
+    await settle();
+
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Silent);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+  });
+
+  it('restores the pre-off choice on a fresh open, from the values the off close kept saved', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(athanOption('Off'));
+    await closeSheet();
+    await settle();
+
+    // A fresh open: the body remounts from the store, exactly as the modal's own unmount and
+    // present do, through the key change the suite's prayer move already uses
+    await act(() => openSheetFor(DHUHR));
+    await act(() => openSheetFor(FAJR));
+
+    // The mounted slide-off keeps today's pixels: switch off, pill on Silent, whatever the store holds
+    expect(reminderSwitch()).not.toBeChecked();
+    expect(reminderOption('Silent')).toBeSelected();
+
+    await fireEvent.press(athanOption('Sound'));
+    await settle();
+
+    expect(reminderSwitch()).toBeChecked();
+    expect(reminderOption('Sound')).toBeSelected();
+
+    await closeSheet();
+    await settle();
+
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+  });
+
+  it('keeps a reminder off that was off by its own choice before the athan went off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(athanOption('Off'));
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    expect(reminderSwitch()).toBeChecked();
+    expect(secondReminderSwitch()).not.toBeChecked();
+  });
+
+  it('commits nothing when a sheet holding preserved values under an off athan closes unchanged', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Off);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await closeSheet();
+    await settle();
+
+    expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
+    expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+  });
+
+  it('restores nothing while the athan selection that needed permission was refused', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Off);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    (Notifications.getPermissionsAsync as jest.Mock).mockResolvedValueOnce({ status: 'denied' });
+    (Notifications.requestPermissionsAsync as jest.Mock).mockResolvedValueOnce({ status: 'denied' });
+    jest.spyOn(Alert, 'alert').mockImplementationOnce((_title, _message, buttons) => {
+      const cancel = buttons?.find((button) => button.text === 'Cancel');
+      if (!cancel?.onPress) throw new Error('The settings dialog offers no Cancel');
+      cancel.onPress();
+    });
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    // The refusal leaves the whole draft where it was: the restore sits on the selection that lands
+    expect(athanOption('Off')).toBeSelected();
+    expect(reminderSwitch()).not.toBeChecked();
+
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    expect(athanOption('Silent')).toBeSelected();
+    expect(reminderSwitch()).toBeChecked();
+    expect(reminderOption('Sound')).toBeSelected();
+  });
+});
+
+describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:00", () => {
+  it('dims a locked reminder card to half its uat value while the athan is Off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    expect(reminderCard(1)).toHaveStyle({ opacity: 0.125 });
+    expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
+  });
+
+  it("dims an off reminder's sound and minutes to half their uat value", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    expect(reminderOptions()).toHaveStyle({ opacity: 0.125 });
+    // Reminder 1 off locks the second card, which carries the card dim beside the block's own
+    expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
+  });
+});
+
+describe("the alert sheet's reminder header rows, Friday 11 September 2026 at 14:00", () => {
+  it('toggles a reminder from a press on its title, with no haptic of the row', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(screen.getByText('Reminder 1'));
+
+    expect(reminderSwitch()).toBeChecked();
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('refuses a header press while the athan is Off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(screen.getByText('Reminder 1'));
+
+    expect(reminderSwitch()).not.toBeChecked();
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('refuses a header press while the reminder before it is off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(screen.getByText('Reminder 2'));
+
+    expect(secondReminderSwitch()).not.toBeChecked();
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('refuses a header press at the card itself while locked', async () => {
+    const onToggle = jest.fn();
+
+    await render(
+      <ReminderCard
+        title='Reminder 1'
+        hint='any hint'
+        reminder={{ alert: AlertType.Off, interval: 10 }}
+        sound={AlertType.Silent}
+        taken={null}
+        locked
+        onToggle={onToggle}
+        onSelectSound={() => {}}
+        onSelectInterval={() => {}}
+      />
+    );
+
+    await fireEvent.press(screen.getByText('Reminder 1'));
+
+    // The sheet-level refusals read the draft, which the draft rule guards on its own; the spy
+    // is what makes the row's own guard the thing under test
+    expect(onToggle).not.toHaveBeenCalled();
+  });
+
+  it('toggles a reminder exactly once, with the switch haptic alone, when the switch itself is pressed', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(reminderSwitch());
+
+    // A row press reaching through as well would toggle twice and land back off
+    expect(reminderSwitch()).toBeChecked();
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 });
 

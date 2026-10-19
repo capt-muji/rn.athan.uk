@@ -13,8 +13,10 @@ import logger from '@/shared/logger';
 import {
   commitLanguagePreference,
   consumeRelaunchHandoff,
+  languageCommitBusyAtom,
   languagePreferenceAtom,
   lastArmedLanguageAtom,
+  pendingLanguageAtom,
   relaunchHandoffAtom,
 } from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
@@ -40,13 +42,16 @@ const forceRTL = jest.mocked(I18nManager.forceRTL);
 reschedule.mockResolvedValue(true);
 
 // The unit project sets no clearMocks, so without this the second and third cases
-// inherit the first's calls and the first's forced direction
+// inherit the first's calls and the first's forced direction. A fulfilled crossing
+// now holds busy and pending past the commit's end, so every case also resets them
 beforeEach(() => {
   forceRTL(false);
   jest.clearAllMocks();
   store.set(lastArmedLanguageAtom, '');
   store.set(languagePreferenceAtom, '');
   store.set(relaunchHandoffAtom, '');
+  store.set(languageCommitBusyAtom, false);
+  store.set(pendingLanguageAtom, null);
 });
 
 it('crossing to ar converges, then forces RTL and relaunches', async () => {
@@ -83,6 +88,38 @@ it('a refused relaunch logs and leaves the direction forced for the next launch'
     'LANGUAGE: relaunch failed after the RTL flip',
     expect.objectContaining({ error: expect.any(Error) })
   );
+});
+
+describe('the busy face across a reload', () => {
+  // Android's reload fulfils before the restart lands, so the loader must not stand
+  // down on fulfilment: only a reload that never arrived releases the face
+  it('holds the loader through a fulfilled crossing: busy stays true and the pending locale stays set', async () => {
+    await commitLanguagePreference('ar');
+
+    expect(store.get(languageCommitBusyAtom)).toBe(true);
+    expect(store.get(pendingLanguageAtom)).toBe('ar');
+  });
+
+  it('clears the loader when the reload is refused, and the marker with it', async () => {
+    reloadAsync.mockRejectedValueOnce(new Error('reload refused'));
+
+    await commitLanguagePreference('ar');
+
+    expect(store.get(languageCommitBusyAtom)).toBe(false);
+    expect(store.get(pendingLanguageAtom)).toBe(null);
+    expect(store.get(relaunchHandoffAtom)).toBe('');
+  });
+
+  it('runs a second commit after a refused one to its own reload, so no latch sticks', async () => {
+    reloadAsync.mockRejectedValueOnce(new Error('reload refused'));
+    await commitLanguagePreference('ar');
+    reloadAsync.mockClear();
+
+    await commitLanguagePreference('en');
+
+    expect(reloadAsync).toHaveBeenCalledTimes(1);
+    expect(forceRTL).toHaveBeenLastCalledWith(false);
+  });
 });
 
 describe('the relaunch handoff', () => {

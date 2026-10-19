@@ -87,6 +87,12 @@ describe('the reminder stepper at either end of the intervals', () => {
     expect(handlers[handler]).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
+
+  it('dims a dead arrow to half its uat value', async () => {
+    await render(<Stepper value={5} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
+
+    expect(screen.getByRole('button', { name: 'Decrease to 5 min' })).toHaveStyle({ opacity: 0.15 });
+  });
 });
 
 describe('the reminder stepper beside the other reminder', () => {
@@ -138,6 +144,12 @@ describe('the reminder stepper at 15 min while the reminder is off', () => {
 
     expect(screen.getByRole('button', { name: 'Decrease to 10 min' })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Increase to 20 min' })).toBeDisabled();
+  });
+
+  it('dims to half its uat value', async () => {
+    await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} disabled />);
+
+    expect(screen.getByRole('button', { name: 'Decrease to 10 min' }).parent!).toHaveStyle({ opacity: 0.2 });
   });
 
   it('ignores presses on both arrows, with no haptic', async () => {
