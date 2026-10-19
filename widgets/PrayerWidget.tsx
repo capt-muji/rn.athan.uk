@@ -196,7 +196,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // narrower rows pull the list's left edge in, and the freed width lets
   // the hero trio center between the card's edge and the list.
   const MEDIUM_LIST_WIDTH = 146;
-  // Fallback until a native tick stamps the real grant.
+  // Fallback for renders whose environment carries no grant (the press path).
   const ANDROID_MEDIUM_MIN_WIDTH = 310;
   // Equal, or the two halves are not equal and the trio's centre drifts left of
   // the card's quarter however the columns are split (owner 2026-09-24).
@@ -213,7 +213,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // fixed columns summing past it overflow the Row, which Glance clips (the
   // X8's sliced names). Glance's own fractions are unreachable — expo-widgets'
   // converter drops fillMaxWidth's fraction and ignores weight, which is what
-  // starved the list on the 3T — so the grant rides the snapshot instead.
+  // starved the list on the 3T — so the grant rides the render environment.
   // REFERENCE_* are the owner-approved 3T proportions the row boxes scale from.
   const REFERENCE_INNER_WIDTH = 347;
   const REFERENCE_NAME_WIDTH = 82;
@@ -546,8 +546,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       return ACard(footer, trio);
     }
 
-    const stampedWidth = input.grantedWidthDp;
-    const grantedWidth = typeof stampedWidth === 'number' && stampedWidth > 0 ? stampedWidth : ANDROID_MEDIUM_MIN_WIDTH;
+    const environmentWidth = (environment as { grantedWidthDp?: number }).grantedWidthDp;
+    const grantedWidth =
+      typeof environmentWidth === 'number' && environmentWidth > 0
+        ? Math.floor(environmentWidth)
+        : ANDROID_MEDIUM_MIN_WIDTH;
     const innerWidth = grantedWidth - CARD_PAD_START - CARD_PAD_END;
     const scale = innerWidth / REFERENCE_INNER_WIDTH;
     // Half each, so the trio's centre and the card's quarter coincide at every
