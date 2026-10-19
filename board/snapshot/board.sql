@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict yKTMJPHLcAeLqZBfS3eTuFKnhrCRu216Y2dRI4xV105RJCteGw3lTo3Dwlpky3d
+\restrict 1NUYgZB3c7O1wctncFR8q0P5LtAbyx1v0bksQF2itCmp6OMNZi0fNOV8dc4UaWJ
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5584,9 +5584,6 @@ Monitoring row for PR `expo/expo#51292`, which adds the `openApp` option to the 
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (35, 1, 114, 2, 4, 'The owner''s pass-four read: the colon''s advance, the round info badge, the Thai step', 'OWNER READ 2026-10-16 (on the 2.0.841 tree): (1) when an upcoming row becomes the next prayer the colon stayed dim - the advance never took the next ink (the rollover cascades read fine); (2) the overlay info box''s information icon becomes ROUND matching the sheet footers exactly (same style, same size, same glyph) - the info box only, nowhere else; (3) the Thai Help modal carried ''Time Sensitive Notifications'' in English inside Thai copy - every sibling locale translates the term inline. The owner''s confirmations on the same read: the loader''s frame-one language fixed, Hindi''s bold acceptable and good, the footer glyph size right, Thai otherwise great. FOLLOW-UPS same session: the colon SNAPPED to dim at the day-roll cascade instead of fading with the digits (fixed at 2.0.845 - the pair''s bright end stays put so the cascade rides the same endpoints as the digits), and the mock''s ceil-based gaps displayed as 2m and 3m (fixed at 2.0.844 - boundary-based seeding always reads 1m and 2m)
 
 Status note: 2026-10-16, landed direct at 2.0.842, 2.0.844 and 2.0.845 by the owner''s order (all gates green each time, 100 percent): the colon rides ONE derived colour whose endpoint pair keys off the row state (colonInkPair, pure and pinned - the root was Fabric keeping the last UI-thread value when a static ink replaced an animated style in the array), InfoBadge becomes round-only at the footer''s exact 20pt chip and 10pt glyph with the round prop dying beside its last square caller, and the Thai step names time-sensitive notifications in Thai', NULL, NULL, NULL, 14000, '2026-10-18 23:35:56.074831+00', '2026-10-19 02:54:07.938665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (33, 1, 116, 10, 4, 'iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history).', 'No plan folder; the record sits in the status cell and in git history.
-
-Status note: 2026-10-18, audited (plan-conformance and blind passes): the iPhone Duo runs the app through the existing layout with no Duo code path. Closed, one schedule fills the 466x678 display; open, iOS grants a 469x669 portrait window centred in the 951x669 inner display, one schedule inside it because the app is portrait-locked and the 500pt content cap never binds at 469. Both schedules, the overlay, the settings sheet and its Help row work in both poses; a fold keeps the same process (41562) and an open overlay alive; a cold launch lands on the Standard schedule. No production code changed (the range touches no layout file), so every other form factor renders what it rendered before. Filling the open panel needs landscape support, which turns rotation on for every iPhone and iPad and the owner''s order excludes. The plan folder and evidence died in this merge per the records rule.', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 02:54:07.916927+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (36, 1, 113, 2, 4, 'The loader''s frame-one language; the mock at any hour', 'OWNER REPORT 2026-10-16 (two): (1) the language loader''s first frame drew the OLD language''s words around the target''s own name (''Setting العربية language'') for 200-300ms before flipping - the row-87 face fix''s class one layer up; the owner ruled land it. (2) the mock feed broke the UI between 04:00 and 06:00 - dashes everywhere, rows missing - because the relative seed wrote impossible small-hours times (an Isha at 04:32) that tripped the real midnight-crossing rules; the owner''s order: any hour, any day. RIDER, the owner''s device-test reseed: Asr previous, Maghrib next about one minute out, Isha two, tomorrow rolling in real so the owner can watch the day rollover (today drives the non-overlay UI, tomorrow the overlay''s shown times; the surrounding days carry the real static shape)
 
 Status note: 2026-10-16, landed direct at 2.0.838 by the owner''s order (all gates green, 5697 tests, 100 percent): the loader composes through tIn (a named locale''s catalog) and keys its face off the target, frame one fully in the target''s language; the mock seeds three windows - the owner''s evening structure 06:00-23:52, a realistic pre-dawn day with Fajr next for the small hours, and the spent late evening served as its real static shape - with the suite pinning all three; audited with the evening batch (both reviewers, findings at 2.0.840)', NULL, NULL, NULL, 15000, '2026-10-18 23:35:56.091552+00', '2026-10-19 02:54:07.948858+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5729,6 +5726,22 @@ Acceptance:
 - [ ] a sensitive-content sweep across the working tree AND git history: no home paths, no last name, no personal or family media, nothing that identifies the owner beyond the public Play Store name (owner''s order 2026-10-19: the owner is public, the last name is not), with any history hit tabled to the owner for the rewrite decision
 - [ ] the board swept: no defect the integrity checklist can catch
 - [ ] yarn validate green at the close', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.558039+00', '2026-10-19 20:02:24.83425+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (33, 1, 116, 10, 1, 'iPhone Duo: the adaptive layout answers Apple''s requirement', 'Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.
+
+Where: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.
+
+THE ORDER OF THIS ROW (owner, 2026-10-19): picked after #130, #241 and #254, immediately before #54 (the final hygiene pass).
+
+DESIGN (owner, 2026-10-19): the Duo is one resizable larger screen. One schedule, centred, inside the app''s existing max content width, exactly as a resized desktop window renders today. Explicitly rejected, again: two schedules (one per panel), a centre settings button, centre-anchored sheets, any Duo-branched layout. Nothing may complicate the code base and no other form factor may change.
+
+PRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo code - closed pose one schedule on 466x678; open pose a centred 469x669 portrait window; both schedules, the overlay, the settings sheet and its Help row working in both poses; a fold keeping the process and overlay alive. Filling the open panel fully would need landscape support, which the owner excluded.
+
+Acceptance:
+- [ ] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded
+- [ ] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each
+- [ ] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)
+- [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling
+- [ ] every other form factor unchanged', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 20:21:07.936952+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 
 
 --
@@ -7973,6 +7986,12 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2231, 4, 'activity', 'owner', NULL, 'description', '2026-10-19 20:02:24.866749+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the last row on the board - a deep review and cleanup of the codebase (typing, dead code, pattern drift) and the board, so both end clean.\n\nWhere: the whole repository and the open board.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked LAST, after every other row is Done or parked. The number-order picking rule yields to this order.\n\nCLOSED 2026-10-19 by the owner''s rulings: the one line of qibla copy verified on glass (the sheet''s subheading reads right); the one leftover build covered by the owner''s full-app test on the 3T, which works perfectly; the patch questions owned by the upstream rows; the 2026-10-14 hygiene check (already done) folds into this broader pass.\n\nAcceptance:\n- [ ] every other board row Done or parked\n- [ ] a deep typed code review run across the repo, findings fixed or ticketed\n- [ ] dead code, stale comments and pattern drift cleaned\n- [ ] a sensitive-content sweep across the working tree AND git history: no home paths, no last name, no personal or family media, nothing that identifies the owner beyond the public Play Store name (owner''s order 2026-10-19: the owner is public, the last name is not), with any history hit tabled to the owner for the rewrite decision\n- [ ] the board swept: no defect the integrity checklist can catch\n- [ ] yarn validate green at the close"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2232, 4, 'comment', 'owner', 'Scope added by the owner 2026-10-19: the pass checks the working tree and git history for anything sensitive - the owner''s home path, the owner''s last name (the Play Store first name is public and fine), and any family or personal pictures. Nothing of the kind belongs in the repository.', NULL, '2026-10-19 20:02:24.886365+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2233, 4, 'comment', 'owner', 'Sensitive-sweep baseline 2026-10-19: the last name has zero hits in the working tree, in HEAD, and in every commit of history (git log -S, both spellings). The four tracked /Users/ references are benign: three are vendored skill docs using generic example accounts, and one is the guard test asserting the widgets patch carries no home path. The only tracked image outside assets/ is a global-prayer-times feature reference photo, not personal media. The pass re-runs the sweep for anything beyond these named classes.', NULL, '2026-10-19 20:03:09.812243+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2234, 33, 'activity', 'owner', NULL, 'title', '2026-10-19 20:21:07.920938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "iPhone Duo: the adaptive layout answers Apple''s requirement"}, "from": {"value": "iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history)."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2235, 33, 'activity', 'owner', NULL, 'description', '2026-10-19 20:21:07.920938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.\n\nWhere: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked after #130, #241 and #254, immediately before #54 (the final hygiene pass).\n\nDESIGN (owner, 2026-10-19): the Duo is one resizable larger screen. One schedule, centred, inside the app''s existing max content width, exactly as a resized desktop window renders today. Explicitly rejected, again: two schedules (one per panel), a centre settings button, centre-anchored sheets, any Duo-branched layout. Nothing may complicate the code base and no other form factor may change.\n\nPRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo code - closed pose one schedule on 466x678; open pose a centred 469x669 portrait window; both schedules, the overlay, the settings sheet and its Help row working in both poses; a fold keeping the process and overlay alive. Filling the open panel fully would need landscape support, which the owner excluded.\n\nAcceptance:\n- [ ] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded\n- [ ] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each\n- [ ] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)\n- [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling\n- [ ] every other form factor unchanged"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2236, 33, 'activity', 'owner', NULL, 'status', '2026-10-19 20:21:07.920938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Backlog", "stateType": "backlog"}, "from": {"id": 4, "value": "Done", "stateType": "completed"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2237, 33, 'activity', 'owner', NULL, 'label_add', '2026-10-19 20:21:07.938865+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "iOS"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2238, 33, 'activity', 'owner', NULL, 'label_add', '2026-10-19 20:21:07.938865+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 10, "value": "research"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2239, 33, 'comment', 'owner', 'Reopened 2026-10-19 by the owner''s order: Apple requires Duo support by April 2027, iOS 27 and SDK 58 shipped Apple''s Duo skills, and the row returns second-to-last (after 130, 241 and 254, before 54) to research those skills and re-verify on the Duo simulator. The 2026-10-18 close record stands in the description as prior evidence: the adaptive layout already answers the Duo with no Duo code.', NULL, '2026-10-19 20:21:07.962216+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -8248,8 +8267,6 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (31, 112);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (31, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (32, 111);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (32, 143);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 110);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 149);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (34, 109);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (34, 148);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (35, 108);
@@ -8515,6 +8532,10 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 174);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 1);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 7);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 110);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 149);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 1);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 10);
 
 
 --
@@ -8584,7 +8605,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (30, 30, 4, 'Done', 'completed', '2026-10-18 23:35:55.973+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (31, 31, 4, 'Done', 'completed', '2026-10-18 23:35:55.994+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (32, 32, 4, 'Done', 'completed', '2026-10-18 23:35:56.012+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (33, 33, 4, 'Done', 'completed', '2026-10-18 23:35:56.034+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (34, 34, 4, 'Done', 'completed', '2026-10-18 23:35:56.051+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (35, 35, 4, 'Done', 'completed', '2026-10-18 23:35:56.074+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (36, 36, 4, 'Done', 'completed', '2026-10-18 23:35:56.091+00', NULL);
@@ -8849,6 +8869,8 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (432, 254, 1, 'Backlog', 'backlog', '2026-10-19 19:48:47.53+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (431, 253, 1, 'Backlog', 'backlog', '2026-10-19 19:48:47.41+00', '2026-10-19 19:59:04.839344+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (433, 253, 4, 'Done', 'completed', '2026-10-19 19:59:04.839344+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (33, 33, 4, 'Done', 'completed', '2026-10-18 23:35:56.034+00', '2026-10-19 20:21:07.916266+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (434, 33, 1, 'Backlog', 'backlog', '2026-10-19 20:21:07.916266+00', NULL);
 
 
 --
@@ -14907,7 +14929,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 32)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:233', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:122', 1, 32);
@@ -14921,9 +14942,10 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 44);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3266);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3274);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 
 
@@ -15186,7 +15208,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2233, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2239, true);
 
 
 --
@@ -15263,7 +15285,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 433, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 434, true);
 
 
 --
@@ -19746,5 +19768,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict yKTMJPHLcAeLqZBfS3eTuFKnhrCRu216Y2dRI4xV105RJCteGw3lTo3Dwlpky3d
+\unrestrict 1NUYgZB3c7O1wctncFR8q0P5LtAbyx1v0bksQF2itCmp6OMNZi0fNOV8dc4UaWJ
 
