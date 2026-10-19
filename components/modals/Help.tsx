@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type ComponentRef, useRef, useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Easing,
@@ -18,6 +18,7 @@ import { t } from '@/shared/i18n';
 import { chevronFor, currentLocaleId, directionGlyph } from '@/shared/i18n/locale';
 import { typographyFor } from '@/shared/typography';
 
+import { revealTarget, scrollReveal } from './helpReveal';
 import Modal from './Modal';
 
 /** Share of the screen the scrolling list may take, so the card and its Close button fit every size */
@@ -51,7 +52,17 @@ const CHEVRON_SIZE = 20;
  * a list of causes to scan, and only the one a user recognises costs them any reading. The whole row
  * is the trigger, because a chevron alone is a small target on a phone.
  */
-const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onToggle: () => void }) => {
+const Topic = ({
+  topic,
+  open,
+  onToggle,
+  onRowLayout,
+}: {
+  topic: HelpTopic;
+  open: boolean;
+  onToggle: () => void;
+  onRowLayout: (question: string, layout: { y: number; height: number }) => void;
+}) => {
   const turn = useSharedValue(open ? 1 : 0);
 
   turn.value = withTiming(open ? 1 : 0, CHEVRON_TURN);
@@ -67,7 +78,8 @@ const Topic = ({ topic, open, onToggle }: { topic: HelpTopic; open: boolean; onT
       accessibilityRole={'button'}
       accessibilityState={{ expanded: open }}
       accessibilityLabel={question}
-      onPress={onToggle}>
+      onPress={onToggle}
+      onLayout={(event) => onRowLayout(question, event.nativeEvent.layout)}>
       <Animated.View layout={GROW} style={[styles.row, open && styles.rowOpen]}>
         <View style={styles.head}>
           <Text style={styles.question}>{question}</Text>
@@ -122,6 +134,20 @@ export default function ModalHelp({ visible, onClose }: Props) {
   const { height } = useWindowDimensions();
   const topics = getHelpTopics(Platform.OS === 'android' ? 'android' : 'ios');
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+  const listRef = useRef<ComponentRef<typeof ScrollView>>(null);
+  const listHeightRef = useRef(0);
+  const listOffsetRef = useRef(0);
+
+  /**
+   * A row that grows past the ScrollView's window opens invisibly (the 3T's list overflows the
+   * viewport even closed), so the list scrolls the least distance that brings the open answer's
+   * bottom inside the window it sits in. Answers that already fit never move the list.
+   */
+  const handleRowLayout = (question: string, layout: { y: number; height: number }) => {
+    if (openQuestion !== question) return;
+    const target = revealTarget(layout, listHeightRef.current, listOffsetRef.current);
+    if (target !== null) scrollReveal(listRef.current, target);
+  };
 
   return (
     <Modal
@@ -138,7 +164,15 @@ export default function ModalHelp({ visible, onClose }: Props) {
       }>
       {/* Stretched because the modal centres its children: unstretched, a flexible column measures zero */}
       <ScrollView
+        ref={listRef}
         style={[styles.list, { maxHeight: height * ANSWERS_HEIGHT_SHARE }]}
+        onLayout={(event) => {
+          listHeightRef.current = event.nativeEvent.layout.height;
+        }}
+        onScroll={(event) => {
+          listOffsetRef.current = event.nativeEvent.contentOffset.y;
+        }}
+        scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
         {topics.map((topic) => (
           <Topic
@@ -146,6 +180,7 @@ export default function ModalHelp({ visible, onClose }: Props) {
             topic={topic}
             open={openQuestion === topic.question}
             onToggle={() => setOpenQuestion(openQuestion === topic.question ? null : topic.question)}
+            onRowLayout={handleRowLayout}
           />
         ))}
       </ScrollView>

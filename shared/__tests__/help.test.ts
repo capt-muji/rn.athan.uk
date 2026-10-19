@@ -158,16 +158,50 @@ describe('getHelpTopics', () => {
     }
   });
 
-  /** The owner's order: a compact question and a compact answer only, one sentence each (D142.8) */
-  it('pins the widget copy, one sentence naming where the widgets appear', () => {
-    expect(en['help.q.widgets']).toBe('Are widgets supported?');
-    expect(en['help.a.widgets.ios']).toBe('Yes, on the home screen and the lock screen.');
-    expect(en['help.a.widgets.android']).toBe('Yes, on the home screen.');
+  /**
+   * The owner's order (2026-10-19): each platform's extent as two labeled lines, iOS first, in
+   * every locale, the labels Latin and the sentences in each language's own voice (D142.11)
+   */
+  it('pins the widget copy, both extents as two labeled lines, byte for byte', () => {
+    const catalogs: Record<string, Catalog> = { ar, ms, so, hi, th };
+    const answers: Record<string, string> = {
+      en: 'iOS: Yes, on the home screen and the lock screen.\nAndroid: Yes, on the home screen.',
+      ar: 'iOS: نعم، على الشاشة الرئيسية وشاشة القفل.\nAndroid: نعم، على الشاشة الرئيسية.',
+      ms: 'iOS: Ya, pada skrin utama dan skrin kunci.\nAndroid: Ya, pada skrin utama.',
+      so: 'iOS: Haa, shaashadda bilowga iyo shaashadda xiritaanka.\nAndroid: Haa, shaashadda bilowga.',
+      hi: 'iOS: हाँ, होम स्क्रीन और लॉक स्क्रीन पर।\nAndroid: हाँ, होम स्क्रीन पर।',
+      th: 'iOS: ใช่ บนหน้าจอหลักและหน้าจอล็อก\nAndroid: ใช่ บนหน้าจอหลัก',
+    };
 
-    for (const key of ['help.q.widgets', 'help.a.widgets.ios', 'help.a.widgets.android'] as const) {
-      expect(en[key]).toMatch(/[.?]$/);
-      expect(en[key].slice(0, -1)).not.toMatch(/[.?]/);
+    expect(en['help.q.widgets']).toBe('Are widgets supported?');
+    for (const [loc, text] of Object.entries(answers)) {
+      const value = loc === 'en' ? (en['help.a.widgets'] as string) : catalogs[loc]['help.a.widgets'];
+      expect(`${loc}: ${value}`).toBe(`${loc}: ${text}`);
     }
+  });
+
+  /** The question stays one sentence; the answer is one labeled line per platform, iOS first (D142.11) */
+  it('shapes the widget answer as two labeled lines, one sentence each', () => {
+    expect(en['help.q.widgets']).toMatch(/[.?]$/);
+    expect(en['help.q.widgets'].slice(0, -1)).not.toMatch(/[.?]/);
+
+    const lines = en['help.a.widgets'].split('\n');
+    expect(lines).toHaveLength(2);
+    expect(lines[0].startsWith('iOS: ')).toBe(true);
+    expect(lines[1].startsWith('Android: ')).toBe(true);
+    for (const line of lines) {
+      expect(line).toMatch(/[.]$/);
+      expect(line.slice(0, -1)).not.toMatch(/[.?!]/);
+    }
+  });
+
+  /** One shared answer key, the entries' own pattern when both platforms read the same words (D142.11) */
+  it('answers the widget question with the same two lines on both platforms', () => {
+    const ios = getHelpTopics('ios').at(-1);
+    const android = getHelpTopics('android').at(-1);
+
+    expect(ios?.text).toBe(en['help.a.widgets']);
+    expect(android?.text).toBe(en['help.a.widgets']);
   });
 
   /** No locale teaches how to add a widget, whatever script it writes in (D142.6) */
@@ -183,7 +217,7 @@ describe('getHelpTopics', () => {
     const catalogs: Record<string, Catalog> = { en, ar, ms, so, hi, th };
 
     for (const [loc, banned] of Object.entries(instructionWords)) {
-      for (const key of ['help.q.widgets', 'help.a.widgets.ios', 'help.a.widgets.android'] as const) {
+      for (const key of ['help.q.widgets', 'help.a.widgets'] as const) {
         const value = catalogs[loc][key];
 
         expect(value?.length ?? 0).toBeGreaterThan(0);

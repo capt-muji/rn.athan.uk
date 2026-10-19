@@ -15,11 +15,14 @@ import { getHelpTopics } from '@/shared/help';
 import { setActiveLocale } from '@/shared/i18n/locale';
 
 import ModalHelp from '../Help';
+import { scrollReveal } from '../helpReveal';
 
 // The two settings screens leave the app, so opening them is observed instead of done
 jest.mock('@/device/notifications', () => ({
   openDndAccessSettings: jest.fn(() => Promise.resolve(true)),
 }));
+// The reveal's scroll is observed at its own seam, which the renderer has no native host for
+jest.mock('../helpReveal', () => ({ ...jest.requireActual('../helpReveal'), scrollReveal: jest.fn() }));
 // Jest resolves React Native for iOS, whose BackHandler never fires. The back handling exists for Android, so the
 // hardware back press runs through React Native's own Android implementation
 jest.mock('react-native/Libraries/Utilities/BackHandler.ios', () =>
@@ -201,6 +204,20 @@ describe('the Help modal on Android', () => {
 
     expect(screen.getByText('Why did notifications stop after a restart?')).toBeOnTheScreen();
   });
+
+  /**
+   * The row the 3T never opened (comment 2169): the rendering proof that the press path itself is
+   * sound, which separates a JS defect from native hit-testing before any fix is guessed at.
+   */
+  it('expands the widgets question when the row is pressed', async () => {
+    onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    const widgets = getHelpTopics('android').at(-1);
+
+    await fireEvent.press(screen.getByRole('button', { name: widgets?.question }));
+
+    expect(screen.getByText(widgets?.text ?? '')).toBeOnTheScreen();
+  });
 });
 
 describe("the Help modal's chevron", () => {
@@ -245,6 +262,77 @@ describe("the Help modal's chevron", () => {
 
     expect(onClose).toHaveBeenCalledTimes(1);
     expect(exitApp).not.toHaveBeenCalled();
+  });
+});
+
+describe("the Help modal's fold reveal", () => {
+  // The 3T defect (comment 2169): the list already overflows its viewport closed, so the last
+  // row's answer opened wholly below the fold and read as a row that never expands
+  const reportLayout = async (node: TestInstance, y: number, height: number) => {
+    await fireEvent(node, 'layout', { nativeEvent: { layout: { x: 0, y, width: 1016, height } } });
+  };
+  const scroller = () => screen.root?.queryAll((node) => node.type === 'RCTScrollView')[0] as TestInstance;
+
+  it('scrolls the minimum distance when an answer opens below the fold', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await reportLayout(scroller(), 0, 1190);
+    const widgets = screen.getByRole('button', { name: 'Are widgets supported?' });
+    await reportLayout(widgets, 1104, 127);
+
+    await fireEvent.press(widgets);
+    expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
+
+    await reportLayout(widgets, 1104, 281);
+    expect(jest.mocked(scrollReveal)).toHaveBeenCalledTimes(1);
+    expect(jest.mocked(scrollReveal).mock.calls[0]?.[1]).toBe(195);
+  });
+
+  it('never moves the list for an answer that already fits the viewport', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await reportLayout(scroller(), 0, 1190);
+    const first = screen.getByRole('button', { name: "Why don't I get any notifications?" });
+    await reportLayout(first, 0, 128);
+
+    await fireEvent.press(first);
+    await reportLayout(first, 0, 300);
+
+    expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
+  });
+
+  it('holds the list still for an answer that fits wherever the list is scrolled', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    const list = scroller();
+    await reportLayout(list, 0, 1190);
+    await fireEvent(list, 'scroll', { nativeEvent: { contentOffset: { y: 300 } } });
+    const widgets = screen.getByRole('button', { name: 'Are widgets supported?' });
+
+    await fireEvent.press(widgets);
+    await reportLayout(widgets, 1104, 200);
+
+    expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
+  });
+
+  it('reveals nothing before the list has measured its own viewport', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    const widgets = screen.getByRole('button', { name: 'Are widgets supported?' });
+
+    await fireEvent.press(widgets);
+    await reportLayout(widgets, 1104, 281);
+
+    expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
+  });
+
+  it('ignores the layout of rows that are not the open one', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    await reportLayout(scroller(), 0, 1190);
+    const first = screen.getByRole('button', { name: "Why don't I get any notifications?" });
+    const widgets = screen.getByRole('button', { name: 'Are widgets supported?' });
+    await reportLayout(first, 0, 128);
+
+    await fireEvent.press(first);
+    await reportLayout(widgets, 1104, 281);
+
+    expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
   });
 });
 
