@@ -7,6 +7,7 @@ import { Day } from '@/components/day';
 import { List, PrayerAgo } from '@/components/prayer';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { SCREEN, SIZE } from '@/shared/constants';
+import { honoredTopInset } from '@/shared/insets';
 import { ScheduleType } from '@/shared/types';
 import { showTimePassedAtom } from '@/stores/ui';
 
@@ -25,7 +26,7 @@ export default function Screen({ type }: Props) {
   const deferContent = type === ScheduleType.Extra && !chromeDeferred;
 
   const computedStyles: ViewProps['style'] = {
-    paddingTop: insets.top + SCREEN.paddingTop,
+    paddingTop: honoredTopInset(insets.top) + SCREEN.paddingTop,
     paddingBottom: insets.bottom,
     maxWidth: SIZE.contentMaxWidth,
     width: '100%',

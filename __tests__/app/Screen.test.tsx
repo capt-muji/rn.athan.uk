@@ -4,6 +4,8 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import { StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { seedCountdownBarOn, seedTimePassedOn, showLondonDay } from '@/__tests__/harness';
 import { ScheduleType } from '@/shared/types';
@@ -62,5 +64,32 @@ describe('a prayer page, Friday 11 September 2026 at 14:00', () => {
 
     expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
     expect(screen.queryByText('Dhuhr \u206658m\u2069 ago')).not.toBeOnTheScreen();
+  });
+});
+
+describe("a prayer page's top safe-area consumption", () => {
+  afterEach(() => {
+    // clearMocks clears call counts, never a set return value, so the suite's zero-inset default is put back by hand
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 0, left: 0, right: 0, bottom: 0 });
+  });
+
+  const pageTopPadding = async (): Promise<number> => {
+    const { container } = await render(<Screen type={ScheduleType.Standard} />);
+    const page = container.queryAll((node) => node.type === 'View')[0];
+    return StyleSheet.flatten(page.props.style).paddingTop;
+  };
+
+  it('renders the phone-class top inset into the page padding', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 62, left: 0, right: 0, bottom: 0 });
+
+    expect(await pageTopPadding()).toBe(79);
+  });
+
+  it("renders the closed-pose padding when the window's inset is a phantom", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 80, left: 0, right: 0, bottom: 0 });
+
+    expect(await pageTopPadding()).toBe(17);
   });
 });
