@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 68BJBIwKXgopifCG5cU3bhmeVILLcbuQDJUjl3llMIMAURemqlFxmmVwfHq4d3N
+\restrict hgjUplyLa9Vk7CLNfnoPbbNbbolQGAWegu8ICFTwfbjgaEWWhcY98HbuZPaJ1FL
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5763,6 +5763,9 @@ Acceptance:
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (261, 1, 261, NULL, 4, 'Step 1: Apple''s requirements named and recorded', 'Export the App Resizability skill from Xcode 27.1, read the four official artifacts, re-run the three pattern reads, write the Requirements section into the T-116 plan doc with citations and the one hard requirement beyond running quoted verbatim. One commit: version bump plus snapshot.', NULL, NULL, NULL, 5000, '2026-10-19 22:14:39.565172+00', '2026-10-19 22:27:40.136375+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (263, 1, 263, NULL, 4, 'Step 3: the row''s records closed', 'Read the branch diff and record it names no layout file (every other form factor unchanged by construction), tick the subtasks, regenerate the snapshot. One commit: version bump plus snapshot.', NULL, NULL, NULL, 7000, '2026-10-19 22:14:39.65314+00', '2026-10-19 22:56:03.749371+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 4, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:53:31.337558+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (267, 1, 267, NULL, 1, 'Step 3: the row''s records closed', '', NULL, NULL, NULL, 7000, '2026-10-19 23:23:42.573038+00', '2026-10-19 23:23:42.573038+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (265, 1, 265, NULL, 4, 'Step 1: the oversized-inset clamp lands', '', NULL, NULL, NULL, 5000, '2026-10-19 23:23:42.493079+00', '2026-10-19 23:38:06.126601+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (266, 1, 266, NULL, 4, 'Step 2: the ruled outcome verified on the iPhone Duo simulator', '', NULL, NULL, NULL, 6000, '2026-10-19 23:23:42.539115+00', '2026-10-19 23:56:33.939754+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (264, 1, 264, 2, 3, 'iPhone Duo open-pose landscape: black bars flank the purple background and a tall gap sits above the countdown', 'Goal: the Duo''s open and half-open poses render the schedule at its designed offset inside Apple''s sanctioned centred portrait window, with no phantom gap above the countdown and no overlap between the Standard page''s Isha row and the Settings button. The black bars beside the window are Apple''s own letterbox around a portrait-locked app and stay (LEAD RULING agent-ruled 2026-10-20, row comment 2371: Vehicle C); the price of removing them (landscape support, Vehicles A and B) is tabled on that comment.
 
 Where: the top safe-area consumption in app/Screen.tsx, clamped only where the delivered top inset exceeds the largest any iPhone delivers (62), the compat-scaled window the Duo''s non-closed poses grant. Portrait poses and every phone geometry bit-identical.
@@ -5777,13 +5780,10 @@ MECHANISM (measured 2026-10-20, plan doc): the bars are the system letterbox out
 
 Acceptance:
 - [ ] the mechanism named: what paints the bars beside the content (the system letterbox outside the window) and what plants the tall gap (the ~80pt phantom top inset the scaled window delivers), recorded with the measured numbers in the plan doc
-- [ ] on the iPhone Duo simulator, open pose: the countdown block sits at its designed offset, the phantom gap gone (name text in the closed-pose class, about 13-17, against 95 pre-fix), reading transcribed onto this row
-- [ ] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap (clearance about 33.67 against the 46.33pt overlap pre-fix), reading transcribed onto this row
-- [ ] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment
-- [ ] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-19 23:28:51.484129+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (266, 1, 266, NULL, 1, 'Step 2: the ruled outcome verified on the iPhone Duo simulator', '', NULL, NULL, NULL, 6000, '2026-10-19 23:23:42.539115+00', '2026-10-19 23:23:42.539115+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (267, 1, 267, NULL, 1, 'Step 3: the row''s records closed', '', NULL, NULL, NULL, 7000, '2026-10-19 23:23:42.573038+00', '2026-10-19 23:23:42.573038+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 1, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (265, 1, 265, NULL, 4, 'Step 1: the oversized-inset clamp lands', '', NULL, NULL, NULL, 5000, '2026-10-19 23:23:42.493079+00', '2026-10-19 23:38:06.126601+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 2, NULL);
+- [x] on the iPhone Duo simulator, open pose: the countdown block sits at its designed offset, the phantom gap gone (name text in the closed-pose class, about 13-17, against 95 pre-fix), reading transcribed onto this row
+- [x] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap (clearance about 33.67 against the 46.33pt overlap pre-fix), reading transcribed onto this row
+- [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment
+- [ ] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-19 23:56:33.909709+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 
 
 --
@@ -8248,6 +8248,22 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2380, 266, 'activity', 'owner', NULL, 'parent', '2026-10-19 23:23:42.547216+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 264, "value": "T-264"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2381, 264, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 23:23:42.547216+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 266, "value": "T-266"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2383, 267, 'activity', 'owner', NULL, 'parent', '2026-10-19 23:23:42.581071+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 264, "value": "T-264"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2389, 264, 'comment', 'owner', 'The oversized-inset clamp landed red-first: the phantom-inset case failed against the unchanged Screen, then went green once the clamp shipped, and both boundary arms were mutation-checked. yarn validate is green at 100% coverage, at 2.1.24.', NULL, '2026-10-19 23:38:57.47613+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2391, 264, 'activity', 'owner', NULL, 'description', '2026-10-19 23:56:33.916371+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Duo''s open and half-open poses render the schedule at its designed offset inside Apple''s sanctioned centred portrait window, with no phantom gap above the countdown and no overlap between the Standard page''s Isha row and the Settings button. The black bars beside the window are Apple''s own letterbox around a portrait-locked app and stay (LEAD RULING agent-ruled 2026-10-20, row comment 2371: Vehicle C); the price of removing them (landscape support, Vehicles A and B) is tabled on that comment.\n\nWhere: the top safe-area consumption in app/Screen.tsx, clamped only where the delivered top inset exceeds the largest any iPhone delivers (62), the compat-scaled window the Duo''s non-closed poses grant. Portrait poses and every phone geometry bit-identical.\n\nOWNER REPORT 2026-10-19, iPhone Duo simulator, open pose, landscape: black bars sit left and right of the app where the purple gradient should run, and a tall gap sits above the countdown component, above the prayer name. The owner''s read: the black background should never show, and the gap should not be there.\n\nOWNER REPORT 2, 2026-10-19, same view: the push-down displaces the whole schedule - on the Standard page the Isha row overlaps the Settings button at the bottom. The owner''s read: the overlap must not exist.\n\nNOTE (agent-ruled, 2026-10-19): this report supersedes the earlier note that landscape support was excluded on this row''s prior life; the lead''s Vehicle C ruling (2026-10-20) delivers the lawful part inside the scaled window and tables the landscape vehicles on the row.\n\nMECHANISM (measured 2026-10-20, plan doc): the bars are the system letterbox outside the app''s 469x669 window (pure black 0,0,0 at x 0-240 and 709-951 on the 951x669 panel; the app gradient spans exactly between); the gap and push-down are a ~80pt top safe-area inset the scaled window delivers (name text y=95 against y=13 closed), pushing Isha''s bottom (614.33) onto the Settings button (top 568) by 46.33pt.\n\nAcceptance:\n- [ ] the mechanism named: what paints the bars beside the content (the system letterbox outside the window) and what plants the tall gap (the ~80pt phantom top inset the scaled window delivers), recorded with the measured numbers in the plan doc\n- [x] on the iPhone Duo simulator, open pose: the countdown block sits at its designed offset, the phantom gap gone (name text in the closed-pose class, about 13-17, against 95 pre-fix), reading transcribed onto this row\n- [x] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap (clearance about 33.67 against the 46.33pt overlap pre-fix), reading transcribed onto this row\n- [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment\n- [ ] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2392, 266, 'activity', 'owner', NULL, 'status', '2026-10-19 23:56:33.948044+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2390, 264, 'comment', 'owner', 'Step 2 verified on the iPhone Duo simulator (iOS 27.1, SIMULATOR_UDID), Release build 2.1.24 from lane/264, driven with agent-device 0.21.28. Every pose was confirmed by the lit window''s dimensions because the hinge-angle read returns no sample (the known instrument failure); the pose request was sent each time.
+
+Closed pose, the fence read: window 466x678, prayer-name text y 13, Isha row bottom 532.33 (row y 475.33 + height 57), Settings button top 577. All three equal the pre-fix closed-pose reading: portrait poses render unchanged.
+
+Open pose: window 469x669, prayer-name text y 13 against 95 pre-fix (the phantom gap gone, inside the 13-17 closed-pose class), Isha bottom 532.33 against button top 568, clearing it by 35.67 against the 46.33 overlap pre-fix.
+
+Half-open pose: window 469x669, the same class, prayer-name text y 13, Isha bottom 532.33, button top 568, same as open.
+
+Bars, open-pose panel screenshot 951x669, mid row: x 0, 60, 200 and 750, 900 pure black (0,0,0); x 300 (24,27,98), x 475 (66,65,141), x 650 (54,28,131) the app gradient. The bars remain Apple''s letterbox around the portrait window, unchanged by this fix.
+
+Fold liveness: process id 68137 unchanged across closed, open, closed, open, every pose confirmed by its window class. The prayer overlay opened from a row tap in the open pose and dismissed cleanly.
+
+One open-pose screenshot is attached to this row, taken to scratch outside the worktree and never committed.', NULL, '2026-10-19 23:56:21.536121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -8256,6 +8272,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 
 INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (1, 'f48c5d44-b5be-4106-a343-faa1a1c104e9', 33, 'projects/1/attachments/33/1db9a2ca-d031-4a19-9005-4392c6a7320d-duo-open-pose.png', 'duo-open-pose.png', 'image/png', 148850, '2026-10-19 22:51:51.154582+00');
 INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (2, '085f5b3d-f7bf-47bf-be8b-1836ffc14883', 264, 'projects/1/attachments/264/20b5e890-3bcc-4818-87e8-6386f8bd7969-duo-open-pose-bars.png', 'duo-open-pose-bars.png', 'image/png', 142593, '2026-10-19 23:18:16.823892+00');
+INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (3, 'bfe2c279-3428-4f60-b65a-dc336911188e', 264, 'projects/1/attachments/264/88850fe4-7049-497e-9248-ac4fc4f700bd-t264-open-pose-postfix.png', 't264-open-pose-postfix.png', 'image/png', 152345, '2026-10-19 23:56:01.415539+00');
 
 
 --
@@ -9185,13 +9202,14 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (471, 264, 1, 'Backlog', 'backlog', '2026-10-19 22:48:42.762+00', '2026-10-19 23:04:47.435884+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (476, 264, 6, 'Planning', 'unstarted', '2026-10-19 23:04:47.435884+00', '2026-10-19 23:17:15.772343+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (477, 264, 9, 'Awaiting Owner', 'started', '2026-10-19 23:17:15.772343+00', '2026-10-19 23:19:19.421596+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (480, 266, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.539+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (481, 267, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.573+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (478, 264, 6, 'Planning', 'unstarted', '2026-10-19 23:19:19.421596+00', '2026-10-19 23:28:51.414622+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (482, 264, 2, 'Ready', 'unstarted', '2026-10-19 23:28:51.414622+00', '2026-10-19 23:28:51.487769+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (483, 264, 3, 'In progress', 'started', '2026-10-19 23:28:51.487769+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (479, 265, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.493+00', '2026-10-19 23:38:06.135062+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (484, 265, 4, 'Done', 'completed', '2026-10-19 23:38:06.135062+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (480, 266, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.539+00', '2026-10-19 23:56:33.945098+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (485, 266, 4, 'Done', 'completed', '2026-10-19 23:56:33.945098+00', NULL);
 
 
 --
@@ -16607,10 +16625,11 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 41);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3383);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 46);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3385);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:266', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
@@ -16625,7 +16644,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 86);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:266', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:267', 1, 3);
 
 
@@ -16888,14 +16906,14 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2388, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2392, true);
 
 
 --
 -- Name: issue_attachment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_attachment_id_seq', 2, true);
+SELECT pg_catalog.setval('public.issue_attachment_id_seq', 3, true);
 
 
 --
@@ -16965,7 +16983,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 484, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 485, true);
 
 
 --
@@ -21448,5 +21466,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 68BJBIwKXgopifCG5cU3bhmeVILLcbuQDJUjl3llMIMAURemqlFxmmVwfHq4d3N
+\unrestrict hgjUplyLa9Vk7CLNfnoPbbNbbolQGAWegu8ICFTwfbjgaEWWhcY98HbuZPaJ1FL
 
