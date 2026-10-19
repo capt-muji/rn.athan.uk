@@ -118,7 +118,28 @@ The lead uses it. A lane carries tickets in sequence and stops when the weights 
 cross the session budget, which is 6 by default, or when its own context passes about 40 percent.
 A device step, weight 3, always runs alone in a fresh session.
 
-### The plan
+### Integrity
+
+A ticket is well-formed when every one of these holds. Any agent that finds a defect fixes it on
+sight and notes the fix in one comment line. A defect is never reported and left standing.
+
+1. The description carries Goal, Where and Acceptance, every criterion observable.
+2. The type is set and matches the kind label.
+3. One weight in three places, all equal: the estimate field, the `N pts` label, and the sum of
+   the step weights. Verify the arithmetic before saving. A number that disagrees is a defect.
+4. Labels in the fixed order, number first, and no surface or area label that is not honestly
+   true.
+5. `Lane` is set the moment a lane takes the ticket.
+6. `Waiting on` is set in the same breath as entering Blocked, Upstream or Owner-led.
+7. Every plan step has its subtask, and every subtask is ticked before Done.
+8. A plan doc exists and is linked before Ready, and a closing comment exists at Done.
+9. Nothing parked reads active, and nothing active reads parked.
+
+The lead re-runs this list on every ticket the run touches at every phase boundary, and across
+the open board once at the start and once at the close of a run. That loop is the workflow:
+every ticket that passes, and every change, gets read again.
+
+## The plan
 
 The plan is a Docs page on the issue, titled with the ticket's identifier. It holds the design,
 the alternatives rejected, the risks and the step list. The description stays short.

@@ -76,7 +76,12 @@ A lane runs the whole workflow for one ticket: plan if needed, execute, audit, c
 - Before dispatch, set the ticket's `Lane` field and move it to the lane's first column.
 
 Verify the return against the board and the repository: the column moved, the comment landed,
-the commits exist, the worktree is gone.
+the commits exist, the worktree is gone. Every return also passes the integrity loop: re-read
+the ticket and run the Integrity checklist in `board-workflow`, weight arithmetic included. A
+defect the checklist catches is yours to fix on sight, with the fix noted in one comment line.
+The loop runs at every phase boundary on every ticket the run touches, and across the open
+board once at the start and once at the close. No ticket reaches Done or a parked column with
+a defect the checklist can catch.
 
 | Return | Action |
 | --- | --- |

@@ -26,7 +26,11 @@ You work in your own worktree, never in the main tree. The main tree stays on `u
    Audit means the reviewers.
 4. Comment once at each phase boundary. One or two plain lines.
 5. When the last step is merged, move it to Done and comment the outcome in one line.
-6. Delete your worktree and its branch before returning.
+6. Before any move to Done or a parked column, re-read the ticket and run the Integrity
+   checklist in `board-workflow`. Fix any defect in the ticket's own fields before the move;
+   the lead re-checks every move. When two lanes share the version line, the interleaving is
+   recorded in the ticket's audit comment, never left silent.
+7. Delete your worktree and its branch before returning.
 
 ## What you never do
 

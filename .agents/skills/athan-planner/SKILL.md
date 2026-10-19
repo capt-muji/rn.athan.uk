@@ -60,6 +60,9 @@ various, several, some, appropriate, reasonable, properly, correctly.
   outside the code. Chore is upkeep. Refactor restructures without changing behaviour. Docs
   writes prose. Design decides a look. Testing is a test, a suite, or a run on a real device.
   Release is a build, a version or a ship.
+- **Weight**: the sum of the step weights, set in both places and equal by arithmetic: the
+  estimate field and the `N pts` label. Re-add the steps before saving; a number that
+  disagrees with the steps is a defect.
 - **Subtasks**: one per step, titled `Step N: <what it produces>`. Create each with the parent
   set to this ticket, in the Backlog column so they do not count as ready.
 - **Relations**: for each thing this waits on, a `blocked_by` relation to that ticket.
@@ -75,6 +78,7 @@ The ticket is Ready only when all of these hold. Check each one, do not assume:
 | Every criterion is observable | each one names a test, a command or a log line |
 | The plan doc exists and is linked | `list_documents`, then the issue's linked docs |
 | Every plan step has a subtask | compare the doc's step list to the issue's subtasks |
+| The weight is one number in three equal places | estimate field, `N pts` label, sum of step weights |
 | Every dependency is a relation | `get_issue` and read its links |
 | Nothing is left as a question | the plan's Decisions taken has no open item |
 
