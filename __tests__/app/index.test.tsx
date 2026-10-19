@@ -13,6 +13,7 @@ import { london, onPlatform, saveLondonDays, showLondonDay } from '@/__tests__/h
 import { fetchYear } from '@/api/client';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
+import { hideSwitchCover } from '@/device/switchCover';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { mockExpoConfig, resetMockExpoConfig } from '@/shared/__mocks__/expo-constants';
 import { APP_CONFIG } from '@/shared/config';
@@ -65,6 +66,12 @@ let mockRelaunchHandoff = false;
 jest.mock('@/stores/language', () => ({
   reconcileLanguageSurfaces: jest.fn(),
   consumeRelaunchHandoff: jest.fn(() => mockRelaunchHandoff),
+}));
+
+// The native switch cover is Android-only and absent from Jest, so its lifting is observed
+jest.mock('@/device/switchCover', () => ({
+  showSwitchCover: jest.fn(() => Promise.resolve()),
+  hideSwitchCover: jest.fn(() => Promise.resolve()),
 }));
 
 // Notification start-up catches its own failures, so a failure that escapes it is made here, once, to show the launch
@@ -281,6 +288,15 @@ describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 inst
 });
 
 describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
+  it('lifts the switch cover once the first content commits', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<Index />);
+
+    // A context that never showed the cover lifts nothing; the context after a switch lifts it here
+    await waitFor(() => expect(hideSwitchCover).toHaveBeenCalledTimes(1));
+  });
+
   it('lifts the splash on the first frame of a launch with no stored days', async () => {
     showEmptyLaunch();
 

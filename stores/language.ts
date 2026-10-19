@@ -8,8 +8,11 @@
 
 import * as Updates from 'expo-updates';
 import { atom, getDefaultStore } from 'jotai/vanilla';
-import { I18nManager } from 'react-native';
+import { I18nManager, Platform } from 'react-native';
 
+import { hideSwitchCover, type SwitchCoverOptions, showSwitchCover } from '@/device/switchCover';
+import { COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { languageChangingLine } from '@/shared/i18n';
 import { currentLocaleId, type LocaleId, localeDirection, setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import { resetAndroidChannelCaches } from '@/shared/notifications';
@@ -18,6 +21,9 @@ import { rescheduleAllForLanguageChange, withSchedulingLock } from '@/stores/not
 import { atomWithStorageString } from '@/stores/storage';
 
 const store = getDefaultStore();
+
+// The native cover is Android's alone: iOS keeps its last committed frame through the reload
+const IS_ANDROID = Platform.OS === 'android';
 
 /** The D45 dirty flag: '' means never armed, so the first launch converges */
 export const lastArmedLanguageAtom = atomWithStorageString('preference_language_last_armed', '');
@@ -108,6 +114,21 @@ export const reconcileLanguageSurfaces = async (): Promise<void> => {
 const DIRECTIONS = ['ltr', 'rtl'] as const;
 const launchDirection = DIRECTIONS[Number(I18nManager.getConstants().isRTL)];
 
+// The loader's line cap, mirrored for the cover: a longer sentence breaks onto two centred lines
+const LINE_MAX_WIDTH_DP = 260;
+
+/** The cover's face in the loader's own values, so the restart span shows what the tap did */
+const coverOptionsFor = (locale: LocaleId): SwitchCoverOptions => ({
+  backgroundColor: COLORS.navigation.rootBackground,
+  spinnerColor: COLORS.navigation.activityIndicator,
+  spinnerSizeDp: SIZE.activityIndicator,
+  lineText: languageChangingLine(locale),
+  lineColor: '#fff',
+  lineSizeDp: TEXT.size,
+  lineMarginTopDp: SIZE.activityIndicator / 2 + SPACING.xxxl,
+  lineMaxWidthDp: LINE_MAX_WIDTH_DP,
+});
+
 /** The bound on a boundary crossing's convergence wait: the healthy cycle answers in ~1.4 s,
  *  while one silent native call can legally burn 15 s and a starved queue holds the pass for
  *  minutes. Past this the flip applies and forward-only convergence heals next launch. */
@@ -183,9 +204,18 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
         // land beside the relaunch context, and the cold-launch reopen it then keeps is
         // what buys the full pass whose sweep finds what landed
         if (passSettled) store.set(relaunchHandoffAtom, String(Date.now()));
+        if (IS_ANDROID) {
+          // The cover must be up before the restart is posted, and its show resolved
+          // first, or the blank span it exists for still shows
+          await showSwitchCover(coverOptionsFor(locale));
+        }
         await Updates.reloadAsync();
         reloadAccepted = true;
       } catch (error) {
+        if (IS_ANDROID) {
+          // The cover's fate never blocks the switch's own recovery
+          await hideSwitchCover().catch(() => {});
+        }
         store.set(relaunchHandoffAtom, '');
         // A refused relaunch leaves the forced direction for the next launch
         // to apply; the switch itself completed (Error.tsx's guard shape).

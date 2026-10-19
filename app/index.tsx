@@ -9,6 +9,7 @@ import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
+import { hideSwitchCover } from '@/device/switchCover';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { useNotification } from '@/hooks/useNotification';
@@ -200,6 +201,9 @@ export default function Index() {
       // JS-clock only: native marks live on a skewed timeline (see perf.ts),
       // so cross-clock launch spans are reconstructed offline from ring ts
       perfMark('home_content');
+      // A switch's native cover hands to content here; in a context that never
+      // showed one this lifts nothing
+      hideSwitchCover();
       perfMeasure('js_to_content', 'perf_monitor_init');
     }
     const revealReady = isRevealReady({

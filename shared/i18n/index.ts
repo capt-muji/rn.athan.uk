@@ -4,6 +4,7 @@
  */
 
 import type { PrayerId } from '@/shared/constants';
+import { nativeLanguageName } from '@/shared/languageNames';
 
 import type { Catalog, TranslationKey } from './en';
 import { catalogFor, currentCatalog, currentPrayerLabels } from './loader';
@@ -55,5 +56,9 @@ export const t = <K extends TranslationKey>(key: K, params?: ParamsOf<K>): strin
 /** The same read through a named locale's catalog: a surface about to switch speaks its target's words */
 export const tIn = <K extends TranslationKey>(locale: LocaleId, key: K, params?: ParamsOf<K>): string =>
   compose(catalogFor(locale), key, params);
+
+/** The line a language switch's face names the target language with: the loader's own composition, shared with the native cover */
+export const languageChangingLine = (locale: LocaleId): string =>
+  tIn(locale, 'language.changing', { language: nativeLanguageName(locale) });
 
 export const prayerLabel = (id: PrayerId): string => currentPrayerLabels()[id];

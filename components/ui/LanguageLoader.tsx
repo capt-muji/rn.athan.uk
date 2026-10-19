@@ -2,9 +2,8 @@ import { useAtomValue } from 'jotai';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, OVERLAY, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { tIn } from '@/shared/i18n';
+import { languageChangingLine, tIn } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
-import { nativeLanguageName } from '@/shared/languageNames';
 import { typographyFor } from '@/shared/typography';
 import { languageCommitBusyAtom, pendingLanguageAtom } from '@/stores/language';
 
@@ -26,7 +25,7 @@ export default function LanguageLoader() {
   // the active catalog drew one frame in the old language around the target's name, then flipped
   // (owner report, 2026-10-16). The face keys off the target for the same reason: frame one is
   // already the target's family and box, never the old locale's.
-  const line = pending === null ? '' : tIn(pending, 'language.changing', { language: nativeLanguageName(pending) });
+  const line = pending === null ? '' : languageChangingLine(pending);
   const ty = typographyFor(pending ?? currentLocaleId());
 
   if (!busy || pending === null) return null;
