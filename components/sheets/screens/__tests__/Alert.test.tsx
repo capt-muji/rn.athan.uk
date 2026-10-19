@@ -737,6 +737,28 @@ describe("the alert sheet's reminder header rows, Friday 11 September 2026 at 14
   });
 });
 
+describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:00", () => {
+  it('dims a locked reminder card to half its uat value while the athan is Off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    expect(reminderCard(1)).toHaveStyle({ opacity: 0.125 });
+    expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
+  });
+
+  it("dims an off reminder's sound and minutes to half their uat value", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    expect(reminderOptions()).toHaveStyle({ opacity: 0.125 });
+    // Reminder 1 off locks the second card, which carries the card dim beside the block's own
+    expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
+  });
+});
+
 describe('the alert sheet under Arabic, Friday 11 September 2026 at 14:00', () => {
   it('labels the athan options from the active catalog at render time', async () => {
     showLondonDay('2026-09-11', '14:00');
