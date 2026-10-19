@@ -467,8 +467,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const androidRender = (input: PrayerWidgetAndroidProps) => {
     const nowMs = Date.now();
     // A v1 snapshot sits in the store until the next push overwrites it; its
-    // strings are baked here rather than imported, because the widget runtime
-    // resolves no module-scope value (the closure law)
+    // words bake in the body, never imported, because the widget runtime
+    // resolves no module-scope value (the closure law). The unit bytes are
+    // the fixed lowercase Latin letters that never localise (rows 83/85/102)
+    // and sit beside Latin digits (row 88); the stale words stay keyed to
+    // the device locale through staticRow (D44/D79).
     const strings: WidgetStrings = input.strings ?? {
       h: 'h',
       m: 'm',
