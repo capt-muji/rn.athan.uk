@@ -22,8 +22,9 @@ You work in your own worktree, never in the main tree. The main tree stays on `u
 1. Read the ticket with `get_issue_by_number`. Take its identifier, its column, its subtasks and
    its linked plan doc.
 2. Move it to the lane's first column with `update_issue`, and set `Lane` to your lane number.
-3. Work the phase it sits in. Planning means the `athan-planner` skill. Ready means execution.
-   Audit means the reviewers.
+3. Work the phase it sits in. Planning means the `athan-planner` skill. Ready means
+   execution, and execution begins with the claim: move the ticket to In progress
+   before the first executor batch goes out. Audit means the reviewers.
 4. Comment once at each phase boundary. One or two plain lines.
 5. When the last step is merged, move it to Done and comment the outcome in one line.
 6. Before any move to Done or a parked column, re-read the ticket and run the Integrity
