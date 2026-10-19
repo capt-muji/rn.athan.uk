@@ -409,17 +409,14 @@ describe('commitAlertMenuChanges', () => {
   });
 
   describe('permission', () => {
-    // what the sheet was closed on, and whether the app has to ask for permission before it can be saved
-    it.each([
-      { closedOn: 'an athan and no reminder', current: createState(AlertType.Sound, AlertType.Off) },
-      { closedOn: 'a reminder and no athan', current: createState(AlertType.Off, AlertType.Silent) },
-    ])('saves nothing when the user closes the dialog on $closedOn', async ({ current }) => {
+    it('saves nothing when permission is refused for a sheet closed on an athan', async () => {
       (Notifications.getPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'denied' });
       (Notifications.requestPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'denied' });
       alertMock.alert.mockImplementation((_t: string, _m: string, buttons: AlertButton[]) => {
         buttons[0].onPress?.();
       });
       const { commitAlertMenuChanges } = getUseNotification()();
+      const current = createState(AlertType.Sound, AlertType.Off);
 
       const result = await commitAlertMenuChanges(
         ScheduleType.Standard,
@@ -431,6 +428,22 @@ describe('commitAlertMenuChanges', () => {
 
       expect(result).toBe(false);
       expect(mockCommitPrayerAlertChange).not.toHaveBeenCalled();
+    });
+
+    // A reminder fires only beside an on athan, so preserved reminder values under an off athan
+    // never prompt: the sheet hands the store exactly this draft when it keeps their choices
+    it('never asks when the sheet closes on an off athan holding preserved reminder values', async () => {
+      (Notifications.getPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'denied' });
+      (Notifications.requestPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'denied' });
+      const { commitAlertMenuChanges } = getUseNotification()();
+      const original = createState(AlertType.Off, AlertType.Sound, 15);
+      const current = createState(AlertType.Off, AlertType.Sound, 30);
+
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'fajr', original, current);
+
+      expect(result).toBe(true);
+      expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
+      expectHandedToTheStore(current, original, ScheduleType.Standard, 0, 'fajr');
     });
 
     it('never asks when the sheet is closed with everything off', async () => {

@@ -41,6 +41,7 @@ import {
   extraReminderAlertAtoms,
   extraReminderIntervalAtoms,
   getPrayerAlertAtom,
+  getPrayerAlertType,
   getPrayerArrays,
   getReminderAlertAtom,
   getReminderAlertType,
@@ -795,48 +796,39 @@ describe('getReminderIntervalAtom', () => {
 // CONSTRAINT ENFORCEMENT TESTS
 // =============================================================================
 
-describe('setPrayerAlertType constraint enforcement', () => {
+describe('setPrayerAlertType', () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { getDefaultStore } = require('jotai/vanilla');
   const store = getDefaultStore();
 
   beforeEach(() => {
-    // Reset atoms for testing
     store.set(standardPrayerAlertAtoms[0], AlertType.Sound);
     store.set(standardReminderAlertAtoms[0][0], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[1][0], AlertType.Silent);
   });
 
-  it('disables reminder when at-time alert is set to Off', () => {
-    // First verify reminder is enabled
-    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
-
-    // Disable at-time alert
+  // The store records choices and the scheduler derives firing: a reminder chosen before the athan
+  // went off stays saved, because every reader of it gates on the athan being on
+  it("keeps both slots' saved reminder choices when set to Off", () => {
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Off);
 
-    // Reminder should also be disabled
-    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Off);
+    expect(getPrayerAlertType(ScheduleType.Standard, 0)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 1)).toBe(AlertType.Silent);
   });
 
-  it('does not affect reminder when at-time alert is set to Silent', () => {
-    // Verify initial state
-    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
-
-    // Set at-time to Silent
+  it('keeps the saved reminder choices when set to Silent', () => {
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Silent);
 
-    // Reminder should remain Sound
     expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 1)).toBe(AlertType.Silent);
   });
 
-  it('does not affect reminder when at-time alert is set to Sound', () => {
-    // Set reminder to Silent first
-    store.set(standardReminderAlertAtoms[0][0], AlertType.Silent);
-
-    // Set at-time to Sound
+  it('keeps the saved reminder choices when set to Sound', () => {
     setPrayerAlertType(ScheduleType.Standard, 0, AlertType.Sound);
 
-    // Reminder should remain Silent
-    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Silent);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 0, 1)).toBe(AlertType.Silent);
   });
 });
 
@@ -1372,6 +1364,23 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     expect(osState.has(tomorrowId)).toBe(true);
   });
 
+  // The store may hold a reminder choice beside an Off athan (the setter keeps it there), so the
+  // reader is the one that must decide it fires nothing
+  it('arms no reminder stored beside an Off athan, and clears what an earlier athan armed', async () => {
+    enableFajrAlerts(AlertType.Off, AlertType.Sound);
+    seedPrayerWindow();
+
+    const reminderId = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
+    seedReminderRecords([reminderId]);
+    osState.add(reminderId);
+
+    await rescheduleAllNotifications();
+
+    expect(osState.has(reminderId)).toBe(false);
+    expect(Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0)).toHaveLength(0);
+    expect(osIdentifiers()).toEqual([]);
+  });
+
   // -- sweep -------------------------------------------------------------------
 
   it('sweeps OS notifications of prayers the user turned off', async () => {
@@ -1850,8 +1859,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     it('records the reminder identifier too when a reminder request rejects', async () => {
       const failing = fajrReminderId(TODAY, DEFAULT_REMINDER_INTERVAL);
       rejectIdentifier(failing);
-      // A reminder only schedules while its at-time alert is on, which is the same
-      // constraint setPrayerAlertType enforces in the UI
+      // A reminder only schedules while its at-time alert is on: the gate the scheduler itself
+      // applies, wherever the preference atoms stand
       enableFajrAlerts(AlertType.Silent, AlertType.Sound);
       seedPrayerWindow();
 

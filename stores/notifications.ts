@@ -676,8 +676,9 @@ export const getPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: numb
 /**
  * Sets the alert type for a specific prayer
  *
- * When setting at-time alert to Off, also disables the reminder alert
- * (reminder requires at-time to be enabled).
+ * Writes this one preference only. A reminder choice the prayer already holds stays saved while
+ * the athan goes Off: every reader of a reminder gates on the athan being on, so the store
+ * records the choice and the scheduler decides what fires.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)
@@ -686,13 +687,6 @@ export const getPrayerAlertAtom = (scheduleType: ScheduleType, prayerIndex: numb
 export const setPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: number, alertType: AlertType) => {
   const atom = getPrayerAlertAtom(scheduleType, prayerIndex);
   store.set(atom, alertType);
-
-  // Constraint: when at-time alert is Off, every reminder must also be Off
-  if (alertType === AlertType.Off) {
-    for (const slot of REMINDER_SLOTS) {
-      store.set(getReminderAlertAtom(scheduleType, prayerIndex, slot), AlertType.Off);
-    }
-  }
 };
 
 // =============================================================================
@@ -1232,8 +1226,9 @@ const applyPrayerAlerts = async (
 /**
  * Writes one prayer's three saved settings
  *
- * At-time first, and never reordered: `setPrayerAlertType` forces the reminder Off whenever the at-time value is Off,
- * so writing the reminder first would lose it.
+ * Each setter writes its own preference and nothing else, so the three values land exactly as the
+ * change was given: a reminder held beside an Off athan stays saved, and the scheduler's athan
+ * gate decides what fires.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param prayerIndex Index of the prayer in its schedule (0-based)

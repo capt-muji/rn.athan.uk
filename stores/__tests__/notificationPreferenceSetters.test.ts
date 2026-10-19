@@ -25,6 +25,7 @@ import {
   getReminderAlertType,
   getReminderInterval,
   getSoundPreference,
+  setPrayerAlertType,
   setReminderAlertType,
   setReminderInterval,
   setSoundPreference,
@@ -89,6 +90,39 @@ beforeEach(() => {
   }
   store.set(soundPreferenceAtom, 0);
   Database.database.clearAll();
+});
+
+// =============================================================================
+// setPrayerAlertType
+// =============================================================================
+
+describe('setPrayerAlertType', () => {
+  it.each(PRAYERS)('sets only the $type $id athan, persisted under its own id', ({ type, id, index }) => {
+    const expected = everyPreference();
+    expected[label(type, id)].atTime = AlertType.Silent;
+
+    setPrayerAlertType(type, index, AlertType.Silent);
+
+    expect(everyPreference()).toEqual(expected);
+    expect(Database.database.getString(`preference_alert_${type}_${id}`)).toBe(String(AlertType.Silent));
+  });
+
+  // The reminder choices survive the athan going Off: they stay saved for the athan's return, and
+  // the scheduler's athan gate alone decides what fires
+  it("leaves both slots' reminder choices saved when it sets the athan to Off", () => {
+    const atTimeAtoms = standardPrayerAlertAtoms;
+    store.set(atTimeAtoms[3], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[0][3], AlertType.Sound);
+    store.set(standardReminderAlertAtoms[1][3], AlertType.Silent);
+
+    setPrayerAlertType(ScheduleType.Standard, 3, AlertType.Off);
+
+    expect(getPrayerAlertType(ScheduleType.Standard, 3)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, 3, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, 3, 1)).toBe(AlertType.Silent);
+    expect(Database.database.getString('preference_reminder_alert_standard_asr')).toBe(String(AlertType.Sound));
+    expect(Database.database.getString('preference_reminder_alert_standard_asr_2')).toBe(String(AlertType.Silent));
+  });
 });
 
 // =============================================================================
