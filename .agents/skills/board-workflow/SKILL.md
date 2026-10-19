@@ -13,8 +13,8 @@ Instance: `itsaplan`, the MCP server wired in `opencode.json`. There is one proj
 
 ## The ticket's number
 
-A ticket is its number, written `#42`. That number is the ticket's own, it is the first thing in
-its title, and it carries a label of the same name so the card shows it as a chip.
+A ticket is its number, written `#42`. The number is the one a person says, and the ticket
+carries a label of the same name, so a card shows it as a chip.
 
 The product also builds an identifier for every ticket: the project's key, a dash, and the number.
 The key here is `T`, so ticket `#42` is `T-42` to the tools and in any link. The number is what a
@@ -60,6 +60,7 @@ parent.
 | Field | When it is filled | Who fills it |
 | --- | --- | --- |
 | Title | At creation | Intake |
+| Type | At planning, one of Ticket, Bug, Feature, Investigation, Chore | The planner |
 | Description | At creation, sharpened at planning | Intake, then the planner |
 | Column | At every stage | Whoever moves it |
 | Ticket number | At creation | Intake |
