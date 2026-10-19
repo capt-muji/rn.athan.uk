@@ -199,16 +199,20 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
         I18nManager.allowRTL(true);
         I18nManager.forceRTL(localeDirection(locale) === 'rtl');
       }
+      // Only a settled pass earns the handoff: a capped crossing's in-flight work can
+      // land beside the relaunch context, and the cold-launch reopen it then keeps is
+      // what buys the full pass whose sweep finds what landed
+      if (passSettled) store.set(relaunchHandoffAtom, String(Date.now()));
+      if (IS_ANDROID) {
+        // The cover must be up before the restart is posted, and its show resolved
+        // first, or the blank span it exists for still shows. A cover that refuses
+        // never blocks the switch: the reload runs bare.
+        const coverFace = coverOptionsFor(locale);
+        await showSwitchCover(coverFace).catch((error) => {
+          logger.warn('LANGUAGE: the switch cover refused to show, relaunching bare', { error });
+        });
+      }
       try {
-        // Only a settled pass earns the handoff: a capped crossing's in-flight work can
-        // land beside the relaunch context, and the cold-launch reopen it then keeps is
-        // what buys the full pass whose sweep finds what landed
-        if (passSettled) store.set(relaunchHandoffAtom, String(Date.now()));
-        if (IS_ANDROID) {
-          // The cover must be up before the restart is posted, and its show resolved
-          // first, or the blank span it exists for still shows
-          await showSwitchCover(coverOptionsFor(locale));
-        }
         await Updates.reloadAsync();
         reloadAccepted = true;
       } catch (error) {
@@ -223,8 +227,9 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
       }
     }
   } finally {
-    // The in-flight latch always frees: a context that survives its own reload
-    // must never refuse the next pick. The face outlives a fulfilled reload.
+    // The in-flight latch always frees. A context that survives its own reload keeps
+    // the face held, so the owning-pick guard refuses a different pick while a retry
+    // of the same one still runs.
     commitInFlight = false;
     if (!reloadAccepted) {
       store.set(languageCommitBusyAtom, false);

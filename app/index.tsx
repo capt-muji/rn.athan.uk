@@ -23,7 +23,7 @@ import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { isRamadan } from '@/shared/time';
 import { currentVisibleWhatsNew, shouldShowWhatsNew } from '@/shared/whatsNew';
-import { consumeRelaunchHandoff, reconcileLanguageSurfaces } from '@/stores/language';
+import { consumeRelaunchHandoff, languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLaunch } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
@@ -73,6 +73,10 @@ export default function Index() {
   // Warm-cache launches hydrate sequences synchronously (stores/bootstrap) —
   // content paints on the first commit and sync() completes in the background
   const sequenceReady = useAtomValue(standardSequenceAtom) !== null;
+  // The switch cover lifts only outside a commit: the remount this very commit triggers
+  // lands with busy still held, and its content commit would otherwise lift the cover
+  // between its show and the reload
+  const languageBusy = useAtomValue(languageCommitBusyAtom);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const whatsNewVisible = useAtomValue(popupWhatsNewEnabledAtom);
   const helpVisible = useAtomValue(popupHelpEnabledAtom);
@@ -203,7 +207,7 @@ export default function Index() {
       perfMark('home_content');
       // A switch's native cover hands to content here; in a context that never
       // showed one this lifts nothing
-      hideSwitchCover();
+      if (!languageBusy) hideSwitchCover();
       perfMeasure('js_to_content', 'perf_monitor_init');
     }
     const revealReady = isRevealReady({
@@ -216,7 +220,7 @@ export default function Index() {
     if (revealReady) {
       SplashScreen.hideAsync();
     }
-  }, [sequenceReady, state, masjidIconLoaded, decorationsExpected, decorationsLoaded]);
+  }, [sequenceReady, state, masjidIconLoaded, decorationsExpected, decorationsLoaded, languageBusy]);
 
   const handleCloseUpdate = () => {
     setPopupUpdateEnabled(false);

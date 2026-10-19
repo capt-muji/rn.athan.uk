@@ -24,7 +24,7 @@ import { initializeNotifications } from '@/shared/notifications';
 import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import type * as WhatsNew from '@/shared/whatsNew';
 import * as Database from '@/stores/database';
-import { reconcileLanguageSurfaces } from '@/stores/language';
+import { languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
 import { setSequence } from '@/stores/schedule';
@@ -61,12 +61,17 @@ jest.mock('@/device/backgroundTaskDebug', () => ({ runBackgroundTaskDebugSequenc
 
 // The language convergence pass owns its own suite; here it would re-arm alerts behind the
 // launch under test, so the launch is observed calling it instead of running it. The handoff
-// consumption is driven the same way: the store's own suite owns its semantics
+// consumption is driven the same way: the store's own suite owns its semantics. The busy
+// atom is a real atom so the cover gate reads the same flag the component does
 let mockRelaunchHandoff = false;
-jest.mock('@/stores/language', () => ({
-  reconcileLanguageSurfaces: jest.fn(),
-  consumeRelaunchHandoff: jest.fn(() => mockRelaunchHandoff),
-}));
+jest.mock('@/stores/language', () => {
+  const { atom } = jest.requireActual('jotai');
+  return {
+    reconcileLanguageSurfaces: jest.fn(),
+    consumeRelaunchHandoff: jest.fn(() => mockRelaunchHandoff),
+    languageCommitBusyAtom: atom(false),
+  };
+});
 
 // The native switch cover is Android-only and absent from Jest, so its lifting is observed
 jest.mock('@/device/switchCover', () => ({
@@ -295,6 +300,21 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
 
     // A context that never showed the cover lifts nothing; the context after a switch lifts it here
     await waitFor(() => expect(hideSwitchCover).toHaveBeenCalledTimes(1));
+  });
+
+  it('holds the switch cover while a commit runs: the remount a switch triggers commits with busy held', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    getDefaultStore().set(languageCommitBusyAtom, true);
+
+    try {
+      await render(<Index />);
+      await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
+
+      // The cover belongs to the reload the commit will post, not to this commit's own content
+      expect(hideSwitchCover).not.toHaveBeenCalled();
+    } finally {
+      getDefaultStore().set(languageCommitBusyAtom, false);
+    }
   });
 
   it('lifts the splash on the first frame of a launch with no stored days', async () => {

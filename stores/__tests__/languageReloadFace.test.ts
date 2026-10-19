@@ -34,6 +34,7 @@ type World = {
   updates: typeof Updates;
   cover: typeof SwitchCover;
   store: ReturnType<typeof Vanilla.getDefaultStore>;
+  warn: ReturnType<typeof jest.fn>;
 };
 
 /**
@@ -52,6 +53,7 @@ const onPlatformWorld = (os: 'ios' | 'android'): World => {
       updates: require('expo-updates'),
       cover: require('@/device/switchCover'),
       store: require('jotai/vanilla').getDefaultStore(),
+      warn: require('@/shared/logger').default.warn,
     };
   });
 
@@ -93,6 +95,21 @@ describe('a crossing switch on Android', () => {
 
     expect(world.cover.showSwitchCover).toHaveBeenCalledTimes(1);
     expect(world.cover.hideSwitchCover).toHaveBeenCalledTimes(1);
+  });
+
+  it('relaunches bare and holds the face when the cover refuses to show', async () => {
+    const world = onPlatformWorld('android');
+    jest.mocked(world.cover.showSwitchCover).mockRejectedValueOnce(new Error('cover refused'));
+
+    await world.language.commitLanguagePreference('ar');
+
+    expect(world.updates.reloadAsync).toHaveBeenCalledTimes(1);
+    expect(jest.mocked(world.warn)).toHaveBeenCalledWith(
+      'LANGUAGE: the switch cover refused to show, relaunching bare',
+      expect.objectContaining({ error: expect.any(Error) })
+    );
+    // A bare reload still fulfils into death, so the loader face stays up
+    expect(world.store.get(world.language.languageCommitBusyAtom)).toBe(true);
   });
 
   it('swallows a hide that fails after a refused reload, so the switch recovery still runs', async () => {
